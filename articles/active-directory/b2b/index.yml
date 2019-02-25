@@ -1,16 +1,16 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 5ec95e9f1f91c31620644d3bd66118ed89337228
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 15c1e8af5e6df658ea24ce357aeeee711eaf9279
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078560"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673488"
 documentType: LandingData
 title: Az Azure Active Directory B2B dokumentációja
 metadata:
   document_id: 
-  title: Az Azure Active Directory B2B dokumentációja – Oktatóanyagok, rövid útmutatók, alapfogalmak és referenciák | Microsoft Docs
-  description: Ebből a cikkből megtudhatja, hogyan oszthat meg biztonságosan erőforrásokat, illetve hogyan működhet együtt külső partnerekkel B2B vendégfelhasználói hozzáféréssel.
+  title: Az Azure Active Directory B2B dokumentációja | Microsoft Docs
+  description: Oktatóanyagainkból, rövid útmutatóinkból és ismertetőinkből megtudhatja, hogyan használhatja a B2B vendégfelhasználói hozzáférést arra, hogy külső partnerekkel működhessen együtt, és tartalmakat oszthasson meg velük.
   services: active-directory
   ms.subservice: authentication
   author: msmimart
@@ -41,10 +41,12 @@ sections:
     style: icon48
     items:
     - image:
+        alt: 
         src: ./media/index/i_security-management.png
       text: Vendégfelhasználók hozzáadása az Azure Portalon
       href: b2b-quickstart-add-guest-users-portal.md
     - image:
+        alt: 
         src: ./media/index/i_security-management.png
       text: Vendégfelhasználó hozzáadása PowerShell-lel
       href: b2b-quickstart-invite-powershell.md

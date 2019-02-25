@@ -1,0 +1,86 @@
+items:
+- name: A Spatial Anchors dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+  - name: A Spatial Anchors ismertetése
+    href: overview.md
+- name: Gyors útmutatók
+  items:
+  - name: Unity-alkalmazás létrehozása
+    href: unity-overview.yml
+    items:
+    - name: HoloLens
+      href: quickstarts/get-started-unity-hololens.md
+    - name: Android
+      href: quickstarts/get-started-unity-android.md
+    - name: iOS
+      href: quickstarts/get-started-unity-ios.md
+    expanded: true
+  - name: iOS-alkalmazás létrehozása
+    href: quickstarts/get-started-ios.md
+  - name: Android-alkalmazás létrehozása
+    href: quickstarts/get-started-android.md
+  - name: HoloLens-alkalmazás létrehozása
+    href: quickstarts/get-started-hololens.md
+- name: Oktatóanyagok
+  items:
+  - name: Megosztás a Unityben
+    href: tutorials/tutorial-share-anchors-across-devices.md
+  - name: Megosztás a Unityben az Azure Cosmos DB-vel
+    href: tutorials/tutorial-use-cosmos-db-to-store-anchors.md
+- name: Példák
+  items:
+  - name: Azure Spatial Anchors-példák (GitHub)
+    href: https://github.com/Azure/azure-spatial-anchors-samples
+- name: Alapelvek
+  items:
+  - name: Horgonyok létrehozása és kikeresése
+    href: create-locate-anchors-overview.md
+    items:
+    - name: A Unityben
+      href: concepts/create-locate-anchors-unity.md
+    - name: Az Objective-C-ben
+      href: concepts/create-locate-anchors-objc.md
+    - name: A Swiftben
+      href: concepts/create-locate-anchors-swift.md
+    - name: A Javában
+      href: concepts/create-locate-anchors-java.md
+    - name: A C++/NDK-ban
+      href: concepts/create-locate-anchors-cpp-ndk.md
+    - name: A C++/WinRT-ben
+      href: concepts/create-locate-anchors-cpp-winrt.md
+  - name: Kapcsolatok horgonyzása
+    href: concepts/anchor-relationships-way-finding.md
+  - name: Útmutatók
+    href: concepts/guidelines-effective-anchor-experiences.md
+  - name: Naplózás és diagnosztika
+    href: concepts/logging-diagnostics.md
+- name: Referencia
+  items:
+  - name: Unityhez készült SDK
+    href: https://docs.microsoft.com/dotnet/api/Microsoft.Azure.SpatialAnchors/
+  - name: iOS Objective-C-hez készült SDK
+    href: https://docs.microsoft.com/objectivec/api/spatial-anchors/
+  - name: Android Javához készült SDK
+    href: https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors/
+  - name: Android NDK-hoz készült SDK
+    href: https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/
+  - name: HoloLens C++/WinRT-hez készült SDK
+    href: https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/
+- name: További források
+  items:
+  - name: GYIK
+    href: spatial-anchor-faq.md
+  - name: Termékkel kapcsolatos visszajelzés küldése
+    href: https://feedback.azure.com/forums/919252-azure-spatial-anchors
+  - name: Stack Overflow
+    href: https://stackoverflow.com/questions/tagged/azure-spatial-anchors
+  - name: Támogatás
+    href: spatial-anchor-support.md
+ms.openlocfilehash: c3d27c3c8f13d97fd416b37fc153e8c81e81d866
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56753370"

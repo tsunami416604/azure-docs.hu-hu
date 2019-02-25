@@ -1,7 +1,7 @@
 ---
 title: A Java Enterprise támogatási linuxon – az Azure App Service |} A Microsoft Docs
 description: Fejlesztői útmutató a Java Enterprise alkalmazások Wildfly használata a Linuxon futó Azure App Service üzembe helyezése.
-keywords: az Azure app service, webalkalmazás, linux, oss, java, wildfly, nagyvállalati
+keywords: azure app service, web app, linux, oss, java, wildfly, enterprise, java ee, jee, javaee
 services: app-service
 author: rloutlaw
 manager: angerobe
@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 408141650a11a81f0c6000c6e7927af8333e2afe
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 6618e5317db1a7a4332a35b7ee9cd74934c8a787
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548476"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737892"
 ---
 # <a name="java-enterprise-guide-for-app-service-on-linux"></a>A linuxon futó App Service-ben a Java Enterprise útmutatója
 
-Linuxon futó Azure App Service lehetővé teszi, hogy elkészítheti, telepítheti és méretezheti a Java Enterprise (JEE) alkalmazásait egy teljes körűen felügyelt Linux-alapú szolgáltatás a Java-fejlesztőknek.  A Java Enterprise alapul szolgáló futtatókörnyezethez a nyílt forráskódú [Wildfly](https://wildfly.org/) alkalmazáskiszolgáló.
+Linuxon futó Azure App Service lehetővé teszi, hogy elkészítheti, telepítheti és méretezheti a Java Enterprise (Java EE-alapú) alkalmazásait egy teljes körűen felügyelt Linux-alapú szolgáltatás a Java-fejlesztőknek.  A Java Enterprise alapul szolgáló futtatókörnyezethez a nyílt forráskódú [Wildfly](https://wildfly.org/) alkalmazáskiszolgáló.
 
 Ez az útmutató főbb fogalmakat és utasításokat a Java vállalati fejlesztők, az App Service linuxos használatával. Soha nem telepítette a Java-alkalmazások az Azure App Service Linux rendszeren, ha, hajtsa végre a [Java rövid](quickstart-java.md) első. A Linux App Service-ről, amely nem elég konkrét, a Java Enterprise kérdéseire a a [Java developer's guide](app-service-linux-java.md) és a [App Service Linux – gyakori kérdések](app-service-linux-faq.md).
 

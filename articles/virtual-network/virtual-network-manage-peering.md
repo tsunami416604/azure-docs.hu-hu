@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 02/21/2019
 ms.author: jdial;anavin
-ms.openlocfilehash: 0cc85425742fbf3ee4825e13349d2b8b2c9ca6c4
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: a2d799a85932f8b7fdf1f6ae53dc50579c266311
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649322"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674515"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Létrehozása, módosítása vagy egy virtuális hálózati társviszony törlése
 
@@ -114,10 +114,10 @@ Ha azt szeretné, hogy a virtuális hálózatok néha kommunikációhoz, de nem 
 ## <a name="requirements-and-constraints"></a>Követelmények és korlátozások
 
 - <a name="cross-region"></a>Az ugyanabban a régióban, vagy eltérő régiókban lévő virtuális hálózatok társviszonyt. Társviszony-létesítés virtuális hálózatok különböző régiókban is nevezik *globális társviszony-létesítés*.
-- Amikor hoz létre, globális társviszonyt, a társviszonyban álló virtuális hálózatba is bármely Azure nyilvános felhő régió vagy a China cloud régiók, de nem a Government cloud régiók. Csak társviszony létesítése virtuális hálózat ugyanabban a régióban, az Azure Government cloud régióban is.
+- Amikor hoz létre, globális társviszonyt, a társviszonyban álló virtuális hálózatba bármely nyilvános felhőben az Azure-régió, Kína felhő-régiók vagy kormányzati felhő-régiók létezhet. Nem társviszonyt több felhő között.
 - Egy virtuális hálózatban lévő erőforrásokra globálisan két társviszonyban álló virtuális hálózatban lévő Azure belső terheléselosztó előtérbeli IP-címe nem lehet kommunikálni. A load balancer és a vele kommunikáló erőforrások a virtuális hálózat ugyanabban a régióban kell lennie. A társviszonyban lévő virtuális hálózatok azonban találhatók ugyanabban a régióban, szükség esetén bármelyik virtuális hálózatban lévő erőforrások kommunikálni tudnak bármelyik virtuális hálózatban a társviszony-létesítést az Azure belső terheléselosztó előtérbeli IP-címét.
 - Nem lehet távoli átjárók használata, vagy a globális virtuális társhálózatok átjárótranzit engedélyezése. A távoli átjárók használata, vagy átjárótranzit engedélyezése, a társviszonyban lévő virtuális hálózatok ugyanabban a régióban kell lennie.
-- A virtuális hálózatok lehetnek azonos vagy eltérő előfizetésekben. Különböző előfizetésekben található virtuális hálózatok társviszonyba állítása akkor, ha mindkét előfizetés társíthatók az azonos vagy eltérő Azure Active Directory-bérlő. Ha még nem rendelkezik az AD-bérlő, akkor gyorsan [hozzon létre egyet](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json-a-new-azure-ad-tenant). A különböző Azure Active Directory-bérlőkhöz társított előfizetésekben virtuális hálózatok közötti társviszony-létesítés támogatása a portál nem érhető el. Parancssori felület, a PowerShell vagy a sablonok is használhatja.
+- A virtuális hálózatok lehetnek azonos vagy eltérő előfizetésekben. Különböző előfizetésekben található virtuális hálózatok társviszonyba állítása akkor, ha mindkét előfizetés társíthatók az azonos vagy eltérő Azure Active Directory-bérlő. Ha még nem rendelkezik az AD-bérlő, [hozzon létre egyet](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json-a-new-azure-ad-tenant). A különböző Azure Active Directory-bérlőkhöz társított előfizetésekben virtuális hálózatok közötti társviszony-létesítés támogatása a portál nem érhető el. Parancssori felület, a PowerShell vagy a sablonok is használhatja.
 - A virtuális hálózat társviszonyt, egymást nem átfedő IP-címtereket kell rendelkeznie.
 - Adja hozzá a címtartományok nem, vagy törlése címtartományokat egy virtuális hálózat címtere egy virtuális hálózatot és egy másik virtuális hálózat társviszonyba. Hozzáadása vagy törlése címtartományokat, a társviszony-létesítés törlése, hozzáadása vagy eltávolítása a címtartományt, majd újra létrehozza a társviszonyt. Adja hozzá a-címtartományokat, vagy távolítsa el a címtartomány a virtuális hálózatok, lásd: [virtuális hálózatok kezelése](manage-virtual-network.md).
 - Erőforrás-kezelő vagy a Resource Managerrel üzembe helyezett egy virtuális hálózathoz a klasszikus üzemi modellel üzembe helyezett virtuális hálózaton üzembe helyezett két virtuális hálózat társviszonyt. A klasszikus üzemi modellel létrehozott két virtuális hálózat nem társviszonyt. Ha még nem ismeri az Azure üzembe helyezési modellel, olvassa el a [Azure üzemi modelljeinek megismerése](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) cikk. A [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) használatával összeköthető két, a klasszikus üzembehelyezési modellel létrehozott virtuális hálózat.
