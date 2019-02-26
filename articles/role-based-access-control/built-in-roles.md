@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 02/16/2019
+ms.date: 02/24/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 97f9c893487b486bd76031cb6321fe100321931d
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 106cda22f8f7c54441f438b61eb427446f36a69a
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750718"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807490"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Az Azure-erőforrások beépített szerepkörök
 
@@ -82,8 +82,8 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 | [DevTest Labs User](#devtest-labs-user) | Lehetővé teszi az Azure DevTest Labs virtuális gépeinek csatlakoztatását, indítását, újraindítását és leállítását. |
 | [DNS-zóna Közreműködője](#dns-zone-contributor) | Lehetővé teszi az Azure DNS-beli DNS-zónák és rekordkészletek kezelését, de nem teszi lehetővé az azokhoz hozzáférő felhasználók felügyeletét. |
 | [DocumentDB-Fiókközreműködő](#documentdb-account-contributor) | Kezelheti az Azure Cosmos DB-fiókokhoz. Az Azure Cosmos DB DocumentDB nevén. |
-| [EventGrid EventSubscription Közreműködője](#eventgrid-eventsubscription-contributor) | Lehetővé teszi a EventGrid-eseményelőfizetések műveleteinek kezelését. |
-| [EventGrid EventSubscription olvasó](#eventgrid-eventsubscription-reader) | Lehetővé teszi a EventGrid-eseményelőfizetések olvasását. |
+| [EventGrid EventSubscription Közreműködője (minta)](#eventgrid-eventsubscription-contributor-preview) | Lehetővé teszi a EventGrid-eseményelőfizetések műveleteinek kezelését. |
+| [EventGrid EventSubscription olvasója (minta)](#eventgrid-eventsubscription-reader-preview) | Lehetővé teszi a EventGrid-eseményelőfizetések olvasását. |
 | [HDInsight Domain Services-közreműködő](#hdinsight-domain-services-contributor) | Olvashatja, létrehozhatja, módosíthatja és törölheti a HDInsight Enterprise Security Package csomaghoz szükséges Domain Services-műveleteket |
 | [Intelligens rendszerek Fiókközreműködője](#intelligent-systems-account-contributor) | Lehetővé teszi az intelligens rendszerek fiókjainak kezelését, az azokhoz való hozzáférés nélkül. |
 | [Key Vault-közreműködő](#key-vault-contributor) | Lehetővé teszi a kulcstartók kezelését, de ezekhez nem biztosít hozzáférést. |
@@ -104,7 +104,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 | [Hálózati közreműködő](#network-contributor) | Lehetővé teszi a hálózatok kezelését, az azokhoz való hozzáférés nélkül. |
 | [Új Relic APM-Fiókközreműködő](#new-relic-apm-account-contributor) | Lehetővé teszi a New Relic Application Performance Management-fiókok és -alkalmazások kezelését, az azokhoz való hozzáférés nélkül. |
 | [Olvasó és adatelérés](#reader-and-data-access) | Lehetővé teszi minden megtekintését, de nem teszi lehetővé, törölheti, vagy hozzon létre egy storage-fiók vagy az abban található erőforrást. Olvasási/írási hozzáférést a tárfiókok kulcsainak elérésével storage-fiókban tárolt adatokat is engedélyezi. |
-| [Redis Cache Contributor](#redis-cache-contributor) | Lehetővé teszi a redis Azure-gyorsítótár kezeléséről, de nem érhető el hozzájuk. |
+| [Redis Cache Contributor](#redis-cache-contributor) | Lehetővé teszi a Redis-gyorsítótárak kezelését, az azokhoz való hozzáférés nélkül. |
 | [Erőforrás-szabályzati közreműködő (előzetes verzió)](#resource-policy-contributor-preview) | (Előnézet) Erőforrás-szabályzat létrehozására/módosítására, támogatási jegy létrehozására, valamint erőforrások/hierarchia beolvasására jogosultsággal rendelkező, EA-beli visszatöltött felhasználók. |
 | [A Scheduler Feladatgyűjteményeinek Közreműködője](#scheduler-job-collections-contributor) | Lehetővé teszi a Scheduler-feladatgyűjtemények kezelését, az azokhoz való hozzáférés nélkül. |
 | [Search szolgáltatás Közreműködője](#search-service-contributor) | Lehetővé teszi a keresési szolgáltatások kezelését, az azokhoz való hozzáférés nélkül. |
@@ -1198,6 +1198,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | Microsoft.DevTestLab/labs/policySets/evaluatePolicies/action | Kiértékeli a labor házirend. |
 > | Microsoft.DevTestLab/labs/virtualMachines/claim/action | Meglévő virtuális gép tulajdonjogának átvétele |
 > | Microsoft.DevTestLab/labs/virtualmachines/listApplicableSchedules/action | A alkalmazni indítása és leállítása ütemezések sorolja fel, ha van ilyen. |
+> | Microsoft.DevTestLab/labs/virtualMachines/getRdpFileContents/action | Egy karakterlánc, amely a virtuális gép RDP-fájl tartalmának beolvasása |
 > | Microsoft.Network/loadBalancers/backendAddressPools/join/action | A load balancer háttércímkészlet csatlakozik. Nem Alertable. |
 > | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Csatlakozik egy terheléselosztó bejövő nat-szabályt. Nem Alertable. |
 > | Microsoft.Network/networkInterfaces/*/read | Hálózati adapter (például az összes a terheléselosztók, amely a hálózati adapter egy része) tulajdonságainak olvasása |
@@ -1261,7 +1262,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="eventgrid-eventsubscription-contributor"></a>EventGrid EventSubscription Közreműködője
+## <a name="eventgrid-eventsubscription-contributor-preview"></a>EventGrid-eseményelőfizetés közreműködője (előzetes verzió)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1284,7 +1285,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **NotDataActions** |  |
 > | *none* |  |
 
-## <a name="eventgrid-eventsubscription-reader"></a>EventGrid EventSubscription olvasó
+## <a name="eventgrid-eventsubscription-reader-preview"></a>EventGrid-eseményelőfizetés olvasója (előzetes verzió)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1502,6 +1503,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **Műveletek** |  |
 > | */read | Olvassa el a titkos kulcsok kivételével az összes típusú erőforrásokat. |
 > | Microsoft.Solutions/applications/read | Az alkalmazások listájának beolvasása. |
+> | Microsoft.Solutions/*/action |  |
 > | **notActions** |  |
 > | *none* |  |
 > | **DataActions** |  |
@@ -1737,11 +1739,11 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Leírás** | Lehetővé teszi a redis Azure-gyorsítótár kezeléséről, de nem érhető el hozzájuk. |
+> | **Leírás** | Lehetővé teszi a Redis-gyorsítótárak kezelését, az azokhoz való hozzáférés nélkül. |
 > | **Azonosító** | e0f68234-74aa-48ed-b826-c38b57376e17 |
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör hozzárendelések |
-> | Microsoft.Cache/redis/* | Létrehozása és kezelése az Azure Cache redis |
+> | Microsoft.Cache/redis/* | Hozzon létre, és a redis Cache gyorsítótárak kezelése |
 > | Microsoft.Insights/alertRules/* | Hozzon létre, és a riasztási szabályok kezelése |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Beolvassa a megadott hatókörben lévő összes erőforrás rendelkezésre állási állapotát |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |

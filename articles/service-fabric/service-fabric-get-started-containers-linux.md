@@ -3,7 +3,7 @@ title: Azure Service Fabric-tárolóalkalmazás létrehozása Linuxon | Microsof
 description: Hozza létre első saját, Linux-alapú tárolóalkalmazását az Azure Service Fabricban. Az alkalmazással elkészíthet egy Docker-rendszerképet, amelyet leküldéssel továbbíthat egy tárolóregisztrációs adatbázisba, majd összeállíthat és üzembe helyezhet egy Service Fabric-tárolóalkalmazást.
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/4/2019
-ms.author: twhitney
-ms.openlocfilehash: 8cd7b33cca46433ec5efbc3a436f56ddc869a567
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.author: aljo
+ms.openlocfilehash: fad06e56893e9a141e85d1212c342e3e040726d0
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820028"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805358"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Linux rendszeren
 > [!div class="op_single_selector"]

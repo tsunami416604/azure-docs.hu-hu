@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 0cc5b101e1afb6ea648963188887cf43b65a5afa
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 06c341da73ad8df96d5c97e1cb9da4b7fd5c804e
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124949"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820654"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>Fiókkezelési műveletek az Azure Data Lake Storage Gen1 Python használatával
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ Ismerje meg, hogyan használhatja a Python SDK esetében az Azure Data Lake Stor
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Azure-erőforráscsoport**. További útmutatásért lásd: [Azure-erőforráscsoport létrehozása](../azure-resource-manager/resource-group-portal.md).
+* **Azure-erőforráscsoport**. További útmutatásért lásd: [Azure-erőforráscsoport létrehozása](../azure-resource-manager/manage-resource-groups-portal.md).
 
 ## <a name="install-the-modules"></a>A modulok telepítése
 
@@ -86,7 +86,7 @@ pip install azure-datalake-store
 
 3. Mentse a mysample.py módosításait.
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>Authentication
 
 Ebben a szakaszban az Azure AD-hitelesítés különböző módjait tárgyaljuk. Az elérhető lehetőségek:
 
@@ -135,5 +135,5 @@ Az alábbi kódrészlet először a Data Lake Storage Gen1 fiók ügyfél hoz l�
 
 ## <a name="see-also"></a>Lásd még
 
-* [az Azure-datalake-store – Python (fájlrendszer) referencia](http://azure-datalake-store.readthedocs.io/en/latest)
+* [azure-datalake-store Python (Filesystem) reference](http://azure-datalake-store.readthedocs.io/en/latest)
 * [Nyílt forráskódú Big Data-alkalmazások kompatibilis az Azure Data Lake Storage Gen1](data-lake-store-compatible-oss-other-applications.md)

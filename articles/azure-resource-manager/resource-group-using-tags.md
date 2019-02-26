@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: tomfitz
-ms.openlocfilehash: ad8a01ecccd7af15686c449b17cd5f014450b015
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 87b6dcb007eaea140b9655c248fdfb356cbc9b5f
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734436"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817320"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Azure-erőforrások rendszerezése címkékkel
 
@@ -279,4 +279,4 @@ REST API-műveleteket, lásd: [Azure Billing – REST API-referencia](/rest/api/
 ## <a name="next-steps"></a>További lépések
 
 * Nem minden erőforrástípus támogatja a címkék. Ha alkalmazhat egy címkét egy erőforrástípus megállapításához lásd: [címkézése Azure-erőforrások támogatása](tag-support.md).
-* Bevezetés a portál használatával, lásd: [az Azure-erőforrások kezelése az Azure portal használatával](resource-group-portal.md).  
+* Bevezetés a portál használatával, lásd: [az Azure-erőforrások kezelése az Azure portal használatával](manage-resource-groups-portal.md).  

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 039e2d3c70493868ca2f79e89fc82d8970ec6865
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 894fc42954182171588d81e2f7f1e37141af9add
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032398"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821251"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>Az Azure virtuális gép felvétele az Update Management, Change Tracking and Inventory megoldásai
 
@@ -34,7 +34,7 @@ Az Azure Log Analytics-munkaterületet és Automation-fiókot, majd válassza ki
 
 ![Előkészíteni az Update Management megoldás](media/automation-onboard-solutions-from-vm/onboard-solution.png)
 
-Nyissa meg a más megoldásokkal, és válassza ki **engedélyezése**. A Log Analytics és az automatizálási fiók legördülő listák le vannak tiltva, mivel ezek a megoldások a ugyanazon a munkaterületen, és az Automation-fiókot használja, mint az előzőekben engedélyezett megoldás.
+Nyissa meg a más megoldásokkal, és válassza ki **engedélyezése**. A Log Analytics-munkaterületet és Automation-fiók legördülő listák le vannak tiltva, mert ezek a megoldások ugyanazon a munkaterületen és Automation-fiókot használjuk, mint az előzőekben engedélyezett megoldás.
 
 > [!NOTE]
 > **A Change tracking** és **készlet** ugyanazt a megoldást használhatják. Ha e megoldások egyikének engedélyezve van, a másik is engedélyezve van.
@@ -45,9 +45,9 @@ Minden egyes megoldás hatókör-konfigurációt használja a munkaterületen, a
 
 Ha a kiválasztott munkaterületen még nem rendelkezik a Frissítésfelügyeleti vagy változáskövetési megoldások, a következő hatókör-konfigurációk jönnek létre:
 
-* **MicrosoftDefaultScopeConfig – változáskövetési**
+* **MicrosoftDefaultScopeConfig-ChangeTracking**
 
-* **MicrosoftDefaultScopeConfig-frissítések**
+* **MicrosoftDefaultScopeConfig-Updates**
 
 Ha a kijelölt munkaterület a megoldás már tartozik, a megoldás nem újratelepítése, és a hatókör-konfiguráció nem adódik.
 
@@ -76,7 +76,7 @@ A következő megoldásokat a Log Analytics-munkaterület függnek:
 * [Változáskövetés](automation-change-tracking.md)
 * [Virtuális gépek indítása/leállítása munkaidőn kívül](automation-solution-vm-management.md)
 
-Ha úgy dönt, hogy már nem szeretne az Automation-fiók integrálása a Log Analytics-szel, megszüntetheti a fiók közvetlenül az Azure Portalról.  Mielőtt továbblépne, először el kell távolítania a megoldások azt korábban említettük, ellenkező esetben ez a folyamat megakadályozza a folytatás. Tekintse át a cikk az adott megoldás importált távolítsa el a szükséges lépések megértéséhez.
+Ha úgy dönt, hogy már nem szeretne az Automation-fiók integrálása a Log Analytics-munkaterület, megszüntetheti a fiók közvetlenül az Azure Portalról.  Mielőtt továbblépne, először el kell távolítania a megoldások azt korábban említettük, ellenkező esetben ez a folyamat megakadályozza a folytatás. Tekintse át a cikk az adott megoldás importált távolítsa el a szükséges lépések megértéséhez.
 
 Miután eltávolítja ezeket a megoldásokat, az Automation-fiók leválasztása a következő lépéseket végezheti.
 

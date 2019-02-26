@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/18/2019
 ms.author: spelluru
-ms.openlocfilehash: 0530dbac88fcfbfb05ab29d1c5934a468f263034
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: aff92e8dd45fecc3fabd005e8921eda7add07fb4
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096636"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804957"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Oktatóanyag: Az Azure DevTest Labs-tesztkörnyezet beállítása
 Ebben az oktatóanyagban létrehoz egy tesztkörnyezetet az Azure Portalon. A tesztkörnyezet rendszergazdája létrehozza a tesztkörnyezetet a vállalaton belül és a virtuális gépeket a tesztkörnyezetben, továbbá konfigurálja a szabályzatokat. A tesztkörnyezet felhasználói (például a fejlesztők és a tesztelők) lefoglalják a tesztkörnyezet virtuális gépeit, csatlakoznak azokhoz, és használják azokat. 
@@ -80,7 +80,7 @@ A következő lépések bemutatják, hogyan használhatja az Azure Portalt labor
 1. A létrehozott virtuális gép megjelenik a **Lefoglalható virtuális gépek** listában. 
 
     > [!NOTE] 
-    > Amikor egy Linux rendszerű virtuális gépet ad hozzá egy laborhoz, engedélyezheti a virtuális gép SSH- és RDP-hozzáférését. Ha a virtuális gép létrehozása során nem engedélyezi a hozzáférést, az SSH- és RDP-portok megnyitására szolgáló szabályokat manuálisan is hozzáadhatja a virtuális géphez tartozó hálózati biztonsági csoportban.
+    > Az a **speciális beállítások** lapon konfigurálhatja a virtuális gép nyilvános, magán vagy egy megosztott IP-címet. Ha a **megosztott IP** van engedélyezve van, az Azure DevTest Labs automatikusan engedélyezi a Windows virtuális gépek RDP számára, és az SSH Linux rendszerű virtuális gépekhez. Ha létrehozott egy virtuális gépet a **nyilvános IP-cím** címek, RDP és SSH engedélyezve vannak a DevTest Labs módosítása nélkül.  
 
 ## <a name="add-a-user-to-the-lab-user-role"></a>Felhasználó hozzáadása a tesztkörnyezet-felhasználó szerepkörhöz
 

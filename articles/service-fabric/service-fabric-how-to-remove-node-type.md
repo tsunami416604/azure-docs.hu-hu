@@ -4,7 +4,7 @@ description: Ismerje meg, hogy a csomópont típusa törlése az Azure-ban futó
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
-manager: JeanPaul.Connick
+manager: chakdan
 editor: vturecek
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/14/2019
 ms.author: aljo
-ms.openlocfilehash: 63a18b6a24d922c48129df56045ec3e1d67bac53
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 2bde95b744ac136e8ba5c0517e0f749a6dce8a1e
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300992"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805273"
 ---
 # <a name="remove-a-service-fabric-node-type"></a>Távolítsa el a Service Fabric-csomópont típusa
 Ez a cikk azt ismerteti, hogyan méretezzünk át egy Azure Service Fabric-fürtöt egy meglévő csomóponttípus eltávolítása egy fürtről. Service Fabric-fürt, amelybe mikroszolgáltatásokat helyezhet üzembe és felügyelhet virtuális vagy fizikai gépek hálózaton keresztül csatlakozó készlete áll. Egy számítógép vagy virtuális Gépet, amely egy fürt része csomópontoknak nevezzük. Virtuálisgép-méretezési csoportok olyan számítási Azure-erőforrások üzembe helyezése és kezelése a virtuális gépek gyűjteményét készletként használt. Minden csomópont-típus egy Azure-fürtön definiált [külön méretezési csoportként](service-fabric-cluster-nodetypes.md). Mindegyik csomóponttípus kezelhetők külön-külön. Egy Service Fabric-fürt létrehozását követően méretezheti a fürt vízszintesen csomópont típusa (virtuálisgép-méretezési) és az összes hozzá tartozó csomópont eltávolításával.  Méretezheti a fürt bármikor, még akkor is, ha a számítási feladatok a fürtön futnak.  A fürt skálázható, mivel az alkalmazások automatikus méretezése is.

@@ -4,7 +4,7 @@ description: Megtudhatja, hogyan állapot tárolásához az Azure Service Fabric
 services: service-fabric-mesh
 documentationcenter: .net
 author: rwike77
-manager: jeconnoc
+manager: chakdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric-mesh
@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 11/21/2018
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 9bce2d0e6d01813fd376b2505838defc9c772d70
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 69866b9235f907b9e70a339d35372a8dca8ec175
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52891095"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804518"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Az Azure Files-alapú kötet egy Service Fabric-háló alkalmazás csatlakoztatása 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: 89cd8e85c9902bb1caeedd80240811f59ebec409
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f9db156562692107a5603e15340f01ecf9f9d52c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187436"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823416"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Események összesítése és -gyűjteményt Windows Azure Diagnostics használatával
 > [!div class="op_single_selector"]
@@ -61,6 +61,8 @@ Most, hogy meg van összesítésével események az Azure Storage [Log Analytics
 
 >[!NOTE]
 >Nem lehet szűrni vagy a táblák küldött események karcsúsítása jelenleg nem. Ha egy folyamat események eltávolítja a tábla nem alkalmazza, a tábla egyre nő (az alapértelmezett korlát a következő 50 GB-ot). Ennek a következők módosítása útmutatást [használja a lentebb ebben a cikkben](service-fabric-diagnostics-event-aggregation-wad.md#update-storage-quota). Emellett van egy futó karcsúsítási szolgáltatás például a [figyelő minta](https://github.com/Azure-Samples/service-fabric-watchdog-service), ajánlott, hogy Ön írása ilyennel, kivéve, ha van egy jó oka, hogy 30 vagy 90 nap határidőn túli naplók tárolására.
+
+
 
 ## <a name="deploy-the-diagnostics-extension-through-azure-resource-manager"></a>A diagnosztikai bővítmény az Azure Resource Manager üzembe helyezése
 
@@ -292,7 +294,49 @@ Ha egy Application Insights fogadó használja az alábbi szakaszban leírtak sz
 
 ## <a name="send-logs-to-application-insights"></a>Naplók küldése az Application Insights
 
-Monitorozási és diagnosztikai adatok küldése az Application Insights (AI) elvégezhető a WAD-konfiguráció részeként. Ha úgy dönt, az esemény elemzési és vizualizációs használható a mesterséges Intelligencia, olvassa el a [beállítása egy AI fogadó](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-application-insights-sink-to-the-resource-manager-template) a "WadCfg" részeként.
+### <a name="configuring-application-insights-with-wad"></a>Az Application Insights konfigurálása WAD használatával
+
+>[!NOTE]
+>Ez jelenleg csak alkalmazható Windows-fürtök.
+
+Kétféleképpen elsődleges WAD adatokat küldeni az Azure Application Insights, amely egy Application Insights fogadó WAD konfigurációját az Azure Portalon vagy az Azure Resource Manager-sablon hozzáadásával érhető el.
+
+#### <a name="add-an-application-insights-instrumentation-key-when-creating-a-cluster-in-azure-portal"></a>Adja hozzá az Application Insights-kialakítási kulcsot, ha a fürt létrehozása az Azure Portalon
+
+![Egy AIKey hozzáadása](media/service-fabric-diagnostics-event-analysis-appinsights/azure-enable-diagnostics.png)
+
+A fürt létrehozásakor, ha diagnosztika be van kapcsolva "" mező nem kötelező megadnia egy Application Insights-kialakítási kulcsot jelennek meg. Az Application Insights-kulcs Ide illessze be azt, ha az Application Insights fogadó konfigurálása automatikusan történik meg, amellyel a fürt üzembe helyezése Resource Manager-sablon a.
+
+#### <a name="add-the-application-insights-sink-to-the-resource-manager-template"></a>Az Application Insights fogadó a Resource Manager-sablon hozzáadása
+
+A "WadCfg" Resource Manager-sablon vegyen fel egy "Sink" által többek között a következő két módosításokat:
+
+1. A fogadó konfigurációra deklaráló után közvetlenül a `DiagnosticMonitorConfiguration` befejeződött:
+
+    ```json
+    "SinksConfig": {
+        "Sink": [
+            {
+                "name": "applicationInsights",
+                "ApplicationInsights": "***ADD INSTRUMENTATION KEY HERE***"
+            }
+        ]
+    }
+
+    ```
+
+2. A fogadó közé tartozik a `DiagnosticMonitorConfiguration` adja hozzá a következő sort a a `DiagnosticMonitorConfiguration` , a `WadCfg` (közvetlenül előtt a `EtwProviders` deklarált):
+
+    ```json
+    "sinks": "applicationInsights"
+    ```
+
+Mindkét a megelőző kódrészletek, a "applicationInsights" nevet használt a fogadó ismertetik. Ez nem követelmény, és mindaddig, amíg a fogadó neve "fogadóként" szerepel, a név és bármilyen karakterlánc megadható.
+
+Jelenleg a fürt naplóinak megjelenjen **nyomkövetések** Application Insights naplófájl-megjelenítőjében. Mivel a bejövő nyomok a platformról a legtöbb "Tájékoztatási szintű" szint, is érdemes lehet csak a "Figyelmeztetés" vagy "Error". a naplók elküldése a fogadó konfiguráció módosítása Ezt megteheti a fogadó "Csatorna" hozzáadásával ahogyan az is [Ez a cikk](../azure-monitor/platform/diagnostics-extension-to-application-insights.md).
+
+>[!NOTE]
+>Ha a portálon vagy a Resource Manager-sablon használatával egy megfelelő Application Insights-kulcs, akkor manuálisan módosíthatja a kulcsot, és a fürt frissítése / telepíteni.
 
 ## <a name="next-steps"></a>További lépések
 

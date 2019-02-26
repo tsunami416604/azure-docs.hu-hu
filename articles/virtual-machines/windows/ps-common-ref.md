@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 7be31a9390dfb0d663b27979a42fffe6f7a0afca
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 9d0e27c2427d53554b454e0c319ce9cf180f1633
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977527"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820790"
 ---
 # <a name="common-powershell-commands-for-creating-and-managing-azure-virtual-machines"></a>Gyakori PowerShell-parancsok hozhat létre és kezelhet az Azure Virtual machines szolgáltatásban
 
@@ -51,7 +51,7 @@ Ezeket a változókat akkor lehet hasznos, ha ebben a cikkben futó több, mint 
 | Adja hozzá a konfigurációs beállítások |$vm = [Set-AzVMOperatingSystem](https://docs.microsoft.com/powershell/module/az.compute/set-azvmoperatingsystem) -VM $vm -Windows -ComputerName $myVM -Credential $cred -ProvisionVMAgent -EnableAutoUpdate<BR></BR><BR></BR>Operációs rendszer beállításait, beleértve a [hitelesítő adatok](https://technet.microsoft.com/library/hh849815.aspx) hozzáadódnak a konfigurációs objektumot, amely a korábban létrehozott új-AzVMConfig használatával. |
 | Hálózati adapter hozzáadása |$vm = [Add-AzVMNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/Add-AzVMNetworkInterface) - VM $vm-azonosító $ hálózati adapteren. Azonosító<BR></BR><BR></BR>Rendelkeznie kell egy virtuális Gépet egy [hálózati adapter](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) egy virtuális hálózatot a kommunikációhoz. Is [Get-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.compute/add-azvmnetworkinterface) beolvasni egy meglévő hálózati adapter objektumot. |
 | Adja meg a platformlemezkép |$vm = [Set-AzVMSourceImage](https://docs.microsoft.com/powershell/module/az.compute/set-azvmsourceimage) -VM $vm -PublisherName "publisher_name" -Offer "publisher_offer" -Skus "product_sku" -Version "latest"<BR></BR><BR></BR>[Kép információk](cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) adnak hozzá a konfigurációs objektumot, amely a korábban létrehozott új-AzVMConfig használatával. Ez a parancs által visszaadott objektum csak akkor használható, az operációsrendszer-lemez használandó a platformlemezkép beállításakor. |
-| Virtuális gép létrehozása |[Új-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) - ResourceGroupName $myResourceGroup-hely $location – virtuális gép $vm<BR></BR><BR></BR>A létrehozott összes erőforrást egy [erőforráscsoport](../../azure-resource-manager/powershell-azure-resource-manager.md). Before you run this command, run New-AzVMConfig, Set-AzVMOperatingSystem, Set-AzVMSourceImage, Add-AzVMNetworkInterface, and Set-AzVMOSDisk. |
+| Virtuális gép létrehozása |[Új-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) - ResourceGroupName $myResourceGroup-hely $location – virtuális gép $vm<BR></BR><BR></BR>A létrehozott összes erőforrást egy [erőforráscsoport](../../azure-resource-manager/manage-resource-groups-powershell.md). Before you run this command, run New-AzVMConfig, Set-AzVMOperatingSystem, Set-AzVMSourceImage, Add-AzVMNetworkInterface, and Set-AzVMOSDisk. |
 | A virtuális gép frissítése |[Frissítés-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/update-azvm) - ResourceGroupName $myResourceGroup - VM $vm<BR></BR><BR></BR>Get-azvm parancsmag használatával az aktuális virtuális gép konfigurációjának lekérése, a Virtuálisgép-objektum a konfigurációs beállításokat módosítaná, és futtassa ezt a parancsot. |
 
 ## <a name="get-information-about-vms"></a>Virtuális gépek adatainak lekérése

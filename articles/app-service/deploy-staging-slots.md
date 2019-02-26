@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cephalin
-ms.openlocfilehash: 17b1adae9b369df53d69949e8183cf31daf7e35f
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: d9530d35bbaf608ae25e2a753685ee90e9e13501
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674684"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823297"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Állítsa be átmeneti környezeteket az Azure App Service-ben
 <a name="Overview"></a>
@@ -42,7 +42,7 @@ Minden App Service-csomag szint támogatja az üzembe helyezési pontok eltérő
 ## <a name="add-slot"></a>Tárhely felvétele
 Az alkalmazásnak futnia kell a **Standard**, **prémium szintű**, vagy **elkülönített** szint ahhoz, hogy több üzembe helyezési pontok engedélyezése.
 
-1. Az a [az Azure portal](https://portal.azure.com/), nyissa meg az alkalmazás [erőforráslapján](../azure-resource-manager/resource-group-portal.md#manage-resources).
+1. Az a [az Azure portal](https://portal.azure.com/), nyissa meg az alkalmazás [erőforráslapján](../azure-resource-manager/manage-resources-portal.md#manage-resources).
 
 2. A bal oldali navigációs sávján válassza ki a **üzembe helyezési pontok (előzetes verzió)** lehetőséget, majd kattintson a **tárhely felvétele**.
    

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/05/2016
 ms.author: memccror
-ms.openlocfilehash: ca389814b35a666a48959a50de58a231df6728c5
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: b6c63a868b7697522c708a4db483395a537a82cf
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981128"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823450"
 ---
 # <a name="how-to-tag-a-windows-virtual-machine-in-azure"></a>Az Azure-beli Windows virtuális gép címkézése
 Ez a cikk ismerteti a különböző módjait a Windows virtuális gép címkézése Azure-ban a Resource Manager-alapú üzemi modellel. A címkék olyan felhasználó által definiált kulcs/érték párok, amelyeket közvetlenül az erőforrás vagy erőforráscsoport helyezhető. Az Azure jelenleg támogatja az erőforrás és erőforráscsoport legfeljebb 15 címkék. Címkék erőforrás elhelyezve a létrehozásakor vagy hozzáadni egy meglévő erőforrást. Vegye figyelembe, hogy a címkék csak a Resource Manager üzemi modell használatával létrehozott erőforrások támogatottak. Ha szeretne Linux virtuális gép címkézése, [Linux rendszerű virtuális gép címkézése Azure-ban](../linux/tag.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -94,7 +94,7 @@ Címkézés PowerShell-lel kapcsolatos további információkért tekintse meg a
 * Az Azure-erőforrások címkézése kapcsolatos további információkért lásd: [Azure Resource Manager áttekintése] [ Azure Resource Manager Overview] és [címkék használatával az Azure-erőforrások rendszerezéséhez] [ Using Tags to organize your Azure Resources].
 * Hogyan címkék segít Önnek az Azure-erőforrások kezeléséhez, olvassa el [az Azure-elszámolások ismertetése] [ Understanding your Azure Bill] és [betekintést nyerhet a Microsoft Azure erőforrás-használat] [Gain insights into your Microsoft Azure resource consumption].
 
-[PowerShell environment with Azure Resource Manager]: ../../azure-resource-manager/powershell-azure-resource-manager.md
+[PowerShell environment with Azure Resource Manager]: ../../azure-resource-manager/manage-resources-powershell.md
 [Azure Resource Cmdlets]: https://docs.microsoft.com/powershell/module/az.resources/
 [Azure Resource Manager Overview]: ../../azure-resource-manager/resource-group-overview.md
 [Using Tags to organize your Azure Resources]: ../../azure-resource-manager/resource-group-using-tags.md

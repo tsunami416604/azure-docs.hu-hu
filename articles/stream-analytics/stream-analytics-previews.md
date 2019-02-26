@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/05/2019
-ms.openlocfilehash: 09f1bdfa4c9a7a179bddf9473b553924bfb58fb7
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 6cd1d917be67d21e3e6dfe54ed5dec77b92509e9
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768562"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821455"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Az Azure Stream Analytics előzetes verziójú funkciók
 
@@ -22,6 +22,10 @@ Ez a cikk összefoglalja a jelenleg az Azure Stream Analytics előzetes verziób
 ## <a name="public-previews"></a>Nyilvános előzetes verziók
 
 A következő funkciók vannak a nyilvános előzetes verzióban érhető el. Kihasználhatja ezeket a szolgáltatásokat még ma, de ne használja éles környezetben.
+
+### <a name="anomaly-detection"></a>Anomáliadetektálás
+
+Az Azure Stream Analytics bevezeti az új machine learning-modellek támogatása *kiugrás* és *süllyedések* észlelési mellett kétirányú, lassú pozitív, és a lassú negatív trendek észlelését. További információért látogasson el [anomáliadetektálás az Azure Stream Analyticsben](stream-analytics-machine-learning-anomaly-detection.md).
 
 ### <a name="sql-database-reference-data"></a>Az SQL Database referenciaadatok
 
@@ -47,10 +51,6 @@ Az Azure Stream Analytics Visual Studio-eszközök javíthatja a helyi tesztelé
 
 A következő funkciók private preview verzióban van.
 
-### <a name="anomaly-detection"></a>Anomáliadetektálás
-
-Az Azure Stream Analytics bevezeti az új machine learning-modellek támogatása *kiugrás* és *süllyedések* észlelési mellett kétirányú, lassú pozitív, és a lassú negatív trendek észlelését.
-
 ### <a name="c-custom-deserializer-for-azure-stream-analytics-on-iot-edge"></a>C# az Azure Stream Analytics az IoT Edge-ben egyéni deszerializáló
 
 A fejlesztők mostantól implementálhatók az egyéni deserializers deszerializálni az Azure Stream Analytics a fogadott események C#-ban. Amely képes lehet deszerializálni formátumok közé Parquet, Protopuf, XML vagy bármilyen bináris formátumot.
@@ -61,7 +61,7 @@ Mostantól üzembe helyezheti a valós idejű folyamatok, az Azure-alapú erőfo
 
 ### <a name="visual-studio-code-for-azure-stream-analytics"></a>A Visual Studio Code az Azure Stream Analytics szolgáltatáshoz
 
-A Visual Studio Code az Azure Stream Analytics-feladatok hozhatóak létre.
+A Visual Studio Code az Azure Stream Analytics-feladatok hozhatóak létre. Privát előzetes verziójú funkciók eszköztámogatás hozzáférés, lépjen kapcsolatba *ASAToolsfeedback@microsoft.com*.
 
 ## <a name="next-steps"></a>További lépések
 

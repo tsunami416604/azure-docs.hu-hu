@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 73ba80878615f04e1755a4d12014691c5ae2a077
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 5bb2db84a21efb9c8bffb345e05e17d99b866fe9
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453120"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56825602"
 ---
 ## <a name="view-device-telemetry"></a>Eszköztelemetria megtekintése
 
-Az eszközről küldött telemetriát is megtekintheti a **eszközök** lap a megoldásban.
+Az eszközről küldött telemetriát is megtekintheti a **Device Explorer** oldal a megoldásban.
 
-1. Válassza ki az Ön által üzembe helyezett eszközök listájában az eszközön a **eszközök** lapot. A panel az eszközről, mint például az eszköz telemetriai rajz információit jeleníti meg:
+1. Válassza ki az Ön által üzembe helyezett eszközök listájában az eszközön a **Device Explorer** lapot. A panel az eszközről, mint például az eszköz telemetriai rajz információit jeleníti meg:
 
     ![Tekintse meg az eszköz részletei](media/iot-suite-visualize-connecting/devicesdetail.png)
 
@@ -33,11 +33,11 @@ Az eszközről küldött telemetriát is megtekintheti a **eszközök** lap a me
 
 ## <a name="act-on-your-device"></a>Az eszköz cselekedhet
 
-Az eszközök metódusokat hívhat meg, használja a **eszközök** oldal a távoli figyelési megoldásban. Ha például a távoli figyelési megoldás a **hűtő** eszközök megvalósítása egy **FirmwareUpdate** metódus.
+Az eszközök metódusokat hívhat meg, használja a **Device Explorer** oldal a távoli figyelési megoldásban. Ha például a távoli figyelési megoldás a **hűtő** eszközök megvalósítása egy **FirmwareUpdate** metódus.
 
-1. Válasszon **eszközök** navigálhat a **eszközök** lap a megoldásban.
+1. Válasszon **eszközök** navigálhat a **Device Explorer** oldal a megoldásban.
 
-1. Válassza ki az Ön által üzembe helyezett eszközök listájában az eszközön a **eszközök** oldalon:
+1. Válassza ki az Ön által üzembe helyezett eszközök listájában az eszközön a **Device Explorer** oldalon:
 
     ![Válassza ki a valódi eszköz](media/iot-suite-visualize-connecting/devicesselect.png)
 
@@ -49,7 +49,7 @@ Az eszközök metódusokat hívhat meg, használja a **eszközök** oldal a táv
 
 1. Üzenetek sorozatát eszköz kódja fut, amikor a szimulált eszközt a metódus kezeli a konzolon jeleníti meg.
 
-1. A frissítés befejeződése után megjelenik-e az új belső vezérlőprogram verziója a a **eszközök** oldalon:
+1. A frissítés befejeződése után megjelenik-e az új belső vezérlőprogram verziója a a **Device Explorer** oldalon:
 
     ![A frissítés befejeződött](media/iot-suite-visualize-connecting/complete.png)
 

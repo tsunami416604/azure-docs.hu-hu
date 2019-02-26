@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 12/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 82382ecc3adf0d0621f51438a082f7807b031fc9
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: ec71f8998f7db07cafca7f8141acb9898b016328
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54431214"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821353"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Runbook-kimenet és üzenetek az Azure Automationben
 A legtöbb Azure Automation-runbookok rendelkezik valamilyen kimenetet. Ez a kimenet egy hibaüzenet, a felhasználó vagy egy összetett objektumot egy másik runbookból a használni kívánt lehet. Windows PowerShell biztosít [több adatfolyam](/powershell/module/microsoft.powershell.core/about/about_redirection) , elküldheti a kimenetet egy parancsfájl vagy a munkafolyamat. Az Azure Automation eltérően működik az egyes ezekbe az adatfolyamokba. Ajánlott eljárások használata minden egyes runbook létrehozásakor kövesse.
@@ -220,8 +220,8 @@ Megjelenik az az előző képernyőképen látható, hogy ha engedélyezi a rés
    
    ![Grafikus szerzői műveletek naplózás és nyomkövetés lap](media/automation-runbook-output-and-messages/logging-and-tracing-settings-blade.png)
 
-### <a name="microsoft-azure-log-analytics"></a>A Microsoft Azure Naplóelemzés
-Automation küldhet a runbook állapota és a feladat feladatstreamek a Log Analytics-munkaterületre. A Log Analytics használatával is,
+### <a name="microsoft-azure-monitor-logs"></a>A Microsoft Azure Monitor naplóira
+Automation küldhet a runbook állapota és a feladat feladatstreamek a Log Analytics-munkaterületre. Az Azure Monitor-naplók segítségével,
 
 * Ismerkedjen meg az Automation-feladatokkal 
 * Az eseményindító egy e-mailben vagy a riasztások alapján a forgatókönyv-feladat állapota (például felfüggesztett vagy sikertelen) 
@@ -229,7 +229,7 @@ Automation küldhet a runbook állapota és a feladat feladatstreamek a Log Anal
 * Feladatok összekapcsolása az Automation-fiókok 
 * A feladatelőzmények megjelenítése időbeli alakulása    
 
-Történő integráció konfigurálása a Log Analytics összegyűjtését, összekapcsolását és a feladat az adatokkal műveleteket végezni, további információkért lásd: [feladat állapotát és a feladatstreamek automatizálást továbbítása a Log Analyticsbe](automation-manage-send-joblogs-log-analytics.md).
+Integráció konfigurálása az Azure Monitor naplóira való összegyűjtését, összekapcsolását és reagálás a feladatadatok további információkért lásd: [feladat állapotát és a feladatstreamek továbbítja automatizálást az Azure Monitor naplóira](automation-manage-send-joblogs-log-analytics.md).
 
 ## <a name="next-steps"></a>További lépések
 * A runbook végrehajtásával, a runbook-feladatok figyelésével, illetve az egyéb technikai részletekkel kapcsolatos további tudnivalókat a [Runbook-feladatok nyomon követése](automation-runbook-execution.md) című rész tartalmazza

@@ -14,33 +14,33 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: pbutlerm
-ms.openlocfilehash: d96ef2fd318d6164e1b7dfc5c4b72d6957af0f3e
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: ca77da897eed51c8d832cad7052c2144d6ada562
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744434"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806486"
 ---
 # <a name="power-bi-apps-technical-info-tab"></a>A Power BI alkalmazások technikai információ lap
 
-A **technikai információ** lapján a **új ajánlat** lap, ahol meg kell a Power BI-telepítő csomag URL-CÍMÉT és az új ajánlat érvényesítéshez szükséges további adatok.  A kezdeti kiadás minden Power BI-alkalmazások ingyenes, letölthető az appsource-ból külön díj nélkül. Ennek eredményeképpen nem bármely leltári egységek (SKU) ajánlat típus definiálását.
+Az a **új ajánlat** oldalon a **technikai információ** fülre, és adja meg a Power BI-telepítő csomag URL-CÍMÉT és egyéb információkat, hogy szeretne-e az új ajánlat ellenőrzése.  A kezdeti kiadás minden Power BI alkalmazás ingyenesek, és az appsource-ból letölthető. Emiatt a készletkezelési egységek (SKU) ajánlat típus nem lehet definiálni.
 
-![Technikai információ lap](./media/technical-info-tab.png)
+![A technikai információ lap](./media/technical-info-tab.png)
 
 
 ## <a name="technical-info-fields"></a>Technikai információ mezők 
 
-Az a **technikai információ** lapon meg kell adnia a következő mezőket.  A hozzáfűzött csillag (*) a mező címke jelzi, hogy szükséges.
+Az a **technikai információ** fülre, töltse ki a mezőket a következő táblázat ismerteti. Egy csillag (*) mező címke végén található, az azt jelenti, hogy a mező kitöltése kötelező.
 
 |        Mező          |  Leírás                                                                 |
 |    ---------------    |  ----------------------------------------------------------------------------|
-| **Telepítő URL-címe**     | Amikor éles környezetbe való előléptetése és az alkalmazás közzététele a Power BI által létrehozott címe.  Az URL-cím létrehozása a további információkért lásd: [service-alkalmazások közzététele a Power bi-ban](https://docs.microsoft.com/power-bi/service-create-distribute-apps).  |
-|  **Ellenőrzési utasítások**  |  A Microsoft ellenőrzési csoportja, amelyek segítik a konfigurálása, csatlakozás és az alkalmazás tesztelése nem kötelező szöveg útmutatást (max 3000 karakter) többek között: tipikus konfigurációs beállítások, tesztelni vagy a "Connect adatok" beállítás tesztelésére szolgáló paraméterek stb. Ez az információ csak akkor látható, az érvényesítési csapatának, és csak ellenőrzési célokat szolgál.  |
-| **Ez az alkalmazás a program létrehoz egy Power BI-tartalomcsomag?** | Jelenleg ez az egy belső használt mezőt. Hagyja a beállítást az alapértelmezett értékére, `No`; ellenkező esetben a mezőben a módosítása `Yes` akadályozhatnák a közzététel.  |  
+| **Telepítő URL-címe**     | A Power BI az URL-címet állít elő, amikor éles környezetbe való előléptetése és tegye közzé az alkalmazást.  További információkért lásd: [alkalmazások közzététele az irányítópultokat és jelentéseket a Power bi-ban](https://docs.microsoft.com/power-bi/service-create-distribute-apps).  |
+|  **Ellenőrzési utasítások**  |  Ha azt szeretné, adja hozzá a Microsoft ellenőrzési csoportja konfigurálása, csatlakozás és az alkalmazás teszteléséhez útmutatást (3000 karakter). Például a tipikus konfigurációs beállítások, fiókok, paraméter vagy egyéb információkat, amelyek a csatlakozás beállítás teszteléséhez használható. Ez az információ csak az ellenőrzési csoportja látható-e, és azt csak ellenőrzési célokat szolgál.  |
+| **Ez az alkalmazás a program létrehoz egy Power BI-tartalomcsomag?** | Jelenleg a mező csak belső használatra szolgál. Ne módosítsa az alapértelmezett, **nem**. Ha módosítja a beállításokat, hogy **Igen**, meg tudta leállítani a közzétételi folyamat.  |  
 |  |  |
 
 
 ## <a name="next-steps"></a>További lépések
 
-A következő [kirakat részletek](./cpp-storefront-details-tab.md) lapon, marketinges és jogi információkkal szolgálnak az alkalmazáshoz.
+Az a [kirakat részletek](./cpp-storefront-details-tab.md) lapra, adja meg az alkalmazás a marketing és jogi információit.
 

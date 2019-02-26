@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 07/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c846460d8791c15022b10ecf4517ba01699a64cd
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 9a897cdb10506939232f667250dfb0dbaf196bc0
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439034"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822225"
 ---
 # <a name="migrate-your-oms-update-deployments-to-azure"></a>Az OMS Frissítéstelepítések migrálása az Azure-bA
 
@@ -33,7 +33,7 @@ Az OMS-munkaterületen kattintson **nyissa meg az Azure-ban**. Ugrás a Log Anal
 
 Az Azure Portalon kattintson a **Automation-fiók**
 
-![Log Analytics](media/migrate-oms-update-deployments/log-analytics.png)
+![Az Azure Monitor naplóira](media/migrate-oms-update-deployments/log-analytics.png)
 
 Az Automation-fiókban kattintson **az Update Management** az Update Management megnyitásához.
 
@@ -61,7 +61,7 @@ Frissítendő gépek válassza ki a mentett keresésnek, használja a meglévő 
 | --- | --- |
 |Name (Név) |A frissítéstelepítést beazonosító egyedi név. |
 |Operációs rendszer| Válassza ki **Linux** vagy **Windows**.|
-|Frissítendő gépek |Válassza ki, mentett keresést, importált csoporthoz, vagy a legördülő listából válassza ki a gépet, és válassza ki az egyes gépek. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható.</br> A számítógépcsoportok Log Analyticsben lévő létrehozásának különböző módszereivel kapcsolatos további információkért tekintse meg a [Log Analytics számítógépcsoportjait](../azure-monitor/platform/computer-groups.md) ismertető részt |
+|Frissítendő gépek |Válassza ki, mentett keresést, importált csoporthoz, vagy a legördülő listából válassza ki a gépet, és válassza ki az egyes gépek. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható.</br> Számítógépcsoportok létrehozását az Azure Monitor naplóira különböző módszereivel kapcsolatos további információkért lásd: [számítógépcsoportokat az Azure Monitor naplóira](../azure-monitor/platform/computer-groups.md) |
 |Frissítési besorolások|Válassza ki az összes szükséges. CentOS nem támogatja a beépített.|
 |Kihagyandó frissítések|Adja meg a kihagyandó frissítések. Windows, adja meg a tudásbáziscikkben nélkül a **KB-os** előtag. A Linux rendszerre adja meg a csomag nevét, vagy helyettesítő karaktert használni.  |
 |Ütemezési beállítások|Válassza ki a kezdési idejét, és válassza vagy **egyszer** vagy **ismétlődő** az ismétlődés.|| Karbantartási időszak |Frissítések beállított percek száma. Az érték nem lehet kisebb, mint 30 perc vagy 6 óra. |

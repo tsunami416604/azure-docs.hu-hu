@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/06/2016
 ms.author: kfollis
-ms.openlocfilehash: 4a2dee4ad90fb269268ec7d3e86def58f2444e3a
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 693e973fb988a57c15b4ea2fae47f16b4ff39011
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884728"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818578"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Az Azure Portalon irányítópultok létrehozása és megosztása
 Több irányítópultokat hozhat létre, és megoszthatja másokkal, akik hozzáférhetnek az Azure-előfizetést a.  Ez a cikk létrehozása, szerkesztése, közzététel és irányítópultokhoz való hozzáférés kezelésére való használatának alapvető kerül.
@@ -93,6 +93,6 @@ Az irányítópult közzététele után a **megosztás + hozzáférés** vezérl
 ![hozzáférés-vezérlés kezelése](./media/azure-portal-dashboards/manage-access.png)
 
 ## <a name="next-steps"></a>További lépések
-* Erőforrások kezelése, tekintse meg [Azure-erőforrások a portál](../azure-resource-manager/resource-group-portal.md).
+* Erőforrások kezelése, tekintse meg [Azure-erőforrások kezelése az Azure portal használatával](../azure-resource-manager/manage-resources-portal.md).
 * Erőforrások üzembe helyezéséhez lásd: [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure portal](../azure-resource-manager/resource-group-template-deploy-portal.md).
 

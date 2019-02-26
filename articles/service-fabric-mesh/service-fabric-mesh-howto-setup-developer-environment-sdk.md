@@ -3,18 +3,18 @@ title: Windows fejlesztési környezet kialakítása Service Fabric Mesh-alkalma
 description: Kialakíthatja úgy a Windows fejlesztési környezetet, hogy Service Fabric Mesh-alkalmazást hozhasson létre, és üzembe helyezhesse azt az Azure Service Fabric Mesh-ben.
 services: service-fabric-mesh
 keywords: ''
-author: tylermsft
-ms.author: twhitney
+author: dkkapur
+ms.author: dekapur
 ms.date: 12/12/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
-manager: jeconnoc
-ms.openlocfilehash: a2c00d5373bd4e19a6e6057c6eddc758857860da
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+manager: chakdan
+ms.openlocfilehash: 6aba4b9d2958dbb8dd43d2242debc3b1b19f63ce
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556764"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804484"
 ---
 # <a name="set-up-your-windows-development-environment-to-build-service-fabric-mesh-apps"></a>A Windows fejlesztési környezet kialakítása Service Fabric Mesh-alkalmazások létrehozásához
 
@@ -27,7 +27,7 @@ Alkalmazások létrehozását és futtatását az Azure Service Fabric-háló a 
 
 És a következő Windows-verziók valamelyikét:
 
-* A Windows 10 1709-es (Fall Creators update) vagy 1803 (Enterprise, Professional vagy oktatási) verziója (Windows 2018 április 10-frissítés)
+* Windows 10 (Enterprise, Professional, or Education) versions 1709 (Fall Creators update) or 1803 (Windows 10 April 2018 update)
 * A Windows Server 1709-es verzió
 * A Windows Server verzió 1803-as verzióban
 

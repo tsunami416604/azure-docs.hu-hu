@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: d2c2e87b3dade68dc311aa38743c11a60a69f68b
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6c93c0228425b2ff020e5b4301e68eae5b1062a3
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004546"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807830"
 ---
 # <a name="find-exact-moments-within-videos"></a>Pontos időpontok keresése videókban
 
@@ -23,12 +23,14 @@ Ez a témakör bemutatja, hogy a keresési lehetőségeket, amelyek lehetővé t
 1. Nyissa meg a [Video Indexer](https://www.videoindexer.ai/) webhelyét, és jelentkezzen be.
 2. Keressen rá a fiókban lévő összes videó között.
 
-    A következő példában azt keres az összes videó channel9-on, Scott Hanselman videosorozatának e által létrehozott is.
+    A következő példában azt kommunikálhatnak biztonságával kapcsolatban, és amely Satya jelenik meg, az összes videó keresése
 
     ![Keresés](./media/video-indexer-search/video-indexer-search01.png)
 3. A videó összefoglaló elemzések keresése.
 
-    Majd videón belüli kattintva kereshet **lejátszása** videó. Ezt követően is végezhető keresés a videó kiválasztásával a **keresési** fülre. Például hogy keresni minden olyan hely, ahol az "identity protection" szöveget használják. 
+    Majd videón belüli kattintva kereshet **lejátszása** videó. Ezt követően is végezhető keresés a videó kiválasztásával a **keresési** fülre. 
+
+    A következő példában azt keresse meg a "biztonságos" a kijelölt videó belül.
 
     ![Keresés](./media/video-indexer-search/video-indexer-search02.png)
 

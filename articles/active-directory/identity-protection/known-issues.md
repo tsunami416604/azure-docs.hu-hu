@@ -17,17 +17,17 @@ ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: raluthra
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc08710909252c9bcade6177a105684128acc5bf
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: a1cc8a9305103a30fc0ea0fc40c23a522e136d80
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339023"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807184"
 ---
 # <a name="faqs-and-known-issues-with-identity-protection-refreshed-in-azure-active-directory"></a>Gyakori kérdések és (frissítve) az Azure Active Directory identity protection szolgáltatással kapcsolatos ismert problémák
 
 
-## <a name="dismiss-user-risk"></a>Felhasználói kockázat elvetése
+## <a name="dismiss-user-risk-known-issues"></a>Ismert problémák felhasználói kockázat bezárása
 
 **Zárja be a felhasználói kockázat** Identity Protection beállítja az aktor a felhasználó kockázati előzményeit az Identity Protection (frissítés), a klasszikus **Azure ad-ben**.
 
@@ -37,7 +37,7 @@ ms.locfileid: "56339023"
 A jelenlegi ismert probléma késéseket okoz a felhasználói kockázat elbocsátása folyamatban van. Ha rendelkezik egy "felhasználói kockázati házirend", ez a szabályzat alkalmazása az elbocsátott felhasználó percen belül elkészül, kattintson a "Elvetés felhasználói kockázat" le fog állni. Azonban vannak ismert késéseket és az "kockázati állapotot" elbocsátott felhasználó felhasználói. Áthidaló megoldásként frissítése a legújabb "Kockázat állapota" felhasználó megtekintéséhez a böngészőben szintjén az oldal.
 
 
-## <a name="risky-users-report"></a>Kockázatos felhasználók jelentés
+## <a name="risky-users-report-known-issues"></a>Kockázatos felhasználók ismert problémák jelentése
 
 A lekérdezések a **felhasználónév** mező-és nagybetűk, a lekérdezések során a **neve** mező eset-agnosztikus.
 
@@ -45,14 +45,10 @@ Vizualizációtól **dátumok megjelenítése a következőképpen** elrejti a *
 
 **Az összes esemény elvetését** Identity Protection a kockázati események állapotát állítja be a klasszikus **lezárva (Megoldva)**.
 
-Ha megpróbál kattintva férhet hozzá a kockázatos felhasználók jelentés **kockázatos felhasználók jelentés** belül a kockázatos bejelentkezések jelentés a bejelentkezési rekord, egyes esetekben valószínűleg **probléma merült fel. Próbálja meg újra**. Megoldásához kattintson **alkalmaz** vagy **alaphelyzetbe** fel adatokat a kockázatos felhasználókat és a képernyő tetején.
 
-
-## <a name="risky-sign-ins-report"></a>Kockázatos bejelentkezési jelentések
+## <a name="risky-sign-ins-report-known-issues"></a>Ismert problémák a kockázatos bejelentkezések jelentés
 
 **Oldja meg** egy kockázati esemény állítja az állapot **felhasználók átadott kockázatalapú házirend által vezérelt MFA**.
-
-**Alaphelyzetbe** a a **kockázatos bejelentkezések** jelentés nem szünteti meg az értékét a **kockázati esemény típusa**.
 
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések

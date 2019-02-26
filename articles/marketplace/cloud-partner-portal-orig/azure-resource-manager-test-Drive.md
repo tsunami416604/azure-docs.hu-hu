@@ -14,19 +14,18 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: b7cbd69a4551605b71930a23f837b467177e3cc3
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: a6ab19207b2c98064f99914e16cdde85133bfd96
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451357"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821764"
 ---
-<a name="azure-resource-manager-test-drive"></a>Az Azure Resource Manager kipróbálása
-=================================
+# <a name="azure-resource-manager-test-drive"></a>Az Azure Resource Manager kipróbálása
 
 Ez a cikk a kiadók, akik az ajánlatot az Azure piactéren, illetve akik az appsource-on rendelkezik, de létre szeretné hozni a Test Drive csak Azure-erőforrásokkal való szól.
 
-Egy Azure Resource Manager-(Azure Resource Manager) sablont az Azure-erőforrások, hogy tervezzen ajánlott, amelyek a megoldás kódolt tárolója. Ha még nem ismeri a milyen egy Resource Manager-sablon, olvassa a [ARM-sablonok ismertetése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) és [ARM-sablonok készítése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) , hogy már tudja, hogyan hozhat létre, és tesztelje a saját sablonjait.
+Egy Azure Resource Manager (Resource Manager) sablont az Azure-erőforrások, hogy tervezzen ajánlott, amelyek a megoldás kódolt tárolója. Ha még nem ismeri a milyen egy Resource Manager-sablon, olvassa a [understanding Resource Manager-sablonok](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) és [Resource Manager-sablonok készítése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) , hogy tudja, hogyan összeállításához és teszteléséhez a saját sablonjait.
 
 Test Drive funkciója, hogy a megadott Resource Manager-sablon vesz igénybe, és lehetővé teszi egy erőforrás-csoportba a Resource Manager-sablon a szükséges összes erőforrást üzembe helyezése.
 
@@ -36,8 +35,7 @@ Ha hozhat létre egy Azure Resource Manager Test Drive választja, a követelmé
 - Az összes szükséges metaadatokat és a Test Drive engedélyezéséhez beállításainak konfigurálása.
 - Tegye közzé újra az ajánlatot a Test Drive engedélyezve van.
 
-<a name="how-to-build-an-azure-resource-manager-test-drive"></a>Hogyan hozhat létre egy Azure Resource Manager kipróbálása
-------------------------------
+## <a name="how-to-build-an-azure-resource-manager-test-drive"></a>Hogyan hozhat létre egy Azure Resource Manager kipróbálása
 
 A legfontosabb eleme egy Azure Resource Manager Test Drive létrehozásával kapcsolatos, hogy megadhatja, milyen eset az ügyfelek tapasztalhat. Ön egy tűzfal terméket, és szeretné bemutató arról, hogy kezeli a parancsfájl-injektálási támadások? Azok a tárolási termék, és szeretné bemutató milyen gyors és egyszerű a megoldás akkor tömöríti a fájlokat?
 
@@ -47,8 +45,7 @@ A tűzfal példát folytatva, az architektúra lehet, hogy van szüksége egy ny
 
 Miután a kívánt csomagot, az erőforrások rendelkezik lett tervezve, most származik az írási és a Test Drive Resource Manager-sablon létrehozása.
 
-<a name="writing-test-drive-resource-manager-templates"></a>Írás a Test Drive Resource Manager-sablonok
---------------------------------
+## <a name="writing-test-drive-resource-manager-templates"></a>Írás a Test Drive Resource Manager-sablonok
 
 Egy teljesen automatizált módban, és miatt, amely futtatja a test Drive központi telepítések, a Test Drive-sablonok az alábbiakban néhány korlátozás.
 
@@ -62,24 +59,26 @@ Azonban Test Drive módban működik egy teljesen automatikus, emberi beavatkoz�
 
 Használhat bármilyen érvényes nevet a paramétereket, Test Drive paraméter kategória felismeri a metaadat-típusú érték. Ön **kell adnia minden sablonparaméterhez metaadattípus**, ellenkező esetben a sablon nem felel meg érvényesítési:
 
-    "parameters": {
-      ...
-      "username": {
-        "type": "string",
-        "metadata": {
-          "type": "username"
-        }
-      },
-      ...
+```json
+"parameters": {
+  ...
+  "username": {
+    "type": "string",
+    "metadata": {
+      "type": "username"
     }
+  },
+  ...
+}
+```
 
 Emellett az is fontos megjegyezni, hogy **minden paraméter megadása nem kötelező**, ha nem így\'t szeretné használni, megosztához\'t kell.
 
 ### <a name="accepted-parameter-metadata-types"></a>Elfogadott paramétertípusok metaadatok
 
 | Metaadat típusa   | Paraméter típusa  | Leírás     | Mintaérték    |
-|---|---|---|---|---|
-| **BaseUri**     | sztring          | Alap URI-t, a központi telepítési csomag| [https://\<\..\>.blob.core.windows.net/\<\..\>](#) |
+|---|---|---|---|
+| **BaseUri**     | sztring          | Alap URI-t, a központi telepítési csomag| https:\//\<\..\>.blob.core.windows.net/\<\..\> |
 | **felhasználónév**    | sztring          | Új véletlenszerű felhasználónevet.| admin68876      |
 | **jelszó**    | a biztonságos karakterláncot    | Új véletlenszerű jelszó | LP! ACS\^2kh     |
 | **A munkamenet-azonosító**   | sztring          | Egyedi Azonosítóját (GUID) Test Drive-munkamenet    | b8c8693e-5673-449c-badd-257a405a6dee |
@@ -88,40 +87,46 @@ Emellett az is fontos megjegyezni, hogy **minden paraméter megadása nem kötel
 
 Test Drive inicializálja ezt a paramétert egy **alap Uri** a központi telepítési csomag, így minden fájlhoz, a csomagba foglalt Uri létrehozásához is használhatja ezt a paramétert.
 
-    "parameters": {
-      ...
-      "baseuri": {
-        "type": "string",
-        "metadata": {
-          "type": "baseuri",
-          "description": "Base Uri of the deployment package."
-        }
-      },
-      ...
+```json
+"parameters": {
+  ...
+  "baseuri": {
+    "type": "string",
+    "metadata": {
+      "type": "baseuri",
+      "description": "Base Uri of the deployment package."
     }
+  },
+  ...
+}
+```
 
 A sablon belül a paraméter használatával hozhat létre egy URI-t minden fájlhoz, a Test Drive központi telepítési csomag. Az alábbi példa bemutatja, hogyan hozhat létre a társított sablon Uri:
 
-    "templateLink": {
-      "uri": "[concat(parameters('baseuri'),'templates/solution.json')]",
-      "contentVersion": "1.0.0.0"
-    }
+```json
+"templateLink": {
+  "uri": "[concat(parameters('baseuri'),'templates/solution.json')]",
+  "contentVersion": "1.0.0.0"
+}
+```
 
 #### <a name="username"></a>felhasználónév
 
 Test Drive inicializálja ezt a paramétert, amely új véletlenszerű felhasználónévvel:
 
-    "parameters": {
-      ...
-      "username": {
-        "type": "string",
-        "metadata": {
-          "type": "username",
-          "description": "Solution admin name."
-        }
-      },
-      ...
+```json
+"parameters": {
+  ...
+  "username": {
+    "type": "string",
+    "metadata": {
+      "type": "username",
+      "description": "Solution admin name."
     }
+  },
+  ...
+}
+```
 
 Mintaérték:
 
@@ -133,17 +138,19 @@ A megoldás véletlenszerű vagy állandó felhasználónevek is használhatja.
 
 Test Drive inicializálja a paraméternél adja meg az új véletlenszerű jelszó:
 
-    "parameters": {
-      ...
-      "password": {
-        "type": "securestring",
-        "metadata": {
-          "type": "password",
-          "description": "Solution admin password."
-        }
-      },
-      ...
+```json
+"parameters": {
+  ...
+  "password": {
+    "type": "securestring",
+    "metadata": {
+      "type": "password",
+      "description": "Solution admin password."
     }
+  },
+  ...
+}
+```
 
 Mintaérték:
 
@@ -155,17 +162,19 @@ A megoldás állandó vagy véletlenszerű jelszavakat is használhatja.
 
 Próbálja ki ezt a paramétert inicializálása jelölő Test Drive munkamenet-azonosító egy egyedi GUID:
 
-    "parameters": {
-      ...
-      "sessionid": {
-        "type": "string",
-        "metadata": {
-          "type": "sessionid",
-          "description": "Unique Test Drive session id."
-        }
-      },
-      ...
+```json
+"parameters": {
+  ...
+  "sessionid": {
+    "type": "string",
+    "metadata": {
+      "type": "sessionid",
+      "description": "Unique Test Drive session id."
     }
+  },
+  ...
+}
+```
 
 Mintaérték:
 
@@ -179,12 +188,14 @@ Egyes Azure-erőforrások, például a storage-fiókok vagy DNS-nevek, globális
 
 Ez azt jelenti, hogy minden alkalommal, amikor a Test Drive üzembe helyezte a Resource Manager-sablon, létrehoz egy **egy egyedi nevet az új erőforráscsoport** összes annak\' erőforrásokat. Ezért azt kell használnia a [uniquestring](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions#uniquestring) függvény és a változók nevében erőforráscsoporton azonosítókat létrehozni véletlenszerű egyedi értékeket:
 
-      "variables": {
-      ...
-      "domainNameLabel": "[concat('contosovm',uniquestring(resourceGroup().id))]",
-      "storageAccountName": "[concat('contosodisk',uniquestring(resourceGroup().id))]",
-      ...
-    }
+```json
+"variables": {
+  ...
+  "domainNameLabel": "[concat('contosovm',uniquestring(resourceGroup().id))]",
+  "storageAccountName": "[concat('contosodisk',uniquestring(resourceGroup().id))]",
+  ...
+}
+```
 
 Győződjön meg arról, hogy a paraméter vagy változó karakterlánc összefűzésére (\'contosovm\') és egy egyedi karakterlánc-kimenet (\'resourceGroup () .id\'), mert ez garantálja, hogy az egyedi-e, és a megbízhatóság az egyes.
 
@@ -198,41 +209,45 @@ Elérhetővé teheti, Test Drive különböző Azure-régióban. A cél, hogy le
 
 Test Drive létrehoz egy példányt a labor létrehozása, ha mindig létrehoz egy erőforráscsoportot a felhasználó által a régiót válassza, és végrehajtja a központi telepítési sablont a csoport a környezetben. Így a sablon ki kell választania a központi telepítési helye az erőforráscsoport:
 
-    "variables": {
-      ...
-      "location": "[resourceGroup().location]",
-      ...
-    }
+```json
+"variables": {
+  ...
+  "location": "[resourceGroup().location]",
+  ...
+}
+```
 
 Majd ezen a helyen minden erőforrás egy adott labor-példány:
 
-    "resources": [
-      {
-        "type": "Microsoft.Storage/storageAccounts",
-        "location": "[variables('location')]",
-        ...
-      },
-      {
-        "type": "Microsoft.Network/publicIPAddresses",
-        "location": "[variables('location')]",
-        ...
-      },
-      {
-        "type": "Microsoft.Network/virtualNetworks",
-        "location": "[variables('location')]",
-        ...
-      },
-      {
-        "type": "Microsoft.Network/networkInterfaces",
-        "location": "[variables('location')]",
-        ...
-      },
-      {
-        "type": "Microsoft.Compute/virtualMachines",
-        "location": "[variables('location')]",
-        ...
-      }
-    ]
+```json
+"resources": [
+  {
+    "type": "Microsoft.Storage/storageAccounts",
+    "location": "[variables('location')]",
+    ...
+  },
+  {
+    "type": "Microsoft.Network/publicIPAddresses",
+    "location": "[variables('location')]",
+    ...
+  },
+  {
+    "type": "Microsoft.Network/virtualNetworks",
+    "location": "[variables('location')]",
+    ...
+  },
+  {
+    "type": "Microsoft.Network/networkInterfaces",
+    "location": "[variables('location')]",
+    ...
+  },
+  {
+    "type": "Microsoft.Compute/virtualMachines",
+    "location": "[variables('location')]",
+    ...
+  }
+]
+```
 
 Győződjön meg arról, hogy engedélyezett-e az előfizetés tulajdonosaként tulajdonképpen kiválasztja régióban üzembe helyezni kívánt erőforrások üzembe helyezéséhez, szüksége. Szüksége győződjön meg arról, hogy a virtuálisgép-rendszerképek érhetők el szeretné engedélyezni, minden régióban, ellenkező esetben a központi telepítési sablont nem működnek az egyes régiókban.
 
@@ -246,20 +261,22 @@ Nem vonatkoznak minden olyan korlátozások kapcsolatos sablon következő kimen
 
 Példa:
 
-    "outputs": {
-      "Host Name": {
-        "type": "string",
-        "value": "[reference(variables('pubIpId')).dnsSettings.fqdn]"
-      },
-      "User Name": {
-        "type": "string",
-        "value": "[parameters('adminName')]"
-      },
-      "Password": {
-        "type": "string",
-        "value": "[parameters('adminPassword')]"
-      }
-    }
+```json
+"outputs": {
+  "Host Name": {
+    "type": "string",
+    "value": "[reference(variables('pubIpId')).dnsSettings.fqdn]"
+  },
+  "User Name": {
+    "type": "string",
+    "value": "[parameters('adminName')]"
+  },
+  "Password": {
+    "type": "string",
+    "value": "[parameters('adminPassword')]"
+  }
+}
+```
 
 ### <a name="subscription-limits"></a>Előfizetés korlátai
 
@@ -277,20 +294,18 @@ A közzétételi hitelesítő során a Test Drive unzips a központi telepítés
 
 | Package.zip                       | Test Drive blob-tároló         |
 |---|---|
-Main-template.json                | [https://\<\.... \>.blob.core.windows.net/\<\.... \>/main-template.json](#)  |
- Templates/Solution.JSON           | [https://\<\.... \>.blob.core.windows.net/\<\.... \>/templates/solution.json](#) |
-| scripts/warmup.ps1                | [https://\<\.... \>.blob.core.windows.net/\<\.... \>/scripts/warmup.ps1](#)  |
+| Main-template.json                | https:\//\<\.... \>.blob.core.windows.net/\<\.... \>/main-template.json  |
+| Templates/Solution.JSON           | https:\//\<\...\>.blob.core.windows.net/\<\...\>/templates/solution.json |
+| scripts/warmup.ps1                | https:\//\<\.... \>.blob.core.windows.net/\<\.... \>/scripts/warmup.ps1  |
 
 
 Ez a blobtároló alap URI-t egy URI-nevezzük. Minden változatban a labor létrehozása a saját blobtárolót rendelkezik, és ezért a minden változatban a labor létrehozása a saját alap Uri tartozik. Test Drive továbbíthatja egy alap Uri-ját a kicsomagolt központi telepítési csomagot a sablonhoz a sablon paraméterei.
 
-<a name="transforming-template-examples-for-test-drive"></a>A Test Drive alkalmazásán át a sablon példák
----------------------------------------------
+## <a name="transforming-template-examples-for-test-drive"></a>A Test Drive alkalmazásán át a sablon példák
 
 A folyamat ne tudják bekapcsolni az architektúra az erőforrások Test Drive Resource Manager-sablonnal történő ijesztőnek tűnhet. Segítse a folyamat megkönnyítése, azt\'tenni példákkal arról, hogyan legjobb [aktuális központi telepítési sablonok itt átalakítása](./transforming-examples-for-test-drive.md).
 
-<a name="how-to-publish-a-test-drive"></a>A Test Drive közzététele
----------------------------
+## <a name="how-to-publish-a-test-drive"></a>A Test Drive közzététele
 
 Most, hogy a beépített Test Drive, ez a szakasz végigvezeti Önt a mezőkben ahhoz, hogy a Test Drive közzététele sikertelen.
 
@@ -394,8 +409,7 @@ Adott használjuk az alkalmazás üzembe helyezéséhez az előfizetéshez, hozz
 
 ![A kulcsok az Azure AD-alkalmazás látható](./media/azure-resource-manager-test-drive/subdetails8.png)
 
-<a name="next-steps"></a>További lépések
-----------
+## <a name="next-steps"></a>További lépések
 
 Most, hogy az összes a Test Drive mezőket kitölteni, mennek keresztül és **tegye közzé újra** az ajánlatot. A Test Drive hitelesítő letelte után meg kell haladnia egy alaposan tesztelje az ügyfélélmény a **előzetes** az Ön ajánlatát. Indítsa el a Test Drive a felhasználói felületen, majd nyissa meg az Azure előfizetését az Azure Portalon, és győződjön meg arról, hogy a Tesztverzió rendszer teljes mértékben telepíti megfelelően.
 

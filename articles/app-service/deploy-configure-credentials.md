@@ -13,23 +13,23 @@ ms.topic: article
 ms.date: 11/22/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: a92440e97f47f0778eb73b81b239b45476d4e733
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: d89197fad8354b0bae41ab67b9bb1dfac0a179eb
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53551521"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820297"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Az Azure App Service üzembe helyezési hitelesítő adatok konfigurálása
 [Az Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) hitelesítő adatok kétféle [Git helyi üzemelő példányának](deploy-local-git.md) és [FTP/S üzembe helyezési](deploy-ftp.md). Ezek nem azonosak az Azure Active Directory hitelesítő adatként.
 
-* **A felhasználói szintű hitelesítő adatokat**: a teljes Azure-fiók hitelesítő adatait egy készletét. App Service-ben minden olyan alkalmazáshoz, minden előfizetéshez, amely az Azure-fiók rendelkezik hozzáféréssel a üzembe helyezéséhez használható. Az alapértelmezett készlet, amely a portálon grafikus felhasználói Felülettel van illesztett (például a **áttekintése** és **tulajdonságok** az alkalmazás [erőforráslapján](../azure-resource-manager/resource-group-portal.md#manage-resources)). Amikor egy felhasználó hozzáférést kap alkalmazás szerepköralapú hozzáférés-vezérlés (RBAC) vagy társfelügyeletű engedélyek, hogy a felhasználó használhatja azt saját felhasználói szintű hitelesítő adatokat mindaddig, amíg a hozzáférést visszavonták. Ne ossza meg ezeket a hitelesítő adatokat más Azure-felhasználóval.
+* **A felhasználói szintű hitelesítő adatokat**: a teljes Azure-fiók hitelesítő adatait egy készletét. App Service-ben minden olyan alkalmazáshoz, minden előfizetéshez, amely az Azure-fiók rendelkezik hozzáféréssel a üzembe helyezéséhez használható. Az alapértelmezett készlet, amely a portálon grafikus felhasználói Felülettel van illesztett (például a **áttekintése** és **tulajdonságok** az alkalmazás [erőforráslapján](../azure-resource-manager/manage-resources-portal.md#manage-resources)). Amikor egy felhasználó hozzáférést kap alkalmazás szerepköralapú hozzáférés-vezérlés (RBAC) vagy társfelügyeletű engedélyek, hogy a felhasználó használhatja azt saját felhasználói szintű hitelesítő adatokat mindaddig, amíg a hozzáférést visszavonták. Ne ossza meg ezeket a hitelesítő adatokat más Azure-felhasználóval.
 
 * **Az alkalmazásszintű hitelesítő adatok**: hitelesítőadat minden alkalmazáshoz. Csak az alkalmazás üzembe helyezéséhez használható. A hitelesítő adatokat az egyes alkalmazások automatikusan generált alkalmazás létrehozásakor. Manuálisan nem konfigurálható, de bármikor visszaállíthatja. Adható hozzáférés (RBAC) az alkalmazásszintű hitelesítő adatokat a felhasználók, a felhasználónak kell lennie közreműködői vagy újabb, az alkalmazást. Olvasói nem tehet közzé, és nem fér hozzá ezeket a hitelesítő adatokat.
 
 ## <a name="userscope"></a>Állítsa be, és a felhasználói szintű hitelesítő adatok alaphelyzetbe állítása
 
-Konfigurálhatja a felhasználói szintű hitelesítő adatok használatát bármely olyan alkalmazásban [erőforráslapján](../azure-resource-manager/resource-group-portal.md#manage-resources). Függetlenül attól hogy mely alkalmazás konfigurálja ezeket a hitelesítő adatokat, vonatkozik minden alkalmazásra és az Azure-fiókjával minden előfizetés esetén. 
+Konfigurálhatja a felhasználói szintű hitelesítő adatok használatát bármely olyan alkalmazásban [erőforráslapján](../azure-resource-manager/manage-resources-portal.md#manage-resources). Függetlenül attól hogy mely alkalmazás konfigurálja ezeket a hitelesítő adatokat, vonatkozik minden alkalmazásra és az Azure-fiókjával minden előfizetés esetén. 
 
 A felhasználói szintű hitelesítő adatok megadása:
 

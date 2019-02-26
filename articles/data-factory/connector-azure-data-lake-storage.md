@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 02/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 0f38902a166de8d623106849a124b8e2e5cceb5c
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: ac9bb6969e7771e1570670c83c88ddc892dc759e
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674794"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823586"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen2-using-azure-data-factory"></a>Másolja az adatokat, vagy az Azure Data Lake Storage Gen2 Azure Data Factory használatával
 
@@ -98,10 +98,16 @@ Egyszerű szolgáltatásnév hitelesítése használatához kövesse az alábbi 
     - Alkalmazáskulcs
     - Bérlőazonosító
 
-2. Adja meg a szolgáltatás egyszerű megfelelő engedéllyel az Azure storage-ban.
+2. Adja meg a szolgáltatás egyszerű megfelelő engedéllyel.
 
-    - **Forrásként**, az Access (IAM) vezérlőelemet, adja meg legalább **Storage-Blobadatok olvasója** szerepkör.
-    - **Fogadóként**, az Access (IAM) vezérlőelemet, adja meg legalább **Storage-Blobadatok Közreműködője** szerepkör.
+    - **Forrásként**, a Storage Explorerben, adjon meg legalább **Olvasás + végrehajtás** listát, és másolja a fájlokat a mappákban és almappáiban, vagy biztosítson engedélyt **olvasási** engedéllyel egy fájl másolása. Másik lehetőségként a hozzáférés-vezérlés (IAM), adja meg legalább **Storage-Blobadatok olvasója** szerepkör.
+    - **Fogadóként**, a Storage Explorerben, adjon meg legalább **írás + végrehajtás** engedély szükséges gyermekelemek létrehozásához a mappában. Másik lehetőségként a hozzáférés-vezérlés (IAM), adja meg legalább **Storage-Blobadatok Közreműködője** szerepkör.
+
+>[!NOTE]
+>A lista kezdve a legfelső szintű mappák, be kell állítania a szolgáltatásnév az engedély megadása az engedély **gyökér szintű "Execute" engedéllyel rendelkező** vagy IAM engedéllyel. Ez igaz, ha használja a:
+>- **Adatok másolása eszköz** a szerző másolási folyamat.
+>- **Data Factory felhasználói felülete** tesztelheti a kapcsolatot, és lépjen a mappák létrehozása alatt. 
+>Ha rendelkezik a legfelső szintű engedély megadására szempont, kihagyhatja kapcsolat tesztelése és a bemeneti elérési út manuális létrehozása alatt. A másolási tevékenység továbbra is működni fog, amíg a egyszerű szolgáltatást kell másolni a fájlokat a megfelelő engedéllyel rendelkező kapnak.
 
 Ezek a Tulajdonságok támogatottak társított szolgáltatást:
 
@@ -146,10 +152,16 @@ Felügyelt identitások Azure-erőforrások hitelesítés használatához köves
 
 1. [Data factory által felügyelt azonosító adatok lekéréséhez](data-factory-service-identity.md#retrieve-managed-identity) másolásával "SZOLGÁLTATÁSIDENTITÁS Alkalmazásazonosítója" az előállító együtt létrehozott értékét.
 
-2. Adja meg az Azure storage-felügyelt identitásnak megfelelő jogosultságot. 
+2. Adja meg a felügyelt identitás megfelelő engedéllyel. 
 
-    - **Forrásként**, az Access (IAM) vezérlőelemet, adja meg legalább **Storage-Blobadatok olvasója** szerepkör.
-    - **Fogadóként**, az Access (IAM) vezérlőelemet, adja meg legalább **Storage-Blobadatok Közreműködője** szerepkör.
+    - **Forrásként**, a Storage Explorerben, adjon meg legalább **Olvasás + végrehajtás** listát, és másolja a fájlokat a mappákban és almappáiban, vagy biztosítson engedélyt **olvasási** engedéllyel egy fájl másolása. Másik lehetőségként a hozzáférés-vezérlés (IAM), adja meg legalább **Storage-Blobadatok olvasója** szerepkör.
+    - **Fogadóként**, a Storage Explorerben, adjon meg legalább **írás + végrehajtás** engedély szükséges gyermekelemek létrehozásához a mappában. Másik lehetőségként a hozzáférés-vezérlés (IAM), adja meg legalább **Storage-Blobadatok Közreműködője** szerepkör.
+
+>[!NOTE]
+>Listára kezdve a legfelső szintű mappák, be kell állítania az engedély az engedély megadása a felügyelt identitás **gyökér szintű "Execute" engedéllyel rendelkező** vagy IAM engedéllyel. Ez igaz, ha használja a:
+>- **Adatok másolása eszköz** a szerző másolási folyamat.
+>- **Data Factory felhasználói felülete** tesztelheti a kapcsolatot, és lépjen a mappák létrehozása alatt. 
+>Ha rendelkezik a legfelső szintű engedély megadására szempont, kihagyhatja kapcsolat tesztelése és a bemeneti elérési út manuális létrehozása alatt. A másolási tevékenység továbbra is működni fog, amíg a felügyelt identitást kapnak a átmásolni a fájlokat a megfelelő engedéllyel rendelkező.
 
 Ezek a Tulajdonságok támogatottak társított szolgáltatást:
 

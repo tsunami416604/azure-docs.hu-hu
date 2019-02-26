@@ -8,12 +8,12 @@ ms.topic: include file for PowerShell for Azure DNS
 ms.date: 03/21/2018
 ms.author: subsarma
 ms.custom: include file for PowerShell for Azure DNS
-ms.openlocfilehash: 9c0874199a21f7357ae387e7ac4a26267c6635fc
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: f9f348b19275050c99938ed616a98c4cc6f0c80e
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56078557"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56825825"
 ---
 ## <a name="set-up-azure-powershell-for-azure-dns"></a>Az Azure PowerShell beállítása az Azure DNS-hez
 
@@ -52,7 +52,7 @@ Install-Module -Name AzureRM.Network -Force
 
 ### <a name="sign-in-to-your-azure-account"></a>Jelentkezzen be az Azure-fiókjába
 
-Nyissa meg a PowerShell konzolt, és csatlakozzon a fiókjához. További információ: [A PowerShell használata a Resource Managerrel](../articles/azure-resource-manager/powershell-azure-resource-manager.md).
+Nyissa meg a PowerShell konzolt, és csatlakozzon a fiókjához. További információkért lásd: [jelentkezzen be a](/azure/install-az-ps.md?view=azps-1.2.0#sign-in).
 
 ```powershell
 Connect-AzureRmAccount

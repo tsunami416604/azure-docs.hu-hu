@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: sogup
-ms.openlocfilehash: 566faaef4e91237bd0a0f915ea39f4bd389120d8
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 63a0e5bd3db6251e361d9dd03acb538556e811ca
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593080"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804986"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Továbbfejlesztett biztonsági mentés, és állítsa vissza a teljesítmény az Azure Backup azonnali visszaállítási képesség
 
@@ -49,6 +49,7 @@ Alapértelmezés szerint a pillanatfelvételek megmaradnak két napig. Ez a funk
 * Növekményes pillanatképek lapblobként tárolt. Nem felügyelt lemezeket használó összes felhasználó a saját helyi tárfiókban tárolt pillanatképek díjat számítunk fel. Mivel a visszaállítási pont gyűjtemények által felügyelt virtuális gép biztonsági mentéseinek használt blobpillanatképeket használja az alapul szolgáló tárolási szinten, a felügyelt lemezek látni fogja a blob-pillanatkép díjszabás megfelelő költségeket és a növekményes.
 * Prémium szintű tárfiókok esetén az azonnali helyreállítási pontok száma legfeljebb 10 TB-os felé készített pillanatképeket lefoglalt terület.
 * Lehetővé teszi a visszaállítási igényeinek megfelelően pillanatképek megőrzésének konfigurálása kap. A követelmény, attól függően beállíthatja a pillanatkép megőrzési legalább egy napot a biztonsági mentési házirend panel, kövesse az alábbi utasításokat. Ez segíthet csökkenthetők a költségek pillanatképek megőrzésének, ha nem végezhet helyreállítást gyakran.
+* Ez a frissítés után az azonnali helyreállítás egy irányt frissítése, már nem válthat vissza.
 
 
 >[!NOTE]
@@ -77,7 +78,7 @@ Másik lehetőségként megnyithatja **tulajdonságok** beolvasni a tároló old
 
 
 ## <a name="configure-snapshot-retention-using-azure-portal"></a>Az Azure portal használatával pillanatképek megőrzésének konfigurálása
-Ez a beállítás érhető el jelenleg az USA nyugati középső Régiója, Dél-India és Kelet-Ausztrália.
+A jelenleg elérhető **USA nyugati középső Régiója**, **Dél-India** és **Kelet-Ausztrália**.
 
 A frissített felhasználókhoz, az Azure Portalon látható egy új funkció a mezőt a **virtuális gép biztonsági mentési szabályzat** panel a **azonnali visszaállítása** szakaszban. Módosíthatja a pillanatkép megőrzési időtartamot a **virtuális gép biztonsági mentési szabályzat** panel az összes virtuális gép az adott biztonsági mentési szabályzathoz társított.
 

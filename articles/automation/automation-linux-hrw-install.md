@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e0aaddb841687718295e09e64b23d9cefa9246fd
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 29ca8c4114d48fa0d3756930354660712b1b35b3
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436110"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820416"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Üzembe helyezése egy hibrid Runbook-feldolgozója Linuxra
 
@@ -62,7 +62,7 @@ Mielőtt folytatja a műveletet, vegye figyelembe a Log Analytics-munkaterülete
 
 1. Engedélyezze a **Automation hibrid feldolgozó** megoldás az Azure-ban az alábbi módszerek egyikének használatával:
 
-   * Hozzáadás a **Automation hibrid feldolgozó** megoldás az előfizetéséhez, a következő eljárás használatával [adja hozzá a Log Analytics felügyeleti megoldások a munkaterülethez](../log-analytics/log-analytics-add-solutions.md).
+   * Hozzáadás a **Automation hibrid feldolgozó** megoldás az előfizetéséhez, a következő eljárás használatával [hozzáadása az Azure Monitor naplózza a megoldások a munkaterülethez](../log-analytics/log-analytics-add-solutions.md).
    * Futtassa a következő parancsmagot:
 
         ```azurepowershell-interactive
@@ -87,7 +87,7 @@ Mielőtt folytatja a műveletet, vegye figyelembe a Log Analytics-munkaterülete
 
 ## <a name="turning-off-signature-validation"></a>Aláírás-ellenőrzés kikapcsolása
 
-Alapértelmezés szerint a Linux hibrid Runbook-feldolgozók szükséges aláírás-ellenőrzése. Ha egy feldolgozó egy előjel nélküli runbook futtatja, arról, hogy a "aláírás-ellenőrzése nem sikerült." hibaüzenet jelenik meg Aláírás-ellenőrzése ki szeretné kapcsolni, futtassa a következő parancsot. A második paraméter cserélje le a Log Analytics-munkaterület azonosítóját.
+Alapértelmezés szerint a Linux hibrid Runbook-feldolgozók szükséges aláírás-ellenőrzése. Ha egy feldolgozó egy előjel nélküli runbook futtatja, arról, hogy a "aláírás-ellenőrzése nem sikerült." hibaüzenet jelenik meg Aláírás-ellenőrzése ki szeretné kapcsolni, futtassa a következő parancsot. A második paraméter cserélje le a log analytics munkaterület azonosítóját.
 
  ```bash
  sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --false <LogAnalyticsworkspaceId>

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: b0cd20278287b41dd953c64044b705aa2dba7557
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: a8856bd46f516aa3c64965648d4f23b9ba665b1b
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319406"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820025"
 ---
-# <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Tiltsa le a vendég operációs rendszer tűzfala az Azure virtuális Gépen
+# <a name="disable-the-guest-os-firewall-in-azure-vm"></a>A vendég operációs rendszer tűzfalának letiltása az Azure-beli virtuális gépen
 
 Ez a cikk egy hivatkozás, amelyben azt gyanítja, hogy a vendég operációs rendszer tűzfala van-e egy virtuális géphez (VM) részleges vagy teljes forgalmat szűrő helyzetekben. Ez akkor fordulhat elő, ha szándékosan változás által okozott sikertelen RDP-kapcsolatok a tűzfalon.
 
@@ -33,7 +33,7 @@ Az ebben a cikkben leírt folyamat célja, hogy a valódi problémát, és hogya
 
 Ha a virtuális gép online állapotban, és a egy másik virtuális Géphez ugyanazon a virtuális hálózaton elérhetők, ezek a megoldások teheti a virtuális gép használatával.
 
-#### <a name="mitigation-1-custom-script-extension-or-run-command-feature"></a>1. megoldás: Egyéni Szkriptbővítményt vagy futtatása paranccsal funkció
+#### <a name="mitigation-1-custom-script-extension-or-run-command-feature"></a>1. megoldás: Egyéni szkriptek futtatására szolgáló bővítmény vagy futtatása paranccsal funkció
 
 Ha rendelkezik egy működő Azure-ügynököt, akkor használhatja [egyéni szkriptek futtatására szolgáló bővítmény](../extensions/custom-script-windows.md) vagy a [parancsok futtatása](../windows/run-command.md) távolról futtassa az alábbi parancsfájlok a szolgáltatás (csak Resource Manager virtuális gépek esetén).
 
@@ -54,7 +54,7 @@ Ha rendelkezik egy működő Azure-ügynököt, akkor használhatja [egyéni szk
 >   ```
 >   Azonban, amint a rendszer újra alkalmazza a házirendet, meg fogjuk kell problémaelhárító kívül a távoli munkamenetet. Az állandó a probléma javítása, hogy az ezen a számítógépen alkalmazott házirend módosítása.
 
-#### <a name="mitigation-2-remote-powershell"></a>2. megoldás: Távoli PowerShell
+#### <a name="mitigation-2-remote-powershell"></a>2. megoldás: Remote PowerShell
 
 1.  Kapcsolódás virtuális Géphez a virtuális gép RDP-kapcsolaton keresztül nem éri el ugyanazon a virtuális hálózaton található.
 
@@ -70,7 +70,7 @@ Ha rendelkezik egy működő Azure-ügynököt, akkor használhatja [egyéni szk
     ```
 
 > [!Note]
-> A tűzfalon keresztül csoportházirend-objektum be van állítva, ha ez a módszer nem működnek, mivel ez a parancs csak a helyi beállításjegyzék-bejegyzések változik. Ha olyan házirend van beállítva, az felül fogja írni a módosítás. 
+> A tűzfalon keresztül csoportházirend-objektum be van állítva, ha ez a módszer nem működnek, mivel ez a parancs csak a helyi beállításjegyzék-bejegyzések változik. Ha olyan házirend van beállítva, az felül fogja írni a módosítás. 
 
 #### <a name="mitigation-3-pstools-commands"></a>3. megoldás: PSTools parancsok
 
@@ -86,7 +86,7 @@ Ha rendelkezik egy működő Azure-ügynököt, akkor használhatja [egyéni szk
     psservice restart mpssvc
     ```
 
-#### <a name="mitigation-4-remote-registry"></a>4. megoldás: A távoli beállításjegyzék 
+#### <a name="mitigation-4-remote-registry"></a>4. megoldás: Remote Registry 
 
 Kövesse az alábbi lépéseket a használandó [távoli beállításjegyzék](https://support.microsoft.com/help/314837/how-to-manage-remote-access-to-the-registry).
 

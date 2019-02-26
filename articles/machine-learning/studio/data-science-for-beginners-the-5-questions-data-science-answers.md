@@ -5,17 +5,17 @@ description: Adatelemzés kezdőknek van megtanítja 5 rövid videót, az alapve
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 01/03/2018
-ms.openlocfilehash: 93af2e283a1dd1ec11541087b33b3303c13364cc
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 4483fc82ad4bf935153c76922fbece84c6ca2ea8
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491994"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816903"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Adatelemzés kezdőknek – 1. Videó: A 5 kérdés adatelemzés választ ad
 Adatelemzés a gyors bevezetést *adatelemzés kezdőknek* az öt rövid videóban a felső adatszakértő. Ezeket a videókat egyszerű, de hasznos,-e Önt érdeklő adatelemzésre vagy dolgozik, az adatszakértők.
@@ -136,4 +136,4 @@ Megerősítő tanulási algoritmusokat, próbálkozást, go, képzés adatgyűjt
 
 ## <a name="next-steps"></a>További lépések
 * [Egy első adatelemzési kísérlet a Machine Learning Studio kipróbálása](create-experiment.md)
-* [Bevezetés a gépi tanulás a Microsoft Azure](what-is-machine-learning.md)
+* [Bevezetés a gépi tanulás a Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)

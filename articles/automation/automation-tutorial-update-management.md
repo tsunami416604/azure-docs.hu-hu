@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/04/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: bd7072ce8212366bf3d8a0a9e0a30000debea2ea
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: fbca620fca1aeb53acc9bd70561e783b49ff1a60
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434614"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822350"
 ---
 # <a name="manage-windows-updates-by-using-azure-automation"></a>Windows-frissítések kezelése az Azure Automationnel
 
@@ -66,7 +66,7 @@ Az **Update Management** adja meg a használni kívánt helyet, Log Analytics-mu
 
 ![Az Update Management megoldás engedélyezése ablak](./media/automation-tutorial-update-management/manageupdates-update-enable.png)
 
-A megoldás engedélyezése néhány percet is igénybe vehet. Ez idő alatt ne zárja be a böngészőablakot. A megoldás engedélyezését követően a virtuális gép hiányzó frissítéseivel kapcsolatos adatok elkezdenek beérkezni a Log Analytics szolgáltatásba. Az adatok legalább 30 perc és legfeljebb 6 óra múlva állnak készen az elemzésre.
+A megoldás engedélyezése néhány percet is igénybe vehet. Ez idő alatt ne zárja be a böngészőablakot. A megoldás engedélyezését követően hiányzó a virtuális gép frissítéseivel kapcsolatos adatok elkezdenek beérkezni a Azure Monitor naplóira. Az adatok legalább 30 perc és legfeljebb 6 óra múlva állnak készen az elemzésre.
 
 ## <a name="view-update-assessment"></a>A frissítésfelmérés megtekintése
 
@@ -137,13 +137,13 @@ Az **Új frissítéstelepítés** képernyőn adja meg a következő informáci�
 
 * **A csoportok frissítése (előzetes verzió)**: Egy előfizetés, erőforráscsoport, helyek és címkék felvenni az üzembe helyezés az Azure-beli virtuális dinamikus csoportot hozhat létre kombinációja alapján lekérdezést határoz meg. További tudnivalókért lásd: [dinamikus csoportok](automation-update-management.md#using-dynamic-groups)
 
-* **Frissítendő gépek**: Válassza ki, mentett keresést, importált csoporthoz, vagy a legördülő listából válassza ki a gépet, és válassza ki az egyes gépek. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható. A számítógépcsoportok Log Analyticsben lévő létrehozásának különböző módszereivel kapcsolatos további információkért tekintse meg a [Log Analytics számítógépcsoportjait](../azure-monitor/platform/computer-groups.md) ismertető részt
+* **Frissítendő gépek**: Válassza ki, mentett keresést, importált csoporthoz, vagy a legördülő listából válassza ki a gépet, és válassza ki az egyes gépek. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható. Számítógépcsoportok létrehozását az Azure Monitor naplóira különböző módszereivel kapcsolatos további információkért lásd: [számítógépcsoportokat az Azure Monitor naplóira](../azure-monitor/platform/computer-groups.md)
 
 * **Frissítési besorolás**: Válassza ki a szoftvertípusokat, amelyeket a frissítéstelepítés az üzemelő példány tartalmazza. Ebben az oktatóanyagban hagyjon minden típust kiválasztva.
 
   A választható besorolási típusok a következők:
 
-   |Operációs rendszer  |Típus  |
+   |Operációs rendszer  |Typo  |
    |---------|---------|
    |Windows     | Kritikus frissítések</br>Biztonsági frissítések</br>Kumulatív frissítések</br>Funkciócsomagok</br>Szervizcsomagok</br>Definíciófrissítések</br>Eszközök</br>Frissítések        |
    |Linux     | Kritikus vagy biztonsági frissítések</br>Egyéb frissítések       |

@@ -10,18 +10,18 @@ ms.date: 02/19/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 07fd8c41e7817e232513ed9a260c3722a1fdac11
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: e429d9577b938aea20318aa09a0247e00e4f66b6
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429264"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819582"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Változások követése saját környezetében a Change Tracking megoldás
 
 Ez a cikk segít a Change Tracking megoldás használatával könnyedén azonosíthatja a változtatásokat a környezetben. A megoldás nyomon követi a módosításokat a Windows és Linux-szoftver, a Windows és Linux-fájlok, a Windows-beállításkulcsok, a Windows-szolgáltatások és a Linux-démonok. Konfigurációs módosítások azonosítása segíthet a felmerülő működési problémákat.
 
-Telepített szoftverek, Windows-szolgáltatások, Windows-beállításjegyzék és a fájlok és a figyelt kiszolgálókról a Linux-démonok változásokat küldi el a Log Analytics szolgáltatás a felhőben a feldolgozáshoz. A fogadott adatokat logikát alkalmaz, és a felhőszolgáltatás-adatait rögzíti. A Change Tracking irányítópultján található információk segítségével könnyen megtekintheti az a kiszolgáló-infrastruktúrájában elvégzett módosítások.
+Telepített szoftverek, Windows-szolgáltatások, Windows-beállításjegyzék és a fájlok és a figyelt kiszolgálókról a Linux-démonok változásokat küldi el a feldolgozás a felhőben az Azure Monitor szolgáltatáshoz. A fogadott adatokat logikát alkalmaz, és a felhőszolgáltatás-adatait rögzíti. A Change Tracking irányítópultján található információk segítségével könnyen megtekintheti az a kiszolgáló-infrastruktúrájában elvégzett módosítások.
 
 ## <a name="supported-windows-operating-systems"></a>A támogatott Windows operációs rendszerek
 
@@ -261,7 +261,7 @@ A részletes információkat, amelyek kimenetei kattint egy módosítása vagy e
 
 ## <a name="search-logs"></a>Keresés naplókban
 
-Mellett a részleteit, amelyet a portálon a keresések ellen a naplók teheti meg. Az a **Change Tracking** lap meg van nyitva, kattintson **Log Analytics**, ekkor megnyílik a **naplóbeli keresés** lapot.
+Mellett a részleteit, amelyet a portálon a keresések ellen a naplók teheti meg. Az a **Change Tracking** lap meg van nyitva, kattintson **Log Analytics**, ekkor megnyílik a **naplók** lapot.
 
 ### <a name="sample-queries"></a>Mintalekérdezések
 
@@ -314,5 +314,5 @@ Látogasson el az oktatóanyag a Change Tracking tudhat meg többet a megoldás 
 > [!div class="nextstepaction"]
 > [A környezet változásainak hibaelhárítása](automation-tutorial-troubleshoot-changes.md)
 
-* Használat [Log Analytics naplóbeli kereséseivel](../log-analytics/log-analytics-log-searches.md) részletes változáskövetési adatok megtekintéséhez.
+* Használat [Naplókeresésekkel a naplókban az Azure Monitor](../log-analytics/log-analytics-log-searches.md) részletes változáskövetési adatok megtekintéséhez.
 

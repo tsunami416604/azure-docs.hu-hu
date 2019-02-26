@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/14/2016
 ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 2a28409120bac13ea7d288c7fc41f7154c003388
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 53cde81ed5df97c4cb6d8360c9bb639b8bdabe20
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106256"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818136"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>Az Azure App Service-alkalmazás klónozása a PowerShell használatával
 
@@ -136,5 +136,5 @@ Alkalmazásklónozás ismert korlátozások a következők:
 * [Az Azure App Service-alkalmazás biztonsági mentése](manage-backup.md)
 * [Az Azure Traffic Manager előzetes verziójának támogatása az Azure Resource Manager](../traffic-manager/traffic-manager-powershell-arm.md)
 * [Az App Service Environment bemutatása](environment/intro.md)
-* [Az Azure PowerShell használata az Azure Resource Managerrel](../azure-resource-manager/powershell-azure-resource-manager.md)
+* [Az Azure PowerShell használata az Azure Resource Managerrel](../azure-resource-manager/manage-resources-powershell.md)
 

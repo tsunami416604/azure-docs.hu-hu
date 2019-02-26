@@ -16,22 +16,19 @@ ms.date: 07/11/2017
 ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a6908951452e135fd87e3214d285042f72e00403
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ba47f7a80ee88f3a2d0089aae0183cdba62be24f
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169632"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820195"
 ---
 # <a name="problems-signing-in-to-a-non-gallery-application-configured-for-federated-single-sign-on"></a>Egy összevont egyszeri bejelentkezés beállított, katalógusban nem szereplő alkalmazásba történő bejelentkezésnél
 
-A probléma elhárításához ellenőrizze az alkalmazás konfigurációját az Azure AD a következőket kell:
+Hibaelhárítás a jelentkezzen be az alábbi, javasoljuk, kövesse az alábbi javaslat jobb diagnosztikát és a megoldási lépések automatizálásához:
 
--   Az Azure AD katalógusából származó alkalmazásba a konfigurációs lépéseket követte.
-
--   A azonosítója és a válasz URL-cím, az aad-ben konfigurált egyezik, az alkalmazás a várt értékek
-
--   Az alkalmazás hozzárendelt felhasználók
+- Telepítse a [saját alkalmazások biztonságos a böngészőbővítmény](access-panel-extension-problem-installing.md) érdekében az Azure Active Directory (Azure AD) biztosít jobb diagnosztikát és a megoldások használatakor a tesztelés élmény az Azure Portalon.
+- A hiba, a vizsgálati élmény használatával az Azure Portalon, az alkalmazás konfigurációs lapja reprodukálnia. További információ a [Debug SAML-alapú egyszeri bejelentkezési alkalmazások](../develop/howto-v1-debug-saml-sso-issues.md)
 
 ## <a name="application-not-found-in-directory"></a>Az alkalmazás nem található a címtárban
 
@@ -43,7 +40,7 @@ Attribútum, az alkalmazás Azure ad-ben az SAML-kérelmet küld a kiállító n
 
 **Felbontás**
 
-Ellenőrizze, hogy a kibocsátó attribútumot az SAML-kérelmet, a megfelelő az azonosító az Azure ad-ben konfigurált értéket:
+Ügyeljen arra, hogy a `Issuer` az SAML-kérelmet a attribútuma megfelel az Azure AD-ben konfigurált azonosító értékét. Ha használja a [vizsgálati élmény](../develop/howto-v1-debug-saml-sso-issues.md) az Azure Portalon, a saját alkalmazások biztonságos böngésző-bővítménnyel, nem kell manuálisan kövesse az alábbi lépéseket.
 
 1.  Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdai** vagy **Társadminisztrátorként.**
 
@@ -61,9 +58,7 @@ Ellenőrizze, hogy a kibocsátó attribútumot az SAML-kérelmet, a megfelelő a
 
 7.  Ha az alkalmazás betöltött, kattintson a **egyszeri bejelentkezési** az alkalmazás bal oldali navigációs menüjében.
 
-8.  <span id="_Hlk477190042" class="anchor"></span>Lépjen a **tartomány és URL-címek** szakaszban. Győződjön meg arról, hogy az azonosító szövegbeviteli mező értékét a értéket az azonosító az a hiba jelenik meg a megfelelő-e.
-
-Miután frissítette az Azure ad-ben az azonosító értékét, és azt van megfelelő az érték küld az alkalmazásnak az SAML-kérelmet, jelentkezzen be az alkalmazást, képesnek kell lennie.
+8.  Miután betölti az alkalmazást, nyissa meg a **alapszintű SAML-konfigurációja**. Győződjön meg arról, hogy az azonosító szövegbeviteli mező értéke megegyezik-e értéket az azonosító a jelenik meg a hiba a.
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>A válaszcím nem egyezik meg a az alkalmazáshoz konfigurált válaszcímekkel. 
 
@@ -75,7 +70,7 @@ Az SAML-kérelmet AssertionConsumerServiceURL értéke nem egyezik, a válasz UR
 
 **Felbontás** 
 
-Ellenőrizze, hogy az SAML-kérelmet, a válasz URL-cím a megfelelő AssertionConsumerServiceURL értékét az Azure ad-ben konfigurált értéket. 
+Ügyeljen arra, hogy a `Issuer` az SAML-kérelmet a attribútuma megfelel az Azure AD-ben konfigurált azonosító értékét. Ha használja a [vizsgálati élmény](../develop/howto-v1-debug-saml-sso-issues.md) az Azure Portalon, a saját alkalmazások biztonságos böngésző-bővítménnyel, nem kell manuálisan kövesse az alábbi lépéseket.
  
 1.  Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdai** vagy **Társadminisztrátorként.** 
 
@@ -93,11 +88,9 @@ Ellenőrizze, hogy az SAML-kérelmet, a válasz URL-cím a megfelelő AssertionC
 
 7.  Ha az alkalmazás betöltött, kattintson a **egyszeri bejelentkezési** az alkalmazás bal oldali navigációs menüjében.
 
-8.  Lépjen a **tartomány és URL-címek** szakaszban. Győződjön meg arról, vagy frissítse az értéket a válasz URL-cím szövegmezőbe az SAML-kérelmet AssertionConsumerServiceURL értékének megfelelően.
-
-  * Ha nem látja a válasz URL-címe szövegmezőbe, válassza ki a **speciális URL-beállítások megjelenítése** jelölőnégyzetet. 
-
-Miután frissítése az Azure ad-ben a válasz URL-Címének értékét, és azt van megfelelő az érték küld az alkalmazásnak az SAML-kérelmet, jelentkezzen be az alkalmazást, képesnek kell lennie.
+8.  Miután betölti az alkalmazást, nyissa meg a **alapszintű SAML-konfigurációja**. Győződjön meg arról, vagy frissítse az értéket a megfelelő válasz URL-címe szövegmezőbe a `AssertionConsumerServiceURL` értékét az SAML-kérelmet.    
+    
+Miután frissítette az Azure ad-ben a válasz URL-Címének értékét, és a kulcs megegyezik-e az SAML-kérelmet a az alkalmazás által küldött értékét, jelentkezzen be az alkalmazást, képesnek kell lennie.
 
 ## <a name="user-not-assigned-a-role"></a>Felhasználói szerepkör nincs hozzárendelve
 
@@ -109,7 +102,7 @@ A felhasználó nem kapott hozzáférést az alkalmazáshoz az Azure ad-ben.
 
 **Felbontás**
 
-Közvetlenül rendelni egy vagy több felhasználó egy alkalmazást, kövesse az alábbi lépéseket:
+Közvetlenül rendelni egy vagy több felhasználó egy alkalmazást, kövesse az alábbi lépéseket. Ha használja a [vizsgálati élmény](../develop/howto-v1-debug-saml-sso-issues.md) az Azure Portalon, a saját alkalmazások biztonságos böngésző-bővítménnyel, nem kell manuálisan kövesse az alábbi lépéseket.
 
 1.  Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdája.**
 
@@ -167,39 +160,35 @@ Az Azure AD nem támogatja az alkalmazás egyszeri bejelentkezésre vonatkozó S
 
     -   [Az Azure AD egyszeri bejelentkezési SAML protokolljának követelményei](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference)
 
-Ellenőrizni kell az Azure AD SAML végrehajtása támogatja az egyszeri bejelentkezés.
+Az alkalmazás gyártójától ellenőrizni kell, hogy az egyszeri bejelentkezés az Azure AD SAML-implementáció támogatják.
 
-## <a name="no-resource-in-requiredresourceaccess-list"></a>Nincs erőforrás requiredResourceAccess listában
+## <a name="misconfigured-application"></a>Helytelenül konfigurált alkalmazás
 
-*Hiba AADSTS65005: Az ügyfélalkalmazás kért erőforrás elérésére "00000002-0000-0000-c000-000000000000'. A kérelem nem sikerült, mert az ügyfél nem megadva ehhez az erőforráshoz a requiredResourceAccess listájára*.
+*Hiba AADSTS650056: Az alkalmazás helytelenül konfigurált. Ezt a következők egyike okozhatja: Az ügyfél nem rendelkezik szerepel a listán az "AAD Graph" az alkalmazás regisztrálása az ügyfél a kért engedélyek engedélyek. Másik lehetőségként a rendszergazda nem egyezett bele a bérlőben. Vagy tekintse meg az alkalmazásazonosító, annak érdekében, hogy a konfigurált alkalmazás azonosítója egyezik a kérésben. Lépjen kapcsolatba a rendszergazdát, hogy a konfiguráció kijavításának vagy hozzájárulás megadása a bérlő nevében.* .
 
 **Lehetséges ok**
 
-Az alkalmazás objektum sérült.
+A `Issuer` az alkalmazás Azure ad-ben az SAML-kérelmet küldött attribútum nem felel meg az Azure AD-ben az alkalmazáshoz konfigurált azonosító értékét.
 
 **Felbontás**
 
-A probléma megoldásához távolítsa el az alkalmazást a címtárból. Adja hozzá, és konfigurálja újra az alkalmazást, kövesse az alábbi lépéseket:
+Ügyeljen arra, hogy a `Issuer` az SAML-kérelmet a attribútuma megfelel az Azure AD-ben konfigurált azonosító értékét. Ha használja a [vizsgálati élmény](../develop/howto-v1-debug-saml-sso-issues.md) az Azure Portalon, a saját alkalmazások biztonságos böngésző-bővítménnyel, nem kell manuálisan kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdai** vagy **Társadminisztrátorként.**
+1.  Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdai** vagy **társadminisztrátor**.
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
+1.  Nyissa meg a **Azure Active Directory-bővítmény** kiválasztásával **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
-3.  Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
+1.  Típus **"Azure Active Directory"** a szűrőt a keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
 
-4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
+1.  Válassza ki **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
 
-5.  Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
+1.  Válassza ki **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
 
-  * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
+    Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Alkalmazások**.
 
-6.  Válassza ki az alkalmazás egyszeri bejelentkezéshez konfigurálandó.
+1.  Válassza ki az egyszeri bejelentkezést a konfigurálni kívánt alkalmazást.
 
-7.  Kattintson a **törlése** felső – bal oldalán az alkalmazás **áttekintése** ablaktáblán.
-
-8.  Frissítse az Azure ad-ben, és vegye fel az alkalmazást az Azure AD katalógusából. Ezután konfigurálja újra az alkalmazást.
-
-Után az alkalmazás újbóli beállításához kell tudni bejelentkezni az alkalmazásba.
+1.  Miután betölti az alkalmazást, nyissa meg a **alapszintű SAML-konfigurációja**. Győződjön meg arról, hogy az azonosító szövegbeviteli mező értéke megegyezik-e értéket az azonosító a jelenik meg a hiba a.
 
 ## <a name="certificate-or-key-not-configured"></a>Tanúsítvány és kulcs nincs konfigurálva
 
@@ -236,6 +225,48 @@ Törölje, és hozzon létre egy új tanúsítványt, kövesse az alábbi lépé
 10. Ellenőrizze **új tanúsítvány aktívvá** az aktív tanúsítvány felülbírálásához. Kattintson a **mentése** a panel tetején, és fogadja el a helyettesítő tanúsítvány aktiválását.
 
 11. Alatt a **SAML-aláíró tanúsítvány** területén kattintson **eltávolítása** eltávolítása a **nem használt** tanúsítványt.
+
+## <a name="saml-request-not-present-in-the-request"></a>SAML-kérelem nem szerepel a kérelemben
+
+*Hiba AADSTS750054: SAMLRequest vagy SAMLResponse, a lekérdezési karakterlánc paramétert az SAML-átirányítási kötés HTTP-kérelem elérhetőnek kell lennie.*
+
+**Lehetséges ok**
+
+Az Azure AD nem lehet azonosítani az SAML-kérelmet a HTTP-kérelem URL-cím paramétereket lévő. Ez akkor fordulhat elő, ha az alkalmazás nem használja a HTTP-átirányítás kötés az Azure ad-hez a SAML-kérelem küldésekor.
+
+**Felbontás**
+
+A kérelmet kell küldenie az SAML-kérelmet kódolja a location fejlécet, HTTP-n keresztül átirányítani a kötést. A megvalósítása, további információt, olvassa el a HTTP átirányítás kötés szakaszt az a [SAML protokoll specifikáció szerinti dokumentum](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf).
+
+## <a name="azure-ad-is-sending-the-token-to-an-incorrect-endpoint"></a>Azure ad-ben a jogkivonat küld egy nem megfelelő végpont
+
+**Lehetséges ok**
+
+Során egyszeri bejelentkezés Ha a bejelentkezési kérés nem tartalmaz explicit válasz URL-cím (helyességi feltétel fogyasztói szolgáltatás URL-címe), majd az Azure AD választ ki a konfigurált bármelyikét használja a kereső URL-címeket az adott alkalmazáshoz. Akkor is, ha az alkalmazás konfigurálása kifejezett válasz URL-cím, a felhasználó lehet átirányítja https://127.0.0.1:444. 
+
+Amikor az alkalmazás hozzá lett adva nem katalógusbeli alkalmazásként, az Azure Active Directory ezt a válasz-URL-címet alapértelmezett értékként hozta létre. Ez a viselkedés azóta megváltozott, és az Azure Active Directory már nem adja hozzá ezt az URL-címet alapértelmezés szerint. 
+
+**Felbontás**
+
+Törölje a nem használt válasz-URL az alkalmazáshoz konfigurált.
+
+1.  Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdai** vagy **társadminisztrátor**.
+
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kiválasztásával **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
+
+3.  Típus **"Azure Active Directory"** a szűrőt a keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
+
+4.  Válassza ki **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
+
+5.  Válassza ki **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
+
+    Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Alkalmazások**.
+
+6.  Válassza ki az egyszeri bejelentkezést a konfigurálni kívánt alkalmazást.
+
+7.  Miután betölti az alkalmazást, nyissa meg a **alapszintű SAML-konfigurációja**. Az a **válasz URL-cím (helyességi feltétel fogyasztói szolgáltatás URL-címe)**, a rendszer által létrehozott alapértelmezett válasz URL-címek vagy fel nem használt törlése. Például: `https://127.0.0.1:444/applications/default.aspx`.
+
+
 
 ## <a name="problem-when-customizing-the-saml-claims-sent-to-an-application"></a>A probléma, ha az alkalmazás küldött SAML-jogcímek testreszabása
 

@@ -10,16 +10,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2019
+ms.date: 02/25/2019
 ms.author: mabrigg
 ms.reviewer: efemmano
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 026e37534169fda8dbbf5a568f72046bc6ff55f7
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 28b8971b61ff09346b2a2f89cd5ea8ae04e44079
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252047"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819360"
 ---
 # <a name="use-the-azure-stack-portal"></a>Az Azure Stack-portál használata
 
@@ -40,6 +40,10 @@ Az Azure Stack-operátorokról (a szolgáltató vagy a rendszergazda a szervezet
 Az irányítópult csempéi alapértelmezett készletét tartalmazza. Választhat **irányítópult szerkesztése** módosítsa az alapértelmezett irányítópult, vagy válasszon **új irányítópult** egyéni irányítópult létrehozása. Könnyen testre szabhat egy irányítópultot hozzáadásával vagy eltávolításával a csempéket. Jelölje be például a számítási csempe hozzáadása **+ erőforrás létrehozása**. Kattintson a jobb gombbal **számítási**, majd válassza ki **rögzítés az irányítópulton**.
 
 ![Képernyőfelvétel az Azure Stack felhasználói portál](media/azure-stack-use-portal/userportal.png)
+
+Az irányítópult visszaállítása az eredeti beállításokat:
+1.  Válassza ki **irányítópult szerkesztése**. 
+2.  Kattintson a jobb gombbal, és válassza ki **visszaállítja az alapértelmezett állapotba**.
 
 ## <a name="create-subscription-and-browse-available-resources"></a>Előfizetés létrehozása, és keresse meg a rendelkezésre álló erőforrások
 

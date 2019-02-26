@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: 9f0dbc549600ef2b931ee99a36c60cae57cc7a67
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: cd29fb968bd73e09c2e3b60e62a478b4e577146d
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56331280"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805489"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Nagy teljesítményű Premium Storage és a felügyelt lemezek virtuális gépekhez
 
@@ -67,7 +67,7 @@ További információ a meglévő virtuális gépek Premium Storage-ba való mig
     - [Az Azure CLI az Azure Storage szolgáltatáshoz](../articles/storage/common/storage-azure-cli.md#manage-storage-accounts)
     - [Az Azure Storage Resource Provider REST API](https://docs.microsoft.com/rest/api/storagerp) (az Azure Resource Manageren alapuló üzemelő példányok) vagy az Azure Storage erőforrás-szolgáltatói ügyfélkódtárak valamelyik
 
-    További információ a prémium szintű tárfiókok korlátairól, tekintse meg a Premium Storage méretezhetőségi és teljesítménycéljai.
+    Prémium szintű tárfiókok korlátai kapcsolatos további információkért lásd: [méretezhetőségi és teljesítménycéljai](#scalability-and-performance-targets).
 
 * **Helyileg redundáns Premium tárolóban**
 
@@ -158,7 +158,7 @@ Csillaggal szintben méretek jelenleg előzetes verzióban érhető el.
 | Adattovábbítás lemezenként | 25 MB / s | 50 MB / s | 100 MB / s | 125 MB / s | 150 MB / s | 200 MB / s | 250 MB / s | 250 MB / s | 480 MB / s | 750 MB / s | 750 MB / s |
 
 > [!NOTE]
-> Ellenőrizze, hogy elegendő sávszélesség érhető el a virtuális gép meghajtó lemez forgalomra, leírtak szerint [Premium Storage virtuális gépek](). Ellenkező esetben a lemez adatátviteli sebessége és IOPS je omezeno alacsonyabb értékeket. Maximális átviteli sebesség és iops-t a VM-korlátok, nem pedig az előző táblázatban ismertetett korlátok alapján.  
+> Ellenőrizze, hogy elegendő sávszélesség érhető el a virtuális gép meghajtó lemez forgalomra, leírtak szerint [támogatott virtuális gépek](#supported-vms). Ellenkező esetben a lemez adatátviteli sebessége és IOPS je omezeno alacsonyabb értékeket. Maximális átviteli sebesség és iops-t a VM-korlátok, nem pedig az előző táblázatban ismertetett korlátok alapján.  
 > Az Azure Premium Storage platform, amely a nagymértékben párhuzamos van kialakítva. Az alkalmazás több szálon futó tervezése segíteni fog a nagy teljesítményű cél vehető igénybe a nagyobb lemezméretet.
 
 Íme néhány fontos tudnivaló a Premium Storage méretezhetőségi és teljesítménycéljai kapcsolatban:
@@ -292,7 +292,7 @@ A Premium Storage használata esetén az alábbi számlázási szempontok érvé
 
 * **Prémium szintű storage disk és a blob mérete**
 
-    Egy prémium szintű tárolólemez-vagy blob számlázása a lemez-vagy blob kiépített méretétől függ. Az Azure a legközelebbi prémium szintű tárlemezméretre kerekítünk képez le a kiépítési méret (kerekítve). További információkért lásd: a tábla [prémium szintű Storage méretezhetőségi és teljesítménycéljai](). Mindegyik lemez képez le egy támogatott kiosztott lemez méretét, és ennek megfelelően történik. Minden üzembe helyezett lemez használata óradíjas a Premium Storage-ajánlat a havi díjak használatával. Például ha üzembe helyezett egy P10 lemezt, és 20 óra múlva törli azt, számítjuk fel a P10 előfizetésért arányosan 20 óra. Ez a tényleges adatok írása a lemezt vagy az IOPS és a használt átviteli sebesség függetlenül.
+    Egy prémium szintű tárolólemez-vagy blob számlázása a lemez-vagy blob kiépített méretétől függ. Az Azure a legközelebbi prémium szintű tárlemezméretre kerekítünk képez le a kiépítési méret (kerekítve). További információkért lásd: a tábla [méretezhetőségi és teljesítménycéljai](#scalability-and-performance-targets). Mindegyik lemez képez le egy támogatott kiosztott lemez méretét, és ennek megfelelően történik. Minden üzembe helyezett lemez használata óradíjas a Premium Storage-ajánlat a havi díjak használatával. Például ha üzembe helyezett egy P10 lemezt, és 20 óra múlva törli azt, számítjuk fel a P10 előfizetésért arányosan 20 óra. Ez a tényleges adatok írása a lemezt vagy az IOPS és a használt átviteli sebesség függetlenül.
 
 * **Nem felügyelt lemezek prémium szintű pillanatképek**
 

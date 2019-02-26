@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a375b60acbb6636cdc651a41d65bc232b50946b6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 85c2dcfb6ff1ba0bb122a0bf9aae5f01a4085f29
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198932"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817048"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>Oktatóanyag: Az Azure Active Directory-integráció ellenszolgáltatás átjáróval
 
@@ -130,7 +130,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     | `https://<companyname>.rewardgateway.com.au/Authentication/EndLogin?idp=<Unique Id>` |
 
     > [!NOTE] 
-    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Beolvasni ezeket az értékeket kezdje-integráció beállítása a ellenszolgáltatás Manager portál. A részletek megtalálhatók https://success.rewardgateway.com/it-implementation/293968-how-to-configure-a-sso-integration
+    > Ezek a értékei nem valódi. Ezek az értékek frissítse a tényleges azonosítóját és a válasz URL-cím. Beolvasni ezeket az értékeket kezdje-integráció beállítása a ellenszolgáltatás Manager portál. A részletek megtalálhatók https://success.rewardgateway.com/authentication-integrations/microsoft-azure-for-authentication
  
 1. Az a **SAML-aláíró tanúsítvány** területén kattintson **metaadatainak XML** , és mentse a metaadat-fájlt a számítógépen.
 
@@ -140,7 +140,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása](./media/reward-gateway-tutorial/tutorial_general_400.png)
 
-1. Az egyszeri bejelentkezés konfigurálása **ellenszolgáltatás átjáró** oldalán, az integráció beállításának megkezdése a ellenszolgáltatás Manager portál. A letöltött metaadatok használatával az aláíró tanúsítvány beszerzése és feltöltése, a konfiguráció során. A részletek megtalálhatók https://success.rewardgateway.com/it-implementation/293968-how-to-configure-a-sso-integration
+1. Az egyszeri bejelentkezés konfigurálása **ellenszolgáltatás átjáró** oldalán, az integráció beállításának megkezdése a ellenszolgáltatás Manager portál. A letöltött metaadatok használatával az aláíró tanúsítvány beszerzése és feltöltése, a konfiguráció során. A részletek megtalálhatók https://success.rewardgateway.com/authentication-integrations/microsoft-azure-for-authentication
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)

@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 283cf8d13260531a12fa6c860d1a4e7b6207d22e
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: fe259b6a0f45828e100de33f533e370323128eef
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674616"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821696"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Adja hozzá a Google B2B vendégfelhasználó Identitásszolgáltatóként
 
@@ -99,8 +99,8 @@ A Google-összevonási telepítés törölheti. Ha így tesz, Google vendég fel
 ### <a name="to-delete-google-federation-in-the-azure-ad-portal"></a>Az Azure AD portálon Google összevonási törlése: 
 1. Nyissa meg az [Azure Portal](https://portal.azure.com). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
 2. Válassza ki **szervezeti kapcsolatok**.
-3. Válassza ki **Identitásszolgáltatók**, majd kattintson a **Google** gombra.
-4. Válassza ki **Google**, majd válassza ki **törlése**. 
+3. Válassza ki **Identitásszolgáltatók**.
+4. Az a **Google** . sor, válassza ki a helyi menüt (**...** ), majd **törlése**. 
    
    ![A közösségi identitásszolgáltató törölve](media/google-federation/google-social-identity-providers.png)
 

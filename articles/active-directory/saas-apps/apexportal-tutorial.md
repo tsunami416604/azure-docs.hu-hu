@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a494e403b8afa1424640ac2e24d0f832b3de02dd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d64ab85ee2b289878d4468703e8e4d51982a7304
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210611"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820960"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-apex-portal"></a>Oktatóanyag: Az Azure Active Directory-integráció Apex-portállal
 
@@ -217,8 +217,8 @@ Ebben a szakaszban engedélyezze Britta Simon használandó Azure egyszeri bejel
 
 Ebben a szakaszban egy Britta Simon nevű felhasználó Apex-portálon jön létre. Apex-portál támogatja a just-in-time-felhasználók létrehozásának, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó még nem létezik az Apex-portálon, a hitelesítés után egy új jön létre.
 
-> [!NOTE]
-> Hozzon létre egy felhasználót manuálisan kell, ha kapcsolódni kell a [Apex-portál támogatási csapatának](mailto:support@apexanalytix.com).
+> [!NOTE]
+> Hozzon létre egy felhasználót manuálisan kell, ha kapcsolódni kell a [Apex-portál támogatási csapatának](mailto:support@apexanalytix.com).
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 

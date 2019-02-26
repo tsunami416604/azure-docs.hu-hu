@@ -3,7 +3,7 @@ title: Windows-tárolók monitorozása és diagnosztikája a Service Fabricben a
 description: Ebben az oktatóanyagban konfigurálhatja a Log Analytics szolgáltatást az Azure Service Fabric Windows-tárolóinak monitorozására és diagnosztikájára.
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,16 +13,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/08/2018
-ms.author: twhitney, dekapur
+ms.author: aljo, dekapur
 ms.custom: mvc
-ms.openlocfilehash: 9249c0bb559328c878d784b54af5117b785daffe
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: f6aa0dcfa4a4f9e2780c8fb886523da347eeaa31
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300625"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806453"
 ---
-# <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>Oktatóanyag: A Service Fabric Windows-tárolóinak monitorozása a Log Analytics használatával
+# <a name="tutorial-monitor-windows-containers-on-service-fabric-using-log-analytics"></a>Oktatóanyag: A Log Analytics szolgáltatást a Service Fabric Windows-tárolók monitorozása
 
 Ez az oktatóanyag harmadik része, amely végigvezeti a Log Analytics beállításán a Service Fabricen vezényelt Windows-tárolók monitorozásához.
 
@@ -225,7 +225,7 @@ Ekkor megnyílik a Log Analytics-munkaterület, ahol megtekintheti a megoldások
 
 Néhány perc múlva **frissítse** a Tárolómonitorozási megoldást, és ezután látnia kell, ahogy érkeznek a *Számítógép teljesítményére* vonatkozó adatok. Ez segít megérteni, hogyan használja a rendszer az erőforrásokat. Ezeket a metrikákat a fürt méretezésére vonatkozó, megfelelő döntések meghozásához is használhatja, vagy annak megerősítéséhez, hogy a fürt a vártnak megfelelően osztja el a terhelést.
 
-*Megjegyzés: A metrikák felhasználásához győződjön meg arról, hogy az idő szűrői megfelelően vannak beállítva.*
+*Megjegyzés: Győződjön meg arról, hogy az idő szűrői megfelelően vannak beállítva, hogy a metrikák felhasználásához.*
 
 ![Teljesítményszámlálók 2](./media/service-fabric-tutorial-monitoring-wincontainers/perf-counters2.png)
 

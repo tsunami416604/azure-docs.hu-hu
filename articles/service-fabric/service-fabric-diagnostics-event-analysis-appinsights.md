@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: efcd2e279d1bf387bc11c238a0592ecee6545cc4
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 7a3abd854ec5e492407d1fbdc8d170f2a27ba1bc
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053619"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816725"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Esemény elemzése és vizualizációs az Application insights segítségével
 
@@ -49,50 +49,6 @@ Az Application Insights rendelkezik a kijelölt nézet az összes adattal érhet
 
 További fedezheti fel az Application Insights portálon képességeit, látogasson el a [Application Insights portál dokumentációja](../azure-monitor/app/app-insights-dashboards.md).
 
-### <a name="configuring-application-insights-with-wad"></a>Az Application Insights konfigurálása WAD használatával
-
->[!NOTE]
->Ez jelenleg csak alkalmazható Windows-fürtök.
-
-Kétféleképpen elsődleges WAD adatokat küldeni a WAD konfiguráció, ahogy az az ad hozzá egy Application Insights fogadó érhető el az Azure Application Insights [Ez a cikk](../azure-monitor/platform/diagnostics-extension-to-application-insights.md).
-
-#### <a name="add-an-application-insights-instrumentation-key-when-creating-a-cluster-in-azure-portal"></a>Adja hozzá az Application Insights-kialakítási kulcsot, ha a fürt létrehozása az Azure Portalon
-
-![Egy AIKey hozzáadása](media/service-fabric-diagnostics-event-analysis-appinsights/azure-enable-diagnostics.png)
-
-A fürt létrehozásakor, ha diagnosztika be van kapcsolva "" mező nem kötelező megadnia egy Application Insights-kialakítási kulcsot jelennek meg. Az Application Insights-kulcs Ide illessze be azt, ha az Application Insights fogadó konfigurálása automatikusan történik meg, amellyel a fürt üzembe helyezése Resource Manager-sablon a.
-
-#### <a name="add-the-application-insights-sink-to-the-resource-manager-template"></a>Az Application Insights fogadó a Resource Manager-sablon hozzáadása
-
-A "WadCfg" Resource Manager-sablon vegyen fel egy "Sink" által többek között a következő két módosításokat:
-
-1. A fogadó konfigurációra deklaráló után közvetlenül a `DiagnosticMonitorConfiguration` befejeződött:
-
-    ```json
-    "SinksConfig": {
-        "Sink": [
-            {
-                "name": "applicationInsights",
-                "ApplicationInsights": "***ADD INSTRUMENTATION KEY HERE***"
-            }
-        ]
-    }
-
-    ```
-
-2. A fogadó közé tartozik a `DiagnosticMonitorConfiguration` adja hozzá a következő sort a a `DiagnosticMonitorConfiguration` , a `WadCfg` (közvetlenül előtt a `EtwProviders` deklarált):
-
-    ```json
-    "sinks": "applicationInsights"
-    ```
-
-Mindkét a megelőző kódrészletek, a "applicationInsights" nevet használt a fogadó ismertetik. Ez nem követelmény, és mindaddig, amíg a fogadó neve "fogadóként" szerepel, a név és bármilyen karakterlánc megadható.
-
-Jelenleg a fürt naplóinak megjelenjen **nyomkövetések** Application Insights naplófájl-megjelenítőjében. Mivel a bejövő nyomok a platformról a legtöbb "Tájékoztatási szintű" szint, is érdemes lehet csak a "Critical" vagy "Error". a naplók elküldése a fogadó konfiguráció módosítása Ezt megteheti a fogadó "Csatorna" hozzáadásával ahogyan az is [Ez a cikk](../azure-monitor/platform/diagnostics-extension-to-application-insights.md).
-
->[!NOTE]
->Ha a portálon vagy a Resource Manager-sablon használatával egy megfelelő Application Insights-kulcs, akkor manuálisan módosíthatja a kulcsot, és a fürt frissítése / telepíteni.
-
 ### <a name="configuring-application-insights-with-eventflow"></a>Az Application Insights konfigurálása az eventflow segítségével
 
 Ha az események összesítése az eventflow segítségével használ, ügyeljen arra, hogy importálja a `Microsoft.Diagnostics.EventFlow.Output.ApplicationInsights`NuGet-csomagot. Az alábbi kód azért van szükség a *kimenete* szakaszában a *eventFlowConfig.json*:
@@ -108,7 +64,7 @@ Ha az események összesítése az eventflow segítségével használ, ügyeljen
 
 Ügyeljen arra, hogy a szükséges módosításokat a szűrőket, valamint bármely más bemeneti (valamint a megfelelő NuGet-csomagok) tartalmazza.
 
-## <a name="application-insights-sdk"></a>Application Insights SDK letöltése
+## <a name="application-insights-sdk"></a>Application Insights SDK
 
 Javasoljuk, hogy együtt használja eventflow segítségével WAD összesítési megoldások, mivel lehetővé teszik a több moduláris megközelítés diagnosztikát és a figyelés, azaz ha meg szeretné változtatni a kimenetek az eventflow segítségével, nem igényel a tényleges rendszerállapot nem változik csak egy egyszerű módosítása a konfigurációs fájlban. Ha azonban úgy dönt, hogy az Application Insights-be, és valószínűleg nem módosíthatja egy másik platformon, akkor események összevonása, és elküldi azokat az Application Insights új Application Insights SDK-bA kell kinéznie. Ez azt jelenti, hogy többé nem lesz eventflow segítségével, hogy adatokat küldjön az Application Insights konfigurálása, de ehelyett a ApplicationInsight Service Fabric NuGet csomag telepíti. A csomag részletei találhatók [Itt](https://github.com/Microsoft/ApplicationInsights-ServiceFabric).
 

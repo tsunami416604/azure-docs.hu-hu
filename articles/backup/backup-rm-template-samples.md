@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 96d4a61a14d3b1fac1c31c485edf66742c763673
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: c0b023b6bdd01bc64eb5a6deb5fafa8e3c34c616
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497757"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819020"
 ---
 # <a name="azure-resource-manager-templates-for-azure-backup"></a>Azure Resource Manager-sablonok az Azure Backuphoz
 
@@ -31,6 +31,6 @@ A következő táblázat a helyreállítási tárakhoz és az Azure Backup funkc
 | [Napi biztonsági mentési szabályzat létrehozása IaaS virtuális gépekhez](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-daily-backup-policy-create) | A sablon létrehoz egy helyreállítási tárat és egy napi biztonsági mentési szabályzatot a klasszikus és a Resource Manager által telepített virtuális gépek biztonsági mentéséhez.|
 | [Windows Server rendszerű virtuális gép telepítése engedélyezett biztonsági mentéssel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-recovery-services-create-vm-and-configure-backup) | A sablon létrehoz egy Windows Server rendszerű virtuális gépet és helyreállítási tárat az alapértelmezett biztonsági mentési szabályzattal.|
 |**Biztonsági mentési feladatok monitorozása** |  |
-| [A Log Analytics használata az Azure Backup monitorozásához](https://github.com/Azure/azure-quickstart-templates/tree/master/101-backup-oms-monitoring) | A sablon telepíti a Log Analytics-monitorozást az Azure Backuphoz, lehetővé téve a biztonsági mentési és visszaállítási feladatok, a biztonsági mentési riasztások és a helyreállítási tárban használt felhőtár monitorozását.|  
+| [Az Azure Monitor naplóira használata az Azure Backup szolgáltatással](https://github.com/Azure/azure-quickstart-templates/tree/master/101-backup-oms-monitoring) | Sablon üzembe helyez az Azure Monitor-naplók az Azure Backuphoz, lehetővé teszi, hogy a biztonsági mentés monitorozása és visszaállítási feladatok, biztonsági mentési riasztások és a Recovery Services-tárolók a használt Felhőbeli tárhelyhez.|  
 |   |   |
 

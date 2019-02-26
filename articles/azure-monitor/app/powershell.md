@@ -12,17 +12,17 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: mbullwin
-ms.openlocfilehash: 4b633f3294faf11c8ef9d4a4077254c3df5353cf
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 74da56b5e90512f8b903d5a62f7dde4e903560b8
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264853"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817864"
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>Hozzon létre egy Application Insights-erőforrást PowerShell használatával
 Ez a cikk bemutatja, hogyan automatizálhatja a létrehozása és frissítése [Application Insights](../../azure-monitor/app/app-insights-overview.md) erőforrások automatikusan az Azure Resource Management használatával. Előfordulhat például, ekkor a buildelési folyamat részeként. Alapszintű Application Insights-erőforrás, valamint létrehozhat [rendelkezésre állási webes tesztek](../../azure-monitor/app/monitor-web-app-availability.md), állítsa be [riasztások](../../azure-monitor/app/alerts.md)állítsa be a [díjszabási séma](pricing.md), és más Azure-erőforrások létrehozása .
 
-A kulcs létrehozásához ezeket az erőforrásokat: JSON-sablonokat [Azure Resource Manager](../../azure-resource-manager/powershell-azure-resource-manager.md). Legnépszerűbb, a művelet be nem: a meglévő erőforrások; JSON-definíciók letöltése egyes értékek nevét; például paraméterezése és futtassa a sablont, amikor szeretne létrehozni egy új erőforrást. Több erőforrás együtt is csomag, hozza létre őket mindezt egy lépjen – például egy alkalmazás-figyelő rendelkezésre állási tesztek, a riasztások és a tárhelyet a folyamatos exportálás. Nincsenek egyes parameterizations, amely itt elmagyarázzuk, néhány apró.
+A kulcs létrehozásához ezeket az erőforrásokat: JSON-sablonokat [Azure Resource Manager](../../azure-resource-manager/manage-resources-powershell.md). Legnépszerűbb, a művelet be nem: a meglévő erőforrások; JSON-definíciók letöltése egyes értékek nevét; például paraméterezése és futtassa a sablont, amikor szeretne létrehozni egy új erőforrást. Több erőforrás együtt is csomag, hozza létre őket mindezt egy lépjen – például egy alkalmazás-figyelő rendelkezésre állási tesztek, a riasztások és a tárhelyet a folyamatos exportálás. Nincsenek egyes parameterizations, amely itt elmagyarázzuk, néhány apró.
 
 ## <a name="one-time-setup"></a>Egyszeri beállítás
 Ha még nem használta a Powershellt az Azure-előfizetésében előtt:

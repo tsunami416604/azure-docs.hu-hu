@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/10/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4e5c64dc43be10eead1da35ec2337aa1f83f2f91
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: a7d290b9270d5d548a2e2b36cd73588639691b6c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54472126"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819105"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Runbook végrehajtása az Azure Automationben
 
@@ -138,7 +138,7 @@ Az alábbi táblázat bemutatja a feladatok különféle lehetséges állapotait
 
 ## <a name="viewing-job-status-from-the-azure-portal"></a>Az Azure Portalról a feladat állapotának megtekintése
 
-Megtekintheti az összes runbook-feladatok összesített állapotát, vagy egy adott runbook-feladat az Azure Portalon részletek feltárásához. Integráció konfigurálhatja a runbook állapota és a feladat feladatstreamek továbbítják a Log Analytics-munkaterület is. A Log Analytics integrálásával kapcsolatos további információkért lásd: [feladat állapotát és a feladatstreamek automatizálást továbbítása a Log Analyticsbe](automation-manage-send-joblogs-log-analytics.md).
+Megtekintheti az összes runbook-feladatok összesített állapotát, vagy egy adott runbook-feladat az Azure Portalon részletek feltárásához. Integráció konfigurálhatja a runbook állapota és a feladat feladatstreamek továbbítják a Log Analytics-munkaterület is. Integrálás az Azure Monitor naplóira kapcsolatos további információkért lásd: [feladat állapotát és a feladatstreamek továbbítja automatizálást az Azure Monitor naplóira](automation-manage-send-joblogs-log-analytics.md).
 
 ### <a name="automation-runbook-jobs-summary"></a>Automation-runbook feladatok összegzése
 

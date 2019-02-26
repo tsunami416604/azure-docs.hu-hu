@@ -9,20 +9,35 @@ ms.topic: reference
 author: hning86
 ms.author: haining
 ms.reviewer: j-martens
-ms.date: 12/20/2018
+ms.date: 2/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: f02a44f41eba8cc4298b9fc730354799ca0aad0c
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 899e33db242a34d09df6109c2e195bdff9c65262
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446766"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823603"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
 Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások.  Az SDK teljes leírását látogasson el a referenciadokumentumai:
 + Az Azure Machine Learning [ **fő SDK a Pythonhoz**](https://aka.ms/aml-sdk)
 + Az Azure Machine Learning [ **adat-előkészítési SDK**](https://aka.ms/data-prep-sdk)
+
+## <a name="2019-02-25"></a>2019-02-25
+
+### <a name="azure-machine-learning-sdk-for-python-v1017"></a>Az Azure Machine Learning SDK for Python v1.0.17
+
++ **Új funkciók**
+
+  + Az Azure Machine Learning SDK már támogatja a [ `Chainer` ](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) estimator osztály képzés és üzembe helyezéséhez Chainer egyéni kódot használó folyamatot.
+
+### <a name="azure-portal"></a>Azure Portal
++ **Új funkciók**
+    + Új fogd és vidd tábla szerkesztő élmény a jelentések. Felhasználók oszlop húzhat a tábla területre, ahol a táblázat előnézetét megjelenik a jól. Az oszlopok alakítható át.
+    + Az elküldött ScriptRunConfig futtatások új Futtatás gombra. Felhasználók újra kell futtatni egy meglévő futtatása távoli számítási fürtön a választott eszközükön.
+    + Új naplókat megjelenítő
+    + Hivatkozások való kísérletezéshez fut, számítási, modelleket, lemezképek és a tevékenységek lapról központi telepítések
 
 ## <a name="2019-02-11"></a>2019-02-11
 

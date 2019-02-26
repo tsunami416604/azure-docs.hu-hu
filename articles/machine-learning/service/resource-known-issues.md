@@ -8,15 +8,15 @@ ms.author: jmartens
 ms.reviewer: mldocs
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: b10e434aece0ac214a0fd397ea94cbeccca4e44a
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 3cf71de72a6005c59d76e2d88059a1ae16ec2970
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746490"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817473"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Ismert problémák és hibaelhárítás az Azure Machine Learning szolgáltatás
 
@@ -51,17 +51,18 @@ Nem lesz képes FPGA-kban a modellek üzembe helyezése, amíg nem kérte, és a
 
 Databricks és az Azure Machine Learning problémákat.
 
-1. Az Azure Machine Learning SDK telepítésével a Databricks további csomagok telepítése során.
-
-   Egyes csomagokat, mint például `psutil`, ütközéseket okozhat. Telepítési hibák elkerülése érdekében fagyasztási lib verzió csomagok telepítéséhez. Ez a probléma kapcsolatos Databricks és az Azure Machine Learning szolgáltatás SDK - fellépő, a többi libs túl. Példa:
+### <a name="failure-when-installing-packages"></a>Ha a csomagok telepítése sikertelen
+Az Azure Machine Learning SDK telepítésével a Databricks további csomagok telepítése során. Egyes csomagokat, mint például `psutil`, ütközéseket okozhat. Telepítési hibák elkerülése érdekében fagyasztási lib verzió csomagok telepítéséhez. Ez a probléma kapcsolatos Databricks és az Azure Machine Learning szolgáltatás SDK - fellépő, a többi libs túl. Példa:
    ```python
    pstuil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
    ```
-   Azt is megteheti parancsprogramokkal init Ha, tartsa install Python libs kapcsolatos problémák. Ez a módszer nem hivatalosan támogatott megközelítést. Olvassa el [feljegyzett](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts).
+Azt is megteheti parancsprogramokkal init Ha, tartsa install Python libs kapcsolatos problémák. Ez a módszer nem hivatalosan támogatott megközelítést. Olvassa el [feljegyzett](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts).
 
-2. Automatikus Machine Learning használata a Databricks, ha azt szeretné, egy Futtatás megszakítása, és futtatni egy új kísérlet indításához, indítsa újra az Azure Databricks-fürt.
+### <a name="cancel-an-automated-ml-run"></a>Egy automatizált ML-Futtatás megszakítása
+A Databricks, gépi tanulási funkciók használatával automatikus, ha azt szeretné, egy Futtatás megszakítása, és a egy új kísérlet futtatása elindításához, indítsa újra az Azure Databricks-fürt.
 
-3. Automatikus ml beállításait, ha több mint 10 ismétlések, állítsa be `show_output` való `False` amikor közzétételre küld be a Futtatás.
+### <a name="10-iterations-for-automated-ml"></a>> 10 ismétlések automatizált gépi tanulás
+Automatizált ml beállításait, ha több mint 10 ismétlések, állítsa be `show_output` való `False` amikor közzétételre küld be a Futtatás.
 
 
 ## <a name="azure-portal"></a>Azure Portal

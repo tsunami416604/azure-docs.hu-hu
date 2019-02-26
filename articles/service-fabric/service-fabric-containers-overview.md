@@ -3,7 +3,7 @@ title: A Service Fabric és a tárolók áttekintése |} A Microsoft Docs
 description: Mikroszolgáltatás-alkalmazások üzembe helyezése a Service Fabric és a tárolók használatának áttekintése. A cikk ismerteti, hogyan használhatók tárolók áttekintése és az elérhető képességek a Service Fabricben.
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: c98b3fcb-c992-4dd9-b67d-2598a9bf8aab
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/8/2018
-ms.author: twhitney, msfussell
-ms.openlocfilehash: 0acbd2d4ccf35c9490a06228eeb1bb465a8ca732
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.author: aljo, msfussell
+ms.openlocfilehash: 5344f34e0e35d4d47b032b660726a4d70a4f1987
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299974"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807014"
 ---
 # <a name="service-fabric-and-containers"></a>A Service Fabric és a tárolók
 
@@ -35,8 +35,8 @@ Alapértelmezés szerint a Service Fabric üzembe helyezi, és ezek a szolgálta
 
 Ugrani, és próbálja ki a Service Fabric tárolók, próbálja meg egy rövid, az oktatóanyag vagy minta:  
 
-[Gyors útmutató: A Service Fabric egy Linux-alapú tárolóalkalmazás üzembe helyezése](service-fabric-quickstart-containers-linux.md)  
-[Gyors útmutató: A Service Fabric Windows-tároló alkalmazás üzembe helyezése](service-fabric-quickstart-containers.md)  
+[Rövid útmutató: A Service Fabric egy Linux-alapú tárolóalkalmazás üzembe helyezése](service-fabric-quickstart-containers-linux.md)  
+[Rövid útmutató: A Service fabric Windows alapú tárolóalkalmazás üzembe helyezése](service-fabric-quickstart-containers.md)  
 [Meglévő .NET-alkalmazás tárolóalapúvá](service-fabric-host-app-in-a-container.md)  
 [Service Fabric-tárolóminták](https://azure.microsoft.com/resources/samples/service-fabric-containers/)  
 
@@ -48,10 +48,10 @@ A tárolók közvetlenül a kernel fut, és egy elkülönített nézetnek a fáj
 
 A virtuális gépekhez képest a tárolók rendelkezik a következő előnyökkel jár:
 
-* **Kis**: tárolók használata egyetlen tárhely és a réteg verziók és a frissítés a hatékonyság növelése érdekében.
-* **Gyors**: tárolók nem rendelkezik egy teljes operációs rendszer rendszerindító, így elindíthatják sokkal gyorsabban – általában másodpercek alatt.
-* **Hordozhatóságot**: egy tárolóba helyezett alkalmazást rendszerképet is már futtathat a felhőben, a helyszínen, a virtuális gépeken belül, vagy közvetlenül a fizikai gépek.
-* **Erőforrás-szabályozás**: tároló korlátozhatja a gazdagépen lefoglalhatja a fizikai erőforrásokat.
+* **Kis**: Tárolók egyetlen tárhely és a réteg verziók és a frissítés használatával növelheti a hatékonyságot.
+* **Gyors**: Tárolók teljes operációs rendszert, indítsa el így elindíthatják sokkal gyorsabban – általában másodpercek alatt nem szükséges.
+* **Hordozhatóságot**: A tárolóalapú alkalmazás-lemezkép futtatásához a felhőben, a helyszínen, a virtuális gépeken belül, vagy közvetlenül a fizikai gépek ültették át a is.
+* **Erőforrás-szabályozás**: Egy tároló korlátozhatja a gazdagépen lefoglalhatja a fizikai erőforrásokat.
 
 ### <a name="container-types-and-supported-environments"></a>Tároló-típusok és a támogatott környezetek
 
@@ -76,11 +76,11 @@ A következő ábrán látható a különböző típusú virtualizálás és elk
 
 Az alábbiakban tipikus példák egy tároló esetén a jó választás:
 
-* **IIS lift- and -shift**: egy meglévő helyezheti [ASP.NET MVC](https://www.asp.net/mvc) alkalmazás áttelepítése helyett egy tárolóban, az ASP.NET Core. Az ASP.NET MVC-alkalmazások attól függnek, hogy az Internet Information Services (IIS). Az alkalmazások a precreated IIS rendszerkép tárolórendszerképekbe csomagot, és a Service Fabric segítségével telepíthet. Lásd: [Tárolórendszerképeket a Windows Server](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) Windows-tárolókkal kapcsolatos információkat.
+* **Az IIS lift- and -shift**: Egy meglévő helyezheti [ASP.NET MVC](https://www.asp.net/mvc) alkalmazás áttelepítése helyett egy tárolóban, az ASP.NET Core. Az ASP.NET MVC-alkalmazások attól függnek, hogy az Internet Information Services (IIS). Az alkalmazások a precreated IIS rendszerkép tárolórendszerképekbe csomagot, és a Service Fabric segítségével telepíthet. Lásd: [Tárolórendszerképeket a Windows Server](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) Windows-tárolókkal kapcsolatos információkat.
 
-* **Tárolók és mikroszolgáltatások Service Fabric vegyesen**: egy meglévő tároló-rendszerkép használata a alkalmazás részeként. Például előfordulhat, hogy használja a [NGINX-tároló](https://hub.docker.com/_/nginx/) a webes kezelőfelület az alkalmazás és a háttér-intenzívebb számítási az állapotalapú szolgáltatások esetében.
+* **Tárolók és mikroszolgáltatások Service Fabric vegyesen**: Egy meglévő tároló rendszerképét használja az alkalmazás része. Például előfordulhat, hogy használja a [NGINX-tároló](https://hub.docker.com/_/nginx/) a webes kezelőfelület az alkalmazás és a háttér-intenzívebb számítási az állapotalapú szolgáltatások esetében.
 
-* **A "zajos szomszédok" szolgáltatások gyakorolt hatást**: a tárolók erőforrás cégirányítási képessége segítségével korlátozhatja az erőforrások, amelyeket a szolgáltatás használ egy gazdagépen. Ha a szolgáltatások előfordulhat, hogy sok erőforrást igényelnek, és teljesítményét befolyásoló mások (például egy hosszan futó, lekérdezés-szerű művelet), fontolja meg, ezek a szolgáltatások üzembe helyezése erőforrás-szabályozás rendelkező tárolókat.
+* **A "zajos szomszédok" szolgáltatások gyakorolt hatást**: Az erőforrás cégirányítási lehetővé teszi a tárolók használatával korlátozni az erőforrások, amelyeket a szolgáltatás használ egy gazdagépen. Ha a szolgáltatások előfordulhat, hogy sok erőforrást igényelnek, és teljesítményét befolyásoló mások (például egy hosszan futó, lekérdezés-szerű művelet), fontolja meg, ezek a szolgáltatások üzembe helyezése erőforrás-szabályozás rendelkező tárolókat.
 
 ## <a name="service-fabric-support-for-containers"></a>A Service Fabric-tárolók támogatása
 

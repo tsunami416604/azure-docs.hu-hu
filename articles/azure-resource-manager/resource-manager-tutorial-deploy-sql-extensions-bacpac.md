@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/06/2018
+ms.date: 02/25/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c0aa88704f699334cacf12ec24284e61fca7d2bc
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 6c146a99be369f92a72717ad1ec4b79bddafe28c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267597"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819326"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>Oktatóanyag: Az Azure Resource Manager-sablonok SQL BACPAC-fájlok importálása
 
@@ -150,11 +150,8 @@ New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -adminUser $adminUsername `
     -adminPassword $adminPassword `
-    -TemplateFile azuredeploy.json
+    -TemplateFile "$HOME/azuredeploy.json"
 ```
-
-> [!NOTE]
-> Van egy fájl i/o-probléma az Azure PowerShell használatával a Cloud shellben.  A hibaüzenet *"* dinamikus paramétereit a parancsmag nem olvashatók be. "Azure:/azuredeploy.json" elérési út nem található, mert ezt nem nem exist.* egy ideiglenes áthidaló megoldás lehet, hogy nem tartalmazza a **- TemplateFile** kapcsolóval a `New-AzResourceGroupDeploy` parancsot. A parancs felszólítja, írja be a fájl nevét.
 
 Használni létrehozott jelszót. Lásd: [Előfeltételek](#prerequisites).
 

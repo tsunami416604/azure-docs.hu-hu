@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a63155e65460f9e2193c121bb49849940104eff1
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: dd2ba0ec3427cd99da3321b50fb43f4c00f2d1a9
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649228"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822821"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Azure Automation konfiguráló áttekintése
 
@@ -37,9 +37,9 @@ Az Azure Portalról, vagy a Powershellből kezelheti az összes a DSC konfigurá
 
 ![Az Azure Automation oldalát bemutató képernyőkép](./media/automation-dsc-overview/azure-automation-blade.png)
 
-### <a name="import-reporting-data-into-log-analytics"></a>Jelentési adatok importálása a Log Analytics
+### <a name="import-reporting-data-into-azure-monitor-logs"></a>Jelentési adatok importálása az Azure Monitor naplóira
 
-Az Azure Automation Állapotkonfiguráció felügyelt csomópontok részletes jelentési állapot adatokat küldeni a a beépített lekéréses kiszolgálón. Azure Automation konfigurációs adatokat lehet küldeni a Log Analytics-munkaterület is beállíthatja. Konfigurációs állapot adatokat küldeni a Log Analytics-munkaterület kezelésével kapcsolatos információkért lásd: [továbbítása Azure Automation Állapotkonfiguráció Log Analytics számára](automation-dsc-diagnostics.md).
+Az Azure Automation Állapotkonfiguráció felügyelt csomópontok részletes jelentési állapot adatokat küldeni a a beépített lekéréses kiszolgálón. Azure Automation konfigurációs adatokat lehet küldeni a Log Analytics-munkaterület is beállíthatja. Konfigurációs állapot adatokat küldeni a Log Analytics-munkaterület kezelésével kapcsolatos információkért lásd: [továbbítása Azure Automation Állapotkonfiguráció számára az Azure Monitor naplóira](automation-dsc-diagnostics.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 

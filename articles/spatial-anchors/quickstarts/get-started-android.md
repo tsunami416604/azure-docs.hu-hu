@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: ed5e33d45127a61a9c87249cc3eba88050554a54
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 64e5e78f93488b2c375c617e8857c84ba2171f00
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56752246"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822395"
 ---
 # <a name="quickstart-create-an-android-app-with-azure-spatial-anchors"></a>Gyors útmutató: Android-alkalmazás létrehozása az Azure térbeli horgonyok
 
@@ -63,7 +63,7 @@ A következő lépés, hogy a fiók azonosítóját és a térbeli horgonyok er�
 
 # <a name="javatabopenproject-java"></a>[Java](#tab/openproject-java)
 
-Nyissa meg `Android/Java/app/src/main/java/com/microsoft/sampleandroid/ARActive.java`.
+Nyissa meg `Android/Java/app/src/main/java/com/microsoft/sampleandroid/AzureSpatialAnchorsActivity.java`.
 
 Keresse meg a `SpatialAnchorsAccountKey` mezőt, és cserélje le `Set me` és a fiókkulcsot.
 

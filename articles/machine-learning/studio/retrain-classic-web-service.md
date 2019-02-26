@@ -5,17 +5,17 @@ description: Ismerje meg, hogyan modellek szoftveres átképezése, és frissít
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: peterlu
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: 73ab816c7043c7fb0f572677c6ceeb722653dec1
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: fa4448c2a44a3c56548120bd04abf53df9a85ba0
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650770"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822019"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-web-service"></a>Újratanítás PowerShell és a egy klasszikus Studio-webszolgáltatás üzembe helyezése
 
@@ -23,7 +23,7 @@ Machine learning-modellek átképezési módja egy tartása pontos és a legfont
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk feltételezi, hogy már rendelkezik egy megőrzési kísérletet és a egy prediktív kísérletet. Ezeket a lépéseket mutatjuk be [újratanítása és a egy gépi tanulási modell üzembe helyezése.](retrain-models-programmatically.md) Azonban helyett a gépi tanulási modell új webszolgáltatásként üzembe, telepíti a prediktív kísérletté klasszikus webszolgáltatásként.
+Ez a cikk feltételezi, hogy már rendelkezik egy megőrzési kísérletet és a egy prediktív kísérletet. Ezeket a lépéseket mutatjuk be [újratanítása és a egy gépi tanulási modell üzembe helyezése.](/azure/machine-learning/studio/retrain-machine-learning-model) Azonban helyett a gépi tanulási modell új webszolgáltatásként üzembe, telepíti a prediktív kísérletté klasszikus webszolgáltatásként.
      
 ## <a name="add-a-new-endpoint"></a>Új végpont hozzáadása
 

@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/13/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 1a9283ad688c63642df880a74cca9189c7c59042
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f57e793278af7eb03fe49fd657e45b0846db8b1c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456697"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817915"
 ---
 # <a name="authenticate-access-to-azure-blobs-and-queues-using-azure-active-directory-preview"></a>Hitelesíti a hozzáférést az Azure-blobok és üzenetsorok az Azure Active Directoryval (előzetes verzió)
 
@@ -41,13 +41,34 @@ Tudnivalók az előzetes verzió a következő szempontokat tartsa szem előtt:
     - [Node.js](https://www.npmjs.com/package/azure-storage)
     - [JavaScript](https://aka.ms/downloadazurestoragejs)
 
-## <a name="get-started-with-azure-ad-for-storage"></a>Ismerkedés az Azure AD-tároló
+## <a name="overview-of-azure-ad-for-storage"></a>Az Azure AD-tároló áttekintése
 
-Az Azure AD-integráció használatával az Azure Storage első lépése az tárolási adatok RBAC-szerepkörök hozzárendelése az egyszerű szolgáltatásnév (egy felhasználó, csoport vagy alkalmazás, szolgáltatásnév) vagy a felügyelt identitások az Azure-erőforrásokhoz. RBAC-szerepkörök tartalmazzák a közös jogosultságkészletek tárolók és üzenetsorok. RBAC-szerepkörök az Azure Storage-bővebben lásd: [kezelés hozzáférési jogosultsága ahhoz, hogy az RBAC (előzetes verzió) tárolási adatok](storage-auth-aad-rbac.md).
+Az Azure AD-integráció használatával az Azure Storage első lépése az tárolási adatok RBAC-szerepkörök hozzárendelése az egyszerű szolgáltatásnév (egy felhasználó, csoport vagy alkalmazás, szolgáltatásnév) vagy a felügyelt identitások az Azure-erőforrásokhoz. RBAC-szerepkörök tartalmazzák a közös jogosultságkészletek tárolók és üzenetsorok. RBAC-szerepkörök hozzárendelése az Azure Storage kapcsolatos további információkért lásd: [kezelés hozzáférési jogosultsága ahhoz, hogy az RBAC (előzetes verzió) tárolási adatok](storage-auth-aad-rbac.md).
 
 Az Azure AD használata az alkalmazások tárolási erőforrásokhoz való hozzáférés engedélyezésére, az OAuth 2.0 hozzáférési jogkivonat kérése a kódot kell. A hozzáférési jogkivonat kérése és használhatja az Azure Storage-kérelmek engedélyezését végzi, lásd: [hitelesítés az Azure Storage-alkalmazás (előzetes verzió) az Azure AD](storage-auth-aad-app.md). Ha egy felügyelt identitás használ, tekintse meg [hitelesítés blobok és üzenetsorok az Azure-ral a hozzáférést az Azure-erőforrások (előzetes verzió) által felügyelt identitások](storage-auth-aad-msi.md).
 
 Az Azure CLI és PowerShell mostantól támogatja a adataikkal jelentkezhetnek be az Azure AD identitás. Az Azure AD identity bejelentkezés után a munkamenet identitás alatt fut. További tudnivalókért lásd: [CLI vagy a PowerShell (előzetes verzió) az Azure Storage eléréséhez használja az Azure AD identity](storage-auth-aad-script.md).
+
+## <a name="rbac-roles-for-blobs-and-queues"></a>A blobok és üzenetsorok RBAC-szerepkörök
+
+Az Azure Active Directory (Azure AD) keresztül biztonságos erőforrásokhoz való hozzáférési jogosultságok engedélyezi [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md). Az Azure Storage határozza meg, amely magában foglalja a tárolók és -várólisták eléréséhez használt gyakori jogosultságkészletek beépített RBAC-szerepkör. 
+
+Az RBAC szerepkör van rendelve egy Azure AD rendszerbiztonsági tag, amikor az Azure biztosít hozzáférést az ezeket az erőforrásokat, hogy a rendszerbiztonsági tag esetében. Hozzáférés az előfizetéshez, az erőforráscsoport, a storage-fiókban vagy egy tároló vagy üzenetsor szintjét hatóköre. Az Azure AD rendszerbiztonsági tag lehet, hogy egy felhasználó, csoport, egy alkalmazás egyszerű szolgáltatást, vagy egy [-identitás az Azure-erőforrások](../../active-directory/managed-identities-azure-resources/overview.md). 
+
+[!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
+
+### <a name="access-permissions-granted-by-rbac-roles"></a>RBAC-szerepkörök által biztosított hozzáférési engedélyek 
+
+A következő táblázat összefoglalja a hatókör függően a beépített szerepkörök, hozzáférési jogot:
+
+|Hatókör|BLOB adatok tulajdonosa|Blobadatok Közreműködője|Blob Data Reader|Üzenetsorbeli adatok Közreműködője|Queue Data Reader|
+|---|---|---|---|---|---|
+|Előfizetési szinten|Olvasási/írási hozzáférést és a POSIX hozzáférés-vezérlési felügyeleti a tárolók és blobok az előfizetésben|Tárolók és blobok az előfizetésben az olvasási/írási hozzáférést| Olvasási hozzáférés tárolók és blobok az előfizetésben|Olvasási/írási hozzáférést az előfizetés összes várólista|Olvasási hozzáférés az előfizetésben található összes várólista|
+|Erőforráscsoport szintjén|Olvasási/írási hozzáféréssel és a POSIX hozzáférés-vezérlési felügyeleti a tárolók és blobok az erőforráscsoportban|Olvasási/írási hozzáférést a tárolók és blobok az erőforráscsoportban|Olvasási hozzáférés tárolók és blobok az erőforráscsoportban|Olvasási/írási hozzáférés az erőforráscsoportban lévő összes várólista|Olvasási hozzáférés az erőforráscsoportban lévő összes üzenetsor|
+|Storage-fiók szintjén|Olvasási/írási hozzáféréssel és a POSIX hozzáférés-vezérlés kezelése a tárolókhoz és a BLOB storage-fiókban|Olvasási/írási hozzáférést a tárolókhoz és a BLOB storage-fiókban|Olvasási hozzáférés tárolók és a BLOB storage-fiókban|Olvasási/írási hozzáférést a storage-fiókban lévő összes várólista|Olvasási hozzáférés a tárfiókban lévő összes üzenetsor|
+|Tároló/várólista szint|Olvasási/írási hozzáféréssel és a POSIX hozzáférés-vezérlési kezelési a megadott tárolóhoz és annak blobjaihoz.|Olvasási/írási hozzáférést a megadott tárolóhoz és annak blobjaihoz|A megadott tárolóhoz és annak blobjaihoz olvasási hozzáférés|Olvasási/írási hozzáférést a megadott várólista|Olvasási hozzáférés a megadott várólista|
+
+További információ az Azure Storage-műveletek meghívásához szükséges engedélyekről: [REST-műveleteinek meghívására szolgáló engedélyek](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations).
 
 ## <a name="next-steps"></a>További lépések
 

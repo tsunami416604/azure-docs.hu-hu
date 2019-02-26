@@ -6,14 +6,14 @@ author: cherylmc
 Customer intent: As someone with a basic network background, but is new to Azure, I want to understand the capabilities of Azure VPN Gateway so that I can securely connect to my Azure virtual networks.
 ms.service: vpn-gateway
 ms.topic: overview
-ms.date: 10/19/2018
+ms.date: 02/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: d35e7cfbf55d0dc53214bbb7b1153c3270c611c2
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
-ms.translationtype: HT
+ms.openlocfilehash: 7b2b5c7201fe45fb52eb333b9e32b4996e00df9b
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471322"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822923"
 ---
 # <a name="what-is-vpn-gateway"></a>Mi az a VPN-átjáró?
 
@@ -57,7 +57,7 @@ Egy virtuális hálózati átjáró létrehozásakor meg kell adnia a használni
 
 ## <a name="diagrams"></a>Kapcsolati topológia-diagramok
 
-Fontos szem előtt tartani, hogy a VPN-átjárós kapcsolatokhoz különböző konfigurációk érhetők el. Önnek kell eldöntenie, melyik konfiguráció felel meg a legjobban az igényeinek. Az alábbi szakaszokban a következő VPN-átjárós kapcsolatokról találhat információt és topológia-diagramokat: Az alábbi szakaszokban található táblázatok a következőket tartalmazzák:
+Fontos szem előtt tartani, hogy a VPN-átjárós kapcsolatokhoz különböző konfigurációk érhetők el. Önnek kell eldöntenie, melyik konfiguráció felel meg a legjobban az igényeinek. Az alábbi szakaszok információt és topológia-diagramokat a következő VPN gateway-kapcsolatok láthatja: A következő szakaszokban található táblázatok:
 
 * Elérhető üzemi modell
 * Elérhető konfigurációs eszközök
@@ -152,7 +152,6 @@ A VPN Gateway-re vonatkozó gyakori kérdésekért lásd a [VPN Gateway gyakori 
 
 ## <a name="next-steps"></a>További lépések
 
-- A VPN-átjáró konfigurációjának megtervezése Lásd: [A VPN-átjáró tervezése és kialakítása](vpn-gateway-plan-design.md).
 - További információkért tekintse meg [A VPN Gatewayjel kapcsolatos gyakori kérdések](vpn-gateway-vpn-faq.md) című szakaszt.
 - Tekintse meg az [Előfizetés- és szolgáltatáskorlátok](../azure-subscription-service-limits.md#networking-limits) című szakaszt.
 - Ebben a dokumentumban az Azure egyéb lényeges [hálózat képességeivel](../networking/networking-overview.md) ismerkedhet meg.

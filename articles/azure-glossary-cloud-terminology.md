@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 748a9c0c583d4e1af9626527a440b19900898b87
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 9a93786759941def4cf8677509b1b2565cac5090
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600303"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823858"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>A Microsoft Azure szószedet: Az Azure platform felhőalapú terminológia szótár
 
@@ -39,7 +39,7 @@ Egy másik nevet [App Service-alkalmazás](#app-service-app).
 ## <a name="app-service-app"></a>App Service-alkalmazás
 A számítási erőforrásokat, amelyek [Azure App Service](app-service/overview.md) biztosít egy webhelyre vagy webalkalmazásra alkalmazást, a webes API-t, a üzemeltetési vagy [mobil-háttéralkalmazás](app-service-mobile/app-service-mobile-value-prop.md). App Service-alkalmazások is nevezzük *App Services*, *webes alkalmazások*, *az API apps*, és *mobilalkalmazások*.
 
-## <a name="availability-set"></a>A rendelkezésre állási csoport
+## <a name="availability-set"></a>rendelkezésre állási csoport
 Virtuális gépek, amelyek felügyelete együtt, adja meg az alkalmazás a redundancia és megbízhatóság gyűjteménye. Rendelkezésre állási csoport használata biztosítja, hogy mindkét tervezett vagy nem tervezett karbantartási események legalább egy virtuális gép elérhető.  
 Lásd: [Windows virtuális gépek rendelkezésre állásának kezelése](virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) és [Linux rendszerű virtuális gépek rendelkezésre állásának kezelése](virtual-machines/linux/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
@@ -77,7 +77,7 @@ Lásd: [navigálása és kiválasztása Windows virtuálisgép-lemezképek az Az
 Erőforrások hozhatók létre, vagy a teljesítmény a teljesítményteszt elérhető száma. Korlátok általában tartoznak előfizetések, szolgáltatások és a is.  
 Lásd: [Azure-előfizetés és a szolgáltatások korlátozásai, kvótái és megkötései](azure-subscription-service-limits.md)
 
-## <a name="load-balancer"></a>Terheléselosztó
+## <a name="load-balancer"></a>terheléselosztó
 Egy erőforrás, amely elosztja a bejövő forgalmat a hálózaton lévő számítógépek között. Az Azure-ban a terheléselosztó elosztja a forgalmat egy terheléselosztó készlet meghatározott virtuális gépek között. A [terheléselosztó](load-balancer/load-balancer-overview.md) lehet internetkapcsolattal rendelkező vagy belső is lehet.  
 
 ## <a name="mobile-app"></a>mobilalkalmazás
@@ -147,7 +147,7 @@ Egy erőforrás, amely megvalósítja a viselkedés vagy szolgáltatásokat vagy
 Lásd: [virtuális gépi bővítmények és szolgáltatások (Windows) kapcsolatos](virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) vagy [virtuális gépi bővítmények és szolgáltatások (Linux)](virtual-machines/linux/extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="vnet"></a>Virtuális hálózat
-Az Azure-erőforrások, amelyek el van különítve a többi Azure bérlő közötti kapcsolatot biztosít a hálózat. Egy [Azure VPN Gateway](vpn-gateway/vpn-gateway-about-vpngateways.md) lehetővé teszi a virtuális hálózatok közötti kapcsolatokat hozhat létre és [egy virtuális hálózat és a egy helyszíni hálózat között](vpn-gateway/vpn-gateway-plan-design.md). Teljes körűen szabályozhatja az IP-címblokkok, a DNS-beállítások, a biztonsági szabályzatok és a virtuális hálózaton belüli útválasztási táblázatokat.  
+Az Azure-erőforrások, amelyek el van különítve a többi Azure bérlő közötti kapcsolatot biztosít a hálózat. Egy [Azure VPN Gateway](vpn-gateway/vpn-gateway-about-vpngateways.md) lehetővé teszi a virtuális hálózat és a egy helyszíni hálózat és a virtuális hálózatok közötti kapcsolatokat hozhat létre. Teljes körűen szabályozhatja az IP-címblokkok, a DNS-beállítások, a biztonsági szabályzatok és a virtuális hálózaton belüli útválasztási táblázatokat.  
 Lásd: [Virtual Network áttekintése](virtual-network/virtual-networks-overview.md)  
 
 ## <a name="web-app"></a>Webalkalmazás

@@ -5,17 +5,17 @@ description: Megtudhatja, hogyan határozhatja meg az adatelemzés kezdőknek vi
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: garyericson
 ms.author: garye
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/03/2018
-ms.openlocfilehash: 7134a22532622d7de25a23897f83dc453d8a4344
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: fcd79b94c1a32fa912f00df616787f8859005895
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454055"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820169"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>Adatokkal megválaszolható kérdések megfogalmazása
 ## <a name="video-3-data-science-for-beginners-series"></a>3. Videó: Adatelemzés kezdőknek sorozat
@@ -93,4 +93,4 @@ Mindenképpen tekintse meg a "Data Science a kezdők" a Microsoft Azure Machine 
 
 ## <a name="next-steps"></a>További lépések
 * [Egy első adatelemzési kísérlet a Machine Learning Studio kipróbálása](create-experiment.md)
-* [Bevezetés a gépi tanulás a Microsoft Azure](what-is-machine-learning.md)
+* [Bevezetés a gépi tanulás a Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)

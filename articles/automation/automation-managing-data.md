@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b133947a7daf1977f084ee4008599882b51d9e8b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 3e217e0e3367c6e1200567f589749fec9e626da8
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428477"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817456"
 ---
 # <a name="managing-azure-automation-data"></a>Azure Automation-adatok kezelése
 Ez a cikk egy Azure Automation környezet kezeléséhez több témaköröket tartalmazza.
@@ -39,7 +39,7 @@ Az alábbi táblázat foglalja össze a különböző erőforrások esetén a me
 
 Az adatmegőrzési házirend minden felhasználóra vonatkozik, és jelenleg nem lehet testreszabni.
 
-Azonban ha szeretne egy hosszabb ideig megőrizni az adatokat, is továbbíthatja, runbook feladatnaplóit a Log Analytics szolgáltatásba.  További információkért tekintse át a [Azure Automation-feladat adatainak továbbítása a Log Analytics](automation-manage-send-joblogs-log-analytics.md).   
+Azonban ha szeretne egy hosszabb ideig megőrizni az adatokat, is továbbíthatja, runbook Azure Monitor naplóira feladatnaplókat.  További információkért tekintse át a [az Azure Monitor naplóira Azure Automation-feladat adatainak továbbítása](automation-manage-send-joblogs-log-analytics.md).   
 
 ## <a name="backing-up-azure-automation"></a>Az Azure Automation biztonsági mentése
 Ha töröl egy automation-fiókot a Microsoft Azure-ban, a rendszer törli a fiókban lévő összes objektumra, többek között a runbookok, modulok, konfigurációk, beállítások, feladatokat és eszközöket. Az objektumok nem állítható helyre, miután a fiókot törölték.  Az alábbi információkat használhatja a biztonsági mentés az automation-fiók tartalmát azok törlése előtt. 

@@ -12,12 +12,12 @@ ms.date: 07/09/2018
 ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
-ms.openlocfilehash: 08903bcb15c69e3bc9a2b5435785d4a1ee8edb5c
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: f345ff2e64670536771a639a7619c6e1d4d2d82d
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659048"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823943"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core-and-visual-studio"></a>Azure fejlesztői szóközöket a .NET Core és a Visual Studio használatának első lépései
 
@@ -52,13 +52,6 @@ Ebből az útmutatóból a következőket tudhatja meg:
 1. Válassza ki a Szerepköralapú hozzáférés-vezérlés (RBAC) kívánt beállítását. Az Azure Dev Spaces engedélyezett és letiltott RBAC esetén is támogatja a fürtöket.
 
     ![RBAC-beállítás](media/common/k8s-RBAC.PNG)
-
-1. Győződjön meg róla, hogy a HTTP-alkalmazások útválasztása engedélyezve van.
-
-   ![HTTP-alkalmazások útválasztásának engedélyezése](media/common/Kubernetes-Create-Cluster-3.PNG)
-
-    > [!Note]
-    > A [Http Application Routing](/azure/aks/http-application-routing) engedélyezéséhez egy meglévő fürtön használja a következő parancsot: `az aks enable-addons --resource-group myResourceGroup --name myAKSCluster --addons http_application_routing`
 
 1. Amikor végzett, válassza az **Áttekintés + létrehozás**, majd a **Létrehozás** lehetőséget.
 

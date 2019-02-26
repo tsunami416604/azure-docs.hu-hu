@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 2/5/2019
-ms.openlocfilehash: a678722666146fdf22e88680ab414b09d2a7ffaa
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 39c96608dd843577f41d2111e9e7c5517136ccae
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749936"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823569"
 ---
 # <a name="tutorial-ingest-data-in-azure-data-explorer-without-one-line-of-code"></a>Oktatóanyag: Az Azure Data Explorer adatokat egyetlen sor kód nélkül
 
@@ -34,7 +34,7 @@ Az oktatóanyag segítségével megtanulhatja a következőket:
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
-* [Az Azure Data Explorer fürt és az adatbázis](create-cluster-database-portal.md). Ebben az oktatóanyagban az adatbázis neve a következő *AzureMonitoring*.
+* [Az Azure Data Explorer fürt és az adatbázis](create-cluster-database-portal.md). Ebben az oktatóanyagban az adatbázis neve a következő *TestDatabase*.
 
 ## <a name="azure-monitor-data-provider-diagnostic-and-activity-logs"></a>Az Azure Monitor-adatszolgáltató: diagnosztikai és Tevékenységnaplók
 
@@ -123,7 +123,7 @@ Például egy Azure Data Explorer-folyamat beállítása magában foglalja szám
 
 ### <a name="connect-to-the-azure-data-explorer-web-ui"></a>Csatlakozás az Azure Data Explorer webes felhasználói felületen
 
-Az Azure Data Explorer *AzureMonitoring* adatbázisra, válassza **lekérdezés** az Azure Data Explorer webes felhasználói felületének megnyitásához.
+Az Azure Data Explorer *TestDatabase* adatbázisra, válassza **lekérdezés** az Azure Data Explorer webes felhasználói felületének megnyitásához.
 
 ![Lekérdezés lap](media/ingest-data-no-code/query-database.png)
 
@@ -133,7 +133,7 @@ Az Azure Data Explorer webes felhasználói felülete segítségével a cél tá
 
 #### <a name="the-diagnostic-logs-table"></a>A diagnosztikai naplók tábla
 
-1. Az a *AzureMonitoring* adatbázisra, és hozzon létre egy táblát nevű *DiagnosticLogsRecords* tárolására a diagnosztikai napló rögzíti. Használja a következő `.create table` szabályozhatja a parancsot:
+1. Az a *TestDatabase* adatbázisra, és hozzon létre egy táblát nevű *DiagnosticLogsRecords* tárolására a diagnosztikai napló rögzíti. Használja a következő `.create table` szabályozhatja a parancsot:
 
     ```kusto
     .create table DiagnosticLogsRecords (Timestamp:datetime, ResourceId:string, MetricName:string, Count:int, Total:double, Minimum:double, Maximum:double, Average:double, TimeGrain:string)
@@ -147,13 +147,13 @@ Az Azure Data Explorer webes felhasználói felülete segítségével a cél tá
 
 Tevékenységeket tartalmazó naplók a struktúra nem táblázatos, mert szüksége lesz az adatok feldolgozására, és bontsa ki minden egyes esemény egy vagy több rekordot. A nyers adatokat fog kell egy köztes nevű táblát betöltött *ActivityLogsRawRecords*. Ugyanakkor az adatok kezelhetők és kibontva. A kibontott adatok be majd lesz töltve a *ActivityLogsRecords* tábla egy frissítési szabályzattal. Ez azt jelenti, hogy kell két külön táblák létrehozása a tevékenységnaplókat tölt.
 
-1. Hozzon létre egy táblát nevű *ActivityLogsRecords* a a *AzureMonitoring* adatbázis tevékenység naplórekordok fogadásához. A tábla létrehozásához futtassa a következő Azure adatkezelő lekérdezés:
+1. Hozzon létre egy táblát nevű *ActivityLogsRecords* a a *TestDatabase* adatbázis tevékenység naplórekordok fogadásához. A tábla létrehozásához futtassa a következő Azure adatkezelő lekérdezés:
 
     ```kusto
     .create table ActivityLogsRecords (Timestamp:datetime, ResourceId:string, OperationName:string, Category:string, ResultType:string, ResultSignature:string, DurationMs:int, IdentityAuthorization:dynamic, IdentityClaims:dynamic, Location:string, Level:string)
     ```
 
-1. A köztes adatok nevű táblát hozzon létre *ActivityLogsRawRecords* a a *AzureMonitoring* adatkezelés adatbázist:
+1. A köztes adatok nevű táblát hozzon létre *ActivityLogsRawRecords* a a *TestDatabase* adatkezelés adatbázist:
 
     ```kusto
     .create table ActivityLogsRawRecords (Records:dynamic)
@@ -265,9 +265,7 @@ Válasszon ki egy erőforrást, ahonnan a metrikák exportálása. Többféle er
     1. Az a **válassza eseményközpont szabályzatának neve** listájáról válassza ki a **RootManagerSharedAccessKey**.
     1. Kattintson az **OK** gombra.
 
-1. Kattintson a **Mentés** gombra. Az eseményközpont névtér nevét és a házirend neve a ablakban jelenik meg.
-
-    ![Diagnosztikai beállítások mentése](media/ingest-data-no-code/save-diagnostic-settings.png)
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="connect-activity-logs-to-your-event-hub"></a>A Tevékenységnaplók csatlakozni az eseményközpont
 
@@ -309,7 +307,7 @@ Most meg kell a adatkapcsolatokat, a diagnosztikai naplók és a vizsgálati nap
 ### <a name="create-the-data-connection-for-diagnostic-logs"></a>A diagnosztikai naplók számára az adatkapcsolat létrehozása
 
 1. Az Azure Data Explorer fürt nevű *kustodocs*válassza **adatbázisok** a bal oldali menüben.
-1. Az a **adatbázisok** ablakban válassza ki a *AzureMonitoring* adatbázis.
+1. Az a **adatbázisok** ablakban válassza ki a *TestDatabase* adatbázis.
 1. A bal oldali menüben válassza ki a **adatbetöltés**.
 1. Az a **adatbetöltés** ablakban kattintson a **+ adatkapcsolat hozzáadása**.
 1. Az a **adatkapcsolat** ablakban adja meg a következőket:
@@ -332,9 +330,9 @@ Most meg kell a adatkapcsolatokat, a diagnosztikai naplók és a vizsgálati nap
 
      **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
-    | **Tábla** | *DiagnosticLogsRecords* | A létrehozott tábla a *AzureMonitoring* adatbázis. |
+    | **Tábla** | *DiagnosticLogsRecords* | A létrehozott tábla a *TestDatabase* adatbázis. |
     | **Adatformátum** | *JSON* | A formátumot használja a táblában. |
-    | **Oszlopleképezés** | *DiagnosticLogsRecordsMapping* | A létrehozott hozzárendelést a *AzureMonitoring* adatbázis, amely bejövő JSON-adatokat az oszlop nevükkel és adattípusukkal a *DiagnosticLogsRecords* tábla.|
+    | **Oszlopleképezés** | *DiagnosticLogsRecordsMapping* | A létrehozott hozzárendelést a *TestDatabase* adatbázis, amely bejövő JSON-adatokat az oszlop nevükkel és adattípusukkal a *DiagnosticLogsRecords* tábla.|
     | | |
 
 1. Kattintson a **Létrehozás** gombra.  
@@ -361,9 +359,9 @@ Ismételje meg a [a diagnosztikai naplók számára az adatkapcsolat létrehozá
 
      **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
-    | **Tábla** | *ActivityLogsRawRecords* | A létrehozott tábla a *AzureMonitoring* adatbázis. |
+    | **Tábla** | *ActivityLogsRawRecords* | A létrehozott tábla a *TestDatabase* adatbázis. |
     | **Adatformátum** | *JSON* | A formátumot használja a táblában. |
-    | **Oszlopleképezés** | *ActivityLogsRawRecordsMapping* | A létrehozott hozzárendelést a *AzureMonitoring* adatbázis, amely bejövő JSON-adatokat az oszlop nevükkel és adattípusukkal a *ActivityLogsRawRecords* tábla.|
+    | **Oszlopleképezés** | *ActivityLogsRawRecordsMapping* | A létrehozott hozzárendelést a *TestDatabase* adatbázis, amely bejövő JSON-adatokat az oszlop nevükkel és adattípusukkal a *ActivityLogsRawRecords* tábla.|
     | | |
 
 1. Kattintson a **Létrehozás** gombra.  

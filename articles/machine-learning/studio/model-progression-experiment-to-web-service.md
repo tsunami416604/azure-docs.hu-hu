@@ -5,17 +5,17 @@ description: Beállítás esetén hogyan az Azure Machine Learning Studio modell
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: 776f33e3e550ad9a711a90732c6c4526e647aa89
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 808883fc96369538a26a06a7dadb5f0ecd6628d5
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456792"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823399"
 ---
 # <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>Hogyan egy Machine Learning Studio modellek útja a kísérlettől kísérlet egy szolgáltatáscsomagot webszolgáltatáshoz
 Az Azure Machine Learning Studio biztosítja egy interaktív vászonra, amely lehetővé teszi a fejlesztést, futtassa, tesztelése és ismételt futtatásával egy ***kísérletezhet*** jelölő prediktív elemzési modellek. Nincsenek modulok érhető el, amelyek segítségével számos:
@@ -95,7 +95,7 @@ Például: Tegyük fel, hogy a prediktív kísérletet az előre jelzett eredmé
 
 Ha meg szeretné tartani a teljes gépi tanulási modellt, de szeretné azt az új adatokkal újratanítása, két lehetősége van:
 
-1. **A modell újratanítása, miközben a webszolgáltatás fut.** -újratanítása a modellt, a prediktív webszolgáltatás futtatása közben szeretne, ha ezt megteheti is által végzett módosítások néhány, hogy a tanítási kísérlet egy ***átképezési Kísérletezzen***, majd üzembe helyezheti, egy  ***megőrzési webes* szolgáltatás**. Ehhez az utasításokért lásd: [Retrain Machine Learning-modellek](retrain-models-programmatically.md).
+1. **A modell újratanítása, miközben a webszolgáltatás fut.** -újratanítása a modellt, a prediktív webszolgáltatás futtatása közben szeretne, ha ezt megteheti is által végzett módosítások néhány, hogy a tanítási kísérlet egy ***átképezési Kísérletezzen***, majd üzembe helyezheti, egy  ***megőrzési webes* szolgáltatás**. Ehhez az utasításokért lásd: [Retrain Machine Learning-modellek](/azure/machine-learning/studio/retrain-machine-learning-model).
 2. **Lépjen vissza az eredeti tanítási kísérletet, és különböző betanítási adatok használata a modell fejlesztéséhez** – a Web Service a prediktív kísérletté kapcsolódik, de a tanítási kísérlet nem közvetlenül kapcsolódó ily módon. Ha módosítja az eredeti tanítási kísérletet, és kattintson a **webszolgáltatás beállítása**, hoz létre egy *új* prediktív, amellyel kísérletezhet telepítésekor létrehoz egy *új* webes a szolgáltatás. Csak akkor nem frissíti az eredeti webszolgáltatás.
 
    Ha módosítania kell a tanítási kísérlet, nyissa meg, és kattintson a **Mentés másként** másolását. Ezzel érintetlenül hagyja az eredeti betanítási kísérlet, prediktív kísérletet, és webes szolgáltatás. Mostantól létrehozhat egy új webszolgáltatás a módosításokat. Miután üzembe helyezte az új webes szolgáltatás, majd eldöntheti, hogy állítsa le az előző webes szolgáltatás, vagy a zavartalan működés mellett az újat.
@@ -109,7 +109,7 @@ Fejlesztés és a kísérlet a további részletekért tekintse meg a következ�
 
 * a kísérlet - átalakítás [hogyan készülhet fel a modell üzembe helyezése az Azure Machine Learning Studióban](convert-training-experiment-to-scoring-experiment.md)
 * Deploying a Web service - [egy Azure Machine Learning webszolgáltatás üzembe helyezése](publish-a-machine-learning-web-service.md)
-* a modell - átképezési [Retrain Machine Learning-modellek](retrain-models-programmatically.md)
+* a modell - átképezési [Retrain Machine Learning-modellek](/azure/machine-learning/studio/retrain-machine-learning-model)
 
 A teljes folyamat példákért lásd:
 

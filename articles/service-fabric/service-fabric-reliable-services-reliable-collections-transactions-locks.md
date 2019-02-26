@@ -3,7 +3,7 @@ title: Tranzakciók és a zárolási mód az Azure Service Fabric Reliable Colle
 description: Az Azure Service Fabric Reliable State Manager és a Reliable Collections tranzakciók és zárolását.
 services: service-fabric
 documentationcenter: .net
-author: tylermsft
+author: aljo-microsoft
 manager: timlt
 editor: masnider,rajak
 ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
-ms.author: twhitney
-ms.openlocfilehash: a7e2bfba736e3b6cee738d5a2b5283f51f60d7c5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.author: aljo
+ms.openlocfilehash: 246606792797afe0e57dbe2e582c4e94df3133d4
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185399"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806436"
 ---
 # <a name="transactions-and-lock-modes-in-azure-service-fabric-reliable-collections"></a>Tranzakciók és az Azure Service Fabric Reliable Collections zárolási mód
 
@@ -36,7 +36,7 @@ Elkülönítési szintet határozza meg, amelyhez a tranzakció el kell külön�
 Nincsenek két elkülönítési szint, amely a Reliable Collections használata támogatott:
 
 * **Megismételhető olvasási**: Megadja, hogy az utasítások módosul, hanem más tranzakciók által még nem véglegesített adatokat nem tudja olvasni és, hogy más tranzakciók módosíthatja, hogy elolvasta az aktuális tranzakció által az aktuális tranzakció befejezéséig adatok. További részletekért lásd: [ https://msdn.microsoft.com/library/ms173763.aspx ](https://msdn.microsoft.com/library/ms173763.aspx).
-* **Pillanatkép**: Megadja, hogy egy tranzakció utasítás által beolvasott adatok az adatokat, amely létezett a tranzakció kezdetekor tranzakciós szempontból konzisztens verzióját.
+* **Snapshot**: Megadja, hogy egy tranzakció utasítás által beolvasott adatok az adatokat, amely létezett a tranzakció kezdetekor tranzakciós szempontból konzisztens verzióját.
   A tranzakció felismerje csak a tranzakció megkezdése előtt is voltak adatok módosítását.
   Adatok módosítások fényében, amelyek más tranzakciók által az aktuális tranzakció megkezdése után az aktuális tranzakció végrehajtása kimutatások nem láthatók el.
   Milyen hatása, mintha az utasítások tranzakcióban, létezett a tranzakció kezdetekor pillanatkép a véglegesített adatokat szerezhet.

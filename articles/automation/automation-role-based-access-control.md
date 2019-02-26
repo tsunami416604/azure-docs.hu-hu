@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4fb90dbdb02fc0a0448b8cb6723c980c0fe41bd6
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 963bc8f6602a33ed703344f5277bb427f11390bb
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424319"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823518"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Szerepköralapú hozzáférés-vezérlés az Azure Automationben
 
@@ -142,7 +142,7 @@ A Log Analytics-közreműködő az összes monitorozási adat olvashatja és sze
 |Microsoft.Compute/virtualMachines/extensions/*|Létrehozása és kezelése a klasszikus virtuális gépi bővítmények.|
 |Microsoft.Insights/alertRules/*|Olvasási, írási és törlési riasztási szabályok.|
 |Microsoft.Insights/diagnosticSettings/*|Diagnosztikai beállítások olvasása/írása/törlése.|
-|Microsoft.OperationalInsights/*|A Log Analytics felügyelete.|
+|Microsoft.OperationalInsights/*|Az Azure Monitor naplóinak kezelése.|
 |Microsoft.OperationsManagement/*|A munkaterületeken megoldások kezelése.|
 |Microsoft.Resources/deployments/*|Létrehozhat és kezelhet erőforráscsoportok üzemelő példányainak.|
 |Microsoft.Resources/subscriptions/resourcegroups/deployments/*|Létrehozhat és kezelhet erőforráscsoportok üzemelő példányainak.|
@@ -156,8 +156,8 @@ A Log Analytics olvasó megtekintheti és keresheti az összes figyelési adatot
 |**Műveletek**  |**Leírás**  |
 |---------|---------|
 |*/read|Olvassa el a titkos kulcsok kivételével az összes típusú erőforrásokat.|
-|Microsoft.OperationalInsights/workspaces/analytics/query/action|A Log Analytics lekérdezések kezelése.|
-|Microsoft.OperationalInsights/workspaces/search/action|Keressen rá a Log Analytics-adatok.|
+|Microsoft.OperationalInsights/workspaces/analytics/query/action|Az Azure Monitor naplóira lekérdezések kezelése.|
+|Microsoft.OperationalInsights/workspaces/search/action|Keressen rá az Azure Monitor naplóadatokat.|
 |Microsoft.Support/*|Hozzon létre, és kezelhetik a támogatási jegyeket.|
 |**Nincs művelet**| |
 |Microsoft.OperationalInsights/workspaces/sharedKeys/read|Nem sikerült beolvasni a megosztott hozzáférési kulcsokat.|

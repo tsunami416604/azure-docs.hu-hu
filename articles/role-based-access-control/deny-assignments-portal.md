@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ec5e3daf1d4d799aab043f241548a3b4177f567c
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 48098ba32a8eb1c2d7a7bafa246b8e850229b430
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343238"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804535"
 ---
 # <a name="view-deny-assignments-for-azure-resources-using-the-azure-portal"></a>Megtekintése az Azure portal segítségével Azure-erőforrások hozzárendelések megtagadása
 
@@ -28,7 +28,7 @@ ms.locfileid: "56343238"
 Ez a cikk bemutatja, hogyan megtekintése az Azure portal segítségével hozzárendelések elutasítása.
 
 > [!NOTE]
-> Jelenleg megtagadási hozzárendelések csak olvashatók, és csak állítható be az Azure-ban.
+> Jelenleg megtagadási hozzárendelések csak olvashatók, és csak a Microsoft által állítható be.
 
 ## <a name="view-deny-assignments"></a>Megtagadási hozzárendelések megtekintése
 

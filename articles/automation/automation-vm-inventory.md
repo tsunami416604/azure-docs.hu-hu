@@ -10,12 +10,12 @@ ms.author: jehunte
 ms.date: 02/06/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2d6cc55ec2e3be3510b9547025db17bcbee97e10
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: c0caece57885dfa3c26d368990a6af8e5b14eed6
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765381"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823994"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Azure-beli virtuális gépek kezelése leltár használatával
 
@@ -36,7 +36,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. Az Azure Portal bal oldali panelén válassza a **Virtuális gépek** elemet.
 2. Válasszon ki egy virtuális gépet a listáról.
 3. Az a **erőforrás** menü alatt **műveletek**, jelölje be **készlet**.
-4. Válasszon ki egy Log Analytics-munkaterületet az adatnaplók tárolásához.
+4. Válassza ki a Log Analytics-munkaterületet az adatnaplók tárolásához.
     Ha az adott régióban nincsenek az Ön számára elérhető munkaterületek, a rendszer megkéri, hogy hozzon létre egy alapértelmezett munkaterületet és egy Automation-fiókot.
 5. A számítógép előkészítéséhez válassza az **Engedélyezés** lehetőséget.
 
@@ -91,7 +91,9 @@ Az alábbi táblázatok ismertetik minden állítható be a különböző kateg�
 
 ## <a name="manage-machine-groups"></a>Gép csoportok kezelése
 
-Készlet létrehozása és gép csoportok megtekintése a Log Analytics lehetővé teszi. Gépcsoportok egy lekérdezést a Log Analytics által meghatározott gépek gyűjteményei.
+Készlet létrehozása és gép csoportok megtekintése az Azure Monitor naplóira teszi lehetővé. Gépcsoportok határozzák meg egy lekérdezést az Azure Monitor naplóira gépek gyűjteményei.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 A gép select groups nézetre a **csoportok Machine** fülre a készlet oldalon.
 
@@ -116,7 +118,7 @@ A virtuális gép eltávolítása a leltárkezelésből:
 3. A listában válassza ki a leválasztani kívánt virtuális gépeket. A virtuális gép mellett egy zöld pipa és az **Ez a munkaterület** felirat jelenik meg az **OMS-kapcsolat** oszlopban.
 
    >[!NOTE]
-   >OMS most már a Log Analytics nevezik.
+   >OMS mostantól az Azure Monitor naplóira nevezik.
    
 4. A következő lap tetején válassza a **Leválasztás** lehetőséget.
 5. A megerősítési ablakban válassza a **Igen** lehetőséget.

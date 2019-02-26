@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 290230237a68730a908c6fd0fb0df1d63035b93b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: cb2261e92e90bef7cdd51b0ebf7a4ed34ca01624
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247340"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806233"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse táblák tervezése
 
@@ -61,7 +61,7 @@ CREATE TABLE MyTable (col1 int, col2 int );
 ```
 
 ### <a name="temporary-table"></a>Az ideiglenes tábla
-A munkamenet időtartama alatt csak létezik egy ideiglenes táblát. Egy ideiglenes táblát is használhatja, megakadályozza, hogy más célra ideiglenes eredmények jelennek meg és a karbantartásához csökkentése érdekében.  Ideiglenes táblák is a helyi tárolók használatára, mivel ezek néhány művelet nagyobb teljesítményt kínálnak.  További információkért lásd: [ideiglenes táblák](sql-data-warehouse-tables-temporary.md).
+A munkamenet időtartama alatt csak létezik egy ideiglenes táblát. Egy ideiglenes táblát is használhatja, megakadályozza, hogy más felhasználók ideiglenes eredmények jelennek meg és a karbantartásához csökkentése érdekében.  Ideiglenes táblák is a helyi tárolók használatára, mivel ezek néhány művelet nagyobb teljesítményt kínálnak.  További információkért lásd: [ideiglenes táblák](sql-data-warehouse-tables-temporary.md).
 
 ### <a name="external-table"></a>Külső tábla
 A külső tábla mutat az Azure Storage-blobból vagy Azure Data Lake Store található adatokat. A CREATE TABLE AS SELECT utasítás együtt használja, ha egy külső táblából importálja az adatokat az SQL Data warehouse-bA. Külső táblák ezért hasznosak lehetnek az adatok betöltéséhez. Betöltési oktatóanyag: lásd: [bA a PolyBase használatával az adatok betöltése az Azure blob storage-ból](load-data-from-azure-blob-storage-using-polybase.md).
@@ -95,7 +95,7 @@ A tábla kategória határozza meg, melyik lehetőség kiválasztása a terjeszt
 |:---------------|:--------------------|
 | (Tény)           | Használja a kivonatoló terjesztési fürtözött oszlopcentrikus indexszel rendelkező. Javítja a teljesítményt, ha a két kivonattáblák csatlakoznak a terjesztési ugyanabban az oszlopban. |
 | Dimenzió      | Replikált táblák kisebb használja. Ha táblákat tárolásához minden számítási csomóponton túl nagy, használja a kivonatoló elosztott. |
-| Fájlok másolása folyamatban        | Használjon ciklikus időszeletelést az átmeneti tárolási tábla. A CTAS terhelés gyors. Amint az adatok az előkészítési táblában lévő, használja az INSERT... Válassza ki az adatok áthelyezése a termelési táblákba. |
+| Előkészítés        | Használjon ciklikus időszeletelést az átmeneti tárolási tábla. A CTAS terhelés gyors. Amint az adatok az előkészítési táblában lévő, használja az INSERT... Válassza ki az adatok áthelyezése az termelési táblákba. |
 
 ## <a name="table-partitions"></a>Táblapartíciók
 Particionált tábla tárolja, és a táblázat sorait az adattartomány alapján műveleteket hajt végre. Például egy táblázat sikerült kell particionálni, naponta, hónap vagy év szerint. Javíthatja a lekérdezési teljesítmény keresztül partíció eltávolítási, amely korlátozza a lekérdezés megvizsgálja, az adatok egy partíción belül. Emellett akkor is fenntartható a partíció közötti váltás az adatokat. Az adatokat az SQL Data Warehouse már terjesztve van, mert túl sok partíció lelassíthatja a lekérdezések teljesítményét. További információkért lásd: [particionálási útmutató](sql-data-warehouse-tables-partition.md).

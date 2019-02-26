@@ -1,6 +1,6 @@
 ---
-title: WSFC, hozzon létre figyelőt, és konfigurálja az ILB Always On rendelkezésre állási csoporthoz az SQL Server virtuális gép az Azure gyorsindítási sablon
-description: Használja az Azure gyorsindítási sablonok segítségével egyszerűsítheti azok rendelkezésre állási csoportok létrehozása az SQL Server virtuális gépek az Azure-ban a fürt létrehozása sablon használatával SQL virtuális gépek a fürthöz, hozza létre a figyelőt, és konfigurálja az ILB.
+title: Egy Azure virtuális Gépen futó SQL Server AlwaysOn rendelkezésre állási csoport konfigurálása Azure gyorsindítási sablonok használatával
+description: Azure gyorsindítási sablonok segítségével a Windows feladatátvevő fürt létrehozása, SQL Server virtuális gépek csatlakoztatása a fürthöz, hozzon létre a figyelőt és a belső Load Balancer konfigurálása az Azure-ban.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/04/2018
+ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 093fa1414ec624f66bc7cb4559fa8c0535834c10
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 675933b46a228f636c4907e84d66263dde52f274
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981927"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823331"
 ---
-# <a name="create-wsfc-listener-and-configure-ilb-for-an-always-on-availability-group-on-a-sql-server-vm-with-azure-quickstart-template"></a>WSFC, hozzon létre figyelőt, és konfigurálja az ILB Always On rendelkezésre állási csoporthoz az SQL Server virtuális gép az Azure gyorsindítási sablon
+# <a name="use-azure-quickstart-templates-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Egy Azure virtuális Gépen futó SQL Server AlwaysOn rendelkezésre állási csoport konfigurálása Azure gyorsindítási sablonok használatával
 Ez a cikk ismerteti, hogyan használhatja az Azure gyorsindítási sablonok részlegesen automatizálni az üzembe helyezést egy Always On rendelkezésre állási csoport konfigurációjának az SQL Server Virtual Machines az Azure-ban. Nincsenek az a folyamat által használt két Azure gyorsindítási sablonok. 
 
    | Sablon | Leírás |
@@ -38,7 +38,7 @@ A rendelkezésre állási csoport konfigurációjának más részein kell elvég
 A telepítő egy Always On rendelkezésre állási csoport gyorsindítási sablonok használatával automatizálhatja, már rendelkeznie kell a következő előfeltételek vonatkoznak: 
 - Egy [Azure-előfizetés](https://azure.microsoft.com/free/).
 - Egy erőforráscsoport, egy tartományvezérlővel. 
-- Legalább egy tartományhoz csatlakoztatott [virtuális gépek Azure futó SQL Server 2016 (vagy nagyobb) Enterprise verzióban](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) azonos rendelkezésre állási csoport vagy a rendelkezésre állási zónában, amely már a [regisztrálni az SQL virtuális gép erőforrás-szolgáltató](virtual-machines-windows-sql-ahb.md#register-existing-sql-server-vm-with-sql-resource-provider).  
+- Legalább egy tartományhoz csatlakoztatott [virtuális gépek Azure futó SQL Server 2016 (vagy nagyobb) Enterprise verzióban](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) azonos rendelkezésre állási csoport vagy a rendelkezésre állási zónában, amely már a [regisztrálni az SQL virtuális gép erőforrás-szolgáltató](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider).  
 
 
 ## <a name="step-1---create-the-wsfc-and-join-sql-server-vms-to-the-cluster-using-quickstart-template"></a>1. lépés – a WSFC létrehozása és az SQL Server rendszerű virtuális gépekhez csatlakozhat a fürthöz gyorsindítási sablon használatával 
@@ -74,7 +74,7 @@ Miután az SQL virtuális gép új erőforrás-szolgáltató az SQL Server virtu
 
 
 ## <a name="step-2---manually-create-the-availability-group"></a>2. lépés – a rendelkezésre állási csoport kézi létrehozása 
-A rendelkezésre állási csoport manuálisan létrehoznia, ahogy azt szokásosan tenné, segítségével [PowerShell](/sql/database-engine/availability-groups/windows/create-an-availability-group-sql-server-powershell?view=sql-server-2017), [SQL Server Management Studio](/sql/database-engine/availability-groups/windows/use-the-availability-group-wizard-sql-server-management-studio?view=sql-server-2017) vagy [Transact-SQL](/sql/database-engine/availability-groups/windows/create-an-availability-group-transact-sql?view=sql-server-2017). 
+A rendelkezésre állási csoport manuálisan létrehoznia, ahogy azt szokásosan tenné, segítségével [SQL Server Management Studio](/sql/database-engine/availability-groups/windows/use-the-availability-group-wizard-sql-server-management-studio), [PowerShell](/sql/database-engine/availability-groups/windows/create-an-availability-group-sql-server-powershell), vagy [Transact-SQL](/sql/database-engine/availability-groups/windows/create-an-availability-group-transact-sql). 
 
   >[!IMPORTANT]
   > Tegye **nem** jelenleg figyelő létrehozása, mert által automatikusan végbemegy a **101-sql-vm-aglistener-telepítés** gyorsindítási sablon 4. lépés. 
@@ -104,7 +104,7 @@ Az Always On rendelkezésre állási csoport (rendelkezésre állási csoport) f
 6. Kattintson a **Létrehozás** gombra. 
 
 
-  >[!NOTE]
+  >[!IMPORTANT]
   > Minden egyes SQL Server rendszerű virtuális gép nyilvános IP-erőforrásból rendelkeznie kell a standard Termékváltozat a Standard Load Balancer való kompatibilitás. A virtuális gép nyilvános IP-erőforrás-Termékváltozat határozza meg, lépjen a **erőforráscsoport**, jelölje be a **nyilvános IP-cím** erőforrás számára a kívánt SQL Server virtuális Gépet, és keresse meg az értéket **Termékváltozat**  , a **áttekintése** ablaktáblán. 
 
 ## <a name="step-4---create-the-ag-listener-and-configure-the-ilb-with-the-quickstart-template"></a>4. lépés – a rendelkezésre állási csoport figyelőjének létrehozásához, és konfigurálja az ILB-gyorssablon

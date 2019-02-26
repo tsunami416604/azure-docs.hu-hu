@@ -5,17 +5,17 @@ description: Négy feltétel az adatokat meg kell felelnie ahhoz, hogy készen �
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 01/03/2018
-ms.openlocfilehash: 4f474fd6ac2fa6a4f44aacf0eacb85a92fdf1de9
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 9cd2d1264d08887f75eaf7ae624b6a45ec8d6a34
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456469"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817575"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Készen állnak adatai az elemzésre?
 ## <a name="video-2-data-science-for-beginners-series"></a>2. Videó: Adatelemzés kezdőknek sorozat
@@ -104,4 +104,4 @@ A megfelelő, a csatlakoztatott, a pontos adatokat, és ahhoz, hogy rendelkezik 
 
 ## <a name="next-steps"></a>További lépések
 * [Egy első adatelemzési kísérlet a Machine Learning Studio kipróbálása](create-experiment.md)
-* [Bevezetés a gépi tanulás a Microsoft Azure](what-is-machine-learning.md)
+* [Bevezetés a gépi tanulás a Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)

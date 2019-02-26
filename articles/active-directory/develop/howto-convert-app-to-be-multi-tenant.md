@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: justhu, elisol
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 766eb7864a6bce296daafc86179e2deed77f8e02
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 44feaecd42a8c3ce0ac0c712aa27b2480fd2a486
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163122"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806929"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Útmutató: Azure Active Directory-felhasználók bejelentkeztetése több-bérlős alkalmazásminta használatával
 
@@ -39,7 +39,7 @@ Az alkalmazás alakítható át egy Azure ad-ben több-bérlős alkalmazás nég
 1. [Frissíteni kell a több-bérlős az alkalmazás regisztrálása](#update-registration-to-be-multi-tenant)
 2. [Frissítse a kódot, hogy kérelmeket küldjön a/Common végpont](#update-your-code-to-send-requests-to-common)
 3. [Több kiállítók a következők kezeléséhez a kód frissítése](#update-your-code-to-handle-multiple-issuer-values)
-4. Megismerheti a felhasználói és rendszergazdai hozzájárulás, és adja meg a megfelelő kód módosítása
+4. [Megismerheti a felhasználói és rendszergazdai hozzájárulás, és adja meg a megfelelő kód módosítása](#understand-user-and-admin-consent)
 
 Tekintsük át részletesen minden lépése. Emellett egyenesen is ugorhat [ezen a listán szereplő minták több-bérlős][AAD-Samples-MT].
 

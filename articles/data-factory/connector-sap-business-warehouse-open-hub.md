@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/28/2019
+ms.date: 02/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 74061eb081fcc7c2c84707f2414a2edfbfde3289
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: fe0783891bd5f571c06551e19c154d6f22768e84
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299537"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821541"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Adatok másolása az SAP Business warehouse-hoz az Azure Data Factory használatával nyissa meg központon keresztül
 
@@ -27,7 +27,7 @@ Ez a cikk ismerteti, hogyan használja a másolási tevékenység az Azure Data 
 
 [Az SAP BW Open Hub Service](https://wiki.scn.sap.com/wiki/display/BI/Overview+of+Open+Hub+Service) hatékony módja az adatok kinyerése az SAP BW. Az alábbi ábrán egy tipikus folyamatok rendelkező ügyfeleink az SAP-rendszerhez, mely megkülönbözteti a kis adatfolyam-gyűjteményre, a SAP ECC -> PSA az -> DSO adatkocka ->.
 
-Az SAP BW Open Hub cél (OHD), amelyhez az SAP-adatok továbbítón keresztüli a cél határozza meg. Támogatott által SAP adatok átvitele folyamatban (DTP) objektumok használható nyílt hub adatforrások, például DSO InfoCube, MultiProvider, adatforrás, stb. Nyissa meg Hub cél típusa – a továbbítón keresztüli tárolódnak az adatok - adatbázistáblák (helyi vagy távoli) is lehet, és egybesimított fájlok. Az SAP BW Open Hub connector támogatása az adatok másolása OHD BW helyi táblájában. Abban az esetben, ha használ egyéb, közvetlenül csatlakozhat az adatbázis vagy fájl rendszer más összekötők használatával.
+Az SAP BW Open Hub cél (OHD), amelyhez az SAP-adatok továbbítón keresztüli a cél határozza meg. Támogatott által SAP adatok átvitele folyamatban (DTP) objektumok használható nyílt hub adatforrások, például DSO InfoCube, adatforrás, stb. Nyissa meg Hub cél típusa – a továbbítón keresztüli tárolódnak az adatok - adatbázistáblák (helyi vagy távoli) is lehet, és egybesimított fájlok. Az SAP BW Open Hub connector támogatása az adatok másolása OHD BW helyi táblájában. Abban az esetben, ha használ egyéb, közvetlenül csatlakozhat az adatbázis vagy fájl rendszer más összekötők használatával.
 
 ![SAP BW Open Hub](./media/connector-sap-business-warehouse-open-hub/sap-bw-open-hub.png)
 
@@ -37,7 +37,7 @@ SAP Business Warehouse nyílt központon keresztül érkező adatokat másolhatj
 
 Pontosabban az SAP Business Warehouse nyílt Hub összekötő támogatja:
 
-- SAP Business Warehouse **7.30 vagy újabb verzió (a legutóbbi SAP támogatási csomag veremben lévő a 2015 évi. után kiadott)**.
+- SAP Business Warehouse **7.01 vagy újabb verzió (a legutóbbi SAP támogatási csomag veremben lévő a 2015 évi. után kiadott)**.
 - Adatmásolás keresztül nyitva Hub cél helyi táblában, amely alá lehet DSO, InfoCube, MultiProvider, adatforrás, stb.
 - Alapszintű hitelesítés használata az adatok másolását.
 - Csatlakozás az alkalmazáskiszolgáló.

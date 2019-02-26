@@ -3,7 +3,7 @@ title: Az Azure Service Fabric ReliableConcurrentQueue
 description: ReliableConcurrentQueue, amely lehetővé teszi a párhuzamos enqueues és dequeues nagy átviteli sebességű üzenetsor.
 services: service-fabric
 documentationcenter: .net
-author: tylermsft
+author: aljo-microsoft
 manager: timlt
 editor: raja,tyadam,masnider,vturecek
 ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
-ms.author: twhitney
-ms.openlocfilehash: 61b53a23fdbb08b226878d9b702ec6bb2879f8bc
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.author: aljo
+ms.openlocfilehash: d4d399258ac1bd83fe4cfb46344576ca74e66f1e
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185035"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805137"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Az Azure Service Fabric ReliableConcurrentQueue bemutatása
 Megbízható egyidejű üzenetsor egy aszinkron, a tranzakciós és a replikált üzenetsor mely funkciók nagy feldolgozási sorba helyezni a, és eltávolítása a sorból műveletek. Célja a nagy átviteli sebességű és kis késése révén a szigorú FIFO rendezése által biztosított lazítani [megbízható várólista](https://msdn.microsoft.com/library/azure/dn971527.aspx) és a egy legjobb rendezése biztosítja.
@@ -30,7 +30,7 @@ Megbízható egyidejű üzenetsor egy aszinkron, a tranzakciós és a replikált
 |--------------------------------|------------------------------------------------------------------|
 | typ void Enqueue(T item)           | A feladat EnqueueAsync (ITransaction tx, T elem)                       |
 | logikai TryDequeue (végre T eredmény)  | < < T >> ConditionalValue feladat TryDequeueAsync (ITransaction tx)  |
-| int Count()                    | hosszú Count()                                                     |
+| int Count()                    | long Count()                                                     |
 
 ## <a name="comparison-with-reliable-queuehttpsmsdnmicrosoftcomlibraryazuredn971527aspx"></a>Összehasonlítás a [megbízható várólista](https://msdn.microsoft.com/library/azure/dn971527.aspx)
 
@@ -118,7 +118,7 @@ using (var txn = this.StateManager.CreateTransaction())
 
 Tegyük fel, hogy a feladat sikeresen befejeződött, és, hogy voltak-e a várólista módosítása egyidejű tranzakciók. Mivel nincs következtetésekhez végezhető a várólistában lévő elemek sorrendjét, bármely harmadik elem előfordulhat, hogy lehet el távolítva a sorból, bármilyen sorrendben. A várólista megkísérli az elemek megtartása az eredeti (sorba) sorrendben, de sorrendjét húzással módosíthatja az egyidejű művelet vagy hibák miatt is kényszeríthető.  
 
-- *2. eset: A feladat párhuzamos feldolgozásához*
+- *2. eset: Parallel Dequeue Task*
 
 ```
 // Parallel Task 1

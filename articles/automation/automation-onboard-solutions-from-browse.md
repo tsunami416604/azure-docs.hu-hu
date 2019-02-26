@@ -9,12 +9,12 @@ ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 9a5e75b762c2ab0591212ce0bc3d7fac42132f8a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 84b66605939abd0f676625a5959f4a31ef1774db
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116915"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818289"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Az Update Management, Change Tracking és Inventory megoldások a több virtuális gépen
 
@@ -51,7 +51,7 @@ A szűrővezérlők segítségével válassza ki a virtuális gépek különböz
 
 ![Az Update management megoldás előkészítése](media/automation-onboard-solutions-from-browse/onboardsolutions.png)
 
-Tekintse át az egyik lehetőséget a Log analytics-munkaterületet és Automation-fiók. Egy meglévő munkaterületet és Automation-fiók ki van jelölve, alapértelmezés szerint. Ha egy másik Log Analytics-munkaterületet és Automation-fiókot használni szeretne, kattintson a **egyéni** válassza ki azokat a **egyéni konfiguráció** lapot. Ha úgy dönt, hogy a Log Analytics-munkaterülettel, egy ellenőrzési kérés érkezett határozza meg, ha egy olyan Automation-fiókkal társított. Ha egy összekapcsolt Automation-fiókot talál, látni fogja az alábbi képernyőn. Ha elkészült, kattintson a **OK**.
+Tekintse át az egyik lehetőséget a Log Analytics-munkaterületet és Automation-fiók. Egy meglévő munkaterületet és Automation-fiók ki van jelölve, alapértelmezés szerint. Ha egy másik Log Analytics-munkaterületet és Automation-fiókot használni szeretne, kattintson a **egyéni** válassza ki azokat a **egyéni konfiguráció** lapot. Ha úgy dönt, hogy a Log Analytics-munkaterülettel, egy ellenőrzési kérés érkezett határozza meg, ha egy olyan Automation-fiókkal társított. Ha egy összekapcsolt Automation-fiókot talál, látni fogja az alábbi képernyőn. Ha elkészült, kattintson a **OK**.
 
 ![Válassza ki a munkaterületet és fiókot](media/automation-onboard-solutions-from-browse/selectworkspaceandaccount.png)
 
@@ -59,7 +59,7 @@ Ha a kiválasztott munkaterület nincs Automation-fiók van csatolva, látni fog
 
 ![Nincs munkaterület](media/automation-onboard-solutions-from-browse/no-workspace.png)
 
-Ha engedélyezte a megoldásokat, csak bizonyos régiókban támogatottak egy Log Analytics-munkaterületet és Automation-fiók összekapcsolása.
+Ha engedélyezte a megoldásokat, Log Analytics-munkaterületet és Automation-fiók összekapcsolása csak bizonyos régiókban támogatottak.
 
 Az alábbi táblázat bemutatja a támogatott leképezések:
 
@@ -89,7 +89,7 @@ A következő megoldásokat a Log Analytics-munkaterület függnek:
 * [Változáskövetés](automation-change-tracking.md)
 * [Virtuális gépek indítása/leállítása munkaidőn kívül](automation-solution-vm-management.md)
 
-Ha úgy dönt, hogy már nem szeretne az Automation-fiók integrálása a Log Analytics-szel, megszüntetheti a fiók közvetlenül az Azure Portalról. Mielőtt továbblépne, először el kell távolítania a megoldások azt korábban említettük, ellenkező esetben ez a folyamat megakadályozza a folytatás. Tekintse át a cikk az adott megoldás importált távolítsa el a szükséges lépések megértéséhez.
+Ha úgy dönt, hogy már nem szeretne az Automation-fiók integrálása a Log Analytics-munkaterület, megszüntetheti a fiók közvetlenül az Azure Portalról. Mielőtt továbblépne, először el kell távolítania a megoldások azt korábban említettük, ellenkező esetben ez a folyamat megakadályozza a folytatás. Tekintse át a cikk az adott megoldás importált távolítsa el a szükséges lépések megértéséhez.
 
 Miután eltávolítja ezeket a megoldásokat, az Automation-fiók leválasztása a következő lépéseket végezheti.
 

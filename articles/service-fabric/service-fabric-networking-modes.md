@@ -3,7 +3,7 @@ title: Konfigurálja az Azure Service Fabric-tároló szolgáltatások hálózat
 description: Ismerje meg, hogyan állítható be az Azure Service Fabric által támogatott különböző hálózatkezelés módjai.
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: d552c8cd-67d1-45e8-91dc-871853f44fc6
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: twhitney, subramar
-ms.openlocfilehash: 62812dd8f92bcace8f764a21aba608157815cec3
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.author: aljo, subramar
+ms.openlocfilehash: 2ae533c81e68f8f6a32ad8fa0e45aed3c63eceb9
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093154"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805256"
 ---
 # <a name="service-fabric-container-networking-modes"></a>A Service Fabric tárolóalapú hálózatkezelés módjai
 
@@ -209,7 +209,7 @@ Ha egy tárolószolgáltatás újraindítja vagy áthelyezi egy másik csomópon
  
 3. Csak Windows-fürtök esetén a következő értékeket a virtuális hálózat UDP/53-as port a megnyíló Azure hálózati biztonsági csoport (NSG) szabály beállítása:
 
-   |Beállítás |Value | |
+   |Beállítás |Érték | |
    | --- | --- | --- |
    |Prioritás |2000 | |
    |Name (Név) |Custom_Dns  | |

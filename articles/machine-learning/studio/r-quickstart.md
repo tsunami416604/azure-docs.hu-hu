@@ -5,17 +5,17 @@ description: Az R programozási oktatóanyag segítségével gyorsan az R nyelv-
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/06/2017
-ms.openlocfilehash: d4e267915338e8043138be0ca1a4922ac84d8eab
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 1c0035b959cf08253e92eb5dade36fc3d020ab25
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456265"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818595"
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning-studio"></a>Gyors üzembe helyezési oktatóanyag az R programozási nyelv, az Azure Machine Learning Studióban
 

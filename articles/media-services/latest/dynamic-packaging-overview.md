@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: juliako
-ms.openlocfilehash: 02af95de3793f1d56204b17b0a3d91efbb285e55
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: d3222b2a2c47d6c2db4ca890a2618e89891d9deb
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56726414"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804824"
 ---
 # <a name="dynamic-packaging"></a>Dinamikus csomagolás
 
@@ -26,9 +26,9 @@ A Microsoft Azure Media Services is használható, hogy sok adatforrás fájl m�
 
 [Streamvégpontok](streaming-endpoint-concept.md) a médiatartalmak eredményjelző ügyfél lejátszók Media Services dinamikus csomagolási szolgáltatás. A dinamikus csomagolás funkciója, amely az összes Streamelési végpontokkal (Standard vagy prémium szintű) standard származik. Részeként van ennek a funkciónak a Media Services v3 kapcsolódó költségek. A dinamikus csomagolás használatával szüksége az Alkalmazásjegyzék-fájl az adaptív sávszélességű MP4-fájlokat tartalmazó objektumot. Ezt követően a jegyzék vagy töredékrész kérelemben megadott formátumnak megfelelően, Önnek a streamet a kiválasztott protokollal. Így elég egyetlen tárolási formátumban tárolni a fájlokat (és kifizetni a tárhelyüket), a Media Services szolgáltatás elkészíti és kiszolgálja az ügyféltől érkező kérésnek megfelelő választ.
 
-A Media Services szolgáltatásban a dinamikus csomagolás e igény szerinti vagy élő folyamatos átviteli szolgál.
+A Media Services szolgáltatásban a dinamikus csomagolás vannak streamelési igény szerinti vagy élő szolgál.
 
-Az alábbi ábrán látható, a dinamikus csomagolás munkafolyamat.
+Az alábbi ábrán látható, a dinamikus csomagolás munkafolyamat igényalapú streameléshez.
 
 ![A dinamikus kódolás](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
@@ -39,7 +39,11 @@ Az alábbiakban látható egy közös Media Services adatfolyam-továbbítási m
 1. Töltse fel egy bemeneti fájlt (úgynevezett mezzanine-fájlt). Ha például H.264, MP4 vagy WMV (a támogatott formátumok listáját lásd: [a Media Encoder Standard által támogatott formátumok](media-encoder-standard-formats.md).
 2. Kódolja a mezzanine-fájlt a H.264 MP4 adaptív sávszélességű csoportok.
 3. Tegye közzé az adategységet, amely tartalmazza az adaptív sávszélességű MP4 típusú beállításkészlettel.
-4. Hozhat létre, amelyek különböző formátumokban (HLS, Dash és Smooth Streaming) cél URL-címeket. A folyamatos átviteli végponton lenne gondoskodik a megfelelő jegyzékfájlban és a kérelmek ezeket különböző formátumokban kiszolgáló.
+4. Hozhat létre, amelyek különböző formátumokban (HLS, Dash és Smooth Streaming) cél URL-címeket. A folyamatos átviteli végponton lenne gondoskodik a megfelelő jegyzékfájlban és a kérelmek ezeket különböző formátumokban kiszolgáló. Példa:
+
+ - HLS: `http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl)`
+ - Vonal: `http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf)`
+ - Zökkenőmentes: `http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest`
  
 ## <a name="video-codecs-supported-by-dynamic-packaging"></a>A dinamikus becsomagolás által támogatott videókodekek
 

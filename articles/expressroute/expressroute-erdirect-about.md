@@ -1,21 +1,21 @@
 ---
 title: Kapcsolatos az ExpressRoute közvetlen – Azure |} A Microsoft Docs
-description: Ez az oldal áttekintést az ExpressRoute közvetlen (előzetes verzió)
+description: Ez az oldal ExpressRoute közvetlen áttekintést nyújt.
 services: expressroute
-author: mialdrid
+author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 3124e98dd035080c2989849232b978c5d4a563ea
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 98c5dc7dc6d977525d889a4cd97492183d1aad22
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100737"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818153"
 ---
-# <a name="about-expressroute-direct-preview"></a>Kapcsolatos az ExpressRoute közvetlen (előzetes verzió)
+# <a name="about-expressroute-direct"></a>Az ExpressRoute Direct ismertetése
 
 Az ExpressRoute közvetlen lehetőséget nyújt a közvetlenül a Microsoft társviszony-létesítési helyszínek stratégiai a világ különböző pontjain található globális hálózatának csatlakoztathatnak. Az ExpressRoute közvetlen kettős 100-GB/s kapcsolat, amely támogatja az aktív/aktív kapcsolat ipari méretekben biztosít.
 
@@ -25,14 +25,9 @@ Az ExpressRoute közvetlen biztosít fő funkcióját tartalmazza, de nem korlá
 * Szabályozott módon, és például dedikált és elkülönített kapcsolatot igénylő iparágakban a fizikai elszigetelése: Banki szolgáltatások, kormányzati és kereskedelmi
 * A kapcsolatcsoportok elosztásának üzleti egységen alapuló, részletes szabályzása
 
-> [!IMPORTANT]
-> Az ExpressRoute közvetlen jelenleg előzetes verzióban érhető el.
->
-> A nyilvános előzetes verzióra nem vonatkozik szolgáltatói szerződés, és nem használható éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+## <a name="onboard-to-expressroute-direct"></a>Az ExpressRoute közvetlen előkészítése
 
-## <a name="enroll-in-the-preview"></a>Regisztráció az előzetes verzióra
-
-Mielőtt használná az ExpressRoute közvetlen, először regisztrálnia kell előfizetését az előzetes verzióban érhető el. E-mail küldése a regisztrációhoz <ExpressRouteDirect@microsoft.com> meg előfizetési azonosítóját, beleértve az alábbiakat:
+Mielőtt használná az ExpressRoute közvetlen, először regisztrálnia kell az előfizetés. E-mail küldése a regisztrációhoz <ExpressRouteDirect@microsoft.com> meg előfizetési azonosítóját, beleértve az alábbiakat:
 
 * Szeretne elvégezni a forgatókönyvek **ExpressRoute közvetlen**
 * Hely beállításai – lásd: [partnerek és társviszony-létesítési helyszínek](expressroute-locations-providers.md) teljes listáját az összes hely
@@ -74,7 +69,7 @@ Az ExpressRoute közvetlen támogatja QinQ és a Dot1Q VLAN-címkézést.
 
 ## <a name="sla"></a>SLA
 
-Az ExpressRoute közvetlen aktív-aktív redundáns kapcsolatok a Microsoft globális hálózatban ugyanazon nagyvállalati szintű SLA-t biztosít. ExpressRoute-infrastruktúra képes legyen redundáns, és a Microsoft globális hálózati kapcsolatokra redundáns és számos különböző, és ennek megfelelően méretezi az ügyfél követelményeinek. Az előzetes verzióban lesz nem biztosítunk szolgáltatói szerződést, és csak nem éles számítási feladatokhoz érdemes megfontolni.
+Az ExpressRoute közvetlen aktív-aktív redundáns kapcsolatok a Microsoft globális hálózatban ugyanazon nagyvállalati szintű SLA-t biztosít. ExpressRoute-infrastruktúra képes legyen redundáns, és a Microsoft globális hálózati kapcsolatokra redundáns és számos különböző, és ennek megfelelően méretezi az ügyfél követelményeinek. 
 
 ## <a name="next-steps"></a>További lépések
 

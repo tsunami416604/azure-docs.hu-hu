@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2019
-ms.openlocfilehash: 407bb2e39e92390576da9c23868f5af9c444bed4
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.date: 02/25/2019
+ms.openlocfilehash: fab5d69239c420c394645cef632d119848d0f4c4
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341534"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818833"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Az Azure Data Factory tevékenység törlése
 
@@ -37,21 +37,20 @@ Az alábbiakban a törlése tevékenység használatára vonatkozó ajánlásoka
 
 -   Ellenőrizze, hogy nem törlünk egyszerre kiírt fájlokat. 
 
--   Ha azt szeretné, törli a fájlokat vagy mappát egy helyszíni rendszerből, győződjön meg arról, egy saját üzemeltetésű integrációs modult egy nagyobb, mint 3.13 verzióval használja.
+-   Ha azt szeretné, törli a fájlokat vagy mappát egy helyszíni rendszerből, győződjön meg arról, egy saját üzemeltetésű integrációs modult egy nagyobb, mint 3,14 verzióval használja.
 
 ## <a name="supported-data-stores"></a>Támogatott adattárak
 
-### <a name="azure-data-stores"></a>Az Azure-adattárak
-
 -   [Azure Blob Storage](connector-azure-blob-storage.md)
 -   [1. generációs Azure Data Lake Storage](connector-azure-data-lake-store.md)
--   [2. generációs Azure Data Lake Storage (előzetes verzió)](connector-azure-data-lake-storage.md)
+-   [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
 
 ### <a name="file-system-data-stores"></a>A fájl rendszer adattárak
 
 -   [Fájlrendszer](connector-file-system.md)
 -   [FTP](connector-ftp.md)
--   [HDFS](connector-hdfs.md)
+-   [SFTP](connector-sftp.md)
+-   [Amazon S3](connector-amazon-simple-storage-service.md)
 
 ## <a name="syntax"></a>Szintaxis
 
@@ -61,7 +60,7 @@ Az alábbiakban a törlése tevékenység használatára vonatkozó ajánlásoka
     "type": "Delete",
     "typeProperties": {
         "dataset": {
-            "referenceName": "<dataset name to be deleted>",
+            "referenceName": "<dataset name>",
             "type": "DatasetReference"
         },
         "recursive": true/false,
@@ -87,7 +86,7 @@ Az alábbiakban a törlése tevékenység használatára vonatkozó ajánlásoka
 | maxConcurrentConnections | A storage áruház egyidejűleg mappára vagy fájlokra törlése csatlakozni a kapcsolatok száma.   |  Nem. A mező alapértelmezett értéke: `1`. |
 | EnableLogging | Azt jelzi, hogy kell-e rögzíteni a fájl vagy mappa nevét, amely törölve lett. Igaz értéke esetén szüksége további adjon meg egy tárfiókot, a naplófájl mentéséhez, hogy a naplófájl olvassa el a viselkedéseket a törlése tevékenység követheti nyomon. | Nem |
 | logStorageSettings | Csak érvényes akkor, ha enablelogging = true.<br/><br/>A megadott tárolótulajdonságok, amely egy csoportját, mentse a fájl vagy mappa törlése tevékenység által törölt nevét tartalmazó naplófájlt szeretné. | Nem |
-| linkedServiceName | Csak érvényes akkor, ha enablelogging = true.<br/><br/>A társított szolgáltatás [Azure Storage](connector-azure-blob-storage.md#linked-service-properties) vagy [Azure Data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) a fájl vagy mappa törlése tevékenység által törölt nevét tartalmazó napló tárolásához. | Nem |
+| linkedServiceName | Csak érvényes akkor, ha enablelogging = true.<br/><br/>A társított szolgáltatás [Azure Storage](connector-azure-blob-storage.md#linked-service-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#linked-service-properties), vagy [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) a napló tárolásához, amely tartalmazza a mappa vagy fájl neve, amely a törlési tevékenységet törölték. | Nem |
 | elérési út | Csak érvényes akkor, ha enablelogging = true.<br/><br/>Mentse a naplófájlt a tárfiókja elérési útja. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót az Ön számára. | Nem |
 
 ## <a name="monitoring"></a>Figyelés
@@ -100,13 +99,15 @@ Nincsenek két helyen, ahol megtekintheti és az eredmények a törlése tevéke
 
 ```json
 { 
-  "isWildcardUsed": false, 
-  "wildcard": null,
-  "type": "AzureBlobStorage",
+  "datasetName": "AmazonS3",
+  "type": "AmazonS3Object",
+  "prefix": "test",
+  "bucketName": "adf",
   "recursive": true,
-  "maxConcurrentConnections": 10,
-  "filesDeleted": 1,
-  "logPath": "https://sample.blob.core.windows.net/mycontainer/5c698705-a6e2-40bf-911e-e0a927de3f07/5c698705-a6e2-40bf-911e-e0a927de3f07.json",
+  "isWildcardUsed": false,
+  "maxConcurrentConnections": 2,  
+  "filesDeleted": 4,
+  "logPath": "https://sample.blob.core.windows.net/mycontainer/5c698705-a6e2-40bf-911e-e0a927de3f07",
   "effectiveIntegrationRuntime": "MyAzureIR (West Central US)",
   "executionDuration": 650
 }
@@ -114,22 +115,12 @@ Nincsenek két helyen, ahol megtekintheti és az eredmények a törlése tevéke
 
 ### <a name="sample-log-file-of-the-delete-activity"></a>Minta log fájl törlése tevékenység
 
-```json
-{
-  "customerInput": {
-    "type": "AzureBlob",
-    "fileName": "",
-    "folderPath": "folder/filename_to_be_deleted",
-    "recursive": false,
-    "enableFileFilter": false
-  },
-  "deletedFileList": [
-    "folder/filename_to_be_deleted"
-  ],
-  "deletedFolderList": null,
-  "error":"the reason why files are failed to be deleted"
-}
-```
+| Name (Név) | Kategória | status | Hiba |
+|:--- |:--- |:--- |:--- |
+| test1/yyy.json | Fájl | Törölve |  |
+| test2/hello789.txt | Fájl | Törölve |  |
+| test2/test3/hello000.txt | Fájl | Törölve |  |
+| test2/test3/zzz.json | Fájl | Törölve |  |
 
 ## <a name="examples-of-using-the-delete-activity"></a>Példák a törlése tevékenységgel
 
@@ -332,7 +323,7 @@ Létrehozhat egy folyamatot, fájlszűrő attribútum kihasználva a régi vagy 
 
 ### <a name="move-files-by-chaining-the-copy-activity-and-the-delete-activity"></a>Helyezze át a fájlokat a láncolás a másolási tevékenység és a törlése tevékenység
 
-Fájl másolása a másolási tevékenység használatával helyezheti át egy fájlt, majd egy a törlési tevékenységet a folyamat fájlok törléséhez.  Ha több fájlt helyezni szeretné, használja a GetMetadata tevékenység + a tevékenység: Filter + a Foreach tevékenység + a másolási tevékenység, + törlése tevékenység a következő példa:
+Fájl másolása másolási tevékenységgel és egy törlési tevékenységet a folyamat fájlok törléséhez áthelyezheti egy fájlt.  Ha több fájlt helyezni szeretné, használja a GetMetadata tevékenység + a tevékenység: Filter + a Foreach tevékenység + a másolási tevékenység, + törlése tevékenység a következő példa:
 
 > [!NOTE]
 > Ha áthelyezi a mappát egy adatkészletet, amely tartalmazza a mappa elérési útja csak, és ezután egy másolási tevékenységgel és egy hivatkozást az ugyanahhoz az adatkészlethez egy mappába, amely a törlése tevékenység óvatosan kell. Győződjön meg arról, hogy nem lesz a mappába művelet másolása és törlése művelet között érkező új fájlokat, mert van.  Ha a mappa abban a pillanatban, amikor a másolási tevékenység csak a másolási feladat befejeződött, de a törlési tevékenységet nem lett stared érkező új fájlokat, is lehet, hogy a törlési tevékenységet törli az új beérkező fájlt, amely a destinati sem lett átmásolva még törlésével a teljes mappát. 
@@ -575,9 +566,6 @@ Másolási tevékenység által használt adatok cél adatkészletet.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a fájlok másolása az Azure Data Factoryban.
-
--   [Az Azure Data Factory másolási tevékenysége](copy-activity-overview.md)
+További információ a fájlok áthelyezése az Azure Data Factoryban.
 
 -   [Adatok másolása eszköz az Azure Data Factoryban](copy-data-tool.md)
-- 

@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: ac71a88d6c2cbd3a7159ac7382872ea28e079bed
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: d88fbb3b5ece819270ca9c6b1060df31ba43854d
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728148"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821473"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Az Azure Szolgáltatásbusz-kötések az Azure Functions szolgáltatáshoz
 
@@ -48,8 +48,8 @@ Tekintse meg az adott nyelvű példa:
 * [C#](#trigger---c-example)
 * [C# script (.csx)](#trigger---c-script-example)
 * [F#](#trigger---f-example)
-* [JavaScript](#trigger---javascript-example)
 * [Java](#trigger---java-example)
+* [JavaScript](#trigger---javascript-example)
 
 ### <a name="trigger---c-example"></a>Eseményindító - C#-példa
 
@@ -146,6 +146,39 @@ let Run(myQueueItem: string, log: ILogger) =
     log.LogInformation(sprintf "F# ServiceBus queue trigger function processed message: %s" myQueueItem)
 ```
 
+### <a name="trigger---java-example"></a>Eseményindító - Java-példában
+
+A következő Java-függvényt használ a `@ServiceBusQueueTrigger` a jegyzet a [Java-függvények futtatókörnyezeti kódtárának](/java/api/overview/azure/functions/runtime) írja le a Service Bus-üzenetsor eseményindító konfigurációját. A függvény begyűjti a várólistára helyezni az üzenetet, és hozzáadja azt, hogy a naplókat.
+
+```java
+@FunctionName("sbprocessor")
+ public void serviceBusProcess(
+    @ServiceBusQueueTrigger(name = "msg",
+                             queueName = "myqueuename",
+                             connection = "myconnvarname") String message,
+   final ExecutionContext context
+ ) {
+     context.getLogger().info(message);
+ }
+ ```
+
+A Java-függvényeket is indítható el, amikor egy üzenet bekerül egy Service Bus-témakörbe. Az alábbi példában a `@ServiceBusTopicTrigger` jegyzet írja le a trigger konfigurációja.
+
+```java
+@FunctionName("sbtopicprocessor")
+    public void run(
+        @ServiceBusTopicTrigger(
+            name = "message",
+            topicName = "mytopicname",
+            subscriptionName = "mysubscription",
+            connection = "ServiceBusConnection"
+        ) String message,
+        final ExecutionContext context
+    ) {
+        context.getLogger().info(message);
+    }
+ ```
+
 ### <a name="trigger---javascript-example"></a>Eseményindító - JavaScript-példa
 
 Az alábbi példa bemutatja egy kötelező a Service Bus-trigger egy *function.json* fájl és a egy [JavaScript-függvény](functions-reference-node.md) , amely a kötés használja. A függvény beolvassa [üzenet metaadatok](#trigger---message-metadata) és a egy Service Bus üzenetsor üzenetet. 
@@ -178,41 +211,6 @@ module.exports = function(context, myQueueItem) {
     context.done();
 };
 ```
-
-### <a name="trigger---java-example"></a>Eseményindító - Java-példában
-
-Az alábbi példa bemutatja egy kötelező a Service Bus-trigger egy *function.json* fájl és a egy [Java függvény](functions-reference-java.md) , amely a kötés használja. Egy üzenetet a Service Bus-üzenetsorban helyez által aktivált függvény, és a függvény naplózza az üzenetsorban található üzenet.
-
-Itt van a kötési adatait a *function.json* fájlt:
-
-```json
-{
-"bindings": [
-    {
-    "queueName": "myqueuename",
-    "connection": "MyServiceBusConnection",
-    "name": "msg",
-    "type": "ServiceBusQueueTrigger",
-    "direction": "in"
-    }
-],
-"disabled": false
-}
-```
-
-A Java-kód itt látható:
-
-```java
-@FunctionName("sbprocessor")
- public void serviceBusProcess(
-    @ServiceBusQueueTrigger(name = "msg",
-                             queueName = "myqueuename",
-                             connection = "myconnvarname") String message,
-   final ExecutionContext context
- ) {
-     context.getLogger().info(message);
- }
- ```
 
 ## <a name="trigger---attributes"></a>Eseményindító - attribútumok
 
@@ -354,8 +352,8 @@ Tekintse meg az adott nyelvű példa:
 * [C#](#output---c-example)
 * [C# script (.csx)](#output---c-script-example)
 * [F#](#output---f-example)
+* [Java](#output---java-example)
 * [JavaScript](#output---javascript-example)
-* Java
 
 ### <a name="output---c-example"></a>Kimenet – C#-példa
 
@@ -459,6 +457,41 @@ let Run(myTimer: TimerInfo, log: ILogger, outputSbQueue: byref<string>) =
     outputSbQueue = message
 ```
 
+### <a name="output---java-example"></a>Kimenet – Java-példában
+
+Az alábbi példa bemutatja egy Java-függvény, amely egy üzenetet küld egy Service Bus-üzenetsorba `myqueue` egy HTTP-kérelem elindításakor.
+
+```java
+@FunctionName("httpToServiceBusQueue")
+@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
+public String pushToQueue(
+  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
+  final String message,
+  @HttpOutput(name = "response") final OutputBinding<T> result ) {
+      result.setValue(message + " has been sent.");
+      return message;
+ }
+ ```
+
+ Az a [Java-függvények futásidejű kódtár](/java/api/overview/azure/functions/runtime), használja a `@QueueOutput` függvény paraméterei, amelynek az értéke egy Service Bus-üzenetsorba tartalmazná a jegyzet.  A paraméter típusa legyen `OutputBinding<T>`, ahol a T natív Java bármilyen egy pojo-vá.
+
+A Java-függvényeket is kiírhatja egy Service Bus-témakörbe. Az alábbi példában a `@ServiceBusTopicOutput` jegyzet írja le a kimeneti kötés konfigurációját. 
+
+```java
+@FunctionName("sbtopicsend")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+            @ServiceBusTopicOutput(name = "message", topicName = "mytopicname", subscriptionName = "mysubscription", connection = "ServiceBusConnection") OutputBinding<String> message,
+            final ExecutionContext context) {
+        
+        String name = request.getBody().orElse("Azure Functions");
+
+        message.setValue(name);
+        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
+        
+    }
+```
+
 ### <a name="output---javascript-example"></a>Kimenet – JavaScript-példa
 
 Az alábbi példa bemutatja egy kötelező a Service Bus-kimenet egy *function.json* fájl és a egy [JavaScript-függvény](functions-reference-node.md) , amely a kötés használja. A függvény egy időzítő eseményindító 15 másodpercenként üzenetsori üzenetek küldéséhez használja.
@@ -510,25 +543,6 @@ module.exports = function (context, myTimer) {
     context.done();
 };
 ```
-
-
-### <a name="output---java-example"></a>Kimenet – Java-példában
-
-Az alábbi példa bemutatja egy Java-függvény, amely egy üzenetet küld egy Service Bus-üzenetsorba `myqueue` egy HTTP-kérelem elindításakor.
-
-```java
-@FunctionName("httpToServiceBusQueue")
-@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
-public String pushToQueue(
-  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
-  final String message,
-  @HttpOutput(name = "response") final OutputBinding<T> result ) {
-      result.setValue(message + " has been sent.");
-      return message;
- }
- ```
-
- Az a [Java-függvények futásidejű kódtár](/java/api/overview/azure/functions/runtime), használja a `@QueueOutput` függvény paraméterei, amelynek az értéke egy Service Bus-üzenetsorba tartalmazná a jegyzet.  A paraméter típusa legyen `OutputBinding<T>`, ahol a T natív Java bármilyen egy pojo-vá.
 
 ## <a name="output---attributes"></a>Kimenet – attribútumok
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/30/2018
 ms.author: cephalin;dariac
 ms.custom: seodec18
-ms.openlocfilehash: 8b1a4bbb100fc4db1323f530808a8d01bd8f30ce
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: f1d64170c3f9622169dd1218e4c63652c9f94b9b
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53582437"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820671"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Alkalmazás üzembe helyezése az Azure App Service-be FTP/S
 
@@ -30,7 +30,7 @@ Az alkalmazás FTP/S végpontja már aktív. Semmilyen beállítást nem kell FT
 
 ## <a name="open-ftp-dashboard"></a>FTP-irányítópult megnyitása
 
-Az a [az Azure portal](https://portal.azure.com), nyissa meg az alkalmazás [erőforráslapján](../azure-resource-manager/resource-group-portal.md#manage-resources).
+Az a [az Azure portal](https://portal.azure.com), nyissa meg az alkalmazás [erőforráslapján](../azure-resource-manager/manage-resources-portal.md#manage-resources).
 
 Az FTP-irányítópult megnyitásához kattintson a **üzembe helyezési központ** > **FTP** > **irányítópult**.
 

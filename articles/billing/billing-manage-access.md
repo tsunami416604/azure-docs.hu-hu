@@ -16,12 +16,12 @@ ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 516d8e9116bbdcd421897b5a5c2d9755e7e636c8
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: cd137f8fb44b20c9a1b3a506ad2703fc780bae89
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54903553"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806651"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Számlázási adatokat az Azure-hoz való hozzáférés kezelése
 
@@ -45,7 +45,7 @@ Ezek a szerepkörök rendelkeznek hozzáféréssel a számlázási adatokat a [a
 
 ### <a name="opt-in"></a> Felhasználók számlák letöltésének engedélyezése
 
-Miután a csapat, a fiók rendszergazdája a megfelelő szerepköröket kell kapcsolnia a hozzárendelése mérje fel, az Azure Portalon számlákat letölteni. 2016. December régebbi számlák érhetők el csak a fiók rendszergazdája.
+Miután a megfelelő szerepkörök hozzárendelése a csapat tagjai, a fiók rendszergazdája hozzáférés az Azure Portalon számlák letöltésének be kell kapcsolnia. 2016. December régebbi számlák érhetők el csak a fiók rendszergazdája.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. A fiók rendszergazdája, válassza ki az előfizetését a [előfizetések paneljén](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) az Azure Portalon.

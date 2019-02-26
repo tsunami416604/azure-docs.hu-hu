@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 2e30f3bb40e23e5b0b1951759bdff3a9f02cc9d5
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 01c3e9c82959629dc3e43fb6b0833d4dbb05e0aa
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236063"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823008"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>DSC Extension for Linux (Microsoft.OSTCExtensions.DSCForLinux)
 
@@ -369,7 +369,7 @@ Bejelentkezhet az Azure-fiókjával (Azure Resource Manager módban) való futta
 Login-AzAccount
 ```
 
-Kattintson a [ **Itt** ](../../azure-resource-manager/powershell-azure-resource-manager.md) tudhat meg többet az Azure Resource Manager Azure PowerShell használatával.
+Kattintson a [ **Itt** ](../../azure-resource-manager/manage-resources-powershell.md) tudhat meg többet az Azure Resource Manager Azure PowerShell használatával.
 
 DSCForLinux bővítmény futtatásával telepítheti:
 

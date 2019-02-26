@@ -12,53 +12,30 @@ ms.topic: quickstart
 ms.date: 08/10/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: dfbd8425048ddc5c96349bfd6a7462dcd32dc1d9
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: a72d6b180db35f3e0f0e0527e8ae0f544a585b25
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55727756"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822965"
 ---
-# <a name="create-your-first-function-with-java-and-maven-preview"></a>Az első függvény létrehozása a Java és a Maven használatával (előzetes verzió)
+# <a name="create-your-first-function-with-java-and-maven"></a>Az első függvény létrehozása a Java és Maven
 
-> [!NOTE] 
-> A Java for Azure Functions jelenleg előzetes verzióban érhető el.
-
-Ez a rövid útmutató végigvezeti egy [kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) a Mavennel, helyi tesztelés, és hogyan helyezheti üzembe az Azure Functions-projektet. Ha elkészült, a Java-függvénykódot a felhőben fut, és is elindítható a HTTP-kérést.
-
-![„Hello World” függvény elérése a parancssorból a cURL használatával](media/functions-create-java-maven/hello-azure.png)
+Ez a cikk végigvezeti a Maven parancssori eszköz használatával hozhat létre, és a egy Java-függvény közzététele az Azure Functionsben. Ha elkészült, a függvény kódját fut-e a [Használatalapú csomagban](functions-scale.md#consumption-plan) az Azure-ban és a egy HTTP-kérelem használatával aktiválhatja.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ha függvényalkalmazást szeretne létrehozni a Java használatával, akkor a számítógépre a következőket kell telepíteni:
 
--  A [Java Developer Kit](https://www.azul.com/downloads/zulu/) 8-as verziója.
--  Az [Apache Maven](https://maven.apache.org) 3.0-s vagy újabb verziója.
--  [Azure CLI](https://docs.microsoft.com/cli/azure)
+Fejlesztés Java használatával függvényeket, a következőkkel kell rendelkeznie:
 
-> [!IMPORTANT] 
+- A [Java Developer Kit](https://www.azul.com/downloads/zulu/) 8-as verziója.
+- Az [Apache Maven](https://maven.apache.org) 3.0-s vagy újabb verziója.
+- [Azure CLI](https://docs.microsoft.com/cli/azure)
+- [Az Azure Functions Core Tools](functions-run-local.md#v2) (igényel **.NET Core 2.x SDK**)
+
+> [!IMPORTANT]
 > A rövid útmutató befejezéséhez a JAVA_HOME környezeti változót a JDK telepítési helyére kell beállítani.
-
-## <a name="install-the-azure-functions-core-tools"></a>Az Azure Functions Core Tools telepítése
-
-Az [Azure Functions Core Tools 2.0](https://www.npmjs.com/package/azure-functions-core-tools) helyi fejlesztési környezetet biztosít az Azure-függvények írásához, futtatásához és a hibakereséshez. 
-
-A telepítéshez nyissa meg az Azure Functions Core Tools projekt [Telepítés](https://github.com/azure/azure-functions-core-tools#installing) szakaszát, és keresse meg az operációs rendszeréhez tartozó utasításokat.
-
-Manuálisan is telepítheti az [npm](https://www.npmjs.com/) használatával, amely a [Node.js](https://nodejs.org/) részét képezi, miután telepítette az alábbiakat:
-
--  A [.NET Core](https://www.microsoft.com/net/core) legújabb verziója.
--  A [Node.js](https://nodejs.org/download/) 8.6-os vagy újabb verziója.
-
-Az npm-alapú telepítés folytatásához futtassa a következőt:
-
-```
-npm install -g azure-functions-core-tools
-```
-
-> [!NOTE]
-> Ha az Azure Functions Core Tools 2.0-s verziójának telepítése során problémába ütközik, tekintse meg a [2.x-es verziók futtatókörnyezetével](/azure/azure-functions/functions-run-local) foglalkozó részt.
 
 ## <a name="generate-a-new-functions-project"></a>Új Functions-projekt létrehozása
 

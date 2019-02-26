@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/20/2017
 ms.author: suhuruli
-ms.openlocfilehash: 60fd4a3ba83370327b6be775d7b2723fbb26de64
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: e700250a6ebcdb82f99c1b460a510811d7ceb96c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983440"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819735"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>A Windows fejlesztői gépen a Linux Service Fabric-fürt beállítása
 
@@ -30,6 +30,7 @@ Linux-alapú Service Fabric-fürtök natív módon futtatható Windows. Egy hely
 
 * Legalább 4 GB RAM
 * A [Docker](https://store.docker.com/editions/community/docker-ce-desktop-windows) legújabb verziója
+* A docker Linux módban kell futnia
 
 >[!TIP]
 > * Követheti a hivatalos docker lépéseket [dokumentáció](https://store.docker.com/editions/community/docker-ce-desktop-windows/plans/docker-ce-desktop-windows-tier?tab=instructions) Docker telepíthető a Windows. 

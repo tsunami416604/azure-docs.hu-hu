@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/10/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 8770aaeff3e0d7b2d6a39f596aafebf15ed48b23
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: c74a96e3dcce1394e0af5447c07ad38c54b960fa
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55985007"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56825546"
 ---
 ## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
 
@@ -74,8 +74,8 @@ $galleryImage = New-AzGalleryImageDefinition `
    -Offer 'myOffer' `
    -Sku 'mySKU'
 ```
-
-Egy soron következő kiadásban is elérheti a személyes meghatározott használandó **-közzétevő**, **-ajánlat** és **- termékváltozat** értékek keresése, és adjon meg egy lemezkép-definíciót, majd a virtuális gép létrehozása a megfelelő rendszerkép-definíció legfrissebb rendszerképverzió használatával. Ha például az alábbiakban három rendszerkép-definíciók és azok értékeit:
+### <a name="using-publisher-offer-and-sku"></a>Közzétevő, ajánlat és a Termékváltozat használatával 
+Az ügyfelek végrehajtási megosztott lemezképek tervezése **egy soron következő kiadásban**, fogja tudni használni a személyes meghatározott **-közzétevő**, **-ajánlat** és **- Termékváltozat** értékek, keresse meg és adja meg a rendszerkép definíciójában, majd a rendszer a legfrissebb rendszerképverzió virtuális gép létrehozása lemezkép definíciója. Ha például az alábbiakban három rendszerkép-definíciók és azok értékeit:
 
 |Rendszerkép-definíció|Közzétevő|Ajánlat|SKU|
 |---|---|---|---|
@@ -83,10 +83,9 @@ Egy soron következő kiadásban is elérheti a személyes meghatározott haszn�
 |myImage2|myPublisher|standardOffer|mySku|
 |myImage3|Tesztelés|standardOffer|testSku|
 
-Az alábbi három egyedi értékek amelyekre. Egy későbbi kiadásban lesz úgy, hogy ezek az értékek annak érdekében, hogy a kérelem egy adott rendszerkép legújabb verzióját. 
+Az alábbi három egyedi értékek amelyekre. Lemezkép verziója, amelyek egy vagy két, de nem minden három érték lehet. **Egy soron következő kiadásban**, lesz úgy, hogy ezek az értékek annak érdekében, hogy a kérelem egy adott rendszerkép legújabb verzióját. **Ez nem működik a jelenlegi kiadásban**, de a jövőben lesz elérhető. Kiadásakor, a következő szintaxis használatával használandó be, mint a forrás lemezkép *myImage1* a fenti táblázatból.
 
 ```powershell
-# The following should set the source image as myImage1 from the table above
 $vmConfig = Set-AzVMSourceImage `
    -VM $vmConfig `
    -PublisherName myPublisher `
@@ -94,7 +93,7 @@ $vmConfig = Set-AzVMSourceImage `
    -Skus mySku 
 ```
 
-Ez hasonlít hogyan jelenleg megadhatja ezeket [Azure Marketplace-rendszerképek](../articles/virtual-machines/windows/cli-ps-findimage.md) hozhat létre virtuális Gépet. Ezt szem minden rendszerkép definíciójában rendelkeznie kell egy egyedi készletét ezeket az értékeket. Lemezkép verziója, amelyek egy vagy két, de nem minden három érték lehet. 
+Ez hasonlít hogyan jelenleg megadhat használható közzétevő, ajánlat és a Termékváltozat [Azure Marketplace-rendszerképek](../articles/virtual-machines/windows/cli-ps-findimage.md) Piactéri lemezképet legújabb verziójának beszerzéséhez. Ezt szem minden rendszerkép definíciójában rendelkeznie kell egy egyedi készletét ezeket az értékeket.  
 
 ##<a name="create-an-image-version"></a>Hozzon létre egy lemezkép verziója
 

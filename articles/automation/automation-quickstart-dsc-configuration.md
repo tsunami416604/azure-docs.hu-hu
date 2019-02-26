@@ -11,12 +11,12 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: c0a7bb9dfe8553515816efd53785dbe661cee0fa
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: f272f72a0bcae70a25bada266dc6b080f46526cd
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54431588"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817719"
 ---
 # <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>Konfigurálás Linux rendszerű virtuális gépen a Desired State Configurationnel
 
@@ -144,5 +144,5 @@ Ebben a rövid útmutatóban előkészített egy Linux rendszerű virtuális gé
 
 * A PowerShell Desired State Configurationről további információkért lásd: [A PowerShell célállapot-konfiguráló áttekintése](https://docs.microsoft.com/powershell/dsc/overview).
 * Az Automation DSC PowerShellről való kezeléséről további információkért lásd: [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.automation/?view=azurermps-5.0.0)
-* A jelentéskészítés és a riasztás érdekében a DSC-jelentések Log Analyticsnek való továbbításáról további információkért lásd: [DSC-jelentések továbbítása a Log Analyticsnek](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics) 
+* Ismerje meg, hogyan továbbítsa a DSC-jelentések az Azure Monitor naplóira, jelentéskészítési és riasztási, lásd: [naplózza a DSC jelentéskészítő-továbbítás az Azure monitornak](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics) 
 

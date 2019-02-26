@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5ba555ad31545e1ae1aa822ec58b0bd22ef486ac
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 12da1b20c5e4e6299445b8ec8ec90eeec6711e2c
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55295151"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805518"
 ---
 # <a name="use-jupyter-notebooks-to-explore-azure-machine-learning-service"></a>A Jupyter notebookok használata az Azure Machine Learning szolgáltatás megismeréséhez
 
@@ -48,6 +48,8 @@ Miután [hozzon létre egy DSVM](how-to-configure-environment.md#dsvm), ezeket a
 Ezek a lépések használatával hozzon létre egy helyi Jupyter Notebook kiszolgálót a számítógépen.
 
 [!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
+
+A rövid útmutató a rövid útmutató és oktatóanyag jegyzetfüzetek futtatásához szükséges csomagokat telepíti.  Más mintafüzetek további összetevők lehet szükség.  Ezek az összetevők kapcsolatos további információkért lásd: [telepítse az Azure Machine Learning SDK Pythonhoz készült](https://docs.microsoft.com/python/api/overview/azure/ml/install).
 
 <a name="automated-ml-setup"></a>
 

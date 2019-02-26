@@ -2,28 +2,23 @@
 title: 'Globális elérhetőség az ExpressRoute konfigurálása: Az Azure CLI |} A Microsoft Docs'
 description: Ez a cikk az ExpressRoute-Kapcsolatcsoportok privát hálózati a helyszíni hálózat között, és engedélyezze a globális elérhetőségű teszik hivatkozásra.
 services: expressroute
-author: cherylmc
+author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/12/2018
-ms.author: cherylmc
+ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: be10489d731b9e01d148ce1ac7892cb6de956662
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 28df8f59944ccac9d731e15a558d864beed2f3ae
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659320"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817694"
 ---
-# <a name="configure-expressroute-global-reach-by-using-the-azure-cli-preview"></a>Globális elérhetőségű ExpressRoute konfigurálása az Azure CLI (előzetes verzió) használatával
+# <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>Globális elérhetőségű ExpressRoute konfigurálása az Azure CLI használatával
 
 Ez a cikk segít az Azure ExpressRoute globális elérhetőségű konfigurálása az Azure CLI használatával. További információ: [ExpressRoute Global Reach](expressroute-global-reach.md).
  
-## <a name="before-you-begin"></a>Előkészületek
-
-> [!IMPORTANT]
-> A nyilvános előzetes verzióra nem vonatkozik szolgáltatói szerződés, és nem használható éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 Mielőtt elkezdené a konfigurációt, hajtsa végre az alábbi követelményeknek:
 
 * Telepítse az Azure CLI legújabb verzióját. További információk: [Az Azure CLI telepítése](/cli/azure/install-azure-cli) és [Bevezetés az Azure CLI használatába](/cli/azure/get-started-with-azure-cli).

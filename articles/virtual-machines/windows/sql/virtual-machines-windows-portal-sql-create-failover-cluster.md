@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 62b0f7adf0eb1dd3e3fd7493096c2261a1c1076d
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 778984d4d34d3b63d92378781d377fee557c7148
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328552"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821917"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Azure virtuális gépeken futó SQL Server feladatátvevő Fürtpéldányának konfigurálása
 
@@ -79,7 +79,7 @@ Egy fontos különbség az, hogy az Azure IaaS virtuális gépek Vendég feladat
 Emellett rendelkeznie kell a következő technológiákat egy általános ismertetése:
 
 - [A Windows Server 2016 közvetlen tárolóhelyeket használó hiperkonvergens megoldás](https://technet.microsoft.com/windows-server-docs/storage/storage-spaces/hyper-converged-solution-using-storage-spaces-direct)
-- [Azure-erőforráscsoportok](../../../azure-resource-manager/resource-group-portal.md)
+- [Azure-erőforráscsoportok](../../../azure-resource-manager/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
 > Jelenleg a [SQL Server IaaS-ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md) nem támogatott az SQL Server FCI az Azure-ban. Azt javasoljuk, hogy az FCI-ben részt vevő virtuális gépek távolítsa el a bővítményt. Ez a bővítmény szolgáltatásai, például az automatikus biztonsági mentés és a javítás és a egy portál funkciók az SQL támogatja. Ezek a funkciók nem működnek az SQL virtuális gépek, az ügynök eltávolítása után.

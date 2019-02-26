@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/16/2018
+ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 700295c94428021445f6cbbd84175046d57b9147
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 559409ac73fb28df18c2ddeca7eb2bcd06a24835
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054945"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817660"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>A Service Fabric gyakori helyzetek diagnosztizálása
 
@@ -101,17 +101,16 @@ Ugyanabban a nézetben az összes gráf látni fogja a teljesítmény, a tárol�
 
 1. Miután hozzáadta a Log Analytics-ügynököket a fürt, hozzá kell nyomon követni kívánt teljesítményszámlálókat. Keresse meg a portal – a Log Analytics-munkaterület oldalán a munkaterület lap jelenik meg a bal oldali menüben a megoldás oldaláról.
 
-    ![Log Analytics munkaterület lap](media/service-fabric-diagnostics-common-scenarios/workspacetab.png)
+    ![Log Analytics Workspace Tab](media/service-fabric-diagnostics-common-scenarios/workspacetab.png)
 
 2. Amint a munkaterület lap, kattintson a "Speciális beállítások" kifejezésre a azonos bal oldali menüben.
 
-    ![A log Analytics speciális beállításai](media/service-fabric-diagnostics-common-scenarios/advancedsettingsoms.png)
+    ![Log Analytics Advanced Settings](media/service-fabric-diagnostics-common-scenarios/advancedsettingsoms.png)
 
 3. Kattintson az adatok > Windows-teljesítményszámlálók (Data > Linux rendszerű gépek Linux-teljesítményszámlálók) elindításához a Log Analytics-ügynökön keresztül a csomópontok specifikus számlálókat gyűjti össze. Példa a formátum számlálók hozzáadása
 
     * `.NET CLR Memory(<ProcessNameHere>)\\# Total committed Bytes`
     * `Processor(_Total)\\% Processor Time`
-    * `Service Fabric Service(*)\\Average milliseconds per request`
 
     A rövid útmutatóban VotingData és VotingWeb a folyamat nevét használja, így ezek a számlálók követési láthatóhoz hasonló
 
@@ -128,7 +127,10 @@ Ugyanabban a nézetben az összes gráf látni fogja a teljesítmény, a tárol�
 
 ## <a name="how-do-i-track-performance-of-my-reliable-services-and-actors"></a>Hogyan nyomon követheti a Reliable Services és az Actors teljesítményét?
 
-Az alkalmazások a Reliable Services vagy az Actors teljesítmény nyomon követése, hozzá kell adnia, valamint a Service Fabric-Aktor, Aktormetódus, szolgáltatás vagy szolgáltatás metódus számlálókat. A fenti forgatókönyv szerint hasonló módon ezek a számlálók is hozzáadhat, példa a megbízható szolgáltatás és az aktor teljesítményszámlálók hozzáadása a Log Analytics:
+Reliable Services vagy az Actors az alkalmazásokban teljesítményének nyomon követéséhez, valamint a Service Fabric-Aktor, Aktormetódus, szolgáltatás vagy szolgáltatás metódus számlálók begyűjtik. Példa a megbízható szolgáltatás és az aktor teljesítményszámlálók gyűjtése
+
+>[!NOTE]
+>Nem lehet összegyűjteni a Log Analytics-ügynök által jelenleg a Service Fabric – teljesítményszámlálók, de a gyűjtik össze, hogy [más diagnosztikai megoldásokkal](service-fabric-diagnostics-partners.md)
 
 * `Service Fabric Service(*)\\Average milliseconds per request`
 * `Service Fabric Service Method(*)\\Invocations/Sec`

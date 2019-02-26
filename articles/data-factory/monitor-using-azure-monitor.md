@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: shlo
-ms.openlocfilehash: 6645463f2172a6f201f4d2f840e03d1797367752
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: a4eea340fe57ab3c05e527a476d9153113eedba5
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55512352"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819394"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Riasztás megjelenítése és figyelése az Azure Monitor használatával adat-előállítók
 A felhőalapú alkalmazások összetettek a részek. Győződjön meg arról, hogy az alkalmazás mindig elérhető fel az adatokat és kifogástalan állapotban fut figyelést biztosít. Segít, hogy ki a lehetséges problémák stave vagy korábbi kiépítettektől hibaelhárítása. Monitorozási adatok segítségével emellett részletes elemzéseket kaphat az alkalmazásról. A Tudásbázis segítségével javíthatja az alkalmazás teljesítménye vagy Karbantarthatóság, vagy ellenkező esetben manuális beavatkozást igénylő műveletek automatizálása.
@@ -59,7 +59,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 **Fejlécek**
 * Cserélje le a `{api-version}` elemet a `2016-09-01` kérdésre.
-* Cserélje le `{resource-id}` az erőforrás-azonosító, az erőforrás, amelynek szeretné szerkeszteni a diagnosztikai beállítások. További információ [erőforráscsoportok használata az Azure-erőforrások kezeléséhez](../azure-resource-manager/resource-group-portal.md).
+* Cserélje le `{resource-id}` az erőforrás-azonosító, az erőforrás, amelynek szeretné szerkeszteni a diagnosztikai beállítások. További információ [erőforráscsoportok használata az Azure-erőforrások kezeléséhez](../azure-resource-manager/manage-resource-groups-portal.md).
 * Állítsa be a `Content-Type` fejlécet `application/json`.
 * Az engedélyezési fejléc beállítása a JSON webes jogkivonat, hogy az Azure Active Directoryból. További információkért lásd: [irányuló kérelmek hitelesítéséhez](../active-directory/develop/authentication-scenarios.md).
 

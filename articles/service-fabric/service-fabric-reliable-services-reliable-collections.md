@@ -3,7 +3,7 @@ title: Az állapotalapú szolgáltatások az Azure Service Fabric megbízható g
 description: A Service Fabric állapotalapú szolgáltatások adja meg a megbízható gyűjtemények, amelyek lehetővé teszik, hogy magas rendelkezésre álló, skálázható és közel valós idejű felhőbeli alkalmazásokat készíthet.
 services: service-fabric
 documentationcenter: .net
-author: tylermsft
+author: aljo-microsoft
 manager: timlt
 editor: masnider,rajak,zhol
 ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 1/3/2019
-ms.author: twhitney
-ms.openlocfilehash: 422b4bbcfc6811cdc6bbf1649e2c660d04d95776
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.author: aljo
+ms.openlocfilehash: 944bb69ed028338efb243c8646035089566ccf80
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039673"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806504"
 ---
 # <a name="introduction-to-reliable-collections-in-azure-service-fabric-stateful-services"></a>A Reliable Collections Azure Service Fabric állapotalapú szolgáltatások bemutatása
 
@@ -53,8 +53,8 @@ A megbízható gyűjtemények API-k API-k egyidejű gyűjtemények továbbfejles
 Még ma **Microsoft.ServiceFabric.Data.Collections** tartalmaz a három gyűjteményben:
 
 * [Megbízható szótárban](https://msdn.microsoft.com/library/azure/dn971511.aspx): Egy kulcs/érték párok replikált, tranzakciós és aszinkron gyűjteményét képviseli. Hasonló **ConcurrentDictionary**, a kulcs és az érték is bármilyen típusú lehet.
-* [Megbízható várólista](https://msdn.microsoft.com/library/azure/dn971527.aspx): A replikált, tranzakciós és aszinkron szigorú sorrendben érkezési idősorrendben történő (FIFO) várólistáját jelenti. Hasonló **ConcurrentQueue**, típustól függetlenül az érték lehet.
-* [Megbízható egyidejű várólista](service-fabric-reliable-services-reliable-concurrent-queue.md): Egy replikált, tranzakciós és aszinkron ajánlott beavatkozást rendezése várólista magas átviteli sebességet jelöl. Hasonló a **ConcurrentQueue**, típustól függetlenül az érték lehet.
+* [Reliable Queue](https://msdn.microsoft.com/library/azure/dn971527.aspx): A replikált, tranzakciós és aszinkron szigorú sorrendben érkezési idősorrendben történő (FIFO) várólistáját jelenti. Hasonló **ConcurrentQueue**, típustól függetlenül az érték lehet.
+* [Reliable Concurrent Queue](service-fabric-reliable-services-reliable-concurrent-queue.md): Egy replikált, tranzakciós és aszinkron ajánlott beavatkozást rendezése várólista magas átviteli sebességet jelöl. Hasonló a **ConcurrentQueue**, típustól függetlenül az érték lehet.
 
 ## <a name="next-steps"></a>További lépések
 

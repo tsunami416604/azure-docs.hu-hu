@@ -11,12 +11,12 @@ ms.topic: article
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
 manager: jeconnoc
-ms.openlocfilehash: 877d49a49333d70ac7660900e49e7c588f52756c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b7eba0e63f68cd56f2bcc310c3bde65c36e933dd
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55451563"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822463"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Üzleti folytonosság és vészhelyreállítás helyreállítási Azure fejlesztési tárolóhelyek
 
@@ -93,7 +93,7 @@ Ismételje meg ezeket a lépéseket bármely más projektekhez az eredeti fürth
 
 ## <a name="access-a-service-on-a-backup-cluster"></a>Egy biztonsági mentési fürtön a szolgáltatás elérésére
 
-Ha konfigurálta a szolgáltatást, hogy használjon egy nyilvános DNS-nevet, majd a a szolgáltatás az egy másik URL-címet rendelkezik, ha egy biztonsági mentési fürtön futtatja. Nyilvános DNS-nevek mindig a következő formátumban vannak `<space name>.s.<service name>.<cluster GUID>.<region>.aksapp.io`. Ha egy másik fürtre vált, módosíthatja a fürt GUID Azonosítóját, és esetleg a régióban.
+Ha konfigurálta a szolgáltatást, hogy használjon egy nyilvános DNS-nevet, majd a a szolgáltatás az egy másik URL-címet rendelkezik, ha egy biztonsági mentési fürtön futtatja. Nyilvános DNS-nevek mindig a következő formátumban vannak `<space name>.s.<root space name>.<service name>.<cluster GUID>.<region>.azds.io`. Ha egy másik fürtre vált, módosíthatja a fürt GUID Azonosítóját, és esetleg a régióban.
 
 Fejlesztői, szóközök mindig látható, a szolgáltatás URL-CÍMÉT, amikor fut `azds up`, vagy a kimeneti ablakban, a Visual studióban **Azure fejlesztési tárolóhelyek**.
 
@@ -102,7 +102,7 @@ Az URL-címet futtató úgy is megkeresheti a `azds list-uris` parancsot:
 $ azds list-uris
 Uri                                                     Status
 ------------------------------------------------------  ---------
-http://mywebapi.d05afe7e006a4fddb73c.eastus.aksapp.io/  Available
+http://default.mywebapi.d05afe7e006a4fddb73c.eus.azds.io/  Available
 ```
 
 Az URL-cím akkor használja, ha a szolgáltatás elérésével.

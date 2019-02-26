@@ -5,24 +5,24 @@ description: Az API Management használatával AzureML webszolgáltatások kezel
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: 915b972774fb418a454d8a3acd2a61f25af7a6aa
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: b15fddcace19abcd1cd08d059c497c1c209f74d0
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488509"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823433"
 ---
 # <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>Az API Management használata az Azure Machine Learning Studio-webszolgáltatások kezelése
 ## <a name="overview"></a>Áttekintés
 Ez az útmutató bemutatja, hogyan gyorsan használatba az API Management az Azure Machine Learning Studio-webszolgáltatások kezelésére.
 
 ## <a name="what-is-azure-api-management"></a>Mi az Azure API Management?
-Az Azure API Management egy Azure-szolgáltatás, amellyel a REST API-végpontokat kezelheti a felhasználói hozzáférés-szabályozás és figyelési irányítópult definiálásával. Kattintson a [Itt](https://azure.microsoft.com/services/api-management/) Azure API Management részleteiért. Kattintson a [Itt](../../api-management/api-management-get-started.md) útmutató az első lépések az Azure API Management szolgáltatással. A többi útmutató, amely a jelen útmutató alapján, termékek, a fejlesztői előfizetésekhez és a használati dashboarding további témaköreit, beleértve az értesítési konfiguráció, szint díjszabása, válasz kezelését, felhasználói hitelesítés, ismerteti.
+Az Azure API Management egy Azure-szolgáltatás, amellyel a REST API-végpontokat kezelheti a felhasználói hozzáférés-szabályozás és figyelési irányítópult definiálásával. Kattintson a [Itt](https://azure.microsoft.com/services/api-management/) Azure API Management részleteiért. Kattintson a [Itt](/azure/api-management/import-and-publish) útmutató az első lépések az Azure API Management szolgáltatással. A többi útmutató, amely a jelen útmutató alapján, termékek, a fejlesztői előfizetésekhez és a használati dashboarding további témaköreit, beleértve az értesítési konfiguráció, szint díjszabása, válasz kezelését, felhasználói hitelesítés, ismerteti.
 
 ## <a name="what-is-azureml"></a>Mi az AzureML?
 Az AzureML egy Azure-szolgáltatás a machine learning, amely lehetővé teszi, hogy egyszerűen elkészítheti, telepítheti, és megoszthatja a fejlett elemzési megoldásokat. Kattintson a [Itt](https://azure.microsoft.com/services/machine-learning/) AzureML részleteiért.

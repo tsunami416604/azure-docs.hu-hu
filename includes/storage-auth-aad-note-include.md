@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/09/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 0182df40a4e7815560a85e60fe9062ccd8001c18
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 694491f3bec9fd1e62e65504968be9f06dda0c11
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52978690"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56824262"
 ---
 > [!NOTE]
 > - Előzetes verziójának blobok és üzenetsorok az Azure AD-hitelesítés csak nem éles használatra szolgál. Éles szolgáltatásiszint-szerződések (SLA) nem érhetők el jelenleg. Ha az Azure AD-hitelesítés még nem támogatott a forgatókönyvnek, továbbra is használhatja a megosztott kulcsos engedélyezési vagy SAS-tokeneket az alkalmazásokban.
@@ -22,7 +22,7 @@ ms.locfileid: "52978690"
 >
 > - OAuth-jogkivonatának blob és üzenetsor-műveletek engedélyezése, a HTTPS kell használnia.
 >
-> - Az Azure Portalon mostantól támogatja az Azure AD hitelesítő adatok használatával olvasása és írása a blob és üzenetsoradatot, részeként az előzetes kiadás.
+> - Az Azure Portalon mostantól támogatja az Azure AD hitelesítő adatok használatával olvasása és írása a blob és üzenetsoradatot, részeként az előzetes kiadás. 
 > 
 > - [Az Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) jelenleg használja a tárfiók kulcsának blob és üzenetsor adatok elérését. OAuth-hozzáférés blobok esetében támogatott.
 >

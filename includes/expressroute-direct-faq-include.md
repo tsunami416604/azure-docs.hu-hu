@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: include
-ms.date: 02/19/2018
+ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: 9e16c3bb4e4e5ba384bdc664e2c056acb0b70caf
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: eb807082443da495cd89e1dd624058c89d3ee65b
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56448228"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56825794"
 ---
 ### <a name="what-is-expressroute-direct"></a>Mi az az ExpressRoute közvetlen?
 
@@ -23,9 +23,9 @@ Az ExpressRoute Direct közvetlen csatlakozást tesz lehetővé az ügyfelek sz�
 
 Ügyfelek kell működnie, valamint helyi szolgáltatóknál és szolgáltatók beolvasni a kapcsolat ExpressRoute-útválasztóhoz az ExpressRoute közvetlen előnyeinek kihasználása érdekében.
 
-### <a name="what-locations-will-the-100-gbps-expressroute-direct-be-available-for-public-preview"></a>Hol a 100 GB/s az ExpressRoute közvetlen lesz elérhető nyilvános előzetes verziója? 
+### <a name="what-locations-currently-support-expressroute-direct"></a>Hol jelenleg támogatja az ExpressRoute közvetlen? 
 
-Az ExpressRoute-társviszony-létesítési helyszínek válassza számos támogatni fogják az ennek a nyilvános előzetes verzióban. A rendelkezésre álló portok dinamikus lesz, és a kapacitás megtekintéséhez PowerShell elérhető lesz. Helyek tartalmazzák és *rendelkezésre állása alapján változhatnak*:
+A rendelkezésre álló portok dinamikus lesz, és a kapacitás megtekintéséhez PowerShell elérhető lesz. Helyek tartalmazzák és *rendelkezésre állása alapján változhatnak*:
 
 * Amszterdam
 * Canberra

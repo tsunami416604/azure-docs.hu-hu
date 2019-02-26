@@ -2,27 +2,21 @@
 title: 'Globális elérhetőség – az ExpressRoute konfigurálása: Azure | Microsoft Docs'
 description: Ez a cikk az ExpressRoute-Kapcsolatcsoportok privát hálózati a helyszíni hálózat között, és engedélyezze a globális elérhetőségű teszik hivatkozásra.
 services: expressroute
-author: mialdrid
+author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/13/2018
-ms.author: mialdrid
+ms.date: 02/25/2019
+ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: ab1098ca65ad92cffdbe1dfb24fd43fcc8f10eae
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: aff283da27197b11ee496faecdd8b69571d3547e
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54431677"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821336"
 ---
-# <a name="configure-expressroute-global-reach-preview"></a>Konfigurálja az ExpressRoute globális elérhetőségű (előzetes verzió)
+# <a name="configure-expressroute-global-reach"></a>Az ExpressRoute Global Reach konfigurálása
 Ez a cikk segít az ExpressRoute globális elérhetőségű PowerShell-lel konfigurálja. További információkért lásd: [ExpressRouteRoute globális elérhetőségű](expressroute-global-reach.md).
- 
-## <a name="before-you-begin"></a>Előkészületek
-> [!IMPORTANT]
-> A nyilvános előzetes verziója egy szolgáltatásiszint-megállapodás nélkül, és nem használható éles számítási feladatok esetében. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-> 
-
 
 Mielőtt elkezdené a konfigurációt, ellenőrizze az alábbiakat:
 

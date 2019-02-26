@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 086ef9030451632ee4defa39a402e4d62c897f20
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: f0c05ddbc53d08334aded48ccb3a3ece547b4143
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342116"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816561"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Az Azure Policy segítségével a nem megfelelő erőforrások szervizelése
 
@@ -131,6 +131,8 @@ A hozzárendelés felügyelt identitás ad hozzá egy szerepkörhöz, kövesse a
 
 ## <a name="create-a-remediation-task"></a>A javítási feladat létrehozása
 
+### <a name="create-a-remediation-task-through-portal"></a>Hozzon létre egy szervizelési feladatot a portálon keresztül
+
 Kiértékelés, a szabályzat-hozzárendelés során **deployIfNotExists** érvénybe határozza meg, hogy vannak-e a nem megfelelő erőforrások. Ha a nem megfelelő erőforrások találhatók, a részletek a biztosított a **szervizelési** lapot. A nem megfelelő tároló erőforrásait tartalmazó szabályzatok listáján, valamint a aktiválásához lehetőség egy **javítási feladat**. Ez a beállítás akkor mit hoz létre a központi telepítés a **deployIfNotExists** sablont.
 
 Hozhat létre egy **javítási feladat**, kövesse az alábbi lépéseket:
@@ -163,6 +165,32 @@ Hozhat létre egy **javítási feladat**, kövesse az alábbi lépéseket:
    ![Szervizelje - erőforrás a feladat helyi menü](../media/remediate-resources/resource-task-context-menu.png)
 
 Üzembe helyezett erőforrások keresztül egy **javítási feladat** kerülnek a **üzembe helyezett erőforrások** fülre a házirend-megfelelőségi oldalon.
+
+### <a name="create-a-remediation-task-through-azure-cli"></a>Azure CLI-n keresztül javítási feladat létrehozása
+
+Hozhat létre egy **javítási feladat** Azure CLI-vel használni a `az policy remediation` parancsokat. Cserélje le `{subscriptionId}` meg előfizetési azonosítóját és `{myAssignmentId}` együtt a **deployIfNotExists** házirend hozzárendelési azonosítója.
+
+```azurecli-interactive
+# Login first with az login if not using Cloud Shell
+
+# Create a remediation for a specific assignment
+az policy remediation create --name myRemediation --policy-assignment '/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments/{myAssignmentId}'
+```
+
+Más szervizelési parancsokat és példákért tekintse meg a [az házirend szervizelési](/cli/azure/policy/remediation) parancsokat.
+
+### <a name="create-a-remediation-task-through-azure-powershell"></a>Azure PowerShell-lel javítási feladat létrehozása
+
+Hozhat létre egy **javítási feladat** az Azure PowerShell-lel, használja a `Start-AzPolicyRemediation` parancsokat. Cserélje le `{subscriptionId}` meg előfizetési azonosítóját és `{myAssignmentId}` együtt a **deployIfNotExists** házirend hozzárendelési azonosítója.
+
+```azurepowershell-interactive
+# Login first with Connect-AzAccount if not using Cloud Shell
+
+# Create a remediation for a specific assignment
+Start-AzPolicyRemediation -Name 'myRemedation' -PolicyAssignmentId '/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/policyAssignments/{myAssignmentId}'
+```
+
+Más szervizelési parancsmagok és példákért tekintse meg a [Az.PolicyInsights](/powershell/module/az.policyinsights/#policy_insights) modul.
 
 ## <a name="next-steps"></a>További lépések
 

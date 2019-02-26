@@ -3,8 +3,8 @@ title: Oktatóanyag – Service Fabric Mesh-alkalmazás üzembe helyezése  | Mi
 description: Ismerje meg, hogyan tehet közzé egy háttér-webszolgáltatással kommunikáló ASP.NET Core webhelyet tartalmazó Azure Service Mesh-alkalmazást a Visual Studióval.
 services: service-fabric-mesh
 documentationcenter: .net
-author: TylerMSFT
-manager: jeconnoc
+author: dkkapur
+manager: chakdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric-mesh
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/18/2018
-ms.author: twhitney
+ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c08e5dc196c377b006be70339f402b2c023a3826
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: eef4cfaff38a96597794354cc991f5d3eeae9404
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299809"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806619"
 ---
 # <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>Oktatóanyag: Service Fabric-háló-alkalmazás üzembe helyezése
 

@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/25/2018
+ms.date: 02/25/2019
 ms.author: jeffgilb
 ms.reviewer: unknown
 ms.custom: mvc
-ms.lastreviewed: 10/25/2018
-ms.openlocfilehash: 9341eefdbe1eaa8e27394fd4b10f50b1a48bd4c6
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/25/2019
+ms.openlocfilehash: 65894ccd9514bce1d429b336f8bd5e6674048e65
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247323"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820263"
 ---
 # <a name="what-is-azure-stack"></a>Mi az Azure Stack?
 
@@ -33,15 +33,15 @@ Azure Stack tartományregisztráció két központi telepítési beállításai 
 
 ## <a name="azure-stack-development-kit"></a>Azure Stack fejlesztői készlete
 
-Microsoft [Azure Stack Development Kit (ASDK)](./asdk/asdk-what-is.md) egy egy csomópontos telepítés Azure Stacket, kiértékeléséhez és megismerése az Azure Stack használható.  ASDK egy fejlesztői környezet használatával az API-k és eszközök alkalmazásokat hozhat létre, amely összhangban is használhatja.
+Microsoft [Azure Stack Development Kit (ASDK)](./asdk/asdk-what-is.md) egy egy csomópontos telepítés Azure Stacket, kiértékeléséhez és megismerése az Azure Stack használható.  Emellett használhatja a ASDK egy fejlesztői környezet használatával az API-k és eszközök alkalmazásokat hozhat létre, amely egységes Azure-ral.
 
 >[!Note]
 >A ASDK használata nem javasolt éles környezetben használható.
 
 A ASDK a következő korlátozások vonatkoznak:
 
-* ASDK egy egyetlen Azure Active Directory (Azure AD) vagy az Active Directory összevonási szolgáltatások (AD FS) identitásszolgáltató társítva. Több felhasználó létrehozása ebben a könyvtárban, és az előfizetések hozzárendelése minden felhasználóhoz.
-* Azure Stack összetevőket telepít egy állomáson, mert nincsenek korlátozott fizikai erőforrások bérlői erőforrásokhoz. Ez a konfiguráció nem célja a méretezési csoport vagy a teljesítmény kiértékelése.
+* A ASDK egy egyetlen Azure Active Directory (Azure AD) vagy az Active Directory összevonási szolgáltatások (AD FS) identitásszolgáltató társítva. Több felhasználó létrehozása ebben a könyvtárban, és az előfizetések hozzárendelése minden felhasználóhoz.
+* Az Azure Stack-összetevők egy egyetlen számítógépen van telepítve, mert érhetők el korlátozott fizikai erőforrások bérlői erőforrásokhoz. Ez a konfiguráció nem javasolt a méretezési csoport vagy a teljesítmény értékeléséhez.
 * Hálózati forgatókönyvek a egyetlen gazdagép és a hálózati adapter központi telepítésére vonatkozó követelmények miatt korlátozva.
 
 ## <a name="azure-stack-integrated-systems"></a>Az Azure Stackkel használható integrált rendszerek

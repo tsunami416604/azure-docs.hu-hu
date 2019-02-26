@@ -1,6 +1,6 @@
 ---
 title: A Power BI alkalmazást offer – Azure Marketplace-en |} A Microsoft Docs
-description: A Power BI alkalmazás közzététele a a Microsoft AppSource Marketplace ismerteti.
+description: Tudnivalók a Power BI alkalmazás közzététele a Microsoft AppSource piactérről.
 services: Azure, AppSource, Marketplace, Cloud Partner Portal, Power BI
 documentationcenter: ''
 author: v-miclar
@@ -14,46 +14,46 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: pbutlerm
-ms.openlocfilehash: a8474f6dd276c592fce27c8bd90706fe5f126519
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 11bbd87eb283dca2c7da19e32833221c7320a79f
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55667051"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817796"
 ---
-# <a name="power-bi-application-offer"></a>A Power BI-alkalmazásra vonatkozó ajánlat
+# <a name="power-bi-app-offer"></a>A Power BI alkalmazás ajánlat
 
-|                  |                                |
-|------------------|--------------------------------|
-| Ez a szakasz ismerteti a Microsoft Power BI alkalmazás közzététele [az AppSource piactérről](https://appsource.microsoft.com/). A Power BI alkalmazás csomagok a Power BI-tartalmakat, és jelentéseket és irányítópultokat Csatlakozás adatokhoz általános adattárolás a adatfolyamok használ. Az alkalmazás ezután telepíthetők más bérlők appsource-on keresztül. | ![A Power BI ikon](./media/powerbi-icon.png) |
+|              |                                |
+|-|--------------------------------|
+| Ez a cikk bemutatja, hogyan teheti közzé a Power BI alkalmazást a Microsoft [az AppSource piactérről](https://appsource.microsoft.com/). Power BI-alkalmazás csomagok a Power BI-tartalmakat, és jelentéseket és irányítópultokat kapcsolódás adatokhoz a közös adattárolás adatfolyamok használ. Más bérlők appsource-ból telepítheti az alkalmazást. | ![A Power BI ikon](./media/powerbi-icon.png) |
 
 
-Ez a szakasz a fő részre oszlik:
+Ez a cikk három fő részre oszlik:
 
--   [Előfeltételek](./cpp-prerequisites.md) -ajánlat létrehozása és közzététele a Power BI alkalmazás technikai és üzleti követelményei
--   [A Power BI alkalmazás ajánlat létrehozása](./cpp-create-offer.md) – egy új Power BI-alkalmazás létrehozásához szükséges lépéseket kínálnak bejegyzés használatával a [Cloud Partner portálra](https://cloudpartner.azure.com)
--   [A Power BI alkalmazás-ajánlat közzététele](./cpp-publish-offer.md) – hogyan lehet elküldeni egy új ajánlat közzététele az appsource-ban, és a egy létező ajánlat frissítése.
+-   [Előfeltételek](./cpp-prerequisites.md). Ajánlat létrehozása és a egy Power BI-alkalmazás közzététele a műszaki és üzleti igényeinek.
+-   [Hozzon létre egy Power BI alkalmazás ajánlatot](./cpp-create-offer.md). Használatával a Power BI alkalmazás ajánlat bejegyzés létrehozása a [Cloud Partner Portalon](https://cloudpartner.azure.com).
+-   [A Power BI alkalmazás-ajánlat közzététele](./cpp-publish-offer.md). Hogyan lehet elküldeni az appsource-on egy új ajánlat közzététele, és a egy létező ajánlat frissítése.
 
 
 ## <a name="publishing-steps"></a>Közzétételi lépéseket
 
-A következő ábra szemlélteti a Power BI-alkalmazás az ajánlat közzétételi magas szintű lépéseket.
+A Power BI alkalmazás-ajánlat közzétételéhez magas szintű lépései a következők:
 
-![Power BI alkalmazás-közzétételi lépéseket](media/publishing-steps.png)
+![Power BI alkalmazás ajánlat közzétételi lépéseket](media/publishing-steps.png)
 
-A Power BI-alkalmazások közzétételi folyamata
+Itt látható a Power BI-alkalmazás az ajánlat közzétételi folyamat:
 
-1. Egy alkalmazás létrehozása a Power bi Szolgáltatásban (ami eredményez a csomag telepítése URL-cím létrehozása).  Az URL-címet a technikai eszközök az ajánlat jelöli.  További információkért lásd: [Power bi](https://go.microsoft.com/fwlink/?linkid=2028636).
+1. Egy alkalmazás létrehozása a Power bi-ban. Ez a művelet létrehoz egy csomag telepítési URL-CÍMÉT, az ajánlat a technikai eszközök jelölő. További információkért lásd: [Power bi?](https://go.microsoft.com/fwlink/?linkid=2028636).
 2. Collect, vagy hozzon létre az üzleti eszközök, többek között:
-    - Marketinganyagok
-    - Jogi és támogatja a dokumentumok
-3.  Az ajánlat létrehozásához, – használja a Cloud Partner portálra a részletek és az ajánlat, beleértve az ajánlat leírása, marketing-anyagok, a jogi, a támogatási információkat és az adategység-specifikációi kapcsolatos információk konfigurálása.
-4.  Igazolja, és az ajánlat közzététele – az elküldés során először a közzétételi folyamat.
+    - Marketinganyagok.
+    - Jogi és támogatja a dokumentumok.
+3.  Az ajánlat létrehozásához. A Cloud Partner portálra segítségével konfigurálhatja az ajánlatot, beleértve az ajánlat leírása, marketing-anyagok, a jogi információk, a támogatási információkat és az adategység-specifikációi részleteit.
+4.  Igazolom, és tegye közzé az ajánlatot. Ekkor elindul a közzétételi folyamat.
     - Az appsource-ban a bevezetési csapat teszteli, ellenőrzi, és tanúsítja az alkalmazás. 
-    - Ha megkapta a minősítést, tekintse át, a tesztelési környezetben, és engedje el.
+    - Miután megkapta a minősítést az ajánlatot, tekintse át azt a tesztkörnyezetben, és engedje el.
 
-Ezek a lépések elvégzése után az alkalmazáshoz fog "Ugrás élő" az appsource-ban.
+Miután végrehajtotta ezeket a lépéseket, akkor a Power BI alkalmazás ajánlat élesíti az appsource-ban.
 
 ## <a name="next-steps"></a>További lépések
 
-Mielőtt megkezdi ezeket a lépéseket, meg kell felelnie a [követelmények](./cpp-prerequisites.md) egy Power BI alkalmazás-közzététel az appsource-ban.
+Mielőtt a Power BI alkalmazás ajánlat létrehozása, és tegye közzé az appsource-ban, meg kell felelnie a [követelmények](./cpp-prerequisites.md) a Power BI-alkalmazás közzététele az appsource-ban.

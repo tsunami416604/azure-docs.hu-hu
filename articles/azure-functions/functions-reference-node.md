@@ -10,22 +10,24 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.service: azure-functions
 ms.devlang: nodejs
 ms.topic: reference
-ms.date: 10/26/2018
+ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: cff486f79abb02861c07e0daacaf2f58d3efaac4
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 04653dcdf0fb64e8b935cda18c01198ec91c548d
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729662"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807473"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Az Azure Functions JavaScript-fejlesztői útmutató
 
 Ez az útmutató az Azure Functions JavaScript írása jainak részleteivel kellene információt tartalmaz.
 
-JavaScript-függvény egy exportált `function` , amely végrehajtja a adatvezérelt ([eseményindítók konfigurált function.json](functions-triggers-bindings.md)). Minden függvény átadása az első argumentum értéke egy `context` objektum, amely fogadó és küldő kötés adatok, naplózás, és a futtatókörnyezet való kommunikáció során használatos.
+JavaScript-függvény egy exportált `function` , amely végrehajtja a adatvezérelt ([eseményindítók konfigurált function.json](functions-triggers-bindings.md)). Minden függvény az első argumentum értéke egy `context` objektum, amely a fogadó és küldő kötés adatok, naplózás, és a futtatókörnyezet való kommunikáció során használatos.
 
-Ez a cikk feltételezi, hogy már elolvasta a [Azure Functions fejlesztői segédanyagai](functions-reference.md). Is hajtsa végre a függvények gyors útmutató: hozzon létre az első függvény használatával [Visual Studio Code](functions-create-first-function-vs-code.md) vagy [a portálon](functions-create-first-azure-function.md).
+Ez a cikk feltételezi, hogy már elolvasta a [Azure Functions fejlesztői segédanyagai](functions-reference.md). Végezze el a függvények gyors útmutató: hozzon létre az első függvény használatával [Visual Studio Code](functions-create-first-function-vs-code.md) vagy [a portálon](functions-create-first-azure-function.md).
+
+Ez a cikk is támogatja a [TypeScript alkalmazásfejlesztés](#typescript).
 
 ## <a name="folder-structure"></a>gyökérmappa-szerkezetében
 
@@ -109,7 +111,7 @@ A JavaScript [kötések](functions-triggers-bindings.md) konfigurált, és a egy
 
 ### <a name="inputs"></a>Bemenetek
 Bemeneti az Azure Functions két kategóriába oszthatók: egy a trigger bemenete a másik pedig a további adatokat. Az eseményindító és más bemeneti kötések (vazby prvku `direction === "in"`) háromféleképpen függvény által olvasható:
- - **_[Ajánlott]_  a függvénynek átadott paraméterek.** A függvény ugyanabban a sorrendben vannak meghatározva, a rendszer átad *function.json*. Vegye figyelembe, hogy a `name` meghatározott tulajdonság *function.json* nem kell egyeznie a paraméter nevével, bár azt kell.
+ - **_[Ajánlott]_  a függvénynek átadott paraméterek.** A függvény ugyanabban a sorrendben vannak meghatározva, a rendszer átad *function.json*. A `name` meghatározott tulajdonság *function.json* nem kell egyeznie a paraméter nevével, bár azt kell.
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
@@ -138,7 +140,8 @@ Bemeneti az Azure Functions két kategóriába oszthatók: egy a trigger bemenet
 ### <a name="outputs"></a>Kimenetek
 Kimenetek (vazby prvku `direction === "out"`) számos módon a függvény által írhatók. Minden esetben a `name` tulajdonság a kötés, ahogyan az az *function.json* felel meg a függvényben írt az objektumtag neve. 
 
-Kimeneti kötések adatok rendelhet a következő módszerek valamelyikével. Ezek a módszerek nem ötvözze.
+Kimeneti kötések adatok rendelhet a (nem a két módszer együttesen) a következő módszerek valamelyikével:
+
 - **_[Több kimenetek ajánlott]_  Objektum visszaadása.** Egy aszinkron/Promise visszaadó függvény használatakor visszatérhessen hozzárendelt kimeneti adatokat tartalmazó objektumot. Az alábbi példában a kimeneti kötések neve "httpResponse" és "queueOutput" a *function.json*.
 
   ```javascript
@@ -152,7 +155,7 @@ Kimeneti kötések adatok rendelhet a következő módszerek valamelyikével. Ez
       };
   };
   ```
-  
+
   Egy szinkron függvényt használja, ha az objektum segítségével visszatérhet [ `context.done` ](#contextdone-method) (lásd a példát).
 - **_[Ajánlott egyetlen kimeneti]_  Közvetlenül érték visszaadása, és az $return kötés használatával.** Ez csak az aszinkron/Promise visszatérő függvények esetében működik. A példa [exportálása egy aszinkron függvény](#exporting-an-async-function). 
 - **Az értékeket rendel `context.bindings`**  közvetlenül a context.bindings rendelhet értéket.
@@ -167,7 +170,7 @@ Kimeneti kötések adatok rendelhet a következő módszerek valamelyikével. Ez
       return;
   };
   ```
- 
+
 ### <a name="bindings-data-type"></a>Kötései adattípusa
 
 Bemeneti kötés adattípusát meghatározásához használja a `dataType` tulajdonság a kötés-definícióban. Olvassa el a tartalom HTTP-kérés bináris formátumú, például a típus használja `binary`:
@@ -550,7 +553,47 @@ const myObj = new MyObj();
 module.exports = myObj;
 ```
 
-Ebben a példában fontos megjegyezni, hogy az objektum exportálása folyamatban van, noha nincsenek nincs jelentéscsomagot körül végrehajtások közötti állapot megőrzése.
+Ebben a példában fontos megjegyezni, hogy az objektum exportálása folyamatban van, noha garanciát nem jelentenek for végrehajtások közötti állapot megőrzése.
+
+## <a name="typescript"></a>TypeScript
+
+Amikor célozhat meg verzió 2.x verzióját a Functions futtatókörnyezete mindkét [a Visual Studio Code az Azure Functions](functions-create-first-function-vs-code.md) és a [Azure Functions Core Tools](functions-run-local.md) hozhat létre a függvényalkalmazások sablon használatával, amelyek támogatják a TypeScript-függvény alkalmazás projektek. A sablon létrehoz `package.json` és `tsconfig.json` projektfájlokat, amely könnyebben transpile, futtassa, és az ezekkel az eszközökkel TypeScript-kódja JavaScript-függvények közzétételéhez.
+
+A létrehozott `.funcignore` fájllal jelzi, hogy mely fájlok tartoznak, az Azure-bA a projekt közzétételekor.  
+
+TypeScript-fájlok (.ts) transpiled JavaScript-fájlok (.js), a `dist` kimeneti könyvtárat. TypeScript-sablonok használata a [ `scriptFile` paraméter](#using-scriptfile) a `function.json` a megfelelő .js fájl helyének megadására a `dist` mappát. A kimeneti helyet állítják be a sablon használatával `outDir` paramétert a `tsconfig.json` fájlt. Ha módosítja ezt a beállítást, vagy a mappa nevét, a futtatókörnyezet, nem tudja megtalálni a kód futtatásához.
+
+> [!NOTE]
+> TypeScript-támogatás kísérleti verzió létezik a Functions futtatókörnyezet 1.x. A kísérleti verzió transpiles TypeScript fájlok JavaScript-fájlok, a függvény meghívásakor. A verzió 2.x-es, a kísérleti támogatás felül lett írva a eszköz által készített módszerrel, amely transpilation megelőzően az állomás inicializálva van, és a telepítési folyamat során.
+
+A helyi fejlesztése és üzembe helyezés a TypeScript projekt módon a fejlesztési eszköz függ.
+
+### <a name="visual-studio-code"></a>Visual Studio Code
+
+A [a Visual Studio Code az Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) bővítmény lehetővé teszi a TypeScript használatával funkciók fejlesztése. A Core-eszközök esetében az Azure Functions bővítmény követelmény.
+
+TypeScript függvényalkalmazás létrehozása a Visual Studio Code, egyszerűen válasszon `TypeScript` amikor létrehoz egy függvényalkalmazást, és a rendszer kéri, válassza ki a nyelvet.
+
+Amikor lenyomja **F5** futtathatják az alkalmazást helyileg, transpilation történik a gazdagép (func.exe) inicializálása előtt. 
+
+Telepítésekor meg kell adnia a függvényalkalmazás Azure-bA a **függvényalkalmazáshoz telepítése...**  gombra, az Azure Functions bővítmény először létrehozza a TypeScript forrásfájlokból JavaScript-fájlok éles használatra kész build.
+
+### <a name="azure-functions-core-tools"></a>Az Azure Functions Core Tools
+
+TypeScript függvényalkalmazás-projekt Core Tools használatával létrehozásához, a typescript nyelvi beállítás a függvényalkalmazás létrehozásakor kell megadnia. Ez a következő módszerek egyikével teheti meg:
+
+- Futtassa a `func init` parancs, jelölje be `node` a nyelvi modult, és válassza ki, `typescript`.
+
+- Futtassa a következő parancsot: `func init --worker-runtime typescript`.
+
+A függvény kódját Core Tools használatával helyben futtatásához használja a `npm start` parancsot, hanem `func host start`. A `npm start` parancs megegyezik a következő parancsokat:
+
+- `npm run build`
+- `func extensions install`
+- `tsc`
+- `func start`
+
+Ahhoz, hogy a [ `func azure functionapp publish` ] paranccsal helyezze üzembe az Azure, előbb futtatnia kell a `npm run build:production` parancsot. Ez a parancs létrehoz egy éles használatra kész build JavaScript-fájlok, a TypeScript forrásfájlokat, amely telepíthető a használata a [ `func azure functionapp publish` ].
 
 ## <a name="considerations-for-javascript-functions"></a>JavaScript-függvények szempontjai
 
@@ -558,11 +601,7 @@ JavaScript-függvények használata, a következő szakaszokban ismertetett szem
 
 ### <a name="choose-single-vcpu-app-service-plans"></a>Válasszon egy vcpu-nkénti App Service-csomagok
 
-Amikor létrehoz egy függvényalkalmazást, amelyet az App Service-csomagot használ, azt javasoljuk, hogy kiválaszt egy csomagban több vcpu-k helyett egy egyszeri vcpu-nkénti terv. Még ma függvények JavaScript-függvények sokkal hatékonyabban futtatható egyetlen vcpu-nkénti virtuális gépeken, és nagyobb virtuális gépek használata nem eredményez a várt teljesítménnyel kapcsolatos fejlesztések. Ha szükséges, manuálisan horizontális felskálázása további egyetlen vcpu-nkénti Virtuálisgép-példányok hozzáadásával, vagy engedélyezheti az automatikus méretezés. További információkért lásd: [példányszám manuális vagy automatikus méretezése](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json).    
-
-### <a name="typescript-and-coffeescript-support"></a>TypeScript és CoffeeScript támogatása
-
-Közvetlen támogatást még nem létezik automatikus fordítása TypeScript vagy CoffeeScript a modulon keresztül, mert az ilyen támogatás kezelendő kívül a futtatókörnyezet üzembe helyezéskor. 
+Amikor létrehoz egy függvényalkalmazást, amelyet az App Service-csomagot használ, azt javasoljuk, hogy kiválaszt egy csomagban több vcpu-k helyett egy egyszeri vcpu-nkénti terv. Még ma függvények JavaScript-függvények sokkal hatékonyabban futtatható egyetlen vcpu-nkénti virtuális gépeken, és nagyobb virtuális gépek használata nem eredményez a várt teljesítménnyel kapcsolatos fejlesztések. Ha szükséges, manuálisan horizontális felskálázása további egyetlen vcpu-nkénti Virtuálisgép-példányok hozzáadásával, vagy engedélyezheti az automatikus méretezés. További információkért lásd: [példányszám manuális vagy automatikus méretezése](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2ftoc.json).
 
 ### <a name="cold-start"></a>Hidegindítási
 
@@ -575,3 +614,5 @@ További információkért lásd a következőket:
 + [Azure Functions – ajánlott eljárások](functions-best-practices.md)
 + [Az Azure Functions fejlesztői segédanyagai](functions-reference.md)
 + [Az Azure Functions eseményindítók és kötések](functions-triggers-bindings.md)
+
+[az azure func functionapp közzététele]: functions-run-local.md#project-file-deployment

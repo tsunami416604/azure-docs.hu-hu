@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b73656e2bb7c413d2c29fafb682f39154499854a
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: d7bcff89ba7f76980287f9aad3413a6ef3f41b4f
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904454"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807422"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Az Azure App Service-alkalmazások diagnosztikai célú naplózásának engedélyezése
 ## <a name="overview"></a>Áttekintés
@@ -34,7 +34,7 @@ App Service-ben diagnosztikai funkciókat biztosít a naplózási információk 
 ### <a name="web-server-diagnostics"></a>Webes kiszolgálódiagnosztika
 Engedélyezheti vagy letilthatja a naplók a következő típusú:
 
-* **Részletes hibanaplózás** – részletes (állapotkód: 400 vagy nagyobb) hibát jelző HTTP-állapotkódok hiba adatait. Tartalmazhat, amelyek segíthetnek meghatározni, miért érdemes a kiszolgáló a következő hibakódot adta vissza információt.
+* **Részletes hibanaplózás** – részletes információk minden kéréshez, amely HTTP-állapotkód: 400 vagy nagyobb eredményez. Tartalmazhat, amelyek segíthetnek meghatározni, miért érdemes a kiszolgáló a következő hibakódot adta vissza információt. Egy HTML-fájl jön létre minden egyes hibához (a *D:\LogFiles\DetailedErrors* alapértelmezés szerint), és legfeljebb 50 hibák (fájlok) megmaradnak. A HTML-fájlok száma meghaladja az 50, amikor a rendszer automatikusan töröl a legrégebbi 26 fájlokat.
 * **Sikertelen kérelmek nyomkövetésére vonatkozó** – részletes információk a sikertelen kérelmek, beleértve a nyomkövetés feldolgozni a kérelmet, és az egyes összetevőkben ideje használja az IIS-összetevőt. Ez akkor hasznos, ha a webhely teljesítményének javítása vagy különíteni egy adott HTTP hiba.
 * **Webalkalmazás-kiszolgáló naplózási** – HTTP-tranzakciót használatával kapcsolatos információkat a [W3C bővített naplófájlformátum](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Ez hasznos, teljes webhelymetrikák például kezelt kérések, vagy hogy hány kérésnek egy adott IP-címről számának meghatározásakor.
 

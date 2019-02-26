@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: ddbd77cbc199e78e74324c87d49155f27d6edeea
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 5a9ea460684383bd09e5a679f3140d3b8f083d4d
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417091"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823620"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -89,13 +89,13 @@ Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyez
 * IoT Hubok
 * A Key Vault - Key vault-Kulcstartók lemez titkosításához használt nem helyezhetők át erőforráscsoportok ugyanazon az előfizetésen belül vagy előfizetések között.
 * Terheléselosztók – alapszintű Termékváltozatú terheléselosztó helyezhetők. Standard Termékváltozatú terheléselosztó nem lehet áthelyezni.
-* Log Analytics
 * Logic Apps
 * Machine Learning - webszolgáltatások helyezheti át egy erőforráscsoport ugyanabban az előfizetésben, de nem egy másik előfizetésben található Machine Learning Studióban. Egyéb Machine Learning-erőforrások áthelyezhetők, előfizetések között.
 * Tekintse meg a Managed Disks - [megkötések virtuális gépek korlátozásai](#virtual-machines-limitations)
 * Felügyelt identitás - felhasználó által hozzárendelt
 * Media Services
 * Győződjön meg arról, hogy új előfizetésbe való áthelyezését figyelője – nem lehet [előfizetési kvóták](../azure-subscription-service-limits.md#monitor-limits)
+* Az Azure Monitor naplóira
 * Notification Hubs
 * Operational Insights
 * Operations Management
@@ -145,7 +145,7 @@ Az alábbi lista nem lehet áthelyezni egy új erőforráscsoportot és egy elő
 * A Lab Services – áthelyezése új erőforráscsoportba ugyanahhoz az előfizetéshez engedélyezve van, de az előfizetés közötti áthelyezése nem engedélyezett.
 * Felügyelt alkalmazások
 * Microsoft Genomics
-* NetApp
+* Azure NetApp Files
 * Azure-beli SAP HANA-szolgáltatás
 * Biztonság
 * Site Recovery
@@ -513,7 +513,7 @@ A kérelem törzsében szereplő adja meg a céloldali erőforráscsoport és er
 
 ## <a name="next-steps"></a>További lépések
 
-* Az előfizetés kezelése a PowerShell-parancsmagokkal kapcsolatos további információkért lásd: [Azure PowerShell használatával a Resource Managerrel](powershell-azure-resource-manager.md).
-* Az előfizetés kezelése az Azure CLI-parancsokkal kapcsolatos további információkért lásd: [az Azure CLI használatával a Resource Manager](xplat-cli-azure-resource-manager.md).
+* Az erőforrások kezelése a PowerShell-parancsmagokkal kapcsolatos tudnivalókért lásd: [Azure PowerShell használatával a Resource Managerrel](manage-resources-powershell.md).
+* Az Azure CLI-parancsokat az erőforrások kezeléséhez kapcsolatos további információkért lásd: [az Azure CLI használatával a Resource Manager](manage-resources-cli.md).
 * Az előfizetés kezelésére szolgáló portál funkciókkal kapcsolatos tudnivalókért lásd: [erőforrások kezelése az Azure portal használatával](resource-group-portal.md).
 * Az erőforrások logikus alkalmazásával kapcsolatos tudnivalókért lásd: [az erőforrások rendszerezése címkék használatával](resource-group-using-tags.md).

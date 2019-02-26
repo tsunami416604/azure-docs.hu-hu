@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/10/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ac2d1c1fb59988c8b95fda6b92bb9ae0332fc0e0
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 864e93dcd94fd36b0e34495e0ea27f22d8b0dd0c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427423"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817677"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Frissítések kezelése több gép esetén
 
@@ -72,7 +72,7 @@ Előkészítés végeztével az Update Management engedélyezve van a virtuális
 
 Az Update Management engedélyezése az Azure Windows virtuális gépek és számítógépek kezelésével kapcsolatos információkért lásd: [a Log Analytics szolgáltatás az Azure-ban való csatlakozáshoz Windows számítógépek](../log-analytics/log-analytics-windows-agent.md).
 
-Az Update Management engedélyezése nem Azure-beli Linuxos virtuális gépek és számítógépek kezelésével kapcsolatos információkért lásd: [Linux rendszerű számítógépek csatlakoztatása a Log Analytics](../log-analytics/log-analytics-agent-linux.md).
+Az Update Management engedélyezése nem Azure-beli Linuxos virtuális gépek és számítógépek kezelésével kapcsolatos információkért lásd: [Linux rendszerű számítógépek csatlakoztatása az Azure Monitor naplóira](../log-analytics/log-analytics-agent-linux.md).
 
 ## <a name="view-computers-attached-to-your-automation-account"></a>Az Automation-fiókhoz csatlakoztatott számítógépek megtekintése
 
@@ -113,7 +113,7 @@ A következő táblázat ismerteti a megoldás által támogatott csatlakoztatot
 
 ### <a name="collection-frequency"></a>A gyűjtés gyakorisága
 
-A számítógép frissítési megfelelőség szempontjából vizsgálat befejezése után az ügynök továbbítja az adatokat, tömegesen az Azure Log Analyticshez való. A Windows-számítógépen a megfelelőségi vizsgálat futtatása alapértelmezés szerint 12 óránként.
+A számítógép frissítési megfelelőség szempontjából vizsgálat befejezése után az ügynök továbbítja az adatokat az Azure Monitor naplóira tömeges. A Windows-számítógépen a megfelelőségi vizsgálat futtatása alapértelmezés szerint 12 óránként.
 
 A frissítés megfelelőségi vizsgálat ütemezett vizsgálatokat mellett az MMA újraindítja, frissítés telepítése előtt, és a frissítés telepítése után legfeljebb 15 perccel kezdeményezik.
 
@@ -132,7 +132,7 @@ Az a **új frissítéstelepítés** panelen adja meg a következő információk
 - **Név**: Adjon meg egy egyedi nevet a frissítéstelepítés azonosításához.
 - **Operációs rendszer**: Válassza ki **Windows** vagy **Linux**.
 - **A csoportok frissítése (előzetes verzió)**: Egy előfizetés, erőforráscsoport, helyek és címkék felvenni az üzembe helyezés az Azure-beli virtuális dinamikus csoportot hozhat létre kombinációja alapján lekérdezést határoz meg. További információ: [Dinamikus csoportok](automation-update-management.md#using-dynamic-groups)
-- **Frissítendő gépek**: Jelöljön ki egy mentett keresési importált csoporthoz, vagy gépek számára, hogy válassza ki a frissíteni kívánt gépeket. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható. A frissítéstelepítés ütemezése előtt látható a gép állapotát. A számítógépcsoportok Log Analyticsben lévő létrehozásának különböző módszereivel kapcsolatos további információkért tekintse meg a [Log Analytics számítógépcsoportjait](../azure-monitor/platform/computer-groups.md) ismertető részt
+- **Frissítendő gépek**: Jelöljön ki egy mentett keresési importált csoporthoz, vagy gépek számára, hogy válassza ki a frissíteni kívánt gépeket. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható. A frissítéstelepítés ütemezése előtt látható a gép állapotát. Számítógépcsoportok létrehozását az Azure Monitor naplóira különböző módszereivel kapcsolatos további információkért lásd: [számítógépcsoportokat az Azure Monitor naplóira](../azure-monitor/platform/computer-groups.md)
 
   ![Új frissítés üzembe helyezési panel](./media/manage-update-multi/update-select-computers.png)
 

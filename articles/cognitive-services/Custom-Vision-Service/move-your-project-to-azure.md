@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: anroth
-ms.openlocfilehash: b46ccd98145342fda58672b64b838ab92ba4f97b
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: a9f49af54f391b159f8b3d626fffc36635f5e51f
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731922"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821303"
 ---
 # <a name="how-to-move-your-limited-trial-project-to-azure-using-the-customvisionai-site"></a>A korlátozott próbaverzió projekt áthelyezése az Azure-ban a CustomVision.ai hely
 
@@ -64,7 +64,7 @@ Egyetlen erőforrást több projektet társíthatók. További részleteket tart
     ![Projekt áttelepítési ablakot.](./media/move-your-project-to-azure/Project_Migration_Window.jpg)
 
 
-## <a name="move-your-limited-trial-project-to-an-azure-resource-in-another-directory"></a>Helyezze át a korlátozott próbaverzió projekt egy Azure-erőforrás egy másik címtárban 
+## <a name="move-project-to-another-azure-directory"></a>Projekt áthelyezése egy másik Azure-címtárhoz 
 
 > [!NOTE]
 > Az Azure portál és CustomVision.ai válassza ki a címtárat a képernyő jobb felső sarkában lévő legördülő felhasználói menüből.   
@@ -92,4 +92,6 @@ Egyetlen erőforrást több projektet társíthatók. További részleteket tart
 
 5. Ne feledje, hogy a projekt már egy másik címtárban. A projekt megkereséséhez kell váltani a Custom Vision, amely a projektet a webes portálon ugyanabban a címtárban. Az Azure Portalon, és a [Custom Vision webhely](https://customvision.ai), kiválaszthatja a címtárban a fiókot a legördülő menüből a képernyő jobb felső sarkában. 
 
+## <a name="next-steps"></a>További lépések
 
+A projekt már át lett helyezve az Azure-erőforrás. A betanítási és Predikciós kulcsokat írt alkalmazások frissíteni kell.

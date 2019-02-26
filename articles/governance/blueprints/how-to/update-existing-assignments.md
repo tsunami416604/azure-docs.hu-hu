@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 2ada0ccc1286677300c005da4fa0e92be94a3ca8
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: edfc14e837c92cac5bab589e33069bb771a53cb7
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314829"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818255"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Egy meglévő tervezet-hozzárendelés frissítése
 
@@ -26,11 +26,11 @@ A tervezet hozzárendelésekor a hozzárendelés lehet frissíteni. A meglévő 
 
 ## <a name="updating-assignments"></a>Hozzárendelések frissítése
 
-1. Kattintson a **Minden szolgáltatás** elemre, és keresse meg, majd válassza ki a **Szabályzat** elemet a bal oldali panelen. Kattintson a **Szabályzat** oldal **Tervek** elemére.
+1. Válassza ki **minden szolgáltatás** a bal oldali panelen. Keresse meg és válassza **tervezetek**.
 
-1. Válassza a **Hozzárendelt tervek** lehetőséget a lap bal oldalán.
+1. Válassza ki **hozzárendelt tervezetek** a lap bal oldalán.
 
-1. Tervezetek listájában bal kattintással a tervezet-hozzárendelést. Kattintson a **frissítési hozzárendelés** gombra, vagy kattintson a jobb gombbal a tervezet-hozzárendelést, és válassza ki **frissítési hozzárendelés**.
+1. Tervezetek listájában bal kattintással a tervezet-hozzárendelést. Kattintson a **hozzárendelés frissítése** gombra, vagy kattintson a jobb gombbal a tervezet-hozzárendelést, és válassza ki **hozzárendelés frissítése**.
 
    ![Hozzárendelés frissítése](../media/update-existing-assignments/update-assignment.png)
 

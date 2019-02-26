@@ -5,17 +5,17 @@ description: 'Üzleti titokra adatelemzési módszer: Első másokat, hogy Ön h
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 01/05/2018
-ms.openlocfilehash: 821ee126350d18102ec92de04436a76050734dc4
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: a179efe3c4dcd3b36fa8d86910f10c4ab4cdb0aa
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456826"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817813"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Más emberek munkájának lemásolása az adatelemzéshez
 ## <a name="video-5-data-science-for-beginners-series"></a>5. Videó: Adatelemzés kezdőknek sorozat
@@ -92,4 +92,4 @@ Mindenképpen tekintse meg a "Data Science a kezdők" a Microsoft Azure Machine 
 
 ## <a name="next-steps"></a>További lépések
 * [Az első adatelemzési kísérlet az Azure Machine Learning Studio kipróbálása](create-experiment.md)
-* [Bevezetés a gépi tanulás a Microsoft Azure](what-is-machine-learning.md)
+* [Bevezetés a gépi tanulás a Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)

@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: milanga;cenkdin;juliako
-ms.openlocfilehash: cdf644ab37d7f2e15cb35a3234786900a1a64ec1
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: a49ab9b045854c49785546ed17834169ec29f8b8
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733503"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816818"
 ---
 # <a name="update-media-services-after-rolling-storage-access-keys"></a>A Media Services frissítése tárelérési kulcsok váltása után 
 
 Amikor létrehoz egy új Azure Media Services (AMS)-fiókot, a rendszer is felkéri Azure Storage-fiókot, amely a médiatartalmak tárolására szolgál. A Media Services-fiók több mint egy storage-fiókok is hozzáadhat. Ez a cikk bemutatja, hogyan tárkulcsok rotálása. Azt is bemutatja, hogyan tárfiókok hozzáadása media-fiók. 
 
-Az ebben a cikkben leírt műveletek végrehajtását, kellene használni [Azure Resource Manager API-k](/rest/api/media/operations/azure-media-services-rest-api-reference) és [Powershell](https://docs.microsoft.com/powershell/module/az.media).  További információkért lásd: [kezelése az Azure PowerShell és a Resource Manager-erőforrások](../../azure-resource-manager/powershell-azure-resource-manager.md).
+Az ebben a cikkben leírt műveletek végrehajtását, kellene használni [Azure Resource Manager API-k](/rest/api/media/operations/azure-media-services-rest-api-reference) és [Powershell](https://docs.microsoft.com/powershell/module/az.media).  További információkért lásd: [kezelése az Azure PowerShell és a Resource Manager-erőforrások](../../azure-resource-manager/manage-resource-groups-powershell.md).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 6fb8166893f0dada019ca633933833d17b95fee9
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 368e1f6b9501c677eca1cf80d24a06c0a6533e86
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811460"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817354"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch-metrikák, a riasztások és a naplókat a további diagnosztikai kiértékeléséhez és figyeléséhez
 
@@ -91,7 +91,7 @@ A diagnosztikai naplók számára más választható célok:
 
 * Kötegelt diagnosztikai napló események a Stream- [Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md). Az Event Hubs fogadására képes több millió esemény / másodperc, amely, átalakíthatja és tárolhatja bármilyen valós idejű elemzési szolgáltató segítségével. 
 
-* Diagnosztikai naplók küldése [Azure Log Analytics](../log-analytics/log-analytics-overview.md), ahol elemezheti és exportálhatja is azokat elemzés a Power bi-ban vagy az Excel.
+* Diagnosztikai naplók küldése [naplózza az Azure Monitor](../log-analytics/log-analytics-overview.md), ahol elemezheti és exportálhatja is azokat elemzés a Power bi-ban vagy az Excel.
 
 > [!NOTE]
 > Ön további költségekkel járhat tárolásához, vagy az Azure-szolgáltatások diagnosztikai naplóadatokat feldolgozni. 
@@ -101,7 +101,7 @@ A diagnosztikai naplók számára más választható célok:
 
 1. Kattintson a portál **minden szolgáltatás** > **Batch-fiókok**, majd kattintson a Batch-fiók nevére.
 2. A **figyelés**, kattintson a **diagnosztikai naplók** > **diagnosztika bekapcsolása**.
-3. A **diagnosztikai beállítások**, adjon meg egy nevet a beállítás, és válassza ki a naplócél (meglévő tárolási fiók, az Eseményközpont vagy a Log Analytics). Válassza ki az egyik vagy mindkét **ServiceLog** és **AllMetrics**.
+3. A **diagnosztikai beállítások**, adjon meg egy nevet a beállítás, és válassza ki a naplócél (meglévő tárfiókot, Event Hub vagy az Azure Monitor naplóira). Válassza ki az egyik vagy mindkét **ServiceLog** és **AllMetrics**.
 
     Amikor kiválaszt egy tárfiókot, igény szerint adatmegőrzési szabály beállításához. Ha nem adja meg a megőrzési napok száma, adatok megőrződnek a storage-fiók élettartama során.
 

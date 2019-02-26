@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 54b211584b170d6e2ee0bcaa6c80bcaed376814f
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 6d7cacf699df580b8a5c46b8bfc6d48e1a8daea1
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904369"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821730"
 ---
 # <a name="manage-and-configure-projects"></a>Projektek kezelése és konfigurálása
 
@@ -58,6 +58,15 @@ Az alábbi feltételek teljesülése esetén a legördülő listában megtalálh
 Amikor kiválaszt egy DSVM-példányt, Azure notebookok kérheti az adott gép hitelesítő adatainak a virtuális gép létrehozásakor használt.
 
 Új DSVM-példány létrehozásához kövesse az utasításokat [hozzon létre egy Ubuntu adatelemző virtuális gép](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Használja a **adatelemző virtuális gép Linux (Ubuntu)** képfájl, ha azt szeretné, hogy a dsvm-hez, megjelenik a legördülő listából válassza ki az Azure-jegyzetfüzeteket.  Ha szeretné használni a Windows- vagy CentOS kép más okokból is használhatja a **közvetlen számítási** a dsvm-hez való kapcsolódáshoz a manuális beállítást.
+
+> [!IMPORTANT]
+> Közvetlen számítási vagy a Data Science virtuális gépek használata esetén a notebookok rajtuk futtatása teljesen önállóan kell lennie. Jelenleg az Azure-jegyzetfüzetek másolja át csak a *.ipynb* fájlt a virtuális géphez, de nem másolja a többi fájlt a projektben. Ennek eredményeképpen notebookok más virtuális gépeken futó egyéb project fájlok keresése sikertelen.
+>
+> Ez a viselkedés kétféleképpen oldható meg:
+>
+> 1. Soubory projektu manuálisan másolja a virtuális Gépet.
+>
+> 2. A telepítő jegyzetfüzet belül a fájlok beágyazása, hogy futtassa az elsődleges jegyzetfüzet futtatása előtt. A telepítő jegyzetfüzet hozzon létre egy kódcellát, az egyes fájlok, ahol a cellát tartalmaz-e a fájl tartalmát. Minden cella tetején helyezze be a parancs `%writefile <filename>`, ahol `<filename>` fogadni a tartalmát a fájl neve. A notebook futtatásakor fájlokhoz a virtuális gépen hoz létre. Egy vonatkozó példáért tekintse meg a [setup.ipynb fájlt a Microsoft Kisállat detector használatával bemutató](https://github.com/microsoft/connect-petdetector) (GitHub).
 
 ## <a name="edit-project-metadata"></a>Projekt metaadatainak szerkesztése
 

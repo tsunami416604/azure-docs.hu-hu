@@ -3,7 +3,7 @@ title: Az Azure Service Fabric erőforrás-szabályozása tárolók és szolgál
 description: Az Azure Service Fabric lehetővé teszi, hogy a belső vagy külső tárolók futó szolgáltatásokhoz erőforráskorlátok adja meg.
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
-ms.author: twhitney, subramar
-ms.openlocfilehash: 66f651f921773f638b4493be70319d5d80b122db
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.author: aljo, subramar
+ms.openlocfilehash: 1a9d9e0b6a82bd4bb3312df5288c04d0e52af3a6
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956840"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805672"
 ---
 # <a name="resource-governance"></a>Erőforrások szabályozása
 
@@ -32,9 +32,9 @@ Ha több szolgáltatást ugyanarra a csomópont vagy fürtön futtatja, lehetsé
 
 A Service Fabric-szolgáltatást a támogatott erőforrás-szabályozása a [szolgáltatáscsomag](service-fabric-application-model.md). A csomag hozzárendelt erőforrások közötti kódcsomagok tovább oszthatók. A megadott erőforráskorlátok is jelentheti a foglalást az erőforrások. A Service Fabric támogatja a Processzor- és szolgáltatás csomagonként megadása két beépített [metrikák](service-fabric-cluster-resource-manager-metrics.md):
 
-* *CPU* (metrika neve `servicefabric:/_CpuCores`): a gazdagépen rendelkezésre álló logikai alapszintű. Az összes mag csomópontokon vannak súlyozott azonos.
+* *CPU* (metrika neve `servicefabric:/_CpuCores`): A gazdagépen rendelkezésre álló logikai alapszintű. Az összes mag csomópontokon vannak súlyozott azonos.
 
-* *Memória* (metrika neve `servicefabric:/_MemoryInMB`): memória (MB) fejezzük ki, és a gépen rendelkezésre álló fizikai memória vannak leképezve.
+* *Memória* (metrika neve `servicefabric:/_MemoryInMB`): Memória (MB) fejezzük ki, és a gépen rendelkezésre álló fizikai memória vannak leképezve.
 
 A következő két metrikákhoz [fürterőforrás-kezelő](service-fabric-cluster-resource-manager-cluster-description.md) nyomon követi a fürt teljes kapacitása, a fürt egyes csomópontjaihoz, és a fürtben lévő további erőforrásokat érő terhelést. E két mérőszám semmilyen más felhasználó- vagy egyéni metrika egyenértékűek. Az összes meglévő funkciók velük használhatók:
 
@@ -190,12 +190,12 @@ Ebben a példában az alapértelmezett paraméterértékeket vannak beállítva 
 
 CPU és memória mellett a tárolók egyéb erőforráskorlátok adja meg. Ezeket a korlátokat a kódcsomag szintjén vannak megadva, és a rendszer alkalmazza a tároló elindult. Ellentétben a CPU és memória, a fürterőforrás-kezelő nem ezeket az erőforrásokat, és nem bármelyik kapacitásának ellenőrzéséhez tegye vagy terheléselosztás, a számukra.
 
-* *MemorySwapInMB*: egy tárolót használó lapozófájl-kapacitás memória mennyisége.
-* *MemoryReservationInMB*: memória cégirányítási, amely csak akkor, ha a csomópontot a memória a versengés észlelt a rendszer kényszerítve van az enyhe korlátjának.
-* *CpuPercent*: Processzor, a tárolót használó aránya. Ha a CPU-korlátok a szolgáltatási csomag számára meg van adva, ezt a paramétert hatékonyan figyelmen kívül.
+* *MemorySwapInMB*: Egy tárolót használó lapozómemória mennyisége.
+* *MemoryReservationInMB*: A memória cégirányítási csak akkor, ha a csomópontot a memória a versengés észlelt a rendszer érvényes enyhe korlát.
+* *CpuPercent*: A Processzor, a tárolót használó százalékos értéke. Ha a CPU-korlátok a szolgáltatási csomag számára meg van adva, ezt a paramétert hatékonyan figyelmen kívül.
 * *MaximumIOps*: A maximális iops-érték tároló használható (olvasási és írási).
 * *MaximumIOBytesps*: A maximális i/o (bájt / másodperc), amellyel egy tároló (olvasási és írási).
-* *BlockIOWeight*: A blokk i/o-súlyozási a más tárolók viszonyítva.
+* *BlockIOWeight*: A blokk más tárolók képest relatív súlya IO.
 
 Ezeket az erőforrásokat a CPU és memória kombinálható is. Íme egy példa, hogyan adhat meg további források a tárolók:
 

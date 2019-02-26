@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 9166d5d552df4854a4d00c2211a273a06198877a
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: d7c923dd819f826d9d9aaf8d5b88355a9feb344f
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567485"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823161"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Paramétereknek dinamikus tervezetek létrehozása
 
@@ -52,11 +52,11 @@ A paraméter értéke a tervrajz-definícióban meghatározott nevezzük egy **s
 
 #### <a name="setting-static-parameters-in-the-portal"></a>Statikus paramétereinek beállítása a portálon
 
-1. Kattintson a **Minden szolgáltatás** elemre, és keresse meg, majd válassza ki a **Szabályzat** elemet a bal oldali panelen. Kattintson a **Szabályzat** oldal **Tervek** elemére.
+1. Válassza ki **minden szolgáltatás** a bal oldali panelen. Keresse meg és válassza **tervezetek**.
 
-1. A lap bal oldalán válassza a **Tervdefiníciók** lehetőséget.
+1. Válassza ki **definíciók tervezetet** a lap bal oldalán.
 
-1. Kattintson egy meglévő tervezet a, és kattintson a **tervrajz szerkesztése** , vagy kattintson **+ létrehozás tervezet** , és adja meg az adatokat a a **alapjai** fülre.
+1. Kattintson egy meglévő tervezet a, és kattintson a **szerkesztési tervezet** , vagy kattintson **+ létrehozás tervezet** , és adja meg az adatokat a a **alapjai** fülre.
 
 1. Kattintson a **tovább: Összetevők** , vagy kattintson az a **összetevők** fülre.
 
@@ -169,9 +169,9 @@ Ennek az ellenkezője, egy statikus paraméter egy **dinamikus paraméterek**. E
 
 #### <a name="setting-dynamic-parameters-in-the-portal"></a>A portál dinamikus paraméterek beállítása
 
-1. Kattintson a **Minden szolgáltatás** elemre, és keresse meg, majd válassza ki a **Szabályzat** elemet a bal oldali panelen. Kattintson a **Szabályzat** oldal **Tervek** elemére.
+1. Válassza ki **minden szolgáltatás** a bal oldali panelen. Keresse meg és válassza **tervezetek**.
 
-1. A lap bal oldalán válassza a **Tervdefiníciók** lehetőséget.
+1. Válassza ki **definíciók tervezetet** a lap bal oldalán.
 
 1. A tervezet, amelyet szeretne hozzárendelni a jobb gombbal. Válassza ki **tervezet hozzárendelése** vagy a tervezet hozzárendelni kívánt elemére, majd kattintson a **tervezet hozzárendelése** gombra.
 

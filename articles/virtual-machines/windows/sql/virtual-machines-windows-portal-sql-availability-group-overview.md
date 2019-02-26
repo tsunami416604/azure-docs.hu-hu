@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mikeray
-ms.openlocfilehash: 5f8ae6d9138a7413b0cca4cca7bcc47c13212674
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 728d73ee954a6ddebf80c6a9c466784c9c79bd53
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358051"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819147"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>SQL Server Always On rendelkezésre állási csoportok az Azure-beli virtuális gépek bemutatása #
 
@@ -36,13 +36,33 @@ A fő rendelkezésre állási csoporthoz az Azure Virtual machines gépeken kül
 
 Emellett az Azure IaaS virtuális gépek Vendég feladatátvevő fürtöt, javasoljuk, hogy egyik hálózati Adapterre (fürtcsomópont) kiszolgálónként és a egy önálló alhálózati. Az Azure-hálózatok rendelkezik fizikai redundanciát, így további hálózati adapterek és alhálózatok a szükségtelen az Azure IaaS virtuális gépek Vendég-fürtön. A fürt ellenőrzési jelentésében figyelmeztetést ad, hogy a csomópontok használata csak egyetlen hálózaton elérhető legyen, bár ez a figyelmeztetés figyelmen kívül hagyhatja biztonságosan Azure IaaS virtuális gépek Vendég feladatátvevő fürtökön. 
 
+|  | Windows Server-verzió | SQL Server-verzió | SQL Server Edition | WSFC Quorum Config | A többrégiós DR | Több alhálózatos támogatása | Egy meglévő AD támogatása | DR-többzónás ugyanabban a régióban | Nincs Active Directory-tartománynak dist – rendelkezésre állási csoport által támogatott | Nincs a fürt dist – rendelkezésre állási csoport által támogatott |  
+| :------ | :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----|
+| [AZ SQL VIRTUÁLIS GÉP CLI](virtual-machines-windows-sql-availability-group-cli.md) | 2016 | 2017 </br>2016   | – Kiszolgálótelepítés megadása | Felhőbeli tanúsító | Nem | Igen | Igen | Igen | Nem | Nem |
+| [Gyorsindítási sablonok](virtual-machines-windows-sql-availability-group-quickstart-template.md) | 2016 | 2017</br>2016  | – Kiszolgálótelepítés megadása | Felhőbeli tanúsító | Nem | Igen | Igen | Igen | Nem | Nem |
+| [Portálsablonja](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) | 2016 </br>2012 R2 | 2016</br>2014 | – Kiszolgálótelepítés megadása | Fájlmegosztás | Nem | Nem | Nem | Nem | Nem | Nem |
+| [Manuális](virtual-machines-windows-portal-sql-availability-group-prereq.md) | Összes | Összes | Összes | Összes | Igen | Igen | Igen | Igen | Igen | Igen |
+| &nbsp; | &nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |
+
 Ha készen áll egy SQL Server rendelkezésre állási csoport létrehozása az Azure Virtual machines szolgáltatásban, tekintse meg ezekben az oktatóanyagokban.
 
-## <a name="automatically-create-an-availability-group-from-a-template"></a>Automatikus létrehozása egy rendelkezésre állási csoport sablon alapján
+## <a name="manually-with-azure-cli"></a>Manuálisan az Azure CLI-vel
+A javasolt megoldás Azure CLI használatával konfigurálhatja és telepítheti a rendelkezésre állási csoport, mivel a legjobb egyszerű és gyors üzembe helyezés tekintetében. Az Azure CLI-vel, SQL Server virtuális gépek csatlakoztatása a fürtöt, a Windows feladatátvevő fürt létrehozását, valamint a figyelőt és a belső terheléselosztó létrehozása az összes elérhető 30 percen belül. Ez a beállítás továbbra is a rendelkezésre állási csoport manuális létrehozását igényli, de automatizálja a további szükséges konfigurációs lépések. 
+
+További információkért lásd: [használata Azure SQL virtuális gép CLI Azure virtuális Gépeken futó SQL Server AlwaysOn rendelkezésre állási csoport konfigurálása](virtual-machines-windows-sql-availability-group-cli.md). 
+
+## <a name="automatically-with-azure-quickstart-templates"></a>Automatikusan az Azure-Gyorssablonok
+Az Azure gyorsindítási sablonok üzembe helyezése a Windows feladatátvevő fürt, az SQL Server virtuális gépek csatlakoztatása, hozza létre a figyelőt és a belső Load Balancer konfigurálása az SQL virtuális gép erőforrás-szolgáltató használatára. Ez a beállítás továbbra is egy manuális létrehozását, a rendelkezésre állási csoport, és a belső Load Balancer (ILB) igényel, de automatizálja a, és egyszerűbbé teszi az egyéb szükséges konfigurációs lépéseinek (beleértve az ILB konfigurációja). 
+
+További információkért lásd: [használata az Azure gyorsindítási sablon egy Azure virtuális Gépen futó SQL Server AlwaysOn rendelkezésre állási csoport konfigurálása](virtual-machines-windows-sql-availability-group-quickstart-template.md).
+
+
+## <a name="automatically-with-an-azure-portal-template"></a>Automatikusan az Azure Portal-sablon
 
 [Always On rendelkezésre állási csoport konfigurálása Azure-beli virtuális gépen automatikusan – Resource Manager](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
 
-## <a name="manually-create-an-availability-group-in-azure-portal"></a>Rendelkezésre állási csoport manuális létrehozása az Azure Portalon
+
+## <a name="manually-in-azure-portal"></a>Manuálisan az Azure Portalon
 
 Is létrehozhat a virtuális gépeket saját maga a sablon nélkül. Első lépésként teljesítse az előfeltételeket, majd hozza létre a rendelkezésre állási csoportot. A következő témakörökben: 
 
@@ -52,4 +72,4 @@ Is létrehozhat a virtuális gépeket saját maga a sablon nélkül. Első lép�
 
 ## <a name="next-steps"></a>További lépések
 
-[Egy SQL Server Always On rendelkezésre állási csoport különböző régiókban lévő Azure virtuális gépeken futó konfigurálása](virtual-machines-windows-portal-sql-availability-group-dr.md).
+[Egy SQL Server Always On rendelkezésre állási csoport különböző régiókban lévő Azure virtuális gépeken futó konfigurálása](virtual-machines-windows-portal-sql-availability-group-dr.md)

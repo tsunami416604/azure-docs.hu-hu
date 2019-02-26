@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 1d860b14a878aa7daf43404744eb897f3bd91e13
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: f64000ed502ee817f907e6ac9c89c2f037725a39
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587191"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823790"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio"></a>3. oktatóanyag: Kredit kockázati modell – az Azure Machine Learning Studio telepítése
 
@@ -234,7 +234,7 @@ Klasszikus webszolgáltatás eléréséhez a leggyorsabb és legegyszerűbb mód
 
 A webalkalmazás-sablonokat hozhat létre egyéni webalkalmazásokat, hogy ismeri a webszolgáltatás bemeneti adatokat és milyen adja vissza. Ehhez szüksége, adja meg a webszolgáltatás és az adatokhoz való hozzáférés, és a sablon végzi.
 
-A webalkalmazás-sablonokat, további tájékoztatást lásd: [egy Azure Machine Learning Web service a webalkalmazás-sablonok felhasználása](consume-web-service-with-web-app-template.md).
+A webalkalmazás-sablonokat, további tájékoztatást lásd: [egy Azure Machine Learning Web service a webalkalmazás-sablonok felhasználása](/azure/machine-learning/studio/consume-web-services).
 
 
 

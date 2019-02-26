@@ -5,17 +5,17 @@ description: Az Azure Machine Learning Studio segítségével telepítheti a mac
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: a1ddf6aae9fdd661e30719fafb6000fb6559df20
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: b4658d6321b9c37a2f769ab3961268af8af0773d
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429022"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823926"
 ---
 # <a name="azure-machine-learning-studio-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio Web Services: Telepítés és használat
 
@@ -37,7 +37,7 @@ Az alábbi hivatkozások új webszolgáltatásként üzembe helyezésével kapcs
 * Webszolgáltatás üzembe helyezése konkrét példákat lásd:
 
   * [3. oktatóanyag: Kredit kockázati modell üzembe helyezése](tutorial-part3-credit-risk-deploy.md)
-  * [Webszolgáltatás üzembe helyezése több régióban](how-to-deploy-to-multiple-regions.md)
+  * [Webszolgáltatás üzembe helyezése több régióban](/azure/machine-learning/studio/publish-a-machine-learning-web-service#multi-region)
 
 ### <a name="with-web-services-resource-provider-apis-azure-resource-manager-apis"></a>A web services-szolgáltató API-k (Azure Resource Manager API-k)
 
@@ -49,7 +49,7 @@ Az Azure Machine Learning Studio web services-erőforrás-szolgáltató REST API
 
 Az Azure Machine Learning Studio web services-erőforrás-szolgáltató üzembe helyezését és felügyeletét a webes szolgáltatások lehetővé teszi PowerShell-parancsmagok használatával.
 
-A parancsmagok használatához, először jelentkezzen be Azure-fiókjába, a PowerShell környezetben használatával a [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) parancsmagot. Ha ismeri, hogyan hívhat meg alapuló PowerShell-parancsokat a Resource Managerrel, tekintse meg [az Azure PowerShell az Azure Resource Manager](../../azure-resource-manager/powershell-azure-resource-manager.md).
+A parancsmagok használatához, először jelentkezzen be Azure-fiókjába, a PowerShell környezetben használatával a [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) parancsmagot. Ha ismeri, hogyan hívhat meg alapuló PowerShell-parancsokat a Resource Managerrel, tekintse meg [az Azure PowerShell az Azure Resource Manager](../../azure-resource-manager/manage-resources-powershell.md).
 
 A prediktív kísérletté exportálásához használja [a mintakód](https://github.com/ritwik20/AzureML-WebServices). Az .exe fájlt hoz létre a kódot, miután írhatja be:
 

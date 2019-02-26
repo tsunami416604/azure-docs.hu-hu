@@ -5,16 +5,16 @@ description: Hogyan készíti elő a betanított modellt webszolgáltatásként 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.date: 03/28/2017
-ms.openlocfilehash: 1d07ad7e60e1ee9ff3216767fcfc77405d557f44
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 82ed1378f1a754c8b5c64db2a190db5ceeb0de4a
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455109"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821208"
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>Hogyan készülhet fel a modell üzembe helyezése az Azure Machine Learning Studióban
 

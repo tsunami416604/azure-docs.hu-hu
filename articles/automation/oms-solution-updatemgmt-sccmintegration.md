@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c3b595e9c4d4b98814d1b68adede97204bf3eb96
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: ddc055be45eae923be31d7d11621c9427660bf74
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54422728"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818306"
 ---
 # <a name="integrate-system-center-configuration-manager-with-update-management"></a>A System Center Configuration Manager integrálása az Update Management
 
@@ -26,7 +26,7 @@ Jelentés és létrehozásával és előkészítésével szoftverfrissítés-tel
 
 * Rendelkeznie kell a [Update Management megoldás](automation-update-management.md) az Automation-fiókhoz hozzáadott.
 * A System Center Configuration Manager környezete által jelenleg kezelt Windows-kiszolgálóknak a Log Analytics-munkaterületnek kell jelenteniük, amelyhez szintén engedélyezve van a frissítéskezelési megoldás.
-* Ez a funkció engedélyezve van a System Center Configuration Managerben aktuális ág 1606-os vagy újabb verziója. A Configuration Manager központi adminisztrációs helyének vagy egy különálló elsődleges hely Log Analyticsszel és importált gyűjteményekkel való integrálásához tekintse meg a [Configuration Manager a Log Analyticshez történő csatlakoztatását](../azure-monitor/platform/collect-sccm.md) ismertető részt.  
+* Ez a funkció engedélyezve van a System Center Configuration Managerben aktuális ág 1606-os vagy újabb verziója. A Configuration Manager központi adminisztrációs hely vagy önálló elsődleges hely integrálása az Azure Monitor naplóira, és a gyűjtemények importálásához, tekintse át a [naplózza a Configuration Manager csatlakoztatása az Azure monitornak](../azure-monitor/platform/collect-sccm.md).  
 * A Windows rendszerű ügynökszámítógépeket vagy a Windows Server Update Services (WSUS) szolgáltatással való kommunikációhoz kell konfigurálni, vagy a Microsoft Update szolgáltatáshoz kell hozzáféréssel rendelkezniük, ha nem kapnak biztonsági frissítéseket a Configuration Managertől.   
 
 Az Azure IaaS-ben futtatott ügyfelek Configuration Manager-környezettel való kezelésének módja elsődlegesen az Azure-adatközpontok és az infrastruktúra közötti kapcsolattól függ. Ez a kapcsolat befolyásolja a kialakítás módosításait, amelyeket a Configuration Manager-infrastruktúrán kell elvégeznie, valamint az ezeket a szükséges módosításokat támogató járulékos költségeket. Annak megismeréséhez, hogy milyen tervezési szempontokat kell értékelnie a továbblépés előtt, tekintse meg az [Azure-beli Configuration Managerrel kapcsolatos gyakori kérdéseket](/sccm/core/understand/configuration-manager-on-azure#networking).

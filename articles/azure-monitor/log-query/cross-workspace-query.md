@@ -13,18 +13,25 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: magoedte
-ms.openlocfilehash: ccc9a74c4e238ebfcab0fc05a3bf825000917843
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 3c8c45d217a2ce03597ae5d472d977e3f0a195f7
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998942"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806334"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Erőforrások közötti log-lekérdezések végrehajtása az Azure monitorban  
 
 Korábban az Azure monitorral, csak elemezheti az aktuális munkaterületen belüli adatokat, és az előfizetésben megadott többi munkaterület lekérdezését, korlátozott.  Ezenkívül csak keressen telemetriai elem az Application insights segítségével közvetlenül az Application Insights webes alkalmazását a, vagy a Visual Studióból.  Ez is tette a natív módon elemezheti a működési probléma és az alkalmazásadatok együtt.   
 
-Most már lekérdezheti a nemcsak a több Log Analytics-munkaterületek, de is ugyanazt az erőforráscsoportot, egy másik erőforráscsoportot, vagy egy másik előfizetést az adott Application Insights alkalmazásból származó adatok között. Ez biztosít a rendszerre kiterjedően megtekintheti az adatokat.  Ezek a lekérdezéstípusok a főadatbázisról csak [Log Analytics](portals.md). Az erőforrások (Log Analytics-munkaterületek és Application Insights-alkalmazás), amelyeket megadhat egyetlen lekérdezést számát 100-ra korlátozódik. 
+Most már lekérdezheti a nemcsak a több Log Analytics-munkaterületek, de is ugyanazt az erőforráscsoportot, egy másik erőforráscsoportot, vagy egy másik előfizetést az adott Application Insights alkalmazásból származó adatok között. Ez biztosít a rendszerre kiterjedően megtekintheti az adatokat.  Ezek a lekérdezéstípusok a főadatbázisról csak [Log Analytics](portals.md).
+
+## <a name="cross-resource-query-limits"></a>Erőforrások közötti lekérdezési korlátok 
+
+* Application Insights-erőforrások, amelyeket megadhat egyetlen lekérdezést számát 100-ra korlátozódik.
+* Erőforrások közötti lekérdezés nem támogatott Az adatforrásnézet-tervezőből. A Log Analytics-lekérdezés létrehozásához, és rögzítheti az Azure-irányítópulton és [Naplókeresés ábrázolása](../../azure-monitor/learn/tutorial-logs-dashboards.md#visualize-a-log-search). 
+* [Erőforrások közötti lekérdezési](../log-query/cross-workspace-query.md) naplóban riasztások az új támogatott [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Alapértelmezés szerint az Azure Monitor használja a [örökölt Log Analytics-riasztás API](../platform/api-alerts.md) új naplófájl riasztási szabályok létrehozását az Azure Portalról, kivéve, ha átvált a [örökölt Log riasztások API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api). A váltás után az új API lesz az alapértelmezett új riasztási szabályok az Azure Portalon, és lehetővé teszi, hogy az erőforrások közötti lekérdezési napló riasztások, szabályok létrehozása. Létrehozhat [erőforrások közötti lekérdezési](../log-query/cross-workspace-query.md) riasztási szabályok jelentkezzen anélkül, hogy a kapcsoló használatával a [scheduledQueryRules API az ARM-sablon](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) –, de ez a riasztási szabály kezelhető azonban [ scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) és nem az Azure Portalról.
+
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>A Log Analytics-munkaterületek között és az Application Insightsból
 Hivatkozhat egy másik munkaterületet, a lekérdezés, használja a [ *munkaterület* ](https://docs.microsoft.com/azure/log-analytics/query-language/workspace-expression) azonosítóját, és a egy alkalmazást az Application Insightsból, használja a [ *alkalmazás* ](https://docs.microsoft.com/azure/log-analytics/query-language/app-expression)azonosítója.  

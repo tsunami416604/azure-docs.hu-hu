@@ -16,12 +16,12 @@ ms.date: 02/18/2019
 ms.author: celested
 ms.reviewer: luleon, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3cb2302a8a20a9a5f50b9d11de7ac786ad04853d
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 7c5b61dbb3c6dde8dfcabdba015ee41e968cc5dd
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652263"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817082"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Egy összevont egyszeri bejelentkezésre beállított katalógusából származó alkalmazásba történő bejelentkezésnél
 
@@ -160,7 +160,7 @@ Az Azure AD nem támogatja az egyszeri bejelentkezés az alkalmazás által kül
 
 Az alkalmazás gyártójától ellenőrizni kell, hogy az egyszeri bejelentkezés az Azure AD SAML-implementáció támogatják.
 
-## <a name="no-resource-in-requiredresourceaccess-list"></a>Nincs erőforrás requiredResourceAccess listában
+## <a name="misconfigured-application"></a>Helytelenül konfigurált alkalmazás
 
 *Hiba AADSTS650056: Az alkalmazás helytelenül konfigurált. Ezt a következők egyike okozhatja: Az ügyfél nem rendelkezik szerepel a listán az "AAD Graph" az alkalmazás regisztrálása az ügyfél a kért engedélyek engedélyek. Másik lehetőségként a rendszergazda nem egyezett bele a bérlőben. Vagy tekintse meg az alkalmazásazonosító, annak érdekében, hogy a konfigurált alkalmazás azonosítója egyezik a kérésben. Lépjen kapcsolatba a rendszergazdát, hogy a konfiguráció kijavításának vagy hozzájárulás megadása a bérlő nevében.* .
 
@@ -237,6 +237,33 @@ Az Azure AD nem lehet azonosítani az SAML-kérelmet a HTTP-kérelem URL-cím pa
 
 A kérelmet kell küldenie az SAML-kérelmet kódolja a location fejlécet, HTTP-n keresztül átirányítani a kötést. A megvalósítása, további információt, olvassa el a HTTP átirányítás kötés szakaszt az a [SAML protokoll specifikáció szerinti dokumentum](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf).
 
+## <a name="azure-ad-is-sending-the-token-to-an-incorrect-endpoint"></a>Azure ad-ben a jogkivonat küld egy nem megfelelő végpont
+
+**Lehetséges ok**
+
+Során egyszeri bejelentkezés Ha a bejelentkezési kérés nem tartalmaz explicit válasz URL-cím (helyességi feltétel fogyasztói szolgáltatás URL-címe), majd az Azure AD választ ki a konfigurált bármelyikét használja a kereső URL-címeket az adott alkalmazáshoz. Akkor is, ha az alkalmazás konfigurálása kifejezett válasz URL-cím, a felhasználó lehet átirányítja https://127.0.0.1:444. 
+
+Amikor az alkalmazás hozzá lett adva nem katalógusbeli alkalmazásként, az Azure Active Directory ezt a válasz-URL-címet alapértelmezett értékként hozta létre. Ez a viselkedés azóta megváltozott, és az Azure Active Directory már nem adja hozzá ezt az URL-címet alapértelmezés szerint. 
+
+**Felbontás**
+
+Törölje a nem használt válasz-URL az alkalmazáshoz konfigurált.
+
+1.  Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdai** vagy **társadminisztrátor**.
+
+2.  Nyissa meg a **Azure Active Directory-bővítmény** kiválasztásával **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
+
+3.  Típus **"Azure Active Directory"** a szűrőt a keresési mezőbe, és válasszon a **Azure Active Directory** elemet.
+
+4.  Válassza ki **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
+
+5.  Válassza ki **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
+
+    Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Alkalmazások**.
+
+6.  Válassza ki az egyszeri bejelentkezést a konfigurálni kívánt alkalmazást.
+
+7.  Miután betölti az alkalmazást, nyissa meg a **alapszintű SAML-konfigurációja**. Az a **válasz URL-cím (helyességi feltétel fogyasztói szolgáltatás URL-címe)**, a rendszer által létrehozott alapértelmezett válasz URL-címek vagy fel nem használt törlése. Például: `https://127.0.0.1:444/applications/default.aspx`.
 
 ## <a name="problem-when-customizing-the-saml-claims-sent-to-an-application"></a>A probléma, ha az alkalmazás küldött SAML-jogcímek testreszabása
 

@@ -3,8 +3,8 @@ title: Oktatóanyag – Többszolgáltatású webalkalmazás létrehozása, hiba
 description: Ebben az oktatóanyagban létrehozhat egy ASP.NET Core-webhelyet tartalmazó, háttér-webszolgáltatással kommunikáló, többszolgáltatású Azure Service Fabric mesh-szolgáltatást, valamint azon helyi hibakeresést végezhet, majd közzéteheti az Azure-on.
 services: service-fabric-mesh
 documentationcenter: .net
-author: TylerMSFT
-manager: jeconnoc
+author: dkkapur
+manager: chakdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric-mesh
@@ -13,16 +13,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/18/2018
-ms.author: twhitney
+ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: eb68c7aacb4c62237fc4cd75ec430997b0145454
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 2053706aac2e6136e35e8574dcd19150fe3d3b6a
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888749"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805426"
 ---
-# <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>Oktatóanyag: Többszolgáltatású Service Fabric Meshben-alkalmazás létrehozása, hibaelhárítása, üzembe helyezése és frissítése
+# <a name="tutorial-create-debug-deploy-and-upgrade-a-multi-service-service-fabric-mesh-app"></a>Oktatóanyag: Létrehozása, hibakeresése, üzembe helyezése és egy Service Fabric-háló több szolgáltatásos alkalmazás frissítése
 
 Ez az oktatóanyag egy sorozat első része. Megismerheti, hogyan állíthat össze egy ASP.NET webes előtérrendszerrel és egy ASP.NET Core Web API háttérszolgáltatással rendelkező Service Fabric Mesh-alkalmazást a Visual Studióban. Ezt követően futtathatja az alkalmazás helyi hibakeresését a helyi fejlesztési fürtön. Az alkalmazást közzéteheti az Azure-on, majd konfigurációs és kódmódosításokat végezhet, és frissítheti az alkalmazást. Végül törölheti a nem használt Azure-erőforrásokat, így csak azért kell fizetnie, amit használ.
 

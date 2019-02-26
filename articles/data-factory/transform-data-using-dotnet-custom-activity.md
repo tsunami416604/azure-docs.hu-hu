@@ -11,15 +11,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: douglasl
-ms.openlocfilehash: 0236d9118389b4f8fb79453b425c70f09e94bbb8
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 408776b0b0053b2b2d45112568a2e28467123768
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213807"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805375"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](v1/data-factory-use-custom-activities.md)
 > * [Aktuális verzió](transform-data-using-dotnet-custom-activity.md)
 
@@ -110,6 +110,9 @@ A következő táblázat ismerteti a neveket és leírásokat erre a tevékenys�
 
 &#42;A Tulajdonságok `resourceLinkedService` és `folderPath` kell adható meg egyszerre, vagy mindkettő ki lehet hagyni.
 
+> [!NOTE]
+> Társított szolgáltatások, az egyéni tevékenység referenceObjects átadott, hogy át az Azure Key Vault ajánlott biztonsági eljárás engedélyezve társított szolgáltatás (mivel az nem tartalmaz minden olyan biztonságos karakterlánc) és a fetch a hitelesítő adatok használatával közvetlenül a kulcs titkos neve Tár a kódból. Egy példa annak [Itt](https://github.com/nabhishek/customactivity_sample/tree/linkedservice) , hogy a hivatkozások AKV társított szolgáltatás engedélyezve a hitelesítő adatokat kéri le a Key vaultból, és ezután hozzáfér a tárolót a kódban.  
+ 
 ## <a name="custom-activity-permissions"></a>Egyéni tevékenység engedélyek
 
 Az egyéni tevékenység állítja be az Azure Batch automatikusan-felhasználói fiók *a tevékenység hatóköre nem rendszergazda hozzáférési* (az alapértelmezett felhasználói automatikus specifikáció). Az automatikus felhasználói fiók jogosultsági szintje nem módosítható. További információ: [a felhasználói fiókok feladatok futtatása a Batchben |} Automatikus felhasználói fiókok](../batch/batch-user-accounts.md#auto-user-accounts).
@@ -185,7 +188,7 @@ Ez a példa mutatja be, hogyan használhatók a referenceObjects és extendedPro
 
 Amikor a tevékenység végrehajtása, referenceObjects és extendedProperties következő fájlok tárolják a SampleApp.exe végrehajtási mappájában telepített:
 
-- Activity.JSON
+- activity.json
 
   ExtendedProperties és az egyéni tevékenység tulajdonságainak tárolja.
 

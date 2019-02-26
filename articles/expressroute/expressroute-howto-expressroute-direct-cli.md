@@ -1,28 +1,23 @@
 ---
 title: Konfigurálja az ExpressRoute közvetlen – az Azure CLI |} A Microsoft Docs
-description: Ez a cikk segítséget nyújt az ExpressRoute közvetlen konfigurálása az Azure CLI (előzetes verzió) használatával
+description: Ez a cikk segítséget nyújt az ExpressRoute közvetlen konfigurálása az Azure CLI használatával
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 2/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 285b429f565f8a2c7f8c20756f076e631223b10f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e918a8624d637e44a4bb1122b58d5bd5dac67690
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076719"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816674"
 ---
-# <a name="configure-expressroute-direct-by-using-the-azure-cli-preview"></a>Az ExpressRoute közvetlen konfigurálása az Azure CLI (előzetes verzió) használatával
+# <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Az ExpressRoute közvetlen konfigurálása az Azure CLI használatával
 
 Az Azure ExpressRoute közvetlen használatával közvetlenül csatlakozik a Microsoft társviszony-létesítési helyszínek stratégiai a világ különböző pontjain található globális hálózatán. További információkért lásd: [kapcsolatos az ExpressRoute közvetlen csatlakozás](expressroute-erdirect-about.md).
-
-> [!IMPORTANT]
-> Az ExpressRoute közvetlen jelenleg előzetes verzióban érhető el.
->
-> Az ExpressRoute közvetlen nyilvános előzetes nélkül egy szolgáltatásiszint-szerződést biztosítunk. Az ExpressRoute közvetlen kép ne használja a termelési számítási feladatokhoz. Előfordulhat, hogy néhány funkció nem támogatott, előfordulhat, hogy egyes funkciók korlátozott képességekkel és egyes funkciói esetleg nem érhetők el az összes Azure-helyen. További információkért lásd: [kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="resources"></a>Az erőforrás létrehozása
 

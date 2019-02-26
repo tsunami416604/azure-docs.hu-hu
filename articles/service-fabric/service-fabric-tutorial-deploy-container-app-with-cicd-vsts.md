@@ -3,7 +3,7 @@ title: Tárolóalkalmazás üzembe helyezése Service Fabric-fürtön CI/CD seg�
 description: Ebben az oktatóanyagban megismerheti, hogyan állíthat be folyamatos integrációt és üzembe helyezés az Azure Service Fabric-tárolóalkalmazás Visual Studio Azure DevOps használatával.
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,16 +13,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/29/2018
-ms.author: twhitney
+ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 2320aaf2d502280a29562a49dfff1e4e9244d079
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 2da33f2a333529eb7a27a607484a407f869ee540
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872968"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807082"
 ---
-# <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Oktatóanyag: Tárolóalkalmazás üzembe helyezése Service Fabric-fürtön CI/CD használatával
+# <a name="tutorial-deploy-a-container-application-with-cicd-to-a-service-fabric-cluster"></a>Oktatóanyag: Tároló üzembe helyezése a CI/CD-ről a Service Fabric-fürtön
 
 Ez az oktatóanyag egy sorozat második része, és ismerteti, hogyan lehet folyamatos integrációt és üzembe helyezést egy Visual Studio és az Azure DevOps használatával az Azure Service Fabric-tárolóalkalmazás beállítása.  Szükség van egy már meglévő Service Fabric-alkalmazásra, így példaként a [Windows-tárolóban lévő .NET-alkalmazás telepítése Azure Service Fabricre](service-fabric-host-app-in-a-container.md) című szakaszban létrehozott alkalmazás szolgál.
 

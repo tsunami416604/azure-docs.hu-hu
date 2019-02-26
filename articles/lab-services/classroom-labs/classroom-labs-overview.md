@@ -13,52 +13,26 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 05/21/2018
 ms.author: spelluru
-ms.openlocfilehash: e9c3cae7c7129cc489ddd38b5b2de18dd6f52e58
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 03384db96338bf78ed89c1cd0fb8780489ee0e13
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660529"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807388"
 ---
 # <a name="introduction-to-classroom-labs"></a>Az osztályterem-tesztkörnyezetek bemutatása
 Az Azure Lab Services lehetővé teszi egy osztályterem-tesztkörnyezet gyors beállítását a felhőben. Az oktató létrehoz egy osztályterem-tesztkörnyezetet, Windows vagy Linux rendszerű virtuális gépeket épít ki, telepíti a szükséges szoftvereket és eszközöket a tesztkörnyezetben, és elérhetővé teszi őket a diákok számára. A diákok osztályterem-tesztkörnyezetben található virtuális gépekhez csatlakoznak, és a projektjeikhez, feladataikhoz vagy osztálytermi gyakorlataikhoz használják őket. 
 
-Az osztálytermi tesztkörnyezetek az Azure által felügyelt tesztkörnyezetek. A szolgáltatás maga gondoskodik a felügyelt tesztkörnyezet infrastruktúrájának átfogó kezeléséről, a virtuális gépek indításától a hibák kezelésén keresztül az infrastruktúra skálázásáig. Ön megadhatja, milyen típusú infrastruktúrát igényel, és telepítheti az eszközöket vagy szoftvereket, amelyekre az osztálynak szüksége van. A felügyelt tesztkörnyezetek jelenleg előzetes verzióban érhetők el.  
+Az osztályterem-tesztkörnyezetek az Azure által felügyelt felügyelt tesztkörnyezet-típusok. A szolgáltatás maga gondoskodik a felügyelt tesztkörnyezet infrastruktúrájának átfogó kezeléséről, a virtuális gépek indításától a hibák kezelésén keresztül az infrastruktúra skálázásáig. Ön megadhatja, milyen típusú infrastruktúrát igényel, és telepítheti az eszközöket vagy szoftvereket, amelyekre az osztálynak szüksége van. A felügyelt tesztkörnyezetek jelenleg előzetes verzióban érhetők el.   
 
-## <a name="scenarios"></a>Forgatókönyvek
-Az alábbiakban az Azure Lab Services által támogatott legfontosabb forgatókönyvet ismerheti meg: 
+## <a name="automatic-management-of-azure-infrastructure-and-scale"></a>Azure-infrastruktúra és a méretezési csoport automatikus felügyeletét 
+Az Azure Lab Services egy felügyelt szolgáltatás, ami azt jelenti, hogy a kiépítési és felügyeleti egy tesztkörnyezet egy alapul szolgáló infrastruktúra a szolgáltatás automatikusan kezeli. Csak összpontosíthat a felhasználók számára a megfelelő labor előkészítése. Lehetővé teszik a szolgáltatást, a többit bízza, és a labor virtuális gépek bevezetése a célközönségnek. Több száz virtuális gép egyetlen kattintással a labor skálázása.
 
-### <a name="set-up-a-resizable-computer-lab-in-the-cloud-for-your-classroom"></a>Méretezhető számítógépes tesztkörnyezet beállítása a felhőben az osztályterem számára  
+## <a name="simple-experience-for-your-lab-users"></a>A lab felhasználói élményét, egyszerű 
+A tesztkörnyezethez azok a felhasználók azonnali az erőforrások eléréséről a gyakorlatot belül biztosíthat számukra. Csak akkor kell azok teljes hozzáféréssel rendelkezik az több labs virtuális gépek teljes listájának megtekintéséhez jelentkezzen be. A csatlakozni a virtuális géphez, és megkezdheti a munkát egy egyetlen gombra kattintva törölheti. A felhasználóknak nem kell a szolgáltatás használatához Azure-előfizetések. 
 
-- Felügyelt osztályterem-tesztkörnyezet létrehozása. Mindössze közölnie kell a szolgáltatással, hogy pontosan mire van szüksége, a szolgáltatás pedig létrehozza és felügyeli a tesztkörnyezet infrastruktúráját, így az osztály tanítására összpontosíthat, és nem kell a tesztkörnyezet technikai részleteivel foglalkoznia. 
-- A pontosan a tanórához szükséges dolgokkal konfigurált virtuális gépekből álló tesztkörnyezet biztosítása a diákok számára. Korlátozott mennyiségű időt biztosíthat minden diák számára a virtuális gépek használatához az osztálytermi munka elvégzéséhez.  
-- Az iskola fizikai számítógéptermének áthelyezése a felhőbe. A virtuális gépek számának automatikus méretezése a tesztkörnyezetben beállított maximális használatnak és költséghatárnak megfelelően. 
-- A tesztkörnyezet törlése egyetlen kattintással, miután végzett. 
-
-## <a name="user-profiles"></a>Felhasználói profilok
-Ez a cikk az Azure Lab Services különböző felhasználói profiljait ismerteti. 
-
-### <a name="lab-account-owner"></a>Tesztkörnyezetfiók tulajdonosa
-Általában a vállalat felhőerőforrásainak informatikai rendszergazdája, aki az Azure-előfizetés tulajdonosa, és a tesztkörnyezetfiók tulajdonosaként eljárva az alábbi feladatokat hajthatja végre:   
-
-- Tesztkörnyezetfiókot állít be a vállalat számára.
-- Felügyeli és konfigurálja a szabályzatokat minden tesztkörnyezetre vonatkozóan.
-- Engedélyeket ad a vállalatban dolgozó személyeknek tesztkörnyezet létrehozására a tesztkörnyezetfiókban.
-
-### <a name="educator"></a>Oktató
-A tesztkörnyezetfiókban lévő osztálytermi tesztkörnyezeteket általában olyan felhasználók hozzák létre, mint a tanárok vagy az online oktatók. Az oktató az alábbi feladatokat hajtja végre: 
-
-- Létrehozza az osztályterem-tesztkörnyezetet.
-- Virtuális gépeket hoz létre a tesztkörnyezetben. 
-- Telepíti a megfelelő szoftvereket a virtuális gépeken.
-- Meghatározza, hogy ki férhet hozzá a tesztkörnyezethez.
-- Elküldi a hallgatóknak a tesztkörnyezetre mutató regisztrációs hivatkozást.
-
-### <a name="student"></a>Hallgató
-A hallgató az alábbi feladatokat hajtja végre:
-
-- Regisztrál a tesztkörnyezetben a tesztkörnyezet létrehozójától kapott regisztrációs hivatkozással. 
-- Csatlakozik a tesztkörnyezetben lévő virtuális géphez, és osztálytermi munkához, feladatokhoz és projektekhez használja. 
+## <a name="cost-optimization-and-tracking"></a>Költségek optimalizálása és nyomon követése  
+Kordában tarthatja ellenőrzés pontosan hány órát a tesztlabor a felhasználók használhatják a virtuális gépek szabályozásával. Állítsa be a laborban ütemezéseket, hogy a felhasználók a virtuális gépek csak a kijelölt időszeletek során használ, vagy ütemezhet automatikus leállítás beállítása és kezdési idejét. Nyomon követheti az egyes felhasználók használati és korlátokat.
 
 ## <a name="next-steps"></a>További lépések
 Első lépésként az Azure Lab Services használatával hozzon létre egy tesztkörnyezetfiókot, amely az osztálytermi tesztkörnyezetek létrehozásához szükséges:

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 2dbf63e745af102de05ec6dc3e3bcb3e98cd3a32
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: c1e596516136240b1d1d08b4e8386e9cf5ef48e5
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563711"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819122"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Egy Azure tervezet életciklusának ismertetése
 
@@ -35,7 +35,7 @@ Teljes mértékben megérteni a tervezet és a szakaszok, egy szokásos életcik
 
 Amikor hozzáadja a tervrajz létrehozása összetevők, a felügyeleti csoportba vagy előfizetésbe mentse, és egyedi nevét és a egy egyedi verziót a megadott. A tervezet már az egy **Draft** mód és még nem lehet hozzárendelni. A során a **Draft** módot, az továbbra is frissíthető és módosítható.
 
-A soha nem közzétett a tervezet **Draft** mód a különböző ikont jelenít meg a **Tervezetdefiníciók** lap, amelyet voltak, mint **közzétett**. A **legújabb verzió** így is megjelenítve **Draft** a ezek soha nem közzétett tervrajzokat.
+A soha nem közzétett a tervezet **Draft** mód a különböző ikont jelenít meg a **Tervezetdefiníciók** lap, amelyet voltak, mint **közzétett**. A **legújabb verzió** megjelent **Draft** a ezek soha nem közzétett tervrajzokat.
 
 Hozzon létre, és a tervrajz szerkesztése a [az Azure portal](../create-blueprint-portal.md#create-a-blueprint) vagy [REST API](../create-blueprint-rest-api.md#create-a-blueprint).
 
@@ -68,13 +68,13 @@ A tervezet egyes verzióihoz egy egyedi objektum, és külön-külön lehet **k�
 > [!NOTE]
 > Nem alkalmas, amely rendelkezik aktív hozzárendelések tervrajz törlése. Először törölje a hozzárendeléseket, és törölje az eltávolítani kívánt verzió.
 
-1. Kattintson a **Minden szolgáltatás** elemre, és keresse meg, majd válassza ki a **Szabályzat** elemet a bal oldali panelen. Kattintson a **Szabályzat** oldal **Tervek** elemére.
+1. Válassza ki **minden szolgáltatás** a bal oldali panelen. Keresse meg és válassza **tervezetek**.
 
-1. Válassza ki **Tervezetdefiníciók** az oldalról, a bal oldalon a szűrőbeállítások keresse meg a tervezet törli egy verziójának használatát. Kattintson rá a lap megnyitásához.
+1. Válassza ki **definíciók tervezetet** az oldalról, a bal oldalon a szűrőbeállítások keresse meg a tervezet törli egy verziójának használatát. Kattintson rá a lap megnyitásához.
 
 1. Kattintson a **közzétett verzió** lapra, és keresse meg a törölni kívánt verziót.
 
-1. Kattintson a jobb gombbal a verzióra történő törléséhez, és válassza ki a **verzió törlése**.
+1. Kattintson a jobb gombbal a verzióra történő törléséhez, és válassza ki a **törli ezt a verziót**.
 
 ## <a name="deleting-the-blueprint"></a>A tervezet törlése
 

@@ -14,19 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: 621dc22ead8fbb6882c692851d39b658da043c55
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 6ddd246057b178119d520bee3bbe58117fbae610
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894683"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820977"
 ---
 # <a name="upgrade-the-configuration-of-a-cluster-in-azure"></a>Az Azure-ban a fürt konfigurációjának frissítése 
 
 Ez a cikk ismerteti, hogyan szabhatja testre a különböző hálóbeállítások a Service Fabric-fürt számára. A fürtök az Azure-ban üzemeltetett, testre szabhatja a beállításokat a [az Azure portal](https://portal.azure.com) vagy Azure Resource Manager-sablon használatával.
 
-> [!NOTE]
-> Nem minden beállítás érhető el a portálon, és van egy [ajánlott eljárás az, hogy egy Azure Resource Manager-sablon használatával testre szabható](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code); Service Fabric Dev\Test forgatókönyvei csak olyan portálon.> 
+> [!NOTE]
+> Nem minden beállítás érhető el a portálon, és van egy [ajánlott eljárás az, hogy egy Azure Resource Manager-sablon használatával testre szabható](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code); Service Fabric Dev\Test forgatókönyvei csak olyan portálon.
+> 
 
 ## <a name="customize-cluster-settings-using-resource-manager-templates"></a>Testre szabhatja a Resource Manager-sablonok használatával fürtbeállítások
 Az Azure-fürtök a JSON-Resource Manager-sablon konfigurálható. A különböző beállításokkal kapcsolatos további információkért lásd: [fürtök konfigurációs beállításai](service-fabric-cluster-fabric-settings.md). Tegyük fel, az alábbi lépéseket egy új beállítás hozzáadása megjelenítése *MaxDiskQuotaInMB* , a *diagnosztikai* szakaszban az Azure Resource Explorer használatával.

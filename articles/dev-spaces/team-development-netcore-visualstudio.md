@@ -12,12 +12,12 @@ ms.date: 12/09/2018
 ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
-ms.openlocfilehash: 7a77b8a1a2205465956d8c30a3fee6aec5e8428b
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: af0a4a719f964e400119be313842f385b410406c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663791"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817422"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Csoportos fejlesztés az Azure Dev Spaces használatával
 
@@ -125,9 +125,9 @@ Ez az ábra segít megérteni, hogyan működnek a különféle terek. A lila el
 Az Azure Dev Spaces e beépített funkciója lehetővé teszi, hogy végpontok között tesztelhesse a kódot egy megosztott környezetben anélkül, hogy minden egyes fejlesztőnek ismételten létre kellene hoznia a saját terük teljes szolgáltatási vermét. Ez az útválasztás megköveteli, hogy a propagálási fejlécek továbbítva legyenek az alkalmazáskódban, ahogy az az útmutató előző lépésében is látható.
 
 ### <a name="test-code-running-in-the-devscott-space"></a>Tesztelje a kódot futtató a _dev/scott_ terület
-Új verziójának tesztelése *mywebapi* együtt *webfrontend*, nyilvános hozzáférési pont URL-CÍMÉT a böngészőben nyissa meg *webfrontend* (például http://dev.webfrontend.123456abcdef.eastus.aksapp.io), és lépjen a névjegy lapra. Az eredeti, „Hello from webfrontend and Hello from mywebapi” üzenetnek kell megjelennie.
+Új verziójának tesztelése *mywebapi* együtt *webfrontend*, nyilvános hozzáférési pont URL-CÍMÉT a böngészőben nyissa meg *webfrontend* (például http://dev.webfrontend.123456abcdef.eus.azds.io), és lépjen a névjegy lapra. Az eredeti, „Hello from webfrontend and Hello from mywebapi” üzenetnek kell megjelennie.
 
-Most adja hozzá a „scott.s” kifejezést az URL-címhez. amelynek így kell kinéznie: http://scott.s.dev.webfrontend.123456abcdef.eastus.aksapp.io. Majd frissítse a böngészőoldalt. A töréspont állítsa be a *mywebapi* kattintson beolvasni a projekt. Nyomja le az F5-öt a folytatáshoz. A böngészőben megjelenik az új üzenet: „Hello from webfrontend and mywebapi now says something new.” Ennek az az oka az elérési útját a frissített kód *mywebapi* fut-e a _dev/scott_ terület.
+Most adja hozzá a „scott.s” kifejezést az URL-címhez. amelynek így kell kinéznie: http://scott.s.dev.webfrontend.123456abcdef.eus.azds.io. Majd frissítse a böngészőoldalt. A töréspont állítsa be a *mywebapi* kattintson beolvasni a projekt. Nyomja le az F5-öt a folytatáshoz. A böngészőben megjelenik az új üzenet: „Hello from webfrontend and mywebapi now says something new.” Ennek az az oka az elérési útját a frissített kód *mywebapi* fut-e a _dev/scott_ terület.
 
 Ha már van egy _fejlesztési_ mindig tartalmazza a legutóbbi módosításoknak, és ha az alkalmazás-terület az célja, hogy kihasználhatja DevSpace a terület-alapú útválasztást, az oktatóanyag ezen szakaszában leírtak szerint, remélhetőleg könnyen látható lesz milyen fejlesztési tárolóhelyek nagy mértékben végrehajtásában segít a nagyobb alkalmazás környezetében lévő új szolgáltatások tesztelése. Ahelyett, hogy üzembe helyezéséhez _összes_ szolgáltatások a személyes tárhelyre, létrehozhat egy privát területet származó _fejlesztési_, és "csak be" a ténylegesen dolgozik a szolgáltatásokat. A fejlesztői, szóközök útválasztási infrastruktúra fogja kezelni a többi felügyelniük annyi szolgáltatások a privát lemezterületét talál, alapértelmezés szerint a legújabb verzióra futtatása közben a _fejlesztési_ terület. Továbbra is, hatékonyabb és _több_ fejlesztők aktívan fejleszthetnek különböző szolgáltatásokat egy időben a saját térben egymással megszakítása nélkül.
 

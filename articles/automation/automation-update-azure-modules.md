@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/08/2019
+ms.date: 02/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d8f57310cf4dbc2a27761fc44cfde6c8fd2791a2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: cf82a80d0b812ab5540796c8e7758e6ff85952c5
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005539"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804774"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Az Azure Automationben az Azure PowerShell-modulok frissítése
 
@@ -84,6 +84,10 @@ Az alábbiakban néhány szempontot figyelembe kell venni, amikor ez a folyamat 
 > Az Azure Automation használja a legújabb modulokat az Automation-fiók egy új ütemezett feladatot a futása során.  
 
 Ezeket az Azure PowerShell-modulok a parancsmagok használata a runbookokban, szeretné-e a frissítési folyamat minden hónapban lefusson, vagy ezért győződjön meg arról, hogy rendelkezik-e a legújabb modulok. Az Azure Automation használja a `AzureRunAsConnection` kapcsolat hitelesítéséhez a modulok frissítésekor. Ha az egyszerű szolgáltatás lejárt, vagy már nem található az előfizetés szintjén, a modul frissítés sikertelen lesz.
+
+## <a name="known-issues"></a>Ismert problémák
+
+Frissítése az AzureRM-modulokat: Automation-fiók, amely egy erőforráscsoportot a numerikus kezdetű névvel rendelkező 0-val rendelkező egy ismert probléma van. Az Azure-modulokat: Automation-fiók frissítéséhez, amelynek a neve alfanumerikus erőforráscsoportban kell lennie. Erőforráscsoportok 0-tól induló numerikus nevek nem tudnak AzureRM-modulok frissítése most.
 
 ## <a name="next-steps"></a>További lépések
 

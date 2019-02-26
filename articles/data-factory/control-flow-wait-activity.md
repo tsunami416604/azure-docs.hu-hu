@@ -3,23 +3,23 @@ title: Wait tevékenység az Azure Data Factoryban |} A Microsoft Docs
 description: A Várakozás tevékenység felfüggeszti a folyamat végrehajtását az adott időszakra vonatkozóan.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
+author: shlo
 manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 01/12/2018
 ms.author: shlo
-ms.openlocfilehash: 731df55a11f4671670a65dac8a83927d81da454c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 66d79bc1597cd8f3c7e01eb8227eb7c91ba04d1d
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015797"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807813"
 ---
-# <a name="wait-activity-in-azure-data-factory"></a>Wait tevékenység az Azure Data Factoryban
+# <a name="execute-wait-activity-in-azure-data-factory"></a>Wait tevékenység végrehajtása az Azure Data Factoryban
 Ha Wait tevékenységet használ egy folyamatban, akkor a folyamat kivárja a megadott időtartamot, és csak az után folytatja a további tevékenységek futtatását. 
 
 ## <a name="syntax"></a>Szintaxis
@@ -39,8 +39,8 @@ Ha Wait tevékenységet használ egy folyamatban, akkor a folyamat kivárja a me
 
 Tulajdonság | Leírás | Megengedett értékek | Szükséges
 -------- | ----------- | -------------- | --------
-név | Neve a `Wait` tevékenység. | Karakterlánc | Igen
-type | Meg kell **várjon**. | Karakterlánc | Igen
+név | Neve a `Wait` tevékenység. | String | Igen
+type | Meg kell **várjon**. | String | Igen
 waitTimeInSeconds | A folyamat kivárja a feldolgozás folytatása előtt másodpercek számát. | Egész szám | Igen
 
 ## <a name="example"></a>Példa

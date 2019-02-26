@@ -3,7 +3,7 @@ title: Tároló naplóinak megtekintése az Azure Service Fabricben |} A Microso
 description: Ismerteti a Service Fabric Explorerrel futó Service Fabric container Services tárolónaplók megtekintése.
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/15/2018
-ms.author: twhitney
-ms.openlocfilehash: d66e27d860d18a37ffd9c6355b8d769116f26d73
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.author: aljo
+ms.openlocfilehash: 801d96dc154c1d7144217fe0f70c179c086690f0
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391250"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804501"
 ---
 # <a name="view-logs-for-a-service-fabric-container-service"></a>A Service Fabric-tároló szolgáltatás naplók megtekintése
 Az Azure Service Fabric egy tárolóvezénylő, és mindkettő támogatja [Linux és Windows-tárolók](service-fabric-containers-overview.md).  Ez a cikk azt ismerteti, hogy a futó tároló szolgáltatás vagy a kézbesíthetetlen tároló tárolónaplók megtekintése, így diagnosztizálhatja és elháríthatja.

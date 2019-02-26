@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: de50c18fa8e2bebcb584fcd5763f0428637df484
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: f326c8608f92cc974a9decad3b010888c358c667
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455789"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818527"
 ---
 # <a name="sql-language-reference-for-azure-cosmos-db"></a>Az Azure Cosmos DB SQL nyelvi referencia 
 
@@ -1847,8 +1847,10 @@ SELECT
 |[INDEX_OF](#bk_index_of)|[LEFT](#bk_left)|[HOSSZA](#bk_length)|  
 |[ALACSONYABB](#bk_lower)|[LTRIM](#bk_ltrim)|[CSERÉLJE LE](#bk_replace)|  
 |[REPLIKÁLÁS](#bk_replicate)|[FORDÍTOTT](#bk_reverse)|[RIGHT](#bk_right)|  
-|[RTRIM](#bk_rtrim)|[STARTSWITH](#bk_startswith)|[SUBSTRING](#bk_substring)|  
-|[ToString](#bk_tostring)|[TRIM](#bk_trim)|[FELSŐ](#bk_upper)||| 
+|[RTRIM](#bk_rtrim)|[STARTSWITH](#bk_startswith)|[StringToArray](#bk_stringtoarray)|
+|[StringToBoolean](#bk_stringtoboolean)|[StringToNull](#bk_stringtonull)|[StringToNumber](#bk_stringtonumber)|
+|[StringToObject](#bk_stringtoobject)|[SUBSTRING](#bk_substring)|[ToString](#bk_tostring)|
+|[TRIM](#bk_trim)|[FELSŐ](#bk_upper)||| 
   
 ####  <a name="bk_concat"></a> CONCAT  
  Legalább két karakterlánc-értékek összetűzésének eredménye karakterláncként adja vissza.  
@@ -2327,7 +2329,225 @@ SELECT STARTSWITH("abc", "b"), STARTSWITH("abc", "a")
 ```  
 [{"$1": false, "$2": true}]  
 ```  
+
+  ####  <a name="bk_stringtoarray"></a> StringToArray  
+ Egy tömb lefordítani kifejezést ad vissza. Ha a kifejezés nem fordítható le, nem definiált adja vissza.  
   
+ **Syntax**  
+  
+```  
+StringToArray(<expr>)  
+```  
+  
+ **Argumentumok**  
+  
+-   `expr`  
+  
+     Ez bármilyen érvényes JSON-tömböt kifejezés. Vegye figyelembe, hogy karakterlánc-értékeket kell megírni, az idézőjelekkel együtt, hogy érvényesek legyenek. A JSON-formátumban a részletekért lásd: [json.org](https://json.org/)
+  
+ **Návratové Typy**  
+  
+ Egy tömböt megadó kifejezést ad vissza, vagy nincs definiálva.  
+  
+ **Példák**  
+  
+Az alábbi példa bemutatja, hogy több különböző típusú StringToArray működését. 
+  
+```  
+SELECT 
+StringToArray('[]'), 
+StringToArray("[1,2,3]"),
+StringToArray("[\"str\",2,3]"),
+IS_ARRAY(StringToArray("[['5','6','7'],['8'],['9']]")), 
+IS_ARRAY(StringToArray('[["5","6","7"],["8"],["9"]]')),
+StringToArray('[1,2,3, "[4,5,6]",[7,8]]'),
+StringToArray("[1,2,3, '[4,5,6]',[7,8]]"),
+StringToArray(false), 
+StringToArray(undefined),
+StringToArray(NaN), 
+StringToArray("[")
+```  
+  
+ Íme az eredményhalmaz.  
+  
+```  
+[{"$1": [], "$2": [1,2,3], "$3": ["str",2,3], "$4": false, "$5": true, "$6": [1,2,3,"[4,5,6]",[7,8]]}]
+```  
+
+####  <a name="bk_stringtoboolean"></a> StringToBoolean  
+ Egy logikai lefordítani kifejezést ad vissza. Ha a kifejezés nem fordítható le, nem definiált adja vissza.  
+  
+ **Syntax**  
+  
+```  
+StringToBoolean(<expr>)  
+```  
+  
+ **Argumentumok**  
+  
+-   `expr`  
+  
+     Ez bármilyen érvényes kifejezés.  
+  
+ **Návratové Typy**  
+  
+ Visszaad egy logikai kifejezés, vagy nincs definiálva.  
+  
+ **Példák**  
+  
+Az alábbi példa bemutatja, hogy több különböző típusú StringToBoolean működését. 
+  
+```  
+SELECT 
+StringToBoolean("true"), 
+StringToBoolean("    false"),
+IS_BOOL(StringToBoolean("false")), 
+StringToBoolean("null"),
+StringToBoolean(undefined),
+StringToBoolean(NaN), 
+StringToBoolean(false), 
+StringToBoolean(true), 
+StringToBoolean("TRUE"),
+StringToBoolean("False")
+```  
+  
+ Íme az eredményhalmaz.  
+  
+```  
+[{"$1": true, "$2": false, "$3": true}]
+```  
+
+####  <a name="bk_stringtonull"></a> StringToNull  
+ Null értékekké kifejezést ad vissza. Ha a kifejezés nem fordítható le, nem definiált adja vissza.  
+  
+ **Syntax**  
+  
+```  
+StringToNull(<expr>)  
+```  
+  
+ **Argumentumok**  
+  
+-   `expr`  
+  
+     Ez bármilyen érvényes kifejezés.  
+  
+ **Návratové Typy**  
+  
+ Egy NULL értékű kifejezést ad vissza, vagy nincs definiálva.  
+  
+ **Példák**  
+  
+Az alábbi példa bemutatja, hogy több különböző típusú StringToNull működését. 
+  
+```  
+SELECT 
+StringToNull("null"), 
+StringToNull("  null "),
+IS_NULL(StringToNull("null")), 
+StringToNull("true"), 
+StringToNull(false), 
+StringToNull(undefined),
+StringToNull(NaN), 
+StringToNull("NULL"),
+StringToNull("Null")
+```  
+  
+ Íme az eredményhalmaz.  
+  
+```  
+[{"$1": null, "$2": null, "$3": true}]
+```  
+
+####  <a name="bk_stringtonumber"></a> StringToNumber  
+ Egy szám fordítja le kifejezést ad vissza. Ha a kifejezés nem fordítható le, nem definiált adja vissza.  
+  
+ **Syntax**  
+  
+```  
+StringToNumber(<expr>)  
+```  
+  
+ **Argumentumok**  
+  
+-   `expr`  
+  
+     Ez bármilyen érvényes JSON-szám kifejezés. A JSON-ban számok egész vagy lebegőpontos kell lennie. A JSON-formátumban a részletekért lásd: [json.org](https://json.org/)  
+  
+ **Návratové Typy**  
+  
+ Egy szám kifejezést ad vissza, vagy nincs definiálva.  
+  
+ **Példák**  
+  
+Az alábbi példa bemutatja, hogy több különböző típusú StringToNumber működését. 
+  
+```  
+SELECT 
+StringToNumber("1.000000"), 
+StringToNumber("3.14"),
+IS_NUMBER(StringToNumber("   60   ")), 
+StringToNumber("0xF"),
+StringToNumber("-1.79769e+308"),
+IS_STRING(StringToNumber("2")),
+StringToNumber(undefined),
+StringToNumber("99     54"), 
+StringToNumber("false"), 
+StringToNumber(false),
+StringToNumber(" "),
+StringToNumber(NaN)
+```  
+  
+ Íme az eredményhalmaz.  
+  
+```  
+{{"$1": 1, "$2": 3.14, "$3": true, "$5": -1.79769e+308, "$6": false}}
+```  
+
+####  <a name="bk_stringtoobject"></a> StringToObject  
+ Az objektum-jogkivonattá alakítja kifejezést ad vissza. Ha a kifejezés nem fordítható le, nem definiált adja vissza.  
+  
+ **Syntax**  
+  
+```  
+StringToObject(<expr>)  
+```  
+  
+ **Argumentumok**  
+  
+-   `expr`  
+  
+     Bármely érvényes JSON-objektum kifejezés van. Vegye figyelembe, hogy karakterlánc-értékeket kell megírni, az idézőjelekkel együtt, hogy érvényesek legyenek. A JSON-formátumban a részletekért lásd: [json.org](https://json.org/)  
+  
+ **Návratové Typy**  
+  
+ Objektum kifejezést ad vissza, vagy nincs definiálva.  
+  
+ **Példák**  
+  
+Az alábbi példa bemutatja, hogy több különböző típusú StringToObject működését. 
+  
+```  
+SELECT 
+StringToObject("{}"), 
+StringToObject('{"a":[1,2,3]}'),
+StringToObject("{'a':[1,2,3]}"),
+StringToObject("{a:[1,2,3]}"),
+IS_OBJECT(StringToObject('{"obj":[{"b":[5,6,7]},{"c":8},{"d":9}]}')), 
+IS_OBJECT(StringToObject("{\"obj\":[{\"b\":[5,6,7]},{\"c\":8},{\"d\":9}]}")), 
+IS_OBJECT(StringToObject("{'obj':[{'b':[5,6,7]},{'c':8},{'d':9}]}")), 
+StringToObject(false), 
+StringToObject(undefined),
+StringToObject(NaN), 
+StringToObject("{")
+```  
+  
+ Íme az eredményhalmaz.  
+  
+```  
+[{"$1": {}, "$2": {"a": [1,2,3]}, "$5": true, "$6": true, "$7": false}]
+```  
+
 ####  <a name="bk_substring"></a> KARAKTERLÁNCRÉSZLET  
  Már a megadott karakter számolt helyzetét megadja egy karakterlánc-kifejezés részét adja vissza, és továbbra is fennáll, a megadott időtartam, illetve a karakterlánc végén.  
   

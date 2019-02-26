@@ -11,24 +11,29 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 759ae1c077a2c93ee4450843a796b84d95701a10
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 98977f20af734e3adf927213b685f8c33b9383ea
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769895"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816878"
 ---
-# <a name="access-data-during-training-from-your-datastores"></a>Az adattárolók a betanítás során érheti el adatait
-Egy adattár segítségével elérheti és kezelheti az Azure Machine Learning-munkafolyamatok adatait.
+# <a name="access-data-from-your-datastores"></a>Az adattárolók érheti el adatait
+Ebből a cikkből megtudhatja, elérheti és kezelheti az Azure Machine Learning-munkafolyamatokban adattárainak keresztül az adatok különböző módjait.
 
 Az Azure Machine Learning szolgáltatásban, az adattárral absztrakciós felett [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction). Az adattároló hivatkozhat, vagy egy [Azure Blob](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction) tároló vagy [Azure-fájlmegosztás](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) az alapul szolgáló tárolóként. 
+
+Ebben az útmutatóban példát a következő feladatokhoz: 
+* Egy adattár létrehozása
+* [Töltse fel és adattárainak adatok letöltése](#upload-and-download-data)
+* [Hozzáférés adattárolója képzéshez](#access-datastores-for-training)
 
 ## <a name="create-a-datastore"></a>Egy adattár létrehozása
 Adattárolók használatához szüksége lesz egy [munkaterület](concept-azure-machine-learning-architecture.md#workspace). Első lépésként vagy [új munkaterület létrehozása](quickstart-create-workspace-with-python.md) vagy egy meglévő beolvasása:
 
 ```Python
 import azureml.core
-from azureml.core import Workspace
+from azureml.core import Workspace, Datastore
 
 ws = Workspace.from_config()
 ```
@@ -42,10 +47,10 @@ ds = ws.get_default_datastore()
 ```
 
 ### <a name="register-a-datastore"></a>Egy adattár regisztrálása
-Ha rendelkezik meglévő Azure Storage, regisztrálhatja adattárolót, a munkaterületen. Egy adattár, regisztrálhat az Azure Blob-tároló vagy az Azure-fájlmegosztás. A rendszer a register-módszerek a `Datastore` osztályt, és hogy az űrlap `register_azure_*`.
+Ha rendelkezik meglévő Azure Storage, regisztrálhatja adattárolót, a munkaterületen. Egy adattároló mint egy Azure Blob-tároló vagy az Azure-fájlmegosztás is rögzítheti. A rendszer a register-módszerek a [ `Datastore` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) osztályt, és hogy az űrlap `register_azure_*`.
 
 #### <a name="azure-blob-container-datastore"></a>Az Azure Blob-tároló adattár
-Egy Azure Blob-tároló adattár regisztrálása:
+Egy Azure Blob-tároló adattár regisztrálásához használja [`register_azure_blob-container()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-blob-container-workspace--datastore-name--container-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-:)
 
 ```Python
 ds = Datastore.register_azure_blob_container(workspace=ws, 
@@ -57,7 +62,7 @@ ds = Datastore.register_azure_blob_container(workspace=ws,
 ```
 
 #### <a name="azure-file-share-datastore"></a>Azure-beli fájlmegosztás adattárhoz
-Egy Azure-fájlmegosztás adattárolója regisztrálása:
+Egy Azure-fájlmegosztás adattárolója regisztrálásához használja [`register_azure_file_share()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#register-azure-file-share-workspace--datastore-name--file-share-name--account-name--sas-token-none--account-key-none--protocol-none--endpoint-none--overwrite-false--create-if-not-exists-false--skip-validation-false-)
 
 ```Python
 ds = Datastore.register_azure_file_share(workspace=ws, 
@@ -69,12 +74,14 @@ ds = Datastore.register_azure_file_share(workspace=ws,
 ```
 
 ### <a name="get-an-existing-datastore"></a>Egy meglévő adattárhoz beolvasása
-Lekérdezni a regisztrált adattár neve:
+Lekérdezni egy már regisztrált adattárolója a név alapján:
+
 ```Python
 ds = Datastore.get(ws, datastore_name='your datastore name')
 ```
 
 A munkaterület összes állomásához is használhatja:
+
 ```Python
 datastores = ws.datastores
 for name, ds in datastores.items():
@@ -82,6 +89,7 @@ for name, ds in datastores.items():
 ```
 
 Az egyszerűség kedvéért állítja be a regisztrált adattárainak egyikét a munkaterület az alapértelmezett adattárhoz:
+
 ```Python
 ws.set_default_datastore('your datastore name')
 ```
@@ -91,6 +99,7 @@ ws.set_default_datastore('your datastore name')
 Töltse fel az adattárhoz, a Python SDK-val vagy a könyvtár, vagy az egyes fájlok.
 
 Egy könyvtár tölthet fel egy adattár `ds`:
+
 ```Python
 ds.upload(src_dir='your source directory',
           target_path='your target path',
@@ -112,20 +121,26 @@ ds.download(target_path='your target path',
 `target_path` az a hely, az adatok letöltése a helyi könyvtárban. Adja meg a mappa elérési útját a letöltéséhez fájlmegosztást (vagy blob-tárolóba), adja meg, hogy az elérési út `prefix`. Ha `prefix` van `None`, a fájlmegosztást (vagy a blob-tároló) teljes tartalmát fogja letöltése.
 
 ## <a name="access-datastores-for-training"></a>Hozzáférés adattárainak képzéshez
-Egy adattár során-képzés (például a képzés és az érvényesítési adatok) futtat egy távoli számítási célnak a Python SDK-n keresztül érheti el. 
+Egy adattár során-képzés (például a képzés és az érvényesítési adatok) futtat egy távoli számítási célnak a Python SDK-n keresztül érheti el.
 
 Ahhoz, hogy az adattár elérhető a távoli számítási két támogatott módja van:
 * **Csatlakoztatási**  
-`ds.as_mount()`: a csatlakozási mód megadásával az adattárral fogja csatlakozik az Ön számára távoli számítási. 
+    * `ds.as_mount()`, a csatlakozási mód megadásával, az adattárral lekérdezi csatlakoztatott, a távoli számítási. 
+
 * **Letöltés és feltöltése**  
     * `ds.as_download(path_on_compute='your path on compute')` adatokat tölt le az adattár a megadott helyen távoli számítási `path_on_compute`.
-    * `ds.as_upload(path_on_compute='yourfilename'` feltölti az adatokat az adattárral.  Tegyük fel, hogy a tanítási szkriptet hoz létre egy `foo.pkl` távoli számítási fájlt az aktuális munkakönyvtár. Ez a fájl feltöltése a rendelkező adattárolóját `ds.as_upload(path_on_compute='./foo.pkl')` Miután a parancsfájl létrehozza a fájlt. A fájlt az adattár gyökérkönyvtárában van feltöltve.
-    
-Egy adott mappa vagy fájl az adattár a hivatkozik, használja az adattárhoz **`path`** függvény. Töltse le a tartalmát, például a `./bar` könyvtárat abból az adattárhoz, a számítási célnak, használati `ds.path('./bar').as_download()`.
 
+    * `ds.as_upload(path_on_compute='yourfilename'` a megadott helyen tölt fel adatokat az adattár gyökérkönyvtárában `path_on_compute`
+    
+Egy adott mappa vagy fájl az adattár a hivatkozik, használja az adattárhoz **`path()`** függvény.
+
+```Python
+#download the contents of the `./bar` directory from the datastore 
+ds.path('./bar').as_download()
+```
 Bármely `ds` vagy `ds.path` objektumra mutat egy környezeti változó neve, a formátum `"$AZUREML_DATAREFERENCE_XXXX"` amelynek értéke a csatlakoztatási/letöltési út távoli számítási jelöli. Az adattároló elérési út távoli számítási nem lehet ugyanaz, mint a szkript végrehajtási útvonalát.
 
-Szeretné elérni az adattárhoz betanítás során, át azt a tanítási szkriptet keresztül parancssori argumentumként `script_params`:
+Szeretné elérni az adattárhoz betanítás során, át azt a tanítási szkriptet keresztül parancssori argumentumként `script_params` származó a [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) osztály:
 
 ```Python
 from azureml.train.estimator import Estimator
@@ -139,9 +154,9 @@ est = Estimator(source_directory='your code directory',
                 compute_target=compute_target,
                 entry_script='train.py')
 ```
-`as_mount()` egy adattár, alapértelmezett módja van, így is közvetlenül csak helyettesíthető `ds` , a `'--data_dir'` argumentum.
+`as_mount()` egy adattár, alapértelmezett módja van, így közvetlenül is helyettesíthető `ds` , a `'--data_dir'` argumentum.
 
-Vagy adattárainak listáját adja át a Estimator konstruktor `inputs` csatlakoztatni vagy és- tárolókról a datastore(s) másolása paramétert:
+Vagy adattárainak listáját adja át a Estimator konstruktor `inputs` csatlakoztatni vagy és- tárolókról a datastore(s) másolása paramétert
 
 ```Python
 est = Estimator(source_directory='your code directory',
@@ -149,10 +164,17 @@ est = Estimator(source_directory='your code directory',
                 entry_script='train.py',
                 inputs=[ds1.as_download(), ds2.path('./foo').as_download(), ds3.as_upload(path_on_compute='./bar.pkl')])
 ```
+
 A fenti kódot fogja végrehajtani:
+
 * az adattár összes a tartalom letöltéséhez `ds1` , mielőtt a tanítási szkriptet a távoli számítási `train.py` futtatása
+
 * Töltse le a mappa `'./foo'` az adattárhoz `ds2` , mielőtt a távoli számítási `train.py` futtatása
+
 * a fájl feltöltése `'./bar.pkl'` , akár az adattárhoz távoli számítási `d3` a szkript futtatása után
 
 ## <a name="next-steps"></a>További lépések
+
 * [A modell tanítása](how-to-train-ml-models.md)
+* [Modell üzembe helyezése](how-to-deploy-and-where.md)
+

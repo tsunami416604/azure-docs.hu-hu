@@ -1,6 +1,6 @@
 ---
 title: Virtuális gépek indítása/leállítása munkaidőn kívül megoldás
-description: A Virtuálisgép-felügyeleti megoldás elindítja és leállítja az Azure Resource Manager virtuális gépeit egy ütemezés szerint, és proaktív módon figyeli a Log Analytics.
+description: A Virtuálisgép-felügyeleti megoldás elindítja és leállítja az Azure Resource Manager virtuális gépeit egy ütemezés szerint, és proaktív módon figyeli az Azure Monitor naplóira.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 02/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d6e083c4a7595bb70e77bca860c756abc2eaa18e
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 3fcab4c7456295d8f7414232bc90bc5ab352e43a
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979649"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817881"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Azure Automationben
 
-A gépek indítása/leállítása munkaidőn kívül megoldás elindítja és leállítja az Azure-beli virtuális gépek a felhasználó által definiált ütemezés, nyújt az Azure Log Analytics segítségével és a választható e-maileket küld a [Műveletcsoportok](../azure-monitor/platform/action-groups.md). Azure Resource Manager és klasszikus virtuális gépeket is támogatja a legtöbb forgatókönyvhöz.
+A gépek indítása/leállítása munkaidőn kívül megoldás elindítja és leállítja az Azure-beli virtuális gépek a felhasználó által definiált ütemezés, nyújt az Azure Monitor naplóira révén és a választható e-maileket küld a [Műveletcsoportok](../azure-monitor/platform/action-groups.md). Azure Resource Manager és klasszikus virtuális gépeket is támogatja a legtöbb forgatókönyvhöz.
 
 Ez a megoldás a felhasználók számára, akik az saját VM-költségek optimalizálását decentralizált alacsony költségű automation lehetőséget kínál. Ezzel a megoldással a következőket teheti:
 
@@ -35,6 +35,8 @@ Az aktuális megoldáshoz a korlátozások a következők:
 > Ha a megoldás a klasszikus virtuális gépeket használ, majd a virtuális gépek kerül feldolgozásra, egymás után felhőalapú szolgáltatás esetében. Virtuális gépek továbbra is feldolgozása párhuzamosan történik különböző felhőszolgáltatások között.
 >
 > Az Azure Cloud Solution Provider (az Azure CSP)-előfizetések támogatása csak az Azure Resource Manager modellel, nem az Azure Resource Manager - szolgáltatások nem érhetők el a programban. A indítása és leállítása megoldás futtatásakor hiba jelenhet meg, mert parancsmagok klasszikus erőforrások felügyeletére. CSP kapcsolatos további információkért lásd: [CSP-előfizetésekben elérhető szolgáltatások](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments). Ha egy CSP-előfizetést használ, módosítania kell a [ **External_EnableClassicVMs** ](#variables) változó **hamis** üzembe helyezés után.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -63,7 +65,7 @@ Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Autom
    - Válassza ki a **előfizetés** összekapcsolása a legördülő listában válassza ki, ha az alapértelmezett kiválasztás nem megfelelő.
    - A **erőforráscsoport**, hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévőt.
    - Válasszon ki egy **helyet**. Csak a következő helyek elérhető jelenleg **Délkelet-Ausztrália**, **közép-Kanada**, **közép-India**, **USA keleti Régiójában**, **Kelet-japán**, **Délkelet-Ázsia**, **Egyesült Királyság déli régiója**, **Nyugat-Európa**, és **USA 2. nyugati**.
-   - Válasszon egy tarifacsomagot a **Tarifacsomag** területen. Válassza ki a **Gigabájtonkénti (különálló)** lehetőséget. A log Analytics frissített [díjszabás](https://azure.microsoft.com/pricing/details/log-analytics/) , és a GB szinten az egyetlen lehetőség.
+   - Válasszon egy tarifacsomagot a **Tarifacsomag** területen. Válassza ki a **Gigabájtonkénti (különálló)** lehetőséget. Az Azure Monitor naplóira frissített [díjszabás](https://azure.microsoft.com/pricing/details/log-analytics/) , és a GB szinten az egyetlen lehetőség.
 
 5. Miután megadta a szükséges adatokat a **Log Analytics-munkaterület** kattintson **létrehozás**. Nyomon követheti a folyamat állapotát **értesítések** a menüben, amely adja vissza, hogy a **megoldás hozzáadása** lapon, ha ezzel elkészült.
 6. Az a **megoldás hozzáadása** lapon jelölje be **Automation-fiók**. Egy új Log Analytics-munkaterületet hoz létre, hozzon létre egy új Automation-fiókot társítja, vagy válasszon egy meglévő Automation-fiókot, amely nem már kapcsolódik egy Log Analytics-munkaterületet. Válassza ki a meglévő Automation-fiókot, vagy kattintson a **Automation-fiók létrehozása**, majd a a **Automation-fiók hozzáadása** lap, adja meg a következő információkat:
@@ -174,7 +176,7 @@ Most, hogy ütemezés alapján a CPU-kihasználtság virtuális gépek leállít
 
 ## <a name="solution-components"></a>Megoldás-összetevők
 
-Ez a megoldás előre konfigurált runbookok ütemezését és a Log Analytics-integráció tartalmaz, így az indításakor és leállásakor a virtuális gépeket az üzleti igényeinek megfelelően testre szabhatja.
+Ez a megoldás előre konfigurált runbookok ütemezését és integráció az Azure Monitor naplóira tartalmaz, így az indításakor és leállásakor a virtuális gépeket az üzleti igényeinek megfelelően testre szabhatja.
 
 ### <a name="runbooks"></a>Runbookok
 
@@ -209,7 +211,7 @@ A következő táblázat felsorolja az Automation-fiókban létrehozott változ�
 |External_AutoStop_TimeAggregationOperator | Az idő összesítési operátor, alkalmazott a kijelölt méretének Pro vyhodnocení podmínky. Elfogadható értékek a következők **átlagos**, **minimális**, **maximális**, **teljes**, és **utolsó**.|
 |External_AutoStop_TimeWindow | Az ablak mérete, amely során Azure elemzi a riasztást kiváltó mód kiválasztott adatai. Ez a paraméter bemeneti timespan formátumban fogad el. Lehetséges értékek: 5 percet vagy akár 6 óráig.|
 |External_EnableClassicVMs| Itt adhatja meg, hogy klasszikus virtuális gépeket a megoldás által megcélzott. Az alapértelmezett érték: igaz. Ez kell beállítani hamis értékre a CSP-előfizetésekben.|
-|External_ExcludeVMNames | Adja meg, amelyet ki szeretne, egy virtuális gép neve, nevek elválasztó vessző használatával szóközök nélküli szövegláncként. Ez a korlátozott 140 virtuális gépekhez. Előfordulhat, hogy ha több mint 140 virtuális gépek kerülnek a virtuális gépek ki lesznek zárva hivatott elindítani vagy -leállítás véletlenül|
+|External_ExcludeVMNames | Adja meg, amelyet ki szeretne, egy virtuális gép neve, nevek elválasztó vessző használatával szóközök nélküli szövegláncként. Ez a korlátozott 140 virtuális gépekhez. Ha több mint 140 virtuális gépeket ad hozzá a vesszővel tagolt listája, virtuális gépek vannak beállítva, amelyet ki szeretne előfordulhat, hogy véletlenül elindítandó vagy leállítandó.|
 |External_Start_ResourceGroupNames | Itt adható meg egy vagy több erőforráscsoport megadhat, az értékek egy vesszővel tagolt indítási műveleteket a megcélzott használatával.|
 |External_Stop_ResourceGroupNames | Itt adható meg egy vagy több erőforráscsoport megadhat, az értékek egy vesszővel tagolt stop műveleteket a megcélzott használatával.|
 |Internal_AutomationAccountName | Itt adhatja meg az Automation-fiók nevére.|
@@ -233,7 +235,7 @@ Az ütemezést, mert előfordulhat, hogy hozzon létre egymást átfedő ütemez
 |Sequenced-StopVM | 1:00-kor (UTC), minden pénteken | A Sequenced_Parent runbookot futtat egy s parametrem _leállítása_ minden pénteken, a megadott időpontban. Egymás után (növekvő) leállítja a címkével ellátott összes virtuális gép **SequenceStop** határozzák meg a megfelelő változókat. A címkeértékeket és az eszközintelligencia változók további információkért tekintse meg a Runbookok szakaszt. A kapcsolódó ütemezés engedélyezése **Sequenced-StartVM**.|
 |Sequenced-StartVM | 1:00 Órakor (UTC), minden hétfőn | A Sequenced_Parent runbookot futtat egy s parametrem _Start_ minden hétfőn, a megadott időpontban. Egymás után minden virtuális gép (csökkenő) kezdődik, egy címke **SequenceStart** határozzák meg a megfelelő változókat. A címkeértékeket és az eszközintelligencia változók további információkért tekintse meg a Runbookok szakaszt. A kapcsolódó ütemezés engedélyezése **Sequenced-StopVM**.|
 
-## <a name="log-analytics-records"></a>Log Analytics-rekordok
+## <a name="azure-monitor-logs-records"></a>Az Azure Monitor rekordok naplózása
 
 Automation két rekordtípust hoz létre a Log Analytics-munkaterület: feladat-naplók és feladat-adatfolyamokat.
 
@@ -290,7 +292,7 @@ A következő táblázat a megoldás által összegyűjtött feladatrekordokkal 
 
 ## <a name="viewing-the-solution"></a>A megoldás megtekintése
 
-Hozzáférhet a megoldást, keresse meg az Automation-fiók kiválasztása **munkaterület** alatt **kapcsolódó erőforrások**. A Log Analytics oldalon válassza ki a **megoldások** alatt **általános**. Az a **megoldások** lapon, válassza ki a megoldás **Start – virtuális gépek leállítása [munkaterület]** a listából.
+Hozzáférhet a megoldást, keresse meg az Automation-fiók kiválasztása **munkaterület** alatt **kapcsolódó erőforrások**. A log analytics oldalon válassza ki a **megoldások** alatt **általános**. Az a **megoldások** lapon, válassza ki a megoldás **Start – virtuális gépek leállítása [munkaterület]** a listából.
 
 A megoldás kiválasztásakor megjelenik a **Start – virtuális gépek leállítása [munkaterület]** megoldás lapja. Itt áttekintheti a fontos részletek például a **StartStopVM** csempére. A Log Analytics-munkaterülethez hasonlóan ez a csempe számát és grafikus ábrázolását a runbook-feladatok a megoldáshoz, amelyek elindultak és sikeresen befejezte jeleníti meg.
 
@@ -364,14 +366,14 @@ Törölje a megoldást, hajtsa végre az alábbi lépéseket:
 
 Az Automation-fiók és a Log Analytics-munkaterület nem törlődnek a folyamat részeként. Ha nem szeretné megőrizni a Log Analytics-munkaterületet, törölje manuálisan szeretné. Ez az Azure Portalon is elvégezhető:
 
-1. Válassza ki az Azure portál főoldalára, **Log Analytics**.
-1. Az a **Log Analytics** lapon, válassza ki a munkaterületet.
+1. Válassza ki az Azure portál főoldalára, **Log Analytics-munkaterületek**.
+1. Az a **Log Analytics-munkaterületek** lapon, válassza ki a munkaterületet.
 1. Válassza ki **törlése** a menüben a munkaterület beállítások lapon.
 
 Ha nem szeretné megőrizni az Azure Automation-fiók összetevőket, manuálisan törölheti egyes. Runbookok, a változók és a megoldás által létrehozott ütemezések listáját lásd: a [megoldás-összetevőket](#solution-components).
 
 ## <a name="next-steps"></a>További lépések
 
-- Más keresési lekérdezéseket hozhat létre, és tekintse át az Automation feladatnaplóit Log Analytics szolgáltatással kapcsolatos további tudnivalókért lásd: [Log Analytics naplóbeli kereséseivel](../log-analytics/log-analytics-log-searches.md).
+- Más keresési lekérdezéseket hozhat létre, és tekintse át az Automation feladatnaplóit Azure Monitor-naplókkal kapcsolatos további tudnivalókért lásd: [Naplókeresésekkel a naplókban az Azure Monitor](../log-analytics/log-analytics-log-searches.md).
 - A runbook végrehajtásával, a runbook-feladatok figyelésével, illetve az egyéb technikai részletekkel kapcsolatos további tudnivalókat a [Runbook-feladatok nyomon követése](automation-runbook-execution.md) című rész tartalmazza.
-- A Log Analytics használatával és adatgyűjtési forrásokkal kapcsolatos további információkért lásd: [gyűjtése az Azure storage-adatok a Log Analytics – áttekintés](../azure-monitor/platform/collect-azure-metrics-logs.md).
+- Az Azure Monitor naplóira és adatgyűjtési forrásokkal kapcsolatos további tudnivalókért lásd: [gyűjtése Azure-tárfiókbeli adatok az Azure monitorban naplók áttekintése](../azure-monitor/platform/collect-azure-metrics-logs.md).

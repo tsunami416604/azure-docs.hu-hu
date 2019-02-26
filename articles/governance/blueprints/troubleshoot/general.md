@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: cebbc8b61a806663e7cb58e0bf7fbdd589f46cca
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 0d49045eea5a65461b142262bae83b9b8e7f84c8
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343306"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816589"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Azure-tervek használatával kapcsolatos hibák elhárítása
 
@@ -24,7 +24,7 @@ Előfordulhat, hogy hibákba ütközik létrehozásakor vagy tervezetek hozzáre
 
 Sok hiba lesz a tervezet hozzárendelése egy hatókör eredményét. A helyhozzárendelés meghiúsul, ha a megoldás lehetővé teszi az a sikertelen üzembe helyezés részleteit. Ez az információ azt jelzi, hogy a probléma, hogy lehet meghatározni, és a következő üzembe helyezését.
 
-1. Kattintson a **Minden szolgáltatás** elemre, és keresse meg, majd válassza ki a **Szabályzat** elemet a bal oldali panelen. Kattintson a **Szabályzat** oldal **Tervek** elemére.
+1. Válassza ki **minden szolgáltatás** a bal oldali panelen. Keresse meg és válassza **tervezetek**.
 
 1. Válassza ki **hozzárendelt tervezetek** a lap bal oldalon, a Keresés mezőbe a tervezet-hozzárendelések keresése a sikertelen hozzárendelés szűréséhez használja. A tábla-hozzárendelések alapján is rendezheti a **kiépítési állapot** oszlopban tekintheti meg az összes sikertelen hozzárendelések csoportosítva.
 

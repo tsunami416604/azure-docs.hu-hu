@@ -1,6 +1,6 @@
 ---
-title: Log Analytics-adatmodell az Azure Backuphoz
-description: Ez a cikk ismerteti a Log Analytics data modell részletei az Azure biztonsági mentési adatok.
+title: Az Azure Monitor naplók adatmodell az Azure Backup
+description: Ez a cikk előadások az Azure Monitor kapcsolatos adatok modell részletei az Azure Backup adatokat naplózza.
 services: backup
 author: adigan
 manager: shivamg
@@ -8,15 +8,17 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 07/24/2017
 ms.author: adigan
-ms.openlocfilehash: 5921ca696076a16e39252a6cb3bfae98854b5a85
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: b17e7548a19543add6274243d64ede3b61544c52
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299572"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819565"
 ---
-# <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics-adatmodell az Azure biztonsági mentési adatok
-A Log Analytics data model használatával jelentéseket készíthet. Az adatmodellel egyéni lekérdezéseket és irányítópultokat hozhat létre, vagy testre szabhatja az Azure biztonsági mentési adatok, tetszés.
+# <a name="azure-monitor-logs-data-model-for-azure-backup-data"></a>Az Azure Monitor-naplók adatmodell az Azure biztonsági mentési adatok
+Az Azure Monitor naplók adatmodell segítségével jelentéseket hozhat létre. Az adatmodellel egyéni lekérdezéseket és irányítópultokat hozhat létre, vagy testre szabhatja az Azure biztonsági mentési adatok, tetszés.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="using-azure-backup-data-model"></a>Az Azure Backup data modellel
 Használhatja az adatmodellt részeként a következő mezőket igény szerint Vizualizációk, az egyéni lekérdezések és az irányítópult létrehozásához.
@@ -37,7 +39,7 @@ Ez a táblázat részletesen riasztási kapcsolódó mezőket.
 | State_s |Szöveg |A riasztási, például az aktív, a törölt objektum jelenlegi állapota |
 | BackupManagementType_s |Szöveg |Szolgáltató típusa végrehajtásához, amelyhez ez a riasztás tartozik, a biztonsági mentés, például IaaSVM fájlmappa |
 | OperationName |Szöveg |Az aktuális művelet, például a riasztás neve |
-| Kategória |Szöveg |Diagnosztikai adatok a Log Analytics szolgáltatásba leküldött kategóriáját. Always AzureBackupReport |
+| Kategória |Szöveg |Diagnosztikai adatok az Azure Monitor naplóira leküldve kategóriáját. Always AzureBackupReport |
 | Erőforrás |Szöveg |Ez az erőforrás, amelynek adatokat gyűjteni, azt mutatja, hogy a helyreállítási tár neve |
 | ProtectedServerUniqueId_s |Szöveg |A védett kiszolgálón, a riasztáshoz tartozó egyedi azonosítója |
 | VaultUniqueId_s |Szöveg |A védett tárolóhoz a riasztáshoz tartozó egyedi azonosítója |
@@ -65,7 +67,7 @@ Ez a táblázat részletesen a biztonsági mentési elem kapcsolatos mezőket.
 | State_s |Szöveg |A biztonsági másolati elem objektum, például az aktív, a törölt állapota |
 | BackupManagementType_s |Szöveg |Szolgáltató típusát, amelyre a biztonsági mentési cikkhez tartozó biztonsági mentési, például IaaSVM fájlmappa végrehajtásához |
 | OperationName |Szöveg |A művelet, például BackupItem neve |
-| Kategória |Szöveg |Diagnosztikai adatok a Log Analytics szolgáltatásba leküldött kategóriáját. Always AzureBackupReport |
+| Kategória |Szöveg |Diagnosztikai adatok az Azure Monitor naplóira leküldve kategóriáját. Always AzureBackupReport |
 | Erőforrás |Szöveg |Összegyűjtött adatok erőforrás, például a helyreállítási tár neve |
 | SourceSystem |Szöveg |A forrásrendszerben az aktuális adatok – Azure |
 | ResourceId |Szöveg |Erőforrás-azonosító a begyűjtött adatok, például Recovery Services-tároló az erőforrás-azonosító |
@@ -85,7 +87,7 @@ Ez a táblázat a különböző entitások biztonsági másolati elem társítá
 | State_s |Szöveg |A biztonsági másolati elem társítás objektum, például az aktív, a törölt aktuális állapotát |
 | BackupManagementType_s |Szöveg |Ennek során a biztonsági mentési feladat, például IaaSVM, fájlmappa kiszolgáló a szolgáltató típusát |
 | OperationName |Szöveg |Ez a mező képviseli az aktuális művelet – BackupItemAssociation neve |
-| Kategória |Szöveg |Ez a mező képviseli a diagnosztikai adatok a Log Analytics szolgáltatásba leküldött kategória, AzureBackupReport |
+| Kategória |Szöveg |Ez a mező képviseli a diagnosztikai adatok az Azure Monitor naplóira leküldve kategória, AzureBackupReport |
 | Erőforrás |Szöveg |Ez az erőforrás, amelynek adatokat gyűjteni, azt mutatja, hogy a helyreállítási tár neve |
 | PolicyUniqueId_g |Szöveg |A szabályzathoz társított a biztonságimásolat-elem egyedi azonosítója |
 | ProtectedServerUniqueId_s |Szöveg |A védett kiszolgálón, a biztonsági mentési elemhez társított egyedi azonosítója |
@@ -108,7 +110,7 @@ Ez a táblázat részletesen a feladathoz kapcsolódó mezőket.
 | State_s |Szöveg |A feladatobjektumot, például az aktív, a törölt aktuális állapotát |
 | BackupManagementType_s |Szöveg |Ennek során a biztonsági mentési feladat, például IaaSVM, fájlmappa kiszolgáló a szolgáltató típusát |
 | OperationName |Szöveg |Ez a mező annak neve, az aktuális művelet - feladat |
-| Kategória |Szöveg |Ez a mező képviseli a diagnosztikai adatok a Log Analytics szolgáltatásba leküldött kategória, AzureBackupReport |
+| Kategória |Szöveg |Ez a mező képviseli a diagnosztikai adatok az Azure Monitor naplóira leküldve kategória, AzureBackupReport |
 | Erőforrás |Szöveg |Ez az erőforrás, amelynek adatokat gyűjteni, azt mutatja, hogy a helyreállítási tár neve |
 | ProtectedServerUniqueId_s |Szöveg |A védett kiszolgáló egyedi azonosítója a feladathoz hozzárendelt |
 | VaultUniqueId_s |Szöveg |A védett tároló egyedi azonosítója |
@@ -137,7 +139,7 @@ Ez a táblázat részletesen házirendekhez kapcsolódó mezőket.
 | State_s |Szöveg |A csoportházirend-objektum, például az aktív, a törölt aktuális állapotát |
 | BackupManagementType_s |Szöveg |Ennek során a biztonsági mentési feladat, például IaaSVM, fájlmappa kiszolgáló a szolgáltató típusát |
 | OperationName |Szöveg |Ez a mező képviseli az aktuális művelet - házirend neve |
-| Kategória |Szöveg |Ez a mező képviseli a diagnosztikai adatok a Log Analytics szolgáltatásba leküldött kategória, AzureBackupReport |
+| Kategória |Szöveg |Ez a mező képviseli a diagnosztikai adatok az Azure Monitor naplóira leküldve kategória, AzureBackupReport |
 | Erőforrás |Szöveg |Ez az erőforrás, amelynek adatokat gyűjteni, azt mutatja, hogy a helyreállítási tár neve |
 | PolicyUniqueId_g |Szöveg |Azonosíthatja a szabályzat egyedi azonosítója |
 | PolicyName_s |Szöveg |A megadott házirend neve |
@@ -177,7 +179,7 @@ Ez a táblázat a különböző entitások szabályzattársításait részletese
 | State_s |Szöveg |A csoportházirend-objektum, például az aktív, a törölt aktuális állapotát |
 | BackupManagementType_s |Szöveg |Ennek során a biztonsági mentési feladat, például IaaSVM, fájlmappa kiszolgáló a szolgáltató típusát |
 | OperationName |Szöveg |Ez a mező képviseli az aktuális művelet – PolicyAssociation neve |
-| Kategória |Szöveg |Ez a mező képviseli a diagnosztikai adatok a Log Analytics szolgáltatásba leküldött kategória, AzureBackupReport |
+| Kategória |Szöveg |Ez a mező képviseli a diagnosztikai adatok az Azure Monitor naplóira leküldve kategória, AzureBackupReport |
 | Erőforrás |Szöveg |Ez az erőforrás, amelynek adatokat gyűjteni, azt mutatja, hogy a helyreállítási tár neve |
 | PolicyUniqueId_g |Szöveg |Azonosíthatja a szabályzat egyedi azonosítója |
 | VaultUniqueId_s |Szöveg |A tárolóban, amelyhez ez a szabályzat tartozik, az egyedi azonosítója |
@@ -199,7 +201,7 @@ Ez a táblázat részletesen a védett kiszolgáló kapcsolatos mezőket.
 | State_s |Szöveg |A védett kiszolgáló objektum, például az aktív, a törölt aktuális állapotát |
 | BackupManagementType_s |Szöveg |Ennek során a biztonsági mentési feladat, például IaaSVM, fájlmappa kiszolgáló a szolgáltató típusát |
 | OperationName |Szöveg |Ez a mező képviseli az aktuális művelet - ProtectedServer neve |
-| Kategória |Szöveg |Ez a mező képviseli a diagnosztikai adatok a Log Analytics szolgáltatásba leküldött kategória, AzureBackupReport |
+| Kategória |Szöveg |Ez a mező képviseli a diagnosztikai adatok az Azure Monitor naplóira leküldve kategória, AzureBackupReport |
 | Erőforrás |Szöveg |Ez az erőforrás, amelynek adatokat gyűjteni, azt mutatja, hogy a helyreállítási tár neve |
 | ProtectedServerUniqueId_s |Szöveg |A védett kiszolgáló egyedi azonosítója |
 | RegisteredContainerId_s |Szöveg |Regisztrálva a biztonsági mentési tároló azonosítója |
@@ -223,7 +225,7 @@ Ez a táblázat a védett kiszolgáló társítások más entitásokkal részlet
 | State_s |Szöveg |A védett kiszolgáló társítás objektum, például az aktív, a törölt aktuális állapotát |
 | BackupManagementType_s |Szöveg |Ennek során a biztonsági mentési feladat, például IaaSVM, fájlmappa kiszolgáló a szolgáltató típusát |
 | OperationName |Szöveg |Ez a mező képviseli az aktuális művelet – ProtectedServerAssociation neve |
-| Kategória |Szöveg |Ez a mező képviseli a diagnosztikai adatok a Log Analytics szolgáltatásba leküldött kategória, AzureBackupReport |
+| Kategória |Szöveg |Ez a mező képviseli a diagnosztikai adatok az Azure Monitor naplóira leküldve kategória, AzureBackupReport |
 | Erőforrás |Szöveg |Ez az erőforrás, amelynek adatokat gyűjteni, azt mutatja, hogy a helyreállítási tár neve |
 | ProtectedServerUniqueId_s |Szöveg |A védett kiszolgáló egyedi azonosítója |
 | VaultUniqueId_s |Szöveg |A tárolóban, amelyhez a védett kiszolgáló tartozik egyedi azonosítója |
@@ -246,7 +248,7 @@ A table storage szolgáltatással kapcsolatos mezők részletesen ismerteti.
 | State_s |Szöveg |A tárolási objektum, például az aktív, a törölt aktuális állapotát |
 | BackupManagementType_s |Szöveg |Ennek során a biztonsági mentési feladat, például IaaSVM, fájlmappa kiszolgáló a szolgáltató típusát |
 | OperationName |Szöveg |Ez a mező képviseli az aktuális művelet – a tároló neve |
-| Kategória |Szöveg |Ez a mező képviseli a diagnosztikai adatok a Log Analytics szolgáltatásba leküldött kategória, AzureBackupReport |
+| Kategória |Szöveg |Ez a mező képviseli a diagnosztikai adatok az Azure Monitor naplóira leküldve kategória, AzureBackupReport |
 | Erőforrás |Szöveg |Ez az erőforrás, amelynek adatokat gyűjteni, azt mutatja, hogy a helyreállítási tár neve |
 | ProtectedServerUniqueId_s |Szöveg |A védett kiszolgálón, amelyhez tárolási számította egyedi azonosítója |
 | VaultUniqueId_s |Szöveg |Egyedi azonosítója a Storage-tároló kiszámítása |
@@ -266,7 +268,7 @@ Ez a táblázat részletesen tároló kapcsolatos mezőket.
 | SchemaVersion_s |Szöveg |Ebben a mezőben azt jelzi, hogy a jelenlegi verzióját, a sémát, hogy az **V1** |
 | State_s |Szöveg |A tár objektum, például az aktív, a törölt aktuális állapotát |
 | OperationName |Szöveg |Ez a mező képviseli az aktuális művelet - tár neve |
-| Kategória |Szöveg |Ez a mező képviseli a diagnosztikai adatok a Log Analytics szolgáltatásba leküldött kategória, AzureBackupReport |
+| Kategória |Szöveg |Ez a mező képviseli a diagnosztikai adatok az Azure Monitor naplóira leküldve kategória, AzureBackupReport |
 | Erőforrás |Szöveg |Ez az erőforrás, amelynek adatokat gyűjteni, azt mutatja, hogy a helyreállítási tár neve |
 | VaultUniqueId_s |Szöveg |A tároló egyedi azonosítója |
 | VaultName_s |Szöveg |A tároló neve |
@@ -280,4 +282,4 @@ Ez a táblázat részletesen tároló kapcsolatos mezőket.
 | ResourceType |Szöveg |Erőforrás típusa, amelynek az adatgyűjtés történik. Ha például a tárolók |
 
 ## <a name="next-steps"></a>További lépések
-Megkezdése után tekintse át az adatmodell az Azure Backup-jelentések létrehozása, [irányítópult létrehozása](../azure-monitor/learn/tutorial-logs-dashboards.md) a Log Analyticsben.
+Megkezdése után tekintse át az adatmodell az Azure Backup-jelentések létrehozása, [irányítópult létrehozása](../azure-monitor/learn/tutorial-logs-dashboards.md) az Azure Monitor naplóira.

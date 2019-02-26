@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: 7aebdace6b6200f400d0c642c8cbdc6d31544752
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 17eb51044aae7f1f1536e965eea1d1cdb0a1a42b
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733027"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817439"
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Teljesítse az előfeltételeket az Always On rendelkezésre állási csoportok létrehozása az Azure-beli virtuális gépeken
 
@@ -464,7 +464,7 @@ Adja hozzá a Feladatátvételi fürtszolgáltatással, tegye mindkét SQL Serve
 Ismételje meg a más SQL Server virtuális gépen.
 
   >[!NOTE]
-  > Ebben a lépésben együtt ténylegesen az SQL Server virtuális gépek csatlakoztatása a feladatátvevő fürt most már automatizálható a rövid útmutató az Azure-sablonnal. További információkért lásd: [WSFC létrehozása, a figyelőt, és konfigurálja az ILB Always On rendelkezésre állási csoporthoz az SQL Server virtuális gép Azure gyorsindítási sablonnal](virtual-machines-windows-sql-availability-group-quickstart-template.md).
+  > Ebben a lépésben együtt ténylegesen az SQL Server virtuális gépek csatlakoztatása a feladatátvevő fürt most már automatizálható a [Azure SQL virtuális gép CLI](virtual-machines-windows-sql-availability-group-cli.md) és [Azure gyorsindítási sablonok](virtual-machines-windows-sql-availability-group-quickstart-template.md).
 
 
 ## <a name="a-nameendpoint-firewall-configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"> A tűzfal konfigurálása az egyes SQL Server virtuális Gépeken

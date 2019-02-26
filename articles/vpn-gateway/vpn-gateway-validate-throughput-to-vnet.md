@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: radwiv;chadmat;genli
-ms.openlocfilehash: 7e6b3e7496c4a063156ff3b8feae1f5096efe55f
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 819415712d8e605825957aa602fc99dcf6902d82
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035618"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821661"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>Hogyan lehet egy virtuális hálózati VPN teljesítményének érvényesítése
 
@@ -49,7 +49,7 @@ Az alábbi ábrán a logikai kapcsolat a helyszíni hálózat egy Azure virtuál
 ## <a name="calculate-the-maximum-expected-ingressegress"></a>Kiszámítása a maximális várt bejövő/kimenő forgalom
 
 1.  Az alkalmazás eredeti átviteli követelmények meghatározása.
-2.  Az Azure VPN gateway átviteli korlátainak határozza meg. Segítségre van szüksége, a "Termékváltozat és a VPN-típus szerint az összesített átviteli" című szakaszában talál [tervezéssel és kialakítással VPN-átjáró](vpn-gateway-plan-design.md).
+2.  Az Azure VPN gateway átviteli korlátainak határozza meg. Segítségre van szüksége, az "Átjáró-termékváltozatok" című szakaszában talál [információk a VPN Gateway](vpn-gateway-about-vpngateways.md#gwsku).
 3.  Határozza meg a [Azure virtuális gép átviteli sebességéről szóló útmutatót](../virtual-machines/virtual-machines-windows-sizes.md) a Virtuálisgép-mérethez.
 4.  Határozza meg, hogy az internetszolgáltató (ISP) sávszélességet.
 5.  A várt – minimális sávszélesség (virtuális gép, átjáró, ISP) az átviteli sebességet számítja ki * 0,8 értéket.
@@ -77,7 +77,7 @@ Töltse le [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip). T
 
 2. A két csomópontra a tűzfal-kivétel az port 5001 engedélyezése.
 
-    **Windows:** rendszergazdaként a következő parancsot:
+    **Windows:** Futtassa az alábbi parancsot rendszergazdaként:
 
     ```CMD
     netsh advfirewall firewall add rule name="Open Port 5001" dir=in action=allow protocol=TCP localport=5001
@@ -89,7 +89,7 @@ Töltse le [iPerf](https://iperf.fr/download/iperf_3.1/iperf-3.1.2-win64.zip). T
     netsh advfirewall firewall delete rule name="Open Port 5001" protocol=TCP localport=5001
     ```
      
-    **Azure-beli Linuxos:** Azure Linux-rendszerképeket megengedő tűzfalak vannak. Ha egy alkalmazás figyeljen egy portot, keresztül engedélyezi a forgalmat. Egyéni rendszerképek védett explicit módon megnyitott portok szükség lehet. Gyakori Linux operációsrendszer-réteg tűzfalak tartalmaznak `iptables`, `ufw`, vagy `firewalld`.
+    **Azure Linux:**  Az Azure Linux-rendszerképeket megengedő tűzfalak vannak. Ha egy alkalmazás figyeljen egy portot, keresztül engedélyezi a forgalmat. Egyéni rendszerképek védett explicit módon megnyitott portok szükség lehet. Gyakori Linux operációsrendszer-réteg tűzfalak tartalmaznak `iptables`, `ufw`, vagy `firewalld`.
 
 3. A kiszolgáló-csomóponton módosítsa a könyvtárat, ahol iperf3.exe ki kell olvasni. Ezután iPerf kiszolgáló módban fut, és beállíthatja úgy, hogy a port 5001, az alábbi parancsok figyelése:
 

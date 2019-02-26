@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 2c0eb50e962af5b67ef9c01588df42f74dd44368
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: de83cc80d64fb1862f1fdec32b704d0948ef9fc8
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100295"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820518"
 ---
 # <a name="what-are-microsoft-flow-logic-apps-functions-and-webjobs"></a>Mik azok a Microsoft Flow, Logic Apps, Functions és webjobs-feladatok?
 
@@ -62,7 +62,7 @@ Ezeket a szolgáltatásokat használhatja vegyesen a vezénylések létrehozás�
 | Fejlesztés | Kódközpontú (imperatív) | Tervezőközpontú (deklaratív) |
 | Kapcsolatok | [Számos beépített kötési típus](functions-triggers-bindings.md#supported-bindings), egyéni kötések létrehozása kód írásával | [Nagyszámú beépített összekötők](../connectors/apis-list.md), [Enterprise Integration Pack csomag B2B-forgatókönyvekhez](../logic-apps/logic-apps-enterprise-integration-overview.md), [egyéni összekötők létrehozása](../logic-apps/custom-connector-overview.md) |
 | Műveletek | Minden tevékenység egy Azure-függvény; kód írásával hozhat létre tevékenységfüggvényeket |[Használatra kész műveletek széles választéka](../logic-apps/logic-apps-workflow-actions-triggers.md)|
-| Figyelés | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [Log Analytics](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
+| Figyelés | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Az Azure portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [Azure Monitor-naplók](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
 | Kezelés | [REST API](durable/durable-functions-http-api.md), [Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [REST API](https://docs.microsoft.com/rest/api/logic/), [PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [Visual Studio](https://docs.microsoft.com/azure/logic-apps/manage-logic-apps-with-visual-studio) |
 | Végrehajtási környezet | Futtatható [helyileg](functions-runtime-overview.md) vagy a felhőben | Csak a felhőben|
 

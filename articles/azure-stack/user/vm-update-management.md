@@ -16,19 +16,19 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: rtiberiu
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 28f8300b83f55f4b083aa1e740dcbf1db0f1dc31
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4683b6f63af9fe0081911db9914f04b1c90f9d23
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168141"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819445"
 ---
 # <a name="azure-stack-vm-update-and-management"></a>Az Azure Stack VM update és kezelése
 A következő Azure Automation-megoldás funkciók segítségével kezelheti a Windows és Linux rendszerű virtuális gépek, amelyek az Azure Stack használatával helyezi üzembe:
 
 - **[Frissítéskezelés](https://docs.microsoft.com/azure/automation/automation-update-management)**. Az Update Management megoldással gyorsan felmérheti az elérhető frissítések minden ügynökszámítógépen állapotát és a folyamat szükséges frissítéseinek telepítése ezen Windows és Linux rendszerű virtuális gépek kezeléséhez.
 
-- **[A változáskövetés](https://docs.microsoft.com/azure/automation/automation-change-tracking)**. Telepített szoftverek, Windows-szolgáltatások, Windows-beállításjegyzék és a fájlok és a figyelt kiszolgálókról a Linux-démonok változásokat küldi el a Log Analytics szolgáltatás a felhőben a feldolgozáshoz. A fogadott adatokat logikát alkalmaz, és a felhőszolgáltatás-adatait rögzíti. A Change Tracking irányítópultján található információk segítségével könnyen megtekintheti az a kiszolgáló-infrastruktúrájában elvégzett módosítások.
+- **[A változáskövetés](https://docs.microsoft.com/azure/automation/automation-change-tracking)**. Telepített szoftverek, Windows-szolgáltatások, Windows-beállításjegyzék és a fájlok és a figyelt kiszolgálókról a Linux-démonok változásokat küldi el a feldolgozás a felhőben az Azure Monitor szolgáltatáshoz. A fogadott adatokat logikát alkalmaz, és a felhőszolgáltatás-adatait rögzíti. A Change Tracking irányítópultján található információk segítségével könnyen megtekintheti az a kiszolgáló-infrastruktúrájában elvégzett módosítások.
 
 - **[Készlet](https://docs.microsoft.com/azure/automation/automation-vm-inventory)**. A leltár nyomon követése az Azure Stack virtuális gépként és leltár konfigurálása egy böngészőalapú felhasználói felületet biztosít. 
 
@@ -44,7 +44,7 @@ A készlet, a Change Tracking és a frissítés kezelése az Azure automation sz
 > [!TIP]
 > Ha már rendelkezik ezeket a funkciókat az Azure virtuális gépek engedélyezve van, használhatja a már meglévő LogAnalytics munkaterület hitelesítő adatait. Ha már rendelkezik egy LogAnalytics munkaterület azonosítója és az elsődleges kulcs, amelyet használni szeretne, ugorjon előre [a következő szakaszban](./vm-update-management.md#in-the-azure-stack-administration-portal). Ellenkező esetben továbbra is ebben a szakaszban egy új LogAnalytics munkaterületet és automation-fiók létrehozásához.
 
-Az első lépése abban, hogy ezek a megoldások [LogAnalytics munkaterület létrehozása](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace) az Azure-előfizetésében. Log Analytics-munkaterület egy saját adattárházzal, adatforrások és megoldások egyedi Log Analytics-környezetet. Miután létrehozott egy munkaterületet, vegye figyelembe a munkaterület azonosítója és kulcsa. Ezek az információk megtekintéséhez nyissa meg a munkaterület panel, kattintson a **speciális beállítások**, és tekintse át a **munkaterület-Azonosítót** és **elsődleges kulcs** értékeket. 
+Az első lépése abban, hogy ezek a megoldások [LogAnalytics munkaterület létrehozása](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace) az Azure-előfizetésében. Log Analytics-munkaterület olyan saját adattárházzal, adatforrások és megoldások egyedi az Azure Monitor naplók környezet. Miután létrehozott egy munkaterületet, vegye figyelembe a munkaterület azonosítója és kulcsa. Ezek az információk megtekintéséhez nyissa meg a munkaterület panel, kattintson a **speciális beállítások**, és tekintse át a **munkaterület-Azonosítót** és **elsődleges kulcs** értékeket. 
 
 Ezt követően kell [Automation-fiók létrehozása](https://docs.microsoft.com/azure/automation/automation-create-standalone-account). Az Automation-fiók egy tároló az Azure Automation-erőforrások számára. A környezetek elkülönítésére vagy további rendszerezésére az automatizált munkafolyamatokat és erőforrásokat biztosít. Az automation-fiók létrehozása után meg kell ahhoz, hogy a készlet változások követése, és felügyeleti funkciók frissítése. Ehhez kövesse az alábbi lépéseket mindegyik funkciónak az engedélyezéséhez:
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 5746d8b1f4c12a9b39f1599da753db8109790a55
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: c4684dd27aeed4fab4335a93ea5a458b4a9f5d80
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984139"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821183"
 ---
 # <a name="manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Az Azure PowerShell használatával egy virtuálisgép-méretezési csoport kezelése
 
@@ -92,7 +92,7 @@ Start-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -
 
 
 ## <a name="restart-vms-in-a-scale-set"></a>Egy méretezési csoportban lévő virtuális gépek újraindítása
-Egy méretezési csoportban lévő egy vagy több virtuális gép újraindításához használja [restart-AzVmss](/powershell/module/az.compute/restart-azvmss). Az `-InstanceId` paraméter segítségével megadhat egy vagy több újraindítandó virtuális gépet. Ha nem ad meg példányazonosítót, a méretezési csoportban lévő összes virtuális gép újra lesz indítva. Több virtuális gép újraindításához külön mindegyik Példányazonosítója vesszővel válasszon el.
+Egy méretezési csoportban lévő egy vagy több virtuális gép újraindításához használja [újraindítás-AzVmss](/powershell/module/az.compute/restart-azvmss). Az `-InstanceId` paraméter segítségével megadhat egy vagy több újraindítandó virtuális gépet. Ha nem ad meg példányazonosítót, a méretezési csoportban lévő összes virtuális gép újra lesz indítva. Több virtuális gép újraindításához külön mindegyik Példányazonosítója vesszővel válasszon el.
 
 A következő példa újraindítja a példányt *0* elnevezett méretezési *myScaleSet* és a *myResourceGroup* erőforráscsoportot. A saját értékeit adja meg a következőképpen:
 

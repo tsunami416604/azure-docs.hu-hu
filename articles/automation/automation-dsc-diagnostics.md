@@ -1,6 +1,6 @@
 ---
-title: Azure Automation Állapotkonfiguráció adatokról szóló jelentéseket küldeni a Log Analyticshez való továbbítása
-description: Ez a cikk bemutatja, hogyan küldhet a Desired State Configuration (DSC), hogy további elemzés és kezelés a Log Analytics az Azure Automation Állapotkonfiguráció jelentésadatait.
+title: Azure Automation Állapotkonfiguráció számára az Azure Monitor naplóira továbbítása
+description: Ez a cikk bemutatja, hogyan küldhet a Desired State Configuration (DSC) az Azure Monitor naplóira Azure Automation Állapotkonfiguráció jelentésadatait, hogy további elemzés és felügyeleti.
 services: automation
 ms.service: automation
 ms.subservice: dsc
@@ -9,16 +9,16 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2450ffcbd9fa7bebd5a1b862aa9c35baa5dbdc95
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 33b3ed52d198d162af666e0f38066ba936d7874f
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425177"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819820"
 ---
-# <a name="forward-azure-automation-state-configuration-reporting-data-to-log-analytics"></a>Azure Automation Állapotkonfiguráció adatokról szóló jelentéseket küldeni a Log Analyticshez való továbbítása
+# <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>Azure Automation Állapotkonfiguráció számára az Azure Monitor naplóira továbbítása
 
-Azure Automation Állapotkonfiguráció Desired State Configuration (DSC) csomópont állapotát adatokat küldhet a Log Analytics-munkaterületre. Megfelelőségi állapot jelenik meg az Azure Portalon vagy a PowerShell-lel, csomópontok, és az egyes DSC-erőforrásokhoz a csomópont-konfigurációkat. A Log Analytics-szel a következőket teheti:
+Azure Automation Állapotkonfiguráció Desired State Configuration (DSC) csomópont állapotát adatokat küldhet a Log Analytics-munkaterületre. Megfelelőségi állapot jelenik meg az Azure Portalon vagy a PowerShell-lel, csomópontok, és az egyes DSC-erőforrásokhoz a csomópont-konfigurációkat. Az Azure Monitor-naplók segítségével:
 
 - Megfelelőségi információk lekérése a felügyelt csomópontok és az egyéni erőforrások
 - Aktiválja az e-mailben vagy a megfelelőségi állapot alapján riasztása
@@ -26,18 +26,20 @@ Azure Automation Állapotkonfiguráció Desired State Configuration (DSC) csomó
 - Megfelelőségi állapot összekapcsolása az Automation-fiókok
 - A csomópont megfelelőségi előzmények megjelenítése időbeli alakulása
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Automation Állapotkonfiguráció jelentések küldése a Log Analyticshez való indításához lesz szüksége:
+Az Automation Állapotkonfiguráció jelentések küldése az Azure Monitor naplóira indításához lesz szüksége:
 
 - A November 2016 vagy újabb kiadását [Azure PowerShell-lel](/powershell/azure/overview) (v2.3.0).
 - Egy Azure Automation-fiókra. További információkért lásd: [Bevezetés az Azure Automation használatába](automation-offering-get-started.md)
-- A Log Analytics-munkaterület- **automatizálás és vezérlés** szolgáltatásajánlat. További információkért lásd: [Ismerkedés a Log Analytics](../log-analytics/log-analytics-get-started.md).
+- A Log Analytics-munkaterület- **automatizálás és vezérlés** szolgáltatásajánlat. További információkért lásd: [Ismerkedés az Azure Monitor naplóira](../log-analytics/log-analytics-get-started.md).
 - Legalább egy Azure Automation konfigurációs csomópont. További információkért lásd: [gépek előkészítése kezelésre, az Azure Automation állapot konfigurációja](automation-dsc-onboarding.md)
 
-## <a name="set-up-integration-with-log-analytics"></a>A Log Analytics-integráció beállítása
+## <a name="set-up-integration-with-azure-monitor-logs"></a>Integráció beállítása az Azure Monitor naplóira
 
-Adatok importálása az Azure Automation DSC a Log analyticsbe a kezdéshez kövesse az alábbi lépéseket:
+Azure Automation DSC adatok importálása az Azure Monitor naplóira a kezdéshez kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az Azure PowerShell-fiókjával. Lásd: [bejelentkezés az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/authenticate-azureps?view=azurermps-4.0.0)
 1. Első a _ResourceId_ az automation-fiók az alábbi PowerShell-parancs futtatásával: (Ha egynél több automation-fiókkal rendelkezik, válassza ki a _ResourceID_ a konfigurálni kívánt fiók).
@@ -60,7 +62,7 @@ Adatok importálása az Azure Automation DSC a Log analyticsbe a kezdéshez köv
   Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $true -Categories 'DscNodeStatus'
   ```
 
-Ha szeretné leállítani az Azure Automation konfigurációs adatok importálása a Log analyticsbe, futtassa a következő PowerShell-parancsot:
+Ha szeretné leállítani az Azure Automation konfigurációs adatok importálása az Azure Monitor naplóira, futtassa a következő PowerShell-parancsot:
 
 ```powershell
 Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <WorkspaceResourceId> -Enabled $false -Categories 'DscNodeStatus'
@@ -68,7 +70,7 @@ Set-AzureRmDiagnosticSetting -ResourceId <AutomationResourceId> -WorkspaceId <Wo
 
 ## <a name="view-the-state-configuration-logs"></a>Konfigurációs naplók megtekintése
 
-Az Automation konfigurációs adatok Log Analytics-integráció beállítása után egy **naplóbeli keresés** gomb jelenik meg a **DSC-csomópontok** az automation-fiók panelén. Kattintson a **naplóbeli keresés** gombra kattintva megtekintheti a DSC-csomópont adatait a naplókat.
+Az Automation konfigurációs adatok az Azure Monitor naplóira-integráció beállítása után egy **naplóbeli keresés** gomb jelenik meg a **DSC-csomópontok** az automation-fiók panelén. Kattintson a **naplóbeli keresés** gombra kattintva megtekintheti a DSC-csomópont adatait a naplókat.
 
 ![Log search gomb](media/automation-dsc-diagnostics/log-search-button.png)
 
@@ -78,7 +80,8 @@ A **DscResourceStatusData** művelet olyan DSC-erőforrások, nem sikerült hiba
 
 Kattintson az egyes műveletek a listában, hogy a művelet az adatok megtekintéséhez.
 
-A naplók megtekintéséhez [Keresés a Log Analyticsben. Lásd: [keresse meg a naplókeresések segítségével adatokat](../log-analytics/log-analytics-log-searches.md).
+A naplók szerint az Azure Monitor-naplókban keresést is megtekintheti.
+Lásd: [keresse meg a naplókeresések segítségével adatokat](../log-analytics/log-analytics-log-searches.md).
 Írja be a következőt a konfigurációs naplók keresése: `Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus'`
 
 A lekérdezés is szűkítheti a művelet neve. Például:`Type=AzureDiagnostics ResourceProvider='MICROSOFT.AUTOMATION' Category='DscNodeStatus' OperationName='DscNodeStatusData'`
@@ -89,7 +92,7 @@ Az ügyfelek legfontosabb kérelmek egyike arra, hogy küldjön egy e-mailt vagy
 
 Riasztási szabályt létrehozni, akkor először létrehozni egy naplókeresést, amely a riasztást kell meghívnia Állapotkonfiguráció jelentés rekordjára vonatkozóan. Kattintson a **+ Új riasztási szabály** gombot létrehozni és konfigurálni a riasztási szabályt.
 
-1. A Log Analytics áttekintése oldalon kattintson **naplóbeli keresés**.
+1. A Log Analytics munkaterület áttekintése oldalon kattintson **naplók**.
 1. Hozzon létre egy naplóbeli keresési lekérdezés a riasztás a következő keresési beírni a szöveget a lekérdezési mezőtől:  `Type=AzureDiagnostics Category='DscNodeStatus' NodeName_s='DSCTEST1' OperationName='DscNodeStatusData' ResultType='Failed'`
 
    Ha meg van naplók egynél több Automation-fiókot vagy előfizetést a munkaterületre, előfizetése és az Automation-fiók által a riasztásokat csoportosíthatók.  
@@ -98,10 +101,10 @@ Riasztási szabályt létrehozni, akkor először létrehozni egy naplókeresés
 
 ### <a name="find-failed-dsc-resources-across-all-nodes"></a>Az összes csomópont között sikertelen DSC-erőforrások keresése
 
-A Log Analytics használatának egyik előnye az, hogy a csomópontok között sikertelen ellenőrzések kereshet.
+Az Azure Monitor naplóira használatának egyik előnye az, hogy a csomópontok között sikertelen ellenőrzések kereshet.
 DSC-erőforrások, amelyek nem sikerült az összes példányát található.
 
-1. A Log Analytics áttekintése oldalon kattintson **naplóbeli keresés**.
+1. A Log Analytics munkaterület áttekintése oldalon kattintson **naplók**.
 1. Hozzon létre egy naplóbeli keresési lekérdezés a riasztás a következő keresési beírni a szöveget a lekérdezési mezőtől:  `Type=AzureDiagnostics Category='DscNodeStatus' OperationName='DscResourceStatusData' ResultType='Failed'`
 
 ### <a name="view-historical-dsc-node-status"></a>Korábbi DSC csomópont állapotának megtekintése
@@ -113,9 +116,9 @@ Ez a lekérdezés segítségével keresse meg a DSC-csomópont állapota állapo
 
 Ekkor megjelenik egy diagram, a csomópont állapota idővel.
 
-## <a name="log-analytics-records"></a>Log Analytics-rekordok
+## <a name="azure-monitor-logs-records"></a>Az Azure Monitor rekordok naplózása
 
-Diagnosztika az Azure Automation szolgáltatást két kategóriája rögzíti a Log Analytics hoz létre.
+Diagnosztika az Azure Automation szolgáltatást két kategóriája rögzíti az Azure Monitor naplóira hoz létre.
 
 ### <a name="dscnodestatusdata"></a>DscNodeStatusData
 
@@ -139,7 +142,7 @@ Diagnosztika az Azure Automation szolgáltatást két kategóriája rögzíti a 
 | ReportStartTime_t |Dátum és időpont, amikor a jelentés lett elindítva. |
 | ReportEndTime_t |Dátum és időpont, amikor a jelentés befejeződött. |
 | NumberOfResources_d |A DSC-erőforrások számát neve az a csomópont a alkalmazni a konfigurációt. |
-| SourceSystem | A Log Analytics hogyan összegyűjti az adatokat. Mindig *Azure* Azure Diagnostics. |
+| SourceSystem | Hogyan naplózza az Azure Monitor összegyűjti az adatokat. Mindig *Azure* Azure Diagnostics. |
 | ResourceId |Itt adható meg az Azure Automation-fiókot. |
 | ResultDescription | Ez a művelet leírását. |
 | SubscriptionId | Az Azure-előfizetés azonosítóját (GUID) az Automation-fiókhoz. |
@@ -170,7 +173,7 @@ Diagnosztika az Azure Automation szolgáltatást két kategóriája rögzíti a 
 | ErrorCode_s | Ha az erőforráshoz nem sikerült. a hibakód. |
 | ErrorMessage_s |A hibaüzenet, ha az erőforráshoz nem sikerült. |
 | DscResourceDuration_d |Az idő másodpercben, ameddig a DSC-erőforrás futott. |
-| SourceSystem | A Log Analytics hogyan összegyűjti az adatokat. Mindig *Azure* Azure Diagnostics. |
+| SourceSystem | Hogyan naplózza az Azure Monitor összegyűjti az adatokat. Mindig *Azure* Azure Diagnostics. |
 | ResourceId |Itt adható meg az Azure Automation-fiókot. |
 | ResultDescription | Ez a művelet leírását. |
 | SubscriptionId | Az Azure-előfizetés azonosítóját (GUID) az Automation-fiókhoz. |
@@ -181,12 +184,12 @@ Diagnosztika az Azure Automation szolgáltatást két kategóriája rögzíti a 
 
 ## <a name="summary"></a>Összegzés
 
-Az Automation állapota konfigurációs adatokat küld a Log Analytics, az Automation Állapotkonfiguráció csomópontok által állapotának jobb betekintést kaphat:
+Az Automation állapota konfigurációs adatokat küld az Azure Monitor naplóira, állapotát, az Automation Állapotkonfiguráció csomópontok által nagyobb betekintést kaphat:
 
 - Riasztások beállítása arra az esetre, ha a probléma
 - Egyéni nézetek és a keresési lekérdezések segítségével a runbook eredményeinek képi megjelenítése, forgatókönyv-feladat állapota, és egyéb kapcsolódó legfontosabb mutatók vagy a metrikákat.  
 
-A log Analytics áttekinthet működési az Automation konfigurációs adatait, és gyorsabban segíthet cím incidenseket.
+Az Azure Monitor naplóira áttekinthet működési az Automation konfigurációs adatait, és gyorsabban segíthet cím incidensek.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -196,5 +199,5 @@ A log Analytics áttekinthet működési az Automation konfigurációs adatait, 
 - PowerShell-parancsmagok leírása, lásd: [konfiguráló Azure Automation-parancsmagok](/powershell/module/azurerm.automation/#automation)
 - Díjszabási információkért tekintse meg a [Azure Automation State Configuration díjszabása](https://azure.microsoft.com/pricing/details/automation/)
 - Folyamatos üzembe helyezés folyamatban lévő Azure Automation Állapotkonfiguráció használatának példájáért lásd: [folyamatos üzembe helyezés használatával az Azure Automation Állapotkonfiguráció és a chocolatey-t](automation-dsc-cd-chocolatey.md)
-- Más keresési lekérdezéseket hozhat létre, és tekintse át az Automation Állapotkonfiguráció naplókat, a Log Analytics használatával kapcsolatos további tudnivalókért lásd: [Log Analytics naplóbeli kereséseivel](../log-analytics/log-analytics-log-searches.md)
-- A Log Analytics használatával és adatgyűjtési forrásokkal kapcsolatos további információkért lásd: [gyűjtése az Azure storage-adatok a Log Analytics – áttekintés](../azure-monitor/platform/collect-azure-metrics-logs.md)
+- Más keresési lekérdezéseket hozhat létre, és tekintse át az Automation állapota konfigurációs naplók az Azure Monitor-naplókkal kapcsolatos további tudnivalókért lásd: [Naplókereséseket a Azure Monitor naplóira](../log-analytics/log-analytics-log-searches.md)
+- Az Azure Monitor naplóira és adatgyűjtési forrásokkal kapcsolatos további tudnivalókért lásd: [gyűjtése Azure-tárfiókbeli adatok az Azure monitorban naplók áttekintése](../azure-monitor/platform/collect-azure-metrics-logs.md)

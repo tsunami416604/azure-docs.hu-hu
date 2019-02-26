@@ -11,12 +11,12 @@ ms.date: 12/05/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 9fa1e3ffd92b3c375837c7b9a4a0e7fd1a80893a
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 77dda5f113a10f0bfb59457b1059563c58db0dde
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433679"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816937"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>A környezet változásainak hibaelhárítása
 
@@ -62,12 +62,14 @@ Az előkészítés során a virtuális gépre kerül egy Microsoft Monitoring Ag
 Ez az ügynök kommunikál a virtuális géppel, továbbá begyűjti a telepített szoftverekkel kapcsolatos információikat.
 
 A megoldás engedélyezése akár 15 percet is igénybe vehet. Ez idő alatt ne zárja be a böngészőablakot.
-A megoldás engedélyezését követően a virtuális gépen telepített szoftverekkel és változásokkal kapcsolatos adatok elkezdenek beérkezni a Log Analytics szolgáltatásba.
+A megoldás engedélyezését követően a virtuális Gépen telepített szoftverekkel és változásokkal kapcsolatos adatok elkezdenek beérkezni a Azure Monitor naplóira.
 Az adatok legalább 30 perc és legfeljebb 6 óra múlva állnak készen az elemzésre.
 
-## <a name="using-change-tracking-in-log-analytics"></a>A Change Tracking megoldás használata a Log Analyticsben
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-A Change Tracking által létrehozott naplóadatok a Log Analyticsbe lesznek továbbítva.
+## <a name="using-change-tracking-in-azure-monitor-logs"></a>Change Tracking megoldás az Azure Monitor naplóira használata
+
+A Change tracking által létrehozott naplóadatok a Azure Monitor naplóira küldött.
 Ha lekérdezések futtatásával szeretne keresni a naplókban, kattintson a **Log Analytics** elemre a **Change Tracking** ablak felső részén.
 A rendszer a változáskövetési adatokat a **ConfigurationChange** típus alatt tárolja.
 A következő Log Analytics-mintalekérdezés az összes leállított Windows-szolgáltatást adja vissza.
@@ -77,7 +79,7 @@ ConfigurationChange
 | where ConfigChangeType == "WindowsServices" and SvcState == "Stopped"
 ```
 
-A naplófájlok a Log Analytics szolgáltatásban való futtatásával és keresésével kapcsolatos további információkért tekintse meg az [Azure Log Analyticsszel](../azure-monitor/log-query/log-query-overview.md) kapcsolatos cikket.
+Futtatásával és az Azure Monitor naplóira naplófájlok keresésével kapcsolatos további információkért lásd: [naplózza az Azure Monitor](../azure-monitor/log-query/log-query-overview.md).
 
 ## <a name="configure-change-tracking"></a>A Change Tracking konfigurálása
 

@@ -5,20 +5,22 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 1/23/2019
+ms.date: 2/25/2019
 ms.author: victorh
-ms.openlocfilehash: f88cc44890277604411f482779a83ee266820ac8
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: f1e92c8581f8528b3622ad88f086d3f66619b996
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816322"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823475"
 ---
 # <a name="use-azure-dns-for-private-domains"></a>Az Azure DNS használata saját tartományok
 
 A Domain Name System, vagy a DNS-beli felelős fordítása (vagy feloldása) a szolgáltatás nevét annak IP-címét. DNS-tartományok, a üzemeltetési szolgáltatás az Azure DNS névfeloldása a Microsoft Azure-infrastruktúra használatával. Internetre irányuló DNS-tartományok támogatása esetén mellett az Azure DNS már támogatja a privát DNS-tartományok előzetes verzióként.
 
 Az Azure DNS kezeléséhez és a egy virtuális hálózati tartomány neveinek feloldásához anélkül, hogy egy egyéni DNS-megoldás hozzáadása megbízható és biztonságos DNS szolgáltatást nyújt. Privát DNS-zónák használatával még ma elérhető az Azure által biztosított nevek helyett saját egyéni tartománynevet is használhatja. Egyéni tartománynevek használata segít testre szabni a virtuális hálózati architektúra ajánlott megfeleljen a szervezet igényei szerint. Névfeloldás biztosítja a virtuális gépek (VM) egy virtuális hálózaton belül és virtuális hálózatok között. Ezenkívül konfigurálhatja zónák nevek split zónaneveket nézetet, amely lehetővé teszi a névnek a megosztását a saját és a egy nyilvános DNS-zónát.
+
+A saját DNS-zóna virtuális hálózaton történő közzétételéhez meg kell adnia azon virtuális hálózatok listáját, amelyek számára engedélyezett a zónán belüli rekordok feloldása. Ezeket *feloldási virtuális hálózatnak* nevezzük. Megadhat olyan virtuális hálózatot is, amelyhez az Azure DNS eszköznévrekordokat biztosít a virtuális gépek létrehozásakor, IP-címének módosításakor vagy törlésekor. Ezt *regisztrációs virtuális hálózatnak* nevezzük.
 
 Ha megad egy regisztrációs virtuális hálózatnak, a virtuális gépek a kiválasztott virtuális hálózatban, amelyek a saját zóna a DNS-rekordok nincsenek megtekinthető vagy nem olvasható be az Azure Powershell és az Azure CLI API-k, de a virtuális gép rekordok valóban regisztrálva van, és lesz sikerült feloldani.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: c2374bd0d67115bdc9fef2b6937f7b087bc581de
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: eda41870e86db206847f5ea81e23fa1b7612234c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076773"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817303"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Application insights telemetria exportálása
 Szeretné megtartani a telemetriát azokhoz szabványos megőrzési idejénél hosszabb? Vagy specializált módon dolgozza fel? A folyamatos exportálás ideális ehhez. Az eseményeket az Application Insights portálon látható a JSON-formátumban a Microsoft Azure storage exportálhatók. Innen letöltheti az adatokat és bármilyen kódot írni kell őket feldolgoznia.  
@@ -32,6 +32,16 @@ A folyamatos exportálás beállítása előtt van néhány más érdemes figyel
 * A telepítő is elérhető [Powershellen keresztül a folyamatos exportálás](https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/new-azurermapplicationinsightscontinuousexport?view=azurermps-5.7.0).
 
 Miután az adatok folyamatos exportálása másolja át a Storage (amennyiben azt is marad mindaddig, amíg Ön, mint), érhető el továbbra is az Application Insightsban a szokásos módon [megőrzési időszak](../../azure-monitor/app/data-retention-privacy.md).
+
+## <a name="continuous-export-advanced-storage-configuration"></a>A folyamatos exportálás speciális tárolási konfigurációt
+
+A folyamatos exportálás **nem támogatja a** a következő Azure tárolási szolgáltatások/konfigurációk:
+
+* Felhasználása [virtuális hálózatok közötti vagy az Azure Storage-tűzfalak](https://docs.microsoft.com/azure/storage/common/storage-network-security) repülőtérrendszeren az Azure Blob storage.
+
+* [Nem módosítható tárolási](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) az Azure Blob storage.
+
+* [Az Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction).
 
 ## <a name="setup"></a> Hozzon létre egy folyamatos exportálás
 1. Az Application Insights-erőforrást az alkalmazáshoz, nyissa meg a folyamatos exportálást, és válassza **Hozzáadás**:

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: d40d3b32f3af8e50079de0a5988584427ea6777c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: b8264e4f69a7561865f5d14087bc81bc933a6c59
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819807"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821404"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>HDInsight az Apache Hadoop-fürtök létrehozása Resource Manager-sablonok használatával
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -47,11 +47,7 @@ Resource Manager-sablonokkal kapcsolatos további információkért tekintse meg
 
 ## <a name="generate-templates"></a>Sablonok készítése
 
-Resource Manager lehetővé teszi, hogy a Resource Manager-sablonok exportálása létező erőforrásokból, különböző eszközök használatával az előfizetésében. Az így létrehozott sablon használatával megismerheti a sablonok szintaxisát, illetve igény szerint automatizálhatja a megoldás újbóli telepítését.
-
-- Az Azure Portalon: Lásd: [Azure Resource Manager-sablonok exportálása létező erőforrásokból](../azure-resource-manager/resource-manager-export-template.md).
-- Azure PowerShell: Lásd: [exportálása az Azure Resource Manager-sablonok a PowerShell-lel](../azure-resource-manager/resource-manager-export-template-powershell.md).
-- Az Azure klasszikus parancssori felület: Lásd: [exportálása az Azure Resource Manager-sablonok az Azure klasszikus parancssori felület](../azure-resource-manager/resource-manager-export-template-cli.md).
+Resource Manager lehetővé teszi, hogy a Resource Manager-sablonok exportálása létező erőforrásokból, különböző eszközök használatával az előfizetésében. Az így létrehozott sablon használatával megismerheti a sablonok szintaxisát, illetve igény szerint automatizálhatja a megoldás újbóli telepítését. További információkért lásd: [sablonok exportálása](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates).
 
 ## <a name="deploy-using-the-portal"></a>Üzembe helyezés a portálon
 

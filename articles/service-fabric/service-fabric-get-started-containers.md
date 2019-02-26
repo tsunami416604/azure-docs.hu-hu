@@ -3,7 +3,7 @@ title: Azure Service Fabric-tárolóalkalmazás létrehozása | Microsoft Docs
 description: Hozza létre első saját, Windows-alapú tárolóalkalmazását az Azure Service Fabricban. Egy Python-alkalmazással elkészíthet egy Docker-rendszerképet, amelyet leküldéssel továbbíthat egy tárolóregisztrációs adatbázisba, majd összeállíthat és üzembe helyezhet egy Service Fabric-tárolóalkalmazást.
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
+author: aljo-microsoft
 manager: jpconnock
 editor: vturecek
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/25/2019
-ms.author: twhitney
-ms.openlocfilehash: e1024fadf6a68307e42b57ee3c383977b7b4fb9b
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.author: aljo
+ms.openlocfilehash: 8e4dacb955db8f83717377f71564ad6361d9a4d6
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562504"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807796"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Az első Service Fabric-tárolóalkalmazás létrehozása Windows rendszeren
 

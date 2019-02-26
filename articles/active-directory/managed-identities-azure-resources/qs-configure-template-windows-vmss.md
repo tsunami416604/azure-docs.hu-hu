@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 02/20/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0fc32e9e306149052df37cc24bc54e2aad902c50
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 075672fb6d132258b04936aa20129fa6f8c82572
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199425"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819227"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-azure-virtual-machine-scale-using-a-template"></a>Az Azure-erőforrások felügyelt identitások konfigurálása a sablon használatával az Azure virtuálisgép-méretezési csoportot
 
@@ -50,7 +50,7 @@ Ebből a cikkből megismerheti, hogyan hajthat végre a következő felügyelt i
 Csakúgy, mint az Azure Portalon, és parancsfájl-kezelési, [Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md) sablonok lehetővé teszi, hogy üzembe helyezése az Azure-erőforráscsoport által meghatározott új vagy megváltozott erőforrásokat. Több lehetőség is elérhető, és a helyi és portálalapú, beleértve a központi telepítési sablon Szerkesztés:
 
    - Használatával egy [egyéni sablont az Azure Marketplace-ről](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template), amely lehetővé teszi, hogy a sablon létrehozása az alapoktól, vagy egy meglévő közös alapul vagy [gyorsindítási sablon](https://azure.microsoft.com/documentation/templates/).
-   - Sablon exportálása vagy egy meglévő erőforráscsoportot, a Származtatás [az eredeti üzembe helyezés](../../azure-resource-manager/resource-manager-export-template.md#view-template-from-deployment-history), vagy a [az üzemelő példány aktuális állapotát](../../azure-resource-manager/resource-manager-export-template.md#export-the-template-from-resource-group).
+   - Sablon exportálása vagy egy meglévő erőforráscsoportot, a Származtatás [az eredeti üzembe helyezés](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates), vagy a [az üzemelő példány aktuális állapotát](../../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates).
    - Egy helyi [JSON-szerkesztővel (például a VS Code)](../../azure-resource-manager/resource-manager-create-first-template.md), majd feltöltését és üzembe helyezése a PowerShell vagy parancssori felület használatával.
    - A Visual Studio használatával [Azure erőforráscsoport-projekt](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) hozzon létre és helyezhet üzembe sablont is.  
 
@@ -63,7 +63,6 @@ Ebben a szakaszban engedélyezze, majd tiltsa le a felügyelt rendszer által ho
 ### <a name="enable-system-assigned-managed-identity-during-creation-the-creation-of-a-virtual-machines-scale-set-or-a-existing-virtual-machine-scale-set"></a>Alapértelmezett engedélyezése felügyelt identitás létrehozása során a virtuális gépek méretezési vagy egy meglévő virtuálisgép-méretezési csoportot létrehozása
 
 1. Bejelentkezik az Azure-bA helyileg vagy az Azure Portalon, hogy az Azure-előfizetést, amely tartalmazza a virtuálisgép-méretezési csoportba tartozó fiókot kell használnia.
-   
 2. Ahhoz, hogy a rendszer által hozzárendelt felügyelt identitás, a sablon betöltése a szerkesztő, keresse meg a `Microsoft.Compute/virtualMachinesScaleSets` erőforrás az erőforrások házirendsablonokkal szakaszt, és adja hozzá a `identity` tulajdonság azonos szinten, a `"type": "Microsoft.Compute/virtualMachinesScaleSets"` tulajdonság. Az alábbi szintaxissal:
 
    ```JSON

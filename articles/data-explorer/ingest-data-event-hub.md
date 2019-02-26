@@ -7,13 +7,13 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.openlocfilehash: 5d9819d60e21c80b882db1d12b0318599fa54095
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 02/2/2018
+ms.openlocfilehash: 7b724219750154c5ec1410af64175bc70f5cbd6c
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729737"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805815"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>Gyors útmutató: Betölteni az adatokat az Event Hubs az Azure Data Explorer
 
@@ -103,11 +103,7 @@ Most csatlakozzon az eseményközponthoz az Azure Data Explorerből. Ha ez a kap
 
     ![Tesztadatbázis kiválasztása](media/ingest-data-event-hub/select-test-database.png)
 
-1. Válassza az **Adatbevitel**, majd az **Adatkapcsolat hozzáadása** lehetőséget.
-
-    ![Adatfeldolgozás](media/ingest-data-event-hub/data-ingestion-create.png)
-
-1. Adja meg az alábbi adatokat az űrlapon, majd válassza a **Létrehozás** lehetőséget.
+1. Válassza ki **adatbetöltés** és **adatkapcsolat hozzáadása**. Ezután töltse ki az űrlapot a következő információkat. Válassza ki **létrehozás** befejezése után.
 
     ![Eseményközpont-kapcsolat](media/ingest-data-event-hub/event-hub-connection.png)
 

@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 12/12/2018
 ms.custom: seodec18
-ms.openlocfilehash: a489d1a282c924ec1df658a0244745b225f7123e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 88eb7052c394d41c861ffc422738a4a650101ea7
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251265"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819309"
 ---
 # <a name="what-is-automated-machine-learning"></a>Mi a machine learning automatikus?
 
@@ -41,7 +41,7 @@ Automatizált machine learning szolgáltatás véve a betanítási adatok egy me
 
 1. Konfigurálja a [számítási célt](how-to-set-up-training-targets.md) használt betanítja a modellt.
 
-1. Konfigurálja az automatikus machine learning configuration. Ez vezérli a paramétereket, az Azure Machine Learning ismétel különböző modell, hiperparaméter beállításait, és hogy milyen metrikákat, és mikor tekintse meg, amely meghatározza a legjobb modellt 
+1. Konfigurálja az automatikus machine learning configuration. Ez vezérli a paramétereket, az Azure Machine Learning ismétel különböző modell, hiperparaméter beállításait, és hogy milyen metrikákat, és mikor tekintse meg, amely meghatározza a legjobb modellt
 
 1. Küldje el a betanítási Futtatás.
 
@@ -58,9 +58,13 @@ Az automatikus machine learning egy közös adatelemekkel tekintse meg a teljes 
 1. Ismertségét, a gépi tanulási folyamat és az összes lépést vesz részt, beleértve az adatok előfeldolgozása/featurization, és a hiperparaméter értékeket.
 1. Tudnivalók a bemeneti változók (más néven "szolgáltatások") és a modell kimeneti közötti kapcsolat.  A magnitude és az ütközésnek az előre jelzett érték az egyes szolgáltatások ismerete segít jobb megismerésében és a modell ismertetik. Ez az úgynevezett funkció fontosságát.
 
-Engedélyezheti a globális szolgáltatás fontosság post igény szerinti képzés a folyamat a kiválasztott, vagy automatikus ML képzési részét képező összes folyamatok esetében engedélyezi azt.  Ez az előzetes verziójú funkció, és továbbra is be jobb megértése a Machine Learning-modellek részletesebb információkat biztosít.  
+Engedélyezheti a globális szolgáltatás fontosság post igény szerinti képzés a folyamat a kiválasztott, vagy automatikus machine learning képzési részét képező összes folyamatok esetében engedélyezi azt. Az erősen szabályozott iparágakban, mint például az egészségügyi és banki ez fontos való megfelelés a szabályozásoknak és ajánlott eljárásait.  Az alábbiakban néhány valós forgatókönyv mutatja be:
 
-Kövesse ezt [minta notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/model-explanation/auto-ml-model-explanation.ipynb) modell találja az Azure Machine Learning kísérletezhet.
+1. Egy gyártóvállalat cég használatával a gépi tanulás segítségével megkönnyíti a későbbi eszköz hiba, így proaktív módon végrehajtható karbantartási tevékenységről. Ha már tudja, hogy egy eszköz arra készül, hogy nem sikerül, a legvalószínűbb oka az eseményeit, hogy megelőző jellegű karbantartási gyorsan elvégezhető?
+1. Pénzügyi intézmény, machine learning folyamat kölcsön vagy hitelkártya-alkalmazások használatával. Hogyan tudja, ha a modell a megfelelő dolgokat teszi állapotát, és ha egy ügyfél kéri a további részleteket a ezért a kérelem el lett utasítva, hogyan fog Ön reagálni őket?
+1. Egy online kereskedő vagy egy független szolgáltató használatával a gépi tanulás segítségével megkönnyíti az ügyfelek lemorzsolódását. Mik azok az ügyfél a fő közreműködők churn, és hogyan, megakadályozhatja ügyfelek megfordul?
+
+Ez az előzetes verziójú funkció, és továbbra is beruházni a segítségével jobban megismerheti a gépi tanulási modellek részletesebb információkat biztosít. Kövesse ezt [minta notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/model-explanation/auto-ml-model-explanation.ipynb) modell találja az Azure Machine Learning kísérletezhet.
 
 ## <a name="next-steps"></a>További lépések
 

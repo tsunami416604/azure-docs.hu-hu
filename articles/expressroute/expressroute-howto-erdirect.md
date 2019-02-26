@@ -1,28 +1,23 @@
 ---
 title: Konfigurálja az ExpressRoute közvetlen – Azure |} A Microsoft Docs
-description: Ezen a lapon konfigurálja az ExpressRoute közvetlen (előzetes verzió) segítségével.
+description: Ezen a lapon konfigurálja az ExpressRoute közvetlen segítségével.
 services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 11/02/2018
+ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 05eb75c77cef5b975d0122714bb0ec9fba1d09a3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 9157466f0768b052f55f6d225e72ae7a036f8b9c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463974"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822172"
 ---
-# <a name="how-to-configure-expressroute-direct-preview"></a>Az ExpressRoute közvetlen (előzetes verzió) konfigurálása
+# <a name="how-to-configure-expressroute-direct"></a>Az ExpressRoute közvetlen konfigurálása
 
 Az ExpressRoute közvetlen lehetőséget nyújt a közvetlenül a Microsoft társviszony-létesítési helyszínek stratégiai a világ különböző pontjain található globális hálózatának csatlakoztathatnak. További információkért lásd: [kapcsolatos az ExpressRoute közvetlen csatlakozás](expressroute-erdirect-about.md).
-
-> [!IMPORTANT]
-> Az ExpressRoute közvetlen jelenleg előzetes verzióban érhető el.
->
-> A nyilvános előzetes verzióra nem vonatkozik szolgáltatói szerződés, és nem használható éles számítási feladatokra. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="resources"></a>Az erőforrás létrehozása
 

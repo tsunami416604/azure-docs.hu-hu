@@ -10,12 +10,12 @@ ms.date: 11/21/2018
 ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
-ms.openlocfilehash: f3dbe8c62cb1fcc0585b5abccc51a620ea713543
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 8d305e051bd6708977926e3a4de47c15a784c7b6
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55666384"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818816"
 ---
 # <a name="multi-service-development-with-azure-dev-spaces"></a>Az Azure fejlesztési tárolóhelyek több szolgáltatásos fejlesztői
 
@@ -76,7 +76,7 @@ Az előző példakód továbbítja az `azds-route-as` fejlécet a bejövő kére
 Talán észrevette, hogy bár *webfrontend* nem tartalmaz semmilyen speciális kódot nyomtassa ki a HTTP-hívás adatbeolvasási az *mywebapi*, láthatja a HTTP-nyomkövetéseket üzenetek a kimeneti ablakban:
 ```
 // The request from your browser
-webfrontend.<id>.<region>.aksapp.io --hyh-> webfrontend:
+default.webfrontend.856bb3af715744c6810b.eus.azds.io --hyh-> webfrontend:
    GET /api?_=1544485357627 HTTP/1.1
 
 // *webfrontend* reaching out to *mywebapi*
@@ -89,7 +89,7 @@ webfrontend <-1b1-- mywebapi:
    Hello from mywebapi
 
 // Response from *webfrontend* to your browser
-webfrontend.<id>.<region>.aksapp.io <-hyh-- webfrontend:
+default.webfrontend.856bb3af715744c6810b.eus.azds.io <-hyh-- webfrontend:
    HTTP/1.1 200 OK
    Hello from webfrontend and Hello from mywebapi
 ```

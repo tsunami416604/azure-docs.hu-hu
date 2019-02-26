@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: a6941e28bdfd922a68ff484c57031326a9aa5c0b
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 12ea25b9f1b9f13c153348c285ee6641a69909f0
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452632"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823178"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>A Windows Azure Diagnostics bővítményt az alkalmazásteljesítmény-figyelés
 
@@ -198,7 +198,7 @@ Teljesítményszámlálók adatainak összegyűjtése a WAD-n keresztül, akkor 
     New-AzureRmResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
     ```
 
-5. A frissítés befejeződése után jelennek meg (attól függően, hogy-e az első üzembe helyezés és az erőforráscsoport mérete 15-45 perc között vesz igénybe), WAD kell a teljesítményszámlálók gyűjtése és elküldi azokat a tábla neve A fürthöz társított tárfiókban WADPerformanceCountersTable. Tekintse meg az Application Insights által a teljesítményszámlálók [a Resource Manager-sablon hozzáadása a mesterséges Intelligencia fogadó](service-fabric-diagnostics-event-analysis-appinsights.md#add-the-application-insights-sink-to-the-resource-manager-template).
+5. A frissítés befejeződése után jelennek meg (attól függően, hogy-e az első üzembe helyezés és az erőforráscsoport mérete 15-45 perc között vesz igénybe), WAD kell a teljesítményszámlálók gyűjtése és elküldi azokat a tábla neve A fürthöz társított tárfiókban WADPerformanceCountersTable. Tekintse meg az Application Insights által a teljesítményszámlálók [a Resource Manager-sablon hozzáadása a mesterséges Intelligencia fogadó](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template).
 
 ## <a name="next-steps"></a>További lépések
 * A fürt több teljesítményszámlálót gyűjt. Lásd: [teljesítmény-mérőszámok](service-fabric-diagnostics-event-generation-perf.md) listája számlálókat kell gyűjteni.

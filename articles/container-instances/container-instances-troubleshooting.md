@@ -2,19 +2,19 @@
 title: Hibaelhárítás az Azure Container Instances szolgáltatásban
 description: Ismerje meg, az Azure Container Instances szolgáltatással kapcsolatos problémák elhárítása
 services: container-instances
-author: seanmck
+author: dlepow
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 01/08/2019
-ms.author: seanmck
+ms.date: 02/15/2019
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 609d52f9f2c5dce1bbfd668e94db25aca3d52f69
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: bfa616fb16470a3543f8c981a0104f6bda24cf4d
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119050"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823474"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Az Azure Container Instances szolgáltatásban gyakori problémáinak elhárítása
 
@@ -29,9 +29,9 @@ A tároló specifikáció meghatározásakor bizonyos paraméterek betartásána
 | Tároló csoport neve | 1-64 |Kis- és nagybetűk megkülönböztetése nélkül |Alfanumerikus karakterek és kötőjel bárhol, kivéve az első vagy utolsó karakter |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | Tárolónév | 1-64 |Kis- és nagybetűk megkülönböztetése nélkül |Alfanumerikus karakterek és kötőjel bárhol, kivéve az első vagy utolsó karakter |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | Tárolóportok | 1 és 65535 közötti |Egész szám |1 és 65535 közötti egész szám |`<port-number>` |`443` |
-| DNS-névcímke | 5 – 63 |Kis- és nagybetűk megkülönböztetése nélkül |Alfanumerikus karakterek és kötőjel bárhol, kivéve az első vagy utolsó karakter |`<name>` |`frontend-site1` |
+| DNS-névcímke | 5-63 |Kis- és nagybetűk megkülönböztetése nélkül |Alfanumerikus karakterek és kötőjel bárhol, kivéve az első vagy utolsó karakter |`<name>` |`frontend-site1` |
 | Környezeti változó | 1–63 |Kis- és nagybetűk megkülönböztetése nélkül |Alfanumerikus karakterek és aláhúzásjelet (_) bárhol, kivéve az első vagy utolsó karakter |`<name>` |`MY_VARIABLE` |
-| Kötet neve | 5 – 63 |Kis- és nagybetűk megkülönböztetése nélkül |Kisbetűket és számokat és kötőjeleket tartalmazhat, bárhol, kivéve az első vagy utolsó karakter. Nem tartalmazhat két egymást követő kötőjelet. |`<name>` |`batch-output-volume` |
+| Kötet neve | 5-63 |Kis- és nagybetűk megkülönböztetése nélkül |Kisbetűket és számokat és kötőjeleket tartalmazhat, bárhol, kivéve az első vagy utolsó karakter. Nem tartalmazhat két egymást követő kötőjelet. |`<name>` |`batch-output-volume` |
 
 ## <a name="os-version-of-image-not-supported"></a>A kép nem támogatott operációsrendszer-verzió
 
@@ -66,7 +66,7 @@ Ha a kép nem kell lekérni, az alábbihoz hasonló események kimenete láthat�
     "count": 3,
     "firstTimestamp": "2017-12-21T22:56:19+00:00",
     "lastTimestamp": "2017-12-21T22:57:00+00:00",
-    "message": "pulling image \"microsoft/aci-hellowrld\"",
+    "message": "pulling image \"microsoft/aci-helloworld\"",
     "name": "Pulling",
     "type": "Normal"
   },
@@ -74,7 +74,7 @@ Ha a kép nem kell lekérni, az alábbihoz hasonló események kimenete láthat�
     "count": 3,
     "firstTimestamp": "2017-12-21T22:56:19+00:00",
     "lastTimestamp": "2017-12-21T22:57:00+00:00",
-    "message": "Failed to pull image \"microsoft/aci-hellowrld\": rpc error: code 2 desc Error: image t/aci-hellowrld:latest not found",
+    "message": "Failed to pull image \"microsoft/aci-helloworld\": rpc error: code 2 desc Error: image t/aci-hellowrld:latest not found",
     "name": "Failed",
     "type": "Warning"
   },
@@ -82,7 +82,7 @@ Ha a kép nem kell lekérni, az alábbihoz hasonló események kimenete láthat�
     "count": 3,
     "firstTimestamp": "2017-12-21T22:56:20+00:00",
     "lastTimestamp": "2017-12-21T22:57:16+00:00",
-    "message": "Back-off pulling image \"microsoft/aci-hellowrld\"",
+    "message": "Back-off pulling image \"microsoft/aci-helloworld\"",
     "name": "BackOff",
     "type": "Normal"
   }
@@ -93,7 +93,7 @@ Ha a kép nem kell lekérni, az alábbihoz hasonló események kimenete láthat�
 
 Tárolócsoportok alapértelmezés szerint egy [újraindítási házirend](container-instances-restart-policy.md) , **mindig**, így az mindig tárolócsoportban a tárolók újraindítása után a Futtatás befejezési. Előfordulhat, hogy módosítania azt **OnFailure** vagy **soha** Ha szeretne feladat-alapú tárolók futtatásához. Ha megad **OnFailure** , és továbbra is folyamatos lásd újraindul, előfordulhat, hogy egy probléma a alkalmazás vagy a parancsfájl végrehajtása a tárolóban.
 
-Tárolócsoportok nélkül hosszú futású folyamatok futtatásakor ismétlődő Kilépés és képekkel, például az Ubuntu vagy Alpine újraindítást jelenhet meg. Kapcsolódás a következő [EXEC](container-instances-exec.md) nem fog működni, mert a tároló egyetlen folyamat életben tartása. Megoldásához közé tartozik, hogy a tároló futtatását az üzembe helyezett tárolókat csoport a következő indítási parancsot.
+Tárolócsoportok nélkül hosszú futású folyamatok futtatásakor ismétlődő Kilépés és képekkel, például az Ubuntu vagy Alpine újraindítást jelenhet meg. Kapcsolódás a következő [EXEC](container-instances-exec.md) nem fog működni, mert a tároló egyetlen folyamat életben tartása. A probléma megoldásához adja meg, hogy a tároló futtatását az üzembe helyezett tárolókat csoport a következő indítási parancsot.
 
 ```azurecli-interactive
 ## Deploying a Linux container
@@ -178,11 +178,11 @@ A kép lekérési a tároló indítási idő csökkentésében is, hogy a tárol
 
 ### <a name="cached-windows-images"></a>Windows-rendszerképek gyorsítótárazott
 
-Az Azure Container Instances egy gyorsítótárazási mechanizmust a tároló az egyes Windows-rendszerképek alapján indítási idő csökkentéséhez használja.
+Az Azure Container Instances egy gyorsítótárazási mechanizmust használ tároló-indítási idő csökkentéséhez a gyakori Windows és Linux-rendszerképek alapján. A gyorsítótárazott képek és címkék részletes listáját, használja a [gyorsítótárazott rendszerképek felsorolása] [ list-cached-images] API-t.
 
 Ahhoz, hogy a leggyorsabb Windows tároló indítási ideje, használja az egyik a **legutóbbi három** verziók a következők **két lemezképet** , az alap rendszerképet:
 
-* [A Windows Server 2016] [ docker-hub-windows-core] (csak LTS)
+* [A Windows Server Core 2016] [ docker-hub-windows-core] (csak LTSC)
 * [A Windows Server 2016 Nano Server][docker-hub-windows-nano]
 
 ### <a name="windows-containers-slow-network-readiness"></a>Windows-tárolók lassú hálózati készültségi
@@ -207,10 +207,12 @@ Ez a hiba azt jelzi, hogy a régióban, amelyben telepíteni kívánt nagy terhe
 Az Azure Container Instances nem az alapul szolgáló infrastruktúra, amely futtatja a tárolócsoportok közvetlen hozzáférést biztosít. Ez magában foglalja a Docker API-nak a tároló-gazdagépen futó és a futó tárolók emelt szintű hozzáférés. Ha a Docker-interakció van szüksége, ellenőrizze a [REST dokumentációja](https://aka.ms/aci/rest) megtekintéséhez az ACI API támogatja. Ha valami hiányzik, a vonatkozó kérelem küldése a [ACI visszajelzés – fórumok](https://aka.ms/aci/feedback).
 
 ## <a name="ips-may-not-be-accessible-due-to-mismatched-ports"></a>IP-címek nem lehet érhető el, mert eltérő portok
+
 Az Azure Container Instances jelenleg nem támogatja reguláris docker-konfigurációval, például a leképezési port azonban ez a javítás tervbe van véve. Ha úgy találja, IP-címek nem érhetők el, ha úgy gondolja, hogy legyen, győződjön meg arról, konfigurálta a tároló rendszerképének elérhetővé teszi az a tárolócsoportot ugyanazokat a portokat figyeli a `ports` tulajdonság.
 
 ## <a name="next-steps"></a>További lépések
-Ismerje meg, hogyan [beolvasni a tároló naplóinak és események](container-instances-get-logs.md) hibakeresése a tárolók segítségével.
+
+Ismerje meg, hogyan [beolvasni a tároló naplókból és eseményekből](container-instances-get-logs.md) hibakeresése a tárolók segítségével.
 
 <!-- LINKS - External -->
 [azure-name-restrictions]: https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions
@@ -221,3 +223,4 @@ Ismerje meg, hogyan [beolvasni a tároló naplóinak és események](container-i
 
 <!-- LINKS - Internal -->
 [az-container-show]: /cli/azure/container#az-container-show
+[list-cached-images]: /rest/api/container-instances/listcachedimages

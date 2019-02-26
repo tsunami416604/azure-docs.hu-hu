@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: b60861b4daced5e3d292feec54f8a54839a80b8f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 58c7506b71ade8ff70519b895995153896006ade
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728914"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804673"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Fejlesztés az Azure Functions Visual Studio használatával  
 
@@ -220,8 +220,6 @@ Az Application Insights engedélyezése a függvényalkalmazás Azure-ban:
 További tudnivalókért lásd: [figyelése az Azure Functions](functions-monitoring.md).
 
 ## <a name="next-steps"></a>További lépések
-
-Gyakori kérdések című szakaszában talál további információt az Azure Functions Tools, a [Azure Functions Visual Studio 2017-es eszközei](https://blogs.msdn.microsoft.com/webdev/2017/05/10/azure-function-tools-for-visual-studio-2017/) blogbejegyzést.
 
 Az Azure Functions Core Tools kapcsolatos további információkért lásd: [kódot és az Azure functions helyi tesztelése](functions-run-local.md).
 

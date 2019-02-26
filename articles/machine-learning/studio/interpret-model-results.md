@@ -5,17 +5,17 @@ description: Hogyan választható ki a optimális paraméter használatával, é
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: 0940cb9e42588990e2109d02fda462f343443876
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 778f713fb1046d3c1987b065c9dc25c4ad9825cb
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456078"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822548"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio"></a>Az Azure Machine Learning Studióban modell eredményeinek értelmezése
 Ez a témakör bemutatja, hogyan jelenítheti meg, és az Azure Machine Learning Studióban az előrejelzés eredményét értelmezik. Miután a betanított modell, és végzett előrejelzések felett ("pontozását a modell"), és az előrejelzési eredmények értelmezése szüksége.

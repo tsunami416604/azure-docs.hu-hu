@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/16/2019
+ms.date: 02/24/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1ab5ec4e61649f7c9a705759a69d335260bfdc75
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: c296ed4011b874eb9b5635735d46b3f63a79a2be
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750820"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807558"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Az Azure Resource Manager erőforrás-szolgáltatói műveletek
 
@@ -681,30 +681,30 @@ Az erőforrás-szolgáltatói műveletek mindig folyamatosan fejlődik. A legúj
 > [!div class="mx-tdCol2BreakAll"]
 > | Művelettípus | Művelet | Leírás |
 > | --- | --- | --- |
-> | Műveletek | Microsoft.Cache/checknameavailability/action | Ellenőrzi, hogy a név elérhető az új Azure redis gyorsítótár használata |
+> | Műveletek | Microsoft.Cache/checknameavailability/action | Annak ellenőrzése, hogy a név rendelkezésre áll-e egy új Redis Cache-hez való használatra |
 > | Műveletek | Microsoft.Cache/locations/operationresults/read | Egy olyan hosszú ideje futó művelet eredményének beolvasása, amelynek esetében a Location (Hely) fejléc vissza lett küldve az ügyfélnek |
 > | Műveletek | Microsoft.Cache/operations/read | A Microsoft.Cache szolgáltató által támogatott műveletek listázása. |
-> | Műveletek | Microsoft.Cache/redis/delete | A Redis a teljes Azure-gyorsítótár törlése |
+> | Műveletek | Microsoft.Cache/redis/delete | Teljes Redis gyorsítótár törlése |
 > | Műveletek | Microsoft.Cache/redis/export/action | Redis-adatok exportálása előre megadott tárolási blobokba meghatározott formátumban |
-> | Műveletek | Microsoft.Cache/redis/firewallRules/delete | A Redis az Azure Cache IP-tűzfalszabályainak törlése |
-> | Műveletek | Microsoft.Cache/redis/firewallRules/read | A Redis az Azure Cache IP-tűzfalszabályainak lekérése |
-> | Műveletek | Microsoft.Cache/redis/firewallRules/write | A Redis az Azure Cache IP-tűzfalszabályainak szerkesztése |
+> | Műveletek | Microsoft.Cache/redis/firewallRules/delete | Egy Redis Cache IP-tűzfalszabályainak törlése |
+> | Műveletek | Microsoft.Cache/redis/firewallRules/read | Egy Redis Cache IP-tűzfalszabályainak beolvasása |
+> | Műveletek | Microsoft.Cache/redis/firewallRules/write | Egy Redis Cache IP-tűzfalszabályainak szerkesztése |
 > | Műveletek | Microsoft.Cache/redis/forceReboot/action | Egy gyorsítótárpéldány kényszerített újraindítása, mely adatvesztést okozhat. |
 > | Műveletek | Microsoft.Cache/redis/import/action | Meghatározott formátumú adatok importálása a Redis szolgáltatásba több blobból |
-> | Műveletek | Microsoft.Cache/redis/linkedservers/delete | Azure Cache redis csatolt kiszolgáló törlése |
-> | Műveletek | Microsoft.Cache/redis/linkedservers/read | A Redis az Azure gyorsítótárhoz hozzárendelt csatolt kiszolgálók beolvasása. |
-> | Műveletek | Microsoft.Cache/redis/linkedservers/write | Azure Cache redis csatolt kiszolgáló hozzáadása |
-> | Műveletek | Microsoft.Cache/redis/listKeys/action | Az érték Azure Cache Redis hozzáférési kulcsok megtekintése a felügyeleti portálon |
+> | Műveletek | Microsoft.Cache/redis/linkedservers/delete | Egy Redis gyorsítótárhoz csatolt kiszolgáló törlése |
+> | Műveletek | Microsoft.Cache/redis/linkedservers/read | Egy Redis gyorsítótárhoz hozzárendelt csatolt kiszolgálók beolvasása. |
+> | Műveletek | Microsoft.Cache/redis/linkedservers/write | Csatolt kiszolgáló hozzáadása egy Redis gyorsítótárhoz |
+> | Műveletek | Microsoft.Cache/redis/listKeys/action | Redis gyorsítótár elérésikulcs-értékeinek megtekintése a felügyeleti portálon |
 > | Műveletek | Microsoft.Cache/redis/listUpgradeNotifications/read | A gyorsítótár bérlője legutóbbi csomagváltási értesítéseinek listázása. |
-> | Műveletek | Microsoft.Cache/redis/metricDefinitions/read | Elérhető metrikáinak lekérése egy Azure Cache redis |
-> | Műveletek | Microsoft.Cache/redis/patchSchedules/delete | A Redis az Azure Cache javítási ütemezésének törlése |
-> | Műveletek | Microsoft.Cache/redis/patchSchedules/read | A Redis az Azure Cache javítási ütemezésének beolvasása |
-> | Műveletek | Microsoft.Cache/redis/patchSchedules/write | A redis az Azure Cache javítási ütemezésének módosítása |
-> | Műveletek | Microsoft.Cache/redis/read | Az Azure Cache a Redis a beállításainak és konfigurációjának megtekintése a felügyeleti portálon |
-> | Műveletek | Microsoft.Cache/redis/regenerateKey/action | Módosítsa az értéket az Azure Cache Redis hozzáférési kulcsok a felügyeleti portálon |
+> | Műveletek | Microsoft.Cache/redis/metricDefinitions/read | Egy Redis gyorsítótárhoz elérhető metrikai meghatározások beolvasása |
+> | Műveletek | Microsoft.Cache/redis/patchSchedules/delete | Egy Redis Cache javítási ütemezésének törlése |
+> | Műveletek | Microsoft.Cache/redis/patchSchedules/read | Egy Redis Cache javítási ütemezésének beolvasása |
+> | Műveletek | Microsoft.Cache/redis/patchSchedules/write | Egy Redis Cache javítási ütemezésének módosítása |
+> | Műveletek | Microsoft.Cache/redis/read | Redis gyorsítótár beállításainak és konfigurációjának megtekintése a felügyeleti portálon |
+> | Műveletek | Microsoft.Cache/redis/regenerateKey/action | Redis gyorsítótár elérésikulcs-értékeinek módosítása a felügyeleti portálon |
 > | Műveletek | Microsoft.Cache/redis/start/action | Gyorsítótárpéldány elindítása. |
 > | Műveletek | Microsoft.Cache/redis/stop/action | Gyorsítótárpéldány leállítása. |
-> | Műveletek | Microsoft.Cache/redis/write | Az Azure Cache a Redis a beállításokat és a kezelési portál konfigurációs módosítása |
+> | Műveletek | Microsoft.Cache/redis/write | Redis gyorsítótár beállításainak és konfigurációjának módosítása a felügyeleti portálon |
 > | Műveletek | Microsoft.Cache/register/action | A Microsoft.Cache erőforrás-szolgáltató regisztrálása egy előfizetéshez |
 > | Műveletek | Microsoft.Cache/unregister/action | A Microsoft.Cache erőforrás-szolgáltató egy előfizetéshez tartozó regisztrációjának törlése |
 
@@ -1600,17 +1600,21 @@ Egy meglévő csoportot személy neve és felhasználói adatok frissítése. A 
 > | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/delete | A Data Box Edge-eszközök törlése |
 > | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/downloadUpdates/action | A frissítések letöltése az eszközre |
 > | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/extendedInformation/action | Az erőforrás részletes adatainak beolvasása |
-> | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/extendedInformation/write | Létrehozza vagy frissíti a kiterjesztett adat erőforrás |
+> | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/getExtendedInformation/action | ArmApiDesc_action_getExtendedInformation_dataBoxEdgeDevices |
 > | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/installUpdates/action | A frissítések telepítése az eszközön |
 > | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/jobs/read | Sorolja fel, vagy a feladatok beolvasása |
 > | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/networkSettings/read | Sorolja fel, vagy az eszköz hálózati beállításainak beolvasása |
+> | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/orders/delete | A rendelések törlése |
+> | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/orders/read | Sorolja fel, vagy lekérdezi a rendelések |
+> | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/orders/read | Sorolja fel, vagy lekérdezi a rendelések |
+> | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/orders/write | Létrehozza vagy frissíti a rendelések |
 > | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/read | Sorolja fel, vagy lekérdezi a Data Box Edge-eszközök |
 > | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/read | Sorolja fel, vagy lekérdezi a Data Box Edge-eszközök |
 > | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/read | Sorolja fel, vagy lekérdezi a Data Box Edge-eszközök |
-> | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/delete | Törli a ArmApiRes_roles |
-> | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/read | Sorolja fel, vagy lekérdezi a ArmApiRes_roles |
-> | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/read | Sorolja fel, vagy lekérdezi a ArmApiRes_roles |
-> | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/write | Létrehozza vagy frissíti a ArmApiRes_roles |
+> | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/delete | A szerepkörök törlése |
+> | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/read | Sorolja fel, vagy a szerepkörök beolvasása |
+> | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/read | Sorolja fel, vagy a szerepkörök beolvasása |
+> | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/write | Létrehozza vagy frissíti a szerepkörök |
 > | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/scanForUpdates/action | Frissítések keresése |
 > | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/securitySettings/update/action | Biztonsági beállítások frissítése |
 > | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/shares/delete | Törli a megosztásokat |
@@ -1622,6 +1626,10 @@ Egy meglévő csoportot személy neve és felhasználói adatok frissítése. A 
 > | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccountCredentials/read | Sorolja fel, vagy a tárfiók hitelesítő adatainak beolvasása |
 > | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccountCredentials/read | Sorolja fel, vagy a tárfiók hitelesítő adatainak beolvasása |
 > | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccountCredentials/write | Létrehozza vagy frissíti a tárfiók hitelesítő adatai |
+> | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/triggers/delete | A triggerek törlése |
+> | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/triggers/read | Sorolja fel, vagy lekérdezi az eseményindítók |
+> | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/triggers/read | Sorolja fel, vagy lekérdezi az eseményindítók |
+> | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/triggers/write | Létrehozza vagy frissíti az eseményindítók |
 > | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/updateSummary/read | Sorolja fel, vagy a frissítés összegző beolvasása |
 > | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/uploadCertificate/action | A tanúsítvány feltöltése az eszköz regisztrálása céljából |
 > | Műveletek | Microsoft.DataBoxEdge/dataBoxEdgeDevices/users/delete | A megosztás felhasználói törlése |
@@ -4766,6 +4774,8 @@ Egy meglévő csoportot személy neve és felhasználói adatok frissítése. A 
 > | Műveletek | Microsoft.Sql/managedInstances/databases/read | Lekérdezi a meglévő felügyelt adatbázis |
 > | Műveletek | Microsoft.Sql/managedInstances/databases/recommendedSensitivityLabels/read | Egy adott adatbázis érzékenységi címkék felsorolása |
 > | Műveletek | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/delete | Az érzékenységi címkét egy adott oszlop törlése |
+> | Műveletek | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/disable/action | Az adott oszlop érzékenységi javaslatok letiltása |
+> | Műveletek | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/enable/action | Az adott oszlop érzékenységi javaslatok engedélyezése |
 > | Műveletek | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/read | Egy adott oszlop a bizalmassági címke beolvasása |
 > | Műveletek | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/write | Létrehozni vagy frissíteni a érzékenységi címkét egy adott oszlop |
 > | Műveletek | Microsoft.Sql/managedInstances/databases/securityAlertPolicies/read | Az adatbázis fenyegetésészlelési szabályzatát a következőn: egy adott felügyelt adatbázis részleteinek lekérése |
@@ -4899,6 +4909,8 @@ Egy meglévő csoportot személy neve és felhasználói adatok frissítése. A 
 > | Műveletek | Microsoft.Sql/servers/databases/schemas/read | Sémák adatbázisok listájának lekérése |
 > | Műveletek | Microsoft.Sql/servers/databases/schemas/tables/columns/read | Egy tábla oszlopait listájának lekérése |
 > | Műveletek | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/delete | Az érzékenységi címkét egy adott oszlop törlése |
+> | Műveletek | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/disable/action | Az adott oszlop érzékenységi javaslatok letiltása |
+> | Műveletek | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/enable/action | Az adott oszlop érzékenységi javaslatok engedélyezése |
 > | Műveletek | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/read | Egy adott oszlop a bizalmassági címke beolvasása |
 > | Műveletek | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/write | Létrehozni vagy frissíteni a érzékenységi címkét egy adott oszlop |
 > | Műveletek | Microsoft.Sql/servers/databases/schemas/tables/read | Táblák adatbázisok listájának lekérése |
@@ -5023,6 +5035,7 @@ Egy meglévő csoportot személy neve és felhasználói adatok frissítése. A 
 > | Műveletek | Microsoft.Sql/servers/vulnerabilityAssessments/write | A biztonságirés-értékelési egy adott kiszolgálóhoz módosítása |
 > | Műveletek | Microsoft.Sql/servers/write | Kiszolgáló létrehozása a megadott paraméterekkel, vagy a Tulajdonságok vagy címkék a megadott kiszolgáló frissítése. |
 > | Műveletek | Microsoft.Sql/unregister/action | Az előfizetés a Microsoft SQL Database erőforrás-szolgáltató regisztrációjának törlése, és lehetővé teszi a Microsoft SQL-adatbázisok létrehozását. |
+> | Műveletek | Microsoft.Sql/virtualClusters/delete | Törli a meglévő virtuális fürt. |
 > | Műveletek | Microsoft.Sql/virtualClusters/read | A virtuális fürtök vagy lekérdezi a megadott virtuális fürt tulajdonságok listáját adja vissza. |
 > | Műveletek | Microsoft.Sql/virtualClusters/write | Virtuális fürt címkék frissíti. |
 

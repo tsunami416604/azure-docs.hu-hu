@@ -1,6 +1,6 @@
 ---
-title: Azure Automation-feladat adatainak továbbítása a Log Analyticsbe
-description: Ez a cikk bemutatja, hogyan küldhet feladat állapotát és a runbook feladatstreamek az Azure Log Analyticsben, hogy további betekintést és a felügyeleti.
+title: Az Azure Monitor naplóira Azure Automation-feladat adatainak továbbítása
+description: Ez a cikk bemutatja, hogyan küldhet feladat állapotát és a runbook feladatstreamek az Azure az Azure Monitor naplókat további elemzés és a felügyeleti.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 02/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 34a695daa077e882e911d3fb59f8a30e39c3a9d2
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 10497d40dcf67fb18d40eba02ec9e95c45be097b
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756631"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820858"
 ---
-# <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>Feladat állapota és a feladatstreamek automatizálást továbbítása a Log Analyticsbe
+# <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>Feladat állapota és a feladatstreamek továbbítja automatizálást az Azure Monitor naplóira
 
-Automation küldhet a runbook állapota és a feladat feladatstreamek a Log Analytics-munkaterületre. Ez a folyamat nem érintik a munkaterület összekapcsolása, és teljesen független. Feladatnaplók és a feladatstreamek láthatók az Azure Portalon, vagy a PowerShell-lel, az egyes feladatok, és ez lehetővé teszi egyszerű vizsgálatokhoz végrehajtásához. Most már a Log Analytics-szel a következőket teheti:
+Automation küldhet a runbook állapota és a feladat feladatstreamek a Log Analytics-munkaterületre. Ez a folyamat nem érintik a munkaterület összekapcsolása, és teljesen független. Feladatnaplók és a feladatstreamek láthatók az Azure Portalon, vagy a PowerShell-lel, az egyes feladatok, és ez lehetővé teszi egyszerű vizsgálatokhoz végrehajtásához. Most már az Azure Monitor-naplók segítségével:
 
 * Információk szerzése az Automation-feladatokról.
 * A trigger egy e-mailben vagy a riasztások alapján a forgatókönyv-feladat állapota (például felfüggesztett vagy sikertelen).
@@ -26,12 +26,14 @@ Automation küldhet a runbook állapota és a feladat feladatstreamek a Log Anal
 * Feladatok korrelációjának megállapítása több Automation-fiókra kiterjedően.
 * Feladatelőzmények időbeli megjelenítése.
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
 ## <a name="prerequisites-and-deployment-considerations"></a>Előfeltételek és telepítésével kapcsolatos megfontolások
 
-Az Automation-naplók küldése a Log Analyticshez való indításához lesz szüksége:
+Az Automation-naplók küldése az Azure Monitor naplóira indításához lesz szüksége:
 
 * A November 2016 vagy újabb kiadását [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) (v2.3.0).
-* Egy Log Analytics-munkaterület. További információkért lásd: [Ismerkedés a Log Analytics](../log-analytics/log-analytics-get-started.md). 
+* Egy Log Analytics-munkaterület. További információkért lásd: [Ismerkedés az Azure Monitor naplóira](../log-analytics/log-analytics-get-started.md). 
 * Az Azure Automation-fiókhoz tartozó erőforrás azonosítója.
 
 Az Azure Automation-fiókban található az erőforrás-azonosító:
@@ -52,7 +54,7 @@ Ha egynél több Automation-fiókok, vagy a munkaterületeket, a fenti parancsok
 
 Ha meg kell keresnie a *neve* az Automation-fiók az Azure Portalon válassza ki az Automation-fiókját a **Automation-fiók** panelhez, és válassza **minden beállítás** . A **Minden beállítás** panel **Fiókbeállítások** részénél válassza a **Tulajdonságok** lehetőséget.  A **Tulajdonságok** panelen megtalálja a keresett értékeket.<br> ![Automation-fiók tulajdonságai](media/automation-manage-send-joblogs-log-analytics/automation-account-properties.png).
 
-## <a name="set-up-integration-with-log-analytics"></a>A Log Analytics-integráció beállítása
+## <a name="set-up-integration-with-azure-monitor-logs"></a>Integráció beállítása az Azure Monitor naplóira
 
 1. A számítógépen indítsa el a **Windows PowerShell** származó a **Start** képernyő.
 2. Futtassa az alábbi PowerShell-lel, és az értéke Szerkesztés a `[your resource id]` és `[resource id of the log analytics workspace]` az előző lépésből származó értékekkel.
@@ -64,9 +66,9 @@ Ha meg kell keresnie a *neve* az Automation-fiók az Azure Portalon válassza ki
    Set-AzureRmDiagnosticSetting -ResourceId $automationAccountId -WorkspaceId $workspaceId -Enabled $true
    ```
 
-Ez a szkript futtatása után is igénybe vehet egy órát, a Log Analytics új JobLogs vagy ír JobStreams rekordok megtekintése előtt.
+Ez a szkript futtatása után is igénybe vehet egy óra, az Azure Monitor naplóira új JobLogs vagy ír JobStreams rekordok megtekintése előtt.
 
-A naplók megtekintéséhez futtassa a következő lekérdezést a Log Analytics naplóbeli keresés: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
+A naplók megtekintéséhez futtassa a következő lekérdezést a log analytics naplóbeli keresés: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
 ### <a name="verify-configuration"></a>Konfiguráció ellenőrzése
 
@@ -81,9 +83,9 @@ A kimenetben ellenőrizze, hogy:
 * A *naplók*, értéke *engedélyezve* van *igaz*.
 * Az érték *munkaterület azonosítója* az erőforrás-azonosító, a Log Analytics-munkaterület értékre van állítva.
 
-## <a name="log-analytics-records"></a>Log Analytics-rekordok
+## <a name="azure-monitor-log-records"></a>Az Azure Monitor-rekordok naplózása
 
-Diagnosztika az Azure Automation két rekordtípust hoz létre a Log Analytics és a címkével **AzureDiagnostics**. A következő lekérdezéseket a Log Analytics frissített lekérdezési nyelvet használja. Az örökölt lekérdezési nyelv és az Azure Log Analytics új lekérdezési nyelvre közötti gyakori lekérdezések információt [örökölt az új Azure Log Analytics lekérdezési nyelv – Adatlap](https://docs.loganalytics.io/docs/Learn/References/Legacy-to-new-to-Azure-Log-Analytics-Language)
+Diagnosztika az Azure Automation két rekordtípust hoz létre az Azure Monitor naplóira és címkével **AzureDiagnostics**. A következő lekérdezéseket az Azure Monitor naplóira frissített lekérdezési nyelvet használja. Az örökölt lekérdezési nyelv és az új Azure Kusto-lekérdezés nyelv közötti gyakori lekérdezések információt [örökölt az új Azure Kusto lekérdezési nyelv – Adatlap](https://docs.loganalytics.io/docs/Learn/References/Legacy-to-new-to-Azure-Log-Analytics-Language)
 
 ### <a name="job-logs"></a>Feladatnaplók
 
@@ -98,7 +100,7 @@ Diagnosztika az Azure Automation két rekordtípust hoz létre a Log Analytics �
 | Kategória | Az adattípus besorolása. Az Automation esetében az érték JobLogs. |
 | OperationName | Meghatározza az Azure-ban végrehajtott művelet típusát. Az Automation esetében az érték feladat. |
 | Erőforrás | Az Automation-fiók neve |
-| SourceSystem | A Log Analytics hogyan összegyűjti az adatokat. Mindig *Azure* Azure Diagnostics. |
+| SourceSystem | Hogyan naplózza az Azure Monitor összegyűjti az adatokat. Mindig *Azure* Azure Diagnostics. |
 | ResultDescription |Ismerteti a runbook-feladat eredményállapotát. Lehetséges értékek:<br>- A feladat elindult<br>- A feladat nem sikerült<br>- A feladat befejeződött |
 | CorrelationId |GUID, a runbook-feladat korrelációs azonosítója. |
 | ResourceId |Itt adhatja meg az Azure Automation fiók erőforrás-azonosítója a runbook. |
@@ -121,7 +123,7 @@ Diagnosztika az Azure Automation két rekordtípust hoz létre a Log Analytics �
 | Kategória | Az adattípus besorolása. Az Automation esetében az érték JobStreams. |
 | OperationName | Meghatározza az Azure-ban végrehajtott művelet típusát. Az Automation esetében az érték feladat. |
 | Erőforrás | Az Automation-fiók neve |
-| SourceSystem | A Log Analytics hogyan összegyűjti az adatokat. Mindig *Azure* Azure Diagnostics. |
+| SourceSystem | Hogyan naplózza az Azure Monitor összegyűjti az adatokat. Mindig *Azure* Azure Diagnostics. |
 | ResultDescription |A runbook kimeneti streamjét tartalmazza. |
 | CorrelationId |GUID, a runbook-feladat korrelációs azonosítója. |
 | ResourceId |Itt adhatja meg az Azure Automation fiók erőforrás-azonosítója a runbook. |
@@ -130,9 +132,9 @@ Diagnosztika az Azure Automation két rekordtípust hoz létre a Log Analytics �
 | ResourceProvider | MICROSOFT.AUTOMATION |
 | ResourceType | AUTOMATIONACCOUNTS |
 
-## <a name="viewing-automation-logs-in-log-analytics"></a>A Log Analytics-naplók Automation megtekintése
+## <a name="viewing-automation-logs-in-azure-monitor-logs"></a>Automation-naplók megtekintése az Azure Monitor naplóira
 
-Most, hogy az Automation-feladat naplókat küld a Log Analytics kezdi, lássuk, mit tehet a Log Analytics belül ezeket a naplókat.
+Most, hogy az Automation-feladat naplókat küld az Azure Monitor naplóira kezdi, lássuk, mi mindent az Azure Monitor naplóira belül ezeket a naplókat.
 
 A naplók megtekintéséhez futtassa a következő lekérdezést: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
@@ -141,7 +143,7 @@ A kiemelt ügyfeleknek küldtük egyik kéri arra, hogy küldjön egy e-mailt va
 
 Létrehoz egy riasztási szabályt, hogy először létrehozni egy naplókeresést kell meghívnia a riasztás runbook-feladat rekordok. Kattintson a **riasztás** gombot létrehozni és konfigurálni a riasztási szabályt.
 
-1. A Log Analytics áttekintése oldalon kattintson **naplóbeli keresés**.
+1. A Log Analytics munkaterület áttekintése oldalon kattintson **megtekinthetők a naplófájlok**.
 2. Hozzon létre egy naplóbeli keresési lekérdezés a riasztás a következő keresési beírni a szöveget a lekérdezési mezőtől: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")`  Emellett szerint csoportosíthatók az RunbookName használatával: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
 
    Ha beállította naplók egynél több Automation-fiókot vagy előfizetést a munkaterületre, előfizetése és az Automation-fiók által a riasztásokat csoportosíthatók. Automation-fiók neve JobLogs keresése erőforrás mezőjében található.
@@ -150,7 +152,7 @@ Létrehoz egy riasztási szabályt, hogy először létrehozni egy naplókeresé
 ### <a name="find-all-jobs-that-have-completed-with-errors"></a>Keresse meg az összes feladatot, amely hibákkal fejeződött be
 Mellett hibák riasztást küld, amikor egy runbook-feladat nem megszakító hibát tartalmaz találja. Ezekben az esetekben a PowerShell-hibafolyam eredményez, de a megszakítást nem okozó hibákat nem okoznak a feladat felfüggesztése vagy sikertelen.    
 
-1. A Log Analytics munkaterületén kattintson **naplóbeli keresés**.
+1. A Log Analytics munkaterületén kattintson **naplók**.
 2. A lekérdezés mezőbe írja be a `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobStreams" and StreamType_s == "Error" | summarize AggregatedValue = count() by JobId_g` és kattintson a **keresési** gombra.
 
 ### <a name="view-job-streams-for-a-job"></a>A feladat nézet feladatstreamek
@@ -176,15 +178,15 @@ Remove-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 
 ## <a name="summary"></a>Összegzés
 
-Az Automation-feladat állapotának és az adatfolyam adatainak küld a Log Analytics, az állapot az Automation-feladatok által jobb betekintést kaphat:
+Az Automation-feladat állapotának és az adatfolyam adatainak az Azure Monitor naplók küldésével által az automatizálási feladatok állapotának nagyobb betekintést kaphat:
 + Riasztások beállítása arra az esetre, ha probléma van.
 + Egyéni nézetek és a keresési lekérdezések segítségével a runbook eredményeinek képi megjelenítése, forgatókönyv-feladat állapota, és egyéb kapcsolódó legfontosabb mutatók vagy a metrikákat.  
 
-Log Analytics az Automation-feladatokkal, nagyobb átláthatók biztosít, és segíthet a cím az incidensek gyorsabb.  
+Az Azure Monitor naplóira az Automation-feladatokkal, nagyobb átláthatók biztosít, és segíthet a cím az incidensek gyorsabb.  
 
 ## <a name="next-steps"></a>További lépések
-* Más keresési lekérdezéseket hozhat létre, és tekintse át az Automation feladatnaplóit Log Analytics szolgáltatással kapcsolatos további tudnivalókért lásd: [Log Analytics naplóbeli kereséseivel](../log-analytics/log-analytics-log-searches.md).
+* Más keresési lekérdezéseket hozhat létre, és tekintse át az Automation feladatnaplóit Azure Monitor-naplókkal kapcsolatos további tudnivalókért lásd: [Naplókeresésekkel a naplókban az Azure Monitor](../log-analytics/log-analytics-log-searches.md).
 * Megtudhatja, hogyan hozhat létre és kimenetet és üzeneteket beolvasni a runbookok, lásd: [Runbook kimeneti és az üzenetek](automation-runbook-output-and-messages.md).
 * A runbook végrehajtásával, a runbook-feladatok figyelésével, illetve az egyéb technikai részletekkel kapcsolatos további tudnivalókat a [Runbook-feladatok nyomon követése](automation-runbook-execution.md) című rész tartalmazza.
-* A Log Analytics használatával és adatgyűjtési forrásokkal kapcsolatos további információkért lásd: [gyűjtése az Azure storage-adatok a Log Analytics – áttekintés](../azure-monitor/platform/collect-azure-metrics-logs.md).
+* Az Azure Monitor naplóira és adatgyűjtési forrásokkal kapcsolatos további tudnivalókért lásd: [gyűjtése Azure-tárfiókbeli adatok az Azure monitorban naplók áttekintése](../azure-monitor/platform/collect-azure-metrics-logs.md).
 

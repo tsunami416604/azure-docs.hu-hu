@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dee8e1a005027899698d55ee120acadc0240b1b6
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 6cf9131fa5eb82fdd3248d78b1e6965cdc69cd3d
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672644"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816147"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor-preview"></a>Azure AD-tevékenységnaplók az Azure Monitorban (előzetes verzió)
 
@@ -34,6 +34,8 @@ Az Azure Active Directory (Azure AD) tevékenységeket tartalmazó naplók mosta
 * Küldése az Azure AD-Tevékenységnaplók az Azure Monitor naplóira látványos vizualizációkkal, monitorozási és riasztási a csatlakoztatott adatok engedélyezése.
 
 > [!VIDEO https://www.youtube.com/embed/syT-9KNfug8]
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="supported-reports"></a>Támogatott jelentések
 

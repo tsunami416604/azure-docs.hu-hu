@@ -9,12 +9,12 @@ ms.date: 10/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 0d67571024c9ace3618f7ae6172122ac48b57faa
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c020d3c7513efda93d7ac5d3bdd79f21f8bc77dd
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106721"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818476"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Előkészítése az Update Management, Change Tracking és Inventory megoldásainak
 
@@ -28,11 +28,11 @@ Jelentkezzen be az Azure-ba a https://portal.azure.com címen.
 
 Keresse meg az Automation-fiókját, és válassza **készlet** vagy **Change tracking** alatt **konfigurációkezelés**.
 
-Válassza ki a Log analytics-munkaterületet és Automation-fiók, és kattintson a **engedélyezése** a megoldás engedélyezéséhez. A megoldás engedélyezése akár 15 percet is igénybe vehet.
+Válassza ki a Log Analytics-munkaterületet és Automation-fiók, és kattintson a **engedélyezése** a megoldás engedélyezéséhez. A megoldás engedélyezése akár 15 percet is igénybe vehet.
 
 ![Előkészítheti az Inventory megoldás](media/automation-onboard-solutions-from-automation-account/onboardsolutions.png)
 
-Ha engedélyezte a megoldásokat, csak bizonyos régiókban támogatottak egy Log Analytics-munkaterületet és Automation-fiók összekapcsolása.
+Ha engedélyezte a megoldásokat, Log Analytics-munkaterületet és Automation-fiók összekapcsolása csak bizonyos régiókban támogatottak.
 
 Az alábbi táblázat bemutatja a támogatott leképezések:
 
@@ -56,7 +56,7 @@ Ha a Change tracking és az Inventory megoldás előkészítése befejeződött 
 
 Az Update Management megoldás segítségével kezelheti az Azure-beli Windows rendszerű virtuális gépek frissítéseit és javításait. Felmérheti az elérhető frissítések állapotát, ütemezheti a szükséges frissítések telepítését, és áttekintheti a telepítési eredményeket, hogy ellenőrizze, sikeres volt-e a frissítések telepítése a virtuális gépen. Ez a művelet engedélyezett a megoldást a virtuális Gépen.
 
-Válassza ki **frissítéskezelés** alatt **az UPDATE MANAGEMENT**. A kiválasztott Log Analytics-munkaterület megegyezik az előző lépésben használt munkaterülettel. Az Update Management megoldás előkészítéséhez kattintson az **Engedélyezés** lehetőségre. A megoldás engedélyezése akár 15 percet is igénybe vehet.
+Válassza ki **frissítéskezelés** alatt **az UPDATE MANAGEMENT**. A kiválasztott Log Analytics-munkaterület ugyanazon a munkaterületen az előző lépésben használt. Az Update Management megoldás előkészítéséhez kattintson az **Engedélyezés** lehetőségre. A megoldás engedélyezése akár 15 percet is igénybe vehet.
 
 ![Előkészíteni az update megoldás](media/automation-onboard-solutions-from-automation-account/onboardsolutions2.png)
 
@@ -129,7 +129,7 @@ A következő megoldásokat a Log Analytics-munkaterület függnek:
 * [Változáskövetés](automation-change-tracking.md)
 * [Virtuális gépek indítása/leállítása munkaidőn kívül](automation-solution-vm-management.md)
 
-Ha úgy dönt, hogy már nem szeretne az Automation-fiók integrálása a Log Analytics-szel, megszüntetheti a fiók közvetlenül az Azure Portalról.  A folytatás előtt először el kell távolítania a megoldások azt korábban említettük, ellenkező esetben ez a folyamat megakadályozza a folytatás. Tekintse át a cikk az adott megoldás importálása távolítsa el a szükséges lépések megértéséhez.
+Ha úgy dönt, hogy már nem szeretne az Automation-fiók integrálása a Log Analytics-munkaterület, megszüntetheti a fiók közvetlenül az Azure Portalról.  A folytatás előtt először el kell távolítania a megoldások azt korábban említettük, ellenkező esetben ez a folyamat megakadályozza a folytatás. Tekintse át a cikk az adott megoldás importálása távolítsa el a szükséges lépések megértéséhez.
 
 Miután eltávolítja ezeket a megoldásokat, befejezheti az Automation-fiók leválasztása a következő lépéseket.
 

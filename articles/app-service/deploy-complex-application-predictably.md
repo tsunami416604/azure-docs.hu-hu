@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 657211378d7b38b88ccd40aa31a175058e1ad67c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: e6d18222e15f62f12592362827b6dbc4a3d7dfbc
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015556"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820314"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Létrehozhatja és üzembe helyezheti a mikroszolgáltatások kiszámítható módon az Azure-ban
 Ez az oktatóanyag bemutatja, hogyan létrehozása és üzembe helyezése egy alkalmazás összetevői [mikroszolgáltatások](https://en.wikipedia.org/wiki/Microservices) a [Azure App Service](https://azure.microsoft.com/services/app-service/) egyetlen egységként, és a egy erőforráscsoport-sablonok JSON használatával kiszámítható módon és PowerShell-parancsprogramok. 
@@ -39,9 +39,7 @@ Az oktatóanyagban, amely tartalmazza az alkalmazás telepíti:
 Ebben az oktatóanyagban a következő eszközöket fogja használni. Nem érhető el az eszközök átfogó leírást, mivel fogom elgondolkodni a teljes körű forgatókönyvre, és csak adhat meg egy rövid bevezető, és ha talál további tájékoztatást. 
 
 ### <a name="azure-resource-manager-templates-json"></a>Az Azure Resource Manager-sablonokat (JSON)
-Minden alkalommal, amikor az Azure App Service-alkalmazást hoz létre, például az Azure Resource Manager használja egy JSON-sablon létrehozásához a teljes erőforráscsoport az összetevő-erőforrások. A komplex sablonjának a [Azure Marketplace-en](/azure/marketplace) lehetnek az adatbázis, tárfiókok, az App Service-csomag, maga az alkalmazás, riasztási szabályok, beállítások, az automatikus méretezési beállítások, és több, és ezek a sablonok érhetők el, a PowerShell. Töltse le és használja ezeket a sablonokat a további információkért lásd: [az Azure PowerShell az Azure Resource Manager](../powershell-azure-resource-manager.md).
-
-Az Azure Resource Manager-sablonokat a további információkért lásd: [Azure Resource Manager-sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md)
+Minden alkalommal, amikor az Azure App Service-alkalmazást hoz létre, például az Azure Resource Manager használja egy JSON-sablon létrehozásához a teljes erőforráscsoport az összetevő-erőforrások. A komplex sablonjának a [Azure Marketplace-en](/azure/marketplace) lehetnek az adatbázis, tárfiókok, az App Service-csomag, maga az alkalmazás, riasztási szabályok, beállítások, az automatikus méretezési beállítások, és több, és ezek a sablonok érhetők el, a PowerShell. Az Azure Resource Manager-sablonokat a további információkért lásd: [Azure Resource Manager-sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md)
 
 ### <a name="azure-sdk-26-for-visual-studio"></a>A Visual Studióhoz készült Azure SDK 2.6-os
 A legújabb SDK és a Resource Manager sablon támogatja a JSON-szerkesztőben tartalmaz. Ennek használatával gyorsan hozzon létre egy erőforráscsoport sablonjához teljesen új, vagy nyisson meg egy meglévő JSON-sablon (például egy letöltött katalógus sablonjának) módosítását, töltse ki a paramétereket tartalmazó fájlt, és az erőforráscsoport, közvetlenül az Azure-erőforrás is üzembe Csoport megoldás.
@@ -160,7 +158,7 @@ A kapcsolati karakterláncok egy beágyazott erőforrást is vannak meghatározv
 Az a `properties` eleme `config/connectionstrings`, minden egyes kapcsolati karakterláncot is definiálva van: név-érték párban, meghatározott formátumban `"<name>" : {"value": "…", "type": "…"}`. Az a `type` elem, a lehetséges értékek: `MySql`, `SQLServer`, `SQLAzure`, és `Custom`.
 
 > [!TIP]
-> A kapcsolati karakterlánc típusú végleges listáját a következő parancsot az Azure PowerShell-lel: \[Enum]::GetNames("Microsoft.WindowsAzure.commands.Utilities.Websites.Services.WebEntities.DatabaseType")
+> A kapcsolati karakterlánc típusú végleges listáját a következő parancsot az Azure PowerShell-lel: \[Enum]::GetNames("Microsoft.WindowsAzure.Commands.Utilities.Websites.Services.WebEntities.DatabaseType")
 > 
 > 
 

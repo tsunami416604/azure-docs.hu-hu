@@ -3,8 +3,8 @@ title: Reliable Collections használata |} A Microsoft Docs
 description: A Reliable Collections használata ajánlott eljárások megismerése.
 services: service-fabric
 documentationcenter: .net
-author: tylermsft
-manager: jeanpaul.connock
+author: aljo-microsoft
+manager: chackdan
 editor: ''
 ms.assetid: 39e0cd6b-32c4-4b97-bbcf-33dad93dcad1
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/22/2019
-ms.author: twhitney
-ms.openlocfilehash: 9e542143810745712fb148e0b5ebe126cc8a93bf
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.author: aljo
+ms.openlocfilehash: 38aef6e5ba65f67a1dd30ba2c18e180cd92624c6
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727880"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805307"
 ---
 # <a name="working-with-reliable-collections"></a>A Reliable Collections használata
 A Service Fabric a .NET-fejlesztők számára a Reliable Collections-n keresztül elérhető állapot-nyilvántartó programozási modellt biztosít. Pontosabban a Service Fabric megbízható szótárban és megbízható várólista osztályokat biztosít. Ha használja ezeket az osztályokat, az állapot van particionálva (a méretezhetőség érdekében), replikálni (a rendelkezésre állás érdekében), és (az ACID szemantika) egy partíción belül. Most egy megbízható szótárban objektum egy tipikus használati tekintse meg, és tekintse meg az aktuális ténylegesen műveletet.

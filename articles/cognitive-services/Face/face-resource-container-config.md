@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 02/08/2019
+ms.date: 02/25/2019
 ms.author: diberry
-ms.openlocfilehash: 6a4d20073275e3d858cecb73c2e95c97ea53a647
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 4215b008af21a3473a1d2dcef5f73a1b19133215
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311970"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821559"
 ---
 # <a name="configure-face-docker-containers"></a>Face Docker-tárolók konfigurálása
 
@@ -54,6 +54,49 @@ Ez a beállítás a következő helyen található:
 |Szükséges| Name (Név) | Adattípus | Leírás |
 |--|------|-----------|-------------|
 |Igen| `Billing` | Karakterlánc | A számlázás végpont URI azonosítója<br><br>Példa:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0` |
+
+<!-- specific to face only -->
+
+## <a name="cloudai-configuration-settings"></a>CloudAI konfigurációs beállításai
+
+A konfigurációs beállításokat a `CloudAI` szakaszban adja meg a tároló egyedi tároló-specifikus beállítások. A következő beállításokat, és az objektumok a Face tároló támogatottak a `CloudAI` szakasz
+
+| Name (Név) | Adattípus | Leírás |
+|------|-----------|-------------|
+| `Storage` | Objektum | A tárolási eset, a Face tárolót használja. További információ a storage-forgatókönyvek és kapcsolódó beállításait a `Storage` objektumazonosító, lásd: [tárolási forgatókönyv beállításai](#storage-scenario-settings) |
+
+### <a name="storage-scenario-settings"></a>Tárolási forgatókönyv beállításai
+
+A Face tároló tárolja a blob, a gyorsítótár, a metaadatok és a sorban lévő adatok függően mi tárol. Ha például képzési indexeket és a egy nagy embercsoportok eredményei formájában tárolja Blobadatok. A Face tárolót biztosít, két különböző adattárolási forgatókönyvekhez való interakció során és az ilyen típusú adatok tárolására:
+
+* Memory (Memória)  
+  Minden négy típusú adatokat a memóriában tárolódnak. Nem használ osztják, sem pedig az állandó. A Face tároló leállt, vagy eltávolítja, ha az összes adat a tárolóban, hogy a tároló a semmisíteni.  
+  Ez az az alapértelmezett tárolási eset a Face tároló.
+* Azure  
+  A Face tároló Azure Storage és az Azure Cosmos DB használatával ezek négy típusú adatok szét a tartós tároláshoz. Azure Storage BLOB és üzenetsor adatokat kezeli. Azure Cosmos DB kezeli az metaadatok és a gyorsítótár-adatokat. A Face tároló leállt, vagy eltávolítja, ha az adatok a tároló storage-ban tárolt, az Azure Storage és Azure Cosmos DB marad.  
+  Az Azure storage-forgatókönyv által használt erőforrások az alábbi további követelményekkel rendelkezik.
+  * Az Azure Storage-erőforrást kell használnia a StorageV2 fiók típusa
+  * Az Azure Cosmos DB erőforrás az Azure Cosmos DB API-t kell használnia a mongodb-hez
+
+A storage-forgatókönyvek és a kapcsolódó konfigurációs beállítások kezeli a `Storage` objektumot, a a `CloudAI` konfigurációs szakaszban. A következő beállítások érhetők el a `Storage` objektum:
+
+| Name (Név) | Adattípus | Leírás |
+|------|-----------|-------------|
+| `StorageScenario` | Karakterlánc | A tárolási eset, a tároló által támogatott. A következő értékek közül választhat<br/>`Memory` – Alapértelmezett érték. Tároló nem állandó, nem elosztott és a memórián belüli tároló használ egy csomópontos, ideiglenes használatra. A tároló leállt, vagy eltávolítja, ha a tárolót a tároló megsemmisülésekor.<br/>`Azure` -Tároló Azure-erőforrásokat használ a tároláshoz. A tároló leállítása vagy eltávolítja, a rendszer megőrzi a tároló a tárolót.|
+| `ConnectionStringOfAzureStorage` | Karakterlánc | Az Azure Storage-erőforrás a tároló által használt kapcsolati karakterláncára.<br/>Ez a beállítás csak akkor, ha érvényes `Azure` van megadva a `StorageScenario` konfigurációs beállítás. |
+| `ConnectionStringOfCosmosMongo` | Karakterlánc | A MongoDB kapcsolati karakterláncot az Azure Cosmos DB-erőforrás a tárolót használja.<br/>Ez a beállítás csak akkor, ha érvényes `Azure` van megadva a `StorageScenario` konfigurációs beállítás. |
+
+Például a következő parancsot adja meg az Azure storage-forgatókönyv, és minta kapcsolati karakterláncok biztosít a Face tároló adatok tárolására használt Azure Storage és a Cosmos DB erőforrásokat.
+
+  ```Docker
+  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-face Eula=accept Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0 ApiKey=0123456789 CloudAI:Storage:StorageScenario=Azure CloudAI:Storage:ConnectionStringOfCosmosMongo="mongodb://samplecosmosdb:0123456789@samplecosmosdb.documents.azure.com:10255/?ssl=true&replicaSet=globaldb" CloudAI:Storage:ConnectionStringOfAzureStorage="DefaultEndpointsProtocol=https;AccountName=sampleazurestorage;AccountKey=0123456789;EndpointSuffix=core.windows.net"
+  ```
+
+A tárolási eset külön-külön történik a csatlakoztatása bemeneti és kimeneti csatlakoztatása. Ezek a Funkciók, az egyetlen tároló kombinációját is megadhat. Például a következő parancsot határozza meg a Docker kötési csatlakoztatási a `D:\Output` mappát a gazdagépen, a kimeneti csatlakoztatási majd példányosít egy tárolót a Face tárolórendszerképet, naplófájlok mentése, a kimeneti csatlakoztatási JSON formátumban. A parancs is itt adhatja meg az Azure storage-forgatókönyv, és minta kapcsolati karakterláncok biztosít a Face tároló adatok tárolására használt Azure Storage és a Cosmos DB erőforrásokat.
+
+  ```Docker
+  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 --mount type=bind,source=D:\Output,destination=/output containerpreview.azurecr.io/microsoft/cognitive-services-face Eula=accept Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0 ApiKey=0123456789 Logging:Disk:Format=json CloudAI:Storage:StorageScenario=Azure CloudAI:Storage:ConnectionStringOfCosmosMongo="mongodb://samplecosmosdb:0123456789@samplecosmosdb.documents.azure.com:10255/?ssl=true&replicaSet=globaldb" CloudAI:Storage:ConnectionStringOfAzureStorage="DefaultEndpointsProtocol=https;AccountName=sampleazurestorage;AccountKey=0123456789;EndpointSuffix=core.windows.net"
+  ```
 
 ## <a name="eula-setting"></a>Licencfeltételek beállítása
 

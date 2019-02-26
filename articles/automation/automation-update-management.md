@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/19/2019
+ms.date: 02/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: df4ae4b0c3f230947e0b9a5885070049f32a4b2f
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: fb96d69604ce341cec2de029f9663f6b8d274876
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429862"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822378"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -39,7 +39,7 @@ Az Update Management segítségével natív módon előkészítheti a gépeket u
 
 Ha egy CVE kiadás, a javítás jelenik meg a Linux rendszerű gépek értékelés 2 – 3 órát vesz igénybe.  Windows-gépek Miután megtörtént az értékeléshez jelenik meg a javítás 12 – 15 órát vesz igénybe.
 
-A számítógép frissítési megfelelőség szempontjából vizsgálat befejezése után az ügynök továbbítja az adatokat, tömegesen az Azure Log Analyticshez való. A Windows-számítógépen a megfelelőségi vizsgálat futtatása alapértelmezés szerint 12 óránként.
+A számítógép frissítési megfelelőség szempontjából vizsgálat befejezése után az ügynök továbbítja az adatokat az Azure Monitor naplóira tömeges. A Windows-számítógépen a megfelelőségi vizsgálat futtatása alapértelmezés szerint 12 óránként.
 
 A frissítés megfelelőségi vizsgálat ütemezett vizsgálatokat mellett az MMA újraindítja, frissítés telepítése előtt, és a frissítés telepítése után legfeljebb 15 perccel kezdeményezik.
 
@@ -94,7 +94,7 @@ Windows-ügynökök egy WSUS-kiszolgálóval való kommunikációhoz kell konfig
 
 A Linux rendszerre a gép hozzáféréssel kell rendelkeznie valamely frissítési tárházhoz. A frissítés tárház lehet nyilvános vagy privát. A TLS 1.1 és TLS 1.2 használatával kommunikálhat az Update Management szükséges. A Log Analytics-ügynököket, amely konfigurálva van a jelentés egynél több Log Analytics-munkaterületek a Linuxhoz készült Ez a megoldás nem támogatott.
 
-A Log Analytics-ügynök telepítése Linux- és a legújabb verzió letöltéséhez kapcsolatos információkért lásd: [Operations Management Suite Linux-ügynök](https://github.com/microsoft/oms-agent-for-linux). A Log Analytics az ügynök a Windows telepítésével kapcsolatos információkért lásd: [Operations Management Suite ügynök a Windows](../log-analytics/log-analytics-windows-agent.md).
+A Log Analytics-ügynök telepítése Linux- és a legújabb verzió letöltéséhez kapcsolatos információkért lásd: [Linuxhoz készült Log Analytics-ügynök](https://github.com/microsoft/oms-agent-for-linux). A Log Analytics az ügynök a Windows telepítésével kapcsolatos információkért lásd: [a Microsoft Monitoring Agent for Windows](../log-analytics/log-analytics-windows-agent.md).
 
 ## <a name="permissions"></a>Engedélyek
 
@@ -120,10 +120,10 @@ Ha a System Center Operations Manager felügyeleti csoportban a Log Analytics-mu
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
 * Frissítéstelepítő felügyeleti csomag
 
-Hogyan megoldás felügyeleti csomagok frissítéseivel kapcsolatos további információkért lásd: [Operations Manager csatlakoztatása a Log Analytics](../azure-monitor/platform/om-agents.md).
+Hogyan megoldás felügyeleti csomagok frissítéseivel kapcsolatos további információkért lásd: [Operations Manager csatlakoztatása az Azure Monitor-naplók](../azure-monitor/platform/om-agents.md).
 
 > [!NOTE]
-> Azon rendszerek esetében az Operations Manager ügynök az Update Management, teljes mértékben felügyeltek lehessen az ügynökét frissíteni kell a Microsoft Monitoring Agent. Az ügynök frissítésével kapcsolatban lásd: [Operations Manager-ügynök frissítése](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents).
+> Azon rendszerek esetében az Operations Manager ügynök az Update Management, teljes mértékben felügyeltek lehessen az ügynökét frissíteni kell a Microsoft Monitoring Agent. Az ügynök frissítésével kapcsolatban lásd: [Operations Manager-ügynök frissítése](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents). Környezetek Operations Manager használata esetén szükség rá, hogy futtatja a System Center Operations Manager 2012 R2 UR 14 vagy újabb verziója.
 
 ## <a name="onboard"></a>Az Update Management engedélyezése
 
@@ -136,7 +136,7 @@ Ha szeretné elkezdeni a rendszer, az Update Management megoldás engedélyeznie
   
 ### <a name="confirm-that-non-azure-machines-are-onboarded"></a>Győződjön meg róla, hogy nem Azure-beli gépek előkészítve
 
-Győződjön meg arról, hogy közvetlenül csatlakoztatott gépek kommunikál a Log Analytics, néhány perc múlva futtathatja egyet a következő naplókeresési mintákat.
+Győződjön meg arról, hogy közvetlenül csatlakoztatott gépek kommunikál az Azure Monitor naplóira, néhány perc múlva futtathatja egyet a következő naplókeresési mintákat.
 
 #### <a name="linux"></a>Linux
 

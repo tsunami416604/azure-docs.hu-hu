@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 0ac6dd63d125f436f3f3f8c1174cdcce27ac2161
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: f41c14f664df8db809ad4c29c57d37c1124a0ff3
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237654"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818544"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>A Redis Azure Cache figyelése
 Az Azure Cache Redis felhasználásra [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) biztosít a cache-példány figyelése számos lehetőség közül választhat. Meg is metrikákat tekinthet meg, rögzítheti a kezdőpulton mérőszámdiagramok, testre szabhatja a dátum- és időtartományt figyelési diagramok, hozzáadása és metrikák eltávolítása a diagramok és riasztásokat állíthat be adott feltételek teljesülése esetén. Ezek az eszközök lehetővé teszik az Azure Cache Redis-példány és a gyorsítótárazás alkalmazások kezeléséhez segítségért állapotának monitorozásához.
@@ -75,7 +75,7 @@ A storage-fiókját a gyorsítótár-metrikák konfigurálása:
 ![A redis-diagnosztika](./media/cache-how-to-monitor/redis-cache-diagnostics.png)
 
 >[!NOTE]
->A gyorsítótár-metrikák tárolóba archiválás, mellett is [azok streamelésére az Eseményközpontok felé, vagy küldje el azokat a Log Analytics](../azure-monitor/platform/rest-api-walkthrough.md#retrieve-metric-values).
+>A gyorsítótár-metrikák tárolóba archiválás, mellett is [azok streamelésére az Eseményközpontok felé, vagy küldhet nekik az Azure Monitor naplóira](../azure-monitor/platform/rest-api-walkthrough.md#retrieve-metric-values).
 >
 >
 

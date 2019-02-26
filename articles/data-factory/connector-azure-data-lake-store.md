@@ -12,12 +12,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: jingwang
-ms.openlocfilehash: ac0a4bf6f332095bd75a6be83d7a1cd3d37c8e1c
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 87811cd44b04b55537da166722dd1903d97e7ef5
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674548"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821028"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure Data Lake Storage Gen1 Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -76,6 +76,7 @@ Egyszerű szolgáltatásnév hitelesítése használandó entitás alkalmazás r
 >A lista kezdve a legfelső szintű mappák, be kell az egyszerű szolgáltatás nyújtott engedélye **gyökér szintű "Execute" engedéllyel rendelkező**. Ez igaz, ha használja a:
 >- **Adatok másolása eszköz** a szerző másolási folyamat.
 >- **Data Factory felhasználói felülete** tesztelheti a kapcsolatot, és lépjen a mappák létrehozása alatt.
+>Ha rendelkezik a legfelső szintű engedély megadására szempont, kihagyhatja kapcsolat tesztelése és a bemeneti elérési út manuális létrehozása alatt. A másolási tevékenység továbbra is működni fog, amíg a egyszerű szolgáltatást kell másolni a fájlokat a megfelelő engedéllyel rendelkező kapnak.
 
 A következő tulajdonságok támogatottak:
 
@@ -126,9 +127,10 @@ Azure-erőforrások hitelesítéshez használandó felügyelt identitások:
 >- **Fogadóként**: A **adatkezelő** > **hozzáférés**, adjon meg legalább **írás + végrehajtás** engedély szükséges gyermekelemek létrehozásához a mappában. Dönthet úgy, hogy hozzá **ezt a mappát, és az összes gyermekre** a rekurzív, és adja hozzá **egy hozzáférési és alapértelmezett engedély bejegyzés**. Ha Azure integrációs modul használatával másolása (forrás- és fogadóadattárként is vannak a felhőben), az IAM, biztosítson legalább a **olvasó** szerepkör annak érdekében, hogy észlelni az Data Lake Store-régiót, a Data Factory. Ha szeretné-e elkerülése érdekében explicit módon a IAM szerepkör [Azure integrációs modul létrehozása](create-azure-integration-runtime.md#create-azure-ir) helyét, a Data Lake Store. Rendelje azokat a Data Lake Store társított szolgáltatásban az alábbi példa szerint.
 
 >[!NOTE]
->A lista kezdve a legfelső szintű mappák, be kell az egyszerű szolgáltatás nyújtott engedélye **gyökér szintű "Execute" engedéllyel rendelkező**. Ez igaz, ha használja a:
+>A lista kezdve a legfelső szintű mappák, be kell az engedély az engedély megadása a felügyelt identitás **gyökér szintű "Execute" engedéllyel rendelkező**. Ez igaz, ha használja a:
 >- **Adatok másolása eszköz** a szerző másolási folyamat.
 >- **Data Factory felhasználói felülete** tesztelheti a kapcsolatot, és lépjen a mappák létrehozása alatt.
+>Ha rendelkezik a legfelső szintű engedély megadására szempont, kihagyhatja kapcsolat tesztelése és a bemeneti elérési út manuális létrehozása alatt. A másolási tevékenység továbbra is működni fog, amíg a felügyelt identitást kapnak a átmásolni a fájlokat a megfelelő engedéllyel rendelkező.
 
 Az Azure Data Factoryben nem kell meghatároznia semmilyen tulajdonságot a Data Lake Store általános adatok mellett a társított szolgáltatás.
 

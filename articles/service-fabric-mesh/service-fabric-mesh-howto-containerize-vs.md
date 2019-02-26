@@ -3,18 +3,18 @@ title: A Service Fabric-háló egy meglévő .NET-alkalmazás tárolóalapúvá 
 description: Háló-támogatás hozzáadása egy meglévő .NET-alkalmazás
 services: service-fabric-mesh
 keywords: service fabric háló tárolóba
-author: tylermsft
-ms.author: twhitney
+author: dkkapur
+ms.author: dekapur
 ms.date: 11/08/2018
 ms.topic: get-started-article
 ms.service: service-fabric-mesh
-manager: jeconnoc
-ms.openlocfilehash: 6f71f45d435b6be3358f79d8b6e72e4636d92ab6
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+manager: chakdan
+ms.openlocfilehash: bb4aacafaa90f16370bc097b5feab7791def4006
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52893503"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806946"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>A Service Fabric-háló egy meglévő .NET-alkalmazás tárolóalapúvá
 
@@ -71,4 +71,4 @@ Az alkalmazás közzététele az Azure Service Fabric-háló most.
 
 ## <a name="next-steps"></a>További lépések
 
-Alkalmazások közzététele a Service Fabric-háló való használatáról: [oktatóanyag üzembe helyezése egy Service Fabric-háló-alkalmazás](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)
+Alkalmazások közzététele a Service Fabric-háló való használatáról: [Az oktatóanyagban üzembe helyezése egy Service Fabric-háló-alkalmazás](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)

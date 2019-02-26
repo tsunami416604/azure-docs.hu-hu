@@ -5,17 +5,17 @@ description: A powershellel hozhat létre több Machine Learning-modellek és we
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 40cb4b7969ec2272936d1361be8183db84f944d8
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 442acb88a7a758517b8007b85dd6a58520a0caa4
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455058"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817507"
 ---
 # <a name="use-powershell-to-create-studio-models-and-web-service-endpoints-from-one-experiment"></a>Studio-modellek és webszolgáltatás-végpontok létrehozása egy kísérletből a PowerShell használatával
 
@@ -27,7 +27,7 @@ A modell egyszer az összes adatkészlet egyesített verziót használ, az össz
 
 Amely lehet, hogy a legjobb módszer, de nem kívánja 1000 képzési kísérletek létrehozása az Azure Machine Learning Studio egyes egy egyedi helyet jelölő. Amellett, hogy egy eleve bonyolult feladatnak, is úgy tűnik, nem hatékony, mivel minden kísérlet ugyanazokat a betanítási adatkészletet kivételével összetevők lenne.
 
-Szerencsére, ennek segítségével végezheti a [Azure Machine Learning Studio átképezési API](retrain-models-programmatically.md) és automatizálja a feladat [Azure Machine Learning Studio PowerShell](powershell-module.md).
+Szerencsére, ennek segítségével végezheti a [Azure Machine Learning Studio átképezési API](/azure/machine-learning/studio/retrain-machine-learning-model) és automatizálja a feladat [Azure Machine Learning Studio PowerShell](powershell-module.md).
 
 > [!NOTE]
 > Ahhoz, hogy a minta gyorsabban futnak, a helyek való 1000 10 számának csökkentése. Azonban ugyanazon alapelveket és eljárásokat a alkalmazni 1000 helyekre. Azonban ha szeretné, hogy 1000 adatkészletekből származó betanításához célszerű párhuzamos az alábbi PowerShell-parancsfájlok futtatásához. Hogyan valósítható meg ez a cikk nem foglalkozik, de annak PowerShell példái többszálas az interneten.  

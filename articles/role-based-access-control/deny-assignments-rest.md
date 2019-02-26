@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 29b8e0953109238b724cc8df9f456706f71a041e
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: ba1c60d45fb53be158d9e302748366ddf417f23e
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341623"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805477"
 ---
 # <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>Listában elutasítása a REST API használatával az Azure erőforrás-hozzárendelések
 
-Jelenleg a megtagadás-hozzárendelések **csak olvashatók**, és csak az Azure állíthatja be azokat. Nem hozhat létre saját megtagadási hozzárendeléseket, azonban listázhatja a megtagadás-hozzárendeléseket, mert ezek hatással lehetnek a hatályos engedélyekre. Ez a cikk bemutatja, hogyan, hogy a listában elutasítása hozzárendelések rbac-RÓL és a REST API használatával.
+Jelenleg a hozzárendelés elutasítása **csak olvasható** , és csak a Microsoft által állítható be. Nem hozhat létre saját megtagadási hozzárendeléseket, azonban listázhatja a megtagadás-hozzárendeléseket, mert ezek hatással lehetnek a hatályos engedélyekre. Ez a cikk bemutatja, hogyan, hogy a listában elutasítása hozzárendelések rbac-RÓL és a REST API használatával.
 
 ## <a name="list-a-single-deny-assignment"></a>Egy listában elutasítása hozzárendelés
 

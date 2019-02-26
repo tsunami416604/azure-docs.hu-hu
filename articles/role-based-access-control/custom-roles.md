@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/20/2019
+ms.date: 02/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 71d49edc3fa52cce5d128b94d42098150aa5f3a3
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: f795571de275453738d23e80885f4d9006ca3a20
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56585083"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804450"
 ---
 # <a name="custom-roles-for-azure-resources"></a>Egyéni szerepkörök az Azure-erőforrásokhoz
 
@@ -72,8 +72,7 @@ Amikor létrehoz egy egyéni biztonsági szerepkört, az Azure Portalon egy nara
 
 1. Határozza meg a szükséges engedélyekkel
 
-    Amikor létrehoz egy egyéni biztonsági szerepkört, az erőforrás-szolgáltatói műveletek elérhető engedélyek meghatározásához ismernie kell. A műveletek listájának megtekintéséhez használja a [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) vagy [az művelet lista](/cli/azure/provider/operation#az-provider-operation-list) parancsokat.
-    A művelet hozzáadja a `Actions` vagy `NotActions` tulajdonságait a [szerepkör-definíció](role-definitions.md). Ha az üzemeltetés, hozzáadja ezeket az a `DataActions` vagy `NotDataActions` tulajdonságait.
+    Amikor létrehoz egy egyéni biztonsági szerepkört, az erőforrás-szolgáltatói műveletek elérhető engedélyek meghatározásához ismernie kell. A műveletek listájának megtekintéséhez lásd a [Azure Resource Manager erőforrás-szolgáltatói műveletek](resource-provider-operations.md). A művelet hozzáadja a `Actions` vagy `NotActions` tulajdonságait a [szerepkör-definíció](role-definitions.md). Ha az üzemeltetés, hozzáadja ezeket az a `DataActions` vagy `NotDataActions` tulajdonságait.
 
 1. Az egyéni szerepkör létrehozása
 

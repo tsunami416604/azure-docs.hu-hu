@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: a6c17ad8d4af568d910597da4b44f09676d1c36a
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 4e56d22dde5fca50d17c055be93db5b91deeb287
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652490"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819173"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Az Apache Sqoop használata a HDInsight Hadoop-keretrendszerrel
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -91,7 +91,7 @@ Ha a fürt és az SQL-adatbázis létrehozásához, tekintse meg az Azure PowerS
         |Name (Név)|Érték|
         |----|-----|
         | Alapértelmezett tárfióknév | &lt;ClusterName > tárolásához |
-        | Az Azure SQL database-kiszolgálónév | &lt;ClusterName > dbserver |
+        | Az Azure SQL database-kiszolgálónév | &lt;ClusterName>dbserver |
         | Az Azure SQL-adatbázis neve | &lt;ClusterName > db |
      
 3. Válassza ki **elfogadom a feltételeket és a fenti feltételeket**.
@@ -104,7 +104,7 @@ Ha úgy dönt, hogy a meglévő Azure SQL database vagy a Microsoft SQL Server h
   > [!NOTE]  
   > Alapértelmezés szerint az Azure SQL database lehetővé teszi, hogy Azure-szolgáltatások, például Azure HDInsight érkező kapcsolatokat. Ez a tűzfal beállítás le van tiltva, ha szüksége engedélyezi azt az Azure Portalról. Utasítások az Azure SQL-adatbázis létrehozása és tűzfalszabályainak konfigurálása, lásd: [létrehozása és konfigurálása az SQL Database][sqldatabase-create-configure].
 
-* **Az SQL Server**: Ha a HDInsight-fürt azonos virtuális hálózaton az Azure-ban az SQL Server, használhatja a lépéseket ebben a cikkben az adatok importálása és exportálása az SQL Server-adatbázis.
+* **SQL Server**: Ha a HDInsight-fürt azonos virtuális hálózaton az Azure-ban az SQL Server, használhatja a lépéseket ebben a cikkben az adatok importálása és exportálása az SQL Server-adatbázis.
   
   > [!NOTE]  
   > HDInsight támogatja csak helye-alapú virtuális hálózatok, és ez jelenleg nem működik az affinitáscsoport-alapú virtuális hálózatokat.
@@ -163,7 +163,7 @@ Most már megtanulhatta, hogyan használható a sqoop használatával. További 
 A PowerShell-mintát a következő lépéseket hajtja végre:
 
 1. Csatlakozás az Azure-bA.
-2. Azure-erőforráscsoport létrehozása További információkért lásd: [az Azure PowerShell az Azure Resource Managerrel](../../azure-resource-manager/powershell-azure-resource-manager.md)
+2. Azure-erőforráscsoport létrehozása További információkért lásd: [az Azure PowerShell az Azure Resource Managerrel](../../azure-resource-manager/manage-resource-groups-powershell.md)
 3. Hozzon létre egy Azure SQL Database-kiszolgáló, egy Azure SQL database és a két táblázat. 
    
     Ha Ehelyett használja az SQL Server, a táblák létrehozásához használja az alábbi utasításokat:
@@ -212,8 +212,8 @@ A PowerShell-mintát a következő lépéseket hajtja végre:
    > Kapcsolati sztring adatait, nem a jelen szakaszban ismertetett lépések működnie kell egy Azure SQL database vagy SQL Server. Ezeket a lépéseket tesztelt, a következő konfigurációval:
    > 
    > * **Azure virtuális hálózat pont – hely konfiguráció**: Virtuális hálózat a HDInsight-fürthöz csatlakozik egy SQL Server egy privát adatközpontban. Lásd: [pont – hely VPN konfigurálása a felügyeleti portálon](../../vpn-gateway/vpn-gateway-point-to-site-create.md) további információt.
-   > * **Az Azure HDInsight**: Lásd: [Hadoop-fürtök létrehozása az egyéni beállításokkal HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) információ a fürt létrehozása virtuális hálózaton.
-   > * **Az SQL Server 2014**: Konfigurálva, hogy a hitelesítés és a VPN-ügyfél konfigurációs csomag, biztonságosan csatlakozhat a virtuális hálózaton futó.
+   > * **Azure HDInsight**: Lásd: [Hadoop-fürtök létrehozása az egyéni beállításokkal HDInsight](../hdinsight-hadoop-provision-linux-clusters.md) információ a fürt létrehozása virtuális hálózaton.
+   > * **SQL Server 2014**: Konfigurálva, hogy a hitelesítés és a VPN-ügyfél konfigurációs csomag, biztonságosan csatlakozhat a virtuális hálózaton futó.
    > 
    > 
 7. Hive-tábla exportálása az Azure SQL Database-adatbázishoz.

@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 02/13/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5ab50bd5a2b5b1b0e63060986d4336774be7875b
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 920d6ee9b584e908885cf661d32aa700e655c3f8
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245864"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816419"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Azure Automation-runbook kezdve egy webhook
 
-A *webhook* lehetővé teszi, hogy indíthat adott runbookokat az Azure Automation egyetlen HTTP-kérés. Ez lehetővé teszi, hogy a külső szolgáltatásokkal, például az Azure DevOps-szolgáltatásokkal, GitHub, Azure Log Analytics vagy egyéni alkalmazások runbookok elindításához egy Azure Automation API használatával teljes körű megoldás implementálása nélkül.  
+A *webhook* lehetővé teszi, hogy indíthat adott runbookokat az Azure Automation egyetlen HTTP-kérés. Ez lehetővé teszi, hogy a külső szolgáltatásokkal, például az Azure DevOps-szolgáltatásokkal, GitHub, az Azure Monitor naplóira vagy anélkül szeretné elindítani a runbookok végrehajtása egy teljes körű megoldás az Azure Automation API-val egyéni alkalmazásokat.  
 ![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
 
 Egyéb módszerek runbook elindítása webhookok összehasonlíthatja [runbook elindítása az Azure Automationben](automation-starting-a-runbook.md)

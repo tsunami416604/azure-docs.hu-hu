@@ -11,12 +11,12 @@ ms.service: automation
 ms.subservice: change-inventory-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: ffa14e3fb3fd41d6a30e1cf30713b26d7ecd255a
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 2cce925f4b3e1acc6c93019615b81983a5c95f6f
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436013"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56815892"
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>Az Azure- és nem Azure-gépeken telepített szoftverek felderítése
 
@@ -58,8 +58,10 @@ A megoldás engedélyezéséhez konfigurálja a használni kívánt helyet, Log 
 A [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json)-munkaterület az Inventory, valamint a hasonló funkciók és szolgáltatások által létrehozott adatok gyűjtésére szolgál.
 A munkaterület egyetlen központi helyet biztosít a több forrásból származó adatok áttekintéséhez és elemzéséhez.
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
 A megoldás engedélyezése akár 15 percet is igénybe vehet. Ez idő alatt ne zárja be a böngészőablakot.
-A megoldás engedélyezését követően a virtuális gépen telepített szoftverekkel és változásokkal kapcsolatos adatok elkezdenek beérkezni a Log Analytics szolgáltatásba.
+A megoldás engedélyezését követően a virtuális Gépen telepített szoftverekkel és változásokkal kapcsolatos adatok elkezdenek beérkezni a Azure Monitor naplóira.
 Az adatok legalább 30 perc és legfeljebb 6 óra múlva állnak készen az elemzésre.
 
 ## <a name="onboard-a-vm"></a>Virtuális gép előkészítése
@@ -101,7 +103,7 @@ Például a „Contoso” kifejezésre keresve a rendszer minden olyan szoftvert
 
 ## <a name="search-inventory-logs-for-installed-software"></a>Telepített szoftverek keresése az Inventory-naplókban
 
-Az Inventory által létrehozott naplóadatok a Log Analyticsbe lesznek továbbítva. Ha lekérdezések futtatásával szeretne keresni a naplókban, kattintson a **Log Analytics** elemre az **Inventory** ablak felső részén.
+Készlet által létrehozott naplóadatok a Azure Monitor naplóira küldött. Ha lekérdezések futtatásával szeretne keresni a naplókban, kattintson a **Log Analytics** elemre az **Inventory** ablak felső részén.
 
 A rendszer az Inventory-adatokat a **ConfigurationData** típus alatt tárolja.
 A következő Log Analytics-mintalekérdezés az Inventory-eredményeket adja vissza, ahol a Közzétevő a „Microsoft Corporation”.
@@ -113,11 +115,11 @@ ConfigurationData
 | summarize arg_max(TimeGenerated, *) by SoftwareName, Computer
 ```
 
-A naplófájlok a Log Analytics szolgáltatásban való futtatásával és keresésével kapcsolatos további információkért tekintse meg az [Azure Log Analyticsszel](../azure-monitor/log-query/log-query-overview.md) kapcsolatos cikket.
+Futtatásával és az Azure Monitor naplóira naplófájlok keresésével kapcsolatos további információkért lásd: [naplózza az Azure Monitor](../azure-monitor/log-query/log-query-overview.md).
 
 ### <a name="single-machine-inventory"></a>Leltár egyetlen gépről
 
-Egyetlen gép szoftverleltárának megtekintéséhez az Inventory az Azure-beli virtuális gép erőforráslapjáról is elérhető, vagy a Log Analytics segítségével szűrhet a megfelelő gépre.
+Egyetlen gép szoftverleltárának megtekintéséhez készlet elérését az Azure-beli Virtuálisgép-erőforrások oldalának, vagy le a megfelelő gépre szűréséhez használja a Azure Monitor naplóira.
 Az alábbi Log Analytics lekérdezési példa egy ContosoVM nevű gép szoftverlistáját adja vissza.
 
 ```loganalytics

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: e8efcbe080cc33cb6153d97d4435bcb477587980
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: b8cb84523288f45dfb719d69e4f7d227039598a9
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565853"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806912"
 ---
 # <a name="quickstart-run-a-container-application-in-azure-container-instances-with-azure-powershell"></a>Gyors útmutató: Egy tároló-alkalmazás futtatása az Azure Container Instances szolgáltatásban az Azure PowerShell használatával
 
@@ -23,42 +23,44 @@ Az Azure Container Instances segítségével egyszerűen és gyorsan futtathat D
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Ha a PowerShell helyi telepítése és használata mellett dönt, az oktatóanyaghoz az Azure PowerShell-modul 5.5-ös vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+Ha helyi telepítése és használata a PowerShell, az oktatóanyaghoz az Azure PowerShell modult. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az Azure Container Instancest – mint minden Azure-erőforrást – egy erőforráscsoportban kell üzembe helyezni. Az erőforráscsoportok lehetővé teszik az egymáshoz kapcsolódó Azure-erőforrások rendszerezését és kezelését.
 
-Először hozzon létre egy erőforráscsoportot *myResourceGroup* néven az *eastus* helyen az alábbi [New-AzureRmResourceGroup][New-AzureRmResourceGroup] paranccsal:
+Először is hozzon létre egy erőforráscsoportot *myResourceGroup* a a *eastus* helyet az alábbi [New-AzResourceGroup] [ New-AzResourceGroup] a parancs:
 
  ```azurepowershell-interactive
-New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
+New-AzResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
 ## <a name="create-a-container"></a>Tároló létrehozása
 
-Most, hogy már van egy erőforráscsoportja, futtathat egy tárolót az Azure-ban. Ahhoz, hogy tárolópéldányt hozzon létre az Azure PowerShell-lel, meg kell adnia az erőforráscsoport és a tárolópéldány nevét, valamint a Docker-tároló rendszerképét a [New-AzureRmContainerGroup][New-AzureRmContainerGroup] parancsmagnak. Ez a rövid a `microsoft/iis:nanoserver` Windows-lemezkép a nyilvános Docker Hub-beállításjegyzékből. Ez a rendszerkép csomagok Internet Information Services (IIS) a Nano Server futtatásához.
+Most, hogy már van egy erőforráscsoportja, futtathat egy tárolót az Azure-ban. Létrehoz egy tárolópéldányt, az Azure PowerShell-lel, adjon meg egy erőforráscsoport-név, tároló-példány nevét és a Docker-tároló rendszerképét az [New-AzContainerGroup] [ New-AzContainerGroup] parancsmagot. Ez a rövid a `microsoft/iis:nanoserver` Windows-lemezkép a nyilvános Docker Hub-beállításjegyzékből. Ez a rendszerkép csomagok Internet Information Services (IIS) a Nano Server futtatásához.
 
 A tárolóit közzéteheti az interneten. Ehhez adjon meg egy vagy több megnyitni kívánt portot, egy DNS-névcímkét vagy mindkettőt. Ebben a rövid útmutatóban üzembe helyezi egy-egy DNS-névcímke tárolóban úgy, hogy az IIS nyilvánosan elérhető.
 
 A tárolópéldány indításához futtassa az alábbi parancsot. A `-DnsNameLabel` értéknek egyedinek kell lennie abban az Azure-régióban, ahol a példányt létrehozza. Ha „DNS-névcímke nem érhető el” hibaüzenetet kap, próbálkozzon másik DNS-névcímkével.
 
  ```azurepowershell-interactive
-New-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer -Image microsoft/iis:nanoserver -OsType Windows -DnsNameLabel aci-demo-win
+New-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer -Image microsoft/iis:nanoserver -OsType Windows -DnsNameLabel aci-demo-win
 ```
 
-Néhány másodpercen belül meg kell kapnia az Azure válaszát. A tároló `ProvisioningState` beállításának értéke kezdetben **Creating** (Létrehozás), de néhány percen belül **Succeeded** (Sikerült) állapotra kell váltania. Az üzembe helyezés állapotát a [Get-AzureRmContainerGroup][Get-AzureRmContainerGroup] parancsmaggal ellenőrizheti:
+Néhány másodpercen belül meg kell kapnia az Azure válaszát. A tároló `ProvisioningState` beállításának értéke kezdetben **Creating** (Létrehozás), de néhány percen belül **Succeeded** (Sikerült) állapotra kell váltania. Az üzembe helyezési állapot ellenőrzése a [Get-AzContainerGroup] [ Get-AzContainerGroup] parancsmagot:
 
  ```azurepowershell-interactive
-Get-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer
+Get-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer
 ```
 
 A tároló üzembe helyezési állapota, teljes tartományneve (FQDN) és IP-címe megjelenik a parancsmag kimenetében:
 
 ```console
-PS Azure:\> Get-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer
+PS Azure:\> Get-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer
 
 
 ResourceGroupName        : myResourceGroup
@@ -87,10 +89,10 @@ Miután a tároló `ProvisioningState` értéke **Succeeded** (Sikerült) állap
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Miután végzett a tárolóval, a [Remove-AzureRmContainerGroup][Remove-AzureRmContainerGroup] parancsmag használatával távolíthatja el:
+Amikor végzett a tárolóval, távolítsa el azt a [Remove-AzContainerGroup] [ Remove-AzContainerGroup] parancsmagot:
 
  ```azurepowershell-interactive
-Remove-AzureRmContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer
+Remove-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer
 ```
 
 ## <a name="next-steps"></a>További lépések
@@ -104,7 +106,7 @@ Ebben a rövid útmutatóban létrehozott egy tárolópéldányt egy a nyilváno
 [qs-powershell-01]: ./media/container-instances-quickstart-powershell/qs-powershell-01.png
 
 <!-- LINKS -->
-[New-AzureRmResourceGroup]: /powershell/module/azurerm.resources/new-azurermresourcegroup
-[New-AzureRmContainerGroup]: /powershell/module/azurerm.containerinstance/new-azurermcontainergroup
-[Get-AzureRmContainerGroup]: /powershell/module/azurerm.containerinstance/get-azurermcontainergroup
-[Remove-AzureRmContainerGroup]: /powershell/module/azurerm.containerinstance/remove-azurermcontainergroup
+[New-AzResourceGroup]: /powershell/module/az.resources/new-Azresourcegroup
+[New-AzContainerGroup]: /powershell/module/az.containerinstance/new-Azcontainergroup
+[Get-AzContainerGroup]: /powershell/module/az.containerinstance/get-Azcontainergroup
+[Remove-AzContainerGroup]: /powershell/module/az.containerinstance/remove-Azcontainergroup

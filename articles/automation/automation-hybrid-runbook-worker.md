@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d61b39eb0a7b6a35330e0cde2142029b8eb7ce03
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 8fb1b5e06e694368cf80029fe5ce2dcf0749cc62
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55512210"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818374"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatizálhatja az erőforrások az adatközpontban vagy a felhőben a hibrid Runbook-feldolgozó
 
@@ -97,9 +97,11 @@ Eltávolítja a csoportot, akkor először távolítsa el a hibrid Runbook-feldo
 
 ### <a name="hybrid-worker-role"></a>A hibrid feldolgozói szerepkör
 
-A hibrid Runbook-feldolgozó kapcsolódni és regisztrálni a Log Analytics-szel, az azt a portszámot és az ebben a szakaszban leírt URL-hozzáféréssel kell rendelkeznie. Ez az elérés felül, akkor a [portokat és a Microsoft Monitoring Agent számára a szükséges URL-címek](../azure-monitor/platform/agent-windows.md) szeretne csatlakozni a Log Analytics.
+A hibrid Runbook-feldolgozó kapcsolódni és regisztrálni az Azure Monitor naplóira, az azt a portszámot és az ebben a szakaszban leírt URL-hozzáféréssel kell rendelkeznie. Ez az elérés felül, akkor a [portokat és a Microsoft Monitoring Agent számára a szükséges URL-címek](../azure-monitor/platform/agent-windows.md) szeretne csatlakozni az Azure Monitor naplóira.
 
-Ha az ügynök és a Log Analytics szolgáltatás közötti kommunikációhoz proxykiszolgálót használ, győződjön meg arról, hogy elérhetők-e a megfelelő erőforrásokat. Ha tűzfal használatával korlátozza az internethez való hozzáférést, konfigurálnia kell a tűzfalat, hogy engedélyezze a hozzáférést. Ha a Log Analytics átjáró proxyként használja, győződjön meg arról, hibrid feldolgozók van konfigurálva. Ehhez az utasításokért lásd: [konfigurálása a Log Analytics-átjáró Automation hibrid feldolgozók](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway#configure-for-automation-hybrid-workers).
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+Ha az ügynök és az Azure Monitor szolgáltatás közötti kommunikációhoz proxykiszolgálót használ, győződjön meg arról, hogy elérhetők-e a megfelelő erőforrásokat. Ha tűzfal használatával korlátozza az internethez való hozzáférést, konfigurálnia kell a tűzfalat, hogy engedélyezze a hozzáférést. Ha a Log Analytics átjáró proxyként használja, győződjön meg arról, hibrid feldolgozók van konfigurálva. Ehhez az utasításokért lásd: [konfigurálása a Log Analytics-átjáró Automation hibrid feldolgozók](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway#configure-for-automation-hybrid-workers).
 
 A következő portot és az URL-címek a hibrid Runbook-feldolgozó szerepkör, Automation folytatott kommunikációhoz szükségesek:
 

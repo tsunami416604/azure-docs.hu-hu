@@ -8,22 +8,16 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/27/2018
-ms.openlocfilehash: fa32aafa4f042351db7693ee684deafe9ed13fb0
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: a42d2c75913b2c9fdfa0d2b7c3ec2742525a4c97
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748323"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806096"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Az Azure Databricks-fürtök esetén a regionális vészhelyreállítás
 
 Ez a cikk ismerteti a vész helyreállítási-architektúra az Azure Databricks-fürtök esetén hasznos, és a lépések elvégzéséhez a tervező.
-
-## <a name="azure-databricks-overview"></a>Az Azure Databricks áttekintése
-
-Az Azure Databricks egy gyors, könnyű és együttműködő Apache Spark-alapú elemzési szolgáltatása. A big data-adatcsatornák, a data (raw vagy strukturált) az Azure-bA az Azure Data Factory használatával a kötegekben betöltött, vagy streamelt adatok közel valós Kafka, Event Hub vagy az IoT Hub. Ezen adatok földek terület a hosszú távú egy data lake storage, az Azure Blob Storage vagy az Azure Data Lake Storage állandó. Az elemzési munkafolyamat részeként használhatja az Azure Databricks több adatforrás adatainak olvasására például [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md), [Azure Data Lake Storage](../data-lake-store/index.md), [Azure Cosmos DB](../cosmos-db/index.yml) , vagy [Azure SQL Data Warehouse](../sql-data-warehouse/index.md) és a Spark használatával áttörést jelentő insightsba kapcsolja.
-
-![Databricks-folyamat](media/howto-regional-disaster-recovery/databricks-pipeline.png)
 
 ## <a name="azure-databricks-architecture"></a>Az Azure Databricks-architektúra
 
@@ -37,7 +31,7 @@ Ez az architektúra előnye egyik célja, hogy felhasználók csatlakozhatnak az
 
 ## <a name="how-to-create-a-regional-disaster-recovery-topology"></a>A regionális katasztrófa utáni helyreállítás topológiák létrehozása
 
-Megfigyelheti, hogy az előző architektúra leírásában, mivel számos Big Data-adatcsatornák az Azure Databricks használt összetevők: Azure Storage, Azure Database és más adatforrásokhoz. Az Azure databricks a *számítási* a Big Data-folyamat. Ez *rövid élettartamú* jellegűek, ami azt jelenti, hogy közben továbbra is elérhetők az Azure Storage, a *számítási* (az Azure Databricks-fürt) állíthatók le, hogy nem kell fizetnie a számítási mikor, nincs szükség. A *számítási* (az Azure Databricks) és tárolóforrás ugyanabban a régióban kell lennie, hogy a feladatok nagy a késés nem működik.  
+Megfigyelheti, hogy az előző architektúra leírásában, mivel számos Big Data-adatcsatornák az Azure Databricks használt összetevők:  Az Azure Storage, Azure Database és más adatforrásokhoz. Az Azure databricks a *számítási* a Big Data-folyamat. Ez *rövid élettartamú* jellegűek, ami azt jelenti, hogy közben továbbra is elérhetők az Azure Storage, a *számítási* (az Azure Databricks-fürt) állíthatók le, hogy nem kell fizetnie a számítási mikor, nincs szükség. A *számítási* (az Azure Databricks) és tárolóforrás ugyanabban a régióban kell lennie, hogy a feladatok nagy a késés nem működik.  
 
 A saját regionális katasztrófa utáni helyreállítás topológia létrehozásához hajtsa végre ezeket a követelményeket:
 

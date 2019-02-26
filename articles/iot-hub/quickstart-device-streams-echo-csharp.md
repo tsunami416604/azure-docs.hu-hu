@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: edd3912b3674f3a80a81fd47ed490479f663852c
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 7b3a8ac0500652b8c4250b4bc3b4f5514b62c4aa
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830249"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816935"
 ---
 # <a name="quickstart-communicate-to-device-applications-in-c-via-iot-hub-device-streams-preview"></a>Gyors útmutató: Az eszköz alkalmazások kommunikálni C# keresztül az IoT Hub eszköz adatfolyamok (előzetes verzió)
 
@@ -39,8 +39,7 @@ A C# aktuális verzióját a következő paranccsal ellenőrizheti a fejlesztői
 dotnet --version
 ```
 
-Töltse le a C#-mintaprojektet a https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip címről, és bontsa ki a ZIP-archívumot.
-
+Töltse le a C#-mintaprojektet a https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip címről, és bontsa ki a ZIP-archívumot. Eszköz és a szolgáltatás oldalán kell.
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
@@ -86,18 +85,17 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
     Jegyezze fel, a visszaadott érték, amely a következőhöz hasonló:
 
    `"HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"`
-    
 
 ## <a name="communicate-between-device-and-service-via-device-streams"></a>Eszköz és szolgáltatás keresztül eszköz adatfolyamok közötti kommunikáció
 
 ### <a name="run-the-service-side-application"></a>A Szolgáltatásoldali alkalmazás futtatása
 
-Navigáljon a `device-streams-echo/service` a kicsomagolt projektet tartalmazó mappában. Szüksége lesz a következő információkat hasznos:
+Navigáljon a `iot-hub/Quickstarts/device-streams-echo/service` a kicsomagolt projektet tartalmazó mappában. Szüksége lesz a következő információkat hasznos:
 
 | Paraméter neve | Paraméter értéke |
 |----------------|-----------------|
-| `ServiceConnectionString` | Az IoT hub szolgáltatáskapcsolati karakterláncát. |
-| `DeviceId` | A korábban létrehozott eszköz azonosítóját. |
+| `ServiceConnectionString` | Adja meg az IoT hub szolgáltatáskapcsolati karakterláncát. |
+| `DeviceId` | Adja meg az eszköz azonosítója, a korábban létrehozott például Sajáteszköz. |
 
 Fordítsa le és futtassa a kódot az alábbiak szerint:
 
@@ -109,19 +107,22 @@ dotnet build
 
 # Run the application
 # In Linux/MacOS
-dotnet run $ServiceConnectionString MyDevice
+dotnet run "<ServiceConnectionString>" "<MyDevice>"
 
 # In Windows
-dotnet run %ServiceConnectionString% MyDevice
+dotnet run <ServiceConnectionString> <MyDevice>
 ```
+
+> [!NOTE]
+> Időtúllépés történik, ha az eszköz ügyféloldali alkalmazás időben nem válaszol.
 
 ### <a name="run-the-device-side-application"></a>Az eszközoldali alkalmazás futtatása
 
-Navigáljon a `device-streams-echo/device` könyvtárat a kicsomagolt projektet tartalmazó mappában. Szüksége lesz a következő információkat hasznos:
+Navigáljon a `iot-hub/Quickstarts/device-streams-echo/device` könyvtárat a kicsomagolt projektet tartalmazó mappában. Szüksége lesz a következő információkat hasznos:
 
 | Paraméter neve | Paraméter értéke |
 |----------------|-----------------|
-| `DeviceConnectionString` | A kapcsolati karakterláncot a korábban létrehozott eszköz. |
+| `DeviceConnectionString` | Adja meg az IoT hub, az eszköz kapcsolati karakterláncát. |
 
 Fordítsa le és futtassa a kódot az alábbiak szerint:
 
@@ -133,28 +134,23 @@ dotnet build
 
 # Run the application
 # In Linux/MacOS
-dotnet run $DeviceConnectionString
+dotnet run "<DeviceConnectionString>"
 
 # In Windows
-dotnet run %DeviceConnectionString%
+dotnet run <DeviceConnectionString>
 ```
 
 Az utolsó lépés végén a Szolgáltatásoldali program egy streamet, az eszközre, és lesz létrejöttét követően megkezdődik a szolgáltatás egy karakterláncpuffert küldenie a streamet. Ebben a példában a Szolgáltatásoldali ugyanazokat az adatokat az eszközre sikeres kétirányú kommunikációt a két alkalmazás közötti bemutatásához program egyszerűen majd továbbítja vissza. Lásd az alábbi ábrát.
 
 Az eszköz oldalán konzolkimenetet: ![helyettesítő szöveg](./media/quickstart-device-streams-echo-csharp/device-console-output.png "Konzolkimenetet eszköz-oldalán")
 
-
 A szolgáltatás oldalon konzolkimenetet: ![helyettesítő szöveg](./media/quickstart-device-streams-echo-csharp/service-console-output.png "Konzolkimenetet Szolgáltatásoldali-")
 
-
-
 A forgalmat küld a rendszer a stream keresztül fog bújtatni közvetlenül elküldött helyett az IoT Hub segítségével. Ez [értékelemeket](./iot-hub-device-streams-overview.md#benefits).
-
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources-device-streams.md)]
-
 
 ## <a name="next-steps"></a>További lépések
 

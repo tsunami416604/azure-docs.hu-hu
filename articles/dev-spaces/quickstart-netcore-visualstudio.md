@@ -12,12 +12,12 @@ ms.date: 07/09/2018
 ms.topic: quickstart
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
-ms.openlocfilehash: 224b8fac3634e5ee9e5ffadc7664bd046467d2ce
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 89fd64be0ea7b5b02ed446f2ee6d4c6a9c69dd0e
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660850"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819684"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-visual-studio"></a>Gyors útmutató: A Kubernetes fejlesztői tárolóhely létrehozása az Azure fejlesztési szóközöket (a .NET Core és a Visual Studio)
 
@@ -32,9 +32,7 @@ Ebből az útmutatóból a következőket tudhatja meg:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az EastUS, EastUS2, CentralUS, WestUS2, WestEurope, SoutheastAsia, CanadaCentral vagy CanadaEast régióban lévő, a Kubernetes 1.9.6-os vagy újabb verzióját futtató Kubernetes-fürt, amelyen engedélyezve van a HTTP-alkalmazásútválasztás.
-
-  ![Ne felejtse el engedélyezni a HTTP-alkalmazások útválasztását.](media/common/Kubernetes-Create-Cluster-3.PNG)
+- Egy Kubernetes-fürtön futó Kubernetes 1.9.6 vagy újabb, az USA keleti régiója, EastUS2, CentralUS, WestUS2, WestEurope, SoutheastAsia, CanadaCentral vagy CanadaEast régióban.
 
 - Visual Studio 2017 telepített webfejlesztési számítási feladattal. Ha nincs telepítve, [innen](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) letöltheti.
 

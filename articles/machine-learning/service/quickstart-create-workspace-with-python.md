@@ -11,12 +11,12 @@ author: hning86
 ms.author: haining
 ms.date: 01/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1962cef85c5e663de640f296a6e8e9efd5a1f4d6
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 513df9f68fdd54b5dc90e57bd8389688c46bf615
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310355"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804246"
 ---
 # <a name="quickstart-use-the-python-sdk-to-get-started-with-azure-machine-learning"></a>Gyors útmutató: Az Azure Machine Learning használatának első lépései a Python SDK használatával
 
@@ -60,16 +60,18 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot meg
 
 Azt javasoljuk, hogy az SDK telepítése előtt először hozzon létre egy elkülönített Python-környezetet. Bár ez a cikk [Miniconda](https://docs.conda.io/en/latest/miniconda.html), is használhatja teljes [Anaconda](https://www.anaconda.com/) telepítve vagy [Python virtualenv](https://virtualenv.pypa.io/en/stable/).
 
+Ebben a rövid útmutatóban található utasításokat a rövid útmutató és oktatóanyag jegyzetfüzetek futtatásához szükséges összes csomagokat telepíti.  Más mintafüzetek további összetevők lehet szükség.  Ezek az összetevők kapcsolatos további információkért lásd: [telepítse az Azure Machine Learning SDK Pythonhoz készült](https://docs.microsoft.com/python/api/overview/azure/ml/install).
+
 ### <a name="install-miniconda"></a>A Miniconda telepítése
 
-[Töltse le és telepítse a Miniconda](https://docs.conda.io/en/latest/miniconda.html). Válassza ki a Python 3.7 vagy újabb verzió telepítéséhez. Ne válassza ki a Python 2.x verzióját.  
+[Töltse le és telepítse a Miniconda](https://docs.conda.io/en/latest/miniconda.html). Válassza ki a Python 3.7 verzió telepítéséhez. Ne válassza ki a Python 2.x verzióját.  
 
 ### <a name="create-an-isolated-python-environment"></a>Elkülönített Python-környezet létrehozása
 
-1. Nyisson meg egy parancssori ablakot, majd hozzon létre egy új conda-környezetet nevű *myenv* , és telepítse a Python 3.6-ot. Az Azure Machine Learning-SDK-t fog dolgozhat a Python 3.5.2-es verzióját vagy újabb, de az automatizált machine learning-összetevők nem, teljes körűen működőképes a Python 3.7-es verzióját.
+1. Nyisson meg egy parancssori ablakot, majd hozzon létre egy új conda-környezetet nevű *myenv* és telepítik a Pythont 3.6.5. Az Azure Machine Learning-SDK-t fog dolgozhat a Python 3.5.2-es verzióját vagy újabb, de az automatizált machine learning-összetevők nem, teljes körűen működőképes a Python 3.7-es verzióját.  Összetevők és a csomagok letöltése közben a környezet létrehozása több percig tart.
 
     ```shell
-    conda create -n myenv -y Python=3.6
+    conda create -n myenv python=3.6.5
     ```
 
 1. Aktiválja a környezetet.
@@ -78,18 +80,24 @@ Azt javasoljuk, hogy az SDK telepítése előtt először hozzon létre egy elk�
     conda activate myenv
     ```
 
+1. Engedélyezze a környezetspecifikus ipython kernelekkel:
+
+    ```shell
+    conda install notebook ipykernel
+    ```
+
+    Ezután hozzon létre a kernel:
+
+    ```shell
+    ipython kernel install --user
+    ```
+
 ### <a name="install-the-sdk"></a>Az SDK telepítése
 
 1. Aktivált conda a környezetben telepítse a Machine Learning SDK alapvető összetevői a Jupyter notebook képességeket.  A telepítés befejezéséhez a számítógép konfigurációja alapján néhány percet vesz igénybe.
 
   ```shell
     pip install --upgrade azureml-sdk[notebooks]
-    ```
-
-1. Jupyter Notebook-kiszolgáló telepítése a conda-környezetet.
-
-  ```shell
-    conda install -y nb_conda
     ```
 
 1. Az Azure Machine Learning-oktatóanyagok használandó ebben a környezetben, az ilyen csomagok telepítéséhez.

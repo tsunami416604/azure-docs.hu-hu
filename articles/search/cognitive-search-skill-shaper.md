@@ -8,21 +8,19 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 01/17/2019
+ms.date: 02/22/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: a1f5a698ee76ebd0561bd19ff1a23d0f04be0771
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: c55783e9b209a1280a21edca34b75e72481f4cb6
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54410115"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806988"
 ---
 #   <a name="shaper-cognitive-skill"></a>Shaper cognitive szakértelem
 
-A **Shaper** szakértelem hoz létre összetett összetett mezők (más néven többrészes mezők) támogatásához. A komplex típus mező több részből áll, de úgy viselkedik, mint az Azure Search-index egyetlen elemet. Összevont mezők keresési forgatókönyvekben bizonyulhat hasznosnak, például a vezetéknevet és az utónevet összefűzhet egy mezőjéhez, város és állam egyetlen mezőt, vagy nevét és a születési dátumát egyedi identitása létrehozásához egyetlen mezőbe.
-
-A **Shaper** szakértelem lehetővé teszi, hogy lényegében-struktúra létrehozása, határozza meg, hogy a struktúra tagjai nevét és minden tagjának értéket rendelni.
+A **Shaper** szakértelem összesíti több bemenet egy összetett típus, amely később a Adatbővítés folyamat lehet hivatkozni. A **Shaper** szakértelem lehetővé teszi, hogy lényegében-struktúra létrehozása, határozza meg, hogy a struktúra tagjai nevét és minden tagjának értéket rendelni. Összevont mezők keresési forgatókönyvekben bizonyulhat hasznosnak, például a vezetéknevet és az utónevet kombinálása egy egyszeres szerkezet, város és a egy egyszeres szerkezet, vagy a név állapotot és egyedi identitása létrehozásához egyetlen struktúrába születési dátumot.
 
 Alapértelmezés szerint ez a módszer támogatja az objektumok, amely egy szintnél mélyebb. Az összetettebb objektumok láncolhatja össze több **Shaper** lépéseket.
 
@@ -58,7 +56,7 @@ Az alábbi példa neveket tartalmaz a tag bemeneteként. A kimeneti struktúra (
   "outputs": [
     {
       "name": "output",
-      "targetName": analyzedText"
+      "targetName": "analyzedText"
     }
   ]
 }
@@ -125,8 +123,8 @@ Ebben a forgatókönyvben Shaper szakértelem definíciója az alábbi példáho
     ],
     "outputs": [
         {
-            "output": "titlesAndChapters",
-            "targetName": "analyzedText"
+            "name": "output",
+            "targetName": "titlesAndChapters"
         }
     ]
 }

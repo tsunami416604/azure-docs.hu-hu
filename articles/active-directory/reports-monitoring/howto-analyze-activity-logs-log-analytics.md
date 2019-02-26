@@ -17,18 +17,20 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2e565f5b9bcd9e3e79423c742b2c95c00abd97b
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: aca7f0dbe0906ea0e1572f4580d8937ebf3eee64
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454758"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823254"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs-preview"></a>Elemezheti az Azure ad-ben tevékenységeket tartalmazó naplók az Azure Monitor naplóira (előzetes verzió)
 
 Miután [integrálása az Azure ad-ben tevékenységeket tartalmazó naplók az Azure Monitor naplóira](howto-integrate-activity-logs-with-log-analytics.md), a teljesítmény az Azure Monitor-naplók segítségével betekintést nyerhet a környezet. Emellett telepíthet a [Log analytics az Azure Active Directory lap megtekintései naplók](howto-install-use-log-analytics-views.md) érheti el a naplózási és bejelentkezési események körül előre elkészített jelentéseket a környezetben.
 
 Ebből a cikkből elsajátíthatja, hogyan elemezheti az Azure AD-Tevékenységnaplók a Log Analytics-munkaterület. 
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek 
 
