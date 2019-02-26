@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: aca5b1613a6500b3aeca1a7074cabdce50023510
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 0f5de24d42ccc930a4746251b9f466f241c3508e
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789500"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806708"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>A SUSE Linux Enterprise Server Azure virtuális gépeken SAP Hana magas rendelkezésre állás
 
@@ -45,7 +45,7 @@ ms.locfileid: "53789500"
 [suse-hana-ha-guide]:https://www.suse.com/docrep/documents/ir8w88iwu7/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf
 [sap-swcenter]:https://launchpad.support.sap.com/#/softwarecenter
 [template-multisid-db]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-db-md%2Fazuredeploy.json
-[template-converged]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-converged%2Fazuredeploy.json
+[template-converged]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-converged-md%2Fazuredeploy.json
 
 A helyszíni fejlesztési vagy a HANA-Rendszerreplikálást használja, vagy megosztott tárterületet használnak, a SAP HANA magas rendelkezésre állás érdekében.
 Az Azure-beli virtuális gépek (VM) HANA Rendszerreplikáció az Azure-on jelenleg az egyetlen támogatott magas rendelkezésre állású függvény. SAP HANA-replikáció egy elsődleges csomópontot és legalább egy másodlagos csomópont áll. Az adatok az elsődleges csomópont változásai replikálódnak a másodlagos csomópontra szinkron vagy aszinkron módon.
@@ -84,7 +84,7 @@ SAP HANA magas rendelkezésre állás, telepítve van a két virtuális gépen. 
 
 ![SAP HANA magas rendelkezésre állás – Áttekintés](./media/sap-hana-high-availability/ha-suse-hana.png)
 
-Az SAP HANA-Rendszerreplikálást telepítő használ egy dedikált virtuális állomásnevet és a virtuális IP-címek. Az Azure-ban a terheléselosztó virtuális IP-cím szükséges. Az alábbi lista a terheléselosztó konfigurációját jeleníti meg:
+SAP HANA System Replication setup uses a dedicated virtual hostname and virtual IP addresses. Az Azure-ban a terheléselosztó virtuális IP-cím szükséges. Az alábbi lista a terheléselosztó konfigurációját jeleníti meg:
 
 * Előtér-konfiguráció: IP-cím 10.0.0.13 hn1-DB-hez készült
 * Háttér-konfiguráció: HANA-Rendszerreplikálást részének kell lennie az összes virtuális gépek elsődleges hálózati adaptere csatlakozik
@@ -201,9 +201,9 @@ Kövesse a [támasztja a SUSE Linux Enterprise Server az Azure-beli beállítás
 ## <a name="install-sap-hana"></a>Az SAP HANA telepítése
 
 A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
-- **[A]** : A lépés minden csomópont számára vonatkozik.
-- **[1]** : A lépés csak 1 csomópont vonatkozik.
-- **a(z) [2]** : A lépés fürtcsomópont 2 támasztja csak vonatkozik.
+- **[A]**: A lépés minden csomópont számára vonatkozik.
+- **[1]**: A lépés csak 1 csomópont vonatkozik.
+- **[2]**: A lépés fürtcsomópont 2 támasztja csak vonatkozik.
 
 1. **[A]**  a lemez elrendezése beállítása: **A Logical Volume Manager (LVM)**.
 
@@ -320,7 +320,7 @@ Az SAP HANA-Rendszerreplikálást telepítéséhez hajtsa végre a fejezete 4 a 
    * Válassza ki a további összetevők telepítéséhez: Adja meg **1**.
    * Adja meg a telepítési útvonal [/ hana/megosztott]: Válassza ki a adja meg.
    * Adja meg a helyi gazdagép neve [.]: Válassza ki a adja meg.
-   * Biztosan további állomásokat adhat hozzá a rendszer? (i/n) [n]: Válassza ki a adja meg.
+   * Biztosan további állomásokat adhat hozzá a rendszer? (y/n) [n]: Válassza ki a adja meg.
    * Adja meg az SAP HANA rendszer-azonosító: Adja meg például a HANA biztonsági azonosító: **HN1**.
    * Adja meg a [00] száma: Adja meg a HANA-példányok számát. Adja meg **03** Ha használja az Azure-sablon vagy követni a manuális központi telepítése című szakaszát.
    * Válassza ki az adatbázis mód / adja meg az Index [1]: Válassza ki a adja meg.
@@ -329,18 +329,18 @@ Az SAP HANA-Rendszerreplikálást telepítéséhez hajtsa végre a fejezete 4 a 
    * Adja meg a helyet, Log kötetek [/ hana/log/HN1]: Válassza ki a adja meg.
    * Maximális memória mennyiségét korlátozza? [n]: Válassza ki a adja meg.
    * Adja meg a tanúsítvány állomásneve gazdagép "..." [...]: Válassza ki a adja meg.
-   * Adja meg az SAP gazdagép ügynök felhasználói (sapadm) jelszavát: Adja meg a gazdagép-ügynök felhasználói jelszót.
-   * SAP-gazdagép ügynök felhasználó (sapadm) jelszó megerősítése: Adja meg a gazdagép ügynök felhasználói jelszót kétszer.
+   * Enter SAP Host Agent User (sapadm) Password: Adja meg a gazdagép-ügynök felhasználói jelszót.
+   * Confirm SAP Host Agent User (sapadm) Password: Adja meg a gazdagép ügynök felhasználói jelszót kétszer.
    * Adja meg a rendszergazdát (hdbadm) jelszavát: Adja meg a rendszergazda jelszavát.
    * A rendszergazda (hdbadm) jelszó megerősítése: Adja meg a rendszer rendszergazdai jelszót kétszer.
    * Adja meg a rendszer rendszergazdai kezdőkönyvtár [/ usr/sap/HN1/home]: Válassza ki a adja meg.
    * Adja meg a rendszer rendszergazdai bejelentkezési rendszerhéj [/ bin/sh]: Válassza ki a adja meg.
    * Adja meg a rendszergazda felhasználó azonosítója [1001]: Válassza ki a adja meg.
    * Adjon meg azonosító a felhasználói csoportot (sapsys) [79]: Válassza ki a adja meg.
-   * Adatbázis (rendszer) felhasználói jelszó: Adja meg az adatbázis felhasználói jelszót.
+   * Enter Database User (SYSTEM) Password: Adja meg az adatbázis felhasználói jelszót.
    * Adatbázis (rendszer) felhasználói jelszó megerősítése: Adja meg az adatbázis felhasználói jelszót kétszer.
    * Számítógép újraindítása után indítsa újra a rendszert? [n]: Válassza ki a adja meg.
-   * Folytatja? (i/n): Ellenőrizze az összegzést. Adja meg **y** folytatásához.
+   * Folytatja? (y/n): Ellenőrizze az összegzést. Adja meg **y** folytatásához.
 
 1. **[A]**  SAP gazdagép-ügynök frissítése.
 
@@ -353,9 +353,9 @@ Az SAP HANA-Rendszerreplikálást telepítéséhez hajtsa végre a fejezete 4 a 
 
 A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
 
-* **[A]** : A lépés minden csomópont számára vonatkozik.
-* **[1]** : A lépés csak 1 csomópont vonatkozik.
-* **a(z) [2]** : A lépés fürtcsomópont 2 támasztja csak vonatkozik.
+* **[A]**: A lépés minden csomópont számára vonatkozik.
+* **[1]**: A lépés csak 1 csomópont vonatkozik.
+* **[2]**: A lépés fürtcsomópont 2 támasztja csak vonatkozik.
 
 1. **[1]**  a bérlői adatbázis létrehozása.
 
@@ -398,9 +398,9 @@ A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
 
 A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
 
-* **[A]** : A lépés minden csomópont számára vonatkozik.
-* **[1]** : A lépés csak 1 csomópont vonatkozik.
-* **a(z) [2]** : A lépés fürtcsomópont 2 támasztja csak vonatkozik.
+* **[A]**: A lépés minden csomópont számára vonatkozik.
+* **[1]**: A lépés csak 1 csomópont vonatkozik.
+* **[2]**: A lépés fürtcsomópont 2 támasztja csak vonatkozik.
 
 1. **[1]**  Hozza létre a szükséges felhasználókat.
 
@@ -692,7 +692,7 @@ A következő tesztek elvégzése a teszt leírása az SAP HANA SR teljesítmén
 A következő vizsgálat leírások feltételezzük PREFER_SITE_TAKEOVER = "true" és a AUTOMATED_REGISTER = "false".
 MEGJEGYZÉS: A következő ellenőrzés úgy tervezték, hogy a feladatütemezési környezetben futtatható, és az előző tesztek kilépési állapotát függnek.
 
-1. 1. TESZT: LEÁLLÍTÁS ELSŐDLEGES CSOMÓPONTON 1 ADATBÁZIS
+1. TEST 1: LEÁLLÍTÁS ELSŐDLEGES CSOMÓPONTON 1 ADATBÁZIS
 
    Erőforrás állapotának a vizsgálat megkezdése előtt:
 
@@ -856,7 +856,7 @@ MEGJEGYZÉS: A következő ellenőrzés úgy tervezték, hogy a feladatütemezé
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-1. 5. TESZT: AZ ÖSSZEOMLÁSI ELSŐDLEGES HELY CSOMÓPONTOT (1. CSOMÓPONT)
+1. TEST 5: AZ ÖSSZEOMLÁSI ELSŐDLEGES HELY CSOMÓPONTOT (1. CSOMÓPONT)
 
    Erőforrás állapotának a vizsgálat megkezdése előtt:
 
@@ -907,7 +907,7 @@ MEGJEGYZÉS: A következő ellenőrzés úgy tervezték, hogy a feladatütemezé
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
    </code></pre>
 
-1. 6. TESZT: ÖSSZEOMLÁS-MÁSODLAGOS HELY CSOMÓPONTOT (2 CSOMÓPONT)
+1. TEST 6: ÖSSZEOMLÁS-MÁSODLAGOS HELY CSOMÓPONTOT (2 CSOMÓPONT)
 
    Erőforrás állapotának a vizsgálat megkezdése előtt:
 
@@ -1032,7 +1032,7 @@ MEGJEGYZÉS: A következő ellenőrzés úgy tervezték, hogy a feladatütemezé
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-1. 9. TESZT: MÁSODLAGOS HELY (2 CSOMÓPONT) CSOMÓPONTON FUTÓ MÁSODLAGOS HANA-ADATBÁZIS ÖSSZEOMLÁS
+1. TEST 9: MÁSODLAGOS HELY (2 CSOMÓPONT) CSOMÓPONTON FUTÓ MÁSODLAGOS HANA-ADATBÁZIS ÖSSZEOMLÁS
 
    Erőforrás állapotának a vizsgálat megkezdése előtt:
 
