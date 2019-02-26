@@ -355,7 +355,7 @@ Az Azure Maps használt általános szavak listáját a következő:
 
 <a name="tile-layer"></a> **Mozaikréteg**: A réteg (téglalap alakú szakaszok) csempék összeállítsanak egy folyamatos rétegre szerint jelenik meg. A csempék vagy raszter csempék kép vagy vektoros csempék. Raszter csempe rétegek általában jelennek meg időben és képek egy kiszolgálón tárolja. Ez is igénybe vehet, nagy mennyiségű tárhely. Vektor csempe rétegek vannak leképezve az ügyfélalkalmazásban menet közben, így a kiszolgáló oldalán tárhellyel kapcsolatos követelmények kisebbek.
 
-<a name="time-zone"></a> **Időzóna**: Egy régióban, amely betartja a jogi, kereskedelmi és közösségi célból egy egységes téli idő világszerte. Kövesse a határok és a felosztás országok általában időzónákban.
+<a name="time-zone"></a> **Időzóna**: Egy régióban, amely betartja a jogi, kereskedelmi és közösségi célból egy egységes téli idő világszerte. Kövesse a határok és a felosztás országok/régiók általában időzónákban.
 
 <a name="transaction"></a> **Tranzakció**: Az Azure Maps tranzakciós licencelési modellt alkalmaz, ahol;
 

@@ -260,9 +260,9 @@ Ez az egyezési feltétellel lehetővé teszi számos testreszabásokat kérést
 - URL-cím elérési út helyettesítő egyezés: Állítsa be a [URL-cím elérési út helyettesítő feltételnek megfelelő](#url-path-wildcard) azt a könyvtárat, biztonságát. 
     Fűzze hozzá a csillag, győződjön meg arról, hogy az összes gyermekre a hozzáférést a szabály által korlátozva lesznek relatív elérési út végén.
 
-- Ország egyezés: Állítsa be az ország egyeztetési feltételt a kívánt készlethez országok.
-   - Engedélyezése: Az ország az egyezési feltétellel beállítása **Neodpovídá** határozzák meg az URL-cím elérési út helyettesítő egyeztetési feltételt a helyen tárolt tartalmat csak a megadott országok hozzáférésének engedélyezéséhez.
-   - Blokkolás: Az ország az egyezési feltétellel beállítása **egyezések** nem férhet hozzá az URL-cím elérési út helyettesítő egyezési feltételei által meghatározott helyen tárolt tartalmat a megadott országok blokkolására.
+- Ország/régió egyezés Állítsa be az ország egyeztetési feltételt a kívánt készlethez országok/régiók.
+   - Engedélyezése: Az ország az egyezési feltétellel beállítása **Neodpovídá** határozzák meg az URL-cím elérési út helyettesítő egyeztetési feltételt a helyen tárolt tartalmat csak a megadott országok/régiók hozzáférésének engedélyezéséhez.
+   - Blokkolás: Az ország az egyezési feltétellel beállítása **egyezések** nem férhet hozzá az URL-cím elérési út helyettesítő egyezési feltételei által meghatározott helyen tárolt tartalmat a megadott országok/régiók blokkolására.
 
 - Hozzáférés (403) szolgáltatás megtagadása: Engedélyezze a [hozzáférés megtagadása (403) funkció](cdn-rules-engine-reference-features.md#deny-access-403) az ország szerinti szűrés funkció engedélyezése vagy letiltása részének replikálni.
 

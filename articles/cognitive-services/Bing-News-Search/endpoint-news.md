@@ -31,7 +31,7 @@ Beolvasása hírek keresési eredmények a Bing News Search API segítségével,
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/search
 ```
 
-Keresési lekérdezés alapján hírek elemeket adja vissza. Ha a keresési lekérdezés üres, akkor az API különböző kategóriák legfontosabb híreket visszaadása. Kódolás a keresési kifejezést, és való hozzáfűzésével URL-cím alapján egy lekérdezés küldése a`q=""` paraméter. Tekintse meg a rendelkezésre állás érdekében [támogatott országok és piacok](language-support.md#supported-markets-for-news-search-endpoint).
+Keresési lekérdezés alapján hírek elemeket adja vissza. Ha a keresési lekérdezés üres, akkor az API különböző kategóriák legfontosabb híreket visszaadása. Kódolás a keresési kifejezést, és való hozzáfűzésével URL-cím alapján egy lekérdezés küldése a`q=""` paraméter. Tekintse meg a rendelkezésre állás érdekében [támogatott országok/régiók és piacok](language-support.md#supported-markets-for-news-search-endpoint).
 
 ### <a name="top-news-items-by-category"></a>Híreket elemek kategória szerint
 
@@ -39,7 +39,7 @@ Keresési lekérdezés alapján hírek elemeket adja vissza. Ha a keresési lek�
 GET https://api.cognitive.microsoft.com/bing/v7.0/news  
 ```
 
-Kategória szerint a híreket elemeket adja vissza. Kifejezetten kérheti a legfontosabb üzleti, sport vagy értéket használó cikkeket Szórakozás `category=business`, `category=sports`, vagy `category=entertainment`.  A `category` paraméter csak akkor használható együtt a `/news` URL-CÍMÉT. Néhány hivatalos követelmények megadása a kategóriák; Tekintse meg `category` a a [lekérdezési paraméter](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query-parameters) dokumentációját. Kódolás a keresési kifejezést, és való hozzáfűzésével URL-cím alapján egy lekérdezés küldése a`q=""` paraméter. Tekintse meg a rendelkezésre állás érdekében [támogatott országok és piacok](language-support.md#supported-markets-for-news-endpoint).
+Kategória szerint a híreket elemeket adja vissza. Kifejezetten kérheti a legfontosabb üzleti, sport vagy értéket használó cikkeket Szórakozás `category=business`, `category=sports`, vagy `category=entertainment`.  A `category` paraméter csak akkor használható együtt a `/news` URL-CÍMÉT. Néhány hivatalos követelmények megadása a kategóriák; Tekintse meg `category` a a [lekérdezési paraméter](https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference#query-parameters) dokumentációját. Kódolás a keresési kifejezést, és való hozzáfűzésével URL-cím alapján egy lekérdezés küldése a`q=""` paraméter. Tekintse meg a rendelkezésre állás érdekében [támogatott országok/régiókés piacok](language-support.md#supported-markets-for-news-endpoint).
 
 ### <a name="trending-news-topics"></a>Népszerű hírek témakörök 
 
@@ -47,7 +47,7 @@ Kategória szerint a híreket elemeket adja vissza. Kifejezetten kérheti a legf
 GET https://api.cognitive.microsoft.com/bing/v7.0/news/trendingtopics
 ```
 
-Hírtémakörök, hogy a rendszer jelenleg népszerű lett a közösségi hálózatokkal adja vissza. Ha a `/trendingtopics` beállítás részét képezi, a Bing search figyelmen kívül hagyja a számos más paramétereket, mint például `freshness` és `?q=""`. Tekintse meg a rendelkezésre állás érdekében [támogatott országok és piacok](language-support.md#supported-markets-for-news-trending-endpoint).
+Hírtémakörök, hogy a rendszer jelenleg népszerű lett a közösségi hálózatokkal adja vissza. Ha a `/trendingtopics` beállítás részét képezi, a Bing search figyelmen kívül hagyja a számos más paramétereket, mint például `freshness` és `?q=""`. Tekintse meg a rendelkezésre állás érdekében [támogatott országok/régiók és piacok](language-support.md#supported-markets-for-news-trending-endpoint).
 
 ## <a name="next-steps"></a>További lépések
 

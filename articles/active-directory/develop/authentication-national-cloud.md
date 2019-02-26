@@ -53,7 +53,7 @@ A következő táblázat felsorolja az alap URL-címeket kell regisztrálni egy 
 
 Az országos felhők minden környezetben külön-külön felhasználóhitelesítést, és külön hitelesítés végpontokat.
 
-A következő táblázat felsorolja az alap URL-címek nemzeti felhőnként jogkivonatok beszerzésére használható Azure Active Directory (Azure AD-) végpontjait.
+A következő táblázat felsorolja az alap URL-címek országos felhőnként jogkivonatok beszerzésére használható Azure Active Directory (Azure AD-) végpontjait.
 
 | Országos felhőben | Az Azure AD-hitelesítési végpont
 | --- | --- |

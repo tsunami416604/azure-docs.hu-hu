@@ -69,7 +69,7 @@ Ezek a módosítások végrehajtásához kövesse az alábbi lépéseket.
 Az Azure Marketplace-ajánlatok:
 
 2. Válassza ki a **termékváltozatok** fülre.  Válassza ki a Termékváltozat módosítása.
-3. Kattintson a **kiválasztása országok** gomb alatt a **ország/régió rendelkezésre állási** mező.
+3. Kattintson a **kiválasztása országok/régiók** gomb alatt a **ország/régió rendelkezésre állási** mező.
 4. A régió rendelkezésre állási párbeszédpanelen régiók hozzáadása vagy eltávolítása a Ez a termékváltozat.
 
 Az appsource-ban a következőket kínálja:
