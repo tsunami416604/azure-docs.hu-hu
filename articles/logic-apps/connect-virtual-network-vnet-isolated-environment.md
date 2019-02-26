@@ -8,18 +8,18 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 02/20/2019
-ms.openlocfilehash: 63d32aa3c8e64cc8ccfab4c97c48cef021c1781a
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.date: 02/24/2019
+ms.openlocfilehash: eb082d5194cb6948668c4944208ec11fab987206
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750344"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806523"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Csatlakozás az Azure virtuális hálózatok az Azure Logic Apps integrációs service-környezet (ISE) használatával
 
 > [!NOTE]
-> Ez a funkció akkor a *privát előzetes verzió*. A privát előzetes verzióra, [Itt a kérelem létrehozása](https://aka.ms/iseprivatepreview).
+> Ez a funkció akkor a *nyilvános előzetes verzióban*. 
 
 Forgatókönyvek, ahol a logic apps és az integrációs fiókok kell a hozzáférést egy [az Azure virtual network](../virtual-network/virtual-networks-overview.md), hozzon létre egy [ *integrációs szolgáltatás környezet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). Az ISE-ben egy dedikált tárolási használó magán- és elkülönített környezet és más erőforrások elkülönítve a nyilvános vagy "globális" Logic Apps szolgáltatást. Ez a fajta elkülönítés is csökkenti, amelyeket más Azure-bérlőt az alkalmazások teljesítményére hatással. Az ISE *beszúrta* be az Azure virtuális hálózathoz, amely azután telepíti a Logic Apps szolgáltatás a virtuális hálózatban. Amikor létrehoz egy logikai alkalmazásban vagy integrációs fiókot, válassza ki az ISE azok helyétől. A logikai alkalmazás vagy az integrációs fiók majd közvetlenül hozzáférhet a erőforrások, például a virtuális gépek (VM), kiszolgálók, rendszerek és szolgáltatások, a virtuális hálózaton.
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: deb3b155af464e69c6811414135913917cf2193a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: fb8dedac8b795ec127d7b4a14728d73c9397a1dd
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716463"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807405"
 ---
 # <a name="configure-apps-in-azure-app-service"></a>Alkalmazások konfigurálása az Azure App Service-ben
 
@@ -38,7 +38,7 @@ A **Alkalmazásbeállítások** panel alatt különböző kategóriákba vannak 
 **Keretrendszer-verziókat**. Állítsa be ezeket a beállításokat, ha az alkalmazás használja, minden ezek a keretrendszerek: 
 
 * **.NET-keretrendszer**: Állítsa be a .NET-keretrendszer verzióját. 
-* **A PHP**: A PHP-verzió beállítása vagy **OFF** PHP letiltása. 
+* **PHP**: A PHP-verzió beállítása vagy **OFF** PHP letiltása. 
 * **Java**: Válassza ki a Java-verzió vagy **OFF** Java letiltásához. Használja a **webes tároló** választhat a Tomcat és a Jetty-verziót.
 * **Python**: Válassza ki a Python-verzió vagy **OFF** Python letiltása.
 
@@ -49,7 +49,7 @@ Technikai okokból Java engedélyezése az alkalmazás letiltja a .NET, PHP és 
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-**Webes szoftvercsatornák**. Állítsa be **ON** a WebSocket protokoll; például, ha az alkalmazás által használt [Az ASP.NET SignalR] vagy [a Socket.IO kódtár](https://socket.io/).
+**Webes szoftvercsatornák**. Állítsa be **ON** a WebSocket protokoll; például, ha az alkalmazás által használt [ASP.NET SignalR] vagy [a Socket.IO kódtár](https://socket.io/).
 
 <a name="alwayson"></a>
 **Always On**. Alapértelmezés szerint alkalmazások törlődnek a memóriából, ha bizonyos ideig inaktív azok. Ez lehetővé teszi, hogy a rendszer erőforrások megőrzése. Alap vagy Standard módban engedélyezheti **Always On** , hogy az alkalmazás betöltése a folyamatosan. Ha az alkalmazás fut a folyamatos webjobs-feladatok vagy futtatása webjobs-feladatok által aktivált egy CRON-kifejezés használatával, akkor engedélyezze a **Always On**, vagy a webjobs-feladatok futása nem megbízható.
@@ -86,7 +86,7 @@ A .NET-alkalmazások esetén ezek a kapcsolati karakterláncok elhelyezte a .NET
 
 A PHP, Python, Java és a Node-alkalmazások ezeket a beállításokat futásidőben, a kapcsolat típusa előtaggal környezeti változókként érhetők el lesz. A környezeti változó előtagok a következők: 
 
-* SQL-kiszolgáló: `SQLCONNSTR_`
+* SQL Server: `SQLCONNSTR_`
 * MySQL: `MYSQLCONNSTR_`
 * SQL-adatbázis: `SQLAZURECONNSTR_`
 * Egyéni: `CUSTOMCONNSTR_`
@@ -163,22 +163,23 @@ Az üzembe helyezési pontok megtekintéséhez kattintson **minden beállítás*
 ### <a name="monitoring"></a>Figyelés
 Alap vagy Standard módban tesztelheti a rendelkezésre állási HTTP vagy HTTPS-végpontot, legfeljebb három földrajzilag elosztott helyekről. Egy figyelési teszt sikertelen, ha HTTP-válaszkódot (4xx vagy 5xx) hiba vagy a válasz több mint 30 másodperc. A végpont érhető el, ha a figyelési tesztek összes meghatározott helyeiről származó sikeres számít. 
 
-További információkért lásd: [kézikönyv: Webes végpont állapotának figyelése].
+További információkért lásd: [Útmutató: Webes végpont állapotának figyelése].
 
 ## <a name="next-steps"></a>További lépések
 * [Egyéni tartománynév konfigurálása az Azure App Service-ben]
 * [HTTPS engedélyezése az Azure App Service-alkalmazás]
 * [Alkalmazások skálázása az Azure App Service-ben]
 * [Megfigyelési alapismeretek az Azure App Service-ben]
+* [ApplicationHost.xdt az applicationHost.config fájl beállításainak módosítása](https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples)
 
 <!-- URL List -->
 
-[Az ASP.NET SignalR]: https://www.asp.net/signalr
+[ASP.NET SignalR]: https://www.asp.net/signalr
 [Azure Portal]: https://portal.azure.com/
 [Egyéni tartománynév konfigurálása az Azure App Service-ben]: ./app-service-web-tutorial-custom-domain.md
 [Átmeneti környezetek, az Azure App Service üzembe helyezése]: ./deploy-staging-slots.md
 [HTTPS engedélyezése az Azure App Service-alkalmazás]: ./app-service-web-tutorial-custom-ssl.md
-[kézikönyv: Webes végpont állapotának figyelése]: https://go.microsoft.com/fwLink/?LinkID=279906
+[Útmutató: Webes végpont állapotának figyelése]: https://go.microsoft.com/fwLink/?LinkID=279906
 [Megfigyelési alapismeretek az Azure App Service-ben]: ./web-sites-monitor.md
 [folyamatkezelési mód]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
 [Alkalmazások skálázása az Azure App Service-ben]: ./web-sites-scale.md

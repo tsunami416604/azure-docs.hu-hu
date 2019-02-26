@@ -8,12 +8,12 @@ ms.reviewer: orspod
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 1/30/2019
-ms.openlocfilehash: 343baedb77eb5c8a250e2ab967332dc0905f5112
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 6dac6fb18f221ddb45e5b5b7e325868915732368
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55743685"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804645"
 ---
 # <a name="quickstart-ingest-azure-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Gyors útmutató: Azure-Blobok tölti be az adatkezelőt az Azure Event Grid értesítések való feliratkozással
 
@@ -58,7 +58,7 @@ Az Adatkezelőben az Azure tábla létrehozása, amely az Event Hubs elküldi az
 
 1. Az Azure Portalon, a fürt alatt válassza a **Lekérdezés** lehetőséget.
 
-    ![Alkalmazáshivatkozás lekérdezése](media/ingest-data-event-hub/query-explorer-link.png)
+    ![Alkalmazáshivatkozás lekérdezése](media/ingest-data-event-grid/query-explorer-link.png)
 
 1. A következő parancs másolja be az ablakot, és válassza ki **futtatása** fogadják a feldolgozott adatokat (TestTable) tábla létrehozásához.
 
@@ -82,11 +82,11 @@ Most már az Event Grid-ból kapcsolódik az Azure az adatkezelőt, úgy, hogy a
 
 1. A létrehozott fürt alatt válassza az **Adatbázisok**, majd a **TestDatabase** lehetőséget.
 
-    ![Tesztadatbázis kiválasztása](media/ingest-data-event-hub/select-test-database.png)
+    ![Tesztadatbázis kiválasztása](media/ingest-data-event-grid/select-test-database.png)
 
 1. Válassza az **Adatbevitel**, majd az **Adatkapcsolat hozzáadása** lehetőséget.
 
-    ![Adatfeldolgozás](media/ingest-data-event-hub/data-ingestion-create.png)
+    ![Adatfeldolgozás](media/ingest-data-event-grid/data-ingestion-create.png)
 
 1. Válassza ki a kapcsolat típusa: **A BLOB Storage-**.
 
@@ -185,9 +185,9 @@ Ha nem szeretné újra használni az event griddel, tisztítása **test-hub-rg**
 
 1. Az Azure Portalon válassza az **Erőforráscsoportok** lehetőséget a bal szélen, majd a létrehozott erőforráscsoport.  
 
-    Ha a bal oldali menü össze van csukva, kattintson a ![Kibontás gombra](media/ingest-data-event-hub/expand.png) a kinyitásához.
+    Ha a bal oldali menü össze van csukva, kattintson a ![Kibontás gombra](media/ingest-data-event-grid/expand.png) a kinyitásához.
 
-   ![A törölni kívánt erőforráscsoport kiválasztása](media/ingest-data-event-hub/delete-resources-select.png)
+   ![A törölni kívánt erőforráscsoport kiválasztása](media/ingest-data-event-grid/delete-resources-select.png)
 
 1. A **test-resource-group** alatt válassza az **Erőforráscsoport törlése** elemet.
 

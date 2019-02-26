@@ -5,16 +5,12 @@ items:
   items:
   - name: A Lab Services ismertetése
     href: lab-services-overview.md
-  - name: Tesztkörnyezet-típusok összehasonlítása
-    href: compare-lab-types.md
+  - name: Az osztályterem-tesztkörnyezetek ismertetése
+    href: classroom-labs/classroom-labs-overview.md
+  - name: A DevTest Labs ismertetése
+    href: devtest-lab-overview.md
 - name: Oktatóanyagok
   items:
-  - name: DevTest Labs
-    items:
-    - name: 1. Tesztkörnyezet beállítása
-      href: tutorial-create-custom-lab.md
-    - name: 2. Tesztkörnyezet elérése
-      href: tutorial-use-custom-lab.md
   - name: Osztályterem-tesztkörnyezetek
     items:
     - name: 1. Tesztkörnyezetfiók beállítása
@@ -25,6 +21,12 @@ items:
       href: classroom-labs/tutorial-connect-virtual-machine-classroom-lab.md
     - name: 4. Osztályterem-tesztkörnyezet használatának követése
       href: classroom-labs/tutorial-track-usage.md
+  - name: DevTest Labs
+    items:
+    - name: 1. Tesztkörnyezet beállítása
+      href: tutorial-create-custom-lab.md
+    - name: 2. Tesztkörnyezet elérése
+      href: tutorial-use-custom-lab.md
 - name: Példák
   items:
   - name: DevTest Labs
@@ -37,17 +39,26 @@ items:
       href: samples-cli.md
 - name: Alapelvek
   items:
-  - name: DevTest Labs
-    href: devtest-lab-concepts.md
+  - name: Osztályterem-tesztkörnyezetek
     items:
-    - name: Tesztkörnyezetek használata fejlesztőknek
-      href: devtest-lab-developer-lab.md
-    - name: Tesztkörnyezetek használata
-      href: devtest-lab-test-env.md
-    - name: Tesztkörnyezetek használata képzéshez
-      href: devtest-lab-training-lab.md
-    - name: Bevezetés a DevTest Lab használatába
-      href: devtest-lab-overview.md
+    - name: Osztályterem-tesztkörnyezetek alapelvei
+      href: classroom-labs/classroom-labs-concepts.md
+    - name: Forgatókönyvek
+      items:
+      - name: Tesztkörnyezetek használata tanórák lebonyolításához
+        href: classroom-labs/classroom-labs-scenarios.md
+  - name: DevTest Labs
+    items:
+    - name: DevTest Labs-fogalmak
+      href: devtest-lab-concepts.md
+    - name: Forgatókönyvek
+      items:
+      - name: Tesztkörnyezetek használata fejlesztőknek
+        href: devtest-lab-developer-lab.md
+      - name: Tesztkörnyezetek használata
+        href: devtest-lab-test-env.md
+      - name: Tesztkörnyezetek használata képzéshez
+        href: devtest-lab-training-lab.md
 - name: Útmutatók
   items:
   - name: Osztályterem-tesztkörnyezetek
@@ -197,37 +208,47 @@ items:
       href: devtest-lab-use-arm-and-powershell-for-lab-resources.md
 - name: Referencia
   items:
-  - name: parancssori felület
-    href: /cli/azure/lab
-  - name: PowerShell
-    href: /powershell/module/az.devtestlabs/#devtest_labs
-  - name: REST API
-    href: https://docs.microsoft.com/rest/api/dtl/
-  - name: Resource Manager-sablon
-    href: /azure/templates/microsoft.devtestlab/allversions
+  - name: Osztályterem-tesztkörnyezetek
+    items:
+    - name: REST API
+      href: https://docs.microsoft.com/rest/api/labservices/
+  - name: DevTest Labs
+    items:
+    - name: parancssori felület
+      href: /cli/azure/lab
+    - name: PowerShell
+      href: /powershell/module/azurerm.devtestlabs/#devtest_labs
+    - name: REST API
+      href: https://docs.microsoft.com/rest/api/dtl/
+    - name: Resource Manager-sablon
+      href: /azure/templates/microsoft.devtestlab/allversions
 - name: További források
   items:
-  - name: Azure-ütemterv
-    href: https://azure.microsoft.com/roadmap/?category=developer-tools
-  - name: Díjkalkulátor
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: DevTest Labs – gyakori kérdések
-    href: devtest-lab-faq.md
-  - name: Szolgáltatási hírek
-    href: https://azure.microsoft.com/updates/?product=devtest-lab
-  - name: MSDN fórum
-    href: https://social.msdn.microsoft.com/Forums/home?forum=AzureDevTestLabs
-  - name: Csapatblog
-    href: https://blogs.msdn.microsoft.com/devtestlab/
-  - name: Stack Overflow
-    href: http://stackoverflow.com/questions/tagged/azure-devtest-labs
-  - name: Videók
-    href: https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab
-  - name: Díjszabás
-    href: https://azure.microsoft.com/pricing/details/devtest-lab/
-ms.openlocfilehash: 61d83d7d3e56abbb16e4d47dc1a7693707663c73
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+  - name: Osztályterem-tesztkörnyezetek
+    items:
+    - name: Azure-frissítések
+      href: https://azure.microsoft.com/updates/?product=lab-services
+    - name: Díjszabás
+      href: https://azure.microsoft.com/pricing/details/lab-services/
+    - name: Stack Overflow
+      href: https://stackoverflow.com/questions/tagged/azure-lab-services
+  - name: DevTest Labs
+    items:
+    - name: Azure-frissítések
+      href: https://azure.microsoft.com/updates/?product=devtest-lab
+    - name: Díjszabás
+      href: https://azure.microsoft.com/pricing/details/devtest-lab/
+    - name: MSDN fórum
+      href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDevTestLabs
+    - name: Stack Overflow
+      href: https://stackoverflow.com/questions/tagged/azure-devtest-labs
+    - name: Videók
+      href: https://azure.microsoft.com/resources/videos/index/?services=devtest-lab
+    - name: Gyakori kérdések
+      href: devtest-lab-faq.md
+ms.openlocfilehash: f4a7e26be0bbb15631fd44bf38506d564d27f331
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736743"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805689"

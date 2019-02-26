@@ -3,8 +3,8 @@ title: Az oktatóanyag - frissítés az Azure Service Fabric-háló alkalmazás 
 description: Ismerje meg, a Visual Studio használatával a Service Fabric-alkalmazás frissítése
 services: service-fabric-mesh
 documentationcenter: .net
-author: tylerMSFT
-manager: jeconnoc
+author: dkkapur
+manager: chakdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric-mesh
@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/29/2018
-ms.author: twhitney
+ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 0f6ede488ae118f8df00febda3c53eabb73f2030
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 23809abd06d626eb87e5d5d15d265f1769b97b66
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52890228"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806733"
 ---
 # <a name="tutorial-learn-how-to-upgrade-a-service-fabric-application-using-visual-studio"></a>Oktatóanyag: Ismerje meg, a Visual Studio használatával a Service Fabric-alkalmazás frissítése
 
@@ -70,7 +70,7 @@ Frissíteni fogjuk a `WebFrontEnd_cpu` paramétert, a processzor-erőforrások `
 > Alapértelmezés szerint az alkalmazásparaméter-fájlt, amely a profile.yaml fájl társ használható profile.yaml erre a fájlra vonatkozó paraméterértékeket.
 > Például környezetek > felhő > parameters.yaml paraméter értékét biztosít a környezetek > felhő > profile.yaml.
 >
-> Ez felülírható az profile.yaml fájlt ad hozzá a következő:`parametersFilePath=”relative or full path to the parameters file”` például `parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` vagy `parametersFilePath=”..\CommonParameters.yaml”`
+> Ez felülírható az profile.yaml fájlt ad hozzá a következő:`parametersFilePath=”relative or full path to the parameters file”` Ha például `parametersFilePath=”C:\MeshParms\CustomParameters.yaml”` vagy `parametersFilePath=”..\CommonParameters.yaml”`
 
 ## <a name="modify-the-model"></a>A modell módosítása
 

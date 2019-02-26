@@ -35,13 +35,16 @@
 ## Magas rendelkezésre állás konfigurálása
 ### [Az Azure Storage használata biztonsági mentéshez és helyreállításhoz](virtual-machines-windows-use-storage-sql-server-backup-restore.md)
 ### Always On rendelkezésre állási csoport
-#### [Az Azure Portal használata](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
-#### [Gyorsindítási sablonok használata](virtual-machines-windows-sql-availability-group-quickstart-template.md)
-#### [Manuális – előfeltételek](virtual-machines-windows-portal-sql-availability-group-prereq.md)
-#### [Manuális – oktatóanyag](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
-#### [Load Balancer – Azure Portal](virtual-machines-windows-portal-sql-alwayson-int-listener.md)
-#### [Load Balancer – Azure PowerShell](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)
+#### [Azure SQL VM CLI](virtual-machines-windows-sql-availability-group-cli.md)
+#### [Azure Portal-sablon](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
+#### [Azure-gyorssablonok](virtual-machines-windows-sql-availability-group-quickstart-template.md)
 #### [Több régió](virtual-machines-windows-portal-sql-availability-group-dr.md)
+#### Manuális konfigurálás    
+##### [Előfeltételek](virtual-machines-windows-portal-sql-availability-group-prereq.md)
+##### [Oktatóanyag](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
+##### [Load Balancer – Azure Portal](virtual-machines-windows-portal-sql-alwayson-int-listener.md)
+##### [Load Balancer – Azure PowerShell](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)
+
 ### Feladatátvevőfürt-példány
 #### [Konfigurálás](virtual-machines-windows-portal-sql-create-failover-cluster.md)
 

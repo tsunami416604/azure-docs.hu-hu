@@ -3,7 +3,7 @@ title: Service Fabric Azure Files kötet illesztőprogram (előzetes verzió) |}
 description: Service Fabric támogatja kötetek biztonsági mentése Azure Files használatával a tárolóból. Ez jelenleg előzetes verzióban érhető el.
 services: service-fabric
 documentationcenter: other
-author: TylerMSFT
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/10/2018
-ms.author: twhitney, subramar
-ms.openlocfilehash: f2636720f6f1faeffb9a63052efdf009668d806f
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.author: aljo, subramar
+ms.openlocfilehash: 5d44904d6210dbc9520ae735605699b197f38bef
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752075"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804129"
 ---
 # <a name="service-fabric-azure-files-volume-driver-preview"></a>Service Fabric az Azure Files kötet illesztőprogram (előzetes verzió)
 Az Azure Files kötet beépülő modul van egy [Docker kötet beépülő modul](https://docs.docker.com/engine/extend/plugins_volume/) biztosít [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) köteteket a Docker-tárolók alapján. A Docker-kötet beépülő modult, a Service Fabric-alkalmazás telepítését követően a Service Fabric-fürtök van csomagolva. Ez azt szolgál az Azure Files-alapú más Service Fabric-tárolóalkalmazások a fürtön üzembe helyezett köteteket.

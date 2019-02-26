@@ -13,16 +13,16 @@ ms.topic: reference
 ms.date: 08/09/2018
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 08897b2085c2a8f0eafb90b77486d60a0edce190
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 8d2d171235a23d3e41fda6172efe29b3bb358f0e
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359867"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804178"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Az Azure Functions méretezése és üzemeltetése
 
-Az Azure Functions két különböző módban fut: Használatalapú csomag és az Azure App Service-csomag. A Használatalapú csomag automatikusan lefoglalja a számítási erőforrásokat a kód futtatásakor. Az alkalmazás horizontálisan felskálázott, ha a terhelés kezeléséhez szükséges, és vertikálisan leskálázni, ha nem fut a kódot. Nem kell fizetnie a tétlen virtuális gépeket vagy foglalhat le előre a kapacitás.
+Az Azure Functions két különböző módban futtatható: Használatalapú csomag és az Azure App Service-csomag. A Használatalapú csomag automatikusan lefoglalja a számítási erőforrásokat a kód futtatásakor. Az alkalmazás horizontálisan felskálázott, ha a terhelés kezeléséhez szükséges, és vertikálisan leskálázni, ha nem fut a kódot. Nem kell fizetnie a tétlen virtuális gépeket vagy foglalhat le előre a kapacitás.
 
 > [!NOTE]  
 > Használatalapú csomag Linux rendszer [jelenleg nyilvános előzetes verzióban](https://azure.microsoft.com/updates/azure-functions-consumption-plan-for-linux-preview/).
@@ -70,11 +70,11 @@ Virtuális gép költséggel jár a végrehajtások száma, végrehajtási időt
 
 Az App Service-csomag manuálisan horizontális felskálázása további Virtuálisgép-példányok hozzáadásával, vagy engedélyezheti az automatikus méretezés. További információkért lásd: [példányszám manuális vagy automatikus méretezése](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json). Is skálázhatja egy másik App Service-csomag kiválasztásával. További információkért lásd: [az Azure-beli alkalmazás vertikális felskálázása](../app-service/web-sites-scale.md). 
 
-JavaScript-függvények az App Service-csomag futtatásakor, kevesebb vcpu-k rendelkező csomagot érdemes választania. További információkért lásd: a [válassza ki az App Service-csomagok egymagos](functions-reference-node.md#considerations-for-javascript-functions).  
+JavaScript-függvények az App Service-csomag futtatásakor, kevesebb vcpu-k rendelkező csomagot érdemes választania. További információkért lásd: [válassza ki az App Service-csomagok egymagos](functions-reference-node.md#choose-single-vcpu-app-service-plans).  
 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
-<a name="always-on"></a>
-### <a name="always-on"></a>Folyamatos üzem
+
+###<a name="always-on"></a> Always On
 
 Ha az App Service-csomagot futtatja, engedélyeznie kell a **mindig** beállítást, hogy a függvényalkalmazás megfelelően fut-e. App Service-csomag a functions futtatókörnyezete ismertetett üresjárati néhány perc inaktivitás után, így csak a HTTP-eseményindítók fog "felébresztéséhez" az funkciók. Mindig érhető el csak az App Service-csomag. A Használatalapú csomag a platform aktiválja a függvényalkalmazás automatikusan.
 
@@ -122,9 +122,9 @@ A skálázási egység a függvényalkalmazáshoz. Amikor a függvényalkalmazá
 
 ### <a name="understanding-scaling-behaviors"></a>Skálázási viselkedés ismertetése
 
-Skálázás tényezők és az eseményindító és a kiválasztott nyelvvel eltérően szerint méretezhető, több eltérőek lehetnek. Vannak azonban olyan néhány szempontja a méretezés, amely létezik a rendszerben még ma:
+Skálázás tényezők és az eseményindító és a kiválasztott nyelvvel eltérően szerint méretezhető, több eltérőek lehetnek. Van azonban néhány skálázási szempont, amely már ma is jelen van a rendszerben:
 
-* Egy függvényalkalmazás csak felskálázással egy legfeljebb 200 példányra. Egyetlen példány előfordulhat, hogy egynél több üzenet vagy a kérelem egyszerre feldolgozni, ezért nincs párhuzamos végrehajtások száma beállított korlátot.
+* Egy adott függvényalkalmazás legfeljebb 200 példányig skálázható fel. Egyetlen példány előfordulhat, hogy egynél több üzenet vagy a kérelem egyszerre feldolgozni, ezért nincs párhuzamos végrehajtások száma beállított korlátot.
 * Új példányok csak lefoglalt 10 másodpercenként legfeljebb egyszer.
 
 Különböző triggereket is rendelkezhetnek, különböző méretezési korlátok, valamint a dokumentált alatt:

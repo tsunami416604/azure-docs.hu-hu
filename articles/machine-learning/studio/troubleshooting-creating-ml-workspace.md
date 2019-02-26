@@ -5,17 +5,17 @@ description: Ez az útmutató egyes megoldások gyakran közben kihívásokat á
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 7f0485221f0f29d08275f9508ba79e32c3f8924a
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: f7b5bdbbf322a0d7ea290f2543af07d5b11f439a
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455438"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816130"
 ---
 # <a name="troubleshooting-guide-create-and-connect-to-an-azure-machine-learning-studio-workspace"></a>Hibaelhárítási útmutató: Létrehozás és csatlakozás az Azure Machine Learning Studio-munkaterülethez
 Ez az útmutató egyes megoldások gyakran közben kihívásokat állítja be az Azure Machine Learning Studio-munkaterületek.
