@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
-ms.date: 02/18/2019
-ms.openlocfilehash: 70206fac7bfe34ea1a138437db35720a1f02337d
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.date: 02/26/2019
+ms.openlocfilehash: 64e0444c85440a017872aa32017e7d1c47e44e89
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56585368"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889774"
 ---
 # <a name="azure-sql-database-managed-instance-connectivity-architecture"></a>Az Azure SQL Database felügyelt példány kapcsolati architektúra
 
@@ -157,7 +157,7 @@ A felügyelt példány (a felügyelt példány alhálózatára) dedikált alhál
 |mi-8-7-nexthop-internet|8.0.0.0/7|Internet|
 ||||
 
-Emellett bejegyzést adhat hozzá az útválasztási táblázat irányítja a forgalmat, amely rendelkezik a helyszíni privát IP-címtartományok a cél virtuális hálózati átjáró vagy virtuális hálózati berendezésre (NVA) keresztül.
+Emellett bejegyzést adhat hozzá az útválasztási táblázatot, amely rendelkezik a cél virtuális hálózati átjáró vagy virtuális hálózati berendezésre (NVA) keresztül a helyszíni privát IP-címtartományok forgalom irányítására.
 
 - **Nem kötelező egyéni DNS**: Ha egy egyéni DNS a virtuális hálózaton van megadva, az Azure rekurzív feloldó IP-címet (például a 168.63.129.16) meg kell adni a listához. További információkért lásd: [egyéni DNS konfigurálása](sql-database-managed-instance-custom-dns.md). Az egyéni DNS-kiszolgáló a következő tartományok és az altartományokra feloldásához képesnek kell lennie: *microsoft.com*, *windows.net*, *windows.com*, *msocsp.com*, *digicert.com*, *live.com*, *microsoftonline.com*, és *microsoftonline-p.com*.
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 2c4a95bddea85d298ff9343bfd813d0b79b24b51
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ba1e7d7f9226b3ca42d4117be33b9c236f0557b0
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164022"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867320"
 ---
 # <a name="azure-stack-administration-basics"></a>Az Azure Stack az Adminisztráció alapjai
 Több szempontot, ha most ismerkedik az Azure Stack felügyeleti ismernie kell. Ez a cikk segítségével értesítheti a felhasználókat a számukra a gyors elindulásban kell, és a szerepkör az Azure Stack operátorait szerint áttekintését.
@@ -119,7 +119,7 @@ Ezekben a cikkekben található információk az Azure egy szolgáltatása, és 
 
 Development kit környezetben ha egy felhasználó nem rendelkezik a development kit gazdagépre, a távoli asztali hozzáférés, konfigurálnia kell egy virtuális magánhálózati (VPN) kapcsolatot hozzáférhet az Azure Stack. Lásd: [csatlakozás az Azure Stack](azure-stack-connect-azure-stack.md). 
 
-A felhasználók tudni szeretnék majd, hogyan [elérhető a felhasználói portál ](user/azure-stack-use-portal.md) vagy a PowerShell-en keresztül csatlakozni. Integrált rendszerek környezetben a felhasználói portál cím száma üzemelő példányonként változik. Adja meg a felhasználók számára a helyes URL-címet kell.
+A felhasználók tudni szeretnék majd, hogyan [elérhető a felhasználói portál](user/azure-stack-use-portal.md) vagy a PowerShell-en keresztül csatlakozni. Integrált rendszerek környezetben a felhasználói portál cím száma üzemelő példányonként változik. Adja meg a felhasználók számára a helyes URL-címet kell.
 
 Ha a PowerShell használatával, a felhasználóknak kell előfordulhat, hogy erőforrás-szolgáltatók regisztrálásával szolgáltatások használatához. (Erőforrás-szolgáltató kezeli a szolgáltatás. For example, a hálózati erőforrás-szolgáltató kezeli az erőforrások, például a virtuális hálózatok, hálózati adapterek és terheléselosztók.) Akkor kell [telepítése](user/azure-stack-powershell-install.md) PowerShell-lel, [letöltése](user/azure-stack-powershell-download.md) további modulok és [konfigurálása](user/azure-stack-powershell-configure-user.md) PowerShell (amely tartalmazza az erőforrás-szolgáltatói regisztráció).
 

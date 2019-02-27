@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 986afa1239ad0efd9ccb936252ead37c8379b447
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8c9f410fa890df7aac3c3bf4d89468b92e69ba38
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192897"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883232"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tangoe-command-premium-mobile"></a>Oktatóanyag: Az Azure Active Directory-integráció Tangoe parancs Premium Mobile alkalmazással
 
@@ -75,7 +75,7 @@ Tangoe parancs Premium Mobile integrálása az Azure AD beállítása, hozzá ke
 
 1. A Keresés mezőbe írja be a **Tangoe parancs Premium Mobile**, jelölje be **Tangoe parancs Premium Mobile** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Tangoe parancs Premium Mobile hozzáadása a katalógusból ](./media/tangoe-tutorial/tutorial_tangoe_addfromgallery.png)
+    ![Tangoe parancs Premium Mobile hozzáadása a katalógusból](./media/tangoe-tutorial/tutorial_tangoe_addfromgallery.png)
 
 ##  <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés Tangoe parancs Premium Mobile nevű, "Britta Simon" tesztfelhasználó alapján.

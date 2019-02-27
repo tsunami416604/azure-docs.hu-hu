@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/16/2017
 ms.author: sngun
-ms.openlocfilehash: f4220653b39381c360b4b05ab018262e46288e8f
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 3498ac6a2a4aaa1682d7b5bc5aae5383866d5bcd
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043804"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873797"
 ---
 # <a name="azure-powershell-samples-for-azure-cosmos-db"></a>Azure PowerShell-minták az Azure Cosmos DB-ben
 
@@ -22,7 +22,7 @@ A következő táblázat az Azure Cosmos DB-hez elérhető Azure PowerShell-pél
 |**Azure Cosmos DB-fiók létrehozása**||
 |[Fiók létrehozása és konfigurálása egy Cosmos SQL API-val](scripts/create-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Egyetlen Azure Cosmos DB-fiókot hoz létre az SQL API-val történő használathoz. |
 |[Hozzon létre, és a egy Cosmos-fiók beállítása az Azure Cosmos DB API a mongodb-hez](scripts/create-mongodb-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Létrehoz egy egyetlen Cosmos-fiókot az Azure Cosmos DB API a mongodb-hez. |
-|[Fiók létrehozása és konfigurálása egy Cosmos Gremlin API-val ](scripts/create-graph-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Egyetlen Azure Cosmos DB-fiókot hoz létre a Gremlin API-val történő használathoz. |
+|[Fiók létrehozása és konfigurálása egy Cosmos Gremlin API-val](scripts/create-graph-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Egyetlen Azure Cosmos DB-fiókot hoz létre a Gremlin API-val történő használathoz. |
 |[Fiók létrehozása és konfigurálása egy Cosmos Cassandra API-val](scripts/create-and-configure-cassandra-database.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Egyetlen Azure Cosmos DB-fiókot hoz létre a Cassandra API-val történő használathoz. |
 |[Fiók létrehozása és konfigurálása egy Cosmos tábla API-val](scripts/create-table-database-account-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Egyetlen Azure Cosmos DB-fiókot hoz létre a Table API-val történő használathoz. |
 |**Az Azure Cosmos DB méretezése**||

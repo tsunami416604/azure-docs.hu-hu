@@ -11,13 +11,13 @@ author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 36a448a861bdfdcd85e532578383b14e56f54b1a
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.date: 02/26/2019
+ms.openlocfilehash: c3b9fecd3ad404385732e55a9cf3aa65a6e388b8
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039095"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889375"
 ---
 # <a name="use-resource-health-to-troubleshoot-connectivity-for-azure-sql-database"></a>A Resource Health használata az Azure SQL Database-kapcsolatának hibaelhárítása
 
@@ -53,9 +53,9 @@ Az állapot **nem érhető el** azt jelenti, hogy a Resource Health azt észlelt
 
 ### <a name="unknown"></a>Ismeretlen
 
-Állapotát **ismeretlen** azt jelzi, hogy a Resource Health még nem kapott ehhez az erőforráshoz információ a több mint 10 percig. Bár ez az állapot nem végleges megjelölése erőforrás állapotát, a hibaelhárítási folyamat fontos adatpontnak.
-Ha az erőforrás a vártnak megfelelően működik, az erőforrás állapota változik elérhető néhány perc múlva.
-Az erőforrás-problémákat tapasztal, ha az ismeretlen állapot mérete alapján feltételezhető, hogy a platform esemény van hatással az erőforrást.
+Állapotát **ismeretlen** azt jelzi, hogy a Resource Health még nem kapott ehhez az erőforráshoz információ a több mint 10 percig. Bár ez az állapot nem végleges megjelölése erőforrás állapotát, a hibaelhárítási folyamat fontos adatpontnak. Ha az erőforrás a vártnak megfelelően működik, az erőforrás állapota változik elérhető néhány perc múlva. Az erőforrás-problémákat tapasztal, ha az ismeretlen állapot mérete alapján feltételezhető, hogy a platform esemény van hatással az erőforrást.
+
+![Ismeretlen](./media/sql-database-resource-health/sql-resource-health-unknown.jpg)
 
 ## <a name="historical-information"></a>Előzményadatok
 

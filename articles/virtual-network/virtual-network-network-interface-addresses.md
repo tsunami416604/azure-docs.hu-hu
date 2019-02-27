@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 716c229fbd906798d39bf4ef54ba1f47cd5bd980
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 89b311edbae6b5f6679908b5d07b22b402b5c55e
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56651039"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888066"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Hozzáadása, módosítása vagy törlése az Azure-beli hálózati adapter IP-címek
 
@@ -63,7 +63,7 @@ Hozzáadhat több [privát](#private) és [nyilvános](#public) [IPv4](#ipv4) sz
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az network nic ip-config create](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_create)|
+|parancssori felület|[az network nic ip-config create](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Add-AzNetworkInterfaceIpConfig](/powershell/module/az.network/add-aznetworkinterfaceipconfig)|
 
 ## <a name="change-ip-address-settings"></a>IP-cím beállításainak módosítása
@@ -84,7 +84,7 @@ Előfordulhat, hogy kell az IPv4-cím, a hozzárendelési módszer módosítás�
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az network nic ip-config update](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_update)|
+|parancssori felület|[az network nic ip-config update](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Set-AzNetworkInterfaceIpConfig](/powershell/module/az.network/set-aznetworkinterfaceipconfig)|
 
 ## <a name="remove-ip-addresses"></a>Távolítsa el az IP-címek
@@ -100,7 +100,7 @@ Eltávolíthatja [privát](#private) és [nyilvános](#public) IP-címek a hál�
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az network nic ip-config delete](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_delete)|
+|parancssori felület|[az network nic ip-config delete](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Remove-AzNetworkInterfaceIpConfig](/powershell/module/az.network/remove-aznetworkinterfaceipconfig)|
 
 ## <a name="ip-configurations"></a>IP-konfigurációk

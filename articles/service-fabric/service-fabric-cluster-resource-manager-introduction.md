@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: a5499826c06f5f8f5e5db91badf134befa44c9d0
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: f41027b5455aa3b1835a0d4fd0c1be11cddccd0d
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738232"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871995"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>A Service Fabric fürterőforrás-kezelő bemutatása
 Hagyományosan a IT-rendszereit és online szolgáltatások kezelésére hivatott adott fizikai vagy virtuális gépek dedikálni ezeket adott szolgáltatások vagy a rendszer. Szolgáltatások rétegek szerint lettek tervezésnek. A "webes" réteg és a egy "adatok" vagy "tároló" réteget lenne. Alkalmazások kellene egy üzenetkezelési szinttel, ahol kérelmek érkezett be és ki, valamint dedikált gyorsítótár-csoportokon. Minden szintet vagy a számítási feladat volt dedikált, meghatározott gépek: az adatbázis van kijelölve, a webkiszolgálók egy néhány néhány gépek. Ha egy adott típusú számítási feladatok miatt az volt a gépek futtassa túl gyakori elérésű, majd a további gépek ugyanazt a konfigurációt az adott réteg hozzáadott. Azonban nem minden munkaterhelésről így könnyen sikerült terjeszthető ki – különösen az adatréteg-cserélje általában a nagyobb gépek rendelkező gépek. Egyszerű. Ha egy gép elindítása nem sikerült, mindaddig, amíg a gép sikerült visszaállítani a kisebb kapacitással futott, hogy a teljes alkalmazás részét. Továbbra is könnyen (Ha ez nem feltétlenül szórakoztató).
@@ -54,7 +54,7 @@ Bár ezek a stratégiák néhány érdekes, a Service Fabric fürterőforrás-ke
 Szolgáltatások köré áthelyezése a fürterőforrás-kezelő feladata, mert egy másik szolgáltatáskészlet találtak volna a hálózati terheléselosztó képest tartalmazza. Ennek oka az, hálózati terheléselosztókkal továbbítására hálózati forgalom hol szolgáltatások már vannak, még akkor is, ha erre a helyre nem fut a szolgáltatás ideális. A Service Fabric fürterőforrás-kezelő annak biztosítására, hogy a fürt erőforrásainak hatékony felhasználtuk alapvetően különböző stratégiákat használ.
 
 ## <a name="next-steps"></a>További lépések
-- Az architektúra és információk folyamat belül a fürterőforrás-kezelő kapcsolatos információkért tekintse meg [Ez a cikk ](service-fabric-cluster-resource-manager-architecture.md)
+- Az architektúra és információk folyamat belül a fürterőforrás-kezelő kapcsolatos információkért tekintse meg [Ez a cikk](service-fabric-cluster-resource-manager-architecture.md)
 - A fürterőforrás-kezelő leíró a fürt számos lehetőség áll. További információk a metrikákról megkereséséhez tekintse meg a cikk a [leíró, Service Fabric-fürt](service-fabric-cluster-resource-manager-cluster-description.md)
 - További információt a szolgáltatások konfigurálása [megismerheti a szolgáltatások konfigurálása](service-fabric-cluster-resource-manager-configure-services.md)
 - Metrikák, hogyan kezeli a Service Fabric-fürt erőforrás-kezelő a használat és a kapacitás a fürtben. További információ a metrikák és a konfigurálásukról kivétel [Ez a cikk](service-fabric-cluster-resource-manager-metrics.md)

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/03/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 4d4acecbbb90fff7865902a3371d282f1d402374
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: d6f857e926343c4c3c26d746134bbb9d94754c12
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662890"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56866011"
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C: Felhasználók migrálása közösségi identitásokkal
 Ha azt tervezi, az identitásszolgáltató migrálása az Azure AD B2C-vel, szükség lehet a közösségi identitású felhasználók áttelepítése. Ez a cikk azt ismerteti, hogyan telepítheti át meglévő közösségi identitások fiókokat, például: Facebook, a LinkedIn, a Microsoft és a Google fiókok Azure AD B2C-t. Ez a cikk az összevont identitások kialakítása, is vonatkozik, azonban ezek áttelepítések kevésbé gyakoriak.
@@ -139,7 +139,7 @@ A kibocsátó neve vagy az identitásszolgáltató nevét, a szabályzat van kon
 1. Jelentkezzen be a közösségi fiókok
 2. A JWT jogkivonat másolja a `sub` értéket. A `sub` általában tartalmazza az Azure AD B2C-ben a felhasználó Objektumazonosítója. Vagy az Azure Portalon nyissa meg a felhasználó tulajdonságait és másolja az objektumazonosítót.
 3. Nyissa meg [az Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net)
-4. Jelentkezzen be a rendszergazdához. N
+4. Jelentkezzen be a rendszergazdához.
 5. Futtassa a következő GET kérelmet. Cserélje le a userObjectId kimásolt felhasználói azonosító. **GET** https://graph.windows.net/tenant-name.onmicrosoft.com/users/userObjectId
 6. Keresse meg a `userIdentities` elem található a JSON-ban lépjen vissza az Azure AD B2C-ből.
 7. [Opcionális] Dekódolandó is érdemes a `issuerUserId` értéket.

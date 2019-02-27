@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: diberry
-ms.openlocfilehash: f3376b8077302eb6bd9a96710f92d692b641cac4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0723c3730ca0ae6325d828fbb5f41698cb807dd3
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866780"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874885"
 ---
 # <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>Használja a kifejezés boost jelre a word lista sorolja fel
 
@@ -44,7 +44,7 @@ A LUIS lehetővé teszi, hogy legfeljebb 10 kifejezés listák az egyes alkalmaz
 
 5. Kattintson a **ezeket az értékeket felcserélhetők** Ha hozzáadott kifejezés listaértékek alternatívával felcserélhetők.
 
-    ![Kifejezés Proposed listaértékek – jelölje be azoknak a cserélhető ](./media/luis-add-features/interchangeable.png)
+    ![Kifejezés Proposed listaértékek – jelölje be azoknak a cserélhető](./media/luis-add-features/interchangeable.png)
 
 6. Kattintson a **Save** (Mentés) gombra. A "Város" kifejezés helyett szerepel lista adnak hozzá a **listák kifejezés** lap.
 

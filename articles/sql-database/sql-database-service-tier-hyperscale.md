@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 49c41b436e0d935d1f9fce5ba2de10e0f2d0c99d
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 2c32ef84c1016d0058ee07220729a291aff19b70
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991226"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56868068"
 ---
 # <a name="hyperscale-service-tier-preview-for-up-to-100-tb"></a>Akár 100 TB kapacitású szolgáltatási réteg (előzetes verzió)
 
@@ -145,7 +145,7 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 
 ## <a name="available-regions"></a>Elérhető régiók
 
-Nagy kapacitású szolgáltatás szintű szolgáltatás jelenleg nyilvános előzetes verzióban érhető el, és elérhető a következő Azure-régiókhoz: EastUS1, EastUS2, WestUS2, CentralUS, NorthCentralUS, WestEurope, NorthEurope, UKWest, AustraliaEast, AustraliaSouthEast, SouthEastAsia, JapanEast, KoreaCentral
+Nagy kapacitású szolgáltatás szintű szolgáltatás jelenleg nyilvános előzetes verzióban érhető el, és elérhető a következő Azure-régiókhoz: 1 USA keleti régiója, USA keleti RÉGIÓJA 2, USA 2. nyugati régiója, USA középső RÉGIÓJA, Észak-CentralU S, Nyugat-Európa, Észak-Európa, Kelet-Ausztrália, Délkelet-Ausztrália, Délkelet-Ázsiában, japán keleti régiójában és Korea középső régiója
 
 ## <a name="known-limitations"></a>Ismert korlátozások
 

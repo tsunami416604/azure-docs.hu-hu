@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 8bcb00029acbe8c64e29addbc9291a694f1de98b
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 4aa18ae791e5fa573eae76d5bdb9c45b9311e6b5
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267717"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888083"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Application Insights beállítása: Függőségi nyomkövetés
 A *függőségi* egy külső összetevő, amely hívja meg az alkalmazást. Fontos általában nevű HTTP-n vagy egy adatbázist vagy egy fájlrendszert használó szolgáltatás. [Az Application Insights](../../azure-monitor/app/app-insights-overview.md) méri a mennyi az alkalmazás megvárja, amíg függőségeket, és milyen gyakran egy függőségi hívás sikertelen lesz. Vizsgálja meg az adott hívásokat, és összekapcsolhatja őket a kérelmeket és kivételeket.
@@ -50,7 +50,7 @@ Részleges függőségi gyűjtött automatikusan a [Application Insights SDK](as
 
 ## <a name="where-to-find-dependency-data"></a>Hol található a függőségi adatokat
 * [Alkalmazás-hozzárendelés](#application-map) megjeleníti az alkalmazás és a szomszédos összetevők közötti függőségek.
-* [Teljesítmény, a böngésző és a hiba panelek](#performance-and-blades) kiszolgáló függőségi adatok megjelenítése.
+* [Teljesítmény, a böngésző és a hiba panelek](#performance-and-failure-blades) kiszolgáló függőségi adatok megjelenítése.
 * [Böngészők panelen](#ajax-calls) jeleníti meg a felhasználók böngészőinek AJAX-hívások.
 * Kattintson végig ellenőrizze azok függőségi hívásaihoz lassú vagy hibás kérésekből származó.
 * [Analytics](#analytics) használható függőségi adatokat lekérdezni.

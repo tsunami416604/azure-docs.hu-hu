@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/19/2018
+ms.date: 02/25/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f42237c1bf5c4782f47254c253d1d40289b65099
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 1794aa26fc725207c4a901c11c345eeaa3d2f65d
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670546"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867736"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Statikus webhely üzemeltetése az Azure Storage-ban
 Az Azure Storage GPv2-fiókok lehetővé teszik statikus tartalom (HTML, CSS, JavaScript és képfájlok) nevű tárolót történő közvetlen *$web*. Kihasználhatja a üzemeltetése az Azure Storage lehetővé teszi, hogy például kiszolgáló nélküli architektúrák [Azure Functions](/azure/azure-functions/functions-overview) és egyéb PaaS-szolgáltatások.
@@ -51,6 +51,7 @@ A kijelölt alapértelmezett név szolgál a legfelső szintű és alkönyvtára
 
 Hogy a statikus webhely fájlok elérhető HTTPS-kapcsolaton keresztül, lásd: [az Azure CDN használatával HTTPS-kapcsolaton keresztül egyéni tartománnyal rendelkező blobok elérése](storage-https-custom-domain-cdn.md). Ez a folyamat részeként kell *mutasson a CDN a webes végpontra* ellentétben a blob végpontja. Szükség lehet néhány percet, mielőtt a tartalmak jelenik meg a CDN-konfiguráció végrehajtása nem azonnal, várjon.
 
+Amikor frissíti a statikus webhelye, mindenképpen törölje a gyorsítótárazott tartalom a CDN peremhálózati kiszolgálókon a CDN-végpont végleges törlése a. További információkért lásd az [Azure CDN-végpontok végleges törléséről](../../cdn/cdn-purge-endpoint.md) szóló cikket.
 
 ## <a name="custom-domain-names"></a>Egyéni tartománynevek
 

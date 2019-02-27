@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 2fc09ccdf68605e444ed4b196162df6205557272
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 561982f7a7842ed717044c6709085bbd4621206e
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002103"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56868629"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Az Azure-tevékenységnapló-előfizetési tevékenység figyelése
 
 A **Azure-tevékenységnapló** van egy előfizetési napló, amely az Azure-ban bekövetkezett események előfizetés-szintű betekintést nyújt. Ez magában foglalja az adatok az Azure Resource Manager frissítéseket a Service Health-események operatív adatok széles. A tevékenységnapló nevezték "Naplófájlok" vagy "Műveleti naplók," a felügyeleti kategória jelentések vezérlősík események az előfizetésekre vonatkozó óta. A tevékenységnapló használatával megadhatja, hogy a "mit, ki, és mikor" írási műveletek (PUT, POST, DELETE) tett erőforrásokra az előfizetésben. A művelet és az egyéb releváns tulajdonságok állapotát is ismernie is. A tevékenységnapló olvasási (GET) műveleteket, illetve a klasszikus erőforrások műveletei nem tartalmaz / "RDFE" modellt.
 
-![Tevékenység-naplók és egyéb típusú naplók ](./media/activity-logs-overview/Activity_Log_vs_other_logs_v5.png)
+![Tevékenység-naplók és egyéb típusú naplók](./media/activity-logs-overview/Activity_Log_vs_other_logs_v5.png)
 
 1. ábra: Tevékenység-naplók és egyéb típusú naplók
 

@@ -16,12 +16,12 @@ ms.date: 11/27/2018
 ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 11/27/2018
-ms.openlocfilehash: c28fce9c6c9d7b0ddeba54e1ba643817436adb4e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 2845bb09fa44c3bd9cee914e2446403b4182b0d5
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244963"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871043"
 ---
 # <a name="region-management-in-azure-stack"></a>Régiók kezelése az Azure Stackben
 
@@ -39,7 +39,7 @@ Az Azure Stack szolgáltatásban elérhető Eszközkezelési lehetőségeivel r�
 
 Ha rákattint egy régiót a a **régiók kezelése** csempét, akkor férhet hozzá a következő információkat:
 
-[ ![A régió felügyeleti panel ablaktáblát leírása](media/azure-stack-region-management/regionssm.png "régió felügyeleti panel") ](media/azure-stack-region-management/regions.png#lightbox)
+[![A régió felügyeleti panel ablaktáblát leírása](media/azure-stack-region-management/regionssm.png "régió felügyeleti panel")](media/azure-stack-region-management/regions.png#lightbox)
 
 1. **Az erőforrások menüjének**. Eléréséhez adott infrastruktúra felügyeleti területeket, és megtekintheti, és felhasználói erőforrások, például a storage-fiókok és a virtuális hálózatok kezelése.
 
@@ -55,5 +55,5 @@ Ha rákattint egy régiót a a **régiók kezelése** csempét, akkor férhet ho
 
 ## <a name="next-steps"></a>További lépések
 
-- [A figyelő állapotát és a riasztások az Azure Stackben](azure-stack-monitor-health.md)
+- [Állapot- és riasztásmonitorozás az Azure Stackben](azure-stack-monitor-health.md)
 - [Az Azure Stack frissítéseinek kezelése](azure-stack-updates.md)

@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 08/20/2018
+ms.date: 02/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: eda41870e86db206847f5ea81e23fa1b7612234c
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: b1f6024538c6807fd68a0d7b0b7ae2776938055b
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817303"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888190"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Application insights telemetria exportálása
 Szeretné megtartani a telemetriát azokhoz szabványos megőrzési idejénél hosszabb? Vagy specializált módon dolgozza fel? A folyamatos exportálás ideális ehhez. Az eseményeket az Application Insights portálon látható a JSON-formátumban a Microsoft Azure storage exportálhatók. Innen letöltheti az adatokat és bármilyen kódot írni kell őket feldolgoznia.  
@@ -37,7 +37,7 @@ Miután az adatok folyamatos exportálása másolja át a Storage (amennyiben az
 
 A folyamatos exportálás **nem támogatja a** a következő Azure tárolási szolgáltatások/konfigurációk:
 
-* Felhasználása [virtuális hálózatok közötti vagy az Azure Storage-tűzfalak](https://docs.microsoft.com/azure/storage/common/storage-network-security) repülőtérrendszeren az Azure Blob storage.
+* Felhasználása [virtuális hálózatok közötti vagy az Azure Storage-tűzfalak](https://docs.microsoft.com/azure/storage/common/storage-network-security) együtt az Azure Blob storage.
 
 * [Nem módosítható tárolási](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) az Azure Blob storage.
 
@@ -150,7 +150,7 @@ Egy kis léptékű a írhat némi kódot vannak az adatok beolvasását, olvassa
 Egy nagyobb kódmintát talál [feldolgozói szerepkör használatával][exportasa].
 
 ## <a name="delete"></a>A régi adatok törlése
-Vegye figyelembe, hogy Ön felelős a tárolási kapacitás kezelése és a régi adatok törlése, ha szükséges.
+Ön felelős a tárolási kapacitás kezelése és a régi adatok törlése, ha szükséges.
 
 ## <a name="if-you-regenerate-your-storage-key"></a>Ha Ön a kulcs újragenerálása...
 Ha módosítja a kulcsot a storage, a folyamatos exportálás fognak tovább működni. Az Azure-fiók megjelenik egy értesítés.

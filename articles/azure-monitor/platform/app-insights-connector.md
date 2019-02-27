@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: magoedte
-ms.openlocfilehash: 8b1504961254fefcaafc22008b4cc5adaf77e9c4
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: b9a847f04048cd17d550ca66bd3e6502577746eb
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447871"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878455"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights-összekötő felügyeleti megoldás (elavult)
 
@@ -127,7 +127,7 @@ Kattintva bárhol a **kivételek** kivételek igényeinek megfelelő Vizualizác
 
 Függetlenül attól, hogy valami valamelyik gombra a **Application Insights-összekötő** irányítópulton belül, a **keresési** lapon, Application Insights-adatok az alkalmazás látható visszaadó lekérdezés Insights-perspektívát. Ha az Application Insights-adatokat, például egy **&#42;** lekérdezés is megjeleníti a perspektíva lapon a következő képhez hasonlóan:
 
-![Application Insights ](./media/app-insights-connector/app-insights-search.png)
+![Application Insights](./media/app-insights-connector/app-insights-search.png)
 
 Perspektíva összetevők frissülnek, attól függően, a keresési lekérdezésben. Ez azt jelenti, hogy az eredményeket szűrheti bármely, amely felkínálja az adatokat megtekinthetik keresési mező használatával:
 

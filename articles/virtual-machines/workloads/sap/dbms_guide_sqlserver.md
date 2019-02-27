@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 58ae26a2daf2a65eaf56672c9e75147bd71e489a
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: b89c02aa0d30ec1928be2110fe6470da4f28080c
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330732"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889919"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SQL Server Azure Virtual Machines DBMS deployment for SAP NetWeaver
 
@@ -383,7 +383,7 @@ Az SQL Server 2014 és újabb verziókban nyílt foglalkozik a gondolattal táro
 * Ezt a módszert, valamint a központi telepítések korábban felsorolt a VHD-k elosztásra vonatkozó különböző Azure-Tárfiókok keresztül szempontok érvényesek. Azt jelenti, hogy az Azure Storage-fiók határértékek i/o műveletek száma.
 * Helyett a számlázás a virtuális gép tárolási i/o-kvóta ellen, a storage-blobokkal, az SQL Server adathoz és naplófájlhoz jelölő forgalmát, a virtuális gép hálózati sávszélesség adott típusú virtuális gép fog kijelölésére. A hálózati és tárolási sávszélesség-egy adott típusú virtuális Gépet, tekintse meg [méretek a Windows virtuális gépek az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).
 * Eredményeként a fájl I/O a hálózat kvótát állít keresztül küld, vannak részes főleg a tárolási kvótát, és az adott a teljes sávszélesség használata a virtuális gép csak részben.
-* Az IOPS és az i/o átviteli teljesítmény-határértékeit, amely rendelkezik az Azure Premium Storage a különböző lemezméretet többé nem érvényesek. Akkor is, ha a létrehozott blobok az Azure Premium Storage találhatók. A tárolók szerepelnek a cikkben [nagy teljesítményű Premium Storage és a felügyelt lemezek virtuális gépekhez](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage#scalability-and-performance-targets). Következtében az SQL Server-adatfájlok és közvetlenül az Azure Premium Storage tárolt blobok naplófájlokat helyez, a teljesítményjellemzők eltérő lehet az Azure Premium Storage virtuális merevlemezek képest.
+* Az IOPS és az i/o átviteli teljesítmény-határértékeit, amely rendelkezik az Azure Premium Storage a különböző lemezméretet többé nem érvényesek. Akkor is, ha a létrehozott blobok az Azure Premium Storage találhatók. A tárolók szerepelnek a cikkben [nagy teljesítményű Premium Storage és a felügyelt lemezek virtuális gépekhez](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage). Következtében az SQL Server-adatfájlok és közvetlenül az Azure Premium Storage tárolt blobok naplófájlokat helyez, a teljesítményjellemzők eltérő lehet az Azure Premium Storage virtuális merevlemezek képest.
 * Elérhető az Azure Premium Storage-lemez gyorsítótár-alapú gazdagép nem érhető el, amikor az SQL Server adatfájljainak közvetlenül az Azure-blobokat.
 * M sorozatú virtuális gépek, az Azure Írásgyorsító támogatása az SQL Server tranzakciós naplófájl ezredmásodperces írására nem használható. 
 

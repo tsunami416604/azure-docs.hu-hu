@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 9ce7a36f796716f48f6575b2391ac563eebf4530
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 7da813022527830a5ede62c9f4ce98645fe63d4b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447820"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871599"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Az Adattárházegységek (Dwu) és számítási Adattárházegység (cDWUs)
 Javaslatok az adattárházegységek (dwu-k, cDWUs) ár és a teljesítmény-, és módosítása az egységek számát az ideális számot kiválasztása. 
@@ -68,7 +68,7 @@ Mindegyik teljesítményszint egy némileg eltérő mértékegysége az adattár
 
 A dwu-k és a cDWUs támogatja méretezésű számítások felfelé és lefelé, és nem kell használnia az adattárház felfüggesztése számítási. Ezeket a műveleteket a rendszer az összes igény szerinti. Gen2 egy helyi lemez alapú gyorsítótárat használ a számítási csomópontokon teljesítmény javítása érdekében. Méretezhető vagy szüneteltetheti a rendszer, a gyorsítótár érvénytelenné válik, és így gyorsítótár előkészítése időszak előtt el kell végezni optimális teljesítmény akkor érhető el.  
 
-Adattárházegységek növelésével, lineárisan növeli a számítási erőforrások. Gen2 biztosítja a legjobb lekérdezési teljesítmény és a legmagasabb szintű skálázási, de van egy újabb tétel díja. A vállalkozások számára, amely rendelkezik az állandó teljesítmény érdekében igény szerinti tervezték. Ezekben a rendszerekben kell használniuk a legtöbb gyorsítótár. 
+Adattárházegységek növelésével, lineárisan növeli a számítási erőforrások. Gen2 a legjobb lekérdezési teljesítmény és a legmagasabb méretezési biztosít. Ezekben a rendszerekben kell használniuk a legtöbb gyorsítótár.
 
 ### <a name="capacity-limits"></a>Kapacitási korlátok
 Minden SQL-kiszolgáló (például a myserver.database.windows.net) rendelkezik egy [adatbázis tranzakciós egységek (DTU)](../sql-database/sql-database-what-is-a-dtu.md) kvóta, amely lehetővé teszi, hogy egy bizonyos számú adattárházegységek. További információkért lásd: a [számítási feladat felügyeleti kapacitáskorlátait](sql-data-warehouse-service-capacity-limits.md#workload-management).

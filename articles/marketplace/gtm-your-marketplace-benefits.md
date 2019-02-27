@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: ellacroi
-ms.openlocfilehash: 0e324ae82a0223cf48f00b186f46e26840d4d655
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 3fa4fb9fb7accfbe4517e2bf917a3df31ea10fa7
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747526"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887250"
 ---
 # <a name="your-marketplace-benefits"></a>A piactér előnyeit
 
@@ -63,9 +63,9 @@ Szeretné elérni ezeket az előnyöket, meg kell:
 1. Az ajánlat közzététele az Azure Marketplace-en vagy az appsource-ban.
 2. Győződjön meg arról, egy marketing névjegyet adta meg a **kapcsolattartási adatok** az ajánlat része. Ez egy dedikált marketing erőforrást, egy kevésbé alias figyelésekor legyen. (azaz, kerülje a "támogatási\@", "info\@", "marketing\@" stb.)
 
-A megoldás állapota alapján, kapni fog egy e-mailt az önsegítő erőforrások, vagy a konzultációs hívást egy dedikált Engagement Manager meghívót. Nem kell tennie semmit sem kell a hívás indításához, a Marketplace-en bevezetési csapata kapcsolatba fog lépni az információk alapján a [Cloud Partner Portalon](https://cloudpartner.azure.com/).
+A megoldás állapota, folyamatban van a listában, próbaverziós programok vagy Transact, ajánlat alapján kap egy e-mailt az önsegítő erőforrások, vagy a konzultációs hívást egy dedikált Engagement Manager meghívót. Nem kell tennie semmit sem kell a hívás indításához, a Marketplace-en bevezetési csapata kapcsolatba fog lépni az információk alapján a [Cloud Partner Portalon](https://cloudpartner.azure.com/).
 
-Az Ön számára elérhető tevékenységek hatókörét kibővíti az Ön ajánlatainak a piactéren növekedésével. Az összes listaelem optimalizálási javaslatok és a promóciós alapszinten kapnak.  Ezek a listák megoldás állapota, kiválasztása a Marketplace-en, és a Microsoft Partner kompetencia elérését alapján további marketing előnyöket is jogosultak. 
+Az Ön számára elérhető tevékenységek hatókörét kibővíti az Ön ajánlatainak a piactéren növekedésével. Az összes listaelem optimalizálási javaslatok és a promóciós alapszinten kapnak.  Ezek a listák megoldás állapota (lista, próba vagy Transact) kiválasztása a Marketplace-en, és a Microsoft Partner kompetencia elérését alapján további gazdasági előnyeit is jogosultak.
 
 Az alábbi táblázat a jogosultsági előírásoknak összefoglalásképpen:
 

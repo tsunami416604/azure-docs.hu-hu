@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: d4be7b9c7774163aed8c0efb3414dbd6a794cf7f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e84c33b35ef7828cc16be4b532ab8406e0236ee3
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847796"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876670"
 ---
 # <a name="set-up-disaster-recovery-for-sql-server"></a>Vészhelyreállítás beállítása az SQL Server 
 
@@ -26,9 +26,9 @@ Mielőtt elkezdené, győződjön meg arról, az SQL Server vész-helyreállít�
 
 Számos számítási feladatokhoz használja az SQL Server alaprendszert, és integrálható alkalmazásokat, például a SharePoint, a Dynamics és a SAP, az adatszolgáltatások megvalósításához.  Az SQL Server számos módon telepíthető:
 
-* **Önálló SQL Server**: (fizikai vagy virtuális) egyetlen gépen üzemeltetett SQL Server és az összes adatbázishoz. Virtualizált, amikor a fürtszolgáltatás gazdagép helyi magas rendelkezésre állású szolgál. Vendégszintű magas rendelkezésre állású nincs megvalósítva.
-* **SQL Server feladatátvételi fürtszolgáltatási példányok (mindig az FCI)**: legalább két csomóponttal instanced megosztott lemezzel rendelkező SQL Server szoftvert futtató Windows feladatátvevő fürtben vannak konfigurálva. Ha egy csomópont nem működik, a fürt átveheti az SQL Server egy másik példányhoz. A telepítő egy elsődleges helyen magas rendelkezésre állás megvalósításához általában szolgál. A központi telepítési hiba, illetve a megosztott tárolási réteg leállás nem ellen. Az iSCSI, a fiber channel vezérlőt használó vagy a megosztott vhdx-fájlt egy megosztott lemezt kell végrehajtani.
-* **SQL Always On rendelkezésre állási csoportok**: a megosztott semmi fürt, egy rendelkezésre állási csoportban, a szinkron replikáció és automatikus feladatátvételi konfigurált SQL Server-adatbázisok legalább két csomóponttal állíthatók be.
+* **Standalone SQL Server**: (Fizikai vagy virtuális) egyetlen gépen üzemeltetett SQL Server és az összes adatbázishoz. Virtualizált, amikor a fürtszolgáltatás gazdagép helyi magas rendelkezésre állású szolgál. Vendégszintű magas rendelkezésre állású nincs megvalósítva.
+* **SQL Server feladatátvételi fürtszolgáltatási példányok (mindig az FCI)**: Legalább két csomóponttal instanced megosztott lemezzel rendelkező SQL Server szoftvert futtató Windows feladatátvevő fürtben vannak konfigurálva. Ha egy csomópont nem működik, a fürt átveheti az SQL Server egy másik példányhoz. A telepítő egy elsődleges helyen magas rendelkezésre állás megvalósításához általában szolgál. A központi telepítési hiba, illetve a megosztott tárolási réteg leállás nem ellen. Az iSCSI, a fiber channel vezérlőt használó vagy a megosztott vhdx-fájlt egy megosztott lemezt kell végrehajtani.
+* **SQL Always On rendelkezésre állási csoportok**: Két vagy több csomópont a megosztott semmi fürt, egy rendelkezésre állási csoportban, a szinkron replikáció és automatikus feladatátvételi konfigurált SQL Server-adatbázisok állíthatók be.
 
  Ez a cikk használja az alábbi natív SQL katasztrófa utáni helyreállítás technológiákat adatbázisok egy távoli helyre történő helyreállítását:
 
@@ -50,10 +50,10 @@ Site Recovery szolgáltatás védi az SQL Server, a táblázat foglalja össze.
 ### <a name="supported-sql-server-versions"></a>Támogatott SQL Server-verziók
 Ezek az SQL Server-verziók támogatottak, a támogatott forgatókönyveket:
 
-* SQL Server 2016 Enterprise és Standard
-* SQL Server 2014 Enterprise és Standard
-* SQL Server 2012 Enterprise és Standard
-* Az SQL Server 2008 R2 Enterprise és Standard
+* SQL Server 2016 Enterprise and Standard
+* SQL Server 2014 Enterprise and Standard
+* SQL Server 2012 Enterprise and Standard
+* SQL Server 2008 R2 Enterprise and Standard
 
 ### <a name="supported-sql-server-integration"></a>Támogatott SQL Server-integráció
 
@@ -64,7 +64,7 @@ A Site Recovery egy vész-helyreállítási megoldást biztosít a táblázatban
 **Always On rendelkezésre állási csoport** | Több különálló példány az SQL Server futtatása több csomóponttal rendelkező feladatátvevő fürtben.<br/><br/>Adatbázisok lehet csoportosítani feladatátvételi csoportokba másolható (tükrözött) az SQL Server-példányokat, hogy a nem megosztott tárolóra van szükség.<br/><br/>Itt a vész-helyreállítási egy elsődleges hely és a egy vagy több másodlagos hely között. Két csomópont állítható a megosztott semmi nem SQL Server-adatbázisok a fürt egy rendelkezésre állási csoportban, a szinkron replikáció és automatikus feladatátvételi konfigurálva. | Az SQL Server 2016, az SQL Server 2014 és SQL Server 2012 Enterprise edition
 **A Feladatátvételi fürtszolgáltatás (mindig az FCI)** | Az SQL Server kihasználja a Windows feladatátvételi fürtszolgáltatás magas rendelkezésre állás, a helyszíni SQL Server számítási feladatok számára.<br/><br/>Az SQL Server-példányok futó megosztott lemezzel rendelkező csomópontok feladatátvevő fürtben vannak konfigurálva. Ha egy példány nem működik a fürt átadja a feladatokat másikat.<br/><br/>A fürt nem hiba vagy a megosztott tárolóban leállások ellen. A megosztott lemez implementálható az iSCSI, a fiber channel vezérlőt használó, vagy a megosztott vhdx-fájlokat. | Az SQL Server Enterprise kiadás<br/><br/>Az SQL Server Standard kiadása esetén (legfeljebb csak két csomópont)
 **Az adatbázis-tükrözés (magas biztonsági üzemmódú)** | Egy másodlagos példányt egyetlen adatbázist védi. Mindkét magas biztonsági (szinkron) elérhető és nagy teljesítményű (aszinkron) replikációs mód. Nincs szükség a feladatátvevő fürt. | SQL Server 2008 R2<br/><br/>Az SQL Server Enterprise minden kiadás
-**Különálló SQL Server** | Az SQL Server és adatbázis egyetlen kiszolgálón (fizikai vagy virtuális) üzemelnek. Ha a kiszolgáló virtuális gazdagépen a fürtszolgáltatás magas rendelkezésre állású használható. Vendégszintű magas rendelkezésre állás. | Enterprise vagy Standard edition
+**Standalone SQL Server** | Az SQL Server és adatbázis egyetlen kiszolgálón (fizikai vagy virtuális) üzemelnek. Ha a kiszolgáló virtuális gazdagépen a fürtszolgáltatás magas rendelkezésre állású használható. Vendégszintű magas rendelkezésre állás. | Enterprise vagy Standard edition
 
 ## <a name="deployment-recommendations"></a>Telepítési javaslatok
 
@@ -76,7 +76,7 @@ Ez a táblázat összefoglalja a javaslatok az SQL Server BCDR-technológiákkal
 || Enterprise |Always On rendelkezésre állási csoportokat magas rendelkezésre állás érdekében |Always On rendelkezésre állási csoportok |Always On rendelkezésre állási csoportok | |
 || Standard |Feladatátvevőfürt-példány (FCI) |Site Recovery-replikációja helyi tükrözött |Site Recovery-replikációja helyi tükrözött | |
 || Enterprise vagy Standard |Különálló |Site Recovery-replikációja |Site Recovery-replikációja | |
-| Az SQL Server 2008 R2 vagy 2008 |Enterprise vagy Standard |Feladatátvevőfürt-példány (FCI) |Site Recovery-replikációja helyi tükrözött |Site Recovery-replikációja helyi tükrözött |
+| SQL Server 2008 R2 or 2008 |Enterprise vagy Standard |Feladatátvevőfürt-példány (FCI) |Site Recovery-replikációja helyi tükrözött |Site Recovery-replikációja helyi tükrözött |
 || Enterprise vagy Standard |Különálló |Site Recovery-replikációja |Site Recovery-replikációja | |
 | SQL Server (bármilyen verzió) |Enterprise vagy Standard |Feladatátvevőfürt-példány - DTC-alkalmazás |Site Recovery-replikációja |Nem támogatott |
 
@@ -116,7 +116,7 @@ SQL Always On nem natív módon támogatja a feladatátvételi tesztet. Ezért a
 
 1. Mielőtt elindítaná a helyreállítási terv teszt feladatátvétele, a virtuális gép helyreállítása az előző lépésben biztonsági.
 
-    ![Az Azure biztonsági másolat visszaállítása ](./media/site-recovery-sql/restore-from-backup.png)
+    ![Az Azure biztonsági másolat visszaállítása](./media/site-recovery-sql/restore-from-backup.png)
 
 1. [A kvórum](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/force-a-wsfc-cluster-to-start-without-a-quorum#PowerShellProcedure) a virtuális gép biztonsági mentésből.
 
@@ -130,9 +130,9 @@ SQL Always On nem natív módon támogatja a feladatátvételi tesztet. Ezért a
 
 1. Load balancer létrehozása egy előtérbeli IP-címkészlet minden rendelkezésre állási csoport figyelőjének megfelelő alatt létrehozott IP és a háttérkészlet hozzáadása SQL virtuális géppel.
 
-     ![Load Balancer - előtérbeli IP-készlet létrehozása ](./media/site-recovery-sql/create-load-balancer1.png)
+     ![Load Balancer - előtérbeli IP-készlet létrehozása](./media/site-recovery-sql/create-load-balancer1.png)
 
-    ![Load Balancer létrehozása – háttérkészlet ](./media/site-recovery-sql/create-load-balancer2.png)
+    ![Load Balancer létrehozása – háttérkészlet](./media/site-recovery-sql/create-load-balancer2.png)
 
 1. Ezt a helyreállítási terv feladatátvételi tesztet.
 
@@ -179,7 +179,7 @@ SQL Server Standard edition vagy SQL Server 2008 R2 rendszert futtató fürtre j
 * Ha az alkalmazás használja az elosztott tranzakciók javasoljuk, hogy telepít [SAN-replikáció a Site Recovery](site-recovery-vmm-san.md) Hyper-V környezetben, vagy [VMware/fizikai kiszolgáló VMware](site-recovery-vmware-to-vmware.md) VMware környezetben.
 * A DTC által alkalmazások a fenti módszer használatával a fürt helyreállítására önálló kiszolgálóként, kihasználva a helyi magas biztonsági adatbázis-tükrözés.
 
-### <a name="on-premises-to-azure"></a>Az Azure-bA helyszíni
+### <a name="on-premises-to-azure"></a>Helyszíni rendszerről az Azure-ra
 
 A Site Recovery nem biztosít a Vendég fürt támogatás, ha az Azure-ba történő. Az SQL Server is nem biztosít egy alacsony költségű vész-helyreállítási megoldást a Standard kiadása esetén. Ebben a forgatókönyvben javasoljuk, hogy a helyszíni SQL Server-fürt egy különálló SQL Server védelmét, és végezze el a helyreállítást a az Azure-ban.
 

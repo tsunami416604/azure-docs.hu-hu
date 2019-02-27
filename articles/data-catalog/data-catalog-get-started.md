@@ -8,12 +8,12 @@ ms.assetid: 03332872-8d84-44a0-8a78-04fd30e14b18
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: dd3cb108844cd009d74de42630511073021d94b1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5513948a6611e93833c7e70fa4e5667b3901a9f3
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238488"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880223"
 ---
 # <a name="get-started-with-azure-data-catalog"></a>Ismerkedés az Azure Data Catalog szolgáltatással
 Az Azure Data Catalog teljes körűen felügyelt felhőszolgáltatás, amely vállalati adategységek regisztrációs és felderítőrendszereként szolgál. A szolgáltatás részletes bemutatásáért olvassa el a [Mi az az Azure Data Catalog?](data-catalog-what-is-data-catalog.md) című cikket.
@@ -82,7 +82,7 @@ Szervezetenként (Azure Active Directory-tartományonként) mindössze egy adatk
     ![Azure Data Catalog – katalóguslista megtekintése](media/data-catalog-get-started/data-catalog-azure-portal-show-catalog.png)
 3. Kattintson a korábban létrehozott katalógusra. Megjelenik a portál **Data Catalog** panele.
    
-   ![Azure Data Catalog – panel a portálon ](media/data-catalog-get-started/data-catalog-blade-azure-portal.png)
+   ![Azure Data Catalog – panel a portálon](media/data-catalog-get-started/data-catalog-blade-azure-portal.png)
 4. Itt megtekintheti az adatkatalógus tulajdonságait, illetve frissítheti is őket. Kattintson például a **Tarifacsomag** elemre, és módosítsa a kiadást.
    
     ![Azure Data Catalog – tarifacsomag](media/data-catalog-get-started/data-catalog-change-pricing-tier.png)
@@ -144,7 +144,7 @@ Ebben a gyakorlatban a regisztrációs eszközt használva regisztrálja az Adve
       ![Azure Data Catalog – regisztrált objektumok](media/data-catalog-get-started/data-catalog-registered-objects.png)
    9. A regisztrált adatforrás-objektumok megtekintéséhez kattintson a **View Portal** (Portál megtekintése) lehetőségre. Az Azure Data Catalog-portálon ellenőrizze, hogy a rácsnézetben látja-e mind a négy táblát, illetve az adatbázist.
       
-      ![Objektumok az Azure Data Catalog-portálon ](media/data-catalog-get-started/data-catalog-view-portal.png)
+      ![Objektumok az Azure Data Catalog-portálon](media/data-catalog-get-started/data-catalog-view-portal.png)
 
 Ebben a gyakorlatban az Adventure Works példaadatbázisából regisztrált néhány objektumot, amelyeket mostantól a szervezet bármelyik felhasználója könnyen megtalálhat. A következő gyakorlatból elsajátíthatja, hogyan találhatja meg a regisztrált adategységeket.
 

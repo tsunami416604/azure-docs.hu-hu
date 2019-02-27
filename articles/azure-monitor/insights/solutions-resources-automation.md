@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a72df28fbaed89076976f567774bd5fdb15bc2f9
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: c24d8bd382dc57a8a354b61252d7a5e16640436f
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229489"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56864641"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Azure Automation-erőforrások hozzáadása a felügyeleti megoldásra (előzetes verzió)
 > [!NOTE]
@@ -29,7 +29,7 @@ ms.locfileid: "54229489"
 [Felügyeleti megoldások]( solutions.md) rendszerint tartalmazza a forgatókönyvek az Azure Automationben a automatizálhatja a folyamatokat, például a figyelési adatok feldolgozása és gyűjtéséről.  Runbookok, mellett az Automation-fiókok adategységeket, mint a változók és a megoldásban használt runbookok támogató ütemezések magában foglalja.  Ez a cikk ismerteti, hogyan foglalhat bele a runbookokat és az azokhoz kapcsolódó erőforrásokat a megoldás.
 
 > [!NOTE]
-> Ebben a cikkben a minták használata, paraméterek és változók, kötelező vagy közös felügyeleti megoldások és az itt ismertetett [tervezés és felépítés felügyeleti megoldás az Azure-ban ]( solutions-creating.md) 
+> Ebben a cikkben a minták használata, paraméterek és változók, kötelező vagy közös felügyeleti megoldások és az itt ismertetett [tervezés és felépítés felügyeleti megoldás az Azure-ban]( solutions-creating.md) 
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -144,7 +144,7 @@ A tanúsítványok erőforrás tulajdonságait az alábbi táblázatban ismertet
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| base64value tulajdonsága |A tanúsítvány Base 64 értéke. |
+| base64Value |A tanúsítvány Base 64 értéke. |
 | ujjlenyomat |A tanúsítvány ujjlenyomatát. |
 
 

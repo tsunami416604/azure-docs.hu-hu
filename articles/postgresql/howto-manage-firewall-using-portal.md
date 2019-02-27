@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 7211b7f5db14f4bad114556e5c080cf5d535b00b
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 20c5d66f51cffeb7e4e73ba9f16b7ea5ce305e5c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545484"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874103"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql-firewall-rules-using-the-azure-portal"></a>Hozzon létre és kezelhető az Azure Database for PostgreSQL tűzfalszabályok az Azure portal használatával
 Kiszolgálószintű tűzfalszabályok lehetővé teszik a rendszergazdák eléréséhez egy Azure Database for PostgreSQL-kiszolgáló megadott IP-cím vagy IP-címtartományt. 
@@ -36,7 +36,7 @@ Egy keresőmotor vagy egyéb online eszközt használja a saját IP-cím ellenő
 
 4. További címtartomány hozzáadásához. A tűzfalszabályok az Azure Database for PostgreSQL, az egyetlen IP-címet vagy címtartományt is megadhat. Ha szeretné korlátozni a szabályt, hogy egyetlen IP-címet, írja be ugyanazt a címet a mezőben a kezdő IP- és a záró IP-cím. A tűzfal megnyitása után lehetővé teszi a rendszergazdák, a felhasználók és alkalmazások számára, hogy jelentkezzen be bármely olyan adatbázisába a PostgreSQL-kiszolgáló, amelyhez érvényes hitelesítő adatokkal rendelkeznek.
 
-  ![Az Azure portal - tűzfalszabályok ](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
+  ![Az Azure portal - tűzfalszabályok](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
 
 5. Kattintson a **mentése** gombra az eszköztárban, a kiszolgálószintű tűzfalszabály mentéséhez. Várjon, amíg a visszaigazolás, hogy a tűzfalszabályok frissítése sikeres volt-e.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.author: ronmat
 ms.manager: shaik
-ms.openlocfilehash: 8b2ca2d5d6418d68cab847df80fc437e468249ed
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 00de38aa7309179b92ff65f009f8aa780f60c284
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46995643"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883691"
 ---
 # <a name="azure-storage-advanced-threat-protection"></a>Az Azure Storage komplex veszélyforrások elleni védelem
 
@@ -59,21 +59,21 @@ Tekintse át, és az aktuális biztonsági riasztások kezelése az Azure Securi
 
 Szokatlan és vélhetően kárt okozó kísérleteket elérni vagy kiaknázni a storage-fiókok által előállított riasztások. Ezeket az eseményeket is aktiválhatja a következő riasztásokat:
 
-* **Hozzáférés szokatlan helyről**: Ez a riasztás akkor aktiválódik, amikor megváltozik a storage-fiók hozzáférési mintájában. Például ha valaki használta a storage-fiók egy szokatlan földrajzi helyről. Bizonyos esetekben a riasztás jogszerű műveleteket (egy új alkalmazást vagy fejlesztői karbantartási művelet) észlel. Más esetekben a Riasztás kártékony műveleteket (korábbi alkalmazott, külső támadó, stb.) észlel.
+* **Hozzáférés szokatlan helyről**: Ez a riasztás akkor aktiválódik, ha a tárfiók hozzáférési mintájában változik. Például ha valaki használta a storage-fiók egy szokatlan földrajzi helyről. Bizonyos esetekben a riasztás jogszerű műveleteket (egy új alkalmazást vagy fejlesztői karbantartási művelet) észlel. Más esetekben a Riasztás kártékony műveleteket (korábbi alkalmazott, külső támadó, stb.) észlel.
 
-* **Szokatlan adatkinyerés**: Ez a riasztás akkor aktiválódik, ha változik az adatok kinyerése módja egy storage-fiókból. Például ha fért hozzá valaki egy szokatlan adatmennyiséget a storage-fiókban. Bizonyos esetekben a riasztás jogszerű műveleteket (karbantartási tevékenység) észlel. Más esetekben a Riasztás kártékony műveleteket (adatok kiszűrése vagy illetéktelen behatolás, adatok jogosulatlan átvitelét) észlel.
+* **Szokatlan adatkinyerés**: Ez a riasztás akkor aktiválódik, ha változik az adatok kinyerése mintában egy storage-fiókból. Például ha fért hozzá valaki egy szokatlan adatmennyiséget a storage-fiókban. Bizonyos esetekben a riasztás jogszerű műveleteket (karbantartási tevékenység) észlel. Más esetekben a Riasztás kártékony műveleteket (adatok kiszűrése vagy illetéktelen behatolás, adatok jogosulatlan átvitelét) észlel.
 
-* **Szokatlan névtelen hozzáférés:** Ez a riasztás akkor aktiválódik, amikor megváltozik a storage-fiók hozzáférési mintájában. Tegyük fel például, névtelenül fért hozzá valaki egy storage-fiókot. Bizonyos esetekben a riasztás jogszerű hozzáférést egy nyilvános olvasási hozzáférés használatával észlel. Más esetekben a riasztás észlel, amely kihasználja a nyilvános olvasási hozzáférés egy tárolóhoz és annak blobjaihoz jogosulatlan hozzáférés.
+* **Szokatlan névtelen hozzáférés:** Ez a riasztás akkor aktiválódik, ha a tárfiók hozzáférési mintájában változik. Tegyük fel például, névtelenül fért hozzá valaki egy storage-fiókot. Bizonyos esetekben a riasztás jogszerű hozzáférést egy nyilvános olvasási hozzáférés használatával észlel. Más esetekben a riasztás észlel, amely kihasználja a nyilvános olvasási hozzáférés egy tárolóhoz és annak blobjaihoz jogosulatlan hozzáférés.
 
-* **Váratlan törlése:** Ez a riasztás akkor aktiválódik, amikor egy vagy több váratlan törlési műveleteket a rendszer egy tárfiókot, a storage-fiók előzményadatok elemzése alapján. Például tegyük fel, hogy valaki végrehajtott egy *DeleteBlob* művelet egy új alkalmazással és a egy új IP-címről. Bizonyos esetekben a riasztás (a rendszergazda használt egy másik böngészőben üzleti utazás közben) jogszerű műveleteket észlel. Más esetekben a Riasztás kártékony műveleteket észlel (egy támadó adatok törlése). 
+* **Váratlan törlés:** Ez a riasztás akkor aktiválódik, ha egy vagy több váratlan törlési műveleteket a rendszer egy tárfiókot, a storage-fiók előzményadatok elemzése alapján. Például tegyük fel, hogy valaki végrehajtott egy *DeleteBlob* művelet egy új alkalmazással és a egy új IP-címről. Bizonyos esetekben a riasztás (a rendszergazda használt egy másik böngészőben üzleti utazás közben) jogszerű műveleteket észlel. Más esetekben a Riasztás kártékony műveleteket észlel (egy támadó adatok törlése). 
  
-* **Hozzáférési engedély módosítása:** Ez a riasztás akkor aktiválódik, ha a tárfiók hozzáférési jogosultságaik váratlan változását van. Tegyük fel például, hogy valaki módosította a hozzáférési engedélyt, a storage-fiók egy új alkalmazást, és a egy új IP-címről. Bizonyos esetekben a riasztás (a rendszergazda használt egy másik böngészőben üzleti utazás közben) jogszerű műveleteket észlel. Más esetekben a Riasztás kártékony műveleteket észlel (például egy támadó-fiókhoz való hozzáférés révén jogosultságával növelésével). 
+* **Hozzáférési engedély módosítása:** Ez a riasztás akkor aktiválódik, ha van egy storage-fiók hozzáférési jogosultságaik váratlan változását. Tegyük fel például, hogy valaki módosította a hozzáférési engedélyt, a storage-fiók egy új alkalmazást, és a egy új IP-címről. Bizonyos esetekben a riasztás (a rendszergazda használt egy másik böngészőben üzleti utazás közben) jogszerű műveleteket észlel. Más esetekben a Riasztás kártékony műveleteket észlel (például egy támadó-fiókhoz való hozzáférés révén jogosultságával növelésével). 
 
 * **Azure Cloud Service-csomag feltöltéséhez:** Ez a riasztás akkor aktiválódik, ha van egy nem várt feltöltése az Azure Cloud Service-csomag (*.cspkg* fájl) egy tárfiókba. Tegyük fel például, egy *.cspkg* új IP-címről a feltöltött fájl. Egyes esetekben a riasztás jogszerű műveleteket észlel. Más esetekben a Riasztás kártékony műveleteket (például egy felhőalapú szolgáltatás egy rosszindulatú service üzemelő példánya előkészítésekor feltöltött csomag) észlel.    
    
 
 ## <a name="next-steps"></a>További lépések
 
-* Tudjon meg többet [naplók az Azure Storage-fiókok ](/rest/api/storageservices/About-Storage-Analytics-Logging)
+* Tudjon meg többet [naplók az Azure Storage-fiókok](/rest/api/storageservices/About-Storage-Analytics-Logging)
 
 * Tudjon meg többet [Azure Security Centerben](../../security-center/security-center-intro.md)

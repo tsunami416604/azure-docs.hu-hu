@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: jasontang501
 ms.subservice: common
-ms.openlocfilehash: b9524f7aff7ae9de37835985787b5d4d9c3cf9b6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c45061db77c21b82744f69f00265870d5e1a8d00
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478236"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883841"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>A párhuzamosság kezelése a Microsoft Azure Storage szolgáltatásban
 ## <a name="overview"></a>Áttekintés
@@ -193,7 +193,7 @@ További információkért lásd:
 
 * [Blob szolgáltatás műveletek által használt feltételes fejlécek megadása](https://msdn.microsoft.com/library/azure/dd179371.aspx)
 * [Címbérlet-tárolók](https://msdn.microsoft.com/library/azure/jj159103.aspx)
-* [Címbérleti Blobhoz ](https://msdn.microsoft.com/library/azure/ee691972.aspx)
+* [Címbérleti Blobhoz](https://msdn.microsoft.com/library/azure/ee691972.aspx)
 
 ## <a name="managing-concurrency-in-the-table-service"></a>A Table Service szolgáltatásban az egyidejűség kezelése
 A table service használja az optimista egyidejűség ellenőrzi az alapértelmezett viselkedésként entitásokkal, a blob szolgáltatás, explicit módon választania kell az optimista egyidejűséget ellenőrzéséhez eltérően működik. A tábla- és blobtárolókat szolgáltatások közötti különbség az, hogy csak kezelheti az entitások egyidejűségi viselkedését, mivel a blob szolgáltatással kezelheti az egyidejűséget, tárolók és blobok.  

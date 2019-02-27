@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: ranjithr
 ms.custom: seodec18
-ms.openlocfilehash: aad31e72682e15c49fb3d6dce64e7ef46525cb66
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 6a22600f7d6653da64256d7ec63ba26f272b2184
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051852"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888270"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Ajánlott eljárások és hibaelhárítási útmutató csomópont-alkalmazásokhoz az Azure App Service Windows
 
@@ -90,7 +90,7 @@ Emellett az alkalmazások, adatfolyamként is be kell az iisnode-kezelő respons
 
 ### <a name="watchedfiles"></a>watchedFiles
 
-Pontosvesszővel elválasztott módosítások vannak vizsgált fájlok listáját. Egy fájl bármely módosítása hatására az alkalmazás újraindítása. Mindegyik bejegyzés egy választható könyvtár nevét, valamint a szükséges fájl nevét, amelyek a könyvtárat, ahol a fő alkalmazását belépési pont található viszonyítva áll. A fájl neve funkciója csak helyettesítő karakterek használata engedélyezett. Az alapértelmezett érték `*.js;web.config`
+Pontosvesszővel elválasztott módosítások vannak vizsgált fájlok listáját. Egy fájl bármely módosítása hatására az alkalmazás újraindítása. Mindegyik bejegyzés egy választható könyvtár nevét, valamint a szükséges fájl nevét, amelyek a könyvtárat, ahol a fő alkalmazását belépési pont található viszonyítva áll. A fájl neve funkciója csak helyettesítő karakterek használata engedélyezett. Az alapértelmezett érték `*.js;iisnode.yml`
 
 ### <a name="recyclesignalenabled"></a>recycleSignalEnabled
 
@@ -283,6 +283,6 @@ Az alábbi hivatkozásokból tudhat meg többet az Azure App Service node.js-alk
 * [Ismerkedés a Node.js-webalkalmazásokkal az Azure App Service-ben](app-service-web-get-started-nodejs.md)
 * [A Node.js webalkalmazás hibakeresése az Azure App Service-ben](app-service-web-tutorial-nodejs-mongodb-app.md)
 * [A Node.js modulok használata az Azure alkalmazásokkal](../nodejs-use-node-modules-azure-apps.md)
-* [Az Azure App Service Web Apps: NODE.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
+* [Azure App Service Web Apps: Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
 * [Node.js fejlesztői központ](../nodejs-use-node-modules-azure-apps.md)
 * [A Szupertitkos Kudu hibakereső konzol felfedezése](https://azure.microsoft.com/documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/)

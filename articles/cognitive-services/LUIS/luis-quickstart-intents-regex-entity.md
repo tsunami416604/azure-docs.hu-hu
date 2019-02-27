@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 9c5b2579a6ec3b38c3368be0bd21d6865bcb3209
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 012d77227e7c0283b565361dda32cb77e12fc62b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56730240"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867269"
 ---
 # <a name="tutorial-get-well-formatted-data-from-the-utterance"></a>Oktatóanyag: Helyes formátumú adatokat kérhet le az utterance (kifejezés)
 Ebben az oktatóanyagban az utterance (kifejezés) használatával konzisztens módon formázott adatok kinyerését alkalmazás létrehozása a **reguláris kifejezés** entitás.
@@ -82,7 +82,7 @@ A reguláris kifejezés megfelelő választás az ilyen típusú adatok esetén,
     |A hrf-546234 szerzője?|
     |A hrf-456234 címe?|
 
-    [ ![Képernyőkép a Szándék lapról, az új kimondott szövegek kiemelésével](./media/luis-quickstart-intents-regex-entity/findform-intent.png) ](./media/luis-quickstart-intents-regex-entity/findform-intent.png#lightbox)
+    [![Képernyőkép a leképezés oldala, amelyen kiemelve új kimondott szöveg](./media/luis-quickstart-intents-regex-entity/findform-intent.png)](./media/luis-quickstart-intents-regex-entity/findform-intent.png#lightbox)
 
     [!INCLUDE [Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
 

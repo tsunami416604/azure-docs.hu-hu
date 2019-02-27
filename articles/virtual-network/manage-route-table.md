@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 86ba5a780e1ac5da7998b399997e5ad0724abefe
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: c9846f78e05d598844d12819cef3e948caf2704d
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817745"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889698"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Létrehozása, módosítása vagy egy útvonaltábla törlése
 
@@ -46,7 +46,7 @@ Létrehozhat egy Azure-helyen és az előfizetés hány útvonaltábláihoz korl
 
 **Parancsok**
 
-- Az Azure CLI: [az network route-table létrehozása](/cli/azure/network/route-table/route#az_network_route_table_create)
+- Az Azure CLI: [az network route-table létrehozása](/cli/azure/network/route-table/route)
 - PowerShell: [New-AzRouteTable](/powershell/module/az.network/new-azroutetable)
 
 ## <a name="view-route-tables"></a>Útvonaltáblák megtekintése
@@ -55,7 +55,7 @@ Létrehozhat egy Azure-helyen és az előfizetés hány útvonaltábláihoz korl
 
 **Parancsok**
 
-- Az Azure CLI: [az network route-table list](/cli/azure/network/route-table/route#az_network_route_table_list)
+- Az Azure CLI: [az network route-table list](/cli/azure/network/route-table/route)
 - PowerShell: [Get-AzRouteTable](/powershell/module/az.network/get-azroutetable)
 
 ## <a name="view-details-of-a-route-table"></a>Útválasztási táblázat részleteinek megtekintése
@@ -71,7 +71,7 @@ Létrehozhat egy Azure-helyen és az előfizetés hány útvonaltábláihoz korl
 
 **Parancsok**
 
-- Az Azure CLI: [az network route-table show](/cli/azure/network/route-table/route#az_network_route_table_show)
+- Az Azure CLI: [az network route-table show](/cli/azure/network/route-table/route)
 - PowerShell: [Get-AzRouteTable](/powershell/module/az.network/get-azroutetable)
 
 ## <a name="change-a-route-table"></a>Útválasztási táblázat módosítása
@@ -81,7 +81,7 @@ Létrehozhat egy Azure-helyen és az előfizetés hány útvonaltábláihoz korl
 
 **Parancsok**
 
-- Az Azure CLI: [az network route-table update](/cli/azure/network/route-table/route#az_network_route_table_update)
+- Az Azure CLI: [az network route-table update](/cli/azure/network/route-table/route)
 - PowerShell: [Set-AzRouteTable](/powershell/module/az.network/set-azroutetable)
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Útválasztási táblázat társítása alhálózattal
@@ -126,7 +126,7 @@ Ha egy útválasztási táblázatot is tartozik, az esetleges olyan alhálózato
 
 **Parancsok**
 
-- Az Azure CLI: [az network route-table törlése](/cli/azure/network/route-table/route#az_network_route_table_delete)
+- Az Azure CLI: [az network route-table törlése](/cli/azure/network/route-table/route)
 - PowerShell: [Remove-AzRouteTable](/powershell/module/az.network/remove-azroutetable)
 
 ## <a name="create-a-route"></a>Útvonal létrehozása
@@ -145,7 +145,7 @@ Hány útvonalak útvonaltáblánkénti hozhat létre egy Azure-helyen és az el
 
 **Parancsok**
 
-- Az Azure CLI: [az network route-table route létrehozása](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_create)
+- Az Azure CLI: [az network route-table route létrehozása](/cli/azure/network/route-table/route?view=azure-cli-latest)
 - PowerShell: [New-AzRouteConfig](/powershell/module/az.network/new-azrouteconfig)
 
 ## <a name="view-routes"></a>Útvonalak megtekintése
@@ -170,7 +170,7 @@ Hány útvonalak útvonaltáblánkénti hozhat létre egy Azure-helyen és az el
 
 **Parancsok**
 
-- Az Azure CLI: [az network route-table route show](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_show)
+- Az Azure CLI: [az network route-table route show](/cli/azure/network/route-table/route?view=azure-cli-latest)
 - PowerShell: [Get-AzRouteConfig](/powershell/module/az.network/get-azrouteconfig)
 
 ## <a name="change-a-route"></a>Egy útvonalat módosítása
@@ -196,7 +196,7 @@ Hány útvonalak útvonaltáblánkénti hozhat létre egy Azure-helyen és az el
 
 **Parancsok**
 
-- Az Azure CLI: [az network route-table route delete](/cli/azure/network/route-table/route?view=azure-cli-latest#az_network_route_table_route_delete)
+- Az Azure CLI: [az network route-table route delete](/cli/azure/network/route-table/route?view=azure-cli-latest)
 - PowerShell: [Remove-AzRouteConfig](/powershell/module/az.network/remove-azrouteconfig)
 
 ## <a name="view-effective-routes"></a>Érvényes útvonalak megtekintése
@@ -211,7 +211,7 @@ Az érvényes útvonalak mindegyik hálózati interfész egy virtuális géphez 
 
 **Parancsok**
 
-- Az Azure CLI: [az network nic show-effective-route-table](/cli/azure/network/nic?view=azure-cli-latest#az_network_nic_show_effective_route_table)
+- Az Azure CLI: [az network nic show-effective-route-table](/cli/azure/network/nic?view=azure-cli-latest)
 - PowerShell: [Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable)
 
 ## <a name="validate-routing-between-two-endpoints"></a>Ellenőrizze a két végpontok közötti útválasztás
@@ -228,7 +228,7 @@ Megadhatja, hogy a következő ugrás típusa között a virtuális gép és a e
 
 **Parancsok**
 
-- Az Azure CLI: [az network watcher show-next-hop](/cli/azure/network/watcher?view=azure-cli-latest#az_network_watcher_show_next_hop)
+- Az Azure CLI: [az network watcher show-next-hop](/cli/azure/network/watcher?view=azure-cli-latest)
 - PowerShell: [Get-AzNetworkWatcherNextHop](/powershell/module/az.network/get-aznetworkwatchernexthop)
 
 ## <a name="permissions"></a>Engedélyek

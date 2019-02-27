@@ -12,12 +12,12 @@ ms.date: 12/13/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2effd6c067a1378d9f774f282f6cea69a50596c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 806d060cd58322d745ea6ebdaa59eb85c6a35cbd
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204440"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867133"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>A Jelszókivonat-szinkronizálás az Azure Active Directory összevonási áttelepítésére
 
@@ -319,7 +319,7 @@ Először módosítsa a bejelentkezési módszer:
    * **Zökkenőmentes egyszeri bejelentkezést** értékre van állítva **engedélyezve**.
    * **Jelszó-szinkronizálás** értékre van állítva **engedélyezve**.<br /> 
 
-   ![A beállítások, a felhasználói bejelentkezési szakaszban képernyőkép ](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image11.png)<br />
+   ![A beállítások, a felhasználói bejelentkezési szakaszban képernyőkép](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image11.png)<br />
 
 Ugrás a [tesztelési és a következő lépések](#testing-and-next-steps).
 
@@ -337,7 +337,7 @@ Használja ezt a beállítást, ha az összevont tartományokban nem először a
 
    Mielőtt engedélyezné a Jelszókivonat-szinkronizálás: ![Képernyőkép a ne konfigurálja a beállítás a felhasználó bejelentkezési oldalán](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image12.png)<br />
 
-   Miután engedélyezte a Jelszókivonat-szinkronizálás: ![A felhasználó bejelentkezési oldalán új lehetőségeket bemutató képernyőkép ](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image13.png)<br />
+   Miután engedélyezte a Jelszókivonat-szinkronizálás: ![A felhasználó bejelentkezési oldalán új lehetőségeket bemutató képernyőkép](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image13.png)<br />
    
    > [!NOTE]
    > Az Azure AD Connect verziója 1.1.880.0, kezdve a **zökkenőmentes egyszeri bejelentkezést** alapértelmezés szerint a jelölőnégyzet be van jelölve.

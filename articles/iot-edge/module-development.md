@@ -4,17 +4,17 @@ description: Kifejleszthet egyedi modulokat az Azure IoT Edge, amely képes komm
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/05/2017
+ms.date: 02/25/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 3dd5005312e1c59fa53a0d917951c89033374192
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: ea2d1dbcf991ce858f07905bc1bb41809f9bcdd8
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200632"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882739"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>A saját IoT Edge-modulok fejlesztése
 
@@ -65,5 +65,9 @@ A modul csatlakozni az IoT Edge hub az eszközön, hogyan DeviceClient példány
 
 ## <a name="next-steps"></a>További lépések
 
-Miután modul fejlesztése, megtudhatja, hogyan [üzembe helyezés és nagy mennyiségű IoT Edge-modulok figyelése](how-to-deploy-monitor.md).
+[A fejlesztési és tesztelési környezet előkészítése az IoT Edge-hez](development-environment.md)
+
+[Fejlesztés a Visual Studio 2017 használatával C# IoT Edge-modulokat](how-to-visual-studio-develop-csharp-module.md)
+
+[IoT Edge-modulok fejlesztése a Visual Studio Code használatával](how-to-vs-code-develop-module.md)
 

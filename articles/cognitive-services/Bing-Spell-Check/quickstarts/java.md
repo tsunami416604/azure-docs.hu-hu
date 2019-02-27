@@ -1,92 +1,121 @@
 ---
-title: 'Gyors útmutató: A Bing Spell Check API, a Java'
+title: 'Gyors útmutató: Helyesírás-ellenőrzés a Bing Spell Check REST API és a Java'
 titlesuffix: Azure Cognitive Services
-description: Információ és kódminták segítségével ismerkedhet meg a Bing Spell Check API használatának alapjaival.
+description: Ismerkedés a Bing Spell Check REST API használatával a helyesírás-és nyelvtani.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 09/14/2017
+ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 4a61e2a1c1457e0f64f4d1e1b11b98c26827481a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d2905d05dce48b705de44780425ed2b55b02555c
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55854880"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888984"
 ---
-# <a name="quickstart-for-bing-spell-check-api-with-java"></a>Rövid útmutató a Bing Spell Check API a Javával való használatához 
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>Gyors útmutató: Helyesírás-ellenőrzés a Bing Spell Check REST API és a Java
 
-Ez a cikk bemutatja, hogyan használhatja a [Bing Spell Check API-t](https://azure.microsoft.com/services/cognitive-services/spell-check/) a Javával. A Spell Check API visszaadja a fel nem ismert szavak listáját a javasolt cserekifejezésekkel együtt. Általános esetben küld egy szöveget az API-nak, majd végrehajtja a javasolt cseréket a szövegben, vagy megmutatja azokat az alkalmazás felhasználójának, hogy ő dönthesse el, végre szeretné-e hajtani a cserét. Ez a cikk bemutatja, hogyan küldhet el egy olyan kérést, amely a „Hollo, wrld!” szöveget tartalmazza. A javasolt cserekifejezés a „Hello” és a „world” lesz.
+Ez a rövid útmutató segítségével, a Bing Spell Check REST API első hívását. Ez egyszerű Java-alkalmazás egy kérést küld az API-t, és javasolt javítások listáját adja vissza. Ezt az alkalmazást a Java nyelven van megírva, míg a API-ját egy REST-alapú webszolgáltatás szinte bármelyik programozási nyelvével kompatibilis. Az alkalmazás forráskódja elérhető a [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingSpellCheckv7.java).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kód lefordításához és futtatásához a [JDK 7 vagy 8](https://aka.ms/azure-jdks) telepítése szükséges. Ha van kedvence, használhat Java IDE-t vagy egy szövegszerkesztőt is.
+A Java fejlesztési Kit(JDK), 7 vagy újabb.
 
-Rendelkeznie kell egy, a **Bing Spell Check API 7-es verzióját** tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account). Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/#lang) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásakor kapott hozzáférési kulcsra, vagy beszerezhet egy fizetős előfizetői azonosítót az Azure-irányítópultról.  Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+[!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
-## <a name="get-spell-check-results"></a>Spell Check-eredmények lekérése
 
-1. Hozzon létre egy új Java-projektet kedvenc IDE-környezetében.
-2. Adja hozzá az alábbi kódot.
-3. A `subscriptionKey` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
-4. Futtassa a programot.
+## <a name="create-and-initialize-an-application"></a>Hozzon létre, és a egy alkalmazás inicializálása
 
-```java
-import java.io.*;
-import java.net.*;
-import javax.net.ssl.HttpsURLConnection;
+1. Hozzon létre egy új Java-projektet a kedvenc integrált Fejlesztőkörnyezetével vagy szerkesztőjével, és a következő csomagok importálásához.
 
-public class HelloWorld {
+    ```java
+    import java.io.*;
+    import java.net.*;
+    import javax.net.ssl.HttpsURLConnection;
+    ```
 
+2. Változók létrehozása az API-végpont állomás, elérési út és az előfizetési kulcs. Ezután hozzon létre változókat a piacra, helyesírás-ellenőrzés kívánt szöveg, és a karakterlánc a helyesírás-ellenőrzési mód.
+
+    ```java
     static String host = "https://api.cognitive.microsoft.com";
     static String path = "/bing/v7.0/spellcheck";
 
-    // NOTE: Replace this example key with a valid subscription key.
-    static String key = "ENTER KEY HERE";
+    static String key = "ENTER YOUR KEY HERE";
 
     static String mkt = "en-US";
     static String mode = "proof";
     static String text = "Hollo, wrld!";
+    ```
 
-    public static void check () throws Exception {
-        String params = "?mkt=" + mkt + "&mode=" + mode;
-        URL url = new URL(host + path + params);
-        HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
-        connection.setRequestMethod("POST");
-        connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
-        connection.setRequestProperty("Content-Length", "" + text.length() + 5);
-        connection.setRequestProperty("Ocp-Apim-Subscription-Key", key);
-        connection.setDoOutput(true);
+## <a name="create-and-send-an-api-request"></a>Hozzon létre, és a egy API-kérelem küldése
 
+1. Hozzon létre egy függvényt, nevű `check()` hozhat létre, és az API-kérelem küldése. Benne kövesse az alábbi lépéseket. Hozzon létre egy karakterláncot a kérelem paramétereit. fűzze hozzá a `?mkt=` paramétert a piaci karakterláncot, és a `&mode=` paraméter a helyesírás-ellenőrzés módra.  
+
+   ```java
+   public static void check () throws Exception {
+       String params = "?mkt=" + mkt + "&mode=" + mode;
+   //...
+   }
+   ```
+
+2. Hozzon létre egy URL-címet a végponti gazdagép elérési útvonalát, és a paraméterek karakterlánc kombinálásával. Hozzon létre egy új `HttpsURLConnection` obejct.
+
+    ```java
+    URL url = new URL(host + path + params);
+    HttpsURLConnection connection = (HttpsURLConnection) 
+    ```
+
+3. Nyissa meg az URL-kapcsolatot. A kérelem módszert állítja be `POST`. Adja hozzá a kérelem paramétereit. Ne felejtse el hozzáadni az előfizetési kulcs, a `Ocp-Apim-Subscription-Key` fejléc. 
+
+    ```java
+    url.openConnection();
+    connection.setRequestMethod("POST");
+    connection.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+    connection.setRequestProperty("Ocp-Apim-Subscription-Key", key);
+    connection.setDoOutput(true);
+    ```
+
+4. Hozzon létre egy új `DataOutputStream` objektumra, és az API-hoz való elküldéséhez.
+
+    ```java
         DataOutputStream wr = new DataOutputStream(connection.getOutputStream());
         wr.writeBytes("text=" + text);
         wr.flush();
         wr.close();
+    ```
 
-        BufferedReader in = new BufferedReader(
-        new InputStreamReader(connection.getInputStream()));
-        String line;
-        while ((line = in.readLine()) != null) {
-            System.out.println(line);
-        }
-        in.close();
+## <a name="read-the-response"></a>A válasz olvasása
+
+1. Hozzon létre egy `BufferedReader` és olvassa el a választ az API-ból. Nyomtassa ki a konzolhoz.
+    
+    ```java
+    BufferedReader in = new BufferedReader(
+    new InputStreamReader(connection.getInputStream()));
+    String line;
+    while ((line = in.readLine()) != null) {
+        System.out.println(line);
     }
+    in.close();
+    ```
 
+2. Az alkalmazás fő függvényét hívja meg a fent létrehozott függvényt. 
+
+    ```java
     public static void main(String[] args) {
         try {
-            check ();
+            check();
         }
         catch (Exception e) {
             System.out.println (e);
         }
     }
-}
-```
-
-**Válasz**
+    ```
+    
+## <a name="example-json-response"></a>Példa JSON-válasz
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
@@ -131,9 +160,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A Bing Spell Check oktatóanyaga](../tutorials/spellcheck.md)
+> [Egyoldalas webalkalmazás létrehozása](../tutorials/spellcheck.md)
 
-## <a name="see-also"></a>Lásd még
-
-- [A Bing Spell Check áttekintése](../proof-text.md)
+- [Mi az a Bing Spell Check API?](../overview.md)
 - [A Bing Spell Check API 7-es verzió referenciája](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)

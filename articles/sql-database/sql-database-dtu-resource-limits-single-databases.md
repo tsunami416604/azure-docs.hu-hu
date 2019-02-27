@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: bf4c823d42d26d9fa97ee6eb5ee6ea20b857cde8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 02/25/2019
+ms.openlocfilehash: 9755e624e244abd77709544bb7340d4ef88af629
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993013"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872420"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-based-purchasing-model"></a>A DTU-alapú vásárlási modell segítségével az önálló adatbázisok számára erőforráskorlátok
 
@@ -81,7 +81,7 @@ Az alábbi táblázatok az önálló adatbázis rendelkezésre álló erőforrá
 |||||||
 
 > [!IMPORTANT]
-> Jelenleg több mint 1 TB tárterület egységára prémium szinten érhető el minden régióban, kivéve a következő: Kelet-Kína, Észak-Kína, közép-India, Németország északkelet-Németország, Egyesült Királyság északi régiója, Egyesült Királyság déli régiója, USA védelmi Minisztériuma – középső régiója, USA védelmi Minisztériuma – keleti régiója, USA kormányzati középső régiója és USA nyugati középső RÉGIÓJA.  Ezekben a régiókban a prémium szinthez tartozó tárterület maximuma 1 TB. Lásd: [P11–P15 – Aktuális korlátozások](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> Jelenleg több mint 1 TB tárterület egységára prémium szinten érhető el minden régióban, kivéve: Kelet-Kína, Észak-Kína, közép-Németország, Északkelet-Németország, USA nyugati középső Régiója, USA védelmi Minisztériuma régiók és US Government központi. Ezekben a régiókban a prémium szinthez tartozó tárterület maximuma 1 TB.  További információkért lásd: [P11 – P15 – aktuális korlátozások](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 
 ## <a name="single-database-change-storage-size"></a>Önálló adatbázis: Tároló méretének módosítása
 

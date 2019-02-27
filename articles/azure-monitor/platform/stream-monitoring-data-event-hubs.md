@@ -1,6 +1,6 @@
 ---
 title: Stream Azure monitorozási adatok az Event hubs szolgáltatásba
-description: Ismerje meg, hogyan streamelése az Azure monitorozási adatok az adatok importálása egy partneri SIEM-vagy elemzőeszköz egy eseményközpontba.
+description: Ismerje meg, hogyan streamelése az eseményközpontba, az adatok importálása egy partneri SIEM-vagy elemzőeszköz Azure-beli monitorozási adatait.
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 424dc1611622a1dfc37419fd443d860698020524
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 549ec74514ff03e06ff25893d3fa865f179470e9
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468233"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870686"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Stream Azure monitorozási adatok felhasználásra egy eseményközpontba egy külső eszközzel
 
-Az Azure Monitor hozzáférni az összes monitorozási adatai az Azure-környezet, amely lehetővé teszi, hogy könnyedén létrehozhasson partneri SIEM és figyelési eszközök felhasználhatják az adatokat, egy folyamatot biztosít. Ez a cikk végigvezeti a beállítása az adatok különböző rétegek, az Azure-környezet küldendő egyetlen Event Hubs névtér vagy event hub, ahol begyűjthetők egy külső eszközzel.
+Ez a cikk végigvezeti a beállítása az adatok különböző rétegek, az Azure-környezet küldendő egyetlen Event Hubs névtér vagy event hub, ahol begyűjthetők egy külső eszközzel.
 
 > [!VIDEO https://www.youtube.com/embed/SPHxCgbcvSw]
 
@@ -33,7 +33,7 @@ Az Azure-környezet van több "csomag" figyelési adatok, és a metódus az adat
 - **Azure-előfizetés monitorozási adatai:** A művelet és a felügyeleti Azure-előfizetés adatait, valamint állapotának és az Azure működésének adatait magát. A [tevékenységnapló](./../../azure-monitor/platform/activity-logs-overview.md) monitorozási adatok, például a service health incidens- és Azure Resource Manager-naplók a legtöbb előfizetést tartalmazza. Ezek az adatok Log profilt használó gyűjtheti.
 - **Az Azure-bérlő monitorozási adatok:** A bérlői szintű Azure-szolgáltatások, például az Azure Active Directory művelettel kapcsolatos adatokat. Naplózza az Azure Active Directory és a bejelentkezések a monitorozási adatok bérlői példái. Ezeket az adatokat egy bérlő diagnosztikai beállítás használatával gyűjthetők össze.
 
-Az egyik csomagunkban adatküldés egy eseményközpontba, ahol azt tölthetők be a partner eszközt. A következő szakaszokban az egyes szintekről az eseményközpontok felé is streamelhetők adatok konfigurálása. A lépések feltételezik, hogy már rendelkezik eszközöket lehet figyelni a rétegben.
+Az egyik csomagunkban adatküldés egy eseményközpontba, ahol azt tölthetők be a partner eszközt. Egyes források konfigurálható adatküldéshez közvetlenül az eseményközpontok felé, miközben egy másik feldolgozásához, mint például a logikai alkalmazás a szükséges adatok lekéréséhez szükség lehet. A következő szakaszokban az egyes szintekről az eseményközpontok felé is streamelhetők adatok konfigurálása. A lépések feltételezik, hogy már rendelkezik eszközöket lehet figyelni a rétegben.
 
 ## <a name="set-up-an-event-hubs-namespace"></a>Event Hubs-névtér beállítása
 

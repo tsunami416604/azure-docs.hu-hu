@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/05/2018
-ms.openlocfilehash: 796cbcfc7ab905c54b878a5ccc866efbf9242fb6
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: d44dc7e7a7b3c63012518c3e854270555f469247
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652081"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873712"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Az Apache Spark Stream áttekintése
 
@@ -34,7 +34,7 @@ Kezdje egy egyszeri esemény, mondja ki a hőmérséklet egy csatlakoztatott the
 
 Minden egyes RDD jelöli nevű felhasználó által megadott időtartamon keresztül gyűjtött eseményeket a *kötegelési időkö*. Mivel minden egyes batch időtartam, egy új RDD időköztől számított, hogy az adatokat tartalmazó jön létre. Az rdd-kként folyamatos készletét gyűjti be egy DStream. Például ha a batch időköz hosszú egy második, a DStream bocsát ki a batch minden második tartalmazó egy RDD, amely során a második betöltött összes adatot tartalmazza. A DStream feldolgozásakor a hőmérséklet-esemény jelenik meg, ezek kötegek egyikében. Egy Spark Streaming-alkalmazás az eseményeket tartalmazó köteg feldolgozza, és végső soron az egyes RDD-ban tárolt adatokkal kapcsolatos funkcionál.
 
-![Példa DStream hőmérséklet-események ](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-example.png)
+![Példa DStream hőmérséklet-események](./media/apache-spark-streaming-overview/hdinsight-spark-streaming-example.png)
 
 ## <a name="structure-of-a-spark-streaming-application"></a>Egy Spark Streaming-alkalmazás felépítése
 

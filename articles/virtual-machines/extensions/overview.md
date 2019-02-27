@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: 1d092f03013d98106138f35734d960567121a5bf
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: a35cba0ab7df80596ba1403765980809635c0249
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692721"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881855"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Az Azure virtuális gépi bővítmények és szolgáltatások
 Az Azure virtuális gép (VM) a bővítmények olyan kisebb alkalmazásoknál, amelyek az üzembe helyezés utáni konfigurációs és automatizálási feladatokat biztosít az Azure virtuális gépeken, majd testre szabhatja őket a központi telepítések részeként lekérdezése a business, az egyéni tartományon kívül és használhatja a meglévő rendszerképek rendszerkép létrehozása.
@@ -54,6 +54,6 @@ Bővítmények telepíthet alkalmazásokat, például nincsenek alkalmazások n�
 ## <a name="next-steps"></a>További lépések
 * Hogyan működik a Linux-ügynök és a bővítmények kapcsolatos további információkért lásd: [Azure-beli Virtuálisgép-bővítmények és szolgáltatások Linux](features-linux.md).
 * Hogyan működik a Windows Vendégügynöke és bővítmények kapcsolatos további információkért lásd: [Azure-beli Virtuálisgép-bővítmények és szolgáltatások Windows](features-windows.md).  
-* A Windows-Vendégügynök telepítése: [Azure Windows virtuális gép Agent áttekintése ](agent-windows.md).  
-* A Linux-ügynök telepítése: [Azure Linux virtuálisgép-ügynök áttekintése ](agent-linux.md).  
+* A Windows-Vendégügynök telepítése: [Azure Windows virtuális gép Agent áttekintése](agent-windows.md).  
+* A Linux-ügynök telepítése: [Azure Linux virtuálisgép-ügynök áttekintése](agent-linux.md).  
 

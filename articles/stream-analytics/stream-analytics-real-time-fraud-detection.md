@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6433d130da108ce7bd0b6f8b4093161043c32645
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 5317eb83552b5ea15b2d709f61b456a7a508e9ba
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733146"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876177"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Első lépések az Azure Stream Analytics használatával: Csalások valós idejű észlelése
 
@@ -68,7 +68,7 @@ Ebben az eljárásban először hozzon létre egy eseményközpont-névteret, é
 
 5. Kattintson az új névtéren, és a névtér panelen kattintson a **Eseményközpont**.
 
-   ![Az Eseményközpont felvétele gombra egy új eseményközpont létrehozása ](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
+   ![Az Eseményközpont felvétele gombra egy új eseményközpont létrehozása](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
  
 6. Nevezze el az új event hubs `asa-eh-frauddetection-demo`. Más nevet is használhat. Ha így tesz, jegyezze fel, mert később szüksége lesz a neve. Nem kell most az event hubs bármilyen egyéb beállításainak megadása.
 

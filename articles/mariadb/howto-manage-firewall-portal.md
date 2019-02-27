@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 75fc79b582803150f2111efb848d113d52928263
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 3fccb50e3447eabc15cbef89ab7655b3f1d1f4ac
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53544668"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876806"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-portal"></a>Hozzon létre és kezelhető az Azure Database for MariaDB tűzfalszabályok az Azure portal használatával
 Kiszolgálószintű tűzfalszabályok engedélyezése a rendszergazdák számára, hogy a MariaDB-kiszolgáló Azure-adatbázis elérését a megadott IP-cím vagy egy IP-címtartományt. 
@@ -32,7 +32,7 @@ Kiszolgálószintű tűzfalszabályok engedélyezése a rendszergazdák számár
 
 4. További címtartomány hozzáadásához. A tűzfalszabályok az Azure Database for MariaDB, az egyetlen IP-címet vagy címtartományt is megadhat. Ha szeretné korlátozni a szabályt, hogy egyetlen IP-címet, írja be ugyanazt a címet a kezdő IP- és a záró IP-cím mezőt. A tűzfal megnyitása után lehetővé teszi a rendszergazdák, a felhasználók és az alkalmazás eléréséhez, amelyhez érvényes hitelesítő adatokkal rendelkeznek a MariaDB-kiszolgáló bármely olyan adatbázisába.
 
-   ![Az Azure portal - tűzfalszabályok ](./media/howto-manage-firewall-portal/4-specify-addresses.png)
+   ![Az Azure portal - tűzfalszabályok](./media/howto-manage-firewall-portal/4-specify-addresses.png)
 
 5. Kattintson a **mentése** gombra az eszköztárban, a kiszolgálószintű tűzfalszabály mentéséhez. Várjon, amíg a visszaigazolás, hogy létrejött-e a tűzfalszabályok a frissítést.
 

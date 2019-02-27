@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 12/3/2018
 ms.custom: seodec18
-ms.openlocfilehash: 926cd354064d1dc8ae6c49c0fa93515d31167370
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: a610c7c8189c22e8aa15e14a205b11b7f6c05b82
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819837"
+ms.locfileid: "56873100"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX és az Azure Machine Learning: Hozzon létre és együttműködésre AI-modellek üzembe helyezése
 
@@ -36,7 +36,7 @@ Jelenítenek meg, és felgyorsítja az ONNX-modellekkel eszközök ökoszisztém
 
 [ONNX-modellekkel is üzembe helyezhetők](#deploy) a felhőbe az Azure Machine Learning és ONNX-futtatókörnyezet. A Windows 10-eszközökön is telepíthető [Windows ML](https://docs.microsoft.com/windows/ai/). Akkor is telepíthetők legyenek más platformokon elérhető az ONNX-Közösségből származó átalakítók használatával. 
 
-[ ![Képzés, konverterek és telepítési folyamatábrája ONNX](media/concept-onnx/onnx.png) ] (. / media/concept-onnx/onnx.png#lightbox)
+[![Képzés, konverterek és telepítési folyamatábrája ONNX](media/concept-onnx/onnx.png) ] (. / media/concept-onnx/onnx.png#lightbox)
 
 ## <a name="get-onnx-models"></a>ONNX-modellekkel beolvasása
 

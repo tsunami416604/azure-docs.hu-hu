@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8295c149d513f89318aa63ddd7f4236013923203
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: f1e2b9dfc329e67d94fba998a01d593b992ba90f
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434008"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56886808"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>A helyszíni Apache Hadoop-fürtök áttelepítése az Azure HDInsight - architektúra ajánlott eljárásai
 
@@ -30,10 +30,10 @@ Egy adott típusú számítási feladatok használatáért az Azure HDInsight-f�
 |---|---|
 |Kötegelt feldolgozás (ETL / ELT)|Hadoop, Spark|
 |Adatraktározás|Hadoop, Spark, interaktív lekérdezés|
-|IoT / Streamelési|A Kafka, Storm, Spark|
+|IoT / Streamelési|Kafka, Storm, Spark|
 |NoSQL tranzakciós feldolgozást kínál|HBase|
 |Interaktív és gyorsabb, memórián belüli gyorsítótár-lekérdezések|Interaktív lekérdezés|
-|Adatelemzés|Machine Learning-szolgáltatások, a Spark|
+|Adatelemzés|ML Services, Spark|
 
 Az alábbi táblázat a különböző módszereket, amelyek segítségével hozzon létre egy HDInsight-fürtön.
 
@@ -105,7 +105,7 @@ Egy HDInsight Hive-metaadattár ajánlott eljárások a következők:
 - Ne ossza meg a létrehozott egy HDInsight-fürt verziója és a egy eltérő verziójú fürtök együttes metaadattár. Különböző Hive-verziók különböző sémákkal használja. A metaadattár például nem oszthatók meg a Hive-1.2-es és a Hive 2.1-fürtökkel.
 - Rendszeresen készítsen biztonsági másolatot az egyéni metaadattár.
 - A metaadattár és a HDInsight-fürt tartsa ugyanabban a régióban.
-- A metaadattár a teljesítmény és rendelkezésre állás az Azure SQL-adatbázis figyelési eszközökkel, például az Azure Portalon vagy az Azure Log Analytics használatával figyelheti.
+- A metaadattár a teljesítmény és rendelkezésre állás az Azure SQL-adatbázis figyelési eszközökkel, például az Azure Portalon vagy az Azure Monitor-naplók használatával figyelheti.
 - Hajtsa végre a **elemzése tábla** létrehozni statisztikákat a táblák és oszlopok kötelezőként parancsot. Például: `ANALYZE TABLE [table_name] COMPUTE STATISTICS`.
 
 ## <a name="best-practices-for-different-workloads"></a>Ajánlott eljárások a különböző számítási feladatok

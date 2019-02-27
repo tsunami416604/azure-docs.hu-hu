@@ -1,72 +1,92 @@
 ---
-title: 'Gyors útmutató: A Bing Spell Check API, a Python'
+title: 'Gyors útmutató: Helyesírás-ellenőrzés a Bing Spell Check REST API és a Python használatával'
 titlesuffix: Azure Cognitive Services
-description: Információ és kódminták segítségével ismerkedhet meg a Bing Spell Check API használatának alapjaival.
+description: Ismerkedés a Bing Spell Check REST API használatával a helyesírás-és nyelvtani.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 09/14/2017
+ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 5aa67c0e582d64f258da7abd01a9492daaf91efd
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e95006c6448bf1179d33bcd00c16d6e4246db148
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882284"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887318"
 ---
-# <a name="quickstart-for-bing-spell-check-api-with-python"></a>Rövid útmutató a Bing Spell Check API és a Python használatához 
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-python"></a>Gyors útmutató: Helyesírás-ellenőrzés a Bing Spell Check REST API és a Python használatával
 
-Ez a cikk bemutatja, hogyan használható a [Bing Spell Check API](https://azure.microsoft.com/services/cognitive-services/spell-check/) Python használatával. A Spell Check API visszaadja a fel nem ismert szavak listáját a javasolt cserekifejezésekkel együtt. Általános esetben küld egy szöveget az API-nak, majd végrehajtja a javasolt cseréket a szövegben, vagy megmutatja azokat az alkalmazás felhasználójának, hogy ő dönthesse el, végre szeretné-e hajtani a cserét. Ez a cikk bemutatja, hogyan küldhet el egy olyan kérést, amely a „Hollo, wrld!” szöveget tartalmazza. A javasolt cserekifejezés a „Hello” és a „world” lesz.
+Ez a rövid útmutató segítségével, a Bing Spell Check REST API első hívását. Az egyszerű Python-alkalmazás egy kérést küld az API-t, és javasolt javítások listáját adja vissza. Bár ez az alkalmazás Python nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel. Az alkalmazás forráskódja elérhető a [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/python/Search/BingEntitySearchv7.py)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kód futtatásához [Python 3.x](https://www.python.org/downloads/) szükséges.
+* Python [3.x](https://www.python.org)
 
-Rendelkeznie kell egy, a **Bing Spell Check API 7-es verzióját** tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account). Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/#lang) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásakor kapott hozzáférési kulcsra, vagy beszerezhet egy fizetős előfizetői azonosítót az Azure-irányítópultról. Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+[!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
-## <a name="get-spell-check-results"></a>Spell Check-eredmények lekérése
 
-1. Hozzon létre egy új Python-projektet kedvenc IDE-környezetében.
-2. Adja hozzá az alábbi kódot.
-3. A `subscriptionKey` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
-4. Futtassa a programot.
+## <a name="initialize-the-application"></a>Az alkalmazás inicializálása
 
-```python
-import http.client, urllib.parse, json
+1. Hozzon létre egy új Python-fájlt a kedvenc integrált Fejlesztőkörnyezetével vagy szerkesztőjével, és adja hozzá a következő importálási utasítást.
 
-text = 'Hollo, wrld!'
+   ```python
+   import requests
+   import json
+   ```
 
-data = {'text': text}
+2. Hozzon létre változókat a helyesírás-ellenőrzést, az előfizetési kulcs és a Bing helyesírás-ellenőrzési végpontra kívánt szöveg.
 
-# NOTE: Replace this example key with a valid subscription key.
-key = 'ENTER KEY HERE'
+    ```python
+    api_key = "enter-your-key-here"
+    example_text = "Hollo, wrld" # the text to be spell-checked
+    endpoint = "https://api.cognitive.microsoft.com/bing/v7.0/SpellCheck"
+    ```
 
-host = 'api.cognitive.microsoft.com'
-path = '/bing/v7.0/spellcheck?'
-params = 'mkt=en-us&mode=proof'
+## <a name="create-the-parameters-for-the-request"></a>A kérelem paramétereinek létrehozása
 
-headers = {'Ocp-Apim-Subscription-Key': key,
-'Content-Type': 'application/x-www-form-urlencoded'}
+1. Hozzon létre egy új szótár `text` a kulcsot, és a szöveges értéket.
 
-# The headers in the following example 
-# are optional but should be considered as required:
-#
-# X-MSEdge-ClientIP: 999.999.999.999  
-# X-Search-Location: lat: +90.0000000000000;long: 00.0000000000000;re:100.000000000000
-# X-MSEdge-ClientID: <Client ID from Previous Response Goes Here>
+    ```python
+    data = {'text': example_text}
+    ```
 
-conn = http.client.HTTPSConnection(host)
-body = urllib.parse.urlencode (data)
-conn.request ("POST", path + params, body, headers)
-response = conn.getresponse ()
-output = json.dumps(json.loads(response.read()), indent=4)
-print (output)
-```
+2. Adja hozzá a kérelem paramétereit. Állítsa be a `mkt` paraméter a piacra, és `mode` való `proof`. 
 
-**Válasz**
+    ```python
+    params = {
+        'mkt':'en-us',
+        'mode':'proof'
+        }
+    ```
+
+3. Adjon hozzá egy `Content-Type` fejléc és az előfizetési kulcs, a `Ocp-Apim-Subscription-Key` fejléc.
+
+    ```python
+    headers = {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Ocp-Apim-Subscription-Key': api_key,
+        }
+    ```
+
+## <a name="send-the-request-and-read-the-response"></a>A kérelem elküldéséhez és a válasz olvasása
+
+1. A kérések kódtár használatával a POST-kérés küldése.
+
+    ```python
+    response = requests.post(endpoint, headers=headers, params=params, data=data)
+    ```
+
+2. A JSON-válasz lekérése, és nyomtassa ki.
+    
+    ```python
+    json_response = response.json()
+    print(json.dumps(json_response, indent=4))
+    ```
+
+## <a name="example-json-response"></a>Példa JSON-válasz
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
@@ -111,9 +131,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A Bing Spell Check oktatóanyaga](../tutorials/spellcheck.md)
+> [Hozzon létre egy egyoldalas webalkalmazást](../tutorials/spellcheck.md)
 
-## <a name="see-also"></a>Lásd még
-
-- [A Bing Spell Check áttekintése](../proof-text.md)
+- [Mi az a Bing Spell Check API?](../overview.md)
 - [A Bing Spell Check API 7-es verzió referenciája](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)

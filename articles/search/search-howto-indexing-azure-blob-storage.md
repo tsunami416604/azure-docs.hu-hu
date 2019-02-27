@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 2a282b76805ab91215d6b34ea30a7008d8c8244b
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 56afc933eff2e06df270b17403b767ebaddd4154
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467978"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872998"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Dokumentumok indexelése az Azure Blob Storage, az Azure Search szolgáltatással
 Ez a cikk bemutatja, hogyan használható az Azure Search index dokumentumok (például PDF-, Microsoft Office-dokumentumok, és számos egyéb gyakori formátum) az Azure Blob storage-ban tárolja. Első lépésként beállítása és konfigurálása a blob indexelőjével alapjait ismerteti. Ezután egy mélyebb feltárása viselkedéseket, kínál, és esetekben valószínűleg találkozik.
@@ -333,7 +333,7 @@ Például a következő házirendet figyelembe veszi a blob metaadat-tulajdonsá
 
 Előfordulhat, hogy szeretné "összeállítás" dokumentumok az index több forrásból. Például érdemes egyesíteni a szöveget a blobok az egyéb Cosmos DB-ben tárolt metaadatok. Építse fel a dokumentumok keresése a több részből is használhatja a push API indexelő különböző indexelők együtt. 
 
-A funkció működéséhez az összes indexelőre és más összetevők kell egyeztetni a dokumentumkulcsot. Részletes útmutatót szeretne olvassa el a külső: [Dokumentumok egyesítése más adatokkal az Azure Search ](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html).
+A funkció működéséhez az összes indexelőre és más összetevők kell egyeztetni a dokumentumkulcsot. Részletes útmutatót szeretne olvassa el a külső: [Dokumentumok egyesítése más adatokkal az Azure Search](https://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html).
 
 <a name="IndexingPlainText"></a>
 ## <a name="indexing-plain-text"></a>Az indexelő egyszerű szöveg 

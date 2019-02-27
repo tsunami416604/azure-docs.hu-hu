@@ -17,12 +17,12 @@ ms.date: 02/03/2019
 ms.author: markvi
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d2e3ad4015df74ea3adb98eae4d98e30f2948ce
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: a7a1d0dab08c4beb93d323bcd1a5f5b00a190daa
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649186"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56868289"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>kézikönyv: A hibrid Azure Active Directory join megvalósítás megtervezése
 
@@ -116,7 +116,7 @@ Ha a Windows 10-tartományhoz csatlakozó eszközök még [Azure ad-ben regisztr
  - Minden meglévő Azure ad-ben regisztrált állapot automatikusan megszűnik, miután az eszköz a hibrid Azure AD-hez. 
  - Folyamatban van az Azure AD-ban regisztrálva a beállításkulcs - HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin" hozzáadásával megakadályozhatja a tartományba léptetett eszköz = dword: 00000001
 
-A FIPS-kompatibilis TPM hibrid Azure AD join nem támogatott. Ha az eszközök rendelkezik a FIPS-kompatibilis TPM-mel, akkor le kell tiltania őket a hibrid Azure AD-csatlakozás folytatása előtt.
+A FIPS-kompatibilis TPM hibrid Azure AD join nem támogatott. Ha az eszközök rendelkezik a FIPS-kompatibilis TPM-mel, akkor le kell tiltania őket a hibrid Azure AD-csatlakozás folytatása előtt. A Microsoft nem biztosít minden olyan eszközt, a TPM letiltása FIPS-módban, a TPM gyártója függ. Lépjen kapcsolatba a hardver OEM támogatása.
 
 ## <a name="review-how-to-control-the-hybrid-azure-ad-join-of-your-devices"></a>Tekintse át a hibrid Azure AD join eszköz vezérlése
 

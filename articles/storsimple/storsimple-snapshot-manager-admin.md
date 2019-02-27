@@ -1,6 +1,6 @@
 ---
-title: StorSimple Snapshot Manager adminisztrációs |} Microsoft Docs
-description: Áttekintés és a StorSimple Snapshot Manager megoldás felügyeleti feladatokkal és munkafolyamatok kapcsolatos további információkra mutató hivatkozásokat biztosít.
+title: A StorSimple Snapshot Manager adminisztrációs |} A Microsoft Docs
+description: Áttekintése és a StorSimple Snapshot Manager megoldás felügyeleti feladatok és a munkafolyamatok kapcsolatos további információkra mutató hivatkozásokat biztosít.
 services: storsimple
 documentationcenter: NA
 author: SharS
@@ -14,51 +14,51 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2016
 ms.author: v-sharos
-ms.openlocfilehash: a99b3d7336c3dc1a1f249915d6971a49f4b69be6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bc72da98800ef85ef14be0882ba856fbf01386b9
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23875430"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872183"
 ---
-# <a name="use-storsimple-snapshot-manager-to-administer-your-storsimple-solution"></a>Használja a StorSimple Snapshot Manager felügyelete a StorSimple megoldásban
+# <a name="use-storsimple-snapshot-manager-to-administer-your-storsimple-solution"></a>Használja a StorSimple Snapshot Manager felügyelete a StorSimple-megoldásokra
 
 ## <a name="overview"></a>Áttekintés
-StorSimple Snapshot Manager egy Microsoft Management Console (MMC) beépülő modulja, amely leegyszerűsíti az adatvédelem és biztonsági mentési kezelése a Microsoft Azure StorSimple környezetben. A StorSimple Snapshot Manager segítségével kezelheti az adatközpontban és a felhőben található Microsoft Azure StorSimple adatok egyetlen integrált tárolási megoldásként, így biztonsági mentési folyamat egyszerűsítése, illetve csökkenti a költségeket.
+A StorSimple Snapshot Manager egy Microsoft Management Console (MMC) beépülő modulja, amely leegyszerűsíti az adatok védelme és a biztonságimásolat-felügyelet a Microsoft Azure StorSimple-környezetben. A StorSimple Snapshot Managerrel kezelheti az adatközpontban és a felhőben a Microsoft Azure StorSimple data egyetlen integrált tárolási megoldás, így leegyszerűsíti a biztonsági mentési folyamatokat és költségeit.
 
-A StorSimple Snapshot Manager központi felügyeleti konzol lehetővé teszi, hogy egységes, időpontban – biztonsági másolat készítése a helyi és a felhőalapú adatokat. Például a konzolt is használhatja:
+A StorSimple Snapshot Manager központi felügyeleti konzol lehetővé teszi, hogy következetes, időponthoz – biztonsági másolat készítése helyi és felhőbeli adatok. Ha például a konzolt is használhatja:
 
-* Konfigurálhatja, készítsen biztonsági másolatot, és törölje köteteket.
-* Kötet csoportokat győződjön meg arról, hogy a biztonsági másolatba mentett adatok alkalmazáskonzisztens.
-* Biztonsági mentési házirendek kezelése, így az adatok biztonsági másolatát egy előre meghatározott ütemezés szerint.
-* Az adatokat, amelyeket a felhőben tárolt és a katasztrófa utáni helyreállítás független példányt hoz létre.
+* Konfigurálja, biztonsági mentése és kötetek törlése.
+* Konfigurálja a kötet csoportokat, győződjön meg arról, hogy a biztonsági másolatba mentett adatok alkalmazáskonzisztens.
+* Biztonsági mentési házirendek kezelése, így az adatok biztonsági mentésének előre meghatározott ütemezés szerint.
+* Az adatokat, amelyeket a felhőben tárolt, és a vészhelyreállításhoz használt független példányt hoz létre.
 
-Ez a cikk oktatóanyagok a StorSimple Snapshot Manager és rendszer-felügyeleti feladatok elvégzésére és a munkafolyamatok végrehajtásához használandó mutató hivatkozásokat tartalmaz.
+Ez a cikk az oktatóanyagok, amelyek ismertetik a StorSimple Snapshot Manager és rendszer-felügyeleti feladatok és a munkafolyamatok végrehajtásához használatával mutató hivatkozásokat tartalmaz.
 
-* További információ a StorSimple Snapshot Manager összetevőit és architektúra: [Mi az StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md) 
-* StorSimple Snapshot Manager letöltéséhez keresse fel [a StorSimple Snapshot Manager letöltési oldal](https://www.microsoft.com/download/details.aspx?id=44220).
-* A StorSimple Snapshot Manager központi telepítési eljárásokat Ugrás [StorSimple Snapshot Manager telepítése](storsimple-snapshot-manager-deployment.md).
+* További információ a StorSimple Snapshot Manager összetevőkről és architektúráról: [Mi az a StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md) 
+* Töltse le a StorSimple Snapshot Managerben, lépjen a [a StorSimple Snapshot Manager letöltési oldalról](https://www.microsoft.com/download/details.aspx?id=44220).
+* A StorSimple Snapshot Manager üzembe helyezési eljárásokat Ugrás [üzembe helyezése a StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md).
 
 > [!NOTE]
-> StorSimple Snapshot Manager kezelése a Microsoft Azure StorSimple virtuális tömbök (más néven StorSimple a helyszíni virtuális eszköz) nem használható.
+> A StorSimple Snapshot Manager kezelése a Microsoft Azure StorSimple Virtual Arrayt (más néven a StorSimple helyszíni virtuális eszköz) nem használható.
 
 
-## <a name="storsimple-snapshot-manager-tasks-and-workflows"></a>StorSimple Snapshot Manager feladatok és a munkafolyamatok
-A StorSimple Snapshot Manager segítségével figyelheti és kezelheti a biztonsági mentési feladatok aktuális, ütemezett és befejeződött. StorSimple Snapshot Manager emellett legfeljebb 64 befejezett biztonsági mentés katalógusa. A katalógus segítségével keresse meg és kötetek vagy fájlok visszaállítása. 
+## <a name="storsimple-snapshot-manager-tasks-and-workflows"></a>A StorSimple Snapshot Manager-feladatok és a munkafolyamatok
+Használhatja a StorSimple Snapshot Manager figyelése és felügyelete az aktuális, ütemezett és befejeződött a biztonsági mentési feladatok. A StorSimple Snapshot Manager emellett egy katalógus, akár 64 befejezett biztonsági mentéseket. A katalógus segítségével megkeresését és helyreállítását a kötetek vagy csak egyes fájlokat. 
 
-| HA AZT SZERETNÉ, HOGY EHHEZ... | EZ AZ OKTATÓANYAG HASZNÁLNI... |
+| HA AZT SZERETNÉ, EHHEZ... | EZ AZ OKTATÓANYAG HASZNÁLATA... |
 |:--- |:--- |
-| További információ a StorSimple Snapshot Manager |[Mi az a StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md) |
-| StorSimple Snapshot Manager telepítése<br>Telepítse újra a StorSimple Snapshot Manager<br>Távolítsa el a StorSimple Snapshot Manager |[A StorSimple Snapshot Manager központi telepítése](storsimple-snapshot-manager-deployment.md) |
-| Használja a StorSimple Snapshot Manager menük és szolgáltatások:<ul><li>Menüsáv</li><li>Eszköztár</li><li>Hatókör ablaktábla</li><li>Eredmények ablaktábla</li><li>Műveletek panel</li><li>Billentyűparancsokkal és parancsikonok</li></ul> |[StorSimple Snapshot Manager felhasználói felülete](storsimple-use-snapshot-manager.md) |
-| A StorSimple Snapshot Manager szolgáltatásai közös MMC használja:<ul><li>Nézet</li><li>Itt új ablak</li><li>Frissítés</li><li>Lista exportálása</li><li>Súgó</li></ul> |[Az MMC menü műveletek a StorSimple Snapshot Manager használatára](storsimple-snapshot-manager-mmc-menu.md) |
-| Adja hozzá, vagy cserélje le az eszköz<br>Egy eszköz csatlakoztatása<br>Ellenőrizze az importált kötet csoportok<br>Frissítse a csatlakoztatott eszközök<br>Egy eszköz hitelesítéséhez<br>Eszköz részleteinek megtekintése<br>Egy eszköz konfigurálásának törlése<br>A jelszó módosítása<br>Cserélje le a hibás eszköz<br> |[StorSimple Snapshot Manager segítségével csatlakozhat, és kezelheti a StorSimple eszközökhöz](storsimple-snapshot-manager-manage-devices.md) |
-| Kötet csatlakoztatása<br>Kötetek adatainak megtekintése<br>Kötet törlése<br>Kötetek újraellenőrzése<br>Konfigurálja, és készítsen biztonsági másolatot alaplemezek<br>Konfigurálja és a dinamikus tükrözött kötetek biztonsági mentése |[StorSimple Snapshot Manager segítségével megtekintheti, és a kötetek kezelése](storsimple-snapshot-manager-manage-volumes.md) |
-| Kötet csoportok megtekintése<br>Kötet csoport létrehozása<br>Készítsen biztonsági másolatot egy kötet csoport<br>Kötet csoport szerkesztése<br>Kötet csoport törlése |[StorSimple Snapshot Manager segítségével kötet csoportok létrehozása és kezelése](storsimple-snapshot-manager-manage-volume-groups.md) |
-| A biztonsági mentési házirend létrehozása <br>A biztonsági mentési házirend szerkesztése<br>A biztonsági mentési házirend törlése |[StorSimple Snapshot Manager segítségével biztonsági szabályzatok létrehozása és kezelése](storsimple-snapshot-manager-manage-backup-policies.md) |
-| Megtekinthető és kezelhető az ütemezett biztonsági mentési feladatok<br>Megtekintheti és kezelheti a legutóbbi biztonsági mentési feladatok<br>Megtekintheti és kezelheti a jelenleg futó biztonsági mentési feladatok |[StorSimple Snapshot Manager segítségével megtekintheti és kezelheti a biztonsági mentési feladatok](storsimple-snapshot-manager-manage-backup-jobs.md) |
-| A kötet visszaállítása<br>Egy kötet vagy kötet klónozása<br>Biztonsági<br>A fájl helyreállításához<br>A StorSimple Snapshot Manager-adatbázis visszaállítása |[Használja a StorSimple Snapshot Manager a biztonságimásolat-katalógus kezelése](storsimple-snapshot-manager-manage-backup-catalog.md) |
+| További információ a StorSimple Snapshot Managerrel |[Mi az a StorSimple Snapshot Manager?](storsimple-what-is-snapshot-manager.md) |
+| Install StorSimple Snapshot Manager<br>Reinstall StorSimple Snapshot Manager<br>Remove StorSimple Snapshot Manager |[Deploy StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md) |
+| Használja a StorSimple Snapshot Manager menük és szolgáltatások:<ul><li>A menüsávon</li><li>Az eszköztáron</li><li>Hatókör panel</li><li>Eredmények ablaktábla</li><li>Műveletek panel</li><li>Billentyűzetnavigációt és billentyűparancsok</li></ul> |[StorSimple Snapshot Manager felhasználói felületén](storsimple-use-snapshot-manager.md) |
+| Közös MMC-ben elérhető funkciókat a StorSimple Snapshot Manager használata:<ul><li>Nézet</li><li>Itt új ablakban</li><li>Frissítés</li><li>Lista exportálása</li><li>Súgó</li></ul> |[Az MMC-menü műveletek használata a StorSimple Snapshot Managerben](storsimple-snapshot-manager-mmc-menu.md) |
+| Adja hozzá, vagy cserélje le az eszközt<br>Eszköz csatlakoztatása<br>Ellenőrizze az importált kötet csoportok<br>Csatlakoztatott eszközök frissítése<br>Egy eszköz hitelesítéséhez<br>Eszközadatok megtekintése<br>Egy eszköz konfigurációjának törlése<br>Egy eszköz jelszavának módosítása<br>Cserélje le a sikertelen eszközök<br> |[A StorSimple Snapshot Manager használatával csatlakozhat, és a StorSimple-eszközök kezelése](storsimple-snapshot-manager-manage-devices.md) |
+| Kötetek csatlakoztatása<br>Kötetek adatainak megtekintése<br>Kötet törlése<br>Kötetek ismételt vizsgálata<br>Konfigurálja és biztonsági mentése egyszerű kötet<br>Konfigurálja és a dinamikus tükrözött kötetek biztonsági mentése |[A StorSimple Snapshot Manager segítségével megtekintheti, és a kötetek kezelése](storsimple-snapshot-manager-manage-volumes.md) |
+| Kötet csoportok megtekintése<br>Hozzon létre egy kötetet csoportot<br>Készítsen biztonsági másolatot egy kötetcsoport<br>Kötet csoport szerkesztése<br>Kötet csoport törlése |[Létrehozása és kezelése a StorSimple Snapshot Manager használata](storsimple-snapshot-manager-manage-volume-groups.md) |
+| A biztonsági mentési szabályzat létrehozása <br>Biztonsági mentési szabályzat szerkesztése<br>A biztonsági mentési szabályzat törlése |[A StorSimple Snapshot Manager segítségével létrehozhat, és a biztonsági mentési házirendek kezelése](storsimple-snapshot-manager-manage-backup-policies.md) |
+| Ütemezett biztonsági mentési feladatok megtekintése és kezelése<br>Legutóbbi biztonsági mentési feladatok megtekintése és kezelése<br>Megtekintheti és kezelheti a jelenleg futó biztonsági mentési feladatok |[A biztonsági mentési feladatok megtekintése és kezelése a StorSimple Snapshot Manager használata](storsimple-snapshot-manager-manage-backup-jobs.md) |
+| Egy kötet visszaállítása<br>Egy kötet vagy kötet klónozása<br>A biztonsági másolat törlése<br>Fájl helyreállítása<br>A StorSimple Snapshot Manager-adatbázis visszaállítása |[Használja a StorSimple Snapshot Manager, a biztonságimásolat-katalógus kezelése](storsimple-snapshot-manager-manage-backup-catalog.md) |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Töltse le a StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220).
 

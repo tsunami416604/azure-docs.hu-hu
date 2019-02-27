@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: a73dab8a0df642e439e8519c404423c6689418f5
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: c62560d2f80375a725464607f38b9e8adf221d16
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236974"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875599"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibaelhárítása: Az ügynök vagy a bővítmény kapcsolatos problémák
 
@@ -225,7 +225,7 @@ Ezen lépések elvégzése hatására a következő biztonsági mentés során �
 3. Az a **beállítások** szakaszban jelölje be **zárolások** a zárolások megjelenítéséhez.
 4. Távolítsa el a zárolást, kattintson a három pontra, és kattintson a **törlése**.
 
-    ![Törlési zárolást ](./media/backup-azure-arm-vms-prepare/delete-lock.png)
+    ![Törlési zárolást](./media/backup-azure-arm-vms-prepare/delete-lock.png)
 
 ### <a name="clean_up_restore_point_collection"></a> Visszaállításipont-gyűjtemény törlése
 A zár feloldása után a visszaállítási pontok törölni kell. A visszaállítási pontok törléséhez kövesse a módszerekkel:<br>
@@ -244,12 +244,12 @@ Törölje manuálisan a visszaállítási pontok gyűjteményt, amely miatt a z�
 1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com/).
 2. Az a **Hub** menüben kattintson a **összes erőforrás**, válassza ki az erőforráscsoportot és a következő formátumú AzureBackupRG_`<Geo>`_`<number>` ahol a virtuális gép megtalálható.
 
-    ![Törlési zárolást ](./media/backup-azure-arm-vms-prepare/resource-group.png)
+    ![Törlési zárolást](./media/backup-azure-arm-vms-prepare/resource-group.png)
 
 3. Kattintson az erőforráscsoport, a **áttekintése** panel jelenik meg.
 4. Válassza ki **rejtett típusok megjelenítése** lehetőséget a rejtett erőforrások megjelenítéséhez. Jelölje ki a következő formátumú AzureBackupRG_ visszaállítási pont gyűjteményeket`<VMName>`_`<number>`.
 
-    ![Törlési zárolást ](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
+    ![Törlési zárolást](./media/backup-azure-arm-vms-prepare/restore-point-collection.png)
 
 5. Kattintson a **törlése**, megtisztítani a visszaállításipont-gyűjtemény.
 6. Próbálja megismételni a biztonsági mentési műveletet.

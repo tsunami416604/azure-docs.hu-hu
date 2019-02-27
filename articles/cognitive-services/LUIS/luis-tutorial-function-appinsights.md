@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: c9a772af79cba8b5bfb592eaf03efa37520d5e48
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 97e29ba166d652f053f754482b6da36a33ec5bb5
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870605"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878174"
 ---
 # <a name="add-luis-results-to-application-insights-and-azure-functions"></a>A LUIS-eredményeket ad hozzá az Application Insights és az Azure functions
 Ebben az oktatóanyagban hozzáadja a kérések és válaszok adatokat LUIS [Application Insights](https://azure.microsoft.com/services/application-insights/) telemetriai adatok tárolására. Miután az adatokat, kérdezhet le róla a Kusto-nyelv, vagy elemezheti, összesítése, a Power bi és a jelentés a szándékok és entitások, valós idejű utterance (kifejezés). Az elemzés segít annak meghatározásában, ha kell hozzáadása vagy szerkesztése a szándékok és entitások, a LUIS-alkalmazás.
@@ -51,11 +51,11 @@ Annak érdekében, hogy a LUIS-kérések és válaszok rögzítése, a web app b
 
 1. Web app bot service-ben az Azure Portalon válassza ki a **hozhat létre** alatt a **Bot felügyeleti** szakaszban. 
 
-    ![Web app bot service-ben az Azure Portalon válassza a "Build" a "Bot kezelése" szakaszban. ](./media/luis-tutorial-appinsights/build.png)
+    ![Web app bot service-ben az Azure Portalon válassza a "Build" a "Bot kezelése" szakaszban.](./media/luis-tutorial-appinsights/build.png)
 
 2. Egy új böngészőlapon nyílik meg, hogy az App Service Editor. Válassza ki az alkalmazás neve a felső sávon, majd válassza ki **Kudu konzol megnyitása**. 
 
-    ![Válassza ki a felső sávon az alkalmazás nevét, majd válassza a "Megnyitás Kudu konzol". ](./media/luis-tutorial-appinsights/kudu-console.png)
+    ![Válassza ki a felső sávon az alkalmazás nevét, majd válassza a "Megnyitás Kudu konzol".](./media/luis-tutorial-appinsights/kudu-console.png)
 
 3. A konzolon adja meg az Application Insights és az aláhúzás csomagok telepítéséhez a következő parancsot:
 

@@ -199,8 +199,8 @@
 ### Archívum
 #### [3-as frissítés](storsimple-update3-release-notes.md)
 #### [2.2-es frissítés](storsimple-update21-release-notes.md)
-#### [2-es frissítés](storsimple-update2-release-notes.md)
-#### [1-es frissítés](storsimple-update1-release-notes.md)
+#### [2. frissítés](storsimple-update2-release-notes.md)
+#### [1. frissítés](storsimple-update1-release-notes.md)
 #### [0.3-as frissítés](storsimple-february-2015-release-notes.md)
 #### [0.2-es frissítés](storsimple-january-2015-release-notes.md)
 #### [0.1-es frissítés](storsimple-october-2014-release-notes.md)

@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan, és szabályozhatja a nagy méretű adatkészl
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/31/2019
+ms.date: 02/26/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 8808f42cdd6fb547b70695278993faa0f52cdb61
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: ef61314ae124668fc8970e6d68a0f927bdf771bc
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338393"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889035"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Azure-erőforrások nagy adatkészletek használata
 
@@ -22,6 +22,9 @@ Az Azure erőforrás-Graph úgy lett kialakítva, használata és erőforrásaiv
 ## <a name="data-set-result-size"></a>Adatkészlet eredményének mérete
 
 Alapértelmezés szerint erőforrás Graph korlátozza az adatszolgáltató csak minden lekérdezés **100** rögzíti. Ez a vezérlő megvédi a felhasználói és a szolgáltatás a véletlen lekérdezések, amelyek nagy méretű adatkészleteket eredményezne. Ez az esemény leggyakrabban akkor fordul elő, egy ügyfél keresése és erőforrások adott igényeiknek leginkább megfelelő módon szűrése lekérdezésekkel van kísérletezgetést. Ez a vezérlő eltér attól a [felső](/azure/kusto/query/topoperator) vagy [korlát](/azure/kusto/query/limitoperator) Azure adatkezelő nyelvi operátorokat korlátozza az eredményeket.
+
+> [!NOTE]
+> Használata esetén **első**, azt javasoljuk, hogy legalább egy oszlopot az eredmények rendezés `asc` vagy `desc`. Rendezés, nélkül adatsorban visszaadott a véletlenszerű, és nem ismételhető.
 
 Az alapértelmezett korlát felülbírálható az Erőforrás-grafikon folytatott összes módszer használatával. Az alábbi példák bemutatják az adatkészlet méretének korlátját történő megváltoztatása _200_:
 
@@ -42,6 +45,9 @@ A vezérlő, amely _leginkább korlátozó_ legyőzi. Például, ha a lekérdez�
 ## <a name="skipping-records"></a>Átugorja a rekordokat
 
 A következő lehetőség a nagy adatkészletekkel dolgozik, a **kihagyása** vezérlő. Ez a vezérlő lehetővé teszi, hogy a jump keresztül, vagy hagyja ki a megadott számú rekord előtt az eredményt adnak vissza a lekérdezést. **Kihagyás** akkor hasznos, ha lekérdezéseket, ahol a célja a rekordok valahol az eredményhalmaz közepén található első értelmezhető módon rendezheti az eredményeket. Ha az eredmények szükséges a végén a visszaadott adatkészlet, sokkal hatékonyabban eltérő rendezési konfigurációt használja, és helyette az adatkészlet elejétől kérje le az eredményeket.
+
+> [!NOTE]
+> Használata esetén **kihagyása**, azt javasoljuk, hogy legalább egy oszlopot az eredmények rendezés `asc` vagy `desc`. Rendezés, nélkül adatsorban visszaadott a véletlenszerű, és nem ismételhető.
 
 Az alábbi példák bemutatják az első kihagyása _10_ rekordok egy lekérdezést eredményez, és a 11 rekordot tartalmazó állítsa helyette indítása a visszaadott eredmény:
 

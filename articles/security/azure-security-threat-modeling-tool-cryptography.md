@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: be702571d178fc67eeb92de4e52a48d5bef72b18
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 947740ed28deea9682d10eecf9a66dab7540669e
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54824626"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880308"
 ---
 # <a name="security-frame-cryptography--mitigations"></a>Biztonsági keret: Titkosítás |} Megoldások 
 | Termék vagy szolgáltatás | Cikk |
@@ -34,7 +34,7 @@ ms.locfileid: "54824626"
 
 ## <a id="cipher-length"></a>Csak a jóváhagyott szimmetrikus blokktitkosító és a kulcshosszok
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -45,7 +45,7 @@ ms.locfileid: "54824626"
 
 ## <a id="vector-ciphers"></a>Használható jóváhagyott titkosítási mód letiltása és a szimmetrikus titkosítási inicializálási vektor ismert
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -56,7 +56,7 @@ ms.locfileid: "54824626"
 
 ## <a id="padding"></a>Jóváhagyott aszimmetrikus algoritmusok, kulcshosszok és kitöltési használata
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -67,7 +67,7 @@ ms.locfileid: "54824626"
 
 ## <a id="numgen"></a>Jóváhagyott véletlenszerű szám generátorok használata
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -78,7 +78,7 @@ ms.locfileid: "54824626"
 
 ## <a id="stream-ciphers"></a>Ne használja a szimmetrikus stream Rejtjelek
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -89,7 +89,7 @@ ms.locfileid: "54824626"
 
 ## <a id="mac-hash"></a>Jóváhagyott HMAC-val, MAC és beállítható kivonatoló algoritmusok használata
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -100,7 +100,7 @@ ms.locfileid: "54824626"
 
 ## <a id="hash-functions"></a>Csak a jóváhagyott titkosítási kivonatot funkciók használata
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -111,7 +111,7 @@ ms.locfileid: "54824626"
 
 ## <a id="strong-db"></a>Erős titkosítási algoritmusok használatával titkosítja az adatokat az adatbázisban
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
 | **SDL Phase**               | Felépítés |  
@@ -122,7 +122,7 @@ ms.locfileid: "54824626"
 
 ## <a id="ssis-signed"></a>SSIS-csomagok titkosítást és digitálisan aláírt
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
 | **SDL Phase**               | Felépítés |  
@@ -133,7 +133,7 @@ ms.locfileid: "54824626"
 
 ## <a id="securables-db"></a>Adja hozzá a digitális aláírás kritikus adatbázis biztonságos elemekhez
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
 | **SDL Phase**               | Felépítés |  
@@ -144,7 +144,7 @@ ms.locfileid: "54824626"
 
 ## <a id="ekm-keys"></a>SQL server EKM védelme érdekében titkosítási kulcsok használata
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
 | **SDL Phase**               | Felépítés |  
@@ -155,7 +155,7 @@ ms.locfileid: "54824626"
 
 ## <a id="keys-engine"></a>AlwaysEncrypted szolgáltatást használhatja, ha a titkosítási kulcsok nem szabad felfedni adatbázismotor
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
 | **SDL Phase**               | Felépítés |  
@@ -166,7 +166,7 @@ ms.locfileid: "54824626"
 
 ## <a id="keys-iot"></a>Titkosítási kulcsok biztonságos Store IoT-eszköz
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | IoT-eszköz | 
 | **SDL Phase**               | Felépítés |  
@@ -189,7 +189,7 @@ Ahogy látható, az eszköz elsődleges kulcs nem szerepel a kódban. Ehelyett t
 
 ## <a id="random-hub"></a>Hozzon létre egy véletlenszerű szimmetrikus kulcs megfelelő hosszúságú az IoT Hub-hitelesítés
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | IoT Cloud Gateway | 
 | **SDL Phase**               | Felépítés |  
@@ -200,7 +200,7 @@ Ahogy látható, az eszköz elsődleges kulcs nem szerepel a kódban. Ehelyett t
 
 ## <a id="pin-remote"></a>Győződjön meg arról, egy másik felügyeleti szabályzat van érvényben, amely egy PIN-kód használatát igényli, és lehetővé teszi a távoli törlése
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Dynamics CRM Mobile ügyfél | 
 | **SDL Phase**               | Környezet |  
@@ -211,7 +211,7 @@ Ahogy látható, az eszköz elsődleges kulcs nem szerepel a kódban. Ehelyett t
 
 ## <a id="bitlocker"></a>Győződjön meg, hogy egy másik felügyeleti szabályzat, amely egy PIN-kód/jelszó vagy automatikus zárolás igényel, és titkosítja az összes adatot (pl. BitLocker)
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Dynamics CRM Outlook-ügyfelének | 
 | **SDL Phase**               | Felépítés |  
@@ -222,18 +222,18 @@ Ahogy látható, az eszköz elsődleges kulcs nem szerepel a kódban. Ehelyett t
 
 ## <a id="rolled-server"></a>Győződjön meg arról, hogy aláíró kulcsok vannak leváltani Identitáskiszolgálók használatakor
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Identity Server | 
 | **SDL Phase**               | Környezet |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [Identitáskezelési kiszolgáló - kulcsokat, aláírás és titkosítás ](https://identityserver.github.io/Documentation/docsv2/configuration/crypto.html) |
+| **Hivatkozások**              | [Identitáskezelési kiszolgáló - kulcsokat, aláírás és titkosítás](https://identityserver.github.io/Documentation/docsv2/configuration/crypto.html) |
 | **Lépések** | Győződjön meg arról, hogy aláíró kulcsok vannak leváltani Identitáskiszolgálók használatakor. A hivatkozás a hivatkozások szakaszban azt ismerteti, hogyan ezt meg kell tervezni anélkül, hogy ez az identitás-kiszolgálót a függő alkalmazások üzemkimaradások. |
 
 ## <a id="client-server"></a>Gondoskodjon arról, hogy erős titkosítási szempontból ügyfél-azonosító, titkos Ügyfélkód használt az Identity Serverben
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Identity Server | 
 | **SDL Phase**               | Felépítés |  

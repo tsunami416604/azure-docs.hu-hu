@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/20/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 02c786209c81e755b05cc3875778f98faf8a1ae1
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: e515f7c0587e8bbcba10bcd2d2a726c16401bfbd
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650937"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889773"
 ---
 # <a name="content-protection-overview"></a>A Content protection áttekintése
 
@@ -31,7 +31,7 @@ Az alábbi ábrán a Media Services content protection munkafolyamat:
 
 &#42;*a dinamikus titkosítás AES-128 "tiszta kulcsot" CBCS és CENC támogatja. További részletekért lásd: a támogatási mátrix [Itt](#streaming-protocols-and-encryption-types).*
 
-Ez a cikk ismerteti az alapelvek és fogalmak ismertetése a Media Services content protection kapcsolódik. A cikk is rendelkezik a [– gyakori kérdések](#faq) szakaszt, és cikkeket, amelyek bemutatják a tartalmak védelméhez mutató hivatkozásokat tartalmaz. 
+Ez a cikk ismerteti az alapelvek és fogalmak ismertetése a Media Services content protection kapcsolódik. A cikk a gyakori kérdésekkel foglalkozó szakaszban van, és cikkeket, amelyek bemutatják a tartalmak védelméhez mutató hivatkozásokat tartalmaz. 
 
 ## <a name="main-components-of-a-content-protection-system"></a>A rendszer a content protection fő összetevőinek
 

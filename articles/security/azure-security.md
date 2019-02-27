@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 28630a1d1b2ce212fe1054496814a9084f8cfc98
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 74bdcc831f19031162d004e1ba98c0cfc258ce4b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116303"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56879415"
 ---
 # <a name="introduction-to-azure-security"></a>Bevezetés az Azure Security
 ## <a name="overview"></a>Áttekintés
@@ -80,7 +80,7 @@ A [biztonsági és auditálási megoldás](https://docs.microsoft.com/azure/oper
 Emellett konfigurálhatja a biztonság és megfelelőség a [automatikusan az adott műveletek végrehajtására](https://blogs.technet.microsoft.com/robdavies/2016/04/20/simple-look-at-oms-alert-remediation-with-runbooks-part-1/) egy adott esemény észlelése esetén.
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager
-[Az Azure Resource Manager ](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) lehetővé teszi, hogy az erőforrásokat a megoldás egy csoportként dolgozzon. A megoldás összes erőforrását egyetlen, koordinált műveletben telepítheti, frissítheti vagy törölheti. Használhat egy [Azure Resource Manager-sablon](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/) az üzembe helyezés és a sablon különböző, például tesztelési, átmeneti és éles környezetben is képes működni. A Resource Manager biztonsági, naplózási és címkézési szolgáltatásokat biztosít, hogy segítsen az erőforrások kezelésében a telepítést követően.
+[Az Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model) lehetővé teszi, hogy az erőforrásokat a megoldás egy csoportként dolgozzon. A megoldás összes erőforrását egyetlen, koordinált műveletben telepítheti, frissítheti vagy törölheti. Használhat egy [Azure Resource Manager-sablon](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/) az üzembe helyezés és a sablon különböző, például tesztelési, átmeneti és éles környezetben is képes működni. A Resource Manager biztonsági, naplózási és címkézési szolgáltatásokat biztosít, hogy segítsen az erőforrások kezelésében a telepítést követően.
 
 Az Azure Resource Manager-sablonalapú üzembe helyezések segítheti a biztonsági megoldások az Azure-ban üzembe helyezett, mert szabványos biztonsági beállításainak kezeléséhez, és képes integrálni kell a szabványos sablonalapú központi telepítések. Ez csökkenti a biztonsági konfigurációs hibák, előfordulhat, hogy végzett, manuális telepítés során kockázatát.
 

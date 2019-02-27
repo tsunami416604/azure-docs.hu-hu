@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 6017aa5172efa72bb708004e2c4aee7f9ae4acad
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 85edaeab67c7b5164dabbc817429e2ab82f5ea11
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733909"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56864668"
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Adatok áthelyezése a helyszíni SQL Serverről az SQL Azure, az Azure Data Factoryvel
 
@@ -52,7 +52,7 @@ Ez az oktatóanyag feltételezi, hogy:
 
 * Egy **Azure-előfizetés**. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/).
 * Egy **Azure storage-fiók**. Ez az oktatóanyag az adatok tárolása Azure storage-fiók használhat. Ha nem rendelkezik Azure storage-fiókkal, tekintse meg a [hozzon létre egy tárfiókot](../../storage/common/storage-quickstart-create-account.md) cikk. Miután létrehozta a tárfiókot, szerezze be a tárterület elérésére használt fiók kulcsot kell. Lásd: [a tárelérési kulcsok kezelése](../../storage/common/storage-account-manage.md#access-keys).
-* A hozzáférést egy **az Azure SQL Database**. Ha be kell állítania az Azure SQL Database, a témakör [Ismerkedés a Microsoft Azure SQL Database ](../../sql-database/sql-database-get-started.md) információt nyújt az kiépítése az Azure SQL Database egy új példányát.
+* A hozzáférést egy **az Azure SQL Database**. Ha be kell állítania az Azure SQL Database, a témakör [Ismerkedés a Microsoft Azure SQL Database](../../sql-database/sql-database-get-started.md) információt nyújt az kiépítése az Azure SQL Database egy új példányát.
 * Telepített és konfigurált **Azure PowerShell-lel** helyileg. Útmutatásért lásd: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview).
 
 > [!NOTE]
@@ -99,7 +99,7 @@ A táblák a JSON-alapú definíciókat használja a következő nevekkel:
 Három tábladefiníciókat az ADF folyamat van szükség:
 
 1. [A helyszíni SQL-tábla](#adf-table-onprem-sql)
-2. [Blob Table ](#adf-table-blob-store)
+2. [Blobtábla](#adf-table-blob-store)
 3. [SQL Azure-tábla](#adf-table-azure-sql)
 
 > [!NOTE]

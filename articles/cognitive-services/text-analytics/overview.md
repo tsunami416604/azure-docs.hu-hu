@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 0de4e0d750d8ae3061ed0b80d706dec545338a90
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 7623f98b9fd6c4bad8a41050e39b6e0e8650dccc
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242926"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889281"
 ---
 # <a name="what-is-text-analytics"></a>Mi a Text Analytics?
 
@@ -64,11 +64,11 @@ Ez a szakasz egy külön cikkbe lett áthelyezve a jobb átláthatóság érdek�
 
 ## <a name="data-limits"></a>Adatkorlátok
 
-A Text Analytics API minden végpontja nyers szöveges adatokat fogad el. A jelenlegi korlát dokumentumonként 5000 karakter. Ha ennél hosszabb dokumentumok elemzésére van szüksége, felbonthatja őket kisebb darabokra. Ha mégis magasabb korlátra van szüksége, [lépjen velünk kapcsolatba](https://azure.microsoft.com/overview/sales-number/), hogy megbeszélhessük a követelményeit.
+A Text Analytics API minden végpontja nyers szöveges adatokat fogad el. A jelenlegi maximum az egyes dokumentumok; 5,120 karaktereket Ha nagyobb dokumentumok elemzése van szüksége, bonthatja őket szeletekre. Ha mégis magasabb korlátra van szüksége, [lépjen velünk kapcsolatba](https://azure.microsoft.com/overview/sales-number/), hogy megbeszélhessük a követelményeit.
 
 | Korlát | Érték |
 |------------------------|---------------|
-| Az egyes dokumentumok maximális mérete | 5000 karakternél által mért [ `StringInfo.LengthInTextElements` ](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements). |
+| Az egyes dokumentumok maximális mérete | mért 5,120 karakterek [ `StringInfo.LengthInTextElements` ](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements). |
 | Teljes kérés maximális mérete | 1 MB |
 | Egy kérésbe foglalt dokumentumok maximális száma | 1000 dokumentum |
 
@@ -80,7 +80,7 @@ A Text Analytics API Unicode-kódolást használ a szövegek megjelenítéséhez
 
 ## <a name="next-steps"></a>További lépések
 
-Először próbálja ki az [interaktív bemutatót](https://azure.microsoft.com/services/cognitive-services/text-analytics/). Beilleszthet egy bemeneti szöveget (legfeljebb 5000 karakter hosszúságig), amelynek felismerheti a nyelvét (120 nyelv közül), kiszámíthatja a véleménypontszámát, vagy kinyerheti a kulcskifejezéseit. Ehhez nem szükséges feliratkozni.
+Először próbálja ki az [interaktív bemutatót](https://azure.microsoft.com/services/cognitive-services/text-analytics/). Illessze be a szövegbevitelt (5,120 karakter maximális) észlelje a nyelvet (legfeljebb 120), egy véleménypontszámot kiszámításához, vagy kinyerheti a kulcskifejezéseket. Ehhez nem szükséges feliratkozni.
 
 Ha kész közvetlenül meghívni az API-t:
 

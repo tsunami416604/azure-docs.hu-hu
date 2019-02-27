@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 5e9104f59173c3d39ef2f2232ed2a9c6864cf84f
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 93beef5702df9b4cf0a51a01fb286a3f023f9839
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892558"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876619"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Biztonsági keret: Bizalmas adatok |} Megoldások 
 | Termék vagy szolgáltatás | Cikk |
 | --------------- | ------- |
 | **Gép megbízhatósági kapcsolat határán** | <ul><li>[Győződjön meg arról, hogy a bináris fájlok bizalmas adatokat tartalmazó vannak rejtjelezett](#binaries-info)</li><li>[Fontolja meg a bizalmas felhasználói adatok védelme érdekében használja a titkosított fájlrendszer (EFS)](#efs-user)</li><li>[Győződjön meg arról, hogy az alkalmazás a fájlrendszeren tárolt bizalmas adatok titkosítva van](#filesystem)</li></ul> | 
 | **Webalkalmazás** | <ul><li>[Győződjön meg arról, hogy bizalmas tartalom nem tárolja a böngészőben](#cache-browser)</li><li>[Webes alkalmazás a konfigurációs fájlok bizalmas adatokat tartalmazó szakaszok titkosítása](#encrypt-data)</li><li>[Explicit módon letiltja az automatikus kiegészítés bizalmas űrlapokban és a bemenetek HTML-attribútum](#autocomplete-input)</li><li>[Győződjön meg arról, hogy a felhasználói képernyőn a bizalmas adatok maszkolva van](#data-mask)</li></ul> | 
-| **Adatbázis** | <ul><li>[Dinamikus adatmaszkolás korlátozhatja a bizalmas adatok nem rendszerjogosultságú kitettség felhasználók megvalósítása](#dynamic-users)</li><li>[Győződjön meg arról, hogy a jelszavak tárolása sózott ujjlenyomat formátuma](#salted-hash)</li><li>[ Győződjön meg arról, hogy az adatbázis-oszlopokban bizalmas adatok titkosítva van](#db-encrypted)</li><li>[Győződjön meg arról, hogy adatbázis-szintű titkosítást (TDE) engedélyezve van](#tde-enabled)</li><li>[Győződjön meg arról, hogy titkosított adatbázis biztonsági mentése](#backup)</li></ul> | 
+| **Adatbázis** | <ul><li>[Dinamikus adatmaszkolás korlátozhatja a bizalmas adatok nem rendszerjogosultságú kitettség felhasználók megvalósítása](#dynamic-users)</li><li>[Győződjön meg arról, hogy a jelszavak tárolása sózott ujjlenyomat formátuma](#salted-hash)</li><li>[Győződjön meg arról, hogy az adatbázis-oszlopokban bizalmas adatok titkosítva van](#db-encrypted)</li><li>[Győződjön meg arról, hogy adatbázis-szintű titkosítást (TDE) engedélyezve van](#tde-enabled)</li><li>[Győződjön meg arról, hogy titkosított adatbázis biztonsági mentése](#backup)</li></ul> | 
 | **Webes API** | <ul><li>[Győződjön meg arról, hogy a bizalmas adatokat a webes API-t nem tárolja böngésző storage-ban](#api-browser)</li></ul> | 
 | Az Azure Document DB-ről | <ul><li>[Az Azure Cosmos DB-ben tárolt bizalmas adatok titkosítása](#encrypt-docdb)</li></ul> | 
 | **Az Azure IaaS virtuális gép megbízhatósági kapcsolat határán** | <ul><li>[Az Azure Disk Encryption használatával virtuális gépek által használt lemezek titkosítása](#disk-vm)</li></ul> | 
@@ -34,11 +34,11 @@ ms.locfileid: "55892558"
 | **Dynamics CRM** | <ul><li>[Biztonsági modellezési az üzleti egység/csapatok használható, és ahol szükséges](#modeling-teams)</li><li>[Megosztott szolgáltatás kritikus entitások minimalizálása](#entities)</li><li>[A Dynamics CRM-megosztási szolgáltatás és az ajánlott biztonsági eljárások a kockázatokat a felhasználók betanítása](#good-practices)</li><li>[Kivételek kezelése konfigurációs részleteket megjelenítő proscribing fejlesztési szabványok szabály belefoglalása](#exception-mgmt)</li></ul> | 
 | **Azure Storage** | <ul><li>[Az Azure Storage Service Encryption (SSE) használata for Data at Rest (előzetes verzió)](#sse-preview)</li><li>[Ügyféloldali titkosítás használata a bizalmas adatok tárolásához Azure Storage-ban](#client-storage)</li></ul> | 
 | **Mobileszköz ügyfél** | <ul><li>[Bizalmas vagy telefonok helyi tárba írt PII adatok titkosítása](#pii-phones)</li><li>[A végfelhasználók számára terjesztése előtt létrehozott bináris rejtse](#binaries-end)</li></ul> | 
-| **WCF** | <ul><li>[ ClientCredentialType tanúsítvány vagy a Windows beállítása](#cert)</li><li>[WCF-biztonsági mód nincs engedélyezve](#security)</li></ul> | 
+| **WCF** | <ul><li>[ClientCredentialType tanúsítvány vagy a Windows beállítása](#cert)</li><li>[WCF-biztonsági mód nincs engedélyezve](#security)</li></ul> | 
 
 ## <a id="binaries-info"></a>Győződjön meg arról, hogy a bináris fájlok bizalmas adatokat tartalmazó vannak rejtjelezett
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Gép megbízhatósági kapcsolat határán | 
 | **SDL Phase**               | Környezet |  
@@ -49,7 +49,7 @@ ms.locfileid: "55892558"
 
 ## <a id="efs-user"></a>Fontolja meg a bizalmas felhasználói adatok védelme érdekében használja a titkosított fájlrendszer (EFS)
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Gép megbízhatósági kapcsolat határán | 
 | **SDL Phase**               | Felépítés |  
@@ -60,7 +60,7 @@ ms.locfileid: "55892558"
 
 ## <a id="filesystem"></a>Győződjön meg arról, hogy az alkalmazás a fájlrendszeren tárolt bizalmas adatok titkosítva van
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Gép megbízhatósági kapcsolat határán | 
 | **SDL Phase**               | Környezet |  
@@ -71,7 +71,7 @@ ms.locfileid: "55892558"
 
 ## <a id="cache-browser"></a>Győződjön meg arról, hogy bizalmas tartalom nem tárolja a böngészőben
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -124,7 +124,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="encrypt-data"></a>Webes alkalmazás a konfigurációs fájlok bizalmas adatokat tartalmazó szakaszok titkosítása
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -135,7 +135,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="autocomplete-input"></a>Explicit módon letiltja az automatikus kiegészítés bizalmas űrlapokban és a bemenetek HTML-attribútum
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -154,7 +154,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="data-mask"></a>Győződjön meg arról, hogy a felhasználói képernyőn a bizalmas adatok maszkolva van
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -165,7 +165,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="dynamic-users"></a>Dinamikus adatmaszkolás korlátozhatja a bizalmas adatok nem rendszerjogosultságú kitettség felhasználók megvalósítása
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
 | **SDL Phase**               | Felépítés |  
@@ -176,7 +176,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="salted-hash"></a>Győződjön meg arról, hogy a jelszavak tárolása sózott ujjlenyomat formátuma
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
 | **SDL Phase**               | Felépítés |  
@@ -187,7 +187,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="db-encrypted"></a>Győződjön meg arról, hogy az adatbázis-oszlopokban bizalmas adatok titkosítva van
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
 | **SDL Phase**               | Felépítés |  
@@ -198,7 +198,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="tde-enabled"></a>Győződjön meg arról, hogy adatbázis-szintű titkosítást (TDE) engedélyezve van
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
 | **SDL Phase**               | Felépítés |  
@@ -209,7 +209,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="backup"></a>Győződjön meg arról, hogy titkosított adatbázis biztonsági mentése
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
 | **SDL Phase**               | Felépítés |  
@@ -220,7 +220,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 
 ## <a id="api-browser"></a>Győződjön meg arról, hogy a bizalmas adatokat a webes API-t nem tárolja böngésző storage-ban
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
 | **SDL Phase**               | Felépítés |  
@@ -244,7 +244,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="encrypt-docdb"></a>Cosmos DB-ben tárolt bizalmas adatok titkosítása
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Az Azure Document DB-ről | 
 | **SDL Phase**               | Felépítés |  
@@ -255,7 +255,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="disk-vm"></a>Az Azure Disk Encryption használatával virtuális gépek által használt lemezek titkosítása
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Az Azure IaaS virtuális gép megbízhatósági kapcsolat határán | 
 | **SDL Phase**               | Környezet |  
@@ -266,7 +266,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="fabric-apps"></a>Titkosítani a titkos kulcsokat a Service Fabric-alkalmazások
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Service Fabric megbízhatósági kapcsolat határán | 
 | **SDL Phase**               | Felépítés |  
@@ -277,7 +277,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="modeling-teams"></a>Biztonsági modellezési az üzleti egység/csapatok használható, és ahol szükséges
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Dynamics CRM | 
 | **SDL Phase**               | Felépítés |  
@@ -288,7 +288,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="entities"></a>Megosztott szolgáltatás kritikus entitások minimalizálása
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Dynamics CRM | 
 | **SDL Phase**               | Környezet |  
@@ -299,7 +299,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="good-practices"></a>A Dynamics CRM-megosztási szolgáltatás és az ajánlott biztonsági eljárások a kockázatokat a felhasználók betanítása
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Dynamics CRM | 
 | **SDL Phase**               | Környezet |  
@@ -310,7 +310,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="exception-mgmt"></a>Kivételek kezelése konfigurációs részleteket megjelenítő proscribing fejlesztési szabványok szabály belefoglalása
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Dynamics CRM | 
 | **SDL Phase**               | Környezet |  
@@ -321,7 +321,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="sse-preview"></a>Az Azure Storage Service Encryption (SSE) használata for Data at Rest (előzetes verzió)
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Storage | 
 | **SDL Phase**               | Felépítés |  
@@ -332,7 +332,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="client-storage"></a>Ügyféloldali titkosítás használata a bizalmas adatok tárolásához Azure Storage-ban
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Storage | 
 | **SDL Phase**               | Felépítés |  
@@ -343,7 +343,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ## <a id="pii-phones"></a>Bizalmas vagy telefonok helyi tárba írt PII adatok titkosítása
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Mobileszköz ügyfél | 
 | **SDL Phase**               | Felépítés |  
@@ -393,7 +393,7 @@ Ha az alkalmazás nem egy vállalati alkalmazást, majd a megadott platform keys
 
 ## <a id="binaries-end"></a>A végfelhasználók számára terjesztése előtt létrehozott bináris rejtse
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Mobileszköz ügyfél | 
 | **SDL Phase**               | Felépítés |  
@@ -404,7 +404,7 @@ Ha az alkalmazás nem egy vállalati alkalmazást, majd a megadott platform keys
 
 ## <a id="cert"></a>ClientCredentialType tanúsítvány vagy a Windows beállítása
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
 | **SDL Phase**               | Felépítés |  
@@ -423,7 +423,7 @@ Tanúsítvány vagy Windows clientCredentialType beállítva.
 
 ## <a id="security"></a>WCF-biztonsági mód nincs engedélyezve
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
 | **SDL Phase**               | Felépítés |  

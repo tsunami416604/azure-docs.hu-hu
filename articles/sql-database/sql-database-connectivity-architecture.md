@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/06/2019
-ms.openlocfilehash: 5ce8464de552fb228b961af199e4b03e645478a2
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 02/25/2019
+ms.openlocfilehash: 3be2f804bc755b92896305a2ba2b38a45450aed3
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809980"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871230"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Az Azure SQL-kapcsolati architektúra
 
@@ -28,10 +28,12 @@ Ez a cikk ismerteti az Azure SQL Database és az SQL Data Warehouse kapcsolati a
 > Ügyfelek javasolja, hogy hozzon létre új kiszolgálók és a kapcsolat típusát a már meglévőket explicit módon állítva átirányítási (előnyösebb) vagy a Proxy kapcsolódási architektúráját függően.
 >
 > Ebből a változásból meglévő környezetekben használhatatlanná tévő szolgáltatási végponton keresztüli kapcsolat megakadályozása érdekében használjuk telemetriai hajtsa végre a következő:
+>
 > - -Kiszolgálók, hogy a rendszer azt észleli, hogy a módosítás előtt a szolgáltatásvégpontokon keresztül elért, hogy váltson a kapcsolat típusát `Proxy`.
 > - További kiszolgálók, hogy váltson a kapcsolat típusa fognak váltani `Redirect`.
 >
 > Szolgáltatási végpont felhasználók továbbra is hatással lehetnek a következő esetekben:
+>
 > - Alkalmazás ritkán csatlakozik egy meglévő kiszolgálót, így a telemetria adott alkalmazásokra vonatkozó információk nem rögzítése
 > - Automatizált üzembehelyezési logic létrehoz egy SQL Database-kiszolgálóhoz, feltéve, hogy az alapértelmezett viselkedést, a szolgáltatás végpontja kapcsolatokhoz `Proxy`
 >
@@ -106,10 +108,7 @@ Az alábbi táblázat az elsődleges és másodlagos IP-címek, adatok minden r�
 | Észak-Európa | 191.235.193.75 | 40.113.93.91 |
 | USA déli középső régiója | 23.98.162.75 | 13.66.62.124 |
 | Délkelet-Ázsia | 23.100.117.95 | 104.43.15.0 |
-| Egyesült Királyság északi régiója | 13.87.97.210 | |
-| Egyesült Királyság déli régiója 1 | 51.140.184.11 | |
-| Egyesült Királyság 2. déli régiója | 13.87.34.7 | |
-| Az Egyesült Királyság nyugati régiója | 51.141.8.11 | |
+| Az Egyesült Királyság déli régiója | 51.140.184.11 | |
 | USA nyugati középső régiója | 13.78.145.25 | |
 | Nyugat-Európa | 191.237.232.75 | 40.68.37.158 |
 | USA nyugati RÉGIÓJA 1 | 23.99.34.75 | 104.42.238.205 |

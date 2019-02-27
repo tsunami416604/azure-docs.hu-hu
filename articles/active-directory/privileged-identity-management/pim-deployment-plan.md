@@ -14,12 +14,12 @@ ms.date: 02/08/2019
 ms.author: rolyon
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54fa8d09d930069191fb48e0ab015d436496b725
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fb675778d899d6f4cec22de8a1c81fdae76ba17e
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166402"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56879764"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Az Azure AD Privileged Identity Management (PIM) üzembe helyezése
 
@@ -120,7 +120,7 @@ Az alábbi szakasz segítségével, amelyek szerepet játszanak a projekt össze
 
 A tervezési folyamat keretében, előbb futtatnia kell beleegyezik abba, és a PIM engedélyezése a következő a [használatához a PIM dokumentum](pim-getting-started.md). PIM engedélyezése hozzáférést biztosít bizonyos funkciókat, amelyeket kifejezetten a telepítés érdekében.
 
-Ha a cél a PIM telepítése az Azure-erőforrásokhoz, kövesse a [Fedezze fel az Azure-erőforrások kezelése a PIM dokumentum](pim-resource-roles-discover-resources.md). Csak egyes erőforrás, az erőforráscsoportot és az előfizetés tulajdonosai tudják észlelje azokat a PIM belül. Ha Ön globális rendszergazda próbál PIM az Azure-erőforrások üzembe helyezése, érdemes [jogosultságszintjének emelése az összes Azure-előfizetések kezelése ](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json) saját kezűleg hozzáférést adhat a címtárban az összes Azure-erőforrásokhoz a felderítéshez. Azonban azt javasoljuk, hogy kap jóváhagyást az egyes az előfizetés-tulajdonost az erőforrásaikat a PIM kezelése előtt.
+Ha a cél a PIM telepítése az Azure-erőforrásokhoz, kövesse a [Fedezze fel az Azure-erőforrások kezelése a PIM dokumentum](pim-resource-roles-discover-resources.md). Csak egyes erőforrás, az erőforráscsoportot és az előfizetés tulajdonosai tudják észlelje azokat a PIM belül. Ha Ön globális rendszergazda próbál PIM az Azure-erőforrások üzembe helyezése, érdemes [jogosultságszintjének emelése az összes Azure-előfizetések kezelése](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json) saját kezűleg hozzáférést adhat a címtárban az összes Azure-erőforrásokhoz a felderítéshez. Azonban azt javasoljuk, hogy kap jóváhagyást az egyes az előfizetés-tulajdonost az erőforrásaikat a PIM kezelése előtt.
 
 ### <a name="enforce-principle-of-least-privilege"></a>Legalacsonyabb jogosultsági szint elvének kényszerítése
 
@@ -161,7 +161,7 @@ A hozzáférési felülvizsgálatok az e-mailek értesítendő személyeket és 
 
 Az Azure-előfizetések és erőforrások állíthat be hozzáférési felülvizsgálati folyamat hasonló a szerepkörök az egyes előfizetésekhez vagy erőforrás áttekintéséhez. Ez a folyamat célja az egyes előfizetésekhez vagy erőforrás is feltárhatja, hogy távolítsa el a felesleges hozzárendelések csatolt tulajdonosi és felhasználói hozzáférés rendszergazdája hozzárendeléseinek minimalizálása érdekében. Azonban szervezetek gyakran az ilyen feladatok delegálása az egyes előfizetésekhez vagy erőforrás tulajdonosának, mert azok jobban megérthesse a meghatározott szerepkörök (különösen az egyéni szerepkörök).
 
-Ha Ön globális rendszergazda szerepkörrel rendelkező rendszergazda próbál a PIM telepítése az Azure-erőforrásokhoz a szervezetben, érdemes [jogosultságszintjének emelése az összes Azure-előfizetések kezelése ](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json) minden egyes előfizetés eléréséhez. Ezután keresse meg az egyes előfizetés tulajdonosa és vele együttműködve távolítsa el a felesleges hozzárendelések, és minimalizálja a tulajdonosi szerepkör-hozzárendelés.
+Ha Ön globális rendszergazda szerepkörrel rendelkező rendszergazda próbál a PIM telepítése az Azure-erőforrásokhoz a szervezetben, érdemes [jogosultságszintjének emelése az összes Azure-előfizetések kezelése](../../role-based-access-control/elevate-access-global-admin.md?toc=%2fazure%2factive-directory%2fprivileged-identity-management%2ftoc.json) minden egyes előfizetés eléréséhez. Ezután keresse meg az egyes előfizetés tulajdonosa és vele együttműködve távolítsa el a felesleges hozzárendelések, és minimalizálja a tulajdonosi szerepkör-hozzárendelés.
 
 Azure-előfizetések a tulajdonosi szerepkörrel rendelkező felhasználók is igénybe vehetik a [hozzáférési felülvizsgálatok az Azure-erőforrások](pim-resource-roles-start-access-review.md) naplózása és az Azure AD-szerepkörökhöz tartozó korábban leírt folyamat hasonló a szükségtelen szerepkör-hozzárendelések eltávolítása.
 

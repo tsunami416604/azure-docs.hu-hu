@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/17/2018
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: d2e81e4f2eda730dc064699f42ba7bfb49648082
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: e83991f553d00af11cfc275137f8e73ebab2098c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230832"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882637"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Oktatóanyag: Virtuális gépek terheléselosztása rendelkezésre állási zónák között a Standard Load Balancer az Azure portal használatával
 
@@ -177,7 +177,7 @@ Annak érdekében, hogy a forgalmat el lehessen osztani a virtuális gépek köz
 4. Kattintson az **Új háttérerőforrás hozzáadása** lehetőségre a virtuális gépek (*myVM2* és *myVM3*) a terheléselosztó háttérkészletéhez való hozzáadásához.
 5. Kattintson a **Hozzáadás** parancsra.
 
-    ![Hozzáadás a háttércímkészlethez – ](./media/load-balancer-standard-public-availability-zones-portal/add-backend-pool.png)
+    ![Hozzáadás a háttércímkészlethez –](./media/load-balancer-standard-public-availability-zones-portal/add-backend-pool.png)
 
 3. Ellenőrizze, hogy a terheléselosztó háttérkészletének beállítása mind a három virtuális gépet megjeleníti-e: **myVM1**, **myVM2** és **myVM3**.
 

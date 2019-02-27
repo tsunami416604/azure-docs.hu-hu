@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 36f919d1c22a88dfaf13079f09e6a43980a22828
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4fedc5b8b3b69ff364374dbef0460930e1f631a6
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981780"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56869071"
 ---
 # <a name="how-to-reprovision-devices"></a>Hogyan kell építenie az eszközök
 
 IoT-megoldás élettartama során szokás az eszközök IoT-központok között. Az erről az áthelyezésről okok a következők lehetnek a következő esetekben:
 
-* **Földrajzi hely meghatározásának**: egy eszköz között helyezi át, mert az eszköz által növelése a hálózati késés át egy IoT hubra közelebb és az egyes helyekre.
+* **Földrajzi hely meghatározásának**: Eszköz helye között helyezi át, mert az eszköz által növelése a hálózati késés át egy IoT hubra közelebb és az egyes helyekre.
 
-* **Több-bérlős**: eszköz belül az IoT-megoldásban használt, de hozzárendelni vagy egy új ügyfél vagy ügyfél telephelyén bérelt. Az új ügyféllel előfordulhat, hogy szolgálja ki a különböző IoT hub használatával.
+* **Több-bérlős**: Egy eszköz belül az IoT-megoldásban használt, de hozzárendelni vagy egy új ügyfél vagy ügyfél telephelyén bérelt. Az új ügyféllel előfordulhat, hogy szolgálja ki a különböző IoT hub használatával.
 
-* **Megoldás módosítása**: eszköz sikerült áthelyezni egy új vagy frissített IoT-megoldás. Az újbóli hozzárendelést megkövetelheti, hogy az eszköz kommunikálni egy új IoT hubot, amely más háttérrendszer összetevők csatlakozik. 
+* **Megoldás módosítása**: Sikerült áthelyezni egy eszközt egy új vagy frissített IoT-megoldás. Az újbóli hozzárendelést megkövetelheti, hogy az eszköz kommunikálni egy új IoT hubot, amely más háttérrendszer összetevők csatlakozik. 
 
-* **Karantén**: hasonló, hogy a megoldás módosítása. Egy IoT hubra, ahol teheti meg, csak frissítse, majd az megfelelőségi hibás, sérült vagy elavult eszköz rendelésekor lehet. Miután az eszköz megfelelően működik-e, majd át térjen vissza a fő hub.
+* **Karantén**: Hasonló a megoldás módosítása. Egy IoT hubra, ahol teheti meg, csak frissítse, majd az megfelelőségi hibás, sérült vagy elavult eszköz rendelésekor lehet. Miután az eszköz megfelelően működik-e, majd át térjen vissza a fő hub.
 
 További részletes áttekintést reprovisioning, lásd: [IoT Hub Device reprovisoning fogalmak](concepts-device-reprovision.md).
 
@@ -70,9 +70,9 @@ Az alábbi lépéseket a kiosztási szabályzat egy eszközök beléptetéséhez
 
 3. A **válassza ki, hogyan szeretné kezelni a különböző IoT hubra újrakiépítés eszközön lévő adatokat**, válasszon egyet az alábbi reprovisioning házirendek:
 
-    * **Újbóli üzembe helyezése és az adatok áttelepítése**: Ez a szabályzat művelet vesz igénybe, ha a regisztrációs bejegyzés társított eszközök elküld egy új kiépítési kérést. A regisztrációs bejegyzés konfigurációjától függően az eszköz lehet hozzárendelni egy másik IoT hubra. Ha az eszköz IoT-központok változnak, az eszköz regisztrációját, a kezdeti az IoT hub távolítja el. Az új IoT hub összes Eszközállapot-adatokat a kezdeti IoT hubról lesz át. Az áttelepítés során az eszköz állapota nem szerepel, **hozzárendelése**
+    * **Újbóli üzembe helyezése és az adatok áttelepítése**: Ez a szabályzat hajt végre műveletet, amikor a regisztrációs bejegyzés társított eszközök elküld egy új kiépítési kérést. A regisztrációs bejegyzés konfigurációjától függően az eszköz lehet hozzárendelni egy másik IoT hubra. Ha az eszköz IoT-központok változnak, az eszköz regisztrációját, a kezdeti az IoT hub távolítja el. Az új IoT hub összes Eszközállapot-adatokat a kezdeti IoT hubról lesz át. Az áttelepítés során az eszköz állapota nem szerepel, **hozzárendelése**
 
-    * **Újbóli üzembe helyezése és a kezdeti konfiguráció alaphelyzetbe**: Ez a szabályzat művelet vesz igénybe, ha a regisztrációs bejegyzés társított eszközök elküld egy új kiépítési kérést. A regisztrációs bejegyzés konfigurációjától függően az eszköz lehet hozzárendelni egy másik IoT hubra. Ha az eszköz IoT-központok változnak, az eszköz regisztrációját, a kezdeti az IoT hub távolítja el. A kezdeti konfigurációs adatokat, a kiépítési szolgáltatás példány kapta, amikor az eszköz lett üzembe helyezve az új IoT hub által biztosított. Az áttelepítés során az eszköz állapota nem szerepel, **hozzárendelése**.
+    * **Újbóli üzembe helyezése és a kezdeti konfiguráció alaphelyzetbe**: Ez a szabályzat hajt végre műveletet, amikor a regisztrációs bejegyzés társított eszközök elküld egy új kiépítési kérést. A regisztrációs bejegyzés konfigurációjától függően az eszköz lehet hozzárendelni egy másik IoT hubra. Ha az eszköz IoT-központok változnak, az eszköz regisztrációját, a kezdeti az IoT hub távolítja el. A kezdeti konfigurációs adatokat, a kiépítési szolgáltatás példány kapta, amikor az eszköz lett üzembe helyezve az új IoT hub által biztosított. Az áttelepítés során az eszköz állapota nem szerepel, **hozzárendelése**.
 
 4. Kattintson a **mentése** ahhoz, hogy az eszköz a módosítások alapján reprovisioning.
 
@@ -94,7 +94,7 @@ Például a kód küldése kiépítési kérelmeket az eszközről a rendszerind
 ## <a name="next-steps"></a>További lépések
 
 - További Reprovisioning kapcsolatban lásd: [IoT Hub Device reprovisoning fogalmak](concepts-device-reprovision.md) 
-- Megszüntetés további tudnivalókért lásd: [hogyan eszközöket, amelyek korábban automatikus – kiépített megszüntetése ](how-to-unprovision-devices.md) 
+- Megszüntetés további tudnivalókért lásd: [hogyan eszközöket, amelyek korábban automatikus – kiépített megszüntetése](how-to-unprovision-devices.md) 
 
 
 

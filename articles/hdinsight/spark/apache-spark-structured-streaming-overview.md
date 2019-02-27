@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/05/2018
 ms.author: maxluk
-ms.openlocfilehash: 0c2fd29990e180283eb25949b806c4ceac58e2f7
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 8c37093b5369d2390942bc00c1531248bc4424c8
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653628"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56869088"
 ---
 # <a name="overview-of-apache-spark-structured-streaming"></a>Az Apache Spark strukturált Stream áttekintése
 
@@ -24,7 +24,7 @@ Structured Streaming-alkalmazások HDInsight Spark-fürtökön futó, és csatla
 
 Strukturált Streamelés óraszáma műveleteket alkalmaz a bemeneti adatok, például a kijelölés, leképezése, összesítési, ablakkezelési és a streamelési DataFrame hivatkozással DataFrames csatlakoztatása hosszan futó lekérdezést hoz létre. Következő lépésként, az eredményeket a file storage (Azure Storage Blobsba vagy a Data Lake Storage) vagy minden adattárhoz egyéni kódot (például SQL-adatbázis vagy a Power BI) használatával. Strukturált Streamelés a helyi hibakeresési konzolt, és egy memórián belüli tábla kimeneti is biztosít, így láthatja a létrehozott HDInsight a hibakeresési adatokat. 
 
-![A Stream feldolgozása a HDInsight és a Spark strukturált Stream ](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming.png)
+![A Stream feldolgozása a HDInsight és a Spark strukturált Stream](./media/apache-spark-structured-streaming-overview/hdinsight-spark-structured-streaming.png)
 
 > [!NOTE]  
 > A Spark strukturált Stream lecseréli a Spark Streaming (DStreams). Továbbítja, strukturált Stream kap megjelent fejlesztéseit és a karbantartás, amíg DStreams lesz csak a karbantartási módban. Strukturált Streamelés jelenleg nem, a szolgáltatás teljes körű DStreams, az adatforrásokhoz, és hogy támogatja a beépített fogadók, ezért a választani a megfelelő Spark stream feldolgozási beállítás kapcsolatos követelmények kiértékeléséhez. 
@@ -114,7 +114,7 @@ A lekérdezés fut, az azonos SparkSession, míg a sparksql-hez lekérdezést fu
 Ez a lekérdezés poskytne eredmények a következőhöz hasonló:
 
 
-| ablak |  Min(Temp) | AVG(Temp) | Max(Temp) |
+| ablak |  Min(Temp) | avg(temp) | max(temp) |
 | --- | --- | --- | --- |
 |{u'start ": u" 2016-07-26T02:00:00.000Z ", u'end"... |    95 |    95.231579 | 99 |
 |{u'start ": u" 2016-07-26T03:00:00.000Z ", u'end"...  |95 |   96.023048 | 99 |

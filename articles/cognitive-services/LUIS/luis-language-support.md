@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 81684031ddaa1ca8fa63a6c7e512f3fe6769a639
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 621e691eaedb06c26b5e6a05a12d0b742c798172
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859810"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56864515"
 ---
 # <a name="language-and-region-support-for-luis"></a>A LUIS nyelvéhez és régiójához támogatása
 
@@ -53,7 +53,7 @@ Nyelvi támogatás esetében eltérő [előre összeállított entitások](luis-
 
  - Az a `zh-cn` kulturális környezet, LUIS vár helyett a hagyományos karakterkészlet egyszerűsített kínai karakterkészlet.
  - Leképezések, az entitások, a funkciók és a reguláris kifejezések nevei a kínai vagy latin karaktereket lehet.
- - Tekintse meg a [előre összeállított tartományok referencia ](luis-reference-prebuilt-domains.md) , amelyen előre összeállított tartományok használata támogatott, az információ a `zh-cn` kulturális környezet.
+ - Tekintse meg a [előre összeállított tartományok referencia](luis-reference-prebuilt-domains.md) , amelyen előre összeállított tartományok használata támogatott, az információ a `zh-cn` kulturális környezet.
 <!--- When writing regular expressions in Chinese, do not insert whitespace between Chinese characters.-->
 
 ### <a name="japanese-support-notes"></a>* Japán támogatja a jegyzeteket

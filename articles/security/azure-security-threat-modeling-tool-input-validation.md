@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: dd2914c675d3bca32ca8951ffca1b04e23786400
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 51ede2ecf60b2b1dbe0b7afa47bce41a101e5bf4
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266914"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56879414"
 ---
 # <a name="security-frame-input-validation--mitigations"></a>Biztonsági keret: Bemeneti ellenőrzés |} Megoldások 
 | Termék vagy szolgáltatás | Cikk |
@@ -32,7 +32,7 @@ ms.locfileid: "54266914"
 
 ## <a id="disable-xslt"></a>XSLT-szkriptek használata a nem megbízható stíluslapok összes átalakítások letiltása
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -64,7 +64,7 @@ doc.setProperty("AllowXsltScript", false); // CORRECT. Setting to false disables
 
 ## <a id="out-sniffing"></a>Győződjön meg arról, hogy minden felhasználó ellenőrizhető tartalmat sikerült tartalmazó lapon hibajelentéseket a Microsoft automatikus MIME-elemzése
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -133,7 +133,7 @@ this.Response.Headers[""X-Content-Type-Options""] = ""nosniff"";
 
 ## <a id="xml-resolution"></a>Felvértezni vagy XML-entitás tiltása
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -195,7 +195,7 @@ Vegye figyelembe, hogy az MSXML6, ProhibitDTD true értékre van állítva (leti
 
 ## <a id="app-verification"></a>Http.sys használó alkalmazások URL-cím kanonikussá tétele ellenőrzés végrehajtása
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -206,7 +206,7 @@ Vegye figyelembe, hogy az MSXML6, ProhibitDTD true értékre van állítva (leti
 
 ## <a id="controls-users"></a>Győződjön meg, hogy a megfelelő vezérlők vannak érvényben, amikor a felhasználók fájlokat elfogadása
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -322,7 +322,7 @@ A legutóbbi pont aláírás fájlformátumának érvényesítése kapcsolatban 
 
 ## <a id="typesafe"></a>Győződjön meg arról, hogy típus környezetben is biztonságos paraméterek használ a webes alkalmazás adatelérési
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -352,7 +352,7 @@ Az előző példakódban a bemeneti érték nem lehet hosszabb 11 karakternél. 
 
 ## <a id="binding-mvc"></a>Használjon külön modell kötése osztályok vagy kötési szűrő listázza az MVC tömeges hozzárendelés biztonsági rések elkerülése érdekében
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -363,7 +363,7 @@ Az előző példakódban a bemeneti érték nem lehet hosszabb 11 karakternél. 
 
 ## <a id="rendering"></a>Nem megbízható webes kimeneti előtti renderelési kódolása
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -388,7 +388,7 @@ Az előző példakódban a bemeneti érték nem lehet hosszabb 11 karakternél. 
 
 ## <a id="typemodel"></a>Bemenet-ellenőrzést és a szűrést az összes karakterlánc típusú modell tulajdonságai
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -399,7 +399,7 @@ Az előző példakódban a bemeneti érték nem lehet hosszabb 11 karakternél. 
 
 ## <a id="richtext"></a>Tisztító űrlap mezőit, amely fogadja el az összes karaktert, például:, rich text szövegszerkesztőben a alkalmazni kell
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -410,7 +410,7 @@ Az előző példakódban a bemeneti érték nem lehet hosszabb 11 karakternél. 
 
 ## <a id="inbuilt-encode"></a>Ne rendeljen DOM-elemek, amelyek nem rendelkeznek a beépített kódolás fogadóként
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -432,7 +432,7 @@ Ne használjon `innerHtml`; helyette használjon `innerText`. Hasonlóképpen, n
 
 ## <a id="redirect-safe"></a>Ellenőrizze az alkalmazáson belül átirányítások lezárt vagy biztonságosan kész
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -443,7 +443,7 @@ Ne használjon `innerHtml`; helyette használjon `innerText`. Hasonlóképpen, n
 
 ## <a id="string-method"></a>Az összes karakterlánc típusú paramétert fogadja el a vezérlő metódusokhoz bemenet-ellenőrzés végrehajtása
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -454,13 +454,13 @@ Ne használjon `innerHtml`; helyette használjon `innerText`. Hasonlóképpen, n
 
 ## <a id="dos-expression"></a>Állítsa be, hogy a DoS miatt rossz reguláris kifejezések feldolgozása reguláris kifejezés felső korlátja időkorlátja
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Generic, Web Forms, MVC5, MVC6  |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [DefaultRegexMatchTimeout Property ](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.defaultregexmatchtimeout.aspx) |
+| **Hivatkozások**              | [DefaultRegexMatchTimeout tulajdonság](https://msdn.microsoft.com/library/system.web.configuration.httpruntimesection.defaultregexmatchtimeout.aspx) |
 | **Lépések** | Annak biztosítása érdekében a program rosszul szolgáltatásmegtagadási támadások ellen létrehozott reguláris kifejezések, sok meglátogassa okozó beállítása az alapértelmezett globális időtúllépés. A feldolgozási idő, mint a megadott felső határ hosszabb időt vesz igénybe, ha azt egy időtúllépési kivételt jelez. Semmi nem történik meg, ha az időkorlát végtelen lesz.| 
 
 ### <a name="example"></a>Példa
@@ -472,7 +472,7 @@ Például a következő konfigurációt kivételt fogja kijelezni egy RegexMatch
 
 ## <a id="html-razor"></a>A Razor-nézetekben Html.Raw használatának elkerülése
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
 | **SDL Phase**               | Felépítés |  
@@ -497,7 +497,7 @@ Ne használjon `Html.Raw()` , kivéve, ha meg kell jelenítenie a jelölés. Ez 
 
 ## <a id="stored-proc"></a>Ne használjon dinamikus lekérdezéseiben a tárolt eljárások
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Adatbázis | 
 | **SDL Phase**               | Felépítés |  
@@ -557,13 +557,13 @@ AS
 
 ## <a id="validation-api"></a>Győződjön meg arról, hogy a modell érvényesítése történik-e a webes API-metódusai
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
 | **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | MVC5, MVC6 |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [Modell érvényesítése az ASP.NET webes API-k ](http://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
+| **Hivatkozások**              | [Modell érvényesítése az ASP.NET webes API-k](http://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
 | **Lépések** | Egy ügyfél adatokat küld a webes API-KHOZ, esetén kötelező feldolgozási végrehajtása előtt az adatok érvényesítéséhez. Az ASP.NET Web API-kat elfogadó bemenetként, modellek használatával adatok jegyzetek modelleken ellenőrzési szabályokat állíthat be a modell tulajdonságait.|
 
 ### <a name="example"></a>Példa
@@ -614,7 +614,7 @@ namespace MyApi.Controllers
 
 ## <a id="string-api"></a>Bemenet-ellenőrzés végrehajtása az összes karakterlánc típusú paramétert fogadja el a webes API-metódusai
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
 | **SDL Phase**               | Felépítés |  
@@ -625,7 +625,7 @@ namespace MyApi.Controllers
 
 ## <a id="typesafe-api"></a>Győződjön meg arról, hogy típus környezetben is biztonságos használt paraméterek webes API-t az adatok eléréséhez
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
 | **SDL Phase**               | Felépítés |  
@@ -655,7 +655,7 @@ Az előző példakódban a bemeneti érték nem lehet hosszabb 11 karakternél. 
 
 ## <a id="sql-docdb"></a>Paraméteres SQL-lekérdezések használata a Cosmos DB
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Az Azure Document DB-ről | 
 | **SDL Phase**               | Felépítés |  
@@ -666,7 +666,7 @@ Az előző példakódban a bemeneti érték nem lehet hosszabb 11 karakternél. 
 
 ## <a id="schema-binding"></a>WCF-bemenet érvényesítési séma kötését keresztül
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
 | **SDL Phase**               | Felépítés |  
@@ -677,7 +677,7 @@ Az előző példakódban a bemeneti érték nem lehet hosszabb 11 karakternél. 
 
 ## <a id="parameters"></a>WCF - bemenet-ellenőrzési paraméter vizsgálók keresztül
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
 | **SDL Phase**               | Felépítés |  

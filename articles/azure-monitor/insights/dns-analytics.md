@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 0eeab5a2489bacde74b98e7d404789a00b64d02a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6e3c456b3ee92f30b3b152a39faf3f1fe483013f
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992721"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876602"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Gyűjtsön információt a DNS-infrastruktúra, a DNS Analytics előzetes verziójának megoldással kapcsolatos
 
@@ -142,7 +142,7 @@ Az információ segít azonosítani a:
 
 **Nevezze el regisztrációs kérelmeket**. A felső csempe sikeres és sikertelen DNS dinamikus frissítési kérelmek trendvonal jeleníti meg. Az alacsonyabb csempe felsorolja a felső 10 ügyfél küldő sikertelen DNS-frissítési kérelmek a DNS-kiszolgálók, a hibák száma szerint rendezve.
 
-![Név regisztrációs kérelmek panel ](./media/dns-analytics/name-reg-req-blade.png)
+![Név regisztrációs kérelmek panel](./media/dns-analytics/name-reg-req-blade.png)
 
 **Eszközillesztő elemzési lekérdezések minta**. A leggyakoribb keresési lekérdezések raw elemzési adatok közvetlenül listáját tartalmazza.
 

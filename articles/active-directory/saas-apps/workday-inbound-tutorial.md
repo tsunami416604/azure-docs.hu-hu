@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/19/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9e209fe0486b72c14912fd0af1b29c878e4b4545
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 722fc5366d8f6863d19d09bd6e555fcc9a73d570
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340110"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56868119"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása a Workday konfigurálása
 
@@ -1064,7 +1064,7 @@ Ez a szakasz ismerteti a hibaelhárítás a következő szempontokat:
 
 Amikor egy új felvételi WORKDAY észlel (tegyük fel, az alkalmazott azonosítója *21023*), az Azure AD létesítési szolgáltatás hozzon létre egy új AD-felhasználói fiókot, a feldolgozó és a folyamat során megpróbálja 4 naplórekordtípus hoz létre, az alább ismertetett:
 
-  [ ![Auditnapló létrehozása ops](media/workday-inbound-tutorial/wd_audit_logs_02.png) ](media/workday-inbound-tutorial/wd_audit_logs_02.png#lightbox)
+  [![Auditnapló létrehozása ops](media/workday-inbound-tutorial/wd_audit_logs_02.png)](media/workday-inbound-tutorial/wd_audit_logs_02.png#lightbox)
 
 A naplórekordok valamelyik kattintva a **tevékenység részletei** lapot nyit meg. Mi a **tevékenység részletei** lap megjeleníti az egyes rekordtípusokra napló.
 
@@ -1132,7 +1132,7 @@ A naplórekordok valamelyik kattintva a **tevékenység részletei** lapot nyit 
 
 A kezelő attribútum a hivatkozási attribútum értéke az ad-ben. A kiépítési szolgáltatás nincs beállítva a vezetői attribútumához a felhasználó-létrehozási művelet részeként. Inkább a vezetői attribútumához részeként van állítva egy *frissítése* művelet a felhasználó AD-fiók létrehozása után. A fenti példa növekszik, tegyük fel, az alkalmazott azonosítója "21451" egy új felvételi akkor aktiválódik, a Workday és az új felvételi manager (*21023*) már rendelkezik egy AD-fiókot. Ebben a forgatókönyvben a Keresés a vizsgálati naplók 21451 felhasználó megjelenik-e 5 bejegyzéseket.
 
-  [ ![Manager frissítése](media/workday-inbound-tutorial/wd_audit_logs_03.png) ](media/workday-inbound-tutorial/wd_audit_logs_03.png#lightbox)
+  [![Manager frissítése](media/workday-inbound-tutorial/wd_audit_logs_03.png)](media/workday-inbound-tutorial/wd_audit_logs_03.png#lightbox)
 
 Az első 4 rekordok hasonlóak, a kapcsolatok a Microsoft megvizsgálta részeként a felhasználó-létrehozási művelet. Az 5. bejegyzés az Exportálás társított manager attribútum frissítése. A naplórekord billable AD fiók manager frissítési művelet, amely a kezelő használatával történik *objectGuid* attribútum.
 

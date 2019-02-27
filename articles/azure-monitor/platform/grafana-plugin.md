@@ -9,12 +9,12 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: ''
-ms.openlocfilehash: fc963987b45751aab33035a83b2b477129e9a756
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: f592cfdba940b95a9935c6b68f3294233d9fbf15
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730900"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888491"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>A Grafana az Azure-szolgáltatások figyelése
 Figyelheti az Azure szolgáltatásainak és alkalmazásainak [Grafana](https://grafana.com/) használatával a [Azure Monitor adatforrás-beépülő modul](https://grafana.com/plugins/grafana-azure-monitor-datasource). A beépülő modul az Azure Monitor, beleértve a különböző naplókat és mérőszámokat által gyűjtött alkalmazásteljesítmény-adatokat gyűjt. Ezután a Grafana irányítópulton jeleníti meg ezeket az adatokat.
@@ -26,7 +26,8 @@ A következő lépések segítségével állítsa be a Grafana kiszolgálót és
 ## <a name="set-up-a-grafana-server"></a>A Grafana kiszolgáló beállítása
 
 ### <a name="set-up-grafana-locally"></a>Helyileg állítsa be a Grafana
-Egy helyi Grafana kiszolgáló beállításához [töltse le és telepítse a Grafana a helyi környezetben](https://grafana.com/grafana/download). Log Analytics-integráció a beépülő modul használatához telepítse a Grafana 5.3-as vagy újabb verziója.
+Egy helyi Grafana kiszolgáló beállításához [töltse le és telepítse a Grafana a helyi környezetben](https://grafana.com/grafana/download). A beépülő modul az Azure Monitor integrációja használatához telepítse a Grafana 5.3-as vagy újabb verziója.
+
 ### <a name="set-up-grafana-on-azure-through-the-azure-marketplace"></a>Állítsa be a Grafana az Azure-ban az Azure Marketplace-en
 1. Ugrás az Azure Marketplace-en, és válassza ki a Grafana Grafana Labs által.
 
@@ -70,7 +71,7 @@ Miután sikeresen bejelentkezett, láthatja, hogy az Azure Monitor adatforrás b
     A Log Analytics API megköveteli a [Log Analytics olvasó szerepkör](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader), amely tartalmazza az Olvasó szerepkörhöz az engedélyeket, és hozzáadja azt.
 
 4. Adja meg a kapcsolati adatokat szeretné használni az API-k. Az összes vagy egyes azokat is lehet kapcsolódni. 
-    * Ha csatlakozik az Azure Monitor (kíván gyűjteni) és az Azure Log Analytics (a naplózási adatokat), ugyanazokat a hitelesítő adatokat felhasználhatja kiválasztásával **azonos adatokkal az Azure Monitor API-ként**.
+    * Ha csatlakoztatja a metrikák és naplók az Azure monitorban felhasználhatja ugyanazokat a hitelesítő adatokat kiválasztásával **azonos adatokkal az Azure Monitor API-ként**.
     * A beépülő modul konfigurálásakor adhatja meg, melyik Azure-felhő a monitor (nyilvános, az Azure US Government, Azure Germany vagy Azure China) beépülő modult szeretné.
     * Ha használja az Application Insights, az Application Insights API és az Alkalmazásazonosítót kíván gyűjteni az Application Insights-alapú is megadhatja. További információkért lásd: [az API-kulcs és az Alkalmazásazonosító beolvasása](https://dev.applicationinsights.io/documentation/Authorization/API-key-and-App-ID).
 
@@ -97,7 +98,7 @@ Miután sikeresen bejelentkezett, láthatja, hogy az Azure Monitor adatforrás b
 4. Válassza ki az Azure Monitor adatforrás konfigurálta.
     * Gyűjtése az Azure Monitor - metrikák kiválasztása **Azure Monitor** a szolgáltatás legördülő listában. Választók mutatja be, ahol kiválaszthatja az erőforrások és -metrika figyelése ezen a diagramon listája. Virtuális gép adatainak begyűjtése, használja a névtér **Microsoft.Compute/VirtualMachines**. Miután kiválasztotta a virtuális gépek és a metrikák, indítsa el az adatok megtekintése az irányítópulton.
     ![Az Azure Monitor Grafana graph-konfiguráció](./media/grafana-plugin/grafana-graph-config-for-azure-monitor-dark.png)
-    * Gyűjtése az Azure Log Analytics - adatok kiválasztása **Azure Log Analytics** a szolgáltatás legördülő listában. Válassza ki a munkaterületet, szeretné lekérdezni, és állítsa be a lekérdezés szövege. Másolhatja itt bármely Log Analytics-lekérdezés, már van, vagy hozzon létre egy újat. Írja be a lekérdezést, mert IntelliSense jelennek meg, és javasolt az automatikus kiegészítés beállításai. Válassza ki a Vizualizáció típusát a **Time series** **tábla**, és a lekérdezés futtatásához.
+    * Adatok gyűjtése az Azure Monitor, – adja meg, **Azure Log Analytics** a szolgáltatás legördülő listában. Válassza ki a munkaterületet, szeretné lekérdezni, és állítsa be a lekérdezés szövege. Másolhatja Itt bármilyen naplólekérdezés már van, vagy hozzon létre egy újat. Írja be a lekérdezést, mert IntelliSense jelennek meg, és javasolt az automatikus kiegészítés beállításai. Válassza ki a Vizualizáció típusát a **Time series** **tábla**, és a lekérdezés futtatásához.
     
     > [!NOTE]
     >

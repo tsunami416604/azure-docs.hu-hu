@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/26/2018
+ms.date: 02/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6083237426e86220f8a3cb7fbe0cdfc30f44f8cc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b05f2dc1ed766ccb06b71c2977ceaf2b7cd823d3
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208826"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56869666"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Automatikus frissítés
 Ez a funkció jelent meg a build [(kiadás dátuma: 2016. február) 1.1.105.0](reference-connect-version-history.md#111050).  Ez a szolgáltatás frissítve lett a [1.1.561 összeállítása](reference-connect-version-history.md#115610) és mostantól támogatja a további forgatókönyvek, amelyek korábban nem támogatottak.
@@ -43,7 +43,7 @@ Automatikus frissítés aktuális állapotának tekinthet meg a PowerShell-paran
 | Felfüggesztve |A rendszer csak állítja be. A rendszer **jelenleg nem** fogadni az automatikus frissítéseket. |
 | Letiltva |Automatikus frissítés le van tiltva. |
 
-Között módosíthatja **engedélyezve** és **letiltott** a `Set-ADSyncAutoUpgrade`. A rendszer kell beállítania az állapot csak **felfüggesztett**.
+Között módosíthatja **engedélyezve** és **letiltott** a `Set-ADSyncAutoUpgrade`. A rendszer kell beállítania az állapot csak **felfüggesztett**.  1.1.750.0 előtt a Set-ADSyncAutoUpgrade parancsmag lenne letiltása Autoupgrade, ha az automatikus frissítési állapot felfüggesztve értékre lett beállítva. Ez a funkció mostantól megváltozott, így nem blokkolja a AutoUpgrade.
 
 Automatikus frissítés a frissítési infrastruktúra használ az Azure AD Connect Health. Az automatikus frissítés működik, győződjön meg arról, hogy megnyitotta az URL-címeket a proxykiszolgálót a **az Azure AD Connect Health** leírtak szerint [Office 365 URL-címei és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).
 

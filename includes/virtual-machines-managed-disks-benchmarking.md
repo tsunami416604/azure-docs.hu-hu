@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 04b6ad25c1ecd10a9480dcbf3e2b4f75e114a6f9
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 9c59b98fb615266c193f997c01c83922c18d4408
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56331248"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56890994"
 ---
 *A gyorsítótár Bemelegedés*  
 A lemezt a csak olvasható állomás-gyorsítótárazás is biztosítanak a lemez korlátnál magasabb iops-t. A maximális olvasási teljesítmény eléréséhez a gazdagép-gyorsítótárból, először meg kell ízelítőt kapott a gyorsítótár a lemezről. Ez biztosítja, hogy az, hogy a teljesítménymérési eszköz CacheReads köteten vonják olvasási IOs ténylegesen eléri a gyorsítótár, és nem a lemezt közvetlenül. Az egyetlen gyorsítótár további IOPS gyorsítótár-találatok eredményez engedélyezve van a lemez.
@@ -102,7 +102,7 @@ Az alábbiakban a Iometer pillanatképeiért teszteredmények kombinált IOPS é
 
 ### <a name="fio"></a>FIO
 
-FIO egy olyan népszerű eszköz a teljesítményteszt storage a Linuxos virtuális gépeken. Azt a rugalmasságot, jelölje be a különböző IO méretű, egymást követő vagy véletlenszerű olvasást, és írja. Ez indít a munkaszálak vagy folyamatok a megadott i/o-műveletek végrehajtásához. Megadhatja az egyes munkavégző szál feladat fájlok használatával kell végrehajtania i/o-műveletek típusa. Létrehoztunk egy feladat-fájlt az alábbi példákban szemléltetett forgatókönyv szerint. A feladat fájlokban becslésére a Premium Storage futó különböző számítási feladatok specifikációit módosíthatja. Standard DS 14 virtuális gép futó használjuk a példákban **Ubuntu**. A elején leírt azonos telepítőjével a [szakasz teljesítménytesztek](#Benchmarking) és a meleg fel a gyorsítótárat a teljesítménymérési tesztek futtatása előtt.
+FIO egy olyan népszerű eszköz a teljesítményteszt storage a Linuxos virtuális gépeken. Azt a rugalmasságot, jelölje be a különböző IO méretű, egymást követő vagy véletlenszerű olvasást, és írja. Ez indít a munkaszálak vagy folyamatok a megadott i/o-műveletek végrehajtásához. Megadhatja az egyes munkavégző szál feladat fájlok használatával kell végrehajtania i/o-műveletek típusa. Létrehoztunk egy feladat-fájlt az alábbi példákban szemléltetett forgatókönyv szerint. A feladat fájlokban becslésére a Premium Storage futó különböző számítási feladatok specifikációit módosíthatja. Standard DS 14 virtuális gép futó használjuk a példákban **Ubuntu**. Telepítőjével az ugyanazon a Benchmarking szakasz elején leírt és a meleg fel a gyorsítótárat a teljesítménymérési tesztek futtatása előtt.
 
 Mielőtt elkezdené, [FIO letöltése](https://github.com/axboe/fio) , és telepítse a virtuális gépen.
 

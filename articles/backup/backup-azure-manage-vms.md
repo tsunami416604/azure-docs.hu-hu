@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: sogup
-ms.openlocfilehash: da686e53f711877642a33806719a0d71050e721b
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: eef1b14f5f25c53877c0d364facfcf9817f508c2
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56669380"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56885839"
 ---
 # <a name="manage-azure-vm-backups"></a>Azure-beli virtuális gépek biztonsági mentésének kezelése
 
@@ -58,7 +58,7 @@ Az irányítópult használatával készített biztonsági kezelheti és összev
 
 
 ## <a name="manage-backup-policies"></a>Biztonsági mentési irányelvek kezelése
-1. Az a [tároló elem irányítópulton](backup-azure-manage-vms.md#open-a-vault-item-dashboard), kattintson a **minden beállítás** .
+1. Az a [tároló elem irányítópulton](#view-vms-in-the-dashboard), kattintson a **minden beállítás** .
 
     ![Biztonsági mentési házirend panel](./media/backup-azure-manage-vms/all-settings-button.png)
 2. A **beállítások**, kattintson a**biztonsági mentési szabályzat**e.
@@ -79,7 +79,7 @@ Egy igény szerinti virtuális gépek biztonsági mentési eltarthat, ha konfigu
 
 Egy igény szerinti biztonsági mentés elindítása:
 
-1. Az a [tároló elem irányítópulton](backup-azure-manage-vms.md#open-a-vault-item-dashboard), kattintson a **biztonsági mentés**.
+1. Az a [tároló elem irányítópulton](#view-vms-in-the-dashboard), kattintson a **biztonsági mentés**.
 
     ![Biztonsági mentés most gombra.](./media/backup-azure-manage-vms/backup-now-button.png)
 
@@ -107,7 +107,7 @@ Vegye figyelembe:
 
 Virtuális gép védelmének megszüntetése:
 
-1. Az a [tároló elem irányítópulton](backup-azure-manage-vms.md#open-a-vault-item-dashboard), kattintson a **biztonsági mentés leállítása**.
+1. Az a [tároló elem irányítópulton](#view-vms-in-the-dashboard), kattintson a **biztonsági mentés leállítása**.
 2. Döntse el, hogy megtartja vagy a biztonsági mentési adatok törlése, és győződjön meg arról, igény szerint. Szükség szerint erősítse meg, és szükség esetén adja meg a megjegyzést. Ha nem tudja biztosan az elem nevét, a kurzort a felkiáltójel nevének megjelenítéséhez.
 
     ![Védelem leállítása](./media/backup-azure-manage-vms/retain-or-delete-option.png)
@@ -121,9 +121,9 @@ Ha a biztonsági mentési adatok őrződnek meg, ha a virtuális gép le lett á
 
 Te
 
-1. Az a [tároló elem irányítópulton](backup-azure-manage-vms.md#open-a-vault-item-dashboard), kattintson a **biztonsági mentés folytatása**.
+1. Az a [tároló elem irányítópulton](#view-vms-in-the-dashboard), kattintson a **biztonsági mentés folytatása**.
 
-2. Kövesse a [biztonsági mentési házirendek kezelése](backup-azure-manage-vms.md#manage-backup-policies) , hozzárendeli a szabályzatot a virtuális gép. választhat, mint a szabályzatot, amellyel a virtuális gép védett először egy másik szabályzatot.
+2. Kövesse a [biztonsági mentési házirendek kezelése](#manage-backup-policies) , hozzárendeli a szabályzatot a virtuális gép. választhat, mint a szabályzatot, amellyel a virtuális gép védett először egy másik szabályzatot.
 3. Miután a virtuális gép biztonsági mentési házirendet alkalmazza, a következő üzenet jelenik meg.
 
     ![Sikeresen megtörtént a védett virtuális gépek](./media/backup-azure-manage-vms/success-message.png)
@@ -138,7 +138,7 @@ Során egy virtuális Géphez társított biztonsági mentési adatokat törölh
 Ez az eljárás feltételezi, hogy a biztonsági mentési feladatot a virtuális gép leállt vagy le van tiltva.
 
 
-1. Az a [tároló elem irányítópulton](backup-azure-manage-vms.md#open-a-vault-item-dashboard), kattintson a **Delete backup**.
+1. Az a [tároló elem irányítópulton](#view-vms-in-the-dashboard), kattintson a **Delete backup**.
 
     ![Virtuális gép típusa](./media/backup-azure-manage-vms/delete-backup-buttom.png)
 

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 18b698861a791174f2e254543d5d3b7a54052574
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 0797a8a2d5633a30dcb2099ea475e4daae026686
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54854165"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874035"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks"></a>A profil és a felhasználói azonosító az Azure-notebookokhoz
 
@@ -46,7 +46,7 @@ A **konfigurálása a felhasználói azonosító** parancsot is az ideiglenes fe
 
 A profil lapon bármikor is módosíthatja a felhasználói Azonosítóját.
 
-Felhasználói azonosító kell állniuk legalább négy betűket, számokat és kötőjeleket tartalmazhat. Más karaktereket nem engedélyezettek, valamint a felhasználói azonosító nem kezdődhet és nem végződhet kötőjellel, és nem kötőjelet használhatja a sor.
+Felhasználói azonosító négy és tizenhat betűket, számokat és kötőjeleket tartalmazhat között kell állniuk. Más karaktereket nem engedélyezettek, valamint a felhasználói azonosító nem kezdődhet és nem végződhet kötőjellel, és nem kötőjelet használhatja a sor. Mivel a felhasználói azonosítók egyediek legyenek az összes Azure-jegyzetfüzetek fiókok, az üzenet jelenhet meg, a "Felhasználói azonosító már használatban van." (Az üzenet is megjelenik, ha próbálja meg használni, a Microsoft védjegyekre, a felhasználói azonosítóját.) Ezekben az esetekben válassza ki a különböző felhasználói azonosítóját.
 
 > [!Important]
 > Az azonosító módosítását érvényteleníti semmilyen URL, előfordulhat, hogy megosztott a korábbi azonosítójával Vissza az előző azonosító kísérelje meg újra érvényesítését a hivatkozások a módosíthatja az azonosítója. Azonban egy másik felhasználó egy nem használt jogcím addig azonosítója.

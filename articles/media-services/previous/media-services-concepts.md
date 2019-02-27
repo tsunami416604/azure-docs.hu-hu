@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 413e005762ab557e0605f9b4e79a6fe5b45448b7
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 32367559ba4ae6931804c1ea702dca6c2c5ee297
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993911"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870907"
 ---
 # <a name="azure-media-services-concepts"></a>Az Azure Media Services – alapelvek 
 
@@ -177,7 +177,7 @@ Alapértelmezés szerint legfeljebb 2 streamvégpontok a Media Services-fiók le
 Csak számítjuk fel, ha a Streamvégpontok belül futó állapotban van.
 
 ### <a name="asset-delivery-policy"></a>Objektumtovábbítási szabályzat
-A Media Services-továbbítási munkafolyamat lépésben konfigurálja [kézbesítési házirendek eszközök ](https://docs.microsoft.com/rest/api/media/operations/assetdeliverypolicy)streamként kívánt. Az objektumtovábbítási szabályzat arra utasítja a Media Services az objektum kézbesítendő módját: az adatfolyam-továbbítási protokoll kell az eszközintelligencia dinamikusan csomagolható (például MPEG DASH, HLS, Smooth Streaming, vagy az összes), dinamikusan titkosítani szeretné-e az objektumot, és hogyan (boríték vagy common encryption).
+A Media Services-továbbítási munkafolyamat lépésben konfigurálja [kézbesítési házirendek eszközök](https://docs.microsoft.com/rest/api/media/operations/assetdeliverypolicy)streamként kívánt. Az objektumtovábbítási szabályzat arra utasítja a Media Services az objektum kézbesítendő módját: az adatfolyam-továbbítási protokoll kell az eszközintelligencia dinamikusan csomagolható (például MPEG DASH, HLS, Smooth Streaming, vagy az összes), dinamikusan titkosítani szeretné-e az objektumot, és hogyan (boríték vagy common encryption).
 
 Ha egy tárolási titkosított eszköz, mielőtt az eszköz továbbítható, a streamelési kiszolgáló eltávolítja a tárolás titkosítása és adatfolyamként elküldi a tartalmát a megadott objektumtovábbítási szabályzat használatával. Például, hogy az eszköz Advanced Encryption Standard (AES) titkosítási kulccsal titkosított, állítsa a házirend típusát DynamicEnvelopeEncryption. Távolítsa el a storage-titkosítás, illetve streamelni az eszköz a titkosítatlan, NoDynamicEncryption típusú értékre.
 

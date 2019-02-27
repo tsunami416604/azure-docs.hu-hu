@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 2439244edcc1b7026a2cc8a62a946188e279f15f
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 4489fc82f836d8c311fcd776e211670897618b54
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245830"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889477"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Oktatóanyag: Power BI integrálható a Text Analytics Cognitive Service
 
@@ -94,7 +94,7 @@ A Text Analytics szolgáltatás a [Key Phrases API](//westus.dev.cognitive.micro
 | | |
 | - | - |
 | `id`  | A dokumentum egy egyedi azonosítóját a kérésen belül. Ezt a mezőt a válasz is tartalmazza. Így több dokumentum feldolgozásakor könnyen társítani lehet a kinyert kulcskifejezéseket a dokumentummal, amelyből származnak. Az oktatóanyagban, mivel kérésenként csak egy dokumentumot dolgozunk fel, az `id` értéket fixen rögzítheti, hogy mindegyik kérésre ugyanaz legyen.|
-| `text`  | A feldolgozandó szöveg. Ennek a mezőnek az értéke az [előző részben](#PreparingData) létrehozott `Merged` oszlopból származik, amely a tárgysor és a megjegyzés kombinált szövegét tartalmazza. A Key Phrases API használatához ennek az adatnak a hossza nem haladhatja meg az 5000 karaktert.|
+| `text`  | A feldolgozandó szöveg. Ennek a mezőnek az értéke az [előző részben](#PreparingData) létrehozott `Merged` oszlopból származik, amely a tárgysor és a megjegyzés kombinált szövegét tartalmazza. A kulcs kifejezések API megköveteli, hogy ezeket az adatokat nem lehet hosszabb készül 5,120 karakternél.|
 | `language` | A dokumentum természetes nyelvét jelölő kód. A mintaadatokban minden üzenet angolul van, így a mezőre rögzítheti a `en` értéket.|
 
 ## <a name="create-a-custom-function"></a>Egyéni függvény létrehozása

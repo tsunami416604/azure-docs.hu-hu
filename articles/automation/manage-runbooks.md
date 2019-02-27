@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 02/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: da3b09998d163ffcc16bfcbbf9f516467dd3311d
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 5bb52e0547ed9bc18d67370ffb9db35942212aab
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56418582"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887590"
 ---
 # <a name="manage-runbooks-in-azure-automation"></a>Az Azure Automation runbookjai kezelése
 
-Hozzáadhat egy runbook Azure Automation által [újat hozna létre](#creating-a-new-runbook) vagy egy létező runbookot importál egy fájlból vagy a [forgatókönyv-katalógusában](automation-runbook-gallery.md). Ez a cikk információt nyújt a létrehozása, és a runbookok importálása egy fájlból.  Megtekintheti az összes részletes adat a Közösség forgatókönyveit és moduljait az elérése [Azure Automation forgatókönyv- és galériák](automation-runbook-gallery.md).
+Hozzáadhat egy runbook Azure Automation által [újat hozna létre](#create-a-runbook) vagy egy létező runbookot importál egy fájlból vagy a [forgatókönyv-katalógusában](automation-runbook-gallery.md). Ez a cikk információt nyújt a létrehozása, és a runbookok importálása egy fájlból.  Megtekintheti az összes részletes adat a Közösség forgatókönyveit és moduljait az elérése [Azure Automation forgatókönyv- és galériák](automation-runbook-gallery.md).
 
 ## <a name="create-a-runbook"></a>Runbook létrehozása
 
@@ -65,7 +65,7 @@ A következő eljárással importálhat parancsfájlt az Azure Automationbe.
 5. Ha a **neve** mező engedélyezve van, akkor lehetősége van módosítani azt.  A runbook neve egy betűvel kell kezdődnie, és rendelkezhetnek, betűket, számokat, aláhúzásjeleket és kötőjeleket tartalmazhat.
 6. A [runbook típusa](automation-runbook-types.md) automatikusan ki van jelölve, de módosíthatja a típust a alkalmazni korlátozások figyelembe véve. 
 7. Az új runbook megjelenik a listán a runbookok az Automation-fiókhoz.
-8. Meg kell [közzétenni a runbookot](#publishing-a-runbook) előtt is futtatható legyen.
+8. Meg kell [közzétenni a runbookot](#publish-a-runbook) előtt is futtatható legyen.
 
 > [!NOTE]
 > Grafikus forgatókönyv vagy a grafikus PowerShell-munkafolyamati forgatókönyv importálása után lehetősége van más típusra konvertálni, ha a szeretett volna. Nem alakítható át szöveges runbookok.
@@ -89,7 +89,7 @@ Import-AzureRMAutomationRunbook -Name $runbookName -Path $scriptPath `
 
 ## <a name="test-a-runbook"></a>Runbook tesztelése
 
-Egy runbook tesztelésekor a [vázlatként megjelölt verziót](#publishing-a-runbook) hajtja végre, és minden olyan műveleteket, amelyeket végrehajt a végezhető el. Az előzményeket nem feladat jön létre, de a [kimeneti](automation-runbook-output-and-messages.md#output-stream) és [figyelmeztetési és](automation-runbook-output-and-messages.md#message-streams) adatfolyamok megjelennek a teszt panel kimenete. Az üzenetek a [részletes Stream](automation-runbook-output-and-messages.md#message-streams) megjelennek a Tesztkimenet ablaktáblán csak akkor, ha a [$VerbosePreference változó](automation-runbook-output-and-messages.md#preference-variables) Folytatás értékre van állítva.
+Egy runbook tesztelésekor a [vázlatként megjelölt verziót](#publish-a-runbook) hajtja végre, és minden olyan műveleteket, amelyeket végrehajt a végezhető el. Az előzményeket nem feladat jön létre, de a [kimeneti](automation-runbook-output-and-messages.md#output-stream) és [figyelmeztetési és](automation-runbook-output-and-messages.md#message-streams) adatfolyamok megjelennek a teszt panel kimenete. Az üzenetek a [részletes Stream](automation-runbook-output-and-messages.md#message-streams) megjelennek a Tesztkimenet ablaktáblán csak akkor, ha a [$VerbosePreference változó](automation-runbook-output-and-messages.md#preference-variables) Folytatás értékre van állítva.
 
 Annak ellenére, hogy a vázlatként megjelölt verziót fut, a runbook továbbra is megfelelően hajt végre, és minden műveletet erőforrásokon elvégez a környezetben. Ezért soha ne tesztelje a runbookok nem termelési erőforrásokon.
 

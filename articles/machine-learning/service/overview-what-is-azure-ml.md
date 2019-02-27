@@ -11,12 +11,12 @@ author: garyericson
 ms.author: garye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1645f09682ebb58b442626bf14f26fdb91f9456e
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: fd6ecb6cb45aef399a137c9eac2c8c6f845b610b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728284"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872488"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>Mi az Azure Machine Learning szolgáltatás?
 
@@ -32,7 +32,7 @@ A gépi tanulás által biztosított előrejelzéseket felhasználva intelligens
 
 Az Azure Machine Learning szolgáltatás segítségével előkészítheti az adatokat, betanítását, teszteléséhez, üzembe helyezése, kezelése és nyomon követheti a machine learning-modellek felhőalapú környezetet biztosít.
 
-[ ![Azure Machine Learning service workflow](./media/overview-what-is-azure-ml/aml.png)] (./media/overview-what-is-azure-ml/aml.png#lightbox)
+[![Azure Machine Learning service workflow](./media/overview-what-is-azure-ml/aml.png)] (./media/overview-what-is-azure-ml/aml.png#lightbox)
 
 Az Azure Machine Learning szolgáltatás teljes körűen támogatja a nyílt forráskódú technológiákat. Így a machine learning-összetevők tízezer nyílt forráskódú Python-csomagokat is használhatja. Példák a PyTorch, a tensorflow-hoz és a scikit-megtudhatja.
 Támogatja a gazdag egyszerűen interaktív módon ismerje meg, és előkészíti az adatokat, és majd fejlesztéséhez és teszteléséhez modellek. Példa [Jupyter notebookok](http://jupyter.org) vagy a [a Visual Studio Code az Azure Machine Learning](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai#overview) bővítmény.

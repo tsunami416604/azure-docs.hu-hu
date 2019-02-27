@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 02/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: b1ee41c6d543ac4f52b537ebc8054f2986c4217c
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: b06151b9cb5603ef54c8e84d261bb7a4e7885e1b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649583"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880461"
 ---
 # <a name="train-tensorflow-and-keras-models-with-azure-machine-learning-service"></a>Tensorflow-hoz és a Keras modellek Azure Machine Learning szolgáltatással
 
@@ -71,10 +71,10 @@ keras_est = TensorFlow(source_directory='./my-keras-proj',
                        script_params=script_params,
                        compute_target=compute_target,
                        entry_script='keras_train.py',
-                       conda_packages=['keras'], # just add keras through conda
+                       pip_packages=['keras'], # just add keras through pip
                        use_gpu=True)
 ```
-A fenti TensorFlow estimator konstruktor arra utasítja az Azure Machine Learning szolgáltatás a végrehajtási környezetben keresztül Conda Keras telepíteni. És a `keras_train.py` importálhatja a Keras API egy Keras-modell betanításához. Egy teljes példát felfedezése [a Jupyter notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras/train-hyperparameter-tune-deploy-with-keras.ipynb).
+A fenti TensorFlow estimator konstruktor arra utasítja az Azure Machine Learning szolgáltatás Keras telepítéséhez a pip, a végrehajtási környezetben keresztül. És a `keras_train.py` importálhatja a Keras API egy Keras-modell betanításához. Egy teljes példát felfedezése [a Jupyter notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-keras/train-hyperparameter-tune-deploy-with-keras.ipynb).
 
 ## <a name="distributed-training"></a>Elosztott betanítás
 A TensorFlow Estimator emellett lehetővé teszi különböző Azure-beli virtuális Processzor és GPU fürtök ipari méretekben a modellek betanítása. Könnyedén futtathat elosztott TensorFlow-betanítás néhány API-hívások, amíg az Azure Machine Learning fogja kezelni a háttérben, az infrastruktúra és a vezénylési ilyen számítási feladat végrehajtásához szükséges.

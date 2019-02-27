@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: absha
-ms.openlocfilehash: d98834abaf925cdabd312869615a60f64049826d
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: c98328342eec7fa59a56fbcc70da8cdd7a8fabf1
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56808657"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880886"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>Az Azure Application Gateway munkamenet-affinitási problémák elhárítása
 
@@ -75,7 +75,7 @@ Engedélyezte a Cookie-alapú affinitás beállítást, amikor egy rövid nevet 
 
 A probléma azonosításához, kövesse az utasításokat:
 
-1. Végezze el a webes hibakeresőt nyomkövetési nyomkövetési az "ügyfél", amelyhez csatlakozik, hogy az alkalmazás az alkalmazás Gateway(We are using Fiddler in this example) mögött.
+1. Igénybe egy webes hibakereső nyomkövetési az "ügyfél", amelyhez csatlakozik, hogy az alkalmazás az alkalmazás Gateway(We are using Fiddler in this example) mögött.
     **Tipp** Ha nem ismeri a Fiddler használata, jelölje be a beállítást "**szeretnék hálózati forgalom gyűjtése és elemezheti webes hibakereső**" alján.
 
 2. Ellenőrizze, és a munkamenet-naplók, annak megállapításához, hogy a cookie-kat, az ügyfél által biztosított rendelkezik-e ARRAffinity részleteinek elemzése. Ha nem találja meg a ARRAffinity részleteit, például a "**ARRAffinity =** *ARRAffinityValue*", amely azt jelenti, hogy az ügyfél nem válaszol a elrendezése cookie-k által biztosított cookie-k meghatározott belül a Application Gateway.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: cd6927cccfa85c8409d612a40a4e708e81af746a
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: ba5ea7205a5d0e5fdbadc8a1ba955091ae95b569
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413549"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875786"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>Keresse meg egy címet az Azure Maps search szolgáltatással
 
@@ -37,7 +37,7 @@ Alapértelmezés szerint a legtöbb keresési lekérdezések `maxFuzzyLevel=1` t
 
 2. A jelentéskészítő lapon válassza ki a **első** HTTP-metódust, és adja meg a kérelem URL-címe az API-végpont.
 
-    ![Intelligens keresést ](./media/how-to-search-for-address/fuzzy_search_url.png)
+    ![Intelligens keresést](./media/how-to-search-for-address/fuzzy_search_url.png)
 
     | Paraméter | Ajánlott érték |
     |---------------|------------------------------------------------|
@@ -49,7 +49,7 @@ Alapértelmezés szerint a legtöbb keresési lekérdezések `maxFuzzyLevel=1` t
 
 3. Kattintson a **paraméterei**, és adja meg a következő kulcs / érték párok lekérdezés vagy elérési út paramétereiben a kérelem URL-cím használata:
 
-    ![Intelligens keresést ](./media/how-to-search-for-address/fuzzy_search_params.png)
+    ![Intelligens keresést](./media/how-to-search-for-address/fuzzy_search_params.png)
 
     | Kulcs | Érték |
     |------------------|-------------------------|
@@ -75,7 +75,7 @@ Alapértelmezés szerint a legtöbb keresési lekérdezések `maxFuzzyLevel=1` t
   
 6. Paraméterei, adja meg a következő kulcs / érték párok, és kattintson a **küldése**:
 
-    ![Intelligens keresést ](./media/how-to-search-for-address/fuzzy_search_latlon.png)
+    ![Intelligens keresést](./media/how-to-search-for-address/fuzzy_search_latlon.png)
   
     | Kulcs | Érték |
     |-----|------------|
@@ -89,7 +89,7 @@ Egy teljes vagy részleges utca, házszám át a keresés cím API, és a széle
 1. Kattintson a Postman **új kérelem** | **GET kérelem** , és nevezze el **cím keresési**.
 2. A jelentéskészítő lapon válassza ki a **első** HTTP-metódust, adja meg a kérelem URL-címe az API-végpont, és válassza ki egy engedélyezési protokollt, ha van ilyen.
 
-    ![Cím keresése ](./media/how-to-search-for-address/address_search_url.png)
+    ![Cím keresése](./media/how-to-search-for-address/address_search_url.png)
   
     | Paraméter | Ajánlott érték |
     |---------------|------------------------------------------------|
@@ -99,7 +99,7 @@ Egy teljes vagy részleges utca, házszám át a keresés cím API, és a széle
 
 3. Kattintson a **paraméterei**, és adja meg a következő kulcs / érték párok lekérdezés vagy elérési út paramétereiben a kérelem URL-cím használata:
   
-    ![Cím keresése ](./media/how-to-search-for-address/address_search_params.png)
+    ![Cím keresése](./media/how-to-search-for-address/address_search_params.png)
   
     | Kulcs | Érték |
     |------------------|-------------------------|
@@ -130,7 +130,7 @@ Egy teljes vagy részleges utca, házszám át a keresés cím API, és a széle
 
 2. A jelentéskészítő lapon válassza ki a **első** HTTP-metódust, és adja meg a kérelem URL-címe az API-végpont.
   
-    ![Fordított keresés URL-címe ](./media/how-to-search-for-address/reverse_address_search_url.png)
+    ![Fordított keresés URL-címe](./media/how-to-search-for-address/reverse_address_search_url.png)
   
     | Paraméter | Ajánlott érték |
     |---------------|------------------------------------------------|
@@ -140,7 +140,7 @@ Egy teljes vagy részleges utca, házszám át a keresés cím API, és a széle
   
 3. Kattintson a **paraméterei**, és adja meg a következő kulcs / érték párok lekérdezés vagy elérési út paramétereiben a kérelem URL-cím használata:
   
-    ![Fordított cím keresési paraméterek ](./media/how-to-search-for-address/reverse_address_search_params.png)
+    ![Fordított cím keresési paraméterek](./media/how-to-search-for-address/reverse_address_search_params.png)
   
     | Kulcs | Érték |
     |------------------|-------------------------|
@@ -190,7 +190,7 @@ Egy teljes vagy részleges utca, házszám át a keresés cím API, és a széle
 
 2. A jelentéskészítő lapon válassza ki a **első** HTTP-metódust, és adja meg a kérelem URL-címe az API-végpont.
   
-    ![Cím közötti Street keresési fordított ](./media/how-to-search-for-address/reverse_address_search_url.png)
+    ![Cím közötti Street keresési fordított](./media/how-to-search-for-address/reverse_address_search_url.png)
   
     | Paraméter | Ajánlott érték |
     |---------------|------------------------------------------------|

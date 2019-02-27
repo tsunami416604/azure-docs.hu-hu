@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 9b1d3506c400a3a2d8002feed0181deac39b3821
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 43989ff9dac7cdad76117aaa6e3c862453b24813
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53344091"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56865110"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Hogyan helyezhet üzembe több-bérlős módhoz 
 
@@ -421,7 +421,7 @@ Az erőforráscsoport törlése a név alapján:
 ## <a name="next-steps"></a>További lépések
 
 - További Reprovisioning kapcsolatban lásd: [IoT Hub Device reprovisoning fogalmak](concepts-device-reprovision.md) 
-- Megszüntetés további tudnivalókért lásd: [hogyan eszközöket, amelyek korábban automatikus – kiépített megszüntetése ](how-to-unprovision-devices.md) 
+- Megszüntetés további tudnivalókért lásd: [hogyan eszközöket, amelyek korábban automatikus – kiépített megszüntetése](how-to-unprovision-devices.md) 
 
 
 

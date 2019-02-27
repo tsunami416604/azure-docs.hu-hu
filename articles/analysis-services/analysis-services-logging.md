@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b35707b857c66f0f1b91f2f1b5dd7a0ffa24dd9e
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 17058e1d1c7b961ce14d18ca52580b7969b4df34
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733758"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888117"
 ---
 # <a name="setup-diagnostic-logging"></a>Diagnosztikai naplózás beállítása
 
@@ -83,7 +83,7 @@ A metrikák kategória naplók azonos [kiszolgáló metrikáinak](analysis-servi
 
     * **Archiválás tárfiókba**. Használja ezt a beállítást, egy meglévő tárfiókot csatlakozni kell. Lásd: [hozzon létre egy tárfiókot](../storage/common/storage-create-storage-account.md). Kövesse az utasításokat egy erőforrás-kezelő, általános célú fiók létrehozásához, majd válassza ki a tárfiókját, térjen vissza erre a lapra a portál által. Eltarthat néhány percig, újonnan létrehozott tárfiókok jelennek meg a legördülő menüben.
     * **Az eseményközpontok felé Stream**. Használja ezt a beállítást, egy meglévő Event Hubs névtér és az eseményközpont csatlakozni kell. További tudnivalókért lásd: [hozzon létre egy Event Hubs-névtér és a egy eseményközpontot, az Azure portal használatával](../event-hubs/event-hubs-create.md). Ezután térjen vissza erre a lapra a portálra, válassza ki az Eseményközpont-névtér és a házirend nevét.
-    * **Az Azure Monitor (Log Analytics-munkaterület) küldése**. Használja ezt a beállítást, vagy használjon egy meglévő munkaterületet, vagy [hozzon létre egy új munkaterületet](../azure-monitor/learn/quick-create-workspace.md) erőforrást a portálon. A naplók megtekintése további információkért lásd: [naplók megtekintése a Log Analytics-munkaterület](#view-logs-in-log-analytics) ebben a cikkben.
+    * **Az Azure Monitor (Log Analytics-munkaterület) küldése**. Használja ezt a beállítást, vagy használjon egy meglévő munkaterületet, vagy [hozzon létre egy új munkaterületet](../azure-monitor/learn/quick-create-workspace.md) erőforrást a portálon. A naplók megtekintése további információkért lásd: [naplók megtekintése a Log Analytics-munkaterület](#view-logs-in-log-analytics-workspace) ebben a cikkben.
 
     * **Motor**. Ezzel a lehetőséggel Xevent bejelentkezni. Ha, még archiválás tárfiókba, kiválaszthatja a diagnosztikai naplók megőrzési időtartama. Naplók autodeleted, a megőrzési időszak lejárta után is.
     * **Szolgáltatás**. Ezt a beállítást a szolgáltatási szintű eseményeket. Ha archiválni egy tárfiókot, kiválaszthatja a diagnosztikai naplók megőrzési időtartama. Naplók autodeleted, a megőrzési időszak lejárta után is.

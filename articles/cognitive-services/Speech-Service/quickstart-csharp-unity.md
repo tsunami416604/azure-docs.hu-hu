@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: wolfma
-ms.openlocfilehash: 8e31717f9fd232a7c256b65d044a97396af8f960
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 0978db31f4aa8caa273c63c2f55d5146b19dea26
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56448639"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878013"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-unity-beta"></a>Gyors útmutató: Ismeri fel a beszédfelismerés, beszédfelismerési SDK for Unity (bétaverzió)
 
@@ -74,7 +74,7 @@ Hozzáadunk egy minimális felhasználói felület, a jelenet álló egy gombot,
 
 Ha elkészült, a felhasználói felület alábbi képernyőképhez hasonlóan kell kinéznie:
 
-[ ![A rövid útmutató a Unity-szerkesztő felhasználói felület képernyőképe](media/sdk/qs-csharp-unity-02-ui-inline.png) ](media/sdk/qs-csharp-unity-02-ui-expanded.png#lightbox)
+[![A rövid útmutató a Unity-szerkesztő felhasználói felület képernyőképe](media/sdk/qs-csharp-unity-02-ui-inline.png)](media/sdk/qs-csharp-unity-02-ui-expanded.png#lightbox)
 
 ## <a name="add-the-sample-code"></a>A mintakód hozzáadása
 
@@ -111,7 +111,7 @@ Ha elkészült, a felhasználói felület alábbi képernyőképhez hasonlóan k
 
 * Az alkalmazás indításakor, miután a gombra, és a egy angol nyelvű kifejezést vagy mondat beszéljen a számítógép mikrofon. A rendszer továbbítja a beszédet a Speech Service-be, majd szöveggé alakítja át, amely ugyanabban az ablakban meg is jelenik.
 
-  [ ![A futó rövid útmutatóban a Unity-játék ablak képernyőképe](media/sdk/qs-csharp-unity-03-output-inline.png) ](media/sdk/qs-csharp-unity-03-output-expanded.png#lightbox)
+  [![A futó rövid útmutatóban a Unity-játék ablak képernyőképe](media/sdk/qs-csharp-unity-03-output-inline.png)](media/sdk/qs-csharp-unity-03-output-expanded.png#lightbox)
 
 * Ellenőrizze a [konzolablakban](https://docs.unity3d.com/Manual/Console.html) hibakeresési üzeneteket.
 

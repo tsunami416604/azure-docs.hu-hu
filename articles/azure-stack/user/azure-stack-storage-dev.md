@@ -4,18 +4,17 @@ description: Útmutató az Azure Stack tárolásfejlesztési eszközök használ
 services: azure-stack
 author: mattbriggs
 ms.author: mabrigg
-ms.date: 12/03/2018
+ms.date: 11/05/2018
 ms.topic: get-started-article
 ms.service: azure-stack
 manager: femila
 ms.reviewer: xiaofmao
-ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: 857e12664defb1fc0106dd0d3012b77a89f826c2
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: aa044ba9a7fcb66b5314144dd77bdd3435488218
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55495105"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877596"
 ---
 # <a name="get-started-with-azure-stack-storage-development-tools"></a>Ismerkedés az Azure Stack tárolásfejlesztési eszközök
 
@@ -30,9 +29,9 @@ Ez a cikk használja útmutatóként tárolásfejlesztési eszközök az Azure S
 
 ## <a name="azure-client-libraries"></a>Azure-ügyfélkönyvtárak
 
-A tároló ügyfélkódtárai vegye figyelembe a REST API-val kompatibilis verzióra. Meg kell adnia az Azure Stack-végpont a kódban.
+Az Azure Stack storage REST API verziók a következők: 2017-04-17-es, 2016-05-31, 2015-12-11, 2015-07-08, 2015-04-05 az 1802-es frissítés vagy újabb verziók és 2015-04-05 korábbi verzióihoz. Az Azure Stack-végpontok nem rendelkezik teljes paritásos az Azure Storage REST API-t a legújabb verzióra. A tároló ügyfélkódtárai meg kell figyelembe venni a REST API-val kompatibilis verzióra.
 
-### <a name="1811-update-or-newer-versions"></a>1811 frissítés vagy újabb verzió
+### <a name="1802-update-or-newer-versions"></a>1802 frissítés vagy újabb verzió
 
 | Ügyfélkódtár | Az Azure Stack támogatott verziója | Hivatkozás | Végpont-specifikáció |
 |----------------|-------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
@@ -46,22 +45,22 @@ A tároló ügyfélkódtárai vegye figyelembe a REST API-val kompatibilis verzi
 
 #### <a name="install-php-client-via-composer---current"></a>Composer - aktuális keresztül PHP-ügyfél telepítése
 
-Composer keresztül történő: (például a blob igénybe).
+Composer keresztül történő: (végezze el a blob példaként).
 
 1. Hozzon létre egy fájlt **composer.json** az alábbi kódot a projekt gyökérkönyvtárában található:
 
-    ```json
+  ```php
     {
       "require": {
-      "Microsoft/azure-storage-blob":"1.2.0"
+      "Microsoft/azure-storage-blob":"1.0.0"
       }
     }
-    ```
+  ```
 
 2. Töltse le [composer.phar](http://getcomposer.org/composer.phar) a projekt gyökérkönyvtárába.
 3. Futtatás: `php composer.phar install`.
 
-### <a name="previous-versions-1802-to-1809-update"></a>Korábbi verziók (a 1809 1802-es frissítés)
+### <a name="previous-versions"></a>Korábbi verziók
 
 |Ügyfélkódtár|Az Azure Stack támogatott verziója|Hivatkozás|Végpont-specifikáció|
 |---------|---------|---------|---------|
@@ -75,19 +74,19 @@ Composer keresztül történő: (például a blob igénybe).
 
 #### <a name="install-php-client-via-composer---previous"></a>Composer - korábbi keresztül PHP-ügyfél telepítése
 
-Composer keresztül történő: (végezze el a blob példaként).
+Composer-n keresztül telepítése:
 
 1. Hozzon létre egy fájlt **composer.json** az alábbi kódot a projekt gyökérkönyvtárában található:
 
-  ```json
+  ```php
     {
-      "require": {
-      "Microsoft/azure-storage-blob":"1.0.0"
-      }
+          "require":{
+          "Microsoft/azure-storage":"0.15.0"
+          }
     }
   ```
 
-2. Töltse le [composer.phar](http://getcomposer.org/composer.phar) a projekt gyökérkönyvtárába.
+2. Töltse le [composer.phar](http://getcomposer.org/composer.phar) be a projekt gyökérkönyvtárában.
 3. Futtatás: `php composer.phar install`.
 
 ## <a name="endpoint-declaration"></a>Végpont deklarációját
@@ -102,7 +101,7 @@ Ha nem biztos a végpont kapcsolatban, forduljon a felhő rendszergazdájához.
 
 Azure Stack az app.config fájlban van megadva a végpont utótagja:
 
-```xml
+```
 <add key="StorageConnectionString"
 value="DefaultEndpointsProtocol=https;AccountName=myaccount;AccountKey=mykey;
 EndpointSuffix=local.azurestack.external;" />
@@ -112,7 +111,7 @@ EndpointSuffix=local.azurestack.external;" />
 
 Azure Stack a végpont utótagja van megadva a kapcsolati karakterlánc beállítása:
 
-```java
+```
 public static final String storageConnectionString =
     "DefaultEndpointsProtocol=http;" +
     "AccountName=your_storage_account;" +
@@ -124,7 +123,7 @@ public static final String storageConnectionString =
 
 Azure Stack a végpont utótagja a nyilatkozat példányban van megadva:
 
-```javascript
+```
 var blobSvc = azure.createBlobService('myaccount', 'mykey',
 'myaccount.blob.local.azurestack.external');
 ```
@@ -133,7 +132,7 @@ var blobSvc = azure.createBlobService('myaccount', 'mykey',
 
 Azure Stack a végpont utótagja van megadva a kapcsolati karakterlánc beállítása:
 
-```cpp
+```
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;
 AccountName=your_storage_account;
 AccountKey=your_storage_account_key;
@@ -144,7 +143,7 @@ EndpointSuffix=local.azurestack.external"));
 
 Azure Stack a végpont utótagja van megadva a kapcsolati karakterlánc beállítása:
 
-```php
+```
 $connectionString = 'BlobEndpoint=http://<storage account name>.blob.local.azurestack.external/;
 QueueEndpoint=http:// <storage account name>.queue.local.azurestack.external/;
 TableEndpoint=http:// <storage account name>.table.local.azurestack.external/;
@@ -155,7 +154,7 @@ AccountName=<storage account name>;AccountKey=<storage account key>'
 
 Azure Stack a végpont utótagja a nyilatkozat példányban van megadva:
 
-```python
+```
 block_blob_service = BlockBlobService(account_name='myaccount',
 account_key='mykey',
 endpoint_suffix='local.azurestack.external')
@@ -165,7 +164,7 @@ endpoint_suffix='local.azurestack.external')
 
 Azure Stack a végpont utótagja van megadva a kapcsolati karakterlánc beállítása:
 
-```ruby
+```
 set
 AZURE_STORAGE_CONNECTION_STRING=DefaultEndpointsProtocol=https;
 AccountName=myaccount;

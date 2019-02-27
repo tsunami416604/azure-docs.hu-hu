@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 02/26/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
-ms.lastreviewed: 11/08/2018
-ms.openlocfilehash: 92774592f86a71a8482fd3d44eca404fcf2d4e6e
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.lastreviewed: 02/26/2019
+ms.openlocfilehash: 00fb888f201f4bb8d211050b288516021d837dc5
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429553"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888766"
 ---
 # <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>Gyakori kérdések az Azure Stack-használati API
 
@@ -407,6 +407,10 @@ Jelenleg, lekérdezheti, ha kizárólag a *jelentett idő*.
 | / 400 – Hibás kérelem |*SubscriptionIdMissingInRequest* |A hívó az előfizetés-azonosító nincs megadva. |
 | / 400 – Hibás kérelem |*InvalidAggregationGranularity* |A kért egy érvénytelen összesítési pontossággal. Érvényes értékek: naponta, és óránként. |
 | 503 |*ServiceUnavailable* |Egy újrapróbálkozást lehetővé tevő hiba történt, mert a szolgáltatás foglalt, vagy a hívás szabályozás alatt áll. |
+
+## <a name="what-is-the-policy-for-charging-for-vms"></a>Mi az a virtuális gépek díjszabási szabályzat?
+
+Futó vagy leállított virtuális gépeket hozhat létre a használati adatokat. Egységes Azure-ral, felszabadítási van szükség a használati adatok kibocsátási leállítása. A helyzet, amelyben a portálon nem érhető el, de a számítási erőforrás-szolgáltató továbbra is fut, a használati fog rendelkezésre.
 
 ## <a name="next-steps"></a>További lépések
 [A számlázás a vásárlók és a költséghelyi elszámolás az Azure Stackben](azure-stack-billing-and-chargeback.md)

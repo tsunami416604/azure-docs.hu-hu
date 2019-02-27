@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 29050be7587f88ce7a1f5370f50dcfa1ecd68306
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 839a6b3cc90c6a8fcc512c100c8825f9513ded26
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990445"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875939"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése az Azure Monitor használatával riasztások
 
@@ -205,7 +205,7 @@ Az alábbiakban található az struktúráját [ütemezett lekérdezési szabál
 ```
 
 > [!IMPORTANT]
-> És rejtett hivatkozás a célként megadott erőforrás címke mezőt kötelező kitölteni, igénybe veszik a [ütemezett lekérdezési szabály ](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) API-hívás vagy az erőforrás-sablon.
+> És rejtett hivatkozás a célként megadott erőforrás címke mezőt kötelező kitölteni, igénybe veszik a [ütemezett lekérdezési szabály](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) API-hívás vagy az erőforrás-sablon.
 
 A fenti json-mintaadatok menthető, ez az útmutató céljából (például:) sampleScheduledQueryRule.json és telepíthetők [Azure Resource Manager az Azure Portalon](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
 
@@ -304,7 +304,7 @@ Az alábbiakban található az struktúráját [ütemezett lekérdezési szabál
 ```
 
 > [!IMPORTANT]
-> És rejtett hivatkozás a célként megadott erőforrás címke mezőt kötelező kitölteni, igénybe veszik a [ütemezett lekérdezési szabály ](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) API-hívás vagy az erőforrás-sablon. Erőforrások közötti lekérdezési napló használatakor riasztási, felhasználásának [authorizedResources](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate#source) kötelező és felhasználói erőforrások conditions stated above listájában hozzáféréssel kell rendelkeznie.
+> És rejtett hivatkozás a célként megadott erőforrás címke mezőt kötelező kitölteni, igénybe veszik a [ütemezett lekérdezési szabály](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) API-hívás vagy az erőforrás-sablon. Erőforrások közötti lekérdezési napló használatakor riasztási, felhasználásának [authorizedResources](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate#source) kötelező és felhasználói erőforrások conditions stated above listájában hozzáféréssel kell rendelkeznie.
 
 A fenti json-mintaadatok menthető, ez az útmutató céljából (például:) sampleScheduledQueryRule.json és telepíthetők [Azure Resource Manager az Azure Portalon](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
 

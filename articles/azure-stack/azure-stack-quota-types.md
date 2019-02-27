@@ -16,12 +16,12 @@ ms.date: 12/07/2018
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/07/2018
-ms.openlocfilehash: 88cbfc895d188162d0f242a5aceaab721a6c877f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: def9026fb0422d8868af098f12180617aefe7eff
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239097"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877945"
 ---
 # <a name="quota-types-in-azure-stack"></a>Az Azure Stackben kvótatípusok
 
@@ -74,7 +74,7 @@ Egy meglévő kvóta megtekintése két különböző módja van:
 3.  A megnyíló panelen válassza ki a **szolgáltatások és kvóták**.
 4.  Válassza ki a kvótát, lásd: ehhez kattintson rá a szeretné a **neve** oszlop.
 
-    [ ![Kvóták](media/azure-stack-quota-types/quotas1sm.png "kvóták megtekintése") ](media/azure-stack-quota-types/quotas1.png#lightbox)
+    [![Kvóták](media/azure-stack-quota-types/quotas1sm.png "kvóták megtekintése")](media/azure-stack-quota-types/quotas1.png#lightbox)
 
 ### <a name="resource-providers"></a>Erőforrás-szolgáltatók
 
@@ -92,7 +92,7 @@ Kvóta szerkesztése két különböző módja van:
 2.  Válassza ki a csomagot, amelynek szeretné a kvótát, szerkesztéséhez kattintson annak nevére.
 3.  A megnyíló panelen válassza ki a **szolgáltatások és kvóták**.
 4.  Válassza ki a szerkesztéséhez kattintson a kívánt kvótát az **neve** oszlop.
-    [ ![Kvóták](media/azure-stack-quota-types/quotas1sm.png "kvóták megtekintése") ](media/azure-stack-quota-types/quotas1.png#lightbox)
+    [![Kvóták](media/azure-stack-quota-types/quotas1sm.png "kvóták megtekintése")](media/azure-stack-quota-types/quotas1.png#lightbox)
 
 5.  A megnyíló panelen válassza ki a **Szerkesztés a számítási**, **Szerkesztés a hálózati**, vagy **Storage szerkesztése**.
     ![Kvóták](media/azure-stack-quota-types/quotas3.png "kvóták megtekintése")    

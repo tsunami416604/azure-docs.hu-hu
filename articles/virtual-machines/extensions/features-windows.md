@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e4b737117880393e24fe6ea00223fb0f719be4e4
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 542fe0064de84e6266d2d0274809d7b2046b855c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980467"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874409"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Virtuálisgép-bővítmények és szolgáltatások Windows
 
@@ -366,7 +366,7 @@ Az alábbi hibaelhárítási lépéseket az összes Virtuálisgép-bővítménye
 
 ### <a name="view-extension-status"></a>Bővítmény állapotának megtekintése
 
-VM-bővítmény virtuális gépek elleni futott, miután a [Get-azvm parancsmag ](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) a bővítmény állapotát adja vissza. *[0] részállapotok* azt mutatja, hogy a bővítmény kiépítési sikeres volt, ami azt jelenti, hogy a virtuális gép központi telepítése sikeres azt, de a bővítményt a virtuális gép végrehajtása sikertelen volt, *részállapotok [1]*.
+VM-bővítmény virtuális gépek elleni futott, miután a [Get-azvm parancsmag](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) a bővítmény állapotát adja vissza. *[0] részállapotok* azt mutatja, hogy a bővítmény kiépítési sikeres volt, ami azt jelenti, hogy a virtuális gép központi telepítése sikeres azt, de a bővítményt a virtuális gép végrehajtása sikertelen volt, *részállapotok [1]*.
 
 ```powershell
 Get-AzVM -ResourceGroupName "myResourceGroup" -VMName "myVM" -Status

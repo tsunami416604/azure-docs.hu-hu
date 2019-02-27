@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.date: 12/27/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 11e29aa8d85ed7e3cf5ce7b4a8360e4b5eb628f9
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 498dc3f81968b60deb4f6f70466938026ac48f6a
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54319217"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56868000"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Gyakori kérdések – Hyper-V – Azure-beli vészhelyreállításához
 
@@ -189,7 +189,7 @@ A feladatátvételt követően elérheti az Azure virtuális gépeket biztonság
 Az Azure-t hibatűrőnek terveztük. A Site Recovery a feladatátvétel egy másodlagos Azure adatközpontba, az Azure SLA kategóriában. Feladatátvétel esetén biztosítjuk, hogy a metaadatokat, és a tárolók maradjanak ugyanabban a földrajzi régióban, a tároló számára is választott.
 
 ### <a name="is-failover-automatic"></a>Automatikus a feladatátvétel?
-[Feladatátvétel](site-recovery-failover.md) nem automatikus. A portálon egyetlen kattintással feladatátvételt, vagy használhat [ PowerShell](/powershell/module/azurerm.siterecovery) feladatátvétel indításához.
+[Feladatátvétel](site-recovery-failover.md) nem automatikus. A portálon egyetlen kattintással feladatátvételt, vagy használhat [PowerShell](/powershell/module/azurerm.siterecovery) feladatátvétel indításához.
 
 ### <a name="how-do-i-fail-back"></a>Hogyan do I feladat-visszavételt?
 

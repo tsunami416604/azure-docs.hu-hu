@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 9c35a4a811925abaf8dcb64d3e7060bbb1f91cce
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 3daa71c91d1e49a497a979b9b5b89df1fcb9418c
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408323"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889681"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Az Azure HDInsight külső metaadat-tárolók használata
 
@@ -68,7 +68,7 @@ Az alábbiakban néhány általános HDInsight Hive metaadattár ajánlott eljá
 - Ha azt tervezi, hogy több HDInsight-fürtök külön adatok eléréséhez, egy különálló adatbázis használata az egyes fürtökön metaadattár. Ha megoszt egy metaadattár több HDInsight-fürtök között, az azt jelenti, hogy a fürtök használata a azonos metaadatokat és mögöttes felhasználói adatok fájlok.
 - Rendszeresen készítsen biztonsági másolatot az egyéni metaadattár. Az Azure SQL Database automatikusan létrehozza a biztonsági mentések, de a biztonsági másolatok megőrzési időtartamon változik. További információkért lásd: [további információ az automatikus SQL Database biztonsági mentéseinek](../sql-database/sql-database-automated-backups.md).
 - Keresse meg a metaadattár és a HDInsight-fürt ugyanabban a régióban, a legmagasabb szintű teljesítmény és a legalacsonyabb hálózati kimenő forgalom költségeit.
-- A metaadattár a teljesítmény és rendelkezésre állás az Azure SQL-adatbázis figyelési eszközök, például az Azure portal vagy az Azure Log Analytics használatával figyelheti.
+- A metaadattár a teljesítmény és rendelkezésre állás az Azure SQL-adatbázis figyelési eszközök, például az Azure portal vagy az Azure Monitor-naplók használatával figyelheti.
 - Létrehozásakor egy új, magasabb szintű verzióját az Azure HDInsight egy meglévő egyéni metaadattár adatbázison, a rendszer a séma frissítése a metaadattár, amely nem vonható vissza anélkül, hogy az adatbázis biztonsági másolatból történő visszaállítását.
 - Ha megoszt egy metaadattár több fürt között, győződjön meg arról az összes fürt ugyanazt a HDInsight-verziót. Különböző Hive-verziók különböző metaadattár adatbázissémák használja. Például egy metaadattár nem oszthat meg Hive 1.2 és a Hive 2.1-es verziójú fürtök között. 
 

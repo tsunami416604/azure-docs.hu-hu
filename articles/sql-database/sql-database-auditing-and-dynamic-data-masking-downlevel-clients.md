@@ -11,13 +11,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 01/14/2019
-ms.openlocfilehash: 76fe764d828a7fa6e4ebb015f98b9af485d5df5f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.date: 02/25/2019
+ms.openlocfilehash: 2c95ec4d88e55af0becc73719bcc6126501267db
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567086"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56866827"
 ---
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>SQL Database - alacsonyabb szintű ügyfelek támogatása és a Táblanaplózás IP-végpontjainak módosítása
 
@@ -28,6 +28,7 @@ ms.locfileid: "55567086"
 [Adatbázis-naplózás](sql-database-auditing.md) TDS-átirányítást támogató SQL-ügyfelek szolgáltatással automatikusan együttműködve. Vegye figyelembe, hogy az átirányítási nem vonatkozik, amikor Blobnaplózás mód használatával.
 
 ## <a id="subheading-1"></a>Alacsonyabb szintű ügyfelek támogatása
+
 Bármely ügyfél, amely megvalósítja a TDS 7.4 is támogatnia kell a átirányítást. A kivételek közé tartozik a JDBC 4.0, amelyben az átirányító szolgáltatás nem támogatja teljes mértékben, és mely átirányítása a node.js-hez készült Tedious nem lett megvalósítva.
 
 "Régebbi ügyfelek" azaz melyik támogatási TDS verzió 7.3-as és az alacsonyabb – a kiszolgáló teljes Tartománynevét a kapcsolat karakterláncot kell módosítani:
@@ -46,6 +47,7 @@ A kapcsolati karakterláncban a módosított kiszolgálói FQDN: <*kiszolgálón
 **Megjegyzés:** A fenti kiszolgáló teljes Tartományneve módosítása nélkül az egyes adatbázisokban (ideiglenes megoldás) egy konfigurációs lépésben szüksége egy SQL Server szint naplózási házirend alkalmazása esetén is hasznos lehet.
 
 ## <a id="subheading-2"></a>IP-végpontjainak módosítása a naplózás engedélyezése
+
 Vegye figyelembe, hogy engedélyezte a Táblanaplózás, az IP-végpontból az adatbázis is megváltoznak. Ha szigorú tűzfal beállításait, frissítse ezeket a tűzfal beállításainak megfelelően.
 
 Az új adatbázis IP végpont függ az adatbázis-terület:
@@ -78,5 +80,4 @@ Az új adatbázis IP végpont függ az adatbázis-terület:
 | USA nyugati középső régiója |52.161.29.186, 52.161.27.213 |
 | Közép-Kanada |13.88.248.106, 13.88.248.110 |
 | Kelet-Kanada |40.86.227.82, 40.86.225.194 |
-| Egyesült Királyság északi régiója |13.87.101.18, 13.87.100.232 |
-| Egyesült Királyság 2. déli régiója |13.87.32.202, 13.87.32.226 |
+| Az Egyesült Királyság déli régiója |13.87.32.202, 13.87.32.226 |

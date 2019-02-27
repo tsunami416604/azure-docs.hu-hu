@@ -5,23 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 1/30/2019
-ms.openlocfilehash: 03e0db822e38cc6823fc32aa915dc9283fa46cbe
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.date: 02/26/2019
+ms.openlocfilehash: 6e33c7571dc735ce9984a0ce1b37275a6c4c7eca
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493048"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888468"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Olvassa el a replikákat az Azure Database for MySQL-hez
 
-> [!IMPORTANT]
-> Az olvasási replika funkció nyilvános előzetes verzióban érhető el.
-
 Az olvasási replika funkció lehetővé teszi, hogy replikálja az adatokat egy Azure Database for MySQL-kiszolgáló (master) legfeljebb öt csak olvasható kiszolgálók (replikák) azonos Azure-régióban. Csak olvasható replika aszinkron módon frissíti a MySQL-motor natív bináris napló (binlog) fájl elhelyezése-alapú replikációs technológiával. Binlog replikációval kapcsolatos további tudnivalókért tekintse meg a [MySQL binlog replikálációs szolgáltatása-áttekintés](https://dev.mysql.com/doc/refman/5.7/en/binlog-replication-configuration-overview.html).
 
-Az Azure Database for MySQL szolgáltatáshoz készült replika új kiszolgálókat, amelyek normál vagy önálló MySQL-kiszolgálók azonos módon kezelhetők. A díj minden olvasási replika esetén a virtuális magok kiépített számítási feladatain és a GB/hó alapon megszabott tárhelyen alapul. 
-
+Az Azure Database for MySQL szolgáltatáshoz készült replika új kiszolgálókat, amelyek normál vagy önálló MySQL-kiszolgálók azonos módon kezelhetők. A díj minden olvasási replika esetén a virtuális magok kiépített számítási feladatain és a GB/hó alapon megszabott tárhelyen alapul.
 
 MySQL replikációs szolgáltatásai és problémákkal kapcsolatos további információkért tekintse meg a [MySQL replikációs dokumentáció](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html).
 
@@ -39,7 +35,7 @@ Olvasható replika jelenleg csak az általános célú és memóriahasználatra 
 
 ### <a name="master-server-restart"></a>Fő kiszolgáló újraindítása
 
-Ez az előzetes verzióban létrehozott replika tartozik egy főkiszolgálóhoz, amely nem tartalmaz meglévő másodpéldányokat, a fő először újraindul felkészüljön a replikáció. Figyelembe kell venni ezt, és hajtsa végre ezeket a műveleteket egy csúcsidőn kívüli időszakban.
+Ha a replika tartozik egy főkiszolgálóhoz, amely nem tartalmaz meglévő másodpéldányokat hoz létre, a fő először újraindul felkészüljön a replikáció. Figyelembe kell venni ezt, és hajtsa végre ezeket a műveleteket egy csúcsidőn kívüli időszakban.
 
 ### <a name="stopping-replication"></a>Replikáció leállítása
 

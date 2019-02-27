@@ -1,5 +1,5 @@
 ---
-title: Speciális lekérdezések az Azure az Azure Monitor |} A Microsoft Docs
+title: Speciális lekérdezések az Azure Monitor |} A Microsoft Docs
 description: Ez a cikk nyújt segítséget az Analytics-portál használatával kell lekérdezéseket írni az Azure monitorban.
 services: log-analytics
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: bwren
-ms.openlocfilehash: 0b516dc4fb1ca4736791abdea7f0903b6399fa6e
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 62dffffee411519cdcafe80a11404f9e273dd9dd
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749902"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880784"
 ---
 # <a name="writing-advanced-queries-in-azure-monitor"></a>Speciális lekérdezések az Azure monitorban írása
 

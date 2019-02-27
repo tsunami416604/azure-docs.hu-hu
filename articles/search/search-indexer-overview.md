@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/17/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8dae593dea36944f8db037803c0dfac68cbac7c8
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 754bd06e6033b49d24112cb20686e1c9b200d0d0
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384904"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875480"
 ---
 # <a name="indexers-in-azure-search"></a>Indexelők az Azure Search szolgáltatásban
 
@@ -31,7 +31,7 @@ Az indexelők futtatása történhet igény szerint vagy ismétlődő adatfriss�
 
 Az indexelők létrehozása és kezelése a következő módszerekkel történhet:
 
-* [Portál &gt; Adatok importálása varázsló ](search-import-data-portal.md)
+* [Portál > adatok importálása varázsló](search-import-data-portal.md)
 * [Szolgáltatás REST API-ja](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
 * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexersoperations)
 
@@ -59,7 +59,7 @@ Az indexelők olyan *adatforrásokból* kérnek le adatokat, amelyek különböz
 
 Az adatforrások konfigurálása és kezelése az azokat használó indexelőktől függetlenül történik, ami azt jelenti, hogy egy adatforrást több indexelő is használhat egyidejűleg, egynél több index betöltésére.
 
-### <a name="step-2-create-an-index"></a>2. lépés: Index létrehozása
+### <a name="step-2-create-an-index"></a>2. lépés: Index létrehozása
 Az indexelők automatizálni tudják az adatfeldolgozáshoz kapcsolódó bizonyos feladatokat, de az indexek létrehozása nem tartozik ezek közé. Előfeltételként olyan előre meghatározott indexre van szükség, amelynek mezői egyeznek a külső adatforrás mezőivel. További információk az indexek strukturálásáról: [(Azure Search REST API) Index létrehozása](https://docs.microsoft.com/rest/api/searchservice/Create-Index) vagy [osztály Index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index). A mezőtársításokkal kapcsolatos további információkért lásd [az Azure Search indexelők mezőleképezéseivel](search-indexer-field-mappings.md) foglalkozó témakört.
 
 > [!Tip]

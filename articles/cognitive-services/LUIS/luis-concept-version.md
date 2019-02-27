@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: diberry
-ms.openlocfilehash: b363f68b625a6f0987e58609477f51c7098423bf
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 9da79e5b744f8ba70c0e265f0d1f0126b37eba49
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874083"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870652"
 ---
 # <a name="understand-how-and-when-to-use-a-luis-version"></a>Megismerheti, hogyan és mikor a LUIS-verzió használatához
 
@@ -35,7 +35,7 @@ A [-verzió beállítása](luis-how-to-manage-versions.md#set-active-version) , 
 
 A jelenleg aktív verzió neve a felső, a bal oldali panelen jelenik meg az alkalmazás neve után. 
 
-[ ![Aktív verzió módosítása](./media/luis-concept-version/version-in-nav-bar-inline.png) ](./media/luis-concept-version/version-in-nav-bar-expanded.png#lightbox)
+[![Aktív verzió módosítása](./media/luis-concept-version/version-in-nav-bar-inline.png)](./media/luis-concept-version/version-in-nav-bar-expanded.png#lightbox)
 
 ## <a name="versions-and-publishing-slots"></a>Verziók és közzétételi tárolóhely
 A szakaszt, és a termék bővítőhelyek közzétételére. Mindegyik tárolóhely lehet egy másik verzió vagy ugyanazt a verziót. Ez hasznos annak ellenőrzésére a módosításokat a végpont elérhető robotokat vagy más hívó alkalmazásoknak LUIS modell verziói között. 

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 2/5/2019
-ms.openlocfilehash: 39c96608dd843577f41d2111e9e7c5517136ccae
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: c171962fd6177a01afdb8e9605b09574c99f485e
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823569"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889222"
 ---
 # <a name="tutorial-ingest-data-in-azure-data-explorer-without-one-line-of-code"></a>Oktatóanyag: Az Azure Data Explorer adatokat egyetlen sor kód nélkül
 
@@ -339,7 +339,7 @@ Most meg kell a adatkapcsolatokat, a diagnosztikai naplók és a vizsgálati nap
 
 ### <a name="create-the-data-connection-for-activity-logs"></a>A Tevékenységnaplók az adatkapcsolat létrehozása
 
-Ismételje meg a [a diagnosztikai naplók számára az adatkapcsolat létrehozása](#diagnostic-logs-data-connection) szakasz a tevékenységi naplóit az adatkapcsolat létrehozása.
+Ismételje meg a tevékenység naplók az adatkapcsolat létrehozása a diagnosztikai naplók a szakasz az adatkapcsolat létrehozása.
 
 1. Használja a következő beállításokat a **adatkapcsolat** ablakban:
 

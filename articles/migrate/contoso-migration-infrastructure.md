@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/1/2018
 ms.author: raynew
-ms.openlocfilehash: 17ec8eb779dec560cfc5350fecc0fb819e89195a
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 6ee05af0391311b4782211807f41ce099a6c24a2
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340127"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889936"
 ---
 # <a name="contoso---deploy-a-migration-infrastructure"></a>Contoso - áttelepítési infrastruktúra üzembe helyezése
 
@@ -451,7 +451,7 @@ Azure IaaS-összetevőket az éles hálózati környezetben találhatók. Minden
 **PROD-FE-EUS2** | 10.245.32.0/22 | 1019 | Előtérrendszer/webes szintű virtuális gépek
 **PROD-APP-EUS2** | 10.245.36.0/22 | 1019 | Alkalmazás szintű virtuális gépek
 **PROD-DB-EUS2** | 10.245.40.0/23 | 507 | Adatbázis-beli virtuális gépek
-**PROD-DC-EUS2** | 10.245.42.0/23 | 251 | Tartományvezérlő virtuális gépek
+**PROD-DC-EUS2** | 10.245.42.0/24 | 251 | Tartományvezérlő virtuális gépek
 
 
 ![Hub hálózati architektúra](./media/contoso-migration-infrastructure/azure-networks-eus2.png)

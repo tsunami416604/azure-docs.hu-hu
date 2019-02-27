@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 01/18/2019
 ms.author: alkohli
-ms.openlocfilehash: b43dac7f81b92ac504427dab164d23d9ebb1ec03
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: d0d5ee18e37436562f1e9e15571dc39fb0e00129
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411407"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875029"
 ---
 # <a name="what-is-azure-data-box"></a>Mi az az Azure Data Box?
 
@@ -76,7 +76,7 @@ A Data Box a következő összetevőket tartalmazza:
 
 * **Data Box eszköz** – Egy fizikai eszköz, amely elsődleges tárolást biztosít, kezeli a felhőalapú tárolóval történő kommunikációt, és segít biztosítani az eszközön tárolt adatok biztonságát és titkosságát. A Data Box eszköz 80 TB hasznos tárolókapacitással rendelkezik. 
 
-    ![A Data Box elöl- és hátulnézete ](media/data-box-overview/data-box-combined3.png)
+    ![A Data Box elöl- és hátulnézete](media/data-box-overview/data-box-combined3.png)
 
     
 * **Data Box szolgáltatás** – Az Azure Portal bővítménye, amely lehetővé teszi a Data Box eszközök kezelését egy webes felületről, amelyet eltérő földrajzi helyekről is elérhet. A Data Box szolgáltatással elvégezheti a Data Box eszköz napi adminisztrálását. A szolgáltatásban végrehajtható feladatok a rendelések létrehozását és kezelését, a riasztások megtekintését és kezelését, valamint a megosztások kezelését foglalják magukban.  

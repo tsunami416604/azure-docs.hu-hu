@@ -1,6 +1,6 @@
 ---
-title: A log Analytics-beli Apache kafka – Azure HDInsight
-description: Ismerje meg, hogyan lehet az Apache Kafka-fürtöt az Azure HDInsight-naplók elemzése a Log Analytics használatával.
+title: Az Apache kafka platformmal – Azure HDInsight az Azure Monitor naplóira
+description: Ismerje meg, hogyan használhatja az Azure Monitor naplóira az Apache Kafka-fürtöt az Azure HDInsight-naplók elemzése.
 services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
@@ -9,37 +9,39 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.openlocfilehash: 0862bcb2c04f3a8cd46a5e60644ebbb8c7735e51
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 65416a00ebd487e80625e4f3c8d8a95b5995daa9
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729967"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56886570"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>A HDInsight-beli Apache kafka-naplók elemzése
 
-Ismerje meg, hogyan lehet Apache Kafka on HDInsight által előállított naplók elemzése a Log Analytics használatával.
+Ismerje meg, hogyan használható az Azure Monitor naplóira Apache Kafka on HDInsight által előállított naplók elemzéséhez.
 
-## <a name="enable-log-analytics-for-apache-kafka"></a>A Log Analytics-beli Apache kafka engedélyezése
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-A Log Analytics engedélyezése a HDInsight lépései megegyeznek az összes HDInsight-fürt. Az alábbi hivatkozások segítségével megtudhatja, hogyan hozhat létre és konfigurálja a szükséges szolgáltatások:
+## <a name="enable-azure-monitor-logs-for-apache-kafka"></a>Az Apache Kafka az Azure Monitor naplók engedélyezése
+
+Az Azure Monitor naplóira ahhoz, hogy a HDInsight lépései megegyeznek az összes HDInsight-fürt. Az alábbi hivatkozások segítségével megtudhatja, hogyan hozhat létre és konfigurálja a szükséges szolgáltatások:
 
 1. Hozzon létre egy Log Analytics-munkaterületet. További információkért lásd: a [Ismerkedés a Log Analytics-munkaterület](https://docs.microsoft.com/azure/log-analytics) dokumentumot.
 
 2. Hozzon létre egy Kafka HDInsight-fürtön. További információkért lásd: a [a HDInsight Apache Kafka használatának első lépései](apache-kafka-get-started.md) dokumentumot.
 
-3. A Kafka-fürt használata a Log Analytics konfigurálása. További információkért lásd: a [Log Analytics használata a HDInsight figyelése](../hdinsight-hadoop-oms-log-analytics-tutorial.md) dokumentumot.
+3. A Kafka-fürt az Azure Monitor naplóira használatára konfigurálja. További információkért lásd: a [használata az Azure Monitor naplózza a HDInsight figyelése](../hdinsight-hadoop-oms-log-analytics-tutorial.md) dokumentumot.
 
     > [!NOTE]  
-    > A fürt használni a Log Analytics használatával is konfigurálhatja a `Enable-AzureRmHDInsightOperationsManagementSuite` parancsmagot. Ez a parancsmag megköveteli a következő információkat:
+    > A fürt használni az Azure Monitor naplóira használatával is konfigurálhatja a `Enable-AzureRmHDInsightOperationsManagementSuite` parancsmagot. Ez a parancsmag megköveteli a következő információkat:
     >
     > * A HDInsight-fürt neve.
-    > * A Log Analytics munkaterület azonosítója. A munkaterület-Azonosítót a Log Analytics-munkaterületen találhatja meg.
-    > * A Log Analytics-kapcsolat elsődleges kulcsának. Keresse meg az elsődleges kulcs, nyissa meg a munkaterület az Azure Portalon, válassza a __speciális beállítások__ a bal oldali menüből. Speciális beállításainak megadásához válassza __csatlakoztatott források__>__Linux-kiszolgálók__.
+    > * A munkaterület Azonosítóját, az Azure Monitor-naplók. A munkaterület-Azonosítót a Log Analytics-munkaterületen találhatja meg.
+    > * A log analytics-kapcsolat elsődleges kulcsának. Keresse meg az elsődleges kulcs, nyissa meg a munkaterület az Azure Portalon, válassza a __speciális beállítások__ a bal oldali menüből. Speciális beállításainak megadásához válassza __csatlakoztatott források__>__Linux-kiszolgálók__.
 
 
 > [!IMPORTANT]  
-> Mielőtt adatokat a Log Analytics körülbelül 20 percet igénybe vehet.
+> Mielőtt adatokat érhető el az Azure Monitor-naplók körülbelül 20 percet igénybe vehet.
 
 ## <a name="query-logs"></a>Lekérdezések naplói
 
@@ -72,7 +74,7 @@ A Log Analytics engedélyezése a HDInsight lépései megegyeznek az összes HDI
  
 ## <a name="next-steps"></a>További lépések
 
-A Log Analytics további információkért lásd: a [Ismerkedés a Log Analytics-munkaterület](../../log-analytics/log-analytics-get-started.md) dokumentumot.
+Az Azure Monitor további információkért lásd: a [Azure Monitor áttekintése](../../log-analytics/log-analytics-get-started.md) dokumentumot.
 
 Apache Kafka használatával kapcsolatos további információkért tekintse meg a következő dokumentumokat:
 

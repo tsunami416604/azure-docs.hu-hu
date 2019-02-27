@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 2/7/2019
-ms.openlocfilehash: 28e99f64fdee414549c55f9666bfd53f07fb3efb
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: cc5957da97d9a8801583564bdf51f0483ab8e004
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892694"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56865790"
 ---
 # <a name="restart-azure-database-for-postgresql-server-using-azure-portal"></a>Indítsa újra az Azure Database for PostgreSQL-kiszolgálóhoz az Azure portal használatával
 Ez a témakör ismerteti, hogyan újraindítható egy Azure Database for PostgreSQL-kiszolgálóhoz. Indítsa újra a kiszolgálót, a kiszolgáló a műveletet hajt végre egy rövid kimaradás okozó karbantartási okokból szükségessé.
@@ -36,15 +36,15 @@ Az alábbi lépéseket a PostgreSQL-kiszolgáló újraindítása:
 
 3. Kattintson a **Igen** annak ellenőrzéséhez, hogy a kiszolgáló újraindítása.
 
-   ![Azure Database for PostgreSQL – Újraindítás megerősítése ](./media/howto-restart-server-portal/3-restart-confirm.png)
+   ![Azure Database for PostgreSQL – Újraindítás megerősítése](./media/howto-restart-server-portal/3-restart-confirm.png)
 
 4. Figyelje meg, hogy a kiszolgáló állapota "Újraindítás folyamatban".
 
-   ![Azure Database for PostgreSQL – újraindítás állapota ](./media/howto-restart-server-portal/4-restarting-status.png)
+   ![Azure Database for PostgreSQL – újraindítás állapota](./media/howto-restart-server-portal/4-restarting-status.png)
 
 5. Ellenőrizze, hogy létrejött a kiszolgáló újraindítására.
 
-   ![Azure Database for PostgreSQL - újraindítása sikerült ](./media/howto-restart-server-portal/5-restart-success.png)
+   ![Azure Database for PostgreSQL - újraindítása sikerült](./media/howto-restart-server-portal/5-restart-success.png)
 
 ## <a name="next-steps"></a>További lépések
 

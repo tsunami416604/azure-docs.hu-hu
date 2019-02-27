@@ -8,17 +8,17 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.openlocfilehash: 5f4053888cc8402ab0196e40c33f1acc3e7eef44
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.date: 02/25/2018
+ms.openlocfilehash: d9639a4a116e06e17005ebddbb26379882491b33
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651131"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867830"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-azure-hdinsight"></a>A Microsoft Power BI közvetlen lekérdezés használatával az Azure HDInsight interaktív lekérdezés Apache Hive-adatok megjelenítése
 
-Ez a cikk ismerteti a Microsoft Power BI csatlakoztatása az Azure HDInsight interaktív lekérdezési fürtökhöz, és a közvetlen lekérdezés használatával Apache Hive-adatok megjelenítése. A megadott példa betölti az adatokat a Power bi-bA egy hivesampletable Hive-táblából. A hivesampletable Hive tábla tartalmaz néhány mobiltelefon-használati adatok. Ezután a használati adatok a világ térképen jeleníti meg:
+Ez a cikk ismerteti a Microsoft Power BI csatlakoztatása az Azure HDInsight interaktív lekérdezési fürtökhöz, és a közvetlen lekérdezés használatával Apache Hive-adatok megjelenítése. A megadott példa betölti az adatokat egy `hivesampletable` Hive táblát a Power bi-bA. A `hivesampletable` Hive-tábla tartalmaz néhány mobiltelefon-használati adatokat. Ezután a használati adatok a világ térképen jeleníti meg:
 
 ![HDInsight Power bi-ban a térkép jelentésbe](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-visualization.png)
 
@@ -32,35 +32,35 @@ Mielőtt végrehajtaná ezt a cikket, a következőkkel kell rendelkeznie:
 
 ## <a name="load-data-from-hdinsight"></a>A HDInsight adatok betöltése
 
-A hivesampletable Hive-tábla összes HDInsight-fürtöket tartalmaz.
+A `hivesampletable` Hive-tábla összes HDInsight-fürt is tartalmaz.
 
-1. Jelentkezzen be a Power BI Desktopban.
+1. Indítsa el a Power BI Desktopban.
 
-2. Kattintson a **kezdőlap** lapra, majd **adatok lekérése** származó a **külső adatok** menüszalagra, és válassza ki **több...** .
+2. Lépjen a menüsoron **kezdőlap** > **adatok lekérése** > **több...** .
 
     ![Nyissa meg HDInsight Power BI-adatok](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-open-odbc.png)
-    
-3. Az a **adatok lekérése** panelen kattintson a jobb típus **hdinsight** kifejezést a keresőmezőbe. Ha nem lát **HDInsight interaktív lekérdezés (bétaverzió)**, frissítenie kell a Power BI Desktopot a legújabb verzióra.
 
-4. Válassza ki **HDInsight interaktív lekérdezés (bétaverzió)**, majd válassza ki **Connect**.
+3. Az a **adatok lekérése** ablakban adja meg **hdinsight** kifejezést a keresőmezőbe.  
 
-5. Válassza ki **Folytatás** gombra kattintva zárja be a **összekötő előnézete** figyelmeztető párbeszédpanel.
+4. A keresési eredmények közül válassza ki a **HDInsight interaktív lekérdezés**, majd válassza ki **Connect**.  Ha nem lát **HDInsight interaktív lekérdezés**, frissítenie kell a Power BI Desktopot a legújabb verzióra.
 
-6. A **HDInsight interaktív lekérdezés**, válassza ki vagy adja meg a következőket:
+5. Válassza ki **Folytatás** gombra kattintva zárja be a **külső szolgáltatáshoz csatlakozó** párbeszédpanel.
 
-    - **Kiszolgáló**: Adja meg az interaktív lekérdezési fürt nevét, például *myiqcluster.azurehdinsight.net*.
+6. Az a **HDInsight interaktív lekérdezés** ablakban adja meg a következőket, majd **OK**:
 
-    - **Adatbázis**: A jelen oktatóanyag esetében írja be a **alapértelmezett**.
-    
-    - **Adatkapcsolati mód**: A jelen oktatóanyag esetében válassza ki a **DirectQuery**.
+    |Tulajdonság | Érték |
+    |---|---|
+    |Kiszolgáló |Adja meg a fürt nevét, például *myiqcluster.azurehdinsight.net*.|
+    |Adatbázis |Adja meg **alapértelmezett** ebben a cikkben.|
+    |Adatkapcsolati mód |Válassza ki **DirectQuery** ebben a cikkben.|
 
     ![HDInsight interaktív lekérdezés a Power BI DirectQuery csatlakoztatása](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-connect.png)
 
-7. Kattintson az **OK** gombra.
+7. Adja meg a HTTP-hitelesítő adatait, és válassza ki **Connect**. Az alapértelmezett felhasználónév **rendszergazdai**.
 
-8. Adja meg a HTTP felhasználói hitelesítő adatokat, és kattintson a **OK**. Az alapértelmezett felhasználónév az **rendszergazda**
+8. Az a **kezelő** ablak bal oldali panelén válassza a **hivesampletale**.
 
-9. A bal oldali panelen válassza ki a **hivesampletale**, és kattintson a **terhelés**.
+9. Válassza ki **terhelés** a főablakból.
 
     ![HDInsight interaktív lekérdezés a Power BI hivesampletable](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-interactive-query-power-bi-hivesampletable.png)
 
@@ -68,11 +68,11 @@ A hivesampletable Hive-tábla összes HDInsight-fürtöket tartalmaz.
 
 Továbbra is az előző eljárást.
 
-1. A megjelenítések ablaktáblán válassza ki a **térkép**.  Egy földgömb ikon.
+1. A megjelenítések ablaktáblán válassza ki a **térkép**, a világ ikonra. Egy általános térkép ezután a fő ablakban jelenik meg.
 
     ![HDInsight Power bi-ban a jelentés személyre szabható.](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-customize.png)
-    
-2. A mezők panelen válassza ki a **ország** és **devicemake**. Láthatja, hogy a térképen ábrázolt adatok.
+
+2. A mezők panelen válassza ki a **ország** és **devicemake**. Egy világtérkép az adatpontokhoz néhány pillanat múlva megjelenik a fő ablakot.
 
 3. Bontsa ki a térképet.
 

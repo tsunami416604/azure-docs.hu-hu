@@ -8,12 +8,12 @@ services: site-recovery
 ms.date: 02/13/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 83c9a0baa4d853c8afcb5afe1c4e5cc4ed1e0073
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 84f53b0ddf2d9dfbf25eabbe028c2cfaa0c3fb55
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235224"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880053"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Gyakori kérdések – VMware-ből az Azure-bA
 
@@ -277,7 +277,7 @@ A feladatátvételt követően elérheti az Azure virtuális gépeket biztonság
 Az Azure-t hibatűrőnek terveztük. A Site Recovery a feladatátvétel egy másodlagos Azure adatközpontba, az Azure SLA kategóriában. Feladatátvétel esetén biztosítjuk, hogy a metaadatokat, és a tárolók maradjanak ugyanabban a földrajzi régióban, a tároló számára is választott.
 
 ### <a name="is-failover-automatic"></a>Automatikus a feladatátvétel?
-[Feladatátvétel](site-recovery-failover.md) nem automatikus. A portálon egyetlen kattintással feladatátvételt, vagy használhat [ PowerShell](/powershell/module/azurerm.siterecovery) feladatátvétel indításához.
+[Feladatátvétel](site-recovery-failover.md) nem automatikus. A portálon egyetlen kattintással feladatátvételt, vagy használhat [PowerShell](/powershell/module/azurerm.siterecovery) feladatátvétel indításához.
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>E visszaadhatja egy másik helyre?
 Igen, ha az Azure-bA feladatátvétel, visszaadhatja a másik helyet, ha az eredeti kapcsolatot nem érhető el. [További információk](concepts-types-of-failback.md#alternate-location-recovery-alr).

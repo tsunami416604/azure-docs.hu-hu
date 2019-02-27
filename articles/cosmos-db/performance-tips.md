@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: 67bdabe24e789dc4d1f2020a7a7853eafaa607c3
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: fbb7ae2e741ab6f2c5045f412e18cd9ce1d5b812
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429366"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870924"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Teljesítménnyel kapcsolatos tippek az Azure Cosmos DB- és .NET
 
@@ -47,7 +47,7 @@ Az Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, teljesítmény �
 
     |Kapcsolat módja  |Támogatott protokollok  |Támogatott SDK-k  |API-szolgáltatás portja  |
     |---------|---------|---------|---------|
-    |Átjáró  |   HTTPS    |  All SDKS    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(443), Graph(443)    |
+    |Átjáró  |   HTTPS    |  All SDKS    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(10350), Graph(443)    |
     |Közvetlen    |    HTTPS     |  .Net and Java SDK    |   10 000-20 000 tartományon belüli portok    |
     |Közvetlen    |     TCP    |  .NET SDK    | 10 000-20 000 tartományon belüli portok |
 

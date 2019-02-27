@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 94dec611a04819580696133c48db66da1ea9c463
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 73a2f0754cafaa5da09ebd437ecd62813296ffd9
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000436"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56890079"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>A helyszíni Apache Hadoop-fürtök áttelepítése Azure HDInsight - Motiváció és előnyök
 
@@ -54,7 +54,7 @@ Az Azure HDInsight a Hadoop-összetevők felhőalapú terjesztett a [Hortonwork
 
 - **Az egyéni eszközöket vagy harmadik féltől származó alkalmazások bővíthetőség** -HDInsight-fürtök telepített összetevők ki lehet terjeszteni, és segítségével az más big data-megoldások is integrálhatók [egykattintásos](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/)  az Azure Marketplace-beli telepítéseit.
 
-- **Könnyű kezelés felügyeleti, feladatütemezési és figyelési** – Azure HDInsight integrálható [Azure Log Analytics](../hdinsight-hadoop-oms-log-analytics-tutorial.md) , amellyel követheti az összes fürt egységes felületet biztosít.
+- **Könnyű kezelés felügyeleti, feladatütemezési és figyelési** -integrálható az Azure HDInsight [naplózza az Azure Monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md) , amellyel követheti az összes fürt egységes felületet biztosít.
 
 - **Integráció más Azure szolgáltatásokkal** -HDInsight egyszerűen integrálható más népszerű Azure-szolgáltatások például a következőket:
 
@@ -90,11 +90,11 @@ Ez a szakasz tartalmazza a sablon kérdőíveket kapcsolatos fontos információ
 
 | **Kérdés** | **Példa** | **Válasz** |
 |---|---|---|
-|**A témakör**: **környezet**|||
-|Fürt terjesztési típusa|A Hortonworks, Cloudera, MapR| |
-|Fürt terjesztési verziója|HDP 2.6.5, A CDH 5.7.|
+|**a témakör**: **környezet**|||
+|Fürt terjesztési típusa|Hortonworks, Cloudera, MapR| |
+|Fürt terjesztési verziója|HDP 2.6.5, CDH 5.7|
 |Big Data-ökoszisztéma összetevőket|HDFS, Yarn, Hive, LLAP, Impala, Kudu, HBase, Spark, a MapReduce, a Kafka, Zookeeper, Solr, Sqoop, Oozie, Ranger, Atlas, sólyom, Zeppelin, R|
-|Fürttípusok|Hadoop, Spark, összefüggő Kafka, Storm, a Solr|
+|Fürttípusok|Hadoop, Spark, Confluent Kafka, Storm, Solr|
 |Fürtök száma|4|
 |Fő csomópontok száma|2|
 |A feldolgozó csomópontok száma|100|
@@ -103,19 +103,19 @@ Ez a szakasz tartalmazza a sablon kérdőíveket kapcsolatos fontos információ
 |Fő csomópont-konfiguráció|m/y, processzor, lemez, stb.|
 |Csomópont-konfigurációt|m/y, processzor, lemez, stb.|
 |Peremhálózati csomópont-konfiguráció|m/y, processzor, lemez, stb.|
-|HDFS-titkosítás?|Igen|
+|HDFS Encryption?|Igen|
 |Magas rendelkezésre állás|HDFS magas rendelkezésre ÁLLÁSÚ, magas rendelkezésre ÁLLÁSÚ Metaadattár|
 |Vész-helyreállítási / biztonsági mentése|Biztonsági mentési fürt?|  
 |Fürt függő rendszerek|Az SQL Server, Teradata, Power bi-ban, a mongodb-hez|
 |Külső integráció|A tableau, a GridGain, Qubole, az Informatica, Splunk|
-|**A témakör**: **biztonsági**|||
+|**a témakör**: **Biztonsági**|||
 |Szegélyhálózat-alapú biztonság|Tűzfalak|
 |Fürt-hitelesítés és engedélyezés|Az Active Directory, az Ambari, Cloudera kezelő, hitelesítés nélkül|
-|HDFS hozzáférés-vezérlés|  Kézi, ssh felhasználók|
+|HDFS Access Control|  Kézi, ssh felhasználók|
 |Hive-hitelesítés és engedélyezés|SENTRY, az LDAP, Kerberos, Ranger AD|
 |Naplózás|Ambari, a Cloudera-kezelő, a Ranger|
 |Figyelés|Grafit, összegyűjtött, statsd, Telegraf, InfluxDB|
-|Riasztások kezelése|Kapacitor, Prometheus, Datadoggal|
+|Riasztások kezelése|Kapacitor, Prometheus, Datadog|
 |Adatok megőrzési időtartama| három év, 5 év|
 |Fürt-rendszergazdák|Egyetlen rendszergazdája, több rendszergazda|
 
@@ -123,8 +123,8 @@ Ez a szakasz tartalmazza a sablon kérdőíveket kapcsolatos fontos információ
 
 |**Kérdés**|**Példa**|**Válasz**|
 |---|---|---|
-|**A témakör**: **számítási feladatok és gyakorisága**|||
-|MapReduce-feladatok|10 feladatok – naponta kétszer||
+|**a témakör**: **Számítási feladatok és gyakorisága**|||
+|MapReduce jobs|10 feladatok – naponta kétszer||
 |Hive-feladatok|100 feladat – az óránként||
 |Spark-feladatok batch|50 feladatok – 15 percenként||
 |Spark Streamelési feladatok|5 feladat--át 3 percenként||
@@ -132,68 +132,68 @@ Ez a szakasz tartalmazza a sablon kérdőíveket kapcsolatos fontos információ
 |Gépi Tanulási modell betanítási feladatok|2 feladat – egyszer a hét||
 |Programozási nyelvek|Python, Scala, Java||
 |Parancsfájlkészítés|Python-rendszerhéj||
-|**A témakör**: **adatok**|||
+|**a témakör**: **Adatok**|||
 |Adatforrások|Egybesimított fájlokba, Json, a Kafka, a relációsadatbázis-kezelő rendszer||
 |Adatkoordinálás|Az Oozie-munkafolyamatok, légmozgás||
-|A memória-keresések|Az Apache Ignite, redis Cache||
+|A memória-keresések|Apache Ignite, Redis||
 |Adatcélok|HDFS, RDBMS, Kafka, MPP ||
-|**A témakör**: **metaadatai**|||
+|**a témakör**: **Metaadatok**|||
 |Hive-adatbázis típusa|MySQL, Postgres||
 |Nem. a Hive-metaadattárak|2||
 |Nem. a Hive-táblák|100||
 |Nem. Ranger-házirendek|20||
 |Nem. az Oozie-munkafolyamatok|100||
-|**A témakör**: **skála**|||
+|**a témakör**: **Méretezés**|||
 |Többek között a replikációs adatok mennyisége|100 TB||
 |Napi Adatbetöltési kötet|50 GB||
 |Adatok növekedési aránya|évenként 10 %||
 |Fürt csomópontjai növekedésének aránya|5 %-os, évenként
-|**A témakör**: **fürt kihasználtsága**|||
+|**a témakör**: **Fürt kihasználtsága**|||
 |Átlagos CPU-% foglalt|60%||
-|Átlagos memória %-át használja|75 %-os||
-|Használt lemezterület|75 %-os||
+|Átlagos memória %-át használja|75%||
+|Használt lemezterület|75%||
 |Átlagos hálózati % foglalt|25%
-|**A témakör**: **személyzet**|||
+|**a témakör**: **Staff**|||
 |Nem. a rendszergazdák|2||
 |Nem. a fejlesztők számára|10||
 |Nem. a végfelhasználók számára|100||
 |Képességek|Hadoop, Spark||
 |Nem. rendelkezésre álló erőforrások áttelepítése munkája alapján|2||
-|**A témakör**: **korlátozások**|||
+|**a témakör**: **Korlátozások**|||
 |Aktuális korlátozások|Túl magas a késés||
 |Aktuális kihívásai|Egyidejűségi hiba||
 
 ### <a name="azure-requirements-questionnaire"></a>Azure-követelmények kérdőív
 
-|**A témakör**: **infrastruktúra** |||
+|**a témakör**: **Infrastruktúra** |||
 |---|---|---|
 |**Kérdés**|**Példa**|**Válasz**|
-| Elsődleges régió|USA keleti régiója||
+| Előnyben részesített régió|USA keleti régiója||
 |Virtuális hálózatok közötti előnyben részesített?|Igen||
-|Magas rendelkezésre ÁLLÁS / Vészhelyreállítás szükség?|Igen||
+|HA / DR Needed?|Igen||
 |Integráció más felhőalapú szolgáltatásokkal?|ADF, CosmosDB||
-|**A témakör**: **Adatáthelyezés**  |||
-|Kezdeti betöltési elsőbbségi|A DistCp, a Data box, ADF, WANDisco||
-|Adatok átvitele a különbözeti|A DistCp AzCopy||
-|Folyamatos növekményes adatátvitel|A DistCp, a sqoop használatával||
-|**A témakör**: **Monitorozás és riasztások** |||
+|**a témakör**:   **Adatáthelyezés**  |||
+|Kezdeti betöltési elsőbbségi|DistCp, Data box, ADF, WANDisco||
+|Adatok átvitele a különbözeti|DistCp, AzCopy||
+|Folyamatos növekményes adatátvitel|DistCp, Sqoop||
+|**a témakör**:   **Monitorozás és riasztások** |||
 |Azure figyelési és riasztási Vs integrálása külső figyelést|Az Azure Monitorozás és riasztások||
-|**A témakör**: **biztonsági beállítások** |||
+|**a témakör**:   **Biztonsági beállítások** |||
 |A magán- és védett adatfolyamat?|Igen||
 |Tartományhoz csatlakoztatott fürtöt (ESP)?|     Igen||
 |A helyszíni AD-Szinkronizáló a felhőbe?|     Igen||
 |Nem. az AD-felhasználók szinkronizálása?|          100||
 |OK szinkronizálja a jelszavakat a felhőbe?|    Igen||
 |Csak felhőbeli felhasználók?|                 Igen||
-|A többtényezős hitelesítés szükséges?|                       Nem|| 
+|MFA needed?|                       Nem|| 
 |Adatok engedélyezési követelményei?|  Igen||
 |Szerepköralapú hozzáférés-vezérlés?|        Igen||
 |Naplózás szükséges?|                  Igen||
 |Adattitkosítás inaktív?|          Igen||
 |Adattitkosítás átvitel közben?|       Igen||
-|**A témakör**: **Re-architektúra beállítások** |||
+|**a témakör**:   **Helyreállítási környezet – architektúra-beállítások** |||
 |Egyetlen fürthöz a vs adott fürttípusokat|Meghatározott fürttípusokat||
-|Közösen elhelyezett vagy távoli tárolást?|Távtároló||
+|Közösen elhelyezett vagy távoli tárolást?|Remote Storage||
 |Kisebb fürt méretét, az adat távolról?|Kisebb fürt mérete||
 |Egy nagy fürt, hanem több kisebb fürtöt használ?|Több kisebb fürtökkel||
 |Egy távoli metaadattár használni?|Igen||

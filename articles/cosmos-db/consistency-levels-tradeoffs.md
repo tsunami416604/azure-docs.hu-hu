@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/13/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 99b981e6b5c9bc56c10b0491474c0c8773291b7e
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: e727e1ad9a4d202a3798f516d1db7d88464999fa
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309199"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875956"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisszumok a konzisztencia, a rendelkezésre állás és a teljesítmény között 
 
@@ -48,7 +48,7 @@ A pontos Körbejárási késés a jelzőfény sebesség távolság függvénye �
 
 Egy globálisan elosztott adatbázis-környezeten belül nincs közvetlen kapcsolat folytonosságát egy régióra kiterjedő szolgáltatáskimaradás konzisztencia szint és az adatok tartósságának között. Az üzletmenet folytonosságát biztosító terve kidolgozásakor kell tudni, mielőtt az alkalmazás a zavaró eseményeket követő teljes helyreállításának maximális elfogadható idő. Az alkalmazás teljes helyreállításához szükséges időt a helyreállítási időre vonatkozó célkitűzés (RTO) néven ismert. Emellett ismernie kell a leghosszabb az alkalmazás működését, Adatfrissítés elvesztése zavaró eseményeket követő helyreállítása során. Az adott időszakban, előfordulhat, hogy elfogadható frissítések helyreállításipont-célkitűzés (RPO) néven ismert.
 
-A tábla közötti kapcsolat konzisztencia modellek és az adatok tartóssága régió széles körű leállás zajok mellett között kapcsolat határozza meg. Fontos megjegyezni, hogy az elosztott rendszerekben, még akkor is, erős konzisztencia, nem lehet nulla miatt a CAP-tétel RTO és RPO elosztott adatbázist. Ezért a további tudnivalókért lásd: [Azure Cosmos DB-ben konzisztenciaszintek](consistency-levels.md).
+A tábla határozza meg, hogy konzisztencia modellek és az adatok tartóssága régió széles körű leállás zajok mellett közötti kapcsolatot. Fontos megjegyezni, hogy az elosztott rendszerekben, még akkor is, erős konzisztencia, nem lehet nulla miatt a CAP-tétel RTO és RPO elosztott adatbázist. Ezért a további tudnivalókért lásd: [Azure Cosmos DB-ben konzisztenciaszintek](consistency-levels.md).
 
 |**Régió(k)**|**Replikációs mód**|**Konzisztenciaszint**|**RPO**|**RTO**|
 |---------|---------|---------|---------|---------|

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 32e705c5c338d9bd7c16514b2dc2ab081a9caf6a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 301dd9357bc1585d96eda216d7e47601e488665b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115555"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871797"
 ---
 # <a name="azure-advanced-threat-detection"></a>Az Azure fejlett fenyegetésészlelés
 
@@ -108,7 +108,7 @@ Középső [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-an
 
 Ön forrásból gyűjthet adatokat a tárházba, csatlakoztatott adatforrások konfigurálása és megoldások hozzáadása az előfizetéséhez.
 
-![A Log Analytics-irányítópult ](./media/azure-threat-detection/azure-threat-detection-fig5.png)
+![A Log Analytics-irányítópult](./media/azure-threat-detection/azure-threat-detection-fig5.png)
 
 Adatforrások és megoldások minden egyes külön erőforrásrekord-típusok létrehozása a saját tulajdonságai készletét, de továbbra is elemezheti őket össze a tárházban lekérdezésekben. Együttműködést a különböző források által gyűjtött adatok különböző használhatja ugyanazokat az eszközöket és módszereket.
 

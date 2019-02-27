@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 8961a863f1b268a034310554230096cc0f9d5260
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 9686ac0bc75a219940fcadca78cff539c1b50f0a
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54844058"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876823"
 ---
 # <a name="create-and-clone-projects"></a>Projektek létrehozása és klónozása
 
@@ -49,7 +49,7 @@ Mi mindent az irányítópulton attól függ, hogy jelentkezett be a fiók, amel
 
 Használatakor a **megosztás** parancsot, és válassza ki a **beágyazási** lapon is másolhatja, vagy a HTML-kódot, vagy a Markdown, amely létrehoz egy "indítási notebook" jelvény:
 
-![Indítsa el a jegyzetfüzet-jelvény ](https://notebooks.azure.com/launch.png)
+![Indítsa el a jegyzetfüzet-jelvény](https://notebooks.azure.com/launch.png)
 
 Ha nem rendelkezik egy Azure-jegyzetfüzetek projekt, egy hivatkozás, amely klónokat hozhat létre a Githubról közvetlenül használatával a következő sablonokat, és cserélje le a megfelelő felhasználónevet és a tárház nevét:
 
@@ -67,10 +67,26 @@ Használatakor a **+ új projekt** parancsot, az Azure-jegyzetfüzetek jeleníti
 
 | Mező | Leírás |
 | --- | --- |
-| Projektnév | Egy rövid nevet a projekthez, amely az Azure-jegyzetfüzetek megjelenítési célokra használja. Ha például "Ny Notebook projekt". |
-| Projektazonosító | Egyéni azonosítója, amely a projekt megosztása használatával URL-cím részévé válik. Ezt az Azonosítót használhatja csak betűket, számokat és kötőjeleket tartalmazhat, és legfeljebb 30 karakter hosszúságú lehet. Ha Ön nem tudja, hogy melyiket érdemes használni, a common konvenciónak, hogy a projekt neve kisbetűs verzióját, szóközöket, kötőjeleket, például a "my-jegyzetfüzet-projekt" (ha szükséges, hogy illeszkedjen a hosszra vonatkozó korlátot csonkolt) vannak kapcsolva. |
+| Projektnév | Egy rövid nevet a projekthez, amely az Azure-jegyzetfüzetek megjelenítési célokra használja. Például "saját Notebook projekt". |
+| Projektazonosító | A projekt megosztása használhatja egy egyéni azonosítót, amely az URL-cím részévé válik (a képernyő `https://notebooks.azure.com/<user_id>/projects/<project_id>`). Ezt az Azonosítót használhatja csak betűket, számokat és kötőjeleket tartalmazhat, legfeljebb 30 karakter hosszúságú lehet, és nem lehet egy [Projektazonosító fenntartott](#reserved-project-ids). Ha Ön nem tudja, hogy melyiket érdemes használni, a common konvenciónak, hogy a projekt neve kisbetűs verzióját, szóközöket, kötőjeleket, például a "my-jegyzetfüzet-projekt" (ha szükséges, hogy illeszkedjen a hosszra vonatkozó korlátot csonkolt) vannak kapcsolva. |
 | Nyilvános | Ha a beállítása, lehetővé teszi, hogy bárki a hivatkozást a projekt eléréséhez. Privát projekt létrehozásakor törölje ezt a beállítást. |
 | Ez a projekt és a egy információs fájl inicializálása | Ha a beállítása, létrehoz egy alapértelmezett *README.md* fájlt a projektben. A *README.md* fájl az dokumentáció adni a projekthez, ha szükséges. |
+
+### <a name="reserved-project-ids"></a>Fenntartott projekt azonosítók
+
+A következő fenntartott szavakat azonosítók projektként önmagukban nem használható. E szolgáltatás számára fenntartott szavak is, azonban nem hosszabb projekt azonosítók részeként használatos.
+
+| | | | | | |
+| --- | --- | --- | --- | --- | --- |
+| névjegy | account | Felügyelet | api-t | Blog | tanterem |
+| content | irányítópult | Fedezze fel | Gyakori kérdések | help | html |
+| kezdőlap | import | könyvtár | felügyelet | új | Notebook |
+| Notebookok | PDF-fájl | előzetes verzió | díjszabás | profil | keresés |
+| status | támogatás | test | | | |
+
+Ha ezeknek a szavaknak közül a projekt Azonosítóját használja a **új projekt létrehozása** és **Projektbeállítások** ablakok azt jelzik, "könyvtár azonosítója fenntartott azonosító is."
+
+Mivel a projekt Azonosítóját is a projekt URL-cím része, ad blocker szoftver előfordulhat, hogy letiltja a bizonyos kulcsszavakat, például a "hirdetmény." Ezekben az esetekben használja egy másik szót a projekt azonosítóját.
 
 ## <a name="import-a-project-from-github"></a>A projekt importálása a Githubról
 
@@ -81,7 +97,7 @@ Egy teljes nyilvános GitHub-adattár segítségével egyszerűen importálhatja
 | GitHub-adattár | A github.com tárházban neve. Például az Azure Cognitive Services, a Jupyter notebookok klónozása [ https://github.com/Microsoft/cognitive-services-notebooks ](https://github.com/Microsoft/cognitive-services-notebooks), adja meg a "Microsoft/cognitive-services-notebookok".  |
 | Klónozza a rekurzív módon | GitHub-adattárak több gyermek-tárházakat is tartalmazhat. Állítsa be ezt a beállítást, ha azt szeretné, a szülő-tárházat és az összes gyermekre a klónozásához. Szeretné, hogy számos gyermek-tárházhoz lehetőség, mert hagyja törölje ezt a beállítást, ha tudja, szüksége lesz rá. |
 | Projektnév | Egy rövid nevet a projekthez, amely az Azure-jegyzetfüzetek megjelenítési célokra használja. |
-| Projektazonosító | Egyéni azonosítója, amely a projekt megosztása használatával URL-cím részévé válik. Ezt az Azonosítót használhatja csak betűket, számokat és kötőjeleket tartalmazhat. |
+| Projektazonosító | A projekt megosztása használhatja egy egyéni azonosítót, amely az URL-cím részévé válik (a képernyő `https://notebooks.azure.com/<user_id>/projects/<project_id>`). Ezt az Azonosítót használhatja csak betűket, számokat és kötőjeleket tartalmazhat, legfeljebb 30 karakter hosszúságú lehet, és nem lehet egy [Projektazonosító fenntartott](#reserved-project-ids). Ha Ön nem tudja, hogy melyiket érdemes használni, a common konvenciónak, hogy a projekt neve kisbetűs verzióját, szóközöket, kötőjeleket, például a "my-jegyzetfüzet-projekt" (ha szükséges, hogy illeszkedjen a hosszra vonatkozó korlátot csonkolt) vannak kapcsolva. |
 | Nyilvános | Ha a beállítása, lehetővé teszi, hogy bárki a hivatkozást a projekt eléréséhez. Privát projekt létrehozásakor törölje ezt a beállítást. |
 
 Az előzményeket is importálja egy tárház GitHub importálja. A terminálból a normál Git-parancsok használatával véglegesítse a módosításokat, kérje le a módosításokat a Githubról, és így tovább.

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2019
 ms.author: spelluru
-ms.openlocfilehash: e8a94fdae74c5a30ba75e9143b298c3372b886d7
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 9a267b48e185e02c1b1217380429453799308bbe
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733010"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56886769"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>A DevTest Labs szolgáltatásban létrehozott tesztkörnyezet egy összetevőtárban hozzáadása
 DevTest Labs lehetővé teszi, hogy adjon meg egy időben, a virtuális gép létrehozása, vagy a virtuális gép létrehozása után egy virtuális Gépet hozzáadni kívánt összetevőt. Az összetevő egy eszköz és a egy virtuális Gépre telepíteni kívánt alkalmazás lehet. Összetevők egy JSON-fájlt a betöltött GitHub vagy a VSTS Git-adattárból vannak definiálva. 
@@ -60,7 +60,7 @@ A labor ad hozzá egy adattár, először kérje le kulcsfontosságú adatokat a
    4. Válassza ki a **minden hatókör** lehetőséget.
    5. Válassza ki **Token létrehozása**.
 9. Megjelenik az új jogkivonatot a **személyes hozzáférési jogkivonatok** listája. Válassza ki **másolási Token**, majd mentse a token értéket későbbi használatra.
-10. Továbbra is a [a labor csatlakozni a tárház](#connect-your-lab-to-the-repository) szakaszban.
+10. A csatlakozás továbbra is a labor a tárház szakaszra.
 
 ## <a name="use-azure-portal"></a>Az Azure Portal használata
 Ez a szakasz lépéseit az összetevőtárban hozzáadása egy laborhoz az Azure Portalon. 

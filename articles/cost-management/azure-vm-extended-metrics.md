@@ -10,12 +10,12 @@ ms.date: 12/06/2018
 ms.topic: conceptual
 ms.service: cost-management
 ms.custom: seodec18
-ms.openlocfilehash: 9bb8d74b012b25ca959cdb87b8a3d5e4284b6497
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3d30693273f5d76e285554e230da0d4d74c7f30d
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097216"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881498"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Azure-beli virtuális gépek kiterjesztett metrikák hozzáadása
 
@@ -31,7 +31,7 @@ Miután engedélyezte a metrika gyűjtemény, akkor a következőket teheti:
 Például előfordulhat, hogy szeretné figyelni a CPU-memória %-át az Azure-beli virtuális. Az Azure-beli Virtuálisgép-metrikák megfelelnek _[gazdagép] százalékos Processzorhasználat_ és _[Vendég] memóriahasználat (%)_.
 
 > [!NOTE]
-> Kiterjesztett metrikaadatok gyűjtemény csak az Azure vendégszintű figyelést is támogatja. A Cloudyn, ezért nem kompatibilis az a Log Analytics Virtuálisgép-bővítményt.
+> Kiterjesztett metrikaadatok gyűjtemény csak az Azure vendégszintű figyelést is támogatja. A Cloudyn fájl nem kompatibilis a Virtuálisgép-bővítménnyel.
 
 ## <a name="determine-whether-extended-metrics-are-enabled"></a>Határozza meg, hogy engedélyezi-e kiterjesztett metrikák
 

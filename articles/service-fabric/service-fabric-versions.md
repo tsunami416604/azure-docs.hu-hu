@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/24/2018
 ms.author: aljo
-ms.openlocfilehash: 9da51d40c4a94af9bdcf16b48302e8eb2b60eb2f
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: ac25ad0e43930555153abdba19bb81baaee40305
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807711"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56879237"
 ---
 # <a name="supported-service-fabric-versions"></a>A Service Fabric támogatott verziói
 
@@ -27,8 +27,8 @@ Győződjön meg arról, hogy a fürt minden esetben támogatott a Service Fabri
 
 Tekintse meg a következő dokumentumokban talál útmutatást, hogy a fürt Service Fabric támogatott verziót futtat.
 
-- [Az Azure-fürtön a Service Fabric-verzió frissítése ](service-fabric-cluster-upgrade.md)
-- [A Service Fabric verziója egy önálló windows server-fürt frissítése ](service-fabric-cluster-upgrade-windows-server.md)
+- [Az Azure-fürtön a Service Fabric-verzió frissítése](service-fabric-cluster-upgrade.md)
+- [A Service Fabric verziója egy önálló windows server-fürt frissítése](service-fabric-cluster-upgrade-windows-server.md)
 
 Íme a Service Fabric-verziók támogatott listája és azok támogatás záró dátumát.
 

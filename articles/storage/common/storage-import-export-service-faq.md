@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 0b3128184942dbc750ea54bd7156c6e79b8bedea
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: ee2917c64843c8ab137e0122d63a328d6c19fedb
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804841"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867575"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Az Azure Import/Export szolgáltatás: gyakori kérdések 
 Az alábbiakban a kérdések és válaszok, amelyek az adatok átviteléhez az Azure storage-bA az Azure Import/Export szolgáltatás használatakor előfordulhat, hogy rendelkezik. A kérdéseket és a válaszokat az alábbi kategóriák szerint csoportosítottuk:
@@ -138,7 +138,7 @@ Nem. A WAImportExport eszköze csak 64 bites Windows operációs rendszerekkel k
 ### <a name="what-is-the-maximum-block-blob-and-page-blob-size-supported-by-azure-importexport"></a>Mi az a maximális Blokkblobok és a támogatott az Azure Import/Export Lapblob méretét?
 
 Blokkblob maximális mérete körülbelül 4.768 TB-os vagy 5,000,000 MB.
-Lapblob maximális mérete 1 TB-ot.
+Lapblob maximális mérete 8TB.
 
 
 ### <a name="does-azure-importexport-support-aes-256-encryption"></a>Támogatja az Azure Import/Export AES-256 titkosítással?

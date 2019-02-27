@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 04/01/2018
 ms.custom: mvc
-ms.openlocfilehash: 352444dcb3beace0e1618aadba50b56cdcd9d003
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 17a147b12d660e25bfba1e3b987f9c6ae219942d
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545790"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882586"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>Oktatóanyag: Azure Database for MySQL-hez az Azure CLI használatával tervezése
 
@@ -27,6 +27,8 @@ Az Azure Database for MySQL egy relációsadatbázis-szolgáltatás a Microsoft 
 > * Adatok lekérdezése
 > * Adatok frissítése
 > * Adatok visszaállítása
+
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
 Egy böngészőben az Azure Cloud Shell használatával vagy a számítógépen az [Azure CLI telepítésével]( /cli/azure/install-azure-cli) futtathatja az oktatóanyag kódblokkjait.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: manayar
-ms.openlocfilehash: 4e6186310f63fde8648ded03a62b207b5f81a8e2
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 71899a9d6782c4700c287458c85ec83bd1516a4b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984800"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873627"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Virtuális gép méretezési csoportok módosítása
 
@@ -316,7 +316,7 @@ Frissítse a meglévő virtuális gépek, hajtsa végre az egyes meglévő virtu
 - Is használhatja a nyelvspecifikus [Azure SDK-k](https://azure.microsoft.com/downloads/).
 
 >[!NOTE]
-> Service Fabric-fürtök csak használhat *automatikus* mód, de a frissítés eltérően kell kezelni. További információkért lásd: [ Service Fabric alkalmazásfrissítések](../service-fabric/service-fabric-application-upgrade.md).
+> Service Fabric-fürtök csak használhat *automatikus* mód, de a frissítés eltérően kell kezelni. További információkért lásd: [Service Fabric alkalmazásfrissítések](../service-fabric/service-fabric-application-upgrade.md).
 
 Globális méretezhetőség tulajdonságainak beállítása, amely nem követi a házirend módosítása egy adott típusú van. A méretezési csoportot (például rendszergazdai felhasználónév és jelszó) operációsrendszer-profil csak akkor módosítható az API-verzió vált *2017-12-01* vagy újabb. Ezek a változások csak után a változás a méretezési csoportban lévő méretezésicsoport-modellben létrehozott virtuális gépekre vonatkozik. Ahhoz, hogy a meglévő virtuális gépek naprakész, hajtsa végre az egyes meglévő virtuális gépek "alaphelyzetbe". A rendszerkép alaphelyzetbe állítását keresztül teheti meg:
 

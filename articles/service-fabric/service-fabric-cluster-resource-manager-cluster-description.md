@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 7be10f03d65e53b51c3916849dc12feb4de9c919
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 1020e18894f4bb307ad14f780e76eab1df1314bb
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737654"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875973"
 ---
 # <a name="describing-a-service-fabric-cluster"></a>Ismertető a service fabric-fürt
 A Service Fabric fürterőforrás-kezelő több mechanizmust nyújt az fürt leírása. Futásidőben a fürterőforrás-kezelő ezeket az adatokat használja a szolgáltatások a fürtben futó magas rendelkezésre állásának biztosításához. Ezek a szabályok fontos kényszerítése, közben is megkísérli a fürtön belüli erőforrás-használat optimalizálása érdekében.
@@ -603,7 +603,7 @@ LoadMetricInformation     :
 ```
 
 ## <a name="next-steps"></a>További lépések
-* Az architektúra és információk folyamat belül a fürterőforrás-kezelő kapcsolatos információkért tekintse meg [Ez a cikk ](service-fabric-cluster-resource-manager-architecture.md)
+* Az architektúra és információk folyamat belül a fürterőforrás-kezelő kapcsolatos információkért tekintse meg [Ez a cikk](service-fabric-cluster-resource-manager-architecture.md)
 * Lemeztöredezettség-mentesítés metrikák meghatározása módja egy konszolidálhatja helyett ezzel azt csomópontok terhelése. Lemeztöredezettség-mentesítés konfigurálása, lásd: [Ez a cikk](service-fabric-cluster-resource-manager-defragmentation-metrics.md)
 * Elölről kezdődik, és [, a Service Fabric fürterőforrás-kezelő bemutatása](service-fabric-cluster-resource-manager-introduction.md)
 * Ismerje meg hogyan a fürterőforrás-kezelő felügyeli, és elosztja a terhelést a fürtben, tekintse meg a cikk a [terheléselosztás](service-fabric-cluster-resource-manager-balancing.md)

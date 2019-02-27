@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: 56542ef116656bff979e27dfc2ddd5e82056c452
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: d0902c0e0b4c669f3918155f8416f064485abbea
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750140"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874902"
 ---
 # <a name="azure-monitor-overview"></a>Az Azure Monitor áttekintése
 
@@ -132,12 +132,10 @@ Milyen gyakran kell a követelmény az Azure Monitor integrálható más rendsze
 ### <a name="event-hub"></a>Eseményközpont
 [Az Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs) van egy streamelési platform és Eseményfeldolgozási szolgáltatás, amely képes adatokat átalakíthatja és tárolhatja bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével. Az Event Hubs használata [Azure Monitor-adatok streamelése az](platform/stream-monitoring-data-event-hubs.md) partnerré SIEM feladatütemezési és figyelési eszközöket.
 
-> [!VIDEO https://www.youtube.com/embed/SPHxCgbcvSw]
 
 ### <a name="logic-apps"></a>Logic Apps
 [A Logic Apps](https://azure.microsoft.com/services/logic-apps) egy szolgáltatás, amely lehetővé teszi, hogy a feladatok és a munkafolyamatok, amelyek integrálhatók a különböző rendszerek és szolgáltatások segítségével üzleti folyamatok automatizálása. Tevékenységek érhetők el, amely írási és olvasási metrikák és naplók az Azure monitorban, amely lehetővé teszi, hogy más rendszerek különböző integrálása munkafolyamatokat építhet rájuk.
 
-![Logikai alkalmazás](platform/media/collect-activity-logs-subscriptions/log-analytics-logic-apps-activity-log-overview.png)
 
 ### <a name="api"></a>API
 Több API-t írási és olvasási metrikákat és naplókat, és az Azure Monitor kívül által előállított riasztások érhetők el. Is konfigurálhatja, és beolvasni a riasztásokat. Ezzel biztosítható az egyéni megoldásokat, amelyek integrálhatók az Azure Monitor gyakorlatilag korlátlan lehetőségeket.

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: b34d67e640f09ac6949e992d3af9388581851622
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: ae0264c918bb550affe8e694cdb3b9891edea531
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629526"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875446"
 ---
 # <a name="use-interactive-query-with-hdinsight"></a>HDInsight interaktív lekérdezés használata
 Interaktív lekérdezés (más néven az Apache Hive LLAP, vagy [alacsony késés Analytical Processing](https://cwiki.apache.org/confluence/display/Hive/LLAP)) van egy Azure HDInsight [fürt típusa](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types). Interaktív lekérdezés támogatja a memórián belüli gyorsítótárazáshoz, ami lehetővé teszi az Apache Hive-lekérdezések gyorsabb és interaktívabb sokkal.
@@ -38,7 +38,7 @@ Hive-lekérdezések végrehajtásához a következő lehetőségek állnak rende
  
 * Az Apache Zeppelin használata
 
-    Lásd: [Apache Hive-lekérdezések futtatásához az Azure HDInsight használata az Apache Zeppelin ](../hdinsight-connect-hive-zeppelin.md).
+    Lásd: [Apache Hive-lekérdezések futtatásához az Azure HDInsight használata az Apache Zeppelin](../hdinsight-connect-hive-zeppelin.md).
 
 * A Visual Studio használata
 
@@ -72,7 +72,7 @@ A Java adatbázis-kapcsolat (JDBC) kapcsolati karakterlánc megkeresése:
 
 * Ismerje meg, hogyan [HDInsight interaktív lekérdezési fürtökhöz létrehozása](../hdinsight-hadoop-provision-linux-clusters.md).
 * Ismerje meg, hogyan [megjelenítése a Power bi használatával az Azure HDInsight a big Data típusú adatok](../hadoop/apache-hadoop-connect-hive-power-bi.md).
-* Ismerje meg, hogyan [Apache a Zeppelin használata Azure HDInsight az Apache Hive-lekérdezések futtatásához ](../hdinsight-connect-hive-zeppelin.md).
+* Ismerje meg, hogyan [Apache a Zeppelin használata Azure HDInsight az Apache Hive-lekérdezések futtatásához](../hdinsight-connect-hive-zeppelin.md).
 * Ismerje meg, hogyan [a Data Lake Tools for Visual Studio használatával, az Apache Hive-lekérdezések futtatása](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-apache-hive-queries).
 * Ismerje meg, hogyan [HDInsight Tools for Visual Studio Code használata](../hdinsight-for-vscode.md).
 * Ismerje meg, hogyan [Apache Hive-nézet használata a HDInsight Apache Hadoop-keretrendszerrel](../hadoop/apache-hadoop-use-hive-ambari-view.md)

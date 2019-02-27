@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4768c38b2e76bfa8cdff3187c32c03fdaaf57bbf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a2c6b95d62f6210ecfdd560bc1c00a3e055be3ee
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207653"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880348"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dmarcian"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező dmarcian
 
@@ -143,15 +143,15 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés dmarcian, hajtsa vé
 
 2. Kattintson a **profil** a jobb felső sarokban, és keresse meg a **beállítások**.
 
-    ![A beállítások ](./media/dmarcian-tutorial/tutorial_dmarcian_pref.png)
+    ![A beállítások](./media/dmarcian-tutorial/tutorial_dmarcian_pref.png)
 
 3. Görgessen lefelé, és kattintson a **egyszeri bejelentkezés** területen, majd kattintson a **konfigurálása**.
 
-    ![Az egyetlen ](./media/dmarcian-tutorial/tutorial_dmarcian_sso.png)
+    ![Az egyetlen](./media/dmarcian-tutorial/tutorial_dmarcian_sso.png)
 
 4. Az a **SAML egyszeri bejelentkezés** lapon állítsa be a **állapot** , **engedélyezve** , és hajtsa végre az alábbi lépéseket:
 
-    ![A hitelesítés ](./media/dmarcian-tutorial/tutorial_dmarcian_auth.png)
+    ![A hitelesítés](./media/dmarcian-tutorial/tutorial_dmarcian_auth.png)
 
     * A **dmarcian ad hozzá az identitásszolgáltató** területén kattintson **MÁSOLÁSI** másolása a **helyességi feltétel fogyasztói URL-címe** a példány, és illessze be a  **Válasz URL-cím** szövegmezőjébe **alapszintű SAML-konfigurációja szakasz** az Azure Portalon.
 
@@ -229,15 +229,15 @@ Ahhoz, hogy az Azure AD-felhasználók dmarcian bejelentkezni, akkor ki kell ép
 
 2. Kattintson a **profil** a felső jobb sarokban található, és keresse meg **felhasználók kezelése**.
 
-    ![A felhasználó ](./media/dmarcian-tutorial/tutorial_dmarcian_user.png)
+    ![A felhasználó](./media/dmarcian-tutorial/tutorial_dmarcian_user.png)
 
 3. A jobb oldalán található **SSO felhasználók** területén kattintson a **új felhasználó hozzáadása**.
 
-    ![A felhasználó hozzáadása ](./media/dmarcian-tutorial/tutorial_dmarcian_addnewuser.png)
+    ![A felhasználó hozzáadása](./media/dmarcian-tutorial/tutorial_dmarcian_addnewuser.png)
 
 4. Az a **új felhasználó hozzáadása** előugró ablakban hajtsa végre az alábbi lépéseket:
 
-    ![Az új felhasználó ](./media/dmarcian-tutorial/tutorial_dmarcian_save.png)
+    ![Az új felhasználó](./media/dmarcian-tutorial/tutorial_dmarcian_save.png)
 
     a. Az a **új felhasználó e-mail-címe** szövegmezőben adja meg az e-mail címét, például a felhasználó **brittasimon@contoso.com**.
 
@@ -253,9 +253,9 @@ Ha a hozzáférési panelen a dmarcian csempére kattint, meg kell lehet automat
 
 ## <a name="additional-resources"></a>További források
 
-- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

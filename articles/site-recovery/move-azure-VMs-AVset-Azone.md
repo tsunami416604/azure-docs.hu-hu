@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 5597f3c017ccf2dbb58b7b6b046720c8f49803c5
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 77c38089a4f9c6518d9736df7f3020c66ad17b3b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312287"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877044"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Az Azure virtuális gépek áthelyezése a rendelkezésre állási zónában történő
 Az Azure-beli rendelkezésre állási zónák adatközpont meghibásodása ellen védi az alkalmazásait és adatait. Egyes rendelkezésre állási zónák épül fel egy vagy több adatközpont független áramellátással, hűtéssel és hálózati található. Rugalmasság biztosítása érdekében legalább három különálló zónát, az összes engedélyezett régióban van. Egy adott régión belül a rendelkezésre állási zónák fizikai elválasztása adatközpont meghibásodása ellen védi az alkalmazásokat és adatokat. A rendelkezésre állási zónákban az Azure iparági ajánlott 99,99 %-os virtuális gép ÜZEMIDŐT biztosít. Rendelkezésre állási zónában a említett egyes régiókban támogatott [Itt](https://docs.microsoft.com/azure/availability-zones/az-overview#regions-that-support-availability-zones). 
@@ -70,7 +70,7 @@ Egy forgatókönyvben, ahol a virtuális gépek "példányban" be egy adott rég
     - [Hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
     - [Terheléselosztók] (https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials
         
-     - [Nyilvános IP-cím ](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
+     - [Nyilvános IP-cím](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
     
    Bármely más hálózati összetevők, tekintse meg a hálózati [dokumentációját.](https://docs.microsoft.com/azure/#pivot=products&panel=network) 
 

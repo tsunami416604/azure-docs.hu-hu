@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: cdcdcff8a5c016cfd3074a950ad6060e55b8b0fe
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: b2d1c71049ae72ad974d9ab9761d4668aeb17929
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312582"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889120"
 ---
 # <a name="output-metadata"></a>Kimeneti metaadatok
 ## <a name="overview"></a>Áttekintés
@@ -33,7 +33,7 @@ Ez a cikk ismerteti az elemek és az XML-séma típusát, amelyre a kimeneti met
 
 A teljes séma kódjának és XML-példában ez a cikk végén találja.  
 
-## <a name="AssetFiles "></a> AssetFiles gyökérelem
+## <a name="AssetFiles"></a> AssetFiles gyökérelem
 A kódolási feladat bejegyzéseket AssetFile gyűjteménye.  
 
 ### <a name="child-elements"></a>Gyermekelemek
@@ -41,7 +41,7 @@ A kódolási feladat bejegyzéseket AssetFile gyűjteménye.
 | --- | --- |
 | **AssetFile**<br/><br/> minOccurs="0" maxOccurs="1" |A AssetFiles gyűjtemény részét képező AssetFile eleme. |
 
-## <a name="AssetFile "></a> AssetFile elem
+## <a name="AssetFile"></a> AssetFile elem
 XML-példát talál [XML-példa](#xml).  
 
 ### <a name="attributes"></a>Attribútumok
@@ -58,7 +58,7 @@ XML-példát talál [XML-példa](#xml).
 | **VideoTracks**<br/><br/> minOccurs="0" maxOccurs="1" |Minden egyes fizikai AssetFile tartalmazhat, nulla vagy több videók egy megfelelő tárolót formátumba közbeékeléses nyomon követi. További információkért lásd: VideoTracks elemet. |
 | **AudioTracks**<br/><br/> minOccurs="0" maxOccurs="1" |Minden egyes fizikai AssetFile tartalmazhat, egy megfelelő tárolót formátumba közbeékeléses nulla vagy több hangsáv. Ez az összes ezeket hangsáv gyűjteménye. További információkért lásd: AudioTracks elemet. |
 
-## <a name="Sources "></a> Források elem
+## <a name="Sources"></a> Források elem
 Gyűjtemény beviteli/forrás médiafájlok, annak érdekében, hogy ez AssetFile feldolgozott.  
 
 XML-példát talál [XML-példa](#xml).  
@@ -68,7 +68,7 @@ XML-példát talál [XML-példa](#xml).
 | --- | --- |
 | **Forrás**<br/><br/> minOccurs = maxOccurs "1" = "korlátlan" |Egy bemeneti/forrásfájl az objektum létrehozásához használt. További információkért lásd: forrás elemet. |
 
-## <a name="Source "></a> Forrás elem
+## <a name="Source"></a> Forrás elem
 Egy bemeneti/forrásfájl az objektum létrehozásához használt.  
 
 XML-példát talál [XML-példa](#xml).  
@@ -78,7 +78,7 @@ XML-példát talál [XML-példa](#xml).
 | --- | --- | --- |
 | **Name (Név)**<br/><br/> Szükséges |**xs:string** |A bemeneti forrásfájl neve. |
 
-## <a name="VideoTracks "></a> VideoTracks elem
+## <a name="VideoTracks"></a> VideoTracks elem
 Minden egyes fizikai AssetFile tartalmazhat, nulla vagy több videók egy megfelelő tárolót formátumba közbeékeléses nyomon követi. A **VideoTracks** elem a videó nyomon követi egy gyűjteményét képviseli.  
 
 XML-példát talál [XML-példa](#xml).  
@@ -110,7 +110,7 @@ XML-példát talál [XML-példa](#xml).
 | **TargetBitrate**<br/><br/> minInclusive ="0"<br/><br/> Szükséges |**xs:int** |A videó nyomon követése, az átlagos átviteli TARGET kért keresztül a kódolási beállításkészletet, a kilobit / másodperc. |
 | **MaxGOPBitrate**<br/><br/> minInclusive ="0" |**xs:int** |Maximális Képcsoporttal átlagos bitsebességű a a videó nyomon követése a kilobit / másodperc. |
 
-## <a name="AudioTracks "></a> AudioTracks elem
+## <a name="AudioTracks"></a> AudioTracks elem
 Minden egyes fizikai AssetFile tartalmazhat, egy megfelelő tárolót formátumba közbeékeléses nulla vagy több hangsáv. A **AudioTracks** elem minden ezeket hangsáv egy gyűjteményét képviseli.  
 
 XML-példát talál [XML-példa](#xml).  
@@ -120,7 +120,7 @@ XML-példát talál [XML-példa](#xml).
 | --- | --- |
 | **AudioTrack**<br/><br/> minOccurs = maxOccurs "1" = "korlátlan" |Egy adott hangsávra a szülő AssetFile. További információkért lásd: AudioTrack elemet. |
 
-## <a name="AudioTrack "></a> AudioTrack elem
+## <a name="AudioTrack"></a> AudioTrack elem
 Egy adott hangsávra a szülő AssetFile.  
 
 XML-példát talál [XML-példa](#xml).  
@@ -141,7 +141,7 @@ XML-példát talál [XML-példa](#xml).
 | --- | --- |
 | **LoudnessMeteringResultParameters**<br/><br/> minOccurs="0" maxOccurs="1" |Hangerő mérési eredmények paraméterek. További információkért lásd: LoudnessMeteringResultParameters elemet. |
 
-## <a name="LoudnessMeteringResultParameters "></a> LoudnessMeteringResultParameters elem
+## <a name="LoudnessMeteringResultParameters"></a> LoudnessMeteringResultParameters elem
 Hangerő mérési eredmények paraméterek.  
 
 XML-példát talál [XML-példa](#xml).  

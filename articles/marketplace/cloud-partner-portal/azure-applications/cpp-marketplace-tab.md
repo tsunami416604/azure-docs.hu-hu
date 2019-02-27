@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 74b21a9dd8faa8eb35aa8a2ef738bd6303e4cdd7
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1203f33458c83bbde7a263022b78563bad183143
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196948"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870737"
 ---
 # <a name="azure-application-marketplace-tab"></a>Az Azure application Marketplace lapja
 
@@ -35,7 +35,7 @@ A következő táblázat ismerteti a egy az ajánlatban kirakatban létrehozás�
 
 |    **Mező**       |  **Leírás**  |
 |  ---------------   |  ---------------  |
-|        Beosztás            |        Az ajánlat címe. Megjelenik ezzel a beállítással hangsúlyosan a Marketplace-en. A maximális hossz 50 karakter hosszú lehet.           |
+|        Cím            |        Az ajánlat címe. Megjelenik ezzel a beállítással hangsúlyosan a Marketplace-en. A maximális hossz 50 karakter hosszú lehet.           |
 |         Összegzés           |        Az ajánlat rövid összefoglalása. A hossza legfeljebb 100 karakterből állhat.           |
 |         Hosszú összegzése           |        Már összefoglaló az ajánlat (bár ez lehet ugyanaz, mint az összegzés). A maximális hossz 256 karakter.           |
 |       Leírás            |         Az ajánlat leírása. A maximális hossza 3000 karakter lehet. Egyszerű HTML-formázás engedélyezett, beleértve a &lt;p&gt;, &lt;em&gt;, &lt;ul&gt;, &lt;li&gt;, &lt;ol&gt; és fejléc címkék.           |
@@ -66,7 +66,7 @@ A következő táblázat ismerteti a marketing-összetevőket.
 
 A következő képernyőfelvétel egy Marketplace keresési eredmény egy példát mutat be.
 
-![Marketplace-ajánlat keresési eredmény ](./media/azureapp-marketplace-example-browse.png)
+![Marketplace-ajánlat keresési eredmény](./media/azureapp-marketplace-example-browse.png)
 
 Az alábbi képen látható, hogyan az ajánlat jelenjen meg a Marketplace-en, miután egy ügyfél a keresési eredményekben az ajánlat csempére kattint.
 

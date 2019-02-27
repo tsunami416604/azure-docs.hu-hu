@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: e62bc0fff054f0392cd4f437565b5f4dae9cbfb7
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 41d9f21688df6f32918500365bc88f3f168604d2
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594423"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56869649"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok Desired State Configuration bővítmény
 
@@ -254,7 +254,7 @@ Konfigurációs argumentumok a LCM metaadatainak alapértelmezett konfiguráció
 
 A következő példa a [DSC bővítmény kezelő áttekintése](dsc-overview.md).
 Ebben a példában helyett parancsmagok Resource Manager-sablonok használatával a bővítmény telepítése.
-A IisInstall.ps1 konfiguráció mentéséhez, helyezze egy .zip fájlt, és majd feltöltjük a fájlt az elérhető URL-címre.
+A IisInstall.ps1 konfiguráció mentéséhez, helyezze egy .zip-fájlban (Példa: `iisinstall.zip`), és majd feltöltjük a fájlt az elérhető URL-címre.
 Ebben a példában az Azure Blob-tárolót használ, de .zip fájlokat tölthet le bármely tetszőleges helyre.
 
 A Resource Manager-sablonban a következő kód arra utasítja a virtuális Gépre, és töltse le a megfelelő fájlt, és futtassa a megfelelő PowerShell-függvény:
@@ -262,7 +262,7 @@ A Resource Manager-sablonban a következő kód arra utasítja a virtuális Gép
 ```json
 "settings": {
     "configuration": {
-        "url": "https://demo.blob.core.windows.net/",
+        "url": "https://demo.blob.core.windows.net/iisinstall.zip",
         "script": "IisInstall.ps1",
         "function": "IISInstall"
     }

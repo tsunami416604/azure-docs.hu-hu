@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 0cffb4fdff4bddc33c6938e27425035c929808b7
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 5afd5020b060961d215b922c9e49466b73f2a69e
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301927"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889885"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok segítségével átlátható és koordinált több adatbázis feladatátvételét engedélyezése
 
@@ -129,6 +129,18 @@ Elérése érdekében a valódi üzleti folytonosság, adatbázis-redundancia ad
 
   > [!IMPORTANT]
   > Felügyelt példány nem támogatja a több, feladatátvételi csoportok.
+  
+## <a name="permissions"></a>Engedélyek
+A feladatátvételi csoport keresztül felügyelt [szerepköralapú hozzáférés-vezérlés (RBAC)](../role-based-access-control/overview.md). A [SQL Server Közreműködője](../role-based-access-control/built-in-roles.md#sql-server-contributor) szerepkör rendelkezik a szükséges engedélyekkel, feladatátvételi csoportok kezelése. 
+
+### <a name="create-failover-group"></a>Feladatátvételi csoport létrehozása
+Hozzon létre egy feladatátvételi csoportot, kell RBAC írási hozzáféréssel az elsődleges és másodlagos kiszolgálókat, és a feladatátvételi csoportban található összes adatbázishoz. A felügyelt példány mind az elsődleges és másodlagos felügyelt példányhoz az RBAC írási hozzáférésre van szüksége, de az egyes adatbázisok engedélyek nem relevánsak el, mivel az egyes felügyelt példányok adatbázisai nem való hozzáadásának vagy eltávolításának a feladatátvételi csoportból. 
+
+### <a name="update-a-failover-group"></a>A feladatátvételi csoport frissítése
+RBAC kell egy feladatátvételi csoportot frissítéséhez írási hozzáféréssel a feladatátvételi csoporthoz, és a jelenlegi elsődleges kiszolgáló vagy a felügyelt példány összes adatbázisára.  
+
+### <a name="failover-a-failover-group"></a>Feladatátvételi csoport feladatátvétele
+A feladatátvételt egy feladatátvételi csoportot, a feladatátvételi csoport az új elsődleges kiszolgáló RBAC írási hozzáférésre van szükségük, vagy felügyelt példány. 
 
 ## <a name="best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools"></a>Ajánlott eljárások a feladatátvételi csoportok használata a különálló adatbázisok és rugalmas adatbáziskészletek
 

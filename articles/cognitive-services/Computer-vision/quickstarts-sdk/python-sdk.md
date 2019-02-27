@@ -8,24 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/15/2019
+ms.date: 02/26/2019
 ms.author: pafarley
-ms.openlocfilehash: afe8081032e0358e8e0653e9a2b6aad30ad496a9
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: d14b9c88b447583eedc8b50f4f9acf80ae4e3c75
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56651226"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889630"
 ---
 # <a name="azure-cognitive-services-computer-vision-sdk-for-python"></a>Az Azure Cognitive Services számítógépes Látástechnológiai SDK a Pythonhoz
 
-A Computer Vision szolgáltatás a fejlesztők számára hozzáférést biztosít speciális képfeldolgozó és információt visszaadó algoritmusokhoz. Számítógép Látástechnológiai algoritmus kép tartalma érdekli visual funkcióktól függően különböző módokon elemezheti. Például Computer Vision is határozza meg, ha kép felnőtt vagy pikáns tartalom található, minden az arcok keresése a képet, első kézzel vagy nyomtatott szöveg. Ez a szolgáltatás népszerű képformátum, például a JPEG, PNG és működik. 
+A Computer Vision szolgáltatás a fejlesztők számára hozzáférést biztosít speciális képfeldolgozó és információt visszaadó algoritmusokhoz. Számítógép Látástechnológiai algoritmus kép tartalma érdekli visual funkcióktól függően különböző módokon elemezheti. 
 
-Az alkalmazás használhatja a Computer Vision:
+* [Kép elemzése](#analyze-an-image)
+* [Tulajdonos tartomány listájának lekérése](#get-subject-domain-list)
+* [Tartomány szerint kép elemzése](#analyze-an-image-by-domain)
+* [A kép leírását beolvasása](#get-text-description-of-an-image)
+* [Kézzel írt szöveg első rendszerképből](#get-text-from-image)
+* [Létrehozásához miniatűrön](#generate-thumbnail)
 
-- Az insight képeket elemezhet
-- Képek szöveg kinyerése
-- Miniatűrök létrehozása
+Ezzel a szolgáltatással kapcsolatos további információkért lásd: [Mi az a Computer Vision?] [computervision_docs].
 
 További dokumentáció keres?
 
@@ -34,11 +37,21 @@ További dokumentáció keres?
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés – [ingyenes fiók létrehozása][azure_sub]
-* Azure [számítógépes Látástechnológiai erőforrás][computervision_resource]
 * [Python 3.6-os +][python]
+* Ingyenes [számítógépes Látástechnológiai kulcs] [ computervision_resource] és társított régió. Ezekre az értékekre szüksége az példány létrehozásakor a [ComputerVisionAPI] [ ref_computervisionclient] objektumot. Az alábbi módszerek valamelyikével beolvasni ezeket az értékeket. 
 
-Ha a Computer Vision API-fiók van szüksége, létrehozhat egyet a [Azure CLI-vel] [ azure_cli] parancsot:
+### <a name="if-you-dont-have-an-azure-subscription"></a>Ha nem rendelkezik Azure-előfizetéssel
+
+A 7 napig érvényes ingyenes kulcs létrehozása a **Kipróbálom** tapasztalható. A kulcs létrehozásakor másolja a kulcs és a régió nevét. Szüksége lesz a [az ügyfél létrehozása](#create-client).
+
+Tartsa a következő, a kulcs létrehozása után:
+
+* Kulcs értékét: egy 32 karakter hosszúságú karakterlánc formátumban `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` 
+* Kulcsfontosságú terület: az a végpont URL-cím altartomány https://**westcentralus**. api.cognitive.microsoft.com
+
+### <a name="if-you-have-an-azure-subscription"></a>Ha rendelkezik Azure-előfizetéssel
+
+A Computer Vision API-fiókra van szükség, ha-e a legegyszerűbb módszer, hozzon létre egyet az előfizetésében, használja a következő [Azure CLI-vel] [ azure_cli] parancsot. Válassza ki az erőforráscsoport nevét, például a "my-cogserv-group" és a számítógép vision erőforrás nevét, például a "my-számítógép-látás-erőforrás" kell. 
 
 ```Bash
 RES_REGION=westeurope 
@@ -54,18 +67,20 @@ az cognitiveservices account create \
     --yes
 ```
 
-## <a name="installation"></a>Telepítés
+<!--
+## Installation
 
-Telepítse az Azure Cognitive Services számítógép Látástechnológiai SDK- [pip][pip], igény szerint belül egy [virtuális környezet][venv].
+Install the Azure Cognitive Services Computer Vision SDK with [pip][pip], optionally within a [virtual environment][venv].
 
-### <a name="configure-a-virtual-environment-optional"></a>(Nem kötelező) a virtuális környezet konfigurálása
+### Configure a virtual environment (optional)
 
-Nem kötelező, de a alap rendszer és az Azure SDK-környezetek használatakor egy elkülönített megtarthatja a [virtuális környezet][virtualenv]. A következő parancsok futtatásával konfigurálja, majd egy virtuális környezethez, [venv][venv], mint például `cogsrv-vision-env`:
+Although not required, you can keep your base system and Azure SDK environments isolated from one another if you use a [virtual environment][virtualenv]. Execute the following commands to configure and then enter a virtual environment with [venv][venv], such as `cogsrv-vision-env`:
 
 ```Bash
 python3 -m venv cogsrv-vision-env
 source cogsrv-vision-env/bin/activate
 ```
+-->
 
 ### <a name="install-the-sdk"></a>Az SDK telepítése
 
@@ -81,9 +96,20 @@ Miután a Computer Vision erőforrást hoz létre, meg kell annak **régió**, �
 
 Az példány létrehozásakor használja ezeket az értékeket a [ComputerVisionAPI] [ ref_computervisionclient] objektumot. 
 
-### <a name="get-credentials"></a>Hitelesítő adatok beolvasása
+<!--
 
-Használja a [Azure CLI-vel] [ cloud_shell] feltölti a Computer Vision fiókkal két környezeti változó az alábbi kódrészlet **régió** és az egyik a **kulcsok**(is megtalálhatja ezeket az értékeket a [az Azure portal][azure_portal]). A kódrészlet esetében a Bash felületen van formázva.
+For example, use the Bash terminal to set the environment variables:
+
+```Bash
+ACCOUNT_REGION=<resourcegroup-name>
+ACCT_NAME=<computervision-account-name>
+```
+
+### For Azure subscription usrs, get credentials for key and region
+
+If you do not remember your region and key, you can use the following method to find them. If you need to create a key and region, you can use the method for [Azure subscription holders](#if-you-have-an-azure-subscription) or for [users without an Azure subscription](#if-you-dont-have-an-azure-subscription).
+
+Use the [Azure CLI][cloud_shell] snippet below to populate two environment variables with the Computer Vision account **region** and one of its **keys** (you can also find these values in the [Azure portal][azure_portal]). The snippet is formatted for the Bash shell.
 
 ```Bash
 RES_GROUP=<resourcegroup-name>
@@ -101,44 +127,25 @@ export ACCOUNT_KEY=$(az cognitiveservices account keys list \
     --query key1 \
     --output tsv)
 ```
+-->
 
 ### <a name="create-client"></a>Ügyfél létrehozása
 
-Miután feltöltötte értékkel, a `ACCOUNT_REGION` és `ACCOUNT_KEY` környezeti változókat is létrehozhat a [ComputerVisionAPI] [ ref_computervisionclient] objektumot.
+Hozzon létre a [ComputerVisionAPI] [ ref_computervisionclient] objektumot. Módosítsa a régiót és a kulcs értékeit az alábbi példakód a saját értékeire.
 
 ```Python
 from azure.cognitiveservices.vision.computervision import ComputerVisionAPI
 from azure.cognitiveservices.vision.computervision.models import VisualFeatureTypes
 from msrest.authentication import CognitiveServicesCredentials
 
-import os
-region = os.environ['ACCOUNT_REGION']
-key = os.environ['ACCOUNT_KEY']
+region = "westcentralus"
+key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
 credentials = CognitiveServicesCredentials(key)
 client = ComputerVisionAPI(region, credentials)
 ```
 
-## <a name="usage"></a>Használat
-
-Miután már inicializálva egy [ComputerVisionAPI] [ ref_computervisionclient] ügyfél objektumot is:
-
-* Kép elemzése: Bizonyos szolgáltatások, például az arcok, a színeket, a címkéket egy kép elemezheti.   
-* Miniatűrök létrehozása: Hozzon létre az eredeti kép miniatűrjét használandó egyéni JPEG formátumú kép.
-* Kérje le a kép leírását: A tulajdonos tartomány alapján a kép leírását beolvasása. 
-
-Ezzel a szolgáltatással kapcsolatos további információkért lásd: [Mi az a Computer Vision?] [computervision_docs].
-
-## <a name="examples"></a>Példák
-
-A következő szakaszok kiterjedő leggyakoribb számítógépes Látástechnológiai feladatokat, beleértve a több kódrészletek:
-
-* [Kép elemzése](#analyze-an-image)
-* [Tulajdonos tartomány listájának lekérése](#get-subject-domain-list)
-* [Tartomány szerint kép elemzése](#analyze-an-image-by-domain)
-* [A kép leírását beolvasása](#get-text-description-of-an-image)
-* [Kézzel írt szöveg első rendszerképből](#get-text-from-image)
-* [Létrehozásához miniatűrön](#generate-thumbnail)
+Kell egy [ComputerVisionAPI] [ ref_computervisionclient] ügyfélobjektumát használata a következő feladatok közül bármelyik előtt.
 
 ### <a name="analyze-an-image"></a>Rendszerkép elemzése
 
@@ -169,8 +176,13 @@ for x in models.models_property:
 Elemezheti a tulajdonos tartományonként kép [ `analyze_image_by_domain` ] [ ref_computervisionclient_analyze_image_by_domain]. Első a [támogatott területek listája](#get-subject-domain-list) annak érdekében, hogy a megfelelő tartománynevet használja.  
 
 ```Python
+# type of prediction
 domain = "landmarks"
-url = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Broadway_and_Times_Square_by_night.jpg/450px-Broadway_and_Times_Square_by_night.jpg"
+
+# Public domain image of Eiffel tower
+url = "https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg"
+
+# English language response
 language = "en"
 
 analysis = client.analyze_image_by_domain(domain, url, language)
@@ -202,6 +214,10 @@ for caption in analysis.captions:
 Kézzel írt vagy nyomtatott szöveg kaphat egy rendszerképből. Ehhez szükséges, hogy az SDK két hívások: [ `recognize_text` ] [ ref_computervisionclient_recognize_text] és [ `get_text_operation_result` ] [ ref_computervisionclient_get_text_operation_result]. A hívás recognize_text aszinkron. Az eredmények között, a get_text_operation_result hívás, ha az első hívás befejeződött, ellenőrizze kell [ `TextOperationStatusCodes` ] [ ref_computervision_model_textoperationstatuscodes] előtt szöveges adatok kinyeréséhez. Az eredmények tartalmazzák a szöveg, valamint a határolókeret koordinátái meg a szöveget. 
 
 ```Python
+# import models
+from azure.cognitiveservices.vision.computervision.models import TextRecognitionMode
+from azure.cognitiveservices.vision.computervision.models import TextOperationStatusCodes
+
 url = "https://azurecomcdn.azureedge.net/cvt-1979217d3d0d31c5c87cbd991bccfee2d184b55eeb4081200012bdaf6a65601a/images/shared/cognitive-services-demos/read-text/read-1-thumbnail.png"
 mode = TextRecognitionMode.handwritten
 raw = True
@@ -231,10 +247,19 @@ if result.status == TextOperationStatusCodes.succeeded:
 
 A kép miniatűrjét (JPG) is létrehozhat [ `generate_thumbnail` ] [ ref_computervisionclient_generate_thumbnail]. A miniatűr nem kell az eredeti rendszerkép azonos arányban kell. 
 
-Ez a példa a [párnád] [ pypi_pillow] csomag helyileg az új miniatűr kép mentéséhez.
+Telepítés **párnád** használata ebben a példában:
+
+```bash
+pip install Pillow
+``` 
+
+Párnád telepítése után, akkor az alábbi példakód használhatja a csomagot létrehozza a miniatűrt.
 
 ```Python
+# Pillow package
 from PIL import Image
+
+# IO package to create local image
 import io
 
 width = 50

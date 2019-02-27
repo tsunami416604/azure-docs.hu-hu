@@ -7,15 +7,15 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 02/25/2019
 ms.author: kgremban
 ms.custom: seodec18
-ms.openlocfilehash: 27478de68cde9a097dcc160a4553839aef9a018c
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 3981ae197515803821891402e525852901963f63
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902805"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871602"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Az Azure IoT Edge-futtatókörnyezet telepíthető Windows
 
@@ -213,6 +213,34 @@ Get-WinEvent -ea SilentlyContinue `
 ```powershell
 iotedge list
 ```
+
+Egy új telepítést követően a futó van megjelennie csak modul **edgeAgent**. Miután [üzembe helyezése IoT Edge-modulok](how-to-deploy-modules-portal.md), mások láthatja. 
+
+## <a name="manage-module-containers"></a>A modul tárolók kezelése
+
+Az IoT Edge szolgáltatás egy tároló-motor az eszközön futó igényel. Amikor telepít egy modul egy eszközön, az IoT Edge-futtatókörnyezet motort használja, tároló, kérje le a tároló rendszerképét a beállításjegyzék, a felhőben. Az IoT Edge szolgáltatás lehetővé teszi, hogy a modulok használhatnak, és kérheti le a naplókat, de néha előfordulhat, hogy használni kívánt a tároló motor használatával kommunikálhat a tárolón. 
+
+A modul fogalmak kapcsolatos további információkért lásd: [megismerheti az Azure IoT Edge-modulok](iot-edge-modules.md). 
+
+Ha Windows-tárolók futtatja a Windows IoT Edge-eszközön, az IoT Edge-telepítés a Moby tároló motor tartalmazza. Ha Linux-tárolókat a Windows fejlesztői gépen fejleszt, Docker asztali valószínűleg használ. A Moby motor az azonos szabványt, mint a Docker alapul, és úgy lett kialakítva, Docker asztali ugyanazon a gépen párhuzamosan futtatni. Emiatt ha szeretné a Moby motor által felügyelt cél tárolók akkor különösen céljaként, amelyek a motor Docker helyett. 
+
+Például az összes Docker-rendszerképek listájában, használja a következő parancsot:
+
+```powershell
+docker images
+```
+
+Minden Moby rendszerképek listázásához, ugyanazt a parancsot egy mutatót a Moby motor módosítása: 
+
+```powershell
+docker -H npipe:////./pipe/iotedge_moby_engine images
+```
+
+A motor URI szerepel a telepítési parancsfájl kimenete, vagy található tároló futásidejű beállítások szakaszában a config.yaml fájlt. 
+
+![config.yaml moby_runtime URI-t](./media/how-to-install-iot-edge-windows/moby-runtime-uri.png)
+
+Tárolók és az eszközön futó rendszerképeket segítségével parancsokkal kapcsolatos további információkért lásd: [Docker parancssori felületen](https://docs.docker.com/engine/reference/commandline/docker/).
 
 ## <a name="uninstall-iot-edge"></a>Távolítsa el az IoT Edge
 

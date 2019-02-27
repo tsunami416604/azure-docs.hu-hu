@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 47672dc4-1caa-44e5-b8cb-68ec3a76b7dc
 ms.date: 02/27/2017
-ms.openlocfilehash: 5f804bf656b423d6dbe8f5c2ed73ba54d8361000
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: a75ac9773072423c13eef85ecad29c632c13d024
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124535"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873253"
 ---
 # <a name="xml-messages-and-flat-files-in-azure-logic-apps-with-enterprise-integration-pack"></a>XML-üzenetek, és az Azure Logic Appsben és Enterprise Integration Pack egybesimított fájlok
 
@@ -31,7 +31,7 @@ Az Enterprise Integration Pack tartalmazza:
 * [XPath](https://msdn.microsoft.com/library/mt643789.aspx) - üzenet bővítését, és konkrét tulajdonságok kinyerni az üzenetet. Ezután használhatja a kinyert tulajdonságait az üzenet célba, vagy egy köztes végpontot irányíthatja.
 
 ## <a name="try-it-out"></a>Próbálja ki!
-[Egy teljesen működőképes logikai alkalmazás üzembe helyezése ](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-veter-pipeline) (GitHub-minta) az Azure Logic Appsben az XML-funkciók használatával.
+[Egy teljesen működőképes logikai alkalmazás üzembe helyezése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-logic-app-veter-pipeline) (GitHub-minta) az Azure Logic Appsben az XML-funkciók használatával.
 
 ## <a name="learn-more"></a>Részletek
 [További információ az Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "megismerheti a vállalati integrációs csomag")

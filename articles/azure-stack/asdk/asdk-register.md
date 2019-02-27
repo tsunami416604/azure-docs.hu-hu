@@ -15,12 +15,12 @@ ms.date: 01/16/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 23adf2903a50727d920e4a20b8a325313fa39e2a
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: d5463b495620e441ad5371b5859c9ab543e0e7c6
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428007"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874664"
 ---
 # <a name="azure-stack-registration"></a>Azure Stack-regisztráció
 Regisztrálhat az Azure Stack Development Kit (ASDK) telepítése az Azure marketplace-elemek letöltése az Azure-ból, és megkezdheti a Microsoft kereskedelmi adatok beállítása. Regisztráció teljes Azure Stack-funkciók, többek között a piactér tartalomtípus-gyűjtési támogatásához szükséges. Regisztráció szükséges ahhoz, hogy tesztelje fontos Azure Stack-funkciók, például a Marketplace-en tartalomtípus-gyűjtési és használati jelentések készítése. Miután regisztrálta Azure Stack, az Azure kereskedelmi jelentett használati. Láthatja a regisztráció során használt előfizetés alatt. Azonban ASDK felhasználók nem számítunk fel díjat minden használati jelentést.
@@ -214,7 +214,7 @@ Használhatja a **régiók kezelése** csempére kattintva ellenőrizze, hogy az
 
 2. Az irányítópulton, válassza ki a **régiók kezelése**.
 
-    [ ![Régió felügyeleti csempe](media/asdk-register/admin1sm.png "régió felügyeleti csempe") ](media/asdk-register/admin1.png#lightbox)
+    [![Régió felügyeleti csempe](media/asdk-register/admin1sm.png "régió felügyeleti csempe")](media/asdk-register/admin1.png#lightbox)
 
 3. Válassza ki **tulajdonságok**. Ezen a panelen látható, az állapot és a környezet sajátosságait. Az állapot lehet **regisztrált** vagy **nincs regisztrálva**. Ha regisztrált, azt is bemutatja az Azure-előfizetés azonosítója segítségével regisztrálja az Azure Stack, a regisztrációs erőforráscsoportot és a neve mellett.
 

@@ -1,6 +1,6 @@
 ---
-title: Adatok elemzése az Azure Log Analytics nézetek létrehozása |} A Microsoft Docs
-description: Nézettervező a Log Analytics használatával jelennek meg az Azure Portalon, és a Log Analytics-munkaterületen adatvizualizációk széles tartalmazó egyéni nézeteket hozhat létre. Ez a cikk áttekintést ad a Nézettervező, és létrehozását és szerkesztését, az egyéni nézetek eljárásokat mutat be.
+title: Elemezheti a naplófájlok adatait az Azure monitorban nézetek létrehozása |} A Microsoft Docs
+description: Nézettervező az Azure Monitor használatával jelennek meg az Azure Portalon, és a Log Analytics-munkaterület az adatok vizualizációjához különböző tartalmazó egyéni nézeteket hozhat létre. Ez a cikk áttekintést ad a Nézettervező, és létrehozását és szerkesztését, az egyéni nézetek eljárásokat mutat be.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,15 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
-ms.openlocfilehash: ec56e21a989fb0e8db7b8bafb1357c6ed64eae75
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1996befa78409e572798a9043f7e6ee3b6f647bc
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192257"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887904"
 ---
-# <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>Az egyéni nézetek létrehozása az adatforrásnézet-tervezőből a Log Analytics használatával
-Az adatforrásnézet-tervezőből használatával [Azure Log Analytics](../../azure-monitor/log-query/log-query-overview.md), különböző egyéni nézeteket hozhat létre az Azure Portalon, amelyek segítségével adatokat a Log Analytics-munkaterület megjelenítése. Ez a cikk áttekintést nyújt az adatforrásnézet-tervezőből és eljárások létrehozása és módosítása az egyéni nézetek.
+# <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Egyéni nézetek létrehozása az Azure monitorban adatforrásnézet-tervezőből használatával
+Nézettervező az Azure Monitor használatával létrehozhat egyéni nézetek számos az Azure Portalon, amelyek segítségével adatokat a Log Analytics-munkaterület megjelenítése. Ez a cikk áttekintést nyújt az adatforrásnézet-tervezőből és eljárások létrehozása és módosítása az egyéni nézetek.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 Nézettervező kapcsolatos további információkért lásd:
 
@@ -30,7 +32,7 @@ Nézettervező kapcsolatos további információkért lásd:
 
 
 ## <a name="concepts"></a>Alapelvek
-Nézetek jelennek meg a **áttekintése** lapján a Log Analytics-munkaterületet az Azure Portalon. Betűrend szerint jelennek meg a csempék az egyes egyéni nézetek és megoldások a csempék vannak telepítve az ugyanazon a munkaterületen.
+Nézetek jelennek meg az Azure Monitor **áttekintése** oldal az Azure Portalon. Nyissa meg az ezen a lapon a **Azure Monitor** menüre kattintva **további** alatt a **Insights** szakaszban. A csempék az egyes egyéni nézetek betűrend szerint jelennek meg, és a csempék figyelési megoldások telepítve vannak az ugyanazon a munkaterületen.
 
 ![– Áttekintés oldalra](media/view-designer/overview-page.png)
 
@@ -38,9 +40,9 @@ Az adatforrásnézet-tervezőből létrehozott nézeteket az alábbi táblázatb
 
 | Rész | Leírás |
 |:--- |:--- |
-| Mozaik elrendezés | A Log Analytics-munkaterületre jelennek **áttekintése** lapot. Minden csempe ezt az egyéni nézetének visual összegzését jeleníti meg. Minden csempe írja be a rekordok egy másik vizualizációt biztosít. Egyéni nézet megjelenítéséhez olyan csempét választ. |
+| Mozaik elrendezés | Az Azure Monitor megjelenő **áttekintése** lapot. Minden csempe ezt az egyéni nézetének visual összegzését jeleníti meg. Minden csempe írja be a rekordok egy másik vizualizációt biztosít. Egyéni nézet megjelenítéséhez olyan csempét választ. |
 | Egyéni nézet | Amikor kiválaszt egy csempe jelenik meg. Egyes nézetek egy vagy több Vizualizáció részt tartalmaz. |
-| Vizualizáció részei | Egy vizualizációt, az adatok alapján egy vagy több Log Analytics-munkaterületnek jelentenek [naplókereséseket](../../azure-monitor/log-query/log-query-overview.md). A legtöbb részei egy fejlécet, amely biztosít magas szintű képi megjelenítés, és a egy listát, amely megjeleníti a kiemelt találatok tartalmazzák. Minden egyes rész írja be a Log Analytics-munkaterületet a rekordok egy másik vizualizációt biztosít. A rész részletes rekordok biztosító Naplókeresés végrehajtásához elemek választhatja ki. |
+| Vizualizáció részei | Egy vizualizációt, az adatok alapján egy vagy több Log Analytics-munkaterületnek jelentenek [lekérdezések naplózását](../log-query/log-query-overview.md). A legtöbb részei egy fejlécet, amely biztosít magas szintű képi megjelenítés, és a egy listát, amely megjeleníti a kiemelt találatok tartalmazzák. Minden egyes rész írja be a Log Analytics-munkaterületet a rekordok egy másik vizualizációt biztosít. Elemek a rész-napló lekérdezést, amely a rekordok részleteit itt választhatja ki. |
 
 
 ## <a name="work-with-an-existing-view"></a>Meglévő nézet használata
@@ -53,7 +55,7 @@ A beállítások a következő táblázat ismerteti:
 | Beállítás | Leírás |
 |:--|:--|
 | Frissítés   | Frissíti a nézetet a legújabb adatokkal. | 
-| Elemzés | Megnyílik a [bővített analitika portál](../../azure-monitor/log-query/portals.md) naplólekérdezések az adatok elemzéséhez. |
+| Logs      | Megnyílik a [Log Analytics](../log-query/portals.md) naplólekérdezések az adatok elemzéséhez. |
 | Szerkesztés       | A nézet megnyitása az adatforrásnézet-tervezőből tartalmának és konfigurációs szerkesztéséhez.  |
 | Klónozás      | Létrehoz egy új nézetet, és megnyílik a adatforrásnézet-tervezőből. Az új nézet neve ugyanaz, mint az eredeti nevén, de nem *másolási* rá hozzáfűzve. |
 | Dátumtartomány | A dátum és idő dátumtartomány-szűrő, amely megtalálható a nézet az adatok megadása A dátumtartomány bármely dátumtartományokat lekérdezést a nézetben beállítása előtt a rendszer alkalmazza.  |

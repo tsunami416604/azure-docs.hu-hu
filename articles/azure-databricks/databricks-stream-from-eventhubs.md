@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: Active
 ms.date: 06/21/2018
 ms.author: alehall
-ms.openlocfilehash: 16095dabb0e5e3e303e82126c7f57cb4ff3fe8dd
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 006286b492b7431ca15b8a2dc9ac5b4116f7d1b1
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200922"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876271"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>Oktatóanyag: Adatok streamelése az Azure Databricksbe az Event Hubs használatával
 
@@ -384,4 +384,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan végezhet hangulatelemzést a streamelt adatokon az Azure Databricks és a [Microsoft Cognitive Services API](../cognitive-services/text-analytics/overview.md) használatával.
 
 > [!div class="nextstepaction"]
->[Hangulatelemzést a streamelt adatokon az Azure Databricks használatával ](databricks-sentiment-analysis-cognitive-services.md)
+>[Hangulatelemzést a streamelt adatokon az Azure Databricks használatával](databricks-sentiment-analysis-cognitive-services.md)

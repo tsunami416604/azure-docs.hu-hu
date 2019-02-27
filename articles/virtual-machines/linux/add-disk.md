@@ -16,15 +16,16 @@ ms.date: 06/13/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.subservice: disks
-ms.openlocfilehash: 1f545747b883ab70b597b4e598a86b192f89b027
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 453cb838792ff5e80b0dbbe8e90f96792f9c5484
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892764"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56890130"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Add a disk to a Linux VM (Lemez hozzáadása Linux rendszerű virtuális géphez)
 Ez a cikk bemutatja, hogyan való állandó lemez csatolása a virtuális gép így megőrizheti az adatait – még akkor is, ha a virtuális gép a karbantartás vagy átméretezése miatt van kiépíteni.
+
 
 ## <a name="attach-a-new-disk-to-a-vm"></a>Új lemez csatolása virtuális géphez
 
@@ -197,8 +198,10 @@ UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,nofail 
 
 > [!NOTE]
 > Később fstab szerkesztése nélkül az adatlemez eltávolítása a virtuális gép rendszerindítás okozhatnak. A legtöbb disztribúciók adja meg, vagy a *nofail* és/vagy *nobootwait* fstab beállítások. Ezek a beállítások lehetővé teszik a rendszert a akkor is, ha a lemezhiba rendszerindítás csatlakoztatásához. További információ ezekről a paraméterekről a disztribúció dokumentációjában.
-> 
+>
 > A *nofail* beállítással biztosíthatja, hogy a virtuális gép elindul még akkor is, ha a fájlrendszer sérült, vagy a lemez nem létezik a rendszerindítás közben. Ez a beállítás nélkül felmerülhet viselkedés leírtak szerint [nem SSH a Linux rendszerű virtuális gépek FSTAB-hibák miatt](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/)
+>
+> Az Azure virtuális gép soros konzoljához konzolhozzáférést biztosít a virtuális gép használható, ha módosítja az fstab egy rendszerindítási hibát eredményezett. További részleteket a [soros konzol dokumentáció](https://docs.microsoft.com/en-us/azure/virtual-machines/troubleshooting/serial-console-linux).
 
 ### <a name="trimunmap-support-for-linux-in-azure"></a>Az Azure-ban Linux TRIM/UNMAP támogatása
 Egyes Linux-kernelek vannak a elveti a nem használt blokkolja a lemez TRIM/UNMAP műveletek támogatásához. Ez a funkció elsősorban hasznos oldalak törölt Azure már nem érvényesek, és lehet elvetni, és pénzt takaríthat meg, ha nagy méretű fájlokat hoz létre, és törölje őket tájékoztatása standard szintű tárolóban.
@@ -211,14 +214,14 @@ Nincsenek a TRIM engedélyezéséhez kétféleképpen támogatja a Linux rendsze
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
     ```
 * Bizonyos esetekben a `discard` lehetőség is van a teljesítményre. Másik megoldásként futtathatja a `fstrim` manuálisan parancsot a parancssorból, vagy adja hozzá a crontab rendszeresen futtatásához:
-  
+
     **Ubuntu**
-  
+
     ```bash
     sudo apt-get install util-linux
     sudo fstrim /datadrive
     ```
-  
+
     **RHEL/CentOS**
 
     ```bash

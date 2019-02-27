@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 12/18/2017
-ms.openlocfilehash: cf45c97fccb89fe7175796322f0d3d7d114eea11
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 8ae8ecab5363c9eff7fcadd65c76dd31ca6818e1
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822963"
+ms.locfileid: "56877928"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>Az Azure Machine Learning Studióban az algoritmusok kiválasztása
 
@@ -129,7 +129,7 @@ Néhány tanulási algoritmusok győződjön meg az adatok vagy a kívánt eredm
 | **Többcsoportos besorolás** | | | | | |
 | [Logisztikai regresszió](https://msdn.microsoft.com/library/azure/dn905853.aspx) | |● |● |5 | |
 | [döntési erdő](https://msdn.microsoft.com/library/azure/dn906015.aspx) |● |○ | |6 | |
-| [döntési Dzsungel ](https://msdn.microsoft.com/library/azure/dn905963.aspx) |● |○ | |6 |Kevés a memória által elfoglalt tárterület |
+| [döntési Dzsungel](https://msdn.microsoft.com/library/azure/dn905963.aspx) |● |○ | |6 |Kevés a memória által elfoglalt tárterület |
 | [Neurális hálózat](https://msdn.microsoft.com/library/azure/dn906030.aspx) |● | | |9 |[Lehetőség további testreszabási](https://go.microsoft.com/fwlink/?LinkId=402867) |
 | [one-v-all](https://msdn.microsoft.com/library/azure/dn905887.aspx) |- |- |- |- |Megtekintheti a tulajdonságait, a két osztályú módszer van kiválasztva |
 | **Regression** | | | | | |

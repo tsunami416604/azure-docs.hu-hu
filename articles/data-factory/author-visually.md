@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: shlo
-ms.openlocfilehash: e934c8bdc851f8c550e8b87a923215df3f95e389
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: c4e71f3c355f00bda3df6d43bc81743b391ea0dd
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728256"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871961"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Az Azure Data Factoryban vizuális szerzői
 Az Azure Data Factory felhasználói felületen felület (UX) lehetővé teszi, hogy vizuálisan hozhat létre és helyezheti üzembe az erőforrásokat a data Factory kód írása nélkül. Húzza a tevékenységeket a folyamatvásznon, végre, iteratív hibakeresést és üzembe helyezése és a folyamat futásának monitorozása. Kétféleképpen felhasználói a vizuális szerzői műveletek végrehajtásához:
@@ -31,7 +31,7 @@ A Data Factory szolgáltatásban történő vizuális tartalomkészítésről el
 - A Data Factory szolgáltatás nem tartalmaz egy helyen a JSON-entitások a módosítások tárolásához.
 - A Data Factory szolgáltatás együttműködési vagy a verziókezeléshez nincs optimalizálva.
 
-![A Data Factory szolgáltatás konfigurálása ](media/author-visually/configure-data-factory.png)
+![A Data Factory szolgáltatás konfigurálása](media/author-visually/configure-data-factory.png)
 
 A felhasználói felület használata esetén **szerzői vászon** ahhoz, hogy a Data Factory szolgáltatás csak a közvetlenül a **összes közzététele** módban érhető el. A végrehajtott módosításokat közvetlenül a Data Factory szolgáltatás vannak közzétéve.
 

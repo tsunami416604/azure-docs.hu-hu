@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 9d82ff29b988925f244fc33d7124fe43487895b8
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 963d03db2db811b44b1d89df8254f751ec7d3136
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341235"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877395"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>A szimmetrikus kulcsok használata örökölt eszközök kiépítése
 
@@ -293,8 +293,8 @@ Vegye figyelembe, hogy ennek következtében a származtatott eszköz kulcsát a
 ## <a name="next-steps"></a>További lépések
 
 * További Reprovisioning kapcsolatban lásd: [IoT Hub Device reprovisoning fogalmak](concepts-device-reprovision.md) 
-* [Gyors útmutató: Szimulált eszköz kiépítése a szimmetrikus kulcsok](quick-create-simulated-device-symm-key.md)
-* Megszüntetés további tudnivalókért lásd: [hogyan eszközöket, amelyek korábban automatikus – kiépített megszüntetése ](how-to-unprovision-devices.md) 
+* [Rövid útmutató: Szimulált eszköz kiépítése a szimmetrikus kulcsok](quick-create-simulated-device-symm-key.md)
+* Megszüntetés további tudnivalókért lásd: [hogyan eszközöket, amelyek korábban automatikus – kiépített megszüntetése](how-to-unprovision-devices.md) 
 
 
 

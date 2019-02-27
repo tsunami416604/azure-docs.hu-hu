@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: jdial;anavin
-ms.openlocfilehash: a2d799a85932f8b7fdf1f6ae53dc50579c266311
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 52c0799dd2f3c22b1ae3553869aafe9a1fcffc7f
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674515"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887930"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Létrehozása, módosítása vagy egy virtuális hálózati társviszony törlése
 
@@ -71,7 +71,7 @@ Társviszony-létesítés virtuális hálózatok különböző előfizetésekben
 
 ### <a name="commands"></a>Parancsok
 
-- **Az Azure CLI**: [az hálózat virtuális hálózatok közötti társviszony létrehozása](/cli/azure/network/vnet/peering#create)
+- **Az Azure CLI**: [az hálózat virtuális hálózatok közötti társviszony létrehozása](/cli/azure/network/vnet/peering)
 - **PowerShell**: [Add-AzVirtualNetworkPeering](/powershell/module/az.network/add-azvirtualnetworkpeering)
 
 ## <a name="view-or-change-peering-settings"></a>Társviszony-létesítési beállításainak megtekintése vagy módosítása
@@ -88,7 +88,7 @@ Mielőtt módosítja a társviszonyt, ismerkedjen meg a követelményeket és ko
 
 **Parancsok**
 
-- **Az Azure CLI**: [az hálózat virtuális hálózatok közötti társviszony-létesítési lista](/cli/azure/network/vnet/peering) lista társviszonyok egy virtuális hálózathoz, hogy [az network vnet peering show](/cli/azure/network/vnet/peering#az_network_vnet_peering_show) egy adott társviszony-létesítéshez beállítások megjelenítéséhez és [az hálózati virtuális hálózatok közötti társviszony-létesítési frissítés](/cli/azure/network/vnet/peering#az_network_vnet_peering_update) társviszony-létesítési beállítások módosításához. |}
+- **Az Azure CLI**: [az hálózat virtuális hálózatok közötti társviszony-létesítési lista](/cli/azure/network/vnet/peering) lista társviszonyok egy virtuális hálózathoz, hogy [az network vnet peering show](/cli/azure/network/vnet/peering) egy adott társviszony-létesítéshez beállítások megjelenítéséhez és [az hálózati virtuális hálózatok közötti társviszony-létesítési frissítés](/cli/azure/network/vnet/peering) társviszony-létesítési beállítások módosításához. |}
 - **PowerShell**: [Get-AzVirtualNetworkPeering](/powershell/module/az.network/get-azvirtualnetworkpeering) lekérdezni a társviszony-létesítési beállítások megtekintése és [Set-AzVirtualNetworkPeering](/powershell/module/az.network/set-azvirtualnetworkpeering) beállítások módosításához.
 
 ## <a name="delete-a-peering"></a>A társviszony-létesítés törlése
@@ -97,7 +97,7 @@ Mielőtt törölné a társviszonyt, győződjön meg, hogy a fiók rendelkezik-
 
 A társviszony-létesítés törlése esetén a virtuális hálózat közötti forgalom már nem elkezdenek beérkezni a virtuális társhálózatban működő. Resource Managerrel üzembe helyezett virtuális hálózatok társviszonyban állnak, ha minden virtuális hálózathoz tartozik, a más virtuális hálózati társviszonyt. Egy virtuális hálózati társviszony törlése letiltja a virtuális hálózatok közötti kommunikációt, de nem törli a többi virtuális hálózati társviszonyt. A társviszony-létesítés állapota a társviszony-létesítéshez, hogy megtalálható-e a virtuális hálózat **leválasztott**. Ön nem tudja újra létrehozni a társviszony-létesítés mindaddig, amíg újra létrehozza a társviszonyt az első virtuális hálózat és a társviszony-létesítés állapota mindkét virtuális hálózat módosításainak *csatlakoztatva*.
 
-Ha azt szeretné, hogy a virtuális hálózatok néha kommunikációhoz, de nem mindig, ahelyett, hogy a társviszony törlése, beállíthatja a **virtuális hálózati hozzáférés engedélyezése** beállítást **letiltott** helyette. További információ a 6. lépését a [társviszony-létesítés](#create-a-peering) című szakaszát. Előfordulhat, hogy letiltása és engedélyezése a hálózati hozzáférés könnyebb, mint a társviszonyok újbóli létrehozása és törlése.
+Ha azt szeretné, hogy a virtuális hálózatok néha kommunikációhoz, de nem mindig, ahelyett, hogy a társviszony törlése, beállíthatja a **virtuális hálózati hozzáférés engedélyezése** beállítást **letiltott** helyette. Megtudhatja, hogyan, olvassa el a létrehozás 6. lépés egy társviszony-létesítési című szakaszát. Előfordulhat, hogy letiltása és engedélyezése a hálózati hozzáférés könnyebb, mint a társviszonyok újbóli létrehozása és törlése.
 
 1. Írja be a keresőmezőbe, a portál tetején, *virtuális hálózatok* kifejezést a keresőmezőbe. Amikor **virtuális hálózatok** jelennek meg a keresési eredmények közül válassza ki azt. Ne válassza **virtuális hálózatok (klasszikus)** Ha, megjelenik a listán, mert nem hozható létre a társviszony a klasszikus üzemi modellel üzembe helyezett virtuális hálózatról.
 2. Válassza ki a virtuális hálózat a listában, hogy törli a társviszony-létesítést.

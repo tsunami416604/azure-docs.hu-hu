@@ -11,13 +11,13 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: 66640bd60f6ba8c2f612a6bc9b88a07b13012997
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 02/25/2019
+ms.openlocfilehash: d7f1279dbe253a9bc18b9e99ac9dbdf2a7cf52a1
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990034"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870601"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal"></a>Gyors útmutató: Önálló adatbázis létrehozása az Azure SQL Database az Azure portal használatával
 
@@ -42,8 +42,8 @@ Az AdventureWorksLT mintaadatokat tartalmazó önálló adatbázis létrehozása
    - **Erőforráscsoport**: Válassza ki **új létrehozása**, típus *myResourceGroup*, és válassza ki **OK**.
    - **Forrás kiválasztása**: Legördülő listára, és válassza ki **minta (AdventureWorksLT)**.
 
-    >[!IMPORTANT]
-    >Ügyeljen arra, hogy válassza ki a **minta (AdventureWorksLT)** adatokat, így könnyen is követheti ezzel és más, amely a tárolt adatok Azure SQL Database gyors útmutatók.
+    > [!IMPORTANT]
+    > Ügyeljen arra, hogy válassza ki a **minta (AdventureWorksLT)** adatokat, így könnyen is követheti ezzel és más, amely a tárolt adatok Azure SQL Database gyors útmutatók.
   
    ![Önálló adatbázis létrehozása](./media/sql-database-get-started-portal/create-database-1.png)
 
@@ -56,18 +56,18 @@ Az AdventureWorksLT mintaadatokat tartalmazó önálló adatbázis létrehozása
    - **Jelszó megerősítése**: Írja be újra a jelszót.
    - **Hely**: Legördülő lista, és válassza ki az egyik érvényes helyen sem.  
 
-   >[!IMPORTANT]
-   >Jegyezze fel a kiszolgáló rendszergazdai bejelentkezési nevét és jelszavát, így bejelentkezhet a kiszolgáló és az adatbázisok ennél és a többi rövid útmutató. Ha elfelejti a bejelentkezéshez vagy a jelszavát, kérje le a bejelentkezési nevét, vagy alaphelyzetbe állíthatja a jelszót a a **az SQL server** lapot. Megnyitásához a **az SQL server** lapra, jelölje be a kiszolgáló nevét, az adatbázis **áttekintése** lap az adatbázis létrehozása után.
+   > [!IMPORTANT]
+   > Jegyezze fel a kiszolgáló rendszergazdai bejelentkezési nevét és jelszavát, így bejelentkezhet a kiszolgáló és az adatbázisok ennél és a többi rövid útmutató. Ha elfelejti a bejelentkezéshez vagy a jelszavát, kérje le a bejelentkezési nevét, vagy alaphelyzetbe állíthatja a jelszót a a **az SQL server** lapot. Megnyitásához a **az SQL server** lapra, jelölje be a kiszolgáló nevét, az adatbázis **áttekintése** lap az adatbázis létrehozása után.
 
     ![Kiszolgáló létrehozása](./media/sql-database-get-started-portal/create-database-server.png)
 
 6. Válassza a **Kiválasztás** lehetőséget
 7. Az a **SQL Database** kattintson képernyő **tarifacsomag**. Fedezze fel a dtu-k és az egyes szolgáltatásszinteken elérhető tárhely mennyiségét.
 
-   >[!NOTE]
-   >Ebben a rövid útmutatóban használja a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md), de a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) is rendelkezésre áll.
-   >[!IMPORTANT]
-   >Jelenleg több mint 1 TB tárterület egységára prémium szinten érhető el minden régióban, kivéve: Egyesült Királyság északi régiója, USA nyugati középső RÉGIÓJA, Egyesült Királyság South2, kelet-Kína, közép-USDoDCentral, Németország, USDoDEast, USA-beli államigazgatás – délnyugati, Északkelet-US Gov Dél-India középső régiója, Németország, Észak-Kína és USA-beli államigazgatás – kelet. Ezekben a régiókban a prémium szinthez tartozó tárterület maximuma 1 TB. További információkért lásd: [P11 – P15 – aktuális korlátozások](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+   > [!NOTE]
+   > Ebben a rövid útmutatóban használja a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md), de a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) is rendelkezésre áll.
+   > [!IMPORTANT]
+   > Jelenleg több mint 1 TB tárterület egységára prémium szinten érhető el minden régióban, kivéve: Kelet-Kína, Észak-Kína, közép-Németország, Északkelet-Németország, USA nyugati középső Régiója, USA védelmi Minisztériuma régiók és US Government központi. Ezekben a régiókban a prémium szinthez tartozó tárterület maximuma 1 TB.  További információkért lásd: [P11 – P15 – aktuális korlátozások](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 
 8. Ez a rövid útmutatóhoz válassza a **Standard** szolgáltatásszintet, és a csúszka segítségével válassza ki **10 Dtu (S0)** és **1** GB tárhelyet.
 9. Kattintson az **Alkalmaz** gombra.  

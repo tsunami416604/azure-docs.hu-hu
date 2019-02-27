@@ -14,12 +14,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: victorh
-ms.openlocfilehash: 6907382fccaa463fe305ac5049b3858e59b8631b
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: fa1f90cf0236a589d1df96658c672a555195be6b
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991395"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888814"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Kezelheti a DNS-rekordok és -rekordhalmazok az Azure DNS Azure powershellel
 
@@ -238,7 +238,7 @@ Ez a feladatütemezési műveletek is lehet *parancsoknak*, ami azt jelenti, át
 Get-AzDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Add-AzDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzDnsRecordSet
 ```
 
-A fenti példák bemutatják az "A" rekord hozzáadása egy meglévő rekordhalmazhoz "A" típusú. A hasonló feladatütemezési műveletek segítségével adhatja hozzá a rekordhalmazokhoz rekordhalmazok más típusú, és cserélje le a `-Ipv4Address` paraméterében `Add-AzDnsRecordConfig` adott, az egyes rekordtípusokra más paraméterekkel. Az egyes rekordtípusokra paraméterei megegyezik a a `New-AzDnsRecordConfig` parancsmagot, ahogyan az [további rekordtípusokra](#additional-record-type-examples) felett.
+A fenti példák bemutatják az "A" rekord hozzáadása egy meglévő rekordhalmazhoz "A" típusú. A hasonló feladatütemezési műveletek segítségével adhatja hozzá a rekordhalmazokhoz rekordhalmazok más típusú, és cserélje le a `-Ipv4Address` paraméterében `Add-AzDnsRecordConfig` adott, az egyes rekordtípusokra más paraméterekkel. Az egyes rekordtípusokra paraméterei megegyezik a a `New-AzDnsRecordConfig` parancsmagot, a fenti további rekordtípus példákban szemléltetett módon.
 
 "CNAME" vagy "SOA" típusú rekordhalmazok nem tartalmazhat egynél több rekordot. Ezt a korlátozást a DNS-szabványok ered. Már nem az Azure DNS egy korlátozás.
 
@@ -272,7 +272,7 @@ Hasonlóképpen a rekordok rekordhalmazhoz ad, a rekordhalmaz eltávolítása m�
 Get-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Remove-AzDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzDnsRecordSet
 ```
 
-Különböző rekordtípusok támogatottak tartalmában való böngészéshez illessze a megfelelő típus-specifikus paramétereket `Remove-AzDnsRecordSet`. Az egyes rekordtípusokra paraméterei megegyezik a a `New-AzDnsRecordConfig` parancsmagot, ahogyan az [további rekordtípusokra](#additional-record-type-examples) felett.
+Különböző rekordtípusok támogatottak tartalmában való böngészéshez illessze a megfelelő típus-specifikus paramétereket `Remove-AzDnsRecordSet`. Az egyes rekordtípusokra paraméterei megegyezik a a `New-AzDnsRecordConfig` parancsmagot, a fenti további rekordtípus példákban szemléltetett módon.
 
 
 ## <a name="modify-an-existing-record-set"></a>Módosíthatja egy meglévő rekordhalmaz

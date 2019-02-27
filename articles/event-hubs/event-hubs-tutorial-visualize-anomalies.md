@@ -8,13 +8,13 @@ ms.author: shvija
 ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
-ms.date: 12/06/2018
-ms.openlocfilehash: 5f9af39616e45983a7ec592f33c3f2ffd34ea34f
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.date: 02/26/2019
+ms.openlocfilehash: 4f72def4d81f51fcf1bedbeb83798b16ebb6eb32
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233404"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888661"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Oktatóanyag: Valós idejű események az Azure Event hubs szolgáltatásba küldött adatok protokollmegvalósításokat megjelenítése
 
@@ -324,6 +324,8 @@ A Stream Analytics-feladat területen kattintson az **Indítás**, a **Most**, m
 
     ![Képernyőkép az irányítópult-csempe címének és alcímének megadásáról.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-tile-details.png)
 
+    > [!IMPORTANT]
+    > Ha futtatja a mintaalkalmazást, és az adatok streamelése az event hubs, erre a csempére a szám gyorsan (másodpercenként) változik. Mivel a Stream Analytics-lekérdezés ténylegesen frissíti az értéket **másodpercenként**. A 3 perces átfedésmentes ablak az elmúlt néhány perc alatt az összeg megjelenítéséhez frissítse a lekérdezést. 
 11. Adjon hozzá egy másik vizualizációt. Ismételje meg az első néhány lépést:
 
    * Kattintson a **Csempe hozzáadása** elemre.

@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: d88fbb3b5ece819270ca9c6b1060df31ba43854d
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 85fdd67cd676db2a7c54c10523787b0d395de5dc
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821473"
+ms.locfileid: "56870788"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Az Azure Szolgáltatásbusz-kötések az Azure Functions szolgáltatáshoz
 
@@ -148,7 +148,7 @@ let Run(myQueueItem: string, log: ILogger) =
 
 ### <a name="trigger---java-example"></a>Eseményindító - Java-példában
 
-A következő Java-függvényt használ a `@ServiceBusQueueTrigger` a jegyzet a [Java-függvények futtatókörnyezeti kódtárának](/java/api/overview/azure/functions/runtime) írja le a Service Bus-üzenetsor eseményindító konfigurációját. A függvény begyűjti a várólistára helyezni az üzenetet, és hozzáadja azt, hogy a naplókat.
+A következő Java-függvényt használ a `@ServiceBusQueueTrigger` a jegyzet a [Java-függvények futtatókörnyezeti kódtárának](/java/api/overview/azure/functions/runtime) írja le a Service Bus-üzenetsor eseményindító konfigurációját. A függvény begyűjti a várólistára helyezni az üzenetet, és hozzáadja azt a naplókat.
 
 ```java
 @FunctionName("sbprocessor")

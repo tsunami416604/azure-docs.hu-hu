@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 02/13/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ece75ff84c9f45e7284d7a5976f55f8a4ac4680f
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: c8f45e4bb16c05c9f322dd04d2c80f6144744e64
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56418079"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56884032"
 ---
-Ez a cikk a PowerShell-parancsmagok. A parancsmagok futtatásához használhatja az Azure Cloud Shell olyan ingyenes interaktív kezelőfelület. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. A **Másolás** gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz. Néhány módszer a Cloud Shell indításához:
+Ez a cikk a PowerShell-parancsmagok. A parancsmagok futtatásához használhatja az Azure Cloud Shellben. Az Azure Cloud Shell olyan ingyenes interaktív kezelőfelület rendelkező közös Azure-eszközök, előre telepítve és konfigurálva a fiókjával való használat. Ehhez egyszerűen kattintson **másolási** másolni a kódot, illessze be a Cloud Shellben, és nyomja meg az enter a futtatáshoz. Néhány módszer a Cloud Shell indításához:
 
 |  |   |
 |-----------------------------------------------|---|
@@ -24,4 +24,6 @@ Ez a cikk a PowerShell-parancsmagok. A parancsmagok futtatásához használhatja
 | Az Azure Portal jobb felső sarkában található menüben kattintson a **Cloud Shell** gombra. | [![A Cloud Shell a portálon](./media/vpn-gateway-cloud-shell-powershell/cloud-shell-menu.png)](https://portal.azure.com) |
 |  |  |
 
-Ha nem szeretné használni az Azure Cloud Shellt, telepíthet PowerShell helyileg helyette. Ha a helyi telepítése és használata PowerShell választja, mindenképpen telepítse a legújabb verzióját, az Azure Resource Manager PowerShell-parancsmagokat a legújabb szolgáltatásfunkciók eléréséhez. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/overview) foglalkozó témakörben talál.
+**Helyileg futtatja a Powershellt**
+
+Ugyanígy telepítenie és az Azure PowerShell-parancsmagok helyileg futtathatja a számítógépen. PowerShell-parancsmagok gyakran frissülnek. Ha nem a legújabb verziót futtatja, az útmutatóban megadott értékek sikertelenek lehetnek. Helyileg futtatja a PowerShell verziójának megkereséséhez használja a `Get-Module -ListAvailable Az` parancsmagot. Tekintse meg telepíteni vagy frissíteni, [Azure PowerShell-modul telepítéséhez](/powershell/azure/install-az-ps).

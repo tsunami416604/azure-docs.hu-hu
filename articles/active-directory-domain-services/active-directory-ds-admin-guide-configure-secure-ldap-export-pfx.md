@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/01/2017
 ms.author: ergreenl
-ms.openlocfilehash: 18c91b0bfee3f423e2d60e3c9893e8e5208aa292
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 801ba3b84ba9956ca8d13916ac4d90060a7f4037
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55164605"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883453"
 ---
 # <a name="create-a-pfx-file-with-the-secure-ldap-ldaps-certificate-for-a-managed-domain"></a>Hozzon létre egy. PFX-fájlt a biztonságos LDAP (LDAPS) tanúsítványt a felügyelt tartományhoz
 
@@ -82,7 +82,7 @@ Az LDAPS-t tanúsítványának exportálásához egy. PFX-fájlt:
 
 14. Az a **biztonsági** lapon válassza ki a **jelszó** védelméhez lehetőséget és adja meg egy jelszót a. PFX-fájlt. Ne felejtse el ezt a jelszót, mivel az a következő feladat lesz szükség. Kattintson a **tovább**.
 
-    ![A Tanúsítványexportálás jelszó ](./media/active-directory-domain-services-admin-guide/secure-ldap-export-select-password.png)
+    ![A Tanúsítványexportálás jelszó](./media/active-directory-domain-services-admin-guide/secure-ldap-export-select-password.png)
 
     > [!NOTE]
     > Jegyezze fel ezt a jelszót. Szüksége lesz rá az a felügyelt tartomány secure LDAP engedélyezése során [3. feladat – a felügyelt tartomány secure LDAP engedélyezése](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)

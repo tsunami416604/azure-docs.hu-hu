@@ -1,80 +1,88 @@
 ---
-title: 'Gyors útmutató: A Bing Spell Check API, a Ruby'
+title: 'Gyors útmutató: Helyesírás-ellenőrzés a Bing Spell Check REST API és a Ruby'
 titlesuffix: Azure Cognitive Services
-description: Információ és kódminták segítségével ismerkedhet meg a Bing Spell Check API használatának alapjaival.
+description: Ismerkedés a Bing Spell Check REST API használatával a helyesírás-és nyelvtani.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 09/14/2017
+ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: d3c273c7e5774e4f6d5b6984b77ff76bfb041343
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d488923f38a9c65cb117b4535b50bb9fdff2dbfc
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873172"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888848"
 ---
-# <a name="quickstart-for-bing-spell-check-api-with-ruby"></a>Rövid útmutató a Bing Spell Check API és a Ruby használatához 
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-ruby"></a>Gyors útmutató: Helyesírás-ellenőrzés a Bing Spell Check REST API és a Ruby
 
-Ez a cikk bemutatja, hogyan használhatja a [Bing Spell Check API-t](https://azure.microsoft.com/services/cognitive-services/spell-check/)  a Rubyval. A Spell Check API visszaadja a fel nem ismert szavak listáját a javasolt cserekifejezésekkel együtt. Általános esetben küld egy szöveget az API-nak, majd végrehajtja a javasolt cseréket a szövegben, vagy megmutatja azokat az alkalmazás felhasználójának, hogy ő dönthesse el, végre szeretné-e hajtani a cserét. Ez a cikk bemutatja, hogyan küldhet el egy olyan kérést, amely a „Hollo, wrld!” szöveget tartalmazza. A javasolt cserekifejezés a „Hello” és a „world” lesz.
+Ez a rövid útmutató segítségével, a Bing Spell Check REST API a Ruby használata első hívását. Ez az egyszerű alkalmazás egy kérést küld az API-t, és a rendszer nem ismerte fel, majd a javasolt javítások szavak listáját adja vissza. Bár ez az alkalmazás Ruby nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel. Az alkalmazás forráskódja elérhető a [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingSpellCheckv7.rb)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kód futtatásához a [Ruby 2.4-es](https://www.ruby-lang.org/en/downloads/) vagy újabb verziója szükséges.
+* [Ruby 2.4](https://www.ruby-lang.org/en/downloads/) vagy újabb.
 
-Rendelkeznie kell egy, a **Bing Spell Check API 7-es verzióját** tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account). Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/#lang) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásakor kapott hozzáférési kulcsra, vagy beszerezhet egy fizetős előfizetői azonosítót az Azure-irányítópultról. Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+[!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 
-## <a name="get-spell-check-results"></a>Spell Check-eredmények lekérése
 
-1. Hozzon létre egy új Ruby-projektet a kedvenc IDE-környezetében.
-2. Adja hozzá az alábbi kódot.
-3. A `key` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
-4. Futtassa a programot.
+## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-```ruby
-require 'net/http'
-require 'uri'
-require 'json'
+1. Hozzon létre egy új Ruby-fájlt a kedvenc szerkesztőjében, vagy IDE, és adja hozzá az alábbi követelményeknek. 
 
-uri = 'https://api.cognitive.microsoft.com'
-path = '/bing/v7.0/spellcheck?'
-params = 'mkt=en-us&mode=proof'
+    ```javascript
+    require 'net/http'
+    require 'uri'
+    require 'json'
+    ```
 
-uri = URI(uri + path + params)
-uri.query = URI.encode_www_form({
-    # Request parameters
-    'text' => 'Hollo, wrld!'
-})
+2. Az előfizetési kulcsot, a végpont URI-t és az elérési változók létrehozása. Hozzon létre a kérelem paramétereit, amelyeket a `mkt=` paraméter a piacra, és `&mode` , a `proof` megvalósíthatósági példában mód.
 
-# NOTE: Replace this example key with a valid subscription key.
-key = 'ENTER KEY HERE'
+    ```ruby
+    key = 'ENTER YOUR KEY HERE'
+    uri = 'https://api.cognitive.microsoft.com'
+    path = '/bing/v7.0/spellcheck?'
+    params = 'mkt=en-us&mode=proof'
+    ```
 
-# The headers in the following example 
-# are optional but should be considered as required:
-#
-# X-MSEdge-ClientIP: 999.999.999.999  
-# X-Search-Location: lat: +90.0000000000000;long: 00.0000000000000;re:100.000000000000
-# X-MSEdge-ClientID: <Client ID from Previous Response Goes Here>
-#
-# See below for more information.
+## <a name="send-a-spell-check-request"></a>Helyesírás-ellenőrzés kérés küldése
 
-request = Net::HTTP::Post.new(uri)
-request['Content-Type'] = "application/x-www-form-urlencoded"
+1. Hozzon létre egy URI-t a gazdagép uri elérési út és paraméterek karakterláncból. Ezt a lekérdezést, amely tartalmazza a szöveget szeretne helyesírás-ellenőrzés beállítása.
 
-request['Ocp-Apim-Subscription-Key'] = key
+   ```ruby
+   uri = URI(uri + path + params)
+   uri.query = URI.encode_www_form({
+      # Request parameters
+   'text' => 'Hollo, wrld!'
+   })
+   ```
 
-response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
-    http.request(request)
-end
+2. Hozzon létre egy kérelmet a fenti összeállított URI-val. Adja hozzá a fiókkulcsot, hogy a `Ocp-Apim-Subscription-Key` fejléc.
 
-result = JSON.pretty_generate(JSON.parse(response.body))
-puts result
-```
+    ```ruby
+    request = Net::HTTP::Post.new(uri)
+    request['Content-Type'] = "application/x-www-form-urlencoded"
+    request['Ocp-Apim-Subscription-Key'] = key
+    ```
 
-**Válasz**
+3. Küldje el a kérést.
+
+    ```ruby
+    response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
+        http.request(request)
+    end
+    ```
+
+4. A JSON-válasz lekérése, és nyomtassa ki a konzolhoz. 
+
+    ```ruby
+    result = JSON.pretty_generate(JSON.parse(response.body))
+    puts result
+    ```
+
+## <a name="example-json-response"></a>Példa JSON-válasz
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 
@@ -119,9 +127,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A Bing Spell Check oktatóanyaga](../tutorials/spellcheck.md)
+> [Hozzon létre egy egyoldalas webalkalmazást](../tutorials/spellcheck.md)
 
-## <a name="see-also"></a>Lásd még
-
-- [A Bing Spell Check áttekintése](../proof-text.md)
+- [Mi az a Bing Spell Check API?](../overview.md)
 - [A Bing Spell Check API 7-es verzió referenciája](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)

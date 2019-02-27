@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3fc8ae7eac8d54e332d43925ede6ad690ae1dde
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3b8a06276bcaa989fa04f105ac7858c25ab4d0ef
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167830"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887505"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Biztonsági mentés és helyreállítás fiók hitelesítő adatait a Microsoft Authenticator alkalmazással
 
@@ -84,7 +84,7 @@ Személyes Microsoft-fiókok igazolja az identitását a jelszót és a egy más
     ![A Microsoft Authenticator alkalmazás, amely lehetővé teszi a QR-kód](./media/user-help-auth-app-backup-recovery/backup-and-recovery-scan-qr-code.png)
 
     >[!NOTE]
-    >QR-kód beolvasásával kapcsolatos további információkért lásd: [Ismerkedés a Microsoft Authenticator alkalmazás](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install) vagy [állítsa be a biztonsági adatok egy hitelesítő alkalmazást használandó](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app#to-use-the-microsoft-authenticator-app), hogy a rendszergazda bekapcsolta biztonsági adatai alapján.
+    >QR-kód beolvasásával kapcsolatos további információkért lásd: [Ismerkedés a Microsoft Authenticator alkalmazás](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install) vagy [állítsa be a biztonsági adatok egy hitelesítő alkalmazást használandó](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app), hogy a rendszergazda bekapcsolta biztonsági adatai alapján.
 
 ## <a name="troubleshooting-backup-and-recovery-problems"></a>Biztonsági mentési és helyreállítási problémák hibaelhárítása
 Néhány oka miért a biztonsági mentés nem feltétlenül érhető el:

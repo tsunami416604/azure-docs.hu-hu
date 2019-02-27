@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: d3968559864f828630cf1074cb1064eb77f15776
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 0c1dbbae5e4be965f195b5ea4fc88b1bc5fb4f87
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56739653"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887182"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Az Azure Functions kötés kifejezés minták
 
@@ -25,7 +25,7 @@ A legtöbb kifejezések azonosítja alkalmazásburkoló ezeket a kapcsos zárój
 
 Kötés kifejezéstípusok
 
-* [Alkalmazásbeállítások](#app-settings)
+* [Alkalmazásbeállítások](#binding-expressions---app-settings)
 * [Eseményindító-fájl neve](#trigger-file-name)
 * [Eseményindító-metaadatok](#trigger-metadata)
 * [JSON-adattartalmat](#json-payloads)

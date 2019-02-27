@@ -15,12 +15,12 @@ ms.date: 10/16/2018
 ms.author: jeffgilb
 ms.reviewer: anwestg
 ms.lastreviewed: 10/16/2018
-ms.openlocfilehash: a638d5cdfbd3af46335cfb8e4970306534fc1c3b
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: cbdf864c2c10d5eb1c0f9a903bd186370b96a72f
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445984"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56879634"
 ---
 # <a name="app-service-on-azure-stack-overview"></a>Az Azure Stack App Service szolgáltatásának áttekintése
 
@@ -53,7 +53,7 @@ Az alkalmazás több, különböző típusú App Service-alkalmazások is állha
 - mindkettőt (a kezelőfelületet és az api-t is) üzembe helyezheti egyetlen webalkalmazásban;
 - a kezelőfelület kódját üzembe helyezheti egy webalkalmazásban, a háttérrendszerét pedig egy API-alkalmazásban.
 
-   [ ![App Service-ben – áttekintés a monitorozási adatok](media/azure-stack-app-service-overview/image01.png "figyelési adatok az App Service áttekintése") ](media/azure-stack-app-service-overview/image01.png#lightbox)
+   [![App Service-ben – áttekintés a monitorozási adatok](media/azure-stack-app-service-overview/image01.png "figyelési adatok az App Service áttekintése")](media/azure-stack-app-service-overview/image01.png#lightbox)
 
 ## <a name="what-is-an-app-service-plan"></a>Mit nevezünk App Service-csomagnak?
 

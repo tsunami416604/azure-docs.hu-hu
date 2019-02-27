@@ -1,6 +1,6 @@
 ---
-title: A referencia-útmutató az adatforrásnézet-tervezőből részére az Azure Log Analyticsben |} A Microsoft Docs
-description: Nézettervező a Log Analytics használatával egyéni nézeteket hozhat létre az Azure Portalon adatvizualizációk széles megjelennek a Log Analytics-munkaterületet. Ez a cikk egy referencia-útmutató a beállítások a vizualizációs rész, amely szerepel az egyéni nézetek.
+title: A referencia-útmutató az Azure monitorban Az adatforrásnézet-tervezőből részére |} A Microsoft Docs
+description: Nézettervező az Azure Monitor használatával jelennek meg az Azure Portalon, és a Log Analytics-munkaterület az adatok vizualizációjához különböző tartalmazó egyéni nézeteket hozhat létre. Ez a cikk egy referencia-útmutató a beállítások a vizualizációs rész, amely szerepel az egyéni nézetek.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
-ms.openlocfilehash: 61118520e84b53a7669e482694f48d60fd8e67ad
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 53323e70884e61b4643f7950a1a6333f08dbbb6f
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193875"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889902"
 ---
-# <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Nézettervező vizualizációs részére a Log Analytics használati útmutató
-Nézettervező az Azure Log Analytics használatával egyéni nézeteket hozhat létre az Azure Portalon, amelyek a Log Analytics-munkaterület adatvizualizációk széles. Ez a cikk egy referencia-útmutató a beállítások a vizualizációs rész, amely szerepel az egyéni nézetek.
+# <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Nézettervező vizualizációs részére az Azure monitorban referencia-útmutató
+Nézettervező az Azure Monitor használatával létrehozhat egyéni nézetek számos az Azure Portalon, amelyek segítségével adatokat a Log Analytics-munkaterület megjelenítése. Ez a cikk egy referencia-útmutató a beállítások a vizualizációs rész, amely szerepel az egyéni nézetek.
 
 Nézettervező kapcsolatos további információkért lásd:
 
@@ -33,9 +33,9 @@ A rendelkezésre álló Nézettervező csempe típusokat az alábbi táblázat i
 
 | Nézet típusa | Leírás |
 |:--- |:--- |
-| [Lekérdezések listája](#list-of-queries-part) |Naplóbeli keresési lekérdezések listáját jeleníti meg. Kiválaszthatja az egyes lekérdezések eredményeinek megjelenítéséhez. |
-| [Szám és lista](#number-and-list-part) |A fejléc egyetlen szám, amely megjeleníti a naplóbeli keresési lekérdezés rekordjainak számát jeleníti meg. A lista egy lekérdezést, amely azt jelzi, hogy az relatív érték egy numerikus oszlopot vagy annak módosulnak grafikon a felső tíz eredményeit jeleníti meg. |
-| [Két szám és lista](#two-numbers-and-list-part) |A fejléc két szám azt mutatják be, különálló naplóbeli keresési lekérdezések rekordjainak számát jeleníti meg. A lista egy lekérdezést, amely azt jelzi, hogy az relatív érték egy numerikus oszlopot vagy annak módosulnak grafikon a felső tíz eredményeit jeleníti meg. |
+| [Lekérdezések listája](#list-of-queries-part) |Napló lekérdezések listáját jeleníti meg. Kiválaszthatja az egyes lekérdezések eredményeinek megjelenítéséhez. |
+| [Szám és lista](#number-and-list-part) |A fejléc egyetlen szám, amely megjeleníti a log lekérdezésből származó rekordok számát jeleníti meg. A lista egy lekérdezést, amely azt jelzi, hogy az relatív érték egy numerikus oszlopot vagy annak módosulnak grafikon a felső tíz eredményeit jeleníti meg. |
+| [Két szám és lista](#two-numbers-and-list-part) |A fejléc két szám azt mutatják be, különálló naplólekérdezések rekordjainak számát jeleníti meg. A lista egy lekérdezést, amely azt jelzi, hogy az relatív érték egy numerikus oszlopot vagy annak módosulnak grafikon a felső tíz eredményeit jeleníti meg. |
 | [Fánkdiagram és lista](#donut-and-list-part) |A fejléc egyetlen szám, amely összefoglalja a log lekérdezésben érték oszlop jeleníti meg. A fánkdiagram grafikusan felső három rekord eredményeit jeleníti meg. |
 | [Két idősor és lista](#two-timelines-and-list-part) |A fejléc két naplófájl lekérdezések eredményeit oszlopdiagramként, a kihívás, amely egyetlen szám, amely összefoglalja a log lekérdezésben érték oszlop megjeleníti az idő függvényében jeleníti meg. A lista egy lekérdezést, amely azt jelzi, hogy az relatív érték egy numerikus oszlopot vagy annak módosulnak grafikon a felső tíz eredményeit jeleníti meg. |
 | [Információ](#information-part) |A fejléc statikus szöveget és a egy nem kötelező hivatkozást jeleníti meg. A listában egy vagy több elemet egy statikus címet és szöveget jeleníti meg. |
@@ -46,14 +46,14 @@ A rendelkezésre álló Nézettervező csempe típusokat az alábbi táblázat i
 A következő szakaszok ismertetik a csempe típusát és azok tulajdonságait az részletei.
 
 ## <a name="list-of-queries-part"></a>Lekérdezések rész listája
-A lista lekérdezések egy részét a naplóbeli keresési lekérdezések listáját jeleníti meg. Kiválaszthatja az egyes lekérdezések eredményeinek megjelenítéséhez. A nézet tartalmazza az alapértelmezés szerint egyetlen lekérdezést, és kiválaszthatja **+ lekérdezés** további lekérdezések hozzáadásához.
+A lista lekérdezések egy részét a naplólekérdezések listáját jeleníti meg. Kiválaszthatja az egyes lekérdezések eredményeinek megjelenítéséhez. A nézet tartalmazza az alapértelmezés szerint egyetlen lekérdezést, és kiválaszthatja **+ lekérdezés** további lekérdezések hozzáadásához.
 
 ![Lekérdezések megtekintése listája](media/view-designer-parts/view-list-queries.png)
 
 | Beállítás | Leírás |
 |:--- |:--- |
 | **Általános** | |
-| Beosztás |A nézet tetején megjelenő szöveg. |
+| Cím |A nézet tetején megjelenő szöveg. |
 | Új csoport |Válassza ki ezt a hivatkozást az új csoport létrehozása a nézetben, a jelenlegi nézet ellenében. |
 | Előre kijelölt szűrők |A bal oldali szűrőterület felhőtulajdonságok, amikor kiválaszt egy vesszővel tagolt listája. |
 | Megjelenítési mód |A kezdeti nézet jelenik meg, ha a lekérdezés van kiválasztva. Minden elérhető nézetek után, nyissa meg a lekérdezés választhat. |
@@ -62,7 +62,7 @@ A lista lekérdezések egy részét a naplóbeli keresési lekérdezések listá
 | Felhasználóbarát név | A megjelenített leíró nevet. |
 
 ## <a name="number-and-list-part"></a>Szám és lista
-A fejléc egyetlen szám, amely megjeleníti a naplóbeli keresési lekérdezés rekordjainak számát jeleníti meg. A lista egy lekérdezést, amely azt jelzi, hogy az relatív érték egy numerikus oszlopot vagy annak módosulnak grafikon a felső tíz eredményeit jeleníti meg.
+A fejléc egyetlen szám, amely megjeleníti a log lekérdezésből származó rekordok számát jeleníti meg. A lista egy lekérdezést, amely azt jelzi, hogy az relatív érték egy numerikus oszlopot vagy annak módosulnak grafikon a felső tíz eredményeit jeleníti meg.
 
 ![Lekérdezések megtekintése listája](media/view-designer-parts/view-number-list.png)
 
@@ -91,7 +91,7 @@ A fejléc egyetlen szám, amely megjeleníti a naplóbeli keresési lekérdezés
 | Küszöbértékek engedélyezése |Kattintson a küszöbértékek engedélyezése. További információkért lásd: [közös beállítások](#thresholds). |
 
 ## <a name="two-numbers-and-list-part"></a>Két szám és lista része
-A fejléc van két szám, amely megjeleníti az külön naplóbeli keresési lekérdezések rekordjainak számát. A lista egy lekérdezést, amely azt jelzi, hogy az relatív érték egy numerikus oszlopot vagy annak módosulnak grafikon a felső tíz eredményeit jeleníti meg.
+A fejléc van két szám, amely megjeleníti az külön naplólekérdezések rekordjainak számát. A lista egy lekérdezést, amely azt jelzi, hogy az relatív érték egy numerikus oszlopot vagy annak módosulnak grafikon a felső tíz eredményeit jeleníti meg.
 
 ![Két szám és lista megtekintése](media/view-designer-parts/view-two-numbers-list.png)
 
@@ -133,8 +133,8 @@ A fejléc egyetlen szám, amely összefoglalja a log lekérdezésben érték osz
 | Új csoport |Válassza ki ezt a hivatkozást az új csoport létrehozása a nézetben, a jelenlegi nézet ellenében. |
 | Ikon |A result fejlécben mellett megjelenik az képfájl. |
 | Ikon használata |Válassza ki ezt a hivatkozást a ikonjának megjelenítése. |
-| **Fejléc** | |
-| Beosztás |A fejléc tetején megjelenő szöveg. |
+| **Header** | |
+| Cím |A fejléc tetején megjelenő szöveg. |
 | Alcím |A szöveg, amely a fejléc tetején a cím alatt jelenik meg. |
 | **fánkdiagram** | |
 | Lekérdezés |A lekérdezés futtatása a fánkdiagram. Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus értéket. |
@@ -205,14 +205,14 @@ A fejléc statikus szöveget és a egy nem kötelező hivatkozást jeleníti meg
 | Csoport címe |A csempe tetején megjelenő szöveg. |
 | Új csoport |Válassza ki ezt a hivatkozást az új csoport létrehozása a nézetben, a jelenlegi nézet ellenében. |
 | Szín |A fejléc háttérszíne. |
-| **Fejléc** | |
+| **Header** | |
 | Kép |A fejléc megjelenik a képfájl. |
 | Címke |A fejlécében megjelenő szöveg. |
-| **Fejléc** |**> Link** |
+| **Header** |**> Link** |
 | Címke |A hivatkozás szövege. |
 | URL-cím |A hivatkozás URL-címét. |
 | **Információs elemek** | |
-| Beosztás |A cím az egyes elemek megjelenő szöveg. |
+| Cím |A cím az egyes elemek megjelenő szöveg. |
 | Tartalom |Az egyes elemekhez megjelenített szöveg. |
 
 ## <a name="line-chart-callout-and-list-part"></a>Vonaldiagram, képfelirat és lista része
@@ -227,8 +227,8 @@ A fejléc log lekérdezésből származó több sorozat vonaldiagramot időt és
 | Új csoport |Válassza ki ezt a hivatkozást az új csoport létrehozása a nézetben, a jelenlegi nézet ellenében. |
 | Ikon |A result fejlécben mellett megjelenik az képfájl. |
 | Ikon használata |Válassza ki ezt a hivatkozást a ikonjának megjelenítése. |
-| **Fejléc** | |
-| Beosztás |A fejléc tetején megjelenő szöveg. |
+| **Header** | |
+| Cím |A fejléc tetején megjelenő szöveg. |
 | Alcím |A szöveg, amely a fejléc tetején a cím alatt jelenik meg. |
 | **Vonaldiagram** | |
 | Lekérdezés |A lekérdezés futtatása a vonaldiagramot. Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus értéket. Ez a lekérdezés parancsmagokéval használ a *mérték* kulcsszó összefoglalva az eredményeket. Ha a lekérdezés a *időköz* kulcsszó, a diagram x tengely ez alatt az időtartam használja. Ha a lekérdezés nem tartalmazza a *időköz* kulcsszó, az x tengely használ óránként történik. |
@@ -236,7 +236,7 @@ A fejléc log lekérdezésből származó több sorozat vonaldiagramot időt és
 | **Vonaldiagram** |**> Képfelirat** |
 | Képfelirat címe |A képfelirat értéke felett megjelenő szöveg. |
 | Adatsorozat neve |A képfelirat értékéhez használandó adatsor tulajdonság értéke. Ha nincsenek adatsorozatok áll rendelkezésre, a lekérdezés összes rekordját használja. |
-| Művelet |A művelet végrehajtásához együtt, egyetlen értékként az a kihívás értékének tulajdonság.<ul><li>Átlagos: Az összes rekord értékek átlaga.</li><li>Száma: A lekérdezés által visszaadott összes rekord száma.</li><li>Legutóbbi minta: Az utolsó időközt, amely megtalálható a diagramon az értékét.</li><li>Maximális száma: Az időközök, amelyek szerepelnek a diagram a maximális értékét.</li><li>Min.: A minimális érték a a diagramban szereplő időszakok közül.</li><li>Összeg: Az összes rekord értékek összegét.</li></ul> |
+| Művelet |A művelet végrehajtásához együtt, egyetlen értékként az a kihívás értékének tulajdonság.<ul><li>Átlagos: Az összes rekord értékek átlaga.</li><li>Száma: A lekérdezés által visszaadott összes rekord száma.</li><li>Legutóbbi minta: Az utolsó időközt, amely megtalálható a diagramon az értékét.</li><li>Max: Az időközök, amelyek szerepelnek a diagram a maximális értékét.</li><li>Min: A minimális érték a a diagramban szereplő időszakok közül.</li><li>Összeg: Az összes rekord értékek összegét.</li></ul> |
 | **Vonaldiagram** |**> Y tengely** |
 | Logaritmikus skála használata |Válassza ki ezt a hivatkozást az y-tengely logaritmikus skála használata. |
 | Egység |Adja meg az egységeket a lekérdezés által visszaadott értékek. Ezt az információt használja megjelenített vonaldiagram-címkék, amelyek jelzik a értéktípusok, és szükség esetén történő átalakítása az értékeket. A *egység* típusát adja meg a kategória az egység, és határozza meg a rendelkezésre álló *aktuális egység* írja be az értékeket. Ha kiválaszt egy értéket a *átalakítása*, a numerikus értékek konvertálja a *aktuális egység* írja be a *átalakítása* típusa. |
@@ -267,8 +267,8 @@ A fejléc log lekérdezésből származó több sorozat vonaldiagramot idővel j
 | Új csoport |Válassza ki ezt a hivatkozást az új csoport létrehozása a nézetben, a jelenlegi nézet ellenében. |
 | Ikon |A result fejlécben mellett megjelenik az képfájl. |
 | Ikon használata |Válassza ki ezt a hivatkozást a ikonjának megjelenítése. |
-| **Fejléc** | |
-| Beosztás |A fejléc tetején megjelenő szöveg. |
+| **Header** | |
+| Cím |A fejléc tetején megjelenő szöveg. |
 | Alcím |A szöveg, amely a fejléc tetején a cím alatt jelenik meg. |
 | **Vonaldiagram** | |
 | Lekérdezés |A lekérdezés futtatása a vonaldiagramot. Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus értéket. Ez a lekérdezés parancsmagokéval használ a *mérték* kulcsszó összefoglalva az eredményeket. Ha a lekérdezés a *időköz* kulcsszó, a diagram x tengely ez alatt az időtartam használja. Ha a lekérdezés nem tartalmazza a *időköz* kulcsszó, az x tengely használ óránként történik. |
@@ -303,7 +303,7 @@ A vonaldiagram-verem három külön vonaldiagramok használata több sorozat id�
 | Új csoport |Válassza ki ezt a hivatkozást az új csoport létrehozása a nézetben, a jelenlegi nézet ellenében. |
 | Ikon |A result fejlécben mellett megjelenik az képfájl. |
 | **Diagram – 1<br>2 diagram<br>3 mutató részletes diagram** |**> Header** |
-| Beosztás |A diagram tetején megjelenő szöveg. |
+| Cím |A diagram tetején megjelenő szöveg. |
 | Alcím |A szöveg, amely a diagram tetején a cím alatt jelenik meg. |
 | **Diagram – 1<br>2 diagram<br>3 mutató részletes diagram** |**Vonaldiagram** |
 | Lekérdezés |A lekérdezés futtatása a vonaldiagramot. Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus értéket. Ez a lekérdezés parancsmagokéval használ a *mérték* kulcsszó összefoglalva az eredményeket. Ha a lekérdezés a *időköz* kulcsszó, a diagram x tengely ez alatt az időtartam használja. Ha a lekérdezés nem tartalmazza a *időköz* kulcsszó, az x tengely használ óránként történik. |
@@ -322,19 +322,19 @@ A név és érték elválasztó a határolójel használatával a text tulajdons
 Vegyük példaként a tulajdonságot, *hely* például tartalmazza, amely értékek *Redmond-összeállító 41* és *Bellevue-összeállító 12*. Név és érték elválasztó is megadhat egy kötőjelet (-) és *város-összeállító* neve. Ez a megközelítés elemzi az egyes értékek be két tulajdonság nevű *Város* és *épület*.
 
 ### <a name="click-through-navigation"></a>Átkattintásos navigáció
-Átkattintásos navigáció határozza meg, milyen műveletet nem hajt egy fejléc vagy a lista elemére kattintva.  Vagy megnyílik a lekérdezés a [Naplókeresési portál](../../azure-monitor/log-query/portals.md) vagy egy másik nézet indítása.
+Átkattintásos navigáció határozza meg, milyen műveletet nem hajt egy fejléc vagy a lista elemére kattintva.  Vagy megnyílik a lekérdezés a [Log Analyticsl](../../azure-monitor/log-query/portals.md) vagy egy másik nézet indítása.
 
 Az alábbi táblázat az átkattintásos navigáció vonatkozó beállításait ismerteti.
 
 | Beállítás           | Leírás |
 |:--|:--|
-| Naplókeresés (automatikus) | Naplókeresés futtatásához, amikor kiválaszt egy fejléc elemet.  Ez az azonos naplóbeli keresés a cikk alapján.
-| Naplók keresése        | Naplóbeli keresés futtatását, amikor kiválaszt egy elemet a listában.  Írja be a lekérdezést a **navigációs lekérdezés** mezőbe.   Használat *{kijelölt elem}* a szintaxist, az a felhasználó által kiválasztott elem tartalmazza.  Például, ha a lekérdezés nevű oszlop *számítógép* és a navigációs lekérdezés *{kijelölt elem}*, mint például a lekérdezés *számítógép = "Sajátgép"* fut, amikor kiválaszt egy számítógép. Ha a navigációs lekérdezés *típus = {kijelölt elem} esemény*, a lekérdezés *típusa = esemény számítógép = "Sajátgép"* futtatása. |
+| Naplókeresés (automatikus) | Napló lekérdezés futtatását, amikor kiválaszt egy fejléc elemet.  Ez az elem alapján ugyanazon log lekérdezés.
+| Naplók keresése        | Napló lekérdezés futtatását, amikor kiválaszt egy elemet a listában.  Írja be a lekérdezést a **navigációs lekérdezés** mezőbe.   Használat *{kijelölt elem}* a szintaxist, az a felhasználó által kiválasztott elem tartalmazza.  Például, ha a lekérdezés nevű oszlop *számítógép* és a navigációs lekérdezés *{kijelölt elem}*, mint például a lekérdezés *számítógép = "Sajátgép"* fut, amikor kiválaszt egy számítógép. Ha a navigációs lekérdezés *típus = {kijelölt elem} esemény*, a lekérdezés *típusa = esemény számítógép = "Sajátgép"* futtatása. |
 | Nézet              | Nyissa meg a listában egy fejléc elemet vagy egy elem kijelölésekor nézetet.  Válassza ki a nézet nevét a munkaterület a **nézetnév** mezőbe. |
 
 
 
-### <a name="sparklines"></a>Értékgörbék
+### <a name="sparklines"></a>Sparklines
 Értékgörbe egy kis vonaldiagramot, amely bemutatja egy regisztrációslista-bejegyzés értéke idővel. Vizualizációs rész listájával választhat, amely azt jelzi, hogy egy numerikus oszlopot, vagy egy értékgörbe, amely azt jelzi, hogy az értékét, idővel relatív értékét vízszintes vonal megjelenjen-e.
 
 Az alábbi táblázat az Értékgörbék vonatkozó beállításait ismerteti:
@@ -342,7 +342,7 @@ Az alábbi táblázat az Értékgörbék vonatkozó beállításait ismerteti:
 | Beállítás | Leírás |
 |:--- |:--- |
 | Értékgörbék engedélyezése |Válassza ki ezt a hivatkozást az értékgörbe helyett egy vízszintes sáv megjelenítése. |
-| Művelet |Ha Értékgörbék engedélyezve vannak, akkor az értékgörbe értékeinek kiszámítása a listában lévő minden egyes tulajdonság elvégezni a műveletet.<ul><li>Legutóbbi minta: Az idő alatt a sorozat utolsó értékét.</li><li>Maximális száma: A maximális érték az idő alatt az adatsorozathoz.</li><li>Min.: A minimális érték az idő alatt az adatsorozathoz.</li><li>Összeg: Az idő alatt az adatsorozathoz értékeinek összegét.</li><li>Összefoglalás: Ugyanazokkal a `measure` parancsot, mivel a lekérdezés a fejlécben.</li></ul> |
+| Művelet |Ha Értékgörbék engedélyezve vannak, akkor az értékgörbe értékeinek kiszámítása a listában lévő minden egyes tulajdonság elvégezni a műveletet.<ul><li>Legutóbbi minta: Az idő alatt a sorozat utolsó értékét.</li><li>Max: A maximális érték az idő alatt az adatsorozathoz.</li><li>Min: A minimális érték az idő alatt az adatsorozathoz.</li><li>Összeg: Az idő alatt az adatsorozathoz értékeinek összegét.</li><li>Összefoglalás: Ugyanazokkal a `measure` parancsot, mivel a lekérdezés a fejlécben.</li></ul> |
 
 ### <a name="thresholds"></a>Küszöbértékek
 Küszöbértékek használatával megjelenítheti, hogy egy színes ikon mellett az egyes elemek listáját. Küszöbértékek teszik lehetővé, amely meghaladja az egy adott érték vagy egy adott tartományon belüli elemek gyors láthatja. Például egy elfogadható érték, a sárga, ha az érték, amely figyelmeztet, egy tartományon belül, és a piros elemek zöld ikonnal megjelenítése, ha ez meghaladja a hibát.
@@ -361,4 +361,4 @@ A következő táblázat a küszöbértékek beállításai:
 | Szín |A szín, amely azt jelzi, hogy a küszöbérték. |
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg [naplókereséseket](../../azure-monitor/log-query/log-query-overview.md) Vizualizáció részeiben lekérdezések támogatásához.
+* Ismerje meg [lekérdezések naplózását](../log-query/log-query-overview.md) Vizualizáció részeiben lekérdezések támogatásához.

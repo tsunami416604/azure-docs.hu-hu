@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 255dd58e98a65e30c61c57b7538311dcd2fbe277
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 8d9a1076320459d5c213c762cd88b5902b952041
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56585253"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883858"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hirevue"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező HireVue
 
@@ -110,14 +110,14 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés HireVue, hajtsa vég
     | Környezet | URL-cím |
     |-------------|---|
     | Production | `https://<companyname>.hirevue.com` |
-    | Fájlok másolása folyamatban    | `https://<companyname>.stghv.com` |
+    | Előkészítés    | `https://<companyname>.stghv.com` |
 
     b. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-cím:
 
     | Környezet | URN |
     |-------------|-----|
     | Production |`urn:federation:hirevue.com:saml:sp:prod` |
-    | Fájlok másolása folyamatban    | `urn:federation:hirevue.com:saml:sp:staging`|
+    | Előkészítés    | `urn:federation:hirevue.com:saml:sp:staging`|
 
     > [!NOTE]
     > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és azonosító ezeket az értékeket. Kapcsolattartó [HireVue ügyfél-támogatási csapatának](mailto:samlsupport@hirevue.com) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
@@ -203,8 +203,8 @@ Ha a hozzáférési panelen a HireVue csempére kattint, meg kell lehet automati
 
 ## <a name="additional-resources"></a>További források
 
-- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -15,12 +15,12 @@ ms.date: 05/21/2018
 ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf5e198dff2dd3cd93455d5cca25428723bf1ce9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5ee322dd3ff6ccd68b09645fb46b1488b17819bb
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171978"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871689"
 ---
 # <a name="problems-signing-in-to-an-on-premises-application-using-the-azure-ad-application-proxy"></a>Az Azure AD-alkalmazásproxy használatával a helyszíni alkalmazásokhoz való bejelentkezésnél
 
@@ -56,7 +56,7 @@ Az alábbi dokumentum segíthet a kategóriába tartozó leggyakoribb problémá
 
 ## <a name="im-having-a-problem-with-the-application-proxy-agent-connector"></a>Problémát tapasztalok az alkalmazásproxy-ügynök Összekötőjével probléma
   Az alábbi dokumentum segíthet a kategóriába tartozó leggyakoribb problémák megoldásában.
-  * [Problémát tapasztalok az alkalmazásproxy-ügynök összekötőjének telepítésénél](application-proxy-connector-installation-problem.md)
+  * [Problémát tapasztalok az alkalmazásproxy-ügynök Összekötőjével telepítésével kapcsolatos problémák](application-proxy-connector-installation-problem.md)
 
 ## <a name="next-steps"></a>További lépések
 [Helyszíni alkalmazások biztonságos távoli elérése](application-proxy.md)

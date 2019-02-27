@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 32c0ee4764c7c2b541428c63857286a45a09a634
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 040fac6cd4feb60b6635ba0868634f16dd9f146f
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733121"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881726"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Az Azure Cosmos DB kiosztott átviteli sebesség költségek optimalizálása
 
@@ -159,7 +159,7 @@ A következő lépések segítenek, hogy a megoldások hatékonyan méretezhető
 
 2. Egy fenntartott adattovábbítási kapacitással, az alkalmazás számára szükséges mennyiségű becslése módja jegyezze fel a kérés RU egységek használata után társított jellemző műveleteket futtat egy reprezentatív Azure Cosmos-tároló vagy az alkalmazása által használt adatbázis és a Ezután becsülje meg a másodpercenként végrehajtásához várhatóan műveletek száma. Mindenképpen mérni, és lekérdezéseket szokásos és a használatuk is. Megtudhatja, hogyan költségbecslést RU-lekérdezések programozás útján vagy a portál lásd: használatával [lekérdezések költségeinek optimalizálása](online-backup-and-restore.md). 
 
-3. Műveletek és a költségek lekérése a RUs másik módja, a Log Analytics, mivel ez azt a áttekintését művelet/időtartam és a kérelem díja engedélyezésével. Az Azure Cosmos DB kérelem ingyenesen biztosít a minden művelet, így minden művelet díj tárolt visszaküldi a választ, és ezután elemzési célokra. 
+3. Műveletek és a költségek lekérése a RUs másik módja, az Azure Monitor naplóira, mivel ez azt a áttekintését művelet/időtartam és a kérelem díja engedélyezésével. Az Azure Cosmos DB kérelem ingyenesen biztosít a minden művelet, így minden művelet díj tárolt visszaküldi a választ, és ezután elemzési célokra. 
 
 4. Rugalmasan méretezheti felfelé a kiosztott átviteli sebesség és a számítási feladat igényeinek megfelelően igény szerint. 
 

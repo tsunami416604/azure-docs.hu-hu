@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 1/16/2019
 ms.author: dukek
 ms.subservice: logs
-ms.openlocfilehash: 2f7d671dd70571ce167d9c5abd632cdebff329da
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 63c649f0850c4ffc60ce2087e91f3f69917e4837
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888141"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56868544"
 ---
 # <a name="azure-activity-log-event-schema"></a>Az Azure tevékenységnapló eseménysémája
 A **Azure-tevékenységnapló** , amely bármely Azure-ban bekövetkezett előfizetés-szintű eseményeit betekintést nyújt a bejelentkezés. Ez a cikk ismerteti a eseménysémája egy adatkategóriát. Az adatok sémája eltér attól függően, ha az adatok a portal, PowerShell, CLI-t, vagy közvetlenül a REST API és a segítségével olvas [streamelési adatok a storage vagy az Event Hubs használatával egy Naplóprofil](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile). Az alábbi példák a séma szerint a portal, PowerShell, CLI és REST API-n keresztül elérhetővé tett. Ezen tulajdonságok leképezése a [Azure diagnosztikai naplók séma](./diagnostic-logs-schema.md) van megadva a cikk végén található.
@@ -119,10 +119,13 @@ A kategória tartalmazza az összes rekordot létrehozni, frissítési, törlés
 | correlationId |Általában egy GUID Azonosítót a karakterláncként. Ugyanaz a uber művelet eseményeket, amelyek megosztása a korrelációs azonosító tartozik. |
 | leírás |Statikus szöveg egy esemény leírása. |
 | eventDataId |Az esemény egyedi azonosítója. |
+| EventName | A felügyeleti esemény rövid neve. |
+| category | Mindig "rendszergazda" |
 | httpRequest |A Http-kérelem leíró BLOB. Általában tartalmazza a "ügyfélkérelem", "clientIpAddress" és "method" (HTTP-metódust. For example, PUT). |
 | szint |Az esemény szintjét. A következő értékek egyikét: "Kritikus", "Error", "Figyelmeztetés" és "Tájékoztató" |
 | resourceGroupName |Az érintett erőforrás az erőforráscsoport neve. |
 | resourceProviderName |Az érintett erőforrás az erőforrás-szolgáltató neve |
+| resourceType | Az erőforrás típusa, egy felügyeleti esemény által érintett. |
 | resourceId |Erőforrás-azonosító az érintett erőforrás. |
 | operationId |Az események, amelyek megfelelnek egy műveletre alkalmaztam között megosztott GUID. |
 | operationName |A művelet neve. |

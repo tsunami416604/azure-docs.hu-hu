@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 095aff293b23f4589dce9f71890b5e9bfd8636d4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4d980bf28fb9248cc88c4b0802817e85992ef9ee
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201856"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56869700"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-shmoop-for-schools"></a>Oktatóanyag: Az Azure Active Directory integrációja az Shmoop az iskolák
 
@@ -131,7 +131,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     a. Megnyitásához a **attribútum hozzáadása** párbeszédpanelen jelölje ki **attribútum hozzáadása**.
     
-    ![Egyszeri bejelentkezés konfigurálása ](./media/shmoopforschools-tutorial/tutorial_attribute_04.png)
+    ![Egyszeri bejelentkezés konfigurálása](./media/shmoopforschools-tutorial/tutorial_attribute_04.png)
     
     ![Egyszeri bejelentkezés konfigurálása](./media/shmoopforschools-tutorial/tutorial_attribute_05.png)
     

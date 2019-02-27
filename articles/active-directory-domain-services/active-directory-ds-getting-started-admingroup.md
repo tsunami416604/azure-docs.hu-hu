@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ergreenl
-ms.openlocfilehash: 1609d413604e172b9c718bd11768c495dfa8afe8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 734fb5ce641d48800cef68ea79cdb258e44ac267
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191421"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867099"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Engedélyezze az Active Directory Domain Servicest az Azure portal használatával
 
@@ -83,7 +83,7 @@ A folyamat üzembe helyezésének a felügyelt tartomány órát is igénybe veh
 
 3. A **áttekintése** lapon látható, hogy a felügyelt tartomány kiépítése folyamatban van. A felügyelt tartomány nem konfigurálható, amíg a teljes mértékben ki van építve. Igénybe vehet a felügyelt tartomány kiépítése egy órát.
 
-    ![Tartományi szolgáltatások – áttekintés lap a kiépítés során ](./media/getting-started/domain-services-provisioning-state-details.png)
+    ![Tartományi szolgáltatások – áttekintés lap a kiépítés során](./media/getting-started/domain-services-provisioning-state-details.png)
 
 4. Ha a felügyelt tartomány teljes kiépítését követően a **áttekintése** lapon látható, a tartomány állapota **futó**.
 

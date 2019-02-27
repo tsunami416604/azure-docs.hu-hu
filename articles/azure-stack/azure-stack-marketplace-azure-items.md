@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 02/27/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 01/29/2019
-ms.openlocfilehash: 924befd2ec1949973123acc9b7c7d1b89e707e3e
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 6dad4fc98dccc5c8db22019fdc548efdf7165d9e
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245626"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888746"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Elérhető az Azure Stackhez az Azure piactéren elemek
 
@@ -252,4 +252,5 @@ A Microsoft Azure Stackhez az Azure piactér következő virtuális gépek és a
 | ![Puppet Enterprise](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | Puppet vállalati segítségével automatizálhatja az Azure Stack-infrastruktúra teljes életciklusát. **Mindkét Puppet Piactéri termékek letöltése.** | Puppet |
 | ![Gyors helyreállítás beszúrása](media/azure-stack-marketplace-azure-items/quest.png) | [Tanúsítványmegújítási gyors helyreállítási Core](https://azuremarketplace.microsoft.com/marketplace/apps/quest.rapid-recovery-core-vm) | Az adatvédelem speciális gyors helyreállítási egyesíti a biztonsági mentését, a replikációs és a egy könnyen használható szoftveres megoldás helyreállítását. | Tanúsítványmegújítási szoftver |
 | ![SUSE Manager 3.1 Proxy (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE Manager 3.1 Proxy (saját)](https://azuremarketplace.microsoft.com/marketplace/apps/suse.suse-manager-proxy-byos?tab=Overview) | Legjobb minőségű nyílt forráskódú infrastruktúra-felügyelettel. | SUSE |
+| ![CipherTrust Felhőkezelő kulcs](media/azure-stack-marketplace-azure-items/cckm.png) | [CipherTrust Felhőkezelő kulcs](https://azuremarketplace.microsoft.com/marketplace/apps/thales-vormetric.ciphertrust-ckm) | Kihasználva a Microsoft Azure és az egyéb felhőszolgáltatók Bring Your Own Key (BYOK) API-k, CipherTrust felhőalapú kulcskezelő csökkenti a kulcskezelés összetettségét, és működési költségeket, mivel a titkosítási kulcsokat az multicloud életciklusát kézben központosított felügyeleti és láthatóságát. | A Thales Entrust |
 | ![ZeroDown szoftver BCaaS](media/azure-stack-marketplace-azure-items/zerodown.png) | [Üzletmenet-folytonossági ZeroDown szoftverfrissítési szolgáltatásként](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.bcaasforazure) | ZeroDown® szoftver technológia biztosítja az üzletmenet-folytonossági keresztül a vállalati adatok folyamatos hozzáférést rendelkező cégek (BCaaS) szolgáltatást™ architektúra, védelmet nyújtó alkalmazások és a tranzakció, ha hálózati kimaradásokat történik, amely a szokásos a vállalati cripple. | ZeroDown szoftver |

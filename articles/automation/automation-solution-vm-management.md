@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/08/2019
+ms.date: 02/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3fcab4c7456295d8f7414232bc90bc5ab352e43a
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 991a50828059d850627e1f8f3f34f65a55fdf3f6
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817881"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56890232"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Azure Automationben
 
@@ -41,6 +41,8 @@ Az aktuális megoldáshoz a korlátozások a következők:
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az ebben a megoldásban-forgatókönyvek egy [Azure-beli futtató fiók](automation-create-runas-account.md). A futtatófiók az előnyben részesített hitelesítési módszer azért tanúsítványalapú hitelesítést használ, előfordulhat, hogy lejárhat vagy gyakran változhat jelszó helyett.
+
+Javasoljuk, hogy egy önálló Automation-fiókot használja a VM indítása és leállítása megoldások. Ez azért, mert Azure modulverziók gyakran frissül, és a paraméterek változhat. Ezért nem feltétlenül egy újabb verziója az általa használt parancsmagok a VM indítása és leállítása a megoldás nincs frissítve az azonos kiadása ütemben történik. Javasoljuk, hogy a modul frissítések tesztelése egy teszt Automation-fiókban az Automation-fiók éles importálás előtt.
 
 ## <a name="deploy-the-solution"></a>A megoldás üzembe helyezése
 

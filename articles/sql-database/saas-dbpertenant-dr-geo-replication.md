@@ -12,12 +12,12 @@ ms.author: ayolubek
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: b2be42e4984ac7000cfb31ce6575c529b752db2d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b52e08485c5ce853f9c8eafaafd15f137aef10bb
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471147"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873448"
 ---
 # <a name="disaster-recovery-for-a-multi-tenant-saas-application-using-database-geo-replication"></a>Egy több-bérlős SaaS-alkalmazás, adatbázis-replikációval geo-vészhelyreállítás
 
@@ -241,7 +241,7 @@ A helyreállítási folyamat befejezését követően az alkalmazás és az öss
     * A _tenants2-dpt -&lt;felhasználói&gt;-helyreállítási_ az SQL server.  Új bérlők kiépítése során a szolgáltatáskimaradás elhárítása után ez a kiszolgáló használható.
     *   Az App Service nevű, _események – a wingtip-dpt -&lt;recoveryregion&gt;-&lt;felhasználó & gt_; Ez a helyreállítási példány az események alkalmazás. 
 
-    ![Az Azure helyreállítási erőforrások ](media/saas-dbpertenant-dr-geo-replication/resources-in-recovery-region.png)    
+    ![Az Azure helyreállítási erőforrások](media/saas-dbpertenant-dr-geo-replication/resources-in-recovery-region.png) 
     
 4. Nyissa meg a _tenants2-dpt -&lt;felhasználói&gt;-helyreállítási_ az SQL server.  Figyelje meg az adatbázis tartalmaz _hawthornhall_ és a rugalmas készlet _Pool1_.  A _hawthornhall_ adatbázis van konfigurálva, egy rugalmas adatbázist a _Pool1_ rugalmas készlet.
 

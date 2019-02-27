@@ -6,19 +6,18 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 02/26/2019
 ms.author: dobett
-ms.openlocfilehash: 02ea4b94f8d1442360bebb36fdbba13d973f8555
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 81cdd53769cc33daaed70ba824a0a3bbf68f8134
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242415"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877231"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Az eszközről a felhőbe irányuló üzenetek beolvasása a beépített végpontról
 
-Alapértelmezés szerint üzenetek irányíthatók át a beépített szolgáltatás felé néző végpont (**üzenetek/események**), amely kompatibilis a rendszer [az Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/
-). Ez a végpont a jelenleg csak közzétett használja a [AMQP](https://www.amqp.org/) 5671-es port-protokoll. Az IoT hub mutatja meg, hogy szabályozza a beépített üzenetkezelési Event Hub-kompatibilis végpont a következő tulajdonságok **üzenetek/események**.
+Alapértelmezés szerint üzenetek irányíthatók át a beépített szolgáltatás felé néző végpont (**üzenetek/események**), amely kompatibilis a rendszer [az Event Hubs](https://azure.microsoft.com/documentation/services/event-hubs/). Ez a végpont a jelenleg csak közzétett használja a [AMQP](https://www.amqp.org/) 5671-es port-protokoll. Az IoT hub mutatja meg, hogy szabályozza a beépített üzenetkezelési Event Hub-kompatibilis végpont a következő tulajdonságok **üzenetek/események**.
 
 | Tulajdonság            | Leírás |
 | ------------------- | ----------- |
@@ -27,7 +26,7 @@ Alapértelmezés szerint üzenetek irányíthatók át a beépített szolgáltat
 
 Az IoT Hub lehetővé teszi olyan kezelése a beépített eszköz-felhő a felhasználói csoportok végpont kap.
 
-Ha használ [üzenet-útválasztása](iot-hub-devguide-messages-d2c.md) és a [tartalék útvonal](iot-hub-devguide-messages-d2c.md#fallback-route) van engedélyezve van, egy lekérdezést minden olyan útvonal a nem megfelelő összes üzenetet írja a beépített végpont. Ha letiltja ezt az útvonalat tartalék, a rendszer elveti, amelyek nem egyeznek meg a lekérdezés üzeneteket.
+Ha használ [üzenet-útválasztása](iot-hub-devguide-messages-d2c.md) és a [tartalék útvonal](iot-hub-devguide-messages-d2c.md#fallback-route) van engedélyezve van, minden üzenetet, amely nem egyezik egy lekérdezést minden olyan útvonal nyissa meg a beépített végpont. Ha letiltja ezt az útvonalat tartalék, üzeneteket, amelyek nem egyeznek a lekérdezés a rendszer elveti.
 
 Módosíthatja a megőrzési időtartam vagy programozott módon használja a [az IoT Hub erőforrás-szolgáltató REST API-k](/rest/api/iothub/iothubresource), vagy a [az Azure portal](https://portal.azure.com).
 
@@ -35,33 +34,45 @@ Az IoT Hub tesz a **üzenetek/események** beépített végpont a háttérbeli s
 
 ## <a name="read-from-the-built-in-endpoint"></a>Olvassa el a beépített végpontról
 
-Használatakor a [Azure Service Bus SDK for .NET](https://www.nuget.org/packages/WindowsAzure.ServiceBus) vagy a [az Event Hubs - Event Processor Host](..//event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md), használhatja az IoT Hub kapcsolati karakterláncokat a megfelelő engedélyekkel. Ezután **üzenetek/események** Eseményközpont nevével.
+Néhány termékintegrációk és az Event Hubs SDK-k az IoT Hub veszik figyelembe, és a beépített végponthoz csatlakozik az IoT hub szolgáltatás kapcsolati karakterláncának használata.
 
-Amikor az SDK-k (vagy termékintegrációk), amely észleli az IoT Hub, le kell kérnie egy Event Hub-kompatibilis végpont és az Event Hub-kompatibilis nevet:
+Amikor az Event Hubs SDK-k vagy termékintegrációk, amelyek nem tudnak az IoT Hub, Event Hub-kompatibilis végponthoz és Event Hub-kompatibilis nevet van szükség. Ezek az értékek módon lehet lekérdezni a portálról:
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com) , és keresse meg az IoT hubot.
 
 2. Kattintson a **beépített végpontokról**.
 
-3. A **események** szakasz tartalmazza a következő értékeket: **Event Hub-kompatibilis végpont**, **Event Hub-kompatibilis nevet**, **partíciók**, **Megőrzési időtartama**, és **fogyasztói csoportok**.
+3. A **események** szakasz tartalmazza a következő értékeket: **A partíciók**, **Event Hub-kompatibilis nevet**, **Event Hub-kompatibilis végpont**, **megőrzési időtartama**, és **fogyasztóicsoportok**.
 
     ![Eszközről-a-felhőbe típusú üzenetek beállításai](./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png)
 
-Az IoT Hub SDK-t igényel az IoT Hub végpont neve, amely **üzenetek/események** alatt látható módon **végpontok**.
+A portálon az Event Hub-kompatibilis végpont mezőbe, amely a következőhöz hasonló teljes az Event Hubs kapcsolati karakterláncot tartalmazza: **Endpoint=sb://abcd1234namespace.servicebus.windows.net/;SharedAccessKeyName=iothubowner;SharedAccessKey=keykeykeykeykeykey=;EntityPath=iothub-ehub-abcd-1234-123456**. Ha az SDK-t használ a többi értéket igényel, majd azokat a következő lesz:
 
-Ha az SDK-t használ van szüksége egy **állomásnév** vagy **Namespace** értéket, távolítsa el a rendszer a a **Event Hub-kompatibilis végpont**. Például, ha az Event Hub-kompatibilis végpont **sb://iothub-ns-myiothub-1234.servicebus.windows.net/**, a **állomásnév** lenne  **iothub-ns-myiothub-1234.servicebus.windows.net**. A **Namespace** lenne **iothub-ns-myiothub-1234**.
+| Name (Név) | Érték |
+| ---- | ----- |
+| Végpont | sb://abcd1234namespace.servicebus.windows.net/ |
+| Gazdanév | abcd1234namespace.servicebus.windows.net |
+| Névtér | abcd1234namespace |
 
 Minden megosztott elérési házirendet, amely rendelkezik használhatja a **ServiceConnect** engedélyeket a megadott Event hubhoz való csatlakozáshoz.
 
-Ha hozhat létre egy Eseményközpont kapcsolati sztringjének korábbi információk segítségével van szüksége, használja a következő mintának:
+Az SDK-kat használhatja a beépített, amely közzéteszi az IoT Hub Event Hub-kompatibilis végponthoz csatlakozik a következők:
 
-`Endpoint={Event Hub-compatible endpoint};SharedAccessKeyName={iot hub policy name};SharedAccessKey={iot hub policy key}`
+| Nyelv | SDK | Példa | Megjegyzések |
+| -------- | --- | ------ | ----- |
+| .NET | https://github.com/Azure/azure-event-hubs-dotnet | [Gyors útmutató](quickstart-send-telemetry-dotnet.md) | Event Hubs-kompatibilis információival |
+ Java | https://github.com/Azure/azure-event-hubs-java | [Gyors útmutató](quickstart-send-telemetry-java.md) | Event Hubs-kompatibilis információival |
+| Node.js | https://github.com/Azure/azure-event-hubs-node | [Gyors útmutató](quickstart-send-telemetry-node.md) | Az IoT Hub kapcsolati karakterláncot használja. |
+| Python | https://github.com/Azure/azure-event-hubs-python | https://github.com/Azure/azure-event-hubs-python/blob/master/examples/iothub_recv.py | Az IoT Hub kapcsolati karakterláncot használja. |
 
-SDK-k és integrációk használható, amely közzéteszi az IoT Hub Event Hub-kompatibilis végpontokkal rendelkező tartalmazza az elemek a következők:
+A termék való integrációt, a beépített Event Hub-kompatibilis végpont, amely közzéteszi az IoT Hub használata a következők:
 
-* [Az Event Hubs Java ügyfél](https://github.com/Azure/azure-event-hubs-java).
+* [Az Azure Functions](https://docs.microsoft.com/azure/azure-functions/). Lásd: [adatfeldolgozás az Azure Functions az IoT hubról](https://azure.microsoft.com/resources/samples/functions-js-iot-hub-processing/).
+* [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/). Lásd: [data Stream bemeneti Stream analyticsbe](../stream-analytics/stream-analytics-define-inputs.md#stream-data-from-iot-hub).
+* [Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/). Lásd: [IoT hub-eseményforrás hozzáadása a Time Series Insights-környezethez](../time-series-insights/time-series-insights-how-to-add-an-event-source-iothub.md).
 * [Az Apache Storm spout](../hdinsight/storm/apache-storm-develop-csharp-event-hub-topology.md). Megtekintheti a [forrás spout](https://github.com/apache/storm/tree/master/external/storm-eventhubs) a Githubon.
 * [Az Apache Spark-integráció](../hdinsight/spark/apache-spark-eventhub-streaming.md).
+* [Az Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/).
 
 ## <a name="next-steps"></a>További lépések
 

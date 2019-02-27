@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/20/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed94b7571acb0ced124644dafc59d805d5112e8a
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 10b74b85235cc47375f6289b52371bc588105ad9
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268566"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56890096"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Oktatóanyag: Hozzáférés az Azure AD Graph API-hoz egy Windows VM rendszer által hozzárendelt felügyelt identitásával
 
@@ -43,10 +43,14 @@ Ez az oktatóanyag bemutatja, hogyan férhet hozzá a Microsoft Graph API-hoz é
 
 ## <a name="connect-to-azure-ad"></a>Csatlakozás az Azure AD szolgáltatáshoz
 
-Ahhoz, hogy hozzá tudja rendelni a virtuális gépet egy csoporthoz, illetve engedélyezni tudja a csoporttagságok lekérését a virtuális gép számára, csatlakoznia kell az Azure AD-hez.
+Ahhoz, hogy hozzá tudja rendelni a virtuális gépet egy csoporthoz, illetve engedélyezni tudja a csoporttagságok lekérését a virtuális gép számára, csatlakoznia kell az Azure AD-hez. Connect-AzureAD parancsmagot használhatja közvetlenül, vagy a TenantId paraméter az abban az esetben, ha több bérlő.
 
 ```powershell
 Connect-AzureAD
+```
+VAGY
+```powershell
+Connect-AzureAD -TenantId "Object Id of the tenant"
 ```
 
 ## <a name="add-your-vm-identity-to-a-group-in-azure-ad"></a>Virtuális gép identitásának hozzáadása egy csoporthoz az Azure AD-ben
@@ -79,7 +83,13 @@ A lehetőség használatához szüksége lesz Azure AD PowerShellre. Ha nincs te
    ```powershell
    Connect-AzureAD
    ```
+   Egy adott Azure Active Directory csatlakozni, használja a _TenantId_ paramétert a következők szerint:
 
+   ```PowerShell
+   Connect-AzureAD -TenantId "Object Id of the tenant"
+   ```
+
+   
 2. Futtassa az alábbi PowerShell-parancsokat, hogy hozzárendelje a ``Directory.Read.All`` alkalmazásengedélyt ahhoz a szolgáltatásnévhez, amely a virtuális gép identitását jelöli.
 
    ```powershell

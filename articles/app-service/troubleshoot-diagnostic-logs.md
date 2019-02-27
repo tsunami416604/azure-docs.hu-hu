@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d7bcff89ba7f76980287f9aad3413a6ef3f41b4f
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 7d877f467f06768c31679752d9deff1ca19d0003
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807422"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882875"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Az Azure App Service-alkalmazások diagnosztikai célú naplózásának engedélyezése
 ## <a name="overview"></a>Áttekintés
@@ -34,8 +34,8 @@ App Service-ben diagnosztikai funkciókat biztosít a naplózási információk 
 ### <a name="web-server-diagnostics"></a>Webes kiszolgálódiagnosztika
 Engedélyezheti vagy letilthatja a naplók a következő típusú:
 
-* **Részletes hibanaplózás** – részletes információk minden kéréshez, amely HTTP-állapotkód: 400 vagy nagyobb eredményez. Tartalmazhat, amelyek segíthetnek meghatározni, miért érdemes a kiszolgáló a következő hibakódot adta vissza információt. Egy HTML-fájl jön létre minden egyes hibához (a *D:\LogFiles\DetailedErrors* alapértelmezés szerint), és legfeljebb 50 hibák (fájlok) megmaradnak. A HTML-fájlok száma meghaladja az 50, amikor a rendszer automatikusan töröl a legrégebbi 26 fájlokat.
-* **Sikertelen kérelmek nyomkövetésére vonatkozó** – részletes információk a sikertelen kérelmek, beleértve a nyomkövetés feldolgozni a kérelmet, és az egyes összetevőkben ideje használja az IIS-összetevőt. Ez akkor hasznos, ha a webhely teljesítményének javítása vagy különíteni egy adott HTTP hiba.
+* **Részletes hibanaplózás** – részletes információk minden kéréshez, amely HTTP-állapotkód: 400 vagy nagyobb eredményez. Tartalmazhat, amelyek segíthetnek meghatározni, miért érdemes a kiszolgáló a következő hibakódot adta vissza információt. Egy HTML-fájl jön létre minden egyes hibához, az alkalmazás fájlrendszerében, és legfeljebb 50 hibák (fájlok) megmaradnak. A HTML-fájlok száma meghaladja az 50, amikor a rendszer automatikusan töröl a legrégebbi 26 fájlokat.
+* **Sikertelen kérelmek nyomkövetésére vonatkozó** – részletes információk a sikertelen kérelmek, beleértve a nyomkövetés feldolgozni a kérelmet, és az egyes összetevőkben ideje használja az IIS-összetevőt. Ez akkor hasznos, ha a webhely teljesítményének javítása vagy különíteni egy adott HTTP hiba. Egy mappa jön létre minden egyes hibához az alkalmazás fájlrendszerében. Fájl adatmegőrzési szabályzatok ugyanazok, mint a részletes hibanaplózást felett.
 * **Webalkalmazás-kiszolgáló naplózási** – HTTP-tranzakciót használatával kapcsolatos információkat a [W3C bővített naplófájlformátum](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Ez hasznos, teljes webhelymetrikák például kezelt kérések, vagy hogy hány kérésnek egy adott IP-címről számának meghatározásakor.
 
 ### <a name="application-diagnostics"></a>Alkalmazásdiagnosztika
@@ -213,6 +213,10 @@ A blob tárolt adatokat ehhez hasonlóan néz ki az alábbi példához:
 Sikertelen kérelmek nyomkövetési nevű XML-fájlokban van tárolva **fr ### .xml**. A naplózott információk megkönnyítése XSL stíluslapok nevű **freb.xsl** megtalálható az XML-fájlok könyvtárába. Ha megnyit egy XML-fájlt az Internet Explorer, az Internet Explorer a XSL stíluslap egy formázott megjelenítése a nyomkövetési adatok, az alábbi példához hasonló biztosításához használt:
 
 ![sikertelen kérelmek, a böngészőben](./media/web-sites-enable-diagnostic-log/tws-failedrequestinbrowser.png)
+
+> [!NOTE]
+> A formázott sikertelen kérelmek nyomkövetési megtekintéséhez egyszerűen, hogy nyissa meg az alkalmazás lapot a portálon. A bal oldali menüben válassza ki a **diagnosztizálása és a problémák megoldásában**, majd keresse meg az **sikertelen kérelmek nyomkövetési naplók**, majd kattintson a ikonra tallózása és megtekintése a nyomkövetést szeretne.
+>
 
 ### <a name="detailed-error-logs"></a>Részletes hibanaplókat
 Részletes hibanaplókat olyan HTML-dokumentumok, amelyek előfordult HTTP-hibák részletes információkat biztosítanak. Egyszerűen csak a HTML-dokumentumok, mivel azok tekinthet meg webböngészővel.

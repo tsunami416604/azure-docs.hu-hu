@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 0229b83a1b19e422954879ea9660373a34b18002
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 4c02df5684036aef078b0f79c70d3b66d60e013b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53340052"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881515"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Egyéni foglalási szabályzatok használata
 
@@ -27,8 +27,8 @@ Például lehetséges, meg szeretne vizsgálni, a tanúsítvány eszköz kiépí
 
 Ez a cikk bemutatja egy egyéni foglalási szabályzat egy C# nyelven írt Azure-függvény használatával. Két új IoT-központok jönnek létre jelölő egy *Contoso kenyérpirítók osztás* és a egy *Contoso megadott Hőtérképrészlet szivattyújának osztás*. Kiépítés biztosíthat telepítéshez el kell fogadni a következő utótag egyikével regisztrációs Azonosítót kell rendelkeznie:
 
-- **– contoso-tstrsd-007**: Contoso kenyérpirítók körzet
-- **– contoso-hpsd-088**: Contoso megadott Hőtérképrészlet szivattyújának körzet
+- **-contoso-tstrsd-007**: Contoso kenyérpirítók körzet
+- **-contoso-hpsd-088**: Contoso megadott Hőtérképrészlet szivattyújának körzet
 
 Az eszközök megkapják ezeket a regisztrációs azonosítót. a szükséges utótagokat egyike alapján Ezek az eszközök fog szimulált üzembe helyezési mintájával szerepel a [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c). 
 
@@ -525,11 +525,11 @@ Az alábbi táblázat bemutatja a várt forgatókönyvek és az eredmények hiba
 | Forgatókönyv | Eszközkiépítési szolgáltatás regisztrációs eredménye | Kiépítési SDK eredmények |
 | -------- | --------------------------------------------- | ------------------------ |
 | A webhook ad vissza 200 OK értékre egy érvényes IoT hub-állomásnévvel iotHubHostName | Eredmény állapota: Kiosztva  | SDK-t PROV_DEVICE_RESULT_OK hub információk mellett adja vissza. |
-| A webhook ad vissza 200 OK "iotHubHostName" az a válaszban található, de egy NULL értékű vagy üres karakterlánc beállítása | Eredmény állapota: Meghiúsult<br><br> Hibakód: CustomAllocationIotHubNotSpecified (400208) | SDK-t PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED adja vissza. |
+| A webhook ad vissza 200 OK "iotHubHostName" az a válaszban található, de egy NULL értékű vagy üres karakterlánc beállítása | Eredmény állapota: Meghiúsult<br><br> Hibakód: CustomAllocationIotHubNotSpecified (400208) | SDK returns PROV_DEVICE_RESULT_HUB_NOT_SPECIFIED |
 | A webhook adja vissza a 401-es nem engedélyezett | Eredmény állapota: Meghiúsult<br><br>Hibakód: CustomAllocationUnauthorizedAccess (400209) | SDK-t PROV_DEVICE_RESULT_UNAUTHORIZED adja vissza. |
 | Egyéni regisztrációt létrejött, az eszköz letiltása | Eredmény állapota: Letiltva | SDK-t PROV_DEVICE_RESULT_DISABLED adja vissza. |
-| A webhook függvény hibakód: > = 429-es | DPS' vezénylési számos alkalommal próbálkozik újra. Az újrapróbálkozási szabályzat jelenleg:<br><br>&nbsp;&nbsp;-Újrapróbálkozások száma: 10<br>&nbsp;&nbsp;-Kezdeti időköz: 1s<br>&nbsp;&nbsp;-Növekmény: 9-es | SDK-t fog hiba figyelmen kívül, és a egy másik get állapotüzenet küldése a megadott időtartam alatt |
-| A webhook bármely más állapotkódot adja vissza. | Eredmény állapota: Meghiúsult<br><br>Hibakód: CustomAllocationFailed (400207) | SDK-t PROV_DEVICE_RESULT_DEV_AUTH_ERROR adja vissza. |
+| A webhook függvény hibakód: > = 429-es | DPS' vezénylési számos alkalommal próbálkozik újra. Az újrapróbálkozási szabályzat jelenleg:<br><br>&nbsp;&nbsp;-Újrapróbálkozások száma: 10<br>&nbsp;&nbsp;-Kezdeti időköz: 1s<br>&nbsp;&nbsp;-Növekmény: 9s | SDK-t fog hiba figyelmen kívül, és a egy másik get állapotüzenet küldése a megadott időtartam alatt |
+| A webhook bármely más állapotkódot adja vissza. | Eredmény állapota: Meghiúsult<br><br>Hibakód: CustomAllocationFailed (400207) | SDK returns PROV_DEVICE_RESULT_DEV_AUTH_ERROR |
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
@@ -555,7 +555,7 @@ Az erőforráscsoport törlése a név alapján:
 ## <a name="next-steps"></a>További lépések
 
 - További Reprovisioning kapcsolatban lásd: [IoT Hub Device reprovisoning fogalmak](concepts-device-reprovision.md) 
-- Megszüntetés további tudnivalókért lásd: [hogyan eszközöket, amelyek korábban automatikus – kiépített megszüntetése ](how-to-unprovision-devices.md) 
+- Megszüntetés további tudnivalókért lásd: [hogyan eszközöket, amelyek korábban automatikus – kiépített megszüntetése](how-to-unprovision-devices.md) 
 
 
 

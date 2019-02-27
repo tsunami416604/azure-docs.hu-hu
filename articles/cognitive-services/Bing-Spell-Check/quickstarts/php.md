@@ -1,31 +1,32 @@
 ---
-title: 'Gyors útmutató: A Bing Spell Check API, a PHP'
+title: 'Gyors útmutató: Helyesírás-ellenőrzés a Bing Spell Check REST API és a PHP'
 titlesuffix: Azure Cognitive Services
-description: Információ és kódminták segítségével ismerkedhet meg a Bing Spell Check API használatának alapjaival.
+description: Ismerkedés a Bing Spell Check API segítségével ellenőrizze a helyesírást és a nyelvtant.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: quickstart
-ms.date: 09/14/2017
+ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: abce882edb9b6c97ea3b8a91219f8e2887cfb78d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bb952a9169710a7ba8248293e1eab30c7a2da6c0
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862309"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888933"
 ---
-# <a name="quickstart-for-bing-spell-check-api-with-php"></a>Rövid útmutató a Bing Spell Check API és a PHP használatához 
+# <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-php"></a>Gyors útmutató: Helyesírás-ellenőrzés a Bing Spell Check REST API és a PHP
 
-Ez a cikk bemutatja, hogyan használható a [Bing Spell Check API](https://azure.microsoft.com/services/cognitive-services/spell-check/) a PHP. A Spell Check API visszaadja a fel nem ismert szavak listáját a javasolt cserekifejezésekkel együtt. Általános esetben küld egy szöveget az API-nak, majd végrehajtja a javasolt cseréket a szövegben, vagy megmutatja azokat az alkalmazás felhasználójának, hogy ő dönthesse el, végre szeretné-e hajtani a cserét. Ez a cikk bemutatja, hogyan küldhet el egy olyan kérést, amely a „Hollo, wrld!” szöveget tartalmazza. A javasolt cserekifejezés a „Hello” és a „world” lesz.
+Ez a rövid útmutató segítségével, a Bing Spell Check REST API első hívását. Az egyszerű Python-alkalmazás egy kérést küld az API-t, és javasolt javítások listáját adja vissza. Bár ez az alkalmazás Python nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kód futtatásához [PHP 5.6.x](http://php.net/downloads.php) használata szükséges.
+* [PHP 5.6.x](http://php.net/downloads.php)
 
-Rendelkeznie kell egy, a **Bing Spell Check API 7-es verzióját** tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account). Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/#lang) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásakor kapott hozzáférési kulcsra, vagy beszerezhet egy fizetős előfizetői azonosítót az Azure-irányítópultról.  Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+[!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
+
 
 ## <a name="get-spell-check-results"></a>Spell Check-eredmények lekérése
 
@@ -130,13 +131,10 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
    ]
 }
 ```
-
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A Bing Spell Check oktatóanyaga](../tutorials/spellcheck.md)
+> [Hozzon létre egy egyoldalas webalkalmazást](../tutorials/spellcheck.md)
 
-## <a name="see-also"></a>Lásd még
-
-- [A Bing Spell Check áttekintése](../proof-text.md)
+- [Mi az a Bing Spell Check API?](../overview.md)
 - [A Bing Spell Check API 7-es verzió referenciája](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)

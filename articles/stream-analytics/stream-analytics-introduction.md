@@ -10,12 +10,12 @@ ms.topic: overview
 ms.workload: data-services
 ms.custom: seodec18
 ms.date: 12/07/2018
-ms.openlocfilehash: e14da7dff62d85c730034b620a6168b3d9b3dde7
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: d08fb915870355b49fafa91752cdd4264cbe6ad8
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53752690"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887539"
 ---
 # <a name="what-is-azure-stream-analytics"></a>Mi az az Azure Stream Analytics?
 
@@ -76,11 +76,18 @@ Az Azure Stream Analytics lekérdezési nyelvre használja mind a felhőben, és
 
 Felhőszolgáltatásként a Stream Analytics költségoptimalizált. Nincsenek előzetes költségek, csak [a felhasznált streamelési egységekért](stream-analytics-streaming-unit-consumption.md) és a feldolgozott adatmennyiségért kell fizetnie. Nem szükséges kötelezettségvállalás vagy fürtlétesítés. A streamelési feladatok az üzleti igényeknek megfelelően fel- és leskálázhatók. 
 
-## <a name="reliability"></a>Megbízhatóság 
+## <a name="mission-critical-ready"></a>Alapvető fontosságú kész
+Az Azure Stream Analytics világszerte több régióban érhető el, és célja, hogy üzleti szempontból alapvető fontosságú számítási feladatok futtatása támogatásával, megbízhatóság, biztonsági és megfelelőségi követelményeknek.
+### <a name="reliability"></a>Megbízhatóság
+Az Azure Stream Analytics biztosítja pontosan – Miután eseményfeldolgozás és, legalább egyszeri kézbesíti az eseményeket, így események soha nem elvesznek. Exacty-egyszeri feldolgozását garantálja a megadott kimeneti leírtak szerint [esemény kézbesítési garanciával könnyítik](https://docs.microsoft.com/en-us/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics). Az Azure Stream Analytics beépített helyreállítási képességekkel rendelkezik, arra az esetre, ha az eseményeket a kézbesítése sikertelen lesz. Stream Analytics is, biztosít beépített ellenőrzőpontok használata, a feladat állapotának fenntartásához és megismételhető eredményeket biztosít.
 
-Stream Analytics biztosítja a pontosan egyszeri esemény feldolgozása és, legalább egyszeri kézbesíti az eseményeket, tehát események soha nem elvesznek. Beépített helyreállítási képességekkel rendelkezik arra az esetre, ha az eseményeket nem sikerül kézbesíteni. Stream Analytics is, biztosít beépített ellenőrzőpontok használata, a feladat állapotának fenntartásához és megismételhető eredményeket biztosít.
+Felügyelt szolgáltatásként a Stream Analytics eseményfeldolgozás egy 99,9 %-os rendelkezésre állást a percenkénti szintjén a garantálja. További információkért lásd: a [Stream Analytics SLA](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/) témánál talál további információkat. 
 
-Felügyelt szolgáltatásként a Stream Analytics Eseményfeldolgozási 99,9 %-os rendelkezésre állással biztosítja. További információkért lásd: a [Stream Analytics SLA](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/) témánál talál további információkat. 
+### <a name="security"></a>Biztonság
+Biztonság az Azure Stream Analytics titkosítja a bejövő és kimenő kommunikáció minden esetben, valamint támogatja a TLS 1.2. Beépített ellenőrzőpontokat is titkosítva van. Stream Analytics nem tárolja a bejövő adatokat, mivel minden feldolgozás a memóriában történik. 
+
+### <a name="compliance"></a>Megfelelőség
+Az Azure Stream Analytics a következő több megfelelőségi tanúsítványok leírtak szerint a [áttekintése az Azure megfelelőségi](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942). 
 
 ## <a name="performance"></a>Teljesítmény
 

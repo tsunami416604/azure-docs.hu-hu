@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: e7f8eef2c3422084846462e2f6159a8b8be7167f
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: f615c4ca9ffc56daafcedd711f27672e0855e4fa
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301825"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883947"
 ---
 # <a name="azure-security-technical-capabilities"></a>Az Azure biztonságtechnikai képességek
 
@@ -169,7 +169,7 @@ Az előfizetések és a címtár társítás is. A könyvtár határozza meg, ho
 
 A vállalatok biztonsági jellegű szükségük van a pontos engedélyeket ad az alkalmazottak kell összpontosítania. Túl sok engedély egy fiókot a támadók tehetők közzé. Túl kevés engedélyek jelenti azt, hogy az alkalmazottak nem munkavégzéséhez hatékony. [Az Azure szerepköralapú hozzáférés-vezérlés (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview) segítségével részletes hozzáférés-vezérlést Azure felajánlásával oldja meg a problémát.
 
-![Védett erőforrás-hozzáférés ](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig4.png)
+![Védett erőforrás-hozzáférés](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig4.png)
 
 Az RBAC használata lehetővé teszi, hogy elkülönítse a kötelességeket a csapaton belül, valamint csak olyan mértékű hozzáférést biztosítson, amelyre a felhasználóknak a feladataik elvégzéséhez szüksége van. Helyett, így mindenki korlátozás nélküli engedélyeket az Azure-előfizetés vagy erőforrásokhoz, engedélyezheti csak bizonyos műveleteket. Ha például az RBAC használatával lehetővé teszik egy alkalmazott egy előfizetésben található virtuális gépek kezelése, miközben egy másik kezelheti az SQL-adatbázisok ugyanazon az előfizetésen belül.
 

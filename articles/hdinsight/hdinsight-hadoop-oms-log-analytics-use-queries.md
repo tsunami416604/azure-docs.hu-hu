@@ -1,6 +1,6 @@
 ---
-title: Az Azure HDInsight-fürtök figyelése az Azure Log Analytics lekérdezési
-description: Ismerje meg, hogyan lekérdezéseket futtathat az Azure Log Analytics egy HDInsight-fürtön futó feladatok figyelésére.
+title: Naplózza a lekérdezést az Azure Monitor Azure HDInsight-fürtök figyelése
+description: Ismerje meg, hogyan futtathat lekérdezéseket a HDInsight-fürtben futó feladatok figyelése az Azure Monitor-naplók.
 services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,24 +9,26 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: 400ae8ffe86b5ba66a53835c720f911ddb889bd9
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: e1187867fc9da9a89f92d7b321c8703ee7a8a407
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386502"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889256"
 ---
-# <a name="query-azure-log-analytics-to-monitor-hdinsight-clusters"></a>A HDInsight-fürtök figyelése az Azure Log Analytics lekérdezési
+# <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>Lekérdezés az Azure Monitor naplózza a HDInsight-fürtök figyelése
 
-Ismerje meg, néhány alapvető forgatókönyv az Azure HDInsight-fürtök figyelése az Azure Log Analytics használatával:
+Ismerje meg, néhány alapvető forgatókönyv az Azure HDInsight-fürtök figyelése az Azure Monitor naplóira használatával:
 
 * [HDInsight-fürt metrikát elemezhet](#analyze-hdinsight-cluster-metrics)
 * [Adott naplóüzenetek keresése](#search-for-specific-log-messages)
 * [Hozzon létre miatti riasztás](#create-alerts-for-tracking-events)
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy HDInsight-fürtön az Azure Log Analytics használatához konfigurált, és a HDInsight-fürtre jellemző Log Analytics felügyeleti megoldásai hozzáadni a munkaterülethez. Útmutatásért lásd: [használata az Azure Log Analytics és a HDInsight-fürtök együttes](hdinsight-hadoop-oms-log-analytics-tutorial.md).
+* Egy HDInsight-fürtön az Azure Monitor naplók konfigurált, és a HDInsight-fürtre jellemző az Azure Monitor naplók figyelési megoldások a munkaterülethez hozzáadott. Útmutatásért lásd: [használata az Azure Monitor naplózza a HDInsight-fürtökkel](hdinsight-hadoop-oms-log-analytics-tutorial.md).
 
 ## <a name="analyze-hdinsight-cluster-metrics"></a>HDInsight-fürt metrikát elemezhet
 
@@ -34,7 +36,7 @@ Ismerje meg, hogyan keresse meg a HDInsight-fürthöz adott mérőszámok.
 
 1. Nyissa meg a Log Analytics-munkaterületet, amely kapcsolódik a HDInsight-fürtön az Azure Portalról.
 2. Válassza ki a **naplóbeli keresés** csempére.
-3. Írja be a következő lekérdezést a keresőmezőbe keresése az összes HDInsight-fürt úgy konfigurálva, hogy az Azure Log Analytics használatához, és válassza ki az összes rendelkezésre álló metrikák az összes metrikát **futtatása**.
+3. Írja be a következő lekérdezést a keresőmezőbe keresése az összes HDInsight-fürtök úgy konfigurálva, hogy az Azure Monitor naplóira, és válassza az összes rendelkezésre álló metrikák minden metrika **futtatása**.
 
         search *
 
@@ -67,7 +69,7 @@ Ismerje meg, hogyan keresse meg a hibaüzeneteket egy adott időszakban. A lép�
 
 1. Nyissa meg a Log Analytics-munkaterületet, amely kapcsolódik a HDInsight-fürtön az Azure Portalról.
 2. Válassza ki a **naplóbeli keresés** csempére.
-3. Írja be a következő lekérdezés az összes HDInsight-fürt Azure Log Analytics használatára konfigurált összes hibaüzenetek kereséséhez, és válassza ki **futtatása**. 
+3. Írja be a következő lekérdezés az összes HDInsight-fürt az Azure Monitor naplóira használatára konfigurált összes hibaüzenetek kereséséhez, és válassza ki **futtatása**. 
 
          search "Error"
 
@@ -117,11 +119,11 @@ Szerkesztéséhez, vagy egy meglévő riasztás törléséhez:
 3. Válassza ki a kívánt riasztásra, szerkesztéséhez vagy törléséhez.
 4. A következő lehetőségek közül választhat: **Mentés**, **elveti**, **letiltása**, és **törlése**.
 
-    ![HDInsight a Log Analytics – törlés szerkesztése](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
+    ![HDInsight az Azure Monitor-naplók Szerkesztés – törlés](media/hdinsight-hadoop-oms-log-analytics-use-queries/hdinsight-log-analytics-edit-alert.png)
 
-További információkért lásd: [használata a Log Analytics riasztási szabályai](../log-analytics/log-analytics-alerts-creating.md).
+További információkért lásd: [létrehozása, megtekintése és kezelése az Azure Monitor használatával metrikákhoz kapcsolódó riasztások](../azure-monitor/platform/alerts-metric.md).
 
 ## <a name="see-also"></a>Lásd még
 
-* [A Log Analytics használata](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
-* [A Log Analytics riasztási szabályok létrehozása](../log-analytics/log-analytics-alerts-creating.md)
+* [OMS Log Analytics: Nézettervező](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
+* [Létrehozása, megtekintése és kezelése az Azure Monitor használatával metrikákhoz kapcsolódó riasztások](../azure-monitor/platform/alerts-metric.md)

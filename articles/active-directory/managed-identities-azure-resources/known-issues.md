@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 12/12/2017
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1162eb7964c8ec40f2b342e33044b60385cbd5f6
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: f7829627352815bc96a7a81bcbbc7e51240c858e
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727485"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870856"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Gyakori kérdések és ismert problémái az Azure-erőforrások felügyelt identitásokból
 
@@ -38,7 +38,7 @@ Nem, nem is tervezzük felügyelt identitások támogatásához az Azure-erőfor
 
 ### <a name="does-managed-identities-for-azure-resources-work-with-the-active-directory-authentication-library-adal-or-the-microsoft-authentication-library-msal"></a>Felügyelt identitások Azure-erőforrások számára az Active Directory Authentication Library (ADAL) vagy a Microsoft-hitelesítési tár (MSAL) működik?
 
-Nem, felügyelt identitások, az Azure-erőforrások még nem integrált az adal-t vagy az MSAL. További információ az Azure-erőforrások a REST-végpont használatával felügyelt identitások tokenbeolvasás: [felügyelt identitások használata az Azure-erőforrások egy Azure-beli virtuális gépen a hozzáférési jogkivonat beszerzése ](how-to-use-vm-token.md).
+Nem, felügyelt identitások, az Azure-erőforrások még nem integrált az adal-t vagy az MSAL. További információ az Azure-erőforrások a REST-végpont használatával felügyelt identitások tokenbeolvasás: [felügyelt identitások használata az Azure-erőforrások egy Azure-beli virtuális gépen a hozzáférési jogkivonat beszerzése](how-to-use-vm-token.md).
 
 ### <a name="what-is-the-security-boundary-of-managed-identities-for-azure-resources"></a>Mi az Azure-erőforrások felügyelt identitások biztonsági határ?
 

@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 52c5cb640bfb861fb2da52ee711fe3955a169bcf
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 6fedc1b9a6b88419dbcae41b5bb6f89bd8c5cbf7
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244028"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56886877"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>A Text Analytics REST API meghívása
 
@@ -43,7 +43,7 @@ Ugyanazt a dokumentumokat, a Text Analytics művelet jelenleg nyújthatja: véle
 | Elem | Érvényes értékek | Kötelező? | Használat |
 |---------|--------------|-----------|-------|
 |`id` |Az adattípus karakterlánc, de a gyakorlatban dokumentumazonosító általában a egész szám lehet. | Szükséges | A rendszer adja át a kimenetet struktúra azonosítóját használja. A kérelemben szereplő minden egyes azonosító nyelvkódokról, kulcskifejezéseket és véleménypontszámának jön létre.|
-|`text` | Strukturálatlan nyers szöveg, legfeljebb 5000 karakter hosszú lehet. | Szükséges | Nyelv észlelése, a szöveg bármilyen nyelven lehet kifejezni. A hangulatelemzést, kulcsszókeresést és entitás azonosítása, a szöveget kell lennie egy [támogatott nyelven](../text-analytics-supported-languages.md). |
+|`text` | Strukturálatlan nyers szöveg, legfeljebb 5,120 karakter hosszú lehet. | Szükséges | Nyelv észlelése, a szöveg bármilyen nyelven lehet kifejezni. A hangulatelemzést, kulcsszókeresést és entitás azonosítása, a szöveget kell lennie egy [támogatott nyelven](../text-analytics-supported-languages.md). |
 |`language` | 2 karakterből álló [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) helykódja egy [támogatott nyelven](../text-analytics-supported-languages.md) | Változó | Szükséges a hangulatelemzést, kulcsszókeresést és entitáskapcsolás; nyelv észlelése esetén nem kötelező. Nincs hiba, ha lehetséges, azonban az elemzés, e nélkül integritása csökken. A nyelvi kód meg kell egyeznie a `text` adnia. |
 
 Korlátok kapcsolatos további információkért lásd: [Text Analytics áttekintés > Data korlátai](../overview.md#data-limits). 

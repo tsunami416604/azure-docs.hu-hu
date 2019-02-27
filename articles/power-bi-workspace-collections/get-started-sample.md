@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: fdbbfaf4a4c3df90302b0b69e4964b7a073f2fa4
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 4a7da4a6e7b4b395063f7e4c9a3e97d610492ef6
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237960"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882663"
 ---
 # <a name="get-started-with-power-bi-workspace-collections-sample"></a>Ismerkedés a Power BI-Munkaterületcsoportok minta
 
@@ -28,7 +28,7 @@ Mielőtt továbbmennénk, ahova menteni szeretné az alábbi forrásanyagokat: E
 
 * [Munkaterület webes mintaalkalmazás](https://go.microsoft.com/fwlink/?LinkId=761493)
 * [A Power BI munkaterületi gyűjtemények API-referencia](https://msdn.microsoft.com/library/azure/mt711507.aspx)
-* [A Power BI .NET SDK-val ](https://go.microsoft.com/fwlink/?LinkId=746472) (NuGet-n keresztül érhető el)
+* [A Power BI .NET SDK-val](https://go.microsoft.com/fwlink/?LinkId=746472) (NuGet-n keresztül érhető el)
 * [A jelentés JavaScript beágyazási minta](https://microsoft.github.io/PowerBI-JavaScript/demo)
 
 > [!NOTE]

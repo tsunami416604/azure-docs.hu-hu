@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: jingwang
-ms.openlocfilehash: c6421ef5eda45002d8fa9daeee4789cbbc4daedd
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 6b7660610e18605ae1af57ec92d2e5d8ddcb40a8
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670253"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871371"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure SQL Data Warehouse-ból az Azure Data Factory használatával 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
-> * [Verzió1 ](v1/data-factory-azure-sql-data-warehouse-connector.md)
+> * [Verzió1](v1/data-factory-azure-sql-data-warehouse-connector.md)
 > * [Aktuális verzió](connector-azure-sql-data-warehouse.md)
 
 Ez a cikk azt ismerteti, hogyan Azure Data Factory másolási tevékenység használatával másolja az adatokat, vagy az Azure SQL Data Warehouse-ból. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.

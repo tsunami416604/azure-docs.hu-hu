@@ -16,12 +16,12 @@ ms.workload: media
 ms.date: 02/07/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 0f4fd963ce3649c901a76f6677be059ba5be25af
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: d6805b3d60e5e30d35acc12c5564498830ddd8fb
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56337561"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881727"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Az Azure Media Services v3 ismertetése
 
@@ -76,7 +76,7 @@ Tekintse meg a [beolvasni a tartalom a fő házirend - .NET](get-content-key-pol
 
 ## <a name="how-can-i-get-started-with-v3"></a>Hogyan kezdhetem meg a v3 használatát?
 
-Fejlesztési variuos eszközök és SDK-k használata a Media Services v3 API-val kapcsolatos további információkért lásd: [elkezdje](developers-guide.md).
+Fejlesztési munka a különféle eszközök és SDK-k használata a Media Services v3 API-val kapcsolatos további információkért lásd: [elkezdje](developers-guide.md).
 
 ## <a name="v3-content-map"></a>V3-tartalmak térképét
 
@@ -88,7 +88,7 @@ A Media Services v3 tartalmat az alábbi struktúrával (a tartalomjegyzéket is
 | Gyors útmutatók | Az új ügyfelek gyorsan kipróbálhatja a Media Services alapvető nap-1 utasítások megjelenítése.|
 | Oktatóanyagok | A Media Services leggyakoribb feladatok egy részének megjelenítése forgatókönyv-alapú eljárásokat.|
 | Példák | Kódminták mutató hivatkozásokat tartalmaz. |
-| Alapelvek | Magyarázatra van szüksége, és a Media Services v3 funkcióinak és diagramokat tartalmaz. Az alábbi témakörök ismertetik az alapvető fogalmakkal fejlesztés megkezdése előtt át kell tekinteni.<br/><br/>* A felhő feltöltés és tárolás<br/>* Encoding<br/>* A médiaelemzés<br/>* Packaging, delivery, protection<br/>* Élő streaming<br/>* A folyamatos figyelése<br/>* Player ügyfelek<br/><br/>és továbbiakat. |
+| Alapelvek | Magyarázatra van szüksége a Media Services v3 kapcsolatos fogalmakat és funkciót tartalmaz. Az alábbi témakörök ismertetik az alapvető fogalmakkal fejlesztés megkezdése előtt át kell tekinteni.<br/><br/>* A felhő feltöltés és tárolás<br/>* Encoding<br/>* A médiaelemzés<br/>* Packaging, delivery, protection<br/>* Élő streaming<br/>* A folyamatos figyelése<br/>* Player ügyfelek<br/><br/>és továbbiakat. |
 | Útmutatók | Bemutatják, hogyan lehet egy adott feladat végrehajtásához.|
 
 ## <a name="next-steps"></a>További lépések

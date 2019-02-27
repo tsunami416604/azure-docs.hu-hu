@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 03/20/2018
-ms.openlocfilehash: 441b56aa683ac01566d2fd2877b9b8b912194f3a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 869bee8fcd0d1c2876ac7317fb239a1d5c61cb87
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536525"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56864549"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-the-azure-portal"></a>Oktatóanyag: Azure Database for postgresql-hez az Azure portal használatával tervezése
 
@@ -78,7 +78,7 @@ Az Azure Database for PostgreSQL szolgáltatás a kiszolgáló szintjén haszná
 
 1.  Miután befejeződött az üzembe helyezés, kattintson az **Összes erőforrás** elemre a bal oldali menüben, és írja be a **mydemoserver** nevet az újonnan létrehozott kiszolgáló megkereséséhez. Kattintson a keresési eredményekben listázott kiszolgálónévre. Megnyílik a kiszolgáló **Áttekintés** oldala, amely további konfigurációs lehetőségeket biztosít.
 
-   ![Azure-adatbázis PostgreSQL-hez - Kiszolgáló keresés ](./media/tutorial-design-database-using-azure-portal/4-locate.png)
+   ![Azure-adatbázis PostgreSQL-hez - Kiszolgáló keresés](./media/tutorial-design-database-using-azure-portal/4-locate.png)
 
 2.  A kiszolgáló lapján válassza a **Kapcsolatbiztonság** elemet. 
 
@@ -98,7 +98,7 @@ Amikor létrehozta az Azure Database for PostgreSQL-kiszolgálót, az alapértel
 
 1. Az Azure Portal bal oldali menüjében kattintson az **Összes erőforrás** elemre, és keressen rá az újonnan létrehozott kiszolgálóra.
 
-   ![Azure-adatbázis PostgreSQL-hez - Kiszolgáló keresés ](./media/tutorial-design-database-using-azure-portal/4-locate.png)
+   ![Azure-adatbázis PostgreSQL-hez - Kiszolgáló keresés](./media/tutorial-design-database-using-azure-portal/4-locate.png)
 
 2. Kattintson a **mydemoserver** kiszolgálónévre.
 

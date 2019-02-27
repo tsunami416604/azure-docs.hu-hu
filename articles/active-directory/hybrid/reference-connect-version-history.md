@@ -16,12 +16,12 @@ ms.date: 12/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3851e4c35b333e862ead296ad1e8448c3317228
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0e5b06ad551b45bc0c892bc789c6f5c5a27b5bb0
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210492"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882977"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verziókiadások előzményei
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden hozzárendelések nem gyarapítsa alkalmazható.
@@ -135,7 +135,7 @@ Az Azure AD Connect frissítés sikertelen lesz, ha SQL mindig a rendelkezésre 
 ### <a name="new-features-and-improvements"></a>Új funkciók és fejlesztések
 
 - A Ping összevonni integrációja az Azure AD Connect már általánosan elérhető. [Tudjon meg többet összevont Azure ad-Ping összevonása](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-user-signin#federation-with-pingfederate)
-- Az Azure AD Connect létrehozza a biztonsági mentés az Azure AD-megbízhatóság az AD FS minden egyes frissítés történik, és tárolja azokat az egyszerű helyreállítás külön fájlt, ha szükséges. [Ismerje meg, további információt az új funkciók és az Azure AD-kezelés az Azure AD Connect megbízható ](https://aka.ms/fedtrustinaadconnect).
+- Az Azure AD Connect létrehozza a biztonsági mentés az Azure AD-megbízhatóság az AD FS minden egyes frissítés történik, és tárolja azokat az egyszerű helyreállítás külön fájlt, ha szükséges. [Ismerje meg, további információt az új funkciók és az Azure AD-kezelés az Azure AD Connect megbízható](https://aka.ms/fedtrustinaadconnect).
 - Új hibaelhárítási eszköz segítségével elsődleges e-mail-cím megváltoztatása, és a fiókot a globális címlista elrejtése hibaelhárítása
 - Az Azure AD Connect lett frissítve a legújabb SQL Server 2012 Native Client
 - Amikor felhasználói bejelentkezés a Jelszókivonat-szinkronizálás és átmenő hitelesítés a "Change felhasználói bejelentkezési" feladat, az alapértelmezés szerint engedélyezve van a közvetlen egyszeri bejelentkezés jelölőnégyzetet.

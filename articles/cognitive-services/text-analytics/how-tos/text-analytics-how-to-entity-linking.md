@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: b2330d322c6939ba6d9581c125c512fcea9f924b
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 135b684c67776da7d722074abe185b5ed2a860fa
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242749"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889409"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Megnevezett entitások felismerése használata a Text Analytics (előzetes verzió)
 
@@ -74,7 +74,7 @@ A JSON-dokumentumnak ilyen formátumban kell lennie: azonosító, szöveg, nyelv
 
 Lásd: által jelenleg támogatott nyelvek [ebben a listában](../text-analytics-supported-languages.md).
 
-A dokumentum méretének 5000 karakter alatt kell maradnia, és legfeljebb 1000 elem (azonosító) lehet egy kollekcióban. A kollekció elküldése a kérelem törzsében történik. A következő példa olyan bemutatásáért, előfordulhat, hogy küldje el az entitás hivatkozási célból tartalom.
+Dokumentum mérete kell lennie a 5,120 karakter / dokumentum, és legfeljebb 1000 rendelkezhet gyűjteményenként (azonosítók) elemet. A kollekció elküldése a kérelem törzsében történik. A következő példa olyan bemutatásáért, előfordulhat, hogy küldje el az entitás hivatkozási célból tartalom.
 
 ```
 {"documents": [{"id": "1",

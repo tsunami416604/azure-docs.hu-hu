@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: cd50a957894c2c6c4944b0ba3768a00754abaa15
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: eb7d5acdcfade47ca916dcfd58aa271a9b1298ac
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835081"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867139"
 ---
 # <a name="automate-mobility-service-installation-with-system-center-configuration-manager"></a>Automatizálhatja a mobilitási szolgáltatás telepítése a System Center Configuration Managerrel
 
@@ -24,7 +24,7 @@ Ez a cikk egy példát, hogyan használhatja a System Center Configuration Manag
 
 Ez a cikk a System Center Configuration Manager 2012 R2 használatával mutatja be a telepítési tevékenységet. Azt feltételezi, hogy a verzió a **9.9.4510.1** vagy újabb verzióját a mobilitási szolgáltatást.
 
-Azt is megteheti, automatizálhatja a mobilitási szolgáltatás telepítése [Azure Automation DSC ](vmware-azure-mobility-deploy-automation-dsc.md).
+Azt is megteheti, automatizálhatja a mobilitási szolgáltatás telepítése [Azure Automation DSC](vmware-azure-mobility-deploy-automation-dsc.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -232,12 +232,12 @@ A Configuration Manager konzol használatával figyelheti az üzembehelyezési f
    `cd %ProgramData%\ASR\home\svsystems\pushinstallsvc\repository`
 
 6. A következő fájlokat másolja a **MobSvcLinux** mappájába, a hálózati megosztás:
-   * A Microsoft-ASR\_UA\*bites RHEL6-64*release.tar.gz
+   * Microsoft-ASR\_UA\*RHEL6-64*release.tar.gz
    * Microsoft-ASR\_UA\*RHEL7-64\*release.tar.gz
    * Microsoft-ASR\_UA\*SLES11-SP3-64\*release.tar.gz
    * Microsoft-ASR\_UA\*SLES11-SP4-64\*release.tar.gz
    * Microsoft-ASR\_UA\*OL6-64\*release.tar.gz
-   * A Microsoft-ASR\_UA\*UBUNTU-14.04-64\*release.tar.gz
+   * Microsoft-ASR\_UA\*UBUNTU-14.04-64\*release.tar.gz
 
 
 7. Másolja az alábbi kódot, és mentse a fájt **install_linux.sh** be a **MobSvcLinux** mappát.

@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 4bc76f67b2d8908abe601aa1fcdfd1962678c548
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2704981b92725d24562b02c427a72dfc59ff2029
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865651"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870550"
 ---
 # <a name="quickstart-change-model-using-go"></a>Gyors útmutató: Modell módosítása a Go használatával
 
@@ -45,7 +45,7 @@ Ebben a rövid útmutatóban átadhat kimondott szövegeket egy LUIS-végpontnak
 
 3. Adjon hozzá általános HTTP-kérelemfüggvényt, amelyben a szerzői kulcs fejlécbeli átadása is szerepel. 
 
-   [!code-go[Add HTTP request function which includes passing authoring key in header. ](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=12-36 "Add HTTP request function, which includes passing authoring key in header. ")]
+   [!code-go[Add HTTP request function which includes passing authoring key in header.](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=12-36 "Add HTTP request function, which includes passing authoring key in header. ")]
 
 4. Adjon hozzá kimondott példaszövegeket a JSON-fájlból.
 
@@ -53,15 +53,15 @@ Ebben a rövid útmutatóban átadhat kimondott szövegeket egy LUIS-végpontnak
 
 5. Kérje a betanítást. Egy segítő függvénnyel a betanítási állapottal megegyező útvonalhoz tartozó műveletet állítja be. 
 
-   [!code-go[Request training. ](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=77-86 "Request training. ")]
+   [!code-go[Request training.](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=77-86 "Request training. ")]
 
 6. Kérje le a betanítási állapotot. Egy segítő függvénnyel a betanítási kérésével megegyező útvonalhoz tartozó műveletet állítja be. 
 
-   [!code-go[Request training status. ](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=87-90 "Request training status. ")]
+   [!code-go[Request training status.](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=87-90 "Request training status. ")]
 
 7. Adjon hozzá fő függvényt a parancssori elemzés kezeléséhez.
 
-   [!code-go[Add main function to handle command line parsing. ](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=38-60 "Add main function to handle command-line parsing.")]
+   [!code-go[Add main function to handle command line parsing.](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=38-60 "Add main function to handle command-line parsing.")]
 
 ## <a name="add-an-utterance-from-the-command-line-train-and-get-status"></a>Kimondott szöveg hozzáadása a parancssorból, betanítás és állapot lekérése
 

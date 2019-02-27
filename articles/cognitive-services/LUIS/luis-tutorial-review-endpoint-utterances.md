@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: c4b14c62896609be32d0a97f2f373d62982204bf
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 25841971a2e7921c89c63032e8fd48bc528263aa
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56732823"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878173"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Oktatóanyag: Javítsa ki a nem tudja, hogy előrejelzéseket végpont utterances áttekintésével
 Ebben az oktatóanyagban az alkalmazás előrejelzéseit fejlesztheti a LUIS által nem ismert LUIS HTTP-végponton keresztül kapott kimondott szövegek ellenőrzésével vagy javításával. Bizonyos kimondott szövegek esetében a szándékot, míg más kimondott szövegek esetében az entitást kell ellenőrizni. A végponti kimondott szövegek áttekintésének az ütemezett LUIS-karbantartás szerves részét kell képeznie. 
@@ -68,11 +68,11 @@ Ehhez a következő lépések szükségesek:
 
 1. Válassza a **Review endpoint utterances** (Végponti kimondott szövegek áttekintése) elemet a bal oldali navigációs menüben. A lista az **ApplyForJob** szándék szerint van szűrve. 
 
-    [ ![A bal oldali navigációs menüben található Végponti kimondott szövegek áttekintése gomb képernyőképe](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png#lightbox)
+    [![Képernyőkép a felülvizsgálati végpont utterances gomb bal oldali navigációs](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png#lightbox)
 
 1. Váltson az **Entities view** (Entitások nézet) nézetre a címkézett entitások megtekintéséhez. 
     
-    [ ![A Végponti kimondott szövegek áttekintése képernyőképe, az Entitások nézet kapcsolójának kiemelésével](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png#lightbox)
+    [![Képernyőkép a felülvizsgálati végpont utterances az entitások megtekintéséhez a váltógomb kiemelésével](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png#lightbox)
 
     |Kimondott szöveg|Megfelelő szándék|Hiányzó entitások|
     |:--|:--|:--|
@@ -82,15 +82,15 @@ Ehhez a következő lépések szükségesek:
 
 1. Az `I'm looking for a job with Natual Language Processing` szándék esetében válassza ki a megfelelő szándékot (**GetJobInformation**) az **Aligned intent** (Igazított szándék) oszlopban. 
 
-    [ ![A Végponti kimondott szövegek áttekintésének képernyőképe, a kimondott szöveg igazítása a szándékhoz](./media/luis-tutorial-review-endpoint-utterances/align-intent-1.png)](./media/luis-tutorial-review-endpoint-utterances/align-intent-1.png#lightbox)
+    [![Képernyőkép a felülvizsgálati végpont kimondott szöveg utterance (kifejezés) beszédszándék igazítása](./media/luis-tutorial-review-endpoint-utterances/align-intent-1.png)](./media/luis-tutorial-review-endpoint-utterances/align-intent-1.png#lightbox)
 
 1. Ugyanabban a kimondott szövegben a `Natural Language Processing` entitása a keyPhrase. Ennek ehelyett **Job** (Állás) entitásnak kell lennie. Válassza a `Natural Language Processing` lehetőséget, majd a **Job** (Állás) entitást a listából.
 
-    [ ![A Végponti kimondott szövegek áttekintésének képernyőképe, entitás címkézése kimondott szövegben](./media/luis-tutorial-review-endpoint-utterances/label-entity.png)](./media/luis-tutorial-review-endpoint-utterances/label-entity.png#lightbox)
+    [![Képernyőkép a felülvizsgálati végpont kimondott szöveg címkézés entitás az utterance (kifejezés)](./media/luis-tutorial-review-endpoint-utterances/label-entity.png)](./media/luis-tutorial-review-endpoint-utterances/label-entity.png#lightbox)
 
 1. Ugyanabban a sorban válassza ki a bekarikázott pipát az **Add to aligned intent** (Hozzáadás igazított szándékhoz) oszlopban. 
 
-    [ ![Képernyőkép: Kimondott szöveg igazításának véglegesítése a szándékban](./media/luis-tutorial-review-endpoint-utterances/align-utterance.png)](./media/luis-tutorial-review-endpoint-utterances/align-utterance.png#lightbox)
+    [![Képernyőkép az utterance (kifejezés) igazítása a leképezés véglegesítése](./media/luis-tutorial-review-endpoint-utterances/align-utterance.png)](./media/luis-tutorial-review-endpoint-utterances/align-utterance.png#lightbox)
 
     Ez a művelet áthelyezi a kimondott szöveget a **Review endpoint utterances** (Végponti kimondott szövegek áttekintése) helyről a **GetJobInformation** szándékba. A végponti kimondott szöveg mostantól ennek a szándéknak a példaként szolgáló kimondott szövege. 
 
@@ -98,7 +98,7 @@ Ehhez a következő lépések szükségesek:
 
 1. Ha minden kimondott szöveg megfelelő, jelölje be az egyes sorok elején található jelölőnégyzeteket, majd válassza az **Add selected** (Kiválasztott hozzáadása) lehetőséget a kimondott szövegek megfelelő igazításához. 
 
-    [ ![Képernyőkép: Megmaradó kimondott szövegek véglegesítése az igazított szándékhoz](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png)](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png#lightbox)
+    [![Képernyőkép a fennmaradó utterances igazított beszédszándék véglegesítése](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png)](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png#lightbox)
 
 1. A listán már nem szabad ezeknek a kimondott szövegeknek megjelenniük. Ha további kimondott szövegek jelennek meg, haladjon végig a listán, javítsa ki a szándékokat, és címkézze meg a hiányzó entitásokat, amíg a listán már nem szerepel több elem. 
 

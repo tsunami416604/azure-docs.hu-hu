@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: ryanwi
-ms.openlocfilehash: 226fea2df2b4a5d6dd428c1d28d8c09f47bca7de
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 12c5ba06eed37072d4c122be9e47a80ce94a5f1b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162288"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872828"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Így biztosan ismerje meg a Service Fabric?
 Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások csomagolását, üzembe helyezését és kezelését.  A Service Fabric rendelkezik egy nagy támadási azonban és sok további.  Ez a cikk egy szinopszist, Service fabric biztosítja, és ismerteti az alapfogalmakat, programozási modelleket, alkalmazás-életciklus során, tesztelés, fürtök és az állapotmonitorozást. Olvassa el a [áttekintése](service-fabric-overview.md) és [Mik azok a mikroszolgáltatások?](service-fabric-overview-microservices.md) bevezetést, és hogyan a Service Fabric mikroszolgáltatások létrehozására használható. Ez a cikk egy átfogó tartalmak listája nem tartalmaz, de a hivatkozások áttekintése és első lépéseket bemutató cikkekben a Service Fabric minden területéhez. 
@@ -65,7 +65,7 @@ Egy partíción belül elnevezett állapotmentes szolgáltatások példánya leh
 ## <a name="stateless-and-stateful-microservices-for-service-fabric"></a>Állapot nélküli és állapotalapú mikroszolgáltatások a Service Fabrichez
 A Service Fabric segítségével mikroszolgáltatásokból vagy tárolókból álló alkalmazásokat építhet. Az állapot nélküli mikroszolgáltatások (például a protokollátjárók és webproxyk) nem tartanak fenn változtatható állapotot a kéréseken és a szolgáltatástól ezekre kapott válaszokon kívül. Az Azure Cloud Services feldolgozói szerepkörei például állapotmentes szolgáltatások. Az állapotalapú mikroszolgáltatások (például felhasználói fiókok, adatbázisok, eszközök, kosarak és üzenetsorok) változtatható, mérvadó állapotot tartanak fenn a kéréseken és a válaszokon kívül is. A modern webes alkalmazások állapot nélküli és állapotalapú mikroszolgáltatások kombinációjából állnak. 
 
-A Service Fabric legfontosabb különbséget az állapotalapú szolgáltatások, vagy erős koncentrálhat az [beépített programozási modelleket ](service-fabric-choose-framework.md) vagy a tárolóalapú állapotalapú szolgáltatásokkal. Az [alkalmazás-forgatókönyvek](service-fabric-application-scenarios.md) az állapotalapú szolgáltatások használatát mutatják be.
+A Service Fabric legfontosabb különbséget az állapotalapú szolgáltatások, vagy erős koncentrálhat az [beépített programozási modelleket](service-fabric-choose-framework.md) vagy a tárolóalapú állapotalapú szolgáltatásokkal. Az [alkalmazás-forgatókönyvek](service-fabric-application-scenarios.md) az állapotalapú szolgáltatások használatát mutatják be.
 
 Miért kell állapotalapú mikroszolgáltatások és állapot nélküli azokat? A két fő oka a következők:
 

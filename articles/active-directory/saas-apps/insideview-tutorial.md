@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa0885a469877d0ea9f52f6191b4cd894ddbbce5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a315933dcd438c68a1326d2b656c2353e4185f12
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162021"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56866793"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező InsideView
 
@@ -116,7 +116,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://my.insideview.com/iv/<STS Name>/login.iv`
 
     > [!NOTE] 
-    > Az érték nem valódi. Ez az érték frissítse a tényleges válasz URL-cím. Kapcsolattartó [InsideView támogatási csapatának ](mailto:support@insideview.com) lekérni ezt az értéket.
+    > Az érték nem valódi. Ez az érték frissítse a tényleges válasz URL-cím. Kapcsolattartó [InsideView támogatási csapatának](mailto:support@insideview.com) lekérni ezt az értéket.
  
 1. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Raw)** , és mentse a tanúsítványfájlt, a számítógépen.
 

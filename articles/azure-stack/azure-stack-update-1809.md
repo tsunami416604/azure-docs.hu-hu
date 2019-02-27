@@ -16,12 +16,12 @@ ms.date: 01/24/2019
 ms.author: sethm
 ms.reviewer: justini
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: a9cf502f169f4a9c4650545b1b37e11cc16a0a95
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: a4298a8bd78f178c56776e703e72ff99aac54207
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694380"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887903"
 ---
 # <a name="azure-stack-1809-update"></a>Azure Stack 1809 frissítése
 
@@ -77,7 +77,7 @@ Ez a frissítés az Azure Stack a következő fejlesztéseket tartalmazza:
 ### <a name="changes"></a>Módosítások
 
 <!-- 2635202 - IS, ASDK -->
-- A biztonsági mentési infrastruktúra-szolgáltatás helyezi át a [nyilvános infrastruktúra-hálózaton](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-infrastructure-network) , a [nyilvános VIP-hálózat](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-vip-network). Győződjön meg arról, a szolgáltatás hozzáfér a biztonsági mentési tárhelyet a nyilvános VIP hálózatra ügyfeleknek kell.  
+- A biztonsági mentési infrastruktúra-szolgáltatás helyezi át a [nyilvános infrastruktúra-hálózaton](https://docs.microsoft.com/azure/azure-stack/azure-stack-network) , a [nyilvános VIP-hálózat](https://docs.microsoft.com/azure/azure-stack/azure-stack-network#public-vip-network). Győződjön meg arról, a szolgáltatás hozzáfér a biztonsági mentési tárhelyet a nyilvános VIP hálózatra ügyfeleknek kell.  
 
 > [!IMPORTANT]  
 > Ha nem engedélyezi a fájlkiszolgálóra a nyilvános VIP hálózatra érkező kapcsolatok tűzfal, a módosítás hatására infrastruktúra a biztonsági mentés sikertelen, és a "53-as hiba a hálózati elérési út nem található." Ez a használhatatlanná tévő változást, amely rendelkezik nem elfogadható megkerülő megoldás. Ügyfeleink visszajelzései alapján a Microsoft visszaáll a módosítás a gyorsjavítást. Tekintse át a [közzététele a frissítési lépéseket tartalmazó szakaszában](#post-update-steps) 1809 számára elérhető gyorsjavítások további tájékoztatást. Ha a gyorsjavítás áll rendelkezésre, ügyeljen arra, hogy csak akkor, ha a hálózati szabályzatok nem teszik lehetővé a nyilvános VIP-hálózat, infrastruktúra-erőforrások eléréséhez 1809 való frissítése után alkalmazza azt. a 1811 Ez a változás az összes rendszeren lépnek érvénybe. Ha a 1809 alkalmazza a gyorsjavítás nincs nincs további teendője.  

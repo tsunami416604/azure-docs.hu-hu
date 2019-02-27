@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 01/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 76e25c04afbce215028699d54cb6022f0caeced5
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: aa4c4beacd6f6755c1e5ce56f70dcf5a74166c80
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118241"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880240"
 ---
 # <a name="azure-disk-encryption-prerequisites-previous-release"></a>Az Azure Disk Encryption előfeltétel (előző kiadás)
 
@@ -232,7 +232,7 @@ Hajtsa végre a következő parancsokat, lekérése és használata a [Azure AD 
 
 ### <a name="bkmk_ADappCLI"></a> Állítsa be az Azure AD-alkalmazás és szolgáltatás egyszerű, az Azure CLI-vel
 
-A szolgáltatásnevek Azure CLI használatával kezelheti a [az ad sp](/cli/azure/ad/sp) parancsokat. További információkért lásd: [Azure-beli szolgáltatásnév létrehozása ](/cli/azure/create-an-azure-service-principal-azure-cli).
+A szolgáltatásnevek Azure CLI használatával kezelheti a [az ad sp](/cli/azure/ad/sp) parancsokat. További információkért lásd: [Azure-beli szolgáltatásnév létrehozása](/cli/azure/create-an-azure-service-principal-azure-cli).
 
 1. Ha szükséges, [csatlakozhat az Azure-előfizetés](azure-security-disk-encryption-appendix.md#bkmk_ConnectCLI).
 2. Hozzon létre egy új egyszerű szolgáltatást.
@@ -293,7 +293,7 @@ Használat [az keyvault set-policy](/cli/azure/keyvault#az-keyvault-set-policy) 
 
 ![Az Azure Key Vault titkosítási-műveletek - Wrap Key](./media/azure-security-disk-encryption/keyvault-portal-fig3.png)
 
-![Az Azure Key Vault titkos kulcsából engedélyek – beállítása ](./media/azure-security-disk-encryption/keyvault-portal-fig3b.png)
+![Az Azure Key Vault titkos kulcsából engedélyek – beállítása](./media/azure-security-disk-encryption/keyvault-portal-fig3b.png)
 
 ## <a name="bkmk_KVper"></a> Speciális hozzáférési szabályzatok beállítása a key vault
 Az Azure platform a titkosítási kulcsok vagy titkos kódok, hogy elérhetők legyenek a rendszerindítást, és visszafejti a köteteket a virtuális géphez a key vaultban lévő hozzá kell férnie. A key vault vagy a központi telepítések lemez-titkosítás engedélyezése sikertelen lesz.  

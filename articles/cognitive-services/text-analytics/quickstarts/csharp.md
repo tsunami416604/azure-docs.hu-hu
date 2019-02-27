@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: assafi
-ms.openlocfilehash: 1ae1288c8efd138863d63fc6437115aeb5fe98c8
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 9b56104934c1ddcc60222c988efdf173ca33d77b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865777"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871009"
 ---
 # <a name="quickstart-using-c-to-call-the-text-analytics-cognitive-service"></a>Gyors útmutató: Használatával C# a Text Analytics kognitív szolgáltatás hívásához
 <a name="HOLTop"></a>
@@ -43,7 +43,7 @@ A regisztráció során létrejött [végponttal és hozzáférési kulccsal](..
 >
 > Néhány fontos hivatkozás:
 > - [SDK Nuget oldal](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
-> - [SDK-kód ](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Language/TextAnalytics)
+> - [SDK-kód](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Language/TextAnalytics)
 
 
 ## <a name="call-the-text-analytics-api-using-the-sdk"></a>A Text Analytics API meghívása az SDK használatával

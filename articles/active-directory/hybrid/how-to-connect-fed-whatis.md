@@ -16,12 +16,12 @@ ms.date: 10/09/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54aab6e9718b5a4a55cf2a3f9c472e9e02a53ea7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 67ae5d2661371c256f753d05eb496d2cd53a0017
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191078"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56869547"
 ---
 # <a name="azure-ad-connect-and-federation"></a>Azure AD Connect és összevonás
 Az Azure Active Directory (Azure AD) Connect konfigurálását teszi lehetővé, összevonás a helyszíni Active Directory összevonási szolgáltatások (AD FS) és az Azure ad-ben. Az összevonási jelentkezzen be engedélyezheti a felhasználók jelentkezhetnek be, az Azure AD-alapú szolgáltatásokat a helyszíni jelszavak –, és a vállalati hálózaton, írja be újra a jelszavukat anélkül. Az összevonási beállítás és az AD FS használatával telepíthet egy új AD FS telepítése, vagy megadhat egy meglévő telepítését egy Windows Server 2012 R2-farmban.
@@ -36,7 +36,7 @@ Ez a témakör az otthoni funkciók összevonási kapcsolatos információk az A
 | **Az AD FS telepítése az Azure AD Connect használatával** | |
 | [Előfeltételek](how-to-connect-install-custom.md#ad-fs-configuration-pre-requisites) |Tekintse meg az AD FS az Azure AD Connect használatával a sikeres telepítés előfeltételeit. |
 | [Az AD FS-farm konfigurálása](how-to-connect-install-custom.md#configuring-federation-with-ad-fs) |Egy új AD FS-farm telepítése az Azure AD Connect használatával. |
-| [Az Azure AD-bA a másodlagos bejelentkezési Azonosítót összevonása ](how-to-connect-fed-management.md#alternateid) | Alternatív bejelentkezési azonosítóval összevonás konfigurálása  |
+| [Az Azure AD-bA a másodlagos bejelentkezési Azonosítót összevonása](how-to-connect-fed-management.md#alternateid) | Alternatív bejelentkezési azonosítóval összevonás konfigurálása  |
 | **Az AD FS-konfiguráció módosítása** | |
 | [A bizalmi kapcsolat javítása](how-to-connect-fed-management.md#repairthetrust) |A jelenlegi bizalmi kapcsolat javítása között a helyszíni AD FS és az Office 365 vagy Azure. |
 | [Új AD FS-kiszolgáló hozzáadása](how-to-connect-fed-management.md#addadfsserver) |Bontsa ki a további AD FS-kiszolgáló AD FS farmot kezdeti telepítés után. |

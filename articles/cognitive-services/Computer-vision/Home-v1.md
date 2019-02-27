@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 08/10/2017
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 35002ccfc294b59a13e6826b4ca75a1ab6c68b62
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 812f957ffe2a3f24ead4ef0fe66a25c3cfd17995
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870299"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56866912"
 ---
 # <a name="what-is-computer-vision-api-version-10"></a>Mi a Computer Vision API 1.0-s verziója?
 
@@ -29,7 +29,7 @@ A felhőalapú Computer Vision API a fejlesztők számára hozzáférést biztos
 * Címkézhet meg képeket a tartalom alapján.
 * Képek kategorizálása.
 * Azonosítsa a típus és minősége lemezképeket.
-* [Emberi arcok észlelése és azok koordinátáinak visszaadása.](#Faces)
+* [Emberi arcok észlelése és azok koordinátáit adja vissza.](#Faces)
 * Ismeri fel a tartomány-specifikus tartalmait.
 * Hozzon létre a tartalom leírását.
 * Optikai karakterfelismerés segítségével azonosíthatja a képeken található nyomtatott szöveg.
@@ -130,7 +130,7 @@ Kép|Válasz
 
 Kép|Válasz
 ----|----
-![Oroszlánt ábrázoló rajz vizuális elemzéshez](./Images/lion_drawing.png)|Igaz
+![Oroszlánt ábrázoló rajz vizuális elemzéshez](./Images/lion_drawing.png)|True (Igaz)
 ![Virág képe vizuális elemzéshez](./Images/flower.png)|False (Hamis)
 
 ### <a name="faces"></a>Arcok
@@ -223,7 +223,7 @@ Logikai jelző, amely azt jelzi, hogy a kép fekete-fehér-e vagy sem.
 
 Kép                                                      | Válasz
 ---------------------------------------------------------- | ----
-![Épület képe vizuális elemzéshez](./Images/bw_buildings.png)      | Igaz
+![Épület képe vizuális elemzéshez](./Images/bw_buildings.png)      | True (Igaz)
 ![Ház és udvar képe vizuális elemzéshez](./Images/house_yard.png)      | False (Hamis)
 
 ## <a name="flagging-adult-content"></a>Felnőtt tartalom megjelölése

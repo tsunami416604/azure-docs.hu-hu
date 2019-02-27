@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/12/2019
-ms.openlocfilehash: 82b412d7fc9e54ca213fecde783a5e27f8ee93bc
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 6cc5d6a778f16b857d0596780a737df3358ac8c3
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233558"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867354"
 ---
 # <a name="quickstart-use-net-core-c-to-query-an-azure-sql-database"></a>Gyors útmutató: A .NET Core (C#) használata Azure SQL Database-adatbázisok lekérdezéséhez
 
@@ -196,5 +196,5 @@ namespace sqltest
 
 - [Bevezetés a .NET Core használatába Windows/Linux/macOS rendszeren a parancssorral](/dotnet/core/tutorials/using-with-xplat-cli).
 - Ismerje meg, hogyan [csatlakozhat, és a .NET-keretrendszer és a Visual Studio használatával Azure SQL Database-adatbázis lekérdezéséhez](sql-database-connect-query-dotnet-visual-studio.md).  
-- Ismerje meg, hogyan [az első Azure SQL adatbázis megtervezése SSMS használatával](sql-database-design-first-database.md) vagy [ Azure SQL database tervezése és csatlakozás az C# és az ADO.NET](sql-database-design-first-database-csharp.md).
+- Ismerje meg, hogyan [az első Azure SQL adatbázis megtervezése SSMS használatával](sql-database-design-first-database.md) vagy [Azure SQL database tervezése és csatlakozás az C# és az ADO.NET](sql-database-design-first-database-csharp.md).
 - A .NET-ről a [.NET dokumentációjában](https://docs.microsoft.com/dotnet/) talál további információt.

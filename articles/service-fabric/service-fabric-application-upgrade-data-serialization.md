@@ -1,6 +1,6 @@
 ---
-title: 'Az alkalmazásfrissítés: adatszerializálás |} Microsoft Docs'
-description: Ajánlott eljárások az adatok szerializálása és közbeni alkalmazás hatása.
+title: 'Alkalmazásfrissítés: adatok szerializálása |} A Microsoft Docs'
+description: Ajánlott eljárások az adatok szerializálása és működés közbeni alkalmazásfrissítések hatása.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,53 +14,53 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 2f6fad0ecca09ff9210b5961301fea3446a88f11
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 43d19e5c69733689be184f06b853fa4e488dd51e
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34213163"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871723"
 ---
-# <a name="how-data-serialization-affects-an-application-upgrade"></a>Hogyan befolyásolja a adatszerializálás az alkalmazás frissítés
-Az egy [működés közbeni frissítés alkalmazás](service-fabric-application-upgrade.md), a frissítés a csomópontok egy alkészlete, egyszerre több frissítési tartományt vonatkozik. A folyamat során néhány frissítési tartományok az alkalmazás újabb verziója, és néhány frissítési tartományok az alkalmazás régebbi verzióját. A bevezetés alatt az alkalmazás új verzióját kell fogja tudni elolvasni az adatok a korábbi verziója, és az alkalmazás régebbi verziójához tudja olvasni az adatokat az új verziót kell lennie. Ha az adatformátum nem előre és hátra kompatibilis, a frissítés sikertelen lehet, vagy rosszabb, adatok esetleg elveszett vagy sérült. Ez a cikk ismerteti, mi a adatformátum számít, és annak biztosítása, hogy az adatok előre és hátra ajánlott eljárásai kínál kompatibilis.
+# <a name="how-data-serialization-affects-an-application-upgrade"></a>Hogyan befolyásolja az adatok szerializálása a egy alkalmazás frissítése
+Az egy [alkalmazás frissítése működés közbeni](service-fabric-application-upgrade.md), a frissítés alkalmazott csomópontok egy része, egyszerre több frissítési tartományt. A folyamat során néhány frissítési tartományok az alkalmazás újabb verziójában, és az alkalmazás régebbi verzióját a rendszer egyes frissítési tartományok. A bevezetés során az alkalmazás új verziója, olvassa el a régi verziót, az adatok képesnek kell lennie, és az alkalmazás régebbi verzióját kell tudni olvasni az adatokat az új verziót. Ha a adatformátum nem előre és visszafelé kompatibilis, a frissítés sikertelen lehet, vagy rosszabb, adatok esetleg elveszett vagy sérült állapotba kerül. Ez a cikk ismerteti, mi a adatformátum alkotja, és annak biztosítása, hogy az adatok előre és hátra ajánlott eljárásai kínál kompatibilis.
 
-## <a name="what-makes-up-your-data-format"></a>Mi az adatformátum alkotó?
-Az Azure Service Fabric a megőrzött és a replikált adatokat a C# osztályok származik. Használó alkalmazások esetén [megbízható gyűjtemények](service-fabric-reliable-services-reliable-collections.md), hogy adatokat-e a megbízható szótárakat és a várólisták objektumok. Használó alkalmazások esetén [Reliable Actors](service-fabric-reliable-actors-introduction.md), vagyis szereplő biztonsági állapotát. Ezeket az osztályokat C# tárolása és replikálása szerializálhatónak kell lennie. Ezért az adatok formátumát a mezők és tulajdonságok, amelyek szerializálva vannak, valamint hogy szerializálva vannak. Például egy `IReliableDictionary<int, MyClass>` az adatokat egy szerializált `int` és egy szerializált `MyClass`.
+## <a name="what-makes-up-your-data-format"></a>Miből áll a adatformátum?
+Az Azure Service Fabric a megőrzött és a replikált adatok származik a C# osztályokat. Az alkalmazásokat, amelyek használják [a Reliable Collections](service-fabric-reliable-services-reliable-collections.md), hogy adatokat-e az objektumok a megbízható szótárakban és üzenetsorok. Használó alkalmazások esetében [Reliable Actors](service-fabric-reliable-actors-introduction.md), vagyis a biztonsági állapotot az aktor. Ezek C# osztályok, tárolása és replikálása szerializálható kell lennie. Ezért az adatok formátumát határozza meg a mezőket és a tulajdonságok, amelyek szerializálva vannak, valamint, hogy hogyan szerializálva vannak. Például egy `IReliableDictionary<int, MyClass>` az adatokat a szerializált `int` és a egy szerializált `MyClass`.
 
-### <a name="code-changes-that-result-in-a-data-format-change"></a>Kód változik, hogy akár egy adatok formátumának módosítása
-Az adatformátum C# osztályok határozza meg, mert az osztályok módosításai okozhat egy adatok formátumának módosítása. Ügyelni kell arra, hogy a működés közbeni frissítés kezelni tud-e az adatok formátumának módosítása. Példák, amelyek okozhatnak adatok formázása módosításokat:
+### <a name="code-changes-that-result-in-a-data-format-change"></a>Kód módosítja a eredményez olyan adatok formátumának módosítása
+Mivel az adatok formátumát határozza meg C# osztályok, az osztályok módosítása hatására előfordulhat, hogy a formátum változnak. Ügyelni kell arra, hogy a működés közbeni frissítésének képes kezelni az adatok formátumának módosítása. Példa, amelyek okozhat a módosítások formázása:
 
-* Hozzáadásával vagy eltávolításával a mezők és tulajdonságok
-* Mezők és tulajdonságok átnevezése
-* A típusú mezők és tulajdonságok módosítása
-* Az osztályhoz nevet vagy névteret módosítása
+* Hozzáadásával vagy eltávolításával mezők vagy tulajdonságai
+* Mezők vagy tulajdonságok átnevezése
+* A típusú mezők vagy tulajdonságainak módosítása
+* Az osztály neve vagy a névtér módosítása
 
-### <a name="data-contract-as-the-default-serializer"></a>Adategyezmény, mint az alapértelmezett szerializáló
-A szerializáló felelős általában az adatok olvasása és deszerializálása során az aktuális verziójában, még akkor is, ha az adatok korábbi vagy *újabb* verziója. Az alapértelmezett szerializáló van a [adategyezmény-szerializáló](https://msdn.microsoft.com/library/ms733127.aspx), amely jól meghatározott versioning szabályokkal rendelkeznek. Gyűjtemények engedélyezése a szerializáló felülbírálását, de a Reliable Actors jelenleg nem megbízható. Az adatok szerializáló a működés közbeni frissítés fontos szerepet játszik. Az adategyezmény-szerializáló a Service Fabric-alkalmazások általunk javasolt szerializáló.
+### <a name="data-contract-as-the-default-serializer"></a>Az alapértelmezett szerializáló szerződéssel adatok
+A szerializáló felelős általában az adatok olvasása és deszerializálhatja azt az aktuális verzióját, akkor is, ha az adatok a régebbi vagy *újabb* verzió. Az alapértelmezett szerializáló van a [adategyezményben szerializáló](https://msdn.microsoft.com/library/ms733127.aspx), amely jól definiált verziókezelési szabályokkal rendelkezik. A Reliable Collections engedélyezése a szerializáló Alkalmazásszint felülbírálását, de a Reliable Actors jelenleg nem. A data-szerializáló fontos szerepet engedélyezése a működés közbeni frissítése során. Az adatok szerződés szerializáló a szerializáló, javasoljuk, hogy a Service Fabric-alkalmazásokat.
 
-## <a name="how-the-data-format-affects-a-rolling-upgrade"></a>Hogyan befolyásolja az adatformátum a működés közbeni frissítés
-A működés közbeni frissítés során nincsenek kétféle módon történhet, ahol a szerializáló régebbi észlelhetnek vagy *újabb* az adatok verziója:
+## <a name="how-the-data-format-affects-a-rolling-upgrade"></a>Hogyan érinti az adatformátum a működés közbeni frissítés
+A működés közbeni frissítés során két fő forgatókönyv, ahol a szerializáló You may encounter régebbi vannak vagy *újabb* az adatok verziója:
 
-1. Miután egy csomópont frissítve van, és biztonsági mentése elindul, az új szerializáló tölti be lett megőrzött adatok lemezre régi verziója.
-2. A működés közbeni frissítés során a fürt a régi és új verziókat a kód vegyesen fogja tartalmazni. Replikák különböző frissítési tartományok kerülnek, és replikák adatokat küldeni a egymástól, az adatok új és/vagy a régi verzióját a szerializáló az új és/vagy a régi verziója fordulhatnak elő.
+1. Miután egy csomópont frissül, és biztonsági mentése elindul, az új szerializáló betölti az adatokat, amelyek fájladatot lemezre által a régi verzióját.
+2. A fürt működés közbeni frissítése során a kód korábbi és új verzióit vegyesen tartalmazza. Replikák különböző frissítési tartományt lehet helyezni, és a replikák adatokat küldeni a egymást, mivel az adatok új és/vagy régi verziója merülhetnek fel a szerializáló új és/vagy régi verziója.
 
 > [!NOTE]
-> Az "új verzió" és "régi verzió" Itt tekintse meg a futó kód verziója. Az "új szerializáló" hivatkozik a szerializáló kódot, amely végrehajtja az az alkalmazás új verziója. Az "új adatok" hivatkozik a szerializált C# az alkalmazás új verziója.
+> Az "új" és "régi verziója" Itt tekintse meg a futó kód verziója. A szerializáló kódot, amely az alkalmazás új verziójának a végrehajtása az "új szerializáló" hivatkozik. Az "új adatok" hivatkozik a szerializált C# osztály az alkalmazás új verzióját.
 > 
 > 
 
-Kódja és adatai formátum két verziója kell lennie, továbbítás és a visszamenőlegesen kompatibilis. Ha azok nem kompatibilisek, a működés közbeni frissítés sikertelen lehet, vagy adatvesztés történhet. A működés közbeni frissítés meghiúsulhat, mert a kódban, illetve a szerializáló generálhat kivételek vagy hiba esetén a másik verziója. Adatok elveszhetnek, ha például egy új tulajdonság hozzá lett adva, de a régi szerializáló elveti deszerializálása során.
+A kód és az adatok formátuma két verzióját lehet előre és visszafelé is kompatibilis. Ha nem kompatibilis, a működés közbeni frissítés sikertelen lehet, vagy adatvesztés történhet. A működés közbeni frissítés sikertelen lehet, mert a kód vagy a szerializáló generálhat kivétel, vagy pedig egy tartalék során tapasztal verziót. Ha például egy új tulajdonság hozzá lett adva, de a régi szerializáló elveti a deszerializálás során adatok elveszhetnek.
 
-Adategyezmény-e annak biztosítása, hogy az adatok kompatibilis az ajánlott megoldás. Rendelkezik, jól meghatározott versioning szabályok hozzáadása, eltávolítása és mezők módosítása Azt is támogatja az ismeretlen mezők foglalkoznak, a szerializálás és a deszerializálás folyamatba csatlakoztatás és osztályöröklődést foglalkoznak. További információkért lásd: [adategyezmény használatával](https://msdn.microsoft.com/library/ms733127.aspx).
+Adatok szerződés biztosítva, hogy az adatok kompatibilis a javasolt megoldás. Jól definiált versioning szabályok hozzáadása, eltávolítása és a mezők módosítása rendelkezik. Azt is támogatja az ismeretlen mezőket foglalkoznak, a szerializálást és deszerializálást folyamat történetének és osztályöröklődés foglalkoznak. További információkért lásd: [adategyezményben használatával](https://msdn.microsoft.com/library/ms733127.aspx).
 
 ## <a name="next-steps"></a>További lépések
-[Az alkalmazás használata a Visual Studio frissítése](service-fabric-application-upgrade-tutorial.md) végigvezeti Önt az alkalmazásfrissítés Visual Studio használatával.
+[Az alkalmazás használatával a Visual Studio frissítése](service-fabric-application-upgrade-tutorial.md) végigvezeti egy alkalmazás frissítése a Visual Studio használatával.
 
-[Az alkalmazás használatával Powershell frissítése](service-fabric-application-upgrade-tutorial-powershell.md) végigvezeti Önt az alkalmazásfrissítés PowerShell használatával.
+[Az alkalmazás használatával Powershell frissítése](service-fabric-application-upgrade-tutorial-powershell.md) végigvezeti egy alkalmazás frissítése a PowerShell használatával.
 
-Szabályozhatja, hogy az alkalmazás használatával frissíti [frissítése paraméterek](service-fabric-application-upgrade-parameters.md).
+Vezérelheti, hogyan az alkalmazásfrissítések használatával [frissítési paraméterek](service-fabric-application-upgrade-parameters.md).
 
-Összetettebb funkciók használata az alkalmazás frissítésekor szakaszra [Speciális témakörök](service-fabric-application-upgrade-advanced.md).
+Speciális funkciók használata közben lépésként tekintse át az alkalmazás frissítéséhez [haladó témakörök](service-fabric-application-upgrade-advanced.md).
 
-Alkalmazásfrissítések gyakori problémáinak megoldásához hajtsa végre a hivatkozással [Alkalmazásfrissítések hibaelhárítási ](service-fabric-application-upgrade-troubleshooting.md).
+Az alkalmazásfrissítések gyakori problémák megoldása szerint hajtsa végre a hivatkozó [Alkalmazásfrissítések hibaelhárítása](service-fabric-application-upgrade-troubleshooting.md).
 

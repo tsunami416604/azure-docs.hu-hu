@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/04/2018
 ms.author: yzheng
 ms.subservice: common
-ms.openlocfilehash: 284a590a484052fdb7da2f03c6155078268b2aac
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3013365f96fa6841e4db826f9010c6ea994eba2a
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211444"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56879594"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Az Azure Blob storage (előzetes verzió) életciklusának kezelése
 
@@ -187,7 +187,7 @@ Szűrők Szabályműveletek a tárfiókban található blobok egy részhalmazár
 
 Az előzetes időszakban érvényes szűrők a következők:
 
-| Szűrő neve | Szűrő típusa | Megjegyzések | Megadása kötelező |
+| Szűrő neve | Szűrő típusa | Megjegyzések | Kötelező |
 |-------------|-------------|-------|-------------|
 | blobTypes   | Előre definiált enum értékek tömbje. | Az előzetes kiadás támogat `blockBlob`. | Igen |
 | prefixMatch | Meg kell egyeznie az előtagok karakterláncok tömbje. Előtag-karakterláncra tárolónévnek kell kezdődnie. Például, ha az összes BLOB alapján egyeztetni kívánt "https://myaccount.blob.core.windows.net/container1/foo/..." a szabály a prefixMatch van `container1/foo`. | Ha nem ad meg prefixMatch, a szabályok érvényesek lesznek a fiókban lévő összes BLOB. | Nem |
@@ -337,4 +337,4 @@ A platform naponta egyszer fut, az életciklus-szabályzat. Ha egyszer már mega
 
 Megtudhatja, hogyan adatok véletlen törlés utáni helyreállításhoz:
 
-- [Helyreállítható Törlés az Azure Storage-BLOB ](../blobs/storage-blob-soft-delete.md)
+- [Helyreállítható Törlés az Azure Storage-BLOB](../blobs/storage-blob-soft-delete.md)

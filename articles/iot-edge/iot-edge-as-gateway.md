@@ -4,17 +4,17 @@ description: Az Azure IoT Edge segítségével átlátható, átlátszatlan vagy
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/01/2017
+ms.date: 02/25/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 6e54d28d494a58966ea5312492dc79ced4c50a8d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e0aafc6e5a6926ad70aa5df335f45b841955cab9
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53092281"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877590"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>IoT Edge-eszköz segítségével hogyan biztosítható átjáróként
 
@@ -54,4 +54,4 @@ Egy átjáró, amely identitás fordítási protokollfordítás előnyét, és e
 Egy nem átlátszó átjáró (protokollfordítás) minta használatakor, hogy az átjárón keresztül csatlakozó összes eszközök megosztása azonos felhőből az eszközre beolvasása, amely legfeljebb 50 üzenetet is tartalmazhat. Ebből az következik, hogy az átjáró nem átlátszó minta kell használni, csak akkor, amikor minden mező-átjárón keresztül kapcsolódik néhány olyan eszközt, és a felhőből az eszközre irányuló forgalom értéke alacsony.
 
 ## <a name="next-steps"></a>További lépések
-Ismerje meg, hogyan konfigurálhatja az IoT Edge-eszköz, mint egy [transzparens átjáró](how-to-create-transparent-gateway-linux.md).
+Ismerje meg, hogyan konfigurálhatja az IoT Edge-eszköz, mint egy [transzparens átjáró](how-to-create-transparent-gateway.md).

@@ -11,12 +11,12 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 2/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 899e33db242a34d09df6109c2e195bdff9c65262
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 5bb2c7d9eed2ed33f3cd0c33bfc479d2e3627370
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823603"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889851"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
@@ -31,6 +31,10 @@ Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások.
 + **Új funkciók**
 
   + Az Azure Machine Learning SDK már támogatja a [ `Chainer` ](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) estimator osztály képzés és üzembe helyezéséhez Chainer egyéni kódot használó folyamatot.
+  + Az Azure Machine Learning-folyamatokat Folyamatfuttatás adattárolója módosítások alapján lehetővé teszi az eseményindító hozzáadása. A folyamat [ütemezés notebook](https://aka.ms/pl-schedule) frissül, és ez a funkció bemutatására.
+  
++ **Hibajavítások és kapcsolatos fejlesztések**
+  + Hozzáadtuk a támogatást az Azure Machine Learning-folyamatokat a source_directory_data_store tulajdonság egy kívánt adattár (például egy blob storage) állítja a [RunConfigurations](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) , amely megadott a [ PythonScriptStep](https://docs.microsoft.com/en-us/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py). Alapértelmezés szerint az lépéseket az Azure fájltároló használjuk a biztonsági adattár, amely megadtuk szabályozási problémák lépések nagy számú párhuzamosan végrehajtásakor.
 
 ### <a name="azure-portal"></a>Azure Portal
 + **Új funkciók**
@@ -38,6 +42,18 @@ Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások.
     + Az elküldött ScriptRunConfig futtatások új Futtatás gombra. Felhasználók újra kell futtatni egy meglévő futtatása távoli számítási fürtön a választott eszközükön.
     + Új naplókat megjelenítő
     + Hivatkozások való kísérletezéshez fut, számítási, modelleket, lemezképek és a tevékenységek lapról központi telepítések
+
+### <a name="azure-machine-learning-data-prep-sdk-v1015"></a>Az Azure Machine Learning adat-előkészítési SDK v1.0.15
+
++ **Új funkciók**
+  + Adat-előkészítési mostantól támogatja a írása egy adatfolyam érkező adatfolyamok fájlt. Emellett a fájlnevek stream hozhat létre új fájlnevek módosítására.
+    + Útmutató: [Működik az fájl Streamek notebook](https://aka.ms/aml-data-prep-file-stream-nb)
+ 
++ **Hibajavítások és kapcsolatos fejlesztések**
+  + A nagy méretű adatkészleteket a t-kivonatoló javított teljesítménye.
+  + Data Prep mostantól támogatja a DataPath olvasási adatait.
+  + Most már a logikai és a numerikus oszlopok egy gyakori kódolási működik.
+  + Más egyéb hibajavításokat tartalmaz.
 
 ## <a name="2019-02-11"></a>2019-02-11
 
@@ -100,7 +116,7 @@ Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások.
 ### <a name="azure-machine-learning-data-prep-sdk-v107"></a>Az Azure Machine Learning adat-előkészítési SDK v1.0.7
 
 + **Új funkciók**
-  + Adattároló fejlesztései (dokumentált [adattárolója útmutatóval-to-útmutató](https://github.com/Microsoft/AMLDataPrepDocs/tree/master/how-to-guides/datastore.ipynb))
+  + Adattároló fejlesztései (dokumentált [adattárolója útmutatóval-to-útmutató](https://aka.ms/aml-data-prep-datastore-nb))
     + Vertikális felskálázás az Azure-fájlmegosztás és ADLS-adattárainak írnak és onnan olvasnak új képessége.
     + Adattárolók használatakor Data Prep mostantól támogatja a egyszerű szolgáltatásnév hitelesítése interaktív hitelesítés helyett.
     + Támogatás hozzáadva a wasb és a wasbs URL-címeket.

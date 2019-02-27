@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 37e1a308d63d782c6ff18c10a5874842341eeec7
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 8840944f6757813b10b01c8e512b1ef64c05a85f
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818102"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888287"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Létrehozása, módosítása vagy egy hálózati adapter törlése
 
@@ -70,7 +70,7 @@ A portál nem biztosít arra, hogy egy hálózati adapter létrehozásakor rende
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az network nic create](/cli/azure/network/nic#az_network_nic_create)|
+|parancssori felület|[az network nic create](/cli/azure/network/nic)|
 |PowerShell|[New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface)|
 
 ## <a name="view-network-interface-settings"></a>Hálózatiadapter-beállítások megtekintése
@@ -97,7 +97,7 @@ Ha IPv6-cím van rendelve egy hálózati adaptert, a PowerShell kimenete az a t�
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az network nic list](/cli/azure/network/nic#az_network_nic_list) ; előfizetésben található hálózati adapterek megtekintése [az network nic show](/cli/azure/network/nic#az_network_nic_show) egy hálózati adapter beállításainak megtekintése|
+|parancssori felület|[az network nic list](/cli/azure/network/nic) ; előfizetésben található hálózati adapterek megtekintése [az network nic show](/cli/azure/network/nic) egy hálózati adapter beállításainak megtekintése|
 |PowerShell|[Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) hálózati illesztők megtekintése egy hálózati adapter az előfizetés vagy a nézet beállításait|
 
 ## <a name="change-dns-servers"></a>Módosítsa a DNS-kiszolgálók
@@ -157,7 +157,7 @@ Módosíthatja az alhálózaton, de nem a virtuális hálózat, amely egy háló
 
 |Eszköz|Parancs|
 |---|---|
-|parancssori felület|[az network nic ip-config update](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_update)|
+|parancssori felület|[az network nic ip-config update](/cli/azure/network/nic/ip-config)|
 |PowerShell|[Set-AzNetworkInterfaceIpConfig](/powershell/module/az.network/set-aznetworkinterfaceipconfig)|
 
 ## <a name="add-to-or-remove-from-application-security-groups"></a>Ad hozzá, vagy távolítsa el az alkalmazásbiztonsági csoportok

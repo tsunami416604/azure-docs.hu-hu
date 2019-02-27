@@ -12,12 +12,12 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: d0f9ea15b692d9aba2fde217805ea5e0ecfb4dfd
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 3ad33968107aec551ea99e503797382c7fcea0c5
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993809"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877084"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Egyetlen, a tranzakciós replikáció készletezett és adatbázisokat az Azure SQL Database-példány
 
@@ -90,7 +90,7 @@ Különböző [replikációtípusok](https://docs.microsoft.com/sql/relational-d
 
 ### <a name="publisher-with-local-distributor-on-a-managed-instance"></a>Felügyelt példány helyi terjesztő közzétevő
 
-![Gyártó és forgalmazó, egyetlen példány ](media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
+![Gyártó és forgalmazó, egyetlen példány](media/replication-with-sql-database-managed-instance/01-single-instance-asdbmi-pubdist.png)
 
 Gyártó és forgalmazó belül egyetlen felügyelt példány és más felügyelt példány, önálló adatbázis, a készletezett adatbázis definíciófrissítés-terjesztés változások vannak konfigurálva, vagy a helyszíni SQL Server. Ebben a konfigurációban a felügyelt példánynak közzétevő/terjesztő nem konfigurálható a [georeplikációja és automatikus feladatátvételi csoportok](sql-database-auto-failover-group.md).
 

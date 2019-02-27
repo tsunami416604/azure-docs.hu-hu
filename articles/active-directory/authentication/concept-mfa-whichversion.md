@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fb7785487fc79daca56e35ce0c6a19efd5b0605
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: edfc26355933db549b735c4baf9744744f46734c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56195753"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870470"
 ---
 # <a name="which-version-of-azure-mfa-is-right-for-my-organization"></a>Az Azure MFA melyik verziója a szervezetem számára megfelelő?
 
@@ -38,7 +38,7 @@ A megfelelő kétlépéses ellenőrzési megoldás meghatározásához először
 | SaaS-alkalmazások az alkalmazáskatalógusban |● |  |
 | Az Azure AD-alkalmazásproxyn keresztül közzétett webalkalmazások |● |  |
 | Nem az Azure AD-alkalmazásproxyn keresztül közzétett IIS-alkalmazások | |● |
-| Távelérés, például VPN vagy RDG | ● | ● |
+| Távelérés, például VPN vagy RDG használatával az NPS-bővítményt, vagy egy meglévő hálózati házirend-kiszolgáló | ● | ● |
 
 ## <a name="where-are-the-users-located"></a>Hol tárolja a rendszer a felhasználókat?
 

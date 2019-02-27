@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: f595fbb6571c3deaaa0644ba9d62f598181592e3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4daae4357a7a9577c48edc8643355d319b701944
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106311"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881566"
 ---
-# <a name="quickstart-sign-in-and-set-a-user-id"></a>Gyors útmutató: Jelentkezzen be, és állítsa be a felhasználói azonosító
+# <a name="quickstart-sign-in-and-set-a-user-id"></a>Gyors útmutató: Bejelentkezés és felhasználói azonosító beállítása
 
 Bár az Azure-jegyzetfüzetek mindig bejelentkezés nélkül is megtekintheti, jelentkezzen be futtathat jegyzetfüzeteket, mentett projektek és jegyzetfüzetek és a notebookok megoszthatja másokkal.
 
@@ -52,6 +52,9 @@ Bár az Azure-jegyzetfüzetek mindig bejelentkezés nélkül is megtekintheti, j
 
     ![Egy Azure-jegyzetfüzetek profilu kezdeti megtekintése](media/accounts/profile-page-new.png)
 
+> [!NOTE]
+> Ha a "Felhasználói azonosító már használatban van," üzenetet látja, próbálja meg másik azonosítót. Felhasználói azonosítók egyediek legyenek az összes Azure-jegyzetfüzetek fiókokat, és az Azure notebookok is fenntartja az egyes felhasználói azonosítókat, például a Microsoft márkanevek.
+
 ## <a name="sign-out"></a>Kijelentkezés
 
 Jelentkezzen ki, válassza ki, az oldal jobb felső sarokban a felhasználónevére, majd válassza ki a **Kijelentkezés**:
@@ -61,4 +64,4 @@ Jelentkezzen ki, válassza ki, az oldal jobb felső sarokban a felhasználónev�
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Gyors útmutató: Létrehozása, és a egy jegyzetfüzetet megosztása](quickstart-create-share-jupyter-notebook.md)
+> [Rövid útmutató: Hozzon létre és osszon meg a notebook](quickstart-create-share-jupyter-notebook.md)

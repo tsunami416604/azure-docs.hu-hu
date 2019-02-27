@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7d5bfba10fe68c4d29a66fe39a386aec975b978f
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 19d34e76c73c5ec2472d3eacddc01d6aebb6b9fb
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56651532"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889103"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatással modellek üzembe helyezése
 
@@ -30,7 +30,7 @@ A következő számítási célnak modellek helyezhető üzembe:
 | Számítási célt | Üzemelő példány típusa | Leírás |
 | ----- | ----- | ----- |
 | [Az Azure Kubernetes Service (AKS)](#aks) | Valós idejű következtetésekhez | Megfelelő választás a nagy méretű éles környezetekben üzemelő példányok. Automatikus skálázást és gyors válaszidők biztosít. |
-| [Az Azure ML Compute](#amlcompute) | A Batch következtetésekhez | Kiszolgáló nélküli számítási batch előrejelzési futtassa. A normál és alacsony prioritású virtuális gépeket támogatja. |
+| Az Azure ML Compute | A Batch következtetésekhez | Kiszolgáló nélküli számítási batch előrejelzési futtassa. A normál és alacsony prioritású virtuális gépeket támogatja. |
 | [Az Azure Container Instances (aci Szolgáltatásban)](#aci) | Tesztelés | Jó fejlesztési vagy tesztelési célokra. **Nem megfelelő az éles számítási feladatokhoz.** |
 | [Azure IoT Edge](#iotedge) | (Előzetes verzió) IoT-modul | Az IoT-eszközökön a modellek üzembe helyezése. Következtetési történik az eszközön. |
 | [A mező-programmable gate array (FPGA)](#fpga) | (Előzetes verzió) Webszolgáltatás | Valós idejű következtetési ultraalacsony késése. |

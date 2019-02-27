@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 68511d62887cb0463fd8db01cb5c90cbc40ac4cd
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 622a7bc870aba58205c1811de2fcdcabffd177e5
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818986"
+ms.locfileid: "56869683"
 ---
 # <a name="grant-access-to-azure-containers-and-queues-with-rbac-in-the-azure-portal-preview"></a>Hozzáférés engedélyezése az Azure-tárolók és a várólisták RBAC használata az Azure Portalon (előzetes verzió)
 
@@ -29,7 +29,7 @@ Ez a cikk ismerteti, hogyan használhatja az Azure Portalon rendeljen RBAC-szere
 
 ## <a name="determine-resource-scope"></a>Erőforrás-hatókör meghatározása 
 
-Az RBAC-szerepkört rendel egy rendszerbiztonsági tag, mielőtt határozza meg, hogy a rendszerbiztonsági tag rendelkeznie kell hozzáféréssel hatókörét. Ajánlott eljárások szabályozzák, hogy minden esetben célszerű csak a minimális lehetséges hatókör megadása.
+Az RBAC-szerepkört rendel egy rendszerbiztonsági tag, mielőtt határozza meg, hogy a rendszerbiztonsági tagot kell hozzáférés hatókörét. Ajánlott eljárások szabályozzák, hogy minden esetben célszerű csak a minimális lehetséges hatókör megadása.
 
 Az alábbi lista ismerteti a szintek milyen gazdagépcsoportjaira az Azure blob és üzenetsor erőforrásokhoz való hozzáférés a minimális hatókör kezdve:
 
@@ -43,7 +43,7 @@ Ha megadta, hogy a kívánt hatókörhöz a szerepkör-hozzárendelés, navigál
 
 ## <a name="assign-rbac-roles-using-the-azure-portal"></a>Rendeljen RBAC-szerepköröket az Azure portal használatával
 
-Az Azure AD-beli hitelesítő blob és üzenetsor erőforrásokhoz való hozzáférés biztosítása az alábbi lépésekből áll: 
+Az Azure AD hitelesítő adatait az Azure Portalon blob és üzenetsor erőforrásokhoz való hozzáférés biztosítása az alábbi lépésekből áll: 
 
 1. Rendelje hozzá a megfelelő Azure Storage RBAC-szerepkörök, tárolók vagy várólisták hozzáférést. Olvasási hozzáférés, rendelje hozzá a **Blobadatok olvasója (előzetes verzió)** vagy **Üzenetsorbeli adatok olvasója (előzetes verzió)** szerepkör. Olvasási, írási és törlési hozzáférésének, rendelje hozzá a **Blobadatok Közreműködője (előzetes verzió)** vagy **Üzenetsorbeli adatok Közreműködője (előzetes verzió)** szerepkör. Egy egyéni szerepkört is hozzárendelhetők.
 
@@ -80,7 +80,7 @@ A storage-fiók, erőforráscsoport vagy előfizetés hatóköre szerepkör hozz
 > 
 > A hatókörrel rendelkező egy tároló vagy egy üzenetsor, ha a tárfiók engedélyezve hierarchikus névtérrel rendelkező szerepkör nem rendelhető hozzá.
 
-### <a name="assign-the-azure-resource-manager-reader-role"></a>Az Azure Resource Manager-olvasó szerepkör hozzárendelése
+### <a name="assign-the-reader-role-for-portal-access"></a>A portál elérésére szolgáló olvasó szerepkör hozzárendelése
 
 Rendel egy beépített vagy egyéni szerepkört az Azure Storage egy rendszerbiztonsági tag, amikor a tárfiókban lévő adatokat a műveletek végrehajtásához, hogy a rendszerbiztonsági tag engedélyeket oszt ki. A beépített **Adatolvasó** szerepkörök adja meg a tároló vagy üzenetsor, az adatok olvasási engedélyeket a során a beépített **Data Közreműködője** szerepkörök adja meg az olvasási, írási és törlési engedélyek tárolóba vagy üzenetsor. A megadott erőforrás engedélyek hatóköre.  
 
@@ -90,7 +90,7 @@ Azonban, ha Mary szeretne egy blob megtekintése az Azure Portalon, akkor a **St
 
 Ha a felhasználóknak képesnek kell lenniük az Azure Portal blobok elérése, majd rendelje hozzá őket egy további RBAC-szerepkör a [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkört ezen a felhasználók számára. A **olvasó** szerepkör egy Azure Resource Manager-szerepkör, amely lehetővé teszi a felhasználók megtekinthetik a tárfiók erőforrásainak, de nem módosíthatók. Nem biztosít az adatok Azure Storage-ban, de csak a fiók felügyeleti erőforrásokhoz olvasási engedéllyel.
 
-Rendelje hozzá a következő lépésekkel a **olvasó** szerepkör. Ebben az esetben a hozzárendelés hatókörét a tárolót:
+Rendelje hozzá a következő lépésekkel a **olvasó** szerepkört, hogy egy felhasználó hozzáférhessen a blobok az Azure Portalról. Ebben az esetben a hozzárendelés hatókörét a tárolót:
 
 1. Az a [az Azure portal](https://portal.azure.com), lépjen a tárfiókhoz, és megjeleníti a **áttekintése** a fiókhoz.
 1. A szolgáltatások területen válassza ki a **Blobok**. 
@@ -100,6 +100,9 @@ Rendelje hozzá a következő lépésekkel a **olvasó** szerepkör. Ebben az es
 1. Az a **rendelhet hozzáféréseket** legördülő menüben válassza **az Azure AD-felhasználó, csoport vagy szolgáltatásnév**.
 1. Keresse meg a rendszerbiztonsági tagot, amelyhez szeretné rendelni a szerepkört.
 1. A szerepkör-hozzárendelés mentése.
+
+> [!NOTE]
+> Az Olvasó szerepkör hozzárendelése a csak blobok vagy üzenetsorok az Azure portal használatával elérni kívánó felhasználók számára szükség. 
 
 ## <a name="use-azure-ad-credentials-with-the-portal"></a>Az Azure AD hitelesítő adatait használja a portállal
 

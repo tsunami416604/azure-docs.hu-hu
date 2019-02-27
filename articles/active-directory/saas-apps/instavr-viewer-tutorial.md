@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19039a6a1337c2ddc7494805b18f564466d4f1f8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 85e773d74231b0b0847dad41a071be499724e2d4
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168731"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872930"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-instavr-viewer"></a>Oktatóanyag: Az Azure Active Directory-integráció InstaVR Viewer
 
@@ -136,11 +136,11 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés InstaVR megjelenít�
 
 2. Kattintson a **felhasználói ikon** válassza **fiók**.
 
-    ![InstaVR megjelenítő konfiguráció ](media/instavr-viewer-tutorial/tutorial-instavr-viewer-account.png)
+    ![InstaVR megjelenítő konfiguráció](media/instavr-viewer-tutorial/tutorial-instavr-viewer-account.png)
 
 3. Görgessen le a **SAML-hitelesítés** , és hajtsa végre az alábbi lépéseket:
 
-    ![InstaVR megjelenítő konfiguráció ](media/instavr-viewer-tutorial/tutorial-instavr-viewer-configure.png)
+    ![InstaVR megjelenítő konfiguráció](media/instavr-viewer-tutorial/tutorial-instavr-viewer-configure.png)
 
     a. Az a **egyszeri bejelentkezési URL-cím** szövegmezőjébe illessze be a **bejelentkezési URL-cím** érték, amely az Azure Portalról másolta.
 
@@ -215,22 +215,22 @@ Ebben a szakaszban egy Britta Simon nevű felhasználó InstaVR megjelenítőben
 
 2. Válassza ki **csomag** a bal oldali navigációs panelen, majd válassza a **márka csomag webes**.
 
-    ![InstaVR megjelenítő konfiguráció ](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing1.png)
+    ![InstaVR megjelenítő konfiguráció](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing1.png)
 
 3. Válassza a **Download** (Letöltés) lehetőséget.
 
-    ![InstaVR megjelenítő konfiguráció ](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing2.png)
+    ![InstaVR megjelenítő konfiguráció](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing2.png)
 
 4. Válassza ki **üzemeltetett lap megnyitása** ezt követően, átirányítjuk az Azure AD bejelentkezési azonosító.
 
-    ![InstaVR megjelenítő konfiguráció ](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing3.png)
+    ![InstaVR megjelenítő konfiguráció](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing3.png)
 
 5. Adja meg az Azure AD hitelesítő adatait, sikeres bejelentkezés az Azure ad egyszeri bejelentkezés.
 
 ## <a name="additional-resources"></a>További források
 
-- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

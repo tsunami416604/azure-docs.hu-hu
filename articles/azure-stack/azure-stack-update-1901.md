@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/20/2019
+ms.date: 02/27/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/09/2019
-ms.openlocfilehash: 2acc26fc473d0e8dcb93b1439de316fbef67ae98
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 77b3d8bd1d16e90e9929c41f0f28940694dc7906
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416513"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889834"
 ---
 # <a name="azure-stack-1901-update"></a>Azure Stack 1901 frissítése
 
@@ -34,7 +34,14 @@ Ez a cikk ismerteti a 1901 csomag tartalmát. A frissítési fejlesztései, jav�
 
 ## <a name="build-reference"></a>Hivatkozás létrehozása
 
-Az Azure Stack 1901 frissítés buildszáma **1.1901.0.95**.
+Az Azure Stack 1901 frissítés buildszáma **1.1901.0.95** vagy **1.1901.0.99** 2019. február 26. után. Olvassa el a következő megjegyzést:
+
+> [!IMPORTANT]  
+> A Microsoft észlelte a hibát, amely hatással lehet a 1901 frissítése 1811 (1.1811.0.101) az ügyfelek és a probléma frissített 1901 csomagot: build 1.1901.0.99, 1.1901.0.95 frissítve lett. Ügyfeleink számára, akik már frissítve az 1.1901.0.95 nem kell további műveleteket végrehajtania.
+>
+> Csatlakoztatott ügyfelek, amelyek a 1811 automatikusan megjelenik az új 1901 (1.1901.0.99) csomagot a felügyeleti portálon, és telepítse, amikor készen áll. Leválasztott ügyfelek letöltése és importálása az új 1901 csomag ugyanilyen módon [az itt leírtak szerint](azure-stack-apply-updates.md).
+>
+> Mindkét verzióját 1901 rendelkező ügyfelek nem érinti, a következő teljes vagy a gyorsjavítás csomag telepítésekor.
 
 ## <a name="hotfixes"></a>Gyorsjavítások
 
@@ -170,33 +177,6 @@ A frissített modulok referenciája áttekintéséhez lásd: [Azure Stack modulh
 
    Update-AzsHomeDirectoryTenant -AdminResourceManagerEndpoint $adminResourceManagerEndpoint `
      -DirectoryTenantName $homeDirectoryTenantName -Verbose
-   ```
-
-- Jelenleg az Azure Stack tartalomtípus-gyűjtési Marketplace-en keresztül a bővítmények letöltésére explicit módon nélkül sikeresen üzembe kiterjesztések. Ezek a bővítmények alábbi verzióit el. Az Azure Stack-operátorok most kell explicit módon szindikálása az Azure Stack piactéren ezekről a kiterjesztésekről:
-
-   | Typo                     | Verzió        |
-   |--------------------------|----------------|
-   | DSC                      | 2.19.0.0       |
-   | IaaSAntimalware          | 1.4.0.0        |
-   | BGInfo                   | 2.1            |
-   | VMAccessAgent            | 2.0            |
-   | CustomScriptExtension    | 1.8            |
-   | MicrosoftMonitoringAgent | 1.0.10900.0    |
-   | IaaSDiagnostics          | 1.10.1.1       |
-   | VMAccessForLinux         | 1.4.0.0        |
-   | CustomScriptForLinux     | 1.5.2.0        |
-   | DockerExtension          | 1.1.1606092330 |
-   | JsonADDomainExtension    | 1.3            |
-   | OSPatchingForLinux       | 2.3.0.1        |
-   | WebRole                  | 4.3000.14.0    |
-
-   Javasoljuk, hogy bővítmények telepítésekor beállítása az Azure Stack felhasználói `autoUpgradeMinorVersion` való **igaz**. Példa:
-
-   ```json
-   "type": "Extension",
-           "publisher": "ExtensionPublisher",
-           "typeHandlerVersion": "1.2",
-           "autoUpgradeMinorVersion": "true"
    ```
 
 - Nincs új veszi figyelembe a pontos megtervezése az Azure Stack kapacitását. A 1901 a frissítés most már rendelkezésre áll egy korlát a létrehozható virtuális gépek teljes száma.  Ez a korlátozás készült ideiglenes megoldás instabil elkerülése érdekében. A forrás, virtuális gépek magasabb adatpontértékek a stabilitás probléma javítása folyamatban van, de egy meghatározott ütemterv szervizelési még nem határozták meg. A 1901 a frissítés most már rendelkezésre áll egy kiszolgáló legfeljebb 60 virtuális gépek és a egy teljes megoldás korlátja 700 száma.  Például egy 8 Azure Stack virtuális gépek maximális lenne 480-as (8 * 60).  12 – 16 kiszolgálóhoz az Azure Stack megoldás a korlát 700 lehet. Ez a korlátozás létrehozása szem összes számítási kapacitás kihasználását például a rugalmasság tartalék és a CPU virtuális és fizikai arányt, az operátornak szeretne a blokkban karbantartása. További információkért tekintse meg a capacity planner új kiadása.  

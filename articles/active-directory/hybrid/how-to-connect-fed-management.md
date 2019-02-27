@@ -18,12 +18,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49a82e1452a4380920271f4fb4f7397208e32d78
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 021e13dafcc659337d4096a068e224312e69db1b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174452"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870941"
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Kezelés és testreszabás Active Directory összevonási szolgáltatások az Azure AD Connect használatával
 Ez a cikk bemutatja, hogyan kezelheti, és testre szabhatja az Active Directory összevonási szolgáltatások (AD FS) Azure Active Directory (Azure AD) Connect használatával. Más általános az AD FS-feladatokat, amelyeket az AD FS-farm teljes konfiguráció megtenni, előfordulhat, hogy is tartalmaz.
@@ -32,7 +32,7 @@ Ez a cikk bemutatja, hogyan kezelheti, és testre szabhatja az Active Directory 
 |:--- |:--- |
 | **Az AD FS kezelése** | |
 | [A bizalmi kapcsolat javítása](#repairthetrust) |Hogyan javítsa ki az összevonási megbízhatósági kapcsolat, az Office 365-tel. |
-| [Az Azure AD-bA a másodlagos bejelentkezési Azonosítót összevonása ](#alternateid) | Alternatív bejelentkezési azonosítóval összevonás konfigurálása  |
+| [Az Azure AD-bA a másodlagos bejelentkezési Azonosítót összevonása](#alternateid) | Alternatív bejelentkezési azonosítóval összevonás konfigurálása  |
 | [Az AD FS-kiszolgáló hozzáadása](#addadfsserver) |Hogyan bővít ki egy további AD FS-kiszolgálót az AD FS farmot. |
 | [Az AD FS webalkalmazás-Proxy kiszolgáló hozzáadása](#addwapserver) |Hogyan bővít ki egy AD FS-farm további webalkalmazás-proxykiszolgálóként (WAP)-kiszolgálóról. |
 | [Összevont tartomány hozzáadása](#addfeddomain) |Hogyan adható hozzá egy összevont tartomány. |

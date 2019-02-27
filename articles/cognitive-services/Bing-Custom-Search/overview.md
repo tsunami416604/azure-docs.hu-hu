@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: overview
 ms.date: 09/29/2017
 ms.author: aahi
-ms.openlocfilehash: 56be136aff3aa7fbe813fee500dcf2fe35ca0859
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3a951f793ec946fc66d6a14acacd548a5f990be3
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55875390"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872862"
 ---
 # <a name="what-is-the-bing-custom-search-api"></a>Mi az a Bing Custom Search API?
 
@@ -23,13 +23,13 @@ A Bing Custom Search API lehetővé teszi, hogy a témakörök, amelyek az Ön s
 
 ## <a name="features"></a>Szolgáltatások
 
-|Funkció  |Leírás  |
+|Szolgáltatás  |Leírás  |
 |---------|---------|
 |[Valós idejű egyéni keresési javaslatok](define-custom-suggestions.md)     | Adja meg a keresési javaslatok, mint egy legördülő lista a felhasználók által beírt jelenhet meg.       | 
 |[Egyéni rendszerkép keresési funkciókkal](get-images-from-instance.md)     | Engedélyezze a felhasználókat, hogy a tartományok és az egyéni keresőpéldányok megadott webhelyek Képkeresés.        |        
 |[Egyéni videó keresési funkciókkal](get-videos-from-instance.md)     | Engedélyezze a felhasználókat, hogy a tartományok és az egyéni keresőpéldányok megadott helyek videók keresése.        |    
 |[Az egyéni keresőpéldányok megosztása](share-your-custom-search.md)     | Ügyfelek bevonásában szerkesztheti, és tesztelje a keresési példány megosztja azokat a csapat tagjai a.        | 
-|[A felhasználói felület az alkalmazások és webhelyek konfigurálása ](hosted-ui.md)     | Ügyfelek bevonásában szerkesztheti, és tesztelje a keresési példány megosztja azokat a csapat tagjai a.        | 
+|[A felhasználói felület az alkalmazások és webhelyek konfigurálása](hosted-ui.md)     | Ügyfelek bevonásában szerkesztheti, és tesztelje a keresési példány megosztja azokat a csapat tagjai a.        | 
 ## <a name="workflow"></a>Munkafolyamat
 
 Létrehozhat egy egyéni keresési példány használatával az [Bing Custom Search portál](https://customsearch.ai). A portál, amely meghatározza a tartományok, webhelyek és, amelyek azt szeretné, hogy szeretne keresni, amelyekre már nincs szükség rá, keresése és a Bing egyéni keresés-példány létrehozását teszi lehetővé. A portálon is használhatja: a keresési funkció előzetes verzió, az az API által biztosított keresési eredményeinkben és igény szerint állítsa be a webhelyek és alkalmazások megjelenítésre kereshető felhasználói felületet.

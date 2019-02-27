@@ -8,12 +8,12 @@ ms.devlang: json
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.custom: mvc
-ms.openlocfilehash: fa8091011575822907915b67cf48bffaf5e7e728
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: bb7a48b08fde07380276d33393225c3f5220b93f
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657076"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880699"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Oktatóanyag: Üzembe helyezése egy Azure Database for MySQL-kiszolgálóhoz az Azure Resource Manager-sablon használatával
 
@@ -29,6 +29,8 @@ Ebben az oktatóanyagban használja az Azure Resource Manager-sablon és más se
 > * Mintaadatok betöltése
 > * Adatok lekérdezése
 > * Adatok frissítése
+
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="create-an-azure-database-for-mysql-server-with-vnet-service-endpoint-using-azure-resource-manager-template"></a>Hozzon létre egy Azure Database for MySQL-kiszolgálóhoz az Azure Resource Manager-sablon használatával szolgáltatásvégpont
 

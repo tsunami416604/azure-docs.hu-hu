@@ -1,6 +1,6 @@
 ---
-title: A referencia-útmutató az adatforrásnézet-tervezőből csempékhez az Azure Log Analyticsben |} A Microsoft Docs
-description: Nézettervező a Log Analytics használatával egyéni nézeteket hozhat létre az Azure Portalon adatvizualizációk széles megjelennek a Log Analytics-munkaterületet. Ez a cikk egy referencia-útmutató a csempék az egyéni nézetekben elérhető beállításai.
+title: A referencia-útmutató az Azure monitorban Az adatforrásnézet-tervezőből csempékhez |} A Microsoft Docs
+description: Nézettervező az Azure Monitor használatával jelennek meg az Azure Portalon, és a Log Analytics-munkaterület az adatok vizualizációjához különböző tartalmazó egyéni nézeteket hozhat létre. Ez a cikk egy referencia-útmutató a csempék az egyéni nézetekben elérhető beállításai.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
-ms.openlocfilehash: 5b01b55c8b2367861459069cc255840e883b9fc5
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: c380f0391c51628b0eb71723a0faf982a4399680
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817386"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887760"
 ---
-# <a name="reference-guide-to-view-designer-tiles-in-log-analytics"></a>Az adatforrásnézet-tervezőből csempék a Log Analytics használati útmutató
-Nézettervező az Azure Log Analytics használatával egyéni nézeteket hozhat létre az Azure Portalon, amelyek a Log Analytics-munkaterület adatvizualizációk széles. Ez a cikk egy referencia-útmutató a csempék az egyéni nézetekben elérhető beállításai.
+# <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Nézettervező csempe az Azure monitorban a referencia-útmutató
+Nézettervező az Azure Monitor használatával létrehozhat egyéni nézetek számos az Azure Portalon, amelyek segítségével adatokat a Log Analytics-munkaterület megjelenítése. Ez a cikk egy referencia-útmutató a csempék az egyéni nézetekben elérhető beállításai.
 
 Nézettervező kapcsolatos további információkért lásd:
 
@@ -177,5 +177,5 @@ A **két idősor** csempe oszlopdiagramként idővel két naplófájl lekérdez�
 
 
 ## <a name="next-steps"></a>További lépések
-* Ismerje meg [naplókereséseket](../../azure-monitor/log-query/log-query-overview.md) lévő csempék a lekérdezések támogatásához.
+* Ismerje meg [lekérdezések naplózását](../log-query/log-query-overview.md) lévő csempék a lekérdezések támogatásához.
 * Adjon hozzá [Vizualizáció részek](view-designer-parts.md) a egyéni nézethez.

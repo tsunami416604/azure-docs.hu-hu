@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: cf0eb7a0b9e38397034c03ef2b4310ed67c6e6dd
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: a7181c91424e1d905329eefd13f926d0b2700081
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980380"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56864974"
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Egy nem felügyelt Virtuálisgép-rendszerkép létrehozása Azure virtuális gépből
 
@@ -41,7 +41,7 @@ Ellenőrizze, hogy a Sysprep a gépen futó kiszolgálói szerepkörök támogat
 > 
 > 
 
-Linux virtuális gép is általánosítása `sudo waagent -deprovision+user` és a PowerShell segítségével a virtuális gép rögzítése. További információ a parancssori felület használatával a virtuális gép rögzítésére: [generalize és az Azure parancssori felületével Linux rendszerű virtuális gép rögzítése ](../linux/capture-image.md).
+Linux virtuális gép is általánosítása `sudo waagent -deprovision+user` és a PowerShell segítségével a virtuális gép rögzítése. További információ a parancssori felület használatával a virtuális gép rögzítésére: [generalize és az Azure parancssori felületével Linux rendszerű virtuális gép rögzítése](../linux/capture-image.md).
 
 
 1. Jelentkezzen be a Windows virtuális gép.

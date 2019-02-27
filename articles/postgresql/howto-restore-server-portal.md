@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.openlocfilehash: 62a953467e212d0cb78686e9b0d98a7f1fcb5135
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: a4f9fee0c405c893d76d044278c80e7b31823fce
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699010"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881336"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-portal"></a>Biztonsági mentése és visszaállítása egy kiszolgálót az Azure Database for postgresql-hez az Azure portal használatával
 
@@ -57,7 +57,7 @@ A következő lépések a mintakiszolgálót egy-időponthoz állítja vissza:
 
 3. Adja meg a visszaállítás űrlapon a szükséges információkkal:
 
-   ![Azure Database for PostgreSQL - visszaállítási információ ](./media/howto-restore-server-portal/3-restore.png)
+   ![Azure Database for PostgreSQL - visszaállítási információ](./media/howto-restore-server-portal/3-restore.png)
   - **Visszaállítási pont**: Válassza ki a-időponthoz a visszaállítani kívánt.
   - **Célkiszolgáló**: Adja meg az új kiszolgáló nevét.
   - **Hely**: A régió nem választható. Alapértelmezés szerint a ugyanaz, mint a forráskiszolgálón.

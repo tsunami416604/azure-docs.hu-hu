@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 37dc96cf965181c5acba74449c684a08035e37b2
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: bc3590e90cacfa4966f0d1f64aa1c8d49483cb1b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55735563"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883778"
 ---
 Ez a cikk néhány, a felhasználók által a klasszikus üzemi modellel létrehozott Azure-beli virtuális gépekkel kapcsolatban gyakran feltett kérdéssel foglalkozik.
 
@@ -136,5 +136,5 @@ Redundancia biztosításához helyezzen két vagy több hasonlóan konfigurált 
 
 [Linux rendszerű virtuális gépek létrehozása és kezelése az Azure CLI-vel](../articles/virtual-machines/linux/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-[Windows rendszerű virtuális gépek létrehozása és felügyelete Azure PowerShell-lel ](../articles/virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[Létrehozása és kezelése Windows virtuális gépek az Azure PowerShell használatával](../articles/virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

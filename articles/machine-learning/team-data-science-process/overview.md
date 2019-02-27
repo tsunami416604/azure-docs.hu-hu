@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/20/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4d576fb79ed931d6a07ab231888617c95c0e465d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 3b4e8c78d7402c254c91c3e100814e1f3eafc41b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452556"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867201"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Mi a csoportos adatelemzési folyamat?
 
@@ -63,7 +63,7 @@ A célok, feladatok és az egyes fázisokat a TDSP-életciklus dokumentációs �
 
 A következő ábra összetevőkről (zöld) (a vízszintes tengely) életciklusának minden egyes fázisa társított ezen szerepkörök (a függőleges tengely) és (a kék) feladatok rács nézetét jeleníti meg. 
 
-[ ![TDSP-szerepkörök – és-feladatok](./media/overview/tdsp-tasks-by-roles.png) ](./media/overview/tdsp-tasks-by-roles.png#lightbox)
+[![TDSP-roles-and-tasks](./media/overview/tdsp-tasks-by-roles.png)](./media/overview/tdsp-tasks-by-roles.png#lightbox)
 
 ## <a name="standardized-project-structure"></a>Szabványos projektstruktúra
 
@@ -77,7 +77,7 @@ Sablonok a mappastruktúrát és a nem szabványos helyekre szükséges dokument
 - például ROC-görbét vagy MSE modell teljesítmény-mérőszámok
 
 
-[ ![TDSP-könyvtárak](./media/overview/tdsp-dir-structure.png) ](./media/overview/tdsp-dir-structure.png#lightbox)
+[![TDSP-directories](./media/overview/tdsp-dir-structure.png)](./media/overview/tdsp-dir-structure.png#lightbox)
 
 A könyvtárstruktúra is lehet klónozni a [GitHub](https://github.com/Azure/Azure-TDSP-ProjectTemplate).
 
@@ -94,7 +94,7 @@ Az elemzési és tárolási infrastruktúrájában a felhőben vagy a helyszíne
 
 Íme egy példa egy csoport több projekten dolgozik, és a megosztási különböző felhőalapú elemzési infrastruktúra-összetevőket.
 
-[ ![TDSP-infrastruktúra](./media/overview/tdsp-analytics-infra.png) ](./media/overview/tdsp-analytics-infra.png#lightbox) 
+[![TDSP-infrastruktúra](./media/overview/tdsp-analytics-infra.png)](./media/overview/tdsp-analytics-infra.png#lightbox) 
 
 
 ## <a name="tools-and-utilities-for-project-execution"></a>Eszközöket és segédprogramokat tehet projekt végrehajtása

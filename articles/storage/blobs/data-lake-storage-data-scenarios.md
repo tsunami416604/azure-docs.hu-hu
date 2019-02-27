@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: normesta
-ms.openlocfilehash: 09514e37d1d40c489eda483980237d26e4a08730
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: ec97cf903a37465f98007750fc41edc0952ab3a6
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417922"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889596"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Az Azure Data Lake Storage Gen2 használata big data-követelményekhez
 
@@ -70,9 +70,9 @@ Ez a táblázat bemutatja, hogyan minden egyes Azure-szolgáltatás vagy eszköz
 |---|--|---|
 |Storage Explorer| Szerepkör hozzárendelése a felhasználók és csoportok | [A felhasználók számára az Azure Active Directory rendszergazda és a nem rendszergazdai szerepkörök hozzárendelése](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal) |
 |AzCopy| Szerepkör hozzárendelése a felhasználók és csoportok <br>**vagy**<br> SAS-tokennel| [A felhasználók számára az Azure Active Directory rendszergazda és a nem rendszergazdai szerepkörök hozzárendelése](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)<br><br>[Könnyedén létrehozhat egy SAS-fájl letöltésére az Azure Storage – az Azure Storage Explorerben](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/)|
-|Apache DistCp | Szerepkör hozzárendelése felhasználóhoz felügyelt identitásnak | [Egy HDInsight-fürt létrehozása a Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2#creating-an-hdinsight-cluster-with-data-lake-storage-gen2) |
+|Apache DistCp | Szerepkör hozzárendelése felhasználóhoz felügyelt identitásnak | [Egy HDInsight-fürt létrehozása a Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2) |
 |Azure Data Factory| Szerepkör hozzárendelése egy felhasználó által hozzárendelt – felügyelt identitás<br>**vagy**<br> Egy egyszerű szolgáltatás szerepkör hozzárendelése<br>**vagy**<br> Használja a tárfiók kulcsa | [Társított szolgáltatás tulajdonságai](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#linked-service-properties) |
-|Azure HDInsight| Szerepkör hozzárendelése felhasználóhoz felügyelt identitásnak | [Egy HDInsight-fürt létrehozása a Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2#creating-an-hdinsight-cluster-with-data-lake-storage-gen2)|
+|Azure HDInsight| Szerepkör hozzárendelése felhasználóhoz felügyelt identitásnak | [Egy HDInsight-fürt létrehozása a Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2)|
 |Azure Databricks| Szerepkör hozzárendelése a szolgáltatásnév | [Útmutató: Az Azure AD-alkalmazás és -erőforrások elérésére képes egyszerű szolgáltatás létrehozása a portál használatával](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)|
 
 Hozzáférést biztosít az adott fájlok és mappák, tanulmányozza a következő cikkeket.

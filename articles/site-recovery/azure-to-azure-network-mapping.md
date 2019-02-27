@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: fccc7379794b4b75ff53e517eddd95ff0f7db0e9
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: b52bdd5948676c09c433cbda249248ce26ce8a48
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223782"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56866028"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>A hálózatleképezés és virtuális hálózatok IP-címzés beállítása
 
@@ -32,7 +32,7 @@ Hálózatok leképezése a következőképpen:
 
 3. A **hálózatleképezés hozzáadása**válassza ki a forrás és cél helye. Ebben a példában a forrás virtuális gép fut, a Kelet-Ázsia régióban, és a Délkelet-Ázsia régióba replikálja.
 
-    ![Válassza ki a forrás és cél ](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
+    ![Válassza ki a forrás és cél](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
 3. Most hozzon létre egy hálózatleképezés ellentétes a címtárban. Ebben a példában a forrás lesz Délkelet-Ázsia és a cél lesz Kelet-Ázsia.
 
     ![Adja hozzá a hálózati hozzárendelési ablaktáblán – a célhálózat a forrás- és helyek kiválasztása](./media/site-recovery-network-mapping-azure-to-azure/network-mapping3.png)

@@ -9,12 +9,12 @@ ms.date: 09/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: c04b9b04a14e5cba205db5e0fa86094ef098bc7b
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 10f3f7d6b878e8f1d4efee360e0f8a9967ac07bc
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56585873"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56886434"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Oktatóanyag: Az Azure Portallal és az üzenettémák, előfizetések készlet frissítése
 
@@ -67,7 +67,7 @@ A kód futtatásához tegye a következőt:
 
 2. Lépjen a következő mintamappához: `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveTutorialwithFilters`.
 
-3. Szerezze be a kapcsolati sztringet, amelyet a jelen oktatóanyag [A felügyeleti hitelesítő adatok beszerzése](#obtain-the-management-credentials) című szakaszában írtaknak megfelelően a Jegyzettömbbe másolt. Szüksége lesz továbbá az előző szakaszban létrehozott témakör nevére.
+3. Szerezze be a beszerzése a felügyeleti hitelesítő adatok szakaszban ebben az oktatóanyagban a Jegyzettömbbe másolt kapcsolati karakterláncot. Szüksége lesz továbbá az előző szakaszban létrehozott témakör nevére.
 
 4. Írja be a következő parancsot a parancssorba:
 

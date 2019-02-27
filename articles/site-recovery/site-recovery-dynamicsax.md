@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: c2151be1644cde0e737be7f026bdf63cef0b3686
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: b97bf56c23dfa96acf7cb5af5ac28b4270de117d
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55221963"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56879781"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Állítsa be a Dynamics AX Többrétegű alkalmazások vészhelyreállítása   
 
@@ -92,7 +92,7 @@ A virtuális gép kiválaszthatja a replikált elemek, a hálózati beállítás
 
 * Ha statikus IP-címet használ, adja meg az IP-Címmel lépése a virtuális gépet a **cél IP-címet** szövegmezőben.
 
-    ![Hálózati beállítások ](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png)
+    ![Hálózati beállítások](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png)
 
 
 ### <a name="5-create-a-recovery-plan"></a>5. Helyreállítási terv létrehozása

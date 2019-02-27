@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 02a6cbabaeb7d9c6f764eec5dd86226e37aa6c2b
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 860c00b876427af7395e3c04e0626131c27aca67
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593522"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878081"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Az Azure Blockchain Workbench integrációs üzenetkezelés
 
@@ -678,7 +678,7 @@ Információkat tartalmaz a Workbench alkalmazásban egy alkalmazás feltöltés
 | id | Az Azure Blockchain Workbench alkalmazás a munkafolyamat egyedi azonosítója |
 | név | Alkalmazás a munkafolyamat neve |
 | displayName | Alkalmazás a munkafolyamat megjelenített neve |
-| functions | A gyűjtemény [függvények a kérelem munkafolyamat ](#workflow-function-information)|
+| functions | A gyűjtemény [függvények a kérelem munkafolyamat](#workflow-function-information)|
 | állapotok | A gyűjtemény [az alkalmazás a munkafolyamat állapotai](#workflow-state-information) |
 | properties | Alkalmazás [tulajdonságok munkafolyamat-információk](#workflow-property-information) |
 

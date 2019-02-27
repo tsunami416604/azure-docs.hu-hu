@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: cf6d0399c790a42eaf74b3ec339bf8cf67495fb3
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: ec55a33874973bf9aeaaa34ab07b162a46db44eb
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548757"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874001"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-portal"></a>Biztonsági mentése és visszaállítása egy kiszolgálót az Azure Database for MariaDB az Azure portal használatával
 
@@ -63,7 +63,7 @@ A következő lépések a mintakiszolgálót egy-időponthoz állítja vissza:
 
 3. Adja meg a visszaállítás űrlapon a szükséges információkkal:
 
-   ![Azure Database for MariaDB - visszaállítási információ ](./media/howto-restore-server-portal/3-restore.png)
+   ![Azure Database for MariaDB - visszaállítási információ](./media/howto-restore-server-portal/3-restore.png)
   - **Visszaállítási pont**: Válassza ki a-időponthoz a visszaállítani kívánt.
   - **Célkiszolgáló**: Adja meg az új kiszolgáló nevét.
   - **Hely**: A régió nem választható. Alapértelmezés szerint a ugyanaz, mint a forráskiszolgálón.

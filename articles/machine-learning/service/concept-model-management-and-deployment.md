@@ -11,18 +11,18 @@ author: chris-lauren
 ms.author: clauren
 ms.date: 1/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 810456114e1ce11562ae2ba014feb0a9a706c15d
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 583573db99eb6b59b82eb22ed88ed5265352e7dd
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820399"
+ms.locfileid: "56876024"
 ---
 # <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>Kezelheti, telepítheti és figyelheti a modellek az Azure Machine Learning szolgáltatás
 
 Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás használatával telepíthet, kezelheti és figyelheti a modellek révén folyamatosan fejleszthető. A helyi gépen, vagy egyéb forrásokból az az Azure Machine Learning betanított modellek is telepítheti. 
 
-A következő ábra szemlélteti a teljes telepítési munkafolyamat: [ ![Az Azure Machine Learning telepítési munkafolyamat](media/concept-model-management-and-deployment/deployment-pipeline.png) ](media/concept-model-management-and-deployment/deployment-pipeline.png#lightbox)
+A következő ábra szemlélteti a teljes telepítési munkafolyamat: [![Az Azure Machine Learning telepítési munkafolyamat](media/concept-model-management-and-deployment/deployment-pipeline.png)](media/concept-model-management-and-deployment/deployment-pipeline.png#lightbox)
 
 Az üzembe helyezést megvalósító munkafolyamat a következő lépésekből áll:
 1. **Regisztrálja a modellt** az Azure Machine Learning szolgáltatás munkaterületen üzemeltetett beállításjegyzékben
@@ -33,7 +33,7 @@ Az üzembe helyezést megvalósító munkafolyamat a következő lépésekből �
 
 Az egyes lépések egymástól függetlenül, vagy egy egyetlen központi telepítési parancs részeként hajtható végre. Ezenkívül integrálható üzembe helyezését egy **CI/CD a munkafolyamat** alábbi képen szemléltetett módon.
 
-[ !["Az azure Machine Learning folyamatos integráció/folyamatos készregyártás (CI/CD) ciklus:](media/concept-model-management-and-deployment/model-ci-cd.png) ](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
+[!["Az azure Machine Learning folyamatos integráció/folyamatos készregyártás (CI/CD) ciklus:](media/concept-model-management-and-deployment/model-ci-cd.png)](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
 
 ## <a name="step-1-register-model"></a>1. lépés: Modell regisztrálása
 
@@ -73,7 +73,7 @@ Regisztrált lemezképeket telepíthet a felhőben vagy a peremhálózati eszkö
 
 Webszolgáltatások üzembe helyezéséhez is kereshetők. Kereshet például egy adott modell- vagy képfájl, központi telepítések.
 
-[ ![Következtetési célok](media/concept-model-management-and-deployment/inferencing-targets.png) ](media/concept-model-management-and-deployment/inferencing-targets.png#lightbox)
+[![Következtetési célok](media/concept-model-management-and-deployment/inferencing-targets.png)](media/concept-model-management-and-deployment/inferencing-targets.png#lightbox)
 
 Az alábbi üzembe helyezési célokhoz, a felhőben is üzembe helyezhetik a rendszerképeket:
 

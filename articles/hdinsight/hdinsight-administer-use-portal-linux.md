@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/26/2018
 ms.author: hrasheed
-ms.openlocfilehash: a0da4339586982f5210834bcec5acfe463bc1a9a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 8fccf82371225acd5839537f7629ffe7df138d43
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816441"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888151"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>A HDInsight Apache Hadoop-fürtök kezelése az Azure portal használatával
 
@@ -71,9 +71,9 @@ Válassza ki a fürt nevét, a [ **HDInsight-fürtök** oldal](#showClusters).  
 
 - **Figyelési menü**
   - **Riasztások**: Kezelheti a riasztásokat és műveleteket.
-  - **Metrikák**: A fürt mérőszámok az Azure Log Analytics figyeli.
+  - **Metrikák**: Az Azure Monitor naplóira a fürt metrikák figyelése.
   - **Diagnosztikai beállítások**: A diagnosztikai metrikák tárolására beállításait.
-  - **Az Operations Management Suite**:  Az Azure Operations Management Suite (OMS) és az Azure Log Analytics-fürt monitorozására.
+  - **Az Operations Management Suite**:  A naplók az Azure Operations Management Suite (OMS) és az Azure Monitor-fürt monitorozásához.
 
 - **Támogatás + hibaelhárítás menüjében**
   - **A Resource health**: Lásd: [az Azure resource health áttekintése](../service-health/resource-health-overview.md).

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: f326c8608f92cc974a9decad3b010888c358c667
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: b7e9a46caf39d736fd7fdc5b3742a47c2bab51fd
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818527"
+ms.locfileid: "56876415"
 ---
 # <a name="sql-language-reference-for-azure-cosmos-db"></a>Az Azure Cosmos DB SQL nyelvi referencia 
 
@@ -2351,7 +2351,7 @@ StringToArray(<expr>)
   
  **Példák**  
   
-Az alábbi példa bemutatja, hogy több különböző típusú StringToArray működését. 
+ Az alábbi példa bemutatja, hogy több különböző típusú StringToArray működését. 
   
 ```  
 SELECT 
@@ -2395,7 +2395,7 @@ StringToBoolean(<expr>)
   
  **Példák**  
   
-Az alábbi példa bemutatja, hogy több különböző típusú StringToBoolean működését. 
+ Az alábbi példa bemutatja, hogy több különböző típusú StringToBoolean működését. 
   
 ```  
 SELECT 
@@ -2438,7 +2438,7 @@ StringToNull(<expr>)
   
  **Példák**  
   
-Az alábbi példa bemutatja, hogy több különböző típusú StringToNull működését. 
+ Az alábbi példa bemutatja, hogy több különböző típusú StringToNull működését. 
   
 ```  
 SELECT 
@@ -2480,7 +2480,7 @@ StringToNumber(<expr>)
   
  **Példák**  
   
-Az alábbi példa bemutatja, hogy több különböző típusú StringToNumber működését. 
+ Az alábbi példa bemutatja, hogy több különböző típusú StringToNumber működését. 
   
 ```  
 SELECT 
@@ -2525,7 +2525,7 @@ StringToObject(<expr>)
   
  **Példák**  
   
-Az alábbi példa bemutatja, hogy több különböző típusú StringToObject működését. 
+ Az alábbi példa bemutatja, hogy több különböző típusú StringToObject működését. 
   
 ```  
 SELECT 

@@ -7,14 +7,14 @@ manager: shivamg
 keywords: elemszintű helyreállítás; az Azure virtuális gép biztonsági mentése; fájlok helyreállítása fájlok helyreállítása Azure virtuális gépből
 ms.service: backup
 ms.topic: conceptual
-ms.date: 8/22/2018
-ms.author: pvrk
-ms.openlocfilehash: c267b3a8289d87402647a399376161cf18716112
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.date: 2/26/2019
+ms.author: pullabhk
+ms.openlocfilehash: 4bae9a09dad217b8d805a64372ed404eb7ada723
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488492"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874162"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása Azure virtuális gépek biztonsági mentése
 
@@ -73,11 +73,15 @@ A fájlok és mappák visszaállítása a helyreállítási pontot, nyissa meg a
         - <https://pod01-rec2.geo-name.backup.windowsazure.de> (Az Azure Germany)
     - 3260-as kimenő portot
 
-    Linux esetén a szkripthez "nyílt-iscsi" és "lshw" összetevők a helyreállítási ponthoz való csatlakozáshoz. Ha az összetevők nem létezik a számítógépen, amelyen a szkript fut, akkor a parancsprogram kéri engedélyt összetevőinek telepítését. Hozzájárulás megadása a szükséges összetevők telepítéséhez.
+> [!Note]
+> A letöltött szkript fájlneve lesz a "geo-name" meg kell tölteni az URL-címben. A példa: A letöltött szkript neve kezdődik \'VMname\'\_\'geoname\'_\'GUID\', például a ContosoVM_wcus_12345678... Az URL-cím "https://pod01-rec2.wcus.backup.windowsazure.com"
+> 
 
-    A jövőben a Microsoft a hozzáférést a gép, ahol a parancsfájl futtatása és az adatokat a helyreállítási pont közötti biztonságos csatorna létrehozásához használt összetevők letöltéséhez szükséges.
-
-    A szkriptet minden olyan gépen, amelyen a biztonsági másolat virtuális géppel azonos (vagy kompatibilis) operációs rendszer futtathatja. Tekintse meg a [kompatibilis operációs rendszer tábla](backup-azure-restore-files-from-vm.md#system-requirements) kompatibilis operációs rendszerekhez. Ha a védett Azure virtuális gépen Windows tárolóhelyek (Windows Azure virtuális gépek esetén) vagy LVM/RAID-tömbök (a Linux rendszerű virtuális gépek) használ, a végrehajtható fájl vagy parancsfájl nem futtatható az azonos virtuális gépen. Ehelyett futtassa a végrehajtható fájl vagy parancsfájl bármely gépen más kompatibilis operációs rendszerrel.
+   Linux esetén a szkripthez "nyílt-iscsi" és "lshw" összetevők a helyreállítási ponthoz való csatlakozáshoz. Ha az összetevők nem létezik a számítógépen, amelyen a szkript fut, akkor a parancsprogram kéri engedélyt összetevőinek telepítését. Hozzájárulás megadása a szükséges összetevők telepítéséhez.
+   
+   A jövőben a Microsoft a hozzáférést a gép, ahol a parancsfájl futtatása és az adatokat a helyreállítási pont közötti biztonságos csatorna létrehozásához használt összetevők letöltéséhez szükséges.
+   
+   A szkriptet minden olyan gépen, amelyen a biztonsági másolat virtuális géppel azonos (vagy kompatibilis) operációs rendszer futtathatja. Tekintse meg a [kompatibilis operációs rendszer tábla](backup-azure-restore-files-from-vm.md#system-requirements) kompatibilis operációs rendszerekhez. Ha a védett Azure virtuális gépen Windows tárolóhelyek (Windows Azure virtuális gépek esetén) vagy LVM/RAID-tömbök (a Linux rendszerű virtuális gépek) használ, a végrehajtható fájl vagy parancsfájl nem futtatható az azonos virtuális gépen. Ehelyett futtassa a végrehajtható fájl vagy parancsfájl bármely gépen más kompatibilis operációs rendszerrel.
 
 ### <a name="identifying-volumes"></a>Kötetek azonosítása
 
@@ -199,6 +203,11 @@ A Linux a fájlok visszaállítására használt számítógép operációs rend
 | Oracle Linux | 6.4 vagy újabb verzió |
 | SLES | 12 vagy újabb verzió |
 | openSUSE | 42.2 vagy újabb verzió |
+
+> [!Note]
+> Bizonyos problémák a szkript fut a gépek az SLES 12 SP4 operációs rendszer található. SLES csapatával kivizsgálásához.
+> Jelenleg, nem fut a szkript gépeken SLES 12 SP2 és az operációs rendszer SP3 verziókkal működik.
+>
 
 A szkript végrehajtásához és a helyreállítási pont biztonságosan kapcsolódhat a Python és bash összetevőket is szükséges.
 

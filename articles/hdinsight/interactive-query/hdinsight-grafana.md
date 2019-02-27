@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: 7f33742fc5e765aa5ab0c66d13e844b3be2bab9e
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 495c617f97b2a7f39182b7684c2c0e183c2002b1
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599876"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867813"
 ---
 # <a name="access-grafana-in-azure-hdinsight"></a>Az Azure HDInsight hozzáférést Grafana
 
@@ -109,7 +109,7 @@ A cikk befejezése után érdemes törölni a fürtöt. A HDInsight az Azure Sto
 Ebben a cikkben megtanulta, hogyan hozhat létre egy Linux-alapú HDInsight-fürt Resource Manager-sablon használatával, és hogyan hajthat végre alapszintű Apache Hive-lekérdezéseket. A következő cikkben megtudhatja, hogyan végezheti el az adatok kinyerési, átalakítási és betöltési (ETL) műveleteit a Hadoop használatával a HDInsighton.
 
 > [!div class="nextstepaction"]
->[Adatok kinyerése, átalakítása és betöltése az Apache Hive használatával a HDInsighton ](../hdinsight-analyze-flight-delay-data-linux.md)
+>[A kinyerési, átalakítási és az Apache Hive használata a HDInsight adatok betöltése](../hdinsight-analyze-flight-delay-data-linux.md)
 
 Ha készen áll dolgozni a saját adataival, és szeretne többet megtudni a HDInsight adattárolási módszereiről, illetve arról, hogyan kerülnek az adatok a HDInsightba, tekintse meg a következő cikkeket:
 

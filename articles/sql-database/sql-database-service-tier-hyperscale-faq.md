@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/06/2019
-ms.openlocfilehash: 16d536ff5bd1f7d9a3427877a93036d9f711564e
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: d94bc570f47d71a7e2b626041acd4bb6e84d0dc1
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099776"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876007"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Az Azure SQL nagy kapacitású adatbázisokkal kapcsolatos gyakori kérdések
 
@@ -73,7 +73,7 @@ A nagy kapacitású szolgáltatásszint elsősorban ügyfelek esetében, akik na
 
 ### <a name="what-regions-currently-support-hyperscale"></a>Mely régiók jelenleg támogatja a nagy kapacitású
 
-Nagy kapacitású és önálló adatbázisokat az alábbi régiókban érhető el:  USA nyugati US1, USA 2. nyugati régiója, USA keleti US1, USA középső RÉGIÓJA, Nyugat-Európa, Észak-Európa, Egyesült Királyság nyugati régiója, Délkelet-Ázsiában, kelet-japán, Korea középső régiója, Délkelet-Ausztrália és Kelet-Ausztrália.
+Nagy kapacitású és önálló adatbázisokat az alábbi régiókban érhető el:  USA nyugati US1, USA 2. nyugati régiója, USA keleti US1, USA középső RÉGIÓJA, Nyugat-Európa, Észak-Európa, Délkelet-Ázsiában, kelet-japán, Korea középső régiója, Délkelet-Ausztrália és Kelet-Ausztrália.
 
 ### <a name="can-i-create-multiple-hyperscale-databases-per-sql-database-server"></a>SQL-adatbázis kiszolgálónként több nagy kapacitású adatbázist hozhat létre
 

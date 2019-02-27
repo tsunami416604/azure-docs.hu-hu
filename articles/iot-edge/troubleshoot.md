@@ -4,17 +4,17 @@ description: Ebben a cikkben megismerheti standard diagnosztikai képességek az
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 06/26/2018
+ms.date: 02/26/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: cd9ff1a1a7730ae870ef4e80fbca2d934aa5c8e2
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 2daaa1275d9a97bec43f277e726518ead6eca9ff
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342663"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876364"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Az Azure IoT Edge gyakori problémái és azok megoldásai
 
@@ -101,15 +101,15 @@ Windows rendszeren:
 
 ### <a name="check-container-logs-for-issues"></a>Ellenőrizze a tároló naplóinak problémák
 
-Miután az IoT Edge biztonsági démon fut, tekintse meg a naplókat a tárolók a hibák észlelése. Kezdje az üzembe helyezett tárolókkal, majd tekintse meg az IoT Edge-futtatókörnyezet alkotó tárolókat: Az Edge Agent és az Edge hubot. Az Edge Agent-naplók általában az egyes tárolók életciklusáról nyújtanak információt. Az Edge Hub-naplók az üzenetküldésről és az útválasztásról nyújtanak információt. 
+Miután az IoT Edge biztonsági démon fut, tekintse meg a naplókat a tárolók a hibák észlelése. Kezdje az üzembe helyezett tárolókkal, majd tekintse meg az IoT Edge-futtatókörnyezet alkotó tárolókat: edgeAgent és edgeHub. Az IoT Edge agent-naplók általában az egyes tárolók életciklusáról nyújtanak információt. Az IoT Edge hub-naplók üzenetküldésről és az útválasztásról nyújtanak információt. 
 
    ```cmd
    iotedge logs <container name>
    ```
 
-### <a name="view-the-messages-going-through-the-edge-hub"></a>Az Edge hubon áthaladó üzeneteket megtekintése
+### <a name="view-the-messages-going-through-the-iot-edge-hub"></a>Az IoT Edge hubon áthaladó üzeneteket megtekintése
 
-Megtekintheti az Edge hubon áthaladó üzeneteket, és gyűjtsön információt a futtatókörnyezet tárolóiból származó részletes naplók a. Ezek a tárolók a részletes naplók bekapcsolásához állítsa `RuntimeLogLevel` a yaml-konfigurációs fájlban. A fájl megnyitásához:
+Megtekintheti az IoT Edge hubon áthaladó üzeneteket, és gyűjtsön információt a futtatókörnyezet tárolóiból származó részletes naplók a. Ezek a tárolók a részletes naplók bekapcsolásához állítsa `RuntimeLogLevel` a yaml-konfigurációs fájlban. A fájl megnyitásához:
 
 Linux:
 
@@ -137,13 +137,13 @@ Alapértelmezés szerint a `agent` elem a következő példához hasonlóan fog 
 
 Cserélje le `env: {}` együtt:
 
-> [!WARNING]
-> YAML-fájlok nem lehetnek identation lapokon. Használja helyette a 2 szóközöket.
-
    ```yaml
    env:
      RuntimeLogLevel: debug
    ```
+
+   > [!WARNING]
+   > YAML-fájlok nem lehetnek identation lapokon. Használja helyette a 2 szóközöket.
 
 Mentse a fájlt, és indítsa újra a IoT Edge-kezelő.
 
@@ -180,11 +180,11 @@ Windows rendszeren:
    Start-Service iotedge
    ```
 
-## <a name="edge-agent-stops-after-about-a-minute"></a>Az Edge Agent körülbelül egy perc után leáll
+## <a name="iot-edge-agent-stops-after-about-a-minute"></a>IoT Edge agent körülbelül egy perc után leáll.
 
-Az Edge Agent elindul, és körülbelül egy percig sikeresen fut, majd leáll. A naplók jelzik, hogy az Edge Agent megpróbál kapcsolódni az IoT hubhoz amqp-n keresztül, és ezután megpróbál csatlakozni az AMQP használatával websocketen. Ha ez nem sikerül, az Edge Agent kilép. 
+A edgeAgent modul elindul, és sikeresen fut körülbelül egy percet, majd leáll. A naplók jelzik, hogy az IoT Edge agent megpróbál kapcsolódni az IoT hubhoz amqp-n keresztül, és ezután megpróbál csatlakozni az AMQP használatával websocketen. Ha nem sikerül, az IoT Edge agent kilép. 
 
-Példa az Edge Agent-naplókra:
+Példa edgeAgent naplói:
 
 ```output
 2017-11-28 18:46:19 [INF] - Starting module management agent. 
@@ -194,16 +194,16 @@ Példa az Edge Agent-naplókra:
 ```
 
 ### <a name="root-cause"></a>Gyökérok
-A gazdahálózaton egy hálózati konfiguráció meggátolja, hogy az Edge Agent elérje a hálózatot. Az ügynök először megpróbál AMQP-n keresztül csatlakozni (az 5671-es porton). Ha a kapcsolódás sikertelen, a websockettel (a 443-as porton).
+A gazdagép hálózati egy hálózati konfiguráció megakadályozza, hogy az IoT Edge-ügynök éri el a hálózaton. Az ügynök először megpróbál AMQP-n keresztül csatlakozni (az 5671-es porton). Ha a kapcsolódás sikertelen, a websockettel (a 443-as porton).
 
 Az IoT Edge-futtatókörnyezet minden modulon beállít egy-egy hálózatot a kommunikációhoz. Linux rendszeren ez a hálózat egy hídhálózat. Windows rendszeren NAT-ot használ. Ez a probléma gyakoribb a NAT-hálózatot használó Windows-tárolókat igénybe vevő windowsos eszközökön. 
 
 ### <a name="resolution"></a>Megoldás:
 Győződjön meg arról, hogy elérhető egy útvonal az internethez az ehhez a híd-/NAT-hálózathoz rendelt IP-címek esetén. Néha a gazdagépen lévő VPN-konfiguráció felülbírálja az IoT Edge-hálózatot. 
 
-## <a name="edge-hub-fails-to-start"></a>Az Edge Hub nem indul el
+## <a name="iot-edge-hub-fails-to-start"></a>IoT Edge hub nem indul el
 
-Az Edge Hub nem indul el, és a következő üzenetet írja a naplókba: 
+A kezdő és a következő üzenetet a naplókba írja edgeHub modul meghiúsul: 
 
 ```output
 One or more errors occurred. 
@@ -213,16 +213,16 @@ Error starting userland proxy: Bind for 0.0.0.0:443 failed: port is already allo
 ```
 
 ### <a name="root-cause"></a>Gyökérok
-A gazdagépen egy másik folyamat foglalja le a 443-as portot. Az Edge Hub az 5671-es és a 443-as portot képezi le az átjáró-forgatókönyvekhez. Ez a portleképezés sikertelen, ha egy másik folyamat már lefoglalta a portot. 
+A gazdagépen egy másik folyamat foglalja le a 443-as portot. Az IoT Edge hub az 5671, és az átjáró-forgatókönyvekhez használja a 443-as. Ez a portleképezés sikertelen, ha egy másik folyamat már lefoglalta a portot. 
 
 ### <a name="resolution"></a>Megoldás:
 Keresse meg, és állítsa le a 443-as portot használó folyamatot. Ez a folyamat általában a webkiszolgáló.
 
-## <a name="edge-agent-cant-access-a-modules-image-403"></a>Az Edge Agent nem éri el egy modul rendszerképét (403)
-Egy tároló nem fut, és az Edge Agent-naplók a 403-as hibát tartalmazzák. 
+## <a name="iot-edge-agent-cant-access-a-modules-image-403"></a>IoT Edge agent nem éri el egy modul rendszerképét (403)
+A tároló nem fut, és a edgeAgent naplók megjelenítése a 403-as hibát. 
 
 ### <a name="root-cause"></a>Gyökérok
-Az Edge Agentnek nincs engedélye egy modul rendszerképének eléréséhez. 
+Az Iot Edge-ügynök nincs engedélye egy modul rendszerképének eléréséhez. 
 
 ### <a name="resolution"></a>Megoldás:
 Győződjön meg arról, hogy a tárolójegyzék hitelesítő adatainak helyesen vannak megadva a manifest nasazení
@@ -266,14 +266,14 @@ Ha ezt a hibát látja, feloldhatja konfigurálásával a virtuális gép DNS-ne
 Felmerülhet korlátozott eszközökön, például a Raspberry Pi-októl stabilitását, különösen akkor, ha az átjáróként használt. Memória kivételeket az edge hub modul kívül tünetei, alsóbb rétegbeli eszközök nem csatlakoznak, vagy az eszköz nem a telemetriai üzeneteket küld a néhány óra múlva.
 
 ### <a name="root-cause"></a>Gyökérok
-Az edge hub, az edge-futtatókörnyezet része, amely alapértelmezés szerint a teljesítmény optimalizáltuk, és megpróbálja nagy mennyiségű memóriát lefoglalni. Az optimalizálás nem ideális korlátozott peremhálózati eszközökre, és stabilitását problémákat okozhat.
+Az IoT Edge hub, az IoT Edge-futtatókörnyezet része, amely alapértelmezés szerint a teljesítmény optimalizáltuk, és megpróbálja nagy mennyiségű memóriát lefoglalni. Az optimalizálás nem ideális korlátozott peremhálózati eszközökre, és stabilitását problémákat okozhat.
 
 ### <a name="resolution"></a>Megoldás:
-Az edge hub, a környezeti változó értéke **OptimizeForPerformance** való **hamis**. Ehhez két módja van:
+Az IoT Edge hubot a környezeti változó értéke **OptimizeForPerformance** való **hamis**. Ehhez két módja van:
 
 A felhasználói felületen: 
 
-A portálon *eszközadatok*->*modulok beállítása*->*speciális Edge-futtatókörnyezet-beállítások konfigurálása*, egy környezeti változó létrehozása nevű *OptimizeForPerformance* , amely *hamis* számára a *Edge hubot*.
+A portálon lépjen a **eszközadatok** > **modulok beállítása** > **speciális Edge-futtatókörnyezet-beállítások konfigurálása**. Hozzon létre egy környezeti változót az Edge Hub modulhoz nevű *OptimizeForPerformance* , amely *hamis*.
 
 ![OptimizeForPerformance "false" értékűre.](./media/troubleshoot/optimizeforperformance-false.png)
 
@@ -328,9 +328,9 @@ Győződjön meg arról, hogy az azonos Folyamatazonosító mindig használják 
 
 
 ## <a name="firewall-and-port-configuration-rules-for-iot-edge-deployment"></a>Üzemelő IoT Edge-példány konfigurációs szabályokat tűzfal- és portbeállítások
-Az Azure IoT Edge lehetővé teszi, hogy az Azure-felhőben az IoT Hub támogatott protokollok használatával és egy helyszíni peremhálózati kiszolgáló közötti kommunikáció, lásd: [kommunikációs protokoll kiválasztása](../iot-hub/iot-hub-devguide-protocols.md). A fokozott biztonság érdekében a kommunikációs csatornák között az Azure IoT Edge és az Azure IoT Hub mindig konfigurálni kell a kimenő. Ez a konfiguráció alapján a [szolgáltatások támogatott kommunikációs mintát](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/), amely minimálisra csökkenti a támadási felületet a rosszindulatú entitás megismerése. Bejövő kommunikáció csak akkor szükséges, ahol az Azure IoT Hub kell üzenetek leküldése az Azure IoT Edge-eszköz bizonyos forgatókönyvek esetén. Felhőből az eszközre irányuló üzenetek biztonságos TLS-csatorna használatával véd, és további segítségével biztosítható X.509-tanúsítványokat és a TPM-eszköz modulok. Az Azure IoT Edge biztonsági Manager szabályozza, hogy ez a kommunikáció hogyan lehet létrehozni, tekintse meg [IoT Edge-biztonságkezelő](../iot-edge/iot-edge-security-manager.md).
+Az Azure IoT Edge lehetővé teszi, hogy az Azure-felhőben az IoT Hub támogatott protokollok használatával és egy helyszíni kiszolgáló közötti kommunikáció, lásd: [kommunikációs protokoll kiválasztása](../iot-hub/iot-hub-devguide-protocols.md). A fokozott biztonság érdekében a kommunikációs csatornák között az Azure IoT Edge és az Azure IoT Hub mindig konfigurálni kell a kimenő. Ez a konfiguráció alapján a [szolgáltatások támogatott kommunikációs mintát](https://blogs.msdn.microsoft.com/clemensv/2014/02/09/service-assisted-communication-for-connected-devices/), amely minimálisra csökkenti a támadási felületet a rosszindulatú entitás megismerése. Bejövő kommunikáció csak akkor szükséges, ahol az Azure IoT Hub kell üzenetek leküldése az Azure IoT Edge-eszköz bizonyos forgatókönyvek esetén. Felhőből az eszközre irányuló üzenetek biztonságos TLS-csatorna használatával véd, és további segítségével biztosítható X.509-tanúsítványokat és a TPM-eszköz modulok. Az Azure IoT Edge biztonsági Manager szabályozza, hogy ez a kommunikáció hogyan lehet létrehozni, tekintse meg [IoT Edge-biztonságkezelő](../iot-edge/iot-edge-security-manager.md).
 
-IoT Edge biztosít továbbfejlesztett konfigurálása az Azure IoT Edge-futtatókörnyezet, és üzembe helyezett modulokat, az továbbra is függ az alapul szolgáló machine és a hálózati konfiguráció. Ezért elengedhetetlen, annak érdekében, hogy biztonságos peremhálózati és a felhő közötti kommunikációhoz megfelelő hálózati és tűzfalbeállításokat szabályok vannak beállítva. A következő használhatja útmutatóként tűzfalszabályok konfigurálása az alapul szolgáló kiszolgálók az Azure IoT Edge-futtatókörnyezet üzemeltető:
+IoT Edge biztosít továbbfejlesztett konfigurálása az Azure IoT Edge-futtatókörnyezet, és üzembe helyezett modulokat, az továbbra is függ az alapul szolgáló machine és a hálózati konfiguráció. Ezért rendkívül fontos biztosítani kell a megfelelő hálózati és tűzfalszabályok vannak beállítva a kommunikációs felhőbe biztonságos peremhálózati. Az alábbi táblázat használhatja útmutatóként tűzfalszabályok konfigurálása az alapul szolgáló kiszolgálók az Azure IoT Edge-futtatókörnyezet üzemeltető:
 
 |Protokoll|Port|bejövő|Kimenő|Útmutatás|
 |--|--|--|--|--|

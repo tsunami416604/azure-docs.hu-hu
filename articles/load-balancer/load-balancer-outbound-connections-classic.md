@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2018
 ms.author: kumud
-ms.openlocfilehash: ec3fcc0301083e6cd5eff34c111586ef6463f8fd
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 3267d79387586f5ca8475d7ac0ed0f86d3f64f0d
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821507"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876942"
 ---
 # <a name="outbound-connections-classic"></a>Kimenő kapcsolatok (klasszikus)
 
@@ -41,7 +41,7 @@ Az Azure kimenő kapcsolatot klasszikus üzembe helyezéssel eléréséhez háro
 | --- | --- | --- | --- | --- | --- |
 | [1. Virtuális gép példány szintű nyilvános IP-címmel](#ilpip) | Port folyamatnak álcázott nem használja az SNAT, | TCP, UDP, ICMP, ESP | Az Azure a hozzárendelt virtuális gép nyilvános IP-címet használ. A példány érhető el minden rövid élettartamú port rendelkezik. | Nem | Igen |
 | [2. a nyilvános elosztott terhelésű végpont](#publiclbendpoint) | A port (PAT) folyamatnak álcázott nyilvános végpontjára mutató SNAT | TCP, UDP | Az Azure IP-cím nyilvános nyilvános végpontot a több, saját végponttal rendelkező fájlmegosztások. Azure rövid élettartamú port a nyilvános végpont PAT használ. | Igen | Igen |
-| [3. Önálló virtuális gép ](#defaultsnat) | A port (PAT) folyamatnak álcázott SNAT | TCP, UDP | Az Azure automatikusan jelöl ki egy nyilvános IP-címet az SNAT, a nyilvános IP-címet oszt meg a teljes telepítést, és PAT elmúló port a nyilvános végpont IP-cím használja. Ez az a fenti esetekben egy tartalék forgatókönyvet. Nem ajánlott, ha a szükséges átláthatóságot és irányítást. | Igen | Igen |
+| [3. Önálló virtuális gép](#defaultsnat) | A port (PAT) folyamatnak álcázott SNAT | TCP, UDP | Az Azure automatikusan jelöl ki egy nyilvános IP-címet az SNAT, a nyilvános IP-címet oszt meg a teljes telepítést, és PAT elmúló port a nyilvános végpont IP-cím használja. Ez az a fenti esetekben egy tartalék forgatókönyvet. Nem ajánlott, ha a szükséges átláthatóságot és irányítást. | Igen | Igen |
 
 Ez a kimenő kapcsolat funkció érhető el az Azure Resource Manager üzembe helyezések egy részét.  
 

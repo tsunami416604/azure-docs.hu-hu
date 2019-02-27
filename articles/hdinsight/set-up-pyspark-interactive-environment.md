@@ -9,12 +9,12 @@ ms.author: jejiang
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 1/17/2019
-ms.openlocfilehash: 45ba049717f2b9874bbac8d6493e13c2afc4b8f2
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: c5a8869b0619b7be506ead1b9d37053e9fa57bba
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54910648"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880291"
 ---
 # <a name="set-up-the-pyspark-interactive-environment-for-visual-studio-code"></a>A Visual Studio Code a PySpark interaktív környezetének beállítása
 
@@ -71,4 +71,4 @@ Használjuk a **python/pip** parancsot hozhat létre a virtuális környezet az 
 * [Külső csomagok használata Jupyter notebookokkal](spark/apache-spark-jupyter-notebook-use-external-packages.md)
 * [A Jupyter telepítése a számítógépre, majd csatlakozás egy HDInsight Spark-fürthöz](spark/apache-spark-jupyter-notebook-install-locally.md)
 * [A Microsoft Power bi-ban az Azure HDInsight az Apache Hive-adatok megjelenítése](hadoop/apache-hadoop-connect-hive-power-bi.md)
-* [Az Apache a Zeppelin használata Azure HDInsight az Apache Hive-lekérdezések futtatásához ](hdinsight-connect-hive-zeppelin.md)
+* [Az Apache a Zeppelin használata Azure HDInsight az Apache Hive-lekérdezések futtatásához](hdinsight-connect-hive-zeppelin.md)

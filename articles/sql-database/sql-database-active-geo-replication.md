@@ -11,15 +11,15 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: b39967c071b21978324f205eb62d305011b65fb6
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 02/26/2019
+ms.openlocfilehash: f6179c14c0a057a08203764316eeb43783cd7fc8
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995057"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887743"
 ---
-# <a name="create-readable-secondary-databases-using-active-geo-replication"></a>Aktív georeplikáció használatával olvasható másodlagos adatbázis létrehozása
+# <a name="creating-and-using-active-geo-replication"></a>Létrehozásáról és használatáról az aktív georeplikáció
 
 Aktív georeplikáció az Azure SQL Database szolgáltatás, amely lehetővé teszi, hogy az egyes adatbázisok olvasható másodlagos adatbázis létrehozása az azonos vagy eltérő adatközpontban (régió) az SQL Database-kiszolgálón.
 
@@ -110,7 +110,7 @@ Elérése érdekében a valódi üzleti folytonosság, adatbázis-redundancia ad
 
 - **Hitelesítő adatok és -tűzfalszabályok szinkronban tartása**
 
-  Azt javasoljuk, [adatbázis-tűzfalszabályok](sql-database-firewall-configure.md) adatbázisok georeplikált, így ezek a szabályok replikálható, minden másodlagos adatbázisát az elsődleges azonos tűzfalszabályok rendelkezésre áll az adatbázissal. Ezzel a módszerrel nem kell az ügyfelek manuális konfigurálása és karbantartása, mind az elsődleges és másodlagos adatbázisok üzemeltetési kiszolgáló tűzfalszabályait. Ehhez hasonlóan használatával [tartalmazott adatbázis felhasználóit](sql-database-manage-logins.md) adatok hozzáférés biztosítja, mind az elsődleges, mind a másodlagos adatbázisok mindig azonos felhasználói hitelesítő adatokat, így a feladatátvétel során a nem a felhasználónevek és jelszavak eltérések miatt szolgáltatások. Igény szerinti hozzáadásával [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md), ügyfelek kezelhetik a felhasználói hozzáférést az elsődleges és másodlagos adatbázisok, és szükségtelenné teszik a kezeléséhez hitelesítő adatait érvényesítette adatbázisokban.
+Azt javasoljuk, [adatbázis-tűzfalszabályok](sql-database-firewall-configure.md) adatbázisok georeplikált, így ezek a szabályok replikálható, minden másodlagos adatbázisát az elsődleges azonos tűzfalszabályok rendelkezésre áll az adatbázissal. Ezzel a módszerrel nem kell az ügyfelek manuális konfigurálása és karbantartása, mind az elsődleges és másodlagos adatbázisok üzemeltetési kiszolgáló tűzfalszabályait. Ehhez hasonlóan használatával [tartalmazott adatbázis felhasználóit](sql-database-manage-logins.md) adatok hozzáférés biztosítja, mind az elsődleges, mind a másodlagos adatbázisok mindig azonos felhasználói hitelesítő adatokat, így a feladatátvétel során a nem a felhasználónevek és jelszavak eltérések miatt szolgáltatások. Igény szerinti hozzáadásával [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md), ügyfelek kezelhetik a felhasználói hozzáférést az elsődleges és másodlagos adatbázisok, és szükségtelenné teszik a kezeléséhez hitelesítő adatait érvényesítette adatbázisokban.
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>A frissítés, vagy egy elsődleges adatbázis alacsonyabb szolgáltatásszintre
 
@@ -125,6 +125,16 @@ A nagy kiterjedésű hálózaton magas késést, mert a folyamatos másolás has
 
 > [!NOTE]
 > **az sp_wait_for_database_copy_sync** megakadályozza az adatvesztést a feladatátvételt követően, de nem garantálja a teljes szinkronizálás olvasási hozzáféréssel. A késleltetés által okozott egy **sp_wait_for_database_copy_sync** eljáráshívási is lehet, és a hívás idején a tranzakciós napló méretétől függ.
+
+## <a name="monitoring-geo-replication-lag"></a>Georeplikáció lag figyelése
+
+RPO megállapodást lag monitorozásához használja *replication_lag_sec* oszlopa [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) az elsődleges adatbázison. Késés másodpercben között a tranzakciókat az elsődleges véglegesítve és rögzítve a másodlagos jeleníti meg. Például a lag értéke 1 másodperc, ha azt jelenti, hogy ha az elsődleges kihatással van a kimaradások jelen pillanatban és feladatátvételi intiated, 1 másodperc, a legutóbbi transtions nem lesznek mentve. 
+
+Alkalmazása megtörtént-e a másodlagos, azaz elérhető olvasni a másodlagos módosításokat az elsődleges adatbázison megállapodást lag mérésére összehasonlítása *last_commit* ugyanazt az értéket az elsődleges és a másodlagos adatbázis idő az adatbázis.
+
+> [!NOTE]
+> Néha *replication_lag_sec* az elsődleges adatbázis rendelkezik a NULL értéket, ami azt jelenti, hogy az elsődleges jelenleg nem ismeri a másodlagos illesztésnek van.   Ez általában akkor fordul elő folyamat újraindítását követően, miután kell hogy csupán átmeneti állapotról. Fontolja meg az alkalmazás riasztás, ha a *replication_lag_sec* hosszabb ideig NULL értéket ad vissza. Azt jelzi, hogy a másodlagos adatbázis nem tud kommunikálni az elsődleges állandó csatlakozási hiba miatt. Még nincsenek feltételek, amelyek a különbség a között *last_commit* idő, a másodlagos és az elsődleges adatbázison az nagyok. Például egy véglegesítés az elsődleges módosítása nélkül hosszú idő után történik, ha a különbség az útmutató a nagy érték legfeljebb gyorsan visszatér a 0. Vegye figyelembe, hibát amikor hosszú ideje nagy marad ezen két érték különbsége.
+
 
 ## <a name="programmatically-managing-active-geo-replication"></a>Aktív georeplikáció szoftveres kezelése
 

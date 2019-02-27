@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: johndeu;
-ms.openlocfilehash: e13995ccdc609951f908b4a1779eaefcfdc596bb
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b8437f224a83ac07d27aed03b5a9686f66949bc4
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005216"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56868255"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>Zökkenőmentes Streamelési protokoll (MS-SSTR) kiegészítés HEVC számára 
 
@@ -78,17 +78,17 @@ Ez a dokumentum az alábbi feltételek vonatkoznak:
 
 >   [RFC-6381] IETF RFC-6381, "a"Kodekek"és"Profilok"paramétereket"gyűjtőhöz"adathordozó-típusok" <http://tools.ietf.org/html/rfc6381>
 
->   [MPEG4-RA] A MP4 Igénylésregisztrációs szolgáltatóként, a "MP4REG", [http://www.mp4ra.org   ](https://go.microsoft.com/fwlink/?LinkId=327787)
+>   [MPEG4-RA] A MP4 Igénylésregisztrációs szolgáltatóként, a "MP4REG", [http://www.mp4ra.org](https://go.microsoft.com/fwlink/?LinkId=327787)
 
->   [RFC2119] Bradner, s, "kulcs szavak RFC jelzése követelményszintjének való használatra" BCP 14, RFC 2119, 1997. március   [http://www.rfc-editor.org/rfc/rfc2119.txt   ](https://go.microsoft.com/fwlink/?LinkId=90317)
+>   [RFC2119] Bradner, s, "kulcs szavak RFC jelzése követelményszintjének való használatra" BCP 14, RFC 2119, 1997. március   [http://www.rfc-editor.org/rfc/rfc2119.txt](https://go.microsoft.com/fwlink/?LinkId=90317)
 
 ### <a name="122-informative-references"></a>1.2.2 informatív referenciák 
 
 >   [MS-GLOS] A Microsoft Corporation, "*Windows protokollok fő szószedet*."
 
->   [RFC3548] Josefsson, s, kiadás "A Base16 Base32 és Base64 kódolású adatok kódolásokat", RFC 3548, 2003. július [http://www.ietf.org/rfc/rfc3548.txt   ](https://go.microsoft.com/fwlink/?LinkId=90432)
+>   [RFC3548] Josefsson, s, kiadás "A Base16 Base32 és Base64 kódolású adatok kódolásokat", RFC 3548, 2003. július [http://www.ietf.org/rfc/rfc3548.txt](https://go.microsoft.com/fwlink/?LinkId=90432)
 
->   [RFC5234] Laticauda, d, kiadás és Overell, o., "kibővített BNF szintaxis leírásában: ABNF", 68-as, RFC 5234, január 2008, Standard   [http://www.rfc-editor.org/rfc/rfc5234.txt   ](https://go.microsoft.com/fwlink/?LinkId=123096)
+>   [RFC5234] Laticauda, d, kiadás és Overell, o., "kibővített BNF szintaxis leírásában: ABNF", 68-as, RFC 5234, január 2008, Standard   [http://www.rfc-editor.org/rfc/rfc5234.txt](https://go.microsoft.com/fwlink/?LinkId=123096)
 
 
 ## <a name="13-overview"></a>1.3 – áttekintés 
@@ -108,7 +108,7 @@ Ez a dokumentum az alábbi feltételek vonatkoznak:
 >   A következő metódust kell használni HEVC videó formátumban Streamek azonosításához:
 
 >   * **Egyéni kódok leíró médiaformátumok:** Ez a funkció által biztosított a **FourCC** szakaszban megadott mezőt *2.2.2.5*.
->   Végrehajtók is győződjön meg arról, hogy bővítmények nem ütköznek a MPEG4-RA, a bővítmény kódok regisztrálás által [[ISO/IEC-14496 – 12] ](https://go.microsoft.com/fwlink/?LinkId=183695)
+>   Végrehajtók is győződjön meg arról, hogy bővítmények nem ütköznek a MPEG4-RA, a bővítmény kódok regisztrálás által [[ISO/IEC-14496 – 12]](https://go.microsoft.com/fwlink/?LinkId=183695)
 
 ## <a name="19-standards-assignments"></a>1.9 szabványok hozzárendelések 
 

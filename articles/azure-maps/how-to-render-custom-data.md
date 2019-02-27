@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 9b3c0f7b1ff56cb269f6852be8fd2affeca8b8f1
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: ddc051eb5f9638f7afec34db41c0e9d6e6d9d57d
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56143765"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56890062"
 ---
 # <a name="render-custom-data-on-raster-map"></a>Egyéni adatok rasztertérkép megjelenítése
 
@@ -154,7 +154,7 @@ Az elérési út és a PIN-kód helyére vonatkozó információt is beszerezhet
 > [!Note]
 > Ebben a példában az S1 szint díjszabása az Azure Maps-fiók szükséges.
 
-Sokszög megjelenését a stílus dostupnosti használatával módosíthatja a [elérésiút-paraméterre](https://docs.microsoft.com/rest-staging/api/maps/render/getmapimage#uri-parameters).
+Sokszög megjelenését a stílus dostupnosti használatával módosíthatja a [elérésiút-paraméterre](https://docs.microsoft.com/rest-staging/api/maps/render/getmapimage).
 
 1. A Postman alkalmazást a fent létrehozott ugyanabban a gyűjteményben új lap megnyitásához. GET HTTP metódus a jelentéskészítő lapon válassza ki, és adja meg, hogy egy GET kéréssel, színét és átlátszatlanság sokszög előállítására a következő URL:
     
@@ -173,7 +173,7 @@ A válasz kép a következőhöz hasonlóan kell kinéznie:
 > [!Note]
 > Ebben a példában az S1 szint díjszabása az Azure Maps-fiók szükséges.
 
-Meghatározhat gombostűk és azok a címkék nagyobb vagy kisebb az "sc" méretezési stílusú modifikátor használatával. Ez az egy nullánál nagyobb értéket. Az 1 érték, a standard méretezési csoport. 1-nél nagyobb érték lesz teheti a PIN-kódok nagyobb, és 1-nél kisebb érték fogja őket kisebb. További információ a stílus dostupnosti:, [statikus kép szolgáltatás elérési út paramétereihez](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters).
+Meghatározhat gombostűk és azok a címkék nagyobb vagy kisebb az "sc" méretezési stílusú modifikátor használatával. Ez az egy nullánál nagyobb értéket. Az 1 érték, a standard méretezési csoport. 1-nél nagyobb érték lesz teheti a PIN-kódok nagyobb, és 1-nél kisebb érték fogja őket kisebb. További információ a stílus dostupnosti:, [statikus kép szolgáltatás elérési út paramétereihez](https://docs.microsoft.com/rest/api/maps/render/getmapimage).
 
 Sokszög kör és leküldéses PIN-kód, az egyéni címkék jelennek meg az alábbi lépésekkel:
 

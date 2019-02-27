@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 12/4/2018
 ms.custom: seodec18
-ms.openlocfilehash: 917bac81923650405c37dfee500c9606dc7c54ca
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: d4bef53a21e6ab7b55c16e27083b818929fbd47c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816606"
+ms.locfileid: "56879254"
 ---
 # <a name="build-machine-learning-pipelines-with-the-azure-machine-learning-service"></a>Hozhat létre a machine learning-folyamatokat az Azure Machine Learning szolgáltatással
 
@@ -34,13 +34,23 @@ Az alábbi ábrán látható egy példa folyamatot:
 
 ![Machine learning-folyamatokat az Azure Machine Learning szolgáltatásban.](./media/concept-ml-pipelines/pipelines.png)
 
+### <a name="which-azure-pipeline-technology-should-i-use"></a>Melyik Azure folyamat technológia használjam?
+
+Az Azure-felhő nyújt számos más folyamatokban, minden más céllal. Az alábbi táblázat a különböző folyamatok, és hogy mire szolgálnak a:
+
+| Folyamat | Művelet | Canonical cső |
+| ---- | ---- | ---- |
+| Az Azure Machine Learning-folyamatok | Meghatározza az újrafelhasználható machine learning-munkafolyamatok, amelyek a teljes gépi tanulási forgatókönyvek sablonként használható. | Modell-adatok > |
+| [Azure Data Factory-folyamatok](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Csoportokkal kapcsolatos adatmozgatás átalakítása és vezérlési tevékenységek a feladat végrehajtásához szükséges.  | Adat-adatok > |
+| [Az Azure-folyamatok](https://azure.microsoft.com/services/devops/pipelines/) | A folyamatos integrációt és teljesítést az alkalmazás bármely platform bármely felhőbeli  | Kód -> alkalmazás/szolgáltatás |
+
 ## <a name="why-build-pipelines-with-azure-machine-learning"></a>Miért érdemes létrehozni az Azure Machine Learning folyamatok?
 
 Használhatja a [Azure Machine Learning SDK Pythonhoz készült](#the-python-sdk-for-pipelines) gépi Tanulási folyamatok is nyújt, és nyomon követése az egyes folyamatok létrehozásához.
 
 A folyamatok optimalizálhatja a munkafolyamatot az egyszerűség, gyorsabb, hordozhatósága és újból. Az Azure Machine Learning folyamatok készítésekor összpontosíthat szaktudását, a machine learning, az infrastruktúra helyett.
 
-Eltérő lépésekkel lehetővé teszi csak azokat a lépéseket kell, a munkafolyamat tesztelése és finomhangolása futtassa újra. Egy lépésre egy számítási egységben, a folyamat. A fenti ábrán látható, a feladat az adatok előkészítéséről sok lépésből magába foglaló. Ezek közé tartozik, de nem kizárólagosan normalizálási, átalakítási, ellenőrzés és featurization. Adatforrások és a köztes adatok felhasználják a folyamat, mely menti számítási időt és erőforrásokat. 
+Eltérő lépésekkel lehetővé teszi csak azokat a lépéseket kell, a munkafolyamat tesztelése és finomhangolása futtassa újra. Egy lépésre egy számítási egységben, a folyamat. A fenti ábrán látható, a feladat az adatok előkészítéséről sok lépésből magába foglaló. Ezeket a lépéseket tartalmazza, de nem kizárólagosan normalizálási, átalakítási, ellenőrzés és featurization. Adatforrások és a köztes adatok felhasználják a folyamat, mely menti számítási időt és erőforrásokat. 
 
 Miután a folyamat arra tervezték, nincs gyakran több finomhangoló körül a betanítási ciklus a folyamat. Ha újra futtathatja egy folyamatot, a futtatási ugrik a lépéseket, amelyek újra kell futtatnia, például egy frissített tanítási szkriptet, és kihagyja a mi nem változott. Az azonos paradigmát változatlan parancsfájlok a lépés végrehajtásához szükséges vonatkozik. 
 

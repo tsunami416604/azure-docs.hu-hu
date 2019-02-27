@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: hkanna
-ms.openlocfilehash: 361ab36d3029dbc00e8d1e53ef9f9af42be3e1eb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 913df079b56e131a3120971b635c49c2c04b2b1e
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255841"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871570"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>StorSimple biztonsági mentési célként Netbackuppal
 
@@ -79,7 +79,7 @@ A StorSimple ezeket az előnyöket kínálja:
 
 Bár a StorSimple alapvetően a két fő üzembe helyezési forgatókönyvet (elsődleges biztonsági mentési cél és a másodlagos biztonsági mentési cél) mutat be, egy egyszerű, block storage eszköz. A StorSimple does minden a tömörítés és a deduplikáció. Zökkenőmentesen küld, és lekéri az adatokat a felhőben és az alkalmazások és a fájlrendszer között.
 
-A StorSimple kapcsolatos további információkért lásd: [a StorSimple 8000 sorozat: a hibrid felhőalapú tárolási megoldást](storsimple-overview.md). Emellett áttekintheti a [StorSimple 8000 sorozat műszaki specifikációk](storsimple-technical-specifications-and-compliance.md).
+További információ a StorSimple: [a StorSimple 8000 sorozat: Hibrid felhőalapú tárolási megoldást](storsimple-overview.md). Emellett áttekintheti a [StorSimple 8000 sorozat műszaki specifikációk](storsimple-technical-specifications-and-compliance.md).
 
 > [!IMPORTANT]
 > A StorSimple eszköz biztonsági mentési cél használata támogatott csak az a StorSimple 8000-es Update 3 és újabb verziókban.
@@ -183,7 +183,7 @@ Ebben a szakaszban bemutatjuk, hogyan konfigurációs példákat. A következő 
 
 | A StorSimple üzembe helyezési feladatok  | További megjegyzések |
 |---|---|
-| A helyszíni StorSimple eszköz üzembe helyezése. | Támogatott verziók: Update 3 és újabb verziók. |
+| A helyszíni StorSimple eszköz üzembe helyezése. | Támogatott verziók: 3. frissítés és újabb verziókban. |
 | Kapcsolja be a biztonsági mentési cél. | A parancsok használatához kapcsolja be, vagy kapcsolja ki a biztonsági mentési cél módot, és állapotának beolvasása. További információkért lásd: [távolról csatlakozhat a StorSimple eszköz](storsimple-remote-connect.md).</br> Kapcsolja be a biztonsági mentés módja: `Set-HCSBackupApplianceMode -enable`. </br> Tiltsa le a biztonsági mentés módja: `Set-HCSBackupApplianceMode -disable`. </br> A biztonsági mentési beállításainak aktuális állapotának: `Get-HCSBackupApplianceMode`. |
 | A kötet, amely tárolja a biztonsági mentési adatok közös kötettároló létrehozása. A kötettároló összes adat deduplikált. | A StorSimple-kötettároló deduplikáció tartományok definiálása.  |
 | A StorSimple-köteteket hozhat létre. | Hozzon létre köteteket méretű, a várható használati közeli lehetséges, mert a kötet mérete befolyásolja a felhőbeli pillanatkép időtartamát. A kötet méretének kapcsolatos információkért olvassa el [adatmegőrzési szabályzatok](#retention-policies).</br> </br> Az StorSimple rétegzett köteteket, és válassza ki a **kötet használata ritkábban használt archív adatokhoz** jelölőnégyzetet. </br> Csak a helyileg rögzített kötetekről használata nem támogatott. |
@@ -292,7 +292,7 @@ Az előző Előfeltevések alapján hozzon létre egy 26-TiB StorSimple rétegze
 
 Az alábbi ábrán egy tipikus kötetet a biztonsági mentési feladat hozzárendelését. Ebben az esetben a heti biztonsági mentések leképezése a szombat teljes lemezt, és a növekményes biztonsági mentések leképezése hétfőtől péntekig növekményes lemezeket. A biztonsági mentéseket és helyreállításokat vannak a storsimple-kötet összes rétegzett kötet.
 
-![Elsődleges biztonsági mentési célként megadott konfigurációs logikai diagramja ](./media/storsimple-configure-backup-target-using-netbackup/primarybackuptargetdiagram.png)
+![Elsődleges biztonsági mentési célként megadott konfigurációs logikai diagramja](./media/storsimple-configure-backup-target-using-netbackup/primarybackuptargetdiagram.png)
 
 ### <a name="storsimple-as-a-primary-backup-target-gfs-schedule-example"></a>A StorSimple mint elsődleges biztonsági mentési cél GFS példa ütemezése
 
@@ -403,7 +403,7 @@ Az alábbi táblázat bemutatja, hogyan futtathatók a helyi és a StorSimple-le
 \* Teljes kapacitás 17 Tib-ra a StorSimple-lemezek és a helyi RAID kötetre 1 TiB tartalmaz.
 
 
-### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>Példa ütemezési GFS: GFS Elforgatás heti, havi és éves ütemterv
+### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>GFS példa ütemezése: Elforgatás GFS heti, havi és éves ütemterv
 
 | Hét | Korlátlan | 1. nap növekményes | 2. napon növekményes | Növekményes naponta 3 | Növekményes naponta 4 | Növekményes nap 5 |
 |---|---|---|---|---|---|---|
@@ -536,7 +536,7 @@ Katasztrófa számos tényező okozhatja. Az alábbi táblázat általános vés
 Ez a cikk a hivatkozott az alábbi dokumentumokat:
 
 - [A StorSimple-a többutas i/o-telepítő](storsimple-configure-mpio-windows-server.md)
-- [Storage-forgatókönyv esetében: a dinamikus kiosztás](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
+- [Storage-forgatókönyv esetében: A dinamikus kiosztás](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
 - [Meghajtók GPT használata](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
 - [Állítsa be a megosztott mappák árnyékmásolatai](https://technet.microsoft.com/library/cc771893.aspx)
 

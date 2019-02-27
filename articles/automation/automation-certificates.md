@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 714bf5f915cb588a99552a8bbbc5ffa76aa16846
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 372df0bc6ea540b4b2c030ec71acc6889e7c7d19
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54426131"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874086"
 ---
 # <a name="certificate-assets-in-azure-automation"></a>Tanúsítványeszközök az Azure Automationben
 
@@ -105,7 +105,7 @@ Hozzáadhat egy **Get-AutomationCertificate** , a tanúsítványon a grafikus sz
 
 Az alábbi képen egy példa olyan tanúsítványt használ a grafikus runbookokban. Ez megegyezik az előző példában, hogyan adhat hozzá egy tanúsítványt egy felhőalapú szolgáltatás egy szöveges runbookból.
 
-![A példában a grafikus létrehozásról ](media/automation-certificates/graphical-runbook-add-certificate.png)
+![A példában a grafikus létrehozásról](media/automation-certificates/graphical-runbook-add-certificate.png)
 
 ### <a name="python2-sample"></a>Python2-minta
 A következő minta bemutatja, hogyan érhető el a Python2-forgatókönyvekkel tanúsítványokat.

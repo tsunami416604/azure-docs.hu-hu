@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: b80a2effb4cdfe45ad3f37785f7e97449d60f00c
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: bf831936f86de9e43170a87c03b61df9a4865b3d
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340144"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878047"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Programozott módon szabályzatok létrehozása és a megfelelőségi adatok megtekintése
 
@@ -95,8 +95,8 @@ Az erőforrások jobb rálátást biztosít az első lépését, hogy a szabály
 
    Cserélje le _ContosoRG_ az importálni kívánt erőforráscsoport nevét.
 
-   A **hatókör** paraméterrel `New-AzPolicyAssignment` az előfizetések és a felügyeleti csoportok is működik. A paraméter használja a teljes erőforrás-elérési útját, amely a **ResourceId** tulajdonsága `Get-AzResourceGroup` adja vissza. Minta **hatókör** az egyes tárolók a következőképpen történik.
-   Cserélje le `{rName}`, `{rgName}`, `{subId}`, és `{mgName}` az erőforrás nevét, az erőforráscsoport nevét, az előfizetés-azonosító és a felügyeleti csoport neve, illetve. `{rType}` szeretné cserélni a **erőforrástípus** az erőforrás például `Microsoft.Compute/virtualMachines` egy virtuális géphez.
+   A **hatókör** paraméterrel `New-AzPolicyAssignment` együttműködik a felügyeleti csoportban, előfizetés, erőforráscsoport vagy egyetlen erőforrás. A paraméter használja a teljes erőforrás-elérési útját, amely a **ResourceId** tulajdonsága `Get-AzResourceGroup` adja vissza. Minta **hatókör** az egyes tárolók a következőképpen történik. Cserélje le `{rName}`, `{rgName}`, `{subId}`, és `{mgName}` az erőforrás nevét, az erőforráscsoport nevét, az előfizetés-azonosító és a felügyeleti csoport neve, illetve.
+   `{rType}` szeretné cserélni a **erőforrástípus** az erőforrás például `Microsoft.Compute/virtualMachines` egy virtuális géphez.
 
    - Erőforrás- `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
    - Erőforráscsoport- `/subscriptions/{subId}/resourceGroups/{rgName}`

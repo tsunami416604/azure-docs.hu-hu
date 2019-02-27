@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 97c33a5dc2eb43644081579b5d1c0172ce953906
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 75a78e303991e5426c97b8ceb0eb1375e03be2a2
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449350"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56868187"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Oktatóanyag: Adatok másolása az Azure Data Box-lemezek és ellenőrzése
 
@@ -178,20 +178,20 @@ Ez a választható eljárás akkor lehet hasznos, ha több lemezt használ, és 
 1. Ellenőrizze Windows rendszerű számítógépén, hogy a Data Box másolásfelosztó eszköze le lett-e töltve és ki lett-e csomagolva egy helyi mappába. Ezt az eszközt a windowsos Data Box Disk-eszközkészlet részeként töltötte le.
 2. Nyissa meg a Fájlkezelőt. Jegyezze fel az adatforrásként szolgáló meghajtó nevét és a Data Box Diskhez rendelt meghajtóbetűjeleket. 
 
-     ![Felosztásos adatmásolás ](media/data-box-disk-deploy-copy-data/split-copy-1.png)
+     ![Felosztásos adatmásolás](media/data-box-disk-deploy-copy-data/split-copy-1.png)
  
 3. Keresse meg a másolni kívánt forrásadatokat. Ebben az esetben például a következőt:
     - A rendszer az alábbi blokkblobadatokat azonosította.
 
-         ![Felosztásos adatmásolás ](media/data-box-disk-deploy-copy-data/split-copy-2.png)    
+         ![Felosztásos adatmásolás](media/data-box-disk-deploy-copy-data/split-copy-2.png)    
 
     - A rendszer az alábbi lapblobadatokat azonosította.
 
-         ![Felosztásos adatmásolás ](media/data-box-disk-deploy-copy-data/split-copy-3.png)
+         ![Felosztásos adatmásolás](media/data-box-disk-deploy-copy-data/split-copy-3.png)
  
 4. Nyissa meg azt a mappát, amelybe a szoftver ki lett csomagolva. Keresse meg a `SampleConfig.json` fájlra a mappában. Ez egy írásvédett fájl, amelyet módosíthat és menthet.
 
-   ![Felosztásos adatmásolás ](media/data-box-disk-deploy-copy-data/split-copy-4.png)
+   ![Felosztásos adatmásolás](media/data-box-disk-deploy-copy-data/split-copy-4.png)
  
 5. Módosítsa a `SampleConfig.json` fájlt.
  
@@ -200,36 +200,36 @@ Ez a választható eljárás akkor lehet hasznos, ha több lemezt használ, és 
     - Adja meg a céllemezeknek megfelelő meghajtóbetűjeleket. Ekkor elkezdődik a forrásadatok másolása a lemezekre.
     - Adja meg a naplófájlok elérési útvonalát. Alapértelmezés szerint az aktuális könyvtár érkezik, a `.exe` található.
 
-     ![Felosztásos adatmásolás ](media/data-box-disk-deploy-copy-data/split-copy-5.png)
+     ![Felosztásos adatmásolás](media/data-box-disk-deploy-copy-data/split-copy-5.png)
 
 6. Ellenőrizze a fájlformátum, lépjen a `JSONlint`. Mentse a fájlt az `ConfigFile.json`. 
 
-     ![Felosztásos adatmásolás ](media/data-box-disk-deploy-copy-data/split-copy-6.png)
+     ![Felosztásos adatmásolás](media/data-box-disk-deploy-copy-data/split-copy-6.png)
  
 7. Nyisson meg egy parancssori ablakot. 
 
-8. Futtassa a `DataBoxDiskSplitCopy.exe`. Típus
+8. Futtassa a `DataBoxDiskSplitCopy.exe`. Typo
 
     `DataBoxDiskSplitCopy.exe PrepImport /config:<Your-config-file-name.json>`
 
-     ![Felosztásos adatmásolás ](media/data-box-disk-deploy-copy-data/split-copy-7.png)
+     ![Felosztásos adatmásolás](media/data-box-disk-deploy-copy-data/split-copy-7.png)
  
 9. Nyomja le az Enter billentyűt a szkript folytatásához.
 
-    ![Felosztásos adatmásolás ](media/data-box-disk-deploy-copy-data/split-copy-8.png)
+    ![Felosztásos adatmásolás](media/data-box-disk-deploy-copy-data/split-copy-8.png)
   
 10. Az adatkészlet felosztását és másolását követően a másolásfelosztó eszköz összegzést készít a másolási munkamenetről. Az alábbiakban egy példa látható a kimenetre.
 
-    ![Felosztásos adatmásolás ](media/data-box-disk-deploy-copy-data/split-copy-9.png)
+    ![Felosztásos adatmásolás](media/data-box-disk-deploy-copy-data/split-copy-9.png)
  
 11. Ellenőrizze, hogy az adatok sikeresen szét lettek-e osztva a céllemezekre. 
  
-    ![Felosztásos adatmásolás ](media/data-box-disk-deploy-copy-data/split-copy-10.png)
-    ![Felosztásos adatmásolás ](media/data-box-disk-deploy-copy-data/split-copy-11.png)
+    ![Adatok másolása felosztása](media/data-box-disk-deploy-copy-data/split-copy-10.png)
+    ![felosztási adatok másolása](media/data-box-disk-deploy-copy-data/split-copy-11.png)
      
     Ha megvizsgálja a tartalmát `n:` meghajtó további, látni fogja, hogy két almappák jönnek létre a blokkblobok és lapblobok megfelelő formátumú adatokat.
     
-     ![Felosztásos adatmásolás ](media/data-box-disk-deploy-copy-data/split-copy-12.png)
+     ![Felosztásos adatmásolás](media/data-box-disk-deploy-copy-data/split-copy-12.png)
 
 12. Ha a másolási munkamenet meghiúsul, a következő paranccsal állíthatja helyre és folytathatja azt:
 

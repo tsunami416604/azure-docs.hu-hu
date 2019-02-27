@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: c3b97ee7181d6475b7271d5ae4bcea0f6c9ff2b3
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: f91ea4c4ec887a9f9fe0c15000e3810109caeb96
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805222"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889069"
 ---
 # <a name="capacity-planning-and-scaling"></a>Kapacitástervezés és skálázás
 
@@ -40,7 +40,7 @@ Méretezési műveleteket kell elvégezni keresztül az Azure-erőforrások sabl
 
 ## <a name="vertical-scaling-considerations"></a>Függőleges méretezési szempontok
 
-[Vertikális skálázás](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out#upgrade-the-size-and-operating-system-of-the-primary-node-type-vms) az Azure Service Fabric-csomóponttípus szükséges lépéseit és szempontjait számos. Példa:
+[Vertikális skálázás](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out) az Azure Service Fabric-csomóponttípus szükséges lépéseit és szempontjait számos. Példa:
 * A fürt kifogástalan állapotban kell lennie a skálázás előtt. Ellenkező esetben csak fog megingatására további fürt.
 * **Ezüst szintű vagy nagyobb tartósságot** az összes Service Fabric Cluster NodeType állapotalapú szolgáltatások üzemeltető megadása kötelező.
 

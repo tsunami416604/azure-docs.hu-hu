@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac25473ecce86c2721eda9ede01b6d299c4b727b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 31f10ba0c04ccbd9f52b95c43fea7cc551fe64ee
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56179331"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888015"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása a GitHub beállítása
 
@@ -33,11 +33,11 @@ Ez az oktatóanyag célja mutatni, a lépéseket kell elvégeznie a GitHub és a
 Az ebben az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy Ön már rendelkezik a következőkkel:
 
 *   Az Azure Active directory-bérlő
-*   Egy GitHub-bérlőt a [üzleti felhőalapú terv](https://help.github.com/articles/organization-billing-plans/#github-business-cloud) vagy jobban engedélyezve 
-*   Egy felhasználói fiók rendszergazdai jogosultságokkal rendelkezik a Githubon 
+*   Létrehozott egy GitHub-szervezethez [GitHub Enterprise Cloud](https://help.github.com/articles/github-s-products/#github-enterprise), ami megköveteli a [GitHub Enterprise-zal számlázási csomag](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations)
+*   Egy felhasználói fiók rendszergazdai jogosultságokkal rendelkezik a szervezet számára a Githubon
 
 > [!NOTE]
-> Az Azure AD létesítési integrációs támaszkodik a [GitHub SCIM API](https://developer.github.com/v3/scim/), a GitHub csapatoknak a Business csomag érhető el vagy jobb.
+> Az Azure AD létesítési integrációs támaszkodik a [GitHub SCIM API](https://developer.github.com/v3/scim/), érhető el, amely [GitHub Enterprise Cloud](https://help.github.com/articles/github-s-products/#github-enterprise) használó ügyfeleknek a [GitHub Enterprise-zal számlázási csomag](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations) .
 
 ## <a name="assigning-users-to-github"></a>Felhasználók hozzárendelése a Githubon
 

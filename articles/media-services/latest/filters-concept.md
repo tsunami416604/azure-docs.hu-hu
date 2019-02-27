@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 02/25/2019
 ms.author: juliako
-ms.openlocfilehash: 18e629571a45046e5cf54996cd38b425c999ee36
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 60623ab4b41c343cab0f9be1abd8ab45051b3f9e
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737637"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889358"
 ---
 # <a name="define-account-filters-and-asset-filters"></a>Adja meg a fiók és eszköz szűrőket  
 
@@ -38,9 +38,9 @@ Az alábbi táblázatban néhány példa az URL-címek szűrőket jeleníti meg:
 
 |Protokoll|Példa|
 |---|---|
-|HLS|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl,filter=myAccountFilter)`<br/>A v3-as HLS, használja: `format=m3u8-aapl-v3`.|
-|MPEG DASH|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf,filter=myAssetFilter)`|
-|Smooth Streaming|`http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=myAssetFilter)`|
+|HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`<br/>A v3-as HLS, használja: `format=m3u8-aapl-v3`.|
+|MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|
+|Smooth Streaming|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(filter=myAssetFilter)`|
 
 ## <a name="define-filters"></a>Szűrők megadása
 
@@ -71,7 +71,7 @@ Ezzel a tulajdonsággal rendelkező **eszköz szűrők**. Nem javasoljuk, hogy a
 |**forceEndTimestamp**|Csak az élő Streamelés vonatkozik.<br/>Azt jelzi, hogy a endTimestamp tulajdonság jelen kell lennie. Ha az értéke igaz, endTimestamp meg kell adni, vagy egy hibás kérés kódot ad vissza.<br/>Megengedett értékek: False (hamis), az igaz.|
 |**liveBackoffDuration**|Csak az élő Streamelés vonatkozik.<br/> Ez az érték határozza meg a legújabb élő pozíciótól, amely egy ügyfelet is szolgálnak.<br/>Ezt a tulajdonságot használja, azt élő lejátszási pozícióját, hozzon létre egy kiszolgálóoldali puffer lejátszók.<br/>Ez a tulajdonság a mértékegysége időskálára (lásd alább).<br/>Az élő visszatartási időtartama maximális mérete 300 másodperc (3000000000).<br/>Például a valós élő Edge késleltetett 2000000000 azt jelenti, hogy a legújabb elérhető tartalmak érték: 20 másodperc érték.|
 |**presentationWindowDuration**|Csak az élő Streamelés vonatkozik.<br/>PresentationWindowDuration használatával a alkalmazni egy csúszóablakban töredékek fel a listára.<br/>Ez a tulajdonság a mértékegysége időskálára (lásd alább).<br/>Például állítsa be a presentationWindowDuration = a alkalmazni egy kétperces csúszóablakban 1200000000. Média élő széle 2 percen belül fog szerepelni a listában. Ha egy töredék feladata a határt, a teljes töredék a lista fog szerepelni. A minimális bemutató ablak időtartamának érték 60 másodperc.|
-|**startTimestamp**|A videó igény szerinti (VoD-) vagy élő Streamelés vonatkozik.<br/>Ez az egy olyan hosszú értéket, amely a Stream-látható abszolút kezdő pont jelöli. Az érték beolvasása kerekítve a legközelebbi tovább Képcsoporttal Start. Az egység a időskálára, így egy startTimestamp 150000000, a 15 másodperc lesz.<br/>StartTimestamp és endTimestampp használja az azokat a töredékeket, amely a lista (manifest) lesz.<br/>Ha például startTimestamp = 40000000 és endTimestamp = 100000000 az alapértelmezett időskálán használatával hoz létre egy listát, amely tartalmazza a töredékek munkafüzet 4 másodperc és a VoD-bemutató 10 másodperc. Ha egy töredék feladata a határt, a teljes töredék szerepelni fog a jegyzékfájlban|
+|**startTimestamp**|A videó igény szerinti (VoD-) vagy élő Streamelés vonatkozik.<br/>Ez az egy olyan hosszú értéket, amely a Stream-látható abszolút kezdő pont jelöli. Az érték beolvasása kerekítve a legközelebbi tovább Képcsoporttal Start. Az egység a időskálára, így egy startTimestamp 150000000, a 15 másodperc lesz.<br/>StartTimestamp és endTimestampp használja az azokat a töredékeket, amely a lista (manifest) lesz.<br/>Ha például startTimestamp = 40000000 és endTimestamp = 100000000 az alapértelmezett időskálán használatával hoz létre egy listát, amely tartalmazza a töredékek munkafüzet 4 másodperc és a VoD-bemutató 10 másodperc. Ha egy töredék feladata a határt, a teljes töredék fog szerepelni a jegyzékfájlban.|
 |**időskálára**|Bemutató időtartomány, a lépésközök számát egy második megadott összes időbélyegeket és időtartamok vonatkozik.<br/>Alapértelmezett érték 10000000 - tízmillió lépésekben egy második, ahol minden egyes fokozathoz állítsa 100 nanoszekundumban hosszú lehet.<br/>Például ha szeretné beállítani egy startTimestamp 30 másodperc, használna 300000000 érték az alapértelmezett időskálán használatakor.|
 
 ### <a name="tracks"></a>nyomon követi
@@ -83,7 +83,7 @@ Szűrő nyomon követése Tulajdonságfeltételek követési típusok, értékek
 |Name (Név)|Leírás|
 |---|---|
 |**Átviteli sebesség**|Az átviteli sebesség, a nyomon követése a szűréshez használni.<br/><br/>A javasolt érték, amely egy bitsebességre való átkódolása bit / másodperc. Ha például "0-2427000".<br/><br/>Megjegyzés: használhatja adott sávszélességű értékének, például a 250000 (bit / másodperc), amíg ez a megközelítés van nem ajánlott, mivel a pontos bitsebességre való átkódolása ingadozhaz, egy eszköz a másikba.|
-|**FourCC**|A szám FourCC értéket használja a szűréshez.<br/><br/>Az első elemét kodekek formátum, a megadott érték [RFC 6381](https://tools.ietf.org/html/rfc6381). Jelenleg a következő kodekek támogatottak: <br/>Videó: "Avc1", "hev1", "hvc1"<br/>Hang: "Mp4a", "3-EK"<br/><br/>Nyomon követi egy adategység FourCC értékeinek meghatározásához [lekérése, és vizsgálja meg a jegyzékfájl](#get-and-examine-manifest-files).|
+|**FourCC**|A szám FourCC értéket használja a szűréshez.<br/><br/>Az első elemét kodekek formátum, a megadott érték [RFC 6381](https://tools.ietf.org/html/rfc6381). Jelenleg a következő kodekek támogatottak: <br/>Videó: "Avc1", "hev1", "hvc1"<br/>Hang: "Mp4a", "3-EK"<br/><br/>Annak megállapításához, nyomon követi az adategység FourCC értékeit, beolvasása, és tekintse át a jegyzékfájlt.|
 |**Nyelv**|A nyelv, a nyomon követése a szűréshez használni.<br/><br/>Adja meg, mint a megadott RFC 5646 szeretné egy nyelv a címke értéke. Például "hu".|
 |**Name (Név)**|A track nevét használja a szűréshez.|
 |**Típus**|A szám típust használják a szűréshez.<br/><br/>A következő értékek használata engedélyezett: "videó", "hang" vagy "szöveg".|

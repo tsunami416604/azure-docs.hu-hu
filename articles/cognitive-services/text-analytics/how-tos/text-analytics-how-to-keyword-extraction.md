@@ -9,12 +9,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: bbf72847dd9d9a29bf1f2fa0574b83194d07a5c6
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: a427910c598ce7a93dd1b74fb4297d9825ba14ca
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245609"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887386"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Példa: Hogyan kinyerheti a kulcsfontosságú kifejezéseket, Szövegelemzés használata
 
@@ -33,7 +33,7 @@ Kulcskifejezések kinyerése akkor működik a legjobban, amikor nagyobb mennyis
 
 A JSON-dokumentumnak ilyen formátumban kell lennie: azonosító, szöveg, nyelv
 
-A dokumentum méretének 5000 karakter alatt kell maradnia, és legfeljebb 1000 elem (azonosító) lehet egy kollekcióban. A kollekció elküldése a kérelem törzsében történik. A következő példa egy kulcsszókeresésre beküldhető szöveget mutat be.
+Dokumentum mérete kell lennie a 5,120 karakter / dokumentum, és legfeljebb 1000 rendelkezhet gyűjteményenként (azonosítók) elemet. A kollekció elküldése a kérelem törzsében történik. A következő példa egy kulcsszókeresésre beküldhető szöveget mutat be.
 
 ```json
     {

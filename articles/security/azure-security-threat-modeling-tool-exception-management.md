@@ -14,26 +14,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: ce748be7f11d440e656e4af5cdd3cee3bbc9e313
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 68bffaeef0451dae3a3b9707049dd2e44ad311fd
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43302149"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56865875"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>Biztonsági keret: Kivételek kezelése |} Megoldások 
 | Termék vagy szolgáltatás | Cikk |
 | --------------- | ------- |
 | **WCF** | <ul><li>[WCF - ne tartalmazza serviceDebug csomópont konfigurációs fájlban](#servicedebug)</li><li>[WCF - ne tartalmazza serviceMetadata csomópont konfigurációs fájlban](#servicemetadata)</li></ul> |
-| **Webes API** | <ul><li>[Győződjön meg arról, hogy a megfelelő kivételkezelés történik-e az ASP.NET webes API-ban ](#exception)</li></ul> |
-| **Webalkalmazás** | <ul><li>[Nem teszik elérhetővé a hibaüzeneteket biztonsági részletei ](#messages)</li><li>[Alapértelmezett hibakezelési oldal implementálása ](#default)</li><li>[Állítsa be az üzembe helyezési módszer a kereskedelmi az IIS-ben](#deployment)</li><li>[Kivételek biztonságosan kell-e sikertelen](#fail)</li></ul> |
+| **Webes API** | <ul><li>[Győződjön meg arról, hogy a megfelelő kivételkezelés történik-e az ASP.NET webes API-ban](#exception)</li></ul> |
+| **Webalkalmazás** | <ul><li>[Nem teszik elérhetővé a hibaüzeneteket biztonsági részletei](#messages)</li><li>[Alapértelmezett hibakezelési oldal implementálása](#default)</li><li>[Állítsa be az üzembe helyezési módszer a kereskedelmi az IIS-ben](#deployment)</li><li>[Kivételek biztonságosan kell-e sikertelen](#fail)</li></ul> |
 
 ## <a id="servicedebug"></a>WCF - ne tartalmazza serviceDebug csomópont konfigurációs fájlban
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános, 3. NET-keretrendszer |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg Királyság](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_debug_information) |
@@ -54,10 +54,10 @@ Tiltsa le a hibakeresési információkat a szolgáltatásban. A eltávolítás�
 
 ## <a id="servicemetadata"></a>WCF - ne tartalmazza serviceMetadata csomópont konfigurációs fájlban
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | WCF | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | Általános, 3. NET-keretrendszer |
 | **Hivatkozások**              | [MSDN](https://msdn.microsoft.com/library/ff648500.aspx), [erősítse meg Királyság](https://vulncat.fortify.com/en/detail?id=desc.config.dotnet.wcf_misconfiguration_service_enumeration) |
@@ -65,11 +65,11 @@ Tiltsa le a hibakeresési információkat a szolgáltatásban. A eltávolítás�
 
 ## <a id="exception"></a>Győződjön meg arról, hogy a megfelelő kivételkezelés történik-e az ASP.NET webes API-ban
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Webes API | 
-| **SDL fázis**               | Felépítés |  
-| **Megfelelő technológiák** | MVC 5, 6 MVC |
+| **SDL Phase**               | Felépítés |  
+| **Megfelelő technológiák** | MVC 5, MVC 6 |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [ASP.NET webes API-k kivételkezelés](http://www.asp.net/web-api/overview/error-handling/exception-handling), [modell érvényesítése az ASP.NET webes API-k](http://www.asp.net/web-api/overview/formats-and-model-binding/model-validation-in-aspnet-web-api) |
 | **Lépések** | Alapértelmezés szerint az ASP.NET webes API-t a legtöbb nem kezelt kivételek fordítja HTTP-választ, állapotkód: `500, Internal Server Error`|
@@ -183,10 +183,10 @@ Ellenőrizze a kivételes kezelésének további részleteiért hivatkozások sz
 
 ## <a id="messages"></a>Nem teszik elérhetővé a hibaüzeneteket biztonsági részletei
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | –  |
@@ -194,21 +194,21 @@ Ellenőrizze a kivételes kezelésének további részleteiért hivatkozások sz
 
 ## <a id="default"></a>Alapértelmezett hibakezelési oldal implementálása
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [Az ASP.NET lapok beállításainak szerkesztése párbeszédpanel](https://technet.microsoft.com/library/dd569096(WS.10).aspx) |
-| **Lépések** | <p>ASP.NET-alkalmazás meghiúsul, és a egy HTTP/1.x 500 belső kiszolgálóhiba miatt, vagy a szolgáltatás konfigurációs (például a kérelmek szűrése) esetén egy lap nem jelenik meg, amikor egy hibaüzenetet fog készülni. A rendszergazdák választhatják-e az alkalmazás az ügyfél, az ügyfél részletes hibaüzenet vagy csak a helyi állomáshoz részletes hibaüzenet kell megjelenítenie egy barátságos üzenet. A <customErrors> Web.config címke rendelkezik három mód:</p><ul><li>**A:** Megadja, hogy engedélyezve vannak-e az egyéni hibák. Ha nem defaultRedirect attribútum van megadva, a felhasználók látják egy általános hiba. Az egyéni hibák jelennek meg a távoli ügyfelek és a helyi gazdagép számára</li><li>**OFF:** Megadja, hogy a egyéni hibák le vannak tiltva. A távoli ügyfelek és a helyi gazdagép számára jelennek meg a részletes ASP.NET hibák</li><li>**RemoteOnly:** Megadja, hogy az egyéni hibák jelennek-e a távoli ügyfelekre mutató csak és, hogy az ASP.NET hibák jelennek meg a helyi gazdagép számára. Ez az az alapértelmezett érték</li></ul><p>Nyissa meg a `web.config` alkalmazás vagy webhely fájlt, és ügyeljen arra, hogy a címke vagy `<customErrors mode="RemoteOnly" />` vagy `<customErrors mode="On" />` definiálva.</p>|
+| **Hivatkozások**              | [Edit ASP.NET Error Pages Settings Dialog Box](https://technet.microsoft.com/library/dd569096(WS.10).aspx) |
+| **Lépések** | <p>ASP.NET-alkalmazás meghiúsul, és a egy HTTP/1.x 500 belső kiszolgálóhiba miatt, vagy a szolgáltatás konfigurációs (például a kérelmek szűrése) esetén egy lap nem jelenik meg, amikor egy hibaüzenetet fog készülni. A rendszergazdák választhatják-e az alkalmazás az ügyfél, az ügyfél részletes hibaüzenet vagy csak a helyi állomáshoz részletes hibaüzenet kell megjelenítenie egy barátságos üzenet. A <customErrors> Web.config címke rendelkezik három mód:</p><ul><li>**A:** Itt adhatja meg, hogy engedélyezve vannak-e az egyéni hibák. Ha nem defaultRedirect attribútum van megadva, a felhasználók látják egy általános hiba. Az egyéni hibák jelennek meg a távoli ügyfelek és a helyi gazdagép számára</li><li>**Kikapcsolva:** Megadja, hogy a egyéni hibák le vannak tiltva. A távoli ügyfelek és a helyi gazdagép számára jelennek meg a részletes ASP.NET hibák</li><li>**RemoteOnly:** Megadja, hogy az egyéni hibák jelennek-e csak a távoli ügyfelekre mutató, és, hogy az ASP.NET hibák jelennek meg a helyi gazdagép számára. Ez az az alapértelmezett érték</li></ul><p>Nyissa meg a `web.config` alkalmazás vagy webhely fájlt, és ügyeljen arra, hogy a címke vagy `<customErrors mode="RemoteOnly" />` vagy `<customErrors mode="On" />` definiálva.</p>|
 
 ## <a id="deployment"></a>Állítsa be az üzembe helyezési módszer a kereskedelmi az IIS-ben
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL fázis**               | Környezet |  
+| **SDL Phase**               | Környezet |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [üzembe helyezés (schéma nastavení Technologie) elem](https://msdn.microsoft.com/library/ms228298(VS.80).aspx) |
@@ -216,10 +216,10 @@ Ellenőrizze a kivételes kezelésének további részleteiért hivatkozások sz
 
 ## <a id="fail"></a>Kivételek biztonságosan kell-e sikertelen
 
-| Beosztás                   | Részletek      |
+| Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Web Application | 
-| **SDL fázis**               | Felépítés |  
+| **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [Biztonságosan sikertelen](https://www.owasp.org/index.php/Fail_securely) |

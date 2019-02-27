@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: cf32f3998e254e8f4a9c347980718dbc8d0b13c4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/25/2019
+ms.openlocfilehash: 3a937af5fba2c534e291a51c33c50434ab166ee0
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461644"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56868765"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Csak olvasható replikákat használ a betöltése terheléselosztása csak olvasható lekérdezési számítási feladatok (előzetes verzió)
 
@@ -36,7 +36,7 @@ Olvasási horizontális Felskálázás egy adatbázis engedélyezését követő
 Ha olvasási kibővített le van tiltva, vagy a ReadScale tulajdonsága egy nem támogatott szolgáltatási rétegben, minden kapcsolat a rendszer átirányítja az írható-olvasható replika, a független a `ApplicationIntent` tulajdonság.
 
 > [!NOTE]
-> Az előzetes verzióban lekérdezés Data Store és a bővített események nem támogatottak a csak olvasható replika.
+> Lekérdezés Data Store és a bővített események nem támogatottak a csak olvasható replika.
 
 ## <a name="data-consistency"></a>Adatkonzisztencia
 
@@ -125,7 +125,7 @@ További információkért lásd: [- adatbázisok létrehozása vagy frissítés
 Ha használ betölteni az egyenleg csak olvasható számítási feladatok, a georeplikált (pl. tagjaként egy feladatátvételi csoportot) egy adatbázis, győződjön meg arról, hogy olvasási kibővített engedélyezve van az elsődleges, mind a georeplikált másodlagos adatbázisok a felskálázás olvasása. Amikor az alkalmazás csatlakozik az új elsődleges a feladatátvételt követően ugyanezt a terheléselosztás hatást tud biztosítani. Ha az olvasási szintű engedélyezve van, a georeplikált másodlagos adatbázishoz kapcsolódik a munkamenetek `ApplicationIntent=ReadOnly` továbbítja a replikára ugyanúgy azt átirányíthatja a kapcsolatokat az elsődleges adatbázison.  A munkamenetek nélkül `ApplicationIntent=ReadOnly` a rendszer átirányítja az elsődleges replika, a georeplikált másodlagos, ami egyben csak olvasható. Georeplikált másodlagos adatbázis egy másik végponti, mint az elsődleges adatbázissal rendelkezik, mert hagyományosan eléréséhez a másodlagos ez nem szükséges beállítása `ApplicationIntent=ReadOnly`. Előző verziókkal való kompatibilitás érdekében `sys.geo_replication_links` DMV látható `secondary_allow_connections=2` (bármely ügyfél kapcsolat engedélyezett).
 
 > [!NOTE]
-> Előzetes verzió, Ciklikus időszeleteléses vagy bármely más betöltése során a helyi replikáit a másodlagos adatbázis között elosztott terhelésű útválasztás nem támogatott.
+> Ciklikus időszeletelés vagy bármely más elosztott terhelésű helyi replikáit a másodlagos adatbázis között nem támogatott.
 
 ## <a name="next-steps"></a>További lépések
 

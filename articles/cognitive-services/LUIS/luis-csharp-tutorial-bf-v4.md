@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 98c65b7adfe35c1ca80846ff7619dad69c5ba266
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 2cac5a698dbe97853ca95426ec4012c6a521bc8e
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219226"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872590"
 ---
 # <a name="tutorial-luis-bot-in-c-with-the-bot-framework-4x-and-the-azure-web-app-bot"></a>Oktatóanyag: A LUIS-robot C# a Bot keretrendszer 4.x-es és az Azure Web app bot
 A C# használatával létrehozhat egy integrált nyelvfelismerési (LUIS) képességekkel rendelkező csevegőrobotot. Ez a robot a HomeAutomation app használatával valósítja meg a robotmegoldást. A robot összeállításához a [Bot Framework 4-es verzióját](https://github.com/Microsoft/botbuilder-js) és az Azure [webalkalmazás-robotot](https://docs.microsoft.com/azure/bot-service/) használja.
@@ -66,7 +66,7 @@ A C# használatával létrehozhat egy integrált nyelvfelismerési (LUIS) képes
     
 5. Kattintson a **Létrehozás** gombra. Ezzel létrehozza a robotszolgáltatást, és üzembe helyezi azt az Azure-ban. A folyamat egyik része egy `luis-csharp-bot-XXXX` nevű LUIS-appot hoz létre. Ez a név a robot és az app előző szakaszban szereplő nevén alapul.
 
-    [ ![Webalkalmazás-robot létrehozása](./media/bfv4-csharp/create-web-app-service.png) ](./media/bfv4-csharp/create-web-app-service.png#lightbox)
+    [![Web app bot létrehozása](./media/bfv4-csharp/create-web-app-service.png)](./media/bfv4-csharp/create-web-app-service.png#lightbox)
 
 6. Hagyja megnyitva ezt a böngészőlapot. A LUIS portálon elvégzendő lépésekhez nyisson új böngészőlapot. Folytassa a következő szakasszal, amely az új robotszolgáltatás üzembe helyezését mutatja be.
 
@@ -106,7 +106,7 @@ A webalkalmazás-robot kódjának fejlesztéséhez töltse le a kódot a helyi s
 
 3. Válassza a **Robot forráskódjának letöltse** lehetőséget. 
 
-    [ ![Webalkalmazás-robot forráskódjának letöltése alapszintű robothoz](../../../includes/media/cognitive-services-luis/bfv4/download-code.png) ](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
+    [![Töltse le a web app bot forráskódja alapszintű robot](../../../includes/media/cognitive-services-luis/bfv4/download-code.png)](../../../includes/media/cognitive-services-luis/bfv4/download-code.png#lightbox)
 
 4. Tömörített forráskód esetén az üzenet tartalmazza a kód letöltéséhez szükséges hivatkozást. Kattintson a hivatkozásra. 
 
@@ -205,7 +205,7 @@ A kód vagy a beállítások módosítása előtt ellenőrizze a robot működé
 
 2. A Bot Emulatorban válassza ki a projekt gyökérmappájában található *.bot fájlt. Ez a `.bot` fájl tartalmazza a robot üzenetekhez tartozó URL-végpontját:
 
-    [ ![Bot Emulator v4](../../../includes/media/cognitive-services-luis/bfv4/bot-emulator-v4.png) ](../../../includes/media/cognitive-services-luis/bfv4/bot-emulator-v4.png#lightbox)
+    [![A robot emulátor v4](../../../includes/media/cognitive-services-luis/bfv4/bot-emulator-v4.png)](../../../includes/media/cognitive-services-luis/bfv4/bot-emulator-v4.png#lightbox)
 
 3. Adja meg a robot titkos kódját, amelyet a **[Webalkalmazás-robot letöltése](#download-the-web-app-bot)** című szakasz 1. lépésében az Azure Bot Service alkalmazásbeállításaiból másolt ki. Ez lehetővé teszi, hogy az emulátor hozzáférjen a `.bot` fájl titkosított mezőihez.
 
@@ -213,7 +213,7 @@ A kód vagy a beállítások módosítása előtt ellenőrizze a robot működé
 
 4. A Bot Emulatorban írja be a `Hello` kifejezést, és kérje le az alapszintű robothoz tartozó megfelelő választ.
 
-    [ ![Alapszintű robot válasza az emulátorban](../../../includes/media/cognitive-services-luis/bfv4/emulator-test.png) ](../../../includes/media/cognitive-services-luis/bfv4/emulator-test.png#lightbox)
+    [![Alapszintű robot válasz emulátorban](../../../includes/media/cognitive-services-luis/bfv4/emulator-test.png)](../../../includes/media/cognitive-services-luis/bfv4/emulator-test.png#lightbox)
 
 ## <a name="modify-bot-code"></a>A robot kódjának módosítása 
 

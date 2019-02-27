@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae428f18a2b927f42716a1c00b55790fe73d81a4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 06f51f56de29d5e598ea74b39352d3c15bf7b375
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173402"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880631"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Az Azure AD Connect szinkronizálása: Az alapértelmezett konfiguráció ismertetése
 Ez a cikk ismerteti az out-of-box konfigurációs szabályok. Dokumentumok, és ezek a szabályok milyen hatással van a konfigurációs szabályok. Ez azt is bemutatja az Azure AD Connect-szinkronizálással használható alapértelmezett konfigurációt. A célja, hogy az olvasó felismeri a deklaratív kiépítés nevű konfigurációs modell egy való életből vett példában működéséről. Ez a cikk azt feltételezi, hogy már telepítette, és a telepítővarázsló használata az Azure AD Connect-szinkronizálás beállítása.
@@ -151,7 +151,7 @@ A szinkronizálási szabály négy configuration részből áll: Leírás, Scopi
 #### <a name="description"></a>Leírás
 Az első szakaszban biztosít alapvető információkat, például a nevét és leírását.
 
-![Leírás Szinkronizáló üzletiszabály-szerkesztő lap ](./media/concept-azure-ad-connect-sync-default-configuration/syncruledescription.png)
+![Leírás Szinkronizáló üzletiszabály-szerkesztő lap](./media/concept-azure-ad-connect-sync-default-configuration/syncruledescription.png)
 
 Akkor is talál információt melyik csatlakoztatott rendszerrel kapcsolatos Ez a szabály kapcsolódik, amely objektum vonatkozik a csatlakoztatott rendszer típusa és a metaverzum-objektum típusaként. A metaverzum-objektum típusaként az mindig személy, függetlenül attól, hogy ha felhasználó, iNetOrgPerson, vagy forduljon a Forrásobjektum-típust. A metaverzum-objektum típusa nem kell módosítani az így létrehozott általános típusúként van. A hivatkozás típusát állítható csatlakozni, StickyJoin vagy kiépítése. Ez a beállítás működik együtt a Join szabályok szakaszt, és később tárgyalja.
 
@@ -160,18 +160,18 @@ Is láthatja, hogy a szinkronizálási szabály használja a jelszó-szinkroniz�
 #### <a name="scoping-filter"></a>Hatókör-beállítási szűrője
 A hatókör-beállítási szűrője szakasz esetén alkalmazni kell a szinkronizálási szabály konfigurálására szolgál. Az éppen megtekintett szinkronizálási szabályának neve azt jelzi, hogy csak az engedélyezett felhasználók kell alkalmazni, mivel a hatókör van konfigurálva, az AD-attribútum **userAccountControl** nem a 2 bit be kell. Amikor a szinkronizálási motor az ad-ben a felhasználó megtalál, vonatkozik-e a szinkronizálási szabály **userAccountControl** a decimális 512 (engedélyezett normál felhasználó) értékre van állítva. Nem, alkalmazza a szabályt, ha a felhasználó rendelkezik **userAccountControl** 514-es (a letiltott normál felhasználó) értékre.
 
-![Hatókörkezeléshez kapcsolódó szinkronizálási Szabályszerkesztő lapján ](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
+![Hatókörkezeléshez kapcsolódó szinkronizálási Szabályszerkesztő lapján](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
 
 A Hatókörszűrő van, csoportok és, amelyek ágyazhatók be. A csoporton belül minden záradékok kell teljesülnie ahhoz, hogy a szinkronizálási szabály a alkalmazni. Ha több csoport vannak definiálva, majd legalább egy csoportot kell teljesülnie ahhoz, hogy a szabály vonatkozzon. Logikai vagy azt jelenti, ki lesz értékelve, csoportok és a egy logikai között, és abban az esetben a csoporton belül. Ez a konfiguráció például tekintheti meg a kimenő szinkronizálási szabály **ki az aad-be – csoport csatlakozzon**. Több szinkronizálás szűrése csoportok, például egy, a biztonsági csoportok (`securityEnabled EQUAL True`) és a egy a terjesztési csoportok (`securityEnabled EQUAL False`).
 
-![Hatókörkezeléshez kapcsolódó szinkronizálási Szabályszerkesztő lapján ](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilterout.png)
+![Hatókörkezeléshez kapcsolódó szinkronizálási Szabályszerkesztő lapján](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilterout.png)
 
 Ez a szabály kell létrehozni az Azure AD-csoportok meghatározására szolgál. Terjesztési csoportok az Azure ad-vel szinkronizálandó levelezéses kell lennie, de a biztonsági csoportokat e-mailt, nem szükséges.
 
 #### <a name="join-rules"></a>Csatlakozzon a szabályok
 A harmadik szakasz objektumot az összekötőtérben hogyan kapcsolódik egymáshoz a metaverzumban található objektumok konfigurálására szolgál. A szabályt, hogy korábban áttekintett nincs bármely konfigurációs szabályok csatlakozzon, így helyette tekintse meg fog **a az AD-ből – felhasználói csatlakozás**.
 
-![Szinkronizálási Szabályszerkesztő csatlakozzon szabályai lap ](./media/concept-azure-ad-connect-sync-default-configuration/syncrulejoinrules.png)
+![Szinkronizálási Szabályszerkesztő csatlakozzon szabályai lap](./media/concept-azure-ad-connect-sync-default-configuration/syncrulejoinrules.png)
 
 A csatlakozás szabály a tartalom attól függ, hogy a megfelelő jelölőnégyzetet, a telepítési varázslóban. Egy bejövő szabályt a kiértékelés a forrás összekötőtérben objektum kezdődik, és sorrendben való csatlakozás szabályok szereplő valamennyi csoport abban az esetben. Egy adatforrás-objektum megfelelően pontosan egy objektum tartozik a metaverzumba, az illesztési szabályok egyikének használatával abban az esetben, ha az objektumok csatlakoznak. Ha nem egyezik meg az összes szabály kiértékelése, a hivatkozás típusát, a leírás oldalon szolgál. Ha ez a konfiguráció értéke **kiépítése**, majd egy új objektum létrehozása a célkiszolgálón, a metaverzumba. Üzembe helyezni egy új objektumot a metaverzumba néven is ismert, hogy **projekt** a metaverzum-objektum.
 
@@ -184,7 +184,7 @@ Ha a fenti képen tekinti meg, látható, hogy a szabály próbál csatlakozni *
 #### <a name="transformations"></a>Átalakítások
 Transzformációs szakaszából határozza meg az összes attribútum folyamatok, amelyek érvényesek a célobjektum az objektumok tartományhoz csatlakoztatott és a Hatókörszűrő teljesül. Visszatérve a **a az AD-ből – felhasználói AccountEnabled** szinkronizálási szabály, megtalálja a következő átalakítások:
 
-![Az átalakítások lapon szinkronban üzletiszabály-szerkesztő ](./media/concept-azure-ad-connect-sync-default-configuration/syncruletransformations.png)
+![Az átalakítások lapon szinkronban üzletiszabály-szerkesztő](./media/concept-azure-ad-connect-sync-default-configuration/syncruletransformations.png)
 
 Ez a konfiguráció a környezet-fiók-erőforrás erdő telepítés helyezi várható található engedélyezett fióknak az erdő és a egy letiltott fiók az erőforráserdőben Exchange-hez és a Lync beállításokkal. A szinkronizálási szabály egyszerre a bejelentkezéshez szükséges attribútumokat tartalmazza, és ezek az attribútumok áramlásának az erdőből, ha már van egy engedélyezett. Ezek attribútumfolyamok épülnek, több szinkronizálási szabály.
 

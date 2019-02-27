@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5614c061586c39e44f04f3542285e55e07f14d9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e5d48cbeb1714a4a3cd645fd65264aec0baf2c05
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172709"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871763"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silverback"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Silverback
 
@@ -131,7 +131,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     b. Az a **hitelesítési szolgáltató beállításai** lapon, a következő lépésekkel:
 
-    ![A rendszergazda ](./media/silverback-tutorial/tutorial_silverback_admin.png)
+    ![A rendszergazda](./media/silverback-tutorial/tutorial_silverback_admin.png)
 
     c.  Kattintson a **importálása URL-címről**.
     
@@ -195,7 +195,7 @@ Ahhoz, hogy az Azure AD-felhasználók Silverback jelentkezzen be, akkor ki kell
 
 3. Az a **alapszintű** lapon, a következő lépésekkel:
 
-    ![A felhasználó ](./media/silverback-tutorial/tutorial_silverback_user.png)
+    ![A felhasználó](./media/silverback-tutorial/tutorial_silverback_user.png)
 
     a. A **felhasználónév** szöveget adja meg például a felhasználó nevét **Britta**.
 

@@ -13,14 +13,14 @@ ms.date: 11/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df5d42135c538ca3d0a63252805efb44cef7e8b0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 536edcf74bff6f89dade4a713c40c9bef12e18af
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190466"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881804"
 ---
-# <a name="what-is-hybrid-identity"></a>Mi az a hibrid identitás? 
+# <a name="what-is-hybrid-identity"></a>Mi az a hibrid identitás?
 
 Ma, a vállalatok és a vállalatok egyre több és több helyszíni vegyesen, és a felhőbeli alkalmazásokhoz.  Felhasználók igényelnek, ezeknek az alkalmazásoknak hozzáférést a helyszínen és a felhőben. Ez a követelmény kihívást a forgatókönyv elérhetetlenné válik. 
 
@@ -30,7 +30,7 @@ Hibrid identitás eléréséhez három hitelesítési módszerek közül az hasz
 
 - **[A Jelszókivonat-szinkronizálás (nál)](whatis-phs.md)**  
 - **[Az átmenő hitelesítés (ESP)](how-to-connect-pta.md)**  
-- **[Összevonási](whatis-fed.md)** 
+- **[Összevonáson (AD FS)](whatis-fed.md)** 
 
 Ezek a hitelesítési módszerek is biztosítanak [egyszeri bejelentkezéses](how-to-connect-sso.md) képességeket.  Egyszeri bejelentkezéses automatikusan bejelentkezik a felhasználók mikor legyenek a vállalati eszközeiket a vállalati hálózathoz csatlakozik.
 
@@ -47,7 +47,7 @@ Szeretnénk bemutatni néhány gyakori hibrid identitás- és hozzáféréskezel
 |Engedélyezze a felhasználók bejelentkezhet és elérheti a cloud services használatával a helyszíni jelszavát.|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| ![Ajánlott](./media/whatis-hybrid-identity/ic195031.png) |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
 |Bemutatjuk az egyszeri bejelentkezést a vállalati hitelesítő adatok.|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| ![Ajánlott](./media/whatis-hybrid-identity/ic195031.png) |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)|  
 |Győződjön meg arról, nincs jelszókivonatokat a felhőben vannak tárolva.| |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
-|Felhőmegoldások a multi-factor authentication szolgáltatás engedélyezése.| |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
+|Engedélyezze a többtényezős hitelesítés felhőalapú megoldásokat.|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)|![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
 |Engedélyezze a helyszíni többtényezős hitelesítési megoldásokat.| | |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
 |Intelligens kártyás hitelesítés támogatása a felhasználók számára. <sup>4</sup>| | |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 
 |Jelszó lejárati értesítés megjelenítése, az Office portálon és a Windows 10 asztali verzió.| | |![Ajánlott](./media/whatis-hybrid-identity/ic195031.png)| 

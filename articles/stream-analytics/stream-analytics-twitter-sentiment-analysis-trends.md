@@ -9,12 +9,12 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/29/2017
-ms.openlocfilehash: 86fa7fab6897802fd4f18936f2d7bb0700829837
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: c34b3fa1597866e4f722fccee84f83f4caab6bfb
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231138"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876296"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Valós idejű Twitter-vélemények elemzése az Azure Stream Analytics szolgáltatásban
 
@@ -58,7 +58,7 @@ Ebben az eljárásban először hozzon létre egy eseményközpont-névteret, é
 
 5. Kattintson az új névtéren, és a névtér panelen kattintson a  **+ &nbsp;Eseményközpont**. 
 
-    ![Az Eseményközpont felvétele gombra egy új eseményközpont létrehozása ](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub-button.png)    
+    ![Az Eseményközpont felvétele gombra egy új eseményközpont létrehozása](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub-button.png)    
  
 6. Nevezze el az új event hubs `socialtwitter-eh`. Más nevet is használhat. Ha így tesz, jegyezze fel, mert később szüksége lesz a neve. Nem kell minden olyan egyéb beállítások megadása az event hubs.
 
@@ -278,7 +278,7 @@ Az alábbi táblázat a mezők, amelyek részei a streamelési adatok JSON. Nyug
 
 |JSON-tulajdonság | Meghatározás|
 |--- | ---|
-|createdAt | A tweet létrehozásának időpontja|
+|CreatedAt | A tweet létrehozásának időpontja|
 |Témakör | A témakör, amely megfelel a megadott kulcsszóval.|
 |SentimentScore | A véleménypontszám a Sentiment140|
 |Szerző | A Twitter-leírót a Twitter-üzenetet küldött|

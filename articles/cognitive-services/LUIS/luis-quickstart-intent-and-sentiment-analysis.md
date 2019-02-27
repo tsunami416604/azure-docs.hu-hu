@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 463ff73519232f56d41e9d70c20fcd8103806495
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 1805d54e66187a97bf598734801f0d94895e7490
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729117"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880350"
 ---
 # <a name="tutorial--get-sentiment-of-utterance"></a>Oktatóanyag:  Vélemények az utterance (kifejezés) beolvasása
 
@@ -90,7 +90,7 @@ Adjon hozzá egy új szándékot a vállalat tagjaitól származó alkalmazotti 
     |Megjelölés Mathews rocked a felébresztve Harvard:|
     |Walter Williams volt egy remek, Stanford bemutatása|
 
-    [ ![A LUIS-alkalmazás képernyőképe: kimondott példaszövegek az EmployeeFeedback szándékban](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png#lightbox)
+    [![Példa utterances EmployeeFeedback leképezés a képernyőkép a LUIS-alkalmazás](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png)](./media/luis-quickstart-intent-and-sentiment-analysis/hr-utterance-examples.png#lightbox)
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>A none szándék példa beszédmódok hozzáadása 
 

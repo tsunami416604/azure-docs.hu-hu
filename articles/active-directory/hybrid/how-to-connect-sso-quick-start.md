@@ -16,12 +16,12 @@ ms.date: 01/10/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69645c4aa9034b9a3459c7ee5fb0378c790a6e18
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0f2539674668a9738d03e9af9c4fb88327cb1933
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178090"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56865059"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Az Azure Active Directory zökkenőmentes egyszeri bejelentkezés: Első lépések
 
@@ -120,7 +120,7 @@ Felhasználók Intranet zóna beállításainak módosításához két módja va
 
 1. Nyissa meg a Csoportházirendkezelés-szerkesztő eszközt.
 2. Az egyes alkalmazott csoportházirend szerkesztése vagy az összes felhasználó. Ez a példa **alapértelmezett tartományi házirend**.
-3. Keresse meg a **felhasználói konfiguráció** > **felügyeleti sablonok** > **Windows-összetevők**  >   **Az Internet Explorer** > **Internet Vezérlőpult** > **Biztonság lap**. Válassza ki **zónákhoz való társításának listája a hely**.
+3. Keresse meg a **felhasználói konfiguráció** > **házirend** > **felügyeleti sablonok** > **Windows Összetevők** > **az Internet Explorer** > **Internet Vezérlőpult** > **Biztonság lap**. Válassza ki **zónákhoz való társításának listája a hely**.
     ![Egyszeri bejelentkezés](./media/how-to-connect-sso-quick-start/sso6.png)
 4. Engedélyezze a házirendet, és írja be a következő értékeket a párbeszédpanelen:
    - **Érték neve**: Az Azure AD URL-CÍMÉT, a Kerberos-jegyet a rendszer továbbítja.
@@ -140,7 +140,7 @@ Felhasználók Intranet zóna beállításainak módosításához két módja va
 
     ![Egyszeri bejelentkezés](./media/how-to-connect-sso-quick-start/sso7.png)
 
-6. Keresse meg a **felhasználói konfiguráció** > **felügyeleti sablonok** > **Windows-összetevők**  >   **Az Internet Explorer** > **Internet Vezérlőpult** > **Biztonság lap** > **Intranetzónához**. Válassza ki **lehetővé teszik a frissítések állapotsor keresztül parancsfájl**.
+6. Keresse meg a **felhasználói konfiguráció** > **felügyeleti sablonok** **házirend** > ** > **Windows-összetevők**  >  **Az Internet Explorer** > **Internet Vezérlőpult** > **Biztonság lap**  >   **Intranet zóna**. Válassza ki **lehetővé teszik a frissítések állapotsor keresztül parancsfájl**.
 
     ![Egyszeri bejelentkezés](./media/how-to-connect-sso-quick-start/sso11.png)
 

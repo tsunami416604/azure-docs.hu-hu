@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: 455090d9023b234742e0c42380536c95d7eb11a5
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: c17a74c81d9c9d2ac3f585ab17f0b7d2acc628f6
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738657"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873917"
 ---
 # <a name="tutorial-extract-contextually-related-data-from-an-utterance"></a>Oktatóanyag: De kapcsolódó adatok kinyerése az utterance (kifejezés)
 
@@ -74,7 +74,7 @@ A hierarchikus entitás ideális ehhez az adattípushoz, mert a két darab, az a
     |Steve Standish vigye át a San Diego Bellevue felé |
     |Chicago, a céges város és shift Péter Thompson áthelyezése|
 
-    [![Képernyőkép a LUIS-ról, új kimondott szövegek a MoveEmployee szándékban](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png)](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png#lightbox)
+    [![Képernyőkép a LUIS az új utterances MoveEmployee leképezés a](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png)](./media/luis-quickstart-intent-and-hier-entity/hr-enter-utterances.png#lightbox)
 
 ## <a name="create-a-location-entity"></a>Hely entitás létrehozása
 A LUIS-nak meg kell értenie, hogy a hely pontosan mit jelent. Ez a kimondott szövegben található indulási és érkezési hely címkézésével lehetséges. Ha a kimondott szöveget jogkivonat (nyers) nézetben szeretné megtekinteni, válassza az **Entities View** (Entitások nézet) címkével ellátott, a kimondott szövegek fölötti sávban található kapcsolót. Miután átkapcsolta a kapcsolót, a vezérlő **Tokens View** (Jogkivonatok nézet) címkével lesz ellátva.

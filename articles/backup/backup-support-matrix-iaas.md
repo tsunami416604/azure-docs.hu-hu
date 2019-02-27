@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: raynew
-ms.openlocfilehash: 2bd499c3afc423047dda9ff3ad657d110dab282a
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: f327b681b4e91e22d2d3c34e9e991b203c0330e4
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673647"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883164"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM backup-támogatási mátrixa
 Használhatja a [Azure Backup szolgáltatás](backup-overview.md) biztonsági mentése a helyszíni gépek és a számítási feladatok és az Azure virtuális gépeken. Ez a cikk összefoglalja a támogatási beállításait és korlátozások biztonsági mentése Azure-beli virtuális gépek (VM) az Azure Backup szolgáltatással.
@@ -168,7 +168,7 @@ Virtuális gépek biztonsági mentése az Azure-bA migrálása   | Támogatott.<
 --- | ---
 Az Azure virtuális gép adatlemezek | Készítsen biztonsági másolatot egy 16 vagy annál kisebb adatlemezekkel rendelkező virtuális Gépet.
 Adatlemez mérete | Az egyes lemezek legfeljebb 4095 GB is lehet.<br/><br/> Azure VM backup (más néven azonnali visszaállítása) legújabb verzióját futtatja, ha a lemez mérete legfeljebb 4 TB-os támogatottak. [További információk](backup-instant-restore-capability.md).
-Tárolási típus | Standard HDD, standard SSD, prémium szintű SSD <br/><br/> Standard SSD támogatott, ha az Azure VM backup (más néven azonnali visszaállítása) legújabb verzióját futtatja, a standard SSD használata támogatott. [További információk](backup-instant-restore-capability.md).
+Tárolási típus | Standard HDD, standard SSD, prémium szintű SSD <br/><br/> Standard SSD használata támogatott, ha az Azure VM backup (vagyis az azonnali visszaállítása) legújabb verzióját futtatja. [További információk](backup-instant-restore-capability.md).
 Felügyelt lemezek | Támogatott
 Titkosított lemezek | Támogatott.<br/><br/> Az Azure Disk Encryption (ADE) engedélyezve van az Azure virtuális gépek (a vagy anélkül, hogy az Azure AD-alkalmazás) is készíthető.<br/><br/> Titkosított virtuális gépek nem állítható helyre, a fájl vagy mappa szintjén. A teljes virtuális gép helyreállítása kell.<br/><br/> Engedélyezheti a titkosítást az Azure Backup által már védett virtuális gépeken.
 Az engedélyezett Írásgyorsító lemezek | Nem támogatott.<br/><br/> Ha futtatja a legújabb Azure VM backup (más néven [azonnali visszaállítása](backup-instant-restore-capability.md)), lemezeket zárhat ki a biztonsági másolatból engedélyezett Írásgyorsító.

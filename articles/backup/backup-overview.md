@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 02/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 79a53c1b11a1bac0ea83afdd1333423aff4d6aa6
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: b590d75abb9e3f6465594a5c8c684b94e6f2e07f
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428466"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56864297"
 ---
 # <a name="what-is-azure-backup"></a>Mi az az Azure Backup?
 
@@ -78,7 +78,7 @@ Az Azure Backup a helyszíni gépek és Azure virtuális gépek készíthető.
 Biztonsági másolatot a gépek és alkalmazások MABS/DPM-tároló, majd biztonsági mentése a DPM/MABS storage-tárolóba előnyei a következők:
 
 - MABS/DPM biztonsági mentést biztosít alkalmazás együttműködő biztonsági másolat készíthető, a gyakori alkalmazások, például az SQL Server, Exchange és SharePoint-optimalizált további fájl/mappa-/ kötetszintű biztonsági mentések és a gép a rendszerállapot biztonsági mentésének (operációs rendszer nélküli, rendszerállapot).
-- A helyszíni mahines nem kell a MARS-ügynök telepítése az összes olyan számítógépen, készítsen biztonsági másolatot szeretne. Egyes gépek fut a DPM/MABS védelmi ügynököt, és a MARS-ügynök fut, a MABS és a DPM csak.
+- A helyszíni gépek esetében nem kell a MARS-ügynök telepítése az összes olyan számítógépen, készítsen biztonsági másolatot szeretne. Egyes gépek fut a DPM/MABS védelmi ügynököt, és a MARS-ügynök fut, a MABS és a DPM csak.
 - Nagyobb rugalmasságot és részletes ütemezési beállításait a biztonsági mentések futtatása van.
 - Biztonsági másolatok több gép, amely egyetlen konzolon védelmi csoportokba rendezheti is kezelheti. Ez akkor különösen hasznos, ha alkalmazásokat több gépen keresztül számítógépen rétegzett, és szeretne róluk biztonsági másolatot együtt.
 

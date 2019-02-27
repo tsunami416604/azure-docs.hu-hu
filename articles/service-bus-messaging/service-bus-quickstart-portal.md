@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 5e8eb6239de73b0095a912ad6baca7c090872755
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: fa6d2b7d1fbd99e482cc013720c39b4b150f6742
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56585433"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889545"
 ---
 # <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Gyors útmutató: A Service Bus-üzenetsor létrehozása az Azure portal használatával
 A Microsoft Azure Service Bus egy vállalati integrációs üzenetközvetítő, amely biztonságos üzenetküldést és teljes mértékben megbízható szolgáltatást nyújt. Egy jellemző Service Bus-forgatókönyv általában két vagy több alkalmazás, szolgáltatás vagy folyamat egymástól való szétválasztását, továbbá az állapot- vagy adatváltozások továbbítását foglalja magában. Ilyen esetekben előfordulhat, hogy több kötegelt feladatokat kell üzemeznie más alkalmazásokban vagy szolgáltatásokban, vagy pedig ki kell váltani a megrendelések teljesítését. Például egy kereskedelmi vállalat elküldheti az értékesítési pontokra vonatkozó adatait egy háttérrendszernek vagy egy regionális terjesztőközpontnak feltöltés vagy leltárfrissítés céljából. Ebben a forgatókönyvben az ügyfélalkalmazás üzeneteket küld és fogad egy Service Bus-üzenetsorból.  
@@ -49,7 +49,7 @@ A kód futtatásához tegye a következőt:
    git clone https://github.com/Azure/azure-service-bus.git
    ```
 3. Lépjen a következő mintamappához: `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveQuickStart\BasicSendReceiveQuickStart`.
-4. Másolja be [A felügyeleti hitelesítő adatok beszerzése](#obtain-the-management-credentials) című szakaszban beszerzett kapcsolati sztringet és üzenetsor-nevet.
+4. Másolja a kapcsolati karakterláncot, és az üzenetsor neve beolvasott a beszerzése a felügyeleti hitelesítő adatok szakaszban.
 5.  Írja be a parancssorba a következő parancsot:
 
     ```

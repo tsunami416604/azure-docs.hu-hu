@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7bc6b57122072c2fe0c063c1278cf11d97469b6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0e86ede90a19d829e87b47d49fa4a12a17fe1d5c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191316"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867048"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>Oktatóanyag: A Snowflake és az Azure Active Directory-integráció
 
@@ -141,7 +141,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Snowflake, hajtsa v�
     > [!NOTE]
     > Ez nem azonos azzal a jobb felső sarokban a felhasználónév alatt kiválasztott környezet
     
-    ![A Snowflake-rendszergazda ](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
+    ![A Snowflake-rendszergazda](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
 
 10. Nyissa meg a **letöltött tanúsítvány Base 64** a Jegyzettömbben. Másolja a "----BEGIN CERTIFICATE---" közötti értéket és a "----END CERTIFICATE---", és illessze be ezt az idézőjelek közé a **tanúsítvány** alatt. Az a **ssoUrl**, illessze be **bejelentkezési URL-cím** az Azure Portalról másolt érték. Válassza ki a **az összes lekérdezés** kattintson **futtatása**.
 
@@ -219,11 +219,11 @@ Ahhoz, hogy jelentkezzen be a snowflake-hez az Azure AD-felhasználók, akkor ki
 
 2. **Váltson a szerepkör** való **ACCOUNTADMIN**, kattintva **profil** a jobb felső oldalán található.  
 
-    ![A Snowflake-rendszergazda ](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
+    ![A Snowflake-rendszergazda](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
 
 3. A felhasználó létrehozásához futtassa az alábbi SQL-lekérdezés, biztosítva a "Login name" értékre van állítva az Azure ad-ben felhasználónév a munkalapon alább látható módon.
 
-    ![A Snowflake adminsql ](./media/snowflake-tutorial/tutorial_snowflake_usersql.png)
+    ![A Snowflake adminsql](./media/snowflake-tutorial/tutorial_snowflake_usersql.png)
 
     ```
     use role accountadmin;
@@ -238,9 +238,9 @@ Ha a hozzáférési panelen a Snowflake csempére kattint, akkor kell automatiku
 
 ## <a name="additional-resources"></a>További források
 
-- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

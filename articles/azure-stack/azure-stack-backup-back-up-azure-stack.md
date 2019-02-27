@@ -16,18 +16,18 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
 ms.lastreviewed: 09/05/2018
-ms.openlocfilehash: c42490b7d46df77bffd13fdda02884704fb13b67
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 685183f61c1574d8c533efad8a7e0c46b1e2d23c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210303"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870312"
 ---
 # <a name="back-up-azure-stack"></a>Készítsen biztonsági másolatot az Azure Stackben
 
 *Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
-Hajtsa végre egy igény szerinti biztonsági mentést az Azure Stacken. A PowerShell-környezet konfigurálása, lásd: [Azure Stack PowerShell telepítése ](azure-stack-powershell-install.md). Jelentkezzen be az Azure Stack, lásd: [a felügyeleti portál használatával az Azure Stackben](azure-stack-manage-portals.md).
+Hajtsa végre egy igény szerinti biztonsági mentést az Azure Stacken. A PowerShell-környezet konfigurálása, lásd: [Azure Stack PowerShell telepítése](azure-stack-powershell-install.md). Jelentkezzen be az Azure Stack, lásd: [a felügyeleti portál használatával az Azure Stackben](azure-stack-manage-portals.md).
 
 ## <a name="start-azure-stack-backup"></a>Azure Stack biztonsági mentés indítása
 

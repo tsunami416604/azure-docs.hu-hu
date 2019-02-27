@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 11/27/2018
 ms.topic: conceptual
 ms.author: sutalasi
-ms.openlocfilehash: 1b97ff461dc3a4f7dcba0a3dbfad71a25cb3f1e9
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: d73c0e3f62d30764cba8866d7e731c5ea67d3057
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840199"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878268"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>Állítsa be a VMware virtuális gépek vészhelyreállítása az Azure-ban a PowerShell-lel
 
@@ -115,7 +115,7 @@ Az alábbi példában a tároló részleteit a $vault változójával adja meg a
    VMwareDRToAzurePs VMwareDRToAzurePs Microsoft.RecoveryServices vaults
    ```
 
-A Set-ASRVaultContext parancsmag helyett, egyet az Import-AzureRmRecoveryServicesAsrVaultSettingsFile-parancsmagot is használhatja a tárolási környezet beállításához. Az elérési út, amikor a tároló regisztrációs kulcsfájl nem található, mint a Import-AzureRmRecoveryServicesAsrVaultSettingsFile parancsmagot a - path paraméterrel adja meg. Példa:
+As an alternative to the Set-ASRVaultContext cmdlet, one can also use the Import-AzureRmRecoveryServicesAsrVaultSettingsFile cmdlet to set the vault context. Az elérési út, amikor a tároló regisztrációs kulcsfájl nem található, mint a Import-AzureRmRecoveryServicesAsrVaultSettingsFile parancsmagot a - path paraméterrel adja meg. Példa:
 
    ```azurepowershell
    Get-AzureRmRecoveryServicesVaultSettingsFile -SiteRecovery -Vault $Vault -Path "C:\Work\"
@@ -345,7 +345,7 @@ Szüksége lesz a felderített virtuális gépek védelme érdekében a követke
 Most már az ebben a táblázatban megadott beállításokat használja a következő virtuális gépek replikálása
 
 
-|Virtuális gép  |Folyamatkiszolgáló        |Tárfiók              |Log Storage-fiók  |Szabályzat           |A fiók a mobilitási szolgáltatás telepítése|Céloldali erőforráscsoport  | Cél virtuális hálózattal  |Cél alhálózat  |
+|Virtuális gép  |Folyamatkiszolgáló        |Tárfiók              |Log Storage-fiók  |Szabályzat           |A fiók a mobilitási szolgáltatás telepítése|Célzott erőforráscsoport  | Cél virtuális hálózata  |Cél alhálózat  |
 |-----------------|----------------------|-----------------------------|---------------------|-----------------|-----------------------------------------|-----------------------|-------------------------|---------------|
 |Win2K12VM1       |ScaleOut-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |
 |CentOSVM1       |ConfigurationServer   |replicationstdstorageaccount1| –                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Subnet-1       |   
@@ -487,4 +487,4 @@ Ebben a lépésben azt átadja a feladatokat a virtuális gép Win2K12VM1 egy ad
 2. Miután sikeresen megtörtént, akkor feladatátvétel érvényesítése a feladatátvételi művelet, és állítsa be a visszirányú replikálás az Azure-ból biztonsági a helyszíni VMware-hely.
 
 ## <a name="next-steps"></a>További lépések
-Ismerje meg, hogyan további feladatainak automatizálása a [Azure Site Recovery PowerShell-referencia ](https://docs.microsoft.com/powershell/module/AzureRM.RecoveryServices.SiteRecovery).
+Ismerje meg, hogyan további feladatainak automatizálása a [Azure Site Recovery PowerShell-referencia](https://docs.microsoft.com/powershell/module/AzureRM.RecoveryServices.SiteRecovery).

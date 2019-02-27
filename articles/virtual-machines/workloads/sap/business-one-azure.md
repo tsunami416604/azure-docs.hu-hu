@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f0e96b87e46872bebe7563e08f0eb7a33b11015f
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 101710b5a57faa37be77ff4b059fa0d494f4e617
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329848"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878064"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business egy on Azure Virtual machines szolgáltatásban
 Ez a dokumentum nyújt útmutatást, üzembe helyezéséhez SAP Business One az Azure Virtual machines szolgáltatásban. A dokumentáció nem helyettesíti a üzleti SAP-dokumentáció áll. A dokumentáció az Azure-infrastruktúra egy üzleti alkalmazások futtatásához az alapvető tervezési és telepítési irányelveket kell kiterjednie.
@@ -38,7 +38,7 @@ Ez az útmutató használatához az alábbi Azure-összetevők alapszintű ismer
 - [A Windows Azure virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
 - [Az Azure virtual machines a Linux rendszeren](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
 - [Azure hálózati és virtuális hálózatok kezelése a PowerShell segítségével](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-virtual-network)
-- [Az Azure-hálózatok és virtuális hálózatok a CLI használatával ](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
+- [Az Azure-hálózatok és virtuális hálózatok a CLI használatával](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-virtual-network)
 - [Az Azure CLI használatával Azure-lemezek kezelése](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-disks)
 
 Akkor is, ha az egyik üzleti érdekli, csak a dokumentumok [Azure Virtual Machines tervezési és megvalósítási az SAP NetWeaver számára](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) egy kiváló forrásként is lehet.

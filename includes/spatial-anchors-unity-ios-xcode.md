@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
-ms.openlocfilehash: 36d509bdcd1fda61cb85fae7fa38ed126697f888
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: b802c9dbd0cef65325cb03538b68b49c57b85bb3
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56752206"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56890945"
 ---
 Válassza ki **összeállítása** egy párbeszédpanel megnyitásához. Ezután válassza ki egy mappát, amelybe exportálni az Xcode-projektben.
 
@@ -20,7 +20,7 @@ Az Exportálás befejeződése után egy mappa jelenik meg amely tartalmazza az 
 Az exportált Xcode projekt mappában futtassa a következő parancsot a projekthez szükséges CocoaPods telepítéséhez:
 
 ```bash
-pod install
+pod install --repo-update
 ```
 
 Most is nyissa meg a `Unity-iPhone.xcworkspace` megnyitja a projektet az xcode-ban:

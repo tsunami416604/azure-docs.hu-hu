@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
-ms.openlocfilehash: 54faf8b37afa953aac7d411df2f539188dc5b451
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 6e97001497ebdddebe9b5b726e0526a987b6c63c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310214"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873321"
 ---
 # <a name="how-to-improve-your-classifier"></a>Tartalombesoroló teljesítményének hogyan
 
@@ -39,7 +39,7 @@ A probléma megoldásához, használja az alábbi útmutatót képzési több k�
 
 ## <a name="data-quantity"></a>Adatok mennyisége
 
-Betanító kép a szám a legfontosabb tényező. Hogy recomment rendszerképekből legalább 50 szerint szűrhetőek kiindulási pontként. Kevesebb képekkel overfitting magasabb kockázata, és a teljesítmény számok javasolhat jó minőségű, míg a modell valós adatokkal előfordulhat, hogy-kihívást jelent. 
+Betanító kép a szám a legfontosabb tényező. Kiindulási pontként címke legalább 50 képenként használatát javasoljuk. Kevesebb képekkel overfitting magasabb kockázata, és a teljesítmény számok javasolhat jó minőségű, míg a modell valós adatokkal előfordulhat, hogy-kihívást jelent. 
 
 ## <a name="data-balance"></a>Adatok terheléselosztása
 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 598af6bb945318f0a76ffe094dd5786abacccc3f
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: b55f8d44d12fa503a17218db4a5166819024f1aa
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543529"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872896"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-portal"></a>Hozzon létre és kezelhető az Azure Database for MySQL tűzfalszabályok az Azure portal használatával
 Kiszolgálószintű tűzfalszabályok lehetővé teszik a rendszergazdák eléréséhez egy Azure Database for MySQL-kiszolgáló megadott IP-cím vagy egy IP-címtartományt. 
@@ -34,7 +34,7 @@ Kiszolgálószintű tűzfalszabályok lehetővé teszik a rendszergazdák elér�
 
 4. További címtartomány hozzáadásához. A tűzfalszabályok az Azure Database for MySQL, az egyetlen IP-címet vagy címtartományt is megadhat. Ha szeretné korlátozni a szabályt, hogy egyetlen IP-címet, írja be ugyanazt a címet a kezdő IP- és a záró IP-cím mezőt. A tűzfal megnyitása után lehetővé teszi a rendszergazdák, a felhasználók és az alkalmazás eléréséhez, amelyhez érvényes hitelesítő adatokkal rendelkeznek a MySQL-kiszolgáló bármely olyan adatbázisába.
 
-   ![Az Azure portal - tűzfalszabályok ](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
+   ![Az Azure portal - tűzfalszabályok](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
 
 5. Kattintson a **mentése** gombra az eszköztárban, a kiszolgálószintű tűzfalszabály mentéséhez. Várjon, amíg a visszaigazolás, hogy létrejött-e a tűzfalszabályok a frissítést.
 

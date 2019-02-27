@@ -7,14 +7,14 @@ ms.service: mariadb
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 01/09/2019
-ms.openlocfilehash: 076a29de227447c75644bd3b59bda1053794d739
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: e739ed1f7cd1b832ffe11299d3444c9bf0ac99e9
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191887"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874460"
 ---
-# <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>Azure-adatbázis létrehozása MariaDB-kiszolgálóhoz az Azure Portal használatával
+# <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-portal"></a>Gyors útmutató: Azure-adatbázis létrehozása MariaDB-kiszolgálóhoz az Azure Portal használatával
 
 Az Azure Database for MariaDB egy felügyelt szolgáltatás, amellyel a magas rendelkezésre állású MariaDB-adatbázisokat futtathatja, kezelheti és skálázhatja a felhőben. Ez a rövid útmutató bemutatja, hogyan hozhat létre nagyjából öt perc alatt egy Azure Database for MariaDB-kiszolgálót az Azure Portalon.  
 

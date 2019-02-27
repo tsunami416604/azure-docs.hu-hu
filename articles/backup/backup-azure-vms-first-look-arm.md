@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: raynew
-ms.openlocfilehash: 40557d4e71dfea5996396cde634f7a1c80913556
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 16c7fe68e67094cef21d9efbffdccd614827ae6d
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430539"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887471"
 ---
 # <a name="back-up-an-azure-vm-from-the-vm-settings"></a>A virtuális gép beállításainak biztonsági mentése Azure virtuális gép
 
@@ -66,7 +66,7 @@ Annak érdekében, hogy az Azure virtuális gépek biztonsági mentése, az Azur
 
   ![Biztonsági mentés állapota](./media/backup-azure-vms-first-look-arm/backup-item-view-update.png)
 
-10. Miután engedélyezte a biztonsági mentést, egy [kezdeti biztonsági mentés](#run-the-initial-backup) futtatja. A kezdeti biztonsági mentés azonnali indítása, vagy várjon, amíg a biztonsági mentési ütemezés szerint kezdődik.
+10. Miután engedélyezte a biztonsági mentés, egy kezdeti biztonsági mentés futtatása. A kezdeti biztonsági mentés azonnali indítása, vagy várjon, amíg a biztonsági mentési ütemezés szerint kezdődik.
     - A kezdeti biztonsági mentés befejezéséig az **legutóbbi biztonsági mentés állapota** állapota **figyelmeztetés (kezdeti biztonsági mentés folyamatban)**.
     - A következő ütemezett biztonsági mentés futtatásakor megtekintéséhez kattintson a biztonsági mentési szabályzat neve.
     

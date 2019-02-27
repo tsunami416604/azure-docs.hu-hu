@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 0d0e9c1c35236ce6449a9c9bf06ba291f46db472
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 5e749f68aba48ac258363a0a03e3474e1e28b064
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731286"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876772"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Alkalmazások hibaelhárítása az Azure App Service használatával a Visual Studio-
 ## <a name="overview"></a>Áttekintés
@@ -685,7 +685,7 @@ Webkiszolgáló-naplók elemzésével kapcsolatos további információkért lá
 
 * [LogParser](https://www.microsoft.com/download/details.aspx?id=24659)<br/>
   Egy eszköz a adatok megtekintése a webkiszolgáló-naplókkal (*.log* fájlok).
-* [Hibaelhárítási IIS teljesítménybeli problémák vagy az alkalmazáshibák LogParser használatával ](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
+* [Hibaelhárítási IIS teljesítménybeli problémák vagy az alkalmazáshibák LogParser használatával](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
   Bevezetés a naplóelemző eszköz, amellyel webkiszolgáló-naplók elemzése.
 * [Blogbejegyzések által Robert McMurray LogParser használatával](https://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>
 * [Az IIS 7.0, IIS 7.5 és IIS 8.0-s HTTP-állapotkód](https://support.microsoft.com/kb/943891)

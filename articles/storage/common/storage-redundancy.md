@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: ea6d94ff1ee8c27c1642f24660a6ab4f276137a8
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: cbe8970e3e7b924025a93b50f9b8c9e46643b349
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330783"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872046"
 ---
 # <a name="azure-storage-redundancy"></a>Az Azure Storage-redundancia
 
@@ -68,5 +68,5 @@ Ha módosítjuk GRS az LRS, nem kell további költenie, de a másodlagos helyr�
 - [Georedundáns tárolás (GRS): Az Azure Storage-régiók közti replikáció](storage-redundancy-grs.md)
 - [Az Azure Storage méretezhetőségi és teljesítménycéljai](storage-scalability-targets.md)
 - [RA-GRS tároló használatával magas rendelkezésre állású alkalmazások tervezése](../storage-designing-ha-apps-with-ragrs.md)
-- [A Microsoft Azure Storage redundancia lehetőségeket és olvasási hozzáférés georedundáns tárolás ](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
+- [A Microsoft Azure Storage redundancia lehetőségeket és olvasási hozzáférés georedundáns tárolás](https://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
 - [SOSP tanulmány – Azure Storage: Magas rendelkezésre állású felhőbeli tárolószolgáltatásba erős konzisztencia](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)

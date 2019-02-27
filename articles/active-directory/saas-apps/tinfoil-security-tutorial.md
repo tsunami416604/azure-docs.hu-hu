@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ed0912e8d4705b6cbefa9eb8f7a712a37d8b0be
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8d2001e221ef9c02ee2ab80b647a9bafe6490432
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56183179"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882144"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tinfoil-security"></a>Oktatóanyag: A TINFOIL SECURITY szolgáltatással az Azure Active Directory-integráció
 
@@ -186,7 +186,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
 1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
     
-    ![Felhasználók és csoportok -> minden felhasználó ](./media/tinfoil-security-tutorial/create_aaduser_02.png) 
+    ![Felhasználók és csoportok -> minden felhasználó](./media/tinfoil-security-tutorial/create_aaduser_02.png) 
 
 1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
  

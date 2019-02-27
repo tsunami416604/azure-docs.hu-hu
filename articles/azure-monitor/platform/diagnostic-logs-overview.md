@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: e9fcf36d6ece441c73e7d1224bd5918d2e74bf84
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 704c12bc2ea16fcad5672dde4181f63495fbe967
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001980"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870839"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Gyűjtése és felhasználása a naplófájlok adatait az Azure-erőforrások
 
@@ -23,7 +23,7 @@ ms.locfileid: "56001980"
 * **A bérlői naplók** – ezeket a naplókat a bérlői szintű szolgáltatások, amelyek az Azure-előfizetéssel, kívüliek biztosítja, mint például az Azure Active Directory-naplók.
 * **Erőforrás-naplók** – Azure-szolgáltatások üzembe helyezése az Azure-előfizetéssel, például a hálózati biztonsági csoportok vagy a Storage-fiókok belüli erőforrások származnak ezek a naplók.
 
-    ![Erőforrás diagnosztikai naplók és más típusú naplók ](./media/diagnostic-logs-overview/Diagnostics_Logs_vs_other_logs_v5.png)
+    ![Erőforrás diagnosztikai naplók és más típusú naplók](./media/diagnostic-logs-overview/Diagnostics_Logs_vs_other_logs_v5.png)
 
 Ezek a naplók a tartalom az Azure szolgáltatás- és erőforrás típusa szerint változó. Például a hálózati biztonsági csoport szabályainak számlálói, illetve a Key Vault-naplók két típusba diagnosztikai naplók.
 

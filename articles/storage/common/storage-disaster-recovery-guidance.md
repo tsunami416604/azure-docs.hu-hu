@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 02/01/2019
+ms.date: 02/25/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: fbd4782d7fde089f9770e148564ec5941da3dc8e
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: e14e35cc8589bb524bae791ccd74952da90bdb04
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753588"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871536"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Katasztrófa utáni helyreállítás és a tárolási fiók feladatátvételi (előzetes verzió) az Azure Storage-ban
 
@@ -152,7 +152,6 @@ Nem felügyelt lemezek és az Azure Storage szolgáltatásban tárolódnak. Ha e
 4. Várja meg, amíg a **utolsó szinkronizálás időpontja** frissítve van, és a későbbi, mint az idő, amikor a virtuális gép törlése. Ebben a lépésben fontos, mert ha a másodlagos végpontra nem lett teljesen frissítve a VHD-fájlokat tartalmazó a feladatátvétel esetén, majd a virtuális gép nem működnek megfelelően az új elsődleges régióban.
 5. A fiók feladatátvételt kezdeményezzen.
 6. Várjon, amíg a fiók feladatátvétel befejeződött, és a másodlagos régióban az új elsődleges régió elérhetetlenné válik.
-6. Storage-fiók létrehozása az új elsődleges régióban, és másolja azt a nem felügyelt lemezt.
 7. Virtuális gép létrehozása az új elsődleges régióban, és csatlakoztassa újból a virtuális merevlemezeket.
 8. Indítsa el az új virtuális Gépet.
 

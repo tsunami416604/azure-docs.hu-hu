@@ -16,12 +16,12 @@ ms.date: 02/14/2019
 ms.author: jeffgilb
 ms.reviewer: brbartle
 ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: 1fa85fa26594ef6e5df2d05bb3bcc34e5689c3be
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 1fb9917e30a88cf5a68c9e170d66eeaa1d477deb
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728403"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877146"
 ---
 # <a name="register-azure-stack-with-azure"></a>Regisztráljon az Azure Stack az Azure-ral
 
@@ -311,7 +311,7 @@ Használhatja a **régiók kezelése** csempére kattintva ellenőrizze, hogy az
 
 3. Válassza ki **tulajdonságok**. Ezen a panelen látható, az állapot és a környezet sajátosságait. Az állapot lehet **regisztrált** vagy **nincs regisztrálva**.
 
-    [ ![Régió felügyeleti csempe](media/azure-stack-registration/admin1sm.png "régió felügyeleti csempe") ](media/azure-stack-registration/admin1.png#lightbox)
+    [![Régió felügyeleti csempe](media/azure-stack-registration/admin1sm.png "régió felügyeleti csempe")](media/azure-stack-registration/admin1.png#lightbox)
 
     Ha regisztrált, a tulajdonságok a következők:
     

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 8b890630d352619da86c3017426e24f55ef016d9
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: d08ebc7c1e52022ec918020387264c464d1cd967
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38307170"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883419"
 ---
 # <a name="create-a-xamarinios-app"></a>Xamarin.iOS-alkalmazás létrehozása
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
@@ -72,7 +72,7 @@ Konfigurálja a kiszolgálóprojektet a Node.js vagy a .NET-háttéralkalmazás 
 
 ## <a name="next-steps"></a>További lépések
 * [Offline szinkronizálás hozzáadása az alkalmazáshoz](app-service-mobile-xamarin-ios-get-started-offline-data.md)
-* [Hitelesítés hozzáadása az alkalmazáshoz ](app-service-mobile-xamarin-ios-get-started-users.md)
+* [Hitelesítés hozzáadása az alkalmazáshoz](app-service-mobile-xamarin-ios-get-started-users.md)
 * [Leküldéses értesítések hozzáadása Xamarin.Android-alkalmazáshoz](app-service-mobile-xamarin-ios-get-started-push.md)
 * [A felügyelt ügyfelek használata az Azure Mobile Apps-alkalmazásokhoz](app-service-mobile-dotnet-how-to-use-client-library.md)
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 8a067474fb172d4ff7a7fdf7eb6d24536bd2d017
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 1556a7d482a6644831589937b1847b1d63e72693
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56443275"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56890938"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Milyen lemeztípusok érhetők el az Azure-ban?
 
@@ -99,7 +99,7 @@ A méret, egy csillaggal jelölve jelenleg előzetes verzióban érhető el.
 |---------------------|---------------------|---------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|
 | Lemez mérete GiB-ban           | 128             | 256             | 512            | 1,024  | 2,048            | 4,095     | 8,192     | 16,384     | 32,767    |
 | IOPS-érték lemezenként       | Legfeljebb 500              | Legfeljebb 500              | Legfeljebb 500              | Legfeljebb 500 | Legfeljebb 500              | Legfeljebb 500              | Legfeljebb 500             | Legfeljebb 500              | Akár 1300              | Legfeljebb 2000              | Legfeljebb 2000              |
-| Adattovábbítás lemezenként | Akár 60 MiB/mp | Akár 60 MiB/mp | Akár 60 MiB/mp | Akár 60 MiB/mp | Akár 60 MiB/mp | Akár 60 MiB/mp | Akár 60 MiB/mp | Akár 60 MiB/mp| Legfeljebb 300 MiB/mp |  Legfeljebb 500 MiB/mp | Legfeljebb 500 MiB/mp |
+| Adattovábbítás lemezenként |  Akár 60 MiB/mp | Akár 60 MiB/mp | Akár 60 MiB/mp | Akár 60 MiB/mp | Akár 60 MiB/mp | Akár 60 MiB/mp| Legfeljebb 300 MiB/mp |  Legfeljebb 500 MiB/mp | Legfeljebb 500 MiB/mp |
 
 ## <a name="standard-hdd"></a>Standard HDD
 

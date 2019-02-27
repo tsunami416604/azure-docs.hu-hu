@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 222ac0b5dede45b9ae2b6fe9ba464e738ea48b94
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4f51ade234c8792f235bd8c9218b3c6ef9f22de7
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194257"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870822"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella"></a>Oktatóanyag: Cisco összevonó az Azure Active Directory-integráció
 
@@ -147,7 +147,7 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] konfigurálásához haj
 
 6. Az a **v: lehetőséget XML-fájl feltöltése**, töltse fel a **összevonási metaadatainak XML** , amely az Azure Portalról, és a metaadatok feltöltése után a letöltött fájl az alábbi értékek automatikusan kitölti a rendszer automatikusan lekérése, majd kattintson a **következő**.
 
-    ![A choosefile ](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_choosefile.png)
+    ![A choosefile](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_choosefile.png)
 
 7. A **SAML-konfiguráció ellenőrzése** területén kattintson **teszt a SAML-KONFIGURÁCIÓJA**.
 
@@ -245,8 +245,8 @@ Ha a hozzáférési panelen a Cisco összevonó csempére kattint, meg kell lehe
 
 ## <a name="additional-resources"></a>További források
 
-- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

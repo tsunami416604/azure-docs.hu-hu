@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: 6d7cacf699df580b8a5c46b8bfc6d48e1a8daea1
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 2c81369bc278a0995af04a38b0143eb0df8ba3a5
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821730"
+ms.locfileid: "56877367"
 ---
 # <a name="manage-and-configure-projects"></a>Projektek kezelése és konfigurálása
 
@@ -66,7 +66,9 @@ Amikor kiválaszt egy DSVM-példányt, Azure notebookok kérheti az adott gép h
 >
 > 1. Soubory projektu manuálisan másolja a virtuális Gépet.
 >
-> 2. A telepítő jegyzetfüzet belül a fájlok beágyazása, hogy futtassa az elsődleges jegyzetfüzet futtatása előtt. A telepítő jegyzetfüzet hozzon létre egy kódcellát, az egyes fájlok, ahol a cellát tartalmaz-e a fájl tartalmát. Minden cella tetején helyezze be a parancs `%writefile <filename>`, ahol `<filename>` fogadni a tartalmát a fájl neve. A notebook futtatásakor fájlokhoz a virtuális gépen hoz létre. Egy vonatkozó példáért tekintse meg a [setup.ipynb fájlt a Microsoft Kisállat detector használatával bemutató](https://github.com/microsoft/connect-petdetector) (GitHub).
+> 2. A telepítő jegyzetfüzet belül a fájlok beágyazása, hogy futtassa az elsődleges jegyzetfüzet futtatása előtt. A telepítő jegyzetfüzet hozzon létre egy kódcellát, az egyes fájlok, ahol a cellát tartalmaz-e a fájl tartalmát. Minden cella tetején helyezze be a parancs `%%writefile <filename>`, ahol `<filename>` fogadni a tartalmát a fájl neve. A notebook futtatásakor fájlokhoz a virtuális gépen hoz létre. Egy vonatkozó példáért tekintse meg a [setup.ipynb fájlt a Microsoft Kisállat detector használatával bemutató](https://github.com/Microsoft/connect-petdetector/blob/master/setup.ipynb) (GitHub).
+>
+>     ![Használatával egy %% writefile parancs egy kódcellát elején](media/setup-notebook-writefile-command.png)
 
 ## <a name="edit-project-metadata"></a>Projekt metaadatainak szerkesztése
 
@@ -75,7 +77,7 @@ A projekt irányítópultján válassza ki a **Projektbeállítások**, majd vá
 | Beállítás | Leírás |
 | --- | --- |
 | Projektnév | Egy rövid nevet a projekthez, amely az Azure-jegyzetfüzetek megjelenítési célokra használja. Például "Hello World a Python". |
-| Projektazonosító | A projekt megosztása használhatja egy egyéni azonosítót, amely az URL-cím részévé válik (a képernyő `https://notebooks.azure.com/<user_id>/projects/<project_id>`). Ezt az Azonosítót használhatja csak betűket, számokat és kötőjeleket tartalmazhat, és legfeljebb 30 karakter hosszúságú lehet. Ha Ön nem tudja, hogy melyiket érdemes használni, a common konvenciónak egy kis verzióját használja, a projekt nevére, szóközök vannak kapcsolva, kötőjeleket, például "A projekt neve" kapcsolja be a "my-projekt – name". |
+| Projektazonosító | Egyéni azonosítója, amely a projekt megosztása használatával URL-cím részévé válik. Ezt az Azonosítót használhatja csak betűket, számokat és kötőjeleket tartalmazhat, legfeljebb 30 karakter hosszúságú lehet, és nem lehet egy [Projektazonosító fenntartott](create-clone-jupyter-notebooks.md#reserved-project-ids). Ha Ön nem tudja, hogy melyiket érdemes használni, a common konvenciónak, hogy a projekt neve kisbetűs verzióját, szóközöket, kötőjeleket, például a "my-jegyzetfüzet-projekt" (ha szükséges, hogy illeszkedjen a hosszra vonatkozó korlátot csonkolt) vannak kapcsolva. |
 | Nyilvános projekt | Ha a beállítása, lehetővé teszi, hogy bárki a hivatkozást a projekt eléréséhez. Privát projekt létrehozásakor törölje ezt a beállítást. |
 | Klónok elrejtése | Ha a beállított, más felhasználók nem látják, amelyek a projekt klónok listáját. Elrejtés klónok akkor hasznos, ha sok számára, akiknek nem részei ugyanazon a szervezeten belül, például megosztott projektek a pedagógiai osztály a notebook használatakor. |
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 98ab9b25c59af194a1a81c600c373b2180272e10
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e5fe076cfe733b4fa0151570603c090af98de0e8
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106953"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882688"
 ---
 # <a name="handling-review-feedback"></a>Felülvizsgálat visszajelzés kezelése
 
@@ -58,14 +58,14 @@ Az alábbi eljárás segítségével áttekintheti a lekéréses kérelemben sze
 
 1. Az a **Microsoft felülvizsgálati** szakaszában **közzétételi lépéseket** alkotnak, indítsa el a böngészőt, és keresse meg a lekéréses kérelem hivatkozásra a **áttekintése** ezen tartalomcsapat (kezdőlap) lapján  Az alábbi képen egy példa kritikus probléma kezdőlapja a Contoso minta app ajánlat mutatja be.  Ezen a lapon található az Azure-alkalmazást a felülvizsgálati problémák hasznos összegző információit tartalmazza.  
 
-    [ ![A lekéréses kérelem kezdőlapja](./media/pr-home-page-thumb.png) ](./media/pr-home-page.png)
+    [![A lekéréses kérelem kezdőlapja](./media/pr-home-page-thumb.png)](./media/pr-home-page.png)
     <br/> *Kattintson a képre kattintva bontsa ki.*
     
 2. (Nem kötelező) A szakaszban, az ablak jobb oldalán **házirendek**, kattintson a probléma üzenet (ebben a példában: **Házirend érvényesítése nem sikerült**) a probléma, beleértve a kapcsolódó naplófájlok a kevésbé fontos részletek vizsgálatára.  A naplófájlok alján általában jelenik meg hibaüzenet.
 
 3. Válassza a bal oldali a kezdőlap menüben **fájlok** megjelenítése alkotó ezt az ajánlatot a technikai eszközök fájlok listázása.  A Microsoft megtekinteni a felderített kritikus fontosságú problémáit leíró megjegyzések kell hozzáadni.  A következő példában két problémát észlelt. 
 
-    [ ![A lekéréses kérelem kezdőlapja](./media/pr-files-page-thumb.png) ](./media/pr-files-page.png)
+    [![A lekéréses kérelem kezdőlapja](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)
     <br/> *Kattintson a képre kattintva bontsa ki.*
 
 4. Kattintson a bal oldali fában, keresse meg a megjegyzést a környezetben a környező kód minden megjegyzést csomópontján.  Javítsa ki a forráskódot a csapatprojektben leírtak szerint a megjegyzést a probléma.
