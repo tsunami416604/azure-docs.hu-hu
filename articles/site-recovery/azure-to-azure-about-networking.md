@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: 49b5ef6b0dca32baaf05959cc29bb2a8024b6d04
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: fb80af9df58fba41e5ece060099eb98e3d2f90fe
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55693989"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883147"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Hálózatkezelés az Azure-bA replikációs kapcsolatban
 
@@ -163,4 +163,4 @@ Az Azure alapértelmezett rendszer útvonalat a 0.0.0.0/0 címelőtag a felülb�
 ## <a name="next-steps"></a>További lépések
 - A számítási feladatai védelméről [Azure-beli virtuális gépek replikálása](site-recovery-azure-to-azure.md).
 - Tudjon meg többet [IP-cím megőrzése](site-recovery-retain-ip-azure-vm-failover.md) Azure virtuális gép feladatátvételi.
-- További információ a vész-helyreállítási [Azure-beli virtuális gépek az expressroute-tal ](azure-vm-disaster-recovery-with-expressroute.md).
+- További információ a vész-helyreállítási [Azure-beli virtuális gépek az expressroute-tal](azure-vm-disaster-recovery-with-expressroute.md).

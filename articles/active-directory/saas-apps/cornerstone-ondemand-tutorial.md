@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1c378cb4b6538805e26db60062d145ee8e0af45
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 89e7301d0ecff3ae2c3156ba827ef16fbe40b89a
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56183887"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877180"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cornerstone-ondemand"></a>Oktatóanyag: OnDemand alapja az Azure Active Directory-integráció
 
@@ -201,9 +201,9 @@ Ha a hozzáférési panelen a alapkövei OnDemand csempére kattint, meg kell le
 
 ## <a name="additional-resources"></a>További források
 
-- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

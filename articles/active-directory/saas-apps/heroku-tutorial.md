@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf5ff64575373fd0c022a2ad05805e418ad1622c
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: d0378aa9fbda0f2d0385178f8dbe7212e86b3072
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456571"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56883130"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-heroku"></a>Oktatóanyag: Az Azure Active Directory-integráció, a Heroku
 
@@ -213,9 +213,9 @@ Ha a hozzáférési panelen a Heroku csempére kattint, akkor kell automatikusan
 
 ## <a name="additional-resources"></a>További források
 
-- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

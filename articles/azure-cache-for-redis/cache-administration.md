@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: d36f2851f9c4f30725c8f8057d61970b6560009e
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 81ef669b62c822e10d8bf5c45e58dd769c5dbeb9
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313211"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888389"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>A Redis Azure Cache felügyelete
 Ez a témakör ismerteti, hogyan lehet felügyeleti feladatok végrehajtásához [újraindítása](#reboot) és [frissítések ütemezése](#schedule-updates) az Azure Cache Redis-példány számára.
@@ -72,7 +72,7 @@ Igen, ha újraindítja a gyorsítótár minden olyan ügyfélkapcsolatot törlő
 > 
 
 ### <a name="will-i-lose-data-from-my-cache-if-i-do-a-reboot"></a>Elveszítek adatokat a gyorsítótárból újraindítás ehhez?
-Ha mindkét újraindítja a **fő** és **alárendelt** csomópontok, minden adatot a gyorsítótárban (vagy használatakor a prémium szintű gyorsítótár fürtözés engedélyezve van a szegmensben lévő) elvész. Ha konfigurálta a [adatmegőrzés](cache-how-to-premium-persistence.md), a legutóbbi biztonsági mentés helyre fog állni a gyorsítótár ismét online elérhető, de a gyorsítótár, amely után a biztonsági másolat készült történt írási elvesznek.
+Ha mindkét újraindítja a **fő** és **alárendelt** csomópontok, előfordulhat, hogy minden adatot a gyorsítótárban (vagy használatakor a prémium szintű gyorsítótár fürtözés engedélyezve van a szegmensben lévő) elvesznek, de ez nem garantált, vagy. Ha konfigurálta a [adatmegőrzés](cache-how-to-premium-persistence.md), a legutóbbi biztonsági mentés helyre fog állni a gyorsítótár ismét online elérhető, de a gyorsítótár, amely után a biztonsági másolat készült történt írási elvesznek.
 
 Ha csak az egyik csomópont valamelyik indítsa újra, általában adatvesztés nem történik, de továbbra is lehet. A például, ha a fő csomópont újraindul, és a egy gyorsítótár-írás folyamatban van, a gyorsítótár-írás származó adatok elvesznek. Az adatvesztést egy másik eset lenne, ha egy csomópont újraindítása, és a többi csomópont történik, egyszerre egy hiba miatt leáll. Ennek lehetséges okai az adatvesztést kapcsolatos további információkért lásd: [Mi történt a redis adataimat?](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md)
 

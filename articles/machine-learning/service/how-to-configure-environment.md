@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2eb47bede14b139d011d8a74b5196a94a93a62c7
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: e055ddc49120d77047fa349b7e58c612eb724b41
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817099"
+ms.locfileid: "56881549"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Az Azure Machine Learning a fejlesztési környezet konfigurálása
 
@@ -301,7 +301,9 @@ Ha a fürt már fut, [hozzon létre egy könyvtárat](https://docs.databricks.co
    |A Databricks| Töltse fel a Python tojás vagy PyPI | azureml-sdk[databricks]|
    |A Databricks - a-<br> automatizált gépi Tanulási képességek| Töltse fel a Python tojás vagy PyPI | azureml-sdk[automl_databricks]|
 
-   * Nincs más SDK-t kiegészítő funkciók is telepíthető. Válassza ki az előző beállítások [databricks] vagy [automl_databricks] csak az egyik.
+   > [!Warning]
+   > Nincs más SDK-t kiegészítő funkciók is telepíthető. Válassza ki az előző beállítások [databricks] vagy [automl_databricks] csak az egyik.
+
    * Ne válassza **automatikusan csatolja az összes fürt**.
    * Válassza ki **Attach** a fürt neve mellett.
 
@@ -320,7 +322,7 @@ Ha a telepítés sikeres volt, az importált függvénytár például a követke
    
 A Databricks SDK **_nélkül_** gépi tanulási automatikus ![Machine Learning-hez készült Azure SDK Databricks](./media/how-to-configure-environment/amlsdk-withoutautoml.jpg)
 
-Databricks készült SDK **WITH** gépi tanulási automatikus ![SDK-val automatikus telepítve a Databricks gépi tanulás ](./media/how-to-configure-environment/automlonadb.jpg)
+Databricks készült SDK **WITH** gépi tanulási automatikus ![SDK-val automatikus telepítve a Databricks gépi tanulás](./media/how-to-configure-environment/automlonadb.jpg)
 
 ### <a name="start-exploring"></a>Böngészés indítása
 

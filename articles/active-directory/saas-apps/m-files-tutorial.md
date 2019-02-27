@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 5664711287a54f64e2bdece7191821ba00b2da18
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 13c3b74c50c8417d8d410f8a1975a8c50eb9fdd9
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456401"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875531"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-m-files"></a>Oktatóanyag: Az M-Files Azure Active Directory-integráció
 
@@ -219,9 +219,9 @@ Ha a hozzáférési panelen az M-Files csempére kattint, meg kell automatikusan
 
 ## <a name="additional-resources"></a>További források
 
-- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2fd6321dcdcb8102b38217eb377ae3c200d5d737
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: a549a46912b0d60f878a18cae1e70a763afc0243
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818561"
+ms.locfileid: "56874698"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Állítsa be a modell betanítása és számítási célnak
 
@@ -46,6 +46,7 @@ Az Azure Machine Learning szolgáltatás különböző támogatással rendelkezi
 |[Azure Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | &nbsp; | ✓ | ✓ |
 |[Az Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 |[Az Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
+|[Azure Batch](#azbatch)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 
 **Célok több betanítási feladatokhoz felhasználható számítási**. Például ha csatlakoztat egy távoli virtuális Gépen a munkaterülethez, felhasználhatja azt több feladat esetében.
 
@@ -240,6 +241,42 @@ Az Azure HDInsight egy népszerű big-data elemzési platform. A platform az Apa
 
 Most, hogy a számítási csatolva, és konfigurálni a Futtatás, a következő lépés, hogy [küldje el a betanítási Futtatás](#submit).
 
+
+### <a id="azbatch"></a>Azure Batch 
+
+Az Azure Batch segítségével hatékonyan futtathat nagy méretű párhuzamos és nagy teljesítményű feldolgozási (HPC) alkalmazásokat a felhőben. Az Azure Machine Learning folyamat küldhetők be feladatok a gépek Azure Batch-készlet AzureBatchStep is használható.
+
+Csatlakoztassa az Azure Batch számítási célként, az Azure Machine Learning SDK, és adja meg a következő információkat:
+
+-   **Az Azure Batch számítási neve**: Egy rövid nevet a számítási erőforrások a munkaterületen belül használható
+-   **Az Azure Batch-fiók nevének**: Az Azure Batch-fiók neve
+-   **Erőforráscsoport**: Az Azure Batch-fiókot tartalmazó erőforráscsoportot.
+
+A következő kód bemutatja, hogyan csatlakoztathat Azure Batch számítási célként mutat be:
+
+```python
+from azureml.core.compute import ComputeTarget, BatchCompute
+from azureml.exceptions import ComputeTargetException
+
+batch_compute_name = 'mybatchcompute' # Name to associate with new compute in workspace
+
+# Batch account details needed to attach as compute to workspace
+batch_account_name = "<batch_account_name>" # Name of the Batch account
+batch_resource_group = "<batch_resource_group>" # Name of the resource group which contains this account
+
+try:
+    # check if the compute is already attached
+    batch_compute = BatchCompute(ws, batch_compute_name)
+except ComputeTargetException:
+    print('Attaching Batch compute...')
+    provisioning_config = BatchCompute.attach_configuration(resource_group=batch_resource_group, account_name=batch_account_name)
+    batch_compute = ComputeTarget.attach(ws, batch_compute_name, provisioning_config)
+    batch_compute.wait_for_completion()
+    print("Provisioning state:{}".format(batch_compute.provisioning_state))
+    print("Provisioning errors:{}".format(batch_compute.provisioning_errors))
+
+print("Using Batch compute:{}".format(batch_compute.cluster_resource_id))
+```
 
 ## <a name="set-up-compute-in-the-azure-portal"></a>Az Azure Portalon számítási beállítása
 
