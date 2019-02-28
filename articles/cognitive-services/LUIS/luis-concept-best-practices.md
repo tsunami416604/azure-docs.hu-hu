@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 02/26/2019
 ms.author: diberry
-ms.openlocfilehash: 4a06b30c209828e7ffd9f59d1b4ece06cfe6e2dd
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: d7547ecf387e070efe788ba5f8582076388f422a
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428907"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984203"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Ajánlott eljárások a Cognitive Services language understanding alkalmazás létrehozásához
 Az alkalmazások használatával hozhat létre a LUIS-alkalmazás. 
@@ -78,7 +78,9 @@ További információk:
 
 ## <a name="do-add-phrase-lists-and-patterns-in-later-iterations"></a>Újabb iterációban kifejezés listák és a minták hozzáadása
 
-Ajánlott eljárás, hogy ezek az eljárások nem alkalmaznia az alkalmazás tesztelve lett. Ismerje meg az alkalmazás viselkedésének kifejezés listák és a minták hozzáadása előtt. Ha már megismerte, hogyan viselkedik az alkalmazás ezek hiányában, adja hozzá a ezeket a funkciókat alkalmazni kell az alkalmazást. Nem kell hozzáadnia ezeket a funkciókat minden egyes [iteráció](luis-concept-app-iteration.md) vagy módosítsa a funkciók egyes verzióival. 
+Ajánlott eljárás, hogy ezek az eljárások nem alkalmaznia az alkalmazás tesztelve lett. Ismerje meg az alkalmazás viselkedésének hozzáadása kifejezés listák és a minták, mivel ezek a funkciók részletesebben, mint például utterances súlyozott vannak, és magabiztosan fog döntés előtt. 
+
+Ha már megismerte, hogyan viselkedik az alkalmazás ezek hiányában, adja hozzá a ezeket a funkciókat alkalmazni kell az alkalmazást. Nem kell hozzáadnia ezeket a funkciókat minden egyes [iteráció](luis-concept-app-iteration.md) vagy módosítsa a funkciók egyes verzióival. 
 
 Nem árt hozzáadják őket a modell felépítésének elején, de egyszerűbb meg, hogyan alapdokumentációjában változik-e eredmények után a szolgáltatás a modell tesztelése kimondott szöveg. 
 

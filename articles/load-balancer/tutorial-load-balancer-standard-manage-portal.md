@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/20/2018
+ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 7caddde5c7695d0c572dc139b52cd0743e39d778
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: fa40f4f666444209f70d3f49b7947450af01ec36
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671999"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983286"
 ---
 # <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>Oktatóanyag: Terhelésének elosztása az internetes forgalmat a virtuális gépekhez az Azure portal használatával
 
@@ -45,21 +45,22 @@ Jelentkezzen be az Azure Portalra a [http://portal.azure.com](http://portal.azur
 Ebben a szakaszban egy nyilvános Load Balancert fog létrehozni, amely segít a virtuális gépek terhelésének elosztásában. A Standard Load Balancer csak a standard nyilvános IP-címeket támogatja. Amikor létrehoz egy Standard Load Balancert, létre kell hoznia egy új standard nyilvános IP-címet is, amely a Standard Load Balancer előtereként van konfigurálva (alapértelmezés szerint *LoadBalancerFrontend* néven). 
 
 1. A képernyő bal felső részén kattintson az **Erőforrás létrehozása** > **Hálózatkezelés** > **Terheléselosztó** elemre.
-2. A **Terheléselosztó létrehozása** lapon adja meg vagy válassza ki az alábbi adatokat, a többi beállítás esetében fogadja el az alapértelmezett értéket, majd válassza a **Létrehozás** elemet:
-    
+2. Az a **alapjai** lapján a **terheléselosztó létrehozása** lap, adja meg vagy válassza ki a következő adatokat, fogadja el az alapértelmezett értékeket a többi beállításnál, és válassza **felülvizsgálat +létrehozása**:
+
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
+    | Előfizetés               | Válassza ki előfizetését.    |    
+    | Erőforráscsoport         | Válassza ki **új létrehozása** , és írja be *MyResourceGroupSLB* a szövegmezőben.|
     | Name (Név)                   | *myLoadBalancer*                                   |
-    | Typo          | Nyilvános                                        |
-    | SKU           | Standard                          |
-    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget, és adja meg a *myPublicIP* nevet a szövegmezőben. A nyilvános IP-címnél a rendszer alapértelmezés szerint a standard termékváltozatot választja ki. A **Rendelkezésre állási zóna** kiválasztásánál válassza a **Zónaredundáns** lehetőséget. |
-    | Előfizetés               | Válassza ki előfizetését.    |
-    |Erőforráscsoport | Válassza az **Új létrehozása** lehetőséget, majd írja be a *myResourceGroupSLB* nevet.    |
-    | Hely           | Válassza a **Nyugat-Európa** régiót.                          |
-    
+    | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
+    | Typo          | Válassza ki **nyilvános**.                                        |
+    | SKU           | Válassza ki **Standard**.                          |
+    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. |
+    | Nyilvános IP-cím neve              | Típus *myPublicIP* a szövegmezőben.   |
+    |Rendelkezésre állási zóna| Válassza ki **Zónaredundáns**.    |
+3. Az a **felülvizsgálat + létrehozása** lapra, majd **létrehozás**.   
 
-![Load Balancer létrehozása](./media/load-balancer-standard-public-portal/create-load-balancer.png)
-   
+  
 ## <a name="create-backend-servers"></a>Háttérkiszolgálók létrehozása
 
 Ebben a szakaszban létrehoz egy virtuális hálózatot, majd három virtuális gépet a terheléselosztó háttérkészlete számára, majd telepíti az IIS-t a virtuális gépeken a terheléselosztó tesztelése érdekében.

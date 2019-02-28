@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: c59d79a7c6ac0590861c99daa01438b184cd71ff
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 8c86ffaeb717914d9165ecb5b65f300ae7d903b2
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852796"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959306"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Tároló-üzenetsorok és Service Bus-üzenetsorok összehasonlítása
 Ez a cikk elemzi a közötti különbségeket és hasonlóságokat a Microsoft Azure jelenleg elérhető két típusa: Tároló-üzenetsorok és Service Bus-üzenetsorok. Ezekre az információkra alapozva összehasonlíthatók az egyes technológiák, és megfontoltabb döntéseket lehet hozni arról, hogy melyik megoldás felel meg leginkább az igényeknek.
@@ -83,7 +83,8 @@ Ez a szakasz az alapvető üzenetsor-kezelési funkciói biztosítják a tárol�
 * A tároló-üzenetsorok üzenetek általában első-az-érkezési idősorrendben, de néha lehetnek sorrendben; például amikor egy üzenet láthatósági időkorlát időtartama lejár (például eredményeként egy ügyfélalkalmazás összeomlik a feldolgozása közben). Amikor a láthatósági időkorlát lejár, az üzenet válik újra egy másik feldolgozó eltávolítása a sorból, hogy az üzenetsor látható. Ezen a ponton az újonnan látható üzenetet elhelyezhetők a várólistán (kell el távolítva a sorból újra), egy üzenet, amely eredetileg a várólistán lévő után azt követően.
 * A garantált FIFO minta a Service Bus-üzenetsorok üzenet-munkamenetek használatát igényli. Abban az esetben, ha az alkalmazás összeomlik, egy üzenet érkezik feldolgozása közben a **Belepillantás & zárolása** mód, a következő alkalommal, amikor a várólista fogadó fogadja el az üzenetkezelési munkamenet, el is indítja a hibás üzenettel után az idő-az-élettartam (TTL) időszakának lejártáig.
 * Tárolási üzenetsorok támogatására készültek standard üzenetsor-kezelési forgatókönyvek, például a méretezhetőséget és a hibák, hibatűrésének növelése megszakító alkalmazás-összetevők betöltése terheléskiegyenlítést, és a feldolgozási munkafolyamatok kialakítását.
-* Service Bus-üzenetsorok támogatása a *: legalább egyszeri* kézbesítési garanciával. Emellett a *, és a legtöbb – egyszer* szemantikai munkamenet-állapot tárolásához az alkalmazásállapot használatával és a tranzakciók szolgáltatásfrissítést üzeneteket fogadni, és frissítse a munkamenet-állapot használatával támogatható.
+* Service Bus-üzenetsorok támogatása a *: legalább egyszeri* kézbesítési garanciával. 
+* Üzenetkezelés a Service Bus-munkamenetekkel kontextusában kapcsolatban inkonzisztenciát elkerülhető az a munkamenet-állapot kezelésére az a munkamenet üzenet feladatütemezési képest a folyamatot az alkalmazás-állapotának tárolására, és körül tranzakciók használatával stabilizálódási Beérkezett üzenetek és a munkamenet-állapot frissítése. Az ilyen típusú konzisztencia szolgáltatás időnként feliratú *pontosan-egyszeri feldolgozását* más gyártója által biztosított termékek, de a tranzakció hibák nyilvánvalóan okoz redeliveried üzeneteket, és ezért az előfizetési időszak pontosan nem megfelelő.
 * Tárolási üzenetsorok egységes egy egységes és következetes programozási modell – Blobok, táblák és üzenetsorok fejlesztők számára, és műveleti csapatoknak.
 * Service Bus-üzenetsorok támogatást nyújt a helyi tranzakció környezetében egyetlen üzenetsorhoz.
 * A **fogadása és törlése** Service Bus által támogatott mód lehetővé teszi a csökkentse az üzenetkezelési műveletek száma (és a kapcsolódó költségek) alacsonyabb kézbesítési garanciával rendelkező engedélyezések.
@@ -173,7 +174,7 @@ Ez a szakasz bemutatja a tároló-üzenetsorok és Service Bus-üzenetsorok ált
 
 | Összehasonlítási feltétel | Tárolási üzenetsorok | Service Bus-üzenetsorok |
 | --- | --- | --- |
-| Hitelesítés |**Szimmetrikus kulcs** |**Szimmetrikus kulcs** |
+| Authentication |**Szimmetrikus kulcs** |**Szimmetrikus kulcs** |
 | Biztonsági modell |Delegált hozzáférés SAS-jogkivonatok használatával. |SAS |
 | Identitás-összevonási szolgáltató |**Nem** |**Igen** |
 

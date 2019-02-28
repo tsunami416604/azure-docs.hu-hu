@@ -13,12 +13,12 @@ ms.author: ninarn
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 11/14/2018
-ms.openlocfilehash: 8c19022f168577cf65180357f280afd5a0e03073
-ms.sourcegitcommit: 0b7fc82f23f0aa105afb1c5fadb74aecf9a7015b
+ms.openlocfilehash: 1a13f5f038afed914fd2b2a178974a0ba2e7255f
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51634158"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984220"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>Az SQL-adatbázis kapcsolati hibák és átmeneti hibák
 
@@ -91,7 +91,7 @@ Tesztelje az újrapróbálkozási logikája, szimulálása, vagy a program futá
 Tesztelheti az újrapróbálkozási logika egyik módja válassza le az ügyfélszámítógépen a hálózatról, a program futása közben. A hiba a következő:
 
 - **SqlException.Number** = 11001
-- Üzenet: "nincs ilyen gazdagép ismert"
+- Üzenet: "A ilyen állomás nem ismert."
 
 Az első újrapróbálkozási kísérlet részeként a program kijavíthatja a helyesírási, és csatlakozni.
 
@@ -109,7 +109,7 @@ Ahhoz, hogy ez a teszt gyakorlati, le kell választani a hálózatról a számí
 A program szándékosan is hibásan a felhasználó nevét, az első kapcsolódási kísérlet előtt. A hiba a következő:
 
 - **SqlException.Number** = 18456
-- Üzenet: "sikertelen bejelentkezés"WRONG_MyUserName"felhasználó számára."
+- Üzenet: "Bejelentkezés sikertelen"WRONG_MyUserName"felhasználó számára."
 
 Az első újrapróbálkozási kísérlet részeként a program kijavíthatja a helyesírási, és csatlakozni.
 
@@ -125,7 +125,7 @@ Ahhoz, hogy ez a teszt gyakorlati, a program felismeri, ami miatt a program fut�
 
 ## <a name="net-sqlconnection-parameters-for-connection-retry"></a>Újrapróbálkozási .NET SqlConnection paraméterei
 
-Ha az ügyfélprogram SQL Database használatával csatlakozik a .NET-keretrendszer osztály **System.Data.SqlClient.SqlConnection**, használja a .NET 4.6.1 vagy újabb (vagy a .NET Core), hogy a kapcsolat újrapróbálkozási funkciót is használhatja. A szolgáltatás további információkért lásd: [a weblap](https://go.microsoft.com/fwlink/?linkid=393996).
+Ha az ügyfélprogram SQL Database használatával csatlakozik a .NET-keretrendszer osztály **System.Data.SqlClient.SqlConnection**, használja a .NET 4.6.1 vagy újabb (vagy a .NET Core), hogy a kapcsolat újrapróbálkozási funkciót is használhatja. A szolgáltatás további információkért lásd: [a weblap](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection).
 
 <!--
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.
@@ -137,9 +137,9 @@ Ha az ügyfélprogram SQL Database használatával csatlakozik a .NET-keretrends
 - **ConnectRetryInterval**:&nbsp;&nbsp;az alapértelmezett érték 1 másodperc. Értéktartomány: 1 és 60.
 - **Kapcsolat időtúllépése**:&nbsp;&nbsp;az alapértelmezett érték 15 másodperc. Értéktartomány: 0 és 2147483647 között.
 
-A kiválasztott értékek, győződjön meg a következő egyenlőség igaz: kapcsolat időtúllépése = ConnectRetryCount * ConnectionRetryInterval
+Pontosabban a kiválasztott értékek kell, a következő egyenlőség igaz: Connection Timeout = ConnectRetryCount * ConnectionRetryInterval
 
-Például, ha a szám értéke 3, és az intervallum értéke 10 másodperc, időkorlát van meghatározva csak a 29 másodperc nem ad a rendszer a harmadik és egyben utolsó újrapróbálkozási való csatlakozáshoz elegendő időt: 29 < 3 * 10.
+Például ha a szám értéke 3, és az intervallum értéke 10 másodperc, időkorlát van meghatározva csak a 29 másodperc nem biztosítson a rendszernek elegendő időt a harmadik és egyben utolsó újrapróbálkozási való csatlakozáshoz: 29 < 3 * 10.
 
 <a id="connection-versus-command" name="connection-versus-command"></a>
 
@@ -162,7 +162,7 @@ Tegyük fel, hogy az alkalmazás rendelkezik robusztus egyéni újrapróbálkoz�
 
 <a id="c-connection-string" name="c-connection-string"></a>
 
-### <a name="connection-connection-string"></a>Kapcsolat: Kapcsolati karakterlánc
+### <a name="connection-connection-string"></a>Kapcsolat: Kapcsolati sztring
 
 A kapcsolati karakterláncot, amely az SQL-adatbázishoz való csatlakozáshoz szükséges némileg eltér az SQL-kiszolgálóhoz való csatlakozáshoz használt karakterlánc. Az adatbázis a is másolja a kapcsolati karakterláncot a [az Azure portal](https://portal.azure.com/).
 
@@ -181,13 +181,13 @@ Ha az IP-cím konfigurálása, a program egy praktikus hibaüzenetet küld, hogy
 További információkért lásd: [az SQL Database tűzfalbeállításainak konfigurálása](sql-database-configure-firewall-settings.md).
 <a id="c-connection-ports" name="c-connection-ports"></a>
 
-### <a name="connection-ports"></a>Kapcsolat: port
+### <a name="connection-ports"></a>Kapcsolat: Portok
 
 Általában kell győződjön meg arról, hogy csak a 1433-as portot a számítógépen, amelyen az ügyfélprogram kimenő kommunikációra nyitva-e.
 
 Például ha az ügyfélprogram egy Windows-számítógépen lévő üzemeltetett, segítségével Windows tűzfal a gazdagépen nyissa meg az 1433-as porton.
 
-1. Nyissa meg a Vezérlőpultot.
+1. Open Control Panel.
 2. Válassza ki **összes vezérlőpultelemek** > **Windows tűzfal** > **speciális beállítások** > **kimenő szabályok**   >  **Műveletek** > **új szabály**.
 
 Ha az ügyfélprogram-beli virtuális gépen (VM) üzemel, olvassa el [az ADO.NET 4.5 és az SQL Database 1433-Ason túli](sql-database-develop-direct-route-ports-adonet-v12.md).
@@ -196,7 +196,7 @@ Háttér-portok és IP-címek konfigurációjával kapcsolatos információkat, 
 
 <a id="d-connection-ado-net-4-5" name="d-connection-ado-net-4-5"></a>
 
-### <a name="connection-adonet-462-or-later"></a>Kapcsolat: ADO.NET 4.6.2-es vagy újabb
+### <a name="connection-adonet-462-or-later"></a>Kapcsolat: Az ADO.NET 4.6.2-es vagy újabb
 
 Ha a program használja az ADO.NET-osztályok hasonló **System.Data.SqlClient.SqlConnection** szeretne csatlakozni az SQL Database, azt javasoljuk, hogy a .NET-keretrendszer 4.6.2-es verzióját használja, vagy később.
 
@@ -267,11 +267,11 @@ Egy időszakos probléma néha a legjobb meghatározása egy általános mintáj
 
 Az ügyfél-naplózás az összes hibát tapasztal egy diagnosztikai végrehajtásában. Előfordulhat, hogy tudnia kell korrelálni a naplóbejegyzéseket, amely az SQL Database maga belső hiba adatokkal.
 
-Enterprise Library 6 (EntLib60) felügyelt .NET-osztályok, amelyek segítik a naplózást kínál. További információkért lásd: [5 – megírásához alá tartozó, egy log off: használja a naplózási Alkalmazásblokkal](https://msdn.microsoft.com/library/dn440731.aspx).
+Enterprise Library 6 (EntLib60) felügyelt .NET-osztályok, amelyek segítik a naplózást kínál. További információkért lásd: [5 – megírásához alá tartozó, egy napló ki: Használja a naplózási Alkalmazásblokk](https://msdn.microsoft.com/library/dn440731.aspx).
 
 <a id="h-diagnostics-examine-logs-errors" name="h-diagnostics-examine-logs-errors"></a>
 
-### <a name="diagnostics-examine-system-logs-for-errors"></a>Diagnosztika: Rendszer naplóit is hibák vizsgálata
+### <a name="diagnostics-examine-system-logs-for-errors"></a>Diagnosztika: Vizsgálja meg a hibákat a rendszernaplók
 
 Az alábbiakban néhány Transact-SQL SELECT utasítást, amely lekérdezési hibanaplókat és egyéb információkat.
 
@@ -282,7 +282,7 @@ Az alábbiakban néhány Transact-SQL SELECT utasítást, amely lekérdezési hi
 
 <a id="d-search-for-problem-events-in-the-sql-database-log" name="d-search-for-problem-events-in-the-sql-database-log"></a>
 
-### <a name="diagnostics-search-for-problem-events-in-the-sql-database-log"></a>Diagnosztika: Keresse meg a probléma az SQL Database naplózási események
+### <a name="diagnostics-search-for-problem-events-in-the-sql-database-log"></a>Diagnosztika: A probléma az SQL Database naplózási események keresése
 
 Az SQL Database naplózási események probléma kapcsolatos bejegyzéseket is kereshet. Próbálja ki a következő Transact-SQL SELECT utasítást a *fő* adatbázis:
 
@@ -327,7 +327,7 @@ database_xml_deadlock_report  2015-10-16 20:28:01.0090000  NULL   NULL   NULL   
 
 Enterprise Library 6 (EntLib60) egy olyan keretrendszer, a .NET-osztályok, amely segítséget nyújt a cloud services, a robusztus ügyfelei megvalósítása amelyek egyike az SQL Database szolgáltatás. Keresse meg a témakörök dedikált minden területéhez, amelyben EntLib60 végrehajtásában, lásd: [Enterprise Library 6 – 2013. április](https://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx).
 
-Újrapróbálkozási logika átmeneti hibák kezelése a EntLib60 végrehajtásában, amelyben egy területe. További információkért lásd: [4 – Perseverance, az összes triumphs titkos kulcs: használja az átmeneti-kezelési Alkalmazásblokk](https://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx).
+Újrapróbálkozási logika átmeneti hibák kezelése a EntLib60 végrehajtásában, amelyben egy területe. További információkért lásd: [4 – Perseverance, az összes triumphs titkos kulcs: Használja az átmeneti hibakezelési Alkalmazásblokk](https://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx).
 
 > [!NOTE]
 > A EntLib60 forráskódja nyilvános letölthető a [letöltőközpontból](https://go.microsoft.com/fwlink/p/?LinkID=290898). A Microsoft tervezzük további szolgáltatás- vagy karbantartási frissítéseket a EntLib rendelkezik.
@@ -354,9 +354,9 @@ A névtér **Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.TestSu
 
 Az alábbiakban néhány EntLib60 kapcsolatos információkra mutató hivatkozásokat:
 
-- Ingyenes könyv letöltése: [fejlesztői útmutató a Microsoft Enterprise Library, 2. kiadás](https://www.microsoft.com/download/details.aspx?id=41145).
+- Ingyenes könyv letöltése: [Fejlesztői útmutató a Microsoft Enterprise Library, 2. kiadás](https://www.microsoft.com/download/details.aspx?id=41145).
 - Ajánlott eljárások: [Újrapróbálkozásokra vonatkozó általános útmutató](../best-practices-retry-general.md) tartalmaz egy újrapróbálkozási logika kiváló tárgyalja.
-- NuGet-Letöltés: [Enterprise Library - átmeneti hibák kezelése alkalmazás letiltása 6.0](http://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/).
+- NuGet-Letöltés: [Enterprise Library - átmeneti hibák kezelési Alkalmazásblokk 6.0](http://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/).
 
 <a id="entlib60-the-logging-block" name="entlib60-the-logging-block"></a>
 
@@ -368,7 +368,7 @@ Az alábbiakban néhány EntLib60 kapcsolatos információkra mutató hivatkozá
   - Környezeti információk, amely hasznos a hibakereséshez és a nyomkövetés, valamint a naplózás és az általános naplózási követelmények összegyűjtése.
 - A naplózás letiltása a napló célhelyen lévő a naplózási funkció kivonatolja, úgy, hogy az alkalmazás kódja egységes, attól függetlenül, helye és a cél naplózási tároló típusa.
 
-További információkért lásd: [5 – megírásához alá tartozó, egy log off: használja a naplózási Alkalmazásblokkal](https://msdn.microsoft.com/library/dn440731%28v=pandp.60%29.aspx).
+További információkért lásd: [5 – megírásához alá tartozó, egy napló ki: Használja a naplózási Alkalmazásblokk](https://msdn.microsoft.com/library/dn440731%28v=pandp.60%29.aspx).
 
 <a id="entlib60-istransient-method-source-code" name="entlib60-istransient-method-source-code"></a>
 

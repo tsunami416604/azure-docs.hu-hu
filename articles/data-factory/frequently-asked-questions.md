@@ -1,5 +1,5 @@
 ---
-title: 'Az Azure Data Factory: Gyakori kérdések |} A Microsoft Docs'
+title: 'Azure Data Factory: Gyakori kérdések |} A Microsoft Docs'
 description: Válaszok az Azure Data Factory – gyakori kérdések.
 services: data-factory
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: shlo
-ms.openlocfilehash: be0cdeed81c66e1a848b44d2429c1c67bce9b4f3
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 112ff38ad4e35ac284501c5dd3881c4f340b5f9b
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024093"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984636"
 ---
 # <a name="azure-data-factory-faq"></a>Az Azure Data Factory – gyakori kérdések
 Ez a cikk ismerteti az Azure Data Factory kapcsolatos gyakori kérdésekre adott válaszokat.  
@@ -175,8 +175,35 @@ Igen. Egy tevékenység kimenete a soron következő tevékenysége felhasználh
 ### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>Szabályosan teendőim egy tevékenység kimenete null értéket? 
 Használhatja a `@coalesce` hozhatnak létre a kifejezésekben szabályosan kezelni a null értékeket. 
 
+## <a name="mapping-data-flows"></a>Leképezés adatfolyamok
+
+### <a name="which-adf-version-do-i-use-to-create-data-flows"></a>Az ADF verziószámának használható adatfolyamok létrehozására?
+Az ADF V2 verzió használatával adatok folyamatok létrehozása
+  
+### <a name="i-was-a-previous-private-preview-customer-using-data-flows-and-i-used-the-adf-v2-wdata-flows-preview-version"></a>Adatfolyamok használatával előző privát előzetes verziójú ügyfél voltam, és az ADF v2 verzió w/Data flow előzetes verzió használata
+Ez a verzió már elavult. Adatfolyam-gyűjteményre ADF v2 verzió használata
+  
+### <a name="what-has-changed-from-private-preview-to-limited-public-preview-in-data-flows"></a>Mi változott a privát előzetes verzió, az adatfolyamok korlátozott nyilvános előzetes verzió?
+Ahhoz, hogy a saját Databricks-fürtök már nem lesz. Fürt létrehozása és könnycsepp lefelé ADF kezeli. BLOB-adatkészletek és ADLS-adatkészletek tagolt szöveg és a parquet eszközökben adatkészletek vannak osztva. Továbbra is használhatja az ADLS & Blob Store tárolja ezeket a fájlokat. A megfelelő társított szolgáltatást használja ezeket a storage-motorhoz.
+
+### <a name="can-i-migrate-my-private-preview-factories-to-adf-v2"></a>Áttelepíthetek saját privát előzetes verzió előállítók ADF v2 verzió?
+
+[Igen, az alábbi utasításokat](https://www.slideshare.net/kromerm/adf-mapping-data-flow-private-preview-migration)
+
+### <a name="i-need-help-troubleshooting-my-data-flow-logic-what-do-you-need"></a>Hibaelhárítás a saját data flow logikai segítségre van szükségem, mire van szüksége?
+
+Ha a Microsoft Súgó és hibaelhárítás az adatfolyamok biztosít, adja meg a "DSL kód csomag". Ehhez kövesse az alábbi lépéseket:
+
+* Az Flow-tervezőből kattintson a jobb felső sarokban lévő "Code". Ez megjeleníti az adatfolyamhoz szerkeszthető JSON-kód.
+* A kód nézetből "Csomag" kattintson a jobb felső sarokban. A terv kapcsoló JSON-ból a formázott DSL parancsfájl-csomaggal.
+* Másolja és illessze be ezt a szkriptet, vagy mentse a fájlt.
+
+### <a name="how-do-i-access-data-using-the-other-80-dataset-types-in-adf"></a>Hogyan férhetek hozzá a 80 adatkészlet típusok használata az ADF-ben az adatok?
+
+Az adatfolyam jelenleg lehetővé teszi, hogy Azure SQL Database, az Azure SQL DW, a tagolt szöveges fájlok Blob vagy ADLS és a Parquet-fájlokat a Blob vagy ADLS natív módon a forrás és fogadó. Adatok készíthetők elő az egyéb összekötőkhöz bármelyik a másolási tevékenység használatával, és majd hajtsa végre az adatok átalakításához, miután lesz ütemezve lett egy adatfolyam-tevékenység. Például a folyamat első blobba másolja, majd egy adatfolyam-tevékenység fog egy adatkészlet a forrás, hogy az adatok átalakításához.
+
 ## <a name="next-steps"></a>További lépések
 Részletes útmutatásért az adat-előállító létrehozása a következő oktatóanyagokban talál:
 
-- [Gyors útmutató: Adat-előállító létrehozása](quickstart-create-data-factory-dot-net.md)
+- [Rövid útmutató: Adat-előállító létrehozása](quickstart-create-data-factory-dot-net.md)
 - [Oktatóanyag: Adatok másolása a felhőben](tutorial-copy-data-dot-net.md)

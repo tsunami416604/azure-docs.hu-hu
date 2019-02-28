@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 19d34e76c73c5ec2472d3eacddc01d6aebb6b9fb
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 4f89fab47cf07538d1915d359fc29a21deb1e560
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889103"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56986078"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatással modellek üzembe helyezése
 
@@ -259,6 +259,44 @@ Az Azure Kubernetes Service az alábbi képességeket biztosítja:
 * Naplózás
 * A modelladatok gyűjtésének
 * A webes szolgáltatások gyors válaszidők
+* A TLS megszüntetése
+* Authentication
+
+#### <a name="autoscaling"></a>Automatikus skálázás
+
+Az automatikus skálázási beállítás vezérelhető `autoscale_target_utilization`, `autoscale_min_replicas`, és `autoscale_max_replicas` az AKS webszolgáltatás. A következő példa bemutatja, hogyan engedélyezheti az automatikus skálázást:
+
+```python
+aks_config = AksWebservice.deploy_configuration(autoscale_enabled=True, 
+                                                autoscale_target_utilization=30,
+                                                autoscale_min_replicas=1,
+                                                autoscale_max_replicas=4)
+```
+
+Felfelé és lefelé méretezését, döntések az aktuális tárolóban replikák kihasználását engedményt alapul. A replikákat, foglalt (az egy kérelem feldolgozása) száma osztva az összes aktuális replikák száma az aktuális kihasználtságát méri. Ha ez a szám meghaladja a cél-kihasználtság, akkor több replika jönnek létre. Ha alacsonyabb, majd replikák csökken. Alapértelmezés szerint a célkihasználtság a 70 %.
+
+Replikák hozzáadásával, döntések eager és gyors (körülbelül 1 másodperc). Távolítsa el a replikákat, döntések konzervatív (körülbelül 1 perc).
+
+Kiszámíthatja a szükséges replikákat az alábbi kód használatával:
+
+```python
+from math import ceil
+# target requests per second
+targetRps = 20
+# time to process the request (in seconds)
+reqTime = 10
+# Maximum requests per container
+maxReqPerContainer = 1
+# target_utilization. 70% in this example
+targetUtilization = .7
+
+concurrentRequests = targetRps * reqTime / targetUtilization
+
+# Number of container replicas
+replicas = ceil(concurrentRequests / maxReqPerContainer)
+```
+
+További információt a beállítás `autoscale_target_utilization`, `autoscale_max_replicas`, és `autoscale_min_replicas`, tekintse meg a [AksWebservice](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) modul-hivatkozás.
 
 #### <a name="create-a-new-cluster"></a>Új fürt létrehozása
 

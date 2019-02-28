@@ -1,5 +1,5 @@
 ---
-title: Ügynökállapot megoldás az Azure-ban |} A Microsoft Docs
+title: Ügynökállapot megoldás az Azure Monitor |} A Microsoft Docs
 description: Ebből a cikkből megtudhatja, hogyan használhatja ezt a megoldást a közvetlenül a Log Analytics vagy a System Center Operations Manager ügynökök állapotának figyeléséhez nyújt segítséget.
 services: operations-management-suite
 documentationcenter: ''
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: 203a37071637a7e0e44b65240be4c4cae974d95f
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: cca234340526b732067adac3c6725f8aa5acc47c
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53335956"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983378"
 ---
 #  <a name="agent-health-solution-in-azure"></a>Ügynökállapot megoldás az Azure-ban
-Az Azure-ban az Agent Health megoldás segít átlátni, az összes jelentő ügynökök közül közvetlenül a Log Analytics-munkaterületet, vagy a System Center Operations Manager felügyeleti csoport csatlakoztatva a Log Analytics, amelyek nem válaszol, a üzemeltetési elküldése adatok.  Azt is nyomon követheti, hogy hány ügynök lett üzembe helyezve, és milyen a földrajzi eloszlásuk, illetve egyéb lekérdezéseket hajthat végre, amelyekkel megismerheti az Azure-ban, egyéb felhőkörnyezetekben, illetve helyszínen üzembe helyezett ügynökök eloszlását.    
+Az Azure-ban az Agent Health megoldás segít átlátni, az összes jelentő ügynökök közül közvetlenül a Log Analytics-munkaterületet, vagy a System Center Operations Manager felügyeleti csoport csatlakozik Azure Monitor, amelyek nem válaszol, a üzemeltetési elküldése adatok.  Azt is nyomon követheti, hogy hány ügynök lett üzembe helyezve, és milyen a földrajzi eloszlásuk, illetve egyéb lekérdezéseket hajthat végre, amelyekkel megismerheti az Azure-ban, egyéb felhőkörnyezetekben, illetve helyszínen üzembe helyezett ügynökök eloszlását.    
 
 ## <a name="prerequisites"></a>Előfeltételek
-A megoldás telepítése előtt győződjön meg arról, hogy rendelkezik aktuálisan támogatott [Windows-ügynökök](../../log-analytics/log-analytics-windows-agent.md) a Log Analytics-munkaterületre jelentő vagy a jelentéskészítés egy [Operations Manager felügyeleti csoport](../../azure-monitor/platform/om-agents.md) integrálva van a munkaterület.    
+A megoldás telepítése előtt győződjön meg arról, hogy rendelkezik aktuálisan támogatott [Windows-ügynökök](../../log-analytics/log-analytics-windows-agent.md) a Log Analytics-munkaterületre jelentő vagy a jelentéskészítés egy [Operations Manager felügyeleti csoport](../../azure-monitor/platform/om-agents.md) integrálva van a munkaterület.
 
 ## <a name="solution-components"></a>Megoldás-összetevők
 Ez a megoldás a következő erőforrásokból áll, amelyek a munkaterületéhez lesznek hozzáadva, és ügynökökhöz vagy az Operations Managerhez kapcsolt felügyeleti csoporthoz lesznek közvetlenül hozzákapcsolva.
@@ -48,7 +48,7 @@ Az alábbi táblázat áttekintést nyújt az ebben a megoldásban támogatott �
 | Összekapcsolt forrás | Támogatott | Leírás |
 | --- | --- | --- |
 | Windows-ügynökök | Igen | A szívverés eseményeket a rendszer a közvetlen Windows-ügynököktől gyűjti össze.|
-| System Center Operations Manage felügyeleti csoport | Igen | A szívverés eseményeket a rendszer a felügyeleti csoportnak jelentő ügynököktől gyűjti össze 60 másodpercenként, majd továbbítja az eseményeket a Log Analytics felé. Ehhez nem szükséges, hogy közvetlen kapcsolat legyen az Operations Manager-ügynökök és a Log Analytics között. A szívverés események adatai a felügyeleti csoportból a Log Analytics-tárházba lesznek továbbítva.|
+| System Center Operations Manage felügyeleti csoport | Igen | Minden 60 másodpercben a felügyeleti csoportnak jelentő ügynököktől gyűjti össze és majd továbbítja az Azure monitornak a szívverés eseményeket. Az Azure monitornak közvetlen kapcsolat legyen az Operations Manager-ügynökök nem kötelező. A szívverés események adatai lesznek továbbítva a felügyeleti csoportból a Log Analytics-munkaterületet.|
 
 ## <a name="using-the-solution"></a>A megoldás használata
 A Log Analytics-munkaterületet a megoldás hozzáadásakor az **ügynökállapot** csempe felkerül az irányítópulton. Ezen a csempén látható az ügynökök teljes száma és az elmúlt 24 órában nem válaszoló ügynökök száma.<br><br> ![Ügynökállapot megoldás csempe az irányítópulton](./media/solution-agenthealth/agenthealth-solution-tile-homepage.png)
@@ -68,7 +68,7 @@ Kattintson az **Ügynökállapot** csempére az **Ügynökállapot** irányító
 
 ![Ügynökállapot megoldás irányítópultja – példa](./media/solution-agenthealth/agenthealth-solution-dashboard.png)  
 
-## <a name="log-analytics-records"></a>Log Analytics-rekordok
+## <a name="azure-monitor-log-records"></a>Az Azure Monitor-rekordok naplózása
 A megoldás egyféle típusú rekord a Log Analytics-munkaterületet hoz létre.  
 
 ### <a name="heartbeat-records"></a>Szívverés rekordok
@@ -76,7 +76,7 @@ Egy **Szívverés** típusú rekord készül.  Ezen rekordok tulajdonságait az 
 
 | Tulajdonság | Leírás |
 | --- | --- |
-| Típus | *Szívverés*|
+| Typo | *Szívverés*|
 | Kategória | Az érték lehet *Direct Agent* (Közvetlen ügynök), *SCOM Agent* (SCOM-ügynök) vagy *SCOM Management Server* (SCOM felügyeleti kiszolgáló).|
 | Computer | A számítógép neve.|
 | OSType | Windows vagy Linux operációs rendszer.|
@@ -92,7 +92,7 @@ Egy **Szívverés** típusú rekord készül.  Ezen rekordok tulajdonságait az 
 | RemoteIPLongitude | A számítógép földrajzi helyének hosszúsági koordinátája.|
 | RemoteIPLatitude | A számítógép fölrajzi helyének szélességi koordinátája.|
 
-Minden egyes Operations Manager felügyeleti kiszolgáló felé jelentő ügynök két szívverést küld, és az SCAgentChannel tulajdonság értéke egyaránt tartalmazza **közvetlen** és **SCManagementServer** attól függően, melyik napló Analytics-adatforrások és megoldások engedélyezte az előfizetésében. Ha a már ismert, a megoldások adatait vagy küldi közvetlenül egy Operations Manager felügyeleti kiszolgáló a Log Analyticsbe, vagy az ügynök összegyűjtött adatok mennyisége miatt az ügynök közvetlenül a Log Analytics felé küldött. Az **SCManagementServer** értékű szívverések esetében a ComputerIP értéke a felügyeleti kiszolgáló IP-címe, mivel ez tölti fel az adatokat.  Azoknál a szívveréseknél, ahol az SCAgentChannel beállítása **Direct** (Közvetlen), ez az ügynök nyilvános IP-címe.  
+Minden egyes Operations Manager felügyeleti kiszolgáló felé jelentő ügynök két szívverést küld, és az SCAgentChannel tulajdonság értéke egyaránt tartalmazza **közvetlen** és **SCManagementServer** attól függően, hogy milyen adatforrások és figyelési megoldások engedélyezte az előfizetésében. Ha már ismert, a megoldások adatait vagy küldi közvetlenül egy Operations Manager felügyeleti kiszolgáló az Azure Monitor, vagy az ügynök összegyűjtött adatok mennyisége miatt az ügynök közvetlenül az Azure Monitor érkeznek. Az **SCManagementServer** értékű szívverések esetében a ComputerIP értéke a felügyeleti kiszolgáló IP-címe, mivel ez tölti fel az adatokat.  Azoknál a szívveréseknél, ahol az SCAgentChannel beállítása **Direct** (Közvetlen), ez az ügynök nyilvános IP-címe.  
 
 ## <a name="sample-log-searches"></a>Naplókeresési minták
 A következő táblázat a megoldás által összegyűjtött rekordokkal kapcsolatos naplókeresési mintákat tartalmazza.
@@ -117,4 +117,4 @@ A következő táblázat a megoldás által összegyűjtött rekordokkal kapcsol
 
 ## <a name="next-steps"></a>További lépések
 
-* A Log Analytics-riasztások létrehozásával kapcsolatos információkért lásd: [Riasztások a Log Analyticsben](../../azure-monitor/platform/alerts-overview.md). 
+* Ismerje meg [az Azure monitorban riasztásokat](../platform/alerts-overview.md) Log Analytics-riasztások létrehozásával kapcsolatos részletekért. 

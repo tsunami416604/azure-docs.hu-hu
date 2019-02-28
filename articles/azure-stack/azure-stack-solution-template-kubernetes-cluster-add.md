@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2019
+ms.date: 02/27/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: d0051f081f005d61a1eed43d177a11781b2b3fa8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 7b73a0efbe20b43b3ba8e94fce3aabf12ea918e8
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997088"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56986056"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Adja hozzá a Kubernetes az Azure Stack piactéren
 
@@ -31,7 +31,7 @@ ms.locfileid: "55997088"
 
 Elérhetővé teheti Kubernetes Piactéri elem, a felhasználók számára. A felhasználók számára, majd telepítheti Kubernetes egyetlen, koordinált műveletben.
 
-A következő cikkben tekintse meg telepítése és jogosultságok kiosztása az erőforrások különálló Kubernetes-fürthöz tartozó Azure Resource Manager-sablon használatával. A Kubernetes-fürt Piactéri elem 0.3.0 1808 Azure Stack-verzió szükséges. A Kezdés előtt ellenőrizze az Azure Stack és az Azure-bérlő globális beállításokat. Az Azure Stack a szükséges információkat gyűjt. Adja hozzá a szükséges erőforrásokat a bérlőn, és az Azure Stack piactéren. A fürt egy Ubuntu-kiszolgálót, egyéni szkript és a Kubernetes elemeket kell lennie a Marketplace-en függ.
+A következő cikkben tekintse meg telepítése és jogosultságok kiosztása az erőforrások különálló Kubernetes-fürthöz tartozó Azure Resource Manager-sablon használatával. A Kezdés előtt ellenőrizze az Azure Stack és az Azure-bérlő globális beállításokat. Az Azure Stack a szükséges információkat gyűjt. Adja hozzá a szükséges erőforrásokat a bérlőn, és az Azure Stack piactéren. A fürt egy Ubuntu-kiszolgálót, egyéni parancsfájlt és a Kubernetes-fürt Piactéri elem kell lennie a Marketplace-en függ.
 
 ## <a name="create-a-plan-an-offer-and-a-subscription"></a>Csomag, ajánlat és előfizetés létrehozása
 

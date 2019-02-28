@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: jingwang
-ms.openlocfilehash: b2676d16abe3fb3cb1ec59b261c6cc059b4795de
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: cacc17464d15e8872508cff0e626b383ee9a2808
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674769"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985393"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure Blob storage-ból az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -37,7 +37,7 @@ A Blob storage-összekötővel, a következőket támogatja:
 - A blobok másolása, vagy elemzés vagy generálása blobok [támogatott fájlformátumok és tömörítési kodek](supported-file-formats-and-compression-codecs.md).
 
 >[!NOTE]
->Ha Ön engedélyezi _"Allow megbízható Microsoft-szolgáltatások a tárfiók"_ Azure integrációs modul használatával szeretne csatlakozni a Blob storage Azure Storage tűzfalbeállítások kapcsolót sikertelen lesz, és tiltott hibaüzenet ADF nincsenek megbízható Microsoft-szolgáltatás kezeli. Használjon helyi Integration Runtime,-n keresztül csatlakozik.
+>Ha engedélyezi a _"Allow megbízható Microsoft-szolgáltatások a tárfiók"_ Azure integrációs modul használatával szeretne csatlakozni a Blob storage Azure Storage tűzfalbeállítások kapcsolót a rendszer tiltott hibát észlelt, sikertelen lesz, mivel az ADF nincs egy megbízható Microsoft-szolgáltatás kezeli. Kérjük lépjen kapcsolatba a helyi integrációs modulon keresztül helyette.
 
 ## <a name="get-started"></a>Bevezetés
 

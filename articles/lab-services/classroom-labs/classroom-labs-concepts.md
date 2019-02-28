@@ -11,17 +11,27 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 02/26/2019
 ms.author: spelluru
-ms.openlocfilehash: 255cbff94e954dd05acfe77b97929c313b1dd3cf
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: f0f45e50fba4587e604add937ed45fc78228d44f
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56808492"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960241"
 ---
-# <a name="classroom-labs-concepts"></a>Tanterem Labs-fogalmak
+# <a name="classroom-labs-concepts"></a>Osztályterem-tesztkörnyezetek alapelvei
 Az alábbi lista tartalmazza az alapfogalmakat Lab Services és a definíciók:
+
+## <a name="quota"></a>Kvóta
+Kvóta az időkorlát (órában), amely egy oktató állíthatja be a labor virtuális Géphez használandó tanuló. 0 korlátlan, vagy egy bizonyos számú órák állítható. A kvóta 0 értékre van állítva, ha egy diák csak használhat a virtuális gép Ha ütemezés szerint fut, vagy egy oktató manuálisan kikapcsolja a virtuális gépen a diákoknak.
+ 
+##<a name="schedules"></a>Ütemezések
+Ütemezések idő tárolóhely (egyszeri vagy ismétlődő), amely egy oktató hozhat létre az osztály. A labor összes virtuális gép automatikusan elindulnak, az ütemezéshez elején és végén található az ütemezés le vannak állítva. Kvóta órák nem használ egy ütemezés futtatásakor.
+
+## <a name="template-virtual-machine"></a>A sablon virtuális gép
+Egy tesztkörnyezetben sablon virtuális gép alap virtuálisgép-lemezkép, amelyből a felhasználók összes virtuális gépek jönnek létre. Az oktatók és labor létrehozói állítsa be a sablon virtuális gépet, és konfigurálja azt a szoftvert, a képzés résztvevői labs ehhez adja meg azoknak a. Egy Virtuálisgép-sablont tesz közzé, ha az Azure Lab Services hoz létre, vagy frissíti a labor virtuális gépeken a virtuális gép sablon alapján. 
+
 
 ## <a name="user-profiles"></a>Felhasználói profilok
 Ez a cikk az Azure Lab Services különböző felhasználói profiljait ismerteti. 

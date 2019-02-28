@@ -11,14 +11,22 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 0f5452e3abbde40c247ef7e000b84fc3eb00c943
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: e389df02966146b217802d4e93f844a4fee425a3
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446834"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958648"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
+
+## <a name="speech-sdk-131-2019-february-refresh"></a>Beszédfelismerés SDK 1.3.1: A 2019-februári frissítés
+
+Ez a hibajavítás kiadás, és csak ez hatással lenne a natív és felügyelt SDK-t. Ez nincs hatással az SDK-t a JavaScript-verzióját.
+
+**Hibajavítás**
+
+* Rögzített memóriavesztés, amikor a mikrofon bemeneti. Stream-alapú vagy a bemeneti fájl nincs hatással.
 
 ## <a name="speech-sdk-130-2019-february-release"></a>Speech SDK 1.3.0: A 2019-februári kiadással
 
@@ -26,6 +34,8 @@ ms.locfileid: "56446834"
 
 * A beszédfelismerés SDK támogatja a bemeneti mikrofon AudioConfig osztály keresztül. Ez lehetővé teszi hang adatok streamelése a beszédfelismerési szolgáltatás az alapértelmezettől eltérő mikrofon. További információ: a dokumentáció leíró [hangbemeneti eszköz kiválasztása](how-to-select-audio-input-devices.md). Ez még nem áll rendelkezésre a JavaScript.
 * A beszédfelismerés SDK mostantól támogatja a Unity béta verziójában. Adja meg a probléma szakaszában keresztül visszajelzést a [GitHub-mintaadattárból](https://aka.ms/csspeech/samples). Ez a kiadás támogatja a Unity a x86 és x64 (asztalon vagy univerzális Windows-Platformos alkalmazások), Windows és Android (ARM32/64, x86). További információkat a [Unity rövid](quickstart-csharp-unity.md).
+* A fájl `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (tartalmazza a szükséges a korábbi kiadásokban) többé nem szükséges. A funkció mostantól integrálva van a core SDK-t.
+
 
 **Példák**
 
@@ -54,6 +64,7 @@ A következő új tartalom érhető el a [mintaadattár](https://aka.ms/csspeech
   * Kezdeti támogatás és kifejezés mutatók megvalósítása.
   * Visszatérési tulajdonsággyűjteményében elismerési JSON szolgáltatással
 * Windows DLL-ek mostantól tartalmazza a verzió erőforrás.
+* Ha létrehoz egy felismerő `FromEndpoint` adhat paramétereket közvetlenül a végpont URL-címe. Használatával `FromEndpoint` szabványos konfigurációs tulajdonságai a felismerő nem konfigurálható.
 
 **Hibajavítások**
 

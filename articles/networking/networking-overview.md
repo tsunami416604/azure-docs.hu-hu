@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: f21d92dabfcfbe51cf8135388a1ab489c20593a4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 56e203a212a4e0e81922336f72fd58ef3cb7dc64
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537545"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983506"
 ---
 # <a name="azure-networking"></a>Az Azure-hálózatok
 
@@ -136,7 +136,7 @@ Az Azure létrehozza alapértelmezett útválasztási táblázatokat, amelyek le
 
 Az Azure a következő felügyelhető és kezelhető a hálózati eszközöket kínál:
 - **Tevékenységnaplók:** Az összes Azure-erőforrások tevékenységeket tartalmazó naplók, amely a műveletek végrehajtása műveletek állapotának információt biztosítanak, és a művelet kezdeményezője rendelkezik. A Tevékenységnaplók kapcsolatos további információkért olvassa el a [Tevékenységnaplók áttekintése](../azure-monitor/platform/activity-logs-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
-- **Diagnosztikai naplók:** Rendszeres és spontán események hálózati erőforrások által létrehozott és bejelentkezett az Azure storage-fiókok, az Azure-Eseményközpontba küldi, vagy az Azure Log Analytics felé küldött. Erőforrás állapotának betekintést nyújtanak a diagnosztikai naplók. Diagnosztikai naplók Load Balancer (internetes elérésű), a hálózati biztonsági csoportok, útvonalak és az Application Gateway-okat. Diagnosztikai naplók kapcsolatos további információkért olvassa el a [diagnosztikai naplók áttekintése](../azure-monitor/platform/diagnostic-logs-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
+- **Diagnosztikai naplók:** Rendszeres és spontán események hálózati erőforrások által létrehozott és az Azure storage-fiókok esetében az Azure-Eseményközpontba küldi, vagy a Azure Monitor naplóira bejelentkezett. Erőforrás állapotának betekintést nyújtanak a diagnosztikai naplók. Diagnosztikai naplók Load Balancer (internetes elérésű), a hálózati biztonsági csoportok, útvonalak és az Application Gateway-okat. Diagnosztikai naplók kapcsolatos további információkért olvassa el a [diagnosztikai naplók áttekintése](../azure-monitor/platform/diagnostic-logs-overview.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
 - **Metrikák:** Mérőszám játszik TELJESÍTMÉNYMÉRÉSEK és erőforrások olyan időszakban gyűjtött teljesítményszámlálók. Mérőszámok segítségével riasztás küszöbértékek alapján. Jelenleg metrikák érhetők el az Application Gatewayen. További információk a metrikákról, olvassa el a [metrikáinak áttekintésében](../monitoring-and-diagnostics/monitoring-overview-metrics.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
 - **Hibaelhárítás:** Hibaelhárítási információk közvetlenül az Azure Portalon érhető el. Az információk segítik az ExpressRoute, VPN-átjárót, az Application Gateway, hálózati biztonsági naplók, útvonalak, DNS, terheléselosztó és a Traffic Manager szolgáltatással kapcsolatos gyakori problémák diagnosztizálásához.
 - **Szerepköralapú hozzáférés-vezérlés (RBAC):** Szabályozza, ki is létrehozhatja és kezelheti a szerepköralapú hozzáférés-vezérlés (RBAC) a hálózati erőforrásokat. További információ az RBAC olvassa el a [RBAC – első lépések](../role-based-access-control/overview.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk. 
@@ -150,7 +150,7 @@ Az Azure a következő felügyelhető és kezelhető a hálózati eszközöket k
 Telepítheti és konfigurálhatja az Azure hálózati erőforrásaival a következő eszközök bármelyikével:
 
 - **Az Azure Portalon:** Egy grafikus felhasználói felület, amelyen a böngészőben. Nyissa meg az [Azure Portalt](http://portal.azure.com).
-- **Azure PowerShell-lel:** Windows-számítógépek kezelése az Azure parancssori eszközök. További információ az Azure PowerShell olvassa el a [Azure PowerShell áttekintése](/powershell/azure/overview?view=azurermps-3.8.0?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
+- **Azure PowerShell:** Windows-számítógépek kezelése az Azure parancssori eszközök. További információ az Azure PowerShell olvassa el a [Azure PowerShell áttekintése](/powershell/azure/overview?view=azurermps-3.8.0?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
 - **Az Azure parancssori felület (CLI):** Parancssori eszközök kezelése az Azure Linux, macOS vagy Windows-számítógépekről. További információ az Azure CLI olvassa el a [Azure CLI áttekintése](/cli/azure/get-started-with-azure-cli?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
 - **Az Azure Resource Manager-sablonok:** Egy fájl (JSON formátumban), amely meghatározza az infrastruktúra és a egy Azure-megoldás konfigurációját. A sablonok segítségével a megoldás a teljes életciklusa során ismételten üzembe helyezhető, és az erőforrások üzembe helyezése biztosan konzisztens lesz. Sablonok készítése kapcsolatos további információkért olvassa el a [gyakorlati tanácsok a sablonok létrehozásához](../azure-resource-manager/resource-manager-template-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk. Sablonok is üzembe helyezhetők az Azure Portalon, parancssori felület vagy PowerShell. Első lépésként sablonokkal azonnal üzembe helyezése a sok előre konfigurált sablonok egyikét a [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/?term=network) könyvtár. 
 

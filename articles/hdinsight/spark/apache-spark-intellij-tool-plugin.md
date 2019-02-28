@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: maxluk
-ms.openlocfilehash: a22dd1114b6ad49695b1ce7cab2ff26f23b7e1be
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 76df7f57f44100a27fbe4583051fa25c61e27ee0
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447854"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961822"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>IntelliJ-hez készült Azure eszközkészlet használata egy HDInsight-fürtön az Apache Spark-alkalmazások létrehozása
 
@@ -27,7 +27,7 @@ Az IntelliJ beépülő modul az Azure-eszközkészlet használata fejlesztéséh
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Apache Spark-fürt megléte a HDInsightban. További útmutatásért lásd: [Apache Spark-fürt létrehozása az Azure HDInsightban](apache-spark-jupyter-spark-sql.md).
-* [Oracle Java Development Kitet](https://www.azul.com/downloads/azure-only/zulu/).  Ez az oktatóanyag Java 8.0.202 verziót használja.
+* [Oracle Java Development Kitet](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html).  Ez az oktatóanyag Java 8.0.202 verziót használja.
 * IntelliJ IDEA. Ez a cikk [IntelliJ IDEA közösségi ver.  2018.3.4](https://www.jetbrains.com/idea/download/).
 * IntelliJ-hez készült Azure eszközkészlet.  Lásd: [IntelliJ-hez készült Azure-eszközkészlet telepítése](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation?view=azure-java-stable).
 * WINUTILS.EXE.  Lásd: [Hadoop futó Windows problémák](https://wiki.apache.org/hadoop/WindowsProblems).

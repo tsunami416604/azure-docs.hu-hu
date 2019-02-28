@@ -1,5 +1,5 @@
 ---
-title: Kapcsolatos hálózati figyelés a Log Analytics Rendszereben |} A Microsoft Docs
+title: Hálózat az Azure monitorban figyelésével kapcsolatos naplók |} A Microsoft Docs
 description: Hálózatfigyelési megoldásokkal, mint az NPM segítségével kezeli a felhőbeli, helyszíni és hibrid környezetekben hálózatok áttekintése.
 services: monitoring-and-diagnostics
 documentationcenter: na
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ajaycode
-ms.openlocfilehash: 4107b292a606ea629e7de0c7be66621d699c5f42
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 617dbae67c71eac4bfc38de4e63c1ba05516ff61
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427386"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984050"
 ---
 # <a name="network-monitoring-solutions"></a>Hálózati megoldások monitorozása 
 
 Az Azure-megoldások egy gazdagépet a hálózati eszközök figyelése kínál. Az Azure rendelkezik a megoldásokat és segédprogramok használatával a hálózati kapcsolat ExpressRoute-Kapcsolatcsoportok állapotának figyelheti és elemezheti a felhőbeli hálózati forgalmat.
 
-## <a name="network-performance-monitor-npm"></a>A Network Performance Monitor (NPM)
+## <a name="network-performance-monitor-npm"></a>Network Performance Monitor (NPM)
 
 Network Performance monitort (NPM) olyan képességeit, amelyek mindegyike részesíti előnyben a hálózaton, a hálózati kapcsolat és az alkalmazások állapotának figyelése és a hálózat teljesítményét elemezheti. Az NPM felhőalapú és a egy hibrid Hálózatfigyelő megoldás, amely figyeli a közötti kapcsolatot biztosít:
  
@@ -51,7 +51,7 @@ A Teljesítményfigyelő az NPM részét képezi, és hálózati felhőalapú, h
 
 További információkért tekintse meg a következő cikkeket:
 
-* [A Network Performance Monitor megoldás konfigurálása a Log Analyticsben](../azure-monitor/insights/network-performance-monitor.md) 
+* [A Network Performance Monitor megoldás konfigurálása az Azure Monitor naplóira](../azure-monitor/insights/network-performance-monitor.md) 
 * [Használati esetek](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)
 *  Termékfrissítések: [2017 február](https://blogs.technet.microsoft.com/msoms/2017/02/27/oms-network-performance-monitor-is-now-generally-available/), [2017. augusztus](https://blogs.technet.microsoft.com/msoms/2017/08/14/improvements-to-oms-network-performance-monitor/)
 

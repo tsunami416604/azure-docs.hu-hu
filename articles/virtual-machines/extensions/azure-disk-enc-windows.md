@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: ejarvi
-ms.openlocfilehash: 355fa90113e931fa3e21df1ccca5736622475bb3
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 46699fb1add42d23a11234d5cd05e4a9627a91fd
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810380"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983467"
 ---
 # <a name="azure-disk-encryption-for-windows-microsoftazuresecurityazurediskencryption"></a>Azure Disk Encryption for Windows (Microsoft.Azure.Security.AzureDiskEncryption)
 
@@ -58,8 +58,14 @@ Az Azure Disk Encryption internetkapcsolatra van szükség az Active Directory, 
       "AADClientID": "[aadClientID]",
       "EncryptionOperation": "[encryptionOperation]",
       "KeyEncryptionAlgorithm": "[keyEncryptionAlgorithm]",
+      
       "KeyEncryptionKeyURL": "[keyEncryptionKeyURL]",
+          "KekVaultResourceId": "[keyVaultResourceID]",
+      
       "KeyVaultURL": "[keyVaultURL]",
+          "KeyVaultResourceId": "[keyVaultResourceID]",
+
+      "EncryptionOperation": "[encryptionOperation]",
       "SequenceVersion": "sequenceVersion]",
       "VolumeType": "[volumeType]"
     },
@@ -76,13 +82,15 @@ Az Azure Disk Encryption internetkapcsolatra van szükség az Active Directory, 
 | apiVersion | 2015-06-15 | dátum |
 | publisher | Microsoft.Azure.Security | sztring |
 | type | AzureDiskEncryptionForWindows| sztring |
-| typeHandlerVersion | 1.0, 2.2 (VMSS) | int |
+| typeHandlerVersion | 1.0, 1.1, 2.2 (VMSS) | int |
 | (optional) AADClientID | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | GUID azonosítója | 
 | (optional) AADClientSecret | jelszó | sztring |
 | (nem kötelező) AADClientCertificate | ujjlenyomat | sztring |
 | EncryptionOperation | EnableEncryption | sztring | 
-| KeyEncryptionAlgorithm | RSA-OAEP | sztring |
+| KeyEncryptionAlgorithm | RSA-OAEP, RSA1_5 | sztring |
 | KeyEncryptionKeyURL | url | sztring |
+| KeyVaultResourceId | erőforrás-uri | sztring |
+| KekVaultResourceId | erőforrás-uri | sztring |
 | KeyVaultURL | url | sztring |
 | SequenceVersion | UniqueIdentifier | sztring |
 | VolumeType | Az operációs rendszer, az adatok, az összes | sztring |

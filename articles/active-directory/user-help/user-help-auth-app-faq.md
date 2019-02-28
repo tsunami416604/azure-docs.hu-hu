@@ -13,12 +13,12 @@ ms.date: 01/31/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78fc7441b109c87f1ab9ff5b56ed8e055c152d10
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 9b73acefa3dcddfedbcaee841f9b3560ed10407d
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456061"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960411"
 ---
 # <a name="microsoft-authenticator-app-faq"></a>A Microsoft Authenticator alkalmazás – gyakori kérdések
 
@@ -54,8 +54,10 @@ A Microsoft Authenticator alkalmazás helyett az Azure Authenticator alkalmazás
 
 ## <a name="next-steps"></a>További lépések
 
+- Ha problémába ütközik az ellenőrző kód beolvasása a személyes Microsoft-fiókkal, tekintse meg a **ellenőrző kód kapcsolatos hibák elhárítása** szakaszában a [Microsoft-fiók biztonsági adatai & k ellenőrzése kódok](https://support.microsoft.com/en-us/help/12428/microsoft-account-security-info-verification-codes) cikk.
+
 -   Ha azt szeretné, hogy további információ a kétlépéses ellenőrzést, [a kétlépéses ellenőrzéshez a fiók beállítása](multi-factor-authentication-end-user-first-time.md)
 
--   Ha azt szeretné, hogy további információ a biztonsági adatait, tekintse meg [a biztonsági adatok kezelése](security-info-manage-settings.md)
+-   Ha azt szeretné, hogy további információ a biztonsági adatait, tekintse meg [Security info (előzetes verzió) – áttekintés](user-help-security-info-overview.md)
 
 - Ha a kérdését itt nem válaszolt, szeretnénk meghallgatnánk a véleményét. Nyissa meg a [Microsoft Authenticator alkalmazás fórum](https://social.technet.microsoft.com/Forums/en-us/home?forum=MicrosoftAuthenticatorApp) tegye fel a kérdéseit, és segítséget kérhet a Közösség, vagy szóljon hozzá ezen a lapon.

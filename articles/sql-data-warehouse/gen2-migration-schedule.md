@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 02/09/2019
-ms.openlocfilehash: 8dbe282b919c988d5cb997a66914d81ce1981f88
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: d21731549c55f8e3fe90711838fcd21e6770eefe
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56592417"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960700"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Frissítse az adattárház Gen2-re
 A Microsoft lehetővé teszi, hogy képes legyen kezelni az erőforrás-igényes lekérdezéseket az Azure SQL Data Warehouse a számítási alacsonyabb rétegek hozzáadásával adattárház futtatásának belépő szintű díja végezhetőek kapcsolatban olvassa el a teljes bejelentés [alacsonyabb szintű támogatás Gen2 számítási](https://azure.microsoft.com/blog/azure-sql-data-warehouse-gen2-now-supports-lower-compute-tiers/). Az új ajánlat már régiókban érhető el az alábbi táblázatban feltüntetett. A támogatott régiók Gen1 a korábbi adattárházak Gen2-re keresztül frissíthető vagy:
@@ -36,27 +36,29 @@ A következő táblázat összefoglalja régió szerint, amikor a alacsonyabb Ge
 | Kelet-Kanada |\* |\* |
 | USA középső régiója |Elérhető |2019. május 1. |
 | Kelet-Kína |\* |\* |
-| Észak-Kína 1 |\* |\* |
+| Kelet-Kína 2 |\* |\* |
+| Észak-Kína |\* |\* |
+| Észak-Kína 2 |\* |\* |
 | Kelet-Ázsia |Elérhető |2019. május 1. |
-| 1 USA keleti régiója |Elérhető |2019. március 16. |
+| USA keleti régiója |Elérhető |2019. március 16. |
 | USA 2. keleti régiója |Elérhető |2019. március 16. |
 | Közép-Franciaország |2019. március 1. |2019. május 1. |
 | Közép-Németország |\* |\* |
 | Közép-India |Elérhető |2019. május 1. |
-| 1 Dél-India |2019. március 1. |2019. június 15. |
+| Dél-India |2019. március 1. |2019. június 15. |
 | Kelet-Japán |Elérhető |2019. május 1. |
 | Nyugat-Japán |Elérhető |2019. június 15. |
 | Korea középső régiója |2019. március 1. |2019. május 1. |
-| Korea déli régiója 1 |2019. március 1. |2019. június 15. |
+| Korea déli régiója |2019. március 1. |2019. június 15. |
 | USA északi középső régiója |2019. március 1. |2019. június 15. |
 | Észak-Európa |Elérhető |2019. március 16. |
 | USA déli középső régiója |Elérhető |2019. május 1. |
 | Délkelet-Ázsia |Elérhető |2019. március 16. |
 | Az Egyesült Királyság déli régiója |2019. március 1. |2019. május 1. |
-| Egyesült Királyság nyugati régiója 1 |2019. március 1. |2019. június 15. |
+| Az Egyesült Királyság nyugati régiója |2019. március 1. |2019. június 15. |
 | USA nyugati középső régiója |\* |\* |
 | Nyugat-Európa |Elérhető |2019. március 16. |
-| USA nyugati RÉGIÓJA 1 |2019. március 1. |2019. június 15. |
+| USA nyugati régiója |2019. március 1. |2019. június 15. |
 | USA nyugati régiója, 2. |Elérhető |2019. március 16. |
 
 ## <a name="automatic-upgrade-process"></a>Az automatikus frissítési folyamat

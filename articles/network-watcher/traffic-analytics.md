@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: 4f1ce84dba4e9f35e7884ebd9058781eb30c3ec4
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 8dd3c6ce7eabdf90c2a84f4d1e52ce3aef2d5c12
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815846"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984632"
 ---
 # <a name="traffic-analytics"></a>Forgalmi elemzések
 
@@ -41,13 +41,13 @@ Azure virtuális hálózatokkal rendelkezik NSG-Folyamatnaplók, bejövő inform
 
 - **Hálózati biztonsági csoport (NSG)**: A biztonsági szabályok, amelyek engedélyezik vagy megtagadják a hálózati forgalmat egy Azure virtuális hálózathoz csatlakozó erőforrások listáját tartalmazza. Az NSG-k társíthatóak alhálózatokhoz, egyedi virtuális gépekhez (klasszikus) vagy virtuális gépekhez (Resource Manager) kapcsolt hálózati adapterekhez (NIC). További információkért lásd: [hálózati biztonsági csoportok áttekintése](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **Hálózati biztonsági csoport (NSG) folyamatnaplóit**: Lehetővé teszi keresztül a hálózati biztonsági csoport bejövő és kimenő IP-forgalom kapcsolatos információk megtekintéséhez. NSG-folyamat naplók json formátumban íródtak, és a hálózati Adaptert a folyamat vonatkozik egy szabály alapon, bejövő és kimenő folyamatok megjelenítése, 5-ször több információt a folyamat (forrás és a cél IP-cím forrás és a cél-port és protokoll), és ha a forgalmat a rendszer engedélyezte vagy az elutasított. NSG-Folyamatnaplók kapcsolatos további információkért lásd: [NSG-Folyamatnaplók](network-watcher-nsg-flow-logging-overview.md).
-- **Log Analytics**: Azure-szolgáltatás figyelési adatait gyűjti és tárolja az adatokat egy központi tárházban. Ezek az adatok lehetnek események, teljesítményadatok vagy az Azure API segítségével biztosított egyéni adatok. Az összegyűjtésüket követően az adatok használhatók riasztáshoz, elemzéshez vagy exportáláshoz. Alkalmazások figyelése, mint például a hálózati teljesítmény figyelése és a traffic analytics beépített Log Analytics használatával alapjaként. További információkért lásd: [Log analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
-- **Log analytics-munkaterület**: A log analytics, Azure-fiókra vonatkozó adatok tárolására egy példányát. További információ a log analytics-munkaterületek: [hozzon létre egy Log Analytics-munkaterület](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Log Analytics**: Azure-szolgáltatás figyelési adatait gyűjti és tárolja az adatokat egy központi tárházban. Ezek az adatok lehetnek események, teljesítményadatok vagy az Azure API segítségével biztosított egyéni adatok. Az összegyűjtésüket követően az adatok használhatók riasztáshoz, elemzéshez vagy exportáláshoz. Alkalmazások figyelése, mint például a hálózati teljesítmény figyelése és a traffic analytics felhasználásával történik az Azure Monitor naplóira alapjaként. További információkért lásd: [naplózza az Azure Monitor](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+- **Log Analytics-munkaterület**: Az Azure Monitor-naplók, Azure-fiókra vonatkozó adatok tárolására egy példányát. További információ a Log Analytics-munkaterületek: [hozzon létre egy Log Analytics-munkaterület](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - **Network Watcher**: Egy regionális szolgáltatás, amely lehetővé teszi a figyelési és diagnosztizálási tevékenységet végezhet az Azure-beli hálózati forgatókönyvek szintjén. NSG-Folyamatnaplók kapcsolja ki és a Network Watcher kapcsolhatja be. További információkért lásd: [Network Watcher](network-watcher-monitoring-overview.md).
 
 ## <a name="how-traffic-analytics-works"></a>Forgalmi elemzések működése
 
-A TRAFFIC analytics megvizsgálja a nyers NSG-Folyamatnaplók és a csökkentett naplók rögzíti többek között a azonos forrás IP-címe, cél IP-cím, céloldali port és protokoll közös folyamatok összesítésével. For example, Host 1 (IP address: 10.10.10.10) kommunikál a gazdagépen 2 (IP-cím: 10.10.20.10), 100-szor 1 óra (például 80-as) és protokollt (például http) használatával egy adott időszakban. A csökkentett napló rendelkezik, amelyek 100-szor egy adott időszakban 1 óra port használatával kommunikálni gazdagép 1. és 2 gazdagép egy bejegyzést *80-as* és protokoll *HTTP*, 100 bejegyzések nem. Csökkentett naplók javult a földrajzi hely, a biztonság és a topológiára vonatkozó információkkal, és tárolja a log analytics-munkaterület. Az alábbi képen látható, az adatfolyam:
+A TRAFFIC analytics megvizsgálja a nyers NSG-Folyamatnaplók és a csökkentett naplók rögzíti többek között a azonos forrás IP-címe, cél IP-cím, céloldali port és protokoll közös folyamatok összesítésével. For example, Host 1 (IP address: 10.10.10.10) kommunikál a gazdagépen 2 (IP-cím: 10.10.20.10), 100-szor 1 óra (például 80-as) és protokollt (például http) használatával egy adott időszakban. A csökkentett napló rendelkezik, amelyek 100-szor egy adott időszakban 1 óra port használatával kommunikálni gazdagép 1. és 2 gazdagép egy bejegyzést *80-as* és protokoll *HTTP*, 100 bejegyzések nem. Csökkentett naplók javult a földrajzi hely, a biztonság és a topológiára vonatkozó információkkal, és a Log Analytics-munkaterületen tárolja. Az alábbi képen látható, az adatfolyam:
 
 ![NSG-Folyamatnaplók feldolgozása folyamatábrája](./media/traffic-analytics/data-flow-for-nsg-flow-log-processing.png)
 
@@ -164,9 +164,9 @@ Válassza ki a következő beállításokat, amint a képen látható:
 2. Válasszon ki egy meglévő tárfiókot a folyamat-naplók tárolására. Ha tartja az adatokat tárolni szeretné, állítsa az értékét *0*. Azure Storage-díjak a tárfiók díjak.
 3. Állítsa be **megőrzési** adatait tárolni kívánt napok száma.
 4. Válassza ki *a* a **Traffic Analytics állapota**.
-5. Válasszon egy meglévő Log Analytics-munkaterületet, vagy válasszon **új munkaterület létrehozása** hozzon létre egy újat. Log Analytics-munkaterületet a Traffic Analytics használják majd létrehozására szolgál az analytics összesített és indexelt adatok tárolására. Ha egy meglévő munkaterületet, a támogatott régiók egyikében léteznie kell, és frissítettek az új lekérdezési nyelvre. Ha nem szeretne frissíteni egy meglévő munkaterületet, vagy nem rendelkezik egy munkaterületet egy támogatott régióban, hozzon létre egy újat. Lekérdezési nyelvet kapcsolatos további információkért lásd: [Azure Log Analytics új naplókeresésre frissítési](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+5. Válasszon egy meglévő Log Analytics-munkaterületet, vagy válasszon **új munkaterület létrehozása** hozzon létre egy újat. Log Analytics-munkaterületet a Traffic Analytics használják majd létrehozására szolgál az analytics összesített és indexelt adatok tárolására. Ha egy meglévő munkaterületet, a támogatott régiók egyikében léteznie kell, és frissítettek az új lekérdezési nyelvre. Ha nem szeretne frissíteni egy meglévő munkaterületet, vagy nem rendelkezik egy munkaterületet egy támogatott régióban, hozzon létre egy újat. Lekérdezési nyelvet kapcsolatos további információkért lásd: [Azure Monitor-naplók frissítése új naplókeresésre](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
-    A log analytics-munkaterületet a traffic analytics megoldás és az NSG-t üzemeltető nem kell ugyanabban a régióban. Például előfordulhat, a traffic analytics-munkaterületen a Nyugat-európai régióban bár előfordulhat, hogy az NSG-ket az USA keleti RÉGIÓJA és USA nyugati RÉGIÓJA. Több NSG-k ugyanazon a munkaterületen konfigurálhatók.
+    A traffic analytics megoldás és az NSG-t üzemeltető Log Analytics-munkaterületnek nem kell ugyanabban a régióban. Például előfordulhat, a traffic analytics-munkaterületen a Nyugat-európai régióban bár előfordulhat, hogy az NSG-ket az USA keleti RÉGIÓJA és USA nyugati RÉGIÓJA. Több NSG-k ugyanazon a munkaterületen konfigurálhatók.
 6. Kattintson a **Mentés** gombra.
 
     ![Kijelölés tárfiókba, Log Analytics-munkaterület és a Traffic Analytics engedélyezése](./media/traffic-analytics/selection-of-storage-account-log-analytics-workspace-and-traffic-analytics-enablement.png)

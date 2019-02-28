@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 357257d38c444eae8077568993d49816e3c090a3
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: a0bb320abb31b38461102e0e9a062ea0c2af51fb
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966075"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959578"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-storage-gen1"></a>Az Azure Data Lake Storage Gen1 diagnosztikai naplóinak elérése
 Ismerje meg, diagnosztikai naplózás az Azure Data Lake Storage Gen1 fiókját és a fiókja gyűjtött naplók megtekintése a engedélyezéséhez.
@@ -46,7 +46,7 @@ Szervezetek számára engedélyezheti a diagnosztikai naplózás az Azure Data L
         
         * Válassza a **Stream egy eseményközpontba** a naplózási adatok streamelése az Azure-Eseményközpontba. Valószínűleg ez a beállítás fogja használni, ha rendelkezik egy alárendelt feldolgozási beérkező naplók valós időben elemezheti. Ha ezt a lehetőséget választja, meg kell adnia a részletek az Azure Event Hubs is használni szeretné a.
 
-        * Válassza a **Küldés a Log Analyticsnek** az Azure Log Analytics szolgáltatás használata a létrehozott naplóadatok elemzéséhez. Ezt a beállítást, ha meg kell adnia a részletek a Log Analytics-munkaterületen, melyeket használhat a végrehajtása elemzése. Lásd: [megtekintése vagy elemzése a Log Analytics naplóbeli keresés gyűjtött adatok](../azure-monitor/learn/tutorial-viewdata.md) Log Analytics használatával.
+        * Válassza a **Küldés a Log Analyticsnek** az Azure Monitor szolgáltatás használata a létrehozott naplóadatok elemzéséhez. Ezt a beállítást, ha meg kell adnia a részletek a Log Analytics-munkaterületen, melyeket használhat a végrehajtása elemzése. Lásd: [megtekintése az Azure Monitor naplók keresése gyűjtött adatok elemzéséhez, vagy](../azure-monitor/learn/tutorial-viewdata.md) részletei az Azure Monitor használatával naplózza.
      
    * Adja meg, hogy szeretné-e a vizsgálati naplók kérelmekről készült naplók és/vagy beolvasása.
    * Adja meg a napok, amelynek az adatokat meg kell őrizni. Adatmegőrzési csak akkor alkalmazható, ha a Teljesítménynapló-adatok archiválása az Azure storage-fiókot használ.
@@ -115,25 +115,25 @@ A naplózási és a kérés naplók JSON formátumban vannak. Ebben a szakaszban
 #### <a name="request-log-schema"></a>Kérelem séma
 | Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| time |Karakterlánc |A napló időbélyegzője (az UTC) |
-| resourceId |Karakterlánc |Helyezze a művelet igénybe vett erőforrás azonosítója |
-| category |Karakterlánc |A naplózási kategóriát. Ha például **kérelmek**. |
-| operationName |Karakterlánc |A művelet, amelyet a rendszer neve. Ha például getfilestatus. |
-| resultType |Karakterlánc |A művelet, például 200-as állapotát. |
-| callerIpAddress |Karakterlánc |Az ügyfél a kérés IP-címe |
-| correlationId |Karakterlánc |Csoportosíthatja a kapcsolódó bejegyzései készletét használja, amely a napló azonosítója |
+| time |String |A napló időbélyegzője (az UTC) |
+| resourceId |String |Helyezze a művelet igénybe vett erőforrás azonosítója |
+| category |String |A naplózási kategóriát. Ha például **kérelmek**. |
+| operationName |String |A művelet, amelyet a rendszer neve. Ha például getfilestatus. |
+| resultType |String |A művelet, például 200-as állapotát. |
+| callerIpAddress |String |Az ügyfél a kérés IP-címe |
+| correlationId |String |Csoportosíthatja a kapcsolódó bejegyzései készletét használja, amely a napló azonosítója |
 | identity |Objektum |Az identitás által generált napló |
 | properties |JSON |Részletes információkat lejjebb talál |
 
 #### <a name="request-log-properties-schema"></a>Kérelem tulajdonságai séma
 | Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| HttpMethod |Karakterlánc |A művelethez használt HTTP-metódust. Például KAPHAT. |
-| Útvonal |Karakterlánc |Az elérési utat a művelet végrehajtásának ideje |
+| HttpMethod |String |A művelethez használt HTTP-metódust. Például KAPHAT. |
+| Útvonal |String |Az elérési utat a művelet végrehajtásának ideje |
 | RequestContentLength |int |A HTTP-kérelem tartalmának hossza |
-| ClientRequestId |Karakterlánc |Az azonosítója, amely egyedileg azonosítja ezt a kérelmet |
-| Kezdés időpontja |Karakterlánc |Az idő, amelyen a kiszolgáló a kérelem érkezett |
-| Befejezés időpontja: |Karakterlánc |Az idő, amikor a kiszolgáló által küldött választ |
+| ClientRequestId |String |Az azonosítója, amely egyedileg azonosítja ezt a kérelmet |
+| Kezdés időpontja |String |Az idő, amelyen a kiszolgáló a kérelem érkezett |
+| Befejezés időpontja: |String |Az idő, amikor a kiszolgáló által küldött választ |
 
 ### <a name="audit-logs"></a>Naplók
 Íme egy minta-bejegyzést a JSON-formátumú naplóban. Minden egyes blob van egy gyökérobjektum nevű **rekordok** , amely tartalmazza a napló objektumokból álló tömb
@@ -162,23 +162,23 @@ A naplózási és a kérés naplók JSON formátumban vannak. Ebben a szakaszban
 #### <a name="audit-log-schema"></a>Auditnapló sémája
 | Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| time |Karakterlánc |A napló időbélyegzője (az UTC) |
-| resourceId |Karakterlánc |Helyezze a művelet igénybe vett erőforrás azonosítója |
-| category |Karakterlánc |A naplózási kategóriát. Ha például **naplózási**. |
-| operationName |Karakterlánc |A művelet, amelyet a rendszer neve. Ha például getfilestatus. |
-| resultType |Karakterlánc |A művelet, például 200-as állapotát. |
-| resultSignature |Karakterlánc |További információt a műveletet. |
-| correlationId |Karakterlánc |Csoportosíthatja a kapcsolódó bejegyzései készletét használja, amely a napló azonosítója |
+| time |String |A napló időbélyegzője (az UTC) |
+| resourceId |String |Helyezze a művelet igénybe vett erőforrás azonosítója |
+| category |String |A naplózási kategóriát. Ha például **naplózási**. |
+| operationName |String |A művelet, amelyet a rendszer neve. Ha például getfilestatus. |
+| resultType |String |A művelet, például 200-as állapotát. |
+| resultSignature |String |További információt a műveletet. |
+| correlationId |String |Csoportosíthatja a kapcsolódó bejegyzései készletét használja, amely a napló azonosítója |
 | identity |Objektum |Az identitás által generált napló |
 | properties |JSON |Részletes információkat lejjebb talál |
 
 #### <a name="audit-log-properties-schema"></a>Naplózási tulajdonságok séma
 | Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| StreamName |Karakterlánc |Az elérési utat a művelet végrehajtásának ideje |
+| StreamName |String |Az elérési utat a művelet végrehajtásának ideje |
 
 ## <a name="samples-to-process-the-log-data"></a>A minták a naplózási adatok feldolgozása
-Amikor naplókat küld az Azure Data Lake Storage Gen1 Azure Log Analytics (lásd: [megtekintése vagy elemzése a Log Analytics naplóbeli keresés gyűjtött adatok](../azure-monitor/learn/tutorial-viewdata.md) Log Analytics használatával), a következő lekérdezés listáját tartalmazó táblát adja vissza felhasználó megjelenített neveket, az idő az eseményeket, és az események száma egy vizuális diagramban együtt az esemény alkalommal. Könnyedén módosítható megjelenítéséhez a felhasználó GUID-azonosítója vagy más jellemzők:
+Amikor az Azure Data Lake Storage Gen1 naplókat küld az Azure Monitor naplóira (lásd: [nézet vagy az Azure Monitor naplók keresése gyűjtött adatok elemzése](../azure-monitor/learn/tutorial-viewdata.md) az Azure Monitor segítségével részletes naplók), a következő lekérdezést tartalmazó táblát adja vissza egy felhasználók listája megjelenített neveket, az idő az eseményeket, és az események száma egy vizuális diagramban együtt az esemény alkalommal. Könnyedén módosítható megjelenítéséhez a felhasználó GUID-azonosítója vagy más jellemzők:
 
 ```
 search *

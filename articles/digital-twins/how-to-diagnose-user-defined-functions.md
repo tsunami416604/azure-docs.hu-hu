@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: stefanmsft
 ms.custom: seodec18
-ms.openlocfilehash: ebeed6d2a52937a6e80dfe28574ad854643fa7f2
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 6122cd4507ed0883d1b78ca519269c25098e55ff
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119218"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961414"
 ---
 # <a name="how-to-debug-user-defined-functions-in-azure-digital-twins"></a>Az Azure digitális Twins felhasználó által definiált függvények hibakeresése
 
@@ -29,10 +29,10 @@ Hogyan diagnosztizálhatja a belül az Azure digitális Twins-példány felmerü
 
 ### <a name="enable-log-analytics-for-your-instance"></a>A példány a log analytics engedélyezése
 
-Naplók és mérőszámok az Azure digitális Twins-példány az Azure monitorban jelennek meg. Ez a dokumentáció feltételezi, hogy létrehozott egy [Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md) munkaterületen a [az Azure Portal](../azure-monitor/learn/quick-create-workspace.md)segítségével, [Azure CLI-vel](../azure-monitor/learn/quick-create-workspace-cli.md), vagy a Kiszolgálókezelő [ PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md).
+Naplók és mérőszámok az Azure digitális Twins-példány az Azure monitorban jelennek meg. Ez a dokumentáció feltételezi, hogy létrehozott egy [naplózza az Azure Monitor](../azure-monitor/log-query/log-query-overview.md) munkaterületen a [az Azure Portal](../azure-monitor/learn/quick-create-workspace.md)segítségével, [Azure CLI](../azure-monitor/learn/quick-create-workspace-cli.md), vagy a Kiszolgálókezelő [ PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md).
 
 > [!NOTE]
-> 5 perces késleltetés során az események küldése az Azure Log Analytics az első alkalommal tapasztalhat.
+> 5 perces késleltetés során az események küldése az Azure Monitor naplóira először tapasztalhat.
 
 Figyelés és naplózás az Azure digitális Twins erőforrások konfigurálásához, olvassa el a [figyelés és naplózás konfigurálása](./how-to-configure-monitoring.md).
 
@@ -43,11 +43,11 @@ A cikk a [gyűjtése és felhasználása a naplófájlok adatait az Azure-erőfo
 
 ### <a name="trace-sensor-telemetry"></a>Mozgásérzékelő – híváslánc-telemetria
 
-Nyomkövetési érzékelő telemetriai adatokat, győződjön meg arról, hogy a diagnosztikai beállítások engedélyezve vannak az Azure digitális Twins-példány. Ezt követően győződjön meg arról, hogy az összes kívánt naplókategóriák ki van jelölve. Végül ellenőrizze, hogy a kívánt naplók az Azure Log Analytics kap.
+Nyomkövetési érzékelő telemetriai adatokat, győződjön meg arról, hogy a diagnosztikai beállítások engedélyezve vannak az Azure digitális Twins-példány. Ezt követően győződjön meg arról, hogy az összes kívánt naplókategóriák ki van jelölve. Végül ellenőrizze, hogy az Azure Monitor-naplók a kívánt naplók kap.
 
 Egyezik meg a megfelelő naplók érzékelő telemetriai üzenetet, adja meg a korrelációs Azonosítót meg az eseményadatokat küld a rendszer. Ehhez állítsa a `x-ms-client-request-id` tulajdonságát egy GUID Azonosítót.
 
-Telemetria küldése után nyissa meg Azure Log Analytics használatával a naplókhoz lekérdezéshez korrelációs azonosító:
+Telemetria küldése után nyissa meg a log analytics használatával a naplókhoz lekérdezéshez korrelációs azonosító:
 
 ```Kusto
 AzureDiagnostics
@@ -58,7 +58,7 @@ AzureDiagnostics
 | --- | --- |
 | YOUR_CORRELATION_IDENTIFIER | A korrelációs Azonosítót, amely az eseményadatok lett megadva |
 
-A felhasználó által definiált függvény engedélyezi a naplózást, ezeket a naplókat megjelennek-e az Azure Log Analytics-példány kategóriával `UserDefinedFunction`. Kérheti le azokat, az Azure Log Analyticsben adja meg a következő lekérdezési feltétel:
+A felhasználó által definiált függvény engedélyezi a naplózást, ezeket a naplókat megjelennek-e a log analytics-példány kategóriával `UserDefinedFunction`. Kérheti le azokat, adja meg a log analytics a következő lekérdezési feltétel:
 
 ```Kusto
 AzureDiagnostics

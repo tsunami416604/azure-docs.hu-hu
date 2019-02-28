@@ -14,12 +14,12 @@ ms.tgt_pltfrm: windows
 ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
-ms.openlocfilehash: 26b083069380d7bf107cd3be54cb2e4786789e11
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 4f4793e18185c16ef144de33b4f116eff89a9969
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593863"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960156"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC bővítmény
 
@@ -116,7 +116,7 @@ A következő JSON Azure Resource Manager-sablon a DSC-bővítmény beállítás
 | settings.configurationArguments | Gyűjtemény | Határozza meg a paramétereket, adja át szeretné a DSC-konfiguráció. Ez a tulajdonság nem lesznek titkosítva.
 | settings.configurationData.url | sztring | Adja meg az URL-cím, ahonnan letölthető a konfigurációs adatfájl (.pds1) való használatra a DSC-konfiguráció bemenetként. Ha a megadott URL-cím egy SAS-token hozzáférést igényel, szüksége lesz a protectedSettings.configurationDataUrlSasToken tulajdonsága az SAS-token értékét.
 | settings.privacy.dataEnabled | sztring | Engedélyezheti vagy letilthatja a telemetriai adatok gyűjtése. Ez a tulajdonság csak lehetséges értékei a következők "Engedélyezése", "Letiltás", ", vagy $null. És ez a tulajdonság üres vagy null értékű lesz telemetria engedélyezése
-| settings.advancedOptions.forcePullAndApply | Bool | Lehetővé teszi a DSC-bővítmény frissítése és a DSC-konfigurációk kihirdeti, amikor a frissítési mód lekéréses.
+| settings.advancedOptions.forcePullAndApply | Bool | Ez a beállítás célja a csomópontok regisztrálhat az Azure Automation DSC bővítmény használata élményének fokozása.  Ha az érték `$true`, a bővítmény várakozik az első futtatásakor a lekért sikeres/sikertelen visszaküldése előtt a szolgáltatás konfigurációját.  Ha értékét $false értékre van állítva, a bővítmény által visszaadott állapotot csak hivatkozni, hogy a csomópont regisztrálva lett az Azure Automation Állapotkonfiguráció sikeresen, és a csomópont-konfiguráció nem fog futni a regisztráció során.
 | settings.advancedOptions.downloadMappings | Gyűjtemény | Határozza meg a másodlagos helyek függőségeit, például a .NET és a WMF letöltése
 
 ### <a name="protected-settings-property-values"></a>Védett beállításainak Vlastnost értékek

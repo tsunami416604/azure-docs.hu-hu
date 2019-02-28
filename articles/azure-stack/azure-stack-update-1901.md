@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 02/28/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/09/2019
-ms.openlocfilehash: 77b3d8bd1d16e90e9929c41f0f28940694dc7906
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 18c4fd3fff244ac180ac0129f100a7d5b2472cab
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889834"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984832"
 ---
 # <a name="azure-stack-1901-update"></a>Azure Stack 1901 frissítése
 
@@ -71,6 +71,8 @@ Az Azure Stack-gyorsjavítások csak alkalmazhatók az Azure Stackkel integrált
     Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary, AzsHostingServiceCertificates
     ```
 
+- Ha az Azure Stack felügyelt System Center Operations Manager (SCOM), mindenképpen a felügyeleti csomag a Microsoft Azure Stackhez készült verziójára való frissítéséhez 10.0.3.11 1901 alkalmazása előtt.
+
 ## <a name="new-features"></a>Új funkciók
 
 A frissítés tartalmazza a következő új funkciókat és fejlesztéseket az Azure Stack:
@@ -91,9 +93,9 @@ A frissítés tartalmazza a következő új funkciókat és fejlesztéseket az A
    * **AzureRm.Insights**  
          Összesítő AzureRm-modul mostantól tartalmazza a már közzétett verzió 5.1.5 támogató a **api-verzió a 2018-01-01** metrikákhoz, metrikadefinícióinak erőforrástípusok.
 
-- **1.7.0-ás AzureStack** Ez használhatatlanná tévő változást kiadás. A kompatibilitástörő változásokat részletes ismertetéséért tekintse meg https://aka.ms/azspshmigration170
+- **1.7.0-ás AzureStack** Ez használhatatlanná tévő változást kiadás. A kompatibilitástörő változásokkal kapcsolatos részletekért tekintse meg a következőt: https://aka.ms/azspshmigration170.
    * **Azs.Backup.Admin modul**  
-         Kompatibilitástörő változás: Ügyféltanúsítvány-alapú titkosítási mód biztonsági mentési módosításait. A szimmetrikus kulcsok támogatása elavult.  
+         Kompatibilitástörő változás: Tanúsítványalapú titkosítási mód biztonsági mentésének módosításai. A tartalomkulcsok támogatása elavult.  
    * **Azs.Fabric.Admin Module**  
          `Get-AzsInfrastructureVolume` elavult. Új parancsmag `Get-AzsVolume`.  
          `Get-AzsStorageSystem` elavult.  Új parancsmag `Get-AzsStorageSubSystem`.  

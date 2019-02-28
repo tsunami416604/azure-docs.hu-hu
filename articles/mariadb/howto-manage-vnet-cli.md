@@ -6,18 +6,15 @@ ms.author: andrela
 ms.service: mariadb
 ms.devlang: azurecli
 ms.topic: conceptual
-ms.date: 11/20/2018
-ms.openlocfilehash: bfa55c0a91473a4adc6b9fb02ac9697208ef39f9
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 02/26/2019
+ms.openlocfilehash: a86b755770dc59f196c57f1d86e7f29200ce25e3
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540061"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56962060"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-using-azure-cli"></a>Hozzon létre és kezelhető az Azure Database for MariaDB virtuális hálózati Szolgáltatásvégpontok az Azure CLI használatával
-
-> [!IMPORTANT]
-> A virtuális hálózatok szolgáltatásvégponti funkciója jelenleg nyilvános előzetes verzióban.
 
 Virtuális hálózat (VNet) szolgáltatások végpontok és a szabályok egy virtuális hálózat magáncímterét kiterjesztheti az Azure Database for MariaDB-kiszolgáló. Kényelmes megoldás az Azure parancssori felület (CLI) parancs használatával, is létrehozása, frissítése, törlése, listázása és megjelenítése a virtuális hálózati Szolgáltatásvégpontok és szabályok kezelheti a kiszolgálót. Azure database for MariaDB virtuális hálózati Szolgáltatásvégpontok, korlátai, beleértve lásd [, Azure Database for MariaDB-kiszolgáló virtuális hálózati Szolgáltatásvégpontok](concepts-data-access-security-vnet.md). Virtuális hálózati Szolgáltatásvégpontok az Azure Database for MariaDB minden támogatott régióban érhetők el.
 

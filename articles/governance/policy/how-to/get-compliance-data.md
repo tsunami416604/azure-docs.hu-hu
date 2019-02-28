@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 44f0309d472a79526537f79feabcd9777b70bcc7
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 05802c2a6e1d5e0ea16aa8cfcc4333c14d05c7ae
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888771"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56986081"
 ---
 # <a name="getting-compliance-data"></a>A megfelelőségi adatok beszerzése
 
@@ -28,7 +28,7 @@ Többféleképpen is lehet a megfelelőségi adatokat a szabályzat és a kezdem
 Mielőtt megnézzük a jelentés a megfelelőségi módszereket, tekintsük át megfelelőségi adatok frissítésekor és a gyakoriság és a egy kiértékelési ciklusa kiváltó események.
 
 > [!WARNING]
-> Ha a megfelelőségi állapot elvártnak megfelelően **nincs regisztrálva**, ellenőrizze, hogy a **Microsoft.PolicyInsights** erőforrás-szolgáltató regisztrálva van, és, hogy a felhasználó rendelkezik-e a megfelelő szerepköralapú hozzáférés-ellenőrzés () RBAC) engedélyekkel leírtak szerint [Itt](../overview.md#rbac-permissions-in-azure-policy).
+> Ha a megfelelőségi állapot elvártnak megfelelően **nincs regisztrálva**, ellenőrizze, hogy a **Microsoft.PolicyInsights** erőforrás-szolgáltató regisztrálva van, és, hogy a felhasználó rendelkezik-e a megfelelő szerepköralapú hozzáférés-ellenőrzés () RBAC) engedélyekkel leírtak szerint [RBAC az Azure Policy](../overview.md#rbac-permissions-in-azure-policy).
 
 [!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 

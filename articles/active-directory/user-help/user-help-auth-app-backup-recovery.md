@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b8a06276bcaa989fa04f105ac7858c25ab4d0ef
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 1927e9b4aeec6f424c69632d8811c49c97d3aad1
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887505"
+ms.locfileid: "56961550"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Biztonsági mentés és helyreállítás fiók hitelesítő adatait a Microsoft Authenticator alkalmazással
 
@@ -28,7 +28,9 @@ ms.locfileid: "56887505"
 A Microsoft Authenticator alkalmazás biztonsági másolatot készít a fiók hitelesítő adatait, és a kapcsolódó alkalmazás beállításait, például a fiókok sorrendje a felhőbe. Biztonsági mentés, után használhatja az alkalmazás használatával állítsa helyre a információkat egy új eszközön, potenciálisan elkerülve az első zárolva ki vagy hozza létre újra a fiókok kellene.
 
 >[!IMPORTANT]
-> Szükség van egy személyes Microsoft-fiók és a egy iCloud-fiókjával minden egyes biztonsági mentési tárhelyet. De a tárolási helyen készíthet biztonsági mentést különböző fiókok. Ha például egy személyes fiók, egy iskolai fiókot és egy külső fiók például Facebook, Google, és így tovább.<br><br>Csak a személyes, mind a 3. fél fiók hitelesítő adatai találhatók, amely tartalmazza a felhasználónevet és a fiók a személyazonossága igazolásához szükséges ellenőrző kódot. A fiókok, beleértve az e-mailek vagy fájlok társított minden olyan információt nem tároljuk. Azt is nem hozzárendelése vagy megoszthatja a fiókok bármilyen módon vagy a termék vagy szolgáltatás. És végül a rendszergazda nem ezeket a fiókokat bármelyikét semmilyen információt.
+> Szükség van egy személyes Microsoft-fiók és a egy iCloud-fiókjával minden egyes biztonsági mentési tárhelyet. De a tárolási helyen készíthet biztonsági mentést különböző fiókok. Ha például egy személyes fiók, egy iskolai fiókot és egy külső fiók például Facebook, Google, és így tovább.
+
+> Csak a személyes, mind a 3. fél fiók hitelesítő adatai találhatók, amely tartalmazza a felhasználónevet és a fiók a személyazonossága igazolásához szükséges ellenőrző kódot. A fiókok, beleértve az e-mailek vagy fájlok társított minden olyan információt nem tároljuk. Azt is nem hozzárendelése vagy megoszthatja a fiókok bármilyen módon vagy a termék vagy szolgáltatás. És végül a rendszergazda nem ezeket a fiókokat bármelyikét semmilyen információt.
 
 ## <a name="back-up-your-account-credentials"></a>Készítsen biztonsági másolatot a hitelesítő adatait
 Készíthet biztonsági másolatot a hitelesítő adatokat, mielőtt is kell rendelkeznie:
@@ -98,10 +100,12 @@ Néhány oka miért a biztonsági mentés nem feltétlenül érhető el:
 -   **A Microsoft Authenticator meglévő fiókok.** Ha már beállította a Microsoft Authenticator alkalmazást a fiókok, az alkalmazás nem állítható helyre a biztonsági másolat-fiókok. Amely megakadályozza, hogy recovery segítségével, győződjön meg arról, hogy a saját fiókja adataira felül nem elavult adatokkal. Ebben az esetben el kell távolítania minden olyan meglévő fiók adatait a meglévő fiókokat, akkor a biztonsági mentés helyreállítása előtt az Authenticator alkalmazás beállítása a.
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy készíteni és helyreállítani a fiók hitelesítő adatait az új eszközt, továbbra is a Microsoft Authenticator alkalmazás használatához a személyazonosságát.
+Most, hogy készíteni és helyreállítani a fiók hitelesítő adatait az új eszközt, továbbra is a Microsoft Authenticator alkalmazás használatához a személyazonosságát. További információkért lásd: [jelentkezzen be a Microsoft Authenticator alkalmazás használata a fiókok](user-help-sign-in.md).
 
 ## <a name="related-topics"></a>Kapcsolódó témakörök
-- [Bevezetés a Microsoft Authenticator alkalmazás használatába](user-help-auth-app-download-install.md)  
+
+- [Mi a Microsoft Authenticator alkalmazást?](user-help-auth-app-overview.md)
+
 - [A Microsoft Authenticator alkalmazással kapcsolatos gyakori kérdések](user-help-auth-app-faq.md)
 
 - [Többtényezős hitelesítés](https://docs.microsoft.com/azure/multi-factor-authentication/)

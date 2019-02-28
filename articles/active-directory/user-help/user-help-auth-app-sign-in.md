@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3974d1de2bd90049541dcc249f18346c9e48fd3d
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 80fd458356cf5b375e0b3d922d9bdca3f3a30503
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456027"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961669"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Jelentkezzen be a fiókok a Microsoft Authenticator alkalmazással
 A Microsoft Authenticator alkalmazás segítségével jelentkezzen be a fiókok kétfaktoros ellenőrzési használatakor. A kétfaktoros hitelesítési segítségével a fiókok biztonságosabb, hozzáférhet a különösen bizalmas adatok megtekintésekor. Mivel a jelszavak elfelejtett is, amelyeket elloptak vagy feltört, kéttényezős hitelesítés végrehajtása egy további biztonsági lépés, amely megnehezíti mások feltörhessék fiókja védelme érdekében.
@@ -110,14 +110,17 @@ Jelentkezzen be a munkahelyi vagy iskolai vagy személyes fiókjához szüksége
 |**Hogyan biztonságosabb, mint a jelszó beírása telefonom történő bejelentkezés?**|Ma a legtöbb ember bejelentkezés webhelyek vagy alkalmazások felhasználónév és jelszó használatával. Sajnos jelszavakat is lehet elvesztése, ellopása, vagy a támadók által kitalálni.<br><br>Miután beállította a Microsoft Authenticator alkalmazást, a telefonján, hogy feloldja fiókját, a telefon PIN-kódot vagy biometrikus zárolás által védett létrehoz egy kulcsot. Ez a kulcs szolgál majd igazolja az identitását aláírás közben.<br><br>**Fontos**<br>Az adatok csak használatos helyileg a kulcsának védelmére. Ez soha nem küldött, vagy a felhőben tárolt.|
 |**Telefonos bejelentkezés vált a kétlépéses ellenőrzés? Kell azt a kikapcsolása után?**|Telefonos bejelentkezés egy kétlépéses ellenőrzést olyan típusú, ahol a két lépést mindkét fordulhat elő, a mobileszközön. Két lépés ellenőrzés bekapcsolva a fiókjához további biztonsági biztosítása érdekében érdemes megtartani.|
 |**Ha a kétlépéses ellenőrzés bekapcsolva a fiókomhoz megtartásához van két értesítések jóváhagyása?**| Nem. Bejelentkezés a Microsoft-fiókot a telefonon is számít a kétlépéses ellenőrzés, így nem második jóváhagyás szükséges.|
-|**Mi történik, ha megszakad a telefonra, vagy még nincs velem? Hogyan férhetek hozzá a-fiókomat?**| Mindig kiválaszthatja a használatát, ehelyett hivatkozás egy jelszót a bejelentkezési lapon váltson vissza az Ön jelszavát. Azonban ha a kétlépéses ellenőrzés továbbra is szüksége egy második módszerrel igazolja személyazonosságát.<br><br>**Fontos**<br>Határozottan javasoljuk, hogy ellenőrizze, hogy egynél több, naprakész, a fiókjához társított ellenőrzési módszert.<br><br>Az ellenőrzési módszerek sorát a személyes fiókok segítségével kezelheti a [biztonsági beállítások](https://account.live.com/proofs/manage) lap. Munkahelyi vagy iskolai fiókok esetében nyissa meg a szervezet [további biztonsági ellenőrzés](https://aka.ms/MFASetup) lap vagy az **a fiókja biztonságának megőrzéséhez** lapon, ha a rendszergazda bekapcsolta az biztonsági adatait. További információ a biztonsági adatok: [a biztonsági adatok kezelése](security-info-manage-settings.md).<br><br>Ha Ön tudja felügyelni az ellenőrzési módszerek sorát, meg kell forduljon a rendszergazdához.|
+|**Mi történik, ha megszakad a telefonra, vagy még nincs velem? Hogyan férhetek hozzá a-fiókomat?**| Mindig kiválaszthatja a használatát, ehelyett hivatkozás egy jelszót a bejelentkezési lapon váltson vissza az Ön jelszavát. Azonban ha a kétlépéses ellenőrzés továbbra is szüksége egy második módszerrel igazolja személyazonosságát.<br><br>**Fontos**<br>Határozottan javasoljuk, hogy ellenőrizze, hogy egynél több, naprakész, a fiókjához társított ellenőrzési módszert.<br><br>Az ellenőrzési módszerek sorát a személyes fiókok segítségével kezelheti a [biztonsági beállítások](https://account.live.com/proofs/manage) lap. Munkahelyi vagy iskolai fiókok esetében nyissa meg a szervezet [további biztonsági ellenőrzés](https://aka.ms/MFASetup) lap vagy az **a fiókja biztonságának megőrzéséhez** lapon, ha a rendszergazda bekapcsolta az biztonsági adatait. További információ a biztonsági adatok: [Security info (előzetes verzió) – áttekintés](user-help-security-info-overview.md).<br><br>Ha Ön tudja felügyelni az ellenőrzési módszerek sorát, meg kell forduljon a rendszergazdához.|
 |**Hogyan leállítása ezzel a funkcióval és térjen vissza a jelszó használatával?**|Személyes fiókok esetében válassza a **inkább jelszó** hivatkozásra a bejelentkezés során. A legutóbbi választott megjegyezze őket, és alapértelmezés szerint el, amikor legközelebb bejelentkezik. Ha szeretne lépjen vissza a telefonos bejelentkezés, válassza ki a **inkább alkalmazás** hivatkozásra a bejelentkezés során.<br><br>A további biztonsági ellenőrzési lapot kell munkahelyi vagy iskolai fiókok esetében (például https://aka.ms/MFASetup) , és távolítsa el a Microsoft Authenticator alkalmazást.|
 |**Miért nem használható a telefonos bejelentkezés egynél több munkahelyi vagy iskolai fiókkal?**| A telefon egyetlen munkahelyi vagy iskolai fiók regisztrálva kell lenniük. Kapcsolja be a telefonos bejelentkezés egy másik munkahelyi vagy iskolai fiókot szeretne, ha meg kell először a régi törli az eszköz regisztrációját keresztül a **beállítások** lapot.|
 |**Is tudok bejelentkezni a számítógépre a telefonom használatával?**| A számítógépen javasoljuk, hogy a használatával Windows Hello a Windows 10-es aláírási. Windows Hello lehetővé teszi az arcok, ujjlenyomattal vagy a PIN-kód segítségével jelentkezzen be.|
 
 ## <a name="next-steps"></a>További lépések
+
+- Ha problémába ütközik az ellenőrző kód beolvasása a személyes Microsoft-fiókkal, tekintse meg a **ellenőrző kód kapcsolatos hibák elhárítása** szakaszában a [Microsoft-fiók biztonsági adatai & k ellenőrzése kódok](https://support.microsoft.com/en-us/help/12428/microsoft-account-security-info-verification-codes) cikk.
+
 - Ha az alkalmazással kapcsolatos további általános kérdése van, tekintse meg a [a Microsoft Authenticator – gyakori kérdések](user-help-auth-app-faq.md)
 
 - Ha azt szeretné, hogy további információ a kétlépéses ellenőrzést, [a kétlépéses ellenőrzéshez a fiók beállítása](multi-factor-authentication-end-user-first-time.md)
 
-- Ha azt szeretné, hogy további információ a biztonsági adatait, tekintse meg [a biztonsági adatok kezelése](security-info-manage-settings.md)
+- Ha azt szeretné, hogy további információ a biztonsági adatait, tekintse meg [Security info (előzetes verzió) – áttekintés](user-help-security-info-overview.md)

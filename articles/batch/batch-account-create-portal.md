@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/25/2019
+ms.date: 02/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 04631431c03f6fdd378bfa99edb9b67f8d6a0cad
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cf47e3b48f1047af88a19c59459c19c078f71a63
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193917"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984475"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Batch-fiók létrehozása az Azure Portalon
 
@@ -42,19 +42,21 @@ További ismereteket a Batch-fiókokról és -forgatókönyvekről a [funkciók 
 
     ![Batch-fiók létrehozása][account_portal]
 
-    a. **Fiók neve**: A választott név, a fiók létrehozása az Azure-régió egyedinek kell lennie (lásd: **hely** alább). A fiók neve csak kisbetűket vagy számokat tartalmazhat, és 3–24 karakter hosszúnak kell lennie.
+    a. **Előfizetés**: Az előfizetés, amelyben a Batch-fiók létrehozásához. Ha csak egy előfizetéssel rendelkezik, ez alapértelmezés szerint be van jelölve.
 
-    b. **Előfizetés**: Az előfizetés, amelyben a Batch-fiók létrehozásához. Ha csak egy előfizetéssel rendelkezik, ez alapértelmezés szerint be van jelölve.
+    b. **Erőforráscsoport**: Válasszon ki egy meglévő erőforráscsoportot az új Batch-fiók, vagy újat is létrehozhat egy újat.
 
-    c. **Erőforráscsoport**: Válasszon ki egy meglévő erőforráscsoportot az új Batch-fiók, vagy újat is létrehozhat egy újat.
+    c. **Fiók neve**: A választott név, a fiók létrehozása az Azure-régió egyedinek kell lennie (lásd: **hely** alább). A fiók neve csak kisbetűket vagy számokat tartalmazhat, és 3–24 karakter hosszúnak kell lennie.
 
     d. **Hely**: Az Azure-régió, amelyben a Batch-fiók létrehozásához. Csak az előfizetése és az erőforráscsoportja által támogatott régiók jelennek meg lehetőségként.
 
-    e. **Storage-fiók** (nem kötelező): Egy Azure Storage-fiók, amelyet a Batch-fiókhoz társít. A legtöbb Batch-fiókhoz ajánlott a használata. A Batch szolgáltatásban elérhető tárfiók-lehetőségekről további információt [a Batch funkcióinak áttekintésében](batch-api-basics.md#azure-storage-account) talál. A portálon válasszon ki egy már létező tárfiókot, vagy hozzon létre egy újat.
+    e. **Storage-fiók**: Egy nem kötelező az Azure Storage-fiók, amelyet a Batch-fiókhoz társít. A legjobb teljesítmény érdekében javasoljuk egy általános célú v2-tárfiók. Az összes tárfiók-beállítások a Batch szolgáltatásban, lásd: a [Azure Batch funkcióinak áttekintése](batch-api-basics.md#azure-storage-account). A portálon válasszon ki egy meglévő tárfiókot, vagy hozzon létre egy újat.
 
       ![Tárfiók létrehozása][storage_account]
 
-    f. **Készletlefoglalási mód**: A legtöbb esetben az alapértelmezett érték elfogadásához **a Batch szolgáltatás**.
+    f. **Készletlefoglalási mód**: Az a **speciális** megadhatja a készletlefoglalási mód, beállítások lap **a Batch szolgáltatás** vagy **felhasználói előfizetés**. A legtöbb esetben az alapértelmezett érték elfogadásához **a Batch szolgáltatás**.
+
+      ![A Batch készletlefoglalási mód][pool_allocation]
 
 1. A fiók létrehozásához kattintson a **Létrehozás** gombra.
 
@@ -115,7 +117,7 @@ A Batch-fiók felhasználói előfizetés módban való létrehozásakor haszná
 
 ### <a name="configure-subscription-quotas"></a>Előfizetési kvóták
 
-Magkvótája nincs megadva, alapértelmezés szerint a felhasználói előfizetés Batch-fiókok. Magkvótája kézzel állítható be, mert a tipikus Batch magkvótája nem vonatkoznak a fiókok felhasználói előfizetési módban.
+Magkvótája nincs megadva, alapértelmezés szerint a felhasználói előfizetés Batch-fiókok. Magkvótája kézzel állítható be, mert a standard szintű Batch magkvótája nem vonatkoznak a fiókok felhasználói előfizetési módban.
 
 1. Az a [az Azure portal][azure_portal], válassza ki a felhasználói előfizetés módban Batch-fiók beállítások és tulajdonságok megjelenítéséhez.
 
@@ -142,8 +144,8 @@ Az Azure Portal használata mellett a többek között a következő eszközökk
 [marketplace_portal]: ./media/batch-account-create-portal/marketplace-batch.png
 [account_blade]: ./media/batch-account-create-portal/batch_blade.png
 [account_portal]: ./media/batch-account-create-portal/batch-account-portal.png
+[pool_allocation]: ./media/batch-account-create-portal/batch-pool-allocation.png
 [account_keys]: ./media/batch-account-create-portal/batch-account-keys.png
-[account_url]: ./media/batch-account-create-portal/account_url.png
 [storage_account]: ./media/batch-account-create-portal/storage_account.png
 [subscription_access]: ./media/batch-account-create-portal/subscription_iam.png
 [add_permission]: ./media/batch-account-create-portal/add_permission.png

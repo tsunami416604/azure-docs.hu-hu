@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: seodec18
-ms.date: 12/08/2018
+ms.date: 02/26/2019
 ms.author: juliako
-ms.openlocfilehash: c62d9132cdd7eb2ebcbecc3c417ad30d368a278a
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: a0843e6c641ded75ded01da4c8a54cd4c0f48ee1
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138704"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56957470"
 ---
 # <a name="how-to-encode-with-a-custom-transform"></a>Az egyéni átalakítási kódolása
 
@@ -38,7 +38,7 @@ Az egyéni előre definiált mintát található a [EncodeCustomTransform](https
 
 ## <a name="create-a-transform-with-a-custom-preset"></a>Hozzon létre egy-egy átalakítási egyéni előbeállítás 
 
-Egy új létrehozásakor [átalakítása](https://docs.microsoft.com/rest/api/media/transforms), meg kell adnia a kívánt műveleteket, mint kimenet előállításához. A kötelező paraméter egy **TransformOutput** objektum, ahogyan az az alábbi kódban látható. Minden **TransformOutput** objektum tartalmaz **előzetes beállításokat**. Az **előzetes beállítások** részletesen leírják azokat a video- és audiofeldolgozási műveleteket, amelyek a kívánt **TransformOutput** objektum előállításához szükségesek. A következő **TransformOutput** hoz létre egyéni kodeket, és a réteg kimeneti beállításait.
+Egy új létrehozásakor [átalakítása](https://docs.microsoft.com/rest/api/media/transforms), meg kell adnia a kívánt műveleteket, mint kimenet előállításához. A kötelező paraméter egy [TransformOutput](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#transformoutput) objektum, ahogyan az az alábbi kódban látható. Minden **TransformOutput** objektum tartalmaz **előzetes beállításokat**. Az **előzetes beállítások** részletesen leírják azokat a video- és audiofeldolgozási műveleteket, amelyek a kívánt **TransformOutput** objektum előállításához szükségesek. A következő **TransformOutput** hoz létre egyéni kodeket, és a réteg kimeneti beállításait.
 
 [Átalakítások](https://docs.microsoft.com/rest/api/media/transforms) létrehozásakor ellenőrizze a **Get** metódussal, hogy létezik-e már átalakítás, ahogyan az az alábbi kódban látható.  A Media Services v3 **első** módszerek is szolgálnak az entitásokon **null** Ha az entitás nem létezik (a kis-és ellenőrizze a nevét).
 

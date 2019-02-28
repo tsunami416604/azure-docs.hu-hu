@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/08/2019
 ms.author: magoedte
-ms.openlocfilehash: 67217b63588946782d42b4287cf5f24e29ebe5bd
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 7eecd7f5da2b20cb80d8a04d105460baaf9ed4a2
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961262"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984713"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>A virtuális gépek (előzetes verzió) és az Azure Monitor az Azure virtuális gépek állapotának ismertetése
-Az Azure több szolgáltatást tartalmaz, amelyek külön-külön végrehajtani egy adott szerepkör vagy a feladatot a figyelés területen, de biztosít az Azure-beli virtuális gépeken futó operációs rendszer egy részletes állapota szempontjából nem volt elérhető.  A Log Analytics vagy az Azure Monitor használatával különböző feltételek esetén felügyelheti, amíg nem tervezték őket modellezheti, és az alapvető összetevők állapotát vagy a virtuális gép általános állapotát.  Az Azure virtuális gépek Állapotfigyelő szolgáltatás figyelője proaktív módon figyeli a rendelkezésre állás és a Windows vagy Linux-alapú vendég operációs rendszer, amelyek a legfontosabb összetevők és a kapcsolatok, feltételek, amely meghatározza, hogy miként állapotát, a modell teljesítményét összetevők, és riasztást küld, ha a nem kifogástalan állapot észlelésekor.  
+Az Azure több szolgáltatást tartalmaz, amelyek külön-külön végrehajtani egy adott szerepkör vagy a feladatot a figyelés területen, de biztosít az Azure-beli virtuális gépeken futó operációs rendszer egy részletes állapota szempontjából nem volt elérhető.  Felügyelheti az Azure Monitor használatával különböző feltételeket, míg úgy nem lett kialakítva, hogy modellezheti, és az alapvető összetevők állapotát vagy a virtuális gép általános állapotát.  Az Azure virtuális gépek Állapotfigyelő szolgáltatás figyelője proaktív módon figyeli a rendelkezésre állás és a Windows vagy Linux-alapú vendég operációs rendszer, amelyek a legfontosabb összetevők és a kapcsolatok, feltételek, amely meghatározza, hogy miként állapotát, a modell teljesítményét összetevők, és riasztást küld, ha a nem kifogástalan állapot észlelésekor.  
 
 Megtekintése az Azure virtuális gép összesített állapotát és operációs rendszer alapjául szolgáló virtuális gépek Health, közvetlenül a virtuális gépről vagy az Azure Monitor egy erőforráscsoportba tartozó minden virtuális gépen az Azure Monitor szolgáltatással két perspektíva adatai figyelhető meg.
 
@@ -251,7 +251,7 @@ Virtuális gép állapota riasztások súlyosság szerint osztályozva száma é
 
 Az a **riasztások** lap, akkor csak hatóköre nem a kijelölt megfelelő riasztások megjelenítése, de az is szűrve **erőforrástípus** csak az állapotriasztások váltotta ki a virtuális gép típusú erőforrást jeleníti meg.  Ez megjelenik a riasztások listája, az oszlop alatt **célerőforrás**, ahol az Azure virtuális Gépen, a riasztás kiadását okozó számára az adott feltételeknek nem megfelelő állapotú feltétel teljesülésekor jeleníti meg.  
 
-Más típusú erőforrások vagy szolgáltatások riasztásai nem célja, hogy ez a nézet szerepelnek, például a riasztások a lekérdezések alapján a Log Analytics vagy a mérőszám, amely riasztást küld, általában az alapértelmezett Azure Monitor lenne megtekintése [minden riasztás](../../azure-monitor/platform/alerts-overview.md#all-alerts-page) lapot. 
+Más típusú erőforrások vagy szolgáltatások riasztásai nem célja, hogy ez a nézet szerepelnek, például a riasztások alapján naplólekérdezések vagy mérőszám, amely riasztást küld, általában az alapértelmezett Azure Monitor lenne megtekintése [minden riasztás](../../azure-monitor/platform/alerts-overview.md#all-alerts-page) lapot. 
 
 Ez a nézet legördülő listák az oldal tetején lévő értékek kijelölésével szűrheti.
 

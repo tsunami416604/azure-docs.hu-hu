@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 2bdd3cd05f78503962461abfcc85320c25350e69
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: a002c4ff843ad1e0bc48d490132d7499526f4d7b
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593131"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958762"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Az Azure Desired State Configuration bővítmény kezelő bemutatása
 
@@ -65,6 +65,25 @@ A WMF telepítése újraindítást igényel. Az újraindítás után a bővítm�
 ### <a name="default-configuration-script"></a>Alapértelmezett konfigurációs parancsfájl
 
 Az Azure-DSC-bővítmény tartalmaz egy alapértelmezett konfigurációs parancsfájlt, amely rendelkezik tekinthető használni fogunk előkészíteni az Azure Automation DSC szolgáltatás egy virtuális Gépet. A parancsprogram paramétereinek összhangban legyenek a konfigurálható tulajdonságokról az [helyi Configuration Manager](/powershell/dsc/metaconfig). Szkriptparaméterek, lásd: [alapértelmezett konfigurációs parancsfájl](dsc-template.md#default-configuration-script) a [Desired State Configuration bővítmény az Azure Resource Manager-sablonok](dsc-template.md). A teljes parancsfájl, tekintse meg a [Azure gyorsindítási sablon github](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true).
+
+## <a name="information-for-registering-with-azure-automation-state-configuration-dsc-service"></a>Regisztrálás az Azure Automation állapot Configuration (DSC) szolgáltatás információi
+
+A DSC-bővítmény egy csomópont regisztrálni a konfigurációs szolgáltatás használatakor három értéket kell megadni.
+
+- RegistrationUrl – a https-címet az Azure Automation-fiók
+- RegistrationKey – egy közös titkos kulcsot használt csomópontok regisztrálni a szolgáltatásban
+- NodeConfigurationName – a nevét, a csomópont konfigurációs (MOF) formátumú, kérje le a szolgáltatást, hogy a kiszolgálói szerepkör konfigurálása
+
+Ez az információ látható a [az Azure portal](../../automation/automation-dsc-onboarding.md#azure-portal) vagy a Powershellt használhatja.
+
+```PowerShell
+(Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).Endpoint
+(Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).PrimaryKey
+```
+
+A csomópont-konfiguráció megadásához, ellenőrizze, hogy nevét használja a *csomópont-konfiguráció* és nem a konfigurációt.
+Egy konfigurációs van definiálva egy parancsfájlban használt [(MOF-fájl) csomópont-konfiguráció fordítása](https://docs.microsoft.com/en-us/azure/automation/automation-dsc-compile).
+A név mindig lesz a konfigurációt, majd utána egy ponttal `.` és `localhost` vagy egy adott számítógép nevét.
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>DSC-bővítmény a Resource Manager-sablonok
 

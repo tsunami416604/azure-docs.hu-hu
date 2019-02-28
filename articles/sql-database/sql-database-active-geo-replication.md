@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 02/26/2019
-ms.openlocfilehash: f6179c14c0a057a08203764316eeb43783cd7fc8
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.date: 02/27/2019
+ms.openlocfilehash: 0d0ee3664a5f442e4fbf61af3111a53110afd740
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887743"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984747"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Létrehozásáról és használatáról az aktív georeplikáció
 
@@ -51,9 +51,6 @@ Aktív georeplikáció kihasználja a [Always On](https://docs.microsoft.com/sql
 > Ha két régió között hálózati hiba, így újra létrehozza a kapcsolatokat próbálkozni 10 másodpercenként.
 > [!IMPORTANT]
 > Garantálja, hogy a kritikus változásokat az elsődleges adatbázis egy másodlagos, a feladatátvétel előtt replikálódnak, kényszerítheti a szinkronizálási annak biztosítására, a replikáció kritikus változások (például jelszó frissítések). A kényszerített szinkronizálási mert blokkolja a hívó szálat mindaddig, amíg minden véglegesített tranzakciók replikálva vannak hatással van a teljesítményre. További információkért lásd: [sp_wait_for_database_copy_sync](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync). A replikációs késés az elsődleges adatbázis és a geo-secondary figyeléséről lásd: [sys.dm_geo_replication_link_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).
-
-
-
 
 Az alábbi ábra példát mutat be egy aktív georeplikáció által beállított, az elsődleges régióban az USA északi középső Régiójában és a másodlagos régióban az USA déli középső Régiója.
 
@@ -110,7 +107,7 @@ Elérése érdekében a valódi üzleti folytonosság, adatbázis-redundancia ad
 
 - **Hitelesítő adatok és -tűzfalszabályok szinkronban tartása**
 
-Azt javasoljuk, [adatbázis-tűzfalszabályok](sql-database-firewall-configure.md) adatbázisok georeplikált, így ezek a szabályok replikálható, minden másodlagos adatbázisát az elsődleges azonos tűzfalszabályok rendelkezésre áll az adatbázissal. Ezzel a módszerrel nem kell az ügyfelek manuális konfigurálása és karbantartása, mind az elsődleges és másodlagos adatbázisok üzemeltetési kiszolgáló tűzfalszabályait. Ehhez hasonlóan használatával [tartalmazott adatbázis felhasználóit](sql-database-manage-logins.md) adatok hozzáférés biztosítja, mind az elsődleges, mind a másodlagos adatbázisok mindig azonos felhasználói hitelesítő adatokat, így a feladatátvétel során a nem a felhasználónevek és jelszavak eltérések miatt szolgáltatások. Igény szerinti hozzáadásával [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md), ügyfelek kezelhetik a felhasználói hozzáférést az elsődleges és másodlagos adatbázisok, és szükségtelenné teszik a kezeléséhez hitelesítő adatait érvényesítette adatbázisokban.
+Azt javasoljuk, [adatbázisszintű IP-tűzfalszabályainak](sql-database-firewall-configure.md) adatbázisok georeplikált, így ezek a szabályok az összes másodlagos adatbázis legyen azonos IP-tűzfalszabályainak elsődlegesként Database lehet replikálni. Ezzel a módszerrel nem kell az ügyfelek manuális konfigurálása és karbantartása, mind az elsődleges és másodlagos adatbázisok üzemeltetési kiszolgáló tűzfalszabályait. Ehhez hasonlóan használatával [tartalmazott adatbázis felhasználóit](sql-database-manage-logins.md) adatok hozzáférés biztosítja, mind az elsődleges, mind a másodlagos adatbázisok mindig azonos felhasználói hitelesítő adatokat, így a feladatátvétel során a nem a felhasználónevek és jelszavak eltérések miatt szolgáltatások. Igény szerinti hozzáadásával [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md), ügyfelek kezelhetik a felhasználói hozzáférést az elsődleges és másodlagos adatbázisok, és szükségtelenné teszik a kezeléséhez hitelesítő adatait érvényesítette adatbázisokban.
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>A frissítés, vagy egy elsődleges adatbázis alacsonyabb szolgáltatásszintre
 

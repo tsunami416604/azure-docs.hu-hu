@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/11/2018
+ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: e376011feacd59c84686aa3d60a7e79e07d61dbd
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 6cb9e839b1fffd29ce1d78e82fb4ab054b92efc6
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672950"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959125"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Oktatóanyag: Porttovábbítást konfigurálása az Azure Load Balancer a portál használatával
 
@@ -44,25 +44,26 @@ Ebben az oktatóanyagban az összes lépéseket, jelentkezzen be az Azure Portal
 
 Először hozzon létre egy nyilvános Standard load balancer, amely meg tudja osztani a forgalom terhelést a virtuális gépen. Standard load balancer támogatja a csak a Standard nyilvános IP-címet. Standard load balancer létrehozásakor is létrehozhat új Standard nyilvános IP-címet, amely van konfigurálva, a terheléselosztó előtérrendszerhez, és nevű **LoadBalancerFrontEnd** alapértelmezés szerint. 
 
-1. A Portal bal felső sarkában kattintson az **Erőforrás létrehozása** > **Hálózat** > **Terheléselosztó** elemre.
-   
-1. Az a **terheléselosztó létrehozása** panelen adja meg ezeket az értékeket:
-   
-   - **Név**: Típus *MyLoadBalancer*.
-   - **Típus**: Válassza ki **nyilvános**. 
-   - **TERMÉKVÁLTOZAT**: Válassza ki **Standard**.
-   - **Nyilvános IP-cím**: Válassza ki **új létrehozása**, majd írja be a *MyPublicIP* a mezőben.
-   - **Nyilvános IP-cím konfigurálása** > **rendelkezésre állási zónában**: Válassza ki **zónaredundáns**.
-   - **Erőforráscsoport**: Válassza ki **új létrehozása**, majd adja meg *MyResourceGroupLB*, és válassza ki **OK**. 
-   - **Hely**: Válassza a **Nyugat-Európa** régiót. 
-     
-     >[!NOTE]
-     >Győződjön meg arról, hogy a terheléselosztó és az összes erőforrás létrehozásához, egy helyen, amely támogatja a rendelkezésre állási zónák. További információkért lásd: [rendelkezésre állási zónákat támogató régiók](../availability-zones/az-overview.md#regions-that-support-availability-zones). 
-   
-1. Kattintson a **Létrehozás** gombra.
-   
-![Load Balancer létrehozása](./media/tutorial-load-balancer-port-forwarding-portal/1-load-balancer.png)
+1. A képernyő bal felső részén kattintson az **Erőforrás létrehozása** > **Hálózatkezelés** > **Terheléselosztó** elemre.
+2. Az a **alapjai** lapján a **terheléselosztó létrehozása** lap, adja meg vagy válassza ki a következő adatokat, fogadja el az alapértelmezett értékeket a többi beállításnál, és válassza **felülvizsgálat +létrehozása**:
 
+    | Beállítás                 | Érték                                              |
+    | ---                     | ---                                                |
+    | Előfizetés               | Válassza ki előfizetését.    |    
+    | Erőforráscsoport         | Válassza ki **új létrehozása** , és írja be *MyResourceGroupLB* a szövegmezőben.|
+    | Name (Név)                   | *myLoadBalancer*                                   |
+    | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
+    | Typo          | Válassza ki **nyilvános**.                                        |
+    | SKU           | Válassza ki **Standard**.                          |
+    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. |
+    | Nyilvános IP-cím neve              | Típus *myPublicIP* a szövegmezőben.   |
+    |Rendelkezésre állási zóna| Válassza ki **Zónaredundáns**.    |
+     
+    >[!NOTE]
+     >Győződjön meg arról, hogy a terheléselosztó és az összes erőforrás létrehozásához, egy helyen, amely támogatja a rendelkezésre állási zónák. További információkért lásd: [rendelkezésre állási zónákat támogató régiók](../availability-zones/az-overview.md#regions-that-support-availability-zones). 
+
+3. Az a **felülvizsgálat + létrehozása** lapra, majd **létrehozás**.  
+  
 ## <a name="create-and-configure-back-end-servers"></a>Hozzon létre, és a háttér-kiszolgálók konfigurálása
 
 Virtuális hálózat létrehozása két virtuális gépet, és a virtuális gépeket ad hozzá a terheléselosztó háttérkészlethez. 

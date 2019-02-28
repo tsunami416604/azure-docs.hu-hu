@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: wesmc
-ms.openlocfilehash: 30b83613637d97bfe265c4f5a9c911d14da50c4f
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 26865acbf635f07db4799ab197e110d37cbe69e8
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810907"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984339"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>A megoldás a megfelelő IoT Hub-csomag kiválasztása
 
@@ -53,7 +53,7 @@ Az IoT Hub is biztosít egy ingyenes csomag, amelynek szinkronban tesztelés és
 
 Az Azure IoT Hubs tartalmaznia több fő összetevőinek [Azure Event Hubs](../event-hubs/event-hubs-features.md), többek között [partíciók](../event-hubs/event-hubs-features.md#partitions). Az IoT hubok az eseményfolyamokról általában különböző IoT-eszközök által jelentett bejövő telemetriai adatokkal van feltöltve. A particionálás az eseménystream versenyt válthat ki, amely fordulhat elő, ha az egyidejű olvasása és írása az eseményfolyamokról csökkentésére szolgál. 
 
-A partíciós korlát akkor kell kiválasztani, amikor az IoT Hub jön létre, és nem módosítható. A partíciók maximális korlátot, az alapszintű csomag IoT hubok 8, és a standard csomag esetében a maximális érték a 32. A legtöbb IoT-központok csak 4 partíciók van szükség. További információk a partíciók számával, az Event Hubs – gyakori kérdések: [hány partíciók van szükségem?](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need)
+A partíciós korlát akkor kell kiválasztani, amikor az IoT Hub jön létre, és nem módosítható. A partíciók maximális korlátot, az alapszintű csomag az IoT Hub és az IoT Hub standard szintű 32. A legtöbb IoT-központok csak 4 partíciók van szükség. További információk a partíciók számával, az Event Hubs – gyakori kérdések: [hány partíciók van szükségem?](../event-hubs/event-hubs-faq.md#how-many-partitions-do-i-need)
 
 
 ## <a name="tier-upgrade"></a>Csomag frissítése

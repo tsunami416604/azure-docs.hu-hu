@@ -1,5 +1,5 @@
 ---
-title: VMware Monitoring megoldás a Log Analytics Rendszereben |} A Microsoft Docs
+title: VMware Monitoring megoldás az Azure Monitor |} A Microsoft Docs
 description: Ismerje meg hogyan segíthet a VMware Monitoring megoldás a naplók kezelése és az ESXi-gazdagépek figyeléséhez.
 services: log-analytics
 documentationcenter: ''
@@ -13,23 +13,23 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
-ms.openlocfilehash: 9f5bdc3686e35f09b461bd5c2df695218b48ede3
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 92889708df2df06096ac74d6f270af990d02c07a
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993367"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984254"
 ---
-# <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>VMware Monitoring (előzetes verzió) megoldás a Log Analyticsben
+# <a name="vmware-monitoring-preview-solution-in-azure-monitor"></a>VMware Monitoring (előzetes verzió) megoldás az Azure monitorban
 
 ![VMware szimbólum](./media/vmware/vmware-symbol.png)
 
 > [!NOTE]
 > A VMware Monitoring megoldás elavult.  Ügyfelek, akik már telepítették a megoldás továbbra is használhatja, de a VMware Monitoring nem lehet hozzáadni új munkaterületek.
 
-A VMware Monitoring megoldás a Log Analytics, amely segít a központi naplózást és figyelést nagy méretű VMware-naplók létrehozása megoldás is. Ez a cikk bemutatja, hogyan hibaelhárítása, rögzítése és az ESXi-gazdagépek, a megoldás segítségével egy helyen kezelheti. A megoldás révén láthatja a részletes adatok egy helyen az ESXi gazdagépek. Láthatja a legtöbbször előforduló események száma, állapotát és az ESXi-gazdagép naplóinak keresztül elérhető virtuális gép és az ESXi-gazdagépek trendeket. Elháríthatja, megtekintésével és központosított ESXi-gazdagép naplóinak keresése. És a naplóbeli keresési lekérdezések alapján riasztásokat is létrehozhat.
+A VMware Monitoring megoldás az Azure monitorban olyan megoldás, amely segít a központi naplózást és figyelést nagy méretű VMware-naplók létrehozása. Ez a cikk bemutatja, hogyan hibaelhárítása, rögzítése és az ESXi-gazdagépek, a megoldás segítségével egy helyen kezelheti. A megoldás révén láthatja a részletes adatok egy helyen az ESXi gazdagépek. Láthatja a legtöbbször előforduló események száma, állapotát és az ESXi-gazdagép naplóinak keresztül elérhető virtuális gép és az ESXi-gazdagépek trendeket. Elháríthatja, megtekintésével és központosított ESXi-gazdagép naplóinak keresése. És a naplóbeli keresési lekérdezések alapján riasztásokat is létrehozhat.
 
-A megoldás az adatok leküldése egy cél virtuális Gépen, amely rendelkezik a Log Analytics-ügynököket az ESXi-gazdagépről natív syslog funkcióit. Azonban a megoldás nem fájlok írása a cél virtuális Gépen belül syslog be. A Log Analytics-ügynököket port 1514 megnyílik, és ez figyeli. Az adatok kap, miután a Log Analytics-ügynököket leküldi az adatok Log analyticsbe.
+A megoldás az adatok leküldése egy cél virtuális Gépen, amely rendelkezik a Log Analytics-ügynököket az ESXi-gazdagépről natív syslog funkcióit. Azonban a megoldás nem fájlok írása a cél virtuális Gépen belül syslog be. A Log Analytics-ügynököket port 1514 megnyílik, és ez figyeli. Az adatok kap, miután a Log Analytics-ügynököket leküldi az adatokat az Azure Monitor szolgáltatásba.
 
 ## <a name="install-and-configure-the-solution"></a>Telepítse és konfigurálja a megoldást
 A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi információkat.
@@ -71,7 +71,7 @@ Hozzon létre egy Linux operációs rendszert a virtuális gép az összes syslo
     Connection to 123.456.789.101 1514 port [tcp/*] succeeded!
     ```
 
-1. Az Azure Portalon, hajtsa végre a Naplókeresés `VMware_CL`. A Log Analytics a syslog-adatot gyűjt, ha megtartja a syslog formátumba. A portálon az egyes területeken rögzítve lesznek például *állomásnév* és *ProcessName*.  
+1. Az Azure Portalon, a napló lekérdezés végrehajtása `VMware_CL`. Az Azure Monitor a syslog-adatokat gyűjti össze, a syslog formátumba megmaradnak. A portálon az egyes területeken rögzítve lesznek például *állomásnév* és *ProcessName*.  
 
     ![type](./media/vmware/type.png)  
 
@@ -129,7 +129,7 @@ Az a **VMware** irányítópult-nézet, a többi panelen szerint vannak rendszer
 
 Kattintson a panelre, hogy a panel az adott részletes információkat jelenít meg a Log Analytics keresése panel megnyitásához.
 
-Itt szerkesztheti a keresési lekérdezés esetében valamilyen konkrét módosíthat. Naplókeresések létrehozásával kapcsolatos részletekért lásd: [adatokat naplókeresések a Log Analyticsben található](../log-query/log-query-overview.md).
+Itt szerkesztheti a naplólekérdezés esetében valamilyen konkrét módosíthat. További log lekérdezések létrehozásával kapcsolatos információkért lásd: [megtalálta az adatokat az Azure Monitor log-lekérdezésekkel](../log-query/log-query-overview.md).
 
 #### <a name="find-esxi-host-events"></a>ESXi-gazdagép események
 Egyetlen ESXi-gazdagép több naplókat, a folyamatok alapján hoz létre. A VMware Monitoring megoldás központosítja azokat, és az események számát foglalja össze. Ez a nézet központi segítségével megismerheti, milyen ESXi-gazdagép rendelkezik nagy mennyiségű esemény, és milyen eseményeket fordulnak elő a leggyakrabban a környezetben.
@@ -151,14 +151,14 @@ Ha meg szeretné tekinteni a további ESXi gazdagépet virtuális gép létrehoz
 
 ![Részletezés](./media/vmware/createvm.png)
 
-#### <a name="common-search-queries"></a>Leggyakoribb keresési lekérdezések
+#### <a name="common-log-queries"></a>Általános naplófájl-lekérdezések
 Az egyéb hasznos lekérdezések, amelyek segítségével kezelheti az ESXi-gazdagépek, például magas lemezterület, a tárolóeszközök késése és az elérési út hibát tartalmaz.
 
 ![lekérdezés](./media/vmware/queries.png)
 
 
 #### <a name="save-queries"></a>Lekérdezések mentése
-Keresési lekérdezések mentése a Log Analytics alapvető szolgáltatás, és segít megőrizni, amely hasznos talált lekérdezéseket. Miután létrehozott egy lekérdezést, amely akkor hasznosak, mentse kattintva a **Kedvencek**. Egy korábban mentett lekérdezés teszi lehetővé egyszerűen újból felhasználhatja később a [saját irányítópult](../learn/tutorial-logs-dashboards.md) oldal, ahol a saját egyéni irányítópultokat hozhat létre.
+Napló lekérdezéseket elmenti egy standard szintű funkció az Azure monitorban, és segít megőrizni, amely hasznos talált lekérdezéseket. Miután létrehozott egy lekérdezést, amely akkor hasznosak, mentse kattintva a **Kedvencek**. Egy korábban mentett lekérdezés teszi lehetővé egyszerűen újból felhasználhatja később a [saját irányítópult](../learn/tutorial-logs-dashboards.md) oldal, ahol a saját egyéni irányítópultokat hozhat létre.
 
 ![DockerDashboardView](./media/vmware/dockerdashboardview.png)
 

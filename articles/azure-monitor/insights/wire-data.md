@@ -1,5 +1,5 @@
 ---
-title: Wire Data megoldás a Log Analyticsben | Microsoft Docs
+title: Vezeték-Data-megoldás az Azure Monitor |} A Microsoft Docs
 description: Átviteli adatok az összevont hálózati és a teljesítmény adatok Log Analytics-ügynökök számítógépeken. A hálózati adatok és a naplóadatok összevonása segít az adatok összevetésében.
 services: log-analytics
 documentationcenter: ''
@@ -13,25 +13,27 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
-ms.openlocfilehash: 953f0d2652c328b32d9cc7bac239901075ff6c1b
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: fb75f1af2b644325ea614816637880a54eb09e80
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104709"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56986124"
 ---
-# <a name="wire-data-20-preview-solution-in-log-analytics"></a>Wire Data 2.0 (előzetes verzió) megoldás a Log Analyticsben
+# <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Az Azure monitorban Wire Data 2.0 (előzetes verzió) megoldás
 
-![Wire Data-szimbólum](./media/wire-data/wire-data2-symbol.png)
+![Wire Data-szimbólum](media/wire-data/wire-data2-symbol.png)
 
 Átviteli adatok összevont hálózati és a teljesítmény származó adatokat a Log Analytics-ügynököket, beleértve a környezetében az Operations Manager által figyelt csatlakozó Windows és Linux rendszerű csatlakoztatott számítógépek. A hálózati adatok és az egyéb naplóadatok összevonása segít az adatok összevetésében.
 
-Mellett a Log Analytics-ügynököket a Wire Data megoldást használja a Microsoft függőségi ügynökök telepítése a számítógépeken az informatikai infrastruktúra. A függőségi ügynökök monitorozzák a számítógépek által fogadott és küldött adatokat az [OSI-modell](https://en.wikipedia.org/wiki/OSI_model) szerinti 2. és 3. szintű hálózatokon, beleértve a különböző alkalmazott protokollokat és portokat. Az adatok ezután ügynökök használatával lesznek továbbítva a Log Analyticsbe.  
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+Mellett a Log Analytics-ügynököket a Wire Data megoldást használja a Microsoft függőségi ügynökök telepítése a számítógépeken az informatikai infrastruktúra. A függőségi ügynökök monitorozzák a számítógépek által fogadott és küldött adatokat az [OSI-modell](https://en.wikipedia.org/wiki/OSI_model) szerinti 2. és 3. szintű hálózatokon, beleértve a különböző alkalmazott protokollokat és portokat. Adatok majd küld az Azure Monitor használatával ügynökök.  
 
 >[!NOTE]
->Ha a Service Map már üzembe helyezte, vagy a Service Map használatát fontolgatja, vagy [-beli virtuális gépek az Azure Monitor](../../azure-monitor/insights/vminsights-overview.md), van egy új kapcsolat metrikák adatkészlet összegyűjtése és a Log Analytics, amely hasonló információt szolgáltat az átviteli adatok tárolása.
+>Ha a Service Map már üzembe helyezte, vagy a Service Map használatát fontolgatja, vagy [Azure Monitor-beli virtuális gépek](../../azure-monitor/insights/vminsights-overview.md), van egy új kapcsolat metrikák adatkészlet gyűjtse össze ő, majd az Azure monitorban, amely hasonló információt szolgáltat az átviteli adatok tárolására.
 
-Alapértelmezés szerint a Log Analytics a processzor, a memória, a lemezek és a hálózat teljesítményadatait naplózza a Windows és Linux beépített számlálóival, valamint további, szabadon megadható teljesítményszámlálók segítségével. A hálózati és egyéb adatok gyűjtése valós időben történik az egyes ügynökökre vonatkozóan, beleértve a számítógép által használt alhálózatokat és alkalmazásszintű protokollokat.  A Wire Data a hálózati adatokat az alkalmazások szintjén kezeli, nem a TCP átviteli réteg szintjén.  A megoldás nem veszi figyelembe az önálló ACK-kat és SYN-eket.  Ha a kézfogás befejeződött, onnantól a kapcsolat élőnek számít és Csatlakoztatva jelölést kap. A kapcsolat addig marad élő, amíg mindkét oldal egyetért a szoftvercsatorna nyitva tartásában, és az adatok átvitele oda-vissza lehetséges.  Ha bármelyik oldal bezárja a kapcsolatot, a kapcsolat Leválasztva jelölést kap.  Ezért csak sikeresen elküldött csomagok által használt sávszélességet veszi számításba, az újraküldött vagy sikertelenül elküldött csomagok nem lesznek jelentve.
+Alapértelmezés szerint az Azure Monitor naplózza a CPU, memória, lemez és hálózati teljesítménnyel adatai a beépített Windows és Linux rendszerű számlálók, valamint más teljesítményszámlálók, Ön által megadott adatokat. A hálózati és egyéb adatok gyűjtése valós időben történik az egyes ügynökökre vonatkozóan, beleértve a számítógép által használt alhálózatokat és alkalmazásszintű protokollokat.  A Wire Data a hálózati adatokat az alkalmazások szintjén kezeli, nem a TCP átviteli réteg szintjén.  A megoldás nem veszi figyelembe az önálló ACK-kat és SYN-eket.  Ha a kézfogás befejeződött, onnantól a kapcsolat élőnek számít és Csatlakoztatva jelölést kap. A kapcsolat addig marad élő, amíg mindkét oldal egyetért a szoftvercsatorna nyitva tartásában, és az adatok átvitele oda-vissza lehetséges.  Ha bármelyik oldal bezárja a kapcsolatot, a kapcsolat Leválasztva jelölést kap.  Ezért csak sikeresen elküldött csomagok által használt sávszélességet veszi számításba, az újraküldött vagy sikertelenül elküldött csomagok nem lesznek jelentve.
 
 Ha már használta az [sFlow](http://www.sflow.org/)-t vagy valamilyen egyéb szoftvert a [Cisco NetFlow protokolljával](https://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/ios-netflow/prod_white_paper0900aecd80406232.html), akkor a Wire Data statisztikái és adatai már ismerősek lesznek.
 
@@ -50,33 +52,33 @@ A beépített naplókeresési lekérdezések néhány típusa:
 
 Az átviteli adatok használatával történő kereséskor az adatokat szűrheti és csoportosíthatja, így megtekintheti a leggyakoribb ügynökök és a leggyakoribb protokollok információit. Emellett megtekintheti, hogy az egyes számítógépek (IP-címek vagy MAC-címek) mikor kommunikáltak egymással, mennyi ideig, és mennyi adatot küldtek. Tulajdonképpen metaadatokat tekinthet meg a hálózati forgalomról, a keresések alapján.
 
-Mivel azonban metaadatokról van szó, ezek a részletes hibakereséshez nem feltétlenül lesznek hasznosak. A Log Analytics átviteli adatai nem rögzítik teljes körűen a hálózati adatokat.  A szolgáltatást nem mélyre menő, csomagszintű hibakereséshez tervezték. Az ügynök használatának előnye más adatgyűjtési módszerekkel szemben az, hogy nem kell berendezéseket telepíteni, újrakonfigurálni a hálózati kapcsolókat vagy elvégezni bármilyen összetett konfigurálási műveletet. A Wire Data egy egyszerű ügynökalapú megoldás – Ön telepíti az ügynököt egy számítógépen, az ügynök pedig monitorozza a saját hálózati forgalmát. Egy másik előny, hogy a felhasználó monitorozhatja a felhőszolgáltatókon, tárhelyszolgáltatókon vagy a Microsoft Azure-ban futó számítási feladatokat is, vagyis olyan helyeken, ahol nem a hálóréteg tulajdonosa.
+Mivel azonban metaadatokról van szó, ezek a részletes hibakereséshez nem feltétlenül lesznek hasznosak. Átviteli adatok az Azure monitorban nem egy teljes rögzítési hálózati adatforgalmat.  A szolgáltatást nem mélyre menő, csomagszintű hibakereséshez tervezték. Az ügynök használatának előnye más adatgyűjtési módszerekkel szemben az, hogy nem kell berendezéseket telepíteni, újrakonfigurálni a hálózati kapcsolókat vagy elvégezni bármilyen összetett konfigurálási műveletet. A Wire Data egy egyszerű ügynökalapú megoldás – Ön telepíti az ügynököt egy számítógépen, az ügynök pedig monitorozza a saját hálózati forgalmát. Egy másik előny, hogy a felhasználó monitorozhatja a felhőszolgáltatókon, tárhelyszolgáltatókon vagy a Microsoft Azure-ban futó számítási feladatokat is, vagyis olyan helyeken, ahol nem a hálóréteg tulajdonosa.
 
 ## <a name="connected-sources"></a>Összekapcsolt források
 
-A Wire Data a Microsoft függőségi ügynöktől kapja az adatokat. A függőségi ügynök attól függ, hogy a Log Analytics-ügynököket a Log Analytics-kapcsolatok. Ez azt jelenti, hogy egy kiszolgáló rendelkeznie kell a Log Analytics-ügynököket telepíteni és konfigurálni a függőségi ügynök. A következő táblázat ismerteti a Wire Data megoldás által támogatott csatlakoztatott forrásokat:
+A Wire Data a Microsoft függőségi ügynöktől kapja az adatokat. A függőségi ügynök attól függ, hogy a kapcsolatok az Azure monitornak a Log Analytics-ügynököket. Ez azt jelenti, hogy egy kiszolgáló rendelkeznie kell a Log Analytics-ügynököket telepíteni és konfigurálni a függőségi ügynök. A következő táblázat ismerteti a Wire Data megoldás által támogatott csatlakoztatott forrásokat:
 
 | **Csatlakoztatott forrás** | **Támogatott** | **Leírás** |
 | --- | --- | --- |
 | Windows-ügynökök | Igen | A Wire Data adatok elemez és gyűjt a Windows rendszerű ügynökszámítógépekről. <br><br> Mellett a [Log Analytics-ügynököket for Windows](../../azure-monitor/platform/agent-windows.md), Windows-ügynökök a Microsoft Dependency Agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](../../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems) szakaszban. |
 | Linux-ügynökök | Igen | A Wire Data adatokat elemez és gyűjt a Linux rendszerű ügynökszámítógépekről.<br><br> Mellett a [Linuxhoz készült Log Analytics-ügynök](../../azure-monitor/learn/quick-collect-linux-computer.md), Linux-ügynökök a Microsoft Dependency Agent szükséges. A támogatott operációsrendszer-verziók teljes listáját megtekintheti a [támogatott operációs rendszerek](../../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems) szakaszban. |
-| System Center Operations Manage felügyeleti csoport | Igen | A Wire Data adatokat elemez és gyűjt az olyan Windows- és Linux-ügynököktől, amelyek egy csatlakoztatott [System Center Operations Manager felügyeleti csoporthoz](../../azure-monitor/platform/om-agents.md) tartoznak. <br><br> Ehhez közvetlen kapcsolat szükséges a System Center Operations Manager-ügynökszámítógép és a Log Analytics között. |
+| System Center Operations Manage felügyeleti csoport | Igen | A Wire Data adatokat elemez és gyűjt az olyan Windows- és Linux-ügynököktől, amelyek egy csatlakoztatott [System Center Operations Manager felügyeleti csoporthoz](../../azure-monitor/platform/om-agents.md) tartoznak. <br><br> A System Center Operations Manager ügynök számítógépről közvetlenül kapcsolódik az Azure Monitor megadása kötelező. |
 | Azure Storage-fiók | Nem | A Wire Data ügynökszámítógépekről gyűjt adatokat, így az Azure Storage-ből nem tud adatokat gyűjteni. |
 
-Windows rendszeren a System Center Operations Manager és a Log Analytics egyaránt a Microsoft Monitoring Agent (MMA) segítségével gyűjti össze és továbbítja az adatokat. A környezettől függően az ügynököt a System Center Operations Manager ügynök, a Log Analytics-ügynököket, az MMA vagy a közvetlen ügynök nevezzük. A System Center Operations Manager és Log Analytics által biztosított MMA-verziók kis mértékben különböznek. Ezek a verziók jelenthetnek a Log Analyticsnek, a System Center Operations Managernek vagy mindkettőnek.
+A Windows a Microsoft Monitoring Agent (MMA) segítségével a System Center Operations Manager és az Azure Monitor gyűjtse össze és adatokat küldeni. A környezettől függően az ügynököt a System Center Operations Manager ügynök, a Log Analytics-ügynököket, az MMA vagy a közvetlen ügynök nevezzük. A System Center Operations Manager és az Azure Monitor adja meg az MMA némileg különböző verzióit. Ezek a fájlok minden egyes jelenthetik a System Center Operations Manager, az Azure Monitor vagy mindkettő értékre.
 
-A Linuxhoz készült Log Analytics-ügynök Linux rendszeren gyűjt, és adatokat küld a Log Analytics. Átviteli adatok közvetlenül csatlakozik a Log Analytics-ügynökökkel kiszolgálókon, vagy olyan kiszolgálókra, amelyek a System Center Operations Manager felügyeleti csoportok keresztül csatlakozik, a Log Analytics használható.
+A Linuxhoz készült Log Analytics-ügynök Linux rendszeren gyűjt, és adatokat küld az Azure Monitor. Átviteli adatok közvetlenül csatlakozik az Azure Monitor-ügynökökkel kiszolgálókon, vagy olyan kiszolgálókra, amelyek a System Center Operations Manager felügyeleti csoportok keresztül csatlakozik az Azure Monitor használható.
 
-Maga a függőségi ügynök nem közvetít adatokat, ezért nem igényli a tűzfalak vagy portok semmilyen módosítását. Az átviteli adatok mindig továbbított adatok által a Log Analytics-ügynököket a Log Analyticsbe, vagy közvetlenül a Log Analytics-átjárón.
+Maga a függőségi ügynök nem közvetít adatokat, ezért nem igényli a tűzfalak vagy portok semmilyen módosítását. Az átviteli adatok mindig továbbított adatok az Azure Monitor, a Log Analytics-ügynök által közvetlenül vagy a Log Analytics-átjárón.
 
 ![ügynök diagram](./media/wire-data/agents.png)
 
-Ha a System Center Operations Managert használja és a felügyeleti csoportja csatlakoztatva van a Log Analyticshez:
+Ha egy System Center Operations Manager felhasználói az Azure Monitor csatlakozik a felügyeleti csoport:
 
-- Nincs szükség további konfigurációra, ha a System Center Operations Manager hozzáfér az internethez, hogy csatlakozni tudjon a Log Analyticshez.
-- A Log Analytics-átjáró használata a System Center Operations Manager, ha a System Center Operations Manager-ügynökök az interneten keresztül nem tud hozzáférni a Log Analytics konfigurálása kell.
+- További konfiguráció nélkül nem szükséges, ha a System Center Operations Manager-ügynökök hozzáférhet az interneten keresztül csatlakozni az Azure Monitor.
+- A Log Analytics-átjáró használata a System Center Operations Manager, ha a System Center Operations Manager-ügynökök az interneten keresztül nem tud hozzáférni az Azure Monitor konfigurálása kell.
 
-Ha a Windows vagy Linux rendszerű számítógépek közvetlenül nem tud csatlakozni a szolgáltatáshoz, konfigurálása a Log Analytics-ügynököket a Log Analytics használata a Log Analytics-átjáró csatlakozni szeretne. A Log Analytics átjáróhoz letöltheti a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666).
+Ha a Windows vagy Linux rendszerű számítógépek közvetlenül nem tud csatlakozni a szolgáltatáshoz, konfigurálása a Log Analytics-ügynököket a Log Analytics-átjáró használata az Azure Monitor csatlakozni szeretne. A Log Analytics átjáróhoz letöltheti a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=52666).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -195,7 +197,7 @@ Az alábbi táblázat a függőségi ügynök által támogatott operációs ren
 
 A Wire Data megoldásnak a munkaterületekhez való konfigurálásához végezze el az alábbi lépéseket:
 
-1. Engedélyezze az Activity Log Analytics megoldást az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) felületéről vagy a [Log Analytics-megoldások hozzáadása a megoldástárból](../../azure-monitor/insights/solutions.md) című témakörben leírt eljárást követve.
+1. Engedélyezze a Activity Log Analytics megoldást, a [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) vagy leírt folyamatot követve [mnitoring megoldások hozzáadása a megoldástárból](../../azure-monitor/insights/solutions.md).
 2. Telepítse a függőségi ügynököt az összes olyan számítógépen, amelyről adatokat kíván gyűjteni. A függőségi ügynök képesek a közvetlen szomszédaikkal való kapcsolatok monitorozására, így lehetséges, hogy nem kell minden egyes számítógépre ügynököt telepíteni.
 
 > [!NOTE]
@@ -359,7 +361,7 @@ rpm -e dependency-agent dependency-agent-connector
 
 ## <a name="management-packs"></a>Felügyeleti csomagok
 
-Ha az átviteli adatok aktiválva vannak a Log Analytics-munkaterületen, a rendszer egy 300 KB méretű felügyeleti csomagot küld a munkaterület Windows-kiszolgálóinak. Ha System Center Operations Manager-ügynököt használ egy [csatlakoztatott felügyeleti csoportban](../../azure-monitor/platform/om-agents.md), a Függőségfigyelő felügyeleti csomag a System Center Operations Managerből lesz telepítve. Ha az ügynökök közvetlenül kapcsolódnak, a Log Analytics biztosítja a felügyeleti csomagot.
+Ha az átviteli adatok aktiválva vannak a Log Analytics-munkaterületen, a rendszer egy 300 KB méretű felügyeleti csomagot küld a munkaterület Windows-kiszolgálóinak. Ha System Center Operations Manager-ügynököt használ egy [csatlakoztatott felügyeleti csoportban](../platform/om-agents.md), a Függőségfigyelő felügyeleti csomag a System Center Operations Managerből lesz telepítve. Ha az ügynököket közvetlenül csatlakoztatva van, az Azure Monitor biztosít a felügyeleti csomag.
 
 A felügyeleti csomag neve Microsoft.IntelligencePacks.ApplicationDependencyMonitor. A következő helyre írja a rendszer: %Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs. A felügyeleti csomag az alábbi adatforrást használja: %Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources&lt;AutoGeneratedID&gt;\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll.
 
@@ -371,7 +373,7 @@ A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi i
 
 - A Wire Data megoldás a Windows Server 2012 R2, Windows 8.1 és újabb operációs rendszert futtató számítógépekről gyűjt adatokat.
 - A Microsoft .NET-keretrendszer 4.0-s vagy újabb verziójával kell rendelkeznie azoknak a számítógépeknek, amelyekről átviteli adatokat szeretne gyűjteni.
-- A Log Analytics-munkaterülethez adja hozzá a Wire Data megoldást. Ehhez kövesse a [Log Analytics-megoldások hozzáadása a megoldástárból](../../azure-monitor/insights/solutions.md) című témakörben leírt eljárást. Nincs szükség további konfigurációra.
+- Adja hozzá a Wire Data megoldás a Log Analytics-munkaterülethez ismertetett folyamatot [hozzáadása a megoldástárból megoldások monitorozása](solutions.md). Nincs szükség további konfigurációra.
 - Egy adott megoldás átviteli adatainak megtekintéséhez már rendelkeznie kell a megoldással a munkaterületen.
 
 Miután telepítette az ügynököket és telepíti a megoldást, a munkaterületen megjelenik a Wire Data 2.0 csempéje.
@@ -384,9 +386,9 @@ Az Azure Portalon a Log Analytics-munkaterület **Áttekintés** területén kat
 
 | **Panel** | **Leírás** |
 | --- | --- |
-| Hálózati forgalmat rögzítő ügynökök | A hálózati forgalmat rögzítő ügynökök számát és a forgalmat rögzítő első 10 számítógép listáját jeleníti meg. Kattintson a számra a következőre vonatkozó naplókeresés futtatásához: <code>Type:WireData &#124; measure Sum(TotalBytes) by Computer &#124; top 500000</code>. Kattintson a listában található egyik számítógépre egy olyan naplókeresés futtatásához, amely a rögzített bájtok számát adja vissza. |
-| Helyi alhálózatok | Az ügynök által felderített helyi alhálózatok számát mutatja.  Kattintson a számra a következőre vonatkozó naplókeresés futtatásához: <code>Type:WireData &#124; Measure Sum(TotalBytes) by LocalSubnet</code>. Ez az alhálózatokat és az egyes alhálózatokon átküldött bájtok számát jeleníti meg. Kattintson a listában található alhálózatra egy olyan naplókeresés futtatásához, amely az alhálózaton küldött bájtok teljes számát adja vissza. |
-| Alkalmazásszintű protokollok | Az ügynökök által felderített, használatban lévő alkalmazásszintű protokollok számát jeleníti meg. Kattintson a számra a következőre vonatkozó naplókeresés futtatásához: <code>Type:WireData &#124; Measure Sum(TotalBytes) by ApplicationProtocol</code>. Kattintson a protokollra egy olyan naplókeresés futtatásához, amely a protokoll használatával küldött bájtok számát adja vissza. |
+| Hálózati forgalmat rögzítő ügynökök | A hálózati forgalmat rögzítő ügynökök számát és a forgalmat rögzítő első 10 számítógép listáját jeleníti meg. Kattintson a számra a következőre vonatkozó naplókeresés futtatásához: `WireData | summarize sum(TotalBytes) by Computer | take 500000`. Kattintson a listában található egyik számítógépre egy olyan naplókeresés futtatásához, amely a rögzített bájtok számát adja vissza. |
+| Helyi alhálózatok | Az ügynök által felderített helyi alhálózatok számát mutatja.  Kattintson a számra a következőre vonatkozó naplókeresés futtatásához: `WireData | summarize sum(TotalBytes) by LocalSubnet`. Ez az alhálózatokat és az egyes alhálózatokon átküldött bájtok számát jeleníti meg. Kattintson a listában található alhálózatra egy olyan naplókeresés futtatásához, amely az alhálózaton küldött bájtok teljes számát adja vissza. |
+| Alkalmazásszintű protokollok | Az ügynökök által felderített, használatban lévő alkalmazásszintű protokollok számát jeleníti meg. Kattintson a számra a következőre vonatkozó naplókeresés futtatásához: `WireData | summarize sum(TotalBytes) by ApplicationProtocol`. Kattintson a protokollra egy olyan naplókeresés futtatásához, amely a protokoll használatával küldött bájtok számát adja vissza. |
 
 ![Átviteli adatok irányítópult](./media/wire-data/wire-data-dash.png)
 
@@ -401,10 +403,6 @@ Ehhez hasonlóan a **Helyi alhálózatok** panel segítségével megállapíthat
 Az **Alkalmazásszintű protokollok** panel hasznos, mivel fontos lehet annak ismerete, hogy mely protokollok vannak használatban. Lehetséges például, hogy arra számít, hogy az SSH nincs használatban a hálózati környezetben. A panelen megjelenő információk ezt gyorsan megerősíthetik vagy megcáfolhatják.
 
 ![naplóbeli keresés példája](./media/wire-data/log-search-example03.png)
-
-Ebben a példában elemezheti az SSH részleteit, és például megtekintheti, melyik számítógépek használják az SSH-t, valamint egyéb kommunikációs részleteket is megismerhet.
-
-![sh keresési eredmények](./media/wire-data/ssh-details.png)
 
 Ez akkor is hasznos, ha szeretné tudni, hogy a hálózati forgalom idővel növekszik vagy csökken. Például nem árt tudnia, vagy említésre méltónak találhatja, ha egy alkalmazás által továbbított adatok mennyisége növekszik.
 

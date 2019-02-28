@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67cb3d049cc2d2f26be6d62270e677a5cbcd39cc
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: bcb49048fa9200b8970f37a4f187ca995d208cc2
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455041"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961584"
 ---
 # <a name="add-your-personal-microsoft-accounts"></a>A személyes Microsoft-fiókok hozzáadása
 Adja hozzá a személyes Microsoft-fiókok esetében például Outlook.com-os és az Xbox LIVE, a Microsoft Authenticator alkalmazás a szokásos kétfaktoros ellenőrzési folyamata és a bejelentkezési módszer beállításának phone.
@@ -67,5 +67,7 @@ A személyes Microsoft-fiókjával is hozzáadhat, kétfaktoros ellenőrzési el
 ## <a name="next-steps"></a>További lépések
 
 - Miután hozzáadta a fiókok az alkalmazáshoz, bejelentkezhet az Authenticator alkalmazás használatával az eszközén. További információkért lásd: [jelentkezzen be az alkalmazás](user-help-auth-app-sign-in.md).
+
+- Ha problémába ütközik az ellenőrző kód beolvasása a személyes Microsoft-fiókkal, tekintse meg a **ellenőrző kód kapcsolatos hibák elhárítása** szakaszában a [Microsoft-fiók biztonsági adatai & k ellenőrzése kódok](https://support.microsoft.com/en-us/help/12428/microsoft-account-security-info-verification-codes) cikk.
 
 - IOS rendszerű eszközökhöz is készíthető a fiók hitelesítő adatait, és a felhőhöz kapcsolódó alkalmazás beállításait, például a fiókok sorrendjét. További információkért lásd: [biztonsági mentés és helyreállítás a Microsoft Authenticator alkalmazás](user-help-auth-app-backup-recovery.md).

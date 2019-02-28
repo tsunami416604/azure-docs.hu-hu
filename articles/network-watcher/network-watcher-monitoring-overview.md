@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 8738ac52eeaf1f27df5f9cc21ffb0c683a912195
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 0eb27e997d39ceb82098b63de607d3529ccc53b4
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427029"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984389"
 ---
 # <a name="what-is-azure-network-watcher"></a>Mi az az Azure Network Watcher?
 
@@ -97,7 +97,7 @@ Az NSG-forgalomnaplókkal kapcsolatos további információkért végezze el a [
 
 ### <a name="view-diagnostic-logs-for-network-resources"></a>Hálózati erőforrások diagnosztikai naplóinak megtekintése
 
-Lehetősége van engedélyezni az Azure hálózati erőforrások (pl. hálózati biztonsági csoportok, nyilvános IP-címek, terheléselosztók, virtuális hálózati átjárók és alkalmazásátjárók) diagnosztikai naplózását. A *Diagnosztikai naplók* funkció egyetlen felületet biztosít, ahol engedélyezheti vagy letilthatja azon már meglévő hálózati erőforrások diagnosztikai naplóit, amelyek ilyen naplókat hoznak létre. A diagnosztikai naplók például a Microsoft Power BI és az Azure Log Analytics eszközzel tekinthetők meg. Az Azure hálózati diagnosztikai naplóinak elemzésével kapcsolatos további információért tekintse meg a [Log Analyticsben elérhető Azure hálózati megoldásokat](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) ismertető cikket.
+Lehetősége van engedélyezni az Azure hálózati erőforrások (pl. hálózati biztonsági csoportok, nyilvános IP-címek, terheléselosztók, virtuális hálózati átjárók és alkalmazásátjárók) diagnosztikai naplózását. A *Diagnosztikai naplók* funkció egyetlen felületet biztosít, ahol engedélyezheti vagy letilthatja azon már meglévő hálózati erőforrások diagnosztikai naplóit, amelyek ilyen naplókat hoznak létre. Diagnosztikai naplók, eszközök, például a Microsoft Power BI és az Azure Monitor-naplók használatával tekintheti meg. Azure-beli hálózati diagnosztikai naplók elemzésével kapcsolatos további tudnivalókért lásd: [Azure hálózati megoldások az Azure Monitor naplóira](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
 ## <a name="network-watcher-automatic-enablement"></a>Network Watcher automatikus engedélyezése
 Ha hoz létre, vagy frissítse a virtuális hálózat az előfizetésben, Network Watcher a virtuális hálózati régióban automatikusan lesz engedélyezve. A Network Warcher automatikus engedélyezése semmilyen hatással sincs az Ön erőforrásaira, sem a díjaikra. További információkért lásd: [Network Watcher létrehozásához](network-watcher-create.md).

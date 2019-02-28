@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2018
+ms.date: 02/26/2019
 ms.author: kumud
-ms.openlocfilehash: 309c69862d475a0ef76ab0a24ed804b363ba33c0
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 4d47192ea69047b0b12deffc41776a87c16ca6ab
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696796"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959748"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>A TRAFFIC Manager – gyakori kérdések (GYIK)
 
@@ -59,14 +59,7 @@ A teljesítmény metódus a legközelebbi elérhető végpontra irányítja a fo
 A [Traffic Manager működése](../traffic-manager/traffic-manager-how-it-works.md), a Traffic Manager a DNS szintjén működik. A DNS-címkeresés befejeződése után az ügyfelek az alkalmazás végpontjának közvetlenül kapcsolódni, nem Traffic Manageren keresztül. A kapcsolat, ezért bármely alkalmazás protokollt használhat. Akkor válassza ki azt a TCP, a monitorozási protokoll, a Traffic Manager végpont szolgáltatásállapot-figyelést végezhető bármilyen alkalmazás protokollok használata nélkül. Ha szeretné, hogy a health-protokoll segítségével választja, a végpont képesnek kell lennie HTTP vagy HTTPS GET kérelmek megválaszolására.
 
 ### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>Használhatom-e a Traffic Manager "csupasz" tartománynév?
-
-Nem. A DNS-szabványok nem engedélyeznek CNAME-rekordokat más DNS-rekordok az azonos nevű párhuzamosan. DNS-zóna felső pontja (vagy legfelső szintű) mindig tartalmazza a két meglévő DNS-rekordok; a SOA és a mérvadó Névkiszolgálói rekordokat. Ez azt jelenti, hogy egy CNAME rekordot a DNS-szabványok megsértése nélkül nem a zóna legfelső pontján hozható létre.
-
-A TRAFFIC Manager egy DNS CNAME-rekordot a személyes DNS-név hozzárendelése szükséges. Például leképezheti `www.contoso.com` DNS-nevével a Traffic Manager profil `contoso.trafficmanager.net`. Ezenkívül a Traffic Manager-profilt egy második DNS CNAME rekord jelezze az ügyfélnek csatlakoznia melyik végponthoz adja vissza.
-
-A probléma megkerüléséhez azt javasoljuk egy HTTP-átirányítás forgalom a csupasz tartománynévnek nevéből, egy másik URL-címet, amely ezután használhatja a Traffic Manager használatával. Például a "contoso.com" csupasz tartománynévnek is irányítsa át a felhasználókat a "www.contoso.com" a Traffic Manager DNS-névre mutató CNAME.
-
-A Traffic Manager csupasz tartományok esetében teljes körűen támogatja még a szolgáltatás-megvalósítás van követi. A szolgáltatás kérelem által a támogatási regisztrálhatja [lehetőségre szavazott azt, hogy a közösségi visszajelzések webhelyünkön](https://feedback.azure.com/forums/217313-networking/suggestions/5485350-support-apex-naked-domains-more-seamlessly).
+Igen. Megtudhatja, hogyan hozhat létre a tartomány neve található rekordokra való hivatkozáshoz egy Azure Traffic Manager-profilt egy aliast rekordot, lásd: [-aliasrekordot támogatásához apex-tartománynevek a Traffic Manager konfigurálása](../dns/tutorial-alias-tm.md).
 
 ### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>Nem a Traffic Manager fontolja meg az ügyfél alhálózati cím DNS-lekérdezések kezelése esetén? 
 Igen, a DNS-lekérdezés forrás IP-címe mellett kap (Ez általában a DNS-feloldó IP-címét), ha keresések végrehajtása Geographic, teljesítmény- és alhálózat útválasztási módszer, a traffic manager is figyelembe veszi az ügyfél alhálózati cím Ha a lekérdezés által a feloldó a kérés a végfelhasználó nevében szerepel.  

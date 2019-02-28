@@ -11,16 +11,16 @@ ms.author: cforbe
 ms.reviewer: trbye
 ms.date: 02/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4f6c1af2051d946b29e2022c90d0ad9820b4d283
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 1d483d14a08f589fc8d014a13a47008b9fb59690
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823501"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984951"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Oktatóanyag: Adatok előkészítése az regressziós modellezéshez
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan előkészíti az adatokat az regressziós modellezés az Azure Machine Learning Data Prep SDK használatával. Szűrését, és kombinálja a két különböző NYC taxi adatkészletek különféle átalakításokat futtat.
+Ebben az oktatóanyagban elsajátíthatja, hogyan előkészíti az adatokat az regressziós modellezési használatával a [az Azure Machine Learning Data Prep SDK Pythonhoz készült](https://aka.ms/data-prep-sdk). Szűrését, és kombinálja a két különböző NYC taxi adatkészletek különféle átalakításokat futtat.
 
 Ez az oktatóanyag **egy kétrészes sorozat első része**. Miután elvégezte az oktatóanyag-sorozat, akkor is alapján képes előre jelezni taxi belépőt költsége funkciókat az egy modell. Ezek a funkciók közé tartozik a felvételi nap és idő, számától és a felvétel helyére.
 
@@ -48,7 +48,7 @@ Ezekről az előfeltételekről le az alábbi szakaszok egyikét.
 
 ### <a name="azure"></a>Az Azure notebookok használata: Ingyenes Jupyter notebookok a felhőben
 
-Nem kell mást Azure notebookok használatának megkezdéséhez. A [az Azure Machine Learning Data Prep SDK Pythonhoz készült](https://aka.ms/data-prep-sdk) már telepítve és konfigurálva van az Ön számára [Azure notebookok](https://notebooks.azure.com/). A telepítés és a jövőbeli frissítések automatikusan felügyelt Azure-szolgáltatások használatával.
+Nem kell mást Azure notebookok használatának megkezdéséhez. Az Azure Machine Learning Data Prep SDK már telepítve és konfigurálva, [Azure notebookok](https://notebooks.azure.com/). A telepítés és a jövőbeli frissítések automatikusan felügyelt Azure-szolgáltatások használatával.
 
 Után kövesse az alábbi lépéseket, futtassa a **oktatóanyagok/regressziós-1-adatok – prep.ipynb** jegyzetfüzetet a **bevezetés** projekt.
 
@@ -662,7 +662,7 @@ Figyelje meg, hogy az adatprofil a kimenetet a `store_forward` az oszlopban lát
 replaced_stfor_vals_df = latlong_filtered_df.replace(columns="store_forward", find="0", replace_with="N").fill_nulls("store_forward", "N")
 ```
 
-Hajtsa végre a `replace` működnek a `distance` mező. A függvény újraformázza távolság értékek, amelyek nem megfelelően van-e jelölve, `.00`, és bármely nullák nullákkal tölti ki. Konvertálja a `distance` mező numerikus formátumban. Ezek helytelen adatok pontok valószínűleg anomolies a taxi kabinetfájlok adatok gyűjtése rendszerben.
+Hajtsa végre a `replace` működnek a `distance` mező. A függvény újraformázza távolság értékek, amelyek nem megfelelően van-e jelölve, `.00`, és bármely nullák nullákkal tölti ki. Konvertálja a `distance` mező numerikus formátumban. Ezek helytelen adatok pontok valószínűleg rendellenességeket a taxi kabinetfájlok adatok gyűjtése rendszerben.
 
 
 ```python

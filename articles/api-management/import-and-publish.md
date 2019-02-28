@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 06/15/2018
+ms.date: 02/24/2019
 ms.author: apimpm
-ms.openlocfilehash: 4173c0b26b2d176549d3a89cc6fdfa928b6cca5b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 0e104f4cbdef7edc5c109781509e3924400e5ba4
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963844"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959731"
 ---
 # <a name="import-and-publish-your-first-api"></a>Az első API importálása és közzététele 
 
@@ -39,7 +39,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 ## <a name="prerequisites"></a>Előfeltételek
 
 + Az [Azure API Management terminológiájának](api-management-terminology.md) ismerete.
-+ Tekintse át a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
++ Hajtsa végre a következő rövid útmutatót: [Az Azure API Management szolgáltatáspéldány létrehozása](get-started-create-service-instance.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -48,7 +48,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 Ez a szakasz bemutatja az OpenAPI-specifikációjú háttérrendszeri API importálását és közzétételét.
  
 1. Válassza ki az **API-kat** az **API MANAGEMENT** részben.
-2. A listáról válassza az **OpenAPI-specifikáció** lehetőséget.
+2. Válassza ki **OpenAPI-specifikáció** csoportot a listából, és kattintson **teljes** az előugró.
 
     ![API létrehozása](./media/api-management-get-started/create-api.png)
 
@@ -64,8 +64,9 @@ Ez a szakasz bemutatja az OpenAPI-specifikációjú háttérrendszeri API import
     | **Leírás**           | Adjon meg egy opcionális leírást az API-hoz.        | Ha a szolgáltatás URL-címének beírása után lenyomja a Tab billentyűt, az APIM kitölti ezt a mezőt a JSON-fájl tartalma alapján.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
     | **URL-séma**            | *HTTPS*                                            | Meghatározza, mely protokollok használatával lehet hozzáférni az API-hoz.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
     | **API URL-címének utótagja**        | *conference*                                       | Az utótag az API Management szolgáltatás kiindulási URL-címéhez van hozzáfűzve. Az API Management az API-kat az utótag alapján különbözteti meg, ezért az utótagnak egy adott közzétevő minden API-ja esetében egyedinek kell lennie.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-    | **Termékek**              | *Korlátlan*                                        | A termékek egy vagy több API társításai. Megadhatja az API-k számát egy termékben, és a fejlesztői portálon elérhetővé teheti őket a fejlesztők számára. <br/>Az API egy termékkel (ebben a példában *Unlimited*) való társítással tehető közzé. Az új API termékhez történő hozzáadásához adja meg a termék nevét (ezt később is megteheti a **Beállítások** lapon). Ez a lépés többször is megismételhető, így az az API több termékhez is hozzáadható.<br/>Ahhoz, hogy a fejlesztők hozzáférhessenek az API-hoz, elő kell fizetniük a termékre. Amikor előfizetnek, kapnak egy előfizetési kulcsot, amely a termék minden API-jához használható. <br/> Ha Ön hozta létre az APIM-példányt, akkor már eleve rendszergazdának számít, így minden termékre előfizetett.<br/> Alapértelmezés szerint az API Management minden példányához az alábbi két mintatermék jár: **Starter** és **Unlimited**. |
-    | Új verziót készít az API-ról?         |                                                    | További információ a verziókezelésről: [Az API több verziójának közzététele](api-management-get-started-publish-versions.md)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+    | **Termékek**              | *Korlátlan*                                        | A termékek egy vagy több API társításai. Megadhatja az API-k számát egy termékben, és a fejlesztői portálon elérhetővé teheti őket a fejlesztők számára. <br/>Az API egy termékkel (ebben a példában *Unlimited*) való társítással tehető közzé. Az új API termékhez történő hozzáadásához adja meg a termék nevét (ezt később is megteheti a **Beállítások** lapon). Ez a lépés többször is megismételhető, így az az API több termékhez is hozzáadható.<br/>Ahhoz, hogy a fejlesztők hozzáférhessenek az API-hoz, elő kell fizetniük a termékre. Amikor előfizetnek, kapnak egy előfizetési kulcsot, amely a termék minden API-jához használható. <br/> Ha Ön hozta létre az APIM-példányt, akkor már eleve rendszergazdának számít, így minden termékre előfizetett.<br/> Alapértelmezés szerint az API Management minden példányához az alábbi két mintatermék jár: **Alapszintű** és **korlátlan**. |
+    | **Címkék**                  |                                                    | A címkék a API-k rendszerezéséhez. Címkék keresése, csoportosítás és a szűrés használhatók.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+    | **Verzió az API-t?**     |                                                    | További információ a verziókezelésről: [Az API több verziójának közzététele](api-management-get-started-publish-versions.md)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 
     >[!NOTE]
     > Az API közzétételéhez társítania kell azt egy termékkel. Ezt megteheti a **Beállítások lapon**.

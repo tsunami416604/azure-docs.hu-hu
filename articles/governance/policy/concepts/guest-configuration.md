@@ -4,24 +4,21 @@ description: Ismerje meg, hogyan Azure Policy segítségével Vendég konfigurá
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/29/2019
+ms.date: 02/27/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 19f55c7d383d64e6c400e22e624b713f6c42dc58
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: e6621172734ea02f971bd5064b403ad4844210a3
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649288"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960759"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Az Azure Policy Vendég konfiguráció ismertetése
 
 Naplózás mellett és [szervizelés](../how-to/remediate-resources.md) is, a naplózási beállítások egy virtuális gépen az Azure-erőforrások, az Azure Policy. A Vendég Configuration bővítmény és az ügyfél az érvényesítést végzi. A bővítményt, az ügyfélen, érvényesíti a konfigurációt az operációs rendszer, alkalmazás-konfigurációs vagy jelenléte, környezeti beállítások és beállításait.
-
-> [!IMPORTANT]
-> Jelenleg csak **beépített** Vendég konfigurációs szabályzatok használata támogatott.
 
 [!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
@@ -83,7 +80,7 @@ Az alábbi táblázat az Azure-rendszerképek támogatott operációs rendszerek
 |SUSE|SLES|12 SP3|
 
 > [!IMPORTANT]
-> Vendég konfigurációs jelenleg nem támogatott az egyéni virtuálisgép-lemezképek.
+> Vendég konfigurációs naplózhatók bármelyik támogatott operációs rendszert futtató kiszolgálót.  Ha szeretné naplózni a kiszolgálón, amely egy egyéni rendszerképet használja, szeretné-e ismétlődő a **DeployIfNotExists** definíció és módosítása a **Ha** című szakaszt a lemezkép tulajdonságainak.
 
 ### <a name="unsupported-client-types"></a>Nem támogatott ügyfélalkalmazás típusa
 
@@ -93,6 +90,17 @@ Az alábbi táblázat a nem támogatott operációs rendszerek:
 |-|-|
 |Windows-ügyfél | Ügyféloldali operációs rendszerek (például Windows 7 és Windows 10-es) nem támogatottak.
 |A Windows Server 2016 Nano Server | Nem támogatott.|
+
+### <a name="guest-configuration-extension-network-requirements"></a>Vendég Configuration bővítmény hálózati követelmények
+
+Az Azure-ban a Vendég-konfigurációs erőforrás-szolgáltató kommunikálni, virtuális gépeknél szükség van az Azure-adatközpontok porton a kimenő hozzáférést **443-as**. Ha egy privát virtuális hálózatot használ, az Azure-ban, és nem engedélyezi a kimenő forgalom, kivételeket kell konfigurálnia [hálózati biztonsági csoport](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) szabályokat. Jelenleg a szolgáltatás címke az Azure Vendég Szabályzatkonfiguráció nem létezik.
+
+IP-cím listák, letöltheti [a Microsoft Azure adatközpont IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653). Ez a fájl hetente frissül, és a jelenleg üzembe helyezett tartományokat és minden jövőbeni változtatásokról, az IP tartományokat. Csak kell az IP-címek a régióban, a virtuális gépek telepítve vannak-e kimenő hozzáférésének engedélyezéséhez.
+
+> [!NOTE]
+> Az Azure Datacenter IP-cím XML-fájlt a Microsoft Azure-adatközpontok az által használt IP-címtartományok listája. A fájl a compute, SQL és storage tartományokat tartalmaz.
+> A frissített hetente tesznek közzé. A fájl a jelenleg üzembe helyezett tartományokat és minden jövőbeni változtatásokról, az IP tartományokat tükrözi. A fájlban megjelenő új tartományokat legalább egy hétig nem használják az adatközpontokban.
+> Célszerű letölteni az új XML-fájlt minden héten. Ezután frissítse a helyet, hogy helyesen azonosítsa az Azure-ban futó szolgáltatásokat. Az Azure ExpressRoute-felhasználók vegye figyelembe, hogy ez a fájl minden hónap első hetében Azure címterületek a Border Gateway Protocol (BGP) hirdetés frissítésére használatos.
 
 ## <a name="guest-configuration-definition-requirements"></a>Vendég konfigurációkra definíciója
 

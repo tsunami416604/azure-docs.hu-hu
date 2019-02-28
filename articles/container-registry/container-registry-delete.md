@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: danlep
-ms.openlocfilehash: b18638057def03a02024200edb157e5caf08a669
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: f3206da25a3c0727e3f9fe12190580a6c28c81a3
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065171"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983251"
 ---
 # <a name="delete-container-images-in-azure-container-registry"></a>Az Azure Container Registry a tárolólemezképek törlése
 
@@ -245,14 +245,14 @@ Említetteknek megfelelően az [jegyzékfájl kivonatoló](#manifest-digest) sza
    ]
    ```
 
-Amint láthatja, hogy a feladatütemezés utolsó lépése kimenetében, nincs-e most egy árva manifest azon `"tags"` tulajdonság egy üres tömb. A jegyzékfájl továbbra is megtalálható a beállításjegyzék minden általa hivatkozott egyedi réteg adatokkal együtt. **Árva törölni, például a képek és a réteg adataikat, törölnie kell a jegyzékfájl kivonatoló**.
+Amint láthatja, hogy a feladatütemezés utolsó lépése kimenetében, nincs-e most egy árva manifest azon `"tags"` tulajdonság üres lista lesz. A jegyzékfájl továbbra is megtalálható a beállításjegyzék minden általa hivatkozott egyedi réteg adatokkal együtt. **Árva törölni, például a képek és a réteg adataikat, törölnie kell a jegyzékfájl kivonatoló**.
 
 ### <a name="list-untagged-images"></a>Címkézetlen lemezképek listázása
 
 A tárházban, a következő Azure CLI-paranccsal listázhatja az összes címkézetlen rendszerkép. Cserélje le `<acrName>` és `<repositoryName>` válasszon a környezetének megfelelő értékekkel.
 
 ```azurecli
-az acr repository show-manifests --name <acrName> --repository <repositoryName> --query "[?!(tags[?'*'])].digest"
+az acr repository show-manifests --name <acrName> --repository <repositoryName> --query "[?tags[0]==null].digest"
 ```
 
 ### <a name="delete-all-untagged-images"></a>Törölje az összes címkézetlen lemezképet
@@ -283,7 +283,7 @@ REPOSITORY=myrepository
 # Delete all untagged (orphaned) images
 if [ "$ENABLE_DELETE" = true ]
 then
-    az acr repository show-manifests --name $REGISTRY --repository $REPOSITORY  --query "[?!(tags[?'*'])].digest" -o tsv \
+    az acr repository show-manifests --name $REGISTRY --repository $REPOSITORY  --query "[?tags[0]==null].digest" -o tsv \
     | xargs -I% az acr repository delete --name $REGISTRY --image $REPOSITORY@% --yes
 else
     echo "No data deleted. Set ENABLE_DELETE=true to enable image deletion."
@@ -310,7 +310,7 @@ $registry = "myregistry"
 $repository = "myrepository"
 
 if ($enableDelete) {
-    az acr repository show-manifests --name $registry --repository $repository --query "[?!(tags[?'*'])].digest" -o tsv `
+    az acr repository show-manifests --name $registry --repository $repository --query "[?tags[0]==null].digest" -o tsv `
     | %{ az acr repository delete --name $registry --image $repository@$_ --yes }
 } else {
     Write-Host "No data deleted. Set `$enableDelete = `$TRUE to enable image deletion."

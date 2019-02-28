@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2019
+ms.date: 02/28/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 09e1f99c7d0b56f5e2af893385dde19b8f358a19
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.lastreviewed: 02/28/2019
+ms.openlocfilehash: 14e587276deab9656c3be04c96182942767ae0f2
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099139"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56986022"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack 1811 frissítése
 
@@ -86,6 +86,8 @@ Az Azure Stack rendszeresen gyorsjavításait. Ne felejtse el telepíteni a [leg
     Miután a kötelező kiterjesztés gazdagép tanúsítványok helyesen importálta, a felügyeleti portálról 1811 frissítés folytathatja. Azure Stack-operátorok karbantartási időszak ütemezése a frissítési folyamat alatt a Microsoft azt ajánlja, amíg egy hiba miatt a hiányzó bővítmény gazdagép tanúsítványok nem érinti meglévő számítási feladatok vagy szolgáltatások.  
 
     Ez a frissítés telepítése során az Azure Stack felhasználói portálon nem érhető el amíg folyamatban van a bővítmény állomás konfigurálása. A bővítmény gazdagép a konfiguráció legfeljebb 5 órát is igénybe vehet. Ez idő alatt ellenőrizheti a frissítés állapotát, vagy folytathatja egy frissítés sikertelen telepítését az [Azure Stack rendszergazdai PowerShell vagy a kiemelt végpont](azure-stack-monitor-update.md) használatával.
+
+- Ha az Azure Stack felügyelt System Center Operations Manager (SCOM), mindenképpen a felügyeleti csomag a Microsoft Azure Stackhez készült verziójára való frissítéséhez 10.0.3.11 1811 alkalmazása előtt.
 
 ## <a name="new-features"></a>Új funkciók
 

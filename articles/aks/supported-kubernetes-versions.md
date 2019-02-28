@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: saudas
-ms.openlocfilehash: 37a9712749a1575f81086d28ad461a665bef36d9
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: c55a12e6bd5ab57f790e5f161930851be10f5c2a
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313449"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985240"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Támogatott az Azure Kubernetes Service (AKS) Kubernetes-verzió
 
@@ -31,7 +31,7 @@ Például, ha az AKS vezet be *1.12.x* még ma, támogatást is biztosítunk *1.
 
 Új alverzió bemutatásakor a legrégebbi alverziót és a legrégebbi javításokat kivezetjük. az új alverzió és a következő használatból való kivonást egyaránt kiadása előtt 15 napon keresztül egy közlemény keresztül jön létre a [Azure frissítési csatornákkal][azure-update-channel]. Ha a fenti példában *1.12.x* van nyilvánosan, a kivont verziók a következők *1.8.g* + *1.8.h*.
 
-Ha egy AKS-fürtöt üzembe helyez a portálon vagy az Azure CLI-vel, az mindig az n-1. alverzióra, illetve a legújabb javításra lesz beállítva. Például, ha támogatja az AKS *1.12.x*, *1.11.a* + *1.11.b*, *1.10.c*  +   *1.10d*, *1.9.e* + *1.9F*, az alapértelmezett verzió új fürtök *1.10.b*.
+Ha egy AKS-fürtöt üzembe helyez a portálon vagy az Azure CLI-vel, az mindig az n-1. alverzióra, illetve a legújabb javításra lesz beállítva. Például, ha támogatja az AKS *1.12.x*, *1.11.a* + *1.11.b*, *1.10.c*  +   *1.10d*, *1.9.e* + *1.9F*, az alapértelmezett verzió új fürtök *1.11.b*.
 
 ## <a name="list-currently-supported-versions"></a>Jelenleg a támogatott verziók listája
 

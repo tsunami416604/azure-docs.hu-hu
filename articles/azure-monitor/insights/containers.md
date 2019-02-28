@@ -1,6 +1,6 @@
 ---
-title: Figyelés megoldásra az Azure Log Analyticsben |} A Microsoft Docs
-description: A Tárolómonitorozási megoldás a Log Analytics segítségével megtekintése és kezelése a Docker és a Windows tárológazdagép egyetlen helyen.
+title: Figyelés megoldásra az Azure Monitor |} A Microsoft Docs
+description: A Tárolómonitorozási megoldás az Azure Monitor segítségével megtekintése és kezelése a Docker és a Windows tárológazdagép egyetlen helyen.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,18 +13,20 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: magoedte
-ms.openlocfilehash: 7d538695fe7c920bbd22fcfb0e097220aa249f07
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 6803e700a42a0d0279b48d38995c4fc299415075
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811817"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985495"
 ---
-# <a name="container-monitoring-solution-in-log-analytics"></a>Figyelés a Log Analytics megoldásra
+# <a name="container-monitoring-solution-in-azure-monitor"></a>Figyelés megoldásra az Azure monitorban
 
 ![Tárolók szimbólum](./media/containers/containers-symbol.png)
 
-Ez a cikk bemutatja, hogyan állíthatja be, és a Tárolómonitorozási megoldás a Log Analytics, amely segít megtekintése és kezelése a Docker és a Windows tárológazdagép egyetlen helyen. A docker egy olyan virtualizációs rendszer, amely automatizálja az IT-infrastruktúráját a szoftver központi telepítése tárolók létrehozásához használt.
+Ez a cikk bemutatja, hogyan állíthatja be, és a Tárolómonitorozási megoldás az Azure monitorban, így a segítségével megtekintése és kezelése a Docker és a Windows tárológazdagép egyetlen helyen. A docker egy olyan virtualizációs rendszer, amely automatizálja az IT-infrastruktúráját a szoftver központi telepítése tárolók létrehozásához használt.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 A megoldás bemutatja, hogy mely tárolók fut, milyen tárolórendszerkép futnak, és ahol a tárolók futnak. Megtekintheti a tárolókkal használt parancsok részletes naplózási információkat. És a tárolók elhárítását megtekintésével és központosított naplók keresése távolról megtekintheti a Docker és a Windows gazdagépekre nélkül. Tárolók, amelyek lehetnek zajos és a felhasználó felesleges erőforrások a gazdagépen található. És megtekintheti a központi Processzor, memória, tárolási és hálózati használatának és teljesítményének information for containers szolgáltatásban. Windows rendszerű számítógépeken központosítása és hasonlítsa össze a Windows Server naplóinak Hyper-V és a Docker-tárolókat. A megoldás a következő tárolóvezénylőt támogat:
 
@@ -36,7 +38,7 @@ A megoldás bemutatja, hogy mely tárolók fut, milyen tárolórendszerkép futn
 
 Ha érdekli az üzembe helyezett munkaterhelések teljesítményének figyelése a Kubernetes-környezetben üzemeltetett Azure Kubernetes Service (AKS), lásd: [figyelő Azure Kubernetes Service](../../azure-monitor/insights/container-insights-overview.md). A Tárolómonitorozási megoldás nem tartalmazza az adott platform figyelésének támogatását.  
 
-Az alábbi ábrán látható, különböző tároló gazdagépek és az ügynökök a Log Analytics használatával kapcsolatai.
+Az alábbi ábrán látható, különböző tároló gazdagépek és az ügynökök és az Azure Monitor közötti kapcsolatok.
 
 ![Tárolók diagramja](./media/containers/containers-diagram.png)
 
@@ -45,7 +47,7 @@ Az alábbi ábrán látható, különböző tároló gazdagépek és az ügynök
 Mielőtt hozzákezdene, tekintse át a következő adatokat, ellenőrizze, hogy megfelel az előfeltételeknek.
 
 ### <a name="container-monitoring-solution-support-for-docker-orchestrator-and-os-platform"></a>Tárolómonitorozási megoldás támogatja a Docker Orchestrator, illetve az operációs rendszer platform
-Az alábbi táblázat ismerteti a Docker vezénylési és az operációs rendszer figyelési támogatást a tároló szoftverleltár, a teljesítmény és a naplók a Log Analytics használatával.   
+Az alábbi táblázat ismerteti a Docker vezénylési és az operációs rendszer a tároló szoftverleltár, a teljesítmény és a naplók támogatási figyelése az Azure Monitor szolgáltatással.   
 
 | | ACS | Linux | Windows | Tároló<br>Leltár | Kép<br>Leltár | Csomópont<br>Leltár | Tároló<br>Teljesítmény | Tároló<br>Esemény | Esemény<br>Napló | Tároló<br>Napló |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
@@ -95,22 +97,22 @@ Az alábbi táblázat ismerteti a Docker vezénylési és az operációs rendsze
 ## <a name="installing-and-configuring-the-solution"></a>A megoldás telepítése és konfigurálása
 A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi információkat.
 
-1. A Tárolómonitorozási megoldás hozzáadása a Log Analytics-munkaterületet [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) vagy leírt folyamatot követve [adja hozzá a Log Analytics solutions kövesse a megoldástárban](../../azure-monitor/insights/solutions.md).
+1. A Tárolómonitorozási megoldás hozzáadása a Log Analytics-munkaterületet [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) vagy leírt folyamatot követve [hozzáadása a megoldástárból megoldások monitorozása](../../azure-monitor/insights/solutions.md).
 
 2. Telepítse, és a Docker és a egy Log Analytics-ügynököket a használata. Az operációs rendszer és a Docker orchestrator alapján, használhatja az alábbi módszerek konfigurálása az ügynök.
   - Önálló gazdagépek:
     - A támogatott Linux operációs rendszer telepítése és Docker futtatása és telepítse és konfigurálja a [Linuxhoz készült Log Analytics-ügynök](../../azure-monitor/learn/quick-collect-linux-computer.md).  
     - A CoreOS a Linuxhoz készült Log Analytics-ügynök nem futtatható. Ehelyett a Linuxhoz készült Log Analytics-ügynök tárolóalapú verzióját futtatja. Tekintse át a CoreOS többek között Linuxos tárológazdagép vagy Linux-alapú Azure Government tárológazdagép, beleértve a CoreOS is, ha a tárolók az Azure Government felhőben dolgozik.
-    - A Windows Server 2016 és Windows 10-es a Docker-motor és az ügyfél telepítéséhez, majd kösse adatainak összegyűjtése, majd azokat elküldi a Log Analytics-ügynököt. Tekintse át [telepítése és konfigurálása a Windows tárológazdagép](#install-and-configure-windows-container-hosts) Ha egy Windows-környezettel rendelkezik.
+    - A Windows Server 2016 és Windows 10-es a Docker-motor és az ügyfél telepítéséhez, majd információkat gyűjthet, és küldje el az Azure Monitor az ügynök csatlakoztatása. Tekintse át [telepítése és konfigurálása a Windows tárológazdagép](#install-and-configure-windows-container-hosts) Ha egy Windows-környezettel rendelkezik.
   - A Docker-gazdagép több vezénylési:
     - Ha egy Red Hat OpenShift környezettel rendelkezik, tekintse át a konfigurálása a Log Analytics-ügynököket, a Red Hat OpenShift.
     - Ha rendelkezik egy Kubernetes-fürtöt az Azure Container Service használatával:
        - Felülvizsgálat [Kubernetes a Log Analytics Linux-ügynökének konfigurálása](#configure-a-log-analytics-linux-agent-for-kubernetes).
        - Felülvizsgálat [konfigurálja a Kubernetes a Log Analytics Windows ügynök](#configure-a-log-analytics-windows-agent-for-kubernetes).
        - Tekintse át a Helm használata a Linux Kubernetes a Log Analytics-ügynök telepítése.
-    - Ha rendelkezik egy Azure Container Service DC/OS-fürtön, további tudnivalókat talál [egy Azure Container Service DC/OS fürt megfigyelése a Log Analytics](../../container-service/dcos-swarm/container-service-monitoring-oms.md).
+    - Ha rendelkezik egy Azure Container Service DC/OS-fürtön, további tudnivalókat talál [egy Azure Container Service DC/OS-fürt monitorozása az Azure Monitor szolgáltatással](../../container-service/dcos-swarm/container-service-monitoring-oms.md).
     - Ha egy Docker Swarm módú környezettel rendelkezik, további konfigurálás, egy Log Analytics-ügynököket a Docker Swarmra.
-    - Ha egy Service Fabric-fürtöt, további tudnivalókat talál [a Log Analytics Log Analytics-tárolók monitorozása](../../service-fabric/service-fabric-diagnostics-oms-containers.md).
+    - Ha egy Service Fabric-fürtöt, további tudnivalókat talál [-tárolók monitorozása az Azure Monitor szolgáltatással](../../service-fabric/service-fabric-diagnostics-oms-containers.md).
 
 Tekintse át a [Windows Docker-motor](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon) ismertető cikkben talál további információt a telepítése és konfigurálása a Docker-motor a Windows rendszerű számítógépeken.
 
@@ -195,7 +197,7 @@ Red Hat OpenShift elindításához a tároló monitorozási adatok gyűjtése a 
 Ez a szakasz ismerteti a Log Analytics-ügynököket telepítse az OpenShift démon beállított szükséges lépéseket.  
 
 1. Jelentkezzen be az OpenShift fő csomóponttal, és másolja a yaml-fájlt [ocp-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-omsagent.yaml) a Githubról, a fő csomópontot és módosíthatja a Log Analytics-munkaterület Azonosítójára és az elsődleges kulcs értékét.
-2. Futtassa az alábbi parancsokat a Log Analytics hozzon létre egy projektet, és állítsa be a felhasználói fiókot.
+2. Futtassa az alábbi parancsokat a projekt létrehozása az Azure Monitor, és állítsa be a felhasználói fiókot.
 
     ```
     oadm new-project omslogging --node-selector='zone=default'
@@ -234,7 +236,7 @@ Ez a szakasz ismerteti a Log Analytics-ügynököket telepítse az OpenShift dé
 Ha azt szeretné, titkos kulcsok használatával védeni kell a Log Analytics-munkaterület Azonosítójára és az elsődleges kulcsot, amikor a Log Analytics ügynök démon-set yaml-fájllal, hajtsa végre az alábbi lépéseket.
 
 1. Jelentkezzen be az OpenShift fő csomóponttal, és másolja a yaml-fájlt [ocp-ds-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-ds-omsagent.yaml) és titkos kulcs parancsfájljának [ocp-secretgen.sh](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-secretgen.sh) a Githubról.  Ez a szkript a titkos kulcsok yaml-fájlt a Log Analytics-munkaterület Azonosítójára és az elsődleges kulcs biztonságos hoz létre a secrete információkat.  
-2. Futtassa az alábbi parancsokat a Log Analytics hozzon létre egy projektet, és állítsa be a felhasználói fiókot. A Log Analytics-munkaterület Azonosítójára kéri a titkos kulcs parancsfájljának <WSID> és az elsődleges kulcs <KEY> és a befejezéskor az ocp-secret.yaml fájlt hoz létre.  
+2. Futtassa az alábbi parancsokat a projekt létrehozása az Azure Monitor, és állítsa be a felhasználói fiókot. A Log Analytics-munkaterület Azonosítójára kéri a titkos kulcs parancsfájljának <WSID> és az elsődleges kulcs <KEY> és a befejezéskor az ocp-secret.yaml fájlt hoz létre.  
 
     ```
     oadm new-project omslogging --node-selector='zone=default'  
@@ -492,7 +494,7 @@ A szakaszban az információk segítségével telepítheti és konfigurálhatja 
 
 #### <a name="preparation-before-installing-windows-agents"></a>Előkészítő lépések Windows-ügynökök telepítése
 
-Ügynökök telepítése Windows rendszerű számítógépeken, előtt kell beállítani a Docker-szolgáltatást. A konfiguráció lehetővé teszi, hogy a Windows-ügynök vagy a Log Analytics virtuálisgép-bővítmény használata a Docker TCP szoftvercsatorna, hogy az ügynökök távolról elérjék a Docker-démont és a figyelési adatok rögzítéséhez.
+Ügynökök telepítése Windows rendszerű számítógépeken, előtt kell beállítani a Docker-szolgáltatást. A konfiguráció lehetővé teszi, hogy a Windows-ügynök vagy az Azure Monitor virtuálisgép-bővítmény használata a Docker TCP szoftvercsatorna, hogy az ügynökök távolról elérjék a Docker-démont és a figyelési adatok rögzítéséhez.
 
 ##### <a name="to-start-docker-and-verify-its-configuration"></a>Indítsa el a Docker és a konfiguráció ellenőrzése
 
@@ -522,7 +524,7 @@ A Docker-démon konfigurációját, használja a Windows-tárolókkal kapcsolato
 
 #### <a name="install-windows-agents"></a>Windows-ügynökök telepítése
 
-Windows és a Hyper-V-tárolók monitorozása engedélyezéséhez telepítse a Microsoft Monitoring Agent (MMA) tárológazdagép Windows számítógépek. A helyszíni környezetben Windows rendszerű számítógépek, lásd: [a Log Analyticshez való csatlakozáshoz Windows számítógépek](../../azure-monitor/platform/agent-windows.md). A virtuális gépek futtatása az Azure-ban csatlakoztathatja őket a Log Analytics használatával az [virtuálisgép-bővítmény](../../azure-monitor/learn/quick-collect-azurevm.md).
+Windows és a Hyper-V-tárolók monitorozása engedélyezéséhez telepítse a Microsoft Monitoring Agent (MMA) tárológazdagép Windows számítógépek. A helyszíni környezetben Windows rendszerű számítógépek, lásd: [csatlakozás Windows számítógépek számára az Azure Monitor](../../azure-monitor/platform/agent-windows.md). A virtuális gépek futtatása az Azure-ban csatlakoztathatja őket a Azure Monitor használatával a [virtuálisgép-bővítmény](../../azure-monitor/learn/quick-collect-azurevm.md).
 
 A Service Fabricen futó Windows-tárolók figyelése Azonban csak [az Azure-ban futó virtuális gépek](../../azure-monitor/learn/quick-collect-azurevm.md) és [a helyszíni környezetben Windows rendszerű számítógépek](../../azure-monitor/platform/agent-windows.md) Service Fabric jelenleg támogatja.
 
@@ -565,7 +567,7 @@ Címkék hozzáfűzi *PodLabel* adattípusok a következők a saját egyéni cí
 
 
 ## <a name="monitor-containers"></a>Tárolók figyelése
-A megoldás engedélyezve van a Log Analytics-portálon, miután a **tárolók** csempe a tároló-gazdagépek és a gazdagépeken futó tárolók összegző információit jeleníti meg.
+A megoldás engedélyezve van az Azure Portalon, miután a **tárolók** csempe a tároló-gazdagépek és a gazdagépeken futó tárolók összegző információit jeleníti meg.
 
 
 ![Tárolókkal csempére](./media/containers/containers-title.png)
@@ -598,11 +600,11 @@ Az a **tároló állapota** területen kattintson a felső területen, az alább
 
 ![Tárolók állapota](./media/containers/containers-status.png)
 
-Naplóbeli keresés jelenik meg, amelyen a tárolókat állapotával kapcsolatos információk.
+Megnyílik a log Analytics, a tárolók állapotával kapcsolatos információk megjelenítése.
 
-![Log Search for containers szolgáltatásban](./media/containers/containers-log-search.png)
+![A log Analytics-tárolókhoz](./media/containers/containers-log-search.png)
 
-Itt szerkesztheti a keresési lekérdezés módosítása, hogy az adott információk kereséséhez érdekli. Naplókeresések kapcsolatos további információkért lásd: [Log Analytics naplóbeli kereséseivel](../../azure-monitor/log-query/log-query-overview.md).
+Itt szerkesztheti a keresési lekérdezés módosítása, hogy az adott információk kereséséhez érdekli. Napló lekérdezésekkel kapcsolatos további információkért lásd: [lekérdezések jelentkezzen be az Azure Monitor](../log-query/log-query-overview.md).
 
 ## <a name="troubleshoot-by-finding-a-failed-container"></a>Hibás tárolók felderítésével hibaelhárítása
 
@@ -611,14 +613,16 @@ A log Analytics jelöli meg a tárolóban, **sikertelen** Ha egy nem nulla ért�
 ### <a name="to-find-failed-containers"></a>Hibás tárolók keresése
 1. Kattintson a **tároló állapota** területen.  
    ![Tárolók állapota](./media/containers/containers-status.png)
-2. Naplóbeli keresés megnyílik, és a tárolók, a következőhöz hasonló állapotát jeleníti meg.  
+2. A log Analytics megnyílik, és a tárolók, a következőhöz hasonló állapotát jeleníti meg.  
    ![tárolók állapota](./media/containers/containers-log-search.png)
-3. Ezután kattintson a további információk megjelenítéséhez hibás tárolók összesített értékét. Bontsa ki a **Továbbiak megjelenítése** megtekintéséhez a rendszerkép azonosítóját.  
+3. Bontsa ki a sikertelen sort, és kattintson a + a hozzá tartozó feltételek hozzáadása a lekérdezést. Ezután tegye megjegyzésbe a Summarize sor a lekérdezésben.
+   ![hibás tárolók](./media/containers/containers-state-failed-select.png)  
+1. Futtassa a lekérdezést, és bontsa ki egy sort a eredmények megtekintése a rendszerkép azonosítóját.  
    ![hibás tárolók](./media/containers/containers-state-failed.png)  
-4. Ezután írja be a következőt a keresési lekérdezésben. `ContainerInventory <ImageID>` a kép, például a lemezkép mérete és a leállított és a sikertelen képek számát részleteinek megtekintéséhez.  
+1. Írja be a következőt a lekérdezésének. `ContainerImageInventory | where ImageID == <ImageID>` a kép, például a lemezkép mérete és a leállított és a sikertelen képek számát részleteinek megtekintéséhez.  
    ![hibás tárolók](./media/containers/containers-failed04.png)
 
-## <a name="search-logs-for-container-data"></a>Keresési naplókat tároló adatok
+## <a name="query-logs-for-container-data"></a>Lekérdezési naplóit tároló adatok
 Ha egy adott hiba hibaelhárítás segítségével megtekintheti, hol lépett fel a környezetben. A következő naplófájl-típusok segítséget szeretne az információt lekérdezések létrehozása.
 
 
@@ -632,42 +636,23 @@ Ha egy adott hiba hibaelhárítás segítségével megtekintheti, hol lépett fe
 - **KubePodInventory_CL** ezt a típust használja, ha szeretné megismerni a hierarchia fürtinformációkat.
 
 
-### <a name="to-search-logs-for-container-data"></a>A naplókat tároló adatok keresése
+### <a name="to-query-logs-for-container-data"></a>A lekérdezési naplóit tároló adatok
 * Válassza ki, hogy tudja, hogy képet nemrég sikertelen volt, és keresse meg a hibanaplókat. Első lépésként egy tároló-neve, amelyen fut a rendszerkép keresése a **ContainerInventory** keresés. Ha például keresése `ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"`  
     ![Ubuntu tárolók keresése](./media/containers/search-ubuntu.png)
 
-  Az a tároló neve **neve**, és keresse meg ezeket a naplókat. Ebben a példában ez `ContainerLog | where Name == "cranky_stonebreaker"`.
+  Bontsa ki az eredményeket, és a tároló részleteit megtekintheti az összes sort.
 
-**Teljesítmény-adatok megtekintése**
 
-Ha Ön már kezdve a lekérdezéseket hozhat létre, megkönnyíti, mi minden lehetséges először. Minden teljesítményadat megtekintéséhez, próbáljon meg például a széles körű lekérdezés írja be a következő keresési lekérdezéssel.
-
-```
-Perf
-```
-
-![tárolók teljesítménye](./media/containers/containers-perf01.png)
-
-A teljesítményadatok lát egy adott tárolóba, a jobb oldalon a lekérdezés nevének beírásával is körét.
-
-```
-Perf <containerName>
-```
-
-A tároló gyűjtött teljesítmény-mérőszámok listáját jeleníti meg, amely.
-
-![tárolók teljesítménye](./media/containers/containers-perf03.png)
-
-## <a name="example-log-search-queries"></a>Példa naplóbeli keresési lekérdezések
+## <a name="example-log-queries"></a>Példa log lekérdezések
 Gyakran hasznos építhetők fel lekérdezések például vagy két kezdődő és annak módosításával a környezethez illeszkedve kell őket. Kiindulási pontként, kísérletezhet a **mintalekérdezések** terület segíteni bonyolultabb lekérdezéseket.
 
 ![Tárolók lekérdezések](./media/containers/containers-queries.png)
 
 
-## <a name="saving-log-search-queries"></a>Naplófájl-keresési lekérdezések mentése
-A Log Analytics alapvető szolgáltatás lekérdezéseket elmenti. Menti őket, amelyek hasznos talált kell praktikus későbbi használatra.
+## <a name="saving-log-queries"></a>Mentés log lekérdezések
+Az Azure monitorban standard funkciója lekérdezéseket elmenti tartozik. Menti őket, amelyek hasznos talált kell praktikus későbbi használatra.
 
 Miután létrehozott egy lekérdezést, amely akkor hasznosak, mentse kattintva **Kedvencek** a naplók keresése lap tetején. Ezután könnyedén elérheti később a **saját irányítópult** lapot.
 
 ## <a name="next-steps"></a>További lépések
-* [Naplók keresése](../../azure-monitor/log-query/log-query-overview.md) részletes tároló adatfelderítési rekordok megtekintéséhez.
+* [Naplók lekérdezése](../log-query/log-query-overview.md) részletes tároló adatfelderítési rekordok megtekintéséhez.

@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/06/2018
 ms.author: magoedte
-ms.openlocfilehash: 2de3e76714c6e22f16f9aac1e1c9994a835b16e5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: f292ad5802af6765ec26df7de1aa271e1214e0e9
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190220"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983013"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>Az Azure Monitor tárolók áttekintése
 
 A tárolók az Azure Monitor egy olyan szolgáltatás, vagy az Azure Container Instances szolgáltatásban, vagy a felügyelt Azure Kubernetes Service (AKS) az üzemeltetett Kubernetes-fürtök üzembe tárolóalapú számítási feladatok teljesítményének figyelésére tervezett. A tárolók alapvető fontosságú, különösen akkor, ha nagy mennyiségű, több alkalmazással rendelkező egy éles fürtöt futtat.
 
-Tárolók az Azure Monitor lehetővé teszi gyűjtését memória és a mérőszámok a processzor teljesítménye látható-e a tartományvezérlők, a csomópontok és a Kubernetes, a metrikák API-n keresztül a rendelkezésre álló tárolók. A rendszer a tárolónaplókat is gyűjti.  Miután engedélyezte a Kubernetes-fürtök figyelése, ezek a metrikák és naplók automatikusan az Ön számára a Linuxhoz készült Log Analytics-ügynököt egy tárolóalapú verziója gyűjtött és tárolt a [Log Analytics](../../azure-monitor/log-query/log-query-overview.md) munkaterületen. 
+Tárolók az Azure Monitor lehetővé teszi gyűjtését memória és a mérőszámok a processzor teljesítménye látható-e a tartományvezérlők, a csomópontok és a Kubernetes, a metrikák API-n keresztül a rendelkezésre álló tárolók. A rendszer a tárolónaplókat is gyűjti.  Miután engedélyezte a Kubernetes-fürtök figyelése, ezek a metrikák és naplók automatikusan az Ön számára a Linuxhoz készült Log Analytics-ügynököt egy tárolóalapú verziója gyűjtött és tárolt a [Log Analytics](../log-query/log-query-overview.md) munkaterületen. 
  
 ## <a name="what-does-azure-monitor-for-containers-provide"></a>Az Azure Monitor-tárolók biztosítják a funkciója?
 

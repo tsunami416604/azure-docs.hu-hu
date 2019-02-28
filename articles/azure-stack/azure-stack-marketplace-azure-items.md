@@ -16,12 +16,12 @@ ms.date: 02/27/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 01/29/2019
-ms.openlocfilehash: 6dad4fc98dccc5c8db22019fdc548efdf7165d9e
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 86a3542c39fe81607187442799ef7b546e053a8e
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888746"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985835"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Elérhető az Azure Stackhez az Azure piactéren elemek
 
@@ -166,7 +166,6 @@ A Microsoft Azure Stackhez az Azure piactér következő virtuális gépek és a
 | ![MongoDB](media/azure-stack-marketplace-azure-items/mongodb.png) | [MongoDB](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.mongodb) | Nagyteljesítményű nyílt forráskódú NoSQL-adatbázis C++ nyelven írt. | Bitnami |
 | ![MongoDB-replikáció](media/azure-stack-marketplace-azure-items/mongodb.png) | [MongoDB-replikáció](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.production-mongodb) | Nagyteljesítményű nyílt forráskódú NoSQL-adatbázis C++ nyelven írt. **Ez a megoldássablon 1807 vagy újabb verzióját kell az Azure Stack igényel, és a Linux 2.0-s verziója is szükséges Debian 8 és egyéni parancsfájl.** | Bitnami |
 | ![Moodle](media/azure-stack-marketplace-azure-items/moodle.png) | [Moodle-alapú](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.moodle) | Hatékony CMS online tanulási Közösségek számára terveztek. | Bitnami |
-| ![Multicraft](media/azure-stack-marketplace-azure-items/multicraft.png) | [Multicraft](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.multicraft) | Megoldás és a Vezérlés panel üzemeltető Minecraft-kiszolgálón. | Bitnami |
 | ![MyBB](media/azure-stack-marketplace-azure-items/mybb.png) | [MyBB](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.mybb) | Ingyenes és nyílt forráskódú fórum szoftver. | Bitnami |
 | ![MySQL](media/azure-stack-marketplace-azure-items/mysql.png) | [MySQL](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.mysql) | A népszerű adatbázis-rendszer. | Bitnami |
 | ![MySQL-replikáció](media/azure-stack-marketplace-azure-items/mysql.png) | [MySQL-replikáció](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.mysql-cluster) | MySQL egy gyors, megbízható, méretezhető és könnyen használható nyílt forráskódú relációs adatbázis rendszer. A MySQL-kiszolgáló alapvető fontosságú, betöltési (nagy erőforrásigényű) éles rendszereket, valamint meghajtóbetűjeleket alkalmazásaiba háttértár – telepített szoftver szól. A megoldás több virtuális gép használja, az adatbázisok replikálása a fő csomópont replikák konfigurálható száma. **Ez a megoldássablon Debian 8 és egyéni parancsfájl is Linux 2.0-s verziója igényel.** | Bitnami |

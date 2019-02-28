@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/12/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: 7035035823e00fb0c12de3f4eeae11d8b3e1d54d
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 181e2c1d1a9758d6f196c9cb2b281eefa141d81a
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016921"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984764"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Databricks-jegyzetfüzet futtatása a Databricks-jegyzetfüzet tevékenységeivel az Azure Data Factoryban
 
@@ -109,7 +109,7 @@ Ebben a szakaszban létrehoz egy Databricks társított szolgáltatást. Ez a t�
 
     1.  A **Hozzáférési jogkivonatot** hozza létre az Azure Databricks-munkaterületről. A lépéseket [itt](https://docs.databricks.com/api/latest/authentication.html#generate-token) találhatja meg.
 
-    1.  A **Fürt verziója** mezőben válassza a **4.0** lehetőséget (az Apache Spark 2.3.0-val és a Scala 2.11-gyel)
+    1.  A **fürtverzió**válassza **4.2** (az Apache Spark 2.3.1, Scala 2.11-et)
 
     1.  A **Fürtcsomópont típusa** mezőben válassza a **Standard\_D3\_v2** lehetőséget az **Általános célú (HDD)** területen ehhez az oktatóanyaghoz. 
     

@@ -7,18 +7,20 @@ ms.service: firewall
 ms.topic: tutorial
 ms.date: 10/24/2018
 ms.author: victorh
-ms.openlocfilehash: 1354faad4abf9a8a4b56414628d39d9a6f90d721
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 2befbf66733430e6077f5e5ff3044c30a77b7e5c
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426167"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958974"
 ---
-# <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>Oktatóanyag: Az Azure Firewall naplóinak és metrikáinak monitorozása
+# <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>Oktatóanyag: Azure tűzfal-naplók és metrikák figyelése
 
 Az Azure Firewall tűzfalnaplókkal monitorozható. Az Azure Firewall-erőforrásokon végzett műveletek tevékenységnaplókkal is naplózhatók. A metrikákkal teljesítményszámlálókat tekinthet meg a portálon. 
 
-Ezen naplók egy része a portálról érhető el. A naplók elküldhetők a [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md), Storage és Event Hubs szolgáltatásokba, és elemezhetők a Log Analyticsben vagy más eszközökben, például az Excelben vagy a Power BI-ban.
+Ezen naplók egy része a portálról érhető el. Lehet küldeni a naplókat [naplózza az Azure Monitor](../azure-monitor/insights/azure-networking-analytics.md), Storage és az Event Hubs és elemezheti az Azure Monitor naplóira, vagy a különböző eszközök, például az Excel és a Power bi-ban.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -48,7 +50,7 @@ A diagnosztikai naplózás bekapcsolása után eltarthat néhány percig, amíg 
 
 3. Az adatok gyűjtésének elkezdéséhez kattintson a **Diagnosztika bekapcsolása** elemre.
 4. A **Diagnosztikai beállítások** lap megadja a diagnosztikai naplók beállításait. 
-5. Ebben a példában a Log Analytics tárolja a naplókat, ezért névként adja meg a következőt: **Firewall log analytics**.
+5. Ebben a példában az Azure Monitor-naplókat a naplók tárolja, ezért írjon be **tűzfal a log analytics** neve.
 6. A munkaterület konfigurálásához kattintson a **Küldés a Log Analyticsnek** elemre. Eseményközpontot és tárfiókot is használhat a diagnosztikai naplók mentésére.
 7. A **Log Analytics**területen kattintson a**Konfigurálás** elemre.
 8. A Log Analytics-munkaterületek oldalon kattintson az **Új munkaterület létrehozása** elemre.
@@ -89,14 +91,14 @@ A diagnosztikai naplózás engedélyezéséhez kövesse az alábbi lépéseket:
 
 A tevékenységnaplók adatainak megtekintéséhez és elemzéséhez használja az alábbi módszerek bármelyikét:
 
-* **Azure-eszközök**: Információkat kérhet le a tevékenységnaplóból az Azure PowerShell-lel, az Azure CLI-vel, az Azure REST API-val vagy az Azure Portallal. Az egyes módszerek részletes útmutatóit a [Resource Managerrel végzett tevékenységművelet](../azure-resource-manager/resource-group-audit.md) című cikkben találja.
-* **Power BI**: Ha még nem rendelkezik [Power BI](https://powerbi.microsoft.com/pricing)-fiókkal, ingyenesen kipróbálhatja. A [Power BI-hoz készült Azure Activity Logs-tartalomcsomaggal](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/) olyan előre konfigurált irányítópultokkal elemezheti az adatokat, amelyeket eredeti formájukban vagy testre szabva is használhat.
+* **Azure-eszközök**: A tevékenységnapló használatával az Azure PowerShell-lel, az Azure CLI, az Azure REST API vagy az Azure Portalon lévő információk lekéréséhez. Az egyes módszerek részletes útmutatóit a [Resource Managerrel végzett tevékenységművelet](../azure-resource-manager/resource-group-audit.md) című cikkben találja.
+* **Power BI**: Ha még nem rendelkezik egy [Power BI](https://powerbi.microsoft.com/pricing) fiók próbálhatja ki ingyenesen. A [Power BI-hoz készült Azure Activity Logs-tartalomcsomaggal](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/) olyan előre konfigurált irányítópultokkal elemezheti az adatokat, amelyeket eredeti formájukban vagy testre szabva is használhat.
 
 ## <a name="view-and-analyze-the-network-and-application-rule-logs"></a>A hálózati szabályok és alkalmazásszabályok naplóinak megtekintése és elemzése
 
-Az Azure [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md) a számlálónapló- és eseménynapló-fájlokat gyűjti. A Log Analytics vizualizációkat és hatékony keresési lehetőségeket is tartalmaz a naplók elemzéséhez.
+[Az Azure Monitor naplóira](../azure-monitor/insights/azure-networking-analytics.md) a számláló és Eseménynapló fájlokat gyűjt. A Log Analytics vizualizációkat és hatékony keresési lehetőségeket is tartalmaz a naplók elemzéséhez.
 
-Az Azure Firewall Log Analytics mintalekérdezéseit [az Azure Firewall Log Analytics mintáit](log-analytics-samples.md) ismertető cikkben tekintheti meg.
+Azure-tűzfal a log analytics lekérdezések mintát, lásd: [tűzfal az Azure log analytics minták](log-analytics-samples.md).
 
 A Storage-fiókjához is csatlakozhat, és lekérheti a hozzáférés- és teljesítménynaplók JSON-naplóbejegyzéseit. A letöltött JSON-fájlokat átalakíthatja CSV-fájlokká, és ezeket megtekintheti az Excelben, Power BI-ban vagy bármely más adatvizualizációs eszközben.
 
@@ -108,10 +110,10 @@ Nyisson meg egy Azure Firewallt, és a **Monitorozás** területen kattintson a 
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy konfigurálta a tűzfalat a naplók gyűjtésére, megtekintheti az adatait a Log Analyticsben.
+Most, hogy konfigurálta a tűzfal a naplókat, áttekintheti az Azure Monitor naplóira szeretné megtekinteni az adatokat.
 
 > [!div class="nextstepaction"]
-> [Hálózatmonitorozási megoldások a Log Analyticsben](../azure-monitor/insights/azure-networking-analytics.md)
+> [Rendszerben a hálózatfigyelési megoldások az Azure Monitor naplóira](../azure-monitor/insights/azure-networking-analytics.md)
 
 [1]: ./media/tutorial-diagnostics/figure1.png
 [2]: ./media/tutorial-diagnostics/figure2.png

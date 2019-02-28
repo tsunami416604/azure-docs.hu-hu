@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 42fc4b6b1924b858f58d714cee8f1b9d2e7aba33
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: fa9f613bfbb3028715629f1d27b90531bd1dac3a
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56752259"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959680"
 ---
 # <a name="quickstart-create-an-ios-unity-app-with-azure-spatial-anchors"></a>Gyors útmutató: Egy IOS-es Unity-alkalmazás létrehozása az Azure térbeli horgonyok
 
@@ -61,6 +61,9 @@ Mentse a jelenet kiválasztásával **fájl** -> **mentése**.
 [!INCLUDE [Configure Xcode](../../../includes/spatial-anchors-unity-ios-xcode.md)]
 
 Kövesse az utasításokat az alkalmazásban kívánja helyezni horgonyra visszaírásához.
+
+> [!NOTE]
+> Az alkalmazás futtatásakor, ha nem látja a kamerát a háttérben (a példányt egy üres, kék helyette tekintse meg vagy más textúrákhoz), majd valószínűleg újra importálnia kell a Unity-nél eszközök. Állítsa le az alkalmazást. Válassza a felső menüben, a Unity-nél, **eszközök -> importálja újra az összes**. Ezután futtassa újra az alkalmazást.
 
 Az xcode-ban, állítsa le az alkalmazást a billentyű lenyomásával **leállítása**.
 

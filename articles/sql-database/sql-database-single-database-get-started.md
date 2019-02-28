@@ -12,12 +12,12 @@ ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/25/2019
-ms.openlocfilehash: d7f1279dbe253a9bc18b9e99ac9dbdf2a7cf52a1
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 64d16073062c0fd7f0b97a64950ceab9efc0eacf
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56870601"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984883"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal"></a>Gyors útmutató: Önálló adatbázis létrehozása az Azure SQL Database az Azure portal használatával
 
@@ -29,7 +29,7 @@ Ebben a rövid útmutatóban minden lépéseiért jelentkezzen be a [az Azure po
 
 ## <a name="create-a-single-database"></a>Önálló adatbázis létrehozása
 
-Önálló adatbázis egy két [model(sql-database-purchase-models.md) megvásárlásával számítási, memória, IO és tárolási erőforrások egy meghatározott készletével rendelkezik. Ha létrehoz egy adatbázist, akkor is definiálni egy [SQL Database-kiszolgáló](sql-database-servers.md) felügyelni, és helyezze belül [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) egy meghatározott régióban.
+Önálló adatbázis az egyik két számítási, memória, IO és tárolási erőforrások egy meghatározott készletével rendelkezik [vásárlási modellek](sql-database-purchase-models.md). Ha létrehoz egy adatbázist, akkor is definiálni egy [SQL Database-kiszolgáló](sql-database-servers.md) felügyelni, és helyezze belül [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) egy meghatározott régióban.
 
 Az AdventureWorksLT mintaadatokat tartalmazó önálló adatbázis létrehozása:
 

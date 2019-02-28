@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/16/2018
 ms.author: sogup
-ms.openlocfilehash: fe0b47bbf1ebb9cba328bfc444172249135270c5
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 10b49c5ebcd73010a52da1fada32ba55198b287a
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310274"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961533"
 ---
 # <a name="frequently-asked-questions-azure-backup"></a>Gyakori kérdések – Azure Backup
 
@@ -21,10 +21,8 @@ Ez a cikk kapcsolatos gyakori kérdésekre ad választ a [Azure Backup](backup-i
 
 ## <a name="general-questions"></a>Általános kérdések
 
-
 ### <a name="what-azure-vms-can-you-back-up-using-azure-backup"></a>Milyen Azure-beli virtuális gépek is biztonsági másolatot készíteni az Azure Backup használatával?
 [Felülvizsgálat](backup-azure-arm-vms-prepare.md#before-you-start) támogatott operációs rendszerek és korlátozások.
-
 
 
 ## <a name="backup"></a>Backup
@@ -41,17 +39,16 @@ Igen, biztonsági mentések problémamentesen működik. Hiba esetén nem kell s
 ### <a name="why-cant-i-see-my-vm-in-the-configure-backup-wizard"></a>Miért nem látom, hogy a biztonsági mentés konfigurálása varázslóban a virtuális gépem?
 A varázsló csak sorolja fel a virtuális gépek és a tárolónak ugyanabban a régióban, és már, hogy nem készül biztonsági másolat.
 
-
 ### <a name="my-vm-is-shut-down-will-an-on-demand-or-a-scheduled-backup-work"></a>Virtuális gép leállt. Egy igény szerinti vagy ütemezett biztonsági mentési munkahelyi lesz?
 Igen. Biztonsági másolatok futtassa, ha egy gép le van állítva. A helyreállítási pont van megjelölve rendszerösszeomlás egységes.
 
 ### <a name="can-i-cancel-an-in-progress-backup-job"></a>Egy folyamatban lévő biztonsági mentési feladat lemondható?
 Igen. A biztonsági mentési feladat megszakítható egy **véve pillanatkép** állapota. Egy feladat nem szakítható meg, ha folyamatban van a pillanatkép adatátvitel.
 
-### <a name="i-enabled-resource-group-lock-on-my-backed-up-managed-disk-vms-will-my-backups-continue-to-work"></a>Saját biztonsági másolat felügyelt lemezes virtuális gépek erőforrás-csoport zárolás I engedélyezve. A biztonsági mentések továbbra is működni fognak?
-Ha zárolja az erőforráscsoport, az Azure Backup szolgáltatás a régebbi helyreállítási pontok nem lehet törölni.
-- Új biztonsági mentés sikertelen, mert legfeljebb 18 visszaállítási pontok indul el.
-- Ha a biztonsági mentés után a zárolást, egy belső hiba miatt sikertelen [kövesse az alábbi lépéseket](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal) eltávolítása a visszaállításipont-gyűjtemény.
+### <a name="i-enabled-lock-on-resource-group-created-by-azure-backup-service-ie--azurebackuprggeonumber-will-my-backups-continue-to-work"></a>I engedélyezve van az Azure Backup szolgáltatással (vagyis) által létrehozott erőforráscsoport zárolása ` AzureBackupRG_<geo>_<number>`), a biztonsági mentések továbbra is működni fog?
+Ha zárolhatja az Azure Backup szolgáltatás által létrehozott erőforráscsoportot, biztonsági mentés sikertelen, mert legfeljebb 18 visszaállítási pontok indul el.
+
+Távolítsa el a zárolást, és törölje a jelet ebből az erőforráscsoportból a visszaállításipont-gyűjtemény annak érdekében, hogy a jövőbeni biztonsági mentések sikeres, a felhasználónak kell [kövesse az alábbi lépéseket](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal) eltávolítása a visszaállításipont-gyűjtemény.
 
 ### <a name="does-the-backup-policy-consider-daylight-saving-time-dst"></a>Vegye figyelembe a nyári időszámításra (cél) a biztonsági mentési szabályzatot?
 Nem. A dátum és idő a helyi számítógépen a alkalmazni aktuális nyári időszámítás helyi. Ütemezett biztonsági mentések beállított ideje a helyi idő nyári Időszámítás miatt eltérhetnek.

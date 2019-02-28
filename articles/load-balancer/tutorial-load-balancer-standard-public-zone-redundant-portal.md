@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/17/2018
+ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: e83991f553d00af11cfc275137f8e73ebab2098c
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 2b37d77e00595be125490431694f4549f61fced6
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882637"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56982793"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Oktatóanyag: Virtuális gépek terheléselosztása rendelkezésre állási zónák között a Standard Load Balancer az Azure portal használatával
 
@@ -50,16 +50,20 @@ Jelentkezzen be az Azure Portalra a [http://portal.azure.com](http://portal.azur
 A Standard Load Balancer csak a standard nyilvános IP-címeket támogatja. Ha a terheléselosztó létrehozása során létrehoz egy új nyilvános IP-címet, akkor az automatikusan standard termékváltozatként lesz konfigurálva, és automatikusan zónaredundánssá is válik.
 
 1. A képernyő bal felső részén kattintson az **Erőforrás létrehozása** > **Hálózatkezelés** > **Terheléselosztó** elemre.
-2. A **Terheléselosztó létrehozása** lapon adja meg az alábbi értékeket a terheléselosztó számára:
-    - A terheléselosztó neve: *myLoadBalancer*.
-    - A terheléselosztó típusa: **Nyilvános**.
-     - A létrehozandó új nyilvános IP-cím: *myPublicIP*. Ehhez kattintson a **Nyilvános IP-cím kiválasztása**, majd az **Új létrehozása** lehetőségere. A névtípus megadásához alapértelmezetten a *myPublicIP* termékváltozat a szokásos, a **Rendelkezésre állási zóna** kiválasztásához pedig a **Zónaredundáns**.
-    - A létrehozott új erőforráscsoport neve: *myResourceGroupLBAZ*.
-    - A hely: **westeurope**.
-3. A terheléselosztó létrehozásához kattintson a **Létrehozás** elemre.
-   
-    ![Load Balancer létrehozása](./media/load-balancer-standard-public-availability-zones-portal/1a-load-balancer.png)
+2. Az a **alapjai** lapján a **terheléselosztó létrehozása** lap, adja meg vagy válassza ki a következő adatokat, fogadja el az alapértelmezett értékeket a többi beállításnál, és válassza **felülvizsgálat +létrehozása**:
 
+    | Beállítás                 | Érték                                              |
+    | ---                     | ---                                                |
+    | Előfizetés               | Válassza ki előfizetését.    |    
+    | Erőforráscsoport         | Válassza ki **új létrehozása** , és írja be *MyResourceGroupLBAZ* a szövegmezőben.|
+    | Name (Név)                   | *myLoadBalancer*                                   |
+    | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
+    | Typo          | Válassza ki **nyilvános**.                                        |
+    | SKU           | Válassza ki **Standard**.                          |
+    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. |
+    | Nyilvános IP-cím neve              | Típus *myPublicIP* a szövegmezőben.   |
+    |Rendelkezésre állási zóna| Válassza ki **Zónaredundáns**.    |
+   
 
 ## <a name="create-backend-servers"></a>Háttérkiszolgálók létrehozása
 

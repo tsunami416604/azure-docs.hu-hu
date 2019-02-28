@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/27/2018
+ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 64c0a42ac3cc074e5fd9e2824180009431b11e1e
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 3ec4b8fb9ebb7a03983ce5da3dad56e0fe9917e8
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231971"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56986328"
 ---
-# <a name="quickstart-create-a-public-basic-load-balancer-by-using-the-azure-portal"></a>Gyors útmutató: Alapszintű nyilvános load balancer létrehozása az Azure portal használatával
+# <a name="quickstart-create-a-basic-load-balancer-by-using-the-azure-portal"></a>Gyors útmutató: Alapszintű Load Balancer létrehozása az Azure portal használatával
 
 Terheléselosztási a bejövő kérelmeket virtuális gépeken (VM) között osztja szét a magasabb rendelkezésre állást és méretezést biztosít. Az Azure portal használatával létrehozhat egy terheléselosztót, és a virtuális gépek közötti forgalom elosztására. Ez a rövid útmutató bemutatja, hogyan hozhat létre és konfigurálja a terheléselosztó háttér-kiszolgálók és hálózati erőforrások, az alapszintű díjcsomagot.
 
@@ -30,25 +30,27 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Ebben a rövid útmutatóban a feladatokat végezheti el, jelentkezzen be a [az Azure portal](http://portal.azure.com).
 
-## <a name="create-a-basic-load-balancer"></a>Alapszintű terheléselosztó létrehozása
+## <a name="create-a-basic-load-balancer"></a>Alapszintű Load Balancer létrehozása
 
-Először hozzon létre egy nyilvános alapszintű load balancer a portál használatával. A név és a nyilvános IP-címet hoz létre automatikusan megtörténik, a terheléselosztó előtérbeli.
+Először hozzon létre egy alapszintű nyilvános Load Balancer a portál használatával. A név és a nyilvános IP-címet hoz létre automatikusan megtörténik, a terheléselosztó előtérbeli.
 
-1. A Portal bal felső sarkában kattintson az **Erőforrás létrehozása** > **Hálózat** > **Terheléselosztó** elemre.
-   
-1. Az a **terheléselosztó létrehozása** panelen adja meg ezeket az értékeket:
-   
-   - **Név**: Típus *MyLoadBalancer*.
-   - **Típus**: Válassza ki **nyilvános**. 
-   - **TERMÉKVÁLTOZAT**: Válassza az **Alapszintű** lehetőséget.
-   - **Nyilvános IP-cím:** Válassza az **Új létrehozása** lehetőséget. 
-     - **Nyilvános IP-cím** mező: Típus *MyPublicIP*.
-     - **Nyilvános IP-cím konfigurálása** > **hozzárendelés**: Válassza ki **dinamikus**.
-   - **Erőforráscsoport**: Válassza ki **új létrehozása**, majd adja meg *MyResourceGroupLB*, és válassza ki **OK**. 
-   
-1. Kattintson a **Létrehozás** gombra.
-   
-![Load Balancer létrehozása](./media/load-balancer-get-started-internet-portal/1-load-balancer.png)
+1. A képernyő bal felső részén kattintson az **Erőforrás létrehozása** > **Hálózatkezelés** > **Terheléselosztó** elemre.
+2. Az a **alapjai** lapján a **terheléselosztó létrehozása** lap, adja meg vagy válassza ki a következő adatokat, fogadja el az alapértelmezett értékeket a többi beállításnál, és válassza **felülvizsgálat +létrehozása**:
+
+    | Beállítás                 | Érték                                              |
+    | ---                     | ---                                                |
+    | Előfizetés               | Válassza ki előfizetését.    |    
+    | Erőforráscsoport         | Válassza ki **új létrehozása** , és írja be *MyResourceGroupLB* a szövegmezőben.|
+    | Name (Név)                   | *myLoadBalancer*                                   |
+    | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
+    | Typo          | Válassza ki **nyilvános**.                                        |
+    | SKU           | Válassza az **Alapszintű** lehetőséget.                          |
+    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. |
+    | Nyilvános IP-cím neve              | *MyPublicIP*   |
+    | Hozzárendelés| Statikus|
+
+3. Az a **felülvizsgálat + létrehozása** lapra, majd **létrehozás**.   
+
 
 ## <a name="create-back-end-servers"></a>Háttérkiszolgálók létrehozása
 

@@ -14,18 +14,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: roiyz
-ms.openlocfilehash: 9d9f634d494c3c88146ab1f243d17609cf30bbcd
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 5a5472e3790235caec65e56f31096de3abfae93d
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100261"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56986362"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>NVIDIA GPU illesztőprogramjának-bővítmény linuxhoz
 
 ## <a name="overview"></a>Áttekintés
 
-Ez a bővítmény Linux N-sorozat virtuális gépei NVIDIA GPU-illesztők telepítése. A Virtuálisgép-család függően a bővítmény telepítését CUDA vagy GRID illesztőprogramok. NVIDIA telepítésekor illesztőprogramokat a bővítmény használatával Ön elfogadja, és elfogadja a használati a [NVIDIA végfelhasználói licencszerződés](https://go.microsoft.com/fwlink/?linkid=874330). A telepítés során a virtuális gép újraindulhat az illesztőprogramot a telepítés végrehajtásához.
+Ez a bővítmény Linux N-sorozat virtuális gépei NVIDIA GPU-illesztők telepítése. A Virtuálisgép-család függően a bővítmény telepítését CUDA vagy GRID illesztőprogramok. NVIDIA telepítésekor illesztőprogramokat a bővítmény használatával Ön elfogadja, és elfogadja a használati a [NVIDIA végfelhasználói licencszerződés](http://developer.download.nvidia.com/compute/cuda/5_5/rel/docs/EULA.pdf). A telepítés során a virtuális gép újraindulhat az illesztőprogramot a telepítés végrehajtásához.
 
 Egy bővítmény is érhető el az NVIDIA GPU-illesztők telepítése [Windows N-sorozat virtuális gépei](hpccompute-gpu-windows.md).
 

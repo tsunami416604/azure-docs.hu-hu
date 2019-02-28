@@ -1,6 +1,6 @@
 ---
-title: Kapacitás és teljesítmény megoldás az Azure Log Analyticsben |} A Microsoft Docs
-description: A kapacitásra és teljesítményre megoldást használni a Log Analytics segítségével megismerheti a kapacitás, a Hyper-V-kiszolgálók.
+title: Kapacitás és teljesítmény megoldás az Azure Monitor |} A Microsoft Docs
+description: A kapacitásra és teljesítményre megoldást használni a Monitor segítségével megismerheti a kapacitás, a Hyper-V-kiszolgálók.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: magoedte
-ms.openlocfilehash: 41508a1d99ed243d377cc72c0accc005c5ca737d
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: db2bbd8c3c0e3d7d172ea2948a42f300c2875745
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189200"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983710"
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>A kapacitásra és teljesítményre megoldással (előzetes verzió) a Hyper-V virtuális gép kapacitásának megtervezése
 
@@ -27,7 +27,7 @@ ms.locfileid: "53189200"
 > [!NOTE]
 > A kapacitás és teljesítmény-megoldás elavult.  Ügyfelek, akik már telepítették a megoldás továbbra is használhatja, de a kapacitásra és teljesítményre nem vehető új munkaterületek.
 
-A kapacitásra és teljesítményre megoldás a Log Analytics segítségével megismerheti a kapacitás, a Hyper-V-kiszolgálók. A megoldás biztosítja, hogy a Hyper-V környezetébe insights jeleníti meg a teljes kihasználtság (Processzor, memória és lemezek) a gazdagépek és a Hyper-V gazdagépeken futó virtuális gépek. Metrikákat gyűjt CPU, memória és a lemezek az összes gazdagép és a rajtuk futó virtuális gépek között.
+A figyelő a kapacitás és teljesítmény megoldás használatával segítségével megismerheti a kapacitás, a Hyper-V-kiszolgálók. A megoldás biztosítja, hogy a Hyper-V környezetébe insights jeleníti meg a teljes kihasználtság (Processzor, memória és lemezek) a gazdagépek és a Hyper-V gazdagépeken futó virtuális gépek. Metrikákat gyűjt CPU, memória és a lemezek az összes gazdagép és a rajtuk futó virtuális gépek között.
 
 A megoldás:
 

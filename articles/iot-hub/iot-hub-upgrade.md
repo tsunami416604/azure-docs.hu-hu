@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 6f6cf6de9b1f12451bf28a9bd7fc7077c1c6b1cd
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 4acd4f3fd9c013d622a23853dc2f0d02b8b753d9
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673458"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985784"
 ---
 # <a name="how-to-upgrade-your-iot-hub"></a>Az IoT hub frissítése
 
@@ -45,7 +45,9 @@ Ezek a példák segítségével megismerheti, hogyan állíthatja be az IoT hub,
 4. Ha módosítani szeretné az hub egységek számát, adja meg egy új értéket a **IoT Hub-egységek**. 
 5. Válassza ki **mentése** a módosítások mentéséhez. 
 
-Az IoT hub most módosul, és a beállítások nem változnak. A partíciók maximális korlátot, az alapszintű csomag az IoT Hub 8 és a standard csomag az 32. A legtöbb IoT-központok csak négy partíciót kell. A partíciós korlát akkor kell kiválasztani, amikor az IoT Hub jön létre, és az eszköz – felhő üzeneteket vonatkozik, az ezeket az üzeneteket az egyidejű olvasók. Ez az érték az alapszintű csomag a standard szintű csomag áttelepítésekor változatlan marad. 
+Az IoT hub most módosul, és a beállítások nem változnak. 
+
+A partíciók maximális korlátot, az alapszintű csomag az IoT Hub és az IoT Hub standard szintű 32. A legtöbb IoT-központok csak 4 partíciók van szükség. A partíciós korlát akkor kell kiválasztani, amikor az IoT Hub jön létre, és az eszköz – felhő üzeneteket vonatkozik, az ezeket az üzeneteket az egyidejű olvasók. Ez az érték az alapszintű csomag a standard szintű csomag áttelepítésekor változatlan marad. 
 
 ## <a name="next-steps"></a>További lépések
 

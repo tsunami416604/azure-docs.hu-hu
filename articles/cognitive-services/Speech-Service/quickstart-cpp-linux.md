@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: wolfma
-ms.openlocfilehash: 9e1844320786fe8a2a856b06b3a8093ca49568eb
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 7cc6153681a05944ea83b756a0439ff0c8922f91
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446358"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959527"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Gyors útmutató: Beszédfelismerést c++ Linux rendszeren a Speech SDK-val
 
@@ -31,7 +31,7 @@ A rövid útmutató elvégzéséhez szüksége van a Speech Service előfizetői
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-A Cognitive Services Speech SDK jelenlegi verziója az `1.3.0`.
+A Cognitive Services Speech SDK jelenlegi verziója az `1.3.1`.
 
 A Linuxhoz készült Speech SDK 64 és 32 bites alkalmazások létrehozásához is használható. A szükséges kódtárai és fejlécfájljai a tar-fájlként letölthető https://aka.ms/csspeech/linuxbinary.
 

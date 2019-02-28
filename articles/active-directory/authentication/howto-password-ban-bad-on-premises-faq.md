@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: adbfb0e42bc7057313c7652402fce2b2ede47735
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 6f0a10a56aeecf9973ea12b022e0030fb4635fbf
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56592502"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984548"
 ---
 # <a name="preview-azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Előzetes verzió: Az Azure AD jelszóvédelem helyszíni – gyakori kérdések
 
@@ -26,10 +26,6 @@ ms.locfileid: "56592502"
 |     |
 
 ## <a name="general-questions"></a>Általános kérdések
-
-**K: Amikor eléri az Azure AD jelszóvédelem általánosan elérhető (GA)?**
-
-Általánosan elérhető (előtt március 2019 vége) Q1 CY2019 tervezünk. Köszönjük, hogy mindenki számára, aki a szolgáltatást, hogy a dátum - visszajelzés mellékelt Köszönjük azt!
 
 **K: Milyen útmutatást felhasználók kell adni egy biztonságos jelszót kijelöléséhez?**
 

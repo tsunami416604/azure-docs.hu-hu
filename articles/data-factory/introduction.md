@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: 9704002a30556c76c65ddcad1cb576fbf4502b55
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 66ea269e2f29bfd39cdb81086391e0277474219d
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014301"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961353"
 ---
 # <a name="introduction-to-azure-data-factory"></a>Az Azure Data Factory bemutatása 
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](v1/data-factory-introduction.md)
 > * [Aktuális verzió](introduction.md)
 
@@ -62,7 +62,7 @@ Ha az adatok már jelen vannak egy központi adattárban a felhőben, akkor olya
 Miután a nyers adatok át lettek alakítva üzleti használatra kész formába, feltöltheti azokat az Azure Data Warehouse-ba, az Azure SQL Database-be, az Azure CosmosDB-be vagy bármely olyan elemzési motorra, amelyre üzleti felhasználói intelligens üzleti eszközeikkel rámutathatnak.
 
 ### <a name="monitor"></a>Figyelés
-Miután sikeresen kiépítette és üzembe helyezte az adatintegrációs folyamatot, amely üzleti értéket állít elő a feldolgozott adatokból, kövesse figyelemmel az ütemezett tevékenységek és folyamatok sikerességi arányát. Az Azure Data Factory beépített folyamatmonitorozási támogatással rendelkezik az Azure Monitor, az API, a PowerShell, a Log Analytics, valamint az Azure Portal állapotpaneljei révén.
+Miután sikeresen kiépítette és üzembe helyezte az adatintegrációs folyamatot, amely üzleti értéket állít elő a feldolgozott adatokból, kövesse figyelemmel az ütemezett tevékenységek és folyamatok sikerességi arányát. Az Azure Data Factory folyamatfigyelési Azure Monitor, API, PowerShell, az Azure Monitor-naplók és az Azure portal állapotpaneljei egészségügyi beépített támogatással rendelkezik.
 
 ## <a name="top-level-concepts"></a>Legfelső szintű fogalmak
 Az Azure-előfizetések több Azure Data Factory-példányt (más néven adat-előállítókat) is tartalmazhatnak. Az Azure Data Factory négy fő összetevőből áll. Ezek együtt alkotják azt a platformot, amelyen létrehozhatók olyan adatvezérelt munkafolyamatok, amelyeknek a lépései áthelyezik és átalakítják az adatokat.

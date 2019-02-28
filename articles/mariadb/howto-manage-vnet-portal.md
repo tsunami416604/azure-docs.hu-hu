@@ -5,18 +5,15 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 11/19/2018
-ms.openlocfilehash: 77602898df7d783367ffd78328082c3edcaac83e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 02/26/2019
+ms.openlocfilehash: a1d92f324c30c498b1a42f6155a478cf131ecc96
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542339"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961958"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>Hozzon létre és kezelhető az Azure Database for MariaDB virtuális hálózati Szolgáltatásvégpontok és a VNet-szabályok az Azure portal használatával
-
-> [!IMPORTANT]
-> A virtuális hálózatok szolgáltatásvégponti funkciója jelenleg nyilvános előzetes verzióban.
 
 Virtuális hálózat (VNet) szolgáltatások végpontok és a szabályok egy virtuális hálózat magáncímterét kiterjesztheti az Azure Database for MariaDB-kiszolgáló. Azure database for MariaDB virtuális hálózati Szolgáltatásvégpontok, korlátai, beleértve lásd [, Azure Database for MariaDB-kiszolgáló virtuális hálózati Szolgáltatásvégpontok](concepts-data-access-security-vnet.md). Virtuális hálózati Szolgáltatásvégpontok az Azure Database for MariaDB minden támogatott régióban érhetők el.
 

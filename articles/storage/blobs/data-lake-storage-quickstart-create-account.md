@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: a4c3d952edd115748c6a63f031d9c8e115aedb1c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 1af6214833109ad89e8b5f27eefc0c99cdaf2496
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884460"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984186"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-storage-account"></a>Gyors útmutató: Az Azure Data Lake Storage Gen2-storage-fiók létrehozása
 
@@ -83,7 +83,7 @@ Az Azure Portalon a következő lépések végrehajtásával hozhat létre egy e
 Kövesse az alábbi lépéseket egy általános célú v2-tárfiók létrehozásához az Azure Portalon:
 
 > [!NOTE]
-> A hierarchikus névtér jelenleg minden nyilvános régióban elérhető. Szuverén felhőkben jelenleg nem érhető el.
+> A hierarchikus névtér jelenleg minden nyilvános régióban elérhető.
 
 1. Az Azure Portalon nyissa ki bal oldalon a szolgáltatásmenüt, és válassza a **Minden szolgáltatás** lehetőséget. Ezután görgessen le a **Storage** szakaszig, és válassza a **Storage-fiókok** lehetőséget. A megjelenő **Storage-fiókok** ablakban válassza a **Hozzáadás** lehetőséget.
 2. Válassza ki a **előfizetés** és a **erőforráscsoport** korábban létrehozott.
@@ -141,7 +141,7 @@ Login-AzAccount
 A PowerShell használatával egy új erőforráscsoport létrehozásához használja a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) parancsot: 
 
 > [!NOTE]
-> A hierarchikus névtér jelenleg minden nyilvános régióban elérhető. Szuverén felhőkben jelenleg nem érhető el.
+> A hierarchikus névtér jelenleg minden nyilvános régióban elérhető.
 
 ```powershell
 # put resource group in a variable so you can use the same group name going forward,
@@ -201,7 +201,7 @@ az group create `
 ```
 
 > [!NOTE]
-> > A hierarchikus névtér jelenleg minden nyilvános régióban elérhető. Szuverén felhőkben jelenleg nem érhető el.
+> > A hierarchikus névtér jelenleg minden nyilvános régióban elérhető.
 
 ### <a name="create-a-general-purpose-v2-storage-account"></a>Általános célú 2-es verziójú tárfiók létrehozása
 

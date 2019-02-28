@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 12/11/2018
-ms.openlocfilehash: b4f8d2bdbce20fc7a932280edc26cb3ddfbe6471
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 5fd3200ab787a26b11feb121b5db125e4a79365c
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247605"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960380"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>Oktatóanyag: MongoDB át az Azure Cosmos DB API a mongodb-hez offline a DMS használatával
 Az Azure Database Migration Service használatával történő offline áttelepítéshez (egyszeri) az adatbázisok egy helyszíni vagy felhőbeli Azure Cosmos DB API a MongoDB-példány a mongodb-hez.
@@ -100,7 +100,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 ## <a name="specify-source-details"></a>Forrás adatainak megadása
 1. Az a **forrás részletei** képernyőn, adja meg a forráskiszolgáló MongoDB kapcsolati adatait.
     
-   Kapcsolati karakterlánc mód használata is, és adja meg, amelyben a gyűjtemény adatait szeretné áttelepíteni már kiírt blog tároló fájlt tároló helyét.
+   Kapcsolati karakterlánc mód használata is, és adjon meg egy fájl blobtárolóba, amelyben a gyűjtemény adatait szeretné áttelepíteni már kiírt helyét.
 
    > [!NOTE]
    > Az Azure Database Migration Service migrálhatja bson vagy json-dokumentumokat az Azure Cosmos DB API a MongoDB-gyűjteményt.

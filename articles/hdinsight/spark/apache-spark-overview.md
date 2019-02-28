@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,mvc
 ms.topic: overview
 ms.date: 01/28/2019
 ms.author: hrasheed
-ms.openlocfilehash: c08672b178a9327b39414ca1c0e71653f62d1d07
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 264faaf0168d1604668e3358b1d99bc169d7e2f0
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55295797"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985172"
 ---
 # <a name="what-is-apache-spark-in-azure-hdinsight"></a>Mi az az Azure HDInsight-alapú Apache Spark?
 
@@ -38,7 +38,7 @@ A HDInsight-alapú Spark-fürtök teljes körűen felügyelt Spark szolgáltatá
 | Az Azure Data Lake Storage támogatása | A HDInsight Spark-fürtök az Azure Data Lake Storage is használhatja az elsődleges tárolási vagy a további tárhely. További információ a Data Lake Storage: [az Azure Data Lake Storage áttekintése](../../data-lake-store/data-lake-store-overview.md). |
 | Integráció az Azure-szolgáltatásokkal |A HDInsight-alapú Spark-fürt Azure Event Hubs-összekötőt is tartalmaz. Streamelési alkalmazásokat mellett az Event Hubs használatával hozhat létre [Apache Kafka](https://kafka.apache.org/), amely már elérhető a Spark részeként. |
 | ML Server-támogatás | Az ML Server HDInsighton belüli támogatását az **ML-szolgáltatási** fürttípus biztosítja. Az ML-szolgáltatások fürtjei elosztott R-számítások futtatására állíthatók be a Spark-fürtre jellemző sebesség mellett. További információ: [ML Server HDInsighton belül – első lépések](../r-server/r-server-get-started.md). |
-| Integráció külső integrált fejlesztői környezetekkel (IDE) | A HDInsight számos olyan IDE beépülő modult biztosít, amely alkalmazások létrehozásához és egy HDInsight Spark-fürt számára történő elküldéséhez bizonyulhat hasznosnak. További információkért lásd: [Azure-eszközkészlet használata az IntelliJ Idea](apache-spark-intellij-tool-plugin.md), [használata HDInsight VSCode,- és [Eclipse-hez készült Azure eszközkészlet használata](apache-spark-eclipse-tool-plugin.md).|
+| Integráció külső integrált fejlesztői környezetekkel (IDE) | A HDInsight számos olyan IDE beépülő modult biztosít, amely alkalmazások létrehozásához és egy HDInsight Spark-fürt számára történő elküldéséhez bizonyulhat hasznosnak. További információkért lásd: [Azure-eszközkészlet használata az IntelliJ Idea](apache-spark-intellij-tool-plugin.md), [használható HDInsight VSCode-](../hdinsight-for-vscode.md), és [Eclipse-hez készült Azure eszközkészlet használata](apache-spark-eclipse-tool-plugin.md).|
 | Egyidejű lekérdezések |A HDInsight-alapú Spark-fürtök támogatják az egyidejű lekérdezéseket. E képesség révén lehetővé válik, hogy az egyetlen, illetve a több felhasználótól és alkalmazástól származó több lekérdezés ugyanazokat a fürterőforrásokat használja. |
 | Gyorsítótárazás SSD meghajtókon |Az adatok gyorsítótárazása történhet a memóriában vagy a fürtcsomópontokhoz kapcsolt SSD meghajtókon is. A memóriában történő gyorsítótárazás biztosítja a legjobb lekérdezési teljesítményt, ugyanakkor drága lehet. Az SSD-meghajtókon történő gyorsítótárazással viszont úgy javítható hatékonyan a lekérdezési teljesítmény, hogy ahhoz nincs szükség a memória teljes adatkészletéhez igazodó méretű fürt létrehozására. |
 | Integráció BI-eszközökkel |A HDInsight-alapú Spark-fürtök összekötőket biztosítanak az olyan adatelemző BI-eszközök számára, mint a [Power BI](https://www.powerbi.com/). |

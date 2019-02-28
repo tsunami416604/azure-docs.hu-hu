@@ -11,12 +11,12 @@ ms.devlang: rest-api
 ms.topic: conceptual
 robot: noindex
 ms.custom: seodec2018
-ms.openlocfilehash: a55652c8d19866b717cbafec4629030a7708bb50
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: d63fdbfd71e812e9b445fb0055cb9aee5876ecc1
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359493"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56962145"
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>Csatlakozás a Cosmos DB az Azure Search indexelők használatával
 
@@ -65,7 +65,7 @@ Egy **indexelő** ismerteti, hogy az adatfolyamok az adatforrásból a cél kere
 
 Az Azure Cosmos DB-indexelő beállításával kapcsolatban szeretne létrehozni, index, adatforrás, és végül az indexelő. Ezek az objektumok használatával is létrehozhat a [portál](search-import-data-portal.md), [.NET SDK-val](/dotnet/api/microsoft.azure.search), vagy [REST API-val](/rest/api/searchservice/). 
 
-Ez a cikk bemutatja, hogyan használható a REST API. Ha úgy dönt, a portálhoz, a [adatok importálása varázsló](search-import-data-portal.md) végigvezeti Önt az összes erőforrás, beleértve az index létrehozását.
+Ez a cikk bemutatja, hogyan használható a REST API. Ha úgy dönt, a portálhoz, győződjön meg arról, a Cosmos DB-adatbázissal adatokat tartalmaz. A [adatok importálása varázsló](search-import-data-portal.md) beolvassa a metaadatokat és hajtja végre az indexsémát, de kikövetkeztetnünk az adat-mintavételezés is terhelések adatok Cosmos DB-ből. Hiányzik az adatokat, ha a varázsló a hibával leáll "hiba észlelését indexsémát az adatforrás: Nem építhető fel a prototípusindex, mert "emptycollection" adatforrás nem adott vissza adatokat. ".
 
 > [!TIP]
 > Az Azure Cosmos DB irányítópultjáról elindíthatja az **Adatok importálása** varázslót, amellyel egyszerűbbé válik az adatforrás indexelése. A kezdéshez lépjen a bal oldali navigációs menüben a **Gyűjtemények** > **Azure Search hozzáadása** elemre.
@@ -182,10 +182,10 @@ Győződjön meg arról, hogy a célindex sémája kompatibilis sémáját, a fo
 ### <a name="mapping-between-json-data-types-and-azure-search-data-types"></a>JSON-adattípusok és az Azure Search-adattípusok közötti leképezések
 | JSON-adatok típusa | Kompatibilis a célként megadott index mezőtípusok |
 | --- | --- |
-| Logikai |Edm.Boolean, Edm.String |
+| Bool |Edm.Boolean, Edm.String |
 | Hasonló egész számok |Edm.Int32, Edm.Int64, Edm.String |
 | Számok, tekintse meg például a nem fix pontok |Edm.Double, Edm.String |
-| Karakterlánc |Edm.String |
+| String |Edm.String |
 | Ha például ["a", "b", "c"] egyszerű típusú tömbök |Collection(Edm.String) |
 | Karakterláncok, dátumok hasonló |Edm.DateTimeOffset, Edm.String |
 | A GeoJSON-objektumok, például {"type": "Pont", "koordináták": [hosszú, szél]} |Edm.GeographyPoint |

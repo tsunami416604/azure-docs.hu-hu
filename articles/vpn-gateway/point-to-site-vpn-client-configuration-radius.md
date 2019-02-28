@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 02/15/2019
+ms.date: 02/27/2019
 ms.author: cherylmc
-ms.openlocfilehash: 8881582eac47e31b20e9eb96effea254b821ba34
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: f59a871297189cfd5082b55a3dbdfd3156a4e501
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417295"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985704"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>Hozzon létre és telepítse a VPN-ügyfél konfigurációs fájljainak a P2S RADIUS-hitelesítés
 
@@ -48,9 +48,22 @@ Felhasználónév-és jelszóalapú hitelesítés konfigurálásakor csak a felh
 
 ### <a name="usernamefiles"></a> 1. VPN-ügyfél konfigurációs fájljainak létrehozása
 
+A VPN-ügyfélkonfigurációs fájlok az Azure portal használatával, vagy az Azure PowerShell használatával hozhatja létre.
+
+#### <a name="azure-portal"></a>Azure Portal
+
+1. Keresse meg a virtuális hálózati átjárót.
+2. Kattintson a **pont – hely konfiguráció**.
+3. Kattintson a **VPN-ügyfél letöltése**.
+4. Válassza ki az ügyfél, és adja meg azokat a kért információkat.
+5. Kattintson a **letöltése** létrehozni a .zip-fájlt.
+6. A .zip-fájlt fog letölteni általában a Letöltések mappába.
+
+#### <a name="azure-powershell"></a>Azure PowerShell
+
 Hozzon létre a VPN-ügyfél konfigurációs fájljainak felhasználóneves és jelszavas hitelesítéssel való használatra. A VPN-ügyfélkonfigurációs fájlok a következő parancs használatával is létrehozhat:
 
-```powershell 
+```azurepowershell-interactive
 New-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapMSChapv2"
 ```
  
@@ -64,7 +77,7 @@ Ha már létrehozott ügyfél konfigurációs fájljainak, kérheti le azokat ha
 
 Korábban létrehozott ügyfél-konfigurációs fájlok lekéréséhez használja a következő parancsot:
 
-```powershell
+```azurepowershell-interactive
 Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
 ```
 
@@ -182,7 +195,7 @@ Minden egyes VPN-ügyfél eszköz egy telepített ügyfél-tanúsítványt igén
 
 Hozzon létre a VPN-ügyfél konfigurációs fájljainak a Tanúsítványalapú hitelesítés segítségével. A VPN-ügyfélkonfigurációs fájlok a következő parancs használatával is létrehozhat:
  
-```powershell
+```azurepowershell-interactive
 New-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapTls" -RadiusRootCert <full path name of .cer file containing the RADIUS root> -ClientRootCert <full path name of .cer file containing the client root> | fl
 ```
 
@@ -195,7 +208,7 @@ Ha már létrehozott ügyfél konfigurációs fájljainak, kérheti le azokat ha
 
 Korábban létrehozott ügyfél-konfigurációs fájlok lekéréséhez használja a következő parancsot:
 
-```powershell
+```azurepowershell-interactive
 Get-AzVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" | fl
 ```
  

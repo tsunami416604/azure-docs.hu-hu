@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: juluk
-ms.openlocfilehash: 1f2c218ed9ba2f5f9285c60b8d4c11704825c0f5
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 0cbd2c1f9a5a36d4e11eb86a3d531340b0e0ff03
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563881"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983727"
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Az Azure Cloud Shell korlátozásai
 
@@ -45,7 +45,7 @@ A cloud Shell támogatja a Microsoft Edge, a Microsoft Internet Explorer, a Goog
 
 ### <a name="for-a-given-user-only-one-shell-can-be-active"></a>Egy adott felhasználó csak egy parancshéj lehet aktív.
 
-Csak indíthatják egyfajta rendszerhéj egyszerre, vagy **Bash** vagy **PowerShell**. Előfordulhat azonban, Bash- vagy PowerShell fut egyszerre több példányát. Érvényesítheti a Bash- vagy PowerShell okok Cloud Shell újraindítása, amely befejezi a meglévő munkameneteket között.
+Csak indíthatják egyfajta rendszerhéj egyszerre, vagy **Bash** vagy **PowerShell**. Előfordulhat azonban, Bash- vagy PowerShell fut egyszerre több példányát. A menü használatával Bash- vagy PowerShell közötti felcserélése hatására a Cloud Shell újraindítása, amely befejezi a meglévő munkameneteket. Alternatív megoldásként futtathatja a PowerShell belül bash beírásával `bash`, és futtathatja a PowerShell belül bash beírásával `pwsh`.
 
 ### <a name="usage-limits"></a>Használati korlátozások
 
@@ -57,9 +57,9 @@ A cloud Shell interaktív használati esetek szól. Ennek eredményeképpen mind
 
 Engedélyek beállítása normál felhasználóként sudo hozzáférés nélkül. Minden olyan telepítési kívül a `$Home` directory nincs megőrizve.
 
-### <a name="editing-bashrc"></a>.Bashrc szerkesztése
+### <a name="editing-bashrc-or-profile"></a>.Bashrc vagy $PROFILE szerkesztése
 
-Legyen körültekintő elvégzendő .bashrc, így szerkesztési váratlan hibákat eredményezhet a Cloud Shellben.
+Legyen körültekintő elvégzendő .bashrc vagy a PowerShell $PROFILE fájlt, végrehajtására szerkesztési váratlan hibákat eredményezhet a Cloud Shellben.
 
 ## <a name="powershell-limitations"></a>PowerShell-korlátozások
 
@@ -73,23 +73,15 @@ A `SqlServer` modul tartalmazza a Cloud Shellben a PowerShell Core csak előzete
 
 ### <a name="default-file-location-when-created-from-azure-drive"></a>Alapértelmezett helye az Azure-meghajtó létrehozása:
 
-PowerShell-parancsmagok használatával felhasználókat nem lehet létrehozni az Azure-meghajtó a fájlok. Amikor a felhasználó más eszközökkel, például vim vagy nano, új fájlok létrehozása a fájlok menti, és a `$HOME` alapértelmezés szerint. 
+PowerShell-parancsmagok használatával felhasználók nem hozható létre alatt az Azure files: meghajtó. Amikor a felhasználó más eszközökkel, például vim vagy nano, új fájlok létrehozása a fájlok menti, és a `$HOME` alapértelmezés szerint. 
 
 ### <a name="gui-applications-are-not-supported"></a>Grafikus felhasználói Felülettel alkalmazások nem támogatottak.
 
-Ha egy felhasználó futtat egy parancsot kell létrehoznia egy Windows párbeszédablak, mint például `Connect-AzureAD`, `Connect-AzureRmAccount`, vagy `Connect-AzAccount` például kap egy hibaüzenetet: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
-
-### <a name="tab-completion-crashes-psreadline"></a>Kiegészítés PSReadline összeomlik
-
-Ha a felhasználó Szerkesztőmódba a PSReadline Emacs értékre van állítva, a felhasználó megpróbálja keresztül kiegészítés, az összes lehetőség megjelenítéséhez és az ablak mérete túl kicsi az összes lehetőség megjelenítéséhez, PSReadline összeomlik.
+A felhasználó futtat egy parancsot, amely egy Windows párbeszédpanel kell létrehoznia, ha egy kap hibaüzenetet például: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
 
 ### <a name="large-gap-after-displaying-progress-bar"></a>Miután a folyamatjelző sáv megjelenítése nagy közök
 
 Ha a felhasználó hajt végre egy műveletet, amely megjelenik egy folyamatjelző, ezen a lapon épp, miközben a a `Azure:` meghajtó, akkor lehetséges, hogy a kurzor nincs megfelelően beállítva, és eseményáramlási kimaradást jelenik meg, ahol a folyamatjelző sáv korábban volt.
-
-### <a name="random-characters-appear-inline"></a>Véletlenszerű karakter beágyazott jelennek meg.
-
-A kurzor pozíciója feladatütemezési kódjai, például `5;13R`, a felhasználói bevitel is megjelennek.  A karakterek manuálisan távolíthatja el.
 
 ## <a name="next-steps"></a>További lépések
 

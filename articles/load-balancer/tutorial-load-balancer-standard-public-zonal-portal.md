@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/17/2018
+ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 76e55c643378e689f12d485100a81ccefa4196f4
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 5f3b9b48fc5f15738c3de9928ca0bb220a66db12
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229812"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985988"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Oktatóanyag: Virtuális gépek terheléselosztása rendelkezésre állási zónában belül a Standard Load Balancer az Azure portal használatával
 
@@ -48,18 +48,22 @@ Jelentkezzen be az Azure Portalra a [http://portal.azure.com](http://portal.azur
 A Standard Load Balancer csak a szabványos nyilvános IP-címeket támogatja. Ha a terheléselosztó létrehozása során létrehoz egy új standard IP-címet, akkor az automatikusan standard termékváltozatként lesz konfigurálva. Ezenkívül automatikusan zónaredundánssá is válik.
 
 1. A Portal bal felső sarkában kattintson az **Erőforrás létrehozása** > **Hálózat** > **Load Balancer** elemre.
-2. A **Terheléselosztó létrehozása** lapon adja meg az alábbi értékeket a terheléselosztó számára:
-    - A terheléselosztó neve: **myLoadBalancer**
-    - A terheléselosztó típusa: **Nyilvános**
-      - A létrehozott új nyilvános IP-cím: **myPublicIPZonal**. Válassza kis a **Válasszon egy nyilvános IP-címet** elemet. Ezután kattintson az **Új létrehozása** elemre. A névhez írja be a következőt: **myPublicIP**. A termékváltozat alapértelmezés szerint a standard. A **Rendelkezésre állási zóna** kiválasztásánál válassza az **1. zóna** elemet.
-    - A létrehozott új erőforráscsoport neve: **myResourceGroupZLB**.
-    - A hely: **westeurope**.
-3. A terheléselosztó létrehozásához válassza a **Létrehozás** elemet.
-   
-    ![Hozzon létre egy standard Load Balancer-példányt az Azure Portal használatával](./media/tutorial-load-balancer-standard-zonal-portal/create-load-balancer-zonal-frontend.png)
+2. Az a **alapjai** lapján a **terheléselosztó létrehozása** lap, adja meg vagy válassza ki a következő adatokat, fogadja el az alapértelmezett értékeket a többi beállításnál, és válassza **felülvizsgálat +létrehozása**:
 
+    | Beállítás                 | Érték                                              |
+    | ---                     | ---                                                |
+    | Előfizetés               | Válassza ki előfizetését.    |    
+    | Erőforráscsoport         | Válassza ki **új létrehozása** , és írja be *MyResourceGroupZLB* a szövegmezőben.|
+    | Name (Név)                   | *myLoadBalancer*                                   |
+    | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
+    | Typo          | Válassza ki **nyilvános**.                                        |
+    | SKU           | Válassza ki **Standard**.                          |
+    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. |
+    | Nyilvános IP-cím neve              | Típus *myPublicIP* a szövegmezőben.   |
+    |Rendelkezésre állási zóna| Válassza az **1** lehetőséget.    |
+3. Az a **felülvizsgálat + létrehozása** lapra, majd **létrehozás**.   
 
-## <a name="create-backend-servers"></a>Háttérkiszolgálók létrehozása
+ ## <a name="create-backend-servers"></a>Háttérkiszolgálók létrehozása
 
 Ebben a szakaszban egy új virtuális hálózatot hozhat létre. Két, ugyanebben zónában (azaz az 1. zónában) lévő virtuális gépet is létrehoz hata régió számára, hogy hozzáadja a terheléselosztója háttérkészletéhez. Ezután a virtuális gépeken telepítheti az IIS-t a zónaredundáns terheléselosztó teszteléséhez. Ha az egyik virtuális gép meghiúsul, az azonos zónában lévő virtuális gép állapot-ellenőrzése is meghiúsul. A forgalmat továbbra is a zónában található más virtuális gépek szolgáltatják.
 

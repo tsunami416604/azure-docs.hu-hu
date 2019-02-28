@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: rkmanda
-ms.openlocfilehash: 1596cf1337fa084fe6a160c99e52ae80ee3e2491
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 308d9a04e52572e00e1cbed24548e5f09adda571
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49341973"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985920"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Az IoT Hub magas rendelkezésre állás és vészhelyreállítás helyreállítási
 
@@ -64,6 +64,7 @@ Az IoT hub a feladatátvételi művelet befejezése után az eszköz és a hátt
 >
 > - A feladatátvételt követően az Event Griden keresztül kibocsátott események felhasználhatók a korábban beállított mindaddig, amíg ezen Event Grid-előfizetések továbbra is elérhetők az azonos előfizetés(ek) keresztül.
 >
+> - Útválasztás blob storage-ba, amikor ajánlott felvétel a blobok és majd léptetés át őket, anélkül, hogy a partíció jósolható olvasható az összes tárolót. A partíciótartomány potenciálisan sikerült módosítani a Microsoft által kezdeményezett vagy kézi feladatátvételre során. Megtudhatja, hogyan kell felsorolni a blobok lásd [blob Storage-útválasztási](iot-hub-devguide-messages-d2c.md#azure-blob-storage).
 
 ### <a name="microsoft-initiated-failover"></a>A Microsoft által kezdeményezett feladatátvétel
 
@@ -100,7 +101,7 @@ A teljes tartománynév (és így a kapcsolati karakterlánc), az IoT hub-péld�
 Helyreállítási ideje = RTO [10 perc – 2 óra kézi feladatátvételre |} a Microsoft által kezdeményezett feladatátvételi 2 – 26 óra] + DNS-propagálás késleltetés + frissítéséhez bármely, az ügyfélalkalmazás által igénybe vett idő a gyorsítótárba IoT-központ IP-címet.
 
 > [!IMPORTANT]
-> Az IoT SDK-k nem gyorsítótárazzák az IoT hub IP-címét. Azt javasoljuk, hogy felhasználói kód kapcsolatba, az SDK-k nem gyorsítótárazza az IoT hub IP-címét.
+> The IoT SDKs do not cache the IP address of the IoT hub. Azt javasoljuk, hogy felhasználói kód kapcsolatba, az SDK-k nem gyorsítótárazza az IoT hub IP-címét.
 
 ## <a name="achieve-cross-region-ha"></a>Magas rendelkezésre ÁLLÁSÚ régiók közötti elérése
 
@@ -111,14 +112,14 @@ Egy regionális feladatátvétel modellben a megoldás biztonsági célból futt
 
 Magas szinten egy regionális feladatátvétel modell megvalósításához az IoT hubbal, meg kell az alábbi lépéseket:
 
-* **Egy másodlagos IoT hub és az Útválasztás logikai eszköz**: Ha az elsődleges régióban szolgáltatás megszakad, eszközöket kell elindítania, csatlakozás a másodlagos régióhoz. A legtöbb szolgáltatások állapotközpontú természetéből szokás megoldás segítségével a rendszergazdák a régiók közötti feladatátvétel folyamat aktiválásához. A folyamat kézben tarthassa az eszközökre, az új végpont kommunikálni a legjobb módszer az, hogy rendszeresen ellenőrzi őket egy *recepciószolgálata* szolgáltatásba az aktuális aktív végpontot. A recepciószolgálata szolgáltatás lehet egy webalkalmazást, amely replikálja, és elérhető marad DNS-átirányítás módszerrel (például [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)).
+* **Egy másodlagos IoT hub és az Útválasztás logikai eszköz**: Ha az elsődleges régióban szolgáltatás megszakad, eszközök csatlakoztatása a másodlagos régióba kell elindítani. A legtöbb szolgáltatások állapotközpontú természetéből szokás megoldás segítségével a rendszergazdák a régiók közötti feladatátvétel folyamat aktiválásához. A folyamat kézben tarthassa az eszközökre, az új végpont kommunikálni a legjobb módszer az, hogy rendszeresen ellenőrzi őket egy *recepciószolgálata* szolgáltatásba az aktuális aktív végpontot. A recepciószolgálata szolgáltatás lehet egy webalkalmazást, amely replikálja, és elérhető marad DNS-átirányítás módszerrel (például [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)).
 
    > [!NOTE]
    > IoT hub szolgáltatás állapota nem támogatott végponttípusnál az Azure Traffic Managerben. A javaslat, hogy a javasolt recepciószolgálata szolgáltatás integrálása az Azure traffic manager azáltal, hogy azt a végponti állapotadat-mintavétel API megvalósításához.
 
-* **Identitás adatbázis replikációja**: használhatóvá válik, a másodlagos IoT hub tartalmaznia kell az összes eszközidentitások, amely a megoldás képes kapcsolódni. A megoldás kell megőrizni a biztonsági mentések georeplikált eszközidentitások, és feltölti őket a másodlagos IoT hub az eszközök aktív végpontja váltása előtt. Az IoT Hub eszköz identitás exportálási funkció akkor hasznos, ebben a környezetben. További információkért lásd: [az IoT Hub fejlesztői útmutató – eszközidentitás-jegyzék](iot-hub-devguide-identity-registry.md).
+* **Identitás adatbázis replikációja**: Is használható, a másodlagos IoT hub-kompatibilis a megoldás összes eszközidentitások kell tartalmaznia. A megoldás kell megőrizni a biztonsági mentések georeplikált eszközidentitások, és feltölti őket a másodlagos IoT hub az eszközök aktív végpontja váltása előtt. Az IoT Hub eszköz identitás exportálási funkció akkor hasznos, ebben a környezetben. További információkért lásd: [az IoT Hub fejlesztői útmutató – eszközidentitás-jegyzék](iot-hub-devguide-identity-registry.md).
 
-* **Logikai egyesítésével**: Ha az elsődleges régió újra elérhetővé válik, állapota és adatai, a másodlagos helyen létrehozott kell áttelepíteni az összes biztonsági másolatot az elsődleges régióba. Ez állapota és adatai többnyire kapcsolódnak eszközidentitások és -alkalmazás metaadatait, amelyet egyesíteni kell az elsődleges IoT hub és egyéb alkalmazásspecifikus tárolja az elsődleges régióban. 
+* **Logikai egyesítésével**: Amikor az elsődleges régió újra elérhetővé válik, az állapot és a másodlagos helyen létrehozott adatokat kell áttelepíteni az elsődleges régióba. Ez állapota és adatai többnyire kapcsolódnak eszközidentitások és -alkalmazás metaadatait, amelyet egyesíteni kell az elsődleges IoT hub és egyéb alkalmazásspecifikus tárolja az elsődleges régióban. 
 
 Ebben a lépésben leegyszerűsítése idempotens műveleteket kell használnia. Idempotens műveletek minimalizálása érdekében a mellékhatásai modul, az események a végleges konzisztens terjesztési, illetve az ismétlődések vagy out soron kívüli kézbesíti az eseményeket. Emellett az alkalmazáslogika elviselni esetleges inkonzisztenciákat vagy kissé elavult állapotban kell megtervezni. Ez a helyzet akkor fordulhat elő, miatt a további szükséges időt a rendszer javítandó helyreállításipont-célkitűzések (RPO) alapján.
 
@@ -126,7 +127,7 @@ Ebben a lépésben leegyszerűsítése idempotens műveleteket kell használnia.
 
 Az alábbiakban egy magas rendelkezésre ÁLLÁS/Vészhelyreállítás beállítások összesítését jelenik meg ebben a cikkben, válassza ki a megfelelő megoldás, amely a megoldás működik, mint egy hivatkozási használható.
 
-| HA/DR-beállítás | RTO | HELYREÁLLÍTÁSI IDŐKORLÁT | Manuális beavatkozásra van szükség? | Megvalósítás összetettségét | További költségek gyakorolt hatás|
+| HA/DR-beállítás | RTO | Helyreállítási időkorlát | Manuális beavatkozásra van szükség? | Megvalósítás összetettségét | További költségek gyakorolt hatás|
 | --- | --- | --- | --- | --- | --- | --- |
 | A Microsoft által kezdeményezett feladatátvétel |2 – 26 óra|Tekintse meg a fenti RPO-táblázat|Nem|None|None|
 | Manuális feladatátvétel |10 perc – 2 óra|Tekintse meg a fenti RPO-táblázat|Igen|Nagyon alacsony. Csak kell elindítani a műveletet a portálról.|None|

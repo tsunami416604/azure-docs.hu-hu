@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: jdial
-ms.openlocfilehash: 856da056f833b9c7bcff2c96ff0495d05f86366f
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 3f308c38e9fa23c36f964b117f620a39e56c9bbd
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56667942"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958184"
 ---
 # <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
 
@@ -63,7 +63,7 @@ Ha egyazon régióban lévő virtuális hálózatok között társhálózati vis
 
 ![virtuális társhálózatok közötti átvitel](./media/virtual-networks-peering-overview/figure04.png)
 
-Az átjáróval történő adatátvitel nem támogatott, ha olyan virtuális hálózatok állnak egymással társviszonyban, amelyek eltérő régiókban lettek létrehozva. Ahhoz, hogy az átjáróval történő adatátvitel működjön, a társviszonyban álló virtuális hálózatoknak ugyanabban a régióban kell lenniük. Ha a virtuális hálózatok különböző üzembehelyezési modellel lettek létrehozva (Resource Manager és klasszikus), az átjáróval történő adatátvitel csak abban az esetben támogatott, ha az átjáró a virtuális hálózaton található (Resource Manager). További információ az átjárók adatátvitelre való használatáról: [VPN-átjáró konfigurálása adatátvitelhez virtuális hálózatok közötti társviszony-létesítésben](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+Az átjáróval történő adatátvitel nem támogatott, ha olyan virtuális hálózatok állnak egymással társviszonyban, amelyek eltérő régiókban lettek létrehozva. Ahhoz, hogy az átjáróval történő adatátvitel működjön, a társviszonyban álló virtuális hálózatoknak ugyanabban a régióban kell lenniük. (Resource Manager és Klasszikus modell), különböző üzembehelyezési modellel létrehozott virtuális hálózatok közötti átjárói átvitel akkor támogatott, csak ha az átjáró (VPN- vagy ExpressRoute) a virtuális hálózatban (Resource Manager). További információ az átjárók adatátvitelre való használatáról: [VPN-átjáró konfigurálása adatátvitelhez virtuális hálózatok közötti társviszony-létesítésben](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Ha két, ugyanazon az Azure ExpressRoute-kapcsolaton osztozó virtuális hálózatot állítanak társviszonyba, akkor a társhálózaton (vagyis az Azure gerinchálózatán) keresztül áramlik közöttük a forgalom. Az egyes virtuális hálózatok helyi átjárói ennek ellenére használhatók arra, hogy kapcsolatot létesítsenek a helyszíni kapcsolatcsoporttal. Közös átjárót is használhat, és átvitel konfigurálásával létesíthet kapcsolatot a helyszíni rendszerrel.
 

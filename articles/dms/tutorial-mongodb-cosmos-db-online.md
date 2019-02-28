@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 02/12/2019
-ms.openlocfilehash: 95286b7a63471ee07f76276d8b4b63ca5f2aecce
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.date: 02/27/2019
+ms.openlocfilehash: 06e76b8eed283c6ef09f38e876c60b05477cf0ce
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56212849"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985818"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms-preview"></a>Oktatóanyag: Azure Cosmos DB API a mongodb-hez MongoDB át online a DMS (előzetes verzió) használatával
 Az Azure Database Migration Service segítségével online (minimális állásidővel) áttelepítése egy adatbázis egy helyi vagy felhőbeli Azure Cosmos DB API a MongoDB-példány a mongodb-hez.
@@ -121,7 +121,18 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
        * **Kapcsolati karakterlánc mód**, amely fogad egy MongoDB-kapcsolati karakterláncot, a cikkben leírtak szerint [kapcsolati URI karakterláncként](https://docs.mongodb.com/manual/reference/connection-string/).
        * **Az Azure storage-ból adatokat**, amely elfogadja a blobtároló SAS URL-címet. Válassza ki **Blob tartalmazza a BSON memóriaképek** rendelkezik-e a blob-tároló a MongoDB által előállított BSON memóriaképek [bsondump eszköz](https://docs.mongodb.com/manual/reference/program/bsondump/), és a kijelölését, ha a tároló a JSON-fájlokat tartalmazza.
 
-    Olyan esetekben, mely DNS-névfeloldás nem lehetséges az IP-címet is használhatja.
+      Ha ezt a lehetőséget választja, lehet, hogy a tárfiók kapcsolati sztringje megjelenik-e a következő formátumban:
+
+    ```
+    https://blobnameurl/container?SASKEY
+    ```
+      Emellett az Azure BLOB storage típusú memóriakép információk alapján, tartsa a következő részletességi szem előtt.
+
+      * A BSON memóriaképek blob-tárolóban lévő adatok bsondump formátumúnak kell lennie, hogy adatfájlokat a formátum collection.bson tartalmazó adatbázisai elnevezett mappákba kerülnek. Metaadat-fájlok (ha van ilyen) a következő formátumban kell elnevezni *gyűjtemény*. metadata.json.
+
+      * JSON-memóriaképek blob-tárolóban lévő fájlokat tartalmazó adatbázisok elnevezett mappákba kell elhelyezni. Minden adatbázis mappában található fájlokat kell helyezni egy almappát "adatok" néven, és elnevezett, a következő formátumban *gyűjtemény*.json. Metaadat-fájlok (ha vannak) kell helyezni egy almappát "metaadatok" nevű, és használja ugyanazt a formátumot, nevű *gyűjtemény*.json. A metaadatok fájlok ugyanebben a formátumban kell lennie, mert a MongoDB bsondump eszköz állítja elő.
+
+   Olyan esetekben, mely DNS-névfeloldás nem lehetséges az IP-címet is használhatja.
 
    ![Forrás adatainak megadása](media/tutorial-mongodb-to-cosmosdb-online/dms-specify-source1.png)
 

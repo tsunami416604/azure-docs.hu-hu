@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e82e8f6caafb38b758f552913def234a92a0d83
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 696b6b14b2a369e8b80ac615fc77fa7f48f51c57
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454650"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959935"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>Fiók manuális hozzáadása az alkalmazáshoz
 Ha a kamera nem tudja rögzíteni a QR-kódot, manuálisan is hozzáadhat a fiók adatait a Microsoft Authenticator alkalmazást a kétfaktoros ellenőrzéshez. Ez a munkahelyi vagy iskolai fiókokat, és nem Microsoft-fiókok esetében működik.
@@ -102,5 +102,7 @@ Az Amazon-fiókkal kétfaktoros ellenőrzés bekapcsolásának és az alkalmazá
 ## <a name="next-steps"></a>További lépések
 
 - Miután hozzáadta a fiókok az alkalmazáshoz, bejelentkezhet a Microsoft Authenticator alkalmazás használatával az eszközén. További információkért lásd: [jelentkezzen be az alkalmazás](user-help-auth-app-sign-in.md).
+
+- Ha problémába ütközik az ellenőrző kód beolvasása a személyes Microsoft-fiókkal, tekintse meg a **ellenőrző kód kapcsolatos hibák elhárítása** szakaszában a [Microsoft-fiók biztonsági adatai & k ellenőrzése kódok](https://support.microsoft.com/en-us/help/12428/microsoft-account-security-info-verification-codes) cikk.
 
 - IOS rendszerű eszközökhöz is készíthető a fiók hitelesítő adatait, és a felhőhöz kapcsolódó alkalmazás beállításait, például a fiókok sorrendjét. További információkért lásd: [biztonsági mentés és helyreállítás a Microsoft Authenticator alkalmazás](user-help-auth-app-backup-recovery.md).

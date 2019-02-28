@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 02/28/2019
 ms.author: sethm
 ms.reviewer: justini
-ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: d23aab91df2d69850e8c3b80a1c12f49f2e7fcaa
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.lastreviewed: 02/28/2019
+ms.openlocfilehash: b94d27e903fd01c3be029128a64c3e3369669bf7
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55965171"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56986147"
 ---
 # <a name="azure-stack-1808-update"></a>Azure Stack 1808 frissítése
 
@@ -138,12 +138,13 @@ Emellett tartalmazza a kockázatcsökkentési spekulatív végrehajtás kockáza
   > - RRS: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss ... 
   > - Az Atom: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom ...
 
-
 - A frissítés telepítésének megkezdése előtt futtassa [Test-AzureStack](azure-stack-diagnostic-test.md) az Azure Stack állapotának érvényesítéséhez, és hárítsa el a működési hibákat talált a következő paraméterekkel, többek között az összes figyelmeztetések és hibák esetén. Emellett tekintse át az aktív riasztások, és oldja meg az esetleges beavatkozást igénylő.  
 
   ```PowerShell
   Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary
-  ```   
+  ```
+
+- Ha az Azure Stack felügyelt System Center Operations Manager (SCOM), mindenképpen a felügyeleti csomag a Microsoft Azure Stackhez készült verziójára való frissítéséhez 10.0.3.11 1808 alkalmazása előtt.
 
 ### <a name="known-issues-with-the-update-process"></a>A frissítési folyamat ismert problémái
 

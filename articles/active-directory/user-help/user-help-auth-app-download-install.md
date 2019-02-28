@@ -13,12 +13,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e11092057af3a7a16c60e55837f31ac3004e42a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 40be6f333bf259cc036bec9c0d9fc967dd33f2a3
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184839"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960037"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>Töltse le és telepítse a Microsoft Authenticator alkalmazás
 A Microsoft Authenticator alkalmazás segítségével jelentkezzen be a fiókok kétfaktoros ellenőrzési használatakor. A kétfaktoros hitelesítési segítségével a fiókok biztonságosabb, hozzáférhet a különösen bizalmas adatok megtekintésekor. Mivel a jelszavak elfelejtett is, amelyeket elloptak vagy feltört, kéttényezős hitelesítés végrehajtása egy további biztonsági lépés, amely megnehezíti mások feltörhessék fiókja védelme érdekében.
@@ -28,6 +28,9 @@ Többféle módon, beleértve a Microsoft Authenticator alkalmazást is használ
 - **A kétfaktoros ellenőrzése.** A standard hitelesítési módszer, ahol a tényezők egyik, a jelszót. Miután bejelentkezik a felhasználónévvel és jelszóval, hagyja jóvá az értesítést, vagy megadott ellenőrző kód megadása.
 
 - **Telefonos bejelentkezés.** A verzió, amely lehetővé teszi a kétfaktoros hitelesítés bejelentkezési jelszó, a felhasználónév és a mobil eszköz használata az ujjlenyomatot, arc vagy PIN-kód kérése nélkül.
+
+>[!Important]
+>A szervezet szükség lehet, hogy egy hitelesítő alkalmazást be- és a szervezeti adatok és dokumentumok eléréséhez. Bár az alkalmazás jelenhet meg a felhasználónevet, a fiók nincs ténylegesen beállítva egy ellenőrzési módszert funkcionálni, amíg a regisztráció befejezéséhez. További információkért lásd: [adja hozzá munkahelyi vagy iskolai fiókját](user-help-auth-app-overview.md).
 
 >[!NOTE]
 >Ha bejelentkezik a fiókjába problémákat tapasztal, tekintse meg [mikor nem jelentkezhet be Microsoft-fiókjába](https://support.microsoft.com/help/12429) segítséget.  További információ arról, mi a teendő, ha kap a ["a megadott Microsoft-fiók nem létezik"](https://support.microsoft.com/help/13811) jelenik meg, jelentkezzen be Microsoft-fiókjával.

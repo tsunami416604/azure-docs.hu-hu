@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c84aedbdb306bbd7432c3c0b611e6e58243624e2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 0e2f6a8bd8bc8e6f0dd8ba1ec642bff50c9a7977
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999368"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984033"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Hozzon létre egy felügyeleti megoldás fájlt az Azure-ban (előzetes verzió)
 > [!NOTE]
@@ -229,13 +229,6 @@ A **terv** entitás a megoldás erőforrás tulajdonságokkal rendelkezik, az al
 | termék |A megoldás azonosításához egyedi karakterlánc. |
 | publisher |Adott megoldás kiadójával. |
 
-
-
-## <a name="sample"></a>Sample
-Minták megoldás fájlnak a megoldás erőforrás a következő helyeken tekintheti meg.
-
-- [Automation-erőforrások](solutions-resources-automation.md#sample)
-- [Keresés és riasztás erőforrás](solutions-resources-searches-alerts.md#sample)
 
 
 ## <a name="next-steps"></a>További lépések

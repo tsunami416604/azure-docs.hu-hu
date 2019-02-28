@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 426c090a79931f252a5daeacbdd83d0238ecf672
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2726c1fd08414f112035d5378fc7e395ca7ace4c
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868114"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959085"
 ---
 # <a name="scale-elastic-pool-resources-in-azure-sql-database"></a>Az Azure SQL Database rugalmas készlet erőforrások skálázása
 
@@ -37,7 +37,7 @@ Ez a cikk ismerteti az Azure SQL Database rugalmas készletek és a készletezet
 
 ## <a name="vcore-based-purchasing-model-change-elastic-pool-compute-resources-vcores"></a>Virtuálismag-alapú vásárlási modell: Módosítsa a rugalmas készlet számítási erőforrásokat (virtuális mag)
 
-Növelheti vagy csökkentheti a számítási méret egy rugalmas készlet igények kielégítéséhez használt erőforrás alapján a [az Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqlelasticpool), a [Azure CLI-vel](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update), vagy a [ REST API-val](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
+Növelheti vagy csökkentheti a számítási méret egy rugalmas készlet igények kielégítéséhez használt erőforrás alapján a [az Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](/powershell/module/az.sql/Get-AzSqlElasticPool), a [Azure CLI-vel](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update), vagy a [ REST API-val](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
 
 - Amikor átméretezésekor rugalmas készletben található virtuális maggal, adatbázis-kapcsolatok röviden eldobásakor. Ez a viselkedés, amely akkor fordul elő, amikor átméretezésekor dtu-k egy önálló adatbázis viselkedést. Az időtartam és a megszakított kapcsolatokat adatbázis átméretezésekor műveletek során hatását a részletekért lásd: [módosítása számítási erőforrások (dtu-k)](sql-database-single-database-scale.md#dtu-based-purchasing-model-change-compute-resources-dtus).
 - A virtuális mag a készlet átméretezése időtartamot a készletben található összes adatbázis által használt tárterület teljes mennyisége is függenek. Általánosságban véve a átméretezésekor késés átlagának kiszámítása 90 perc vagy annál kisebb 100 GB-onként. Például ha által használt a teljes terület a készletben található összes adatbázis, 200 GB-os, akkor az a készlet rescaling a várható késés 3 óra vagy kevesebb. Bizonyos esetekben belül a Standard vagy alapszintű csomagra a átméretezésekor késés lehet függetlenül a használt terület mennyiségét öt perc alatt.
@@ -47,7 +47,7 @@ Növelheti vagy csökkentheti a számítási méret egy rugalmas készlet igény
 ## <a name="dtu-based-purchasing-model-change-elastic-pool-storage-size"></a>DTU-alapú vásárlási modell: Rugalmas készlet tárolási méretének módosítása
 
 - Rugalmas készlet edtu-k díjszabása tartalmaz egy bizonyos mennyiségű tárolási további költségek nélkül. A csomagban foglalt adatmennyiségen felüli extra tárterület legfeljebb 250 GB-os fel 1 TB-os egységekben, majd, 256 GB 1 TB-os léptékben maximális méretkorlátot díjfizetés mellett bővítheti. Belefoglalt tárterület összegek és a maximális méret korlátok [rugalmas készlet: tárterületet és számítási méretek](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes).
-- Extra tárterület rugalmas készletek bővítheti a maximális méret használatával növelje a [az Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqlelasticpool), a [Azure CLI-vel](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update), vagy a [REST API-val ](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
+- Extra tárterület rugalmas készletek bővítheti a maximális méret használatával növelje a [az Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](/powershell/module/az.sql/Get-AzSqlElasticPool), a [Azure CLI-vel](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update), vagy a [REST API-val ](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
 - Az extra tárterület rugalmas készletek ára az extra tárterület keletkezett a szolgáltatási rétegben extra tárterület egységára megszorozza. Az extra tárterület ára a részletekért lásd: [SQL Database – díjszabás](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
@@ -55,7 +55,7 @@ Növelheti vagy csökkentheti a számítási méret egy rugalmas készlet igény
 
 ## <a name="dtu-based-purchasing-model-change-elastic-pool-compute-resources-edtus"></a>DTU-alapú vásárlási modell: Módosítsa a rugalmas készlet számítási erőforrásokat (edtu-k)
 
-Növelheti vagy csökkentheti a igények kielégítéséhez használt erőforrás alapján rugalmas készletek számára elérhető erőforrások a [az Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqlelasticpool), a [Azure CLI-vel](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update), vagy a [ REST API-val](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
+Növelheti vagy csökkentheti a igények kielégítéséhez használt erőforrás alapján rugalmas készletek számára elérhető erőforrások a [az Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](/powershell/module/az.sql/Get-AzSqlElasticPool), a [Azure CLI-vel](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update), vagy a [ REST API-val](https://docs.microsoft.com/rest/api/sql/elasticpools/update).
 
 - Amikor átméretezésekor készlet edtu-k, adatbázis-kapcsolatok röviden eldobásakor. Ez a viselkedés, amely akkor fordul elő, amikor átméretezésekor dtu-k egy önálló adatbázis viselkedést. Az időtartam és a megszakított kapcsolatokat adatbázis átméretezésekor műveletek során hatását a részletekért lásd: [módosítása számítási erőforrások (dtu-k)](sql-database-single-database-scale.md#dtu-based-purchasing-model-change-compute-resources-dtus).
 - A készlet edtu-k átméretezése időtartamot a készletben található összes adatbázis által használt tárterület teljes mennyisége is függenek. Általánosságban véve a átméretezésekor késés átlagának kiszámítása 90 perc vagy annál kisebb 100 GB-onként. Például ha által használt a teljes terület a készletben található összes adatbázis, 200 GB-os, akkor az a készlet rescaling a várható késés 3 óra vagy kevesebb. Bizonyos esetekben belül a Standard vagy alapszintű csomagra a átméretezésekor késés lehet függetlenül a használt terület mennyiségét öt perc alatt.

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 02/27/2019
 ms.author: cherylmc
-ms.openlocfilehash: 0aea797458649af3f839b7b8ae9b5cea384fe3b0
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 86eb47f3ee1fa16d786a09bcafc103c70535a28f
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56865144"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983931"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>RADIUS-hitelesítés használatával virtuális hálózathoz pont – hely kapcsolat konfigurálása: PowerShell
 
@@ -64,10 +64,6 @@ Győződjön meg arról, hogy rendelkezik Azure-előfizetéssel. Ha még nincs A
 
 [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
-## <a name="signin"></a>bejelentkezés
-
-[!INCLUDE [sign in](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
-
 ### <a name="example"></a>Példaértékek
 
 A példaértékek használatával létrehozhat egy tesztkörnyezetet, vagy a segítségükkel értelmezheti a cikkben szereplő példákat. Megteheti, hogy lépésről lépésre végighalad az eljáráson, és módosítás nélkül ezeket az értékeket használja, de módosíthatja is őket, hogy megfeleljenek a saját környezetének.
@@ -88,6 +84,33 @@ A példaértékek használatával létrehozhat egy tesztkörnyezetet, vagy a seg
 * **Átjáró neve: Vnet1GW**
 * **Nyilvános IP-név: VNet1GWPIP**
 * **VpnType: Útvonalalapú**
+
+
+## <a name="signin"></a>Jelentkezzen be, és a változók beállítása
+
+[!INCLUDE [sign in](../../includes/vpn-gateway-cloud-shell-ps-login.md)]
+
+### <a name="declare-variables"></a>Változók deklarálása
+
+Deklarálja a használni kívánt változókat. Használja a következő példát, és szükség szerint cserélje le az értékeket a sajátjaira. A gyakorlat során bezárta a PowerShell vagy a Cloud Shell munkamenet bármikor leállítható, ha egyszerűen másolja be az értékeket ismét a újra deklarálja a változókat.
+
+  ```azurepowershell-interactive
+  $VNetName  = "VNet1"
+  $FESubName = "FrontEnd"
+  $BESubName = "Backend"
+  $GWSubName = "GatewaySubnet"
+  $VNetPrefix1 = "192.168.0.0/16"
+  $VNetPrefix2 = "10.254.0.0/16"
+  $FESubPrefix = "192.168.1.0/24"
+  $BESubPrefix = "10.254.1.0/24"
+  $GWSubPrefix = "192.168.200.0/26"
+  $VPNClientAddressPool = "172.16.201.0/24"
+  $RG = "TestRG"
+  $Location = "East US"
+  $GWName = "VNet1GW"
+  $GWIPName = "VNet1GWPIP"
+  $GWIPconfName = "gwipconf"
+  ```
 
 ## 1. <a name="vnet"></a>Az erőforráscsoport, a virtuális hálózat és a nyilvános IP-cím létrehozása címe
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: e2b08dbbeb078a4e139400112e9cdd9416878214
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 87c624e0fc5eac60b309a2535afc7508f1b6b3ac
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54383001"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56986107"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>A TRAFFIC Analytics – gyakori kérdések
 
@@ -105,7 +105,7 @@ Igen.
 
 ## <a name="can-i-use-an-existing-workspace"></a>Használhatja egy meglévő munkaterületet?
 
-Igen. Ha kiválaszt egy meglévő munkaterületet, ügyeljen arra, hogy azt az új lekérdezési nyelvre migrálták. Ha nem szeretne frissítse a munkaterületet, létre kell hozzon létre egy újat. Az új lekérdezési nyelvre kapcsolatos további információkért lásd: [Azure Log Analytics új naplókeresésre frissítési](../log-analytics/log-analytics-log-search-upgrade.md).
+Igen. Ha kiválaszt egy meglévő munkaterületet, ügyeljen arra, hogy azt az új lekérdezési nyelvre migrálták. Ha nem szeretne frissítse a munkaterületet, létre kell hozzon létre egy újat. Az új lekérdezési nyelvre kapcsolatos további információkért lásd: [Azure Monitor-naplók frissítése új naplókeresésre](../log-analytics/log-analytics-log-search-upgrade.md).
 
 ## <a name="can-my-azure-storage-account-be-in-one-subscription-and-my-log-analytics-workspace-be-in-a-different-subscription"></a>Az Azure Storage-fiókom lehet egy adott előfizetéshez, és a Log Analytics-munkaterületnek kell egy másik előfizetésben?
 

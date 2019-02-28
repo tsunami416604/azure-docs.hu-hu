@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: e5714f60b7fdd790f3af8e31250c41038110fd08
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: c7b99548e2fe1ad0c1cab39953e28a97e7ebff4b
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47047543"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984388"
 ---
 # <a name="application-layer-security-with-front-door"></a>A bejárati ajtajának alkalmazásbiztonsági réteg
 Azure bejárati ajtajának Service lehetővé teszi a webes alkalmazás védelmi funkció révén a webes alkalmazások és a hálózati támadások és SQL-injektálás vagy az idegen hely parancsfájl-kezelési (XSS) gyakori webes biztonsági rések támadások ellen. Engedélyezett http (s) az előtér-kiszolgálókon, bejárati ajtajának application layer biztonsági globálisan elosztott és mindig, leállításával rosszindulatú támadások, az Azure hálózati peremhálózati, milyen távolságra származó a háttérrendszerekre. A fokozott biztonság és a teljesítmény optimalizálása bejárati ajtajának gyors biztosít, és biztonságos webes élmény a végfelhasználók számára.
@@ -25,9 +25,9 @@ Azure bejárati ajtajának Service lehetővé teszi a webes alkalmazás védelmi
 Alkalmazásvédelem bejárati ajtajának edge környezeteket világszerte, alkalmazások, megfelelően van konfigurálva, és automatikusan letiltja a nem – HTTP (s) forgalmat a webes alkalmazások elérése. A több-bérlős elosztott architektúra lehetővé teszi, hogy nagy mennyiségű globális védelmi teljesítmény feláldozása nélkül. Http (s) számítási feladatok esetén bejárati ajtajának webszolgáltatás alkalmazás védelmet biztosít egy gazdag szabálymotorral egyéni szabályok, előre konfigurált szabálykészletben gyakori támadások ellen, és részletes naplózás minden kérelemhez, amely megfelel egy szabályt. Többek között rugalmas műveletek lehetővé teszik, letiltása, vagy a napló csak használata támogatott.
 
 ## <a name="custom-access-control-rules"></a>Egyéni hozzáférés-vezérlési szabályok
-- **IP-Tiltólistákkal és engedélyezési listákkal:** konfigurálhatja a egyéni szabályok a webalkalmazások ügyfél IP-címek listája alapján való hozzáférés szabályozásához. IP v4 és IP v6 egyaránt támogatottak
-- **Földrajzi alapú hozzáférés-vezérlés:** konfigurálásával szabályozható a webes alkalmazások országkód: az ügyfél IP-cím alapján egyéni szabályok
-- **Szűrés a HTTP-paraméterek:** előfordulhat, hogy a megfelelő http (s) kérelem paramétereit, beleértve a fejléceket, URL-CÍMÉT, alapuló egyéni hozzáférési szabályok konfigurálása és lekérdezési karakterláncok
+- **IP engedélyezése és letiltása listában:** A webalkalmazások ügyfél IP-címek listája alapján való hozzáférés szabályozásához egyéni szabályok konfigurálásával. IP v4 és IP v6 egyaránt támogatottak
+- **Földrajzi alapú hozzáférés-vezérlés:** Előfordulhat, hogy konfigurálja a webes alkalmazások országkód: az ügyfél IP-cím alapján való hozzáférés szabályozásához egyéni szabályok
+- **HTTP-paraméterek szűrése:** Előfordulhat, hogy konfigurálja a megfelelő http (s) kérelem paramétereit, beleértve a fejlécek, az URL-cím és a lekérdezési karakterláncok alapuló egyéni hozzáférési szabályok
 
 ## <a name="azure-managed-rules"></a>Azure által felügyelt szabályok
 - Alapértelmezés szerint engedélyezve van a közös felső OWASP biztonsági rések elleni egy előre konfigurált szabálykészletet. Előzetes verzióban a szabálykészletet sqli és xss kérések ellenőrzése magában foglalja. További szabályok fog bővülni. Dönthet úgy, hogy kezdje a napló egyetlen művelet, előre konfigurált szabályai munkahelyi érvényesítéséhez, az alkalmazások az elvárt módon 
@@ -51,5 +51,5 @@ Az előzetes verzióban bejárati ajtajának application layer biztonsági díjm
 
 ## <a name="next-steps"></a>További lépések
 
-- Ismerje meg, hogyan [hozzon létre egy bejárati ajtajának](quickstart-create-front-door.md).
-- Ismerje meg, [bejárati ajtajának működése](front-door-routing-architecture.md).
+- [Frontdoor létrehozására](quickstart-create-front-door.md) vonatkozó információk.
+- A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

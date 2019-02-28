@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 74bdcc831f19031162d004e1ba98c0cfc258ce4b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: c66f0e67b09dab15431a8c7c10db1c820038dea6
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879415"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984985"
 ---
 # <a name="introduction-to-azure-security"></a>Bevezetés az Azure Security
 ## <a name="overview"></a>Áttekintés
@@ -116,7 +116,7 @@ Az egyik legegyszerűbb – első lépések a biztonsági rések tesztelése a [
 Ha inkább saját behatolási teszteket végrehajtására, vagy egy másik képolvasó suite vagy szolgáltató szeretne használni, kövesse a [Azure behatolástesztelést jóváhagyási folyamat](https://docs.microsoft.com/azure/security/azure-security-pen-testing ) és előzetes hagyassa jóvá a kívánt behatolási teszteket végrehajtásához.
 
 ### <a name="web-application-firewall"></a>Webalkalmazási tűzfal
-A webalkalmazási tűzfal (WAF) az [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) segít megvédeni a webalkalmazásokat az ismert webalapú támadásoktól, például SQL-injektálás, a többhelyes parancsfájlok futtatására és a munkamenet-eltérítés. Által azonosított fenyegetések elleni védelemre hozzárendeléskor a [nyílt Web Application Security Project (OWASP), a legfontosabb 10 gyakori sebezhetőségként](https://msdn.microsoft.com/library/).
+A webalkalmazási tűzfal (WAF) az [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) segít megvédeni a webalkalmazásokat az ismert webalapú támadásoktól, például SQL-injektálás, a többhelyes parancsfájlok futtatására és a munkamenet-eltérítés. Által azonosított fenyegetések elleni védelemre hozzárendeléskor a [nyílt Web Application Security Project (OWASP), a legfontosabb 10 gyakori sebezhetőségként](https://www.owasp.org/index.php/Category:OWASP_Top_Ten_Project).
 
 ### <a name="authentication-and-authorization-in-azure-app-service"></a>Hitelesítés és engedélyezés az Azure App Service-ben
 [App Service-hitelesítés / engedélyezés](https://docs.microsoft.com/azure/app-service/overview-authentication-authorization) olyan szolgáltatás, amely lehetővé teszi, hogy az alkalmazás felhasználók bejelentkeztetéséhez, így nem kell az alkalmazási háttérrendszer a kódot. Az alkalmazás védelme és a felhasználói adatok egy egyszerű megoldást kínál.

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 35ac69c4e61c370c72a7d503920e02ff7258ed60
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: e7b1b3e3fba04276fc284fd71adabedc01185251
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56885318"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984815"
 ---
 # <a name="monitoring-at-scale-using-azure-monitor"></a>Az Azure Monitor használatával nagy mennyiségű figyelése
 
@@ -28,6 +28,9 @@ A [beépített figyelési és riasztási cikk](backup-azure-monitoring-built-in-
 
 ## <a name="using-log-analytics-workspace"></a>Log Analytics-munkaterület használata
 
+> [!NOTE]
+> Az Azure virtuális gép biztonsági mentéseinek, MAB-ügynök, a System Center DPM (SC-DPM) van alatt folyamatosan a Log Analytics-munkaterületre diagnosztikai beállításokon keresztül. Az SQL biztonsági másolatokat az Azure-beli virtuális gépeken, az Azure fájlmegosztások biztonsági másolatainak, a Microsoft Azure Backup Server (MABS) támogatása hamarosan elérhető lesz.
+
 Azt is két Azure-szolgáltatások - funkcióit kihasználva az **diagnosztikai beállítások** (adatokat lehet küldeni a több Azure Resource Manager-erőforrások egy másik erőforrás) és **Log Analytics** (LA - létrehozásához egyéni riasztások, ahol megadhatja a más értesítési csatornákra Műveletcsoportok használatával) figyelés ipari méretekben. A következő szakaszokban a LA használatát az Azure Backup monitorozásához ipari méretekben.
 
 ### <a name="configuring-diagnostic-settings"></a>Diagnosztikai beállítások konfigurálása
@@ -39,7 +42,7 @@ Egy Azure Resource Manager-erőforrás, például az Azure Recovery services-tá
 Kiválaszthatja egy LA munkaterület célként egy másik előfizetésből. *A azonos LA munkaterülete több RS tárolók kiválasztásával tárolók előfizetésekben egyetlen helyen figyelheti.* Válassza ki a "AzureBackupReport", a naplót a csatorna összes az Azure Backup kapcsolatos adatokat az LA munkaterületre.
 
 > [!IMPORTANT]
-> A konfiguráció befejezését követően kell várja meg a 24 órát, hogy a kezdeti adatok leküldéses végrehajtásához. Ezt követően minden az eseményt leküld, amikor azok jönnek létre (ami előfordulhat, hogy egy átfogó 15 – 20 perc késéssel fordítás). A nagyon gyakori műveleteket, például az SQL DB-munkaterhelésekben napló biztonsági másolatait, kötegelni, és minden X mins küldött
+> A konfiguráció befejezését követően kell várja meg a 24 órát, hogy a kezdeti adatok leküldéses végrehajtásához. Ezt követően minden, az eseményt leküld, említetteknek megfelelően az [gyakorisága szakasz](#diagnostic-data-update-frequency).
 
 ### <a name="deploying-solution-to-log-analytics-workspace"></a>A Log Analytics-munkaterületet a megoldás üzembe helyezése
 

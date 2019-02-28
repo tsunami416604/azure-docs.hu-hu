@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/28/2018
+ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 16c9eea61391511f7515308131b3541e186cd7ae
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: b8600ed03140e302c730d44c6410d2020b7c48a3
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232617"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983183"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>Oktatóanyag: Egyenleg belső bejövő forgalmának terhelés egy alapszintű load balancer az Azure Portalon
 
@@ -87,20 +87,23 @@ Alapszintű belső load balancer létrehozása a portál használatával. A név
 
 1. A Portal bal felső sarkában kattintson az **Erőforrás létrehozása** > **Hálózat** > **Terheléselosztó** elemre.
    
-1. Az a **terheléselosztó létrehozása** panelen adja meg ezeket az értékeket:
+2. Az a **alapjai** lapján a **terheléselosztó létrehozása** lap, adja meg vagy válassza ki a következő adatokat, fogadja el az alapértelmezett értékeket a többi beállításnál, és válassza **felülvizsgálat +létrehozása**:
+
+    | Beállítás                 | Érték                                              |
+    | ---                     | ---                                                |
+    | Előfizetés               | Válassza ki előfizetését.    |    
+    | Erőforráscsoport         | Válassza ki **új létrehozása** , és írja be *MyResourceGroupLB* a szövegmezőben.|
+    | Name (Név)                   | *myLoadBalancer*                                   |
+    | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
+    | Typo          | Válassza ki **nyilvános**.                                        |
+    | SKU           | Válassza az **Alapszintű** lehetőséget.                          |
+    | Virtuális hálózat           | Válassza ki *MyVNet*.                          |    
+| Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. |
+    | Nyilvános IP-cím hozzárendelése              | Válassza ki **statikus**.   |
+    | Magánhálózati IP-cím|Írjon be egy címet, amely a címterét a virtuális hálózatot és alhálózatot, például *10.3.0.7*.  |
+
+3. Az a **felülvizsgálat + létrehozása** lapra, majd **létrehozás**. 
    
-   - **Név**: Típus *MyLoadBalancer*.
-   - **Típus**: Válassza ki **belső**. 
-   - **TERMÉKVÁLTOZAT**: Válassza az **Alapszintű** lehetőséget.
-   - **Virtuális hálózat**: Válassza ki **virtuális hálózat választása**, majd válassza ki **MyVNet**.
-   - **Alhálózat**: Válassza ki **alhálózat kiválasztása**, majd válassza ki **MyBackendSubnet**.
-   - **IP-cím hozzárendelése**: Válassza ki **statikus** Ha nincs bejelölve.
-   - **Magánhálózati IP-cím**: Írjon be egy címet, amely a címterét a virtuális hálózatot és alhálózatot, például *10.3.0.7*.
-   - **Erőforráscsoport**: Legördülő lista **válasszon meglévő** válassza **MyResourceGroupLB**. 
-   
-1. Kattintson a **Létrehozás** gombra.
-   
-![Load Balancer létrehozása](./media/tutorial-load-balancer-basic-internal-portal/1-load-balancer.png)
 
 ## <a name="create-basic-load-balancer-resources"></a>Alapszintű load balancer-erőforrások létrehozása
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: aljo, subramar
-ms.openlocfilehash: 2ae533c81e68f8f6a32ad8fa0e45aed3c63eceb9
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: cb918516a9180b4bffdc72c688df5d830e83833a
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805256"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959663"
 ---
 # <a name="service-fabric-container-networking-modes"></a>A Service Fabric tárolóalapú hálózatkezelés módjai
 
@@ -30,7 +30,7 @@ Ha egy container service-ben egy statikus végpont a szolgáltatásjegyzékben, 
 Ha egy tárolószolgáltatás újraindítja vagy áthelyezi egy másik csomópontra a fürtben, az IP-cím megváltozik. Ezen okból kifolyólag nem ajánlott a dinamikusan kiosztott IP-cím használatával próbálják felderíteni, container services. Csak a Service Fabric elnevezési szolgáltatásban, vagy a DNS-szolgáltatás szolgáltatásfelderítési használandó. 
 
 >[!WARNING]
->Az Azure lehetővé teszi, hogy a 4096 IP-címek száma virtuális hálózatonként összesen. A csomópontok számát és a container service-példányok (, nyissa meg az módot használ) nem lehet hosszabb 4096 IP-címek egy virtuális hálózaton belül. Nagy sűrűségű forgatókönyvek esetén ajánlott nat hálózati mód.
+>Az Azure lehetővé teszi, hogy 65356 IP-címek száma virtuális hálózatonként összesen. A csomópontok számát és a container service-példányok (, nyissa meg az módot használ) nem lehet hosszabb 65356 IP-címek egy virtuális hálózaton belül. Nagy sűrűségű forgatókönyvek esetén ajánlott nat hálózati mód. Emellett egyéb függőségek, például a terheléselosztó lesz más [korlátozások](https://docs.microsoft.com/en-us/azure/azure-subscription-service-limits) kell figyelembe venni. A jelenleg legfeljebb 50 IPs csomópontonként teszteltük és bevált stabil. 
 >
 
 ## <a name="set-up-open-networking-mode"></a>Nyissa meg a hálózati mód beállítása

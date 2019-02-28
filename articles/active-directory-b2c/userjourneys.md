@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 5c63a838d6cffce5ca45dbf0dde50bb9bd01892c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8cda538cade4750e03ecb91dfb2c478df730e556
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55171644"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961295"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -49,7 +49,7 @@ A **UserJourney** elem a következő elemeket tartalmazza:
 
 Felhasználói út jelenik meg egy vezénylési feladatütemezés sikeres tranzakció kell követnie. Ha valamelyik lépés meghiúsul, a tranzakció sikertelen lesz. Vezénylési lépések hivatkozhat mindkét építőelemeket, és a Jogcímszolgáltatók engedélyezett a házirend-fájlban. Bármely vezénylési lépés, amelyek felelős megjelenítése vagy jelennek meg a felhasználói élmény is tartalmaz egy hivatkozást a megfelelő tartalomdefiníció-azonosítóval.
 
-Vezénylési lépésekből lehet conditionaly hajtja végre, a vezénylési lépés elemben definiált előfeltételeket alapján. A examle ellenőrizheti, hogy egy vezénylési lépés végrehajtása csak akkor, ha egy adott jogcímek létezik, vagy ha jogcím értéke, vagy nem a megadott érték. 
+Vezénylési lépésekből feltételesen hajtható végre, a vezénylési lépés elemben definiált előfeltételeket alapján. Például ellenőrizheti, hogy egy vezénylési lépés végrehajtása csak akkor, ha egy adott jogcímek létezik, vagy ha jogcím értéke, vagy nem a megadott érték. 
 
 A vezénylési lépésekből, rendezett listáját adja meg egy **OrchestrationSteps** elem kerül a szabályzat részeként. Ez az elem megadása kötelező.
 
@@ -64,7 +64,7 @@ A **OrchestrationStep** elem tartalmazza a következő attribútumokat:
 | Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | Rendelés | Igen | A vezénylési lépéseinek sorrendjét. | 
-| Típus | Igen | A vezénylési lépés típusát. Érvényes értékek: <ul><li>**Hiányzik a ClaimsProviderSelection** -azt jelzi, hogy megjelennek-e a vezénylési lépés különböző jogcímszolgáltatóktól a felhasználó kiválaszthat egy számára.</li><li>**CombinedSignInAndSignUp** -azt jelzi, hogy a vezénylési lépés bemutatja egy kombinált közösségi szolgáltató be- és a helyi fiók regisztrálási oldala.</li><li>**ClaimsExchange** -azt jelzi, hogy a vezénylési lépés adatcseréihez használható-e jogcímeket egy jogcímszolgáltatótól.</li><li>**SendClaims** -azt jelzi, hogy a vezénylési lépés a jogcímek kiállítója által kiállított jogkivonatok küld a jogcímeket a függő entitáshoz.</li></ul> | 
+| Typo | Igen | A vezénylési lépés típusát. Érvényes értékek: <ul><li>**Hiányzik a ClaimsProviderSelection** -azt jelzi, hogy megjelennek-e a vezénylési lépés különböző jogcímszolgáltatóktól a felhasználó kiválaszthat egy számára.</li><li>**CombinedSignInAndSignUp** -azt jelzi, hogy a vezénylési lépés bemutatja egy kombinált közösségi szolgáltató be- és a helyi fiók regisztrálási oldala.</li><li>**ClaimsExchange** -azt jelzi, hogy a vezénylési lépés adatcseréihez használható-e jogcímeket egy jogcímszolgáltatótól.</li><li>**SendClaims** -azt jelzi, hogy a vezénylési lépés a jogcímek kiállítója által kiállított jogkivonatok küld a jogcímeket a függő entitáshoz.</li></ul> | 
 | ContentDefinitionReferenceId | Nem | Az azonosítója a [definíciós tartalom](contentdefinitions.md) a vezénylési lépés társított. Általában a tartalomdefiníció Referenciaazonosító definiálva van az önellenőrzött technikai profilban. De vannak bizonyos esetekben az Azure AD B2C-vel valami technikai profil nélkül megjeleníthető van szükség. Nincsenek két példa, ha a vezénylési lépés típusát a következők egyikét: `ClaimsProviderSelection` vagy `CombinedSignInAndSignUp`. Az Azure AD B2C kell megjeleníteni az identity provider kijelölés technikai profil nélkül. | 
 | CpimIssuerTechnicalProfileReferenceId | Nem | A vezénylési lépés típusa `SendClaims`. Ez a tulajdonság határozza meg, hogy a jogcímszolgáltató jogcímszolgáltató-kibocsátja a jogkivonatot a függő entitás technikai profil azonosítója.  Ha hiányoznak, nem megbízható függő entitás jogkivonat jön létre. |
 
@@ -77,7 +77,7 @@ A **OrchestrationStep** elem magában foglalhatja a következő elemeket:
 | ClaimsProviderSelections | 0:n | A jogcímeket szolgáltató beállításokat a vezénylési lépés listája. | 
 | ClaimsExchanges | 0:n | A vezénylési lépés jogcím cseréje egy listája. | 
 
-#### <a name="preconditions"></a>Az Előfeltételek
+### <a name="preconditions"></a>Az Előfeltételek
 
 A **előfeltételeket** elem tartalmazza a következő elemet:
 
@@ -86,13 +86,13 @@ A **előfeltételeket** elem tartalmazza a következő elemet:
 | Előfeltétel | 0:n | Attól függően, a technikai profil használja vagy átirányítja az ügyfelet, a jogcímeket szolgáltató kiválasztása vagy révén az Exchange server hívás jogcímek megfelelően. | 
 
 
-##### <a name="precondition"></a>Előfeltétel
+#### <a name="precondition"></a>Előfeltétel
 
 A **előfeltétel** elem tartalmazza a következő attribútumot:
 
 | Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| Típus | Igen | Ügyfélellenőrzés, vagy a lekérdezés végrehajtásához az előfeltétel típusa. Az érték lehet **ClaimsExist**, amely megadja, hogy a műveleteket kell elvégezni, ha a megadott jogcím szerepel a felhasználó aktuális jogcímek készletében, vagy **ClaimEquals**, ami azt jelenti, hogy a műveletek kell elvégezni, ha a megadott jogcím létezik, és annak értéke a megadott érték egyenlő. |
+| Typo | Igen | Ügyfélellenőrzés, vagy a lekérdezés végrehajtásához az előfeltétel típusa. Az érték lehet **ClaimsExist**, amely megadja, hogy a műveleteket kell elvégezni, ha a megadott jogcím szerepel a felhasználó aktuális jogcímek készletében, vagy **ClaimEquals**, ami azt jelenti, hogy a műveletek kell elvégezni, ha a megadott jogcím létezik, és annak értéke a megadott érték egyenlő. |
 | ExecuteActionsIf | Igen | Egy igaz vagy hamis teszt segítségével döntse el, ha a másnak az előfeltétele a műveleteket kell elvégezni. | 
 
 A **előfeltétel** elemeket a következő elemeket tartalmazza:
@@ -102,7 +102,7 @@ A **előfeltétel** elemeket a következő elemeket tartalmazza:
 | Érték | 1:n | A lekérdezendő ClaimTypeReferenceId. Egy másik értéket elem tartalmazza az ellenőrizendő értékkel.</li></ul>|
 | Műveletek | 1:1 | Az előfeltétel-ellenőrzés belül egy vezénylési lépés teljesülése esetén végrehajtandó művelet. Ha az érték a `Action` értékre van állítva `SkipThisOrchestrationStep`, a társított `OrchestrationStep` nem hajtható végre. | 
 
-### <a name="preconditions-examples"></a>Az Előfeltételek példák
+#### <a name="preconditions-examples"></a>Az Előfeltételek példák
 
 Az alábbi előfeltételeket ellenőrzi, hogy létezik-e a felhasználó objectId. A felhasználói interakciósorozatban szereplő a helyi fiókkal bejelentkezni a felhasználó által kiválasztott. Ha az objectId létezik, hagyja ki a vezénylési lépés.
 
@@ -226,20 +226,3 @@ A **ClaimsExchange** elem tartalmazza a következő attribútumokat:
 | --------- | -------- | ----------- |
 | Azonosító | Igen | A jogcímek exchange lépés azonosítója. Az azonosító hivatkozást a jogcímeket szolgáltató kijelölés jogcímcsere. lépés: a házirend szolgál. | 
 | TechnicalProfileReferenceId | Igen | A futtatandó technikai profil azonosítója. |
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

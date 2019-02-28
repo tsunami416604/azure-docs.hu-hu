@@ -8,16 +8,18 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 93fd42739e0ec8ca9230688274b31fac5edf216d
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: fb9ee97726632b7eeccc923596c1f5527a7c95bd
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098578"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961609"
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>Network Performance Monitor for ExpressRoute konfigurálása
 
-Ez a cikk segít az ExpressRoute figyelése a Network Performance Monitor bővítmény konfigurálása. Network Performance monitort (NPM) egy olyan felhő alapú hálózati figyelő megoldás, amely figyeli az Azure-alapú telepítések és (fiókirodákban, stb.) a helyszíni helyek közötti kapcsolatot. Npm-et a Log Analytics részét képezi. Az NPM kibővíti az expressroute-hoz, amely lehetővé teszi a hálózati teljesítmény nyomon követése az ExpressRoute-Kapcsolatcsoportok privát társviszony-létesítés, vagy a Microsoft társviszony-létesítés használatára konfigurált keresztül. Hálózati problémák azonosítása és kiküszöbölése érdekében észlelését az npm-et az expressroute-hoz való konfigurálásakor. Ez a szolgáltatás az Azure Government felhőben is érhető el.
+Ez a cikk segít az ExpressRoute figyelése a Network Performance Monitor bővítmény konfigurálása. Network Performance monitort (NPM) egy olyan felhő alapú hálózati figyelő megoldás, amely figyeli az Azure-alapú telepítések és (fiókirodákban, stb.) a helyszíni helyek közötti kapcsolatot. Npm-et az Azure Monitor naplóira részét képezi. Az NPM kibővíti az expressroute-hoz, amely lehetővé teszi a hálózati teljesítmény nyomon követése az ExpressRoute-Kapcsolatcsoportok privát társviszony-létesítés, vagy a Microsoft társviszony-létesítés használatára konfigurált keresztül. Hálózati problémák azonosítása és kiküszöbölése érdekében észlelését az npm-et az expressroute-hoz való konfigurálásakor. Ez a szolgáltatás az Azure Government felhőben is érhető el.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 A következőket teheti:
 
@@ -98,7 +100,7 @@ Azt javasoljuk, hogy a redundancia biztosítása érdekében (Ha például a hel
 2. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra.
 3. Az a **licencfeltételek** lapon olvassa el a licencfeltételeket, és kattintson a **elfogadom**.
 4. Az a **célmappa** lapon módosíthatja vagy megtartani az alapértelmezett telepítési mappát, és kattintson a **tovább**.
-5. Az a **ügynök telepítésének beállításai** lapon lehet váltani, az ügynök csatlakoztatása az Azure Log Analytics vagy az Operations Manager. Vagy üresen hagyhatja, a lehetőségek, ha az ügynök később konfigurálni szeretné. Miután kiválasztotta a selection(s), kattintson a **tovább**.
+5. Az a **ügynök telepítésének beállításai** lapon lehet váltani, az ügynök csatlakoztatása az Azure Monitor naplóira vagy az Operations Manager. Vagy üresen hagyhatja, a lehetőségek, ha az ügynök később konfigurálni szeretné. Miután kiválasztotta a selection(s), kattintson a **tovább**.
 
   * Ha úgy döntött, hogy csatlakozni **Azure Log Analytics**, illessze be a **munkaterület-Azonosítót** és **Munkaterületkulcsot** Jegyzettömbbe az előző szakaszban kimásolt (elsődleges kulcs). Ezután kattintson a **Tovább** gombra.
 
@@ -111,7 +113,7 @@ Azt javasoljuk, hogy a redundancia biztosítása érdekében (Ha például a hel
     ![Fiók](./media/how-to-npm/10.png)
 6. Az a **telepítésre kész** lapon ellenőrizze a beállításokat, és kattintson a **telepítése**.
 7. **A konfigurálás sikeresen befejeződött** lapon kattintson a **Befejezés** gombra.
-8. Amikor végzett, a Microsoft Monitoring Agentet a Vezérlőpulton jelenik meg. Áttekintheti a konfigurációt, és ellenőrizze, hogy az ügynök csatlakozik-e az Azure Log Analyticshez. Ha csatlakozik, az ügynök megjeleníti a következő üzenetet: **A Microsoft Monitoring Agent sikeresen csatlakozott a Microsoft Operations Management Suite szolgáltatásban**.
+8. Amikor végzett, a Microsoft Monitoring Agentet a Vezérlőpulton jelenik meg. Áttekintheti a konfigurációt, és győződjön meg arról, hogy az ügynök csatlakozik az Azure Monitor naplóira. Ha csatlakozik, az ügynök megjeleníti a következő üzenetet: **A Microsoft Monitoring Agent sikeresen csatlakozott a Microsoft Operations Management Suite szolgáltatásban**.
 
 9. Ismételje meg ezt az eljárást minden egyes virtuális hálózat, amely figyelni kell.
 
@@ -135,7 +137,7 @@ Egyszerűen ellenőrizheti az ügynökök kommunikálnak-e.
 1. A figyelőügynök kiszolgálóra, nyissa meg a **Vezérlőpult**.
 2. Nyissa meg a **a Microsoft Monitoring Agent**.
 3. Kattintson a **Azure Log Analytics** fülre.
-4. Az a **állapot** oszlopban megtekintheti az, hogy az ügynök sikeresen csatlakoztatva a Log Analytics szolgáltatásba.
+4. Az a **állapot** oszlopban kell megjelennie, az ügynök sikeresen csatlakozott az Azure Monitor naplóira.
 
   ![status](./media/how-to-npm/12.png)
 

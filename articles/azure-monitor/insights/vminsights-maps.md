@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 73c94b79bb315c317d39ade704e2ee70a241a348
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 0bf7c335f552fee103118e57239bcd872e880edb
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187745"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984849"
 ---
 # <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>Az Azure Monitor használatával virtuális gépek (előzetes verzió) térkép az alkalmazás-összetevők ismertetése
 Megtekintés a detektált alkalmazás-összetevők a környezet figyelhető meg az Azure Monitor szolgáltatással kétféleképpen virtuális gépek esetén közvetlenül a virtuális gépről vagy virtuális gépek az Azure Monitor csoportokhoz Azure-ban futó Windows és Linux rendszerű virtuális gépeken. 
@@ -39,7 +39,7 @@ A virtuális gép kattintva a **tulajdonságok** ablaktábla ki van bontva, pél
 
 ![A számítógép rendszer tulajdonságai](./media/vminsights-maps/properties-pane-01.png)
 
-A jobb oldali ablaktábla, a kattintson a **alkalmazásnapló-események** ikonra kattintva válthat fókuszt az ablaktábla listájának megtekintéséhez, amelyen az adatok gyűjtését a virtuális gép rendelkezik a Log Analytics felé küldött, és érhető el lekérdezés céljából.  A felsorolt erőforrásrekord-típusok közül bármelyik kattint nyílik meg a **naplók** lap használatával jeleníthetők meg, hogy az előre konfigurált lekérdezési típus az eredmények szűrt szemben az adott virtuális géphez.  
+A jobb oldali ablaktábla, a kattintson a **alkalmazásnapló-események** ikonra kattintva válthat fókuszt a panel, amelyen az adatok gyűjtését a virtuális gép listájának elküldte az Azure Monitor és érhető el lekérdezés céljából.  A felsorolt erőforrásrekord-típusok közül bármelyik kattint nyílik meg a **naplók** lap használatával jeleníthetők meg, hogy az előre konfigurált lekérdezési típus az eredmények szűrt szemben az adott virtuális géphez.  
 
 ![A Tulajdonságok panelen naplófájl-keresési lista](./media/vminsights-maps/properties-pane-logs-01.png)
 

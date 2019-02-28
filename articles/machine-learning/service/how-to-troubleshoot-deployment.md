@@ -1,7 +1,7 @@
 ---
 title: Üzembehelyezési hibaelhárítási útmutató
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan megkerülő megoldásként megoldásában, és a Docker telepítési kapcsolatos gyakori hibák elhárítása AKS és Azure Machine Learning szolgáltatás használatával ACI.
+description: Ismerje meg, hogyan kerülő megoldása és a Docker telepítési kapcsolatos gyakori hibák elhárítása AKS és Azure Machine Learning szolgáltatás használatával ACI.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 112fff011ebfedc1abf6981661da5fd4d97fc3d0
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 4b0dddf14564f2813ea019addf6b97b79707b78e
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267140"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983574"
 ---
 # <a name="troubleshooting-azure-machine-learning-service-aks-and-aci-deployments"></a>Az Azure Machine Learning szolgáltatás AKS és az aci Szolgáltatásban üzemelő példányainak hibaelhárítása
 
@@ -43,7 +43,7 @@ További információ a folyamatot a [Modellkezelési](concept-model-management-
 
 Ha bármilyen problémát tapasztal,-e az első teendő a szolgáltatástelepítési feladat felosztania (előző ismertetett) az egyes lépéseket a probléma. 
 
-Ez különösen akkor hasznos, ha használja az a `Webservice.deploy` API-t, vagy `Webservice.deploy_from_model` API-t, mivel ezekhez a függvényekhez csoportba foglalhatók a fent említett egyetlen művelettel a lépéseket. API-k általában igen kényelmes, de ez segít érdekében a lépéseket a azáltal, hogy azokat a hibaelhárítása során az alábbi API-hívások.
+Ez akkor hasznos, ha használja a `Webservice.deploy` API-t, vagy `Webservice.deploy_from_model` API-t, mivel ezekhez a függvényekhez csoportba foglalhatók a fent említett egyetlen művelettel a lépéseket. Általában az API-kból kényelmesek, de ez segít érdekében a lépéseket a azáltal, hogy azokat a hibaelhárítása során az alábbi API-hívások.
 
 1. Regisztrálja a modellt. Íme néhány mintakódját:
 
@@ -101,9 +101,54 @@ for name, img in ws.images.items():
 ```
 A kép napló uri-ja egy SAS URL-t, az Azure blob storage szolgáltatásban tárolt naplófájl. Egyszerűen másolja be az URI-t egy böngészőablakban, és töltse le és a napló megtekintése.
 
+### <a name="azure-key-vault-access-policy-and-azure-resource-manager-templates"></a>Az Azure Key Vault hozzáférési szabályzattal és Azure Resource Manager-sablonok
+
+A rendszerkép összeállítását a hozzáférési szabályzat az Azure Key vaulttal kapcsolatos probléma miatt is meghiúsulhat. Ez akkor fordulhat elő, ha egy Azure Resource Manager-sablon használatával hozza létre a munkaterületet és a kapcsolódó erőforrások (beleértve az Azure Key Vault), több alkalommal. Például használja a sablon többször ugyanazokat a paramétereket egy folyamatos integrációt és üzembe helyezési folyamat részeként.
+
+A legtöbb erőforrás-létrehozási műveletet sablonok idempotensek, de a Key Vault törli a hozzáférési szabályzatok minden alkalommal, amikor a sablont használ. Ez megszünteti a hozzáférést minden olyan meglévő munkaterületet, amely használja azt a Key vaultot. Ennek eredményeképpen a hibák, amikor megpróbál létrehozni új képek. Példák, amely megkapja a hibák a következők:
+
+__Portál__:
+```text
+Create image "myimage": An internal server error occurred. Please try again. If the problem persists, contact support.
+```
+
+__SDK__:
+```python
+image = ContainerImage.create(name = "myimage", models = [model], image_config = image_config, workspace = ws)
+Creating image
+Traceback (most recent call last):
+  File "C:\Python37\lib\site-packages\azureml\core\image\image.py", line 341, in create
+    resp.raise_for_status()
+  File "C:\Python37\lib\site-packages\requests\models.py", line 940, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: https://eastus.modelmanagement.azureml.net/api/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.MachineLearningServices/workspaces/<workspace-name>/images?api-version=2018-11-19
+
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "C:\Python37\lib\site-packages\azureml\core\image\image.py", line 346, in create
+    'Content: {}'.format(resp.status_code, resp.headers, resp.content))
+azureml.exceptions._azureml_exception.WebserviceException: Received bad response from Model Management Service:
+Response Code: 500
+Headers: {'Date': 'Tue, 26 Feb 2019 17:47:53 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'api-supported-versions': '2018-03-01-preview, 2018-11-19', 'x-ms-client-request-id': '3cdcf791f1214b9cbac93076ebfb5167', 'x-ms-client-session-id': '', 'Strict-Transport-Security': 'max-age=15724800; includeSubDomains; preload'}
+Content: b'{"code":"InternalServerError","statusCode":500,"message":"An internal server error occurred. Please try again. If the problem persists, contact support"}'
+```
+
+__PARANCSSORI FELÜLET__:
+```text
+ERROR: {'Azure-cli-ml Version': None, 'Error': WebserviceException('Received bad response from Model Management Service:\nResponse Code: 500\nHeaders: {\'Date\': \'Tue, 26 Feb 2019 17:34:05
+GMT\', \'Content-Type\': \'application/json\', \'Transfer-Encoding\': \'chunked\', \'Connection\': \'keep-alive\', \'api-supported-versions\': \'2018-03-01-preview, 2018-11-19\', \'x-ms-client-request-id\':
+\'bc89430916164412abe3d82acb1d1109\', \'x-ms-client-session-id\': \'\', \'Strict-Transport-Security\': \'max-age=15724800; includeSubDomains; preload\'}\nContent:
+b\'{"code":"InternalServerError","statusCode":500,"message":"An internal server error occurred. Please try again. If the problem persists, contact support"}\'',)}
+```
+
+Ez a probléma elkerülése érdekében javasoljuk, hogy a következő módszerek egyikét:
+
+* Nem telepíthető a sablon egynél többször ugyanazokat a paramétereket. Vagy törölje a meglévő erőforrások újra létrehozhatja őket a sablon használata előtt.
+* Vizsgálja meg a kulcstartó-hozzáférési szabályzatok, és ennek segítségével állítsa be a `accessPolicies` a tulajdonsága.
+* Ellenőrizze, hogy a Key Vault erőforrás már létezik. Ha igen, nem hozza létre újra, a sablon segítségével. Például adjon hozzá egy paramétert, amely lehetővé teszi, hogy tiltsa le a Key Vault-erőforrást, ha már létezik.
 
 ## <a name="service-launch-fails"></a>Szolgáltatás indítása sikertelen lesz.
-Miután a rendszerkép sikeresen létrejött, a rendszer megkísérli tároló indítása az aci Szolgáltatásban vagy az AKS üzembe helyezési konfigurációtól függően. Az ACI központi telepítésének egy egyszerűbb egy tároló-telepítést, mert először, próbálja meg. általában ajánlott. Ezzel a módszerrel is majd kizárja azt az AKS-specifikus problémát.
+Miután a rendszerkép sikeresen létrejött, a rendszer megkísérli tároló indítása az aci Szolgáltatásban vagy az AKS üzembe helyezési konfigurációtól függően. Javasoljuk, hogy először próbálja egy ACI üzembe, mivel ez egy egyszerűbb single-tárolók üzembe helyezése. Ezzel a módszerrel is majd kizárja azt az AKS-specifikus problémát.
 
 Tároló indítása folyamat részeként a `init()` függvényt a pontozó szkript hív a rendszer. Ha a nem kezelt kivételek a `init()` működni, előfordulhat, hogy látható **CrashLoopBackOff** hiba a hibaüzenetben. Az alábbiakban néhány tipp a probléma elhárításához nyújt segítséget.
 
@@ -222,6 +267,47 @@ def run(input_data):
         return json.dumps({"error": result})
 ```
 **Megjegyzés**: Adatszolgáltató hibaüzenetek a `run(input_data)` hibakeresési célú csak hívást kell elvégezni. Nem lehet célszerű, hogy ehhez a biztonsági okokból éles környezetben.
+
+## <a name="http-status-code-503"></a>HTTP-állapotkód: 503-as
+
+Azure Kubernetes Service-környezetek támogatja az automatikus skálázást, amely lehetővé teszi a további terhelés hozzáadandó replikákat. Azonban a méretező tervezték **fokozatos** terhelés változásaira. Ha nagy ugrásszerűen kapja a kérések másodpercenkénti, az ügyfelek HTTP-állapotkód: 503-as jelenhet meg.
+
+Két dolog segít megakadályozni, hogy 503-as állapotkód esetében:
+
+* A változás a kihasználtsága, mely az automatikus skálázás új replikákat hoz létre.
+    
+    Alapértelmezés szerint az automatikus skálázás célkihasználtság van beállítva a 70 %-ra, ami azt jelenti, hogy a szolgáltatás képes kezelni a kérelmek / másodperc (RPS), akár 30 %-os adatforgalmi csúcsokhoz. A kihasználtsági célértéket beállítást módosíthatja a `autoscale_target_utilization` egy alacsonyabb értékre.
+
+    > [!IMPORTANT]
+    > Ez a változás nem okoz létrehozandó replikák *gyorsabban*. Ehelyett létrehozásuk alacsonyabb kihasználtság küszöbértékkel. Várnia, amíg a szolgáltatás 70 %-os használt fel, az érték 30 %-ának módosítása hatására replikák hozhatók létre 30 %-os kihasználtság esetén.
+    
+    Ha a webszolgáltatás már használja a jelenlegi maximális replikákat, és továbbra is látja az 503-as állapotkódok, növelje a `autoscale_max_replicas` érték megadásával növelheti a replikák maximális száma.
+
+* Replikák minimális számának módosításához. A minimális replikák növelése biztosít nagyobb készlettel kezelje a bejövő adatforgalmi csúcsokhoz.
+
+    Replikák minimális száma növelése érdekében állítsa `autoscale_min_replicas` értéke. Kiszámíthatja a szükséges replikákat az alábbi kód használatával értékeket cserélje le a konkrét értékek a projekthez:
+
+    ```python
+    from math import ceil
+    # target requests per second
+    targetRps = 20
+    # time to process the request (in seconds)
+    reqTime = 10
+    # Maximum requests per container
+    maxReqPerContainer = 1
+    # target_utilization. 70% in this example
+    targetUtilization = .7
+
+    concurrentRequests = targetRps * reqTime / targetUtilization
+
+    # Number of container replicas
+    replicas = ceil(concurrentRequests / maxReqPerContainer)
+    ```
+
+    > [!NOTE]
+    > Ha kérelem ugrásszerűen nagyobb, mint amit az új minimális replikák képes kezelni, 503s újra is megjelenhet. Például adatforgalom a szolgáltatás növeli, szükség lehet a minimális replikák növelése érdekében.
+
+További információ a beállításra `autoscale_target_utilization`, `autoscale_max_replicas`, és `autoscale_min_replicas` , lásd: a [AksWebservice](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) modul-hivatkozás.
 
 
 ## <a name="next-steps"></a>További lépések

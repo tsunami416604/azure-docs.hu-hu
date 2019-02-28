@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c38b28a247feb94efd5f4b73e690d30aac9ed73a
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 85beb9b7e0c62d5e1c8dae61fdd15d5faf3a294c
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54900238"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985869"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Partnerazonosító csatolása az Azure-fiókok
 
@@ -138,3 +138,25 @@ A partner Partnerazonosítóját és a fiók közötti kapcsolat történik, az 
 **Más partnerekkel vagy az ügyfelek számára szerkesztheti vagy a Partnerazonosítóra mutató hivatkozás eltávolítása?**
 
 A hivatkozás a felhasználói fiók szintjén társítva. Csak szerkesztheti, vagy távolítsa el a hivatkozásra kattintva a partnerazonosítóját. Az ügyfél és más partnerek nem lehet módosítani a hivatkozást a partnerazonosítóját. 
+
+
+**Melyik MPN-azonosító kell használni, ha a vállalata rendelkezik több?**
+
+Használhat bármilyen érvényes MPN-azonosító, kivéve a v-szervezeti MPN-azonosító. A legtöbb partnerek az MPN-azonosító használata a földrajzi hely, ahol az ügyfél-alapú vagy szolgáltatások vannak célszolgáltatásnak válassza.
+
+**Hol található a Partnerazonosítójával társított reporting befolyásolt bevétel?**
+
+Befolyásolt bevételi jelentési címen található [saját irányítópult](https://partner.microsoft.com/membership/reports/myinsights) Partner rendszergazdai hivatkozás kijelölésével látható módon.
+
+**Miért nem látom a saját felhasználói a jelentések?**
+
+Az ügyfél a következő okok miatt a jelentések nem láthatók
+
+1. A társított felhasználói fiók nem rendelkezik [szerepkör alapú hozzáférés ](https://docs.microsoft.com/azure/role-based-access-control/overview) bármely ügyfél Azure-előfizetés vagy az erőforrás.
+
+2. Ha a felhasználó nem rendelkezik Azure-előfizetés [szerepkör alapú hozzáférés ](https://docs.microsoft.com/azure/role-based-access-control/overview) hozzáférés nem rendelkezik a használatot.
+
+**Nem hivatkozni azonosító használható az Azure Stack partner?**
+
+Igen, a Partnerazonosítóra csatolhatja az Azure Stackhez.
+

@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 08/17/2018
-ms.openlocfilehash: 7798af5d667bcf70ba562bb7198f9af570f3005a
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 57ed02463555ce9e958aedd9c2b317f7a167567b
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044416"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985886"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-net"></a>Bevezetés az Azure Table Storage és az Azure Cosmos DB Table API a .NET-tel való használatába
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -36,7 +36,6 @@ A minta sikeres teljesítéséhez a következőkre lesz szüksége:
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 * [Az Azure Storage .NET-hez készült közös kódtára (előzetes verzió)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/). - Ez egy szükséges előzetes verziójú csomag, amelyet az éles környezetek támogatnak. 
 * [A Microsoft Azure Cosmos DB táblakódtára a .NET-hez](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) - Ez a kódtár jelenleg csak .NET Standardhoz érhető el, .NET Core-hoz egyelőre nem.
-* [Azure Configuration Manager a .NET-hez](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
 * [Azure Storage-fiók](../storage/common/storage-quickstart-create-account.md)
 
 [!INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
@@ -77,14 +76,11 @@ Három javasolt csomagra kell hivatkoznia a projektben a minta teljesítéséhez
 
 * [A Microsoft Azure Cosmos DB táblakódtára a .NET-hez](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) Ez a csomag programozott hozzáférést biztosít az Azure Table Storage-fiókjában vagy az Azure Cosmos DB Table API-fiókjában található adaterőforrásokhoz. Ez a kódtár jelenleg csak .NET Standardhoz érhető el, .NET Core-hoz egyelőre nem.
 
-* [A Microsoft Azure Configuration Manager könyvtár a .NET-hez](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/): Ez a csomag egy osztályt biztosít a konfigurációs fájlban, függetlenül attól, hol futnak az alkalmazás kapcsolati karakterlánc elemzéséhez.
-
 A NuGet-csomagok beszerzéséhez kövesse az alábbi lépéseket:
 
 1. Kattintson a jobb gombbal a projektjére a **Megoldáskezelőben**, és válassza a **Manage NuGet Packages** (NuGet-csomagok kezelése) lehetőséget.
 2. Keressen rá az interneten a „Microsoft.Azure.Storage.Common” kifejezésre, válasszon egy, a 9.0.0.1-nél nem újabb verziót, és válassza az **Install** (Telepítés) gombot az Azure Storage .NET-hez készült közös kódtárának és annak függőségeinek telepítéséhez. Ügyeljen arra, hogy bejelölje az **Include prerelease** (Előzetes verzió is) négyzetet, mivel ez egy előzetes verziójú csomag.
 3. Keressen rá az interneten a „Microsoft.Azure.CosmosDB.Table” kifejezésre, és válassza az **Install** (Telepítés) gombot a Microsoft Azure CosmosDB táblakódtárának telepítéséhez.
-4. Keressen rá az interneten a „WindowsAzure.ConfigurationManager” kifejezésre, és válassza az **Install** (Telepítés) gombot a Microsoft Azure Configuration Manager kódtárának telepítéséhez.
 
 > [!NOTE]
 > A .NET-keretrendszerhez készült Storage közös kódtár ODataLib-függőségeit nem a WCF-adatszolgáltatások, hanem a NuGeten elérhető ODataLib-csomagok oldják fel. Az ODataLib-kódtárak letölthetők közvetlenül, vagy a kódprojektje hivatkozhat rájuk a NuGeten keresztül. A Storage ügyféloldali kódtár által használt konkrét ODataLib-csomagok az [OData](https://nuget.org/packages/Microsoft.Data.OData/), az [Edm](https://nuget.org/packages/Microsoft.Data.Edm/) és a [Spatial](https://nuget.org/packages/System.Spatial/) csomagok. Ezeket a kódtárakat az Azure Table Storage osztályai használják, de szükséges függőségek a Storage közös kódtárral való programozáshoz.
