@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/20/2018
 ms.author: cherylmc;ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 3abdeff3c3f1a4069130ed7c8d49d485feea4093
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 45e87be071e09a19f1d8164eb9a002909a964201
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894717"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960385"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>Létrehozása és módosítása egy ExpressRoute-kapcsolatcsoporttal
 > [!div class="op_single_selector"]
@@ -90,7 +90,7 @@ Kapcsolatcsoport állapota: Engedélyezve
 
 ExpressRoute-kapcsolatcsoport segítségével tudja meg a következő állapotban kell lennie:
 
-Szolgáltató állapota: Telepítve<BR>
+Szolgáltató állapota: Kiépítve<BR>
 Kapcsolatcsoport állapota: Engedélyezve
 
 ### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5. Rendszeresen ellenőrizze a kapcsolatcsoport kulcs állapotát és az állapot
@@ -119,9 +119,9 @@ Leállás nélkül a következő feladatokat hajthatja végre:
 
 * Engedélyezi vagy letiltja az ExpressRoute Premium az ExpressRoute-kapcsolatcsoport bővítménye.
 * Növelje az ExpressRoute-kapcsolatcsoport sávszélességét, feltéve, hogy kapacitás érhető el a porton.
-  > [!IMPORTANT] A sávszélesség csökkentése azonban a kapcsolat nem támogatott. 
+> [!IMPORTANT] A sávszélesség csökkentése azonban a kapcsolat nem támogatott. 
 * Módosítsa a mérési a csomagot az *díjas* való *korlátlan*.
-  > [!IMPORTANT] Mérési csomag módosítása a korlátlan, a forgalmi díjas adatok nem támogatott.
+> [!IMPORTANT] Mérési csomag módosítása a korlátlan, a forgalmi díjas adatok nem támogatott.
 * Engedélyezheti és letilthatja az *klasszikus működés engedélyezése*.
 > [!IMPORTANT]
 > Az ExpressRoute-kapcsolatcsoport hozza létre újra, ha nincs elegendő kapacitás a meglévő porton is. A kapcsolatcsoport nem frissíthető, ha nincsenek további kapacitás érhető el az adott helyhez.
