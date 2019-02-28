@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 8164e2db064523fe648ec9ef0c72754be846dff6
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 53061d4d09ac2769e59269701467a22f292cd919
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327561"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959765"
 ---
 # <a name="aks-troubleshooting"></a>AKS-hibaelhárítás
 
@@ -63,10 +63,30 @@ A legegyszerűbben úgy, hogy hozzáférhessen a szolgáltatáshoz a fürtön k�
 
 Ha nem látja a Kubernetes-irányítópult, ellenőrizze-e a `kube-proxy` pod fut a `kube-system` névtér. Ha nem futó állapotban, törölje a pod, és újra fog.
 
-## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Naplók nem jelenik meg a kubectl-naplók használatával, vagy nem tud kapcsolódni az API-kiszolgálóhoz. Érkeznek meg hozzám a "kiszolgálótól érkező hiba: hiba hangtárcsázás háttér: tárcsázza a tcp..." Mit tegyek?
+## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Naplók nem jelenik meg a kubectl-naplók használatával, vagy nem tud kapcsolódni az API-kiszolgálóhoz. Érkeznek meg hozzám a "kiszolgálótól érkező hiba: hiba hangtárcsázás háttér: tárcsázza a tcp …". Mit tegyek?
 
-Győződjön meg arról, hogy az alapértelmezett hálózati biztonsági csoport (NSG) nem módosul, és, hogy 22-es port meg nyitva, az API-kiszolgálóhoz való csatlakozáshoz. Ellenőrizze, hogy a `tunnelfront` futtatja a pod a `kube-system` névtér. Ha nem, a pod és kényszerített törlése újraindul.
+Győződjön meg arról, hogy az alapértelmezett hálózati biztonsági csoport nem módosul, és, hogy 22-es port meg nyitva, az API-kiszolgálóhoz való csatlakozáshoz. Ellenőrizze-e a `tunnelfront` pod fut a *kube rendszer* névtér használatával a `kubectl get pods --namespace kube-system` parancsot. Ha nem, a pod és kényszerített törlése újraindul.
 
-## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-message-changing-property-imagereference-is-not-allowed-error--how-do-i-fix-this-problem"></a>I frissítésével, vagy méretezheti a tapasztalataimat és érkeznek meg hozzám a "üzenet: Hiba a "ImageReference" tulajdonság módosítása nem engedélyezett".  Hogyan lehet kijavítani a hibát a probléma?
+## <a name="im-trying-to-upgrade-or-scale-and-am-getting-a-message-changing-property-imagereference-is-not-allowed-error-how-do-i-fix-this-problem"></a>I frissítésével, vagy méretezheti a tapasztalataimat és érkeznek meg hozzám a "üzenet: Hiba a "ImageReference" tulajdonság módosítása nem engedélyezett". Hogyan lehet kijavítani a hibát a probléma?
 
 Előfordulhat, hogy lehet első ezt a hibát, mert az ügynökcsomópontok az AKS-fürtben lévő címkéket módosította. Módosítása és törlése a címkék és egyéb tulajdonságait a MC_ * erőforráscsoportban lévő erőforrásokat váratlan eredményekhez vezethet. Az AKS MC_ * tartozó az erőforrások módosítását a fürt a szolgáltatásiszint-célkitűzés (SLO) működésképtelenné válik.
+
+## <a name="im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed"></a>A hibákat, a fürt hibás állapotban van, és frissítése, illetve skálázás csak fog működni, rögzített kapok
+
+*A hibaelhárítási segítséget a van irányítva. https://aka.ms/aks-cluster-failed*
+
+Ez akkor fordul elő, amikor a fürtök több okból sikertelen állapotba adja meg. Oldja meg a fürt nem sikerült állapota a korábban meghiúsult művelet megkísérlése előtt az alábbi lépésekkel:
+
+1. Amíg a fürtön kívüli `failed` állapot, `upgrade` és `scale` művelet nem sikerült. Legfelső szintű gyakori problémák és megoldásuk a következők:
+    * A méretezés **(CRP) nincs elegendő számítási kvótával**. Oldja meg, hogy először egy cél stabil állapotba kvótán belül fürt méretezése. Ezután kövesse az alábbi [lépéseket egy számítási kvótát növelése](../azure-supportability/resource-manager-core-quotas-request.md) vertikális felskálázása újra nem csupán kezdeti kvótakorlát kísérlet előtt.
+    * Fürtök méretezése speciális hálózatkezelés és **megfelelő alhálózati (hálózat) erőforrások**. Oldja meg, hogy először egy cél stabil állapotba kvótán belül fürt méretezése. Ezután kövesse [növelheti ezeket a lépéseket egy erőforráscsoport-kvótát](../azure-resource-manager/resource-manager-quota-errors.md#solution) újra nem csupán kezdeti kvótakorlát vertikális felskálázása előtt.
+2. Az alapul szolgáló frissítési hiba okát megszűnése után a fürt állapot kell lennie. Állapot ellenőrzése után próbálkozzon újra az eredeti művelet.
+
+## <a name="im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade"></a>Ha szeretne frissíteni vagy a méretezési csoport, amely a fürt állapot folyamatban van jelenleg folyamatban hibák kapok frissítésének vagy a frissítés sikertelen volt
+
+*A hibaelhárítási segítséget a van irányítva. https://aka.ms/aks-pending-upgrade*
+
+Fürtműveletek korlátozva, ha aktív frissítési műveletek történnek, vagy frissítés történt kísérlet, de ezt követően nem sikerült. Futtassa a probléma diagnosztizálása érdekében `az aks show -g myResourceGroup -n myAKSCluster -o table` a fürt részletes állapot lekéréséhez. Az eredmény alapján:
+
+* Ha folyamatosan frissíti a fürt, várjon, amíg a művelet véget nem ér. Ha sikeres, próbálja meg újra a korábban sikertelen műveletet.
+* Ha a fürt frissítése nem sikerült, hajtsa végre a lépéseket követve [felett](#im-receiving-errors-when-trying-to-upgrade-or-scale-that-state-my-cluster-is-being-currently-being-upgraded-or-has-failed-upgrade-directed-from-httpsakamsaks-pending-upgrade)

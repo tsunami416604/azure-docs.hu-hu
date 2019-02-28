@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 02/26/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: ee1b2a40dbcbd53a758ac71f30401778ef07e872
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: fcb1e4f32608a1c83b653984dfa066da38e7c451
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229757"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960757"
 ---
 # <a name="import-data-wizard-for-azure-search"></a>Az Azure Search adatok importálása varázsló
 
@@ -77,7 +77,9 @@ A **adatimportálás** varázsló létrehoz egy állandó adatforrás-objektum m
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Az Azure Table Storage](search-howto-indexing-azure-tables.md) (nem támogatott [cognitive search](cognitive-search-concept-intro.md) folyamatok)
 
-Egybesimított adatkészlet a kötelező bemenet. Az importálás kizárólag egyedi táblából, adatbázisnézetből és egyenértékű adatszerkezetből végezhető el. Az adatszerkezetet a varázsló futtatása előtt létre kell hoznia.
+Egybesimított adatkészlet a kötelező bemenet. Az importálás kizárólag egyedi táblából, adatbázisnézetből és egyenértékű adatszerkezetből végezhető el. 
+
+Az adatszerkezetet a varázsló futtatása előtt kell létrehoznia, és tartalmat kell tartalmaznia. Ne futtassa a **adatimportálás** varázsló egy üres adatforráson.
 
 |  Kiválasztás | Leírás |
 | ---------- | ----------- |
@@ -85,7 +87,7 @@ Egybesimított adatkészlet a kötelező bemenet. Az importálás kizárólag eg
 | **Példák**| Az Azure Search egy ingyenes nyilvános Azure SQL database segítségével ismerje meg az Azure Search importálása és a lekérdezési kérelmek üzemelteti. Lásd: [a rövid útmutató: Importálása, index és lekérdezés a portál eszközei használatával](search-get-started-portal.md) bemutató. |
 | **Azure SQL Database** |A szolgáltatás neve, az olvasási engedéllyel rendelkező adatbázis-felhasználó hitelesítő adatai, valamint az adatbázis neve megadható vagy az oldalon, vagy az ADO.NET kapcsolati sztring használatával. A tulajdonságok megtekintéséhez vagy testreszabásához válassza ki a kapcsolati sztring lehetőséget. <br/><br/>Az oldalon meg kell adni a sorhalmazt biztosító táblát vagy nézetet. Ez a lehetőség a sikeres csatlakozás után jelenik meg: egy legördülő listából választhatja ki a kívánt elemet. |
 | **Azure virtuális gépen futó SQL Server** |Adjon meg egy teljesen minősített szolgáltatásnevet, Felhasználóazonosítót és jelszót és adatbázis kapcsolati karakterláncként. Az adatforrás használatához a helyi tárolóban rendelkeznie kell egy korábban telepített tanúsítvánnyal, amely titkosítja a kapcsolatot. Részletes útmutatásért lásd az [SQL virtuális gép az Azure Search-höz történő csatlakoztatását](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md) ismertető témakört. <br/><br/>Az oldalon meg kell adni a sorhalmazt biztosító táblát vagy nézetet. Ez a lehetőség a sikeres csatlakozás után jelenik meg: egy legördülő listából választhatja ki a kívánt elemet. |
-| **Azure Cosmos DB** |A követelmények a következőket tartalmazzák: a fiók, az adatbázis és a gyűjtemény. Az index tartalmazza a gyűjteményben szereplő összes dokumentumot. Definiálhat egy lekérdezést a sorkészlet egybesimításához vagy szűréséhez, illetve a módosított dokumentumok észleléséhez a későbbi adatfrissítési műveletek elvégzése érdekében. |
+| **Cosmos DB** |A követelmények a következőket tartalmazzák: a fiók, az adatbázis és a gyűjtemény. Az index tartalmazza a gyűjteményben szereplő összes dokumentumot. Egybesimításához vagy szűréséhez a sorkészlet egy lekérdezést határoz meg, vagy hagyja üresen a lekérdezést. A lekérdezés nem szükséges a varázslóban.|
 | **Azure Blob Storage** |A követelmények a következőket tartalmazzák: a tárolási fiók és egy tároló. Szükség esetén, ha csoportosítási célból a blob-nevek egy virtuális elnevezési konvenciót követnek, akkor a név virtuáliskönyvtár-részét a tárolóban található mappa neveként is megadhatja. A további információkat [a Blob Storage indexelését](search-howto-indexing-azure-blob-storage.md) ismertető témakör tartalmazza. |
 | **Azure Table Storage** |A követelmények a következőket tartalmazzák: a tárolási fiók és egy táblanév. Szükség esetén megadhat egy lekérdezést a táblák részhalmazának beolvasásához. A további információkat [a Table Storage indexelését](search-howto-indexing-azure-tables.md) ismertető témakör tartalmazza. |
 

@@ -15,12 +15,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 31aaa24dd6020cb8203e4ab1bfec8ce3e0ffd2b8
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: d273e963c6191fdc87c4f19c6465d8a9026a074e
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299690"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959408"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Az Azure Event Hubs-metrikák az Azure monitorban
 
@@ -48,7 +48,7 @@ Dimenziók támogató metrikákhoz a kívánt dimenzió értékű a következő 
 
 ## <a name="billing"></a>Számlázás
 
-Metrikák az Azure Monitor használata jelenleg ingyenes. Azonban használ további megoldásokat, amelyek fogadni a mérőszámadatokat, akkor előfordulhat, hogy után kell díjat ezek a megoldások által. Ha például számítjuk fel az Azure Storage által archiválja mérőszámok az Azure Storage-fiók. Emellett a számlázás az Azure speciális elemzésekre szolgáló Log Analytics-metrikák adatok streamelése az, ha.
+Metrikák az Azure Monitor használata jelenleg ingyenes. Azonban használ további megoldásokat, amelyek fogadni a mérőszámadatokat, akkor előfordulhat, hogy után kell díjat ezek a megoldások által. Ha például számítjuk fel az Azure Storage által archiválja mérőszámok az Azure Storage-fiók. Emellett számítjuk fel az Azure-ban, adatfolyam-metrikák adatait az Azure Monitor naplóira fejlett analitikai Ha.
 
 Az alábbi mérőszámok segítségével a szolgáltatás állapotának áttekintése. 
 

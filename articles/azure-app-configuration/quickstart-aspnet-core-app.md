@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: d9f27ae176796f72f9c6f460bf69c3f9a7acf0f7
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: ce19041b29d567f061dde59fbe041adf61f889a0
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56884815"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961482"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Gyors útmutató: ASP.NET Core-alkalmazás létrehozása az Azure-alkalmazás konfigurációja
 
@@ -53,8 +53,6 @@ Hozzáadja a [Secret Manager eszköz](https://docs.microsoft.com/aspnet/core/sec
 
 - Nyissa meg a *.csproj* fájlt. Adjon hozzá egy `UserSecretsId` elemet az alább látható módon, és cserélje le a saját, az értékét, amely általában egy GUID Azonosítót. Mentse a fájlt.
 
-    *TestAppConfig.csproj:*
-
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
 
@@ -87,7 +85,7 @@ Hozzáadja a [Secret Manager eszköz](https://docs.microsoft.com/aspnet/core/sec
 
     Ezt a parancsot abban a könyvtárban kell végrehajtani, ahol a *.csproj* fájl található.
 
-        dotnet user-secrets set ConnectionStrings:AppConfig "Endpoint=<service_endpoint>;Id=<store_id>;Secret=<secret_key>"
+        dotnet user-secrets set ConnectionStrings:AppConfig "Endpoint=<your_endpoint>;Id=<your_id>;Secret=<your_secret>"
 
     SECRET Manager csak a webes alkalmazás helyi teszteléséhez használható. Amikor az alkalmazás telepítve van (például, hogy [Azure App Service](https://azure.microsoft.com/services/app-service/web)), használhat alkalmazás-beállítás (például **kapcsolati karakterláncok** App Service-ben) helyett a titkos kulcsot a kapcsolati karakterlánc Kezelő.
 

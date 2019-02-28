@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
 ms.date: 11/07/2018
-ms.openlocfilehash: b6fbb71a827c90abd1fac58d7975ab2f7b2a5674
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: df83149126c439aae6256cd65473470461810bca
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55560889"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961227"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>Az ADO.NET 4.5 szoftverrel 1433-ason túli
 
@@ -75,7 +75,7 @@ Ez a szakasz a termékváltozatokra hivatkozó monikerek értelmezi. Emellett eg
 
 * Microsoft® ODBC illesztőprogram 17 SQL Server® – Windows, Linux és macOS https://www.microsoft.com/download/details.aspx?id=56567
 
-* Csatlakozás az Azure SQL Database V12 átirányítás https://blogs.msdn.microsoft.com/sqlcat/2016/09/08/connect-to-azure-sql-database-v12-via-redirection/
+* Csatlakozás az Azure SQL Database V12 átirányítás https://techcommunity.microsoft.com/t5/DataCAT/Connect-to-Azure-SQL-Database-V12-via-Redirection/ba-p/305362
 
 * [TDS protokollverziók listája](http://www.freetds.org/userguide/tdshistory.htm)
 * [Az SQL Database fejlesztési áttekintése](sql-database-develop-overview.md)

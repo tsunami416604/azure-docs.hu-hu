@@ -1,22 +1,22 @@
 ---
-title: Azure Log Analytics tűzfal-minták
-description: Azure Log Analytics tűzfal-minták
+title: Azure tűzfal log analytics-minták
+description: Azure tűzfal log analytics-minták
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
 ms.date: 10/24/2018
 ms.author: victorh
-ms.openlocfilehash: cff31ba73730b7cf7cb27ecb132ec70806234924
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 2ea95a8e32e2162c31e95bc2e9dd5e60be07649f
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233395"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958065"
 ---
-# <a name="azure-firewall-log-analytics-samples"></a>Azure Log Analytics tűzfal-minták
+# <a name="azure-firewall-log-analytics-samples"></a>Azure tűzfal log analytics-minták
 
-A következő Log Analytics-minták az Azure-tűzfal naplók elemzéséhez használható. A Log Analytics Nézettervező épül fel a mintafájlt a [Log Analytics Nézettervező](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer) cikkben további információkat tartalmaz arról Nézetterv fogalma.
+A következő log analytics-minták az Azure-tűzfal naplók elemzéséhez használható. A Log Analytics Nézettervező épül fel a mintafájlt a [Log Analytics Nézettervező](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer) cikkben további információkat tartalmaz arról Nézetterv fogalma.
 
 ## <a name="log-analytics-view"></a>Log Analytics-nézet
 
@@ -151,4 +151,4 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>További lépések
 
-Azure tűzfal figyelési és diagnosztikai funkciókkal kapcsolatos további információkért lásd: [oktatóanyag: Azure Monitor-tűzfal naplókat és mérőszámokat](tutorial-diagnostics.md).
+Azure tűzfal figyelési és diagnosztikai funkciókkal kapcsolatos további információkért lásd: [oktatóanyag: Azure tűzfal-naplók és metrikák figyelése](tutorial-diagnostics.md).

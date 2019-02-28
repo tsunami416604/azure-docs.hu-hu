@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/21/2019
 ms.author: juliako
-ms.openlocfilehash: 471bc34272b8e141c8640bd218bdafd840850d24
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: cda029dd11e8cb4cb07e9fce7eef95d6d4d78d7e
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672270"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960215"
 ---
 # <a name="cloud-upload-and-storage"></a>Felhőbe történő feltöltés és tárolás
 
@@ -35,12 +35,10 @@ Számos különböző SKU-k, kiválaszthatja a tárfiók számára. További inf
 
 ## <a name="assets-in-a-storage-account"></a>Storage-fiókban lévő eszközök
 
-A Media Services v3-as a Storage API-k segítségével fájlok feltöltése.
+A Media Services v3-as a Storage API-k segítségével tölthetnek fel fájlokat az eszközöket. További információkért lásd: [eszközök fogalom](assets-concept.md).
 
 > [!Note]
 > Meg nem próbálja meg módosítani a blob-tárolók, a Media Services SDK által előállított, a Media Services API-k használata nélkül tartalmát.
-
-Tekintse meg a bemeneti fájlok feltöltése Media Services Storage API-k használata, tekintse át [hozzon létre egy feladat bemenete egy helyi fájlból](job-input-from-local-file-how-to.md). 
  
 ## <a name="next-steps"></a>További lépések
 

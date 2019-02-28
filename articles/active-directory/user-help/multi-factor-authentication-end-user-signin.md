@@ -14,12 +14,12 @@ ms.date: 04/02/2017
 ms.author: lizross
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2545e85ff466ed7455161eb725b824da465457bd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 153b3d61324d504fe260b104bf412913f9692627
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177309"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56957538"
 ---
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication a bejelentkezési élmény
 > [!NOTE]
@@ -83,9 +83,8 @@ Néha nem rendelkezik a telefon vagy eszközt, akkor állíthatja be az előnybe
   ![Alternatív módszer](./media/multi-factor-authentication-end-user-signin/alt.png)
 
 ## <a name="next-steps"></a>További lépések
+- Ha problémába ütközik a kétlépéses ellenőrzés jelentkezik, részletes tájékoztatást: [problémája van az Azure multi-factor Authentication](multi-factor-authentication-end-user-troubleshoot.md).
 
-Ha problémába ütközik a kétlépéses ellenőrzés jelentkezik, részletes tájékoztatást: [problémája van az Azure multi-factor Authentication](multi-factor-authentication-end-user-troubleshoot.md).
+- Ismerje meg, hogyan [a kétlépéses ellenőrzés beállításait kezelheti](multi-factor-authentication-end-user-manage-settings.md).
 
-Ismerje meg, hogyan [a kétlépéses ellenőrzés beállításait kezelheti](multi-factor-authentication-end-user-manage-settings.md).
-
-Megtudhatja, hogyan [Ismerkedés a Microsoft Authenticator alkalmazás](user-help-auth-app-download-install.md) , hogy az értesítések segítségével jelentkezzen be, a szövegek és a telefonhívások helyett.
+- Megtudhatja, hogyan [Ismerkedés a Microsoft Authenticator alkalmazás](user-help-auth-app-download-install.md) , hogy az értesítések segítségével jelentkezzen be, a szövegek és a telefonhívások helyett.

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: orspod
-ms.openlocfilehash: f614c6770dd29bc3d6b42c36fe8c81d9f129cd81
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: d30eab024fa988b3341c5efc9fe188ee4802720a
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816657"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961074"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Adatok másolása, vagy az Azure az adatkezelőt az Azure Data Factory használatával
 
@@ -44,6 +44,22 @@ Az Azure Data Explorer-összekötő teszi lehetővé tegye a következőket:
 Az alábbi szakaszok nyújtanak, amelyek meghatározzák az adott Data Factory-entitások Azure adatkezelő összekötő-tulajdonságokkal kapcsolatos részletekért.
 
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
+
+Az Azure Data Explorer-összekötő szolgáltatás egyszerű hitelesítést használ. Kövesse az alábbi lépéseket egy egyszerű szolgáltatást, és engedélyek megadása:
+
+1. Regisztráljon az Azure Active Directoryban (Azure AD) application entitás a következő [regisztrálja az alkalmazást az Azure AD-bérlő](../storage/common/storage-auth-aad-app.md#register-your-application-with-an-azure-ad-tenant). Jegyezze fel a következő értékeket, mert a társított szolgáltatás definiálásához használja:
+
+    - Alkalmazásazonosító
+    - Alkalmazáskulcs
+    - Bérlőazonosító
+
+2. Adja meg a szolgáltatás egyszerű megfelelő engedéllyel az Azure Data Explorer. Tekintse meg [adatbázis-engedélyek kezelése az Azure Data Explorer](../data-explorer/manage-database-permissions.md) szerepkörök és engedélyek, valamint az engedélyek kezelése forgatókönyv vonatkozó részletes információkkal együtt. Általánosságban véve kell
+
+    - **Forrásként**, adjon meg legalább **adatbázis megjelenítő** szerepkör az adatbázishoz.
+    - **Fogadóként**, adjon meg legalább **adatbázis módon eredményesen dolgozható** szerepkör az adatbázishoz.
+
+>[!NOTE]
+>Hozzon létre az ADF felhasználói felület használatakor a műveletek a társított szolgáltatás adatbázisok listázása vagy adatkészlet lévő táblákat felsoroló a szolgáltatásnévhez tartozó magasabb szintű jogosultsággal rendelkező engedély lehet szükség. Azt is megteheti Ha szeretné, adja meg manuálisan adatbázis és tábla nevét. Másolja a tevékenység végrehajtási működik, mindaddig, amíg az olvasási/írási adatok megfelelő jogosultságot kap az egyszerű szolgáltatás.
 
 Azure Data Explorer társított szolgáltatás a következő tulajdonságok támogatottak:
 
@@ -162,7 +178,7 @@ Adatok másolása az Azure az adatkezelőt, állítsa be a type tulajdonság, a 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A **típus** értékre kell állítani a másolási tevékenység fogadó tulajdonságát: **AzureDataExplorerSink** | Igen |
-| ingestionMappingName | Egy előre létrehozott nevét **[CSV leképezés](/azure/kusto/management/mappings#csv-mapping)** Kusto táblán; JSON-hozzárendelést és az Azure Data Explorer Avro leképezés közvetlenül nem támogatott, de továbbra is másolhat adatokat JSON/Avro-fájlok. Az Azure Adatkezelőbe forrásból az oszlopok leképezése, használhatja a másolási tevékenység [oszlopleképezés](copy-activity-schema-and-type-mapping.md) azt is közösen, amelyik az Azure Data Explorer CSV-hozzárendelések – másolási tevékenység maps/újra-shapes adatforrásból származó a fogadó oszlop alapján leképezés a beállításokat, majd leképezi újra Adatbetöltési hozzárendelési konfigurációja alapján ha létezik. Vonatkozik [minden támogatott forrás tárolók](copy-activity-overview.md#supported-data-stores-and-formats) többek között a JSON és az Avro formátum. | Nem |
+| ingestionMappingName | Egy előre létrehozott nevét **[CSV leképezés](/azure/kusto/management/mappings#csv-mapping)** Kusto táblán. Az oszlopok forrásból az Adatkezelőbe az Azure - vonatkozik, amelyek leképezése **[összes támogatott forrás-tárolók/formátumok](copy-activity-overview.md#supported-data-stores-and-formats)** stb formázza a CSV vagy JSON/Avro is beleértve, használhatja a másolási tevékenység [oszlop leképezés](copy-activity-schema-and-type-mapping.md) (név alapján implicit vagy explicit módon konfigurált) és/vagy az Azure Data Explorer CSV-leképezések. | Nem |
 
 **Példa**
 

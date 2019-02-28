@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 02/26/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 424aa7038fecba7a11c1ccaa07053cf2e1606835
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: fe15cafceea8128735f7241fa5e4187d4d9c47a9
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56651130"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960054"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>A QnA Maker Tudásbázis korlátok és határok
 A QnA Maker között korlátok átfogó listáját.
@@ -52,7 +52,7 @@ A QnA Maker között korlátok átfogó listáját.
 * Fájlnév hossza: 200
 * Támogatott fájlformátumok: ".tsv", ".pdf", "txt", ".docx", ".xlsx".
 * Alternatív kérdések maximális száma: 100
-* Kérdés-válasz párt maximális száma: Attól függ, a [Azure Search szolgáltatásréteg](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits) kiválasztása 
+* Kérdés-válasz párt maximális száma: Attól függ, a [Azure Search szolgáltatásréteg](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#document-limits) választott. Az Azure Search-index dokumentum leképezésére egy kérdés-válasz párt. 
 
 ## <a name="create-knowledge-base-call-limits"></a>Hozza létre a Tudásbázis hívás korlátai:
 Ezen felelnek a minden korlátokat Tudásbázis művelet; létrehozása azt jelenti, kattintson a *létrehozása KB* vagy a CreateKnowledgeBase API-t hívná.

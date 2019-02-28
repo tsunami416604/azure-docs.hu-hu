@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: c2cc1b5829f3bb530c01e2bfc3538006bb8663cb
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.date: 02/27/2019
+ms.openlocfilehash: e429504cb6df2ba4f871fa0c9ca780ac5d906356
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339311"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958968"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Áttekintés az Azure SQL Database felügyelt példányain erőforráskorlátok
 
@@ -56,7 +56,7 @@ Felügyelt példány két szolgáltatási csomagban – általános célú és a
 | Egy példány adatbázisok maximális száma | 100 | 100 |
 | Maximális adatbázisfájlok példányonként | Legfeljebb 280 | – 32 767 fájlt adatbázisonként |
 | Adatok/Log/iops-érték (becsült) | 500 – 7500 fájlonként<br/>\*[A fájl mérete attól függ](https://docs.microsoft.com/azure/virtual-machines)| 11-K – 110 K (1,375 / virtuális mag) |
-|Napló átviteli sebesség | 22 MB/s-példányonként | 3 MB/s / virtuális mag<br/>Legfeljebb 48 MB/s |
+|Napló átviteli sebesség | 22 MB/s-példányonként | 3 MB/s / virtuális mag<br/>Maximális száma 48 MB/s-példányonként|
 | A fájlmegosztásra (becsült) | 100 - fájlonként 250 MB/s<br/>\*[A fájl mérete attól függ](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 24 - 48 MB/s / virtuális mag |
 | IO-késés (becsült) | 5-10 ms | 1-2 ms |
 | Max. tempDB mérete | 192 - 1,920 GB (24 GB / virtuális mag) | Nincsenek megkötések - korlátozza a maximális példányméret |

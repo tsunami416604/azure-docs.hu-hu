@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0454bc211d2ae8497babc808f9794fae4d22c47e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: a842c0807a3cfbad78a43bcffa896c83bceedfb9
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55498165"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959289"
 ---
 # <a name="credential-assets-in-azure-automation"></a>Hitelesítő eszközök az Azure Automationben
 
-Egy Automation-hitelesítőeszközt tárolja a biztonsági hitelesítő adatok, például a felhasználónevet és jelszót tartalmazó objektumot. A Runbookok és a DSC-konfigurációk előfordulhat, hogy parancsmagokat használják, amelyek fogadja el a hitelesítést egy PSCredential objektumot, vagy, előfordulhat, hogy bontsa ki a felhasználónevet és jelszót adjon meg néhány alkalmazáshoz vagy a hitelesítést igénylő szolgáltatáshoz PSCredential objektum. A tulajdonságok a hitelesítő adatait biztonságos tárolása az Azure Automationben, és a runbook vagy DSC-konfiguráció érhetők el a [Get-AutomationPSCredential](https://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) tevékenység.
+Egy Automation-hitelesítőeszközt objektumot, amely tartalmazza a biztonsági hitelesítő adatok, például a felhasználónévvel és jelszóval rendelkezik. A Runbookok és a DSC-konfigurációk előfordulhat, hogy parancsmagokat használják, amelyek fogadja el a hitelesítést egy PSCredential objektumot, vagy, előfordulhat, hogy bontsa ki a felhasználónevet és jelszót adjon meg néhány alkalmazáshoz vagy a hitelesítést igénylő szolgáltatáshoz PSCredential objektum. A tulajdonságok a hitelesítő adatait biztonságos tárolása az Azure Automationben, és a runbook vagy DSC-konfiguráció érhetők el a [Get-AutomationPSCredential](https://msdn.microsoft.com/library/system.management.automation.pscredential.aspx) tevékenység.
 
 [!INCLUDE [gdpr-dsr-and-stp-note.md](../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -27,7 +27,7 @@ Egy Automation-hitelesítőeszközt tárolja a biztonsági hitelesítő adatok, 
 
 ## <a name="azure-classic-powershell-cmdlets"></a>Az Azure klasszikus PowerShell-parancsmagok
 
-A következő táblázatban található parancsmagokkal létrehozása és kezelése automation hitelesítő eszközök a Windows PowerShell segítségével.  Részét képezi a [Azure PowerShell-modul](/powershell/azure/overview) elérhető a Automation-runbookok és a DSC-konfigurációkat használhatnak.
+A következő táblázatban található parancsmagokkal létrehozása és kezelése automation hitelesítő eszközök a Windows PowerShell segítségével.  Részét képezi a [Azure PowerShell-modul](/powershell/azure/overview), amely is elérhető az Automation-runbookok és a DSC-konfigurációk használatát.
 
 | Parancsmagok | Leírás |
 |:--- |:--- |
@@ -38,7 +38,7 @@ A következő táblázatban található parancsmagokkal létrehozása és kezel�
 
 ## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell-parancsmagok
 
-Az alábbi táblázatban a parancsmagok AzureRM, létrehozása és kezelése automation hitelesítő eszközök a Windows PowerShell használatával történik.  Részét képezi a [AzureRM.Automation modul](/powershell/azure/overview) elérhető a Automation-runbookok és a DSC-konfigurációkat használhatnak.
+Az alábbi táblázatban a parancsmagok AzureRM, létrehozása és kezelése automation hitelesítő eszközök a Windows PowerShell használatával történik.  Részét képezi a [AzureRM.Automation modul](/powershell/azure/overview), amely is elérhető az Automation-runbookok és a DSC-konfigurációk használatát.
 
 | Parancsmagok | Leírás |
 |:--- |:--- |
@@ -106,6 +106,19 @@ $securePassword = $myCredential.Password
 $password = $myCredential.GetNetworkCredential().Password
 ```
 
+Használhatja a hitelesítő adatot hitelesítésre az Azure-bA [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount). A legtöbb esetben használjon egy [Futtatás mint fiók](manage-runas-account.md) és lekérése a [Get-AutomationConnection](automation-connections.md).
+
+```azurepowershell
+$myCred = Get-AutomationPSCredential -Name 'MyCredential`
+$userName = $myCred.UserName
+$securePassword = $myCred.Password
+$password = $myCred.GetNetworkCredential().Password
+
+$myPsCred = New-Object System.Management.Automation.PSCredential ($userName,$password)
+
+Connect-AzureRmAccount -Credential $myPsCred
+```
+
 ### <a name="graphical-runbook-sample"></a>Grafikus forgatókönyv minta
 
 Hozzáadhat egy **Get-AutomationPSCredential** tevékenység, amely a hitelesítő adatokat, a grafikus szerkesztő a könyvtár ablaktáblán a jobb gombbal, majd válassza a grafikus runbookok **adja hozzá a vászonhoz**.
@@ -118,7 +131,7 @@ Az alábbi képen egy példa a grafikus runbookokban hitelesítő adatok haszná
 
 ## <a name="using-a-powershell-credential-in-dsc"></a>A DSC használata a PowerShell-hitelesítő adat
 
-Bár az Azure Automation DSC-konfigurációk használatával hitelesítő eszközök hivatkozhat **Get-AutomationPSCredential**, hitelesítő eszközök is átadható paraméterekkel, ha szükséges. További információkért lásd: [összeállítása az Azure Automation DSC-konfigurációja](automation-dsc-compile.md#credential-assets).
+Bár az Azure Automation DSC-konfigurációk használatával hitelesítő eszközök hivatkozhat **Get-AutomationPSCredential**, hitelesítő eszközök is átadható paraméterekkel, ha szeretett volna. További információkért lásd: [összeállítása az Azure Automation DSC-konfigurációja](automation-dsc-compile.md#credential-assets).
 
 ## <a name="using-credentials-in-python2"></a>A Python2-hitelesítőadatokkal
 
@@ -141,5 +154,3 @@ print cred["password"]
 * A grafikus forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első grafikus forgatókönyvem](automation-first-runbook-graphical.md).
 * A PowerShell-alapú munkafolyamat-forgatókönyvekkel való ismerkedéshez tekintse meg a következőt: [Az első PowerShell-alapú munkafolyamat-forgatókönyvem](automation-first-runbook-textual.md) 
 * A Python2-forgatókönyvekkel való ismerkedéshez, lásd: [az első Python2-forgatókönyvem](automation-first-runbook-textual-python2.md) 
-
-

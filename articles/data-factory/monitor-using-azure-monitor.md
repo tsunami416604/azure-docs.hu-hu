@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: shlo
-ms.openlocfilehash: a4eea340fe57ab3c05e527a476d9153113eedba5
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: f56b4f07b7155d9f465a6ce492b4718d4a66e76e
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819394"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959323"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Riasztás megjelenítése és figyelése az Azure Monitor használatával adat-előállítók
 A felhőalapú alkalmazások összetettek a részek. Győződjön meg arról, hogy az alkalmazás mindig elérhető fel az adatokat és kifogástalan állapotban fut figyelést biztosít. Segít, hogy ki a lehetséges problémák stave vagy korábbi kiépítettektől hibaelhárítása. Monitorozási adatok segítségével emellett részletes elemzéseket kaphat az alkalmazásról. A Tudásbázis segítségével javíthatja az alkalmazás teljesítménye vagy Karbantarthatóság, vagy ellenkező esetben manuális beavatkozást igénylő műveletek automatizálása.
@@ -40,11 +40,11 @@ Egy tároló vagy egy eseményközpontba eseményközpont-névtér, amely nem ug
 ### <a name="diagnostic-settings"></a>Diagnosztikai beállítások
 Diagnosztikai naplók nem számítási erőforrások diagnosztikai beállítások használatával vannak konfigurálva. Diagnosztikai beállítások egy erőforrás-vezérlő:
 
-* Ha a diagnosztikai naplók (Storage-fiók, az Event Hubs vagy a Log Analytics) érkeznek.
+* Ahol a diagnosztikai naplók (Storage-fiók, az Event Hubs vagy az Azure Monitor naplóira) érkeznek.
 * Melyik naplókategóriák küldi el.
 * Mennyi ideig minden naplókategória fenn kell tartani a storage-fiókban.
 * Egy nulla napnyi adatmegőrzéshez azt jelenti, hogy naplókat tartják örökre. Ellenkező esetben az érték lehet minden olyan 1 és 2147483647 között eltelt napok számát.
-* Ha a megőrzési házirend-beállításokat, de a naplók tárolása a storage-fiók le van tiltva (például csak az Event Hubs vagy a Log Analytics-beállítás ki van jelölve), az adatmegőrzési szabályzatok nem befolyásolják.
+* Ha a megőrzési házirend-beállításokat, de naplók tárolása a storage-fiók le van tiltva (például csak az Event Hubs vagy az Azure Monitor naplók lehetőség be van jelölve), az adatmegőrzési szabályzatok nem befolyásolják.
 * Adatmegőrzési házirendek, az alkalmazott napi, hogy naponta (UTC), naplók, amely mostantól a megőrzési ideje meghaladja a nap végén törli a házirendet. Például ha egy nap adatmegőrzési, ma a nap kezdetén az a napja előtt tegnap naplóinak törlődnének.
 
 ### <a name="enable-diagnostic-logs-via-rest-apis"></a>REST API-kon keresztül a diagnosztikai naplók engedélyezése

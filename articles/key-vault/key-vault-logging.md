@@ -1,5 +1,5 @@
 ---
-title: Az Azure Key Vault-naplózás – az Azure Key Vault |} A Microsoft Docs
+title: Azure Key Vault naplózása |} A Microsoft Docs
 description: Ez az oktatóanyag segít megismerkedni az Azure Key Vault naplózásával.
 services: key-vault
 documentationcenter: ''
@@ -13,94 +13,86 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: barclayn
-ms.openlocfilehash: 61f277eda721c1490d9f4b354442718558830fe7
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: c9d8dd366ecabe9eb508998d526ddfe7b1da300d
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300199"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960507"
 ---
 # <a name="azure-key-vault-logging"></a>Az Azure Key Vault naplózása
 
-Az Azure Key Vault a legtöbb régióban elérhető. További információ: [A Key Vault díjszabása](https://azure.microsoft.com/pricing/details/key-vault/).
-
-## <a name="introduction"></a>Bevezetés
-
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Egy vagy több kulcstároló létrehozása után célszerű figyelni, hogy hogyan, mikor és kik férnek hozzá a kulcstárolókhoz. Ehhez engedélyezze a Key Vault naplózását, amely egy Ön által megadott Azure-tárfiókba menti az adatokat. A megadott tárfiókhoz automatikusan létrehozunk egy **insights-logs-auditevent** nevű tárolót, amelyet több kulcstároló naplófájljainak tárolására is használhat.
+Miután létrehozott egy vagy több kulcstároló naplófájljainak, valószínűleg érdemes figyelni hogyan és mikor a kulcstartók-e a használt, és ki használja őket. Ez menti az adatokat az Ön által megadott Azure storage-fiókot az Azure Key vault naplózásának engedélyezésével teheti meg. Egy új tárolót **insights-logs-auditevent** automatikusan jön létre a megadott tárfiók számára. Ez ugyanazt a tárfiókot is használhat több kulcstároló naplófájljainak naplók gyűjtésére.
 
-A kulcstároló műveletei után legfeljebb 10 perccel már elérheti a naplóinformációkat. A legtöbb esetben azonban ez nem fog ennyi ideig tartani.  A tárfiók naplófájljait Önnek kell kezelnie:
+Elérheti a naplóinformációkat 10 perc (legfeljebb) a key vaulttal művelet után. A legtöbb esetben azonban ez nem fog ennyi ideig tartani.  A tárfiók naplófájljait Önnek kell kezelnie:
 
 * Az Azure szabványos hozzáférés-vezérlési módszereivel korlátozhatja a naplókhoz való hozzáférést, így megvédheti azokat.
 * Törölje azokat a naplókat, amelyeket nem kíván megőrizni a tárfiókban.
 
-Ez az oktatóanyag segít megismerkedni az Azure Key Vault naplózásával, a tárfiók létrehozásával, a naplózás engedélyezésével és az összegyűjtött naplóinformációk értelmezésével.  
+Ez az oktatóanyag segít megismerkedni az Azure Key Vault naplózásával. Fogja hozzon létre egy tárfiókot, naplózás engedélyezése és értelmezni a gyűjtött adatait.  
 
 > [!NOTE]
-> Az oktatóanyag nem tartalmazza a kulcstárolók, a kulcsok és titkos kulcsok létrehozásának lépéseit. Ez az információ: [Mi az Azure Key Vault?](key-vault-overview.md). A platformfüggetlen parancssori felületre vonatkozó utasításokat megtekintheti [ebben a megfelelő oktatóanyagban](key-vault-manage-with-cli2.md).
+> Az oktatóanyag nem tartalmazza a kulcstárolók, a kulcsok és titkos kulcsok létrehozásának lépéseit. Ez az információ: [Mi az Azure Key Vault?](key-vault-overview.md). Vagy a platformfüggetlen Azure CLI-vel utasításokért lásd: [ebben az oktatóanyagban](key-vault-manage-with-cli2.md).
 >
-> Ez a cikk az Azure PowerShell-utasításokat a diagnosztikai naplózás frissítéséhez. Azonban azonos engedélyezhető az Azure Portalon az Azure Monitor használatával a **diagnosztikai naplók** szakaszban. 
->
+> Ez a cikk az Azure PowerShell-utasításokat a diagnosztikai naplózás frissítése. Diagnosztikai naplózás az Azure Monitor használatával is frissítheti a **diagnosztikai naplók** szakaszában az Azure Portalon. 
 >
 
-Áttekintést az Azure Key Vaultról a [What is Azure Key Vault?](key-vault-whatis.md) (Mi az Azure Key Vault?) című cikkben talál.
+A Key Vault – áttekintés kapcsolatban lásd: [Mi az Azure Key Vault?](key-vault-whatis.md). Hol érhető el a Key Vault kapcsolatos információkért tekintse meg a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/key-vault/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Egy meglévő kulcstároló.  
-* Az Azure PowerShell **1.0.0-s minimális verziója**. Az Azure PowerShell telepítésérről és az Azure-előfizetéssel való társításáról további információt [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása) című cikkben találhat. Ha már telepítette az Azure PowerShellt, de nem tudja, melyik verziót, írja be az Azure PowerShell-konzolon az alábbi parancsot: `$PSVersionTable.PSVersion`.  
+* Az Azure PowerShell, 1.0.0-s minimális verzióját. Az Azure PowerShell telepítésérről és az Azure-előfizetéssel való társításáról további információt [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása) című cikkben találhat. Ha már telepítette az Azure PowerShell és a verzió nem ismeri az Azure PowerShell-konzolról, adja meg a `$PSVersionTable.PSVersion`.  
 * A Key Vault naplóihoz elegendő tárhely az Azure-ban.
 
-## <a id="connect"></a>Csatlakozás az előfizetésekhez
+## <a id="connect"></a>Csatlakozás a key vault-előfizetés
 
-Indítson el egy Azure PowerShell-munkamenetet, és jelentkezzen be az Azure-fiókjába az alábbi paranccsal:  
+Az első lépés a fő naplózási beállítása, hogy a kulcstartóhoz, amely a naplózni kívánt pont Azure PowerShell-lel.
+
+Indítsa el az Azure PowerShell-munkamenetet, és jelentkezzen be Azure-fiókjába a következő parancs használatával:  
 
 ```PowerShell
 Connect-AzAccount
 ```
 
-Az előugró böngészőablakban adja meg az Azure-fiókja felhasználónevét és jelszavát. Az Azure PowerShell megkeresi az összes olyan előfizetést, amely ehhez a fiókhoz van rendelve, és alapértelmezés szerint kiválasztja az elsőt.
+Az előugró böngészőablakban adja meg az Azure-fiókja felhasználónevét és jelszavát. Azure PowerShell megkeresi az ehhez a fiókhoz társított összes előfizetés. Alapértelmezés szerint a PowerShell kiválasztja az elsőt.
 
-Ha több előfizetése van, előfordulhat, hogy meg kell adnia azt, amelyikkel az Azure Key Vault tárolóját létrehozta. Írja be az alábbi parancsot a fiókhoz tartozó előfizetések megjelenítéséhez:
+Előfordulhat, hogy a kulcstartó létrehozásához használt előfizetés megadásához. Adja meg a következő parancsot a fiókhoz tartozó előfizetések megtekintéséhez:
 
 ```PowerShell
-    Get-AzSubscription
+Get-AzSubscription
 ```
 
-Ezt követően a naplózandó kulcstárolóhoz tartozó előfizetés megadásához írja be a következő parancsot:
+Ezután a key vault fogja naplózás tartozó előfizetés megadásához, írja be:
 
 ```PowerShell
 Set-AzContext -SubscriptionId <subscription ID>
 ```
 
-> [!NOTE]
-> Ez egy nagyon fontos lépés, és különösen hasznosnak bizonyulhat, ha több előfizetés tartozik a fiókjához. Egy, a Microsoft.Insights-regisztrációról szóló hibaüzenetet kaphat, ha kihagyja ezt a lépést.
->   
->
+Mutatva PowerShell a megfelelő előfizetést, egy fontos lépés, különösen akkor, ha a fiókjához társított több előfizetéssel rendelkezik. További információ az Azure PowerShell konfigurálásáról: [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása).
 
-További információ az Azure PowerShell konfigurálásáról: [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása).
+## <a id="storage"></a>Hozzon létre egy tárfiókot a naplók
 
-## <a id="storage"></a>Új tárfiók létrehozása a naplóknak
+Bár használhatja egy meglévő tárfiókot a naplók, hozunk létre egy tárfiókot, amelyet a Key Vault naplóinak dedikált lesz. Kényelmi célokat szolgál, később meg kell, hogy fogja tárolni a részletek nevű változóba **sa**.
 
-Bár meglévő tárfiókot is használhat a naplózáshoz, mi létrehozunk egy újat, amely kimondottan a Key Vault naplóinak tárolására szolgál majd. Ezt később kell csak megadni, így addig a vonatkozó részleteket egy **sa** nevű változóban tároljuk.
-
-Az egyszerű használat érdekében ugyanazt az erőforráscsoportot használjuk, amelyben a kulcstároló is található. Az [oktatóanyagból](key-vault-overview.md) kiindulva az erőforráscsoport neve **ContosoResourceGroup** lesz, a helye pedig továbbra is Kelet-Ázsia. Az alábbi értékeket helyettesítse a sajátjainak megfelelőkkel:
+Az egyszerű a mint a key vault tartalmazza is használunk ugyanabban az erőforráscsoportban. Az a [kezdeti lépéseket ismertető oktatóanyag](key-vault-get-started.md), ez az erőforráscsoport neve **ContosoResourceGroup**, és továbbra is Kelet-Ázsia a helyet használja. Cserélje le ezeket az értékeket a sajátjainak megfelelőkkel:
 
 ```PowerShell
  $sa = New-AzStorageAccount -ResourceGroupName ContosoResourceGroup -Name contosokeyvaultlogs -Type Standard_LRS -Location 'East Asia'
 ```
 
 > [!NOTE]
-> Ha egy meglévő tárfiók használata mellett dönt, azt ugyanazzal az előfizetéssel kell használnia, mint a kulcstárolót, és a Resource Manager-alapú üzemi modellt kell alkalmaznia, nem a klasszikust.
+> Ha úgy dönt, hogy egy meglévő tárfiókot használja, azt ugyanahhoz az előfizetéshez kell használnia, mint a key vaultban. És azt az Azure Resource Manager üzemi modell, nem pedig a klasszikus üzemi modellt kell használnia.
 >
 >
 
 ## <a id="identify"></a>A naplók kulcstárolójának azonosítása
 
-Az oktatóanyagban a kulcstároló neve **ContosoKeyVault** volt, így a továbbiakban is azt használjuk, a részleteket pedig egy **kv** nevű változóban tároljuk:
+Az a [kezdeti lépéseket ismertető oktatóanyag](key-vault-get-started.md), a kulcstartó neve **ContosoKeyVault**. Ezt a nevet, és a részletek tárolható egy változóban nevű továbbra is **kv**:
 
 ```PowerShell
 $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
@@ -108,13 +100,13 @@ $kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 
 ## <a id="enable"></a>Naplózás engedélyezése
 
-Ahhoz, hogy a Key Vault naplózását, a Set-AzDiagnosticSetting parancsmagot, és az új tárfiók és kulcstároló létrehozott fogjuk használni. Emellett értékre állítjuk a **-engedélyezve** jelzőt **$true** , a kategóriát pedig auditevent (a Key Vault naplózásának egyetlen kategóriája):
+Ahhoz, hogy a Key Vault naplózását, fogjuk használni a **Set-AzDiagnosticSetting** parancsmagot, és az új tárfiókot, és a key vaultban létrehozott változókat. Emellett értékre állítjuk a **-engedélyezve** jelzőt **$true** és a kategóriát **AuditEvent** (a Key Vault naplózásának egyetlen kategóriája):
 
 ```PowerShell
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent
 ```
 
-A kimenet a következőképpen jelenik meg:
+A kimenet a következőhöz hasonló:
 
     StorageAccountId   : /subscriptions/<subscription-GUID>/resourceGroups/ContosoResourceGroup/providers/Microsoft.Storage/storageAccounts/ContosoKeyVaultLogs
     ServiceBusRuleId   :
@@ -126,9 +118,9 @@ A kimenet a következőképpen jelenik meg:
         Enabled : False
         Days    : 0
 
-Ezzel megerősíti, hogy a naplózás be lett kapcsolva a kulcstárolóban, így az információk a tárfiókba lesznek mentve.
+Ez a kimenet megerősíti, hogy a naplózás engedélyezve van a key vaultban, és adatokat a tárfiókba menti.
 
-Opcionálisan beállíthat egy megtartási házirendet a naplóihoz, így a régebbi naplófájlok automatikusan törlődni fognak. Például állítsa be a megtartási házirendet a **-RetentionEnabled** jelző használatával a **$true** értékre, majd állítsa a **-RetentionInDays** paramétert **90** értékre, így a 90 napnál régebbi naplófájlok automatikusan törlődnek.
+Igény szerint beállíthatja adatmegőrzési a naplók úgy, hogy a régebbi naplófájlok automatikusan törlődnek. Például állítsa be a megőrzési házirend beállításával a **- RetentionEnabled** jelzőt **$true**, és állítsa be a **- RetentionInDays** paramétert **90**úgy, hogy a 90 napnál régebbi naplófájlok automatikusan törlődnek.
 
 ```PowerShell
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent -RetentionEnabled $true -RetentionInDays 90
@@ -136,28 +128,30 @@ Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Ena
 
 Mi kerül naplózásra?
 
-* Minden hitelesített REST API-kérés naplózásra kerül, beleértve a hozzáférési engedélyekből, rendszerhibákból vagy hibás kérésekből adótó sikertelen kérelmeket is.
-* A magán a kulcstárolón elvégzett műveletek, beleértve a létrehozást, az eltávolítást, a kulcstároló hozzáférési szabályzatainak beállítását és a kulcstároló tulajdonságainak (például címkéinek) frissítését.
-* A kulcstároló kulcsain és titkos kulcsain elvégzett műveletek, beleértve a létrehozást, a módosítást és a kulcsok vagy titkos kulcsok törlését; az olyan műveletek, mint az aláírás, az ellenőrzés, a titkosítás, a visszafejtés, a kulcsok be- és kicsomagolása, a titkos kulcsok lekérése, valamint a kulcsok és titkos kulcsok és azok verzióinak listázása.
-* A 401-es választ eredményező, nem hitelesített kérelmek. Ilyenek például azok a kérelmek, amelyek nem rendelkeznek tulajdonosi jogkivonattal, helytelen formátumúak vagy lejártak, vagy érvénytelen a jogkivonatuk.  
+* Minden hitelesített REST API-kérelmek, beleértve a hozzáférési engedélyek, rendszerhibákból vagy hibás kérésekből adótó sikertelen kérelmeket.
+* Műveletek a kulcsot a tár magát, beleértve a létrehozása, törlés, a kulcstartó hozzáférési szabályzatok beállítása, valamint a kulcstartó-attribútumokat, például címkék frissítése.
+* Műveletek a kulcsok és titkos kulcsok a key vaultban, többek között:
+  * Létrehozása, módosítása vagy törlése, ezek a kulcsok vagy titkos kulcsok.
+  * Aláírása, ellenőrzése, titkosítása, visszafejtése, alkalmazásburkoló és kicsomagolási kulcsok, titkos adatait, és a listaelem kulcsok és titkos kulcsok (és azok verzióinak).
+* A 401-es választ eredményező, nem hitelesített kérelmek. Például a kérelmek, amelyek nem rendelkeznek tulajdonosi jogkivonattal, helytelen formátumúak vagy lejártak, vagy, amelyek érvénytelen jogkivonatot.  
 
 ## <a id="access"></a>A naplók elérése
 
-A kulcstároló naplóit a rendszer a megadott tárfiók **insights-logs-auditevent** nevű tárolójában tárolja. A tároló összes blobjának megjelenítéséhez írja be az alábbi parancsot:
+Key Vault-naplók vannak tárolva a **insights-logs-auditevent** megadott storage-fiókban lévő tárolóba. A naplók megtekintéséhez, akkor tölthet le blobokat.
 
-Először hozzon létre egy változót a tároló nevéhez. Ez az útmutató többi részében lesz használható.
+Először hozzon létre egy változót a tároló nevéhez. Ez a változó az útmutató többi részében fogja használni.
 
 ```PowerShell
 $container = 'insights-logs-auditevent'
 ```
 
-A tároló összes blobjának megjelenítéséhez írja be az alábbi parancsot:
+Ebben a tárolóban lévő összes BLOB listáját, írja be:
 
 ```PowerShell
 Get-AzStorageBlob -Container $container -Context $sa.Context
 ```
 
-A kimenet ehhez hasonlóan néz ki:
+A kimeneti ehhez hasonlóan néz ki:
 
 ```
 Container Uri: https://contosokeyvaultlogs.blob.core.windows.net/insights-logs-auditevent
@@ -172,13 +166,13 @@ resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CO
 resourceId=/SUBSCRIPTIONS/361DA5D4-A47A-4C79-AFDD-XXXXXXXXXXXX/RESOURCEGROUPS/CONTOSORESOURCEGROUP/PROVIDERS/MICROSOFT.KEYVAULT/VAULTS/CONTOSOKEYVAULT/y=2016/m=01/d=04/h=18/m=00/PT1H.json
 ```
 
-Ahogyan a kimenetből látható, a blobok az alábbi elnevezési módszert alkalmazzák: **erőforrás-azonosító=<ARM resource ID>/é=<year>/h=<month>/n=<day of month>/ó=<hour>/p=<minute>/fájlnév.json**
+Ahogy a kimenetből látható, a blobokat egy elnevezési konvenciót követi: `resourceId=<ARM resource ID>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json`
 
 A dátum- és időértékek az UTC hivatkozási időzónát használják.
 
-Mivel ugyanazt a tárfiókot a naplók több erőforrás is használható, a blob nevének teljes erőforrás-azonosítója hasznos eléréséhez, vagy csak a szükséges blobokat töltse le. Előtte azonban nézzük meg, hogyan tölthető le az összes blob.
+Használhatja ugyanazt a tárfiókot a naplók több erőforrás, mert az a blob nevének teljes erőforrás-azonosítója hasznos eléréséhez, vagy csak a szükséges blobokat töltse le. Előtte azonban nézzük meg, hogyan tölthető le az összes blob.
 
-Elsőként hozzon létre egy mappát, amelybe letölti a blobokat. Példa:
+Hozzon létre egy mappát, amelybe letölti a blobokat. Példa:
 
 ```PowerShell 
 New-Item -Path 'C:\Users\username\ContosoKeyVaultLogs' -ItemType Directory -Force
@@ -190,48 +184,48 @@ Majd kérje le az összes blob listáját:
 $blobs = Get-AzStorageBlob -Container $container -Context $sa.Context
 ```
 
-Ebben a listában "Get-AzStorageBlobContent" töltse le a mappába keresztül szolgáltatása:
+A listát a keresztül **Get-AzStorageBlobContent** töltse le a célmappába:
 
 ```PowerShell
 $blobs | Get-AzStorageBlobContent -Destination C:\Users\username\ContosoKeyVaultLogs'
 ```
 
-A második parancs futtatásakor a blob nevének **/** elválasztója egy teljes mapparendszert létrehoz a célmappában, és a program ebben a rendszerben tárolja majd fájlokként a letöltött blobokat.
+A második parancs futtatásakor a **/** a blob nevének elválasztó alapján hoz létre egy teljes mapparendszert a rendeltetési mappára. Ez a struktúra segítségével töltse le és tárolja a blobok, fájlok.
 
 A blobok egyenkénti letöltéséhez használjon helyettesítő elemeket. Példa:
 
 * Ha több kulcstárolóval rendelkezik, de csak a CONTOSOKEYVAULT3 nevűhöz szeretne naplókat letölteni:
 
-```PowerShell
-Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
-```
+  ```PowerShell
+  Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/VAULTS/CONTOSOKEYVAULT3
+  ```
 
 * Ha több erőforráscsoporttal rendelkezik, de csak egyhez szeretne naplókat letölteni, használja a `-Blob '*/RESOURCEGROUPS/<resource group name>/*'` parancsot:
 
-```PowerShell
-Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
-```
+  ```PowerShell
+  Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
+  ```
 
-* Ha 2016 januárjának összes naplóját szeretné letölteni, használja a `-Blob '*/year=2016/m=01/*'` parancsot:
+* Ha azt szeretné, minden a naplók letöltéséhez január 2019 hónapban, `-Blob '*/year=2019/m=01/*'`:
 
-```PowerShell
-Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
-```
+  ```PowerShell
+  Get-AzStorageBlob -Container $container -Context $sa.Context -Blob '*/year=2016/m=01/*'
+  ```
 
-Most már készen áll a naplók tartalmának megtekintésére. Azonban mielőtt ezt a két paramétert a Get-AzDiagnosticSetting, ismernie kell:
+Most már készen áll a naplók tartalmának megtekintésére. Azonban mielőtt adott, ha tisztában van két további parancsokat:
 
 * A kulcstároló erőforrásához tartozó diagnosztikai beállítások állapotának lekérdezése:`Get-AzDiagnosticSetting -ResourceId $kv.ResourceId`
 * A kulcstároló erőforrása naplózásának letiltása:`Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $false -Category AuditEvent`
 
 ## <a id="interpret"></a>A Key Vault naplóinak értelmezése
 
-Az egyes blobok JSON-blobként, szöveges formában vannak tárolva. Fut
+Az egyes blobok JSON-blobként, szöveges formában vannak tárolva. Lássunk erre egy példa naplóbejegyzés. Futtassa ezt a parancsot:
 
 ```PowerShell
 Get-AzKeyVault -VaultName 'contosokeyvault'`
 ```
 
-Visszaadja egy naplóbejegyzés hasonlít az alábbi képen látható:
+Azt adja vissza egy naplóbejegyzés ehhez hasonló:
 
 ```json
     {
@@ -256,65 +250,67 @@ Visszaadja egy naplóbejegyzés hasonlít az alábbi képen látható:
     }
 ```
 
-Az alábbi táblázat a mezők neveit és leírásait sorolja fel.
+Az alábbi táblázat a mezők neveit és leírásait sorolja fel:
 
 | Mező neve | Leírás |
 | --- | --- |
-| time |Dátum és idő (UTC). |
-| resourceId |Az Azure Resource Manager szerinti erőforrás-azonosító. A Key Vault-naplók esetében mindig ez a Key Vault erőforrás-azonosítója. |
-| operationName |A művelet neve, ahogy a következő táblázat is mutatja. |
-| operationVersion |Az ügyfél által kért REST API verziója. |
-| category |A Key Vault naplóihoz az AuditEvent az egyetlen elérhető érték. |
-| resultType |A REST API-kérelem eredménye. |
-| resultSignature |A HTTP-állapot. |
-| resultDescription |Az eredmény további leírása, amennyiben elérhető. |
-| durationMs |A REST API-kérelem végrehajtásának ideje ezredmásodpercben. Ebbe nincs beleszámítva a hálózati késés, így az ügyféloldalon mért idő ettől eltérhet. |
-| callerIpAddress |A kérelmet leadó ügyfél IP-címe. |
-| correlationId |Egy nem kötelező GUID, amelyet az ügyfél alkalmazhat az ügyféloldali és a szolgáltatásoldali (Key Vault) naplók egyeztetéséhez. |
-| identity |A REST API-kérelemhez megadott tokenben szereplő identitás. Ez általában egy „felhasználó”, „egyszerű szolgáltatásnév” vagy „felhasználó + alkalmazás-azonosító”, az Azure PowerShell-parancsmagok által eredményezett kérelmekhez hasonlóan. |
-| properties |Ez a mező a művelettől (operationName) függően más-más adatokat tartalmaz. A legtöbb esetben tartalmazza az ügyfél-információ (a felhasználói ügynök átadott karakterlánc-ügyfél által), a pontos REST API-kérelem URI-t és HTTP-állapotkódot. Ezenkívül ha egy objektumot a rendszer egy kérelem (például a KeyCreate vagy a VaultGet) eredményeként ad vissza, a kulcs URI-ját („id”), a tároló URI-ját vagy a titkos kulcs URI-ját is tartalmazza. |
+| **idő** |Dátuma és időpontja (UTC). |
+| **resourceId** |Az Azure Resource Manager-erőforrás azonosítója. A Key Vault naplóihoz Ez a Key Vault erőforrás-azonosítója. |
+| **OperationName** |A művelet neve, ahogy a következő táblázat is mutatja. |
+| **operationVersion** |Az ügyfél által kért REST API-verzió. |
+| **kategória** |Eredmény típusa. A Key Vault naplóihoz **AuditEvent** az egyetlen elérhető érték van. |
+| **resultType** |A REST API-kérés eredményét. |
+| **resultSignature** |A HTTP-állapot. |
+| **resultDescription** |Az eredmény további leírása, amennyiben elérhető. |
+| **durationMs** |A REST API-kérelem végrehajtásának ideje ezredmásodpercben. Ebbe nincs beleszámítva a hálózati késés, így az ügyféloldalon mért idő ettől eltérhet. |
+| **callerIpAddress** |A kérést leadó ügyfél IP-címe. |
+| **correlationId** |Egy nem kötelező GUID, amelyet az ügyfél alkalmazhat az ügyféloldali és a szolgáltatásoldali (Key Vault) naplók egyeztetéséhez. |
+| **Identitás** |A jogkivonat a REST API-kérelemben szereplő identitás. Ez általában a "felhasználó" a "szolgáltatásnév" vagy "felhasználó + appId," egy kérelmet, amely egy Azure PowerShell-parancsmaggal való gazdabuszadaptereken kombinációja. |
+| **Tulajdonságok** |A művelet alapján, amely információkat (**operationName**). A legtöbb esetben ez a mező tartalmazza, ügyfél-információ (a felhasználói ügynök átadott karakterlánc-ügyfél által), a pontos REST API-kérelem URI-t és HTTP-állapotkód. Emellett ha egy objektumot ad vissza egy kérelem (például **KeyCreate** vagy **VaultGet**), is tartalmaz, a kulcs URI-JÁT ("id"), a tároló URI-t vagy a titkos URI. |
 
-Az **operationName** mező értékei ObjectVerb formátumúak. Példa:
+A **operationName** mező értékek *ObjectVerb* formátumban. Példa:
 
-* Minden kulcstárolón elvégzett művelet „Vault`<action>`” formátumú, például `VaultGet` és `VaultCreate`.
-* Minden kulcson elvégzett művelet „Key`<action>`” formátumú, például `KeySign` és `KeyList`.
-* Minden titkos kulcson elvégzett művelet „Secret`<action>`” formátumú, például `SecretGet` és `SecretListVersions`.
+* Minden kulcstárolón elvégzett művelet a `Vault<action>` formátumú, például `VaultGet` és `VaultCreate`.
+* Minden kulcson elvégzett művelet a `Key<action>` formátumú, például `KeySign` és `KeyList`.
+* Minden titkos kulcson elvégzett művelet a `Secret<action>` formátumú, például `SecretGet` és `SecretListVersions`.
 
-Az alábbi táblázat az operationName műveleteket és a megfelelő REST API-parancsokat listázza.
+A következő táblázat felsorolja a **operationName** értékeket és a megfelelő REST API-parancsokat:
 
 | operationName | REST API-parancs |
 | --- | --- |
-| Authentication |Az Azure Active Directory végpontján keresztül |
-| VaultGet |[Kulcstároló adatainak lekérése](https://msdn.microsoft.com/library/azure/mt620026.aspx) |
-| VaultPut |[Kulcstároló létrehozása vagy frissítése](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
-| VaultDelete |[Kulcstároló törlése](https://msdn.microsoft.com/library/azure/mt620022.aspx) |
-| VaultPatch |[Kulcstároló frissítése](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
-| VaultList |[Az erőforráscsoport összes kulcstárolójának listázása](https://msdn.microsoft.com/library/azure/mt620027.aspx) |
-| KeyCreate |[Kulcs létrehozása](https://msdn.microsoft.com/library/azure/dn903634.aspx) |
-| KeyGet |[Kulcs adatainak lekérése](https://msdn.microsoft.com/library/azure/dn878080.aspx) |
-| KeyImport |[Kulcs importálása egy tárolóba](https://msdn.microsoft.com/library/azure/dn903626.aspx) |
-| KeyBackup |[Kulcs biztonsági mentése](https://msdn.microsoft.com/library/azure/dn878058.aspx). |
-| KeyDelete |[Kulcs törlése](https://msdn.microsoft.com/library/azure/dn903611.aspx) |
-| KeyRestore |[Kulcs helyreállítása](https://msdn.microsoft.com/library/azure/dn878106.aspx) |
-| KeySign |[Aláírás kulccsal](https://msdn.microsoft.com/library/azure/dn878096.aspx) |
-| KeyVerify |[Ellenőrzés kulccsal](https://msdn.microsoft.com/library/azure/dn878082.aspx) |
-| KeyWrap |[Kulcs becsomagolása](https://msdn.microsoft.com/library/azure/dn878066.aspx) |
-| KeyUnwrap |[Kulcs kicsomagolása](https://msdn.microsoft.com/library/azure/dn878079.aspx) |
-| KeyEncrypt |[Titkosítás kulccsal](https://msdn.microsoft.com/library/azure/dn878060.aspx) |
-| KeyDecrypt |[Visszafejtés kulccsal](https://msdn.microsoft.com/library/azure/dn878097.aspx) |
-| KeyUpdate |[Kulcs frissítése](https://msdn.microsoft.com/library/azure/dn903616.aspx) |
-| KeyList |[Egy tároló kulcsainak listázása](https://msdn.microsoft.com/library/azure/dn903629.aspx) |
-| KeyListVersions |[Kulcs verzióinak listázása](https://msdn.microsoft.com/library/azure/dn986822.aspx) |
-| SecretSet |[Titkos kulcs létrehozása](https://msdn.microsoft.com/library/azure/dn903618.aspx) |
-| SecretGet |[Titkos kulcs lekérése](https://msdn.microsoft.com/library/azure/dn903633.aspx) |
-| SecretUpdate |[Titkos kulcs frissítése](https://msdn.microsoft.com/library/azure/dn986818.aspx) |
-| SecretDelete |[Titkos kulcs törlése](https://msdn.microsoft.com/library/azure/dn903613.aspx) |
-| SecretList |[Egy tároló titkos kulcsainak listázása](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
-| SecretListVersions |[Titkos kulcs verzióinak listázása](https://msdn.microsoft.com/library/azure/dn986824.aspx) |
+| **Hitelesítés** |Hitelesítés Azure Active Directory végpontján keresztül |
+| **VaultGet** |[Kulcstároló adatainak lekérése](https://msdn.microsoft.com/library/azure/mt620026.aspx) |
+| **VaultPut** |[Kulcstároló létrehozása vagy frissítése](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
+| **VaultDelete** |[Kulcstároló törlése](https://msdn.microsoft.com/library/azure/mt620022.aspx) |
+| **VaultPatch** |[Kulcstároló frissítése](https://msdn.microsoft.com/library/azure/mt620025.aspx) |
+| **VaultList** |[Az erőforráscsoport összes kulcstárolójának listázása](https://msdn.microsoft.com/library/azure/mt620027.aspx) |
+| **KeyCreate** |[Kulcs létrehozása](https://msdn.microsoft.com/library/azure/dn903634.aspx) |
+| **KeyGet** |[Kulcs adatainak lekérése](https://msdn.microsoft.com/library/azure/dn878080.aspx) |
+| **KeyImport** |[Kulcs importálása egy tárolóba](https://msdn.microsoft.com/library/azure/dn903626.aspx) |
+| **KeyBackup** |[A kulcs biztonsági mentése](https://msdn.microsoft.com/library/azure/dn878058.aspx) |
+| **KeyDelete** |[Kulcs törlése](https://msdn.microsoft.com/library/azure/dn903611.aspx) |
+| **KeyRestore** |[Kulcs helyreállítása](https://msdn.microsoft.com/library/azure/dn878106.aspx) |
+| **KeySign** |[Aláírás kulccsal](https://msdn.microsoft.com/library/azure/dn878096.aspx) |
+| **KeyVerify** |[Ellenőrzés kulccsal](https://msdn.microsoft.com/library/azure/dn878082.aspx) |
+| **KeyWrap** |[Kulcs becsomagolása](https://msdn.microsoft.com/library/azure/dn878066.aspx) |
+| **KeyUnwrap** |[Kulcs kicsomagolása](https://msdn.microsoft.com/library/azure/dn878079.aspx) |
+| **KeyEncrypt** |[Titkosítás kulccsal](https://msdn.microsoft.com/library/azure/dn878060.aspx) |
+| **KeyDecrypt** |[Visszafejtés kulccsal](https://msdn.microsoft.com/library/azure/dn878097.aspx) |
+| **KeyUpdate** |[Kulcs frissítése](https://msdn.microsoft.com/library/azure/dn903616.aspx) |
+| **KeyList** |[Egy tároló kulcsainak listázása](https://msdn.microsoft.com/library/azure/dn903629.aspx) |
+| **KeyListVersions** |[Kulcs verzióinak listázása](https://msdn.microsoft.com/library/azure/dn986822.aspx) |
+| **SecretSet** |[Titkos kulcs létrehozása](https://msdn.microsoft.com/library/azure/dn903618.aspx) |
+| **SecretGet** |[Titkos kulcs lekérése](https://msdn.microsoft.com/library/azure/dn903633.aspx) |
+| **SecretUpdate** |[Titkos kulcs frissítése](https://msdn.microsoft.com/library/azure/dn986818.aspx) |
+| **SecretDelete** |[Titkos kulcs törlése](https://msdn.microsoft.com/library/azure/dn903613.aspx) |
+| **SecretList** |[Egy tároló titkos kulcsainak listázása](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
+| **SecretListVersions** |[Titkos kulcs verzióinak listázása](https://msdn.microsoft.com/library/azure/dn986824.aspx) |
 
 ## <a id="loganalytics"></a>A Log Analytics használata
 
-A Log Analyticsben az Azure Key Vault megoldással áttekintheti az Azure Key Vault AuditEvent-naplókat. További információért és a beállítás módjának ismertetéséért olvassa el [az Azure Key Vault megoldás a Log Analyticsben](../azure-monitor/insights/azure-key-vault.md) történő használatát ismertető cikket. Ez a cikk útmutatást biztosít a Log Analytics előzetes verziójában elérhető, korábbi Key Vault megoldásról történő migráláshoz is, amelynek során először a naplókat kellett átirányítani egy Azure Storage-fiókra, majd konfigurálni a Log Analyticset, hogy onnan lehessen olvasni.
+Használhatja a Key Vault megoldás az Azure Log Analyticsben, tekintse át a Key Vault **AuditEvent** naplókat. A Log Analytics a naplólekérdezések adatok elemzése és a szükséges adatok lekéréséhez használhatja. 
+
+További információért és a beállítás módjának ismertetéséért olvassa el [az Azure Key Vault megoldás a Log Analyticsben](../azure-monitor/insights/azure-key-vault.md) történő használatát ismertető cikket. Ez a cikk utasításokat is tartalmaz, ha a régi Key Vault megoldás a Log Analytics előzetes verzió ideje alatt, ahol először irányítja a naplók az Azure storage-fiókba és konfigurálva, hogy onnan lehessen olvasni a Log Analytics által kínált át kell.
 
 ## <a id="next"></a>Következő lépések
 
@@ -322,6 +318,6 @@ Ez az oktatóanyag egy .NET-webalkalmazás az Azure Key Vault használja, lásd:
 
 Programozási hivatkozások: [Az Azure Key Vault fejlesztői útmutatója](key-vault-developers-guide.md).
 
-Az Azure Key Vaultra vonatkozó Azure PowerShell 1.0-parancsmagok listáját az [Azure Key Vault Cmdlets](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault) (Az Azure Key Vault parancsmagjai) című témakörben találja.
+Az Azure Key Vault az Azure PowerShell 1.0-parancsmagok listáját lásd: [Azure Key Vault-parancsmagok](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault).
 
-A kulcsrotálással és a naplózással kapcsolatos oktatóanyag: [How to setup Key Vault with end to end key rotation and auditing](key-vault-key-rotation-log-monitoring.md) (A Key Vault beállítása átfogó kulcsrotálással és naplózással).
+A kulcsforgatás és a napló az Azure Key Vault naplózásának oktatóanyagért lásd: [Key Vault beállítása végpontok közötti kulcsforgatással és auditálással](key-vault-key-rotation-log-monitoring.md).

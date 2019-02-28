@@ -1,6 +1,6 @@
 ---
 title: Hogyan lekérdezés naplók az Azure Monitor-beli virtuális gépek (előzetes verzió) |} A Microsoft Docs
-description: Virtuális gépek megoldás az Azure Monitor továbbítja a metrikák és a naplóadatok a Log Analytics, és ez a cikk ismerteti a rekordokat, és mintalekérdezéseket tartalmaz.
+description: Az Azure Monitor virtuális gépek megoldás metrikákat gyűjt, és a naplóadatokat, és ez a cikk ismerteti a rekordokat, és mintalekérdezéseket tartalmaz.
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 3ab70febbb41b26fd824f9ae6ef0d00358c7530f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: f33b87fa2c90eda7e4fa135e55565781e8491418
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864417"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983778"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>Az Azure Monitor naplók lekérdezni a virtuális gépek (előzetes verzió)
-Az Azure Monitor-beli virtuális gépek teljesítmény- és kapcsolati metrikák, a számítógép és a folyamat leltáradatokat és az állapotinformációkat gyűjt, és továbbítja azokat a Log Analytics data store az Azure Monitor.  Ezek az adatok érhető el [keresési](../../azure-monitor/log-query/log-query-overview.md) a Log Analyticsben. Ezeket az adatokat, beleértve az áttelepítés megtervezése, kapacitáselemzési, felderítési és igény szerinti teljesítménnyel kapcsolatos hibaelhárítás forgatókönyveket is alkalmazhat.
+A virtuális gépek az Azure Monitor teljesítmény és a kapcsolati metrika, a számítógép és a folyamat leltáradatok és a állapotinformációkat gyűjt, és továbbítja azokat a Log Analytics-munkaterületet az Azure monitorban.  Ezek az adatok érhető el [lekérdezés](../../azure-monitor/log-query/log-query-overview.md) az Azure monitorban. Ezeket az adatokat, beleértve az áttelepítés megtervezése, kapacitáselemzési, felderítési és igény szerinti teljesítménnyel kapcsolatos hibaelhárítás forgatókönyveket is alkalmazhat.
 
 ## <a name="map-records"></a>Rekord leképezése
 Egy rekord minden egyedi számítógép és a folyamat a rekordokat, amelyek akkor jönnek létre egy folyamatot, vagy a számítógép indításakor vagy bevezetve az Azure monitornak a virtuális gépek térkép funkció mellett óránként jön létre. Ezek a rekordok tulajdonságait az alábbi táblázatban rendelkezik. A mezők és értékek a mezők a ServiceMap Azure Resource Manager API-ban a gép erőforrás ServiceMapComputer_CL események leképezés. A mezők és értékek a ServiceMapProcess_CL események leképezés a mezőket a folyamat erőforrás a ServiceMap Azure Resource Manager API-ban. A ResourceName_s mezője megegyezik a megfelelő Resource Manager-erőforrás neve mezőjében. 
@@ -34,7 +34,7 @@ Belsőleg generált tulajdonságaiként segítségével egyedi folyamatokat és 
 Több rekord megadott folyamat és a egy adott időtartományban számítógép is létezik, mivel a lekérdezések adhat vissza ugyanazon a számítógépen vagy folyamat egynél több rekordot. Adja meg a legújabb bejegyzést, adja hozzá a "|} a deduplikáció erőforrás-azonosító"a lekérdezéshez.
 
 ### <a name="connections"></a>Kapcsolatok
-A Log Analytics - VMConnection új tábla kapcsolati metrika kerüljenek. Ez a táblázat ismerteti a kapcsolatokat a gép (bejövő és kimenő). Kapcsolati metrika is ki vannak téve az API-kkal, amelyek biztosítják az eszközöket egy adott metrika beszerzése egy adott időszakban.  TCP-kapcsolatok eredő "*fogadja el*- ing figyel-e szoftvercsatorna bejövő, míg a által létrehozott *csatlakozás*- ing, hogy egy adott IP-cím és port kimenő. A kapcsolat irányát képviseli a iránya tulajdonság, amely lehet megadni **bejövő** vagy **kimenő**. 
+Kapcsolati metrika, egy új táblát az Azure Monitor naplóira - VMConnection készültek. Ez a táblázat ismerteti a kapcsolatokat a gép (bejövő és kimenő). Kapcsolati metrika is ki vannak téve az API-kkal, amelyek biztosítják az eszközöket egy adott metrika beszerzése egy adott időszakban.  TCP-kapcsolatok eredő "*fogadja el*- ing figyel-e szoftvercsatorna bejövő, míg a által létrehozott *csatlakozás*- ing, hogy egy adott IP-cím és port kimenő. A kapcsolat irányát képviseli a iránya tulajdonság, amely lehet megadni **bejövő** vagy **kimenő**. 
 
 Ezeknek a tábláknak rögzíti a függőségi ügynök által küldött adatokból jönnek létre. Minden rekord egy egy perces időszakra megfigyelési jelöli. A TimeGenerated tulajdonság az időintervallum kezdetét jelzi. Minden rekord tartalmazza a megfelelő entitás, amely azonosító adatokat, kapcsolat vagy a port, valamint az adott entitás kapcsolódó metrikák. Jelenleg csak akkor fordul elő, a TCP-val IPv4 hálózati aktivitás jelentett.
 
@@ -159,7 +159,7 @@ Típussal rendelkező rekordok *ServiceMapProcess_CL* rendelkezik TCP-kapcsolatt
 | CommandLine_s | A parancssorból |
 | ExecutablePath z | A végrehajtható fájl elérési útja |
 | WorkingDirectory_s | A munkakönyvtárban |
-| UserName | A fiók, amely alatt a folyamat végrehajtása |
+| Felhasználónév | A fiók, amely alatt a folyamat végrehajtása |
 | UserDomain | A tartományhoz, amelyben a folyamat végrehajtása |
 
 ## <a name="sample-log-searches"></a>Naplókeresési minták
@@ -255,5 +255,5 @@ let remoteMachines = remote | summarize by RemoteMachine;
 ```
 
 ## <a name="next-steps"></a>További lépések
-* Ha még nem ismeri a lekérdezések írásának módját a Log Analyticsben, tekintse át [használata a Log Analytics lapot](../../azure-monitor/log-query/get-started-portal.md) Log Analytics-lekérdezéseket írhat az Azure Portalon.
+* Ha most ismerkedik az Azure Monitor log-lekérdezések írásának módját, tekintse át a [használata a Log Analytics](../../azure-monitor/log-query/get-started-portal.md) log lekérdezéseket írhat az Azure Portalon.
 * Ismerje meg [keresési lekérdezések írása](../../azure-monitor/log-query/search-queries.md).

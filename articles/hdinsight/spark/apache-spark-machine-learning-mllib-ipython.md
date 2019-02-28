@@ -8,21 +8,18 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 02/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 2a566312e70e0c1d5f85a540f30ecdf0adc0e7e7
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: b5d1908201de803ae065403600fc3478e604eedd
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653713"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959102"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Az Apache Spark MLlib segítségével hozhat létre a machine learning-alkalmazás, és a egy adatkészlet elemzése
 
 Ismerje meg, hogyan használható az Apache Spark [MLlib](https://spark.apache.org/mllib/) machine learning-alkalmazás egyszerű prediktív elemzéseket végezhet egy megnyitott adatkészlet létrehozásához. A Spark a beépített gépi tanulás kódtárakat, ez a példa *besorolási* logisztikai regressziós keresztül. 
-
-> [!TIP]  
-> Ebben a példában is érhető el egy [Jupyter Notebook](https://jupyter.org/) ebben a HDInsight (Linux) Spark-fürtön. A jegyzetfüzet-megoldás lehetővé teszi a notebookból magát a Python-kódrészletek futtatását. Kövesse az oktatóanyag a jegyzetfüzet belül, hozzon létre egy Spark-fürtöt, majd indítsa el a Jupyter notebook (`https://CLUSTERNAME.azurehdinsight.net/jupyter`). Ezután futtassa a notebook **Spark Machine Learning - prediktív elemzés a MLlib.ipynb használata az élelmiszervizsgálati ellenőrző adatok** alatt a **Python** mappát.
 
 MLlib egy Spark Alapkönyvtár, amely számos hasznos segédprogramokat biztosít a machine learning feladatokat, beleértve a megfelelő segédprogramok:
 
@@ -49,7 +46,7 @@ Az alábbi lépéseket a megtekintéséhez, hogy mire van szüksége, vagy siker
 
 1. Hozzon létre egy Jupyter notebookot a PySpark-kernellel. Az utasításokért lásd: [Jupyter notebook létrehozása](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook).
 
-2. Ehhez az alkalmazáshoz szükséges típusok importálása. Másolja és illessze be a következő kódot egy üres cellába, majd nyomja le **SHIRT + ENTER**.
+2. Ehhez az alkalmazáshoz szükséges típusok importálása. Másolja és illessze be a következő kódot egy üres cellába, majd nyomja le **SHIFT + ENTER**.
 
     ```PySpark
     from pyspark.ml import Pipeline
@@ -173,7 +170,7 @@ Kezdjük a megtapasztalhatja, az adatkészlet tartalmaz.
 
     ```PySpark
     %%sql -o countResultsdf
-    SELECT results, COUNT(results) AS cnt FROM CountResults GROUP BY results
+    SELECT COUNT(results) AS cnt, results FROM CountResults GROUP BY results
     ```
 
     A `%%sql` Magic Quadrant követ `-o countResultsdf` biztosítja, hogy a lekérdezés kimenete a Jupyter-kiszolgálón (általában a fürt átjárócsomópontjával) helyileg tárolja. A kimenet a megőrzés pedig egy [Pandas](https://pandas.pydata.org/) a megadott nevű adathalmaz **countResultsdf**. További információ a `%%sql` Magic Quadrant, és kernellel a PySpark kernellel elérhető egyéb funkciókkal [használt az Apache Spark HDInsight-fürtök Jupyter notebookokban elérhető kernelek](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
@@ -200,14 +197,6 @@ Kezdjük a megtapasztalhatja, az adatkészlet tartalmaz.
     A kimenet a következő:
 
     ![A Spark machine learning-alkalmazás kimenete – a tortadiagram az öt különböző eredmények](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-result-output-1.png "Spark machine learning-eredmény kimeneti")
-
-    Nincsenek 5 különböző eredmények, amelyeken az ellenőrzés:
-
-    - Nem találhatók üzleti
-    - Sikertelen
-    - Sikeres
-    - Feltételek használatával adja át
-    - Üzleti kívül
 
     Előre jelezni egy food ellenőrzési serkenti az eredményt, a szabálysértések alapuló modell fejlesztéshez szükséges. Mivel a logisztikai regressziós egy bináris osztályozási metódust, logikus csoportosítása az eredményadatok két kategóriába sorolhatók: **Sikertelen** és **átadni**:
 
@@ -272,7 +261,7 @@ Használhatja a korábban létrehozott modell *előrejelzése* mi új ellenőrz�
 1. Futtassa a következő kódot egy új adathalmaz létrehozásához **predictionsDf** , amely tartalmazza az előrejelzést, a modell által generált. A kódrészlet is létrehoz egy ideiglenes táblát nevű **előrejelzéseket** az adathalmaz alapján.
 
     ```PySpark
-    testData = sc.textFile('wasb:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections2.csv')\
+    testData = sc.textFile('wasbs:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections2.csv')\
                 .map(csvParse) \
                 .map(lambda l: (int(l[0]), l[1], l[12], l[13]))
     testDf = spark.createDataFrame(testData, schema).where("results = 'Fail' OR results = 'Pass' OR results = 'Pass w/ Conditions'")
@@ -284,10 +273,6 @@ Használhatja a korábban létrehozott modell *előrejelzése* mi új ellenőrz�
     A következőhöz hasonló kimenetnek kell megjelennie:
 
     ```
-    # -----------------
-    # THIS IS AN OUTPUT
-    # -----------------
-
     ['id',
         'name',
         'results',
@@ -321,10 +306,6 @@ Használhatja a korábban létrehozott modell *előrejelzése* mi új ellenőrz�
     A kimenet az alábbihoz hasonló:
 
     ```
-    # -----------------
-    # THIS IS AN OUTPUT
-    # -----------------
-
     There were 9315 inspections and there were 8087 successful predictions
     This is a 86.8169618894% success rate
     ```

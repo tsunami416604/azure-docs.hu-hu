@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 02/07/2019
+ms.date: 02/26/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: d6805b3d60e5e30d35acc12c5564498830ddd8fb
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: de1bd8599682baae860737401d02c7c1dec9e223
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56881727"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960649"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Az Azure Media Services v3 ismertetése
 
@@ -88,7 +88,7 @@ A Media Services v3 tartalmat az alábbi struktúrával (a tartalomjegyzéket is
 | Gyors útmutatók | Az új ügyfelek gyorsan kipróbálhatja a Media Services alapvető nap-1 utasítások megjelenítése.|
 | Oktatóanyagok | A Media Services leggyakoribb feladatok egy részének megjelenítése forgatókönyv-alapú eljárásokat.|
 | Példák | Kódminták mutató hivatkozásokat tartalmaz. |
-| Alapelvek | Magyarázatra van szüksége a Media Services v3 kapcsolatos fogalmakat és funkciót tartalmaz. Az alábbi témakörök ismertetik az alapvető fogalmakkal fejlesztés megkezdése előtt át kell tekinteni.<br/><br/>* A felhő feltöltés és tárolás<br/>* Encoding<br/>* A médiaelemzés<br/>* Packaging, delivery, protection<br/>* Élő streaming<br/>* A folyamatos figyelése<br/>* Player ügyfelek<br/><br/>és továbbiakat. |
+| Alapelvek | Részletes leírását tartalmazza [Media Services v3 fogalmait és funkcióit](concepts-overview.md). Az alábbi témakörök ismertetik az alapvető fogalmakkal fejlesztés megkezdése előtt át kell tekinteni.<br/><br/>* A felhő feltöltés és tárolás<br/>* Encoding<br/>* A médiaelemzés<br/>* Packaging, delivery, protection<br/>* Élő streaming<br/>* Figyelése<br/>* Player ügyfelek<br/><br/>és továbbiakat. |
 | Útmutatók | Bemutatják, hogyan lehet egy adott feladat végrehajtásához.|
 
 ## <a name="next-steps"></a>További lépések

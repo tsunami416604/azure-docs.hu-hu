@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: b35aafdad081a48c0d6048743f87e10c6a6b3a77
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: e92c812ffc8b72fe79248c602e48ff01ef9fefcb
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56752288"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961009"
 ---
 # <a name="quickstart-create-an-android-unity-app-with-azure-spatial-anchors"></a>Gyors útmutató: Egy Android Unity-alkalmazás létrehozása az Azure térbeli horgonyok
 
@@ -77,6 +77,9 @@ Válassza ki **futtatása** az Android Studio eszköztáron.
 Válassza ki az Androidos eszközt a **válassza ki a központi telepítési cél** párbeszédpanel, és válassza ki **OK** futtathatják az alkalmazást az Android-eszközön.
 
 Kövesse az utasításokat az alkalmazásban kívánja helyezni horgonyra visszaírásához.
+
+> [!NOTE]
+> Az alkalmazás futtatásakor, ha nem látja a kamerát a háttérben (a példányt egy üres, kék helyette tekintse meg vagy más textúrákhoz), majd valószínűleg újra importálnia kell a Unity-nél eszközök. Állítsa le az alkalmazást. Válassza a felső menüben, a Unity-nél, **eszközök -> minden újraimportálása**. Ezután futtassa újra az alkalmazást.
 
 Állítsa le az alkalmazást kiválasztásával **leállítása** az Android Studio eszköztáron.
 

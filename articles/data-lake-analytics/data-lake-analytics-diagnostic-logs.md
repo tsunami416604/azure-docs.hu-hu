@@ -8,12 +8,12 @@ ms.author: jasonh
 ms.assetid: cf5633d4-bc43-444e-90fc-f90fbd0b7935
 ms.topic: conceptual
 ms.date: 02/12/2018
-ms.openlocfilehash: 0bade9f393d879123b7b1485052f70924d9c9b9c
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 7fd88383e909ebd6be64c22721b813946e37179e
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045481"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959127"
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Az Azure Data Lake Analytics diagnosztikai naplóinak elérése
 
@@ -41,12 +41,12 @@ Diagnosztikai naplózás gyűjthet adatokat a fájlhozzáférés napló ellenőr
 
      * Válassza ki **Stream egy eseményközpontba** a naplózási adatok streamelése az Azure-Eseményközpontba. Használja ezt a beállítást, ha egy alárendelt feldolgozási folyamatot, amely a bejövő naplók valós időben elemzi. Ha ezt a lehetőséget választja, meg kell adnia a részletek az Azure Event Hubs is használni szeretné a.
 
-     * Válassza ki __Küldés a Log Analyticsnek__ az adatokat küldeni a Log Analytics szolgáltatásnak. Használja ezt a beállítást, ha szeretné gyűjteni, és a naplók elemzése a Log Analytics használatával.
+     * Válassza ki __Küldés a Log Analyticsnek__ az adatok küldése az Azure Monitor szolgáltatásba. Használja ezt a beállítást, ha azt szeretné, az Azure Monitor-naplók segítségével gyűjtse össze és -naplók elemzése.
    * Adja meg, hogy szeretné-e a vizsgálati naplók kérelmekről készült naplók és/vagy beolvasása.  Egy kérelem napló rögzíti minden API-kérelem. Az auditnapló rögzíti, hogy API-kérelem által aktivált összes művelet.
 
    * A __archiválás tárfiókba__, adja meg, hány napig megőrizni az adatokat.
 
-   * Kattintson a __Mentés__gombra.
+   * Kattintson a __Save__ (Mentés) gombra.
 
         > [!NOTE]
         > Ki kell választania, vagy __archiválás tárfiókba__, __egy eseményközpontba Stream__ vagy __Küldés a Log Analyticsnek__ gombra kattintás előtt a __mentése__ gomb.
@@ -127,13 +127,13 @@ A naplózási és a kérés naplók strukturált JSON formátumban vannak.
 
 | Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| time |Sztring |A napló időbélyegzője (az UTC) |
-| resourceId |Sztring |Helyezze a művelet igénybe vett erőforrás azonosítója |
-| category |Sztring |A naplózási kategóriát. Ha például **kérelmek**. |
-| operationName |Sztring |A művelet, amelyet a rendszer neve. Ha például GetAggregatedJobHistory. |
-| resultType |Sztring |A művelet, például 200-as állapotát. |
-| callerIpAddress |Sztring |Az ügyfél a kérés IP-címe |
-| correlationId |Sztring |A napló azonosítója. Ez az érték kapcsolódó bejegyzései készletét csoportosítására használható. |
+| time |String |A napló időbélyegzője (az UTC) |
+| resourceId |String |Helyezze a művelet igénybe vett erőforrás azonosítója |
+| category |String |A naplózási kategóriát. Ha például **kérelmek**. |
+| operationName |String |A művelet, amelyet a rendszer neve. Ha például GetAggregatedJobHistory. |
+| resultType |String |A művelet, például 200-as állapotát. |
+| callerIpAddress |String |Az ügyfél a kérés IP-címe |
+| correlationId |String |A napló azonosítója. Ez az érték kapcsolódó bejegyzései készletét csoportosítására használható. |
 | identity |Objektum |Az identitás által generált napló |
 | properties |JSON |A következő szakaszban (kérelem tulajdonságai séma) kapcsolatos részletek |
 
@@ -141,12 +141,12 @@ A naplózási és a kérés naplók strukturált JSON formátumban vannak.
 
 | Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| HttpMethod |Sztring |A művelethez használt HTTP-metódust. Például KAPHAT. |
-| Útvonal |Sztring |Az elérési utat a művelet végrehajtásának ideje |
+| HttpMethod |String |A művelethez használt HTTP-metódust. Például KAPHAT. |
+| Útvonal |String |Az elérési utat a művelet végrehajtásának ideje |
 | RequestContentLength |int |A HTTP-kérelem tartalmának hossza |
-| ClientRequestId |Sztring |Az azonosító, amely egyedileg azonosítja ezt a kérelmet |
-| Kezdés időpontja |Sztring |Az idő, amelyen a kiszolgáló a kérelem érkezett |
-| Befejezés időpontja: |Sztring |Az idő, amikor a kiszolgáló által küldött választ |
+| ClientRequestId |String |Az azonosító, amely egyedileg azonosítja ezt a kérelmet |
+| Kezdés időpontja |String |Az idő, amelyen a kiszolgáló a kérelem érkezett |
+| Befejezés időpontja: |String |Az idő, amikor a kiszolgáló által küldött választ |
 
 ### <a name="audit-logs"></a>Naplók
 
@@ -175,17 +175,17 @@ A naplózási és a kérés naplók strukturált JSON formátumban vannak.
       ]
     }
 
-#### <a name="audit-log-schema"></a>Naplózási séma
+#### <a name="audit-log-schema"></a>Auditnapló sémája
 
 | Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| time |Sztring |A napló időbélyegzője (az UTC) |
-| resourceId |Sztring |Helyezze a művelet igénybe vett erőforrás azonosítója |
-| category |Sztring |A naplózási kategóriát. Ha például **naplózási**. |
-| operationName |Sztring |A művelet, amelyet a rendszer neve. Ha például JobSubmitted. |
-| resultType |Sztring |A részállapot esetében a feladat állapota (operationName). |
-| resultSignature |Sztring |További részleteket az a feladat állapota (operationName). |
-| identity |Sztring |A felhasználó által kért a műveletet. Például: susan@contoso.com. |
+| time |String |A napló időbélyegzője (az UTC) |
+| resourceId |String |Helyezze a művelet igénybe vett erőforrás azonosítója |
+| category |String |A naplózási kategóriát. Ha például **naplózási**. |
+| operationName |String |A művelet, amelyet a rendszer neve. Ha például JobSubmitted. |
+| resultType |String |A részállapot esetében a feladat állapota (operationName). |
+| resultSignature |String |További részleteket az a feladat állapota (operationName). |
+| identity |String |A felhasználó által kért a műveletet. Például: susan@contoso.com. |
 | properties |JSON |A következő szakaszban (naplózási tulajdonságok séma) részletekért lásd: |
 
 > [!NOTE]
@@ -197,13 +197,13 @@ A naplózási és a kérés naplók strukturált JSON formátumban vannak.
 
 | Name (Név) | Típus | Leírás |
 | --- | --- | --- |
-| JobId |Sztring |A feladathoz hozzárendelt azonosító |
-| JobName |Sztring |A feladat megadott neve |
-| JobRunTime |Sztring |A futtatókörnyezet, a feladat elvégzéséhez használt |
-| SubmitTime |Sztring |Az idő (UTC), a feladat el lett küldve. |
-| Kezdés időpontja |Sztring |Az idő a feladat elindításának (UTC) elküldése után |
-| Befejezés időpontja: |Sztring |Az idő a feladat befejeződött |
-| Párhuzamosság |Sztring |A kért a feladat elküldése közben. a Data Lake Analytics-egységek számát |
+| JobId |String |A feladathoz hozzárendelt azonosító |
+| JobName |String |A feladat megadott neve |
+| JobRunTime |String |A futtatókörnyezet, a feladat elvégzéséhez használt |
+| SubmitTime |String |Az idő (UTC), a feladat el lett küldve. |
+| Kezdés időpontja |String |Az idő a feladat elindításának (UTC) elküldése után |
+| Befejezés időpontja: |String |Az idő a feladat befejeződött |
+| Párhuzamosság |String |A kért a feladat elküldése közben. a Data Lake Analytics-egységek számát |
 
 > [!NOTE]
 > **SubmitTime**, **StartTime**, **EndTime**, és **párhuzamosság** művelet információkat tartalmaz. Ezek a bejegyzések csak tartalmazhatnak értéket, amely a művelet elindult vagy befejeződött. Ha például **SubmitTime** csak az után értéket tartalmaz **operationName** értéke **JobSubmitted**.

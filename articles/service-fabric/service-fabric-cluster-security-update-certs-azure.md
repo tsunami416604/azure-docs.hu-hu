@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2018
 ms.author: aljo
-ms.openlocfilehash: 37140b665f30d8bb99dd49dbdcca265969eaaf2f
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 047e058fee6cd72a7eeaecdde976b1b9d49aeb5c
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56806691"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958949"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Adja hozzá, vagy távolítsa el a tanúsítványokat a Service Fabric-fürtön az Azure-ban
 Javasoljuk, hogy Ismerkedjen meg hogyan a Service Fabric X.509-tanúsítványokat használ, és ismernie kell a [fürtök – biztonsági helyzetek](service-fabric-cluster-security.md). Ismernie kell a fürt tanúsítványt, és mire használható, mielőtt folytatná.
 
-Az Azure szolgáltatás hálók SDK-k alapértelmezett tanúsítvány betöltési viselkedés az, hogy üzembe helyezése és használata egy meghatározott tanúsítványt amely lejáró dátummal rendelkező a későbbiekben; függetlenül attól, azok elsődleges vagy másodlagos configuration definícióját. Klasszikus viselkedésének való visszaváltás nem javasolt speciális művelet, és beállítása a "UseSecondaryIfNever" beállítás a paraméter értéke hamis belül a Fabric.Code konfiguráció szükséges.
+Az Azure szolgáltatás hálók SDK-k alapértelmezett tanúsítvány betöltési viselkedés az, hogy üzembe helyezése és használata egy meghatározott tanúsítványt amely lejáró dátummal rendelkező a későbbiekben; függetlenül attól, azok elsődleges vagy másodlagos configuration definícióját. Klasszikus viselkedésének való visszaváltás nem javasolt speciális művelet, és beállítása a "UseSecondaryIfNewer" beállítás a paraméter értéke hamis belül a Fabric.Code konfiguráció szükséges.
 
 A Service fabric lehetővé teszi két fürttanúsítványok, az elsődleges és a egy másodlagos tanúsítvány biztonsági ügyfél-tanúsítványok mellett a fürt létrehozása során konfigurálásakor adja meg. Tekintse meg [létrehozása egy azure-portálon keresztül fürtön](service-fabric-cluster-creation-via-portal.md) vagy [létrehozása egy azure-fürtön az Azure Resource Manageren keresztül](service-fabric-cluster-creation-via-arm.md) beállításukról a részletekért hozzon létre idő. Ha a fürt csak egy tanúsítványt, létrehozás időpontja, majd használt elsődleges-tanúsítványt. Fürt létrehozása után hozzáadhat egy új tanúsítványt, egy másodlagos.
 

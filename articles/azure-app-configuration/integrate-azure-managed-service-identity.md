@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: bf8a1955f2c8e4a72e7cf88b013f8d5d5c2e672f
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 874522b6b4ca3739e0736d4f70f76bb82cad25f9
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56884767"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56957351"
 ---
 # <a name="tutorial-integrate-with-azure-managed-identities"></a>Oktatóanyag: Az Azure felügyelt identitások integrálása
 
@@ -77,7 +77,7 @@ A portálon egy felügyelt identitás beállításához először létrehoz egy 
 
     ```json
     "AppConfig": {
-        "Url": "<service_endpoint>"
+        "Endpoint": "<service_endpoint>"
     }
     ```
 
@@ -89,7 +89,7 @@ A portálon egy felügyelt identitás beállításához először létrehoz egy 
             .ConfigureAppConfiguration((hostingContext, config) =>
             {
                 var settings = config.Build();
-                config.AddAzureAppConfiguration(o => o.ConnectWithManagedIdentity(settings["AppConfig:Url"]));
+                config.AddAzureAppConfiguration(o => o.ConnectWithManagedIdentity(settings["AppConfig:Endpoint"]));
             })
             .UseStartup<Startup>();
     ```
@@ -164,11 +164,27 @@ http://<app_name>.azurewebsites.net
 
 ![App Service-ben futó alkalmazás](../app-service/media/app-service-web-tutorial-dotnetcore-sqldb/azure-app-in-browser.png)
 
-<!-- ### Use a managed identity in a .NET Core app -->
+## <a name="use-managed-identity-in-other-languages"></a>Más nyelveken felügyelt identitás használata
 
-<!-- ### Use a managed identity in a .NET Framework app -->
+A .NET-keretrendszer és a Java Spring alkalmazás konfigurációszolgáltatók is beépített támogatást nyújt a felügyelt identitás. Ebben az esetben egyszerűen használhatja az alkalmazás konfigurációs áruházbeli URL-végpontjának helyett a teljes kapcsolati karakterlánc egy szolgáltató konfigurálásakor. Például a .NET-keretrendszer-konzolalkalmazást a rövid útmutatóban létrehozott, akkor adja meg a következő beállításokat a *App.config* fájlt:
 
-<!-- ### Use a managed identity in a Java Spring app -->
+    ```xml
+    <configSections>
+        <section name="configBuilders" type="System.Configuration.ConfigurationBuildersSection, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" restartOnExternalChanges="false" requirePermission="false" />
+    </configSections>
+
+    <configBuilders>
+        <builders>
+            <add name="MyConfigStore" mode="Greedy" endpoint="${Endpoint}" type="Microsoft.Configuration.ConfigurationBuilders.AzureAppConfigurationBuilder, Microsoft.Configuration.ConfigurationBuilders.AzureAppConfiguration" />
+            <add name="Environment" mode="Greedy" type="Microsoft.Configuration.ConfigurationBuilders.EnvironmentConfigBuilder, Microsoft.Configuration.ConfigurationBuilders.Environment" />
+        </builders>
+    </configBuilders>
+
+    <appSettings configBuilders="Environment,MyConfigStore">
+        <add key="AppName" value="Console App Demo" />
+        <add key="Endpoint" value ="Set via an environment variable - for example, dev, test, staging, or production endpoint." />
+    </appSettings>
+    ```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/21/2018
+ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 1395c79b9c39d7376f39446eac6da8ee80b2ef18
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 97d1cf2817ebfbf2eb1a6ba5a4d20d457b6369c6
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232668"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961737"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Gyors útmutató: Standard Load Balancer létrehozása a virtuális gépek terhelésének elosztásához az Azure Portal használatával.
 
@@ -40,21 +40,20 @@ Jelentkezzen be az Azure Portalra a [http://portal.azure.com](http://portal.azur
 Ebben a szakaszban egy nyilvános Load Balancert fog létrehozni, amely segít a virtuális gépek terhelésének elosztásában. A Standard Load Balancer csak a standard nyilvános IP-címeket támogatja. Amikor létrehoz egy Standard Load Balancert, létre kell hoznia egy új standard nyilvános IP-címet is, amely a Standard Load Balancer előtereként van konfigurálva (alapértelmezés szerint *LoadBalancerFrontend* néven). 
 
 1. A képernyő bal felső részén kattintson az **Erőforrás létrehozása** > **Hálózatkezelés** > **Terheléselosztó** elemre.
-2. A **Terheléselosztó létrehozása** lapon adja meg vagy válassza ki az alábbi adatokat, a többi beállítás esetében fogadja el az alapértelmezett értéket, majd válassza a **Létrehozás** elemet:
+2. Az a **alapjai** lapján a **terheléselosztó létrehozása** lap, adja meg vagy válassza ki a következő adatokat, fogadja el az alapértelmezett értékeket a többi beállításnál, és válassza **felülvizsgálat +létrehozása**:
 
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
+    | Előfizetés               | Válassza ki előfizetését.    |    
+    | Erőforráscsoport         | Válassza ki **új létrehozása** , és írja be *MyResourceGroupSLB* a szövegmezőben.|
     | Name (Név)                   | *myLoadBalancer*                                   |
-    | Típus          | Nyilvános                                        |
-    | SKU           | Standard                          |
-    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget, és adja meg a *myPublicIP* nevet a szövegmezőben. A nyilvános IP-címnél a rendszer alapértelmezés szerint a standard termékváltozatot választja ki. A **Rendelkezésre állási zóna** kiválasztásánál válassza a **Zónaredundáns** lehetőséget. |
-    | Előfizetés               | Válassza ki előfizetését.    |
-    |Erőforráscsoport | Válassza az **Új létrehozása** lehetőséget, majd írja be a *myResourceGroupSLB* nevet.    |
-    | Hely           | Válassza a **Nyugat-Európa** régiót.                          |
-    
-
-![Load Balancer létrehozása](./media/load-balancer-standard-public-portal/create-load-balancer.png)
-
+    | Régió         | Válassza a **Nyugat-Európa** régiót.                                        |
+    | Typo          | Válassza ki **nyilvános**.                                        |
+    | SKU           | Válassza ki **Standard**.                          |
+    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. |
+    | Nyilvános IP-cím neve              | Típus *myPublicIP* a szövegmezőben.   |
+    |Rendelkezésre állási zóna| Válassza ki **Zónaredundáns**.    |
+3. Az a **felülvizsgálat + létrehozása** lapra, majd **létrehozás**.   
 
 ## <a name="create-backend-servers"></a>Háttérkiszolgálók létrehozása
 
@@ -84,7 +83,7 @@ Eben a szakaszban egy virtuális hálózatot fog létrehozni, valamint két virt
         2. A **Hálózati biztonsági csoport létrehozása** lapon a **Név** mezőben adja meg a *myNetworkSecurityGroup* nevet, majd kattintson az **OK** gombra.
 5. A rendszerindítási diagnosztika letiltásához kattintson a **Letiltva** elemre.
 6. Kattintson az **OK** gombra, majd az összefoglaló lapon ellenőrizze a beállításokat, és kattintson a **Létrehozás** gombra.
-7. Az 1–6. lépésekkel hozzon létre egy második virtuális gépet *VM2* néven a *myAvailibilityset* rendelkezésre állási csoporttal, a *myVnet* virtuális hálózattal, a *myBackendSubnet* alhálózattal és a **myNetworkSecurityGroup* hálózati biztonsági csoporttal. 
+7. Lépésekkel 1 – 6, hozzon létre egy második virtuális Gépet, *VM2* a *myVnet* virtuális hálózattal, *myBackendSubnet* alhálózattal és a * *myNetworkSecurityGroup* , hálózati biztonsági csoporttal. 
 
 ### <a name="create-nsg-rule"></a>NSG-szabály létrehozása
 

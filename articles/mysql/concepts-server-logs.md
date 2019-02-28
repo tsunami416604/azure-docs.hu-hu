@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/03/2018
-ms.openlocfilehash: c9f8fc4bee370f287b40275b76fa98d2552d7600
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 60ef547cb3a6ef579f5ab0b3f5438212145d92ff
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545073"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961788"
 ---
 # <a name="server-logs-in-azure-database-for-mysql"></a>Kiszolgálói naplók az Azure Database for MySQL-hez
 Az Azure Database for MySQL-hez a lassú lekérdezések naplója a felhasználók számára érhető el. A tranzakciós naplóba való hozzáférés nem támogatott. A lassú lekérdezések naplója segítségével azonosíthatja a szűk keresztmetszeteket hibaelhárításhoz. 
@@ -44,7 +44,7 @@ Egyéb úgy módosíthatja a paraméterek a következők:
 Tekintse meg a MySQL [lassú lekérdezési napló dokumentáció](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) teljes leírását a lassú lekérdezések naplója paramétereket.
 
 ## <a name="diagnostic-logs"></a>Diagnosztikai naplók
-Azure Database for MySQL integrálva van az Azure monitort, diagnosztikai naplók. A MySQL-kiszolgáló lassú lekérdezési naplóinak engedélyezése után kiválaszthatja azokat a Log Analytics, az Event Hubs vagy Azure Storage kibocsátott. Diagnosztikai naplók engedélyezésével kapcsolatos további tudnivalókért lásd: szakaszában az útmutató a [diagnosztikai naplók dokumentáció](../azure-monitor/platform/diagnostic-logs-overview.md).
+Azure Database for MySQL integrálva van az Azure monitort, diagnosztikai naplók. A MySQL-kiszolgáló lassú lekérdezési naplóinak engedélyezése után kiválaszthatja azokat az Azure Monitor naplók, az Event Hubs vagy Azure Storage kibocsátott. Diagnosztikai naplók engedélyezésével kapcsolatos további tudnivalókért lásd: szakaszában az útmutató a [diagnosztikai naplók dokumentáció](../azure-monitor/platform/diagnostic-logs-overview.md).
 
 A következő táblázat ismerteti, mi az egyes naplókhoz. A kimeneti módszertől függően a mezők és a megjelenési sorrendben eltérőek lehetnek.
 
@@ -53,7 +53,7 @@ A következő táblázat ismerteti, mi az egyes naplókhoz. A kimeneti módszert
 | TenantId | A bérlő azonosítója |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Időbélyeg mikor lett rögzítve a napló (UTC) |
-| Típus | A napló típusa. Mindig `AzureDiagnostics` |
+| Typo | A napló típusa. Mindig `AzureDiagnostics` |
 | SubscriptionId | GUID Azonosítóját az előfizetést, amelyhez a kiszolgáló tartozik. |
 | ResourceGroup | A kiszolgáló tartozik az erőforráscsoport neve |
 | ResourceProvider | Az erőforrás-szolgáltató neve. Mindig `MICROSOFT.DBFORMYSQL` |
@@ -74,7 +74,7 @@ A következő táblázat ismerteti, mi az egyes naplókhoz. A kimeneti módszert
 | sql_text_s | Teljes lekérdezést |
 | server_id_s | A kiszolgáló azonosítója |
 | thread_id_s | Id vlákna |
-| \_erőforrás-azonosító | Erőforrás-URI |
+| \_ResourceId | Erőforrás-URI |
 
 ## <a name="next-steps"></a>További lépések
 - [Konfigurálása és a naplók eléréséhez az Azure parancssori felületen](howto-configure-server-logs-in-cli.md).

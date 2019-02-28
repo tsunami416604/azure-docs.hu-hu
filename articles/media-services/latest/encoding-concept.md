@@ -9,19 +9,29 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/17/2019
+ms.date: 02/25/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 52e7fdf6de25300d4f78ee9822aca4ad83f646e9
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
+ms.openlocfilehash: ccf298c99851dc2418da894431c5c86adafe59b3
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408425"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959442"
 ---
 # <a name="encoding-with-media-services"></a>Kódolás a Media Services használatával
 
-Az Azure Media Services lehetővé teszi, hogy az kiváló minőségű médiafájlt kódolandó, hogy a böngészők és eszközök széles lejátszhatók. Például előfordulhat, hogy az Apple HLS vagy MPEG DASH formátumában szeretné streamelni a tartalmakat. Ez a témakör nyújt útmutatást tartalmait a Media Services v3 kódolással.
+Az Azure Media Services lehetővé teszi, hogy az kiváló minőségű médiafájlt kódolandó adaptív sávszélességű MP4-fájlokat, így a tartalom a böngészők és eszközök széles lejátszhatók. Egy sikeres Media Services kódolási feladat létrehoz egy kimeneti objektumot az adaptív sávszélességű MP4 és jegyzékfájlok (a kiszolgáló és az ügyfél). Ezen a ponton igénybe veheti [dinamikus csomagolási](dynamic-packaging-overview.md).
+
+Győződjön meg arról, videók, a kimenetben az eszköz érhető el az ügyfelek számára a lejátszás, létre kell hoznia egy **Streamelési lokátor** majd kialakítható a streamelési URL-címek. Ezt követően a jegyzékfájlban megadott formátumnak megfelelően, az ügyfelek az adatfolyamban kaphatja a protokoll választotta.
+
+Az alábbi ábrán látható, a dinamikus csomagolás munkafolyamat igényalapú streameléshez.
+
+![A dinamikus kódolás](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
+
+Ez a témakör nyújt útmutatást tartalmait a Media Services v3 kódolással.
+
+## <a name="transforms-and-jobs"></a>Átalakítások és feladatok
 
 Kódolás a Media Services v3-as, létre kell egy [átalakítása](https://docs.microsoft.com/rest/api/media/transforms) és a egy [feladat](https://docs.microsoft.com/rest/api/media/jobs). Egy-egy átalakítási határozza meg a recept, a kódolási beállítások és kimenetek, és a feladat a recept egy példányát. További információkért lásd: [átalakítások és feladatok](transforms-jobs-concept.md)
 
@@ -60,9 +70,11 @@ A Media Services teljes körűen támogatja az adott kódolási igények és kö
 
 ## <a name="scaling-encoding-in-v3"></a>V3 a kódolás méretezése
 
-Jelenleg a felhasználóknak kell az Azure portal vagy a Media Services v2 API-k használatával állítsa be a kérelemegység (leírtak szerint [médiafeldolgozás skálázás](../previous/media-services-scale-media-processing-overview.md). 
+Méretezhető médiafeldolgozás, lásd: [CLI-vel méretezési](media-reserved-units-cli-how-to.md).
 
 ## <a name="next-steps"></a>További lépések
 
-* [Átalakítások és feladatok](transforms-jobs-concept.md)
+* [Kódolás a beépített készlet használatával HTTPS URL-címet](job-input-from-http-how-to.md)
+* [Beépített készlet használatával egy helyi fájl kódolása](job-input-from-local-file-how-to.md)
+* [Az egyedi, amelyekre az adott forgatókönyv vagy eszközkövetelmények készletek létrehozása](customize-encoder-presets-how-to.md)
 * [Feltöltése, kódolása és streamelése a Media Services használatával](stream-files-tutorial-with-api.md)

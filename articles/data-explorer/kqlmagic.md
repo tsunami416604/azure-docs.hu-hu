@@ -8,17 +8,17 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 83c4ae7ff942579d55a5855c24a28809f60fdc62
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 0e1eedf497ea5fd4a8a9551996102a8aa72847fc
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382465"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961567"
 ---
 # <a name="analyze-data-using-jupyter-notebook-and-kql-magic"></a>A Jupyter Notebook és KQL Magic Quadrant használata az adatok elemzése
 
 Jupyter Notebook egy nyílt forráskódú webes alkalmazás, amely lehetővé teszi, hogy hozzon létre és megoszthatja a dokumentumokat, amely tartalmazza az élő kód, a egyenletek, a Vizualizációk és a leíró szöveg. Használati adatok tisztítása és átalakítása numerikus szimuláció, statisztikai modellezési, adatvizualizáció és machine learning tartalmazza.
-[Jupyter Notebook](https://jupyter.org/) magic függvények támogatásával, további parancsok a kernel képességeit kibővítő támogatja. KQL Magic Quadrant, amely bővíti a Python-kernel a Jupyter Notebook Kusto nyelvi lekérdezések futtatásához natív módon parancs. A Python és Kusto lekérdezési nyelv lekérdezése és gazdag és integrált Plot.ly könyvtár használatával adatok vizualizációja révén könnyedén egyesítheti `render` parancsokat. A futó lekérdezések adatforrások támogatottak. Ezeknek az adatforrásoknak az Azure az adatkezelőt, egy gyors és hatékonyan méretezhető exploration szolgáltatás napló és a telemetriai adatokat, valamint a Log Analytics és az Application Insights tartalmazza. KQL Magic Quadrant Azure notebookok, a Jupyter labor és a Visual Studio Code Jupyter kiterjesztésű is működik.
+[Jupyter Notebook](https://jupyter.org/) magic függvények támogatásával, további parancsok a kernel képességeit kibővítő támogatja. KQL Magic Quadrant, amely bővíti a Python-kernel a Jupyter Notebook Kusto nyelvi lekérdezések futtatásához natív módon parancs. A Python és Kusto lekérdezési nyelv lekérdezése és gazdag és integrált Plot.ly könyvtár használatával adatok vizualizációja révén könnyedén egyesítheti `render` parancsokat. A futó lekérdezések adatforrások támogatottak. Ezeknek az adatforrásoknak az Azure az adatkezelőt, egy gyors és hatékonyan méretezhető exploration szolgáltatás napló és a telemetriai adatokat, csakúgy, mint az Azure Monitor naplóira és az Application Insights tartalmazza. KQL Magic Quadrant Azure notebookok, a Jupyter labor és a Visual Studio Code Jupyter kiterjesztésű is működik.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -171,6 +171,6 @@ Számos elemzési forgatókönyvek érdemes létrehozni, amely számos lekérdez
 A help paranccsal Fedezze fel a következő mintafüzetek, amelyek tartalmazzák a támogatott szolgáltatások:
 - [Ismerkedés az KQL magic Azure adatkezelő](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStart.ipynb) 
 - [Ismerkedés a KQL magic az Application Insights](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStartAI.ipynb) 
-- [Ismerkedés a KQL magic Log Analytics](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStartLA.ipynb) 
+- [Az Azure Monitor-naplók KQL magic használatának első lépései](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStartLA.ipynb) 
 - [A KQL magic lekérdezés Parametrize Python használatával](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb) 
 - [A KQL magic lekérdezési diagram eredményhez színpaletta kiválasztása](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FColorYourCharts.ipynb)

@@ -7,14 +7,14 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: absha
-ms.openlocfilehash: 9874ff7fde049c4dba4efb77ff541c80e462671a
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 7a645574a75a040c3b0218714363cf85e0384e68
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56808668"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959833"
 ---
-# <a name="troubleshoot-application-gateway-with-app-service--redirection-to-app-services-url"></a>Az App Service – az App Service URL-átirányítás használatával az Application Gateway hibaelhárítása
+# <a name="troubleshoot-application-gateway-with-app-service--redirection-to-app-services-url"></a>App Service-szel rendelkező Application Gateway hibaelhárítása – átirányítás az App Service URL-címére
 
  Ismerje meg, hogyan diagnosztizálhatja és megoldhatja a problémákat is az Application Gateway, ahol az App Service URL-cím első elérhetővé.
 
@@ -45,27 +45,27 @@ Ennek az Application Gatewayen érdekében, hogy használata a kapcsoló "Válas
 ![appservice-1](.\media\troubleshoot-app-service-redirection-app-service-url\appservice-1.png)
 
 Miatt, ez az alkalmazás szolgáltatásnak nincs a mappaátirányítás, használja az állomásnevet a Location fejlécet "example.azurewebsites.net" helyett az eredeti hostname, kivéve, ha másként van konfigurálva. A példa-kérelmek és válaszfejlécek alább megtekinthető.
+```
+## Request headers to Application Gateway:
 
-Az Application Gateway kérelemfejlécek:
+Request URL: http://www.contoso.com/path
 
-Kérelem URL-címe: http://www.contoso.com/path
+Request Method: GET
 
-Kérelmi metódus: GET
+Host: www.contoso.com
 
-Gazdagép: www.contoso.com
+## Response headers:
 
-Válaszfejlécek:
+Status Code: 301 Moved Permanently
 
-Állapotkód: 301 véglegesen áthelyezése
+Location: http://example.azurewebsites.net/path/
 
-Hely: http://example.azurewebsites.net/path/
-
-Kiszolgáló: Microsoft-IIS/10.0
+Server: Microsoft-IIS/10.0
 
 Set-Cookie: ARRAffinity=b5b1b14066f35b3e4533a1974cacfbbd969bf1960b6518aa2c2e2619700e4010;Path=/;HttpOnly;Domain=example.azurewebsites.net
 
 X-Powered-By: ASP.NET
-
+```
 A fenti példában is láthatja, hogy a válasz fejléce átirányítási 301 állapotkódot pedig a location fejlécet az App Service-állomásnév helyett az eredeti hostname "www.contoso.com".
 
 ## <a name="solution"></a>Megoldás
@@ -76,43 +76,45 @@ Nézzük meg, miután az App Service elvégzi az átirányítás (ha vannak) az 
 
 Ennek érdekében kell egy egyéni tartománnyal, és kövesse az alábbi folyamatot.
 
-- Regisztrálja a tartomány az App Service egyéni tartománnyal listájához. Ehhez egy olyan CNAME REKORDOT kell rendelkeznie az App Service teljes Tartományneve mutató egyéni tartomány. További információkért lásd: [meglévő egyéni DNS-név leképezése az Azure App Service](https://docs.microsoft.com//azure/app-service/app-service-web-tutorial-custom-domain).![ az App Service-2](.\media\troubleshoot-app-service-redirection-app-service-url\appservice-2.png)
+- Regisztrálja a tartomány az App Service egyéni tartománnyal listájához. Ehhez egy olyan CNAME REKORDOT kell rendelkeznie az App Service teljes Tartományneve mutató egyéni tartomány. További információkért lásd: [meglévő egyéni DNS-név leképezése az Azure App Service](https://docs.microsoft.com//azure/app-service/app-service-web-tutorial-custom-domain).
+
+![appservice-2](.\media\troubleshoot-app-service-redirection-app-service-url\appservice-2.png)
 
 - Miután ez megtörtént, fogadja el a "www.contoso.com" állomásnév készen áll az App Service. Módosítsa a CNAME bejegyzést, hogy az Application Gateway FQDN vissza a DNS-ben. Például "appgw.eastus.cloudapp.azure.com."
 
 - Győződjön meg arról, hogy a tartományához "www.contoso.com" az Application Gateway FQDN feloldása, amikor ezt teszi, hogy a DNS-lekérdezés.
 
-- Állítsa be az egyéni mintavétel "Válasszon állomásnév a HTTP-háttérbeállítások" letiltása. Ez a mintavételi beállítások jelölőnégyzet jelölésének törlése végezhető a portálról, és a PowerShell - PickHostNameFromBackendHttpSettings nem használatával válthat.
+- Állítsa be az egyéni mintavétel "Válasszon állomásnév a HTTP-háttérbeállítások" letiltása. Ez a mintavételi beállítások jelölőnégyzet jelölésének törlése végezhető a portálról, és a PowerShell - PickHostNameFromBackendHttpSettings nem használatával váltson a Set-AzApplicationGatewayProbeConfig parancsban. A mintavétel a hostname mező adja meg az App Service teljes Tartományneve "example.azurewebsites.net", az Application Gateway által küldött mintavételi kérések képviselik, ez a gazdagép fejlécében.
 
   > [!NOTE]
-  > Ehhez a lépéshez során győződjön meg arról, hogy az egyéni mintavétel a háttérbeli HTTP-beállítások nem tartozik.
+  > Közben a következő lépésben, győződjön meg arról, hogy az egyéni mintavétel nem tartozik a háttérbeli HTTP-beállítások, mert a HTTP-beállítások továbbra is a "Válasszon állomásnév a címet" kapcsoló engedélyezve van ezen a ponton.
 
-- Állítsa be az Application Gateway HTTP-beállítások "Válasszon állomásnév a címet" letiltása. Ez a jelölőnégyzet jelölésének törlése végezhető a portálról, és a PowerShell - PickHostNameFromBackendAddress nem használatával válthat.
+- Állítsa be az Application Gateway HTTP-beállítások "Válasszon állomásnév a címet" letiltása. Ezt megteheti a portálról a jelölőnégyzet jelölésének törlése, és nem a PowerShell - PickHostNameFromBackendAddress kapcsolóval a Set-AzApplicationGatewayBackendHttpSettings parancsot.
 
 - Társítsa az egyéni mintavétel a háttérbeli HTTP-beállításokra, és ellenőrizze a háttérrendszer állapota, ha kifogástalan.
 
 - Miután ez megtörtént, az Application Gateway az azonos állomásnévvel "www.contoso.com" most továbbítani kell az App Service-ben, és az átirányítás úgy történik, az azonos állomásnévvel a. A példa-kérelmek és válaszfejlécek alább megtekinthető.
+```
+  ## Request headers to Application Gateway:
 
-  Az Application Gateway kérelemfejlécek:
+  Request URL: http://www.contoso.com/path
 
-  Kérelem URL-címe: http://www.contoso.com/path
+  Request Method: GET
 
-  Kérelmi metódus: GET
+  Host: [www.contoso.com](http://www.contoso.com)
 
-  Gazdagép: [www.contoso.com](http://www.contoso.com)
+  ## Response headers:
 
-  Válaszfejlécek:
+  Status Code: 301 Moved Permanently
 
-  Állapotkód: 301 véglegesen áthelyezése
+  Location: http://www.contoso.com/path/
 
-  Hely: http://www.contoso.com/path/
-
-  Kiszolgáló: Microsoft-IIS/10.0
+  Server: Microsoft-IIS/10.0
 
   Set-Cookie: ARRAffinity=b5b1b14066f35b3e4533a1974cacfbbd969bf1960b6518aa2c2e2619700e4010;Path=/;HttpOnly;Domain=www.contoso.com
 
   X-Powered-By: ASP.NET
-
+```
 ## <a name="next-steps"></a>További lépések
 
 Ha a fenti lépések nem a probléma megoldásához nyissa meg a [támogatási jegyet](https://azure.microsoft.com/support/options/).

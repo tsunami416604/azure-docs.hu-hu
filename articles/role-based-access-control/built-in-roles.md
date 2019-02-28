@@ -15,12 +15,12 @@ ms.date: 02/24/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 106cda22f8f7c54441f438b61eb427446f36a69a
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: ce9ef687643de7ec9b289f74feea613fb9a1db7a
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807490"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960612"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Az Azure-erőforrások beépített szerepkörök
 
@@ -1628,11 +1628,11 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | Microsoft.Insights/Register/Action | A Microsoft Insights-szolgáltató regisztrálása |
 > | Microsoft.Insights/scheduledqueryrules/* |  |
 > | Microsoft.Insights/webtests/* | Olvasási, írási és törlési Application Insights webes teszteket. |
-> | Microsoft.OperationalInsights/workspaces/intelligencepacks/* | Olvasási, írási és törlési Log Analytics megoldás csomagok. |
-> | Microsoft.OperationalInsights/workspaces/savedSearches/* | A Log Analytics olvasási, írási és törlési mentett keresések. |
+> | Microsoft.OperationalInsights/workspaces/intelligencepacks/* | Olvasási, írási és törlési log analytics megoldás csomagok. |
+> | Microsoft.OperationalInsights/workspaces/savedSearches/* | Olvasási, írási és törlési a log analytics mentett keresések. |
 > | Microsoft.OperationalInsights/workspaces/search/action | Végrehajt egy keresési lekérdezést |
 > | Microsoft.OperationalInsights/workspaces/sharedKeys/action | Lekéri a munkaterület a megosztott kulcsok. Ezekkel a kulcsokkal a Microsoft Operational Insights-ügynökök kapcsolódni a munkaterülethez. |
-> | Microsoft.OperationalInsights/workspaces/storageinsightconfigs/* | Olvasási, írási és törlési Log Analytics storage insight konfigurációkat. |
+> | Microsoft.OperationalInsights/workspaces/storageinsightconfigs/* | Olvasási, írási és törlési log analytics storage insight konfigurációkat. |
 > | Microsoft.Support/* | Hozzon létre, és a támogatási jegyek kezelése |
 > | Microsoft.WorkloadMonitor/monitors/* |  |
 > | Microsoft.WorkloadMonitor/notificationSettings/* |  |
@@ -1831,7 +1831,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | Microsoft.Authorization/policySetDefinitions/* | Létrehozása és kezelése a szabályzat beállítása |
 > | Microsoft.Insights/alertRules/* | Hozzon létre, és a riasztási szabályok kezelése |
 > | Microsoft.Management/managementGroups/read | A hitelesített felhasználó felügyeleti csoportok listája. |
-> | Microsoft.operationalInsights/workspaces/*/read | A Log Analytics-adatok megtekintése |
+> | Microsoft.operationalInsights/workspaces/*/read | Log analytics-adatok megtekintése |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Security/*/read | Olvasási biztonsági összetevőinek és a szabályzatok |
@@ -1886,7 +1886,7 @@ Az alábbi táblázat az egyes beépített szerepkörök rövid leírását tart
 > | **Műveletek** |  |
 > | Microsoft.Authorization/*/read | Olvasási szerepköröket és szerepkör-hozzárendelések |
 > | Microsoft.Insights/alertRules/* | Hozzon létre, és a riasztási szabályok kezelése |
-> | Microsoft.operationalInsights/workspaces/*/read | A Log Analytics-adatok megtekintése |
+> | Microsoft.operationalInsights/workspaces/*/read | Log analytics-adatok megtekintése |
 > | Microsoft.Resources/deployments/* | Erőforráscsoportok üzemelő példányainak elindíthatók |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Beolvassa vagy listázza az erőforráscsoportokat. |
 > | Microsoft.Security/*/read | Olvasási biztonsági összetevőinek és a szabályzatok |

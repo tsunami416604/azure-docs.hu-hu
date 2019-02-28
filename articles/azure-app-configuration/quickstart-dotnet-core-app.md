@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: f8b072752a6cf538cb1a85d3b255af6201aa041e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: cd4115aaeec15d14d48dcb71cbdc75212c6dc2db
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56884807"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960672"
 ---
 # <a name="quickstart-create-an-net-core-app-with-app-configuration"></a>Gyors útmutató: Hozzon létre egy .NET Core-alkalmazást az alkalmazások konfigurálása
 
@@ -74,15 +74,15 @@ Használhatja a [.NET Core parancssori felület (CLI)](https://docs.microsoft.co
 
 1. Nevű környezeti változó értéke **ConnectionString** , és állítsa be az alkalmazás a konfigurációs adattárolónál a hozzáférési kulcsot. Ha Windows-parancssort használja, hajtsa végre a következő parancsot, és a parancssort, a módosítás érvénybe léptetéséhez indítsa újra:
 
-        setx ConnectionString "Endpoint=<service_endpoint>;Id=<store_id>;Secret=<secret_key>"
+        setx ConnectionString "connection-string-of-your-app-configuration-store"
 
     Ha a Windows Powershellt használ, hajtsa végre a következő parancsot:
 
-        $Env:ConnectionString = "Endpoint=<service_endpoint>;Id=<store_id>;Secret=<secret_key>"
+        $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
 
     Ha macOS vagy Linux használ, hajtsa végre a következő parancsot:
 
-        export ConnectionString='Endpoint=<service_endpoint>;Id=<store_id>;Secret=<secret_key>'
+        export ConnectionString='connection-string-of-your-app-configuration-store'
 
 2. Futtassa a konzolalkalmazást hozhat létre a következő parancsot:
 

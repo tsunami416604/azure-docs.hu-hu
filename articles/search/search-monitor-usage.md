@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: e76c8ae671333bcbf50995c4bd9345f8434fbea2
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 14f1a92f701eaedd98b825316ebf213f7c144920
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745962"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959459"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Azure Search erőforrás-használat és a lekérdezés tevékenység figyelése
 
@@ -61,11 +61,11 @@ Az alábbi táblázat a naplók tárolásához és hozzáadása a szolgáltatás
 | Erőforrás | Használt |
 |----------|----------|
 | [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) | Naplózott eseményeket és mérőszámokat lekérdezés, alapú egyet az alábbi, a sémák felhasználói események az alkalmazásban is vonatkozhatnak, és. Ez az az egyetlen megoldás, amely a felhasználói műveletek vagy jelek figyelembe veszi, leképezés események a felhasználó által kezdeményezett search-ben alkalmazáskód által küldött kérelmek szűrése szemben. Ezt a módszert használja, a másolás és beillesztés kialakítási kódja be a forrásfájlokat útvonal adatok kérése az Application Insightsba. További információkért lásd: [forgalmi elemzések keresése](search-traffic-analytics.md). |
-| [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | A naplózott eseményeket és mérőszámokat lekérdezés,-alapú egyet az alábbi sémák. Eseményeket naplózza a Log Analytics-munkaterülethez. Lekérdezések egy munkaterületet a részletes információkat adnak a naplóból vonatkozóan futtathat le. További információkért lásd: [Log Analytics használatának első lépései](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) |
+| [Az Azure Monitor naplóira](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) | A naplózott eseményeket és mérőszámokat lekérdezés,-alapú egyet az alábbi sémák. Eseményt naplózza a Log Analytics-munkaterületet. Lekérdezések egy munkaterületet a részletes információkat adnak a naplóból vonatkozóan futtathat le. További információkért lásd: [Ismerkedés az Azure Monitor naplóira](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-viewdata) |
 | [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | A naplózott eseményeket és mérőszámokat lekérdezés,-alapú egyet az alábbi sémák. Eseményeket naplózza a Blob-tárolóba, és JSON-fájlban tárolt. Egy JSON-szerkesztő segítségével megtekintheti a fájl tartalmát.|
 | [Event Hub](https://docs.microsoft.com/azure/event-hubs/) | Naplózott események és lekérdezés-metrikák, a jelen cikkben leírt sémák alapján. Válassza ezt a hatalmas naplók az alternatív gyűjtemény szolgáltatásként. |
 
-A Log Analytics és a Blob storage érhetők el ingyenes megosztott szolgáltatásként, hogy Ön is próbálja ki ingyenesen elkölthetők az Azure-előfizetés teljes élettartama. Az Application Insights regisztráljon, és mindaddig, amíg az adatok mérete alkalmazás bizonyos korlátozások mellett használata díjmentes (lásd a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/monitor/) részletekért).
+Az Azure Monitor-naplók és a Blob storage érhetők el ingyenes megosztott szolgáltatásként, hogy Ön is próbálja ki ingyenesen elkölthetők az Azure-előfizetés teljes élettartama. Az Application Insights regisztráljon, és mindaddig, amíg az adatok mérete alkalmazás bizonyos korlátozások mellett használata díjmentes (lásd a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/monitor/) részletekért).
 
 Ez a szakasz végigvezeti a lépéseken, engedélyezése és az Azure Blob storage összegyűjtésére és Azure Search-műveletek által létrehozott naplóadatok eléréséhez.
 
@@ -81,7 +81,7 @@ Ebben a szakaszban megismerheti, hogyan naplózott eseményeket és mérőszámo
 
    ![Engedélyezze a monitorozást](./media/search-monitor-usage/enable-monitoring.png "figyelés engedélyezése")
 
-3. Válassza ki az exportálandó adatokat: Naplók, mérőszámok vagy mindkettőt. Másolja a tárfiókhoz, küldje el az eseményközpontok felé, vagy exportálhatja, és a Log Analytics.
+3. Válassza ki az exportálandó adatokat: Naplók, mérőszámok vagy mindkettőt. Másolja a tárfiókhoz, küldje el az eseményközpontok felé, vagy exportálhatja, és az Azure Monitor naplóira.
 
    A Blob storage való archiválás, a storage-fiók léteznie kell. Tárolók és blobok Teljesítménynapló-adatok exportálásakor létrejön.
 

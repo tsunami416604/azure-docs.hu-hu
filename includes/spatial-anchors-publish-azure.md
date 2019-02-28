@@ -4,12 +4,12 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
-ms.openlocfilehash: 692eb3fcd1187bf64ba5215631679c4cddf45d56
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 3ee9aca1ee86b04998e357875b98b14782b3e56d
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56752158"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56963336"
 ---
 ### <a name="launch-the-publish-wizard"></a>A közzétételi varázsló elindítása
 
@@ -51,7 +51,7 @@ Kattintson az **OK** gombra.
 
 ### <a name="create-and-publish-the-web-app"></a>A webapp létrehozása és közzététele
 
-Az **Alkalmazás neve** mezőben adjon meg egy egyedi nevet az alkalmazás számára (érvényes karakterek: `a-z`, `0-9` és `-`), vagy fogadja el az automatikusan létrehozott egyedi nevet. A webalkalmazás URL-címe `http://<app_name>.azurewebsites.net`, amelyben az `<app_name>` az alkalmazás neve.
+Az **Alkalmazás neve** mezőben adjon meg egy egyedi nevet az alkalmazás számára (érvényes karakterek: `a-z`, `0-9` és `-`), vagy fogadja el az automatikusan létrehozott egyedi nevet. A webalkalmazás URL-címe `https://<app_name>.azurewebsites.net`, amelyben az `<app_name>` az alkalmazás neve.
 
 A **Create** (Létrehozás) gombra kattintva hozzákezdhet az Azure-erőforrások létrehozásához.
 
@@ -59,4 +59,4 @@ Miután a varázsló befejeződött, közzéteszi az ASP.NET Core-webalkalmazás
 
 ![Közzétett ASP.NET-webapp az Azure-ban](./media/spatial-anchors-azure/web-app-running-live.png)
 
-A [létrehozási és közzétételi lépésben](#create-and-publish-the-web-app) megadott alkalmazásnév lesz az URL-előtag a következő formátumban: `http://<app_name>.azurewebsites.net`. Jegyezze fel az URL-címet, később lesz.
+A [létrehozási és közzétételi lépésben](#create-and-publish-the-web-app) megadott alkalmazásnév lesz az URL-előtag a következő formátumban: `https://<app_name>.azurewebsites.net`. Jegyezze fel az URL-címet, később lesz.

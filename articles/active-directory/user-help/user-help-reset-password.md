@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6521dc8db663df5e19fb97c495b4a5bcb6d3c1d1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 170b96810130d33935e54c85529129e7e0267fe9
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208472"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56957776"
 ---
 # <a name="reset-your-work-or-school-password"></a>A munkahelyi vagy iskolai jelszó visszaállítása
 
@@ -163,9 +163,6 @@ Az alábbiakban néhány gyakori hibák és megoldásaik:
 |Miután megadtuk a felhasználói azonosító, hibaüzenetet kapok arról, hogy a, "Az a fiók nem sikerült ellenőrizni."|A bejelentkezési folyamat nem tudta ellenőrizni a fiók adatai.|Két oka lehetett ezt az üzenetet látja.<br><br>1. A rendszergazdai jelszó-visszaállítást a szervezet számára engedélyezve van, de még nem regisztrált a szolgáltatás használatához. Regisztrálhat a jelszó-visszaállítás, tekintse meg az alábbi cikkekben, a hitelesítési módszer alapján: [Állítsa be a biztonsági adatok egy hitelesítő alkalmazást (előzetes verzió) használata](security-info-setup-auth-app.md), [beállítása a biztonsági adatok telefonhívás (előzetes verzió) használatához](security-info-setup-phone-number.md), [beállítása a biztonsági adatok szöveges üzenetküldés (előzetes verzió) használatához](security-info-setup-text-msg.md), [ Biztonsági adatok beállítása az e-mailben (előzetes verzió)](security-info-setup-email.md), vagy [beállítása a biztonsági adatok a biztonsági kérdések (előzetes verzió) használata](security-info-setup-questions.md).<br><br>2. A rendszergazda még nem kapcsolva a jelszó-visszaállítást a szervezet számára. Ebben az esetben meg kell adnia a "forduljon egy rendszergazdai kapcsolat" egy e-mailt küldhet a rendszergazda, alaphelyzetbe állíthassa jelszavát kéri.|
 
 ## <a name="next-steps"></a>További lépések
-
-- Hozzáadásához vagy módosításához az ellenőrzési módszerek sorát a biztonsági adatok módosítása a [kezelheti a biztonsági adatok (előzetes verzió)](security-info-manage-settings.md) cikk. 
-
 - Ismerje meg a biztonsági adatok a [Security info (előzetes verzió) – áttekintés](user-help-security-info-overview.md) cikk.
 
 - További tudnivalók a kétlépéses ellenőrzést a [kétlépéses ellenőrzési áttekintése](user-help-two-step-verification-overview.md) cikk. 

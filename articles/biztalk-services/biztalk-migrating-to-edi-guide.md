@@ -10,22 +10,22 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.reviewer: jonfan, LADocs
 ms.suite: integration
-ms.openlocfilehash: 38fe0e4901977637be22670d09dccffdfa274304
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5543fd5ee2b86a57414a384df9d808e87b297a5e
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253822"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983030"
 ---
-# <a name="migrate-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>BizTalk Server EDI-megoldások áttelepítése a BizTalk Services: műszaki útmutató
+# <a name="migrate-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>BizTalk Server EDI-megoldások áttelepítése a BizTalk Services: Műszaki útmutató
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
 
-Szerző: Tim Wieman és Nitin Mehrotra
+Szerző: TIM Wieman és Nitin Mehrotra
 
 Véleményezők: Karthik Bharthy
 
-Használatával írt: a Microsoft Azure BizTalk Services – 2014. februárban kiadás.
+Használatával írt:  A Microsoft Azure BizTalk Services – 2014. februárban kiadás.
 
 ## <a name="introduction"></a>Bevezetés
 Elektronikus adatcserére (EDI) az egyik a legelterjedtebb azt jelenti, hogy melyik vállalkozások exchange-adatok alapján elektronikus úton, vállalatok vagy B2B tranzakcióként is hívják. BizTalk Server EDI támogatása több mint egy évtizedes, mivel a kezdeti BizTalk Server-kiadás esetében. A BizTalk Services a Microsoft támogatást biztosít az EDI-megoldások a Microsoft Azure platformon továbbra is. B2B-tranzakciók többnyire egy szervezeten kívüli, és ezért az egyszerűbb, ha azt egy felhőalapú platformon lett megvalósítva. A Microsoft Azure BizTalk Services segítségével ezt a képességet biztosít.
@@ -102,7 +102,7 @@ Ha szeretné áttelepíteni a BizTalk Server vezénylési feldolgozása a Micros
 
 * [*A munkafolyamat WCF-szolgáltatások integrálása a Service Bus-üzenetsorok és témakörök* ](https://blogs.msdn.microsoft.com/paolos/2013/04/09/how-to-integrate-a-wcf-workflow-service-with-service-bus-queues-and-topics/) Paolo Salvatori szerint. 
 * [*Alkalmazások a Windows Workflow Foundation és az Azure* munkamenet](https://go.microsoft.com/fwlink/p/?LinkId=237314) a Build 2011 konferenciáról.
-* [*Windows folyamatkövető alaprendszer fejlesztői központja* ](https://go.microsoft.com/fwlink/p/?LinkId=237315) az MSDN Webhelyén.
+* [*Windows folyamatkövető alaprendszer fejlesztői központja*](https://docs.microsoft.com/previous-versions/dotnet/articles/ee342461(v=msdn.10)).
 * [*Windows munkafolyamat Foundation 4 (WF4) dokumentációja* ](https://msdn.microsoft.com/library/dd489441.aspx) az MSDN Webhelyén.
 
 ## <a name="other-considerations"></a>Egyéb szempontok

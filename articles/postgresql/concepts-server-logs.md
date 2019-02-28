@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 0e2dc2af6b4c7ddf531458136e6bcabb49be3b8f
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: a7f4d10e3273fb2b4e17ff0a55c3a3ed6294833d
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538805"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961278"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql"></a>Kiszolgálói naplók az Azure Database for postgresql-hez 
 Azure Database for PostgreSQL állít elő, lekérdezés és a hiba naplókat. Lekérdezés és a hiba a naplók segítségével azonosítása, elhárítása és konfigurációs hibák és az optimálisnál rosszabb teljesítmény javításához. (A tranzakciós naplókhoz való hozzáférést lehetőség nem része). 
@@ -28,7 +28,7 @@ Ha engedélyezte a naplókat, akkor érhetők el az Azure Database for PostgreSQ
 
 
 ## <a name="diagnostic-logs"></a>Diagnosztikai naplók
-Azure Database for PostgreSQL integrálva van az Azure monitort, diagnosztikai naplók. Miután engedélyezte a naplók PostgreSQL-kiszolgálón, ha szeretné, azokat a kibocsátott [Log Analytics](../azure-monitor/log-query/log-query-overview.md), az Event Hubs vagy az Azure Storage. Diagnosztikai naplók engedélyezésével kapcsolatos további tudnivalókért lásd: útmutató szakasza a [diagnosztikai naplók dokumentáció](../azure-monitor/platform/diagnostic-logs-overview.md). 
+Azure Database for PostgreSQL integrálva van az Azure monitort, diagnosztikai naplók. Miután engedélyezte a naplók PostgreSQL-kiszolgálón, ha szeretné, azokat a kibocsátott [naplózza az Azure Monitor](../azure-monitor/log-query/log-query-overview.md), az Event Hubs vagy az Azure Storage. Diagnosztikai naplók engedélyezésével kapcsolatos további tudnivalókért lásd: útmutató szakasza a [diagnosztikai naplók dokumentáció](../azure-monitor/platform/diagnostic-logs-overview.md). 
 
 
 A következő táblázat ismerteti, mi az egyes naplókhoz. Attól függően, a kimeneti végpont választja, a mezők és a sorrend, amelyben szerepelnek a eltérőek lehetnek. 
@@ -38,7 +38,7 @@ A következő táblázat ismerteti, mi az egyes naplókhoz. Attól függően, a 
 | TenantId | A bérlő azonosítója |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Időbélyeg mikor lett rögzítve a napló (UTC) |
-| Típus | A napló típusa. Mindig `AzureDiagnostics` |
+| Typo | A napló típusa. Mindig `AzureDiagnostics` |
 | SubscriptionId | GUID Azonosítóját az előfizetést, amelyhez a kiszolgáló tartozik. |
 | ResourceGroup | A kiszolgáló tartozik az erőforráscsoport neve |
 | ResourceProvider | Az erőforrás-szolgáltató neve. Mindig `MICROSOFT.DBFORPOSTGRESQL` |
@@ -47,7 +47,7 @@ A következő táblázat ismerteti, mi az egyes naplókhoz. Attól függően, a 
 | Erőforrás | A kiszolgáló neve |
 | Kategória | `PostgreSQLLogs` |
 | OperationName | `LogEvent` |
-| errorLevel | Naplózási szint, például: NAPLÓ, HIBA, FIGYELMEZTETÉS |
+| errorLevel | Naplózási szint, például: LOG, ERROR, NOTICE |
 | Üzenet | Elsődleges naplófájlüzenetre | 
 | Domain | Kiszolgáló verziója, például: postgres-10-es |
 | Részlet | Másodlagos naplófájlüzenetre (ha van) |

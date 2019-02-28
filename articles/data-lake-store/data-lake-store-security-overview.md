@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 4da387abe24318a29472c11dffa7aac67192408c
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: a310851819f70d138a4980b1ab61891fb0b2c311
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297423"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959612"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Biztonság az Azure Data Lake Storage Gen1
 Sok vállalat is kihasználhatja a big data-analitika, amelyekkel az intelligens döntések üzleti elemzések készítése. Egy szervezet rendelkezhet egy összetett és szabályozott környezettel, és az egyre növekvő számú különböző felhasználók. A vállalatok számára, győződjön meg arról, hogy kritikus fontosságú üzleti adatokat tárolja biztonságosabban, és egyéni felhasználók számára a hozzáférést a megfelelő szintű, elengedhetetlen, hogy. Az Azure Data Lake Storage Gen1 célja biztonsági követelményeknek. Ez a cikk többek között a Data Lake Storage Gen1 biztonsági funkcióinak bemutatása:
 
-* Hitelesítés
+* Authentication
 * Engedélyezés
 * A hálózatok elkülönítéséhez
 * Adatvédelem
@@ -82,7 +82,7 @@ Data Lake Storage Gen1 is biztosít a fiókban tárolt adatok titkosítását. D
 
 Kulcskezelés, a Data Lake Storage Gen1 kétféle módon biztosítja a titkosítási főkulcsok (MEK), amelyek szükségesek a visszafejtés, a Data Lake Storage Gen1 tárolt adatokat kezeléséhez. Vagy engedélyezheti a Data Lake Storage Gen1 kezeléséről a MEK, vagy is megtartja a MEK az Azure Key Vault-fiók használatával tulajdonjogát. Kulcskezelés módját egy Data Lake Storage Gen1 fiók létrehozásakor adja meg. További információk a titkosítással kapcsolatos konfigurációk megadására: [Azure Data Lake Storage Gen1 használatának első lépései az Azure Portal használatával](data-lake-store-get-started-portal.md).
 
-## <a name="activity-and-diagnostic-logs"></a>Tevékenység és a diagnosztikai naplók
+## <a name="activity-and-diagnostic-logs"></a>Tevékenység és diagnosztikai naplók
 Tevékenység vagy a diagnosztikai naplók függően e Ön által keresett naplók fiók felügyelettel kapcsolatos tevékenységek és adatokkal kapcsolatos tevékenységeket is használhatja.
 
 * Fiók felügyeleti kapcsolatos tevékenységeket az Azure Resource Manager API-k használatával, és az Azure Portalon keresztül tevékenységeket tartalmazó naplók illesztett.
@@ -98,7 +98,7 @@ A fiók a felügyeleti napló ellenőrzését megtekintheti, és válassza ki a 
 További információ a vizsgálati naplók: [megtekintése az erőforrásokon végzett műveletek naplózásához tevékenységi naplóit](../azure-resource-manager/resource-group-audit.md).
 
 ### <a name="diagnostics-logs"></a>Diagnosztikai naplók
-Adatok hozzáférés naplózása és az Azure Portal diagnosztikai naplózás engedélyezése és a egy Azure Blob storage-fiókot, egy eseményközpontba, vagy a Log Analytics naplók küldése.
+Adatok hozzáférés naplózása és az Azure Portal diagnosztikai naplózás engedélyezése és a egy Azure Blob storage-fiókot, egy eseményközpontba, a naplók elküldése, vagy az Azure Monitor naplózza.
 
 ![Diagnosztikai naplók](./media/data-lake-store-security-overview/diagnostic-logs.png "diagnosztikai naplók")
 

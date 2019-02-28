@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: overview
-ms.date: 10/09/2018
+ms.date: 02/26/2019
 ms.author: alkohli
-ms.openlocfilehash: d94e2db66c8c5dac2b4d8551ae34a07cd68fd635
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e6042d9a1d6dc0e737fb4cf7e55d2c6938f9b0f4
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106979"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961046"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Az Azure Data Box Gateway hibáinak elhárítása 
 
@@ -103,6 +103,7 @@ A feltöltési és frissítési folyamat során észlelt hibákat a megfelelő h
     |    2006            |    ERROR_CLOUD_ACCOUNT_DISABLED                            |    Nem sikerült feltölteni az adatokat a fiókba, mert a fiók vagy a megosztás le van tiltva.                                                                                                                                                            |
     |    2007            |    ERROR_CLOUD_ACCOUNT_PERMISSIONS                         |    Nem sikerült csatlakozni a tárolóhoz, mert a fiók engedélyei helytelenek vagy elavultak. Ellenőrizze a hozzáférési engedélyeit.                                                                                                               |
     |    2008            |    ERROR_CLOUD_CONTAINER_SIZE_LIMIT_REACHED                |    Nem sikerült hozzáadni az új adatokat, mert a tároló megtelt. Az Azure-specifikációkban tekintse meg, hogy típusonként mely tárolóméretek támogatottak. Az Azure File például csak az 5 TB-os maximális fájlméret támogatja.                                     |
+    |    2009            |    ERROR_CLOUD_CONTAINER_MISSING                |     Nem sikerült feltölteni az adatokat, mert a tároló társítva a megosztás nem létezik.                                     |    
     |    2997            |    ERROR_ITEM_CANCELED                                     |    Váratlan hiba történt. Ez az egy átmeneti hiba, magától megoldódik.                                                                           |
     |    2998            |    ERROR_UNMAPPED_FAILURE                                  |    Váratlan hiba történt. Lehet, hogy a hiba magától megoldódik, de ha több mint 24 órán keresztül nem szűnik meg, forduljon a Microsoft ügyfélszolgálatához.                                                                                                     |
     |    16000           |    RefreshException                                        |    A fájlt nem sikerült leállítani.                                                                                                                                                                                                        |

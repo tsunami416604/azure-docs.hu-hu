@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: fb96d69604ce341cec2de029f9663f6b8d274876
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 214c67e34fc8d36f2618c94414fe1c305efbf7d2
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822378"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960139"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
@@ -119,6 +119,9 @@ Ha a System Center Operations Manager felügyeleti csoportban a Log Analytics-mu
 * Microsoft System Center Advisor Update Assessment Intelligence Pack (Microsoft.IntelligencePacks.UpdateAssessment)
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
 * Frissítéstelepítő felügyeleti csomag
+
+> [!NOTE]
+> Ha már az Operations Manager 1807 felügyeleti csoport társítani egy munkaterülethez, a felügyeleti csoport szintjén konfigurált ügynökökkel, az aktuális megkerülő megoldással kérheti le azokat jelenik meg, felülbírálása **IsAutoRegistrationEnabled** , **Igaz** a a **Microsoft.IntelligencePacks.AzureAutomation.HybridAgent.Init** szabály.
 
 Hogyan megoldás felügyeleti csomagok frissítéseivel kapcsolatos további információkért lásd: [Operations Manager csatlakoztatása az Azure Monitor-naplók](../azure-monitor/platform/om-agents.md).
 
@@ -608,7 +611,7 @@ Az Update Management egy virtuális gép eltávolítása:
 
 * A Log Analytics munkaterületén távolítsa el a virtuális gép számára a hatókör-konfigurációt a mentett keresés `MicrosoftDefaultScopeConfig-Updates`. Mentett keresések területen található **általános** a munkaterületén.
 * Távolítsa el a [Microsoft Monitoring agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) vagy a [Linuxhoz készült Log Analytics-ügynök](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
-  
+
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
 Az Update Management hibaelhárítása kapcsolatban lásd: [az Update Management hibáinak elhárítása](troubleshoot/update-management.md)
