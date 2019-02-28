@@ -239,12 +239,12 @@ items:
     - name: A HDInsight csatlakoztatása a helyszíni hálózathoz
       href: ../connect-on-premises-network.md
       maintainContext: true
-  - name: Monitorozás a Log Analytics használatával
+  - name: Monitorozás Azure Monitor-naplókkal
     items:
-    - name: Az Azure Log Analytics használata
+    - name: Az Azure Monitor-naplók használata
       href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
       maintainContext: true
-    - name: Lekérdezések használata a Log Analytics szolgáltatással
+    - name: Lekérdezések használata az Azure Monitor-naplókkal
       href: ../hdinsight-hadoop-oms-log-analytics-use-queries.md
       maintainContext: true
     - name: Fürtteljesítmény monitorozása
@@ -318,9 +318,9 @@ items:
   - name: A HDInsight Windows-eszközei
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 2e6e05ac149308339c8d663fe96287dbc476579d
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: ea149749fcb073861cb6af05225536c552e3f79a
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327162"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56886485"

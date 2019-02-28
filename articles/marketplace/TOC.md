@@ -1,5 +1,6 @@
 # [Az Azure Marketplace és az AppSource dokumentációja](index.md)
 ## [Az Azure Marketplace és az AppSource ütemterve](./marketplace-roadmap.md)
+## [Azure Marketplace – szabályzatok és feltételek](./policies-terms.md)
 
 ## [Azure Marketplace és AppSource – áttekintés és előnyök](./marketplace-publishers-guide.md)  
 ### [Hogyan válhat közzétevővé a Marketplace-en](./become-publisher.md)  
@@ -29,7 +30,6 @@
 #### [Ajánlatlistákra vonatkozó ajánlott eljárások](./gtm-offer-listing-best-practices.md)
 #### [Hogyan válhat kiemeltté?](./gtm-how-to-get-featured.md)
 #### [Marketplace-tartalmak érvényesítése](./marketplace-criteria-content-validation.md)
-#### [Minősítési és felülvizsgálati szabályzatok](./rating-review-policies.md)   
 
 ### [A Marketplace-ből származó előnyei](./gtm-your-marketplace-benefits.md)
 #### [Üzleti gyarapodás a Microsofttal](./gtm-promote-your-business.md)
@@ -37,9 +37,6 @@
 
 ### [Azure Marketplace- és AppSource-támogatás](./support-azure-marketplace.md)
 #### [Marketplace – gyakori kérdések](./marketplace-faq-publisher-guide.md)
-#### [A Marketplace használati feltételei](./marketplace-terms.md)
-#### [A Marketplace részvételi szabályzata](./marketplace-participation-policy.md)
-
 
 <!-- Following section is for Cloud Partner Portal (CPP). -->
 

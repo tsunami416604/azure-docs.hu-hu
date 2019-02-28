@@ -23,20 +23,24 @@ items:
   - name: Erőforrások áthelyezése
     href: resource-manager-tutorial-move-resources.md
   - name: Erőforrások üzembehelyezési sorrendjének beállítása
+    displayName: dependent resources, dependency
     href: resource-manager-tutorial-create-templates-with-dependent-resources.md
   - name: Feltételek használata
     href: resource-manager-tutorial-use-conditions.md
   - name: A Key Vault integrálása
+    displayName: secrets
     href: resource-manager-tutorial-use-key-vault.md
   - name: Hivatkozott sablonok létrehozása
     href: resource-manager-tutorial-create-linked-templates.md
   - name: Virtuálisgép-bővítmények üzembe helyezése
+    displayName: virtual machine extensions
     href: resource-manager-tutorial-deploy-vm-extensions.md
   - name: SQL-bővítmények üzembe helyezése
     href: resource-manager-tutorial-deploy-sql-extensions-bacpac.md
   - name: Biztonságos összetevők
     href: resource-manager-tutorial-secure-artifacts.md
   - name: Biztonságos üzembehelyezési gyakorlatok
+    displayName: azure deployment manager
     href: deployment-manager-tutorial.md
   - name: Sablonalapú üzembe helyezés hibaelhárítása
     href: resource-manager-tutorial-troubleshoot.md
@@ -97,6 +101,7 @@ items:
       href: resource-group-linked-templates.md
     - name: Titkos kulcsok kezelése
       href: resource-manager-keyvault-parameter.md
+      displayname: key vault
     - name: Több példány létrehozása
       href: resource-group-create-multiple.md
     - name: Sablonbővítmények használata
@@ -111,46 +116,47 @@ items:
       href: resource-group-template-deploy-cli.md
     - name: Üzembe helyezés – PowerShell
       href: resource-group-template-deploy.md
-    - name: Üzembe helyezés a REST API-val
+    - name: Üzembe helyezés – REST API
       href: resource-group-template-deploy-rest.md
     - name: Sablonok védelme SAS-jogkivonattal
       items:
-      - name: Az Azure parancssori felület használata
+      - name: Az Azure parancssori felületének használata
         href: resource-manager-cli-sas-token.md
-      - name: A PowerShell használata
+      - name: Azure PowerShell használatával
         href: resource-manager-powershell-sas-token.md
     - name: Üzembe helyezés több erőforráscsoporton vagy előfizetésben
       href: resource-manager-cross-resource-group-deployment.md
     - name: Folyamatos integráció az Azure DevOps Services szolgáltatással
       href: ../vs-azure-tools-resource-groups-ci-in-vsts.md
       maintainContext: true
-  - name: Erőforrások kezelése
+  - name: Kezelés
     items:
     - name: Erőforráscsoportok kezelése
       items:
-      - name: Erőforráscsoportok kezelése – portál
+      - name: Az Azure Portal használata
         displayName: create,list,open,delete,deploy,move,lock,tag,export
         href: manage-resource-groups-portal.md
-      - name: Erőforráscsoportok kezelése – CLI
+      - name: Az Azure parancssori felületének használata
         displayName: create,list,open,delete,deploy,move,lock,tag,export
         href: manage-resource-groups-cli.md
-      - name: Erőforráscsoportok kezelése – PowerShell
+      - name: Azure PowerShell használatával
         displayName: create,list,open,delete,deploy,move,lock,tag,export
         href: manage-resource-groups-powershell.md
     - name: Erőforrások kezelése
       items:
-      - name: Erőforrások kezelése – portál
+      - name: Az Azure Portal használata
         displayName: open,delete,deploy,move,lock,tag,monitor
         href: manage-resources-portal.md
-      - name: Erőforrások kezelése – CLI
+      - name: Az Azure parancssori felületének használata
         displayName: open,delete,deploy,move,lock,tag
         href: manage-resources-cli.md
-      - name: Erőforrások kezelése – PowerShell
+      - name: Azure PowerShell használatával
         displayName: open,delete,deploy,move,lock,tag
         href: manage-resources-powershell.md
     - name: Erőforrások áthelyezése
       href: resource-group-move-resources.md
-    - name: Erőforrások rendszerezése címkékkel
+    - name: Erőforrások rendszerezése
+      displayName: tags
       href: resource-group-using-tags.md
     - name: Erőforrások zárolása
       href: resource-group-lock-resources.md
@@ -259,9 +265,9 @@ items:
     href: resource-manager-personal-data.md
   - name: Videók
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: 1483d34859135d7b50bada6c74c90d09abc2df23
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 061f23dd0f25fccdbcfe459dc71f998319b06d58
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820535"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56886689"

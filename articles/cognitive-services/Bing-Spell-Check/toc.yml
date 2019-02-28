@@ -4,45 +4,49 @@ items:
 - name: Áttekintés
   items:
   - name: Mi a Bing Spell Check API?
-    href: proof-text.md
+    href: overview.md
   - name: Bing Search API-k összehasonlítása
     href: ../Bing-Web-Search/bing-api-comparison.md
     maintainContext: true
-- name: REST API – rövid útmutatók
+- name: Gyors útmutatók
   items:
-  - name: C#
-    href: quickstarts/csharp.md
-  - name: Java
-    href: quickstarts/java.md
-  - name: Node.js
-    href: quickstarts/nodejs.md
-  - name: PHP
-    href: quickstarts/php.md
-  - name: Python
-    href: quickstarts/python.md
-  - name: Ruby
-    href: quickstarts/ruby.md
-  expanded: true
-- name: SDK – rövid útmutatók
-  items:
-  - name: SDK C# – rövid útmutató
-    href: sdk-quickstart-spell-check.md
-  - name: SDK-minták áttekintése
-    href: sdk.md
+  - name: REST API
+    items:
+    - name: A C# használata
+      href: quickstarts/csharp.md
+    - name: A Java használata
+      href: quickstarts/java.md
+    - name: A Node.js használata
+      href: quickstarts/nodejs.md
+    - name: A PHP használata
+      href: quickstarts/php.md
+    - name: A Python használata
+      href: quickstarts/python.md
+    - name: A Ruby használata
+      href: quickstarts/ruby.md
+    expanded: true
+  - name: SDK
+    items:
+    - name: A C# használata
+      href: sdk-quickstart-spell-check.md
 - name: Oktatóanyagok
   items:
   - name: Helyesírás-ellenőrző webalkalmazás készítése
     href: tutorials/spellcheck.md
-  - name: 'Forráskód: helyesírás-ellenőrző webalkalmazás'
-    href: tutorials/spellcheck-source.md
 - name: Útmutatók
   items:
   - name: Frissítés 5-ös verzióról 7-es verzióra
     href: bing-spell-check-upgrade-guide-v5-to-v7.md
+- name: Alapelvek
+  items:
+  - name: Kérelmek küldése a Bing Spell Check API-nak
+    href: concepts/sending-requests.md
+  - name: A Bing Spell Check API használata
+    href: concepts/using-spell-check.md
 - name: Példák
   items:
   - name: Kódminták
-    href: sdk.md
+    href: https://azure.microsoft.com/resources/samples/?sort=0&service=cognitive-services&term=Bing+Spell+Check
 - name: Referencia
   items:
   - name: Bing Spell Check API 7-es verzió
@@ -68,8 +72,6 @@ items:
   items:
   - name: A Bing Spell Check API elemzése
     href: bing-spell-check-stats.md
-  - name: GYIK
-    href: bing-spell-check-resource-faq.md
   - name: Nyelvi és régiós támogatás
     href: language-support.md
   - name: Díjszabás
@@ -84,9 +86,9 @@ items:
     href: https://azure.microsoft.com/services/cognitive-services/spell-check/
   - name: UserVoice
     href: https://cognitive.uservoice.com/forums/598195-bing-spell-check
-ms.openlocfilehash: a993da847ca775a18efba42a82045d450a1e9f59
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 132901c3bf159054519658893f1f05438852afcb
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55512091"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56890045"

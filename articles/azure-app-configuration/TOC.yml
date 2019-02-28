@@ -1,0 +1,60 @@
+items:
+- name: Az Azure App Configuration dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+  - name: Tudnivalók az Azure App Configurationről
+    href: overview.md
+- name: Gyors útmutatók
+  items:
+  - name: ASP.NET Core-alkalmazás létrehozása
+    href: quickstart-aspnet-core-app.md
+  - name: .NET Core-alkalmazás létrehozása
+    href: quickstart-dotnet-core-app.md
+  - name: .NET-keretrendszerre épülő alkalmazás létrehozása
+    href: quickstart-dotnet-app.md
+  - name: Azure-függvény létrehozása
+    href: quickstart-azure-function-csharp.md
+  - name: Java Spring-alkalmazás létrehozása
+    href: quickstart-java-spring-app.md
+  expanded: true
+- name: Oktatóanyagok
+  items:
+  - name: Dinamikus konfiguráció engedélyezése az ASP.NET Core-ban
+    href: enable-dynamic-configuration-aspnet-core.md
+  - name: Integráció az Azure Managed Service Identityvel
+    href: integrate-azure-managed-service-identity.md
+- name: Példák
+  items:
+  - name: Kódminták
+    href: https://github.com/Azure/AppConfiguration/samples
+  - name: Azure CLI
+    href: cli-samples.md
+- name: Alapelvek
+  items:
+  - name: Kulcs-érték tároló
+    href: concept-key-value.md
+  - name: Adott időpontban készült pillanatképek
+    href: concept-point-time-snapshot.md
+- name: Útmutatók
+  items:
+  - name: Konfigurációs adatok importálása vagy exportálása
+    href: howto-import-export-data.md
+  - name: Integráció CI-/CD-folyamattal
+    href: howto-integrate-ci-cd-pipeline.md
+- name: Referencia
+  items:
+  - name: .NET Core-konfigurációszolgáltató
+    href: https://go.microsoft.com/fwlink/?linkid=2074664
+  - name: A .NET-keretrendszer konfigurációkészítője
+    href: https://go.microsoft.com/fwlink/?linkid=2074663
+  - name: Java Spring-konfigurációszolgáltató
+    href: https://go.microsoft.com/fwlink/?linkid=2074659
+  - name: REST
+    href: https://docs.microsoft.com/rest/api/azure-app-configuration
+ms.openlocfilehash: c35296a6923e464ca20a873de4165ea20c08278f
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56884134"

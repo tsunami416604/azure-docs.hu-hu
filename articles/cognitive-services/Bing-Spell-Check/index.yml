@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 28172ed2309c1e97fe6dafa46cf055862a894cee
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: daf643a96195bc5f8f30652eaf1e7b071d63fa87
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56730341"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888236"
 documentType: LandingData
 title: A Bing Spell Check API dokumentációja
 metadata:
@@ -12,18 +12,39 @@ metadata:
   title: A Bing Spell Check API dokumentációja – oktatóanyagok és API-referencia – Azure Cognitive Services | Microsoft Docs
   description: Útmutató a Bing Spell Check API használatához, amellyel a szöveges dokumentumokhoz kapcsolódó javasolt javításokat jeleníthet meg. Az oktatóanyagok bemutatják, hogyan hozhat létre az API-t használó alkalmazásokat.
   services: cognitive-services
-  author: noellelacharite
-  manager: nolachar
+  author: aahill
+  manager: cgronlun
   ms.service: cognitive-services
   ms.subservice: bing-spell-check
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 05/09/2018
-  ms.author: nolachar
+  ms.date: 02/19/2019
+  ms.author: aahi
 abstract:
   description: A Bing Spell Check API segítségével kontextusalapú nyelvtani és helyesírás-ellenőrzést végezhet egy szövegben. A Bing kifejlesztett egy olyan webalapú helyesírás-ellenőrzőt, amely a gépi tanulás és statisztikai gépi fordítás előnyeit használja ki egy állandóan fejlődő és a kontextus alapján működő algoritmus dinamikus betanítására. A helyesírás-ellenőrző a webes keresések és dokumentumok nagy tömegén alapul. Rövid útmutatóink, oktatóanyagaink és példáink segítségével megismerkedhet a tartalomelemzés különböző módjaival.
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/bing-spell-check/overview
+      html: <p>Tudnivalók a Bing Spell Check API-ról.</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Mi a Bing Spell Check API?
+    - href: /azure/cognitive-services/bing-spell-check/concepts/sending-requests
+      html: <p>Megtudhatja, hogyan küldhet helyesírás-ellenőrzési kérelmeket a Bing Spell Check API-nak.</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Helyesírás-ellenőrzési kérelmek
+    - href: /azure/cognitive-services/bing-spell-check/concepts/using-spell-check
+      html: <p>Megismerkedhet az API különböző helyesírás-ellenőrzési módjaival.</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Az Image Search válasza
 - title: 5 perces gyors útmutatók
   items:
   - type: paragraph
@@ -63,7 +84,6 @@ sections:
     style: unordered
     items:
     - html: <a href="tutorials/spellcheck.md">Egyoldalas webalkalmazás</a>
-    - html: <a href="tutorials/spellcheck-source.md">Egyoldalas webalkalmazás (forráskód)</a>
 - title: Példák
   items:
   - type: paragraph
