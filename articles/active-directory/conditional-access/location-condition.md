@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/21/2019
+ms.date: 02/28/2019
 ms.author: markvi
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aeb991de113b13666eeaab3f283b9eccd75fbd39
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 14b277e505e2a4975945f4b2f8f8410e25e0f8b3
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166029"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193585"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Mi a helyfeltétel az Azure Active Directory feltételes hozzáférés? 
 
@@ -59,7 +59,7 @@ Egy elnevezett helye a következő összetevőket tartalmazza:
 
 - **Név** -névvel rendelkező hely megjelenített neve.
 
-- **IP-címtartományok** – legalább egy IPv4-címtartományokat CIDR formátumban. Egy Ipv6-címtartomány megadása nem támogatott.
+- **IP-címtartományok** – legalább egy IPv4-címtartományokat CIDR formátumban. Egy IPv6-címtartomány megadása nem támogatott.
 
 - **Megjelölés megbízható helyként** -jelzőt beállíthat egy elnevezett helyet megbízható helyen jelzi. Megbízható helyek jellemzően az IT-részleg által vezérelt hálózati területek. Feltételes hozzáférés mellett megbízható nevesített helyek is használják az Azure Identity Protection és az Azure AD biztonsági jelentések csökkentése érdekében [vakriasztások](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1).
 
@@ -142,7 +142,7 @@ Alapértelmezés szerint az Azure AD kibocsát egy token óránként. Helyezze �
 
 ### <a name="user-ip-address"></a>Felhasználói IP-cím
 
-Az IP-címet, amely a szabályzat-kiértékelés szolgál a felhasználó a nyilvános IP-címe. Egy magánhálózaton lévő eszközök esetében ez nem az ügyfél IP-címét a felhasználó eszközén az intraneten, hogy a cím a nyilvános internethez való kapcsolódáshoz a hálózat által használt. 
+Az IP-címet, amely a szabályzat-kiértékelés szolgál a felhasználó a nyilvános IP-címe. Egy magánhálózaton lévő eszközök esetében ez nem az ügyfél IP-címét a felhasználó eszközén az intraneten, hogy a cím a nyilvános internethez való kapcsolódáshoz a hálózat által használt. Ha az eszköz egy csak IPv6-címet, a hely feltétel konfigurálása nem támogatott.
 
 ### <a name="bulk-uploading-and-downloading-of-named-locations"></a>Tömeges feltöltés és a nevesített helyek letöltése
 

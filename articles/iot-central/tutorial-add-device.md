@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 695050a46df4b208205ce394cc79db891803cfa4
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 04bdbd6c6af1f0e3a479920bc7f286343052281e
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731529"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192156"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Oktatóanyag: Valós eszköz hozzáadása az Azure IoT Central-alkalmazáshoz
 
@@ -102,18 +102,12 @@ A következő lépések bemutatják, hogyan készítheti elő a [Node.js](https:
 1. A parancssori környezetben keresse meg a létrehozott `connectedairconditioner` mappát.
 
 1. A következő paranccsal telepítheti a DPS-kulcskészítőt:
-    
+
     ```cmd/sh
     npm i -g dps-keygen
     ```
 
    A parancssori eszközről [itt tudhat meg többet](https://www.npmjs.com/package/dps-keygen).
-
-1. Töltse le és csomagolja ki a (Windows) a dps_cstr eszközt [GitHub])https://github.com/Azure/dps-keygen/archive/master.zip
-
-)
-
-    Make sure you choose the one that matches your platform. For example, on Windows the dps_cstr.exe and the dll files should be now available in your folder. 
 
 1. Az alkalmazásban az eszközpéldányok kapcsolati sztringje az IoT Central által megadott eszközinformációkból jön létre.
 
@@ -121,17 +115,16 @@ A következő lépések bemutatják, hogyan készítheti elő a [Node.js](https:
 
    ![A kapcsolat információit megjelenítő hivatkozást mutató eszközoldal](media/tutorial-add-device/connectionlink.png)
 
-
 1. Az Eszközkapcsolat oldalon másolja ki és illessze be a hatókör azonosítóját, az eszköz azonosítóját és az elsődleges kulcsot egy szövegszerkesztőbe, majd mentse a fájlt. Ezeket az értékeket a következő lépésben fogja használni.
 
-   ![Kapcsolat adatai](media/tutorial-add-device/device-connect.PNG)
+   ![Kapcsolat adatai](media/tutorial-add-device/device-connect.png)
 
 1. Térjen vissza a parancssori környezethez, és hozza létre a kapcsolati sztringet az alábbiak végrehajtásával:
 
-   ```cmd/sh
-   dps_cstr <scope_id> <device_id> <Primary Key>
-   ```
-   
+    ```cmd/sh
+    dps_keygen -si:<scope_id> -di:<device_id> -dk:<Primary Key>
+    ```
+
    Másolja ki a kimenetet, és mentse egy új fájlba (például a connection.txt fájlba).
 
 1. A Node.js projekt elindításához futtassa az alábbi parancsot az összes alapérték elfogadásával:

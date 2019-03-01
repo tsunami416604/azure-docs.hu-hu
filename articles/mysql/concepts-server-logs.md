@@ -1,17 +1,17 @@
 ---
 title: Az Azure Database for MySQL Server-naplók
 description: Az Azure Database-ben elérhető naplók a MySQL és a különböző naplózási szintek engedélyezésének paramétereket ismerteti.
-author: rachel-msft
-ms.author: raagyema
+author: ajlam
+ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 10/03/2018
-ms.openlocfilehash: 60ef547cb3a6ef579f5ab0b3f5438212145d92ff
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.date: 02/28/2019
+ms.openlocfilehash: bc3dd038a21786a75d6b519ef8523dc328829705
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961788"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192888"
 ---
 # <a name="server-logs-in-azure-database-for-mysql"></a>Kiszolgálói naplók az Azure Database for MySQL-hez
 Az Azure Database for MySQL-hez a lassú lekérdezések naplója a felhasználók számára érhető el. A tranzakciós naplóba való hozzáférés nem támogatott. A lassú lekérdezések naplója segítségével azonosíthatja a szűk keresztmetszeteket hibaelhárításhoz. 
@@ -45,6 +45,9 @@ Tekintse meg a MySQL [lassú lekérdezési napló dokumentáció](https://dev.my
 
 ## <a name="diagnostic-logs"></a>Diagnosztikai naplók
 Azure Database for MySQL integrálva van az Azure monitort, diagnosztikai naplók. A MySQL-kiszolgáló lassú lekérdezési naplóinak engedélyezése után kiválaszthatja azokat az Azure Monitor naplók, az Event Hubs vagy Azure Storage kibocsátott. Diagnosztikai naplók engedélyezésével kapcsolatos további tudnivalókért lásd: szakaszában az útmutató a [diagnosztikai naplók dokumentáció](../azure-monitor/platform/diagnostic-logs-overview.md).
+
+> [!IMPORTANT]
+> Ezt a diagnosztikai naplók funkciót csak érhető el az általános célú és memóriahasználatra optimalizált [tarifacsomagok](concepts-pricing-tiers.md).
 
 A következő táblázat ismerteti, mi az egyes naplókhoz. A kimeneti módszertől függően a mezők és a megjelenési sorrendben eltérőek lehetnek.
 

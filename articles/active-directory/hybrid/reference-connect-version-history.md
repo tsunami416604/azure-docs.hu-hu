@@ -16,12 +16,12 @@ ms.date: 12/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e5b06ad551b45bc0c892bc789c6f5c5a27b5bb0
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: ca5dc106d3a524f9bdd6f2d989ef1189032cd60f
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882977"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195523"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verziókiadások előzményei
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden hozzárendelések nem gyarapítsa alkalmazható.
@@ -1102,7 +1102,7 @@ Az Azure AD Connect az Azure AD-Szinkronizálóról módosított neve.
 * Is [AD FS konfigurálása](how-to-connect-install-custom.md#configuring-federation-with-ad-fs)
 * Is [frissítés a Dirsync szolgáltatásról](how-to-dirsync-upgrade-get-started.md)
 * [Véletlen törlések megakadályozása](how-to-connect-sync-feature-prevent-accidental-deletes.md)
-* Bevezetett [átmeneti módban](how-to-connect-sync-operations.md#staging-mode)
+* Bevezetett [átmeneti módban](how-to-connect-sync-staging-server.md)
 
 **Új előzetes verziójú funkciók:**
 

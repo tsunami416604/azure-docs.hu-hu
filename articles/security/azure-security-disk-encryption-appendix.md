@@ -8,16 +8,18 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 01/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 64ae354c9233821ea7e53abfdc0dde105b22e466
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: d23e6d00b77e69f7f3353938c52b450eebbfd142
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208074"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990680"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Az Azure Disk Encryption for függelék 
 
 Ez a cikk a mellékletet [IaaS virtuális gépekhez az Azure Disk Encryption](azure-security-disk-encryption-overview.md). Ellenőrizze, hogy az Azure Disk Encryption, IaaS virtuális gépek cikkek előbb a környezetet tudni elolvasni. Ez a cikk ismerteti, hogyan készíti elő az előzetes titkosítással VHD-k és egyéb feladatokhoz.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="connect-to-your-subscription"></a>Csatlakozás az előfizetéshez
 A Kezdés előtt tekintse át a [Előfeltételek](azure-security-disk-encryption-prerequisites.md) cikk. Miután az összes előfeltétel teljesül-e, csatlakozzon az előfizetéséhez a következő parancsmag futtatásával:
@@ -27,22 +29,22 @@ A Kezdés előtt tekintse át a [Előfeltételek](azure-security-disk-encryption
 1. Indítsa el az Azure PowerShell-munkamenetet, és jelentkezzen be az Azure-fiókjába a következő parancsot:
 
      ```powershell
-     Connect-AzureRmAccount 
+     Connect-AzAccount 
      ```
 2. Ha több előfizetéssel rendelkezik, és adjon meg egy használni kívánt, írja be a következő, a fiókhoz tartozó előfizetések megtekintéséhez:
      
      ```powershell
-     Get-AzureRmSubscription
+     Get-AzSubscription
      ```
 3. Válassza ki a használni kívánt előfizetést, írja be:
  
      ```powershell
-      Select-AzureRmSubscription -SubscriptionName <Yoursubscriptionname>
+      Select-AzSubscription -SubscriptionName <Yoursubscriptionname>
      ```
 4. Győződjön meg arról, hogy helyesen szerepel-e beállítva az előfizetés, írja be:
      
      ```powershell
-     Get-AzureRmSubscription
+     Get-AzSubscription
      ```
 5. Szükség esetén az Azure AD-csatlakozás [Connect-AzureAD](/powershell/module/azuread/connect-azuread).
      
@@ -91,9 +93,9 @@ A Kezdés előtt tekintse át a [Előfeltételek](azure-security-disk-encryption
 - **Az előfizetés összes titkosított virtuális gépek listája**
 
      ```azurepowershell-interactive
-     $osVolEncrypted = {(Get-AzureRmVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).OsVolumeEncrypted}
-     $dataVolEncrypted= {(Get-AzureRmVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).DataVolumesEncrypted}
-     Get-AzureRmVm | Format-Table @{Label="MachineName"; Expression={$_.Name}}, @{Label="OsVolumeEncrypted"; Expression=$osVolEncrypted}, @{Label="DataVolumesEncrypted"; Expression=$dataVolEncrypted}
+     $osVolEncrypted = {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).OsVolumeEncrypted}
+     $dataVolEncrypted= {(Get-AzVMDiskEncryptionStatus -ResourceGroupName $_.ResourceGroupName -VMName $_.Name).DataVolumesEncrypted}
+     Get-AzVm | Format-Table @{Label="MachineName"; Expression={$_.Name}}, @{Label="OsVolumeEncrypted"; Expression=$osVolEncrypted}, @{Label="DataVolumesEncrypted"; Expression=$dataVolEncrypted}
      ```
 
 - **Összes lemez titkosítási titkos kulcsot a kulcstartóban található virtuális gépek titkosításához használt listázása** 
@@ -112,8 +114,8 @@ Az alábbi táblázat mutatja, hogy mely paraméterek is használható a PowerSh
 |------|------|------|
 |$resourceGroupName| Az erőforrás nevét, amelyhez a KeyVault tartozik.  Ezen a néven egy új erőforráscsoport létrejön, ha egy nem létezik.| True (Igaz)|
 |$keyVaultName|A KeyVault a melyik titkosítási kulcsai elhelyezni kívánt nevét. Ezen a néven egy új tároló létrejön, ha egy nem létezik.| True (Igaz)|
-|$location|A KeyVault helye. Győződjön meg arról a KeyVault és a virtuális gépek titkosítását ugyanazon a helyen. A helyek listáját a következővel érheti el: `Get-AzureRMLocation`.|True (Igaz)|
-|$subscriptionId|Használható az Azure-előfizetés azonosítója.  Az előfizetés-azonosítóját a következővel érheti el: `Get-AzureRMSubscription`.|True (Igaz)|
+|$location|A KeyVault helye. Győződjön meg arról a KeyVault és a virtuális gépek titkosítását ugyanazon a helyen. A helyek listáját a következővel érheti el: `Get-AzLocation`.|True (Igaz)|
+|$subscriptionId|Használható az Azure-előfizetés azonosítója.  Az előfizetés-azonosítóját a következővel érheti el: `Get-AzSubscription`.|True (Igaz)|
 |$aadAppName|Neve az Azure AD-alkalmazást, amely a KeyVault titkos kódok írása történik. Ha a megadott néven még nem létezik alkalmazás, a rendszer létrehoz egyet a beírt néven. Ha az alkalmazás már létezik, aadClientSecret a paramétert átadhatja a parancsfájlt.|False (Hamis)|
 |$aadClientSecret|A korábban létrehozott Azure AD-alkalmazás titkos ügyfélkódja.|False (Hamis)|
 |$keyEncryptionKeyName|A KeyVault választható kulcstitkosítási kulcs neve. Ezen a néven egy új kulcsot létrejön, ha egy nem létezik.|False (Hamis)|
@@ -225,7 +227,7 @@ Használja a [ `manage-bde` ](https://technet.microsoft.com/library/ff829849.asp
  7.2 CentOS az operációs rendszer lemeztitkosítás támogatott keresztül egy rendszerképet. Ez a rendszerkép használatához adja meg a "7.2n" Termékváltozat, a virtuális gép létrehozásakor:
 
  ```powershell
-    Set-AzureRmVMSourceImage -VM $VirtualMachine -PublisherName "OpenLogic" -Offer "CentOS" -Skus "7.2n" -Version "latest"
+    Set-AzVMSourceImage -VM $VirtualMachine -PublisherName "OpenLogic" -Offer "CentOS" -Skus "7.2n" -Version "latest"
  ```
 2. Konfigurálja a virtuális gép igény szerint. Ha a (operációs rendszer és összes adatok) titkosítása meghajtók, az adatmeghajtók kell lennie a megadott és a csatlakoztatható /etc/fstab fog.
 
@@ -241,9 +243,9 @@ Használja a [ `manage-bde` ](https://technet.microsoft.com/library/ff829849.asp
 
 5. Rendszeres időközönként szakaszban foglaltak szerint a titkosítás állapotának figyelése a [következő szakasz](#monitoring-os-encryption-progress).
 
-6. Miután a Get-AzureRmVmDiskEncryptionStatus "VMRestartPending" jeleníti meg, indítsa újra a virtuális gép jelentkezik be, vagy a portal, PowerShell vagy parancssori felület használatával.
+6. Miután a Get-AzVmDiskEncryptionStatus "VMRestartPending" jeleníti meg, indítsa újra a virtuális gép jelentkezik be, vagy a portal, PowerShell vagy parancssori felület használatával.
     ```powershell
-    C:\> Get-AzureRmVmDiskEncryptionStatus  -ResourceGroupName $ResourceGroupName -VMName $VMName
+    C:\> Get-AzVmDiskEncryptionStatus  -ResourceGroupName $ResourceGroupName -VMName $VMName
     -ExtensionName $ExtensionName
 
     OsVolumeEncrypted          : VMRestartPending
@@ -256,7 +258,7 @@ Indítsa újra, mielőtt azt javasoljuk, hogy mentse [rendszerindítási diagnos
 ## <a name="monitoring-os-encryption-progress"></a>Az operációs rendszer titkosítási folyamat figyelése
 Az operációs rendszer titkosítási folyamat három módon figyelheti:
 
-* Használja a `Get-AzureRmVmDiskEncryptionStatus` parancsmagot, és vizsgálja meg a Feladatnézetben mező:
+* Használja a `Get-AzVmDiskEncryptionStatus` parancsmagot, és vizsgálja meg a Feladatnézetben mező:
     ```powershell
     OsVolumeEncrypted          : EncryptionInProgress
     DataVolumesEncrypted       : NotMounted
@@ -537,7 +539,7 @@ erre:
 ## <a name="bkmk_UploadVHD"></a> Titkosított virtuális lemezek feltöltése az Azure storage-fiókba
 BitLocker-titkosítást vagy DM-Crypt titkosítás engedélyezése után a helyi titkosított virtuális merevlemez kell feltölteni a tárfiókba.
 ```powershell
-    Add-AzureRmVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo> [[-NumberOfUploaderThreads] <Int32> ] [[-BaseImageUriToPatch] <Uri> ] [[-OverWrite]] [ <CommonParameters>]
+    Add-AzVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo> [[-NumberOfUploaderThreads] <Int32> ] [[-BaseImageUriToPatch] <Uri> ] [[-OverWrite]] [ <CommonParameters>]
 ```
 ## <a name="bkmk_UploadSecret"></a> Töltse fel a titkos kulcsot a key vault előzetes titkosított virtuális gép
 Titkosításához az Azure AD-alkalmazás (előző kiadás) használatával, a a korábban beszerzett-lemeztitkosítás titkos kulcsot a kulcstartóban titkos blobnévvel legyen feltöltve. A key vaultban kell rendelkeznie a lemeztitkosítás és az Azure AD-ügyfél engedélyezve.
@@ -546,14 +548,14 @@ Titkosításához az Azure AD-alkalmazás (előző kiadás) használatával, a a
  $AadClientId = "My-AAD-Client-Id"
  $AadClientSecret = "My-AAD-Client-Secret"
 
- $key vault = New-AzureRmKeyVault -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -Location $Location
+ $key vault = New-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -Location $Location
 
- Set-AzureRmKeyVaultAccessPolicy -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -ServicePrincipalName $AadClientId -PermissionsToKeys all -PermissionsToSecrets all
- Set-AzureRmKeyVaultAccessPolicy -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -EnabledForDiskEncryption
+ Set-AzKeyVaultAccessPolicy -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -ServicePrincipalName $AadClientId -PermissionsToKeys all -PermissionsToSecrets all
+ Set-AzKeyVaultAccessPolicy -VaultName $KeyVaultName -ResourceGroupName $ResourceGroupName -EnabledForDiskEncryption
 ``` 
 
 ### <a name="bkmk_SecretnoKEK"></a> Lemeztitkosítás titkos kódja egy KEK nem titkosított
-Állítsa be a titkos kulcsot tárol a kulcstárolóban, használja a [Set-AzureKeyVaultSecret](/powershell/module/azurerm.keyvault/set-azurekeyvaultsecret). Ha egy Windows virtuális gépet, a blokktitkosítási kulcsot fájl Base64 kódolású karakterláncként kódolt és majd a key vaulttal történő feltöltésekor a `Set-AzureKeyVaultSecret` parancsmagot. Linux esetén a hozzáférési kódot Base64 kódolású karakterláncként kódolt és feltölthetők a key vaulthoz. Emellett ellenőrizze, hogy a titkos kulcsot a key vaultban történő létrehozásakor a következő címkék vannak-e beállítva.
+Állítsa be a titkos kulcsot tárol a kulcstárolóban, használja a [Set-AzureKeyVaultSecret](/powershell/module/az.keyvault/set-azurekeyvaultsecret). Ha egy Windows virtuális gépet, a blokktitkosítási kulcsot fájl Base64 kódolású karakterláncként kódolt és majd a key vaulttal történő feltöltésekor a `Set-AzureKeyVaultSecret` parancsmagot. Linux esetén a hozzáférési kódot Base64 kódolású karakterláncként kódolt és feltölthetők a key vaulthoz. Emellett ellenőrizze, hogy a titkos kulcsot a key vaultban történő létrehozásakor a következő címkék vannak-e beállítva.
 
 #### <a name="windows-bek-file"></a>Windows rendelkeznek BEk-KEL fájl
 ```powershell
@@ -578,7 +580,7 @@ $SecretName = [guid]::NewGuid().ToString()
 $SecureSecretValue = ConvertTo-SecureString $FileContentEncoded -AsPlainText -Force
 $Secret = Set-AzureKeyVaultSecret -VaultName $VeyVaultName -Name $SecretName -SecretValue $SecureSecretValue -tags $tags
 
-# Show the secret's URL and store it as a variable. This is used as -DiskEncryptionKeyUrl in Set-AzureRmVMOSDisk when you attach your OS disk. 
+# Show the secret's URL and store it as a variable. This is used as -DiskEncryptionKeyUrl in Set-AzVMOSDisk when you attach your OS disk. 
 $SecretUrl=$secret.Id
 $SecretUrl
 ```
@@ -602,7 +604,7 @@ $SecretUrl
 Használja a `$secretUrl` esetében a következő lépésben [KEK használata nélkül az operációsrendszer-lemez csatolása](#bkmk_URLnoKEK).
 
 ### <a name="bkmk_SecretKEK"></a> Lemeztitkosítás titkos kódja egy KEK titkosítva
-Mielőtt feltölti a titkos kulcsot a key vaulthoz, igény szerint titkosíthatók, kulcstitkosítási kulcs használatával. Használja a sortörés [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) először mesterkulcs a kulcstitkosítási kulcs használatával. A sortörés művelet kimenete egy base64 URL-kódolású karakterláncot, amely ezt követően feltöltheti, titkos kulcs használatával a [ `Set-AzureKeyVaultSecret` ](/powershell/module/azurerm.keyvault/set-azurekeyvaultsecret) parancsmagot.
+Mielőtt feltölti a titkos kulcsot a key vaulthoz, igény szerint titkosíthatók, kulcstitkosítási kulcs használatával. Használja a sortörés [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) először mesterkulcs a kulcstitkosítási kulcs használatával. A sortörés művelet kimenete egy base64 URL-kódolású karakterláncot, amely ezt követően feltöltheti, titkos kulcs használatával a [ `Set-AzureKeyVaultSecret` ](/powershell/module/az.keyvault/set-azurekeyvaultsecret) parancsmagot.
 
 ```powershell
     # This is the passphrase that was provided for encryption during the distribution installation
@@ -699,7 +701,7 @@ Használat `$KeyEncryptionKey` és `$secretUrl` esetében a következő lépésb
 ###  <a name="bkmk_URLnoKEK"></a>Egy KEK használata nélkül
 Amíg az operációsrendszer-lemez csatol, teljesítenie kell a `$secretUrl`. Az URL-címet az "a-lemeztitkosítás titkos kulcs egy KEK nem titkosított" szakaszban jött létre.
 ```powershell
-    Set-AzureRmVMOSDisk `
+    Set-AzVMOSDisk `
             -VM $VirtualMachine `
             -Name $OSDiskName `
             -SourceImageUri $VhdUri `
@@ -712,7 +714,7 @@ Amíg az operációsrendszer-lemez csatol, teljesítenie kell a `$secretUrl`. Az
 ### <a name="bkmk_URLKEK"></a>Egy KEK használatával
 Ha az operációsrendszer-lemez csatolásához `$KeyEncryptionKey` és `$secretUrl`. Az URL-címet az "Lemeztitkosítás titkos kódja egy KEK titkosított" szakaszban jött létre.
 ```powershell
-    Set-AzureRmVMOSDisk `
+    Set-AzVMOSDisk `
             -VM $VirtualMachine `
             -Name $OSDiskName `
             -SourceImageUri $CopiedTemplateBlobUri `

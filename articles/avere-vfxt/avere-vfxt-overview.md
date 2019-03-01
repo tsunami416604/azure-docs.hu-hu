@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: overview
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: b0b835dde4b98619238eaac9449432aaa9acffd3
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: 724352ae9f7c66dfeab293473ea79438e3b36254
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50670487"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56989319"
 ---
 # <a name="what-is-avere-vfxt-for-azure"></a>Mi az Azure-hoz készült Avere vFXT? 
 
@@ -19,8 +19,8 @@ Az Azure-hoz készült Avere vFXT egy adatigényes, nagy teljesítményű feldol
 
 Az Avere vFXT a következő gyakori számítási megoldásokat támogatja: 
 
-* Hibrid felhőarchitektúra: az Azure-hoz készült Avere vFXT kompatibilis a hardveralapú tárolórendszerekkel. Ennek révén anélkül használhatja ki a felhőalapú számítástechnika előnyeit, hogy fájlokat kellene hozzá áthelyeznie. 
-* Felhőalapú teljesítménynövelés: az Azure-hoz készült Avere vFXT segítségével adatokat helyezhet át a felhőbe egy adott projekt esetében, vagy véglegesen „átemelhet” teljes munkafolyamatokat is. 
+* Hibrid felhő architektúra: Az Azure-ban Avere vFXT egy hardver tárolórendszer, amellyel az az előnye, hogy a felhő-számítástechnika fájlok áthelyezése nélkül is dolgozhat. 
+* A felhőbeli tartalékkapacitás: Az Azure-ban Avere vFXT segíthet az adatok áthelyezése a felhőbe egy projekthez, vagy a "átemelhetők" az egész munkafolyamat véglegesen. 
 
 ![Blob Storage-hez és helyszíni adatközponthoz csatlakoztatott, Azure-előfizetésbeli Avere vFXT rendszer részleteit bemutató ábra](media/avere-vfxt-hybrid.png)
 
@@ -67,7 +67,7 @@ Az Avere vFXT az alábbi Azure-erőforrásokat használja:
 
 |Azure-összetevő|   |
 |----------|-----------|
-|Virtuális gépek|3 vagy több (D16s_v3 vagy E32s_v3)|
+|Virtual machines (Virtuális gépek)|3 vagy több E32s_v3|
 |Prémium szintű SSD-tár|200 GB operációsrendszer-tárhely és 1–4 TB gyorsítótártér csomópontonként |
 |Tárfiók (nem kötelező) |v2|
 |Háttérbeli adattárolás (nem kötelező) | Egy üres LRS-blobtároló |

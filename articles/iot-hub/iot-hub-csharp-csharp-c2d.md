@@ -1,20 +1,20 @@
 ---
 title: Felhőből az eszközre irányuló üzeneteket az Azure IoT Hub (.NET) |} A Microsoft Docs
 description: Annak a felhőből az eszközre irányuló üzeneteket küld egy eszköz az Azure IoT SDK-k használata a .NET-hez készült Azure IoT hubról. Módosítja egy eszközalkalmazásnak, hogy a felhőből az eszközre irányuló üzenetek fogadása és módosíthat egy háttér-alkalmazást a felhőből az eszközre irányuló üzenetek küldéséhez.
-author: fsautomata
-manager: ''
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/24/2017
-ms.author: elioda
-ms.openlocfilehash: c519a3b71068570ff864ccc0eb0292cebd51173a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: robin.shahan
+ms.openlocfilehash: 8a59f2ad7d3af09f776aa22b96ddf58403da28e2
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243726"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010888"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>Üzenetküldés a felhőből az eszközre az IoT Hub (.NET)
 

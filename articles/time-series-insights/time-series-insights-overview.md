@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 12/05/2018
 ms.custom: seodec18
-ms.openlocfilehash: 883a740f1d6dd7c6ef1ce28158a92cafee44629e
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: a6bfeb820b34d36fc370de7f81694086aeea8515
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556067"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193960"
 ---
 # <a name="what-is-azure-time-series-insights"></a>Mi az Azure Time Series Insights?
 
@@ -39,7 +39,7 @@ Ha nem biztos abban, hogy az adatai idősorozatok-e, a következőket kell tudni
 
 Ez a videó a felhőalapú IoT elemző platformot, a Time Series Insights-ot mutatja be.
 
-> [!VIDEO https://www.youtube.com/embed/qNc9gQTLROs]
+> [!VIDEO https://youtube.com/embed/GaARrFfjoss]
 
 ## <a name="primary-scenarios"></a>Elsődleges forgatókönyvek
 

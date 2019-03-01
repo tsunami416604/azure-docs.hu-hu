@@ -9,12 +9,12 @@ ms.subservice: custom-translator
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: fc3e545db0529739659c1019cbed6d434b586f8f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 10f34a24668981da5629bd9d03652aa76081bd44
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56726958"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194112"
 ---
 # <a name="what-are-parallel-documents"></a>Mik a párhuzamos dokumentumokat?
 
@@ -23,7 +23,7 @@ Nem számít, hogy milyen nyelvű "forrás" van megjelölve, és milyen nyelvű 
 
 ## <a name="requirements"></a>Követelmények
 
-Szüksége lesz legalább egy rendszer betanítására 10 000 párhuzamos mondatokat. Ajánlott eljárásként, folyamatosan hozzáadhat több párhuzamos tartalmat és teljesített kapcsolat-újraépítési, a fordítási rendszer minőségének javítása érdekében.
+Szüksége lesz legalább egy rendszer betanítására 10 000 egyedi párhuzamos mondatokat. Ajánlott eljárásként, folyamatosan hozzáadhat több párhuzamos tartalmat és teljesített kapcsolat-újraépítési, a fordítási rendszer minőségének javítása érdekében.
 
 A Microsoft megköveteli, hogy az egyéni a fordítót feltöltött dokumentumok sérti egy harmadik fél szerzői és szellemi tulajdonságai. További információkért tekintse meg a [használati](https://azure.microsoft.com/support/legal/cognitive-services-terms/).
 A portál használatával dokumentum feltöltése nem változtatja meg a dokumentum maga a szellemi tulajdonjogát.

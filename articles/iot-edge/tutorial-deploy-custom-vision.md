@@ -9,26 +9,30 @@ ms.date: 11/01/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 6acdbdf5ed5312dc9bc9aa5120bad6e7cf0935b7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c36e557f4e7c4a42726ee96de8bd73755d5e19c4
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075828"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193670"
 ---
-# <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Oktatóanyag: Képosztályozás végrehajtása a peremhálózaton a Custom Vision Service használatával
+# <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Oktatóanyag: Hajtsa végre a képek besorolása a Custom Vision Service a peremhálózaton
 
 Az Azure IoT Edge hatékonyabbá teheti IoT-megoldását a felhőben található számítási feladatok peremhálózatra történő áthelyezése által. Ez a képesség hasznos a nagy mennyiségű adatot feldolgozó szolgáltatások, például számítógépes látástechnológiai modellek esetében. A [Custom Vision Service](../cognitive-services/custom-vision-service/home.md) szolgáltatással egyéni képosztályozókat hozhat létre és helyezhet üzembe tárolóként egy eszközön. Ezzel a két szolgáltatással megállapításokat tehet képekről vagy videostreamekről anélkül, hogy az adatokat először át kellene helyeznie az oldalról. A Custom Vision egy olyan osztályozót biztosít, amely a megállapítások létrehozásához összehasonlítja a képet egy betanított modellel. 
 
 Egy IoT Edge-eszközön található Custom Vision például meg tudja határozni, hogy egy autópályán az átlagosnál nagyobb vagy kisebb-e a forgalom, vagy hogy egy parkolóház egy bizonyos sorában elérhetők-e parkolóhelyek. Ezeket a megállapításokat műveletvégzés céljából meg lehet osztani egy másik eszközzel. 
 
-
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni: 
 
 > [!div class="checklist"]
+>
 > * Képosztályozó létrehozása a Custom Vision használatával.
 > * IoT Edge-modul létrehozása, amely lekérdezi a Custom Vision eszközön található webkiszolgálót.
 > * A képosztályozó eredményeinek küldése az IoT Hubnak.
+
+<center>
+![Diagram – oktatóanyag architektúra tesztelése és üzembe helyezése az osztályozó által igénybe vett](./media/tutorial-deploy-custom-vision/custom-vision-architecture.png)
+</center>
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -43,7 +47,7 @@ Felhőerőforrások:
 
 * Egy standard szintű [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban. 
 * Egy tárolóregisztrációs adatbázis. Ez az oktatóanyag az [Azure Container Registryt](https://docs.microsoft.com/azure/container-registry/) használja. 
-    * Kérje le a tárolóregisztrációs adatbázis [rendszergazdai fiókjának](../container-registry/container-registry-authentication.md#admin-account) hitelesítő adatait.
+* Kérje le a tárolóregisztrációs adatbázis [rendszergazdai fiókjának](../container-registry/container-registry-authentication.md#admin-account) hitelesítő adatait.
 
 Fejlesztési erőforrások:
 
@@ -151,7 +155,7 @@ Egy megoldás logikus módját jelenti több modul fejlesztésének és megszerv
 
 3. A VS Code parancskatalógusának megnyitásához válassza a **View (Nézet)** > **Command Palette (Parancskatalógus)** elemet. 
 
-4. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** parancsot. A parancskatalógusban adja meg az alábbi információkat a megoldás létrehozásához: 
+4. A parancskatalógus, adja meg, és futtassa a parancsot **Azure IoT Edge: Új IoT Edge-megoldás**. A parancskatalógusban adja meg az alábbi információkat a megoldás létrehozásához: 
 
    | Mező | Érték |
    | ----- | ----- |
@@ -201,7 +205,7 @@ Egy valós Custom Vision-beli üzemelő példányban rendelkezik egy kamerával,
 
 Ebben a szakaszban hozzáadhatja az új modult a meglévő CustomVisionSolution megoldáshoz, és létrehozhatja a kóddal a szimulált kamerát. 
 
-1. Ugyanabban a Visual Studio Code-ablakban, a parancskatalógusban futtassa az **Azure IoT Edge: Add IoT Edge Module** (Azure IoT Edge: Hozzáadás az IoT Edge modulhoz) parancsot. A parancskatalógusban adja meg az alábbi információkat az új modul létrehozásához: 
+1. Ugyanebben a Visual Studio Code ablakban, használja a parancskatalógus futtatásához **Azure IoT Edge: IoT Edge-modul hozzáadása**. A parancskatalógusban adja meg az alábbi információkat az új modul létrehozásához: 
 
    | Kérdés | Érték | 
    | ------ | ----- |
@@ -423,7 +427,7 @@ Először hozza létre, és küldje le a megoldást a tárolóregisztrációs ad
 
 Ezután állítsa be a hozzáférést az IoT Hubhoz a Visual Studio Code-ban. 
 
-1. A VS Code parancskatalógusában válassza ki az **Azure IoT Hub: Select IoT Hub** (Azure IoT Hub: IoT Hub kiválasztása) parancsot.
+1. Válassza ki a VS Code parancskatalógus **Azure IoT hubbal: Válassza ki az IoT Hub**.
 2. Az utasításokat követve jelentkezzen be Azure-fiókjába. 
 3. A parancskatalógusban válassza ki saját Azure-előfizetését, majd IoT Hubját. 
 

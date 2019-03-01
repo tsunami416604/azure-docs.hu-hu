@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/05/2019
 ms.author: kumud
-ms.openlocfilehash: f0ebb5cc913dda99d7e927ccf45c0f1478fa86c5
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a42a56b8a4a54c33297461a427a2b64b72357020
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814826"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194078"
 ---
 # <a name="outbound-connections-in-azure"></a>Az Azure kimenő kapcsolatainak
 
@@ -70,7 +70,7 @@ SNAT portok előre kiosztott leírtak szerint a [ismertetése SNAT és a PAT](#s
 
 Amikor [több nyilvános IP-címek társítva a Load Balancer alapszintű](load-balancer-multivip-overview.md), ezen nyilvános IP-címek bármelyike egy jelölt kimenő forgalom számára, és a egy véletlenszerűen kiválasztott.  
 
-Kimenő kapcsolatok a Load Balancer alapszintű állapotának monitorozásához használja [Log Analytics terheléselosztó](load-balancer-monitor-log.md) és [eseménynaplók riasztás](load-balancer-monitor-log.md#alert-event-log) SNAT port Erőforrásfogyás üzenetek figyeléséhez.
+Kimenő kapcsolatok a Load Balancer alapszintű állapotának monitorozásához használja [Azure Monitor-naplókban a Load Balancer](load-balancer-monitor-log.md) és [eseménynaplók riasztás](load-balancer-monitor-log.md#alert-event-log) SNAT port Erőforrásfogyás üzenetek figyeléséhez.
 
 ### <a name="defaultsnat"></a>3. forgatókönyv: Önálló virtuális gép példány szintű nyilvános IP-cím nélkül
 

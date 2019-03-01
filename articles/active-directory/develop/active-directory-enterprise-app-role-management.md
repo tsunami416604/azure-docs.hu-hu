@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2019
+ms.date: 02/21/2019
 ms.author: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b7604fbe306e606e56c9dd0a2b09b4641257dbc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a354fdf8ea75d9446c2a5e5ee6a70489cf9dbfb5
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203354"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990511"
 ---
 # <a name="how-to-configure-the-role-claim-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: A vállalati alkalmazásokhoz SAML-jogkivonatban kiadott szerepkörjogcím konfigurálása
 
@@ -157,6 +157,9 @@ Ha az alkalmazás egyéni átadni egy SAML-válasz-szerepkörök vár, szükség
     | Attribútum neve | Hodnota atributu |
     | -------------- | ----------------|
     | Szerepkörnév  | user.assignedroles |
+
+    >[!NOTE]
+    >A szerepkör jogcím értéke null, ha majd az Azure AD nem küld ennek az értéknek a jogkivonatban, és ez a kialakítás megfelelően alapértelmezett.
 
     a. Kattintson a **szerkesztése** gombra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
 

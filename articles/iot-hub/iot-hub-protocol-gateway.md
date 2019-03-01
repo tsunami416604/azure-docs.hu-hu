@@ -1,45 +1,45 @@
 ---
-title: Az Azure IoT protokoll-átjáró |} Microsoft Docs
-description: Hogyan használható az Azure IoT protokoll-átjáró IoT-központ képességek és kiterjesztheti protokoll támogatása engedélyezése eszközökhöz a hub nem támogatott natív módon az IoT-központ által protokollok használatával kapcsolódni.
-author: fsautomata
-manager: ''
+title: Az Azure IoT-protokollátjáró |} A Microsoft Docs
+description: Hogyan használható az Azure IoT-protokollátjáró bővítheti az IoT Hub képességeket és protokoll támogatása eszközök engedélyezéséhez nem támogatott natív módon az IoT Hub által protokollok használatával a hubhoz való csatlakozáshoz.
+author: robinsh
+manager: philmea
+ms.author: robin.shahan
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: elioda
-ms.openlocfilehash: 2c90ee899d0002d41ca21ed4a4927470ee53b2e1
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 91d61ffecc0e5345d02db88af73aee4586f7099e
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34635304"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57009851"
 ---
-# <a name="support-additional-protocols-for-iot-hub"></a>Az IoT-központ további protokollok támogatása
-Az Azure IoT Hub natív módon támogatja a kommunikációt a MQTT AMQP vagy HTTPS protokollokon keresztül. Bizonyos esetekben eszközök vagy mező átjárók előfordulhat, hogy nem fogja tudni a szabványos protokollok valamelyikével és protokoll eljárni. Ilyen esetekben egy egyéni gateway használható. Egy egyéni átjáró protokoll kiigazítása az IoT-központok végpontjai teszi lehetővé a forgalmat, és az IoT Hub-hídképzés. Használhatja a [Azure IoT protokoll-átjáró](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md) ahhoz, hogy az IoT hub protokoll kiigazítása egyéni átjáróként.
+# <a name="support-additional-protocols-for-iot-hub"></a>Az IoT Hub további protokollok támogatása
+Az Azure IoT Hub natív módon támogatja a kommunikációt az MQTT, AMQP és a HTTPS protokollokon keresztül. Bizonyos esetekben eszközök vagy helyszíni átjárók nem képes ezek szabványos protokollok valamelyikével és protokoll eljárni. Ilyen esetekben egy egyéni átjárót is használhatja. Egyéni átjáró adatközponthíd-képzés a forgalmat, és az IoT Hub által lehetővé teszi a protokoll-betanítás az IoT Hub-végpontok. Használhatja a [Azure IoT-protokollátjáró](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md) egyéni átjáróként az IoT Hub protokoll-betanítás engedélyezéséhez.
 
-## <a name="azure-iot-protocol-gateway"></a>Az Azure IoT protokoll-átjáró
-Az Azure IoT protokoll átjáró keretrendszere, amely készült, nagy méretű, kétirányú eszköz kommunikáció IoT Hub protokoll kiigazítása. A protokoll-átjáró része a csatlakoztatott eszköz kapcsolatok fogadására egy adott protokollon keresztül. Az IoT-központ forgalmat AMQP 1.0-hez képest kulcsösszetevő azt. 
+## <a name="azure-iot-protocol-gateway"></a>Az Azure IoT-protokollátjáró
+Az Azure IoT-protokollátjáró egy olyan keretrendszer, a tervezett, nagy méretű, kétirányú eszköz kommunikációt az IoT Hub protokoll-betanítás. A protokoll-átjáró egy átadó összetevő, amely az eszköz kapcsolatokat fogad egy adott protokollon keresztül. A forgalom az IoT hubhoz AMQP 1.0-s felett áthidalja azt. 
 
-A protokoll-átjáró, az Azure skálázható módon telepítheti a Azure Service Fabric, a Azure Cloud Services feldolgozói szerepkörök vagy a Windows virtuális gépek használatával. Emellett a protokoll-átjáró telepíthető helyszíni környezetekben, például a mező átjárók.
+Azure Service Fabric, az Azure Cloud Services feldolgozói szerepkörei vagy a Windows Virtual Machines használatával telepítheti a protokoll-átjáró az Azure-ban rugalmasan méretezhető módon. Emellett a protokoll-átjáró a helyszíni környezetekben, például a helyszíni átjárók is telepíthető.
 
-Az Azure IoT protokoll átjáró tartalmaz egy MQTT protokoll adapter, amelyek segítségével testre szabhatja a MQTT protokoll viselkedését, ha szükséges. Az IoT-központ beépített támogatást nyújt a MQTT v3.1.1 protokollt, mert csak érdemes a MQTT protokoll adaptert használ, ha a protokoll testre szabott elem és további funkciók konkrét követelmények szükségesek.
+Az Azure IoT-protokollátjáró magában foglalja az MQTT protokoll adapter, amely lehetővé teszi, hogy szabhatja az MQTT protokoll működését, szükség esetén. Az IoT Hub az MQTT v3.1.1 protokoll beépített támogatást nyújt, mivel csak fontolja meg az MQTT protokoll adapter használatával, ha szükségesek protokoll testreszabások vagy további szolgáltatásokat konkrét követelmények.
 
-A MQTT adaptert is a programozási modellt protokoll adapterek más protokollokat mutatja be. Ezenkívül az Azure IoT protokoll átjáró programozási modell lehetővé teszi az egyéni összetevők, például az egyéni hitelesítési, az üzenet átalakítások, a tömörítési/kibontása vagy a titkosítási/visszafejtési az eszközök és az IoT-központ közötti forgalom speciális feldolgozásra.
+Az MQTT-adaptert is a programozási modellt protokoll adapterek más protokollokat mutatja be. Emellett az Azure IoT protokoll átjáró programozási modell lehetővé teszi a speciális feldolgozó, például az egyéni hitelesítési, üzenet átalakítások, tömörítése és kibontása vagy titkosítási/visszafejtési közötti forgalom az egyéni összetevők az eszközök és az IoT hubot.
 
-Rugalmasság az Azure IoT protokoll-átjáró és MQTT megvalósítási megadott nyílt forráskódú szoftvereket projektben. A nyílt forráskódú projekt segítségével különböző protokollok és protokollverziója támogatásához, vagy testre szabhatja a megvalósítás a forgatókönyvéhez. 
+A rugalmasság érdekében az Azure IoT-protokollátjáró és az MQTT megvalósítási megadott nyílt forráskódú szoftverek-projektben. A nyílt forráskódú projekt segítségével különféle protokollokat és protokoll verziók támogatása, vagy testre szabhatja a megvalósítás a forgatókönyvhöz. 
 
 ## <a name="next-steps"></a>További lépések
-Az Azure IoT protokoll-átjáró és használja, és az IoT-megoldásból részeként telepítésével kapcsolatos további információkért lásd:
+Az Azure IoT-protokollátjáró, és hogyan használja, és az IoT-megoldás részeként üzembe kapcsolatos további információkért lásd:
 
-* [Az Azure IoT protokoll átjáró tárház a Githubon](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md)
-* [Az Azure IoT protokoll átjáró fejlesztői útmutató](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/docs/DeveloperGuide.md)
+* [Az Azure IoT protokoll átjáró tárházban a Githubon](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md)
+* [Az Azure IoT protokoll átjáró fejlesztői útmutatója](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/docs/DeveloperGuide.md)
 
-Az IoT-központ telepítésének tervezése kapcsolatos további információkért lásd:
+Az IoT Hub üzembe helyezés tervezésével kapcsolatos további tudnivalókért lásd:
 
 * [Az Event Hubs összehasonlítása][lnk-compare]
-* [Skálázás, magas rendelkezésre állás és vészhelyreállítás][lnk-scaling]
-* [IoT Hub fejlesztői útmutató][lnk-devguide]
+* [Méretezés, magas rendelkezésre állású és vész-helyreállítási][lnk-scaling]
+* [Az IoT Hub fejlesztői útmutató][lnk-devguide]
 
 [lnk-compare]: iot-hub-compare-event-hubs.md
 [lnk-scaling]: iot-hub-scaling.md

@@ -4,58 +4,49 @@ description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 14297c74-0d57-4146-97fa-7a055fb73057
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 11/20/2018
+ms.topic: tutorial
+ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8859c0363a738c744f5c9b496cf77f5aaf1ba61
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e5578e74a6415f120840c8c0d8072144efa51750
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203505"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992277"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ivanti-service-manager-ism"></a>Oktatóanyag: Az Azure Active Directory-integráció Ivanti Service Manager (ISM)
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Ivanti Service Manager (ISM) integrálása az Azure Active Directory (Azure AD).
-
 Ivanti Service Manager (ISM) integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Szabályozhatja, ki férhet Ivanti Service Manager (ISM) az Azure AD-ben.
-- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett a Ivanti Service Manager (ISM) (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-- A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* Szabályozhatja, ki férhet Ivanti Service Manager (ISM) az Azure AD-ben.
+* Engedélyezheti a felhasználóknak, hogy a rendszer automatikusan bejelentkezett a Ivanti Service Manager (ISM) (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md)
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az Azure AD-integráció konfigurálása Ivanti Service Manager (ISM), a következőkre van szükség:
 
-- Azure AD-előfizetés
-- Egy Ivanti Service Manager (ISM) egyszeri bejelentkezés engedélyezve van az előfizetés
-
-> [!NOTE]
-> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
-
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
-
-- Ne használja az éles környezetben, csak szükség esetén.
-- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
+* Ivanti Service Manager (ISM) egyszeri bejelentkezés engedélyezve van az előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
+Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
 
-1. Ivanti Service Manager (ISM) hozzáadása a katalógusból
-2. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+* Ivanti Service Manager (ISM) támogatja a **SP és IDP** által kezdeményezett egyszeri bejelentkezés
+* Ivanti Service Manager (ISM) támogatja a **igény szerinti** felhasználók átadása
 
 ## <a name="adding-ivanti-service-manager-ism-from-the-gallery"></a>Ivanti Service Manager (ISM) hozzáadása a katalógusból
 
@@ -63,168 +54,163 @@ Az Azure AD-be Ivanti Service Manager (ISM)-integráció konfigurálása szüks�
 
 **Ivanti Service Manager (ISM) hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
-    ![Az Azure Active Directory gomb][1]
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-2. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
 
-    ![A vállalati alkalmazások panelen][2]
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
 3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
-    ![Az új alkalmazás gomb][3]
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
 4. A Keresés mezőbe írja be a **Ivanti Service Manager (ISM)** válassza **Ivanti Service Manager (ISM)** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-    ![Ivanti Service Manager (ISM) a találatok listájában](./media/ivanti-service-manager-tutorial/tutorial-ivanti-service-manager-addfromgallery.png)
+     ![Ivanti Service Manager (ISM) a találatok listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az Ivanti Service Manager (ISM) a teszt "Britta Simon" nevű felhasználó.
-
-Az egyszeri bejelentkezés működéséhez az Azure AD tudnia kell, a partner felhasználó Ivanti Service Manager (ISM) mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Ivanti Service Manager (ISM) hivatkozás kapcsolatát kell létrehozni.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az Ivanti Service Manager (ISM) nevű tesztfelhasználó alapján **Britta Simon**.
+Egyszeri bejelentkezés működjön, az Azure AD-felhasználót és a kapcsolódó felhasználó Ivanti Service Manager (ISM) közötti kapcsolat kapcsolatot kell hozható létre.
 
 Az Azure AD egyszeri bejelentkezés Ivanti Service Manager (ISM) tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-3. **[Egy Ivanti Service Manager (ISM) tesztfelhasználó létrehozása](#creating-an-ivanti-service-manager-ism-test-user)**  – szeretné, hogy egy megfelelője a Britta Simon a Ivanti Service Manager (ISM), amely kapcsolódik az Azure AD felhasználói ábrázolása.
-4. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Ivanti Service Manager (ISM) egyszeri bejelentkezés konfigurálása](#configure-ivanti-service-manager-ism-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre Ivanti Service Manager (ISM) tesztfelhasználót](#create-ivanti-service-manager-ism-test-user)**  – szeretné, hogy egy megfelelője a Britta Simon a Ivanti Service Manager (ISM), amely kapcsolódik az Azure AD felhasználói ábrázolása.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és az Ivanti Service Manager (ISM) alkalmazás egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-**Az Azure AD egyszeri bejelentkezés konfigurálása Ivanti Service Manager (ISM), hajtsa végre az alábbi lépéseket:**
+Az Azure AD egyszeri bejelentkezés konfigurálása Ivanti Service Manager (ISM), hajtsa végre az alábbi lépéseket:
 
-1. Az Azure Portalon az a **Ivanti Service Manager (ISM)** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
+1. Az a [az Azure portal](https://portal.azure.com/), az a **Ivanti Service Manager (ISM)** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen kattintson **kiválasztása** a **SAML** módot az egyszeri bejelentkezés engedélyezése.
+2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
 
-    ![Egyszeri bejelentkezés konfigurálása](common/tutorial-general-301.png)
+    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
 
 3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
-    ![Egyszeri bejelentkezés konfigurálása](common/editconfigure.png)
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszban, a következő lépésekkel, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód:
+4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, hajtsa végre az alábbi lépéseket:
 
-    ![Ivanti Service Manager (ISM) Domain and URLs single sign-on information](./media/ivanti-service-manager-tutorial/tutorial-ivanti-service-manager-url.png)
+    ![Ivanti Service Manager (ISM) Domain and URLs single sign-on information](common/idp-intiated.png)
 
-    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe:
+    a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím:
     | |
     |--|
     | `https://<customer>.saasit.com/` |
     | `https://<customer>.saasiteu.com/` |
     | `https://<customer>.saasitau.com/` |
 
-    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<customer>/handlers/sso/SamlAssertionConsumerHandler.ashx`
+    b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím: `https://<customer>/handlers/sso/SamlAssertionConsumerHandler.ashx`
 
 5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
-    ![Ivanti Service Manager (ISM) Domain and URLs single sign-on information](./media/ivanti-service-manager-tutorial/tutorial-ivanti-service-manager-url1.png)
+    ![Ivanti Service Manager (ISM) Domain and URLs single sign-on information](common/metadata-upload-additional-signon.png)
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<customer>.saasit.com/`
+    Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:  `https://<customer>.saasit.com/`
 
     > [!NOTE]
-    > Ezek a értékei nem valódi. Frissítse a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-ezeket az értékeket. Kapcsolattartó [Ivanti Service Manager (ISM) ügyfél-támogatási csapatának](https://www.ivanti.com/support/contact) beolvasni ezeket az értékeket.
+    > Ezek a értékei nem valódi. Az értékeket módosítsa a tényleges azonosítóját, válasz URL-cím és bejelentkezési URL-címet. Kapcsolattartó [Ivanti Service Manager (ISM) ügyfél-támogatási csapatának](https://www.ivanti.com/support/contact) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-6. Az a **SAML-aláíró tanúsítvány** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez **tanúsítvány (Raw)**, és mentse a tanúsítványfájlt a számítógépen.
+6. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **(Raw)tanúsítvány** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
-    ![A tanúsítvány letöltési hivatkozás](./media/ivanti-service-manager-tutorial/tutorial-ivanti-service-manager-certificate.png) 
+    ![A tanúsítvány letöltési hivatkozás](common/certificateraw.png)
 
-7. Az a **állítsa be Ivanti Service Manager (ISM)** területén másolja a megfelelő URL-címet a követelmény alapján.
+7. Az a **állítsa be Ivanti Service Manager (ISM)** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+
+    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 
     a. Bejelentkezési URL
 
-    b. Azure AD-azonosító
+    b. Azure Ad Identifier
 
     c. Kijelentkezési URL
 
-    ![Ivanti Service Manager (ISM) Configuration](common/configuresection.png)
+### <a name="configure-ivanti-service-manager-ism-single-sign-on"></a>Configure Ivanti Service Manager (ISM) Single Sign-On
 
-8. Az egyszeri bejelentkezés konfigurálása **Ivanti Service Manager (ISM)** oldalon kell küldenie a letöltött **tanúsítvány (Raw)**, és a másolt **bejelentkezési URL-cím**,  **Az Azure AD-azonosító**, **kijelentkezési URL-címe** való [Ivanti Service Manager (ISM) támogatási csapatának](https://www.ivanti.com/support/contact). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+Az egyszeri bejelentkezés konfigurálása **Ivanti Service Manager (ISM)** oldalon kell küldenie a letöltött **tanúsítvány (Raw)** és az Azure Portalról másolt URL-címek megfelelő [Ivanti szolgáltatás A támogatási csoport kezelője ESZKÖZT](https://www.ivanti.com/support/contact). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
 1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 
-    ![Az Azure AD-felhasználó létrehozása][100]
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
 
 2. Válassza ki **új felhasználó** a képernyő tetején.
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](common/create-aaduser-01.png) 
+    ![Új felhasználó gomb](common/new-user.png)
 
 3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](common/create-aaduser-02.png)
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-    a. Az a **neve** írja be a következőt **BrittaSimon**.
+    a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be a **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
-    c. Válassza ki **tulajdonságok**, jelölje be a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
-    d. Kattintson a **Létrehozás** gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
-### <a name="creating-an-ivanti-service-manager-ism-test-user"></a>Egy Ivanti Service Manager (ISM) tesztfelhasználó létrehozása
-
-Ez a szakasz célja egy Britta Simon Ivanti Service Manager (ISM) nevű felhasználó létrehozásához. Ivanti Service Manager (ISM) támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Új felhasználó jön létre az Ivanti Service Manager (ISM) elérésére, ha még nem létezik tett kísérlet során.
->[!Note]
->Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [Ivanti Service Manager (ISM) támogatási csapatának](https://www.ivanti.com/support/contact).
-
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
 Ebben a szakaszban engedélyezze Britta Simon Ivanti Service Manager (ISM) nyújtó Azure egyszeri bejelentkezés használatára.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**válassza **minden alkalmazás**.
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Ivanti Service Manager (ISM)**.
 
-    ![Felhasználó hozzárendelése][201]
+    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
 2. Az alkalmazások listájában jelölje ki a **Ivanti Service Manager (ISM)**.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/ivanti-service-manager-tutorial/tutorial-ivanti-service-manager-app.png) 
+    ![A Ivanti Service Manager (ISM) hivatkozásra az alkalmazások listáját](common/all-applications.png)
 
-3. A bal oldali menüben kattintson **felhasználók és csoportok**.
+3. A bal oldali menüben válassza **felhasználók és csoportok**.
 
-    ![Felhasználó hozzárendelése][202]
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-4. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![Felhasználó hozzárendelése][203]
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
 5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-6. Az a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelése** gombra.
+6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
+
+### <a name="create-ivanti-service-manager-ism-test-user"></a>Create Ivanti Service Manager (ISM) test user
+
+Ebben a szakaszban egy Britta Simon nevű felhasználó Ivanti Service Manager (ISM) jön létre. Ivanti Service Manager (ISM) támogatja a just-in-time-felhasználók létrehozásának, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó még nem létezik Ivanti Service Manager (ISM), a hitelesítés után egy új jön létre.
+
+> [!Note]
+> Ha manuálisan hozzon létre egy felhasználót van szüksége, forduljon a [Ivanti Service Manager (ISM) támogatási csapatának](https://www.ivanti.com/support/contact).
+
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a Ivanti Service Manager (ISM) csempére kattint, meg kell lekérése automatikusan bejelentkezett az Ivanti Service Manager (ISM) alkalmazás.
-A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
+Ha a hozzáférési panelen a Ivanti Service Manager (ISM) csempére kattint, akkor kell automatikusan megtörténik a, a Ivanti Service Manager (ISM), amelynek beállítása egyszeri Bejelentkezést. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: common/tutorial-general-01.png
-[2]: common/tutorial-general-02.png
-[3]: common/tutorial-general-03.png
-[4]: common/tutorial-general-04.png
+- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-[100]: common/tutorial-general-100.png
-
-[201]: common/tutorial-general-201.png
-[202]: common/tutorial-general-202.png
-[203]: common/tutorial-general-203.png

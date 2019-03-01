@@ -1,19 +1,19 @@
 ---
 title: Megismerheti az Azure IoT Hub beépített végpont |} A Microsoft Docs
 description: Fejlesztői útmutató – útmutató a beépített, Event Hub-kompatibilis végpont használata az eszköz a felhőbe irányuló üzenetek olvasását.
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.author: dobett
-ms.openlocfilehash: 81cdd53769cc33daaed70ba824a0a3bbf68f8134
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 292e2c53c298856b7420dde7e85e4f6636b56178
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56877231"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008236"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Az eszközről a felhőbe irányuló üzenetek beolvasása a beépített végpontról
 

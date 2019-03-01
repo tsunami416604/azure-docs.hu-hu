@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: yizhon
-ms.openlocfilehash: 7734a273f6e07290ec7124def5cb3b095f7f067b
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: fe34668577efb1552731af7760896bccbb99cf67
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674158"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57009188"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Az Azure IoT eszközoldali SDK-t a c nyelvhez készült
 
@@ -23,7 +23,7 @@ A **Azure IoT eszközoldali SDK-t** kódtárak, amely leegyszerűsíti az üzene
 
 A c nyelvhez készült Azure IoT eszközoldali SDK-t (C99) hordozhatóságot ANSI C nyelven van megírva. Ez a funkció lehetővé teszi a kódtárakat jól alkalmazható tevékenységekről a művelethez használandó többféle platformra és eszközre, különösen akkor, ha minimálisra csökkentik a lemez és memóriaigénye prioritást.
 
-Nincsenek, amelyre az SDK-t tesztelték platformok széles köre (lásd a [Azure Certified for IoT eszközkatalógus](https://catalog.azureiotsuite.com/) részletekért). Bár ez a cikk a Windows-platformon futó mintakód forgatókönyvek tartalmaz, a jelen cikkben ismertetett kód megegyezik a támogatott platformokról a tartomány.
+Nincsenek, amelyre az SDK-t tesztelték platformok széles köre (lásd a [Azure Certified for IoT eszközkatalógus](https://catalog.azureiotsolutions.com/) részletekért). Bár ez a cikk a Windows-platformon futó mintakód forgatókönyvek tartalmaz, a jelen cikkben ismertetett kód megegyezik a támogatott platformokról a tartomány.
 
 Az alábbi videó mutatja be az Azure IoT SDK-t a C:
 

@@ -1,21 +1,21 @@
 ---
 title: 'Rövid útmutató: Eszköz vezérlése az Azure IoT Hubról (Node.js) | Microsoft Docs'
 description: Ebben a rövid útmutatóban két Node.js mintaalkalmazást fog futtatni. Az egyik egy háttéralkalmazás, amely a hubhoz csatlakoztatott eszközök távoli vezérlését teszi lehetővé. A másik alkalmazás a hubhoz csatlakoztatott eszközt szimulál, amelyet távolról lehet irányítani.
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 02/22/2019
-ms.author: dobett
-ms.openlocfilehash: 97491ca483ec402a491e5f20b2527b93df810d64
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.date: 02/27/2019
+ms.openlocfilehash: 173bf84306523a2c049201bf755b2b7f451b3d9d
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674106"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194894"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-nodejs"></a>Gyors útmutató: A vezérlőelem egy eszköz csatlakozik az IoT hub (Node.js)
 

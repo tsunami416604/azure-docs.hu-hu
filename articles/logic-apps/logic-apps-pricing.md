@@ -10,13 +10,13 @@ ms.reviewer: estfan, LADocs
 manager: carmonm
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.topic: article
-ms.date: 10/16/2018
-ms.openlocfilehash: 04fb86f9b8f8be2c013f9bd7449dd5a4b2bcf90c
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.date: 02/26/2019
+ms.openlocfilehash: 9b5452f112c6325dafd5edbe693b90ec2a94abc0
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854118"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990237"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Az Azure Logic Apps díjszabási modell
 
@@ -33,12 +33,12 @@ További információkért lásd: [Logic Apps díjszabási](https://azure.micros
 
 ## <a name="fixed-pricing-model"></a>Rögzített díjszabási modell
 
-Új logic Apps, amely futtatható egy [ *integrációs szolgáltatás környezet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), fix havi díja fizet ISE címkével standard szintű összekötők és a beépített műveletek. Az ISE-ben is biztosítja, hogy az Azure virtuális hálózatban lévő erőforrások eléréséhez elszigetelt logikai alkalmazások létrehozása és futtatása.  
+Új logikai alkalmazásokhoz, amelyek futtatható egy [ *integrációs szolgáltatás környezet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), fix havi díja a beépített műveletek, a standard szintű összekötők kell fizetnie. Az ISE-ben is biztosítja, hogy az Azure virtuális hálózatban lévő erőforrások eléréséhez elszigetelt logikai alkalmazások létrehozása és futtatása. 
 
-Az ISE-ben tartalmaz egy ingyenes vállalati összekötőt, amely a kívánt számú kapcsolatot foglal magában. További vállalati összekötők díjkötelesek használata a vállalati használati díj alapján. 
+Az ISE alapegység javította a kapacitást, ha a kapacitás növelése érdekében van szüksége, [több skálázási egység hozzáadása](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity), vagy a létrehozás során vagy később. Az ISE-ben tartalmaz egy ingyenes vállalati összekötőt, amely a kívánt számú kapcsolatot foglal magában. További vállalati összekötők díjkötelesek használata a vállalati használati díj alapján. 
 
 > [!NOTE]
-> Az integrációs service-környezet *privát előzetes verzió*. Hozzáférés igényléséhez [itt csatlakozni a kérelem létrehozása](https://aka.ms/iseprivatepreview). További információkért lásd: [Logic Apps díjszabási](https://azure.microsoft.com/pricing/details/logic-apps).
+> Az ISE-ben van [ *nyilvános előzetes verzióban*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). További információkért lásd: [Logic Apps díjszabási](https://azure.microsoft.com/pricing/details/logic-apps).
 
 <a name="triggers"></a>
 

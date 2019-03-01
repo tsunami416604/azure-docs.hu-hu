@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 12/19/2018
 ms.author: wesmc
-ms.openlocfilehash: 2f480fd4d5d7d6261776660f1a7eab587320c849
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 0e668c0b31defd5c945ddf2fec1b00f75d92f174
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052513"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990153"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Csatlakozás az Azure IoT Hub IoT DevKit AZ3166
 
@@ -88,10 +88,10 @@ Ha a kapcsolódás sikeres, a fejlesztői készlet újraindul, néhány másodpe
 
 ![Wi-Fi neve és IP-cím](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/wifi-ip.jpg)
 
-> [!NOTE] 
-> A fénykép jelenik meg az IP-cím nem egyeznek a tényleges IP-cím hozzárendelve, és a fejlesztői készlet képernyőn jelenik meg. Ez a normál, mert a Wi-Fi IP-címek dinamikus hozzárendelése DHCP használatával.
+> [!NOTE]
+> Szüksége lesz egy 2,4 GHz-es hálózati IoT DevKit használata. Az IoT DevKit meg a Wi-Fi modul, ezért nem kompatibilis az 5 GHz-es hálózati. Ellenőrizze [– gyakori kérdések](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#wi-fi-configuration) további részletekért.
 
-Wi-Fi beállítások konfigurálása után a hitelesítő adatait az eszköz meg a kapcsolathoz tartozó megmaradnak, még akkor is, ha az eszköz nem csatlakozik. Például ha a DevKit konfigurálhatja az otthoni Wi-Fi, és az Office fejlesztői a készlet megfelelő, szüksége lesz a fejlesztői készlet csatlakoztatása az Office Wi-Fi hozzáférési pont módban (a "Adja meg hozzáférési módban" című szakaszhoz-gyel kezdődik) újrakonfigurálás. 
+Wi-Fi beállítások konfigurálása után a hitelesítő adatait az eszköz meg a kapcsolathoz tartozó megmaradnak, még akkor is, ha az eszköz nem csatlakozik. Például ha a DevKit konfigurálhatja az otthoni Wi-Fi, és az Office fejlesztői a készlet megfelelő, szüksége lesz a fejlesztői készlet csatlakoztatása az Office Wi-Fi hozzáférési pont módban (a "Adja meg hozzáférési módban" című szakaszhoz-gyel kezdődik) újrakonfigurálás.
 
 ## <a name="start-using-the-devkit"></a>A fejlesztői készlet használatának megkezdése
 
@@ -175,7 +175,7 @@ Kövesse az alábbi lépéseket a fejlesztési környezet előkészítése a fej
 
 ### <a name="install-st-link-drivers"></a>ST-Link-illesztőprogramok telepítése
 
-[ST-hivatkozás/V2](http://www.st.com/en/development-tools/st-link-v2.html) az USB-felület, amely IoT DevKit segítségével kommunikál a fejlesztői gépen. Operációsrendszer-specifikus kövesse az eszköz a gép hozzáférésének engedélyezéséhez.
+[ST-hivatkozás/V2](http://www.st.com/en/development-tools/st-link-v2.html) az USB-felület, amely IoT DevKit segítségével kommunikál a fejlesztői gépen. Telepítenie kell azt a flash engedélyezése Windows a lefordított deivce kódot, a fejlesztői készlet. Operációsrendszer-specifikus kövesse az eszköz a gép hozzáférésének engedélyezéséhez.
 
 * **Windows**: Töltse le és telepítse az USB-illesztőprogramot az [STMicroelectronics webhely](http://www.st.com/en/development-tools/stsw-link009.html).
 * **macOS**: Nincs illesztőprogram nem szükséges a macOS-hez.

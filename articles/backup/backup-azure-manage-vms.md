@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: sogup
-ms.openlocfilehash: 0e05bf71c1689015be0b8e3a4be1b37447ba6eb8
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: b08e8ea6a8768510177f1ea664f3036813e1a890
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961244"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57009919"
 ---
 # <a name="manage-azure-vm-backups"></a>Azure-beli virtuális gépek biztonsági mentésének kezelése
 
@@ -74,20 +74,23 @@ Az irányítópult használatával készített biztonsági kezelheti és összev
 Egy igény szerinti virtuális gépek biztonsági mentési eltarthat, ha konfigurálva van a védelem.
 - Ha a kezdeti biztonsági mentés függőben, igény szerinti biztonsági mentést a Recovery Services-tárolóban hoz létre a virtuális gép teljes másolata.
 - Ha a kezdeti biztonsági mentés befejeződött, egy igény szerinti biztonsági mentést fogja csak elküldi a módosításokat a korábbi pillanatképből a Recovery Services-tároló. Azt jelenti az azt követő biztonsági mentéseket állandóan növekményes.
-- Egy igény szerinti biztonsági mentés megőrzési tartománya a napi biztonsági mentési pontok a szabályzatban megadott megőrzési értéket. Ha nincs napi biztonsági mentési pont ki van jelölve, a heti biztonsági mentési pontok szolgál.
+- Egy igény szerinti biztonsági mentés a megőrzési tartomány biztonsági mentési feladat aktiválása idején a megadott adatmegőrzési érték.
 
 Egy igény szerinti biztonsági mentés elindítása:
 
-1. Az a [tároló elem irányítópulton](#view-vms-in-the-dashboard), kattintson a **biztonsági mentés**.
+1. Az a [tároló elem irányítópulton](#view-vms-in-the-dashboard), kattintson a **biztonságimásolat-elem** alatt a **védett elem** szakaszban.
 
     ![Biztonsági mentés most gombra.](./media/backup-azure-manage-vms/backup-now-button.png)
 
- 2. Kattintson a **Igen** a biztonsági mentési feladat elindításához.
+2. Kattintson a **Azure virtuális gép** a **felügyeleti típusú biztonsági mentési**. A **biztonsági mentési elemek (Azure virtuális gép)** panel jelenik meg.
+3. Válasszon ki egy virtuális Gépet, és kattintson a **a biztonsági mentés** egy igény szerinti biztonsági mentés létrehozásához. A **biztonsági mentés panel** jelenik meg.
+4. Az a **megőrzése biztonsági mentési amíg** lehetőséget, adjon meg egy dátumot meg kell őrizni történő biztonsági mentés.
 
     ![Biztonsági mentés most gombra.](./media/backup-azure-manage-vms/backup-now-check.png)
 
+5. Kattintson a **OK**, a biztonsági mentési feladat futtatása.
 
- A biztonsági mentési feladat létrehoz egy helyreállítási pontot. A helyreállítási pont megőrzési megegyezik a virtuális géphez társított a szabályzatban megadott megőrzési. A folyamat előrehaladását a feladathoz, a tároló irányítópultján kattintson a **biztonsági mentési feladatok** csempére.  
+A folyamat előrehaladását a feladathoz, a tároló irányítópultján kattintson a **biztonsági mentési feladatok** csempére.
 
 ## <a name="stop-protecting-a-vm"></a>Virtuális gép védelmének megszüntetése
 

@@ -8,16 +8,19 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 5862c6ef3c420c1722ddfbc1238be4e2bf43a507
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: e752302baab14505e71c3f0f65840156833b8976
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447419"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194605"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Az Azure Virtual Network használata Azure HDInsight kiterjesztése
 
 [!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
+
+> [!IMPORTANT]  
+> 2019. február 28., miután a hálózati erőforrások (például a hálózati adapterek, LBs stb.) egy virtuális hálózaton létrehozott új fürtök esetében a HDInsight fürt azonos erőforráscsoportban jön létre. Korábban ezeket az erőforrásokat kiépített virtuális hálózat az erőforráscsoportban. Nem történik változás az aktuális futó fürtök és ezeket a virtuális hálózat nélkül létrehozott fürtök.
 
 Ismerje meg, hogyan használható a HDInsight- [Azure Virtual Network](../virtual-network/virtual-networks-overview.md). Az Azure Virtual Network használatával lehetővé teszi, hogy a következő esetekben:
 

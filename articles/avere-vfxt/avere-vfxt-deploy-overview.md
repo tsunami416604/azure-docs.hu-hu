@@ -4,14 +4,14 @@ description: Avere vFXT telepítése az Azure áttekintése
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 1be11fff7139b250e85fe15cec9082a2c85cf857
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0c61db5e34ba58bb767b0bda773a54c8e65cd404
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55298534"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991801"
 ---
 # <a name="avere-vfxt-for-azure---deployment-overview"></a>Avere vFXT az Azure-ban – üzembe helyezés – áttekintés
 
@@ -52,10 +52,12 @@ Itt látható az összes lépést áttekintése.
 
      A fürt vezérlő egy egyszerű virtuális Gépet, amely a Avere vFXT fürt ugyanazon a virtuális hálózaton található, és az egyéni szoftver szükséges a fürt létrehozása és kezelése. A vezérlő létrehozza a vFXT és űrlapok a fürtöt, és a fürt kezelésére és teljes élettartama alatt olyan parancssori felületet is biztosít.
 
-     Ha a tartományvezérlő egy nyilvános IP-címmel konfigurálja, is szolgálhasson jump-gazdagépként a fürt a virtuális hálózaton kívülről való csatlakozáshoz.
+     Ha az üzembe helyezés során létrehoz egy új virtuális hálózat, a vezérlő kell egy nyilvános IP-címet. Ez azt jelenti, hogy a vezérlő a jump host alapul szolgálhat a fürt a virtuális hálózaton kívülről való csatlakozáshoz.
 
    * A fürt csomópont virtuális gépek létrehozása
-   * A fürtcsomóponti virtuális gépek a fürt konfigurálása
+
+   * A fürtcsomópont virtuális gépein a fürt konfigurálása
+
    * Igény szerint egy új Blob-tároló létrehozása és konfigurálása, a fürt háttér-tárolóként
 
 1. A fürt konfigurálása 

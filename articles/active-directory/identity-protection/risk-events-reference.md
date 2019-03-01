@@ -16,12 +16,12 @@ ms.date: 01/25/2018
 ms.author: markvi
 ms.reviewer: raluthra
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1509f40b88e3dc9c51bd00ed379c5b0130230a99
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b1c69705131cfea4e5ace9b5b9e829b3fdfa87e4
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178838"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991648"
 ---
 # <a name="azure-active-directory-identity-protection-risk-events-reference"></a>Az Azure Active Directory Identity Protection kockázati események leírása
 
@@ -83,6 +83,7 @@ A kockázati esemény típusa által aktívan kiszolgálóval való kommunikáci
 **Észlelés típusa:** Valós idejű  
 **Régi név:** Bejelentkezések ismeretlen helyekről
 
-A kockázati esemény típusa ismeretlen tulajdonságokkal bejelentkezések meghatározásához korábbi bejelentkezési tulajdonságok (például eszköz, tartózkodási hely, hálózati) figyelembe veszi. A rendszer korábbi, felhasználó által használt helyek tulajdonságok tárolja, és ilyen fájlokra úgy tekint "ismerős". A kockázati esemény akkor aktiválódik, ha még nem ismert tulajdonságok listája a tulajdonságokkal történik a bejelentkezés. A rendszer egy 30 napos, amely során azt nem jelöli meg rendellenesként új észleléseket betanulási időszakra van.
+Korábbi bejelentkezési előzményeit is figyelembe veszi a kockázati esemény típusa (szélesség, IP / hosszúsági és az ASN) a rendellenes bejelentkezések kereséséhez. A rendszer korábbi, felhasználó által használt helyek adatait tárolja, és figyelembe veszi az "ismerős" helyek. A kockázati esemény akkor aktiválódik, ha a bejelentkezés történik, amely még nem ismert helyeihez helyről. Újonnan létrehozott felhasználók fognak "learning módban" az adott időszakban ismeretlen bejelentkezési tulajdonságok a kockázati események ki lesz kapcsolva az algoritmusok ismerje meg, a felhasználó viselkedését közben. A tanulási mód időtartamának dinamikus, és függ a mennyi időt vesz igénybe az algoritmust, hogy a felhasználó bejelentkezési minták elegendő információt gyűjteni. A minimális időtartam öt nap. A felhasználó is visszatérhet a tanuló módba egy hosszú inaktív időtartam után. A rendszer is figyelmen kívül hagyja a jól ismert eszközöket és helyeket, amelyek földrajzilag közel egy ismert helyre történő bejelentkezések. 
+
 Azt is futtathatja az észlelés az egyszerű hitelesítés (vagy az örökölt protokollok). Modern tulajdonságai, például az ügyfél-azonosító nem rendelkezik ezeket a protokollokat, mert nincs vakriasztások csökkentésének érdekében korlátozott telemetriai adatokat. Azt javasoljuk, hogy ügyfeleink számára, hogy helyezze át a modern hitelesítést.
 

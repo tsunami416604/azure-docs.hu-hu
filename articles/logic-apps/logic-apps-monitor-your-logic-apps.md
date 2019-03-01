@@ -10,18 +10,20 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
-ms.openlocfilehash: e06bf20a04c6a57ae5988d4cc334ec7a3cdd4bf1
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 6a8c4583d86b41e767e8a2057bae4cef8943a1c1
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543856"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193418"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Állapot figyelése, állítsa be a diagnosztikai naplózás, és kapcsolja be a riasztásokat az Azure Logic Apps
 
 Miután [létrehozni és futtatni egy logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md), ellenőrizheti a futtatási előzmények, eseményindítási előzményeinek, állapotát és teljesítményét. Valós idejű esemény figyelése és részletesebb hibakeresés, állítsa be a [diagnosztikai célú naplózásának](#azure-diagnostics) a logikai alkalmazás. Ezzel a módszerrel is [keresse meg és események megtekintéséhez](#find-events), mint például a kiváltó események, a futtatási események és a műveleti események. Emellett ezzel [diagnosztikai adatokat más szolgáltatásokkal](#extend-diagnostic-data), mint például az Azure Storage és az Azure Event Hubs. 
 
 Kapcsolatos hibák vagy egyéb lehetséges problémákat értesítéseket kapni, állítsa be [riasztások](#add-azure-alerts). Például létrehozhat egy riasztást, amely észleli a "Ha ötnél több futtatás sikertelen egy órán belül." Is állíthat be a figyelés, nyomon követése és naplózása programozással használatával [Azure Diagnostics esemény beállításait és tulajdonságait](#diagnostic-event-properties).
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="view-runs-and-trigger-history-for-your-logic-app"></a>Nézet futtatási és eseményindítási előzményeinek a logikai alkalmazás
 
@@ -72,7 +74,7 @@ Kapcsolatos hibák vagy egyéb lehetséges problémákat értesítéseket kapni,
 
 ## <a name="turn-on-diagnostics-logging-for-your-logic-app"></a>Diagnosztika a logikai alkalmazás naplózás bekapcsolása
 
-Gazdagabb hibakereséshez a modul részleteit és eseményeket, beállíthatja a diagnosztikai naplózás [Azure Log Analytics](../log-analytics/log-analytics-overview.md). A log Analytics szolgáltatása az Azure-ban, amely figyeli a felhőbeli és helyszíni környezeteket a rendelkezésre állás és teljesítmény karbantartásához. 
+Gazdagabb hibakereséshez a modul részleteit és eseményeket, beállíthatja a diagnosztikai naplózás [naplózza az Azure Monitor](../log-analytics/log-analytics-overview.md). Az Azure Monitor egy olyan szolgáltatás, az Azure-ban, amely figyeli a felhőbeli és helyszíni környezeteket a rendelkezésre állás és teljesítmény karbantartásához. 
 
 A Kezdés előtt szüksége van egy Log Analytics-munkaterületet. Ismerje meg, [Log Analytics-munkaterület létrehozása](../azure-monitor/learn/quick-create-workspace.md).
 
@@ -125,7 +127,7 @@ Keresse meg és események megtekintése a logikai alkalmazásban, például az 
 
    ![Adja meg a keresési karakterlánc](media/logic-apps-monitor-your-logic-apps/oms-start-query.png)
 
-   Tudjon meg többet [adatok megkeresése a Log Analytics](../log-analytics/log-analytics-log-searches.md).
+   Tudjon meg többet [adatok megkeresése az Azure Monitor naplóira](../log-analytics/log-analytics-log-searches.md).
 
 5. Az eredmények oldalon a bal oldali sávon válassza ki a megtekinteni kívánt időkeretet.
 Pontosítsa a lekérdezést egy szűrő hozzáadásával, válassza ki a **+ Hozzáadás**.
@@ -153,7 +155,7 @@ Pontosítsa a lekérdezést egy szűrő hozzáadásával, válassza ki a **+ Hoz
 
 ## <a name="extend-how-and-where-you-use-diagnostic-data-with-other-services"></a>Hogyan és hol diagnosztikai adatok felhasználhatók más szolgáltatásokkal
 
-Az Azure Log Analytics, valamint bővítheti, hogyan használhatja a logikai alkalmazás diagnosztikai adatok Azure-szolgáltatásokat, például: 
+Az Azure Monitor naplóira, valamint bővítheti, hogyan használhatja a logikai alkalmazás diagnosztikai adatok Azure-szolgáltatásokat, például: 
 
 * [Azure Diagnostics-naplók az Azure Storage-archívum](../azure-monitor/platform/archive-diagnostic-logs.md)
 * [Stream Azure-beli diagnosztikai naplók az Azure Event hubs szolgáltatásba](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) 
@@ -176,7 +178,7 @@ Alapján állítsa be a kívánt beállításokat, győződjön meg arról, hogy
 
 Adott mérőszámok vagy túllépte a logikai alkalmazás küszöbértékek monitorozásához beállítása [riasztások az Azure-ban](../azure-monitor/platform/alerts-overview.md). Ismerje meg [mérőszámok az Azure-ban](../monitoring-and-diagnostics/monitoring-overview-metrics.md). 
 
-Riasztások nélkül beállítása [Azure Log Analytics](../log-analytics/log-analytics-overview.md), kövesse az alábbi lépéseket. Speciális riasztások feltételek és műveletek [Log Analytics beállítása](#azure-diagnostics) túl.
+Riasztások nélkül beállítása [naplózza az Azure Monitor](../log-analytics/log-analytics-overview.md), kövesse az alábbi lépéseket. Speciális riasztások feltételek és műveletek [beállítása az Azure Monitor naplóira](#azure-diagnostics) túl.
 
 1. A logikai alkalmazás panelen menü alatt **figyelés**, válassza a **diagnosztikai** > **riasztási szabályok** > **riasztáshozzáadása**itt látható módon:
 

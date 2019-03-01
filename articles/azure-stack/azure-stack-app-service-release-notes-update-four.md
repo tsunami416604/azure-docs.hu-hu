@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 11/13/2018
-ms.openlocfilehash: 2555ce4b9485ba6464bde3422df114343b579641
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5108d4f65208f12875ad592e2e9222f8e1fdb130
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243419"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991081"
 ---
 # <a name="app-service-on-azure-stack-update-4-release-notes"></a>App Service-ben az Azure Stack update 4 kibocsátási megjegyzései
 
@@ -96,7 +96,12 @@ Az Azure App Service az Azure Stack 4-es frissítés tartalmazza a következő f
 
 - Győződjön meg, hogy a végpont megadott egyéni tárolási kapcsolati karakterlánc, ha új funkció alkalmazás megadva
 
-### <a name="post-update-steps-optional"></a>POST frissítési lépések (nem kötelező)
+### <a name="post-deployment-steps"></a>Üzembe helyezés utáni lépések
+
+> [!IMPORTANT]  
+> Ha az App Service RP példánnyal SQL mindig az adott kell [adja hozzá a appservice_hosting és appservice_metering adatbázisokat egy rendelkezésre állási csoport](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) , így elkerülhető, hogy a szolgáltatás az adatbázis szinkronizálásához, és a egy adatbázis feladatátvételi esemény.
+
+### <a name="post-update-steps-optional"></a>Frissítés utáni lépések (nem kötelező)
 
 A tartalmazott adatbázis áttelepítése az Azure Stack üzemelő példányok a meglévő Azure App Service kívánó ügyfelek hajtsa végre ezeket a lépéseket az Azure App Service az Azure Stack 1.4-es frissítés befejezése után:
 

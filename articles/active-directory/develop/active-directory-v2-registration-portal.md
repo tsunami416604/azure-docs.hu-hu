@@ -18,15 +18,18 @@ ms.author: celested
 ms.reviewer: lenalepa
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 109ababa78292bf8b172144174af3216f3844941
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a90f530febccada5421323dd95461257e0fc5950
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203658"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194248"
 ---
 # <a name="app-registration-reference"></a>Alkalmazásregisztráció-referencia
 Ez a dokumentum kontextust biztosít a és a különféle funkcióinak leírása megtalálható a [alkalmazásregisztrációs portálon](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/).
+
+> [!NOTE] 
+Már nem támogatjuk regisztrálása és a konvergens és az Azure AD-alkalmazások kezelése a [alkalmazásregisztrációs portálon](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/) 2019. május indítása. Javasoljuk, hogy a meglévő alkalmazások kezeléséhez, és az új alkalmazások regisztrálását a [alkalmazásregisztrációk (előzetes verzió)](https://aka.ms/appregistrations) élmény az Azure Portalon.
 
 ## <a name="my-applications-or-converged-applications"></a>Saját alkalmazások vagy összevont alkalmazások
 Ez a lista tartalmazza az összes alkalmazás regisztrálása az Azure AD v2.0-végpontra való használatra. Ezeket az alkalmazásokat a felhasználók személyes Microsoft-fiókok és az Azure Active Directoryból a munkahelyi vagy iskolai fiókokkal is tudnak. Az Azure AD v2.0-végpont kapcsolatos további információkért tekintse meg a [v2.0 áttekintése](active-directory-appmodel-v2-overview.md). Ezek az alkalmazások integrálása a Microsoft fiók hitelesítési végpontot is használható `https://login.live.com`.

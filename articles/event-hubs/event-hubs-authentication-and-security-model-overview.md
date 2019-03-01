@@ -15,12 +15,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 6f4abd9f826864914abee0b5d513d5b1c530d416
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 19b347423c28b4c615f90f325ead462b9d3e8e9e
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104152"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990034"
 ---
 # <a name="azure-event-hubs---authentication-and-security-model"></a>Az Azure Event Hubs - hitelesítési és biztonsági modell
 
@@ -68,13 +68,13 @@ nm.CreateEventHub(ed);
 
 ### <a name="generate-tokens"></a>Jogkivonatokat hoz létre
 
-A jogkivonatok az SAS-kulcs használatával is létrehozhat. Ügyfelenként csak egy tokent kell dolgoznia. Jogkivonatok majd elő lehet állítani a következő módszerrel. Az összes jogkivonatok segítségével hozhatók létre a **EventHubSendKey** kulcsot. Minden tokenhez hozzá van rendelve egy egyedi URI-t.
+A jogkivonatok az SAS-kulcs használatával is létrehozhat. Ügyfelenként csak egy tokent kell dolgoznia. Jogkivonatok majd elő lehet állítani a következő módszerrel. Az összes jogkivonatok segítségével hozhatók létre a **EventHubSendKey** kulcsot. Minden tokenhez hozzá van rendelve egy egyedi URI-t. A "resource" paraméter felel meg a szolgáltatás (ebben az esetben eseményközpontból) URI-végpontra.
 
 ```csharp
 public static string SharedAccessSignatureTokenProvider.GetSharedAccessSignature(string keyName, string sharedAccessKey, string resource, TimeSpan tokenTimeToLive)
 ```
 
-Ez a metódus hívásakor meg kell adni az URI-t `//<NAMESPACE>.servicebus.windows.net/<EVENT_HUB_NAME>/publishers/<PUBLISHER_NAME>`. Az összes jogkivonatokat, az URI-ja azonos, kivéve a `PUBLISHER_NAME`, amely minden tokenhez eltérőnek kell lennie. Ideális esetben `PUBLISHER_NAME` jelöli, amely megkapja ezt a jogkivonatot az ügyfél azonosítója.
+Ez a metódus hívásakor meg kell adni az URI-t `https://<NAMESPACE>.servicebus.windows.net/<EVENT_HUB_NAME>/publishers/<PUBLISHER_NAME>`. Az összes jogkivonatokat, az URI-ja azonos, kivéve a `PUBLISHER_NAME`, amely minden tokenhez eltérőnek kell lennie. Ideális esetben `PUBLISHER_NAME` jelöli, amely megkapja ezt a jogkivonatot az ügyfél azonosítója.
 
 Ez a módszer létrehoz egy tokent az alábbi struktúra használatával:
 

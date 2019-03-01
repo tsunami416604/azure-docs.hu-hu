@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/13/2019
+ms.date: 02/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: bc28349e1bfc935ac8298f991575c1e0cb42d38c
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 618412f27efb71caf6e044b4768d7be00f0d0f47
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56299228"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57009240"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Az Azure Resource Manager üzembe helyezési mód
 
@@ -36,6 +36,10 @@ Hogyan erőforrástípusok kezeli a törlés listáját lásd: [törlése az Azu
 
 > [!NOTE]
 > Csak a legfelső szintű sablonok támogatja a teljes üzembe helyezési módot. A [sablonok beágyazott vagy kapcsolódó](resource-group-linked-templates.md), növekményes módot kell használnia. 
+>
+> [Előfizetés-szintű telepítések](deploy-to-subscription.md) teljes mód nem támogatott.
+>
+> A portálon jelenleg nem támogatja teljes mód.
 >
 
 ## <a name="incremental-mode"></a>Növekményes mód

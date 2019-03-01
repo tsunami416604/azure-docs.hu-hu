@@ -1,19 +1,20 @@
 ---
 title: Az Azure IoT Hub-Eszközfelügyelet (Java) – első lépések |} A Microsoft Docs
 description: Hogyan használható az Azure IoT Hub-Eszközfelügyelet egy távoli eszköz-újraindítás kezdeményezése. Az Azure IoT eszközoldali SDK a Javához készült segítségével megvalósítani egy szimulált eszközalkalmazás, amely tartalmazza a közvetlen metódus és az Azure IoT Szolgáltatásoldali SDK-val Java megvalósítása a service-alkalmazás, amely a közvetlen metódust hív meg.
-author: dominicbetts
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.author: dobett
-ms.openlocfilehash: 46b094e8436d74915a1cd5a0ccec402bee03e33b
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 272f4cfd4d79ef6d4fca3f3c00afb1c251649db8
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515284"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010752"
 ---
 # <a name="get-started-with-device-management-java"></a>Ismerkedés az eszközfelügyelettel (Java)
 
@@ -39,7 +40,7 @@ Ez az oktatóanyag végén két Java-konzolalkalmazással fog rendelkezni:
 
 * Jelentések a jelentett tulajdonságok keresztül az utolsó újraindítás időpontja.
 
-**eseményindító-újraindítás**. Ez az alkalmazás:
+**trigger-reboot**. Ez az alkalmazás:
 
 * Közvetlen metódus a szimulált eszközalkalmazás-hívások.
 

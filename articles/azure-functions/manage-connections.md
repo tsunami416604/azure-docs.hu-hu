@@ -6,14 +6,14 @@ author: ggailey777
 manager: jeconnoc
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 11/02/2018
+ms.date: 02/25/2018
 ms.author: glenga
-ms.openlocfilehash: 4246259445cf096b5353ab87a9ed83f87332dc78
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: df4fcb505cce17663334d9b80245f5c981cdbe1e
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56299326"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56989626"
 ---
 # <a name="how-to-manage-connections-in-azure-functions"></a>Az Azure Functions kapcsolatok kezelése
 
@@ -21,13 +21,13 @@ A függvényalkalmazás függvénye erőforrások megosztása, és a megosztott 
 
 ## <a name="connections-limit"></a>Kapcsolatok számának korlátozása
 
-A rendelkezésre álló kapcsolatok száma korlátozva, részben mivel a függvényalkalmazás a [Azure App Service tesztkörnyezetben](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox). A védőfal ró a kód korlátozások egyike egy [cap-kapcsolatok esetén jelenleg 300 száma](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#numerical-sandbox-limits). Ha eléri a korlátot, a functions futtatókörnyezete létrehoz egy naplófájlt a következő üzenettel: `Host thresholds exceeded: Connections`.
+A rendelkezésre álló kapcsolatok száma korlátozva, részben mivel a függvényalkalmazás egy [próbakörnyezetben](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox). A védőfal ró a kód korlátozások egyike egy [korlát (jelenleg a 600 aktív kapcsolatok kapcsolatainak száma összesen 1200-as) kapcsolatok száma](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#numerical-sandbox-limits) példányonként. Ha eléri a korlátot, a functions futtatókörnyezete létrehoz egy naplófájlt a következő üzenettel: `Host thresholds exceeded: Connections`.
 
-A korlát túllépése valószínűségét megnő, ha a [méretezési vezérlő hozzáad függvény alkalmazáspéldány](functions-scale.md#how-the-consumption-plan-works) további kérések kezelésére. Minden függvény alkalmazáspéldány futhat számos függvénye, egyszer mindegyike használ, amely a 300 korlát beleszámítanak kapcsolatok.
+Ezt a határt egy példány van.  Ha a [méretezési vezérlő hozzáad függvény alkalmazáspéldány](functions-scale.md#how-the-consumption-plan-works) további kérések kezelésére, mindegyik példány rendelkezik egy független kapcsolathoz megadott korlátot.  Azt jelenti, hogy a nem globális kapcsolat korlátozott, és összesen között minden aktív példány sokkal több mint 600 aktív kapcsolatok is rendelkezik.
 
 ## <a name="use-static-clients"></a>Statikus ügyfelek használata
 
-Rendelkezés a szükségesnél több kapcsolatot elkerüléséhez ügyfélpéldányok helyett az egyes függvény meghívási újakat hozna létre újból. .NET-ügyfelek, például a [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx), [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
+Rendelkezés a szükségesnél több kapcsolatot elkerüléséhez ügyfélpéldányok helyett az egyes függvény meghívási újakat hozna létre újból.  Bármilyen nyelven, akkor előfordulhat, hogy a függvény megírására az ügyfélkapcsolatok újbóli használata ajánlott. Ha például a .NET-ügyfelek például a [HttpClient](https://msdn.microsoft.com/library/system.net.http.httpclient(v=vs.110).aspx), [DocumentClient](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient
 ), és az Azure Storage-ügyfelek kapcsolatok kezelése egyetlen, statikus ügyfél használatakor.
 
 Az alábbiakban néhány irányelv szükséges a következő szolgáltatásspecifikus-ügyfél használatával egy Azure Functions-alkalmazásban:

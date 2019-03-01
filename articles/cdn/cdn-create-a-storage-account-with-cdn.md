@@ -15,14 +15,14 @@ ms.topic: quickstart
 ms.date: 05/24/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: 025f2ecef070170fef216d7533150359cf11c50f
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.openlocfilehash: ea4134c486310592f1f0f344ae26a11276143faf
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092582"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193364"
 ---
-# <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Rövid útmutató: Azure Storage-fiók integrálása az Azure CDN-nel
+# <a name="quickstart-integrate-an-azure-storage-account-with-azure-cdn"></a>Gyors útmutató: Az Azure storage-fiók integrálása az Azure CDN-nel
 Ebben a rövid útmutatóban engedélyezni fogja az [Azure Content Delivery Network (CDN)](cdn-overview.md) számára az Azure Storage-ből származó tartalmak gyorsítótárazását. Az Azure CDN egy globális megoldást kínál a fejlesztők számára a tartalmak nagy sávszélességű kézbesítéséhez. Képes arra, hogy fizikai csomópontokon gyorsítótárazza a blobokat és a számítási példányok statikus tartalmát az Amerikai Egyesült Államok, Európa, Ázsia, Ausztrália és Dél-Amerika területén.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -31,7 +31,7 @@ Ebben a rövid útmutatóban engedélyezni fogja az [Azure Content Delivery Netw
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjával.
 
 ## <a name="create-a-storage-account"></a>Tárfiók létrehozása
-Az alábbi módon hozhat létre Azure-előfizetéshez tartozó új tárfiókot. A tárfiókok hozzáférést biztosítanak az Azure Storage szolgáltatásaihoz, és ők képviselik az Azure Storage szolgáltatási összetevőihez – Azure Blob, Queue és Table Storage – való hozzáférés legmagasabb szintű névterét. További információkért lásd: [A Microsoft Azure Storage bemutatása](../storage/common/storage-introduction.md).
+Az alábbi módon hozhat létre Azure-előfizetéshez tartozó új tárfiókot. A tárfiókok hozzáférést biztosítanak az Azure Storage szolgáltatásaihoz, A tárfiók eléréséhez az Azure Storage szolgáltatás-összetevők mindegyike a névtér a legmagasabb szintű jelöli: Az Azure Blob, Queue és Table storage. További információkért lásd: [A Microsoft Azure Storage bemutatása](../storage/common/storage-introduction.md).
 
 Tárfiók létrehozásához a társított előfizetés szolgáltatás-rendszergazdájának vagy társadminisztrátorának kell lennie.
 
@@ -96,9 +96,10 @@ Az Azure CDN-t a tárfiókhoz közvetlenül a tárfiókból is engedélyezheti. 
 
     | Beállítás  | Érték |
     | -------- | ----- |
-    | **CDN-profil** | Válassza ki az **Új létrehozása** lehetőséget, majd írja be a *my-cdn-profile-123* értéket a profil neveként. Ennek a névnek globálisan egyedinek kell lennie. Ha már használatban van, megadhat egy másik nevet.  |
+    | **CDN-profil** | Válassza ki **új létrehozása** , és adja meg a profil nevét, például *my-cdn-profile-123*. A névnek globálisan egyedinek kell lennie.  |
     | **Tarifacsomag** | Válassza a **Standard – Verizon** értéket a legördülő listából. |
-    | **CDN-végpont neve** | Adja meg a *my-endpoint-123* nevet végpontja gazdaneveként. Ennek a névnek globálisan egyedinek kell lennie. Ha már használatban van, megadhat egy másik nevet. A rendszer ezt a nevet használja a gyorsítótárazott erőforrások eléréséhez a _&lt;végpont neve&gt;_.azureedge.net tartományban. Alapértelmezés szerint egy új CDN-végpont a tárfiók eszköznevét használja forráskiszolgálóként.|
+    | **CDN-végpont neve** | Adja meg a végpont gazdaneve, azaz *my-endpoint-123*. A névnek globálisan egyedinek kell lennie. A rendszer ezt a nevet használja a gyorsítótárazott erőforrások eléréséhez a _&lt;végpont neve&gt;_.azureedge.net tartományban. |
+    | **Forrás gazdaneve** | Alapértelmezés szerint egy új CDN-végpont a tárfiók eszköznevét használja forráskiszolgálóként. |
 
 3. Kattintson a **Létrehozás** gombra. A létrejött végpont megjelenik a végpontok listájában.
 
@@ -145,5 +146,5 @@ A korábbi lépésekben létrehozott egy CDN-profilt és egy végpontot egy erő
 Az alábbi útmutatóból megtudhatja, hogyan adhat hozzá egyéni tartományt CDN-végpontjához és engedélyezheti azon a HTTPS-t:
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Storage-blobok elérése egyéni CDN-tartomány használatával HTTPS-en keresztül](cdn-storage-custom-domain-https.md)
+> [Oktatóanyag: Tárolási blobok elérése az Azure CDN egyéni tartományon használatával HTTPS-kapcsolaton keresztül](cdn-storage-custom-domain-https.md)
 

@@ -4,29 +4,27 @@ description: Az Azure-ban a Avere vFXT fürt telepítése
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 972ba937ad15fa9a6d2eb74e3e4c9e6e8f3923a4
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 7081d46af335f29e5723ef8d471814a1564907c2
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745435"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990204"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>A vFXT-fürt üzembe helyezése
 
-Ez az eljárás végigvezeti az Azure piactéren elérhető a telepítési varázsló használatával. A varázsló automatikusan üzembe helyezi a fürtöt az Azure Resource Manager-sablon használatával. Után adja meg a paramétereket a képernyőn, és kattintson a **létrehozás**, az Azure automatikusan elvégzi a következő lépéseket: 
+Ez az eljárás végigvezeti az Azure piactéren elérhető a telepítési varázsló használatával. A varázsló automatikusan üzembe helyezi a fürtöt az Azure Resource Manager-sablon használatával. Után adja meg a paramétereket a képernyőn, és kattintson a **létrehozás**, az Azure automatikusan elvégzi a következő lépéseket:
 
-* Hozza létre a fürt vezérlőt, amely egy egyszerű virtuális gép, amely tartalmazza a szoftver telepítéséhez és a fürt kezeléséhez szükséges.
-* Állítsa be az erőforráscsoport és a virtuális hálózati infrastruktúrát, beleértve az új elemek létrehozása, ha szükséges.
-* Csomópont virtuális gépek a fürt létrehozásához, és konfigurálja őket az Avere fürtként.
-* Ha a rendszer kéri, hozzon létre egy új Azure Blob-tárolót, és azt konfigurálja a fürt alapvető filer.
+* A fürt vezérlőt, amely egy egyszerű virtuális gép üzembe helyezése és kezelése a fürt szükséges a szoftvert tartalmazó hoz létre.
+* Beállítja az erőforráscsoportot és a virtuális hálózati infrastruktúrát, beleértve az új elemek létrehozását.
+* A fürt csomópont virtuális gépeket hoz létre, és konfigurálja őket az Avere fürtként.
+* Ha a rendszer kéri, létrehoz egy új Azure Blob-tárolót, és azt konfigurálja a fürt alapvető filer.
 
-Ez a dokumentum utasításait követve, miután egy virtuális hálózat, alhálózat, egy tartományvezérlő és egy vFXT fürtöt az alábbi ábrán látható módon fog rendelkezni:
+Ez a dokumentum utasításait követve, miután kell egy virtuális hálózat, alhálózat, egy tartományvezérlő és egy vFXT fürtöt az alábbi ábrán látható módon. Ez az ábra a választható Azure Blob core szűrőlista, amely tartalmaz egy új Blob storage-tárolóba (egy új storage-fiókban lévő nem jelenik meg) és a egy végpontot az alhálózaton belül a Microsoft Storage jeleníti meg. 
 
-![virtuális hálózat nem kötelező a blob storage és a egy három tartalmazó alhálózat tartalmazó bemutató ábra. Ez vFXT csomópontok/vFXT fürt és a egy virtuális gép címkével rendelkező fürt vezérlő címkével ellátott virtuális gépek vannak csoportosítva.](media/avere-vfxt-deployment.png)
-
-A fürt létrehozását követően kell [hozzon létre egy storage-végpont](#create-a-storage-endpoint-if-using-azure-blob) a virtuális hálózaton, ha a Blob storage használatával. 
+![Avere fürtösszetevők koncentrikus téglalapok három ábrázoló diagram. A külső téglalap "Erőforráscsoport" címkét viseli, és a egy Blob-tároló (nem kötelező) feliratú hatszög tartalmazza. A következő téglalapjának feliratú "virtuális hálózat: 10.0.0.0/16 ", és nem tartalmaz egyedi összetevők. A legbelső téglalap "Subnet:10.0.0.0/24" címkét viseli, és a 'Fürt vezérlő', "vFXT csomópontok (vFXT fürt)" feliratú három virtuális gépet, és a egy "Szolgáltatásvégpont" feliratú hatszög Jegyzettömb címkével ellátott virtuális Gépet tartalmaz. Nincs a nyíl a szolgáltatásvégpont (amely az alhálózaton belül) és a blob storage (Ez az alhálózat és virtuális hálózatban, az erőforráscsoportban lévő kívül). A nyíl haladnak keresztül az alhálózat és virtuális hálózati határok.](media/avere-vfxt-deployment.png)  
 
 Mielőtt az létrehozása sablon használatával ellenőrizze, rendelkezik az Előfeltételek címezni:  
 
@@ -34,6 +32,7 @@ Mielőtt az létrehozása sablon használatával ellenőrizze, rendelkezik az El
 1. [Előfizetés tulajdonosi engedélyekkel](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
 1. [A vFXT fürt kvóta](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
 1. [Egyéni hozzáférési szerepkörök](avere-vfxt-prereqs.md#create-access-roles) -létre kell hoznia egy szerepköralapú hozzáférés-vezérlési szerepkör hozzárendelése a fürtcsomópontok. Lehetősége van is létre kell hoznia egy egyéni hozzáférés szerepkört a fürt vezérlő, de a felhasználók többsége az alapértelmezett tulajdonosi szerepkört, amely megfelelő vezérlő jogosultságot ad az egy erőforráscsoport-tulajdonosnak vesz igénybe. Olvasási [beépített szerepkörök az Azure-erőforrások](../role-based-access-control/built-in-roles.md#owner) további részleteket talál.
+1. [Storage-szolgáltatásvégpont (ha szükséges)](avere-vfxt-prereqs.md#optional-create-a-storage-service-endpoint-in-your-virtual-network) szükséges – telepíti a meglévő virtuális hálózattal, és a blob-tároló létrehozása
 
 Fürt telepítés lépéseit, valamint a tervezési kapcsolatos további információkért olvassa el a [megtervezése a Avere vFXT rendszer](avere-vfxt-deploy-plan.md) és [üzembe helyezés – áttekintés](avere-vfxt-deploy-overview.md).
 
@@ -105,13 +104,13 @@ A második oldalán a központi telepítési sablont a fürt mérete, a csomópo
 
 * **Avere vFXT fürtnév** – adjon meg egy egyedi nevet a fürt. 
 
-* **Méret** – adja meg a fürt csomópontjainak létrehozásakor a virtuális gép típusát. 
+* **Méret** – Ez a szakasz bemutatja, hogy a fürtcsomópontok használandó Virtuálisgép-típusra. Bár csak egy ajánlott beállításnál a **méretének módosítása** hivatkozás információkat e-példányok típusát és a egy díjkalkulátor mutató hivatkozást tartalmazó megnyit egy táblát.  <!-- old: Specify the VM type to use when creating the cluster nodes.  -->
 
 * **Gyorsítótár mérete csomópontonként** – a fürt gyorsítótár megoszlik a fürtcsomópontok között, így a gyorsítótár teljes mérete a Avere vFXT fürtön a gyorsítótár méretét a csomópontok számát megszorozva csomópontonként lesz. 
 
-  Az ajánlott konfiguráció, hogy 1 TB-os csomópontonként, ha használja Standard_D16s_v3 fürtcsomópontokat, valamint 4 TB-os használhat csomópontonként, ha Standard_E32s_v3 csomópontok használatával.
+  Az ajánlott konfiguráció, hogy 4 TB-os csomópontonként Standard_E32s_v3 csomópontok.
 
-* **Virtuális hálózat** – válassza ki a helyet adhat a fürtöt egy meglévő vnetet, vagy hozzon létre egy új virtuális hálózat határozza meg. 
+* **Virtuális hálózat** – egy új virtuális hálózat a fürt helyet adhat meg, vagy válasszon egy meglévő vnetet, amely megfelel az előfeltételeknek [megtervezése a Avere vFXT rendszer](avere-vfxt-deploy-plan.md#resource-group-and-network-infrastructure). 
 
   > [!NOTE]
   > Ha létrehoz egy új virtuális hálózat, a fürt vezérlő lesz nyilvános IP-cím, hogy az új magánhálózati elérheti. Ha úgy dönt, hogy egy meglévő vnetet, a fürt vezérlő nélkül nyilvános IP-címmel van konfigurálva. 
@@ -121,17 +120,21 @@ A második oldalán a központi telepítési sablont a fürt mérete, a csomópo
   >  * Nincs beállítva egy nyilvános IP-címet a vezérlőn, ha egy másik jump host, egy VPN-kapcsolat vagy ExpressRoute kell használnia, aki a fürtöt. Hozzon létre például a vezérlő, amely már rendelkezik egy VPN-kapcsolat konfigurálása virtuális hálózat része.
   >  * Ha egy vezérlő hoz létre egy nyilvános IP-címmel, a tartományvezérlő virtuális gép egy hálózati biztonsági csoporttal kell védeni. Alapértelmezés szerint a Avere vFXT az Azure-beli egy hálózati biztonsági csoportot hoz létre, és korlátozza a bejövő hozzáférést csak a 22-es nyilvános IP-címekkel rendelkező vezérlők portot. További védelmet biztosíthat a rendszer zárolja a forrás az IP-címek – való hozzáférés, kapcsolatok engedélyezése csak a fürt hozzáféréshez használni kívánt gépeket.
 
+  Az üzembe helyezés sablon is konfigurálja az új virtuális hálózat, az Azure Blob storage tárolási szolgáltatásvégponttal, és a hálózati hozzáférés-vezérléssel együtt használható a fürt alhálózatból csak IP-címek. <!-- xxx make sure this is accurate --> <!-- do I need to say that this only happens if you choose to create storage? -->
+
 * **Alhálózat** – válasszon egy alhálózatot a meglévő virtuális hálózatból, vagy hozzon létre egy újat. 
 
-* **Blob storage használata** -válassza **igaz** hozzon létre egy új Azure Blob-tárolót, és konfigurálja az új Avere vFXT fürthöz háttér-tárolóként. Ez a beállítás is ugyanazt az erőforráscsoportot, a fürtön belül egy új tárfiókot hoz létre. 
+* **Létrehozása és használata blob storage-bA** -válassza **igaz** hozzon létre egy új Azure Blob-tárolót, és konfigurálja az új Avere vFXT fürthöz háttér-tárolóként. Ez a beállítás is létrehoz egy új tárfiók ugyanahhoz az erőforráscsoporthoz tartozik, a fürt és a egy Microsoft storage végpontot a fürt alhálózatán belül található. 
+  
+  Egy meglévő virtuális hálózatot ad meg, hogy a storage-szolgáltatásvégpont a fürt létrehozása előtt kell rendelkeznie. (További információkért olvassa el [megtervezése a Avere vFXT rendszer](avere-vfxt-deploy-plan.md).)
 
   Adja meg a mezőben **hamis** Ha nem szeretné, hogy hozzon létre egy új tárolót. Ebben az esetben kell csatolni, és a fürt létrehozását követően a tároló konfigurálása. Olvasási [konfigurálta a tárterületet](avere-vfxt-add-storage.md) útmutatást. 
 
-* **Storage-fiók** – Ha egy új Azure Blob-tároló létrehozása, adjon meg egy nevet az új tárfiókot. 
+* **(Új) Storage-fiók** – Ha egy új Azure Blob-tároló létrehozása, adjon meg egy nevet az új tárfiókot. 
 
 ## <a name="validation-and-purchase"></a>Érvényesítési és megvásárlása
 
-Három lap lehetővé teszi a konfiguráció összegzése, és érvényesíti a paramétereket. Miután az érvényesítés sikeres, kattintson a **OK** gombra a folytatáshoz. 
+Három lap foglalja össze a konfigurációt, és érvényesíti a paraméterek. Miután az érvényesítés sikeres, kattintson a **OK** gombra a folytatáshoz. 
 
 ![A központi telepítési sablon - ellenőrzési harmadik oldalán](media/avere-vfxt-deploy-3.png)
 
@@ -159,20 +162,6 @@ Ezek az információk megkereséséhez kövesse ezt az eljárást:
 1. A bal oldali menüjében kattintson **kimenetek**. Az értékek másolásához a mezőkben. 
 
    ![lap ábrázoló SSHSTRING, RESOURCE_GROUP, hely, NETWORK_RESOURCE_GROUP, hálózat, ALHÁLÓZAT, SUBNET_ID, VSERVER_IPs és MGMT_IP jobb oldalán a címkék mezőkben szereplő értékek kimenete](media/avere-vfxt-outputs-values.png)
-
-
-## <a name="create-a-storage-endpoint-if-using-azure-blob"></a>Hozzon létre egy storage-végponthoz (Ha használja az Azure Blob)
-
-Ha a a háttér-adatokat tároló Azure Blob storage használ, létre kell hoznia egy tárolási végpontot a virtuális hálózaton. Ez [szolgáltatásvégpont](../virtual-network/virtual-network-service-endpoints-overview.md) helyett átirányítására a virtuális hálózaton kívül helyi tartja az Azure Blob-forgalmat.
-
-1. A portálon kattintson **virtuális hálózatok** a bal oldalon.
-1. Válassza ki a vezérlőhöz tartozó virtuális hálózat. 
-1. Kattintson a **Szolgáltatásvégpontokat** a bal oldalon.
-1. Kattintson a **Hozzáadás** tetején.
-1. Hagyja meg a szolgáltatás ``Microsoft.Storage`` és a vezérlő alhálózat választása.
-1. Kattintson a lap alján, **Hozzáadás**.
-
-  ![Jegyzetekkel lépéseit a szolgáltatásvégpont létrehozása az Azure portal képernyőképe](media/avere-vfxt-service-endpoint.png)
 
 ## <a name="next-step"></a>Következő lépés
 

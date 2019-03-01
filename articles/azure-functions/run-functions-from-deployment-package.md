@@ -8,19 +8,19 @@ manager: jeconnoc
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 02/26/2019
 ms.author: glenga
-ms.openlocfilehash: a0e643397372e5b132119a7c23f251ecec876916
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 292b25987f183df2091667312d4e6730b7f40dda
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346577"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990900"
 ---
 # <a name="run-your-azure-functions-from-a-package-file"></a>Az Azure Functions futtatása egy csomagfájlt
 
 > [!NOTE]
-> A jelen cikkben ismertetett funkciók Functions Linux rendszeren nem érhető el.
+> A jelen cikkben ismertetett funkció nem érhető el a linuxon futó alkalmazások esetében egy [App Service-csomag](functions-scale.md#app-service-plan).
 
 Az Azure-ban a függvények futtathatja közvetlenül a központi telepítési csomag fájlból a függvényalkalmazásban. A másik lehetőség, hogy fájljait telepíti a `d:\home\site\wwwroot` könyvtárát a függvényalkalmazást.
 
@@ -44,8 +44,11 @@ Ahhoz, hogy a függvényalkalmazás futtatásához egy csomagból, egyszerűen h
 
 | Érték  | Leírás  |
 |---------|---------|
+| **`1`**  | Windows rendszeren futó függvény alkalmazásokhoz ajánlott. Futtassa a csomag-fájlból a `d:\home\data\SitePackages` mappában található a függvényalkalmazást. Ha nem [üzembe helyezése a zip üzembe helyezésével] (#integration-az-zip-deployment], ez utóbbi lehetőség megköveteli a mappát, rendelkeznie kell egy fájlt `packagename.txt`. Ez a fájl csak a mappában, anélkül, hogy minden szóközt az alkalmazáscsomag-fájl nevét tartalmazza. |
 |**`<url>`**  | Szeretne futtatni egy adott csomag-fájl helyét. A Blob storage használata esetén használjon egy privát tároló egy [közös hozzáférésű Jogosultságkód (SAS)](../vs-azure-tools-storage-manage-with-storage-explorer.md#attach-a-storage-account-by-using-a-shared-access-signature-sas) ahhoz, hogy a Functions futtatókörnyezete eléréséhez a csomaghoz. Használhatja a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) csomag fájlok feltöltése a Blob storage-fiók.         |
-| **`1`**  | Futtassa a csomag-fájlból a `d:\home\data\SitePackages` mappában található a függvényalkalmazást. Ez utóbbi lehetőség megköveteli a mappát, rendelkeznie kell egy fájlt `packagename.txt`. Ez a fájl csak a mappában, anélkül, hogy minden szóközt az alkalmazáscsomag-fájl nevét tartalmazza. |
+
+> [!CAUTION]
+> Amikor fut egy függvényalkalmazást a Windows, a külső URL-cím lehetőséget poskytne rosszabb hidegindítási teljesítményét. Amikor Windows helyeznek üzembe a függvényalkalmazás, állítsa be `WEBSITE_RUN_FROM_PACKAGE` való `1` , és tegye közzé zip üzembe helyezéssel.
 
 Az alábbiakban látható egy függvényalkalmazást az Azure Blob storage-ban üzemeltetett .zip-fájlként való futtatásra konfigurálva:
 

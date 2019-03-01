@@ -1,5 +1,5 @@
 ---
-title: Egy egyéni NuGet használata az Azure fejlesztési tárolóhelyek hírcsatorna |} A Microsoft Docs
+title: Az Azure fejlesztési tárolóhelyek hírcsatorna egy egyéni NuGet használatával
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -7,16 +7,16 @@ ms.subservice: azds-kubernetes
 author: johnsta
 ms.author: johnsta
 ms.date: 05/11/2018
-ms.topic: article
+ms.topic: conceptual
 description: Egy egyéni NuGet, hogy eléri és használja a NuGet-csomagok egy Azure-fejlesztési területen hírcsatorna használja.
 keywords: Docker, Kubernetes, Azure, az AKS, az Azure Container Service, tárolók
 manager: ghogen
-ms.openlocfilehash: 21a70100fe186e176dfe8eb7c247d83a5d4705bd
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ff13e4d8670e4ad1712ce2335711f86b9cc14436
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466404"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192479"
 ---
 #  <a name="use-a-custom-nuget-feed-in-an-azure-dev-space"></a>Egyéni nugettel hírcsatornaelemet egy Azure-fejlesztési terület
 

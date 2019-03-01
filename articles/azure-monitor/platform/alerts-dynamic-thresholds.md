@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 92a6d0f0cd9ef9a7d246624f89315a87a7fb26f9
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: c28bf3ac85709fb996cfb067b83530645fdccba1
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097809"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008905"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor-public-preview"></a>Metrikákhoz kapcsolódó riasztások dinamikus küszöbértékekkel az Azure monitorban (nyilvános előzetes verzió)
 
@@ -79,7 +79,11 @@ Valószínűleg nem. Dinamikus küszöbérték jók jelentős eltérések észle
 
 ## <a name="how-much-data-is-used-to-preview-and-then-calculate-thresholds"></a>Mennyi adatot szolgál, és ezután kiszámíthatja a küszöbértékeket?
 
-A diagramon jelennek meg a mérőszám a riasztási szabály létrehozása előtt a küszöbértékek alapján számítjuk az előzményadatok utolsó 10 nap, a riasztási szabály létrehozása után a dinamikus küszöbértékek fogja beszerezni elérhető további előzményadatokat és lesz Ismerje meg, hogy a küszöbértékek pontosabb új adatok alapján folyamatosan.
+A küszöbértékeket a diagramon megjelenő előtt egy riasztási szabályt a rendszer létrehozza a mérőszám a rendszer kiszámolta elég előzményadatok alapján számítja ki órás vagy napi szezonális minták (10 nap) alapján. Nyomja le a "Megjelenített heti minta" elegendő előzményadatok alapján számítja ki a heti szezonális minták (28 napos) fogják beszerezni. Riasztási szabály létrehozása után a dinamikus küszöbértékeket és fogja használni, amely érhető el, és folyamatosan ismerje meg valamennyi szükséges előzményadatok adept új adatok alapján, hogy a küszöbértékek pontosabb.
+
+## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>Mennyi adatot a riasztást kiváltó van szükség?
+
+Dinamikus küszöbérték szükséges adatok pontos küszöbértékek riasztások aktiválása előtt győződjön meg, hogy legalább három nap.
 
 ## <a name="dynamic-thresholds-best-practices"></a>Dinamikus küszöbérték ajánlott eljárások
 

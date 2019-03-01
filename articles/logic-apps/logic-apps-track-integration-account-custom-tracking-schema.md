@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 433ae852-a833-44d3-a3c3-14cca33403a2
 ms.date: 01/27/2017
-ms.openlocfilehash: 68c5d6e68562d4027c102e1bde42c775648e58c4
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: f919e9a7cca210fa5920bcc6bed05a9a41fba8bf
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124843"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192384"
 ---
 # <a name="create-custom-tracking-schemas-that-monitor-end-to-end-workflows-in-azure-logic-apps"></a>Hozzon létre egyéni követési sémák, a végpontok közötti munkafolyamatokat az Azure Logic Apps figyelése
 
@@ -60,17 +60,17 @@ Ez a cikk az egyéni kódot is használhatja a rétegek kívül a logikai alkalm
 | --- | --- | --- |
 | sourceType |   | A futtatási forrás típusa. Engedélyezett értékek a következők **Microsoft.Logic/workflows** és **egyéni**. (Kötelező) |
 | Forrás |   | Ha a forrás típusa **Microsoft.Logic/workflows**, kövesse az ebben a sémában kell az adatforrások információit. Ha a forrás típusa **egyéni**, egy JToken sémája. (Kötelező) |
-| Rendszerazonosító | Sztring | Logikai alkalmazás rendszer azonosítóját. (Kötelező) |
-| runId | Sztring | A logikai alkalmazás futtatásának azonosítóját. (Kötelező) |
-| operationName | Sztring | A művelet (például művelet vagy trigger) neve. (Kötelező) |
-| repeatItemScopeName | Sztring | Ismételje meg a konfigurációelem neve, ha a művelet belül egy `foreach` / `until` ciklus. (Kötelező) |
+| Rendszerazonosító | String | Logikai alkalmazás rendszer azonosítóját. (Kötelező) |
+| runId | String | A logikai alkalmazás futtatásának azonosítóját. (Kötelező) |
+| operationName | String | A művelet (például művelet vagy trigger) neve. (Kötelező) |
+| repeatItemScopeName | String | Ismételje meg a konfigurációelem neve, ha a művelet belül egy `foreach` / `until` ciklus. (Kötelező) |
 | repeatItemIndex | Egész szám | E művelet belül van-e egy `foreach` / `until` ciklus. Azt jelzi, hogy az ismétlődő elem index. (Kötelező) |
-| trackingId | Sztring | Követési azonosító, az üzenetek korrelációját. (Választható lehetőség) |
-| correlationId | Sztring | Korrelációs azonosító, az üzenetek korrelációját. (Választható lehetőség) |
-| clientRequestId | Sztring | Ügyfél töltheti fel, hogy üzeneteket összekapcsolását. (Választható lehetőség) |
+| trackingId | String | Követési azonosító, az üzenetek korrelációját. (Választható lehetőség) |
+| correlationId | String | Korrelációs azonosító, az üzenetek korrelációját. (Választható lehetőség) |
+| clientRequestId | String | Ügyfél töltheti fel, hogy üzeneteket összekapcsolását. (Választható lehetőség) |
 | eventLevel |   | Az esemény szintjét. (Kötelező) |
 | eventTime |   | ÉÉÉÉ-hh-DDTHH:MM:SS.00000Z UTC formátumban, az esemény időpontja. (Kötelező) |
-| RecordType |   | A track rekord típusát. Az érték engedélyezett **egyéni**. (Kötelező) |
+| recordType |   | A track rekord típusát. Az érték engedélyezett **egyéni**. (Kötelező) |
 | rekord |   | Egyéni rekord típusa. Engedélyezett formátuma JToken. (Kötelező) |
 ||||
 
@@ -84,4 +84,4 @@ B2B-protokoll követési sémák kapcsolatos információkért lásd:
 ## <a name="next-steps"></a>További lépések
 
 * Tudjon meg többet [B2B-üzenetek figyelése](logic-apps-monitor-b2b-message.md)
-* Ismerje meg [a Log Analytics B2B üzenetek nyomon követése](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)
+* Ismerje meg [az Azure Monitor naplóira B2B üzenetek nyomon követése](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)

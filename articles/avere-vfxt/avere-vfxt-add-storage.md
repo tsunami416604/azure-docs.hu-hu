@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: procedural
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: 13084ac21315d725df3f0913583fff3e64ee5c4a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: cda95b8f7cbf1da85f080c7ea53306f48375db32
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813228"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992345"
 ---
 # <a name="configure-storage"></a>A tárolás konfigurálása
 
@@ -72,7 +72,7 @@ Ezután folytassa [hozzon létre egy elágazás](#create-a-junction).
 Azure Blob storage-t a vFXT fürt háttérrendszer tárolóként használhassa, egy üres tárolót, amelyet egy alapvető filer kell.
 
 > [!TIP] 
-> Hozzon létre egy blobtárolót a Avere vFXT fürtöt hoz létre egy időben kíván, ha a központi telepítési sablont vagy parancsfájl hoz létre egy storage-tárolóba, határozza meg azt a core filer, és létrehozza a névtér csatlakozási vFXT fürt létrehozásának részeként. 
+> Hozzon létre egy blobtárolót a Avere vFXT fürtöt hoz létre egy időben kíván, ha a központi telepítési sablont vagy parancsfájl hoz létre egy storage-tárolóba, határozza meg azt a core filer, és létrehozza a névtér csatlakozási vFXT fürt létrehozásának részeként. A sablon is létrehoz egy tárolási végpontot a fürt virtuális hálózaton belül. 
 
 Ezek a feladatok hozzáadása a fürthöz a Blob storage van szükség:
 

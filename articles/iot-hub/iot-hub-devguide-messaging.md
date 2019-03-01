@@ -1,19 +1,19 @@
 ---
 title: Megismerheti az Azure IoT Hub üzenetküldés |} A Microsoft Docs
 description: Fejlesztői útmutató – eszközről a felhőbe és a felhőből az eszközre irányuló, az IoT Hub üzenetküldési. Üzenet-formátumok és a támogatott kommunikációs protokollok kapcsolatos információkat tartalmaz.
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.author: dobett
-ms.openlocfilehash: d3a7284555fb592956d4e1dc3f56137c88d108e1
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: f56332fa7f53c729ffaa28ea375f043d1b4a3678
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47584393"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010871"
 ---
 # <a name="send-device-to-cloud-and-cloud-to-device-messages-with-iot-hub"></a>Az IoT Hub eszköz-felhő és a felhőből az eszközre irányuló üzenetek küldése
 

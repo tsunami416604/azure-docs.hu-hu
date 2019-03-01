@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 2289fc143abfde0aaaf2bcb079a6d24b74d57975
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 41eed6bc878bff4c9d847f9a449ca693274bf234
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564442"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195506"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>A Windows Azure Files-problémák hibaelhárítása
 
@@ -75,12 +75,11 @@ Használatához a `Test-NetConnection` parancsmag, az AzureRM PowerShell modulna
     # $storageAccount.Context.FileEndpoint is used because non-Public Azure regions, such as sovereign clouds
     # or Azure Stack deployments, will have different hosts for Azure file shares (and other storage resources).
     Test-NetConnection -ComputerName ([System.Uri]::new($storageAccount.Context.FileEndPoint).Host) -Port 445
-  
     
 Sikeres csatlakozás esetén a következő kimenetet kell látnia:
     
   
-    ComputerName     : <storage-account-host-name>
+    ComputerName     : <your-storage-account-name>
     RemoteAddress    : <storage-account-ip-address>
     RemotePort       : 445
     InterfaceAlias   : <your-network-interface>
@@ -93,7 +92,19 @@ Sikeres csatlakozás esetén a következő kimenetet kell látnia:
 
 ### <a name="solution-for-cause-1"></a>1 OK megoldás
 
-Az informatikai részlegének véleményét megnyitni a 445-ös kimenő [Azure IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653).
+#### <a name="solution-1---use-azure-file-sync"></a>1 – használja az Azure File Sync megoldás
+Az Azure File Sync is alakítja át a helyszíni Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Az Azure File Sync 443-as porton keresztül működik, és így használható áthidaló elérni az Azure Filest ügyfelektől, amelyek a 445-ös blokkolva van. [Ismerje meg, hogyan állíthatja be az Azure File Sync](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-extend-servers).
+
+#### <a name="solution-2---use-vpn"></a>2. VPN használatát megoldás
+A megadott tárfiókhoz VPN beállításával a forgalom fog áthaladni egy biztonságos alagúton, nem pedig az interneten keresztül. Kövesse a [utasításokat követve VPN Hálózatának beállítása](https://github.com/Azure-Samples/azure-files-samples/tree/master/point-to-site-vpn-azure-files
+) a Windows Azure-fájlok eléréséhez.
+
+#### <a name="solution-3---unblock-port-445-with-help-of-your-ispit-admin"></a>3 - megoldás segítségével az Internetszolgáltató 445-ös port tiltásának feloldása / rendszergazda
+Az IT-részleg vagy megnyitni a 445-ös kimenő Internetszolgáltató [Azure IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653).
+
+#### <a name="solution-4---use-rest-api-based-tools-like-storage-explorerpowershell"></a>4 – megoldás-alapú eszközök például a Storage Explorer/Powershell REST API használata
+Az Azure Files SMB mellett REST is támogatja. REST-alapú elérését a 443-as (szabványos tcp-)-en keresztül működik. Nincsenek különböző eszközöket REST API használatával írt, amelyek lehetővé teszik a felhasználói felület gazdag. [Storage Explorer](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows) az egyik közülük. [Letöltés és a Storage Explorer telepítése](https://azure.microsoft.com/en-us/features/storage-explorer/) és csatlakozni a fájlmegosztáshoz, az Azure Files alapját. Is [PowerShell](https://docs.microsoft.com/en-us/azure/storage/files/storage-how-to-use-files-powershell) amely is felhasználó REST API-t.
+
 
 ### <a name="cause-2-ntlmv1-is-enabled"></a>2. ok: NTLMv1 engedélyezve van
 

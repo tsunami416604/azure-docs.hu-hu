@@ -1,19 +1,19 @@
 ---
 title: Az Azure IoT Hub-Eszközfelügyelet (Node) – első lépések |} A Microsoft Docs
 description: Hogyan használhatja az IoT Hub-Eszközfelügyelet egy távoli eszköz-újraindítás kezdeményezése. Az Azure IoT SDK for Node.js használatával valósítható meg egy szimulált eszközalkalmazás, amely tartalmazza a közvetlen metódus és a egy service-alkalmazás, amely a közvetlen metódust hív meg.
-author: juanjperez
-manager: cberlin
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/25/2017
-ms.author: juanpere
-ms.openlocfilehash: 278765957156b56c3c476678b8db0efe5fb73c68
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 3f861259c8c760b921f1c33f4e449853a3686a40
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118268"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010803"
 ---
 # <a name="get-started-with-device-management-node"></a>Ismerkedés az eszközfelügyelettel (Node)
 

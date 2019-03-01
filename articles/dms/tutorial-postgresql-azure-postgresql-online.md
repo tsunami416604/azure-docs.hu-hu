@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 12/19/2018
-ms.openlocfilehash: eb18fd521ca885b37c60c4f3a53e2bce1508fda2
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.date: 02/28/2018
+ms.openlocfilehash: 87d4e85cec70ee8b1ac6999fb5d1888eb76988ad
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382812"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990340"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Oktatóanyag: PostgreSQL online migrálása az Azure Database for PostgreSQL-be DMS használatával
 Az Azure Database Migration Service használatával minimális szolgáltatáskieséssel migrálhatja egy helyszíni PostgreSQL-példány adatbázisait az [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/)-be. Ez azt jelenti, hogy a migrálás az alkalmazás minimális ideig tartó leállásával végezhető el. Ebben az oktatóanyagban a **DVD Rental** mintaadatbázist fogja migrálni a PostgreSQL 9.6 egy helyszíni példányáról az Azure Database for PostgreSQL-be az Azure Database Migration Service online migrálási tevékenységének használatával.
@@ -43,8 +43,17 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
     Emellett a helyi PostgreSQL verziójának meg kell egyeznie az Azure Database for PostgreSQL verziójával. Például a PostgreSQL 9.5.11.5 csak az Azure Database for PostgreSQL 9.5.11-es verziójába migrálható, a 9.6.7-es verzióba nem.
 
 - [Példány létrehozása Azure Database for PostgreSQL-ben](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal).  
-- Hozzon létre egy virtuális hálózatot az Azure Database Migration Service-hez az Azure Resource Manager-alapú üzemi modell használatával, amely a hálózat helyek közötti kapcsolatot biztosít a helyszíni forráskiszolgálóknak [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) használatával.
-- Győződjön meg arról, hogy az Azure Virtual Network (VNET) hálózati biztonsági szabályok nem blokkolják a következő kommunikációs portokat: 443, 53, 9354, 445, 12000. További részletek az Azure VNET NSG-forgalom szűréséről: [Hálózati forgalom szűrése hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm).
+- Hozzon létre egy Azure Virtual Network (VNET) használatával az Azure Resource Manager üzembe helyezési modell, amely lehetővé teszi a helyek közötti kapcsolatot a helyszíni adatforrás-kiszolgálók használatával vagy az Azure Database Migration Service [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
+
+    > [!NOTE]
+    > Virtuális hálózathoz a telepítés során, ha az ExpressRoute hálózati a Microsoft társviszony-létesítés használja, hozzá a következő szolgáltatás [végpontok](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) az alhálózathoz, amelyben üzembe fogja helyezni a szolgáltatást:
+    > - Cél adatbázis végpont (például SQL-végpont, Cosmos-DB végpont, és így tovább)
+    > - Storage-végpont
+    > - Service bus-végpont
+    >
+    > Ez a konfiguráció szükség, mert az Azure Database Migration Service nem rendelkezik internetkapcsolattal.
+
+- Győződjön meg arról, hogy a virtuális hálózatok közötti hálózati biztonsági csoport szabályai do tiltja le a következő kommunikációs portokat 443-as, 53-as és 9354-es, 445-ös, 12000. További részletek az Azure VNET NSG-forgalom szűréséről: [Hálózati forgalom szűrése hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm).
 - Konfigurálja a [Windows tűzfalat az adatbázismotorhoz való hozzáféréshez](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 - Nyissa meg a Windows tűzfalat, és engedélyezze, hogy az Azure Database Migration Service elérhesse a PostgreSQL-kiszolgáló forrását, amely alapértelmezés szerint az 5432-es TCP-port.
 - Ha tűzfalkészüléket használ a forrásadatbázis(ok) előtt, előfordulhat, hogy tűzfalszabályokat kell hozzáadnia annak engedélyezéséhez, hogy az Azure Database Migration Service a migrálás céljából hozzáférhessen a forrásadatbázis(ok)hoz.
@@ -126,7 +135,7 @@ Ahhoz, hogy az összes adatbázis-objektumot táblasémaként, indexekként és 
 
     Futtassa a ’drop foreign key’-t (ez a második oszlop) a lekérdezési eredményben.
 
-5.  Az adatok között szereplő trigger (beszúrási vagy frissítési trigger) kikényszeríti az adatok integritását a célban az adatok forrásból való replikálása előtt. Javasoljuk, hogy migráláskor tiltsa le a triggereket **a cél** minden táblájában, majd a migrálás végeztével engedélyezze őket ismét.
+5.  Az adatok között szereplő trigger (beszúrási vagy frissítési trigger) kikényszeríti az adatok integritását a célban az adatok forrásból való replikálása előtt. Javasoljuk, hogy tiltsa le az összes tábla eseményindítókat **a cél** során áttelepítési, és azt, majd engedélyezze újra az eseményindítók a migrálás után végezze el.
 
     A céladatbázisban szereplő triggerek letiltásához használja az alábbi parancsot:
 
@@ -135,7 +144,7 @@ Ahhoz, hogy az összes adatbázis-objektumot táblasémaként, indexekként és 
     from information_schema.triggers;
     ```
 
-6.  Ha valamelyik táblában ENUM adattípus van, javasoljuk, hogy ideiglenesen frissítse azt ’character varying’ adattípusra a céltáblában. Miután elkészült az adatreplikáció, állítsa vissza az adattípust ENUM-ra.
+6.  Ha valamelyik tábla ENUM adattípus, javasoljuk, hogy Ön ideiglenesen kívánja frissíteni a céloldali tábla karakter változó adattípust. Miután elkészült az adatreplikáció, állítsa vissza az adattípust ENUM-ra.
 
 ## <a name="provisioning-an-instance-of-dms-using-the-cli"></a>A DMS egy példányának kiépítése a CLI használatával
 
@@ -269,7 +278,7 @@ Ahhoz, hogy az összes adatbázis-objektumot táblasémaként, indexekként és 
                 }
         ```
 
-    - Emellett van egy adatbázis-beállítási json-fájl is, amely a json-objektumokat sorolja fel. A PostgreSQL esetében az adatbázis-beállítási JSON-objektum formátuma az alábbi:
+    - Emellett van egy adatbázis beállítás json-fájlt, amely felsorolja a json-objektumok. A PostgreSQL esetében az adatbázis-beállítási JSON-objektum formátuma az alábbi:
 
         ```
         [

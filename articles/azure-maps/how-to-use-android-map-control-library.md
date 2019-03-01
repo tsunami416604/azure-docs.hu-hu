@@ -1,6 +1,6 @@
 ---
-title: Az Azure Maps Android térkép vezérlőelem használata |} A Microsoft Docs
-description: Android térkép vezérlőelem használata az Azure Maps szolgáltatásban.
+title: Az Android térkép vezérlőelem használata az Azure Maps |} A Microsoft Docs
+description: Az Azure Maps-Android térkép vezérlőelem.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 02/12/2019
@@ -9,53 +9,53 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 57cc585d621c71872a4b7658c74f581c8998b245
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 15706addbe6b7f6310223978130158c792a47c89
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341079"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010667"
 ---
-# <a name="how-to-use-azure-maps-android-sdk"></a>Azure Maps Android SDK használata
+# <a name="how-to-use-the-azure-maps-android-sdk"></a>Az Azure Maps Android SDK használata
 
-Az Azure Maps Android SDK Android vektor maps szalagtár. Ez a cikk végigvezeti Önt az Azure Maps Android SDK telepítése, térkép betöltése és PIN-kód helyezi azt.
+Az Azure Maps Android SDK Android vector map kódtár. Ez a cikk végigvezeti Önt a folyamatokon telepítése az Azure Maps Android SDK-t, a térkép betöltése és helyezi el a PIN-kódot a térképen.
 
-## <a name="prerequisites-to-get-started"></a>A kezdéshez Előfeltételek
+## <a name="prerequisites"></a>Előfeltételek
 
-### <a name="create-an-azure-maps-account"></a>Azure Maps-fiók létrehozása 
+### <a name="create-an-azure-maps-account"></a>Azure Maps-fiók létrehozása
 
-Kövesse a jelen útmutató lépéseit, először szüksége [fiók és kulcsok kezelése](how-to-manage-account-keys.md) hozhat létre és kezelhet a fiók előfizetés S1 tarifacsomagot.
+Hajtsa végre az ebben a cikkben ismertetett, szüksége lesz a [létrehozása az Azure Maps-fiók](how-to-manage-account-keys.md) az S1 tarifacsomagot.
 
-### <a name="download-android-studio"></a>Az Android studio letöltése
+### <a name="download-android-studio"></a>Az Android Studio letöltése
 
-Letöltheti a [Android Studio](https://developer.android.com/studio/) ingyenes a Google rendszeréből. Az Azure Maps Android SDK telepítéséhez kell először az Android Studio letöltése, és hozzon létre egy projektet egy üres tevékenységgel.
+Az Android Studio letöltése, és hozzon létre egy projektet egy üres tevékenységgel az Azure Maps Android SDK telepítése előtt kell. Is [az Android Studio letöltése](https://developer.android.com/studio/) ingyenes a Google rendszeréből. 
 
 ## <a name="create-a-project-in-android-studio"></a>Az Android Studio-projekt létrehozása
 
-Hozzon létre egy új projektet egy üres tevékenységgel kell. Hozzon létre egy új Android Studio-projektet az alábbi lépésekkel:
+Először egy új projekt létrehozása egy üres tevékenységgel. Hajtsa végre az alábbi lépéseket az Android Studio-projekt létrehozásához:
 
-1. A *válassza ki a projekt*, ellenőrizze a "Telefonos és Táblagépes" képernyő tényezőként arról, hogy az alkalmazás.
-2. Kattintson a *üres tevékenység* méretet, és kattintson a **tovább**.
-3. A *projekt konfigurálásához*válassza `API 21: Android 5.0.0 (Lollipop)` a minimális SDK-t. Ez az Azure Maps Android SDK által támogatott legalacsonyabb verzió.
-4. Fogadja el az alapértelmezett `Activity Name` és `Layout Name` kattintson **Befejezés**
+1. A **válassza ki a projekt**válassza **telefon és táblagép**. Az alkalmazás futni fog a méretet.
+2. Az a **telefon és táblagép** lapon jelölje be **üres tevékenység**, majd válassza ki **tovább**.
+3. A **projekt konfigurálásához**válassza `API 21: Android 5.0.0 (Lollipop)` a minimális SDK-t. Ez az a legkorábbi, az Azure Maps Android SDK által támogatott verzió.
+4. Fogadja el az alapértelmezett `Activity Name` és `Layout Name` válassza **Befejezés**.
 
-Lásd: [Android Studio-dokumentáció](https://developer.android.com/studio/intro/) további az Android Studio telepítése és a egy új projekt létrehozása érdekében.
+Tekintse meg a [Android Studio-dokumentáció](https://developer.android.com/studio/intro/) további segítség az Android Studio telepítése és a egy új projekt létrehozása.
 
-![Új projekt létrehozása](./media/how-to-use-android-map-control-library/form-factor-android.png)
+![Projekt létrehozása](./media/how-to-use-android-map-control-library/form-factor-android.png)
 
 ## <a name="set-up-a-virtual-device"></a>A virtuális eszköz beállítása
 
-Az Android Studio lehetővé teszi, hogy a számítógép egy virtuális Android-eszköz beállításához. Ami segít az alkalmazás teszteléséhez, fejlesztése során. Állítsa be a virtuális eszköz kattintson az Android virtuális eszközt (AVD) Manager ikonra a felső, a projekt képernyő jobb. Kattintson a **virtuális eszköz létrehozása** gombra. A kezelő-n keresztül is elérhető, **eszközök > Android > AVD Manager** az eszköztáron. Az a **telefonok** kategória, jelölje be **Nexus 5 X** kattintson **tovább**.
+Az Android Studio lehetővé teszi, hogy a számítógép egy virtuális Android-eszköz beállításához. Ez segíthet a tesztelhetők az alkalmazások fejlesztése során. A virtuális eszköz beállításához jelölje ki a Android virtuális eszközt (AVD) Manager ikont a projekt képernyő jobb felső sarkában, és válassza **virtuális eszköz létrehozása**. Kiválasztásával is megtekintheti az AVD Manager **eszközök** > **Android** > **AVD Manager** az eszköztáron. Az a **telefonok** kategória, jelölje be **Nexus 5 X**, majd válassza ki **tovább**.
 
-További információ az AVD a beállítása a [Android Studio-dokumentáció](https://developer.android.com/studio/run/managing-avds).
+Egy az AVD beállításáról többet is megtudhat a [Android Studio-dokumentáció](https://developer.android.com/studio/run/managing-avds).
 
 ![Android Emulator](./media/how-to-use-android-map-control-library/android-emulator.png)
 
-## <a name="install-azure-maps-android-sdk"></a>Az Azure Maps Android SDK telepítése
+## <a name="install-the-azure-maps-android-sdk"></a>Az Azure Maps Android SDK telepítése
 
-Mielőtt folytatná az alkalmazása létrehozásához felé, kövesse az Azure Maps Android SDK telepítése az alábbi lépéseket. 
+Az alkalmazás létrehozásakor a következő lépés, hogy telepítse az Azure Maps Android SDK. Hajtsa végre ezeket a lépéseket az SDK telepítése:
 
-1. Adja hozzá a következőt a **minden projekt**, tárházak letiltása a **build.gradle** fájlt.
+1. Adja hozzá a következő kódot a **minden projekt**, **tárházak** letiltása a **build.gradle** fájlt.
 
     ```
     maven {
@@ -63,9 +63,9 @@ Mielőtt folytatná az alkalmazása létrehozásához felé, kövesse az Azure M
     }
     ```
 
-2. Frissítés a **app/build.gradle** , és adja hozzá a következőket:
+2. Frissítés a **app/build.gradle** és adja hozzá a következő kódot:
 
-    1. Az Android blokk adja hozzá a következőket:
+    1. Az alábbi kód hozzáadása az Android letiltása:
 
         ```
         compileOptions {
@@ -73,13 +73,13 @@ Mielőtt folytatná az alkalmazása létrehozásához felé, kövesse az Azure M
             targetCompatibility JavaVersion.VERSION_1_8
         }
         ```
-    2. Frissítse a függőségeket tartalmazó blokkba, és adja hozzá a következőket:
+    2. Frissítse a függőségeket tartalmazó blokkba, és adja hozzá a következő kód azt:
 
         ```
         implementation "com.microsoft.azure.maps:mapcontrol:0.1"
         ```
 
-3. Adja hozzá a következő engedélyek beállítása a **AndroidManifest.xml**
+3. Adja hozzá az alábbi XML-engedélyek beállítása a **AndroidManifest.xml** fájlt:
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -90,7 +90,7 @@ Mielőtt folytatná az alkalmazása létrehozásához felé, kövesse az Azure M
     </manifest>
     ```
 
-4. Szerkesztés **res > elrendezés > activity_main.xml**, ezért az alábbi XML hasonlóan néz ki:
+4. Szerkesztés **res** > **elrendezés** > **activity_main.xml** , az XML hasonlóan néz ki:
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -113,7 +113,7 @@ Mielőtt folytatná az alkalmazása létrehozásához felé, kövesse az Azure M
     </FrameLayout>
     ```
 
-5. Szerkesztés **MainActivity.java** térkép nézet tevékenység osztály létrehozása. A Szerkesztés után az alábbi osztály hasonlóan kell kinéznie:
+5. Szerkesztés **MainActivity.java** térkép nézet tevékenység osztály létrehozása. Után szerkesztheti, ez az osztály hasonlóan kell kinéznie:
 
     ```java
     package com.example.myapplication;
@@ -187,21 +187,21 @@ Mielőtt folytatná az alkalmazása létrehozásához felé, kövesse az Azure M
 
 ## <a name="import-classes"></a>Osztályok importálása
 
-A fenti lépések végrehajtását követően nagy valószínűséggel kap figyelmeztetést az Android Studio néhány, a szöveg a kódban. Ezek a figyelmeztetések megszüntetéséhez hivatkozik osztályok importálása `MainActivity.java`.
+Miután elvégezte az előző lépéseket, valószínűleg kap figyelmeztetést az Android Studio egy részének a kódot. Ezek a figyelmeztetések megszüntetéséhez hivatkozott osztályok importálása `MainActivity.java`.
 
-Billentyű lenyomásával automatikusan importálhatja ezeket az osztályokat `Alt` + `Enter`(`Option` + `Return` Mac gépen). 
+Alt + Enter billentyűkombinációt (a beállítás + Return Mac számítógépen) kiválasztásával automatikusan importálhatja ezeket az osztályokat.
 
-Kattintson a **Run 'App'** gombra (vagy `Control` + `R` Mac számítógépen) az alkalmazás létrehozásához.
+Válassza ki a Futtatás gomb, ahogyan az a következő ábra (vagy nyomja le a Mac számítógépen Control + R), az alkalmazás létrehozásához.
 
 ![Kattintson a Futtatás](./media/how-to-use-android-map-control-library/run-app.png)
 
-Hozza létre az alkalmazást az android studióhoz készült néhány másodpercet vesz igénybe. A build után a Befejezés az emulált Android-eszközön tesztelheti az alkalmazást. Az alábbihoz hasonló térkép jelenik meg.
+Az Android Studio az alkalmazás néhány másodpercet vesz igénybe. A létrehozás befejezése után az emulált Android-eszközön tesztelheti az alkalmazást. A következőhöz hasonló térkép kell megjelennie:
 
 ![Android map](./media/how-to-use-android-map-control-library/android-map.png)
 
 ## <a name="add-a-marker-to-the-map"></a>Adjon hozzá egy jelölő a térkép
 
-Ahhoz, hogy a térkép be jelölő hozzáadásához hozzáadni `mapView.getMapAsync()` függvény a `MainActivity.java`. A végső `MainActivity.java` a következőhöz hasonlóan kell kinéznie:
+Szeretne hozzáadni egy jelölő a térképre, adja hozzá a `mapView.getMapAsync()` függvény `MainActivity.java`. A végső `MainActivity.java` kódot kell kinéznie:
 
 ```java
 package com.example.myapplication;
@@ -288,6 +288,6 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-Futtassa újra az alkalmazást, és megjelenik egy jelölő a térképen az alábbihoz hasonló.
+Futtassa újra az alkalmazást. Itt látható módon kell megjelennie egy jelölő a térképen:
 
 ![Android térkép PIN-kód](./media/how-to-use-android-map-control-library/android-map-pin.png)

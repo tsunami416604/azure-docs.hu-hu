@@ -11,18 +11,25 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 2/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5bb2c7d9eed2ed33f3cd0c33bfc479d2e3627370
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: aeda7377a2d5d070a2e36126d53f8f5c203a8256
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889851"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991393"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
 Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások.  Az SDK teljes leírását látogasson el a referenciadokumentumai:
 + Az Azure Machine Learning [ **fő SDK a Pythonhoz**](https://aka.ms/aml-sdk)
 + Az Azure Machine Learning [ **adat-előkészítési SDK**](https://aka.ms/data-prep-sdk)
+
+## <a name="2019-02-27"></a>2019-02-27
+
+### <a name="azure-machine-learning-data-prep-sdk-v1016"></a>Az Azure Machine Learning adat-előkészítési SDK v1.0.16
+
++ **Hibajavítás**
+  + Egy egyszerű szolgáltatást, amely okozta hitelesítési probléma kijavítva egy API-módosítás alapján.
 
 ## <a name="2019-02-25"></a>2019-02-25
 
@@ -37,6 +44,7 @@ Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások.
   + Hozzáadtuk a támogatást az Azure Machine Learning-folyamatokat a source_directory_data_store tulajdonság egy kívánt adattár (például egy blob storage) állítja a [RunConfigurations](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) , amely megadott a [ PythonScriptStep](https://docs.microsoft.com/en-us/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py). Alapértelmezés szerint az lépéseket az Azure fájltároló használjuk a biztonsági adattár, amely megadtuk szabályozási problémák lépések nagy számú párhuzamosan végrehajtásakor.
 
 ### <a name="azure-portal"></a>Azure Portal
+
 + **Új funkciók**
     + Új fogd és vidd tábla szerkesztő élmény a jelentések. Felhasználók oszlop húzhat a tábla területre, ahol a táblázat előnézetét megjelenik a jól. Az oszlopok alakítható át.
     + Az elküldött ScriptRunConfig futtatások új Futtatás gombra. Felhasználók újra kell futtatni egy meglévő futtatása távoli számítási fürtön a választott eszközükön.

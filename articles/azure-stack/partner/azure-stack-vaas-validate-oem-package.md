@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 02/19/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: f9ed10c84be86304722020606873b0c7866df1e8
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: f5b884ddda292b1c523a5364d34753ccb3a5bbdf
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594049"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194439"
 ---
 # <a name="validate-oem-packages"></a>OEM-csomagok érvényesítése
 
@@ -91,6 +91,9 @@ Használja a **a Blob SAS URL-cím** amikor csomagot biztosít a blob URL-címek
 ## <a name="apply-monthly-update"></a>Havi frissítés alkalmazása
 
 [!INCLUDE [azure-stack-vaas-workflow-section_update-azs](includes/azure-stack-vaas-workflow-section_update-azs.md)]
+
+> [!NOTE]
+> A havi frissítés alkalmazása után javasoljuk, hogy futtassa a Test-AzureStack arról, hogy a frissítés megfelelően lett alkalmazva, és a egy kifogástalan állapotban van. Ha a teszt-AzureStack sikertelen, a probléma jelentése a Microsoftnak. A tesztelési fázisban nem folytatható, amíg a probléma nem oldódik. A Test-Azure Stack-parancs futtatásával kapcsolatos információkat a jelen található [cikk](https://docs.microsoft.com/azure/azure-stack/azure-stack-diagnostic-test).
 
 ## <a name="create-a-package-validation-workflow"></a>Csomag érvényesítése munkafolyamat létrehozása
 

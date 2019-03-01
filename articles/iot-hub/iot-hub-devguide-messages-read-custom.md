@@ -1,19 +1,19 @@
 ---
 title: Megismerheti az Azure IoT Hub az egyedi végpontok |} A Microsoft Docs
 description: Fejlesztői útmutató – az egyedi végpontok juthatnak eszköz – felhő üzenetek útválasztási lekérdezések segítségével.
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.author: dobett
-ms.openlocfilehash: 1b0e99998aaf29c366cce1926f930174686cfee6
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: e5e92c40cef15e99431dc9652820c71e87935f67
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56414898"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008712"
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>Üzenet útvonalak és az egyedi végpontok használata az eszköz a felhőbe irányuló üzenetek
 
@@ -25,7 +25,7 @@ Az IoT Hub [üzenet-útválasztása](iot-hub-devguide-routing-query-syntax.md) l
 | ------------- | ----------- |
 | **Name (Név)**      | Az egyedi név, amely azonosítja a lekérdezést. |
 | **Forrás**    | Az adatfolyam intézkedni forrása. Ha például eszköz telemetriai adatokat. |
-| **A feltétel** | A lekérdezési kifejezésben az útválasztási lekérdezés, amely az üzenet alkalmazás tulajdonságai, Rendszertulajdonságok, üzenet szövegét, device twin címkék és állapítsa meg, hogy a végpont egyezést eszköz-ikertulajdonságok vonatkozóan fut le. Hozhat létre, a lekérdezés kapcsolatos további információkért lásd: a lásd [üzenet útválasztási lekérdezési szintaxis](iot-hub-devguide-routing-query-syntax.md) |
+| **a feltétel** | A lekérdezési kifejezésben az útválasztási lekérdezés, amely az üzenet alkalmazás tulajdonságai, Rendszertulajdonságok, üzenet szövegét, device twin címkék és állapítsa meg, hogy a végpont egyezést eszköz-ikertulajdonságok vonatkozóan fut le. Hozhat létre, a lekérdezés kapcsolatos további információkért lásd: a lásd [üzenet útválasztási lekérdezési szintaxis](iot-hub-devguide-routing-query-syntax.md) |
 | **Végpont**  | A végpont arról, hogy az IoT Hub hová küldi az üzeneteket, amelyek megfelelnek a lekérdezés neve. Azt javasoljuk, hogy a végpont ugyanabban a régióban, mint az IoT hub kiválasztása. |
 
 Egy üzenet, amelyben az IoT Hub eset kézbesíti az üzenetet a végponthoz társított minden egyező lekérdezés több útválasztási lekérdezés podmínky előfordulhat, hogy egyezik. Az IoT Hub adattömbökbe megfelelően automatikusan is az üzenetek kézbesítését, így ha egy üzenet, amelyek ugyanahhoz a célhoz több lekérdezés megegyezik, csak írás után, hogy a cél.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: barclayn
-ms.openlocfilehash: c9d8dd366ecabe9eb508998d526ddfe7b1da300d
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: afec42551f124890dd2cc7b03cce48c359fc88c4
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960507"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194095"
 ---
 # <a name="azure-key-vault-logging"></a>Az Azure Key Vault naplózása
 
@@ -306,11 +306,11 @@ A következő táblázat felsorolja a **operationName** értékeket és a megfel
 | **SecretList** |[Egy tároló titkos kulcsainak listázása](https://msdn.microsoft.com/library/azure/dn903614.aspx) |
 | **SecretListVersions** |[Titkos kulcs verzióinak listázása](https://msdn.microsoft.com/library/azure/dn986824.aspx) |
 
-## <a id="loganalytics"></a>A Log Analytics használata
+## <a id="loganalytics"></a>Az Azure Monitor-naplók
 
-Használhatja a Key Vault megoldás az Azure Log Analyticsben, tekintse át a Key Vault **AuditEvent** naplókat. A Log Analytics a naplólekérdezések adatok elemzése és a szükséges adatok lekéréséhez használhatja. 
+Használatával a Key Vault megoldás az Azure Monitor naplóira tekintse át a Key Vault **AuditEvent** naplókat. Az Azure Monitor naplóira a naplólekérdezések adatok elemzése és a szükséges adatok lekéréséhez használhatja. 
 
-További információért és a beállítás módjának ismertetéséért olvassa el [az Azure Key Vault megoldás a Log Analyticsben](../azure-monitor/insights/azure-key-vault.md) történő használatát ismertető cikket. Ez a cikk utasításokat is tartalmaz, ha a régi Key Vault megoldás a Log Analytics előzetes verzió ideje alatt, ahol először irányítja a naplók az Azure storage-fiókba és konfigurálva, hogy onnan lehessen olvasni a Log Analytics által kínált át kell.
+További információk, beleértve az beállítására,: [Azure Key Vault megoldás az Azure Monitor naplóira](../azure-monitor/insights/azure-key-vault.md). Ez a cikk utasításokat is tartalmaz, ha, át kell állniuk a régi Key Vault megoldás, amely alatt az Azure Monitor naplóira volt elérhető, előzetes verzió, ahol irányítva először a naplókat az Azure storage-fiókba, és a beállított Azure figyelő naplózza, hogy onnan lehessen olvasni.
 
 ## <a id="next"></a>Következő lépések
 

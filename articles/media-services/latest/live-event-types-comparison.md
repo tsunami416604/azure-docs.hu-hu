@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/06/2019
+ms.date: 02/28/2019
 ms.author: juliako
-ms.openlocfilehash: 9d62ef2295abbb8f8fc6f45ffc0c7ab1ce9616e4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 9671d9f61b610a85cbf2475e045c641a29dac11b
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878357"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010616"
 ---
 # <a name="live-event-types-comparison"></a>Élő esemény típusok összehasonlítása
 
@@ -28,12 +28,12 @@ Az Azure Media Services egy [élő esemény](https://docs.microsoft.com/rest/api
 
 Az alábbi táblázat az élő esemény kétféle funkcióit hasonlítja össze.
 
-| Funkció | Az átmenő élő esemény | Szabványos élő esemény |
+| Szolgáltatás | Az átmenő élő esemény | Szabványos élő esemény |
 | --- | --- | --- |
 | Egyféle sávszélességű bemeneti bitsebességekre a felhőben van kódolva. |Nem |Igen |
 | Az hozzájárulásra hírcsatorna maximális képfelbontás |4 KB-os (4096 × 2160 60 keretek/s) |1080p (1920 x 1088 30 keretek/s)|
 | A csatorna közreműködői ajánlott maximális rétegek|Legfeljebb 12|Egy hang|
-| A kimenet maximális rétegek| Ugyanaz, mint a bemenet|Legfeljebb 7|
+| A kimenet maximális rétegek| Ugyanaz, mint a bemenet|Legfeljebb 6|
 | Hozzájárulás maximális összesített sávszélesség-hírcsatorna|60 MB/s|–|
 | Maximális átviteli sebesség a hozzájárulás az egyetlen réteg |20 Mbps|20 Mbps|
 | Több nyelv hangsáv támogatása|Igen|Nem|

@@ -10,14 +10,14 @@ ms.reviewer: klam, estfan, LADocs
 ms.custom: vs-azure
 ms.topic: article
 ms.date: 03/30/2017
-ms.openlocfilehash: 068e5399073959d2c5aa6c4bbeb0d7bccf7d05e6
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: 9cd1946d8fa670764bcc95b82298d07cc70417bd
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49393779"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57191323"
 ---
-# <a name="overview-azure-serverless-with-azure-logic-apps-and-azure-functions"></a>Áttekintés: Azure, az Azure Logic Apps és az Azure Functions kiszolgáló nélküli
+# <a name="overview-azure-serverless-with-azure-logic-apps-and-azure-functions"></a>Áttekintés: Az Azure Logic Apps és az Azure Functions kiszolgáló nélküli Azure
 
 [Kiszolgáló nélküli](https://azure.microsoft.com/solutions/serverless/) alkalmazások fejlesztési sebességének növekedése, a szükséges kódot, és egyszerűen méretezhető csökkenése előnyöket kínálják.  Ez a cikk a különböző attribútumokat, kiszolgáló nélküli megoldások és az Azure kiszolgáló nélküli ajánlatai hiányzóra változik.
 
@@ -29,7 +29,7 @@ Az alapvető szolgáltatások az Azure-beli kiszolgáló nélküli körül [Azur
 
 ## <a name="what-are-azure-functions"></a>Mik az Azure Functions?
 
-Az Azure Functions megoldással egyszerűen futtathatók kisebb kódrészletek, más néven „függvények”, a felhőben. Elég, ha a szóban forgó problémára vonatkozó kódot megírja, nem kell egy egész alkalmazással vagy futtató infrastruktúrával bajlódnia. Függvények legyen még hatékonyabb, és a választott, például a C#, F #, Node.js, Python vagy PHP nyelven használható. Csak a kód futtatásának idejéért kell fizetnie, és az Azure méretezhető, igény szerint.
+Az Azure Functions megoldással egyszerűen futtathatók kisebb kódrészletek, más néven „függvények”, a felhőben. Elég, ha a szóban forgó problémára vonatkozó kódot megírja, nem kell egy egész alkalmazással vagy futtató infrastruktúrával bajlódnia. Függvények legyen még hatékonyabb, és használhatja a fejlesztési nyelvet választott, mint például C#, F#, Node.js, Python vagy PHP. Csak a kód futtatásának idejéért kell fizetnie, és az Azure méretezhető, igény szerint.
 
 Ha szeretne rögtön az Azure Functions használatának első lépéseihez ugrani, kezdje [Az első Azure-függvény létrehozása](../azure-functions/functions-create-first-azure-function.md) résszel. Ha a Functions szolgáltatással kapcsolatos további műszaki információkat keres, lépjen a [fejlesztői segédanyagok](../azure-functions/functions-reference.md) részhez.
 
@@ -41,7 +41,7 @@ A Logic Apps használatának első lépései, kezdje [az első logikai alkalmaz�
 
 ## <a name="how-can-i-build-and-deploy-serverless-applications-in-azure"></a>Hogyan hozhat létre és üzembe helyezése az Azure-beli kiszolgáló nélküli alkalmazásokat?
 
-Az Azure egy eszközök széles skáláját biztosítja a fejlesztési, üzembe helyezési és felügyeleti kiszolgáló nélküli alkalmazások között.  Alkalmazások építhetők fel, közvetlenül az Azure Portalon, vagy a [hibakeresését a Visual Studióból](logic-apps-serverless-get-started-vs.md).  Ha egy alkalmazás fejlesztettek ki lehet [azonnal üzembe helyezett](logic-apps-create-deploy-template.md).  Az Azure is kiszolgáló nélküli alkalmazások figyelését teszi lehetővé.  A monitorozás elérhető lesz az Azure portal, az API vagy SDK-k, vagy az integrált eszközök, a Log Analytics és az Application Insights.
+Az Azure egy eszközök széles skáláját biztosítja a fejlesztési, üzembe helyezési és felügyeleti kiszolgáló nélküli alkalmazások között.  Alkalmazások építhetők fel, közvetlenül az Azure Portalon, vagy a [hibakeresését a Visual Studióból](logic-apps-serverless-get-started-vs.md).  Ha egy alkalmazás fejlesztettek ki lehet [azonnal üzembe helyezett](logic-apps-create-deploy-template.md).  Az Azure is kiszolgáló nélküli alkalmazások figyelését teszi lehetővé.  A monitorozás elérhető lesz az Azure portal, az API vagy SDK-k, vagy az integrált eszközök, az Azure Monitor naplóira és az Application Insights.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: eaef1c904b5404339c476d86c5b8c2a1740e5a3e
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 8b895580f2edc0b7af1c6195212490ce083208ad
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700077"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991155"
 ---
 # <a name="best-practices-for-securing-and-managing-workloads-migrated-to-azure"></a>Ajánlott eljárások biztonságossá tétele és a számítási feladatok kezelése az Azure-bA migrálása
 
@@ -588,7 +588,7 @@ Azure-erőforrások készítése a naplózási metrikákat és telemetriai adato
 
 - Alapértelmezés szerint a legtöbb erőforrástípusok nincsenek engedélyezve diagnosztikai naplózás.
 - Diagnosztikai naplózás engedélyezése minden erőforrásban, naplózási adatokat kérdezhet le, és hozhat létre riasztásokat és a forgatókönyvek alapján.
-- Diagnosztikai naplózás engedélyezése esetén az egyes erőforrások lesz egy meghatározott készletének kategóriák. Egy vagy több naplózási kategóriát, és a egy helyet a naplóadatok választja. Naplók elküldött egy tárfiókba, az eseményközpontok felé, vagy a Log Analytics szolgáltatásba. 
+- Diagnosztikai naplózás engedélyezése esetén az egyes erőforrások lesz egy meghatározott készletének kategóriák. Egy vagy több naplózási kategóriát, és a egy helyet a naplóadatok választja. Naplók egy tárfiókot, az eseményközpontok felé, vagy az Azure Monitor naplóira lehet küldeni. 
 
 
 ![Diagnosztikai naplózás](./media/migrate-best-practices-security-management/diagnostics.png)
@@ -679,7 +679,7 @@ Csakúgy, mint bármely éles rendszer, így bármilyen módosítása hatással 
 Az Azure Change Tracking megoldás az Azure automationben rendelkezik:
 
 - A megoldást Windows és Linux-szoftver és a fájlokhoz, a Windows-beállításkulcsok, a Windows-szolgáltatások és a Linux-démonok nyomon követi a módosításokat.
-- Változások a figyelt kiszolgálók kapnak a Log Analytics szolgáltatás a felhőben lévő feldolgozása.
+- Változások a figyelt kiszolgálók kapnak a felhőben az Azure Monitor szolgáltatás feldolgozása.
 - A fogadott adatokat logikát alkalmaz, és a felhőszolgáltatás-adatait rögzíti.
 - A Change Tracking irányítópultján egyszerűen megtekintheti a kiszolgáló-infrastruktúrájában végrehajtott változtatásokat.
 

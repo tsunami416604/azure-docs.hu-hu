@@ -17,12 +17,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e07fc6c4ce7477cd6f1c64d5de1574ae7c4cecff
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8ff2caae7cb387f4f0d88cf059d01ad28861b9ad
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168952"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57191987"
 ---
 # <a name="azure-ad-connect-sync-running-the-installation-wizard-a-second-time"></a>Az Azure AD Connect szinkronizálása: A telepítési varázsló másodszori futtatása
 Az Azure AD Connect telepítővarázsló első futtatásakor, bemutatja, hogyan konfigurálhatja a telepítést. Ha újra futtatja a telepítési varázsló, azt a karbantartási lehetőséget kínál.
@@ -73,7 +73,7 @@ Ha ezt a lehetőséget választja, a konfigurációban minden címtár jelennek 
 ![A környezet összes könyvtárak listája lap](./media/how-to-connect-installation-wizard/refreshschema.png)
 
 ## <a name="configure-staging-mode"></a>Átmeneti környezetű üzemmód konfigurálása
-Ezzel a beállítással engedélyezheti vagy letilthatja az átmeneti környezetű üzemmód a kiszolgálón. Átmeneti mód és azok felhasználási módjáról további információ található [műveletek](how-to-connect-sync-operations.md#staging-mode).
+Ezzel a beállítással engedélyezheti vagy letilthatja az átmeneti környezetű üzemmód a kiszolgálón. Átmeneti mód és azok felhasználási módjáról további információ található [műveletek](how-to-connect-sync-staging-server.md).
 
 A beállítás jeleníti meg, ha átmeneti jelenleg engedélyezve van vagy le van tiltva:  
 ![A beállítás, amely az átmeneti környezetű üzemmód aktuális állapota is látható](./media/how-to-connect-installation-wizard/stagingmodecurrentstate.png)

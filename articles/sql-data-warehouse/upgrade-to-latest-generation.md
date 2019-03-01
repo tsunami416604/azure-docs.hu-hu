@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
-ms.openlocfilehash: f3e877733d473993a5acd2f44e088b8b0b4fe130
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 70a59ddc1b15693cb2a50c1dc2da6dd9233e0811
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447259"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990017"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Teljesítményoptimalizálás az SQL Data Warehouse frissítésével
 Azure SQL Data Warehouse frissítsen a legújabb generációja, az Azure hardver- és tárolási architektúrát.
@@ -55,7 +55,7 @@ Ez a frissítés alkalmazva lesz optimalizált Gen1 számítási szinten találh
 ## <a name="upgrade-in-a-supported-region-using-the-azure-portal"></a>Frissítse egy támogatott régióban az Azure portal használatával
 
 > [!NOTE]
-> Áttelepítés GEN1 GEN2-re az Azure Portalon keresztül nem vonható vissza. Nem áll egy folyamatot GEN1 adnak vissza.  
+> Áttelepítés Gen1 Gen2-re az Azure Portalon keresztül nem vonható vissza. Nem áll egy folyamatot Gen1 adnak vissza.  
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 

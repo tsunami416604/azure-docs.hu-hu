@@ -8,12 +8,12 @@ ms.date: 02/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 31b9405b7d4141890d786ab3d1cb70d11ef0c1b3
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: b5062dd4edf43fbb348a6de57f534096a8c922de
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267954"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193568"
 ---
 # <a name="what-is-azure-resource-graph"></a>Mi az Azure Resource Graph
 
@@ -52,7 +52,7 @@ Erőforrás-grafikon a lekérdezések szabályozott a legjobb felhasználói él
 
 ## <a name="running-your-first-query"></a>Az első lekérdezés futtatása
 
-A Resource Graph az Azure CLI és az Azure PowerShell használatát is támogatja. A lekérdezés mindkét nyelv esetében ugyanolyan struktúrájú. Útmutató a Resource Graph engedélyezéséhez az [Azure CLI-ben](first-query-azurecli.md#add-the-resource-graph-extension) és az [Azure PowerShellben](first-query-powershell.md#add-the-resource-graph-module).
+Erőforrás-grafikon támogatja a .NET-hez készült Azure CLI-vel, az Azure PowerShell és az Azure SDK-t. A lekérdezés szerkezete ugyanaz az egyes nyelvekhez. Útmutató a Resource Graph engedélyezéséhez az [Azure CLI-ben](first-query-azurecli.md#add-the-resource-graph-extension) és az [Azure PowerShellben](first-query-powershell.md#add-the-resource-graph-module).
 
 ## <a name="next-steps"></a>További lépések
 

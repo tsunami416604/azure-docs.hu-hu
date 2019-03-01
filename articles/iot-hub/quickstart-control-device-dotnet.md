@@ -1,21 +1,21 @@
 ---
 title: Eszköz vezérlése Azure IoT Hubról – rövid útmutató (.NET) | Microsoft Docs
 description: Ebben a rövid útmutatóban két C# mintaalkalmazást fog futtatni. Az egyik egy háttéralkalmazás, amely a hubhoz csatlakoztatott eszközök távoli vezérlését teszi lehetővé. A másik alkalmazás a hubhoz csatlakoztatott eszközt szimulál, amelyet távolról lehet irányítani.
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robin.shahan
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/22/2019
-ms.author: dobett
-ms.openlocfilehash: 5de2fa7e7ae18bf5a6212f6571acdf545116b88b
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: ca1778688f160fc918bd456f92ebe8935bb05d03
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673478"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008746"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>Gyors útmutató: A vezérlőelem egy eszköz csatlakozik az IoT hub (.NET)
 

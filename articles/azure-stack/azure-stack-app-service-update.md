@@ -11,28 +11,28 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2019
-ms.author: jeffgilb
+ms.date: 02/27/2019
+ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: a017e1c70658953e1c08cd92a7e1e5184fee0bb5
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: c993322bdf4266939eab854e217cae6e90326d29
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447395"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991563"
 ---
 # <a name="update-azure-app-service-on-azure-stack"></a>Frissítse az Azure App Service az Azure Stackben
 
 *Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 > [!IMPORTANT]  
-> 1809 frissítést a vagy később, az Azure Stackkel integrált rendszer, vagy a legújabb Azure Stack fejlesztői készletének telepítése az Azure App Service 1.4-es üzembe helyezése előtt. -Az erőforrás-szolgáltató frissítése előtt tekintse át a kibocsátási megjegyzéseket, új funkciókat, javításokat és olyan ismert problémákat, amelyek hatással lehetnek a központi telepítés megismeréséhez.
+> Az Azure Stackkel integrált rendszereknél 1901 frissítés alkalmazása, vagy a legújabb Azure Stack fejlesztői készletének telepítése az Azure App Service 1.5 telepítése előtt.
 
 Ez a cikk utasításait követve frissíthet a [App Service erőforrás-szolgáltató](azure-stack-app-service-overview.md) üzembe helyezve az Azure Stack-környezet, amely csatlakozik az internethez.
 
 > [!IMPORTANT]  
-> A frissítés futtatása előtt győződjön meg arról, hogy már végrehajtotta a [központi telepítését az Azure App Service az Azure Stack erőforrás-szolgáltató](azure-stack-app-service-deploy.md)
+> A frissítés futtatása előtt győződjön meg arról, hogy már végrehajtotta a [központi telepítését az Azure App Service az Azure Stack Resource Provider](azure-stack-app-service-deploy.md) , és hogy rendelkezik olvasási a [kibocsátási megjegyzések](azure-stack-app-service-release-notes-update-five.md) amely kísérő az 1.5-ös kiadás útmutató új funkciókat, javításokat és olyan ismert problémákat, amelyek hatással lehetnek a központi telepítés.
 
 ## <a name="run-the-app-service-resource-provider-installer"></a>Az App Service-ben resource provider telepítőjének futtatása
 

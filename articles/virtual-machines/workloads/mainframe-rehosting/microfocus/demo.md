@@ -8,12 +8,12 @@ manager: edprice
 editor: edprice
 tags: ''
 keywords: ''
-ms.openlocfilehash: c921fd0c52d555264ab511486709b888b50bd68e
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 2a29b484b58b887981b1879ceba5bf7426bb6c2e
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56739574"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192004"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-in-azure"></a>Állítsa be Micro fókusz CICS BankDemo Micro fókusz vállalati fejlesztői 4.0 az Azure-ban
 
@@ -73,7 +73,7 @@ Miután telepítette a vállalati fejlesztői 4.0-s verzióját a virtuális gé
     - TCP-aktiválás
     - TCP-Port megosztása
 
-     ![](media/01-demo-roles.png)
+     ![Szerepkörök és szolgáltatások hozzáadása varázsló: Szerepkör-szolgáltatások](media/01-demo-roles.png)
 
 8. Ha a kiválasztott összes beállítást, kattintson **tovább** telepítéséhez.
 
@@ -101,7 +101,7 @@ Egyes vállalati kiszolgáló folyamatok képeseknek kell lenniük, jelentkezzen
 
 4. Válassza ki **kiszolgálói szerepkörök** , és ellenőrizze **SysAdmin (rendszergazda)**.
 
-     ![](media/02-demo-explorer.png)
+     ![SSMS Object Explorer ablak: Bejelentkezési tulajdonságok](media/02-demo-explorer.png)
 
 ## <a name="create-the-bankdemo-database-and-all-its-objects"></a>A BankDemo adatbázis és minden objektum létrehozása
 
@@ -117,7 +117,7 @@ Egyes vállalati kiszolgáló folyamatok képeseknek kell lenniük, jelentkezzen
 
 Hiba nélkül kell futtatni a lekérdezést. Ha elkészült, a mintaadatbázis az BankDemo alkalmazás rendelkezik.
 
-![](media/03-demo-query.png)
+![SQLQuery1.sql output](media/03-demo-query.png)
 
 ## <a name="verify-that-the-database-tables-and-objects-have-been-created"></a>Győződjön meg arról, hogy az adatbázis tábláinak és objektumok létrehozott
 
@@ -125,7 +125,7 @@ Hiba nélkül kell futtatni a lekérdezést. Ha elkészült, a mintaadatbázis a
 
 2. Bontsa ki a **adatbázis** válassza **táblák**. Megtekintheti a következőhöz hasonló.
 
-     ![](media/04-demo-explorer.png)
+     ![Az Object Explorerben kibontva BANKDEMO tábla](media/04-demo-explorer.png)
 
 ## <a name="build-the-application-in-enterprise-developer"></a>A vállalati fejlesztői alkalmazás létrehozása
 
@@ -147,7 +147,7 @@ Hiba nélkül kell futtatni a lekérdezést. Ha elkészült, a mintaadatbázis a
 
 6. A projekt létrejött, vizsgálja meg a **kimeneti** ablak. Az alábbi képhez hasonlóan kell kinéznie.
 
-     ![](media/05-demo-output.png)
+     ![Kimeneti ablak, rajta a build sikeres létrehozása](media/05-demo-output.png)
 
 ## <a name="deploy-the-bankdemo-application-into-the-region-database"></a>Az a régió adatbázisba BankDemo alkalmazás üzembe helyezése
 
@@ -164,7 +164,7 @@ Hiba nélkül kell futtatni a lekérdezést. Ha elkészült, a mintaadatbázis a
 > [!NOTE]
 > Ügyeljen arra, hogy használjon perjellel (/) nem fordított perjelet (\\). Ez a szkript fut egy ideig.
 
-![](media/06-demo-cmd.png)
+![Felügyelet: Enterprise, Developer parancssori ablakban](media/06-demo-cmd.png)
 
 ## <a name="create-the-bankdemo-region-in-enterprise-administrator-for-net"></a>A BankDemo régió létrehozása a vállalati rendszergazda a .NET-hez
 
@@ -178,11 +178,11 @@ Hiba nélkül kell futtatni a lekérdezést. Ha elkészült, a mintaadatbázis a
 
 5. Adja meg az adatbázis-kiszolgálópéldányra, kattintson a **tovább**, majd adja meg a régió neve **BANKDEMO**.
 
-     ![](media/07-demo-cics.png)
+     ![Adja meg a régiót párbeszédpanel](media/07-demo-cics.png)
 
 6. Válassza ki a régiót a régiók közötti adatbázis-definíciós fájljának, keresse meg a **régió\_bankdemo\_db.config** a **C:\\felhasználók\\nyilvános\\ Dokumentumok\\Micro fókusz\\nagyvállalati fejlesztő\\minták\\nagyszámítógépes\\CICS\\DotNet\\BankDemo**.
 
-     ![](media/08-demo-cics.png)
+     ![Adja meg a régió - régió neve: BANKDEMO](media/08-demo-cics.png)
 
 7. Kattintson a **Befejezés** gombra.
 
@@ -198,11 +198,11 @@ Hiba nélkül kell futtatni a lekérdezést. Ha elkészült, a mintaadatbázis a
 
 5. Válassza ki **XA-adatbázis erőforrás-definíció** és írja be **BANKDEMO** számára a **neve** és **régió**.
 
-     ![](media/09-demo-xa.png)
+     ![Új adatbázis XA erőforrás-definíció képernyő](media/09-demo-xa.png)
 
 6. Kattintson a három pontra (**...** ) viszi, megjelenik a kapcsolati karakterlánc varázsló. A **kiszolgálónév**, típus **(helyi)\\SQLEXPRESS**. A **bejelentkezési**válassza **Windows-hitelesítés**. Az adatbázis nevét, írja be a **BANKDEMO**
 
-     ![](media/10-demo-string.png)
+     ![A Szerkesztés képernyő kapcsolati karakterlánc](media/10-demo-string.png)
 
 7. A kapcsolat tesztelése.
 
@@ -217,11 +217,11 @@ Hiba nélkül kell futtatni a lekérdezést. Ha elkészült, a mintaadatbázis a
 
 3. Kattintson a jobb gombbal **BANKDEMO CICS régió** a a **konzol** panelre, és válassza **indítása és leállítása régió**.
 
-4. Alsó részén a **indítása / leállítása** a középső ablaktáblán, válassza a megjelenő mezőben **Start**. Néhány másodperc elteltével indítja el a régióban.
+4. Alsó részén a **indítása és leállítása régió** a középső ablaktáblán, válassza a megjelenő mezőben **Start**. Néhány másodperc elteltével indítja el a régióban.
 
-     ![](/media/11-demo-sql.png)
+     ![SQL Start/Stop box](/media/11-demo-sql.png)
 
-     ![](media/12-demo-cics.png)
+     ![CICS régió BANKDEMO - lépések képernyő](media/12-demo-cics.png)
 
 ## <a name="create-a-listener"></a>Figyelő létrehozása
 
@@ -245,7 +245,7 @@ Hozzon létre egy figyelőt a TN3270-munkamenetet, amely a BankDemo-alkalmazás 
 
 9. A figyelő indításához kattintson a **Start figyelő** ikonra, vagy válasszon **beállítások** \> **Start figyelő**.
 
-     ![](media/13-demo-listener.png)
+     ![Figyelő Konfigurációszerkesztő windows](media/13-demo-listener.png)
 
 
 ## <a name="configure-rumba-to-access-the-bankdemo-application"></a>Rumba az BankDemo alkalmazáshoz való hozzáférés konfigurálása
@@ -264,8 +264,8 @@ Az utolsó lépésben kell tennie az Rumba, egy 3270 emulator használatával 32
 
 6. Írja be a felhasználói Azonosítójához tartozó **B0001** , és írja be a jelszót, és semmit. Az első képernyő BANK20 nyílik meg.
 
-![](media/14-demo.png)
-![](media/15-demo.png)
+![Nagyszámítógépes megjelenített üdvözlő képernyő](media/14-demo.png)
+![nagyszámítógépes megjelenített - Rumba - alrendszer bemutató képernyő](media/15-demo.png)
 
 Gratulálunk! Most egy CICS alkalmazást futtat az Azure-ban Micro fókusz vállalati kiszolgáló használatával.
 

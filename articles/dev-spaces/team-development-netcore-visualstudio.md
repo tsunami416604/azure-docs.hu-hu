@@ -1,5 +1,5 @@
 ---
-title: Az Azure fejlesztési tárolóhelyek használata a .NET Core és a Visual Studio fejlesztői csapat |} A Microsoft Docs
+title: .NET Core és a Visual Studio használatával Azure-fejlesztési szóközt tartalmazó csoportos fejlesztése
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -11,13 +11,13 @@ ms.author: stevenry
 ms.date: 12/09/2018
 ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
-ms.openlocfilehash: af0a4a719f964e400119be313842f385b410406c
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+keywords: 'Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s '
+ms.openlocfilehash: 414a45e65bac2966cda0e58b55b7459a552d03fb
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817422"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193024"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Csoportos fejlesztés az Azure Dev Spaces használatával
 

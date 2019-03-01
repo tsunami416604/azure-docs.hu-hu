@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2019
-ms.author: jeffgilb
+ms.date: 02/27/2019
+ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 02/22/2019
-ms.openlocfilehash: 3b057e9c4a0fccb3f85ec237433e4020fd4a84da
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 01b0a86ede79187d8f180df0f2f71f6eaadb7428
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737484"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990521"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Mielőtt elkezdené, az Azure Stack App Service-szel
 
@@ -30,7 +30,7 @@ ms.locfileid: "56737484"
 Azure App Service az Azure Stack üzembe helyezése, előtt elvégzése szükséges az ebben a cikkben előfeltételként felsorolt lépéseket.
 
 > [!IMPORTANT]
-> Az Azure Stackkel integrált rendszereknél 1809 frissítés alkalmazása, vagy a legújabb Azure Stack Development Kit (ASDK) üzembe helyezése, Azure App Service 1.4-es üzembe helyezése előtt.
+> Az Azure Stackkel integrált rendszereknél 1901 frissítés alkalmazása, vagy a legújabb Azure Stack Development Kit (ASDK) üzembe helyezése, Azure App Service 1.5 telepítése előtt.
 
 ## <a name="download-the-installer-and-helper-scripts"></a>A telepítő és a segítő szkripteket letöltése
 
@@ -49,15 +49,7 @@ Azure App Service az Azure Stack üzembe helyezése, előtt elvégzése szüksé
 
 ## <a name="syndicate-the-custom-script-extension-from-the-marketplace"></a>Szindikálása az egyéni szkriptek futtatására szolgáló bővítmény a Marketplace-ről
 
-Az Azure Stack az Azure App Service egyéni szkriptek futtatására szolgáló bővítmény v1.9.0 igényel.  A bővítmény kell [hírcsatorna-a Marketplace-ről](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item) előtt a központi telepítés vagy frissítés az Azure App Service kezdve az Azure Stackben
-
-## <a name="high-availability"></a>Magas rendelkezésre állás
-
-Az Azure Stack 1802-es frissítés támogatása a tartalék tartományokat. Új telepítések esetén az Azure App Service az Azure Stacken lesz elosztva a tartalék tartományok és hibatűrést biztosít.
-
-Az 1802-es frissítés előtt voltak telepítve, amely az Azure App Service az Azure Stacken, meglévő telepítések lásd: a [tartalék tartomány között egy App Service erőforrás-szolgáltató Újraegyensúlyozására](azure-stack-app-service-fault-domain-update.md) cikk.
-
-Emellett telepítse a szükséges fájlkiszolgáló és a egy magas rendelkezésre állású konfigurációban az SQL Server-példányokat.
+Az Azure Stack az Azure App Service egyéni szkriptek futtatására szolgáló bővítmény v1.9.1 igényel.  A bővítmény kell [hírcsatorna-a Marketplace-ről](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item) előtt a központi telepítés vagy frissítés az Azure App Service kezdve az Azure Stackben
 
 ## <a name="get-certificates"></a>Tanúsítványok beolvasása
 

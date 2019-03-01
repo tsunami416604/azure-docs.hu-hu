@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: e5e80ac2229c3a2962702527dc3162229c25a5c5
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 7d0743c09adf1c50d888d2e279ba85a8369bf286
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750871"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991622"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Engedélyezése és megtekintése az Application Insights Profiler kapcsolatos problémák elhárítása
 
@@ -135,15 +135,19 @@ Ha szeretné látni, hogy a Profiler megfelelően van-e konfigurálva az Azure D
 
 Az Azure Diagnostics konfigurálása során használt beállítások ellenőrzése:
 
-1. Jelentkezzen be a virtuális gép (VM), és nyissa meg a naplófájlt, ezen a helyen: 
+1. Jelentkezzen be a virtuális gép (VM), és nyissa meg a naplófájlt, ezen a helyen. (C: meghajtó lehet vagy d: és a beépülő modul verziója eltérő lehet.)
 
     ```
-    c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.logs  
+    c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log  
+    ```
+    vagy
+    ```
+    c:\WindowsAzure\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log
     ```
 
 1. A fájlban, kereshet a karakterlánc **WadCfg** lettek átadva a virtuális gép konfigurálása az Azure Diagnostics-beállítások megkeresése. Ellenőrizheti, hogy a Profiler-gyűjtő által használt a Rendszerállapotkulcsot helyes-e.
 
-1. Ellenőrizze, hogy a Profiler indításához használt parancssori. A Profiler elindításához használt argumentumok a következő fájlban:
+1. Ellenőrizze, hogy a Profiler indításához használt parancssori. A Profiler elindításához használt argumentumok a következő fájlban. (A meghajtó lehet c: és d:)
 
     ```
     D:\ProgramData\ApplicationInsightsProfiler\config.json

@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: b975f84106507da6adff11dc62441526773f5cab
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: fe096b2e2a75cc89e3ce5ef905d8e4c347cc153a
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998138"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992464"
 ---
 # <a name="enable-support-uploads"></a>Támogatási feltöltések engedélyezése
 
@@ -30,18 +30,18 @@ Kövesse az alábbi lépéseket a Avere Vezérlőpult támogatás aktiválásáh
 1. Kattintson a **Revalidate feltöltési információk** gombra.
 1. Állítsa be a fürt támogatási nevét **egyedi fürtnév** – ellenőrizze, hogy a fürt a támogató személyzet egyedileg azonosítja.
 1. Jelölje be a **statisztikák figyelése**, **általános információkat feltöltése**, és **összeomlási adatokat feltölteni**.
-1. Kattintson a **elküldése**.
+1. Kattintson a **Submit** (Küldés) gombra.
 
    ![Képernyőkép, amely tartalmazza a customer info szakaszban támogatási beállítások oldal befejeződött](media/avere-vfxt-support-info.png)
 
 1. Kattintson a háromszögre balra **biztonságos proaktív támogatási (Szervizcsomagok)** a szakasz kibontásához.
 1. Jelölje be a **Szervizcsomagok hivatkozás engedélyezése**.
-1. Kattintson a **elküldése**.
+1. Kattintson a **Submit** (Küldés) gombra.
 
    ![Befejezett proaktív támogatja biztonságos szakaszban támogatási beállítások oldalon tartalmazó képernyőképe](media/avere-vfxt-support-sps.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Ha egy helyi tárolórendszer hozzáadni a fürthöz, vagy frissítse az alapértelmezett titkosítási kulcsot egy újonnan létrehozott Blob-tárolóban van szüksége, kövesse a [konfigurálta a tárterületet](avere-vfxt-add-storage.md). 
+Ha kell hozzáadnia a helyszíni vagy felhőalapú adattároló rendszer a fürthöz, kövesse a meglévő [konfigurálta a tárterületet](avere-vfxt-add-storage.md). 
 
 Ha készen áll a fürt, olvassa el az ügyfelek csatolása [a Avere vFXT fürt csatlakoztatási](avere-vfxt-mount-clients.md).

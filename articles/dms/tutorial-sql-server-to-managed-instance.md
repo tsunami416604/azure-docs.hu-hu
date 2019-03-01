@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Át az Azure SQL Database felügyelt példány DMS használatával |} A Microsoft Docs'
-description: Ismerje meg a helyszíni SQL Server migrálása az Azure SQL Database felügyelt példány az Azure Database Migration Service használatával.
+title: 'Oktatóanyag: Át egy Azure SQL Database felügyelt példány DMS használatával |} A Microsoft Docs'
+description: Megtanulhatja, hogyan telepítse át a helyszíni SQL Server egy Azure SQL Database felügyelt példány az Azure Database Migration Service segítségével.
 services: dms
 author: pochiraju
 ms.author: rajpo
@@ -10,15 +10,15 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 02/08/2019
-ms.openlocfilehash: b1c635e5b4374b0369a0cf3d1cbff6d8087085a6
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 02/28/2019
+ms.openlocfilehash: 100b2d9b6b39786675edb6683574409f96a6e9c7
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990242"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992583"
 ---
-# <a name="tutorial-migrate-sql-server-to-azure-sql-database-managed-instance-offline-using-dms"></a>Oktatóanyag: SQL Server migrálása az Azure SQL Database felügyelt példány offline a DMS használatával
+# <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-offline-using-dms"></a>Oktatóanyag: SQL Server migrálása az Azure SQL Database felügyelt példány offline a DMS használatával
 
 Az Azure Database Migration Service segítségével az adatbázisokat át egy helyszíni SQL Server-példánynak egy [Azure SQL Database felügyelt példány](../sql-database/sql-database-managed-instance.md). A további módszereket is néhány manuális beavatkozást igénylő, tekintse meg a cikket [SQL Server-példány migrálása az Azure SQL Database felügyelt példány](../sql-database/sql-database-managed-instance-migrate.md).
 
@@ -34,14 +34,23 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
-Ez a cikk ismerteti egy offline migrálás SQL Serverről az Azure SQL Database felügyelt példány. Lásd az online migrálás [SQL Server Migrálása az Azure SQL Database felügyelt példány DMS használatával online](tutorial-sql-server-managed-instance-online.md).
+Ez a cikk bemutatja az SQL Serverből egy Azure SQL Database felügyelt példány az offline áttelepítés. Lásd az online migrálás [SQL Server Migrálása az Azure SQL Database felügyelt példány DMS használatával online](tutorial-sql-server-managed-instance-online.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
-- Hozzon létre egy virtuális hálózatot az Azure Database Migration Service-hez az Azure Resource Manager-alapú üzemi modell használatával, amely a hálózat helyek közötti kapcsolatot biztosít a helyszíni forráskiszolgálóknak [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) használatával. [Ismerje meg a hálózati topológiák az Azure SQL Database felügyelt példány segítségével végzi az áttelepítést az Azure Database Migration Service](https://aka.ms/dmsnetworkformi).
-- Győződjön meg arról, hogy az Azure Virtual Network (VNET) hálózati biztonsági szabályok nem blokkolják a következő kommunikációs portokat: 443, 53, 9354, 445, 12000. További részletek az Azure VNET NSG-forgalom szűréséről: [Hálózati forgalom szűrése hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
+- Hozzon létre egy Azure Virtual Network (VNET) használatával az Azure Resource Manager üzembe helyezési modell, amely lehetővé teszi a helyek közötti kapcsolatot a helyszíni adatforrás-kiszolgálók használatával vagy az Azure Database Migration Service [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). [Ismerje meg a hálózati topológiák az Azure SQL Database felügyelt példány segítségével végzi az áttelepítést az Azure Database Migration Service](https://aka.ms/dmsnetworkformi).
+
+    > [!NOTE]
+    > Virtuális hálózathoz a telepítés során, ha az ExpressRoute hálózati a Microsoft társviszony-létesítés használja, hozzá a következő szolgáltatás [végpontok](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) az alhálózathoz, amelyben üzembe fogja helyezni a szolgáltatást:
+    > - Cél adatbázis végpont (például SQL-végpont, Cosmos-DB végpont, és így tovább)
+    > - Storage-végpont
+    > - Service bus-végpont
+    >
+    > Ez a konfiguráció szükség, mert az Azure Database Migration Service nem rendelkezik internetkapcsolattal.
+
+- Győződjön meg arról, hogy a virtuális hálózatok közötti hálózati biztonsági csoport szabályai nem blokkolják a következő kommunikációs portokat a 443-as, 53-as és 9354-es, 445-ös, 12000. További részletek az Azure VNET NSG-forgalom szűréséről: [Hálózati forgalom szűrése hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 - Konfigurálja a [Windows tűzfalat a forrásadatbázis-motorhoz való hozzáféréshez](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 - Nyissa meg a Windows tűzfalat, és engedélyezze, hogy az Azure Database Migration Service elérhesse a forrásul szolgáló SQL Servert, amely alapértelmezés szerint az 1433-as TCP-porton található.
 - Ha több megnevezett SQL Server-példányt futtat dinamikus portokkal, előnyös lehet engedélyezni az SQL Browser Service-t, és engedélyezni a tűzfalakon keresztül az 1434-es UDP-porthoz való hozzáférést. Így az Azure Database Migration Service a forráskiszolgálón található megnevezett példányhoz férhet hozzá.
@@ -143,7 +152,7 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
 
 1. Az a **Migrálási cél részletei** képernyőn, adja meg a cél, amely, amelyhez migráláshoz előre kiépített Azure SQL Database felügyelt példány kapcsolati adatait a **AdventureWorks2012**adatbázis.
 
-    Ha még nem építette az Azure SQL Database felügyelt példány, válassza ki a **nem** segítséget nyújtanak a példány üzembe helyezése egy hivatkozáshoz. Továbbra is a projekt létrehozásának folytatásához, és ezt követően készen áll, az Azure SQL Database felügyelt példány esetén térjen vissza az adott projekthez az áttelepítés végrehajtásához.
+    Ha még nem építette az Azure SQL Database felügyelt példány, válassza ki a **nem** segítséget nyújtanak a példány üzembe helyezése egy hivatkozáshoz. A projekt létrehozása továbbra is, és ezt követően készen áll, az Azure SQL Database felügyelt példány esetén térjen vissza az adott projekthez az áttelepítés végrehajtásához.
 
        ![Select Target](media/tutorial-sql-server-to-managed-instance/dms-target-details2.png)
 
@@ -179,7 +188,7 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
     |**Felhasználónév** | Győződjön meg arról, hogy a Windows-felhasználó teljes körű jogosultságokkal rendelkezik a fent megadott hálózati megosztáson. Az Azure Database Migration Service megszemélyesíti a felhasználó hitelesítő adatait, hogy fel tudja tölteni a biztonsági mentési fájlokat az Azure Storage-tárolóba a visszaállítási művelethez. Ha TDE-kompatibilis adatbázisok vannak migrálásra kijelölve, a fenti Windows-felhasználónak a beépített rendszergazdai fióknak kell lennie, és a [felhasználói fiókok felügyeletét](https://docs.microsoft.com/windows/security/identity-protection/user-account-control/user-account-control-overview) le kell tiltani, hogy az Azure Database Migration Service feltölthesse és törölhesse a tanúsítványfájlokat. |
     |**Jelszó** | A felhasználó jelszava. |
     |**Tárfiók beállításai** | Az SAS URI-t biztosít az Azure Database Migration Service, a storage-fiókot, amelyhez a szolgáltatás feltölti a biztonsági mentési fájlokat, és hogy tároló-hozzáféréssel rendelkező használatos áttelepítése adatbázisok az Azure SQL Database felügyelt példányában. [Itt találja az arra vonatkozó tudnivalókat, hogyan kérheti le a blobtároló SAS URI-ját](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container).|
-    |**TDE-beállítások** | Ha a transzparens adattitkosítás (TDE) engedélyezve van a forrásadatbázisok telepít át, akkor írási jogosultságokkal rendelkezik a cél Azure SQL Database felügyelt példány.  Válassza ki az előfizetést, amelyben az Azure SQL Database felügyelt példányt a legördülő menüből.  A legördülő menüben válassza ki a célul szolgáló **felügyelt Azure SQL Database-példányt**. |
+    |**TDE-beállítások** | Ha a forrásadatbázisok migráláshoz a transzparens adattitkosítás (TDE) engedélyezve van, akkor írási jogosultságokkal rendelkezik a cél Azure SQL Database felügyelt példányában.  Válassza ki az előfizetést, amelyben az Azure SQL Database felügyelt példányt a legördülő menüből.  A legördülő menüben válassza ki a célul szolgáló **felügyelt Azure SQL Database-példányt**. |
 
     ![Migrálási beállítások konfigurálása](media/tutorial-sql-server-to-managed-instance/dms-configure-migration-settings3.png)
 

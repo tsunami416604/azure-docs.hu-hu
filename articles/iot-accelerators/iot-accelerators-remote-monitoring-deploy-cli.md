@@ -8,16 +8,16 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/30/2018
 ms.topic: conceptual
-ms.openlocfilehash: 61da17d1dc59a08128671da163d8b3ea27f83994
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 7f1b9bb9d542b54afb6bf8b7bfc0df9fc1a9e434
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463218"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57009426"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>A távoli figyelési megoldásgyorsító a CLI-vel üzembe helyezése
 
-Ez az útmutató bemutatja, hogyan lehet a távoli figyelési megoldásgyorsító üzembe helyezése. A megoldás a parancssori felület használatával telepít. A megoldás a webes felhasználói felület használatával a azureiotsuite.com, további információ: a beállítás is telepítheti a[a távoli figyelési megoldásgyorsító üzembe helyezése](quickstart-remote-monitoring-deploy.md) rövid.
+Ez az útmutató bemutatja, hogyan lehet a távoli figyelési megoldásgyorsító üzembe helyezése. A megoldás a parancssori felület használatával telepít. A megoldás a webes felhasználói felület használatával a azureiotsolutions.com, további információ: a beállítás is telepítheti a [a távoli figyelési megoldásgyorsító üzembe helyezése](quickstart-remote-monitoring-deploy.md) rövid.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -66,7 +66,7 @@ Az alapszintű telepítés a megoldás bemutatását szolgálja. Költségek cs�
 
 Alapszintű üzembe helyezéséhez az Azure-előfizetésben hoz létre a következő szolgáltatásokat:
 
-| Darabszám | Erőforrás                       | Típus         | Használt |
+| Darabszám | Erőforrás                       | Typo         | Használt |
 |-------|--------------------------------|--------------|----------|
 | 1     | [Linux rendszerű virtuális gép](https://azure.microsoft.com/services/virtual-machines/) | Standard D1 V2  | Mikroszolgáltatás-alapú üzemeltetéséhez |
 | 1     | [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)                  | S1 – Standard csomag | Kezelés és kommunikáció |

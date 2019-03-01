@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 06/15/2018
+ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 4aa4c69857bfd1ab99945cb0f5f748e60cff9978
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: fc22babe6bc052ff2e746185d6ccec059aad7331
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417330"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992030"
 ---
-# <a name="transform-and-protect-your-api"></a>Az API-k átalakítása és védelme 
+# <a name="transform-and-protect-your-api"></a>Az API-k átalakítása és védelme
 
 Az oktatóanyag bemutatja, hogyan alakíthatja át úgy az API-kat, hogy azok ne fedjenek fel privát háttérinformációkat. Előfordulhat például, hogy szeretné elrejteni a háttérrendszeren futó technológiával kapcsolatos információkat. Vagy az is lehet, hogy el kívánja rejteni az API-k HTTP-válaszának szövegtörzsében megjelenő URL-címeket, és átirányítani azokat az APIM-átjáróhoz.
 
@@ -30,19 +30,20 @@ Ez az oktatóanyag továbbá ismerteti, milyen könnyű védelmet biztosítani a
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Az API átalakítása a válaszfejlécek eltávolításához
-> * Az API-válasz szövegtörzsében szereplő eredeti URL-címek lecserélése az APIM-átjáró URL-címeire
-> * API-k védelme hívásszám-korlátozási szabályzat (szabályozás) hozzáadásával
-> * Az átalakítások tesztelése
+>
+> -   Az API átalakítása a válaszfejlécek eltávolításához
+> -   Az API-válasz szövegtörzsében szereplő eredeti URL-címek lecserélése az APIM-átjáró URL-címeire
+> -   API-k védelme hívásszám-korlátozási szabályzat (szabályozás) hozzáadásával
+> -   Az átalakítások tesztelése
 
 ![Házirendek](./media/transform-api/api-management-management-console.png)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-+ Az [Azure API Management terminológiájának](api-management-terminology.md) ismerete.
-+ Az [Azure API Management-szabályzatok alapelveinek](api-management-howto-policies.md) ismerete.
-+ Hajtsa végre a következő rövid útmutatót: [Az Azure API Management szolgáltatáspéldány létrehozása](get-started-create-service-instance.md).
-+ Ezenkívül hajtsa végre a következő oktatóanyaggal: [Az első API importálása és közzététele](import-and-publish.md).
+-   Az [Azure API Management terminológiájának](api-management-terminology.md) ismerete.
+-   Az [Azure API Management-szabályzatok alapelveinek](api-management-howto-policies.md) ismerete.
+-   Hajtsa végre a következő rövid útmutatót: [Az Azure API Management szolgáltatáspéldány létrehozása](get-started-create-service-instance.md).
+-   Ezenkívül hajtsa végre a következő oktatóanyaggal: [Az első API importálása és közzététele](import-and-publish.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -50,8 +51,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 Ez a szakasz azt mutatja be, hogyan rejtheti el a HTTP-fejléceket, amelyeket nem kíván megjeleníteni a felhasználók számára. Ebben a példában a következő fejlécek lesznek törölve a HTTP-válaszból:
 
-* **X-Powered-By**
-* **X-AspNet-Version**
+-   **X-Powered-By**
+-   **X-AspNet-Version**
 
 ### <a name="test-the-original-response"></a>Az eredeti válasz tesztelése
 
@@ -71,22 +72,23 @@ Az eredeti válasznak így kell kinéznie:
 
 ![Kimenő szabályzat beállítása](./media/transform-api/04-ProtectYourAPI-01-SetPolicy-Outbound.png)
 
-1. Válassza a **Demo Conference API** lehetőséget.
-2. A képernyő felső részén válassza a **Tervezés** lapot.
-3. Válassza a **Minden művelet** lehetőséget.
-4. A **Kimenő feldolgozás** szakaszban kattintson a **</>** ikonra.
-5. Vigye a kurzort a **&lt;kimenő&gt;** elemen belülre.
-6. A jobb oldali ablak **Átalakítási szabályzatok** területén kattintson kétszer a **+ HTTP-fejléc beállítása** elemre (két szabályzatkódrészlet beszúrásához).
+1.  Válassza a **Demo Conference API** lehetőséget.
+2.  A képernyő felső részén válassza a **Tervezés** lapot.
+3.  Válassza a **Minden művelet** lehetőséget.
+4.  A **Kimenő feldolgozás** szakaszban kattintson a **</>** ikonra.
+5.  Vigye a kurzort a **&lt;kimenő&gt;** elemen belülre.
+6.  A jobb oldali ablak **Átalakítási szabályzatok** területén kattintson kétszer a **+ HTTP-fejléc beállítása** elemre (két szabályzatkódrészlet beszúrásához).
 
     ![Házirendek](./media/transform-api/transform-api.png)
-7. Módosítsa **<outbound>** kódját a következő módon:
+
+7.  Módosítsa **<outbound>** kódját a következő módon:
 
         <set-header name="X-Powered-By" exists-action="delete" />
         <set-header name="X-AspNet-Version" exists-action="delete" />
 
     ![Házirendek](./media/transform-api/set-policy.png)
 
-8. Kattintson a **Mentés** gombra.
+8.  Kattintson a **Mentés** gombra.
 
 ## <a name="replace-original-urls-in-the-body-of-the-api-response-with-apim-gateway-urls"></a>Az API-válasz szövegtörzsében szereplő eredeti URL-címek lecserélése az APIM-átjáró URL-címeire
 
@@ -99,7 +101,7 @@ Az eredeti válasz megtekintése:
 1. Válassza a **Demo Conference API** lehetőséget.
 2. A képernyő felső részén kattintson a **Teszt** fülre.
 3. Válassza a **GetSpeakers** műveletet.
-4. A képernyő alján kattintson a **Küldés** gombra. 
+4. A képernyő alján kattintson a **Küldés** gombra.
 
     Az eredeti válasz a következőhöz hasonló:
 
@@ -107,13 +109,13 @@ Az eredeti válasz megtekintése:
 
 ### <a name="set-the-transformation-policy"></a>Az átalakítási szabályzat beállítása
 
-1. Válassza a **Demo Conference API** lehetőséget.
-2. Válassza a **Minden művelet** lehetőséget.
-3. A képernyő felső részén válassza a **Tervezés** lapot.
-4. A **Kimenő feldolgozás** szakaszban kattintson a **</>** ikonra.
-5. Vigye a kurzort a **&lt;kimenő&gt;** elemen belülre.
-6. A jobb oldali ablak **Átalakítási szabályzatok** területén kattintson a **+ Sztring keresése és cseréje a szövegtörzsben** elemre.
-7. A **find-and-replace** kódban (az **\<outbound\>** elemben) cserélje le az URL-címet az APIM-átjáróéra. Példa:
+1.  Válassza a **Demo Conference API** lehetőséget.
+2.  Válassza a **Minden művelet** lehetőséget.
+3.  A képernyő felső részén válassza a **Tervezés** lapot.
+4.  A **Kimenő feldolgozás** szakaszban kattintson a **</>** ikonra.
+5.  Vigye a kurzort a **&lt;kimenő&gt;** elemen belülre.
+6.  A jobb oldali ablak **Átalakítási szabályzatok** területén kattintson a **+ Sztring keresése és cseréje a szövegtörzsben** elemre.
+7.  A **find-and-replace** kódban (az **\<outbound\>** elemben) cserélje le az URL-címet az APIM-átjáróéra. Példa:
 
         <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
 
@@ -123,18 +125,18 @@ Ez a szakasz bemutatja, hogyan lehet védelmet biztosítani a háttérbeli API-k
 
 ![Bejövő szabályzat beállítása](./media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png)
 
-1. Válassza a **Demo Conference API** lehetőséget.
-2. Válassza a **Minden művelet** lehetőséget.
-3. A képernyő felső részén válassza a **Tervezés** lapot.
-4. Az a **bejövő feldolgozás** területén kattintson a **</>** ikonra.
-5. Vigye a kurzort a **&lt;bejövő&gt;** elemen belülre.
-6. A jobb oldali ablak **Hozzáférés-korlátozási szabályzatok** területén kattintson a **+ Hívások számának korlátozása kulcsonként** elemre.
-7. Módosítsa a **rate-limit-by-key** kódot (az **\<inbound\>** elemben) a következőre:
+1.  Válassza a **Demo Conference API** lehetőséget.
+2.  Válassza a **Minden művelet** lehetőséget.
+3.  A képernyő felső részén válassza a **Tervezés** lapot.
+4.  Az a **bejövő feldolgozás** területén kattintson a **</>** ikonra.
+5.  Vigye a kurzort a **&lt;bejövő&gt;** elemen belülre.
+6.  A jobb oldali ablak **Hozzáférés-korlátozási szabályzatok** területén kattintson a **+ Hívások számának korlátozása kulcsonként** elemre.
+7.  Módosítsa a **rate-limit-by-key** kódot (az **\<inbound\>** elemben) a következőre:
 
         <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
 
 ## <a name="test-the-transformations"></a>Az átalakítások tesztelése
-        
+
 Jelenleg, ha a kódszerkesztőben megtekinti a kódot, a szabályzatok így néznek ki:
 
     <policies>
@@ -148,6 +150,7 @@ Jelenleg, ha a kódszerkesztőben megtekinti a kódot, a szabályzatok így néz
         <outbound>
             <set-header name="X-Powered-By" exists-action="delete" />
             <set-header name="X-AspNet-Version" exists-action="delete" />
+            <find-and-replace from="://conferenceapi.azurewebsites.net:443" to="://apiphany.azure-api.net/conference"/>
             <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
             <base />
         </outbound>
@@ -202,10 +205,11 @@ A szakasz további részében teszteljük a szabályzatátalakításokat, amelye
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Az API átalakítása a válaszfejlécek eltávolításához
-> * Az API-válasz szövegtörzsében szereplő eredeti URL-címek lecserélése az APIM-átjáró URL-címeire
-> * API-k védelme hívásszám-korlátozási szabályzat (szabályozás) hozzáadásával
-> * Az átalakítások tesztelése
+>
+> -   Az API átalakítása a válaszfejlécek eltávolításához
+> -   Az API-válasz szövegtörzsében szereplő eredeti URL-címek lecserélése az APIM-átjáró URL-címeire
+> -   API-k védelme hívásszám-korlátozási szabályzat (szabályozás) hozzáadásával
+> -   Az átalakítások tesztelése
 
 Folytassa a következő oktatóanyaggal:
 

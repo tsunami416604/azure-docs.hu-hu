@@ -4,14 +4,14 @@ description: Az Azure-ban Avere vFXT előfeltételei
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 9c3301ba16bfaeb7014658a380e287a36a505be8
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 045b010736f8cecf877408f23530022af1f94f14
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299205"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991422"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Felkészülés az Avere vFXT létrehozására
 
@@ -57,7 +57,7 @@ Kvóta elegendő, a következő Azure-összetevőket kell rendelkeznie. Ha szük
 
 |Azure-összetevő|Kvóta|
 |----------|-----------|
-|Virtual machines (Virtuális gépek)|3 vagy több (D16s_v3 vagy E32s_v3)|
+|Virtual machines (Virtuális gépek)|3 vagy több E32s_v3|
 |Prémium szintű SSD-tár|200 GB operációsrendszer-tárhely és 1–4 TB gyorsítótártér csomópontonként |
 |Tárfiók (nem kötelező) |v2|
 |Háttérbeli adattárolás (nem kötelező) |Egy új LRS Blob-tároló |
@@ -151,6 +151,30 @@ Az Azure-fürtön a Avere vFXT létrehozása előtt létre kell hoznia a fürtsz
    ```
 
 A szerepkör neve szolgál a fürt létrehozásakor. Ebben a példában a neve a következő ``avere-operator``.
+
+## <a name="optional-create-a-storage-service-endpoint-in-your-virtual-network"></a>(Nem kötelező) Hozzon létre egy tárolási végpontot a virtuális hálózaton
+
+A [szolgáltatásvégpont](../virtual-network/virtual-network-service-endpoints-overview.md) helyett átirányítására a virtuális hálózaton kívül helyi tartja az Azure Blob-forgalmat. Az Azure által a háttér-adatokat tároló Azure Blob-fürt bármely Avere vFXT ajánlott. 
+
+Ha meg van adva egy meglévő virtuális hálózatot hoz létre egy új Azure Blob-tárolót a háttér-tároláshoz a fürt létrehozása során, rendelkeznie kell egy végpontot a virtuális hálózat, a Microsoft Storage. Ez a végpont a fürt létrehozása előtt léteznie kell, vagy a létrehozás sikertelen lesz. 
+
+A storage-szolgáltatásvégpont ajánlott bármely Avere vFXT az Azure-fürt által használt Azure-blobtárhelyre, akkor is, ha később adja hozzá a tárolót. 
+
+> [!TIP] 
+> * Hagyja ki ezt a lépést, ha a fürt létrehozása során egy új virtuális hálózatot hoz létre. 
+> * Ez a lépés nem kötelező, ha nem hoz létre a Blob storage a fürt létrehozásakor. Ebben az esetben a szolgáltatásvégpont később létrehozhatja, ha úgy dönt, hogy használja az Azure Blob.
+
+A storage-szolgáltatásvégpont létrehozása az Azure Portalról. 
+
+1. A portálon kattintson **virtuális hálózatok** a bal oldalon.
+1. Válassza ki a virtuális hálózathoz a fürt számára. 
+1. Kattintson a **Szolgáltatásvégpontokat** a bal oldalon.
+1. Kattintson a **Hozzáadás** tetején.
+1. Hagyja meg a szolgáltatás ``Microsoft.Storage`` , és válassza ki a fürt alhálózat.
+1. Kattintson a lap alján, **Hozzáadás**.
+
+  ![Jegyzetekkel lépéseit a szolgáltatásvégpont létrehozása az Azure portal képernyőképe](media/avere-vfxt-service-endpoint.png)
+
 
 ## <a name="next-step-create-the-vfxt-cluster"></a>Következő lépés: A vFXT fürt létrehozása
 

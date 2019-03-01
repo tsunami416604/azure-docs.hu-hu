@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.topic: article
 ms.assetid: 3656acfb-eefd-4e75-b5d2-73da56c424c9
 ms.date: 10/15/2017
-ms.openlocfilehash: 554171e02a369905bcf9cd4aa7bfa2e59ab46336
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 134a8f9625b45a8196ebd47f10286093f6ba0d46
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229757"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193449"
 ---
 # <a name="create-logic-app-workflows-from-prebuilt-templates"></a>Logikai alkalmazás munkafolyamatok létrehozása előre összeállított sablonokból
 
@@ -52,7 +52,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [regisztrálhat egy ingyenes Azure-fi�
    | **Előfizetés** | *az-Ön-Azure-előfizetésének-neve* | Válassza ki a használni kívánt Azure-előfizetést. | 
    | **Erőforráscsoport** | *az-Ön-Azure-erőforráscsoportjának-neve* | Hozzon létre vagy válasszon egy [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) a logikai alkalmazás és az ehhez az alkalmazáshoz kapcsolódó összes erőforrás rendszerezéséhez. | 
    | **Hely** | *az-Ön-Azure-adatközpont-régiója* | Válassza ki az adatközpont-régiót a logikai alkalmazás üzembe helyezéséhez, például az USA nyugati régióját. | 
-   | **Log Analytics** | **Ki** (alapértelmezés) vagy **a** | Kapcsolja be a [diagnosztikai naplózás](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app) a logikai alkalmazás keresztül [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Megköveteli, hogy Ön már egy Log Analytics-munkaterületet. | 
+   | **Log Analytics** | **Ki** (alapértelmezés) vagy **a** | Kapcsolja be a [diagnosztikai naplózás](../logic-apps/logic-apps-monitor-your-logic-apps.md#turn-on-diagnostics-logging-for-your-logic-app) a logikai alkalmazás keresztül [naplózza az Azure Monitor](../log-analytics/log-analytics-overview.md). Megköveteli, hogy Ön már egy Log Analytics-munkaterületet. | 
    |||| 
 
 4. Amikor végzett, válassza a **Rögzítés az irányítópulton** lehetőséget. Így a logikai alkalmazás automatikusan megjelenik az Azure-irányítópulton, és megnyílik az üzembe helyezés után. Válassza a **Létrehozás** elemet.

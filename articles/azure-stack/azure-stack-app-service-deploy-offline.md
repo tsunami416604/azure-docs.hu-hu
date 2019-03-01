@@ -12,32 +12,32 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2019
-ms.author: jeffgilb
+ms.date: 02/27/2019
+ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 315a96680674636f7cab9d93b362febcb25f9922
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: af3e7528e2312cef1832dc104e83384a91acf263
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447065"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991342"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Az App Service erőforrás-szolgáltató hozzáadása az AD FS által védett kapcsolat nélküli Azure Stack-környezet
 
 *Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 > [!IMPORTANT]
-> Az Azure Stackkel integrált rendszereknél 1809 frissítés alkalmazása, vagy a legújabb Azure Stack fejlesztői készletének telepítése az Azure App Service 1.4-es üzembe helyezése előtt.
+> Az Azure Stackkel integrált rendszereknél 1901 frissítés alkalmazása, vagy a legújabb Azure Stack fejlesztői készletének telepítése az Azure App Service 1.5 telepítése előtt.
 
 Ez a cikk utasításait követve telepítheti a [App Service erőforrás-szolgáltató](azure-stack-app-service-overview.md) , amely az Azure Stack-környezetben:
 
 - nem csatlakozik az internethez
 - az Active Directory összevonási szolgáltatások (AD FS) védi.
 
- > [!IMPORTANT]
- > Az erőforrás-szolgáltató üzembe helyezése előtt tekintse át a kibocsátási megjegyzéseket, új funkciókat, javításokat és olyan ismert problémákat, amelyek hatással lehetnek a központi telepítés megismeréséhez.
- 
+> [!IMPORTANT]  
+> A resource provider telepítőjének futtatása, előtt győződjön meg arról, hogy követte az útmutató [használatának megkezdése előtt](azure-stack-app-service-before-you-get-started.md) és elolvasta a [kibocsátási megjegyzések](azure-stack-app-service-release-notes-update-five.md) amely kísérő az 1.5-ös kiadás további információ az új Funkciók, javításokat és olyan ismert problémákat, amelyek hatással lehetnek a központi telepítés.
+
 Az App Service erőforrás-szolgáltató hozzáadása az Azure Stack kapcsolat nélküli üzembe helyezés, a legfelső szintű feladatot kell elvégeznie:
 
 1. Végezze el a [előfeltételként felsorolt lépéseket](azure-stack-app-service-before-you-get-started.md) (például a tanúsítványok vásárlása, amelyhez napokat is igénybe vehet néhány fogadásához).
@@ -105,7 +105,7 @@ App Service-ben leválasztott környezet üzembe helyezéséhez, először létr
 
     ![Az App Service-telepítő][5]
 
-9. Adja meg a fájlmegosztás az adatokat, és kattintson a **tovább**. A cím a fájlmegosztás a teljes tartománynév, vagy a fájlkiszolgáló IP-címet kell használnia. Ha például \\\appservicefileserver.local.cloudapp.azurestack.external\websites, vagy \\\10.0.0.1\websites
+9. Adja meg a fájlmegosztás az adatokat, és kattintson a **tovább**. A cím a fájlmegosztás a teljes tartománynév, vagy a fájlkiszolgáló IP-címet kell használnia. Ha például \\\appservicefileserver.local.cloudapp.azurestack.external\websites, vagy \\\10.0.0.1\websites.  Ha használ egy fájlkiszolgálón, amely tartományhoz van csatlakoztatva, meg kell adnia a teljes felhasználónevet, többek között a tartományhoz, például myfileserverdomain\FileShareOwner.
 
     > [!NOTE]
     > A telepítő próbál csatlakozni a fájlmegosztási, a folytatás előtt.  Azonban ha egy meglévő virtuális hálózaton üzembe helyezéséhez, a telepítő nem tud csatlakozni a fájlmegosztási és figyelmeztető üzenetet, amely rákérdez, hogy szeretné-e továbbra is.  Ellenőrizze a fájlmegosztás adatait, és továbbra is, hogy helyesek.
@@ -196,6 +196,11 @@ App Service-ben leválasztott környezet üzembe helyezéséhez, először létr
 
     ![Az App Service-telepítő][18]
 
+## <a name="post-deployment-steps"></a>Üzembe helyezés utáni lépések
+
+> [!IMPORTANT]  
+> Ha az App Service RP példánnyal SQL mindig az adott kell [adja hozzá a appservice_hosting és appservice_metering adatbázisokat egy rendelkezésre állási csoport](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) , így elkerülhető, hogy a szolgáltatás az adatbázis szinkronizálásához, és a egy adatbázis feladatátvételi esemény.
+
 ## <a name="validate-the-app-service-on-azure-stack-installation"></a>Az App Service az Azure Stack-telepítés ellenőrzése
 
 1. Az Azure Stack felügyeleti portálon, lépjen a **felügyelet – az App Service**.
@@ -205,11 +210,11 @@ App Service-ben leválasztott környezet üzembe helyezéséhez, először létr
     ![App Service Management](media/azure-stack-app-service-deploy/image12.png)
 
 > [!NOTE]
-> Ha úgy döntött, hogy egy meglévő virtuális hálózatot és a egy belső IP-címet szeretne csatlakozni a fájlkiszolgáló üzembe helyezése, hozzá kell adnia egy kimenő biztonsági szabályt a feldolgozó alhálózat és a fájlkiszolgáló között SMB-forgalom engedélyezése.  Ehhez nyissa meg a WorkersNsg a felügyeleti portálon, és adjon hozzá egy kimenő biztonsági szabályt a következő tulajdonságokkal:
+> Ha úgy döntött, hogy egy meglévő virtuális hálózatot és a egy belső IP-címet szeretne csatlakozni a fájlkiszolgáló üzembe helyezése, hozzá kell adnia egy kimenő biztonsági szabályt a feldolgozó és a fájlkiszolgáló között SMB-forgalom engedélyezése.  Ehhez nyissa meg a WorkersNsg a felügyeleti portálon, és adjon hozzá egy kimenő biztonsági szabályt a következő tulajdonságokkal:
 > * Forrás: Bármelyik
 > * Forrás porttartomány: *
 > * Cél: IP-címek
-> * Cél IP-címtartomány: IP-címtartományt a fájlkiszolgáló számára
+> * Cél IP-címtartomány: IP-címtartományt a fájlkiszolgálóhoz
 > * Cél porttartomány: 445
 > * Protokoll: TCP
 > * Művelet: Engedélyezés

@@ -1,19 +1,20 @@
 ---
 title: Felhőből az eszközre irányuló üzeneteket az Azure IoT Hub (Java) szolgáltatással |} A Microsoft Docs
 description: Annak a felhőből az eszközre irányuló üzeneteket küld egy eszköz az Azure IoT SDK használata Javához készült Azure IoT hubról. Módosítja egy szimulált eszközalkalmazás felhőből az eszközre irányuló üzenetek fogadása és módosíthat egy háttér-alkalmazást a felhőből az eszközre irányuló üzenetek küldéséhez.
-author: dominicbetts
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.author: dobett
-ms.openlocfilehash: cb2b3d02cdeadbe45b93b0185a8c0064b9d61e93
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 035b7b7d51e3cb10f42d4983792282350ddb4208
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227705"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010769"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>Az IoT Hub (Java) szolgáltatással felhőből az eszközre irányuló üzenetek küldéséhez
 

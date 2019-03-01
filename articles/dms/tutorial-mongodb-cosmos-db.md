@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 12/11/2018
-ms.openlocfilehash: 5fd3200ab787a26b11feb121b5db125e4a79365c
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.date: 02/28/2018
+ms.openlocfilehash: 33f9c53dc216a93e936853ca519114224a95f7aa
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960380"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991299"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>Oktatóanyag: MongoDB át az Azure Cosmos DB API a mongodb-hez offline a DMS használatával
 Az Azure Database Migration Service használatával történő offline áttelepítéshez (egyszeri) az adatbázisok egy helyszíni vagy felhőbeli Azure Cosmos DB API a MongoDB-példány a mongodb-hez.
@@ -33,8 +33,17 @@ Ebben az oktatóanyagban egy adatkészletet, a mongodb-hez az Azure virtuális g
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 - [Hozzon létre egy Azure Cosmos DB API a MongoDB-fiókhoz](https://ms.portal.azure.com/#create/Microsoft.DocumentDB).
-- Hozzon létre egy virtuális hálózatot az Azure Database Migration Service-hez az Azure Resource Manager-alapú üzemi modell használatával, amely a hálózat helyek közötti kapcsolatot biztosít a helyszíni forráskiszolgálóknak [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) használatával.
-- Győződjön meg arról, hogy az Azure virtuális hálózat (VNET) hálózati biztonsági csoport szabályai nem blokkolják a következő kommunikációs portokat: 443-as, 53-as és 9354-es, 445-ös, valamint a 12000. További részletek az Azure VNET NSG-forgalom szűréséről: [Hálózati forgalom szűrése hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
+- Hozzon létre egy Azure Virtual Network (VNET) használatával az Azure Resource Manager üzembe helyezési modell, amely lehetővé teszi a helyek közötti kapcsolatot a helyszíni adatforrás-kiszolgálók használatával vagy az Azure Database Migration Service [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
+
+    > [!NOTE]
+    > Virtuális hálózathoz a telepítés során, ha az ExpressRoute hálózati a Microsoft társviszony-létesítés használja, hozzá a következő szolgáltatás [végpontok](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) az alhálózathoz, amelyben üzembe fogja helyezni a szolgáltatást:
+    > - Cél adatbázis végpont (például SQL-végpont, Cosmos-DB végpont, és így tovább)
+    > - Storage-végpont
+    > - Service bus-végpont
+    >
+    > Ez a konfiguráció szükség, mert az Azure Database Migration Service nem rendelkezik internetkapcsolattal.
+
+- Győződjön meg arról, hogy a virtuális hálózatok közötti hálózati biztonsági csoport szabályai nem blokkolják a következő kommunikációs portokat: 443-as, 53-as és 9354-es, 445-ös, valamint a 12000. További részletek az Azure VNET NSG-forgalom szűréséről: [Hálózati forgalom szűrése hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 - Nyissa meg a Windows tűzfalat az Azure Database Migration Service a forrás MongoDB-kiszolgáló, amely alapértelmezés szerint a TCP-port 27017 eléréséhez.
 - Ha tűzfalkészüléket használ a forrásadatbázis(ok) előtt, előfordulhat, hogy tűzfalszabályokat kell hozzáadnia annak engedélyezéséhez, hogy az Azure Database Migration Service a migrálás céljából hozzáférhessen a forrásadatbázis(ok)hoz.
 
@@ -74,7 +83,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
     További tájékoztatás a költségekről és a tarifacsomagokról a [díjszabási lapon](https://aka.ms/dms-pricing) olvasható.
 
-    Ha a megfelelő Azure Database Migration Service-csomag kiválasztása a segítségre van szüksége, tekintse meg a javaslatok, az ebben a blogbejegyzésben [Itt](https://go.microsoft.com/fwlink/?linkid=861067).  
+    Ha a megfelelő Azure Database Migration Service-csomag kiválasztása segítségre van szüksége, tekintse meg a javaslatok, az ebben a blogbejegyzésben [Itt](https://go.microsoft.com/fwlink/?linkid=861067).  
 
      ![Az Azure Database Migration Service-példány beállításainak konfigurálása](media/tutorial-mongodb-to-cosmosdb/dms-settings2.png)
 

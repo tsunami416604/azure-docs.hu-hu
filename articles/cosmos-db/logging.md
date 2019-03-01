@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: c6796d91835669ba174a866eb3c014e71549c0f2
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 2a08097b42f395bd0009353635cabbd264c3c421
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56877962"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992090"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Diagnosztikai naplózás az Azure Cosmos DB-ben 
 
@@ -448,7 +448,7 @@ A következő táblázat ismerteti a tartalom minden eseménynapló-bejegyzés.
 | **Tulajdonságok** | n/a | Ez a mező tartalma kövesse azokat a sorokat ismerteti. |
 | **activityId** | **activityId_g** | A naplózott műveletnek egyedi GUID azonosítója. |
 | **userAgent** | **userAgent_s** | Egy karakterlánc, amely meghatározza a kérést végrehajtó felhasználó ügyfélügynök. A formátum a következő {felhasználói ügynök neve} / {version}.|
-| **resourceType** | **ResourceType** | Elért erőforrás típusa. Ez az érték a következő erőforrás-típusok egyike lehet: Adatbázis, tároló, a dokumentum, melléklet, felhasználói, engedélyt, StoredProcedure, eseményindító, UserDefinedFunction vagy ajánlat. |
+| **requestResourceType** | **requestResourceType_s** | Elért erőforrás típusa. Ez az érték a következő erőforrás-típusok egyike lehet: Adatbázis, tároló, a dokumentum, melléklet, felhasználói, engedélyt, StoredProcedure, eseményindító, UserDefinedFunction vagy ajánlat. |
 | **statusCode** | **statusCode_s** | A válasz állapota a műveletet. |
 | **requestResourceId** | **ResourceId** | Az erőforrás-azonosító, amely a kérelem vonatkozik. Az érték databaseRid, collectionRid vagy documentRid végrehajtott művelettől függően előfordulhat, hogy mutasson.|
 | **clientIpAddress** | **clientIpAddress_s** | Az ügyfél IP-cím. |

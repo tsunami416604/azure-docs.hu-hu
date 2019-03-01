@@ -8,12 +8,12 @@ manager: edprice
 editor: edprice
 tags: ''
 keywords: ''
-ms.openlocfilehash: 067ab7538924f4aef7c48731d10fa7e68855214a
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 8be0ebc486739f8826e8a1d5a5307a219ba71b6f
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56739613"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192717"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>A nagyszámítógépes újratárolása az Azure-beli virtuális gépeken
 
@@ -25,7 +25,7 @@ Egy Azure virtuális gép (VM) segítségével azonosíthatók és felügyelheti
 
 Az Azure virtuális gépek fordítóprogramot lift-and-shift-forgatókönyveket támogató és nagyszámítógépes emulációs környezetben futtathatja. Fejlesztési és tesztelési célra általában az első munkaterhelések a nagyszámítógépes áttelepíthetők az Azure fejlesztési-tesztelési környezet között. Közös server-összetevőjét, Emulálhatja online tranzakció-folyamat (OLTP), a batch és az adatok feldolgozási rendszerek tartalmazza az alábbi ábrán látható módon.
 
-![](media/01-overview.png)
+![Emulációs környezetek Azure-beli lehetővé teszi z/OS-alapú rendszerek futtatására.](media/01-overview.png)
 
 Egyes nagyszámítógépes számítási feladatok áttelepíthetők az Azure-bA viszonylag könnyen, míg mások is rehosted, Azure-ban egy partneri megoldás használatával. Részletes útmutatás az egy partneri megoldás választása a [Azure nagyszámítógépes Migrálási központ](https://azure.microsoft.com/migration/mainframe/) segítségével.
 

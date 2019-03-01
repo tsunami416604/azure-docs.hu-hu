@@ -1,19 +1,19 @@
 ---
 title: Megismerheti az Azure IoT Hub felhőből az eszközre irányuló üzenetküldési |} A Microsoft Docs
 description: Fejlesztői útmutató – hogyan használhatja az IoT Hub üzenetküldés felhőből az eszközre. Az üzenet életciklusát, és a konfigurációs beállításokat kapcsolatos információkat tartalmaz.
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.author: dobett
-ms.openlocfilehash: 3f137ea80dc67bb075f34846e5563fb72c72b69a
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: c8424743f30ec1bbf8d8096f6630c7451bc910c8
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585645"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010242"
 ---
 # <a name="send-cloud-to-device-messages-from-iot-hub"></a>A felhőből az eszközökre irányuló üzenetek küldése az IoT Hubról
 
@@ -95,7 +95,7 @@ A szervezetnek egy JSON-szerializált rekordokból álló tömböt, minden, az a
 | ------------------ | ----------- |
 | EnqueuedTimeUtc    | Mikor történt a az üzenet eredményét jelző időbélyeg. Ha például a hub visszajelzés hibaüzenetet kapta, vagy az eredeti üzenet lejárt. |
 | OriginalMessageId  | **Üzenetazonosító** a felhőből az eszközre irányuló üzenet, amely a visszajelzési információk vonatkozik. |
-| Állapotkód         | Szükséges karakterlánc. Visszajelzési üzenetek az IoT Hub által generált használni. <br/> "Sikeres" <br/> 'Expired' <br/> 'DeliveryCountExceeded' <br/> Elutasítva: <br/> "Törölve" |
+| StatusCode         | Szükséges karakterlánc. Visszajelzési üzenetek az IoT Hub által generált használni. <br/> "Sikeres" <br/> 'Expired' <br/> 'DeliveryCountExceeded' <br/> Elutasítva: <br/> 'Purged' |
 | Leírás        | Karakterlánc-értékeket **StatusCode**. |
 | Eszközazonosító           | **DeviceId** a céleszköz a felhőből az eszközre irányuló üzenet visszajelzés ezen részének tárgyát képező. |
 | DeviceGenerationId | **DeviceGenerationId** a céleszköz a felhőből az eszközre irányuló üzenet visszajelzés ezen részének tárgyát képező. |
@@ -127,9 +127,9 @@ Minden IoT-központ a felhőből az eszközre irányuló üzenetküldés az alá
 
 | Tulajdonság                  | Leírás | Tartomány és az alapértelmezett |
 | ------------------------- | ----------- | ----------------- |
-| defaultTtlAsIso8601       | Alapértelmezett TTL a felhőből az eszközre. | ISO_8601 időköz legfeljebb 2D (legalább 1 perc). Alapértelmezett érték: 1 óra. |
+| defaultTtlAsIso8601       | Alapértelmezett TTL a felhőből az eszközre. | ISO_8601 időköz legfeljebb 2D (legalább 1 perc). Alapértelmezett: 1 óra. |
 | maxDeliveryCount          | Kézbesítések maximális száma a felhőből az eszközre az eszközönkénti sorra. | 1 és 100 között. Alapértelmezett: 10. |
-| feedback.ttlAsIso8601     | Szolgáltatás kötött visszajelzési üzenetek megőrzési ideje. | ISO_8601 időköz legfeljebb 2D (legalább 1 perc). Alapértelmezett érték: 1 óra. |
+| feedback.ttlAsIso8601     | Szolgáltatás kötött visszajelzési üzenetek megőrzési ideje. | ISO_8601 időköz legfeljebb 2D (legalább 1 perc). Alapértelmezett: 1 óra. |
 | feedback.maxDeliveryCount |Kézbesítések maximális száma a visszajelzési üzenetsort. | 1 és 100 között. Alapértelmezett: 100. |
 
 A konfigurációs beállításokról beállításával kapcsolatos további információkért lásd: [hozzon létre IoT-központok](iot-hub-create-through-portal.md).

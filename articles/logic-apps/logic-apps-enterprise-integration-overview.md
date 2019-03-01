@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: dd517c4d-1701-4247-b83c-183c4d8d8aae
 ms.date: 09/08/2016
-ms.openlocfilehash: c9733346d091a6829bd5b42c80201df3a1357fe3
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 8c0e47f5bed0799b8536cecb38a85ed76185d0cd
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243110"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194928"
 ---
 # <a name="overview-b2b-enterprise-integration-scenarios-in-azure-logic-apps-with-enterprise-integration-pack"></a>Áttekintés: B2B vállalati integrációs forgatókönyvek az Azure Logic Appsben és Enterprise Integration Pack
 
@@ -70,5 +70,5 @@ Vállalati integráció a következő iparági szabványok támogatja:
 * [Vállalati integrációs összekötők](../connectors/apis-list.md "további tudnivalók az enterprise integration pack-összekötők")
 * [Integrációs fiók metaadat](../logic-apps/logic-apps-enterprise-integration-metadata.md "további információ az integrációs fiók metaadatok")
 * [B2B üzenetek megfigyelése](logic-apps-monitor-b2b-message.md "B2B-üzenetek monitorozásával kapcsolatos további információkért")
-* [Az Azure Log Analyticsben B2B üzenetek nyomon követése](logic-apps-track-b2b-messages-omsportal.md "tudjon meg többet az Azure Log Analyticsben B2B üzenetek nyomon követése")
+* [Az Azure Monitor naplóira B2B üzenetek nyomon követése](logic-apps-track-b2b-messages-omsportal.md "tudjon meg többet az Azure Monitor naplóira B2B üzenetek nyomon követése")
 

@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a97e03f3c195b9fbd0ee7a09950414b7a940c7c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 694eb49244afb6761ce274572f15273ccef6cbb5
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217479"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195030"
 ---
 # <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-application"></a>Gyors útmutató: A felhasználók és a egy JavaScript-alkalmazását a hozzáférési jogkivonat beszerzése
 
@@ -74,14 +74,15 @@ Alkalmas ezen beállítások valamelyikét is válassza ki a fejlesztői környe
 * [A Visual Studio-projekt letöltése](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/vsquickstart.zip)
 
 Bontsa ki a zip-fájlt egy helyi mappába, például **C:\Azure-Samples**.
+Nyissa meg a fájlokat a mappában, használja a-szerkesztő, például [Visual Studio Code](https://code.visualstudio.com/).
 
 #### <a name="step-3-configure-your-javascript-app"></a>3. lépés: A JavaScript-alkalmazás konfigurálása
 
 > [!div renderon="docs"]
-> Szerkesztés `index.html` és állítsa be a `clientID` és `authority` értékei alapján `applicationConfig`.
+> A mappában *JavaScriptSPA*, Szerkesztés `index.html` és állítsa be a `clientID` és `authority` értékei alapján `applicationConfig`.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> Szerkesztés `index.html` , és cserélje le `applicationConfig` együtt:
+> A mappában *JavaScriptSPA*, Szerkesztés `index.html` , és cserélje le `applicationConfig` együtt:
 
 ```javascript
 var applicationConfig = {
@@ -103,13 +104,9 @@ var applicationConfig = {
 > > [!TIP]
 > > Az **alkalmazás (ügyfél) azonosítója**, a **címtár (bérlő) azonosítója** és a **támogatott fióktípusok** értékét az alkalmazás **Áttekintés** oldalán találja az Azure Portalon.
 
-> [!NOTE]
-> A kiszolgáló port 30662 figyelésére van konfigurálva a *server.js* fájlt [Node.js](https://nodejs.org/en/download/) projekt és a *.csproj* fájlt [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)projekt.
->
-
 #### <a name="step-4-run-the-project"></a>4. lépés: A projekt futtatása
 
-* Node.js használata:
+* Ha használ [Node.js](https://nodejs.org/en/download/):
 
     1. Futtassa a következő parancsot a projektmappából, indítsa el a kiszolgálót:
 
@@ -122,7 +119,7 @@ var applicationConfig = {
     1. Kattintson a **bejelentkezés** gombra kattintva indítsa el a bejelentkezési és majd a Microsoft Graph API meghívása.
 
 
-* Ha a Visual Studio használata esetén ügyeljen arra, hogy válassza ki a projekt megoldás, és nyomja le az **F5** , futtassa a projektet.
+* Ha használ [Visual Studio](https://visualstudio.microsoft.com/downloads/), mindenképpen jelölje ki a projekt megoldást, és nyomja le az **F5** a projekt futtatása.
 
 ## <a name="more-information"></a>További információ
 
@@ -217,9 +214,9 @@ Részletesebb lépésenkénti útmutató az ebben a rövid útmutatóban az alka
 ### <a name="learn-the-steps-to-create-the-application-for-this-quickstart"></a>Ismerje meg, ez a rövid útmutató az alkalmazás létrehozásának lépéseit
 
 > [!div class="nextstepaction"]
-> [A Graph API meghívása – oktatóanyag](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-javascriptspa)
+> [Jelentkezzen be, és hívja az MS Graph oktatóanyag](https://docs.microsoft.com/azure/active-directory/develop/guidedsetups/active-directory-javascriptspa)
 
 ### <a name="browse-the-msal-repo-for-documentation-faq-issues-and-more"></a>Keresse meg a MSAL-adattárat a dokumentáció, GYIK, problémák és egyéb
 
 > [!div class="nextstepaction"]
-> [msal.js GitHub-adattár](https://github.com/AzureAD/microsoft-authentication-library-for-js)
+> [MSAL.js GitHub-adattár](https://github.com/AzureAD/microsoft-authentication-library-for-js)

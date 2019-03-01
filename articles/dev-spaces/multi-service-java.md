@@ -1,5 +1,5 @@
 ---
-title: A Java és a VS Code használatával több függő szolgáltatásokat futtató |} A Microsoft Docs
+title: A Java és a VS Code használatával több függő szolgáltatás fut.
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -9,14 +9,14 @@ ms.author: stevenry
 ms.date: 11/21/2018
 ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
+keywords: 'Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s '
 manager: yuvalm
-ms.openlocfilehash: 2ca5e41bb384a9b4d7fd1c5d81f4e8b9c921472a
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 71313ee58538cf060896de9bb886bb0e5ace7825
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817337"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194945"
 ---
 # <a name="multi-service-development-with-azure-dev-spaces"></a>Az Azure fejlesztési tárolóhelyek több szolgáltatásos fejlesztői
 

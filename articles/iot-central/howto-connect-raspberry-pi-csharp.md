@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: f0232c8d2627cd600f4f05b5b501db85fa7d2ec4
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 4873c834a33ff5f401f38fdb810c65ca7ef20f5e
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051390"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57191187"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Raspberry Pi csatlakoztatása az Azure IoT Central alkalmazáshoz (C#)
 
@@ -43,7 +43,7 @@ A létrehozott alkalmazáshoz a **minta Devkits** alkalmazást sablon tartalmaz 
     - Giroszkóp (X, Y, a – Z)
 - Beállítások
     - Feszültségérzékelő
-    - Jelenlegi
+    - Aktuális
     - Sebesség ventilátor
     - Integrációs modul váltógombot.
 - Tulajdonságok
@@ -275,7 +275,7 @@ A következő lépéseket, használhatja a Visual Studio Code-ot. További infor
 Adja hozzá a kódot az eszköz hitelesítéséhez az Azure IoT Central eszközspecifikus kapcsolati karakterláncra. Az Azure IoT Central alkalmazásnak a valódi eszköz hozzáadásakor végzett jegyezze fel ezt a kapcsolati karakterláncot.
 
   > [!NOTE]
-   > Az Azure IoT Central átváltott használatával az Azure IoT Hub Device Provisioning service (DPS) az összes eszköz kapcsolat, kövesse az alábbi instrustions [az eszköz kapcsolati karakterláncának lekérése](concepts-connectivity.md#getting-device-connection-string) és az oktatóanyag további részeinek folytatásához.
+   > Az Azure IoT Central átváltott használatával az Azure IoT Hub Device Provisioning service (DPS) az összes eszköz kapcsolat, ezeket az utasításokat követve [az eszköz kapcsolati karakterláncának lekérése](concepts-connectivity.md#get-a-connection-string) és az oktatóanyag további részeinek folytatásához.
 
 1. Cserélje le `{your device connection string}` a a **Program.cs** fájlt a korábban feljegyzett kapcsolati karakterláncra.
 
@@ -331,14 +331,14 @@ A létrehozott alkalmazáshoz a **minta Devkits** alkalmazást sablon tartalmaz 
 | Mező neve     | Egység  | Minimális | Maximum | Tizedeshelyek |
 | -------------- | ------ | ------- | ------- | -------------- |
 | páratartalom       | %      | 0       | 100     | 0              |
-| TEMP           | ° C     | tartsuk ott -40     | 120     | 0              |
+| TEMP           | °C     | -40     | 120     | 0              |
 | pressure       | hPa    | 260     | 1260    | 0              |
-| magnetometerX  | mgauss | – 1000   | 1000    | 0              |
-| magnetometerY  | mgauss | – 1000   | 1000    | 0              |
-| magnetometerZ  | mgauss | – 1000   | 1000    | 0              |
-| accelerometerX | felügyeleti csoport     | -2000   | 2000    | 0              |
-| accelerometerY | felügyeleti csoport     | -2000   | 2000    | 0              |
-| accelerometerZ | felügyeleti csoport     | -2000   | 2000    | 0              |
+| magnetometerX  | mgauss | -1000   | 1000    | 0              |
+| magnetometerY  | mgauss | -1000   | 1000    | 0              |
+| magnetometerZ  | mgauss | -1000   | 1000    | 0              |
+| accelerometerX | mg     | -2000   | 2000    | 0              |
+| accelerometerY | mg     | -2000   | 2000    | 0              |
+| accelerometerZ | mg     | -2000   | 2000    | 0              |
 | gyroscopeX     | mdps   | -2000   | 2000    | 0              |
 | gyroscopeY     | mdps   | -2000   | 2000    | 0              |
 | gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
@@ -350,7 +350,7 @@ Numerikus beállításai
 | Megjelenített név | Mező neve | Egység | Tizedeshelyek | Minimális | Maximum | Kezdeti |
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | Feszültségérzékelő      | setVoltage | V | 0              | 0       | 240     | 0       |
-| Jelenlegi      | setCurrent | Teljesítménytényező  | 0              | 0       | 100     | 0       |
+| Aktuális      | setCurrent | Teljesítménytényező  | 0              | 0       | 100     | 0       |
 | Sebesség ventilátor    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
 
 A beállítások ki-/ bekapcsolása
@@ -361,7 +361,7 @@ A beállítások ki-/ bekapcsolása
 
 ### <a name="properties"></a>Tulajdonságok
 
-| Típus            | Megjelenített név | Mező neve | Adattípus |
+| Typo            | Megjelenített név | Mező neve | Adattípus |
 | --------------- | ------------ | ---------- | --------- |
 | Eszköztulajdonság | Die száma   | dieNumber  | szám    |
 | Szöveg            | Hely     | location   | –       |

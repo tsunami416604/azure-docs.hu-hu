@@ -1,5 +1,5 @@
 ---
-title: A Log Analytics – Azure Logic Apps B2B-üzenetek nyomon követése |} A Microsoft Docs
+title: Az Azure Monitor naplóira – Azure Logic Apps B2B-üzenetek nyomon követése |} A Microsoft Docs
 description: Integrációs fiókok és az Azure Log Analytics az Azure Logic Apps B2B kommunikációs nyomon követése
 services: logic-apps
 ms.service: logic-apps
@@ -9,16 +9,16 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: ad58257313c60b4757c83793886ce32a2997332b
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 8cf5d9f3ee1503769a2ec199847175899bcd86bf
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996546"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193211"
 ---
-# <a name="track-b2b-messages-with-azure-log-analytics"></a>Az Azure Log Analytics B2B üzenetek nyomon követése
+# <a name="track-b2b-messages-with-azure-monitor-logs"></a>Az Azure Monitor naplóira B2B üzenetek nyomon követése
 
-Miután beállította a kereskedelmi partnerek az integrációs fiókban lévő B2B kommunikációját, ezek a partnerek is exchange-protokollok, például az AS2, X 12 és EDIFACT-üzenetek. Ellenőrizze, hogy ezek az üzenetek feldolgozása megfelelően, ezeket az üzeneteket a követheti [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Például üzenetek nyomon követése a webes követési képességek is használhatja:
+Miután beállította a kereskedelmi partnerek az integrációs fiókban lévő B2B kommunikációját, ezek a partnerek is exchange-protokollok, például az AS2, X 12 és EDIFACT-üzenetek. Ellenőrizze, hogy ezek az üzenetek feldolgozása megfelelően, ezeket az üzeneteket a követheti [naplózza az Azure Monitor](../log-analytics/log-analytics-overview.md). Például üzenetek nyomon követése a webes követési képességek is használhatja:
 
 * Üzenetek száma és állapota
 * Visszaigazolás állapota
@@ -29,19 +29,21 @@ Miután beállította a kereskedelmi partnerek az integrációs fiókban lévő 
 > [!NOTE]
 > Ezen a lapon a fentiekben már említettük, az a Microsoft Operations Management Suite (OMS), amely a feladatok végrehajtásához szükséges lépéseket [kivonása a január 2019](../azure-monitor/platform/oms-portal-transition.md), hanem az Azure Log Analytics váltja fel ezeket a lépéseket. 
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy logikai alkalmazást, amely a diagnosztikai naplózás be van állítva. Ismerje meg, [Logic Apps-alkalmazás létrehozása](quickstart-create-first-logic-app-workflow.md) és [a logikai alkalmazás naplózásának beállítása](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
 * Egy integrációs fiók, amely a figyelés és naplózás be van állítva. Ismerje meg, [egy integrációs fiók létrehozása](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) és [monitorozási és naplózási fiók beállítása](../logic-apps/logic-apps-monitor-b2b-message.md).
 
-* Ha még nem tette, [diagnosztikai adatok közzététele a Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+* Ha még nem tette, [diagnosztikai adatok közzététele az Azure Monitor naplóira](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
 * Miután megfelel a fenti követelményeknek, Log Analytics-munkaterület, amellyel nyomon követési B2B kommunikációs Log Analytics segítségével is szükséges. Ha nem rendelkezik a Log Analytics-munkaterületet, további [Log Analytics-munkaterület létrehozása](../azure-monitor/learn/quick-create-workspace.md).
 
 ## <a name="install-logic-apps-b2b-solution"></a>Logic Apps B2B-megoldás telepítése
 
-Ahhoz, hogy képes a Log Analytics, a logikai alkalmazás B2B üzenetek nyomon követése, adja hozzá a **Logic Apps B2B** megoldás a Log Analytics szolgáltatásba. Tudjon meg többet [megoldások hozzáadása a Log Analytics](../azure-monitor/learn/quick-create-workspace.md).
+A logikai alkalmazás B2B üzenetek nyomon követése az Azure Monitor naplóira rendelkezhet, mielőtt hozzá a **Logic Apps B2B** megoldását az Azure Monitor naplóira. Tudjon meg többet [megoldások hozzáadása az Azure Monitor naplóira](../azure-monitor/learn/quick-create-workspace.md).
 
 1. Az [Azure Portalon](https://portal.azure.com) válassza a **Minden szolgáltatás** elemet. A keresőmezőbe, keresse meg a "log analytics", és válassza ki **Log Analytics**.
 
@@ -128,7 +130,7 @@ Után B2B-üzenetek feldolgozása, megtekintheti a állapotával és részleteiv
    * Keresse meg az előre létrehozott lekérdezések eredményeit, válassza a **Kedvencek**.
 
    * Ismerje meg, [hogyan hozhatók létre olyan lekérdezések, szűrők hozzáadásával](logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md). 
-   Tudjon meg többet vagy [tartalmazó naplókeresések adatok megkeresése a Log Analytics](../log-analytics/log-analytics-log-searches.md).
+   Tudjon meg többet vagy [tartalmazó naplókeresések adatok megkeresése az Azure Monitor naplóira](../log-analytics/log-analytics-log-searches.md).
 
    * Módosítsa a lekérdezést a keresőmezőbe, hogy frissítse a lekérdezést az oszlopok és szűrők használni kívánt értékeket.
 
@@ -165,7 +167,7 @@ Az alábbiakban az egyes letöltött AS2-üzenet mappa és fájlok formátumok.
 
 | Fájl vagy mappa | Névformátum |
 | :------------- | :---------- |
-| Üzenet mappa | [küldő] \_[fogadó]\_AS2\_[korrelációs azonosító]\_[message-ID]\_[időbélyeg] |
+| Üzenet mappa | [sender]\_[receiver]\_AS2\_[correlation-ID]\_[message-ID]\_[timestamp] |
 | Bemeneti, kimeneti és if beállítása nyugtázási fájlok | **Bemeneti forgalma**: [küldő]\_[fogadó]\_AS2\_[korrelációs azonosító]\_input_payload.txt </p>**Kimenő hasznos**: [küldő]\_[fogadó]\_AS2\_[korrelációs azonosító]\_kimeneti\_payload.txt </p></p>**Bemenetek**: [küldő]\_[fogadó]\_AS2\_[korrelációs azonosító]\_inputs.txt </p></p>**Kimenetek**: [küldő]\_[fogadó]\_AS2\_[korrelációs azonosító]\_outputs.txt |
 |          |             |
 
@@ -237,7 +239,7 @@ Az alábbiakban az egyes letöltött EDIFACT-üzenet mappa és fájlok formátum
 
 ## <a name="next-steps"></a>További lépések
 
-* [B2B-üzenetek a Log Analytics-lekérdezést](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
+* [Az Azure Monitor naplóira B2B-üzenetek lekérdezése](../logic-apps/logic-apps-track-b2b-messages-omsportal-query-filter-control-number.md)
 * [AS2-követési sémák](../logic-apps/logic-apps-track-integration-account-as2-tracking-schemas.md)
 * [X12-követési sémák](../logic-apps/logic-apps-track-integration-account-x12-tracking-schema.md)
 * [Egyéni követési séma](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md)

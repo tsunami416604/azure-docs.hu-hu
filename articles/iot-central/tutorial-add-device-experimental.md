@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 5933f74dcedb579023d187061229cdd53bce6414
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1c79b7966a98946673d1a8f9daec42717dc27575
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819433"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193041"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Oktatóanyag: Valós eszköz hozzáadása az Azure IoT Central-alkalmazáshoz
 
@@ -119,7 +119,7 @@ A következő lépések bemutatják, hogyan készítheti elő a [Node.js](https:
 1. Térjen vissza a parancssori környezethez, és hozza létre a kapcsolati sztringet az alábbiak végrehajtásával:
 
     ```cmd/sh
-    dps_keygen <scope_id> <device_id> <Primary Key>
+    dps_keygen -si:<scope_id> -di:<device_id> -dk:<Primary Key>
     ```
 
    Másolja ki a kimenetet, és mentse egy új fájlba (például a connection.txt fájlba).

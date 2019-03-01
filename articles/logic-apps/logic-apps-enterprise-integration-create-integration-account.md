@@ -1,6 +1,6 @@
 ---
-title: Integrációs fiókok B2B megoldások - Azure Logic Apps alkalmazások létrehozása és kezelése |} Microsoft Docs
-description: Hozzon létre hivatkozásra, helyezze át, és vállalati integrációs és az Azure Logic Apps B2B megoldások integrációs fiókok törlése
+title: B2B-megoldások – Azure Logic Apps integrációs fiókok létrehozása és kezelése |} A Microsoft Docs
+description: Hozzon létre, hivatkozásra, áthelyezése és törlése a vállalati integráció és az Azure Logic Apps B2B-megoldásoktól integrációs fiókok
 services: logic-apps
 documentationcenter: ''
 author: ecfan
@@ -14,23 +14,23 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: estfan
-ms.openlocfilehash: 2a1fe501386884e02657d4b6cbef58ffc533fa33
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 43ecdafac4f0a5cdc9e619537cdbe2a42ff7fe1b
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35297988"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57191918"
 ---
-# <a name="create-and-manage-integration-accounts-for-b2b-solutions-with-logic-apps"></a>A logic apps B2B megoldások integrációs fiókok létrehozása és kezelése
+# <a name="create-and-manage-integration-accounts-for-b2b-solutions-with-logic-apps"></a>A logic apps B2B-megoldásoktól az integrációs fiókok létrehozása és kezelése
 
-Elkészítése előtt [vállalati integrációs és B2B megoldások](../logic-apps/logic-apps-enterprise-integration-overview.md) rendelkező [Azure Logic Apps](../logic-apps/logic-apps-overview.md), integrációs fiókot, ahol létrehozása, tárolja, és kezelheti B2B összetevők, például a kell mivel a partnerek, egyezmények, maps, sémák, tanúsítványok és stb. A Logic Apps alkalmazást az integráció fiókban az összetevők dolgozni, és használja a Logic Apps B2B összekötők, például az XML-érvényesítés előtt [a integrációs fiókját](#link-account) a logikai alkalmazáshoz. Összekapcsolhatja őket, rendelkeznie kell mind a integrációs fiók és a logikai alkalmazást a *azonos* Azure-beli hely, vagy a régiót.
+Elkészítése előtt [vállalati Integrációk és B2B-megoldásoktól](../logic-apps/logic-apps-enterprise-integration-overview.md) a [Azure Logic Apps](../logic-apps/logic-apps-overview.md), előbb rendelkeznie kell egy integrációs fiók, amely, hozzon létre, tárolhatja és kezelheti a B2B összetevők, például kereskedelmi partnerek, szerződések, térképeket, sémákat, tanúsítványok, és így tovább. A logikai alkalmazás az összetevőket az integrációs fiókban lévő dolgozhat, és a Logic Apps B2B-összekötőkkel, például XML-érvényesítés előtt [az integrációs fiókot](#link-account) a logikai alkalmazáshoz. Összekapcsolhatja őket, mind az integrációs fiók és a logikai alkalmazás kell rendelkeznie a *ugyanazon* Azure-beli hely vagy régió.
 
-Ez a cikk bemutatja, hogyan ezen feladatok végrehajtásával:
+Ez a cikk bemutatja, hogyan hajthat végre ezeket a feladatokat:
 
-* A integrációs-fiók létrehozásához.
-* Az integráció fiók összekötése a logikai alkalmazást.
-* Az integráció fiók áthelyezése egy másik Azure erőforráscsoportba vagy előfizetésbe.
-* Az integráció fiók törlése.
+* Az integrációs fiók létrehozása.
+* Az integrációs fiók csatolása egy logikai alkalmazást.
+* Az integrációs fiók áthelyezése az Azure-bA egy másik erőforráscsoportba vagy előfizetésbe.
+* Integrációs fiók törlése.
 
 Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/free/" target="_blank">regisztráljon egy ingyenes Azure-fiókra</a>.
 
@@ -38,84 +38,84 @@ Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/f
 
 Jelentkezzen be az <a href="https://portal.azure.com" target="_blank">Azure Portalra</a> az Azure-fiókja hitelesítő adataival.
 
-## <a name="create-integration-account"></a>integráció-fiók létrehozása
+## <a name="create-integration-account"></a>integrációs fiók létrehozása
 
-1. Válassza a fő Azure menü **minden szolgáltatás**. A keresési mezőbe, írja be az "integrációs fiókok" szűrőként, és válassza ki **integrációs fiókok**.
+1. Az Azure fő menüjéből válassza **minden szolgáltatás**. A Keresés mezőbe írja be az "integrációs fiók" szűrőként, és válassza ki **integrációs fiókok**.
 
-   ![Integrációs fiókok keresése](./media/logic-apps-enterprise-integration-create-integration-account/create-integration-account.png)
+   ![Keresse meg az integrációs fiókok](./media/logic-apps-enterprise-integration-create-integration-account/create-integration-account.png)
 
 2. A **integrációs fiókok**, válassza a **Hozzáadás**.
 
-   ![Válassza ki a "Hozzáadás" integrációs-fiók létrehozása](./media/logic-apps-enterprise-integration-create-integration-account/add-integration-account.png)
+   ![Válassza a "Hozzáadás" integrációs fiók létrehozása](./media/logic-apps-enterprise-integration-create-integration-account/add-integration-account.png)
 
-3. Adja meg az integrációs fiókkal kapcsolatos információk: 
+3. Az integrációs fiók kapcsolatos adatok megadása: 
 
-   ![Részletek a integrációs fiók megadása](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-details.png)
+   ![Adja meg adatait az integrációs fiók](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-details.png)
 
    | Tulajdonság | Szükséges | Példaérték | Leírás | 
    |----------|----------|---------------|-------------|
-   | Name (Név) | Igen | teszt-integráció-fiók | Az integráció fiók nevét. Ebben a példában a megadott nevet használja. | 
-   | Előfizetés | Igen | <*Azure-előfizetés-neve*> | A használatára az Azure-előfizetés nevét | 
-   | Erőforráscsoport | Igen | teszt-integráció-fiók-rg | A nevet a [Azure erőforráscsoport](../azure-resource-manager/resource-group-overview.md) kapcsolódó erőforrások rendszerezéséhez használja. Ehhez a példához hozzon létre egy új erőforráscsoportot a megadott névvel. | 
-   | Tarifacsomag | Igen | Ingyenes | Ez a tarifacsomag használni kívánt. Ehhez a példához válassza ki a **szabad**, de további információkért lásd: [Logic Apps korlátozásai és konfigurációja](../logic-apps/logic-apps-limits-and-config.md) és [Logic Apps árképzési](https://azure.microsoft.com/pricing/details/logic-apps/). | 
-   | Hely | Igen | USA nyugati régiója | A régió integrációs fiókadatait tárolási helyét. Jelölje ki a logikai alkalmazás ugyanazon a helyen vagy logikai alkalmazás létrehozása ugyanazon a helyen, a integrációs fiókkal. | 
-   | Log Analytics | Nem | Ki | A diagnosztikai naplózáshoz maradjon a **Ki** beállításnál. | 
+   | Name (Név) | Igen | test-integration-account | Az integrációs fiók neve. Ebben a példában a megadott nevet használja. | 
+   | Előfizetés | Igen | <*Azure-előfizetés-neve*> | Neve az Azure-előfizetés használata | 
+   | Erőforráscsoport | Igen | test-integration-account-rg | A nevet a [Azure-erőforráscsoport](../azure-resource-manager/resource-group-overview.md) kapcsolódó erőforrások rendezéséhez használt. Ebben a példában a megadott nevű hozzon létre egy új erőforráscsoportot. | 
+   | Tarifacsomag | Igen | Ingyenes | A tarifacsomag, amelyet használni szeretne. Ebben a példában válassza **ingyenes**, de további információkért lásd: [Logic Apps-korlátozások és konfiguráció](../logic-apps/logic-apps-limits-and-config.md) és [Logic Apps díjszabási](https://azure.microsoft.com/pricing/details/logic-apps/). | 
+   | Hely | Igen | USA nyugati régiója | A régió az integrációs fiók információk tárolására. Válassza ki ugyanazt a helyet, a logikai alkalmazás, vagy hozzon létre egy logikai alkalmazást az integrációs fiók ugyanazon a helyen. | 
+   | Log Analytics-munkaterület | Nem | Ki | A diagnosztikai naplózáshoz maradjon a **Ki** beállításnál. | 
    ||||| 
 
 4. Mikor végzett, válassza a **Rögzítés az irányítópulton**, majd a **Létrehozás** lehetőséget.
 
-   Miután Azure integrációs fiókja telepíti a kiválasztott helyre, amely általában egy percen belül befejeződik, Azure megnyitja integrációs fiókját.
+   Miután az Azure üzembe helyezte az integrációs fiók a kijelölt helyre, amely általában egy percen belül befejeződik, az Azure megnyitja az integrációs fiók.
 
-   ![Azure integrációs fiókja megnyitása](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-created.png)
+   ![Az Azure megnyitja az integrációs fiók](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-created.png)
 
-Most a logikai alkalmazás integrációs fiókját is használhatja, kell kapcsolni az integráció fiók a Logic Apps alkalmazást.
+Most ahhoz a logikai alkalmazást, az integrációs fiók, hozzá kell rendelnie az integrációs fiók a logikai alkalmazáshoz.
 
 <a name="link-account"></a>
 
 ## <a name="link-to-logic-app"></a>Logikai alkalmazás összekapcsolása
 
-A a logic apps hozzáférésének integrációs-fiókkal, amely tartalmazza a B2B összetevők, például kereskedelmi partnerek, egyezmények, leképezések és sémák, integrációs fiókját kell kapcsolni a Logic Apps alkalmazást. 
+Egy integrációs fiók, amely tartalmazza a B2B összetevők, például a kereskedelmi partnerek, szerződések, leképezések és sémák, a logic apps hozzáférést biztosíthat az integrációs fiók kell rendelnie a logikai alkalmazást. 
 
 > [!NOTE]
-> Az integráció fiók és a logikai alkalmazás ugyanabban a régióban léteznie kell.
+> Az integrációs fiók és a logikai alkalmazás ugyanabban a régióban léteznie kell.
 
-1. Az Azure portálon található, és nyissa meg a Logic Apps alkalmazást.
+1. Az Azure Portalon keresse meg és nyissa meg a logikai alkalmazást.
 
-2. A logikai alkalmazás menü alatti **beállítások**, jelölje be **munkafolyamat-beállításokat**. Az a **válassza ki a integrációs fiókot** listára, válassza ki a integrációs fiók csatolása a Logic Apps alkalmazást.
+2. A logikai alkalmazás menüjében alatt **beállítások**válassza **munkafolyamat-beállítások**. Az a **válasszon egy integrációs fiókot** listájához, válassza ki a logikai alkalmazáshoz csatolni az integrációs fiókba.
 
-   ![Válassza ki a integrációs fiókját](./media/logic-apps-enterprise-integration-create-integration-account/linkaccount-2.png)
+   ![Válassza ki az integrációs fiók](./media/logic-apps-enterprise-integration-create-integration-account/linkaccount-2.png)
 
-3. Linking befejezéséhez válassza ki a **mentése**.
+3. Csatolás a befejezéshez válassza **mentése**.
 
-   ![Válassza ki a integrációs fiókját](./media/logic-apps-enterprise-integration-create-integration-account/linkaccount-3.png)
+   ![Válassza ki az integrációs fiók](./media/logic-apps-enterprise-integration-create-integration-account/linkaccount-3.png)
 
-   Ha integrációs fiókja sikeresen kapcsolódik, Azure egy megerősítő üzenetet jelenít meg. 
+   Az integrációs fiók sikeresen össze van kapcsolva, az Azure egy megerősítő üzenetet jelenít meg. 
 
-   ![Azure megerősíti, hogy sikeres hivatkozás](./media/logic-apps-enterprise-integration-create-integration-account/linkaccount-5.png)
+   ![Azure megerősíti, hogy a sikeres kapcsolat](./media/logic-apps-enterprise-integration-create-integration-account/linkaccount-5.png)
 
-Most a Logic Apps alkalmazást használható minden olyan és az összes az összetevők integrációs fiókját, valamint a B2B összekötők, például az XML-érvényesítés és egybesimított fájl kódolási vagy -dekódolási.  
+A logikai alkalmazás most már használhatja az bármely és minden az összetevőket az integrációs fiók és a B2B-összekötők, például XML-érvényesítés és a kódolási vagy -dekódolási egybesimított fájl.  
 
-## <a name="unlink-from-logic-app"></a>Leválasztás a logikai alkalmazás
+## <a name="unlink-from-logic-app"></a>Logikai alkalmazás leválasztása
 
-A Logic Apps alkalmazást egy másik integrációs fiókkal összekapcsolni, vagy már nem integrációs fiók használata a Logic Apps alkalmazást, törölheti a hivatkozás az Azure erőforrás-kezelőben.
+A logikai alkalmazás összekapcsolása egy másik integrációs fiók, vagy már nem használja a logikai alkalmazás egy integrációs fiókban, törölheti a hivatkozást az Azure erőforrás-kezelőben.
 
-1. A böngészőben nyissa meg a <a href="https://resources.azure.com" target="_blank">Azure Resource Explorer (https://resources.azure.com)</a>. Győződjön meg arról, hogy be van jelentkezve az azonos Azure hitelesítő adataival.
+1. A böngészőben nyissa meg <a href="https://resources.azure.com" target="_blank">Azure erőforrás-kezelő (https://resources.azure.com)</a>. Győződjön meg arról, hogy van-e bejelentkezve az azonos Azure hitelesítő adatait.
 
    ![Azure Resource Explorer](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer.png)
 
-2. A keresési mezőbe írja be a logikai alkalmazás nevét, majd keresse meg és válassza ki a logikai alkalmazás.
+2. A keresőmezőbe adja meg a logikai alkalmazás nevét, majd keresse meg és válassza ki a logikai alkalmazást.
 
-   ![Keresse meg és jelölje ki a logikai alkalmazás](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-find-logic-app.png)
+   ![Keresse meg és válassza ki a logikai alkalmazás](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-find-logic-app.png)
 
-3. A explorer címsorában válassza **olvasási/írási**.
+3. Explorer címsorában válassza **olvasási/írási**.
 
-   ![Kapcsolja be a "Olvasási/írási" módban](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-choose-read-write-mode.png)
+   !["Olvasási/írási" mód bekapcsolása](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-choose-read-write-mode.png)
 
 4. Az a **adatok** lapra, majd **szerkesztése**.
 
    ![A "Data" lapon válassza a "Szerkesztés"](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-choose-edit.png)
 
-5. -Szerkesztőben keresse a `integrationAccount` tulajdonság az integráció a fiókot, és törölni, hogy tulajdonságot, amelynek ezt a formátumot:
+5. A szerkesztőben keresse meg a `integrationAccount` tulajdonsága az integrációs fiókot, és törölje az adott tulajdonságot használja, amely ebben a formátumban van:
 
    ```json
    "integrationAccount": {
@@ -127,49 +127,49 @@ A Logic Apps alkalmazást egy másik integrációs fiókkal összekapcsolni, vag
 
    Példa:
 
-   ![Található "integrationAccount" tulajdonság meghatározása](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-delete-integration-account.png)
+   ![Keresse meg az "integrationAccount" tulajdonság meghatározása](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-delete-integration-account.png)
 
-6. Az a **adatok** lapra, majd **Put** menti a módosításokat. 
+6. Az a **adatok** lapra, majd **Put** a módosítások mentéséhez. 
 
-   ![Válassza a "Put" menti a módosításokat](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-save-changes.png)
+   ![Válassza a "Put" a módosítások mentése](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-save-changes.png)
 
-7. Az Azure portál, a logikai alkalmazás **munkafolyamat-beállításokat**, ellenőrizze, hogy a **integrációs fiók** tulajdonság megjelenik üres.
+7. Az Azure Portalon, a logikai alkalmazás alatt **munkafolyamat-beállítások**, ellenőrizze, hogy a **integrációs fiók** tulajdonság jelenik meg, üres.
 
-   ![Ellenőrizze, hogy integrációs fiók nem rendelkezik kapcsolással](./media/logic-apps-enterprise-integration-create-integration-account/unlinked-account.png)
+   ![Ellenőrizze, hogy az integrációs fiók nem kapcsolódik](./media/logic-apps-enterprise-integration-create-integration-account/unlinked-account.png)
 
-## <a name="move-integration-account"></a>Integráció fiók áthelyezése
+## <a name="move-integration-account"></a>Integrációs fiók áthelyezése
 
-Integráció fiókja áthelyezheti egy másik Azure-előfizetés vagy az erőforrás-csoportok.
+Az integrációs fiók áthelyezheti egy másik Azure vagy erőforráscsoportonként csoportba.
 
-1. Válassza ki a fő Azure menü **minden szolgáltatás**. A keresési mezőbe, írja be az "integrációs fiókok" szűrőként, és válassza ki **integrációs fiókok**.
+1. Az Azure fő menüjéből válassza **minden szolgáltatás**. A Keresés mezőbe írja be az "integrációs fiók" szűrőként, és válassza ki **integrációs fiókok**.
 
-   ![Az integráció fiók](./media/logic-apps-enterprise-integration-create-integration-account/create-integration-account.png)
+   ![Keresse meg az integrációs fiók](./media/logic-apps-enterprise-integration-create-integration-account/create-integration-account.png)
 
-2. A **integrációs fiókok**, válassza ki a integrációs fiókot, amely át szeretné helyezni. Integráció fiókot menü alatti **beállítások**, válassza a **tulajdonságok**.
+2. A **integrációs fiókok**, válassza ki az áthelyezni kívánt integrációs fiókba. A az integrációs fiók menü alatt **beállítások**, válassza a **tulajdonságok**.
 
-   ![A "Beállítások" válassza a "Tulajdonságok"](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-properties.png)
+   ![A "Beállítások" területen válassza a "Tulajdonságok"](./media/logic-apps-enterprise-integration-create-integration-account/integration-account-properties.png)
 
-3. Módosítja az Azure erőforráscsoport vagy előfizetés integrációs fiókjához.
+3. Az Azure-erőforráscsoportot vagy az előfizetés az integrációs fiók módosítása
 
-   ![Válassza a "Módosítás erőforráscsoport" vagy "Módosítása előfizetés"](./media/logic-apps-enterprise-integration-create-integration-account/change-resource-group-subscription.png)
+   ![Válassza a "Change erőforráscsoport" vagy "Change előfizetés"](./media/logic-apps-enterprise-integration-create-integration-account/change-resource-group-subscription.png)
 
-4. Amikor elkészült, győződjön meg arról, hogy frissíti minden parancsfájlok az új erőforrás-azonosítók esetében az összetevők.  
+4. Ha elkészült, győződjön meg arról, hogy frissítenie minden szkripteket az új erőforrás-azonosítókat az összetevők.  
 
-## <a name="delete-integration-account"></a>Integráció fiók törlése
+## <a name="delete-integration-account"></a>Integrációs fiók törlése
 
-1. Válassza ki a fő Azure menü **minden szolgáltatás**. A keresési mezőbe, írja be az "integrációs fiókok" szűrőként, és válassza ki **integrációs fiókok**.
+1. Az Azure fő menüjéből válassza **minden szolgáltatás**. A Keresés mezőbe írja be az "integrációs fiók" szűrőként, és válassza ki **integrációs fiókok**.
 
-   ![Az integráció fiók](./media/logic-apps-enterprise-integration-create-integration-account/create-integration-account.png)
+   ![Keresse meg az integrációs fiók](./media/logic-apps-enterprise-integration-create-integration-account/create-integration-account.png)
 
-2. A **integrációs fiókok**, válassza ki a törölni kívánt integrációs fiókot. Az integráció felhasználóifiók-menüjéből válassza **áttekintése**, majd válassza a **törlése**. 
+2. A **integrációs fiókok**, válassza ki a törölni kívánt integrációs fiókot. Az integrációs fiók menüben válassza **áttekintése**, majd válassza a **törlése**. 
 
-   ![Válassza ki az integráció fiókot. A "Overview" lapon válassza a "Delete"](./media/logic-apps-enterprise-integration-create-integration-account/delete-integration-account.png)
+   ![Válassza ki az integrációs fiókban. A "Áttekintés" lapon válassza a "Delete"](./media/logic-apps-enterprise-integration-create-integration-account/delete-integration-account.png)
 
-3. Győződjön meg arról, hogy szeretné-e az integráció fiók törlése, válassza a **Igen**.
+3. Győződjön meg arról, hogy szeretné-e az integrációs fiók törlése, válassza a **Igen**.
 
-   !["Yes" Válasszon törlésének megerősítése](./media/logic-apps-enterprise-integration-create-integration-account/confirm-delete.png)
+   ![A törlés jóváhagyásához, válassza az "Igen"](./media/logic-apps-enterprise-integration-create-integration-account/confirm-delete.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Kereskedelmi partnereknek létrehozása](../logic-apps/logic-apps-enterprise-integration-partners.md)
-* [Hozza létre az egyezményeket](../logic-apps/logic-apps-enterprise-integration-agreements.md)
+* [Kereskedelmi partnerek létrehozása](../logic-apps/logic-apps-enterprise-integration-partners.md)
+* [Szerződések létrehozása](../logic-apps/logic-apps-enterprise-integration-agreements.md)

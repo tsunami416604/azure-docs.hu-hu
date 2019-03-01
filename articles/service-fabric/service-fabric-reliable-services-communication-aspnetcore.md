@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 10/12/2018
 ms.author: vturecek
-ms.openlocfilehash: 71d5b0e8156710e2f82ac76d3187ba1ddba46936
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c941a9adb552bcd0a02e22b23970717f82c0308f
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55151090"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57009936"
 ---
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>ASP.NET Core a Service Fabric Reliable Services
 
@@ -333,6 +333,123 @@ new KestrelCommunicationListener(serviceContext, (url, listener) => ...
 ```
 
 Ebben a konfigurációban `KestrelCommunicationListener` automatikusan választja ki egy nem használt portot az alkalmazás porttartományából.
+
+## <a name="service-fabric-configuration-provider"></a>Service Fabric Konfigurációszolgáltató
+Az ASP.NET Core alkalmazás konfigurációja alapján állítja be a konfigurációszolgáltatók, olvassa el a kulcs-érték párok [konfiguráció az ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/) további on általános ASP.NET Core konfigurációs támogatási megértéséhez.
+
+Ez a szakasz ismerteti a Service Fabric Konfigurációszolgáltatót kell integrálása az ASP.NET Core konfigurációs importálásával a `Microsoft.ServiceFabric.AspNetCore.Configuration` NuGet-csomagot.
+
+### <a name="addservicefabricconfiguration-startup-extensions"></a>AddServiceFabricConfiguration indítási bővítmények
+Importálás után `Microsoft.ServiceFabric.AspNetCore.Configuration` NuGet-csomagjára, regisztrálnia kell a Service Fabric konfiguráció forrása az ASP.NET Core-konfigurációjának API **AddServiceFabricConfiguration** bővítményei `Microsoft.ServiceFabric.AspNetCore.Configuration` névtér ellen `IConfigurationBuilder`
+
+```csharp
+using Microsoft.ServiceFabric.AspNetCore.Configuration;
+
+public Startup(IHostingEnvironment env)
+{
+    var builder = new ConfigurationBuilder()
+        .SetBasePath(env.ContentRootPath)
+        .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+        .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+        .AddServiceFabricConfiguration() // Add Service Fabric configuration settings.
+        .AddEnvironmentVariables();
+    Configuration = builder.Build();
+}
+
+public IConfigurationRoot Configuration { get; }
+```
+
+Most már az ASP.NET Core-szolgáltatás is elérhető a Service Fabric konfigurációs beállítások, csakúgy, mint bármely más nastavení aplikace. A beállítások minta használatával például típusos objektumokba betölteni a beállításokat.
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.Configure<MyOptions>(Configuration);  // Strongly typed configuration object.
+    services.AddMvc();
+}
+```
+### <a name="default-key-mapping"></a>Alapértelmezett kulcsa leképezése
+Alapértelmezés szerint a Service Fabric szabásra szolgáltató tartalmazza csomag neve, a szakasz nevét és a tulajdonságnév képez az asp.net core konfigurációs kulcsát a következő függvény használatával:
+```csharp
+$"{this.PackageName}{ConfigurationPath.KeyDelimiter}{section.Name}{ConfigurationPath.KeyDelimiter}{property.Name}"
+```
+
+Például, ha egy konfigurációs csomagok nevű `MyConfigPackage` az alábbi tartalmat, majd a konfigurációs érték elérhető lesz az ASP.NET Core `IConfiguration` kulccsal *MyConfigPackage:MyConfigSection:MyParameter*
+```xml
+<?xml version="1.0" encoding="utf-8" ?>
+<Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">  
+  <Section Name="MyConfigSection">
+    <Parameter Name="MyParameter" Value="Value1" />
+  </Section>  
+</Settings>
+```
+### <a name="service-fabric-configuration-options"></a>Service Fabric-konfigurációs beállítások
+Service Fabric Konfigurációszolgáltató is támogatja a `ServiceFabricConfigurationOptions` módosíthatja a kulcs leképezés alapértelmezett viselkedését.
+
+#### <a name="encrypted-settings"></a>Titkosított beállításai
+A Service Fabric támogatja a beállítások titkosítására, Service Fabric Konfigurációszolgáltató ez is támogatja. Kövesse a biztonságos alapértelmezett alapelvet, az ASP.NET Core alapértelmezés szerint a titkosított beállításai are't descrypted által `IConfiguration`, a titkosított érték ott tárolt helyette. Azonban ha azt szeretné, visszafejteni az értéket tárolja az ASP.NET Core IConfiguration beállíthat DecryptValue jelző false értékűre `AddServiceFabricConfiguration` bővítményeket az alábbiak szerint:
+
+```csharp
+public Startup()
+{
+    ICodePackageActivationContext activationContext = FabricRuntime.GetActivationContext();
+    var builder = new ConfigurationBuilder()        
+        .AddServiceFabricConfiguration(activationContext, (options) => options.DecryptValue = true); // set flag to decrypt the value
+    Configuration = builder.Build();
+}
+```
+#### <a name="multiple-configuration-packages"></a>Több konfigurációs csomag
+Service Fabric támogatja a több konfigurációs csomagokat. Alapértelmezés szerint a csomag neve szerepel a konfigurációs kulcs. Sikerült beállítani a `IncludePackageName` jelzőt az alapértelmezett viselkedés módosításához.
+```csharp
+public Startup()
+{
+    ICodePackageActivationContext activationContext = FabricRuntime.GetActivationContext();
+    var builder = new ConfigurationBuilder()        
+        // exclude package name from key.
+        .AddServiceFabricConfiguration(activationContext, (options) => options.IncludePackageName = false); 
+    Configuration = builder.Build();
+}
+```
+#### <a name="custom-key-mapping-value-extraction-and-data-population"></a>Egyéni kulcs leképezés értékének kinyerése és adatokkal való feltöltés
+Módosításokon kívül a fenti 2 jelzők az alapértelmezett viselkedés módosításához, is támogatja a Service Fabric-Konfigurációszolgáltató speciális forgatókönyvek az egyéni keresztül a fő leképezés `ExtractKeyFunc` és az egyéni bontsa ki az értékek keresztül `ExtractValueFunc`. Ezt akkor is módosíthatja a teljes folyamat az ASP.NET Core konfigurációs keresztül a Service Fabric-konfigurációs adatok feltöltéséhez `ConfigAction`.
+
+Az alábbi példák bemutatják, használandó `ConfigAction` szabhatja testre az adatokkal való feltöltés.
+```csharp
+public Startup()
+{
+    ICodePackageActivationContext activationContext = FabricRuntime.GetActivationContext();
+    
+    this.valueCount = 0;
+    this.sectionCount = 0;
+    var builder = new ConfigurationBuilder();
+    builder.AddServiceFabricConfiguration(activationContext, (options) =>
+        {
+            options.ConfigAction = (package, configData) =>
+            {
+                ILogger logger = new ConsoleLogger("Test", null, false);
+                logger.LogInformation($"Config Update for package {package.Path} started");
+
+                foreach (var section in package.Settings.Sections)
+                {
+                    this.sectionCount++;
+
+                    foreach (var param in section.Parameters)
+                    {
+                        configData[options.ExtractKeyFunc(section, param)] = options.ExtractValueFunc(section, param);
+                        this.valueCount++;
+                    }
+                }
+
+                logger.LogInformation($"Config Update for package {package.Path} finished");
+            };
+        });
+  Configuration = builder.Build();
+}
+```
+### <a name="configuration-update"></a>Configuration Update
+Service Fabric Konfigurációszolgáltatót a konfigurációjának frissítése is támogatja, és használhatja az ASP.NET Core `IOptionsMonitor` módosítási értesítések fogadásához és `IOptionsSnapshot` frissítse a konfigurációs adatokat. További információkért lásd: [ASP.NET Core beállítások](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options).
+
+Ez alapértelmezés szerint támogatott, és a kódolás további konfigurációs frissítés engedélyezéséhez szükségesek.
 
 ## <a name="scenarios-and-configurations"></a>A forgatókönyvek és konfigurációk
 Ez a szakasz ismerteti a következő esetekben, és biztosítja a webalkalmazás-kiszolgáló, port konfigurációja, a Service Fabric-integráció beállításai és egyéb beállítások egy megfelelően működő szolgáltatás elérése érdekében ajánlott kombinációja:

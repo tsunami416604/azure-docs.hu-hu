@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apimpm
-ms.openlocfilehash: 21175e74bd40d0d4aeaf1c0a1e677f1c8113e80a
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 9a2cf35203c673d6296754360ac4f794241d4c43
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738011"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008678"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Belső virtuális hálózathoz az Azure API Management szolgáltatás használatával
 Azure virtuális hálózatokkal az Azure API Management API-k nem érhető el az interneten is kezelheti. Számos VPN technológia érhetők el a kapcsolatot. Az API Management egy virtuális hálózaton belül két fő módban telepíthető:
@@ -74,7 +74,7 @@ Virtuális hálózati kapcsolat a PowerShell-parancsmagok használatával is eng
 
 * Hozzon létre egy virtuális hálózaton belül egy API Management-szolgáltatás: A parancsmag [New-AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) egy virtuális hálózaton belül az Azure API Management szolgáltatás létrehozása és konfigurálása, hogy a belső virtuális hálózat típusát.
 
-* Egy virtuális hálózaton belül egy meglévő API Management szolgáltatás üzembe helyezése: A parancsmag [Update-AzApiManagementDeployment](/powershell/module/az.apimanagement/update-azapimanagementdeployment) áthelyezése egy meglévő API Management szolgáltatást egy virtuális hálózaton belül, és konfigurálja úgy, hogy használja a belső virtuális hálózathoz.
+* Frissítse a meglévő környezet egy API Management szolgáltatás egy virtuális hálózaton belül: A parancsmag [Update-AzApiManagementRegion](/powershell/module/az.apimanagement/update-azapimanagementregion) áthelyezése egy meglévő API Management szolgáltatást egy virtuális hálózaton belül, és konfigurálja úgy, hogy használja a belső virtuális hálózathoz.
 
 ## <a name="apim-dns-configuration"></a>DNS-konfiguráció
 Ha az API Management a külső virtuális hálózat módban van, a DNS-ben az Azure felügyeli. Belső virtuális hálózathoz a módban kell kezelni a saját útválasztás.

@@ -1,5 +1,5 @@
 ---
-title: .NET Core és a VS Code használatával több függő szolgáltatásokat futtató |} A Microsoft Docs
+title: .NET Core és a VS Code használatával több függő szolgáltatás fut.
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -9,13 +9,13 @@ ms.author: stevenry
 ms.date: 11/21/2018
 ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
-ms.openlocfilehash: 39c9d2f938dd3e06a328626756ddcc80d0aad47b
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+keywords: 'Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s '
+ms.openlocfilehash: a615f11033c173fd7e88e05f115c909f455ccc25
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821234"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192097"
 ---
 # <a name="multi-service-development-with-azure-dev-spaces"></a>Az Azure fejlesztési tárolóhelyek több szolgáltatásos fejlesztői
 

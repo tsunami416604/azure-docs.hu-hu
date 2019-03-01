@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: e62a792e7503e65ebe008a52430f86f1f3a00006
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f04b4dd473f98889b895fa3536c652fb6e3eb01a
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456017"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990799"
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>Gépek csoportosítása a gépek függőségi leképezés használatával
 
@@ -21,7 +21,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy csoportot a gépek [Azure Migrate]
 > A függőségek képi megjelenítésének funkcióival nem érhető el az Azure Government szolgáltatásban.
 
 ## <a name="prepare-for-dependency-visualization"></a>Előkészítéséhez a függőségek képi megjelenítése
-Az Azure Migrate a Log Analytics engedélyezése a függőségek vizualizációjához a Service Map megoldást használja.
+Az Azure Migrate a Service Map megoldását az Azure Monitor naplóira függőségek vizualizációjához engedélyezéséhez használja.
 
 ### <a name="associate-a-log-analytics-workspace"></a>Log Analytics-munkaterület társítása
 Kihasználhatja a függőségek képi megjelenítésével, hozzá kell rendelni egy Log Analytics-munkaterületet, vagy új vagy meglévő, az Azure Migrate-projektet. Csak létrehozása vagy csatolása ugyanahhoz az előfizetéshez egy munkaterületet, ahol a migrálási projekt létrejön.
@@ -106,7 +106,7 @@ További információ a függőségi ügynök támogatása a [Windows](../azure-
 4. Tekintse függőségek másik időpontot időtartamok az az időtartam, az az idő tartománycímke kattintva. Alapértelmezés szerint a tartománya egy órán keresztül. Módosíthatja az időtartományt, vagy adja meg a kezdő és záró dátumát, és időtartama.
 
     > [!NOTE]
-      A függőségek képi megjelenítéséről felhasználói felület jelenleg nem támogatja egy óránál hosszabb időtartomány kiválasztását. A Log Analytics használatához [a függőségi adatok lekérdezése](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics) hosszabb ideig keresztül.
+      A függőségek képi megjelenítéséről felhasználói felület jelenleg nem támogatja egy óránál hosszabb időtartomány kiválasztását. Naplók használata az Azure Monitor [a függőségi adatok lekérdezése](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics) hosszabb ideig keresztül.
 
 5. Miután csoportba a kívánt függő gép azonosítása, használatával Ctrl + kattintás jelölje ki több gépet a térképen, és kattintson a **gépeket**.
 6. Adjon meg egy csoportnevet. Győződjön meg arról, hogy a függő gépek Azure Migrate által felderített.
@@ -119,19 +119,19 @@ További információ a függőségi ügynök támogatása a [Windows](../azure-
 
 A csoport létrehozása után ajánlott ügynökök telepítése a csoport összes gépen, és a csoportok pontosításához függőséget, a teljes csoport vizualizációjával.
 
-## <a name="query-dependency-data-from-log-analytics"></a>A Log Analytics függőségi adatok lekérdezése
+## <a name="query-dependency-data-from-azure-monitor-logs"></a>Az Azure Monitor naplóira függőségi adatait
 
-A Service Map által rögzített függőségi adatokat érhető el a lekérdezés a Log Analytics-munkaterülethez társítva az Azure Migrate-projekt. [További](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) kapcsolatban a Service Map adattáblák a Log Analytics-lekérdezést. 
+A Service Map által rögzített függőségi adatokat érhető el a lekérdezés a Log Analytics-munkaterülethez társítva az Azure Migrate-projekt. [További](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records) kapcsolatban a Service Map adattáblák lekérdezése az Azure monitorban naplózza. 
 
-A Log Analytics-lekérdezések futtatása:
+A Kusto-lekérdezések futtatása:
 
 1. Miután telepítette az ügynököket, nyissa meg a portálon, majd kattintson **áttekintése**.
 2. A **áttekintése**, lépjen a **Essentials** szakaszában a projektet, majd kattintson a munkaterület neve melletti megadva **OMS-munkaterület**.
 3. A Log Analytics munkaterület oldalán kattintson a **általános** > **naplók**.
-4. A Log Analytics használatával információkat gyűjthet dependency lekérdezés írása. Mintalekérdezések információkat gyűjthet dependency érhetők el [Itt](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches).
+4. Az Azure Monitor-naplók használatával információkat gyűjthet dependency lekérdezés írása. Mintalekérdezések információkat gyűjthet dependency érhetők el [Itt](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches).
 5. A lekérdezés futtatásához kattintson a Futtatás. 
 
-[További](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) Log Analytics-lekérdezések írásával kapcsolatban. 
+[További](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal) Kusto-lekérdezések írásával kapcsolatban. 
 
 ## <a name="next-steps"></a>További lépések
 

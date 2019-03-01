@@ -1,18 +1,19 @@
 ---
 title: Fájlfeltöltés konfigurálása az Azure PowerShell használatával |} A Microsoft Docs
 description: Hogyan állítsa be IoT hubját fájl engedélyezése az Azure PowerShell-parancsmagok használatával feltölti a csatlakoztatott eszközökről. A cél az Azure storage-fiók konfigurálásával kapcsolatos információkat tartalmaz.
-author: dominicbetts
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.author: dobett
-ms.openlocfilehash: 7d63cc4e57ba3c1b962c893bf8c8bd03664dac6f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.author: robin.shahan
+ms.openlocfilehash: 9754fe2bedae9c1eaf6b18614014485dbe8051f2
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729254"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010477"
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>Konfigurálja az IoT Hub fájlfeltöltések PowerShell-lel
 

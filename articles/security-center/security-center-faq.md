@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/19/2019
+ms.date: 02/25/2019
 ms.author: monhaber
-ms.openlocfilehash: 6696935cf23fa7286f23ae9b7d0e8a278e31403d
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 5fd885acc4294ae9f370d3becd0ad8cfb7935193
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652662"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992362"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Security Center – gyakori kérdések
 Ez a GYIK az Azure Security Center egy szolgáltatás, amellyel megelőzését, észlelését és háríthatja el a fenyegetéseket átláthatóbbá és a Microsoft Azure-erőforrások kézben kapcsolatos kérdésekre ad választ.
@@ -275,7 +275,7 @@ Az Azure Security Center automatikusan gyűjti, elemzi és biztosítók az Azure
 * Virtuális gépek elleni, a teljes kipróbálás módszerén alapuló támadások
 * Integrált partneri biztonsági megoldások, például a kártevő- vagy webalkalmazás-tűzfalak biztonsági riasztásai
 
-### <a name="why-did-secure-scores-values-change"></a>Miért volt biztonságos pontszámok módosítása?
+### Miért volt biztonságos pontszámok módosítása? <a name="secure-score-faq"></a>
 A Security Center kezdődően a 2019. február beállítani, néhány javaslatokat, annak érdekében, hogy jobban illeszkedjen a súlyosságuk a pontszámot. Ezt a beállítást, miatt előfordulhat, átfogó módosítások biztonságos pontszám értékeket.  Biztonságos pontszám kapcsolatos további információkért lásd: [biztonságos pontszám számítási](security-center-secure-score.md).
 
 ### <a name="whats-the-difference-between-threats-detected-and-alerted-on-by-microsoft-security-response-center-versus-azure-security-center"></a>Mi a különbség a fenyegetéseket észlelt, és kapni a Microsoft Security Response Center és az Azure Security Center által?

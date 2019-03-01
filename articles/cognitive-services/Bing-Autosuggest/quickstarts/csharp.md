@@ -1,164 +1,96 @@
 ---
-title: 'Gyors útmutató: A Bing Autosuggest APIC#'
+title: 'Gyors útmutató: Javasoljuk, a Bing automatikus kiegészítés REST API-val keresési lekérdezések ésC#'
 titlesuffix: Azure Cognitive Services
-description: Információk és kódminták segítségével ismerkedhet meg a Bing Autosuggest API használatának első lépéseivel.
+description: Ismerje meg, hogy gyorsan a keresési kifejezéseket javasol a Bing Autosuggest API valós időben.
 services: cognitive-services
-author: v-jaswel
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
-ms.date: 09/14/2017
-ms.author: v-jaswel
-ms.openlocfilehash: 331b7f3cffa07003908cd339adf9dbea2a4593e0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/20/2019
+ms.author: aahi
+ms.openlocfilehash: 2ef0233898836dc35eb6bdedab4caba16cf8c752
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878214"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011024"
 ---
-# <a name="quickstart-for-bing-autosuggest-api-with-c"></a>Rövid útmutató a Bing Autosuggest API és a C# használatához
+# <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-c"></a>Gyors útmutató: Javasoljuk, a Bing automatikus kiegészítés REST API-val keresési lekérdezések ésC#
 
-Ez a cikk bemutatja, hogyan használható a [a Bing Autosuggest API](https://azure.microsoft.com/services/cognitive-services/autosuggest/) a C#. A Bing Autosuggest API visszaadja a javasolt lekérdezések egy listáját a felhasználó által a keresőmezőben megadott részleges lekérdezési sztring alapján. Általában ezt az API-t hívja meg minden alkalommal, amikor egy felhasználó beír egy új karaktert a keresőmezőbe, majd megjelenít javaslatokat a keresőmező legördülő listájában. Ez a cikk azt mutatja be, hogyan küldhet olyan kérést, amely a *sail* (vitorlázás) kifejezésre visszaadja a javasolt lekérdezési sztringeket.
+Ez a rövid útmutató elindításához, így a Bing Autosuggest API és a JSON-válasz első meghívja használja. Ez egyszerű C# alkalmazás részleges keresési lekérdezést küld az API-t, és keresések javaslatokat ad vissza. Bár ez az alkalmazás C# nyelven lett íródott, az API egy RESTful-webszolgáltatás, azaz kompatibilis a legtöbb programnyelvvel. A minta forráskódja a [GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingAutosuggestv7.cs) érhető el.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A kód Windowson történő futtatásához [Visual Studio 2017](https://www.visualstudio.com/downloads/) szükséges. (Az ingyenes Community Edition is elegendő.)
+* A [Visual Studio 2017](https://www.visualstudio.com/downloads/) bármely kiadása.
+* Linux/MacOS rendszer esetében az alkalmazás a [Monóval](http://www.mono-project.com/) futtatható.
 
-Rendelkeznie kell egy, a **Bing Autosuggest API 7-es verzióját** tartalmazó [Cognitive Services API-fiókkal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account). Az [ingyenes próbaverzió](https://azure.microsoft.com/try/cognitive-services/#search) elegendő ehhez a rövid útmutatóhoz. Szüksége lesz az ingyenes próbaverzió aktiválásakor kapott hozzáférési kulcsra, vagy beszerezhet egy fizetős előfizetői azonosítót az Azure-irányítópultról.
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
 
-## <a name="get-autosuggest-results"></a>Automatikus kiegészítési eredmények lekérése
+## <a name="create-a-visual-search-solution"></a>Hozzon létre egy Visual Search-megoldását
 
-1. Hozzon létre egy új C#-projektet a kedvenc IDE-jében.
-2. Adja hozzá az alábbi kódot.
-3. A `subscriptionKey` értéket cserélje le az előfizetéshez érvényes hozzáférési kulcsra.
-4. Futtassa a programot.
+1. Hozzon létre egy új konzol megoldást a Visual Studióban. Ezután adja hozzá a következő névtereket a fő kódfájlhoz.
 
-```csharp
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
+    ```csharp
+    using System;
+    using System.Collections.Generic;
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Text;
+    ```
 
-namespace AutosuggestSample1
-{
-    class Program
+2. Egy új osztályt, hozzon létre az API-gazdát és az elérési út, változók [kód piaci](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#market-codes), és a egy részleges keresési lekérdezést.
+
+    ```csharp
+    static string host = "https://api.cognitive.microsoft.com";
+    static string path = "/bing/v7.0/Suggestions";
+    static string market = "en-US";
+    static string key = "your-api-key";
+    
+    static string query = "sail";
+    ```
+
+
+## <a name="create-and-send-an-api-request"></a>Hozzon létre, és a egy API-kérelem küldése
+
+1. Hozzon létre egy függvényt, nevű `Autosuggest()` egy kérést küldhet az API-t. Hozzon létre egy új `HttpClient()`, és adja hozzá az előfizetési kulcs, a `Ocp-Apim-Subscription-Key` fejléc.
+
+    ```csharp
+    async static void Autosuggest()
     {
-        static string host = "https://api.cognitive.microsoft.com";
-        static string path = "/bing/v7.0/Suggestions";
-
-        // For a list of available markets, go to:
-        // https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#market-codes
-        static string market = "en-US";
-
-        // NOTE: Replace this example key with a valid subscription key.
-                static string key = "INSERT API KEY";
-
-        static string query = "sail";
-
-        // These properties are used for optional headers (see below).
-        // static string ClientId = "<Client ID from Previous Response Goes Here>";
-        // static string ClientIp = "999.999.999.999";
-        // static string ClientLocation = "+90.0000000000000;long: 00.0000000000000;re:100.000000000000";
-
-        async static void Autosuggest()
-        {
-            HttpClient client = new HttpClient();
-            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
-
-            // The following headers are optional, but it is recommended they be treated as required.
-            // These headers help the service return more accurate results.
-            //client.DefaultRequestHeaders.Add("X-Search-Location", ClientLocation);
-            //client.DefaultRequestHeaders.Add("X-MSEdge-ClientID", ClientId);
-            //client.DefaultRequestHeaders.Add("X-MSEdge-ClientIP", ClientIp);
-
-            string uri = host + path + "?mkt=" + market + "&query=" + System.Net.WebUtility.UrlEncode (query);
-
-            HttpResponseMessage response = await client.GetAsync(uri);
-
-            string contentString = await response.Content.ReadAsStringAsync();
-            Console.WriteLine(JsonPrettyPrint(contentString));
-        }
-
-        static void Main(string[] args)
-        {
-            Autosuggest();
-            Console.ReadLine();
-        }
-
-        static string JsonPrettyPrint(string json)
-        {
-            if (string.IsNullOrEmpty(json)) {
-                return string.Empty;
-            }
-
-            json = json.Replace(Environment.NewLine, "").Replace("\t", "");
-
-            StringBuilder sb = new StringBuilder();
-            bool quote = false;
-            bool ignore = false;
-            char last = ' ';
-            int offset = 0;
-            int indentLength = 3;
-
-            foreach (char ch in json)
-            {
-                switch (ch)
-                {
-                    case '"':
-                        if (!ignore) quote = !quote;
-                        break;
-                    case '\\':
-                        if (quote && last != '\\') ignore = true;
-                        break;
-                }
-
-                if (quote)
-                {
-                    sb.Append(ch);
-                    if (last == '\\' && ignore) ignore = false;
-                }
-                else
-                {
-                    switch (ch)
-                    {
-                        case '{':
-                        case '[':
-                            sb.Append(ch);
-                            sb.Append(Environment.NewLine);
-                            sb.Append(new string(' ', ++offset * indentLength));
-                            break;
-                        case '}':
-                        case ']':
-                            sb.Append(Environment.NewLine);
-                            sb.Append(new string(' ', --offset * indentLength));
-                            sb.Append(ch);
-                            break;
-                        case ',':
-                            sb.Append(ch);
-                            sb.Append(Environment.NewLine);
-                            sb.Append(new string(' ', offset * indentLength));
-                            break;
-                        case ':':
-                            sb.Append(ch);
-                            sb.Append(' ');
-                            break;
-                        default:
-                            if (quote || ch != ' ') sb.Append(ch);
-                            break;
-                    }
-                }
-                last = ch;
-            }
-
-            return sb.ToString().Trim();
-        }
+        HttpClient client = new HttpClient();
+        client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", key);
+        //..
     }
-}
-```
+    ```
 
-### <a name="response"></a>Válasz
+2. Ugyanannak a függvénynek a fenti az API-gazdát és az elérési út kombinálásával a kérelem URI-t létrehozni. A piac hozzáfűzése a `?mkt=` paraméterhez, és a lekérdezés a `&query=` paramétere. Ügyeljen arra, hogy az URL-kódolása a lekérdezést. 
+
+    ```csharp
+    string uri = host + path + "?mkt=" + market + "&query=" + System.Net.WebUtility.UrlEncode (query);
+    ```
+
+3. A kérés küldése a fent össze az URI-t, és a válasz.
+
+    ```csharp
+    HttpResponseMessage response = await client.GetAsync(uri);
+
+    string contentString = await response.Content.ReadAsStringAsync();
+    Console.WriteLine(contentString);
+    ```
+
+4. A program, a fő metódus hívása `Autosuggest()`.
+
+    ```csharp
+    static void Main(string[] args)
+    {
+        Autosuggest();
+        Console.ReadLine();
+    }
+    ```
+
+## <a name="example-json-response"></a>Példa JSON-válasz
 
 A rendszer JSON formátumban ad vissza egy sikeres választ a következő példában látható módon: 
 

@@ -1,6 +1,6 @@
 ---
-title: A Log Analytics – Azure Logic Apps B2B-üzenetek monitorozása |} A Microsoft Docs
-description: Figyelheti az AS2, X 12 és EDIFACT-üzenetek az integrációs fiókok és az Azure Logic Apps és a diagnosztikai naplózás az Azure Log Analytics beállítása
+title: Az Azure Monitor naplóira – Azure Logic Apps B2B-üzenetek monitorozása |} A Microsoft Docs
+description: Figyelheti az AS2, X 12 és EDIFACT-üzenetek az integrációs fiókok és az Azure Logic Apps, és állítsa be a diagnosztikai naplózás az Azure Monitor naplóira
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,25 +9,27 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: e3d2b377df6a3ed8312ca8b2563fe466236c2741
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 12799a308157c3c0e19de1f82c0fe3df44fad37e
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818294"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195166"
 ---
-# <a name="monitor-b2b-messages-with-azure-log-analytics-in-azure-logic-apps"></a>Az Azure Log Analytics az Azure Logic Apps B2B-üzenetek monitorozása
+# <a name="monitor-b2b-messages-with-azure-monitor-logs-in-azure-logic-apps"></a>Az Azure Monitor-naplók az Azure Logic Apps B2B-üzenetek monitorozása
 
-Telepítése után B2B kommunikációt az integrációs fiókban lévő kereskedelmi partnerek között, ezek a partnerek is alkalmazásközi egymással. Ellenőrizze, hogy ezt a kommunikációt a várt módon működik, AS2, X12, figyelheti és EDIFACT üzeneteket, és állítsa be a diagnosztikai naplózás az integrációs fiók a [Azure Log Analytics](../log-analytics/log-analytics-overview.md). Ez a szolgáltatás figyeli a felhőbeli és helyszíni környezeteket, Súgó, a rendelkezésre állás és teljesítmény fenntartására és futásidejű részleteit, illetve gazdagabb hibakeresési eseményeket gyűjti. Más szolgáltatásokkal, például az Azure Storage és az Azure Event Hubs is használhatja ezeket az adatokat.
+Telepítése után B2B kommunikációt az integrációs fiókban lévő kereskedelmi partnerek között, ezek a partnerek is alkalmazásközi egymással. Ellenőrizze, hogy ezt a kommunikációt a várt módon működik, AS2, X12, figyelheti és EDIFACT üzeneteket, és állítsa be a diagnosztikai naplózás az integrációs fiók a [naplózza az Azure Monitor](../log-analytics/log-analytics-overview.md). Ez a szolgáltatás figyeli a felhőbeli és helyszíni környezeteket, Súgó, a rendelkezésre állás és teljesítmény fenntartására és futásidejű részleteit, illetve gazdagabb hibakeresési eseményeket gyűjti. Más szolgáltatásokkal, például az Azure Storage és az Azure Event Hubs is használhatja ezeket az adatokat.
 
 > [!NOTE]
 > Ezen a lapon lehet, hogy továbbra is hivatkoznak, a Microsoft Operations Management Suite (OMS), amely [kivonása a január 2019](../azure-monitor/platform/oms-portal-transition.md), de váltja fel ezeket a lépéseket az Azure Log Analytics, ahol csak lehetséges. 
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Egy logikai alkalmazást, amely a diagnosztikai naplózás be van állítva. Ismerje meg, [Logic Apps-alkalmazás létrehozása](quickstart-create-first-logic-app-workflow.md) és [a logikai alkalmazás naplózásának beállítása](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
-* Megfelel a fenti követelményeknek, miután egy Log Analytics-munkaterületet, amely figyelését és követését a Log Analytics segítségével B2B kommunikációt használ is szükséges. Ha nem rendelkezik a Log Analytics-munkaterületet, további [Log Analytics-munkaterület létrehozása](../azure-monitor/learn/quick-create-workspace.md).
+* Miután megfelel a fenti követelményeknek, Log Analytics-munkaterület, amelyek figyelését és követését a B2B-kommunikáció révén az Azure Monitor naplóira használhatók is szükséges. Ha nem rendelkezik a Log Analytics-munkaterületet, további [Log Analytics-munkaterület létrehozása](../azure-monitor/learn/quick-create-workspace.md).
 
 * A logikai alkalmazáshoz kapcsolódó integrációs fiókot. Ismerje meg, [egy integrációs fiók létrehozása a logikai alkalmazás mutató hivatkozást tartalmazó](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md).
 
@@ -71,9 +73,9 @@ Ha elkészült, válassza ki a **diagnosztikai beállítás hozzáadása**.
 
    Példa: 
 
-   ![Így naplóba elküldheti a diagnosztikai adatok Log Analytics beállítása](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
+   ![Állítsa be a Azure Monitor naplóira, így diagnosztikai adatokat tudjon továbbítani a napló](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
 
-1. Most már [állítsa be a Log Analytics a B2B-üzenetek nyomon követése](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+1. Most már [állítsa be az Azure Monitor naplóira a B2B-üzenetek nyomon követése](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
 <a name="azure-monitor-service"></a>
 
@@ -113,13 +115,13 @@ Ha elkészült, válassza ki a **diagnosztikai beállítás hozzáadása**.
 
    Példa: 
 
-   ![Így naplóba elküldheti a diagnosztikai adatok Log Analytics beállítása](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
+   ![Állítsa be a Azure Monitor naplóira, így diagnosztikai adatokat tudjon továbbítani a napló](media/logic-apps-monitor-b2b-message/send-diagnostics-data-log-analytics-workspace.png)
 
-1. Most már [állítsa be a Log Analytics a B2B-üzenetek nyomon követése](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+1. Most már [állítsa be az Azure Monitor naplóira a B2B-üzenetek nyomon követése](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
 ## <a name="use-diagnostic-data-with-other-services"></a>Diagnosztikai adatok felhasználhatók a más szolgáltatásokkal
 
-Az Azure Log Analytics, valamint bővítheti, hogyan használhatja a logikai alkalmazás diagnosztikai adatok Azure-szolgáltatásokat, például: 
+Az Azure Monitor naplóira, valamint bővítheti, hogyan használhatja a logikai alkalmazás diagnosztikai adatok Azure-szolgáltatásokat, például: 
 
 * [Azure Diagnostics-naplók az Azure Storage-archívum](../azure-monitor/platform/archive-diagnostic-logs.md)
 * [Stream Azure-beli diagnosztikai naplók az Azure Event hubs szolgáltatásba](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) 
@@ -144,6 +146,6 @@ Az Azure támogatja ezeket a schematypes, amelyek kijavítása kivéve az egyén
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure Log Analyticsben B2B üzenetek nyomon követése](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "követése B2B-üzeneteken alapuló az Azure Log Analyticsben")
+* [Az Azure Monitor naplóira B2B üzenetek nyomon követése](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "követése B2B-üzeneteken alapuló az Azure Monitor naplóira")
 * [További információ az Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md "megismerheti a vállalati integrációs csomag")
 

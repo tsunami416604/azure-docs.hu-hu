@@ -1,19 +1,19 @@
 ---
 title: Azure IoT Hub-feladatok ismertetése |} A Microsoft Docs
 description: Az IoT hub fejlesztői útmutató – több eszközön futtatandó feladatok ütemezése csatlakoztatva. Feladatok frissítheti a címkéket és kívánt tulajdonságok és több eszközön közvetlen metódusok meghívása.
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robin.shahan
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 10/09/2018
-ms.author: dobett
-ms.openlocfilehash: b9ad7a0e1947c9ca95b343a443688e976c306f95
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: c2b05b1854b4f1d7ee4ac65ebe635330ba8c604e
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884224"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011364"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Feladatok ütemezése több eszközön
 
@@ -119,22 +119,22 @@ Az alábbi lista a tulajdonságait, és a vonatkozó leírásokat, amely haszná
 | **startTime** |Alkalmazás a megadott kezdési idő (ISO-8601) a feladathoz. |
 | **endTime** |Az IoT Hub dátuma (ISO-8601) amikor a feladat befejeződött-e megadva. Csak azt követően a feladat eléri a "kész" állapot érvényes. |
 | **type** |Feladatok típusai: |
-| | **scheduledUpdateTwin**: egy feladatot, kívánt tulajdonságok vagy címkék frissítése. |
-| | **scheduledDeviceMethod**: ikereszközök különböző eszköz metódus meghívásához használt feladat. |
+| | **scheduledUpdateTwin**: Egy feladat, kívánt tulajdonságok vagy címkék frissítése. |
+| | **scheduledDeviceMethod**: Ikereszközök különböző eszköz metódus meghívásához használt feladat. |
 | **Állapot** |A feladat jelenlegi állapota. Lehetséges értékek a állapota: |
-| | **függőben lévő**: ütemezett és váró észlelnie kell a feladatokat végző szolgáltatás. |
-| | **ütemezett**: ütemezi későbbi időpontra. |
-| | **futó**: a jelenleg aktív feladat. |
-| | **meg lett szakítva**: feladat meg lett szakítva. |
-| | **nem sikerült**: a feladat nem sikerült. |
-| | **Befejezett**: feladat befejeződött. |
+| | **Függőben lévő**: Ütemezett és váró észlelnie kell a feladatokat végző szolgáltatás. |
+| | **Ütemezett**: Ütemezi későbbi időpontra. |
+| | **Futó**: A jelenleg aktív feladat. |
+| | **Meg lett szakítva**: Feladat meg lett szakítva. |
+| | **Nem sikerült**: Nem sikerült végrehajtani a feladatot. |
+| | **Befejezett**: Feladat befejeződött. |
 | **deviceJobStatistics** |A feladat-végrehajtási statisztikája. |
 | | **deviceJobStatistics** tulajdonságai: |
-| | **deviceJobStatistics.deviceCount**: a feladat lévő eszközök száma. |
-| | **deviceJobStatistics.failedCount**: Ha a feladat nem sikerült az eszközök száma. |
-| | **deviceJobStatistics.succeededCount**: készülékek, ahol a feladat sikeresen befejeződött. |
-| | **deviceJobStatistics.runningCount**: a feladat jelenleg futó eszközök számát. |
-| | **deviceJobStatistics.pendingCount**: a feladat futtatása függőben lévő eszközök száma. |
+| | **deviceJobStatistics.deviceCount**: A feladat eszközök száma. |
+| | **deviceJobStatistics.failedCount**: Ha a feladat nem sikerült eszközök száma. |
+| | **deviceJobStatistics.succeededCount**: Ha a feladat sikeres eszközök száma. |
+| | **deviceJobStatistics.runningCount**: A feladat jelenleg futó eszközök száma. |
+| | **deviceJobStatistics.pendingCount**: A feladat futtatása függőben lévő eszközök száma. |
 
 ### <a name="additional-reference-material"></a>További – referenciaanyag
 

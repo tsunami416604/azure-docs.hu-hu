@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: subsarma
-ms.openlocfilehash: 3825181d14605752e2407d9ffceb01d22c1bb710
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 9130fef895d4f9cd31f643b20a735c0e821923b8
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649339"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193993"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Erőforrások az Azure virtual networkök névfeloldása
 
@@ -157,7 +157,7 @@ Az Azure által biztosított névfeloldást használ, amikor Azure Dynamic Host 
 
 Szükség esetén a PowerShell vagy az API segítségével meghatározhatja a belső DNS-utótag:
 
-* Az Azure Resource Manager üzemi modellekben található virtuális hálózatok, az utótag keresztül érhető el a [REST API-t hálózati adapter](/rest/api/virtualnetwork/networkinterfaces/get), a [Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) PowerShell-parancsmagot, és a [ az network nic show](/cli/azure/network/nic#az-network-nic-show) Azure CLI-parancsot.
+* Az Azure Resource Manager üzemi modellekben található virtuális hálózatok, az utótag keresztül érhető el a [REST API-t hálózati adapter](https://docs.microsoft.com/rest/api/virtualnetwork/networkinterfaces), a [Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) PowerShell-parancsmagot, és a [ az network nic show](/cli/azure/network/nic#az-network-nic-show) Azure CLI-parancsot.
 * A klasszikus üzemi modellel, az utótag keresztül érhető el a [első üzembe helyezési API](https://msdn.microsoft.com/library/azure/ee460804.aspx) hívás vagy a [Get-AzureVM-Debug](/powershell/module/servicemanagement/azure/get-azurevm) parancsmagot.
 
 Lekérdezések továbbítása az Azure-ba nem felel meg igényeinek, ha meg kell adnia a saját DNS-megoldást. A DNS-megoldást kell:

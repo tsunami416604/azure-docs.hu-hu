@@ -1,19 +1,19 @@
 ---
 title: Az Azure IoT Hub (.NET/.NET) feladatok ütemezéséhez |} A Microsoft Docs
 description: Hogyan lehet a több eszközre közvetlen metódus meghívása egy Azure IoT Hub-feladat ütemezése. Az Azure IoT eszközoldali SDK for .NET használatával valósítható meg a szimulált eszközalkalmazások és a egy service-alkalmazás a feladat futtatásához.
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/06/2018
-ms.author: dobett
-ms.openlocfilehash: 4089ee74b44bc17324c7cd33b1bbd734a651d75f
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.author: robin.shahan
+ms.openlocfilehash: b39d7d4af4c476778665e844f647beecf20e3d9f
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514808"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008882"
 ---
 # <a name="schedule-and-broadcast-jobs-netnet"></a>Feladatok ütemezése és kiküldése (.NET/.NET)
 
@@ -29,9 +29,9 @@ Egy feladat burkolja az alábbi műveletek egyikét, és nyomon követi a végre
 
 Az egyes képességek kapcsolatos további információkért lásd:
 
-* Ikereszköz és tulajdonságok: [ikereszközök – első lépések](iot-hub-csharp-csharp-twin-getstarted.md) és [oktatóanyag: eszköz-ikertulajdonságok használata](tutorial-device-twins.md)
+* Ikereszköz és tulajdonságok: [Ikereszközök – első lépések](iot-hub-csharp-csharp-twin-getstarted.md) és [oktatóanyag: Eszköz-ikertulajdonságok használata](tutorial-device-twins.md)
 
-* Közvetlen metódusok: [az IoT Hub fejlesztői útmutató – közvetlen metódusok](iot-hub-devguide-direct-methods.md) és [oktatóanyag: közvetlen metódusok használata](quickstart-control-device-dotnet.md)
+* Közvetlen metódusok: [Az IoT Hub fejlesztői útmutató – közvetlen metódusok](iot-hub-devguide-direct-methods.md) és [oktatóanyag: Közvetlen metódusok használata](quickstart-control-device-dotnet.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
@@ -291,6 +291,6 @@ Most már készen áll az alkalmazások futtatására.
 
 Ebben az oktatóanyagban egy feladat ütemezése és eszköz az ikereszköz tulajdonságok frissítése egy közvetlen metódus használt.
 
-A folytatáshoz, a vezeték nélküli belső vezérlőprogram frissítésének keresztül Ismerkedés az IoT Hub és az eszközfelügyeleti minták például távolról, olvassa el a [oktatóanyag: hogyan belső vezérlőprogram frissítése](tutorial-firmware-update.md).
+A folytatáshoz, a vezeték nélküli belső vezérlőprogram frissítésének keresztül Ismerkedés az IoT Hub és az eszközfelügyeleti minták például távolról, olvassa el a [oktatóanyag: Belső vezérlőprogram frissítése annak](tutorial-firmware-update.md).
 
 Edge-eszközök mesterséges Intelligencia telepítése az Azure IoT Edge szolgáltatással kapcsolatos további információkért lásd: [Ismerkedés az IoT Edge szolgáltatással](../iot-edge/tutorial-simulate-device-linux.md).

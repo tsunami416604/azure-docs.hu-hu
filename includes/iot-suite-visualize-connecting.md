@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 5bb2db84a21efb9c8bffb345e05e17d99b866fe9
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 9b9e28f18208674609d0842b0e3a54e3fc661c9f
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56825602"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56988071"
 ---
 ## <a name="view-device-telemetry"></a>Eszköztelemetria megtekintése
 
@@ -33,7 +33,7 @@ Az eszközről küldött telemetriát is megtekintheti a **Device Explorer** old
 
 ## <a name="act-on-your-device"></a>Az eszköz cselekedhet
 
-Az eszközök metódusokat hívhat meg, használja a **Device Explorer** oldal a távoli figyelési megoldásban. Ha például a távoli figyelési megoldás a **hűtő** eszközök megvalósítása egy **FirmwareUpdate** metódus.
+Az eszközök metódusokat hívhat meg, használja a **Device Explorer** oldal a távoli figyelési megoldásban. Például a távoli figyelési megoldás a **hűtő** eszközök megvalósítani egy **újraindítás** metódust.
 
 1. Válasszon **eszközök** navigálhat a **Device Explorer** oldal a megoldásban.
 
@@ -41,20 +41,16 @@ Az eszközök metódusokat hívhat meg, használja a **Device Explorer** oldal a
 
     ![Válassza ki a valódi eszköz](media/iot-suite-visualize-connecting/devicesselect.png)
 
-1. A metódusok meghívása az eszközön listájának megjelenítéséhez válassza **feladatok**, majd **Run metódus**. Ütemezni a feladatot több eszközön futtassa, több eszközt is kijelölhet a listában. A **feladatok** panel megjeleníti a metódus típusú közös kiválasztott összes eszközre.
+1. A metódusok meghívása az eszközön listájának megjelenítéséhez válassza **feladatok**, majd **módszerek**. Ütemezni a feladatot több eszközön futtassa, több eszközt is kijelölhet a listában. A **feladatok** panel megjeleníti a metódus típusú közös kiválasztott összes eszközre.
 
-1. Válasszon **FirmwareUpdate**, állítsa a feladat nevet **UpdatePhysicalChiller**. Állítsa be **belső vezérlőprogram verziója** való **2.0.0-s**állítsa be **belső vezérlőprogram URI** való **http://contoso.com/updates/firmware.bin**, és válassza a **Alkalmaz**:
+1. Válassza a **újraindítás**, állítsa a feladat nevet **RebootPhysicalChiller** majd **alkalmaz**:
 
     ![A belső vezérlőprogram-frissítés ütemezése](media/iot-suite-visualize-connecting/deviceschedule.png)
 
 1. Üzenetek sorozatát eszköz kódja fut, amikor a szimulált eszközt a metódus kezeli a konzolon jeleníti meg.
 
-1. A frissítés befejeződése után megjelenik-e az új belső vezérlőprogram verziója a a **Device Explorer** oldalon:
-
-    ![A frissítés befejeződött](media/iot-suite-visualize-connecting/complete.png)
-
 > [!NOTE]
-> Válassza ki a megoldás a feladat állapotának nyomon követéséhez **nézet**.
+> Válassza ki a megoldás a feladat állapotának nyomon követéséhez **feladat állapotának megtekintése**.
 
 ## <a name="next-steps"></a>További lépések
 

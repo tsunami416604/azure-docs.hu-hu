@@ -4,7 +4,7 @@ description: " Az áttelepítés az Azure IaaS munkaterhelések számos lehetős
 services: security
 documentationcenter: na
 author: barclayn
-manager: barbkess
+manager: MBaldwin
 editor: TomSh
 ms.assetid: 02c5b7d2-a77f-4e7f-9a1e-40247c57e7e2
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: barclayn
-ms.openlocfilehash: 6bf73bcc691e2ab27f3ec379530a59d3b616a070
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: de89e0a30f39ba97379b4d55914338702aef5c32
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341216"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990408"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Ajánlott biztonsági eljárások IaaS számítási feladatokhoz az Azure-ban
 
@@ -39,7 +39,7 @@ Az ajánlott eljárások a vélemény konszenzus alapulnak, és dolgozhat az akt
 Az első lépés a virtuális gépek védelmére, győződjön meg arról, hogy csak jogosult felhasználók állítsa be új virtuális gépek és virtuális gépek hozzáférést.
 
 **Ajánlott eljárás**: Virtuálisgép-hozzáférés szabályozása.   
-**Részletes**: Használat [Azure házirendek](../governance/policy/overview.md) egyezmények az erőforrások létrehozásához a szervezetben, és létrehozzon testreszabott házirendeket. Ezek a szabályzatok alkalmazása erőforrások, például [erőforráscsoportok](../azure-resource-manager/resource-group-overview.md). Virtuális gépek egy erőforráscsoporthoz tartozó öröklik a rájuk vonatkozó szabályzatoknak.
+**Részletes**: Használat [Azure házirendek](../azure-policy/azure-policy-introduction.md) egyezmények az erőforrások létrehozásához a szervezetben, és létrehozzon testreszabott házirendeket. Ezek a szabályzatok alkalmazása erőforrások, például [erőforráscsoportok](../azure-resource-manager/resource-group-overview.md). Virtuális gépek egy erőforráscsoporthoz tartozó öröklik a rájuk vonatkozó szabályzatoknak.
 
 Ha a szervezet több előfizetéssel rendelkezik, szüksége lehet hatékonyan kezelheti a hozzáférést, a házirendek és a megfelelőségi ezen előfizetések esetében. [Az Azure felügyeleti csoportok](../azure-resource-manager/management-groups-overview.md) adja meg a fenti előfizetések hatókörének szintjét. Előfizetéseinek felügyeleti csoportokba való rendezésére (tárolók), és ezeket a csoportokat a szabályozási feltételek vonatkoznak. A felügyeleti csoporton belül az összes előfizetés automatikusan örökli a alkalmazni a csoport feltételeket. A felügyeleti csoportok nagy léptékű, nagyvállalati szintű felügyeletet tesznek lehetővé, függetlenül az előfizetése típusától.
 
@@ -153,10 +153,10 @@ Ajánlott eljárások az Azure Disk Encryption használatával a következők:
 **Részletes**: Az Azure Disk Encryption állít elő, és írja a titkosítási kulcsok a key vaultban. Az Azure AD-hitelesítés kezelése a titkosítási kulcsok a key vaultban lévő igényel. Hozzon létre egy Azure AD-alkalmazást erre a célra. Hitelesítési célra használhatja vagy titkos kulcs-alapú ügyfélhitelesítés vagy [az Azure AD ügyféltanúsítvány-alapú ügyfél-hitelesítés](../active-directory/active-directory-certificate-based-authentication-get-started.md).
 
 **Ajánlott eljárás**: A kulcstitkosítási kulcs-(KEK) használata egy további titkosítási kulcsok biztonsági réteget. Egy KEK hozzáadása a kulcstartóhoz.   
-**Részletes**: Használja a [Add-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultkey) parancsmaggal hozzon létre egy fő titkosítási kulcsot a key vaultban. A helyszíni hardveres biztonsági modul (HSM) a kulcskezeléshez is importálhat egy KEK. További információkért lásd: a [Key Vault-dokumentáció](../key-vault/key-vault-hsm-protected-keys.md). Amikor egy kulcsalapú titkosítás kulcsa van megadva, az Azure Disk Encryption a kulcs segítségével burkolhatja a titkosítási titkos kulcsait a Key Vault írása előtt. Ezt a kulcsot egy letéti másolatát tárolja egy helyszíni HSM kulcskezelés kulcsok a véletlen törlés elleni további védelmet nyújt.
+**Részletes**: Használja a [Add-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/add-azurekeyvaultkey) parancsmaggal hozzon létre egy fő titkosítási kulcsot a key vaultban. A helyszíni hardveres biztonsági modul (HSM) a kulcskezeléshez is importálhat egy KEK. További információkért lásd: a [Key Vault-dokumentáció](../key-vault/key-vault-hsm-protected-keys.md). Amikor egy kulcsalapú titkosítás kulcsa van megadva, az Azure Disk Encryption a kulcs segítségével burkolhatja a titkosítási titkos kulcsait a Key Vault írása előtt. Ezt a kulcsot egy letéti másolatát tárolja egy helyszíni HSM kulcskezelés kulcsok a véletlen törlés elleni további védelmet nyújt.
 
 **Ajánlott eljárás**: Igénybe vehet egy [pillanatkép](../virtual-machines/windows/snapshot-copy-managed-disk.md) és/vagy lemezek előtt biztonsági másolatot készíteni. Biztonsági másolatok adja meg a helyreállítási beállítást, ha a nem várt hiba történik a titkosítás során.   
-**Részletes**: A felügyelt lemezekkel rendelkező virtuális gépek biztonsági szükséges, a titkosítás előtt. Biztonsági másolat elkészítése után használhatja a **Set-azurermvmdiskencryptionextension parancs** parancsmag megadásával a felügyelt lemezek titkosítása a *- skipVmBackup* paraméter. Biztonsági mentése és visszaállítása titkosított virtuális gépek kapcsolatos további információkért lásd: a [Azure Backup](../backup/backup-azure-vms-encryption.md) cikk.
+**Részletes**: A felügyelt lemezekkel rendelkező virtuális gépek biztonsági szükséges, a titkosítás előtt. Biztonsági másolat elkészítése után használhatja a **Set-AzVMDiskEncryptionExtension** parancsmag megadásával a felügyelt lemezek titkosítása a *- skipVmBackup* paraméter. Biztonsági mentése és visszaállítása titkosított virtuális gépek kapcsolatos további információkért lásd: a [Azure Backup](../backup/backup-azure-vms-encryption.md) cikk.
 
 **Ajánlott eljárás**: Ahhoz, hogy a titkosítási titkos kulcsok nem adatbázisközi regionális határokat, az Azure Disk Encryption kell, a key vaultban, és a virtuális gépeket ugyanabban a régióban kell lenniük.   
 **Részletes**: Létrehozhat és használhat egy kulcstartót, amely ugyanabban a régióban, mint a virtuális gép titkosítását.

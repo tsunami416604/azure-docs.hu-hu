@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0df176185bde104a2beb34ea64d54e4069643f69
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d26cd97a248172955dcfcf2662424d1e782793bf
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190092"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192327"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Az Office 365-csoportok-elévülési szabályzatának konfigurálása
 
@@ -30,6 +30,8 @@ Ha egyszer már megadta egy csoport lejár:
 -   A csoport tulajdonosai értesítést kap a csoport megújítására, a lejárat megújítására
 -   Minden olyan csoportot, amely nem újítja meg törlődik.
 -   Minden Office 365-csoportot, hogy törölték a csoport tulajdonosai vagy a rendszergazda által állíthatók vissza 30 napon belül
+
+Jelenleg csak egy lejárati szabályzat konfigurálható egy bérlő Office 365-csoportjaihoz.
 
 > [!NOTE]
 > Konfigurálása és használata az elévülési szabályzat Office 365-csoportok igényel, hogy az aktuális Azure AD Premium licenccel rendelkezik, amely az elévülési szabályzat vonatkozik a csoportok összes tagja számára.
@@ -61,6 +63,10 @@ Engedélyek visszaállítani egy törölt csoport további információkért lá
   * Válassza ki, mely Office 365-csoportok lejár. Engedélyezheti a lejárat **összes** Office 365-csoportokat, ha szeretné, csak engedélyezi **kijelölt** Office 365-csoportokat, vagy válassza ki a **nincs**  letiltása az összes csoport lejárati.
   * Ha elkészült, válassza a beállítások mentéséhez **mentése**.
 
+> [!NOTE]
+> * Amikor először állítsa be a lejárat, minden olyan csoportok, amelyek régebbiek lejárati időközét 30 lejáratig hátralévő napok vannak állítva. Az első megújítási értesítő e-mail küldése egy napon belül. Például csoport 400 napja hozták létre, és a lejárati időközét 180 napra van állítva. Lejárati beállítások alkalmazásakor csoport rendelkezik törlése előtt 30 nappal, kivéve, ha a tulajdonos megújítja azt.
+> * Egy dinamikus csoport törlésekor és visszaállításakor a rendszer új csoportként kezeli azt, és újból feltölti a szabálynak megfelelően. A folyamat akár 24 órát is igénybe vehet.
+
 ## <a name="email-notifications"></a>E-mail-értesítések
 
 E-mail-értesítések, például a érkeznek az Office 365-csoportok tulajdonosainak 30 nap, 15 napon keresztül, és a csoport lejárata előtt 1 nap. Az e-mail nyelvét csoportok tulajdonosának előnyben részesített nyelvi vagy bérlői nyelvet határozza meg. Ha a csoport tulajdonosának előnyben részesített nyelvi definiálva van, vagy több tulajdonosoknak kell ugyanazt a kívánt nyelvet, az adott nyelvhez használja. Minden egyéb esetben a bérlő nyelvet használja.
@@ -77,11 +83,12 @@ A törléstől számított 30 napon belül tudja állítani a csoport kiválaszt
     
 Ha a csoportban van visszaállítása dokumentumokat, SharePoint-webhelyek vagy más állandó objektumok, teljes körűen visszaállítani a csoportot és annak tartalma akár 24 órát igénybe vehet.
 
+## <a name="how-to-retrieve-office-365-group-expiration-date"></a>Hogyan kérheti le az Office 365-csoport lejárati dátuma
+A Microsoft Graph REST API béta mellett a hozzáférési panelen, ahol a felhasználók megtekinthetik a csoport adatait, például a lejárat és utolsó megújított dátuma, Office 365-csoport lejárati dátuma lekérhetők. a Microsoft Graph béta expirationDateTime csoport tulajdonság engedélyezve van. Egy GET kéréssel lekérhetők. További részletekért tekintse meg [ebben a példában](https://docs.microsoft.com/en-us/graph/api/group-get?view=graph-rest-beta#example).
+
 > [!NOTE]
-> * Amikor először állítsa be a lejárat, minden olyan csoportok, amelyek régebbiek lejárati időközét 30 lejáratig hátralévő napok vannak állítva. Az első megújítási értesítő e-mail küldése egy napon belül. 
->   Például csoport 400 napja hozták létre, és a lejárati időközét 180 napra van állítva. Lejárati beállítások alkalmazásakor csoport rendelkezik törlése előtt 30 nappal, kivéve, ha a tulajdonos megújítja azt.
-> * Jelenleg csak egy lejárati szabályzat konfigurálható egy bérlő Office 365-csoportjaihoz.
-> * Egy dinamikus csoport törlésekor és visszaállításakor a rendszer új csoportként kezeli azt, és újból feltölti a szabálynak megfelelően. A folyamat akár 24 órát is igénybe vehet.
+> Annak érdekében, hogy kezelhetik a csoporttagságokat, a hozzáférési panelen, "Hozzáférés korlátozása a csoportok a hozzáférési Panel" kell, az Azure Active Directory csoportokat általános beállítást "nem" értékűre kell beállítani.
+
 
 ## <a name="how-office-365-group-expiration-works-with-a-mailbox-on-legal-hold"></a>Office 365-csoport lejárati működése egy postaláda jogi okokból történő megőrzést
 Egy csoport lejár, és törlik, majd 30 napig törlés után a csoporthoz tartozó adatokat az alkalmazásokból, például a Planner, helyek, vagy a csoportok véglegesen törölve lesz, de a csoport-postaládát jogi okokból történő megőrzést marad, és nem véglegesen törlődik. A rendszergazda az Exchange-parancsmagok használatával állítsa helyre a postaládát az adatok beolvasása. 

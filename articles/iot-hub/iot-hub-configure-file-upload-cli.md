@@ -1,18 +1,19 @@
 ---
 title: Az Azure CLI-vel az IoT Hub fájlfeltöltés konfigurálása |} A Microsoft Docs
 description: Konfigurálása fájlt tölt fel az Azure IoT hubba a platformfüggetlen Azure parancssori felületével.
-author: dominicbetts
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.author: dobett
-ms.openlocfilehash: 6cd0b657c8d0352c41e0da538396b166d633306a
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.author: robin.shahan
+ms.openlocfilehash: a77635b6c022527203d1df752723aac3ce2c296c
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42057566"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010786"
 ---
 # <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>Az IoT Hub Azure CLI-vel a fájlfeltöltések konfigurálása
 
@@ -88,15 +89,15 @@ Mostantól konfigurálhatja az IoT hub lehetővé [fájlok feltöltése az IoT h
 
 A konfigurációs van szükség a következő értékeket:
 
-* **A tároló**: az aktuális Azure-előfizetés társítása az IoT hub az Azure storage-fiókban lévő blobtárolóba. A szükséges tárolási fiók adatait az előző szakaszban lekért. Az IoT Hub automatikusan létrehozza az SAS URI-k eszközöket használja, ha azok a fájlok feltöltése a blob-tárolóba írási engedéllyel rendelkező.
+* **A tároló**: Az aktuális Azure-előfizetés társítása az IoT hub az Azure storage-fiókban lévő blobtárolóba. A szükséges tárolási fiók adatait az előző szakaszban lekért. Az IoT Hub automatikusan létrehozza az SAS URI-k eszközöket használja, ha azok a fájlok feltöltése a blob-tárolóba írási engedéllyel rendelkező.
 
-* **A feltöltött fájlokkra vonatkozó értesítések fogadása**: fájl feltöltése értesítések engedélyezése vagy letiltása.
+* **A feltöltött fájlokkra vonatkozó értesítések fogadása**: Értesítések engedélyezése vagy letiltása fájl feltöltése.
 
-* **SAS-élettartam**: Ez a beállítás akkor a time-to-live, az eszközt az IoT Hub által visszaadott SAS URI-azonosítókat. Alapértelmezés szerint egy óra beállítva.
+* **SAS-ÉLETTARTAM**: Ez a beállítás akkor a time-to-live, az eszközt az IoT Hub által visszaadott SAS URI-azonosítókat. Alapértelmezés szerint egy óra beállítva.
 
-* **Értesítési beállítások alapértelmezett TTL fájl**: A time-to-live-fájl feltöltése értesítési, mielőtt lejár. Alapértelmezés szerint egy nap beállítva.
+* **Értesítési beállítások alapértelmezett TTL fájl**: Értesítés a time-to-live-fájl feltöltése, mielőtt lejár. Alapértelmezés szerint egy nap beállítva.
 
-* **A fájl értesítési kézbesítések maximális száma**: hányszor az IoT Hub fájlt próbál meg feltölteni értesítés. Alapértelmezés szerint a 10-re állítva.
+* **A fájl értesítési kézbesítések maximális száma**: Az IoT Hub próbál fájlt hányszor értesítési töltse fel. Alapértelmezés szerint a 10-re állítva.
 
 A következő Azure CLI-parancsok használatával adja meg a fájl feltöltése beállításait az IoT hubnak:
 

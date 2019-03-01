@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 59271a96c5ad1a92483ca585fc30f1e9de0ed4f7
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: b2f08e811217572e09a254e9ab3306ab954b14b5
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608749"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57009684"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Gyakori kérdések az IoT-megoldásgyorsítók
 
@@ -71,9 +71,9 @@ A távoli figyelési megoldásgyorsító előző verziója néven volt ismert, a
 
 Igen, az új távoli megfigyelési érhető el az azonos földrajzi régióban.
 
-### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsuitecom"></a>Mi a különbség az Azure Portalon egy erőforráscsoport törlése és azureiotsuite.com megoldásgyorsítók a Törlés gombra való kattintás között?
+### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsolutionscom"></a>Mi a különbség egy erőforráscsoport, az Azure Portalon, és a megoldásgyorsítók azureiotsolutions.com a Törlés gombra való kattintás között?
 
-* Ha törli a megoldásgyorsító a [azureiotsuite.com](https://www.azureiotsolutions.com/), amikor létrehozta a megoldásgyorsító üzembe helyezett összes erőforrást törli. Ha további erőforrásokat adott az erőforráscsoporthoz, ezeket az erőforrásokat is törli.
+* Ha törli a megoldásgyorsító a [azureiotsolutions.com](https://www.azureiotsolutions.com/), amikor létrehozta a megoldásgyorsító üzembe helyezett összes erőforrást törli. Ha további erőforrásokat adott az erőforráscsoporthoz, ezeket az erőforrásokat is törli.
 * Ha törli az erőforráscsoportot a [az Azure portal](https://portal.azure.com), csak az adott erőforráscsoportban lévő erőforrásokat törli. Akkor is törölnie kell a megoldásgyorsító társított Azure Active Directory alkalmazással.
 
 ### <a name="can-i-continue-to-leverage-my-existing-investments-in-azure-iot-solution-accelerators"></a>Továbbra is fizethetek a meglévő befektetések felhasználása az Azure IoT-megoldásgyorsítók?

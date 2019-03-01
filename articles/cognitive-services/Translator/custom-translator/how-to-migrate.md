@@ -9,12 +9,12 @@ ms.subservice: custom-translator
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 21d4e8c3ea51da559ac1d576c1a076898136ded8
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 13d446f9f2aa651c766f250e551a97a97cf4d5d8
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727842"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195234"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Egyéni a fordítót Hub munkaterületet és projektek áttelepítése
 
@@ -27,7 +27,7 @@ Ezek a műveletek a migrálás során kell végrehajtani:
 * Bármikor, a BLEU pontszám átemelt képzés a modell a "Bleu pontszám MT hub" TrainingDetails lapján tekintheti meg a Hub fejléc.
 
 >[!Note]
->Sikeres képzéshez egyéni fordító szükséges minimális 10 000 kinyert mondatokat. Kevesebb számú kinyert mondatokat, mint a [javasolt minimális](sentence-alignment.md#suggested-minimum-number-of-extracted-and-aligned-sentences), egyéni a fordítót képzési nem végez.
+>Sikeres képzéshez egyéni fordító szükséges legalább 10 000 egyedi kinyert mondatokat. Egyéni a fordítót nem Előzményadat-betanítás a kevesebb kinyert mondatokat, mint a [javasolt minimális](sentence-alignment.md#suggested-minimum-number-of-extracted-and-aligned-sentences).
 
 ## <a name="enable-account-migration"></a>Fiókáttelepítés engedélyezése
 

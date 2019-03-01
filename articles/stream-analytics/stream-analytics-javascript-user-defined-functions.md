@@ -1,26 +1,22 @@
 ---
-title: 'Oktatóanyag: Az Azure Stream Analytics felhasználói JavaScript-függvényei | Microsoft Docs '
+title: 'Oktatóanyag: Az Azure Stream Analytics JavaScript felhasználó által definiált függvények |} A Microsoft Docs '
 description: A jelen oktatóanyagban összetett lekérdezési műveleteket fog végrehajtani felhasználói JavaScript-függvényekkel.
-keywords: javascript, felhasználói függvények, udf
 services: stream-analytics
 author: rodrigoamicrosoft
-manager: kfile
-ms.assetid: ''
+ms.author: rodrigoa
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc
 ms.date: 04/01/2018
-ms.workload: data-services
-ms.author: rodrigoa
-ms.openlocfilehash: e33b90d6f70bb1b765f5170ac37880d31e87f3a5
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ff8e61c53774429087ffe1a9137d40b155eb3f68
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53088877"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192275"
 ---
-# <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Oktatóanyag: Az Azure Stream Analytics felhasználói JavaScript-függvényei
+# <a name="tutorial-azure-stream-analytics-javascript-user-defined-functions"></a>Oktatóanyag: Az Azure Stream Analytics JavaScript felhasználó által definiált függvények
  
 Az Azure Stream Analytics támogatja a JavaScript nyelven írt felhasználói függvényeket. A JavaScript által biztosított **String**, **RegExp**, **Math**, **Array** és **Date** metódusok széles választékának köszönhetően könnyebben hozhatók létre összetett adatátalakítások Stream Analytics-feladatokkal.
 
@@ -50,12 +46,19 @@ Néhány dolog, amely nem hajtható végre felhasználói JavaScript-függvénye
 Jóllehet az olyan függvények, mint a **Date.GetDate()** vagy a **Math.random()** nincsenek blokkolva a függvénydefinícióban, kerülje a használatukat. Ezek a függvények **nem** minden alkalommal ugyanazt az eredményt adják vissza a meghívásukkor, az Azure Stream Analytics szolgáltatás pedig nem naplózza a függvények meghívását és a visszaadott eredményeket. Ha egy függvény eltérő eredményeket ad vissza ugyanazon eseményekre vonatkozóan, az ismételhetőség nem garantált, ha Ön vagy a Stream Analytics szolgáltatás újraindítja a feladatot.
 
 ## <a name="add-a-javascript-user-defined-function-in-the-azure-portal"></a>Felhasználói JavaScript-függvény hozzáadása az Azure Portalon
-Egyszerű felhasználói JavaScript-függvény meglévő Stream Analytics-feladatban való létrehozásához hajtsa végre az alábbi lépéseket:
+Egy egyszerű felhasználói JavaScript-függvény alapján egy meglévő Stream Analytics-feladat létrehozásához kövesse az alábbi lépéseket:
+
+> [!NOTE]
+> Ezek a lépések a a Stream Analytics-feladatok a felhőben való futtatásra konfigurálva. Ha a Stream Analytics-feladat futtatása az Azure IoT Edge-ben van konfigurálva, helyette használja a Visual Studio és [írása, a felhasználó által definiált függvény használatával C# ](stream-analytics-edge-csharp-udf.md).
 
 1.  Keresse meg a Stream Analytics-feladatot az Azure Portalon.
-2.  A **FELADATTOPOLÓGIA** részen válassza ki a függvényt. Megjelenik egy üres függvénylista.
-3.  Új felhasználói függvény létrehozásához válassza a **Hozzáadás** elemet.
+
+2. Alatt a **feladattopológia** szakaszban kattintson **funkciók**. Megjelenik egy üres függvénylista.
+
+3.  Egy új felhasználói függvény létrehozásához válassza **+ Hozzáadás**.
+
 4.  Az **Új függvény** panel **Függvénytípus** részén válassza a **JavaScript** lehetőséget. A szerkesztőben megjelenik egy alapértelmezett függvénysablon.
+
 5.  Az **UDF-alias** mezőben adja meg a **hex2Int** értéket, és módosítsa a függvény implementálását az alábbiak szerint:
 
     ```javascript
@@ -70,7 +73,7 @@ Egyszerű felhasználói JavaScript-függvény meglévő Stream Analytics-felada
 
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>Felhasználói JavaScript-függvény meghívása lekérdezésben
 
-1. A lekérdezésszerkesztő **FELADATTOPOLÓGIA** részén válassza a **Lekérdezés** lehetőséget.
+1. A lekérdezés-szerkesztőben alatt a **feladattopológia** szakaszban kattintson **lekérdezés**.
 2.  Módosítsa a lekérdezést, majd hívja meg a felhasználói függvényt az alábbiak szerint:
 
     ```SQL

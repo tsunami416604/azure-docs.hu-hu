@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: cc6857750534dad2ded29178eb3f140fc25cce0d
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 7b1d7c50970107300676213707368f9f16e04812
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54410489"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194801"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Az Azure IoT Central-alkalmazást (Node.js) egy általános ügyfél-alkalmazás csatlakoztatása
 
@@ -49,7 +49,7 @@ Adja meg a mezők neve pontosan, ahogy az a tábla az eszköz sablonba be. Ha a 
 
 Adja hozzá a következő állapotot a a **mérések** oldalon:
 
-| Megjelenítendő név | Mezőnév  | 1. érték | Megjelenítendő név | 2. érték | Megjelenítendő név |
+| Megjelenítendő név | Mezőnév  | 1. érték | Megjelenítendő név | 2. érték | Megjelenítendő név |
 | ------------ | ----------- | --------| ------------ | ------- | ------------ | 
 | Ventilátor mód     | fanmode     | 1       | Fut      | 0       | Leállítva      |
 
@@ -130,7 +130,7 @@ A következő lépések bemutatják, hogyan hozhat létre, amely megvalósítja 
     ```
 
   > [!NOTE]
-  > Az Azure IoT Central átváltott használatával az Azure IoT Hub Device Provisioning service (DPS) az összes eszköz kapcsolat, kövesse az alábbi instrustions [az eszköz kapcsolati karakterláncának lekérése](concepts-connectivity.md#getting-device-connection-string) és az oktatóanyag további részeinek folytatásához. További segítségért keresse meg a részletes utasításkészlet [előkészítése az Ügyfélkód](tutorial-add-device.md#prepare-the-client-code) oktatóanyagok > egy eszköz hozzáadásához.
+  > Az Azure IoT Central átváltott használatával az Azure IoT Hub Device Provisioning service (DPS) az összes eszköz kapcsolat, ezeket az utasításokat követve [az eszköz kapcsolati karakterláncának lekérése](concepts-connectivity.md#get-a-connection-string) és az oktatóanyag további részeinek folytatásához. További segítségért keresse meg a részletes utasításkészlet [előkészítése az Ügyfélkód](tutorial-add-device.md#prepare-the-client-code) oktatóanyagok > egy eszköz hozzáadásához.
 
 
   Frissítse a helyőrző `{your device connection string}` az eszköz kapcsolati karakterlánccal. Ebben a példában azt inicializálása `targetTemperature` nulla, igény szerint elvégezhető az eszköz aktuális olvasásakor vagy értéket az ikereszközről. 

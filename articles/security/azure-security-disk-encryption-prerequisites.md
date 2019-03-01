@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 01/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 24e757c80e23cecb50419a4855ec3ea9f94bcf3b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: d8dbdf3126b084b46d1b1bf30a5bb0a41a18d818
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112124"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992396"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Az Azure Disk Encryption előfeltételei
 
@@ -25,6 +25,7 @@ A támogatott forgatókönyveket, amelyek a aktorcsoportot tárgyalt számára a
 > - Ha korábban már használt [az Azure Disk Encryption az Azure AD-alkalmazás](azure-security-disk-encryption-prerequisites-aad.md) Ez a virtuális gép titkosítására, kell továbbra is használja ezt a beállítást a virtuális gép titkosítására. Nem használhat [az Azure Disk Encryption](azure-security-disk-encryption-prerequisites.md) a titkosított virtuális gépen, ez nem támogatott forgatókönyv, azaz a átváltani AAD-alkalmazás számára a titkosított virtuális gép nem támogatott még.
 > - Bizonyos ajánlások növelheti az adatok, hálózati vagy számítási erőforrás-használat, ami további licencek vagy előfizetések költségeit. Érvényes aktív Azure-előfizetést hozhat létre erőforrásokat az Azure-ban támogatott régiókban kell rendelkeznie.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="bkmk_OSs"></a> A támogatott operációs rendszerek
 Az Azure Disk Encryption a következő operációs rendszereken támogatott:
@@ -67,29 +68,28 @@ Parancsok, amelyek segítségével csatlakoztathatja az adatlemezeket és a szü
 
 ### <a name="install-azure-powershell-for-use-on-your-local-machine-optional"></a>Azure PowerShell telepítése (nem kötelező) a helyi gépen használatra: 
 1. Kövesse a hivatkozásokat az operációs rendszer, majd folytassa, ha az alábbi lépéseket a többi.      
-    - [Telepítse és konfigurálja a Windows Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0). 
-        - A PowerShellGet, Azure PowerShell telepítése és az AzureRM-modul betöltéséhez. 
+    - [Azure PowerShell telepítése és konfigurálása](/powershell/azure/install-az-ps). 
+        - A PowerShellGet, Azure PowerShell telepítése és a Az modul betöltésére. 
 
-2. Az AzureRM-modul telepített verzióinak ellenőrzése. Ha szükséges, [frissítése az Azure PowerShell-modul](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.13.0#update-the-azure-powershell-module).
-    -  Az AzureRM-modul verziószáma 6.0.0 vagy annál magasabb legyen.
-    - Az AzureRM modul legújabb verziója használata javasolt.
+2. Ellenőrizze a telepített verziók Az modul. Ha szükséges, [frissítése az Azure PowerShell-modul](/powershell/azure/install-az-ps#update-the-azure-powershell-module).
+    Ajánlott Az modul legújabb verzióját használja.
 
      ```powershell
-     Get-Module AzureRM -ListAvailable | Select-Object -Property Name,Version,Path
+     Get-Module Az -ListAvailable | Select-Object -Property Name,Version,Path
      ```
 
-3. Jelentkezzen be Azure-ban a [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) parancsmagot.
+3. Jelentkezzen be Azure-ban a [Connect-AzAccount](/powershell/module/az.profile/connect-azaccount) parancsmagot.
      
      ```azurepowershell-interactive
-     Connect-AzureRmAccount
+     Connect-AzAccount
      # For specific instances of Azure, use the -Environment parameter.
-     Connect-AzureRmAccount –Environment (Get-AzureRmEnvironment –Name AzureUSGovernment)
+     Connect-AzAccount –Environment (Get-AzEnvironment –Name AzureUSGovernment)
     
      <# If you have multiple subscriptions and want to specify a specific one, 
-     get your subscription list with Get-AzureRmSubscription and 
-     specify it with Set-AzureRmContext.  #>
-     Get-AzureRmSubscription
-     Set-AzureRmContext -SubscriptionId "xxxx-xxxx-xxxx-xxxx"
+     get your subscription list with Get-AzSubscription and 
+     specify it with Set-AzContext.  #>
+     Get-AzSubscription
+     Set-AzContext -SubscriptionId "xxxx-xxxx-xxxx-xxxx"
      ```
 
 4.  Ha szükséges, tekintse át a [Ismerkedés az Azure PowerShell-lel](/powershell/azure/get-started-azureps).
@@ -133,7 +133,7 @@ Ha már ismeri az Azure Disk Encryption Key Vault és az Azure AD szükséges el
 >Mielőtt törölné a key vault, győződjön meg arról, hogy olyan meglévő virtuális gépek, nem fejeződött titkosítja. A tároló védelmére véletlen törlés [helyreállítható Törlés engedélyezése](../key-vault/key-vault-soft-delete-powershell.md#enabling-soft-delete) és a egy [erőforrászárat](../azure-resource-manager/resource-group-lock-resources.md) a táron. 
  
 ## <a name="bkmk_KeyVault"></a> Kulcstartó létrehozása 
-Az Azure Disk Encryption integrálva van [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) segítségével vezérelheti és felügyelheti a lemeztitkosítási kulcsokat és titkos kulcsokat a key vault-előfizetés. Hozzon létre egy kulcstartót, vagy használjon egy meglévőt az Azure Disk Encryption. Kulcstartók kapcsolatos további információkért lásd: [Mi az Azure Key Vault?](../key-vault/key-vault-overview.md) és [kulcstartó védelme](../key-vault/key-vault-secure-your-key-vault.md). Resource Manager-sablonnal, az Azure PowerShell vagy az Azure CLI használatával hozzon létre egy kulcstartót. 
+Az Azure Disk Encryption integrálva van [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) segítségével vezérelheti és felügyelheti a lemeztitkosítási kulcsokat és titkos kulcsokat a key vault-előfizetés. Hozzon létre egy kulcstartót, vagy használjon egy meglévőt az Azure Disk Encryption. Kulcstartók kapcsolatos további információkért lásd: [első lépései az Azure Key Vault](../key-vault/key-vault-get-started.md) és [kulcstartó védelme](../key-vault/key-vault-secure-your-key-vault.md). Resource Manager-sablonnal, az Azure PowerShell vagy az Azure CLI használatával hozzon létre egy kulcstartót. 
 
 
 >[!WARNING]
@@ -142,20 +142,20 @@ Az Azure Disk Encryption integrálva van [Azure Key Vault](https://azure.microso
 
 ### <a name="bkmk_KVPSH"></a> Key vault létrehozása a PowerShell-lel
 
-Key vault az Azure PowerShell használatával is létrehozhat a [New-AzureRmKeyVault](/powershell/module/azurerm.keyvault/New-AzureRmKeyVault) parancsmagot. További Key Vault-parancsmagok, lásd: [AzureRM.KeyVault](/powershell/module/azurerm.keyvault/). 
+Key vault az Azure PowerShell használatával is létrehozhat a [New-AzKeyVault](/powershell/module/az.keyvault/New-azKeyVault) parancsmagot. További Key Vault-parancsmagok, lásd: [Az.KeyVault](/powershell/module/az.keyvault/). 
 
 1. Ha szükséges, [csatlakozhat az Azure-előfizetés](azure-security-disk-encryption-appendix.md#bkmk_ConnectPSH). 
-2. Hozzon létre egy új erőforráscsoportot, ha szükséges, a [New-AzureRmResourceGroup](/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup).  Data center helyek listázása, használja [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation). 
+2. Hozzon létre egy új erőforráscsoportot, ha szükséges, a [New-AzResourceGroup](/powershell/module/az.Resources/New-azResourceGroup).  Data center helyek listázása, használja [Get-AzLocation](/powershell/module/az.resources/get-azlocation). 
      
      ```azurepowershell-interactive
-     # Get-AzureRmLocation 
-     New-AzureRmResourceGroup –Name 'MySecureRG' –Location 'East US'
+     # Get-AzLocation 
+     New-AzResourceGroup –Name 'MySecureRG' –Location 'East US'
      ```
 
-3. Hozzon létre egy új kulcstartót [New-AzureRmKeyVault](/powershell/module/azurerm.keyvault/New-AzureRmKeyVault)
+3. Hozzon létre egy új kulcstartót [New-AzKeyVault](/powershell/module/az.keyvault/New-azKeyVault)
     
       ```azurepowershell-interactive
-     New-AzureRmKeyVault -VaultName 'MySecureVault' -ResourceGroupName 'MySecureRG' -Location 'East US'
+     New-AzKeyVault -VaultName 'MySecureVault' -ResourceGroupName 'MySecureRG' -Location 'East US'
      ```
 
 4. Megjegyzés: a **tároló neve**, **erőforráscsoport-nevet**, **erőforrás-azonosító**, **tároló URI-ja**, és a **objektumazonosító** amely visszaadja a későbbi használatra a lemezek titkosításakor. 
@@ -192,24 +192,24 @@ Key vault használatával is létrehozhat a [Resource Manager-sablon](https://gi
 Az Azure platform a titkosítási kulcsok vagy titkos kódok, hogy elérhetők legyenek a rendszerindítást, és visszafejti a köteteket a virtuális géphez a key vaultban lévő hozzá kell férnie. A key vault vagy a központi telepítések lemez-titkosítás engedélyezése sikertelen lesz.  
 
 ### <a name="bkmk_KVperPSH"></a> Speciális hozzáférési szabályzatok az Azure PowerShell használatával a key vault beállítása
- A key vault PowerShell-parancsmag [Set-AzureRmKeyVaultAccessPolicy](/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy) lemez titkosítása a key vault engedélyezése.
+ A key vault PowerShell-parancsmag [Set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) lemez titkosítása a key vault engedélyezése.
 
   - **Lemeztitkosítás Key Vault engedélyezése:** EnabledForDiskEncryption szükség az Azure Disk encryption.
       
      ```azurepowershell-interactive 
-     Set-AzureRmKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MySecureRG' -EnabledForDiskEncryption
+     Set-AzKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MySecureRG' -EnabledForDiskEncryption
      ```
 
   - **Szükség esetén engedélyezze a Key Vault üzembe helyezés:** Lehetővé teszi a Microsoft.Compute erőforrás-szolgáltató titkos kódjainak beolvasására a kulcstartóban, amikor ez a key vault erőforrás-létrehozás, például egy virtuális gép létrehozásakor hivatkozik.
 
      ```azurepowershell-interactive
-      Set-AzureRmKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MySecureRG' -EnabledForDeployment
+      Set-AzKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MySecureRG' -EnabledForDeployment
      ```
 
   - **A Key Vault engedélyezése központi telepítési sablont, szükség esetén:** Lehetővé teszi, hogy a kulcstartóban titkos kódok lekéréséhez, ha a kulcstartó hivatkozik egy sablon telepítése Azure Resource Managerrel.
 
      ```azurepowershell-interactive             
-     Set-AzureRmKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MySecureRG' -EnabledForTemplateDeployment
+     Set-AzKeyVaultAccessPolicy -VaultName 'MySecureVault' -ResourceGroupName 'MySecureRG' -EnabledForTemplateDeployment
      ```
 
 ### <a name="bkmk_KVperCLI"></a> Set a key vault speciális hozzáférési szabályzatok az Azure CLI használatával
@@ -244,7 +244,7 @@ Használat [az keyvault update](/cli/azure/keyvault#az-keyvault-update) lemez ti
 
 
 ## <a name="bkmk_KEK"></a> Állítsa be a kulcsalapú titkosítás kulcsa (nem kötelező)
-Egy további titkosítási kulcsok biztonsági szintet szeretne kulcstitkosítási kulcs-(KEK) használatára, ha egy KEK hozzáadása a key vaultban. Használja a [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurekeyvaultkey) parancsmaggal hozzon létre egy fő titkosítási kulcsot a key vaultban. A helyszíni kulcskezelő HSM is importálhat egy KEK. További információkért lásd: [Key Vault-dokumentáció](../key-vault/key-vault-hsm-protected-keys.md). Amikor egy kulcsalapú titkosítás kulcsa van megadva, az Azure Disk Encryption a kulcs segítségével burkolhatja a titkosítási titkos kulcsait a Key Vault írása előtt. 
+Egy további titkosítási kulcsok biztonsági szintet szeretne kulcstitkosítási kulcs-(KEK) használatára, ha egy KEK hozzáadása a key vaultban. Használja a [Add-AzureKeyVaultKey](/powershell/module/az.keyvault/add-azurekeyvaultkey) parancsmaggal hozzon létre egy fő titkosítási kulcsot a key vaultban. A helyszíni kulcskezelő HSM is importálhat egy KEK. További információkért lásd: [Key Vault-dokumentáció](../key-vault/key-vault-hsm-protected-keys.md). Amikor egy kulcsalapú titkosítás kulcsa van megadva, az Azure Disk Encryption a kulcs segítségével burkolhatja a titkosítási titkos kulcsait a Key Vault írása előtt. 
 
 * A key vault titkos kulcsából, és KEK URL-címek verziószámmal kell lennie. Az Azure ezt a korlátozást, versioning, érvénybe lépteti. Érvényes titkos kulcsot, és KEK URL-címeket tekintse meg az alábbi példák:
 
@@ -262,20 +262,20 @@ A PowerShell-parancsfájl használatával, mielőtt azokat a lépéseket mutatj�
  ```powershell
  # Step 1: Create a new resource group and key vault in the same location.
      # Fill in 'MyLocation', 'MySecureRG', and 'MySecureVault' with your values.
-     # Use Get-AzureRmLocation to get available locations and use the DisplayName.
-     # To use an existing resource group, comment out the line for New-AzureRmResourceGroup
+     # Use Get-AzLocation to get available locations and use the DisplayName.
+     # To use an existing resource group, comment out the line for New-AzResourceGroup
      
      $Loc = 'MyLocation';
      $rgname = 'MySecureRG';
      $KeyVaultName = 'MySecureVault'; 
-     New-AzureRmResourceGroup –Name $rgname –Location $Loc;
-     New-AzureRmKeyVault -VaultName $KeyVaultName -ResourceGroupName $rgname -Location $Loc;
-     $KeyVault = Get-AzureRmKeyVault -VaultName $KeyVaultName -ResourceGroupName $rgname;
-     $KeyVaultResourceId = (Get-AzureRmKeyVault -VaultName $KeyVaultName -ResourceGroupName $rgname).ResourceId;
-     $diskEncryptionKeyVaultUrl = (Get-AzureRmKeyVault -VaultName $KeyVaultName -ResourceGroupName $rgname).VaultUri;
+     New-AzResourceGroup –Name $rgname –Location $Loc;
+     New-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName $rgname -Location $Loc;
+     $KeyVault = Get-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName $rgname;
+     $KeyVaultResourceId = (Get-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName $rgname).ResourceId;
+     $diskEncryptionKeyVaultUrl = (Get-AzKeyVault -VaultName $KeyVaultName -ResourceGroupName $rgname).VaultUri;
      
  #Step 2: Enable the vault for disk encryption.
-     Set-AzureRmKeyVaultAccessPolicy -VaultName $KeyVaultName -ResourceGroupName $rgname -EnabledForDiskEncryption;
+     Set-AzKeyVaultAccessPolicy -VaultName $KeyVaultName -ResourceGroupName $rgname -EnabledForDiskEncryption;
       
  #Step 3: Create a new key in the key vault with the Add-AzureKeyVaultKey cmdlet.
      # Fill in 'MyKeyEncryptionKey' with your value.
@@ -288,7 +288,7 @@ A PowerShell-parancsfájl használatával, mielőtt azokat a lépéseket mutatj�
      # Fill in 'MySecureVM' with your value. 
      
      $VMName = 'MySecureVM';
-     Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $KeyVaultResourceId;
+     Set-AzVMDiskEncryptionExtension -ResourceGroupName $rgname -VMName $vmName -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId -KeyEncryptionKeyUrl $keyEncryptionKeyUrl -KeyEncryptionKeyVaultId $KeyVaultResourceId;
 ```
 
 

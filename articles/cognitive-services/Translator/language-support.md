@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: 4e8193a9996c9675a353e3e427c86ecfee45da8f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 3a99c0157ef3afe9823d73379775ddcf564faccc
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737841"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193806"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>A Translator Text API nyelvéhez és régiójához támogatása
 
@@ -33,7 +33,7 @@ A Translator Text API a következő nyelveket támogatja a szöveg a fordítás.
 * Neurális alapértelmezett: Neurális, az alapértelmezett fordítási rendszer. Használja ezt a paramétert `category=smt` hozzáférhetnek a statisztikai rendszerhez a Microsoft Translator Hub való használatra.
 * Neurális csak: Csak a Neurális fordítással érhető el.
 
-**Translator API v3-as** a v3-as Translator API egy Neurális alapértelmezés szerint, és statisztikai rendszerek csak érhetők el, ha Neurális rendszert nem létezik. Egyéni a fordítót csak akkor használható, a Neurális nyelvek.
+**Translator API v3-as** a v3-as Translator API egy Neurális alapértelmezés szerint, és statisztikai rendszerek csak érhetők el, ha Neurális rendszert nem létezik. Egyéni a fordítót csak akkor használható, a Neurális nyelvek. [Megtekintheti az elérhető egyéni a fordítót langauges](#customization).
 
 |Nyelv|  Nyelvkód|  V2 API| V3 API|
 |:-----|:-----:|:-----|:-----|
@@ -73,7 +73,7 @@ A Translator Text API a következő nyelveket támogatja a szöveg a fordítás.
 |koreai |`ko`   |Neurális érhető el|  Neurális|
 |lett|   `lv`    |Neurális érhető el|  Neurális|
 |litván|    `lt`    |Neurális érhető el|  Neurális|
-|Madagaszkári|  `mg`    |Csak statisztikai|  Statisztikai|
+|malgas|  `mg`    |Csak statisztikai|  Statisztikai|
 |maláj| `ms`    |Csak statisztikai   |Statisztikai|
 |máltai|   `mt`    |Csak statisztikai|  Statisztikai|
 |norvég| `nb`    |Neurális érhető el|  Neurális|
@@ -94,7 +94,7 @@ A Translator Text API a következő nyelveket támogatja a szöveg a fordítás.
 |tamil| `ta`    |Csak statisztikai|  Statisztikai|
 |telugu|    `te`    |Csak Neurális|   Neurális|
 |thai|  `th`    |Neurális érhető el|  Neurális|
-|Tongan|    `to`    |Csak statisztikai|  Statisztikai|
+|tonga|    `to`    |Csak statisztikai|  Statisztikai|
 |török|   `tr`    |Neurális érhető el   |Neurális|
 |ukrán| `uk`    |Neurális érhető el|  Neurális|
 |urdu|  `ur`    |Csak statisztikai|  Statisztikai|

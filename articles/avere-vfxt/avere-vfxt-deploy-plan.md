@@ -4,18 +4,18 @@ description: Ismerteti a tervezése előtt Avere vFXT telepítése az Azure-hoz
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: a097110bac7dad630f9a85dd8b20678db0c739cf
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 3212befac60e3677c0b556825560cc548df42969
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744656"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990985"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Az Avere vFXT rendszer megtervezése
 
-Ez a cikk az Azure-fürttel, ellenőrizze, hogy a fürt létrehozása elhelyezni, és az igényeinek megfelelő méretű egy új Avere vFXT tervezését ismerteti. 
+Ez a cikk az Azure-fürtön, amely megfelelő a méretezése az igényeinek, és elhelyezni egy új Avere vFXT tervezését ismerteti. 
 
 Ugrás az Azure piactéren, illetve olyan virtuális gépek létrehozása előtt fontolja meg, hogyan működjön együtt az Azure-ban más elemek a fürtben. Tervezze meg, ahol fürterőforrások a magánhálózat és alhálózatokat kell elhelyezni, és döntse el, ahol a háttérbeli storage lesz. Ügyeljen arra, hogy a fürtcsomópontokon, hozzon létre megfelelő teljesítmény, a munkafolyamat támogatásához. 
 
@@ -32,16 +32,22 @@ A Avere vFXT rendszer hálózati infrastruktúra tervezése során kövesse az a
 * Összes elem a Avere vFXT üzembe helyezéshez létrehozott új előfizetéssel kell kezelni. Az előnyök: 
   * Egyszerűbb költség követési - nézet és a naplózási összes költséget, az erőforrásokat, az infrastruktúra és a számítási ciklusok egy adott előfizetéshez.
   * Könnyebb karbantartás – távolíthatja el a teljes előfizetés, amikor befejeződött a projekthez.
-  * Erőforrás kényelmes particionálás kvóták – más kritikus fontosságú számítási feladatok megvédheti a lehetséges erőforrás-szabályozás állításakor a nagy mennyiségű ügyfelet a Avere vFXT ügyfelek elkülönítésével a nagy teljesítményű számítástechnikai munkafolyamathoz használt fel, és a fürt egy egyetlen előfizetéshez.
+  * Kényelmes particionálását az erőforrás - kvóták elleni lehetséges erőforrás-szabályozási a Avere vFXT ügyfelek és a egy előfizetés fürt elkülönítésével más kritikus fontosságú számítási feladatokhoz. Ezzel elkerülhető ütközés fel egy nagy mennyiségű ügyfelet egy nagy teljesítményű számítástechnikai munkafolyamat állításakor.
 
 * Keresse meg a számítási ügyfélrendszer megközelíti a vFXT fürt. Háttér-tároló több távoli lehet.  
 
-* Az egyszerűség kedvéért keresse meg a vFXT fürt és a fürt vezérlő virtuális Géphez, ugyanabban az erőforráscsoportban és ugyanazon a virtuális hálózaton (vnet). Ezek a kell is használhatja ugyanazt a tárfiókot. (A fürt vezérlő létrehozza a fürtöt, és a is használható parancssori fürtkezelés.)  
-
-  > [!NOTE] 
-  > A fürt létrehozása sablon hozhat létre egy új erőforráscsoportot, és a egy új tárfiókot, a fürt számára. Egy meglévő erőforráscsoportot is megadhat, de üresnek kell lennie.
+* A vFXT fürt és a fürt vezérlő virtuális Gépet kell elhelyezkedniük ugyanazon a virtuális hálózaton (vnet), az ugyanabban az erőforráscsoportban, és használja ugyanazt a tárfiókot. A fürt automatikus létrehozása sablon kezeli, ez a legtöbb esetben.
 
 * A fürt IP-címütközés elkerülése az ügyfelekkel, vagy a számítási erőforrásokat a saját alhálózatán található kell működnie. 
+
+* A fürt létrehozási sablont hozhat létre a fürtöt, erőforráscsoportok, virtuális hálózatok, alhálózatok és storage-fiókok esetében a szükséges infrastruktúra-erőforrások legnagyobb része. Ha azt szeretné, használja a már meglévő erőforrásait, ellenőrizze azok megfelelnek a táblázatban. 
+
+  | Erőforrás | Meglévő használata? | Követelmények |
+  |----------|-----------|----------|
+  | Erőforráscsoport | Igen, ha üres | Üresnek kell lennie| 
+  | Tárfiók | Igen, ha a fürt létrehozása után összekapcsolása egy meglévő Blob-tároló <br/>  Nem, ha a fürt létrehozásakor egy új Blob-tároló létrehozása | Meglévő Blob-tároló üresnek kell lennie. <br/> &nbsp; |
+  | Virtuális hálózat | Igen | A storage-szolgáltatásvégpont tartalmazniuk kell, ha egy új Azure Blob-tároló létrehozása | 
+  | Alhálózat | Igen |   |
 
 ## <a name="ip-address-requirements"></a>IP-követelményei 
 
@@ -62,22 +68,20 @@ Ha Azure Blob storage szolgáltatást használja, azt is szükség lehet a fürt
 
 Lehetősége van, keresse meg a hálózati erőforrásokhoz, és a Blob storage (ha van) eltérő erőforráscsoportokban a fürtből.
 
-## <a name="vfxt-node-sizes"></a>vFXT csomópontméretűek 
+## <a name="vfxt-node-size"></a>vFXT csomópont mérete
 
-A virtuális gépek, amelyek szolgálhat a fürtcsomópontok határozza meg a kérelem adatátviteli és tárolási kapacitás a gyorsítótár. A példányok típusai két, különböző memória, a processzor és a helyi tároló jellemzőit közül választhat. 
+A virtuális gépek, amelyek szolgálhat a fürtcsomópontok határozza meg a kérelem adatátviteli és tárolási kapacitás a gyorsítótár. <!-- The instance type offered has been chosen for its memory, processor, and local storage characteristics. You can choose from two instance types, with different memory, processor, and local storage characteristics. -->
 
 Minden egyes vFXT csomópont azonos lesz. Azt jelenti Ha létrehoz egy három csomópontos fürtben három virtuális gépet azonos típusú és méretű kap. 
 
 | Példány típusa | Virtuális magok | Memory (Memória)  | Helyi SSD-tárolóval  | Adatlemezek max. száma | Nem gyorsítótárazott lemezteljesítmény | Hálózati adapter (darabszám) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_D16s_v3 | 16  | 64 GiB  | 128 GiB  | 32 | 25,600 IOPS <br/> 384 MBps | 8000 MB/s (8) |
 | Standard_E32s_v3 | 32  | 256 GiB | 512 GiB  | 32 | 51,200 IOPS <br/> 768 MBps | 16000 MB/s (8)  |
 
-Csomópontonként lemezgyorsítótár konfigurálható, 1000 GB-tól a 8000-es GB rage is. 1 TB-os csomópontonként Standard_D16s_v3 csomópontok javasolt gyorsítótár méretét, és 4 TB-os csomópontonként Standard_E32s_v3 csomópont használata ajánlott.
+Csomópontonként lemezgyorsítótár konfigurálható, 1000 GB-tól a 8000-es GB rage is. 4 TB-os csomópontonként javasolt gyorsítótár mérete Standard_E32s_v3 csomópontok.
 
-Ezek a virtuális gépek kapcsolatos további információkért olvassa el a következő Microsoft Azure-dokumentumokat:
+Ezek a virtuális gépek kapcsolatos további információkért olvassa el a Microsoft Azure-dokumentáció:
 
-* [Általános célú virtuális gépek méretei](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-general)
 * [Memóriahasználatra optimalizált virtuális gépek méretei](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)
 
 ## <a name="account-quota"></a>Fiókkvóta
@@ -120,7 +124,7 @@ Ezek a beállítások kapcsolatos tudnivalókért olvassa el a [Azure Virtual Ne
 
 Ha a fürt vezérlő állít be egy nyilvános IP-címet, használhatja azt jump-gazdagépként a Avere vFXT fürtöt a saját alhálózatán kívülről kapcsolódni. Azonban a vezérlő fürtcsomópontok módosíthatja a hozzáférési jogosultságokkal rendelkezik, mert ez létrehoz egy kisebb biztonsági kockázatot jelent.  
 
-A nyilvános IP-címmel megnövelt biztonság érdekében a hálózati biztonsági csoport használatával bejövő hozzáférés engedélyezése csak a 22-es porton keresztül. Szükség esetén további védelmet biztosíthat a rendszer zárolja a forrás az IP-címek – való hozzáférés, kapcsolatok engedélyezése csak a fürt hozzáféréshez használni kívánt gépeket.
+Nyilvános IP-címmel rendelkező tartományvezérlő a biztonság növelése érdekében a telepítési parancsfájl automatikusan létrehoz egy hálózati biztonsági csoportot, amely korlátozza a 22-es porton bejövő hozzáférést. További védelmet biztosíthat a rendszer zárolja a forrás az IP-címek – való hozzáférés, kapcsolatok engedélyezése csak a fürt hozzáféréshez használni kívánt gépeket.
 
 A fürt létrehozásakor kiválaszthatja-e egy nyilvános IP-cím létrehozása a fürt vezérlőn. 
 

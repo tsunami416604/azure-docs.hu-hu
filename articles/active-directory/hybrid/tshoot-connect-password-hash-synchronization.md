@@ -16,12 +16,12 @@ ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29cb7f6799556406c4c5def12b1367bfd581d06b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 56fda1110218910f8fbd8aa9597195f37444e01c
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198660"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193321"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>A Jelszókivonat-szinkronizálás és az Azure AD Connect-szinkronizálás hibaelhárítása
 Ez a témakör a Jelszókivonat-szinkronizálás hibáinak elhárítása a lépéseit ismerteti. Ha a jelszavak nem szinkronizál a várt módon, az összes felhasználó vagy felhasználók alcsoportjaihoz lehet.
@@ -225,7 +225,7 @@ Ha jelszó szinkronizálása sem történik egy felhasználó hibáinak elhárí
 ## <a name="no-passwords-are-synchronized-manual-troubleshooting-steps"></a>Jelszó szinkronizálása sem történik: manuális hibaelhárítási lépéseket
 Kövesse az alábbi lépéseket meghatározni, miért jelszó szinkronizálása sem történik:
 
-1. A Connect-kiszolgáló a [átmeneti módban](how-to-connect-sync-operations.md#staging-mode)? Átmeneti módban lévő kiszolgálók nem szinkronizálja a jelszavakat.
+1. A Connect-kiszolgáló a [átmeneti módban](how-to-connect-sync-staging-server.md)? Átmeneti módban lévő kiszolgálók nem szinkronizálja a jelszavakat.
 
 2. Futtassa a parancsfájlt a [jelszó-szinkronizálási beállítások állapotának lekérése](#get-the-status-of-password-sync-settings) szakaszban. Ráadásul a jelszó-szinkronizálás konfigurálása áttekintése.  
 

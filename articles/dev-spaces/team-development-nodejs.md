@@ -1,5 +1,5 @@
 ---
-title: Fejlesztés a Node.js és a VS Code Azure-fejlesztési szóközt tartalmazó csapat |} A Microsoft Docs
+title: A Node.js és a VS Code Azure-fejlesztési szóközt tartalmazó csoportos fejlesztése
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -9,13 +9,13 @@ ms.author: zarhoads
 ms.date: 07/09/2018
 ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
-ms.openlocfilehash: bd2c58860ca51d6a137df656a4098dea1cfc48c1
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+keywords: 'Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s '
+ms.openlocfilehash: 4ea07655065fa70242037176ef3d16a6a32692eb
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658555"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57191204"
 ---
 [!INCLUDE [](../../includes/devspaces-team-development-1.md)]
 

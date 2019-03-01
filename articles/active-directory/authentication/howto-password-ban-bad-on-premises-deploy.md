@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a9839d636ba582c5006a260aeb6a17ac1a12e9b
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: cdd4ecb1bfc9385ea3fa23756fcbf8fb20b6d87c
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56986005"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193245"
 ---
 # <a name="preview-deploy-azure-ad-password-protection"></a>Előzetes verzió: Üzembe helyezése az Azure AD jelszóvédelem
 
@@ -57,6 +57,7 @@ Ez lehetőleg azáltal, hogy teljes mértékben kijavítja a gép Windows Update
 * Egy globális rendszergazdai fiókkal az Azure AD-jelszó védelme Proxy szolgáltatás és az erdő regisztrálhat az Azure ad-ben.
 * Az Active Directory tartományi rendszergazdai jogosultságokkal az erdő gyökértartományában, a Windows Server Active Directory-erdő regisztrálni az Azure AD-fiók.
 * Minden olyan Active Directory-tartományban, a Tartományvezérlőn futó ügynök szolgáltatás szoftvert kell használnia elosztott fájlrendszer replikációs szolgáltatása a sysvol replikáció.
+* Minden Windows Server 2012 és újabb rendszerű tartományvezérlők a tartomány engedélyezni kell a Microsoft kulcsszolgáltató szolgáltatás (manuális eseményindító kezdő használatával van engedélyezve van ez a szolgáltatás alapértelmezett állapotát).
 
 ## <a name="single-forest-deployment"></a>Egyetlen erdő telepítés
 

@@ -1,7 +1,7 @@
 ---
 title: JSON-blobok indexelése az Azure Blob-indexelő az Azure Search – a teljes szöveges keresés
 description: Feltérképezi az Azure JSON-blobok az Azure Search Blob indexelőjével szöveges tartalommal. Az indexelők automatizálni adatbetöltés a kijelölt adatforrásokhoz, például az Azure Blob storage.
-ms.date: 12/21/2018
+ms.date: 02/28/2019
 author: HeidiSteen
 manager: cgronlun
 ms.author: heidist
@@ -10,22 +10,19 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: cafb48f28e38794ce0757d50a5d87432b237e17c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 3fcac10e32d6510510dc3a069c754a6f482e75eb
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467162"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194843"
 ---
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>JSON-blobok indexelése az Azure Search Blob indexelőjével
-Ez a cikk bemutatja, hogyan konfigurálhatja az Azure Search blob indexelőjével strukturálatlan tartalom használatával nyerhetők JSON-blobok, az Azure Blob storage-ban.
+Ez a cikk bemutatja, hogyan konfigurálhatja az Azure Search blob indexelőjével nyerje strukturált JSON-dokumentumokat az Azure Blob storage-ban, és lehetővé teszi az Azure Search kereshető. Ezt a munkafolyamatot hoz létre az Azure Search-index, és betölti azt a meglévő, a JSON-blobok kinyert szöveget. 
 
-Használhatja a [portál](#json-indexer-portal), [REST API-k](#json-indexer-rest), vagy [.NET SDK-val](#json-indexer-dotnet) a JSON-tartalom indexelése. Az összes megközelítések közös egy Azure Storage-fiókban található blob-tárolóra található JSON-dokumentumok. A JSON-dokumentumok küld más-Azure platformról útmutatásért lásd: [adatok importálása az Azure Search](search-what-is-data-import.md).
+Használhatja a [portál](#json-indexer-portal), [REST API-k](#json-indexer-rest), vagy [.NET SDK-val](#json-indexer-dotnet) a JSON-tartalom indexelése. Az összes megközelítések közös, hogy a JSON-dokumentumok találhatók-e az Azure Storage-fiókban lévő blobtárolóba. A JSON-dokumentumok küld más-Azure platformról útmutatásért lásd: [adatok importálása az Azure Search](search-what-is-data-import.md).
 
-Az Azure Blob storage-ban JSON-blobok jellemzően egyetlen JSON-dokumentumok és a egy JSON-tömböt. Az az Azure Search blob indexelőjével vagy konstrukció, attól függően, hogyan állíthatja tudja elemezni a **parsingMode** paraméter a kérésre.
-
-> [!IMPORTANT]
-> JSON blob-indexelés általánosan elérhető, de JsonArray elemzés nyilvános előzetes verzióban érhető el, és nem éles környezetekben használható. További információkért lásd: [REST api-version = 2017-11-11-Preview](search-api-2017-11-11-preview.md). 
+Az Azure Blob storage-ban JSON-blobok jellemzően egyetlen JSON-dokumentumok és a egy JSON-tömböt. Az az Azure Search blob indexelőjével vagy konstrukció függően állíthatja be, hogy tudja elemezni a **parsingMode** paraméter a kérésre.
 
 <a name="json-indexer-portal"></a>
 
@@ -33,13 +30,20 @@ Az Azure Blob storage-ban JSON-blobok jellemzően egyetlen JSON-dokumentumok és
 
 A legegyszerűbb módszer a indexeli a JSON-dokumentumokat, hogy a varázsló használata a [az Azure portal](https://portal.azure.com/). A metaadatokat az Azure blob-tárolóban, elemzés a [ **adatimportálás** ](search-import-data-portal.md) varázslóval hozzon létre egy alapértelmezett indexet, leképezik a forrásmezőket cél index mezőire és betölteni az indexet egy művelettel. A mérete és összetettsége forrásadatok működési teljes szöveges keresési index lehet percek alatt.
 
+Azure Search és az Azure storage, lehetőség szerint ugyanabban a régióban található Azure-előfizetéshez használatát javasoljuk.
+
 ### <a name="1---prepare-source-data"></a>1 – forrásadatok előkészítése
 
 Azure storage-fiókkal, a Blob storage és a egy JSON-dokumentumokat tároló kell rendelkeznie. Ha ismeri ezeket a feladatokat bármelyikével, tekintse át az "Azure Blob service és a terhelés a Mintaadatok beállítása" előfeltétel a a [cognitive search-quickstart](cognitive-search-quickstart-blob.md#set-up-azure-blob-service-and-load-sample-data).
 
+> [!Important]
+> A tárolóban, ügyeljen arra, hogy **nyilvános hozzáférés szintje** "Tároló (névtelen olvasási hozzáférés tárolók és blobok)" értékre van állítva.
+
 ### <a name="2---start-import-data-wizard"></a>2 – adatok importálása varázsló indítása
 
 Is [varázsló elindításához](search-import-data-portal.md) az Azure Search szolgáltatás lapján, vagy kattintson a parancssávon **Azure Search hozzáadása** a a **Blob service** szakasz a storage-fiók bal oldali navigációs ablaktáblán.
+
+   ![Adatok importálása parancs portálon](./media/search-import-data-portal/import-data-cmd2.png "indítsa el az adatok importálása varázsló")
 
 ### <a name="3---set-the-data-source"></a>3 – az adatforrás beállításához
 
@@ -61,7 +65,13 @@ Az a **adatforrás** a forrás oldalon kell lennie **Azure Blob Storage**, az al
 
 Kognitív képességek hozzáadása már nem szükséges JSON-dokumentum importáláshoz. Kivéve, ha egy adott kell [közé tartozik a Cognitive Services API-k és átalakításokat](cognitive-search-concept-intro.md) az indexelési folyamat kell ezt a lépést kihagyhatja.
 
-A lépés kihagyásához kattintson a következő oldalon **célindex testreszabása**.
+A lépés kihagyásához először a következő oldalra lépéshez.
+
+   ![Cognitive Search következő oldal gomb](media/search-get-started-portal/next-button-add-cog-search.png)
+
+A lapról, áttérhet index testreszabása.
+
+   ![A kognitív képességek lépés kihagyása](media/search-get-started-portal/skip-cog-skill-step.png)
 
 ### <a name="5---set-index-attributes"></a>5 – set indexattribútumokat
 
@@ -85,15 +95,26 @@ Ha nem ismeri a indexelők esetében, egy *indexelő* egy erőforrás az Azure S
 
 Kattintson a **OK** futtassa a varázslót, és az összes objektum létrehozásához. Indexelő azonnal kezdődik.
 
-Adatok importálása a portál oldalain követheti nyomon. Folyamatértesítéseinek jelzik, hogy az indexelő állapotának és hány dokumentumok feltöltésekor. Indexelő befejeződése után használhatja [keresési ablak](search-explorer.md) lekérdezheti az indexét.
+Adatok importálása a portál oldalain követheti nyomon. Folyamatértesítéseinek jelzik, hogy az indexelő állapotának és hány dokumentumok feltöltésekor. 
+
+Indexelő befejeződése után használhatja [keresési ablak](search-explorer.md) lekérdezheti az indexét.
+
+> [!NOTE]
+> Ha nem látja a várt adatokat, szükség lehet további attribútumok beállítása több mező alapján. Törölje az index és indexelő az imént létrehozott, és. lépés: a varázsló lépéseit, módosítja az index attribútumainak az 5. lépésben kiválasztott beállításokat. 
 
 <a name="json-indexer-rest"></a>
 
 ## <a name="use-rest-apis"></a>REST API-k használata
 
-JSON-blobok indexelése hasonlít a rendszeres dokumentum kinyerése a közös Háromrészes munkafolyamat az Azure Search szolgáltatásban az összes indexelőre: hozzon létre egy adatforrást, hozzon létre egy index, indexelő létrehozása.
+A REST API-t használhatja az Azure Search szolgáltatásban az összes indexelőre közös Háromrészes munkafolyamat következő JSON-blobok indexelése: hozzon létre egy adatforrást, hozzon létre egy index, indexelő létrehozása. Adatok kinyerése a blob storage-ból az indexelő létrehozása kérés benyújtása következik be. A kérelem teljesítése után a lekérdezhető index. Három összes objektum létrehozásához például kérelmek megtekintése: [REST példa](#rest-example) Ez a szakasz végén.
 
-Indexelő kódalapú JSON, használhatja a REST API API-khoz, [indexelők](https://docs.microsoft.com/rest/api/searchservice/create-indexer), [adatforrások](https://docs.microsoft.com/rest/api/searchservice/create-data-source), és [indexek](https://docs.microsoft.com/rest/api/searchservice/create-index). Ellentétben a portál varázsló egy kódot megközelítés is rendelkeznie kell egy index helyben, készen áll a küldésekor, fogadja el a JSON-dokumentumok a **indexelő létrehozása** kérelmet.
+Indexelő kódalapú JSON, használja a [Postman](search-fiddler.md) és a REST API-t ezen objektumok létrehozása:
+
++ [index](https://docs.microsoft.com/rest/api/searchservice/create-index)
++ [Adatforrás](https://docs.microsoft.com/rest/api/searchservice/create-data-source)
++ [indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
+
+Ellentétben a portál varázsló egy kódot megközelítés is rendelkeznie kell egy index helyben, készen áll a küldésekor, fogadja el a JSON-dokumentumok a **indexelő létrehozása** kérelmet.
 
 Az Azure Blob storage-ban JSON-blobok jellemzően egyetlen JSON-dokumentumok és a egy JSON-tömböt. Az az Azure Search blob indexelőjével vagy konstrukció, attól függően, hogyan állíthatja tudja elemezni a **parsingMode** paraméter a kérésre.
 
@@ -102,14 +123,34 @@ Az Azure Blob storage-ban JSON-blobok jellemzően egyetlen JSON-dokumentumok és
 | Egy blob egy | `json` | Elemzi a JSON-blobok, a szöveg egy olyan adattömb. Egyes JSON-blobok az Azure Search egyetlen dokumentum válik. | Általánosan elérhető a [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) és [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) API-k. |
 | Több blobonkénti | `jsonArray` | Elemzi a blobban, ahol a tömb egyes elemei lesz-e egy külön Azure Search-dokumentum egy JSON-tömböt.  | Általánosan elérhető a [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) és [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) API-k. |
 
+### <a name="1---assemble-inputs-for-the-request"></a>1 – állítsa össze a kérés bemenetek
 
-### <a name="step-1-create-a-data-source"></a>1. lépés: Adatforrás létrehozása
+Az egyes kérések meg kell adnia a szolgáltatás nevét és adminisztrációs kulcsot az Azure Search (a POST-fejléc), és a tárfiók nevét és kulcsát a blob Storage. Használhat [Postman](search-fiddler.md) HTTP-kéréseket küldhet az Azure Search.
 
-Az első lépés, hogy az indexelő által használt adatforrás kapcsolati adatait adja meg. Az adatforrás típusa, a megadott Itt `azureblob`, meghatározza, hogy mely adatok kinyerése viselkedések az indexelő kerül meghívásra. JSON blob-indexelés, az adatforrása definíciója megegyezik a JSON-dokumentumok és tömbök is. 
+Másolja az alábbi négy értéket a Jegyzettömbbe, így beillesztheti őket egy kérelem:
+
++ Az Azure Search-szolgáltatásnév
++ Az Azure Search adminisztrátori kulcs
++ Az Azure storage-fiók neve
++ Az Azure storage-fiókkulcs
+
+Ezeket az értékeket a portálon találja meg:
+
+1. Az Azure Search portál lapjain másolja a search szolgáltatás URL-címet az Áttekintés oldal.
+
+2. Kattintson a bal oldali navigációs ablaktáblában **kulcsok** , majd másolja vagy az elsődleges vagy másodlagos kulcsot (azok egyenértékű).
+
+3. Váltson a tárfiók a portál oldalain. A bal oldali navigációs ablaktáblán a **beállítások**, kattintson a **Tárelérési kulcsok**. Ez az oldal nyújt a fióknevet és a kulcsot. A tárfiók nevét és az egyik kulcsot másolja a Jegyzettömbbe.
+
+### <a name="2---create-a-data-source"></a>2 – egy adatforrás létrehozása
+
+Ez a lépés biztosítja az indexelő által használt adatforrás kapcsolati adatait. Az adatforrás egy elnevezett objektumot az Azure Search használ, amely a kapcsolati információkat. Az adatforrás típusa, `azureblob`, meghatározza, hogy mely adatok kinyerése viselkedések az indexelő kerül meghívásra. 
+
+Helyettesítse be a szolgáltatás neve, az adminisztrációs kulcsot, a storage-fiók érvényes értékei, és a kulcs helyőrzőket fiók.
 
     POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
     Content-Type: application/json
-    api-key: [admin key]
+    api-key: [admin key for Azure Search]
 
     {
         "name" : "my-blob-datasource",
@@ -118,7 +159,7 @@ Az első lépés, hogy az indexelő által használt adatforrás kapcsolati adat
         "container" : { "name" : "my-container", "query" : "optional, my-folder" }
     }   
 
-### <a name="step-2-create-a-target-search-index"></a>2. lépés: A cél keresési index létrehozása 
+### <a name="3---create-a-target-search-index"></a>3 – a cél keresési index létrehozása 
 
 Indexelők az indexsémát van párosítva. Ha használja az API-t (a portál helyett), készítse elő az index előre, hogy a adhatja meg azt az indexelési művelet.
 
@@ -128,7 +169,7 @@ A következő példa bemutatja egy [a Create Index](https://docs.microsoft.com/r
 
     POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
     Content-Type: application/json
-    api-key: [admin key]
+    api-key: [admin key for Azure Search]
 
     {
           "name" : "my-target-index",
@@ -139,15 +180,37 @@ A következő példa bemutatja egy [a Create Index](https://docs.microsoft.com/r
     }
 
 
-### <a name="step-3-configure-and-run-the-indexer"></a>3. lépés: Konfigurálása és az indexelő futtatása
+### <a name="4---configure-and-run-the-indexer"></a>4 – konfigurálása és az indexelő futtatása
 
-Mostanáig az adatforrás és az index parsingMode független lett. Azonban a 3. lépésben az indexelő konfigurációjának, az elérési út diverges attól függően, hogyan szeretné a JSON-blobját tartalom elemezni és struktúrája az Azure Search-index. Választási lehetőségek `json` vagy `jsonArray`:
+Mivel az index és a egy adatainak forrás-, és az indexelő is egy elnevezett objektum, amely létrehoz és újra felhasználhatja az Azure Search szolgáltatás. Indexelő létrehozása teljes körűen megadott kérelem a következő lehet:
+
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
+    Content-Type: application/json
+    api-key: [admin key for Azure Search]
+
+    {
+      "name" : "my-json-indexer",
+      "dataSourceName" : "my-blob-datasource",
+      "targetIndexName" : "my-target-index",
+      "schedule" : { "interval" : "PT2H" },
+      "parameters" : { "configuration" : { "parsingMode" : "json" } }
+    }
+
+Az indexelő konfigurációjának a kérelem törzsében szerepel. Egy adatforrás és a egy üres célindex, amely már létezik az Azure Search van szükség. 
+
+Ütemezés és a paraméterek megadása nem kötelező. Ha kihagyja őket, használatával azonnal, fut-e az indexelő `json` elemzési módot.
+
+Nem tartalmazza az adott indexelő [mezőleképezéseivel](#field-mappings). Az indexelő meghatározásán hagyhatja **mezőleképezéseivel** Ha tulajdonságai között a forrás JSON-dokumentum felel meg a cél keresési indexhez mezőit. 
+
+### <a name="parsing-modes"></a>Elemzési módhoz
+
+Mostanáig az adatforrás és az index parsingMode független lett. Azonban az indexelő konfigurációjának lépésben, az elérési út diverges attól függően, hogyan szeretné a JSON-blobját tartalom elemezni és struktúrája az Azure Search-index. Választási lehetőségek `json` vagy `jsonArray`:
 
 + Állítsa be **parsingMode** való `json` egyetlen dokumentumként minden egyes blob indexelendő.
 
 + Állítsa be **parsingMode** való `jsonArray` blobok JSON-tömbök áll, és szüksége lesz egy külön dokumentum az Azure Search szolgáltatásban a tömb egyes elemei. A dokumentum az egyetlen elemet a keresési eredmények között is felfoghatók. Ha azt szeretné, hogy a keresési eredmények között egy független elem megjelenjen a tömb egyes elemei, használja a `jsonArray` lehetőséget.
 
-Az indexelő definíciója belül is használhat **mezőleképezéseivel** kiválasztása a forrás JSON-dokumentum melyik tulajdonságait használják a cél search-index feltöltéséhez. A JSON-tömbök Ha a tömb létezik egy alacsonyabb szintű tulajdonság jelzi, ha a tömb a blobon belüli kerül a dokumentum legfelső szintű beállítása.
+A JSON-tömbök Ha a tömb létezik egy alacsonyabb szintű tulajdonság jelzi, ha a tömb a blobon belüli kerül a dokumentum legfelső szintű beállítása.
 
 > [!IMPORTANT]
 > Ha használ `json` vagy `jsonArray` elemzési mód, az Azure Search feltételezi, hogy, hogy az adatforrás összes blobot tartalmaz-e a JSON. Ha ugyanazt az adatforrást támogatja a JSON-t, és nem JSON blobok vegyesen szeretne, ossza meg velünk az [UserVoice-webhelyünkön](https://feedback.azure.com/forums/263029-azure-search).
@@ -166,22 +229,6 @@ Alapértelmezés szerint [Azure Search blob indexelőjével](search-howto-indexi
     }
 
 A blob indexelőjével elemzi a JSON-dokumentum, egy Azure Search-dokumentumban. Az indexelő index "szöveg", "datePublished" és "címkék" a forrás-index mezőire egyformán elnevezett és típusos cél elleni egyeztetése alapján tölti be.
-
-Konfiguráció megtalálható egy indexelési művelet törzse. Ne felejtse el, hogy az adatforrás-objektum, korábban definiált, határozza meg az adatforrás típusa és kapcsolódási adatait. Ezenkívül a célindex is létezniük kell a szolgáltatás egy üres tárolóként. Ütemezés és a paraméterek megadása nem kötelező, de ha kihagyja őket, használatával azonnal, fut-e az indexelő `json` elemzési módot.
-
-Egy teljes körűen kérés a következő lehet:
-
-    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
-    Content-Type: application/json
-    api-key: [admin key]
-
-    {
-      "name" : "my-json-indexer",
-      "dataSourceName" : "my-blob-datasource",
-      "targetIndexName" : "my-target-index",
-      "schedule" : { "interval" : "PT2H" },
-      "parameters" : { "configuration" : { "parsingMode" : "json" } }
-    }
 
 Feljegyzett, mező-leképezések nem szükségesek. Megadott index "szöveg", "datePublished, és a"címkék"mezőbe, a blob indexelő is kikövetkeztetni a megfelelő leképezés leképezése a kérelemben szereplő mező nélkül.
 
@@ -234,11 +281,11 @@ Használja ezt a konfigurációt a tömbben szereplő indexelése a `level2` tul
         "parameters" : { "configuration" : { "parsingMode" : "jsonArray", "documentRoot" : "/level1/level2" } }
     }
 
-### <a name="using-field-mappings-to-build-search-documents"></a>Mező-leképezések használatával hozhat létre a dokumentumok keresése
+### <a name="field-mappings"></a>Mezőleképezések
 
 Ha a forrás- és mezőket metaadatszerű nem igazodik, leképezés mezőszakaszt definiálhat explicit mezők társítások a kérelem törzsében szereplő.
 
-Jelenleg az Azure Search nem tud indexelni tetszőleges JSON-dokumentumokat közvetlenül, mert csak primitív adattípusokat, karakterlánc-tömbök és GeoJSON-pont támogatja. Használhatja azonban **mezőleképezéseivel** válassza ki a JSON-dokumentumok részei, és a "átemelés" azokat a keresési dokumentum legfelső szintű mezőkbe. A mező-leképezések alapjai kapcsolatos további információkért lásd: [az Azure Search indexelők Mezőleképezéseivel](search-indexer-field-mappings.md).
+Jelenleg az Azure Search nem tud indexelni tetszőleges JSON-dokumentumokat közvetlenül, mert csak a primitív adattípusokat, a karakterlánc-tömbök és a GeoJSON-pont támogatja. Használhatja azonban **mezőleképezéseivel** válassza ki a JSON-dokumentumok részei, és a "átemelés" azokat a keresési dokumentum legfelső szintű mezőkbe. A mező-leképezések alapjai kapcsolatos további információkért lásd: [az Azure Search indexelők Mezőleképezéseivel](search-indexer-field-mappings.md).
 
 Nyissa meg ismét a példa JSON-dokumentum:
 
@@ -269,13 +316,52 @@ Is hivatkozni lehet az egyes tömbelemek rekordsémáját egy nulla alapú index
 >
 >
 
-### <a name="rest-example-indexer-request-with-field-mappings"></a>REST-példa: Mezőleképezések az indexelő kérelem
+### <a name="rest-example"></a>Példa REST
 
-Az alábbi példa egy teljes körűen megadott indexelő tartalmat, beleértve a mező-leképezések:
+Ez a szakasz egy röviden összefoglaljuk az objektumok létrehozására használt összes kérelem. Összetevő részei, lásd: Ez a cikk korábbi szakaszaiban.
+
+### <a name="data-source-request"></a>Forrás kérelem
+
+Minden indexelő esetében van szükség egy adatforrás-objektum, amely a meglévő adatok való kapcsolódáshoz szükséges adatokat biztosít. 
+
+    POST https://[service name].search.windows.net/datasources?api-version=2017-11-11
+    Content-Type: application/json
+    api-key: [admin key for Azure Search]
+
+    {
+        "name" : "my-blob-datasource",
+        "type" : "azureblob",
+        "credentials" : { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=<account key>;" },
+        "container" : { "name" : "my-container", "query" : "optional, my-folder" }
+    }  
+
+
+### <a name="index-request"></a>Index kérelem
+
+Minden indexelő esetében van szükség egy célindex, amely megkapja az adatokat. A kérelem törzsében mezők, kereshető indexet a kívánt viselkedést támogatja a teljesítménykapacitást álló az indexséma határozza meg. Ez az index üresnek kell lennie az indexelő futtatásakor. 
+
+    POST https://[service name].search.windows.net/indexes?api-version=2017-11-11
+    Content-Type: application/json
+    api-key: [admin key for Azure Search]
+
+    {
+          "name" : "my-target-index",
+          "fields": [
+            { "name": "id", "type": "Edm.String", "key": true, "searchable": false },
+            { "name": "content", "type": "Edm.String", "searchable": true, "filterable": false, "sortable": false, "facetable": false }
+          ]
+    }
+
+
+### <a name="indexer-request"></a>Az indexelő kérelem
+
+A kérelem egy teljes körűen megadott indexelő jeleníti meg. Ez magában foglalja [mezőleképezéseivel](#field-mappings), amely az előző példák lettek hagyva. Idézze, hogy "ütemezés", "parameters" és "fieldMappings" választható mindaddig, amíg nincs egy elérhető alapértelmezett. Az indexelő futtatása azonnal felsorolhatja az "ütemezés" okoz. Az index az "json" alapértelmezett "parsingMode" felsorolhatja okoz.
+
+Adatok importálása az indexelő létrehozása az Azure Search aktivál. Ez azonnal, és ezt követően ütemezés szerint futtatott Ha megadott egy.
 
     POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
     Content-Type: application/json
-    api-key: [admin key]
+    api-key: [admin key for Azure Search]
 
     {
       "name" : "my-json-indexer",
@@ -289,6 +375,7 @@ Az alábbi példa egy teljes körűen megadott indexelő tartalmat, beleértve a
         { "sourceFieldName" : "/article/tags", "targetFieldName" : "tags" }
         ]
     }
+
 
 <a name="json-indexer-dotnet"></a>
 

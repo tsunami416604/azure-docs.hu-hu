@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: gsilva
-ms.openlocfilehash: ae3d1fa6a921067e8c3b629206e47e1a1314adc1
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: c4567919490c8bc9094dea3dddbe22550d9eebb2
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889239"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192905"
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>Gyorsított hálózatkezelésű Windows virtuális gép létrehozása
 
@@ -48,7 +48,7 @@ A következő disztribúciók az Azure katalógusából beépített támogatotta
 ### <a name="supported-vm-instances"></a>Támogatott Virtuálisgép-példányok
 Gyorsított hálózatkezelés legtöbb általános célú és a 2 vagy több vcpu-k méretű számításra optimalizált példányok esetén támogatott.  A támogatott sorozat a következők: D/DSv2 és az F/Fs
 
-Hyper-Threading technológia támogató példányokon gyorsított hálózatkezelés támogatott 4 vagy több vcpu-k a Virtuálisgép-példányokon. Támogatott sorozat a következők: A DSv3/D, E/ESv3, Fsv2 és Ms és Mms
+Hyper-Threading technológia támogató példányokon gyorsított hálózatkezelés támogatott 4 vagy több vcpu-k a Virtuálisgép-példányokon. Támogatott sorozat a következők: A Dsv3/D, E/Esv3, Fsv2, Lsv2, Ms és Mms és Ms/Mmsv2.
 
 További információ a Virtuálisgép-példányokon: [Windows Virtuálisgép-méretek](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
@@ -73,7 +73,7 @@ A virtuális gép létrehozása után ellenőrizheti a gyorsított hálózatkeze
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Telepítés [Azure PowerShell-lel](/powershell/azure/install-az-ps) 1.0.0-s verziójának vagy újabb. A jelenleg telepített verzió megkereséséhez futtassa `Get-Module -ListAvailable Az`. Ha telepíteni vagy frissíteni kell, telepítse a legújabb verziót a modul Az a [PowerShell-galériából](https://www.powershellgallery.com/packages/Az). A PowerShell-munkamenetben jelentkezzen be egy Azure-fiókba az [Connect-AzAccount](/powershell/module/az.profile/connect-azaccount).
+Telepítés [Azure PowerShell-lel](/powershell/azure/install-az-ps) 1.0.0-s verziójának vagy újabb. A jelenleg telepített verzió megkereséséhez futtassa `Get-Module -ListAvailable Az`. Ha telepíteni vagy frissíteni kell, telepítse a legújabb verziót a modul Az a [PowerShell-galériából](https://www.powershellgallery.com/packages/Az). A PowerShell-munkamenetben jelentkezzen be egy Azure-fiókba az [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount).
 
 A következő példákban cserélje le a példa a paraméter nevét a saját értékeire. Példa paraméterneveket foglalt *myResourceGroup*, *myNic*, és *myVM*.
 

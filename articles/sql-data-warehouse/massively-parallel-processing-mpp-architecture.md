@@ -10,12 +10,12 @@ ms.subservice: design
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 2f5e140e4f620362ca90a1e1cd06d23719cd2099
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 236009a3292f26d7fda73013c022f40535aa1ecb
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471606"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992328"
 ---
 # <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Az Azure SQL Data Warehouse - nagymértékben párhuzamos feldolgozási (MPP) architektúra
 Ismerje meg, hogyan kombinálja az Azure SQL Data Warehouse a nagymértékben párhuzamos feldolgozási (MPP) és az Azure storage nagy teljesítménye és skálázhatósága eléréséhez. 
@@ -84,7 +84,7 @@ Ciklikus időszeleteléses elosztott tábla egyenletesen elosztja az adatokat a 
 ## <a name="replicated-tables"></a>Replikált táblák
 Egy replikált tábla biztosít a leggyorsabb lekérdezési teljesítmény, kis méretű táblák esetében.
 
-Egy replikált tábla gyorsítótárazza a tábla minden számítási csomóponton teljes másolata. Ebből következően replikál egy táblát eltávolítása előtt egy összesítés vagy a számítási csomópontok közötti adatátvitelhez szükség. Replikált táblák kisméretű táblák leghasznosabbnak vannak. Extra tárterület szükséges, és nincsenek számítunk fel, amikor írása adatokat, ami nagy táblák praktikus további terhelés.  
+Egy replikált tábla gyorsítótárazza a tábla minden számítási csomóponton teljes másolata. Ebből következően replikál egy táblát eltávolítása előtt egy összesítés vagy a számítási csomópontok közötti adatátvitelhez szükség. Replikált táblák kisméretű táblák leghasznosabbnak vannak. Extra tárterület megadása kötelező, és győződjön meg arról, nagy táblák praktikus, amely az adatok írásakor felmerülő további erőforrásokra van.  
 
 Az alábbi ábrán látható egy replikált tábla. Az SQL Data warehouse-hoz a replikált tábla tárolja a rendszer az első terjesztési minden számítási csomóponton.  
 

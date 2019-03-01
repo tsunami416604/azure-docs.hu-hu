@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: snehaa
-ms.openlocfilehash: 9d1820215dd2b81edb694d71a1b9496237876d05
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 9577e2c8eea153b38475bf5126a41641b3642ae9
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416190"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991325"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Az Azure Migrate – gyakori kérdések (GYIK)
 
@@ -176,7 +176,7 @@ Ez a tulajdonságok csak a teljesítményalapú méretezés esetén számítanak
 
 ### <a name="what-is-dependency-visualization"></a>Mit jelent a függőségek képi megjelenítésének?
 
-Függőségek képi megjelenítésének lehetővé teszi, hogy Önnek felmérni a virtuális gépek migrálásra csoportok nagyobb biztonsággal által gépfüggőségek kereszt-ellenőrzés az értékelés futtatása előtt. Függőségek képi megjelenítésének segítségével győződjön meg arról, hogy semmi sem van magányos, elkerülve a váratlan kimaradás esetén, az Azure-ba való áttelepítésekor. Az Azure Migrate a Service Map megoldás a Log Analytics engedélyezése a függőségek képi megjelenítésének használja.
+Függőségek képi megjelenítésének lehetővé teszi, hogy Önnek felmérni a virtuális gépek migrálásra csoportok nagyobb biztonsággal által gépfüggőségek kereszt-ellenőrzés az értékelés futtatása előtt. Függőségek képi megjelenítésének segítségével győződjön meg arról, hogy semmi sem van magányos, elkerülve a váratlan kimaradás esetén, az Azure-ba való áttelepítésekor. Az Azure Migrate a Service Map megoldás a függőségek képi megjelenítésének engedélyezése az Azure Monitor naplóira használja.
 
 ### <a name="do-i-need-to-pay-to-use-the-dependency-visualization-feature"></a>Kell fizetnie a függőségmegjelenítési funkciót használja?
 
@@ -217,7 +217,7 @@ Függőségi ügynök által támogatott Windows operációs rendszerek listája
 Függőségi ügynök által támogatott Linux operációs rendszerek listája [Itt](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems).
 
 ### <a name="can-i-visualize-dependencies-in-azure-migrate-for-more-than-one-hour-duration"></a>Megjeleníthetők az Azure Migrate függőségeinek több mint egy óra időtartama?
-Nem, az Azure Migrate segítségével vizualizálhatja függőségek legfeljebb egy órát részére. Az Azure Migrate lehetővé teszi, hogy térjen vissza az az előzmények között az utolsó egy hónap legfeljebb egy adott dátumot, de a maximális időtartamot, amelynek jelenítheti meg a függőségek legfeljebb 1 óra. Például hogy használhatja tegnap függőségek megtekintése a függőségi térkép az idő időtartamát funkciót, de csak megtekintheti azt számára egy egy órás időszak. Azonban, használhatja a Log Analyticsben, hogy [a függőségi adatok lekérdezése](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics) hosszabb ideig keresztül.
+Nem, az Azure Migrate segítségével vizualizálhatja függőségek legfeljebb egy órát részére. Az Azure Migrate lehetővé teszi, hogy térjen vissza az az előzmények között az utolsó egy hónap legfeljebb egy adott dátumot, de a maximális időtartamot, amelynek jelenítheti meg a függőségek legfeljebb 1 óra. Például hogy használhatja tegnap függőségek megtekintése a függőségi térkép az idő időtartamát funkciót, de csak megtekintheti azt számára egy egy órás időszak. Azonban használhatja az Azure Monitor naplók [a függőségi adatok lekérdezése](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics) hosszabb ideig keresztül.
 
 ### <a name="is-dependency-visualization-supported-for-groups-with-more-than-10-vms"></a>Függőségek képi megjelenítésének támogatott csoportok több mint 10-alapú virtuális gépekhez?
 Is [csoportokra vonatkozó függőségek vizualizálása](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) , amelyek legfeljebb 10 virtuális gépeket. Ha egy csoport több mint 10 virtuális géppel rendelkezik, azt javasoljuk, hogy a csoport a kisebb csoportok osztani, és a Függőségek megjelenítése.

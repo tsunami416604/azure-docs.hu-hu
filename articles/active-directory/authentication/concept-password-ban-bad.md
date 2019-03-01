@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 96e2c3cfd509c9b0b77d0db00add31b58a07ce6a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ca079fa2ec41f85c365102fbd81ffde23e97e2c4
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206548"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990492"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>Rossz jelszavak, a szervezet számára
 
@@ -96,7 +96,7 @@ Példa: a felhasználó megváltoztatja jelszavát az "C0ntos0Blank12"
 
 Normalizálási, miután ezt a jelszót a "contosoblank12" lesz. A megfelelő folyamat megállapítja, hogy ez a jelszó tartalmazza-e két letiltott jelszavak: contoso és üres. Ez a jelszó majd pontszámot kap:
 
-[contoso] + [üres] = [1] + [2] = 4 ponttal mivel ezt a jelszót a 5 pontot, akkor a rendszer elutasítja.
+[contoso] + [üres] + [1] + [2] = 4 ponttal mivel ezt a jelszót a 5 pontot, akkor a rendszer elutasítja.
 
 Példa: a felhasználó megváltoztatja a jelszavát "ContoS0Bl@nkf9!".
 

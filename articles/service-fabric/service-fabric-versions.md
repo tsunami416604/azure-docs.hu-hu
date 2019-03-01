@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/24/2018
 ms.author: aljo
-ms.openlocfilehash: ac25ad0e43930555153abdba19bb81baaee40305
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: de5522e68d1329ce2b80a4d3c7045d38c13169e5
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879237"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57191647"
 ---
 # <a name="supported-service-fabric-versions"></a>A Service Fabric támogatott verziói
 
@@ -43,5 +43,5 @@ Tekintse meg a következő dokumentumokban talál útmutatást, hogy a fürt Ser
 | 6.0.* | 5.6.205.* |Kisebb vagy egyenlő 2.8-as verziója |30,2018. március     |
 | 6.1.* | 5.7.221.* |Kisebb vagy egyenlő, mint a 3.0-s verzió |Július 15,2018      |
 | 6.2.* | 6.0.232.* |Kisebb vagy egyenlő, mint 3.1-es verzióját |Október 26,2018   |
-| 6.3.* | 6.1.480.* |Kisebb vagy egyenlő 3.2-es verziója |Február 28,2019  |
+| 6.3.* | 6.1.480.* |Kisebb vagy egyenlő 3.2-es verziója |31,2019. március  |
 | 6.4.* | 6.2.301.* |Kisebb vagy egyenlő 3.3-as verziója |Aktuális verzióját, és ezért nincs befejezési dátum |

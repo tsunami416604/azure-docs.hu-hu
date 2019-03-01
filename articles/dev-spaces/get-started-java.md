@@ -1,5 +1,5 @@
 ---
-title: Hozzon létre egy Kubernetes fejlesztői terület a felhőben, a Java és a VS Code használatával |} A Microsoft Docs
+title: Hozzon létre egy Kubernetes fejlesztői terület a felhőben, a Java és a VS Code használatával
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -9,14 +9,14 @@ ms.author: stephpr
 ms.date: 09/26/2018
 ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
+keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s
 manager: mmontwil
-ms.openlocfilehash: d080a3d251d88095e14011b5834d2b923f204162
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 5d7e86b6c126874cef4bc33f6e17adca8b7f1d5e
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822906"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194205"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-java"></a>Azure fejlesztői szóközöket a Java használatának első lépései
 

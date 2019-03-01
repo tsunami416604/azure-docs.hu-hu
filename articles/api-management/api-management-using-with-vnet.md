@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 2770c6a31f0117b96e08eb8a03986f37ebdb7098
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 98d8f530b91c2b2483d00838cd4001be88e18a6c
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733741"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011211"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>A virtuális hálózatok az Azure API Management használata
 Az Azure virtuális hálózatok (Vnetek) helyezni, az Azure-erőforrások bármelyikét elérését Ön szabályozza a nem internet routeable hálózat teszi lehetővé. Ezek a hálózatok csatlakozhat a helyszíni hálózatokhoz való kapcsolódásának VPN különböző technológiákat. További információ az adatok itt az Azure-beli virtuális hálózatok kezdő: [Az Azure Virtual Network áttekintése](../virtual-network/virtual-networks-overview.md).
@@ -89,7 +89,7 @@ Is engedélyezheti a PowerShell-parancsmagok használatával virtuális hálóza
 
 * **Hozzon létre egy virtuális hálózaton belül egy API Management szolgáltatás**: A parancsmag [New-AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) egy virtuális hálózaton belül az Azure API Management szolgáltatás létrehozása.
 
-* **Egy meglévő, egy virtuális hálózaton belül az API Management szolgáltatás üzembe helyezése**: A parancsmag [Update-AzApiManagementDeployment](/powershell/module/az.apimanagement/update-azapimanagementdeployment) áthelyezése egy meglévő Azure API Management szolgáltatást egy virtuális hálózaton belül.
+* **Egy meglévő, egy virtuális hálózaton belül az API Management szolgáltatás üzembe helyezése**: A parancsmag [Update-AzApiManagementRegion](/powershell/module/az.apimanagement/update-azapimanagementregion) áthelyezése egy meglévő Azure API Management szolgáltatást egy virtuális hálózaton belül.
 
 ## <a name="connect-vnet"> </a>Csatlakozás egy virtuális hálózatban lévő üzemeltetett webes szolgáltatáshoz
 Miután az API Management szolgáltatás a virtuális hálózathoz van csatlakoztatva, benne a háttérszolgáltatásokat fér hozzá semmiben nem különbözik nyilvános szolgáltatásokhoz való hozzáférését. Csak írja be a helyi IP-cím vagy a gazdagép neve (Ha a virtuális hálózat DNS-kiszolgáló van konfigurálva), a webszolgáltatás a **webszolgáltatás URL-címe** mezőt egy új API létrehozásakor, vagy egy meglévőt szerkeszt.
@@ -132,7 +132,7 @@ Az API Management-szolgáltatáspéldány egy virtuális hálózaton jöhet szó
 
 + **DNS-hozzáférési**: 53-as porton a kimenő hozzáférést a DNS-kiszolgálókkal való kommunikációhoz szükséges. Ha egyéni DNS-kiszolgálót a VPN-átjáró másik végén, a DNS-kiszolgáló elérhető, az alhálózatról, az API Management üzemeltető kell lennie.
 
-+ **Metrikák és a Szolgáltatásállapot-figyelést**: Kimenő hálózati kapcsolat az Azure figyelési végpontok, amely alatt a következő tartományok feloldása: 
++ **Metrikák és a Szolgáltatásállapot-figyelést**: Kimenő hálózati kapcsolat az Azure figyelési végpontok, amely alatt a következő tartományok feloldása:
 
     | Azure-környezet | Végpontok                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -202,7 +202,6 @@ Az alhálózat, amelyben az API Management is üzembe helyezhetők a minimális 
 * [Szolgáltatáscímkék](../virtual-network/security-overview.md#service-tags)
 
 [api-management-using-vnet-menu]: ./media/api-management-using-with-vnet/api-management-menu-vnet.png
-[api-management-setup-vpn-select]: ./media/api-management-using-with-vnet/api-management-using-vnet-type.png
 [api-management-setup-vpn-select]: ./media/api-management-using-with-vnet/api-management-using-vnet-select.png
 [api-management-setup-vpn-add-api]: ./media/api-management-using-with-vnet/api-management-using-vnet-add-api.png
 [api-management-vnet-private]: ./media/api-management-using-with-vnet/api-management-vnet-internal.png

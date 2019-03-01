@@ -8,12 +8,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: b579816a4367537a7da4aa0f68c8776465295448
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 61afefb955914c75606c4fff36ebcc05a4ad0057
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670752"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010905"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>A Microsoft Azure Recovery Services-(MARS) ügynök biztonsági mentés támogatási mátrixa
 
@@ -29,7 +29,7 @@ A MARS-ügynök szolgál az Azure Backup szolgáltatás biztonsági mentése az 
 Milyen biztonsági másolatot készíthet attól függ, ahová az agent telepítve van.
 
 - [További](backup-architecture.md#architecture-direct-backup-of-on-premises-windows-machinesazure-vm-filesfolders) kapcsolatos biztonsági mentési architektúra a MARS-ügynök használatával.
-- [További]() MABS/DPM névjegye [biztonsági mentési architektúra](backup-architecture.md#architecture-back-up-to-dpmmabs)és [követelmények](backup-support-matrix-mabs-dpm.md).
+- További tudnivalók a MABS/DPM [biztonsági mentési architektúra](backup-architecture.md#architecture-back-up-to-dpmmabs)és [követelmények](backup-support-matrix-mabs-dpm.md).
 
 
 ## <a name="supported-installation"></a>Támogatott telepítési
@@ -37,7 +37,7 @@ Milyen biztonsági másolatot készíthet attól függ, ahová az agent telepít
 **Telepítés** | **Részletek**
 --- | ---
 **Töltse le a legújabb MARS-ügynök** | Az ügynök legújabb verzióját letöltheti a tárolóból vagy [töltenie közvetlenül](https://aka.ms/azurebackup_agent).
-**Telepítse a gépen közvetlenül** | A MARS-ügynök telepítheti közvetlenül a egy helyszíni Windows server vagy a Windows Azure virtuális Gépen fut az [támogatott operációs rendszerek]().
+**Telepítse a gépen közvetlenül** | A MARS-ügynök telepítheti közvetlenül a egy helyszíni Windows server vagy a Windows Azure virtuális Gépen fut az [támogatott operációs rendszerek](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems).
 **Telepítse a tartalék kiszolgáló** | Ha beállította a DPM- vagy MABS biztonsági mentése az Azure-ba, töltse le és telepítse a MARS-ügynököt a kiszolgálón. Az ügynök megfelelően telepíthető a [támogatott operációs rendszerek](backup-support-matrix-mabs-dpm.md#supported-mabs-and-dpm-operating-systems) a backup server támogatási mátrixa.
 
 > [!NOTE]

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2019
 ms.author: spelluru
-ms.openlocfilehash: 9a267b48e185e02c1b1217380429453799308bbe
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 393a5c0af5ff7ccaef8aa462391c5c9457aa9c08
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886769"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011113"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>A DevTest Labs szolgáltatásban létrehozott tesztkörnyezet egy összetevőtárban hozzáadása
 DevTest Labs lehetővé teszi, hogy adjon meg egy időben, a virtuális gép létrehozása, vagy a virtuális gép létrehozása után egy virtuális Gépet hozzáadni kívánt összetevőt. Az összetevő egy eszköz és a egy virtuális Gépre telepíteni kívánt alkalmazás lehet. Összetevők egy JSON-fájlt a betöltött GitHub vagy a VSTS Git-adattárból vannak definiálva. 
@@ -172,7 +172,7 @@ A sablon üzembe helyezése az Azure és az erőforrás hozta létre, ha még ne
 - [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Portallal](../azure-resource-manager/resource-group-template-deploy-portal.md)
 - [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Manager REST API-val](../azure-resource-manager/resource-group-template-deploy-rest.md)
 
-Lépjen tovább, és tekintse meg a PowerShell-sablon üzembe helyezése. A sablon üzembe helyezéséhez használt parancsmagok környezetfüggő,, így az aktuális bérlő és a jelenlegi előfizetésében. Használat [Set-AzContext](/powershell/module/az.profile/set-azcontext) a sablon üzembe helyezése, ha szükséges, módosíthatja a környezet előtt.
+Lépjen tovább, és tekintse meg a PowerShell-sablon üzembe helyezése. A sablon üzembe helyezéséhez használt parancsmagok környezetfüggő,, így az aktuális bérlő és a jelenlegi előfizetésében. Használat [Set-AzContext](/powershell/module/az.accounts/set-azcontext) a sablon üzembe helyezése, ha szükséges, módosíthatja a környezet előtt.
 
 Először is hozzon létre egy erőforrás csoport [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Ha az már a használni kívánt erőforráscsoport már létezik, hagyja ki ezt a lépést.
 
@@ -375,7 +375,7 @@ if ($ArtifactRepositoryName -eq $null){
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | Ez a parancs segítségével például a helyét a tesztlabor kaphasson. |
 | [New-AzResource](/powershell/module/az.resources/new-azresource) | Nem tartozik a megadott parancs összetevő tárházak hozzáadásához. Az általános [New-AzResource](/powershell/module/az.resources/new-azresource) parancsmag does a feladatot. Ez a parancsmag van szüksége, vagy a **ResourceId** vagy a **ResourceName** és **ResourceType** pár tudni, hogy a létrehozni kívánt erőforrás típusát. Ez a példaszkript használja az erőforrás nevét és az erőforrás típusának pár. <br/><br/>Figyelje meg, hogy létrehozásakor összetevő tárház forrásának ugyanazon a helyen, és ugyanazt az erőforráscsoportot, a labor létrehozása alatt.|
 
-A parancsfájl hozzáad egy új erőforrást az aktuális előfizetéshez. Használat [Get-AzContext](/powershell/module/az.profile/get-azcontext) ezek az információk megtekintéséhez. Használat [Set-AzContext](/powershell/module/az.profile/set-azcontext) az aktuális bérlő és az előfizetés beállításához.
+A parancsfájl hozzáad egy új erőforrást az aktuális előfizetéshez. Használat [Get-AzContext](/powershell/module/az.accounts/get-azcontext) ezek az információk megtekintéséhez. Használat [Set-AzContext](/powershell/module/az.accounts/set-azcontext) az aktuális bérlő és az előfizetés beállításához.
 
 A legjobb módja az erőforrás nevét és az erőforrás típussal kapcsolatos információk felderítésére az [Test Drive Azure REST API-k](https://azure.github.io/projects/apis/) webhelyén. Tekintse meg a [DevTest Labs – a 2016-05-15](http://aka.ms/dtlrestapis) -szolgáltatót, az elérhető REST API-kat a DevTest Labs-szolgáltatóhoz. A parancsfájl-felhasználók a következő erőforrás-azonosítója. 
 

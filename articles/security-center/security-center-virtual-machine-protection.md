@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/27/2019
+ms.date: 2/25/2019
 ms.author: monhaber
-ms.openlocfilehash: 0b548acc92ab1efedab963e9bd3318e8525ffee4
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 73a88ec0280728b4a485bd095096e90bbc43ef40
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649560"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990951"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>A gépek és az alkalmazások az Azure Security Center védelme
 Az Azure Security Center elemzi az Azure-erőforrások biztonsági állapotát. Ha a Security Center azonosítja a potenciális biztonsági réseket, javaslatok, amelyek végigvezetik a szükséges vezérlők konfigurálásának folyamatán hoz létre. Javaslatok alkalmazása az Azure-erőforrástípus: virtuális gépek (VM) és a számítógépek, alkalmazások, hálózati, SQL, és az identitás- és hozzáférés.
@@ -226,7 +226,11 @@ Ha beállítja az összes meglévő méretezési csoportok a Microsoft Monitorin
 |Gép|30|Biztonsági rések felmérését lehetővé tevő megoldás telepítése a virtuális gépeken|Biztonsági rések felmérését lehetővé tevő megoldás telepítése a virtuális gépeken|
 |Gép|1|Virtuális gépek áttelepítése az új Azure Resource Manager-erőforrások|A virtuális gépek Azure Resource Manager használatával adja meg például a biztonsági fejlesztések: erősebb hozzáférés-vezérlés (RBAC), a jobb naplózás, a Resource Manager-alapú üzembe helyezés és a cégirányítási, elérését a felügyelt identitások, a titkos kulcsokat, a key vaulthoz való hozzáférés Az Azure AD-alapú hitelesítést és címkék támogatása és -erőforráscsoportok egyszerűbb biztonság kezelése. |
 |Gép|30|Sebezhetőség-felmérési megoldás használatával a biztonsági rések|Amelynek a sebezhetőség-felmérési 3. fél megoldás üzembe helyezett virtuális gépek folyamatosan értékelni alatt álló alkalmazás és az operációs rendszer biztonsági rések ellen. Minden alkalommal, amikor kivédeni találhatók, ezek érhetők el további információ az ajánlás része.|
-
+|Virtuálisgép-méretezési csoport |4|Diagnosztikai naplók engedélyezése virtuálisgép-méretezési csoportokban|Naplók engedélyezése és megőrzi őket a legfeljebb egy évig. Ez lehetővé teszi, hogy hozza létre újra a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához. Ez akkor hasznos, ha egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül.|
+|Virtuálisgép-méretezési csoport|35|Biztonsági rések javítása virtuálisgép-méretezési csoportok biztonsági konfigurációjában|Kijavíthatja a biztonsági réseket a virtuálisgép-méretezési csoportok biztonsági konfigurációjában, hogy megvédje őket a támadásoktól. |
+|Virtuálisgép-méretezési csoport|5|Endpoint Protection állapothibáinak javítása virtuálisgép-méretezési csoportokban|Kijavíthatja az Endpoint Protection állapotfigyelő hibáit a virtuálisgép-méretezési csoportokban a fenyegetések és biztonsági rések elleni védelem érdekében. |
+|Virtuálisgép-méretezési csoport|10|Végpontvédelmi megoldás telepítése virtuálisgép-méretezési csoportokban|Telepítse a végpontvédelmi megoldás a fenyegetések és biztonsági rések elleni védelem érdekében a virtuális gép méretezési csoportjai. |
+|Virtuálisgép-méretezési csoport|40|Rendszerfrissítések telepítése virtuálisgép-méretezési csoportokban|Hiányzó rendszerbiztonsági és kulcsfontosságú frissítéseket telepíthet a Windows és Linux rendszerű virtuálisgép-méretezési csoportjainak védelméhez. |
  
 
 

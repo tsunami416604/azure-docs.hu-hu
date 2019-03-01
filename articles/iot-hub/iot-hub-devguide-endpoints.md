@@ -1,25 +1,25 @@
 ---
 title: Megismerheti az Azure IoT Hub-végpontok |} A Microsoft Docs
 description: Fejlesztői útmutató – az IoT Hub információk rendelkező eszköz és szolgáltatás felé néző végpontok.
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robin.shahan
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.author: dobett
-ms.openlocfilehash: 43e2101f413985974b964f2261d852692bcac61d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 72604f84297ddc77b9732c19789d249ac4fa7774
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251440"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010837"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Referencia – IoT Hub-végpontok
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-## <a name="iot-hub-names"></a>Az IoT Hub nevét
+## <a name="iot-hub-names"></a>IoT Hub names
 
 Annak az állomásneve, amelyen a végpontok a hubhoz a portálon az IoT hub a **áttekintése** lapot. Alapértelmezés szerint a DNS-neve az IoT hub néz ki: `{your iot hub name}.azure-devices.net`.
 
@@ -77,7 +77,7 @@ Meglévő Azure-szolgáltatások az előfizetésben az IoT hubhoz való működ�
 
 Az IoT Hub a következő Azure-szolgáltatások jelenleg további végpontokat támogatja:
 
-* Az Azure Storage-tárolók
+* Azure Storage-tárolók
 * Event Hubs
 * Service Bus által kezelt üzenetsorok
 * Service Bus-üzenettémák

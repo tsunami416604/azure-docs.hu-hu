@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: f169c411-1bd7-4554-80c1-84351247bf94
 ms.date: 01/27/2017
-ms.openlocfilehash: 6c4144d26042729684e507b1afaa5e3006d8a34e
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 180d90450497b38f107f3601944385a003f50282
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125930"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193513"
 ---
 # <a name="create-schemas-for-tracking-as2-messages-and-mdns-in-integration-accounts-for-azure-logic-apps"></a>Sémák nyomon követési AS2-üzenetek és visszaigazolással integrációs fiókok az Azure Logic Apps létrehozása
 
@@ -58,20 +58,20 @@ Segítségével nyomon, hogy sikeres, a hibákat, és a vállalatközi (B2B) tra
 
 | Tulajdonság | Típus | Leírás |
 | --- | --- | --- |
-| senderPartnerName | Sztring | AS2 üzenetet küldő partner nevének. (Választható lehetőség) |
-| receiverPartnerName | Sztring | AS2 üzenetet fogadó partner nevének. (Választható lehetőség) |
-| as2To | Sztring | AS2 üzenetet fogadó nevét, az AS2-üzenet fejlécét. (Kötelező) |
-| as2From | Sztring | AS2 üzenet küldője nevét, az AS2-üzenet fejlécét. (Kötelező) |
-| agreementname tulajdonság | Sztring | Az AS2-megállapodás, amelyhez az üzenetek elhárulnak neve. (Választható lehetőség) |
-| irány | Sztring | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
-| messageId | Sztring | AS2-Üzenetazonosító, a a fejlécek az AS2-üzenet (nem kötelező) |
-| dispositionType |Sztring | Üzenet Disposition-Notification (MDN) típusú érték. (Választható lehetőség) |
-| fileName | Sztring | Az AS2-üzenet fejlécének a fájl neve. (Választható lehetőség) |
+| senderPartnerName | String | AS2 üzenetet küldő partner nevének. (Választható lehetőség) |
+| receiverPartnerName | String | AS2 üzenetet fogadó partner nevének. (Választható lehetőség) |
+| as2To | String | AS2 üzenetet fogadó nevét, az AS2-üzenet fejlécét. (Kötelező) |
+| as2From | String | AS2 üzenet küldője nevét, az AS2-üzenet fejlécét. (Kötelező) |
+| agreementName | String | Az AS2-megállapodás, amelyhez az üzenetek elhárulnak neve. (Választható lehetőség) |
+| irány | String | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
+| messageId | String | AS2-Üzenetazonosító, a a fejlécek az AS2-üzenet (nem kötelező) |
+| dispositionType |String | Üzenet Disposition-Notification (MDN) típusú érték. (Választható lehetőség) |
+| fileName | String | Az AS2-üzenet fejlécének a fájl neve. (Választható lehetőség) |
 | isMessageFailed |Logikai | Hogy az AS2-üzenet nem sikerült. (Kötelező) |
 | isMessageSigned | Logikai | Hogy az AS2-üzenet alá van írva. (Kötelező) |
 | isMessageEncrypted | Logikai | Hogy az AS2-üzenet titkosítva van. (Kötelező) |
 | isMessageCompressed |Logikai | Hogy az AS2-üzenet tömörítve volt. (Kötelező) |
-| correlationMessageId | Sztring | AS2-Üzenetazonosító, üzenetek korrelációját, ha a visszaigazolással. (Választható lehetőség) |
+| correlationMessageId | String | AS2-Üzenetazonosító, üzenetek korrelációját, ha a visszaigazolással. (Választható lehetőség) |
 | incomingHeaders |Tartalmazó JToken | Bejövő AS2 üzenet részletei. (Választható lehetőség) |
 | outgoingHeaders |Tartalmazó JToken | Kimenő AS2-üzenet fejléc részleteit. (Választható lehetőség) |
 | isNrrEnabled | Logikai | Használja az alapértelmezett értéket, ha az érték nem ismert. (Kötelező) |
@@ -111,21 +111,21 @@ Segítségével nyomon, hogy sikeres, a hibákat, és a vállalatközi (B2B) tra
 
 | Tulajdonság | Típus | Leírás |
 | --- | --- | --- |
-| senderPartnerName | Sztring | AS2 üzenetet küldő partner nevének. (Választható lehetőség) |
-| receiverPartnerName | Sztring | AS2 üzenetet fogadó partner nevének. (Választható lehetőség) |
-| as2To | Sztring | Az AS2-üzenetek fogadó partner nevének. (Kötelező) |
-| as2From | Sztring | Az AS2-üzenetek küldő partner nevének. (Kötelező) |
-| agreementname tulajdonság | Sztring | Az AS2-megállapodás, amelyhez az üzenetek elhárulnak neve. (Választható lehetőség) |
-| irány |Sztring | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
-| messageId | Sztring | AS2-üzenet azonosítója. (Választható lehetőség) |
-| originalMessageId |Sztring | AS2 eredeti üzenet azonosítója. (Választható lehetőség) |
-| dispositionType | Sztring | MDN típusú érték. (Választható lehetőség) |
+| senderPartnerName | String | AS2 üzenetet küldő partner nevének. (Választható lehetőség) |
+| receiverPartnerName | String | AS2 üzenetet fogadó partner nevének. (Választható lehetőség) |
+| as2To | String | Az AS2-üzenetek fogadó partner nevének. (Kötelező) |
+| as2From | String | Az AS2-üzenetek küldő partner nevének. (Kötelező) |
+| agreementName | String | Az AS2-megállapodás, amelyhez az üzenetek elhárulnak neve. (Választható lehetőség) |
+| irány |String | Az üzenet folyamat iránya küld és fogad. (Kötelező) |
+| messageId | String | AS2-üzenet azonosítója. (Választható lehetőség) |
+| originalMessageId |String | AS2 eredeti üzenet azonosítója. (Választható lehetőség) |
+| dispositionType | String | MDN típusú érték. (Választható lehetőség) |
 | isMessageFailed |Logikai | Hogy az AS2-üzenet nem sikerült. (Kötelező) |
 | isMessageSigned |Logikai | Hogy az AS2-üzenet alá van írva. (Kötelező) |
 | isNrrEnabled | Logikai | Használja az alapértelmezett értéket, ha az érték nem ismert. (Kötelező) |
-| állapotkód | Enum | Engedélyezett értékek a következők **elfogadva**, **elutasítva**, és **AcceptedWithErrors**. (Kötelező) |
+| statusCode | Enum | Engedélyezett értékek a következők **elfogadva**, **elutasítva**, és **AcceptedWithErrors**. (Kötelező) |
 | micVerificationStatus | Enum | Engedélyezett értékek a következők **NotApplicable**, **sikeres**, és **sikertelen**. (Kötelező) |
-| correlationMessageId | Sztring | Korrelációs azonosító. Az eredeti messaged azonosítója (az üzenet azonosítója az üzenet MDN van konfigurálva). (Választható lehetőség) |
+| correlationMessageId | String | Korrelációs azonosító. Az eredeti messaged azonosítója (az üzenet azonosítója az üzenet MDN van konfigurálva). (Választható lehetőség) |
 | incomingHeaders | Tartalmazó JToken | Azt jelzi, hogy a bejövő üzenet részletei. (Választható lehetőség) |
 | outgoingHeaders |Tartalmazó JToken | Azt jelzi, hogy a kimenő üzenet részletei. (Választható lehetőség) |
 ||||
@@ -140,4 +140,4 @@ B2B-protokoll követési sémák kapcsolatos információkért lásd:
 ## <a name="next-steps"></a>További lépések
 
 * Ismerje meg [B2B-üzenetek figyelése](logic-apps-monitor-b2b-message.md)
-* Ismerje meg [a Log Analytics B2B üzenetek nyomon követése](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)
+* Ismerje meg [az Azure Monitor naplóira B2B üzenetek nyomon követése](../logic-apps/logic-apps-track-b2b-messages-omsportal.md)

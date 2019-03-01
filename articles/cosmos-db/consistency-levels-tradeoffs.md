@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 2/13/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: e727e1ad9a4d202a3798f516d1db7d88464999fa
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: d8031d4984a278c04342853a06fecb3c8a9a8171
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875956"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194442"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisszumok a konzisztencia, a rendelkezésre állás és a teljesítmény között 
 
@@ -30,11 +30,11 @@ Minden modell rendelkezésre állás és teljesítmény kompromisszumot kínál,
 
 ## <a name="consistency-levels-and-latency"></a>Konzisztenciaszintek és késés
 
-- Az olvasási késés az összes konzisztenciaszintek mindig garantáltan 99 százalékon legfeljebb 10 ezredmásodperc. Az olvasási késés alapját a szolgáltatói szerződés. Az átlagos olvasási késés, az 50. percentilis, a rendszer általában 2 ezredmásodperc vagy kisebb. Az Azure Cosmos-fiókok, amelyek span számos régióban, és megtörténik az erős konzisztencia a garancia kivételt jelentenek.
+Az olvasási késés az összes konzisztenciaszintek mindig garantáltan 99 százalékon legfeljebb 10 ezredmásodperc. Az olvasási késés alapját a szolgáltatói szerződés. Az átlagos olvasási késés, az 50. percentilis, a rendszer általában 2 ezredmásodperc vagy kisebb. Az Azure Cosmos-fiókok, amelyek span számos régióban, és megtörténik az erős konzisztencia a garancia kivételt jelentenek.
 
-- A fennmaradó konzisztenciaszintekről írási késése mindig garantáltan 99 százalékon legfeljebb 10 ezredmásodperc. Az SLA biztonsági Ez írási késése. Az átlagos írási késése, az 50. percentilis, akkor általában 5 ezredmásodperc vagy kisebb.
+A írási késése, az összes konzisztenciaszintek mindig garantáltan 99 százalékon legfeljebb 10 ezredmásodperc. Az SLA biztonsági Ez írási késése. Az átlagos írási késése, az 50. percentilis, akkor általában 5 ezredmásodperc vagy kisebb.
 
-Előfordulhat, hogy az egyes Azure Cosmos-fiókok konfigurálása, erős konzisztencia számos régióban. Ebben az esetben az írási késése garantáltan legalább két alkalommal üzenetváltási időt (RTT) és 99 százalékon 10 ezredmásodperc. Az összes legtávolabbi két régiót közötti Körbejárási társítva az Azure Cosmos-fiók. Az a két, az Azure Cosmos-fiókjához társított legtávolabbi régiók közötti körbejárási megegyezik. Ez a beállítás jelenleg előzetes verzióban érhető el.
+Azure Cosmos-több régióban az erős konzisztencia konfigurált fiókok esetében az írási késése garantáltan legalább két alkalommal üzenetváltási időt (RTT) a két legtávolabbi régiók, valamint 10 ezredmásodperc 99 százalékon között. Ez a beállítás jelenleg előzetes verzióban érhető el.
 
 A pontos Körbejárási késés a jelzőfény sebesség távolság függvénye és az Azure hálózati topológia. Az Azure-hálózatok nem biztosít bármely késés SLA-k számára a két Azure-régiók közötti Körbejárási. Az Azure Cosmos-fiókja replikáció késése jelennek meg az Azure Portalon. Az Azure portal segítségével figyelheti a replikáció késése, amely a fiókhoz társított különböző régiók között.
 

@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: dobett
-ms.openlocfilehash: bdb9b48549d24565fdafb9ac1c3215029445793c
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: ffa85a1a14434e638e76e699650a0be8e31ade00
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100492"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010956"
 ---
 # <a name="predictive-maintenance-solution-accelerator-overview"></a>A prediktív karbantartási megoldásgyorsító áttekintése
 
@@ -27,7 +27,7 @@ A következő diagram a megoldásgyorsító logikai összetevőit vázolja fel:
 
 ![Logikai architektúra][img-architecture]
 
-A kék elemek Azure-szolgáltatások, amelyek a megoldásgyorsító üzembe helyezésének régiójában vannak kiépítve. A régiók listája, amelyekben a megoldásgyorsító üzembe helyezhető, az [üzembehelyezési oldalon][lnk-azureiotsuite] jelenik meg.
+A kék elemek Azure-szolgáltatások, amelyek a megoldásgyorsító üzembe helyezésének régiójában vannak kiépítve. A régiók listája, amelyekben a megoldásgyorsító üzembe helyezhető, az [üzembehelyezési oldalon][lnk-azureiotsolutions] jelenik meg.
 
 A zöld elem egy szimulált repülő motorját. Ezekről a szimulált eszközökről a [szimulált eszközökkel](#simulated-devices) foglalkozó szakaszban tudhat meg többet.
 
@@ -39,7 +39,7 @@ A kiépített erőforrások megtekintéséhez az Azure Portalon keresse meg a ki
 
 ![Gyorsító erőforrások][img-resource-group]
 
-A megoldásgyorsító kiépítésekor egy e-mailt kap, amely tartalmazza a Machine Learning-munkaterületre mutató hivatkozást. A Machine Learning-munkaterületet is elérheti a [a Microsoft Azure IoT-Megoldásgyorsítók] [ lnk-azureiotsuite] lapot. Amikor a megoldás **Kész** állapotban van, elérhetővé válik egy csempe ezen az oldalon.
+A megoldásgyorsító kiépítésekor egy e-mailt kap, amely tartalmazza a Machine Learning-munkaterületre mutató hivatkozást. A Machine Learning-munkaterületet is elérheti a [a Microsoft Azure IoT-Megoldásgyorsítók] [ lnk-azureiotsolutions] lapot. Amikor a megoldás **Kész** állapotban van, elérhetővé válik egy csempe ezen az oldalon.
 
 ![Machine learning-modell][img-machine-learning]
 
@@ -71,7 +71,7 @@ Az IoT Hub nyugtázza az eszközparancsokat.
 Az **Event Processor Host** egy Azure-beli webes feladatban fut. Az **eseményfeldolgozó** a befejezett ciklusok átlagos érzékelőértékeit kezeli. Ezután továbbítja ezeket az értékeket egy betanított modellt egy motor rul értékének kiszámítására. Egy API-t a modell a Machine Learning-munkaterület a megoldás részét képező hozzáférést biztosít.
 
 ## <a name="machine-learning"></a>Machine Learning
-A Machine Learning összetevő egy olyan modellt használ, amely valódi repülőgépek adataiból jött lére. A Machine Learning-munkaterületet a megoldás csempéjéről érheti el, amely az [azureiotsuite.com][lnk-azureiotsuite] oldalon található. A csempe akkor érhető el, amikor a megoldás **Kész** állapotban van.
+A Machine Learning összetevő egy olyan modellt használ, amely valódi repülőgépek adataiból jött lére. Áttérhet a Machine Learning-munkaterületet a megoldás csempéjéről a a [azureiotsolutions.com] [ lnk-azureiotsolutions] lapot. A csempe akkor érhető el, amikor a megoldás **Kész** állapotban van.
 
 Machine Learning-modellhez, amely bemutatja, hogyan működik az IoT-megoldás gyorsító szolgáltatásokon keresztül gyűjtött telemetriával sablonként érhető el. A Microsoft felépítette egy [regressziós modell] [ lnk_regression_model] felépítette egy repülőmotor nyilvánosan elérhető adatok alapján<sup>\[1\]</sup>, és lépésenkénti útmutatóját a modell használatának módjáról.
 
@@ -93,7 +93,7 @@ Emellett megismerheti az IoT-megoldásgyorsítók egyéb funkcióit:
 
 [lnk-remote-monitoring]: quickstart-predictive-maintenance-deploy.md
 [lnk-cortana-analytics]: https://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Template-3
-[lnk-azureiotsuite]: https://www.azureiotsolutions.com/
+[lnk-azureiotsolutions]: https://www.azureiotsolutions.com/
 [lnk-faq]: iot-accelerators-faq.md
 [lnk-security-groundup]:/azure/iot-fundamentals/iot-security-ground-up
 [lnk-machine-learning]: https://azure.microsoft.com/services/machine-learning/

@@ -1,19 +1,19 @@
 ---
 title: Megismerheti az Azure IoT Hub-identitásjegyzék |} A Microsoft Docs
 description: Fejlesztői útmutató – a leírását az IoT Hub eszközidentitás-jegyzék és hogyan használhatja az eszközök kezelésére. Tömeges importálása és exportálása eszközidentitások kapcsolatos információkat tartalmazza.
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
-ms.author: dobett
-ms.openlocfilehash: 6291350cab41c123b41f7fee811bf72a21d9ff35
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: 935635c474190413545d1a2731c367a691bfa56d
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319132"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010260"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Az IoT hub eszközidentitás-jegyzék ismertetése
 
@@ -107,17 +107,17 @@ Tulajdonságok: Üzenet Rendszertulajdonságok van fűzve előtagként a `$` szi
 
 | Name (Név) | Érték |
 | --- | --- |
-|$content-típus | application/json |
+|$content-type | application/json |
 |$iothub-enqueuedtime |  Idő, amikor az értesítés küldése |
-|$iothub-üzenet-forrás | deviceLifecycleEvents |
-|$content-kódolás | utf-8 |
+|$iothub-message-source | deviceLifecycleEvents |
+|$content-encoding | utf-8 |
 |opType | **createDeviceIdentity** vagy **deleteDeviceIdentity** |
-|HubName | IoT Hub nevét |
+|HubName | Name of IoT Hub |
 |deviceId | Az eszköz azonosítója |
 |operationTimestamp | ISO8601 időbélyegző-művelet |
 |iothub-message-schema | deviceLifecycleNotification |
 
-Szervezet: Ebben a szakaszban JSON formátumban vannak, és a iker, a létrehozott eszközidentitással jelöli. Például:
+Szövegtörzs: Ebben a szakaszban JSON formátumban vannak, és a létrehozott eszközidentitással, az ikereszköz jelöli. Például:
 
 ```json
 {
@@ -143,17 +143,17 @@ Szervezet: Ebben a szakaszban JSON formátumban vannak, és a iker, a létrehozo
 
 | Name (Név) | Érték |
 | --- | --- |
-$content-típus | application/json |
+$content-type | application/json |
 $iothub-enqueuedtime |  Idő, amikor az értesítés küldése |
-$iothub-üzenet-forrás | moduleLifecycleEvents |
-$content-kódolás | utf-8 |
+$iothub-message-source | moduleLifecycleEvents |
+$content-encoding | utf-8 |
 opType | **createModuleIdentity** vagy **deleteModuleIdentity** |
-HubName | IoT Hub nevét |
+HubName | Name of IoT Hub |
 moduleId | A modul azonosítója |
 operationTimestamp | ISO8601 időbélyegző-művelet |
 iothub-message-schema | moduleLifecycleNotification |
 
-Törzse: Ez a szakasz JSON formátumban vannak, és az ikereszköz az létrehozott modul identitás jelöli. Például:
+Szövegtörzs: Ez a szakasz a JSON formátumban vannak, és az ikereszköz az létrehozott modul identitás jelöli. Például:
 
 ```json
 {
@@ -185,7 +185,7 @@ Eszközidentitások jelentésekként jelennek meg az alábbi tulajdonságokkal r
 | --- | --- | --- |
 | deviceId |szükség esetén a frissítések csak olvasható |A kis-és nagybetűket karakterlánc (legfeljebb 128 karakter hosszú) ASCII 7 bites alfanumerikus karaktereket, valamint bizonyos speciális karaktereket: `- . + % _ # * ? ! ( ) , = @ $ '`. |
 | generationId |kötelező, csak olvasható |Az IoT hub által létrehozott, a kis-és nagybetűket karakterlánc legfeljebb 128 karakter hosszúságú. Ez az érték azonos eszközök megkülönböztetésére használható **deviceId**, amikor törli és újból létrehozza. |
-| Az ETag |kötelező, csak olvasható |Egy gyenge ETag az eszközidentitást képviselő megfelelően karakterláncot [RFC7232](https://tools.ietf.org/html/rfc7232). |
+| ETag |kötelező, csak olvasható |Egy gyenge ETag az eszközidentitást képviselő megfelelően karakterláncot [RFC7232](https://tools.ietf.org/html/rfc7232). |
 | hitelesítés |választható |A hitelesítési adatokat, és biztonsági anyagokat tartalmazó összetett objektum. |
 | auth.symkey |választható |Egy összetett objektum egy elsődleges és a egy másodlagos kulcsot tartalmazó base64 formátumban tárolja. |
 | status |szükséges |Az access kijelző. Lehet **engedélyezve** vagy **letiltott**. Ha **engedélyezve**, az eszköz csatlakozhat. Ha **letiltott**, az eszköz nem fér hozzá a bármely eszköz által használt végpont. |
@@ -210,7 +210,7 @@ A modul identitások jelentésekként jelennek meg az alábbi tulajdonságokkal 
 | deviceId |szükség esetén a frissítések csak olvasható |A kis-és nagybetűket karakterlánc (legfeljebb 128 karakter hosszú) ASCII 7 bites alfanumerikus karaktereket, valamint bizonyos speciális karaktereket: `- . + % _ # * ? ! ( ) , = @ $ '`. |
 | moduleId |szükség esetén a frissítések csak olvasható |A kis-és nagybetűket karakterlánc (legfeljebb 128 karakter hosszú) ASCII 7 bites alfanumerikus karaktereket, valamint bizonyos speciális karaktereket: `- . + % _ # * ? ! ( ) , = @ $ '`. |
 | generationId |kötelező, csak olvasható |Az IoT hub által létrehozott, a kis-és nagybetűket karakterlánc legfeljebb 128 karakter hosszúságú. Ez az érték azonos eszközök megkülönböztetésére használható **deviceId**, amikor törli és újból létrehozza. |
-| Az ETag |kötelező, csak olvasható |Egy gyenge ETag az eszközidentitást képviselő megfelelően karakterláncot [RFC7232](https://tools.ietf.org/html/rfc7232). |
+| ETag |kötelező, csak olvasható |Egy gyenge ETag az eszközidentitást képviselő megfelelően karakterláncot [RFC7232](https://tools.ietf.org/html/rfc7232). |
 | hitelesítés |választható |A hitelesítési adatokat, és biztonsági anyagokat tartalmazó összetett objektum. |
 | auth.symkey |választható |Egy összetett objektum egy elsődleges és a egy másodlagos kulcsot tartalmazó base64 formátumban tárolja. |
 | status |szükséges |Az access kijelző. Lehet **engedélyezve** vagy **letiltott**. Ha **engedélyezve**, az eszköz csatlakozhat. Ha **letiltott**, az eszköz nem fér hozzá a bármely eszköz által használt végpont. |

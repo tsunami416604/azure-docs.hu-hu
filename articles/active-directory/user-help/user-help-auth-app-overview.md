@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 01/24/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8585557672c7db15e07be6a5e663ba1811e07694
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: e051fddda6957e8eda00c0087663db129c1ae23a
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961312"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008984"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Mi a Microsoft Authenticator alkalmazást?
 
@@ -28,14 +28,16 @@ A Microsoft Authenticator alkalmazás segítségével jelentkezzen be a fiókok 
 
 Többféle módon, beleértve a Microsoft Authenticator alkalmazást is használhatja:
 
-- Kérdés egy második ellenőrzési módszert biztosítása után jelentkezik be a felhasználónevét és jelszavát.
+- Válasz-hitelesítés kérése után jelentkezik be a felhasználónevét és jelszavát.
 
-- Jelentkezzen be lehetővé anélkül, hogy a jelszó, a felhasználónév és a mobil eszköz használata az ujjlenyomatot, arc vagy PIN-kód.
+- Jelentkezzen be a jelszót, a felhasználónév, az authenticator alkalmazás és a mobil eszköz használata az ujjlenyomatot, arc vagy PIN-kód megadása nélkül.
+
+- Mint bármely más fiókok generátor kódu, amelyek támogatják az authenticator alkalmazásokhoz.
 
 >[!Important]
->A Microsoft Authenticator alkalmazás együttműködik a kétfaktoros ellenőrzési használó alkalmazásokban, és olyan fiókot, amely támogatja az egyszeri jelszó időalapú (TOTP) előírásainak.
+>A Microsoft Authenticator alkalmazás együttműködik az olyan fiókot, amely kétfaktoros ellenőrzési használ, illetve támogatja az egyszeri jelszó időalapú (TOTP) előírásainak.
 
->A szervezet szükség lehet, hogy egy hitelesítő alkalmazást be- és a szervezeti adatok és dokumentumok eléréséhez. Bár az alkalmazás jelenhet meg a felhasználónevet, a fiók nincs ténylegesen beállítva egy ellenőrzési módszert funkcionálni, amíg a regisztráció befejezéséhez. További információkért lásd: [adja hozzá munkahelyi vagy iskolai fiókját](user-help-auth-app-overview.md).
+>A szervezet szükség lehet, hogy egy hitelesítő alkalmazást be- és a szervezeti adatok és dokumentumok eléréséhez. Bár az alkalmazás jelenhet meg a felhasználónevet, a fiók nincs ténylegesen beállítva egy ellenőrzési módszert funkcionálni, amíg a regisztráció befejezéséhez. További információkért lásd: [adja hozzá munkahelyi vagy iskolai fiókját](user-help-auth-app-add-work-school-account.md).
 
 >Ha bejelentkezik a fiókjába problémákat tapasztal, tekintse meg [mikor nem jelentkezhet be Microsoft-fiókjába](https://support.microsoft.com/help/12429) segítséget. További információ arról, mi a teendő, ha kap a ["a megadott Microsoft-fiók nem létezik"](https://support.microsoft.com/help/13811) jelenik meg, jelentkezzen be Microsoft-fiókjával.
 

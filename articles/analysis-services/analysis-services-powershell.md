@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/19/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 8f309d628ec4531ca5594ecb25533b1484e8b274
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 177d74a54e4ab4de698cbb63091656cc8b584e2b
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56732398"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010684"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>A PowerShell-lel az Azure Analysis Services kezelése
 
@@ -51,7 +51,7 @@ Modul - [Azure.AnalysisServices](https://www.powershellgallery.com/packages/Azur
 
 |Parancsmag|Leírás| 
 |------------|-----------------| 
-|[Add-AzAnalysisServicesAccount](/powershell/module/azure.analysisservices/add-AzAnalysisServicesaccount)|Azure Analysis Services parancsmag kiszolgálókérelmek egy hitelesített fiók hozzáadása.| 
+|[Add-AzAnalysisServicesAccount](/powershell/module/az.analysisservices/add-AzAnalysisServicesaccount)|Azure Analysis Services parancsmag kiszolgálókérelmek egy hitelesített fiók hozzáadása.| 
 |[Export-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/export-AzAnalysisServicesinstancelog)|A napló exportál egy példányát a jelenleg bejelentkezett környezet az Add-AzAnalysisServicesAccount parancsban megadott Analysis Services-kiszolgáló|  
 |[Restart-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/restart-AzAnalysisServicesinstance)|Újraindítja az Analysis Services-kiszolgáló példányát az aktuálisan bejelentkezett környezetben; Add-AzAnalysisServicesAccount parancsban megadott.|  
 |[Sync-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/restart-AzAnalysisServicesinstance)|A megadott Analysis Services-kiszolgálón lévő a jelenleg bejelentkezett a környezetben az Add-AzAnalysisServicesAccount parancsban megadott összes lekérdezés horizontális felskálázási példányok-példány a megadott adatbázis szinkronizálása|  

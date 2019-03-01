@@ -1,19 +1,19 @@
 ---
 title: Az Azure IoT SDK-k ismertetése |} A Microsoft Docs
 description: Fejlesztői útmutató – információ és a különböző Azure IoT eszköz- és szolgáltatásspecifikus SDK-k használatával hozhat létre az eszköz és az alkalmazások háttér-mutató hivatkozásokat.
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.author: dobett
-ms.openlocfilehash: 3bdb09de04ec5041d671f5af709a1a1e7133d141
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: fcb6f564c97632e4d62f7f052ec5ecc35a9e479a
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199510"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011245"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Elsajátítása és használata az Azure IoT Hub SDK-k
 
@@ -37,9 +37,9 @@ További információ a [előnyeit az Azure IoT SDK-k használatával történő
 
 Az SDK-k által támogatott platformok található [Azure IoT SDK-k Eszközplatform-támogatás](iot-hub-device-sdk-platform-support.md).
 
-Bizonyos hardvereszközök az SDK-kompatibilitással kapcsolatos további információkért lásd: a [Azure Certified for IoT eszközkatalógus](https://catalog.azureiotsuite.com/) vagy egyes adattárban.
+Bizonyos hardvereszközök az SDK-kompatibilitással kapcsolatos további információkért lásd: a [Azure Certified for IoT eszközkatalógus](https://catalog.azureiotsolutions.com/) vagy egyes adattárban.
 
-## <a name="azure-iot-hub-device-sdks"></a>Az Azure IoT Hub eszközoldali SDK-k
+## <a name="azure-iot-hub-device-sdks"></a>Azure IoT Hub Device SDKs
 
 A Microsoft Azure IoT eszközoldali SDK-k kódot tartalmaznak, amely lehetővé teszi, hogy csatlakozik, és az Azure IoT Hub-szolgáltatások által kezelt alkalmazások létrehozása.
 
@@ -86,7 +86,7 @@ IOS-hez készült Azure IoT Hub eszközoldali SDK:
 * [Példák](https://github.com/Azure-Samples/azure-iot-samples-ios)
 * API-referencia: lásd: [C API-referencia](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/)
 
-## <a name="azure-iot-hub-service-sdks"></a>Az Azure IoT Hub szolgáltatási SDK-k
+## <a name="azure-iot-hub-service-sdks"></a>Azure IoT Hub Service SDKs
 
 Az Azure IoT service SDK-k megkönnyítik az alkalmazások létrehozása, amely interakciót közvetlenül az IoT hubbal, kezelheti az eszközöket és a biztonsági kódot tartalmaznak.
 

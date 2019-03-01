@@ -1,20 +1,20 @@
 ---
 title: Az erőforrás-szolgáltató REST API használatával az Azure IoT hub létrehozása |} A Microsoft Docs
 description: Hogyan hozzon létre egy IoT hubot az erőforrás-szolgáltató REST API használatával.
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robin.shahan
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.author: dobett
-ms.openlocfilehash: 7ace4c1827b340f6247d69902538fdaaf1243106
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: d87ca39eb27673be8d5cd0feece3eabe3e214de1
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727791"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011092"
 ---
 # <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>Az erőforrás-szolgáltató REST API (.NET) használatával IoT hub létrehozása
 

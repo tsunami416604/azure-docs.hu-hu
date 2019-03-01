@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 01/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 317e843f1fcc2fc85ffbc590d48e9bdf4aa934c1
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: e2cafe0c8c5d8194519428839ec3c73f5dc726c0
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415765"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992029"
 ---
 # <a name="about-azure-migrate"></a>Az Azure Migrate bemutatása
 
@@ -92,7 +92,7 @@ A táblázat összefoglalja az Azure Migrate kommunikációjához szükséges po
 --- | --- |---
 Gyűjtő  | Azure Migrate szolgáltatás | A gyűjtő a 443-as SSL-porton keresztül csatlakozik a szolgáltatáshoz.
 Gyűjtő | vCenter Server | Alapértelmezés szerint a gyűjtő a 443-as porton csatlakozik a vCenter Serverhez. Ha a kiszolgáló egy másik porton figyel, azt kimenő portként kell konfigurálni a gyűjtő virtuális gépen.
-Helyszíni virtuális gép | Log Analytics-munkaterület | [443-as TCP] | [A Microsoft Monitoring Agent (MMA)](../log-analytics/log-analytics-windows-agent.md) a 443-as TCP-portot használja a Log Analyticshez való csatlakozáshoz. Erre a portra csak akkor van szükség, ha a függőségmegjelenítési funkciót használja, amelyhez szükség van az MMA-ügynökre.
+Helyszíni virtuális gép | Log Analytics-munkaterület | [443-as TCP] | [A Microsoft Monitoring Agent (MMA)](../log-analytics/log-analytics-windows-agent.md) szeretne csatlakozni az Azure Monitor naplóira 443-as TCP-portot használja. Erre a portra csak akkor van szükség, ha a függőségmegjelenítési funkciót használja, amelyhez szükség van az MMA-ügynökre.
 
 
 ## <a name="what-happens-after-assessment"></a>Mi történik az értékelés után?

@@ -13,12 +13,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 711e51a075ce25ef3aa3c9c7e8784c914c8d0581
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: c11dc2b24e3cf5d201a73c1ed405ba4b7c09978b
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982267"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992600"
 ---
 # <a name="what-is-azure-sql-database-service"></a>Mi az Azure SQL Database szolgáltatás?
 
@@ -101,7 +101,15 @@ Használja a [beépített teljesítménymonitorozási](sql-database-performance.
 
 ## <a name="availability-capabilities"></a>Rendelkezésre állás
 
-Az Azure szolgáltatói szerződésében [(SLA)](https://azure.microsoft.com/support/legal/sla/) az ágazatban élenjáró módon 99,99 százalékos elérhetőséget biztosítunk – a Microsoft által kezelt adatbázisok globális hálózata teszi lehetővé, hogy alkalmazása a hét mind a 7 napján, napi 24 órában fusson. Az Azure platform teljes körű minden adatbázis kezeli, és nincs adatvesztés és a magas százalékos adatok rendelkezésre állását garantálja. Az Azure automatikusan kezeli a javításokat, a biztonsági mentéseket, a replikációt, a hibaészlelést, a háttérben álló lehetséges hardver-, szoftver- vagy hálózati hibákat, a hibajavítások telepítését, a feladatátvételeket, adatbázis-frissítéseket és az egyéb karbantartási műveleteket. A standard szintű rendelkezésre állás a számítási és tárolási rétegek elkülönítését foglalja magában. Prémium szintű rendelkezésre állás integrálása a számítási és tárolási teljesítmény egyetlen csomóponton, és majd megvalósítása az Always On rendelkezésre állási csoportok valójában hasonló technológia érhető el. Teljes az Azure SQL Database magas rendelkezésre állású lehetőségeit, lásd: [SQL adatbázis-elérhetőségi](sql-database-high-availability.md). Az SQL Database ezen felül olyan beépített funkciókkal szolgálja [az üzletmenet folytonosságát és a globális méretezhetőséget](sql-database-business-continuity.md), mint például a következők:
+A hagyományos SQL Server-környezet általában kell helyileg állítsa be az adatokat (a szolgáltatások, mint az AlwaysOn rendelkezésre állási csoportok vagy feladatátvételi fürtbeli példányok segítségével) (szinkron karbantartott) pontos másolatát ellen (legalább) 2 gépek egy Hiba történt egy egyetlen gép összetevő.  Ez a magas rendelkezésre állást biztosít, de nem nyújt védelmet az adatközpontot megsemmisítése természeti katasztrófa esetén.
+ 
+Vész-helyreállítási azt feltételezi, hogy egy katasztrofális esemény földrajzilag lesz a honosított elegendő milyen távolságra van egy másik gép vagy gépek halmazát jelenti az adatok másolatát.  Az SQL Server Always On rendelkezésre állási csoportok aszinkron módban fut. Ez a funkció első használhatja.  A sebessége kisebb problémák általában azt jelenti, hogy személyek nem szeretné megvárni a replikáció előfordulhat, hogy milyen távolságra előtt egy tranzakció véglegesítése, így az adatvesztés Ha így tesz, nem tervezett feladatátvételeket.
+
+A prémium szintű és az üzleti kritikus szolgáltatásban az adatbázisok már rétegezi [nagyon hasonló valamit](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) és a egy rendelkezésre állási csoport szinkronizálása. Adatbázisok alacsonyabb szolgáltatási szinten a storage használatával redundanciát biztosít egy [különböző, de egyenértékű mechanizmus](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability). Nincs logika, amely egy egyetlen gép meghibásodása elleni védelmet biztosít.  Az aktív georeplikációs szolgáltatás révén a katasztrófa elleni védelmét, egy teljes régió megsemmisülésekor.
+
+Azure-beli rendelkezésre állási zónák a magas rendelkezésre állású problémáról a lejátszás.  Megkísérli az üzemkimaradások esetére, egy adott régión belül készítése egyetlen adatközpontba.  Így szeretné power vagy hálózati épület, adatvesztés elleni védelem érdekében. Az SQL Azure, ez fog működni a különböző replikába való elhelyezésével különböző rendelkezésre állási zónák (különböző épületek, hatékonyan) és más módon működik-e mint korábban. 
+
+Sőt, az az Azure iparági vezető 99,99 %-os rendelkezésre állási szolgáltatás szolgáltatásiszint-szerződés [(SLA)](https://azure.microsoft.com/support/legal/sla/), Microsoft által felügyelt adatközpontok globális hálózata működteti, teszi lehetővé, hogy alkalmazása a 24/7. Az Azure platform teljes körű minden adatbázis kezeli, és nincs adatvesztés és a magas százalékos adatok rendelkezésre állását garantálja. Az Azure automatikusan kezeli a javításokat, a biztonsági mentéseket, a replikációt, a hibaészlelést, a háttérben álló lehetséges hardver-, szoftver- vagy hálózati hibákat, a hibajavítások telepítését, a feladatátvételeket, adatbázis-frissítéseket és az egyéb karbantartási műveleteket. A standard szintű rendelkezésre állás a számítási és tárolási rétegek elkülönítését foglalja magában. Prémium szintű rendelkezésre állás integrálása a számítási és tárolási teljesítmény egyetlen csomóponton, és majd megvalósítása az Always On rendelkezésre állási csoportok valójában hasonló technológia érhető el. Teljes az Azure SQL Database magas rendelkezésre állású lehetőségeit, lásd: [SQL adatbázis-elérhetőségi](sql-database-high-availability.md). Az SQL Database ezen felül olyan beépített funkciókkal szolgálja [az üzletmenet folytonosságát és a globális méretezhetőséget](sql-database-business-continuity.md), mint például a következők:
 
 - **[Automatikus biztonsági mentések](sql-database-automated-backups.md)**:
 

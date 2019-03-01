@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: d2d62dea683d3e42411d526fe002596e6473b4a9
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 21e7406d566be5be73342d530a4ad66b80a1d23f
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736668"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990441"
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>Szerepköralapú hozzáférés-vezérlés használata az Azure API Management szolgáltatásban
 Az Azure API Management az Azure szerepköralapú hozzáférés vezérlése (RBAC) ahhoz, hogy az API Management-szolgáltatások és entitások (például API-k és házirendek) részletes hozzáférés-vezérlést támaszkodik. Ez a cikk áttekintést, a beépített és egyéni szerepkörök az API Management szolgáltatásban. A hozzáférés-kezelés az Azure Portalon további információkért lásd: [hozzáférés-kezelés az Azure portal – első lépések](https://azure.microsoft.com/documentation/articles/role-based-access-control-what-is/).
@@ -47,6 +47,9 @@ A következő táblázat a beépített szerepkörök rövid leírása. Ezeket a 
 
 ## <a name="custom-roles"></a>Egyéni szerepkörök
 Ha a beépített szerepkörök egyik sem felel meg a saját különleges igényei, egyéni szerepkörök biztosít az API Management-entitások a részletes hozzáférés-kezelés hozható létre. Ha például egy egyéni biztonsági szerepkört, amely egy API Management-szolgáltatás csak olvasási hozzáféréssel rendelkezik, de csak egy adott API írási hozzáféréssel is létrehozhat. Egyéni szerepkörökkel kapcsolatos további információkért lásd: [egyéni szerepkörök az Azure RBAC](https://docs.microsoft.com/azure/role-based-access-control/custom-roles). 
+
+> [!NOTE]
+> Az, hogy tekintse meg az API Management-példány, az Azure Portalon, tartalmaznia kell egy egyéni biztonsági szerepkört a ```Microsoft.ApiManagement/service/read``` művelet.
 
 Amikor létrehoz egy egyéni biztonsági szerepkört, célszerűbb a kezdéshez válasszon egyet a beépített szerepkörök. Adja hozzá az attribútumok szerkesztéséhez **műveletek**, **NotActions**, vagy **AssignableScopes**, és mentse a módosításokat, egy új szerepkör. Az alábbi példa az "Azure API Management szolgáltatás olvasói" szerepkörrel rendelkező kezdődik, és létrehoz egy egyéni szerepkört, úgynevezett "Számológép API-szerkesztő." Az egyéni szerepkör rendelhet egy adott API-t. Ennek következtében ezt a szerepkört csak az API hozzáféréssel rendelkezik. 
 

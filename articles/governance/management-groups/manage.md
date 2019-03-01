@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.date: 02/20/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: bcc0b247ee304e657b7679920a3956acad11adc9
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 51e9d44a95a3896767caf4b3f04d17c2933e8599
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985121"
+ms.locfileid: "56990535"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Az erőforrások kezelése a felügyeleti csoportokkal
 
@@ -20,6 +20,8 @@ Ha a vállalatnak sok előfizetése van, jól jöhet egy módszer, hogy hatékon
 A felügyeleti csoportok nagy léptékű, nagyvállalati szintű felügyeletet tesznek lehetővé, függetlenül az előfizetése típusától.  Felügyeleti csoportok kapcsolatos további információkért lásd: [az erőforrások rendszerezéséhez az Azure felügyeleti csoportok](overview.md).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
+
+[!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
 ## <a name="change-the-name-of-a-management-group"></a>A felügyeleti csoport nevének módosítása
 
@@ -45,10 +47,10 @@ A felügyeleti csoport nevét a portal, PowerShell vagy az Azure CLI használat�
 
 ### <a name="change-the-name-in-powershell"></a>Módosítsa a nevet a PowerShellben
 
-Frissíteni a megjelenítési név használata **Update-AzureRmManagementGroup**. Például ha módosítani szeretné egy felügyeleti csoportok nevét, a "Contoso IT" a "Contoso csoport", akkor futtassa a következő parancsot:
+Frissíteni a megjelenítési név használata **Update-AzManagementGroup**. Például módosíthatja egy felügyeleti csoport megjelenített neve a "Contoso IT" a "Contoso csoport", az alábbi parancsot:
 
 ```azurepowershell-interactive
-Update-AzureRmManagementGroup -GroupName 'ContosoIt' -DisplayName 'Contoso Group'
+Update-AzManagementGroup -GroupName 'ContosoIt' -DisplayName 'Contoso Group'
 ```
 
 ### <a name="change-the-name-in-azure-cli"></a>Módosítsa a nevet az Azure CLI-ben
@@ -94,10 +96,10 @@ A felügyeleti csoport törléséhez az alábbi követelményeknek kell teljesü
 
 ### <a name="delete-in-powershell"></a>A PowerShellben törlése
 
-Használja a **Remove-AzureRmManagementGroup** lévő felügyeleti csoportok törlése PowerShell parancsot.
+Használja a **Remove-AzManagementGroup** lévő felügyeleti csoportok törlése PowerShell parancsot.
 
 ```azurepowershell-interactive
-Remove-AzureRmManagementGroup -GroupName 'Contoso'
+Remove-AzManagementGroup -GroupName 'Contoso'
 ```
 
 ### <a name="delete-in-azure-cli"></a>Törlés az Azure CLI felületen
@@ -126,22 +128,22 @@ Közvetlen vagy az örökölt RBAC szerepkör rendelkezik a felügyeleti csoport
 
 ### <a name="view-in-powershell"></a>Megtekintése a PowerShellben
 
-A Get-AzureRmManagementGroup paranccsal az összes csoport beolvasása.  Lásd: [ https://aka.ms/Get-MG-Powershell ](https://aka.ms/Get-MG-Powershell) felügyeleti csoport első Powershell-parancsok teljes listáját.  
+A Get-AzManagementGroup paranccsal az összes csoport beolvasása.  Lásd: [Az.Resources](/powershell/module/az.resources/Get-AzManagementGroup) modulok teljes listája megtalálható a felügyeleti csoport első Powershell-parancsokat.  
 
 ```azurepowershell-interactive
-Get-AzureRmManagementGroup
+Get-AzManagementGroup
 ```
 
 Egyetlen felügyeleti csoport információt használja a - GroupName paramétert
 
 ```azurepowershell-interactive
-Get-AzureRmManagementGroup -GroupName 'Contoso'
+Get-AzManagementGroup -GroupName 'Contoso'
 ```
 
 Egy adott felügyeleti csoport és az alatta a hierarchia minden szintet használja **-bontsa ki a** és **-Recurse** paramétereket.  
 
 ```azurepowershell-interactive
-PS C:\> $response = Get-AzureRmManagementGroup -GroupName TestGroupParent -Expand -Recurse
+PS C:\> $response = Get-AzManagementGroup -GroupName TestGroupParent -Expand -Recurse
 PS C:\> $response
 
 Id                : /providers/Microsoft.Management/managementGroups/TestGroupParent
@@ -247,16 +249,16 @@ Milyen engedélyekkel rendelkezik az Azure Portalon, válassza a felügyeleti cs
 
 ### <a name="move-subscriptions-in-powershell"></a>Helyezze át az előfizetések a PowerShellben
 
-Helyezze át az előfizetést a PowerShell, a New-AzureRmManagementGroupSubscription parancsot használhatja.  
+Helyezze át az előfizetést a PowerShell, a New-AzManagementGroupSubscription parancsot használhatja.  
 
 ```azurepowershell-interactive
-New-AzureRmManagementGroupSubscription -GroupName 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'
+New-AzManagementGroupSubscription -GroupName 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'
 ```
 
-Közötti kapcsolat eltávolításához és az előfizetés és a felügyeleti csoport használja a Remove-AzureRmManagementGroupSubscription parancsot.
+Közötti kapcsolat eltávolításához és az előfizetés és a felügyeleti csoport használja a Remove-AzManagementGroupSubscription parancsot.
 
 ```azurepowershell-interactive
-Remove-AzureRmManagementGroupSubscription -GroupName 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'
+Remove-AzManagementGroupSubscription -GroupName 'Contoso' -SubscriptionId '12345678-1234-1234-1234-123456789012'
 ```
 
 ### <a name="move-subscriptions-in-azure-cli"></a>Előfizetések áthelyezése az Azure CLI-ben
@@ -298,10 +300,10 @@ Ha áthelyezi a fölérendelt felügyeleti csoport, a hierarchia adott csoportba
 
 ### <a name="move-management-groups-in-powershell"></a>Helyezze át a felügyeleti csoportok a PowerShellben
 
-Használja az Update-AzureRmManagementGroup parancsot a PowerShellben áthelyezése egy másik csoportban a felügyeleti csoport.
+Használja az Update-AzManagementGroup parancsot a PowerShellben áthelyezése egy másik csoportban a felügyeleti csoport.
 
 ```azurepowershell-interactive
-Update-AzureRmManagementGroup -GroupName 'Contoso' -ParentName 'ContosoIT'
+Update-AzManagementGroup -GroupName 'Contoso' -ParentId '/providers/Microsoft.Management/managementGroups/ContosoIT'
 ```  
 
 ### <a name="move-management-groups-in-azure-cli"></a>Felügyeleti csoportok áthelyezése az Azure CLI-ben
@@ -309,7 +311,7 @@ Update-AzureRmManagementGroup -GroupName 'Contoso' -ParentName 'ContosoIT'
 A frissítés paranccsal helyezze át a felügyeleti csoport az Azure CLI használatával.
 
 ```azurecli-interactive
-az account management-group update --name 'Contoso' --parent 'Contoso Tenant'
+az account management-group update --name 'Contoso' --parent-id '/providers/Microsoft.Management/managementGroups/ContosoIT'
 ```
 
 ## <a name="audit-management-groups-using-activity-logs"></a>Felügyeleti csoportok naplózása tevékenységnaplókkal
@@ -329,7 +331,7 @@ Felügyeleti csoportok hivatkozó más erőforrás-szolgáltató műveleteket, h
 Példa az elérési út akkor, ha egy új szerepkör-hozzárendelés hozzárendelése a PowerShellben a felügyeleti csoport
 
 ```powershell-interactive
-New-AzureRmRoleAssignment -Scope "/providers/Microsoft.Management/managementGroups/Contoso"
+New-AzRoleAssignment -Scope "/providers/Microsoft.Management/managementGroups/Contoso"
 ```
 
 Az azonos hatókör elérési utat használja, a felügyeleti csoport egy szabályzat-definíció beolvasásakor.
@@ -344,6 +346,6 @@ A felügyeleti csoportokkal kapcsolatos további tudnivalókért lásd:
 
 - [Felügyeleti csoportok létrehozása az Azure-erőforrások rendszerezéséhez](create.md)
 - [Felügyeleti csoportok módosítása, törlése és kezelése](manage.md)
-- [Felügyeleti csoportok áttekintése az Azure PowerShell Erőforrások moduljában](https://aka.ms/mgPSdocs)
-- [Felügyeleti csoportok áttekintése a REST API-ban](https://aka.ms/mgAPIdocs)
-- [Felügyeleti csoportok áttekintése az Azure CLI-ben](https://aka.ms/mgclidoc)
+- [Felügyeleti csoportok áttekintése az Azure PowerShell Erőforrások moduljában](/powershell/module/az.resources#resources)
+- [Felügyeleti csoportok áttekintése a REST API-ban](/rest/api/resources/managementgroups)
+- [Felügyeleti csoportok áttekintése az Azure CLI-ben](/cli/azure/account/management-group)

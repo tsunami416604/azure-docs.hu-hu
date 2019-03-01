@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: raynew
-ms.openlocfilehash: e948ee943db646ca83d39510485849b3c9956e90
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: df3ae6fbeceb85df6d6e5245a5bbad517179733c
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697449"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991359"
 ---
 # <a name="contoso-migration-assess-on-premises-workloads-for-migration-to-azure"></a>Contoso áttelepítése: Helyszíni számítási feladatok Azure-ba való migrálásának értékelése
 
@@ -90,7 +90,7 @@ Technológia | Leírás | Költségek
 --- | --- | ---
 [Data Migration Assistant](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | Contoso segítségével mérheti fel, és észleli a kompatibilitási problémákat, amelyek hatással lehetnek a funkció az Azure Data Migration Assistant szolgáltatást használja. Data Migration Assistant felméri funkcióparitás SQL források és célok között. Teljesítmény- és megbízhatóságbeli fejlesztéseket javasol azt. | Data Migration Assistant szolgáltatást egy olyan ingyenes, letölthető eszköz.
 [Azure Migrate](https://docs.microsoft.com/azure/migrate/migrate-overview) | Contoso az Azure Migrate szolgáltatás segítségével felmérheti a VMware virtuális gépeket. Az Azure Migrate felméri a gépek migrálásra való alkalmasságát. Az Azure-ban futó biztosít méretezési és költségbecslést.  | 2018 május az Azure Migrate egy olyan ingyenes szolgáltatás.
-[Szolgáltatástérkép](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) | Az Azure Migrate a Service Map használatával a vállalat szeretne áttelepíteni a gépek közötti függőségek megjelenítése. | A Service Map az Azure Log Analytics részét képezi. Contoso jelenleg a Service Map 180 napig díjmentesen használható.
+[Szolgáltatástérkép](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) | Az Azure Migrate a Service Map használatával a vállalat szeretne áttelepíteni a gépek közötti függőségek megjelenítése. | A Service Map az Azure Monitor naplóira részét képezi. Contoso jelenleg a Service Map 180 napig díjmentesen használható.
 
 Ebben a forgatókönyvben a Contoso letölti és futtatja a Data Migration Assistant szolgáltatást az utazási alkalmazás helyszíni SQL Server-adatbázis értékelésére. Contoso használja az Azure Migrate és függőségi leképezés használatával értékeljük az alkalmazás virtuális gépek Azure-ba való migrálás előtt.
 

@@ -1,19 +1,20 @@
 ---
 title: Az Azure IoT Hub (Java) feladatok ütemezéséhez |} A Microsoft Docs
 description: Hogyan közvetlen metódus meghívása és a egy kívánt tulajdonságot állítsa a több eszközre, az Azure IoT Hub feladat ütemezése. Az Azure IoT eszközoldali SDK for Java használatával a szimulált eszközalkalmazások, valamint az Azure IoT service megvalósítása a service-alkalmazás a feladat futtatása Java SDK valósítják meg.
-author: dominicbetts
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: conceptual
 ms.date: 07/10/2017
-ms.author: dobett
-ms.openlocfilehash: 52c5e1a2166c2c609b2edc486bd451f01b3395fa
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: d2d92c05e54bc78d5b01e73b586e5c25fc431255
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515794"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011398"
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>Feladatok ütemezése és kiküldése (Java)
 
@@ -29,9 +30,9 @@ Egy feladat burkolja az alábbi műveletek egyikét, és nyomon követi az eszk�
 
 Az egyes képességek kapcsolatos további információkért lásd:
 
-* Ikereszköz és tulajdonságok: [ikereszközök – első lépések](iot-hub-java-java-twin-getstarted.md)
+* Ikereszköz és tulajdonságok: [Ikereszközök – első lépések](iot-hub-java-java-twin-getstarted.md)
 
-* Közvetlen metódusok: [az IoT Hub fejlesztői útmutató – közvetlen metódusok](iot-hub-devguide-direct-methods.md) és [oktatóanyag: közvetlen metódusok használata](quickstart-control-device-java.md)
+* Közvetlen metódusok: [Az IoT Hub fejlesztői útmutató – közvetlen metódusok](iot-hub-devguide-direct-methods.md) és [oktatóanyag: Közvetlen metódusok használata](quickstart-control-device-java.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 

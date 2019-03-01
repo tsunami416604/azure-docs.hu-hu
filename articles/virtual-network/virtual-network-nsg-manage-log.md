@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: jdial
-ms.openlocfilehash: 20c103c19de203d7598484b8f1d160256cb253e9
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 6cc75a70dfc7022efa8577234cc67659d53b2f88
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56648863"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194417"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>A hálózati biztonsági csoport diagnosztikai naplózás
 
@@ -78,7 +78,7 @@ $Oms=Get-AzOperationalInsightsWorkspace `
 
 Ha nem rendelkezik egy meglévő munkaterületet, létrehozhat egyet a [New-AzOperationalInsightsWorkspace](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace).
 
-Két kategóriába sorolhatók a naplózási engedélyezheti a naplókat. További információkért lásd: [kategóriába jelentkezzen](#log-categories). Az NSG-t a diagnosztikai naplózás engedélyezése [Set-AzDiagnosticSetting](/powershell/module/az.insights/set-azdiagnosticsetting). Az alábbi példában a munkaterület esemény- és számláló kategória-adatokat egy NSG-t az azonosítók használata az NSG-t és a munkaterület korábban lekért jelentkezik:
+Két kategóriába sorolhatók a naplózási engedélyezheti a naplókat. További információkért lásd: [kategóriába jelentkezzen](#log-categories). Az NSG-t a diagnosztikai naplózás engedélyezése [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting). Az alábbi példában a munkaterület esemény- és számláló kategória-adatokat egy NSG-t az azonosítók használata az NSG-t és a munkaterület korábban lekért jelentkezik:
 
 ```azurepowershell-interactive
 Set-AzDiagnosticSetting `

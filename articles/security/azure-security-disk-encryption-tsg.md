@@ -8,16 +8,18 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 02/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: faea1cc7c45393c10a240de2c92757ff8f2ac5c3
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: c0202dfa8316caec036b4ad288c2bd32f1c4eaf3
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694089"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56989404"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Az Azure Disk Encryption – hibaelhárítási útmutató
 
 Ez az útmutató olyan informatikai szakemberek számára, adatbiztonsági elemzők és felhőszolgáltatás-rendszergazdák, akiknek szervezetek használata az Azure Disk Encryption. Ez a cikk azt a lemez-titkosítással kapcsolatos problémák elhárítása.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="troubleshooting-linux-os-disk-encryption"></a>Hibaelhárítás a Linux operációs rendszer lemeztitkosítás
 
@@ -55,17 +57,17 @@ Bizonyos esetekben a lemeztitkosítás úgy tűnik, hogy "Az operációs rendsze
 
 A Linux operációsrendszer-lemez titkosítási feladatütemezési ideiglenesen leválasztja az operációs rendszer meghajtójának. Majd hajtja végre blokkonként-titkosítás a teljes operációsrendszer-lemezről, mielőtt titkosított állapotában Újracsatlakoztat azt. Ellentétben az Azure Disk Encryption a Windows Linux lemeztitkosítás nem engedélyezi a virtuális gép egyidejű használatra amíg folyamatban van a titkosítás. A virtuális gép a teljesítményjellemzők teheti a titkosítás befejezéséhez szükséges idő jelentős eltérés. Ezek a jellemzők a lemez, és hogy a tárfiók standard vagy prémium (SSD) tárolási méretét is.
 
-A titkosítás állapotának lekérdezéséhez a **Feladatnézetben** által visszaadott mező a [Get-AzureRmVmDiskEncryptionStatus](/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus) parancsot. Az operációs rendszer meghajtójának titkosított, miközben a virtuális gép karbantartási állapotba kerül, és letiltja az SSH a folyamatban lévő folyamat bármely szolgáltatáskimaradás elkerülése érdekében. A **EncryptionInProgress** üzenet jelentésekben a legtöbb az idő, amíg folyamatban van a titkosítás. Néhány óra múlva, egy **VMRestartPending** üzenetben kéri, hogy indítsa újra a virtuális Gépet. Példa:
+A titkosítás állapotának lekérdezéséhez a **Feladatnézetben** által visszaadott mező a [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) parancsot. Az operációs rendszer meghajtójának titkosított, miközben a virtuális gép karbantartási állapotba kerül, és letiltja az SSH a folyamatban lévő folyamat bármely szolgáltatáskimaradás elkerülése érdekében. A **EncryptionInProgress** üzenet jelentésekben a legtöbb az idő, amíg folyamatban van a titkosítás. Néhány óra múlva, egy **VMRestartPending** üzenetben kéri, hogy indítsa újra a virtuális Gépet. Példa:
 
 
 ```
-PS > Get-AzureRmVMDiskEncryptionStatus -ResourceGroupName $resourceGroupName -VMName $vmName
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName $resourceGroupName -VMName $vmName
 OsVolumeEncrypted          : EncryptionInProgress
 DataVolumesEncrypted       : EncryptionInProgress
 OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
 ProgressMessage            : OS disk encryption started
 
-PS > Get-AzureRmVMDiskEncryptionStatus -ResourceGroupName $resourceGroupName -VMName $vmName
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName $resourceGroupName -VMName $vmName
 OsVolumeEncrypted          : VMRestartPending
 DataVolumesEncrypted       : Encrypted
 OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings

@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 0a2ccdc6b02e9d348517bee95306ffc88d9ccd98
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 9208d9949ee68f966087c5e0bb50806ece8a2f60
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599944"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011415"
 ---
 # <a name="deploy-an-edge-gateway-for-the-connected-factory-solution-accelerator-on-windows-or-linux"></a>Egy edge-átjáró számára a Windows vagy Linux rendszeren Okosgyár-megoldásgyorsító üzembe helyezése
 
@@ -27,8 +27,8 @@ Mindkét összetevő nyílt forráskódú és rendelkezésre állnak, mint forr�
 
 | GitHub | DockerHub |
 | ------ | --------- |
-| [Az OPC-közzétevő](https://github.com/Azure/iot-edge-opc-publisher) | [Az OPC-közzétevő](https://hub.docker.com/r/microsoft/iot-edge-opc-publisher/)   |
-| [Az OPC-Proxy](https://github.com/Azure/iot-edge-opc-proxy)         | [Az OPC-Proxy](https://hub.docker.com/r/microsoft/iot-edge-opc-proxy/) |
+| [OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher) | [OPC Publisher](https://hub.docker.com/r/microsoft/iot-edge-opc-publisher/)   |
+| [OPC Proxy](https://github.com/Azure/iot-edge-opc-proxy)         | [OPC Proxy](https://hub.docker.com/r/microsoft/iot-edge-opc-proxy/) |
 
 Már nincs szüksége egy nyilvános IP-cím vagy a gateway-tűzfalhoz bejövő portok megnyitása vagy összetevő. Az OPC-Proxy és az OPC-közzétevő összetevők csak a 443-as kimenő portot használja.
 
@@ -39,7 +39,7 @@ A jelen cikkben ismertetett lépések bemutatják, hogyan helyezhet üzembe egy 
 
 ## <a name="choose-a-gateway-device"></a>Válasszon egy átjáró-eszközt
 
-Ha még nem rendelkezik átjáróeszközzel, a Microsoft azt javasolja, azok partnerei egyik kereskedelmi átjáró vásárolhat. Kompatibilis a csatlakoztatott gyár megoldás az átjáró-eszközök listáját, keresse fel a [Azure IoT-eszközök katalógusának](https://catalog.azureiotsuite.com/?q=opc). Kövesse az utasításokat, hogy az átjáró beállításához az eszközre.
+Ha még nem rendelkezik átjáróeszközzel, a Microsoft azt javasolja, azok partnerei egyik kereskedelmi átjáró vásárolhat. Kompatibilis a csatlakoztatott gyár megoldás az átjáró-eszközök listáját, keresse fel a [Azure IoT-eszközök katalógusának](https://catalog.azureiotsolutions.com/?q=opc). Kövesse az utasításokat, hogy az átjáró beállításához az eszközre.
 
 Ha egy meglévő átjáró eszközt manuálisan konfigurálnia kell, kövesse az alábbi utasításokat.
 

@@ -13,16 +13,18 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 11dd91039bb352e86800982d0a294f82622a56fe
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 8207c9bb4cce3d793a5030febc532b869f54dd3f
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56884831"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195132"
 ---
 # <a name="what-is-azure-app-configuration"></a>Mi az Azure-alkalmazások konfigurálása
 
 Az Azure App konfigurálása Alkalmazásbeállítások kezelése szolgáltatást biztosít központilag. A modern, különösen egy felhőben futó programok általában számos összetevőből jellegű elosztott rendelkezik. Konfigurációs beállítások terjedhetnek ezen összetevők között vezethet rögzített hibaelhárítása hibák az alkalmazások központi telepítése során. Alkalmazások konfigurálása lehetővé teszi az alkalmazás összes beállításainak tárolására, és biztonságos azok hozzáfér egy helyen.
+
+App Service-ben konfigurációs van **privát előzetes verzió**. Díjmentes használata az előzetes verzió ideje alatt.
 
 ## <a name="why-use-app-configuration"></a>Miért érdemes használni az alkalmazások konfigurálása
 
@@ -44,6 +46,12 @@ Alkalmazások konfigurálása az alábbi előnyöket biztosítja:
 * Fokozott biztonság az Azure által felügyelt identitások használatával.
 * Végezze el az adatok titkosítások használatára, inaktív és átvitel közben.
 * Natív integráció a népszerű keretrendszereket.
+
+Kiegészíti az Alkalmazáskonfigurációt [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) titkos alkalmazáskulcsok tárolására szolgál. Alkalmazáskonfiguráció megkönnyítik a következő forgatókönyvek megvalósításához:
+
+* Központi felügyeleti és terjesztési hierarchikus konfigurációs adatokat a különböző környezetekben és földrajzi területek számára.
+* A dinamikus konfigurációs módosítások újbóli üzembe helyezés és a egy alkalmazás újraindítása nélkül.
+* A szolgáltatás kezelése.
 
 ## <a name="how-to-use-app-configuration"></a>Hogyan használhatja az Alkalmazáskonfigurációt
 

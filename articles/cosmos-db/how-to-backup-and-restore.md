@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 7f99b6d2f6fc1c6d1c270bd66965d978749ac63f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e79fdf2d7d680b3a229385c0fd96d844b3425b18
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455932"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992481"
 ---
 # <a name="restore-data-from-a-backup-in-azure-cosmos-db"></a>Adatok visszaállítása biztonsági másolatból az Azure Cosmos DB-ben 
 
@@ -33,6 +33,11 @@ A visszaállítás kérelmezése előtt rendelkeznie kell a következő adatokat
 * Ha egy vagy több adatbázis törölve vannak, adja meg az Azure Cosmos-fiók, valamint az Azure Cosmos-adatbázis neve, és adja meg, hogy létezik-e egy új adatbázis ugyanazzal a névvel.
 
 * Ha egy vagy több tárolók törlődnek, az Azure Cosmos fiók nevét, adatbázis nevét, és a tároló nevének kell biztosítania. És adja meg, ha van ilyen nevű tároló.
+
+* Ha véletlenül törölt vagy az adatok sérültek, forduljon [az Azure-támogatás](https://azure.microsoft.com/support/options/) 8 órán belül, hogy az Azure Cosmos DB-csapatunk segíthet helyreállítja az adatokat a biztonsági mentésekből.
+  
+  * Ha véletlenül törölte az adatbázis vagy -tároló, nyissa meg a Sev B vagy Sev C Azure támogatási esetet. 
+  * Ha véletlenül törölt vagy sérült néhány dokumentumot a tárolóban, nyissa meg a súlyosság támogatási esetet. 
 
 Ha adatok sérülésével történik, és ha a dokumentumok egy tárolón belül módosított vagy törölt, **törölje a tárolót a lehető leghamarabb**. A tároló törlésével felülírják a biztonsági mentések elkerülheti a Azure Cosmos DB-hez. Ha valamilyen okból a törlés nem lehetséges, hogy kell jegyet minél hamarabb. Fiók neve az Azure Cosmos, az adatbázis nevét, a gyűjtemények nevére, valamint a pont, amelyre az adatok tudja állítani az időben kell megadnia. Fontos, hogy segítsen határozza meg a legjobban elérhető biztonsági másolatok ekkor minél pontosabb. Fontos továbbá adja meg az idő (UTC). 
 

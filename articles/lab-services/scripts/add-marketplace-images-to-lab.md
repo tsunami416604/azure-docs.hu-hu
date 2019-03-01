@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 22c30e1c3b19e62489a08a702d8b35fbc4862e13
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: e099a29a198d43bf8d00487ab45e2648479aedbe
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728216"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194777"
 ---
 # <a name="use-powershell-to-add-a-marketplace-image-to-a-lab-in-azure-devtest-labs"></a>Piactéri lemezképet az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet hozzáadása a PowerShell használatával
 
@@ -40,7 +40,7 @@ Ez a szkript a következő parancsokat használja:
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Find-AzResource](/powershell/module/az.resources/find-azresource) | Megkeresi az erőforrásokat a megadott paraméterek alapján. |
+| Find-AzResource | Megkeresi az erőforrásokat a megadott paraméterek alapján. |
 | [Get-AzResource](/powershell/module/az.resources/get-azresource) | Megjeleníti az erőforrást. |
 | [Set-AzResource](/powershell/module/az.resources/set-azresource) | Módosít egy erőforrást. |
 | [New-AzResource](/powershell/module/az.resources/new-azresource) | Hozzon létre egy erőforrást. |

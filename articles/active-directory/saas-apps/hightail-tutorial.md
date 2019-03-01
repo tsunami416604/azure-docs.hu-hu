@@ -4,282 +4,259 @@ description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: e15206ac-74b0-46e4-9329-892c7d242ec0
-ms.service: active-directory
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/15/2018
+ms.topic: tutorial
+ms.date: 02/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd49d97431efc3e1902e700a54627d5ee095cc74
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e2758cffd99a70199b131337e936cf55458ce0e9
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180028"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992073"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hightail"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Hightail
 
 Ebben az oktatóanyagban elsajátíthatja, hogyan Hightail integrálása az Azure Active Directory (Azure AD).
-
 Hightail integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
 
-- Szabályozhatja, hogy ki férhet hozzá Hightail Azure AD-ben
-- Engedélyezheti a felhasználóknak, hogy automatikusan első bejelentkezett Hightail (egyszeri bejelentkezés) az Azure AD-fiókjukkal
-- Kezelheti a fiókokat, egyetlen központi helyen – az Azure Portalon
+* Szabályozhatja, ki férhet hozzá Hightail Azure AD-ben.
+* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve Hightail (egyszeri bejelentkezés) az Azure AD-fiókjukat.
+* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](../manage-apps/what-is-single-sign-on.md).
+Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Hightail az Azure AD-integráció konfigurálásához a következőkre van szükség:
 
-- Azure AD-előfizetés
-- Egy Hightail egyszeri bejelentkezés engedélyezve van az előfizetés
-
-> [!NOTE]
-> Ebben az oktatóanyagban a lépéseket teszteléséhez nem ajánlott éles környezetben használja.
-
-Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javaslatokat:
-
-- Ne használja az éles környezetben, csak szükség esetén.
-- Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, beszerezheti a egy egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/).
+* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a egy havi próbalehetőség [Itt](https://azure.microsoft.com/pricing/free-trial/)
+* Egyszeri bejelentkezés engedélyezve előfizetés hightail
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
-Ebben az oktatóanyagban tesztelni az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben. Az ebben az oktatóanyagban ismertetett forgatókönyvben két fő építőelemeket áll:
 
-1. Hightail hozzáadása a katalógusból
-1. Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
+Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+
+* Támogatja a hightail **SP és IDP** által kezdeményezett egyszeri bejelentkezés
+* Támogatja a hightail **igény szerinti** felhasználók átadása
 
 ## <a name="adding-hightail-from-the-gallery"></a>Hightail hozzáadása a katalógusból
+
 Az Azure AD integrálása a Hightail konfigurálásához hozzá kell Hightail a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
 **Hightail hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
 
-1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra. 
+1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
-    ![Active Directory][1]
+    ![Az Azure Active Directory gomb](common/select-azuread.png)
 
-1. Navigáljon a **vállalati alkalmazások**. Ezután lépjen a **minden alkalmazás**.
+2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
 
-    ![Alkalmazások][2]
-    
-1. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-    ![Alkalmazások][3]
+3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
 
-1. A Keresés mezőbe írja be a **Hightail**.
+    ![Az új alkalmazás gomb](common/add-new-app.png)
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/hightail-tutorial/tutorial_hightail_search.png)
+4. A Keresés mezőbe írja be a **Hightail**válassza **Hightail** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
 
-1. Az eredmények panelen válassza ki a **Hightail**, és kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+     ![Az eredmények listájában hightail](common/search-new-app.png)
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/hightail-tutorial/tutorial_hightail_addfromgallery.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés
-Ebben a szakaszban, konfigurálás és tesztelés az Azure AD egyszeri bejelentkezés Hightail a teszt "Britta Simon" nevű felhasználó.
-
-Egyszeri bejelentkezés működjön, az Azure ad-ben tudnia kell, a partner felhasználó Hightail mi egy felhasználó számára az Azure ad-ben. Más szóval egy Azure AD-felhasználót és a kapcsolódó felhasználó Hightail hivatkozás kapcsolata kell létrehozni.
-
-Hightail, rendelje hozzá az értékét a **felhasználónév** értékeként az Azure AD-ben a **felhasználónév** a hivatkozás kapcsolat létrehozására.
+Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az Hightail nevű tesztfelhasználó alapján **Britta Simon**.
+Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó Hightail hivatkozás kapcsolata kell létrehozni.
 
 Az Azure AD egyszeri bejelentkezés az Hightail tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configuring-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-1. **[Az Azure ad-ben tesztfelhasználó létrehozása](#creating-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-1. **[Hightail tesztfelhasználó létrehozása](#creating-a-hightail-test-user)**  – egy megfelelője a Britta Simon Hightail, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-1. **[Az Azure ad-ben tesztfelhasználó hozzárendelése](#assigning-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-1. **[Egyszeri bejelentkezés tesztelése](#testing-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
+2. **[Hightail egyszeri bejelentkezés konfigurálása](#configure-hightail-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
+4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
+5. **[Hozzon létre Hightail tesztfelhasználót](#create-hightail-test-user)**  – egy megfelelője a Britta Simon Hightail, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
+6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
+### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
-Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Portalon, és Hightail alkalmazását az egyszeri bejelentkezés konfigurálása.
+Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
 
-**Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Hightail, hajtsa végre az alábbi lépéseket:**
+Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Hightail, hajtsa végre az alábbi lépéseket:
 
-1. Az Azure Portalon az a **Hightail** alkalmazás integrációs oldalán kattintson a **egyszeri bejelentkezési**.
+1. Az a [az Azure portal](https://portal.azure.com/), az a **Hightail** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
 
-    ![Egyszeri bejelentkezés konfigurálása][4]
+    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
 
-1. Az a **egyszeri bejelentkezési** párbeszédablakban válassza **mód** , **SAML-alapú bejelentkezés** egyszeri bejelentkezés engedélyezéséhez.
+2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/hightail-tutorial/tutorial_hightail_samlbase.png)
+    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
 
-1. Az a **Hightail tartomány és URL-címek** területén kövesse az alábbi lépéseket, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód:
+3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/hightail-tutorial/tutorial_hightail_url.png)
+    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-    Az a **válasz URL-cím** szövegmezőbe írja be az URL-cím: `https://www.hightail.com/samlLogin?phi_action=app/samlLogin&subAction=handleSamlResponse`
+4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, hajtsa végre a következő lépést:
+
+    ![Hightail tartomány és URL-címeket egyetlen bejelentkezési adatait](common/both-replyurl.png)
+
+    Az a **válasz URL-cím** szöveg írja be az URL-cím:  `https://www.hightail.com/samlLogin?phi_action=app/samlLogin&subAction=handleSamlResponse`
 
     > [!NOTE]
     > A válasz URL-cím értéke nem valódi érték. A tényleges válasz URL-címet, az oktatóanyag későbbi részében ismertetett frissíteni a válasz URL-cím értékét.
 
-1. Ellenőrizze **speciális URL-beállítások megjelenítése** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
+5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/hightail-tutorial/tutorial_hightail_url1.png)
+    ![Hightail tartomány és URL-címeket egyetlen bejelentkezési adatait](common/both-signonurl.png)
 
-    Az a **bejelentkezési URL-** szövegmezőbe írja be az URL-cím: `https://www.hightail.com/loginSSO`
+    Az a **bejelentkezési URL-** szöveg írja be az URL-cím:  `https://www.hightail.com/loginSSO`
 
-1. Az a **SAML-aláíró tanúsítvány** területén kattintson **tanúsítvány (Base64)** , és mentse a tanúsítványfájlt, a számítógépen.
+6. Hightail alkalmazását a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva nyissa meg a felhasználói attribútumok párbeszédpanel.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/hightail-tutorial/tutorial_hightail_certificate.png) 
+    ![image](common/edit-attribute.png)
 
-1. Hightail alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Állítsa be a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **"Attribútum"** az alkalmazás lapján. Az alábbi képernyőfelvételen látható erre egy példa látható. 
+7. Emellett fent, az alkalmazás Hightail vár néhány további attribútumok vissza SAML-válasz átadni. A a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen a következő lépésekkel adja hozzá a SAML-jogkivonat attribútumot, ahogyan az alábbi táblázatban:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/hightail-tutorial/tutorial_hightail_attribute.png) 
-
-1. Az a **felhasználói attribútumok** szakaszában a **egyszeri bejelentkezési** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, az ábrán látható módon, és hajtsa végre az alábbi lépéseket:
-    
-    | Attribútum neve | Attribútum értéke |
-    | ------------------- | -------------------- |
+    | Name (Név) | Adatforrás-attribútum|
+    | -------- |-------- |
     | FirstName | user.givenname |
     | LastName | user.surname |
-    | E-mail | user.mail |    
+    | E-mail | user.mail |
     | UserIdentity | user.mail |
-    
-    a. Kattintson a **attribútum hozzáadása** megnyitásához a **attribútum hozzáadása** párbeszédpanel.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/hightail-tutorial/tutorial_officespace_04.png)
+    a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/hightail-tutorial/tutorial_officespace_05.png)
+    ![image](common/new-save-attribute.png)
+
+    ![image](common/new-attribute-details.png)
 
     b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
 
-    c. Az a **érték** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
+    c. Hagyja a **Namespace** üres.
 
-    d. Hagyja a **Namespace** üres.
+    d. Válassza ki a forrás, **attribútum**.
 
-    e. Kattintson az **OK** gombra.
+    e. Az a **forrásattribútum** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
 
-1. Kattintson a **mentése** gombra.
+    f. Kattintson a **Ok**
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/hightail-tutorial/tutorial_general_400.png)
+    g. Kattintson a **Save** (Mentés) gombra.
 
-1. Az a **Hightail konfigurációs** területén kattintson **konfigurálása Hightail** megnyitásához **bejelentkezés konfigurálása** ablak. Másolás a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** származó a **gyors útmutató szakaszban.**
+8. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **tanúsítvány (Base64)** a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/hightail-tutorial/tutorial_hightail_configure.png)
+    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
 
-    >[!NOTE]
-    >Mielőtt konfigurálná az egyszeri bejelentkezés: Hightail alkalmazás, kérjük, az e-mail-tartománya Hightail a csapat, hogy minden felhasználó, aki ezt a tartományt használja az egyszeri bejelentkezést funkciókat használhat engedélyezési lista.
+9. Az a **Hightail beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+
+    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+
+    a. Bejelentkezési URL
+
+    b. Azure Ad Identifier
+
+    c. Kijelentkezési URL
+
+    > [!NOTE]
+    > Mielőtt konfigurálná az egyszeri bejelentkezés: Hightail alkalmazás, kérjük, az e-mail-tartománya Hightail a csapat, hogy minden felhasználó, aki ezt a tartományt használja az egyszeri bejelentkezést funkciókat használhat engedélyezési lista.
+
+### <a name="configure-hightail-single-sign-on"></a>Konfigurálása egyszeri bejelentkezéshez Hightail
 
 1. Egy másik böngésző ablakában nyissa meg a **Hightail** felügyeleti portálon.
 
-1. Kattintson a **felhasználói ikon** , az oldal jobb felső sarkában. 
+2. Kattintson a **felhasználói ikon** , az oldal jobb felső sarkában. 
 
     ![Egyszeri bejelentkezés konfigurálása](./media/hightail-tutorial/configure1.png)
 
-1. Kattintson a **nézet Admin Console** fülre.
+3. Kattintson a **nézet Admin Console** fülre.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/hightail-tutorial/configure2.png)
 
-1. A felső menüben kattintson a **SAML** lapra, és hajtsa végre az alábbi lépéseket:
+4. A felső menüben kattintson a **SAML** lapra, és hajtsa végre az alábbi lépéseket:
 
     ![Egyszeri bejelentkezés konfigurálása](./media/hightail-tutorial/configure3.png)
 
-    a. Az a **bejelentkezési URL-cím** szövegmező, illessze be az értéket a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** Azure Portalról másolt.
+    a. Az a **bejelentkezési URL-cím** szövegmező, illessze be az értéket a **bejelentkezési URL-cím** Azure Portalról másolt.
 
     b. A base-64 kódolású tanúsítvány megnyitása a Jegyzettömbben az Azure-portálról letöltött, a tartalmát a vágólapra másolja és illessze be azt a **SAML-tanúsítvány** szövegmezőbe.
 
-    c. Kattintson a **MÁSOLÁSI** a SAML ügyfél URL-címe, a példány másolja és illessze be azt a **válasz URL-cím** szövegmezőjébe **Hightail tartomány és URL-címek** szakaszban az Azure Portalon.
+    c. Kattintson a **MÁSOLÁSI** a SAML ügyfél URL-címe, a példány másolja és illessze be azt a **válasz URL-cím** szövegmezőjébe **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
     d. Kattintson a **konfigurációk mentéséhez**.
 
-### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
+### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+
 Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
 
-![Az Azure AD-felhasználó létrehozása][100]
+1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
 
-**Tesztfelhasználó létrehozása az Azure AD-ban, hajtsa végre az alábbi lépéseket:**
+    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
 
-1. Az a **az Azure portal**, a bal oldali navigációs panelén kattintson **Azure Active Directory** ikonra.
+2. Válassza ki **új felhasználó** a képernyő tetején.
 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/hightail-tutorial/create_aaduser_01.png) 
+    ![Új felhasználó gomb](common/new-user.png)
 
-1. A felhasználók listájának megjelenítéséhez, lépjen a **felhasználók és csoportok** kattintson **minden felhasználó**.
-    
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/hightail-tutorial/create_aaduser_02.png) 
+3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
 
-1. Megnyitásához a **felhasználói** párbeszédpanelen kattintson a **Hozzáadás** a párbeszédpanel tetején.
- 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/hightail-tutorial/create_aaduser_03.png) 
+    ![A felhasználó párbeszédpanel](common/user-properties.png)
 
-1. Az a **felhasználói** párbeszédpanel lapon, a következő lépésekkel:
- 
-    ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/hightail-tutorial/create_aaduser_04.png) 
+    a. Az a **neve** mezőbe írja be **BrittaSimon**.
+  
+    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    Például: BrittaSimon@contoso.com
 
-    a. Az a **neve** szövegmezőbe írja be **BrittaSimon**.
-
-    b. Az a **felhasználónév** szövegmezőbe írja be a **e-mail-cím** BrittaSimon az.
-
-    c. Válassza ki **jelszó megjelenítése** és jegyezze fel az értékét a **jelszó**.
+    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
 
     d. Kattintson a **Create** (Létrehozás) gombra.
- 
-### <a name="creating-a-hightail-test-user"></a>Hightail tesztfelhasználó létrehozása
 
-Ez a szakasz célja Hightail Britta Simon nevű felhasználó létrehozásához. 
-
-Nincs meg ebben a szakaszban a művelet elem. Támogatja az egyéni igények alapján just-in-time-felhasználók létrehozásának hightail. Ha már konfigurálta az egyéni jogcímek, ahogyan az a szakasz **[konfigurálása az Azure AD egyszeri bejelentkezés](#configuring-azure-ad-single-sign-on)** fent, a felhasználó automatikusan létrejön az alkalmazás még nem létezik. 
-
->[!NOTE]
->Hozzon létre egy felhasználót manuálisan kell, ha kapcsolódni kell a [Hightail támogatási csapatának](mailto:support@hightail.com). 
-
-### <a name="assigning-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
 
 Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Hightail Azure egyszeri bejelentkezés használatára.
 
-![Felhasználó hozzárendelése][200] 
+1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Hightail**.
 
-**Britta Simon rendel Hightail, hajtsa végre az alábbi lépéseket:**
+    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
 
-1. Az Azure Portalon nyissa meg az alkalmazások megtekintése, és a könyvtár nézetben keresse meg és nyissa meg **vállalati alkalmazások** kattintson **minden alkalmazás**.
+2. Az alkalmazások listájában jelölje ki a **Hightail**.
 
-    ![Felhasználó hozzárendelése][201] 
+    ![Az alkalmazások listáját a Hightail hivatkozásra](common/all-applications.png)
 
-1. Az alkalmazások listájában jelölje ki a **Hightail**.
+3. A bal oldali menüben válassza **felhasználók és csoportok**.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/hightail-tutorial/tutorial_hightail_app.png) 
+    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
 
-1. A bal oldali menüben kattintson **felhasználók és csoportok**.
+4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
 
-    ![Felhasználó hozzárendelése][202]
+    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
 
-1. Kattintson a **Hozzáadás** gombra. Válassza ki **felhasználók és csoportok** a **hozzárendelés hozzáadása** párbeszédpanel.
+5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-    ![Felhasználó hozzárendelése][203]
+6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
 
-1. A **felhasználók és csoportok** párbeszédablakban válassza **Britta Simon** a felhasználók listában.
+7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
 
-1. Kattintson a **kiválasztása** gombot **felhasználók és csoportok** párbeszédpanel.
+### <a name="create-hightail-test-user"></a>Hightail tesztfelhasználó létrehozása
 
-1. Kattintson a **hozzárendelése** gombot **hozzárendelés hozzáadása** párbeszédpanel.
+Ebben a szakaszban egy Britta Simon nevű felhasználó Hightail jön létre. Hightail támogatja a just-in-time-felhasználók létrehozásának, amely alapértelmezés szerint engedélyezve van. Nincs meg ebben a szakaszban a művelet elem. Ha a felhasználó már nem létezik az Hightail, egy új jön létre a hitelesítés után.
 
-### <a name="testing-single-sign-on"></a>Egyszeri bejelentkezés tesztelése
+> [!NOTE]
+> Hozzon létre egy felhasználót manuálisan kell, ha kapcsolódni kell a [Hightail támogatási csapatának](mailto:support@hightail.com).
 
-Ez a szakasz célja tesztelése az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 
-Ha a hozzáférési panelen a Hightail csempére kattint, meg kell lekérése automatikusan bejelentkezett az Hightail alkalmazáshoz.
+Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
+Ha a hozzáférési panelen a Hightail csempére kattint, meg kell lehet automatikusan bejelentkezett a Hightail, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-* [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](tutorial-list.md)
-* [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
+- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/hightail-tutorial/tutorial_general_01.png
-[2]: ./media/hightail-tutorial/tutorial_general_02.png
-[3]: ./media/hightail-tutorial/tutorial_general_03.png
-[4]: ./media/hightail-tutorial/tutorial_general_04.png
-
-[100]: ./media/hightail-tutorial/tutorial_general_100.png
-
-[200]: ./media/hightail-tutorial/tutorial_general_200.png
-[201]: ./media/hightail-tutorial/tutorial_general_201.png
-[202]: ./media/hightail-tutorial/tutorial_general_202.png
-[203]: ./media/hightail-tutorial/tutorial_general_203.png
-
+- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

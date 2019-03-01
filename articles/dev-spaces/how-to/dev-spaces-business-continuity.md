@@ -1,5 +1,5 @@
 ---
-title: Üzleti folytonosság és vészhelyreállítás helyreállítási Azure fejlesztési tárolóhelyek |} A Microsoft Docs
+title: Üzleti folytonosság és vészhelyreállítás helyreállítási Azure fejlesztési tárolóhelyek
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -7,16 +7,16 @@ ms.subservice: azds-kubernetes
 author: lisaguthrie
 ms.author: lcozzens
 ms.date: 01/28/2019
-ms.topic: article
+ms.topic: conceptual
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
+keywords: 'Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s '
 manager: jeconnoc
-ms.openlocfilehash: b7eba0e63f68cd56f2bcc310c3bde65c36e933dd
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 25397b52cbcfb141fe27e9261c78a2ef6adb677d
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822463"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192939"
 ---
 # <a name="business-continuity-and-disaster-recovery-in-azure-dev-spaces"></a>Üzleti folytonosság és vészhelyreállítás helyreállítási Azure fejlesztési tárolóhelyek
 

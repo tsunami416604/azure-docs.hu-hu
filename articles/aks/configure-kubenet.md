@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: iainfou
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 7975516e80576a9d79b35da816d049f47ebc7d3a
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: b80177d17e0dc5a4e54396907ecee61890ec523f
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650189"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011347"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Hálózatkezelés a saját IP-címtartományok Azure Kubernetes Service (AKS) kubenet használata
 
@@ -77,6 +77,9 @@ Használat *Azure CNI* során:
 - A pod kommunikációt a legtöbb, hogy a fürtön kívüli erőforrásokhoz.
 - Nem kívánja az udr-EK kezelése.
 - Speciális funkciók, például a virtuális csomópontok vagy a hálózati házirend van szüksége.
+
+> [!NOTE]
+> Kuberouter lehetővé teszi a hálózati házirend engedélyezése kubenet használatakor és a egy AKS-fürt a daemonset is telepíthető. Felhívjuk a figyelmét arra, kube-útválasztó bétaverzióban van, és nem támogatott érhető el a Microsoft által a projekthez.
 
 ## <a name="create-a-virtual-network-and-subnet"></a>Virtuális hálózat és alhálózat létrehozása
 

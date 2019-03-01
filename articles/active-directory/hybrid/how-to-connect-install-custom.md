@@ -16,12 +16,12 @@ ms.date: 10/04/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91dd25eadd3842cf1a94608a6f0ad9cfcd25039a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b55a7016ec0068234dfc6110d9d4afc04119ccdd
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56197232"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194061"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Az Azure AD Connect testreszabott telepítése
 Az Azure AD Connect **Custom settings** (Egyéni beállítások) menüje akkor használható, ha részletesebb beállításokra van szükség a telepítéshez. Akkor van rá szükség, ha több erdővel rendelkezik vagy ha választható szolgáltatásokat kíván konfigurálni, amelyeket a gyorstelepítés nem tartalmaz. Minden olyan esetben szükséges, ahol a [**gyorstelepítés**](how-to-connect-install-express.md) beállítás nem megfelelő az üzemelő példányhoz vagy a topológiához.
@@ -365,7 +365,7 @@ Az átmeneti móddal párhuzamosan be lehet állítani egy új szinkronizálási
 
 Átmeneti módban elvégezheti a szükséges módosításokat a szinkronizálási motoron, és áttekintheti az exportálásra váró adatokat. Ha a konfiguráció megfelelőnek tűnik, futtassa le újra a telepítővarázslót, és tiltsa le az átmeneti módot. Az adatok mostantól exportálva lesznek az Azure AD szolgáltatásba erről a kiszolgálóról. Mindenképpen tiltsa le ezzel egy időben a másik kiszolgálót, hogy egyszerre csak egy kiszolgáló exportáljon aktívan.
 
-További információkért lásd: [Átmeneti mód](how-to-connect-sync-operations.md#staging-mode).
+További információkért lásd: [Átmeneti mód](how-to-connect-sync-staging-server.md).
 
 ### <a name="verify-your-federation-configuration"></a>Összevonási konfiguráció ellenőrzése
 Amikor a Verify (Ellenőrzés) gombra kattint, az Azure AD Connect ellenőrzi a DNS-beállításokat.

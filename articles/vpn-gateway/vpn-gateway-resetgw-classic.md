@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 02/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: 6e57979e2c43cc47504495cce23947b93abb4020
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: d09f03aed8a739eaaaf8c60c379a746551d3b6f8
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56414933"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57009885"
 ---
 # <a name="reset-a-vpn-gateway"></a>VPN Gateway alaphelyzetbe állítása
 
@@ -56,7 +56,7 @@ Alaphelyzetbe állíthatja a Resource Manager VPN-átjáró, az Azure portal has
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Ha szeretne alaphelyzetbe állítani egy átjárót a parancsmag **alaphelyzetbe állítása – AzVirtualNetworkGateway**. A alaphelyzetbe állítása előtt, ellenőrizze, hogy a legújabb verzióját a [Resource Manager PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/azurerm/install-Az-ps?view=azurermps-4.0.0). A következő példa alaphelyzetbe állítja a virtuális hálózati átjáró nevű VNet1GW TestRG1 az erőforráscsoportban:
+Ha szeretne alaphelyzetbe állítani egy átjárót a parancsmag **alaphelyzetbe állítása – AzVirtualNetworkGateway**. A alaphelyzetbe állítása előtt, ellenőrizze, hogy a legújabb verzióját a [PowerShell Az-parancsmagok](https://docs.microsoft.com/powershell/module/az.network). A következő példa alaphelyzetbe állítja a virtuális hálózati átjáró nevű VNet1GW TestRG1 az erőforráscsoportban:
 
 ```powershell
 $gw = Get-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1

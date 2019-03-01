@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/28/2019
 ms.author: lizross
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6c1e0e7b1b5aa97137dc59e3e5cee1eb544af5a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6fd42e1e06086a12b159a8510c3d53a7f32e46f6
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199402"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194630"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Újdonságok archívuma? az Azure Active Directoryban
 
@@ -30,6 +30,208 @@ A Mi új kibocsátási megjegyzések-információkat biztosít Önnek kapcsolatb
 - Hibajavítások
 - Elavult funkciók
 - Módosítások tervek
+
+---
+
+## <a name="july-2018"></a>2018. július
+
+### <a name="improvements-to-azure-active-directory-email-notifications"></a>Az Azure Active Directory értesítő e-mailjeinek fejlesztései
+
+**Írja be:** Megváltozott funkció  
+**Szolgáltatás kategóriája:** Egyéb  
+**A termék szolgáltatás:** Identitás-életciklus-felügyelete
+ 
+Az Azure Active Directory (Azure AD) e-mailek most szolgáltatás egy új megjelenés, valamint a módosítások a feladó e-mail címe és a feladó megjelenített neve, amikor a következő szolgáltatások által küldött:
+ 
+- Az Azure AD hozzáférési felülvizsgálatok
+- Azure AD Connect Health 
+- Azure AD Identity Protection 
+- Azure AD Privileged Identity Management
+- Vállalati alkalmazás lejáró Tanúsítványértesítéseket
+- Vállalati alkalmazás-kiépítés szolgáltatási értesítések
+ 
+Az e-mail-értesítések, a következő e-mail címre küldi, és a megjelenített neve:
+
+- E-mail-cím: azure-noreply@microsoft.com
+- Megjelenített név: Microsoft Azure
+ 
+Egy vonatkozó példáért egyes új e-mail mintákra és további információkat lásd: [E-mail-értesítések az Azure AD PIM-ben](https://go.microsoft.com/fwlink/?linkid=2005832).
+
+---
+
+### <a name="azure-ad-activity-logs-are-now-available-through-azure-monitor"></a>Az Azure AD tevékenységnaplói most már elérhetők az Azure Monitorban
+
+**Írja be:** Új funkció  
+**Szolgáltatás kategóriája:** Jelentéskészítés  
+**A termék szolgáltatás:** Monitorozás és jelentéskészítés
+
+Az Azure AD-Tevékenységnaplók mostantól elérhetők az Azure monitor (az Azure platform kiterjedő figyelési szolgáltatás) nyilvános előzetes verzióban érhető el. Az Azure Monitor kínál hosszú távú adatmegőrzés és zökkenőmentes integráció mellett ezek a fejlesztések:
+
+- Hosszú távú megőrzése a naplófájlok irányítva a saját Azure storage-fiókba.
+
+- Zökkenőmentes SIEM-integráció, nem kell írnia, vagy egyéni parancsfájlok karbantartása.
+
+- Zökkenőmentes integráció a saját egyéni megoldások, elemzési eszközök vagy az incidenskezelés megoldásokat.
+
+Ezekkel az új képességekkel kapcsolatos további információkért lásd: blogunkat [az Azure AD-Tevékenységnaplók a diagnosztika jelenleg nyilvános előzetes verzióban elérhető az Azure Monitor](https://cloudblogs.microsoft.com/enterprisemobility/2018/07/26/azure-ad-activity-logs-in-azure-monitor-diagnostics-now-in-public-preview/) és a dokumentációban, [Azure Active Directory-Tevékenységnaplók az Azure-ban A figyelő (előzetes verzió)](https://docs.microsoft.com/azure/active-directory/reporting-azure-monitor-diagnostics-overview).
+
+---
+
+### <a name="conditional-access-information-added-to-the-azure-ad-sign-ins-report"></a>Az Azure AD bejelentkezési jelentése feltételes hozzáférési adatokkal bővült
+
+**Írja be:** Új funkció  
+**Szolgáltatás kategóriája:** Jelentéskészítés  
+**A termék szolgáltatás:** Identitásbiztonság és -védelem
+ 
+Ez a frissítés lehetővé teszi, hogy láthatja, hogy mely házirendek kiértékelése a felhasználó bejelentkezésekor mellett szabályzat eredménye. A jelentés emellett mostantól tartalmazza a felhasználó által használt, így azonosíthatja a régi protokoll forgalom ügyfélalkalmazás típusa. Jelentés bejegyzések most is kereshető a korrelációs Azonosítót, amely tekintheti meg a felhasználók felé néző hibaüzenet és azonosítása és megoldása a megfelelő bejelentkezési kérelem használható.
+
+---
+
+### <a name="view-legacy-authentications-through-sign-ins-activity-logs"></a>A régi hitelesítések megtekintése a bejelentkezések tevékenységnaplói révén
+
+**Írja be:** Új funkció  
+**Szolgáltatás kategóriája:** Jelentéskészítés  
+**A termék szolgáltatás:** Monitorozás és jelentéskészítés
+ 
+Bevezetésével a **ügyfélalkalmazás** -naplókat a bejelentkezési tevékenységek mezője ügyfelek is most lásd: felhasználók, amelyek az örökölt hitelesítés használata. Ügyfelek érhetik el ezeket az információkat a bejelentkezések az MS Graph API használatával is, vagy a bejelentkezés keresztül Tevékenységnaplók az Azure AD-portálra, ahol használhatja a **ügyfélalkalmazás** örökölt hitelesítések szűrés vezérlő. Tekintse meg a dokumentáció További részletekért.
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---july-2018"></a>2018 júliusától új összevont alkalmazások érhetők el az Azure AD alkalmazáskatalógusában
+
+**Írja be:** Új funkció  
+**Szolgáltatás kategóriája:** Vállalati alkalmazások  
+**A termék szolgáltatás:** Külső integráció
+ 
+2018 július tettünk elérhetővé az alkalmazáskatalógusban támogatja az összevonási 16 új alkalmazásokról:
+
+[Innováció Hub](https://docs.microsoft.com/azure/active-directory/saas-apps/innovationhub-tutorial), [Leapsome](https://docs.microsoft.com/azure/active-directory/saas-apps/leapsome-tutorial), [bizonyos rendszergazdai egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/saas-apps/certainadminsso-tutorial), PSUC átmeneti, [iPass SmartConnect](https://docs.microsoft.com/azure/active-directory/saas-apps/ipasssmartconnect-tutorial), [képernyőfelvétel-O felosztásban](https://docs.microsoft.com/azure/active-directory/saas-apps/screencast-tutorial) , PowerSchool osztályterem, egységes [Eli bevezetési](https://docs.microsoft.com/azure/active-directory/saas-apps/elionboarding-tutorial), [Bomgar távoli támogatási](https://docs.microsoft.com/azure/active-directory/saas-apps/bomgarremotesupport-tutorial), [Nimblex](https://docs.microsoft.com/azure/active-directory/saas-apps/nimblex-tutorial), [Imagineer WebVision](https://docs.microsoft.com/azure/active-directory/saas-apps/imagineerwebvision-tutorial) , [Insight4GRC](https://docs.microsoft.com/azure/active-directory/saas-apps/insight4grc-tutorial), [SecureW2 JoinNow összekötő](https://docs.microsoft.com/azure/active-directory/saas-apps/securejoinnow-tutorial), [Kanbanize](https://review.docs.microsoft.com/azure/active-directory/saas-apps/kanbanize-tutorial), [SmartLPA](https://review.docs.microsoft.com/azure/active-directory/saas-apps/smartlpa-tutorial), [képességek alapja](https://docs.microsoft.com/azure/active-directory/saas-apps/skillsbase-tutorial)
+
+Az alkalmazásokkal kapcsolatos további információkért lásd: [SaaS integrációja az Azure Active Directoryval](https://aka.ms/appstutorial). Az alkalmazás szerepeltetése az Azure AD-alkalmazásgyűjtemény ajánlati kapcsolatos további információkért lásd: [az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában](https://aka.ms/azureadapprequest).
+
+---
+ 
+### <a name="new-user-provisioning-saas-app-integrations---july-2018"></a>2018. július – új felhasználókiépítési funkció az SaaS-alkalmazás-integrációkban
+
+**Írja be:** Új funkció  
+**Szolgáltatás kategóriája:** Alkalmazás kiépítése  
+**A termék szolgáltatás:** Külső integráció
+ 
+Azure ad-ben automatizálhatja a létrehozás, a karbantartással és a SaaS-alkalmazások, például a Dropbox, a Salesforce, ServiceNow vagy további felhasználói identitásokat eltávolítását teszi lehetővé. 2018 július hozzáadtuk a felhasználók a következő alkalmazások az Azure AD-alkalmazásgyűjtemény támogatása:
+
+- [Cisco Spark](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-spark-provisioning-tutorial)
+
+- [Cisco WebEx](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-webex-provisioning-tutorial)
+
+- [Bonusly](https://docs.microsoft.com/azure/active-directory/saas-apps/bonusly-provisioning-tutorial)
+
+Minden alkalmazás, amely támogatja a felhasználók átadásának az Azure AD katalógusban listáját lásd: [SaaS integrációja az Azure Active Directoryval](https://aka.ms/appstutorial).
+
+---
+
+### <a name="connect-health-for-sync---an-easier-way-to-fix-orphaned-and-duplicate-attribute-sync-errors"></a>Connect Health for Sync – Az árván maradt és ismétlődő attribútumok szinkronizálásából fakadó hibák javításának egyszerűbb módja
+
+**Írja be:** Új funkció  
+**Szolgáltatás kategóriája:** AD Connect  
+**A termék szolgáltatás:** Monitorozás és jelentéskészítés
+ 
+Az Azure AD Connect Health önkiszolgáló szervizelést kell végeznie, jelölje ki és hárítsa el a szinkronizálási hibák mutatja be. Ez a szolgáltatás hibaelhárítása a duplikált attribútummal szinkronizálási hibák, és kijavítja a rendszer árva objektumokat az Azure ad-ből. A diagnosztika a következő előnyökkel jár:
+
+- Duplikált attribútummal szinkronizálási hibák, adott javításokat nyújtó leszűkíti
+
+- A javítás vonatkozik, kijelölve, az Azure AD-forgatókönyvek esetén egyetlen lépésben hibák megoldása
+
+- Nincs frissítés vagy a konfiguráció be-és a funkció használatához szükséges
+
+További információkért lásd: [diagnosztizálása és a duplikált attribútummal szinkronizálási hibák javítása](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health-diagnose-sync-errors)
+
+---
+
+### <a name="visual-updates-to-the-azure-ad-and-msa-sign-in-experiences"></a>Az Azure AD és az MSA bejelentkezési felületének vizuális frissítései
+
+**Írja be:** Megváltozott funkció  
+**Szolgáltatás kategóriája:** Azure AD  
+**A termék szolgáltatás:** Felhasználók hitelesítése
+
+Frissítettük a felhasználói felületen, a Microsoft online services bejelentkezési élményt, például az Office 365 és az Azure. Ez a változás lehetővé teszi a képernyők, kevésbé zsúfolt és egyszerűbb. Ez a változás kapcsolatos további információkért lásd: a [hamarosan várható az Azure AD bejelentkezési felület fejlesztései](https://cloudblogs.microsoft.com/enterprisemobility/2018/04/04/upcoming-improvements-to-the-azure-ad-sign-in-experience/) blog.
+
+---
+
+### <a name="new-release-of-azure-ad-connect---july-2018"></a>Az Azure AD Connect új kiadása – 2018. július
+
+**Írja be:** Megváltozott funkció  
+**Szolgáltatás kategóriája:** Alkalmazás kiépítése  
+**A termék szolgáltatás:** Identitáséletciklus-menedzsment
+
+Az Azure AD Connect legújabb kiadása tartalmazza: 
+
+- Hibajavítások és a támogatási frissítéseket. 
+
+- A Ping összevonni integráció általános elérhetősége
+
+- A legújabb SQL 2012-ügyfél frissítései 
+
+A frissítéssel kapcsolatos további információkért lásd: [az Azure AD Connect: Verziókiadások előzményei](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history)
+
+---
+
+### <a name="updates-to-the-terms-of-use-tou-end-user-ui"></a>A használati feltételek (TOU) végfelhasználói felületének frissítései
+
+**Írja be:** Megváltozott funkció  
+**Szolgáltatás kategóriája:** Használati feltételek  
+**A termék szolgáltatás:** Szabályozás
+
+Frissítjük a jelen használati feltételek végfelhasználó felhasználói felületén az elfogadási karakterlánc.
+
+**Aktuális szöveg.** [TenantName] erőforrásokhoz férhet hozzá, el kell fogadnia a használati feltételeket.<br>**Új szöveget.** [TenantName] erőforrás eléréséhez olvassa el a használati feltételeket.
+
+**Aktuális szövege:** Válassza a fogadja el az azt jelenti, hogy Ön vállalja, hogy az összes a fenti használati feltételeket.<br>**Új szövege:** Kattintson az elfogadás lehetőségre annak megerősítéséhez, hogy elolvasta és megértette a használati feltételeket.
+
+---
+ 
+### <a name="pass-through-authentication-supports-legacy-protocols-and-applications"></a>Az átmenő hitelesítés támogatja az örökölt protokollok és alkalmazások használatát
+
+**Írja be:** Megváltozott funkció  
+**Szolgáltatás kategóriája:** Hitelesítések (Bejelentkezések)  
+**A termék szolgáltatás:** Felhasználók hitelesítése
+ 
+Az átmenő hitelesítés most már támogatja az örökölt protokollok és alkalmazások. Most már teljes mértékben támogatja a következő korlátozások vonatkoznak:
+
+- Felhasználói bejelentkezések örökölt Office ügyfélalkalmazások számára, az Office 2010 és Office 2013, anélkül, hogy a modern hitelesítést.
+
+- A hozzáférést az naptár megosztása és a rendelkezésre állási információk az Exchange hibrid környezetek az Office 2010-et csak.
+
+- Felhasználói bejelentkezések Skype az üzleti ügyfélalkalmazások számára a modern hitelesítés nélkül.
+
+- Felhasználói bejelentkezések a PowerShell 1.0-s verzióját.
+
+- Az Apple Device Enrollment Program (Apple DEP), az iOS beállítási asszisztens használatával. 
+
+---
+ 
+### <a name="converged-security-info-management-for-self-service-password-reset-and-multi-factor-authentication"></a>Az önkiszolgáló jelszóátállításhoz és a többtényezős hitelesítéshez használt biztonsági adatok kezelésének összevonása
+
+**Írja be:** Új funkció  
+**Szolgáltatás kategóriája:** SSPR  
+**A termék szolgáltatás:** Felhasználók hitelesítése
+
+Ez az új funkció lehetővé teszi, hogy a felhasználók saját biztonsági adatok (például telefonszám, e-mail címét, mobilalkalmazás és így tovább) önkiszolgáló jelszó-visszaállítás (SSPR) és a multi-factor Authentication (MFA) egyetlen felületen kezeljék. Felhasználók többé nem kell az azonos biztonsági információkat kelljen regisztrálniuk az SSPR és a többtényezős hitelesítés a két különböző környezeteket. Az új felületet is vonatkozik, akik rendelkeznek vagy az SSPR, vagy a többtényezős hitelesítés.
+
+Egy szervezet MFA vagy az SSPR regisztrációs nem kényszerítése, ha a felhasználók regisztrálhatják-e a biztonsági adataikat keresztül a **saját alkalmazások** portálon. Itt a felhasználók regisztrálhatnak semmilyen metódus az MFA vagy az SSPR engedélyezve van. 
+
+Egy választható nyilvános előzetes kiadásról. A rendszergazdák bekapcsolhatja az új felhasználói felület (ha szükséges) felhasználók vagy a bérlő minden felhasználók egy kiválasztott csoportja számára.
+
+---
+ 
+### <a name="use-the-microsoft-authenticator-app-to-verify-your-identity-when-you-reset-your-password"></a>A Microsoft Authenticator alkalmazással igazolhatja személyazonosságát a jelszava átállításakor
+
+**Írja be:** Megváltozott funkció  
+**Szolgáltatás kategóriája:** SSPR  
+**A termék szolgáltatás:** Felhasználók hitelesítése
+
+Ez a funkció lehetővé teszi, hogy a nem rendszergazda jogosultságú igazolják egy értesítést vagy a Microsoft Authenticator (vagy bármely más hitelesítő alkalmazást) kód jelszó alaphelyzetbe állítása. Rendszergazdák bekapcsolása után a önkiszolgáló jelszó-visszaállítási mód, mobilalkalmazás aka.ms/mfasetup vagy aka.ms/setupsecurityinfo keresztül regisztráló felhasználók használhatja mobilalkalmazásukkal ellenőrzési módszerként a jelszó alaphelyzetbe állítása során.
+
+Mobilalkalmazás-értesítés csak be kell kapcsolni, szabályzata előírja a két módszer a jelszó részeként.
 
 ---
 

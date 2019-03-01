@@ -12,23 +12,22 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2019
-ms.author: jeffgilb
+ms.date: 02/27/2019
+ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 332722a1774eea41ab3566051da138f2383fef98
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 9d941c36499f851f20c41fa6dd01faf14e4192ba
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447667"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992770"
 ---
 # <a name="offline-update-of-azure-app-service-on-azure-stack"></a>Az Azure App Service az Azure Stacken offline frissítés
 
 *Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete*
 
 > [!IMPORTANT]
-> 1809 frissítést a vagy később, az Azure Stackkel integrált rendszer, vagy a legújabb Azure Stack fejlesztői készletének telepítése az Azure App Service 1.4-es üzembe helyezése előtt. -Az erőforrás-szolgáltató frissítése előtt tekintse át a kibocsátási megjegyzéseket, új funkciókat, javításokat és olyan ismert problémákat, amelyek hatással lehetnek a központi telepítés megismeréséhez.
+> 1901 alkalmazása vagy később a az Azure Stackkel integrált rendszer, vagy a legújabb Azure Stack fejlesztői készletének telepítése az Azure App Service 1.5 telepítése előtt. 
 
 Ez a cikk utasításait követve frissíthet a [App Service erőforrás-szolgáltató](azure-stack-app-service-overview.md) üzembe helyezve az Azure Stack-környezet, amely:
 
@@ -36,9 +35,7 @@ Ez a cikk utasításait követve frissíthet a [App Service erőforrás-szolgál
 * az Active Directory összevonási szolgáltatások (AD FS) védi.
 
 > [!IMPORTANT]
-> A frissítés futtatása előtt győződjön meg arról, hogy már végrehajtotta a [központi telepítését az Azure App Service az Azure Stack erőforrás-szolgáltató](azure-stack-app-service-deploy-offline.md)
->
->
+> A frissítés futtatása előtt győződjön meg arról, hogy már végrehajtotta a [központi telepítését az Azure App Service az Azure Stack Resource Provider](azure-stack-app-service-deploy-offline.md) és, hogy elolvasta a [kibocsátási megjegyzések](azure-stack-app-service-release-notes-update-five.md), amely kísérő az 1.5-ös kiadás kapcsolatos új funkcióit, javításokat és olyan ismert problémákat, amelyek hatással lehetnek a központi telepítés.
 
 ## <a name="run-the-app-service-resource-provider-installer"></a>Az App Service-ben resource provider telepítőjének futtatása
 
@@ -101,7 +98,7 @@ Leválasztott környezet frissítése az App Service-ben, akkor először létre
 
    1. Kattintson a **Connect** megjelenítő gombra a **Azure Stack-előfizetést** mezőbe.
         * Ha az Azure Active Directory (Azure AD) használja, adja meg az Azure AD-Rendszergazdafiók és az Azure Stack üzembe helyezésekor megadott jelszót. Kattintson a **jelentkezzen be a**.
-        * Ha az Active Directory összevonási szolgáltatások (AD FS) használ, adja meg a rendszergazdai fiókjával. Például _cloudadmin@azurestack.local_. Adja meg a jelszót, és kattintson a **bejelentkezés**.
+        * Ha az Active Directory összevonási szolgáltatások (AD FS) használ, adja meg a rendszergazdai fiókjával. Például: _cloudadmin@azurestack.local_. Adja meg a jelszót, és kattintson a **bejelentkezés**.
    2. Az a **Azure Stack-előfizetést** jelölje ki a **szolgáltatói előfizetés alapértelmezett**.
    3. Az a **Azure Stack-helyek** válassza ki a helyet, amely megfelel a régió, helyezi üzembe. Válassza ki például **helyi** Ha az az Azure Stack fejlesztői készletének telepítése.
    4. Ha meglévő App Service-környezet észlel, majd az erőforrás és a tárfiókja fog használni feltöltve, szürkén jelenik meg.

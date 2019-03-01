@@ -1,23 +1,23 @@
 ---
 title: Eszköz vezérlése Azure IoT Hubról – rövid útmutató (Python) | Microsoft Docs
 description: Ebben a rövid útmutatóban két Python-mintaalkalmazást fog futtatni. Az egyik egy háttéralkalmazás, amely a hubhoz csatlakoztatott eszközök távoli vezérlését teszi lehetővé. A másik alkalmazás a hubhoz csatlakoztatott eszközt szimulál, amelyet távolról lehet irányítani.
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 04/30/2018
-ms.author: dobett
-ms.openlocfilehash: 08b2018ec1f1d34291778df0fa217b874cc3ffab
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 421d434799745302343bff8e8aee48e266c70ae7
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515097"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011143"
 ---
-# <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Rövid útmutató: IoT Hubhoz csatlakozó eszköz vezérlése (Python)
+# <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Gyors útmutató: A vezérlőelem egy eszköz csatlakozik az IoT hub (Python)
 
 [!INCLUDE [iot-hub-quickstarts-2-selector](../../includes/iot-hub-quickstarts-2-selector.md)]
 
@@ -53,21 +53,21 @@ Ha még nem tette meg, töltse le a Python-mintaprojektet a https://github.com/A
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
-Ha már elvégezte a [Rövid útmutató: Telemetria küldése egy eszközről IoT Hubra](quickstart-send-telemetry-python.md) című előző útmutatót, kihagyhatja ezt a lépést.
+Ha elvégezte az előző [a rövid útmutató: Telemetria küldése egy eszközről IoT hubra](quickstart-send-telemetry-python.md), kihagyhatja ezt a lépést.
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
 ## <a name="register-a-device"></a>Eszköz regisztrálása
 
-Ha már elvégezte a [Rövid útmutató: Telemetria küldése egy eszközről IoT Hubra](quickstart-send-telemetry-python.md) című előző útmutatót, kihagyhatja ezt a lépést.
+Ha elvégezte az előző [a rövid útmutató: Telemetria küldése egy eszközről IoT hubra](quickstart-send-telemetry-python.md), kihagyhatja ezt a lépést.
 
 Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozzá. Ebben a rövid útmutatóban az Azure Cloud Shell használatával regisztrál egy szimulált eszközt.
 
 1. Futtassa az alábbi parancsokat az Azure Cloud Shellben az IoT Hub CLI-bővítmény hozzáadásához és az eszközidentitás létrehozásához. 
 
-    **YourIoTHubName** : alább a helyőrzőt cserélje le az IoT hub számára is választott nevét.
+    **YourIoTHubName** : Alább a helyőrzőt cserélje le az IoT hub számára is választott nevét.
 
-    **MyPythonDevice**: Ezt a nevet kapja a regisztrált eszköz. A MyPythonDevice nevet használja a bemutatott módon. Ha úgy dönt, hogy eszközének egy másik nevet választ, akkor az egész cikkben azt a nevet kell használnia, és a mintaalkalmazások futtatása előtt frissítenie kell bennük az eszköznevet.
+    **MyPythonDevice** : Ez az eszköz a megadott név. A MyPythonDevice nevet használja a bemutatott módon. Ha úgy dönt, hogy eszközének egy másik nevet választ, akkor az egész cikkben azt a nevet kell használnia, és a mintaalkalmazások futtatása előtt frissítenie kell bennük az eszköznevet.
 
     ```azurecli-interactive
     az extension add --name azure-cli-iot-ext
@@ -76,7 +76,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 2. Futtassa az alábbi parancsokat az Azure Cloud Shellben az imént regisztrált eszköz _eszközkapcsolati sztringjének_ lekéréséhez:
 
-    **YourIoTHubName** : alább a helyőrzőt cserélje le az IoT hub számára is választott nevét.
+    **YourIoTHubName** : Alább a helyőrzőt cserélje le az IoT hub számára is választott nevét.
 
     ```azurecli-interactive
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyPythonDevice --output table
@@ -90,7 +90,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 3. Szüksége van egy _szolgáltatáskapcsolati sztringre_ is azért, hogy a háttéralkalmazás csatlakozhasson az IoT Hubhoz, és üzeneteket kérhessen le. Az alábbi parancs lekéri az IoT Hub szolgáltatáskapcsolati sztringjét:
 
-    **YourIoTHubName**: A helyőrző helyére írja be az IoT Hubjához választott nevet.
+    **YourIoTHubName** : Cserélje le a helyőrző alábbi úgy dönt, az IoT hub nevét.
 
     ```azurecli-interactive
     az iot hub show-connection-string \
@@ -171,4 +171,4 @@ Ebben a rövid útmutatóban közvetlen metódust hívott meg egy eszközre egy 
 Ha szeretné megtudni, hogy hogyan irányíthatók az eszközről felhőbe irányuló üzenetek különböző felhőbeli célokhoz, folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Telemetria irányítása különböző végpontokra feldolgozás céljából](tutorial-routing.md)
+> [Oktatóanyag: Útvonal telemetriai adatokat a feldolgozáshoz különböző végpontok](tutorial-routing.md)

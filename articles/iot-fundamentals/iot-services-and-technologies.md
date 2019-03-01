@@ -7,12 +7,12 @@ services: iot-fundamentals
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: robinsh
-ms.openlocfilehash: e7ffd8f6f4f3aee376a09071fad0f1a36c23f1c4
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 4b51809585d391cb815c0f61c2ba462809445867
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694006"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57009800"
 ---
 # <a name="internet-of-things-iot-technologies-and-solutions-paas-and-saas"></a>Eszközök internetes hálózata (IoT) technológiák és -megoldások: PaaS és SaaS
 
@@ -90,7 +90,7 @@ A platformszolgáltatások legátfogóbb IoT-portfóliójával az Azure platform
 
 ### <a name="device-support"></a>Eszköztámogatás
 
-Az [Azure IoT-kezdőcsomagok](https://catalog.azureiotsuite.com/kits) segítségével magabiztosan belevághat saját IoT-projektjébe, vagy választhat az [eszközkatalógusban](http://catalog.azureiotsuite.com/) található több száz Certified for IoT hitelesítéssel rendelkező eszköz közül. Minden eszköz platformfüggetlen, és zökkenőmentesen kapcsolódik az IoT Hubhoz.
+Az [Azure IoT-kezdőcsomagok](https://catalog.azureiotsolutions.com/kits) segítségével magabiztosan belevághat saját IoT-projektjébe, vagy választhat az [eszközkatalógusban](http://catalog.azureiotazureiotsolutionssuite.com/) található több száz Certified for IoT hitelesítéssel rendelkező eszköz közül. Minden eszköz platformfüggetlen, és zökkenőmentesen kapcsolódik az IoT Hubhoz.
 A nyílt forráskódú [eszközoldali SDK-k](/azure/iot-hub/iot-hub-devguide-sdks) használatával csatlakoztathatja eszközeit az Azure IoT-hoz. A szoftverfejlesztői készleteink (SDK) több operációs rendszert, például a Linuxot, a Windowst és valós idejű operációs rendszereket, illetve számos programozási nyelvet – például [C](https://github.com/Azure/azure-iot-sdk-c), [Node.js](https://github.com/Azure/azure-iot-sdk-node), [Java](https://github.com/Azure/azure-iot-sdk-java), [.NET](https://github.com/Azure/azure-iot-sdk-csharp) és [Python](https://github.com/Azure/azure-iot-sdk-python) – támogatnak.
 
 ### <a name="iot"></a>IoT 

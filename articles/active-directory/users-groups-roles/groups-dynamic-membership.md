@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8d5ecd33f0bc67b6e0ec2e559a8475da490369e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8a21e300c2540ddefb79fcaf593f752eef7e2c2e
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210662"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010191"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Az Azure Active Directory a dinamikus tagsági szabályok
 
@@ -137,7 +137,7 @@ Ha azt szeretné, a felhasználói attribútum több különböző érték össz
  A következő példában a kifejezés eredménye IGAZ Ha user.department értéke megegyezik a listában található értékek valamelyikét:
 
 ```
-   user.department -in ["50001","50002","50003",“50005”,“50006”,“50007”,“50008”,“50016”,“50020”,“50024”,“50038”,“50039”,“51100”]
+   user.department -in ["50001","50002","50003","50005","50006","50007","50008","50016","50020","50024","50038","50039","51100"]
 ```
 
 

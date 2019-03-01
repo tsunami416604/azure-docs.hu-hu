@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 265dcccf9202d7b0116bba05b016e8967b68c67a
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: cddc6ccd8360ef88c95cd33c0bc8e141d721042d
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273357"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010514"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Az alkalmazás integrálása az Azure-beli virtuális hálózathoz
 Ez a dokumentum ismerteti az Azure App Service virtuális hálózat integrációja, és bemutatja, hogyan állíthatja be az Apps [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Azure virtuális hálózatok] [ VNETOverview] (Vnetek) lehetővé teszi számos, az Azure-erőforrások nem internetes routeable hálózati helyezni. Ezek a hálózatok csatlakozhat a helyszíni hálózatot VPN-technológiák segítségével. 
@@ -82,7 +82,7 @@ Az átjáró létrehozása:
 * 172.16.0.0/12 – Ez azt jelenti, hogy egy IP-címtartományt, a 172.16.0.0 172.31.255.255 
 * 192.168.0.0/16 – Ez azt jelenti, hogy egy IP-címtartományt, a 192.168.0.0 192.168.255.255
 
-Ha a rendszer csak az átjáró létrehozása az App Service VNet-integráció, akkor nem kell feltölteni a tanúsítványt. Az átjáró létrehozása 30 percet is igénybe vehet. Nem lesz mindaddig, amíg az átjáró üzemképes integrálhatják az alkalmazás a virtuális hálózathoz. 
+Ha csak az átjáró létrehozása App Service VNet-integráció használni, akkor nincs szüksége egy tanúsítvány feltöltéséhez. Az átjáró létrehozása 30 percet is igénybe vehet. Nem lesz mindaddig, amíg az átjáró üzemképes integrálhatják az alkalmazás a virtuális hálózathoz. 
 
 ### <a name="configure-vnet-integration-with-your-app"></a>VNet-integráció konfigurálása az App-alkalmazással ###
 

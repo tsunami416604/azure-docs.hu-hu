@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2a5876a3f77eb0764edc5ce833f4b74284dda66
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ce4ad48a81d5f3b3b8574237b8d8685ad9b141ec
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211716"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194201"
 ---
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Azure AD Connect: Frissítés a DirSync szolgáltatásról
 Az Azure AD Connect a DirSync utóda. A DirSync szolgáltatásról való frissítés lehetőségeit találja meg ebben a témakörben. Ezek lépések nem használhatóak az Azure AD Connect másik kiadásáról vagy az Azure AD Syncről való frissítéshez.
@@ -71,7 +71,7 @@ Az alábbi módosítás nem frissíthető. Amennyiben rendelkezik ezzel a konfig
 
 ![Frissítés blokkolva](./media/how-to-dirsync-upgrade-get-started/analysisblocked.png)
 
-Ezekben az esetekben az ajánlott megoldás egy új Azure AD Connect kiszolgáló telepítése [átmeneti módban](how-to-connect-sync-operations.md#staging-mode), és a régi DirSync és az új Azure AD Connect konfiguráció ellenőrzése. Alkalmazza újra az összes módosítást egyéni konfiguráció használatával az [Azure AD Connect Sync custom configuration](how-to-connect-sync-whatis.md) (Azure AD Connect szinkronizálása egyéni konfigurációval) szakaszban foglaltak szerint.
+Ezekben az esetekben az ajánlott megoldás egy új Azure AD Connect kiszolgáló telepítése [átmeneti módban](how-to-connect-sync-staging-server.md), és a régi DirSync és az új Azure AD Connect konfiguráció ellenőrzése. Alkalmazza újra az összes módosítást egyéni konfiguráció használatával az [Azure AD Connect Sync custom configuration](how-to-connect-sync-whatis.md) (Azure AD Connect szinkronizálása egyéni konfigurációval) szakaszban foglaltak szerint.
 
 A DirSync által a szolgáltatásfiókokhoz használt jelszavak nem kérhetőek le, és nem lesznek áttelepítve. A jelszavak vissza lesznek állítva a frissítés során.
 
@@ -161,12 +161,12 @@ Ha az Azure AD Connectet egy új kiszolgálón telepíti, a rendszer feltételez
      Ezek a beállítások láthatók ezen a képernyőn:  
      ![Adja meg Azure AD hitelesítő adatait](./media/how-to-dirsync-upgrade-get-started/advancedsettings.png)
 7. Kattintson a **Tovább** gombra.
-8. A **Ready to configure** (Konfigurálásra kész) oldalon hagyja a **Start the synchronization process as soon as the configuration completes** (Szinkronizálási folyamat indítása a konfiguráció befejeztével) beállítást bejelölve. A kiszolgáló [átmeneti módban](how-to-connect-sync-operations.md#staging-mode) van, így a módosítások nem lesznek exportálva az Azure AD-be.
+8. A **Ready to configure** (Konfigurálásra kész) oldalon hagyja a **Start the synchronization process as soon as the configuration completes** (Szinkronizálási folyamat indítása a konfiguráció befejeztével) beállítást bejelölve. A kiszolgáló [átmeneti módban](how-to-connect-sync-staging-server.md) van, így a módosítások nem lesznek exportálva az Azure AD-be.
 9. Kattintson az **Install** (Telepítés) gombra.
 10. Miután a telepítés befejeződött, jelentkezzen ki majd ismét be a Windowsba, mielőtt a Synchronization Service Managert (Szinkronizálási szolgáltatás kezelőjét) vagy a Synchronization Rule Editort (Szinkronizálási szabályok szerkesztőjét) használná, vagy bármely egyéb konfigurációmódosítást próbálna végrehajtani.
 
 > [!NOTE]
-> Megkezdődik a szinkronizálás a Windows Server Active Directory és az Azure Active Directory között, a módosítások azonban nem lesznek exportálva az Azure AD-be. Egy időben csupán egyetlen szinkronizálási eszköz exportálhat aktívan módosításokat. Ezt az állapotot nevezzük [átmeneti módnak](how-to-connect-sync-operations.md#staging-mode).
+> Megkezdődik a szinkronizálás a Windows Server Active Directory és az Azure Active Directory között, a módosítások azonban nem lesznek exportálva az Azure AD-be. Egy időben csupán egyetlen szinkronizálási eszköz exportálhat aktívan módosításokat. Ezt az állapotot nevezzük [átmeneti módnak](how-to-connect-sync-staging-server.md).
 
 ### <a name="verify-that-azure-ad-connect-is-ready-to-begin-synchronization"></a>Ellenőrizze, hogy az Azure AD Connect készen áll a szinkronizálás megkezdésére
 Annak ellenőrzéséhez, hogy az Azure AD Connect kész-e átvenni a DirSync feladatait, meg kell nyitnia a **Synchronization Service Managert** (Szinkronizálási szolgáltatás kezelője) a Start menü **Azure AD Connect** csoportjában.
@@ -182,7 +182,7 @@ Az alkalmazásban lépjen az **Operations** (Műveletek) lapra. Ezen a lapon gy�
 
 Tekintse át ezeknek a műveleteknek az eredményét, és győződjön meg róla, hogy nincsenek hibák.
 
-Ha meg kívánja tekinteni és vizsgálni az Azure AD szolgáltatásba exportálni szándékolt módosításokat, olvassa el, hogy ellenőrizhető a konfiguráció az [átmeneti módban](how-to-connect-sync-operations.md#staging-mode). Hajtsa végre a szükséges módosításokat, amíg semmi váratlant nem lát már.
+Ha meg kívánja tekinteni és vizsgálni az Azure AD szolgáltatásba exportálni szándékolt módosításokat, olvassa el, hogy ellenőrizhető a konfiguráció az [átmeneti módban](how-to-connect-sync-staging-server.md). Hajtsa végre a szükséges módosításokat, amíg semmi váratlant nem lát már.
 
 Akkor áll készen a DirSyncről Azure AD-re váltásra, ha végrehajtotta ezeket a lépéseket, és elégedett az eredménnyel.
 

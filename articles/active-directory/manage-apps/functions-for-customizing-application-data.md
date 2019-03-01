@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83a0685f75111a5552645d487589734846b05968
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ed081b32fd8ac464f7ec66f97c6867708a6f8533
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164634"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991480"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Az Azure Active Directoryban attribútumleképezések kifejezések írása
 Amikor konfigurál egy SaaS-alkalmazáshoz való üzembe helyezést, az Ön által megadott attribútum-leképezéshez típusú egyik egy kifejezés-hozzárendelést. Ezeknél a parancsfájl-szerű kifejezés, amely lehetővé teszi, hogy a felhasználók adatokat alakíthatja, amelyek esetében a SaaS-alkalmazás több elfogadható formátumok kell írnia.
@@ -175,7 +175,7 @@ Lecseréli az értékeket egy karakterláncból. A megadott paraméterek függő
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
 **Függvény:**<br> SingleAppRoleAssignment([appRoleAssignments])
 
-**Leírás:**<br> Egy karakterlánc-argumentum szükséges. A karakterláncot ad vissza, de bármilyen diakritikus karakterek repalced egyenértékű nem diakritikus karakterrel.
+**Leírás:**<br> Egyetlen appRoleAssignment rendelve egy felhasználó egy adott alkalmazás összes hozzárendeléseinek listáját adja vissza. Ez a függvény van szükség az alkalmazások szerepkör-hozzárendelései objektum átalakítása egy egységes szerepkör karakterláncát. Vegye figyelembe, hogy a legjobb módszer annak biztosítására, csak egy appRoleAssignment egyszerre egy felhasználóhoz rendelt, és ha több szerepkör hozzá van rendelve a visszaadott szerepkör karakterlánc nem lehet előre jelezhető. 
 
 **Paraméterek:**<br> 
 

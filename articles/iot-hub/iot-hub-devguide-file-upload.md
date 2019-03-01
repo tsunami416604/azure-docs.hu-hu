@@ -1,19 +1,19 @@
 ---
 title: Megismerheti az Azure IoT Hub-fájl feltöltése |} A Microsoft Docs
 description: Fejlesztői útmutató – eszközök fájljainak a fájlfeltöltési funkcióról az IoT Hub kezelése feltöltése egy Azure storage blob-tároló használata.
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robin.shahan
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 11/07/2018
-ms.author: dobett
-ms.openlocfilehash: 724f655229347aa73747476e6bb4837b30e0fc4f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 7678c50cbda0ea112c737e8230586081efe61081
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839007"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57008559"
 ---
 # <a name="upload-files-with-iot-hub"></a>Fájlok feltöltése az IoT Hub
 
@@ -125,8 +125,8 @@ Minden IoT-központ rendelkezik az alábbi konfigurációs lehetőségeket a fá
 
 | Tulajdonság | Leírás | Tartomány és az alapértelmezett |
 | --- | --- | --- |
-| **enableFileUploadNotifications** |Azt szabályozza, hogy e fájl feltöltése értesítések kerüljenek-e az értesítések végpont. |Logikai. Alapértelmezett: igaz. |
-| **fileNotifications.ttlAsIso8601** |Alapértelmezett TTL-fájl feltöltése az értesítésekhez. |ISO_8601 időköz legfeljebb 48 óra (legalább 1 perc). Alapértelmezett érték: 1 óra. |
+| **enableFileUploadNotifications** |Azt szabályozza, hogy e fájl feltöltése értesítések kerüljenek-e az értesítések végpont. |Logikai. Alapértelmezett: Értéke TRUE. |
+| **fileNotifications.ttlAsIso8601** |Alapértelmezett TTL-fájl feltöltése az értesítésekhez. |ISO_8601 időköz legfeljebb 48 óra (legalább 1 perc). Alapértelmezett: 1 óra. |
 | **fileNotifications.lockDuration** |A fájl feltöltése értesítések várólista Zárolás időtartama. |5 és 300 másodperc (legalább 5 másodperces). Alapértelmezett: 60 másodperc. |
 | **fileNotifications.maxDeliveryCount** |Kézbesítések maximális száma a fájl feltöltése az értesítési várólista. |1 és 100 között. Alapértelmezett: 100. |
 

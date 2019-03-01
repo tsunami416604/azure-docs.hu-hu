@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/10/2018
 ms.author: kumud
-ms.openlocfilehash: 00a5e888961a9712db0cd509a39fb0367895ac3f
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: d6b5a8b31b78e21868a7f81c481c4fce1cd4e6f5
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164126"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192445"
 ---
-# <a name="log-analytics-for-public-basic-load-balancer"></a>Naplóelemzés az alapszintű nyilvános Load Balancer
+# <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Az alapszintű nyilvános Load Balancer az Azure Monitor naplóira
 
 >[!IMPORTANT] 
 >Az Azure Load Balancer két különböző típust támogat: alap- és standard szinten. Ez a cikk az Alapszintű Load Balancert ismerteti. A Standard Load Balancer kapcsolatos további információkért lásd: [Standard Load Balancer áttekintése](load-balancer-standard-overview.md) amely közzéteszi a többdimenziós metrikák az Azure monitorban telemetriai adatokat.
@@ -32,7 +32,7 @@ Segítségével különböző típusú naplók az Azure-ban felügyelet és hiba
 * **Állapotminta-naplókat:** Ez a napló segítségével megtekintheti az állapotmintát, például a példányok a háttérkiszolgáló-készlet, amely nem kap kéréseket a terheléselosztóból miatt sikertelen állapotadat-mintavételi által észlelt problémákkal. Ebbe a naplófájlba írja be az állapot-mintavételi változása esetén.
 
 > [!IMPORTANT]
-> Log analytics jelenleg csak nyilvános alapszintű működik terheléselosztók. A Resource Manager-alapú üzemi modellben üzembe helyezett erőforrások csak érhetők el naplók. Naplók az erőforrások a klasszikus üzemi modellben nem használhat. Az üzembe helyezési modellel kapcsolatos további információkért lásd: [Understanding Resource Manager-alapú és klasszikus üzembe helyezési](../azure-resource-manager/resource-manager-deployment-model.md).
+> Az Azure Monitor naplók jelenleg csak az alapszintű nyilvános load Balancer terheléselosztók esetében működik. A Resource Manager-alapú üzemi modellben üzembe helyezett erőforrások csak érhetők el naplók. Naplók az erőforrások a klasszikus üzemi modellben nem használhat. Az üzembe helyezési modellel kapcsolatos további információkért lásd: [Understanding Resource Manager-alapú és klasszikus üzembe helyezési](../azure-resource-manager/resource-manager-deployment-model.md).
 
 ## <a name="enable-logging"></a>Naplózás engedélyezése
 

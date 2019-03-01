@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 02/27/2019
 ms.author: hrasheed
-ms.openlocfilehash: d6897e35aa60be11cf556335d211c5ea616295b6
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: b174b1279a2e93560932334c9ae1e926c1eeca3c
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652695"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990764"
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>JSON-dokumentumok elemzését az Azure HDInsight az Apache Hive használatával
 
@@ -59,7 +59,7 @@ Megtudhatja, hogyan dolgozza fel, és a JavaScript Object Notation (JSON) fájlo
 
 A fájl található **wasb://processjson@hditutorialdata.blob.core.windows.net/**. Az Azure Blob storage használata a HDInsight további információkért lásd: [használható HDFS-kompatibilis Azure Blob storage a HDInsight Apache Hadoop-keretrendszerrel](../hdinsight-hadoop-use-blob-storage.md). A fürt alapértelmezett tárolóba másolhatja a fájlt.
 
-Ebben az oktatóanyagban az Apache Hive konzolt használja. Nyissa meg a Hive konzolt kapcsolatos utasításokért lásd: [Apache Hive használata a HDInsight a távoli asztalról az Apache Hadoop](apache-hadoop-use-hive-remote-desktop.md).
+Ebben az oktatóanyagban az Apache Hive konzolt használja. Nyissa meg a Hive konzolt kapcsolatos utasításokért lásd: [használata az Apache Ambari az Apache hadooppal a HDInsight Hive-nézet](apache-hadoop-use-hive-ambari-view.md).
 
 ## <a name="flatten-json-documents"></a>JSON-dokumentumok egybesimítására
 A következő szakaszban felsorolt módszerek szükséges, hogy a JSON-dokumentum tevődik össze egyetlen sor. Tehát simítja egybe a JSON-dokumentum karakterlánccá. Ha a JSON-dokumentumok már lett simítva, ezt a lépést kihagyhatja, és egyenesen eljuthat a következő szakasz a JSON-adatok elemzése. A JSON-dokumentumok egybesimítására, futtassa a következő parancsfájlt:
@@ -138,7 +138,7 @@ LATERAL VIEW JSON_TUPLE(jt.json_body, 'StudentId', 'Grade') q1
 
 Ez a szkript a Hive-konzol kimenetét:
 
-![json_tuple UDF-ben][image-hdi-hivejson-jsontuple]
+![json_tuple UDF][image-hdi-hivejson-jsontuple]
 
 Az UDF-ben használt json_tuple a [nézet oldalirányú](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) struktúra, amely lehetővé teszi a json szintaxist\_virtuális tábla létrehozása a UDT függvény az eredeti tábla minden egyes sorára való alkalmazásával a rekordot. A ismételt használata miatt túl nehézkessé válhat összetett JSONs **OLDALNÉZET**. Ezenkívül **JSON_TUPLE** beágyazott JSONs nem tudja kezelni.
 

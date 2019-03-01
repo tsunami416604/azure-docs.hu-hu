@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 191cff21cdaa6a4e94358ed0b9c63cd942f71a6e
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 70ccee4c69ba04206e4a7fe74c3bf158ae11a7b4
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564561"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56989881"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Gyors útmutató: Folyamat létrehozása a kognitív keresés használatával képességeit, és mintaadatok
 
@@ -53,7 +53,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 > [!NOTE]
 > December 21, 2018-as, lesz egy Cognitive Services-erőforrás társítása egy Azure Search-képességek alkalmazási lehetőségét. Ez lehetővé teszi indexmezők végrehajtási díjszabási elindításához. Ezen a napon is megkezdjük a dokumentumfeltörést fázis részeként a lemezkép kinyerési díjszabási. A szövegek dokumentumokból való kinyerése továbbra is ingyenesen használható.
 >
-> A végrehajtás beépített képességek díjat számítunk fel a meglévő [használatalapú-as-, a Cognitive Services nyissa meg az árat](https://azure.microsoft.com/pricing/details/cognitive-services/) . Kép kinyerési díjszabás az előzetes verziók díjszabása díjat számítunk fel, és a leírt a [díjszabását ismertető oldalt az Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). Ismerje meg, [további](cognitive-search-attach-cognitive-services.md).
+> A végrehajtás beépített képességek díjat számítunk fel a meglévő [használatalapú-as-, a Cognitive Services nyissa meg az árat](https://azure.microsoft.com/pricing/details/cognitive-services/) . Kép kinyerési díjszabás az előzetes verziók díjszabása díjat számítunk fel, és a leírt a [díjszabását ismertető oldalt az Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400). További [információ](cognitive-search-attach-cognitive-services.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -86,7 +86,7 @@ Első lépésként regisztráljon az Azure Search szolgáltatásra.
   ![Szolgáltatásdefiníciós oldal a portálon](./media/cognitive-search-tutorial-blob/create-search-service2.png "Szolgáltatásdefiníciós oldal a portálon")
 
   > [!NOTE]
-  > A kognitív keresés nyilvános előzetes verzióban érhető el. A képességcsoportok végrehajtása jelenleg minden csomagban elérhető, az ingyenes csomagot is beleértve. Fogja tudni elvégezni a végrehajtott információbeolvasás korlátozott számú fizetős Cognitive Services-erőforrás társítása nélkül. Ismerje meg, [további](cognitive-search-attach-cognitive-services.md).
+  > A kognitív keresés nyilvános előzetes verzióban érhető el. A képességcsoportok végrehajtása jelenleg minden csomagban elérhető, az ingyenes csomagot is beleértve. Fogja tudni elvégezni a végrehajtott információbeolvasás korlátozott számú fizetős Cognitive Services-erőforrás társítása nélkül. További [információ](cognitive-search-attach-cognitive-services.md).
 
 1. A szolgáltatási információk gyors eléréséhez rögzítse a szolgáltatást az irányítópulton.
 
@@ -98,7 +98,9 @@ A bővítési folyamat az [Azure Search indexelői](search-indexer-overview.md) 
 
 1. [Töltsön le mintaadatokat](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4), amelyek különböző típusú fájlok kis készletéből állnak. 
 
-1. Iratkozzon fel az Azure Blob storage, hozzon létre egy tárfiókot, nyissa meg a Blob szolgáltatás oldalt, és hozzon létre egy tárolót. A tárolóban, állítsa a nyilvános hozzáférés szintet **tároló**. További információkért lásd: ["Tároló létrehozása" szakaszban](../storage/blobs/storage-unstructured-search.md#create-a-container) a a *strukturálatlan adatok keresése* oktatóanyag.
+1. Iratkozzon fel az Azure Blob storage, hozzon létre egy tárfiókot, nyissa meg a Blob szolgáltatás oldalt, és hozzon létre egy tárolót. 
+
+1. A tárolóban, állítsa a nyilvános hozzáférés szintet **tároló (névtelen olvasási hozzáférés tárolók és blobok)**. További információkért lásd: ["Tároló létrehozása" szakaszban](../storage/blobs/storage-unstructured-search.md#create-a-container) a a *strukturálatlan adatok keresése* oktatóanyag.
 
 1. Kattintson a létrehozott tárolót, **feltöltése** az előző lépésben letöltött minta fájlok feltöltéséhez.
 

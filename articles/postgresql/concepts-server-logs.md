@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/04/2018
-ms.openlocfilehash: a7f4d10e3273fb2b4e17ff0a55c3a3ed6294833d
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.date: 02/28/2019
+ms.openlocfilehash: 99deef907818ffdb1ce858c8e988e26cbd53a1a1
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961278"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195098"
 ---
 # <a name="server-logs-in-azure-database-for-postgresql"></a>Kiszolgálói naplók az Azure Database for postgresql-hez 
 Azure Database for PostgreSQL állít elő, lekérdezés és a hiba naplókat. Lekérdezés és a hiba a naplók segítségével azonosítása, elhárítása és konfigurációs hibák és az optimálisnál rosszabb teljesítmény javításához. (A tranzakciós naplókhoz való hozzáférést lehetőség nem része). 
@@ -30,6 +30,8 @@ Ha engedélyezte a naplókat, akkor érhetők el az Azure Database for PostgreSQ
 ## <a name="diagnostic-logs"></a>Diagnosztikai naplók
 Azure Database for PostgreSQL integrálva van az Azure monitort, diagnosztikai naplók. Miután engedélyezte a naplók PostgreSQL-kiszolgálón, ha szeretné, azokat a kibocsátott [naplózza az Azure Monitor](../azure-monitor/log-query/log-query-overview.md), az Event Hubs vagy az Azure Storage. Diagnosztikai naplók engedélyezésével kapcsolatos további tudnivalókért lásd: útmutató szakasza a [diagnosztikai naplók dokumentáció](../azure-monitor/platform/diagnostic-logs-overview.md). 
 
+> [!IMPORTANT]
+> Ezt a diagnosztikai naplók funkciót csak érhető el az általános célú és memóriahasználatra optimalizált [tarifacsomagok](concepts-pricing-tiers.md).
 
 A következő táblázat ismerteti, mi az egyes naplókhoz. Attól függően, a kimeneti végpont választja, a mezők és a sorrend, amelyben szerepelnek a eltérőek lehetnek. 
 

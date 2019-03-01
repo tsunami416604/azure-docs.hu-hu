@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 02/07/2019
-ms.openlocfilehash: e716646ecf1646c561e9eeed71a83e99f1d1e6d2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 02/28/2019
+ms.openlocfilehash: 24f4ac5851746e64ea910853f24db5a3ffa95574
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989406"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991298"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-offline-using-dms"></a>Oktatóanyag: SQL Server migrálása az önálló adatbázis vagy készletezett Azure SQL Database-adatbázis offline a DMS használatával
 
@@ -45,11 +45,20 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 - Egyetlen (vagy készletezett) adatbázis létrehozása az Azure SQL Database, amelyeket a következő a részletek a cikkben [egy önálló adatbázis létrehozása az Azure SQL Database az Azure portal használatával](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started).
 
     > [!NOTE]
-    > Ha az SQL Server Integration Services (SSIS) használ, és szeretné áttelepíteni a katalógus-adatbázis, az SSIS-projektek/csomagok (SSISDB) az SQL Serverről az Azure SQL Database, a cél SSISDB létrehozott és kezelt automatikusan az Ön nevében amikor, SSIS az Azure Data Factory (ADF) üzembe helyezése. SSIS-csomagok áttelepítése kapcsolatos további információkért tekintse meg a cikket [áttelepítése az SQL Server Integration Services-csomagok az Azure-bA](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages). 
+    > Ha az SQL Server Integration Services (SSIS) használ, és szeretné áttelepíteni a katalógus-adatbázis, az SSIS-projektek/csomagok (SSISDB) az SQL Serverről az Azure SQL Database, a cél SSISDB létrehozott és kezelt automatikusan az Ön nevében amikor, SSIS az Azure Data Factory (ADF) üzembe helyezése. SSIS-csomagok áttelepítése kapcsolatos további információkért tekintse meg a cikket [áttelepítése az SQL Server Integration Services-csomagok az Azure-bA](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages).
   
 - Töltse le a [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) 3.3-as vagy újabb verzióját.
-- Hozzon létre egy virtuális hálózatot az Azure Database Migration Service-hez az Azure Resource Manager-alapú üzemi modell használatával, amely a hálózat helyek közötti kapcsolatot biztosít a helyszíni forráskiszolgálóknak [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) használatával.
-- Győződjön meg arról, hogy az Azure Virtual Network (VNET) hálózati biztonsági szabályok nem blokkolják a következő kommunikációs portokat: 443, 53, 9354, 445, 12000. További részletek az Azure VNET NSG-forgalom szűréséről: [Hálózati forgalom szűrése hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
+- Hozzon létre egy Azure Virtual Network (VNET) használatával az Azure Resource Manager üzembe helyezési modell, amely lehetővé teszi a helyek közötti kapcsolatot a helyszíni adatforrás-kiszolgálók használatával vagy az Azure Database Migration Service [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
+
+    > [!NOTE]
+    > Virtuális hálózathoz a telepítés során, ha az ExpressRoute hálózati a Microsoft társviszony-létesítés használja, hozzá a következő szolgáltatás [végpontok](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) az alhálózathoz, amelyben üzembe fogja helyezni a szolgáltatást:
+    > - Cél adatbázis végpont (például SQL-végpont, Cosmos-DB végpont, és így tovább)
+    > - Storage-végpont
+    > - Service bus-végpont
+    >
+    > Ez a konfiguráció szükség, mert az Azure Database Migration Service nem rendelkezik internetkapcsolattal.
+
+- Győződjön meg arról, hogy a virtuális hálózatok közötti hálózati biztonsági csoport szabályai nem blokkolják a következő kommunikációs portokat a 443-as, 53-as és 9354-es, 445-ös, 12000. További részletek az Azure VNET NSG-forgalom szűréséről: [Hálózati forgalom szűrése hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 - Konfigurálja a [Windows tűzfalat az adatbázismotorhoz való hozzáféréshez](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 - Nyissa meg a Windows tűzfalat, és engedélyezze, hogy az Azure Database Migration Service elérhesse az SQL-kiszolgáló forrását, amely alapértelmezés szerint az 1433-as TCP-port.
 - Ha több megnevezett SQL Server-példányt futtat dinamikus portokkal, előnyös lehet engedélyezni az SQL Browser Service-t, és engedélyezni a tűzfalakon keresztül az 1434-es UDP-porthoz való hozzáférést. Így az Azure Database Migration Service a forráskiszolgálón található megnevezett példányhoz férhet hozzá.
@@ -65,7 +74,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 1. A Data Migration Assistant eszközben válassza az Új (+) ikont, majd a **Felmérés** projekttípust.
 2. Nevezze el a projektet, majd a **Forráskiszolgáló típusa** szövegbeviteli mezőben válassza az **SQL Servert**, a **Célkiszolgáló típusa** szövegbeviteli mezőben pedig az **Azure SQL Database** lehetőséget. Ezután a **Létrehozás** lehetőséggel hozza létre a projektet.
 
-    Ha a forrás SQL Server adatbázis migrálása az önálló adatbázis vagy készletezett Azure SQL Database-adatbázis értékelésekor választhat egyikét vagy mindkettőt a következő értékelési jelentéstípusok:
+    Ha az értékelni kívánt a forrás SQL Server adatbázis migrálása az önálló adatbázis vagy készletezett Azure SQL Database-adatbázishoz, választhat egyikét vagy mindkettőt a következő értékelési jelentéstípusok:
 
     - Adatbázis-kompatibilitás ellenőrzése
     - Szolgáltatásparitás ellenőrzése
@@ -99,7 +108,7 @@ Miután nem okoz gondot az értékelés az és DMA meggyőződött arról, hogy 
 > [!IMPORTANT]
 > Az SSIS használata, ha a DMA jelenleg nem támogatja az áttelepítés forrás SSISDB, de, ugyanakkor az SSIS-projektek/csomagok a cél Azure SQL Database által üzemeltetett SSISDB. SSIS-csomagok áttelepítése kapcsolatos további információkért tekintse meg a cikket [áttelepítése az SQL Server Integration Services-csomagok az Azure-bA](https://docs.microsoft.com/azure/dms/how-to-migrate-ssis-packages).
 
-Áttelepíteni a **AdventureWorks2012** séma eszköz egy önálló adatbázis vagy készletezett Azure SQL Database-adatbázishoz, hajtsa végre az alábbi lépéseket:
+Áttelepíteni a **AdventureWorks2012** séma egy önálló adatbázis vagy készletezett Azure SQL Database-adatbázishoz, hajtsa végre az alábbi lépéseket:
 
 1. A Data Migration Assistant programban válassza az Új (+) ikont, majd a **Projekt típusa** alatt válassza a **Migrálás** lehetőséget.
 2. Nevezze el a projektet, majd a **Forráskiszolgáló típusa** szövegbeviteli mezőben válassza az **SQL Server** elemet, a **Célkiszolgáló típusa** szövegbeviteli mezőben pedig az **Azure SQL Database** lehetőséget.
@@ -134,7 +143,7 @@ Miután nem okoz gondot az értékelés az és DMA meggyőződött arról, hogy 
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>A Microsoft.DataMigration erőforrás-szolgáltató regisztrálása
 
-1. Jelentkezzen be az Azure Portalra, és válassza a **Minden szolgáltatás** **Előfizetések** elemét.
+1. Jelentkezzen be az Azure Portalra, és válassza a **Minden szolgáltatás**, majd az **Előfizetések** elemet.
 
    ![Portál-előfizetések megtekintése](media/tutorial-sql-server-to-azure-sql/portal-select-subscription1.png)
 
@@ -170,7 +179,7 @@ Miután nem okoz gondot az értékelés az és DMA meggyőződött arról, hogy 
 
     További tájékoztatás a költségekről és a tarifacsomagokról a [díjszabási lapon](https://aka.ms/dms-pricing) olvasható.
 
-    Ha segítségre van szüksége a megfelelő szintű Azure Database Migration Service kiválasztásában, tekintse meg az [itt](https://go.microsoft.com/fwlink/?linkid=861067) közzétett javaslatokat.  
+    Ha a megfelelő Azure Database Migration Service-csomag kiválasztása segítségre van szüksége, tekintse meg a javaslatok, az a könyvelési [Itt](https://go.microsoft.com/fwlink/?linkid=861067).  
 
      ![Az Azure Database Migration Service-példány beállításainak konfigurálása](media/tutorial-sql-server-to-azure-sql/dms-settings2.png)
 
@@ -199,7 +208,7 @@ A szolgáltatás létrejötte után keresse meg azt az Azure Portalon, nyissa me
 
 1. A **Migrálási forrás adatai** képernyőn adja meg a forrásként szolgáló SQL Server-példány kapcsolati adatait.
 
-    Gondoskodjon róla, hogy az SQL Server-példány neveként teljes tartománynevet (FQDN) használjon. Amikor a DNS-névfeloldás nem lehetséges, használhatja az IP-címet is.
+    Gondoskodjon róla, hogy az SQL Server-példány neveként teljes tartománynevet (FQDN) használjon. Amikor a DNS-névfeloldás nem lehetséges, az IP-címet is használhatja.
 
 2. Ha nem telepített megbízható tanúsítványt a forráskiszolgálón, jelölje be a **Kiszolgálótanúsítvány megbízhatósága** jelölőnégyzetet.
 

@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/23/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 5c791dc8216a4c905b4147f59a42d52091f14aae
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 93e1904862af7eaad395bf14b0d09555d9d1d2ab
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465979"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990135"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>Tervezési útmutató a replikált táblák az Azure SQL Data Warehouse használata
 Ez a cikk javaslatok az SQL Data Warehouse sémában replikált táblák tervezéséhez nyújt. Ezekkel az ajánlásokkal használatával javíthatja a lekérdezések teljesítményét adatok mozgását és lekérdezési összetettséget csökkentésével.
@@ -58,7 +58,7 @@ Mielőtt kívánja terjeszteni, vagy egy tábla replikálása, gondolja át szer
 
 CPU-igényes lekérdezéseket akkor teljesítenek a legjobban, ha az összes számítási csomópont között oszlanak meg a munkahelyi. Például egy táblázat minden egyes sorára futó számítások lekérdezések jobban, mint a replikált táblák elosztott táblákon végrehajtani. Mivel a replikált tábla minden számítási csomóponton teljes rendszer, a CPU-igényes lekérdezést egy replikált tábla fut a táblán teljes minden számítási csomóponton. Az extra számítási lelassíthatja a lekérdezések teljesítményét.
 
-Ez a lekérdezés például egy összetett predikátum rendelkezik.  Szállítói egy elosztott tábla helyett egy replikált tábla esetén gyorsabb azt futtatja. Ebben a példában a szállítói Ciklikus időszeleteléses elosztott is lehet.
+Ez a lekérdezés például egy összetett predikátum rendelkezik.  Amikor az adatok egy elosztott tábla helyett egy replikált tábla gyorsabban azt futtatja. Az ebben a példában az adatok Ciklikus időszeleteléses elosztott lehet.
 
 ```sql
 
@@ -69,7 +69,7 @@ WHERE EnglishDescription LIKE '%frame%comfortable%'
 ```
 
 ## <a name="convert-existing-round-robin-tables-to-replicated-tables"></a>Replikált táblák Ciklikus időszeleteléses meglévő táblák átalakítása
-Ha már rendelkezik a táblák Ciklikus időszeleteléses, azt javasoljuk replikált táblák konvertálja azokat, ha azok megfelelnek a következő cikkben ismertetett feltételeknek. Replikált táblák teljesítmény javítása a táblák Ciklikus időszeleteléses keresztül, mert nincs szükség az adatok áthelyezését.  Ciklikus időszeleteléses tábla mindig szükséges adatáthelyezés illesztéseket. 
+Ha már rendelkezik a táblák Ciklikus időszeleteléses, azt javasoljuk replikált táblák azokat, amelyek megfelelnek a következő cikkben ismertetett feltételeknek konvertálása. Replikált táblák teljesítmény javítása a táblák Ciklikus időszeleteléses keresztül, mert nincs szükség az adatok áthelyezését.  Ciklikus időszeleteléses tábla mindig szükséges adatáthelyezés illesztéseket. 
 
 Ez a példa [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) módosítani a DimSalesTerritory tábla egy replikált tábla. Ebben a példában függetlenül attól, hogy DimSalesTerritory kivonatoló elosztott vagy Ciklikus időszeleteléses működik.
 

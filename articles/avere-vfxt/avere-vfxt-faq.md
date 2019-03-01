@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: dbd9eaf531dcad230c23d1b41110036102faf3df
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 83229cdca0ccff68dcdd543495a7a19b6e6c4c5b
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652667"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56990051"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Gyakori kérdések az Azure-hoz készült Avere vFXT-ről
 
@@ -63,7 +63,7 @@ Avere vFXT gyorsítótár. Ez nem kifejezetten tárolhatja az adatokat. RAM-MAL 
 
 ### <a name="what-regions-are-supported"></a>Mely régiók támogatottak?
 
-2018. November 1. minden régióban szuverén régiók (Kína, Németország) kivételével, és a government-régiók Avere vFXT az Azure-hoz támogatott. Győződjön meg arról, hogy a használni kívánt régiót is támogatja a nagy mennyiségű számítási magok és a Virtuálisgép-példányok a Avere vFXT fürt létrehozásához szükséges.
+Szuverén régiók (Kína, Németország) kivételével minden régióban Avere vFXT az Azure-hoz támogatott. Győződjön meg arról, hogy a használni kívánt régiót is támogatja a nagy mennyiségű számítási magok és a Virtuálisgép-példányok a Avere vFXT fürt létrehozásához szükséges.
 
 ### <a name="how-do-i-get-help-with-avere-vfxt"></a>Hogyan szerezhetem be az Avere vFXT kapcsolatban?
 
@@ -88,15 +88,17 @@ Avere vFXT készült a több Azure-beli virtuális gépek egy fürtözött kész
 
 ### <a name="what-kind-of-azure-virtual-machines-does-avere-vfxt-run-on"></a>Milyen típusú Azure-beli virtuális gépek futtatása a Avere vFXT?  
 
-Egy Azure-fürt Avere vFXT vagy a Microsoft Azure E32s_v3, vagy a D16s_v3 virtuális gépeket használ. 
+Egy Azure-fürt Avere vFXT E32s_v3 a Microsoft Azure virtuális gépeket használ. 
 
-### <a name="can-i-mix-and-match-virtual-machine-types-for-my-cluster"></a>E szabadon kombinálhatók a virtuális gépek típusainak a fürtöm számára?
+<!-- ### Can I mix and match virtual machine types for my cluster?
 
-Nem, ki kell választania egy virtuális gép típusát és a más.
+No, you must choose one virtual machine type or the other.
     
-### <a name="can-i-move-between-virtual-machine-types"></a>Áthelyezhető virtuálisgép-típusok között?
+### Can I move between virtual machine types?
 
-Igen, nincs típusú virtuális gép áthelyezése a másik áttelepítési elérési útját. [Hozzon létre egy támogatási jegyet](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) megtudhatja, hogyan.
+Yes, there is a migration path to move from one VM type to the other. [Open a support ticket](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) to learn how.
+
+-->
 
 ### <a name="does-the-avere-vfxt-environment-scale"></a>A Avere vFXT környezet skálázása nem?
 
@@ -175,7 +177,7 @@ Igen, hozhat létre a Avere vFXT rendszer egy másik virtuális hálózatot. Olv
 
 ### <a name="does-avere-vfxt-require-its-own-subnet"></a>Szükség van a saját alhálózatán Avere vFXT?
 
-Igen. Avere vFXT szigorúan csak egy magas rendelkezésre ÁLLÁSÚ fürt, és szükség van a több IP-cím a művelethez használandó. Ha a fürtöt a saját alhálózatán található, elkerülheti a telepítési és a normál működés problémát okozhat IP-címütközés kockázatát. A fürt alhálózatot a meglévő virtuális hálózaton belül lehet mindaddig, amíg nem IP-címek között átfedés van.
+Igen. Avere vFXT szigorúan fürtöt hoz létre magas rendelkezésre ÁLLÁS és szükség van a több IP-cím a művelethez használandó. Ha a fürtöt a saját alhálózatán található, elkerülheti a telepítési és a normál működés problémát okozhat IP-címütközés kockázatát. A fürt alhálózatot a meglévő virtuális hálózaton belül lehet mindaddig, amíg nem IP-címek között átfedés van.
 
 ### <a name="can-i-run-avere-vfxt-on-infiniband"></a>Futtathatok Avere vFXT InfiniBand?
 

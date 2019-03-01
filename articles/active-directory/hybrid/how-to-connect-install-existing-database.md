@@ -17,12 +17,12 @@ ms.date: 08/30/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8254766568c54748ee3646dd627a102ffc86e743
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d34b416fd8c9e87006a0fe5d7a7e30521ef03e2b
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191350"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193687"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Azure AD Connect használatával a meglévő ADSync-adatbázis telepítése
 Az Azure AD Connect adatok tárolásához SQL Server-adatbázis szükséges. Az alapértelmezett Azure AD connecttel telepített SQL Server 2012 Express LocalDB használata, vagy használja a saját SQL teljes verziójával. Korábban amikor telepítette az Azure AD Connect, az egy új adatbázist ADSync mindig létrejött. Az Azure AD Connect verziója 1.1.613.0 (vagy után) lehetősége van az Azure AD Connect telepítése meglévő ADSync-adatbázis jelzésével.
@@ -62,7 +62,7 @@ Fontos megjegyzések figyelembe vegye figyelembe a folytatás előtt:
 3.  Indítson új parancssort vagy PowerShell-munkamenetet. Lépjen a <drive>\program files\Microsoft Azure AD Connect mappához. Az Azure AD Connect-varázsló meglévő adatbázist használó módban való elindításához futtassa az .\AzureADConnect.exe /useexistingdatabase parancsot.
 
 > [!NOTE]
-> A kapcsoló **/useexistingdatabase** csak ha az adatbázis már tartalmaz egy korábbi az Azure AD Connect telepítése adatait. Például ha helyez át egy helyi adatbázisból a teljes SQL Server-adatbázis, vagy ha az Azure AD Connect-kiszolgáló újraépítése, és visszaállította egy SQL az ADSync-adatbázis az Azure AD Connect egy korábbi telepítésből. Ha létrehozott egy üres adatbázist, és használhatja a telepítéshez, kihagyhatja ezt a lépést.
+> A kapcsoló **/useexistingdatabase** csak ha az adatbázis már tartalmaz egy korábbi az Azure AD Connect telepítése adatait. Például ha helyez át egy helyi adatbázisból a teljes SQL Server-adatbázis, vagy ha az Azure AD Connect-kiszolgáló újraépítése, és visszaállította egy SQL az ADSync-adatbázis az Azure AD Connect egy korábbi telepítésből. Ha az adatbázis üres, azt jelenti, azt nem tartalmaz egy Azure AD Connect korábbi telepítésből származó adatokat, ezt a lépést kihagyhatja.
 
 ![PowerShell](./media/how-to-connect-install-existing-database/db2.png)
 4.  Megjelenik az Azure AD Connect üdvözlőképernyője. A licencfeltételek és az adatvédelmi nyilatkozat elfogadása után kattintson a **Folytatás** gombra.

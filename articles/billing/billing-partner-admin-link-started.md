@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 85beb9b7e0c62d5e1c8dae61fdd15d5faf3a294c
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 4857b1771ae66cbee25765bb5173a638cbcd223e
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985869"
+ms.locfileid: "57008593"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Partnerazonosító csatolása az Azure-fiókok
 
@@ -142,11 +142,11 @@ A hivatkozás a felhasználói fiók szintjén társítva. Csak szerkesztheti, v
 
 **Melyik MPN-azonosító kell használni, ha a vállalata rendelkezik több?**
 
-Használhat bármilyen érvényes MPN-azonosító, kivéve a v-szervezeti MPN-azonosító. A legtöbb partnerek az MPN-azonosító használata a földrajzi hely, ahol az ügyfél-alapú vagy szolgáltatások vannak célszolgáltatásnak válassza.
+Használhat bármilyen érvényes MPN-azonosító, kivéve az előzménylistákat orgnization(v-org) MPN-azonosító. A legtöbb partnerek az MPN-azonosító használata a földrajzi hely, ahol az ügyfél-alapú vagy szolgáltatások vannak célszolgáltatásnak válassza.
 
 **Hol található a Partnerazonosítójával társított reporting befolyásolt bevétel?**
 
-Befolyásolt bevételi jelentési címen található [saját irányítópult](https://partner.microsoft.com/membership/reports/myinsights) Partner rendszergazdai hivatkozás kijelölésével látható módon.
+Befolyásolt bevételi jelentési címen található [saját irányítópult](https://partner.microsoft.com/membership/reports/myinsights). Válassza ki a Partner felügyeleti hivatkozás partner társítási típust kell.
 
 **Miért nem látom a saját felhasználói a jelentések?**
 
