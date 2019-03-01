@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 7ddc451627cd6880f3aca6cdcff03d83b86b8eb1
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: afb2cae4875b198c6da8ce6568ac5039520b4b27
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958295"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193925"
 documentType: LandingData
 title: Az Azure App Configuration (előzetes verzió) dokumentációja
 metadata:
@@ -56,13 +56,12 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="/azure/azure-app-configuration/integrate-with-azure-managed-service-identity">Integráció az Azure Managed Service Identityvel</a>
-    - html: <a href="/azure/azure-app-configuration/enable-dynamic-configuration-in-aspnet-core">Dinamikus konfiguráció engedélyezése az ASP.NET Core-ban</a>
+    - html: <a href="/azure/azure-app-configuration/integrate-azure-managed-service-identity">Integráció az Azure Managed Service Identityvel</a>
+    - html: <a href="/azure/azure-app-configuration/enable-dynamic-configuration-aspnet-core">Dinamikus konfiguráció engedélyezése az ASP.NET Core-ban</a>
 - title: Példák
   items:
   - type: list
     style: unordered
     className: spaced noBullet
     items:
-    - html: <a href="https://github.com/azure/AzureAppConfiguration-samples">Kódminták</a>
     - html: <a href="/azure/azure-app-configuration/cli-samples">Azure CLI</a>
