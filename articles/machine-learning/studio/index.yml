@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: b8ce62533af1cf8f921a8a8eafb8e781821c2604
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 4428bf710df5eae3b06c8abd38eb85d6128a574d
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233812"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959425"
 documentType: LandingData
 title: A Machine Learning Studio dokumentációja
 metadata:
@@ -18,21 +18,10 @@ metadata:
   ms.author: jmartens
   ms.tgt_pltfrm: na
   ms.devlang: na
-  ms.date: 01/24/2019
+  ms.date: 02/24/2019
 abstract:
   description: Az Azure Machine Learning Studio olyan, az együttműködést támogató, egérrel kezelhető eszköz, amellyel az adataihoz prediktív elemzési megoldások hozhatók létre, tesztelhetők és helyezhetők üzembe. Az oktatóanyagok, videók és példamodellek bemutatják a Machine Learning-modellek felépítését és üzembe helyezését a Studio használatával.
 sections:
-- title: 5 perces gyors útmutatók
-  items:
-  - type: paragraph
-    text: 'A Machine Learning Studio használatának bevezetése:'
-  - type: list
-    style: unordered
-    items:
-    - html: <a href="create-experiment">Az első Studio-kísérlet létrehozása</a>
-    - html: <a href="algorithm-choice">A legjobb algoritmus kiválasztása</a>
-    - html: <a href="deploy-consume-web-service-guide">Modellek üzembe helyezése webszolgáltatásként</a>
-    - html: '<a href="data-science-for-beginners-the-5-questions-data-science-answers">Olvassa el a következőt: Adatelemzés kezdőknek</a>'
 - title: Részletes útmutatók
   items:
   - type: paragraph
@@ -40,8 +29,8 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="tutorial-part1-credit-risk">Prediktív megoldás létrehozása és üzembe helyezése</a>
-    - html: <a href="azure-ml-customer-churn-scenario">Ügyfélforgalom példa</a>
+    - html: <a href="create-experiment">Az első Studio-kísérlet létrehozása</a>
+    - html: <a href="tutorial-part1-credit-risk">Prediktív megoldás létrehozása és üzembe helyezése a hitelkockázat kiszámításához</a>
 - title: Referencia
   items:
   - type: list

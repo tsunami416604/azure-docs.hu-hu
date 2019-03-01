@@ -1,0 +1,94 @@
+items:
+- name: Az Azure Sentinel előzetes verziójának dokumentációja
+  href: index.yml
+- name: Áttekintés
+  href: overview.md
+- name: Gyors útmutatók
+  items:
+  - name: Az Azure Sentinel előkészítése
+    href: quickstart-onboard.md
+  - name: Áttekinthető riasztások
+    href: quickstart-get-visibility.md
+  expanded: true
+- name: Oktatóanyagok
+  items:
+  - name: Gyanús fenyegetések észlelése
+    href: tutorial-detect-threats.md
+  - name: Esetek kivizsgálása
+    href: tutorial-investigate-cases.md
+  - name: Reagálás a fenyegetésekre
+    href: tutorial-respond-threats-playbook.md
+- name: Útmutatók
+  items:
+  - name: Adatforrások csatlakoztatása
+    href: connect-data-sources.md
+    items:
+    - name: Microsoft-szolgáltatások csatlakoztatása
+      items:
+      - name: Az Azure AD csatlakoztatása
+        href: connect-azure-active-directory.md
+      - name: Az Office 365 csatlakoztatása
+        href: connect-office-365.md
+      - name: A Cloud App Security csatlakoztatása
+        href: connect-cloud-app-security.md
+      - name: Azure-tevékenységnapló csatlakoztatása
+        href: connect-azure-activity.md
+      - name: Az Azure AD Identity Protection csatlakoztatása
+        href: connect-azure-ad-identity-protection.md
+      - name: Az Azure Information Protection csatlakoztatása
+        href: connect-azure-information-protection.md
+      - name: Az Azure ATP csatlakoztatása
+        href: connect-azure-atp.md
+      - name: Az Azure Security Center csatlakoztatása
+        href: connect-azure-security-center.md
+      - name: A Windows tűzfal csatlakoztatása
+        href: connect-windows-firewall.md
+      - name: A Windows biztonsági eseményeinek csatlakoztatása
+        href: connect-windows-security-events.md
+    - name: Külső megoldások csatlakoztatása
+      items:
+      - name: Általános CEF csatlakoztatása
+        href: connect-common-event-format.md
+      - name: A Barracuda csatlakoztatása
+        href: connect-barracuda.md
+      - name: A Check Point csatlakoztatása
+        href: connect-checkpoint.md
+      - name: A Palo Alto csatlakoztatása
+        href: connect-paloalto.md
+      - name: A Fortinet csatlakoztatása
+        href: connect-fortinet.md
+      - name: Az F5 csatlakoztatása
+        href: connect-f5.md
+      - name: A Syslog csatlakoztatása
+        href: connect-syslog.md
+      - name: A Cisco csatlakoztatása
+        href: connect-cisco.md
+    - name: Fenyegetésfelderítés csatlakoztatása
+      href: connect-threat-intelligence.md
+  - name: Felhasználói elemzések
+    href: user-analytics.md
+  - name: Veszélyforrás-keresés
+    href: hunting.md
+    items:
+    - name: Veszélyforrás-keresés notebookokkal
+      href: notebooks.md
+    - name: Veszélyforrás-keresés könyvjelzőkkel
+      href: bookmarks.md
+  - name: Egyesítés engedélyezése
+    href: connect-fusion.md
+- name: További források
+  items:
+  - name: Hasznos források
+    href: resources.md
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/?category=security-identity
+  - name: Azure biztonsági, adatvédelmi és megfelelőségi blog
+    href: http://blogs.msdn.com/b/azuresecurity/
+  - name: Régiónkénti rendelkezésre állás
+    href: https://azure.microsoft.com/regions/services/
+ms.openlocfilehash: 50587fc6b2fca37ddbe5a9a1cbe4ff1914c809c9
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56993367"

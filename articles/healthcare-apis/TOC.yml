@@ -1,0 +1,56 @@
+items:
+- name: Azure API for FHIR
+  href: index.yml
+- name: Áttekintés
+  items:
+  - name: Az Azure API for FHIR bemutatása
+    href: overview.md
+  - name: Az FHIR Server for Azure bemutatása
+    href: overview-open-source-server.md
+- name: Gyors útmutatók
+  items:
+  - name: Az Azure API for FHIR üzembe helyezése – portál
+    href: fhir-paas-portal-quickstart.md
+  - name: Az Azure API for FHIR üzembe helyezése – PowerShell
+    href: fhir-paas-powershell-quickstart.md
+  - name: Az Azure API for FHIR üzembe helyezése – parancssori felület
+    href: fhir-paas-cli-quickstart.md
+  - name: Az FHIR Server for Azure üzembe helyezése – portál
+    href: fhir-oss-portal-quickstart.md
+  - name: Az FHIR Server for Azure üzembe helyezése – PowerShell
+    href: fhir-oss-powershell-quickstart.md
+  - name: Az FHIR Server for Azure üzembe helyezése – parancssori felület
+    href: fhir-oss-cli-quickstart.md
+  expanded: true
+- name: Oktatóanyagok
+  items:
+  - name: Az FHIR API elérése a Postman használatával
+    href: access-fhir-postman-tutorial.md
+  expanded: false
+- name: Útmutatók
+  items:
+  - name: Erőforrás-alkalmazás regisztrálása
+    href: register-resource-azure-ad-client-app.md
+  - name: Bizalmas ügyfélalkalmazás regisztrálása
+    href: register-confidential-azure-ad-client-app.md
+  - name: Nyilvános ügyfélalkalmazás regisztrálása
+    href: register-public-azure-ad-client-app.md
+  - name: Szolgáltatásoldali ügyfélalkalmazás regisztrálása
+    href: register-service-azure-ad-client-app.md
+  - name: Jogkivonat beszerzése az Azure API for FHIR-hoz – parancssori felület
+    href: get-healthcare-apis-access-token-cli.md
+  - name: Identitásobjektum-azonosítók keresése
+    href: find-identity-object-ids.md
+  expanded: false
+- name: További források
+  items:
+  - name: GYIK
+    href: fhir-faq.md
+  - name: Támogatott funkciók
+    href: fhir-features-supported.md
+ms.openlocfilehash: 60d0d4b8368a64b9ef66608de6824cec9876b8be
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958116"

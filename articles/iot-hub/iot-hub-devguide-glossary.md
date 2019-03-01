@@ -1,19 +1,19 @@
 ---
 title: Az Azure IoT Hub szószedet |} A Microsoft Docs
 description: Fejlesztői útmutató – Azure IoT hubra vonatkozó gyakori kifejezések.
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robin.shahan
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
-ms.author: dobett
-ms.openlocfilehash: d815f980a0583058957b7d87b6c99df59e9a4821
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: d79485fa7587a6cf8783f2e5779fa0a1d593aea7
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817380"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011432"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Az IoT Hub kifejezések jegyzéke
 Ez a cikk felsorolja az egyes az IoT Hub-cikkekben használt gyakori kifejezések.
@@ -97,7 +97,7 @@ Kontextusában egy [ikereszköz](iot-hub-devguide-device-twins.md), kívánt tul
 Hivatkozik az a csatlakoztatott eszközökről küldött üzeneteket [az IoT Hub](#iot-hub). Lehet, hogy ezek az üzenetek [adatpont](#data-point-message) vagy [interaktív](#interactive-message) üzeneteket. További információkért lásd: [küldhet és fogadhat üzeneteket az IoT Hub](iot-hub-devguide-messaging.md).
 
 ## <a name="device"></a>Eszköz
-IoT kontextusában egy általában kisebb, különálló számítási eszközről, amely adatokat gyűjteni, vagy más eszközök szabályozásának. Egy eszköz lehet például egy környezeti monitorozási eszköz vagy egy tartományvezérlő üvegházhatású a kezelésre és szellőzőrendszerek rendszerekhez. A [eszközkatalógus](https://catalog.azureiotsuite.com/) működőképesnek a hardvereszközök listája [az IoT Hub](#iot-hub).
+IoT kontextusában egy általában kisebb, különálló számítási eszközről, amely adatokat gyűjteni, vagy más eszközök szabályozásának. Egy eszköz lehet például egy környezeti monitorozási eszköz vagy egy tartományvezérlő üvegházhatású a kezelésre és szellőzőrendszerek rendszerekhez. A [eszközkatalógus](https://catalog.azureiotsolutions.com/) működőképesnek a hardvereszközök listája [az IoT Hub](#iot-hub).
 
 ## <a name="device-app"></a>Eszközalkalmazás
 Egy eszköz-alkalmazást futtat az [eszköz](#device) és kezeli a szolgáltatással való kommunikációhoz a [az IoT hub](#iot-hub). Általában valamelyikét használja a [Azure IoT eszközoldali SDK-k](#azure-iot-device-sdks) mikor meg, hogy egy eszköz alkalmazást. Az IoT-oktatóanyagok számos használhatja egy [szimulált eszköz](#simulated-device) kényelmi célokat szolgál.

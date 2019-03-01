@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2105919e0c21ef57ae2cd19450110df384252e97
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 43d28cde7e4287b5394087000b5e730a94748713
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56730936"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010633"
 documentType: LandingData
 title: A Bing Autosuggest dokumentációja
 metadata:
@@ -12,18 +12,39 @@ metadata:
   title: A Bing Autosuggest dokumentációja – oktatóanyagok, rövid útmutatók és API-referencia | Microsoft Docs
   description: Útmutató a Bing Autosuggest API használatához, amellyel javasolt lekérdezéseket jeleníthet meg egy részleges lekérdezés alapján. Az oktatóanyagok bemutatják, hogyan hozhat létre a szolgáltatást használó alkalmazásokat.
   services: cognitive-services
-  author: v-jaswel
-  manager: kamrani
+  author: aahill
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-autosuggest
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 10/10/2017
-  ms.author: v-jaswel
+  ms.date: 02/20/2019
+  ms.author: aahi
 abstract:
-  description: A Bing Autosuggest API-val egy részleges keresési lekérdezéskifejezést küldhet el a Bingnek, és visszakaphatja azon javasolt lekérdezések listáját, amelyekre más felhasználók rákerestek.  Amikor például a felhasználó megadja a keresési kifejezés egyes karaktereit, meghívhatja ezt az API-t, és a keresőmező legördülő listáját feltöltheti a javasolt lekérdezési sztringekkel. Ismerje meg rövid útmutatóink, oktatóanyagaink és példáink segítségével az Autosuggest API használatának módját.
+  description: A Bing Autosuggest API-val egy részleges keresési lekérdezéskifejezést küldhet el a Bingnek, és visszakaphatja azon javasolt lekérdezések listáját, amelyekre más felhasználók rákerestek.  Amikor például a felhasználók beírják a keresőkifejezés egyes karaktereit, meghívhatja ezt az API-t, amely a keresőmező legördülő listáját feltölti javaslatokkal. Ismerje meg rövid útmutatóink, oktatóanyagaink és példáink segítségével az Autosuggest API használatának módját.
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/bing-autosuggest/overview
+      html: <p>Tudnivalók a Bing Autosuggest API-ról</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Mi az a Bing Autosuggest API?
+    - href: /azure/cognitive-services/bing-autosuggest/concepts/get-suggestions
+      html: <p>Megismerheti, hogyan kaphat valós idejű keresési javaslatokat</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Javaslatok a Bing Autosuggest API-tól
+    - href: /azure/cognitive-services/bing-autosuggest/language-support
+      html: <p>Megtudhatja, mely nyelveket támogatja az API.</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Támogatott nyelvek
 - title: 5 perces gyors útmutatók
   items:
   - type: paragraph
@@ -60,7 +81,7 @@ sections:
   - type: paragraph
     text: 'További információ a Bing Autosuggest API-t használó alkalmazások fejlesztéséről:'
   - type: paragraph
-    text: <a href="tutorials/autosuggest.md">Egyoldalas webalkalmazás</a> | <a href="tutorials/autosuggest-source.md">Forráskód</a>
+    text: <a href="tutorials/autosuggest.md">Egyoldalas webalkalmazás</a>
 - title: Referencia
   items:
   - type: list

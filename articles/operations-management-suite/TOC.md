@@ -2,7 +2,7 @@
 ## [Ügynökkel végzett monitorozás](../monitoring/index.md)
 
 # Bevezetés
-## [Log Analytics](../log-analytics/log-analytics-get-started.md)
+## [Azure Monitor-naplók](../log-analytics/log-analytics-get-started.md)
 ## [Automatizálás](/azure/automation/)
 ## [Biztonsági mentés](../backup/backup-introduction-to-azure-backup.md)
 ## [Site Recovery](../site-recovery/site-recovery-overview.md)
@@ -11,7 +11,7 @@
 # Útmutató
 
 ## Elemzés
-### [Log Analytics](../azure-monitor/log-query/log-query-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+### [Azure Monitor-naplók](../azure-monitor/log-query/log-query-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ## Automatizálás
 ### [Az Azure Automation áttekintése](../automation/automation-intro.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 

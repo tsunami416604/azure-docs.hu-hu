@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 8c60e7dec2d2a9bc3e063adfee0ffaff63417265
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: bdc479c6cc91c3ebba343a8423a73fb2e0404a73
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960163"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992702"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Hogyan lehet Azure Active Directory B2C használatával az Azure API Management fejlesztői fiókok engedélyezése
 
@@ -38,7 +38,7 @@ Az Azure Active Directory B2C egy felhőbeli identitáskezelő megoldás a felha
    > [!NOTE]
    > Ha még még nem hozott létre API Management szolgáltatáspéldányt, tekintse meg [az API Management szolgáltatáspéldány létrehozása] [ Create an API Management service instance] a a [Ismerkedés az Azure API Management oktatóanyag] [Get started with Azure API Management].
 
-2. A **biztonsági**válassza **identitások**. Kattintson a **+ Hozzáadás** tetején.
+2. A **identitások**. Kattintson a **+ Hozzáadás** tetején.
 
    A **Hozzáadás identitásszolgáltató** ablaktáblán a jobb oldalon jelenik meg. Válasszon **az Azure Active Directory B2C**.
     
@@ -89,7 +89,7 @@ Az Azure Active Directory B2C egy felhőbeli identitáskezelő megoldás a felha
   ![Házirendek][api-management-howto-aad-b2c-policies]
 
   > [!NOTE]
-  > További információ a házirendek, lásd: [Az Azure Active Directory B2C: Bővíthető házirend-keretrendszer].
+  > További információ a házirendek, lásd: [Azure Active Directory B2C: Bővíthető házirend-keretrendszer].
 
 14. A szükséges konfiguráció megadása után kattintson a **mentése**.
 
@@ -119,7 +119,7 @@ Az Azure Active Directory B2C egy felhőbeli identitáskezelő megoldás a felha
 ## <a name="next-steps"></a>További lépések
 
 *  [Az Azure Active Directory B2C – áttekintés]
-*  [Az Azure Active Directory B2C: Bővíthető házirend-keretrendszer]
+*  [Azure Active Directory B2C: Bővíthető házirend-keretrendszer]
 *  [Microsoft-fiókot használni Identitásszolgáltatóként az Azure Active Directory B2C-vel]
 *  [Identitás-szolgáltatóként az Azure Active Directory B2C egy Google-fiók használata]
 *  [A LinkedIn-fiók használata Identitásszolgáltatóként az Azure Active Directory B2C-vel]
@@ -190,7 +190,7 @@ Az Azure Active Directory B2C egy felhőbeli identitáskezelő megoldás a felha
 [Accessing the Graph API]: https://msdn.microsoft.com/library/azure/dn132599.aspx#BKMK_Graph
 [Az Azure Active Directory B2C – áttekintés]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-overview
 [Hogyan lehet az Azure Active Directory fejlesztői fiókok engedélyezése]: https://docs.microsoft.com/azure/api-management/api-management-howto-aad
-[Az Azure Active Directory B2C: Bővíthető házirend-keretrendszer]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies
+[Azure Active Directory B2C: Bővíthető házirend-keretrendszer]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies
 [Microsoft-fiókot használni Identitásszolgáltatóként az Azure Active Directory B2C-vel]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-msa-app
 [Identitás-szolgáltatóként az Azure Active Directory B2C egy Google-fiók használata]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-goog-app
 [Egy Facebook-fiók használata Identitásszolgáltatóként az Azure Active Directory B2C]: https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-setup-fb-app

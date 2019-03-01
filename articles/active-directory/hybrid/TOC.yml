@@ -211,6 +211,8 @@ items:
       href: how-to-connect-fed-ssl-update.md
     - name: AD FS-megbízhatóság kezelése az Azure AD segítségével
       href: how-to-connect-azure-ad-trust.md
+    - name: Alkalmazások csoportos jogcímeinek konfigurálása
+      href: how-to-connect-fed-group-claims.md
     - name: Az O365 RP kivonatoló algoritmusának módosítása
       href: how-to-connect-fed-sha256-guidance.md
     - name: SAML 2.0-kiszolgáló használata identitásszolgáltatóként
@@ -243,8 +245,8 @@ items:
       href: how-to-connect-health-alert-catalog.md
   - name: Azure AD Connect-szinkronizálás kezelése
     items:
-    - name: Üzemeltetési feladatok kezelése
-      href: how-to-connect-sync-operations.md
+    - name: Kiszolgáló- és vészhelyreállítás előkészítése
+      href: how-to-connect-sync-staging-server.md
     - name: Az alapértelmezett konfiguráció módosításának ajánlott eljárásai
       href: how-to-connect-sync-best-practices-changing-default-configuration.md
     - name: Az alapértelmezett konfiguráció módosítása
@@ -335,9 +337,9 @@ items:
     href: reference-connect-adsynctools.md
   - name: Az ADConnectivityTools referenciája
     href: reference-connect-adconnectivitytools.md
-ms.openlocfilehash: 8eb252f12a4a1a66ba7e8bd5c584e7aad227e24c
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 613adb5c19c3ca7fa2f47700a0358a51beac98e4
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889279"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193704"
