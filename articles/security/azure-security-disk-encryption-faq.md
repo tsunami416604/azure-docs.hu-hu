@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 01/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: fda7d6d3fddf2f4529a983ce2d4991797a5c8448
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: a1b045ecf10399ca2297e4d9d010d5c973c40f4e
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661836"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193279"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Az Azure Disk Encryption IaaS virtuális gépekhez – gyakori kérdések
 
@@ -72,6 +72,14 @@ Első lépések, olvassa el a [áttekintése az Azure Disk Encryption](azure-sec
 ## <a name="can-i-encrypt-both-boot-and-data-volumes-with-azure-disk-encryption"></a>A rendszerindító és az adatok kötetek az Azure Disk Encryption használatával titkosítsa?
 
 Adatok és rendszerindító kötetek Igen, a Windows és Linux rendszerű IaaS virtuális gépek használatával titkosítsa. Windows-beli virtuális gépek az operációsrendszer-kötet titkosítása nélkül az adatok nem titkosíthatók. Linux rendszerű virtuális gépekhez legyen az operációs rendszer kötetének titkosításához először nélkül az adatmennyiség titkosíthatja. A titkosított operációsrendszer-kötet linuxhoz, miután letiltja a titkosítást az operációs rendszer kötet Linux rendszerű IaaS virtuális gépekhez nem támogatott.
+
+## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>Hogyan elforgatása titkok és titkosítási kulcsokat?
+
+Titkos kulcsok rotálására, csak hívja ugyanazt a parancsot, amellyel eredetileg lemeztitkosítás engedélyezve. A kulcstitkosítási kulcs rotálása, ugyanazt a parancsot, amellyel eredetileg engedélyezi a lemeztitkosítást, adja meg az új kulcstitkosítási hívjuk. 
+
+## <a name="how-do-i-add-or-remove-a-key-encryption-key-if-i-didnt-originally-use-one"></a>Hogyan adja hozzá vagy távolítsa el a kulcsalapú titkosítás kulcsa, ha nem eredetileg szükségem?
+
+Szeretne hozzáadni egy kulcsalapú titkosítás kulcsa, hívja meg a engedélyezése parancsot újra a kulcstitkosítási kulcs paraméter átadásával. Távolítsa el a kulcsalapú titkosítás kulcsa, hívja az enable parancsot újra a kulcstitkosítási kulcs paraméter nélkül.
 
 ## <a name="does-azure-disk-encryption-allow-you-to-bring-your-own-key-byok"></a>Az Azure Disk Encryption lehetővé teszi, hogy a saját kulcs (használatának BYOK)?
 

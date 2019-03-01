@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a40159a43db6f83029ed6eacd37d2a4eff28aa09
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1d5f4dec48d81b032de293bb6c68ad62ac48d475
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203845"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193058"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Az Azure AD Connect szinkronizálása: Scheduler
 Ez a témakör ismerteti a beépített scheduler az Azure AD Connect-szinkronizálással (más néven) a szinkronizálási motor).
@@ -55,7 +55,7 @@ Ha látja **a szinkronizálási parancsot vagy a parancsmag nem érhető el** am
 * **PurgeRunHistoryInterval**. Az idő a műveletnaplók kell tárolni. Ezek a naplók a synchronization service Managert a tekinthető meg. Az alapértelmezett érték 7 napig ezek a naplók tárolása céljából.
 * **SyncCycleEnabled**. Azt jelzi, hogy az Ütemező fut-e az importálás, szinkronizálási és exportálási folyamatok a művelet részeként.
 * **MaintenanceEnabled**. Látható, hogy engedélyezve van-e a karbantartási folyamat. Ez frissíti a tanúsítványok vagy kulcsok és a műveleti napló kiürítése.
-* **StagingModeEnabled**. Bemutatja, ha [átmeneti módban](how-to-connect-sync-operations.md#staging-mode) engedélyezve van. Ha ez a beállítás engedélyezve van, majd nem jelenít meg a kivitel futását, de továbbra is futtassa az importálás és a szinkronizálás.
+* **StagingModeEnabled**. Bemutatja, ha [átmeneti módban](how-to-connect-sync-staging-server.md) engedélyezve van. Ha ez a beállítás engedélyezve van, majd nem jelenít meg a kivitel futását, de továbbra is futtassa az importálás és a szinkronizálás.
 * **SchedulerSuspended**. Állítsuk Connect a frissítés során ideiglenesen letiltása az ütemező futását.
 
 Módosíthatja az egyes beállításokat a `Set-ADSyncScheduler`. Módosítható a következő paraméterekkel:

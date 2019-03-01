@@ -1,5 +1,5 @@
 ---
-title: .NET Core és a Visual Studio használatával több függő szolgáltatásokat futtató |} A Microsoft Docs
+title: .NET Core és a Visual Studio használatával több függő szolgáltatás fut.
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -11,13 +11,13 @@ ms.author: zarhoads
 ms.date: 07/09/2018
 ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
-ms.openlocfilehash: 6a9058d7f84b336b332ffdaf9b41abfb660433e6
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+keywords: 'Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s '
+ms.openlocfilehash: a2d7b4de47559ce3001662a1d4dd48187410d255
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819854"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57191430"
 ---
 # <a name="multi-service-development-with-azure-dev-spaces"></a>Az Azure fejlesztési tárolóhelyek több szolgáltatásos fejlesztői
 
@@ -33,7 +33,7 @@ Az egyszerűség kedvéért töltsünk le egy mintakódot a GitHub-adattárból.
 
 ### <a name="run-mywebapi"></a>A *mywebapi* szolgáltatás futtatása
 1. Nyissa meg a `mywebapi` projektet egy *különálló Visual Studio-ablakban*.
-1. Válassza ki az **Azure Dev Spaces** lehetőséget az indítási beállítások legördülő listájából, ahogy korábban a `webfrontend` projekt esetében is tette. Egy új AKS-fürt létrehozása helyett most válassza ki a már létrehozottat. A korábbiakhoz hasonlóan hagyja a Tér értékét az alapértelmezett `default` értéken, és kattintson az **OK** gombra. A kimeneti ablakban észreveheti, hogy a Visual Studio elkezdi „beüzemelni” az új szolgáltatást a Dev Spaces-térben, ezzel elősegítve a gyorsabb végrehajtást a hibakeresés során.
+1. Válassza ki az **Azure Dev Spaces** lehetőséget az indítási beállítások legördülő listájából, ahogy korábban a `webfrontend` projekt esetében is tette. Egy új AKS-fürt létrehozása helyett most válassza ki a már létrehozottat. A korábbiakhoz hasonlóan hagyja a Tér értékét az alapértelmezett `default` értéken, és kattintson az **OK** gombra. A kimeneti ablakban, Észreveheti a Visual Studio elindul, és ez az új szolgáltatás a fejlesztési tárhelyre "ízelítőt" hibakereső indításakor dolgot felgyorsítása érdekében.
 1. Nyomja le az F5 billentyűt, és várjon, amíg a rendszer felépíti és telepíti a szolgáltatást. A művelet akkor fejeződik be, ha a Visual Studio állapotsora narancssárga színűre vált
 1. Jegyezze fel a végpont URL-cím jelenik meg a **az aks-ben az Azure fejlesztési tárolóhelyek** ablaktábláján a **kimeneti** ablak. A következőhöz hasonlóan fog kinézni: http://localhost:\<portnumber\>. Úgy tűnhet, hogy a tároló futtatása helyileg történik, de valójában a Dev Spaces-térben fut az Azure-ban.
 2. Ha a `mywebapi` elkészült, a `ValuesController` alapértelmezett GET API-jának meghívásához nyissa meg böngészőjét a localhost címen, és fűzze hozzá az `/api/values` elérési utat az URL-címhez. 

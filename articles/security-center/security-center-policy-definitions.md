@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: e83ff9f3bf02a134919d497662744028e1b9acda
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 895afb7af8ed7100af237f88e2953f4dc0991acb
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56343017"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195251"
 ---
 # <a name="azure-security-policies-monitored-by-azure-security-center"></a>Az Azure Security Center által figyelt Azure biztonsági szabályzatok
 Ez a cikk az Azure szabályzat-definíciókat a Security Center által megfigyelt listáját. Biztonsági szabályzatok kapcsolatos további információkért lásd: [biztonsági házirendek használata](tutorial-security-policy.md).
@@ -58,30 +58,30 @@ Szeretné megtudni, a beépített szabályzatokat, a Security Center által figy
 |Az App Services-beli diagnosztikai naplók engedélyezésének naplózása|Naplózza az alkalmazást a diagnosztikai naplók engedélyezése. Ez lehetővé teszi, hogy a tevékenység nyomot hagyjanak maguk után a támadások hatékonyabb kivizsgálásához hozza létre újra, ha egy biztonsági incidens következik be, vagy a hálózat biztonsága sérül.| 
 |Transzparens adattitkosítás állapotának naplózása|SQL-adatbázisok transzparens adattitkosítási állapotának naplózása.| 
 |SQL-kiszolgálói szintű naplózási beállítások naplózása|Az SQL-naplózás a kiszolgáló szintjén megléte eseményeket.| 
-|[Előzetes verzió]: Az Azure Security Centerben a titkosítatlan SQL database monitorozása|Titkosítatlan SQL-kiszolgálókat és adatbázisokat figyeli a rendszer az Azure Security Center ajánlásként.| 
-|[Előzetes verzió]: Az Azure Security Center nem naplózott SQL database monitorozása|SQL Serverek és adatbázisok nem rendelkezik SQL-naplózás engedélyezve van, amely felügyeli az Azure Security Center ajánlásként.| 
-|[Előzetes verzió]: Az Azure Security Centerben a hiányzó rendszerfrissítések figyelése|Hiányzó biztonsági a kiszolgálókon által figyelt Azure Security Center ajánlásként.| 
-|[Előzetes verzió]: Tárfiókok hiányzó blobtitkosításának naplózása|Ez a szabályzat a blobtitkosítás nélküli tárfiókokat naplózza. Kizárólag a Microsoft.Storage erőforrástípusokra, más tárolási szolgáltatók nem vonatkozik. Lehetséges hálózati igény szerinti hozzáférést ajánlásként az Azure Security Center által figyelt.| 
-|[Előzetes verzió]: Az Azure Security Centerben a lehetséges hálózati csak az idő szerinti (JIT) hozzáférés figyelése|Lehetséges hálózati csak az idő szerinti (JIT) hozzáférési ajánlásként az Azure Security Center által figyelt.| 
-|[Előzetes verzió]: Alkalmazások az Azure Security Center engedélyezésének figyelése|Lehetséges Alkalmazásengedélyezési konfigurációkat az Azure Security Center figyeli.| 
-|[Előzetes verzió]: Az Azure Security Center megengedő hálózati hozzáférés figyelése|A túlzottan megengedő hálózati biztonsági csoportokat ajánlásként az Azure Security Center által figyelt.| 
-|[Előzetes verzió]: Az Azure Security Center az operációs rendszer biztonsági réseinek figyelése|Kiszolgálók, amelyek nem a konfigurált alapértékeknek ajánlásként az Azure Security Center által figyelt.| 
-|[Előzetes verzió]: Az Azure Security Centerben a végpontok hiányzó védelmének monitorozása|Az Endpoint Protection telepített ügynök nélküli kiszolgálókat ajánlásként az Azure Security Center által figyelt.| 
-|[Előzetes verzió]: Az Azure Security Center titkosítatlan Virtuálisgép-lemezek monitorozása|Az engedélyezett lemeztitkosítással nem rendelkező virtuális gépeket ajánlásként az Azure Security Center által figyelt.| 
-|[Előzetes verzió]: Virtuális gépek biztonsági réseinek figyelése az Azure Security Centerben|A Vulnerability Assessment megoldás által észlelt biztonsági rések és a Vulnerability Assessment megoldást nem használó virtuális gépek ajánlásként történő figyelése az Azure Security Centerben.| 
-|[Előzetes verzió]: Az Azure Security Center nem védett webalkalmazás figyelése|Egy webalkalmazási tűzfallal nem védett webalkalmazásokat ajánlásként az Azure Security Center által figyelendő ki.| 
-|[Előzetes verzió]: Az Azure Security Center nem védett hálózati végpontok figyelése|Egy az Újgenerációs tűzfallal nem védett hálózati végpontokat ajánlásként az Azure Security Center által figyelt.| 
-|[Előzetes verzió]: A figyelő SQL-sebezhetőségi felmérés eredménye az Azure Security Centerben|A sebezhetőségi felmérés vizsgálati eredményeinek és az adatbázisok biztonsági réseinek megszüntetéséhez útmutatást nyújtó ajánlások figyelése.| 
-|[Előzetes verzió]: Naplózni tulajdonosok egy előfizetéshez tartozó maximális száma|Ajánlott legfeljebb 3 előfizetés-tulajdonost kijelölni a biztonsági kockázatot jelentő tulajdonosok általi esetleges incidensek csökkentése céljából.| 
-|[Előzetes verzió]: Naplózási előfizetés tulajdonosok minimális száma|Ajánlott legalább egy előfizetés-tulajdonost kijelölni a rendszergazdai hozzáférés redundanciájának biztosításához.| 
-|[Előzetes verzió]: Naplózási, akik nem többtényezős hitelesítés engedélyezve van egy adott előfizetés tulajdonosi engedélyekkel rendelkező fiókok|A Multi-Factor Authenticationt (MFA) a tulajdonosi engedéllyel rendelkező összes előfizetési fiókban engedélyezni kell a fiókok vagy az erőforrások biztonsági incidenseinek megelőzése céljából.| 
-|[Előzetes verzió]: Naplózási, akik nem többtényezős hitelesítés engedélyezve van egy adott előfizetés írási jogosultsággal rendelkező fiókok|A Multi-Factor Authenticationt (MFA) az írási jogosultsággal rendelkező összes előfizetési fiókban engedélyezni kell a fiókok vagy az erőforrások biztonsági incidenseinek megelőzése céljából.| 
-|[Előzetes verzió]: Naplózási, akik nem többtényezős hitelesítés engedélyezve van egy adott előfizetés olvasási jogosultsággal rendelkező fiókok|A Multi-Factor Authenticationt (MFA) az olvasási jogosultsággal rendelkező összes előfizetési fiókban engedélyezni kell a fiókok vagy az erőforrások biztonsági incidenseinek megelőzése céljából.| 
-|[Előzetes verzió]: Egy adott előfizetés tulajdonosi engedélyekkel rendelkező elavult fiókok naplózása|Elavult fiókok tulajdonosi engedélyekkel rendelkező el kell távolítani az előfizetésből. Elavult fiókok olyan fiókok, a bejelentkezés le van tiltva.| 
-|[Előzetes verzió]: Elavult fiókokat egy előfizetésben naplózása|Az elavult fiókokat el kell távolítani az előfizetésekből. Elavult fiókok olyan fiókok, a bejelentkezés le van tiltva.| 
-|[Előzetes verzió]: Egy adott előfizetés tulajdonosi engedélyekkel rendelkező külső fiókok naplózása|A tulajdonosi engedéllyel rendelkező külső fiókokat el kell távolítani az előfizetésből a nem figyelt hozzáférések megelőzése céljából.| 
-|[Előzetes verzió]: Naplózási rendelkező külső fiókok írási engedélyekkel egy adott előfizetés|Az írási jogosultsággal rendelkező külső fiókokat el kell távolítani az előfizetésből a nem monitorozott hozzáférések megelőzése céljából.| 
-|[Előzetes verzió]: Egy adott előfizetés olvasási jogosultsággal rendelkező külső fiókok naplózása|Az olvasási jogosultsággal rendelkező külső fiókokat el kell távolítani az előfizetésből a nem monitorozott hozzáférések megelőzése céljából.| 
+|\[Előzetes verzió]: Az Azure Security Centerben a titkosítatlan SQL database monitorozása|Titkosítatlan SQL-kiszolgálókat és adatbázisokat figyeli a rendszer az Azure Security Center ajánlásként.| 
+|\[Előzetes verzió]: Az Azure Security Center nem naplózott SQL database monitorozása|SQL Serverek és adatbázisok nem rendelkezik SQL-naplózás engedélyezve van, amely felügyeli az Azure Security Center ajánlásként.| 
+|\[Előzetes verzió]: Az Azure Security Centerben a hiányzó rendszerfrissítések figyelése|Hiányzó biztonsági a kiszolgálókon által figyelt Azure Security Center ajánlásként.| 
+|\[Előzetes verzió]: Tárfiókok hiányzó blobtitkosításának naplózása|Ez a szabályzat a blobtitkosítás nélküli tárfiókokat naplózza. Kizárólag a Microsoft.Storage erőforrástípusokra, más tárolási szolgáltatók nem vonatkozik. Lehetséges hálózati igény szerinti hozzáférést ajánlásként az Azure Security Center által figyelt.| 
+|\[Előzetes verzió]: Az Azure Security Centerben a lehetséges hálózati csak az idő szerinti (JIT) hozzáférés figyelése|Lehetséges hálózati csak az idő szerinti (JIT) hozzáférési ajánlásként az Azure Security Center által figyelt.| 
+|\[Előzetes verzió]: Alkalmazások az Azure Security Center engedélyezésének figyelése|Lehetséges Alkalmazásengedélyezési konfigurációkat az Azure Security Center figyeli.| 
+|\[Előzetes verzió]: Az Azure Security Center megengedő hálózati hozzáférés figyelése|A túlzottan megengedő hálózati biztonsági csoportokat ajánlásként az Azure Security Center által figyelt.| 
+|\[Előzetes verzió]: Az Azure Security Center az operációs rendszer biztonsági réseinek figyelése|Kiszolgálók, amelyek nem a konfigurált alapértékeknek ajánlásként az Azure Security Center által figyelt.| 
+|\[Előzetes verzió]: Az Azure Security Centerben a végpontok hiányzó védelmének monitorozása|Az Endpoint Protection telepített ügynök nélküli kiszolgálókat ajánlásként az Azure Security Center által figyelt.| 
+|\[Előzetes verzió]: Az Azure Security Center titkosítatlan Virtuálisgép-lemezek monitorozása|Az engedélyezett lemeztitkosítással nem rendelkező virtuális gépeket ajánlásként az Azure Security Center által figyelt.| 
+|\[Előzetes verzió]: Virtuális gépek biztonsági réseinek figyelése az Azure Security Centerben|A Vulnerability Assessment megoldás által észlelt biztonsági rések és a Vulnerability Assessment megoldást nem használó virtuális gépek ajánlásként történő figyelése az Azure Security Centerben.| 
+|\[Előzetes verzió]: Az Azure Security Center nem védett webalkalmazás figyelése|Egy webalkalmazási tűzfallal nem védett webalkalmazásokat ajánlásként az Azure Security Center által figyelendő ki.| 
+|\[Előzetes verzió]: Az Azure Security Center nem védett hálózati végpontok figyelése|Egy az Újgenerációs tűzfallal nem védett hálózati végpontokat ajánlásként az Azure Security Center által figyelt.| 
+|\[Előzetes verzió]: A figyelő SQL-sebezhetőségi felmérés eredménye az Azure Security Centerben|A sebezhetőségi felmérés vizsgálati eredményeinek és az adatbázisok biztonsági réseinek megszüntetéséhez útmutatást nyújtó ajánlások figyelése.| 
+|\[Előzetes verzió]: Naplózni tulajdonosok egy előfizetéshez tartozó maximális száma|Ajánlott legfeljebb 3 előfizetés-tulajdonost kijelölni a biztonsági kockázatot jelentő tulajdonosok általi esetleges incidensek csökkentése céljából.| 
+|\[Előzetes verzió]: Naplózási előfizetés tulajdonosok minimális száma|Ajánlott legalább egy előfizetés-tulajdonost kijelölni a rendszergazdai hozzáférés redundanciájának biztosításához.| 
+|\[Előzetes verzió]: Naplózási, akik nem többtényezős hitelesítés engedélyezve van egy adott előfizetés tulajdonosi engedélyekkel rendelkező fiókok|A Multi-Factor Authenticationt (MFA) a tulajdonosi engedéllyel rendelkező összes előfizetési fiókban engedélyezni kell a fiókok vagy az erőforrások biztonsági incidenseinek megelőzése céljából.| 
+|\[Előzetes verzió]: Naplózási, akik nem többtényezős hitelesítés engedélyezve van egy adott előfizetés írási jogosultsággal rendelkező fiókok|A Multi-Factor Authenticationt (MFA) az írási jogosultsággal rendelkező összes előfizetési fiókban engedélyezni kell a fiókok vagy az erőforrások biztonsági incidenseinek megelőzése céljából.| 
+|\[Előzetes verzió]: Naplózási, akik nem többtényezős hitelesítés engedélyezve van egy adott előfizetés olvasási jogosultsággal rendelkező fiókok|A Multi-Factor Authenticationt (MFA) az olvasási jogosultsággal rendelkező összes előfizetési fiókban engedélyezni kell a fiókok vagy az erőforrások biztonsági incidenseinek megelőzése céljából.| 
+|\[Előzetes verzió]: Egy adott előfizetés tulajdonosi engedélyekkel rendelkező elavult fiókok naplózása|Elavult fiókok tulajdonosi engedélyekkel rendelkező el kell távolítani az előfizetésből. Elavult fiókok olyan fiókok, a bejelentkezés le van tiltva.| 
+|\[Előzetes verzió]: Elavult fiókokat egy előfizetésben naplózása|Az elavult fiókokat el kell távolítani az előfizetésekből. Elavult fiókok olyan fiókok, a bejelentkezés le van tiltva.| 
+|\[Előzetes verzió]: Egy adott előfizetés tulajdonosi engedélyekkel rendelkező külső fiókok naplózása|A tulajdonosi engedéllyel rendelkező külső fiókokat el kell távolítani az előfizetésből a nem figyelt hozzáférések megelőzése céljából.| 
+|\[Előzetes verzió]: Naplózási rendelkező külső fiókok írási engedélyekkel egy adott előfizetés|Az írási jogosultsággal rendelkező külső fiókokat el kell távolítani az előfizetésből a nem monitorozott hozzáférések megelőzése céljából.| 
+|\[Előzetes verzió]: Egy adott előfizetés olvasási jogosultsággal rendelkező külső fiókok naplózása|Az olvasási jogosultsággal rendelkező külső fiókokat el kell távolítani az előfizetésből a nem monitorozott hozzáférések megelőzése céljából.| 
 
 
 

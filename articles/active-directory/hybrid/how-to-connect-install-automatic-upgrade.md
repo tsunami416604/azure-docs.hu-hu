@@ -16,12 +16,12 @@ ms.date: 02/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b05f2dc1ed766ccb06b71c2977ceaf2b7cd823d3
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: b044edbc24a83aeb98ff603a43f160a6c88d940f
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869666"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193347"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Automatikus frissítés
 Ez a funkció jelent meg a build [(kiadás dátuma: 2016. február) 1.1.105.0](reference-connect-version-history.md#111050).  Ez a szolgáltatás frissítve lett a [1.1.561 összeállítása](reference-connect-version-history.md#115610) és mostantól támogatja a további forgatókönyvek, amelyek korábban nem támogatottak.
@@ -100,7 +100,7 @@ Ez egy lista a leggyakrabban használt üzenetek találja. Nem tartalmazza az ö
 | UpgradeNotSupportedNonMsolAccount |A [AD DS-összekötő fiók](reference-connect-accounts-permissions.md#ad-ds-connector-account) már nem az alapértelmezett MSOL_ fiókot. |
 | UpgradeNotSupportedNotConfiguredSignInMethod | Állítson be az AAD Connect, választott *ne konfiguráljon* a bejelentkezési módszer kiválasztásakor. | 
 | UpgradeNotSupportedPtaSignInMethod | Az átmenő hitelesítés kijelölt bejelentkezési módszert. |
-| UpgradeNotSupportedStagingModeEnabled |A kiszolgáló beállítása legyen [átmeneti módban](how-to-connect-sync-operations.md#staging-mode). |
+| UpgradeNotSupportedStagingModeEnabled |A kiszolgáló beállítása legyen [átmeneti módban](how-to-connect-sync-staging-server.md). |
 | UpgradeNotSupportedUserWritebackEnabled |Engedélyezte a [felhasználó-visszaírás](how-to-connect-preview.md#user-writeback) funkció. |
 
 ## <a name="next-steps"></a>További lépések

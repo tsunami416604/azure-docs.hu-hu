@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: annahar
-ms.openlocfilehash: b06213b253b6a289513d5cc1b8fcf0f2e25897f5
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 1b130dff9d290dcce566570fd015d227d44a1310
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594797"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57191901"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>Terheléselosztás több IP-konfiguráció PowerShell-lel
 
@@ -143,4 +143,4 @@ A következő cikkben ismertetett forgatókönyvben eléréséhez az alábbi lé
 
 ## <a name="next-steps"></a>További lépések
 - Többféle terheléselosztási szolgáltatás az Azure-ban történő használatáról további [terheléselosztási szolgáltatás használata az Azure-ban](../traffic-manager/traffic-manager-load-balancing-azure.md).
-- Ismerje meg, hogyan használhatja naplók különböző típusú Azure-beli kezeléséhez, és a load balancer hibaelhárítása [Log analytics az Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md).
+- Ismerje meg, hogyan használhatja naplók különböző típusú Azure-beli kezeléséhez, és a load balancer hibaelhárítása [Azure Monitor-naplók az Azure Load Balancer](../load-balancer/load-balancer-monitor-log.md).

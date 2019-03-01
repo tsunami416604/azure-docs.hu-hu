@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 02/28/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5a9ea460684383bd09e5a679f3140d3b8f083d4d
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 579c23fc3092acb785e89ddfa390e9495fc004d3
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823620"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194527"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
 
@@ -57,6 +57,7 @@ Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyez
 * Az App Service-tanúsítványok – lásd: [App Service-tanúsítvány korlátozások](#app-service-certificate-limitations)
 * Automation - Runbookok léteznie kell, az Automation-fióknak ugyanabban az erőforráscsoportban.
 * Azure Active Directory B2C
+* Az Azure Cache redis - Ha az Azure Cache Redis-példány van konfigurálva, és a virtuális hálózat, a példány nem helyezhető át másik előfizetésbe. Lásd: [virtuális hálózatok korlátozások](#virtual-networks-limitations).
 * Azure Cosmos DB
 * Azure Data Explorer
 * Azure Database for MariaDB
@@ -64,6 +65,7 @@ Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyez
 * Azure Database for PostgreSQL
 * Az Azure DevOps - szervezetek számára az Azure DevOps nem Microsoft-bővítmény vásárlása kell [megszakítja a vásárlások](https://go.microsoft.com/fwlink/?linkid=871160) előtt azok is a fiók áthelyezése előfizetések között.
 * Azure Maps
+* Az Azure Monitor naplóira
 * Azure Relay
 * Az Azure Stack - regisztrációk
 * Batch
@@ -91,11 +93,10 @@ Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyez
 * Terheléselosztók – alapszintű Termékváltozatú terheléselosztó helyezhetők. Standard Termékváltozatú terheléselosztó nem lehet áthelyezni.
 * Logic Apps
 * Machine Learning - webszolgáltatások helyezheti át egy erőforráscsoport ugyanabban az előfizetésben, de nem egy másik előfizetésben található Machine Learning Studióban. Egyéb Machine Learning-erőforrások áthelyezhetők, előfizetések között.
-* Tekintse meg a Managed Disks - [megkötések virtuális gépek korlátozásai](#virtual-machines-limitations)
+* A Managed Disks – felügyelt lemezek a rendelkezésre állási zónák nem helyezhető át másik előfizetésbe
 * Felügyelt identitás - felhasználó által hozzárendelt
 * Media Services
 * Győződjön meg arról, hogy új előfizetésbe való áthelyezését figyelője – nem lehet [előfizetési kvóták](../azure-subscription-service-limits.md#monitor-limits)
-* Az Azure Monitor naplóira
 * Notification Hubs
 * Operational Insights
 * Operations Management
@@ -103,7 +104,6 @@ Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyez
 * A Power BI - mind a Power BI Embedded és a Power BI-munkaterület-csoport
 * Nyilvános IP - áthelyezhetők az alapszintű Termékváltozat nyilvános IP-Címére. Standard Termékváltozat nyilvános IP-cím nem lehet áthelyezni.
 * A Recovery Services-tároló – regisztráljon egy [előzetes](#recovery-services-limitations).
-* Az Azure Cache redis - Ha az Azure Cache Redis-példány van konfigurálva, és a virtuális hálózat, a példány nem helyezhető át másik előfizetésbe. Lásd: [virtuális hálózatok korlátozások](#virtual-networks-limitations).
 * Scheduler
 * Keresés –, erőforrások nem helyezhetők át több keresési különböző régiókban lévő több műveletet. Helyezze át őket a különböző műveletek.
 * Service Bus
@@ -116,7 +116,7 @@ Az alábbi lista egy új erőforráscsoportot és egy előfizetést is áthelyez
 * Az SQL Database server - adatbázis és a kiszolgáló ugyanabban az erőforráscsoportban kell lennie. Ha áthelyezi SQL-kiszolgáló, az összes hozzá tartozó adatbázisok is kerülnek. Ez a viselkedés az Azure SQL Database és az Azure SQL Data Warehouse-adatbázisok vonatkozik.
 * Time Series Insights
 * Traffic Manager
-* Virtuális gépek – a virtuális gépek felügyelt lemezek, lásd: [virtuális gépek korlátozások](#virtual-machines-limitations)
+* Tekintse meg a virtuális gépek – [virtuális gépek korlátozások](#virtual-machines-limitations)
 * Tekintse meg a virtuális gépek (klasszikus) – [klasszikus üzembe helyezési korlátozásoknak](#classic-deployment-limitations)
 * Tekintse meg a Virtual Machine Scale Sets – [virtuális gépek korlátozások](#virtual-machines-limitations)
 * Tekintse meg a virtuális hálózatok - [virtuális hálózatok korlátozások](#virtual-networks-limitations)
@@ -133,6 +133,7 @@ Az alábbi lista nem lehet áthelyezni egy új erőforráscsoportot és egy elő
 * Azure Databricks
 * Azure Firewall
 * Azure Migrate
+* Azure NetApp Files
 * Tanúsítványok – App Service-tanúsítványok is áthelyezhetők, de a feltöltött tanúsítványok [korlátozások](#app-service-limitations).
 * Klasszikus alkalmazások
 * Tárolópéldányok
@@ -145,7 +146,6 @@ Az alábbi lista nem lehet áthelyezni egy új erőforráscsoportot és egy elő
 * A Lab Services – áthelyezése új erőforráscsoportba ugyanahhoz az előfizetéshez engedélyezve van, de az előfizetés közötti áthelyezése nem engedélyezett.
 * Felügyelt alkalmazások
 * Microsoft Genomics
-* Azure NetApp Files
 * Azure-beli SAP HANA-szolgáltatás
 * Biztonság
 * Site Recovery
@@ -166,12 +166,11 @@ A szakasz bemutatja, hogyan kezeli az erőforrások áthelyezése összetett for
 
 ### <a name="virtual-machines-limitations"></a>Virtuális gépek korlátozások
 
-A 2018. szeptember 24. továbbléphet a felügyelt lemezeket. Ez a támogatás azt jelenti, hogy áthelyezheti a virtuális gépek a felügyelt lemezek, a felügyelt képekkel, a felügyelt pillanatképeket és a rendelkezésre állási csoportok felügyelt lemezeket használó virtuális gépekkel.
+Akkor helyezhet át virtuális gépeket a felügyelt lemezek, a felügyelt képekkel, a felügyelt pillanatképeket és a rendelkezésre állási csoportok felügyelt lemezeket használó virtuális gépekkel. Felügyelt lemezek a rendelkezésre állási zónák nem helyezhető át másik előfizetésbe.
 
 A következő esetekben még nem támogatottak:
 
 * Egy új erőforráscsoport ugyanabban az előfizetésben, de az előfizetések között nem helyezheti át virtuális gépeket a Key Vault-tanúsítvánnyal.
-* Felügyelt lemezek a rendelkezésre állási zónák nem helyezhető át másik előfizetésbe
 * Virtual Machine Scale Sets Standard Termékváltozatú terheléselosztó vagy a Standard Termékváltozat nyilvános IP-cím nem lehet áthelyezni.
 * A csatolt tervek Piactéri erőforrások alapján létrehozott virtuális gépeken nem lehet áthelyezni, erőforráscsoport vagy előfizetés között. Az aktuális előfizetésben a virtuális gép megszüntetése, és telepítse újra az új előfizetés.
 
@@ -190,6 +189,8 @@ Az Azure Backup szolgáltatással konfigurált virtuális gépek áthelyezéséh
 ### <a name="virtual-networks-limitations"></a>Virtuális hálózatok korlátozások
 
 Virtuális hálózat áthelyezésekor is át kell helyeznie a tőle függő erőforrások. A VPN-átjárók IP-címek, virtuális hálózati átjárók és minden kapcsolódó kapcsolati erőforrás kell áthelyezni. Helyi hálózati átjárók egy másik erőforráscsoportban található is lehet.
+
+Egy hálózati kártyát a virtuális gép áthelyezése, át kell helyeznie az összes függő erőforrást. Helyezze át a hálózati kártyát a virtuális hálózat, minden más hálózati kártyák a virtuális hálózat és a VPN Gateway átjárókkal.
 
 Egy virtuális Társhálózat áthelyezni, előbb le kell tiltania a virtuális hálózatok közötti társviszony. Ha le van tiltva, áthelyezheti a virtuális hálózat. Az áthelyezés után a virtuális hálózatok közötti társviszony újraengedélyezni.
 

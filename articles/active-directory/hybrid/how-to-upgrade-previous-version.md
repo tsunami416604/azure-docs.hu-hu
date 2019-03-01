@@ -16,12 +16,12 @@ ms.date: 07/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 437577ec68ee825bd0815735fef08e8297dad756
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: aa21b1054fa6860a8acc5d6971f75e1d74c889f7
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180539"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193755"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: Egy előző verzióról a legújabbra frissítése
 Ez a témakör ismerteti a különböző módszereket, amelyek segítségével az Azure Active Directory (Azure AD) Connect-telepítésre frissítsen a legújabb verziót. Azt javasoljuk, hogy őrizze meg magát a kiadások, az Azure AD Connect az aktuális. Is szereplő lépések segítségével a [párhuzamos migrálás](#swing-migration) szakaszt, ha létrehoz egy jelentős konfigurációs módosítást.
@@ -62,7 +62,7 @@ A két kiszolgáló is eltérő verziókat használnak. Például az aktív kisz
 ![Átmeneti kiszolgáló](./media/how-to-upgrade-previous-version/stagingserver1.png)
 
 > [!NOTE]
-> Egyes ügyfelek inkább három vagy négy kiszolgálót ebben a forgatókönyvben. Ha az átmeneti kiszolgáló frissítve van, nem szükséges a biztonsági mentési kiszolgálóra [vész-helyreállítási](how-to-connect-sync-operations.md#disaster-recovery). Három vagy négy kiszolgálókkal készítse elő az új verziót, amely biztosítja, hogy mindig van egy átmeneti kiszolgálón, amely készen áll a átveszi az elsődleges vagy készenléti állapotban lévő kiszolgálók egy csoportja.
+> Egyes ügyfelek inkább három vagy négy kiszolgálót ebben a forgatókönyvben. Ha az átmeneti kiszolgáló frissítve van, nem szükséges a biztonsági mentési kiszolgálóra [vész-helyreállítási](how-to-connect-sync-staging-server.md#disaster-recovery). Három vagy négy kiszolgálókkal készítse elő az új verziót, amely biztosítja, hogy mindig van egy átmeneti kiszolgálón, amely készen áll a átveszi az elsődleges vagy készenléti állapotban lévő kiszolgálók egy csoportja.
 
 Ezeket a lépéseket áthelyezése az Azure AD Sync vagy az FIM + az Azure AD-összekötő megoldással is működik. Ezeket a lépéseket nem működnek a Dirsync szinkronizálással, de a azonos párhuzamos áttelepítés (más néven párhuzamos üzembe helyezés) a lépéseket a DirSync módja a [frissítése az Azure Active Directory sync (DirSync)](how-to-dirsync-upgrade-get-started.md).
 
@@ -71,8 +71,8 @@ Ezeket a lépéseket áthelyezése az Azure AD Sync vagy az FIM + az Azure AD-ö
 2. Ha az átmeneti kiszolgáló nem rendelkezik, egy egyéni konfigurációt végrehajtott, kövesse a [az aktív kiszolgáló egyéni konfigurációs áthelyezése az átmeneti kiszolgáló](#move-a-custom-configuration-from-the-active-server-to-the-staging-server).
 3. Ha frissít, az Azure AD Connect egy korábbi verziója, az átmeneti kiszolgáló frissítése a legújabb verzióra. Ha az Azure AD-Szinkronizálóról telepít át, majd az Azure AD Connect telepítése az átmeneti kiszolgálón.
 4. A szinkronizálási motor teljes importálást és teljes szinkronizálást futtatni az átmeneti kiszolgálón legyen.
-5. Ellenőrizze, hogy az új konfigurációt a lépésekkel, a "Hitelesítés" nem okozhat váratlan módosítások be [ellenőrizze a konfigurációs kiszolgáló](how-to-connect-sync-operations.md#verify-the-configuration-of-a-server). Ha valami nem a várt módon, javítsa ki, és futtassa az importálás és szinkronizálás, és ellenőrizze az adatokat, amíg nem, minden rendben, az alábbi lépéseket.
-6. Váltás az átmeneti kiszolgálót az aktív kiszolgáló. Ez az utolsó lépésben "Kapcsoló active server" [ellenőrizze a konfigurációs kiszolgáló](how-to-connect-sync-operations.md#verify-the-configuration-of-a-server).
+5. Ellenőrizze, hogy az új konfigurációt a lépésekkel, a "Hitelesítés" nem okozhat váratlan módosítások be [ellenőrizze a konfigurációs kiszolgáló](how-to-connect-sync-staging-server.md#verify-the-configuration-of-a-server). Ha valami nem a várt módon, javítsa ki, és futtassa az importálás és szinkronizálás, és ellenőrizze az adatokat, amíg nem, minden rendben, az alábbi lépéseket.
+6. Váltás az átmeneti kiszolgálót az aktív kiszolgáló. Ez az utolsó lépésben "Kapcsoló active server" [ellenőrizze a konfigurációs kiszolgáló](how-to-connect-sync-staging-server.md#verify-the-configuration-of-a-server).
 7. Ha frissít, az Azure AD Connect, frissítse a kiszolgálót, amelyet már az átmeneti környezetű üzemmód legfrissebb verzióját. Ugyanezekkel a lépésekkel, mielőtt az adatokat és a frissített konfiguráció beolvasásához. Ha frissített az Azure AD-Szinkronizálóról, most kapcsolja ki és a régi kiszolgáló leszerelése.
 
 ### <a name="move-a-custom-configuration-from-the-active-server-to-the-staging-server"></a>Az aktív kiszolgáló egyéni konfigurációs áthelyezése az átmeneti kiszolgálón

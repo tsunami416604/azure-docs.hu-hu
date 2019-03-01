@@ -1,5 +1,5 @@
 ---
-title: Log Analytics – Azure Logic Apps szolgáltatással a logic apps figyelése |} A Microsoft Docs
+title: Az Azure Monitor naplóira – Azure Logic Apps és logic apps figyelése |} A Microsoft Docs
 description: Információkhoz és a hibakeresési adatokat hibaelhárítási és diagnosztizálásához az Azure Log Analytics a logikaialkalmazás-futtatások
 services: logic-apps
 ms.service: logic-apps
@@ -9,21 +9,23 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 70242de62e976b05e2708dfd4991915c854d4bb4
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 3f890e6cabd757fdd38374befaaccd1a10c9bd96
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995647"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192462"
 ---
-# <a name="monitor-logic-apps-with-azure-log-analytics"></a>Logikai alkalmazások figyelése az Azure Log Analytics használatával
+# <a name="monitor-logic-apps-with-azure-monitor-logs"></a>Az Azure Monitor naplóira rendelkező logikai alkalmazások figyelése
 
-Figyelheti, és a logic apps gazdagabb hibakeresési adatainak, kapcsolja be a [Azure Log Analytics](../log-analytics/log-analytics-overview.md) a logikai alkalmazás létrehozásakor. A log Analytics biztosít a diagnosztikai naplózás és figyelés a logic Apps, a Logic Apps Management megoldás telepítésekor, az Azure Portalon. Ez a megoldás is biztosít a jelenít meg összesített adatokat a logikai alkalmazás fut, például az állapotának, végrehajtási idő, futtatásnak az újraküldése állapotát és korrelációs azonosítók részletes. Ez a cikk bemutatja, hogyan kapcsolja be a Log Analytics, így runtime az események és a logikai alkalmazás adatok futtatja.
+Figyelheti, és a logic apps gazdagabb hibakeresési adatainak, kapcsolja be a [naplózza az Azure Monitor](../log-analytics/log-analytics-overview.md) a logikai alkalmazás létrehozásakor. Az Azure Monitor naplóira biztosít a diagnosztikai naplózás és figyelés a logic Apps, a Logic Apps Management megoldás telepítésekor, az Azure Portalon. Ez a megoldás is biztosít a jelenít meg összesített adatokat a logikai alkalmazás fut, például az állapotának, végrehajtási idő, futtatásnak az újraküldése állapotát és korrelációs azonosítók részletes. Ez a cikk bemutatja, hogyan kapcsolja be a Azure Monitor naplóira, így runtime az események és a logikai alkalmazás adatok futtatja.
 
-A meglévő logic apps Azure Log Analytics bekapcsolásához kövesse az alábbi lépéseket a [kapcsolja be a diagnosztikai naplózás és a logikai alkalmazás futtatókörnyezeti adatokat küldeni a Log Analytics](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
+A meglévő logic apps az Azure Monitor naplóira bekapcsolásához kövesse az alábbi lépéseket a [kapcsolja be a diagnosztikai naplózás és a logic app futásidejű adatokat küldeni az Azure Monitor naplóira](../logic-apps/logic-apps-monitor-your-logic-apps.md#azure-diagnostics).
 
 > [!NOTE]
 > Ezen a lapon a fentiekben már említettük, az a Microsoft Operations Management Suite (OMS), amely a feladatok végrehajtásához szükséges lépéseket [kivonása a január 2019](../azure-monitor/platform/oms-portal-transition.md), hanem az Azure Log Analytics váltja fel ezeket a lépéseket. 
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -56,7 +58,7 @@ A Kezdés előtt szüksége van egy Log Analytics-munkaterületet. Ismerje meg, 
 
 ## <a name="install-logic-apps-management-solution"></a>Logic Apps Management megoldás telepítése
 
-Ha már van kapcsolva a Log Analytics, a logikai alkalmazás létrehozásakor, kihagyhatja ezt a lépést. Már rendelkezik a Logic Apps Management megoldás telepítve.
+Ha már be van kapcsolva az Azure Monitor naplózza a logikai alkalmazás létrehozásakor, ezt a lépést kihagyhatja. Már rendelkezik a Logic Apps Management megoldás telepítve.
 
 1. Az [Azure Portalon](https://portal.azure.com) válassza a **Minden szolgáltatás** elemet. A keresőmezőbe, keresse meg a "log analytics", és válassza ki **Log Analytics**.
 
@@ -116,17 +118,17 @@ A logikai alkalmazás futtatását követően megtekintheti az állapotát és e
 
      Minden olyan újonnan hozzáadott nyomon követett tulajdonságok csak akkor jelennek meg az első 10 – 15 percet is igénybe vehet. Ismerje meg, [nyomon követett tulajdonságok hozzáadása a logikai alkalmazás](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details).
 
-   * **Küldje el újból:** is küldje el újra egy vagy több logikai alkalmazás futtatásának sikeres, sikertelen vagy a futó. Jelölje be a jelölőnégyzeteket a futtatások újraküldése, és válassza a kívánt **küldje el újra**. 
+   * **Küldje el újra:** Is küldje el újra egy vagy több logikai alkalmazás futtatásának a sikertelen, sikeres volt, vagy továbbra is futnak. Jelölje be a jelölőnégyzeteket a futtatások újraküldése, és válassza a kívánt **küldje el újra**. 
 
      ![Logikaialkalmazás-futtatások újraküldése](media/logic-apps-monitor-your-logic-apps-oms/logic-app-resubmit.png)
 
 1. Ezek az eredmények szűréséhez hajthat végre ügyféloldali és a kiszolgálóoldali szűrés.
 
-   * **Ügyféloldali szűrő**: minden oszlophoz, válassza ki a kívánt szűrőket, például:
+   * **Ügyféloldali szűrő**: Az egyes oszlopok válassza ki a kívánt szűrőket, például:
 
      ![Példa oszlopszűrők](media/logic-apps-monitor-your-logic-apps-oms/filters.png)
 
-   * **Kiszolgálóoldali szűrés**: egy adott időpont ablakban válassza a megjelenő futtatások számának korlátozásához, vagy a hatókör vezérlőt használja az oldal tetején. Alapértelmezés szerint csak 1000 rekordok jelennek meg egyszerre.
+   * **Kiszolgálóoldali szűrés**: Egy adott időtartomány kiválasztásához, vagy fut, amely megjelenik, számának korlátozásához használja a hatókör-vezérlő az oldal tetején. Alapértelmezés szerint csak 1000 rekordok jelennek meg egyszerre.
    
      ![Az időtartomány módosítása](media/logic-apps-monitor-your-logic-apps-oms/change-interval.png)
  
@@ -149,9 +151,9 @@ A logikai alkalmazás futtatását követően megtekintheti az állapotát és e
 
      ![Műveletek és a egy logikai alkalmazás futtatásának részletei](media/logic-apps-monitor-your-logic-apps-oms/log-search-page.png)
      
-     Az Azure Log Analytics lapon frissítse a lekérdezéseket, és tekintse meg az eredményeket a táblából. Ez a lekérdezés használ [Kusto-lekérdezés nyelvi](https://aka.ms/LogAnalyticsLanguageReference), amely szerkesztheti, ha meg szeretné tekinteni a különböző eredményt. 
+     A log analytics lapon frissítse a lekérdezéseket, és tekintse meg az eredményeket a táblából. Ez a lekérdezés használ [Kusto-lekérdezés nyelvi](https://aka.ms/LogAnalyticsLanguageReference), amely szerkesztheti, ha meg szeretné tekinteni a különböző eredményt. 
 
-     ![Az Azure Log Analytics - lekérdezés megtekintése](media/logic-apps-monitor-your-logic-apps-oms/query.png)
+     ![a log analytics - lekérdezés megtekintése](media/logic-apps-monitor-your-logic-apps-oms/query.png)
 
 ## <a name="next-steps"></a>További lépések
 

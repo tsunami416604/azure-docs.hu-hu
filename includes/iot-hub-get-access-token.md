@@ -1,15 +1,15 @@
 ---
-author: dominicbetts
+author: robinsh
+ms.author: robin.shahan
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.author: dobett
-ms.openlocfilehash: ab9d059ede2464318205a90b8ac738727e8d89a4
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: e2d6b6413d1e397eaa3c53f28394dcf321dac729
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165768"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011768"
 ---
 ## <a name="obtain-an-azure-resource-manager-token"></a>Egy Azure Resource Manager-jogkivonat beszerzése
 Az Azure Active Directory hitelesítést kell végeznie az Azure Resource Manager-erőforrásokon végrehajtott összes feladatot. Az itt látható példában jelszó-hitelesítést használ, további egyéb megközelítések: [hitelesítése az Azure Resource Manager-kérelmek][lnk-authenticate-arm].

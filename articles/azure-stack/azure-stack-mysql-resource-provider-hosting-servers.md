@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 02/28/2019
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.lastreviewed: 10/16/2018
-ms.openlocfilehash: e1a00ea36efa6af816c371f5498085fc2cf491b6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.lastreviewed: 02/28/2019
+ms.openlocfilehash: eb5d1ca55efed7e83739f21a432b61b6aad25f70
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165025"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194010"
 ---
 # <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>Üzemeltetési kiszolgáló hozzáadása a MySQL erőforrás-szolgáltató
 
@@ -44,7 +44,9 @@ Győződjön meg arról, hogy rendszergazdai jogosultságokkal rendelkező fiók
 4. Adja meg a MySQL-kiszolgáló példány kapcsolati adatait.
 
    * A **MySQL-kiszolgáló neve üzemeltető**, adja meg a teljesen minősített tartománynevét (FQDN) vagy egy érvényes IPv4-címet. Ne használja a virtuális gép rövid nevét.
-   * A MySQL alapértelmezett példány nincs megadva, ezért meg kell adnia a **mérete az üzemeltető kiszolgáló GB-ban**. Adja meg, hogy az adatbázis-kiszolgáló kapacitása megközelíti a méretét.
+   - Az alapértelmezett rendszergazdai **felhasználónév** tartozó a Bitnami MySQL lemezképeket az Azure Stack piactéren *legfelső szintű*. 
+   - Ha nem ismeri a legfelső szintű **jelszó**, tekintse meg a [Bitnami dokumentáció](https://docs.bitnami.com/azure/faq/#how-to-find-application-credentials) megtudhatja, hogyan tehet szert. 
+   - A MySQL alapértelmezett példány nincs megadva, ezért meg kell adnia a **mérete az üzemeltető kiszolgáló GB-ban**. Adja meg, hogy az adatbázis-kiszolgáló kapacitása megközelíti a méretét.
    * Tartsa meg az alapértelmezett beállítás a **előfizetés**.
    * A **erőforráscsoport**, hozzon létre egy új vagy egy meglévő csoportot.
 

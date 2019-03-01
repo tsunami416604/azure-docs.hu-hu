@@ -13,12 +13,12 @@ ms.date: 09/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1851a6c27e89da71e75c59e025fee3800d0cd973
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: ee64fe8643362c6a75e288d78e163317fd8a44d8
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876959"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193150"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Az Azure AD Connect és az Azure AD Connect Health telepítési ütemterve
 
@@ -49,7 +49,7 @@ Az Azure AD Connect a [Microsoft letöltőközpontból](https://go.microsoft.com
 |A telepítést követően | [A telepítés ellenőrzése és licencek hozzárendelése](how-to-connect-post-installation.md)|
 
 ### <a name="learn-more-about-install-azure-ad-connect"></a>További információk az Azure AD Connect telepítésével kapcsolatban
-Az [üzemeltetéssel](how-to-connect-sync-operations.md) kapcsolatban felmerülő kérdések kezelésére is érdemes felkészülni. [Vészhelyzet](how-to-connect-sync-operations.md#disaster-recovery) esetére megfontolhatja egy készenléti kiszolgáló üzembe állítását. Ha gyakori konfigurációs módosításokat tervez, egy [átmeneti üzemmódú](how-to-connect-sync-operations.md#staging-mode) kiszolgáló beállításán is elgondolkodhat.
+Az [üzemeltetéssel](how-to-connect-sync-operations.md) kapcsolatban felmerülő kérdések kezelésére is érdemes felkészülni. [Vészhelyzet](how-to-connect-sync-staging-server.md#disaster-recovery) esetére megfontolhatja egy készenléti kiszolgáló üzembe állítását. Ha gyakori konfigurációs módosításokat tervez, egy [átmeneti üzemmódú](how-to-connect-sync-staging-server.md) kiszolgáló beállításán is elgondolkodhat.
 
 |Témakör |Hivatkozás|  
 | --- | --- |

@@ -1,5 +1,5 @@
 ---
-title: Kubernetes Dev Spaces-tér létrehozása a felhőben | Microsoft Docs
+title: Hozzon létre egy Kubernetes fejlesztői terület a felhőben
 titleSuffix: Azure Dev Spaces
 author: zr-msft
 services: azure-dev-spaces
@@ -9,13 +9,13 @@ ms.author: zarhoads
 ms.date: 09/26/2018
 ms.topic: quickstart
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
-ms.openlocfilehash: 744d9c5c62337c318aa5e8281e8855b085695c2e
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+keywords: 'Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s '
+ms.openlocfilehash: de6b9e68ed4df609b5e9c904240c0ccb04bf52b9
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818510"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194485"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-nodejs"></a>Gyors útmutató: A Kubernetes fejlesztői tárolóhely létrehozása az Azure fejlesztési szóközöket (Node.js)
 

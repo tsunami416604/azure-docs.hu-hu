@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 474148289bb03088bbf92eeadc4049ce19625e3e
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 06f1a2b33b177cf667fc2d3c5932f7ff117d2bdc
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115946"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195472"
 ---
 # <a name="what-is-azure-key-vault"></a>Mi az Azure Key Vault?
 
@@ -55,7 +55,7 @@ Miután létrehozott néhány kulcstartót, monitorozhatja, hogyan és mikor fé
 
 - Archiválás tárfiókba
 - Streamelés eseményközpontba
-- Naplók küldése a Log Analyticsnek
+- Naplók küldése a Azure Monitor naplóira.
 
 Engedélyekkel rendelkezik a naplók felett, és meg is védheti őket a hozzáférés korlátozásával, illetve törölheti azokat a naplókat, amelyekre már nincs szüksége.
 

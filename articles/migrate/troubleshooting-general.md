@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: raynew
-ms.openlocfilehash: bb9d22b45011f5156a63444ec8e1651f148993b6
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: cb1bed847f5b7afe7c1eff0243c64e8c25ddb814
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751905"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56992557"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Az Azure Migrate hibaelhárítása
 
@@ -94,7 +94,7 @@ Megnyithatja a **Essentials** című rész a **áttekintése** a projekt a ponto
 
 ## <a name="collector-issues"></a>Gyűjtő kapcsolatos problémák
 
-### <a name="deployment-of-azure-migrate-collector-failed-with-the-error-the-provided-manifest-file-is-invalid-invalid-ovf-manifest-entry"></a>Az Azure Migrate Collector telepítésének nem sikerült a következő hibával: Érvénytelen a megadott jegyzékfájl: OVF jegyzékfájl bejegyzés érvénytelen.
+### <a name="deployment-of-azure-migrate-collector-failed-with-the-error-the-provided-manifest-file-is-invalid-invalid-ovf-manifest-entry"></a>Az Azure Migrate Collector telepítésének nem sikerült a következő hibával: A megadott jegyzékfájl érvénytelen: OVF jegyzékfájl bejegyzés érvénytelen.
 
 1. Győződjön meg arról, ha az Azure Migrate Collector OVA-fájl a kivonatolt érték ellenőrzésével megfelelően letölti. Tekintse meg a következő [cikket](https://docs.microsoft.com/azure/migrate/tutorial-assessment-vmware#verify-the-collector-appliance) a kivonatérték ellenőrzéséhez. Ha a kivonat értéke nem egyezik, töltse le újból az OVA-fájl, és próbálkozzon újra a telepítéssel.
 2. Ha továbbra is sikertelen, és a VMware vSphere-ügyfelet használja az OVF telepítéséhez, próbálja meg a vSphere webes ügyfélen keresztül telepíteni. Ha továbbra is sikertelen, próbálkozzon a különböző webböngésző használatával.
@@ -170,7 +170,7 @@ A probléma akkor fordulhat elő a VMware PowerCLI telepítése való probléma 
 
 ### <a name="error-unabletoconnecttoserver"></a>Error UnableToConnectToServer
 
-Nem lehet csatlakozni a vCenter-kiszolgáló "Servername.com:9443" hiba miatt: Hiba történt a nincs végpont a következő https://Servername.com:9443/sdk , amely fogadni tudta az üzenetet.
+Nem lehet csatlakozni a „Servername.com:9443” vCenter-kiszolgálóhoz a következő hiba miatt: Nem figyelt olyan végpont a https://Servername.com:9443/sdk címen, amely fogadni tudta volna az üzenetet.
 
 Ha Ön a gyűjtőberendezés legújabb verzióját futtatja, ha nem, frissítse a berendezés ellenőrizze a [legújabb verzió](https://docs.microsoft.com/azure/migrate/concepts-collector).
 
@@ -222,14 +222,14 @@ Függőségi ügynök által támogatott Windows operációs rendszerek listája
 Függőségi ügynök által támogatott Linux operációs rendszerek listája [Itt](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems).
 
 ### <a name="i-am-unable-to-visualize-dependencies-in-azure-migrate-for-more-than-one-hour-duration"></a>Nem sikerül az Azure Migrate függőségeinek megjelenítése több mint egy óra időtartama?
-Az Azure Migrate függőségeinek megjelenítése akár egy órás időtartamának teszi lehetővé. Bár az Azure Migrate lehetővé teszi, hogy térjen vissza az az előzmények között az utolsó egy hónap legfeljebb egy adott dátumot, a maximális időtartamot, amelynek jelenítheti meg a függőségeket a legfeljebb 1 óra. Például hogy használhatja tegnap függőségek megtekintése a függőségi térkép az idő időtartamát funkciót, de csak megtekintheti azt számára egy egy órás időszak. Azonban, használhatja a Log Analyticsben, hogy [a függőségi adatok lekérdezése](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics) hosszabb ideig keresztül.
+Az Azure Migrate függőségeinek megjelenítése akár egy órás időtartamának teszi lehetővé. Bár az Azure Migrate lehetővé teszi, hogy térjen vissza az az előzmények között az utolsó egy hónap legfeljebb egy adott dátumot, a maximális időtartamot, amelynek jelenítheti meg a függőségeket a legfeljebb 1 óra. Például hogy használhatja tegnap függőségek megtekintése a függőségi térkép az idő időtartamát funkciót, de csak megtekintheti azt számára egy egy órás időszak. Azonban használhatja az Azure Monitor naplók [a függőségi adatok lekérdezése](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics) hosszabb ideig keresztül.
 
 ### <a name="i-am-unable-to-visualize-dependencies-for-groups-with-more-than-10-vms"></a>Nem lehet több mint 10 virtuális géppel csoportok függőségek vizualizálása vagyok?
 Is [csoportokra vonatkozó függőségek vizualizálása](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) , hogy rendelkezik mentése 10 virtuális gépekhez, ha egy csoport több mint 10 virtuális géppel, azt javasoljuk, hogy felosztása kisebb csoportok a csoport, és a Függőségek megjelenítése.
 
 ### <a name="i-installed-agents-and-used-the-dependency-visualization-to-create-groups-now-post-failover-the-machines-show-install-agent-action-instead-of-view-dependencies"></a>E telepített ügynökök és a függőségek képi megjelenítéséről csoportok létrehozásához használt. Most már feladatátvétel után, a gépek művelet "Ügynök telepítése" helyett "Nézet függőségei" megjelenítése
 * POST tervezett vagy nem tervezett feladatátvétel esetén a helyszíni gépek ki vannak kapcsolva, és egyenértékű gépeket hoz létre az Azure-ban. Ezek a gépek egy másik MAC-címet szerezni. Előfordulhat, hogy vásárolnak, egy másik IP-cím alapján, hogy a felhasználó úgy döntött, a helyi IP-cím megőrzése, vagy nem. MAC- és IP-címek különböznek, ha az Azure Migrate a helyszíni gépek nem rendel hozzá a Service Map függőségi adatokat, és kéri a felhasználót, hogy telepítse a helyett függőségek megtekintéséhez ügynököket.
-* Feladatátvételi teszt közzététele a helyszíni gépek elvárt bekapcsolva maradjon. Egyenértékű gépeket hoz létre az Azure-ban másik MAC-címet beszerezni, és előfordulhat, hogy másik IP-cím beszerzéséhez. Kivéve, ha a felhasználó blokkolja a kimenő forgalmát a Log Analytics ezeken a gépeken, az Azure Migrate a helyszíni gépek nem rendel hozzá a Service Map függőségi adatokat, és kéri a felhasználót, hogy telepítse a helyett függőségek megtekintéséhez ügynököket.
+* Feladatátvételi teszt közzététele a helyszíni gépek elvárt bekapcsolva maradjon. Egyenértékű gépeket hoz létre az Azure-ban másik MAC-címet beszerezni, és előfordulhat, hogy másik IP-cím beszerzéséhez. Kivéve, ha a felhasználó blokkok kimenő Azure Monitor-naplókat forgalom, ezek a gépek Azure Migrate nem rendel hozzá a helyszíni gépek Service Map függőségi adatokat, és kéri a felhasználót, hogy telepítse a helyett függőségek megtekintéséhez ügynököket.
 
 ## <a name="troubleshoot-azure-readiness-issues"></a>Azure-kompatibilitás hibáinak elhárítása
 

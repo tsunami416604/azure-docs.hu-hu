@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 02/19/2018
 ms.author: raynew
-ms.openlocfilehash: 61219fc4e1fc329708a7e58ee6a293e4e25cca31
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 408d8ec1c14174fe0536681afcb8f646481b851b
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887811"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193908"
 ---
 # <a name="back-up-sql-server-databases-on-azure-vms"></a>SQL Server-adatbázisok biztonsági mentése Azure-beli virtuális gépeken 
 
@@ -67,7 +67,7 @@ Felülvizsgálat [– gyakori kérdések](faq-backup-sql-server.md) SQL Server-a
 
 Biztonsági másolatot készíteni az SQL Server-adatbázishoz, mielőtt a következőket ellenőrizze:
 
-1. Azonosítsa vagy [létrehozása](backup-azure-sql-database.md#create-a-recovery-services-vault) ugyanabban a régióban vagy a virtuális Gépet üzemeltető SQL Server-példány területi beállításról egy Recovery Services-tárolót. V
+1. Azonosítsa vagy [létrehozása](backup-azure-sql-database.md#create-a-recovery-services-vault) ugyanabban a régióban vagy a virtuális Gépet üzemeltető SQL Server-példány területi beállításról egy Recovery Services-tárolót.
 2. [Ellenőrizze a virtuális gép engedélyeit](#fix-sql-sysadmin-permissions) szükséges az SQL-adatbázisok biztonsági mentését.
 3. Ellenőrizze, hogy rendelkezik-e a virtuális gép [hálózati kapcsolat](backup-azure-sql-database.md#establish-network-connectivity).
 4. Ellenőrizze, hogy az SQL Server-adatbázisok összhangban vannak elnevezve [pokyny Pro pojmenování](backup-azure-sql-database.md) az Azure Backup szolgáltatáshoz.

@@ -1,5 +1,5 @@
 ---
-title: A Log Analytics – Azure Logic Apps B2B-üzenetek nyomon követése lekérdezések létrehozása |} A Microsoft Docs
+title: B2B-üzenetek nyomon követése lekérdezések létrehozása az Azure Monitor naplóira – Azure Logic Apps |} A Microsoft Docs
 description: Létrehozhat olyan lekérdezéseket, AS2, X 12 és EDIFACT-üzeneteket az Azure Log Analytics az Azure Logic Apps nyomon követése
 services: logic-apps
 ms.service: logic-apps
@@ -9,19 +9,21 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 5cfab07e19e543b7a46fcce8f449a46395c144d6
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: d4a94e75de34bbafd3bc8f1c1a0d1a6817245e5f
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995318"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57194911"
 ---
-# <a name="create-tracking-queries-for-b2b-messages-in-azure-log-analytics-for-azure-logic-apps"></a>B2B-üzenetek nyomon követése lekérdezések létrehozása az Azure Log Analytics az Azure Logic Apps
+# <a name="create-tracking-queries-for-b2b-messages-in-azure-monitor-logs-for-azure-logic-apps"></a>B2B-üzenetek a változáskövetési lekérdezések létrehozása az Azure Monitor naplóira Azure Logic Apps
 
-AS2 megkereséséhez X12 vagy EDIFACT üzeneteket, hogy követi nyomon a [Azure Log Analytics](../log-analytics/log-analytics-overview.md), meghatározott feltétel alapján műveleteket szűrő lekérdezéseket hozhat létre. Például egy adott adatcsere ellenőrzőszáma üzeneteket is megtalálhatja.
+AS2 megkereséséhez X12 vagy EDIFACT üzeneteket, hogy követi nyomon a [naplózza az Azure Monitor](../log-analytics/log-analytics-overview.md), meghatározott feltétel alapján műveleteket szűrő lekérdezéseket hozhat létre. Például egy adott adatcsere ellenőrzőszáma üzeneteket is megtalálhatja.
 
 > [!NOTE]
 > Ezen a lapon a fentiekben már említettük, az a Microsoft Operations Management Suite (OMS), amely a feladatok végrehajtásához szükséges lépéseket [kivonása a január 2019](../azure-monitor/platform/oms-portal-transition.md), hanem az Azure Log Analytics váltja fel ezeket a lépéseket. 
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -29,7 +31,7 @@ AS2 megkereséséhez X12 vagy EDIFACT üzeneteket, hogy követi nyomon a [Azure 
 
 * Egy integrációs fiók, amely a figyelés és naplózás be van állítva. Ismerje meg, [egy integrációs fiók létrehozása](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) és [monitorozási és naplózási fiók beállítása](../logic-apps/logic-apps-monitor-b2b-message.md).
 
-* Ha még nem tette, [diagnosztikai adatok közzététele a Log Analytics](../logic-apps/logic-apps-track-b2b-messages-omsportal.md) és [-üzenet követési a Log Analytics beállítása](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
+* Ha még nem tette, [diagnosztikai adatok közzététele az Azure Monitor naplóira](../logic-apps/logic-apps-track-b2b-messages-omsportal.md) és [állítsa be az Azure Monitor naplóira üzenetkövetési](../logic-apps/logic-apps-track-b2b-messages-omsportal.md).
 
 ## <a name="create-queries-with-filters"></a>Lekérdezések létrehozása szűrőkkel
 
@@ -53,7 +55,7 @@ Egyes tulajdonságok és értékek alapján üzenetek megkereséséhez szűrőke
 1. A lekérdezésben szerkesztheti a mezőbe, és kezdje el begépelni a keresni kívánt mező nevét. Amikor elkezdi beírni, a Lekérdezésszerkesztő jeleníti meg, a lehetséges egyezések és a műveletek is használhatja. Miután létrehozta a lekérdezést, válassza ki a **futtatása** vagy nyomja le az Enter billentyűt.
 
    Ebben a példában a keres egyezések **LogicAppB2B**. 
-   Tudjon meg többet [adatok megkeresése a Log Analytics](../log-analytics/log-analytics-log-searches.md).
+   Tudjon meg többet [adatok megkeresése az Azure Monitor naplóira](../log-analytics/log-analytics-log-searches.md).
 
    ![Kezdje el begépelni a lekérdezési karakterlánc](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/create-query.png)
 

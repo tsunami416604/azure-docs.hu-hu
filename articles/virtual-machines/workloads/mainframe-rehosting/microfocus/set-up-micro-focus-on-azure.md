@@ -8,12 +8,12 @@ manager: edprice
 editor: edprice
 tags: ''
 keywords: ''
-ms.openlocfilehash: 2b730179cecee32282b9a79d8b62e3a35ee91048
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 46b135aabaefb3a94e4470927297fb696f216b7a
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56739617"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192530"
 ---
 # <a name="install-micro-focus-enterprise-server-40-and-enterprise-developer-40-on-azure"></a>Micro fókusz Enterprise Server 4.0-s és 4.0-s vállalati fejlesztői telepítése Azure-ban
 
@@ -66,11 +66,11 @@ Az első lépések előtt, tekintse meg az Előfeltételek:
 
 9. Kattintson duplán a fájlra, hogy elindítsa a telepítést. Az első ablakban a telepítés helyének kiválasztása, és fogadja el a végfelhasználói licencszerződést.
 
-     ![](media/01-enterprise-server.png)
+     ![Micro fókusz vállalati kiszolgáló beállítása képernyő](media/01-enterprise-server.png)
 
      A telepítő befejeződése után a következő üzenet jelenik meg:
 
-     ![](media/02-enterprise-server.png)
+     ![Micro fókusz vállalati kiszolgáló beállítása képernyő](media/02-enterprise-server.png)
 
 ### <a name="check-for-updates"></a>Frissítések ellenőrzése
 
@@ -82,11 +82,11 @@ A telepítés után mindenképpen óta előfeltételnek, mint például a Micros
 
 2. Kattintson a **Start** \> **Micro fókusz License Manager** \> **licenc felügyeleti**, majd kattintson a **telepítése** fülre. Válassza ki a feltölteni a licenc-formátum: licencfájl vagy egy 16 karakterből álló licenckód. Például egy fájl a **licencfájl**, keresse meg a **mflic** a virtuális Gépet, majd válassza a korábban feltöltött fájl **licencek telepítése**.
 
-     ![](media/03-enterprise-server.png)
+     ![Micro fókusz licenc felügyeleti párbeszédpanel](media/03-enterprise-server.png)
 
-3. Győződjön meg arról, hogy a vállalati kiszolgáló tölti be. Próbálja meg elindítani a vállalati kiszolgáló adminisztrációs hely, az URL-cím használatával közvetlenül a böngészőből <http://localhost:86/> . A vállalati kiszolgáló felügyelete lapon látható módon jelenik meg.
+3. Győződjön meg arról, hogy a vállalati kiszolgáló tölti be. Próbálja meg elindítani a vállalati kiszolgáló adminisztrációs hely, az URL-cím használatával közvetlenül a böngészőből <http://localhost:86/> . A vállalati kiszolgáló felügyelete lap látható módon jelenik meg.
 
-     ![](media/04-enterprise-admin.png)
+     ![Vállalati kiszolgáló felügyelete lap](media/04-enterprise-admin.png)
 
 ## <a name="install-enterprise-developer-on-the-developer-machine"></a>A fejlesztői gépen telepítse a vállalati fejlesztői
 
@@ -102,17 +102,17 @@ A telepítés után mindenképpen óta előfeltételnek, mint például a Micros
 
 4. Kattintson duplán a **edvs2017.exe** fájlt, hogy elindítsa a telepítést. Az első ablakban a telepítés helyének kiválasztása, és fogadja el a végfelhasználói licencszerződést. Ha azt szeretné, válassza ki a **telepítése Rumba 9,5** telepítéséhez a terminálemulátorral, amely valószínűleg szüksége lesz.
 
-     ![](media/04-enterprise-server.png)
+     ![A Visual Studio 2017 telepítése párbeszédpanelen Micro fókusz nagyvállalati fejlesztő](media/04-enterprise-server.png)
 
 5. A telepítő befejeződése után a következő üzenet jelenik meg:
 
-     ![](media/05-enterprise-server.png)
+     ![A telepítő sikeres üzenetek](media/05-enterprise-server.png)
 
 6. Indítsa el a Micro fókusz Licenckezelőhöz, ahogy a vállalati kiszolgáló. Válassza a **Start** \> **Micro fókusz License Manager** \> **licenc felügyeleti**, és kattintson a **telepítése**fülre.
 
 7. Válassza ki a feltölteni a licenc-formátum: licencfájl vagy egy 16 karakterből álló licenckód. Például egy fájl a **licencfájl**, keresse meg a **mflic** a virtuális Gépet, majd válassza a korábban feltöltött fájl **licencek telepítése**.
 
-     ![](/edia/07-enterprise-server.png)
+     ![Micro fókusz licenc felügyeleti párbeszédpanel](/edia/07-enterprise-server.png)
 
 Vállalati fejlesztői betöltésekor Micro fókusz fejlesztési és tesztelési környezet az Azure-ban az üzembe helyezés befejeződött!
 

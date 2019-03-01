@@ -16,12 +16,12 @@ ms.date: 02/26/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41859195474f19906118dbe94503bcbe04d0ac65
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 31cfcc6d2309b90565f71a7827fb7057145323c3
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960360"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192412"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>Telepítse az Azure AD Connect SQL-lel delegált rendszergazdai engedélyekkel
 Az Azure AD Connect legújabb buildjének, mielőtt felügyeleti delegálás, SQL, a szükséges konfigurációk központi telepítésekor nem támogatott.  Felhasználók számára az Azure AD Connect telepítése szükséges az SQL Server kiszolgáló (SA) rendszergazdai jogosultságokkal rendelkezik.
@@ -59,9 +59,9 @@ A sávon kívüli-adatbázis kiépítése, és az Azure AD Connect telepítése 
  3. E-mail küldése az Azure AD Connect rendszergazdájának kell használni, amikor az Azure AD Connect telepítése SQL kiszolgáló és példánya nevének jelző.
 
 ## <a name="additional-information"></a>További információ
-Miután az adatbázishoz ki van építve, az Azure AD Connect-rendszergazda telepítheti és konfigurálhatja a helyszíni szinkronizálási, saját igényeik.  
+Miután az adatbázishoz ki van építve, az Azure AD Connect-rendszergazda telepítheti és konfigurálhatja a helyszíni szinkronizálási, saját igényeik.
 
-Egy meglévő adatbázist az Azure AD Connect telepítésével további információkért lásd: [telepítse az Azure AD Connect használatával a meglévő ADSync-adatbázis](how-to-connect-install-existing-database.md)
+Abban az esetben, ha az SQL-rendszergazda rendelkezik ADSync-adatbázis biztonsági másolatból történt visszaállítása egy korábbi az Azure AD Connect, szüksége lesz az új Azure AD Connect kiszolgáló telepítése egy már létező adatbázist használva. Egy meglévő adatbázist az Azure AD Connect telepítésével további információkért lásd: [meglévő ADSync-adatbázis használatával telepítse az Azure AD Connect](how-to-connect-install-existing-database.md).
 
 ## <a name="next-steps"></a>További lépések
 - [Első lépések az Azure AD Connecttel a gyorsbeállítások használatával](how-to-connect-install-express.md)

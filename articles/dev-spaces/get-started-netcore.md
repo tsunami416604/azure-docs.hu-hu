@@ -1,5 +1,5 @@
 ---
-title: Hozzon létre egy Kubernetes-fejlesztési tárolóhelyet a .NET Core és a VS Code használatával felhőbeli |} A Microsoft Docs
+title: Hozzon létre egy Kubernetes-fejlesztési tárolóhelyet a felhőben, a .NET Core és a VS Code használatával
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -9,13 +9,13 @@ ms.author: zarhoads
 ms.date: 09/26/2018
 ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
-ms.openlocfilehash: 02c0faf5103ff370d766dd931aa65190e4846139
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s
+ms.openlocfilehash: 8a8dea4ccfde403d510dcdffb8cca079c6eb3002
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817541"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193789"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>Bevezetés az Azure fejlesztési tárolóhelyek .NET Core használatával
 

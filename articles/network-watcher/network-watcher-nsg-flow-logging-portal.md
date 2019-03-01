@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 09d43386b994ffc046f8c3e22c82f13ec15acd38
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 124ac79971ca2ee1e7b5ad085a73aceb8f5d8841
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428971"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57191390"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Oktatóanyag: Napló hálózati forgalmat, és a egy virtuális gépről az Azure portal használatával
 
@@ -100,7 +100,10 @@ Az NSG-folyamatnaplózáshoz a **Microsoft.insights** szolgáltató szükséges.
 
 6. A hálózati biztonsági csoportok közül válassza a **myVm-nsg** nevű csoportot.
 7. A **Folyamatnaplók beállításai** területen válassza a **Be** lehetőséget.
-8. A flow naplózási verziónak a kiválasztása. 2. verzió folyamat munkamenet-statisztika (bájtok és csomagok) tartalmaz egy. ![A folyamat-naplók verziónak a kiválasztása](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
+8. A flow naplózási verziónak a kiválasztása. 2-es verzió tartalmazza a flow-munkamenet statisztika (bájtok és csomagok)
+
+   ![A folyamat-naplók verziónak a kiválasztása](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
+
 9. Válassza ki a 3. lépésben létrehozott Storage-fiókot.
 10. A **Megőrzés (nap)** beállítást állítsa 5 értékre, majd válassza a **Mentés** lehetőséget.
 
@@ -109,17 +112,13 @@ Az NSG-folyamatnaplózáshoz a **Microsoft.insights** szolgáltató szükséges.
 1. A portálon, a Network Watcherben válassza az **NSG-folyamatnaplók** lehetőséget a **NAPLÓK** területen.
 2. Válassza **A folyamatnaplókat a konfigurált tárfiókokból töltheti le** lehetőséget, ahogyan az az alábbi képen is látható:
 
-  ![Folyamatnaplók letöltése](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
+   ![Folyamatnaplók letöltése](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
 
 3. Válassza ki az [NSG-folyamatnapló engedélyezése](#enable-nsg-flow-log) szakasz 2. lépésében konfigurált Storage-fiókot.
-4. Válassza a **Tárolók** lehetőséget a **BLOB SZOLGÁLTATÁS** területen, majd válassza az **insights-logs-networksecuritygroupflowevent** tárolót, ahogyan az az alábbi képen is látható:
+4. Alatt **Blob service**válassza **Blobok**, majd válassza ki a **insights-logs-networksecuritygroupflowevent** tároló.
+5. A tárolóban navigálhat a mappahierarchiában juthat el a PT1H.json fájlt, amíg a következő képen látható módon. Naplófájlok íródnak a mappahierarchiában, amely az alábbi elnevezési konvenciót követi: https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/ RESOURCEGROUPS/{resourceGroupName}/Providers/Microsoft.Network/NETWORKSECURITYGROUPS/{nsgName}/y={Year}/m={Month}/d={Day}/h={Hour}/m=00/macAddress={macAddress}/PT1H.JSON
 
-    ![Tároló kiválasztása](./media/network-watcher-nsg-flow-logging-portal/select-container.png)
-5. Navigáljon a mappahierarchiában a PT1H.json fájlhoz a következő képen látható módon:
-
-    ![Naplófájl](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
-
-    A rendszer a naplófájlokat a következő elnevezési konvenció szerinti mappahierarchiába írja: https://{tárfióknév}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{előfizetés-azonosító}/RESOURCEGROUPS/{erőforráscsoport-név}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{NSGneve}/y={év}/m={hónap}/d={nap}/h={óra}/m=00/macAddress={MAC-cím}/PT1H.json
+   ![Flow-log](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
 
 6. Válassza a PT1H.json fájl jobb oldalán található **...** elemet, majd a **Letöltés** lehetőséget.
 
@@ -195,7 +194,6 @@ Az alábbi json-fájl egy példa arra, mi látható majd a PT1H.json fájlban az
     }
 }
 ```
-
 
 A **mac** érték az előző kimenetben azon hálózati adapter MAC-címét jelöli, amely a virtuális gép létrehozásakor lett létrehozva. A **flowTuples** vesszővel tagolt adatai a következők:
 

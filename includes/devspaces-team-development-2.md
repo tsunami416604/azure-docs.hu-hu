@@ -10,12 +10,12 @@ ms.author: stevenry
 ms.date: 12/17/2018
 ms.topic: include
 manager: yuvalm
-ms.openlocfilehash: 7dddf7e48913aea9d84e0f8b66c2c9d29449ee6f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 5d66dcaccc6ca2e40fbd516f535ec56c1baf6b17
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56825778"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195597"
 ---
 ### <a name="run-the-service"></a>A szolgáltatás futtatása
 
@@ -81,7 +81,7 @@ Elvégezte az első lépéseket ismertető útmutatót! Megismerte, hogyan vége
 > * A kód hatékony fejlesztése és tesztelése, csapatkörnyezetben.
 > * Fejlesztői tárolóhelyek használatával egyszerűen tesztelheti az elkülönített módosításokat egy nagyobb mikroszolgáltatás-alkalmazás összefüggésében funkció megállapítja az alapértékeket
 
-Most, hogy megismerte az Azure Dev Spacest, [megoszthatja a létrehozott Dev Spaces-teret egy csapattaggal](../articles/dev-spaces/how-to/share-dev-spaces.md), és megmutathatja neki, milyen egyszerű az együttműködés.
+Most, hogy már megismerte az Azure fejlesztési szóközöket, [fejlesztési tárhely megosztása egy csapattag](../articles/dev-spaces/how-to/share-dev-spaces.md) és közös munka megkezdéséhez.
 
 ## <a name="clean-up"></a>A fölöslegessé vált elemek eltávolítása
 Ha egy fürt egy Azure Dev Spaces-példányát teljesen, az összes Dev Spaces-térrel és benne futó szolgáltatással együtt törölni szeretné, használja az `az aks remove-dev-spaces` parancsot. Tartsa észben, hogy ez a művelet nem vonható vissza. Újra hozzáadhat Azure Dev Spaces-támogatást a fürtön, de azt a rendszer úgy kezeli, mintha elölről kezdené a folyamatot. A régi szolgáltatások és a tárolóhelyek nem állíthatók vissza.

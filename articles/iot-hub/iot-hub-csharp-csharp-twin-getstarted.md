@@ -1,20 +1,20 @@
 ---
 title: Ismerkedés az Azure IoT Hub device twins (.NET/.NET) |} A Microsoft Docs
 description: Hogyan használható az Azure IoT Hub device twins címkéket adhat hozzá, majd az IoT Hub-lekérdezést. A szimulált eszközalkalmazás és az Azure IoT szolgáltatás SDK for .NET megvalósítása, amely hozzáadja a címkék és az IoT Hub-lekérdezést futtathat egy service-alkalmazás üzembe helyezéséhez használhatja az Azure IoT eszközoldali SDK a .NET-hez.
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.author: dobett
-ms.openlocfilehash: 1921395ed11c23ddb3d64d9d53124df7b7c8fd82
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.author: robin.shahan
+ms.openlocfilehash: 63ec161f2f0d8be4572acf456c81e19ca75bd856
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51514859"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010735"
 ---
 # <a name="get-started-with-device-twins-netnet"></a>Első lépések az ikereszközökhöz (.NET/.NET)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]

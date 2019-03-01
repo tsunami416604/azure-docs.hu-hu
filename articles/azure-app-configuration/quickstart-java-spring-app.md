@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Spring
 ms.workload: tbd
 ms.date: 01/08/2019
 ms.author: yidon
-ms.openlocfilehash: d607d6cd813b23051e1676153cbb134261bcf5bc
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: c5e172410c7cb60888107e37064c2429caf6df9e
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960614"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195489"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-app-configuration"></a>Gyors útmutató: Egy Java Spring-alkalmazás létrehozása az alkalmazás konfigurációja
 
@@ -93,7 +93,7 @@ Használhatja a [Spring Initializr](https://start.spring.io/) egy új Spring Boo
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0.RC2</version>
+        <version>1.1.0.M1</version>
     </dependency>
     ```
 
@@ -144,15 +144,10 @@ Használhatja a [Spring Initializr](https://start.spring.io/) egy új Spring Boo
     }
     ```
 
-6. Hozzon létre egy új fájlt `bootstrap.yaml` az erőforrásokat a könyvtárban az alkalmazás, és adja hozzá a következő sorokat a fájl, és cserélje le a megfelelő tulajdonságokat az alkalmazás konfigurációs tárához tartozó mintaértékeket.
+6. Hozzon létre egy új fájlt `bootstrap.properties` az erőforrásokat a könyvtárban az alkalmazás, és adja hozzá a következő sorokat a fájl, és cserélje le a megfelelő tulajdonságokat az alkalmazás konfigurációs tárához tartozó mintaértékeket.
 
-    ```yaml
-    spring:
-        cloud:
-            azure:
-                config:
-                    stores:
-                        - connection-string: [your-connection-string]
+    ```properties
+    spring.cloud.azure.appconfiguration.stores[0].connection-string=[your-connection-string]
     ```
 
 ## <a name="build-and-run-the-app-locally"></a>Hozhat létre, és az alkalmazás helyileg történő futtatása

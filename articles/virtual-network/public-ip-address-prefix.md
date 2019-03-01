@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 95fb889da564d6e40e25dfb9ee64a8665a954652
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 5496be93a5241621cd4dc5e873e4386f8ed6c992
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700740"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195217"
 ---
 # <a name="public-ip-address-prefix"></a>Nyilvános IP-cím előtagja
 
 Egy nyilvános IP-címelőtag egy fenntartott IP-címtartományt a nyilvános végpontok az Azure-ban. Az Azure-címek alapján hány megadhatja az előfizetés egybefüggő dátumtartományt foglal le. Ha még nem ismeri a nyilvános cím, [nyilvános IP-címek.](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses)
 
-Nyilvános IP-címek egy címkészletből minden egyes Azure-régióban vannak rendelve. Is [letöltése](https://www.microsoft.com/download/details.aspx?id=41653) az minden olyan régió esetében használja az Azure-címtartományok listáját. Ha például 40.121.0.0/16 az egyik több mint 100 tartományokat az Azure használ, az USA keleti régiójában. A tartományba beletartozik az 40.121.0.1 - felhasználható cím 40.121.255.254.
+Nyilvános IP-címek egy címkészletből minden egyes Azure-régióban vannak rendelve. Is [letöltése](https://www.microsoft.com/download/details.aspx?id=56519) az minden olyan régió esetében használja az Azure-címtartományok listáját. Ha például 40.121.0.0/16 az egyik több mint 100 tartományokat az Azure használ, az USA keleti régiójában. A tartományba beletartozik az 40.121.0.1 - felhasználható cím 40.121.255.254.
 
 Hoz létre egy nyilvános IP-címelőtag egy Azure-régióban és az előfizetés nevét adja meg, és hány cím kívánja felvenni az előtagot. Például ha létrehoz egy nyilvános IP-címelőtag/28-as, Azure foglal le 16 címeket a tartományok közül az Ön számára. Melyik Azure fog hozzárendelni, amíg nem hoz létre a tartomány tartomány nem tudja, de a címek olyan egybefüggő. Nyilvános IP-címelőtagokat díjat kell. További információkért lásd: [nyilvános IP-címek díjszabása](https://azure.microsoft.com/pricing/details/ip-addresses).
 

@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 12/19/2018
-ms.openlocfilehash: 52346e25c0b0e1b1b0c0befb6b5285f66b9a95d7
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 02/28/2018
+ms.openlocfilehash: c41258501b476d1edaf483e08874d2fc83bd00c9
+ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53724572"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56991546"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Oktatóanyag: MySQL online migrálása az Azure Database for MySQL-be a DMS használatával
 Az Azure Database Migration Service használatával minimális szolgáltatáskieséssel migrálhatja egy helyszíni MySQL-példány adatbázisait az [Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/)-be. Ez azt jelenti, hogy a migrálás az alkalmazás minimális ideig tartó leállásával végezhető el. Ebben az oktatóanyagban az **Employees** mintaadatbázist fogja migrálni a MySQL 5.7 egy helyszíni példányáról az Azure Database for MySQL-be az Azure Database Migration Service online migrálási tevékenységének használatával.
@@ -40,8 +40,17 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 - Töltse le és telepítse a [MySQL Community Edition](https://dev.mysql.com/downloads/mysql/) 5.6-os vagy 5.7-es verzióját. A helyszíni MySQL-verziónak egyeznie kell az Azure Database for MySQL verziójával. Például a MySQL 5.6 csak az Azure Database for MySQL 5.6-ba migrálható, az 5.7-es verzióra nem frissíthető.
 - [Példány létrehozása az Azure Database for MySQL-ben](https://docs.microsoft.com/azure/mysql/quickstart-create-mysql-server-database-using-azure-portal). Az adatbázisok az Azure Portal használatával való csatlakoztatásának és létrehozásának részleteiért tekintse meg az [Azure Database for MySQL: Csatlakozás és adatlekérdezés a MySQL Workbench használatával](https://docs.microsoft.com/azure/mysql/connect-workbench) című cikket.  
-- Hozzon létre egy virtuális hálózatot az Azure Database Migration Service-hez az Azure Resource Manager-alapú üzemi modell használatával, amely a hálózat helyek közötti kapcsolatot biztosít a helyszíni forráskiszolgálóknak [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) használatával.
-- Győződjön meg arról, hogy az Azure Virtual Network (VNET) hálózati biztonsági szabályok nem blokkolják a következő kommunikációs portokat: 443, 53, 9354, 445, 12000. További részletek az Azure VNET NSG-forgalom szűréséről: [Hálózati forgalom szűrése hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm).
+- Hozzon létre egy Azure Virtual Network (VNET) használatával az Azure Resource Manager üzembe helyezési modell, amely lehetővé teszi a helyek közötti kapcsolatot a helyszíni adatforrás-kiszolgálók használatával vagy az Azure Database Migration Service [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
+
+    > [!NOTE]
+    > Virtuális hálózathoz a telepítés során, ha az ExpressRoute hálózati a Microsoft társviszony-létesítés használja, hozzá a következő szolgáltatás [végpontok](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) az alhálózathoz, amelyben üzembe fogja helyezni a szolgáltatást:
+    > - Cél adatbázis végpont (például SQL-végpont, Cosmos-DB végpont, és így tovább)
+    > - Storage-végpont
+    > - Service bus-végpont
+    >
+    > Ez a konfiguráció szükség, mert az Azure Database Migration Service nem rendelkezik internetkapcsolattal.
+ 
+- Győződjön meg arról, hogy a virtuális hálózatok közötti hálózati biztonsági csoport szabályai nem blokkolják a következő kommunikációs portokat a 443-as, 53-as és 9354-es, 445-ös, 12000. További részletek az Azure VNET NSG-forgalom szűréséről: [Hálózati forgalom szűrése hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm).
 - Konfigurálja a [Windows tűzfalat az adatbázismotorhoz való hozzáféréshez](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 - Nyissa meg a Windows tűzfalat, és engedélyezze, hogy az Azure Database Migration Service elérhesse a MySQL-kiszolgáló forrását, amely alapértelmezés szerint a 3306-os TCP-port.
 - Ha tűzfalkészüléket használ a forrásadatbázis(ok) előtt, előfordulhat, hogy tűzfalszabályokat kell hozzáadnia annak engedélyezéséhez, hogy az Azure Database Migration Service a migrálás céljából hozzáférhessen a forrásadatbázis(ok)hoz.
@@ -59,7 +68,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
         Példa: log-bin = E:\MySQL_logs\BinLog
     - **binlog_format** = row
-    - **Expire_logs_days** = 5 (a nullát nem ajánlott használni; csak a MySQL 5.6-os verziójára vonatkozik)
+    - **Expire_logs_days** = 5 (azt javasoljuk, hogy nem használja a nulla; csak a MySQL 5.6-os vonatkozik)
     - **Binlog_row_image** = full (csak a MySQL 5.6-os verziójára vonatkozik)
     - **log_slave_updates** = 1
  
@@ -152,7 +161,7 @@ SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGG
 
     További tájékoztatás a költségekről és a tarifacsomagokról a [díjszabási lapon](https://aka.ms/dms-pricing) olvasható.
 
-    Ha segítségre van szüksége a megfelelő szintű Azure Database Migration Service kiválasztásában, tekintse meg az [Azure Database Migration Service- (Azure DMS-) szint kiválasztásáról](https://go.microsoft.com/fwlink/?linkid=861067) szóló blogbejegyzésben közzétett javaslatokat. 
+    Ha a megfelelő Azure Database Migration Service-csomag kiválasztása segítségre van szüksége, tekintse meg a javaslatok a blog könyvelés az [egy Azure Database Migration Service (Azure DMS) szint kiválasztásával](https://go.microsoft.com/fwlink/?linkid=861067). 
 
      ![Az Azure Database Migration Service-példány beállításainak konfigurálása](media/tutorial-mysql-to-azure-mysql-online/dms-settings3.png)
 

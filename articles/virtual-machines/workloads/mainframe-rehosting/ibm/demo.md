@@ -8,12 +8,12 @@ manager: edprice
 editor: edprice
 tags: ''
 keywords: ''
-ms.openlocfilehash: f366b9eee3104527fb9e974b51f339494b552e3b
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: f8af19056a343abdbafcd4ead8b072330cb41fd9
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56739566"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57192072"
 ---
 # <a name="set-up-an-application-developers-controlled-distribution-adcd-in-ibm-zdt-v1"></a>Állítsa be az alkalmazás fejlesztők szabályozott terjesztési (ADCD) IBM zD & T v1
 
@@ -89,7 +89,7 @@ Most, hogy a csomagok, fel kell tölteni azokat a virtuális gép az Azure-ban.
         gunzip \*.gz
     ```
     
-![](media/01-gunzip.png)
+![A Fájlkezelőben megjelenítő gz kötetek kibontása](media/01-gunzip.png)
 
 ## <a name="configure-the-image-storage"></a>A lemezképet tároló konfigurálása
 
@@ -105,11 +105,11 @@ A következő lépés, hogy zD & T, a feltöltött csomag használatára konfigu
      >
      > Ne feledje, hogy a webes elérés 9443-as portot használja. Ezzel jelentkezzen be a webkiszolgáló. A felhasználói azonosító ZD & T **zdtadmin** és a jelszó **jelszó**.
 
-    ![](media/02-welcome.png)
+    ![IBM zD&T Enterprise Edition Welcome screen](media/02-welcome.png)
 
 3. Az a **gyors üzembe helyezés** lap **konfigurálása**válassza **Képtárolás**.
 
-     ![](media/03-quickstart.png)
+     ![IBM zD&T Enterprise Edition Quick Start screen](media/03-quickstart.png)
 
 4. Az a **képtárolás konfigurálása** lapon jelölje be **SSH File Transfer Protocol**.
 
@@ -133,7 +133,7 @@ A következő lépés, hogy a zD & T célkörnyezet beállítása. Az emulált �
 
 5. Az a **Célkörnyezet címke** mezőbe írja be például a címke **MyCICS.**
 
-     ![](media/04-add-target.png)
+     ![Cél környezet képernyő hozzáadása](media/04-add-target.png)
 
 ## <a name="configure-adcd-and-deploy"></a>ADCD konfigurálása és üzembe helyezése
 
@@ -143,7 +143,7 @@ A korábbi konfigurációs lépések végrehajtását követően konfigurálnia 
 
 2. Feltéve, hogy minden a képek feltöltése megfelelő könyvtáraihoz, kattintson a **ADCD LEMEZKÉP** hivatkozás jelenik meg a jobb alsó sarokban (7. lépés az alábbi képernyőképen látható).
 
-     ![](media/05-adcd.png)
+     ![IBM zD & T Enterprise Edition - ADCD konfigurálása képernyő](media/05-adcd.png)
 
 ## <a name="create-the-image"></a>A rendszerkép létrehozása
 
@@ -157,7 +157,7 @@ Ha az előző konfigurációs lépés befejeződött, a **hozzon létre egy rend
 
 4. Válassza ki a **kép létrehozása** gombra a képernyő jobb alsó sarkában.
 
-     ![](media/06-adcd.png)
+     ![IBM zD & T Enterprise Edition - ADCD összetevők képernyő-lemezkép létrehozása](media/06-adcd.png)
 
 5. A megjelenő ablakban közben a rendszerkép sikeresen rendszerbe lett állítva, válassza a **rendszerképek üzembe helyezése**.
 
@@ -169,7 +169,7 @@ Ha az előző konfigurációs lépés befejeződött, a **hozzon létre egy rend
 
 9. Ellenőrizze, hogy a be van jelölve a **automatikus probléma IPL parancs után z/operációs rendszer központi telepítését**.
 
-     ![](media/07-properties.png)
+     ![Tulajdonságai képernyő](media/07-properties.png)
 
 10. Válassza ki **teljes**.
 
@@ -194,5 +194,5 @@ Gratulálunk! IBM Nagyszámítógépek környezet az Azure-ban most futtatja.
 [microfocus-setup]: /microfocus/set-up-micro-focus-on-azure.md
 [microfocus-demo]: /microfocus/demo.md
 [ibm-get-started]: /ibm/get-started.md
-[ibm-install-z]: /ibm/install-ibm-z-environment.md
+[ibm-install-z]: install-ibm-z-environment.md
 [ibm-demo]: /ibm/demo.md

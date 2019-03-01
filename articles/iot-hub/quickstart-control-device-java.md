@@ -1,21 +1,21 @@
 ---
 title: 'Rövid útmutató: Eszköz vezérlése az Azure IoT Hubról (Java) | Microsoft Docs'
 description: Ebben a rövid útmutatóban két Java-mintaalkalmazást fog futtatni. Az egyik egy háttéralkalmazás, amely a hubhoz csatlakoztatott eszközök távoli vezérlését teszi lehetővé. A másik alkalmazás a hubhoz csatlakoztatott eszközt szimulál, amelyet távolról lehet irányítani.
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/22/2019
-ms.author: dobett
-ms.openlocfilehash: 30c5026c0f7c8fcce3cee8780622f4c835f043ce
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 82586838c9b442ce27d6a18f45fb93370e532701
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670944"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011568"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-java"></a>Gyors útmutató: A vezérlőelem egy eszköz csatlakozik az IoT hub (Java)
 

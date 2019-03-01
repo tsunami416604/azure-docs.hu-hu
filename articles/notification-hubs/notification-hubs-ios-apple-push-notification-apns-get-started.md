@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 63fb04e6b31fe4026b93cef09d88601d6182101a
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 640abdd533a6c0b0ec448076c713aaf754baf2b6
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448309"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57011296"
 ---
 # <a name="tutorial-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Oktatóanyag: Leküldéses értesítések küldése iOS-alkalmazások Azure Notification Hubs használatával
 
@@ -96,9 +96,28 @@ Konfigurálta az értesítési központot az APNS-sel való együttműködésre,
 
     ![Xcode – leküldési képességek][12]
 
-5. Töltse le a [Microsoft Azure üzenetkezelési keretrendszer], és bontsa ki a fájlt. Az Xcode-ban kattintson a jobb gombbal a projektjére, majd kattintson az **Add Files to** (Fájlok hozzáadása a következőhöz:) lehetőségre a **WindowsAzureMessaging.framework** mappa az Xcode-projektjéhez adásához. Válassza a **Beállítások** lehetőséget, és győződjön meg arról, hogy az **Elemek másolása, ha szükséges** elem be van jelölve, majd kattintson a **Hozzáadás** elemre.
+5. Az Azure Notification Hubs SDK-modulok hozzáadása.
 
-    ![Az Azure SDK kicsomagolása][10]
+   Integrálható az Azure Notification Hubs SDK az alkalmazás használatával [Cocoapods](https://cocoapods.org) vagy manuálisan adja hozzá a bináris fájlokat a projekthez.
+
+   - Integráció a Cocoapods segítségével
+
+     Adja hozzá a következő függőségeket a `podfile` tartalmazza az Azure Notification Hubs SDK az alkalmazásba.
+
+     ```ruby
+     pod 'AzureNotificationHubs-iOS'
+     ```
+
+     Futtatás `pod install` az újonnan definiált pod telepítéséhez, és nyissa meg a `.xcworkspace`.
+
+     > [!NOTE]
+     > Ha például a hibaüzenet jelenik meg ```[!] Unable to find a specification for `AzureNotificationHubs-iOS` ``` futtatása során `pod install`, futtassa a `pod repo update` a legújabb podok a Cocoapods adattárból, és futtassa `pod install`.
+
+   - Integráció a bináris fájlok másolása a projektbe
+
+     Töltse le a [Microsoft Azure üzenetkezelési keretrendszer], és bontsa ki a fájlt. Az Xcode-ban kattintson a jobb gombbal a projektjére, majd kattintson az **Add Files to** (Fájlok hozzáadása a következőhöz:) lehetőségre a **WindowsAzureMessaging.framework** mappa az Xcode-projektjéhez adásához. Válassza a **Beállítások** lehetőséget, és győződjön meg arról, hogy az **Elemek másolása, ha szükséges** elem be van jelölve, majd kattintson a **Hozzáadás** elemre.
+
+     ![Az Azure SDK kicsomagolása][10]
 
 6. Adjon hozzá egy `HubInfo.h` nevű új fejlécfájlt a projektjéhez. Ez a fájl tárolja az állandókat az értesítési központhoz. Adja hozzá a következő definíciókat, és cserélje le a szövegkonstans helyőrzőit a *központ nevére* és a korábban feljegyzett *DefaultListenSharedAccessSignature* változóra.
 

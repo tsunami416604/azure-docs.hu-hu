@@ -1,5 +1,5 @@
 ---
-title: Kubernetes Node.js fejlesztési környezet létrehozása a felhőben a VS Code használatával | Microsoft Docs
+title: Hozzon létre egy Kubernetes Node.js fejlesztési környezetet a felhőben, a VS Code
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -9,13 +9,13 @@ ms.author: zarhoads
 ms.date: 09/26/2018
 ms.topic: tutorial
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
-keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, tárolók
-ms.openlocfilehash: 6cdce9f7dbb2e3f0bc5b2d8a3f12e5d50cadc505
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+keywords: Docker, Kubernetes, Azure, az AKS, az Azure Kubernetes Service, tárolók, Helm, a szolgáltatás háló, a szolgáltatás háló útválasztás, a kubectl, a k8s
+ms.openlocfilehash: b7437264bd51bcdc1be4d378cd4fbee506a6e83f
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816963"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193653"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-nodejs"></a>Bevezetés az Azure fejlesztési szóközöket a node.js használatával
 

@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/05/2019
+ms.date: 02/28/2019
 ms.author: magoedte
-ms.openlocfilehash: 6803e700a42a0d0279b48d38995c4fc299415075
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 58f16b0aa068c8b333ef4e7986bb49327b002fbb
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985495"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195421"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Figyelés megoldásra az Azure monitorban
 
@@ -496,28 +496,16 @@ A szakaszban az információk segítségével telepítheti és konfigurálhatja 
 
 Ügynökök telepítése Windows rendszerű számítógépeken, előtt kell beállítani a Docker-szolgáltatást. A konfiguráció lehetővé teszi, hogy a Windows-ügynök vagy az Azure Monitor virtuálisgép-bővítmény használata a Docker TCP szoftvercsatorna, hogy az ügynökök távolról elérjék a Docker-démont és a figyelési adatok rögzítéséhez.
 
-##### <a name="to-start-docker-and-verify-its-configuration"></a>Indítsa el a Docker és a konfiguráció ellenőrzése
+##### <a name="to-configure-the-docker-service"></a>A Docker szolgáltatás konfigurálása  
 
-Vannak olyan nevesített cső a Windows Server TCP beállításához szükséges lépések:
+Hajtsa végre a következő PowerShell-parancsok TCP függőleges vonal és a nevesített cső engedélyezése a Windows Server:
 
-1. A Windows PowerShellben engedélyezze a TCP függőleges vonal és a nevesített cső.
-
-    ```
-    Stop-Service docker
-    dockerd --unregister-service
-    dockerd --register-service -H npipe:// -H 0.0.0.0:2375  
-    Start-Service docker
-    ```
-
-2. A konfigurációs fájl TCP pipe Docker konfigurálásához, valamint a nevesített cső. A konfigurációs fájl nem található: C:\ProgramData\docker\config\daemon.json.
-
-    A daemon.json fájlban a következőkre lesz szüksége:
-
-    ```
-    {
-    "hosts": ["tcp://0.0.0.0:2375", "npipe://"]
-    }
-    ```
+```
+Stop-Service docker
+dockerd --unregister-service
+dockerd --register-service -H npipe:// -H 0.0.0.0:2375  
+Start-Service docker
+```
 
 A Docker-démon konfigurációját, használja a Windows-tárolókkal kapcsolatos további információkért lásd: [Windows Docker-motor](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon).
 

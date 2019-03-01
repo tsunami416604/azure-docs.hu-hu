@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 01/11/2019
+ms.date: 02/28/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: c7759b9f0787b7926b3642b8b912ec5391347adf
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 1db3e5b88560e5f574e01c16d10e95e2d0607cc1
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54911489"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195455"
 ---
 # <a name="quickstart-create-and-deploy-azure-resource-manager-templates-by-using-the-azure-portal"></a>Gyors útmutató: Létrehozása és üzembe helyezése Azure Resource Manager-sablonok az Azure portal használatával
 
@@ -32,7 +32,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 A Resource Manager-sablon létrehozása előzmények nincs egyszerű feladat, különösen akkor, ha most ismerkedik az Azure-beli és a rendszer nem ismeri a JSON formátumban. Az Azure portal használatával, konfigurálhat egy erőforrás, például egy Azure Storage-fiókot. Mielőtt telepítené az erőforrást, exportálhatja a Resource Manager-sablon-konfigurációnak. A sablont későbbi használatra mentheti is.
 
-Számos sablon tapasztalt fejlesztők működő sablonjainak előállítása, amikor azok nem ismeri az Azure-erőforrások üzembe helyezése meg ezt a módszert.
+Számos sablon tapasztalt fejlesztők sablonjainak előállítása, amikor azok nem ismeri az Azure-erőforrások üzembe helyezése meg ezt a módszert. Sablonok exportálása a portál használatával kapcsolatos további információkért lásd: [erőforráscsoportok exportálása sablonokhoz](./manage-resource-groups-portal.md#export-resource-groups-to-templates). A másik lehetőség egy működő sablon található, a [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/).
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza az **Erőforrás létrehozása** > **Tárolás** > **Tárfiók - blob, fájl, tábla, üzenetsor** elemet.
@@ -40,8 +40,10 @@ Számos sablon tapasztalt fejlesztők működő sablonjainak előállítása, am
     ![Azure-tárfiókok létrehozása az Azure Portalon](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-portal.png)
 3. Adja meg a következő információkat:
 
-    - **Erőforráscsoport**: Válassza ki **új létrehozása**, és adja meg a kiválasztott erőforráscsoport nevét. A képernyőképen az erőforráscsoport neve *mystorage1016rg*. Erőforráscsoport egy olyan tároló, az Azure-erőforrásokhoz. Erőforráscsoport megkönnyíti az Azure-erőforrások kezeléséhez.
-    - **Név**: Adjon meg egy egyedi nevet a tárfiók. A képernyőképen ez a név a *mystorage1016*.
+    |Name (Név)|Érték|
+    |----|----|
+    |**Erőforráscsoport**|Válassza ki **új létrehozása**, és adja meg a kiválasztott erőforráscsoport nevét. A képernyőképen az erőforráscsoport neve *mystorage1016rg*. Erőforráscsoport egy olyan tároló, az Azure-erőforrásokhoz. Erőforráscsoport megkönnyíti az Azure-erőforrások kezeléséhez. |
+    |**Name (Név)**|Adjon meg egy egyedi nevet a tárfiók. A tárfiók nevének egyedinek kell lennie Azure összes, és hogy az csak kisbetűket és számokat tartalmaz. Nevének 3 – 24 karakter hosszúnak kell lennie. Ha a helyen a "a"mystorage1016"tárfióknév már foglalt" szövegű hibaüzenetet kap, próbálja meg használni  **&lt;a neve > tároló&lt;MMDD a mai dátumra >**, például  **johndolestorage1016**. További információkért lásd: [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions).|
 
     A többi tulajdonság esetén használhatja az alapértelmezett értékeket.
 
@@ -50,7 +52,7 @@ Számos sablon tapasztalt fejlesztők működő sablonjainak előállítása, am
     > [!NOTE]
     > Üzembe helyezés előtt egyes exportált sablonokat szerkeszteni szükséges.
 
-4. Válassza a képernyő alján a **Felülvizsgálat + létrehozás** lehetőséget.
+4. Válassza a képernyő alján a **Felülvizsgálat + létrehozás** lehetőséget. Ne válassza **létrehozás** a következő lépésben.
 5. Válassza az **Automatizációs sablon letöltése** lehetőséget a képernyő alján. A portál megjeleníti a létrehozott sablont:
 
     ![Sablon generálása a Portal használatával](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template.png)
@@ -59,13 +61,14 @@ Számos sablon tapasztalt fejlesztők működő sablonjainak előállítása, am
 
     Hat paraméter van definiálva. Az egyikük neve **storageAccountName**. Az előző képernyőképen a második kijelölt rész bemutatja, hogyan ebben a sablonban paraméterre hivatkozhatnak. A következő szakaszban úgy szerkeszti a sablont, hogy létrehozott nevet használjon a tárfiók neveként.
 
-    A sablonban egy Azure-erőforrás van definiálva. A típusa [Microsoft.Storage/storageAccounts]. Tekintse meg az erőforrás definiálásának módját és a definíció szerkezetét.
-6. Válassza a **Download** (Letöltés) lehetőséget. Mentse a **template.json** fájlt a letöltött csomagból a számítógépre. A következő szakaszban egy üzembehelyezési sablon eszközzel fogja szerkeszteni a sablont.
-7. A **Paraméterek** lapon tekintheti meg a paraméterekhez megadott értékeket. Jegyezze fel ezeket az értékeket, mivel a következő szakaszban, a sablon üzembe helyezésekor szükség lesz rájuk.
+    A sablonban egy Azure-erőforrás van definiálva. A típus `Microsoft.Storage/storageAccounts`. Tekintse meg, hogy az erőforrás van definiálva, és a szabályzatdefiníciók struktúrája igénybe vehet.
+6. Válassza ki **letöltése** a képernyő tetején. 
+7. Nyissa meg a letöltött zip-fájlt, és mentse **template.json** a számítógépre. A következő szakaszban egy üzembehelyezési sablon eszközzel fogja szerkeszteni a sablont.
+8. A **Paraméterek** lapon tekintheti meg a paraméterekhez megadott értékeket. Jegyezze fel ezeket az értékeket, mivel a következő szakaszban, a sablon üzembe helyezésekor szükség lesz rájuk.
 
     ![Sablon generálása a Portal használatával](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-create-storage-account-template-parameters.png)
 
-    A sablon és paraméterek fájlok együttes használatával, létrehozhat egy erőforrást, ebben az oktatóanyagban egy Azure storage-fiókot.
+    A sablon és paraméterek fájlt is használ, létrehozhat egy erőforrást, ebben az oktatóanyagban egy Azure storage-fiókot.
 
 ## <a name="edit-and-deploy-the-template"></a>Sablon szerkesztése és üzembe helyezése
 
@@ -81,21 +84,23 @@ Az Azure megköveteli, hogy minden Azure-szolgáltatás egyedi névvel rendelkez
 4. Kattintson a **Létrehozás** gombra.
 5. Válassza a **Saját sablon készítése a szerkesztőben** lehetőséget.
 6. Válassza a **Fájl betöltése** lehetőséget, majd az útmutatásokat követve töltse be az előző szakaszban letöltött template.json fájlt.
-7. Adjon hozzá egy változót, amint az alábbi képernyőképen látható:
+7. Hajtsa végre a következő három módosításokat a sablonhoz:
 
-    ```json
-    "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'standardsa')]"
-    ```
     ![Azure Resource Manager-sablonok](./media/resource-manager-quickstart-create-templates-use-the-portal/azure-resource-manager-template-tutorial-edit-storage-account-template-revised.png)
 
-    Két sablonokban használható függvények használhatók: `concat()` és `uniqueString()`.
+    - Távolítsa el a **storageAccountName** paraméter az előző képernyőképen látható módon.
+    - Adjon hozzá egy variable nevű **storageAccountName** az előző képernyőképen látható módon:
 
-8. Távolítsa el az előző képernyőképen kiemelt **storageAccountName** paramétert.
-9. Frissítse a **Microsoft.Storage/storageAccounts** erőforrás név elemét, és a paraméter helyett használja az újonnan definiált változót:
+        ```json
+        "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'storage')]"
+        ```
 
-    ```json
-    "name": "[variables('storageAccountName')]",
-    ```
+        Két sablonokban használható függvények használhatók: `concat()` és `uniqueString()`.
+    - Frissítse a **Microsoft.Storage/storageAccounts** erőforrás név elemét, és a paraméter helyett használja az újonnan definiált változót:
+
+        ```json
+        "name": "[variables('storageAccountName')]",
+        ```
 
     A végső sablon így fog kinézni:
 
@@ -121,7 +126,7 @@ Az Azure megköveteli, hogy minden Azure-szolgáltatás egyedi névvel rendelkez
             }
         },
         "variables": {
-            "storageAccountName": "[concat(uniquestring(resourceGroup().id), 'standardsa')]"
+            "storageAccountName": "[concat(uniqueString(subscription().subscriptionId), 'storage')]"
         },
         "resources": [
             {
@@ -143,17 +148,18 @@ Az Azure megköveteli, hogy minden Azure-szolgáltatás egyedi névvel rendelkez
         "outputs": {}
     }
     ```
-7. Kattintson a **Mentés** gombra.
-8. Írja be a következő értékeket:
+8. Kattintson a **Mentés** gombra.
+9. Írja be a következő értékeket:
 
-    - **Erőforráscsoport**: válasszon **új létrehozása** és nevezze el az erőforráscsoport egyedi nevére.
-    - **Hely**: válasszon egy helyet az erőforráscsoportnak. Ha például **USA középső RÉGIÓJA**. 
-    - **Hely**: válasszon egy helyet a tárfióknak. Ha például **USA középső RÉGIÓJA**.
-    - **Fiók típusa**: Adja meg **Standard_LRS** ebben a rövid útmutatóban.
-    - **Milyen**: Adja meg **StorageV2** ebben a rövid útmutatóban.
-    - **Hozzáférési szint**: Adja meg **interaktív** ebben a rövid útmutatóban.
-    - **Csak HTTPS-forgalom engedélyezett**.  Ennél a rövid útmutatónál válassza a **true** (igaz) értéket.
-    - **Elfogadom a fenti feltételeket és kikötéseket**: (kiválasztás)
+    |Name (Név)|Érték|
+    |----|----|
+    |**Erőforráscsoport**|Válassza ki az előző szakaszban létrehozott az erőforráscsoport nevét. |
+    |**Hely**|Válassza ki a tárfiók helyét. Ha például **USA középső RÉGIÓJA**. |
+    |**Fiók típusa**|Adja meg **Standard_LRS** ebben a rövid útmutatóban. |
+    |**Kind**|Adja meg **StorageV2** ebben a rövid útmutatóban. |
+    |**Hozzáférési szint**|Adja meg **interaktív** ebben a rövid útmutatóban. |
+    |**Csak HTTPS-forgalom engedélyezve van**| Ennél a rövid útmutatónál válassza a **true** (igaz) értéket. |
+    |**Elfogadom a feltételeket és a fenti feltételeket**|(válasszon)|
 
     Az alábbi képen egy minta üzembe helyezés látható:
 
