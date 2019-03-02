@@ -11,13 +11,13 @@ author: dphansen
 ms.author: davidph
 ms.reviewer: ''
 manager: cgronlun
-ms.date: 02/12/2019
-ms.openlocfilehash: 61c4edc5ec9c690944047ce67f619f0f69f62f6c
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.date: 03/01/2019
+ms.openlocfilehash: 033b853537ade927e4bb7e47c92efe1acff226d9
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236736"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247392"
 ---
 # <a name="quickstart-use-machine-learning-services-with-r-in-azure-sql-database-preview"></a>Gyors útmutató: Machine Learning-szolgáltatások (az r nyelv) használata az Azure SQL Database (előzetes verzió)
 
@@ -29,8 +29,12 @@ Machine Learning-szolgáltatások, R, a Microsoft nagyvállalati R-csomagok az �
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot](https://azure.microsoft.com/free/) megkezdése előtt.
 
-> [!NOTE]
-> Machine Learning-szolgáltatások (az r nyelv) az Azure SQL Database jelenleg nyilvános előzetes verzióban érhető el. [Regisztráljon az előzetes verzió](sql-database-machine-learning-services-overview.md#signup).
+> [!IMPORTANT]
+> Az Azure SQL Database Machine Learning-szolgáltatások jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
+> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+>
+> [Regisztráljon az előzetes verzió](sql-database-machine-learning-services-overview.md#signup).
 
 ## <a name="prerequisites"></a>Előfeltételek
 

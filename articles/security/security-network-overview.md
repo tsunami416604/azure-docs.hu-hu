@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 38a69327e5aaa758dc70ca950956d0bdc8001a4f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 6fd25bbf6910140a338267c51955a817d0195939
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818085"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247188"
 ---
 # <a name="azure-network-security-overview"></a>Azure-hálózat biztonsági áttekintése
 
@@ -324,7 +324,7 @@ A Microsoft biztosítja a DDoS protection néven **alapszintű** az Azure Platfo
 * **Adaptív hangolás:** Intelligens adatforgalom-profilkészítés képes megtanulni az alkalmazás forgalmának idővel, és kiválasztja, és frissíti a profilt, amely a szolgáltatás a legmegfelelőbb. A profil módosítja, a forgalom változik az idő múlásával. Réteg 3-7. rétegbeli védelem: Teljes verem DDoS elleni védelem, biztosít a webalkalmazás-tűzfal együtt használva.
 * **Széles körű kockázatcsökkentési beosztás:** Több mint 60 különböző támadási típusok enyhíthető, globális kapacitással, a legnagyobb ismert DDoS-támadásokkal szembeni védelem érdekében.
 * **A támadás metrikák:** Minden támadástól összesített mérőszámok Azure monitoron keresztül érhetők el.
-* **A támadás riasztás:** Riasztások konfigurálhatók a kezdő és a egy támadás leállítása és a támadás időtartama alatt a beépített támadási mérőszámok segítségével. Riasztások integrálható a működési szoftver a Microsoft Azure Log Analytics, Splunk, Azure Storage, e-mailek és az Azure Portalon.
+* **A támadás riasztás:** Riasztások konfigurálhatók a kezdő és a egy támadás leállítása és a támadás időtartama alatt a beépített támadási mérőszámok segítségével. Riasztások integrálható a működési szoftver a Microsoft Azure Monitor naplók, Splunk, Azure Storage, e-mailek és az Azure Portalon.
 * **A Cost garancia:**  Adatátvitel – és az alkalmazás horizontális felskálázás szolgáltatásokhoz biztosított kreditek a dokumentált DDoS-támadások.
 * **DDoS gyors, rugalmas** DDoS Protection Standard használó ügyfelek mostantól hozzáférhet a Rapid Response team aktív támadás során. A támadás vizsgálat során egy támadás és a támadás utáni elemzés egyéni megoldások DRR segíthet.
 
@@ -401,4 +401,4 @@ Naplózási hálózati szintjén minden olyan hálózati biztonsági forgatókö
 Is [Microsoft Power BI](https://powerbi.microsoft.com/what-is-power-bi/), egy hatékony adatvizualizációs eszköz, megtekintése és a naplók elemzéséhez.
 További információ:
 
-* [Naplóelemzés hálózati biztonsági csoportok (NSG-k)](../virtual-network/virtual-network-nsg-manage-log.md)
+* [Hálózati biztonsági csoportok (NSG-k) az Azure Monitor naplóira](../virtual-network/virtual-network-nsg-manage-log.md)

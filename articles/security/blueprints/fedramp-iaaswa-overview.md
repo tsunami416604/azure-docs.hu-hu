@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 6dd413a6b6550e18551db1105d306f8a0bdaf9c2
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: daa81f4ec14a0e022ea22948324478b8e9cc3ce3
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106749"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247358"
 ---
 # <a name="azure-security-and-compliance-blueprint-iaas-web-application-for-fedramp"></a>Azure biztonsági és megfelelőségi terv: IaaS Web Application for FedRAMP
 
@@ -72,8 +72,7 @@ Ez a megoldás a következő Azure-szolgáltatásokat használ. Az üzembe helye
 - Azure Key Vault
 - Azure Active Directory (Azure AD)
 - Azure Resource Manager
-- Log Analytics
-- Azure Monitor
+- Az Azure Monitor (naplók)
 
 ## <a name="deployment-architecture"></a>Üzembe helyezési architektúrája
 
@@ -148,11 +147,11 @@ A következő technológiákat biztosítja identitás az eszközkezelési funkci
 
 ### <a name="logging-and-auditing"></a>Naplózás és vizsgálat
 
-A log Analytics biztosít széles körű naplózását, a rendszer és a felhasználói tevékenységek, valamint a helyrendszer állapotát. A [Log Analytics](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) megoldás gyűjti és elemzi az adatokat az Azure-erőforrások által létrehozott és a helyszíni környezetekben.
+Az Azure Monitor naplóira biztosít széles körű naplózását, a rendszer és a felhasználói tevékenységek, valamint a helyrendszer állapotát. A [naplózza az Azure Monitor](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) megoldás gyűjti és elemzi az adatokat az Azure-erőforrások által létrehozott és a helyszíni környezetekben.
 
 - **Tevékenységnaplók:**  [A Tevékenységnaplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) adjon meg egy előfizetéshez tartozó erőforrásokon végrehajtott műveletekkel kapcsolatos információk. A Tevékenységnaplók segítségével határozza meg a műveletet kezdeményező, az eseményt, és állapot ideje.
 - **Diagnosztikai naplók:**  [Diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) minden erőforrás által kibocsátott az összes napló is. Ezek a naplók például a Windows rendszer-eseménynaplói, az Azure storage-naplók, a Key Vault-naplók és az Application Gateway hozzáférés és a tűzfal a naplókat.
-- **Jelentkezzen be az archiválás:**  Az összes diagnosztikai naplók írni egy központosított, titkosított csatornákon történik az Azure storage-fiókját archiválási. A megőrzési felhasználó által konfigurálható, mentése és 730 nap között, a megőrzési a szervezet konkrét követelményeinek. Ezek a naplók csatlakozhat Azure Log Analytics feldolgozási, tárolására és-irányítópult jelentéseit.
+- **Jelentkezzen be az archiválás:**  Az összes diagnosztikai naplók írni egy központosított, titkosított csatornákon történik az Azure storage-fiókját archiválási. A megőrzési felhasználó által konfigurálható, mentése és 730 nap között, a megőrzési a szervezet konkrét követelményeinek. Ezek a naplók csatlakozhat az Azure Monitor naplóira feldolgozásához, tárolásához és-irányítópult jelentéseit.
 
 Ezenkívül a következő figyelési megoldásokat, ez az architektúra részeként települnek. Ne feledje, hogy az ügyfél felelőssége, hogy ezek a megoldások, a FedRAMP biztonsági vezérlők igazítása konfigurálása:
 -   [Az AD Assessmenthez](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Az Active Directory állapotának ellenőrzése megoldás a kockázat és kiszolgálói környezetek állapotát értékeli a rendszeres időközönkénti, és a telepített kiszolgálói infrastruktúra vonatkozó javaslatok rangsorolt listáját tartalmazza.

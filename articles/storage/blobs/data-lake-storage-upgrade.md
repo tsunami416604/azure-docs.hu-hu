@@ -8,12 +8,12 @@ ms.author: normesta
 ms.date: 02/07/2019
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: d07e11d005ac05c9bf048a48c5865885813707cb
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: d6644cf923d439a9f6ef13b53a84ff6626f04ade
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56874545"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247460"
 ---
 # <a name="upgrade-your-big-data-analytics-solutions-from-azure-data-lake-storage-gen1-to-azure-data-lake-storage-gen2"></a>A big data-elemzési megoldások az Azure Data Lake Storage Gen1 frissítése az Azure Data Lake Storage Gen2-re
 
@@ -45,7 +45,7 @@ Emellett nincsenek szerveznie összetevők üzembe helyezése, kezelése és eze
 
 **2. ábra** szemlélteti, hogyan összetevőket hajtják végre az egyes technológiák használatával.
 
-A tárolása funkciókat **Figure1** Data Lake Storage Gen1 által biztosított (**2. ábra**). Vegye figyelembe, hogy hogyan az adatfolyam különböző összetevői használják a Data Lake Storage Gen1 REST API-k vagy a Java SDK használatával. Azt is vegye figyelembe, hogyan kommunikáljanak az általános funkciókat összetevők Data Lake Storage Gen1. A kiépítési összetevő használja az Azure erőforráscsoport-sablonok, mivel a figyelés összetevő, amely használja a Log Analytics már használja az operatív adatok, Data Lake Storage Gen1 érkező.
+A tárolása funkciókat **Figure1** Data Lake Storage Gen1 által biztosított (**2. ábra**). Vegye figyelembe, hogy hogyan az adatfolyam különböző összetevői használják a Data Lake Storage Gen1 REST API-k vagy a Java SDK használatával. Azt is vegye figyelembe, hogyan kommunikáljanak az általános funkciókat összetevők Data Lake Storage Gen1. A kiépítési összetevő használja az Azure erőforráscsoport-sablonok, mivel a figyelés összetevő, amely használja az Azure Monitor naplóira már használja az operatív adatok, Data Lake Storage Gen1 érkező.
 
 Egy megoldás használatával a Data Lake Storage Gen1 Data Lake Storage Gen2-re a frissítéshez kell másolnia az adatokat és a metaadatok, a data-folyamatok ismét hook, és ezt követően minden összetevője kell lennie képesek együttműködni a Data Lake Storage Gen2.
 

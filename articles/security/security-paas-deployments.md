@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: terrylan
-ms.openlocfilehash: e845adc3aad21e62009ee9b99dbd65bcff794bd9
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 497fc1dd5691b5aa33207c6a3943a51c473d2f6c
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117799"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247205"
 ---
 # <a name="securing-paas-deployments"></a>PaaS üzemelő példányainak biztonságossá tétele
 
@@ -153,7 +153,7 @@ Figyelés gyűjtése és elemzése a teljesítmény, egészségügyi és az alka
 
 Használat [Azure Application Insights](https://azure.microsoft.com/documentation/services/application-insights) figyelése rendelkezésre állását, teljesítményét és használatát az alkalmazás, akár a felhőben vagy a helyszínen vannak tárolva. Application Insights segítségével gyorsan azonosíthatja és diagnosztizálhatja a hibákat az alkalmazásban egy felhasználó jelenti azokat várakozás nélkül. A gyűjtött információk alapján megalapozott döntéseket hozhat az alkalmazás karbantartásával és továbbfejlesztésével kapcsolatban.
 
-Az Application Insights kiterjedt eszközkészlettel rendelkezik az általa gyűjtött adatok feldolgozásához. Az Application Insights egy általános adattárban tárolja az adatait. Képes a különféle közös funkciók, például a riasztások, irányítópultok és részletes elemzés előnyeinek kihasználására a Log Analytics lekérdezési nyelvének használatával.
+Az Application Insights kiterjedt eszközkészlettel rendelkezik az általa gyűjtött adatok feldolgozásához. Az Application Insights egy általános adattárban tárolja az adatait. Előnyeit, például a riasztások, irányítópultok és a Kusto-lekérdezés nyelvvel mélyelemzés a megosztott funkciót is igénybe vehet.
 
 
 

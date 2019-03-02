@@ -12,13 +12,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: 4da18fffc98367f24ec95bd27617e7638e3d5705
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 03/01/2019
+ms.openlocfilehash: 3e31842cf4b6afa2117ea71c644b0376e8434bd0
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003669"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247307"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>Az SQL Database-ügyfélalkalmazások SQL hibakódok: Adatbázis-csatlakozási hibák és egyéb problémák
 
@@ -58,7 +58,7 @@ A következő hibák átmenetiek, és az alkalmazáslogikának meg kell ismétel
 | 4060 |16 |Nem nyitható meg az adatbázis "%.&#x2a;ls" a bejelentkezés által kért. A bejelentkezés sikertelen volt. |
 | 40197 |17 |A szolgáltatás a kérelem feldolgozása hibát észlelt. Kérjük, próbálkozzon újból. Hibakód: %d.<br/><br/>Ezt a hibaüzenetet kapja, amikor a szolgáltatás szoftver vagy hardver verziófrissítések, hardver-meghibásodásokkal vagy bármely más feladatátvételi problémák miatt nem működik. Az üzenet hiba 40197 beágyazva hibakód: (%d) milyen típusú hiba vagy feladatátvétel történt további információkat tartalmaz. Néhány példa a kódok vannak beágyazva az üzenet hiba 40197 hiba 40020, 40143, 40166 és 40540.<br/><br/>Az SQL Database-kiszolgáló automatikusan újracsatlakozik kapcsolódik, kifogástalan állapotú másolatot készít az adatbázisról. Az alkalmazás kell a tényleges 40197, hibanaplójában található hibaelhárítási beágyazott hibakód (%d), és próbáljon újra csatlakozni az SQL Database mindaddig, amíg az erőforrás áll rendelkezésre, és újra létrejön a kapcsolat. |
 | 40501 |20 |A szolgáltatás jelenleg elfoglalt. Ismételje meg a kérelmet 10 másodperc múlva. Incidens azonosítója: %ls. Hibakód: %d.<br/><br/>További információkért lásd:<br/>• [Azure SQL Database erőforrás-korlátozások](sql-database-service-tiers-dtu.md). |
-| 40613 |17 |Adatbázis '%.&#x2a;ls' kiszolgáló '%.&#x2a;ls' már nem érhető el. Próbálkozzon újra később a kapcsolatot. Ha a probléma továbbra is fennáll, forduljon az ügyfélszolgálathoz, és adja meg azokat a munkamenet nyomkövetési Azonosítóját: '%.&#x2a;ls'. |
+| 40613 |17 |Adatbázis '%.&#x2a;ls' kiszolgáló '%.&#x2a;ls' már nem érhető el. Próbálkozzon újra később a kapcsolatot. Ha a probléma továbbra is fennáll, forduljon az ügyfélszolgálathoz, és adja meg azokat a munkamenet nyomkövetési Azonosítóját: '%.&#x2a;ls'.<br/><br/> Ez a hiba akkor fordulhat elő, ha már van egy meglévő dedikált rendszergazdai kapcsolat (DAC) létrejött az adatbázishoz. |
 | 49918 |16 |Nem tudja feldolgozni a kérést. Nincs elég erőforrás a kérelem feldolgozása.<br/><br/>A szolgáltatás jelenleg elfoglalt. Próbálkozzon újra később a kérelmet. |
 | 49919 |16 |Nem lehet folyamatot létrehozni vagy frissíteni a kérés. Túl sok létrehozási vagy frissítési művelet fut. a előfizetés "% ld".<br/><br/>A szolgáltatás nem foglalt feldolgozása több létre, vagy nem frissíthető az előfizetés vagy a kiszolgáló kéréseket. Erőforrás-optimalizálás kérelmek jelenleg le vannak tiltva. Lekérdezés [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) a függőben lévő műveletek. Várjon, amíg a függőben lévő létrehozási vagy frissítési kérelem befejeződött vagy töröljön egy függőben lévő kérelmet, és ismételje meg később a kérelmet. |
 | 49920 |16 |Nem tudja feldolgozni a kérést. Túl sok művelet fut. a előfizetéshez tartozó "% ld".<br/><br/>A szolgáltatás kérelmeinek feldolgozásával elfoglalva több ehhez az előfizetéshez. Erőforrás-optimalizálás kérelmek jelenleg le vannak tiltva. Lekérdezés [sys.dm_operation_status](https://msdn.microsoft.com/library/dn270022.aspx) művelet állapotát. Várjon, amíg a függőben lévő kérések befejeződött vagy töröljön egy függőben lévő kérelmet, és ismételje meg később a kérelmet. |

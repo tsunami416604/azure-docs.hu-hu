@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: c66f0e67b09dab15431a8c7c10db1c820038dea6
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 7c76f7c5810370fa396b81bcc16e7e2204393bc1
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984985"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247545"
 ---
 # <a name="introduction-to-azure-security"></a>Bevezetés az Azure Security
 ## <a name="overview"></a>Áttekintés
@@ -75,7 +75,7 @@ A beépített funkciók hat (6) funkcionális területein vannak rendszerezve: M
 Ez a szakasz tartalmazza a legfontosabb jellemzőkkel a biztonsági műveletek kapcsolatos további információkat, és ezek a képességek kapcsolatos összegző információkat.
 
 ### <a name="security-and-audit-dashboard"></a>Biztonsági és auditálási irányítópultján
-A [biztonsági és auditálási megoldás](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) nyújt átfogó képet kaphat a szervezet informatikai biztonsági állapotát a [beépített keresési lekérdezések](https://blogs.technet.microsoft.com/msoms/2016/01/21/easy-microsoft-operations-management-suite-search-queries/) , figyelmet igénylő jelentős problémákat. A [biztonsági és auditálási](https://technet.microsoft.com/library/mt484091.aspx) mindent a Log Analytics biztonsággal kapcsolatos irányítópult a kezdőképernyőn. A számítógépek biztonsági állapotát magas szintű betekintést biztosít. Olyan funkciót is kínál, amellyel megjeleníthető az elmúlt 24 óra, 7 nap vagy bármely más egyéni időszak összes eseménye.
+A [biztonsági és auditálási megoldás](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) nyújt átfogó képet kaphat a szervezet informatikai biztonsági állapotát a [beépített keresési lekérdezések](https://blogs.technet.microsoft.com/msoms/2016/01/21/easy-microsoft-operations-management-suite-search-queries/) , figyelmet igénylő jelentős problémákat. A [biztonsági és auditálási](https://technet.microsoft.com/library/mt484091.aspx) mindent az Azure Monitor naplóira biztonsággal kapcsolatos irányítópult a kezdőképernyőn. A számítógépek biztonsági állapotát magas szintű betekintést biztosít. Olyan funkciót is kínál, amellyel megjeleníthető az elmúlt 24 óra, 7 nap vagy bármely más egyéni időszak összes eseménye.
 
 Emellett konfigurálhatja a biztonság és megfelelőség a [automatikusan az adott műveletek végrehajtására](https://blogs.technet.microsoft.com/robdavies/2016/04/20/simple-look-at-oms-alert-remediation-with-runbooks-part-1/) egy adott esemény észlelése esetén.
 
@@ -94,10 +94,10 @@ Ha összeomlik, sikertelen vagy teljesítménnyel kapcsolatos problémák, a tel
 ### <a name="azure-monitor"></a>Azure Monitor
 [Az Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) Vizualizáció, lekérdezés, útválasztás, riasztások, automatikus méretezés és mindkét adatokon automation kínál az Azure-infrastruktúra ([tevékenységnapló](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)), és minden egyes Azure-erőforrás ([diagnosztikai Naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)). Az Azure Monitor használatával figyelmeztet a biztonsággal kapcsolatos eseményeket, amelyek akkor jönnek létre, az Azure-naplók.
 
-### <a name="log-analytics"></a>Log Analytics
-[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) – egy IT-felügyeleti megoldást kínál a helyszíni és külső felhő alapú infrastruktúra (például az AWS) Azure-erőforrások mellett is. Adatokat az Azure Monitor átirányíthatók közvetlenül a Log Analytics szolgáltatásba, így a teljes környezet egy helyen láthatja metrikák és naplók.
+### <a name="azure-monitor-logs"></a>Az Azure Monitor naplóira
+[Az Azure Monitor naplóira](https://azure.microsoft.com/documentation/services/log-analytics/) – egy IT-felügyeleti megoldást kínál a helyszíni és külső felhő alapú infrastruktúra (például az AWS) Azure-erőforrások mellett is. Adatok az Azure Monitor átirányíthatók közvetlenül az Azure Monitor naplóira, így a teljes környezet egy helyen láthatja metrikák és naplók.
 
-A log Analytics lehet az eszköz lehetővé teszi nagy mennyiségű, biztonsággal kapcsolatos bejegyzéseket a rugalmas lekérdezés megközelítéssel gyorsan kereshet egy hasznos eszköz a törvényszéki és egyéb biztonsági elemzés. Emellett a helyszíni [tűzfalakról és proxykról naplók exportálhatók az Azure-bA és elemzése a Log Analytics használatával elérhetővé.](https://docs.microsoft.com/azure/log-analytics/log-analytics-proxy-firewall)
+Az Azure Monitor naplóira lehet az eszköz lehetővé teszi nagy mennyiségű, biztonsággal kapcsolatos bejegyzéseket a rugalmas lekérdezés megközelítéssel gyorsan kereshet egy hasznos eszköz a törvényszéki és egyéb biztonsági elemzés. Emellett a helyszíni [tűzfalakról és proxykról naplók exportálhatók az Azure-bA és elérhetővé az Azure Monitor-naplók használatával elemzéshez.](https://docs.microsoft.com/azure/log-analytics/log-analytics-proxy-firewall)
 
 ### <a name="azure-advisor"></a>Azure Advisor
 [Az Azure Advisor](https://docs.microsoft.com/azure/advisor/) van egy személyre szabott felhőalapú tanácsadó, amely segítséget nyújt az Azure-környezetek optimalizálására. A program elemzi az erőforrás-konfigurációs és -használati telemetriákat, Elősegítő megoldásokat javasol a [teljesítmény](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations), [biztonsági](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations), és [magas rendelkezésre állású](https://docs.microsoft.com/azure/advisor/advisor-high-availability-recommendations) az erőforrások keresése közben lehetőségeket a [csökkentheti a teljes Azure költségek](https://docs.microsoft.com/azure/advisor/advisor-cost-recommendations). Az Azure Advisor biztosít a biztonsági javaslatok, ami jelentősen javíthatja a végzi az üzembe helyezést az Azure-megoldások az általános biztonsági állapotát. Ezekkel az ajánlásokkal állítják a által végzett biztonsági elemzés [az Azure Security Center.](https://docs.microsoft.com/azure/security-center/security-center-intro)

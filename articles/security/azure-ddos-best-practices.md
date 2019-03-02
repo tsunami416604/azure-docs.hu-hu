@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 9f837a5dbea15b159a226b12c034add1dcf69834
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 11f3dcefd283ada00e915c2d6cb8abf654590ec1
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117850"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247341"
 ---
 # <a name="azure-ddos-protection-best-practices-and-reference-architectures"></a>Az Azure DDoS Protection: Ajánlott eljárások és referenciaarchitektúrák
 
@@ -126,7 +126,7 @@ Az Azure DDoS Protection alapszintű szolgáltatásnak köszönhetően az ügyfe
 
 #### <a name="ddos-protection-telemetry-monitoring-and-alerting"></a>A DDoS Protection telemetriát, figyelés és riasztások
 
-A DDoS Protection Standard tesz elérhetővé részletes telemetria keresztül [Azure Monitor](../azure-monitor/overview.md) DDoS-támadás idejére. A DDoS Protection használó Azure Monitor-metrikák riasztásokat lehet konfigurálni. Naplózás integrálhatók a Splunk (az Azure Event Hubs), az Azure Log Analytics és az Azure Storage, a speciális elemzés a Azure Monitor Diagnostics felületéről.
+A DDoS Protection Standard tesz elérhetővé részletes telemetria keresztül [Azure Monitor](../azure-monitor/overview.md) DDoS-támadás idejére. A DDoS Protection használó Azure Monitor-metrikák riasztásokat lehet konfigurálni. Naplózás integrálhatók a Splunk (az Azure Event Hubs), az Azure Monitor naplóira és az Azure Storage, a speciális elemzés a Azure Monitor Diagnostics felületéről.
 
 ##### <a name="ddos-mitigation-policies"></a>DDoS-kockázatcsökkentést házirendek
 

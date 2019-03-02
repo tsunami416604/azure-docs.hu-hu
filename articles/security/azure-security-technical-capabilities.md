@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: f615c4ca9ffc56daafcedd711f27672e0855e4fa
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 22160a46b0c1d8fe53abe20b3d8a1b83891de5da
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56883947"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247579"
 ---
 # <a name="azure-security-technical-capabilities"></a>Az Azure biztonságtechnikai képességek
 
@@ -398,19 +398,19 @@ Emellett az Ellenőrzőlista:
 
 Az Azure Operational Security olyan keretrendszer, amely magában foglalja a különböző képességeket, amelyek a egyedülálló rendszereiből, például a Microsoft biztonsági fejlesztési életciklus (SDL), a Microsoft Security Response központ program keresztül szerzett ismeretek épül , és a kiberbiztonsági fenyegetések világának.
 
-### <a name="microsoft-azure-log-analytics"></a>A Microsoft Azure Naplóelemzés
+### <a name="microsoft-azure-monitor"></a>Microsoft Azure Monitor
 
-[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) az IT-felügyeleti megoldást kínál a hibrid felhő áll. Önállóan használva vagy kiterjesztése a System Center-telepítéssel, Log Analytics a legnagyobb rugalmasságot és vezérlést biztosít az infrastruktúra felhőalapú kezelését.
+[Az Azure Monitor](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) az IT-felügyeleti megoldást kínál a hibrid felhő áll. Használható önmagában, vagy kiterjesztése a System Center-telepítéssel, az Azure Monitor naplóira a legnagyobb rugalmasságot és vezérlést biztosít az infrastruktúra felhőalapú kezelését.
 
-![Log Analytics](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig8.png)
+![Azure Monitor](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig8.png)
 
-A Log Analytics-szel a felhőhöz, beleértve a helyszíni, Azure, az AWS, a Windows Server, Linux, VMware és OpenStack, mint az adatbázisszinten megoldások alacsonyabb költséggel lévő bármely példány segítségével kezelheti. A felhő-és felhőközpontú világ számára készült, a Log Analytics új megközelítést kínál az a vállalat, amely a leggyorsabb és leginkább költséghatékony megoldást új üzleti kihívásokat, valamint új terheléseket, alkalmazások és a felhőalapú környezetek kezeléséhez.
+Az Azure monitorral bármilyen felhőhöz, beleértve a helyszíni, Azure, az AWS, a Windows Server, Linux, VMware és OpenStack, mint az adatbázisszinten megoldások alacsonyabb költséggel lévő bármely példány is kezelheti. A felhő-és felhőközpontú világ számára készült, az Azure Monitor új megközelítést kínál az a vállalat, amely a leggyorsabb és leginkább költséghatékony megoldást új üzleti kihívásokat, valamint új terheléseket, alkalmazások és a felhőalapú környezetek kezeléséhez.
 
-### <a name="log-analytics"></a>Log Analytics
+### <a name="azure-monitor-logs"></a>Az Azure Monitor naplóira
 
-[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics) adatokat gyűjt a felügyelt erőforrások egy központi tárházba figyelési szolgáltatásokat biztosít. Ezek az adatok lehetnek események, teljesítményadatok vagy az API segítségével biztosított egyéni adatok. Az összegyűjtésüket követően az adatok használhatók riasztáshoz, elemzéshez vagy exportáláshoz.
+[Az Azure Monitor naplóira](https://azure.microsoft.com/documentation/services/log-analytics) adatokat gyűjt a felügyelt erőforrások egy központi tárházba figyelési szolgáltatásokat biztosít. Ezek az adatok lehetnek események, teljesítményadatok vagy az API segítségével biztosított egyéni adatok. Az összegyűjtésüket követően az adatok használhatók riasztáshoz, elemzéshez vagy exportáláshoz.
 
-![Log Analytics](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig9.png)
+![Az Azure Monitor naplóira](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig9.png)
 
 Ezzel a módszerrel konszolidálhatja a különféle forrásokból származó adatokat, így kombinálhatja az Azure-szolgáltatásokat a meglévő adatokat a helyszíni környezetben. Továbbá egyértelműen elkülöníti az adatok gyűjtését az adatokon végzett műveletektől, így az összes művelet végrehajtható a különféle adatokon.
 

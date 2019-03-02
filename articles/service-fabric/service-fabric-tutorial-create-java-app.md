@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 2ef38e34403a9c04eac5132c66682a045a589cf8
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 3309690212f8c2e92c4a2328721624a83928f315
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733061"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247477"
 ---
 # <a name="tutorial-create-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service-on-service-fabric"></a>Oktatóanyag: A Service Fabric-alkalmazások egy Java Web API kezelőfelületi szolgáltatás és a egy állapotalapú háttérszolgáltatás létrehozása
 
@@ -29,14 +29,6 @@ Ez az oktatóanyag egy sorozat első része. Az útmutató elvégzése után ren
 
 ![Szavazóalkalmazás – helyi](./media/service-fabric-tutorial-create-java-app/votingjavalocal.png)
 
-A sorozat első részében a következőkkel ismerkedhet meg:
-
-> [!div class="checklist"]
-> * Állapotalapú megbízható Java-szolgáltatás létrehozása
-> * Állapot nélküli Java-webalkalmazásszolgáltatás létrehozása
-> * Szolgáltatás távelérésének lehetővé tétele az állapotalapú szolgáltatással folytatott kommunikációhoz
-> * Alkalmazás üzembe helyezése helyi Service Fabric-fürtön
-
 Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > [!div class="checklist"]
 > * Service Fabric Reliable Services Java-alkalmazás létrehozása
@@ -44,6 +36,15 @@ Ebben az oktatóanyag-sorozatban az alábbiakkal ismerkedhet meg:
 > * [Alkalmazás üzembe helyezése egy Azure-fürtön](service-fabric-tutorial-java-deploy-azure.md)
 > * [Figyelés és diagnosztika beállítása az alkalmazáshoz](service-fabric-tutorial-java-elk.md)
 > * [CI/CD beállítása](service-fabric-tutorial-java-jenkins.md)
+
+
+A sorozat első részében a következőkkel ismerkedhet meg:
+
+> [!div class="checklist"]
+> * Állapotalapú megbízható Java-szolgáltatás létrehozása
+> * Állapot nélküli Java-webalkalmazásszolgáltatás létrehozása
+> * Szolgáltatás távelérésének lehetővé tétele az állapotalapú szolgáltatással folytatott kommunikációhoz
+> * Alkalmazás üzembe helyezése helyi Service Fabric-fürtön
 
 ## <a name="prerequisites"></a>Előfeltételek
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2019
 ms.author: monhaber
-ms.openlocfilehash: 5fd885acc4294ae9f370d3becd0ad8cfb7935193
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 312e6c3c102946bcd19247f0730369dc7d0c8aba
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992362"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247426"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Security Center – gyakori kérdések
 Ez a GYIK az Azure Security Center egy szolgáltatás, amellyel megelőzését, észlelését és háríthatja el a fenyegetéseket átláthatóbbá és a Microsoft Azure-erőforrások kézben kapcsolatos kérdésekre ad választ.
@@ -54,8 +54,8 @@ Lásd: [engedélyek az Azure Security Centerben](security-center-permissions.md)
 ## <a name="data-collection-agents-and-workspaces"></a>Adatgyűjtés, az ügynökök és a-munkaterületek
 A Security Center adatokat gyűjt az Azure-beli virtuális gépek (VM) és a nem Azure-beli számítógépekről a biztonsági rések és fenyegetések monitorozásához. Az adatgyűjtés a Microsoft Monitoring Agent segítségével történik, amely a biztonsághoz kapcsolódó különböző konfigurációkat és eseménynaplókat olvas be a gépről, és elemzés céljából átmásolja az adatokat az Ön munkaterületére.
 
-### <a name="am-i-billed-for-log-analytics-on-the-workspaces-created-by-security-center"></a>Kell fizetnem a Security Center által létrehozott munkaterületet a Log Analytics?
-Nem. Security Center által létrehozott munkaterületek amíg megtörténik a számlázást, a csomópontonkénti Log Analytics konfigurálása nem díjkötelesek a Log Analytics. A Security Center minden esetben elszámolt díj attól a Security Center biztonsági házirend és a megoldások a munkaterülethez telepítve:
+### <a name="am-i-billed-for-azure-monitor-logs-on-the-workspaces-created-by-security-center"></a>Kell fizetnem az Azure Monitor-naplók a Security Center által létrehozott munkaterületek a?
+Nem. Security Center által létrehozott munkaterületek amíg konfigurálása az Azure Monitor-naplók csomópont számlázás, nem terheli Azure Monitor naplók. A Security Center minden esetben elszámolt díj attól a Security Center biztonsági házirend és a megoldások a munkaterülethez telepítve:
 
 - **Ingyenes szint** – Security Center lehetővé teszi, hogy a "SecurityCenterFree" megoldást az alapértelmezett munkaterületre. Az ingyenes szint nem számlázzuk ki.
 - **Standard szintű** – Security Center lehetővé teszi, hogy a "Security" megoldást az alapértelmezett munkaterületre.
@@ -63,9 +63,11 @@ Nem. Security Center által létrehozott munkaterületek amíg megtörténik a s
 További információ a díjszabásról lásd: [a Security Center díjszabási](https://azure.microsoft.com/pricing/details/security-center/). A díjszabási lapon biztonsági adattárolásban és az időarányos számlázásban 2017 júniusától módosításai megoldást.
 
 > [!NOTE]
-> A Security Center által létrehozott munkaterület tarifacsomagját a Log Analytics nincs hatással a Security Center a számlázás.
+> A Security Center által létrehozott munkaterület tarifacsomagját a log analytics nincs hatással a Security Center a számlázás.
 >
 >
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ### <a name="what-qualifies-a-vm-for-automatic-provisioning-of-the-microsoft-monitoring-agent-installation"></a>A Microsoft Monitoring Agent telepítése automatikus kiépítése milyen jogosult egy virtuális Gépet?
 Windows vagy Linux rendszerű IaaS virtuális gépek jogosultak, ha:
@@ -217,7 +219,7 @@ Az ügynök egy névleges mennyiségű rendszer-erőforrásokat használ fel, é
 ### <a name="where-is-my-data-stored"></a>Hol tárolják az adataimat?
 Ettől az ügynöktől gyűjtött adatok tárolva van vagy egy meglévő Log Analytics-munkaterületet az Ön előfizetéséhez rendelve, vagy egy új munkaterületet. További információkért lásd: [adatbiztonság](security-center-data-security.md).
 
-## Meglévő Log Analytics-ügyfelek<a name="existingloganalyticscust"></a>
+## Meglévő Azure Monitor-naplók ügyfelek<a name="existingloganalyticscust"></a>
 
 ### <a name="does-security-center-override-any-existing-connections-between-vms-and-workspaces"></a>A Security Center nem bírálja felül bármely meglévő kapcsolatokat a virtuális gépek és a munkaterületek között?
 Ha egy virtuális gép már a Microsoft Monitoring Agent telepítve van az Azure kiterjesztése, a Security Center nem bírálja felül a meglévő munkaterület-kapcsolatot. Ehelyett a Security Center a meglévő munkaterületet használja.

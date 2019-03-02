@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/30/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 924ed7c2a253ab74a4807559d190218d3125b92c
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 8627f5bb704c963b628fb3dab29b6d2cfee0789b
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978595"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247324"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure-beli virtuálisgép-méretezési csoportok – gyakori kérdések
 
@@ -374,9 +374,9 @@ Update-AzVmss -ResourceGroupName "resource_group_name" -VMScaleSetName "vmssName
 
 Az bővítménynév értéket annak `$vmss`.
 
-### <a name="is-there-a-virtual-machine-scale-set-template-example-that-integrates-with-log-analytics"></a>Egy virtuálisgép-méretezési csoport sablon példa, amely integrálható a Log Analytics beállítása?
+### <a name="is-there-a-virtual-machine-scale-set-template-example-that-integrates-with-azure-monitor-logs"></a>Nincs virtuálisgép-méretezési csoportot, amely integrálható az Azure Monitor naplóira példasablonban beállítani?
 
-Egy virtuálisgép-méretezési csoport sablon példa, amely integrálható a Log Analytics beállítása, tekintse meg a második példáját [egy Azure Service Fabric-fürt üzembe helyezése és figyelése a Log Analytics használatával engedélyezése](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/ServiceFabric).
+Virtuálisgép-méretezési csoportot, amely integrálható az Azure Monitor naplóira példasablonban beállítása, tekintse meg a második példáját [egy Azure Service Fabric-fürt üzembe helyezése és figyelése az Azure Monitor-naplók használatával engedélyezése](https://github.com/krnese/AzureDeploy/tree/master/OMS/MSOMS/ServiceFabric).
 
 ### <a name="extensions-seem-to-run-in-parallel-on-virtual-machine-scale-sets-this-causes-my-custom-script-extension-to-fail-what-can-i-do-to-fix-this"></a>Bővítmények úgy tűnik, hogy a virtual machine scale sets párhuzamosan futnak. Ennek hatására a saját egyéni szkriptek futtatására szolgáló bővítmény sikertelen lesz. Mire használhatom a probléma megoldásához?
 
@@ -658,7 +658,7 @@ Igen, használhatja a rendszerkép alaphelyzetbe állítására alaphelyzetbe á
 
 További információkért lásd: [virtuálisgép-méretezési csoportban lévő összes virtuális gép kezelése](https://docs.microsoft.com/rest/api/virtualmachinescalesets/manage-all-vms-in-a-set).
 
-### <a name="is-it-possible-to-integrate-scale-sets-with-azure-log-analytics"></a>Az is integrálhatók a méretezési csoportok az Azure Log Analytics?
+### <a name="is-it-possible-to-integrate-scale-sets-with-azure-monitor-logs"></a>Az is integrálhatók a méretezési csoportok az Azure Monitor naplóira?
 
 Igen, a méretezési csoport a Log Analytics-bővítmény telepítésével állíthatja be virtuális gépeket. A következő Azure CLI-példa:
 ```
@@ -666,7 +666,10 @@ az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.Ente
 ```
 A szükséges munkaterület azonosítója és workspaceKey a Log Analytics-munkaterületet az Azure Portalon találhatja. Az Áttekintés lapon kattintson a beállítások csempe. Kattintson a csatlakoztatott források fülre az oldal tetején.
 
-Megjegyzés: Ha a méretezési csoport _upgradePolicy_ értéke kézi, meg kell alkalmaznia a bővítmény a csoport összes virtuális gépére a frissítés meghívásával rajtuk. CLI-ben ez lenne _az vmss update-instances_.
+> [!NOTE]
+> Ha a méretezési csoport _upgradePolicy_ értéke kézi, meg kell alkalmaznia a bővítmény a csoport összes virtuális gépére a frissítés meghívásával rajtuk. CLI-ben ez lenne _az vmss update-instances_.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

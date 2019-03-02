@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 7/10/2018
 ms.author: aljo
-ms.openlocfilehash: 963587415e1060997b4f90e822c6c57a05610544
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: c6b923808b7d1a1e29fa6847f3a975785ad7e798
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807167"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247494"
 ---
 # <a name="production-readiness-checklist"></a>Termelési készenlét ellenőrzőlistája
 
@@ -42,9 +42,9 @@ Az alkalmazás és a fürt készen áll az éles forgalmat is? Futtathatja és t
 6. Megismerheti és beállíthatja a [tartóssági szint](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster). Állapotalapú alkalmazások és szolgáltatások futtatása csomóponttípusok Silver és magasabb szintű tartóssági szint használata ajánlott. Az elsődleges csomóponttípushoz kell rendelkeznie a tartóssági szint beállítása a Silver vagy újabb.
 7. Megismerheti, és válassza ki a [megbízhatósági szint](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster) a csomópont típusa. Silver és magasabb szintű megbízhatóság használata javasolt.
 8. Terhelés és a méretezési csoport teszteléséhez a számítási feladatok azonosításához [kapacitásigények](service-fabric-cluster-capacity.md) a fürt számára. 
-9. A szolgáltatások és alkalmazások állnak figyelés és az alkalmazásnaplókat a rendszer éppen létrehozott és tárolt, a riasztás. Lásd a [naplózás hozzáadása a Service Fabric-alkalmazás](service-fabric-how-to-diagnostics-log.md) és [a Log Analytics-tárolók monitorozása](service-fabric-diagnostics-oms-containers.md).
-10. A fürt a riasztási rendszer figyeli (például [Log Analytics](service-fabric-diagnostics-event-analysis-oms.md)). 
-11. Az alapul szolgáló virtual machine scale set infrastruktúra-riasztások figyel (például [Log Analytics](service-fabric-diagnostics-oms-agent.md).
+9. A szolgáltatások és alkalmazások állnak figyelés és az alkalmazásnaplókat a rendszer éppen létrehozott és tárolt, a riasztás. Lásd a [naplózás hozzáadása a Service Fabric-alkalmazás](service-fabric-how-to-diagnostics-log.md) és [figyelheti a tárolókat az Azure Monitor naplóira](service-fabric-diagnostics-oms-containers.md).
+10. A fürt a riasztási rendszer figyeli (például [naplózza az Azure Monitor](service-fabric-diagnostics-event-analysis-oms.md)). 
+11. Az alapul szolgáló virtual machine scale set infrastruktúra-riasztások figyel (például [naplózza az Azure Monitor](service-fabric-diagnostics-oms-agent.md).
 12. A fürt rendelkezik [elsődleges és másodlagos tanúsítványát](service-fabric-cluster-security-update-certs-azure.md) mindig (tehát Ön nem kizárva).
 13. A fejlesztési, átmeneti és éles környezetek különálló fürtöket karbantartása. 
 14. [Alkalmazásfrissítések](service-fabric-application-upgrade.md) és [verziófrissítések fürt](service-fabric-tutorial-upgrade-cluster.md) fejlesztés tesztelését és előkészítési fürtök. 
