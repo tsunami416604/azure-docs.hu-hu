@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 08/27/2018
 ms.author: Ankit.Sud
-ms.openlocfilehash: b48910b74d90072a360bad504e2b826402dceea5
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: ee828c908cb3b103befa3890b43bb2c1f04f7cf0
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639744"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214044"
 ---
 # <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>Az Azure Marketplace-en egy meglévő Virtuálisgép-ajánlat frissítése
 
@@ -35,6 +35,8 @@ Nincsenek számos gyakori oka, hogy frissíteni az ajánlatot, többek között:
 
 A portál kínál segítséget nyújt a ezeket a módosításokat, a **összehasonlítása** és **előzmények** funkciókat.  
 
+>[!Note]
+>Cloud Solution Providers (CSP) partner csatorna vehetnek részt már elérhető.  Lásd: [Cloud Solution Providers](../../cloud-solution-providers.md) további tájékoztatást a marketing, az ajánlat keretében a Microsoft CSP partner-csatornákon.
 
 ## <a name="unpermitted-changes-to-vm-offer-or-sku"></a>Virtuálisgép-ajánlat és az SKU engedett módosítása
 
@@ -149,12 +151,12 @@ Ha rendelkezik már lett számlázásra a ciklus során, ami árcsökkenés tör
 
 2018 szeptember 1-től kezdődően új szakasz nevű **pénznem díjszabás egyszerűsített** megjelenik a portálon. A Microsoft Azure Marketplace-en üzleti van egyszerűsítésével világszerte több kiszámítható díjszabás és a gyűjtemény ügyfelei engedélyezésével. Ez egyszerűsítheti tartalmazza az ügyfelek feléjük azt pénznemek számának csökkentése.
 
-Az új szakasz ezen új pénznemekben díjszabás vesz igénybe. Után minden ügyfél ezen új elszámolási pénznemekben át lettek telepítve, az eredeti díjszabási szakaszban kivonjuk a forgalomból, és csak a pénznem díjszabás egyszerűsített szakasz marad.
+Az új szakasz ezen új pénznemekben díjszabás vesz igénybe. Után minden ügyfél ezen új elszámolási pénznemekben át lettek telepítve, az eredeti díjszabási szakaszban kivonjuk a forgalomból, és csak a pénznem díjszabás egyszerűsített szakasz marad.
 
 Amíg nem módosul a 2018. November 1. viselkedésmintáit beállítása egy új ár régiókra vonatkozó elszámolás pénznem kell. Nem lehet növelheti a régiók viselkedésmintáit nem módosul az elszámolás pénznem díja.
 
 > [!NOTE] 
-> API-k használatával az ajánlat közzététele, egy új szakaszt az ajánlat JSON belül jelenhet meg. Ez akkor lehet feliratozva `virtualMachinePricingV2` vagy `monthlyPricingV2`ajánlat típusától függően. 
+> API-k használatával az ajánlat közzététele, egy új szakaszt az ajánlat JSON belül jelenhet meg. Ez akkor lehet feliratozva `virtualMachinePricingV2` vagy `monthlyPricingV2`ajánlat típusától függően. 
 
 Ha ez a változás kapcsolatban bármilyen kérdése van, lépjen kapcsolatba [Azure piactér támogatási](../../support-azure-marketplace.md).
 

@@ -15,12 +15,12 @@ ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviwer: xiaofmao
 ms.lastreviewed: 01/30/2019
-ms.openlocfilehash: 11736b978242416bcfb95d3025975028e4148e98
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 44fc096fa95be3a469ada7c7dc212ce4fc04e83b
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486538"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57218056"
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Az Azure Stack-tár: Különbségek és szempontok
 
@@ -44,6 +44,7 @@ Ez a cikk az Azure Storage szolgáltatások ismert Azure Stack Storage különbs
 |Block blob maximális mérete|4,75 TB (100 MB X 50 000 blokk)|Az 1802-es frissítés vagy újabb verzió 4,75 TB (100 MB x 50 000 blokk) 50 000 x 4 MB (KB. 195 GB), a korábbi verziók.
 |Blob pillanatkép-másolás lap|Biztonsági mentés nem felügyelt virtuális Géphez csatolt Azure lemezeken futó virtuális gépek támogatott|Még nem támogatott.
 |Blob növekményes pillanatkép-másolás lap|Prémium és standard oldala az Azure-blobok támogatott|Még nem támogatott.
+|Blob Számlázás lapon|Díjait egyedi lapok attól a blob vagy a pillanatkép. További díjakat csak alap blob frissítése folyamatban van egy blob társított pillanatképekhez nem járna.|Az alap blob és assiociated pillanatképek számítunk fel díjat. Járna minden egyes pillanatkép felül további díjakat.
 |A blob Storage tárolási rétegek|Gyakori és ritka elérésű és archív tárolási szintek.|Még nem támogatott.
 |A blob Storage a helyreállítható törlés|Általános elérhető|Még nem támogatott.
 |Blob maximális mérete|8 TB|1 TB

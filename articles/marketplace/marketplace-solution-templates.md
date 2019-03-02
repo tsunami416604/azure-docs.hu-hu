@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/15/2018
 ms.author: ellacroi
-ms.openlocfilehash: 8e8bcc43a3bf26a40055e4258bf73bb047e61ef9
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: bbf9ab56bd7e070e40e2454a69f0a5e313597f14
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737603"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215371"
 ---
 # <a name="azure-applications-solution-template-offer-publishing-guide"></a>Az Azure-alkalmazások: Megoldás sablon az ajánlat közzétételi útmutató
 
@@ -38,7 +38,6 @@ A megoldás sablonok tranzakció ajánlatok, amelyek üzembe helyezve, és a Mar
 |Azure-kompatibilis virtuális merevlemez (VHD)  |   Windows vagy Linux rendszerű virtuális gépek kell épül.  További információ [lásd az Azure-kompatibilis virtuális merevlemez létrehozása](./cloud-partner-portal/virtual-machine/cpp-create-vhd.md). |
 | Ügyfél használati megnevezése | Az Azure piactéren közzétett minden megoldássablonok ügyfél használati tesznek elérhetővé; ilyenek engedélyezése szükséges. Az ügyfél használati tesznek elérhetővé; ilyenek és engedélyezését a további információkért lásd: [Azure-partneri ügyfél használati tesznek elérhetővé; ilyenek](./azure-partner-customer-usage-attribution.md).  |
 |  |  |
-
 
 ## <a name="next-steps"></a>További lépések
 Ha ezt még nem tette meg, [regisztrálása](https://azuremarketplace.microsoft.com/sell) a Marketplace-en.

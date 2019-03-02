@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: c32dcbac8ebab5fb71839a4525163c0e6cf028ed
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: bb987bcc38dee1f3d4ea2fce19e5e546ebfc8f7c
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310730"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240235"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>Fájlintegritási monitorozás az Azure Security Centerben
 Ismerje meg a fájl fájlintegritási Monitorozás (FIM) konfigurálása az Azure Security Centerben, használja ezt a forgatókönyvet.
@@ -37,7 +37,7 @@ Könnyen engedélyezheti a FIM az entitás figyelése, a Security Center javasol
 
 > [!NOTE]
 > A fájl fájlintegritási Monitorozás (FIM) szolgáltatás Windows és Linux rendszerű számítógépek és virtuális gépek esetében működik, és a Security Center Standard szinten érhető el. A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md).
-FIM feltölti az adatokat a Log Analytics-munkaterületre. Adatok díjak vonatkoznak, a feltöltött adatok mennyisége alapján. Lásd: [Log Analytics díjszabása](https://azure.microsoft.com/pricing/details/log-analytics/) további.
+FIM feltölti az adatokat a Log Analytics-munkaterületre. Adatok díjak vonatkoznak, a feltöltött adatok mennyisége alapján. Lásd: [log analytics díjszabásáról](https://azure.microsoft.com/pricing/details/log-analytics/) további.
 >
 >
 

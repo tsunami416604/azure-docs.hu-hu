@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: df95329128c93f326b6f2c75fb7faef1a46029cc
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 66fc5c92410118f4e0042738d2107b272d68f9bf
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456503"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240337"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Biztonsággal kapcsolatos fogalmait, alkalmazások és-fürtök az Azure Kubernetes Service (AKS)
 
@@ -28,13 +28,13 @@ Ez a cikk bemutatja az alapfogalmakat, amelyek az aks-ben az alkalmazások bizto
 
 ## <a name="master-security"></a>Fő biztonsági
 
-Az aks-ben a fő Kubernetes-összetevők a Microsoft által felügyelt szolgáltatás részét képezik. Minden egyes AKS-fürtöt tartalmaz a saját single-bérlős, dedikált Kubernetes fő biztosít az API-kiszolgálóhoz, a Feladatütemező, stb. A master, felügyelt és a Microsoft által karbantartott
+Az aks-ben a fő Kubernetes-összetevők a Microsoft által felügyelt szolgáltatás részét képezik. Minden egyes AKS-fürtöt tartalmaz a saját single-bérlős, dedikált Kubernetes fő biztosít az API-kiszolgálóhoz, a Feladatütemező, stb. A fő felügyelt és a Microsoft által karbantartott.
 
 Alapértelmezés szerint a Kubernetes API-kiszolgáló nyilvános IP-címet használ, és a teljes tartománynév (FQDN) nevet. Szabályozhatja, hogy a Kubernetes szerepköralapú hozzáférés-vezérlés és az Azure Active Directory API-kiszolgálóhoz való hozzáférést. További információkért lásd: [az aks-sel az Azure AD-integrációs][aks-aad].
 
 ## <a name="node-security"></a>Csomópont-biztonság
 
-AKS-csomópontok olyan Azure virtuális gépek kezelése és fenntartása. A csomópontok futtatni egy optimalizált Ubuntu Linux-disztribúció a Docker-tároló-futtatókörnyezet. AKS-fürt létrehozásakor vagy skálázható fel, a rendszer automatikusan telepíti a csomópontok a legújabb operációs rendszer biztonsági frissítéseit és konfigurációkat.
+AKS-csomópontok olyan Azure virtuális gépek kezelése és fenntartása. A csomópontok egy optimalizált Moby tároló modullal Ubuntu Linux-disztribúció futtatható. AKS-fürt létrehozásakor vagy skálázható fel, a rendszer automatikusan telepíti a csomópontok a legújabb operációs rendszer biztonsági frissítéseit és konfigurációkat.
 
 Az Azure platform automatikusan alkalmazza az éjszakai történik a csomópontok operációs rendszer biztonsági javítások. Ha egy operációs rendszer biztonsági frissítést igényel a gazdagépet újra kell indítani, hogy újraindítás nem automatikusan történik. Manuálisan indítsa újra a csomópontokat, vagy egy általánosan használt megközelítés használandó [Kured][kured], egy nyílt forráskódú újraindítás démon a Kubernetes esetében. Kured fut, mint egy [DaemonSet] [ aks-daemonsets] , és figyeli a-fájljának jelenlétét, arról, hogy a számítógép újraindítása nem szükséges minden egyes csomópont. Újraindítások felügyelt ugyanazzal a fürtön [Ez a három csomópontunk, és a kiürítési folyamat](#cordon-and-drain) mint a fürtfrissítések.
 
@@ -65,7 +65,7 @@ Kapcsolati és biztonsági a helyszíni hálózatokkal az AKS-fürtöt meglévő
 
 ### <a name="azure-network-security-groups"></a>Azure-beli hálózati biztonsági csoportok
 
-A forgalmat a virtuális hálózatok szűrése, az Azure hálózati biztonsági csoport szabályai használ. Ezek a szabályok határozzák meg, a forrás és cél IP-címtartományok, portok és protokollok, hogy engedélyezi vagy megtagadja a hozzáférést az erőforrásokhoz. Alapértelmezett szabályok jönnek létre a Kubernetes API-kiszolgálóhoz és az SSH-hozzáférését a csomópontok a TLS-forgalom engedélyezéséhez. Terheléselosztók, portleképezéseit vagy bejövő útvonal létrehozhat olyan szolgáltatásokat, mint az AKS automatikusan módosítja a hálózati biztonsági csoport, a forgalom áramlásának biztosításához.
+A forgalmat a virtuális hálózatok szűrése, az Azure hálózati biztonsági csoport szabályai használ. Ezek a szabályok határozzák meg, a forrás és cél IP-címtartományok, portok és protokollok, hogy engedélyezi vagy megtagadja a hozzáférést az erőforrásokhoz. Alapértelmezett szabályok jönnek létre a Kubernetes API-kiszolgálóhoz a TLS-forgalom engedélyezéséhez. Terheléselosztók, portleképezéseit vagy bejövő útvonal létrehozhat olyan szolgáltatásokat, mint az AKS automatikusan módosítja a hálózati biztonsági csoport, a forgalom áramlásának biztosításához.
 
 ## <a name="kubernetes-secrets"></a>Kubernetes titkos kulcsok
 
@@ -76,6 +76,8 @@ Titkos kulcsok használata csökkenti a bizalmas adatokat a pod vagy a service Y
 ## <a name="next-steps"></a>További lépések
 
 Ismerkedés az AKS-fürtök védelme, lásd: [AKS-fürt frissítése][aks-upgrade-cluster].
+
+További kapcsolódó ajánlott eljárások: [ajánlott eljárások a fürt biztonsági és frissítései az aks-ben][operator-best-practices-cluster-security].
 
 És további információkat az alapvető Kubernetes AKS fogalmait tekintse meg a következő cikkeket:
 
@@ -99,3 +101,4 @@ Ismerkedés az AKS-fürtök védelme, lásd: [AKS-fürt frissítése][aks-upgrad
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-network]: concepts-network.md
 [cluster-isolation]: operator-best-practices-cluster-isolation.md
+[operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md

@@ -5,20 +5,20 @@ author: msvijayn
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 12/24/2018
+ms.date: 03/01/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 6af1c5347a522f7e42feecb6722dfbb64439d086
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 7c8e2297426b098fa6e86a5cda81afc2d71b08f4
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341011"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214639"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>Naplóriasztások kapcsoló API beállításait
 
 > [!NOTE]
-> Megadott tartalom **nem** alkalmazható, Azure GovCloud felhasználók számára, és csak az Azure nyilvános felhő számára.  
+> Tartalom említettük a felhasználókra vonatkozó csak az Azure nyilvános felhő és a **nem** az Azure Government vagy Azure China felhőhöz.  
 
 Nemrég, amíg a felügyelt riasztási szabályok a Microsoft Operations Management Suite-portálon. A riasztások új kezelőfelülete lett integrálva a különböző szolgáltatások, így a Log Analytics a Microsoft Azure-ban, és azt kéri, hogy [a riasztási szabályok kiterjesztése az OMS-portálon az Azure-bA](alerts-extend.md). Azonban ahhoz, hogy az ügyfelek minimális megszakadása, a folyamat nem változtatott meg a programozható felületet a felhasználásra - [Log Analytics Alert API](api-alerts.md) SavedSearch alapján.
 
@@ -43,6 +43,7 @@ A kapcsoló scheduledQueryRules API fontossági következményeinek ügyfélbeá
 
 - Minden interakciók esetén parancsvezérelt felületek segítségével riasztások kezelése most meg kell ismételnie a [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) helyette. További információkért tekintse meg, [minta használata az Azure Resource-sablon használatával](alerts-log.md#managing-log-alerts-using-azure-resource-template) és [minta használata az Azure CLI és PowerShell használatával](alerts-log.md#managing-log-alerts-using-powershell-cli-or-api)
 - Minden olyan új riasztási szabály létrehozása az Azure portal használatával jön [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) csak és a felhasználó használhat a [további funkciókat az új API](#Benefits-of-switching-to-new-Azure-API) , valamint az Azure Portalon
+- Riasztási szabály súlyossága a árkonstrukcióra: *A kritikus, figyelmeztetés & tájékoztató*, az *fontossági értékek 0, 1 és 2*. Együtt létrehozni vagy frissíteni a beállítást riasztási szabályok az súlyossági 4 is.
 
 Bárki, aki önkéntesen váltson át az új [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) és blokkolja a használat a [örökölt Log Analytics-riasztás API](api-alerts.md);. Ehhez egy PUT-hívást hajt végre az alábbi API-t az összes riasztást válthat a megadott Log Analytics-munkaterülethez társított szabályok.
 

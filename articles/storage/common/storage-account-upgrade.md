@@ -5,24 +5,23 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/18/2018
+ms.date: 02/28/2019
 ms.author: tamram
-ms.openlocfilehash: 500d5217a35cdc569964195558b6e4a2c023c614
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: d57023063fe23db9f57d52ab9cdf99e0687c1fdf
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352138"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217291"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Egy általános célú v2-tárfiók frissítése
 
 Általános célú v2-tárfiókok a legújabb Azure Storage-szolgáltatások támogatásához, és építse be az összes funkcióját, általános célú v1 és Blob storage-fiókok. Általános célú v2 fiókok használata akkor javasolt, a storage legtöbb forgatókönyvhöz. Általános célú v2 fiókok kapacitás árak nyújthat a legalacsonyabb gigabájtonkénti az Azure Storage, valamint iparági versenyképes tranzakciós.
 
-Frissítés az általános célú v1, általános célú v2 tárfiók vagy a Blob storage-fiókok használata egyszerű. Az Azure portal, PowerShell vagy az Azure CLI használatával is frissítheti. 
+Frissítés az általános célú v1, általános célú v2 tárfiók vagy a Blob storage-fiókok használata egyszerű. Az Azure portal, PowerShell vagy az Azure CLI használatával is frissítheti.
 
-> [!NOTE]
-> A tárfiók frissítése az általános célú v2 fiókra díjmentes.
-> A tároló hozzáférési szint módosítása vonhat maga után a módosítások a számla. További részleteket az [árakat és számlázást](#pricing-and-billing) ismertető szakaszban olvashat.
+> [!IMPORTANT]
+> Általános célú v2 a v1-storage-fiók frissítése nem vonható vissza, és nem vonható vissza.
 
 ## <a name="upgrade-using-the-azure-portal"></a>Frissítse az Azure portal használatával
 
@@ -68,8 +67,10 @@ Alapértelmezés szerint egy új storage-fiók jön létre a gyakran használt a
 
 Mindkét esetben az első érték tárolása, elérése és a egy általános célú v2-tárfiók-ban tárolt adatokkal kapcsolatos működtetése költségének és összehasonlítása az aktuális költségekkel.
 
-
 ## <a name="pricing-and-billing"></a>Árak és számlázás
+
+A v1-storage-fiók frissítése egy általános célú v2 fiók használata ingyenes. Azonban a tároló hozzáférési szint módosítása vonhat maga után a módosítások a számla. 
+
 Az összes tárfiók az egyes blobok szintjén alapuló árképzési modellt alkalmaz a blobtároláshoz. Tárfiókok használatakor az alábbi számlázási szempontok érvényesülnek:
 
 * **Tárolási költségek**: Tárolt adatok mennyisége mellett a az adattárolás díja a tárolás hozzáférési szintjétől függően változik. A gigabájtonkénti költség csökken, ha a szint ritkábban használt adatokat tárol.

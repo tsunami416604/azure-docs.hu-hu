@@ -1,5 +1,5 @@
 ---
-title: Fontos különbség a Machine Learning-szolgáltatások (az r nyelv) az Azure SQL Database (előzetes verzió) – áttekintés
+title: Fontos különbség az Azure SQL Database, Machine Learning Services (előzetes verzió)
 description: Ez a témakör az Azure SQL Database Machine Learning-szolgáltatások (az r nyelv) és az SQL Server Machine Learning-szolgáltatások közötti fő különbségeket ismerteti.
 services: sql-database
 ms.service: sql-database
@@ -11,17 +11,22 @@ author: dphansen
 ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
-ms.date: 01/31/2019
-ms.openlocfilehash: 4350fb0e75f140e120ba6cd2f074ffa1816a8fce
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.date: 03/01/2019
+ms.openlocfilehash: c750942f8f0f2727d1d11945a84bffb434a01193
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237484"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242122"
 ---
-# <a name="key-differences-between-machine-learning-services-in-azure-sql-database-and-sql-server"></a>Machine Learning-szolgáltatások az Azure SQL Database és az SQL Server közötti fő különbségeket
+# <a name="key-differences-between-machine-learning-services-in-azure-sql-database-preview-and-sql-server"></a>Machine Learning-szolgáltatások az Azure SQL Database (előzetes verzió) és az SQL Server közötti fő különbségeket
 
-Az Azure SQL Database-ben a Machine Learning Services (with R) funkciói hasonlóak az [SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning) funkcióihoz. Az alábbiakban ezek közötti fontosabb különbségeket.
+Az Azure SQL Database Machine Learning-szolgáltatások (az r nyelv) (előzetes verzió) funkciója hasonló [SQL Server Machine Learning-szolgáltatások](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning). Az alábbiakban néhány fontos eltérés.
+
+> [!IMPORTANT]
+> Az Azure SQL Database Machine Learning-szolgáltatások jelenleg nyilvános előzetes verzióban érhető el.
+> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
+> További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="language-support"></a>Nyelvi támogatás
 
@@ -41,7 +46,19 @@ R csomag kezelés és telepítés működik különböző SQL Database és SQL S
 
 ## <a name="resource-governance"></a>Erőforrások szabályozása
 
-Már nem R erőforrásai a korlátozásához [erőforrás-vezérlő](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) és külső erőforrás-készletek. R-erőforrások százalékos arányában az SQL Database-erőforrásokat, és függő melyik szolgáltatási szintet választja. További információkért lásd: [vásárlási modellek az Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers).
+Már nem R erőforrásai a korlátozásához [erőforrás-vezérlő](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) és külső erőforrás-készletek.
+
+A nyilvános előzetes során R erőforrások vannak beállítva, hogy egy legfeljebb 20 %-át az SQL Database-erőforrásokat, és függő melyik szolgáltatási szintet választja. További információkért lásd: [vásárlási modellek az Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-service-tiers).
+
+### <a name="insufficient-memory-error"></a>Nincs elég memória hiba
+
+Ha nincs elegendő memória áll rendelkezésre az R, hibaüzenetet kap. Gyakori hibaüzenetek a következők:
+
+- Nem sikerült a kérelem azonosítója "R" szkript futtatókörnyezetével: x. Ellenőrizze az "R" futtatókörnyezet követelményeit
+- "R" parancsfájlhiba történt az "sp_execute_external_script", HRESULT: 0x80004004 végrehajtása közben. ... külső parancsfájlhiba történt: ".. nem sikerült memóriát (0 Mb) a C funkciót "R_AllocStringBuffer" "
+- Külső parancsfájlhiba történt: Hiba: nem foglalható le méretű vektort.
+
+Használati attól függ, hogy mennyi memóriát használja az R-szkriptek és a lekérdezések párhuzamos végrehajtása számát. Ha a fenti hibákat kap, magasabb szolgáltatási szintre a probléma megoldásához az adatbázis is méretezhető.
 
 ## <a name="security-isolation"></a>Biztonsági elkülönítés
 

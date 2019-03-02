@@ -3,17 +3,17 @@ title: Felügyelheti az Azure IoT Central alkalmazáshoz |} A Microsoft Docs
 description: Egy rendszergazdaként az Azure IoT központi alkalmazás felügyelete
 author: viv-liu
 ms.author: viviali
-ms.date: 02/05/2019
+ms.date: 02/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: b43e496323da75dfc63f889283257fac41f48abf
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 8989d6ef54961f5f8eea7c6d8c9d941319bd917a
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117731"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215404"
 ---
 # <a name="administer-your-iot-central-application"></a>Az IoT-központ alkalmazás felügyelete
 
@@ -44,7 +44,7 @@ Az a **Alkalmazásbeállítások** lapon módosítsa a nevét és az alkalmazás
 Ha módosítani szeretné az alkalmazás rendszerképét, lásd: [előkészítése és a feltöltés rendszerképek az Azure IoT Central alkalmazásnak](howto-prepare-images-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json).
 
 ### <a name="copy-an-application"></a>Alkalmazás másolása
-Minden olyan alkalmazás, bármely eszköz példányok, az adatok eszközelőzmények és a felhasználói adatok mínusz egy másolatát is létrehozhat. A példány lesz egy használatalapú fizetéses alkalmazást, amely akkor kell fizetnie. Ezzel a módszerrel egy próba-alkalmazás nem hozható létre.
+Minden olyan alkalmazás, bármely eszköz példányok, az adatok eszközelőzmények és a felhasználói adatok mínusz egy másolatát is létrehozhat. A példány egy használatalapú fizetéses alkalmazást, amely akkor kell fizetnie. Ezzel a módszerrel egy próba-alkalmazás nem hozható létre.
 
 Kattintson a **másolási** gombra. A párbeszédpanelen adja meg, hogy az új használatalapú fizetéses alkalmazás. Kattintson a **másolási** gombra annak megerősítéséhez, hogy végre szeretné hajtani. További információ a mezőket az űrlapon található [hozzon létre egy alkalmazást](quick-deploy-iot-central-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) rövid.
 
@@ -62,7 +62,7 @@ Miután az alkalmazás másolási művelet sikeres, az új alkalmazást, az alka
 > [!Note]
 > Egy alkalmazás törléséhez, jogosultnak kell lennie is törölje az erőforrást az Azure-előfizetésében választotta, az alkalmazás létrehozásakor. További tudnivalókért lásd: [az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése szerepköralapú hozzáférés-vezérlés használatával](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure).
 
-Használja a **törlése** gombra kattintva véglegesen törli az IoT Central alkalmazáshoz. Ezzel véglegesen törli az adott alkalmazáshoz társított összes adatot.
+Használja a **törlése** gombra kattintva véglegesen törli az IoT Central alkalmazáshoz. Ezzel véglegesen törli az adott alkalmazáshoz tartozó összes adatot.
 
 ## <a name="manage-users"></a>Felhasználók kezelése
 
@@ -95,7 +95,7 @@ Törli a felhasználókat, válassza ki egy vagy több jelölőnégyzetet az **f
 
 ## <a name="manage-roles"></a>Szerepkörök kezelése
 
-Szerepkörök lehetővé teszi annak vezérléséhez a szervezeten belül az IoT-központ különböző feladatok végrehajtására. Nincsenek három szerepkört hozzárendelheti az alkalmazást. 
+Szerepkörök lehetővé teszi annak vezérléséhez a szervezeten belül az IoT-központ különböző feladatok végrehajtására. Nincsenek három szerepkört hozzárendelheti az alkalmazást.
 
 ### <a name="administrator"></a>Rendszergazda
 
@@ -111,7 +111,6 @@ A felhasználók a **alkalmazás Builder** szerepkör műveletek mindegyikét eg
 
 A felhasználók a **alkalmazást üzemeltető** szerepkör nem hajthat végre változtatásokat eszközsablonok és az alkalmazás nem tudja felügyelni. Ez azt jelenti, operátorok is hozzáadások és törlések eszközök, eszköz-készletek felügyelete és analytics és a feladatok futtatásához. Operátorok többé nem fér hozzá a **alkalmazás Builder** és **felügyeleti** oldalakat.
 
-
 ## <a name="view-your-bill"></a>A számla megtekintése
 
 A számla megtekintéséhez nyissa meg a **számlázási** lapját a **felügyeleti** szakaszban. Az Azure számlázási oldalán, ahol megtekintheti a számla minden, az Azure IoT Central alkalmazások egy új lapon nyílik meg.
@@ -124,14 +123,14 @@ A számla megtekintéséhez nyissa meg a **számlázási** lapját a **felügyel
 - A **használatalapú fizetéses** alkalmazások díjának felszámítása eszközönként történik. Az első 5 eszköz ingyenes.
 
 További információk a díjszabásról az [Azure IoT Central díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/iot-central/) találhatók.
-    
+
 Az önkiszolgáló folyamat befejezéséhez kövesse az alábbi lépéseket:
 
-1. Nyissa meg a **számlázási** lapját a **felügyeleti** szakaszban. 
+1. Nyissa meg a **számlázási** lapját a **felügyeleti** szakaszban.
 
     ![Próbaverziós állapota](media/howto-administer-experimental/freetrialbilling.png)
 
-1. Kattintson a **utólagos elszámolású előfizetésre átváltani**. 
+1. Kattintson a **utólagos elszámolású előfizetésre átváltani**.
 
     ![Átalakítás próba](media/howto-administer-experimental/convert.png)
 

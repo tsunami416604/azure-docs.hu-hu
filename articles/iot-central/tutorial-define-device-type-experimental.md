@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 2506137e03e8677827bb1e2a3914ee10ae24f368
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 2e3e790ac33f7c93bc5fe6deb705425b0e958def
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810116"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214487"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application-new-ui-design"></a>Oktatóanyag: Egy új eszköz típusának megadása az Azure IoT Central alkalmazásban (új felhasználói felület tervezése)
 
@@ -87,7 +87,7 @@ Csatlakoznia kell egy új eszköz sablon hozzáadása az alkalmazáshoz, a **esz
 
 A következő lépések bemutatják, hogyan hozhat létre egy új **Csatlakoztatott légkondicionáló** eszközsablont olyan eszközökhöz, amelyek hőmérsékleti telemetriát küldenek az alkalmazásra:
 
-1. Az a **eszközsablonok** kattintson **+ új**:
+1. Az a **eszközsablonok** kattintson **+**:
 
     ![Sablonok oldaláról, eszköz-sablon létrehozása](./media/tutorial-define-device-type-experimental/newtemplate.png)
 
@@ -397,7 +397,7 @@ Most már meghatározta a **Légkondicionálóját csatlakoztatott** eszköz-sab
     | Időtartomány   | Az elmúlt 30 perc |
     | Mértékek     | Ventilátor Motor hibát (kattintson **látható-e** melletti **ventilátor Motor hiba**) |
 
-    ![Vonaldiagram beállításai](./media/tutorial-define-device-type-experimental/dashboardeventchartsetting.png)
+    ![Esemény diagram beállításai](./media/tutorial-define-device-type-experimental/dashboardeventchartsetting.png)
 
     Ezután kattintson a **Save** (Mentés) gombra.
 

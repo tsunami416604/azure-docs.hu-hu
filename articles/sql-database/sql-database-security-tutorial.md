@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: b9141fcef8bda181cd7b679f58d22d4ba2895b14
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 2b528892d2046f590d979d1646583e028fe4a834
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004581"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57218073"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Oktatóanyag: Egyetlen vagy készletezett adatbázis védelme
 
@@ -90,7 +90,7 @@ Mostantól a kiszolgáló bármelyik adatbázisához csatlakozhat a megadott IP-
 
 ### <a name="setup-database-firewall-rules"></a>Tűzfalszabályok beállítása
 
-Adatbázisszintű tűzfalszabályok kizárólag az egyes adatbázisok érvényesek. Ezek a szabályok hordozható és az adatbázis követi a kiszolgáló a feladatátvétel alatt. Adatbázisszintű tűzfalszabályok a Transact-SQL (T-SQL-) utasításokkal csak konfigurálható, és csak azután konfigurálta egy kiszolgálószintű tűzfalszabályt.
+Adatbázisszintű tűzfalszabályok kizárólag az egyes adatbázisok érvényesek. Az adatbázis megőrzi ezeket a szabályokat kiszolgáló a feladatátvétel alatt. Adatbázisszintű tűzfalszabályok a Transact-SQL (T-SQL-) utasításokkal csak konfigurálható, és csak azután konfigurálta egy kiszolgálószintű tűzfalszabályt.
 
 Adatbázisszintű tűzfalszabály beállításához:
 
@@ -264,7 +264,7 @@ Rendellenes tevékenységek észlelésekor kap egy e-mailt, amelyen az esemény 
 
 ### <a name="auditing"></a>Naplózás
 
-A naplózási szolgáltatás nyomon követi az adatbázisok eseményeit, és írja az eseményeket egy naplóba, vagy az Azure Storage, a log analytics vagy az eseményközpontok felé. Naplózás segít a szabályozásoknak való megfelelőséget, adatbázis-tevékenység megértésében, valamint betekintést nyerhet az eltéréseket és rendellenességeket, amelyek jelezheti a potenciális biztonsági problémákat.
+A naplózási szolgáltatás nyomon követi az adatbázisok eseményeit, és írja az eseményeket egy naplóba, vagy az Azure Storage, az Azure Monitor naplóira, vagy egy eseményközpontba. Naplózás segít a szabályozásoknak való megfelelőséget, adatbázis-tevékenység megértésében, valamint betekintést nyerhet az eltéréseket és rendellenességeket, amelyek jelezheti a potenciális biztonsági problémákat.
 
 A naplózás engedélyezéséhez:
 
@@ -286,7 +286,7 @@ A naplózás engedélyezéséhez:
         - **Log Analytics**, amely automatikusan tárolja az eseményeket lekérdezés vagy a további elemzés céljából
 
             > [!NOTE]
-            > A **Log analytics-munkaterület** elemzéseket, az egyéni riasztási szabályok és az Excel- vagy Power BI exportálási speciális szolgáltatások támogatásához szükség. Egy munkaterület nélkül csak a Lekérdezésszerkesztő érhető el.
+            > A **Log Analytics-munkaterület** elemzéseket, az egyéni riasztási szabályok és az Excel- vagy Power BI exportálási speciális szolgáltatások támogatásához szükség. Egy munkaterület nélkül csak a Lekérdezésszerkesztő érhető el.
 
         - **Event Hubs**, amely lehetővé teszi, hogy az eseményeket az átirányíthatók más alkalmazások használatra
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 9d4de2a8be13718f7989f064b76b586407ca3a48
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: f0e4d1badd0ed992c96f6624813e575d0f286d8b
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198609"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216798"
 ---
 # <a name="prepare-and-upload-images-to-your-azure-iot-central-application"></a>Készítse elő és képek feltöltése az Azure IoT Central alkalmazáshoz
 
@@ -34,9 +34,9 @@ Egyéni rendszerképek adhat hozzá a következő helyeken és az Azure IoT Cent
 
     ![Kép application manager oldalon](media/howto-prepare-images/applicationmanager.png)
 
-* A kezdőlap
+* Az irányítópult
 
-    ![Kép a kezdőlapon](media/howto-prepare-images/homepage.png)
+    ![Alkalmazás irányítópult lemezkép](media/howto-prepare-images/homepage.png)
 
 * Egy eszköz sablon
 
@@ -58,9 +58,9 @@ A következő táblázat összefoglalja a lemezkép mérete is használhatja:
 
 | Hely | Méretek |
 | -------- | ------ |
-| Alkalmazáskezelő | 268 x 160 px |
+| Application Manager | 268x160 px |
 | Eszközsablon | 64 x 64 képpont |
-| Kezdőlap és irányítópult-csempék | A legkisebb méretű csempe 200 x 200 képpont, nagyobb csempék kisméretű csempe négyzet vagy téglalap alakú többszöröse lehet. Ha például 200-as x 400 képpont, 400 x 200 képpont vagy 400 x 400 képpont |
+| Irányítópult-csempék | A legkisebb méretű csempe 200 x 200 képpont, nagyobb csempék kisméretű csempe négyzet vagy téglalap alakú többszöröse lehet. Ha például 200-as x 400 képpont, 400 x 200 képpont vagy 400 x 400 képpont |
 
 A legjobb megjelenítés az alkalmazásban létre kell hoznia a lemezképek, amelyek megfelelnek a dimenziók az előző táblázatban látható.
 
@@ -76,11 +76,11 @@ Tölthet fel képeket a a **alkalmazáskezelő**, keresse meg a **Alkalmazásbe�
 
 Az előkészített képet feltölteni az alkalmazás-lemezképet csempére kattintva (268 x 160 px) a helyi gépen.
 
-### <a name="home-page"></a>Kezdőlap
+### <a name="application-dashboard"></a>Alkalmazás irányítópultja
 
-Töltsön fel egy képet, a kezdőlap, lépjen a **kezdőlap** az alkalmazás, és kattintson a **szerkesztése**. Ez a feladat végrehajtásához egy jelentéskészítő kell lennie:
+Töltsön fel egy képet, az alkalmazás irányítópult, lépjen a **irányítópult** az alkalmazás, és kattintson a **szerkesztése**. Ez a feladat végrehajtásához egy jelentéskészítő kell lennie:
 
-![Kezdőlap-Rendszerkép feltöltése](media/howto-prepare-images/uploadhomepage.png)
+![Alkalmazás irányítópult Rendszerkép feltöltése](media/howto-prepare-images/uploadhomepage.png)
 
 Konfigurálása kép alatt kattintson a lemezkép csempére, és töltse fel az előkészített rendszerképet a helyi gépen. A legkisebb méretű csempe 200 x 200 képpont, nagyobb csempék kisméretű csempe négyzet vagy téglalap alakú többszöröse lehet. Ha például 200-as x 400 képpont, 400 x 200 képpont vagy 400 x 400 képpont.
 

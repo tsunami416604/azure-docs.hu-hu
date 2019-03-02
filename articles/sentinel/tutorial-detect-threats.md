@@ -4,7 +4,7 @@ description: Ez az oktatóanyag segítségével megismerheti, hogyan riasztások
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: b5fbc5ac-68b2-4024-9c1b-bd3cc41a66d0
 ms.service: sentinel
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 35268d8001f8869838745d14f0e8c0ba7253d4c9
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 897bcae65cd0115f3e224ec4a65e3736089bf97f
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56993201"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242496"
 ---
 # <a name="tutorial-detect-threats-with-azure-sentinel-preview"></a>Oktatóanyag: Az Azure-on Előzetesben Sentinel-fenyegetések észlelése
 
@@ -34,7 +34,7 @@ Miután [csatlakoztatva az adatforrások](quickstart-onboard.md) Azure Sentinel,
 
 > [!div class="checklist"]
 > * Észlelési szabályok létrehozása
-> * Fenyegetések
+> * Reagálás a fenyegetésekre
 
 ## <a name="create-detection-rules"></a>Észlelési szabályok létrehozása
 
@@ -75,7 +75,7 @@ Esetek vizsgálatához, először be kell észlelési szabályok létrehozásáh
 
 
 
-## <a name="respond-to-threats"></a>Fenyegetések
+## <a name="respond-to-threats"></a>Reagálás a fenyegetésekre
 
 Az Azure Sentinel fenyegetésekkel szembeni forgatókönyvek használatával két elsődleges lehetőséget kínál. Egy forgatókönyv riasztást vált ki, vagy manuálisan futtatható a forgatókönyv a választ figyelmeztetést automatikus futtatását állíthatja be.
 

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/24/2018
-ms.openlocfilehash: bbebfca1684cad600d7ef0cc1a4cff2201fdc07e
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: c26f042cb749f9ab023e7033ea015b74d87ca92a
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566146"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214112"
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Egy több-bérlős SaaS-alkalmazás a bérlőnkénti adatbázis mintát használ, az SQL Database bemutatása
 
@@ -46,7 +46,7 @@ Miután telepíti az alkalmazást, Fedezze fel az alábbi oktatóanyagok, amely 
 |[Üzembe helyezése és megismerése a Wingtip SaaS-alkalmazás](saas-dbpertenant-get-started-deploy.md)|  Üzembe helyezése, és ismerje meg a Wingtip SaaS-alkalmazás az Azure-előfizetésében. |
 |[Kiépítéssel és katalogizálással bérlők](saas-dbpertenant-provision-and-catalog.md)| Ismerje meg, hogy az alkalmazás bérlők használatával csatlakozik egy katalógus-adatbázist, és hogyan a katalógus leképezi a adataikat bérlők. |
 |[Teljesítményének figyelése és kezelése](saas-dbpertenant-performance-monitoring.md)| Megtudhatja, hogyan használhatja az SQL Database figyelési funkcióit, és riasztásokat állíthat be, amikor a teljesítmény-küszöbérték túllépése. |
-|[Monitorozás az Azure Log Analytics](saas-dbpertenant-log-analytics.md) | Ismerje meg, hogyan használható [Log Analytics](../log-analytics/log-analytics-overview.md) több készlet figyelése a nagy mennyiségű erőforrást. |
+|[Az Azure Monitor naplóira figyelése](saas-dbpertenant-log-analytics.md) | Ismerje meg, hogyan használható [naplózza az Azure Monitor](../log-analytics/log-analytics-overview.md) több készlet figyelése a nagy mennyiségű erőforrást. |
 |[Egyetlen bérlő visszaállítása](saas-dbpertenant-restore-single-tenant.md)| Ismerje meg, hogy a bérlői adatbázis visszaállítása egy korábbi időpontra időben. Is megtudhatja, hogyan állíthatja vissza egy párhuzamos adatbázis, amely a meglévő bérlői adatbázis online hagyja. |
 |[Bérlői adatbázis séma kezelése](saas-tenancy-schema-management.md)| Megtudhatja, hogyan séma frissítésére, és frissíti a referenciaadatokat összes bérlői adatbázison. |
 |[Több-bérlős elosztott lekérdezések futtatása](saas-tenancy-cross-tenant-reporting.md) | Hozzon létre egy alkalmi elemzési adatbázist, és valós idejű elosztott lekérdezések futtatása az összes bérlőre kiterjedő.  |

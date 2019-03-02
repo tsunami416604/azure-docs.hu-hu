@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 9480565643887b5a9a4d644ba3173b365eaea29c
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 03e0826d306328ce9a7293d26289f04a012c447f
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767773"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216458"
 ---
 # <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>Oktatóanyag: Az eszközök monitorozása az Azure IoT Central használatával
 
@@ -55,7 +55,7 @@ Válassza az **Irányítópult** lehetőséget az eszközzel kapcsolatos inform�
 
 ![Az eszköz irányítópultja](media/tutorial-monitor-devices-experimental/initial_screen.png)
 
-Az irányítópulton lévő diagram az eszköz hőmérsékletét ábrázolja. A **Megadott célhőmérséklet** csempén az eszköz aktuális célhőmérsékletét is láthatja. Úgy dönt, hogy a célhőmérséklet túl magas.
+Az irányítópulton lévő diagram az eszköz hőmérsékletét ábrázolja. Emellett megtekintheti az eszköz az aktuális cél hőmérséklet a **eszköztulajdonságok** csempére. Úgy dönt, hogy a célhőmérséklet túl magas.
 
 ## <a name="remediate-an-issue"></a>Probléma elhárítása
 

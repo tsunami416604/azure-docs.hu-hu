@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: 28d1ed43ecdb1ff853e066567f331b8c302ce7aa
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 509d529c7e860f4c46bc3368028a4e8d24812051
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56730443"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242819"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure biztonsági és megfelelőségi terv – a HIPAA/HITRUST-állapotadatok és mesterséges Intelligencia
 
@@ -361,8 +361,8 @@ A megoldás az Azure Event Grid, egy egyetlen szolgáltatás kezelése, az össz
 ### <a name="azure-alerts"></a>Azure-riasztások
 - [Riasztások kínálnak az Azure-szolgáltatások figyelésére szolgáló módszer, és lehetővé teszi, hogy feltételeket konfiguráljon az adatok. Riasztások értesítések is biztosítanak, amikor egy riasztási feltétel megfelel a monitorozási adatok.
 
-### <a name="log-analytics"></a>Log Analytics
-[Log Analytics](/azure/operations-management-suite/operations-management-suite-overview) felügyeleti szolgáltatások gyűjteménye.
+### <a name="azure-monitor-logs"></a>Az Azure Monitor naplóira
+[Az Azure Monitor naplóira](/azure/operations-management-suite/operations-management-suite-overview) felügyeleti szolgáltatások gyűjteménye.
 
 -   Munkaterület engedélyezve van a Security Centerben
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1d6f43b23bddf2d1ff7a2a41a11b4a2c8623d372
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: c8cba4006d1112ccc1529fc1769e046fe45468a7
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768623"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214180"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Telemetria szabály létrehozása és az Azure IoT központi alkalmazás-értesítések beállítása
 
@@ -27,12 +27,7 @@ Eszközök telemetriai mérési segítségével numerikus adatokat küldjön az 
 
 Hozzon létre egy telemetriai szabályt, az eszköz sablon legalább egy telemetriai mérési meghatározott kell rendelkeznie. Ez a példa hőmérséklettel és páratartalommal kapcsolatos telemetriai adatokat küld hűtött Eladóautomata eszközt használja. A szabály az eszköz által jelentett hőmérséklet figyeli, és a egy e-mailt küld, ha ezt túllépik 80 fok.
 
-1. Device Explorer használatával, keresse meg az eszköz sablon, amelynek a szabályt ad hozzá.
-
-1. A kiválasztott sablon alapján kattintson egy meglévő eszközt. 
-
-    >[!TIP]
-    >Ha a sablon nem minden olyan eszközt, majd egy új eszköz hozzáadásához először.
+1. Használatával a **eszközsablonok** lapon, keresse meg az eszköz sablon, amelynek a szabályt ad hozzá.
 
 1. Szabályok még nem hozta létre, ha a következő képernyő jelenik meg:
 
@@ -60,11 +55,11 @@ A feltétel a feltételeknek, a szabály által figyelt határozza meg.
 
 1. Válassza ki a figyelni kívánt telemetriát a **mérési** legördülő listából.
 
-   ![Állapot](media/howto-create-telemetry-rules-experimental/Aggregate_Condition_Filled_Out.png)
-
 1. Következő lépésként válassza ki **összesítési**, **operátor**, és adjon meg egy **küszöbérték** érték.
-    - Összesítés nem kötelező. Nélkül összesítés, a szabály aktiválásakor telemetriai adatpontok, amely megfelel a feltételnek. Például, ha a szabály úgy van konfigurálva, az indítási feltétel hőmérséklete meghaladja a 80-as, akkor a szabály aktivál, szinte instantly mikor jelentett hőmérséklet > 80-as.
+    - Összesítés nem kötelező. Nélkül összesítés, a szabály aktiválásakor telemetriai adatpontok, amely megfelel a feltételnek. Például ha a szabályt úgy eseményindító, ha hőmérséklete meghaladja a 80-as és a szabály aktiválásakor szinte azonnal mikor jelentett hőmérséklet > 80-as.
     - Ha például az átlagos, minimális és maximális összesítő függvényben, Count van kiválasztva, majd a felhasználónak meg kell adnia egy **összesített időtartomány** keresztül, amelyet a feltétel ki kell értékelni kell. Például ha pedig "5 perc" időszak és a szabály keres átlaghőmérséklet 80-as, a szabály akkor aktiválódik, ha az átlaghőmérséklet legalább 5 percnek a 80-as fölött van. fent. A szabály a kiértékelés gyakorisága pedig ugyanaz, mint a **összesített időtartomány**, ami azt jelenti, hogy ebben a példában a szabály kiértékelése történik az 5 percenként egyszer.
+
+    ![Állapot](media/howto-create-telemetry-rules-experimental/Aggregate_Condition_Filled_Out.png)
 
     >[!NOTE]
     >Egynél több telemetria mérték alapján is hozzáadhatók **feltétel**. Ha több feltétel van megadva, minden feltételeknek teljesülniük kell elindítani a szabályhoz. Minden egyes bizonyságául lekérdezi csatlakozott egy "És" záradék által implicit módon. Összesítés használatakor minden mérték összesíteni kell.

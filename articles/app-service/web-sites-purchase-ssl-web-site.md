@@ -4,7 +4,7 @@ description: App Service-tanúsítvány vásárlása és kösse az App Service-a
 services: app-service
 documentationcenter: .net
 author: cephalin
-manager: cfowler
+manager: jpconnoc
 tags: buy-ssl-certificates
 ms.assetid: cdb9719a-c8eb-47e5-817f-e15eaea1f5f8
 ms.service: app-service
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b569165153ce713846be5e836a26f48e500be1fc
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 3e113639dbe4220b943d49dc610ee22b6416e12a
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594134"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216577"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Vásárlása és konfigurálása az Azure App Service SSL-tanúsítvány
 
@@ -121,28 +121,35 @@ Használja az alábbi táblázat segítségével konfigurálja a kötés a **SSL
 
 Látogasson el az alkalmazás használatával `HTTPS://<domain_name>` helyett `HTTP://<domain_name>` , győződjön meg arról, hogy a tanúsítvány megfelelően van konfigurálva.
 
-## <a name="rekey-and-sync-certificate"></a>Újrakulcsolás és szinkronizálás tanúsítvány
+## <a name="rekey-certificate"></a>Tanúsítvány újrakulcsolása
 
-Ha átállítására lenne szükség a tanúsítvány újrakulcsolása, válassza ki a tanúsítványt a [App Service-tanúsítványok](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) lapon, majd válassza a **Újrakulcsolás és szinkronizálás** a bal oldali navigációs sávon.
+Ha úgy véli, hogy a tanúsítványt a titkos kulcs biztonsága sérül, a tanúsítvány újrakulcsolásához. Válassza ki a tanúsítványt a [App Service-tanúsítványok](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) lapon, majd válassza a **Újrakulcsolás és szinkronizálás** a bal oldali navigációs sávon.
 
-Kattintson a **Újrakulcsolása** gombra kattintva elindíthatja a folyamatot. Ez a folyamat 1 – 10 percet is igénybe vehet.
+Kattintson a **Újrakulcsolása** a folyamat elindításához. Ez a folyamat 1 – 10 percet is igénybe vehet.
 
 ![az SSL kulcsismétlési kép beszúrása](./media/app-service-web-purchase-ssl-web-site/Rekey.png)
 
 A tanúsítvány újrakulcsolása összesíti a tanúsítványt, és a egy új tanúsítvány kibocsátása a hitelesítésszolgáltatótól.
 
+Az újrakulcsolás művelet befejeződése után kattintson a **szinkronizálási**. A szinkronizálási műveletet az App Service-ben a tanúsítvány gazdagépnévkötések automatikusan frissíti az alkalmazások bármely üzemkiesése nélkül.
+
+> [!NOTE]
+> Ha nem kattint **szinkronizálási**, 48 órán belül automatikusan szinkronizálja a tanúsítvány App Service-ben.
+
 ## <a name="renew-certificate"></a>Tanúsítvány megújítása
 
-Kapcsolja be a tanúsítvány automatikus megújítását, tetszőleges időpontban, válassza a tanúsítványt a [App Service-tanúsítványok](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) lapon, majd kattintson a **az automatikus megújítás beállításai** a bal oldali navigációs. 
+Kapcsolja be a tanúsítvány automatikus megújítását, tetszőleges időpontban, válassza a tanúsítványt a [App Service-tanúsítványok](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) lapon, majd kattintson a **az automatikus megújítás beállításai** a bal oldali navigációs.
 
 Válassza ki **a** kattintson **mentése**. Tanúsítványok automatikus megújítása 60 nappal a lejárat előtt, ha engedélyezve van az automatikus megújítását megkezdéséhez.
 
-![](./media/app-service-web-purchase-ssl-web-site/auto-renew.png)
+![tanúsítvány automatikus megújítása](./media/app-service-web-purchase-ssl-web-site/auto-renew.png)
 
 Ehelyett manuálisan újítsa meg a tanúsítványt, kattintson a **manuális megújítás**. Manuálisan megújítani a tanúsítványt a lejárta előtt 60 nappal kérheti.
 
+A megújítási művelet befejeződése után kattintson a **szinkronizálási**. A szinkronizálási műveletet az App Service-ben a tanúsítvány gazdagépnévkötések automatikusan frissíti az alkalmazások bármely üzemkiesése nélkül.
+
 > [!NOTE]
-> A megújított tanúsítvány nem automatikusan kötött alkalmazását, akár manuálisan megújítani automatikusan megújul. Kösse az alkalmazáshoz, tekintse meg [tanúsítványok megújítása](./app-service-web-tutorial-custom-ssl.md#renew-certificates). 
+> Ha nem kattint **szinkronizálási**, 48 órán belül automatikusan szinkronizálja a tanúsítvány App Service-ben.
 
 ## <a name="automate-with-scripts"></a>Automatizálás szkriptekkel
 

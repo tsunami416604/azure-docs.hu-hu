@@ -12,27 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 03/01/2019
 ms.author: alleonar
 ms.reviewer: dkershaw, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 567ea09a50edc043f2022a47d08576720550e750
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 47233d593e9539e5755daf331ce9dbff73207942
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56448092"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213483"
 ---
 # <a name="azure-active-directory-graph-api"></a>Azure Active Directory – Graph API
 
 > [!IMPORTANT]
 >
-> A 2019. február kezdődően az Azure Active Directory Graph API helyett a Microsoft Graph API elavult.  
+> Kezdődően a 2019. február azt követően megkezdtük az Azure Active Directory Graph API a Microsoft Graph API helyett néhány korábbi verziójában kivezetjük. 
 >
-> Váltás megkönnyítése korábbi verziói az Azure AD Graph API előtt újabb is elvesznek.  
->
-> A részleteket, frissítések és ütemterveket [Microsoft Graph vagy az Azure AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) blogbejegyzést az Office fejlesztői központjában.
+> Tekintse meg a részleteket, a frissítések és az ütemterveket, [Microsoft Graph vagy az Azure AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) az Office fejlesztői központjában.
 >
 > Halad előre, alkalmazások a Microsoft Graph API-t kell használnia. 
 

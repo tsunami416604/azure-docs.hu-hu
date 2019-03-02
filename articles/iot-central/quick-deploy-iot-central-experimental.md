@@ -3,18 +3,18 @@ title: Azure IoT Central-alkalmazás létrehozása | Microsoft Docs
 description: Új Azure IoT Central-alkalmazás létrehozása. Próbaalkalmazás vagy használatalapú fizetéses alkalmazás létrehozása alkalmazássablonnal.
 author: viv-liu
 ms.author: viviali
-ms.date: 10/31/2018
+ms.date: 02/20/2019
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: b02ca043539067061e8b7fec0e002d7d21290c38
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: e538d0caf82d67314834a630d53dd03f2c1a11bd
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55823497"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216594"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Azure IoT Central-alkalmazás létrehozása
 
@@ -46,7 +46,7 @@ Egy új Azure IoT Central-alkalmazás létrehozásának megkezdéséhez válassz
 
 1. Ha **használatalapú fizetéses** alkalmazást hoz létre, ki kell választania a *címtárat*, az *Azure-előfizetést* és a *régiót*. 
 
-    - A *címtár* az az Azure Active Directory, amelyben az alkalmazás létrejön. Felhasználói identitásokat, hitelesítő adatokat és egyéb szervezeti információkat tartalmaz. Ha még nem rendelkezik AAD-vel, létrehozunk egyet Önnek az Azure-előfizetés létrehozásakor.
+    - *Directory* van az Azure Active Directory (AD) az alkalmazás létrehozásához. Felhasználói identitásokat, hitelesítő adatokat és egyéb szervezeti információkat tartalmaz. Ha nem rendelkezik egy Azure ad-ben, egy jön létre az Ön számára egy Azure-előfizetés létrehozásakor.
 
     - Az *Azure-előfizetéssel* Azure-szolgáltatások példányait hozhatja létre. Az előfizetésben lévő erőforrásokat az IoT Central osztja ki. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egyet az [Azure regisztrációs lapján](https://aka.ms/createazuresubscription). Az Azure-előfizetés létrehozása után lépjen vissza az **alkalmazás-létrehozási** lapra. Az új előfizetése megjelenik az **Azure-előfizetések** legördülő menüjében.
 

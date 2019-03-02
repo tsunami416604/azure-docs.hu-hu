@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: 3e7717d4ee07a1f3bfebb5e09b983af68aa4ea31
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c5b5f80a43530fe6d0b90e65c3aef89a815157e4
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116220"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241391"
 ---
 # <a name="azure-service-fabric-security-overview"></a>Az Azure Service Fabric biztonsági áttekintése
 [Az Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) egy elosztott rendszerplatform, amely megkönnyíti a csomagolását, üzembe helyezése és kezelése a skálázható és megbízható mikroszolgáltatások. A Service Fabric a felhőalapú alkalmazások fejlesztésének és kezelésének kihívásaira. A fejlesztők és rendszergazdák infrastruktúrával kapcsolatos összetett problémák elkerülése és összpontosíthat, amelyek a méretezhető és megbízható alapvető fontosságú, nagy erőforrás-igényű számítási feladatok megvalósítására.
@@ -87,7 +87,7 @@ A monitorozási és diagnosztikai munkafolyamat három lépésből áll:
 
 2.  **Események összesítése**: Létrehozott események összegyűjtésének és összesített előtt megjelenhet is kell. Általában javasoljuk [Azure Diagnostics](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-wad) (az ügynök-alapú naplógyűjtés hasonló) vagy [eventflow segítségével](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-eventflow) (folyamaton belüli naplógyűjtés).
 
-3.  **Elemzés**: Események kell teszi és néhány formátumban, elemzési és megjelenítési elérhető. Nincsenek a elemzési és vizualizációs monitorozási és diagnosztikai adatok számos platformra. Javasoljuk, hogy [Azure Log Analytics](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms) és [Azure Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights) mert azok a Service Fabric integrálása.
+3.  **Elemzés**: Események kell teszi és néhány formátumban, elemzési és megjelenítési elérhető. Nincsenek a elemzési és vizualizációs monitorozási és diagnosztikai adatok számos platformra. Javasoljuk, hogy [naplózza az Azure Monitor](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms) és [Azure Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights) mert azok a Service Fabric integrálása.
 
 Is [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview) figyelése számos, az Azure-erőforrások, amelyen a Service Fabric-fürt épül.
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 738ef5df0b2e2a7f31a7316a1d2ef4395168d41e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 5e2a9ae474aaacbf688103efce3cd5ae9b96acde
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722022"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216917"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>HDInsight-fürtök kezelése az Apache Ambari webes felhasználói felület használatával
 
@@ -44,7 +44,7 @@ Az Ambari webes felhasználói felület érhető el, a HDInsight-fürt HTTPS://C
 
 A fürt Ambari közvetlenül az interneten keresztül érhető el, amíg a Ambari webes felhasználói felületen (például a JobTracker) egyes hivatkozások nem lesznek közzétéve az interneten. Ezek a szolgáltatások eléréséhez, létre kell hoznia egy SSH-alagutat. További információkért lásd: [SSH-bújtatással való HDInsight](hdinsight-linux-ambari-ssh-tunnel.md).
 
-## <a name="ambari-web-ui"></a>Az Ambari webes felhasználói felületen
+## <a name="ambari-web-ui"></a>Ambari Web UI
 
 > [!WARNING]  
 > HDInsight az Ambari webes felhasználói felület nem minden funkcióját támogatottak. További információkért lásd: a [nem támogatott műveletek](#unsupported-operations) szakasz ebben a dokumentumban.
@@ -85,6 +85,48 @@ Az alábbi lista tartalmazza az Ambari által használt gyakori riasztási álla
 * **ISMERETLEN**
 
 Más, a riasztások **OK** okozhat a **# riasztás** bejegyzés riasztások számát jeleníti meg a lap tetején. Ez a bejegyzés kiválasztása a riasztások és azok állapotát jeleníti meg.
+
+Az Ambari kínál számos előre meghatározott riasztásokat. Az alábbi riasztásokat segíti a fürt rendelkezésre állásának figyelése:
+
+| Riasztás megnevezése                               | Leírás                                                                                                                                                                                  |
+|------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Metrika a figyelő állapota                    | Ez a riasztás azt jelzi, hogy a figyelő állapota parancsfájl határoz meg a metrikák figyelése folyamatának állapotát.                                                                                   |
+| Az Ambari Ügynökszívverés                   | Ez a riasztás akkor aktiválódik, ha a kiszolgáló elvesztette a kapcsolatot az ügynök.                                                                                                                        |
+| ZooKeeper Server folyamatban                 | A gazdagép-szintű riasztás akkor aktiválódik, ha a ZooKeeper server folyamatot nem lehet meghatározni, akár és figyel-e a hálózaton.                                                               |
+| IOCache metaadatok kiszolgáló állapota           | A gazdagép-szintű riasztás akkor aktiválódik, ha a IOCache metaadat-kiszolgáló nem lehet meghatározni, akár és válaszol az ügyfélkérésekre                                                            |
+| JournalNode Web UI                       | A gazdagép-szintű riasztás akkor aktiválódik, ha a JournalNode webes felhasználói felület nem érhető el.                                                                                                                 |
+| Spark2 Thrift-kiszolgáló                     | A gazdagép-szintű riasztás akkor aktiválódik, ha a Spark2 Thrift-kiszolgáló nem lehet meghatározni, fel kell.                                                                                                |
+| Kiszolgálói folyamat előzményei                   | A gazdagép-szintű riasztás akkor aktiválódik, ha a korábbi kiszolgálói folyamat nem lehet a, akár meglévő és figyel-e a hálózaton.                                                                |
+| Előzmények kiszolgáló webes felhasználói felületen                    | A gazdagép-szintű riasztás akkor aktiválódik, ha a korábbi kiszolgáló webes felhasználói felület nem érhető el.                                                                                                              |
+| ResourceManager Web UI                   | A gazdagép-szintű riasztás akkor aktiválódik, ha az erőforrás-kezelő webes felhasználói felület nem érhető el.                                                                                                             |
+| NodeManager Health Summary               | A szolgáltatásiszint-riasztás akkor aktiválódik, ha nem megfelelő állapotú Csomópontkezelők                                                                                                                    |
+| App Timeline Web UI                      | A gazdagép-szintű riasztás akkor aktiválódik, ha az alkalmazás ütemterv kiszolgáló webes felhasználói Felületet nem érhető el.                                                                                                         |
+| DataNode állapot összegzése                  | A szolgáltatásiszint-riasztás akkor aktiválódik, ha nem megfelelő állapotú DataNodes                                                                                                                       |
+| NameNode Web UI                          | A gazdagép-szintű riasztás akkor aktiválódik, ha a NameNode webes felhasználói felület nem érhető el.                                                                                                                    |
+| ZooKeeper feladatátvételi vezérlő folyamat    | A gazdagép-szintű riasztás akkor aktiválódik, ha a ZooKeeper feladatátvételi vezérlő folyamatot nem lehet a, akár a megerősített és figyel-e a hálózaton.                                                   |
+| Az Oozie-kiszolgáló webes felhasználói felületen                      | A gazdagép-szintű riasztás akkor aktiválódik, ha a webes felhasználói felület Oozie-kiszolgáló nem érhető el.                                                                                                                |
+| Az Oozie-kiszolgáló állapota                      | A gazdagépszintű riasztás akkor aktiválódik, ha az Oozie-kiszolgáló nem lehet másolatot vonatkozó és válaszol az ügyfélkérelmekre.                                                                      |
+| Hive-Metaadattár folyamat                   | A gazdagép-szintű riasztás akkor aktiválódik, ha a Hive-Metaadattár folyamatot nem lehet meghatározni, akár és figyel-e a hálózaton.                                                                 |
+| HiveServer2 Process                      | A gazdagépszintű riasztás akkor aktiválódik, ha a HiveServer nem lehet másolatot vonatkozó és válaszol az ügyfélkérelmekre.                                                                        |
+| WebHCat-kiszolgáló állapota                    | A gazdagép-szintű riasztás akkor aktiválódik, ha a templeton eszközön keresztül végzett kiszolgáló állapota nem kifogástalan.                                                                                                            |
+| Elérhető százalékos ZooKeeper-kiszolgálók      | Ez a riasztás akkor aktiválódik, ha le a fürtben található ZooKeeper-kiszolgálók száma meghaladja a beállított kritikus küszöbértéket. ZooKeeper folyamat ellenőrzések gyűjti.     |
+| Spark2 Livy-kiszolgáló                       | A gazdagép-szintű riasztás akkor aktiválódik, ha a Livy2 kiszolgálót nem lehet meghatározni, fel kell.                                                                                                        |
+| Spark2 Előzménykiszolgáló                    | A gazdagép-szintű riasztás akkor aktiválódik, ha a Spark2 Előzménykiszolgáló nem határozható meg, akár.                                                                                               |
+| Metrikák adatgyűjtő folyamat                | Ez a riasztás akkor aktiválódik, ha a metrikák gyűjtő nem lehet megerősítve, akár és figyel-e a konfigurált port egyenlő a küszöbértékkel másodpercben.                                 |
+| Metrikák Collector – a HBase főkiszolgáló folyamat | Ez a riasztás akkor aktiválódik, ha a metrikák gyűjtő HBase főkiszolgáló folyamatok nem lehet megerősítve, akár és figyel-e a hálózat a másodpercben megadott beállított kritikus küszöbértéket. |
+| Százalékos metrikák figyelők érhető el       | Ez a riasztás akkor aktiválódik, ha a folyamatok nem állnak mentése metrikák figyelése és a hálózat fogadja a konfigurált figyelmeztetési és a kritikus küszöbértékek százalékaként.                             |
+| Százalékos NodeManagers érhető el           | Ez a riasztás akkor aktiválódik, ha száma NodeManagers le a fürtben meghaladja a beállított kritikus küszöbértéket. Gyűjti NodeManager folyamat ellenőrzések eredményeit.        |
+| NodeManager Health                       | A gazdagép-szintű riasztás ellenőrzi a NodeManager összetevő elérhető a csomópont állapota tulajdonság.                                                                                              |
+| NodeManager Web UI                       | A gazdagép-szintű riasztás akkor aktiválódik, ha a NodeManager webes felhasználói felület nem érhető el.                                                                                                                 |
+| NameNode magas rendelkezésre állás állapota        | A szolgáltatásiszint-riasztás akkor aktiválódik, ha a NameNode aktív vagy készenléti NameNode nem futnak.                                                                                     |
+| DataNode folyamat                         | A gazdagép-szintű riasztás akkor aktiválódik, ha az egyes DataNode folyamatok nem lehet a, akár meglévő és figyel-e a hálózaton.                                                         |
+| DataNode Web UI                          | A gazdagép-szintű riasztás akkor aktiválódik, ha a DataNode webes felhasználói felület nem érhető el.                                                                                                                    |
+| Százalékos JournalNodes érhető el           | Ez a riasztás akkor aktiválódik, ha száma JournalNodes le a fürtben nem nagyobb a beállított kritikus küszöbértéknél. Gyűjti JournalNode folyamat ellenőrzések eredményeit.        |
+| Százalékos DataNodes érhető el              | Ez a riasztás akkor aktiválódik, ha száma DataNodes le a fürtben meghaladja a beállított kritikus küszöbértéket. Gyűjti DataNode folyamat ellenőrzések eredményeit.              |
+| A Zeppelin kiszolgáló állapota                   | A gazdagépszintű riasztás akkor aktiválódik, ha a Zeppelin-kiszolgáló nem lehet másolatot vonatkozó és válaszol az ügyfélkérelmekre.                                                                   |
+| Interaktív folyamat hiveserver2-n keresztül          | A gazdagépszintű riasztás akkor aktiválódik, ha a HiveServerInteractive nem lehet másolatot vonatkozó és válaszol az ügyfélkérelmekre.                                                             |
+| LLAP-alkalmazás                         | Ez a riasztás akkor aktiválódik, ha az LLAP alkalmazást nem lehet meghatározni, akár és válaszol a kérelmekre.                                                                                    |
+
 
 Riasztások több alapértelmezett csoport, amely tekinthetők vannak szervezve a **riasztások** lapot.
 

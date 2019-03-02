@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: f0f6bbf5f235d6ae3e86114e583d55c502296470
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 383f65ea925a3575afd988e07784be643201c6b8
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895397"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214494"
 ---
 # <a name="saas-application-technical-info-tab"></a>SaaS-alkalmazás technikai információ lapon
 
@@ -73,6 +73,9 @@ Műveletmező hívása lehetővé teszi az üzenetet, amely akkor jelenik meg az
 - Megkeresést kérek
 
 Művelet beállításainak hívása kapcsolatos további információkért lásd: válassza a közzététel lehetőséget.
+
+>[!Note]
+>Cloud Solution Providers (CSP) partner csatorna vehetnek részt már elérhető.  Lásd: [Cloud Solution Providers](../../cloud-solution-providers.md) további tájékoztatást a marketing, az ajánlat keretében a Microsoft CSP partner-csatornákon.
 
 ## <a name="next-steps"></a>További lépések
 

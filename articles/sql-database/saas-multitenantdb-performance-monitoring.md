@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 5be6acc28932cb3c7f0481b18cbcffae27c3ce13
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 1629e08d4ba1a7fd7cedb40b1e46d1bfd2766497
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002374"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215540"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Szilánkokra osztott több-bérlős egy több-bérlős SaaS-alkalmazás az Azure SQL adatbázis teljesítményének figyelése és kezelése
 
@@ -52,7 +52,7 @@ Az adatbázisteljesítmény-kezelés a teljesítményadatok fordításából és
 
 Az [Azure Portal](https://portal.azure.com) a legtöbb erőforráshoz beépített figyelési és riasztási lehetőségeket biztosít. SQL-adatbázis monitorozási és riasztási érhető el az adatbázisok. A beépített figyelés és riasztás erőforrás-specifikus, így azt a kis számú használni, de nem kényelmes, sok erőforrás használatakor.
 
-Nagy mennyiségű forgatókönyvekhez, ahol sok erőforrásokkal dolgozik, [Log Analytics](https://azure.microsoft.com/services/log-analytics/) is használható. Ez az egy külön Azure-szolgáltatás, amely biztosít elemzési kibocsátott diagnosztikai naplók és a egy log analytics-munkaterület-munkahelyen gyűjtött telemetria. Log Analytics számos szolgáltatásból képes telemetriai adatok gyűjtésére, és lekérdezheti, és riasztásokat állíthat be.
+Nagy mennyiségű forgatókönyvekhez, ahol sok erőforrásokkal dolgozik, [naplózza az Azure Monitor](https://azure.microsoft.com/services/log-analytics/) is használható. Ez az egy külön Azure-szolgáltatás, amely biztosít elemzési kibocsátott diagnosztikai naplók és a Log Analytics-munkaterületen gyűjtött telemetria. Az Azure Monitor naplóira számos szolgáltatásból képes telemetriai adatok gyűjtésére, és lekérdezheti, és riasztásokat állíthat be.
 
 ## <a name="get-the-wingtip-tickets-saas-multi-tenant-database-application-source-code-and-scripts"></a>A Wingtip Tickets SaaS több-bérlős adatbázis forráskódjához és parancsfájlok
 

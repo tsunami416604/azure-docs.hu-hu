@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: 16473b7814763d80f7e850acf44839f5ef640a18
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 13526268480c69798ee52078f7448605fc1afa9a
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109044"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242037"
 ---
 # <a name="what-is-azure-security-center"></a>Mi az az Azure Security Center?
 
@@ -128,7 +128,7 @@ A Security Center tartalmaz, amelyekkel hajtsa végre az automatikus besorolás 
 
 ## <a name="get-secure-faster"></a>Gyorsabb, biztonságos beolvasása
 
-Zökkenőmentes integráció a Microsoft más biztonsági megoldások, például a Microsoft Cloud App Security és a Windows Defender komplex veszélyforrások elleni védelem érdekében győződjön meg arról, hogy a biztonsági kombinálva (beleértve az Azure Policy és a Log Analytics) natív Azure-integráció megoldás átfogó, valamint az olyan egyszerű üzembe helyezni, és elérhetővé teheti.
+Natív Azure-beli integrációs (beleértve az Azure Policy és az Azure Monitor-naplók) kombinálva zökkenőmentes integráció más Microsoft biztonsági megoldásokkal, mint például a Microsoft Cloud App Security és a Windows Defender komplex veszélyforrások elleni védelem érdekében győződjön meg arról, a biztonsági megoldások átfogó, valamint az olyan egyszerű üzembe helyezni és bevezetése.
 
 Ezenfelül a teljes megoldás túl az Azure a helyszíni adatközpontokban és más felhőkben futó munkaterhelések bővítheti.
 

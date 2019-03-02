@@ -4,7 +4,7 @@ description: Útmutató az Azure-Sentinel a Windows biztonsági események adata
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: d51d2e09-a073-41c8-b396-91d60b057e6a
 ms.service: sentinel
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: e3ef0e53e20854a299178cb6fd255c706d15c91f
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 270254ae4f66fa3642df844f384e15564945628e
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56993061"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242156"
 ---
-# <a name="connect-windows-security-events"></a>Csatlakozás a Windows biztonsági események 
+# <a name="connect-windows-security-events"></a>A Windows biztonsági eseményeinek csatlakoztatása 
 
 > [!IMPORTANT]
 > Az Azure Sentinel jelenleg nyilvános előzetes verzióban érhető el.

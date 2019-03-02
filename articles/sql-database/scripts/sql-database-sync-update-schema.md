@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 01/17/2019
-ms.openlocfilehash: 7a83153d4439fe25d92f149b7efe5231151b4dc4
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 775234c89526be5bcfd804b5a755606e8d30f9a9
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390740"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216662"
 ---
 # <a name="use-powershell-to-update-the-sync-schema-in-an-existing-sync-group"></a>PowerShell használata meglévő szinkronizálási csoport szinkronizálási sémájának frissítéséhez
 
@@ -99,7 +99,7 @@ További információ az SQL Data Syncről:
         -  [A PowerShell használata egy Azure-beli SQL Database-adatbázis és egy helyszíni SQL Server-adatbázis közötti szinkronizáláshoz](sql-database-sync-data-between-azure-onprem.md)
 -   Adatok szinkronizálása az ügynök - [adatok szinkronizálása az Azure SQL Data Sync ügynök](../sql-database-data-sync-agent.md)
 -   Ajánlott eljárások – [ajánlott eljárások az Azure SQL Data Sync](../sql-database-best-practices-data-sync.md)
--   A figyelő - [a Log Analytics használatával az SQL Data Sync monitorozása](../sql-database-sync-monitor-oms.md)
+-   A figyelő - [SQL Data Sync monitorozása az Azure Monitor-naplók](../sql-database-sync-monitor-oms.md)
 -   Hibaelhárítás – [az Azure SQL Data Sync szolgáltatással kapcsolatos problémák elhárítása](../sql-database-troubleshoot-data-sync.md)
 -   Szinkronizálási sémájának frissítéséhez
     -   A Transact-SQL - [az Azure SQL Data Sync sémamódosítások-replikáció automatizálása](../sql-database-update-sync-schema.md)

@@ -14,16 +14,16 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: aa43a6f1f7c757366e321e7da0fb1e47d4928cee
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 551f2bbc4846a1b47dafaa03cca08b424572ebf5
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639769"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214877"
 ---
 # <a name="virtual-machine-marketplace-tab"></a>Virtuális gép Marketplace lap
 
-A **Marketplace** lapján a **új ajánlat** lap lehetővé teszi, hogy adja meg a leendő ügyfelek-szerződések marketinges, értékesítési és jogi információk és származó érdeklődők kezeléséhez a Marketplace-en. A hosszú űrlap négy részből áll: **áttekintése**, **Marketing összetevők**, **vezethet felügyeleti**, és **jogi**. 
+A **Marketplace** lapján a **új ajánlat** lap lehetővé teszi, hogy adja meg a leendő ügyfelek-szerződések marketinges, értékesítési és jogi információk és származó érdeklődők kezeléséhez a Marketplace-en. A hosszú űrlap négy szakaszokból áll: **Áttekintés**, **Marketing-összetevők**, **felügyeleti vezethet**, és **jogi**. 
 
 ## <a name="overview-section"></a>A szakasz áttekintése
 Ebben a szakaszban, az Azure Marketplace-ajánlat kapcsolatos általános információkat adja meg.  A hozzáfűzött csillag (*) az a mező nevét jelzi, hogy szükséges.
@@ -38,15 +38,17 @@ A következő táblázat ismerteti a cél és ezek a mezők tartalmát.
 | **összegzés**               | Rövid célját vagy függvény megoldás.  A hosszabb 100 karakternél. |
 | **Hosszú összegzése**          | Cél vagy függvény megoldás.  Legfeljebb 256 karakter hosszúságú. |
 | **Leírás**           | Megoldás leírása.  Legfeljebb 3000 karakter hosszúságú támogatja az egyszerű HTML-formázás. |
+| **A Microsoft CSP viszonteladói csatornát** | Cloud Solution Providers (CSP) partner csatorna vehetnek részt már elérhető.  Lásd: [Cloud Solution Providers](../../cloud-solution-providers.md) további tájékoztatást a marketing, az ajánlat keretében a Microsoft CSP partner-csatornákon. |
 | **Marketing-azonosító**  | Egyedi URL-címet rendelni ehhez az ajánlathoz, jellemzően a szervezet és a megoldás nevét, legfeljebb 50 karakter hosszú lehet.  Példa: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleApp`  |
 | **Előfizetés azonosítókat előzetes verzió** | Adjon hozzá egy és 100 közötti előfizetési azonosítók a dokumentummegjelenítők. Ezek fehér felsorolt előfizetéssel hozzáfér az ajánlatra való közzététel után, mielőtt élő kerül. |
-| **Hasznos hivatkozások**          | Lehet, hogy az üzleti és technikai kategóriák kínáló többszörös kijelölés legjobb társítva.  Legfeljebb 5 engedélyezett.  |
+| **Hasznos hivatkozások**          | URL-címek hozzáadása a dokumentációra, kibocsátási megjegyzései, – gyakori kérdések és így tovább. |
+| **Javasolt kategóriák (max. 5)** | Lehet, hogy az üzleti és technikai kategóriák kínáló többszörös kijelölés legjobb társítva.  Legfeljebb 5 engedélyezett.  |
 |  |  |
 
 
 ## <a name="marketing-artifacts-section"></a>Marketing-összetevők szakasz
 
-Ez a második szakasz három alszakaszok van osztva: **emblémák**, **képernyőkép**, és **videók**. Emblémák az egyetlen szükséges összetevőket, marketing, azonban az összes ajánlott ügyfél jogorvoslati erősen ajánlott.
+Ez a második szakasz három alszakaszok oszlik: **Emblémák**, **képernyőkép**, és **videók**. Emblémák az egyetlen szükséges összetevőket, marketing, azonban az összes ajánlott ügyfél jogorvoslati erősen ajánlott.
 
 ![A piactér lapján a virtuális gépek az új ajánlat űrlap összetevők szakaszában marketing](./media/publishvm_009.png)
 
@@ -120,7 +122,7 @@ Után az ajánlat közzététele sikeresen megtörtént, az érdeklődő kapcsol
 
 ## <a name="legal-section"></a>Jogi szakasz
 
-Ez a szakasz utolsó lehetővé teszi, hogy a két jogi dokumentumok ajánlatok szükséges: adatvédelmi irányelveket és a használati feltételeket.
+Ez a szakasz utolsó lehetővé teszi, hogy a két jogi dokumentumok ajánlatok szükséges: Adatvédelmi szabályzat és a használati feltételeket.
 
 |  **Mező**                |     **Leírás**                                                          |
 |  ---------                |     ---------------                                                          |

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0fe472a45d99f966c851934ea44a346326cb4201
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b85284a5c2c3017e7ccc0a7e06a712e41c2a9561
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175149"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215591"
 ---
 # <a name="tutorial-complete-an-azure-ad-self-service-password-reset-pilot-roll-out"></a>Oktatóanyag: Egy Azure AD önkiszolgáló jelszó-visszaállítás kísérleti a bevezetés befejezése
 
@@ -42,8 +42,8 @@ Fontos, hogy az új jelszó önkiszolgáló kérésének tesztelése kizárólag
       * Győződjön meg róla, hogy a kiválasztott csoportban lévő felhasználók érvényes licenccel rendelkeznek.
    * Kattintson a **Mentés** gombra.
 1. A **Hitelesítési módszerek** lapon:
-   * Állítsa **Az új jelszó kéréséhez szükséges módszerek számát** **2**-re.
-   * A **Felhasználók által választható módszerek** közül válassza azt, amelyet a vállalat engedélyezni szeretne. Ebben az oktatóanyagban jelölje be az **E-mail**, a **Mobiltelefon** és az **Irodai telefon** használatát engedélyező jelölőnégyzeteket.
+   * Állítsa be a **új jelszó kéréséhez szükséges módszerek száma** való **1**
+   * A **Felhasználók által választható módszerek** közül válassza azt, amelyet a vállalat engedélyezni szeretne. Ebben az oktatóanyagban jelölje be a engedélyezése **E-mail** és **mobilalkalmazás-kód (előzetes verzió)**.
    * Kattintson a **Mentés** gombra.
 1. A **Regisztráció** lapon:
    * Válassza az **Igen** lehetőséget a **Felhasználói regisztráció megkövetelése bejelentkezéskor** beállításnál.

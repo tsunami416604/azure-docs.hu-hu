@@ -8,12 +8,12 @@ ms.author: ramonarguelles
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 56f59a76ac3d11677d5b1f76904cf74e933fa7f6
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 3d1ee0b25fbbf0ef895bdf6ff8afad71ff82de25
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56753209"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217172"
 ---
 # <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>Forráshorgony kapcsolatok és az Azure térbeli horgonyok módon-megállapítás
 
@@ -77,4 +77,4 @@ Az alkalmazás ellenőrizheti, hogy két kapcsolati alapok egy lekérdezést a k
 
 ### <a name="sample-code"></a>Mintakód
 
-Láthatja, amely bemutatja, hogyan horgonyok csatlakozhat, és hajtsa végre a lekérdezéseket közeli mintakódot. Tekintse meg az Azure térbeli horgonyok mintaalkalmazások a Githubon.
+Láthatja, amely bemutatja, hogyan horgonyok csatlakozhat, és hajtsa végre a lekérdezéseket közeli mintakódot. Tekintse meg a [Azure térbeli horgonyok mintaalkalmazások](https://github.com/Azure/azure-spatial-anchors-samples) a Githubon.

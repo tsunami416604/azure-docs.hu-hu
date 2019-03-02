@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 12/4/2018
 ms.custom: seodec18
-ms.openlocfilehash: d4bef53a21e6ab7b55c16e27083b818929fbd47c
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 3f1dd0921153d6b65bdc257f91019483adbb18fa
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879254"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213670"
 ---
 # <a name="build-machine-learning-pipelines-with-the-azure-machine-learning-service"></a>Hozhat létre a machine learning-folyamatokat az Azure Machine Learning szolgáltatással
 
@@ -54,7 +54,7 @@ Eltérő lépésekkel lehetővé teszi csak azokat a lépéseket kell, a munkafo
 
 Miután a folyamat arra tervezték, nincs gyakran több finomhangoló körül a betanítási ciklus a folyamat. Ha újra futtathatja egy folyamatot, a futtatási ugrik a lépéseket, amelyek újra kell futtatnia, például egy frissített tanítási szkriptet, és kihagyja a mi nem változott. Az azonos paradigmát változatlan parancsfájlok a lépés végrehajtásához szükséges vonatkozik. 
 
-Az Azure Machine Learning használható különböző eszközökre és keretrendszereket, mint a Microsoft Cognitive Toolkit vagy TensorFlow, a folyamat minden lépése. Az Azure koordináták között a különböző [számítási céljainak](concept-azure-machine-learning-architecture.md) használhatja, hogy a köztes adatokat az alsóbb rétegbeli számítási példányokkal rendelkező könnyen megoszthatók. 
+Az Azure Machine Learning használható különböző eszközökre és keretrendszereket, mint a PyTorch vagy TensorFlow, a folyamat minden lépése. Az Azure koordináták között a különböző [számítási céljainak](concept-azure-machine-learning-architecture.md) használhatja, hogy a köztes adatokat az alsóbb rétegbeli számítási példányokkal rendelkező könnyen megoszthatók. 
 
 Is [követheti a metrikákat, a folyamat kísérletek](https://docs.microsoft.com/azure/machine-learning/service/how-to-track-experiments) közvetlenül az Azure Portalon. 
 

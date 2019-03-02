@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbfade56ff12aa719927d496606a6ce4b4fe5a38
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 07e98d5a93b8576c06e9be8274a974b1b574da4b
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167150"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217741"
 ---
 # <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>Felhőalapú Azure Multi-Factor Authentication üzembe helyezése
 
@@ -42,6 +42,9 @@ Mielőtt elkezdené, győződjön meg arról, az alábbi előfeltételek:
 ## <a name="choose-authentication-methods"></a>Válassza ki a hitelesítési módszerek
 
 Engedélyezze a felhasználók a szervezet követelményei alapján legalább egy hitelesítési módszert. Találtunk, hogy ha engedélyezett a felhasználók a Microsoft Authenticator alkalmazást a legjobb felhasználói élményt biztosít. Ha szeretné megérteni, milyen módszerek érhetők el, és hogyan állíthatja be azokat, tekintse meg a cikket [hitelesítési módszerei](concept-authentication-methods.md).
+
+> [!IMPORTANT]
+> A telefonhívási beállítások verzióját 2019. március kezdve nem lesz elérhető ingyenes vagy próbaverziója az Azure AD-bérlők MFA és az SSPR felhasználók számára. SMS-ezni, ez a változás nem érinti. Telefonhívás továbbra is elérhető a felhasználók számára a fizetős Azure AD-bérlőt. Ez a változás csak az Azure AD ingyenes vagy próbaverziója bérlők hatással van.
 
 ## <a name="get-users-to-enroll"></a>Felhasználók regisztrálása
 

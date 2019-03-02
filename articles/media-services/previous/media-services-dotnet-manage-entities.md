@@ -2,7 +2,7 @@
 title: Eszközök és a Media Services .NET SDK-val kapcsolódó entitások kezelése
 description: Megtudhatja, hogyan kezelheti az eszközök és a kapcsolódó entitások a Media Services SDK-val .NET-keretrendszerhez készült.
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 7cab21919eca9ba62fa57e1c6b2089c0b8e115dc
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: f9f4dacc8aac2fc47002b65798c8367e354bb69c
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979972"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240541"
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Eszközök és a Media Services .NET SDK-val kapcsolódó entitások kezelése
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "55979972"
 > 
 > 
 
-Ez a témakör bemutatja, hogyan kezelheti az Azure Media Services-entitások a .NET-tel (örökölt)
+Ez a témakör bemutatja, hogyan lehet .NET-tel az Azure Media Services-entitások kezelését.
 
 >[!NOTE]
 > 2017. április 1-től kezdődően a fiókokban a 90 napnál régebbi Feladat rekordok automatikusan törölve lesznek, a kapcsolódó Művelet rekordokkal egyetemben, még ha a rekordok összesített száma nem is éri el a maximális kvótát. Például 2017. április 1. feladat rekordot a régebbi, mint a 2016. December 31-én fiókjában automatikusan törölve lesznek. Ha a feladatok/műveletek adatainak archiválásához van szüksége, használhatja a jelen témakörben található kódot.

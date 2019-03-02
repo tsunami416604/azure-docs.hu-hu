@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 0a0d003f3d78c6d18938e9c87dd4862f7429d55b
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 4ef16a932eb50294ff3d1596873295d82f8d894e
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728692"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241477"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C#-szkript (.csx) fejlesztői referencia
 
@@ -376,7 +376,7 @@ A fájlok feltöltéséről a függvény mappáját információkért lásd: a s
 A függvény parancsfájl fájlt tartalmazó könyvtárba címzett szerelvények módosítások automatikusan figyeli. Tekintse meg a szerelvény módosításokat más címtárakban, adja hozzá őket a `watchDirectories` listájában [host.json](functions-host-json.md).
 
 ## <a name="using-nuget-packages"></a>NuGet-csomagok használata
-A NuGet-csomagok használata egy C# működik, és töltse fel a *function.proj* fájlt a függvényalkalmazás fájlrendszer a függvény mappájába. Íme egy példa *function.proj* fájlt, amely hozzáad egy rá *Microsoft.ProjectOxford.Face* verzió *1.1.0-s*:
+A 2.x-es NuGet-csomagok használata C# működik, és töltse fel a *function.proj* fájlt a függvényalkalmazás fájlrendszer a függvény mappájába. Íme egy példa *function.proj* fájlt, amely hozzáad egy rá *Microsoft.ProjectOxford.Face* verzió *1.1.0-s*:
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -390,19 +390,36 @@ A NuGet-csomagok használata egy C# működik, és töltse fel a *function.proj*
 </Project>
 ```
 
-Egy egyéni NuGet-hírcsatorna használatához adja meg a hírcsatorna- *Nuget.Config* fájlt a Függvényalkalmazás gyökerében. További információkért lásd: [konfigurálása NuGet viselkedés](/nuget/consume-packages/configuring-nuget-behavior).
+Egy egyéni NuGet-hírcsatorna használatához adja meg a hírcsatorna- *Nuget.Config* fájlt a Függvényalkalmazás gyökerében. További információkért lásd: [konfigurálása NuGet viselkedés](/nuget/consume-packages/configuring-nuget-behavior). 
 
-### <a name="using-a-extensionscsproj-file"></a>Extensions.csproj fájl használatával
+> [!NOTE]
+> Az 1.x C# funkciók NuGet-csomagok hivatkozott az egy *project.json* helyett a fájl egy *function.proj* fájlt.
+
+1.x funkciók, használjon egy *project.json* inkább fájlt. Íme egy példa *project.json* fájlt: 
+
+```json
+{
+  "frameworks": {
+    "net46":{
+      "dependencies": {
+        "Microsoft.ProjectOxford.Face": "1.1.0"
+      }
+    }
+   }
+}
+```
+
+### <a name="using-a-functionproj-file"></a>Function.proj fájl használatával
 
 1. Az Azure Portalon nyissa meg a függvényt. A naplófájlok lapján a csomag telepítése kimenetet jeleníti meg.
-2. Feltölteni egy *extensions.csproj* fájlt, az ismertetett módszerek valamelyikét használja a [függvény alkalmazásfájlok frissítése](functions-reference.md#fileupdate) az Azure Functions fejlesztői referencia-témakör.
-3. Miután a *extensions.csproj* fájlt töltenek fel úgy, hogy a függvényben az alábbi példához hasonlóan kimeneti a streamelési log:
+2. Feltölteni egy *function.proj* fájlt, az ismertetett módszerek valamelyikét használja a [függvény alkalmazásfájlok frissítése](functions-reference.md#fileupdate) az Azure Functions fejlesztői referencia-témakör.
+3. Miután a *function.proj* fájlt töltenek fel úgy, hogy a függvényben az alábbi példához hasonlóan kimeneti a streamelési log:
 
 ```
 2018-12-14T22:00:48.658 [Information] Restoring packages.
 2018-12-14T22:00:48.681 [Information] Starting packages restore
 2018-12-14T22:00:57.064 [Information] Restoring packages for D:\local\Temp\9e814101-fe35-42aa-ada5-f8435253eb83\function.proj...
-2016-04-04T19:02:50.511 Restoring packages for D:\home\site\wwwroot\HttpTriggerCSharp1\extensions.csproj...
+2016-04-04T19:02:50.511 Restoring packages for D:\home\site\wwwroot\HttpTriggerCSharp1\function.proj...
 2018-12-14T22:01:00.844 [Information] Installing Newtonsoft.Json 10.0.2.
 2018-12-14T22:01:01.041 [Information] Installing Microsoft.ProjectOxford.Common.DotNetStandard 1.0.0.
 2018-12-14T22:01:01.140 [Information] Installing Microsoft.ProjectOxford.Face.DotNetStandard 1.0.0.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: e6148a35540b08916a4f0468af39e0f088453286
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 3889aa1e8b19e203a3f6354c2d26fb82afe2b922
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958866"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214282"
 ---
 # <a name="create-a-new-device-template-version"></a>Hozzon létre egy új eszköz sablon verziója
 
@@ -56,7 +56,7 @@ Mi történik a szabályok és az eszköz irányítópultok, a verzió módosít
 
 Az eszköz sablon több verzióját is létrehozhat. Az idő múlásával kell ezen eszköz-sablonokkal több csatlakoztatott eszközön. Az eszköz sablon egyik verziójának eszközök a másikba telepíthet át. Az alábbi lépések bemutatják, hogyan telepíthet át egy eszköz:
 
-1. Nyissa meg a **Explorer** lapot.
+1. Nyissa meg a **Device Explorer** lapot.
 1. Válassza ki az eszközt kell migrálnia, egy másik verziója.
 1. Válasszon **eszköz áttelepítése**.
 1. Válassza ki a verziószámot, telepítse át az eszköz számára, és válassza ki a kívánt **áttelepítése**.

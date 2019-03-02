@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 07592c6852a7fce057381cb9086baedc9d2b1bd6
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: f1e238890b777e2816648ec407e2581f636d1c12
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111747"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57239827"
 ---
 # <a name="security-alerts-map-and-threat-intelligence"></a>Biztonsági riasztások térképe és fenyegetések felderítése
 Ez a cikk segít az Azure Security Center biztonsági riasztások térkép és biztonsági eseményalapú fenyegetésészlelési térkép biztonsággal kapcsolatos problémák elhárításához.
@@ -62,7 +62,7 @@ A nyers biztonsági események alapján fenyegetésfelderítési térkép megtek
 4. A térkép tetején válassza **megtekintése a klasszikus fenyegetésfelderítés**. A **Fenyegetésfelderítés** irányítópult nyílik meg.
 
    > [!NOTE]
-   > Ha a jobb szélső oszlopban a **CSOMAG FRISSÍTÉSE** szöveg látható, akkor a munkaterület az ingyenes előfizetést használja. A funkció használatához frissítsen a Standard előfizetésre. Ha a jobb szélső oszlopban a **FRISSÍTÉS SZÜKSÉGES** szöveg látható, frissítse az [Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)et a funkció használatához. A díjszabással kapcsolatos további információkért olvassa el az Azure Security Center díjszabását ismertető cikket.
+   > Ha a jobb szélső oszlopban a **CSOMAG FRISSÍTÉSE** szöveg látható, akkor a munkaterület az ingyenes előfizetést használja. A funkció használatához frissítsen a Standard előfizetésre. Ha a jobb szélső oszlopban látható **frissítés szükséges**, frissíteni [naplózza az Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) a funkció használatához. A díjszabással kapcsolatos további információkért olvassa el az Azure Security Center díjszabását ismertető cikket.
    >
 5. Ha több munkaterületet szeretne vizsgálni, rangsorolja a vizsgálatot a **Kártékony IP-címek** oszlop szerint. Ez az oszlop a munkaterülethez tartozó kártékony IP-címek aktuális számát jeleníti meg. Jelölje ki a használni kívánt munkaterületet, és megjelenik a **Fenyegetésfelderítés** irányítópult.
 

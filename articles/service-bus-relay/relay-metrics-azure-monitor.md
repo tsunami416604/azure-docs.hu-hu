@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: spelluru
-ms.openlocfilehash: eb71161c9191e29d3248b2c64fd9cc0fa76c92a2
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: ebff47dc4007ab265b43d32c9f956eb73d5ba1ac
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545144"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213415"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor-preview"></a>Az Azure Relay-metrikák az Azure Monitor (előzetes verzió)
 Az Azure Relay-metrikák teszik lehetővé az Azure-előfizetésében erőforrások állapotát. A metrikai adatok széles skáláját felmérheti a Relay-erőforrás, nem csak a névterek szintjén, hanem az entitások szintjén általános állapotát. A statisztikai lehet fontos, mert ezek segítségével figyelheti az Azure Relay állapotát. Metrikák is segít kiváltó problémák elhárítása anélkül, hogy forduljon az Azure ügyfélszolgálatához.
@@ -47,7 +47,7 @@ Dimenziók támogató metrikákhoz a kívánt dimenzió értékkel kell szűrni.
 
 ## <a name="billing"></a>Számlázás
 
-Az Azure monitorban mérőszámok segítségével a jelenleg előzetes verzióban ingyenes. Azonban használ további megoldásokat, amelyek fogadni a mérőszámadatokat, akkor előfordulhat, hogy után kell díjat ezek a megoldások által. Ha például számítjuk fel az Azure Storage által archiválja mérőszámok az Azure Storage-fiók. Emellett a számlázás a Log Analytics által speciális elemzésekre szolgáló Log Analytics-metrikák adatok streamelése az, ha.
+Az Azure monitorban mérőszámok segítségével a jelenleg előzetes verzióban ingyenes. Azonban használ további megoldásokat, amelyek fogadni a mérőszámadatokat, akkor előfordulhat, hogy után kell díjat ezek a megoldások által. Ha például számítjuk fel az Azure Storage által archiválja mérőszámok az Azure Storage-fiók. Emellett számítjuk fel az Azure Monitor-naplók által, adatfolyam-metrikák adatait az Azure Monitor naplóira fejlett analitikai Ha.
 
 Az alábbi mérőszámok segítségével a szolgáltatás állapotának áttekintése. 
 
@@ -60,24 +60,24 @@ Az összes értékeihez kapnak az Azure Monitor percenként. Az idő részletess
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-| Sikert jelző Figyelőkapcsolatokra (előzetes verzió) | Az Azure Relay egy megadott időszakban végrehajtott sikeres figyelő kapcsolatok száma. <br/><br/> Szervezeti egység: Darabszám <br/> Összesítés típusa: Összes <br/> Dimenzió: EntityName|
-|Figyelőkapcsolatokra-Ügyfélhibái (előzetes verzió)|Figyelő kapcsolatok használata esetén egy meghatározott időtartamon belül az ügyfél-hibák száma.<br/><br/> Szervezeti egység: Darabszám <br/> Összesítés típusa: Összes <br/> Dimenzió: EntityName|
-|Figyelőkapcsolatokra-Kiszolgálóhibái (előzetes verzió)|A figyelő kapcsolatok egy meghatározott időtartamon belül a kiszolgáló hibák száma.<br/><br/> Szervezeti egység: Darabszám <br/> Összesítés típusa: Összes <br/> Dimenzió: EntityName|
-|Sikert jelző feladói kapcsolatokra (előzetes verzió)|Egy megadott időszakban végrehajtott sikeres küldő kapcsolatok száma.<br/><br/> Szervezeti egység: Darabszám <br/> Összesítés típusa: Összes <br/> Dimenzió: EntityName|
-|Feladói kapcsolatokra-Ügyfélhibái (előzetes verzió)|Küldő kapcsolatok használata esetén egy meghatározott időtartamon belül az ügyfél-hibák száma.<br/><br/> Szervezeti egység: Darabszám <br/> Összesítés típusa: Összes <br/> Dimenzió: EntityName|
-|Feladói kapcsolatokra-Kiszolgálóhibái (előzetes verzió)|Küldő kapcsolatok használata esetén egy meghatározott időtartamon belül kiszolgálóhibáinak száma.<br/><br/> Szervezeti egység: Darabszám <br/> Összesítés típusa: Összes <br/> Dimenzió: EntityName|
-|Figyelőkapcsolatokra-TotalRequests (előzetes verzió)|Egy megadott időszakban figyelő kapcsolatok teljes száma.<br/><br/> Szervezeti egység: Darabszám <br/> Összesítés típusa: Összes <br/> Dimenzió: EntityName|
-|Feladói kapcsolatokra-TotalRequests (előzetes verzió)|A kapcsolati kérelmek egy meghatározott időtartamon belül a feladó által végzett.<br/><br/> Szervezeti egység: Darabszám <br/> Összesítés típusa: Összes <br/> Dimenzió: EntityName|
-|Aktív kapcsolatai (előzetes verzió)|Egy adott időszakban aktív kapcsolatok száma.<br/><br/> Szervezeti egység: Darabszám <br/> Összesítés típusa: Összes <br/> Dimenzió: EntityName|
-|Aktív figyelői (előzetes verzió)|Egy adott időszakban aktív figyelők száma.<br/><br/> Szervezeti egység: Darabszám <br/> Összesítés típusa: Összes <br/> Dimenzió: EntityName|
-|ListenerDisconnects (előzetes verzió)|Egy meghatározott időtartamon belül a leválasztott figyelők száma.<br/><br/> Szervezeti egység: Bájt <br/> Összesítés típusa: Összes <br/> Dimenzió: EntityName|
-|SenderDisconnects (előzetes verzió)|Egy meghatározott időtartamon belül a leválasztott feladók száma.<br/><br/> Szervezeti egység: Bájt <br/> Összesítés típusa: Összes <br/> Dimenzió: EntityName|
+| Sikert jelző Figyelőkapcsolatokra (előzetes verzió) | Az Azure Relay egy megadott időszakban végrehajtott sikeres figyelő kapcsolatok száma. <br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+|Figyelőkapcsolatokra-Ügyfélhibái (előzetes verzió)|Figyelő kapcsolatok használata esetén egy meghatározott időtartamon belül az ügyfél-hibák száma.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+|Figyelőkapcsolatokra-Kiszolgálóhibái (előzetes verzió)|A figyelő kapcsolatok egy meghatározott időtartamon belül a kiszolgáló hibák száma.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+|Sikert jelző feladói kapcsolatokra (előzetes verzió)|Egy megadott időszakban végrehajtott sikeres küldő kapcsolatok száma.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+|Feladói kapcsolatokra-Ügyfélhibái (előzetes verzió)|Küldő kapcsolatok használata esetén egy meghatározott időtartamon belül az ügyfél-hibák száma.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+|Feladói kapcsolatokra-Kiszolgálóhibái (előzetes verzió)|Küldő kapcsolatok használata esetén egy meghatározott időtartamon belül kiszolgálóhibáinak száma.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+|Figyelőkapcsolatokra-TotalRequests (előzetes verzió)|Egy megadott időszakban figyelő kapcsolatok teljes száma.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+|Feladói kapcsolatokra-TotalRequests (előzetes verzió)|A kapcsolati kérelmek egy meghatározott időtartamon belül a feladó által végzett.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+|Aktív kapcsolatai (előzetes verzió)|Egy adott időszakban aktív kapcsolatok száma.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+|Aktív figyelői (előzetes verzió)|Egy adott időszakban aktív figyelők száma.<br/><br/> Szervezeti egység: Darabszám <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+|ListenerDisconnects (előzetes verzió)|Egy meghatározott időtartamon belül a leválasztott figyelők száma.<br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
+|SenderDisconnects (előzetes verzió)|Egy meghatározott időtartamon belül a leválasztott feladók száma.<br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
 
 ## <a name="memory-usage-metrics"></a>Memória használati metrikák
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-|Által átvitt bájtok (előzetes verzió)|Bájtok száma az adott időszakon belül át.<br/><br/> Szervezeti egység: Bájt <br/> Összesítés típusa: Összes <br/> Dimenzió: EntityName|
+|Által átvitt bájtok (előzetes verzió)|Bájtok száma az adott időszakon belül át.<br/><br/> Szervezeti egység: Bájt <br/> Aggregation Type: Összes <br/> Dimenzió: EntityName|
 
 ## <a name="metrics-dimensions"></a>Metrikák dimenziók
 

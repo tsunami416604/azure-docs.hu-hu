@@ -13,18 +13,22 @@ ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 06/06/2017
+ms.date: 02/28/2019
 ms.author: ramankum
-ms.openlocfilehash: 8447ffc27068fbbdf5793acdc51bb9724ee41cb8
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 6164a92e19d8657525029bca9a749baadcb49362
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55976724"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242887"
 ---
 # <a name="copy-snapshot-of-a-managed-disk-in-same-subscription-or-different-subscription-with-powershell"></a>Felügyelt lemez pillanatképének másolása előfizetésen belül vagy előfizetések között a PowerShell használatával
 
-A szkript másolatot készít egy pillanatképről az előfizetésen belül vagy egy másik előfizetésben. A szkript használatával a pillanatképet áthelyezheti egy másik előfizetésbe adatmegőrzés céljából. A pillanatképek eltérő előfizetésekben való tárolásával megelőzheti a fő előfizetésben lévő pillanatképek véletlen törlését. 
+Ez a szkript átmásolja egy felügyelt lemez pillanatképét az előfizetésen belül vagy előfizetések között. Ez a szkript a következő esetekben használja:
+
+1. Telepítse át a Premium storage (Premium_LRS) pillanatkép standard szintű tárolóba (Standard_LRS vagy Standard_ZRS) a költségek csökkentése érdekében.
+1. Telepítse át egy pillanatképet a helyileg redundáns tárolás (Premium_LRS, Standard_LRS) zónaredundáns tárolás (Standard_ZRS) számára, hogy a nagyobb megbízhatóságot ZRS tárhelyet.
+1. Helyezze át a pillanatkép másik előfizetésbe tartozó hosszabb adatmegőrzés megadásához ugyanabban a régióban.
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install.md)]
 
@@ -36,7 +40,6 @@ A szkript másolatot készít egy pillanatképről az előfizetésen belül vagy
 
 [!code-powershell[main](../../../powershell_scripts/virtual-machine/copy-snapshot-to-same-or-different-subscription/copy-snapshot-to-same-or-different-subscription.ps1 "Copy snapshot")]
 
-
 ## <a name="script-explanation"></a>Szkript ismertetése
 
 A szkript a következő parancsokat használja egy, a forráspillanatkép azonosítóját használó pillanatkép a célelőfizetésben történő létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
@@ -46,10 +49,9 @@ A szkript a következő parancsokat használja egy, a forráspillanatkép azonos
 | [New-AzSnapshotConfig](https://docs.microsoft.com/powershell/module/az.compute/New-AzSnapshotConfig) | Egy, a pillanatképek létrehozásához használt pillanatkép-konfigurációt hoz létre. Tartalmazza a szülőpillanatkép erőforrás-azonosítóját, valamint a helyet, amely azonos a szülőpillanatkép helyével.  |
 | [New-AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/New-AzDisk) | Létrehoz egy pillanatképet a pillanatkép-konfiguráció, a pillanatkép neve és az erőforráscsoport neve alapján, amelyek paraméterként vannak megadva. |
 
-
 ## <a name="next-steps"></a>További lépések
 
-[Virtuális gép létrehozása pillanatképből](./virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json)
+[Virtuális gép létrehozása pillanatképből](./virtual-machines-windows-powershell-sample-create-vm-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/overview).
 

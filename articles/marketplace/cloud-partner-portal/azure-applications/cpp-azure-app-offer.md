@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 82d072cc6f86ae758bd0fdd4d02b68b1ac1de53a
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 6d86d4c03a41834322c98438958c0b9e87e6025c
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56097150"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213518"
 ---
 # <a name="azure-application-offer"></a>Az ajánlat Azure-alkalmazás
 
@@ -44,6 +44,9 @@ Két fajtája van az Azure-alkalmazások: a felügyelt alkalmazások és megold�
 
 Az Azure piactéren kívül szolgáltatáskatalógus a felügyelt alkalmazások is rendelkeznek. A szolgáltatáskatalógus egy belső katalógus azokról a megoldásokról, amelyeket egy vállalat jóváhagy a felhasználói számára. A katalógus használatával szervezeti szabványoknak megfelelő megoldások olyan szervezeti csoportok garantál. Az alkalmazottak a katalógussal könnyen felfedezhetik az informatikai részleg által jóváhagyott és ajánlott alkalmazásokat.
 
+>[!Note]
+>Cloud Solution Providers (CSP) partner csatorna vehetnek részt már elérhető.  Lásd: [Cloud Solution Providers](../../cloud-solution-providers.md) további tájékoztatást a marketing, az ajánlat keretében a Microsoft CSP partner-csatornákon.
+
 Milyen előnyökkel és a felügyelt alkalmazások további információkért lásd: a [Azure managed applications áttekintése](https://docs.microsoft.com/azure/managed-applications/overview).
 
 
@@ -64,7 +67,6 @@ Az Azure-alkalmazás-ajánlat közzétételéhez a magas szintű lépései a kö
 3. [A Termékváltozat létrehozása](./cpp-skus-tab.md) – a termékváltozat(ok) társított az ajánlat létrehozása. Egy egyedi Termékváltozat megadása kötelező az egyes lemezképek szeretné közzétenni.
 
 4. Igazolja és [az ajánlat közzététele](./cpp-publish-offer.md) – az ajánlat és a technikai eszközök befejezése után az ajánlatot küldhet. Az elküldés során először a közzétételi folyamat. Ez a folyamat során a megoldás vizsgálják, érvényesíti, minősített, majd "élesíti" az Azure Marketplace-en.
-
 
 ## <a name="next-steps"></a>További lépések
 

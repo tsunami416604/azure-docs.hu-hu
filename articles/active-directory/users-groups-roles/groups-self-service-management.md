@@ -10,25 +10,35 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: get-started-article
-ms.date: 01/31/2019
+ms.date: 03/01/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 059746d0e3a277016f5d6b98fe0d0f90c9ee2b96
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 211c519668d26a9972f7c34fbe8cce766936df96
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217989"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215132"
 ---
-# <a name="set-up-azure-active-directory-for-self-service-group-management"></a>Az Azure Active Directory beállítása önkiszolgáló csoportkezelésre
+# <a name="set-up-self-service-group-management-in-azure-active-directory"></a>Önkiszolgáló csoportkezelés az Azure Active Directory beállítása 
 
-A felhasználók saját biztonsági vagy Office 365-csoportokat hozhatnak létre és kezelhetnek az Azure Active Directoryban (Azure AD-ben). A felhasználók ezenkívül biztonsági és Office 365-csoporttagságot igényelhetnek, amelyet ezután a csoport tulajdonosa elfogadhat vagy elutasíthat. A csoporttagság napi szintű felügyelete olyan személyeknek adható ki, akik tisztában vannak az adott tagság üzleti környezetével. Az önkiszolgáló csoportkezelési szolgáltatások kizárólag biztonsági és Office 365-csoportok esetében érhetőek el, levelezési címmel rendelkező biztonsági csoportok vagy terjesztési listák esetében nem.
+Engedélyezheti a felhasználók létrehozása és kezelése a saját biztonsági vagy Office 365-csoportok az Azure Active Directoryban (Azure AD). A csoport tulajdonosának jóváhagyása vagy elutasítása tagsági kérelmeket és is csoporttagság delegálására. Az önkiszolgáló csoportkezelési szolgáltatások levelezési címmel rendelkező biztonsági csoportok vagy terjesztési listák esetében nem érhetők el. 
 
-Az önkiszolgáló csoportkezelési szolgáltatások két forgatókönyvet: 
+## <a name="self-service-group-membership-defaults"></a>Önkiszolgáló csoport tagsági alapértelmezései
 
-* **Delegált csoportkezelés** – Jellemző példa rá egy olyan rendszergazda, aki a vállalata által használt SaaS-alkalmazás hozzáférésének kezelését végzi. E hozzáférési jogosultságok kezelése nehézkessé válik, így a rendszergazda új csoport létrehozására kéri fel a vállalat tulajdonosát. A rendszergazda hozzáférést ad az új csoportnak az alkalmazáshoz, és hozzáadja a csoporthoz az összes olyan személyt, aki már hozzáféréssel rendelkezik az alkalmazáshoz. A vállalat tulajdonosa ezt követően további felhasználókat vehet fel a csoportba, akik automatikusan hozzáférést kapnak az alkalmazáshoz. A vállalat tulajdonosának nem kell a rendszergazdára várnia a felhasználók hozzáférésének kezeléséhez. Ha a rendszergazda ugyanezt az engedélyt biztosítja egy vezetőnek egy eltérő üzleti csoportban, akkor a személy a saját felhasználóinak a hozzáférését is kezelheti. Sem a vállalat tulajdonosa, sem pedig a vezető nem tekintheti meg vagy kezelheti egymás felhasználóit. A rendszergazda továbbra is megtekintheti az alkalmazáshoz hozzáféréssel rendelkező összes felhasználó listáját, és blokkolhatja is a hozzáférést, ha szükséges.
+Ha biztonsági csoportokat hoz létre az Azure Portalon vagy Azure AD PowerShell-lel, csak a csoport tulajdonosai tagságot is frissítheti. A létrehozott biztonsági csoportok a [hozzáférési panel](https://account.activedirectory.windowsazure.com/r#/joinGroups) , és az összes Office 365-csoportok lehet csatlakozni az összes felhasználó számára, hogy tulajdonosa által jóváhagyott, vagy automatikusan jóváhagyta-e. A hozzáférési panelen módosíthatja a csoport létrehozásakor tagsági lehetőségek.
+
+A létrehozott csoportok | Biztonsági csoport alapértelmezett viselkedése | Az Office 365-csoport alapértelmezett viselkedése
+------------------ | ------------------------------- | ---------------------------------
+[Azure AD PowerShell](groups-settings-cmdlets.md) | Csak a tulajdonosok adhat hozzá tagokat<br>Látható, de nem lehet csatlakozni a hozzáférési panelen | Nyissa meg az összes felhasználó csatlakozni
+[Azure Portal](https://portal.azure.com) | Csak a tulajdonosok adhat hozzá tagokat<br>Látható, de nem lehet csatlakozni a hozzáférési panelen<br>Tulajdonos nincs hozzárendelve automatikusan csoport létrehozásakor | Nyissa meg az összes felhasználó csatlakozni
+[Hozzáférési panel](https://account.activedirectory.windowsazure.com/r#/joinGroups) | Nyissa meg az összes felhasználó csatlakozni<br>Tagsági beállítások módosíthatók, ha a csoport létrehozása | Nyissa meg az összes felhasználó csatlakozni<br>Tagsági beállítások módosíthatók, ha a csoport létrehozása
+
+## <a name="self-service-group-management-scenarios"></a>Önkiszolgáló csoport felügyeleti forgatókönyvek
+
+* **Delegált csoportkezelés** – Jellemző példa rá egy olyan rendszergazda, aki a vállalata által használt SaaS-alkalmazás hozzáférésének kezelését végzi. E hozzáférési jogosultságok kezelése nehézkessé válik, így a rendszergazda új csoport létrehozására kéri fel a vállalat tulajdonosát. A rendszergazda hozzáférést ad az új csoportnak az alkalmazáshoz, és hozzáadja a csoporthoz az összes olyan személyt, aki már hozzáféréssel rendelkezik az alkalmazáshoz. A vállalat tulajdonosa ezt követően további felhasználókat vehet fel a csoportba, akik automatikusan hozzáférést kapnak az alkalmazáshoz. A vállalat tulajdonosának nem kell a rendszergazdára várnia a felhasználók hozzáférésének kezeléséhez. Ha a rendszergazda ugyanezt az engedélyt biztosítja egy vezetőnek egy eltérő üzleti csoportban, akkor e személy hozzáférését is kezelheti saját csoport tagjainak. Nem a vállalat tulajdonosa, és a kezelő nem tekintheti meg vagy kezelheti egymás csoporttagságok. A rendszergazda továbbra is megtekintheti az alkalmazáshoz hozzáféréssel rendelkező összes felhasználó listáját, és blokkolhatja is a hozzáférést, ha szükséges.
 * **Önkiszolgáló csoportkezelés** – Jellemző példa rá két olyan felhasználó, akik egyaránt rendelkeznek egymástól függetlenül üzembe helyezett SharePoint Online-webhelyekkel. Ezek a felhasználók szeretnének egymás csapatának hozzáférést adni a saját webhelyükhöz. Ennek megvalósítása érdekében létrehozhatnak egy csoportot az Azure AD-ben, majd a SharePoint Online felületén mindketten kiválaszthatják ezt a csoportot, így biztosítva hozzáférést a webhelyeikhez. Ha valaki hozzáférést igényel, azt a hozzáférési panelen igényelheti, és ha kérését jóváhagyják, automatikusan hozzáférést kap mindkét SharePoint Online-webhelyhez. Ezt követően egyikük dönthet úgy, hogy a webhelyhez hozzáféréssel rendelkező összes felhasználó számára egy adott SaaS-alkalmazáshoz is hozzáférést ad. A SaaS-alkalmazás rendszergazdája adhat hozzáférési jogot a SharePoint Online webhelyhez tartozó alkalmazáshoz. Ettől kezdve az elfogadott kérések mindkét SharePoint Online-webhelyhez és az SaaS-alkalmazáshoz is hozzáférést biztosítanak.
 
 ## <a name="make-a-group-available-for-user-self-service"></a>Csoport elérhetővé tétele önkiszolgáló felhasználói tevékenységhez

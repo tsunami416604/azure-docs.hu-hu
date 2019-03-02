@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/04/2018
+ms.date: 02/12/2019
 ms.author: jdial
-ms.openlocfilehash: 98b2c0bc27336e9ee5fe9aaf6332d9854e9af4de
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 5689cdb2e9f8028f8e1e05a9b43cc00719701fce
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650291"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213908"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Az Azure Virtual Network – gyakori kérdések (GYIK)
 
@@ -231,6 +231,26 @@ Virtuális hálózatok közötti társviszony-létesítés (vagy virtuális hál
 
 ### <a name="can-i-create-a-peering-connection-to-a-vnet-in-a-different-region"></a>Egy másik régióban is létrehozhatok egy virtuális hálózatok közötti társviszony-létesítési kapcsolat?
 Igen. Globális virtuális társhálózatok létesítése lehetővé teszi a különböző régiókban található virtuális hálózatok társviszonyba állítása. Globális virtuális társhálózatok létesítésének érhető el minden nyilvános Azure-régióban és China cloud régiókban. Ön nem globálisan társviszonyt a nyilvános Azure-régióban országos felhőbeli régióban. Globális társviszony-létesítés jelenleg nem áll rendelkezésre a kormányzati felhő.
+
+### <a name="what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers"></a>Mik azok a globális virtuális társhálózatok létesítése és a Load Balancer Terheléselosztók kapcsolatos korlátozások?
+Ha a két virtuális hálózat (globális virtuális hálózatok közötti Társviszony) eltérő régiókban, az alapszintű Load Balancert használó erőforrásokhoz nem lehet csatlakoztatni. Standard Load Balancert használó erőforrásokhoz csatlakozhat.
+A következő erőforrások alapszintű Terheléselosztók, ami azt jelenti, hogy a globális virtuális társhálózatok létesítésének között nem lehet kommunikálni hozzájuk használja:
+- Alapszintű terheléselosztó mögötti virtuális gépek
+- Virtuálisgép-méretezési csoportok az alapszintű Load Balancer Terheléselosztók 
+- Redis Cache 
+- Az Application Gateway (v1) SKU
+- Service Fabric
+- SQL Always-on
+- SQL MI
+- API platformoktól
+- ADDS
+- Logic Apps
+- HD Insight
+-   Azure Batch
+- AKS
+- App Service-környezet
+
+Ezen erőforrás ExpressRoute- vagy VNet – VNet virtuális hálózati átjárók keresztül csatlakozhat.
 
 ### <a name="can-i-enable-vnet-peering-if-my-virtual-networks-belong-to-subscriptions-within-different-azure-active-directory-tenants"></a>Lehet engedélyezni a virtuális hálózatok közötti Társviszonyt, ha a virtuális hálózatok különböző Azure Active Directory-bérlőn belül előfizetések tartoznak?
 Igen. Emellett akkor lehet megállapítani a virtuális hálózatok közötti társviszony-létesítés (akár helyi, akár globális), ha az előfizetés másik Azure Active Directory-bérlő tartozik. Ezt megteheti a PowerShell vagy parancssori felület használatával. Portál még nem támogatott.

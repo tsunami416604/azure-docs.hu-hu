@@ -10,19 +10,25 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 3fcac10e32d6510510dc3a069c754a6f482e75eb
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: f287648758d2883226132c0f45418dacaaf27652
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194843"
+ms.locfileid: "57216322"
 ---
 # <a name="indexing-json-blobs-with-azure-search-blob-indexer"></a>JSON-blobok indexelése az Azure Search Blob indexelőjével
 Ez a cikk bemutatja, hogyan konfigurálhatja az Azure Search blob indexelőjével nyerje strukturált JSON-dokumentumokat az Azure Blob storage-ban, és lehetővé teszi az Azure Search kereshető. Ezt a munkafolyamatot hoz létre az Azure Search-index, és betölti azt a meglévő, a JSON-blobok kinyert szöveget. 
 
 Használhatja a [portál](#json-indexer-portal), [REST API-k](#json-indexer-rest), vagy [.NET SDK-val](#json-indexer-dotnet) a JSON-tartalom indexelése. Az összes megközelítések közös, hogy a JSON-dokumentumok találhatók-e az Azure Storage-fiókban lévő blobtárolóba. A JSON-dokumentumok küld más-Azure platformról útmutatásért lásd: [adatok importálása az Azure Search](search-what-is-data-import.md).
 
-Az Azure Blob storage-ban JSON-blobok jellemzően egyetlen JSON-dokumentumok és a egy JSON-tömböt. Az az Azure Search blob indexelőjével vagy konstrukció függően állíthatja be, hogy tudja elemezni a **parsingMode** paraméter a kérésre.
+Az Azure Blob storage-ban JSON-blobok jellemzően egy JSON-dokumentumok vagy a JSON-entitások gyűjteményét. A JSON-gyűjteményeket, a blob rendelkezhet egy **tömb** megfelelően formázott JSON-elemek. Blobok is álló egy sortöréssel elválasztva több egyedi JSON entitásokra. Az az Azure Search blob indexelőjével értelmezni tudja az ilyen konstrukció, attól függően, hogyan állíthatja a **parsingMode** paraméter a kérésre.
+
+> [!IMPORTANT]
+> `json` és `jsonArray` elemzési módhoz általánosan elérhetők, de `jsonLines` elemzési mód nyilvános előzetes verzióban érhető el, és nem éles környezetekben használható. További információkért lásd: [REST api-version = 2017-11-11-Preview](search-api-2017-11-11-preview.md). 
+
+> [!NOTE]
+> Kövesse az indexelő konfigurációs a [egy-a-többhöz indexelő](search-howto-index-one-to-many-blobs.md) több keresési dokumentumot egy Azure-blobból a kimeneti.
 
 <a name="json-indexer-portal"></a>
 
@@ -51,11 +57,13 @@ Az a **adatforrás** a forrás oldalon kell lennie **Azure Blob Storage**, az al
 
 + **Kinyerni kívánt adatok** kell *tartalom és metaadatok*. Ez a beállítás lehetővé teszi, hogy a varázsló következtetni és az importálás a mezők leképezése.
    
-+ **Elemzési mód** értékre kell állítani *JSON* vagy *JSON-tömböt*. 
++ **Elemzési mód** értékre kell állítani *JSON*, *JSON-tömböt* vagy *JSON sorok*. 
 
   *JSON* articulates minden egyes blob-dokumentumként egyetlen keresési, a keresési eredmények között egy független elemként jelenik meg. 
 
-  *JSON-tömböt* van, a blobok mikroszolgáltatásokból álló, több olyan elemet, ahol azt szeretné, hogy minden egyes lehet különálló, független keresési dokumentum csuklós elemet. Ha a blobok összetettek, és ne adjon *JSON-tömböt* a teljes blob eseménystreamként egyetlen dokumentum.
+  *JSON-tömböt* , amelyek tartalmazzák a megfelelően formázott JSON-adatok – a megfelelően formázott JSON-blobok objektumok egy tömbjét felel meg, vagy rendelkezik egy olyan tulajdonsággal, amely objektumok tömbje, és azt szeretné, hogy minden egyes lehet különálló, független keresési dokumentum csuklós elemet. Ha a blobok összetettek, és ne adjon *JSON-tömböt* a teljes blob eseménystreamként egyetlen dokumentum.
+
+  *JSON-sorok* van, a blobok mikroszolgáltatásokból álló, egy új sor, elválasztva több JSON entitás minden entitás független keresési különálló dokumentumként kell csuklós a kívánt helyre. Ha a blobok összetettek, és ne adjon *JSON sorok* elemzési módot, majd a teljes blob eseménystreamként egyetlen dokumentum.
    
 + **A tároló** meg kell adnia a tárfiók és tároló, vagy egy kapcsolati karakterláncot, amelyet a tárolóban. Kapcsolati karakterláncok Blob szolgáltatás portáloldalán kérheti le.
 
@@ -116,12 +124,13 @@ Indexelő kódalapú JSON, használja a [Postman](search-fiddler.md) és a REST 
 
 Ellentétben a portál varázsló egy kódot megközelítés is rendelkeznie kell egy index helyben, készen áll a küldésekor, fogadja el a JSON-dokumentumok a **indexelő létrehozása** kérelmet.
 
-Az Azure Blob storage-ban JSON-blobok jellemzően egyetlen JSON-dokumentumok és a egy JSON-tömböt. Az az Azure Search blob indexelőjével vagy konstrukció, attól függően, hogyan állíthatja tudja elemezni a **parsingMode** paraméter a kérésre.
+Az Azure Blob storage-ban JSON-blobok jellemzően egy JSON-dokumentumok és a egy JSON "array". Az az Azure Search blob indexelőjével vagy konstrukció, attól függően, hogyan állíthatja tudja elemezni a **parsingMode** paraméter a kérésre.
 
 | JSON-dokumentumok | parsingMode | Leírás | Rendelkezésre állás |
 |--------------|-------------|--------------|--------------|
-| Egy blob egy | `json` | Elemzi a JSON-blobok, a szöveg egy olyan adattömb. Egyes JSON-blobok az Azure Search egyetlen dokumentum válik. | Általánosan elérhető a [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) és [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) API-k. |
-| Több blobonkénti | `jsonArray` | Elemzi a blobban, ahol a tömb egyes elemei lesz-e egy külön Azure Search-dokumentum egy JSON-tömböt.  | Általánosan elérhető a [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) és [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) API-k. |
+| Egy blob egy | `json` | Elemzi a JSON-blobok, a szöveg egy olyan adattömb. Egyes JSON-blobok az Azure Search egyetlen dokumentum válik. | Általánosan elérhető a [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API és [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK-t. |
+| Több blobonkénti | `jsonArray` | Elemzi a blobban, ahol a tömb egyes elemei lesz-e egy külön Azure Search-dokumentum egy JSON-tömböt.  | Mindkét előzetes verzióban elérhető [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API és [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK-t. |
+| Több blobonkénti | `jsonLines` | Egy blobot, amely tartalmaz egy új sor, ahol a minden entitás egy külön Azure Search-dokumentum lesz elválasztva több JSON entitás ("tömb") elemzi. | Mindkét előzetes verzióban elérhető [REST](https://docs.microsoft.com/rest/api/searchservice/indexer-operations) API és [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.indexer) SDK-t. |
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1 – állítsa össze a kérés bemenetek
 
@@ -208,12 +217,16 @@ Mostanáig az adatforrás és az index parsingMode független lett. Azonban az i
 
 + Állítsa be **parsingMode** való `json` egyetlen dokumentumként minden egyes blob indexelendő.
 
-+ Állítsa be **parsingMode** való `jsonArray` blobok JSON-tömbök áll, és szüksége lesz egy külön dokumentum az Azure Search szolgáltatásban a tömb egyes elemei. A dokumentum az egyetlen elemet a keresési eredmények között is felfoghatók. Ha azt szeretné, hogy a keresési eredmények között egy független elem megjelenjen a tömb egyes elemei, használja a `jsonArray` lehetőséget.
++ Állítsa be **parsingMode** való `jsonArray` blobok JSON-tömbök áll, és szüksége lesz egy külön dokumentum az Azure Search szolgáltatásban a tömb egyes elemei. 
 
-A JSON-tömbök Ha a tömb létezik egy alacsonyabb szintű tulajdonság jelzi, ha a tömb a blobon belüli kerül a dokumentum legfelső szintű beállítása.
++ Állítsa be **parsingMode** való `jsonLines` Ha blobok JSON több entitás, Sortöréssel elválasztott áll, és minden entitás egy külön dokumentum az Azure Search lesz szüksége.
+
+A dokumentum az egyetlen elemet a keresési eredmények között is felfoghatók. Ha azt szeretné, hogy a keresési eredmények között egy független elem megjelenjen a tömb egyes elemei, használja a `jsonArray` vagy `jsonLines` lehetőséget igény szerint.
+
+Az indexelő definíciója belül is használhat [mezőleképezéseivel](search-indexer-field-mappings.md) kiválasztása a forrás JSON-dokumentum melyik tulajdonságait használják a cél search-index feltöltéséhez. A `jsonArray` mód, elemzés, ha a tömb már létezik egy alacsonyabb szintű tulajdonságként, beállíthat jelző, ahol a tömb a blobon belüli kerül a dokumentum legfelső szintű.
 
 > [!IMPORTANT]
-> Ha használ `json` vagy `jsonArray` elemzési mód, az Azure Search feltételezi, hogy, hogy az adatforrás összes blobot tartalmaz-e a JSON. Ha ugyanazt az adatforrást támogatja a JSON-t, és nem JSON blobok vegyesen szeretne, ossza meg velünk az [UserVoice-webhelyünkön](https://feedback.azure.com/forums/263029-azure-search).
+> Ha használ `json`, `jsonArray` vagy `jsonLines` elemzési mód, az Azure Search feltételezi, hogy, hogy az adatforrás összes blobot tartalmaz-e a JSON. Ha ugyanazt az adatforrást támogatja a JSON-t, és nem JSON blobok vegyesen szeretne, ossza meg velünk az [UserVoice-webhelyünkön](https://feedback.azure.com/forums/263029-azure-search).
 
 
 ### <a name="how-to-parse-single-json-blobs"></a>Hogyan kell elemezni, egy JSON-blobok
@@ -232,7 +245,7 @@ A blob indexelőjével elemzi a JSON-dokumentum, egy Azure Search-dokumentumban.
 
 Feljegyzett, mező-leképezések nem szükségesek. Megadott index "szöveg", "datePublished, és a"címkék"mezőbe, a blob indexelő is kikövetkeztetni a megfelelő leképezés leképezése a kérelemben szereplő mező nélkül.
 
-### <a name="how-to-parse-json-arrays"></a>Hogyan kell elemezni a JSON-tömbök
+### <a name="how-to-parse-json-arrays-in-a-well-formed-json-document"></a>Hogyan JSON-tömbök a megfelelően formázott JSON-dokumentumok elemzése
 
 Másik megoldásként kérheti a JSON-tömb funkció. Ez a funkció akkor hasznos, ha a blobok tartalmazzák egy *JSON-objektumok tömbje*, és azt szeretné, hogy minden elem egy külön Azure Search-dokumentum lesz. Például adja meg a következő JSON-blobját, fel lehet tölteni az Azure Search-index három külön dokumentumot, az egyes "id" és "szöveg" mezőkkel.  
 
@@ -281,7 +294,31 @@ Használja ezt a konfigurációt a tömbben szereplő indexelése a `level2` tul
         "parameters" : { "configuration" : { "parsingMode" : "jsonArray", "documentRoot" : "/level1/level2" } }
     }
 
-### <a name="field-mappings"></a>Mezőleképezések
+### <a name="how-to-parse-blobs-with-multiple-json-entities-separated-by-newlines"></a>Blobok sortörésekből álló szóközöket tartalmazza elválasztva több JSON entitásokkal módját
+
+Ha a blob egy sortöréssel elválasztva több JSON entitásokat tartalmaz, és azt szeretné, hogy minden elem lesz egy külön Azure Search-dokumentum, kérheti a JSON-sorok funkciót. Például adott az a következő blob (ha vannak három különböző JSON-entitások), az Azure Search-index három seprate dokumentumot, az "id" és "szöveg" mezők mindegyike fel lehet tölteni.
+
+    { "id" : "1", "text" : "example 1" }
+    { "id" : "2", "text" : "example 2" }
+    { "id" : "3", "text" : "example 3" }
+
+A JSON-sorok az indexelő definíciója az alábbi példához hasonlóan kell kinéznie. Figyelje meg, hogy a parsingMode paraméter adja meg a `jsonLines` elemzőt. 
+
+    POST https://[service name].search.windows.net/indexers?api-version=2017-11-11
+    Content-Type: application/json
+    api-key: [admin key]
+
+    {
+      "name" : "my-json-indexer",
+      "dataSourceName" : "my-blob-datasource",
+      "targetIndexName" : "my-target-index",
+      "schedule" : { "interval" : "PT2H" },
+      "parameters" : { "configuration" : { "parsingMode" : "jsonLines" } }
+    }
+
+Újra, figyelje meg, mező-leképezések, hogy nincs megadva, hasonlóan ahhoz, hogy a `jsonArray` elemzési mód.
+
+### <a name="using-field-mappings-to-build-search-documents"></a>Mező-leképezések használatával hozhat létre a dokumentumok keresése
 
 Ha a forrás- és mezőket metaadatszerű nem igazodik, leképezés mezőszakaszt definiálhat explicit mezők társítások a kérelem törzsében szereplő.
 

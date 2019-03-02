@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/13/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: f57e793278af7eb03fe49fd657e45b0846db8b1c
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 3a8ee51656b5521916e68ee34edda91c34ea0c35
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817915"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216038"
 ---
 # <a name="authenticate-access-to-azure-blobs-and-queues-using-azure-active-directory-preview"></a>Hitelesíti a hozzáférést az Azure-blobok és üzenetsorok az Azure Active Directoryval (előzetes verzió)
 
@@ -57,9 +57,11 @@ Az RBAC szerepkör van rendelve egy Azure AD rendszerbiztonsági tag, amikor az 
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
+Az Azure Portal beépített szerepkör hozzárendelése kapcsolatban lásd: [hozzáférést biztosítani Azure-tárolók és az Azure Portalon (előzetes verzió) az RBAC üzenetsorok](storage-auth-aad-rbac.md).
+
 ### <a name="access-permissions-granted-by-rbac-roles"></a>RBAC-szerepkörök által biztosított hozzáférési engedélyek 
 
-A következő táblázat összefoglalja a hatókör függően a beépített szerepkörök, hozzáférési jogot:
+A következő táblázat összefoglalja a hatókör különböző szintjei a beépített szerepkörök hozzáférési jogot:
 
 |Hatókör|BLOB adatok tulajdonosa|Blobadatok Közreműködője|Blob Data Reader|Üzenetsorbeli adatok Közreműködője|Queue Data Reader|
 |---|---|---|---|---|---|

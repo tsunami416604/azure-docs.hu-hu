@@ -9,18 +9,18 @@ ms.subservice: custom-translator
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 01d7d197983638e415798b0b73e7ac7168c8cfab
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 9dcfb40835202849761d5d81728caf6be63d9641
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192700"
+ms.locfileid: "57215472"
 ---
 # <a name="view-model-details"></a>Modell részleteinek megtekintése
 
 A modellek lapon, a projekt összes modellt, hogy a projekt jeleníti meg. Minden modell tanítása az adott projekt szerepel ezen a lapon.
 
-A projektben egyes modell a következő modell részletei jelennek meg.
+A projektben egyes modellekre ezek az adatok jelennek meg.
 
 1.  Modell neve: Egy adott modell modell nevét jeleníti meg.
 

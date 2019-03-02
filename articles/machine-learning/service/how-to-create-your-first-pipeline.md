@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: f5d453fbacb44105c491c9e69085a219099943fa
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: b1544d73478f30c7501e76a8e20975f975f9708d
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326908"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215047"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Hozzon létre, és a egy machine learning-folyamat futtatása az Azure Machine Learning-SDK használatával
 
@@ -234,7 +234,7 @@ except ComputeTargetException:
 
 ## <a id="steps"></a>Hozza létre a folyamat lépései
 
-Hozzon létre, és a egy számítási célnak a munkaterülethez csatolja, készen áll egy folyamat lépés meghatározásához. Nincsenek elérhető az Azure Machine Learning SDK segítségével számos beépített lépéseket. Az alábbi lépéseket a legtöbb alapszint egy [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py), amely egy Python-szkriptet futtat egy adott számítási célnak.
+Hozzon létre, és a egy számítási célnak a munkaterülethez csatolja, készen áll egy folyamat lépés meghatározásához. Nincsenek elérhető az Azure Machine Learning SDK segítségével számos beépített lépéseket. Az alábbi lépéseket a legtöbb alapszint egy [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py), amely egy Python-szkriptet futtat egy adott számítási célnak:
 
 ```python
 trainStep = PythonScriptStep(
@@ -281,6 +281,8 @@ steps = [dbStep]
 pipeline1 = Pipeline(workspace=ws, steps=steps)
 ```
 
+További információkért lásd: a [azure-folyamat-lépéseket csomag](https://docs.microsoft.com/python/api/azureml-pipeline-steps/?view=azure-ml-py) és [osztály folyamat](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipeline%28class%29?view=azure-ml-py) hivatkozást.
+
 ## <a name="submit-the-pipeline"></a>Küldje el a folyamat
 
 A folyamat elküldésekor Azure Machine Learning szolgáltatás ellenőrzi az egyes lépések a függőségeket, és feltölti a megadott forráskönyvtár pillanatképét. Ha nincs forráskönyvtár van megadva, az aktuális helyi könyvtárban van feltöltve.
@@ -302,6 +304,8 @@ Ha először futtatja a folyamatot, az Azure Machine Learning:
 * Összetevők, például naplók, az stdout és stderr, metrikák és a lépés által megadott hoz létre. Ezek az összetevők ezután feltöltött, és a felhasználó alapértelmezett adattárolóban tárolni.
 
 ![Egy kísérlet futtató folyamat ábrája](./media/how-to-create-your-first-pipeline/run_an_experiment_as_a_pipeline.png)
+
+További információkért lásd: a [osztály kísérletezhet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) hivatkozást.
 
 ## <a name="publish-a-pipeline"></a>Folyamatok közzététele
 

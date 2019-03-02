@@ -1,6 +1,6 @@
 ---
-title: A Log Analytics használatával az Azure SQL Data Sync monitorozása |} A Microsoft Docs
-description: Azure SQL Data Sync monitorozása a Log Analytics használatával
+title: Azure SQL Data Sync monitorozása az Azure Monitor-naplókkal |} A Microsoft Docs
+description: Azure SQL Data Sync monitorozása az Azure Monitor-naplók használatával
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -12,16 +12,18 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 12/20/2018
-ms.openlocfilehash: 75bbae000fa0fbbf783b3df43bd51ed2f8a73e96
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: a1f2b0e3095718caad7c35a20bf7e91c88568364
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561416"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213466"
 ---
-# <a name="monitor-sql-data-sync-with-log-analytics"></a>Az SQL Data Sync monitorozása a Log Analytics szolgáltatással 
+# <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>Az SQL Data Sync monitorozása az Azure Monitor naplóira 
 
 Az SQL Data Sync a tevékenységnaplóban, és észlelheti a hibák és figyelmeztetések, korábban kellett az SQL Data Sync manuálisan ellenőrizze az Azure Portalon, vagy a PowerShell vagy a REST API segítségével. Kövesse a cikkben egy egyéni megoldás, amely javítja a figyelés felület Data Sync beállítása. Ez a megoldás saját forgatókönyvéhez igazítva testre szabhatja.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 Az SQL Data Sync áttekintéséhez tekintse meg a [több felhőalapú és helyszíni adatbázis közötti, az Azure SQL Data Sync segítségével végzett adatszinkronizálást](sql-database-sync-data.md) ismertető cikket.
 
@@ -30,27 +32,27 @@ Az SQL Data Sync áttekintéséhez tekintse meg a [több felhőalapú és helysz
 
 ## <a name="monitoring-dashboard-for-all-your-sync-groups"></a>Az összes szinkronizálási csoport figyelési irányítópult 
 
-Már nincs szüksége, nézze át a naplókat a problémák kereséséhez külön-külön az egyes szinkronizálási csoportok. Bármely, egy helyen az előfizetés összes szinkronizálási csoportot egy egyéni Log Analytics-nézet használatával figyelheti meg. Ez a nézet a fontos információk az SQL Data Sync ügyfeleknek feltárásával.
+Már nincs szüksége, nézze át a naplókat a problémák kereséséhez külön-külön az egyes szinkronizálási csoportok. Bármely, egy helyen az előfizetés összes szinkronizálási csoportot egy egyéni log analytics-nézet használatával figyelheti meg. Ez a nézet a fontos információk az SQL Data Sync ügyfeleknek feltárásával.
 
 ![Adatok szinkronizálása figyelési irányítópult](media/sql-database-sync-monitor-oms/sync-monitoring-dashboard.png)
 
 ## <a name="automated-email-notifications"></a>Az automatikus E-mail-értesítések
 
-Már nincs szüksége a naplóban manuálisan az Azure Portalon vagy a PowerShell vagy a REST API használatával. A [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), lépjen közvetlenül az e-mail-címeket, annak a személynek, megtekintheti őket, ha hiba lép fel igénylő riasztásokat is létrehozhat.
+Már nincs szüksége a naplóban manuálisan az Azure Portalon vagy a PowerShell vagy a REST API használatával. A [naplózza az Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview), lépjen közvetlenül az e-mail-címeket, annak a személynek, megtekintheti őket, ha hiba lép fel igénylő riasztásokat is létrehozhat.
 
 ![Data Sync e-mail-értesítések](media/sql-database-sync-monitor-oms/sync-email-notifications.png)
 
 ## <a name="how-do-you-set-up-these-monitoring-features"></a>Hogyan állíthatja be ezeket a figyelési funkciókat? 
 
-Egy egyéni Naplóelemzési, figyelési megoldás az SQL Data Sync kevesebb mint egy órán belül a következők végrehajtásával megvalósításához:
+Alkalmazzon egy egyéni Azure Monitor bejelentkezik figyelési megoldás az SQL Data Sync egy óránál rövidebb ideig tegye az alábbiakat:
 
 Mindhárom összetevő konfigurálni kell:
 
--   Egy SQL Data Sync naplóadatok a Log Analytics-hírcsatorna PowerShell-forgatókönyvet.
+-   Egy SQL Data Sync naplóadatokat az Azure Monitor naplóira-hírcsatorna PowerShell-forgatókönyvet.
 
--   E-mail-értesítések a Log Analytics-riasztásból.
+-   Log analytics-riasztásból e-mail értesítések.
 
--   A Log Analytics-nézet figyelésre.
+-   A naplóelemzési nézet figyelésre.
 
 ### <a name="samples-to-download"></a>Minták letöltése
 
@@ -70,7 +72,7 @@ Győződjön meg arról, hogy meg van adva az alábbiakat:
 
 ## <a name="powershell-runbook-to-get-sql-data-sync-log"></a>PowerShell-forgatókönyvet az SQL Data Sync napló beolvasása 
 
-Az Azure Automationben tárolt a PowerShell-runbook használatával lekérheti az SQL Data Sync naplózási adatokat, majd azokat elküldi a Log Analytics. A példaszkript egy részét képezi. Egy előfeltétel szüksége lesz egy Azure Automation-fiókot. Akkor szükséges, hozzon létre egy runbookot, és ütemezheti. 
+Az Azure Automationben tárolt a PowerShell-runbook használatával lekérheti az SQL Data Sync naplózási adatokat, majd azokat elküldi a Azure Monitor naplóira. A példaszkript egy részét képezi. Egy előfeltétel szüksége lesz egy Azure Automation-fiókot. Akkor szükséges, hozzon létre egy runbookot, és ütemezheti. 
 
 ### <a name="create-a-runbook"></a>Runbook létrehozása
 
@@ -100,7 +102,7 @@ Egy runbook létrehozásával kapcsolatos további információkért lásd: [az 
 
     2.  Szinkronizálási csoport adatokat.
 
-    3.  Log Analytics információkat. Az Azure portálon található – ezt az információt |} Beállítások |} A csatlakoztatott források. A Log Analyticshez való adatküldés kapcsolatos további információkért lásd: [adatokat küldeni a HTTP-adatgyűjtő API (előzetes verzió) a Log Analytics](../azure-monitor/platform/data-collector-api.md).
+    3.  Az Azure Monitor információkat naplózza. Az Azure portálon található – ezt az információt |} Beállítások |} A csatlakoztatott források. Az Azure Monitor naplóira történő adatküldés kapcsolatos további információkért lásd: [adatokat küldeni a HTTP-adatgyűjtő API (előzetes verzió) az Azure Monitor-naplók](../azure-monitor/platform/data-collector-api.md).
 
 11. A runbook futtatása a teszt panelt. Ellenőrizze, hogy sikeres volt.
 
@@ -120,7 +122,7 @@ A runbook ütemezése:
 
 4.  Válassza ki **új ütemezés létrehozása.**
 
-5.  Állítsa be **ismétlődési** ismétlődő és állítsa be az időközt szeretne. Időköz itt használja, a parancsfájl, és a Log Analyticsben.
+5.  Állítsa be **ismétlődési** ismétlődő és állítsa be az időközt szeretne. A parancsfájl, és az Azure Monitor naplóira, használja a időköz itt.
 
 6.  Kattintson a **Létrehozás** gombra.
 
@@ -130,7 +132,7 @@ Az automation alatt a vártnak megfelelően működik-e figyelése **áttekinté
 
 ## <a name="create-a-log-analytics-reader-alert-for-email-notifications"></a>Hozzon létre egy Log Analytics-olvasó riasztás E-mail értesítések
 
-Riasztás létrehozása, amely használja a Log Analytics, tegye a következőket. Egy előfeltétel szüksége lesz a Log Analytics-munkaterület társított Log Analytics.
+Az Azure Monitor naplóira használó riasztás létrehozásához tegye a következőket. Egy előfeltétel szüksége lesz a Log Analytics-munkaterülettel összekapcsolt Azure Monitor naplóira.
 
 1.  Az Azure Portalon válassza ki a **naplóbeli keresés**.
 
@@ -152,7 +154,7 @@ Riasztás létrehozása, amely használja a Log Analytics, tegye a következőke
 
 ## <a name="create-a-log-analytics-view-for-monitoring"></a>Figyelés a Log Analytics-nézet létrehozása
 
-Ez a lépés létrehoz egy Log Analytics-nézetet vizuális monitorozására az összes megadott szinkronizálási csoportot. A nézet több összetevőket tartalmazza:
+Ez a lépés létrehoz egy log analytics-nézet vizuálisan figyelése az összes megadott szinkronizálási csoportot. A nézet több összetevőket tartalmazza:
 
 -   Az Áttekintés csempe, amely jeleníti meg, hány hibák, a sikeres és a figyelmeztetések összes szinkronizálási csoportot is.
 
@@ -160,9 +162,9 @@ Ez a lépés létrehoz egy Log Analytics-nézetet vizuális monitorozására az 
 
 -   Egy csempe az összes szinkronizálási csoportból, amely hibák, sikeresen lezajlott, és a figyelmeztetések és a legutóbbi hiba üzenetek számát jeleníti meg.
 
-A Log Analytics-nézetet konfigurálásához tegye a következőket:
+A log analytics-nézet konfigurálásához tegye a következőket:
 
-1.  A Log Analytics kezdőlapján válassza a plusz megnyitásához a bal oldali a **adatforrásnézet-tervezőből**.
+1.  A log analytics kezdőlapján válassza a plusz megnyitásához a bal oldali a **adatforrásnézet-tervezőből**.
 
 2.  Válassza ki **importálás** Az adatforrásnézet-tervezőből, a felső sávon található. Ezután válassza ki a "DataSyncLogOMSView"-mintafájlt.
 
@@ -186,7 +188,7 @@ A legtöbb esetben ez a megoldás használata ingyenes.
 
 **Az Azure Automation:** Előfordulhat, hogy az Azure Automation-fiókkal, attól függően, a használat költségeit. Az első 500 perc feladatfuttatási idő havi használata ingyenes. A legtöbb esetben ez a megoldás várható havi 500 perc használja. Költségek elkerülése érdekében a runbook futtatásához legalább két órás időközönként ütemezheti. További információ: [díjszabásról](https://azure.microsoft.com/pricing/details/automation/).
 
-**A log Analytics:** Előfordulhat, hogy a használat függően a Log Analytics költséggel. Az ingyenes szint biztosít a feldolgozott adatok napi 500 MB. A legtöbb esetben ez a megoldás várt, hogy kevesebb, mint 500 MB / nap. A felhasználás csökkentéséhez a hiba csak szűrés használatához a runbook szerepel. Ha több mint 500 MB / nap használ, frissítse a fizetős szint annak elkerülése érdekében az elemzés az korlát elérése után leáll. További információ: [Log Analytics díjszabása](https://azure.microsoft.com/pricing/details/log-analytics/).
+**Az Azure Monitor naplóira:** Előfordulhat, hogy az Azure Monitor naplóira attól függően, a használat ingyenes. Az ingyenes szint biztosít a feldolgozott adatok napi 500 MB. A legtöbb esetben ez a megoldás várt, hogy kevesebb, mint 500 MB / nap. A felhasználás csökkentéséhez a hiba csak szűrés használatához a runbook szerepel. Ha több mint 500 MB / nap használ, frissítse a fizetős szint annak elkerülése érdekében az elemzés az korlát elérése után leáll. További információ: [díjszabás az Azure Monitor-naplók](https://azure.microsoft.com/pricing/details/log-analytics/).
 
 ## <a name="code-samples"></a>Kódminták
 

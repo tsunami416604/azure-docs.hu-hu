@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: shlo
-ms.openlocfilehash: 112ff38ad4e35ac284501c5dd3881c4f340b5f9b
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: cdd5c7592ebbc092c8e7be01a0fdd16e9c78aeaf
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984636"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240796"
 ---
 # <a name="azure-data-factory-faq"></a>Az Azure Data Factory – gyakori kérdések
 Ez a cikk ismerteti az Azure Data Factory kapcsolatos gyakori kérdésekre adott válaszokat.  
@@ -195,7 +195,7 @@ Ahhoz, hogy a saját Databricks-fürtök már nem lesz. Fürt létrehozása és 
 Ha a Microsoft Súgó és hibaelhárítás az adatfolyamok biztosít, adja meg a "DSL kód csomag". Ehhez kövesse az alábbi lépéseket:
 
 * Az Flow-tervezőből kattintson a jobb felső sarokban lévő "Code". Ez megjeleníti az adatfolyamhoz szerkeszthető JSON-kód.
-* A kód nézetből "Csomag" kattintson a jobb felső sarokban. A terv kapcsoló JSON-ból a formázott DSL parancsfájl-csomaggal.
+* A kód nézetből "Csomag" kattintson a jobb felső sarokban. A terv váltógombot a csak olvasható formátumú DSL parancsfájl csomagra váltani fog a JSON.
 * Másolja és illessze be ezt a szkriptet, vagy mentse a fájlt.
 
 ### <a name="how-do-i-access-data-using-the-other-80-dataset-types-in-adf"></a>Hogyan férhetek hozzá a 80 adatkészlet típusok használata az ADF-ben az adatok?

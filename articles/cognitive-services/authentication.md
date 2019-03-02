@@ -7,14 +7,14 @@ author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 01/14/2019
+ms.date: 03/01/2019
 ms.author: erhopf
-ms.openlocfilehash: 2f9b477e076b038a6a695952ee3f770b30ad179b
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 90bc2bf4c207f3bb2727d76c2e6b4fd5597539b1
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429468"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240762"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Az Azure Cognitive Services-kérések hitelesítéséhez
 
@@ -28,6 +28,8 @@ Az Azure Cognitive Service minden kérelemhez tartalmaznia kell egy hitelesíté
 
 Mielőtt a kérést, kell az Azure-fiók és a egy Azure Cognitive Services-előfizetést. Ha már rendelkezik fiókkal, lépjen tovább, és ugorjon a következő szakaszra. Ha nincs fiókja, van egy útmutatót ahhoz, hogy percek alatt beállítható: [Az Azure Cognitive Services-fiók létrehozása](cognitive-services-apis-create-account.md).
 
+Megtekintheti az előfizetési kulcs, a [az Azure portal](cognitive-services-apis-create-account.md#access-your-resource) létrehozta fiókját, vagy aktiválása után egy [az ingyenes próbaidőszak](https://azure.microsoft.com/try/cognitive-services/my-apis).
+ 
 ## <a name="authentication-headers"></a>Hitelesítési fejléc
 
 Tekintsük át gyorsan a hitelesítési fejléceket használható az Azure Cognitive Services használatával.

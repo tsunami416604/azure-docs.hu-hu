@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: 0afc507a49ae7cc54fb0daa5c7ae71c3a40ee637
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 09abb8fa2c8d08b27b83a2510b4c1133458b8363
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731106"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240728"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Az adatgyűjtést az Azure Security Centerben
 A Security Center adatokat gyűjt az Azure-beli virtuális gépek (VM) és a nem Azure-beli számítógépekről a biztonsági rések és fenyegetések monitorozásához. Adatok gyűjtése a Log Analytics ügynökét használja, amely különböző biztonsági konfigurációkat és eseménynaplókat olvas be a gép, és másolja az adatokat az elemzéshez munkaterülethez. Az ilyen adatok többek között: operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép nevét, az IP-címeket, és bejelentkezett felhasználó. A Log Analytics-ügynököket az összeomlási memóriaképeket is átmásolja a munkaterülethez.
@@ -87,11 +87,11 @@ A Security Center által létrehozott munkaterület kiválasztása:
 -   A Security Center automatikusan engedélyezi a a tarifacsomagot állítsa be az előfizetés-munkaterülethez a Security Center megoldást. 
 
 > [!NOTE]
-> A Security Center által létrehozott munkaterület tarifacsomagját a log Analytics nincs hatással a Security Center a számlázás. A Security Center számlázási mindig alapján a Security Center biztonsági házirend és a megoldások a munkaterülethez telepítve. Az ingyenes, a Security Center lehetővé teszi a *SecurityCenterFree* megoldás az alapértelmezett munkaterületre. A Standard csomag esetében a Security Center lehetővé teszi a *biztonsági* megoldás az alapértelmezett munkaterületre.
+> A Security Center által létrehozott munkaterület tarifacsomagját a log analytics nincs hatással a Security Center a számlázás. A Security Center számlázási mindig alapján a Security Center biztonsági házirend és a megoldások a munkaterülethez telepítve. Az ingyenes, a Security Center lehetővé teszi a *SecurityCenterFree* megoldás az alapértelmezett munkaterületre. A Standard csomag esetében a Security Center lehetővé teszi a *biztonsági* megoldás az alapértelmezett munkaterületre.
 
 További információ a díjszabásról lásd: [a Security Center díjszabási](https://azure.microsoft.com/pricing/details/security-center/).
 
-Meglévő Log Analytics-fiókokkal kapcsolatos további információkért lásd: [meglévő Log Analytics-ügyfél](security-center-faq.md#existingloganalyticscust).
+További információ a meglévő log analytics-fiókok: [meglévő log analytics-ügyfél](security-center-faq.md#existingloganalyticscust).
 
 ### <a name="using-an-existing-workspace"></a>Egy meglévő munkaterület használata
 
@@ -149,7 +149,7 @@ Amikor kiválaszt egy munkaterületet, amely tárolja az adatokat, az összes el
 ## <a name="data-collection-tier"></a>Gyűjtemény adatszint
 Egy adatrétegbeli gyűjtemény kiválasztása az Azure Security Centerben a biztonsági események Log Analytics-munkaterület az a tároló csak hatással lesz. A Log Analytics-ügynök továbbra is gyűjthet, és elemezheti a biztonsági események az Azure Security Center fenyegetések felderítése során, függetlenül attól, melyik szint a biztonsági események úgy dönt, hogy tárolja a Log Analytics-munkaterület (ha vannak) szükséges. A munkaterületen tárolja a biztonsági események kiválasztása lehetővé teszi vizsgálat, a Keresés és a munkaterület események naplózását. 
 > [!NOTE]
-> A Log Analytics adattárolási előfordulhat, hogy további díjak vonatkoznak az adattárolás, a díjszabási lapon talál további részleteket.
+> A log analytics adattárolási előfordulhat, hogy további díjak vonatkoznak az adattárolás, a díjszabási lapon talál további részleteket.
 >
 A jobb házirend az előfizetések és munkaterületek négyféle események szűrése a munkaterület-ben való tárolásának közül választhat: 
 
@@ -212,8 +212,8 @@ További információkért lásd: [mi történik, ha egy SCOM vagy OMS közvetle
 
 -   Jelen egy már meglévő Virtuálisgép-bővítmény<br>
     - A Security center támogatja a meglévő bővítmény telepítését, és nem írja felül a meglévő kapcsolatok. A Security Center biztonsági adatokat a virtuális gépről a munkaterület már csatlakoztatott és a megoldások a munkaterületen engedélyezett alapján védelmet biztosít a tárolja.   
-    - Megtekintheti, hogy melyik munkaterület a meglévő bővítmény küld adatokat, hogy a teszt futtatása [ellenőrizze a csatlakozását az Azure Security Center](https://blogs.technet.microsoft.com/yuridiogenes/2017/10/13/validating-connectivity-with-azure-security-center/). Azt is megteheti hogy is nyissa meg a Log analytics, válasszon ki egy munkaterületet, válassza ki a virtuális Gépet és tekintse meg a Log Analytics az ügynök kapcsolatot. 
-    - Ha-környezettel rendelkezik, a Log Analytics-ügynök telepítve van az ügyfél-munkaállomásokon és jelentéskészítés meglévő Log Analytics-munkaterülethez, tekintse át a [az Azure Security Center által támogatott operációs rendszerek](security-center-os-coverage.md) győződjön meg arról, hogy az operációs rendszer támogatott, és tekintse meg [meglévő Log Analytics-ügyfél](security-center-faq.md#existingloganalyticscust) további információt.
+    - Megtekintheti, hogy melyik munkaterület a meglévő bővítmény küld adatokat, hogy a teszt futtatása [ellenőrizze a csatlakozását az Azure Security Center](https://blogs.technet.microsoft.com/yuridiogenes/2017/10/13/validating-connectivity-with-azure-security-center/). Azt is megteheti hogy is nyissa meg a Log Analytics-munkaterületek, válasszon ki egy munkaterületet, válassza ki a virtuális Gépet és tekintse meg a Log Analytics az ügynök kapcsolatot. 
+    - Ha-környezettel rendelkezik, a Log Analytics-ügynök telepítve van az ügyfél-munkaállomásokon és jelentéskészítés meglévő Log Analytics-munkaterülethez, tekintse át a [az Azure Security Center által támogatott operációs rendszerek](security-center-os-coverage.md) győződjön meg arról, hogy az operációs rendszer támogatott, és tekintse meg [meglévő log analytics-ügyfél](security-center-faq.md#existingloganalyticscust) további információt.
  
 ### Kapcsolja ki az Automatikus kiépítés <a name="offprovisioning"></a>
 Kikapcsolhatja az Automatikus kiépítés erőforrásokból bármikor ezt a beállítást, a biztonsági szabályzatban kikapcsolásával. 

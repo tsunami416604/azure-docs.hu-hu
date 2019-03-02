@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 701c5c175e22556aefa95d1ac3836d52cd19b845
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: d2093c5b4c07e6e62df4d1f52a7fbe6e12a91ea0
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342304"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217053"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse naplózása
 
@@ -131,7 +131,7 @@ Többféleképpen naplófájlokat blob megtekintéséhez használhatja:
 
     4. Az egyesített fájl megnyílik az ssms-ben, ahol meg is megtekintése és elemezhetők a, valamint exportálja az xel-fájlt vagy CSV-fájl, vagy egy tábla.
 
-* Használja a [alkalmazás szinkronizálása](https://github.com/Microsoft/Azure-SQL-DB-auditing-OMS-integration) készült. Az Azure-ban fut, és a Log Analytics nyilvános API-kat SQL auditnaplók leküldése a Log Analytics használja. A szinkronizálási kérelem leküldések SQL auditnaplók Log analyticsbe felhasználásra a Log Analytics-irányítópult-n keresztül.
+* Használja a [alkalmazás szinkronizálása](https://github.com/Microsoft/Azure-SQL-DB-auditing-OMS-integration) készült. Az Azure-ban fut, és használja a log analytics nyilvános API-kat SQL leküldése az Azure Monitor naplóira auditnaplók. A szinkronizálási kérelem leküldéses értesítések, a log analytics-irányítópult keresztül SQL auditnaplók az Azure Monitor naplóira felhasználásra.
 
 * A Power BI használata. Megtekintheti és elemezheti a naplózási adatokat a Power bi-ban. Tudjon meg többet [Power BI és a egy letölthető sablon hozzáférés](https://blogs.msdn.microsoft.com/azuresqldbsupport/2017/05/26/sql-azure-blob-auditing-basic-power-bi-dashboard/).
 

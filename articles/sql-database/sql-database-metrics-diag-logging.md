@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: f6874b1d97c36d22e60606ad8c8a356baec53b85
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 6f8dd8611e5e2120bdfa0ae111bf6e248ca0f3cb
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893596"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214739"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Az Azure SQL Database-metrikák és diagnosztikai naplózás
 
@@ -76,7 +76,7 @@ A következő diagnostics telemetriai adatainak gyűjtéséhez állíthat be az 
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Használja a **diagnosztikai beállítások** menüje minden egyes, a készletbe vont, vagy az Azure Portalon konfigurálhatja a diagnostics telemetriai adatainak az Azure SQL Database-adatbázisok adatfolyamként adatbázis-példány. Beállíthatja, hogy a következő helyre: Az Azure Storage, Azure Event Hubs és az Azure Log Analytics.
+Használja a **diagnosztikai beállítások** menüje minden egyes, a készletbe vont, vagy az Azure Portalon konfigurálhatja a diagnostics telemetriai adatainak az Azure SQL Database-adatbázisok adatfolyamként adatbázis-példány. Beállíthatja, hogy a következő helyre: Az Azure Storage, az Azure Event Hubs és az Azure Monitor naplókat.
 
 ### <a name="configure-streaming-of-diagnostics-telemetry-for-single-pooled-or-instance-databases"></a>Konfigurálja a diagnostics telemetriai adatainak egyetlen adatfolyamként, készletezett vagy adatbázis-példány
 
@@ -100,7 +100,7 @@ Készletezett engedélyezése adatfolyamként diagnostics telemetriai adatainak 
    ![Egyetlen diagnosztika konfigurálása, a készletezett vagy adatbázis-példány](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
 
 > [!NOTE]
-> Adatbázis diagnosztikai beállítások alapján nem sikerült engedélyezni a biztonsági naplókat. Engedélyezheti a naplózási naplóstreamelés [beállítása az adatbázis naplózási](sql-database-auditing.md#subheading-2), és [naplózás az Azure Log Analytics és az Azure Event Hubs-naplók](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/).
+> Adatbázis diagnosztikai beállítások alapján nem sikerült engedélyezni a biztonsági naplókat. Engedélyezheti a naplózási naplóstreamelés [beállítása az adatbázis naplózási](sql-database-auditing.md#subheading-2), és [naplózás az Azure Monitor naplóira és az Azure Event Hubs-naplók](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/).
 > [!TIP]
 > Ismételje meg ezeket a lépéseket minden egyes Azure SQL Database figyelni szeretné.
 
@@ -152,7 +152,7 @@ Rugalmas készlet erőforrás diagnostics telemetriai adatainak streamelésének
 
 1. Adja meg a saját referenciaként a beállítás nevét.
 1. Válasszon ki egy cél-erőforrást, a streamelési diagnosztikai adatok: **Archiválás tárfiókba**, **egy eseményközpontba Stream**, vagy **Küldés a Log Analyticsnek**.
-1. Válassza ki a Log Analytics, **konfigurálása** , és hozzon létre egy új munkaterületet kiválasztásával **+ létrehozás új munkaterület**, vagy válasszon ki egy meglévő munkaterületet.
+1. Válassza ki a log Analytics, **konfigurálása** , és hozzon létre egy új munkaterületet kiválasztásával **+ létrehozás új munkaterület**, vagy válasszon ki egy meglévő munkaterületet.
 1. Válassza ki a rugalmas készlet diagnostics telemetriai adatainak jelölőnégyzetét: **AllMetrics**.
 1. Kattintson a **Mentés** gombra.
 
@@ -181,7 +181,7 @@ Felügyelt példány erőforrás diagnostics telemetriai adatainak streamelésé
 
 1. Adja meg a saját referenciaként a beállítás nevét.
 1. Válasszon ki egy cél-erőforrást, a streamelési diagnosztikai adatok: **Archiválás tárfiókba**, **egy eseményközpontba Stream**, vagy **Küldés a Log Analyticsnek**.
-1. Válassza ki a Log Analytics **konfigurálása** , és hozzon létre egy új munkaterületet kiválasztásával **+ létrehozás új munkaterület**, vagy használjon egy meglévő munkaterületet.
+1. Válassza ki a log analytics **konfigurálása** , és hozzon létre egy új munkaterületet kiválasztásával **+ létrehozás új munkaterület**, vagy használjon egy meglévő munkaterületet.
 1. Jelölje be például a diagnostics telemetriai adatainak: **ResourceUsageStats**.
 1. Kattintson a **Mentés** gombra.
 
@@ -288,7 +288,7 @@ Az Azure SQL Analytics egy felhőalapú megoldás, amely figyeli az Azure SQL ad
 
 ![Az Azure SQL Analytics áttekintése](../azure-monitor/insights/media/azure-sql/azure-sql-sol-overview.png)
 
-SQL Database-metrikák és diagnosztikai naplókat is lehet streameli az Azure SQL Analytics használatával a beépített **Küldés a Log Analyticsnek** lehetőség a diagnosztikai beállítások lapon a portálon. A Log Analytics egy diagnosztikai beállítás PowerShell parancsmagok, az Azure CLI vagy az Azure Monitor REST API használatával is engedélyezheti.
+SQL Database-metrikák és diagnosztikai naplókat is lehet streameli az Azure SQL Analytics használatával a beépített **Küldés a Log Analyticsnek** lehetőség a diagnosztikai beállítások lapon a portálon. A log analytics használatával egy diagnosztikai beállítás PowerShell parancsmagok, az Azure CLI vagy az Azure Monitor REST API-n keresztül is engedélyezheti.
 
 ### <a name="installation-overview"></a>Telepítés – áttekintés
 
@@ -379,7 +379,7 @@ Ismerje meg, hogyan [metrikák és diagnosztikai naplók letöltése a Storage-b
 
 ## <a name="data-retention-policy-and-pricing"></a>Az adatmegőrzési házirend és díjszabás
 
-Ha az Event Hubs vagy a Storage-fiók lehetőséget választja, megadhatja az adatmegőrzési. Ez a szabályzat egy kiválasztott időszakban régebbi adatokat törli. Ha megadja a Log Analytics, a megőrzési házirend a kiválasztott tarifacsomag függ. Ebben az esetben a megadott ingyenes egységek az adatbetöltés ingyenes figyelését több adatbázist havonta is engedélyezheti. Bármely az diagnostics telemetriai adatainak biztosította az ingyenes egységek felhasználását előfordulhat, hogy költségekkel. Vegye figyelembe, hogy a nagyobb számítási feladatokkal aktív adatbázisok betöltési üresjárati adatbázisok több adatot. További információkért lásd: [Log Analytics díjszabása](https://azure.microsoft.com/pricing/details/monitor/).
+Ha az Event Hubs vagy a Storage-fiók lehetőséget választja, megadhatja az adatmegőrzési. Ez a szabályzat egy kiválasztott időszakban régebbi adatokat törli. Ha megadja a Log Analytics, a megőrzési házirend a kiválasztott tarifacsomag függ. Ebben az esetben a megadott ingyenes egységek az adatbetöltés ingyenes figyelését több adatbázist havonta is engedélyezheti. Bármely az diagnostics telemetriai adatainak biztosította az ingyenes egységek felhasználását előfordulhat, hogy költségekkel. Vegye figyelembe, hogy a nagyobb számítási feladatokkal aktív adatbázisok betöltési üresjárati adatbázisok több adatot. További információkért lásd: [Log analytics díjszabásáról](https://azure.microsoft.com/pricing/details/monitor/).
 
 Az Azure SQL Analytics használja, ha az adathasználat Adatbetöltési a megoldásban figyelheti kiválasztásával **OMS-munkaterület** az Azure SQL Analytics, és válassza a navigációs menü **használati** és **becsült költség**.
 

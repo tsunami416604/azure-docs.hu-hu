@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/26/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 6fc7da067e5680af0d4e3f07c5e87be2e9592f3f
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: d16f730d7e801342290467a796ae0155bfe89b26
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56986039"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241527"
 ---
 # <a name="content-protection-overview"></a>A Content protection áttekintése
 
@@ -27,7 +27,7 @@ Az Azure Media Services segítségével az az idő, akkor hagyja, hogy a számí
 
 Az alábbi ábrán a Media Services content protection munkafolyamat: 
 
-![Tartalom védelme](./media/content-protection/content-protection.png)
+![Tartalom védelme](./media/content-protection/content-protection.svg)
 
 &#42;*a dinamikus titkosítás AES-128 "tiszta kulcsot" CBCS és CENC támogatja. További részletekért lásd: a támogatási mátrix [Itt](#streaming-protocols-and-encryption-types).*
 

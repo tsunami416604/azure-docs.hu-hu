@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 04bdbd6c6af1f0e3a479920bc7f286343052281e
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 307449a24555fed48899d67196114cb24f0bb572
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192156"
+ms.locfileid: "57216849"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Oktatóanyag: Valós eszköz hozzáadása az Azure IoT Central-alkalmazáshoz
 
@@ -111,27 +111,27 @@ A következő lépések bemutatják, hogyan készítheti elő a [Node.js](https:
 
 1. Az alkalmazásban az eszközpéldányok kapcsolati sztringje az IoT Central által megadott eszközinformációkból jön létre.
 
-   Térjen vissza az IoT Central portálra. A valós csatlakoztatott légkondicionáló eszköz képernyőjén válassza a **Csatlakozás** lehetőséget.
+    Térjen vissza az IoT Central portálra. A valós csatlakoztatott légkondicionáló eszköz képernyőjén válassza a **Csatlakozás** lehetőséget.
 
-   ![A kapcsolat információit megjelenítő hivatkozást mutató eszközoldal](media/tutorial-add-device/connectionlink.png)
+    ![A kapcsolat információit megjelenítő hivatkozást mutató eszközoldal](media/tutorial-add-device/connectionlink.png)
 
 1. Az Eszközkapcsolat oldalon másolja ki és illessze be a hatókör azonosítóját, az eszköz azonosítóját és az elsődleges kulcsot egy szövegszerkesztőbe, majd mentse a fájlt. Ezeket az értékeket a következő lépésben fogja használni.
 
-   ![Kapcsolat adatai](media/tutorial-add-device/device-connect.png)
+    ![Kapcsolat adatai](media/tutorial-add-device/device-connect.PNG)
 
 1. Térjen vissza a parancssori környezethez, és hozza létre a kapcsolati sztringet az alábbiak végrehajtásával:
 
     ```cmd/sh
-    dps_keygen -si:<scope_id> -di:<device_id> -dk:<Primary Key>
+     dps-keygen -si:<scope_id> -di:<device_id> -dk:<Primary Key>
     ```
 
-   Másolja ki a kimenetet, és mentse egy új fájlba (például a connection.txt fájlba).
+    Másolja ki a kimenetet, és mentse egy új fájlba (például a connection.txt fájlba).
 
 1. A Node.js projekt elindításához futtassa az alábbi parancsot az összes alapérték elfogadásával:
 
-   ```cmd/sh
+    ```cmd/sh
     npm init
-   ```
+    ```
 
 1. A szükséges csomagok telepítéséhez futtassa az alábbi parancsot:
 

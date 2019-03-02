@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/01/2019
+ms.date: 03/01/2019
 ms.author: juliako
-ms.openlocfilehash: cce3ea06ebd7d3469dad14e491124f81567610ea
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: c4be56b3ee32a5177c66353ba45c6b3647c732f2
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894053"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240082"
 ---
 # <a name="live-events-and-live-outputs"></a>Élő események és élő kimenetek
 
@@ -42,7 +42,7 @@ A [élő esemény](https://docs.microsoft.com/rest/api/media/liveevents) két t�
 
 ### <a name="pass-through"></a>Továbbítás
 
-![az átmenő](./media/live-streaming/pass-through.png)
+![az átmenő](./media/live-streaming/pass-through.svg)
 
 Az átmenő használatakor **élő esemény**, amelyeket összeköthet a helyszíni élő kódoló készítése több sávszélességű video-adatfolyamot, és elküldeni, mint a hozzájárulás hírcsatorna az élő esemény (protokollal RTMP vagy töredékes MP4). Az élő esemény majd sorozatéhoz keresztül a bejövő video-adatfolyamok további feldolgozás nélkül. Ilyen egy csatlakoztatott videókhoz optimalizált hosszú ideig futó élő eseményeket vagy 24 x 365 lineáris élő adatfolyam. Az ilyen típusú élő esemény létrehozásakor adja meg a None (LiveEventEncodingType.None).
 
@@ -56,11 +56,16 @@ Tekintse meg a .NET-példakód az [MediaV3LiveApp](https://github.com/Azure-Samp
 
 ### <a name="live-encoding"></a>Live Encoding  
 
-![Live encoding](./media/live-streaming/live-encoding.png)
+![Live encoding](./media/live-streaming/live-encoding.svg)
 
 Valós idejű kódolás a Media Services használatakor állíthatók be a helyszíni élő kódoló egy egyféle sávszélességű videó elküldeni a hozzájárulás hírcsatorna az élő esemény (RTMP vagy Fragmented-Mp4 protokoll használatával). Az élő esemény kódol, hogy a bejövő egyféle sávszélességű adatfolyamot a egy [több sávszélességű video-adatfolyamot](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming), elérhetővé tesz a kézbesítési lejátszására protokollok, mint például az MPEG-DASH, HLS és Smooth Streaming-eszközöket. Az ilyen típusú élő esemény létrehozásakor adja meg a kódolási típusként **Standard** (LiveEventEncodingType.Standard).
 
 A hírcsatorna legfeljebb 30 képkocka/másodperc, a videó kodek H.264/AVC és AAC keret válthatnak 1080 képpont felbontású hozzájárulás küldése (AAC-LC, HE-AACv1 vagy HE-AACv2) hang kodek. Tekintse meg a [élő esemény-típusok összehasonlítása](live-event-types-comparison.md) további részleteivel.
+
+Valós idejű kódolás használata esetén (élő esemény beállítása **Standard**), a kódolási előbeállítás határozza meg, hogyan a bejövő streamből több bitsebességre való átkódolása vagy rétegek van kódolva. További információ: [rendszer készletek](live-event-types-comparison.md#system-presets).
+
+> [!NOTE]
+> Jelenleg az egyetlen megengedett előre beállított érték az élő esemény szabványos típusát *Default720p*. Ha egy egyéni, élő kódolási beállításkészletet használja van szüksége, forduljon a amshelp@microsoft.com. Adjon meg a kívánt táblát felbontást és bitsebességre való átkódolása. Győződjön meg arról, hogy csak egy réteg 720 p, és legfeljebb 6 rétegek.
 
 ## <a name="live-event-creation-options"></a>Élő esemény-létrehozási beállítások
 

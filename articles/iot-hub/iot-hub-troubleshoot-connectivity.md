@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: jlian
-ms.openlocfilehash: b05a8bfd46800c5b0b0126adcf2acb4852bb6683
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 9057245c108e4a1b9af2549bc87f98258da50535
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339756"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240167"
 ---
 # <a name="detect-and-troubleshoot-disconnects-with-azure-iot-hub"></a>Észlelése és elhárítása bontja a kapcsolatot az Azure IoT Hub szolgáltatással
 
@@ -54,7 +54,7 @@ További tudnivalókért lásd: [Mik azok a Microsoft Azure klasszikus riasztás
 
 ## <a name="resolve-connectivity-errors"></a>Kapcsolódási hibák megoldása
 
-A diagnosztikai naplók és riasztások csatlakoztatott eszközök bekapcsolásakor, riasztásokat kaphat, ha hiba történik. Ez a szakasz ismerteti a leggyakoribb hibák elhárításához, ha egy riasztás. Az alábbi lépések azt feltételezik, hogy beállította az Azure Log Analytics a diagnosztikai naplók.
+A diagnosztikai naplók és riasztások csatlakoztatott eszközök bekapcsolásakor, riasztásokat kaphat, ha hiba történik. Ez a szakasz ismerteti a leggyakoribb hibák elhárításához, ha egy riasztás. Az alábbi lépések azt feltételezik, hogy beállította az Azure Monitor naplóira a diagnosztikai naplók.
 
 1. Nyissa meg a munkaterület **Log Analytics** az Azure Portalon.
 1. Válassza ki **naplóbeli keresés**.

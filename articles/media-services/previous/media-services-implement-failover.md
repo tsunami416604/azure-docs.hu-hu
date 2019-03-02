@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: f367d6e1b1c545bcad0faf030a56fdec2ffafca2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 1ea11c44806e2375a272fe8f5e256d8ffde7affb
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989065"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240405"
 ---
-# <a name="implement-failover-streaming-with-media-services-legacy"></a>Feladatátvételi streamelési a Media Services (örökölt) megvalósítása
+# <a name="implement-failover-streaming-with-media-services"></a>A Media Services streaming feladatátvétel végrehajtása 
 
 Ez az útmutató bemutatja, hogyan másolhatják a tartalmat (BLOB) egy eszköz a másik redundanciájának igény szerinti folyamatos átvitel kezelésének érdekében. Ebben a forgatókönyvben akkor hasznos, ha azt szeretné, állítsa be az Azure Content Delivery Network a feladatátvételt egy esetleges leállás egy adatközpontban, két adatközpont között. Ez az útmutató használja az Azure Media Services SDK az Azure Media Services REST API és az Azure Storage SDK használatával a következő feladatokat mutatja be:
 

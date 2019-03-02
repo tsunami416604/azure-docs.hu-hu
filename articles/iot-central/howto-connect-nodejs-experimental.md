@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: b8f2df14e0aa0246d794bd56f4187002cfdeee02
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: ba5a8cc09a098e58c39d42475d18e92e45222937
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194468"
+ms.locfileid: "57216781"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Az Azure IoT Central-alkalmazást (Node.js) egy általános ügyfél-alkalmazás csatlakoztatása
 
@@ -93,7 +93,7 @@ Adja meg a mező neve pontosan a eszköz sablonba a táblázatban látható mód
 
 ## <a name="add-a-real-device"></a>Valós eszköz hozzáadása
 
-Az Azure IoT Central-alkalmazás hozzáadása egy igazi eszközön az eszköz sablonból, létrehozása, és jegyezze fel az eszköz kapcsolati karakterláncát. IoT Central egy Node.js-alkalmazás csatlakoztatása a részletes útmutatót lásd: [valós eszköz kapcsolati karakterláncára generálhatók az alkalmazás](tutorial-add-device-experimental.md#generate-connection-string-for-real-device-from-application) és [előkészítése az Ügyfélkód](tutorial-add-device-experimental.md#prepare-the-client-code) az oktatóanyagok > Egy eszköz hozzáadásához.
+Az Azure IoT Central-alkalmazás hozzáadása egy igazi eszközön az eszköz sablonból, létrehozása, és jegyezze fel az eszköz kapcsolati karakterláncát. IoT Central egy Node.js-alkalmazás csatlakoztatása a részletes útmutatót lásd: [valós eszköz kapcsolati karakterláncára generálhatók az alkalmazás](tutorial-add-device-experimental.md#generate-connection-string) és [előkészítése az Ügyfélkód](tutorial-add-device-experimental.md#prepare-the-client-code) az oktatóanyagok > Egy eszköz hozzáadásához.
 
 ### <a name="create-a-nodejs-application"></a>Node.js alkalmazás létrehozása
 
@@ -268,11 +268,11 @@ Az Azure IoT központi alkalmazás kezelőként a valódi eszköz a következők
 
     ![Telemetria megtekintése](media/howto-connect-nodejs-experimental/viewtelemetry.png)
 
-* Tekintse meg az eszköz tulajdonság értékeket, a rendszer küldi az eszközről a **tulajdonságok** lapot. Az eszköz tulajdonságok csempék frissülnek, ha a kapcsolat létrejött. 
+* Tekintse meg az eszköz tulajdonság értékeket, a rendszer küldi az eszközről a **tulajdonságok** lapot. Az eszköz tulajdonságok csempék frissítése sikeres kapcsolódás esetén.
 
     ![Az eszköz tulajdonságai](media/howto-connect-nodejs-experimental/viewproperties.png)
 
-* Állítsa be a ventilátor sebesség és a cél hőmérséklet a **beállítások** lapot. A beállításértékeket szinkronizálódnak, ha a kapcsolat létrejött. 
+* Állítsa be a ventilátor sebesség és a cél hőmérséklet a **beállítások** lapot. A beállításértékeket szinkronizálása, ha a kapcsolat létrejött.
 
     ![Set Ventilátor sebessége](media/howto-connect-nodejs-experimental/setfanspeed.png)
 

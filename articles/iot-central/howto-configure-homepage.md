@@ -1,45 +1,50 @@
 ---
-title: Az Azure IoT központi alkalmazás kezdőlapjának beállítása |} A Microsoft Docs
-description: Mint szerkesztő megtudhatja, hogyan adható meg a kezdőlap, az Azure IoT Central alkalmazáshoz.
+title: Az Azure IoT Central irányítópult konfigurálása |} A Microsoft Docs
+description: A jelentéskészítő, megtudhatja, hogyan konfigurálhatja az alapértelmezett Azure IoT Central irányítópult.
 author: dominicbetts
 ms.author: dobett
-ms.date: 07/10/2018
+ms.date: 02/13/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: a03ac0ef66f4ffdce53d0bd2a35839bbe1615d0b
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: a42e88de693f93e0407c185efc84d17a03d16116
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199085"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215852"
 ---
-# <a name="configuring-homepage"></a>Kezdőlap konfigurálása
+# <a name="configure-the-application-dashboard"></a>Az irányítópult konfigurálása
 
-A kezdőlapon az oldal, amely betölti, ha az alkalmazáshoz hozzáféréssel rendelkező felhasználók keresse meg az alkalmazás URL-címe. Ha az alkalmazás létrehozásakor a "Contoso minta" vagy "Minta Devkits" alkalmazássablonok választotta, az alkalmazás fogja előre meghatározott kezdőlapok. Ha azonban az "Egyéni alkalmazás" sablon, akkor a kezdőlapon üres lesz.
+A **irányítópult** az oldal, amely betölti, ha az alkalmazáshoz hozzáféréssel rendelkező felhasználók keresse meg az alkalmazás URL-CÍMÉT. Ha a kiválasztott vagy a **minta Contoso** vagy **minta Devkits** alkalmazássablon hozhat létre az alkalmazást, az alkalmazás tartalmaz egy előre meghatározott irányítópultot. Ha úgy döntött a **egyéni alkalmazás** alkalmazássablon, az irányítópulton az üres.
 
-Például itt látható a "Contoso minta" sablonon alapuló alkalmazások kezdőlapja. Testre szabhatja az alkalmazás kezdőlapja, először válassza **szerkesztése** jobb felső sarokban lévő. 
+> [!NOTE]
+> A felhasználók is [saját személyes irányítópultok kialakítása](howto-personalize-dashboard.md) helyett az alapértelmezett irányítópult.
 
-![A "Contoso minta" sablonon alapuló alkalmazások kezdőlapja](media/howto-configure-homepage/image1.png)
+## <a name="add-tiles"></a>Csempék hozzáadása
 
-Kiválasztásával **szerkesztése**, ekkor megnyílik az irányítópult-könyvtár a bal oldali panelen. Nincsenek csempék és irányítópultot is hozzáadhatók a kezdőlap testreszabása primitívekre számos különböző típusú.
+Az alábbi képernyőképen az irányítópult látható a létrehozott alkalmazás a **minta Contoso** sablont. Testre szabhatja az alkalmazás az alapértelmezett irányítópultot, kattintson a **szerkesztése** tetején, az oldal jobb.
+
+![A "Contoso minta" sablonon alapuló alkalmazások irányítópult](media/howto-configure-homepage/image1.png)
+
+Kattintson a **szerkesztése**, az irányítópult könyvtár panel nyílik meg. A függvénytár tartalmazza a csempék és irányítópult primitívek segítségével testre szabhatja az irányítópultot.
 
 ![Irányítópult-könyvtár](media/howto-configure-homepage/image2.png)
 
-Hozzáadhat például egy **beállításait és tulajdonságait** csempére, hogy az aktuális értékek beállításait és tulajdonságait, a választott megjelenítés. Ehhez először válassza ki a **eszköz sablon** válassza ki a **eszközpéldány**. Miután egy cím, és kattintson a csempére, adjon egy **beállítás** vagy egy **tulajdonság** megjelenítéséhez. Ebben az esetben kiválasztottuk **beállítása hőmérséklet**. Kattintson a **kész** miatt ez a csempe jelenik meg a kezdőlapon.
+Hozzáadhat például egy **eszközbeállítások, illetve tulajdonságok** mozaiklapra a választott eszköz aktuális beállítások és tulajdonságok értékeit. Ehhez először válassza ki a **eszköz sablon** válassza ki a **eszközpéldány**. Miután egy cím, és kattintson a csempére, adjon egy **beállítás** vagy egy **tulajdonság** megjelenítéséhez. Az alábbi képernyőfelvételen a **beállítása hőmérséklet** a csempe hozzáadása a beállítást. Kattintson a **kész** menteni a módosítást az irányítópulton.
 
 ![Részletes beállítások és tulajdonságok "Konfigurálása eszköz részletei" képernyő](media/howto-configure-homepage/image3.png)
 
-Most már az operátornak megtekinti a kezdőlap elérését, amikor megjelenik az erre a csempére, amely megjeleníti a Tulajdonságok vagy az eszköz beállítások:
+Az operátornak megtekinti az alapértelmezett irányítópult, amikor azok az új csempe jelenik meg a most a **beállítása hőmérséklet** az eszköz beállítása:
 
 ![A megjelenített beállítások és tulajdonságok csempe "Az irányítópult" lap](media/howto-configure-homepage/image4.png)
 
-A többi csempe különféle az erőforrástárban felderíteni, hogyan szabhatja testre az alkalmazás kezdőlapjára még több módosításával.
+Áttekintheti a többi csempe a könyvtárban a felderítendő típusok az alapértelmezett irányítópult további testreszabásával.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte az Azure IoT Central kezdőlap konfigurálása, hogy a következőket teheti:
+Most, hogy megismerte az Azure IoT Central alapértelmezett alkalmazás irányítópult konfigurálása, hogy a következőket teheti:
 
 > [!div class="nextstepaction"]
 > [Ismerje meg, hogyan készítheti elő és képek feltöltése](howto-prepare-images.md)

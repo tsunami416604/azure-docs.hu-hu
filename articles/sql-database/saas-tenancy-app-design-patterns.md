@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 2775ceb3cf27b6feedfd73cd43855204490ebc31
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d55d8f8f945e30402cb772c7e26b234e3e460698
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471198"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217869"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Több-bérlős SaaS-adatbázis bérlős minták
 
@@ -99,7 +99,7 @@ Adatbázisok ugyanabban az erőforráscsoportban vannak üzembe helyezve, amikor
 
 ![Tervezés több-bérlős alkalmazás-adatbázis – bérlőnként felügyelt, rugalmas készlet használata.][image-mt-app-db-per-tenant-pool-153p]
 
-Az Azure SQL Database konfigurálása, monitoringja és a megosztás kezelése szükséges eszközöket biztosít.  Két készlet-szintű és az adatbázisszintű teljesítmény-mérőszámok az Azure Portalon, és a Log Analytics segítségével érhetők el.  A metrikák biztosíthat nagyszerű betekintést összesítő és a bérlő-specifikus teljesítményét.  Az egyes adatbázisok áthelyezhetők egy adott bérlő lefoglalt erőforrások biztosítása a készletek között.  Ezek az eszközök lehetővé teszik a megfelelő teljesítmény biztosítása költséghatékony módon.
+Az Azure SQL Database konfigurálása, monitoringja és a megosztás kezelése szükséges eszközöket biztosít.  Két készlet-szintű és az adatbázisszintű teljesítmény-mérőszámok az Azure Portalon, és az Azure Monitor naplóira keresztül érhetők el.  A metrikák biztosíthat nagyszerű betekintést összesítő és a bérlő-specifikus teljesítményét.  Az egyes adatbázisok áthelyezhetők egy adott bérlő lefoglalt erőforrások biztosítása a készletek között.  Ezek az eszközök lehetővé teszik a megfelelő teljesítmény biztosítása költséghatékony módon.
 
 #### <a name="operations-scale-for-database-per-tenant"></a>Műveleteket a bérlőnkénti adatbázis méretezése
 

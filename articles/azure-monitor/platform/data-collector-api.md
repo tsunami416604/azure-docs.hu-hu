@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: bwren
-ms.openlocfilehash: d2bf55129465a607fdc3bce3bd1735642c64e428
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 79adde06e3a21e2fb8999d41ec113b61aa328ef5
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237926"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241374"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Napló adatokat küldeni a HTTP-adatgyűjtő API (nyilvános előzetes verzió) az Azure Monitor
 Ez a cikk bemutatja, hogyan Teljesítménynapló-adatok küldése az Azure monitornak a REST API-ügyfél a HTTP-adatgyűjtő API használatával.  Ismerteti, hogyan formázza a parancsfájl vagy az alkalmazások által gyűjtött adatokat, foglalja bele egy kérelmet, és engedélyezte az Azure Monitor kérelmet.  A példák a PowerShell, a C# és Python.
@@ -465,6 +465,15 @@ def post_data(customer_id, shared_key, body, log_type):
 
 post_data(customer_id, shared_key, body, log_type)
 ```
+## <a name="alternatives-and-considerations"></a>Alternatívák és szempontok
+Amíg az adatgyűjtő API le kell fednie a legtöbb szabad formátumú adatok gyűjtésére az Azure-naplók az igényeinek, nincsenek példányok, ahol másik szükség lehet az API-t, a korlátozások némelyike adattömbökként való lekérését. Az összes beállítás az alábbiak szerint, fő szempontokat tartalmazza:
+
+| Alternatív | Leírás | A legalkalmasabb |
+|---|---|---|
+| [Egyéni események](https://docs.microsoft.com/en-us/azure/azure-monitor/app/api-custom-events-metrics?toc=%2Fazure%2Fazure-monitor%2Ftoc.json#properties): Natív SDK-alapú adatfeldolgozást az Application insights szolgáltatásban | Application Insights, az alkalmazásban, az SDK-n keresztül általában kialakítva kínál arra, hogy az egyéni események egyéni adatokat küldhet. | <ul><li> Az alkalmazáson belül jön létre, de nem dolgozza fel az alapértelmezett adattípusokat valamelyikével SDK adatokat (például: kérelmek, a függőségek, kivételek, stb).</li><li> Adatok, amelyek leggyakrabban lesz lebontva más alkalmazások adatainak az Application insights szolgáltatásban </li></ul> |
+| [Adatgyűjtő API](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) az Azure Monitor naplóira | Az adatgyűjtő API az Azure Monitor naplóira módja a teljesen nyílt gyűjthet adatokat. A JSON-objektum formázott adatok küldheti. Miután elküldte, fogja feldolgozni, és lehet, Logs elérhető is vonatkozhatnak, és egyéb adatok, naplók vagy más Application Insights adatait. <br/><br/> Az adatok feltöltése fájlként egy Azure Blob-blobba ahol ezeket a fájlokat fogja feldolgozni és a Log Analytics szolgáltatásba feltöltött könnyen. Lásd: [ez](https://docs.microsoft.com/azure/log-analytics/log-analytics-create-pipeline-datacollector-api) ilyen egy folyamatot egy minta megvalósítását ismertető cikket. | <ul><li> Adatok, amelyek nem feltétlenül létre kialakítva az Application Insights belül az alkalmazáson belül.</li><li> Ilyenek például a keresési és a ténytáblákat, referenciaadatok, előre összesített statisztikák és egyéb </li><li> Adatok lesz érvényben, szemben más az Azure Monitor-adatok (például az Application Insights, más naplók adattípusok, a Security Center, Azure figyelő tárolók vagy virtuális gépek stb.) számára készült. </li></ul> |
+| [Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/ingest-data-overview) | Az Azure Data Explorer (ADX) az Application Insights-elemzési és az Azure Monitor naplóira használja, amelyen a data platform. Mostantól általánosan válik ("általánosan elérhető"), a data platform segítségével a nyers biztosít teljes körű rugalmasság (de felügyeleti többletterhelést igénylő) keresztül a fürt (RBAC, megtartási aránya, a sémát, stb.). ADX nyújt számos [Adatbetöltési lehetőségek](https://docs.microsoft.com/azure/data-explorer/ingest-data-overview#ingestion-methods) beleértve [CSV, TSV és JSON](https://docs.microsoft.com/azure/kusto/management/mappings?branch=master) fájlokat. | <ul><li> Adatok, amelyek bármely más adatokhoz, az Application Insights vagy a naplók alapján nem hozhatók összefüggésbe. </li><li> Adatok igénylő speciális adatfeldolgozást, vagy feldolgozási funkcióinak jelenleg nem elérhető az Azure Monitor naplóira. </li></ul> |
+
 
 ## <a name="next-steps"></a>További lépések
 - Használja a [Log Search API](../log-query/log-query-overview.md) adatokat lekérni a Log Analytics-munkaterületet.

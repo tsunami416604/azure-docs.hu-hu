@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 5242be4dfe1c79b8f943b3b6d240046d0e8c5181
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 67b46b1bd13fc749b3f30ca8acbee038dc188604
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658765"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214248"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Ismerkedés az Azure IoT Central kezelőfelületével
 
@@ -41,7 +41,7 @@ A bal oldali navigációs menüből érhetők el az alkalmazás különböző te
 
 | Menü | Leírás |
 | ---- | ----------- |
-| ![Bal oldali navigációs menü](media/overview-iot-central-tour/navigationbar.png) | <ul><li>A **Kezdőlap** gomb megjeleníti az alkalmazás kezdőlapját. A szerkesztők testreszabhatják a kezdőlapot az operátorok számára.</li><li>Az **Eszközkereső** gomb felsorolja az alkalmazásban meghatározott eszközsablonokat, valamint az egyes eszközsablonokhoz tartozó valós eszközöket. Az operátorok az **Eszközkereső** használatával kezelhetik a csatlakoztatott eszközöket.</li><li>Az **Eszközkészletek** gomb lehetővé teszi eszközkészletek megtekintését és létrehozását. Az operátorok létrehozhatnak eszközkészleteket, amelyek a lekérdezés által megadott eszközök logikai gyűjteményei.</li><li>Az **Elemzés** gomb az eszközök és eszközkészletek telemetriáiból származó elemzéseket jelenít meg. Az operátorok létrehozhatnak egyéni nézeteket az eszközadatokhoz, így megjelenítve az alkalmazásból származó megállapításokat.</li><li>A **Feladatok** gomb tömeges eszközkezelést tesz lehetővé a méretezhető frissítéseket végző feladatok létrehozásával és futtatásával.</li><li>Az **Alkalmazásszerkesztő** gomb megjeleníti a szerkesztők által használt eszközöket, például az **Eszközsablon-készítő** eszközt.</li><li>Az **Adminisztráció** gomb jeleníti meg azokat az alkalmazásadminisztrációs oldalakat, ahol a rendszergazda az alkalmazás beállításait, felhasználóit és szerepköreit kezelheti.</li></ul> |
+| ![Bal oldali navigációs menü](media/overview-iot-central-tour/navigationbar.png) | <ul><li>A **irányítópult** gombra az alkalmazás irányítópulton jeleníti meg. Mint szerkesztő testre szabhatja az irányítópultot az operátorok számára. Felhasználók is létrehozhat saját irányítópultokat.</li><li>Az **Eszközkereső** gomb felsorolja az alkalmazásban meghatározott eszközsablonokat, valamint az egyes eszközsablonokhoz tartozó valós eszközöket. Az operátorok az **Eszközkereső** használatával kezelhetik a csatlakoztatott eszközöket.</li><li>Az **Eszközkészletek** gomb lehetővé teszi eszközkészletek megtekintését és létrehozását. Az operátorok létrehozhatnak eszközkészleteket, amelyek a lekérdezés által megadott eszközök logikai gyűjteményei.</li><li>Az **Elemzés** gomb az eszközök és eszközkészletek telemetriáiból származó elemzéseket jelenít meg. Az operátorok létrehozhatnak egyéni nézeteket az eszközadatokhoz, így megjelenítve az alkalmazásból származó megállapításokat.</li><li>A **Feladatok** gomb tömeges eszközkezelést tesz lehetővé a méretezhető frissítéseket végző feladatok létrehozásával és futtatásával.</li><li>Az **Alkalmazásszerkesztő** gomb megjeleníti a szerkesztők által használt eszközöket, például az **Eszközsablon-készítő** eszközt.</li><li>Az **Adminisztráció** gomb jeleníti meg azokat az alkalmazásadminisztrációs oldalakat, ahol a rendszergazda az alkalmazás beállításait, felhasználóit és szerepköreit kezelheti.</li></ul> |
 
 ## <a name="search-help-and-support"></a>Keresés, súgó és támogatás
 
@@ -57,11 +57,11 @@ A kezelőfelületen egy világos és egy sötét téma közül választhat:
 
 ![A kezelőfelület témájának kiválasztása](media/overview-iot-central-tour/themes.png)
 
-## <a name="home-page"></a>Kezdőlap
+## <a name="dashboard"></a>Irányítópult
 
-![Kezdőlap](media/overview-iot-central-tour/homepage.png)
+![Irányítópult](media/overview-iot-central-tour/homepage.png)
 
-A kezdőlap az első lap, amely megjelenik az Azure IoT Central-alkalmazásba való bejelentkezést követően. Szerkesztőként csempék hozzáadásával testreszabhatja a kezdőlapot az alkalmazás további felhasználói számára. További részletekért tekintse át [az Azure IoT Central operátori nézeteinek testreszabására](tutorial-customize-operator.md) vonatkozó oktatóanyagot.
+A kezdőlap az első lap, amely megjelenik az Azure IoT Central-alkalmazásba való bejelentkezést követően. Az irányítópult Ez az első lap jelenik meg, jelentkezzen be az Azure IoT Central alkalmazáshoz. Szerkesztő, mint az irányítópult más felhasználók számára testreszabható hozzáadhat csempéket. További részletekért tekintse át [az Azure IoT Central operátori nézeteinek testreszabására](tutorial-customize-operator.md) vonatkozó oktatóanyagot. A felhasználók is [saját személyes irányítópultok kialakítása](howto-personalize-dashboard.md).
 
 ## <a name="device-explorer"></a>Eszközkereső
 

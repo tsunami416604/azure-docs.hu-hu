@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: c71822f50879404ba943ef6e703364a09a80fbf3
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: e5c7d019a34736cfbc26e245dc54a93374aada9c
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310934"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242428"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Az Azure Monitor metrikaböngészőjének
 
@@ -76,16 +76,16 @@ A diagramok, amelyek megmutatják a dimenziókkal rendelkező metrikák szűrők
 
 5. Megismételheti a lépéseket több szűrőket alkalmaz az azonos diagramok 1 – 4.
 
-## <a name="segment-a-chart"></a>A diagram szegmens
+## <a name="apply-splitting-to-a-chart"></a>Alkalmazza a megosztáshoz, hogy a diagram
 
 Jeleníthetik meg egymással szembeni metrika összehasonlítási különböző szegmensek dimenzió egy metrikát felosztás és a egy dimenzió lakatlan szegmensek azonosítja. 
 
-### <a name="to-segment-a-chart"></a>A szegmens diagram
+### <a name="to-apply-splitting"></a>A alkalmazni a felosztás
 
 1. Kattintson a **alkalmazni a felosztás** a diagram felett.
  
    > [!NOTE]
-   > A bármilyen egyetlen diagramra több szűrőt, de csak egy felosztása/szegmentálási érték is rendelkezhet.
+   > Felosztás a diagramok, amelyek több metrika nem használható. De bármilyen egy diagramon a alkalmazni csak egyetlen felosztási dimenzió több szűrőt is rendelkezhet.
 
 2. Válassza ki, amelyen vissza szeretné a diagram szegmentálni dimenzió:
 

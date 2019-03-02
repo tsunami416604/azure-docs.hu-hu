@@ -14,14 +14,14 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 7ef7216b2d3adf99b0c1fd9ace84991169106529
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: cf7996c185b5b9fb907e75a9e8294dbaca62fac4
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55976265"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57239946"
 ---
-# <a name="get-started-with-the-java-client-sdk-for-azure-media-services-legacy"></a>A Java ügyfél-SDK használatának első lépései az Azure Media Services-(örökölt)
+# <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Az Azure Media Services Java ügyfél-SDK használatának megkezdése  
 
 [!INCLUDE [media-services-selector-get-started](../../../includes/media-services-selector-get-started.md)]
 

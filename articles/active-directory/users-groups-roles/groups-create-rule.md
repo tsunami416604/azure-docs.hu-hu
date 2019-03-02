@@ -1,6 +1,6 @@
 ---
 title: Dinamikus csoport létrehozása és állapotának – Azure Active Directory |} A Microsoft Docs
-description: Az Azure portal-szabályok létrehozása egy csoport tagságát, állapotának ellenőrzése.
+description: Hogyan csoporttagsági szabály létrehozása az Azure Portalon, az állapot ellenőrzése.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -9,44 +9,50 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 03/01/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5651d5e37613abcef8c8f5448af38637f91ebe30
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: df5668c3fa43130ee1a0271d6040b1989ee8ab79
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193628"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242632"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>Dinamikus csoport létrehozása és állapotának ellenőrzése
 
-Az Azure Active Directoryban (Azure AD) létrehozhat csoportokat úgy, hogy alkalmazza a szabályt, amely meghatározza a tagsági felhasználó vagy az eszköz tulajdonságok alapján. Amikor egy felhasználó vagy eszköz módosítások attribútumait, az Azure AD kiértékeli az összes dinamikus csoport-szabályok az Azure AD-bérlő, és bármely hajt végre hozzáadása vagy eltávolítása. Ha egy felhasználó vagy az eszköz megfelel a egy szabályt a csoporthoz, azok lesz hozzáadva tagként, és azokat a szabály már nem felel meg, amikor eltávolítja.
+Az Azure Active Directoryban (Azure AD) a szabályok segítségével határozza meg a csoport tagságának a felhasználó vagy az eszköz tulajdonságok alapján. Ez a cikk bemutatja, hogyan állítható be a szabály a dinamikus csoportot az Azure Portalon.
+A dinamikus tagsági biztonsági vagy Office 365-csoportok esetében támogatott. Egy csoporttagsági szabály alkalmazásakor a tagsági szabály egyezése a felhasználó és az eszközattribútumok értékeli ki. Attribútuma megváltozik egy felhasználóhoz vagy eszközhöz, ha a szervezet összes dinamikus csoport szabályok feldolgozása a tagságot érintő változások. Felhasználók és eszközök hozzáadásakor vagy eltávolításakor, ha azok megfelelnek a feltételeknek, egy csoportra.
 
-Ez a cikk részletesen bemutatja az Azure Portalon a biztonsági vagy Office 365-csoportokat a dinamikus tagsági szabály beállításához. A szabály szintaxisra vonatkozó példákat és a támogatott tulajdonságok, operátorok és a tagsági szabály értékeinek teljes listáját lásd: [dinamikus tagsági szabályok az Azure Active Directoryban csoportok](groups-dynamic-membership.md).
+A szintaxis, támogatott tulajdonságok, operátorok és a tagsági szabály értékeit példákért lásd [dinamikus tagsági szabályok az Azure Active Directoryban csoportok](groups-dynamic-membership.md).
 
 ## <a name="to-create-a-group-membership-rule"></a>A csoporttagsági szabály létrehozása
 
-1. Jelentkezzen be a [Azure AD felügyeleti központ](https://aad.portal.azure.com) egy olyan fiókkal, amely a bérlő globális rendszergazdai, az Intune szolgáltatás-rendszergazda vagy a felhasználóifiók-adminisztrátor szerepkör.
+1. Jelentkezzen be a [Azure AD felügyeleti központ](https://aad.portal.azure.com) egy olyan fiókkal, amely a globális rendszergazdai, Intune-rendszergazda vagy felhasználói rendszergazda szerepkör a bérlőben.
 2. Válassza ki **csoportok**.
 3. Válassza ki **összes csoport**, és válassza ki **új csoport**.
 
    ![Új csoport hozzáadása](./media/groups-create-rule/new-group-creation.png)
 
-4. Az a **csoport** panelen adjon meg egy nevet és leírást az új csoport. Válassza ki a **tagsági típussal** lehet **dinamikus felhasználói** vagy **dinamikus eszköz**, attól függően, hogy hozzon létre egy szabályt, felhasználók vagy eszközök számára, és válassza ki a szeretné**Dinamikus lekérdezés hozzáadása**. A szabály builder használatával egy egyszerű szabályt hozhat létre, vagy saját maga a tagsági szabály írása. Ez a cikk tartalmaz további információt az elérhető felhasználó és eszköz attribútumait, valamint a tagsági szabályok példái.
+4. Az a **csoport** lap, adja meg egy nevet és leírást az új csoport. Válassza ki a **tagságtípusának** felhasználók vagy eszközök, és válassza ki a **dinamikus lekérdezés hozzáadása**. A szabály builder segítségével hozhat létre egy egyszerű szabályt vagy [saját magának egy tagsági szabály írása](groups-dynamic-membership.md).
 
    ![Dinamikus tagsági szabály hozzáadása](./media/groups-create-rule/add-dynamic-group-rule.png)
 
-5. A tagsági lekérdezést adhat hozzá egyéni bővítménytulajdonság teljes listájának megtekintéséhez, válassza ki a **egyéni bővítménytulajdonság lekérése**, adja meg az Alkalmazásazonosítót, és válassza **tulajdonságainak frissítése**. A teljes Izraeli normál idő szerint tulajdonságok kiválasztható lesz.
+5. A tagsági lekérdezést rendelkezésre álló egyéni bővítmény tulajdonságok megtekintéséhez
+  1. Válassza ki **egyéni bővítménytulajdonság lekérése**
+  2. Adja meg az Alkalmazásazonosítót, és válassza ki **tulajdonságainak frissítése**. 
 6. A szabály létrehozása után válassza ki a **lekérdezés hozzáadása** a panel alján.
 7. Válassza ki **létrehozás** a a **csoport** panelen a csoport létrehozásához.
 
-> [!TIP]
-> Csoport létrehozása sikertelen lesz, ha a megadott szabály helytelenül formázott vagy érvénytelen volt. A tartalmazó annak magyarázatát, miért érdemes a szabályt nem sikerült feldolgozni a portál jobb felső sarkában megjelenik egy értesítés. Olvassa el, hogy alaposan megismerheti, hogyan, hogy a szabály érvényes, hogy módosítani kell.
+Ha a megadott szabály nem érvényes, annak magyarázatát, hogy miért nem sikerült feldolgozni a szabályt a portál jobb felső sarokban jelenik meg. Olvassa el, hogy alaposan megismerheti, hogyan háríthatja el a szabályt.
 
-## <a name="check-processing-status-for-a-membership-rule"></a>Ellenőrizze a tagsági szabály feldolgozási állapota
+## <a name="turn-on-or-off-welcome-email"></a>Be- és kikapcsolása üdvözlő e-mailben
+
+Amikor létrejön egy új Office 365-csoportot, egy üdvözlő értesítést küld a felhasználókat, akik a csoportba kerülnek. Később Ha módosítja olyan felhasználó vagy eszköz attribútumai, a szervezet összes dinamikus csoportszabályok dolgozzák fel a tagság megváltozása. Felhasználók, akik kerülnek majd is kapnak az üdvözlő értesítést. Kapcsolhatja ki ezt a viselkedést [Exchange PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps). 
+
+## <a name="check-processing-status-for-a-rule"></a>Feldolgozási szabály állapot ellenőrzése
 
 Láthatja, hogy a feldolgozási állapotát és az utolsó frissítés dátuma a tagság a **áttekintése** a csoporthoz tartozó oldal.
   
@@ -57,14 +63,14 @@ A következő állapotüzeneteket is látható, a **tagsági feldolgozási** ál
 * **Kiértékelése**:  A csoport módosítása érkezett, és a frissítések kiértékelése megtörténik.
 * **Feldolgozási**: Frissítés feldolgozása folyamatban van.
 * **Frissítés befejezve**: Feldolgozása befejeződött, és minden szükséges frissítés történtek-e.
-* **Feldolgozási hiba**: Hiba történt a tagsági szabály értékelése és feldolgozása nem fejeződött be.
+* **Feldolgozási hiba**:  Feldolgozása sikertelen volt, mert hiba történt a tagsági szabály kiértékelése.
 * **Frissítés szüneteltetve**: A dinamikus tagsági szabály frissítések szünetelnek a rendszergazda által. MembershipRuleProcessingState "Felfüggesztett" értékre van állítva.
 
 A következő állapotüzeneteket is látható, a **tagság utolsó frissítés** állapota:
 
 * &lt;**Dátum és idő**&gt;: A legutóbbi alkalommal a tagság frissítése megtörtént.
 * **Folyamatban lévő**: Frissítések folyamatban vannak.
-* **Ismeretlen**: Nem sikerült beolvasni az utolsó frissítésének időpontját. Ennek oka az újonnan létrehozott csoport lehet.
+* **Ismeretlen**: Nem sikerült beolvasni az utolsó frissítésének időpontját. Lehet, hogy a csoport új.
 
 Az egy adott csoport tagsági szabály feldolgozása során hiba történik, ha egy riasztás tetején látható a **áttekintőlapján** a csoporthoz. Ha nincs függőben van a dinamikus tagsági frissítések feldolgozási az a bérlőn belüli összes csoportra további majd 24 órán keresztül, egy riasztás jelenik meg tetején **összes csoport**.
 

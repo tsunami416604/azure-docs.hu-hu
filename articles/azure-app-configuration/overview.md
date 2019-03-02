@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 8207c9bb4cce3d793a5030febc532b869f54dd3f
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 0d78536173fd87e046a882314d6f94a92092fd9e
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195132"
+ms.locfileid: "57215880"
 ---
 # <a name="what-is-azure-app-configuration"></a>Mi az Azure-alkalmazások konfigurálása
 
 Az Azure App konfigurálása Alkalmazásbeállítások kezelése szolgáltatást biztosít központilag. A modern, különösen egy felhőben futó programok általában számos összetevőből jellegű elosztott rendelkezik. Konfigurációs beállítások terjedhetnek ezen összetevők között vezethet rögzített hibaelhárítása hibák az alkalmazások központi telepítése során. Alkalmazások konfigurálása lehetővé teszi az alkalmazás összes beállításainak tárolására, és biztonságos azok hozzáfér egy helyen.
 
-App Service-ben konfigurációs van **privát előzetes verzió**. Díjmentes használata az előzetes verzió ideje alatt.
+App Service-ben konfigurációs van **privát előzetes verzió**. Díjmentes használata az előzetes verzió ideje alatt. Adjon [regisztrálása](https://aka.ms/azconfig/register) az előzetes verzióra, ha az Önt érdeklő kipróbálja.
 
 ## <a name="why-use-app-configuration"></a>Miért érdemes használni az alkalmazások konfigurálása
 

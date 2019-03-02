@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 5b9d5d6252f22901d2b8ac5a61d924ce12cc7065
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 902fbde0eca8db9113dda51e5d912fa9d94644ee
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004635"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215166"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Az Azure SQL Database-adatbázisok és a készletek a több-bérlős SaaS-alkalmazás teljesítményének figyelése és kezelése
 
@@ -57,7 +57,7 @@ Készletek és a készletekben található adatbázisokat figyelendő teljesítm
 
 Az [Azure Portal](https://portal.azure.com) a legtöbb erőforráshoz beépített figyelési és riasztási lehetőségeket biztosít. Az SQL Database esetében a figyelés és riasztás rendelkezésre áll az adatbázisokhoz és a készletekhez. A beépített figyelés és riasztás erőforrás-specifikus, így azt kényelmes megoldás az erőforrás használatára, de nem nagyon hasznos, sok erőforrás használatakor.
 
-Nagy mennyiségű forgatókönyvekhez, ahol sok erőforrásokkal dolgozik, [Log Analytics](saas-dbpertenant-log-analytics.md) is használható. Ez az egy külön Azure-szolgáltatás, amely biztosít elemzési kibocsátott diagnosztikai naplók és a egy log analytics-munkaterület-munkahelyen gyűjtött telemetria. Log Analytics számos szolgáltatásból képes telemetriai adatok gyűjtésére, és lekérdezheti, és riasztásokat állíthat be.
+Nagy mennyiségű forgatókönyvekhez, ahol sok erőforrásokkal dolgozik, [naplózza az Azure Monitor](saas-dbpertenant-log-analytics.md) is használható. Ez az egy külön Azure-szolgáltatás, amely biztosít elemzési kibocsátott diagnosztikai naplók és a Log Analytics-munkaterületen gyűjtött telemetria. Az Azure Monitor naplóira számos szolgáltatásból képes telemetriai adatok gyűjtésére, és lekérdezheti, és riasztásokat állíthat be.
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>A Wingtip Tickets SaaS adatbázis Per bérlői alkalmazásszkriptek beolvasása
 
@@ -247,4 +247,4 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 * További [a Wingtip Tickets SaaS adatbázis Per bérlői alkalmazástelepítés útmutatóra oktatóanyagok](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Rugalmas SQL-készletek](sql-database-elastic-pool.md)
 * [Azure Automation](../automation/automation-intro.md)
-* [Log Analytics](saas-dbpertenant-log-analytics.md) – A Log Analytics beállítását és használatát ismertető oktatóanyag
+* [Az Azure Monitor naplóira](saas-dbpertenant-log-analytics.md) - beállítás és használatát az Azure Monitor naplók oktatóanyag

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 267a619fe32a8d4af0ee9cc8a5001d7a321c3098
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 0494e9ef2a4f7adddd615dbf7882c9f2b4b81982
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765149"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213211"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view-new-ui-design"></a>Oktatóanyag: Az Azure IoT Central operátor nézet (új felhasználói felület tervezése) testreszabása
 
@@ -28,8 +28,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Az eszközbeállítások elrendezésének konfigurálása
 > * Az eszköztulajdonságok elrendezésének konfigurálása
 > * Az eszköz előnézetének megtekintése operátorként
-> * Az alapértelmezett kezdőlap konfigurálása
-> * Az alapértelmezett kezdőlap előnézetének megtekintése operátorként
+> * Az alapértelmezett alkalmazás irányítópult konfigurálása
+> * Az alapértelmezett irányítópult kezelőként előzetes verzió
 
 [!INCLUDE [iot-central-experimental-note](../../includes/iot-central-experimental-note.md)]
 
@@ -93,7 +93,7 @@ Az irányítópult és a beállítások mellett az eszköztulajdonságok operát
 
     ![A tulajdonságok elrendezésének szerkesztése](media/tutorial-customize-operator-experimental/propertieslayout.png)
 
-## <a name="preview-the-connected-air-conditioner-device-as-an-operator"></a>A csatlakoztatott légkondicionáló eszköz előnézetének megtekintése operátorként
+## <a name="preview-the-device"></a>Az eszköz előzetes verzió
 
 Használja a **eszközsablonok** lapon szabhatja testre az irányítópult, a beállítások és a Tulajdonságok lapon olyan operátorra. Használja a **Device Explorer** megtekintése és használata az eszköz sablon lap.
 
@@ -115,30 +115,33 @@ Használja a **eszközsablonok** lapon szabhatja testre az irányítópult, a be
 
     ![Az eszköz irányítópultjának operátori nézete](media/tutorial-customize-operator-experimental/operatordashboard.png)
 
-## <a name="configure-the-default-home-page"></a>Az alapértelmezett kezdőlap konfigurálása
+## <a name="configure-the-default-dashboard"></a>Az alapértelmezett irányítópult konfigurálása
 
-Amikor egy szerkesztő vagy operátor bejelentkezik az Azure IoT Central-alkalmazásba, egy kezdőlapot lát. Szerkesztőként konfigurálhatja e kezdőlap tartalmát, hogy az operátor számára leghasznosabb és legfontosabb tartalmakat foglalja bele.
+Ha a jelentéskészítő vagy operátor jelentkezik be egy Azure IoT Central alkalmazáshoz, az irányítópult megjelenik. Mint szerkesztő konfigurálhatja a tartalom az alapértelmezett irányítópult, ha hozzá szeretné adni az operátornak a hasznos és a kapcsolódó tartalmat.
 
-1. Testre szabhatja az alapértelmezett kezdőlapját, keresse meg a **otthoni** lapon és a Szerkesztés **szerkesztése** tetején, az oldal jobb. A panel becsúszik adhat hozzá objektumok listáját a balról a **kezdőlap** oldalon:
+> [!NOTE]
+> A felhasználók a saját személyes irányítópultok kialakítása és válasszon egyet az alapértelmezésként is.
 
-    ![Alkalmazásszerkesztő oldal](media/tutorial-customize-operator-experimental/builderhome.png)
+1. Testre szabhatja az alapértelmezett irányítópult, keresse meg a **irányítópult** lapot, és kattintson **szerkesztése** felső jobb. Megjelenik egy panel, egy erőforrástár-objektumok is hozzáadhat az irányítópulthoz.
 
-2. Testreszabhatja a **kezdőlap** lapon, a csempék hozzáadása a **könyvtár**. Válassza a **Hivatkozás** lehetőséget, és adja hozzá a cég webhelyének részleteit. Kattintson a **mentése**:
+    ![Irányítópult-oldalon](media/tutorial-customize-operator-experimental/builderhome.png)
 
-    ![Hivatkozás hozzáadása a kezdőlaphoz](media/tutorial-customize-operator-experimental/addlink.png)
+2. Testre szabhatja az irányítópultot, a csempék hozzáadása a **könyvtár**. Válassza a **Hivatkozás** lehetőséget, és adja hozzá a cég webhelyének részleteit. Ezután válassza a **Mentés** lehetőséget:
+
+    ![Hivatkozás hozzáadása az irányítópulthoz](media/tutorial-customize-operator-experimental/addlink.png)
 
     > [!NOTE]
     > Az Azure IoT Central-alkalmazásban lévő oldalakhoz hivatkozásokat is adhat. Hozzáadhatja például egy eszköz irányítópultjának vagy a beállítások oldalának a hivatkozását.
 
-3. A **Kép** lehetőséget is választhatja, és feltölthet egy megjelenítendő képet a kezdőlapra. A képek olyan URL-címmel rendelkezhetnek, amelyeket rájuk kattintva megnyithat:
+3. Szükség esetén válasszon **kép** és töltsön fel egy képet az irányítópulton megjeleníthető. Kép egy URL-cím, amelyre rákattintva veheti fel:
 
-    ![Kép hozzáadása a kezdőlaphoz](media/tutorial-customize-operator-experimental/addimage.png)
+    ![Kép hozzáadása az irányítópulthoz](media/tutorial-customize-operator-experimental/addimage.png)
 
     További tudnivalókért lásd a [képek előkészítését és az Azure IoT Central-alkalmazásba való feltöltését](howto-prepare-images-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) ismertető szakaszt.
 
-## <a name="preview-the-default-home-page-as-an-operator"></a>Az alapértelmezett kezdőlap előnézetének megtekintése operátorként
+## <a name="preview-the-dashboard"></a>Az irányítópult megtekintése
 
-Kattintva megtekintheti a kezdőlap kezelőként **kész** tetején, az oldal jobb:
+Kezelőként az irányítópult megtekintéséhez válassza ki a **kész** felső jobb.
 
 ![A Tervezési mód be- és kikapcsolása](media/tutorial-customize-operator-experimental/operatorviewhome.png)
 

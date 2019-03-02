@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric - figyelés a Log Analytics beállítása |} A Microsoft Docs
-description: Megtudhatja, hogyan állíthatja be a Log Analytics jelenítenek meg, és az események az Azure Service Fabric-fürtök figyelése.
+title: Az Azure Service Fabric - beállította a figyelést az Azure Monitor-naplókkal |} A Microsoft Docs
+description: Ismerje meg, hogyan állítható be az Azure Monitor naplóira jelenítenek meg, és események figyelése az Azure Service Fabric-fürtöket.
 services: service-fabric
 documentationcenter: .net
 author: srrengar
@@ -14,19 +14,21 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/20/2019
 ms.author: srrengar
-ms.openlocfilehash: 5567b774171a63cc4d329daf6429cfc78e140dd3
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 33984b084023a3a2c31b6f6a0a7fc8a95c2d7689
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455075"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242853"
 ---
-# <a name="set-up-log-analytics-for-a-cluster"></a>Fürt Log Analytics beállítása
+# <a name="set-up-azure-monitor-logs-for-a-cluster"></a>Állítsa be a fürt az Azure Monitor naplóira
 
-A log Analytics a fürt események monitorozása az ajánlott megoldás. Beállíthat a Log Analytics-munkaterületet az Azure Resource Manager, a PowerShell vagy az Azure Marketplace-en keresztül. Ha fenntartja az üzembe helyezés későbbi használat céljából egy frissített Resource Manager-sablon, használja ugyanazt a sablont a Log Analytics-környezetet. Marketplace-en keresztüli üzembe helyezést az egyszerűbb, ha már rendelkezik egy diagnosztika engedélyezve van az üzembe helyezett fürt. Ha a fiók, amelyre telepíti, akkor nem kell az előfizetési szintű hozzáféréssel, üzembe helyezése PowerShell vagy a Resource Manager-sablon használatával.
+Az Azure Monitor naplóira Javaslataink fürt események figyelésére. Beállíthat a Log Analytics-munkaterületet az Azure Resource Manager, a PowerShell vagy az Azure Marketplace-en keresztül. Ha fenntartja az üzembe helyezés későbbi használat céljából egy frissített Resource Manager-sablon, használja ugyanazt a sablont az Azure Monitor naplók környezetet. Marketplace-en keresztüli üzembe helyezést az egyszerűbb, ha már rendelkezik egy diagnosztika engedélyezve van az üzembe helyezett fürt. Ha a fiók, amelyre telepíti, akkor nem kell az előfizetési szintű hozzáféréssel, üzembe helyezése PowerShell vagy a Resource Manager-sablon használatával.
 
 > [!NOTE]
-> A Log Analytics beállítása a fürt monitorozásához, szüksége lesz a diagnosztika engedélyezve van a fürt-szintű vagy platformszintű események megtekintéséhez. Tekintse meg [diagnosztika a Windows-fürtök beállítása](service-fabric-diagnostics-event-aggregation-wad.md) és [Linux-fürtöket-diagnosztika beállítása](service-fabric-diagnostics-event-aggregation-lad.md) további
+> Az Azure Monitor naplóira be, a fürt monitorozásához, szüksége lesz a diagnosztika engedélyezve van a fürt-szintű vagy platformszintű események megtekintéséhez. Tekintse meg [diagnosztika a Windows-fürtök beállítása](service-fabric-diagnostics-event-aggregation-wad.md) és [Linux-fürtöket-diagnosztika beállítása](service-fabric-diagnostics-event-aggregation-lad.md) további
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="deploy-a-log-analytics-workspace-by-using-azure-marketplace"></a>Log Analytics-munkaterület üzembe az Azure Marketplace-en
 
@@ -44,7 +46,7 @@ Ha szeretne egy fürt üzembe helyezését követően adja hozzá a Log Analytic
 
 5. Amikor végzett, válassza ki a **létrehozás** újra a Service Fabric-elemzés létrehozása ablak alján. Győződjön meg arról, hogy az új munkaterület alatt jelenik meg, **OMS-munkaterület**. Ez a művelet hozzáadja a létrehozott munkaterületet, a megoldás.
 
-Ha Windows rendszert továbbra is a Log Analytics csatlakozni a fürthöz kapcsolódó események tárolására a storage-fiókot az alábbi lépéseket követve. 
+Ha a Windows használja, továbbra is az alábbi lépéseket követve az Azure Monitor naplóira csatlakozni a fürthöz kapcsolódó események tároló tárfiók. 
 
 >[!NOTE]
 >A Linux-fürtök használatát teszi lehetővé a még nem áll rendelkezésre. 
@@ -65,14 +67,14 @@ Ha Windows rendszert továbbra is a Log Analytics csatlakozni a fürthöz kapcso
 
 7. Válassza ki **OK** munkaterületét kapcsolódni a fürt naplóit.
 
-    ![Tárfióknaplók hozzáadása a Log Analyticsbe](media/service-fabric-diagnostics-event-analysis-oms/add-storage-account.png)
+    ![Tárfióknaplók hozzáadása az Azure Monitor naplóira](media/service-fabric-diagnostics-event-analysis-oms/add-storage-account.png)
 
 A fiókkal most már megjelenik-e, a storage-fiók részeként jelentkezik be a munkaterület adatforrásai.
 
 A Service Fabric-elemzés megoldás hozzáadott egy Log Analytics-munkaterületen, amely most már megfelelően csatlakozik-e a fürt platformot és alkalmazást naplótábláját. Ugyanúgy adhat hozzá további források a munkaterületre.
 
 
-## <a name="deploy-log-analytics-with-azure-resource-manager"></a>A Log Analytics és Azure Resource Manager üzembe helyezése
+## <a name="deploy-azure-monitor-logs-with-azure-resource-manager"></a>Az Azure Monitor-naplók az Azure Resource Manager üzembe helyezése
 
 Egy fürtöt egy Resource Manager-sablon használatával történő telepítésekor a sablon létrehoz egy új Log Analytics-munkaterületet, a Service Fabric megoldást ad hozzá a munkaterülethez, és konfigurálja, hogy a megfelelő tárolási táblákból származó adatokat olvasni.
 
@@ -93,9 +95,9 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "<resourceGroupName>" -Tem
 
 Az Azure Resource Manager azt észleli, hogy ez a parancs egy meglévő erőforrás frissítése. Csak feldolgozza a módosításokat a vezetői a meglévő központi telepítési sablont és a megadott új sablon között.
 
-## <a name="deploy-log-analytics-with-azure-powershell"></a>Az Azure PowerShell használatával Log Analytics üzembe helyezése
+## <a name="deploy-azure-monitor-logs-with-azure-powershell"></a>Az Azure Monitor-naplók az Azure PowerShell telepítése
 
-A Log Analytics-erőforrás PowerShell használatával is telepítheti a `New-AzureRmOperationalInsightsWorkspace` parancsot. Ezt a módszert használja, győződjön meg arról, hogy telepítve van-e [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-5.1.1). Ez a szkript használatával hozzon létre egy új Log Analytics-munkaterületet, és hozzá tud adni a Service Fabric megoldást: 
+A log analytics-erőforrás a PowerShell használatával is telepítheti a `New-AzureRmOperationalInsightsWorkspace` parancsot. Ezt a módszert használja, győződjön meg arról, hogy telepítve van-e [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-5.1.1). Ez a szkript használatával hozzon létre egy új Log Analytics-munkaterületet, és hozzá tud adni a Service Fabric megoldást: 
 
 ```PowerShell
 
@@ -121,11 +123,11 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup
 
 ```
 
-Ha elkészült, kövesse az előző szakaszban fiókhoz való csatlakozás a Log Analytics a megfelelő tárolási.
+Ha elkészült, kövesse az előző szakaszban a megfelelő tárfiókot az Azure Monitor naplóira csatlakozni.
 
-Más megoldások hozzáadása is, vagy más módosításokat a Log Analytics-munkaterület PowerShell használatával. További tudnivalókért lásd: [kezelése a Log Analytics PowerShell-lel](../azure-monitor/platform/powershell-workspace-configuration.md).
+Más megoldások hozzáadása is, vagy más módosításokat a Log Analytics-munkaterület PowerShell használatával. További tudnivalókért lásd: [kezelése az Azure Monitor naplózza a PowerShell-lel](../azure-monitor/platform/powershell-workspace-configuration.md).
 
 ## <a name="next-steps"></a>További lépések
 * [A Log Analytics-ügynök telepítésének](service-fabric-diagnostics-oms-agent.md) alakzatot a csomópontok összegyűjtéséhez a teljesítményszámlálókat és a docker-statisztikák és a tárolókhoz naplóinak összegyűjtésére
-* Ismerkedjen meg a [naplókeresési és lekérdezési](../log-analytics/log-analytics-log-searches.md) funkciók a Log Analytics részeként érhető el
-* [Nézettervező segítségével egyéni nézeteket hozhat létre a Log Analyticsben](../azure-monitor/platform/view-designer.md)
+* Ismerkedjen meg a [naplókeresési és lekérdezési](../log-analytics/log-analytics-log-searches.md) szolgáltatásai által kínált Azure Monitor naplóira
+* [Nézettervező segítségével egyéni nézeteket hozhat létre az Azure Monitor naplóira](../azure-monitor/platform/view-designer.md)

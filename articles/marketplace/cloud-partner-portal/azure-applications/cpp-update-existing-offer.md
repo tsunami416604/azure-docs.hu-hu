@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 3fbbf688f6de7c3fceb6695a6b085f917dbec242
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1019c06afbdab0a6b0e172133da316aea01a5504
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196943"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216891"
 ---
 # <a name="update-an-existing-azure-application-offer"></a>Egy Azure-alkalmazás létező ajánlat frissítése
 
@@ -75,6 +75,9 @@ A következő lépések segítségével frissíteni az ajánlatot társított ma
 2. A **minden ajánlat**, keresse meg az ajánlat, amelyet szeretne frissíteni.
 3. Nyissa meg a **Marketplace** fülre. Kövesse az utasításokat a [közzététele az Azure application ajánlat](./cpp-publish-offer.md) metaadatok módosításokat.
 4. Válassza ki **közzététel** a módosítások közzétételéhez a munkafolyamat elindításához.
+ 
+>[!Note]
+>Cloud Solution Providers (CSP) partner csatorna vehetnek részt már elérhető.  Lásd: [Cloud Solution Providers](../../cloud-solution-providers.md) további tájékoztatást a marketing, az ajánlat keretében a Microsoft CSP partner-csatornákon.
 
 ## <a name="deleting-an-existing-offer"></a>Egy meglévő ajánlat törlése
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: bf34d7e85632999056388eb74816140ce667ce10
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: b1a39016907e697ab03a8a6962fb1e75e4433675
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382359"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57218039"
 ---
 # <a name="openshift-in-azure"></a>OpenShift az Azure-ban
 
@@ -46,7 +46,7 @@ Ebben a cikkben ismertetett öt verzióinak csak kettő érhető el még ma, az 
 
 Container Platform az olyan vállalati felhasználásra kész [kereskedelmi verzió](https://www.openshift.com) származó és a Red Hat által támogatott. Ebben a verzióban az ügyfelek vásárol a szükséges jogosultságok az OpenShift Tárolóplatform, és telepítési és felügyeleti az egész infrastruktúrát ábrázoló felelős.
 
-"Saját" a teljes platform, mert azok a helyi adatközpontban vagy a nyilvános felhőben (például Azure, az AWS vagy a Google) telepíthetik azt.
+"Saját" a teljes platform, mert a helyszíni adatközpontját a, vagy a nyilvános felhőben (például az Azure-ra) telepíthetik azt.
 
 ## <a name="openshift-on-azure"></a>OpenShift On Azure
 
@@ -58,7 +58,7 @@ OKD van egy [nyílt forráskódú](https://www.okd.io/) felsőbb rétegbeli proj
 
 ## <a name="openshift-dedicated"></a>OpenShift Dedicated
 
-Red Hat által felügyelt dedikált van *egybérlős* OpenShift Tárolóplatform használó OpenShift. Red Hat kezeli az összes, az alapul szolgáló infrastruktúra (virtuális gépek, az OpenShift fürt, hálózatkezelési, tárolási, stb.). A fürt egy ügyfél és egy nyilvános felhőben (például az AWS vagy a Google). A kiindulási fürt alkalmazás négy csomópontot tartalmaz, és minden díjat éves és fizetős előre.
+Red Hat által felügyelt dedikált van *egybérlős* OpenShift Tárolóplatform használó OpenShift. Red Hat kezeli az összes, az alapul szolgáló infrastruktúra (virtuális gépek, az OpenShift fürt, hálózatkezelési, tárolási, stb.). A fürt egy ügyfél és egy nyilvános felhőben (például az Azure-t). A kiindulási fürt alkalmazás négy csomópontot tartalmaz, és minden díjat éves és fizetős előre.
 
 ## <a name="openshift-online"></a>OpenShift Online
 

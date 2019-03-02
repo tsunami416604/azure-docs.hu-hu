@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 01/14/2019
-ms.openlocfilehash: 04bb32abf7100975d72e5782b79b44006f1ac965
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 4cd7c61903bad5c0f1d6c41165e9bd7ff61a6d09
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567927"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213432"
 ---
 # <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Oktatóanyag: A helyszíni Azure SQL Database és SQL Server között az SQL Data Sync beállítása
 
@@ -232,7 +232,7 @@ További információ az SQL Data Syncről:
 
 - [Az Azure SQL Data Sync adatok szinkronizációs ügynök](sql-database-data-sync-agent.md)
 - [Ajánlott eljárások](sql-database-best-practices-data-sync.md) és [az Azure SQL Data Sync szolgáltatással kapcsolatos problémák elhárítása](sql-database-troubleshoot-data-sync.md)
-- [Az SQL Data Sync monitorozása a Log Analytics szolgáltatással](sql-database-sync-monitor-oms.md)
+- [Az SQL Data Sync monitorozása az Azure Monitor naplóira](sql-database-sync-monitor-oms.md)
 - [Szinkronizálási sémájának frissítéséhez a Transact-SQL](sql-database-update-sync-schema.md) vagy [PowerShell](scripts/sql-database-sync-update-schema.md)
 
 További információ az SQL Database-ről:

@@ -3,17 +3,17 @@ title: Az IoT-központ az alkalmazás-beállítások kezelése |} A Microsoft Do
 description: Az alkalmazás- és IoT-központ a személyes beállítások kezelése
 author: lmasieri
 ms.author: lmasieri
-ms.date: 12/13/2018
+ms.date: 02/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4a62ae1db151aff150d8132f190d32b32f650c02
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 21814ddf6af5e65725f5e0e6ebdf31206565baa2
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410981"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57218005"
 ---
 # <a name="manage-your-application-preferences"></a>Az alkalmazás-beállítások kezelése
 
@@ -23,19 +23,17 @@ IoT-központ rugalmasságot biztosít, és testre szabhatja az alkalmazást az i
 
 ## <a name="changing-language"></a>Nyelv módosítása
 
-IoT-központ 17 nyelvet támogatja. Elsődleges nyelv használatával válthat a **nyelvválasztó** a felső navigációs sávon. Miután módosította a nyelvet, megjegyzi *a* kiválasztása, és alkalmazza azt az alkalmazások közötti. Vegye figyelembe, hogy a nem honosított irányítópult képeket az alkalmazásban lévő testreszabása. 
-
-![IoT-központ nyelvválasztó](media/howto-manage-profile/language-picker.png)
+IoT-központ több nyelven is támogatott. Elsődleges nyelv használatával válthat a **nyelvválasztó** a beállítások ikonra a felső navigációs sávon. Miután módosította a nyelvet, az IoT-központ megjegyzi a választását, és alkalmazza azt az alkalmazások közötti. Vegye figyelembe, hogy az irányítópult képeket nem honosított alkalmazáson belül testreszabása.
 
 ## <a name="changing-theme"></a>Téma módosítása
 
-Támogatja a sötét téma és világos téma van. Bár a sötét téma alapértelmezett téma, módosíthatja ezt a jobb felső sarokban lévő nevére kattint, és a téma közötti váltás.
+Támogatja a sötét téma és világos téma van. Alapértelmezés szerint a világos téma pedig a felső navigációs sávon a beállítások ikonra kattintva módosíthatja ezt.
 
-![IoT-központ témaválasztóval](media/howto-manage-profile/theme-picker.png)
+![IoT-központ témaválasztóval](media/howto-manage-preferences/settings.png)
 
 ## <a name="next-steps"></a>További lépések
 
 Most, hogy már megtanulta, hogyan kezelheti az Azure IoT Central profilját, Íme a javasolt következő lépésre:
 
 > [!div class="nextstepaction"]
-> [A kezdőlap konfigurálása](howto-configure-homepage.md)
+> [Az alkalmazás irányítópult konfigurálása](howto-configure-homepage.md)

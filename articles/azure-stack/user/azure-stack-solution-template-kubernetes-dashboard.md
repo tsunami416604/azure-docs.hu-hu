@@ -15,12 +15,12 @@ ms.date: 02/27/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 02/27/2019
-ms.openlocfilehash: 197e79c2674d314c178444cc1f0d685503425031
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: cdc1be0c0274977fe14ef704fbb74fa955ad7e11
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56986925"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242411"
 ---
 # <a name="enable-the-kubernetes-dashboard-in-azure-stack"></a>Engedélyezze a Kubernetes-irányítópultot az Azure Stackben 
 
@@ -107,7 +107,6 @@ Az irányítópult URL-CÍMÉT a fő csomópont kérheti le a fürtben.
 3. Jegyezze meg a fájlok helyét. A parancsfájl frissítse a helyeket, és a PowerShell nyisson meg egy rendszergazda jogú parancssorba. Futtassa a frissített parancsfájlt:  
 
     ```PowerShell   
-    Import  /etc/kubernetes/certs/ca.crt -CertStoreLocation cert:\LocalMachine\Root 
     Import-Certificate -Filepath "ca.crt" -CertStoreLocation cert:\LocalMachine\Root 
     $pfxpwd = Get-Credential -UserName 'Enter password below' -Message 'Enter password below' 
     Import-PfxCertificate -Filepath "client.pfx" -CertStoreLocation cert:\CurrentUser\My -Password $pfxpwd.Password 
@@ -121,9 +120,11 @@ Az irányítópult URL-CÍMÉT a fő csomópont kérheti le a fürtben.
 3.  Jelölje be az ügyféltanúsítványt.
 4.  Adja meg a jogkivonatot. 
 5. A bash parancssorban, a fő csomópont újra, és engedélyeket biztosíthat a `kubernetes-dashboard`. Futtassa az alábbi parancsot:
-    ```Bash   
+
+    ```Bash  
     kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard 
     ``` 
+
     A parancsprogram megjeleníti `kubernetes-dashboard` felhőalapú rendszergazdai jogosultságokkal. További információkért lásd: [az RBAC-kompatibilis fürtök](https://docs.microsoft.com/azure/aks/kubernetes-dashboard).
 
 Használhatja az irányítópultot. A Kubernetes-irányítópult további információkért lásd: [Kubernetes webes felhasználói felületének irányítópultja](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) 

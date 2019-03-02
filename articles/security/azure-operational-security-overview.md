@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: tomsh
-ms.openlocfilehash: da58737314012255f26d344f279d855244f0c1ba
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 38054d6ee3799296887726954ef1f096945aeaeb
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116473"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241085"
 ---
 # <a name="azure-operational-security-overview"></a>Az Azure működési biztonság – áttekintés
 
@@ -29,13 +29,13 @@ ms.locfileid: "56116473"
 
 Az informatikai üzemeltetési csapat felelős az Adatközpont-infrastruktúrába, alkalmazások és adatok, beleértve a stabilitás és ezek a rendszerek biztonságát kezelése. Biztonsági következtetéseket között összetett IT-környezetek gyakran növelése azonban szükség van a szervezetek számára, hogy cobble együtt több biztonsági és felügyeleti rendszerek adatait.
 
-[A Microsoft Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) egy felhőalapú, informatikai felügyeleti megoldás, amely segít a kezelése és védelme a helyszíni és felhőalapú infrastruktúrára. A következő szolgáltatásokat futtató Azure-ban a legfontosabb funkcióit biztosítja. Az Azure több tartalmaz szolgáltatások, amelyek segítségével kezelése és védelme a helyszíni és felhőalapú infrastruktúrára. Mindegyik szolgáltatás egy adott felügyeleti funkciót biztosít. Különféle felügyeleti forgatókönyvek valósíthatók szolgáltatások kombinálásával. 
+[A Microsoft Azure Monitor naplóira](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) egy felhőalapú, informatikai felügyeleti megoldás, amely segít a kezelése és védelme a helyszíni és felhőalapú infrastruktúrára. A következő szolgáltatásokat futtató Azure-ban a legfontosabb funkcióit biztosítja. Az Azure több tartalmaz szolgáltatások, amelyek segítségével kezelése és védelme a helyszíni és felhőalapú infrastruktúrára. Mindegyik szolgáltatás egy adott felügyeleti funkciót biztosít. Különféle felügyeleti forgatókönyvek valósíthatók szolgáltatások kombinálásával. 
 
 ### <a name="azure-monitor"></a>Azure Monitor
 
 [Az Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) gyűjti az adatokat a felügyelt források részéről történő központi adattárakban. Ezek az adatok lehetnek események, teljesítményadatok vagy az API segítségével biztosított egyéni adatok. Az adatok begyűjtését követően érhető el a riasztások, elemzéshez vagy exportáláshoz. 
 
-Különböző forrásokból származó adatok egyesítése, és az Azure-szolgáltatásokból származó adatokat kombinálva a meglévő helyszíni környezetben. A log Analytics, hogy az összes művelet is elérhető a különféle adatokon továbbá egyértelműen elkülöníti az adatok gyűjtését az adatok, végrehajtott műveletet.
+Különböző forrásokból származó adatok egyesítése, és az Azure-szolgáltatásokból származó adatokat kombinálva a meglévő helyszíni környezetben. Az Azure Monitor naplóira, hogy az összes művelet is elérhető a különféle adatokon továbbá egyértelműen elkülöníti az adatok gyűjtését az adatok, végrehajtott műveletet.
 
 ### <a name="automation"></a>Automation
 
@@ -93,7 +93,7 @@ A Security Center a biztonsági problémák és biztonsági rések azonosítás�
 >[!Note]
 >További információ a szerepkörökről, és láthatja a műveletek a Security Centerben engedélyezett [engedélyek az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-permissions).
 
-A Security Center a Microsoft Monitoring Agentet használja. Ez a ugyanaz az ügynök a Log Analytics szolgáltatás által használt. Ettől az ügynöktől gyűjtött adatok tárolva van egy meglévő Log Analytics [munkaterület](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access) társított Azure-előfizetését, vagy egy új munkaterületet, az a virtuális gép földrajzi helyének figyelembevételével.
+A Security Center a Microsoft Monitoring Agentet használja. Ez a ugyanaz az ügynök az Azure Monitor szolgáltatás által használt. Ettől az ügynöktől gyűjtött adatok tárolva van egy meglévő Log Analytics [munkaterület](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access) társított Azure-előfizetését, vagy egy új munkaterületet, az a virtuális gép földrajzi helyének figyelembevételével.
 
 ## <a name="azure-monitor"></a>Azure Monitor
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: b975d7dccc85973a42408d87e3c03a91aaf1c450
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: b0262ecbcc5a7f512c8779c230b2e2d4bb039842
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812752"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216679"
 ---
 # <a name="prepare-and-upload-images-to-your-azure-iot-central-application"></a>Készítse elő és képek feltöltése az Azure IoT Central alkalmazáshoz
 
@@ -30,13 +30,13 @@ A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
 Egyéni rendszerképek adhat hozzá a következő helyeken és az Azure IoT Central alkalmazáshoz:
 
-* A **alkalmazáskezelő** lap
+* A **alkalmazásaimat** lap
 
     ![Kép application manager oldalon](media/howto-prepare-images-experimental/applicationmanager.png)
 
-* A kezdőlap
+* Az irányítópult
 
-    ![Kép a kezdőlapon](media/howto-prepare-images-experimental/homepage.png)
+    ![Alkalmazás irányítópult lemezkép](media/howto-prepare-images-experimental/homepage.png)
 
 * Egy eszköz sablon
 
@@ -60,7 +60,7 @@ A következő táblázat összefoglalja a lemezkép mérete is használhatja:
 | -------- | ------ |
 | Application Manager | 268x160 px |
 | Eszközsablon | 64 x 64 képpont |
-| Kezdőlap és irányítópult-csempék | A legkisebb méretű csempe 200 x 200 képpont, nagyobb csempék kisméretű csempe négyzet vagy téglalap alakú többszöröse lehet. Ha például 200-as x 400 képpont, 400 x 200 képpont vagy 400 x 400 képpont |
+| Irányítópult-csempék | A legkisebb méretű csempe 200 x 200 képpont, nagyobb csempék kisméretű csempe négyzet vagy téglalap alakú többszöröse lehet. Ha például 200-as x 400 képpont, 400 x 200 képpont vagy 400 x 400 képpont |
 
 A legjobb megjelenítés az alkalmazásban létre kell hoznia a lemezképek, amelyek megfelelnek a dimenziók az előző táblázatban látható.
 
@@ -70,21 +70,21 @@ A következő szakaszok ismertetik a különböző helyeken található rendszer
 
 ### <a name="application-manager"></a>Alkalmazás-kezelő
 
-Tölthet fel képeket a a **alkalmazáskezelő**, keresse meg a **Alkalmazásbeállítások** lapját a **felügyeleti** szakaszban. Ez a feladat végrehajtásához rendszergazdának kell lennie:
+Tölthet fel képeket a használandó a **alkalmazásaimat** lapon, keresse meg a **nastavení Aplikace** lap a **felügyeleti** szakaszban. Ez a feladat végrehajtásához rendszergazdának kell lennie:
 
 ![Alkalmazás-Rendszerkép feltöltése](media/howto-prepare-images-experimental/uploadapplicationmanager.png)
 
 Az előkészített képet feltölteni az alkalmazás-lemezképet csempére kattintva (268 x 160 px) a helyi gépen.
 
-### <a name="home-page"></a>Kezdőlap
+### <a name="application-dashboard"></a>Alkalmazás irányítópultja
 
-Töltsön fel egy képet, a kezdőlap, lépjen a **kezdőlap** az alkalmazás, és kattintson a **szerkesztése**. Ez a feladat végrehajtásához egy jelentéskészítő kell lennie:
+Töltsön fel egy képet, az alkalmazás irányítópult, lépjen a **irányítópult** az alkalmazás, és kattintson a lap **szerkesztése**. Ez a feladat végrehajtásához egy jelentéskészítő kell lennie:
 
-![Kezdőlap-Rendszerkép feltöltése](media/howto-prepare-images-experimental/uploadhomepage.png)
+![Irányítópult-Rendszerkép feltöltése](media/howto-prepare-images-experimental/uploadhomepage.png)
 
 Konfigurálása kép alatt kattintson a lemezkép csempére, és töltse fel az előkészített rendszerképet a helyi gépen. A legkisebb méretű csempe 200 x 200 képpont, nagyobb csempék kisméretű csempe négyzet vagy téglalap alakú többszöröse lehet. Ha például 200-as x 400 képpont, 400 x 200 képpont vagy 400 x 400 képpont.
 
-**Mentés** a feltöltött kép. Átméretezhető a szerkesztési módban. Kattintson a **kész** befejezésekor. 
+**Mentés** a feltöltött kép. Átméretezhető a szerkesztési módban. Kattintson a **kész** befejezésekor.
 
 ### <a name="device-template"></a>Eszközsablon
 
@@ -92,7 +92,7 @@ Töltsön fel egy képet, az eszköz sablonból, navigáljon a **eszközsablonok
 
 ![Eszköz sablon Rendszerkép feltöltése](media/howto-prepare-images-experimental/uploaddevicetemplate.png)
 
-A kép csempére az előkészített kép feltöltése (64 x 64 képpont) a helyi gépen. 
+A kép csempére az előkészített kép feltöltése (64 x 64 képpont) a helyi gépen.
 
 ### <a name="device-dashboard"></a>Az eszköz irányítópultja
 

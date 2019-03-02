@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 185dfbcee7ab352a73e4a998cbd0d8c36cb92ff5
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: b9d90407dab29f431f5a592e077c859aea997c4c
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588041"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214095"
 ---
 # <a name="what-are-authentication-methods"></a>Mik a hitelesítési módszerek?
 
@@ -196,6 +196,9 @@ A mobiltelefonszámot egy ellenőrző kódot tartalmazó SMS küld. Adja meg a b
 
 Automatikus hanghívást indít, adja meg a telefonszámot kérés érkezett. A hívás, és nyomja le a hitelesítéshez lenyomja a telefon billentyűzetén a #
 
+> [!IMPORTANT]
+> A telefonhívási beállítások verzióját 2019. március kezdve nem lesz elérhető ingyenes vagy próbaverziója az Azure AD-bérlők MFA és az SSPR felhasználók számára. SMS-ezni, ez a változás nem érinti. Telefonhívás továbbra is elérhető a felhasználók számára a fizetős Azure AD-bérlőt. Ez a változás csak az Azure AD ingyenes vagy próbaverziója bérlők hatással van.
+
 ## <a name="office-phone"></a>Irodai telefon
 
 Automatikus hanghívást indít, adja meg a telefonszámot kérés érkezett. A hívás és a hitelesítéshez lenyomja a telefon billentyűzetén a # gombot.
@@ -203,6 +206,9 @@ Automatikus hanghívást indít, adja meg a telefonszámot kérés érkezett. A 
 Megfelelően működjön, telefonszámokat a következő formátumban kell lennie *és CountryCode PhoneNumber*, például + 1 4255551234.
 
 Az office telefonszám attribútuma a rendszergazda felügyeli.
+
+> [!IMPORTANT]
+> A telefonhívási beállítások verzióját 2019. március kezdve nem lesz elérhető ingyenes vagy próbaverziója az Azure AD-bérlők MFA és az SSPR felhasználók számára. SMS-ezni, ez a változás nem érinti. Telefonhívás továbbra is elérhető a felhasználók számára a fizetős Azure AD-bérlőt. Ez a változás csak az Azure AD ingyenes vagy próbaverziója bérlők hatással van.
 
 > [!NOTE]
 > Szükség van egy országhívószámát és telefonszámát közötti hely.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/05/2017
 ms.author: rkarlin
-ms.openlocfilehash: f1a3268fcacd4083b767a3fe89d6ab9b41b6cceb
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 2b9426043619887d99003677fd6e8488cb56cce2
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114059"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241068"
 ---
 # <a name="monitoring-and-processing-security-events-in-azure-security-center"></a>Figyelés és az Azure Security Centerben a biztonsági események feldolgozása
 Az események irányítópultja egy áttekintést nyújt az idő függvényében, és a figyelmet igénylő jelentős események listája összegyűjtött biztonsági események száma.  
@@ -28,6 +28,8 @@ Az események irányítópultja egy áttekintést nyújt az idő függvényében
 > Ez a funkció használatához a munkaterület legyen a Log Analytics 2-es verzió fut, és a Security Center Standard szintű. Tekintse meg a Security Center [díjszabását ismertető lapon](security-center-pricing.md) további információ a Standard szintre.
 >
 >
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="what-is-a-security-event"></a>Mit jelent a biztonsági eseményt?
 A Security Center használja a Microsoft Monitoring Agent a gyűjtése a különböző biztonsági konfigurációkat, és eseményként kapcsolódó gépekről származó, és ezeket az eseményeket az Ön munkaterületeire tárolja. Az ilyen adatok többek között: operációs rendszer naplói (Windows-eseménynaplók), futó folyamatok, és a Security Center integrált biztonsági megoldások eseményeit. A Microsoft Monitoring Agent az összeomlási memóriaképeket is átmásolja a munkaterületeire.
@@ -70,7 +72,7 @@ A **események irányítópultja** az események listája és a feldolgozott ese
   ![Naplókeresés][6]
 
 ## <a name="add-a-notable-event"></a>Jelentős esemény hozzáadása
-A Security Center-a-beépített jelentős események biztosít. Jelentős események alapján saját lekérdezés használatával adhat hozzá a [Log Analytics lekérdezési nyelvre](../log-analytics/log-analytics-search-reference.md). Még visszatérünk a **események irányítópultja** jelentős esemény hozzáadása.
+A Security Center-a-beépített jelentős események biztosít. Jelentős események alapján saját lekérdezés használatával adhat hozzá a [Kusto-lekérdezés nyelvi](../log-analytics/log-analytics-search-reference.md). Még visszatérünk a **események irányítópultja** jelentős esemény hozzáadása.
 
 1. Válassza ki **jelentős esemény hozzáadása**.
 
@@ -94,7 +96,7 @@ Ha a munkaterület sor:
 - Üres – a munkaterület megfelel a követelményeknek, és a egy munkaterület kiválasztásával megnyílik az irányítópulton
 
 > [!NOTE]
-> A **események irányítópultja**, a **események** oszlop azt jelzi, hogy az egyes munkaterületeken események.  Ez az oszlop a Security Center ingyenes érvényes az adott munkaterület azért egyes munkaterületek esetén üres. Az ingyenes szint alatt a Security Center összegyűjti az eseményeket, de az események mentése nem történik meg a Log Analyticsben, és nem érhetők el az irányítópulton.
+> A **események irányítópultja**, a **események** oszlop azt jelzi, hogy az egyes munkaterületeken események.  Ez az oszlop a Security Center ingyenes érvényes az adott munkaterület azért egyes munkaterületek esetén üres. Az ingyenes szint alatt a Security Center összegyűjti az eseményeket, de az események mentése nem történik meg az Azure Monitor naplóira, és nem érhetők el az irányítópulton.
 >
 >
 
@@ -119,9 +121,9 @@ Ha a munkaterület sor:
 ## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, hogyan használhatja a Security Center esemény irányítópultján. Az irányítópult működésével kapcsolatos további, és a saját esemény lekérdezéseket írni, lásd:
 
-- [Mi az a Log Analytics?](../log-analytics/log-analytics-overview.md) – Áttekintés a Log Analytics
-- [Naplókereséseit ismertető a Log Analytics](../log-analytics/log-analytics-log-search-new.md) – ismerteti a naplókeresések a Log Analytics használata, és megadja a fogalmakat, amelyek előtt létrehozni egy naplókeresést értendő
-- [A log Analytics keresési referenciáját bemutató](../log-analytics/log-analytics-search-reference.md) – ismerje meg, hogyan írhat saját esemény-lekérdezéseket a lekérdezési nyelv segítségével napló
+- [Mi az Azure Monitor naplóira?](../log-analytics/log-analytics-overview.md) – Áttekintés az Azure Monitor naplóira
+- [Naplókereséseit ismertető Kusto](../log-analytics/log-analytics-log-search-new.md) – ismerteti a naplókeresések használata az Azure Monitor naplóira, és megadja a fogalmakat, amelyek előtt létrehozni egy naplókeresést értendő
+- [Kusto keresési referencia](../log-analytics/log-analytics-search-reference.md) – ismerje meg, hogyan írhat saját esemény-lekérdezéseket a lekérdezési nyelv segítségével napló
 
 A Security Centerrel kapcsolatos további tudnivalókért lásd:
 

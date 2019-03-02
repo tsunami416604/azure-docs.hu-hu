@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: afd6ded48bc330032b77be4bc8cd186a6f71ee5f
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 9c2d6c48b9bf51062181886c8a9ef789b1c2b359
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105127"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240830"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Az Azure Security Center rendszerfrissítések alkalmazása
 Az Azure Security Center figyeli a napi Windows és Linux rendszerű virtuális gépeken (VM) és a hiányzó operációsrendszer-frissítések a számítógépeken. A Security Center lekéri az elérhető biztonsági és kritikus frissítések listáját a Windows Update webhelyről vagy a Windows Server Update Services (WSUS), függően szolgáltatás van konfigurálva, egy Windows-számítógépen. A Security Center is ellenőrzi a legújabb frissítéseket Linux rendszerekben. Ha a virtuális gép vagy a számítógép egy rendszer frissítés hiányzik, a Security Center javasolni fogja, hogy a rendszerfrissítések alkalmazása.
@@ -63,13 +63,13 @@ Ebben a példában használjuk **számítási**.
 
    ![Hiányzó biztonsági frissítés][3]
 
-4. Válassza ki a **keresési** ikonra a felső szalagon.  A Log Analytics keresési lekérdezés megnyitása szűrt a számítógépekre, a frissítés hiányzik.
+4. Válassza ki a **keresési** ikonra a felső szalagon.  Az Azure Monitor naplók keresési lekérdezés megnyitása szűrt a számítógépekre, a frissítés hiányzik.
 
-   ![A log Analytics-keresés][4]
+   ![Az Azure Monitor-naplók keresése][4]
 
 5. További információ a listából válasszon ki egy számítógépet. Csak az adott számítógépen a szűrt adatokat egy másik keresési eredmény nyílik meg.
 
-    ![A log Analytics-keresés][5]
+    ![Az Azure Monitor-naplók keresése][5]
 
 ## <a name="reboot-after-system-updates"></a>Rendszerfrissítések utáni újraindítás
 1. Lépjen vissza a **javaslatok** panelen. Egy új bejegyzést jött létre, a rendszerfrissítések nevű alkalmazása után **rendszerfrissítések utáni újraindítás**. Ez a bejegyzés jelzi, hogy újra kell indítania a virtuális Gépet a rendszerfrissítések alkalmazási folyamatának befejezéséhez.

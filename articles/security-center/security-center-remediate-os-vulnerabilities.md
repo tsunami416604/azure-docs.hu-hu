@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: a951e60b417167f2e1566efb689ea0f2d4e65374
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: f3764e5f4a5d6bbc3d6988321a2d7648012825ae
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111424"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242241"
 ---
 # <a name="remediate-security-configurations-in-azure-security-center"></a>Az Azure Security Centerben a biztonsági konfigurációk javítása
 Az Azure Security Center naponta elemzi az operációs rendszer (OS) a virtuális gépek (VM) és a egy konfigurációjához, amely a teheti a virtuális gépek és számítógépek támadásokkal szemben. Biztonsági rések feloldása, amikor az operációs rendszer konfigurációja nem egyezik a javasolt biztonsági konfigurációs szabályok, és ezek a biztonsági rések megszüntetését elősegítő konfigurációmódosításokat javasolja a Security Center javasolja.
@@ -84,7 +84,7 @@ Ebben a példában magában foglalja a "Biztonsági konfigurációk javítása" 
    ![Felsorolt munkaterületek][4]
 
 5. Jelöljön ki egy munkaterületet.  
-  A Log Analytics keresési lekérdezés megnyitja a munkaterületet a biztonsági konfigurációk eltérés a szűrt.
+  Az Azure Monitor naplók keresési lekérdezés megnyitja a munkaterületet a biztonsági konfigurációk eltérés a szűrt.
 
    ![Az operációs rendszer biztonsági rése munkaterület][5]
 

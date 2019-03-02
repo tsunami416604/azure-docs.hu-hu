@@ -2,18 +2,18 @@
 title: A GPU-k használata az Azure Kubernetes Service (AKS)
 description: A GPU-k használata a nagy teljesítményű számítási és a magas grafikai igényű számítási feladatok Azure Kubernetes Service (AKS)
 services: container-service
-author: lachie83
+author: iainfoulds
 manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 10/25/2018
-ms.author: laevenso
-ms.openlocfilehash: 683abd9bad93bff51bea84c8081d2b8f9d300cd4
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.date: 02/28/2019
+ms.author: iainfou
+ms.openlocfilehash: b80eee00f875ba9d7580acfc3340dfa2cec33fbe
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50419248"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240949"
 ---
 # <a name="use-gpus-for-compute-intensive-workloads-on-azure-kubernetes-service-aks"></a>A GPU-k használata a nagy számítási igényű számítási feladatokhoz az Azure Kubernetes Service (AKS)
 
@@ -26,11 +26,11 @@ Compute-igényes számítási feladatokhoz, például a grafikus és megjelenít
 
 Ez a cikk feltételezi, hogy gpu-kat támogató csomópontok egy meglévő AKS-fürtöt. 1.10 vagy újabb, az AKS-fürt Kubernetes rendszernek kell futnia. Ha egy AKS-fürtöt, amely megfelel ezeknek a követelményeknek, tekintse meg a jelen cikk első szakaszában [AKS-fürt létrehozása](#create-an-aks-cluster).
 
-Emellett az Azure CLI 2.0.49 verziójára van szükség, vagy később telepített és konfigurált. Futtatás `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni, tekintse meg kell [Azure CLI telepítése][install-azure-cli].
+Emellett az Azure CLI 2.0.59 verziójára van szükség, vagy később telepített és konfigurált. Futtatás `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni, tekintse meg kell [Azure CLI telepítése][install-azure-cli].
 
 ## <a name="create-an-aks-cluster"></a>AKS-fürt létrehozása
 
-Ha egy AKS-fürtre van szüksége, amely megfelel a minimális követelményeknek (GPU-kompatibilis csomópont és a Kubernetes 1.10 vagy újabb verzió), kövesse az alábbi lépéseket. Ha már rendelkezik egy AKS-fürtöt, amely megfelel ezeknek a követelményeknek, ugorjon a következő szakaszban.
+Ha egy AKS-fürtre van szüksége, amely megfelel a minimális követelményeknek (GPU-kompatibilis csomópont és a Kubernetes 1.10 vagy újabb verzió), kövesse az alábbi lépéseket. Ha már rendelkezik egy AKS-fürtöt, amely megfelel ezeknek a követelményeknek, [ugorjon a következő szakaszra](#confirm-that-gpus-are-schedulable).
 
 Először hozzon létre egy erőforráscsoportot a fürt használata a [az csoport létrehozása] [ az-group-create] parancsot. Az alábbi példa létrehoz egy erőforráscsoport-nevet *myResourceGroup* a a *eastus* régió:
 
@@ -38,7 +38,7 @@ Először hozzon létre egy erőforráscsoportot a fürt használata a [az csopo
 az group create --name myResourceGroup --location eastus
 ```
 
-Most hozzon létre egy AKS fürt a [az aks létrehozása] [ az-aks-create] parancsot. Az alábbi példa egy fürtöt hoz létre egy egycsomópontos méretű `Standard_NC6`, és a Kubernetes 1.10.8 verziója fut:
+Most hozzon létre egy AKS fürt a [az aks létrehozása] [ az-aks-create] parancsot. Az alábbi példa egy fürtöt hoz létre egy egycsomópontos méretű `Standard_NC6`, és a Kubernetes 1.11.7 verziója fut:
 
 ```azurecli
 az aks create \
@@ -46,7 +46,7 @@ az aks create \
     --name myAKSCluster \
     --node-vm-size Standard_NC6 \
     --node-count 1 \
-    --kubernetes-version 1.10.8
+    --kubernetes-version 1.11.7
 ```
 
 Az AKS fürt használatára vonatkozó hitelesítő adatainak lekérése a [az aks get-credentials] [ az-aks-get-credentials] parancsot:
@@ -63,7 +63,7 @@ Az AKS-fürt létrehozása, és ellenőrizze, hogy a GPU-k ütemezhető a Kubern
 $ kubectl get nodes
 
 NAME                       STATUS   ROLES   AGE   VERSION
-aks-nodepool1-18821093-0   Ready    agent   6m    v1.10.8
+aks-nodepool1-28993262-0   Ready    agent   6m    v1.11.7
 ```
 
 Mostantól használhatja a [kubectl ismertetik csomópont] [ kubectl-describe] parancs használatával győződjön meg róla, hogy a GPU-k ütemezhető. Alatt a *kapacitás* szakaszban, a grafikus Processzor szerepelnie kell `nvidia.com/gpu:  1`. Ha nem látja a GPU-k, tekintse meg a [hibaelhárítása GPU rendelkezésre állási](#troubleshoot-gpu-availability) szakaszban.
@@ -71,9 +71,9 @@ Mostantól használhatja a [kubectl ismertetik csomópont] [ kubectl-describe] p
 A következő sűrített példához jeleníti meg, hogy egy GPU érhető el a csomóponton nevű *aks-nodepool1-18821093-0*:
 
 ```
-$ kubectl describe node aks-nodepool1-18821093-0
+$ kubectl describe node aks-nodepool1-28993262-0
 
-Name:               aks-nodepool1-18821093-0
+Name:               aks-nodepool1-28993262-0
 Roles:              agent
 Labels:             accelerator=nvidia
 
@@ -84,34 +84,34 @@ Capacity:
  ephemeral-storage:  30428648Ki
  hugepages-1Gi:      0
  hugepages-2Mi:      0
- memory:             57713824Ki
+ memory:             57713780Ki
  nvidia.com/gpu:     1
  pods:               110
 Allocatable:
- cpu:                5940m
+ cpu:                5916m
  ephemeral-storage:  28043041951
  hugepages-1Gi:      0
  hugepages-2Mi:      0
- memory:             53417120Ki
+ memory:             52368500Ki
  nvidia.com/gpu:     1
  pods:               110
 System Info:
- Machine ID:                 688e083d19554d4a9563bd138f4ca98b
- System UUID:                08162568-B987-A84D-8865-98D6EFC64B32
- Boot ID:                    7b440249-8a96-42eb-950f-08c9a3c530b7
- Kernel Version:             4.15.0-1023-azure
+ Machine ID:                 9148b74152374d049a68436ac59ee7c7
+ System UUID:                D599728C-96F3-B941-BC79-E0B70453609C
+ Boot ID:                    a2a6dbc3-6090-4f54-a2b7-7b4a209dffaf
+ Kernel Version:             4.15.0-1037-azure
  OS Image:                   Ubuntu 16.04.5 LTS
  Operating System:           linux
  Architecture:               amd64
  Container Runtime Version:  docker://1.13.1
- Kubelet Version:            v1.10.8
- Kube-Proxy Version:         v1.10.8
+ Kubelet Version:            v1.11.7
+ Kube-Proxy Version:         v1.11.7
 PodCIDR:                     10.244.0.0/24
-ProviderID:                  azure:///subscriptions/19da35d3-9a1a-4f3b-9b9c-3c56ef409565/resourceGroups/MC_myGPUCluster_myGPUCluster_eastus/providers/Microsoft.Compute/virtualMachines/aks-nodepool1-18821093-0
+ProviderID:                  azure:///subscriptions/<guid>/resourceGroups/MC_myResourceGroup_myAKSCluster_eastus/providers/Microsoft.Compute/virtualMachines/aks-nodepool1-28993262-0
 Non-terminated Pods:         (9 in total)
-  Namespace                  Name                                    CPU Requests  CPU Limits  Memory Requests  Memory Limits
-  ---------                  ----                                    ------------  ----------  ---------------  -------------
-  gpu-resources              nvidia-device-plugin-9cfcf              0 (0%)        0 (0%)      0 (0%)           0 (0%)
+  Namespace                  Name                                     CPU Requests  CPU Limits  Memory Requests  Memory Limits  AGE
+  ---------                  ----                                     ------------  ----------  ---------------  -------------  ---
+  gpu-resources              nvidia-device-plugin-97zfc               0 (0%)        0 (0%)      0 (0%)           0 (0%)         2m4s
 
 [...]
 ```
@@ -182,13 +182,13 @@ Mostantól használhatja a [kubectl naplók] [ kubectl-logs] parancsot a pod-nap
 ```
 $ kubectl logs samples-tf-mnist-demo-smnr6
 
-2018-10-25 18:31:10.155010: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
-2018-10-25 18:31:10.305937: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties:
+2019-02-28 23:47:34.749013: I tensorflow/core/platform/cpu_feature_guard.cc:137] Your CPU supports instructions that this TensorFlow binary was not compiled to use: SSE4.1 SSE4.2 AVX AVX2 FMA
+2019-02-28 23:47:34.879877: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1030] Found device 0 with properties:
 name: Tesla K80 major: 3 minor: 7 memoryClockRate(GHz): 0.8235
-pciBusID: ccb6:00:00.0
+pciBusID: 3130:00:00.0
 totalMemory: 11.92GiB freeMemory: 11.85GiB
-2018-10-25 18:31:10.305981: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Tesla K80, pci bus id: ccb6:00:00.0, compute capability: 3.7)
-2018-10-25 18:31:14.941723: I tensorflow/stream_executor/dso_loader.cc:139] successfully opened CUDA library libcupti.so.8.0 locally
+2019-02-28 23:47:34.879915: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1120] Creating TensorFlow device (/device:GPU:0) -> (device: 0, name: Tesla K80, pci bus id: 3130:00:00.0, compute capability: 3.7)
+2019-02-28 23:47:39.492532: I tensorflow/stream_executor/dso_loader.cc:139] successfully opened CUDA library libcupti.so.8.0 locally
 Successfully downloaded train-images-idx3-ubyte.gz 9912422 bytes.
 Extracting /tmp/tensorflow/input_data/train-images-idx3-ubyte.gz
 Successfully downloaded train-labels-idx1-ubyte.gz 28881 bytes.
@@ -272,7 +272,7 @@ Először is hozzon létre egy névteret a [kubectl névtér létrehozása] [ ku
 kubectl create namespace gpu-resources
 ```
 
-Hozzon létre egy fájlt *nvidia-device-beépülő modul – ds.yaml* , és illessze be a következő YAML-jegyzékfájlt. Frissítés a `image: nvidia/k8s-device-plugin:1.10` félúton le a jegyzékfájl megfelelően a Kubernetes-verziót. Például, ha az AKS-fürt Kubernetes 1.11-es verzió fut, frissítse a címke `image: nvidia/k8s-device-plugin:1.11`.
+Hozzon létre egy fájlt *nvidia-device-beépülő modul – ds.yaml* , és illessze be a következő YAML-jegyzékfájlt. Frissítés a `image: nvidia/k8s-device-plugin:1.11` félúton le a jegyzékfájl megfelelően a Kubernetes-verziót. Például, ha az AKS-fürt Kubernetes 1.12 verziója fut, frissítse a címke `image: nvidia/k8s-device-plugin:1.12`.
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -299,7 +299,7 @@ spec:
       - key: CriticalAddonsOnly
         operator: Exists
       containers:
-      - image: nvidia/k8s-device-plugin:1.10 # Update this tag to match your Kubernetes version
+      - image: nvidia/k8s-device-plugin:1.11 # Update this tag to match your Kubernetes version
         name: nvidia-device-plugin-ctr
         securityContext:
           allowPrivilegeEscalation: false

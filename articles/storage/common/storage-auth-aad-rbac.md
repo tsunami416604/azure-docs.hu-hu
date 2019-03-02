@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 03/01/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 622a7bc870aba58205c1811de2fcdcabffd177e5
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 19a4f8fc41ed4d6850f114e19f49f239befe08d0
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869683"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242649"
 ---
 # <a name="grant-access-to-azure-containers-and-queues-with-rbac-in-the-azure-portal-preview"></a>Hozzáférés engedélyezése az Azure-tárolók és a várólisták RBAC használata az Azure Portalon (előzetes verzió)
 
@@ -88,14 +88,12 @@ Például, ha a **Storage-Blobadatok Közreműködője (előzetes verzió)** Mar
 
 Azonban, ha Mary szeretne egy blob megtekintése az Azure Portalon, akkor a **Storage-Blobadatok Közreműködője (előzetes verzió)** szerepkör önmagában nem biztosít megfelelő engedélyekkel ahhoz, hogy megtekintse a blobba a portálon lépjen. További Azure AD-engedélyekről keresse meg a portálon keresztül, és láthatóvá vannak más erőforrások megtekintéséhez szükséges.
 
-Ha a felhasználóknak képesnek kell lenniük az Azure Portal blobok elérése, majd rendelje hozzá őket egy további RBAC-szerepkör a [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkört ezen a felhasználók számára. A **olvasó** szerepkör egy Azure Resource Manager-szerepkör, amely lehetővé teszi a felhasználók megtekinthetik a tárfiók erőforrásainak, de nem módosíthatók. Nem biztosít az adatok Azure Storage-ban, de csak a fiók felügyeleti erőforrásokhoz olvasási engedéllyel.
+Ha a felhasználóknak képesnek kell lenniük az Azure Portal blobok elérése, majd rendelje hozzá őket egy további RBAC-szerepkör a [olvasó](../../role-based-access-control/built-in-roles.md#reader) szerepkör azoknak a felhasználóknak a storage-fiók vagy újabb szintjén is. A **olvasó** szerepkör egy Azure Resource Manager-szerepkör, amely lehetővé teszi a felhasználók megtekinthetik a tárfiók erőforrásainak, de nem módosíthatók. Nem biztosít az adatok Azure Storage-ban, de csak a fiók felügyeleti erőforrásokhoz olvasási engedéllyel.
 
-Rendelje hozzá a következő lépésekkel a **olvasó** szerepkört, hogy egy felhasználó hozzáférhessen a blobok az Azure Portalról. Ebben az esetben a hozzárendelés hatókörét a tárolót:
+Rendelje hozzá a következő lépésekkel a **olvasó** szerepkört, hogy egy felhasználó hozzáférhessen a blobok az Azure Portalról. Ebben a példában a hozzárendelés hatókörét a storage-fiók:
 
-1. Az a [az Azure portal](https://portal.azure.com), lépjen a tárfiókhoz, és megjeleníti a **áttekintése** a fiókhoz.
-1. A szolgáltatások területen válassza ki a **Blobok**. 
-1. Keresse meg a helyet, amelynek meg szeretné rendelhet egy szerepkört, és megjeleníti a tároló beállításait. 
-1. Válassza ki **hozzáférés-vezérlés (IAM)** a tárolóhoz a hozzáférés-vezérlési beállítások megjelenítéséhez. Válassza ki a **szerepkör-hozzárendelések** lapján megtekintheti a szerepkör-hozzárendelések listáját.
+1. Az a [az Azure portal](https://portal.azure.com), lépjen a tárfiókhoz.
+1. Válassza ki **hozzáférés-vezérlés (IAM)** a storage-fiókhoz tartozó hozzáférés-vezérlési beállítások megjelenítéséhez. Válassza ki a **szerepkör-hozzárendelések** lapján megtekintheti a szerepkör-hozzárendelések listáját.
 1. Az a **szerepkör-hozzárendelés hozzáadása** ablakban válassza ki a **olvasó** szerepkör. 
 1. Az a **rendelhet hozzáféréseket** legördülő menüben válassza **az Azure AD-felhasználó, csoport vagy szolgáltatásnév**.
 1. Keresse meg a rendszerbiztonsági tagot, amelyhez szeretné rendelni a szerepkört.

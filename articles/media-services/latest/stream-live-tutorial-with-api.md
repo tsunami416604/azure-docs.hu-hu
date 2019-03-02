@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/28/2019
+ms.date: 03/01/2019
 ms.author: juliako
-ms.openlocfilehash: 394efd023382f9153a6869944a8a3a815203f9dd
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 3500463cc57fb236de2a591181a5dc7054780404
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338597"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57240694"
 ---
 # <a name="tutorial-stream-live-with-media-services-v3-using-net"></a>Oktatóanyag: A Media Services v3 élő Stream .NET használatával
 
@@ -81,9 +81,9 @@ Ha szeretné megkezdeni a Media Services API-k használatát a .NET-tel, létre 
 
 ### <a name="create-a-live-event"></a>Élő esemény létrehozása
 
-Ez a szakasz bemutatja, hogyan hozhat létre egy **átmenő** írja be az élő esemény (LiveEventEncodingType beállítása None). Ha azt szeretné, hogy engedélyezve van a valós idejű kódolás beállítása LiveEventEncodingType élő esemény létrehozása **Standard**. 
-
-Néhány egyéb beállítás, amelyet érdemes lehet megadnia az élő események létrehozásakor:
+Ez a szakasz bemutatja, hogyan hozhat létre egy **átmenő** írja be az élő esemény (LiveEventEncodingType beállítása None). Élő események elérhető típusaival kapcsolatos további információkért lásd: [élő eseménytípusok](live-events-outputs-concept.md#live-event-types). 
+ 
+Néhány dolgot, amelyeket érdemes az élő esemény létrehozásakor adja meg a következők:
 
 * A Media Services hely 
 * Az élő esemény az adatfolyam-továbbítási protokoll (jelenleg az RTMP és Smooth Streaming protokollokat támogatottak).<br/>Az élő esemény vagy kapcsolódó Live Kimenetétől futása közben, a protokollbeállítás nem módosítható. Ha eltérő protokollok használatára van szüksége, létre kell hoznia az egyes streamprotokollokhoz külön élő esemény.  

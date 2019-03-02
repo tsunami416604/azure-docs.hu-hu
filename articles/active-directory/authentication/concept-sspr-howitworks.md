@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f0d1c2a35a6ad246eea593990c485181aa776594
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 76af36de833bc496df7c24ddb1cbfd75c91c7976
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175095"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214753"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>A működési elv: Az Azure AD önkiszolgáló jelszó-visszaállítás
 
@@ -59,7 +59,7 @@ Olvassa el az alábbi lépések segítségével megismerheti a jelszó mögötti
 
 ## <a name="authentication-methods"></a>Hitelesítési módszerek
 
-Ha az SSPR engedélyezve van, választania kell a hitelesítési módszerek az alábbiak közül legalább egyet. Néha hallgassa meg ezek a beállítások "kapuk." néven Kifejezetten ajánljuk, hogy Ön **két vagy több hitelesítési módszer kiválasztása** , hogy a felhasználók rendelkeznek a nagyobb rugalmasságot, arra az esetre, szükség esetén az egyik hozzáférés nem tudnak.
+Ha az SSPR engedélyezve van, választania kell a hitelesítési módszerek az alábbiak közül legalább egyet. Néha hallgassa meg ezek a beállítások "kapuk." néven Kifejezetten ajánljuk, hogy Ön **két vagy több hitelesítési módszer kiválasztása** , hogy a felhasználók rendelkeznek a nagyobb rugalmasságot, arra az esetre, szükség esetén az egyik hozzáférés nem tudnak. Az alábbi módszerekkel kapcsolatos további részleteket a cikkben található [hitelesítési módszerei?](concept-authentication-methods.md).
 
 * Mobilalkalmazásbeli értesítés (előzetes verzió)
 * Mobilalkalmazás-kód (előzetes verzió)
@@ -69,6 +69,9 @@ Ha az SSPR engedélyezve van, választania kell a hitelesítési módszerek az a
 * Biztonsági kérdések
 
 Csak alaphelyzetbe állíthatja az felhasználók a jelszavát, ha a hitelesítési módszereket, a rendszergazda engedélyezte az adatok rendelkeznek.
+
+> [!IMPORTANT]
+> A telefonhívási beállítások verzióját 2019. március kezdve nem lesz elérhető ingyenes vagy próbaverziója az Azure AD-bérlők MFA és az SSPR felhasználók számára. SMS-ezni, ez a változás nem érinti. Telefonhívás továbbra is elérhető a felhasználók számára a fizetős Azure AD-bérlőt. Ez a változás csak az Azure AD ingyenes vagy próbaverziója bérlők hatással van.
 
 > [!WARNING]
 > Azure-rendszergazdai szerepkörök hozzárendelt fiókok lesz szükség az szakaszban definiált metódusok használata [rendszergazda alaphelyzetbe házirend különbségek](concept-sspr-policy.md#administrator-reset-policy-differences).

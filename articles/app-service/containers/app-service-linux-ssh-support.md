@@ -4,8 +4,8 @@ description: Ismerje meg az SSH használata Linuxon futó Azure App Service.
 keywords: az Azure app service, webalkalmazás, linux, oss
 services: app-service
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: msangapu
+manager: jeconnoc
 editor: ''
 ms.assetid: 66f9988f-8ffa-414a-9137-3a9b15a5573c
 ms.service: app-service
@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2017
-ms.author: wesmc
+ms.date: 02/25/2019
+ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 9a05769b4cfd4bcaca0df9e1af1816d99f78bc62
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 3b3a4b6767855fa2f7ba595072b187b7a8bff400
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984468"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215999"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>SSH-támogatás a Linuxon futó Azure App Service
 
@@ -111,18 +111,6 @@ Bújtatás, a TCP használatával hozhat létre egy hitelesített WebSocket kapc
 
 Első lépésként telepítenie kell [Azure CLI-vel](/cli/azure/install-azure-cli?view=azure-cli-latest). Hogyan működik az Azure parancssori felület telepítése nélkül megtekintéséhez nyissa meg a [Azure Cloud Shell](../../cloud-shell/overview.md). 
 
-A legújabb App Service-bővítmény hozzáadása futtatásával [az bővítmény hozzáadása](/cli/azure/extension?view=azure-cli-latest#az-extension-add):
-
-```azurecli-interactive
-az extension add --name webapp
-```
-
-Ha már futtatta `az extension add` előtt, futtassa [az bővítmény frissítése](/cli/azure/extension?view=azure-cli-latest#az-extension-update) helyette:
-
-```azurecli-interactive
-az extension update --name webapp
-```
-
 Távoli kapcsolatot létesíteni az alkalmazás használatával az [az webapp távoli-kapcsolat létrehozása](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) parancsot. Adja meg  _\<előfizetés\_azonosítója >_,  _\<csoport\_neve >_ és \_< alkalmazás\_neve > _ az alkalmazáshoz.
 
 ```azurecli-interactive
@@ -167,7 +155,7 @@ A P P   S E R V I C E   O N   L I N U X
 0e690efa93e2:~#
 ```
 
-Ezzel csatlakozott az összekötőhöz. 
+Ezzel csatlakozott az összekötőhöz.  
 
 Próbálja meg futtatni a [felső](https://ss64.com/bash/top.html) parancsot. Az alkalmazás folyamata a folyamatok listájában látni kell lennie. Az alábbi példa kimenetében a `PID 263`.
 

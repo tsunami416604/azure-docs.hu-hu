@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/19/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: d97a2350765ac321cf77f8a9f84825c88d0c9185
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 9402c4b24c9d64b4b69d750fbd19de40cda396f3
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56824253"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57218090"
 ---
 Az Azure storage-adatokhoz való hozzáférést biztosít a következő beépített RBAC-szerepkörök:
 
@@ -23,6 +23,4 @@ Az Azure storage-adatokhoz való hozzáférést biztosít a következő beépít
 - [Storage-Üzenetsorbeli adatok Közreműködője (előzetes verzió)](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-contributor-preview): Olvasási, írási és törlési engedélyt az Azure-üzenetsorok használatával.
 - [Storage-Üzenetsorbeli adatok olvasója (előzetes verzió)](../articles/role-based-access-control/built-in-roles.md#storage-queue-data-reader-preview): Csak olvasási engedélyeket az Azure-üzenetsorok használatával.
 
-További információ a beépített szerepkörök határozza meg az Azure Storage, lásd: [megismerheti a szerepkör-definíciók](../articles/role-based-access-control/role-definitions.md#management-and-data-operations-preview).
-
-Az Azure Storage támogatja az egyéni RBAC-szerepkörök is. További információkért lásd: [egyéni szerepkörök létrehozása az Azure szerepköralapú hozzáférés-vezérlés](../articles/role-based-access-control/custom-roles.md). 
+További információ a beépített szerepkörök határozza meg az Azure Storage, lásd: [megismerheti a szerepkör-definíciók](../articles/role-based-access-control/role-definitions.md#management-and-data-operations-preview). Egyéni RBAC-szerepkörök létrehozásával kapcsolatos információkért lásd: [egyéni szerepkörök létrehozása az Azure szerepköralapú hozzáférés-vezérlés](../articles/role-based-access-control/custom-roles.md). 

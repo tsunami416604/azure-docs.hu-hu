@@ -12,12 +12,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 08c71ac1aba659a2e0fbb6655b6ee0a21576bf5d
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: bbf04104d70ecb6ea8d83c6167b5b9b0dfe2c2dc
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339787"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217444"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 
@@ -30,6 +30,8 @@ Az Azure naplózási [SQL Database](sql-database-technical-overview.md) és [SQL
 
 > [!NOTE] 
 > Ez a témakör az Azure SQL Server-kiszolgálókra, valamint az Azure SQL Serveren létrehozott SQL Database- és SQL Data Warehouse-adatbázisokra vonatkozik. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 
 ## <a id="subheading-1"></a>Az Azure SQL database naplózás – áttekintés
@@ -85,7 +87,7 @@ Az alábbi szakasz ismerteti a konfigurációt, a naplózás az Azure portal has
 
     ![Navigációs ablaktábla][3]
 
-5. **Új** – most már több lehetőség áll rendelkezésére konfigurálásához ahol auditnaplók lesz írva. Naplók az Azure storage-fiók, egy Log Analytics-munkaterületet a Log Analytics által felhasználásához vagy kínál az event hubs az eseményközpont írhat. Az alábbi lehetőségek közül bármelyiket is beállíthat, és minden egyes auditnaplók lesz írva.
+5. **Új** – most már több lehetőség áll rendelkezésére konfigurálásához ahol auditnaplók lesz írva. Naplók az Azure storage-fiók, egy Log Analytics-munkaterületet a memóriafogyasztást úgy, hogy az Azure Monitor naplóira vagy kínál az event hubs az eseményközpont írhat. Az alábbi lehetőségek közül bármelyiket is beállíthat, és minden egyes auditnaplók lesz írva.
 
     ![tárolási lehetőségek](./media/sql-database-auditing-get-started/auditing-select-destination.png)
 
@@ -95,7 +97,7 @@ Az alábbi szakasz ismerteti a konfigurációt, a naplózás az Azure portal has
 
 7. Írási naplózás konfigurálása naplózza a Log Analytics-munkaterülettel, válassza ki **Log Analytics (előzetes verzió)** , és nyissa meg **Log Analytics részletes**. Válasszon vagy hozzon létre a Log Analytics-munkaterületet, ahol a naplók lesz írva, és kattintson a **OK**.
 
-    ![Log Analytics](./media/sql-database-auditing-get-started/auditing_select_oms.png)
+    ![Log Analytics-munkaterület](./media/sql-database-auditing-get-started/auditing_select_oms.png)
 
 8. Írási naplózás konfigurálása naplózza az eseményközpontok felé, jelölje be **Event Hub (előzetes verzió)** , és nyissa meg **Eseményközpont részleteinek**. Válassza ki az event hubs, ahol a naplók lesz írva, és kattintson a **OK**. Győződjön meg arról, hogy az event hubs és az adatbázis és a kiszolgáló ugyanabban a régióban van.
 
@@ -112,7 +114,7 @@ Az alábbi szakasz ismerteti a konfigurációt, a naplózás az Azure portal has
 
 ## <a id="subheading-3"></a>Elemezheti a vizsgálati naplók és jelentések
 
-Ha úgy döntött, hogy auditnaplók írni a Log Analytics:
+Ha úgy döntött, hogy auditnaplók írni az Azure Monitor naplóira:
 
 - Használja a [az Azure portal](https://portal.azure.com).  Nyissa meg a megfelelő adatbázis. Az adatbázis tetején **naplózási** kattintson **naplók megtekintése**.
 
@@ -123,7 +125,7 @@ Ha úgy döntött, hogy auditnaplók írni a Log Analytics:
     ![Nyissa meg a Log Analyticsben](./media/sql-database-auditing-get-started/auditing_open_in_oms.png)
 
 - Azt is megteheti is elérheti a naplófájlok a Log Analytics panelen. Nyissa meg a Log Analytics-munkaterület és a **általános** területén kattintson **naplók**. Megkezdése egy egyszerű lekérdezéssel, például: *"SQLSecurityAuditEvents" Keresés* naplózza a naplózási megtekintéséhez.
-    Itt is használhatja [Log Analytics](../log-analytics/log-analytics-log-search.md) futtatni speciális keresést a naplózási adatokat. A log Analytics azonnal elemezze a rekordok millióit, a számítási feladatok és kiszolgálók integrált keresést és egyéni irányítópultok segítségével valós idejű az operational insights biztosítja. További hasznos információkat a Log Analytics keresési nyelv és a parancsok, lásd: [Log Analytics keresési referenciáját bemutató](../log-analytics/log-analytics-log-search.md).
+    Itt is használhatja [naplózza az Azure Monitor](../log-analytics/log-analytics-log-search.md) futtatni speciális keresést a naplózási adatokat. Az Azure Monitor naplóira azonnal elemezze a rekordok millióit, a számítási feladatok és kiszolgálók integrált keresést és egyéni irányítópultok segítségével valós idejű az operational insights biztosítja. További hasznos információkat az Azure Monitor naplók keresési nyelv és a parancsok, lásd: [Azure Monitor naplózza a keresési referencia](../log-analytics/log-analytics-log-search.md).
 
 Ha úgy döntött, hogy auditnaplók írni az Event Hubs:
 
@@ -187,7 +189,7 @@ Georeplikált adatbázisokhoz amikor engedélyezi a naplózást az elsődleges a
     >[!IMPORTANT]
     >Az adatbázisszintű naplózást, a másodlagos adatbázis tárolási beállításait lesz megegyeznek az elsődleges adatbázis-régiók közti forgalom okozza. Azt javasoljuk, hogy csak a kiszolgálószintű naplózás engedélyezéséhez, és hagyja meg az adatbázisszintű naplózást az összes adatbázis le van tiltva.
     > [!WARNING]
-    > Event hub vagy a log analytics használatával célként az auditnaplókhoz a kiszolgáló szintjén jelenleg nem támogatott georeplikált másodlagos adatbázisok.
+    > Event hub vagy az Azure Monitor-naplók használatával célként az auditnaplókhoz a kiszolgáló szintjén jelenleg nem támogatott georeplikált másodlagos adatbázisok.
 
 ### <a id="subheading-6">Tárolás kulcs újragenerálása</a>
 
@@ -256,7 +258,7 @@ AHOL záradékot támogatja a további szűréshez a kiterjesztett házirend:
 Az Azure SQL database naplózási használata kezelheti [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) sablonok, az alábbi példákban szemléltetett módon:
 
 - [Egy Azure SQL Server-naplózás engedélyezve van a vizsgálati naplók írni az Azure Blob storage-fiók üzembe helyezése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage)
-- [Egy Azure SQL Server-naplózás engedélyezve van a vizsgálati naplók írni a Log Analytics üzembe helyezése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-oms)
+- [Üzembe helyezése egy Azure SQL Server-naplózás engedélyezve van a vizsgálati naplók írni az Azure Monitor naplóira](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-oms)
 - [Egy Azure SQL Server-naplózás engedélyezve van a vizsgálati naplók írni az Event Hubs üzembe helyezése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub)
 
 <!--Anchors-->

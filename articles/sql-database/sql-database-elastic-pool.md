@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: 4e4de6d487aaad8a0d036928fe59b47f25157bf6
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.date: 02/28/2019
+ms.openlocfilehash: dd06ae6046ab96d95cf1c1907c74d0b4d9a843bb
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55963845"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57214333"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Rugalmas készletek kezelése és a több Azure SQL-adatbázisok horizontális Súgó
 
@@ -90,7 +90,7 @@ Legalább két S3-adatbázis vagy legalább 15 S0-adatbázis 100 edtu-s készlet
 
 ### <a name="maximum-number-of-concurrently-peaking-databases"></a>Egyidejűleg kiugró kihasználtságú adatbázisok maximális száma
 
-Az erőforrások megosztása a készlet nem minden adatbázis egyszerre használhatja a korlátig rendelkezésre álló erőforrások az önálló adatbázisok számára. Minél kevesebb adatbázis működik egyszerre kiugró kihasználtsággal, annál alacsonyabbra az adatbáziskészlet erőforrásainak akkor állítható be, és annál költséghatékonyabbá válik a készlet. Általánosságban a készletben található adatbázisok legfeljebb 2/3 (vagy 67 %-át) működhet egyszerre a maximális erőforrások maximális számát.
+Az erőforrások megosztása a készlet nem minden adatbázis egyszerre használhatja a korlátig rendelkezésre álló erőforrások az önálló adatbázisok számára. Minél kevesebb adatbázis működik egyszerre kiugró kihasználtsággal, annál alacsonyabbra az adatbáziskészlet erőforrásainak akkor állítható be, és annál költséghatékonyabbá válik a készlet. Az általános, legfeljebb 2/3 (vagy 67 %) a készletben található adatbázisok működhet egyszerre a maximális erőforrások maximális számát.
 
 ***DTU-alapú vásárlási modell példa***
 
@@ -200,6 +200,20 @@ A diagram a alapértelmezés szerint a **Adabáziserőforrás-felhasználás** p
 Válassza ki a nézet egymás mellett az adatbázis-tábla az adatbázisok teljesítményének teljes képet kaphat a további metrikák is.
 
 További információkért lásd: [SQL Database-riasztások létrehozása az Azure Portalon](sql-database-insights-alerts-portal.md).
+
+## <a name="customer-case-studies"></a>Ügyféleset-tanulmányok
+
+- [SnelStart](https://azure.microsoft.com/resources/videos/azure-sql-database-case-study-snelstart/)
+
+  SnelStart az Azure SQL Database rugalmas készletek segítségével rövid idő alatt bontsa ki az üzleti szolgáltatások 1000 új Azure SQL-adatbázis havi gyakorisággal.
+
+- [Umbraco](https://azure.microsoft.com/resources/videos/azure-sql-database-case-study-umbraco/)
+
+  Umbraco az Azure SQL Database rugalmas készletek használatával gyorsan több ezer felhőalapú bérlők kiépítését és méretezését szolgáltatásokat.
+
+- [Daxko/CSI](http://customers.microsoft.com/story/csi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services)
+
+  Daxko/CSI lerövidítsék a szoftverfejlesztési ciklusokat, és az ügyfélszolgálat és a teljesítmény javítása érdekében használja az Azure SQL Database rugalmas készleteket.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 7b1d7c50970107300676213707368f9f16e04812
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: b22d719a25a93e1dffdba848e18f732b31e6e67d
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194801"
+ms.locfileid: "57214520"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Az Azure IoT Central-alkalmazást (Node.js) egy általános ügyfél-alkalmazás csatlakoztatása
 
@@ -269,11 +269,11 @@ Az Azure IoT központi alkalmazás kezelőként a valódi eszköz a következők
 
     ![Telemetria megtekintése](media/howto-connect-nodejs/viewtelemetry.png)
 
-* Tekintse meg az eszköz tulajdonság értékeket, a rendszer küldi az eszközről a **tulajdonságok** lapot. Az eszköz tulajdonságok csempék frissülnek, ha a kapcsolat létrejött. 
+* Tekintse meg az eszköz tulajdonság értékeket, a rendszer küldi az eszközről a **tulajdonságok** lapot. Az eszköz tulajdonságok csempék frissülnek, ha a kapcsolat létrejött.
 
     ![Az eszköz tulajdonságai](media/howto-connect-nodejs/viewproperties.png)
 
-* Állítsa be a ventilátor sebesség és a cél hőmérséklet a **beállítások** lapot. A beállításértékeket szinkronizálódnak, ha a kapcsolat létrejött. 
+* Állítsa be a ventilátor sebesség és a cél hőmérséklet a **beállítások** lapot. A beállításértékeket szinkronizálása, ha a kapcsolat létrejött.
 
     ![Set Ventilátor sebessége](media/howto-connect-nodejs/setfanspeed.png)
 

@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: b8844e6ca9effe78f8d98571af2ce59b4e0abee8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5e8e634bfb69d7c274322d34d26ff614f75905af
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465316"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215922"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Az SQL Data Sync szolgáltatással több felhőalapú és helyszíni adatbázis közötti adatszinkronizálás
 
@@ -228,7 +228,7 @@ Rendelkezik egy szinkronizálási csoportban egy adatbázis sémájának frissí
 
 Elvárt módon működik az SQL Data Sync? Tevékenység figyelése és hibáinak elhárítása: az alábbi cikkeket:
 
-- [Az Azure SQL Data Sync monitorozása a Log Analytics használatával](sql-database-sync-monitor-oms.md)
+- [Az Azure SQL Data Sync monitorozása az Azure Monitor naplóira](sql-database-sync-monitor-oms.md)
 - [Az Azure SQL Data Synckel hibaelhárítása](sql-database-troubleshoot-data-sync.md)
 
 ### <a name="learn-more-about-azure-sql-database"></a>Ismerkedés az Azure SQL Database szolgáltatással

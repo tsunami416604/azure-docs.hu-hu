@@ -15,12 +15,12 @@ ms.date: 02/15/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 11/16/2018
-ms.openlocfilehash: 8e30edcc7a600088693de57264665f5ffff3842a
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: af95c07b43682322693aed18b6bcf58ca70291d1
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300737"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242785"
 ---
 # <a name="add-linux-images-to-azure-stack"></a>Linux-lemezképek hozzáadása az Azure Stackhez
 
@@ -38,7 +38,7 @@ Vegye figyelembe, hogy nincsenek-e képek gyakori frissítések, ezért érdemes
 
 Amikor csak lehetséges, töltse le a lemezkép érhető el, amely készített, és tesztelni az Azure Stack piactéren Management szolgáltatáson keresztül.
 
-Az Azure Linux-ügynök (általános nevén `WALinuxAgent` vagy `walinuxagent`) van az ügynök munka az Azure Stacken szükséges, és nem minden verzióit. Használjon 2.2.20 verzió vagy újabb, ha hoz létre a saját rendszerképét. Vegye figyelembe, hogy [a cloud-init](https://cloud-init.io/) jelenleg nem támogatott az Azure Stacken.
+Az Azure Linux-ügynök (általános nevén `WALinuxAgent` vagy `walinuxagent`) szükség, és az ügynök nem minden verzióinak fog működni az Azure Stacken. A legújabb WALA vagy verziója 2.2.20 saját rendszerkép létrehozásakor használjon. Vegye figyelembe, hogy 2.2.20 és 2.2.36 verziói nem működnek az Azure Stacken. Vegye figyelembe, hogy [a cloud-init](https://cloud-init.io/) jelenleg nem támogatott az Azure Stacken.
 
 Saját Linux-rendszerképek, az alábbi utasítások segítségével készítheti elő:
 

@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 80fe2fb2998ed129098a99f004da9c9e5e88e474
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 6865a90a46c5614c5735f9766194c40dfd3e2e4f
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815030"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216951"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui-new-ui-design"></a>Fedezze fel az Azure IoT Central felhasználói felület (új felhasználói felület tervezése)
 
@@ -37,11 +37,11 @@ Az _operátorok_ az Azure IoT Central kezelőfelületén felügyelhetik az Azure
 
 ## <a name="use-the-left-navigation-menu"></a>A bal oldali navigációs menü használata
 
-A bal oldali navigációs menüből érhetők el az alkalmazás különböző területei:
+A bal oldali navigációs menü használata a különböző területeket, az alkalmazás eléréséhez. Bontsa ki, vagy kattintson a navigációs sáv összecsukása **<** vagy **>**:
 
 | Menü | Leírás |
 | ---- | ----------- |
-| ![Bal oldali navigációs menü](media/overview-iot-central-tour-experimental/navigationbar.png) | <ul><li>A **Kezdőlap** gomb megjeleníti az alkalmazás kezdőlapját. A szerkesztők testreszabhatják a kezdőlapot az operátorok számára.</li><li>A **Device Explorer** gombra a társított minden egyes eszköz sablon az alkalmazás szimulált és valós eszközöket sorolja fel. Az operátorok az **Eszközkereső** használatával kezelhetik a csatlakoztatott eszközöket.</li><li>Az **Eszközkészletek** gomb lehetővé teszi eszközkészletek megtekintését és létrehozását. Az operátorok létrehozhatnak eszközkészleteket, amelyek a lekérdezés által megadott eszközök logikai gyűjteményei.</li><li>Az **Elemzés** gomb az eszközök és eszközkészletek telemetriáiból származó elemzéseket jelenít meg. Az operátorok létrehozhatnak egyéni nézeteket az eszközadatokhoz, így megjelenítve az alkalmazásból származó megállapításokat.</li><li>A **Feladatok** gomb tömeges eszközkezelést tesz lehetővé a méretezhető frissítéseket végző feladatok létrehozásával és futtatásával.</li><li>A **eszközsablonok** gombon szerkesztő segítségével eszköz sablonokat létrehozni és felügyelni az eszközöket.</li><li>A **folyamatos adatexportálás** a rendszergazda konfigurálja a folyamatos exportálást, és más Azure-szolgáltatások például a storage és a várólisták gombra.</li><li>Az **Adminisztráció** gomb jeleníti meg azokat az alkalmazásadminisztrációs oldalakat, ahol a rendszergazda az alkalmazás beállításait, felhasználóit és szerepköreit kezelheti.</li></ul> |
+| ![Bal oldali navigációs menü](media/overview-iot-central-tour-experimental/navigationbar.png) | <ul><li>A **irányítópult** gombra az alkalmazás irányítópulton jeleníti meg. Mint szerkesztő testre szabhatja az irányítópultot az operátorok számára. Felhasználók is létrehozhat saját irányítópultokat.</li><li>A **Device Explorer** gombra a társított minden egyes eszköz sablon az alkalmazás szimulált és valós eszközöket sorolja fel. Az operátorok az **Eszközkereső** használatával kezelhetik a csatlakoztatott eszközöket.</li><li>Az **Eszközkészletek** gomb lehetővé teszi eszközkészletek megtekintését és létrehozását. Az operátorok létrehozhatnak eszközkészleteket, amelyek a lekérdezés által megadott eszközök logikai gyűjteményei.</li><li>Az **Elemzés** gomb az eszközök és eszközkészletek telemetriáiból származó elemzéseket jelenít meg. Az operátorok létrehozhatnak egyéni nézeteket az eszközadatokhoz, így megjelenítve az alkalmazásból származó megállapításokat.</li><li>A **Feladatok** gomb tömeges eszközkezelést tesz lehetővé a méretezhető frissítéseket végző feladatok létrehozásával és futtatásával.</li><li>A **eszközsablonok** gombon szerkesztő segítségével eszköz sablonokat létrehozni és felügyelni az eszközöket.</li><li>A **folyamatos adatexportálás** a rendszergazda konfigurálja a folyamatos exportálást, és más Azure-szolgáltatások például a storage és a várólisták gombra.</li><li>Az **Adminisztráció** gomb jeleníti meg azokat az alkalmazásadminisztrációs oldalakat, ahol a rendszergazda az alkalmazás beállításait, felhasználóit és szerepköreit kezelheti.</li></ul> |
 
 ## <a name="search-help-and-support"></a>Keresés, súgó és támogatás
 
@@ -49,20 +49,20 @@ Minden oldalon megjelenik a felső menü:
 
 ![Eszköztár](media/overview-iot-central-tour-experimental/toolbar.png)
 
-- Eszközsablonok és eszközök kereséséhez kattintson a **Keresés** ikonra.
-- Ha módosítani szeretné a felhasználói felületi nyelven, válassza ki a **nyelvi** ikonra.
+- Eszközsablonok és eszközök keresése, adjon meg egy **keresési** értéket.
+- A felhasználói felületi nyelven vagy a téma módosításához válassza a **beállítások** ikonra.
+- Jelentkezzen ki az alkalmazást, válassza a **fiók** ikonra.
 - Ha segítségre és támogatásra van szüksége, kattintson a **Súgó** elemre, amely megnyitja az erőforrások legördülő listáját.
-- A felhasználói felület téma módosítása, vagy jelentkezzen ki az alkalmazást, válassza a **fiók** ikonra.
 
 A kezelőfelületen egy világos és egy sötét téma közül választhat:
 
 ![A kezelőfelület témájának kiválasztása](media/overview-iot-central-tour-experimental/themes.png)
 
-## <a name="home-page"></a>Kezdőlap
+## <a name="dashboard"></a>Irányítópult
 
-![Kezdőlap](media/overview-iot-central-tour-experimental/homepage.png)
+![Irányítópult](media/overview-iot-central-tour-experimental/homepage.png)
 
-A kezdőlap az első lap, amely megjelenik az Azure IoT Central-alkalmazásba való bejelentkezést követően. Szerkesztőként csempék hozzáadásával testreszabhatja a kezdőlapot az alkalmazás további felhasználói számára. További részletekért tekintse át [az Azure IoT Central operátori nézeteinek testreszabására](tutorial-customize-operator-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) vonatkozó oktatóanyagot.
+Az irányítópult Ez az első lap jelenik meg, jelentkezzen be az Azure IoT Central alkalmazáshoz. Szerkesztő, mint az irányítópult más felhasználók számára testreszabható hozzáadhat csempéket. További részletekért tekintse át [az Azure IoT Central operátori nézeteinek testreszabására](tutorial-customize-operator-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) vonatkozó oktatóanyagot. A felhasználók is [saját személyes irányítópultok kialakítása](howto-personalize-dashboard-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json).
 
 ## <a name="device-explorer"></a>Eszközkereső
 

@@ -10,18 +10,27 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 01/08/2019
-ms.openlocfilehash: 60a76df6360ca66e8f55b03d5914283f669eb402
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 045a8fc3723c7bae176f0b99a83965bb2bef721d
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118105"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242938"
 ---
 # <a name="securely-run-experiments-and-inferencing-inside-an-azure-virtual-network"></a>Biztonságos futtatására kísérletek vagy következtetési egy Azure virtuális hálózaton belül
 
 Ebből a cikkből elsajátíthatja a kísérletek és a egy virtuális hálózaton belül következtetési futtatásához. Virtuális hálózat biztonsági határt, a nyilvános interneten keresztül az Azure-erőforrások elkülönítése funkcionál. A helyszíni hálózathoz is csatlakozhat az Azure-beli virtuális hálózathoz. Lehetővé teszi, hogy biztonságosan a modellek betanítása és a telepített modelljeit következtetési eléréséhez.
 
 Az Azure Machine Learning szolgáltatás más Azure-szolgáltatások számítási erőforrások is támaszkodik. A számítási erőforrások (számítási céljainak) segítségével betanítása és a modellek üzembe helyezése. Ezek a számítási céljainak egy virtuális hálózaton belül hozható létre. Például használhatja a Microsoft Data Science virtuális gép betanítja a modellt, és majd a modell üzembe helyezése az Azure Kubernetes Service (AKS). Virtuális hálózatokkal kapcsolatos további információkért lásd: a [Azure Virtual Network áttekintése](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Jelen dokumentum céljából feltételezzük, hogy Ön ismeri az Azure-beli virtuális hálózatok és IP általában a hálózat. Ez a dokumentum azt is feltételezi, hogy létrehozott egy virtuális hálózatot és alhálózatot a számítási erőforrások használatát. Ha nem ismeri az Azure Virtual Network szolgáltatással, olvassa el a szolgáltatással kapcsolatban további információt a következő cikkeket:
+
+* [IP-címzés](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm)
+* [Biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/security-overview)
+* [Rövid útmutató: Virtuális hálózat létrehozása](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
+* [Hálózati forgalom szűrése](https://docs.microsoft.com/azure/virtual-network/tutorial-filter-network-traffic)
 
 ## <a name="storage-account-for-your-workspace"></a>Storage-fiók a munkaterülethez
 

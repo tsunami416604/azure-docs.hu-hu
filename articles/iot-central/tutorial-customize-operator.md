@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: f65463b534988e0a721a1a5f816183f8dd8ebcaf
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: d10e0b48da497dafe9bb841c68746328e8334c91
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657654"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215727"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Oktatóanyag: Az Azure IoT Central operátor nézet testreszabása
 
@@ -28,8 +28,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Az eszközbeállítások elrendezésének konfigurálása
 > * Az eszköztulajdonságok elrendezésének konfigurálása
 > * Az eszköz előnézetének megtekintése operátorként
-> * Az alapértelmezett kezdőlap konfigurálása
-> * Az alapértelmezett kezdőlap előnézetének megtekintése operátorként
+> * Az alapértelmezett alkalmazás irányítópult konfigurálása
+> * Az alapértelmezett irányítópult kezelőként előzetes verzió
 
 [!INCLUDE [iot-central-experimental-note](../../includes/iot-central-experimental-note.md)]
 
@@ -115,7 +115,7 @@ Az irányítópult és a beállítások mellett az eszköztulajdonságok operát
 > [!NOTE]
 > **Sablonszerkesztési** módban nem szerkesztheti a tulajdonságok értékeit.
 
-## <a name="preview-the-connected-air-conditioner-device-as-an-operator"></a>A csatlakoztatott légkondicionáló eszköz előnézetének megtekintése operátorként
+## <a name="preview-the-device"></a>Az eszköz előzetes verzió
 
 **Sablonszerkesztési** módban testreszabhatja az operátor irányítópult, a beállítások és a tulajdonságok oldalát. Ha nem **Sablonszerkesztési** módban van, operátorként tekintheti meg az alkalmazást.
 
@@ -135,30 +135,33 @@ Az irányítópult és a beállítások mellett az eszköztulajdonságok operát
 
     ![Az eszköz irányítópultjának operátori nézete](media/tutorial-customize-operator/operatordashboard.png)
 
-## <a name="configure-the-default-home-page"></a>Az alapértelmezett kezdőlap konfigurálása
+## <a name="configure-the-default-dashboard"></a>Az alapértelmezett irányítópult konfigurálása
 
-Amikor egy szerkesztő vagy operátor bejelentkezik az Azure IoT Central-alkalmazásba, egy kezdőlapot lát. Szerkesztőként konfigurálhatja e kezdőlap tartalmát, hogy az operátor számára leghasznosabb és legfontosabb tartalmakat foglalja bele.
+Ha a jelentéskészítő vagy operátor jelentkezik be egy Azure IoT Central alkalmazáshoz, az irányítópult megjelenik. Mint szerkesztő konfigurálhatja a tartalom az alapértelmezett irányítópult, ha hozzá szeretné adni az operátornak a hasznos és a kapcsolódó tartalmat.
 
-1. Az alapértelmezett kezdőlap testreszabásához lépjen a **Kezdőlapra**, és válassza a **Szerkesztés** lehetőséget az oldal jobb felső részén. A **Szerkesztés** választásakor a jobb oldalon megnyílik egy panel a kezdőlapra adható objektumok listájával.
+> [!NOTE]
+> A felhasználók a saját személyes irányítópultok kialakítása és válasszon egyet az alapértelmezésként is.
 
-    ![Alkalmazásszerkesztő oldal](media/tutorial-customize-operator/builderhome.png)
+1. Testre szabhatja az alapértelmezett irányítópult, keresse meg a **irányítópult** lapot, és kattintson **szerkesztése** felső jobb. Megjelenik egy panel, egy erőforrástár-objektumok is hozzáadhat az irányítópulthoz.
 
-2. A kezdőlap testreszabásához adjon hozzá csempéket a **Könyvtárból**. Válassza a **Hivatkozás** lehetőséget, és adja hozzá a cég webhelyének részleteit. Ezután válassza a **Mentés** lehetőséget:
+    ![Irányítópult-oldalon](media/tutorial-customize-operator/builderhome.png)
 
-    ![Hivatkozás hozzáadása a kezdőlaphoz](media/tutorial-customize-operator/addlink.png)
+2. Testre szabhatja az irányítópultot, a csempék hozzáadása a **könyvtár**. Válassza a **Hivatkozás** lehetőséget, és adja hozzá a cég webhelyének részleteit. Ezután válassza a **Mentés** lehetőséget:
+
+    ![Hivatkozás hozzáadása az irányítópulthoz](media/tutorial-customize-operator/addlink.png)
 
     > [!NOTE]
     > Az Azure IoT Central-alkalmazásban lévő oldalakhoz hivatkozásokat is adhat. Hozzáadhatja például egy eszköz irányítópultjának vagy a beállítások oldalának a hivatkozását.
 
-3. A **Kép** lehetőséget is választhatja, és feltölthet egy megjelenítendő képet a kezdőlapra. A képek olyan URL-címmel rendelkezhetnek, amelyeket rájuk kattintva megnyithat:
+3. Szükség esetén válasszon **kép** és töltsön fel egy képet az irányítópulton megjeleníthető. Kép egy URL-cím, amelyre rákattintva veheti fel:
 
-    ![Kép hozzáadása a kezdőlaphoz](media/tutorial-customize-operator/addimage.png)
+    ![Kép hozzáadása az irányítópulthoz](media/tutorial-customize-operator/addimage.png)
 
     További tudnivalókért lásd a [képek előkészítését és az Azure IoT Central-alkalmazásba való feltöltését](howto-prepare-images.md) ismertető szakaszt.
 
-## <a name="preview-the-default-home-page-as-an-operator"></a>Az alapértelmezett kezdőlap előnézetének megtekintése operátorként
+## <a name="preview-the-dashboard"></a>Az irányítópult megtekintése
 
-Ha nem kívánja tovább szerkeszteni a kezdőlapot, hanem operátorként szeretné megtekinteni annak előnézetét, válassza a **Kész** lehetőséget az oldal jobb felső részén
+Kezelőként az irányítópult megtekintéséhez válassza ki a **kész** felső jobb
 
 ![A Tervezési mód be- és kikapcsolása](media/tutorial-customize-operator/operatorviewhome.png)
 
@@ -174,8 +177,8 @@ Ebben az oktatóanyagban megismerte, hogyan szabhatja testre az alkalmazás oper
 > * Az eszközbeállítások elrendezésének konfigurálása
 > * Az eszköztulajdonságok elrendezésének konfigurálása
 > * Az eszköz előnézetének megtekintése operátorként
-> * Az alapértelmezett kezdőlap konfigurálása
-> * Az alapértelmezett kezdőlap előnézetének megtekintése operátorként
+> * Az alapértelmezett alkalmazás irányítópult konfigurálása
+> * Az alapértelmezett irányítópult kezelőként előzetes verzió
 
 Most, hogy megismerte, hogyan szabhatja testre az alkalmazás operátori nézetét, az alábbiakban megtalálja a javasolt következő lépéseket:
 

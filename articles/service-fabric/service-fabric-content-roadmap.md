@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: ryanwi
-ms.openlocfilehash: 12c5ba06eed37072d4c122be9e47a80ce94a5f1b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 8beac9d4a84fdee4e8fa7689d60cb51c20acd671
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56872828"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241833"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Így biztosan ismerje meg a Service Fabric?
 Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások csomagolását, üzembe helyezését és kezelését.  A Service Fabric rendelkezik egy nagy támadási azonban és sok további.  Ez a cikk egy szinopszist, Service fabric biztosítja, és ismerteti az alapfogalmakat, programozási modelleket, alkalmazás-életciklus során, tesztelés, fürtök és az állapotmonitorozást. Olvassa el a [áttekintése](service-fabric-overview.md) és [Mik azok a mikroszolgáltatások?](service-fabric-overview-microservices.md) bevezetést, és hogyan a Service Fabric mikroszolgáltatások létrehozására használható. Ez a cikk egy átfogó tartalmak listája nem tartalmaz, de a hivatkozások áttekintése és első lépéseket bemutató cikkekben a Service Fabric minden területéhez. 
@@ -119,7 +119,7 @@ A [Service Fabric-fürt](service-fabric-deploy-anywhere.md) virtuális és fizik
 Service Fabric-fürtök a Windows Server vagy Linux rendszerű virtuális vagy fizikai gépeken hozható létre. Tudja üzembe helyezéséhez és a Service Fabric-alkalmazások futtatása minden környezetben, összekapcsolt Windows Server vagy Linux rendszerű számítógépek esetében: a helyszínen, a Microsoft Azure-ban, vagy bármely más szolgáltatónál.
 
 ### <a name="clusters-on-azure"></a>Fürtök az Azure-on
-Azure-ban futó Service Fabric-fürtök integrációt biztosít az egyéb Azure-funkciók és szolgáltatások, ami lehetővé teszi a műveletek és a fürt felügyeletének egyszerűbb és megbízhatóbb. A fürt egy Azure Resource Manager-erőforrás, így a fürtök, mint bármely más az Azure-erőforrások modellezheti. A Resource Manager is biztosít könnyű kezelését egyetlen egységként a fürt által használt összes erőforrást. Az Azure-beli diagnosztikai és a Log Analytics integrált részei a fürtöket az Azure-ban. Fürt csomópont-típusok a következők [a virtual machine scale sets](/azure/virtual-machine-scale-sets/index), így az automatikus skálázási funkció jön létre.
+Azure-ban futó Service Fabric-fürtök integrációt biztosít az egyéb Azure-funkciók és szolgáltatások, ami lehetővé teszi a műveletek és a fürt felügyeletének egyszerűbb és megbízhatóbb. A fürt egy Azure Resource Manager-erőforrás, így a fürtök, mint bármely más az Azure-erőforrások modellezheti. A Resource Manager is biztosít könnyű kezelését egyetlen egységként a fürt által használt összes erőforrást. Fürtök az Azure-ban az Azure diagnostics integrálva vannak, és az Azure Monitor naplózza. Fürt csomópont-típusok a következők [a virtual machine scale sets](/azure/virtual-machine-scale-sets/index), így az automatikus skálázási funkció jön létre.
 
 Létrehozhat egy fürtöt az Azure-on keresztül a [az Azure portal](service-fabric-cluster-creation-via-portal.md), az egy [sablon](service-fabric-cluster-creation-via-arm.md), vagy [Visual Studio](service-fabric-cluster-creation-via-visual-studio.md).
 

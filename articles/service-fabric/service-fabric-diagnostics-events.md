@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 936a47593b9db6e4989c30b2df37dfd82c286c59
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: c4ce8e01b1dc819453610f68d044cc268e27eed7
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52290518"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242751"
 ---
 # <a name="service-fabric-events"></a>Service Fabric-események 
 
@@ -40,12 +40,12 @@ Az alábbiakban néhány példa forgatókönyvet, hogy megjelenik a fürt esemé
 * Alkalmazás/szolgáltatás telepítése / törlése: minden alkalmazás, szolgáltatás és a tárolóban, az éppen létrehozott vagy törölt, és hasznos be vagy ki például a replikák számának növelésével vertikális esemény
 * Partíció áthelyezi (Konfigurálás): egy állapotalapú partíció egy újrakonfigurálás (a módosítás a replika) lép, amikor egy eseményt a rendszer naplózza. Ez akkor hasznos, ha meg szeretné ismerni, hogy milyen gyakran a partíció replikakészlethez módosítása vagy feladatátvétele, illetve nyomon követheti, melyik csomópont futott az elsődleges replika tetszőleges időpontban.
 * A Chaos események: Service Fabric használatakor [káosz](service-fabric-controlled-chaos.md) szolgáltatástól, látni fogja események minden alkalommal, amikor a szolgáltatás elindult vagy leállt, vagy amikor a rendszer egy tartalék azt kódtárba.
-* A Szolgáltatásállapot-események: Service Fabric hálózatállapot-események minden alkalommal, amikor figyelmeztetés vagy egészségügyi hibajelentés jön létre, vagy egy jelentés lejár, illetve egy entitás visszatér egy OK állapot arra tesz elérhetővé. Ezek az események nagyon hasznosak egy entitás korábbi egészségügyi statisztikák nyomon követéséhez. 
+* A Szolgáltatásállapot-események: A Service Fabric hálózatállapot-események minden alkalommal, amikor figyelmeztetés vagy egészségügyi hibajelentés jön létre, vagy egy jelentés lejár, illetve egy entitás visszatér egy OK állapot arra tesz elérhetővé. Ezek az események nagyon hasznosak egy entitás korábbi egészségügyi statisztikák nyomon követéséhez. 
 
 ## <a name="how-to-access-events"></a>Események elérése
 
 Van néhány eltérő módot, amelyekkel Service Fabric-események érhető el:
-* Az események naplózása ETW/Windows-eseménynaplók például standard csatornákon keresztül, és az alábbi ábra szerint bármely felügyeleti eszköz, amely támogatja ezeket a Log Analytics például. Alapértelmezés szerint a portálon létrehozott fürtök diagnosztika engedélyezve van, és a Windows Azure diagnostics-ügynök az események küldése az Azure table storage rendelkeznek, de továbbra is szeretné ez integrálható, így a Log Analytics-erőforrás. További információk a konfigurálása a [Azure Diagnostics-ügynök](service-fabric-diagnostics-event-aggregation-wad.md) a fürt további naplóit vagy teljesítményszámlálóit csomópontmetrikák diagnostics konfigurációjának módosítása és a [Log Analytics-integráció](service-fabric-diagnostics-event-analysis-oms.md)
+* Az események naplózása ETW/Windows-eseménynaplók például standard csatornákon keresztül, és az alábbi ábra szerint bármely felügyeleti eszköz, amely támogatja ezeket, például az Azure Monitor naplóira. Alapértelmezés szerint a portálon létrehozott fürtök diagnosztika engedélyezve van, és a Windows Azure diagnostics-ügynök az események küldése az Azure table storage rendelkeznek, de továbbra is szeretné ez integrálható, így a log analytics-erőforrás. További információk a konfigurálása a [Azure Diagnostics-ügynök](service-fabric-diagnostics-event-aggregation-wad.md) a fürt további naplóit vagy teljesítményszámlálóit csomópontmetrikák diagnostics konfigurációjának módosítása és a [Azure Monitor-naplók integrációja](service-fabric-diagnostics-event-analysis-oms.md)
 * Az EventStore szolgáltatás Rest API-k, amelyek lehetővé teszik, hogy a fürt lekérdezése közvetlenül, vagy a Service Fabric ügyféloldali kódtár használatával. Lásd: [lekérdezés EventStore API-k a fürthöz kapcsolódó események](service-fabric-diagnostics-eventstore-query.md).
 
 ## <a name="next-steps"></a>További lépések

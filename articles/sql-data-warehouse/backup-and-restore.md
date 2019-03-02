@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 09/06/2018
+ms.date: 03/01/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 0d2c7fbba8184fba81be5e93eae1dd816687ecb4
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: e9cf4fd448527e8104883e1c23c8c4b64fde3f0d
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992668"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213636"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Biztonsági mentés és visszaállítás az Azure SQL Data Warehouse
 
@@ -97,6 +97,10 @@ Megtarthatja a visszaállított adatraktár és az aktuális, vagy törölheti �
 Visszaállíthatja adatraktárát, lásd: [visszaállíthatja adatraktárát az Azure portal használatával](sql-data-warehouse-restore-database-portal.md), [visszaállíthatja adatraktárát PowerShell-lel](sql-data-warehouse-restore-database-powershell.md), vagy [visszaállíthatja adatraktárát használja a REST API-k](sql-data-warehouse-restore-database-rest-api.md).
 
 Egy törölt vagy szüneteltetett data warehouse-adatbázis visszaállításához is [hozzon létre egy támogatási jegyet](sql-data-warehouse-get-started-create-support-ticket.md).
+
+## <a name="cross-subscription-restore"></a>Adatbázisközi előfizetés visszaállítása
+
+Ha előfizetésből közvetlenül visszaállítására van szüksége, szavazzon ezt a képességet [Itt](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/36256231-enable-support-for-cross-subscription-restore). Egy másik logikai kiszolgáló visszaállítása és ["Ugrás"](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources) a kiszolgáló több előfizetés közötti előfizetés visszaállítást végrehajtani. 
 
 ## <a name="geo-redundant-restore"></a>Georedundáns visszaállítás
 

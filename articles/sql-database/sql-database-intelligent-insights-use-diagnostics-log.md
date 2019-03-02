@@ -12,16 +12,16 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: a2b4f85ac9c62c93e06f73090b6b144ff79319d1
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 264d4cfc6b09813f34501a0e51d3100f4d2bce78
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561875"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57217036"
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Az Intelligent Insights az Azure SQL Database teljesítményét diagnosztikai napló használata
 
-Ez az oldal nyújt információkat által létrehozott Azure SQL Database teljesítményét diagnosztikai napló használatával [Intelligent Insights](sql-database-intelligent-insights.md), annak formátum, és az adatok esetében az egyéni fejlesztői kell tartalmaz. Elküldheti a diagnosztikai naplót a [Azure Log Analytics](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), vagy egy külső megoldás, riasztási és jelentéskészítési egyéni fejlesztők és üzemeltetők számára képességek.
+Ez az oldal nyújt információkat által létrehozott Azure SQL Database teljesítményét diagnosztikai napló használatával [Intelligent Insights](sql-database-intelligent-insights.md), annak formátum, és az adatok esetében az egyéni fejlesztői kell tartalmaz. Elküldheti a diagnosztikai naplót a [naplózza az Azure Monitor](../azure-monitor/insights/azure-sql.md), [Azure Event Hubs](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md), [Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), vagy egy külső megoldás, riasztási és jelentéskészítési egyéni fejlesztők és üzemeltetők számára képességek.
 
 ## <a name="log-header"></a>Napló-fejléc
 
@@ -135,7 +135,7 @@ Az Intelligent Insights teljesítménynaplóban utolsó része az automatizált 
 "rootCauseAnalysis_s" : "High data IO caused performance to degrade. It seems that this database is missing some indexes that could help."
 ```
 
-Használhatja az Intelligent Insights teljesítménynaplóban a [Azure Log Analytics]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) vagy egy külső megoldás egyéni DevOps, riasztási és jelentéskészítési képességgel.
+Használhatja az Intelligent Insights teljesítménynaplóban a [naplózza az Azure Monitor]( https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) vagy egy külső megoldás egyéni DevOps, riasztási és jelentéskészítési képességgel.
 
 ## <a name="next-steps"></a>További lépések
 - Ismerje meg [Intelligent Insights](sql-database-intelligent-insights.md) fogalmakat.

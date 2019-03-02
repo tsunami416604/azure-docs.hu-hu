@@ -14,12 +14,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 452811cae74253570591e5ffe2c58708fe632b39
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 28891c103df91baa16b895ece7909658fede3b91
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894394"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213313"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Ismerkedés az Azure SQL Database felügyelt példány naplózási szolgáltatásával
 
@@ -158,9 +158,9 @@ További információ:
 - [KISZOLGÁLÓ NAPLÓZÁSI LÉTREHOZÁSA](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
 - [AZ ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 
-## <a name="set-up-auditing-for-your-server-to-event-hub-or-log-analytics"></a>Állítsa be a naplózást a kiszolgáló Event Hubs és a Log Analytics számára
+## <a name="set-up-auditing-for-your-server-to-event-hub-or-azure-monitor-logs"></a>A kiszolgáló számára Event Hub vagy az Azure Monitor naplók naplózás beállítása
 
-A felügyelt példány auditnaplók még Hubs és a Log Analytics az Azure Monitor használatával lehet küldeni. Ez a szakasz ismerteti, hogyan konfigurálhatja ezt:
+A felügyelt példány auditnaplók még Hubs vagy az Azure Monitor naplóira lehet küldeni. Ez a szakasz ismerteti, hogyan konfigurálhatja ezt:
 
 1. Navigálás a [az Azure Portal](https://portal.azure.com/) a felügyelt példányhoz.
 
@@ -170,7 +170,7 @@ A felügyelt példány auditnaplók még Hubs és a Log Analytics az Azure Monit
 
 4. Válassza ki **SQLSecurityAuditEvents** naplók listájában.
 
-5. Válassza ki a célhelyet a naplózási események – Event Hub, a Log Analytics vagy mindkettőt. Minden egyes célhoz konfigurálja a szükséges paramétereket (például: Log Analytics-munkaterület).
+5. Válassza ki a célhelyet a naplózási események – Event Hub, az Azure Monitor naplóira vagy mindkettőt. Minden egyes célhoz konfigurálja a szükséges paramétereket (például: Log Analytics-munkaterület).
 
 6. Kattintson a **Save** (Mentés) gombra.
 
@@ -213,11 +213,13 @@ Többféleképpen naplófájlokat blob megtekintéséhez használhatja.
 
 Az Event Hubs naplózási adatok felhasználásához, szüksége lesz egy stream események felhasználásához, és a cél beállítása. További információkért tekintse meg az Azure Event Hubs – dokumentáció.
 
-### <a name="consume-and-analyze-logs-stored-in-log-analytics"></a>Ugyanúgy használják, és tárolja a Log Analytics-naplók elemzése
+### <a name="consume-and-analyze-logs-stored-in-azure-monitor-logs"></a>Ugyanúgy használják, és az Azure Monitor naplóira tárolt naplók elemzése
 
-A Log Analytics naplók írt, ha azok elérhetők a Log Analytics-munkaterületet, ahol a Speciális keresés futtatásához a naplózási adatok. Kiindulási pontként, keresse meg a Log Analytics és a *általános* szakaszban kattintson *naplók* írjon be egy egyszerű lekérdezéssel, például: `search "SQLSecurityAuditEvents"` naplózza a naplózási megtekintéséhez.  
+Auditnaplók az Azure Monitor-naplókba írt, ha azok elérhetők a Log Analytics-munkaterületet, ahol a Speciális keresés futtatásához a naplózási adatok. Kiindulási pontként, keresse meg a Log Analytics-munkaterülethez, majd a *általános* szakaszban kattintson *naplók* írjon be egy egyszerű lekérdezéssel, például: `search "SQLSecurityAuditEvents"` naplózza a naplózási megtekintéséhez.  
 
-A log Analytics azonnal elemezze a rekordok millióit, a számítási feladatok és kiszolgálók integrált keresést és egyéni irányítópultok segítségével valós idejű az operational insights biztosítja. További hasznos információkat a Log Analytics keresési nyelv és a parancsok, lásd: [Log Analytics keresési referenciáját bemutató](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
+Az Azure Monitor naplóira azonnal elemezze a rekordok millióit, a számítási feladatok és kiszolgálók integrált keresést és egyéni irányítópultok segítségével valós idejű az operational insights biztosítja. További hasznos információkat az Azure Monitor naplók keresési nyelv és a parancsok, lásd: [Azure Monitor naplózza a keresési referencia](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server"></a>Naplózás az Azure SQL Database és az SQL Server adatbázisok közötti különbségek
 
@@ -232,7 +234,7 @@ Az XEvent naplózási a felügyelt példány támogatja az Azure Blob storage t�
 A kulcs közötti különbségek a `CREATE AUDIT` vannak a naplózás az Azure Blob storage-szintaxissal:
 
 - Egy új szintaxis `TO URL` van megadva, és lehetővé teszi a URL-címét az Azure blob Storage-tárolóba, a `.xel` fájlok kerülnek.
-- Egy új szintaxis `TO EXTERNAL MONITOR` ahhoz, hogy még a hubot és a Log Analytics célok biztosított.
+- Egy új szintaxis `TO EXTERNAL MONITOR` ahhoz, hogy még a Hub és az Azure Monitor naplók célok biztosított.
 - A szintaxist `TO FILE` van **nem támogatott** mert SQL-adatbázis nem érhető el Windows-fájlmegosztásokon.
 - Leállítási lehetőség **nem támogatott**.
 - `queue_delay` a 0 van **nem támogatott**.

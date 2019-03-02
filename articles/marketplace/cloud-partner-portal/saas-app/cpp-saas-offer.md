@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 74f6d5989d86cc92371b060caf164f895b75511f
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 9d8b425ff73672ce8989e235c4a2c130c763716c
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263628"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57213551"
 ---
 # <a name="azure-saas-application-offer"></a>Azure SaaS-alkalmazásra vonatkozó ajánlat
 
@@ -36,6 +36,9 @@ Az alkalmazások a Microsoft marketplace-en listázása előnyei a következők:
 - Az értékesítési csoport kiterjesztése: érhet el üzleti felhasználóknak világszerte, és így olyan értékesítési csatorna, amely felkelti az ügyfelek teljes, hozzájárul az érdeklődői és kapcsolatot teremt az új ügyfelek különböző ágazatok között.
 
 - Bevezetés a gyakorlatban hasznosítható elemzéseket nyújt: hogyan működik az alkalmazás az appsource-on, milyen jól működik, és hogyan tovább javíthatja az értékesítési eljárások betekintést nyújtunk.
+ 
+>[!Note]
+>Cloud Solution Providers (CSP) partner csatorna vehetnek részt már elérhető.  Lásd: [Cloud Solution Providers](../../cloud-solution-providers.md) további tájékoztatást a marketing, az ajánlat keretében a Microsoft CSP partner-csatornákon.
 
 ## <a name="publishing-process-workflow"></a>Közzétételi folyamat munkafolyamat 
 
