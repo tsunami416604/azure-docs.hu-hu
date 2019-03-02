@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: dd8fa36acaf3f4871d63200a4863778180e9be1a
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: b3bd157f06c922d96f71627f885fe6de2537987a
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55773479"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57215287"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Eszköz használata az Azure IoT központi alkalmazás beállítása
 
@@ -94,10 +94,10 @@ Annak érdekében, hogy adjon hozzá egy eszközhöz, helyek térképe irányít
 1. Az eszköz beállítása irányítópulton válassza ki a térkép a könyvtárból.
 2. Adjon címet, és válassza ki a helyet jelölő tulajdonsághoz korábban konfigurálta a Eszköztulajdonság részeként.
 3. Mentés, és megjelenik a csempén, az eszköz beállítása az eszközök helyét megjelenítése térképen.
-4. Most egy operátor nézetek, az eszköz állítja be az irányítópultot, az üzemeltető konfigurálta az összes csempe látható, ha például a helye térkép megjelenítése egyetlen pillantással eszközök helyét! 
-    
-> [!NOTE] 
-> Méretezze át a térkép a megfelelő méretre lehet. Kattintson a PIN-kódot a térképen az eszközinformációkat, nevét és helyét jeleníti meg. Az eszköz tulajdonságok oldalán lépjen az előugró kattinthat.  
+4. Most egy operátor nézetek, az eszköz állítja be az irányítópultot, az üzemeltető konfigurálta az összes csempe látható, ha például a helye térkép megjelenítése egyetlen pillantással eszközök helyét!
+
+> [!NOTE]
+> Méretezze át a térkép a megfelelő méretre lehet. Kattintson a PIN-kódot a térképen az eszközinformációkat, nevét és helyét jeleníti meg. Az eszköz tulajdonságok oldalán lépjen az előugró kattinthat.
 
 ## <a name="configure-the-list-for-your-device-set"></a>A lista az eszköz készlet konfigurálása
 

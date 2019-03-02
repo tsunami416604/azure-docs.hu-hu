@@ -16,17 +16,20 @@ ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 2ff32bf5a8e3c5c31b13e2e8a1594f94647ed689
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: d52e710cadbc37b8ad6c1de61f75df3b96704daa
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55695389"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243907"
 ---
 # <a name="copy-snapshot-of-a-managed-disk-to-same-or-different-subscription-with-cli"></a>Felügyelt lemez pillanatképének másolása előfizetésen belül vagy előfizetések között a CLI használatával
 
-Ez a szkript átmásolja egy felügyelt lemez pillanatképét az előfizetésen belül vagy előfizetések között. A szkript használatával a pillanatképet a szülőpillanatképpel egy régióban lévő előfizetésekbe helyezheti át.
+Ez a szkript átmásolja egy felügyelt lemez pillanatképét az előfizetésen belül vagy előfizetések között. Ez a szkript a következő esetekben használja:
 
+1. Telepítse át a Premium storage (Premium_LRS) pillanatkép standard szintű tárolóba (Standard_LRS vagy Standard_ZRS) a költségek csökkentése érdekében.
+1. Telepítse át egy pillanatképet a helyileg redundáns tárolás (Premium_LRS, Standard_LRS) zónaredundáns tárolás (Standard_ZRS) számára, hogy a nagyobb megbízhatóságot ZRS tárhelyet.
+1. Helyezze át a pillanatkép másik előfizetésbe tartozó hosszabb adatmegőrzés megadásához ugyanabban a régióban.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
@@ -48,7 +51,7 @@ A szkript a következő parancsokat használja egy, a forráspillanatkép azonos
 
 ## <a name="next-steps"></a>További lépések
 
-[Virtuális gép létrehozása pillanatképből](./virtual-machines-linux-cli-sample-create-vm-from-snapshot.md?toc=%2fpowershell%2fmodule%2ftoc.json)
+[Virtuális gép létrehozása pillanatképből](./virtual-machines-linux-cli-sample-create-vm-from-snapshot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 
