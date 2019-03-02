@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2018
 ms.author: rkarlin
-ms.openlocfilehash: af85600593e725f1d90d5fbb3aae2aab6dd3f367
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 658f38e32c2680e7c538147154a004359e431027
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114450"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57246746"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center – Hibaelhárítási útmutató
 Ez az útmutató olyan informatikai (IT) szakemberek, információbiztonsági elemzők és felhőrendszergazdák számára készült, akik szervezetei az Azure Security Centert használják, és el kell hárítaniuk a használathoz kapcsolódó problémákat.
@@ -40,7 +40,7 @@ Ez az útmutató a Security Center használatához kapcsolódó problémák hiba
 A napló tartalmazza az erőforrásokon végrehajtott összes írási műveletet (PUT, POST, DELETE), nem tartalmazza azonban az olvasási műveleteket (GET).
 
 ## <a name="microsoft-monitoring-agent"></a>Microsoft Monitoring Agent
-A Security Center a Microsoft Monitoring Agentet használja – ez ugyanaz az ügynök, mint amelyet a Log Analytics szolgáltatás is használ – a biztonsági adatok gyűjtésére az Azure-beli virtuális gépekről. Ha az adatgyűjtés engedélyezve van, és az ügynök megfelelően van telepítve a célgépen, elkezdődik az alábbi folyamat végrehajtása:
+A Security Center a Microsoft Monitoring Agentet használja – ez ugyanaz az ügynök a biztonsági adatok gyűjtésére az Azure-beli virtuális gépek az Azure Monitor szolgáltatás – által használt. Ha az adatgyűjtés engedélyezve van, és az ügynök megfelelően van telepítve a célgépen, elkezdődik az alábbi folyamat végrehajtása:
 
 * HealthService.exe
 

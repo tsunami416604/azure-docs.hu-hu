@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 2c8e71a058b2c770741c38f07c6c440fea90f2b2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: ab9bf868191238d933ae301b9a7df293842e8e36
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998433"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247052"
 ---
-# <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs-legacy"></a>Egy MPEG-DASH adaptív Streamelés videók beágyazása dash.js-sel (örökölt) rendelkező HTML5-alkalmazásba
+# <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>Egy MPEG-DASH adaptív Streamelt videók beágyazása dash.js-sel rendelkező HTML5-alkalmazásba  
 
 ## <a name="overview"></a>Áttekintés
 MPEG-DASH egy ISO szabvány a videó tartalmát, amelyet jelentős előnyöket kínál a fejlesztők számára, aki a kiváló minőségű, az adaptív videó kimeneti adatfolyam továbbítása az adaptív streameléshez. MPEG-dash protokollal a video-adatfolyamot igazodik automatikusan alacsonyabb definícióját, ha a hálózat túlterheltnek válik. Ez csökkenti annak lehetőségét, hogy a megjelenítő "szüneteltetett" videó jelent meg, amíg a Windows Media player letölti a play (más néven pufferelés) tovább néhány másodperc alatt. Csökkenti a hálózati torlódás, mivel a videólejátszó ezután visszaküldi jobb minőségű adatfolyam. A szükséges sávszélesség alkalmazkodni is a videó gyorsabb kezdési időt eredményez. Ez azt jelenti, hogy az első néhány másodperc alatt játszhatók le egy gyors letöltési alacsonyabb minőségi szegmens, és majd eltárolva a lépés a magasabb minőségű egyszer elegendő tartalom legfeljebb pufferben.

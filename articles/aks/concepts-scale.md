@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 7cd6af1dc6b947abd91c9d25a4b102e52da9d24d
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: c7019eac4edc530de5ef64ba9eb32e8e4994e75b
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456724"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245199"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Méretezési lehetőségeket biztosít az alkalmazások az Azure Kubernetes Service (AKS)
 
@@ -51,7 +51,7 @@ Ezek az értékek utáni finomhangolása szükségessé. Az alapértelmezett ut�
 
 ## <a name="cluster-autoscaler"></a>Fürt méretező
 
-Kubernetes pod változásaihoz válaszolni, van egy fürt méretező, amely alapján a kért csomópontok alkalmazkodik a számítási erőforrásokat a csomópont a készletben. Alapértelmezés szerint a fürt automatikus méretező a szükséges változtatásokat a csomópontok száma 10 másodpercenként ellenőrzi az API-kiszolgálóhoz. Ha a fürt automatikus skálázási határozza meg, hogy szükség-e egy az megváltoztatására, az AKS-fürtben található csomópontok számának növelése vagy csökkenése ennek megfelelően. Fürt automatikus méretező együttműködik az RBAC-kompatibilis az AKS-fürt futtatása a Kubernetes 1.10.x vagy újabb verziója.
+Kubernetes pod változásaihoz válaszolni, van egy fürt méretező, amely alapján a kért csomópontok alkalmazkodik a számítási erőforrásokat a csomópont a készletben. Fürt automatikus méretező például méretezési eseményeket és erőforrás-küszöbértékek között időintervallumok indítási paraméterei. Ha a fürt automatikus skálázási határozza meg, hogy szükség-e egy az megváltoztatására, az AKS-fürtben található csomópontok számának növelése vagy csökkenése ennek megfelelően. AKS-fürt fürt automatikus méretező használatához futtassa a virtual machine scale sets a méretezési csoport kezeléséhez be, és vertikális leskálázás az AKS-csomópontok események.
 
 ![Kubernetes-fürt méretező](media/concepts-scale/cluster-autoscaler.png)
 

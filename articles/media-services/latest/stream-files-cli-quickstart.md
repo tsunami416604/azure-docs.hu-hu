@@ -1,5 +1,5 @@
 ---
-title: Stream videofájlok az Azure Media Services – parancssori felület |} A Microsoft Docs
+title: Stream videofájlok az Azure Media Services és az Azure CLI |} A Microsoft Docs
 description: Ezen rövid útmutató lépéseivel egy új Azure Media Services-fiókot hozhat létre, fájlt kódolhat, és streamelheti azt az Azure Media Playerbe.
 services: media-services
 documentationcenter: ''
@@ -13,19 +13,20 @@ ms.topic: quickstart
 ms.custom: ''
 ms.date: 02/19/2019
 ms.author: juliako
-ms.openlocfilehash: 8de004b0ca55cb46336a072dabb682f342c7d8dd
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: a323cbe4188207fa77525648297b366c9c57121b
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446494"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244723"
 ---
 # <a name="quickstart-stream-video-files---cli"></a>Gyors útmutató: Videófájlok streamelése – parancssori felület
 
-Ez a rövid útmutató bemutatja, hogy milyen könnyen kezdheti meg a videók kódolását és streamelését számos különféle böngészőben és eszközön az Azure Media Services használatával. A bemenő tartalmak HTTPS- URL- és SAS URL-címekkel vagy az Azure Blob Storage-ban található fájlok elérési útjával határozhatók meg.
-A témakörben szereplő minta olyan tartalmakat kódol, amelyeket HTTPS URL-cím segítségével tehet elérhetővé. Az AMS v3 jelenleg nem támogatja a HTTPS URL-címekkel történő darabolásos átviteli kódolást.
+Ez a rövid útmutató bemutatja, hogyan könnyen kódolása és streamelése videók a különböző böngészők és eszközök az Azure Media Services és az Azure CLI használatával. Megadhatja a bemeneti tartalom HTTPS vagy az SAS URL-címek vagy az elérési utak a fájlokat az Azure Blob storage használatával.
 
-A rövid útmutató végére képes lesz videók streamelésére.  
+A példában ez a cikk a tartalmak, hogy az URL-címének HTTPS-en keresztül elérhető kódolja. A Media Services v3 jelenleg nem támogatja a darabolásos átvitel kódolási HTTPS URL-címek keresztül.
+
+Ez a rövid útmutató végéig, képes lesz a videó továbbításához.  
 
 ![Videó lejátszása](./media/stream-files-dotnet-quickstart/final-video.png)
 
@@ -33,9 +34,9 @@ A rövid útmutató végére képes lesz videók streamelésére.
 
 ## <a name="create-a-media-services-account"></a>Media Services-fiók létrehozása
 
-Indítsa el a titkosítása, kódolás, elemzése, kezelése és médiafolyam az Azure-ban, szüksége a Media Services-fiók létrehozása. A Media Services-fiókba kell lennie legalább egy storage-fiókokhoz kapcsolódik.
+Mielőtt titkosítására, kódolására, elemezheti, kezelése, és az Azure-ban a médiatartalmak streamelése, szüksége a Media Services-fiók létrehozása. A fióknak kell lennie legalább egy storage-fiókokhoz kapcsolódik.
 
-A Media Services-fiók és a társított tárfiókok az Azure-előfizetéshez kell lennie. Erősen ajánlott a storage-fiókok használata a Media Services-fiók ugyanazon a helyen a további késleltetés és az adatok kimenő adatforgalmi költségek elkerülése érdekében.
+A Media Services-fiók és a társított tárfiókok az Azure-előfizetéshez kell lennie. Azt javasoljuk, hogy használja-e tárfiókok, amelyek ugyanazon a helyen, a Media Services-fiók, késés és az adatok kimenő adatforgalmi költségek korlátozására.
 
 ### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
@@ -43,23 +44,23 @@ A Media Services-fiók és a társított tárfiókok az Azure-előfizetéshez ke
 az group create -n amsResourceGroup -l westus2
 ```
 
-### <a name="create-an-azure-storage-account"></a>Az azure storage-fiók létrehozása
+### <a name="create-an-azure-storage-account"></a>Azure-tárfiók létrehozása
 
-Ebben a példában létrehozunk egy általános célú v2, a standard szintű LRS-fiókra.
+Ebben a példában létrehozunk egy általános célú v2 standard szintű LRS-fiókra.
 
-Ha azt szeretné, kísérletezhet a storage-fiókok, `--sku Standard_LRS`. Azonban éles környezetben a Termékváltozat kiválasztásakor érdemes, `--sku Standard_RAGRS`, amely biztosítja az üzletmenet folytonosságának földrajzi replikáció. További információkért lásd: [tárfiókok](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest).
+Ha azt szeretné, kísérletezhet a storage-fiókok, `--sku Standard_LRS`. Ha éles környezetben a Termékváltozat exportálná, érdemes `--sku Standard_RAGRS`, amely biztosítja az üzletmenet folytonosságának földrajzi replikáció. További információkért lásd: [tárfiókok](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest).
  
 ```azurecli
 az storage account create -n amsstorageaccount --kind StorageV2 --sku Standard_LRS -l westus2 -g amsResourceGroup
 ```
 
-### <a name="create-an-azure-media-service-account"></a>Egy azure médiaszolgáltatási fiók létrehozása
+### <a name="create-an-azure-media-services-account"></a>Azure Media Services-fiók létrehozása
 
 ```azurecli
 az ams account create --n amsaccount -g amsResourceGroup --storage-account amsstorageaccount -l westus2
 ```
 
-Ehhez hasonló kapott választ:
+A következőhöz hasonló választ kap:
 
 ```
 {
@@ -80,15 +81,15 @@ Ehhez hasonló kapott választ:
 }
 ```
 
-## <a name="start-streaming-endpoint"></a>A streamvégpont elindítása
+## <a name="start-the-streaming-endpoint"></a>A streamvégpont elindítása
 
-Az alábbi CLI elindítja az alapértelmezett **folyamatos átviteli végponton**.
+A következő Azure CLI-parancs elindítja az alapértelmezett **Sstreaming végpont**.
 
 ```azurecli
 az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
 ```
 
-Miután elindul, kap egy válasz ehhez hasonló:
+A következőhöz hasonló választ kap:
 
 ```
 az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
@@ -118,21 +119,21 @@ az ams streaming-endpoint start  -n default -a amsaccount -g amsResourceGroup
 }
 ```
 
-Ha a tartalomstreameléshez használt streamvégpont már fut,
+Ha a tartalomstreameléshez használt streamvégpont már fut, ezt az üzenetet kapja:
 
 ```
 (InvalidOperation) The server cannot execute the operation in its current state.
 ```
 
-## <a name="create-a-transform-for-adaptive-bitrate-encoding"></a>Hozzon létre egy-egy átalakítási adaptív átviteli sebességű kódolás
+## <a name="create-a-transform-for-adaptive-bitrate-encoding"></a>Hozzon létre egy-egy átalakítási adaptív sávszélességű Encoding
 
-Hozzon létre egy **átalakítása** és videók elemzése gyakori feladatok konfigurálása. Ebben a példában szeretnénk tenni egy adaptív sávszélességű kódolást. Ezt követően művelettel elküldhet egy **feladat** alatt létrehozott megtekintheti az átalakítás. A feladat a Media Services tényleges kérést az átalakítás alkalmazni a megadott bemeneti video- és audiotartalmak tartalom.
+Hozzon létre egy **átalakítása** és videók elemzése gyakori feladatok konfigurálása. Ebben a példában végzünk az adaptív bitsebességű kódolást. Hogy majd alatt létrehozott az átalakítási feladat elküldése. A feladat a Media Services az átalakítás alkalmazhat az adott videó vagy a tartalom hangbemenet kérést.
 
 ```azurecli
 az ams transform create --name testEncodingTransform --preset AdaptiveStreaming --description 'a simple Transform for Adaptive Bitrate Encoding' -g amsResourceGroup -a amsaccount
 ```
 
-Ehhez hasonló kapott választ:
+A következőhöz hasonló választ kap:
 
 ```
 {
@@ -158,13 +159,13 @@ Ehhez hasonló kapott választ:
 
 ## <a name="create-an-output-asset"></a>Kimeneti objektum létrehozása
 
-Létrehoz egy kimeneti **eszköz** használt, a kódolási feladat kimenetének.
+Hozzon létre egy kimeneti **eszköz** használatára, mert a kódolási feladat kimenetének.
 
 ```azurecli
 az ams asset create -n testOutputAssetName -a amsaccount -g amsResourceGroup
 ```
 
-Ehhez hasonló kapott választ:
+A következőhöz hasonló választ kap:
 
 ```
 {
@@ -183,21 +184,22 @@ Ehhez hasonló kapott választ:
 }
 ```
 
-## <a name="start-job-with-https-input"></a>A HTTPS bemeneti feladat indítása
+## <a name="start-a-job-by-using-https-input"></a>A HTTPS bemeneti feladat indítása
 
-A Media Services v3-as a videók feldolgozásához feladatok elküldésekor meg kell mondanunk a Media Services, hogy hol található a bemeneti videó. A beállításokat egyik HTTPS URL-címet adja meg a feladat bemeneti (ahogyan az ebben a példában látható). 
+Elküldött feladatok videók feldolgozásához, amikor meg kell mondanunk a Media Services, hogy hol található a bemeneti videó. Az egyik lehetőség, hogy HTTPS URL-címet adja meg a feladat bemenetére, ebben a példában látható módon.
 
-Futtatásakor `az ams job start`, a feladat kimenetének állíthat be egy címkét. A címke később azonosíthatja, hogy a kimeneti adategység Mi az a használható. 
+Futtatásakor `az ams job start`, a feladat kimenetének állíthat be egy címkét. Ezután használhatja a címke azonosíthatja a kimeneti adategység Mi az a.
 
-- A címkét rendel egy értéket, ha "--kimeneti-objektumok," assetname = label "
-- A címke nem rendel egy értéket, ha "--kimeneti-objektumok," assetname = ".
-  Figyelje meg, hogy, adja hozzá a "=" való a `output-assets`. 
+- A címkét rendel egy értéket, ha "--kimeneti-objektumok," assetname = label ".
+- Állítsa a felirat nem rendel hozzá egy értéket, ha "--kimeneti-objektumok," assetname = ".
+
+  Figyelje meg, hogy adja hozzá a "=" való a `output-assets`.
 
 ```azurecli
 az ams job start --name testJob001 --transform-name testEncodingTransform --base-uri 'https://nimbuscdn-nimbuspm.streaming.mediaservices.windows.net/2b533311-b215-4409-80af-529c3e853622/' --files 'Ignite-short.mp4' --output-assets testOutputAssetName= -a amsaccount -g amsResourceGroup 
 ```
 
-Ehhez hasonló kapott választ:
+A következőhöz hasonló választ kap:
 
 ```
 {
@@ -234,23 +236,23 @@ Ehhez hasonló kapott választ:
 
 ### <a name="check-status"></a>Állapot ellenőrzése
 
-Ellenőrizze a feladat állapota 5 perc. Akkor érdemes lehet "befejeződött". Nem, ellenőrizze a pár perc türelmet kérünk. Annak hollétéről"", a következő lépéssel, és hozzon létre egy **Streamelési lokátor**.
+Öt perc alatt a feladat állapotának ellenőrzéséhez. Érdemes lehet "befejeződött volna." Nem fejeződött be, ellenőrizze újra néhány perc múlva. Amikor elkészült, folytassa a következő lépéssel, és hozzon létre egy **Streamelési lokátor**.
 
 ```azurecli
 az ams job show -a amsaccount -g amsResourceGroup -t testEncodingTransform -n testJob001
 ```
 
-## <a name="create-streaming-locator-and-get-path"></a>Streamelési lokátor létrehozása és elérési út lekérése
+## <a name="create-a-streaming-locator-and-get-a-path"></a>A streamelési lokátorok létrehozásához és a egy elérési út lekérése
 
-A kódolás befejezését követően a következő lépés az, hogy a videó a kimeneti adategység elérhető az ügyfelek számára a lejátszást. Ezt két lépésben lehet megvalósítani: először is hozzon létre egy **Streamelési lokátor**, és a második, hozhat létre, amellyel az ügyfelek streamelési URL-címeket.
+A kódolás befejezését követően a következő lépés az, hogy a videó a kimeneti adategység elérhető az ügyfelek számára a lejátszást. Ehhez először létre kell hoznia egy Streamelési lokátor. Ezután hozhat létre streamelési URL-címek, amellyel az ügyfelek.
 
-### <a name="create-a-streaming-locator"></a>A Streamelési Lokátorok létrehozásához
+### <a name="create-a-streaming-locator"></a>Streamelési lokátor létrehozása
 
 ```azurecli
 az ams streaming-locator create -n testStreamingLocator --asset-name testOutputAssetName --streaming-policy-name Predefined_ClearStreamingOnly  -g amsResourceGroup -a amsaccount 
 ```
 
-Ehhez hasonló kapott választ:
+A következőhöz hasonló választ kap:
 
 ```
 {
@@ -270,13 +272,13 @@ Ehhez hasonló kapott választ:
 }
 ```
 
-### <a name="get-streaming-locator-paths"></a>Streamelési lokátor elérési utak lekérése
+### <a name="get-streaming-locator-paths"></a>Első streamelési lokátor elérési utak
 
 ```azurecli
 az ams streaming-locator get-paths -a amsaccount -g amsResourceGroup -n testStreamingLocator
 ```
 
-Ehhez hasonló kapott választ:
+A következőhöz hasonló választ kap:
 
 ```
 {
@@ -307,46 +309,42 @@ Ehhez hasonló kapott választ:
 }
 ```
 
-Másolja a Hls elérési útja. Ebben az esetben: `/e01b2be1-5ea4-42ca-ae5d-7fe704a5962f/ignite.ism/manifest(format=m3u8-aapl)`.
+Másolás a HTTP live streaming (HLS) elérési útja. Ebben az esetben van `/e01b2be1-5ea4-42ca-ae5d-7fe704a5962f/ignite.ism/manifest(format=m3u8-aapl)`.
 
-## <a name="build-url"></a>URL-cím létrehozása 
+## <a name="build-the-url"></a>Az URL-cím létrehozása 
 
-### <a name="get-streaming-endpoint-host-name"></a>Le adatfolyam-továbbítási végpont gazdagépnevére
+### <a name="get-the-streaming-endpoint-host-name"></a>A streamelési végpontot gazdagép nevének lekérése
 
 ```azurecli
 az ams streaming-endpoint list -a amsaccount -g amsResourceGroup -n default
 ```
+Másolás a `hostName` értéket. Ebben az esetben van `amsaccount-usw22.streaming.media.azure.net`.
 
-Másolás a `hostName` értéket. Ebben az esetben: `amsaccount-usw22.streaming.media.azure.net`.
-
-### <a name="assemble-url"></a>Állítsa össze a URL-címe
+### <a name="assemble-the-url"></a>Állítsa össze az URL-cím
 
 "https://" + &lt;hostName értékét&gt; + &lt;Hls elérési útjának értéke&gt;
 
-#### <a name="example"></a>Példa
+Például:
 
 `https://amsaccount-usw22.streaming.media.azure.net/7f19e783-927b-4e0a-a1c0-8a140c49856c/ignite.ism/manifest(format=m3u8-aapl)`
 
-## <a name="test-playback-with-azure-media-player"></a>Az Azure Media Player lejátszás tesztelése
-
-Ebben a cikkben az Azure Media Playert használjuk a streamelés teszteléséhez. 
+## <a name="test-playback-by-using-azure-media-player"></a>Tesztelje az Azure Media Player használatával
 
 > [!NOTE]
-> Ha a lejátszót egy HTTPS-hely futtatja, az URL-t módosítsa a HTTPS-protokoll használatára.
+> Ha egy HTTPS-hely üzemelteti, ügyeljen arra, hogy indítsa el a "https" URL-CÍMÉT.
 
-1. Nyisson meg egy webböngészőt, majd navigáljon a következő helyre: [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/).
-2. Az a **URL-cím:** mezőbe illessze be az előző szakaszban létrehozott URL-CÍMÉT. 
+1. Nyisson meg egy webböngészőt, majd [ https://aka.ms/azuremediaplayer/ ](https://aka.ms/azuremediaplayer/).
+2. Az a **URL-cím** mezőbe illessze be az előző szakaszban létrehozott URL-CÍMÉT. Beillesztheti az URL-címet a HLS, Dash vagy Smooth formátumban. Az Azure Media Player automatikusan használja, egy megfelelő streamelési protokoll az eszközre lejátszás céljából.
+3. Válassza ki **Player frissítése**.
 
-  A Dash, HLS, beillesztheti az URL-címet, vagy Smooth formátum és az Azure Media Player átvált egy megfelelő streamelési protokoll az eszközre lejátszás céljából automatikusan.
-3. Kattintson az **Update Player** (Lejátszó frissítése) elemre.
-
-Az Azure Media Player használható tesztelésre, az éles környezetben való használata azonban nem ajánlott. 
+>[!NOTE]
+>Az Azure Media Player használható tesztelésre, az éles környezetben való használata azonban nem ajánlott.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége az erőforráscsoportjában lévő egyik erőforrásra sem, beleértve a jelen rövid útmutatóban létrehozott Media Services- és Storage-fiókokat, törölje a korábban létrehozott teljes erőforráscsoportot.
+Ha már nincs szüksége a az erőforrások az erőforráscsoportban, beleértve a Media Services és a storage-fiókok ebben a rövid útmutatóban létrehozott törölje az erőforráscsoportot.
 
-Hajtsa végre a következő CLI-parancsot:
+Futtassa a CLI-parancsot:
 
 ```azurecli
 az group delete --name amsResourceGroup
@@ -358,5 +356,4 @@ Lásd: [hibakódok feladat](https://docs.microsoft.com/rest/api/media/jobs/get#j
 
 ## <a name="next-steps"></a>További lépések
 
-> [!div class="nextstepaction"]
 > [CLI-minták](cli-samples.md)

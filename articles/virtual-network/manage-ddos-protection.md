@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: jdial
-ms.openlocfilehash: 360c0d9a96b8dac2f08b89caa8c1fd36e8a54b3f
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 32c4516c7dc68b04826b362d34841160936d682d
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020421"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244519"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Kezelheti az Azure DDoS Protection szabványos az Azure portal használatával
 
@@ -31,7 +31,7 @@ Mielőtt bármelyik befejezése lépéseket ebben az oktatóanyagban, jelentkezz
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="create-a-ddos-protection-plan"></a>A DDoS protection-díjcsomag létrehozása
+## <a name="create-a-ddos-protection-plan"></a>DDoS elleni védelmi terv létrehozása
 
 A DDoS protection-díjcsomag határozza meg, amelyeken engedélyezve van, előfizetések között a DDoS protection-szabvány virtuális hálózatok. Beállíthatja, hogy a szervezet és a hivatkozás virtuális hálózatok több előfizetést, a csomagot egy DDoS elleni védelmi tervet. A DDoS Protection-Díjcsomag maga is egy előfizetést, a terv létrehozása közben kiválasztott társítva. Az előfizetés a terv társítva a csomag, valamint a kerettúllépési díjfizetést tesz szükségessé, havi ismétlődő számla tekintetében abban az esetben a védett nyilvános IP-címek száma meghaladja a 100. A DDoS-díjszabás további információkért lásd: [díjszabás](https://azure.microsoft.com/pricing/details/ddos-protection/).
 
@@ -159,7 +159,7 @@ A támadás kockázatcsökkentési jelentések összesített értéket jelenít 
 
     - **Archiválás tárfiókba**: Adatok írása egy Azure Storage-fiókot. Ezzel a beállítással kapcsolatos további információkért lásd: [diagnosztikai naplói archiválása](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
     - **Az eseményközpontok felé Stream**: Lehetővé teszi a naplók használatával egy Azure Eseményközponthoz csomópontmetrikák log fogadó. Az Event hubs integrációjának engedélyezése az Splunk vagy más SIEM-rendszerekkel. Ezzel a beállítással kapcsolatos további információkért lásd: [diagnosztikai naplók egy eseményközpontba Stream](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-    - **Küldés a Log Analyticsnek**: Ír a naplók az Azure Log Analytics szolgáltatásba. Ezzel a beállítással kapcsolatos további információkért lásd: [használata a Log Analytics naplóinak összegyűjtése](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **Küldés a Log Analyticsnek**: Naplók ír, az Azure Monitor szolgáltatásban. Ezzel a beállítással kapcsolatos további információkért lásd: [használható az Azure Monitor-naplók gyűjtését](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 Mindkét a növekményes és a támadás utáni kockázatcsökkentési a jelentések a következő mezőket tartalmazzák
 - Támadási vektorok
@@ -181,7 +181,7 @@ Támadás kockázatcsökkentési Flow naplók lehetővé teszi, hogy tekintse á
 
     - **Archiválás tárfiókba**: Adatok írása egy Azure Storage-fiókot. Ezzel a beállítással kapcsolatos további információkért lásd: [diagnosztikai naplói archiválása](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
     - **Az eseményközpontok felé Stream**: Lehetővé teszi a naplók használatával egy Azure Eseményközponthoz csomópontmetrikák log fogadó. Az Event hubs integrációjának engedélyezése az Splunk vagy más SIEM-rendszerekkel. Ezzel a beállítással kapcsolatos további információkért lásd: [diagnosztikai naplók egy eseményközpontba Stream](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-    - **Küldés a Log Analyticsnek**: Ír a naplók az Azure Log Analytics szolgáltatásba. Ezzel a beállítással kapcsolatos további információkért lásd: [használata a Log Analytics naplóinak összegyűjtése](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **Küldés a Log Analyticsnek**: Naplók ír, az Azure Monitor szolgáltatásban. Ezzel a beállítással kapcsolatos további információkért lásd: [használható az Azure Monitor-naplók gyűjtését](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 1. Az Azure analytics irányítópulton tekintheti meg a forgalmi naplók adatai, importálhatja a minta-irányítópult https://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip
 
 Forgalmi naplók fog rendelkezni a következő mezőket: 

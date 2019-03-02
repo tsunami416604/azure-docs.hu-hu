@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: barclayn
-ms.openlocfilehash: 7577a05302dcf23cc68666685c1537c0eb31f831
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 13183282e5e607f0052194a474203f97e0160adb
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115572"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57246134"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Biztonsági szolgáltatások és technológiák elérhető az Azure-ban
 
@@ -34,7 +34,7 @@ Ez a lista idővel módosítja, és növekszik, ugyanúgy, mint az Azure elvégz
 |--------|--------|
 |[Azure&nbsp;Security&nbsp;Center](../security-center/security-center-intro.md)| A számítási feladatok védelmét felhőmegoldás, amely biztonsági felügyeletet és fejlett fenyegetésvédelmet biztosít a hibrid felhőalapú számítási feladatokhoz.|
 |[Azure Key Vault](../key-vault/key-vault-overview.md)| A jelszavak, kapcsolati karakterláncok és egyéb információkat, az alkalmazások futtatása egy biztonságos titkoskulcs üzlet. |
-|[Log Analytics](../log-analytics/log-analytics-overview.md)|A figyelési szolgáltatás telemetriai és egyéb adatokat gyűjt, és a egy lekérdezési nyelvet és elemzési motort, hogy az operational insights, az alkalmazásokat és erőforrásokat biztosít. Használható önállóan, vagy más szolgáltatások például a Security Center. |
+|[Azure Monitor-naplók](../log-analytics/log-analytics-overview.md)|A figyelési szolgáltatás telemetriai és egyéb adatokat gyűjt, és a egy lekérdezési nyelvet és elemzési motort, hogy az operational insights, az alkalmazásokat és erőforrásokat biztosít. Használható önállóan, vagy más szolgáltatások például a Security Center. |
 |[Az Azure Dev/Test Lab](../devtest-lab/devtest-lab-overview.md)|Egy szolgáltatás, amellyel gyorsan a fejlesztőknek és tesztelőknek környezetek létrehozása az Azure-ban hatékonysággal és a költségek ellenőrzés alatt tartásával.  |
 
 <!---|[Azure&nbsp;Disk&nbsp;Encryption](azure-security-disk-encryption-overview.md)| THIS WILL GO TO THE NEW OVERVIEW TOPIC MEGHAN STEWART IS WRITING|--->

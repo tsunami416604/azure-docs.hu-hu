@@ -1,9 +1,9 @@
 ---
-title: Azure Cloud Shell ablakában |} Microsoft Docs
-description: Hogyan használható az Azure felhőalapú rendszerhéj ablakát áttekintése.
+title: Az Azure Cloud Shell ablak használata |} A Microsoft Docs
+description: Hogyan használható az Azure Cloud Shell-ablakról áttekintése.
 services: azure
 documentationcenter: ''
-author: jluk
+author: maertendMSFT
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,56 +13,56 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
-ms.author: juluk
-ms.openlocfilehash: 43da2bf5b66ff7db03a6fb5c2e1ceaebe322bcbb
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.author: damaerte
+ms.openlocfilehash: a02642540e6eb39f35b9cc0d38d187a7afa36b7a
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2018
-ms.locfileid: "28919994"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243448"
 ---
-# <a name="using-the-azure-cloud-shell-window"></a>Az Azure felhőalapú rendszerhéj ablakát használatával
+# <a name="using-the-azure-cloud-shell-window"></a>Az Azure Cloud Shell ablak használatával
 
-Ez a dokumentum ismerteti, hogyan a felhő rendszerhéj ablakát.
+Ez a dokumentum ismerteti, hogyan használhatja a Cloud Shell ablakába.
 
-## <a name="swap-between-bash-and-powershell-environments"></a>A felcserélendő Bash és PowerShell különböző környezetek között
+## <a name="swap-between-bash-and-powershell-environments"></a>Váltás a Bash és a PowerShell-környezetek között
 ![](media/using-the-shell-window/env-selector.png)
 
-A felhő rendszerhéj eszköztár a környezet választó segítségével felcserélni a Bash és PowerShell különböző környezetek között.
+A környezet választómezőt használja a Cloud Shell eszköztárában a Bash és a PowerShell környezetek közötti váltás.
 
 ## <a name="restart-cloud-shell"></a>Cloud Shell újraindítása
 ![](media/using-the-shell-window/restart.png)
 > [!WARNING]
-> Felhő rendszerhéj újraindítása alaphelyzetbe állítja a gép állapotát, és semmilyen fájl nem őrződik meg a Azure fájlmegosztás el fog veszni.
+> A Cloud Shell újraindítása visszaállítja a gép állapotát, és nem megőrzött fájlok az Azure által fájlmegosztás el fog veszni.
 
-* Kattintson az újraindítás ikonra a felhő rendszerhéj eszköztárban alaphelyzetbe állítani a gép állapotát.
+* Kattintson a Cloud Shell eszköztárában alaphelyzetbe állítani a gép állapota az újraindítás ikonra.
 
-## <a name="minimize--maximize-cloud-shell-window"></a>Kis méret & felhő rendszerhéj ablakának teljes méretűre állítása
+## <a name="minimize--maximize-cloud-shell-window"></a>Minimalizálja a & maximalizálása érdekében a Cloud Shell-ablakról
 ![](media/using-the-shell-window/minmax.png)
-* Kattintson a kis méret ikonra a felső sarkában az ablak elrejtéséhez. Kattintson a felhő rendszerhéj ismét az ikonra kattintva felfedése.
-* Kattintson a teljes méret ikonra beállítása ablakban maximális magasságát. Ablak visszaállítása eredeti méretének, kattintson a visszaállítás.
+* Kattintson a felül található kis méret ikonra kattintva rejtheti el őket az ablak, jobb. Kattintson a Cloud Shell ismét az ikonra kattintva felfedése.
+* Kattintson az ablak maximális Oszlopmagasság állítsa teljes méret ikonra. Ablak előző mérete visszaállításához kattintson a visszaállítás.
 
 ## <a name="concurrent-sessions"></a>Egyidejű munkamenetek
-Felhő rendszerhéj lehetővé teszi több egyidejű munkamenetek különböző böngészőlapokon távfelügyeletét minden munkamenet nem létezik-e külön Bash folyamatban.
-Ha most kilép egy munkamenet, ügyeljen arra, hogy minden munkamenet ablak lépni, minden folyamat függetlenül fut, de ugyanazon a számítógépen futnak.
+A cloud Shell lehetővé teszi, hogy több egyidejű munkamenetek különböző böngészőlapokon azáltal, hogy létezik egy külön folyamatként Bash minden egyes munkamenetnél.
+Ha egy munkamenetben kilép, ügyeljen arra, lépjen ki az egyes munkameneti ablakban, minden egyes folyamat függetlenül fut, de ugyanazon a számítógépen futnak.
 
 ## <a name="copy-and-paste"></a>Másolás és beillesztés
 [!INCLUDE [copy-paste](../../includes/cloud-shell-copy-paste.md)]
 
-## <a name="resize-cloud-shell-window"></a>Felhő rendszerhéj ablakát átméretezése
-* Kattintással és húzással a felső szegélyéhez, hogy az eszköztár felfelé vagy lefelé méretezze át a felhő rendszerhéj ablakát.
+## <a name="resize-cloud-shell-window"></a>Méretezze át a Cloud Shell-ablakról
+* Kattintással és húzással az eszköztár felső széle felfelé vagy lefelé átméretezése a Cloud Shell ablakába.
 
-## <a name="scrolling-text-display"></a>A görgethető szöveg megjelenítése
-* Görgessen az egérrel és touchpad terminál szöveg áthelyezése.
+## <a name="scrolling-text-display"></a>Görgethető szöveges megjelenítése
+* Görgessen az egérrel és touchpad áthelyezése a Terminálszolgáltatások szöveget.
 
-## <a name="changing-the-text-size"></a>A betűméret megváltoztatása
+## <a name="changing-the-text-size"></a>A szöveg méretének módosítása
 ![](media/using-the-shell-window/text-size.png)
-* A beállítások ikonra a felső bal oldali ablak, kattintson a "Text" beállítás rámutat, majd válassza ki a kívánt szöveget méretet. A kiválasztott maradnak munkamenetei között.
+* Kattintson az ablak bal felső a beállítások ikonra, majd mutasson a "Szöveg mérete" lehetőséget, és válassza ki a kívánt szöveg méretét. A kijelölt maradnak a munkamenetek között.
 
 ## <a name="exit-command"></a>Kilépés paranccsal
-Futó `exit` megszakítja az aktív munkamenetet. Alapértelmezés szerint ez a viselkedés beavatkozás nélkül 20 perc után következik be.
+Futó `exit` leállítja az aktív munkamenetét. Ez a viselkedés beavatkozás nélkül 20 perc után alapértelmezés szerint történik.
 
 ## <a name="next-steps"></a>További lépések
 
-[A felhő rendszerhéj gyors üzembe helyezés bash](quickstart.md)
-[PowerShell használatával a felhő rendszerhéj gyors üzembe helyezés](quickstart-powershell.md)
+[A bash Cloud Shell rövid](quickstart.md)
+[PowerShell Cloud Shell rövid](quickstart-powershell.md)

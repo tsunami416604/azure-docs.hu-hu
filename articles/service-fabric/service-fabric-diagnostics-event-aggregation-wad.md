@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: f9db156562692107a5603e15340f01ecf9f9d52c
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: afc833775894a01e8061401fe7601267f09edded
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823416"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243244"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Események összesítése és -gyűjteményt Windows Azure Diagnostics használatával
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "56823416"
 
 Egy Azure Service Fabric-fürtön futtatja, esetén érdemes egy központi helyen összes csomópontja a naplók gyűjtését. A naplók kellene egy központi helyen segítségével elemezheti és a fürtben, vagy az alkalmazások és szolgáltatások a fürtben futó problémák elhárítása.
 
-Fel-és naplók gyűjtése az egyik módja, hogy használja a Windows Azure Diagnostics (WAD) bővítmény, amely feltölti a naplókat az Azure Storage, és a naplók elküldése az Azure Application Insights és az Event Hubs lehetősége is van. Használhatja egy külső folyamatba, olvassa az eseményeket a storage-ból, és helyezze el őket olyan elemzési felhőplatform-megoldás, mint például [Log Analytics](../log-analytics/log-analytics-service-fabric.md) vagy egy másik log-elemzési megoldás.
+Fel-és naplók gyűjtése az egyik módja, hogy használja a Windows Azure Diagnostics (WAD) bővítmény, amely feltölti a naplókat az Azure Storage, és a naplók elküldése az Azure Application Insights és az Event Hubs lehetősége is van. Használhatja egy külső folyamatba, olvassa az eseményeket a storage-ból, és helyezze el őket olyan elemzési felhőplatform-megoldás, mint például [naplózza az Azure Monitor](../log-analytics/log-analytics-service-fabric.md) vagy egy másik log-elemzési megoldás.
 
 ## <a name="prerequisites"></a>Előfeltételek
 A következő eszközök vannak a cikk ezt használja:
@@ -57,7 +57,7 @@ Határozottan javasoljuk, hogy a sablon letöltése **létrehozása gombra való
 
 ![Fürt sablon](media/service-fabric-diagnostics-event-aggregation-wad/download-cluster-template.png)
 
-Most, hogy meg van összesítésével események az Azure Storage [Log Analytics beállítása](service-fabric-diagnostics-oms-setup.md) információkhoz juthat, és lekérdezheti, ha a Log Analytics-portálon
+Most, hogy meg van összesítésével események az Azure Storage [beállítása az Azure Monitor naplóira](service-fabric-diagnostics-oms-setup.md) információkhoz juthat, és lekérdezheti, ha az Azure Monitor naplózza a portálon
 
 >[!NOTE]
 >Nem lehet szűrni vagy a táblák küldött események karcsúsítása jelenleg nem. Ha egy folyamat események eltávolítja a tábla nem alkalmazza, a tábla egyre nő (az alapértelmezett korlát a következő 50 GB-ot). Ennek a következők módosítása útmutatást [használja a lentebb ebben a cikkben](service-fabric-diagnostics-event-aggregation-wad.md#update-storage-quota). Emellett van egy futó karcsúsítási szolgáltatás például a [figyelő minta](https://github.com/Azure-Samples/service-fabric-watchdog-service), ajánlott, hogy Ön írása ilyennel, kivéve, ha van egy jó oka, hogy 30 vagy 90 nap határidőn túli naplók tárolására.
@@ -340,11 +340,11 @@ Jelenleg a fürt naplóinak megjelenjen **nyomkövetések** Application Insights
 
 ## <a name="next-steps"></a>További lépések
 
-Miután konfigurálta az Azure diagnostics megfelelően, az adatok megjelennek a tárolási táblák az ETW, EventSource naplókat. Ha a Log Analytics, a Kibana vagy bármely más elemzési és vizualizációs adatplatform, amely nem közvetlenül történik meg a Resource Manager-sablon használatát választja, győződjön meg arról, olvassa el a storage-táblák adatait a választott platformnak beállításához. A Log Analytics az nagyon viszonylag egyszerű, és ezen [esemény- és elemzési](service-fabric-diagnostics-event-analysis-oms.md). Az Application Insights jelenleg egy kis egy különleges esetben, abban az értelemben, a diagnosztikai bővítmény konfigurációjának részeként konfigurálhatók, mivel így tekintse meg a [megfelelő cikk](service-fabric-diagnostics-event-analysis-appinsights.md) Ha úgy dönt, hogy használható a mesterséges Intelligencia.
+Miután konfigurálta az Azure diagnostics megfelelően, az adatok megjelennek a tárolási táblák az ETW, EventSource naplókat. Ha az Azure Monitor naplók, Kibana vagy bármely más elemzési és vizualizációs adatplatform, amely nem közvetlenül történik meg a Resource Manager-sablon használatát választja, győződjön meg arról, olvassa el a storage-táblák adatait a választott platformnak beállításához. Ezzel az Azure Monitor-naplókat, nagyon viszonylag egyszerű, és ezen [esemény- és elemzési](service-fabric-diagnostics-event-analysis-oms.md). Az Application Insights jelenleg egy kis egy különleges esetben, abban az értelemben, a diagnosztikai bővítmény konfigurációjának részeként konfigurálhatók, mivel így tekintse meg a [megfelelő cikk](service-fabric-diagnostics-event-analysis-appinsights.md) Ha úgy dönt, hogy használható a mesterséges Intelligencia.
 
 >[!NOTE]
 >Jelenleg nem lehet szűrni vagy karcsúsítása az a tábla küldött események. Ha egy folyamat események eltávolítja a tábla nem alkalmazza, a tábla továbbra is nő. Jelenleg egy futó karcsúsítási szolgáltatás például a [figyelő minta](https://github.com/Azure-Samples/service-fabric-watchdog-service), ajánlott, hogy Ön írása ilyennel, kivéve, ha van egy jó oka, hogy 30 vagy 90 nap határidőn túli naplók tárolására.
 
 * [Ismerje meg, hogyan teljesítményszámlálók vagy a naplók gyűjtésére a diagnosztikai bővítmény használatával](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Esemény elemzése és vizualizációs az Application insights segítségével](service-fabric-diagnostics-event-analysis-appinsights.md)
-* [Esemény elemzése és képi megjelenítés, a Log Analytics használatával](service-fabric-diagnostics-event-analysis-oms.md)
+* [Esemény elemzése és képi megjelenítése a Azure Monitor naplóira](service-fabric-diagnostics-event-analysis-oms.md)

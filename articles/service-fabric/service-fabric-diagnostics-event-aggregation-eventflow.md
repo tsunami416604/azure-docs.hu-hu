@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 31d06c6329a8348a73533a42b73ce435c573c034
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: eee5e71863f9a9195dc1f6f711cbacbc95ab84f2
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823875"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57246763"
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>Események összesítése és gyűjtemény használatával eventflow segítségével
 
@@ -157,5 +157,5 @@ Indítsa el a szolgáltatást, és tekintse meg a hibakeresés a Visual Studio k
 ## <a name="next-steps"></a>További lépések
 
 * [Esemény elemzése és vizualizációs az Application insights segítségével](service-fabric-diagnostics-event-analysis-appinsights.md)
-* [Esemény elemzése és képi megjelenítés, a Log Analytics használatával](service-fabric-diagnostics-event-analysis-oms.md)
+* [Esemény elemzése és képi megjelenítése a Azure Monitor naplóira](service-fabric-diagnostics-event-analysis-oms.md)
 * [Dokumentáció eventflow segítségével](https://github.com/Azure/diagnostics-eventflow)

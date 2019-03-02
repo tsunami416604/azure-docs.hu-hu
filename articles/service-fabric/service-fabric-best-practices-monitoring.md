@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 9783c7f2837619d9b279a645668d06d9e0a144bb
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: d90daaf18e5161053e00671b7667d05ec8e5db76
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804765"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242921"
 ---
 # <a name="monitoring-and-diagnostics"></a>Monitorozás és diagnosztika
 
@@ -33,13 +33,13 @@ Az alkalmazásfigyelés követi nyomon, milyen szolgáltatásokat és összetev�
 
 A Service Fabric célok egyike, hogy alkalmazásokat hardverhibák rugalmas. A cél a platform system szolgáltatások képességére infrastruktúra problémákat, és gyors feladatátvételi számítási feladatok más csomópontokhoz a fürtben keresztül érhető el. De mi történik, ha a rendszer szolgáltatások problémákba? Vagy ha az próbál telepíteni, vagy helyezze át a számítási feladatok, a szolgáltatások elhelyezését szabályainak megsértette vannak? A Service Fabric ezek a diagnosztikai és egyéb problémákról, ellenőrizze, hogy a Service Fabric platformot és az alkalmazások, szolgáltatások, tárolók és csomópontok együttműködését kapcsolatos Centeren biztosít.
 
-A Windows-fürtök esetén javasoljuk, hogy beállította-e a fürtfigyelést [Diagnosztikaiügynök](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-wad) és [Log Analytics](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-setup).
+A Windows-fürtök esetén javasoljuk, hogy beállította-e a fürtfigyelést [Diagnosztikaiügynök](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-wad) és [naplózza az Azure Monitor](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-setup).
 
-A Linux-fürtök esetén a Log Analytics egyben az Azure-platform és infrastruktúra-figyelési ajánlott eszköz. Linux platform diagnosztikai igényelnek, amint a különböző konfigurációs [Linux-alapú Service Fabric cluster eseményeket a Syslog](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-syslog).
+Linux-fürtöket, az Azure Monitor naplóira akkor is az Azure-platform és infrastruktúra-figyelési ajánlott eszköz. Linux platform diagnosztikai igényelnek, amint a különböző konfigurációs [Linux-alapú Service Fabric cluster eseményeket a Syslog](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-syslog).
 
 ## <a name="infrastructure-monitoring"></a>Infrastruktúrák monitorozása
 
-[Log Analytics](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-agent) fürt események figyelemmel kísérésére ajánlott. Miután konfigurál a Log Analytics-ügynököket a munkaterülethez fenti hivatkozáson ismertetett módon, azt fogja tudni teljesítménymutatókat, például CPU-kihasználtság, például a folyamat szintű CPU-kihasználtság, Service Fabric teljesítmény .NET teljesítményszámlálók gyűjtése számlálók például egy reliable Services és a tároló mérőszámokat, például a CPU-kihasználtság alóli kivételek száma.  Lesz elérhető a Log Analyticsben, hogy az stdout és stderr tárolónaplók írni kell.
+[Az Azure Monitor naplóira](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-oms-agent) fürt események figyelemmel kísérésére ajánlott. Miután konfigurál a Log Analytics-ügynököket a munkaterülethez fenti hivatkozáson ismertetett módon, azt fogja tudni teljesítménymutatókat, például CPU-kihasználtság, például a folyamat szintű CPU-kihasználtság, Service Fabric teljesítmény .NET teljesítményszámlálók gyűjtése számlálók például egy reliable Services és a tároló mérőszámokat, például a CPU-kihasználtság alóli kivételek száma.  Szüksége lesz, hogy az Azure Monitor naplóira elérhető lesz az stdout és stderr tárolónaplók írni.
 
 ## <a name="watchdogs"></a>Watchdogs
 
@@ -50,7 +50,7 @@ A Linux-fürtök esetén a Log Analytics egyben az Azure-platform és infrastruk
 * Ismerkedés az alkalmazások szándékkal: [Alkalmazás szintű esemény és a naplófájl létrehozásának](service-fabric-diagnostics-event-generation-app.md).
 * Lépkedjen végig a lépéseket az alkalmazás az Application Insights beállítása [figyelése és diagnosztizálása a Service Fabric ASP.NET Core alkalmazás](service-fabric-tutorial-monitoring-aspnet.md).
 * További információ a platform és a Service Fabric biztosít az Ön számára események figyelése: [Platform szintű esemény és a naplófájl létrehozásának](service-fabric-diagnostics-event-generation-infra.md).
-* A Log Analytics-integráció konfigurálása a Service Fabric segítségével: [Fürt Log Analytics beállítása](service-fabric-diagnostics-oms-setup.md)
-* Ismerje meg, hogyan állítható be a Log Analytics tárolók: [Monitorozás és diagnosztika a Windows-tárolókhoz az Azure Service Fabric](service-fabric-tutorial-monitoring-wincontainers.md).
+* Az Azure Monitor naplók integráció konfigurálása a Service Fabric segítségével: [Állítsa be a fürt az Azure Monitor naplóira](service-fabric-diagnostics-oms-setup.md)
+* Ismerje meg, hogyan állítható be az Azure Monitor naplóira tárolók: [Monitorozás és diagnosztika a Windows-tárolókhoz az Azure Service Fabric](service-fabric-tutorial-monitoring-wincontainers.md).
 * Példa diagnostics-problémák és megoldások a Service Fabric lásd: [gyakori helyzetek diagnosztizálása](service-fabric-diagnostics-common-scenarios.md)
 * További információ az Azure-erőforrások általános figyelési javaslatok: [Ajánlott eljárások – figyelési és diagnosztikai](https://docs.microsoft.com/azure/architecture/best-practices/monitoring).

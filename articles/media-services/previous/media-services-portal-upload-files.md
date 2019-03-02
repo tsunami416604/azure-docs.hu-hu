@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 7730d15b0d3be9c0ffc7c7fbafe40fece713afbd
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: aa46a7788a6a1711597cb2632c3a8a615edfd37a
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55976792"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57246868"
 ---
-# <a name="upload-files-to-a-media-services-account-in-the-azure-portal-legacy"></a>Fájlok feltöltése Media Services-fiókba az Azure Portalon (örökölt)
+# <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>Fájlok feltöltése Media Services-fiókba az Azure Portalon 
 
 > [!div class="op_single_selector"]
 > * [Portál](media-services-portal-upload-files.md)

@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 222957bb79a88ec7b4c6e9afd6d86fe2776dbfd3
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 7f67b7363719f544c485503e0f8207bb1f1078ce
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301792"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244706"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure biztonsági és megfelelőségi terv: PaaS Web Application Hosting for UK OFFICIAL Workloads
 
@@ -57,9 +57,8 @@ Ez a megoldás a következő Azure-szolgáltatásokat használ. Az üzembe helye
 - API-alkalmazás
 - Azure DNS
 - Key Vault
-- Azure Monitor
+- Az Azure Monitor (naplók)
 - Application Insights
-- Log Analytics
 - Azure Resource Manager
 - Azure Security Center
 - Azure SQL Database
@@ -169,11 +168,11 @@ Azure Storage védelmével kapcsolatos részletes információk található a [b
 
 ### <a name="monitoring-logging-and-audit"></a>Monitorozás, naplózás és naplózása
 
-#### <a name="log-analytics"></a>Log Analytics
+#### <a name="azure-monitor-logs"></a>Az Azure Monitor naplóira
 
-[Log Analytics](https://azure.microsoft.com/services/log-analytics/) egy szolgáltatás az Azure-ban, amely segít összegyűjteni és elemezni a felhőben lévő erőforrások által létrehozott adatokat és a helyszíni környezetekben.
+[Az Azure Monitor naplóira](https://azure.microsoft.com/services/log-analytics/) egy szolgáltatás az Azure-ban, amely segít összegyűjteni és elemezni a felhőben lévő erőforrások által létrehozott adatokat és a helyszíni környezetekben.
 
-#### <a name="log-analytics-in-this-blueprint"></a>Ez a megoldás a log Analytics
+#### <a name="azure-monitor-logs-in-this-blueprint"></a>Ez a megoldás az Azure Monitor naplóira
 
 - SQL-felmérés
 - A Key Vault-diagnosztika

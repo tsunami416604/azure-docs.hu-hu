@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 11/06/2018
+ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 0bcc49df6540b73b8feb5bb1ec4312e680572797
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 75057f6bd92fbdc805da2e0e36dc2bff7b069f26
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51617873"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243329"
 ---
 # <a name="apply-security-and-kernel-updates-to-nodes-in-azure-kubernetes-service-aks"></a>Biztonsági és a kernel-frissítések alkalmazása csomópontok az Azure Kubernetes Service (AKS)
 
@@ -27,7 +27,7 @@ Ez a cikk bemutatja, hogyan használhatja a nyílt forráskódú [kured (démon 
 
 Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel] [ aks-quickstart-cli] vagy [az Azure portal használatával][aks-quickstart-portal].
 
-Emellett az Azure CLI 2.0.49 verziójára van szükség, vagy később telepített és konfigurált. Futtatás `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni, tekintse meg kell [Azure CLI telepítése][install-azure-cli].
+Emellett az Azure CLI 2.0.59 verziójára van szükség, vagy később telepített és konfigurált. Futtatás `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni, tekintse meg kell [Azure CLI telepítése][install-azure-cli].
 
 ## <a name="understand-the-aks-node-update-experience"></a>Az AKS csomópont frissítési élmény ismertetése
 
@@ -78,15 +78,15 @@ A csomópontok használatával figyelheti a [kubectl get csomópontok] [ kubectl
 
 ```
 NAME                       STATUS                     ROLES     AGE       VERSION
-aks-nodepool1-79590246-2   Ready,SchedulingDisabled   agent     1h        v1.9.11
+aks-nodepool1-28993262-0   Ready,SchedulingDisabled   agent     1h        v1.11.7
 ```
 
-A frissítési folyamat befejezése után a használt csomópontok állapotát is megtekintheti a [kubectl get csomópontok] [ kubectl-get-nodes] parancsot a `--output wide` paraméter. Ez a kimenet lehetővé teszik az eltérő *-KERNELVERZIÓ* alapul szolgáló csomóponton az alábbi példa kimenetében látható módon. A *aks-nodepool1-79590246 – 2* megtörtént egy előző lépést, és a kernel verziója látható *4.15.0-1025-azure*. A csomópont *aks-nodepool1-79590246-1* , amely még nem frissített látható kernel verziója *4.15.0-1023-azure*.
+A frissítési folyamat befejezése után a használt csomópontok állapotát is megtekintheti a [kubectl get csomópontok] [ kubectl-get-nodes] parancsot a `--output wide` paraméter. Ez a kimenet lehetővé teszik az eltérő *-KERNELVERZIÓ* alapul szolgáló csomóponton az alábbi példa kimenetében látható módon. A *aks-nodepool1-28993262-0* megtörtént egy előző lépést, és a kernel verziója látható *4.15.0-1039-azure*. A csomópont *aks-nodepool1-28993262-1* , amely még nem frissített látható kernel verziója *4.15.0-1037-azure*.
 
 ```
 NAME                       STATUS    ROLES     AGE       VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
-aks-nodepool1-79590246-1   Ready     agent     1h        v1.9.11   10.240.0.6    <none>        Ubuntu 16.04.5 LTS   4.15.0-1023-azure   docker://1.13.1
-aks-nodepool1-79590246-2   Ready     agent     1h        v1.9.11   10.240.0.4    <none>        Ubuntu 16.04.5 LTS   4.15.0-1025-azure   docker://1.13.1
+aks-nodepool1-28993262-0   Ready     agent     1h        v1.11.7   10.240.0.4    <none>        Ubuntu 16.04.6 LTS   4.15.0-1039-azure   docker://3.0.4
+aks-nodepool1-28993262-1   Ready     agent     1h        v1.11.7   10.240.0.5    <none>        Ubuntu 16.04.6 LTS   4.15.0-1037-azure   docker://3.0.4
 ```
 
 ## <a name="next-steps"></a>További lépések

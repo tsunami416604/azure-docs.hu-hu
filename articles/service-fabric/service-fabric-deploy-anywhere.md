@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: cf16a01ef1003b73740c05ff45f703a65aaf0acc
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 8c344999839b3dcde98536b3d8d196a434f4cde8
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961184"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244910"
 ---
 # <a name="comparing-azure-and-standalone-service-fabric-clusters-on-windows-server-and-linux"></a>A Windows Server és Linux-fürtök az Azure és a különálló Service Fabric összehasonlítása
 Service Fabric-fürt, amelybe mikroszolgáltatásokat helyezhet üzembe és felügyelhet virtuális vagy fizikai gépek hálózaton keresztül csatlakozó készlete áll. Egy számítógép vagy virtuális Gépet, amely egy fürt része egy fürt csomópontja nevezzük. Fürtök méretezheti több ezer csomóponton. Ha új csomópontot ad hozzá a fürtöt, akkor a Service Fabric csomópontok megnövekedett számú rebalances a szolgáltatás partíció replikák és példányok. A teljes javítja az alkalmazások teljesítményéről, és csökkenti a versengés memória való hozzáféréshez. Ha a fürt csomópontjainak hatékonyan nincsenek használatban, csökkentheti a fürtben található csomópontok számát. A Service Fabric rebalances a partíciók replikáit és példányainak újra a csomópontokat, hogy a hardver jobban kihasználja a csomópontokon csökkent számú.
@@ -33,7 +33,7 @@ Az Azure-ban a integráció más Azure-funkciók és szolgáltatások, ami lehet
 * **Az Azure Resource Manager:** Azure Resource Manager használata lehetővé teszi az egységet a fürt által használt összes erőforrás egyszerű kezelését, és egyszerűbbé teszi a költségek nyomon követését és a számlázás.
 * **Service Fabric-fürt az Azure-erőforrásként** A Service Fabric-fürt egy Azure-erőforrás, mint amikor más az Azure-erőforrások modellezheti, így.
 * **Integráció az Azure-infrastruktúra** Service Fabric koordinálja az operációs rendszer, hálózati és egyéb frissítések a rendelkezésre állási és az alkalmazások megbízhatóságának javítása érdekében az alapul szolgáló Azure-infrastruktúra.  
-* **Diagnosztika:** Az Azure-ban hogy integráció biztosítása az Azure-diagnosztika és a Log Analytics.
+* **Diagnosztika:** Az Azure-ban az Azure diagnostics-integráció kínálunk, és az Azure Monitor naplózza.
 * **Automatikus skálázást:** A fürtök az Azure-ban beépített automatikus méretezési funkcióval miatt a virtuálisgép-méretezési biztosítunk. A helyszíni és egyéb felhőkörnyezetekben fel kell a saját automatikus méretezési funkció vagy segítségével manuálisan az API-k által elérhetővé tett a Service Fabric fürtök méretezése méretezési csoport létrehozása.
 
 ## <a name="benefits-of-standalone-clusters"></a>Önálló fürtök előnyei

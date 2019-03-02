@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 34f994bfca8bdeaffde6732572f47aeaa86b2ac5
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: cc62a6b9f03bdd6dc8671a6cf96113a2234fc092
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818931"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247154"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-diagnostics-logs"></a>Az Azure Stream Analytics hibáinak elhárítása a diagnosztikai naplók használatával
 
-Néha előfordul Azure Stream Analytics-feladat váratlanul feldolgozása leáll. Fontos, hogy ilyen esetekben hibaelhárítást tudjon végezni. Egy váratlan lekérdezési eredmény, az eszközök kapcsolat, vagy egy nem várt szolgáltatáskiesés, hiba okozhatja. A diagnosztikai naplók a Stream Analytics segítségével, azonosíthatja az okot, problémák, amikor fordulhat elő, és a helyreállítási idő csökkentése.
+Néha előfordul Azure Stream Analytics-feladat váratlanul feldolgozása leáll. Fontos, hogy ilyen esetekben hibaelhárítást tudjon végezni. A hibákat váratlan lekérdezési eredmény, az eszközök kapcsolata vagy váratlan szolgáltatásleállás okozhatja. A diagnosztikai naplók a Stream Analytics segítségével, azonosíthatja az okot, problémák, amikor fordulhat elő, és a helyreállítási idő csökkentése.
 
 ## <a name="log-types"></a>Napló típusa
 
@@ -29,7 +29,9 @@ Stream Analytics naplók két típusú kínálja:
 * [Diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) (konfigurálható), amely részletesebb betekintést nyújtson mindent, amely fordul elő, ha egy feladat. Diagnosztikai naplók a feladat létrehozásakor, a kezdő és záró, a feladat törlése. Ha a feladat frissül és a futás közben események terjed ki.
 
 > [!NOTE]
-> Szolgáltatások, például az Azure Storage, az Azure Event Hubs és az Azure Log Analytics segítségével elemezheti a nem megfelelő adatokat. Ezek a szolgáltatások díjszabási modellje alapján lesznek kiszámlázva.
+> Szolgáltatások, például az Azure Storage, Azure Event hubs is – használható, és az Azure Monitor naplózza a nem megfelelő adatok elemzéséhez. Ezek a szolgáltatások díjszabási modellje alapján lesznek kiszámlázva.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="debugging-using-activity-logs"></a>Naplózza a hibakeresési tevékenység használatával
 
@@ -51,11 +53,11 @@ Alapértelmezés szerint a tevékenységnaplókat, és a Stream Analytics-felada
 
 5. A JSON-ban a hibaüzenet alapján korrekciós műveleteket hajthatja végre. Ebben a példában ellenőrzi annak biztosítása érdekében a szélességi értéknek-90 fok közé esik, és 90 fok hozzá kell adni a lekérdezéshez.
 
-6. Ha a hibaüzenet a Tevékenységnaplókban nem hasznos lehet az alapvető ok azonosítása, diagnosztikai naplók engedélyezése és a Log Analytics.
+6. Ha a hibaüzenet a Tevékenységnaplókban nem hasznos lehet az alapvető ok azonosítása, diagnosztikai naplók engedélyezése és az Azure Monitor naplóira.
 
-## <a name="send-diagnostics-to-log-analytics"></a>Diagnosztika küldése a Log Analyticsbe
+## <a name="send-diagnostics-to-azure-monitor-logs"></a>Diagnostics küldése az Azure Monitor naplóira
 
-Erősen ajánlott bekapcsolni a diagnosztikai naplók, és elküldi azokat a Log Analytics szolgáltatásba. Diagnosztikai naplók **ki** alapértelmezés szerint. Diagnosztikai naplók bekapcsolásához hajtsa végre ezeket a lépéseket:
+Erősen ajánlott bekapcsolni a diagnosztikai naplókat, és elküldi azokat az Azure Monitor naplóira. Diagnosztikai naplók **ki** alapértelmezés szerint. Diagnosztikai naplók bekapcsolásához hajtsa végre ezeket a lépéseket:
 
 1.  Jelentkezzen be az Azure Portalon, és keresse meg a Stream Analytics-feladatot. A **figyelés**válassza **diagnosztikai naplók**. Válassza ki **diagnosztika bekapcsolása**.
 
@@ -67,7 +69,7 @@ Erősen ajánlott bekapcsolni a diagnosztikai naplók, és elküldi azokat a Log
 
 3. A Stream Analytics-feladat indításakor a diagnosztikai naplók legyenek átirányítva a Log Analytics-munkaterületre. Nyissa meg a Log Analytics-munkaterületet, és válassza a **naplók** alatt a **általános** szakaszban.
 
-   ![A log Analytics naplózza az általános szakasz](./media/stream-analytics-job-diagnostic-logs/log-analytics-logs.png)
+   ![Általános beállítások mellett az Azure Monitor naplóira](./media/stream-analytics-job-diagnostic-logs/log-analytics-logs.png)
 
 4. Is [saját lekérdezés](../azure-monitor/log-query/get-started-portal.md) feltételek keres, azonosíthatja a trendeket minták elemzése és az adatok alapján elemzéseket nyújtanak. Például írhat egy lekérdezést az üzenetet az csak a diagnosztikai naplók szűrése "a folyamatos átviteli feladat nem sikerült." Az Azure Stream Analytics diagnosztikai naplóinak vannak tárolva a **AzureDiagnostics** tábla.
 

@@ -1,6 +1,6 @@
 ---
 title: Az Azure Operational Security |} A Microsoft Docs
-description: Ismerje meg a Microsoft Azure Log Analytics, a szolgáltatások és működését.
+description: Ismerje meg a Microsoft Azure Monitor naplóira, a szolgáltatások és működését.
 services: security
 documentationcenter: na
 author: UnifyCloud
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: cc820d0e8a19ae3905fbd26a1b9a98e948ecfb63
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 2f68156e593281acb46dbeb132f0f45db4b3dfb9
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107282"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244774"
 ---
 # <a name="azure-operational-security"></a>Az Azure működési biztonság
 ## <a name="introduction"></a>Bevezetés
@@ -53,36 +53,36 @@ Ez a tanulmány belül a Microsoft Azure felhőalapú platform a Microsoft Azure
 6.  [Azure Active directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis)
 
 
-## <a name="microsoft-azure-log-analytics"></a>A Microsoft Azure Naplóelemzés
+## <a name="microsoft-azure-monitor-logs"></a>A Microsoft Azure Monitor naplóira
 
-A Microsoft Azure Log Analytics az IT-felügyeleti megoldást kínál a hibrid felhő áll. Önállóan használva vagy kiterjesztése a System Center-telepítéssel, Log Analytics a legnagyobb rugalmasságot és vezérlést biztosít az infrastruktúra felhőalapú kezelését.
+A Microsoft Azure Monitor naplóira az IT-felügyeleti megoldást kínál a hibrid felhő áll. Használható önmagában, vagy kiterjesztése a System Center-telepítéssel, az Azure Monitor naplóira a legnagyobb rugalmasságot és vezérlést biztosít az infrastruktúra felhőalapú kezelését.
 
-![Log Analytics](./media/azure-operational-security/azure-operational-security-fig1.png)
+![Az Azure Monitor naplóira](./media/azure-operational-security/azure-operational-security-fig1.png)
 
-A Log Analytics-szel a felhőhöz, beleértve a helyszíni, Azure, az AWS, a Windows Server, Linux, VMware és OpenStack, mint az adatbázisszinten megoldások alacsonyabb költséggel lévő bármely példány segítségével kezelheti. A felhő-és felhőközpontú világ számára készült, a Log Analytics új megközelítést kínál az a vállalat, amely a leggyorsabb és leginkább költséghatékony megoldást új üzleti kihívásokat, valamint új terheléseket, alkalmazások és a felhőalapú környezetek kezeléséhez.
+Az Azure Monitor naplóira kezelheti a felhőben, beleértve a helyszíni, Azure, az AWS, a Windows Server, Linux, VMware és OpenStack, mint az adatbázisszinten megoldások alacsonyabb költséggel lévő bármely példány. A felhő-és felhőközpontú világ számára készült, az Azure Monitor naplóira új megközelítést kínál az a vállalat, amely a leggyorsabb és leginkább költséghatékony megoldást új üzleti kihívásokat, valamint új terheléseket, alkalmazások és a felhőalapú környezetek kezeléséhez.
 
-### <a name="log-analytics-services"></a>Log Analytics-szolgáltatások
+### <a name="azure-monitor-services"></a>Az Azure Monitor szolgáltatás
 
-A Log Analytics központi funkcióit az Azure-ban futó szolgáltatások biztosítják. Mindegyik szolgáltatás egy adott felügyeleti funkciót biztosít, és a szolgáltatások kombinálásával különféle felügyeleti forgatókönyvek valósíthatók meg.
+Az Azure Monitor naplóira központi funkcióit az Azure-ban futó szolgáltatások biztosítják. Mindegyik szolgáltatás egy adott felügyeleti funkciót biztosít, és a szolgáltatások kombinálásával különféle felügyeleti forgatókönyvek valósíthatók meg.
 
 | Szolgáltatás  | Leírás|
 | :------------- | :-------------|
-| Log Analytics | Figyeli és elemzi a különféle erőforrások, köztük a fizikai és virtuális gépek rendelkezésre állását és teljesítményét. |
+| Az Azure Monitor naplóira | Figyeli és elemzi a különféle erőforrások, köztük a fizikai és virtuális gépek rendelkezésre állását és teljesítményét. |
 |Automation | Automatizálja a manuális folyamatokat, és érvényesíti a fizikai és virtuális gépekre vonatkozóan megadott konfigurációkat. |
 | Backup | Készítsen biztonsági másolatot, és a kritikus fontosságú adatok helyreállítását. |
 | Site Recovery | Biztosítja a kritikus fontosságú alkalmazások magas rendelkezésre állását. |
 
-### <a name="log-analytics"></a>Log Analytics
+### <a name="azure-monitor-logs"></a>Az Azure Monitor naplóira
 
-[Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics) adatokat gyűjt a felügyelt erőforrások egy központi tárházba figyelési szolgáltatásokat biztosít. Ezek az adatok lehetnek események, teljesítményadatok vagy az API segítségével biztosított egyéni adatok. Az összegyűjtésüket követően az adatok használhatók riasztáshoz, elemzéshez vagy exportáláshoz.
+[Az Azure Monitor naplóira](https://azure.microsoft.com/documentation/services/log-analytics) adatokat gyűjt a felügyelt erőforrások egy központi tárházba figyelési szolgáltatásokat biztosít. Ezek az adatok lehetnek események, teljesítményadatok vagy az API segítségével biztosított egyéni adatok. Az összegyűjtésüket követően az adatok használhatók riasztáshoz, elemzéshez vagy exportáláshoz.
 
 
 Ezzel a módszerrel konszolidálhatja a különféle forrásokból származó adatokat, így kombinálhatja az Azure-szolgáltatásokat a meglévő adatokat a helyszíni környezetben. Továbbá egyértelműen elkülöníti az adatok gyűjtését az adatokon végzett műveletektől, így az összes művelet végrehajtható a különféle adatokon.
 
 
-![Log Analytics](./media/azure-operational-security/azure-operational-security-fig2.png)
+![Az Azure Monitor naplóira](./media/azure-operational-security/azure-operational-security-fig2.png)
 
-A Log Analytics szolgáltatás a felhőbeli adatok biztonságosan kezeli a következő módszerekkel:
+Az Azure Monitor szolgáltatás a felhőbeli adatok biztonságosan kezeli a következő módszerekkel:
 -   az adatok elkülönítése
 -   Adatmegőrzés
 -   fizikai biztonság
@@ -92,22 +92,22 @@ A Log Analytics szolgáltatás a felhőbeli adatok biztonságosan kezeli a köve
 
 ### <a name="azure-backup"></a>Azure Backup
 
-[Az Azure Backup](https://azure.microsoft.com/documentation/services/backup) biztosít az adatok biztonsági mentését és helyreállítását végző szolgáltatásokat és a termékek és szolgáltatások a Log Analytics-csomag része.
+[Az Azure Backup](https://azure.microsoft.com/documentation/services/backup) biztosít az adatok biztonsági mentését és helyreállítását végző szolgáltatásokat és a termékek és szolgáltatások az Azure Monitor-csomag része.
 Védelmet biztosít az alkalmazásadatok számára, valamint évekig megőrzi őket minden tőkebefektetés nélkül és minimális működési költségek mellett. A fizikai és virtuális Windows kiszolgálókról, valamint az alkalmazások és szolgáltatások, például az SQL Server és SharePoint biztonsági mentés adatokat. Azt is használhatja [System Center Data Protection Manager (DPM)](https://en.wikipedia.org/wiki/System_Center_Data_Protection_Manager) védett adatok replikálása az Azure-bA a redundancia és a hosszú távú tároláshoz.
 
 
 Az Azure Backup védett adatainak tárolása egy meghatározott földrajzi régióban elhelyezkedő biztonságimásolat-tárolóban történik. Az adatok ugyanazon a régión belül replikálódnak, és a tároló típusától függően előfordulhat, hogy is lehet egy másik régióba replikálja további rugalmasságot.
 
 ### <a name="management-solutions"></a>Felügyeleti megoldások
-[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) van a Microsoft felhőalapú informatikai felügyeleti megoldása, amely segít a kezelése és védelme a helyszíni és felhőalapú infrastruktúrára.
+[Az Azure Monitor](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) van a Microsoft felhőalapú informatikai felügyeleti megoldása, amely segít a kezelése és védelme a helyszíni és felhőalapú infrastruktúrára.
 
 
-[Felügyeleti megoldások](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions) vannak, amelyek egy vagy több Log Analytics szolgáltatás használatával adott felügyeleti forgatókönyvet valósítanak meg logics összeállított logikakészletek. A Microsoft és partnerei, hogy könnyen adhat az Azure-előfizetés növelje befektetéseit a Log Analytics különböző megoldások érhetők el. Partnerként létrehozhat saját megoldásokat az alkalmazások és szolgáltatások támogatására, és adja meg azokat a felhasználók számára az Azure Marketplace piactéren vagy a gyors üzembe helyezési sablonokat.
+[Felügyeleti megoldások](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions) vannak, amelyek egy vagy több Azure Monitor szolgáltatás használatával adott felügyeleti forgatókönyvet valósítanak meg logics összeállított logikakészletek. A Microsoft és partnerei, hogy egyszerűen hozzáadhat az Azure-előfizetéshez az Azure monitorban befektetéseit értékének növelése érdekében a különböző megoldások érhetők el. Partnerként létrehozhat saját megoldásokat az alkalmazások és szolgáltatások támogatására, és adja meg azokat a felhasználók számára az Azure Marketplace piactéren vagy a gyors üzembe helyezési sablonokat.
 
 
 ![Felügyeleti megoldások](./media/azure-operational-security/azure-operational-security-fig4.png)
 
-Egy jó példa olyan megoldás, amely további funkciókat több szolgáltatás használ a [Update Management megoldás](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management). Ez a megoldás használ a [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) információkat gyűjthet a Windows és Linux ügynök-frissítések minden ügynök szükséges. Az adatokat beírja a Log Analytics-tárházba, ahol azok egy belső irányítópult segítségével elemezhetők.
+Egy jó példa olyan megoldás, amely további funkciókat több szolgáltatás használ a [Update Management megoldás](https://docs.microsoft.com/azure/operations-management-suite/oms-solution-update-management). Ez a megoldás használ a [naplózza az Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) információkat gyűjthet a Windows és Linux ügynök-frissítések minden ügynök szükséges. Az adatokat beírja a Azure Monitor-naplók tárházba, ahol elemezheti azt egy belső irányítópult.
 
 Amikor létrehoz egy központi telepítés, a runbookok [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) szükséges frissítések telepítéséhez szükségesek. A teljes folyamatot a portálon felügyelheti, és nem kell foglalkoznia a mögöttes részletekkel.
 
@@ -312,7 +312,7 @@ Ez a cikk összesítések, a személyes adatok védelme és biztonságossá tét
 
 Ez a cikk ismerteti
 
--   Adatok gyűjtése, feldolgozása, és a Log Analytics Suite részeként biztosított.
+-   Adatok gyűjtése, feldolgozása, és az Azure Monitor-csomagban található védett.
 
 -   Az események gyors elemzése akár több adatforrásban. A biztonsági incidensek okozta károk minimalizálása érdekében azonosítani kell a biztonsági kockázatokat és fel kell mérni a fenyegetések és támadások terjedelmét és hatásait.
 
@@ -335,7 +335,7 @@ Ez a cikk ismerteti
 
 A Microsoft a szolgáltatásokat és szoftvereket tervez a biztonságot szem érdekében győződjön meg arról, hogy a felhőalapú infrastruktúra rugalmas és támadások védeni.
 
-- [Log Analytics |} A biztonság és megfelelőség](https://www.microsoft.com/cloud-platform/security-and-compliance)
+- [Az Azure Monitor naplóira |} A biztonság és megfelelőség](https://www.microsoft.com/cloud-platform/security-and-compliance)
 
 A Microsoft biztonsági adat- és elemzési Több intelligens és hatékony fenyegetések észlelése végrehajtásához használható.
 

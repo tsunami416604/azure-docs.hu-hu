@@ -1,6 +1,6 @@
 ---
 title: Az Azure Security Center keresési |} A Microsoft Docs
-description: Ismerje meg, hogyan az Azure Security Center használja és a biztonsági adatok elemzése a Log Analytics search.
+description: Ismerje meg, hogyan az Azure Security Center használja a biztonsági adatok elemzése és beolvashatók az Azure Monitor naplók keresése.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2017
 ms.author: rkarlin
-ms.openlocfilehash: c02a9f61a4a8b88f8b6c4d861f1a6cbe904ad70d
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 7fae267b74677e93527b4e185c5b52d421ef149e
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110540"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244944"
 ---
 # <a name="azure-security-center-search"></a>Az Azure Security Center keresési
-Használja az Azure Security Center [Log Analytics keresési](../log-analytics/log-analytics-log-searches.md) lekérésére és a biztonsági adatok elemzéséhez. A log Analytics lekérdezési nyelv segítségével gyorsan és vonhat össze adatokat biztosít. A Security Centerből használhatja a Log Analytics keresési lekérdezéseket hozhat létre, és elemezheti az összegyűjtött adatokat.
+Használja az Azure Security Center [Azure Monitor naplózza a keresési](../log-analytics/log-analytics-log-searches.md) lekérésére és a biztonsági adatok elemzéséhez. Az Azure Monitor naplóira lekérdezési nyelv segítségével gyorsan és vonhat össze adatokat tartalmaz. A Security Centerből kihasználhatja az Azure Monitor naplók keresési lekérdezéseket hozhat létre, és elemezheti az összegyűjtött adatokat.
 
 Keresés az ingyenes szint és a Standard szintű Security Centerben érhető el.  Elérhető a naplókeresések a adat szolgáltatás függ a alkalmazni a munkaterülethez réteg szerinti szintjére.  Tekintse meg a Security Center [díjszabását ismertető lapon](../security-center/security-center-pricing.md) további információt.
 
@@ -49,15 +49,15 @@ Keresés az ingyenes szint és a Standard szintű Security Centerben érhető el
 
   ![Keresési eredmények][3]
 
-Lásd: [Log Analytics lekérdezési nyelvre](../log-analytics/log-analytics-search-reference.md) lekérdezési adatok a kijelölt munkaterület alatt módjáról további információt.
+Lásd: [Kusto-lekérdezés nyelvi](../log-analytics/log-analytics-search-reference.md) lekérdezési adatok a kijelölt munkaterület alatt módjáról további információt.
 
 ## <a name="next-steps"></a>További lépések
-Ebben a cikkben megismerkedhetett a Security Center keresési eléréséhez. A Security Center Log Analytics search használja. A Log Analytics search kapcsolatos további információkért lásd:
+Ebben a cikkben megismerkedhetett a Security Center keresési eléréséhez. A Security Center az Azure Monitor naplók search használja. Az Azure Monitor naplók keresése kapcsolatos további információkért lásd:
 
-- [Mi az a Log Analytics?](../log-analytics/log-analytics-overview.md) – Áttekintés a Log Analytics
-- [Naplókereséseit ismertető a Log Analytics](../log-analytics/log-analytics-log-search-new.md) – ismerteti a naplókeresések a Log Analytics használata, és megadja a fogalmakat, amelyek előtt létrehozni egy naplókeresést értendő
-- [Keresse meg a naplókeresések a Log Analytics adatokat](../log-analytics/log-analytics-log-searches.md) – útmutató a naplóbeli keresés használatával
-- [A log Analytics keresési referenciáját bemutató](../log-analytics/log-analytics-search-reference.md) – ismerteti a Log Analytics lekérdezési nyelv
+- [Mi az Azure Monitor naplóira?](../log-analytics/log-analytics-overview.md) – Áttekintés az Azure Monitor naplóira
+- [Naplókereséseit ismertető az Azure Monitor naplóira](../log-analytics/log-analytics-log-search-new.md) – ismerteti a naplókeresések használata az Azure Monitor naplóira, és megadja a fogalmakat, amelyek előtt létrehozni egy naplókeresést értendő
+- [Keresse meg a naplókeresések segítségével az Azure Monitor naplóira adatok](../log-analytics/log-analytics-log-searches.md) – útmutató a naplóbeli keresés használatával
+- [Kusto keresési referencia](../log-analytics/log-analytics-search-reference.md) – ismerteti a lekérdezési nyelv az Azure Monitor naplóira
 
 A Security Centerrel kapcsolatos további tudnivalókért lásd:
 

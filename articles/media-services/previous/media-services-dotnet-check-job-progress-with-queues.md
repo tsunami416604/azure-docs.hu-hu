@@ -14,14 +14,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: a863915ceef437957170d87ac4cc452d651a8dab
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8bf2452afe3f9b11287848fb1e3880f7fac506ff
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994948"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243125"
 ---
-# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net-legacy"></a>Azure Queue storage használata a Media Services feladatértesítések figyelésére használt a .NET-tel (örökölt)
+# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Azure Queue storage használata .NET-keretrendszerrel történő Media Services feladatértesítések figyelése 
 
 Kódolási feladatok futtatásakor gyakran igényelnek olyan módon, a feladat előrehaladásának nyomon követéséhez. Beállíthatja, hogy az értesítések a Media Services [Azure Queue storage](../../storage/storage-dotnet-how-to-use-queues.md). A feladat előrehaladásának figyelemmel értesítések fogadása a Queue storage-ból. 
 

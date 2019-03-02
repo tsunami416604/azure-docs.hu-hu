@@ -8,12 +8,12 @@ ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: ea50902a557e8bd7aa18fbc03fca8fc4a99ac2e2
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 7b436acb937216ad02289282f4a7ac5f88df2eea
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770788"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245148"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub eszköz adatfolyamok (előzetes verzió)
 
@@ -117,16 +117,16 @@ az iot hub devicestream show --name <YourIoTHubName>
 
 ## <a name="troubleshoot-via-device-streams-activity-logs"></a>Hibaelhárítás eszköz Streamek tevékenységeket tartalmazó naplók
 
-Állíthat be az Azure Log Analytics az IoT hub eszköz Streamek tevékenységnaplójának gyűjtéséhez. Ez a hibaelhárítási feladatokhoz nagyon hasznos lehet.
+Az Azure Monitor naplóira állíthat az IoT hub eszköz Streamek tevékenységnaplójának gyűjtéséhez. Ez a hibaelhárítási feladatokhoz nagyon hasznos lehet.
 
-Kövesse az Azure Log Analytics konfigurálása az IoT Hub eszköz stream tevékenységek az alábbi lépéseket:
+Az Azure Monitor konfigurálásáról az IoT Hub eszköz stream tevékenységek az alábbi lépésekkel:
 
 1. Keresse meg a *diagnosztikai beállítások* az IoT Hub lapra, majd kattintson a *diagnosztika bekapcsolása* hivatkozásra.
 
   ![Helyettesítő szöveg](./media/iot-hub-device-streams-overview/device-streams-diagnostics-settings.PNG "disgnostics naplók engedélyezése")
 
 
-2. Adjon meg egy nevet a diagnosztikai beállítások, és válassza a *Küldés a Log Analyticsnek* lehetőséget. Válasszon egy meglévő Log Analytics-erőforrás, vagy hozzon létre egy újat a Microsofthoz. Ezenkívül ellenőrizze a *DeviceStreams* a listából.
+2. Adjon meg egy nevet a diagnosztikai beállítások, és válassza a *Küldés a Log Analyticsnek* lehetőséget. Válasszon egy meglévő Log Analytics munkaterület erőforrás, vagy hozzon létre egy újat a Microsofthoz. Ezenkívül ellenőrizze a *DeviceStreams* a listából.
 
     ![Helyettesítő szöveg](./media/iot-hub-device-streams-overview/device-streams-diagnostics.PNG "Enable device streameli naplók")
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a42f4ce85214ad2a8c5692736b7d36101ccb62ed
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 7e196a912db723d5d118b0aadc98f73f1c7271e0
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556220"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243754"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>A transzparens átjáróként működő IoT Edge-eszköz konfigurálása
 
@@ -45,7 +45,10 @@ Az Azure IoT Edge-eszköz konfigurálásához átjáróként. Használhatja az I
 * [Linux x64](./how-to-install-iot-edge-linux.md)
 * [Linux ARM32](./how-to-install-iot-edge-linux-arm.md)
 
-Minden olyan gép, használja a tanúsítványok létrehozásához, és másolja őket keresztül az IoT Edge-eszköz. 
+Minden olyan gép, használja a tanúsítványok létrehozásához, és másolja őket keresztül az IoT Edge-eszköz.
+
+>[!NOTE]
+>Ezeket az utasításokat a tanúsítványok létrehozásához használja az "átjáró neve" kell lennie a neve megegyezik használt állomásnév az IoT Edge config.yaml fájlban és a kapcsolati karakterláncban az alsóbb rétegbeli eszköz GatewayHostName. A "gateway neve" kell lennie az IP-címet, vagy DNS- vagy gazdafájlbejegyzéssel használatával oldható fel. Kommunikáció a használt protokoll alapján (MQTTS:8883 / AMQPS:5671 / HTTPS:433) lehetséges alsóbb rétegbeli eszközök és az IoT Edge transparant között kell lennie. Ha tűzfal a kettő között, a megfelelő portot kell lennie nyitva.
 
 ## <a name="generate-certificates-with-windows"></a>Windows-tanúsítványok létrehozása
 

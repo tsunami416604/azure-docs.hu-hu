@@ -4,7 +4,7 @@ description: Ez a cikk ismerteti a notebookok használata az Azure-Sentinel vad�
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 1721d0da-c91e-4c96-82de-5c7458df566b
 ms.service: sentinel
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: c6202f3e945d817c5e8fd7caa340a3e237bc34bd
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 83bbb7f6a683265e4f2ed20801d0c7541a54e9f9
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56993110"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244961"
 ---
 # <a name="use-notebooks-to-hunt-for-anomalies"></a>Az anomáliák hunt notebookok használata
 

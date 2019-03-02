@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: ed4b581cb962c7db706a71ab995963a3c445af55
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 7acf4a0f937817b131763e040d452366c520fa6f
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998156"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247596"
 ---
-# <a name="overview-and-comparison-of-azure-on-demand-media-encoders-legacy"></a>Áttekintése és összehasonlítása az Azure az igény szerinti médiakódolók (örökölt)
+# <a name="overview-and-comparison-of-azure-on-demand-media-encoders"></a>Áttekintése és összehasonlítása az Azure igény szerinti médiakódolók a 
 
 ## <a name="encoding-overview"></a>Kódolási áttekintése
 Az Azure Media Services media felhőalapú kódolási több lehetőséget biztosít.
@@ -51,7 +51,7 @@ Ez a cikk rövid áttekintést nyújt az igény szerinti médiakódolók, és hi
 ### <a name="formats"></a>Formátumok
 [Formátumai és kodekei](media-services-media-encoder-standard-formats.md)
 
-### <a name="presets"></a>Készletek
+### <a name="presets"></a>Előzetes beállítások
 Media Encoder Standard használatával lett konfigurálva a kódoló készletek leírt egyik [Itt](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).
 
 ### <a name="input-and-output-metadata"></a>Bemeneti és kimeneti metaadatok

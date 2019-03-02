@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/20/2018
 ms.author: rkarlin
-ms.openlocfilehash: 81bd34cdbe35f3e12d5afddc929b0fac7631f4cc
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: bec9be627937913c268d65bb6cdadcf68c7a3fb4
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113073"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244298"
 ---
 # <a name="manage-user-data-found-in-an-azure-security-center-investigation"></a>Az Azure Security Center vizsgálat található felhasználói adatok kezelése
-Ez a cikk az Azure Security Center vizsgálati funkciójáról található felhasználói adatok kezelése ismertetése. Vizsgálat adatok tárolása [Azure Log Analytics](../log-analytics/log-analytics-overview.md) és a Security Centerben elérhető. Felhasználói adatok kezelése lehetőség törölje vagy exportálhat adatokat.
+Ez a cikk az Azure Security Center vizsgálati funkciójáról található felhasználói adatok kezelése ismertetése. Vizsgálat adatok tárolása [naplózza az Azure Monitor](../log-analytics/log-analytics-overview.md) és a Security Centerben elérhető. Felhasználói adatok kezelése lehetőség törölje vagy exportálhat adatokat.
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
@@ -58,4 +58,4 @@ A Security Center felhasználói szerepkörrel a tulajdonos, közreműködő, va
 
 ## <a name="next-steps"></a>További lépések
 Felhasználói adatok kezelésével kapcsolatos további információkért lásd: [felhasználói adatokat az Azure Security Centerben](security-center-privacy.md).
-Személyes adatokat a Log Analytics törlésével kapcsolatos további tudnivalókért lásd: [és törlése a személyes adatok exportálása](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data).
+Az Azure Monitor naplóira titkos adatok törlésével kapcsolatos további tudnivalókért lásd: [és törlése a személyes adatok exportálása](../azure-monitor/platform/personal-data-mgmt.md#how-to-export-and-delete-private-data).

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: jdial
-ms.openlocfilehash: 3f308c38e9fa23c36f964b117f620a39e56c9bbd
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: c1693b6e5ef9abbd1c72c10581a9f36325cf6478
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958184"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243992"
 ---
 # <a name="virtual-network-peering"></a>Társviszony létesítése virtuális hálózatok között
 
-A virtuális hálózatok közötti társviszony lehetővé teszi a [virtuális hálózatok](virtual-networks-overview.md) zökkenőmentes összekapcsolását. A társviszony kialakítását követően a virtuális hálózatok a csatlakozás szempontjából egyetlen hálózatnak látszanak. A virtuális társhálózatokba tartozó virtuális gépek közötti forgalmat lényegében ugyanúgy továbbítja a rendszer a Microsoft gerincinfrastruktúráján keresztül, ahogyan az azonos virtuális hálózatba tartozó virtuális gépek közötti forgalmat, *magánhálózati* IP-címeken keresztül. Az Azure a következőket támogatja:
+Virtuális hálózatok közötti társviszony lehetővé teszi, hogy zökkenőmentesen csatlakoztathatja az Azure [virtuális hálózatok](virtual-networks-overview.md). A társviszony kialakítását követően a virtuális hálózatok a csatlakozás szempontjából egyetlen hálózatnak látszanak. A virtuális társhálózatokba tartozó virtuális gépek közötti forgalmat lényegében ugyanúgy továbbítja a rendszer a Microsoft gerincinfrastruktúráján keresztül, ahogyan az azonos virtuális hálózatba tartozó virtuális gépek közötti forgalmat, *magánhálózati* IP-címeken keresztül. Az Azure a következőket támogatja:
 * Virtuális társhálózatok létesítése – virtuális hálózatok csatlakoztatása egyazon Azure-régióban
 * Globális virtuális társhálózatok létesítése – virtuális hálózatok csatlakoztatása Azure-régiók között
 
@@ -78,7 +78,7 @@ Megpróbálhatja a [virtuális hálózati társviszony-létesítési hibák elh�
 ## <a name="requirements-and-constraints"></a>Követelmények és korlátozások
 
 A következő korlátozások vonatkoznak, csak ha virtuális hálózatok globálisan társviszonyban állnak:
-- Az egyes virtuális hálózatok erőforrásai nem kommunikálhatnak a globálisan társított virtuális hálózat belső, Azure-beli terheléselosztóinak előtérbeli IP-címével. A terheléselosztónak és a vele kommunikáló erőforrásoknak ugyanabban a régióban kell lenniük.
+- Egy virtuális hálózatban lévő erőforrásokra globálisan két társviszonyban álló virtuális hálózatban lévő alapvető belső terheléselosztó előtérbeli IP-címe nem lehet kommunikálni. Alapszintű Load Balancer támogatása csak az azonos régión belüli létezik. A Standard Load Balancer támogatása mindkét, virtuális hálózatok közötti Társviszony és a globális virtuális társhálózatok létesítésének létezik. 
 - Nem használhat távoli átjárókat, és nem engedélyezheti az átjárói átvitelt. A távoli átjárók használatához vagy az átjárói átvitel engedélyezéséhez a társított virtuális hálózatoknak ugyanabban a régióban kell lenniük.
 
 További információ a követelményekről és a korlátozásokról: [A virtuális hálózatok közötti társviszony követelményei és korlátozásai](virtual-network-manage-peering.md#requirements-and-constraints). A virtuális hálózatok közötti társviszonyok számának korlátozásairól az [Azure hálózati korlátait](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) ismertető szakaszban talál további információt. 

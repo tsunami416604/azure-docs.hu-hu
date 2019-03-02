@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: quickstart
-ms.date: 08/22/2018
+ms.date: 03/01/2019
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 037638367da4b34868befa9934d3b1fbb1b9420d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 19f912ce2989a11e1a27fd27e584159a70d026d4
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56161557"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245760"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>Hozzon létre egy alapszintű csoportot és az Azure Active Directoryval tagok hozzáadása
 Az Azure Active Directory (Azure AD) portálon létrehozhat alapszintű csoportot. A cikk céljaira az erőforrás tulajdonosa (rendszergazda) egy alapszintű csoportot ad az erőforráshoz, amely azokat a tagokat tartalmazza (alkalmazottak), akiknek az adott erőforrást el kell érniük. Az összetettebb eseteknél, beleértve a dinamikus csoporttagságot és szabályok létrehozását is, lásd az [Azure Active Directory felhasználókezelés dokumentációt](../users-groups-roles/index.yml).
@@ -51,7 +51,7 @@ Az alapszintű csoport létrehozása és a tagok felvétele történhet egyszerr
 
         - **Kiosztva.** Lehetővé teszi, hogy konkrét felhasználók a csoport tagjai lehessenek és egyedi engedélyekkel rendelkezzenek. A cikk céljaira ezt a lehetőséget használjuk.
 
-        - **Dinamikus felhasználó.** Lehetővé teszi a dinamikus csoport szabályok segítségével a tagok automatikus felvételét és eltávolítását. Ha a tag attribútumai változnak, a rendszer megvizsgálja a címtárra vonatkozó dinamikus csoportszabályokat, hogy a tag megfelel-e a szabály követelményeinek (hozzáadja), vagy már nem felel meg a szabályok szerinti követelményeknek (eltávolítja).
+        - **Dinamikus felhasználó.** Lehetővé teszi a dinamikus tagsági szabályok segítségével automatikusan hozzáadhat és eltávolíthat a tagokat. Ha a tag attribútumai változnak, a rendszer megvizsgálja a címtárra vonatkozó dinamikus csoportszabályokat, hogy a tag megfelel-e a szabály követelményeinek (hozzáadja), vagy már nem felel meg a szabályok szerinti követelményeknek (eltávolítja).
 
         - **Dinamikus eszköz.** Lehetővé teszi a dinamikus csoport szabályok segítségével a távoli eszközök automatikus felvételét és eltávolítását. Ha az eszköz attribútumai változnak, a rendszer megvizsgálja a címtárra vonatkozó dinamikus csoportszabályokat, hogy az eszköz megfelel-e a szabály követelményeinek (hozzáadja), vagy már nem felel meg a szabályok szerinti követelményeknek (eltávolítja).
 
@@ -71,6 +71,10 @@ Az alapszintű csoport létrehozása és a tagok felvétele történhet egyszerr
     A **csoport – áttekintés** lap frissül és mutatja a csoportba most felvett tagok számát.
 
     ![Csoport áttekintés oldal a tagok számával kiemelve](media/active-directory-groups-create-azure-portal/group-overview-blade-number-highlight.png)
+
+## <a name="turn-on-or-off-welcome-email"></a>Be- és kikapcsolása üdvözlő e-mailben
+
+Ha bármely új Office 365-csoport jön létre, dinamikus vagy statikus tagsággal rendelkező, egy üdvözlő értesítést küld minden felhasználó számára a csoportba kerülnek. Ha módosítja olyan felhasználó vagy eszköz attribútumai, a szervezet összes dinamikus csoport szabályok lehetséges a tagság megváltozása dolgozzák fel. Felhasználók, akik kerülnek majd is kapnak az üdvözlő értesítést. Kikapcsolhatja ezt a viselkedést [Exchange PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps). 
 
 ## <a name="next-steps"></a>További lépések
 Most, hogy hozzáadott egy csoportot és legalább egy felhasználót, a következőket teheti:

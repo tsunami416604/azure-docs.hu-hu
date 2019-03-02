@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 11/06/2018
-ms.openlocfilehash: 23a676c64ec2788ec4a9b3d61f86529fa437079f
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: c0ef7ce7520886787f4df8d3998cb464d477a2c3
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580382"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244536"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Oktatóanyag: Az Apache Kafka Producer és Consumer API-k használata
 
@@ -133,6 +133,8 @@ Ebben a kódban a Consumer úgy van beállítva, hogy a beolvasást a témakör 
 A [Run.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Run.java) fájl parancssori felületet biztosít a Producer- vagy a Consumer-kód futtatásához. Paraméterként a Kafka közvetítő gazdagépének adatait kell megadni. Opcionálisan megadhat egy csoportazonosító-értéket, amit a fogyasztói folyamat fog használni. Ha több, azonos csoportazonosítóval ellátott fogyasztói példányt hoz létre, azok a terheléselosztáshoz szükséges adatokat a témakörből olvassák ki.
 
 ## <a name="build-and-deploy-the-example"></a>A példa létrehozása és üzembe helyezése
+
+1. és 2 build lépéseit kihagyhatja, és töltse le az előre elkészített jars(kafka-producer-consumer.jar) a [ https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/Prebuilt-Jars ](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/tree/master/Prebuilt-Jars). A HDInsight-fürt is másolja a JAR-fájl.
 
 1. A példákat a [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) címről töltheti le.
 

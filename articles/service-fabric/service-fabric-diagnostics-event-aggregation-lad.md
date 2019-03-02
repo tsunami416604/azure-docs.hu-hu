@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/25/2019
 ms.author: srrengar
-ms.openlocfilehash: a41599194d6dd6230c80aa078375b798c3002adf
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 9e4c4e8c8d7aa89e2a27efc2c2deebd4863be23e
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56824011"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242955"
 ---
 # <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Események összesítése és -gyűjteményt Linuxos Azure Diagnostics használatával
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "56824011"
 
 Egy Azure Service Fabric-fürtön futtatja, esetén érdemes egy központi helyen összes csomópontja a naplók gyűjtését. A naplók kellene egy központi helyen segítségével elemezheti és a fürtben, vagy az alkalmazások és szolgáltatások a fürtben futó problémák elhárítása.
 
-Fel-és naplók gyűjtése az egyik módja, hogy Linuxos Azure Diagnostics (LAD) bővítménye, amely feltölti a naplókat az Azure Storage, és a naplók elküldése az Azure Application Insights és az Event Hubs lehetősége is van. Használhatja egy külső folyamatba, olvassa az eseményeket a storage-ból, és helyezze el őket olyan elemzési felhőplatform-megoldás, mint például [Log Analytics](../log-analytics/log-analytics-service-fabric.md) vagy egy másik log-elemzési megoldás.
+Fel-és naplók gyűjtése az egyik módja, hogy Linuxos Azure Diagnostics (LAD) bővítménye, amely feltölti a naplókat az Azure Storage, és a naplók elküldése az Azure Application Insights és az Event Hubs lehetősége is van. Használhatja egy külső folyamatba, olvassa az eseményeket a storage-ból, és helyezze el őket olyan elemzési felhőplatform-megoldás, mint például [naplózza az Azure Monitor](../log-analytics/log-analytics-service-fabric.md) vagy egy másik log-elemzési megoldás.
 
 ## <a name="log-and-event-sources"></a>Napló- és esemény-források
 

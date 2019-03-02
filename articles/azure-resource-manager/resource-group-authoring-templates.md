@@ -10,18 +10,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/14/2019
+ms.date: 03/01/2019
 ms.author: tomfitz
-ms.openlocfilehash: 34f34545e4511c4f8bc4af95f906f2871480bd47
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 7819dc62d766a6b35f5c2efe1179cb0adb0ab933
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310158"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243550"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Megismerheti a szerkezetének és szintaxisának az Azure Resource Manager-sablonok
 
-Ez a cikk ismerteti az Azure Resource Manager-sablonok szerkezetének. Egy sablon és az elérhető tulajdonságok köre szakaszt az eltérő szakaszok tükrözze. A sablon JSON-t és kifejezések, amelyek segítségével kialakíthatja az üzemelő példány értékeit áll. Sablonok létrehozásának részletes útmutató: [az első Azure Resource Manager-sablon létrehozása](resource-manager-create-first-template.md).
+Ez a cikk ismerteti az Azure Resource Manager-sablonok szerkezetének. Egy sablon és az elérhető tulajdonságok köre szakaszt az eltérő szakaszok tükrözze. A sablon JSON-t és kifejezések, amelyek segítségével kialakíthatja az üzemelő példány értékeit áll.
+
+Ez a cikk szól, akik rendelkeznek a Resource Manager-sablonok bizonyos fokú ismeretét. Ez a struktúra és a sablon szintaxisát részletes információkat tartalmaz. Ha azt szeretné, hogy a sablonok létrehozásának bemutatása, [az első Azure Resource Manager-sablon létrehozása](resource-manager-create-first-template.md).
 
 ## <a name="template-format"></a>Sablon formátuma
 
@@ -197,15 +199,106 @@ További információ a paraméterek megadása: [paraméterek szakaszban az Azur
 
 A változók szakaszban, a sablon egész értékek, amelyek segítségével hozhatnak létre. Nem kell definiálnia a változókat, de azok összetett kifejezések csökkentésével gyakran egyszerűbb a sablont.
 
-Az alábbi példa bemutatja egy egyszerű változódefinícióra:
+### <a name="available-definitions"></a>Rendelkezésre álló definíciók
+
+Az alábbi példa bemutatja a változó definiálása az elérhető lehetőségek közül:
 
 ```json
 "variables": {
-  "webSiteName": "[concat(parameters('siteNamePrefix'), uniqueString(resourceGroup().id))]",
+    "<variable-name>": "<variable-value>",
+    "<variable-name>": { 
+        <variable-complex-type-value> 
+    },
+    "<variable-object-name>": {
+        "copy": [
+            {
+                "name": "<name-of-array-property>",
+                "count": <number-of-iterations>,
+                "input": <object-or-value-to-repeat>
+            }
+        ]
+    },
+    "copy": [
+        {
+            "name": "<variable-array-name>",
+            "count": <number-of-iterations>,
+            "input": <object-or-value-to-repeat>
+        }
+    ]
+}
+```
+
+További információ `copy` több értéket egy változóhoz létrehozásával kapcsolatban lásd: [változó iteráció](resource-group-create-multiple.md#variable-iteration).
+
+### <a name="define-and-use-a-variable"></a>Definiálja és egy változó
+
+Az alábbi példa bemutatja a változó definícióját. Létrehoz egy karakterláncértéket a tárfiók neve. Több sablonokban használható függvények használatával jelenik meg a paraméter értékét, és egy egyedi karakterlánccá fűzi össze azt.
+
+```json
+"variables": {
+  "storageName": "[concat(toLower(parameters('storageNamePrefix')), uniqueString(resourceGroup().id))]"
 },
 ```
 
-További információ a változók meghatározása: [változók szakaszban az Azure Resource Manager-sablonok](resource-manager-templates-variables.md).
+Az erőforrás definiálásakor használja a változót.
+
+```json
+"resources": [
+  {
+    "name": "[variables('storageName')]",
+    "type": "Microsoft.Storage/storageAccounts",
+    ...
+```
+
+### <a name="configuration-variables"></a>Konfigurációs változók
+
+Használhatja a komplex JSON-típusok meghatározása a kapcsolódó értékeket egy adott környezetben.
+
+```json
+"variables": {
+    "environmentSettings": {
+        "test": {
+            "instanceSize": "Small",
+            "instanceCount": 1
+        },
+        "prod": {
+            "instanceSize": "Large",
+            "instanceCount": 4
+        }
+    }
+},
+```
+
+A paraméterek hozzon létre egy értéket, amely jelzi, hogy melyik konfigurációs értékeket kell használni.
+
+```json
+"parameters": {
+    "environmentName": {
+        "type": "string",
+        "allowedValues": [
+          "test",
+          "prod"
+        ]
+    }
+},
+```
+
+A jelenlegi beállítások kérheti le:
+
+```json
+"[variables('environmentSettings')[parameters('environmentName')].instanceSize]"
+```
+
+### <a name="variables-example-templates"></a>Változók példasablonkészlet
+
+A példa sablonok bizonyos változók használatára vonatkozó forgatókönyvek bemutatása. Tesztelje a változók kezelésének módját a különböző helyzetekben való telepítéséhez. 
+
+|Sablon  |Leírás  |
+|---------|---------|
+| [változó definíciók](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variables.json) | Azt ismerteti, hogy a különböző típusú változót. A sablon nem üzembe erőforrásokat. Ez változóértékek entitástörzséhez, és ezeket az értékeket ad vissza. |
+| [konfigurációs változó](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/variablesconfigurations.json) | Bemutatja, hogy egy változó, amely a konfigurációs értékeket határozza meg. A sablon nem üzembe erőforrásokat. Ez változóértékek entitástörzséhez, és ezeket az értékeket ad vissza. |
+| [hálózati biztonsági szabály](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) és [alkalmazásparaméter-fájlt](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json) | Létrehoz egy tömböt a biztonsági szabályok rendel egy hálózati biztonsági csoportot a megfelelő formátumban. |
+
 
 ## <a name="functions"></a>Functions
 
@@ -214,7 +307,7 @@ A sablonon belül a saját funkciókat is létrehozhat. Ezek a függvények hasz
 A user függvény definiálásakor bizonyos korlátozások vonatkoznak:
 
 * A függvény nem tud hozzáférni a változókat.
-* A függvény csak használhatja a függvény a definiált paraméterek. Használatakor a [paraméterek függvény](resource-group-template-functions-deployment.md#parameters) belül a felhasználó által definiált függvény korlátozódnak, a függvény paramétereit.
+* A függvény csak használhatja a függvény a definiált paraméterek. Ha a [paraméterek függvény](resource-group-template-functions-deployment.md#parameters) belül a felhasználó által definiált függvény korlátozva van, a függvény paramétereit.
 * A függvény nem hívható meg más felhasználó által definiált függvények.
 * A függvény nem használható a [függvényre](resource-group-template-functions-resource.md#reference).
 * A függvény paramétereit nem lehet alapértelmezett értékük van.
@@ -282,18 +375,91 @@ Az erőforrások szakaszban meghatározhatja az erőforrásokat, amelyek telepí
 Feltételesen belefoglalása vagy kizárása erőforrás üzembe helyezés során használja a [feltétel elem](resource-manager-templates-resources.md#condition). Az erőforrás szakasz tartalmával kapcsolatos további információkért lásd: [források szakaszában az Azure Resource Manager-sablonok](resource-manager-templates-resources.md).
 
 ## <a name="outputs"></a>Kimenetek
-A kimeneti szakaszban adjon meg értékeket, amelyek a központi telepítés rendszer adja vissza. Visszaadhatja például az URI-t üzembe helyezett erőforrások eléréséhez.
+
+A kimeneti szakaszban adjon meg értékeket, amelyek a központi telepítés rendszer adja vissza. Értékek általában üzembe helyezett erőforrásokból visszaadása.
+
+### <a name="available-properties"></a>Rendelkezésre álló tulajdonságok
+
+A következő példa egy kimeneti definíciót szerkezetét mutatja:
 
 ```json
 "outputs": {
-  "newHostName": {
+    "<outputName>" : {
+        "condition": "<boolean-value-whether-to-output-value>",
+        "type" : "<type-of-output-value>",
+        "value": "<output-value-expression>"
+    }
+}
+```
+
+| Elem neve | Szükséges | Leírás |
+|:--- |:--- |:--- |
+| outputName |Igen |A kimeneti érték neve. Érvényes JavaScript-azonosítónak kell lennie. |
+| feltétel |Nem | Logikai érték, amely azt jelzi, hogy ez a kimeneti értéket adja vissza. Amikor `true`, az érték szerepel a kimenet a központi telepítéshez. Amikor `false`, a rendszer kihagyta a kimeneti értéket ehhez a központi telepítéshez. Ha nincs megadva, az alapértelmezett értéke `true`. |
+| type |Igen |A kimeneti érték típusát. Sablon bemeneti paraméterként azonos kimeneti értékeket támogatásához. |
+| érték |Igen |Sablonnyelv-kifejezés, amely értékeli ki és adja vissza a kimeneti értéket. |
+
+### <a name="define-and-use-output-values"></a>Definiálja és kimeneti értékeket
+
+Az alábbi példa bemutatja, hogyan állítható vissza a nyilvános IP-cím erőforrás-azonosító:
+
+```json
+"outputs": {
+  "resourceID": {
     "type": "string",
-    "value": "[reference(variables('webSiteName')).defaultHostName]"
+    "value": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_name'))]"
   }
 }
 ```
 
-További információkért lásd: [kimenete az Azure Resource Manager-sablonok szakaszában](resource-manager-templates-outputs.md).
+A következő példa bemutatja, hogyan feltételesen a nyilvános IP-cím erőforrás-azonosító alapján egy új egyik telepítve lett-e vissza:
+
+```json
+"outputs": {
+  "resourceID": {
+    "condition": "[equals(parameters('publicIpNewOrExisting'), 'new')]",
+    "type": "string",
+    "value": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_name'))]"
+  }
+}
+```
+
+Egy egyszerű példa feltételes kimenet: [feltételes kimeneti sablon](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/conditional-output/azuredeploy.json).
+
+Az üzembe helyezés után az érték-parancsfájllal kérheti le. PowerShell esetén használja az alábbi parancsot:
+
+```powershell
+(Get-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -Name <deployment-name>).Outputs.resourceID.value
+```
+
+Azure CLI esetén használja az alábbi parancsot:
+
+```azurecli-interactive
+az group deployment show -g <resource-group-name> -n <deployment-name> --query properties.outputs.resourceID.value
+```
+
+Kérheti le a kimeneti értéket egy hivatkozott sablonnak a használatával a [referencia](resource-group-template-functions-resource.md#reference) függvény. Egy kimeneti értéket egy hivatkozott sablonnak a lekéréséhez a szintaxissal tulajdonság értékét a vizualizációhoz: `"[reference('deploymentName').outputs.propertyName.value]"`.
+
+Amikor egy kimeneti tulajdonság lekérése egy hivatkozott sablonnak, a tulajdonság neve nem tartalmazhatja az kötőjellel.
+
+Az alábbi példa bemutatja, hogyan az IP-cím beállítása az egy terheléselosztóhoz társított sablonból értéket lekérésével.
+
+```json
+"publicIPAddress": {
+    "id": "[reference('linkedTemplate').outputs.resourceID.value]"
+}
+```
+
+Nem használhatja a `reference` függvény kimenetek szakaszában egy [beágyazott sablont](resource-group-linked-templates.md#link-or-nest-a-template). Az értékeket egy üzembe helyezett erőforrás visszaadása egy beágyazott sablont, váltson egy hivatkozott sablonnak a beágyazott sablont.
+
+### <a name="output-example-templates"></a>Kimeneti példa sablonok
+
+|Sablon  |Leírás  |
+|---------|---------|
+|[Másolja a változók](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Komplex változók hoz létre, és kiírja ezeket az értékeket. Nem telepíti az erőforrásokat. |
+|[Nyilvános IP-cím](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Létrehoz egy nyilvános IP-címet, és kiírja az erőforrás-azonosítója. |
+|[Load Balancer](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | Az előző sablon mutató hivatkozásokat tartalmaz. A terheléselosztó létrehozásakor használja a kimenetben az erőforrás-azonosítója. |
+
 
 <a id="comments" />
 

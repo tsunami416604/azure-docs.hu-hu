@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: c343dfa3c0eac4aeabaa9244c6675b235fc95552
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 9914943cc5b3ef9e95f12c6890cb8e1646f7e335
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311716"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244222"
 ---
 # <a name="deploy-more-than-one-instance-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Egynél több példányát egy erőforrást vagy tulajdonság frissítése az Azure Resource Manager-sablonok üzembe helyezése
 
@@ -272,6 +272,8 @@ Erőforrás- és az iteráció együtt használhatja. A tulajdonság az iteráci
 
 Egy változó több példány létrehozásához használja a `copy` tulajdonság a változók szakaszban. Létrehozhat értéke értékekből összeállított elemek tömbjét a `input` tulajdonság. Használhatja a `copy` tulajdonság egy változóban, vagy a változók szakaszban, a legfelső szinten. Használata esetén `copyIndex` egy változó iteráció belül meg kell adnia az iteráció nevét.
 
+Karakterlánc-értékek tömbje létrehozásának egy egyszerű példa: [tömb sablon másolása](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/copy-array/azuredeploy.json).
+
 Az alábbi példa a tömbváltozók dinamikusan létrehozott elemek létrehozása számos különböző módszert mutat be. Ez bemutatja, hogyan belül egy változó másolási tömbök sztringek és objektumok létrehozásához használja. Azt is bemutatja, hogyan másolás használata a legfelső szinten objektumok, karakterláncok és egész számok tömbök létrehozására.
 
 ```json
@@ -344,6 +346,50 @@ Az alábbi példa a tömbváltozók dinamikusan létrehozott elemek létrehozás
     }
   }
 }
+```
+
+Milyen típusú változó, amely jön létre a bemeneti objektum függ. Ha például a következő változót **top-szintű-objektum-tömb** adja vissza az előző példában:
+
+```json
+[
+  {
+    "name": "myDataDisk1",
+    "diskSizeGB": "1",
+    "diskIndex": 0
+  },
+  {
+    "name": "myDataDisk2",
+    "diskSizeGB": "1",
+    "diskIndex": 1
+  },
+  {
+    "name": "myDataDisk3",
+    "diskSizeGB": "1",
+    "diskIndex": 2
+  },
+  {
+    "name": "myDataDisk4",
+    "diskSizeGB": "1",
+    "diskIndex": 3
+  },
+  {
+    "name": "myDataDisk5",
+    "diskSizeGB": "1",
+    "diskIndex": 4
+  }
+]
+```
+
+És a következő változót **top-szint – karakterlánc-tömbben** adja vissza:
+
+```json
+[
+  "myDataDisk1",
+  "myDataDisk2",
+  "myDataDisk3",
+  "myDataDisk4",
+  "myDataDisk5"
+]
 ```
 
 ## <a name="depend-on-resources-in-a-loop"></a>Függő erőforrások hurokba került

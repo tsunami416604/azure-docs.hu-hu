@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Fabric Eseményelemzés Log Analytics szolgáltatással |} A Microsoft Docs
-description: További információ megjelenítése és elemzése a Log Analytics szolgáltatást a monitorozást és diagnosztikát az Azure Service Fabric-fürtök események.
+title: Az Azure Service Fabric Eseményelemzés az Azure Monitor-naplók |} A Microsoft Docs
+description: További információ megjelenítése, és a monitorozást és diagnosztikát az Azure Service Fabric-fürtök események az Azure Monitor használatával naplózza.
 services: service-fabric
 documentationcenter: .net
 author: srrengar
@@ -14,28 +14,30 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/21/2019
 ms.author: srrengar
-ms.openlocfilehash: e8719b071bf2e836ed92fa4f6dcddc5f1865b320
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 2f3106b33ab0cbea95efe2ac42c05a8543719190
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56668794"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57246916"
 ---
-# <a name="event-analysis-and-visualization-with-log-analytics"></a>Esemény elemzése és képi megjelenítés, a Log Analytics használatával
- A log Analytics gyűjti és elemzi az alkalmazások és szolgáltatások a felhőben üzemeltetett származó telemetriai adatok, és segítséget nyújtanak a rendelkezésre állás és teljesítmény maximalizálása elemzésére szolgáló eszközöket biztosít. Ez a cikk ismerteti, hogyan elemezheti és mi történik a fürtön a Log Analytics-lekérdezések futtatása. Az alábbi gyakori kérdések foglalkozik:
+# <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>Esemény elemzése és képi megjelenítése a Azure Monitor naplóira
+ Az Azure Monitor naplóira gyűjti és elemzi az alkalmazások és szolgáltatások a felhőben üzemeltetett származó telemetriai adatok, és segítséget nyújtanak a rendelkezésre állás és teljesítmény maximalizálása elemzésére szolgáló eszközöket biztosít. Ez a cikk ismerteti, hogyan lekérdezéseket futtathat az Azure Monitor-naplók elemzése és hibaelhárítása, mi történik a fürtön. Az alábbi gyakori kérdések foglalkozik:
 
 * Hogyan háríthatom el a health-események?
 * Honnan tudhatom meg, amikor egy csomópont leáll?
 * Honnan tudhatom, hogy ha saját alkalmazásszolgáltatások elindítani vagy leállítani?
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="overview-of-the-log-analytics-workspace"></a>A Log Analytics-munkaterület áttekintése
 
 >[!NOTE] 
 >Diagnosztikai tárfiók alapértelmezés szerint engedélyezve van a fürt létrehozásakor, miközben továbbra is be kell állítania a Log Analytics-munkaterületet a diagnosztikai tárfiók olvasni.
 
-A log Analytics adatokat gyűjt a felügyelt erőforrások, például egy Azure storage-táblába, vagy egy ügynököt, és megőrzi azt egy központi tárházban. Az adatok ezután lehet, elemzés, a riasztás és a Vizualizáció használatos, vagy további exportálását. A log Analytics az eseményeket, teljesítményadatokat vagy bármely más egyéni adatokat támogatja. Tekintse meg [eseményeket a diagnosztikai bővítmény konfigurálásának lépései](service-fabric-diagnostics-event-aggregation-wad.md) és [olvasni a storage-ban az események Log Analytics-munkaterület létrehozásához szükséges lépéseket](service-fabric-diagnostics-oms-setup.md) , hogy az adatok Log Analytics beérkeznek .
+Az Azure Monitor a felügyelt erőforrások, például egy Azure storage-táblába, vagy az ügynök összegyűjti az adatokat naplózza, és egy központi tárházban megőrzi azt. Az adatok ezután lehet, elemzés, a riasztás és a Vizualizáció használatos, vagy további exportálását. Az Azure Monitor támogatja az események, teljesítményadatok vagy bármely más egyéni adatokat naplózza. Tekintse meg [eseményeket a diagnosztikai bővítmény konfigurálásának lépései](service-fabric-diagnostics-event-aggregation-wad.md) és [olvasni a storage-ban az események Log Analytics-munkaterület létrehozásához szükséges lépéseket](service-fabric-diagnostics-oms-setup.md) , hogy az Azure Monitor adatok beérkeznek naplók.
 
-Log Analytics által adatok fogadását követően az Azure rendelkezik több *felügyeleti megoldások* , amelyek előre összeállított megoldások vagy figyelheti a bejövő adatokat, testre szabva, hogy számos forgatókönyv operatív irányítópultokat. Ezek közé tartozik egy *Service Fabric-elemzés* megoldás és a egy *tárolók* megoldást, amely két dolgokat azok, diagnosztika és figyelés a Service Fabric-fürtök használatakor. Ez a cikk ismerteti, hogyan használható a Service Fabric-elemzés megoldást, amely a munkaterület jön létre.
+Az Azure Monitor-naplók által adatok fogadását követően az Azure rendelkezik több *figyelési megoldások* , amelyek előre összeállított megoldások vagy figyelheti a bejövő adatokat, testre szabva, hogy számos forgatókönyv operatív irányítópultokat. Ezek közé tartozik egy *Service Fabric-elemzés* megoldás és a egy *tárolók* megoldást, amely két dolgokat azok, diagnosztika és figyelés a Service Fabric-fürtök használatakor. Ez a cikk ismerteti, hogyan használható a Service Fabric-elemzés megoldást, amely a munkaterület jön létre.
 
 ## <a name="access-the-service-fabric-analytics-solution"></a>Hozzáférés a Service Fabric-elemzés megoldás
 
@@ -110,7 +112,7 @@ A Kusto-lekérdezési nyelve, hatékony. Egy másik értékes lekérdezés futta
 ## <a name="next-steps"></a>További lépések
 
 * Ahhoz, hogy az infrastruktúra figyelő például teljesítményszámlálók, látogasson el [hozzáadása a Log Analytics-ügynököket](service-fabric-diagnostics-oms-agent.md). Az ügynök összegyűjti a teljesítményszámlálók, és hozzáadja őket a meglévő munkaterülethez.
-* A helyszíni fürtök esetén a Log Analytics-átjárót nyújt (http-továbbítás Proxy), amelyek segítségével adatokat küldeni a Log Analytics. Tudjon meg többet arról, hogy a [internetelérés nélküli számítógépek csatlakoztatása a Log Analytics használata a Log Analytics-átjáró](../azure-monitor/platform/gateway.md).
+* A helyszíni fürtök esetén az Azure Monitor naplóira, amelyek segítségével adatokat küldeni a naplókat az Azure Monitor átjárót (http-továbbítás Proxy) nyújt. Tudjon meg többet arról, hogy a [internetelérés nélküli számítógépek csatlakoztatása a Log Analytics-átjáró használata az Azure Monitor naplóira](../azure-monitor/platform/gateway.md).
 * Konfigurálása [automatizált riasztások](../log-analytics/log-analytics-alerts.md) , ezzel elősegítve az észlelési és a diagnosztikát.
-* Ismerkedjen meg a Log Analytics részét képező [naplókeresési és lekérdezési](../log-analytics/log-analytics-log-searches.md) funkcióval.
-* A Log Analytics és mit kínál részletes áttekintést, olvassa el [Mi az a Log Analytics?](../operations-management-suite/operations-management-suite-overview.md).
+* Ismerkedjen meg a [naplókeresési és lekérdezési](../log-analytics/log-analytics-log-searches.md) funkciók az Azure Monitor naplóira részeként érhető el.
+* Részletesebb ismertetőt az Azure Monitor naplóira, és mit kínál, a olvasási [Mi az Azure Monitor naplóira?](../operations-management-suite/operations-management-suite-overview.md).

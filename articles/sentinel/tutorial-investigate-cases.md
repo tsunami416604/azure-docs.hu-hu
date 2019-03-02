@@ -4,7 +4,7 @@ description: Ez az oktatóanyag segítségével megtudhatja, hogyan esetekben, a
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: a493cd67-dc70-4163-81b8-04a9bc0232ac
 ms.service: sentinel
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 424f7eeacf5ca3317462fa63cf684c0d5d1bac9e
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 8d44c1448296df16e9dd58a486d4cfb21bb053de
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56993250"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244196"
 ---
 # <a name="tutorial-investigate-cases-with-azure-sentinel-preview"></a>Oktatóanyag: Vizsgálja meg az Azure-on Előzetesben Sentinel-esetek
 
@@ -33,10 +33,10 @@ Miután [csatlakoztatva az adatforrások](quickstart-onboard.md) Azure Sentinel,
 
 > [!div class="checklist"]
 > * Eseteket hoznak létre.
-> * Esetek vizsgálata
-> * Fenyegetések
+> * Esetek kivizsgálása
+> * Reagálás a fenyegetésekre
 
-## <a name="investigate-cases"></a>Esetek vizsgálata
+## <a name="investigate-cases"></a>Esetek kivizsgálása
 
 Eset több riasztás is tartalmazhatnak. Fontos a megfelelő bizonyíték egy konkrét vizsgálat összesítést. Eset meghatározott riasztások alapján jön létre a **Analytics** lapot. A riasztások fontossága és állapota például kapcsolódó tulajdonságok az eset szintjén vannak beállítva. Engedélyezze, hogy az Azure Sentinel-tudja, milyen fenyegetéseket keres, és hogyan találhatja meg azokat, miután esetek kivizsgálása által észlelt fenyegetések követheti nyomon. 
 
@@ -60,7 +60,7 @@ Eset több riasztás is tartalmazhatnak. Fontos a megfelelő bizonyíték egy ko
 
 
 
-## <a name="respond-to-threats"></a>Fenyegetések
+## <a name="respond-to-threats"></a>Reagálás a fenyegetésekre
 
 Az Azure Sentinel fenyegetésekkel szembeni forgatókönyvek használatával két elsődleges lehetőséget kínál. Egy forgatókönyv riasztást vált ki, vagy manuálisan futtatható a forgatókönyv a választ figyelmeztetést automatikus futtatását állíthatja be.
 

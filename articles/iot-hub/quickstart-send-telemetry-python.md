@@ -9,13 +9,13 @@ services: iot-hub
 ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 01/22/2019
-ms.openlocfilehash: d36408f50e868aaccec30a1e085075161e00f217
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.date: 02/28/2019
+ms.openlocfilehash: 8dab132cd03b24f4f9e55cb777cc0f984526ba12
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010208"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243363"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-python"></a>Gyors útmutató: Telemetria küldése egy eszközről IoT hubra és a egy háttér-alkalmazással (Python), annak olvasása
 
@@ -31,9 +31,11 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutatóban futtatott két mintaalkalmazás a Python használatával készült. A fejlesztői gépen szükség lesz a Python 2.7.x vagy a 3.5.x verziójára.
+A rövid útmutatóban futtatott két mintaalkalmazás a Python használatával készült. Jelenleg a Microsoft Azure IoT SDK Pythonhoz készült Python csak bizonyos verziójának minden egyes platformhoz támogatja. További tudnivalókért tekintse meg a [Python SDK információs](https://github.com/Azure/azure-iot-sdk-python#important-installation-notes---dealing-with-importerror-issues).
 
-A Pythont a [Python.org](https://www.python.org/downloads/) oldalról töltheti le többféle platformra. Válassza az Ön által használt rendszer architektúrájának megfelelő Python-telepítőt. Amennyiben a rendszer CPU-architektúrája 32 bites, az alapértelmezett x86-os telepítőt töltse le a Python.org oldalról, 64 bites architektúra esetén pedig az x86-64 jelzésű telepítőt.
+Ez a rövid útmutató feltételezi, hogy egy Windows fejlesztési számítógépet használ. A Windows rendszerek esetében csak [Python 3.6.x](https://www.python.org/downloads/release/python-368/) támogatott. Válassza az Ön által használt rendszer architektúrájának megfelelő Python-telepítőt. Ha a rendszer CPU-architektúrához 32 bites, akkor a telepítő letöltési a x86; a 64 bites architektúra töltse le az x86-64. Emellett győződjön meg arról, hogy a [Microsoft Visual C++ újraterjeszthető csomag a Visual Studio 2017](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) architektúra (x86 vagy x64) telepítve van.
+
+Python tölthető le a más platformok [Python.org](https://www.python.org/downloads/).
 
 A Python aktuális verzióját a következő parancsok egyikével ellenőrizheti a fejlesztői gépen:
 

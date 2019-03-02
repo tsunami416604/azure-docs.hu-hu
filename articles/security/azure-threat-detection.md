@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 301dd9357bc1585d96eda216d7e47601e488665b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 60a0d7c2da25f63d0728dbb86f9a6c2328def811
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871797"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245243"
 ---
 # <a name="azure-advanced-threat-detection"></a>Az Azure fejlett fenyegetésészlelés
 
-Azure-szolgáltatások, például az Azure Active Directory (Azure AD), Azure Log Analytics és az Azure Security Center észlelési funkciót a komplex veszélyforrások elleni beépített ajánlatok. Ez a témakörgyűjtemény biztonsági szolgáltatások és funkciók segítségével gyorsan és egyszerűen, mi történik, az Azure-környezetek belül.
+Azure-szolgáltatások, például az Azure Active Directory (Azure AD), az Azure Monitor-naplók és az Azure Security Center észlelési funkciót a komplex veszélyforrások elleni beépített ajánlatok. Ez a témakörgyűjtemény biztonsági szolgáltatások és funkciók segítségével gyorsan és egyszerűen, mi történik, az Azure-környezetek belül.
 
 Az Azure konfigurálására és testreszabására az alkalmazások telepítésének követelményeinek megfelelő biztonsági lehetőségek széles tárházát biztosítja. Ez a cikk leírja, hogyan mindezen követelmények teljesítése érdekében.
 
@@ -75,17 +75,17 @@ A PIM segítségével:
 
 -   A kiemelt szerepkörű való hozzáféréssel kapcsolatos riasztásokat kaphat.
 
-## <a name="azure-log-analytics"></a>Azure Log Analytics
+## <a name="azure-monitor-logs"></a>Az Azure Monitor naplóira
 
-[Log Analytics](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) van a Microsoft felhőalapú informatikai felügyeleti megoldása, amely segít a kezelése és védelme a helyszíni és felhőalapú infrastruktúrára. Log Analytics felhőalapú szolgáltatás valósul meg, mert rendelkezhet, és gyorsan és az infrastrukturális szolgáltatásokra fordítandó minimális kiadások mellett. Új biztonsági funkciók bevezetése automatikus, mentése folyamatban van a folyamatos karbantartás és frissítés költségei.
+[Az Azure Monitor naplóira](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-overview) van a Microsoft felhőalapú informatikai felügyeleti megoldása, amely segít a kezelése és védelme a helyszíni és felhőalapú infrastruktúrára. Az Azure Monitor naplóira implementálva van a felhő alapú szolgáltatás, mert rendelkezhet, és gyorsan az infrastrukturális szolgáltatásokra fordítandó minimális kiadások mellett a. Új biztonsági funkciók bevezetése automatikus, mentése folyamatban van a folyamatos karbantartás és frissítés költségei.
 
-Amellett, hogy értékes szolgáltatásokat biztosít a saját, a Log Analytics integrálható a System Center-összetevőket, például [System Center Operations Manager](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/), a meglévő biztonsági felügyeleti beruházások kiterjeszthetők a felhőbe kiterjeszteni. A System Center és a Log Analytics is együttműködve teljes hibrid felügyeleti élményt nyújtanak.
+Értékes szolgáltatásokat biztosít a saját, az Azure Monitor mellett naplók integrálható a System Center-összetevőket, például [System Center Operations Manager](https://blogs.technet.microsoft.com/cbernier/2013/10/23/monitoring-windows-azure-with-system-center-operations-manager-2012-get-me-started/), kiterjesztése a meglévő biztonsági felügyeleti beruházások kiterjeszthetők a felhő. A System Center és az Azure Monitor naplókat is együttműködve a teljes hibrid felügyeleti környezetet biztosít.
 
 ### <a name="holistic-security-and-compliance-posture"></a>Átfogó biztonsági és megfelelőségi állapotáról
 
-A [Log Analytics biztonsági és auditálási irányítópultja](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) nyújt átfogó képet kaphat a szervezet informatikai biztonsági helyzetét, figyelmet igénylő jelentős problémákat beépített keresési lekérdezések révén. A biztonsági és auditálási irányítópultja a kezdőképernyőn a Log Analytics biztonsággal kapcsolatos minden. Magas szintű betekintést tesz lehetővé a számítógépek biztonsági állapotába. Minden események az elmúlt 24 óra, 7 nap vagy bármely más egyéni időkeret is megtekintheti.
+A [Log Analytics biztonsági és auditálási irányítópultja](https://docs.microsoft.com/azure/operations-management-suite/oms-security-getting-started) nyújt átfogó képet kaphat a szervezet informatikai biztonsági helyzetét, figyelmet igénylő jelentős problémákat beépített keresési lekérdezések révén. A biztonsági és auditálási irányítópultja a kezdőképernyőn a biztonság az Azure Monitor naplóira kapcsolódó összes elemet. Magas szintű betekintést tesz lehetővé a számítógépek biztonsági állapotába. Minden események az elmúlt 24 óra, 7 nap vagy bármely más egyéni időkeret is megtekintheti.
 
-A log Analytics segítségével gyorsan és könnyen megérthetik, bármilyen környezet általános biztonsági állapotát, az összes informatikai műveleteket, beleértve a szoftverfrissítések kontextusában értékeléséhez, kártevőirtók felmérése és alapkonfigurációk frissítése. Biztonsági naplózási adatok érhető el azonnal a biztonsági és megfelelőségi ellenőrzési eljárások egyszerűsítésére.
+Az Azure Monitor-naplók segítenek gyorsan és egyszerűen megérteni, hogy bármilyen környezet, IT-üzemeltetési, beleértve a szoftver rendszerfrissítési felmérés, kártevőirtók felmérése és alapkonfigurációk keretein belül az összes általános biztonsági állapotát. Biztonsági naplózási adatok érhető el azonnal a biztonsági és megfelelőségi ellenőrzési eljárások egyszerűsítésére.
 
 ![A Log Analytics biztonsági és auditálási irányítópultja](./media/azure-threat-detection/azure-threat-detection-fig3.jpg)
 
@@ -102,25 +102,25 @@ A Log Analytics biztonsági és auditálási irányítópultja négy fő kategó
 -   **Gyakori biztonsági lekérdezések**: Felsorolja a leggyakoribb biztonsági lekérdezésekről, amelyek segítségével figyelni a környezetet. Minden lekérdezés kiválasztásakor a keresési ablak megnyílik, és ez a lekérdezés eredményeit jeleníti meg.
 
 ### <a name="insight-and-analytics"></a>Az Insight and analytics
-Középső [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) van a tárházhoz, amely az Azure-ban.
+Középső [naplózza az Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) van a tárházhoz, amely az Azure-ban.
 
 ![Az Insight and analytics diagramja](./media/azure-threat-detection/azure-threat-detection-fig4.png)
 
 Ön forrásból gyűjthet adatokat a tárházba, csatlakoztatott adatforrások konfigurálása és megoldások hozzáadása az előfizetéséhez.
 
-![A Log Analytics-irányítópult](./media/azure-threat-detection/azure-threat-detection-fig5.png)
+![Az Azure Monitor irányítópultja](./media/azure-threat-detection/azure-threat-detection-fig5.png)
 
 Adatforrások és megoldások minden egyes külön erőforrásrekord-típusok létrehozása a saját tulajdonságai készletét, de továbbra is elemezheti őket össze a tárházban lekérdezésekben. Együttműködést a különböző források által gyűjtött adatok különböző használhatja ugyanazokat az eszközöket és módszereket.
 
 
-A legtöbb Log Analytics-szal, amely bármilyen böngészőben fut, és biztosít hozzáférést a konfigurációs beállításokhoz és több eszközhöz, elemezheti és kezelhetők az összegyűjtött adatokat az Azure Portalon keresztül történik. A portálról használhat:
+A legtöbb Azure Monitor naplóira-szal, amely bármilyen böngészőben fut, és biztosít hozzáférést a konfigurációs beállításokhoz és több eszközhöz, elemezheti és kezelhetők az összegyűjtött adatokat az Azure Portalon keresztül történik. A portálról használhat:
 * [Naplókeresések](https://docs.microsoft.com/azure/log-analytics/log-analytics-log-searches) ahol elemezheti az összegyűjtött adatokat lekérdezéseket hozhat létre.
 * [Az irányítópultok](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-logs-dashboards), amelyeket a legértékesebb kereséseinek grafikus nézeteivel testre is szabhatja.
 * [Megoldások](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions), további funkciókat és elemzőeszközöket biztosító.
 
 ![Elemzési eszközök](./media/azure-threat-detection/azure-threat-detection-fig6.png)
 
-A megoldások funkciókkal bővítik ki a Log Analytics szolgáltatást. Elsősorban futtatása a felhőben és a Log Analytics-adattárban gyűjtött adatok elemzését végzik. Megoldások is meghatározhatnak új erőforrásrekord-típusok összegyűjtése, amelyek naplókeresésekkel, vagy egy további felhasználói felület, amely a megoldást biztosít a Log Analytics-Irányítópult segítségével elemezhetők.
+Megoldások funkciókkal bővítik az Azure Monitor naplóira. Elsősorban futtatása a felhőben és a log analytics-adattárban gyűjtött adatok elemzését végzik. Megoldások is meghatározhatnak új erőforrásrekord-típusok összegyűjtése, amelyek naplókeresésekkel, vagy egy további felhasználói felület, amely a megoldást biztosít a log analytics-Irányítópult segítségével elemezhetők.
 
 A biztonsági és auditálási irányítópultja, amelyek az ilyen típusú megoldások.
 

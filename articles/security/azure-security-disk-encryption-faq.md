@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 01/25/2019
+ms.date: 03/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: a1b045ecf10399ca2297e4d9d010d5c973c40f4e
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 305a5c5d4f82c732dd796f5c5140c0da04fe7b13
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193279"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245216"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Az Azure Disk Encryption IaaS virtuális gépekhez – gyakori kérdések
 
@@ -73,9 +73,13 @@ Első lépések, olvassa el a [áttekintése az Azure Disk Encryption](azure-sec
 
 Adatok és rendszerindító kötetek Igen, a Windows és Linux rendszerű IaaS virtuális gépek használatával titkosítsa. Windows-beli virtuális gépek az operációsrendszer-kötet titkosítása nélkül az adatok nem titkosíthatók. Linux rendszerű virtuális gépekhez legyen az operációs rendszer kötetének titkosításához először nélkül az adatmennyiség titkosíthatja. A titkosított operációsrendszer-kötet linuxhoz, miután letiltja a titkosítást az operációs rendszer kötet Linux rendszerű IaaS virtuális gépekhez nem támogatott.
 
+## <a name="can-i-encrypt-an-unmounted-volume-with-azure-disk-encryption"></a>Egy nem csatlakoztatott kötetet, az Azure Disk Encryption használatával titkosítsa?
+
+Nem, az Azure Disk Encryption csak a csatlakoztatott kötetek titkosítja.
+
 ## <a name="how-do-i-rotate-secrets-or-encryption-keys"></a>Hogyan elforgatása titkok és titkosítási kulcsokat?
 
-Titkos kulcsok rotálására, csak hívja ugyanazt a parancsot, amellyel eredetileg lemeztitkosítás engedélyezve. A kulcstitkosítási kulcs rotálása, ugyanazt a parancsot, amellyel eredetileg engedélyezi a lemeztitkosítást, adja meg az új kulcstitkosítási hívjuk. 
+Titkos kulcsok rotálására, csak hívja ugyanazt a parancsot, amellyel eredetileg engedélyezi a lemeztitkosítást, adjon meg egy másik Key Vaultot. A kulcstitkosítási kulcs rotálása, ugyanazt a parancsot, amellyel eredetileg engedélyezi a lemeztitkosítást, adja meg az új kulcstitkosítási hívjuk. 
 
 ## <a name="how-do-i-add-or-remove-a-key-encryption-key-if-i-didnt-originally-use-one"></a>Hogyan adja hozzá vagy távolítsa el a kulcsalapú titkosítás kulcsa, ha nem eredetileg szükségem?
 
@@ -145,6 +149,10 @@ A Windows, ADE használ a BitLocker AES256 titkosítási módszert (a Windows Se
 
 ## <a name="if-i-use-encryptformatall-and-specify-all-volume-types-will-it-erase-the-data-on-the-data-drives-that-we-already-encrypted"></a>Ha EncryptFormatAll használja, és adja meg a minden kötet esetében, azt az adatot töröl már titkosított adatok meghajtókon?
 Nem, adatokat a rendszer nem törli a már Azure Disk Encryption használatával titkosított meghajtók. Hogyan EncryptFormatAll nem újratitkosítása az operációs rendszer meghajtójának hasonlóan, nem fog újra már a titkosított adatok meghajtójának titkosításához. További információkért lásd: a [EncryptFormatAll feltételek](azure-security-disk-encryption-linux.md#bkmk_EFACriteria).        
+
+## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>Biztonsági mentése és visszaállítása egy titkosított virtuális gép? 
+
+Az Azure Backup lehetővé teszi a biztonsági mentése és visszaállítása titkosított virtuális gép belül az azonos előfizetésben és régióban.  Útmutatásért lásd: [biztonsági mentése és visszaállítása titkosított virtuális gépek az Azure Backup szolgáltatással](https://docs.microsoft.com/en-us/azure/backup/backup-azure-vms-encryption).  Egy titkosított virtuális gép helyreállítása egy másik régióban jelenleg nem támogatott.  
 
 ## <a name="where-can-i-go-to-ask-questions-or-provide-feedback"></a>Hol tudhatok meg kérdéseket tehet fel, vagy visszajelzést?
 

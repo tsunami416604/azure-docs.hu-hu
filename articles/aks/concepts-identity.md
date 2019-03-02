@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 0af3133a1f9a903874c25bf34af0fbf99da8af14
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 64150438560d48575b4b65db4cdaf61aa0ada240
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49381190"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243825"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Hozzáférési és azonosító beállításai az Azure Kubernetes Service (AKS)
 
@@ -75,6 +75,8 @@ Egy ClusterRoleBinding kötést létrehozni a szerepkörök felhasználókhoz ug
 
 Ismerkedés az Azure ad-vel és a Kubernetes RBAC, lásd: [integrálása az Azure Active Directory az aks-sel][aks-aad].
 
+További kapcsolódó ajánlott eljárások: [gyakorlati tanácsok a hitelesítés és engedélyezés az aks-ben][operator-best-practices-identity].
+
 És további információkat az alapvető Kubernetes AKS fogalmait tekintse meg a következő cikkeket:
 
 - [Kubernetes AKS-fürtök / és a számítási feladatok][aks-concepts-clusters-workloads]
@@ -98,3 +100,4 @@ Ismerkedés az Azure ad-vel és a Kubernetes RBAC, lásd: [integrálása az Azur
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-network]: concepts-network.md
+[operator-best-practices-identity]: operator-best-practices-identity.md

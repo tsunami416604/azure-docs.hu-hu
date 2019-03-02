@@ -4,7 +4,7 @@ description: Ez a cikk ismerteti az Azure Sentinel-forgatókönyv futtatása.
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.assetid: e4afc5c8-ffad-4169-8b73-98d00155fa5a
 ms.service: sentinel
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: db6751d6d43a9af31e157ffaeb8c8d3725982dd4
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 360ff53838b8be5cf91ee097b7c2566544ea9098
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992789"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244340"
 ---
 # <a name="tutorial-set-up-automated-threat-responses-in-azure-sentinel-preview"></a>Oktatóanyag: Automatizált threat válaszok az Azure-on Előzetesben Sentinel-beállítása
 

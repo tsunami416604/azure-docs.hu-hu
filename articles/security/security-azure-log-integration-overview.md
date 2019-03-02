@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 01/14/2019
 ms.author: TomSh
 ms.custom: azlog
-ms.openlocfilehash: 7b06d7bb85e7445f50956a003e46542062b09165
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c644d81b647fc1151b10a94fb636e3eeaba1ce5c
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118275"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245046"
 ---
 # <a name="introduction-to-azure-log-integration"></a>Bevezetés az Azure-naplók integrációja
 
@@ -61,7 +61,7 @@ Ha nincsenek más lehetőségek állnak rendelkezésre, fontolja meg az Azure Lo
 |---------|--------------------------|-------------------------------------------|
 |**Splunk** | -BA való migrálás megkezdéséhez a [Splunk bővítménye az Azure Monitor](https://splunkbase.splunk.com/app/3534/). | Használja a [Splunk összekötő](https://splunkbase.splunk.com/app/3534/). |
 |**QRadar** | Telepíthető át, vagy az utolsó szakaszában az ismertetett QRadar összekötő használatának megkezdéséhez [Stream Azure monitorozási adatok felhasználásra egy eseményközpontba egy külső eszközzel](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). | A dokumentált QRadar-összekötő használata a utolsó szakaszában [Stream Azure monitorozási adatok felhasználásra egy eseményközpontba egy külső eszközzel](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). |
-|**ArcSight** | Továbbra is használhatja az Azure-naplók integráló mindaddig, amíg az összekötő érhető el, majd utána áttelepíteni az összekötő-alapú megoldáshoz.  | Vegye figyelembe, alternatív megoldásként az Azure Log Analytics szolgáltatást. Ne készítse elő az Azure Log Integration, kivéve, ha a rendszer fogadja el az áttelepítési folyamatot, amikor elérhetővé válik az összekötőt. |
+|**ArcSight** | Továbbra is használhatja az Azure-naplók integráló mindaddig, amíg az összekötő érhető el, majd utána áttelepíteni az összekötő-alapú megoldáshoz.  | Érdemes lehet használni az Azure Monitor naplóira alternatívájaként. Ne készítse elő az Azure Log Integration, kivéve, ha a rendszer fogadja el az áttelepítési folyamatot, amikor elérhetővé válik az összekötőt. |
 
 > [!NOTE]
 > Bár az Azure Log Integration ingyenes megoldása, nincsenek társított log fájl adatokat tároló Azure storage költségeit.

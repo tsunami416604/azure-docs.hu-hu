@@ -14,23 +14,25 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/23/2018
 ms.author: srrengar
-ms.openlocfilehash: 30b064e3c20b184023cb6ada25d673f5cab6597c
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 25452d3d65518511c47087d1cb712d0a512416fc
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55297667"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245556"
 ---
 # <a name="service-fabric-linux-cluster-events-in-syslog"></a>A Syslog Linux-alapú Service Fabric-fürt események
 
 A Service Fabric platform eseményeket tájékoztatják a fürtben található fontos tevékenység tesz elérhetővé. Érhető el, amelyek ki vannak téve események teljes listáját [Itt](service-fabric-diagnostics-event-generation-operational.md). Nincsenek többféle módon, amelyen keresztül az események használhatók fel. Ebben a cikkben fogjuk megvitatni a Service Fabric írni ezeket az eseményeket a Syslog konfigurálása.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="introduction"></a>Bevezetés
 
 A 6.4-es kiadásban a SyslogConsumer fejlődéséből küldhet a Service Fabric platform eseményeket Syslog Linux-fürtök esetén. Ha bekapcsolta, események automatikusan átkerülnek a Log Analytics-ügynök által küldött és gyűjtött Syslog.
 
 Minden Syslog esemény 4 részből áll
-* Létesítmény
+* Szolgáltatás
 * Identitás
 * Üzenet
 * Severity
@@ -93,8 +95,8 @@ Itt láthatók az hívásához
     }
 ```
 
-## <a name="log-analytics-integration"></a>Log Analytics-integráció
-Ezeket a figyelési eszközben, például a Log Analytics Syslog-események olvashatja. Létrehozhat egy Log Analytics-munkaterületet az Azure piactéren, használatával ezen [útmutató] használatával. (.. / azure-monitor/learn/quick-create-workspace.md) is hozzá kell a Log Analytics-ügynök gyűjtenek, majd elküldi ezeket az adatokat a munkaterületet a fürthöz. Ez a teljesítményszámlálók adatainak összegyűjtése használt ugyanaz az ügynök. 
+## <a name="azure-monitor-logs-integration"></a>Az Azure Monitor-naplók integrációja
+Ezeket a figyelési eszközben, például az Azure Monitor naplóira Syslog-események olvashatja. Létrehozhat egy Log Analytics-munkaterületet az Azure piactéren, használatával ezen [útmutató] használatával. (.. / azure-monitor/learn/quick-create-workspace.md) is hozzá kell a Log Analytics-ügynök gyűjtenek, majd elküldi ezeket az adatokat a munkaterületet a fürthöz. Ez a teljesítményszámlálók adatainak összegyűjtése használt ugyanaz az ügynök. 
 
 1. Keresse meg a `Advanced Settings` panel
 
@@ -120,6 +122,6 @@ A fenti példa NodeDown esemény van. Az események teljes listáját megtekinth
 
 ## <a name="next-steps"></a>További lépések
 * [A Log Analytics-ügynök telepítésének](service-fabric-diagnostics-oms-agent.md) alakzatot a csomópontok összegyűjtéséhez a teljesítményszámlálókat és a docker-statisztikák és a tárolókhoz naplóinak összegyűjtésére
-* Ismerkedjen meg a [naplókeresési és lekérdezési](../log-analytics/log-analytics-log-searches.md) funkciók a Log Analytics részeként érhető el
-* [Nézettervező segítségével egyéni nézeteket hozhat létre a Log Analyticsben](../log-analytics/log-analytics-view-designer.md)
-* Hogyan referenciája [Syslog Log Analytics-integráció](../log-analytics/log-analytics-data-sources-syslog.md).
+* Ismerkedjen meg a [naplókeresési és lekérdezési](../log-analytics/log-analytics-log-searches.md) szolgáltatásai által kínált Azure Monitor naplóira
+* [Nézettervező segítségével egyéni nézeteket hozhat létre az Azure Monitor naplóira](../log-analytics/log-analytics-view-designer.md)
+* Hogyan referenciája [Azure Monitor integrációja naplózza a Syslog](../log-analytics/log-analytics-data-sources-syslog.md).

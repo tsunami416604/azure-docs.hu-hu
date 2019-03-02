@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 03/01/2019
 ms.author: juliako
-ms.openlocfilehash: 9671d9f61b610a85cbf2475e045c641a29dac11b
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 9952a7bbac1eb79de0d3425f839e3bd30196844e
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010616"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243890"
 ---
 # <a name="live-event-types-comparison"></a>Élő esemény típusok összehasonlítása
 
@@ -33,7 +33,7 @@ Az alábbi táblázat az élő esemény kétféle funkcióit hasonlítja össze.
 | Egyféle sávszélességű bemeneti bitsebességekre a felhőben van kódolva. |Nem |Igen |
 | Az hozzájárulásra hírcsatorna maximális képfelbontás |4 KB-os (4096 × 2160 60 keretek/s) |1080p (1920 x 1088 30 keretek/s)|
 | A csatorna közreműködői ajánlott maximális rétegek|Legfeljebb 12|Egy hang|
-| A kimenet maximális rétegek| Ugyanaz, mint a bemenet|Legfeljebb 6|
+| A kimenet maximális rétegek| Ugyanaz, mint a bemenet|Akár 6 (lásd az alábbi rendszer készletek)|
 | Hozzájárulás maximális összesített sávszélesség-hírcsatorna|60 MB/s|–|
 | Maximális átviteli sebesség a hozzájárulás az egyetlen réteg |20 Mbps|20 Mbps|
 | Több nyelv hangsáv támogatása|Igen|Nem|
@@ -54,6 +54,30 @@ Az alábbi táblázat az élő esemény kétféle funkcióit hasonlítja össze.
 | Nem egységes bemeneti GOPs támogatása|Igen|Nem – bemeneti kell kijavítása Képcsoporttal időtartama|
 | Változó keret arány bevitel támogatása|Igen|Nem – bemeneti képkockasebessége kell rögzíteni. Kisebb módosításokat kívánalmakhoz, például magas mozgásban lévő adatoknak egyaránt jelenetek során. De a hozzájárulás hírcsatorna nem dobható el a képkockasebességet (például, hogy a 15 keretek/másodperc).|
 | Automatikus – gyors élő esemény, amikor a bevitel hírcsatorna elvész.|Nem|Ha nem fut LiveOutput 12 óra elteltével|
+
+## <a name="system-presets"></a>Rendszer-készletek
+
+Valós idejű kódolás használata esetén (élő esemény beállítása **Standard**), a kódolási előbeállítás határozza meg, hogyan a bejövő streamből több bitsebességre való átkódolása vagy rétegek van kódolva. Jelenleg az egyetlen megengedett érték a készlet *Default720p* (alapértelmezett).
+
+**Default720p** lesz a videó kódolandó a következő 6 rétegek.
+
+### <a name="output-video-stream"></a>Kimeneti videót Stream
+
+| Átviteli sebesség | Szélesség | Magasság | MaxFPS | Profil | Kimeneti Stream neve |
+| --- | --- | --- | --- | --- | --- |
+| 3500 |1280 |720 |30 |Magas |Video_1280x720_3500kbps |
+| 2200 |960 |540 |30 |Magas |Video_960x540_2200kbps |
+| 1350 |704 |396 |30 |Magas |Video_704x396_1350kbps |
+| 850 |512 |288 |30 |Magas |Video_512x288_850kbps |
+| 550 |384 |216 |30 |Magas |Video_384x216_550kbps |
+| 200 |340 |192 |30 |Magas |Video_340x192_200kbps |
+
+> [!NOTE]
+> Ha egy egyéni, élő kódolási beállításkészletet használja van szüksége, forduljon a amshelp@microsoft.com. Adjon meg a kívánt táblát felbontást és bitsebességre való átkódolása. Győződjön meg arról, hogy csak egy réteg 720 p, és legfeljebb 6 rétegek.
+
+### <a name="output-audio-stream"></a>Kimeneti Audio Stream
+
+Hang, sztereó AAC-LC, 128 kb/s, mintavételi ráta 48 kHz van kódolva.
 
 ## <a name="next-steps"></a>További lépések
 

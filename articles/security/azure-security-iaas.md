@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: barclayn
-ms.openlocfilehash: de89e0a30f39ba97379b4d55914338702aef5c32
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: c60022d43af1601359ab5de8b4d3e4eb06dd239a
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990408"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243227"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Ajánlott biztonsági eljárások IaaS számítási feladatokhoz az Azure-ban
 
@@ -128,7 +128,7 @@ A biztonsági állapotát, figyelheti a [Windows](../security-center/security-ce
 
 A Security Center folyamatosan figyelheti a fenyegetéseket, és a potenciális fenyegetéseket a biztonsági riasztásokban érhetők el. Biztonsági incidensek nevű egyetlen nézetben korrelált fenyegetések vannak összesítve.
 
-A Security Center az adatokat tároló [Azure Log Analytics](../log-analytics/log-analytics-overview.md). A log Analytics betekintést nyerhet az alkalmazások és erőforrások működését, a lekérdezési nyelvet és elemzési motort biztosít. Emellett adatgyűjtés [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md), megoldásokat, és a virtuális gépeken a felhőben vagy a helyszínen telepített ügynökök. A közös funkcióknak köszönhetően átfogó képet alkothat a környezetről.
+A Security Center az adatokat tároló [naplózza az Azure Monitor](../log-analytics/log-analytics-overview.md). Az Azure Monitor naplóira betekintést nyerhet az alkalmazások és erőforrások működését, a lekérdezési nyelvet és elemzési motort biztosít. Emellett adatgyűjtés [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md), megoldásokat, és a virtuális gépeken a felhőben vagy a helyszínen telepített ügynökök. A közös funkcióknak köszönhetően átfogó képet alkothat a környezetről.
 
 Szervezetek számára, amelyek a virtuális gépek nem erős biztonság kényszerítése nélkül is működőképesek maradhatnak a jogosulatlan felhasználók biztonsági vezérlők megkerülésére lehetséges kísérletek maradnak.
 

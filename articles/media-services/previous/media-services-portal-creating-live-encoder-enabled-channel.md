@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 28210c06892097abb831f3f6f27b8c68652a8957
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 38a5c4f953a70b338989806ae5368c165f5107a4
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003993"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57246083"
 ---
-# <a name="how-to-perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-the-azure-portal-legacy"></a>Élő streamelés a Media Services segítségével többszörös sávszélességű Streamek létrehozása az Azure Portalon (örökölt)
+# <a name="how-to-perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-the-azure-portal"></a>Élő streamelés Media Services segítségével többszörös sávszélességű Streamek létrehozása az Azure portal használatával  
 > [!div class="op_single_selector"]
 > * [Portál](media-services-portal-creating-live-encoder-enabled-channel.md)
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)

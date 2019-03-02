@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9b136c73afc08e05694aed99d57139f77466788d
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 121011555d0ba6fdae392275495b89a9759f3978
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55490379"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244264"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Ajánlott eljárások az Azure Resource Manager sablon
 
@@ -131,7 +131,7 @@ Ebben a szakaszban található információk hasznos lehet, ha [paraméterek](re
 
 ## <a name="variables"></a>Változók
 
-A következő információ hasznos lehet a végzett munka során [változók](resource-manager-templates-variables.md):
+A következő információ hasznos lehet a végzett munka során [változók](resource-group-authoring-templates.md#variables):
 
 * Változók használata a sablonban egynél többször használatához szükséges értékeket. Ha az érték csak egyszer legyen használva, a kódolt érték a sablon olvashatóbbá teszi.
 
@@ -277,7 +277,7 @@ A következő információ hasznos lehet a végzett munka során [erőforrások]
 
 ## <a name="outputs"></a>Kimenetek
 
-Ha egy sablon használatával hozzon létre nyilvános IP-címek,- [szakasz kimenete](resource-manager-templates-outputs.md) , amely az IP-cím és a teljesen minősített tartománynevét (FQDN) adatait adja vissza. Nyilvános IP-címek és teljes tartománynevek könnyen hozzáférhet az üzembe helyezést követően a kimeneti értékeket is használhat.
+Ha egy sablon használatával hozzon létre nyilvános IP-címek,- [szakasz kimenete](resource-group-authoring-templates.md#outputs) , amely az IP-cím és a teljesen minősített tartománynevét (FQDN) adatait adja vissza. Nyilvános IP-címek és teljes tartománynevek könnyen hozzáférhet az üzembe helyezést követően a kimeneti értékeket is használhat.
 
 ```json
 "outputs": {

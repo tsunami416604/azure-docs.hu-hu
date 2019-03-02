@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 1ce1faa13c541939335d188866e15c683b6ffc28
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 2065381063058eb59dd5896e12c1aa34184148bf
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110268"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247001"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Az Azure Security Center végpontvédelmi problémák kezelése
 Az Azure Security Center figyeli a kártevőkkel szembeni védelem állapotát, és ezt jelzi az Endpoint protection problémák panel alatt. A Security Center problémákról, például az észlelt fenyegetések és a nem megfelelő védelemmel, amely sérülékennyé teheti a virtuális gépek (VM) és a számítógépek kártevőirtó fenyegetések emeli ki. Az információk használatával **végpontvédelem**, azonosíthatja a terv azonosított problémák elhárítása.
@@ -84,13 +84,13 @@ Ebben a példában használjuk **számítási**.  Áttekintjük, hogyan telepít
 
    ![Válassza ki a nem Azure-beli számítógépeken nincs telepítve az Endpoint protection][4]
 
-2. A **nem Azure-beli számítógépeken nincs telepítve az Endpoint protection**, válasszon ki egy munkaterületet. Szűrt a munkaterületet a Log Analytics keresési lekérdezés megnyílik, és megjeleníti a számítógépek kártevőirtó hiányzik. További információ a listából válasszon ki egy számítógépet.
+2. A **nem Azure-beli számítógépeken nincs telepítve az Endpoint protection**, válasszon ki egy munkaterületet. Az Azure Monitor naplók keresési lekérdezés szűri, hogy a munkaterület megnyílik, és megjeleníti a számítógépek kártevőirtó hiányzik. További információ a listából válasszon ki egy számítógépet.
 
-   ![A log Analytics-keresés][5]
+   ![Az Azure Monitor-naplók keresése][5]
 
 Csak az adott számítógépen a szűrt adatokat egy másik keresési eredmény nyílik meg.
 
-  ![A log Analytics-keresés][6]
+  ![Az Azure Monitor-naplók keresése][6]
 
 > [!NOTE]
 > Azt javasoljuk, hogy az endpoint protection ki kell építeni az összes virtuális gép és számítógép azonosításához, és távolítsa el a vírusok, kémprogramok és más, kártevő szoftverek.

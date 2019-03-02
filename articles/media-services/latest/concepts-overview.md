@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 02/26/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: be55fcd7bb4baab218f739094b91fc734c2fb70d
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: f9d431fe0ee76edf5d41c1ce7831f335128402a8
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985559"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244740"
 ---
 # <a name="media-services-concepts"></a>A Media Services – alapelvek
 
@@ -36,7 +36,7 @@ Miután az eszközök a kiváló minőségű digitális médiafájlok feltölté
 
 Kódolás a Media Services v3-as, létre kell **alakítja át az** és **feladatok**.
 
-![Átalakítások](./media/concepts/transforms-jobs.png)
+![Átalakítások](./media/encoding/transforms-jobs.png)
 
 - [Átalakítások és feladatok](transforms-jobs-concept.md)
 - [Kódolás a Media Services használatával](encoding-concept.md)
@@ -55,7 +55,7 @@ Létrehozásakor a **Streamelési lokátor**, mellett az eszköz nevét, meg kel
 
 A dinamikus csomagolás, a tartalom, élő vagy igény szerinti adatfolyam-e használható. Az alábbi ábrán látható, a dinamikus csomagolás munkafolyamat igényalapú streameléshez.
 
-![A dinamikus kódolás](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
+![A dinamikus csomagolás](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
 A Media Services biztosítható az élő és igény szerinti tartalom, dinamikusan titkosítja az Advanced Encryption Standard (AES-128) vagy /, és a három fő digitális jogkezelési (technológia DRM) felügyeleti rendszerek bármelyikét: A Microsoft PlayReady, a Google Widevine és az Apple fairplay által. Media Services is biztosít a modult az AES-kulcsok és a DRM (PlayReady, Widevine és FairPlay) licenceket az arra jogosult ügyfelek.
 
@@ -63,11 +63,13 @@ Ha a stream a titkosítási beállítások megadása, hozzon létre a **tartalom
 
 Az alábbi ábrán a Media Services content protection munkafolyamat: 
 
-![Tartalom védelme](./media/concepts/content-protection.png)
+![Tartalom védelme](./media/content-protection/content-protection.svg)
+
+&#42;* a dinamikus titkosítás AES-128 "tiszta kulcsot" CBCS és CENC támogatja. 
 
 Használhatja a Media Services **dinamikus jegyzékfájlok** csak egy adott megjelenítés vagy subclips a videó továbbításához. A következő példában egy kódoló egy mezzanine eszköz kódolandó hét ISO MP4-fájlnak videó beállításkészletben (a 180p a 1080p) lett megadva. A kódolt objektumhoz dinamikusan csomagolható be a következő adatfolyam-továbbítási protokollok bármelyikét: HLS, MPEG DASH és Smooth.  A diagram tetején jelenik meg a HLS-jegyzékfájl a szűrők az eszköz (tartalmaz minden hét beállításkészletben).  A bal alsó "ott" nevű szűrőt alkalmaztak, amelyhez a HLS-jegyzékfájl jelenik meg. A "ott" szűrő meghatározza, hogy távolítsa el az összes bitsebességre való átkódolása alább 1 MB/s, amely eredményezett az alsó két minőségi szint alatt levágja, a válaszban. Az alul a jobb oldalon a HLS-jegyzékfájlt, amelyhez "mobileszköz" nevű szűrőt alkalmaztak jelenik meg. A "mobileszköz" szűrő Megadja, hogy távolítsa el a beállításkészletben, ahol a megoldás nem haladja meg a két eredményezett 720p 1080p beállításkészletben levágja, folyamatban van.
 
-![Megjelenítés szűrése](./media/concepts/media-services-rendition-filter.png)
+![Megjelenítés szűrése](./media/filters-dynamic-manifest-overview/media-services-rendition-filter.png)
 
 - [dinamikus becsomagolás](dynamic-packaging-overview.md)
 - [Streamvégpontok](streaming-endpoint-concept.md)
@@ -84,7 +86,7 @@ Az Azure Media Services lehetővé teszi, hogy az ügyfeleknek az Azure-felhőbe
 
 Az alábbi ábrán az átmenő írja be a munkafolyamat:
 
-![az átmenő](./media/concepts/pass-through.png)
+![az átmenő](./media/live-streaming/pass-through.svg)
 
 - [Élő adatfolyam – áttekintés](live-streaming-overview.md)
 - [Élő események és élő kimenetek](live-events-outputs-concept.md)

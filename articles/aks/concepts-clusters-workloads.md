@@ -5,18 +5,18 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 7f964397b476d5a97ecdde0ae22bd6662a435e1a
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: d4293bf6a375f3e1a26c0c4fb50fcdc7bb5b8e8e
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456520"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243856"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>A Kubernetes alapvető fogalmainak Azure Kubernetes Service (AKS)
 
-Alkalmazásfejlesztés áthelyezte a tárolókon alapuló megközelítés felé, szervezését és kezelését az összekapcsolt erőforrásokat kell fontos válik. Kubernetes az vezető platform, amely lehetővé teszi a hibatűrő alkalmazások és szolgáltatások megbízható ütemezés megadása. Az Azure Kubernetes Service (AKS) egy felügyelt Kubernetes, ajánlat, amely további leegyszerűsíti a tárolóalapú alkalmazások üzembe helyezését és felügyeletét.
+Alkalmazásfejlesztés a tárolókon alapuló megközelítés felé helyezi át, mivel összehangolhatja és kezelheti az erőforrásokat kell fontos. Kubernetes az vezető platform, amely lehetővé teszi a hibatűrő alkalmazások és szolgáltatások megbízható ütemezés megadása. Az Azure Kubernetes Service (AKS) egy felügyelt Kubernetes, ajánlat, amely további leegyszerűsíti a tárolóalapú alkalmazások üzembe helyezését és felügyeletét.
 
 Ez a cikk bemutatja a fő Kubernetes-infrastruktúra összetevőinek például a *fürt fő*, *csomópontok*, és *csomópontkészletek*. Számítási erőforrások, például *podok*, *központi telepítések*, és *beállítja* jelennek még meg, hogyan csoportosíthatók az erőforrások, valamint *névterek*.
 
@@ -56,13 +56,15 @@ A felügyelt fürt fő azt jelenti, hogy nem kell konfigurálni az összetevők,
 
 A fürt fő adott módon vagy hozzájuk a közvetlen hozzáférésre van szükségük van szüksége, ha a saját Kubernetes fürt használatával telepíthet [aks-motor][aks-engine].
 
+További kapcsolódó ajánlott eljárások: [ajánlott eljárások a fürt biztonsági és frissítései az aks-ben][operator-best-practices-cluster-security].
+
 ## <a name="nodes-and-node-pools"></a>Csomópont és csomópont-készletek
 
 Az alkalmazások és a támogató szolgáltatások futtatásához, szükség van egy Kubernetes *csomópont*. AKS-fürt rendelkezik egy vagy több csomópont, amely egy Azure virtuális gép (VM) a Kubernetes csomópont-összetevőinek és a futtatókörnyezet a tárolót futtató:
 
 - A `kubelet` a Kubernetes-ügynök, amely feldolgozza a fürt fő és a kért tárolókban futó ütemezés vezénylési kérelmeit.
 - Virtuális hálózatkezelés kezeli a *kube-proxy* minden egyes csomóponton. A proxy útvonalakat a hálózati forgalmat, és kezeli a szolgáltatások és a podok IP-címzés.
-- A *container modul* az a komponens, amely lehetővé teszi a tárolóalapú alkalmazások futtatásához, és további erőforrások, például a virtuális hálózat és tároló együttműködik. Az aks-ben a Docker, a tároló-futtatókörnyezet szolgál.
+- A *container modul* az a komponens, amely lehetővé teszi a tárolóalapú alkalmazások futtatásához, és további erőforrások, például a virtuális hálózat és tároló együttműködik. Az aks-ben a tároló-futtatókörnyezet Moby használják.
 
 ![Az Azure virtuális gép és a támogató erőforrások egy Kubernetes-csomópont](media/concepts-clusters-workloads/aks-node-resource-interactions.png)
 
@@ -70,7 +72,7 @@ Az Azure virtuális gép méretét a csomópontok határozza meg, hány processz
 
 Az aks-ben Ubuntu Linux esetében a fürtben található csomópontok a Virtuálisgép-lemezkép jelenleg alapján. AKS-fürt létrehozása vagy vertikális felskálázás a csomópontok számát, az Azure platform a kért számú virtuális gépeket hoz létre, és konfigurálja őket. Nem tartozik a végezhető el a manuális konfiguráció.
 
-Egyéni csomagok vagy egy másik gazdagép operációs Rendszeréhez, tároló-futtatókörnyezet, használni kell, ha a saját Kubernetes fürt használatával telepíthet [aks-motor][aks-engine]. A felsőbb rétegbeli `aks-engine` kiadott szolgáltatások és konfigurációs lehetőségeket talál, mielőtt hivatalosan támogatott AKS-fürtben. Például, ha szeretné használni a Windows-tárolók vagy egy eltérő Docker container modul, használhatja `aks-engine` konfigurálásához és üzembe helyezéséhez a Kubernetes-fürt, amely az aktuális igényeinek.
+Egyéni csomagok vagy egy másik gazdagép operációs Rendszeréhez, tároló-futtatókörnyezet, használni kell, ha a saját Kubernetes fürt használatával telepíthet [aks-motor][aks-engine]. A felsőbb rétegbeli `aks-engine` kiadott szolgáltatások és konfigurációs lehetőségeket talál, mielőtt hivatalosan támogatott AKS-fürtben. Például, ha szeretné használni a Windows-tárolók és a egy tároló-futtatókörnyezet Moby eltérő, használhatja `aks-engine` konfigurálásához és üzembe helyezéséhez a Kubernetes-fürt, amely az aktuális igényeinek.
 
 ### <a name="resource-reservations"></a>Erőforrás-foglalások
 
@@ -92,6 +94,8 @@ Példa:
     - Összesen *(32-4) 28 GiB =* érhető el a csomópontot
     
 Az alapul szolgáló OS csomópont is igényli néhány saját alapvető funkcióinak végrehajtásához a CPU és memória-erőforrások mennyiségét.
+
+További kapcsolódó ajánlott eljárások: [ajánlott eljárásai az aks-ben alapszintű ütemezési funkciókat][operator-best-practices-scheduler].
 
 ### <a name="node-pools"></a>Csomópontkészletek
 
@@ -115,7 +119,7 @@ A *üzembe helyezési* egy vagy több azonos podok, a Kubernetes üzembe helyez�
 
 Módosíthatja a központi telepítések podok konfigurációjának módosítása, a tárolórendszerképet, vagy csatolt storage. A központi telepítési vezérlő kiüríti és replikák adott számú leállítja, replikákat hoz létre az új üzemelő példány definíciója, és a folyamat továbbra is fennáll, addig, amíg a központi telepítésben lévő összes replika frissülnek.
 
-Az aks-ben a legtöbb állapot nélküli alkalmazások egyes podok ütemezés helyett az üzembe helyezési modellt kell használnia. Kubernetes figyelni tudja, és az annak érdekében, hogy a szükséges központi telepítések állapotát a fürt futtatása replikák száma. Egyes podok csak ütemezésekor az a podok nem újraindítása, ha probléma merül fel, és nem megfelelő állapotú csomópontokat a újraütemezte vannak, ha az aktuális csomópont hibába ütközik.
+Az aks-ben a legtöbb állapot nélküli alkalmazások egyes podok ütemezés helyett az üzembe helyezési modellt kell használnia. Kubernetes figyelni tudja, és az annak érdekében, hogy a szükséges központi telepítések állapotát a fürt futtatása replikák száma. Az egyes podok csak ütemezésekor a podok nem újraindítása, ha probléma merül fel, és nem megfelelő állapotú csomópontokat a újraütemezte, ha az aktuális csomópont hibát észlel.
 
 Ha egy alkalmazás-példányok a kvórum mindig elérhetők vonatkozó kezelési döntést kell tenni, akadályozza meg, hogy lehetővé teszi egy frissítési folyamat nem szeretné. *Megszakítás költségvetése pod* le lehessen állítani a központi telepítés hány replikák update vagy a csomópont a frissítés során meghatározására használható. Például, ha rendelkezik *5* replikák a központi telepítésben, megadhat egy pod megszakadását *4* csak engedélyezéséhez legyenek a törölt/újraütemezte egyszerre több replikát. Pod erőforráskorlátok, az ajánlott eljárás, hogy pod megszakítás költségvetése meghatározni mindig jelen kell lennie a replikák minimális száma igénylő alkalmazásokhoz.
 
@@ -236,3 +240,5 @@ Ez a cikk ismerteti az egyes a Kubernetes-alapösszetevők, és ezek hogyan vona
 [aks-concepts-network]: concepts-network.md
 [acr-helm]: ../container-registry/container-registry-helm-repos.md
 [aks-helm]: kubernetes-helm.md
+[operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
+[operator-best-practices-scheduler]: operator-best-practices-scheduler.md

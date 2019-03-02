@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 51a334557ddfb57ceab318963e319fd046d3a703
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 6aec4e4bbf0abcfb6201da50381b6697a47716fa
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820042"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244587"
 ---
 # <a name="list-of-service-fabric-events"></a>A Service Fabric-események listája 
 
-A Service Fabric megjelenít egy elsődleges Fürtesemények tájékoztatja, mint a fürt állapotának [Service Fabric-események](service-fabric-diagnostics-events.md). Ezek a csomópontok és a fürt Service Fabric által végrehajtott műveletek vagy a fürt tulajdonosa vagy operátor által végzett kezelési döntést alapulnak. Ezek az események hozzáférhető konfigurálása a különféle módokon, például a konfigurálás [a fürttel a Log Analytics](service-fabric-diagnostics-oms-setup.md), vagy a lekérdezése a [EventStore](service-fabric-diagnostics-eventstore.md). Windows-gépeken ezeket az eseményeket az Eseménynapló - be vannak adatkéréseket így láthatja a Service Fabric-események az eseménynaplóban. 
+A Service Fabric megjelenít egy elsődleges Fürtesemények tájékoztatja, mint a fürt állapotának [Service Fabric-események](service-fabric-diagnostics-events.md). Ezek a csomópontok és a fürt Service Fabric által végrehajtott műveletek vagy a fürt tulajdonosa vagy operátor által végzett kezelési döntést alapulnak. Ezek az események hozzáférhető konfigurálása a különféle módokon, például a konfigurálás [Azure Monitor naplózza a fürttel](service-fabric-diagnostics-oms-setup.md), vagy a lekérdezése a [EventStore](service-fabric-diagnostics-eventstore.md). Windows-gépeken ezeket az eseményeket az Eseménynapló - be vannak adatkéréseket így láthatja a Service Fabric-események az eseménynaplóban. 
 
 Az alábbiakban néhány ezeket az eseményeket jellemzői
 * Minden egyes esemény egy adott entitás a fürt van kötve. példa: alkalmazás, szolgáltatás, csomópontot, replika.

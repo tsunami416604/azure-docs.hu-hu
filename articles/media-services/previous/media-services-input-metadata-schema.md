@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 42e3464a190f296675b544e0087b664ff256f2fa
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 7ba5287b6214564a7be7e4b183aa8fe397bd24b8
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003244"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243737"
 ---
-# <a name="input-metadata-legacy"></a>Bemeneti metaadatok (örökölt)
+# <a name="input-metadata"></a>Bemeneti metaadatok 
 
 A kódolási feladat vagy társítva egy bemeneti objektuma (eszközök) a amely kívánt kódolási feladatok elvégzésére.  A feladat befejeztével a kimeneti adategység jön létre.  A kimeneti objektum tartalmazza a videó, hang, a miniatűrök, jegyzékfájl, stb. A kimeneti objektum bemeneti objektuma metaadatait tartalmazó fájl is tartalmazza. A metaadatok XML-fájl neve formátuma a következő: &lt;asset_id&gt;_metadata.xml (például 41114ad3 eb5e – 4c - 57-8d 92-5354e2b7d4a4_metadata.xml), ahol &lt;asset_id&gt; AssetId értéke a bemeneti objektuma.  
 

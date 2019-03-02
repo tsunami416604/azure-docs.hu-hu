@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a405583503b75a64dda2bf277a4a50be4e926d28
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 857672e8dee4dbe8d586db0cd80b206ec6ecb7df
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111288"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244570"
 ---
 # <a name="azure-network-security"></a>Azure hálózati biztonság
 
@@ -393,7 +393,7 @@ Emellett az Application Gateway WAF segítségével monitorozzák a webalkalmaz�
 
 A JSON-formátumú napló közvetlenül az ügyfél tárfiókja kerül. Ezek a naplók teljes hozzáféréssel rendelkezik, és saját adatmegőrzési szabályzatok alkalmazása.
 
-Ezek a naplók képes feldolgozni a saját elemzési rendszer használatával történő [Azure Log Integration](https://aka.ms/AzLog). WAF-naplók integrálva vannak az [Log Analytics](../log-analytics/log-analytics-overview.md) így használhatja a Log Analytics kifinomult a minden részletre kiterjedő lekérdezések végrehajtásához.
+Ezek a naplók képes feldolgozni a saját elemzési rendszer használatával történő [Azure Log Integration](https://aka.ms/AzLog). WAF-naplók integrálva vannak az [naplózza az Azure Monitor](../log-analytics/log-analytics-overview.md) használhassa az Azure Monitor naplóira kifinomult a minden részletre kiterjedő lekérdezések végrehajtásához.
 
 #### <a name="azure-web-application-firewall-waf"></a>Az Azure webalkalmazási tűzfal (WAF)
 
@@ -507,7 +507,7 @@ Az Azure a figyelése, megelőzését, észlelését és válaszadás a biztons�
 
 -   Hálózati erőforrások szintű monitorozása
 
--   Log Analytics
+-   Az Azure Monitor naplóira
 
 ### <a name="network-watcher"></a>Hálózati figyelő
 
@@ -547,7 +547,7 @@ Meghatározza, hogy a [következő Ugrás](https://docs.microsoft.com/azure/netw
 
 Következő ugrás is az a következő ugrás társított útvonaltábla adja vissza. Lekérdezésekor a következő ugrás, ha egy felhasználó által megadott útvonalat az útvonal van meghatározva, hogy vissza kell. Ellenkező esetben a következő ugrás "Rendszerútvonal" adja vissza.
 
-#### <a name="security-group-view"></a>biztonsági csoport Nézet
+#### <a name="security-group-view"></a>Biztonságicsoport-nézet
 
 A hatékony és alkalmazott biztonsági szabályok, amelyek érvényesek a virtuális gép beolvasása. Hálózati biztonsági csoportok társítva, egy alhálózatot vagy egy hálózati adapterek szintjén. Ha kapcsolódik egy alhálózat szintjén, az alhálózat összes Virtuálisgép-példány vonatkozik. Hálózati [biztonsági csoport nézet](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview) adja vissza az összes beállított NSG-k és szabályokat, amelyek a konfiguráció betekintést nyújtó virtuális gép hálózati adapter és az alhálózat szintjén vannak társítva. Emellett az érvényben lévő biztonsági szabályokat a rendszer minden virtuális gép hálózati adapterei adja vissza. Használatával a hálózati biztonsági csoport nézet, felmérheti a hálózati biztonsági réseket, például a portok megnyitása virtuális Géphez. Ha a hálózati biztonsági csoport a várt módon működik alapján is ellenőrizheti a [a konfigurált és érvényben lévő biztonsági szabályok összehasonlítása](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-auditing-powershell).
 
@@ -597,17 +597,17 @@ Mérőszám játszik TELJESÍTMÉNYMÉRÉSEK és a egy időszakban gyűjtött te
 
 #### <a name="diagnostic-logs"></a>Diagnosztikai naplók
 
-Rendszeres és spontán események hálózati erőforrások által létrehozott és a storage-fiókok küldött egy Eseményközpontba, vagy a Log Analytics naplózza. Ezek a naplók rávilágítanak az erőforrás állapotát. Ezek a naplók az eszközök, például a Power bi-ban és a Log Analytics is megtekinthetők. Diagnosztikai naplók megtekintése talál [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics).
+Rendszeres és spontán események hálózati erőforrások által létrehozott és a storage-fiókok küldött egy Eseményközpontba, naplózza, vagy az Azure Monitor naplózza. Ezek a naplók rávilágítanak az erőforrás állapotát. Ezek a naplók az eszközök, például a Power BI és az Azure Monitor naplókban is megtekinthetők. Diagnosztikai naplók megtekintése talál [naplózza az Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics).
 
 Diagnosztikai naplók érhetők el [terheléselosztó](https://docs.microsoft.com/azure/load-balancer/load-balancer-monitor-log), [hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log), útvonalakat, és [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics).
 
 A Network Watcher biztosít a diagnosztikai naplók megtekintése. Ez a nézet az összes hálózati erőforrások, amelyek támogatják a diagnosztikai naplózás tartalmazza. Ebben a nézetben engedélyezheti és letilthatja a hálózati erőforrásokat, gyorsan és kényelmesen.
 
-### <a name="log-analytics"></a>Log Analytics
+### <a name="azure-monitor-logs"></a>Az Azure Monitor naplóira
 
-[Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) egy szolgáltatás az Azure-ban, amely figyeli a felhőbeli és helyszíni környezeteket a rendelkezésre állás és teljesítmény fenntartása érdekében. A felhőben és a helyszíni környezetben található erőforrások által létrehozott, valamint egyéb figyelési eszközök által biztosított adatokat gyűjtésével biztosítsa elemzést több forráson.
+[Az Azure Monitor naplóira](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview) egy szolgáltatás az Azure-ban, amely figyeli a felhőbeli és helyszíni környezeteket a rendelkezésre állás és teljesítmény fenntartása érdekében. A felhőben és a helyszíni környezetben található erőforrások által létrehozott, valamint egyéb figyelési eszközök által biztosított adatokat gyűjtésével biztosítsa elemzést több forráson.
 
-A log Analytics a hálózatok figyelése a következő megoldásokat kínál:
+Az Azure Monitor naplóira a hálózatok figyelése a következő megoldásokat kínál:
 
 -   Network Performance Monitor (NPM)
 
@@ -627,7 +627,7 @@ Közötti kapcsolat figyelésére szolgál:
 -   Egy többrétegű alkalmazás különböző szinteken futtató alhálózatok.
 
 
-#### <a name="azure-application-gateway-analytics-in-log-analytics"></a>A log analytics az Azure application gateway analytics
+#### <a name="azure-application-gateway-analytics-in-azure-monitor-logs"></a>Az Azure application gateway analytics az Azure Monitor naplóira
 
 Az Application Gateway átjárók támogatottak a következő naplók kapcsolódnak:
 
@@ -641,7 +641,7 @@ A következő metrikákat az Application Gateway átjárók támogatottak:
 
 -   5 perces átviteli sebesség
 
-#### <a name="azure-network-security-group-analytics-in-log-analytics"></a>Azure-beli hálózati biztonsági csoport elemzési a log analyticsben
+#### <a name="azure-network-security-group-analytics-in-azure-monitor-logs"></a>Azure-beli hálózati biztonsági csoport analytics az Azure Monitor naplóira
 
 A következő naplók kapcsolódnak támogatottak [hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log):
 
@@ -652,7 +652,7 @@ A következő naplók kapcsolódnak támogatottak [hálózati biztonsági csopor
 ## <a name="next-steps"></a>További lépések
 További információ biztonságával kapcsolatban olvassa el részletes biztonsági témakörök el:
 
--   [Naplóelemzés hálózati biztonsági csoportok (NSG-k)](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)
+-   [Hálózati biztonsági csoportok (NSG-k) az Azure Monitor naplóira](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)
 
 -   [Hálózatkezelés innovációkról a felhőalapú megszakítások időtartamát befolyásoló](https://azure.microsoft.com/blog/networking-innovations-that-drive-the-cloud-disruption/)
 

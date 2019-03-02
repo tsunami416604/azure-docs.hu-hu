@@ -15,12 +15,12 @@ ums.workload: na
 ms.date: 01/14/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: 93a4595ce0b36c8d0f447177bda69d2d8cab12c8
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: a8b792ee7731a9994ded76ef1614fc3966d033d0
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117528"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243805"
 ---
 # <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Az Azure diagnosztikai naplózás és a Windows-eseménytovábbítás Azure Log Integration
 
@@ -248,5 +248,5 @@ Azure Log Integration kapcsolatos további információkért tekintse meg a köv
 * [Bevezetés az Azure Log Integration](security-azure-log-integration-overview.md). Ez a cikk bemutatja, Azure Log Integration, annak főbb funkcióit és működését.
 * [Partner-konfigurációs lépések](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/). Ebben a blogbejegyzésben bemutatja, hogyan konfigurálja az Azure Log Integration partnermegoldások Splunk, HP ArcSight és az IBM QRadar dolgozhat. Az aktuális útmutató leírja a SIEM-összetevők konfigurálásával kapcsolatos. Ellenőrizze a SIEM gyártója által biztosított további részleteket.
 * [Az Azure Log Integration – gyakori kérdések (GYIK)](security-azure-log-integration-faq.md). Ez a GYIK az Azure Log Integration kapcsolatos általános kérdéseket válaszol.
-* [Az Azure Security Center riasztásainak integrálása az Azure Log Integration](../security-center/security-center-integrating-alerts-with-log-integration.md). Ez a cikk bemutatja, hogyan szinkronizálhatja a Security Center riasztásait és a virtuális gép biztonsági események Azure Diagnostics és az Azure-tevékenység által gyűjtött naplók. A naplók szinkronizálja az Azure Log Analytics vagy az SIEM-megoldás használatával.
+* [Az Azure Security Center riasztásainak integrálása az Azure Log Integration](../security-center/security-center-integrating-alerts-with-log-integration.md). Ez a cikk bemutatja, hogyan szinkronizálhatja a Security Center riasztásait és a virtuális gép biztonsági események Azure Diagnostics és az Azure-tevékenység által gyűjtött naplók. Szinkronizálja a naplókat a naplók az Azure Monitor vagy a SIEM-megoldástól.
 * [Új funkciók az Azure Diagnostics és az Azure-auditnaplók](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/). Ebben a blogbejegyzésben bemutatja az Azure-auditnaplók, és más funkciók, amelyek segítségével betekintést nyerhet az Azure-erőforrások műveletei.

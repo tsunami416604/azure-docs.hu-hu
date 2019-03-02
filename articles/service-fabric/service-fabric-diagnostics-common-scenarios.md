@@ -14,16 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 377b41f6ea011c06457fb6550ddd8d448574835e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 355b859428712b2e7b086fdfc152044814695b7b
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56881332"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243941"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>A Service Fabric gyakori helyzetek diagnosztizálása
 
-Ez a cikk azt mutatja be, monitorozása és diagnosztizálása a Service Fabric területén észlelt felhasználók gyakori forgatókönyveket. A bemutatott esetekben a service fabric minden 3 réteg terjed ki: Alkalmazás, a fürt és az infrastruktúra. Egyes megoldások használja az Application Insights és a Log Analytics, az Azure figyelési eszközök, minden egyes forgatókönyv végrehajtásához. A lépéseket az egyes megoldások biztosít a felhasználóknak Bevezetés az Application Insights és a Log Analytics használata a Service Fabric kontextusában.
+Ez a cikk azt mutatja be, monitorozása és diagnosztizálása a Service Fabric területén észlelt felhasználók gyakori forgatókönyveket. A bemutatott esetekben a service fabric minden 3 réteg terjed ki: Alkalmazás, a fürt és az infrastruktúra. Minden megoldást használ az Application Insights és az Azure Monitor naplóira, Azure monitorozási eszközeivel, minden egyes forgatókönyv végrehajtásához. A lépéseket az egyes megoldások biztosít a felhasználóknak Bevezetés az Application Insights használatával, és az Azure Monitor naplózza a Service Fabric kontextusában.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites-and-recommendations"></a>Előfeltételek és javaslatok
 
@@ -63,7 +65,7 @@ Ebben a cikkben szereplő megoldások fogja használni a következő eszközök.
 1. Csomópont-események nyomon követi a Service Fabric-fürt által. Keresse meg a Service Fabric-elemzés megoldás erőforrást nevű **ServiceFabric(NameofResourceGroup)**
 2. Kattintson a "Összegzés" című panel alján a diagramon
 
-    ![Log Analytics megoldás](media/service-fabric-diagnostics-common-scenarios/oms-solution-azure-portal.png)
+    ![Az Azure Monitor-naplók megoldás](media/service-fabric-diagnostics-common-scenarios/oms-solution-azure-portal.png)
 
 3. Van itt számos diagramok és csempék megjelenítése a különböző mérőszámokat. Kattintson az egyik a diagramok és időt vesz igénybe, a naplóbeli keresés. Itt lekérdezheti, ha bármely fürthöz kapcsolódó események és teljesítményszámlálók.
 4. Adja meg a következő lekérdezést. Az alábbi eseményazonosítók találhatók a [csomópont események referencia](service-fabric-diagnostics-event-generation-operational.md#application-events)
@@ -75,7 +77,7 @@ Ebben a cikkben szereplő megoldások fogja használni a következő eszközök.
 
 5. Kattintson az "Új riasztási szabály" tetején, és mostantól bármikor esemény érkezik alapján ez a lekérdezés, kapni fog egy riasztást a választott kommunikációs metódus az.
 
-    ![Log Analytics új riasztás](media/service-fabric-diagnostics-common-scenarios/oms-create-alert.png)
+    ![Az Azure Monitor-naplók új riasztás](media/service-fabric-diagnostics-common-scenarios/oms-create-alert.png)
 
 ## <a name="how-can-i-be-alerted-of-application-upgrade-rollbacks"></a>Hogyan lehet szeretnék kapni az alkalmazás frissítési visszagörgetése?
 
@@ -143,7 +145,7 @@ Ellenőrizze a Reliable-teljesítményszámlálók teljes listáját az alábbi 
 
 * [A mesterséges Intelligencia riasztásokat állíthat be](../azure-monitor/app/alerts.md) szeretne értesítést kapni a teljesítmény vagy a használati változásai
 * [Intelligens detektálás az Application Insights](../azure-monitor/app/proactive-diagnostics.md) hajtja végre a proaktív elemzésre a telemetriát küld a mesterséges Intelligencia figyelmezteti a felhasználót, mert ez teljesítményproblémákat okozhat
-* További információ a Log Analytics [riasztási](../log-analytics/log-analytics-alerts.md) , ezzel elősegítve az észlelési és a diagnosztikát.
-* A helyszíni fürtök esetén a Log Analytics-átjárót nyújt (http-továbbítás Proxy), amelyek segítségével adatokat küldeni a Log Analytics. Tudjon meg többet arról, hogy a [internetelérés nélküli számítógépek csatlakoztatása a Log Analytics használata a Log Analytics-átjáró](../azure-monitor/platform/gateway.md)
-* Ismerkedjen meg a [naplókeresési és lekérdezési](../log-analytics/log-analytics-log-searches.md) funkciók a Log Analytics részeként érhető el
-* A Log Analytics és mit kínál részletes áttekintést, olvassa el [Mi az a Log Analytics?](../operations-management-suite/operations-management-suite-overview.md)
+* További információ az Azure Monitor naplóira [riasztási](../log-analytics/log-analytics-alerts.md) , ezzel elősegítve az észlelési és a diagnosztikát.
+* A helyszíni fürtök esetén az Azure Monitor naplóira, amelyek segítségével adatokat küldeni a naplókat az Azure Monitor átjárót (http-továbbítás Proxy) nyújt. Tudjon meg többet arról, hogy a [internetelérés nélküli számítógépek csatlakoztatása a Log Analytics-átjáró használata az Azure Monitor naplóira](../azure-monitor/platform/gateway.md)
+* Ismerkedjen meg a [naplókeresési és lekérdezési](../log-analytics/log-analytics-log-searches.md) szolgáltatásai által kínált Azure Monitor naplóira
+* Részletesebb ismertetőt az Azure Monitor naplóira, és mit kínál, a olvasási [Mi az Azure Monitor naplóira?](../operations-management-suite/operations-management-suite-overview.md)

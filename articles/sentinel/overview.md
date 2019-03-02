@@ -4,7 +4,7 @@ description: Ismerje meg az Azure-Sentinel, annak főbb funkcióit és működé
 services: sentinel
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 10cce91a-421b-4959-acdf-7177d261f6f2
 ms.service: sentinel
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: dccbfea0fd26b9d9673ff7652ba6fc4ee632cc46
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 2859df94b1418cfa9fbfaa341e6bf08b257875bf
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992797"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57245285"
 ---
 # <a name="what-is-azure-sentinel-preview"></a>Mi az Azure-on Előzetesben Sentinel?
 
@@ -66,11 +66,11 @@ Zaj csökkentésére, és tekintse át és vizsgálja meg a riasztások számán
 
 ![Esetek](./media/overview/cases.png)
 
-## <a name="user-analytics"></a>A felhasználói elemzéséhez
+## <a name="user-analytics"></a>Felhasználói elemzések
 
 A natív integrációi a machine learning (gépi tanulás) és [felhasználói analytics](user-analytics.md), Sentinel-az Azure segítségével gyorsan észlelheti a fenyegetéseket. Az Azure Sentinel zökkenőmentesen integrálható az Azure Advanced Threat Protection felhasználói viselkedés elemzéséhez, és priorizálhatja mely felhasználók először meg kell vizsgálni, riasztások, és a gyanús tevékenység minták alapján Azure Sentinel-és a Microsoft 365.
 
-![A felhasználói elemzéséhez](./media/overview/user-analytics.png)
+![Felhasználói elemzések](./media/overview/user-analytics.png)
 
 
 ## <a name="security-automation--orchestration"></a>Biztonsági automatizálás és vezénylés
@@ -90,11 +90,11 @@ Az Azure Sentinel [mélyreható vizsgálat](tutorial-investigate-cases.md) eszk�
 ![Vizsgálat](./media/overview/investigation.png)
 
 
-## <a name="hunting"></a>Vadászat
+## <a name="hunting"></a>Veszélyforrás-keresés
 
 Használja az Azure Sentinel [hatékony hunting keresési lekérdezés-és eszközök](hunting.md)MITRE keretében, amelyek lehetővé teszik, hogy proaktív módon hunt biztonsági fenyegetések között a szervezet az adatforrásokat, mielőtt egy riasztás akkor aktiválódik, alapján. Miután, Fedezze fel, melyik vadászat lekérdezés lehetséges támadások értékes betekintést nyújt, is a lekérdezés alapján egyéni észlelési szabályok létrehozása, és felszíni információkat riasztásai a biztonsági incidens válaszadók. Vadászat, miközben hozhat létre érdekes események könyvjelzők őket később visszatérhet és csoport azokat más correlating események meggyőző vizsgálati eset létrehozása, majd megosztja őket másokkal.
 
-![Vadászat](./media/overview/hunting.png)
+![Veszélyforrás-keresés](./media/overview/hunting.png)
 
 ## <a name="community"></a>Közösség
 

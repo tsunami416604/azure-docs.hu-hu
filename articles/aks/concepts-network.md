@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: 7de97097e9678410537895c3bafc48d67809331e
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 360caaec0033136ffa250d636864fbed8359b8ef
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594168"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244231"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Alkalmazások az Azure Kubernetes Service (AKS) hálózati fogalmai
 
@@ -23,7 +23,7 @@ Ez a cikk az alapfogalmakat, az aks-ben az alkalmazások hálózati biztosító 
 - [Szolgáltatások](#services)
 - [Azure virtuális hálózatok](#azure-virtual-networks)
 - [Bejövő forgalom vezérlők](#ingress-controllers)
-- Hálózati házirendek
+- [Hálózati házirendek](#network-policies)
 
 ## <a name="kubernetes-basics"></a>A Kubernetes alapjai
 
@@ -68,7 +68,7 @@ Az aks-ben helyezhető üzembe egy fürtöt, amely a következő két hálózati
 
 A *kubenet* hálózatkezelés lehetőség az AKS-fürt létrehozása az alapértelmezett konfigurációja. A *kubenet*, csomópontok IP-cím lekérése az Azure virtuális hálózat alhálózatához. Podok logikailag különböző címtér az IP-címet kapnak a csomópontok az Azure virtuális hálózat alhálózatához. Hálózati címfordítás (NAT) majd van konfigurálva, így a podok elérheti az erőforrásokat az Azure-beli virtuális hálózaton. A forgalmat a forrás IP-címe NAT lenne a csomópont elsődleges IP-cím.
 
-Csomópontok használata a [kubenet] [ kubenet] Kubernetes beépülő modult. Hagyhatja, hogy hozzon létre és konfigurálja a virtuális hálózatok az Ön számára, vagy dönt, hogy egy meglévő virtuális hálózat alhálózatának az AKS-fürt üzembe helyezése az Azure platformon. Csak a csomópontok egy irányítható IP-címet, és a podok használja ismét NAT az AKS-fürtön kívül más erőforrásokkal kommunikálni. Ez a megközelítés nagymértékben csökkenti a podok használatára a hálózati tárhelyre fenn kell IP-címek számát.
+Csomópontok használata a [kubenet] [ kubenet] Kubernetes beépülő modult. Hagyhatja, hogy hozzon létre és konfigurálja a virtuális hálózatok az Ön számára, vagy dönt, hogy egy meglévő virtuális hálózat alhálózatának az AKS-fürt üzembe helyezése az Azure platformon. Újra csak a csomópontok egy irányítható IP-címet kap, és a podok NAT használatával kommunikáljon az AKS-fürtön kívül más erőforrásokkal. Ez a megközelítés nagymértékben csökkenti a podok használatára a hálózati tárhelyre fenn kell IP-címek számát.
 
 További információkért lásd: [konfigurálni az AKS-fürt hálózati kubenet][aks-configure-kubenet-networking].
 
@@ -104,8 +104,6 @@ Bejövő forgalom egy másik gyakori funkcióját a TLS/SSL-lezárást. A HTTPS-
 
 A hálózati biztonsági csoport szűri a forgalmat a virtuális gépek esetében például az AKS-csomópontok. Szolgáltatások, például a terheléselosztó létrehozása az Azure platform automatikusan beállítja az minden olyan hálózati biztonsági csoport szabályait, amelyek szükségesek. Az AKS-fürt podok forgalom szűrése hálózati biztonsági csoport szabályokat manuálisan ne konfigurálja. A Kubernetes szolgáltatásjegyzékek részeként minden szükséges portok és a továbbítás határozzák meg, és lehetővé teszik az Azure platform létrehozni vagy frissíteni a megfelelő szabályokat. Is használhatja hálózati házirendeket a következő szakaszban leírt módon podok forgalmat szűrő szabályokkal alkalmazhatja.
 
-Az alapértelmezett szabályok a forgalmat az SSH például tartoznak hálózati biztonsági csoport. Fürt kezelése és hozzáférés hibaelhárítása vonatkoznak az alapértelmezett szabályokat. Az alapértelmezett szabályokat törlése az AKS-kezelési problémákhoz vezethet, és működésképtelenné válik a szolgáltatási szint célkitűzés (SLO).
-
 ## <a name="network-policies"></a>Hálózati házirendek
 
 Alapértelmezés szerint egy AKS-fürt összes podok küldhet és korlátozások nélkül forgalom fogadására. A nagyobb biztonság érdekében érdemes olyan szabályok, amelyek vezérlik a forgalmat. Háttéralkalmazásokhoz gyakran csak szükséges előtér-szolgáltatások érhetők el, vagy az adatbázis-összetevői csak elérhetők az alkalmazásrétegek, amely csatlakozni hozzájuk.
@@ -117,6 +115,8 @@ További információkért lásd: [podok hálózati házirendek segítségével 
 ## <a name="next-steps"></a>További lépések
 
 AKS-hálózatkezelés – első lépések, létrehozása és konfigurálása egy AKS-fürtöt a saját IP-címtartományok használatával [kubenet] [ aks-configure-kubenet-networking] vagy [Azure CNI] [ aks-configure-advanced-networking].
+
+További kapcsolódó ajánlott eljárások: [ajánlott eljárások a hálózati kapcsolatot és az aks-ben biztonsági][operator-best-practices-network].
 
 És további információkat az alapvető Kubernetes AKS fogalmait tekintse meg a következő cikkeket:
 
@@ -148,3 +148,4 @@ AKS-hálózatkezelés – első lépések, létrehozása és konfigurálása egy
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-identity]: concepts-identity.md
 [use-network-policies]: use-network-policies.md
+[operator-best-practices-network]: operator-best-practices-network.md

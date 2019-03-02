@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/15/2019
+ms.date: 02/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ef0638afd162dc179a2a7dec54b60bfb1f89144
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 1650976c3718f189321683a95b497dc6cbdf2383
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869768"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57247069"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex"></a>Oktatóanyag: Cisco Webex az Azure Active Directory-integráció
 
@@ -46,6 +46,8 @@ Az Azure AD-integráció konfigurálása a Cisco Webex, a következőkre van sz�
 Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
 
 * Cisco Webex támogatja **SP** által kezdeményezett egyszeri bejelentkezés
+
+* Cisco Webex támogatja **automatikus** felhasználók átadása
 
 ## <a name="adding-cisco-webex-from-the-gallery"></a>Cisco Webex hozzáadása a katalógusból
 
@@ -120,7 +122,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Cisco Webex, hajtsa 
     
     | Name (Név) |  Adatforrás-attribútum|
     | ---------------|--------- |
-    | UID | user.userprincipalname |
+    | egyedi azonosítója | user.userprincipalname |
 
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
@@ -150,7 +152,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Cisco Webex, hajtsa 
 
     a. Bejelentkezési URL
 
-    b. Azure Ad Identifier
+    b. Azure AD-azonosító
 
     c. Kijelentkezési URL
 
@@ -257,8 +259,10 @@ Ha a hozzáférési panelen a Cisco Webex csempére kattint, meg kell lehet auto
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [Felhasználók átadásának konfigurálása](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-spark-provisioning-tutorial) 

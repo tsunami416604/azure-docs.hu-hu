@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 10/16/2018
+ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: fd301967800f67d95c12f1689981b2dfd8eb2d80
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: cce38eb12d803c0640d9ee774dbc6c98ab5db219
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56452763"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243771"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (AKS) az alkalmazások tárolási lehetőségeket
 
@@ -121,6 +121,8 @@ spec:
 
 ## <a name="next-steps"></a>További lépések
 
+További kapcsolódó ajánlott eljárások: [ajánlott eljárások a storage és az aks-ben biztonsági mentések][operator-best-practices-storage].
+
 Ellenőrizze, hogyan hozhat létre Azure-lemezek vagy az Azure Files dinamikus és statikus köteteket, tekintse meg az alábbi útmutatók:
 
 - [Az Azure-lemezekkel statikus kötet létrehozása][aks-static-disks]
@@ -148,3 +150,4 @@ Ellenőrizze, hogyan hozhat létre Azure-lemezek vagy az Azure Files dinamikus �
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-security]: concepts-security.md
 [aks-concepts-network]: concepts-network.md
+[operator-best-practices-storage]: operator-best-practices-storage.md

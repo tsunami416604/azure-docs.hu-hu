@@ -3,17 +3,16 @@ title: Az Azure Kubernetes Service- (AKS-) kvóták és -régiók rendelkezésre
 description: Az Azure Kubernetes Service (AKS) alapértelmezett kvótái és a régiók alapértelmezés szerinti rendelkezésre állása.
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
-ms.topic: overview
-ms.date: 08/01/2018
+ms.topic: conceptual
+ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 9fbc769ef428c41f0e133ec1e139ba9900025dc4
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: c8a2c0cac963fcc0622cff547e85593a13aa076a
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879356"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243831"
 ---
 # <a name="quotas-and-region-availability-for-azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)-kvóták és -régiók rendelkezésre állása
 
@@ -32,12 +31,14 @@ Az üzembe helyezett infrastruktúrára minden egyéb hálózati, számítási �
 Az Azure Kubernetes Service (AKS) szolgáltatás az alábbi régiókban érhető el:
 
 - Kelet-Ausztrália
+- Délkelet-Ausztrália
 - Közép-Kanada
 - Kelet-Kanada
 - USA középső régiója
 - Kelet-Ázsia
 - USA keleti régiója
 - USA 2. keleti régiója
+- Közép-Franciaország
 - Kelet-Japán
 - Észak-Európa
 - Délkelet-Ázsia

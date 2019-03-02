@@ -9,25 +9,25 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 02/27/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: ccf298c99851dc2418da894431c5c86adafe59b3
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: de2c60d4449762c4a8fcc3e2f486130f3df37c7c
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959442"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243619"
 ---
 # <a name="encoding-with-media-services"></a>Kódolás a Media Services használatával
 
-Az Azure Media Services lehetővé teszi, hogy az kiváló minőségű médiafájlt kódolandó adaptív sávszélességű MP4-fájlokat, így a tartalom a böngészők és eszközök széles lejátszhatók. Egy sikeres Media Services kódolási feladat létrehoz egy kimeneti objektumot az adaptív sávszélességű MP4 és jegyzékfájlok (a kiszolgáló és az ügyfél). Ezen a ponton igénybe veheti [dinamikus csomagolási](dynamic-packaging-overview.md).
+Az Azure Media Services lehetővé teszi, hogy az kiváló minőségű médiafájlt kódolandó adaptív sávszélességű MP4-fájlokat, így a tartalom a böngészők és eszközök széles lejátszhatók. Egy sikeres Media Services kódolási feladat létrehoz egy kimeneti objektumot az adaptív sávszélességű MP4-és adatfolyam-konfigurációs fájlok. A konfigurációs fájlok közé tartoznak a .ism, .ismc, .mpi és egyéb fájlokat, amelyek nem szabad módosítani. Ha a kódolási feladat elkészült, akkor kihasználhatja [dinamikus csomagolási](dynamic-packaging-overview.md) és streamelésének megkezdéséhez.
 
-Győződjön meg arról, videók, a kimenetben az eszköz érhető el az ügyfelek számára a lejátszás, létre kell hoznia egy **Streamelési lokátor** majd kialakítható a streamelési URL-címek. Ezt követően a jegyzékfájlban megadott formátumnak megfelelően, az ügyfelek az adatfolyamban kaphatja a protokoll választotta.
+Győződjön meg arról, videók, a kimenetben az eszköz érhető el az ügyfelek számára a lejátszás, létre kell hoznia egy **Streamelési lokátor** és létrehozása a streamelési URL-címek. Ezt követően a jegyzékfájlban megadott formátumnak megfelelően, az ügyfelek az adatfolyamban kaphatja a protokoll választotta.
 
 Az alábbi ábrán látható, a dinamikus csomagolás munkafolyamat igényalapú streameléshez.
 
-![A dinamikus kódolás](./media/dynamic-packaging-overview/media-services-dynamic-packaging.png)
+![A dinamikus csomagolás](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
 Ez a témakör nyújt útmutatást tartalmait a Media Services v3 kódolással.
 
