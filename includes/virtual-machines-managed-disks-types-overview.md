@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 1556a7d482a6644831589937b1847b1d63e72693
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: cdfc858522c5b331c90259de0fb5ad84fa54bc5d
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56890938"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57251949"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Milyen lemeztípusok érhetők el az Azure-ban?
 
@@ -95,11 +95,11 @@ Az Azure standard SSD-k egy költséghatékony tárolási megoldás az IOPS alac
 
 A méret, egy csillaggal jelölve jelenleg előzetes verzióban érhető el.
 
-| Standard SSD-méretek  | E10               | E15               | E20             | E30 | E40              | E50              | E60*              | E70*              | E80*              |
-|---------------------|---------------------|---------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|
-| Lemez mérete GiB-ban           | 128             | 256             | 512            | 1,024  | 2,048            | 4,095     | 8,192     | 16,384     | 32,767    |
-| IOPS-érték lemezenként       | Legfeljebb 500              | Legfeljebb 500              | Legfeljebb 500              | Legfeljebb 500 | Legfeljebb 500              | Legfeljebb 500              | Legfeljebb 500             | Legfeljebb 500              | Akár 1300              | Legfeljebb 2000              | Legfeljebb 2000              |
-| Adattovábbítás lemezenként |  Akár 60 MiB/mp | Akár 60 MiB/mp | Akár 60 MiB/mp | Akár 60 MiB/mp | Akár 60 MiB/mp | Akár 60 MiB/mp| Legfeljebb 300 MiB/mp |  Legfeljebb 500 MiB/mp | Legfeljebb 500 MiB/mp |
+| Standard SSD-méretek  | E4                   | E6                   | E10               | E15               | E20             | E30 | E40              | E50              | E60*              | E70*              | E80*              |
+|---------------------|---------------------|---------------------|---------------------|---------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|
+| Lemez mérete GiB-ban           | 32             | 64             | 128             | 256             | 512            | 1,024  | 2,048            | 4,095     | 8,192     | 16,384     | 32,767    |
+| IOPS-érték lemezenként       | Legfeljebb 120              | Legfeljebb 240              | Legfeljebb 500              | Legfeljebb 500              | Legfeljebb 500              | Legfeljebb 500 | Legfeljebb 500              | Legfeljebb 500              | Legfeljebb 500             | Legfeljebb 500              | Akár 1300              | Legfeljebb 2000              | Legfeljebb 2000              |
+| Adattovábbítás lemezenként |  Legfeljebb 25 MiB/mp  |  Legfeljebb 50 MiB/mp  |  Akár 60 MiB/mp | Akár 60 MiB/mp | Akár 60 MiB/mp | Akár 60 MiB/mp | Akár 60 MiB/mp | Akár 60 MiB/mp| Legfeljebb 300 MiB/mp |  Legfeljebb 500 MiB/mp | Legfeljebb 500 MiB/mp |
 
 ## <a name="standard-hdd"></a>Standard HDD
 

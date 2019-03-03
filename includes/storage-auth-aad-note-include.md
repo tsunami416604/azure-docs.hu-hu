@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/09/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 694491f3bec9fd1e62e65504968be9f06dda0c11
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 5d0e919159569e7512b6e7dc0458a4a3e397943b
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56824262"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57251876"
 ---
 > [!NOTE]
 > - Előzetes verziójának blobok és üzenetsorok az Azure AD-hitelesítés csak nem éles használatra szolgál. Éles szolgáltatásiszint-szerződések (SLA) nem érhetők el jelenleg. Ha az Azure AD-hitelesítés még nem támogatott a forgatókönyvnek, továbbra is használhatja a megosztott kulcsos engedélyezési vagy SAS-tokeneket az alkalmazásokban.
@@ -22,7 +22,7 @@ ms.locfileid: "56824262"
 >
 > - OAuth-jogkivonatának blob és üzenetsor-műveletek engedélyezése, a HTTPS kell használnia.
 >
-> - Az Azure Portalon mostantól támogatja az Azure AD hitelesítő adatok használatával olvasása és írása a blob és üzenetsoradatot, részeként az előzetes kiadás. 
+> - Az Azure Portalon mostantól támogatja az Azure AD hitelesítő adatok használatával olvasása és írása a blob és üzenetsoradatot, részeként az előzetes kiadás. Az Azure Portallal blob és üzenetsor adatok eléréséhez, a felhasználó kell hozzárendelni az Azure Resource Manager-olvasó RBAC szerepkör, a blob és üzenetsor-hozzáférés megfelelő előzetes szerepkör mellett. További információkért lásd: [hozzáférést biztosítani Azure-tárolók és az Azure Portalon (előzetes verzió) az RBAC üzenetsorok](../articles/storage/common/storage-auth-aad-rbac.md). 
 > 
 > - [Az Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) jelenleg használja a tárfiók kulcsának blob és üzenetsor adatok elérését. OAuth-hozzáférés blobok esetében támogatott.
 >

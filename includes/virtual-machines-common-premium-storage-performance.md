@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a04a9f225d46ae3dc51381f01984a4ac2af3448f
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 5f97c2997711c30ad52e5209ba86e0d1bfe30ea8
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56890980"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57251895"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Az Azure premium storage: nagy teljesítményű rendszer tervezése
 
@@ -69,11 +69,11 @@ Ha az alkalmazás magasabb IOPS és átviteli sebesség optimalizálása, negat�
 
 A Managed Disksen található következő vezérlési síkjával végzett műveletek is igénybe vehet a lemez tárolási egyik helyről egy másikra mozgása. Ez az előkészített keresztül háttérben történő másolás, amelyek befejezéséhez, általában 24 óránál a lemezeken lévő adatok mennyiségétől függően több órát is igénybe vehet. Ebben az időszakban az alkalmazás tapasztalhatnak magasabb, mint a szokásos olvasási késés, valamint a bizonyos olvasási is első átirányítja az eredeti helyre is hosszabb időt vesz igénybe. Ez nincs hatással az írási késés ebben az időszakban.
 
-1. [Frissítse a tárolás típusát](../articles/virtual-machines/windows/convert-disk-storage.md).
-1. [Válassza le és lemez csatolása egy virtuális gépről egy másikra](../articles/virtual-machines/windows/attach-disk-ps.md#attach-an-existing-data-disk-to-a-vm).
-1. [Felügyelt lemez létrehozása VHD-fájlból](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-vhd.md).
-1. [Felügyelt lemez létrehozása pillanatképből](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md).
-1. [Nem felügyelt lemezek konvertálása felügyelt lemezekké](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md).
+- Frissítse a tárolás típusát.
+- Válassza le, és a lemez csatolása egy virtuális gépről egy másikra.
+- Felügyelt lemez létrehozása VHD-fájlból.
+- Hozzon létre egy felügyelt lemezt egy pillanatképből.
+- Nem felügyelt lemezek konvertálása felügyelt lemezeket.
 
 # <a name="performance-application-checklist-for-disks"></a>Lemezek teljesítménye alkalmazás ellenőrzőlistája
 
