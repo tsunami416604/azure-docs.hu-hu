@@ -8,18 +8,18 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: kgremban
-ms.openlocfilehash: 214f52e8c9d2803b6e33c9347c87d0cc1cf7f7e9
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 0a230ff1c4d5c6bb36003f07cc1c411f7e2c3629
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991121"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57241000"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Azure IoT Hub állapotának monitorozásához és a problémák gyorsan diagnosztizálása
 
 Azure IoT Hub alkalmazó vállalatok erőforrásaikat a megbízható teljesítmény várható. Segítséget egy közeli nézze meg a műveletek a kezelése, az IoT Hub teljesen integrálva van a [Azure Monitor](../azure-monitor/index.yml) és [az Azure Resource Health](../service-health/resource-health-overview.md). A két szolgáltatás működik biztosítani számukra, így az IoT-megoldásait, mentése és kifogástalan állapotban fut szükséges adatokat. 
 
-Az Azure Monitor egyetlen adatforrás a figyelés és naplózás az Azure-szolgáltatásokhoz. Elküldheti a diagnosztikai naplók, amely az Azure Monitor hoz létre a Log Analytics, az Event Hubs vagy Azure Storage egyéni feldolgozáshoz. Az Azure Monitor-metrikák és diagnosztikai beállításait az erőforrások betekintést nyújtanak. Olvassa ebből a cikkből megtudhatja, hogyan [használata az Azure Monitor](#use-azure-monitor) az IoT hubbal. 
+Az Azure Monitor egyetlen adatforrás a figyelés és naplózás az Azure-szolgáltatásokhoz. Elküldheti a diagnosztikai naplók, amely létrehozza az Azure Monitor az Azure Monitor naplók, az Event Hubs vagy Azure Storage egyéni feldolgozáshoz. Az Azure Monitor-metrikák és diagnosztikai beállításait az erőforrások betekintést nyújtanak. Olvassa ebből a cikkből megtudhatja, hogyan [használata az Azure Monitor](#use-azure-monitor) az IoT hubbal. 
 
 > [!IMPORTANT]
 > A diagnosztikai naplók az Azure Monitor használatával az IoT Hub-szolgáltatás által kibocsátott események a rendszer nem garantált, hogy a megbízható és rendezett. Néhány esemény esetleg elvész, vagy -i üzemen kívüli. Diagnosztikai naplók is nincsenek szinkronban kell lennie a valós idejű, és jelentkezzen be a kívánt rendeltetési események több percig is eltarthat.

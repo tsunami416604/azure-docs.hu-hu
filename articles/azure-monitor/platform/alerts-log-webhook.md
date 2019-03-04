@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 24e159ea2cccfdaab9c732835506a1a22abab134
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 68fb7678fac2a0a32278e813d03a0eebd20565ec
+ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56869147"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57216041"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhook-műveletek a riasztási szabály
 Ha egy [riasztás jön létre az Azure-ban](alerts-log.md), lehetősége van a [konfigurálása a Műveletcsoportok használatával](action-groups.md) egy vagy több művelet végrehajtásához.  Ez a cikk ismerteti a rendelkezésre álló különböző webhook-műveletek és a részletek az egyéni JSON-alapú webhook konfigurálásáról.
@@ -78,9 +78,6 @@ Keresési eredmények belefoglalása az egyéni adattartalom, ellenőrizze, hogy
 ## <a name="sample-payloads"></a>Minta is észleltünk adattartalmakat.
 Ez a szakasz bemutatja a webhook hasznosadat-minta a riasztások, beleértve a szabványos terhelés esetén, és ha az egyéni.
 
-> [!NOTE]
-> Előző verziókkal való kompatibilitás biztosítása érdekében standard webhook hasznos adatai az Azure Log Analytics használatával értesítések megegyezik [Log Analytics-riasztás felügyeleti](alerts-metric.md). De riasztások használatával [Application Insights](../../azure-monitor/app/analytics.md), a standard szintű webhook hasznos adatai műveletcsoport sémán alapul.
-
 ### <a name="standard-webhook-for-log-alerts"></a>Standard szintű, Naplóriasztásokra vonatkozó Webhook 
 A helyőrző adattartalom csak két oszlop, és két sor mindkét példa jeleztük.
 
@@ -118,7 +115,11 @@ Az alábbiakban a egy hasznosadat-minta egy szabványos webhook művelet *egyén
     "Description": null,
     "Severity": "Warning"
  }
- ```   
+ ```
+
+> [!NOTE]
+> Súlyosság mező értéke változhatnak, ha rendelkezik [váltott, az API szabályozó](alerts-log-api-switch.md) riasztások a Log Analytics számára.
+
 
 #### <a name="log-alert-for-azure-application-insights"></a>Az Azure Application Insights riasztás
 Az alábbiakban a egy hasznosadat-minta egy szabványos webhook *egyéni Json-beállítás nélkül* az application insights-alapú-riasztások használatakor.
@@ -154,7 +155,7 @@ Az alábbiakban a egy hasznosadat-minta egy szabványos webhook *egyéni Json-be
     "SearchIntervalInSeconds": 3600,
     "LinkToSearchResults": "https://analytics.applicationinsights.io/subscriptions/12345a-1234b-123c-123d-12345678e/?query=search+*+&timeInterval.intervalEnd=2018-03-26T09%3a10%3a40.0000000Z&_timeInterval.intervalDuration=3600&q=Usage",
     "Description": null,
-    "Severity": "Error",
+    "Severity": "3",
     "ApplicationId": "123123f0-01d3-12ab-123f-abc1ab01c0a1"
     }
 }

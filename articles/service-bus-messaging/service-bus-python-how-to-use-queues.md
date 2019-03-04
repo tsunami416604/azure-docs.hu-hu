@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: aschhab
-ms.openlocfilehash: 172fee19de77deb4ecf679d6884dfcea2a4968be
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 2c28ae3bf05a994293a8bf2af0675280d818fdde
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56865960"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57242598"
 ---
 # <a name="how-to-use-service-bus-queues-with-python"></a>Service Bus-üzenetsorok használata pythonnal
 
@@ -38,7 +38,7 @@ Ez a cikk a Service Bus-üzenetsorok használatát ismerteti. A minták a Python
 
 
 ## <a name="create-a-queue"></a>Üzenetsor létrehozása
-A **ServiceBusService** objektum lehetővé teszi, hogy az üzenetsorok. Adja hozzá a következő kódot bármely Python-fájlt, amelyben a kívánt programozott módon érheti el a Service Bus tetején:
+A **ServiceBusClient** objektum lehetővé teszi, hogy az üzenetsorok. Adja hozzá a következő kódot bármely Python-fájlt, amelyben a kívánt programozott módon érheti el a Service Bus tetején:
 
 ```python
 from azure.servicebus import ServiceBusClient
@@ -69,7 +69,7 @@ sb_client.create_queue("taskqueue", queue_options)
 További információkért lásd: [Azure Service Bus Python-dokumentáció](/python/api/overview/azure/servicebus?view=azure-python).
 
 ## <a name="send-messages-to-a-queue"></a>Üzenetek küldése egy üzenetsorba
-Üzenet küldése a Service Bus-üzenetsorba, az alkalmazás meghívja a `send_queue_message` metódust a **ServiceBusService** objektum.
+Üzenet küldése a Service Bus-üzenetsorba, az alkalmazás meghívja a `send` metódust a `ServiceBusClient` objektum.
 
 Az alábbi példa bemutatja, hogyan tesztüzenet küldése az üzenetsorba nevű `taskqueue` használatával `send_queue_message`:
 
@@ -89,7 +89,7 @@ A Service Bus-üzenetsorok a [Standard csomagban](service-bus-premium-messaging.
 További információkért lásd: [Azure Service Bus Python-dokumentáció](/python/api/overview/azure/servicebus?view=azure-python).
 
 ## <a name="receive-messages-from-a-queue"></a>Üzenetek fogadása egy üzenetsorból
-Egy üzenetsor használatával fogadása a `receive_queue_message` metódust a **ServiceBusService** objektum:
+Egy üzenetsor használatával fogadása a `get_receiver` metódust a `ServiceBusService` objektum:
 
 ```python
 from azure.servicebus import QueueClient, Message
@@ -97,9 +97,12 @@ from azure.servicebus import QueueClient, Message
 # Create the QueueClient 
 queue_client = QueueClient.from_connection_string("<CONNECTION STRING>", "<QUEUE NAME>")
 
-# Send a test message to the queue
-msg = Message(b'Test Message')
-queue_client.send(Message("Message"))
+## Receive the message from the queue
+with queue_client.get_receiver() as queue_receiver:
+    messages = queue_receiver.fetch_next(timeout=3)
+    for message in messages:
+        print(message)
+        message.complete()
 ```
 
 További információkért lásd: [Azure Service Bus Python-dokumentáció](/python/api/overview/azure/servicebus?view=azure-python).
