@@ -14,6 +14,7 @@
 #### [Érdeklődők kezelése](./lead-management-for-cloud-marketplace.md)
 #### [Tranzakciók az Azure Marketplace-en](./marketplace-commercial-transaction-capabilities-and-considerations.md)
 #### [Személyes ajánlatok](./private-offers.md)
+#### [Standard szerződés](./standard-contract.md)
 
 ### [Közzétételi útmutató ajánlattípusok szerint](./publisher-guide-by-offer-type.md)
 #### [Virtuális gépek](./marketplace-virtual-machines.md)
@@ -30,13 +31,16 @@
 #### [Ajánlatlistákra vonatkozó ajánlott eljárások](./gtm-offer-listing-best-practices.md)
 #### [Hogyan válhat kiemeltté?](./gtm-how-to-get-featured.md)
 #### [Marketplace-tartalmak érvényesítése](./marketplace-criteria-content-validation.md)
+#### [Felhőszolgáltatók](./cloud-solution-providers.md)
 
 ### [A Marketplace-ből származó előnyei](./gtm-your-marketplace-benefits.md)
 #### [Üzleti gyarapodás a Microsofttal](./gtm-promote-your-business.md)
 #### [Előnyben részesített megoldások](./preferred-solutions.md) 
+#### [Integrált megoldások](./integrated-solutions.md)
 
 ### [Azure Marketplace- és AppSource-támogatás](./support-azure-marketplace.md)
 #### [Marketplace – gyakori kérdések](./marketplace-faq-publisher-guide.md)
+#### [Földrajzi rendelkezésre állás és pénznemek](./marketplace-geo-availability-currencies.md)
 
 <!-- Following section is for Cloud Partner Portal (CPP). -->
 
