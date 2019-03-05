@@ -199,7 +199,9 @@
 ##### [Névjegyek lap](./cloud-partner-portal/saas-app/cpp-contacts-tab.md)
 #### [Ajánlat közzététele](./cloud-partner-portal/saas-app/cpp-publish-offer.md)
 #### [Létező ajánlat frissítése](./cloud-partner-portal/saas-app/cpp-update-existing-offer.md)
-#### [SaaS API-k](./cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis.md)
+#### [SaaS Fulfillment API-k](./cloud-partner-portal/saas-app/cpp-saas-fulfillment-apis.md)
+##### [SaaS V1 API](./cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v1.md) 
+##### [SaaS V2 API](./cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v2.md) 
 
 ### [Virtuálisgép-ajánlat](./cloud-partner-portal/virtual-machine/cpp-virtual-machine-offer.md)
 #### [Előfeltételek](./cloud-partner-portal/virtual-machine/cpp-prerequisites.md)

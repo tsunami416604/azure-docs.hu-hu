@@ -1314,7 +1314,7 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                         <li>
                                             <a href="/azure/iot-fundamentals">
                                                 <img src="media/index/IoTHub.svg" alt="" />
-                                                <p>IoT – alapok</p>
+                                                <p>Azure IoT</p>
                                             </a>
                                         </li>
                                         <li>
@@ -3929,12 +3929,12 @@ Azure-feladatok automatizálása szkriptek használatával a PowerShell-lel </a>
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/iothub.svg" alt="" />
+                                                        <img src="media/index/question-mark-grey.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>IoT – alapok</h3>
-                                                    <p>Ismerkedés az eszközök csatlakoztatásával</p>
+                                                    <h3>Most ismerkedik az Azure IoT-vel?</h3>
+                                                    <p>Itt megtudhatja, melyik szolgáltatás felel meg leginkább az igényeinek</p>
                                                 </div>
                                             </div>
                                         </div>
