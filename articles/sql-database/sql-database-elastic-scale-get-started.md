@@ -12,12 +12,12 @@ ms.author: anjangsh
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: dbc3b7e2e013dc53a1e2524c44bd2229a6a1b18d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 245cbafb42becc230f5e480cfc8e6fa41c352190
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462970"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309383"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Ismerkedés az Elastic Database-eszközökkel
 
@@ -131,7 +131,7 @@ Elastic Database-eszközökkel kapcsolatos további információkért lásd a k�
   * Elastic Database-eszközök ([.NET](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-a80d8dc6?SRC=VSIDE), [Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22))
   * [Elastic Database-eszközök az Azure SQL - Entity Framework-integráció](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
   * [A Script Centerbe a horizontális partíciók rugalmassága](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
-* Blog: [Rugalmas méretezés bejelentés](https://azure.microsoft.com/blog/2014/10/02/introducing-elastic-scale-preview-for-azure-sql-database/)
+* Blog: [Rugalmas méretezés bejelentés](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/)
 * Channel 9-on: [Rugalmas méretezés áttekintő videó](http://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale)
 * Fórum: [Az Azure SQL Database-fórum](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)
 * Teljesítmény mérésére: [Teljesítményszámlálók a szilánkleképezés-kezelőhöz](sql-database-elastic-database-client-library.md)

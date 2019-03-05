@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 7da813022527830a5ede62c9f4ce98645fe63d4b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 32a3ec7146e4dd43e0c5f522187856132745b539
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871599"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57307088"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Az Adattárházegységek (Dwu) és számítási Adattárházegység (cDWUs)
 Javaslatok az adattárházegységek (dwu-k, cDWUs) ár és a teljesítmény-, és módosítása az egységek számát az ideális számot kiválasztása. 
@@ -124,10 +124,13 @@ A dwu-k vagy cDWUs módosítása:
 3. Kattintson a **Save** (Mentés) gombra. Ekkor megjelenik egy megerősítő üzenet. Kattintson az **igen** gombra a megerősítéshez vagy a **nem** gombra az elvetéshez.
 
 ### <a name="powershell"></a>PowerShell
-A dwu-k vagy cDWUs módosításához használja a [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) PowerShell-parancsmagot. A következő példa a szolgáltatási szint célkitűzésének dw1000 értékre állítja a MyServer kiszolgáló üzemeltetett MySQLDW adatbázishoz.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+A dwu-k vagy cDWUs módosításához használja a [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) PowerShell-parancsmagot. A következő példa a szolgáltatási szint célkitűzésének dw1000 értékre állítja a MyServer kiszolgáló üzemeltetett MySQLDW adatbázishoz.
 
 ```Powershell
-Set-AzureRmSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000"
+Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000"
 ```
 
 További információkért lásd: [PowerShell-parancsmagok az SQL Data warehouse-hoz](sql-data-warehouse-reference-powershell-cmdlets.md)

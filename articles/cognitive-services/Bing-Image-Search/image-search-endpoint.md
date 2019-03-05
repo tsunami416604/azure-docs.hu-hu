@@ -8,19 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 03/04/2019
 ms.author: v-gedod
-ms.openlocfilehash: 5e5cf9fcf6f70449fef8237fc004332e36bcd3b4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: fcae25ea0ef3f48beac6c221a11ca8a91443f7ce
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860269"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57336140"
 ---
 # <a name="endpoints-for-the-bing-image-search-api"></a>A Bing képkeresési API végpontjai
 
 A **Image Search API** három végpontokat tartalmazza.  1. végpont képeket a weben lekérdezés alapján adja vissza. 2. végpont adja vissza [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#imageinsightsresponse).  Végpont 3 felkapott képeket ad vissza.
+
 ## <a name="endpoints"></a>Végpontok
+
 A Bing API-val képtalálatok lekéréséhez kérést küldhet az alábbi végpontok egyikét. A fejlécek és URL-paraméterek használatával további specifikációk meghatározása.
 
 **1. végpont:** Adja vissza, amely a felhasználó keresési lekérdezés által meghatározott a lemezképek `?q=""`.

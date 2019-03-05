@@ -15,16 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2017
 ms.author: amsriva
-ms.openlocfilehash: 1db16f203755f9afc265495daba056313138a5dc
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: d50f25fbe10fc5ac4e834141fe7ac45fbed918ab
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819450"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309026"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Az Application Gatewayben hibás átjáróval kapcsolatos hibák elhárítása
 
 Ismerje meg, hogyan háríthatók el a hibás átjáró (502) hibák az application gateway használata esetén.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Áttekintés
 
@@ -50,21 +52,21 @@ NSG-t, az udr-t és a DNS-konfiguráció érvényesítése és haladjon végig a
 * Ellenőrizze az Application Gateway alhálózathoz társított udr-t. Győződjön meg arról, hogy UDR van nem irányítja a forgalmat erről a háttérrendszer alhálózatának – például ellenőrizze a hálózati virtuális berendezések vagy Alkalmazásátjáró-alhálózat ExpressRoute/VPN-en keresztül hirdetett útvonalaknak alapértelmezett útvonalakat útválasztási.
 
 ```powershell
-$vnet = Get-AzureRmVirtualNetwork -Name vnetName -ResourceGroupName rgName
-Get-AzureRmVirtualNetworkSubnetConfig -Name appGwSubnet -VirtualNetwork $vnet
+$vnet = Get-AzVirtualNetwork -Name vnetName -ResourceGroupName rgName
+Get-AzVirtualNetworkSubnetConfig -Name appGwSubnet -VirtualNetwork $vnet
 ```
 
 * Ellenőrizze a hatékony NSG-t és a háttérbeli Virtuálisgép-útvonal
 
 ```powershell
-Get-AzureRmEffectiveNetworkSecurityGroup -NetworkInterfaceName nic1 -ResourceGroupName testrg
-Get-AzureRmEffectiveRouteTable -NetworkInterfaceName nic1 -ResourceGroupName testrg
+Get-AzEffectiveNetworkSecurityGroup -NetworkInterfaceName nic1 -ResourceGroupName testrg
+Get-AzEffectiveRouteTable -NetworkInterfaceName nic1 -ResourceGroupName testrg
 ```
 
 * A virtuális hálózat egyéni DNS meglétének ellenőrzése. DNS is ellenőrizni kell a kimenetben a VNet tulajdonságainak részletek megtekintésével.
 
 ```json
-Get-AzureRmVirtualNetwork -Name vnetName -ResourceGroupName rgName 
+Get-AzVirtualNetwork -Name vnetName -ResourceGroupName rgName 
 DhcpOptions            : {
                            "DnsServers": [
                              "x.x.x.x"
@@ -132,7 +134,7 @@ Ha egy felhasználói kérelem érkezik, az Application Gateway alkalmazza a kon
 Az Application Gateway lehetővé teszi a felhasználóknak a BackendHttpSetting, amely ezután alkalmazható különböző készletek keresztül beállítás megadásához. Különböző háttér-készletek különböző BackendHttpSetting és konfigurálva, ezért másik kérés időtúllépése rendelkezhet.
 
 ```powershell
-    New-AzureRmApplicationGatewayBackendHttpSettings -Name 'Setting01' -Port 80 -Protocol Http -CookieBasedAffinity Enabled -RequestTimeout 60
+    New-AzApplicationGatewayBackendHttpSettings -Name 'Setting01' -Port 80 -Protocol Http -CookieBasedAffinity Enabled -RequestTimeout 60
 ```
 
 ## <a name="empty-backendaddresspool"></a>Empty BackendAddressPool
@@ -146,7 +148,7 @@ Ha az Application Gateway nem rendelkezik virtuális gépek vagy virtuálisgép-
 Győződjön meg arról, hogy a háttér-címkészlet nem üres. Ezt megteheti, vagy a PowerShell, a parancssori felület vagy a portálon keresztül.
 
 ```powershell
-Get-AzureRmApplicationGateway -Name "SampleGateway" -ResourceGroupName "ExampleResourceGroup"
+Get-AzApplicationGateway -Name "SampleGateway" -ResourceGroupName "ExampleResourceGroup"
 ```
 
 A fenti parancsmag kimenetében nem üres háttér címkészletet kell tartalmaznia. Az alábbiakban a példaként ahol két készletek visszaadott amelyre a háttérbeli virtuális gép teljes Tartományneve vagy IP-címmel vannak konfigurálva. A kiépítési állapota a értékre kell lennie "sikeres".

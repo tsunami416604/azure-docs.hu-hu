@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: fc18262326a8474cac417b67a37df35d91d75439
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 99fce821c903a9638575eba9fe4a17d294bcbd60
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657739"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310505"
 ---
 # <a name="set-up-a-device-template"></a>Eszközsablon beállítása
 
@@ -65,7 +65,7 @@ Mértékek az eszközről az adatokat. Az eszköz a sablon megfelelő az eszköz
 - **Állapot** mérések az eszköz vagy összetevőinek állapotát képviselik egy időszakon belül. Például egy ventilátor mód lehet meghatározni, hogy **operációs** és **leállítva** , a két lehetséges állapota.
 
 ### <a name="create-a-telemetry-measurement"></a>Telemetria mérték létrehozása
-Egy új telemetriai mérési hozzáadásához válassza **sablon szerkesztése**, majd kattintson a **+ új mérték** gombra. Válassza ki **Telemetriai** a mérték, írja be, és adja meg, hogy a **Telemetriát hozzon létre** űrlap.
+Egy új telemetriai mérési hozzáadásához válassza **sablon szerkesztése**, majd válassza ki a **+ új mérték** gombra. Válassza ki **Telemetriai** a mérték, írja be, és adja meg, hogy a **Telemetriát hozzon létre** űrlap.
 
 > [!NOTE]
 > Az eszköz sablon egyeznie kell a megfelelő eszköz kódot ahhoz, hogy a telemetria mérés esetén valós eszköz csatlakoztatva van, az alkalmazás megjelenítendő tulajdonságnevek. Végezze el ugyanezt konfigurálásakor beállításait, az eszköztulajdonságok és a parancsok, továbbra is az alábbi szakaszok az eszköz sablon megadására.
@@ -84,7 +84,7 @@ Miután kiválasztotta **kész**, a **hőmérséklet** mérték megjelenik a lis
   A telemetriai adatok mérték adattípusa lebegőpontos szám.
 
 ### <a name="create-an-event-measurement"></a>Egy esemény-mérték létrehozása
-Egy új esemény mérési hozzáadásához válassza **sablon szerkesztése**, majd kattintson a **+ új mérték** gombra. Válassza ki **esemény** a mérték, írja be, és adja meg, hogy a **esemény létrehozása** űrlap.
+Egy új esemény mérési hozzáadásához válassza **sablon szerkesztése**, majd válassza ki a **+ új mérték** gombra. Válassza ki **esemény** a mérték, írja be, és adja meg, hogy a **esemény létrehozása** űrlap.
 
 Adja meg a **megjelenítendő név**, **mezőnév**, és **súlyossági** az esemény részleteit. Súlyosság három szintjei közül választhat: **Hiba**, **figyelmeztetés**, és **információk**.  
 
@@ -108,14 +108,14 @@ Az esemény részleteinek megtekintéséhez jelölje ki a diagramon az esemény 
   Az esemény mérték adattípusa karakterlánc.
 
 ### <a name="create-a-state-measurement"></a>Egy állapot-mérték létrehozása
-Új állapot a mérés hozzáadásához válassza **sablon szerkesztése**, majd kattintson a **+ új mérték** gombra. Válassza ki **állapot** a mérték, írja be, és adja meg, hogy a **létrehozása állapot** űrlap.
+Új állapot a mérés hozzáadásához válassza **sablon szerkesztése**, majd válassza ki a **+ új mérték** gombra. Válassza ki **állapot** a mérték, írja be, és adja meg, hogy a **létrehozása állapot** űrlap.
 
 Adja meg az adatait **megjelenített név**, **mezőnév**, és **értékek** az állapot. Minden egyes érték is használható, ha az érték jelenik meg, diagramok és táblázatok megjelenített név.
 
 Például hozzáadhat egy új **ventilátor mód** állapota, az eszköz küldhet, két lehetséges értékekkel rendelkező **operációs** és **leállítva**.
 
 
-| Megjelenítendő név | Mezőnév    |  1. érték   | Megjelenítendő név | 2. érték    |Megjelenítendő név  | 
+| Megjelenítendő név | Mezőnév    |  1. érték   | Megjelenítendő név | 2. érték    |Megjelenítendő név  | 
 | -------------| ------------- |----------- | -------------| -----------| -------------|
 | Ventilátor mód     | fanmode       |  1         | Üzemel    |     0      | Leállítva      |
 
@@ -125,7 +125,7 @@ Kiválasztása után **kész**, a **ventilátor mód** állapot mérési mérés
 
 ![Állapot mérési diagram](./media/howto-set-up-template/statemeasurementschart.png)
 
-Az eszköz a kis időtartam túl sok adatpont küld, ha az állapot mérték jelenik meg egy másik vizualizációt, az alábbi képernyőképen látható módon. Ha rákattint a diagram, az adott időtartamon belül minden adatpontok időrendi sorrendben jelennek meg. Az időtartomány, tekintse meg a diagramon ábrázolt mérését is szűkíthető.
+Az eszköz a kis időtartam túl sok adatpont küld, ha az állapot mérték jelenik meg egy másik vizualizációt, az alábbi képernyőképen látható módon. Ha a diagram, az adott időtartamon belül minden adatpontok időrendi sorrendben jelennek meg. Az időtartomány, tekintse meg a diagramon ábrázolt mérését is szűkíthető.
 
 > [!NOTE]
   Az állapot mérték adattípusa karakterlánc.
@@ -241,7 +241,7 @@ Miben különbözik egy parancs egy beállítást?
 * **A parancs**: Parancsok használatával azonnal parancsot az eszközön távolról futtatni az IoT-központ. Ha egy eszköz nem kapcsolódik, a parancs túllépi az időkorlátot, és nem sikerül. Ha például szeretné eszköz újraindítása.  
 
 
-Például hozzáadhat egy új **Echo** parancsot választva **sablon szerkesztése**, majd kattintson **+ új parancs**, és beírja az új parancsot:
+Például hozzáadhat egy új **Echo** parancsot választva **sablon szerkesztése**, kiválasztja az **+ új parancs**, és beírja az új parancsot:
 
 | Megjelenítendő név  | Mezőnév | Alapértelmezett időtúllépés | Adattípus |
 | --------------| -----------|---------------- | --------- | 

@@ -4,17 +4,17 @@ description: Az Azure Blob storage-indexelő Azure Search HTTP REST API használ
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 10/17/2018
+ms.date: 03/01/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
 ms.custom: seodec2018
-ms.openlocfilehash: 7bd7bcf66f0d91a87519a5d5bff7df7c73e2603f
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: dcecb98d5e254e3fadd114c227e783a60fc6fa4e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53310878"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316149"
 ---
 # <a name="searching-blob-storage-with-azure-search"></a>Keresés a Blob Storage-tárolókban az Azure Search szolgáltatással
 
@@ -38,7 +38,7 @@ Egy gyakori forgatókönyv, amely megkönnyíti a tartalom típustól blobok vé
 ## <a name="image-search"></a>Képkeresés
 Az Azure Search teljes szöveges keresés, a jellemzőalapú navigáció és rendezési lehetőségeket is érvényesek a metaadatokat a blobokban tárolt képek.
 
-Ha ezek a lemezképek előzetes feldolgozása használatával a [Computer Vision API](https://www.microsoft.com/cognitive-services/computer-vision-api) a Microsoft Cognitive Services, majd lehetőség a vizuális tartalmáról, az egyes rendszerképek, beleértve az optikai Karakterfelismerés és kézírás-felismerés index. Optikai Karakterfelismerés hozzáadása folyamatban van, és egyéb kép feldolgozási képességek közvetlenül az Azure Search, ha ezek a képességek érdekli kérelmet küldeni az a [UserVoice](https://aka.ms/azsuv) vagy [e-mail-címre](mailto:azscustquestions@microsoft.com).
+Kognitív keresés például tartalmazza a rendszerkép feldolgozási képességek [optikai karakterfelismerés (OCR)](cognitive-search-skill-ocr.md) és azonosítása [vizuális jellemzőket](cognitive-search-skill-image-analysis.md) , amelyek lehetővé teszik, hogy az egyes vizuális tartalmáról indexelése kép.
 
 ## <a name="index-and-search-through-json-blobs"></a>Index és keresést végezhet a JSON-blobok
 Az Azure Search beállítható úgy, hogy a blobokat tartalmazó JSON-ban található strukturálatlan tartalom kinyeréséhez. Az Azure Search olvashatja a JSON-blobok és a strukturálatlan tartalom használatával elemzi az Azure Search-dokumentum, a megfelelő mezőkbe. Az Azure Search is igénybe vehet a blobokat, amelyekre a JSON-objektumok egy tömbjét tartalmazza, és egyes elemei leképezése egy külön Azure Search-dokumentumot is.

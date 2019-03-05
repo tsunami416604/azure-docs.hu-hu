@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 8f4b39141a9509990525769833e2cd193419752c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 3d187851fda9054bbfbae245ef34440b66ad017e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54469372"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309315"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>A Log Analytics az Azure diagnosztikai naplók Stream
 
@@ -65,10 +65,13 @@ A Log Analytics-munkaterület nem rendelkezik és a naplókat kibocsátó mindad
 Néhány pillanat múlva az új beállítás jelenik meg az ehhez az erőforráshoz beállítások listáját, és diagnosztikai naplókat a rendszer streamként továbbítja a munkaterület, amint új esemény adat keletkezik. Vegye figyelembe, hogy mikor bocsásson ki egy eseményt, és amikor megjelenik a Log Analytics között legfeljebb tizenöt perc is lehet.
 
 ### <a name="via-powershell-cmdlets"></a>PowerShell-parancsmagok használatával
-Keresztül streamelésének engedélyezéséhez a [Azure PowerShell-parancsmagok](../../azure-monitor/platform/powershell-quickstart-samples.md), használhatja a `Set-AzureRmDiagnosticSetting` parancsmag ezekkel a paraméterekkel:
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+Keresztül streamelésének engedélyezéséhez a [Azure PowerShell-parancsmagok](../../azure-monitor/platform/powershell-quickstart-samples.md), használhatja a `Set-AzDiagnosticSetting` parancsmag ezekkel a paraméterekkel:
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId [your resource ID] -WorkspaceID [resource ID of the Log Analytics workspace] -Categories [list of log categories] -Enabled $true
+Set-AzDiagnosticSetting -ResourceId [your resource ID] -WorkspaceID [resource ID of the Log Analytics workspace] -Categories [list of log categories] -Enabled $true
 ```
 
 Vegye figyelembe, hogy a munkaterület azonosítója tulajdonság szükséges a teljes körű Azure erőforrás-azonosító, a munkaterület, nem a munkaterület azonosítója és kulcsa jelenik meg a Log Analytics-portálon.

@@ -10,12 +10,12 @@ ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: c1bc4265c44f007e794b873d732a06d1e30f324f
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 3546dd26ac7d376eed142629ceeeb30e0709e162
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661938"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309876"
 ---
 # <a name="integrate-other-services-with-sql-data-warehouse"></a>Más szolgáltatások integrálása az SQL Data warehouse-bA
 A fő funkciói mellett az SQL Data Warehouse lehetővé teszi a felhasználók számos, az Azure-ban a más szolgáltatások integrálása. Ezek a szolgáltatások a következők:
@@ -33,7 +33,7 @@ Power BI-integráció lehetővé teszi az SQL Data Warehouse a számítási telj
 * **Közvetlen csatlakozás**: Az SQL Data Warehouse elleni logikai legördülő lista speciális kapcsolatot. Legördülő lista gyorsabb elemzés által nagyobb méretekben biztosít.
 * **Nyissa meg a Power bi-ban**: A "Megnyitás Power BI-ban" gomb példányadatai csatlakoztathat így egyszerűbb a Power bi-bA továbbítja.
 
-További információkért lásd: [integráció a Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md), vagy a [Power BI dokumentációja](https://blogs.msdn.com/b/powerbi/archive/2015/06/24/exploring-azure-sql-data-warehouse-with-power-bi.aspx).
+További információkért lásd: [integráció a Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md), vagy a [Power BI dokumentációja](https://blogs.msdn.com/b/powerbi/archive/20../../exploring-azure-sql-data-warehouse-with-power-bi.aspx).
 
 ## <a name="azure-data-factory"></a>Azure Data Factory
 Az Azure Data Factory egy felügyelt platform összetett kinyerési létrehozására és betöltésére folyamatok biztosítja a felhasználók számára. Az SQL Data Warehouse-integráció az Azure Data Factory tartalmazza:

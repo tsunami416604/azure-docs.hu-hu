@@ -13,14 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: magoedte
-ms.openlocfilehash: d6933d5fd72a3a6c945d3afc3fdd3512be5b28d1
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 7654de7041b2aa7a5b72f551893c3e0fb60bbd40
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56591601"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309859"
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>A Log Analytics használatával az Azure Resource Manager-sablonok felügyelete
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Használhat [Azure Resource Manager-sablonok](../../azure-resource-manager/resource-group-authoring-templates.md) létrehozása és konfigurálása a Log Analytics-munkaterületeket. A feladatokat hajthat végre a sablonok közé:
 
 * Hozzon létre egy munkaterületet, beleértve a tarifacsomag-beállítás 
@@ -122,7 +125,7 @@ A következő paraméterekkel állítsa be az alapértelmezett érték:
    * PowerShell használja az alábbi parancsokat a sablont tartalmazó könyvtárban:
    
         ```powershell
-        New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json
+        New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile deploylaworkspacetemplate.json
         ```
 
    * Parancssor használja az alábbi parancsokat a sablont tartalmazó könyvtárban:
@@ -500,7 +503,7 @@ A mintasablon üzembe helyezéséhez:
 
 #### <a name="powershell"></a>PowerShell
 ```powershell
-New-AzureRmResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile azuredeploy.json
+New-AzResourceGroupDeployment -Name <deployment-name> -ResourceGroupName <resource-group-name> -TemplateFile azuredeploy.json
 ```
 
 #### <a name="command-line"></a>Parancssor

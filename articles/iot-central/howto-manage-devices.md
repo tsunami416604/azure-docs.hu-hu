@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: b882c31f40f177b81fc84eb7071f396bddeaa0dd
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 21c29d90d8ed149062f24b470603b0e0e03cc6ab
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658114"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315605"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Eszközök kezelése az Azure IoT Central alkalmazáshoz a
 
@@ -67,7 +67,7 @@ Az alkalmazás eszközök tömeges-regisztrálni:
  >   [!NOTE] 
     Ha egy eszköz sablon nem rendelkezik még importálhatja az eszközök területen **nincs társítva eszközök** , és regisztrálja őket minden olyan sablon nélkül. Eszközök importálása után majd társíthatja őket egy sablont egy későbbi lépésben.
 
-1. Kattintson az **Importálás** gombra.
+1. Válassza ki **importálás**.
 
     [![Importálási művelet](./media/howto-manage-devices/BulkImport1.png)](./media/howto-manage-devices/BulkImport1.png#lightbox)
 
@@ -79,7 +79,7 @@ Az alkalmazás eszközök tömeges-regisztrálni:
 
     [![Sikeres importálás](./media/howto-manage-devices/BulkImport3.png)](./media/howto-manage-devices/BulkImport3.png#lightbox)
 
-Ha az eszköz importálja a művelet sikertelen lesz, látni fogja hibaüzenet jelenik meg az eszköz rács. A hibákat a rögzítés naplófájl jön létre, és a hibaüzenet kattintva tölthető le.
+Ha az eszköz importálja a művelet sikertelen lesz, látni fogja hibaüzenet jelenik meg az eszköz rács. A naplófájl a hibákat a rögzítés jön létre, és a hibaüzenet kiválasztásával tölthető le.
 
 
 **A sablon eszközök társítása**
@@ -89,9 +89,9 @@ Eszközök regisztrálása az importálás alatt elindításával **nincs társ�
 1. Válassza a bal oldali panelen, **nincs társítva eszközök**.
     [![Társítatlan eszközök](./media/howto-manage-devices/UnassociatedDevices1.png)](./media/howto-manage-devices/UnassociatedDevices1.png#lightbox)
 1. Válassza ki a sablon társítani kívánt eszközöket.
-1. Kattintson a **társítása** lehetőséget.
+1. Válassza ki **társítása** lehetőséget.
     [![Eszközök hozzárendelése](./media/howto-manage-devices/UnassociatedDevices2.png)](./media/howto-manage-devices/UnassociatedDevices2.png#lightbox)
-1. Válassza ki a sablont a listából a rendelkezésre álló sablonok, és kattintson a **társítása** gombra.
+1. A sablont a listából a rendelkezésre álló sablonok, és válasszon **társítása**.
 1. A kiválasztott eszközök átkerül a megfelelő eszköz sablon alapján.
 
  >   [!NOTE] 
@@ -106,7 +106,7 @@ Tömeges exportálása eszközök az alkalmazásból:
 
 1. A bal oldali panelen válassza ki, amelyhez az eszköz exportálása kívánt eszköz sablont.
 
-1. Jelölje ki az eszközöket, amelyeket szeretne exportálni, majd kattintson a **exportálása** művelet.
+1. Jelölje ki az eszközöket, amelyet szeretne exportálni, és válassza ki a **exportálása** művelet.
 
     [![Exportálás](./media/howto-manage-devices/Export1.png)](./media/howto-manage-devices/Export1.png#lightbox)
 
@@ -114,7 +114,7 @@ Tömeges exportálása eszközök az alkalmazásból:
 
 1. Az exportálás befejezése után a sikert jelző üzenet jelenik meg együtt egy hivatkozás a létrehozott fájl letöltéséhez.
 
-1. Kattintson a **sikert jelző üzenettel** letölteni a fájlt egy helyi mappába a lemezen.
+1. Válassza ki a **sikert jelző üzenettel** letölteni a fájlt egy helyi mappába a lemezen.
 
     [![Sikeres exportálása](./media/howto-manage-devices/Export2.png)](./media/howto-manage-devices/Export2.png#lightbox)
 

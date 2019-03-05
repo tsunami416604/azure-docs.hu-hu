@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: a7de9126716437e4e90185f46c9cf95f7de20d40
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 2a989a98399e9d6701d92d8e4e22b243cb1ebff5
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57220535"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315826"
 ---
 # <a name="create-and-manage-personal-dashboards"></a>Hozzon létre, és a személyes irányítópultok kezelése
 
@@ -21,15 +21,15 @@ A **irányítópult** az oldal, amely betölti, amikor először keresi fel az a
 
 ## <a name="create-dashboard"></a>irányítópult létrehozása
 
-Az alábbi képernyőképen az irányítópult látható a létrehozott alkalmazás a **minta Contoso** sablont. Az alapértelmezett irányítópult lecserélheti egy egyéni irányítópultomat. Ehhez kattintson **+ új** tetején, az oldal jobb.
+Az alábbi képernyőképen az irányítópult látható a létrehozott alkalmazás a **minta Contoso** sablont. Az alapértelmezett irányítópult lecserélheti egy egyéni irányítópultomat. Ehhez válassza ki a **+ új** tetején, az oldal jobb.
 
 ![A "Contoso minta" sablonon alapuló alkalmazások irányítópult](media/howto-personalize-dashboard-experimental/defaultdashboard.png)
 
-Kattintson a **+ új**, megnyílik az irányítópult-szerkesztő. A szerkesztőben is adja meg az irányítópult nevét és a kiválasztott cikkek a könyvtárból. A függvénytár tartalmazza a csempék és irányítópult primitívek segítségével testre szabhatja az irányítópultot.
+Kiválasztásával **+ új**, megnyílik az irányítópult-szerkesztő. A szerkesztőben is adja meg az irányítópult nevét és a kiválasztott cikkek a könyvtárból. A függvénytár tartalmazza a csempék és irányítópult primitívek segítségével testre szabhatja az irányítópultot.
 
 ![Irányítópult-könyvtár](media/howto-personalize-dashboard-experimental/dashboardeditor.png)
 
-Például hozzáadhat egy **eszközbeállítások, illetve tulajdonságok** csempe beállítások és tulajdonságok értékeit egy Ön által felügyelt eszközök megjelenítéséhez. Ehhez először válassza ki a **eszköz sablon** válassza ki a **eszközpéldány**. A csempe majd adjon meg egy címet és a válassza a **beállítás** vagy egy **tulajdonság** megjelenítéséhez. Az alábbi képernyőfelvételen a **sebesség ventilátor** a csempe hozzáadása a beállítást. Kattintson a **kész** menteni a módosítást az irányítópulton.
+Például hozzáadhat egy **eszközbeállítások, illetve tulajdonságok** csempe beállítások és tulajdonságok értékeit egy Ön által felügyelt eszközök megjelenítéséhez. Ehhez először válassza ki a **eszköz sablon** válassza ki a **eszközpéldány**. A csempe majd adjon meg egy címet és a válassza a **beállítás** vagy egy **tulajdonság** megjelenítéséhez. Az alábbi képernyőfelvételen a **sebesség ventilátor** a csempe hozzáadása a beállítást. Válassza ki **kész** menteni a módosítást az irányítópulton.
 
 ![Részletes beállítások és tulajdonságok "Konfigurálása eszköz részletei" képernyő](media/howto-personalize-dashboard-experimental/dashboardsetting.png)
 

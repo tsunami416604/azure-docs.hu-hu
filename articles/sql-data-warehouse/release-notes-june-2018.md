@@ -10,23 +10,25 @@ ms.subservice: manage
 ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
-ms.openlocfilehash: cae02627c539e543d27ea188d521605f187ea8a0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: accb2b730d5b165e29a1ff050cbb2c0ffa2f379d
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475346"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57317169"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-june-2018"></a>Mi az új Azure SQL Data warehouse? 2018. június
 Az Azure SQL Data Warehouse fejlesztései folyamatosan kap. Ez a cikk ismerteti az új szolgáltatásokat és változásokat tartalmazza, amelyek a 2018 június. 
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="user-defined-restore-points"></a>Felhasználó által definiált visszaállítási pontok
 Az SQL Data Warehouse szolgáltatás automatikusan pillanatképeket készít az adatraktárról garantáló egy 8 órás helyreállításipont-célkitűzés (RPO) 8 óránként. Amíg ez a felügyeleti terheket, az adattárház futó automatikus pillanatfelvételek egyszerű, szükség van a pillanatfelvételt a üzleti igények alapján kritikus időpontokban. Ha például pillanatképének elkészítése közvetlenül egy jelentős az adatok betöltése vagy új parancsfájl központi telepítése előtt, közvetlenül a művelet előtt visszaállítási pont engedélyezése a data warehouse-bA. 
 
-Az SQL Data Warehouse mostantól támogatja [felhasználói visszaállítási pontok](https://azure.microsoft.com/blog/quick-recovery-time-with-sql-data-warehouse-using-user-defined-restore-points/) keresztül a [New-AzureRmSqlDatabaseRestorePoint](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabaserestorepoint) parancsmagot.
+Az SQL Data Warehouse mostantól támogatja [felhasználói visszaállítási pontok](https://azure.microsoft.com/blog/quick-recovery-time-with-sql-data-warehouse-using-user-defined-restore-points/) keresztül a [New-AzSqlDatabaseRestorePoint](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaserestorepoint) parancsmagot.
 
 ```PowerShell
-New-AzureRmSqlDatabaseRestorePoint
+New-AzSqlDatabaseRestorePoint
     -ResourceGroupName $ResourceGroupName
     -ServerName $ServerName
     -DatabaseName $DatabaseName

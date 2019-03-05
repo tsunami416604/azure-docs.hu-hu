@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 01/14/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 8c5b32464a9c6253dc34d070d64a1645f523a80c
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: f58d06cd191166f47d864241564bc57019b59132
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804433"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316574"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>IoT-központ kezelése az Azure Portalról
 
@@ -23,7 +23,7 @@ Létrehozásához és IoT-központ alkalmazások kezelése – az IoT-központ [
 
 ## <a name="create-iot-central-applications"></a>Alkalmazások létrehozása az IoT-központ
 
-Hozzon létre egy alkalmazást, lépjen a [az Azure portal](https://ms.portal.azure.com) kattintson **erőforrás létrehozása** a fő navigációs menüt a bal oldalon található.
+Hozzon létre egy alkalmazást, lépjen a [az Azure portal](https://ms.portal.azure.com) válassza **erőforrás létrehozása** a fő navigációs menüt a bal oldalon található.
 
 ![Felügyeleti portál: navigációs menü](media/howto-manage-iot-central-from-portal/image0.png)
 
@@ -31,11 +31,11 @@ Hozzon létre egy alkalmazást, lépjen a [az Azure portal](https://ms.portal.az
 
 ![Felügyeleti portál: keresés](media/howto-manage-iot-central-from-portal/image0a.png)
 
-Kattintson a **IoT központi alkalmazás** sortételt a keresési eredmények között.
+Válassza ki a **IoT központi alkalmazás** sortételt a keresési eredmények között.
 
 ![Felügyeleti portálon: a keresési eredmények a](media/howto-manage-iot-central-from-portal/image0b.png)
 
-Most kattintson a **létrehozás** gombra.
+Most válassza ki **létrehozás**.
 
 ![Felügyeleti portál: IoT-központ erőforrás](media/howto-manage-iot-central-from-portal/image0c.png)
 
@@ -43,7 +43,7 @@ Töltse ki az űrlap összes mezőjét. Az űrlap az űrlap kitöltésekor az Io
 
 ![Felügyeleti portál: IoT Central-erőforrás létrehozása](media/howto-manage-iot-central-from-portal/image1.png)  
 
-Összes mező kitöltése, után kattintson a **létrehozás** gombra.
+Összes mező kitöltése, után válassza ki a **létrehozás**.
 
 ## <a name="manage-existing-iot-central-applications"></a>Meglévő IoT Central-alkalmazások kezelése
 
@@ -52,19 +52,19 @@ Ha már rendelkezik egy Azure IoT Central alkalmazáshoz, törölheti azt, vagy 
 > [!NOTE]
 > Próbaverzió alkalmazások az Azure Portalon nem látható, mivel azok nem társít az előfizetéséhez.
 
-Első lépésként kattintson **összes erőforrás** a fő navigációs menüt a bal oldalon található. A keresőmezőt használva írja be és az erőforrások listájában keresse meg az alkalmazás nevét. Ezután kattintson a kezelni kívánt IoT Central alkalmazáshoz.
+Első lépésként válassza ki a **összes erőforrás** a fő navigációs menüt a bal oldalon található. A keresőmezőt használva írja be és az erőforrások listájában keresse meg az alkalmazás nevét. Ezután válassza ki a kezelni kívánt IoT Central alkalmazáshoz.
 
 ![Felügyeleti portál: erőforrás-kezelés](media/howto-manage-iot-central-from-portal/image2.png)
 
-Keresse meg az alkalmazást, kattintson az IoT központi alkalmazás URL-címe.
+Keresse meg az alkalmazást, válassza ki az IoT központi alkalmazás URL-címe.
 
 ![Felügyeleti portál: erőforrás-kezelés](media/howto-manage-iot-central-from-portal/image3.png)
 
-Az alkalmazás egy másik erőforráscsoportba való áthelyezéséhez kattintson **módosítása** mellett az erőforráscsoportot. Az a **erőforrások áthelyezése** lapon, válassza ki az erőforráscsoportot, amelyet szeretne áttelepíteni az alkalmazás.
+Az alkalmazás egy másik erőforráscsoportba való áthelyezéséhez jelölje ki **módosítása** mellett az erőforráscsoportot. Az a **erőforrások áthelyezése** lapon, válassza ki az erőforráscsoportot, amelyet szeretne áttelepíteni az alkalmazás.
 
 ![Felügyeleti portál: erőforrás-kezelés](media/howto-manage-iot-central-from-portal/image4.png)
 
-Az alkalmazás egy másik előfizetésbe áthelyezni, kattintson a **módosítása** hivatkozás az előfizetés mellett. Válassza ki az előfizetést, amelyre szeretné áttelepíteni a megjelenő párbeszédpanelen lévő alkalmazás.
+Az alkalmazás másik előfizetésbe való áthelyezéséhez jelölje ki a **módosítása** hivatkozás az előfizetés mellett. Válassza ki az előfizetést, amelyre szeretné áttelepíteni a megjelenő párbeszédpanelen lévő alkalmazás.
 
 ![Felügyeleti portál: erőforrás-kezelés](media/howto-manage-iot-central-from-portal/image5.png)
 

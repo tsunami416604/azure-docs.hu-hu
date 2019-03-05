@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: aaaec6e02c9280801fbf7e3b5a8eaa1ae4a1ff43
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 3d4c1029315e754410f31b13042d1d6acb105da1
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429769"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309689"
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Az Event hubs Azure tevékenységnapló Stream
 Streamelheti a [Azure-tevékenységnapló](../../azure-monitor/platform/activity-logs-overview.md) közel valós időben által bármely alkalmazás:
@@ -58,21 +58,24 @@ A tevékenységnapló naplóprofil tartalmazza a folyamatos átviteli frissíti,
 6. Ha több előfizetéssel rendelkezik, ismételje meg ezt a műveletet, és minden adat küldése az azonos eseményközpontba.
 
 ### <a name="via-powershell-cmdlets"></a>PowerShell-parancsmagok használatával
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Ha egy napló-profilja már létezik, akkor először távolítsa el a meglévő log-profilt, és hozzon létre egy új naplóprofil.
 
-1. Használat `Get-AzureRmLogProfile` azonosítását, ha egy napló-profil létezik.  Ha egy napló profil létezik, keresse meg a *neve* tulajdonság.
-2. Használat `Remove-AzureRmLogProfile` , távolítsa el a napló profilt származó értékkel a *neve* tulajdonság.
+1. Használat `Get-AzLogProfile` azonosítását, ha egy napló-profil létezik.  Ha egy napló profil létezik, keresse meg a *neve* tulajdonság.
+2. Használat `Remove-AzLogProfile` , távolítsa el a napló profilt származó értékkel a *neve* tulajdonság.
 
     ```powershell
     # For example, if the log profile name is 'default'
-    Remove-AzureRmLogProfile -Name "default"
+    Remove-AzLogProfile -Name "default"
     ```
-3. Használat `Add-AzureRmLogProfile` egy új naplófájl-profil létrehozása:
+3. Használat `Add-AzLogProfile` egy új naplófájl-profil létrehozása:
 
    ```powershell
    # Settings needed for the new log profile
    $logProfileName = "default"
-   $locations = (Get-AzureRmLocation).Location
+   $locations = (Get-AzLocation).Location
    $locations += "global"
    $subscriptionId = "<your Azure subscription Id>"
    $resourceGroupName = "<resource group name your event hub belongs to>"
@@ -81,7 +84,7 @@ Ha egy napló-profilja már létezik, akkor először távolítsa el a meglévő
    # Build the service bus rule Id from the settings above
    $serviceBusRuleId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventHubNamespace/authorizationrules/RootManageSharedAccessKey"
 
-   Add-AzureRmLogProfile -Name $logProfileName -Location $locations -ServiceBusRuleId $serviceBusRuleId
+   Add-AzLogProfile -Name $logProfileName -Location $locations -ServiceBusRuleId $serviceBusRuleId
    ```
 
 ### <a name="via-azure-cli"></a>Via Azure CLI

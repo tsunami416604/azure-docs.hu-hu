@@ -12,12 +12,12 @@ ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 02/20/2019
-ms.openlocfilehash: 4f8ee5a3a72fc143822a71bcb933f34e2f371019
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 1318cd3d1c0c51889cc70b6836d06d6d6ee70c24
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453137"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308380"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>SQL-hitelesítéshez használandó Azure Active Directory-hitelesítéssel
 
@@ -81,7 +81,7 @@ Egy tartalmazottadatbázis-felhasználó létrehozása az Azure SQL Database fel
 - Az alábbi tagokat az Azure AD az Azure SQL-kiszolgáló vagy az SQL Data Warehouse kiépítése:
 
   - Natív tagok: Egy tag létrehozva az Azure ad-ben, a felügyelt tartomány vagy a felhasználói tartományban. További információkért lásd: [saját tartománynév hozzáadása az Azure ad-ben](../active-directory/active-directory-domains-add-azure-portal.md).
-  - Összevont tartomány tagjai: Az összevont tartományt az Azure AD-ben létrehozott tag. További információkért lásd: [Microsoft Azure mostantól támogatja a Windows Server Active Directoryval való összevonás](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/).
+  - Összevont tartomány tagjai: Az összevont tartományt az Azure AD-ben létrehozott tag. További információkért lásd: [Microsoft Azure mostantól támogatja a Windows Server Active Directoryval való összevonás](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/).
   - Importált más Azure AD-ből tartózkodó tagok natív vagy összevont tartomány tagjai.
   - Active Directory-csoportok biztonsági csoportokat létrehozni.
 

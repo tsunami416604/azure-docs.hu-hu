@@ -8,14 +8,16 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 1e322c9bd6f78c4801c14e9982cc170b3af1971a
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: dba1f66be91d8fa8e151a2771bad70b721af02dc
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893578"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313072"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Küldés a vendég operációs rendszer mérőszámok az Azure Monitor metrika tárolására klasszikus Cloud Services 
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Az Azure Monitor szolgáltatással [diagnosztikai bővítmény](diagnostics-extension-overview.md), gyűjthet metrikák és a egy virtuális gép, a felhőalapú szolgáltatás vagy a Service Fabric-fürt részeként futó a vendég operációs rendszerek (Guest OS) származó naplók. A bővítmény küldhet telemetriát [számos különböző helyeken.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
 
@@ -31,7 +33,7 @@ Ez a cikk csak működik az Azure Cloud Servicesben teljesítményszámlálók a
 
 - Az előfizetés regisztrálva kell lenniük [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services). 
 
-- Rendelkeznie kell [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) vagy [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) telepítve.
+- Rendelkeznie kell [Azure PowerShell-lel](/powershell/azure) vagy [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) telepítve.
 
 ## <a name="provision-a-cloud-service-and-storage-account"></a>A felhő és a tárolási fiók kiépítése 
 
@@ -141,7 +143,7 @@ Mentse helyileg a diagnosztikai fájlt.
 Indítsa el a Powershellt, és jelentkezzen be az Azure-bA. 
 
 ```PowerShell
-Login-AzureRmAccount 
+Login-AzAccount 
 ```
 
 A következő parancsokat használja a korábban létrehozott tárfiók adatait tárolja. 

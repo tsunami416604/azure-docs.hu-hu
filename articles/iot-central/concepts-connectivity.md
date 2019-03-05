@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 58129099eefeec969083821b448f4b06fd7df7ee
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 5f89077980cc36bb2fd08b100da4625c39302c35
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195438"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311933"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Eszköz csatlakoztatása az Azure IoT Central
 
@@ -90,9 +90,9 @@ Az alábbi lépések bemutatják, hogyan eszközök csatlakoztatása az IoT-köz
       Ha megsértették a biztonsági vagy az elsődleges tanúsítvány lejár, a másodlagos tanúsítvány használatával csökkentheti az állásidőt. Továbbra is a másodlagos tanúsítványt használ, míg az elsődleges tanúsítvány frissítéséhez eszközök kiépítése.
 
     - Tanúsítvány tulajdonjogának ellenőrzése biztosítja, hogy a tanúsítvány feltöltése a tanúsítvány titkos kulcsa. A tanúsítvány ellenőrzéséhez:
-        - Kattintson a Tovább gombra a gomb **ellenőrzőkódot** egy kódot.
+        - Válassza ki a gomb melletti **ellenőrzőkódot** egy kódot.
         - Hozzon létre egy X.509-hitelesítési tanúsítvány az előző lépésben létrehozott ellenőrzőkódot. Mentse a tanúsítványt egy .cer fájlba.
-        - Töltse fel az aláírt hitelesítési tanúsítványt, és kattintson ellenőrizze.
+        - Töltse fel az aláírt hitelesítési tanúsítványt, és válassza ki **ellenőrizze**.
 
           ![Kapcsolati beállítások](media/concepts-connectivity/verify-cert.png)
 
@@ -173,7 +173,7 @@ Ha egy valódi eszköz csatlakozik az IoT Central alkalmazáshoz, a kiépítési
 
 Az alábbi lépések bemutatják, hogyan kezdheti egy kapcsolati karakterláncot egy eszközhöz:
 
-1. Kattintson a **Connect** a a **Device Explorer** oldalra a kapcsolat részletek beszerzéséhez: **Hatókör azonosítója**, **Eszközazonosító**, és **eszköz elsődleges kulcs**:
+1. Válassza ki **Connect** a a **Device Explorer** oldalra a kapcsolat részletek beszerzéséhez: **Hatókör azonosítója**, **Eszközazonosító**, és **eszköz elsődleges kulcs**:
 
     ![Kapcsolat adatai](media/concepts-connectivity/device-connect.png)
 

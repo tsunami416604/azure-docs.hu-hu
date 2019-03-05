@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: af85ff8272853be82bae5c79622295fddfc60ade
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 84610c94621e887e20bb903385e2d6ddbe67189d
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337274"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57307853"
 ---
 # <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Hozzon létre egy esemény szabályt és az Azure IoT központi alkalmazás-értesítések beállítása
 
@@ -29,7 +29,7 @@ Esemény szabály létrehozása esetén az eszköz sablon legalább egy esemény
 
 1. Device Explorer használatával, keresse meg az eszköz sablon, amelynek a szabályt ad hozzá.
 
-1. A kiválasztott sablon alapján kattintson egy meglévő eszközt. 
+1. A kiválasztott sablon alapján válassza ki egy meglévő eszközt.
 
     >[!TIP] 
     >Ha a sablon nem minden olyan eszközt, majd egy új eszköz hozzáadásához először.
@@ -39,10 +39,10 @@ Esemény szabály létrehozása esetén az eszköz sablon legalább egy esemény
     ![Még nincsenek szabályai](media/howto-create-event-rules/Rules_Landing_Page.png)
 
 
-1. Az a **szabályok** lapra, majd **sablon szerkesztése** , majd **+ új szabály** , milyen típusú szabályokat hozhat létre.
+1. Az a **szabályok** lapon jelölje be **sablon szerkesztése** , majd **+ új szabály** , milyen típusú szabályokat hozhat létre.
 
 
-1. Kattintson a **esemény** csempére kattintva hozzon létre egy esemény figyelési szabály.
+1. Válassza ki a **esemény** csempére kattintva hozzon létre egy esemény figyelési szabály.
 
     ![Szabály típusa](media/howto-create-event-rules/Rule_Types.png)
 

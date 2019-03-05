@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: sogup
-ms.openlocfilehash: 3f6d614d1487174a361d562212c08ec5b3aaf220
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 893e0f5738a013f22404d7ccfdd9a73647a511f6
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960020"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316081"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Továbbfejlesztett biztonsági mentés, és állítsa vissza a teljesítmény az Azure Backup azonnali visszaállítási képesség
 
@@ -78,7 +78,7 @@ Másik lehetőségként megnyithatja **tulajdonságok** beolvasni a tároló old
 
 
 ## <a name="configure-snapshot-retention-using-azure-portal"></a>Az Azure portal használatával pillanatképek megőrzésének konfigurálása
-A jelenleg elérhető **USA nyugati középső Régiója**, **Dél-India**, **Kelet-Ausztrália**, és **Észak-Európa**.
+A jelenleg elérhető **USA nyugati középső Régiója**, **Dél-India**, **Kelet-Ausztrália**, **Észak-Európa**,  **Közép-Kanada**, **kelet-Kanada**, **közép-Franciaország**, **Dél-Franciaország**, **Korea középső régiója**,  **Korea déli régiója**, **Egyesült Királyság 2. déli régiója**, **Egyesült Királyság északi régiója**, **Egyesült Királyság déli régiója**, és **Egyesült Királyság nyugati régiója**.
 
 A frissített felhasználókhoz, az Azure Portalon látható egy új funkció a mezőt a **virtuális gép biztonsági mentési szabályzat** panel a **azonnali visszaállítása** szakaszban. Módosíthatja a pillanatkép megőrzési időtartamot a **virtuális gép biztonsági mentési szabályzat** panel az összes virtuális gép az adott biztonsági mentési szabályzathoz társított.
 

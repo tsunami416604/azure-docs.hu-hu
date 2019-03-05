@@ -1,7 +1,7 @@
 ---
 title: Az Azure Blob storage tartalmának az Azure Search – a teljes szöveges keresés
 description: Tudnivalók az Azure Blob Storage indexelése és szöveg kinyerése és az Azure Search a dokumentumokat.
-ms.date: 10/17/2018
+ms.date: 03/01/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 56afc933eff2e06df270b17403b767ebaddd4154
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 87dc1dab0670f69ff8c418be476986baec2821fb
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56872998"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310879"
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Dokumentumok indexelése az Azure Blob Storage, az Azure Search szolgáltatással
 Ez a cikk bemutatja, hogyan használható az Azure Search index dokumentumok (például PDF-, Microsoft Office-dokumentumok, és számos egyéb gyakori formátum) az Azure Blob storage-ban tárolja. Első lépésként beállítása és konfigurálása a blob indexelőjével alapjait ismerteti. Ezután egy mélyebb feltárása viselkedéseket, kínál, és esetekben valószínűleg találkozik.
@@ -68,7 +68,7 @@ Adatforrás létrehozása API további információkért lásd: [adatforrás lé
 
 A hitelesítő adatokat megadhatja a blob-tároló, a következő módszerek egyikével:
 
-- **Teljes hozzáférés tárfiók kapcsolati sztringje**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`. Megtekintheti a kapcsolati karakterláncot az Azure Portalról a storage-fiók paneljére lépve > Beállítások > kulcsok (a klasszikus tárfiókokkal) vagy a beállítások > hozzáférési kulcsok (a storage-fiókok Azure Resource Manager).
+- **Teljes hozzáférés tárfiók kapcsolati sztringje**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>` Megtekintheti a kapcsolati karakterláncot az Azure Portalról a storage-fiók paneljére lépve > Beállítások > kulcsok (a klasszikus tárfiókokkal) vagy a beállítások > hozzáférési kulcsok (a storage-fiókok Azure Resource Manager).
 - **Storage-fiók közös hozzáférésű jogosultságkód** (SAS) kapcsolódási karakterlánc: `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl` A SAS kell van a listában, és olvasási jogosultságokkal tárolókkal és objektumokkal (ebben az esetben blobok).
 -  **Tároló közös hozzáférésű jogosultságkód**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl` Az SAS a lista kell, és olvasási engedéllyel a tároló.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/21/2018
 ms.author: vidarmsft
-ms.openlocfilehash: fe4d332859b3ec0ba03e64f9a830b7710586aa17
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: c5ffe3ec2ec3cb06297df6be4ba7021f692633bf
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158817"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312489"
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>A StorSimple Data Manager-megoldás áttekintése
 
@@ -68,7 +68,9 @@ Azt javasoljuk, hogy:
  - A forrás tárfiókban (a StorSimple-eszköz társított egyet), és ugyanazon Azure-régióban kell céloldali tárfiók (Ha azt szeretné, az adatok natív formátumban).
  - A Data Manager és a feladat definíciója csatlakozva a régióban, amely a StorSimple tárfiókot tartalmaz. Ha ez nem lehetséges, léptetik be a Data Manager legközelebbi Azure-régióban, és majd a StorSimple tárfiók ugyanabban a régióban hozza létre a feladatdefiníciót. 
 
-    Ha a StorSimple tárfiók nem támogatja a feladat definíciójának létrehozása 26 régióban, azt javasoljuk, hogy nem StorSimple Data Manager szerint hosszú késések és potenciálisan nagy a kimenő forgalom költségeit.
+    Ha a StorSimple tárfiók nem támogatja a feladat definíciójának létrehozása 26 régióban, azt javasoljuk, hogy nem StorSimple Data Manager szerint hosszú késések és lehetséges kimenő forgalom költségeit.
+    
+A Microsoft nagy hangsúlyt fektet a győződjön meg arról, hogy Azure-szolgáltatások minden esetben érhető el minden régióban. Azonban nem tervezett szolgáltatáskimaradások fordulhat elő rövid időszakokra egy adott régióban. Ezekben az esetekben viszi, megjelenik egy Data Manager és a feladat definíciója egy régióban, amely a szolgáltatáskiesés megszüntetése után nem érinti, és az átalakítási feladat futtatása. Ilyen esetben némi késést találkozhat, de ez lehet a stratégia olyan regionális szolgáltatáskimaradás, a ritka esemény.
 
 ## <a name="security-considerations"></a>Biztonsági szempontok
 

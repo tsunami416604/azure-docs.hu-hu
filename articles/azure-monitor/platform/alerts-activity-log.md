@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
-ms.openlocfilehash: c88fe7051519440056fe85e7ff9172ae0239bd41
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: da7556b909ec4eb544a6b4e4fab7af4a0919a158
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234237"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308176"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és használata az Azure Monitor tevékenységnapló-riasztások kezelése  
 
@@ -204,13 +204,26 @@ A fenti json-mintaadatok menthető, ez az útmutató céljából (például:) sa
 
 ## <a name="powershell"></a>PowerShell
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+### <a name="deploy-resource-manager-template-with-powershell"></a>A PowerShell használatával a Resource Manager-sablon üzembe helyezése
+A minta egy előző [erőforráscsoport-sablon részben] Resource-sablon üzembe helyezése a PowerShell használatával (#resource-manager-sablon, használja a következő parancsot:
+
+```powershell
+New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile sampleActivityLogAlert.json -TemplateParameterFile sampleActivityLogAlert.parameters.json
+```
+
+ahol a sampleActivityLogAlert.parameters.json a riasztási szabály létrehozásához szükséges paraméterek számára megadott értékeket tartalmazza.
+
+### <a name="use-activity-log-powershell-cmdlets"></a>Tevékenység Log PowerShell-parancsmagok használata
+
 A tevékenységnapló-riasztások rendelkezhetnek dedikált elérhető PowerShell-parancsmagokkal:
 
-- [Set-AzureRmActivityLogAlert](https://docs.microsoft.com/powershell/module/azurerm.insights/set-azurermactivitylogalert): Új létrehozása vagy meglévő tevékenység log riasztási szabály erőforrás frissítése
-- [Get-AzureRmActivityLogAlert](https://docs.microsoft.com/powershell/module/azurerm.insights/get-azurermactivitylogalert): Egy vagy több tevékenység log riasztási szabály erőforrást beolvasni
-- [Remove-AzureRmActivityLogAlert](https://docs.microsoft.com/powershell/module/azurerm.insights/remove-azurermactivitylogalert): Tevékenység log riasztási szabály erőforrás a felhasználói megerősítés törlése
-- [Enable-AzureRmActivityLogAlert](https://docs.microsoft.com/powershell/module/azurerm.insights/enable-azurermactivitylogalert): Ahhoz, hogy egy meglévő tevékenység log riasztásiszabály-erőforrás
-- [Disable-AzureRmActivityLogAlert](https://docs.microsoft.com/powershell/module/azurerm.insights/disable-azurermactivitylogalert): Egy meglévő tevékenységet log riasztási szabály erőforrás letiltása
+- [Set-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Set-AzActivityLogAlert?view=azps-1.3.0) : Létrehoz egy új vagy meglévő tevékenységnapló-riasztás frissítése.
+- [Get-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Get-AzActivityLogAlert?view=azps-1.3.0) : Lekérdezi egy vagy több tevékenység log riasztás erőforrásai.
+- [Enable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Enable-AzActivityLogAlert?view=azps-1.3.0) : Lehetővé teszi a meglévő tevékenységnapló-riasztás, és beállítja a címkéket.
+- [Disable-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Disable-AzActivityLogAlert?view=azps-1.3.0) : Letiltja a meglévő tevékenységnapló-riasztás, és beállítja a címkéket.
+- [Remove-AzActivityLogAlert](https://docs.microsoft.com/powershell/module/az.monitor/Remove-AzActivityLogAlert?view=azps-1.3.0)    : Eltávolítja a tevékenységnapló-riasztás.
 
 ## <a name="cli"></a>parancssori felület
 

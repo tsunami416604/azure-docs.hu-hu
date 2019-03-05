@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 03/01/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: e9cf4fd448527e8104883e1c23c8c4b64fde3f0d
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 8faeb06987577d7e0098e3b5047cdde91b1254ae
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213636"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315231"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Biztonsági mentés és visszaállítás az Azure SQL Data Warehouse
 
@@ -48,7 +48,6 @@ Ez a funkció lehetővé teszi az adatraktár visszaállítási pontok létrehoz
 
 > [!NOTE]
 > Ha a 7 napnál hosszabb visszaállítási pontok van szüksége, adjon szavazzon ezt a képességet [Itt](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/35114410-user-defined-retention-periods-for-restore-points). Is hozzon létre egy felhasználói visszaállítási pont és az újonnan létrehozott visszaállításipont visszaállítása egy új data warehouse-bA. Miután visszaállította, az adatraktár online rendelkezik, és akár szüneteltetheti is, hogy határozatlan ideig számítási költségeit. A szüneteltetett adatbázis tárolási díjak pedig az Azure Premium Storage tekintetében. Ha egy aktív másolata, a visszaállított adatraktár van szüksége, folytathatja, amelynek csak néhány percet vehet igénybe.
->
 
 ### <a name="restore-point-retention"></a>Visszaállítási pont megőrzése
 
@@ -66,17 +65,15 @@ Amikor egy adattárházat, az SQL Data Warehouse végső pillanatképet készít
 
 > [!IMPORTANT]
 > Ha töröl egy logikai SQL server-példányt, a példányhoz tartozó összes adatbázis is törlődik, és nem állítható helyre. Kiszolgáló törlése nem állítható vissza.
->
 
 ## <a name="geo-backups-and-disaster-recovery"></a>GEO-biztonsági mentések és a katasztrófa utáni helyreállítás
 
 Az SQL Data Warehouse egy georedundáns biztonsági mentés naponta egyszer elvégzi a [párosított adatközpontba](../best-practices-availability-paired-regions.md). Az rpo-t, a georedundáns visszaállítás 24 órán keresztül. A georedundáns biztonsági mentési visszaállíthatja egy bármelyik más régióban, ahol támogatott az SQL Data Warehouse-kiszolgálóhoz. Georedundáns biztonsági biztosítja, visszaállíthatja a data warehouse-bA abban az esetben, ha a visszaállítási pontok az elsődleges régióban nem férhet hozzá.
 
-GEO-biztonsági mentések alapállapotban be van kapcsolva. Ha az adattárház Gen1, is [kikapcsolhatja az újat](/powershell/module/azurerm.sql/set-azurermsqldatabasegeobackuppolicy) Ha szeretné. Nem tilthatók le geo-biztonsági mentések Gen2 a garantált beépített adatvédelem-jébe.
+GEO-biztonsági mentések alapállapotban be van kapcsolva. Ha az adattárház Gen1, is [kikapcsolhatja az újat](/powershell/module/az.sql/set-azsqldatabasegeobackuppolicy) Ha szeretné. Nem tilthatók le geo-biztonsági mentések Gen2 a garantált beépített adatvédelem-jébe.
 
 > [!NOTE]
 > Földrajzi – biztonsági másolatok a rövidebb rpo miatt van szükség, ha ez a funkció szavazzon [Itt](https://feedback.azure.com/forums/307516-sql-data-warehouse). Hozhat létre egy felhasználói visszaállítási pontot, és az újonnan létrehozott visszaállítási pontból vissza egy új data warehouse egy másik régióban. Miután visszaállította, az adatraktár online rendelkezik, és akár szüneteltetheti is, hogy határozatlan ideig számítási költségeit. A szüneteltetett adatbázis tárolási díjak pedig az Azure Premium Storage tekintetében. Szüksége van egy aktív másolata, az adatraktárban, folytathatja, amelynek csak néhány percet vehet igénybe.
->
 
 ## <a name="backup-and-restore-costs"></a>Biztonsági mentés és visszaállítás költségek
 
@@ -108,7 +105,6 @@ Is [az adatraktár visszaállítása](https://docs.microsoft.com/azure/sql-data-
 
 > [!NOTE]
 > A georedundáns visszaállítás végrehajtásához kell nem visszavonta a funkció.
->
 
 ## <a name="next-steps"></a>További lépések
 

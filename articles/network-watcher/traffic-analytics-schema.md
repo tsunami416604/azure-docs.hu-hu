@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: ca7aba3d92542f1b73160c726a555487e17fd8e2
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 34c455b5bf77906d9b6525731c09b62f15e4ccd2
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57012034"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313225"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>A Traffic Analytics séma és adatok összesítése
 
@@ -112,15 +112,15 @@ Az alábbiakban a séma- és azok jelölésére mezői
     
 1. AzurePublic és ExternalPublic folyamatok esetén az ügyfél saját Azure virtuális gép IP VMIP_s mezőben van feltöltve, míg a nyilvános IP-címek vannak feltöltését a PublicIPs_s mezőben. Ezen két adatfolyam típusok esetén használandó VMIP_s és PublicIPs_s SrcIP_s és DestIP_s mező helyett. AzurePublic és ExternalPublicIP címét, az azt összesítés tovább, úgy, hogy az ügyfelek log analytics-munkaterület betöltött rekordok száma minimális. (Ez a mező hamarosan elavulttá válik, és azt kell használnia SrcIP_ és DestIP_s attól függően, hogy az azure virtuális gép volt-e a a forrás vagy a cél a flow-ban) 
 2. A folyamatok típusáról részletei: A folyamatban érintett IP-címek alapján, hogy kategorizálása a folyamatok, a következő folyamat-típusok: 
- *  IntraVNet – mindkét IP-címet a folyamat az azonos Azure virtuális hálózatban található. 
- *  Virtuális hálózatok közötti - IP-címek a folyamatot a két különböző Azure virtuális hálózat található. 
-*   S2S – az IP-címek (webhelyek) az egyik tartozik Azure Virtual Network közben az IP-cím tartozik ügyfél hálózatán (hely), az Azure Virtual Network VPN-átjárón keresztül vagy Express Route csatlakoztatott. 
-*   P2S - (pont hely) az IP-címek egyike tartozik, Azure Virtual Network, amíg az ügyfél hálózatán (hely), az Azure Virtual Network VPN-átjárón keresztül csatlakozik az IP-cím tartozik.
-*   AzurePublic – az IP-címek egyike tartozik, Azure Virtual Network közben az IP-cím tartozik, a Microsoft által birtokolt Azure belső, nyilvános IP-címek. Ügyfél tulajdonában lévő nyilvános IP-cím nem része a folyamat típusát. Például minden ügyfél saját VM forgalmat küld egy Azure-szolgáltatás (Storage-végponthoz) lenne kategorizált, ez a folyamat típus alatt. <br><br>
-*   ExternalPublic – az IP-címek egyike tartozik, az Azure virtuális hálózat egy nyilvános IP-címet, amely nem az Azure-ban az IP-cím pedig nem készül jelentés, a Traffic Analytics feldolgozó között a feldolgozás alatt ASC adatcsatornákban lévő kártevő " FlowIntervalStartTime_t"és"FlowIntervalEndTime_t". 
-*   MaliciousFlow – az IP-címek egyike tartozik az azure virtual network egy nyilvános IP-címet, amely nem az Azure-ban és az elvártnak megfelelően az ASC-hírcsatornák, a Traffic Analytics feldolgozó között a feldolgozás alatt lévő kártevő IP-címe pedig" FlowIntervalStartTime_t"és"FlowIntervalEndTime_t". 
-*   UnknownPrivate – az IP-címek egyike tartozik Azure virtuális hálózaton az IP-cím tartozik, magánhálózati IP-címtartományt, ahogyan az az RFC 1918, és nem sikerült leképezni a Traffic Analytics által birtokolt, hely vagy az Azure Virtual Network ügyfél számára.
-*   Ismeretlen – térkép vagy az IP-címeket a flow a vásárlói topológia az Azure-ban, valamint a helyszíni (hely) nem sikerült.
+* IntraVNet – mindkét IP-címet a folyamat az azonos Azure virtuális hálózatban található. 
+* Virtuális hálózatok közötti - IP-címek a folyamatot a két különböző Azure virtuális hálózat található. 
+* S2S – az IP-címek (webhelyek) az egyik tartozik Azure Virtual Network közben az IP-cím tartozik ügyfél hálózatán (hely), az Azure Virtual Network VPN-átjárón keresztül vagy Express Route csatlakoztatott. 
+* P2S - (pont hely) az IP-címek egyike tartozik, Azure Virtual Network, amíg az ügyfél hálózatán (hely), az Azure Virtual Network VPN-átjárón keresztül csatlakozik az IP-cím tartozik.
+* AzurePublic – az IP-címek egyike tartozik, Azure Virtual Network közben az IP-cím tartozik, a Microsoft által birtokolt Azure belső, nyilvános IP-címek. Ügyfél tulajdonában lévő nyilvános IP-cím nem része a folyamat típusát. Például minden ügyfél saját VM forgalmat küld egy Azure-szolgáltatás (Storage-végponthoz) lenne kategorizált, ez a folyamat típus alatt. 
+* ExternalPublic – az IP-címek egyike tartozik, az Azure virtuális hálózat egy nyilvános IP-címet, amely nem az Azure-ban az IP-cím pedig nem készül jelentés, a Traffic Analytics feldolgozó között a feldolgozás alatt ASC adatcsatornákban lévő kártevő " FlowIntervalStartTime_t"és"FlowIntervalEndTime_t". 
+* MaliciousFlow – az IP-címek egyike tartozik az azure virtual network egy nyilvános IP-címet, amely nem az Azure-ban és az elvártnak megfelelően az ASC-hírcsatornák, a Traffic Analytics feldolgozó között a feldolgozás alatt lévő kártevő IP-címe pedig" FlowIntervalStartTime_t"és"FlowIntervalEndTime_t". 
+* UnknownPrivate – az IP-címek egyike tartozik Azure virtuális hálózaton az IP-cím tartozik, magánhálózati IP-címtartományt, ahogyan az az RFC 1918, és nem sikerült leképezni a Traffic Analytics által birtokolt, hely vagy az Azure Virtual Network ügyfél számára.
+* Ismeretlen – térkép vagy az IP-címeket a flow a vásárlói topológia az Azure-ban, valamint a helyszíni (hely) nem sikerült.
 
 ### <a name="next-steps"></a>További lépések
 Válaszok a gyakori kérdésekre, lásd: [Traffic analytics – gyakori kérdések](traffic-analytics-faq.md) funkció kapcsolatos részletekért lásd: [Traffic analytics – dokumentáció](traffic-analytics.md)

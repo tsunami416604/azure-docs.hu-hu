@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 1eaafd1817264add9b0231ac85feb9a90fccc325
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 9b80222acfc1104c184fc9cfb4711c16e7bb8dd2
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216645"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312987"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-java"></a>Válaszok a kérdést a Tudásbázis javával
 
@@ -71,6 +71,8 @@ A következő kódot egy HTTPS-kérést küld a QnA Maker API, a kérdés külde
 [!code-java[Add a POST request to send question to knowledge base](~/samples-qnamaker-java/documentation-samples/quickstarts/get-answer/GetAnswer.java?range=44-72 "Add a POST request to send question to knowledge base")]
 
 A `Authorization` fejléc értékének tartalmazza a karakterláncot `EndpointKey `. 
+
+Tudjon meg többet a [kérelem](../how-to/metadata-generateanswer-usage.md#generateanswer-request) és [válasz](../how-to/metadata-generateanswer-usage.md#generateanswer-response).
 
 ## <a name="build-and-run-the-program"></a>A program létrehozása és futtatása
 

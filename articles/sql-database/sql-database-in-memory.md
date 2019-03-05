@@ -12,12 +12,12 @@ ms.author: jodebrui
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 235d6174153e32b40885811350d967af5b98ecc4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: fcfe8ed0bc132377fbaefaccb03e1d6a9374b8d6
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478356"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312474"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Teljesítmény optimalizálása, memóriabeli technológiákat az SQL Database használatával
 
@@ -88,7 +88,7 @@ Az In-Memory OLTP rövid ismertetése: [1 a rövid útmutató: Memóriabeli OLTP
 A technológiák részletes szolgáltatásról:
 
 - [Az Azure SQL Database in-Memory OLTP](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB) (amely tartalmaz egy bemutatót a teljesítménybeli előnyei és saját kezűleg ezekkel az eredményekkel reprodukálás lépései)
-- [Memóriabeli OLTP videók: Mi és mikor és hogyan lehet a használatára](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2016/10/03/in-memory-oltp-video-what-it-is-and-whenhow-to-use-it/)
+- [Memóriabeli OLTP videók: Mi és mikor és hogyan lehet a használatára](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../in-memory-oltp-video-what-it-is-and-whenhow-to-use-it/)
 
 Nincs a megismeréséhez, hogy támogatja-e egy adott adatbázishoz In-Memory OLTP programozott módon. A következő Transact-SQL-lekérdezést futtathat:
 ```
@@ -150,7 +150,7 @@ Oszlopcentrikus modelleket, amelyek segítségével az adatok rendezése két t�
 
 A technológiával kapcsolatos részletesebb videó:
 
-- [Az Oszlopcentrikus Index: Memóriabeli elemzésekhez videóit Ignite 2016-ra](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2016/10/04/columnstore-index-in-memory-analytics-i-e-columnstore-index-videos-from-ignite-2016/)
+- [Az Oszlopcentrikus Index: Memóriabeli elemzésekhez videóit Ignite 2016-ra](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../columnstore-index-in-memory-analytics-i-e-columnstore-index-videos-from-ignite-2016/)
 
 ### <a name="data-size-and-storage-for-columnstore-indexes"></a>Adatok mérete és az oszlopcentrikus indexek
 

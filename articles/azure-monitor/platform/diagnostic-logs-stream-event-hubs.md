@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 1ef779e64995c6996538b68b892cb45f11788067
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: b5299af375646e7759d0770139df2cd6d7ce105c
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54477464"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314078"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Stream Azure diagnosztikai naplók egy eseményközpontba
 **[Az Azure diagnosztikai naplók](diagnostic-logs-overview.md)**  továbbítható bármely alkalmazás a beépített "Exportálás az Event Hubs" lehetőség használatával, a portálon, vagy az Event Hub engedélyezési szabály azonosítója a diagnosztikai beállítást az Azure-on keresztül engedélyezésével közel valós időben PowerShell-parancsmagok vagy az Azure parancssori felület.
@@ -83,10 +83,12 @@ Néhány pillanat múlva az új beállítás jelenik meg az ehhez az erőforrás
 
 ### <a name="via-powershell-cmdlets"></a>PowerShell-parancsmagok használatával
 
-Keresztül streamelésének engedélyezéséhez a [Azure PowerShell-parancsmagok](../../azure-monitor/platform/powershell-quickstart-samples.md), használhatja a `Set-AzureRmDiagnosticSetting` parancsmag ezekkel a paraméterekkel:
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+Keresztül streamelésének engedélyezéséhez a [Azure PowerShell-parancsmagok](../../azure-monitor/platform/powershell-quickstart-samples.md), használhatja a `Set-AzDiagnosticSetting` parancsmag ezekkel a paraméterekkel:
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId [your resource ID] -EventHubAuthorizationRuleId [your Event Hub namespace auth rule ID] -Enabled $true
+Set-AzDiagnosticSetting -ResourceId [your resource ID] -EventHubAuthorizationRuleId [your Event Hub namespace auth rule ID] -Enabled $true
 ```
 
 Az Event Hub engedélyezési szabály azonosítója egy karakterláncérték, ebben a formátumban: `{Event Hub namespace resource ID}/authorizationrules/{key name}`, például `/subscriptions/{subscription ID}/resourceGroups/{resource group}/providers/Microsoft.EventHub/namespaces/{Event Hub namespace}/authorizationrules/RootManageSharedAccessKey`. Jelenleg nem választhat egy adott eseményközpont neve a PowerShell használatával.

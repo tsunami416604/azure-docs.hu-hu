@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/12/2018
-ms.openlocfilehash: 5a6f8328f6809a20b821f5b72106fa48fabf0e91
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 00a3904bd78f3bb76266c726af28582770b23921
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755152"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316489"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Csatlakozás SQL Database adatbázishoz C és C++ használatával
 
@@ -37,7 +37,7 @@ Az Azure SQL épül Microsoft SQL Server és a egy magas rendelkezésre állás�
 Az Azure jelenleg rendelkezik üzemeltető SQL server számítási feladatok esetében két lehetőség közül választhat: Az Azure SQL database-adatbázis és az SQL server a virtuális gépek (VM). Nem tudjuk kap ezt a két közötti különbségekről részletesen, azzal a különbséggel, hogy az Azure SQL database a legjobb választás az új felhőalapú alkalmazások kihasználhatja a költségmegtakarításokat és a felhőszolgáltatások által teljesítményoptimalizálás nyújt. Áttelepítésével vagy kiterjesztése a felhőre a helyszíni alkalmazások használatát fontolgatja, ha az SQL server Azure virtuális gépen a Önnek jobban működnek. Az egyszerűség ebben a cikkben, hozzunk létre egy Azure SQL database.
 
 ## <a id="ODBC"></a>Adat-hozzáférési technológiák: ODBC- és OLE DB
-Csatlakozás az Azure SQL DB semmiben nem különbözik, és jelenleg két módon adatbázisaihoz való kapcsolódásra: ODBC (Nyissa meg az adatbázis-kapcsolat) és az OLE-DB (objektum csatolását és beágyazása adatbázis). Az utóbbi években, a Microsoft az igazított [natív relációs adatok elérésére vonatkozó ODBC](https://blogs.msdn.microsoft.com/sqlnativeclient/2011/08/29/microsoft-is-aligning-with-odbc-for-native-relational-data-access/). ODBC viszonylag egyszerű, de még sokkal gyorsabb, mint az OLE DB. Itt csak csoportosítani, hogy az ODBC egy régi C stílusú API-t használja.
+Csatlakozás az Azure SQL DB semmiben nem különbözik, és jelenleg két módon adatbázisaihoz való kapcsolódásra: ODBC (Nyissa meg az adatbázis-kapcsolat) és az OLE-DB (objektum csatolását és beágyazása adatbázis). Az utóbbi években, a Microsoft az igazított [natív relációs adatok elérésére vonatkozó ODBC](https://blogs.msdn.microsoft.com/sqlnativeclient/20../../microsoft-is-aligning-with-odbc-for-native-relational-data-access/). ODBC viszonylag egyszerű, de még sokkal gyorsabb, mint az OLE DB. Itt csak csoportosítani, hogy az ODBC egy régi C stílusú API-t használja.
 
 ## <a id="Create"></a>1. lépés:  Az Azure SQL-adatbázis létrehozása
 Tekintse meg a [első lépések lap](sql-database-single-database-get-started.md) megtudhatja, hogyan hozhat létre egy mintaadatbázist.  Másik lehetőségként kövesse ezt [rövid kétperces videó](https://azure.microsoft.com/documentation/videos/azure-sql-database-create-dbs-in-seconds/) hozhat létre egy Azure SQL database, az Azure portal használatával.
@@ -78,7 +78,7 @@ Azt is megteheti sikerült létrehozni a varázslóval elindul, amikor nincs par
 Gratulálunk! Most már sikeresen csatlakoztatta az Azure SQL, C++ és az ODBC segítségével a Windows. Az előbbiek Linux rendszeren, valamint az olvasási továbbra is.
 
 ## <a id="Linux"></a>5. lépés: A Linux C/C++-alkalmazás csatlakoztatása
-Abban az esetben a hírek még nem meghallgatni, Visual Studio mostantól lehetővé teszi, valamint C++ Linux-alkalmazás fejlesztése. Ez az új forgatókönyv olvashat a [Linux-fejlesztéshez a Visual C++](https://blogs.msdn.microsoft.com/vcblog/2016/03/30/visual-c-for-linux-development/) blog. Hozhat létre Linux rendszerű, szüksége van egy, a Linux-disztribúció futtató távoli gépen. Ha még nem érhető el, állíthatja be gyorsan egy [Linux rendszerű Azure-beli virtuális gépek](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Abban az esetben a hírek még nem meghallgatni, Visual Studio mostantól lehetővé teszi, valamint C++ Linux-alkalmazás fejlesztése. Ez az új forgatókönyv olvashat a [Linux-fejlesztéshez a Visual C++](https://blogs.msdn.microsoft.com/vcblog/20../../visual-c-for-linux-development/) blog. Hozhat létre Linux rendszerű, szüksége van egy, a Linux-disztribúció futtató távoli gépen. Ha még nem érhető el, állíthatja be gyorsan egy [Linux rendszerű Azure-beli virtuális gépek](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 Ebben az oktatóanyagban tegyük fel, hogy rendelkezik-e egy Ubuntu 16.04 Linux-disztribúció, állítsa be. A lépések itt is érvényesek Ubuntu 15.10, Red Hat 6 és Red Hat-7.
 

@@ -10,22 +10,24 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/06/2018
+ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 1f831f2d962626de6f847e2fe775605b7bfca5b8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 645d7c2dca166bf95b4bd6bd7677100644a1f948
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53097590"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57306697"
 ---
 # <a name="tutorial-utilize-the-azure-resource-manager-template-reference"></a>Oktatóanyag: Az Azure Resource Manager sablonreferenciája vételéhez
 
 Megtudhatja, hogyan keresheti meg a sablonséma-információkat és használhatja fel őket Azure Resource Manager-sablonok létrehozására.
 
 Ebben az oktatóanyagban egy alapszintű sablont fog használni az Azure-gyorssablonok közül. A sablon referenciadokumentációjával testreszabja a sablont egy titkosított tárfiók létrehozásához.
+
+![Resource Manager sablonreferenciája titkosított storage-fiók üzembe helyezése](./media/resource-manager-tutorial-create-encrypted-storage-accounts/resource-manager-template-tutorial-deploy-encrypted-storage-account.png)
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: c8cba4006d1112ccc1529fc1769e046fe45468a7
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: f8af115824ec48492d0f53297a6e697f7011ff55
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214180"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316421"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Telemetria szabály létrehozása és az Azure IoT központi alkalmazás-értesítések beállítása
 
@@ -33,9 +33,9 @@ Hozzon létre egy telemetriai szabályt, az eszköz sablon legalább egy telemet
 
     ![Még nincsenek szabályai](media/howto-create-telemetry-rules-experimental/Rules_Landing_Page.png)
 
-1. Az a **szabályok** lapra, majd **+ új szabály** , milyen típusú szabályokat hozhat létre.
+1. Az a **szabályok** lapon jelölje be **+ új szabály** , milyen típusú szabályokat hozhat létre.
 
-1. Kattintson a **Telemetriai** hozhat létre egy szabályt, amely az eszköz telemetria figyelése.
+1. Válassza ki **Telemetriai** hozhat létre egy szabályt, amely az eszköz telemetria figyelése.
 
     ![Szabály típusa](media/howto-create-telemetry-rules-experimental/Rule_Types.png)
 
@@ -51,7 +51,7 @@ Hozzon létre egy telemetriai szabályt, az eszköz sablon legalább egy telemet
 
 A feltétel a feltételeknek, a szabály által figyelt határozza meg.
 
-1. Kattintson a **+** melletti **feltételek** új feltétel hozzáadása.
+1. Válassza ki **+** melletti **feltételek** új feltétel hozzáadása.
 
 1. Válassza ki a figyelni kívánt telemetriát a **mérési** legördülő listából.
 

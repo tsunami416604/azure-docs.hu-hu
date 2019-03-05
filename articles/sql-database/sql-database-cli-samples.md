@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/03/2019
-ms.openlocfilehash: 3b98214da259e9e429c938f8ca7963c9f525e862
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 74d322c9e7d45a26f9e095bd7ae9f2bbe506ba49
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55560821"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57306935"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database"></a>Azure CLI-minták az Azure SQL Database-hez
 
@@ -51,9 +51,9 @@ Az alábbi táblázat az Azure SQL Database – felügyelt példány az Azure CL
 
 | |  |
 |---|---|
-| [Felügyelt példány létrehozása](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/11/14/create-azure-sql-managed-instance-using-azure-cli/) | Ez a CLI-példaszkript bemutatja, hogyan hozhat létre egy felügyelt példányt. |
-| [Felügyelt példány frissítése](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/11/14/modify-azure-sql-database-managed-instance-using-azure-cli/) | Ez a CLI-példaszkript bemutatja, hogyan frissítse a felügyelt példány. |
-| [-Adatbázis áthelyezése egy másik, a felügyelt példány](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/07/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/) | Ez a CLI-példaszkript bemutatja, hogyan állíthatja vissza egy adatbázis biztonsági egy példányról a másikra. |
+| [Felügyelt példány létrehozása](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../create-azure-sql-managed-instance-using-azure-cli/) | Ez a CLI-példaszkript bemutatja, hogyan hozhat létre egy felügyelt példányt. |
+| [Felügyelt példány frissítése](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../modify-azure-sql-database-managed-instance-using-azure-cli/) | Ez a CLI-példaszkript bemutatja, hogyan frissítse a felügyelt példány. |
+| [-Adatbázis áthelyezése egy másik, a felügyelt példány](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/) | Ez a CLI-példaszkript bemutatja, hogyan állíthatja vissza egy adatbázis biztonsági egy példányról a másikra. |
 |||
 
 Tudjon meg többet a [felügyelt példány az Azure CLI API](sql-database-managed-instance-create-manage.md#azure-cli-create-and-manage-managed-instances) , és keresse meg [további példákat Itt](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44).

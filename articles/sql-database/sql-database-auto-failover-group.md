@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 5afd5020b060961d215b922c9e49466b73f2a69e
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 862cc4da99aed02b81b6fd12913736bf30866f72
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889885"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313599"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok segítségével átlátható és koordinált több adatbázis feladatátvételét engedélyezése
 
@@ -304,14 +304,16 @@ Ahogy korábban tárgyalt, automatikus feladatátvételi csoportok és az aktív
 
 ### <a name="powershell-manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>PowerShell: Az SQL database feladatátvételi az önálló adatbázisok és rugalmas készletek kezelése
 
+[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
+
 | Parancsmag | Leírás |
 | --- | --- |
-| [New-AzureRmSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabasefailovergroup) |Ez a parancs létrehoz egy feladatátvételi csoportot, és regisztrálja azt az elsődleges és másodlagos kiszolgálók|
-| [Remove-AzureRmSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqldatabasefailovergroup) | A feladatátvételi csoport eltávolítása a kiszolgálóról, és törli az összes másodlagos adatbázist tartalmaz a csoport |
-| [Get-AzureRmSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabasefailovergroup) | A feladatátvételi csoport konfigurációjának beolvasása |
-| [Set-AzureRmSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabasefailovergroup) |A feladatátvételi csoport konfigurációjának módosítása |
-| [Switch-AzureRMSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/switch-azurermsqldatabasefailovergroup) | A másodlagos kiszolgáló feladatátvételi csoport feladatátvétele eseményindítók |
-| [Add-AzureRmSqlDatabaseToFailoverGroup](https://docs.microsoft.com/powershell/module/azurerm.sql/add-azurermsqldatabasetofailovergroup)|Egy Azure SQL Database feladatátvételi csoportot ad hozzá egy vagy több adatbázis|
+| [New-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasefailovergroup) |Ez a parancs létrehoz egy feladatátvételi csoportot, és regisztrálja azt az elsődleges és másodlagos kiszolgálók|
+| [Remove-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqldatabasefailovergroup) | A feladatátvételi csoport eltávolítása a kiszolgálóról, és törli az összes másodlagos adatbázist tartalmaz a csoport |
+| [Get-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasefailovergroup) | A feladatátvételi csoport konfigurációjának beolvasása |
+| [Set-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasefailovergroup) |A feladatátvételi csoport konfigurációjának módosítása |
+| [Switch-AzSqlDatabaseFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/switch-azsqldatabasefailovergroup) | A másodlagos kiszolgáló feladatátvételi csoport feladatátvétele eseményindítók |
+| [Add-AzSqlDatabaseToFailoverGroup](https://docs.microsoft.com/powershell/module/az.sql/add-azsqldatabasetofailovergroup)|Egy Azure SQL Database feladatátvételi csoportot ad hozzá egy vagy több adatbázis|
 |  | |
 
 > [!IMPORTANT]
@@ -341,11 +343,11 @@ Ahogy korábban tárgyalt, automatikus feladatátvételi csoportok és az aktív
 
 | API | Leírás |
 | --- | --- |
-| New-AzureRmSqlDatabaseInstanceFailoverGroup |Ez a parancs létrehoz egy feladatátvételi csoportot, és regisztrálja azt az elsődleges és másodlagos kiszolgálók|
-| Set-AzureRmSqlDatabaseInstanceFailoverGroup |A feladatátvételi csoport konfigurációjának módosítása|
-| Get-AzureRmSqlDatabaseInstanceFailoverGroup |A feladatátvételi csoport konfigurációjának beolvasása|
-| Switch-AzureRmSqlDatabaseInstanceFailoverGroup |A másodlagos kiszolgáló feladatátvételi csoport feladatátvétele eseményindítók|
-| Remove-AzureRmSqlDatabaseInstanceFailoverGroup | A feladatátvételi csoport eltávolítása|
+| New-AzSqlDatabaseInstanceFailoverGroup |Ez a parancs létrehoz egy feladatátvételi csoportot, és regisztrálja azt az elsődleges és másodlagos kiszolgálók|
+| Set-AzSqlDatabaseInstanceFailoverGroup |A feladatátvételi csoport konfigurációjának módosítása|
+| Get-AzSqlDatabaseInstanceFailoverGroup |A feladatátvételi csoport konfigurációjának beolvasása|
+| Switch-AzSqlDatabaseInstanceFailoverGroup |A másodlagos kiszolgáló feladatátvételi csoport feladatátvétele eseményindítók|
+| Remove-AzSqlDatabaseInstanceFailoverGroup | A feladatátvételi csoport eltávolítása|
 
 ### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST API: Az SQL database feladatátvételi csoportok egyetlen vagy készletezett adatbázisok kezelése
 

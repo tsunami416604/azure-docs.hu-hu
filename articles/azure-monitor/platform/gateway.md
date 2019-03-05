@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/06/2019
+ms.date: 03/04/2019
 ms.author: magoedte
-ms.openlocfilehash: 41ffd7229383f1006bb846f975aeccf83256032a
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: a497662ac7a885b53e69bb8c86a646045bd2eef7
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807728"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314670"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway"></a>Internetelérés nélküli számítógépek csatlakoztatása a Log Analytics-átjáró használatával
 
@@ -154,29 +154,39 @@ Az átjáró telepítéséhez kövesse az alábbi lépéseket.  (Ha nevű Log An
 
 
 ## <a name="configure-network-load-balancing"></a>Hálózati terheléselosztás beállítása 
-Az átjáró magas rendelkezésre állású hálózati terheléselosztási (NLB) segítségével konfigurálhatja. A Microsoft Azure Load Balancer vagy hardveres terheléselosztók használatával.  A terheléselosztó forgalmat kezeli a csomópontok között a Log Analytics-ügynökök kért kapcsolatot, vagy az Operations Manager felügyeleti kiszolgálók átirányításával. Egy átjáró kiszolgáló leáll, ha a rendszer átirányítja a forgalmat, más csomópontokra.
+Az átjáró magas rendelkezésre álláshoz használatával a hálózati terheléselosztás (NLB) vagy a Microsoft segítségével konfigurálhatja [hálózati terheléselosztás (NLB)](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing), [Azure Load Balancer](../../load-balancer/load-balancer-overview.md), vagy a hardveres terheléselosztók. A terheléselosztó forgalmat kezeli a csomópontok között a Log Analytics-ügynökök kért kapcsolatot, vagy az Operations Manager felügyeleti kiszolgálók átirányításával. Egy átjáró kiszolgáló leáll, ha más csomópontokhoz átirányítja a forgalmat.
+
+### <a name="microsoft-network-load-balancing"></a>A Microsoft hálózati terheléselosztás
+Ismerje meg, hogyan tervezhet és a egy Windows Server 2016 hálózati terheléselosztási fürt üzembe helyezése, lásd: [a hálózati terheléselosztás](https://docs.microsoft.com/windows-server/networking/technologies/network-load-balancing). Az alábbi lépéseket a Microsoft hálózati terheléselosztási fürt konfigurálását ismertetik.  
+
+1. Jelentkezzen be a Windows server, amely tagja a rendszergazdák rendszergazdai fiókkal az NLB-fürt.  
+2. Hálózati terheléselosztás kezelőjének megnyitása a Kiszolgálókezelőben, kattintson a **eszközök**, és kattintson a **a hálózati terheléselosztás kezelője**.
+3. A Microsoft Monitoring Agent telepítve van egy Log Analytics-átjáró kiszolgáló kapcsolódni, kattintson a jobb gombbal a fürt IP-címét, és kattintson **gazdagép hozzáadása fürthöz**. 
+
+    ![Hálózati terheléselosztás kezelője – betöltéséhez adja hozzá a gazdagépet a fürthöz](./media/gateway/nlb02.png)
+ 
+4. Adja meg az IP-cím, az átjárókiszolgáló, amely kapcsolódni szeretne. 
+
+    ![Hálózati terheléselosztás kezelője – betöltéséhez adja hozzá a gazdagépet a fürthöz: Kapcsolódás](./media/gateway/nlb03.png) 
+
+### <a name="azure-load-balancer"></a>Azure Load Balancer
+Ismerje meg, hogyan tervezhet és üzembe helyezése az Azure Load Balancerhez, lásd: [Mi az Azure Load Balancer?](../../load-balancer/load-balancer-overview.md). Alapszintű load balancer telepítéséhez kövesse a témakörben ismertetett lépéseket [rövid](../../load-balancer/quickstart-create-basic-load-balancer-portal.md) kivételével a szakaszban ismertetett lépéseket **háttérkiszolgálók létrehozása**.   
+
+> [!NOTE]
+> A használatával az Azure Load Balancer konfigurálása a **alapszintű Termékváltozat**, megköveteli, hogy Azure-beli virtuális gépek rendelkezésre állási csoportba tartozik. A rendelkezésre állási csoportok kapcsolatos további információkért lásd: [Azure-beli Windows virtuális gépek rendelkezésre állásának kezelése](../../virtual-machines/windows/manage-availability.md). Meglévő virtuális gépek hozzáadása egy rendelkezésre állási csoporthoz, tekintse meg [állítsa be az Azure Resource Manager virtuális gép rendelkezésre állási csoport](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4).
+> 
+
+A terheléselosztó létrehozása után egy háttérkészlet kell létrehozni, amely elosztja a forgalmat egy vagy több átjáró kiszolgáló között. A rövid útmutató a cikk a szakaszban ismertetett lépéseket követve [a terheléselosztó-erőforrások létrehozása](../../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-resources-for-the-load-balancer).  
 
 >[!NOTE]
->Ismerje meg, hogyan tervezhet és a egy Windows Server 2016 NLB-fürt üzembe helyezése, lásd: [a hálózati terheléselosztás](https://technet.microsoft.com/windows-server-docs/networking/technologies/network-load-balancing). 
+>Az állapotminta konfigurálásakor azt az átjárókiszolgáló TCP-port használatára kell konfigurálni. Az állapotminta dinamikusan hozzáadja vagy eltávolítja az átjárókiszolgálók az adott válaszuk alapján load balancer elforgatási. 
 >
 
-Kövesse az alábbi lépéseket egy Microsoft Load Balancer-fürt konfigurálására:  
-
-1. Rendszergazdai fiók használatával jelentkezzen be a Windows Serveren, amely tagja a Load Balancer-fürt.
-1. A Kiszolgálókezelőben nyissa meg a **a hálózati terheléselosztás kezelője**válassza **eszközök**, majd válassza ki **a hálózati terheléselosztás kezelője**.
-1. Csatlakozás a Log Analytics-átjárókiszolgáló, amely rendelkezik a telepített Microsoft Monitoring Agent, kattintson a jobb gombbal a fürt IP-címét, és kattintson **gazdagép hozzáadása fürthöz**.
-
-   ![Képernyőkép a hálózati terheléselosztás kezelője, az állomás hozzáadása fürthöz kiválasztott](./media/gateway/nlb02.png)
-
-1. Adja meg az IP-cím, az átjárókiszolgáló, amely kapcsolódni szeretne.
-
-   ![Képernyőkép a hálózati terheléselosztás kezelője, az oldal, Hozzáadás gazdagépet a fürt megjelenítése: Kapcsolódás](./media/gateway/nlb03.png)
-    
 ## <a name="configure-the-log-analytics-agent-and-operations-manager-management-group"></a>A Log Analytics-ügynököket és az Operations Manager felügyeleti csoport konfigurálása
 Ebben a szakaszban láthatja a Log Analytics-átjáróval kommunikálni az Azure Automation és a Log Analytics közvetlenül csatlakoztatott Log Analytics-ügynökök, az Operations Manager felügyeleti csoport vagy az Azure Automation hibrid Runbook-feldolgozók konfigurálásáról.  
 
 ### <a name="configure-a-standalone-log-analytics-agent"></a>Egy önálló Log Analytics-ügynök konfigurálása
-A Log Analytics-ügynök telepítése a proxy server értékét cserélje az IP-címét a Log Analytics-átjáró kiszolgáló vagy a port számát. Több átjárókiszolgáló mögött egy NLB telepített, akkor a Log Analytics proxykonfigurációjának-e a hálózati Terheléselosztás virtuális IP-címét.  
+A Log Analytics-ügynök telepítése a proxy server értékét cserélje az IP-címét a Log Analytics-átjáró kiszolgáló vagy a port számát. Ha több átjárókiszolgáló egy terheléselosztó mögé telepített, akkor a Log Analytics proxykonfigurációjának a terheléselosztó virtuális IP-címét.  
 
 >[!NOTE]
 >A Log Analytics-ügynök telepítése az átjáró és a Windows-számítógép, amely közvetlenül csatlakozik a Log Analytics: [a Log Analytics szolgáltatás az Azure-ban való csatlakozáshoz Windows számítógépek](agent-windows.md). Linux rendszerű számítógépek csatlakoztatását, lásd: [egy Linux rendszerű számítógépek a Log Analytics-ügynököket konfigurálhatja a hibrid környezetben](../../azure-monitor/learn/quick-collect-linux-computer.md). 
@@ -200,7 +210,7 @@ OMS-átjáró használatával támogatja az Operations Manager, kell rendelkezni
 > Ha az átjáró nincs érték megadva, az ügynökök kerüljenek üres értékeket.
 >
 
-Az Operations Manager felügyeleti csoport első alkalommal regisztrál a Log Analytics-munkaterület, ha nem jelenik meg arra, hogy az operatív konzolon adja meg a felügyeleti csoport proxy beállításait.  Ez a beállítás csak akkor, ha a felügyeleti csoport regisztrálva a szolgáltatásban érhető el.  
+Az Operations Manager felügyeleti csoport első alkalommal regisztrál a Log Analytics-munkaterület, ha nem jelenik meg arra, hogy az operatív konzolon adja meg a felügyeleti csoport proxy beállításait. Ez a beállítás csak akkor, ha a felügyeleti csoport regisztrálva a szolgáltatásban érhető el.  
 
 -Integráció konfigurálása, frissítse a rendszer proxykonfigurációt a Netsh használatával, a rendszer, ahol futtatja az operatív konzol és a felügyeleti csoport összes felügyeleti kiszolgálón. Kövesse az alábbi lépéseket:
 
@@ -220,7 +230,7 @@ Miután befejezte a Log Analytics-integráció, távolítsa el a módosítást f
 
    ![Képernyőkép az Operations Manager megjelenítése a kijelölt Proxy kiszolgáló konfigurálása](./media/gateway/scom01.png)
 
-1. Válassza ki **proxykiszolgáló használata az Operations Management Suite eléréséhez** majd adja meg a Log Analytics-átjáró kiszolgálójának IP-címét vagy az NLB virtuális IP-címét. Ügyeljen arra, hogy előtaggal kezdődik `http://`.
+1. Válassza ki **proxykiszolgáló használata az Operations Management Suite eléréséhez** majd adja meg a Log Analytics-átjáró kiszolgálójának IP-cím vagy a terheléselosztó virtuális IP-címét. Ügyeljen arra, hogy előtaggal kezdődik `http://`.
 
    ![Képernyőkép az Operations Manager, a proxy-kiszolgáló címe megjelenítése](./media/gateway/scom02.png)
 

@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: ac4391b91d818b21e392e134115294fb84473e69
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 8fd43228c5129395f9a61778fb83d32906fc85df
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449648"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311763"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Metrikákhoz kapcsolódó riasztások létrehozása az Azure Monitor-naplók
 
 ## <a name="overview"></a>Áttekintés
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Az Azure Monitor támogatja [metric riasztástípus](../../azure-monitor/platform/alerts-metric-near-real-time.md) előnyt amely felett az [klasszikus riasztások](../../azure-monitor/platform/alerts-classic-portal.md). Metrikák érhetők el a [az Azure-szolgáltatások nagy lista](../../azure-monitor/platform/metrics-supported.md). Ez a cikk azt ismerteti, alhálózatát (az) erőforrás - használat `Microsoft.OperationalInsights/workspaces`.
 
@@ -360,7 +362,7 @@ Feltéve, hogy a fenti paraméterfájl mentett metricfromLogsAlertStatic.paramet
 Az egyik is használhatja az alábbi Azure Powershell-parancsot is:
 
 ```PowerShell
-New-AzureRmResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile metricfromLogsAlertStatic.json TemplateParameterFile metricfromLogsAlertStatic.parameters.json
+New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile metricfromLogsAlertStatic.json TemplateParameterFile metricfromLogsAlertStatic.parameters.json
 ```
 
 Vagy használja az Azure CLI-vel erőforrás-sablon üzembe helyezése:
@@ -676,7 +678,7 @@ Feltéve, hogy a fenti paraméterfájl mentett metricfromLogsAlertDynamic.parame
 Az egyik is használhatja az alábbi Azure Powershell-parancsot is:
 
 ```PowerShell
-New-AzureRmResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile metricfromLogsAlertDynamic.json TemplateParameterFile metricfromLogsAlertDynamic.parameters.json
+New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile metricfromLogsAlertDynamic.json TemplateParameterFile metricfromLogsAlertDynamic.parameters.json
 ```
 
 Vagy használja az Azure CLI-vel erőforrás-sablon üzembe helyezése:

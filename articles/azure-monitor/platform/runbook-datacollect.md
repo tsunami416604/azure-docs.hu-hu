@@ -13,14 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 75ed69d749e23f39c03afb09f70a18cc1aed600b
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 5de5191ee616f38404e2423c23f4e8b363240b0e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078575"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308329"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Adatgyűjtés, a Log Analytics az Azure Automation-runbook
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Számos különféle forrásból például gyűjthet adatokat a Log Analytics jelentős mennyiségű [adatforrások](../../azure-monitor/platform/agent-data-sources.md) ügynökökön és is [adatokat gyűjteni az Azure-ból](../../azure-monitor/platform/collect-azure-metrics-logs.md). Vannak olyan forgatókönyvek ellenére, hogy hol kell gyűjtenie az adatokat, amely nem érhető el standard források segítségével. Ezekben az esetekben használhatja a [HTTP-adatgyűjtő API](../../azure-monitor/platform/data-collector-api.md) használatával írhat adatokat a Log Analyticsbe bármely REST API-ügyfélből. Egy általános módszer az adatgyűjtést az Azure Automation runbook használ.
 
 Ez az oktatóanyag végigvezeti a folyamat létrehozásához és az adatok írása a Log Analytics az Azure Automation runbook ütemezése.
@@ -44,7 +47,7 @@ Használata egy [modul](../../automation/automation-integration-modules.md) egy 
 
 A PowerShell-galériából, ha lehetővé teszi egy gyors lehetőség, amely közvetlenül üzembe helyezhetők a modul az automation-fiók ebben az oktatóanyagban használhassa ezt a lehetőséget.
 
-![OMSIngestionAPI modul](media/runbook-datacollect/OMSIngestionAPI.png)
+![OMSIngestionAPI module](media/runbook-datacollect/OMSIngestionAPI.png)
 
 1. Lépjen a [PowerShell-galériából](https://www.powershellgallery.com/).
 2. Keresse meg **OMSIngestionAPI**.
@@ -62,8 +65,8 @@ A PowerShell-galériából, ha lehetővé teszi egy gyors lehetőség, amely kö
 
 | Tulajdonság | Munkaterület-azonosító értéke | Munkaterület kulcs-érték |
 |:--|:--|:--|
-| Name (Név) | Munkaterület azonosítója | WorkspaceKey |
-| Típus | Karakterlánc | Karakterlánc |
+| Name (Név) | WorkspaceId | WorkspaceKey |
+| Typo | String | String |
 | Érték | Illessze be a munkaterület Azonosítóját, a Log Analytics-munkaterületre. | Beillesztés jelentkezzen be az elsődleges vagy másodlagos kulcsot a Log Analytics-munkaterület. |
 | Titkosított | Nem | Igen |
 
@@ -92,7 +95,7 @@ Az Azure Automation-szerkesztő rendelkezik a portálon, ahol szerkesztheti, és
     # Code copied from the runbook AzureAutomationTutorial.
     $connectionName = "AzureRunAsConnection"
     $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName
-    Connect-AzureRmAccount `
+    Connect-AzAccount `
         -ServicePrincipal `
         -TenantId $servicePrincipalConnection.TenantId `
         -ApplicationId $servicePrincipalConnection.ApplicationId `
@@ -109,7 +112,7 @@ Az Azure Automation-szerkesztő rendelkezik a portálon, ahol szerkesztheti, és
     $logType = "AutomationJob"
     
     # Get the jobs from the past hour.
-    $jobs = Get-AzureRmAutomationJob -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -StartTime (Get-Date).AddHours(-1)
+    $jobs = Get-AzAutomationJob -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -StartTime (Get-Date).AddHours(-1)
     
     if ($jobs -ne $null) {
         # Convert the job data to json

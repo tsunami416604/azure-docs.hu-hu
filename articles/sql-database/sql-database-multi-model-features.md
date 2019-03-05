@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: d833d6ea695c05f80f7823f391142fee28872c40
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 69ca51776a61b43768ce7cb1565451c4f118de6e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300251"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316523"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Az Azure SQL Database többmodelles képességek
 
@@ -124,7 +124,7 @@ CREATE TABLE Collection (
 
 Ez a kulcs-érték struktúra korlátozások nélkül saját igényei szerint testre szabhatja. Tegyük fel, az érték lehet XML-dokumentumot `nvarchar(max)` típusa, ha az érték JSON-dokumentumok, helyezheti `CHECK` korlátozás, amely a JSON-tartalmak érvényességét ellenőrzi. Helyezzen egy kulcsot a további oszlopok értékeinek tetszőleges számú, adja hozzá a számított oszlopok és egyszerűbbé tétele és az adatelérés optimalizálása indexekkel, adja meg a tábla memóriaoptimalizált/csak a sémára vonatkozó táblaként való beolvasása jobb teljesítményt, és így tovább.
 
-Lásd: [hogyan BWin használja In-Memory OLTP páratlan teljesítmény és méretezhetőség eléréséhez](https://blogs.msdn.microsoft.com/sqlcat/2016/10/26/how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale/) saját ASP.NET-gyorsítótárazás megoldás, amely 1.200.000 elért kötegeli az másodpercenként példaként hogyan relációs modellt is hatékonyan használható kulcs-érték pár megoldás a gyakorlatban.
+Lásd: [hogyan BWin használja In-Memory OLTP páratlan teljesítmény és méretezhetőség eléréséhez](https://blogs.msdn.microsoft.com/sqlcat/20../../how-bwin-is-using-sql-server-2016-in-memory-oltp-to-achieve-unprecedented-performance-and-scale/) saját ASP.NET-gyorsítótárazás megoldás, amely 1.200.000 elért kötegeli az másodpercenként példaként hogyan relációs modellt is hatékonyan használható kulcs-érték pár megoldás a gyakorlatban.
 
 ## <a name="next-steps"></a>További lépések
 Többmodelles képességek az Azure SQL Database-adatbázisok is rendelkezésre állnak az SQL Server adatbázismotor alapszolgáltatások, amely az Azure SQL Database és az SQL Server között vannak megosztva. Ezek a funkciók kapcsolatos további részletekért látogasson el a relációs SQL database dokumentációs oldalát érintő:

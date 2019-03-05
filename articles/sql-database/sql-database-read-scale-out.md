@@ -12,14 +12,16 @@ ms.author: sashan
 ms.reviewer: sstein, carlrab
 manager: craigg
 ms.date: 02/25/2019
-ms.openlocfilehash: 3a937af5fba2c534e291a51c33c50434ab166ee0
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 5401c852decf0bcae3e86d1914b7cb6b47b4422a
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868765"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57317509"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Csak olvasható replikákat használ a betöltése terheléselosztása csak olvasható lekérdezési számítási feladatok (előzetes verzió)
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 **Horizontális Felskálázás olvasása** lehetővé teszi, hogy terheléselosztása az Azure SQL Database csak olvasható-alapú számítási feladatokat egy csak olvasható replika kapacitásának betölteni.
 
@@ -29,7 +31,7 @@ Prémium szinten lévő minden egyes adatbázishoz ([DTU-alapú vásárlási mod
 
 Ezek a replikák számítási mérete megegyezik a normál adatbázis-kapcsolatok által használt írható-olvasható replika vannak kiosztva. A **olvasási kibővített** funkció lehetővé teszi az egyenleg SQL-adatbázis csak olvasható-alapú számítási feladatokat a kapacitását, csak olvasási replikára osztozik az írható-olvasható replika betölteni. Ezzel a módszerrel a csak olvasható munkaterhelés elkülönül a fő olvasási és írási számítási feladatok, és nem lesz hatással a teljesítményét. A funkció célja az alkalmazások, amelyek tartalmazzák a logikailag elválasztott csak olvasható feladatokhoz, például elemzési, és ezért juthat által nyújtott további kapacitás használatának nélkül többletköltség.
 
-Az olvasási horizontális Felskálázás funkció használatához, hogy adott adatbázissal, explicit módon engedélyeznie kell azt az adatbázis létrehozásakor vagy később a PowerShell használatával meghívásával konfiguráció módosítása a [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) vagy a [ Új-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) parancsmagok vagy az Azure Resource Manager REST API használatával a [- adatbázisok létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) metódust.
+Az olvasási horizontális Felskálázás funkció használatához, hogy adott adatbázissal, explicit módon engedélyeznie kell azt az adatbázis létrehozásakor vagy később a PowerShell használatával meghívásával konfiguráció módosítása a [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) vagy a [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) parancsmagok vagy az Azure Resource Manager REST API használatával a [- adatbázisok létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) metódust.
 
 Olvasási horizontális Felskálázás egy adatbázis engedélyezését követően, hogy az adatbázis csatlakozó alkalmazások lesznek irányítva, vagy az írható-olvasható replika, vagy egy csak olvasható replika adatbázis szerint a `ApplicationIntent` tulajdonság, az alkalmazás konfigurálása kapcsolati karakterlánc. Információk a `ApplicationIntent` tulajdonságot használja, lásd: [adja meg az alkalmazások szándékáról](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent).
 
@@ -82,24 +84,24 @@ Alapértelmezés szerint engedélyezve van a olvasási kibővített [felügyelt 
 
 A 2016. December kezelése olvasási horizontális Felskálázás az Azure PowerShell szükséges az Azure PowerShell kiadás vagy újabb. A legújabb PowerShell-verzió, lásd: [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
-Engedélyezi vagy letiltja az olvasási horizontális felskálázás az Azure PowerShell meghívásával a [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) parancsmag és a kívánt értéket – a passzok `Enabled` vagy `Disabled` – az a `-ReadScale` paraméter. Másik lehetőségként használhatja a [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) parancsmaggal hozzon létre egy új adatbázis olvassa el a horizontális felskálázás engedélyezve van.
+Engedélyezi vagy letiltja az olvasási horizontális felskálázás az Azure PowerShell meghívásával a [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) parancsmag és a kívánt értéket – a passzok `Enabled` vagy `Disabled` – az a `-ReadScale` paraméter. Másik lehetőségként használhatja a [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) parancsmaggal hozzon létre egy új adatbázis olvassa el a horizontális felskálázás engedélyezve van.
 
 Például ahhoz, hogy olvassa el az horizontális felskálázás a meglévő adatbázis-(cserélje le a csúcsos zárójeleket található elemek a környezetének megfelelő értékekkel, és a csúcsos zárójeleket elvetését):
 
 ```powershell
-Set-AzureRmSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Enabled
+Set-AzSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Enabled
 ```
 
 Egy meglévő adatbázist (a környezet megfelelő értékeit cserélje le a csúcsos zárójeleket elemeinek és a csúcsos zárójeleket elvetését) olvasási kibővített letiltásához:
 
 ```powershell
-Set-AzureRmSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Disabled
+Set-AzSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Disabled
 ```
 
 Hozhat létre egy új adatbázist a olvasási kibővített engedélyezve (cserélje le a csúcsos zárójeleket található elemek a környezetének megfelelő értékekkel és a csúcsos zárójeleket elvetése):
 
 ```powershell
-New-AzureRmSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Enabled -Edition Premium
+New-AzSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Enabled -Edition Premium
 ```
 
 ### <a name="rest-api-enable-and-disable-read-scale-out"></a>REST API: Engedélyezheti vagy letilthatja a horizontális Felskálázás olvasása
@@ -129,5 +131,5 @@ Ha használ betölteni az egyenleg csak olvasható számítási feladatok, a geo
 
 ## <a name="next-steps"></a>További lépések
 
-- Olvasási kibővített beállítása a PowerShell használatával kapcsolatos információkért lásd: a [Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) vagy a [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) parancsmagok.
+- Olvasási kibővített beállítása a PowerShell használatával kapcsolatos információkért lásd: a [Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) vagy a [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) parancsmagok.
 - Olvasási kibővített beállítása a REST API használatával kapcsolatos információkért lásd: [- adatbázisok létrehozása vagy frissítése](https://docs.microsoft.com/rest/api/sql/databases/createorupdate).

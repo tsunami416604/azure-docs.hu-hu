@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: d8a5ca6285624720e23a4986917ab5e715f6ebfa
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 5c414e4398ef280b0d04d0a384722ee923c4cefa
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768013"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316022"
 ---
 # <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central-new-ui-design"></a>Oktatóanyag: Szabályok és műveletek az eszköz konfigurálása az Azure IoT Central (új felhasználói felület tervezése)
 
@@ -36,15 +36,15 @@ Az oktatóanyag elkezdése előtt el kell végeznie az [Új eszköztípus defini
 
 ## <a name="create-a-telemetry-based-rule"></a>Telemetria-alapú szabály létrehozása
 
-1. Új telemetrián alapuló szabály hozzáadása az alkalmazáshoz, a bal oldali navigációs menüben válassza a **eszközsablonok**:
+1. Új telemetrián alapuló szabály hozzáadása az alkalmazáshoz, a bal oldali navigációs menüben válassza ki a **eszközsablonok**:
 
     ![Eszköz sablonok lap](media/tutorial-configure-rules-experimental/templatespage1.png)
 
     Megjelenik a **Légkondicionálóját csatlakoztatva (1.0.0-s)** az előző oktatóanyagban létrehozott eszköz sablont.
 
-2. Az eszköz sablon testreszabása, kattintson a **Légkondicionálóját csatlakoztatott** az előző oktatóanyagban létrehozott sablont.
+2. Az eszköz a sablon testreszabásához jelölje be a **Légkondicionálóját csatlakoztatott** az előző oktatóanyagban létrehozott sablont.
 
-3. A telemetria-alapú szabály hozzáadása a **szabályok** megtekinteni, válassza a **szabályok**, kattintson a **+ új szabály**, és válassza a **Telemetriai**:
+3. A telemetria-alapú szabály hozzáadása a **szabályok** nézetben válassza **szabályok**, jelölje be **+ új szabály**, majd válassza ki **Telemetriai**:
 
     ![Szabályok nézet](media/tutorial-configure-rules-experimental/newrule.png)
 
@@ -59,7 +59,7 @@ Az oktatóanyag elkezdése előtt el kell végeznie az [Új eszköztípus defini
 
     ![Hőmérsékleti szabályfeltétel](media/tutorial-configure-rules-experimental/temperaturerule.png)
 
-    Ezután kattintson a **Save** (Mentés) gombra.
+    Ezután válassza a **Save** (Mentés) lehetőséget.
 
 ## <a name="add-an-action"></a>Művelet hozzáadása
 
@@ -81,7 +81,7 @@ A szabályok definiálásakor egy műveletet is meghatároz, amely a szabályfel
 
     ![Hőmérséklet-művelet](media/tutorial-configure-rules-experimental/temperatureaction.png)
 
-3. Kattintson a **Save** (Mentés) gombra. A szabály megjelenik a **szabályok** lapot.
+3. Kattintson a **Mentés** gombra. A szabály megjelenik a **szabályok** lapot.
 
 ## <a name="test-the-rule"></a>A szabály tesztelése
 

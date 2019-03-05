@@ -8,14 +8,16 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 1eaf73e1d8b3c60ea32fa7d4aaf51a212d24a18c
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 6e79aba5ae6d06c207b0070fd7741471db7d820c
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894598"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316914"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Küldés a vendég operációs rendszer mérőszámok az Azure Monitor metrika tárolja a Windows virtuális gép Resource Manager-sablon használatával
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Az Azure Monitor használatával [diagnosztikai bővítmény](diagnostics-extension-overview.md), hogy tud gyűjteni a vendég operációs rendszerek (Guest OS), egy virtuális gép, a felhőalapú szolgáltatás vagy a Service Fabric-fürt részeként futó metrikák és naplók. A bővítmény küldhet telemetriát [számos különböző helyeken.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
 
@@ -29,7 +31,7 @@ Ha most ismerkedik a Resource Manager-sablonokat, további információ [sablon-
 
 - Az előfizetés regisztrálva kell lenniük [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services).
 
-- Rendelkeznie kell [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) vagy [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) telepítve.
+- Rendelkeznie kell [Azure PowerShell-lel](/powershell/azure) vagy [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) telepítve.
 
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>Állítsa be az Azure Monitor fogadására
@@ -237,17 +239,17 @@ Mentse és zárja be mindkét fájlt.
 A Resource Manager-sablon üzembe helyezéséhez használhatja azt az Azure PowerShell.
 
 1. Indítsa el a Powershellt.
-1. Jelentkezzen be Azure-bA `Login-AzureRmAccount`.
-1. Az előfizetések listájának lekérése használatával `Get-AzureRmSubscription`.
+1. Jelentkezzen be Azure-bA `Login-AzAccount`.
+1. Az előfizetések listájának lekérése használatával `Get-AzSubscription`.
 1. Állítsa be az előfizetést, amelyhez a virtuális gépet létrehozni vagy frissíteni használ:
 
    ```PowerShell
-   Select-AzureRmSubscription -SubscriptionName "<Name of the subscription>"
+   Select-AzSubscription -SubscriptionName "<Name of the subscription>"
    ```
 1. Hozzon létre egy új erőforráscsoportot, a telepítés alatt álló virtuális gép, futtassa a következő parancsot:
 
    ```PowerShell
-    New-AzureRmResourceGroup -Name "<Name of Resource Group>" -Location "<Azure Region>"
+    New-AzResourceGroup -Name "<Name of Resource Group>" -Location "<Azure Region>"
    ```
    > [!NOTE]
    > Ne felejtse el [használata egy Azure-régióban, ahol engedélyezve van az egyéni metrikákat](metrics-custom-overview.md).
@@ -257,7 +259,7 @@ A Resource Manager-sablon üzembe helyezéséhez használhatja azt az Azure Powe
    > Ha szeretné frissíteni a meglévő virtuális gép, egyszerűen adja hozzá *-mód növekményes* a következő parancs végéhez.
 
    ```PowerShell
-   New-AzureRmResourceGroupDeployment -Name "<NameThisDeployment>" -ResourceGroupName "<Name of the Resource Group>" -TemplateFile "<File path of your Resource Manager template>" -TemplateParameterFile "<File path of your parameters file>"
+   New-AzResourceGroupDeployment -Name "<NameThisDeployment>" -ResourceGroupName "<Name of the Resource Group>" -TemplateFile "<File path of your Resource Manager template>" -TemplateParameterFile "<File path of your parameters file>"
    ```
 
 1. Miután az üzembe helyezés sikeres, a virtuális gép kell lennie az Azure Portalon kibocsátó mérőszámok az Azure Monitor használatával.

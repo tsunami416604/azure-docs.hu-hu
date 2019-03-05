@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 5d9952581049198131e30cd7d0ba0ebf6a14cc54
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 852f181ff0bb84bc3bcdb6d674ecf72eca900d7d
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098868"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312579"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Az Azure SQL Database felügyelt példányain a felügyelt API-referencia
 
@@ -29,21 +29,23 @@ A rövid útmutató bemutatja, hogyan hozzon létre egy Azure SQL Database felü
 
 ## <a name="powershell-create-and-manage-managed-instances"></a>PowerShell: Felügyelt példányok létrehozása és kezelése
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Hozhat létre és kezelheti a felügyelt példányok az Azure PowerShell-lel, használja a következő PowerShell-parancsmagokat. Ha telepíteni vagy frissíteni a PowerShell, lásd: kell [Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps).
 
 > [!TIP]
-> PowerShell-példa szkriptek, lásd: [gyors üzembe helyezési parancsfájlt: Az Azure SQL felügyelt példány használatával a PowerShell-könyvtár létrehozása](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/).
+> PowerShell-példa szkriptek, lásd: [gyors üzembe helyezési parancsfájlt: Az Azure SQL felügyelt példány használatával a PowerShell-könyvtár létrehozása](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../quick-start-script-create-azure-sql-managed-instance-using-powershell/).
 
 | Parancsmag | Leírás |
 | --- | --- |
-|[New-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlinstance)|Létrehoz egy Azure SQL Database felügyelt példány |
-|[Get-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlinstance)|Az Azure SQL felügyelt példány adatait adja vissza|
-|[Set-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqlinstance)|Egy Azure SQL Database felügyelt példánya tulajdonságainak beállítása|
-|[Remove-AzureRmSqlInstance](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqlinstance)|Eltávolít egy Azure SQL felügyelt adatbázis-példány|
-|[New-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlinstancedatabase)|Létrehoz egy Azure SQL Database felügyelt példányába database|
-|[Get-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqlinstancedatabase)|Az Azure SQL felügyelt példánya adatbázis adatait adja vissza|
-|[Remove-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/remove-azurermsqlinstancedatabase)|Egy felügyelt Azure SQL Database példány adatbázis eltávolítása|
-|[Restore-AzureRmSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqlinstancedatabase)|Visszaállít egy Azure SQL Database Felügyeltpéldány-adatbázist|
+|[New-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstance)|Létrehoz egy Azure SQL Database felügyelt példány |
+|[Get-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstance)|Az Azure SQL felügyelt példány adatait adja vissza|
+|[Set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance)|Egy Azure SQL Database felügyelt példánya tulajdonságainak beállítása|
+|[Remove-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstance)|Eltávolít egy Azure SQL felügyelt adatbázis-példány|
+|[New-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/new-azsqlinstancedatabase)|Létrehoz egy Azure SQL Database felügyelt példányába database|
+|[Get-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlinstancedatabase)|Az Azure SQL felügyelt példánya adatbázis adatait adja vissza|
+|[Remove-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/remove-azsqlinstancedatabase)|Egy felügyelt Azure SQL Database példány adatbázis eltávolítása|
+|[Restore-AzSqlInstanceDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase)|Visszaállít egy Azure SQL Database Felügyeltpéldány-adatbázist|
 
 ## <a name="azure-cli-create-and-manage-managed-instances"></a>Azure CLI: Felügyelt példányok létrehozása és kezelése
 

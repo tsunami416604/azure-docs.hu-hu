@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: a5dd018197ff78ff0563349fd941308c3684a456
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: b24c7c6d08b7d7914c7bdef6d2a55eb88689b6ad
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51004119"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315197"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Eszköz használata az Azure IoT központi alkalmazás beállítása
 
@@ -27,7 +27,7 @@ Eszköz létrehozásához állítsa be:
 
 1. Válasszon **eszköz csoportok** a bal oldali navigációs menüben.
 
-1. Kattintson az **+ Új** elemre.
+1. Válassza ki **+ új**.
 
     ![Új eszköz beállítása](media/howto-use-device-sets/image1.png)
 
@@ -50,7 +50,7 @@ Miután létrehozta az eszköz beállítása, konfigurálhatja a **irányítópu
 
 1. Válassza ki a **irányítópult** fülre.
 
-1. Kattintson a **sablon szerkesztése**.
+1. Válassza ki **sablon szerkesztése**.
 
     ![A Tervező módban](media/howto-use-device-sets/image3.png)
 
@@ -59,7 +59,7 @@ Miután létrehozta az eszköz beállítása, konfigurálhatja a **irányítópu
 1. Hivatkozás csempe hozzáadása:
     1. Válasszon **hivatkozás** a jobb oldali ablaktáblán.
     1. Adja meg a hivatkozás egy **cím**.
-    1. Válasszon egy URL-címet kell megnyitni, ha a hivatkozásra kattint.
+    1. Válasszon egy URL-címet kell megnyitni a hivatkozás kiválasztásakor.
     1. Adjon a hivatkozás egy leírást, amely az alább látható a **cím**.
     1. Válassza a **Mentés** elemet.
 
@@ -84,7 +84,7 @@ Miután létrehozta az eszköz beállítása, konfigurálhatja a **irányítópu
     > [!NOTE]
     > Több lemezképek, a hivatkozások és a rácsok is hozzáadhat.
   
-    1. Kattintson a **Done** (Kész) gombra.
+    1. Válassza a **Done** (Kész) lehetőséget.
 
     ![Tervezési mód kikapcsolása](media/howto-use-device-sets/image10.png)
 
@@ -104,7 +104,7 @@ Annak érdekében, hogy adjon hozzá egy eszközhöz, helyek térképe irányít
 4. Most egy operátor nézetek, az eszköz állítja be az irányítópultot, az üzemeltető konfigurálta az összes csempe látható, ha például a helye térkép megjelenítése egyetlen pillantással eszközök helyét! 
     
 > [!NOTE] 
-> Méretezze át a térkép a megfelelő méretre lehet. Kattintson a PIN-kódot a térképen az eszközinformációkat, nevét és helyét jeleníti meg. Az eszköz tulajdonságok oldalán lépjen az előugró kattinthat.  
+> Méretezze át a térkép a megfelelő méretre lehet. PIN-kódot kell választania a térkép megjeleníti az eszközinformációkat, nevét és helyét. Kiválaszthatja az előugró ablak az eszköz tulajdonság lap megnyitásához.  
 
 
 ## <a name="configure-the-list-for-your-device-set"></a>A lista az eszköz készlet konfigurálása

@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 10/01/2018
-ms.openlocfilehash: 8aad3cf0bfeb2f8586bca1072f3e395e196f3e0c
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 4963114f3646453510e20c7071157c952e52c40f
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098493"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57307139"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Nyilvános adatkészletek a teszteléshez és prototípus-készítés
 
@@ -46,7 +46,7 @@ Tallózással keresse meg az adatok esetén, amelyek segítségével készíthet
 | [Nyissa meg tudományos adatok Felhőbeli adatok](https://www.opensciencedatacloud.org/) | "Nyílt tudományos adatok Felhőbeli biztosítja a tudományos Közösség, az erőforrások tárolásához, megosztása és terabájt, petabájtszintű és tudományos adatkészletek elemzése."| Adatkészletek többféle formátumban vannak. |
 | [Globális hőmérséklet-adatok – WorldClim](http://worldclim.org/) | "WorldClim olyan készlete, globális éghajlatváltozás rétegek (berácsozott éghajlati adatokat), körülbelül 1 km2 térbeli pontossággal. Ezen adatok használhatók a leképezési és a térbeli modellezési." | Ezek a fájlok tartalmazzák a földrajzi adatok. További információ: [adatformátum](http://worldclim.org/formats1). |
 | [Emberi társadalom – a GDELT projekt adatait](http://www.gdeltproject.org/data.html) | "A GDELT projekt a legnagyobb, legteljesebb és legnagyobb felbontást emberi társadalom minden eddiginél létrehozott adatbázis megnyitása." | A nyers adatok fájlok CSV formátumban. |
-| [Hirdetés kattintson a machine Learning Criteo az előrejelzési adatok](http://labs.criteo.com/2013/12/download-terabyte-click-logs/) | "A legnagyobb minden eddiginél nyilvánosan elérhető gépi Tanulási adatkészlet." További információ: [Criteo az 1 TB-os kattintson előrejelzési adatkészlet](https://blogs.technet.microsoft.com/machinelearning/2015/04/01/now-available-on-azure-ml-criteos-1tb-click-prediction-dataset/). | |
+| [Hirdetés kattintson a machine Learning Criteo az előrejelzési adatok](http://labs.criteo.com/2013/12/download-terabyte-click-logs/) | "A legnagyobb minden eddiginél nyilvánosan elérhető gépi Tanulási adatkészlet." További információ: [Criteo az 1 TB-os kattintson előrejelzési adatkészlet](https://blogs.technet.microsoft.com/machinelearning/20../../now-available-on-azure-ml-criteos-1tb-click-prediction-dataset/). | |
 | [ClueWeb09 szöveg adatbányászati adatkészlet Lemur a projektből](http://www.lemurproject.org/clueweb09.php/) | "A ClueWeb09 adatkészlet létrehozása kutatás támogatására információk lekéréséhez és a kapcsolódó emberi nyelvi technológiákról. Folyamatautomatizálást körülbelül 1 milliárd weblapok 10 nyelven a január és február 2009 összegyűjtött." | Lásd: [adatkészlet adatai](http://www.lemurproject.org/clueweb09/datasetInformation.php).|
 
 ## <a name="online-service-data"></a>Online szolgáltatás adatai

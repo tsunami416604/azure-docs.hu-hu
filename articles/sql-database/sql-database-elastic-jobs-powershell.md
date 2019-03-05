@@ -12,20 +12,18 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 6ec0742c205204ee74ac9f9474af0394f9d1ab31
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: dc9b58402ed0fcc48d60b51d30f891ffcadddbe0
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472644"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315622"
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>PowerShell (előzetes verzió) használatával az SQL Database rugalmas feladatok létrehozása és kezelése
 
-
-[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
-
-
 A PowerShell API-k **rugalmas adatbázis-feladatok** (az előzetes verzió), amelyekkel meghatározott felhasználói csoporttal szemben, amely végrehajtja a szkriptek adatbázisok. Ez a cikk bemutatja, hogyan hozhat létre és kezelhet **rugalmas adatbázis-feladatok** PowerShell-parancsmagok használatával. Lásd: [rugalmas feladatok áttekintése](sql-database-elastic-jobs-overview.md). 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 * Azure-előfizetés. Az ingyenes próbaverzióra, lásd: [ingyenes egy hónapos próbaidőszak](https://azure.microsoft.com/pricing/free-trial/).
@@ -34,9 +32,9 @@ A PowerShell API-k **rugalmas adatbázis-feladatok** (az előzetes verzió), ame
 * **Elastic Database-feladatok** PowerShell csomag: Lásd: [telepítése rugalmas adatbázis-feladatok](sql-database-elastic-jobs-service-installation.md)
 
 ### <a name="select-your-azure-subscription"></a>Válassza ki az Azure-előfizetés
-Válassza ki az előfizetést az előfizetés-azonosítót kell (**- SubscriptionId**) vagy az előfizetés neve (**- SubscriptionName**). Ha több előfizetéssel rendelkezik, futtathatja a **Get-AzureRmSubscription** parancsmagot, és másolja a kívánt előfizetési információkat az eredményt állítsa be. Ha már rendelkezik az előfizetés adatait, futtassa az alapértelmezett, azaz a cél a feladatok létrehozását és kezelését az előfizetés beállítása a következő parancsmagot:
+Válassza ki az előfizetést az előfizetés-azonosítót kell (**- SubscriptionId**) vagy az előfizetés neve (**- SubscriptionName**). Ha több előfizetéssel rendelkezik, futtathatja a **Get-AzSubscription** parancsmagot, és másolja a kívánt előfizetési információkat az eredményt állítsa be. Ha már rendelkezik az előfizetés adatait, futtassa az alapértelmezett, azaz a cél a feladatok létrehozását és kezelését az előfizetés beállítása a következő parancsmagot:
 
-    Select-AzureRmSubscription -SubscriptionId {SubscriptionID}
+    Select-AzSubscription -SubscriptionId {SubscriptionID}
 
 A [PowerShell ISE-ben](https://technet.microsoft.com/library/dd315244.aspx) fejlesztéséhez, és hajtsa végre a PowerShell-szkriptek használatát a rugalmas adatbázis-feladatok használata ajánlott.
 

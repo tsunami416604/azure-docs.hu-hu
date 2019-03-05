@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
-ms.openlocfilehash: 7a090a068984a71c917cf5c33761dd78ac1ad2c8
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: d89e5d6fd21fdc37bffcc730fb20bae30ecc4f7c
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453256"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315027"
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Az Azure portal használatával egy webalkalmazási tűzfallal rendelkező application gateway létrehozása
 
@@ -30,6 +30,8 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * Tárfiók létrehozása és diagnosztika konfigurálása
 
 ![Példa webalkalmazási tűzfalra](./media/application-gateway-web-application-firewall-portal/scenario-waf.png)
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
@@ -103,7 +105,7 @@ Ebben a példában két virtuális gépet hozunk létre, amelyeket az alkalmazá
 2. Futtassa a következő parancsot az IIS a virtuális gépen való telepítéséhez: 
 
     ```azurepowershell-interactive
-    Set-AzureRmVMExtension `
+    Set-AzVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -ExtensionName IIS `
       -VMName myVM `
@@ -114,7 +116,7 @@ Ebben a példában két virtuális gépet hozunk létre, amelyeket az alkalmazá
       -Location EastUS
     ```
 
-3. Hozzon létre egy második virtuális gépet, és telepítse az IIS-t az imént befejezett lépésekkel. Adja meg a *myVM2* nevet a virtuális gép neveként és a Set-AzureRmVMExtension parancs VMName paramétereként.
+3. Hozzon létre egy második virtuális gépet, és telepítse az IIS-t az imént befejezett lépésekkel. Adja meg *myVM2* nevéből és a Set-AzVMExtension VMName.
 
 ### <a name="add-backend-servers"></a>Háttérkiszolgálók hozzáadása
 

@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 6f8dd8611e5e2120bdfa0ae111bf6e248ca0f3cb
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 8b8f7aa559fa8b9adc805636c377f31dd252687b
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214739"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309604"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Az Azure SQL Database-metrikák és diagnosztikai naplózás
 
@@ -192,12 +192,14 @@ Felügyelt példány erőforrás diagnostics telemetriai adatainak streamelésé
 
 ### <a name="powershell"></a>PowerShell
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Metrikák és diagnosztikai naplózás PowerShell használatával engedélyezheti.
 
 - Ahhoz, hogy a diagnosztikai naplókat egy tárfiókban, használja ezt a parancsot:
 
    ```powershell
-   Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
+   Set-AzDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
    ```
 
    A tárfiók azonosítója a cél tárfiók erőforrás-azonosító.
@@ -205,7 +207,7 @@ Metrikák és diagnosztikai naplózás PowerShell használatával engedélyezhet
 - Diagnosztikai naplók egy eseményközpontba streamelésének engedélyezéséhez használja ezt a parancsot:
 
    ```powershell
-   Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
+   Set-AzDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
    ```
 
    Az Azure Service Bus Szabályazonosító karakterláncnak a következő formátumban:
@@ -217,20 +219,20 @@ Metrikák és diagnosztikai naplózás PowerShell használatával engedélyezhet
 - Ahhoz, hogy a küldő diagnosztikai naplók a Log Analytics-munkaterülethez, használja ezt a parancsot:
 
    ```powershell
-   Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
+   Set-AzDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
    ```
 
 - A Log Analytics munkaterület erőforrás-Azonosítóját a következő paranccsal szerezheti be:
 
    ```powershell
-   (Get-AzureRmOperationalInsightsWorkspace).ResourceId
+   (Get-AzOperationalInsightsWorkspace).ResourceId
    ```
 
 Kombinálhatja ezeket a paramétereket, több kimeneti beállítások engedélyezéséhez.
 
 ### <a name="to-configure-multiple-azure-resources"></a>Több Azure-erőforrások konfigurálása
 
-Több előfizetés is támogatja, használja a PowerShell-szkript [engedélyezése az Azure resource metrikák naplózás PowerShell-lel](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell/).
+Több előfizetés is támogatja, használja a PowerShell-szkript [engedélyezése az Azure resource metrikák naplózás PowerShell-lel](https://blogs.technet.microsoft.com/msoms/20../../enable-azure-resource-metrics-logging-using-powershell/).
 
 Adja meg a munkaterület erőforrás-azonosító \<$WSID\> paraméterként a parancsfájl végrehajtása közben `Enable-AzureRMDiagnostics.ps1` különböző erőforrásokból származó diagnosztikai adatokat küldeni a munkaterületen.
 

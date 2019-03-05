@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 1/29/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: a817e3681f6b94b1b9ad7d5a2d2a1369935ee064
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 8e9208981dd54fef1f56ee552d34bab78210b96d
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56651765"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316557"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Az Azure Portalon a műveleti csoportok létrehozása és kezelése
 ## <a name="overview"></a>Áttekintés ##
@@ -69,7 +69,7 @@ Miután létrehozta a műveletcsoport, is látható, az a **Műveletcsoportok** 
 > [!NOTE]
 > Lásd: [előfizetési szolgáltatási korlátok a figyelés](https://docs.microsoft.com/azure/azure-subscription-service-limits#monitor-limits) numerikus korlátait az alábbi elemek mindegyike számára.  
 
-**Azure-alkalmazás leküldéses** – az Azure app-műveletek csak korlátozott számú műveletcsoport használhat. Jelenleg az Azure-alkalmazás a művelet csak ServiceHealth riasztások támogatja. Más riasztási bármikor figyelmen kívül lesz hagyva. Lásd: [riasztások konfigurálása, ha a szolgáltatás állapotával kapcsolatos értesítés közzétételekor](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
+**Azure-alkalmazás leküldéses** – az Azure app-műveletek csak korlátozott számú műveletcsoport használhat. Jelenleg az Azure-alkalmazás a művelet csak ServiceHealth riasztások támogatja. Bármely más riasztástípus figyelmen kívül lesz hagyva. Lásd: [riasztások konfigurálása, ha a szolgáltatás állapotával kapcsolatos értesítés közzétételekor](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
 
 **E-mailek** -e-mailt küld a következő e-mail-címekről. Győződjön meg arról, hogy az e-mailek szűrése megfelelően vannak konfigurálva
    - azure-noreply@microsoft.com

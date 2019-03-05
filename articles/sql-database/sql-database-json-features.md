@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/15/2019
-ms.openlocfilehash: 7e688abbe1b8188cb85e5762086009522b5b7d39
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 02cec7f3696a43e8effe9d551c1f3e3fddc25ec8
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332081"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57317203"
 ---
 # <a name="getting-started-with-json-features-in-azure-sql-database"></a>Ismerkedés az Azure SQL Database-ben JSON-funkciókkal
 Az Azure SQL Database lehetővé teszi a elemzése és kérdezhet le adatokat a JavaScript Object Notation jelölt [(JSON)](http://www.json.org/) formázhatja és exportálni a relációs adatok JSON-szövegben. Az alábbi JSON-forgatókönyvek az Azure SQL Database-ben érhetők el:
@@ -190,7 +190,7 @@ A Rendelések gyűjteményét formázott JSON-tömböt, és a tárolt eljárás 
 ## <a name="next-steps"></a>További lépések
 Ismerje meg, hogyan JSON beágyazása az alkalmazásba, tekintse meg ezeket az erőforrásokat:
 
-* [TechNet Blog](https://blogs.technet.microsoft.com/dataplatforminsider/2016/01/05/json-in-sql-server-2016-part-1-of-4/)
+* [TechNet Blog](https://blogs.technet.microsoft.com/dataplatforminsider/20../../json-in-sql-server-2016-part-1-of-4/)
 * [MSDN-dokumentáció](https://msdn.microsoft.com/library/dn921897.aspx)
 * [Channel 9-videóban](https://channel9.msdn.com/Shows/Data-Exposed/SQL-Server-2016-and-JSON-Support)
 

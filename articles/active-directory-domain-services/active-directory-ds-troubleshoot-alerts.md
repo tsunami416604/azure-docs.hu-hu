@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2018
 ms.author: ergreenl
-ms.openlocfilehash: 492b15bddad598d65c15c48f04d3148c41cd3c7e
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: c71528ed8453bcde05e29eb609ca2cde64bad8de
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817529"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309417"
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Az Azure AD Domain Services – riasztások hibaelhárítása
 A cikk ismerteti a hibaelhárítási útmutatók tapasztalhat a felügyelt tartományra a riasztás.
@@ -42,10 +42,10 @@ Válassza ki a hibaelhárítási lépéseket, amelyek megfelelnek a azonosítój
 | AADDS108 | *Az Azure AD tartományi szolgáltatások által használt előfizetés át lett helyezve egy másik könyvtárra. Az Azure AD Domain Services rendelkeznie kell aktív előfizetés megfelelően működik-e ugyanabban a címtárban.* | [Az előfizetés áthelyezése könyvtárak](#aadds108-subscription-moved-directories) |
 | AADDS109 | *A felügyelt tartomány használt erőforrás törölve lett. Azure AD Domain Services megfelelő működéséhez szükség van ehhez az erőforráshoz.* | [Erőforrás törölve lett](#aadds109-resources-for-your-managed-domain-cannot-be-found) |
 | AADDS110 | *Az Azure AD Domain Services telepítésre kijelölt alhálózat megtelt, és nincs hely a további tartományvezérlő kell létrehozni.* | [Alhálózat megtelt.](#aadds110-the-subnet-associated-with-your-managed-domain-is-full) |
-| AADDS111 | * Egyszerű szolgáltatás, amely az Azure AD tartományi szolgáltatásokat használ a tartomány nem jogosult az Azure-előfizetés erőforrásainak kezelése. A szolgáltatásnévnek kell a szolgáltatás a felügyelt tartományra a jogosultságokat. * | Egyszerű szolgáltatás nem engedélyezett |
+| AADDS111 | *A tartomány használ az Azure AD Domain Services egyszerű szolgáltatás nem jogosult az Azure-előfizetés erőforrásainak kezelése. A szolgáltatásnévnek kell a szolgáltatás a felügyelt tartományra a jogosultságokat.* | [Egyszerű szolgáltatás nem engedélyezett](#aadds111-service-principal-unauthorized) |
 | AADDS112 | *Azonosítottuk, hogy a tartomány a virtuális hálózat alhálózatának előfordulhat, hogy nincs elegendő IP-címet. Az Azure AD Domain Services kell legalább két rendelkezésre álló IP-címet a engedélyezve van az alhálózaton belül. Javasoljuk, hogy legalább 3 – 5 tartalék IP-címek az alhálózaton belül. Ez azért fordulhatott elő, ha más virtuális gépek vannak telepítve az alhálózatban, így kimerítsék a számos elérhető IP-címek vagy az alhálózaton elérhető IP-címek számának korlátozása.* | [Nincs elegendő IP-címek](#aadds112-not-enough-ip-address-in-the-managed-domain) |
 | AADDS113 | *Az Azure AD tartományi szolgáltatások által használt erőforrásokat egy nem várt állapotot észlelt, és nem állítható helyre.* | [Erőforrások helyreállíthatatlan](#aadds113-resources-are-unrecoverable) |
-| AADDS114 | * Az Azure AD tartományi szolgáltatások üzembe helyezéshez kiválasztott alhálózatban nem érvényes, és nem használható. * | [Érvénytelen alhálózat](#aadds114-subnet-invalid) |
+| AADDS114 | *Az Azure AD tartományi szolgáltatások üzembe helyezéshez kiválasztott alhálózatban nem érvényes, és nem használható.* | [Érvénytelen alhálózat](#aadds114-subnet-invalid) |
 | AADDS115 | *Egy vagy több, a hálózat által használt erőforrások a felügyelt tartomány nem működik a módon célhatóköre zárolva van.* | [Zárolt erőforrások](#aadds115-resources-are-locked) |
 | AADDS116 | *Egy vagy több, a felügyelt tartomány által használt erőforrások nem működik a szabályzat restriction(s) miatt.* | [Erőforrások használhatatlanná válnak.](#aadds116-resources-are-unusable) |
 | AADDS500 | *A felügyelt tartomány volt utoljára szinkronizálva az Azure ad-vel [Date]. Előfordulhat, hogy a felhasználók nem jelentkezhetnek be a felügyelt tartományon, vagy a csoporttagságot nem lehet az Azure ad-vel szinkronizált.* | [Szinkronizálás egy ideje még nem történt.](#aadds500-synchronization-has-not-completed-in-a-while) |

@@ -13,14 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 5e3ef7782f805e07e24783a987f2753e4e889946
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 1c145f100e22dbb268a7cd491eb8a43b51988c69
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313033"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315809"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics – gyakori kérdések
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 A Microsoft FAQ a Microsoft Azure Log Analytics kapcsolatos gyakori kérdések listáját. Ha a Log Analytics szolgáltatásról további kérdése van, lépjen a [fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) és felteheti kérdéseit. Egy kérdést gyakran ismételt, amikor hozzáadjuk ehhez a cikkhez, hogy gyorsan és könnyen megtalálhatók.
 
 
@@ -168,7 +171,7 @@ A Log Analytics-forgalom nyilvános társviszony-létesítési ExpressRoute-kapc
 
 ### <a name="q-is-there-a-simple-and-easy-way-to-move-an-existing-log-analytics-workspace-to-another-log-analytics-workspaceazure-subscription"></a>K. Van egy meglévő Log Analytics-munkaterület áthelyezése egy másik Log Analytics munkaterület vagy az Azure-előfizetés egyszerű és könnyen mód?
 
-A. A `Move-AzureRmResource` parancsmag lehetővé teszi a Log Analytics-munkaterülettel, valamint az Automation-fiók áthelyezése egy Azure-előfizetésből egy másikba. További információkért lásd: [Move-AzureRmResource](https://msdn.microsoft.com/library/mt652516.aspx).
+A. A `Move-AzResource` parancsmag lehetővé teszi a Log Analytics-munkaterülettel, valamint az Automation-fiók áthelyezése egy Azure-előfizetésből egy másikba. További információkért lásd: [Move-AzResource](https://msdn.microsoft.com/library/mt652516.aspx).
 
 Ez a változás is módosíthatók az Azure Portalon.
 
@@ -196,7 +199,7 @@ A **Azure Log Analytics (OMS)**, felsorolva minden munkaterület eltávolítása
 
 ### <a name="q-why-am-i-getting-an-error-when-i-try-to-move-my-workspace-from-one-azure-subscription-to-another"></a>K: Miért jelenik meg hibaüzenet jelenik meg a saját munkaterület áthelyezése egy Azure-előfizetés között?
 
-V: Munkaterület áthelyezése egy másik előfizetést vagy az erőforráscsoport, először a munkaterület Automation-fiókot kell leválasztása. Ezek a megoldások eltávolítása leválasztása az Automation-fiók szükséges, ha a munkaterülethez lesznek telepítve: Frissítéskezelés, változáskövetés vagy virtuális gépek indítása/leállítása munkaidőn kívül el lesznek távolítva. Után ezeket a megoldásokat, az Automation-fiók leválasztása kiválasztásával **társított munkaterületek** a bal oldali panelen az Automation-fiók erőforrás, és kattintson a **munkaterület leválasztása** a menüszalagon.
+V: Munkaterület áthelyezése egy másik előfizetést vagy az erőforráscsoport, először a munkaterület Automation-fiókot kell leválasztása. Automation-fiók leválasztásához el kell távolítania ezeket a megoldásokat, ha telepítve vannak a munkaterületen: Frissítéskezelés, változáskövetés vagy virtuális gépek indítása/leállítása munkaidőn kívül el lesznek távolítva. Után ezeket a megoldásokat, az Automation-fiók leválasztása kiválasztásával **társított munkaterületek** a bal oldali panelen az Automation-fiók erőforrás, és kattintson a **munkaterület leválasztása** a menüszalagon.
  > Eltávolítja a megoldások kell újra kell telepíteni a munkaterületen, és a munkaterület Automation hivatkozásának meg kell állapítani az áthelyezés után.
 
 Győződjön meg arról, mind az Azure-előfizetések az Önnek megfelelő engedélye.

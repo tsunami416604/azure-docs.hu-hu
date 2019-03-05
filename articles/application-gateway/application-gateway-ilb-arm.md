@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/23/2018
 ms.author: victorh
-ms.openlocfilehash: 92d0e079f9fafbb6c000c6b1746f37a16add4cf7
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 3b9108e08e1b1ad13fac75d00816755043d84672
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417347"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308720"
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>Application gateway létrehozása belső terheléselosztóval (ILB)
 
@@ -29,7 +29,9 @@ Ez a cikk részletesen ismerteti egy Application Gateway ILB-hez történő konf
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-1. Telepítse az Azure PowerShell-parancsmagok legújabb verzióját a Webplatform-telepítővel. A [Letöltések lap](https://azure.microsoft.com/downloads/) **Windows PowerShell** szakaszából letöltheti és telepítheti a legújabb verziót.
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+1. Az alábbi Azure PowerShell-modul legújabb verziójának telepítése a [telepítési utasításokat](/powershell/azure/install-az-ps).
 2. Létre kell hozni egy virtuális hálózatot és alhálózatot az Application Gateway számára. Győződjön meg arról, hogy egy virtuális gép vagy felhőalapú telepítés sem használja az alhálózatot. Az Application Gateway-nek egyedül kell lennie a virtuális hálózat alhálózatán.
 3. A kiszolgálóknak, amelyeket az Application Gateway használatára konfigurál, már létezniük kell, illetve a virtuális hálózatban vagy hozzárendelt nyilvános/virtuális IP-címmel létrehozott végpontokkal kell rendelkezniük.
 
@@ -60,7 +62,7 @@ Az Azure Resource Manager parancsmagjainak használatához váltson át PowerShe
 ### <a name="step-1"></a>1. lépés
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 ### <a name="step-2"></a>2. lépés
@@ -68,7 +70,7 @@ Connect-AzureRmAccount
 Keresse meg a fiókot az előfizetésekben.
 
 ```powershell
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
 A rendszer kérni fogja a hitelesítő adatokkal történő hitelesítést.
@@ -78,7 +80,7 @@ A rendszer kérni fogja a hitelesítő adatokkal történő hitelesítést.
 Válassza ki, hogy melyik Azure előfizetést fogja használni.
 
 ```powershell
-Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
+Select-AzSubscription -Subscriptionid "GUID of subscription"
 ```
 
 ### <a name="step-4"></a>4. lépés
@@ -86,7 +88,7 @@ Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
 Hozzon létre egy új erőforráscsoportot (hagyja ki ezt a lépést, ha egy meglévő erőforráscsoportot használ).
 
 ```powershell
-New-AzureRmResourceGroup -Name appgw-rg -location "West US"
+New-AzResourceGroup -Name appgw-rg -location "West US"
 ```
 
 Az Azure Resource Manager megköveteli, hogy minden erőforráscsoport adjon meg egy helyet. Ez szolgál az erőforráscsoport erőforrásainak alapértelmezett helyeként. Győződjön meg arról, hogy az Application Gateway létrehozására irányuló összes parancs ugyanazt az erőforráscsoportot használja.
@@ -100,7 +102,7 @@ Az alábbi példa bemutatja, hogyan hozhat létre egy virtuális hálózatot a R
 ### <a name="step-1"></a>1. lépés
 
 ```powershell
-$subnetconfig = New-AzureRmVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
+$subnetconfig = New-AzVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
 ```
 
 Ebben a lépésben a 10.0.0.0/24 címtartományt rendel egy virtuális hálózat létrehozásához használt egyik alhálózati változóhoz.
@@ -108,7 +110,7 @@ Ebben a lépésben a 10.0.0.0/24 címtartományt rendel egy virtuális hálózat
 ### <a name="step-2"></a>2. lépés
 
 ```powershell
-$vnet = New-AzureRmVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnetconfig
+$vnet = New-AzVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-rg -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnetconfig
 ```
 
 Ebben a lépésben létrehoz egy virtuális hálózatot nevű "appgwvnet" erőforrás "appgw-rg" erőforráscsoportban az USA nyugati régiója, az előtag 10.0.0.0/16 használja a 10.0.0.0/24 alhálózattal.
@@ -126,7 +128,7 @@ Ebben a lépésben hozzárendeli az alhálózati objektumot a $subnet változóh
 ### <a name="step-1"></a>1. lépés
 
 ```powershell
-$gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
+$gipconfig = New-AzApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
 ```
 
 Ez a lépés létrehoz egy "gatewayIP01" nevű application gateway IP konfigurációt. Amikor az Application Gateway elindul, a konfigurált alhálózatból felvesz egy IP-címet, és a hálózati forgalmat a háttérbeli IP-készlet IP-címeihez irányítja. Ne feledje, hogy minden példány egy IP-címet vesz fel.
@@ -134,7 +136,7 @@ Ez a lépés létrehoz egy "gatewayIP01" nevű application gateway IP konfigurá
 ### <a name="step-2"></a>2. lépés
 
 ```powershell
-$pool = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 10.1.1.8,10.1.1.9,10.1.1.10
+$pool = New-AzApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 10.1.1.8,10.1.1.9,10.1.1.10
 ```
 
 Ebben a lépésben a háttérbeli IP-címkészletet konfigurálja a "pool01" nevű IP-címek "10.1.1.8, 10.1.1.9, 10.1.1.10". Ezek az IP-címek fogadják az előtérbeli IP-végpontból érkező hálózati forgalmat. Az előző IP-címeket lecseréli a saját alkalmazása IP-címvégpontjaira.
@@ -142,7 +144,7 @@ Ebben a lépésben a háttérbeli IP-címkészletet konfigurálja a "pool01" nev
 ### <a name="step-3"></a>3. lépés
 
 ```powershell
-$poolSetting = New-AzureRmApplicationGatewayBackendHttpSettings -Name poolsetting01 -Port 80 -Protocol Http -CookieBasedAffinity Disabled
+$poolSetting = New-AzApplicationGatewayBackendHttpSettings -Name poolsetting01 -Port 80 -Protocol Http -CookieBasedAffinity Disabled
 ```
 
 Ebben a lépésben konfigurálja a háttérkészlet application gateway beállítást "poolsetting01"nevű a betöltés elosztott terhelésű hálózati forgalmat.
@@ -150,7 +152,7 @@ Ebben a lépésben konfigurálja a háttérkészlet application gateway beállí
 ### <a name="step-4"></a>4. lépés
 
 ```powershell
-$fp = New-AzureRmApplicationGatewayFrontendPort -Name frontendport01  -Port 80
+$fp = New-AzApplicationGatewayFrontendPort -Name frontendport01  -Port 80
 ```
 
 Ebben a lépésben konfigurálja az ILB-hez a "frontendport01" nevű előtérbeli IP-portot.
@@ -158,7 +160,7 @@ Ebben a lépésben konfigurálja az ILB-hez a "frontendport01" nevű előtérbel
 ### <a name="step-5"></a>5. lépés
 
 ```powershell
-$fipconfig = New-AzureRmApplicationGatewayFrontendIPConfig -Name fipconfig01 -Subnet $subnet
+$fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name fipconfig01 -Subnet $subnet
 ```
 
 Ebben a lépésben létrehozza a "fipconfig01" nevű előtérbeli IP-konfigurációt, és társítja azt az aktuális virtuális hálózati alhálózatról egy privát IP.
@@ -166,7 +168,7 @@ Ebben a lépésben létrehozza a "fipconfig01" nevű előtérbeli IP-konfigurác
 ### <a name="step-6"></a>6. lépés
 
 ```powershell
-$listener = New-AzureRmApplicationGatewayHttpListener -Name listener01  -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp
+$listener = New-AzApplicationGatewayHttpListener -Name listener01  -Protocol Http -FrontendIPConfiguration $fipconfig -FrontendPort $fp
 ```
 
 Ebben a lépésben létrehozza a "listener01" nevű, és társítja az előtérbeli portot az előtérbeli IP-konfigurációhoz.
@@ -174,7 +176,7 @@ Ebben a lépésben létrehozza a "listener01" nevű, és társítja az előtérb
 ### <a name="step-7"></a>7. lépés
 
 ```powershell
-$rule = New-AzureRmApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
+$rule = New-AzApplicationGatewayRequestRoutingRule -Name rule01 -RuleType Basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
 ```
 
 Ebben a lépésben létrehozza a terheléselosztási útválasztási szabályt "rule01" nevű, amely a terheléselosztó viselkedését konfigurálja.
@@ -182,7 +184,7 @@ Ebben a lépésben létrehozza a terheléselosztási útválasztási szabályt "
 ### <a name="step-8"></a>8. lépés
 
 ```powershell
-$sku = New-AzureRmApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
+$sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
 ```
 
 Ez a lépés az application gateway példányméretét konfigurálja.
@@ -195,7 +197,7 @@ Ez a lépés az application gateway példányméretét konfigurálja.
 Létrehoz egy application gateway az előző lépések konfigurációs elemeivel. Ebben a példában az Application Gateway neve „appgwtest”.
 
 ```powershell
-$appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
+$appgw = New-AzApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Location "West US" -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting -FrontendIpConfigurations $fipconfig  -GatewayIpConfigurations $gipconfig -FrontendPorts $fp -HttpListeners $listener -RequestRoutingRules $rule -Sku $sku
 ```
 
 Ebben a lépésben létrehoz egy application gateway az előző lépések konfigurációs elemeivel. Ebben a példában az Application Gateway neve „appgwtest”.
@@ -204,8 +206,8 @@ Ebben a lépésben létrehoz egy application gateway az előző lépések konfig
 
 Egy application gateway törléséhez kövesse sorrendben az alábbi lépéseket kell:
 
-1. Állítsa le az átjárót a `Stop-AzureRmApplicationGateway` parancsmaggal.
-2. Távolítsa el az átjárót a `Remove-AzureRmApplicationGateway` parancsmaggal.
+1. Állítsa le az átjárót a `Stop-AzApplicationGateway` parancsmaggal.
+2. Távolítsa el az átjárót a `Remove-AzApplicationGateway` parancsmaggal.
 3. A `Get-AzureApplicationGateway` parancsmaggal győződjön meg arról, hogy az átjáró el lett távolítva.
 
 ### <a name="step-1"></a>1. lépés
@@ -213,15 +215,15 @@ Egy application gateway törléséhez kövesse sorrendben az alábbi lépéseket
 Társítsa az Application Gateway objektumot a „$getgw” változóhoz.
 
 ```powershell
-$getgw =  Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
+$getgw =  Get-AzApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
 ```
 
 ### <a name="step-2"></a>2. lépés
 
-Állítsa le az Application Gatewayt a `Stop-AzureRmApplicationGateway` parancsmaggal. Ez a példa bemutatja a `Stop-AzureRmApplicationGateway` parancsmag első sorát, a kimenet követ.
+Állítsa le az Application Gatewayt a `Stop-AzApplicationGateway` parancsmaggal. Ez a példa bemutatja a `Stop-AzApplicationGateway` parancsmag első sorát, a kimenet követ.
 
 ```powershell
-Stop-AzureRmApplicationGateway -ApplicationGateway $getgw  
+Stop-AzApplicationGateway -ApplicationGateway $getgw  
 ```
 
 ```
@@ -232,10 +234,10 @@ Name       HTTP Status Code     Operation ID                             Error
 Successful OK                   ce6c6c95-77b4-2118-9d65-e29defadffb8
 ```
 
-Amint az Application Gateway leállított állapotba kerül, távolítsa el a szolgáltatást a `Remove-AzureRmApplicationGateway` parancsmaggal.
+Amint az Application Gateway leállított állapotba kerül, távolítsa el a szolgáltatást a `Remove-AzApplicationGateway` parancsmaggal.
 
 ```powershell
-Remove-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Force
+Remove-AzApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg -Force
 ```
 
 ```
@@ -249,10 +251,10 @@ Successful OK                   055f3a96-8681-2094-a304-8d9a11ad8301
 > [!NOTE]
 > A **-force** kapcsolóval le lehet tiltani az eltávolítás jóváhagyása üzenetet.
 
-A szolgáltatás eltávolításának ellenőrzéséhez használhatja a `Get-AzureRmApplicationGateway` parancsmagot. Ez a lépés nem kötelező.
+A szolgáltatás eltávolításának ellenőrzéséhez használhatja a `Get-AzApplicationGateway` parancsmagot. Ez a lépés nem kötelező.
 
 ```powershell
-Get-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
+Get-AzApplicationGateway -Name appgwtest -ResourceGroupName appgw-rg
 ```
 
 ```

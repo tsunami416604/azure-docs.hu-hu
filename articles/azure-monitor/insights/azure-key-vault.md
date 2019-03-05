@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/09/2017
 ms.author: richrund
-ms.openlocfilehash: 785ccba6766b6a4f7400f3fdacf7ac24a234adf5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: c3148ebe11ba0e23cbded5965234ece9fb6082aa
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192770"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57317696"
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Az Azure Key Vault Analytics megoldás a Log Analyticsben
 
 ![A Key Vault szimbólum](media/azure-key-vault/key-vault-analytics-symbol.png)
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 A Log Analyticsben az Azure Key Vault megoldással áttekintheti az Azure Key Vault AuditEvent-naplókat.
 
@@ -55,13 +57,13 @@ Kövesse az alábbi utasításokat, telepítése és konfigurálása az Azure Ke
 8. Kattintson a *mentése* a Log Analytics diagnosztikai naplózás engedélyezése
 
 ### <a name="enable-key-vault-diagnostics-using-powershell"></a>A diagnosztika a Key Vault PowerShell-lel
-A következő PowerShell-parancsprogram azt szemlélteti, hogyan használható `Set-AzureRmDiagnosticSetting` a Key vault diagnosztikai naplózás engedélyezése:
+A következő PowerShell-parancsprogram azt szemlélteti, hogyan használható `Set-AzDiagnosticSetting` a Key vault diagnosztikai naplózás engedélyezése:
 ```
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
-$kv = Get-AzureRmKeyVault -VaultName 'ContosoKeyVault'
+$kv = Get-AzKeyVault -VaultName 'ContosoKeyVault'
 
-Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId  -WorkspaceId $workspaceId -Enabled $true
+Set-AzDiagnosticSetting -ResourceId $kv.ResourceId  -WorkspaceId $workspaceId -Enabled $true
 ```
 
 
@@ -103,17 +105,17 @@ Az Azure Key Vault megoldás elemzi a rekord, amelynek típusa a **KeyVaults** ,
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Típus |*AzureDiagnostics* |
+| Typo |*AzureDiagnostics* |
 | SourceSystem |*Azure* |
 | CallerIpAddress |A kérést leadó ügyfél IP-címe |
 | Kategória | *AuditEvent* |
 | CorrelationId |Egy nem kötelező GUID, amelyet az ügyfél alkalmazhat az ügyféloldali és a szolgáltatásoldali (Key Vault) naplók egyeztetéséhez. |
-| durationMs |A REST API-kérelem végrehajtásának ideje ezredmásodpercben. Ezúttal nem tartalmazza a hálózati késés, így előfordulhat, hogy az idő az ügyféloldalon mérő nem egyezik a most. |
+| DurationMs |A REST API-kérelem végrehajtásának ideje ezredmásodpercben. Ezúttal nem tartalmazza a hálózati késés, így előfordulhat, hogy az idő az ügyféloldalon mérő nem egyezik a most. |
 | httpStatusCode_d |A kérelem által visszaadott HTTP-állapotkódot (például *200*) |
 | id_s |A kérelem egyedi azonosítója |
 | identity_claim_appid_g | GUID Azonosítóját az alkalmazás azonosítója. |
 | OperationName |A művelet, dokumentált módon neve [Azure Key Vault naplózása](../../key-vault/key-vault-logging.md) |
-| operationVersion |Az ügyfél által kért REST API-verzió (például *2015-06-01*) |
+| OperationVersion |Az ügyfél által kért REST API-verzió (például *2015-06-01*) |
 | requestUri_s |A kérelem URI azonosítója |
 | Erőforrás |A kulcstároló nevét |
 | ResourceGroup |A kulcstároló erőforráscsoport |

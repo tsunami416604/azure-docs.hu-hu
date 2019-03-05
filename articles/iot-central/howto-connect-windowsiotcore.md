@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: bd2f675fe646395b60aeb687f67269b0184563bd
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 85fba27c856561eb1270e719dcf24b88d2d5a01f
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193398"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309910"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>A Windows IoT Core-eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz
 
@@ -72,10 +72,10 @@ Az ügyfélalkalmazás az előző lépésben a Windows 10 IoT-eszközök annak �
 Miután ezt megtette, meg kell nyitnia a [Windows Device Portal](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal) bármely böngészőben http://[device-IP-address]:8080 beírásával.
 
 Vannak, és a ha alább is látható, a szeretné:
-1. Bontsa ki az "Alkalmazások" csomópontot a bal oldalon.
-2. Kattintson a "gyors futtatási minták".
-3. Kattintson az "Azure IoT Hub ügyfél".
-4. Kattintson a "Telepítés és Futtatás".
+1. Bontsa ki a **alkalmazások** csomópontot a bal oldalon.
+2. Válassza ki **gyors futtatási minták**.
+3. Válassza ki **az Azure IoT Hub ügyfél**.
+4. Válassza ki **üzembe helyezése és futtatása**.
 
 ![Az Azure IoT Hub ügyfél Windows Device Portal GIF](./media/howto-connect-windowsiotcore/iothubapp.gif)
 

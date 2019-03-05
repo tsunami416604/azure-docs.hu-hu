@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/10/2018
+ms.date: 03/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fc63eb792e58d960ae67138b5e58e6b705945030
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 2d81207195eb19a386d0d98fd4bfa6ba53ca972e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446392"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316642"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Hogyan telepítse és konfigurálja az SAP HANA (nagyméretű példányok) az Azure-ban
 
@@ -50,7 +50,7 @@ A **első lépés** után a nagyméretű HANA-példányt kap, és hozzáférési
 
 A nagyméretű HANA-példány egység a SMT példány csatlakozhat. (További információkért lásd: [SMT kiszolgáló beállítása a SUSE Linux](hana-setup-smt.md)). Másik lehetőségként a Red Hat-OS regisztrálva kell lennie a Red Hat előfizetés-kezelő használatával való csatlakozáshoz szükséges. További információkért lásd: a megjegyzések [Mi az SAP HANA az Azure-ban (nagyméretű példányok)?](https://docs.microsoft.com/azure/virtual-machines/linux/sap-hana-overview-architecture?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). 
 
-Ez a lépés is szükség az operációs rendszer, amely az ügyfél felelőssége a javítás céljából. A SUSE, keresse meg a dokumentációt telepítéséhez és konfigurálásához az SMT ezen az oldalon kapcsolatos [SMT telepítési](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html).
+Ez a lépés szükség az operációs rendszer, amely az ügyfél felelőssége a javításokat. A SUSE, keresse meg a dokumentációt telepítéséhez és konfigurálásához az SMT ezen az oldalon kapcsolatos [SMT telepítési](https://www.suse.com/documentation/sles-12/book_smt/data/smt_installation.html).
 
 A **második lépése** új javítások és javítások, az adott operációs rendszer/verzió. Győződjön meg arról, hogy a javítási szintje, a nagyméretű HANA-példányt a legújabb állapotban van. Előfordulhatnak olyan esetekben, ahol a legújabb javításokat nem tartalmaz. Után egy nagyméretű HANA-példány egység átvenni, legyen kötelező, ellenőrizze, hogy javítást kell alkalmazni.
 
@@ -80,6 +80,7 @@ Ha több példány a bérlőbe, az adott időzóna az újonnan kézbesített pé
 
 A **ötödik lépés** etc/hosts ellenőrzése. A paneleket első gyorsítási értéknek, átadná, mert különböző felhasználási célokra hozzárendelt különböző IP-címek rendelkeznek. Ellenőrizze a etc/hosts fájlt. Egységek kerülnek be egy meglévő bérlőt, ha várhatóan nincs megfelelően fenntartott IP-címekről korábban kézbesítése rendszerek az újonnan telepített rendszerek stb/gazdagépre van szükség. Feladata, az ügyfél számára teszi arról, hogy egy újonnan üzembe helyezett példány kezelését, és a korábban a bérlő az egységek a nevek feloldásához. 
 
+
 ## <a name="operating-system"></a>Operációs rendszer
 
 > [!IMPORTANT] 
@@ -105,7 +106,7 @@ SAP támogatási megjegyzések, amelyek a alkalmazni, amelyek segítenek a SAP H
 - [SAP támogatási Megjegyzés #171356 – SAP-szoftverek Linux rendszeren:  Általános információk](https://launchpad.support.sap.com/#/notes/1984787)
 - [SAP támogatási Megjegyzés #1391070 – Linux UUID-megoldások](https://launchpad.support.sap.com/#/notes/1391070)
 
-[Red Hat Enterprise Linux for SAP HANA](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) van egy másik ajánlatra, a nagyméretű HANA-példányokon futó SAP HANA futtatásához. RHEL 6.7 és 7.2 kiadásaiban érhetők el. Vegye figyelembe, hogy helyett natív Azure virtuális gépek csak az RHEL 7.2 és újabb verziókban támogatott ahol, HANA nagyméretű példányok támogatja RHEL 6.7 is. Azt javasoljuk azonban, egy RHEL 7.x verzió használatával.
+[Red Hat Enterprise Linux for SAP HANA](https://www.redhat.com/en/resources/red-hat-enterprise-linux-sap-hana) van egy másik ajánlatra, a nagyméretű HANA-példányokon futó SAP HANA futtatásához. RHEL 6.7 és 7.2 kiadásaiban érhetők el. Vegye figyelembe, ahol csak az RHEL 7.2 és újabb verziókban támogatott, natív Azure virtuális gépek leváló nagyméretű HANA-példányokhoz, valamint támogatja az RHEL 6.7. Azt javasoljuk azonban, egy RHEL 7.x verzió használatával.
 
 További hasznos SAP, a Red Hat kapcsolódó hivatkozások a következők:
 - [SAP HANA, Red Hat Linux helyen](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+Red+Hat).
@@ -200,6 +201,16 @@ A Storage alatt használt optimalizálható a SAP HANA, állítsa be az alábbi 
 A SAP HANA 1.0-s verzió legfeljebb SPS12, ezeket a paramétereket állítható be, az SAP HANA-adatbázis telepítése során leírtak szerint [SAP-jegyzetnek #2267798 – az SAP HANA-adatbázis konfigurációs](https://launchpad.support.sap.com/#/notes/2267798).
 
 A hdbparam keretrendszer használatával a SAP HANA-adatbázis telepítése után is konfigurálhatja a paramétereket. 
+
+Nagyméretű HANA-példányok a használt tárterület használata fájl mérete korlátozott. A [méretének korlátozása, 16TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) fájlonként. Ellentétben a fájlméretre vonatkozó korlátozások például EXT3 fájlrendszereket, a trendelemzést HANA még nem ismeri implicit módon, a storage korlátozás kényszeríti ki a nagyméretű HANA-példányokhoz tárolót. Ennek eredményeképpen HANA fog nem automatikusan létrehozni egy új adatfájlt a fájl maximális mérete 16 TB-os elérésekor. Mint 16 TB a fájl megcélzott HANA próbál, HANA jelentést hibák és az index kiszolgáló összeomlik, a végén.
+
+> [!IMPORTANT]
+> Az adatfájlokat a 16 TB fájlok méretkorlátjának nagyméretű HANA-példány tárolási túli növekszik próbál HANA elkerülése érdekében állítsa be az alábbi paramétereket a Hana global.ini konfigurációs fájlban kell
+> 
+- datavolume_striping=true
+- datavolume_striping_size_gb = 15000
+- Lásd még az SAP Megjegyzés [#2400005](https://launchpad.support.sap.com/#/notes/2400005)
+
 
 Az SAP HANA 2.0-val a hdbparam keretrendszer elavult. Ennek eredményeképpen a paramétert kell beállítani az SQL-parancsok használatával. További információkért lásd: [SAP-jegyzetnek #2399079: A HANA 2 hdbparam felszámolása](https://launchpad.support.sap.com/#/notes/2399079).
 

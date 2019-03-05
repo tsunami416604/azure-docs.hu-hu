@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 839a6b3cc90c6a8fcc512c100c8825f9513ded26
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 21f3f9cba6fadb8f3d163fb5a9ed8b214e43c541
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875939"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316370"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése az Azure Monitor használatával riasztások
 
@@ -310,28 +310,29 @@ A fenti json-mintaadatok menthető, ez az útmutató céljából (például:) sa
 
 ## <a name="managing-log-alerts-using-powershell-cli-or-api"></a>A PowerShell, a parancssori felület vagy az API riasztások kezelése
 
-[Az Azure Monitor - ütemezett lekérdezési szabály API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) egy REST API-t, és teljes mértékben kompatibilisek az Azure Resource Manager REST API-val. Ezért azt is használható a Powershell használatával a Resource Manager egy parancsmagjához, valamint az Azure CLI-n keresztül.
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+Az Azure Monitor - ütemezett lekérdezési szabály API] (https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) egy REST API-t, és teljes mértékben kompatibilisek az Azure Resource Manager REST API-val. Ezért azt is használható a Powershell használatával a Resource Manager egy parancsmagjához, valamint az Azure CLI-n keresztül.
+
 
 > [!NOTE]
 > Riasztások a Log Analytics használatával az örökölt is kezelhetők [Log Analytics Alert API](../../azure-monitor/platform/api-alerts.md) és az örökölt sablonok [Log Analytics mentett keresések és a riasztások](../../azure-monitor/insights/solutions-resources-searches-alerts.md) is. Az új alapértelmezés szerint itt részletes ScheduledQueryRules API segítségével további információkért lásd: [átkapcsolni új API-t a Log Analytics-riasztásokkal](alerts-log-api-switch.md).
 
+Riasztások jelenleg nem rendelkezik dedikált PowerShell vagy parancssori felület parancsai jelenleg; azonban az alábbi képen szemléltetett módon használható az Azure Resource Manager PowerShell-parancsmag használatával a korábban bemutatott erőforrás sablon (sampleScheduledQueryRule.json) minta a [erőforrás sablonszakasznak](#azure-resource-template-for-application-insights) :
 
-Naplóriasztások jelenleg; nem rendelkezik dedikált PowerShell vagy parancssori felület parancsai azonban az alábbi képen szemléltetett módon használható az Azure Resource Manager PowerShell-parancsmag használatával a minta a korábban bemutatott erőforrás sablon (sampleScheduledQueryRule.json) az erőforrás-sablon szakaszban:
 ```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName "contosoRG" -TemplateFile "D:\Azure\Templates\sampleScheduledQueryRule.json"
+New-AzResourceGroupDeployment -ResourceGroupName "contosoRG" -TemplateFile "D:\Azure\Templates\sampleScheduledQueryRule.json"
 ```
 
 Az alábbi ábra szemlélteti a használati minta erőforrás sablon korábban bemutatott (sampleScheduledQueryRule.json) az Azure CLI Azure Resource Manager parancs-n keresztül az erőforrás-sablon szakaszban:
 
 ```azurecli
 az group deployment create --resource-group contosoRG --template-file sampleScheduledQueryRule.json
-```
+On successful operation, 201 will be returned to state new alert rule creation or 200 will be returned if an existing alert rule was modified.
 
-Sikeres művelet esetén 201-es állapot új riasztási szabály létrehozása ad vissza, vagy a 200-as vissza kell adni, ha egy meglévő riasztási szabályt módosítva lett.
+## Next steps
 
-## <a name="next-steps"></a>További lépések
-
-* Ismerje meg [Naplóriasztások az Azure-riasztások](../../azure-monitor/platform/alerts-unified-log.md)
-* Megismerheti [naplóriasztásokra vonatkozó Webhook-műveletek](../../azure-monitor/platform/alerts-log-webhook.md)
-* Tudjon meg többet [Application Insights](../../azure-monitor/app/analytics.md)
-* Tudjon meg többet [Log Analytics](../../azure-monitor/log-query/log-query-overview.md).
+* Learn about [Log Alerts in Azure Alerts](../../azure-monitor/platform/alerts-unified-log.md)
+* Understand [Webhook actions for log alerts](../../azure-monitor/platform/alerts-log-webhook.md)
+* Learn more about [Application Insights](../../azure-monitor/app/analytics.md)
+* Learn more about [Log Analytics](../../azure-monitor/log-query/log-query-overview.md).

@@ -1,7 +1,7 @@
 ---
 title: Tartalom indexelése az Azure Table storage, az Azure Search – a teljes szöveges keresés
 description: Ismerje meg az Azure Search indexelők az Azure Table storage-ban tárolt adatok indexelése.
-ms.date: 10/17/2018
+ms.date: 03/01/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 9532f4331b4dbbc8d687778b29f63179cca6b4d4
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: e1b411ab54a5b666849893ba9d246eff85e7e54e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632959"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57306884"
 ---
 # <a name="index-azure-table-storage-with-azure-search"></a>Az Azure Search szolgáltatással az Azure Table storage indexelése
 Ez a cikk bemutatja, hogyan használhatja az Azure Search index, az Azure Table storage-ban tárolt adatok.

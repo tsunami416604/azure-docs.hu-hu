@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 12/19/2018
-ms.openlocfilehash: b8001729c85c8447ab22bafffe24a32524a0662a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 03/05/2019
+ms.openlocfilehash: 99200e521ea844d20ef00ef70ad65ac0ab3bcddd
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53714695"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337294"
 ---
 # <a name="faq-about-using-the-azure-database-migration-service"></a>Az Azure Database Migration Service használatával kapcsolatos gyakori kérdések
 Ez a cikk felsorolja az Azure Database Migration Service kapcsolódó válaszokat és használatával kapcsolatos gyakori kérdésekre.
@@ -90,7 +90,7 @@ Több Microsoft-oktatóprogram végigvezeti az egy Azure virtuális hálózat be
 Ha a felhasználónak explicit módon leállítja az Azure Database Migration Service (DMS), vagy ha egy 24 órás időszakban a szolgáltatás inaktív, a szolgáltatás el egy leállított vagy szüneteltetett állapot automatikus. Minden esetben a szolgáltatás nem érhető el, és a egy leállított állapotban lesz.  Az aktív-migrálások folytatásához, indítsa újra a szolgáltatást.
 
 ### <a name="q-where-can-i-leave-feedback-about-the-azure-database-migration-service"></a>K. Ahol hagyhatja az Azure Database Migration Service visszajelzést?
-Szívesen meghallgatnánk a véleményét. Küldjön visszajelzést és / ötleteire van az Azure Database Migration Service User Voice, keresztül kapcsolatban [Itt](https://feedback.azure.com/forums/906100-azure-database-migration-service).
+Szívesen meghallgatnánk a véleményét. . Küldje el visszajelzését, és / ötleteire van az Azure Database Migration Service User Voice, keresztül kapcsolatban [Itt](https://feedback.azure.com/forums/906100-azure-database-migration-service), vagy kapcsolatba lép a csapatának [kérje meg az Azure adatbázis-Migrálási](mailto:AskAzureDatabaseMigrations@service.microsoft.com).
 
 ## <a name="next-steps"></a>További lépések
 Az Azure Database Migration Service és a régiónkénti rendelkezésre állás áttekintését lásd: a cikk [Mi az az Azure Database Migration Service](dms-overview.md). 

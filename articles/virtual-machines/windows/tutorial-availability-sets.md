@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 3ee9740f9ef7e364c47bb205315683d1e4ea9294
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: f71bfa39e4ded0ea300cc2d329c442fdc6ddec37
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977125"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309077"
 ---
 # <a name="tutorial-create-and-deploy-highly-available-virtual-machines-with-azure-powershell"></a>Oktatóanyag: Hozzon létre, és az Azure PowerShell használatával magas rendelkezésre állású virtuális gépek üzembe helyezése
 
@@ -38,7 +38,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="availability-set-overview"></a>Rendelkezésre állási csoport – áttekintés
 
-Rendelkezésre állási csoportban egy logikai csoportosítási funkció egymástól a virtuális gép feladatában felderítéséhez használt telepítésekor. Az Azure gondoskodik arról, hogy a virtuális gépek elhelyezésekor rendelkezésre állási csoportba több fizikai kiszolgálón futtassa, állványokon, tárolási egységben és hálózati kapcsolók számítási. Egy hardveres vagy szoftveres hiba történik, ha a virtuális gépeknek csak egy részhalmazát érinti, és a teljes megoldás működési marad. A rendelkezésre állási csoportok nélkülözhetetlenek a megbízható felhőalapú megoldások létrehozásához.
+Rendelkezésre állási csoportban egy logikai csoportosítási funkció, Virtuálisgép-erőforrások egymástól felderítéséhez használt telepítésekor. Az Azure gondoskodik arról, hogy a virtuális gépek elhelyezésekor rendelkezésre állási csoportba több fizikai kiszolgálón futtassa, állványokon, tárolási egységben és hálózati kapcsolók számítási. Egy hardveres vagy szoftveres hiba történik, ha a virtuális gépeknek csak egy részhalmazát érinti, és a teljes megoldás működési marad. A rendelkezésre állási csoportok nélkülözhetetlenek a megbízható felhőalapú megoldások létrehozásához.
 
 Vegyünk például egy tipikus virtuálisgép-alapú megoldást négy előtérbeli webkiszolgálóval és két háttérbeli virtuális géppel. Az Azure-ban két rendelkezésre állási csoportok meghatározására a virtuális gépek üzembe helyezése előtt érdemes: egyet a webes szint és a egy vissza szintjéhez. Amikor létrehoz egy új virtuális Gépet, adja meg a rendelkezésre állási csoportot paraméterként. Az Azure biztosítja, hogy a virtuális gépek legyenek különítve több fizikai hardvererőforráson. A fizikai hardver, amely egyik kiszolgálóján fut-e hibásan működik, ha ismeri a többi példány a kiszolgálók úgy működik tovább, mert azok más hardveren.
 

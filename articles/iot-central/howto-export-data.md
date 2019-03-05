@@ -8,12 +8,12 @@ ms.date: 12/07/2018
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: cba0bad2e81ffddedfc4ca04e82e17e4286b389b
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: ecfd9671587c0544cf82aa7ddbccef975e1fe5c6
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312119"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310420"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Exportálhatja az adatokat az Azure IoT Central
 
@@ -28,13 +28,13 @@ Ez a cikk bemutatja, hogyan használható a folyamatos exportálás funkció az 
 
 - Egy rendszergazdának kell lennie az IoT-központ alkalmazásában
 
-## <a name="export-to-blob-storage"></a>Blob Storage-bA exportálása
+## <a name="export-to-blob-storage"></a>Exportálás a Blob Storage-ba
 
 Mértékek, eszközök és sablonok eszközadatok lesznek exportálva az percenként egyszer, a tárfiók az egyes fájlt, amely tartalmazza a változások a batch, mivel az utolsó exportált fájl. Az exportált adatok [Apache AVRO](https://avro.apache.org/docs/current/index.html) formátumban.
 
 Tudjon meg többet [exportálása a Blob storage](howto-export-data-blob-storage.md).
 
-## <a name="export-to-event-hubs-and-service-bus"></a>Az Event Hubs és a Service Bus exportálása
+## <a name="export-to-event-hubs-and-service-bus"></a>Exportálás az Event Hubsba és a Service Busba
 
 Mértékek, eszközök és eszközadatok sablonok exportálja az event hubs vagy a Service Bus-üzenetsorba vagy témakörbe. Exportált mérések adatok közel valós idejű érkezik, és tartalmazza a teljes az üzenetet küld az IoT-központ, az eszközök nem csak a maguk mérések értékeinek. Exportált eszközök adatok percenként kötegekben érkezik, és tulajdonságokat és beállításokat az összes eszköz módosításokat tartalmaz, és exportált eszközsablonok összes eszközsablonok módosításokat tartalmaz.
 
@@ -49,7 +49,7 @@ Ha nem rendelkezik egy meglévő tároló/Event Hubs/Service Bus exportálása, 
 
 1. Hozzon létre egy [új storage-fiókot az Azure Portalon](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). További a [Azure Storage-docs](https://aka.ms/blobdocscreatestorageaccount).
 2. Adja meg a fiók típusú tárfiók, **általános célú** vagy **a Blob storage-**.
-3. Válasszon egy előfizetést. 
+3. Válasszon előfizetést. 
 
     > [!Note] 
     > Most már exportálhatja az adatokat más előfizetésekre, amelyek **nem azonos** azzal, az utólagos elszámolású IoT Central alkalmazáshoz. Ebben az esetben a kapcsolati karakterlánc használatával csatlakozik.
@@ -59,7 +59,7 @@ Ha nem rendelkezik egy meglévő tároló/Event Hubs/Service Bus exportálása, 
 ### <a name="create-event-hubs-namespace"></a>Event Hubs-névtér létrehozása
 
 1. Hozzon létre egy [új Event Hubs-névtér az Azure Portalon](https://ms.portal.azure.com/#create/Microsoft.EventHub). További a [Azure Event Hubs docs](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
-2. Válasszon egy előfizetést. 
+2. Válasszon előfizetést. 
 
     > [!Note] 
     > Most már exportálhatja az adatokat más előfizetésekre, amelyek **nem azonos** azzal, az utólagos elszámolású IoT Central alkalmazáshoz. Ebben az esetben a kapcsolati karakterlánc használatával csatlakozik.
@@ -68,7 +68,7 @@ Ha nem rendelkezik egy meglévő tároló/Event Hubs/Service Bus exportálása, 
 ### <a name="create-service-bus-namespace"></a>A Service Bus-névtér létrehozása
 
 1. Hozzon létre egy [új Service Bus-névteret, az Azure Portalon](https://ms.portal.azure.com/#create/Microsoft.ServiceBus.1.0.5) . További a [Azure Service Bus docs](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-create-namespace-portal).
-2. Válasszon egy előfizetést. 
+2. Válasszon előfizetést. 
 
     > [!Note] 
     > Most már exportálhatja az adatokat más előfizetésekre, amelyek **nem azonos** azzal, az utólagos elszámolású IoT Central alkalmazáshoz. Ebben az esetben a kapcsolati karakterlánc használatával csatlakozik.
@@ -81,14 +81,14 @@ Most, hogy a tárolási és Event Hubs és a Service Bus cél exportálhatja az 
 
 1. Jelentkezzen be az IoT Central alkalmazáshoz.
 
-2. A bal oldali menüben kattintson a **folyamatos adatexportálás**.
+2. A bal oldali menüben válassza ki a **folyamatos adatexportálás**.
 
     > [!Note]
     > Ha nem látja a folyamatos adatexportálás bal oldali menüben lévő, Ön nem rendszergazda az alkalmazásban. Kérdezze meg a rendszergazda állíthatja be az adatok exportálása.
 
     ![Új cde Eseményközpont létrehozása](media/howto-export-data/export_menu.PNG)
 
-3. Kattintson a **+ új** gombra a jobb felső sarokban. Válasszon egyet az **Azure Blob Storage**, **Azure Event Hubs**, vagy **Azure Service Bus** az exportálás céljaként. 
+3. Válassza ki a **+ új** gombra a jobb felső sarokban. Válasszon egyet az **Azure Blob Storage**, **Azure Event Hubs**, vagy **Azure Service Bus** az exportálás céljaként. 
 
     > [!NOTE] 
     > Export alkalmazásonként maximális száma öt. 
@@ -107,10 +107,10 @@ Most, hogy a tárolási és Event Hubs és a Service Bus cél exportálhatja az 
 
 5. (Nem kötelező) Ha úgy döntött **adjon meg egy kapcsolati karakterláncot**, egy új mező jelenik meg, hogy illessze be a kapcsolati karakterláncot. Kapcsolati karakterláncára beolvasni a:
     - Storage-fiókot, nyissa meg a Storage-fiókba az Azure Portalon.
-        - A **beállítások**, kattintson a **hozzáférési kulcsok**
+        - A **beállítások**válassza **hozzáférési kulcsok**
         - 1. kulcs kapcsolati karakterláncát vagy a 2. kulcs kapcsolati karakterlánc másolása
     - Az Event Hubs vagy a Service Bus, nyissa meg a névteret, az Azure Portalon.
-        - A **beállítások**, kattintson a **megosztott hozzáférési házirendek**
+        - A **beállítások**válassza **megosztott hozzáférési házirendek**
         - Válassza ki az alapértelmezett **RootManageSharedAccessKey** , vagy hozzon létre egy újat
         - Vagy az elsődleges vagy másodlagos kapcsolati karakterlánc másolása
  

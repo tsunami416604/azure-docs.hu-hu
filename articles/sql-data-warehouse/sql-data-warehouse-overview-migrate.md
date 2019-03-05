@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: 464f3768ec6bd679513e7817d1b5185787094044
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 04c921282d3591e7326d326c230bf72e7f5c1812
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461305"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313021"
 ---
 # <a name="migrate-your-solution-to-azure-sql-data-warehouse"></a>Megoldás áttelepítése az Azure SQL Data warehouse-bA
 Tekintse meg az Azure SQL Data Warehouse-ba való migrálás egy meglévő adatbázis-megoldás vesz részt. 
@@ -72,4 +72,4 @@ A CAT (Ügyféltanácsadói csapatának) is rendelkezik néhány nagyszerű az S
 <!--MSDN references-->
 
 <!--Other Web references-->
-[Migrating data to Azure SQL Data Warehouse in practice]: https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/
+[Migrating data to Azure SQL Data Warehouse in practice]: https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/

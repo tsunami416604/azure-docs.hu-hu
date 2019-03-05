@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 8d638743b3cb07b0d060e754ecb76e74bd02719d
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 512956d2de0f9a838cc6378345a334e489d1d120
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57215013"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57306867"
 ---
 # <a name="trigger-azure-functions-using-webhooks-in-azure-iot-central"></a>Az Azure IoT Central webhookok használata az Azure Functions aktiválása
 
@@ -31,7 +31,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
     ![Új függvényalkalmazás létrehozása az Azure Portalon](media/howto-trigger-azure-functions/createfunction.png)
 
-2. Bontsa ki a függvényalkalmazást, és kattintson a **+ gomb** funkciók mellett. Ha ez az első függvény a függvényalkalmazásban, jelölje ki az **Egyéni függvény** lehetőséget. Ez megjeleníti a függvénysablonok teljes készletét.
+2. Bontsa ki a függvényalkalmazást, és válassza ki a **+ gomb** funkciók mellett. Ha ez az első függvény a függvényalkalmazásban, jelölje ki az **Egyéni függvény** lehetőséget. Ez megjeleníti a függvénysablonok teljes készletét.
 
     ![Válasszon függvényalkalmazást egyéni függvény](media/howto-trigger-azure-functions/customfunction.png)
 
@@ -39,7 +39,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
     ![Általános webhook-eseményindító kiválasztása](media/howto-trigger-azure-functions/genericwebhooktrigger.png)
 
-4. Az új függvényben kattintson a **</> Függvény URL-címének lekérése** elemre, majd másolja és mentse az értéket. Erre az értékre a webhook konfigurálásához lesz szükség.
+4. Válassza ki az új függvényben **<> / Get függvény URL-Címének**, majd másolja és mentse az értéket. Erre az értékre a webhook konfigurálásához lesz szükség.
 
     ![A függvény URL-címére](media/howto-trigger-azure-functions/getfunctionurl.png)
 
@@ -49,7 +49,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
     ![A visszahívási URL-cím mezőben adja meg a függvény URL-címe](media/howto-trigger-azure-functions/configurewebhook.PNG)
 
-6. A szabály mentéséhez. Most már a szabály akkor lesz kiváltva, ha a webhook hív meg, a függvényalkalmazás futtatásához. A függvényalkalmazásban, kattintson **figyelő** a függvény meghívási előzményeinek megtekintéséhez. Az App Insights vagy a klasszikus nézet segítségével tekintse meg az előzményeket.
+6. A szabály mentéséhez. Most már a szabály akkor lesz kiváltva, ha a webhook hív meg, a függvényalkalmazás futtatásához. A függvényalkalmazásban, kiválaszthatja a **figyelő** a függvény meghívási előzményeinek megtekintéséhez. Az App Insights vagy a klasszikus nézet segítségével tekintse meg az előzményeket.
 
     ![A függvény meghívási előzményeinek figyelése](media/howto-trigger-azure-functions/monitorfunction.PNG)
 

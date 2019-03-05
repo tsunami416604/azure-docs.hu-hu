@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/15/2018
+ms.date: 02/27/2019
 ms.author: markvi
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8dad650ac1cc7ab8822925a4a9759b68ee0d0088
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b4015f99e9281285c530c6ae40dbda4e97846af8
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185998"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311033"
 ---
 # <a name="how-to-set-up-sharepoint-online-and-exchange-online-for-azure-active-directory-conditional-access"></a>kézikönyv: Az Azure Active Directory feltételes hozzáférés beállítása a SharePoint Online és Exchange online-hoz 
 
@@ -77,7 +77,7 @@ Feltételes hozzáférési szabályzatok beállítása az Exchange online-hoz, h
 
 Míg az Exchange Active Sync szolgáltatással támogatja a modern hitelesítést, akkor korlátozásokba vonatkozó feltételes hozzáférési forgatókönyvek támogatása:
 
-- Csak lehet beállítani az eszköz platformok feltétel  
+- Kiválasztásakor **Exchange Active Sync ügyfelek** a szabályzatot, az egyéb feltételeket nem lehet konfigurálni.  
 
     ![Eszközplatformok](./media/conditional-access-for-exo-and-spo/05.png)
 
@@ -93,7 +93,7 @@ Hatékony védelmére a hozzáférést az Exchange online-hoz az Exchange Active
 
     ![Feltételes hozzáférés](./media/conditional-access-for-exo-and-spo/04.png)
 
-    b. Válassza ki **Exchange Active Sync** , **ügyfélalkalmazás**, majd válassza ki **házirend alkalmazása csak a támogatott platformok**.  
+    b. Válassza ki **Exchange Active Sync** , **ügyfélalkalmazás**.  
 
     ![Eszközplatformok](./media/conditional-access-for-exo-and-spo/03.png)
 

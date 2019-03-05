@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 15d85d30f73a9880a6a68a62ab208bb0bdbf5402
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 325df38cfea0c87cda8b7fb5ab37dca4a6a529fd
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53788038"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315673"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Vész-helyreállítási a helyszíni Hyper-V virtuális gépek az Azure-támogatási mátrixa
 
@@ -33,8 +33,8 @@ A Hyper-V Virtual Machine Manager nélkül | Vészhelyreállítás az Azure-bA v
 
 **Kiszolgáló** | **Követelmények** | **Részletek**
 --- | --- | ---
-A Hyper-V (fut a Virtual Machine Manager nélkül) | A Windows Server 2016 (beleértve server core telepítés), Windows Server 2012 R2 legújabb frissítéseit | A virtuális gépek Windows Server 2016 rendszerű gazdagépen található egy másik helyre történő helyreállítás nem támogatott.<br/><br/> Ha már konfigurálta a Windows Server 2012 R2 és / vagy SCVMM 2012 R2-ben az Azure Site Recovery és az operációs rendszer verziófrissítéséhez terv kövesse az útmutatást [dokumentáció.](upgrade-2012R2-to-2016.md) 
-A Hyper-V (fut a Virtual Machine Manager) | Virtual Machine Manager 2016-Virtual Machine Manager 2012 R2-ben | Virtual Machine Manager használata esetén a Windows Server 2016-gazdagépeket a Virtual Machine Manager 2016-ban kell kezelni.<br/><br/>
+A Hyper-V (fut a Virtual Machine Manager nélkül) | A Windows Server 2016 (beleértve server core telepítés), Windows Server 2012 R2 legújabb frissítéseit | Ha már konfigurálta a Windows Server 2012 R2 és / vagy SCVMM 2012 R2-ben az Azure Site Recovery és az operációs rendszer verziófrissítéséhez terv kövesse az útmutatást [dokumentáció.](upgrade-2012R2-to-2016.md) 
+A Hyper-V (fut a Virtual Machine Manager) | Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 | Virtual Machine Manager használata esetén a Windows Server 2016-gazdagépeket a Virtual Machine Manager 2016-ban kell kezelni.<br/><br/>
 
 
 ## <a name="replicated-vms"></a>A replikált virtuális gépek
@@ -66,8 +66,8 @@ Gazdagép-hálózat: IPv6 | Nem | Nem
 Vendég Virtuálisgép-hálózat: A hálózati adapterek összevonása | Nem | Nem
 Vendég Virtuálisgép-hálózat: IPv4 | Igen | Igen
 Vendég Virtuálisgép-hálózat: IPv6 | Nem | Igen
-Vendég Virtuálisgép-hálózat: Statikus IP-cím (Windows) | Igen | Igen
-Vendég Virtuálisgép-hálózat: Statikus IP-cím (Linux) | Nem | Nem
+Vendég Virtuálisgép-hálózat: Static IP (Windows) | Igen | Igen
+Vendég Virtuálisgép-hálózat: Static IP (Linux) | Nem | Nem
 Vendég Virtuálisgép-hálózat: Multi-NIC | Igen | Igen
 
 
@@ -95,7 +95,7 @@ Gyorsított hálózatkezelés | Nem | Nem
 NFS | NA | NA
 SMB 3.0 | Igen | Igen
 TÁROLÓHÁLÓZAT (ISCSI) | Igen | Igen
-Több elérési út (MPIO). Tesztelték:<br></br> A Microsoft DSM-et, EMC PowerPath 5.7 SP4<br/><br/> EMC PowerPath DSM CLARiiON számára | Igen | Igen
+Több elérési út (MPIO). Tesztelték:<br></br> Microsoft DSM, EMC PowerPath 5.7 SP4<br/><br/> EMC PowerPath DSM CLARiiON számára | Igen | Igen
 
 ## <a name="hyper-v-vm-guest-storage"></a>A Hyper-V virtuális gép vendég storage
 
@@ -162,7 +162,7 @@ FC-lemez | Nem támogatott | Előfeltételek ellenőrzése sikertelen, ha nem t�
 Merevlemez formátuma | VHD <br/><br/> VHDX | A Site Recovery automatikusan átalakítja a VHDX VHD-t, ha átadja a feladatokat az Azure-bA. Visszaadja a feladatokat a helyszíni, ha a virtuális gépek továbbra is a VHDX formátumot használja.
 BitLocker | Nem támogatott | A BitLocker egy virtuális gép a replikáció engedélyezése előtt le kell tiltani.
 a virtuális gép neve | 1 és 63 karakter között. Csak betűket, számokat és kötőjelet tartalmazhat. A virtuális gép nevének betűvel vagy számmal kell kezdődnie és végződnie. | Frissítse az értéket a virtuális gép tulajdonságait, a Site Recoveryben.
-Virtuális gép típusa | Az 1.<br/><br/> Windows – a 2. generációs | 2. generációs virtuális gépek egy operációs rendszer lemez típusa (amely tartalmaz egy vagy két adatkötetek VHDX formátumú) az alapszintű és a kevesebb mint 300 GB méretű lemezterület is támogatottak.<br></br>Linux rendszerű Generation 2 virtuális gépek nem támogatottak. [További információk](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
+Virtuális gép típusa | Az 1.<br/><br/> Generation 2--Windows | 2. generációs virtuális gépek egy operációs rendszer lemez típusa (amely tartalmaz egy vagy két adatkötetek VHDX formátumú) az alapszintű és a kevesebb mint 300 GB méretű lemezterület is támogatottak.<br></br>Linux rendszerű Generation 2 virtuális gépek nem támogatottak. [További információk](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
 
 ## <a name="recovery-services-vault-actions"></a>Recovery Services vault műveletek
 

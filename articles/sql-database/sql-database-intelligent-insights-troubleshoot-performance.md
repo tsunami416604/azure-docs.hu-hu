@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 34e4371902095c5802bf4fc180e09ce189c110fc
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: fff4aa947f878974d2d0f18f373b8c0917ed7d70
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214010"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316048"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Intelligent Insights az Azure SQL Database teljesítménnyel kapcsolatos problémáinak elhárítása
 
@@ -73,7 +73,7 @@ A diagnosztikai napló jelenít meg, hogy a teljesítmény- és erőforrás-hasz
 
 Ha elérte a rendelkezésre álló munkamenet korlátai, optimalizálhatja az alkalmazások csökkentésével az adatbázison végrehajtott bejelentkezések száma. Ha nem sikerül csökkentése érdekében a bejelentkezések száma az adatbázishoz az alkalmazásokból, érdemes megfontolni a tarifacsomagot az adatbázis. Vagy felosztása, és az adatbázis helyezze át a több-több elosztott terhelésű számítási feladatok terjesztési adatbázist.
 
-További javaslatokért feloldásáról a munkamenet-korlátok, lásd: [a korlátokat, az SQL Database legnagyobb bejelentkezések kezelése](https://blogs.technet.microsoft.com/latam/2015/06/01/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/). Lásd: [erőforrás áttekintése korlátozza az SQL Database-kiszolgálón](sql-database-resource-limits-database-server.md) kapcsolatos korlátozásokat a kiszolgálók és az előfizetés szintjén.
+További javaslatokért feloldásáról a munkamenet-korlátok, lásd: [a korlátokat, az SQL Database legnagyobb bejelentkezések kezelése](https://blogs.technet.microsoft.com/latam/20../../how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/). Lásd: [erőforrás áttekintése korlátozza az SQL Database-kiszolgálón](sql-database-resource-limits-database-server.md) kapcsolatos korlátozásokat a kiszolgálók és az előfizetés szintjén.
 
 ## <a name="workload-increase"></a>Számítási feladatok növekedése
 
@@ -109,7 +109,7 @@ Optimalizálja, vagy távolítsa el a írnokok a legmagasabb memóriahasználat 
 
 A számítási feladatok optimalizálása vagy szétosztása több adatbázis is csökkentheti. Vagy juttathatja el a számítási feladatok több adatbázis között. Ha ezek a megoldások nem lehetséges, érdemes megfontolni az SQL adatbázis-előfizetés növeléséhez, az adatbázis számára elérhető memória-erőforrások tarifacsomagja.
 
-További hibaelhárítási javaslatokat, lásd: [memória meditation biztosít: Az SQL Server frusztráló memória fogyasztói több névvel](https://blogs.msdn.microsoft.com/sqlmeditation/2013/01/01/memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/).
+További hibaelhárítási javaslatokat, lásd: [memória meditation biztosít: Az SQL Server frusztráló memória fogyasztói több névvel](https://blogs.msdn.microsoft.com/sqlmeditation/20../../memory-meditation-the-mysterious-sql-server-memory-consumer-with-many-names/).
 
 ## <a name="locking"></a>Zárolás
 
@@ -259,7 +259,7 @@ A cserélhető eszközként észlelhetőnek teljesítmény minta egyesíti a há
 
 Az új csomag regressziós feltétel olyan állapotban, amelyben az SQL Database elindul egy új lekérdezés végrehajtási terv, amely nem annyira hatékony, mint a régi csomagot végrehajtása hivatkozik. A régi csomagot regressziós feltétel hivatkozik az állapot, amikor az SQL Database vált egy új, hatékonyabb tervet a régi csomagot, amely nem annyira hatékony, mint az új csomag használatával. A meglévő megváltozott tervek munkaterhelés regressziós az állam, amelyben a régi és az új csomagok folyamatosan alternatív, fog több a rossz teljesítményű csomag felé egyenleg hivatkozik.
 
-A terv regressziót további információkért lásd: [Mi az az SQL Server terv regressziós?](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/06/09/what-is-plan-regression-in-sql-server/). 
+A terv regressziót további információkért lásd: [Mi az az SQL Server terv regressziós?](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../what-is-plan-regression-in-sql-server/). 
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -267,7 +267,7 @@ A diagnosztikai napló jelenít meg a lekérdezés a kivonatok, jó terv azonos�
 
 Melyik csomaggal jobb hajt végre az adott lekérdezések, amelyek a megadott lekérdezés kivonatok azonosíthatja, elemezheti. Miután megállapította, hogy melyik csomaggal jobban működik a lekérdezések, manuálisan kényszerítheti. 
 
-További információkért lásd: [megtudhatja, hogyan megakadályozza az SQL Server a terv regressziót](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/04/25/you-shall-not-regress-how-sql-server-2017-prevents-plan-regressions/).
+További információkért lásd: [megtudhatja, hogyan megakadályozza az SQL Server a terv regressziót](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../you-shall-not-regress-how-sql-server-2017-prevents-plan-regressions/).
 
 > [!TIP]
 > Tudta, hogy az SQL Database beépített intelligenciával automatikusan kezelheti a legjobban teljesítő lekérdezések végrehajtási tervét az adatbázisok?

@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: glenga
-ms.openlocfilehash: cc19a2d7641b20a413bbc39efe0d1c5ede362e6d
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 6d4f588a98e519298b91c158b11730a23567aa7f
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734455"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310964"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Az Azure Functions runtime verziók áttekintése
 
@@ -49,7 +49,7 @@ Dönthet úgy, hogy használja inkább a verzió a verzió 1.x futtatókörnyeze
 
 ### <a name="changes-in-triggers-and-bindings"></a>Eseményindítók és kötések változásai
 
-Verzió 2.x meghatározott eseményindítók és kötések az alkalmazás a functions által használt a bővítmények telepítését igényli. A HTTP- és időzítő eseményindítóik, amelyek a bővítmény nem igénylik az egyetlen kivétel.  További információkért lásd: [regisztrálása és a kötési bővítményeket telepítse](./functions-bindings-expressions-patterns.md).
+Verzió 2.x meghatározott eseményindítók és kötések az alkalmazás a functions által használt a bővítmények telepítését igényli. A HTTP- és időzítő eseményindítóik, amelyek a bővítmény nem igénylik az egyetlen kivétel.  További információkért lásd: [regisztrálása és a kötési bővítményeket telepítse](./functions-bindings-register.md).
 
 Vált továbbá néhány módosításával a `function.json` vagy attribútumok verziók között a függvénynek. Ha például az Event Hubs `path` tulajdonság már `eventHubName`. Tekintse meg a [létező kötés táblázat](#bindings) dokumentáció minden kötéshez mutató hivatkozásokat.
 

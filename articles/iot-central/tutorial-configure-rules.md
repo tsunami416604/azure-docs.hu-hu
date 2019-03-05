@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: d7269f61579ce1ffd9a686634effd153837a2f25
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: f6016d594e4d4c869c5b45275c4c0200f7769724
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662984"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57317560"
 ---
 # <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Oktatóanyag: Szabályok és műveletek az eszköz konfigurálása az Azure IoT Central
 
@@ -46,11 +46,11 @@ Az oktatóanyag elkezdése előtt el kell végeznie az [Új eszköztípus defini
 
     ![Csatlakoztatott légkondicionáló oldal](media/tutorial-configure-rules/builderdevicelist1.png)
 
-3. Ha szabályt szeretne hozzáadni a **Szabályok** nézethez, válassza a **Szabályok** lehetőséget, majd kattintson a **Sablon szerkesztése** elemre:
+3. Elindításához a szabály hozzáadása a **szabályok** megtekinteni, válassza a **szabályok** majd **sablon szerkesztése**:
 
     ![Szabályok nézet](media/tutorial-configure-rules/builderedittemplate.png)
 
-4. Küszöbérték-alapú telemetriaszabály létrehozásához kattintson az **Új szabály** lehetőségre majd a **Telemetria** elemre.
+4. Küszöbérték-alapú telemetriai szabály létrehozásához válassza **új szabály**, majd **Telemetriai**.
 
     ![Sablon szerkesztése](media/tutorial-configure-rules/buildernewrule.png)
 

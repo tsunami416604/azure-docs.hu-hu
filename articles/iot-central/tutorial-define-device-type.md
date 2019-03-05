@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 1ed1790d9fe1cdaa8d00b45e0684531984906c7f
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 0e872509b7971adce871daf6967c0fcd1a87e9bc
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661819"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311023"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Oktatóanyag: Az Azure IoT Central alkalmazásban egy új eszköztípus definiálása
 
@@ -118,7 +118,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy új **Csatlakoztat
     ![A légkondicionáló mérései](./media/tutorial-define-device-type/airconmeasurements.png)
 
     > [!NOTE]
-    > Az eszköz vagy az eszközsablon nevének módosításához kattintson az oldal tetején lévő szövegre.
+    > A neve, vagy az eszköz a sablon módosításához válassza a lap tetején lévő szöveg.
 
 5. A hőmérsékleti telemetriamérés hozzáadásához válassza az **Új mérés** elemet. Ezután válassza a **Telemetriát** a mérés típusaként:
 
@@ -187,7 +187,7 @@ Események használatával határozhatja meg az eszköz által küldött, időpo
 
     ![Esemény szimulációjának megtekintése](./media/tutorial-define-device-type/eventview.png)
 
-1. Az eseménnyel kapcsolatos további részletek megtekintéséhez kattintson az eseményre a diagramban:
+1. Az esemény további részleteit, jelölje ki a diagramon az esemény:
 
     ![Eseményadatok megtekintése](./media/tutorial-define-device-type/eventviewdetail.png)
 
@@ -228,7 +228,7 @@ Az állapot használatával meghatározhatja és megjelenítheti az eszköz vagy
 
     ![Állapot szimulációjának megtekintése](./media/tutorial-define-device-type/stateview.png)
 
-4. Abban az esetben, ha az eszköz túl sok adatpontot küld egy rövid időtartam alatt, az állapot mérése más vizualizációval jelenik meg, az alább látható módon. Ha a diagramra kattint, akkor az abba az időszakba eső összes adatpont időrendben jelenik meg. Le is szűkítheti az időtartományt, hogy részletesebben lássa a méréseket.
+4. Abban az esetben, ha az eszköz túl sok adatpontot küld egy rövid időtartam alatt, az állapot mérése más vizualizációval jelenik meg, az alább látható módon. Ha a diagram, akkor az adott időtartamon belül minden adatpontok jelennek időrendi sorrendben. Le is szűkítheti az időtartományt, hogy részletesebben lássa a méréseket.
 
     ![Állapot részleteinek megtekintése](./media/tutorial-define-device-type/stateviewdetail.png)
 
@@ -367,7 +367,7 @@ A _parancsok_ használatával engedélyezheti, hogy az operátor közvetlenül a
 
 1. Navigáljon a **Csatlakoztatott légkondicionáló** eszközsablon **Parancsok** lapjára a sablon szerkesztéséhez. 
 
-1. Kattintson az **Új parancs** elemre, hogy parancsot adjon hozzá az eszközéhez, és megkezdje ez új parancs konfigurálását.
+1. Válassza ki **új parancs** parancs hozzáadása az eszköz és az új parancs konfigurálásának megkezdéséhez.
 
    Igény szerint különféle típusú parancsokat hozhat létre. 
 
@@ -381,7 +381,7 @@ A _parancsok_ használatával engedélyezheti, hogy az operátor közvetlenül a
     | Megjelenítés típusa         | szöveg            |
     | Leírás          | Eszközparancs  |  
 
-    A **Beviteli mezők** **+** elemére kattintva további parancsbemeneteket adhat hozzá a parancshoz.
+    A következő paranccsal további bemenetek kiválasztásával adhat hozzá **+** a **beviteli mezők**.
 
     ![Felkészülés beállítás hozzáadására](media/tutorial-define-device-type/commandsecho1.png)
 
@@ -439,7 +439,7 @@ Most, hogy meghatározta a **Csatlakoztatott légkondicionáló** eszközsablont
 
     Ezután válassza a **Mentés** lehetőséget.
 
-1. Ha a megadott hőmérséklet-beállítást az irányítópulthoz szeretné adni, válassza a **Beállítások és tulajdonságok** lehetőséget. Kattintson a **Hozzáadás/eltávolítás** gombra az irányítópulton látni kívánt beállítások vagy tulajdonságok hozzáadásához. 
+1. Ha a megadott hőmérséklet-beállítást az irányítópulthoz szeretné adni, válassza a **Beállítások és tulajdonságok** lehetőséget. Válassza ki **hozzáadása/eltávolítása** , adja meg a beállításokat, vagy a tulajdonságok, adja meg az irányítópult megtekintéséhez. 
 
     ![Irányítópult összetevői](./media/tutorial-define-device-type/dashboardcomponents4.png)
 

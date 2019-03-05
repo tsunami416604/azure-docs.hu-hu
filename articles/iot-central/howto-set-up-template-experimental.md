@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: b5ec8df9ff08aace69680c188f9ab05e944ce891
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 80c98d151c1b42b0c6106d4fa1af921bbb5ef55f
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734572"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308397"
 ---
 # <a name="set-up-a-device-template-new-ui-design"></a>Állítson be egy eszköz sablont (új felhasználói felület tervezése)
 
@@ -46,7 +46,7 @@ Eszköz sablonból, az operátornak hozhat létre és valódi ventilátor eszkö
 
 1. Keresse meg a **eszközsablonok** lapot.
 
-2. Hozzon létre egy üres sablont, kattintson a **+**, majd írjon be egy nevet, például és **hűtőszekrények** az új eszköz sablon. Válassza ki **létrehozás**:
+2. Hozzon létre egy üres sablont, válassza a **+**, majd írjon be egy nevet, például és **hűtőszekrények** az új eszköz sablon. Válassza ki **létrehozás**:
 
    !["Hűtőszekrények" a sablon nevét az eszköz részleteit tartalmazó oldalra](./media/howto-set-up-template-experimental/devicedetailspage.png)
 
@@ -64,7 +64,7 @@ Mértékek az eszközről az adatokat. Az eszköz a sablon megfelelő az eszköz
 
 ### <a name="create-a-telemetry-measurement"></a>Telemetria mérték létrehozása
 
-Egy új telemetriai mérési hozzáadásához kattintson **+ új mérték**, válassza a **Telemetriai** a mérték, írja be, és adja meg a részleteket az űrlapon.
+Egy új telemetriai mérési hozzáadásához válassza **+ új mérték**, válassza a **Telemetriai** a mérték, írja be, és adja meg a részleteket az űrlapon.
 
 > [!NOTE]
 > Az eszköz sablon egyeznie kell a megfelelő eszköz kódot ahhoz, hogy a telemetria mérés esetén valós eszköz csatlakoztatva van, az alkalmazás megjelenítendő tulajdonságnevek. Végezze el ugyanezt konfigurálásakor beállításait, az eszköztulajdonságok és a parancsok, továbbra is az alábbi szakaszok az eszköz sablon megadására.
@@ -77,14 +77,14 @@ Például egy új hőmérsékleti telemetria mérték is hozzáadhat:
 
 !["A telemetriai adatok létrehozása" űrlapján hőmérséklet mérési adatait](./media/howto-set-up-template-experimental/measurementsform.png)
 
-Miután rákattintott **mentése**, a **hőmérséklet** mérési mérések listájában jelenik meg. Egy rövid ideig a szimulált eszközről érkező hőmérsékleti adatok a Vizualizáció látható.
+Kiválasztása után **mentése**, a **hőmérséklet** mérési mérések listájában jelenik meg. Egy rövid ideig a szimulált eszközről érkező hőmérsékleti adatok a Vizualizáció látható.
 
 > [!NOTE]
 > A telemetriai adatok mérték adattípusa lebegőpontos szám.
 
 ### <a name="create-an-event-measurement"></a>Egy esemény-mérték létrehozása
 
-Egy új esemény mérési hozzáadásához kattintson **+ új mérték** válassza **esemény** mérési típusaként. Adja meg, hogy a **esemény létrehozása** űrlap.
+Egy új esemény mérési hozzáadásához válassza **+ új mérték** válassza **esemény** mérési típusaként. Adja meg, hogy a **esemény létrehozása** űrlap.
 
 Adja meg a **megjelenítendő név**, **mezőnév**, és **súlyossági** az esemény részleteit. Súlyosság három szintjei közül választhat: **Hiba**, **figyelmeztetés**, és **információk**.
 
@@ -96,9 +96,9 @@ Például hozzáadhat egy új **ventilátor Motor hiba** esemény.
 
 !["Esemény létrehozása" űrlapján ventilátor motor esemény részletei](./media/howto-set-up-template-experimental/eventmeasurementsform.png)
 
-Miután rákattintott **mentése**, a **ventilátor Motor hiba** mérték megjelenik a listában a mértékek. Egy rövid ideig láthatja a képi megjelenítés, a szimulált eszközről az eseményadatok.
+Kiválasztása után **mentése**, a **ventilátor Motor hiba** mérési mérések listájában jelenik meg. Egy rövid ideig láthatja a képi megjelenítés, a szimulált eszközről az eseményadatok.
 
-További részletekre kíváncsi egy eseménnyel kapcsolatban, kattintson a diagramra az esemény ikonra:
+További részletekre kíváncsi egy eseménnyel kapcsolatban, kattintson a diagramra a esemény ikonra:
 
 ![A "Ventilátor Motor Error" esemény részletei](./media/howto-set-up-template-experimental/eventmeasurementsdetail.png)
 
@@ -107,21 +107,21 @@ További részletekre kíváncsi egy eseménnyel kapcsolatban, kattintson a diag
 
 ### <a name="create-a-state-measurement"></a>Egy állapot-mérték létrehozása
 
-Új állapot a mérés hozzáadásához kattintson a **+ új mérték** gombra, majd **állapot** mérési típusaként. Adja meg, hogy a **létrehozása állapot** űrlap.
+Új állapot a mérés hozzáadásához válassza a **+ új mérték** gombra, majd **állapot** mérési típusaként. Adja meg, hogy a **létrehozása állapot** űrlap.
 
 Adja meg az adatait **megjelenített név**, **mezőnév**, és **értékek** az állapot. Minden egyes érték is használható, ha az érték jelenik meg, diagramok és táblázatok megjelenített név.
 
 Például hozzáadhat egy új **ventilátor mód** állapota, az eszköz küldhet, két lehetséges értékekkel rendelkező **operációs** és **leállítva**.
 
-| Megjelenítendő név | Mezőnév    |  1. érték   | Megjelenítendő név | 2. érték    |Megjelenítendő név  | 
+| Megjelenítendő név | Mezőnév    |  1. érték   | Megjelenítendő név | 2. érték    |Megjelenítendő név  | 
 | -------------| ------------- |----------- | -------------| -----------| -------------|
 | Ventilátor mód     | fanmode       |  1         | Üzemel    |     0      | Leállítva      |
 
 ![Ventilátor mód részleteit tartalmazó "Szerkesztés állapot" képernyő](./media/howto-set-up-template-experimental/statemeasurementsform.png)
 
-Kattintás után **mentése**, a **ventilátor mód** állapot mérési mérések listájában jelenik meg. Egy rövid, Önnek pedig a szimulált eszközről az állapot adatok a Vizualizáció látható.
+Kiválasztása után **mentése**, a **ventilátor mód** állapot mérési mérések listájában jelenik meg. Egy rövid, Önnek pedig a szimulált eszközről az állapot adatok a Vizualizáció látható.
 
-Az eszköz a kis időtartam túl sok adatpont küld, ha az állapot mértéket egy másik Vizualizáció jelenik meg. Kattintson a diagramra az adatpontok megtekintéséhez időrendi sorrendben meghatározott időszakon belül. Az időtartomány, tekintse meg a diagramon ábrázolt mérését is szűkíthető.
+Az eszköz a kis időtartam túl sok adatpont küld, ha az állapot mértéket egy másik Vizualizáció jelenik meg. Válassza ki a diagram összes adatponttal megtekintéséhez időrendi sorrendben meghatározott időszakon belül. Az időtartomány, tekintse meg a diagramon ábrázolt mérését is szűkíthető.
 
 > [!NOTE]
 > Az állapot mérték adattípusa karakterlánc.
@@ -138,7 +138,7 @@ Három állapota lehet. Az eszköz ezeket az állapotokat az jelenti.
 
 - **Hiba**: Az eszköz hibát adott vissza.
 
-Például hozzáadhat egy új ventilátor sebesség beállítás kattintva **beállítások** , és adjon meg az új **szám** beállítást:
+Például hozzáadhat egy új ventilátor sebesség beállítás kiválasztásával **beállítások** , és adjon meg az új **szám** beállítást:
 
 | Megjelenítendő név  | Mezőnév    |  Egység  | Tizedesjegyek |Kezdeti|
 | --------------| ------------- |---------| ---------|---- |
@@ -198,7 +198,7 @@ Egy alkalmazás tulajdonságként a location tulajdonsághoz hozhat létre az Io
    - **Hely-címként**
    - **A helyen, ahol koordinátái**
 
-4. Kattintson a **Save** (Mentés) gombra. Az operátornak frissítheti a hely értékét a **Device Explorer**.
+4. Kattintson a **Mentés** gombra. Az operátornak frissítheti a hely értékét a **Device Explorer**.
 
 #### <a name="add-location-as-a-device-property"></a>Eszköz-tulajdonságként helyének hozzáadása
 
@@ -231,7 +231,7 @@ Miben különbözik egy parancs egy beállítást?
 
 * **A parancs**: Parancsok használatával azonnal parancsot az eszközön távolról futtatni az IoT-központ. Ha egy eszköz nem kapcsolódik, a parancs túllépi az időkorlátot, és nem sikerül. Ha például szeretné eszköz újraindítása.
 
-Például hozzáadhat egy új **Echo** parancsot választva a **parancsok** fülre, majd kattintson a **+ új parancs**, és az új parancs részleteinek megadása:
+Például hozzáadhat egy új **Echo** parancsot választva a **parancsok** fülre, majd válassza **+ új parancs**, és írja be az új parancs részletei:
 
 | Megjelenítendő név  | Mezőnév | Alapértelmezett időtúllépés | Adattípus |
 | --------------| -----------|---------------- | --------- |

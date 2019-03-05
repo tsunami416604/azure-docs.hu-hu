@@ -11,12 +11,12 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 2/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: aeda7377a2d5d070a2e36126d53f8f5c203a8256
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: d72676d7eaad539fc6e023bc96ccbb16f0958a7a
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991393"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311372"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
@@ -47,7 +47,6 @@ Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások.
 
 + **Új funkciók**
     + Új fogd és vidd tábla szerkesztő élmény a jelentések. Felhasználók oszlop húzhat a tábla területre, ahol a táblázat előnézetét megjelenik a jól. Az oszlopok alakítható át.
-    + Az elküldött ScriptRunConfig futtatások új Futtatás gombra. Felhasználók újra kell futtatni egy meglévő futtatása távoli számítási fürtön a választott eszközükön.
     + Új naplókat megjelenítő
     + Hivatkozások való kísérletezéshez fut, számítási, modelleket, lemezképek és a tevékenységek lapról központi telepítések
 

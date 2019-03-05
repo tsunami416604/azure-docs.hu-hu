@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 92af534642f5e1d56209944a481e244b8cf6207a
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 0de87f1038a7e91e5d66bb579ac7087e75a8db5f
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750096"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308074"
 documentType: LandingData
 title: Felügyelt Azure SQL Database-példány
 metadata:
@@ -81,8 +81,7 @@ sections:
     - html: (Előzetes verzió) Használat <a href="https://aka.ms/managed-instance-failover-groups">földrajzilag elosztott feladatátvételi csoportok</a> adatpéldányok példány egy másik régióban, és győződjön meg arról, hogy az adatai akkor lesznek érhető el, még akkor is, a regionális vészhelyreállítási forgatókönyv.
     - html: (Előzetes verzió) <a href="https://aka.ms/managed-instance-tde-byok">Saját titkosítási kulcsok használata</a> Bár a migrálás a helyszíni adatbázisok, amelyek már rendelkeznek engedélyezve van a transzparens adattitkosítás (TDE).
     - html: Felügyelt példányok védett <a href="sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md">beépített tűzfal</a>.
-    - html: (Előzetes verzió) <a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/2019/01/21/recreate-dropped-database-on-azure-sql-managed-instance/">Hozza létre újra az adatbázisok eldobott</a>.
-    - html: Adatbázis neve sp_renamedb eljárás vagy ALTER DATABASE utasítás használatával.
+    - html: (Előzetes verzió) <a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../recreate-dropped-database-on-azure-sql-managed-instance/">Hozza létre újra az adatbázisok eldobott</a>.
 - title: 5 perces gyors útmutatók
   items:
   - type: paragraph
@@ -106,32 +105,32 @@ sections:
     - title: Új példány létrehozása
       values:
       - href: /azure/sql-database/sql-database-managed-instance-get-started
-      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/11/14/create-azure-sql-managed-instance-using-azure-cli/
-      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/
+      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../create-azure-sql-managed-instance-using-azure-cli/
+      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../quick-start-script-create-azure-sql-managed-instance-using-powershell/
       - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet
     - title: A példány módosítása
       values:
       - href: 
-      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/11/14/modify-azure-sql-database-managed-instance-using-azure-cli/
-      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/05/31/change-size-azure-sql-managed-instance-using-powershell/
+      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../modify-azure-sql-database-managed-instance-using-azure-cli/
+      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../change-size-azure-sql-managed-instance-using-powershell/
       - href: 
     - title: Az Azure hálózati környezet konfigurálása
       values:
       - href: /azure/sql-database/sql-database-managed-instance-get-started
       - href: 
-      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/25/quick-start-script-setup-azure-network-environment-for-azure-sql-managed-instance/
+      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../quick-start-script-setup-azure-network-environment-for-azure-sql-managed-instance/
       - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment
     - title: Időponthoz kötött visszaállítás
       values:
       - href: 
-      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/07/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/
-      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/28/point-in-time-restore-of-a-database-on-azure-sql-managed-instance-using-azurerm-sql-powershell-library
+      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/
+      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../point-in-time-restore-of-a-database-on-azure-sql-managed-instance-using-azurerm-sql-powershell-library
       - href: 
     - title: Adatbázis visszaállítása
       values:
       - href: 
       - href: 
-      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2019/01/21/recreate-dropped-database-on-azure-sql-managed-instance/
+      - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../recreate-dropped-database-on-azure-sql-managed-instance/
       - href: 
 - title: Lépésről lépésre haladó oktatóanyagok és oktatási anyagainak
   items:
@@ -144,11 +143,11 @@ sections:
     - html: Ismerje meg <a href="/azure/sql-database/sql-database-managed-instance-resource-limits">hardverjellemzők és korlátozások</a>, <a href="/azure/sql-database/sql-database-managed-instance-transact-sql-information">Transact-SQL nyelv különbségek</a>, és <a href="/azure/sql-database/sql-database-managed-instance-create-manage">Transact-SQL, PowerShell, az Azure CLI API a felügyelt példánykonfigurálása<a/>.
     - html: <a href="https://medium.com/azure-sqldb-managed-instance/the-ultimate-guide-for-creating-and-configuring-azure-sql-managed-instance-environment-91ff58c0be01">Konfigurálása</a> Azure virtuális hálózat, ahol a felügyelt példány üzembe helyezve.
     - html: <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#validate-and-modify-an-existing-virtual-network">Érvényesítése</a> , hogy a meglévő Azure virtuális hálózat a felügyelt példányok üzembe helyezéséhez használható.
-    - html: Csatlakozzon a példány <a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/21/the-easiest-way-to-create-azure-vm-that-can-access-your-azure-sql-managed-instance/">Azure virtuális gép</a> vagy <a href="/azure/sql-database/sql-database-managed-instance-configure-p2s">pont – hely kapcsolat</a>, vagy <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app">alkalmazások</a>.
-    - html: Győződjön meg arról, hogy az adatbázis áttelepíthető-e használatával <a href="https://www.microsoft.com/download/details.aspx?id=53595">Data Migration Assistant</a> vagy <a href="https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/">adatbázis Kísérletezési Segéd</a>.
+    - html: Csatlakozzon a példány <a href="https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../the-easiest-way-to-create-azure-vm-that-can-access-your-azure-sql-managed-instance/">Azure virtuális gép</a> vagy <a href="/azure/sql-database/sql-database-managed-instance-configure-p2s">pont – hely kapcsolat</a>, vagy <a href="https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app">alkalmazások</a>.
+    - html: Győződjön meg arról, hogy az adatbázis áttelepíthető-e használatával <a href="https://www.microsoft.com/download/details.aspx?id=53595">Data Migration Assistant</a> vagy <a href="https://blogs.msdn.microsoft.com/datamigration/20../../release-database-experimentation-assistant-dea-v2-6/">adatbázis Kísérletezési Segéd</a>.
     - html: Felügyelt példány használatával az adatbázisok életre <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">natív visszaállítási</a> vagy <a href="/azure/dms/tutorial-sql-server-managed-instance-online">Data Migration Service</a>.
     - html: Helyezze át az SSIS-csomagokat a <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure Data Factory</a>, SSAS táblázatos modellek <a href="https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/">Azure Analysis Service</a>, és a jelentéseket az SSRS <a href="https://docs.microsoft.com/business-applications-release-notes/april18/power-bi/service/sql-server-reporting-services-ssrs-reports-power-bi-premium">Power bi Premium</a>.
-    - html: További információ a tárolási réteg <a href="https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c">általános célú csomagban</a> és a alkalmazni <a href="https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose">tárolási teljesítmény ajánlott eljárást és szempontot, általános célú szolgáltatási szinten</a>.
+    - html: További információ a tárolási réteg <a href="https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c">általános célú csomagban</a> és a alkalmazni <a href="https://blogs.msdn.microsoft.com/sqlcat/20../../storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose">tárolási teljesítmény ajánlott eljárást és szempontot, általános célú szolgáltatási szinten</a>.
     - html: Keresse meg az ajánlott eljárásokat és javaslatokat <a href="https://www.youtube.com/watch?v=vO6k05Ox1iI">biztonságossá tétele a-példány</a>.
     - html: További információ <a href="sql-database-howto-managed-instance.md">útmutató végigvezeti a</a> , amelyek alapján beállíthatja a felügyelt példányhoz.
 - title: Leírások

@@ -12,22 +12,23 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 10/31/2016
 ms.author: mbullwin
-ms.openlocfilehash: b94136f063f9d4793ce4c8a03c17454df920af26
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 1da3b71cbb809c92ba3228676f8a47235829b499
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117554"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309536"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>A PowerShell használata riasztások beállításához az Application Insights szolgáltatásban
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Automatizálhatja a konfigurációját [riasztások](../../azure-monitor/app/alerts.md) a [Application Insights](../../azure-monitor/app/app-insights-overview.md).
 
 Emellett akkor is [állítsa be a webhookok automatizálható a riasztás](../../azure-monitor/platform/alerts-webhooks.md).
 
 > [!NOTE]
 > Ha azt szeretné, erőforrások és a riasztások létrehozásához egy időben, érdemes lehet [egy Azure Resource Manager-sablonnal](powershell.md).
->
->
 
 ## <a name="one-time-setup"></a>Egyszeri beállítás
 Ha még nem használta a Powershellt az Azure-előfizetésében előtt:
@@ -42,15 +43,15 @@ Indítsa el az Azure Powershellt, és [csatlakozzon az előfizetéséhez](/power
 
 ```PowerShell
 
-    Add-AzureRmAccount
+    Add-AzAccount
 ```
 
 
 ## <a name="get-alerts"></a>Riasztások beolvasása
-    Get-AzureRmAlertRule -ResourceGroup "Fabrikam" [-Name "My rule"] [-DetailedOutput]
+    Get-AzAlertRule -ResourceGroup "Fabrikam" [-Name "My rule"] [-DetailedOutput]
 
 ## <a name="add-alert"></a>Riasztás hozzáadása
-    Add-AzureRmMetricAlertRule  -Name "{ALERT NAME}" -Description "{TEXT}" `
+    Add-AzMetricAlertRule  -Name "{ALERT NAME}" -Description "{TEXT}" `
      -ResourceGroup "{GROUP NAME}" `
      -ResourceId "/subscriptions/{SUBSCRIPTION ID}/resourcegroups/{GROUP NAME}/providers/microsoft.insights/components/{APP RESOURCE NAME}" `
      -MetricName "{METRIC NAME}" `
@@ -69,7 +70,7 @@ E-mailt kérek a kiszolgáló válasza a HTTP-kérelmekre, több mint 5 perc elt
 
 A GUID azonosító az előfizetés-azonosító (nem a kialakítási kulcsot az alkalmazás).
 
-    Add-AzureRmMetricAlertRule -Name "slow responses" `
+    Add-AzMetricAlertRule -Name "slow responses" `
      -Description "email me if the server responds slowly" `
      -ResourceGroup "Fabrikam" `
      -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `
@@ -83,7 +84,7 @@ A GUID azonosító az előfizetés-azonosító (nem a kialakítási kulcsot az a
 ## <a name="example-2"></a>2. példa
 Az alkalmazástól, amelyben van [a trackmetric() függvény](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric) jelentéséhez "salesPerHour." nevű metrika Küldjön egy e-mailt a munkatársainak, ha 100, alá csökken "salesPerHour" átlagolt 24 órán át.
 
-    Add-AzureRmMetricAlertRule -Name "poor sales" `
+    Add-AzMetricAlertRule -Name "poor sales" `
      -Description "slow sales alert" `
      -ResourceGroup "Fabrikam" `
      -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/Fabrikam/providers/microsoft.insights/components/IceCreamWebApp" `

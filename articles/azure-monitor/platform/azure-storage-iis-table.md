@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 0bb464d1d49438213d2b9a4e937170a075a206f5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9f5948887262ae190547c96aa09318a19f64812e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192395"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57306629"
 ---
 # <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Az Azure blob storage használata az IIS és az Azure table storage-események Log Analytics szolgáltatással
 
@@ -146,7 +146,10 @@ Körülbelül 30 percet, az Ön láthatja az adatokat a Log Analytics a tárfió
 >
 
 ## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection-using-powershell"></a>Engedélyezze az Azure diagnostics egy virtuális gépen az Eseménynapló és az IIS naplót PowerShell-lel
-Szereplő lépések segítségével [indexelése az Azure diagnostics konfigurálása a Log Analytics](../../azure-monitor/platform/powershell-workspace-configuration.md#configuring-log-analytics-to-index-azure-diagnostics) írt a table storage, az Azure diagnostics olvasni a PowerShell használatával.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+Szereplő lépések segítségével [indexelése az Azure diagnostics konfigurálása a Log Analytics](../../azure-monitor/platform/powershell-workspace-configuration.md#configuring-log-analytics-to-collect-azure-diagnostics-from-storage) írt a table storage, az Azure diagnostics olvasni a PowerShell használatával.
 
 Azure PowerShell használatával pontosabban megadhatja az Azure Storage írt események.
 További információkért lásd: [Diagnosztikának az Azure Virtual machines gépeken](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).
@@ -177,7 +180,7 @@ Tekintse át a következő példaszkript, másolja, igény szerint módosítsa, 
 
     #Construct Azure diagnostics private config
 
-    $wad_storage_account_key = (Get-AzureStorageKey $wad_storage_account_name).Primary
+    $wad_storage_account_key = (Get-AzStorageKey $wad_storage_account_name).Primary
     $wad_private_config = [string]::Format("{{""storageAccountName"":""{0}"",""storageAccountKey"":""{1}""}}",$wad_storage_account_name,$wad_storage_account_key)
 
     #Enable Diagnostics Extension for Virtual Machine

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 704c12bc2ea16fcad5672dde4181f63495fbe967
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 07ea18a767044f0f74249859bb46d8285d52d7ab
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56870839"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310182"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Gyűjtése és felhasználása a naplófájlok adatait az Azure-erőforrások
 
@@ -113,12 +113,14 @@ A bérlői diagnosztikai beállítások csak konfigurálható a portál panelén
 
 ### <a name="enable-collection-of-resource-diagnostic-logs-via-powershell"></a>PowerShell erőforrás-diagnosztikai naplók gyűjtésének engedélyezéséhez
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Ahhoz, hogy az erőforrás-diagnosztikai naplók az Azure Powershellen keresztül gyűjteménye, használja a következő parancsokat:
 
 Ahhoz, hogy a diagnosztikai naplókat egy tárfiókban, használja ezt a parancsot:
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
+Set-AzDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
 ```
 
 A tárfiók azonosítója, amelyhez is szeretne küldeni a naplókat a storage-fiók erőforrás-azonosító.
@@ -126,7 +128,7 @@ A tárfiók azonosítója, amelyhez is szeretne küldeni a naplókat a storage-f
 Diagnosztikai naplók egy eseményközpontba streamelésének engedélyezéséhez használja ezt a parancsot:
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your Service Bus rule id] -Enabled $true
+Set-AzDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your Service Bus rule id] -Enabled $true
 ```
 
 A service bus Szabályazonosító egy karakterláncérték, ebben a formátumban: `{Service Bus resource ID}/authorizationrules/{key name}`.
@@ -134,13 +136,13 @@ A service bus Szabályazonosító egy karakterláncérték, ebben a formátumban
 A Log Analytics-munkaterület-diagnosztikai naplók küldése engedélyezéséhez használja ezt a parancsot:
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
+Set-AzDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
 ```
 
 Az erőforrás-Azonosítóját a Log Analytics-munkaterület a következő paranccsal szerezheti be:
 
 ```powershell
-(Get-AzureRmOperationalInsightsWorkspace).ResourceId
+(Get-AzOperationalInsightsWorkspace).ResourceId
 ```
 
 Kombinálhatja ezeket a paramétereket, több kimeneti beállítások engedélyezéséhez.

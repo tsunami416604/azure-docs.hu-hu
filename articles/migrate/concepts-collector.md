@@ -4,15 +4,15 @@ description: A gyűjtőberendezés az Azure Migrate ismerteti.
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 02/04/2019
+ms.date: 03/04/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 0568df92db2114c57a0aa027ade369e4b256af84
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 3d9106fb682a370e18fc78d35ca31662bae44524
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813330"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310641"
 ---
 # <a name="about-the-collector-appliance"></a>A gyűjtőberendezés kapcsolatban
 
@@ -111,7 +111,7 @@ A kapcsolat ellenőrzése az URL-listák való csatlakozással érvényességét
 --- | --- | ---
 *.portal.azure.com | Érvényes globális Azure-bA. Az Azure-szolgáltatás, és időszinkronizálás kapcsolatát ellenőrzi. | Hozzáférés az URL-cím megadása kötelező.<br/><br/> Előfeltételek ellenőrzése sikertelen, ha nincs kapcsolat.
 *.portal.azure.us | Csak az Azure Government alkalmazható. Az Azure-szolgáltatás, és időszinkronizálás kapcsolatát ellenőrzi. | Hozzáférés az URL-cím megadása kötelező.<br/><br/> Előfeltételek ellenőrzése sikertelen, ha nincs kapcsolat.
-*.oneget.org:443<br/><br/> *.windows.net:443<br/><br/> *.windowsazure.com:443<br/><br/> *. powershellgallery.com:443<br/><br/> *.msecnd.net:443<br/><br/> *.visualstudio.com:443| Töltse le a vCenter PowerCLI PowerShell modult használja. | Nem kötelező URL-címek elérését.<br/><br/> Előfeltételek ellenőrzése nem sikerül.<br/><br/> A gyűjtő virtuális gép automatikus modul telepítése sikertelen lesz. A modul telepítése manuálisan kell.
+*.oneget.org:443<br/><br/> *.windows.net:443<br/><br/> *.windowsazure.com:443<br/><br/> *. powershellgallery.com:443<br/><br/> *.msecnd.net:443<br/><br/> *.visualstudio.com:443| Töltse le a vCenter PowerCLI PowerShell modult használja. | URL-címek hozzáférésre szükség.<br/><br/> Előfeltételek ellenőrzése nem sikerül.<br/><br/> A gyűjtő virtuális gép automatikus modul telepítése sikertelen lesz. A modul telepítése manuálisan egy internetkapcsolattal rendelkező gépen, és másolja a modulok a készülék szüksége. [További hibaelhárítási útmutató 4. lépés áttekinthet](https://docs.microsoft.com/azure/migrate/troubleshooting-general#error-unhandledexception-internal-error-occurred-systemiofilenotfoundexception).
 
 
 ### <a name="install-vmware-powercli-module-manually"></a>Telepítse manuálisan a VMware PowerCLI-modul

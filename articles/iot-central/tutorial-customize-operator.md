@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: d10e0b48da497dafe9bb841c68746328e8334c91
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 0f03cdb7f407e0f568b543cc09527bb6a6e4c25a
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57215727"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57317220"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Oktatóanyag: Az Azure IoT Central operátor nézet testreszabása
 
@@ -79,7 +79,7 @@ Szerkesztőként meghatározhatja, milyen információk jelenjenek meg egy eszk�
 
     ![Irányítópult elrendezésének szerkesztése](media/tutorial-customize-operator/dashboardlayout.png)
 
-7. Ha végzett a módosításokkal, kattintson a **Kész** lehetőségre.
+7. Válassza ki **kész** Amikor végzett változtatásokat.
 
 ## <a name="configure-your-settings-layout"></a>A beállítások elrendezésének konfigurálása
 
@@ -93,7 +93,7 @@ Szerkesztőként az eszközbeállítások operátori nézetét is konfigurálhat
 
     ![A beállítások elrendezésének szerkesztése](media/tutorial-customize-operator/settingslayout.png)
 
-3. Ha végzett a módosításokkal, kattintson a **Kész** lehetőségre.
+3. Válassza ki **kész** Amikor végzett változtatásokat.
 
 > [!NOTE]
 > **Sablonszerkesztési** módban nem szerkesztheti a beállítások értékeit.
@@ -110,7 +110,7 @@ Az irányítópult és a beállítások mellett az eszköztulajdonságok operát
 
     ![A tulajdonságok elrendezésének szerkesztése](media/tutorial-customize-operator/propertieslayout.png)
 
-3. Ha végzett a módosításokkal, kattintson a **Kész** lehetőségre.
+3. Válassza ki **kész** Amikor végzett változtatásokat.
 
 > [!NOTE]
 > **Sablonszerkesztési** módban nem szerkesztheti a tulajdonságok értékeit.
@@ -119,7 +119,7 @@ Az irányítópult és a beállítások mellett az eszköztulajdonságok operát
 
 **Sablonszerkesztési** módban testreszabhatja az operátor irányítópult, a beállítások és a tulajdonságok oldalát. Ha nem **Sablonszerkesztési** módban van, operátorként tekintheti meg az alkalmazást.
 
-1. Ha operátorként szeretné megtekinteni a csatlakoztatott légkondicionáló eszközt, kattintson a **Kész** gombra a sablon szerkesztésének leállításához, és térjen vissza az eszköz operátori nézetéhez.
+1. A csatlakoztatott légkondicionálóját eszköz kezelőként megtekintéséhez jelölje ki **kész** leállítani, szerkesztő a sablont, és térjen vissza az eszközt az operátor nézetét.
 
 2. Az eszköz helyének frissítéséhez szerkessze a helycsempén lévő értéket, és válassza a **Mentés** lehetőséget:
 
@@ -142,7 +142,7 @@ Ha a jelentéskészítő vagy operátor jelentkezik be egy Azure IoT Central alk
 > [!NOTE]
 > A felhasználók a saját személyes irányítópultok kialakítása és válasszon egyet az alapértelmezésként is.
 
-1. Testre szabhatja az alapértelmezett irányítópult, keresse meg a **irányítópult** lapot, és kattintson **szerkesztése** felső jobb. Megjelenik egy panel, egy erőforrástár-objektumok is hozzáadhat az irányítópulthoz.
+1. Testre szabhatja az alapértelmezett irányítópult, keresse meg a **irányítópult** lapon, és válassza **szerkesztése** felső jobb. Megjelenik egy panel, egy erőforrástár-objektumok is hozzáadhat az irányítópulthoz.
 
     ![Irányítópult-oldalon](media/tutorial-customize-operator/builderhome.png)
 
@@ -153,7 +153,7 @@ Ha a jelentéskészítő vagy operátor jelentkezik be egy Azure IoT Central alk
     > [!NOTE]
     > Az Azure IoT Central-alkalmazásban lévő oldalakhoz hivatkozásokat is adhat. Hozzáadhatja például egy eszköz irányítópultjának vagy a beállítások oldalának a hivatkozását.
 
-3. Szükség esetén válasszon **kép** és töltsön fel egy képet az irányítópulton megjeleníthető. Kép egy URL-cím, amelyre rákattintva veheti fel:
+3. Szükség esetén válasszon **kép** és töltsön fel egy képet az irányítópulton megjeleníthető. Kép URL-címe, amelyhez lépjen, ha kijelöli veheti fel:
 
     ![Kép hozzáadása az irányítópulthoz](media/tutorial-customize-operator/addimage.png)
 
@@ -165,7 +165,7 @@ Kezelőként az irányítópult megtekintéséhez válassza ki a **kész** fels�
 
 ![A Tervezési mód be- és kikapcsolása](media/tutorial-customize-operator/operatorviewhome.png)
 
-A hivatkozások és a képek csempéire kattintva a szerkesztőként beállított URL-címekre léphet.
+Keresse meg az URL-címeket lehet beállítani egy jelentéskészítő-hivatkozásokon és csempéket is választhat.
 
 ## <a name="next-steps"></a>További lépések
 

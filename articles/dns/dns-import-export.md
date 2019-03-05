@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: victorh
-ms.openlocfilehash: 3dac11ac4409ddde5264307439533bd583d75a9d
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: d41ad3232fef57d1008f1e15d5d7d5ee1e106e9b
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993053"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312647"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Importálása és exportálása a DNS-zónafájl az Azure CLI használatával 
 
@@ -120,7 +120,7 @@ Ellenőrizze a DNS-zóna, a fájl importálása után, az alábbi módszerek bá
 * Használhat `nslookup` a rekordok névfeloldás ellenőrzése. Mivel a zóna még nem delegálta, adja meg a megfelelő Azure DNS névkiszolgálóit, explicit módon kell. A következő minta bemutatja, hogyan kérheti le a zóna névkiszolgálóinak neveit. Ez is bemutatja, hogyan kérdezhet le a "www" rekordhalmazhoz a `nslookup`.
 
     ```azurecli
-    az network dns record-set ns list -g myresourcegroup -z  --output json 
+    az network dns record-set ns list -g myresourcegroup -z contoso.com  --output json 
     ```
 
     ```json

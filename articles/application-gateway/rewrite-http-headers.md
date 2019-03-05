@@ -7,14 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: 2babb6ff7b93ad9cf7c93565cadce9453a3b96ca
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 176e6804e6c98a1b9e9ffe4af04f02748c80928b
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103428"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310905"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>HTTP-fejlécek átfogalmazás az Application Gateway (nyilvános előzetes verzió)
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 HTTP-fejlécek engedélyezése az ügyfél és a kiszolgáló át a kérelem vagy válasz további információkat. Ezek HTTP fejlécek segít, például a biztonsági fejléc számos fontos forgatókönyv újraírását mezők, például HSTS / X-XSS-védelmet, vagy válasz üzenetfejlécének mezői eltávolítása, amely felfedhet bizalmas adatokat, például a háttér-kiszolgáló nevét.
 
@@ -27,7 +29,7 @@ Az Application Gateway mostantól támogatja a bejövő HTTP-kéréseket, valami
 Application Gateway fejléc újraírási támogatási kínálja:
 
 - **Globális fejléce módosítsa úgy**: A kérelmek és válaszok a helyre vonatkozó konkrét fejléceinek módosíthatja.
-- **Fejléc-alapú újraírási**: módosítsa úgy az ilyen típusú lehetővé teszi, hogy a fejléc újraírási csak olyan kérelmek és válaszok, amelyek a projektjükhöz csak az egy adott hely terület, például egy kosár vásárlási területen kimaradásával/bevásárlókocsi / *.
+- **Fejléc-alapú újraírási**: módosítsa úgy az ilyen típusú lehetővé teszi, hogy csak olyan kérelmek és válaszok, amelyek a projektjükhöz csak az egy adott hely terület, például egy kosár vásárlási területen-lel /cart/ fejléc újraírási\*.
 
 Ez a változás a következőket kell tennie:
 
@@ -48,7 +50,7 @@ Módosíthatja a fejlécek értékét:
   *Példa* 
 
   ```azurepowershell-interactive
-  $responseHeaderConfiguration = New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Strict-Transport-Security" -  HeaderValue "max-age=31536000")
+  $responseHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Strict-Transport-Security" -  HeaderValue "max-age=31536000")
   ```
 
 - Egy másik fejléc értékét. 
@@ -56,7 +58,7 @@ Módosíthatja a fejlécek értékét:
   *1. példa:* 
 
   ```azurepowershell-interactive
-  $requestHeaderConfiguration= New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-New-RequestHeader" -HeaderValue {http_req_oldHeader}
+  $requestHeaderConfiguration= New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-New-RequestHeader" -HeaderValue {http_req_oldHeader}
   ```
 
   > [!Note] 
@@ -65,7 +67,7 @@ Módosíthatja a fejlécek értékét:
   *2. példa*:
 
   ```azurepowershell-interactive
-  $responseHeaderConfiguration= New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-New-ResponseHeader" -HeaderValue {http_resp_oldHeader}
+  $responseHeaderConfiguration= New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "X-New-ResponseHeader" -HeaderValue {http_resp_oldHeader}
   ```
 
   > [!Note] 
@@ -76,7 +78,7 @@ Módosíthatja a fejlécek értékét:
   *Példa* 
 
   ```azurepowershell-interactive
-  $requestHeaderConfiguration = New-AzureRmApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Ciphers-Used" -HeaderValue "{var_ciphers_used}"
+  $requestHeaderConfiguration = New-AzApplicationGatewayRewriteRuleHeaderConfiguration -HeaderName "Ciphers-Used" -HeaderValue "{var_ciphers_used}"
   ```
 
   > [!Note] 

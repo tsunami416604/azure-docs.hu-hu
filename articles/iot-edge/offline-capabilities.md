@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 7bf672715b45233807ab848c78aeb1bed2d352e9
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: e82c842ec8fce703c48c98eaf09ea5c8d91be9be
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699346"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57307989"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>Megismerheti a kiterjesztett offline funkcióit az IoT Edge-eszközök, a modulok és a gyermek eszközökön (előzetes verzió)
 
@@ -73,7 +73,7 @@ Robusztusság javítása érdekében javasoljuk, adja meg a környezetében hasz
 
 ```json
 {
-    "dns": [“1.1.1.1”]
+    "dns": ["1.1.1.1"]
 }
 ```
 
@@ -136,7 +136,7 @@ Az Azure Portalon konfigurálhatja a környezeti változók és az IoT Edge hubo
 
 Cserélje le `<HostStoragePath>` és `<ModuleStoragePath>` a gazdagép és a modul tároló elérési útja; gazdagép és a modul. tárolási elérési útja abszolút elérési útnak kell lennie. A létrehozás beállítások kötése a gazdagép és a modul tárolási útvonalat együtt. Ezután hozzon létre egy környezeti változó, amely a modul elérési útja.  
 
-Például `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` azt jelenti, hogy a könyvtár **/etc/iotedge/storage** a gazdagépen futó rendszer le van képezve a címtár **/iotedge/storage/** a tárolón. Vagy egy másik példa a Windows rendszerek esetében `"Binds":["C:\\temp:C:\\contemp]"` azt jelenti, hogy a könyvtár **C:\\temp** a gazdagépen futó rendszer le van képezve a címtár **C:\\contemp** a tárolón. 
+Például `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]` azt jelenti, hogy a könyvtár **/etc/iotedge/storage** a gazdagépen futó rendszer le van képezve a címtár **/iotedge/storage/** a tárolón. Vagy egy másik példa a Windows rendszerek esetében `"Binds":["C:\\temp:C:\\contemp"]` azt jelenti, hogy a könyvtár **C:\\temp** a gazdagépen futó rendszer le van képezve a címtár **C:\\contemp** a tárolón. 
 
 Ugyanitt találhat további információt a beállítások létrehozása [docker docs](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate).
 

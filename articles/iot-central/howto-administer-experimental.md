@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 8989d6ef54961f5f8eea7c6d8c9d941319bd917a
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 8a3e90488558335ca5d186e6ff1dbab6abf5aaee
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57215404"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313174"
 ---
 # <a name="administer-your-iot-central-application"></a>Az IoT-központ alkalmazás felügyelete
 
@@ -46,7 +46,7 @@ Ha módosítani szeretné az alkalmazás rendszerképét, lásd: [előkészíté
 ### <a name="copy-an-application"></a>Alkalmazás másolása
 Minden olyan alkalmazás, bármely eszköz példányok, az adatok eszközelőzmények és a felhasználói adatok mínusz egy másolatát is létrehozhat. A példány egy használatalapú fizetéses alkalmazást, amely akkor kell fizetnie. Ezzel a módszerrel egy próba-alkalmazás nem hozható létre.
 
-Kattintson a **másolási** gombra. A párbeszédpanelen adja meg, hogy az új használatalapú fizetéses alkalmazás. Kattintson a **másolási** gombra annak megerősítéséhez, hogy végre szeretné hajtani. További információ a mezőket az űrlapon található [hozzon létre egy alkalmazást](quick-deploy-iot-central-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) rövid.
+Válassza ki **másolási**. A párbeszédpanelen adja meg, hogy az új használatalapú fizetéses alkalmazás. Válassza ki **másolási** annak ellenőrzéséhez, hogy végre szeretné hajtani. További információ a mezőket az űrlapon található [hozzon létre egy alkalmazást](quick-deploy-iot-central-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) rövid.
 
 ![Alkalmazás-Beállítások lap](media/howto-administer-experimental/appCopy2.png)
 
@@ -130,13 +130,13 @@ Az önkiszolgáló folyamat befejezéséhez kövesse az alábbi lépéseket:
 
     ![Próbaverziós állapota](media/howto-administer-experimental/freetrialbilling.png)
 
-1. Kattintson a **utólagos elszámolású előfizetésre átváltani**.
+1. Válassza ki **utólagos elszámolású előfizetésre átváltani**.
 
     ![Átalakítás próba](media/howto-administer-experimental/convert.png)
 
 1. Válassza ki a megfelelő Azure Active Directoryban, majd az Azure-előfizetés az utólagos elszámolású alkalmazás használatához.
 
-1. Miután rákattintott **konvertálása**, az alkalmazás most már egy használatalapú fizetéses alkalmazást, és számlázandó megkezdése.
+1. Miután kiválasztotta **konvertálása**, az alkalmazás most már egy használatalapú fizetéses alkalmazást, és számlázandó megkezdése.
 
 ## <a name="export-data"></a>Adatok exportálása
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: victorh
-ms.openlocfilehash: 6a671744944527b64aab9a7b9afe05d6a9f2f27f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: b41fbc3e834c7740d435e30a571d2a00671bfa64
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002079"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316404"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>Application Gateway létrehozása az Azure Resource Manager-sablonokkal
 
@@ -125,18 +125,20 @@ A GitHubból letöltheti a meglévő Azure Resource Manager-sablont, amellyel l�
 
 ## <a name="deploy-the-azure-resource-manager-template-by-using-powershell"></a>Az Azure Resource Manager-sablon üzembe helyezése a PowerShell használatával
 
-Ha még sosem használta az Azure PowerShell-lel, keresse fel: [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/overview) és kövesse az utasításokat az Azure-ba való bejelentkezéshez, és válassza ki az előfizetését.
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Ha még nem használta az Azure Powershellt, tekintse meg: [Azure PowerShell telepítése és konfigurálása annak](/powershell/azure/overview) és kövesse az utasításokat az Azure-ba való bejelentkezéshez, és válassza ki az előfizetését.
 
 1. Bejelentkezés a Powershellbe
 
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 
 1. Keresse meg a fiókot az előfizetésekben.
 
     ```powershell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```
 
     A rendszer kérni fogja a hitelesítő adatokkal történő hitelesítést.
@@ -144,19 +146,19 @@ Ha még sosem használta az Azure PowerShell-lel, keresse fel: [telepítése és
 1. Válassza ki, hogy melyik Azure előfizetést fogja használni.
 
     ```powershell
-    Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
+    Select-AzSubscription -Subscriptionid "GUID of subscription"
     ```
 
 1. Szükség esetén hozzon létre egy erőforráscsoportot a **New-AzureResourceGroup** parancsmaggal. A következő példában egy az USA keleti régiójában AppgatewayRG nevű erőforráscsoportot hoz létre.
 
     ```powershell
-    New-AzureRmResourceGroup -Name AppgatewayRG -Location "West US"
+    New-AzResourceGroup -Name AppgatewayRG -Location "West US"
     ```
 
-1. Futtassa a **New-AzureRmResourceGroupDeployment** parancsmagot, hogy az előzőleg letöltött és módosított sablonnal és paraméterfájlokkal üzembe helyezhesse az új virtuális hálózatot.
+1. Futtassa a **New-AzResourceGroupDeployment** parancsmagot, hogy az új virtuális hálózat az előző sablonnal és paraméterfájlokkal üzembe helyezhesse fájljainak letöltött és módosított.
     
     ```powershell
-    New-AzureRmResourceGroupDeployment -Name TestAppgatewayDeployment -ResourceGroupName AppgatewayRG `
+    New-AzResourceGroupDeployment -Name TestAppgatewayDeployment -ResourceGroupName AppgatewayRG `
     -TemplateFile C:\ARM\azuredeploy.json -TemplateParameterFile C:\ARM\azuredeploy-parameters.json
     ```
 
@@ -222,7 +224,7 @@ Ebben a cikkben létrehozott összes erőforrás törléséhez hajtsa végre az 
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-Remove-AzureRmResourceGroup -Name appgatewayRG
+Remove-AzResourceGroup -Name appgatewayRG
 ```
 
 ### <a name="azure-cli"></a>Azure CLI
@@ -233,9 +235,9 @@ az group delete --name appgatewayRG
 
 ## <a name="next-steps"></a>További lépések
 
-Ha SSL-alapú kiszervezést szeretne konfigurálni, tekintse meg a következőt: [Application Gateway konfigurálása SSL-alapú kiszervezéshez](application-gateway-ssl.md).
+Ha azt szeretné, SSL-alapú kiszervezés konfigurálása, látogassa meg: [Konfigurálja az application gateway SSL-alapú kiszervezéshez](application-gateway-ssl.md).
 
-Ha konfigurálni szeretne egy ILB-vel használni kívánt Application Gateway-t: [Application Gateway létrehozása belső terheléselosztóval (ILB)](application-gateway-ilb.md).
+Ha szeretne egy belső terheléselosztó használata application gateway konfigurálása, látogassa meg: [Application gateway létrehozása belső terheléselosztóval (ILB)](application-gateway-ilb.md).
 
 Ha további általános információra van szüksége a terheléselosztás beállításaival kapcsolatban:
 

@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0d49045eea5a65461b142262bae83b9b8e7f84c8
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: ff68bfc9cdd13563fa8f938870742e9e9ceac9c2
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816589"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313259"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Azure-tervek használatával kapcsolatos hibák elhárítása
 
@@ -65,7 +65,7 @@ Tervezet paraméter átadásával, amely függvényt tartalmaz, például `[reso
 
 #### <a name="resolution"></a>Megoldás:
 
-Egy alkalmazáson keresztül működjön paraméterként átadni a teljes karakterláncot escape `[` úgy, hogy néz ki a tervezetparaméter `[[resourceGroup().tags.myTag]`. Az escape-karaktert hatására tervezetek kezelni az érték egy karakterláncot a a tervezet feldolgozásakor. Tervezetek majd helyezi a függvény az összetevőben, lehetővé téve, hogy a várt módon dinamikus.
+Egy alkalmazáson keresztül működjön paraméterként átadni a teljes karakterláncot escape `[` úgy, hogy néz ki a tervezetparaméter `[[resourceGroup().tags.myTag]`. Az escape-karaktert hatására tervezetek kezelni az érték egy karakterláncot a a tervezet feldolgozásakor. Tervezetek majd helyezi a függvény az összetevőben, lehetővé téve, hogy a várt módon dinamikus. További információkért lásd: [sablon fájlstruktúra – szintaxis](../../../azure-resource-manager/resource-group-authoring-templates.md#syntax).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -8,20 +8,22 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: mcollier
 ms.subservice: ''
-ms.openlocfilehash: 707c04c22e54220f3020b5897c364318b427267b
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 2ba0ea64aab67221aa1ee3a87ad35ce7d5516167
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56586593"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310046"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Az Azure Monitoring REST API-forgatókönyv
 
-Ez a cikk bemutatja, hogyan végezhet hitelesítést, így a kód használatával is a [a Microsoft Azure Monitor REST API-referencia](https://msdn.microsoft.com/library/azure/dn931943.aspx).
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+Ez a cikk bemutatja, hogyan végezhet hitelesítést, így a kód használatával is a [a Microsoft Azure Monitor REST API-referencia](https://docs.microsoft.com/rest/api/monitor/).
 
 Az Azure Monitor API lehetővé teszi az elérhető alapértelmezett metrikadefinícióinak granularitási és metrikaértékek programozott módon lekéréséhez. Az adatok menthetők egy külön, például Azure SQL Database, Azure Cosmos DB-hez vagy az Azure Data Lake adattárban. Itt további elemzés végezhető igény szerint.
 
-Mellett számos metrika adatpontok dolgozik, a API is lehetővé teszi a listában a riasztási szabályok Tevékenységnaplók megtekintése és még sok más. Használható műveletek teljes listáját lásd: a [a Microsoft Azure Monitor REST API-referencia](https://msdn.microsoft.com/library/azure/dn931943.aspx).
+Mellett számos metrika adatpontok dolgozik, a API is lehetővé teszi a listában a riasztási szabályok Tevékenységnaplók megtekintése és még sok más. Használható műveletek teljes listáját lásd: a [a Microsoft Azure Monitor REST API-referencia](https://docs.microsoft.com/rest/api/monitor/).
 
 ## <a name="authenticating-azure-monitor-requests"></a>Hitelesítő Azure Monitor-kérelmek
 
@@ -34,24 +36,24 @@ $subscriptionId = "{azure-subscription-id}"
 $resourceGroupName = "{resource-group-name}"
 
 # Authenticate to a specific Azure subscription.
-Connect-AzureRmAccount -SubscriptionId $subscriptionId
+Connect-AzAccount -SubscriptionId $subscriptionId
 
 # Password for the service principal
 $pwd = "{service-principal-password}"
 $secureStringPassword = ConvertTo-SecureString -String $pwd -AsPlainText -Force
 
 # Create a new Azure AD application
-$azureAdApplication = New-AzureRmADApplication `
+$azureAdApplication = New-AzADApplication `
                         -DisplayName "My Azure Monitor" `
                         -HomePage "https://localhost/azure-monitor" `
                         -IdentifierUris "https://localhost/azure-monitor" `
                         -Password $secureStringPassword
 
 # Create a new service principal associated with the designated application
-New-AzureRmADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
+New-AzADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
 
 # Assign Reader role to the newly created service principal
-New-AzureRmRoleAssignment -RoleDefinitionName Reader `
+New-AzRoleAssignment -RoleDefinitionName Reader `
                           -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
 
 ```
@@ -59,9 +61,9 @@ New-AzureRmRoleAssignment -RoleDefinitionName Reader `
 Az Azure Monitor API lekérdezéséhez, az ügyfélalkalmazás használ a korábban létrehozott szolgáltatásnevet hitelesítéshez. Az alábbi példa PowerShell-példaszkript bemutatja egy megközelítést használ a [Active Directory Authentication Library](../../active-directory/develop/active-directory-authentication-libraries.md) (ADAL) a JWT-hitelesítési token beszerzése. A JWT jogkivonat egy engedélyezési HTTP paraméter, a kérelmek részeként az Azure Monitor REST API kerülnek.
 
 ```PowerShell
-$azureAdApplication = Get-AzureRmADApplication -IdentifierUri "https://localhost/azure-monitor"
+$azureAdApplication = Get-AzADApplication -IdentifierUri "https://localhost/azure-monitor"
 
-$subscription = Get-AzureRmSubscription -SubscriptionId $subscriptionId
+$subscription = Get-AzSubscription -SubscriptionId $subscriptionId
 
 $clientId = $azureAdApplication.ApplicationId.Guid
 $tenantId = $subscription.TenantId
@@ -630,7 +632,7 @@ Az erőforrás-azonosító az Azure Portalon is szerezhető be. Ehhez keresse me
 Az erőforrás-azonosítója, valamint az Azure PowerShell-parancsmagok használatával lehet beolvasni. Az erőforrás-azonosító beszerzése az Azure Logic Apps, például futtassa a Get-AzureLogicApp parancsmag az alábbi példában látható módon:
 
 ```PowerShell
-Get-AzureRmLogicApp -ResourceGroupName azmon-rest-api-walkthrough -Name contosotweets
+Get-AzLogicApp -ResourceGroupName azmon-rest-api-walkthrough -Name contosotweets
 ```
 
 Az eredmény a következő példához hasonló lesz:

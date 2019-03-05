@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 861a4d4d64f970a13aba68f831d2148f8a354ef4
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: bddfccaf0749bbb5eaf206e5961c713efa5eea17
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732158"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311899"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>Hogyan háríthatók el a "a functions futtatókörnyezete nem érhető el"
 
@@ -66,7 +66,7 @@ Az előző lépésben Ha Ön egy tárfiók kapcsolati sztringje nem rendelkezett
 ### <a name="guidance"></a>Útmutatás
 
 * Ellenőrzi az ezen beállítások bármelyike "tárhelybeállítás". Ha Ön üzembehelyezési pontok cseréje a függvény megszakadnak.
-* Ne állítsa be ezeket a beállításokat, automatikus telepítéseket használatakor.
+* Ne módosítsa ezeket a beállításokat, az automatikus központi telepítések részeként.
 * Ezek a beállítások a létrehozáskor megadott és érvényes kell lennie. Egy automatikus központi telepítési, amely nem tartalmazza ezeket a beállításokat nem működőképes alkalmazást, azt eredményezi, még akkor is, ha a beállításokat utólag kerülnek.
 
 ## <a name="storage-account-credentials-invalid"></a>Tárfiók hitelesítő adatainak érvénytelen

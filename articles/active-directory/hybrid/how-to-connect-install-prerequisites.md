@@ -16,12 +16,12 @@ ms.date: 12/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9925f2ed9f5b24a4113c30f1d00eb3a5bbed8eb5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d21fe7c70c09ad41faf628db45d82b995c8f2515
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205341"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311440"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Az Azure AD Connect előfeltételei
 Ez a témakör ismerteti az előfeltételeket és az Azure AD Connect hardverkövetelményeit.
@@ -117,7 +117,7 @@ További információk, problémák adódnak a kapcsolódással, amikor: [csatla
 * Nem kötelező: Egy tesztfelhasználói fiókja szinkronizálási ellenőrzése.
 
 ## <a name="component-prerequisites"></a>Összetevő-Előfeltételek
-### <a name="powershell-and-net-framework"></a>PowerShell és a .net Framework
+### <a name="powershell-and-net-framework"></a>PowerShell és a .NET-keretrendszer
 Az Azure AD Connect a Microsoft PowerShell és a .NET-keretrendszer 4.5.1-es függ. Ez a verzió vagy újabb verzió van telepítve a kiszolgálón van szüksége. A Windows Server verziójától függően tegye a következőket:
 
 * Windows Server 2012R2
@@ -133,16 +133,16 @@ Az Azure AD Connect a Microsoft PowerShell és a .NET-keretrendszer 4.5.1-es fü
 
 1. A TLS 1.2-es nem lehet engedélyezni, előtt a Windows Server 2008 R2 vagy újabb. Győződjön meg arról, hogy a .net 4.5.1 gyorsjavítás telepítve van az operációs rendszer, lásd: [Microsoft biztonsági tanácsadó 2960358](https://technet.microsoft.com/security/advisory/2960358). Előfordulhat, hogy ez a gyorsjavítás vagy egy későbbi kiadásban már van telepítve a kiszolgálón.
 2. Ha használja a Windows Server 2008 R2, majd győződjön meg arról, a TLS 1.2 engedélyezve van. A kiszolgáló Windows Server 2012 és újabb verzióiban a TLS 1.2 már engedélyezni kell.
-   ```
-   [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
-   [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
-   [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
-   ```
+    ```
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
+    [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Server] "DisabledByDefault"=dword:00000000 "Enabled"=dword:00000001
+    ```
 3. Az összes operációs rendszerek esetén állítsa ezt a beállításkulcsot, és indítsa újra a kiszolgálót.
-   ```
-   HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319
-   "SchUseStrongCrypto"=dword:00000001
-   ```
+    ```
+    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319
+    "SchUseStrongCrypto"=dword:00000001
+    ```
 4. Ha is engedélyezni szeretné a TLS 1.2 a szinkronizálási motor kiszolgáló és a egy távoli SQL Server között, akkor ellenőrizze, hogy rendelkezik a szükséges verziók telepítve [a TLS 1.2 támogatása a Microsoft SQL Server](https://support.microsoft.com/kb/3135244).
 
 ## <a name="prerequisites-for-federation-installation-and-configuration"></a>Összevonási telepítésének és konfigurálásának előfeltételei

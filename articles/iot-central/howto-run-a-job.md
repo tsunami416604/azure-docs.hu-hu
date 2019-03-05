@@ -8,12 +8,12 @@ ms.author: sahubbar
 ms.date: 09/15/2018
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: ac5accc72369d811c0d36c4ef64cd8d523a061f3
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: f08167b4f37193c9a04da02fdd31e066a97aec66
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724502"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57317662"
 ---
 # <a name="create-and-run-a-job-in-your-azure-iot-central-application"></a>Hozzon létre és futtathat feladatokat az Azure IoT központi alkalmazás
 
@@ -25,7 +25,7 @@ Ez a szakasz bemutatja, hogyan hozhat létre és futtathat feladatokat. Az egyes
 
 1. Lépjen a feladatok a navigációs ablaktáblán.
 
-1. Kattintson a **+ új** új feladatok létrehozásának megkezdéséhez.
+1. Válassza ki **+ új** új feladatok létrehozásának megkezdéséhez.
 
     ![Új feladat létrehozása](./media/howto-run-a-job/createnewjob.png)
 
@@ -33,11 +33,11 @@ Ez a szakasz bemutatja, hogyan hozhat létre és futtathat feladatokat. Az egyes
 
 1. Válassza ki az eszköz beállítása azt szeretné, hogy a feladat a alkalmazni lehessen. Miután az eszköz kiválasztásával, látni fogja a jobb oldalán adja meg az eszközök a kiválasztott eszköz csoporton belül. Ha egy hibás eszköz set, eszközöket nem jelenik meg, és megjelenik egy üzenet tájékoztatja, hogy az eszköz beállítása megszakad.
 
-1. Következő lépésként válassza ki, milyen típusú feladatot, amely lesz meghatározva (a beállítás, tulajdonság vagy parancsot). Kattintson a **+** mellett milyen típusú feladatot kiválasztva, és adja hozzá a kívánt műveleteket.
+1. Következő lépésként válassza ki, milyen típusú feladatot, amely lesz meghatározva (a beállítás, tulajdonság vagy parancsot). Válassza ki **+** mellett milyen típusú feladatot kiválasztva, és adja hozzá a kívánt műveleteket.
 
     ![Feladat konfigurálása](./media/howto-run-a-job/configurejob.png)
 
-1. A jobb oldalon kiválasztani, az eszközök, amelyet szeretne futtatni a feladatot. Kattintson a felső jelölőnégyzetet, minden eszköz ki van jelölve, a teljes eszköz készlet. A jelölőnégyzet közel neve elemre kattintva az aktuális oldalon lévő összes eszköz ki van jelölve.
+1. A jobb oldalon kiválasztani, az eszközök, amelyet szeretne futtatni a feladatot. A felső jelölőnégyzet bejelölésével, minden eszköz ki van jelölve, a teljes eszköz csoportba. Közel nevét a jelölőnégyzet bejelölésével, az aktuális oldalon lévő összes eszköz ki van jelölve.
 
 1. A kívánt eszközök kiválasztása után válassza ki a **futtatása**. A feladat most már megjelenik a fő **feladatok** lapot. Az ebben a nézetben megtekintheti az éppen futó feladat és a korábban a feladatok futtatása tetszőleges előzmények áll. A futó feladat mindig a lista tetején fog megjelenni.
 
@@ -48,19 +48,19 @@ Ez a szakasz bemutatja, hogyan hozhat létre és futtathat feladatokat. Az egyes
     > [!NOTE]
     > Megtekintheti a korábban futtatott feladatok előzményeit legfeljebb 30 napig fogja.
 
-1. A feladat áttekintését, kattintson a listában megtekinteni kívánt feladat neve. Ez az Áttekintés a feladat részletei, az eszközök és az eszközök állapotának tartalmazza.
+1. A feladat áttekintésére, válassza a listában megtekinteni kívánt feladat nevét. Ez az Áttekintés a feladat részletei, az eszközök és az eszközök állapotának tartalmazza.
 
     ![Eszközállapot megtekintése](./media/howto-run-a-job/viewdevicestatus.png)
 
 ### <a name="stop-a-running-job"></a>Egy futó feladat leállítása
 
-Ha szeretné leállítani egy feladatot, amely jelenleg fut, kattintson a szeretné leállítani a futó feladat nevét. Válassza ki a **leállítása** gombra a panel. Láthatja, hogy a feladat állapota megváltozott megfelelően, hogy a feladat le lett állítva.
+Szeretné a jelenleg futó feladat leállítása, ha válassza ki, amelyeket szeretne, állítsa le a futó feladat nevét. Válassza ki a **leállítása** gombra a panel. Láthatja, hogy a feladat állapota megváltozott megfelelően, hogy a feladat le lett állítva.
 
    ![Feladat leállítása](./media/howto-run-a-job/stopjob.png)
 
 ### <a name="run-a-stopped-job"></a>A leállt feladat futtatása
 
-Ha szeretne futtatni egy feladatot, amely jelenleg le van állítva, kattintson a leállt feladatot, amely a futtatni kívánt nevét. Válassza ki a **futtatása** gombra a panel. Látni fogja, hogy a feladat állapota módosult-e, hogy fut a feladat most ismét megfelelően.
+Ha szeretne futtatni egy feladatot, amely jelenleg le van állítva, válassza ki a leállt feladatot, amely a futtatni kívánt nevét. Válassza ki a **futtatása** gombra a panel. Látni fogja, hogy a feladat állapota módosult-e, hogy fut a feladat most ismét megfelelően.
 
    ![Feladat folytatása](./media/howto-run-a-job/resumejob.png)
 
@@ -85,7 +85,7 @@ Az állapotüzenet az eszközök a feladaton belül áttekintést követ. Ezek a
 
 ### <a name="view-the-device-status"></a>Az eszköz állapotának megtekintése
 
-Annak érdekében, hogy a feladat minden egyes eszköz állapotának megtekintéséhez kattintson a feladat nevére. Itt megjelenik a feladat és az eszközök, az adott feladatot egy részét képező összes részleteit. Minden egyes eszköz neve mellett a következő állapotüzeneteket egyik láthatja:
+Annak érdekében, hogy a feladat minden egyes eszköz állapotának megtekintéséhez válassza ki a feladat nevét. Itt megjelenik a feladat és az eszközök, az adott feladatot egy részét képező összes részleteit. Minden egyes eszköz neve mellett a következő állapotüzeneteket egyik láthatja:
 
 | Állapotüzenet       | Állapot jelentése                                                                |
 | -------------------- | ----------------------------------------------------------------------------- |

@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 12/04/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: d94d434f83e1a8507b1a98660e8169ff6be4ee24
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5c9d8330e857a8f76e143631f17e29ba44244a88
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244581"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57307921"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Hibaelhárítás az Azure SQL Data warehouse-bA
 Ez a cikk a gyakori hibaelhárítási kérdések listája.
@@ -52,7 +52,7 @@ Ez a cikk a gyakori hibaelhárítási kérdések listája.
 | Msg 40847: Nem sikerült végrehajtani a műveletet, mert a kiszolgáló túllépné az engedélyezett adatbázis-tranzakciós egységek, 45000 vonatkozó kvótát. | Vagy csökkentse a [DWU] [ DWU] a létrehozni kívánt adatbázis vagy [a kvóta növelésére][request a quota increase]. |
 | Lemezterület-kihasználás kivizsgálása                              | Lásd: [méretek tábla] [ Table sizes] megérteni a lemezterület-kihasználás, a rendszer. |
 | Táblák kezelésében is segíteni                                    | Tekintse meg a [táblák áttekintésével] [ Overview] cikkben segítséget a táblák kezelése.  Ez a cikk hivatkozásokat is tartalmaz, például további információt tartalmazó témakörökre [tábla adattípusaival][Data types], [terjesztése egy tábla][Distribute], [Tábla indexelése][Index], [tábla particionálása][Partition], [Táblastatisztika karbantartása] [ Statistics] és [ideiglenes táblák][Temporary]. |
-| Az Azure Portalon nem frissíti a transzparens titkosítást (TDE) folyamatjelző sáv | A TDE-n keresztül állapotát megtekintheti [powershell](/powershell/module/azurerm.sql/get-azurermsqldatabasetransparentdataencryption). |
+| Az Azure Portalon nem frissíti a transzparens titkosítást (TDE) folyamatjelző sáv | A TDE-n keresztül állapotát megtekintheti [powershell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption). |
 
 ## <a name="polybase"></a>PolyBase
 | Probléma                                           | Megoldás:                                                   |

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 640abdd533a6c0b0ec448076c713aaf754baf2b6
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: e4a2bb6d68562781592e1dfe5ad820044e8da708
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011296"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313939"
 ---
 # <a name="tutorial-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Oktatóanyag: Leküldéses értesítések küldése iOS-alkalmazások Azure Notification Hubs használatával
 
@@ -113,11 +113,29 @@ Konfigurálta az értesítési központot az APNS-sel való együttműködésre,
      > [!NOTE]
      > Ha például a hibaüzenet jelenik meg ```[!] Unable to find a specification for `AzureNotificationHubs-iOS` ``` futtatása során `pod install`, futtassa a `pod repo update` a legújabb podok a Cocoapods adattárból, és futtassa `pod install`.
 
+   - Integráció Carthage keresztül
+
+     Adja hozzá a következő függőségeket a `Cartfile` tartalmazza az Azure Notification Hubs SDK az alkalmazásba.
+
+     ```ruby
+     github "Azure/azure-notificationhubs-ios"
+     ```
+
+     Ezután frissítse, és a build-függőségeket:
+
+     ```shell
+     $ carthage update
+     ```
+
+     Carthage használatával kapcsolatos további információkért lásd: a [Carthage GitHub-adattár](https://github.com/Carthage/Carthage).
+
    - Integráció a bináris fájlok másolása a projektbe
 
-     Töltse le a [Microsoft Azure üzenetkezelési keretrendszer], és bontsa ki a fájlt. Az Xcode-ban kattintson a jobb gombbal a projektjére, majd kattintson az **Add Files to** (Fájlok hozzáadása a következőhöz:) lehetőségre a **WindowsAzureMessaging.framework** mappa az Xcode-projektjéhez adásához. Válassza a **Beállítások** lehetőséget, és győződjön meg arról, hogy az **Elemek másolása, ha szükséges** elem be van jelölve, majd kattintson a **Hozzáadás** elemre.
+       1. Töltse le a [Azure Notification Hubs SDK](https://github.com/Azure/azure-notificationhubs-ios/releases) keretrendszer megadott zip-fájlként, és bontsa ki azt.
 
-     ![Az Azure SDK kicsomagolása][10]
+       2. Az Xcode-ban kattintson a jobb gombbal a projektjére, majd kattintson az **Add Files to** (Fájlok hozzáadása a következőhöz:) lehetőségre a **WindowsAzureMessaging.framework** mappa az Xcode-projektjéhez adásához. Válassza a **Beállítások** lehetőséget, és győződjön meg arról, hogy az **Elemek másolása, ha szükséges** elem be van jelölve, majd kattintson a **Hozzáadás** elemre.
+
+       ![Az Azure SDK kicsomagolása][10]
 
 6. Adjon hozzá egy `HubInfo.h` nevű új fejlécfájlt a projektjéhez. Ez a fájl tárolja az állandókat az értesítési központhoz. Adja hozzá a következő definíciókat, és cserélje le a szövegkonstans helyőrzőit a *központ nevére* és a korábban feljegyzett *DefaultListenSharedAccessSignature* változóra.
 

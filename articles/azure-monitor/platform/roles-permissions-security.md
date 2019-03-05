@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 4ca5803ca410e3250e025eb60b5c1ff9fc7216b1
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 55a7a26815dac1140d100c05a47057f8d5000f9d
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465241"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57317815"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Szerepkörök, engedélyek és biztonság az Azure Monitor használatának első lépései
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Számos csapat kell szigorúan szabályozzák a hozzáférést a figyelési adatok és beállítások. Például, ha kizárólag a figyelést (a támogatási szakértők, fejlesztő és üzemeltető mérnököknek) dolgozó csapat tagjai rendelkezik, vagy ha egy felügyelt szolgáltató használ, érdemes hozzáférést biztosít nekik a csak figyelési adatok korlátozásával hozhat létre, módosít, vagy erőforrások törlése. Ez a cikk bemutatja, hogyan gyors beépített figyelési RBAC szerepkör alkalmazásához a felhasználónak az Azure-ban, vagy egy felhasználóhoz, aki csak korlátozott felügyeleti engedélyekre van szüksége a saját egyéni szerepkör létrehozása. Majd az Azure Monitor-kapcsolódó erőforrások és a bennük adatokhoz való hozzáférés korlátozásáról vonatkozó biztonsági szempontokat ismerteti.
 
 ## <a name="built-in-monitoring-roles"></a>Beépített figyelési szerepkörök
@@ -49,8 +52,8 @@ A Monitoring Reader szerepkörhöz hozzárendelt személyek is az összes monito
 A figyelés közreműködői szerepkörrel mások is láthatják az összes monitorozási adat, előfizetés és a létrehozása vagy módosítása a figyelési beállításokat, de nem módosítható az összes többi erőforrást. Ez a szerepkör kibővíti a figyelési olvasó szerepkört, és a szervezet figyelési csapat vagy akik mellett a fenti, engedélyeket is képesnek kell lenniük a felügyelt szolgáltatóknak tagjai számára megfelelő:
 
 * Tegye közzé a figyelési irányítópult, egy megosztott irányítópultot.
-* Állítsa be [diagnosztikai beállítások](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings) egy resource.* számára
-* Állítsa be a [naplóprofil](../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile) egy subscription.* számára
+* Állítsa be [diagnosztikai beállítások](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings) erőforrás.\*
+* Állítsa be a [naplóprofil](../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile) -előfizetéssel.\*
 * Riasztási szabályok tevékenység és a beállításokat az [Azure Alerts](../../azure-monitor/platform/alerts-overview.md).
 * Hozza létre az Application Insights-webtesztek és összetevőket.
 * A Log Analytics-munkaterület megosztott kulcsainak listázása.
@@ -58,7 +61,7 @@ A figyelés közreműködői szerepkörrel mások is láthatják az összes moni
 * Hozzon létre, és törölje, és hajtsa végre a Log Analytics-beli mentett keresések.
 * Hozzon létre, és a Naplóelemzési tárkonfiguráció törlése.
 
-* a felhasználó külön is engedéllyel kell listkeys műveletének a cél erőforráson (tárolási fiók- vagy event hub-névtér) egy naplóprofil vagy diagnosztikai beállítás.
+\*felhasználói külön is engedéllyel kell listkeys műveletének a cél erőforráson (tárolási fiók- vagy event hub-névtér) egy naplóprofil vagy diagnosztikai beállítás.
 
 > [!NOTE]
 > Ez a szerepkör nem olvasási hozzáférést biztosít egy eseményközpontba, folyamatos vagy a storage-fiókban tárolt Teljesítménynapló-adatokat. [Lásd alább](#security-considerations-for-monitoring-data) ezekhez az erőforrásokhoz való hozzáférés konfigurálásával kapcsolatos információkat.
@@ -98,7 +101,7 @@ Ha a fenti beépített szerepkörök nem felelnek meg a csapat a pontos igényei
 Például használja a fenti táblázat egy egyéni RBAC szerepkör létrehozhat egy "tevékenység Log olvasó" ehhez hasonló:
 
 ```powershell
-$role = Get-AzureRmRoleDefinition "Reader"
+$role = Get-AzRoleDefinition "Reader"
 $role.Id = $null
 $role.Name = "Activity Log Reader"
 $role.Description = "Can view activity logs."
@@ -106,7 +109,7 @@ $role.Actions.Clear()
 $role.Actions.Add("Microsoft.Insights/eventtypes/*")
 $role.AssignableScopes.Clear()
 $role.AssignableScopes.Add("/subscriptions/mySubscription")
-New-AzureRmRoleDefinition -Role $role 
+New-AzRoleDefinition -Role $role 
 ```
 
 ## <a name="security-considerations-for-monitoring-data"></a>Monitorozási adatok történő futtatásának biztonsági szempontjai
@@ -127,8 +130,8 @@ Ezeken az adattípusokon mindhárom egy tárfiókban tárolja, vagy adatfolyamk�
 Amikor egy felhasználó vagy alkalmazás a monitorozási adatok tárfiókban való hozzáférésre van szüksége, érdemes [egy fiók SAS előállítása](https://msdn.microsoft.com/library/azure/mt584140.aspx) a tárfiók, amely a blob storage szolgáltatói csak olvasási hozzáféréssel rendelkező figyelési adatokat tartalmaz. A PowerShell a következőhöz hasonló lehet:
 
 ```powershell
-$context = New-AzureStorageContext -ConnectionString "[connection string for your monitoring Storage Account]"
-$token = New-AzureStorageAccountSASToken -ResourceType Service -Service Blob -Permission "rl" -Context $context
+$context = New-AzStorageContext -ConnectionString "[connection string for your monitoring Storage Account]"
+$token = New-AzStorageAccountSASToken -ResourceType Service -Service Blob -Permission "rl" -Context $context
 ```
 
 Ezután biztosíthat a jogkivonat az entitáshoz, hogy kell olvasni, hogy a tárolási fiók, és is listázása és a storage-fiókban lévő összes BLOB olvasni.
@@ -136,7 +139,7 @@ Ezután biztosíthat a jogkivonat az entitáshoz, hogy kell olvasni, hogy a tár
 Azt is megteheti Ha ezt az engedélyt az RBAC vezérlésére van szüksége, meg lehet adni entitás az Microsoft.Storage/storageAccounts/listkeys/action engedélyt az adott tárfiók. Erre azért szükség a felhasználók számára a diagnosztikai beállítás vagy naplóprofil kell archiválni egy tárfiókba képeseknek kell lenniük. Létrehozhat például, hogy egy felhasználó vagy alkalmazás, amelyet csak egy storage-fiókból olvassa el a következő egyéni RBAC szerepkör:
 
 ```powershell
-$role = Get-AzureRmRoleDefinition "Reader"
+$role = Get-AzRoleDefinition "Reader"
 $role.Id = $null
 $role.Name = "Monitoring Storage Account Reader"
 $role.Description = "Can get the storage account keys for a monitoring storage account."
@@ -145,7 +148,7 @@ $role.Actions.Add("Microsoft.Storage/storageAccounts/listkeys/action")
 $role.Actions.Add("Microsoft.Storage/storageAccounts/Read")
 $role.AssignableScopes.Clear()
 $role.AssignableScopes.Add("/subscriptions/mySubscription/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myMonitoringStorageAccount")
-New-AzureRmRoleDefinition -Role $role 
+New-AzRoleDefinition -Role $role 
 ```
 
 > [!WARNING]
@@ -160,7 +163,7 @@ Az event hubs használatával követheti hasonló mintát, de először hozzon l
 2. Ha a fogyasztó kell helyeznie a kulcs az ad-hoc van szüksége, adja meg a felhasználónak az adott event hubs listkeys műveletének műveletet. Ez akkor is szükséges a felhasználók számára a diagnosztikai beállítás, vagy jelentkezzen profil streamelés az event hubs képeseknek kell lenniük. Például előfordulhat, hogy az RBAC szabály létrehozása:
    
    ```powershell
-   $role = Get-AzureRmRoleDefinition "Reader"
+   $role = Get-AzRoleDefinition "Reader"
    $role.Id = $null
    $role.Name = "Monitoring Event Hub Listener"
    $role.Description = "Can get the key to listen to an event hub streaming monitoring data."
@@ -169,7 +172,7 @@ Az event hubs használatával követheti hasonló mintát, de először hozzon l
    $role.Actions.Add("Microsoft.ServiceBus/namespaces/Read")
    $role.AssignableScopes.Clear()
    $role.AssignableScopes.Add("/subscriptions/mySubscription/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/mySBNameSpace")
-   New-AzureRmRoleDefinition -Role $role 
+   New-AzRoleDefinition -Role $role 
    ```
 
 ## <a name="monitoring-within-a-secured-virtual-network"></a>Biztonságos virtuális hálózaton belüli figyelése

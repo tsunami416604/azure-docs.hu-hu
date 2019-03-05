@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: a5475ad2f487bca90f600406ca9bb8f0925a4988
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: aee31f54ddf4e71dd9b9391ec93d0f2319addc3f
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52964815"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57307959"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Telemetria szabály létrehozása és az Azure IoT központi alkalmazás-értesítések beállítása
 
@@ -29,18 +29,18 @@ Hozzon létre egy telemetriai szabályt, az eszköz sablon legalább egy telemet
 
 1. Device Explorer használatával, keresse meg az eszköz sablon, amelynek a szabályt ad hozzá.
 
-1. A kiválasztott sablon alapján kattintson egy meglévő eszközt. 
+1. A kiválasztott sablon alapján válassza ki egy meglévő eszközt.
 
-    >[!TIP] 
+    >[!TIP]
     >Ha a sablon nem minden olyan eszközt, majd egy új eszköz hozzáadásához először.
 
 1. Szabályok még nem hozta létre, ha a következő képernyő jelenik meg:
 
     ![Még nincsenek szabályai](media/howto-create-telemetry-rules/Rules_Landing_Page.png)
 
-1. Az a **szabályok** lapra, majd **sablon szerkesztése** , majd **+ új szabály** , milyen típusú szabályokat hozhat létre.
+1. Az a **szabályok** lapon jelölje be **sablon szerkesztése** , majd **+ új szabály** , milyen típusú szabályokat hozhat létre.
 
-1. Kattintson a **Telemetriai** hozhat létre egy szabályt, amely az eszköz telemetria figyelése.
+1. Válassza ki **Telemetriai** hozhat létre egy szabályt, amely az eszköz telemetria figyelése.
 
     ![Szabály típusa](media/howto-create-telemetry-rules/Rule_Types.png)
 
@@ -57,7 +57,7 @@ Hozzon létre egy telemetriai szabályt, az eszköz sablon legalább egy telemet
 
 A feltétel a feltételeknek, a szabály által figyelt határozza meg.
 
-1. Kattintson a **+** melletti **feltételek** új feltétel hozzáadása.
+1. Válassza ki **+** melletti **feltételek** új feltétel hozzáadása.
 
 1. Válassza ki a figyelni kívánt telemetriát a **mérési** legördülő listából.
 

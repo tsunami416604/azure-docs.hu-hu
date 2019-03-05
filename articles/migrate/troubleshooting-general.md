@@ -4,14 +4,14 @@ description: Ismert problémák az Azure Migrate szolgáltatás és a hibaelhár
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 03/04/2019
 ms.author: raynew
-ms.openlocfilehash: cb1bed847f5b7afe7c1eff0243c64e8c25ddb814
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: e85608c411c0aea7b7bf71be19939f6859139c56
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992557"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314366"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Az Azure Migrate hibaelhárítása
 
@@ -163,10 +163,34 @@ A probléma akkor fordulhat elő a VMware PowerCLI telepítése való probléma 
         C:\Program Files (x86)\WindowsPowerShell\Modules
 
    d. Indítsa újra a "Az Azure Migrate Collector" szolgáltatást a Windows Service Manager (Open "Futtatási", és írja be services.msc Windows-kezelő megnyitásához). Az Azure Migrate Collector szolgáltatás kattintson a jobb gombbal, és kattintson a Start gombra.
-   
-   e. Kattintson duplán a "Futtatás gyűjtő" asztali parancsikonját a gyűjtő alkalmazás elindításához. A gyűjtő alkalmazás automatikusan töltse le és telepítse a szükséges verziót fo PowerCLI.
 
-3. Ha a fenti nem oldja meg a problémát, telepítse manuálisan [VMware PowerCLI 6.5.2](https://www.powershellgallery.com/packages/VMware.PowerCLI/6.5.2.6268016) , és ellenőrizze, hogy megoldódott-e a problémát.
+   e. Kattintson duplán a "Futtatás gyűjtő" asztali parancsikonját a gyűjtő alkalmazás elindításához. A gyűjtő alkalmazás automatikusan töltse le és telepítse a PowerCLI szükséges verzió.
+
+3. Ha a fenti nem oldja meg a probléma, kövesse a lépéseket a fenti c majd manuálisan telepítse a PowerCLI az a készülék, az alábbi lépéseket követve:
+
+   a. Távolítsa el az összes hiányos PowerCLI telepítési fájlok az alábbi lépések #a fenti #2. lépésben #c való.
+
+   b. Kattintson a Start > futtatása > rendszergazdai módban megnyitott Windows PowerShell(x86)
+
+   c. Futtassa a parancsot:  Install-Module "VMWare.VimAutomation.Core" - RequiredVersion "6.5.2.6234650" (típus: "A" azt kéri, a megerősítési)
+
+   d. Indítsa újra a "Az Azure Migrate Collector" szolgáltatást a Windows Service Manager (Open "Futtatási", és írja be services.msc Windows-kezelő megnyitásához). Az Azure Migrate Collector szolgáltatás kattintson a jobb gombbal, és kattintson a Start gombra.
+
+   e. Kattintson duplán a "Futtatás gyűjtő" asztali parancsikonját a gyűjtő alkalmazás elindításához. A gyűjtő alkalmazás automatikusan töltse le és telepítse a PowerCLI szükséges verzió.
+
+4. Ha Ön nem sikerült letölteni a modul az a készülék a tűzfallal kapcsolatos hibák miatt, töltse le és telepítse a modult az alábbi lépéseket követve internetkapcsolattal rendelkező gépen:
+
+    a. Távolítsa el az összes hiányos PowerCLI telepítési fájlok az alábbi lépések #a fenti #2. lépésben #c való.
+
+    b. Kattintson a Start > futtatása > rendszergazdai módban megnyitott Windows PowerShell(x86)
+
+    c. Futtassa a parancsot:  Install-Module "VMWare.VimAutomation.Core" - RequiredVersion "6.5.2.6234650" (típus: "A" azt kéri, a megerősítési)
+
+    d. Másolja a "C:\Program Files (x86) \WindowsPowerShell\Modules" a "VMware" kezdve minden modul ugyanarra a helyre a gyűjtő virtuális Gépen.
+
+    e. Indítsa újra a "Az Azure Migrate Collector" szolgáltatást a Windows Service Manager (Open "Futtatási", és írja be services.msc Windows-kezelő megnyitásához). Az Azure Migrate Collector szolgáltatás kattintson a jobb gombbal, és kattintson a Start gombra.
+
+    f. Kattintson duplán a "Futtatás gyűjtő" asztali parancsikonját a gyűjtő alkalmazás elindításához. A gyűjtő alkalmazás automatikusan töltse le és telepítse a PowerCLI szükséges verzió.
 
 ### <a name="error-unabletoconnecttoserver"></a>Error UnableToConnectToServer
 

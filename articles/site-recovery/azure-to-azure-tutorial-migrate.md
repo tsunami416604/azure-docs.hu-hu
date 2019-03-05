@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: c1171a6b118797c2aafda137ec532259921c0713
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: ae1e65162ffab35e6d3ef3bf84c1eb6bbe75c65f
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880546"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314296"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Azure-beli virtuális gépek áthelyezése egy másik régióba
 
@@ -122,7 +122,7 @@ A Site Recovery lekéri az előfizetéshez és az erőforráscsoporthoz társít
 3. Válassza ki a cél Azure-beli virtuális hálózatot, amelyre át szeretné helyezni a az Azure virtuális gépek a konfiguráció tesztelése. 
 
 > [!IMPORTANT]
-> Azt javasoljuk, hogy a teszt sikertelen, és nem az éles hálózati környezetben a cél virtuális gépen, amelybe a virtuális gépek áthelyezése végül szeretne egy különálló Azure-beli Virtuálisgép-hálózatot használja. Ha engedélyezte a replikációt, amely volt állítsa be.
+> Azt javasoljuk, hogy használja-e egy különálló Azure-beli Virtuálisgép-hálózaton a feladatátvételi tesztet, és nem az éles hálózati környezetben, amelybe át szeretné helyezni a virtuális gépek idővel, amely be lett állítva, ha engedélyezte a replikációt.
 
 4. Az áthelyezés tesztelése indításához kattintson **OK**. A folyamat előrehaladásának megtekintéséhez a virtuális gépre kattintva megnyithatja a tulajdonságait. Vagy kattintson a **Feladatátvételi teszt** feladatra a tároló neve > **Beállítások** > **Feladatok** > **Site Recovery-feladatok** menüpontban.
 5. A feladatátvétel befejezését követően az Azure-beli virtuális gép replikája megjelenik az Azure Portal > **Virtuális gépek** területen. Győződjön meg arról, hogy a virtuális gép fut, megfelelő a méretezése és a megfelelő hálózathoz csatlakozik.

@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 1/8/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 16e23f77509d2402f765981b39a30e08a2309f68
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 325e06cadd2593684bc610a0387829541bea30b2
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156527"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311797"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>Gyors útmutató: A közvetlen webes forgalom az Azure Application Gatewayjel – Azure portal
 
@@ -115,6 +115,8 @@ Ebben a példában két virtuális gépet használó Azure háttérkiszolgálói
 
 ### <a name="install-iis"></a>Az IIS telepítése
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 1. Nyissa meg [az Azure PowerShell](https://docs.microsoft.com/azure/cloud-shell/quickstart-powershell). Ehhez válassza ki a **Cloud Shell** az Azure Portalon, és ezután válassza a felső navigációs sávon **PowerShell** a legördülő listából. 
 
     ![Egyéni bővítmény telepítése](./media/application-gateway-create-gateway-portal/application-gateway-extension.png)
@@ -122,7 +124,7 @@ Ebben a példában két virtuális gépet használó Azure háttérkiszolgálói
 2. Futtassa a következő parancsot az IIS a virtuális gépen való telepítéséhez: 
 
     ```azurepowershell-interactive
-    Set-AzureRmVMExtension `
+    Set-AzVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -ExtensionName IIS `
       -VMName myVM `
@@ -133,7 +135,7 @@ Ebben a példában két virtuális gépet használó Azure háttérkiszolgálói
       -Location EastUS
     ```
 
-3. Hozzon létre egy második virtuális gépet, és az IIS telepítése a korábban végrehajtott lépések segítségével. Használat *myVM2* a virtuális gép nevét, valamint a a **VMName** beállításaként a **Set-AzureRmVMExtension** parancsmagot.
+3. Hozzon létre egy második virtuális gépet, és az IIS telepítése a korábban végrehajtott lépések segítségével. Használat *myVM2* a virtuális gép nevét, valamint a a **VMName** beállításaként a **Set-AzVMExtension** parancsmagot.
 
 ### <a name="add-backend-servers"></a>Háttérkiszolgálók hozzáadása
 

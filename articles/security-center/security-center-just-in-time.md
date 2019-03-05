@@ -3,7 +3,7 @@ title: Hozzáférés a Just-in-time virtuális gépek az Azure Security Centerbe
 description: Ez a dokumentum bemutatja, hogyan just-in-time Virtuálisgép-hozzáférés az Azure Security Center segítségével szabályozhatja a hozzáférést az Azure-beli virtuális gépek.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/4/2018
-ms.author: rkarlin
-ms.openlocfilehash: 2bfa3b6001d714da39ebeb709600504f9d7331c5
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.date: 2/28/2019
+ms.author: monhaber
+ms.openlocfilehash: 9cdcfbc6074f8e343e2571063cc5dafe54072753
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733657"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314772"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Just-in-time virtuálisgép-hozzáférés kezelése
 
@@ -144,11 +144,11 @@ Ez lehetővé teszi igény szerinti hozzáférés a virtuális gép a következ�
 - Windows-kiszolgálók:
     - 3389-es RDP-port
     - maximális engedélyezett hozzáférési 3 óra
-    - Engedélyezett forrásoldali IP-címek kérelmenként beállítása
+    - Engedélyezett forrásoldali IP-címeket sem van beállítva.
 - Linux-kiszolgálók:
     - 22-es SSH-port
     - maximális engedélyezett hozzáférési 3 óra
-    - Engedélyezett forrásoldali IP-címek kérelmenként beállítása
+    - Engedélyezett forrásoldali IP-címeket sem van beállítva.
      
 Ha a virtuális gép már just-in-time engedélyezve van, amikor a konfigurációs lapon tudják, hogy engedélyezve van a-igény és a hivatkozás segítségével nyissa meg a szabályzatot az Azure Security Center használatával megtekintheti és módosíthatja a beállításokat.
 

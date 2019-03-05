@@ -12,14 +12,17 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: mbullwin
-ms.openlocfilehash: 74da56b5e90512f8b903d5a62f7dde4e903560b8
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: ea4bc61dec59308b2c2311e8300e44aae78fc041
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817864"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313514"
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>Hozzon létre egy Application Insights-erőforrást PowerShell használatával
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Ez a cikk bemutatja, hogyan automatizálhatja a létrehozása és frissítése [Application Insights](../../azure-monitor/app/app-insights-overview.md) erőforrások automatikusan az Azure Resource Management használatával. Előfordulhat például, ekkor a buildelési folyamat részeként. Alapszintű Application Insights-erőforrás, valamint létrehozhat [rendelkezésre állási webes tesztek](../../azure-monitor/app/monitor-web-app-availability.md), állítsa be [riasztások](../../azure-monitor/app/alerts.md)állítsa be a [díjszabási séma](pricing.md), és más Azure-erőforrások létrehozása .
 
 A kulcs létrehozásához ezeket az erőforrásokat: JSON-sablonokat [Azure Resource Manager](../../azure-resource-manager/manage-resources-powershell.md). Legnépszerűbb, a művelet be nem: a meglévő erőforrások; JSON-definíciók letöltése egyes értékek nevét; például paraméterezése és futtassa a sablont, amikor szeretne létrehozni egy új erőforrást. Több erőforrás együtt is csomag, hozza létre őket mindezt egy lépjen – például egy alkalmazás-figyelő rendelkezésre állási tesztek, a riasztások és a tárhelyet a folyamatos exportálás. Nincsenek egyes parameterizations, amely itt elmagyarázzuk, néhány apró.
@@ -154,12 +157,12 @@ Hozzon létre egy új .JSON kiterjesztésű fájlt – neki `template1.json` ebb
 ## <a name="create-application-insights-resources"></a>Application Insights-erőforrások létrehozása
 1. A PowerShellben jelentkezzen be az Azure-bA:
    
-    `Connect-AzureRmAccount`
+    `Connect-AzAccount`
 2. Futtassa egy ehhez hasonló parancsot:
    
     ```PS
    
-        New-AzureRmResourceGroupDeployment -ResourceGroupName Fabrikam `
+        New-AzResourceGroupDeployment -ResourceGroupName Fabrikam `
                -TemplateFile .\template1.json `
                -appName myNewApp
 
@@ -175,8 +178,8 @@ Más paramétereket adhat hozzá – a sablon a Paraméterek szakaszban ezek le�
 Miután létrehozott egy alkalmazás-erőforrást, érdemes a kialakítási kulcsot: 
 
 ```PS
-    $resource = Find-AzureRmResource -ResourceNameEquals "<YOUR APP NAME>" -ResourceType "Microsoft.Insights/components"
-    $details = Get-AzureRmResource -ResourceId $resource.ResourceId
+    $resource = Find-AzResource -ResourceNameEquals "<YOUR APP NAME>" -ResourceType "Microsoft.Insights/components"
+    $details = Get-AzResource -ResourceId $resource.ResourceId
     $ikey = $details.Properties.InstrumentationKey
 ```
 
@@ -189,7 +192,7 @@ Beállíthatja a [árképzési csomag](pricing.md).
 Az alkalmazás-erőforrás létrehozásához a vállalati ár csomaggal, a fenti sablon használatával:
 
 ```PS
-        New-AzureRmResourceGroupDeployment -ResourceGroupName Fabrikam `
+        New-AzResourceGroupDeployment -ResourceGroupName Fabrikam `
                -TemplateFile .\template1.json `
                -priceCode 2 `
                -appName myNewApp

@@ -4,19 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: ''
 author: diberry
 manager: nitinme
-displayName: active learning, suggestion, dialog prompt, train api, feedback loop, autolearn, auto-learn, user setting, service setting, services setting
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 02/26/2019
 ms.author: diberry
-ms.openlocfilehash: 93e735958669dd39deaf88d1d468a9148b7db3d1
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: cff4199663bce39353f8c10c68f51f15d6a72a22
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960300"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314823"
 ---
 # <a name="use-active-learning-to-improve-knowledge-base"></a>Aktív tanulás használata a tudásbázis továbbfejlesztéséhez
 
@@ -33,13 +32,13 @@ A QnA Maker megtanulja az implicit és explicit visszajelzés új kérdést vál
 
 Bármelyik módszert biztosít a rangsorolás fürtözöttek hasonló lekérdezésekkel.
 
-Hasonló lekérdezések fürtözöttek, a QnA Maker javasolja a Tudásbázis designer elfogadja vagy elutasítja a felhasználó-alapú kérdések.
-
 ## <a name="how-active-learning-works"></a>Hogyan aktív tanulás működése
 
 Aktív tanulás akkor aktiválódik, a felső néhány válasz bármely adott lekérdezésre vonatkozó QnA Maker által visszaadott eredmények alapján. A pontszám különbségek egy kis tartományon belülre esik, akkor a lekérdezés számít egy lehetséges _javaslat_ minden lehetséges válaszokat. 
 
 Az összes javaslat listája együtt fürtözöttek és felső javaslatokat alternatív kérdések jelennek meg a végfelhasználók számára az adott lekérdezések gyakorisága alapján. Aktív tanulás azokban az esetekben, ahol a végpontok egy ésszerű, illetve a különböző használati lekérdezések kihozhatják a lehetséges legjobb javaslatokat nyújt.
+
+Miután kérdések a QnA Maker Portal használata javasolt, tekintse át és fogadja el vagy elutasítása szólhatnak kell. 
 
 ## <a name="upgrade-version-to-use-active-learning"></a>Aktív tanulás frissítési verziója
 
@@ -58,6 +57,8 @@ Egy egyszerű számítási közelségi meghatározni az algoritmus nem áll. A t
 ## <a name="turn-on-active-learning"></a>Aktív tanulás bekapcsolása
 
 Aktív tanulás alapértelmezés szerint ki van kapcsolva. Kapcsolja be a javasolt kérdések talál. 
+
+1. Válassza ki **közzététel** a Tudásbázis közzététele. Aktív tanulás lekérdezéseket a rendszer a végpontról GenerateAnswer API előrejelzési csak gyűjti. A teszt panelt a Qna Maker Portal, a lekérdezések nem érinti a aktív tanulás.
 
 1. Aktív tanulás a bekapcsolásához kattintson a a **neve**, lépjen a [ **Szolgáltatásbeállítások** ](https://www.qnamaker.ai/UserSettings) a QnA Maker Portal jobb felső sarokban.  
 
@@ -88,6 +89,9 @@ Aktív tanulás alapértelmezés szerint ki van kapcsolva. Kapcsolja be a javaso
 
 1. Válassza ki **mentéséhez és a vonat** a Tudásbázis következő, a módosítások mentéséhez.
 
+1. Válassza ki **közzététel** , hogy a módosítások a GenerateAnswer API elérhető legyen.
+
+    5 vagy több hasonló lekérdezések fürtözöttek, 30 percenként, QnA Maker javasolja a Tudásbázis designer elfogadja vagy elutasítja a felhasználó-alapú kérdések.
 
 ## <a name="determine-best-choice-when-several-questions-have-similar-scores"></a>Határozza meg a legjobb választás, ha számos kérdést hasonló pontszámok
 

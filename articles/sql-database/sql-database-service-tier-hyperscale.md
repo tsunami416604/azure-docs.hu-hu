@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 2c32ef84c1016d0058ee07220729a291aff19b70
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 7097c3852ad903e9d8f7c8786ea7fd616706f108
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868068"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57317322"
 ---
 # <a name="hyperscale-service-tier-preview-for-up-to-100-tb"></a>Akár 100 TB kapacitású szolgáltatási réteg (előzetes verzió)
 
@@ -112,7 +112,7 @@ Rövid idő alatt működésbe felfelé és lefelé csak olvasható számítási
 
 ## <a name="create-a-hyperscale-database"></a>Nagy kapacitású adatbázis létrehozása
 
-Nagy kapacitású adatbázis hozható létre a [az Azure portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabase) vagy [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create). Nagy kapacitású adatbázisok használatával érhetők el csak a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md).
+Nagy kapacitású adatbázis hozható létre a [az Azure portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabase) vagy [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create). Nagy kapacitású adatbázisok használatával érhetők el csak a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md).
 
 A következő T-SQL-parancsot egy nagy kapacitású adatbázist hoz létre. Meg kell adnia a edition és a szolgáltatás célja a `CREATE DATABASE` utasítást.
 
@@ -124,7 +124,7 @@ GO
 
 ## <a name="migrate-an-existing-azure-sql-database-to-the-hyperscale-service-tier"></a>A nagy kapacitású szolgáltatásszinthez egy meglévő Azure SQL Database áttelepítése
 
-Nagy kapacitású segítségével áthelyezheti a meglévő Azure SQL-adatbázisok a [az Azure portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/azurerm.sql/set-azurermsqldatabase) vagy [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update). Nyilvános előzetes verzióban érhető el ez az egyirányú áttelepítést. Nagy kapacitású adatbázisok egy másik szolgáltatásszinthez nem válthat. Javasoljuk, hogy másolatot készít az éles adatbázisokat, és a nagy kapacitású át a megvalósíthatósági fogalmak (próbaverziójú).
+Nagy kapacitású segítségével áthelyezheti a meglévő Azure SQL-adatbázisok a [az Azure portal](https://portal.azure.com), [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current), [Powershell](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabase) vagy [CLI](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update). Nyilvános előzetes verzióban érhető el ez az egyirányú áttelepítést. Nagy kapacitású adatbázisok egy másik szolgáltatásszinthez nem válthat. Javasoljuk, hogy másolatot készít az éles adatbázisokat, és a nagy kapacitású át a megvalósíthatósági fogalmak (próbaverziójú).
 
 A következő T-SQL parancsot a nagy kapacitású szolgáltatási rétegben, áthelyez egy adatbázist. Meg kell adnia a edition és a szolgáltatás célja a `ALTER DATABASE` utasítást.
 

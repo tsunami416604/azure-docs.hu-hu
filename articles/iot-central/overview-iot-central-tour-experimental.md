@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 6865a90a46c5614c5735f9766194c40dfd3e2e4f
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: b7aa1186005cd34b4c6a1c6fca4f89f6b845025b
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216951"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312528"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui-new-ui-design"></a>Fedezze fel az Azure IoT Central felhasználói felület (új felhasználói felület tervezése)
 
@@ -37,7 +37,7 @@ Az _operátorok_ az Azure IoT Central kezelőfelületén felügyelhetik az Azure
 
 ## <a name="use-the-left-navigation-menu"></a>A bal oldali navigációs menü használata
 
-A bal oldali navigációs menü használata a különböző területeket, az alkalmazás eléréséhez. Bontsa ki, vagy kattintson a navigációs sáv összecsukása **<** vagy **>**:
+A bal oldali navigációs menü használata a különböző területeket, az alkalmazás eléréséhez. Bontsa ki, vagy válassza a navigációs sáv összecsukása **<** vagy **>**:
 
 | Menü | Leírás |
 | ---- | ----------- |

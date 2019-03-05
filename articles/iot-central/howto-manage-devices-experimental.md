@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 69c7da1a529e46c054d9c824c2aee71fa67bd8ff
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 8fbad5350170d0e5434dfc2db3c85c04c2807726
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768640"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311474"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application-new-ui-design"></a>Az Azure IoT Central application (új felhasználói felület tervezése) lévő mobileszközök felügyelete
 
@@ -66,7 +66,7 @@ Az alkalmazás eszközök tömeges-regisztrálni:
     > [!NOTE]
     > Ha egy eszköz sablon nem rendelkezik még importálhatja az eszközök területen **nincs társítva eszközök** , és regisztrálja őket a sablon nélkül. Miután eszközök lettek importálva, majd társíthatja őket egy sablont.
 
-1. Kattintson az **Importálás** gombra.
+1. Válassza ki **importálás**.
 
     ![Importálási művelet](./media/howto-manage-devices-experimental/BulkImport1.png)
 
@@ -92,11 +92,11 @@ Eszközök regisztrálása az importálás alatt elindításával **nincs társ�
 
 1. A sablon társítani kívánt eszközök kiválasztása:
 
-1. Kattintson a **társítása**:
+1. Válassza ki **társítása**:
 
     ![Eszközök társítása](./media/howto-manage-devices-experimental/UnassociatedDevices2.png)
 
-1. Válassza ki a sablont a listából a rendelkezésre álló sablonok, és kattintson a **társítása** gombra.
+1. A sablont a listából a rendelkezésre álló sablonok, és válasszon **társítása**.
 
 1. A kiválasztott eszközök társítva a kiválasztott eszköz sablont.
 
@@ -113,7 +113,7 @@ Tömeges exportálása eszközök az alkalmazásból:
 
 1. A bal oldali panelen válassza ki, amelyről szeretné az eszköz exportálása eszköz sablont.
 
-1. Jelölje ki az eszközöket, amelyeket szeretne exportálni, majd kattintson a **exportálása** művelet.
+1. Jelölje ki az eszközöket, amelyet szeretne exportálni, és válassza ki a **exportálása** művelet.
 
     ![Exportálás](./media/howto-manage-devices-experimental/Export1.png)
 
@@ -121,7 +121,7 @@ Tömeges exportálása eszközök az alkalmazásból:
 
 1. Az Exportálás befejeződése után a sikert jelző üzenet jelenik meg és a egy hivatkozás a létrehozott fájl letöltéséhez.
 
-1. Kattintson a **sikert jelző üzenettel** letölteni a fájlt egy helyi mappába a lemezen.
+1. Válassza ki a **sikert jelző üzenettel** letölteni a fájlt egy helyi mappába a lemezen.
 
     ![Sikeres exportálása](./media/howto-manage-devices-experimental/Export2.png)
 

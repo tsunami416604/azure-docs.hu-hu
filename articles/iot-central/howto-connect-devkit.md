@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 6d2cb95efbff223aecf1f0525dbb93698639d41a
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 5412e0a7bae3667ceb29085da566ef3b73c82c35
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198728"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316625"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Az MXChip IoT DevKit eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz
 
@@ -45,14 +45,14 @@ A konfiguráció teljes részletekért tekintse meg [MXChip eszköz sablon rész
 
 Az Azure IoT Central-alkalmazás hozzáadása a valós eszközöknek a **MXChip** eszköz sablont, és jegyezze fel az eszköz kapcsolat részleteinek (**hatókör azonosítója, az eszköz Azonosítóját és az elsődleges kulcs**).
 
-1. Adjon hozzá egy **valós eszköz** Device Explorer, kattintson a **+ új > valós** valós eszköz hozzáadásához.
+1. Adjon hozzá egy **valós eszköz** Device Explorer, jelölje ki **+ új > valós** valós eszköz hozzáadásához.
     * Adja meg az eszköz azonosítója **<span style="color:Red">(kell lennie a kisbetűs)</span>** vagy a javasolt eszközazonosítót használ.
     * Adja meg az eszköz nevét, vagy használja a javasolt név
     
     ![Eszköz hozzáadása](media/concepts-connectivity/add-device.png)
 
 
-1. Például beolvasni a kapcsolat adatait **hatókör azonosítója, az eszköz Azonosítóját és az elsődleges kulcs** kattintva az új eszköz **Connect** az eszköz oldalon.
+1. Például beolvasni a kapcsolat adatait **hatókör azonosítója, az eszköz Azonosítóját és az elsődleges kulcs** a hozzáadott eszköz kiválasztásával **Connect** az eszköz oldalon.
  
     ![Kapcsolat adatai](media/concepts-connectivity/device-connect.PNG)
 
@@ -189,21 +189,21 @@ A minta Devkits alkalmazást sablon alapján létrehozott alkalmazás tartalmaz 
 | Mező neve     | Egység  | Minimális | Maximum | Tizedeshelyek |
 | -------------- | ------ | ------- | ------- | -------------- |
 | páratartalom       | %      | 0       | 100     | 0              |
-| TEMP           | ° C     | tartsuk ott -40     | 120     | 0              |
+| TEMP           | °C     | -40     | 120     | 0              |
 | pressure       | hPa    | 260     | 1260    | 0              |
-| magnetometerX  | mgauss | – 1000   | 1000    | 0              |
-| magnetometerY  | mgauss | – 1000   | 1000    | 0              |
-| magnetometerZ  | mgauss | – 1000   | 1000    | 0              |
-| accelerometerX | felügyeleti csoport     | -2000   | 2000    | 0              |
-| accelerometerY | felügyeleti csoport     | -2000   | 2000    | 0              |
-| accelerometerZ | felügyeleti csoport     | -2000   | 2000    | 0              |
+| magnetometerX  | mgauss | -1000   | 1000    | 0              |
+| magnetometerY  | mgauss | -1000   | 1000    | 0              |
+| magnetometerZ  | mgauss | -1000   | 1000    | 0              |
+| accelerometerX | mg     | -2000   | 2000    | 0              |
+| accelerometerY | mg     | -2000   | 2000    | 0              |
+| accelerometerZ | mg     | -2000   | 2000    | 0              |
 | gyroscopeX     | mdps   | -2000   | 2000    | 0              |
 | gyroscopeY     | mdps   | -2000   | 2000    | 0              |
 | gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
 
 
 #### <a name="states"></a>Állapotok 
-| Name (Név)          | Megjelenített név   | NORMÁL | FIGYELMEZTETÉS | VESZÉLY | 
+| Name (Név)          | Megjelenített név   | NORMÁL | FIGYELMEZTETÉS | DANGER | 
 | ------------- | -------------- | ------ | ------- | ------ | 
 | DeviceState   | Eszköz állapota   | Zöld  | Narancssárga  | Piros    | 
 
@@ -230,7 +230,7 @@ A beállítások ki-/ bekapcsolása
 
 ### <a name="properties"></a>Tulajdonságok
 
-| Típus            | Megjelenített név | Mező neve | Adattípus |
+| Typo            | Megjelenített név | Mező neve | Adattípus |
 | --------------- | ------------ | ---------- | --------- |
 | Eszköztulajdonság | Die száma   | dieNumber  | szám    |
 | Eszköztulajdonság | Eszköz helye   | location  | location    |

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: f0e4d1badd0ed992c96f6624813e575d0f286d8b
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 4378ff4155cf0b2f9c4af8176f41fe35fc433792
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216798"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310709"
 ---
 # <a name="prepare-and-upload-images-to-your-azure-iot-central-application"></a>Készítse elő és képek feltöltése az Azure IoT Central alkalmazáshoz
 
@@ -74,17 +74,17 @@ Tölthet fel képeket a a **alkalmazáskezelő**, keresse meg a **Alkalmazásbe�
 
 ![Alkalmazás-Rendszerkép feltöltése](media/howto-prepare-images/uploadapplicationmanager.png)
 
-Az előkészített képet feltölteni az alkalmazás-lemezképet csempére kattintva (268 x 160 px) a helyi gépen.
+Válassza ki az előkészített Rendszerkép feltöltése az alkalmazás-lemezképet csempére (268 x 160 px) a helyi gépen.
 
 ### <a name="application-dashboard"></a>Alkalmazás irányítópultja
 
-Töltsön fel egy képet, az alkalmazás irányítópult, lépjen a **irányítópult** az alkalmazás, és kattintson a **szerkesztése**. Ez a feladat végrehajtásához egy jelentéskészítő kell lennie:
+Töltsön fel egy képet, az alkalmazás irányítópult, lépjen a **irányítópult** az alkalmazás és a select **szerkesztése**. Ez a feladat végrehajtásához egy jelentéskészítő kell lennie:
 
 ![Alkalmazás irányítópult Rendszerkép feltöltése](media/howto-prepare-images/uploadhomepage.png)
 
-Konfigurálása kép alatt kattintson a lemezkép csempére, és töltse fel az előkészített rendszerképet a helyi gépen. A legkisebb méretű csempe 200 x 200 képpont, nagyobb csempék kisméretű csempe négyzet vagy téglalap alakú többszöröse lehet. Ha például 200-as x 400 képpont, 400 x 200 képpont vagy 400 x 400 képpont.
+Konfigurálása kép alatt válassza ki a kép csempére, és töltse fel az előkészített rendszerképet a helyi gépen. A legkisebb méretű csempe 200 x 200 képpont, nagyobb csempék kisméretű csempe négyzet vagy téglalap alakú többszöröse lehet. Ha például 200-as x 400 képpont, 400 x 200 képpont vagy 400 x 400 képpont.
 
-**Mentés** a feltöltött kép. Átméretezhető a szerkesztési módban. Kattintson a **kész** befejezésekor. 
+**Mentés** a feltöltött kép. Átméretezhető a szerkesztési módban. Válassza ki **kész** befejezésekor.
 
 ### <a name="device-template"></a>Eszközsablon
 
@@ -92,27 +92,27 @@ Töltsön fel egy képet, az eszköz sablonból, navigáljon a **Device Explorer
 
 ![Eszköz sablon Rendszerkép feltöltése](media/howto-prepare-images/uploaddevicetemplate.png)
 
-A kép csempére az előkészített kép feltöltése (64 x 64 képpont) a helyi gépen. 
+Válassza ki az előkészített kép feltöltése a képcsempe (64 x 64 képpont) a helyi gépen. 
 
 ### <a name="device-dashboard"></a>Az eszköz irányítópultja
 
-Töltsön fel egy képet, az eszköz irányítópulton, navigáljon a **Device Explorer**, válassza ki az eszköz sablont, majd egy eszközt. Majd válassza ki a **irányítópult** lapon, majd kattintson a **sablon szerkesztése**. Ez a feladat végrehajtásához egy jelentéskészítő kell lennie:
+Töltsön fel egy képet, az eszköz irányítópulton, navigáljon a **Device Explorer**, válassza ki az eszköz sablont, majd egy eszközt. Majd válassza ki a **irányítópult** lapon, és válassza **sablon szerkesztése**. Ez a feladat végrehajtásához egy jelentéskészítő kell lennie:
 
 ![Eszköz irányítópult Rendszerkép feltöltése](media/howto-prepare-images/uploaddevicedashboard.png)
 
-A lemezkép konfigurálása a lemezkép csempére, és válassza a helyi gépen a feltölteni kívánt fájl. A legkisebb méretű csempe 200 x 200 képpont, nagyobb csempék kisméretű csempe négyzet vagy téglalap alakú többszöröse lehet. Ha például 200-as x 400 képpont, 400 x 200 képpont vagy 400 x 400 képpont.
+Konfigurálása kép alatt válassza a képet, és válassza a helyi gépen a feltölteni kívánt fájl. A legkisebb méretű csempe 200 x 200 képpont, nagyobb csempék kisméretű csempe négyzet vagy téglalap alakú többszöröse lehet. Ha például 200-as x 400 képpont, 400 x 200 képpont vagy 400 x 400 képpont.
 
-**Mentés** a feltöltött kép. Átméretezheti és áthelyezheti, míg a szerkesztési módban. Kattintson a **kész** befejezésekor.
+**Mentés** a feltöltött kép. Átméretezheti és áthelyezheti, míg a szerkesztési módban. Válassza ki **kész** befejezésekor.
 
 ### <a name="device-set-dashboard"></a>Eszköz irányítópult beállítása
 
-Töltsön fel egy képet, az eszköz beállítása irányítópulton, navigáljon a **eszköz csoportok** , és válassza ki az eszköz beállítása, és egy eszköz. Majd válassza ki a **irányítópult** lapon, majd kattintson a **szerkesztése**:
+Töltsön fel egy képet, az eszköz beállítása irányítópulton, navigáljon a **eszköz csoportok** , és válassza ki az eszköz beállítása, és egy eszköz. Majd válassza ki a **irányítópult** lapon, és válassza **szerkesztése**:
 
 ![Töltse fel az eszköz az irányítópulton kép beállítása](media/howto-prepare-images/uploaddevicesetdashboard.png)
 
-Konfigurálása kép alatt kattintson a lemezkép csempére, és töltse fel az előkészített rendszerképet a helyi gépen. A legkisebb méretű csempe 200 x 200 képpont, nagyobb csempék kisméretű csempe négyzet vagy téglalap alakú többszöröse lehet. Ha például 200-as x 400 képpont, 400 x 200 képpont vagy 400 x 400 képpont.
+Konfigurálása kép alatt válassza ki a kép csempére, és töltse fel az előkészített rendszerképet a helyi gépen. A legkisebb méretű csempe 200 x 200 képpont, nagyobb csempék kisméretű csempe négyzet vagy téglalap alakú többszöröse lehet. Ha például 200-as x 400 képpont, 400 x 200 képpont vagy 400 x 400 képpont.
 
-**Mentés** a feltöltött kép. Átméretezheti és áthelyezheti, míg a szerkesztési módban. Kattintson a **kész** befejezésekor.
+**Mentés** a feltöltött kép. Átméretezheti és áthelyezheti, míg a szerkesztési módban. Válassza ki **kész** befejezésekor.
 
 ## <a name="next-steps"></a>További lépések
 

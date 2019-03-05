@@ -6,12 +6,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
-ms.openlocfilehash: 6b74d83de0495e3436c9bef623a827e8a1496767
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 3e5fa15bbd6890bc6f36c97aadf3aeaa980b5031
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53343294"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310318"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése a klasszikus metrikariasztásokat az Azure Monitor használatával
 
@@ -85,6 +85,8 @@ az monitor alert delete --name <alert name> --resource-group <group name>
 
 ## <a name="with-powershell"></a>A PowerShell-lel
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Ez a szakasz azt mutatja be, hogyan használható a PowerShell-parancsok létrehozása, megtekintése és kezelése a klasszikus metrikariasztásokat. A cikkben szereplő példák bemutatják, hogyan használhatja az Azure Monitor-parancsmagok a klasszikus metrikariasztásokat.
 
 1. Ha még nem tette, PowerShell beállítása a futást a számítógépen. További információkért lásd: [telepítése és konfigurálása PowerShell](/powershell/azure/overview). Emellett áttekintheti a teljes listáját, az Azure Monitor PowerShell-parancsmagok [Azure Monitor (elemzés) parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.insights).
@@ -92,40 +94,40 @@ Ez a szakasz azt mutatja be, hogyan használható a PowerShell-parancsok létreh
 2. Első lépésként jelentkezzen be az Azure-előfizetéshez.
 
     ```PowerShell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 
 3. Megjelenik egy bejelentkezési képernyő. Egyszer, jelentkezzen be a fiók a bérlő azonosítója, és alapértelmezett előfizetés-azonosító jelennek meg. Az összes Azure-parancsmagjaival működik az alapértelmezett előfizetést kontextusában. Hozzáfér az előfizetések listájának megtekintéséhez használja a következő parancsot:
 
     ```PowerShell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```
 
 4. A működő környezet másik előfizetésbe való módosításához használja a következő parancsot:
 
     ```PowerShell
-    Set-AzureRmContext -SubscriptionId <subscriptionid>
+    Set-AzContext -SubscriptionId <subscriptionid>
     ```
 
 5. Az összes klasszikus metrikaalapú riasztási szabályok az erőforráscsoport kérheti le:
 
     ```PowerShell
-    Get-AzureRmAlertRule -ResourceGroup montest
+    Get-AzAlertRule -ResourceGroup montest
     ```
 
 6. Megtekintheti a klasszikus a metrikaalapú riasztási szabály részletei
 
     ```PowerShell
-    Get-AzureRmAlertRule -Name simpletestCPU -ResourceGroup montest -DetailedOutput
+    Get-AzAlertRule -Name simpletestCPU -ResourceGroup montest -DetailedOutput
     ```
 
 7. Állítsa be a célerőforrás összes riasztási szabályt kérheti le. Például állítsa be a riasztási szabályok az összes virtuális gépen.
 
     ```PowerShell
-    Get-AzureRmAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
+    Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
     ```
 
-8. Klasszikus riasztási szabályok a Powershellen keresztül többé nem hozható létre. Szeretné használni az Új riasztási szabály létrehozása ["Add-AzureRmMetricAlertRule"](https://docs.microsoft.com/powershell/module/azurerm.insights/add-azurermmetricalertrule?view=azurermps-6.13.0) parancsot.
+8. Klasszikus riasztási szabályok a Powershellen keresztül többé nem hozható létre. Szeretné használni az Új riasztási szabály létrehozása ["Add-AzMetricAlertRule"](https://docs.microsoft.com/powershell/module/az.insights/add-azmetricalertrule?view=azurermps-6.13.0) parancsot.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -8,12 +8,12 @@ ms.date: 02/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: c595627275848de5489fe11e1327a72bf6251199
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 80ba612bf0f76fb0c1e202bec0bf88fa75fb2c98
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213262"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314007"
 ---
 # <a name="export-your-data-from-azure-iot-central"></a>Exportálhatja az adatokat az Azure IoT Central
 
@@ -85,14 +85,14 @@ Most, hogy a tárolási és Event Hubs és a Service Bus cél exportálhatja az 
 
 1. Jelentkezzen be az IoT Central alkalmazáshoz.
 
-2. A bal oldali menüben kattintson a **folyamatos adatexportálás**.
+2. A bal oldali menüben válassza ki a **folyamatos adatexportálás**.
 
     > [!Note]
     > Ha nem látja a folyamatos adatexportálás bal oldali menüben lévő, Ön nem rendszergazda az alkalmazásban. Kérdezze meg a rendszergazda állíthatja be az adatok exportálása.
 
     ![Új Eseményközpont létrehozása](media/howto-export-data-experimental/export_menu.png)
 
-3. Kattintson a **+ új** gombra a jobb felső sarokban. Válasszon egyet az **Azure Blob Storage**, **Azure Event Hubs**, vagy **Azure Service Bus** az exportálás céljaként.
+3. Válassza ki a **+ új** gombra a jobb felső sarokban. Válasszon egyet az **Azure Blob Storage**, **Azure Event Hubs**, vagy **Azure Service Bus** az exportálás céljaként.
 
     > [!NOTE]
     > Export alkalmazásonként maximális száma öt.
@@ -111,10 +111,10 @@ Most, hogy a tárolási és Event Hubs és a Service Bus cél exportálhatja az 
 
 5. (Nem kötelező) Ha úgy döntött **adjon meg egy kapcsolati karakterláncot**, egy új mező jelenik meg, hogy illessze be a kapcsolati karakterláncot. Kapcsolati karakterláncára beolvasni a:
     - Storage-fiókot, nyissa meg a Storage-fiókba az Azure Portalon.
-        - A **beállítások**, kattintson a **hozzáférési kulcsok**
+        - A **beállítások**válassza **hozzáférési kulcsok**
         - 1. kulcs kapcsolati karakterláncát vagy a 2. kulcs kapcsolati karakterlánc másolása
     - Az Event Hubs vagy a Service Bus, nyissa meg a névteret, az Azure Portalon.
-        - A **beállítások**, kattintson a **megosztott hozzáférési házirendek**
+        - A **beállítások**válassza **megosztott hozzáférési házirendek**
         - Válassza ki az alapértelmezett **RootManageSharedAccessKey** , vagy hozzon létre egy újat
         - Vagy az elsődleges vagy másodlagos kapcsolati karakterlánc másolása
 

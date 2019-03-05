@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 01/31/2019
+ms.date: 03/01/2019
 ms.author: markvi
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3711f2b2901ddbe49b4d6a49cabef12ac5dab3e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0f3c1dae656e91fab91878ca2411f6cad0fc0431
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192472"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315146"
 ---
 # <a name="what-is-device-management-in-azure-active-directory"></a>Az Azure Active Directory eszközfelügyeletének ismertetése
 
@@ -89,7 +89,7 @@ Az **Azure AD-csatlakozás** olyan vállalatoknak való, amelyeknek az elsősorb
 
 Az Azure AD-csatlakoztatott eszközök használata a következő előnyökkel jár:
 
-- **Egyszeri bejelentkezés (SSO)** az Azure által felügyelt SaaS-alkalmazásokban és -szolgáltatásokban. A felhasználóknak nem kell külön hitelesíteniük magukat a munkahelyi erőforrások hozzáférésekor. Az SSO akkor is működik, ha a felhasználók nem kapcsolódnak a tartományi hálózathoz.
+- **Egyszeri bejelentkezés (SSO)** az Azure által felügyelt SaaS-alkalmazásokban és -szolgáltatásokban. A felhasználóknak nem kell külön hitelesíteniük magukat a munkahelyi erőforrások hozzáférésekor. Az egyszeri bejelentkezés funkció érhető el, akkor is, ha a felhasználók nem csatlakoznak a tartományi hálózaton.
 
 - A felhasználói beállítások **vállalati előírásoknak megfelelő hordozása** a csatlakoztatott eszközökön. A felhasználóknak nem kell csatlakozniuk egy Microsoft-fiókhoz (például a Hotmailhez), hogy több eszköz beállításait is áttekinthessék.
 

@@ -8,12 +8,12 @@ ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: c06939ccb920954c08ef02f38e6d12471ac267db
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: e0c4b90511da78ac5a8e454f653ab2a3819697c0
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959290"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57317594"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Hozzon létre munkafolyamatokat az IoT Central-összekötő a Microsoft Flow
 
@@ -23,31 +23,31 @@ Munkafolyamatok automatizálása a számos alkalmazásokat és szolgáltatásoka
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- A használatalapú fizetés alkalmazások
+- A Pay-As-You-Go application
 - Egy Microsoft személyes és munkahelyi vagy iskolai fiókot, Flow-ba való bejelentkezéshez ([tudjon meg többet a Microsoft Flow-tervek](https://aka.ms/microsoftflowplans))
 
 ## <a name="trigger-a-workflow-when-a-rule-is-triggered"></a>Amikor egy szabály akkor lesz kiváltva munkafolyamat elindítására
 
 Ez a szakasz bemutatja, hogyan indítható el a Flow mobilalkalmazás mobil értesítés, ha egy szabály akkor lesz kiváltva, az IoT-központ.
 
-1. Első lépésként [olyan szabályt hoz létre az IoT-központ](howto-create-telemetry-rules.md). Miután menti a szabály feltételeit, kattintson a **Microsoft Flow művelet** egy új művelet. Egy új böngészőlapon vagy ablakban kell nyissa meg a böngészőben, átirányítjuk a Microsoft Flow-bA.
+1. Első lépésként [olyan szabályt hoz létre az IoT-központ](howto-create-telemetry-rules.md). Miután mentette a szabály feltételeit, jelölje be a **Microsoft Flow művelet** új műveletként. Egy új böngészőlapon vagy ablakban kell nyissa meg a böngészőben, átirányítjuk a Microsoft Flow-bA.
 
     ![Hozzon létre egy új Microsoft Flow-művelet](media/howto-add-microsoft-flow/createflowaction.PNG)
 
 1. Jelentkezzen be a Microsoft Flow szolgáltatásba. Ez nem kell ugyanazt a fiókot, mint amelyet az IoT-központ használja. Egy Áttekintés lap megjelenítése egy IoT-központ csatlakozó, amely egy egyéni műveleti nyílik.
 
-1. Jelentkezzen be az IoT Central-összekötő, és kattintson a **Folytatás**. Ekkor megnyílik a Microsoft Flow Tervező a munkafolyamat létrehozása alatt. A munkafolyamat, amely rendelkezik az alkalmazás és a szabály már kitöltött IoT-központ eseményindító tartozik.
+1. Jelentkezzen be az IoT Central-összekötő, és válassza ki **Folytatás**. Ekkor megnyílik a Microsoft Flow Tervező a munkafolyamat létrehozása alatt. A munkafolyamat, amely rendelkezik az alkalmazás és a szabály már kitöltött IoT-központ eseményindító tartozik.
 
 1. Válasszon **+ új lépés** és **művelet hozzáadása**. Ezen a ponton a munkafolyamat bármely elvégzendő is hozzáadhat. Példaként nézzük mobil értesítés küldése. Keresse meg **értesítési**, és válassza a **értesítések - mobil értesítés küldése**.
 
 1. A műveletet töltse ki a kívánt tegyük fel, hogy az értesítési szövegmezőben. Megadhat *dinamikus tartalom* az IoT-központ szabályból, mentén fontos információkat, például az eszköz és az időbélyegző-értesítések való átadásához.
 
     > [!NOTE]
-    > Kattintson a "További információk" szöveget, mérés és tulajdonságértékeket, amely kiváltotta a szabály a dinamikus tartalom ablakban.
+    > Válassza ki a **Továbbiak** a dinamikus tartalom ablakban elolvashatja a mérés és tulajdonság értékei, amely kiváltotta a szabály a szöveget.
 
     ![Folyamatvezérlés dinamikus ablaktáblán nyissa meg a művelet szerkesztése](./media/howto-add-microsoft-flow/flowdynamicpane.PNG)
 
-1. Ha elkészült a művelet szerkesztését, kattintson a **mentése**. Akkor jut el a munkafolyamatot – áttekintés oldalra. Itt láthatja a futtatási előzményeket, és megoszthatja más munkatársakkal.
+1. Ha elkészült a művelet szerkesztése, válassza ki **mentése**. Akkor jut el a munkafolyamatot – áttekintés oldalra. Itt láthatja a futtatási előzményeket, és megoszthatja más munkatársakkal.
 
     > [!NOTE]
     > Ha azt szeretné, más felhasználók az IoT-központ alkalmazásban ez a szabály szerkesztéséhez, meg kell osztania azt velük a Microsoft Flow. A Microsoft Flow-fiókok hozzáadása tulajdonosként a munkafolyamatban.

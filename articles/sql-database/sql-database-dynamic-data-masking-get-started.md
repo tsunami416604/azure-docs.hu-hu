@@ -11,13 +11,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 7ca54117b014cb093b63e265864b0b0efa787865
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 03/04/2019
+ms.openlocfilehash: c174167268e95e55b0916d2340005538d3ae8add
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461219"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57336784"
 ---
 # <a name="sql-database-dynamic-data-masking"></a>Az SQL Database dinamikus adatmaszkolás
 
@@ -57,8 +57,8 @@ A DDM ajánlatok motor megőrzendő tartalomként jelöli meg az adatbázis egye
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-powershell-cmdlets"></a>Az adatbázis Powershell-parancsmagok használatával dinamikus adatmaszkolás beállítása
 
-Lásd: [az Azure SQL Database-parancsmagok](https://docs.microsoft.com/powershell/module/azurerm.sql).
+Lásd: [az Azure SQL Database-parancsmagok](https://docs.microsoft.com/powershell/module/az.sql).
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-rest-api"></a>Állítsa be a dinamikus adatmaszkolás az adatbázis, a REST API használatával
 
-Lásd: [műveleteket az Azure SQL Database](https://msdn.microsoft.com/library/dn505719.aspx).
+Lásd: [műveleteket az Azure SQL Database](https://docs.microsoft.com/rest/api/sql/).

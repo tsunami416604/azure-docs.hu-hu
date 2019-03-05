@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/27/2017
 ms.author: gokuma
-ms.openlocfilehash: 44427183b6cc785af33daf92bda050336eec5284
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 35d5e5d76dbcb4f1d995a9da13a81ef8b184150c
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245286"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337345"
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>A Linux és Windows rendszerre készült Azure Data Science Virtual Machine (DSVM, adatelemző virtuális gép) bemutatása
 
@@ -38,7 +38,7 @@ Az adatelemző virtuális gépet úgy tervezték és konfigurálták, hogy sokf�
 Ez a szakasz néhány alapvető alkalmazási helyzetet javasol, amelyben az adatelemző virtuális gép üzembe helyezhető.
 
 ### <a name="preconfigured-analytics-desktop-in-the-cloud"></a>Előre konfigurált felhőbeli elemzési kezelőfelület
-Az adatelemző virtuális gép alapszintű konfigurációt kínál azoknak az adatszakértőknek, akik helyszíni számítógépeiket felügyelt felhőbeli kezelőfelületre szeretnék cserélni. Ez az alapszint biztosítja, hogy egy csapat valamennyi adatszakértője egységes beállításokkal ellenőrizhesse a kísérleti eredményeket, és elősegíti az együttműködést. A rendszergazdák terhelését csökkentve a költségeket is kíméli, és megtakarítja a fejlett elemzésekhez szükséges különböző szoftvercsomagok értékeléséhez, telepítéséhez és üzemeltetéséhez szükséges időt.  
+Az adatelemző virtuális gép alapszintű konfigurációt kínál azoknak az adatszakértőknek, akik helyszíni számítógépeiket felügyelt felhőbeli kezelőfelületre szeretnék cserélni. Ez az alapszint biztosítja, hogy egy csapat valamennyi adatszakértője egységes beállításokkal ellenőrizhesse a kísérleti eredményeket, és elősegíti az együttműködést. A rendszergazdák terhelését csökkentve a költségeket is kíméli, és megtakarítja a fejlett elemzésekhez szükséges különböző szoftvercsomagok értékeléséhez, telepítéséhez és üzemeltetéséhez szükséges időt.
 
 ### <a name="data-science-training-and-education"></a>Adatelemzési képzés és oktatás
 A vállalati oktatók és adatszakértőket tanító előadók általában egy virtuálisgép-lemezképpel érik el, hogy tanítványaik egységes beállításokkal dolgozzanak, és a minták kiszámíthatóan működjenek. Az adatelemző virtuális gép igény szerinti környezetet hoz létre egységes beállításokkal, amely megkönnyíti a támogatást és az inkompatibilitási nehézségek leküzdését. Olyan esetekben, amikor gyakran kell környezetet kiépíteni, különösen a rövidebb kurzusokhoz, ez jelentős előnnyel jár.
@@ -50,7 +50,7 @@ Az adatelemzési ötletbörzékhez/versenyekhez és a nagytömegű adatok elemz�
 Az adatelemző virtuális gép minimális előkészítéssel felhasználható olyan eszközök felmérésére és megismerésére, mint a Microsoft ML Server, az SQL Server, a Visual Studio eszközei, a Jupyter, a deep learning / ML eszközkészletek és a közösségben népszerű új eszközök. Mivel a Data Science VM gyorsan beállítható, olyan egyéb rövidtávú alkalmazási helyzetekben is felhasználható, mint a közzétett kísérletek replikálása, bemutatók futtatása, online foglalkozások útmutatásainak követése vagy konferenciaképzések megtartása.
 
 ### <a name="deep-learning"></a>Deep learning
-A Data Science VM-en modelleket taníthat be a grafikus processzorokon (GPU) futtatott mélytanulási algoritmusok segítségével. Az Azure-felhőbeli virtuálisgép-méretezési lehetőségeket kihasználva a DSVM segít a felhőbeli GPU-alapú hardver igény szerinti használatában. Nagy modellek betanításakor vagy ha gyors számításokra van szükség, az operációs rendszerlemez megtartásával lehet áttérni GPU-alapó virtuális gépre.  A DSVM Windows Server 2016-os kiadása az előre telepített GPU-illesztőprogramokat, keretrendszereket és deep learning keretrendszerek GPU-verzióit is tartalmazza. A linuxos kiadáson a GPU-alapú mélytanulás a CentOS-es és ubuntus DSVM-eken is engedélyezve van. A Data Science VM ubuntus, CentOS-es vagy Windows 2016-os kiadása nem GPU-alapú Azure-beli virtuális gépekre is telepíthető. Ilyenkor a mélytanulási keretrendszer visszaáll CPU-üzemmódra. 
+A Data Science VM-en modelleket taníthat be a grafikus processzorokon (GPU) futtatott mélytanulási algoritmusok segítségével. Az Azure-felhőbeli virtuálisgép-méretezési lehetőségeket kihasználva a DSVM segít a felhőbeli GPU-alapú hardver igény szerinti használatában. Nagy modellek betanításakor vagy ha gyors számításokra van szükség, az operációs rendszerlemez megtartásával lehet áttérni GPU-alapó virtuális gépre.  A DSVM Windows Server 2016-os kiadása az előre telepített GPU-illesztőprogramokat, keretrendszereket és deep learning keretrendszerek GPU-verzióit is tartalmazza. A linuxos kiadáson a GPU-alapú mélytanulás a CentOS-es és ubuntus DSVM-eken is engedélyezve van. A Data Science VM ubuntus, CentOS-es vagy Windows 2016-os kiadása nem GPU-alapú Azure-beli virtuális gépekre is telepíthető. Ilyenkor a mélytanulási keretrendszer visszaáll CPU-üzemmódra.
 
 ## <a name="whats-included-in-the-data-science-vm"></a>Mi tartozik az adatelemző virtuális géphez?
 Az adatelemző virtuális gépen sok közkedvelt adatelemzési és deep learning eszköz már telepítve és konfigurálva van. Olyan eszközöket is tartalmaz, amelyek megkönnyítik a különböző Azure adat- és elemzési termékek használatát. Ilyen például a Microsoft ML Server (R, Python) a prediktív modellek összeállításához vagy az SQL Server 2017 a nagyméretű adatkészletek feltárásához. Tartalmaz még a nyílt forráskód közösségtől és a Microsofttól származó sokféle eszközt, mintakódokat és jegyzettömböket. Az alábbi táblázat elemenként mutatja be és hasonlítja össze az adatelemző virtuális gép windowsos és linuxos kiadásainak fő összetevőit.
@@ -86,7 +86,7 @@ Az adatelemző virtuális gépen sok közkedvelt adatelemzési és deep learning
 | &nbsp;&nbsp;&nbsp;&nbsp;* Vim és Emacs | I | I |
 | &nbsp;&nbsp;&nbsp;&nbsp;* Git és GitBash | I | I |
 | &nbsp;&nbsp;&nbsp;&nbsp;* OpenJDK | I | I |
-| &nbsp;&nbsp;&nbsp;&nbsp;* .Net keretrendszer | I | N |
+| &nbsp;&nbsp;&nbsp;&nbsp;* .NET-keretrendszer | I | N |
 | PowerBI Desktop | I | N |
 | SDK-k az Azure és a Cortana Intelligence szolgáltatáscsomag eléréséhez | I | I |
 | **Adatáthelyezési és felügyeleti eszközök** | | |

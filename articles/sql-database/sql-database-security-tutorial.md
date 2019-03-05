@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 2b528892d2046f590d979d1646583e028fe4a834
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 4fc1b4d4d0d7f215f8fee1de01e171c3fdc5aae5
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57218073"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308788"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>Oktatóanyag: Egyetlen vagy készletezett adatbázis védelme
 
@@ -142,7 +142,7 @@ Konfigurálása az Azure AD kapcsolatos információkért lásd:
 
 - [A helyszíni identitások integrálása az Azure ad-ben](../active-directory/hybrid/whatis-hybrid-identity.md)
 - [A saját tartománynév hozzáadása az Azure ad-ben](../active-directory/active-directory-domains-add-azure-portal.md)
-- [A Microsoft Azure mostantól támogatja a Windows Server AD összevonási](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/)
+- [A Microsoft Azure mostantól támogatja a Windows Server AD összevonási](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)
 - [Az Azure AD-címtár felügyelete](../active-directory/fundamentals/active-directory-administer.md)
 - [Azure AD kezelése PowerShell használatával](/powershell/azure/overview?view=azureadps-2.0)
 - [Hibrid identitás – szükséges portok és protokollok](../active-directory/hybrid/reference-connect-ports.md)

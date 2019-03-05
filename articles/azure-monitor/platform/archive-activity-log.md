@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: nikiest
 ms.subservice: logs
-ms.openlocfilehash: f02b17ff4e83c3300973c86f26db76ebff5a8d0a
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 5328173090bce3e3adf51a1503e18c8da5532b0e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750888"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310902"
 ---
 # <a name="archive-the-azure-activity-log"></a>Az Azure tevékenységnapló archiválása
 Ebben a cikkben bemutatjuk a használatáról az Azure portal, PowerShell-parancsmagok vagy többplatformos parancssori felület archiválása a [ **Azure-tevékenységnapló** ](../../azure-monitor/platform/activity-logs-overview.md) a storage-fiókban. Ez a beállítás akkor hasznos, ha szeretné megőrizni a naplózási, statikus elemzési és biztonsági mentés (, teljes körűen felügyelve az adatmegőrzési) 90 napnál hosszabb ideig Tevékenységnaplót. Ha csak szeretné megőrizni az események 90 napig, vagy kisebb, nem kell állítania archiválás tárfiókba, mivel a tevékenységnapló eseményei vannak az Azure platformon 90 napig őrizzük meg engedélyezése archiválás nélkül.
@@ -44,10 +44,12 @@ Az alábbi módszerek bármelyikével a tevékenységnapló archiválása, áll�
 
 ## <a name="archive-the-activity-log-via-powershell"></a>A PowerShell Tevékenységnaplót archiválhatja
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
    ```powershell
    # Settings needed for the new log profile
    $logProfileName = "default"
-   $locations = (Get-AzureRmLocation).Location
+   $locations = (Get-AzLocation).Location
    $locations += "global"
    $subscriptionId = "<your Azure subscription Id>"
    $resourceGroupName = "<resource group name your storage account belongs to>"
@@ -56,13 +58,13 @@ Az alábbi módszerek bármelyikével a tevékenységnapló archiválása, áll�
    # Build the storage account Id from the settings above
    $storageAccountId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccountName"
 
-   Add-AzureRmLogProfile -Name $logProfileName -Location $locations -StorageAccountId $storageAccountId
+   Add-AzLogProfile -Name $logProfileName -Location $locations -StorageAccountId $storageAccountId
    ```
 
 | Tulajdonság | Szükséges | Leírás |
 | --- | --- | --- |
 | StorageAccountId |Igen |Erőforrás-azonosító, amelyhez tevékenységeket tartalmazó naplók menteni a tárfiók. |
-| Helyek |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeket gyűjtő vesszővel tagolt listája. Megtekintheti összes régiók listáját az előfizetéshez a `(Get-AzureRmLocation).Location`. |
+| Helyek |Igen |Régiók, amelynek szeretné tevékenységnapló eseményeket gyűjtő vesszővel tagolt listája. Megtekintheti összes régiók listáját az előfizetéshez a `(Get-AzLocation).Location`. |
 | RetentionInDays |Nem |Mely eseményeket meg kell őrizni, 1 és 2147483647 között eltelt napok száma. A nulla érték határozatlan ideig tárolja a naplók (végtelen). |
 | Kategóriák |Nem |Eseménykategóriák kell gyűjteni, vesszővel tagolt listája. Lehetséges értékek: írási, törlési és művelet.  Ha nincs megadva, majd az összes lehetséges az alapértelmezett paraméterértékek |
 

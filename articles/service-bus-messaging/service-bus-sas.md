@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/14/2018
 ms.author: aschhab
-ms.openlocfilehash: d70b7acb906c60001ad005a0fe9361950bc029b7
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 8f5c1755462d2bbd28dd7f8db427cda141817588
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895856"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308856"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>A Service Bus hozzáférés-vezérlés közös hozzáférésű jogosultságkódokkal
 
@@ -84,7 +84,7 @@ A kivonatoló számítás hasonlít az alábbi pszeudo-kódot, és a kivonat 256
 SHA-256('https://<yournamespace>.servicebus.windows.net/'+'\n'+ 1438205742)
 ```
 
-A jogkivonat nem kivonatolt értékeket tartalmazza, úgy, hogy a címzett be is újraszámítható egy ugyanazokkal a paraméterekkel, a kivonatoló ellenőrzése, hogy a kibocsátó érvényes aláíró kulcs birtokában van. 
+A jogkivonat nem kivonatolt értékeket tartalmazza, úgy, hogy a címzett be is újraszámítható egy ugyanazokkal a paraméterekkel, a kivonatoló ellenőrzése, hogy a kibocsátó érvényes aláíró kulcs birtokában van.
 
 Az erőforrás URI azonosítója a teljes erőforrás URI-ját a Service Bus, amelyhez hozzáférést igényelnek. Ha például `http://<namespace>.servicebus.windows.net/<entityPath>` vagy `sb://<namespace>.servicebus.windows.net/<entityPath>`fiókerdőből, azaz `http://contoso.servicebus.windows.net/contosoTopics/T1/Subscriptions/S3`. Az URI-t kell [kódolt](https://msdn.microsoft.com/library/4fkewx0t.aspx).
 
@@ -156,7 +156,7 @@ helloMessage.MessageId = "SAS-Sample-Message";
 sendClient.Send(helloMessage);
 ```
 
-Használhatja a jogkivonat-szolgáltató jogkivonatok kiállításához közvetlenül más ügyfelek számára. 
+Használhatja a jogkivonat-szolgáltató jogkivonatok kiállításához közvetlenül más ügyfelek számára.
 
 Kapcsolati karakterláncok tartalmazhatnak a szabály nevét (*SharedAccessKeyName*) és a szabály kulcs (*SharedAccessKey*) vagy egy korábban kiadott token (*SharedAccessSignature*). Ha azok szerepelnek a kapcsolati karakterlánc minden konstruktor vagy egy kapcsolati karakterláncot elfogadó gyári metódus átadott, a SAS jogkivonat-szolgáltató az automatikusan létrehozott és kitölti a rendszer.
 
@@ -171,7 +171,7 @@ POST https://<yournamespace>.servicebus.windows.net/<yourentity>/messages
 Content-Type: application/json
 Authorization: SharedAccessSignature sr=https%3A%2F%2F<yournamespace>.servicebus.windows.net%2F<yourentity>&sig=<yoursignature from code above>&se=1438205742&skn=KeyName
 ContentType: application/atom+xml;type=entry;charset=utf-8
-``` 
+```
 
 Ne feledje, hogy minden működik. Egy üzenetsor, témakör vagy előfizetés SAS hozhat létre.
 
@@ -183,7 +183,7 @@ Az előző szakaszban bemutatta, hogyan használható a SAS-jogkivonat HTTP POST
 
 Mielőtt hozzákezdene adatokat küldeni a Service Bus, a közzétevő kell küldenie egy AMQP üzenetben a SAS-jogkivonat nevű jól definiált AMQP csomóponthoz **$cbs** (tekintheti meg a szolgáltatás által használt beszerezni, és ellenőrizze a biztonsági Társítások "speciális" üzenetsorokkal token). A közzétevő meg kell adnia a **ReplyTo** mezőt az AMQP-üzenetben; Ez a csomópont, amelyben a szolgáltatás válaszol azokra a közzétevőkre a jogkivonat érvényesítésére (egy egyszerű kérés/válasz mintának közzétevője és a szolgáltatás közötti eredménye ). Ez a válasz csomópont jön létre "menet közben," "távoli csomópont dinamikus létrehozása" kapcsolatos különféle leírtak szerint az AMQP 1.0-s specifikációnak. Az SAS-token érvényességének ellenőrzése után a kiadó előre, és adatokat küldeni a szolgáltatás indítása.
 
-A következő lépések bemutatják, hogyan küldhet a SAS-jogkivonat AMQP protokoll használatával a [AMQP.Net Lite](https://github.com/Azure/amqpnetlite) könyvtár. Ez akkor hasznos, ha nem használja a hivatalos Service Bus SDK-t (például a WinRT, .net Compact Framework, a .net Micro keretrendszer és a Mono) fejlesztése C nyelven\#. Természetesen ez a kódtár akkor hasznos, hogy jobban elképzelhesse, hogyan jogcímalapú biztonsági módon működik-e az AMQP szintjén bemutatta, hogyan működik a HTTP (a HTTP POST-kérelmet, és a SAS-jogkivonat az "Engedélyezés" fejléc belül küldött) szintjén. Ha már nincs szüksége az ilyen AMQP mélyreható ismereteket, is használhatja a hivatalos Service Bus SDK a .net Framework alkalmazások, amelyek az Ön számára el.
+A következő lépések bemutatják, hogyan küldhet a SAS-jogkivonat AMQP protokoll használatával a [AMQP.NET Lite](https://github.com/Azure/amqpnetlite) könyvtár. Ez akkor hasznos, ha nem használja a hivatalos Service Bus SDK-t (például a WinRT, platforma .NET Compact Framework, a Micro .NET-keretrendszer és Mono) fejlesztése C nyelven\#. Természetesen ez a kódtár akkor hasznos, hogy jobban elképzelhesse, hogyan jogcímalapú biztonsági módon működik-e az AMQP szintjén bemutatta, hogyan működik a HTTP (a HTTP POST-kérelmet, és a SAS-jogkivonat az "Engedélyezés" fejléc belül küldött) szintjén. Ha már nincs szüksége az ilyen AMQP mélyreható ismereteket, használhatja a hivatalos Service Bus SDK .NET-keretrendszer alkalmazásokkal, amelyek az Ön számára el.
 
 ### <a name="c35"></a>C&#35;
 
@@ -236,12 +236,12 @@ private bool PutCbsToken(Connection connection, string sasToken)
 }
 ```
 
-A `PutCbsToken()` metódus kap a *kapcsolat* (AMQP kapcsolati osztály példánya által biztosított módon a [AMQP .NET Lite könyvtár](https://github.com/Azure/amqpnetlite)), amely a TCP-kapcsolatot jelenti. a szolgáltatás és a *sasToken* paraméter, amely a SAS-token küldése. 
+A `PutCbsToken()` metódus kap a *kapcsolat* (AMQP kapcsolati osztály példánya által biztosított módon a [AMQP .NET Lite könyvtár](https://github.com/Azure/amqpnetlite)), amely a TCP-kapcsolatot jelenti. a szolgáltatás és a *sasToken* paraméter, amely a SAS-token küldése.
 
 > [!NOTE]
 > Fontos, hogy a kapcsolat létrejött-e a **SASL hitelesítési mechanizmust beállítása névtelen** (és nem az alapértelmezett egyszerű felhasználónévvel és jelszóval, ha már nincs szükség az SAS-token küldéséhez használt).
-> 
-> 
+>
+>
 
 Ezután a közzétevő hozza létre a SAS-jogkivonat küldésére és fogadására a a válasz (tokenérvényesítés eredmény) a szolgáltatás két AMQP hivatkozást.
 
@@ -295,7 +295,7 @@ Az alábbi táblázat bemutatja a Service Bus-erőforrások különféle művele
 | **Szabályok** | | |
 | Szabály létrehozása |Kezelés |../myTopic/Subscriptions/mySubscription |
 | Szabály törlése |Kezelés |../myTopic/Subscriptions/mySubscription |
-| Szabályok számbavétele |Kezelheti, vagy hallgassa |../myTopic/Subscriptions/mySubscription/Rules 
+| Szabályok számbavétele |Kezelheti, vagy hallgassa |../myTopic/Subscriptions/mySubscription/Rules
 
 ## <a name="next-steps"></a>További lépések
 

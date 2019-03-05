@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/04/2018
 ms.author: yzheng
 ms.subservice: common
-ms.openlocfilehash: 3013365f96fa6841e4db826f9010c6ea994eba2a
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: b6077ee98a1c94d26a44f8686394d28213e0786e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879594"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315520"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Az Azure Blob storage (előzetes verzió) életciklusának kezelése
 
@@ -228,8 +228,7 @@ Ez a példa bemutatja, hogyan előtaggal van ellátva a blokkblobok használatá
     {
       "name": "agingRule", 
       "type": "Lifecycle", 
-      "definition": 
-        {
+      "definition": {
           "filters": {
             "blobTypes": [ "blockBlob" ],
             "prefixMatch": [ "container1/foo", "container2/bar" ]
@@ -257,8 +256,7 @@ Néhány adatot tétlen marad, a felhőben és a ritkán, ha követően tárolja
     {
       "name": "archiveRule", 
       "type": "Lifecycle", 
-      "definition": 
-        {
+      "definition": {
           "filters": {
             "blobTypes": [ "blockBlob" ],
             "prefixMatch": [ "archivecontainer" ]
@@ -286,8 +284,7 @@ Bizonyos adatok várhatóan napok vagy akár hónapokat, csökkentheti a költs�
     {
       "name": "expirationRule", 
       "type": "Lifecycle", 
-      "definition": 
-        {
+      "definition": {
           "filters": {
             "blobTypes": [ "blockBlob" ]
           },
@@ -313,8 +310,7 @@ Módosítva, és rendszeresen élettartama során elért adatok esetén pillanat
     {
       "name": "snapshotRule", 
       "type": "Lifecycle", 
-      "definition": 
-        {
+      "definition": {
           "filters": {
             "blobTypes": [ "blockBlob" ],
             "prefixMatch": [ "activedata" ]

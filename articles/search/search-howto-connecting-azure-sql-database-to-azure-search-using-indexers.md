@@ -1,7 +1,7 @@
 ---
 title: Csatlakozás és tartalmának indexelőket – Azure Search használatával az Azure SQL Database indexelése
 description: Ismerje meg, hogyan feltérképezi az adatok teljes szöveges kereséshez, az Azure Search indexelők használatával Azure SQL Database-ben. Ez a cikk ismerteti, az indexelő konfigurációjának, valamint az adatok betöltése céljából.
-ms.date: 10/17/2018
+ms.date: 03/01/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 7df785d1493ad2df698ff197d72824ceb15d39ad
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 5453bcdd371c0639cb1d3568f05a1768e6204d3d
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752892"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315214"
 ---
 # <a name="connect-to-and-index-azure-sql-database-content-using-azure-search-indexers"></a>Csatlakozás és a tartalom az Azure Search-indexelők használatával Azure SQL Database indexelése
 
@@ -306,7 +306,7 @@ SQL-indexelő több konfigurációs beállítást tesz elérhetővé:
 | Beállítás | Adattípus | Cél | Alapértelmezett érték |
 | --- | --- | --- | --- |
 | queryTimeout |sztring |Beállítja az SQL-lekérdezés-végrehajtás időkorlátja |5 perc ("00: 05:00") |
-| disableOrderByHighWaterMarkColumn |Logikai |Hatására az SQL-lekérdezést használja a magas vízjelbe beleszámított házirend hagyja az ORDER BY záradékban. Lásd: [magas Vízjelbe beleszámított házirend](#HighWaterMarkPolicy) |false |
+| disableOrderByHighWaterMarkColumn |logikai |Hatására az SQL-lekérdezést használja a magas vízjelbe beleszámított házirend hagyja az ORDER BY záradékban. Lásd: [magas Vízjelbe beleszámított házirend](#HighWaterMarkPolicy) |false |
 
 Ezek a beállítások szerepelnek a `parameters.configuration` az indexelő definíciója az objektumot. Például állítsa be a lekérdezés időkorlátja 10 perc, hozzon létre vagy frissítse az indexelő a következő beállításokkal:
 

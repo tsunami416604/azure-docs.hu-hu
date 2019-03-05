@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 1/11/2019
 ms.author: amitsriva
-ms.openlocfilehash: c93434f060525f2f53f24c511bfa748a31d1fd61
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 14b99f648bb1d7e1926aa9d5dd9926e267ba9709
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453298"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309128"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Háttérrendszer állapota, diagnosztikai naplók és mérőszámok az Application Gateway számára
 
@@ -23,6 +23,8 @@ Az Azure Application Gateway használatával figyelemmel kísérheti az erőforr
 * [Naplók](#diagnostic-logging): A teljesítmény, a hozzáférési és egyéb adatok mentése vagy figyelési célból az erőforrásból felhasznált naplóihoz.
 
 * [Metrikák](#metrics): Az Application Gateway jelenleg rendelkezik hét metrikák megtekintéséhez a teljesítményszámlálókat.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="back-end-health"></a>Háttér-health
 
@@ -47,10 +49,10 @@ A háttérkészlet minden tagjának szerepel ezen a lapon (akár egy hálózati 
 
 ### <a name="view-back-end-health-through-powershell"></a>Háttér-állapotának megtekintése a PowerShell-lel
 
-A következő PowerShell-kód bemutatja, hogyan háttér-állapotának megtekintéséhez használja a `Get-AzureRmApplicationGatewayBackendHealth` parancsmagot:
+A következő PowerShell-kód bemutatja, hogyan háttér-állapotának megtekintéséhez használja a `Get-AzApplicationGatewayBackendHealth` parancsmagot:
 
 ```powershell
-Get-AzureRmApplicationGatewayBackendHealth -Name ApplicationGateway1 -ResourceGroupName Contoso
+Get-AzApplicationGatewayBackendHealth -Name ApplicationGateway1 -ResourceGroupName Contoso
 ```
 
 ### <a name="view-back-end-health-through-azure-cli"></a>Háttér-állapotának megtekintése az Azure CLI-n keresztül
@@ -121,7 +123,7 @@ A tevékenységnaplózás automatikusan engedélyezve van minden Resource Manage
 3. Engedélyezze a diagnosztikai naplózást az alábbi PowerShell-parancsmaggal:
 
     ```powershell
-    Set-AzureRmDiagnosticSetting  -ResourceId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/applicationGateways/<application gateway name> -StorageAccountId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Storage/storageAccounts/<storage account name> -Enabled $true     
+    Set-AzDiagnosticSetting  -ResourceId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/applicationGateways/<application gateway name> -StorageAccountId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Storage/storageAccounts/<storage account name> -Enabled $true     
     ```
     
 > [!TIP] 

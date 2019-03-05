@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: jdial
-ms.openlocfilehash: ed611eeeffa77aa42ab017ee97c6b1a0b7f7822e
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 0b859b6c3fa37e8dbac82436d1e2f2444c9d2dcf
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240660"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312154"
 ---
 # <a name="diagnostic-logging-for-a-network-security-group"></a>A hálózati biztonsági csoport diagnosztikai naplózás
 
@@ -120,7 +120,7 @@ az monitor diagnostic-settings create \
   --resource-group myWorkspaces
 ```
 
-Ha nem rendelkezik egy meglévő munkaterületet, is létrehozhat egyet a [az Azure portal](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [PowerShell](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace). Két kategóriába sorolhatók a naplózási engedélyezheti a naplókat. 
+Ha nem rendelkezik egy meglévő munkaterületet, is létrehozhat egyet a [az Azure portal](../azure-monitor/learn/quick-create-workspace.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [PowerShell](/powershell/module/az.operationalinsights/new-azoperationalinsightsworkspace). Két kategóriába sorolhatók a naplózási engedélyezheti a naplókat.
 
 Ha csak egy kategória vagy egyéb adatok, távolítsa el a kategória nem szeretne adatokat jelentkezzen be az előző parancs. Ha szeretne bejelentkezni egy másik [cél](#log-destinations) , mint a Log Analytics-munkaterületet, használja a megfelelő paramétereket az Azure-beli [tárfiók](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) vagy [Eseményközpont](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
@@ -131,7 +131,7 @@ Naplók megtekintése és elemzése. További információkért lásd: [megtekin
 Diagnosztikai adatok lehetnek:
 - [Azure Storage-fiókot írt](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json), a naplózási és manuális ellenőrzést. Megadhatja, hogy a megőrzési időtartam (napban) használata az erőforrás diagnosztikai beállításait.
 - [Az Eseményközpontok felé, folyamatos](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) egy külső szolgáltatás, vagy egyéni elemzési megoldás, mint a Power bi támogatunk.
-- [Az Azure az Azure Monitor-naplókban](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-diagnostics-direct-to-log-analytics).
+- [Az Azure Monitor-naplókban](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-diagnostics-direct-to-log-analytics).
 
 ## <a name="log-categories"></a>Naplókategóriák
 
@@ -155,7 +155,7 @@ Az Eseménynapló tartalmaz információt arról, hogy mely virtuális gépek, a
         "primaryIPv4Address":"192.168.1.4",
         "ruleName":"[SECURITY-RULE-NAME]",
         "direction":"[DIRECTION-SPECIFIED-IN-RULE]",
-        "priority":[PRIORITY-SPECIFIED-IN-RULE],
+        "priority":"[PRIORITY-SPECIFIED-IN-RULE]",
         "type":"[ALLOW-OR-DENY-AS-SPECIFIED-IN-RULE]",
         "conditions":{
             "protocols":"[PROTOCOLS-SPECIFIED-IN-RULE]",

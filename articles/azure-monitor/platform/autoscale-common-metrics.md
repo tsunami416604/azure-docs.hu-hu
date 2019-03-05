@@ -8,14 +8,17 @@ ms.topic: conceptual
 ms.date: 12/6/2016
 ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 736ff5565bb279d26e686421cc13f54a73b1c7e9
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 9da8e5fb88ff34e561b579b760973ecd23c884a3
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54461093"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312052"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Gyakori metrikák az Azure Monitor automatikus méretezés
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Az Azure Monitor automatikus méretezés lehetővé teszi futó példányok számának méretezése felfelé és lefelé, telemetriai adatok (metrikák) alapján. Ez a dokumentum ismerteti a gyakori metrikák, amelyeket érdemes használni. Az Azure Portalon válassza ki a metrika az erőforrás méretezése által. Méretezhető, hogy egy másik erőforrás közül azonban bármilyen mérőszám is választhat.
 
 Az Azure Monitor automatikus skálázása csak érvényes [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service - webalkalmazások](https://azure.microsoft.com/services/app-service/web/), és [APIManagement-szolgáltatások](https://docs.microsoft.com/azure/api-management/api-management-key-concepts). Más Azure-szolgáltatások különböző méretezési módokat kell használnia.
@@ -43,7 +46,7 @@ Az Azure-beli virtuális gép létrehozásakor a diagnosztika engedélyezve van,
 A mérőszámok listája a következő parancsot a PowerShell használatával is létrehozhat.
 
 ```
-Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
+Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
 A következő metrikák riasztást hozhat létre:
@@ -84,7 +87,7 @@ Ha egy virtuális Gépet hoz létre az Azure-ban, diagnosztika alapértelmezés 
 A mérőszámok listája a következő parancsot a PowerShell használatával is létrehozhat.
 
 ```
-Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
+Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
  A következő metrikák riasztást hozhat létre:
@@ -137,7 +140,7 @@ Automatikus méretezés, például a Http-várólista hossza gyakran web server 
 A Web Apps-mérőszámok listája a következő parancsot a PowerShell használatával is létrehozhat.
 
 ```
-Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
+Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
 Riasztás, vagy méretezheti metrikák alapján.

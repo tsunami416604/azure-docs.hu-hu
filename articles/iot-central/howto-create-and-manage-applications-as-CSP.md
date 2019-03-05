@@ -8,12 +8,12 @@ ms.author: dobett
 ms.date: 10/29/2018
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 73c3c57df215a66d914f5ea75475f74eff05a1f0
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 22e9954e66c05bfb2e425a01ffa6f9e3b93b761e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200292"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313718"
 ---
 # <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>Egy CSP-hez hozzon létre, és az ügyfél nevében egy Azure IoT központi alkalmazás kezelése 
 
@@ -25,7 +25,7 @@ Első lépésként jelentkezzen be a fiókját a Microsoft Partner portálra, é
 
 ![Microsoft Partner Centeren ügyfél megtekintése](media/howto-create-application-asCSP/image1.png)
 
-Az Azure IoT Central felügyeletére a szolgáltatásként jelenik meg. Kattintson az oldalon az új alkalmazások létrehozása vagy meglévő alkalmazások az ügyfélhez kezelése az Azure IoT Central hivatkozásra.
+Az Azure IoT Central felügyeletére a szolgáltatásként jelenik meg. Válassza ki az Azure IoT Central hivatkozása a lap új alkalmazások létrehozása vagy meglévő alkalmazások az ügyfélhez kezelése.
 
 ![Segítségével kezelheti az Azure IoT Central](media/howto-create-application-asCSP/image2.png)
 
@@ -33,7 +33,7 @@ Az Azure IoT központi alkalmazás-kezelő lap megjelenni. Az Azure IoT Central 
 
 ![Hozzon létre a CSP-kezelője](media/howto-create-application-asCSP/image3.png)
 
-Az Azure IoT központi alkalmazás létrehozása, kattintson a **új alkalmazás** csempére. Ez az alkalmazás létrehozása oldal betöltődik. Kell ezen a lapon az összes mezőt, és válassza a **létrehozás**. További információ az egyes alábbi mezők találja.
+Hozzon létre egy Azure IoT Central alkalmazáshoz, jelölje be a **új alkalmazás** csempére. Ez az alkalmazás létrehozása oldal betöltődik. Kell ezen a lapon az összes mezőt, és válassza a **létrehozás**. További információ az egyes alábbi mezők találja.
 
 ![Hozzon létre az alkalmazás oldalán a CSP-k](media/howto-create-application-asCSP/image4.png)
 

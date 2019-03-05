@@ -10,19 +10,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 12/19/2018
+ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 5bc8a408ce247ad2980983c3eb32807074af599f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 62e35a361f2fcf9d6f484b699084a78f66121957
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820824"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310097"
 ---
 # <a name="tutorial-move-azure-resources-to-another-resource-group"></a>Oktatóanyag: Azure-erőforrások áthelyezése másik erőforráscsoportba
 
 Ismerje meg az Azure-erőforrások áthelyezése egyik erőforráscsoportból egy másik erőforráscsoportba. Egy másik Azure-előfizetéshez egy Azure-előfizetésből is áthelyezheti az Azure-erőforrásokat. Ebben az oktatóanyagban a resource manager-sablon üzembe helyezéséhez a két erőforráscsoport és a egy storage-fiók használhatja. Ezután helyez át a storage-fiók az egyik erőforráscsoportból a másik.
+
+![Az Azure Resource Manager áthelyezés erőforrások diagramja](./media/resource-manager-tutorial-move-resources/resource-manager-template-move-resources.png)
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: mbullwin
-ms.openlocfilehash: b1f6024538c6807fd68a0d7b0b7ae2776938055b
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 71e70962a8c55d397b6261571cfef4a126d3e8b4
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888190"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57307819"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Application insights telemetria exportálása
 Szeretné megtartani a telemetriát azokhoz szabványos megőrzési idejénél hosszabb? Vagy specializált módon dolgozza fel? A folyamatos exportálás ideális ehhez. Az eseményeket az Application Insights portálon látható a JSON-formátumban a Microsoft Azure storage exportálhatók. Innen letöltheti az adatokat és bármilyen kódot írni kell őket feldolgoznia.  
@@ -29,7 +29,7 @@ A folyamatos exportálás beállítása előtt van néhány más érdemes figyel
 * [Analytics](../../azure-monitor/app/analytics.md) egy hatékony lekérdezési nyelvet biztosít a telemetriai adatokat. Exportálhatja eredményeket is.
 * Ha szeretne [feltárhatja az adatait a Power bi-ban](../../azure-monitor/app/export-power-bi.md ), azt megteheti a folyamatos exportálás használata nélkül.
 * A [adatelérési REST API](https://dev.applicationinsights.io/) a telemetriai adatok programozott módon hozzáférhet.
-* A telepítő is elérhető [Powershellen keresztül a folyamatos exportálás](https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/new-azurermapplicationinsightscontinuousexport?view=azurermps-5.7.0).
+* A telepítő is elérhető [Powershellen keresztül a folyamatos exportálás](https://docs.microsoft.com/powershell/module/az.applicationinsights/new-azapplicationinsightscontinuousexport).
 
 Miután az adatok folyamatos exportálása másolja át a Storage (amennyiben azt is marad mindaddig, amíg Ön, mint), érhető el továbbra is az Application Insightsban a szokásos módon [megőrzési időszak](../../azure-monitor/app/data-retention-privacy.md).
 

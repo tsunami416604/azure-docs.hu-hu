@@ -8,14 +8,16 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 1/11/2019
 ms.author: victorh
-ms.openlocfilehash: a65aabc7b56c4dd5f2d22974756f5f3e54cebb31
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 5552ca80059b4aa7ef96caf7984b4c15ec177d38
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867711"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316591"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Az Application Gateway gyakori kérdések
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="general"></a>Általános kérdések
 
@@ -41,10 +43,10 @@ HTTP/2 protokoll támogatása az application gateway figyelői-ügyfelekhez érh
 
 Alapértelmezés szerint a HTTP/2-támogatás le van tiltva. A következő Azure PowerShell-lel kódrészlet példakód bemutatja, hogyan tehető lehetővé, hogy:
 
-```powershell
-$gw = Get-AzureRmApplicationGateway -Name test -ResourceGroupName hm
+```azurepowershell
+$gw = Get-AzApplicationGateway -Name test -ResourceGroupName hm
 $gw.EnableHttp2 = $true
-Set-AzureRmApplicationGateway -ApplicationGateway $gw
+Set-AzApplicationGateway -ApplicationGateway $gw
 ```
 
 ### <a name="what-resources-are-supported-today-as-part-of-backend-pool"></a>Milyen erőforrások jelenleg háttérkészlet részeként támogatottak?
@@ -70,6 +72,10 @@ Figyelők láthatók a rendelés feldolgozása történik. Ezért ha egy alapszi
 ### <a name="where-do-i-find-application-gateways-ip-and-dns"></a>Hol találom meg az Application Gateway IP- és DNS?
 
 Nyilvános IP-cím-végpontként használatakor ezt az információt találja a nyilvános IP-cím erőforrás, illetve az Áttekintés oldal az application gatewayhez a portálon. A belső IP-címek ez található az Áttekintés oldalon.
+
+### <a name="what-is-keep-alive-timeout-and-tcp-idle-timeout-setting-on-application-gateway"></a>Mi az időköz és TCP üresjárati időkorlát beállítás Application Gateway-en?
+
+A v1 Termékváltozatot életben tartási időtúllépési érték, v2 szintű Termékváltozatot 120 is lehet életben tartási időtúllépés miatt megszakadt a 75 is lehet TCP üresjárati időkorlát az előtér virtuális IP-CÍMEK az Application Gateway alapértelmezés 4 perc.
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>Az IP- vagy DNS-nevét az Application Gateway életciklusa alatt változik?
 
@@ -126,7 +132,7 @@ Hálózati biztonsági csoportok (NSG-k) az application gateway alhálózatának
 
 * Kivételek kell elhelyezni, bejövő forgalom a portokon 65503 – 65534 az Application Gateway v1 Termékváltozatot és portok 65200 – 65535 v2 termékváltozat. Ezen a porttartományon szükség Azure-infrastruktúra kommunikációjához. A portokat Azure-tanúsítványok védik (zárják le). Megfelelő tanúsítványok nélkül a külső entitások – például az ügyfelek átjárók kihasználására nem képes a végpontokra módosításokat kezdeményezni.
 
-* Kimenő internetkapcsolattal nem lehet blokkolni.
+* Kimenő internetkapcsolattal nem lehet blokkolni. Alapértelmezett kimenő szabályokat az NSG-ben már engedélyezéséhez. Azt javasoljuk, hogy ne távolítsa el az alapértelmezett kimenő szabályok és, hogy ne hozzon létre más kimenő szabályok, amelyek a megtagadási kimenő internetkapcsolattal.
 
 * Az AzureLoadBalancer címkét a forgalmat engedélyezni kell.
 
@@ -342,7 +348,7 @@ Nincsenek elérhető, az Application Gateway három naplókat. Ezek a naplók é
 
 ### <a name="how-do-i-know-if-my-backend-pool-members-are-healthy"></a>Honnan tudhatom meg, ha saját háttérkészlet-tagokra kifogástalan állapotban-e?
 
-A PowerShell-parancsmagot is használhatja `Get-AzureRmApplicationGatewayBackendHealth` vagy állapota a portálon keresztül ellenőrizni funkcionáló [Application Gateway-diagnosztika](application-gateway-diagnostics.md)
+A PowerShell-parancsmagot is használhatja `Get-AzApplicationGatewayBackendHealth` vagy állapota a portálon keresztül ellenőrizni funkcionáló [Application Gateway-diagnosztika](application-gateway-diagnostics.md)
 
 ### <a name="what-is-the-retention-policy-on-the-diagnostics-logs"></a>Mi a megőrzési házirend a diagnosztikai naplók?
 

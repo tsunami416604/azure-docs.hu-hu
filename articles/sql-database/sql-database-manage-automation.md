@@ -12,12 +12,12 @@ ms.author: jrasnick
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 05dfece2a2e69c5cdb3f08b51424720a1c2898db
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: f462940f652f568168c4d0b1e8012c7196d59b13
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561936"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314160"
 ---
 # <a name="managing-azure-sql-databases-using-azure-automation"></a>Azure Automation használatával Azure SQL Database adatbázisok felügyelete
 
@@ -37,7 +37,7 @@ Az Azure SQL Database használatával kezelhetők az Azure Automationben a [Azur
 
 Az Azure Automation is képes kommunikálni az SQL-kiszolgálók közvetlenül, PowerShell-lel SQL-parancsok kiadásával.
 
-A [Azure Automation forgatókönyv-katalógusában](https://azure.microsoft.com/blog/2014/10/07/introducing-the-azure-automation-runbook-gallery/) automatizálásának Azure SQL Database-adatbázisok, a más Azure-szolgáltatások és a külső rendszerek felügyeleti csoport és a Közösség runbookok termék különböző tartalmaz. A katalógus forgatókönyveinek a következők:
+A [Azure Automation forgatókönyv-katalógusában](https://azure.microsoft.com/blog/20../../introducing-the-azure-automation-runbook-gallery/) automatizálásának Azure SQL Database-adatbázisok, a más Azure-szolgáltatások és a külső rendszerek felügyeleti csoport és a Közösség runbookok termék különböző tartalmaz. A katalógus forgatókönyveinek a következők:
 
 - [SQL Server-adatbázis SQL-lekérdezések futtatásához](https://gallery.technet.microsoft.com/scriptcenter/How-to-use-a-SQL-Command-be77f9d2)
 - [Vertikális skálázása a (felfelé vagy lefelé) az Azure SQL Database egy ütemezés szerint](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-e957354f)
@@ -50,4 +50,4 @@ Most, hogy megismerte az Azure Automation, és hogyan használható az Azure SQL
 
 - [Azure Automation áttekintése](../automation/automation-intro.md)
 - [Az első runbookom](../automation/automation-first-runbook-graphical.md)
-- [Az Azure Automation: Az SQL Agent, a felhőben](https://azure.microsoft.com/blog/2014/06/26/azure-automation-your-sql-agent-in-the-cloud/) 
+- [Az Azure Automation: Az SQL Agent, a felhőben](https://azure.microsoft.com/blog/20../../azure-automation-your-sql-agent-in-the-cloud/) 

@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: f6bf672905fe7752a6c3d07492861f43af43e1f5
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 57212da1a8da7ee6c57faf2413b88a413df04817
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893969"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315129"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-data-store-for-a-windows-virtual-machine-classic"></a>A vendég operációs rendszer mérőszámok küldése az Azure Monitor adattárba Windows virtuális gép (klasszikus)
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Az Azure Monitor [diagnosztikai bővítmény](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) (úgynevezett "WAD" vagy "Diagnosztika") lehetővé teszi, hogy a metrikák és a egy virtuális gép, a felhőalapú szolgáltatás vagy a Service Fabric részeként a vendég operációs rendszerek (Guest OS) naplóinak gyűjtése a fürt. A bővítmény küldhet telemetriát [számos különböző helyeken.](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json)
 
@@ -31,7 +33,7 @@ Az ebben a cikkben a folyamat csak a klasszikus virtuális gépeket, a Windows o
 
 - Az előfizetés regisztrálva kell lenniük [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services). 
 
-- Rendelkeznie kell [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) vagy [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) telepítve.
+- Rendelkeznie kell [Azure PowerShell-lel](/powershell/azure) vagy [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) telepítve.
 
 ## <a name="create-a-classic-virtual-machine-and-storage-account"></a>Egy klasszikus virtuális gép és tárfiók létrehozása
 
@@ -145,7 +147,7 @@ Az erőforrás, amelyet szeretne gridre bocsáthatja ki az metrikákat az "Figye
 1. Indítsa el a Powershellt, és jelentkezzen be.
 
     ```powershell
-    Login-AzureRmAccount
+    Login-AzAccount
     ```
 
 1. Indítsa el a környezet beállítása a klasszikus virtuális gép.
@@ -157,7 +159,7 @@ Az erőforrás, amelyet szeretne gridre bocsáthatja ki az metrikákat az "Figye
 1. A klasszikus tárfiók, amely a virtuális gép létrehozásakor a környezet beállítása.
 
     ```powershell
-    $StorageContext = New-AzureStorageContext -StorageAccountName <name of your storage account from earlier steps> -storageaccountkey "<storage account key from earlier steps>"
+    $StorageContext = New-AzStorageContext -StorageAccountName <name of your storage account from earlier steps> -storageaccountkey "<storage account key from earlier steps>"
     ```
 
 1.  Állítsa be a diagnosztikai fájl elérési útját egy változóhoz a következő paranccsal:

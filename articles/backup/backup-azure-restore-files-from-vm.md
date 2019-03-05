@@ -7,14 +7,14 @@ manager: shivamg
 keywords: elemszintű helyreállítás; az Azure virtuális gép biztonsági mentése; fájlok helyreállítása fájlok helyreállítása Azure virtuális gépből
 ms.service: backup
 ms.topic: conceptual
-ms.date: 2/26/2019
+ms.date: 3/01/2019
 ms.author: pullabhk
-ms.openlocfilehash: 4bae9a09dad217b8d805a64372ed404eb7ada723
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 6c2ade276e43f5e40d334a62c62a1abaa42b1b78
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56874162"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308941"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása Azure virtuális gépek biztonsági mentése
 
@@ -74,13 +74,15 @@ A fájlok és mappák visszaállítása a helyreállítási pontot, nyissa meg a
     - 3260-as kimenő portot
 
 > [!Note]
-> A letöltött szkript fájlneve lesz a "geo-name" meg kell tölteni az URL-címben. A példa: A letöltött szkript neve kezdődik \'VMname\'\_\'geoname\'_\'GUID\', például a ContosoVM_wcus_12345678... Az URL-cím "https://pod01-rec2.wcus.backup.windowsazure.com"
-> 
+>
+* A letöltött szkript fájlneve lesz a **geo-name** ki kell tölteni az URL-címben. A példa: A letöltött szkript neve kezdődik \'VMname\'\_\'geoname\'_\'GUID\', például a ContosoVM_wcus_12345678...<br><br>
+* Az URL-cím "https://pod01-rec2.wcus.backup.windowsazure.com"
+
 
    Linux esetén a szkripthez "nyílt-iscsi" és "lshw" összetevők a helyreállítási ponthoz való csatlakozáshoz. Ha az összetevők nem létezik a számítógépen, amelyen a szkript fut, akkor a parancsprogram kéri engedélyt összetevőinek telepítését. Hozzájárulás megadása a szükséges összetevők telepítéséhez.
-   
+
    A jövőben a Microsoft a hozzáférést a gép, ahol a parancsfájl futtatása és az adatokat a helyreállítási pont közötti biztonságos csatorna létrehozásához használt összetevők letöltéséhez szükséges.
-   
+
    A szkriptet minden olyan gépen, amelyen a biztonsági másolat virtuális géppel azonos (vagy kompatibilis) operációs rendszer futtathatja. Tekintse meg a [kompatibilis operációs rendszer tábla](backup-azure-restore-files-from-vm.md#system-requirements) kompatibilis operációs rendszerekhez. Ha a védett Azure virtuális gépen Windows tárolóhelyek (Windows Azure virtuális gépek esetén) vagy LVM/RAID-tömbök (a Linux rendszerű virtuális gépek) használ, a végrehajtható fájl vagy parancsfájl nem futtatható az azonos virtuális gépen. Ehelyett futtassa a végrehajtható fájl vagy parancsfájl bármely gépen más kompatibilis operációs rendszerrel.
 
 ### <a name="identifying-volumes"></a>Kötetek azonosítása
@@ -96,7 +98,7 @@ Futtassa a végrehajtható fájlt, amikor az operációs rendszer az új kötete
 A Linux a köteteket a helyreállítási pont csatlakoztatva vannak a mappára, ahol a szkript futása. Ennek megfelelően jelennek meg a csatlakoztatott lemezek, kötetek és a megfelelő csatlakoztatási elérési útjait. Ezek a csatlakoztatási elérési utak gyökér szintű hozzáféréssel rendelkező felhasználók számára látható. Böngésszen a köteteket, a parancsfájl kimenetében említett.
 
   ![Linux-fájl-helyreállítási menü](./media/backup-azure-restore-files-from-vm/linux-mount-paths.png)
-  
+
 ## <a name="closing-the-connection"></a>A kapcsolat bezárása
 
 Fájlok azonosítása, és másolja őket egy helyi helyre, miután eltávolítása (vagy válassza le) a további meghajtók. Leválasztani a meghajtókat, az a **fájlhelyreállítás** menüjében az Azure Portalon kattintson **lemezek leválasztása**.
@@ -113,8 +115,8 @@ A Linux Miután a kapcsolat és a helyreállítási pont daraboltak van, az oper
 
 Ha a védett Azure virtuális gépek egyike vagy a következő jellemzőkkel rendelkező, ugyanazon a virtuális gépen a végrehajtható parancsfájl nem futtatható.
 
-    - Több lemezre (felölelt és csíkozott kötetek) kötetek
-    - A dinamikus lemezeket és hibatűrő kötetek (tükrözött vagy RAID-5 köteteket)
+- Több lemezre (felölelt és csíkozott kötetek) kötetek
+- A dinamikus lemezeket és hibatűrő kötetek (tükrözött vagy RAID-5 köteteket)
 
 Ehelyett futtassa a végrehajtható parancsfájlt kompatibilis operációs rendszerrel rendelkező más számítógépre.
 
@@ -230,3 +232,41 @@ Ha problémába ütközik a virtuális gépekről származó fájlok helyreáll�
 | Exe-kimenetre: Szkript sikeres futtatása, de az "Új kötetek csatlakoztatva" nem jelenik meg a parancsprogram kimenete |    Ez az átmeneti hiba    | Szeretné a kötetek már lett csatolva. Tallózással nyissa meg. Ha a parancsfájlok futtatásához minden alkalommal ugyanazt a gépet használ, fontolja meg a gép újraindítását, és az ezt követő exe fut megjelennie a listában. |
 | A Linux adott: Nem sikerült a kívánt kötetek megtekintése | A gép, ahol a parancsfájl futtatása az operációs rendszer nem ismeri fel az alapul szolgáló fájlrendszer, a védett virtuális gép | Ellenőrizze, hogy a helyreállítási pont összeomlás-konzisztens vagy fájlkonzisztens. Ha a fájl egységes, futtassa a szkriptet egy másik gép amelynek operációs rendszer felismeri a védett virtuális gép fájlrendszer |
 | A Windows adott: Nem sikerült a kívánt kötetek megtekintése | A lemezek csatolt, de a kötetek nem lettek konfigurálva. | A lemez felügyeleti képernyőről azonosítsa a további lemezek a helyreállítási ponttal kapcsolatos. Ha bármelyik ezeket a lemezeket a kapcsolat nélküli állapot próbálja ki, így azok online kattintson a jobb gombbal a lemezen, és kattintson az "Online"|
+
+## <a name="security"></a>Biztonság
+
+Ez a szakasz ismerteti a különböző biztonsági intézkedéseket, az Azure virtuális gép biztonsági mentése, a fájlhelyreállítás végrehajtásához venni, hogy a felhasználók ismerjék a szolgáltatás biztonsági vonatkozásai.
+
+### <a name="feature-flow"></a>A szolgáltatás a folyamat
+
+Ez a funkció eléréséhez a virtuális gép adatait a teljes virtuális Gépet vagy virtuális gép visszaállítása nélkül lett létrehozva lemez és a minimálisan szükséges lépések. VM-adatokhoz való hozzáférés biztosítja egy szkriptet (amely csatlakoztatja a helyreállítási kötetet, ha futtatja az alább látható módon), és ezért az összes biztonsági megvalósításokhoz alappillére képezi
+
+  ![Biztonsági funkció folyamat](./media/backup-azure-restore-files-from-vm/vm-security-feature-flow.png)
+
+### <a name="security-implementations"></a>Biztonsági hitelesítés megvalósításához
+
+#### <a name="select-recovery-point-who-can-generate-script"></a>Válassza ki a helyreállítási pont (aki hozhat létre a parancsfájl)
+
+A parancsfájl hozzáférést biztosít a virtuális gép adatait, fontos, hogy szabályozzák, akik generálhat, az elsőként. Az egyik be az Azure Portalon, és meg kell [jogosult RBAC](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions) lehessen létrehozni a szkriptet.
+
+Fájl-helyreállítási virtuális gép visszaállítása és a lemezek visszaállítása szükség szerint engedélyezési azonos szinten van szüksége. Más szóval csak jogosult felhasználók is nézet a virtuális gép adatait képes létrehozni a szkriptet.
+
+A létrehozott szkriptet az Azure Backup szolgáltatás hivatalos Microsoft tanúsítvánnyal van aláírva. Bármely illetéktelenül módosítsák a parancsfájl azt jelenti, hogy az aláírás megszakad, és futtassa a szkriptet tett bármilyen kísérlet kockázatot, kiemelve az operációs rendszer által.
+
+#### <a name="mount-recovery-volume-who-can-run-script"></a>Csatlakoztatási helyreállítási kötet (aki futtathatja a parancsfájl)
+
+Csak a rendszergazda tudja futtatni a parancsprogramot, és emelt jogosultságszintű módban fusson. A parancsfájl csak előre létrehozott lépések futtatja, és nem fogad bevitelt a bármely külső forrásból.
+
+A szkript futtatásához egy csak látható a hitelesített felhasználó a parancsfájl létrehozásakor az Azure Portalon vagy a PowerShell vagy a parancssori felületen jelszó szükséges. Ez azért szükséges, hogy a jogosult felhasználó, aki letölti a szkriptet felelős is a szkript futtatása.
+
+#### <a name="browse-files-and-folders"></a>Fájlok és mappák tallózása
+
+Keresse meg a fájlok és mappák, a parancsfájl az iSCSI-kezdeményező használja a gépen, és a helyreállítási pont, amely van konfigurálva, egy iSCSI célhoz csatlakozhat. Itt egy feltételezheti, hogy forgatókönyvek, ahol az egyik vagy/all components modellezheti, megszemélyesítés próbál.
+
+Kölcsönös CHAP hitelesítési mechanizmust, hogy az egyes összetevők hitelesíti magát, a másik használjuk. Ez azt jelenti, hogy az iSCSI-tároló és a egy hamis cél csatlakoztatni kell a gép, a szkript futása csatlakozni egy hamis kezdeményező rendkívül nehéz.
+
+Az adatfolyam a helyreállítási szolgáltatás és a gép közötti biztonságos SSL-alagút létrehozásával TCP-n keresztül védett ([támogatnia kell a TLS 1.2](#system-requirements) a gépen, amelyen fut a parancsfájl)
+
+Bármely fájl hozzáférés-vezérlési lista (ACL) szerepel a szülő/biztonsági másolatba mentett virtuális gép is a csatlakoztatott fájlrendszer megmaradnak.
+
+A parancsfájl csak olvasható hozzáférést biztosít a helyreállítási pont, és csak 12 órán át érvényes. Ha a felhasználó által blokkolni korábban eltávolítani a hozzáférést, majd jelentkezzen be az Azure Portal/PowerShell/CLI, és hajtsa végre a **lemezek leválasztása** az adott helyreállítási pontban. Azonnal a szkript érvénytelenné válik.

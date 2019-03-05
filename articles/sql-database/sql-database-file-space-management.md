@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 manager: craigg
 ms.date: 02/11/2019
-ms.openlocfilehash: 32cfb108964d67f865b1d03ffa745eb468feeea7
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: b537dd8360c39a744cf9963376387a4c89e33838
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110149"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311644"
 ---
 # <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>Az Azure SQL Database-ben egyetlen vagy készletezett adatbázisok területe kezelése
 
@@ -27,6 +27,8 @@ Ez a cikk ismerteti a különböző típusú egyetlen vagy készletezett adatbá
 > Ez a cikk az Azure SQL Database felügyelt példány beállítás nem vonatkozik.
 
 ## <a name="overview"></a>Áttekintés
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Egyetlen vagy készletezett adatbázisok Azure SQL Database-ben nincsenek munkaterhelési mintákat, az adatbázisok alapjául szolgáló adatfájlok elosztása nagyobb, mint a használt adatok oldalak mennyisége válhat. Ez akkor fordulhat elő, amikor növekszik a használt terület, majd később adatok törlődnek. Az az oka, mert lefoglalt terület fájl van nem igényli automatikusan vissza adatok törlésekor.
 
@@ -40,7 +42,7 @@ A következő esetekben szükség lehet a fájlterület használatának monitoro
 
 A legtöbb tárolási hely metrikák jelennek meg az Azure portal és a következő API-k csak mérésére használt lapok mérete:
 
-- Az Azure Resource Manager-alapú API-k metrikák többek között a PowerShell [get-metrikák](https://docs.microsoft.com/powershell/module/azurerm.insights/get-azurermmetric)
+- Az Azure Resource Manager-alapú API-k metrikák többek között a PowerShell [get-metrikák](https://docs.microsoft.com/powershell/module/az.insights/get-azmetric)
 - T-SQL: [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
 Azonban a következő API-kat is mérheti az adatbázisok és rugalmas lefoglalt terület méretét készletek:
@@ -162,7 +164,7 @@ $userName = "name"
 $password = "password"
 
 # Get list of databases in elastic pool
-$databasesInPool = Get-AzureRmSqlElasticPoolDatabase `
+$databasesInPool = Get-AzSqlElasticPoolDatabase `
     -ResourceGroupName $resourceGroupName `
     -ServerName $serverName `
     -ElasticPoolName $poolName

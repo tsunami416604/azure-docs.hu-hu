@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: ae9f4d1ebcb84748b665579104f63dab3ee6f076
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 65940aa07c532ae3bc708d475b2d6ac60cf8d636
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463871"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308924"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Elosztott tranzakciók több felhőalapú adatbázisban
 
@@ -126,13 +126,15 @@ Vegye figyelembe, hogy a .NET 4.6.1 a telepítő az Azure cloud services, mint a
 
 ## <a name="transactions-across-multiple-servers"></a>Tranzakciók több kiszolgáló között
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Rugalmas adatbázis-tranzakciók több különböző SQL Database-kiszolgálók az Azure SQL Database-ben is támogatott. Tranzakciók adatbázisközi SQL Database server határokat, amikor a programban részt vevő kiszolgálók először kölcsönös kommunikációs kapcsolat adható meg. A kommunikációs kapcsolat létrejöttét követően a két kiszolgáló bármelyik adatbázisához rugalmas tranzakciók az adatbázis a kiszolgálótól vehet részt. Tranzakciók több mint két SQL Database-kiszolgálók átfedés, az kommunikációs kapcsolat kell lennie a helyen az SQL Database-kiszolgálók bármely virtuálisgép-pár.
 
 A következő PowerShell-parancsmagok segítségével kezelheti a kiszolgálók közötti kommunikáció kapcsolatokat az a rugalmas adatbázis-tranzakciók:
 
-* **New-AzureRmSqlServerCommunicationLink**: Ez a parancsmag segítségével hozzon létre egy új kommunikációs kapcsolat az Azure SQL Database két SQL Database-kiszolgálók között. A kapcsolat a szimmetrikus ami azt jelenti, hogy mindkét kiszolgálón is kezdeményezhető a tranzakciók a kiszolgálóval.
-* **Get-AzureRmSqlServerCommunicationLink**: Ez a parancsmag használatával lekérheti a meglévő kommunikációs kapcsolatok és azok tulajdonságait.
-* **Remove-AzureRmSqlServerCommunicationLink**: Ez a parancsmag segítségével távolítsa el a meglévő kommunikációs kapcsolat. 
+* **New-AzSqlServerCommunicationLink**: Ez a parancsmag segítségével hozzon létre egy új kommunikációs kapcsolat az Azure SQL Database két SQL Database-kiszolgálók között. A kapcsolat a szimmetrikus ami azt jelenti, hogy mindkét kiszolgálón is kezdeményezhető a tranzakciók a kiszolgálóval.
+* **Get-AzSqlServerCommunicationLink**: Ez a parancsmag használatával lekérheti a meglévő kommunikációs kapcsolatok és azok tulajdonságait.
+* **Remove-AzSqlServerCommunicationLink**: Ez a parancsmag segítségével távolítsa el a meglévő kommunikációs kapcsolat. 
 
 ## <a name="monitoring-transaction-status"></a>Tranzakció állapotának figyelése
 

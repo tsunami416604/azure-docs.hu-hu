@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 0494e9ef2a4f7adddd615dbf7882c9f2b4b81982
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 5fac49c3c1e99421ec3ff25514950d9b9bc3b0bd
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213211"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314687"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view-new-ui-design"></a>Oktatóanyag: Az Azure IoT Central operátor nézet (új felhasználói felület tervezése) testreszabása
 
@@ -48,7 +48,7 @@ Szerkesztőként meghatározhatja, milyen információk jelenjenek meg egy eszk�
 
     ![Eszköz sablonok lap](media/tutorial-customize-operator-experimental/devicetemplates.png)
 
-2. Testre szabhatja az irányítópultját, kattintson a **Légkondicionálóját csatlakoztatva (1.0.0-s)** létrehozott sablon eszközt a [az alkalmazásban egy új eszköztípus definiálása](tutorial-define-device-type-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) oktatóanyag.
+2. Testre szabhatja az eszköz irányítópulton, válassza ki a **Légkondicionálóját csatlakoztatva (1.0.0-s)** létrehozott sablon eszközt a [az alkalmazásban egy új eszköztípus definiálása](tutorial-define-device-type-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) oktatóanyag.
 
 3. Az irányítópult szerkesztéséhez válassza ki a **irányítópult** fülre.
 
@@ -67,7 +67,7 @@ Szerkesztőként meghatározhatja, milyen információk jelenjenek meg egy eszk�
 
     ![KPI hozzáadása](media/tutorial-customize-operator-experimental/addkpi.png)
 
-5. Kattintson a **Save** (Mentés) gombra. Most láthatja a KPI-csempét az irányítópulton:
+5. Kattintson a **Mentés** gombra. Most láthatja a KPI-csempét az irányítópulton:
 
     ![KPI-csempe](media/tutorial-customize-operator-experimental/temperaturekpi.png)
 
@@ -101,7 +101,7 @@ Használja a **eszközsablonok** lapon szabhatja testre az irányítópult, a be
 
     ![Megtekintése és használata az eszköz sablon](media/tutorial-customize-operator-experimental/usetemplate.png)
 
-2. Frissítse az eszköz helyét, válassza a **tulajdonságok** és szerkesztheti a hely csempe értéket. Kattintson a **mentése**:
+2. Frissítse az eszköz helyét, válassza a **tulajdonságok** és szerkesztheti a hely csempe értéket. Válassza ki **mentése**:
 
     ![Tulajdonságérték szerkesztése](media/tutorial-customize-operator-experimental/editproperty.png)
 
@@ -122,7 +122,7 @@ Ha a jelentéskészítő vagy operátor jelentkezik be egy Azure IoT Central alk
 > [!NOTE]
 > A felhasználók a saját személyes irányítópultok kialakítása és válasszon egyet az alapértelmezésként is.
 
-1. Testre szabhatja az alapértelmezett irányítópult, keresse meg a **irányítópult** lapot, és kattintson **szerkesztése** felső jobb. Megjelenik egy panel, egy erőforrástár-objektumok is hozzáadhat az irányítópulthoz.
+1. Testre szabhatja az alapértelmezett irányítópult, keresse meg a **irányítópult** lapon, és válassza **szerkesztése** felső jobb. Megjelenik egy panel, egy erőforrástár-objektumok is hozzáadhat az irányítópulthoz.
 
     ![Irányítópult-oldalon](media/tutorial-customize-operator-experimental/builderhome.png)
 
@@ -133,7 +133,7 @@ Ha a jelentéskészítő vagy operátor jelentkezik be egy Azure IoT Central alk
     > [!NOTE]
     > Az Azure IoT Central-alkalmazásban lévő oldalakhoz hivatkozásokat is adhat. Hozzáadhatja például egy eszköz irányítópultjának vagy a beállítások oldalának a hivatkozását.
 
-3. Szükség esetén válasszon **kép** és töltsön fel egy képet az irányítópulton megjeleníthető. Kép egy URL-cím, amelyre rákattintva veheti fel:
+3. Szükség esetén válasszon **kép** és töltsön fel egy képet az irányítópulton megjeleníthető. Kép URL-címe, amelyhez lépjen, ha kijelöli veheti fel:
 
     ![Kép hozzáadása az irányítópulthoz](media/tutorial-customize-operator-experimental/addimage.png)
 
@@ -145,7 +145,7 @@ Kezelőként az irányítópult megtekintéséhez válassza ki a **kész** fels�
 
 ![A Tervezési mód be- és kikapcsolása](media/tutorial-customize-operator-experimental/operatorviewhome.png)
 
-A hivatkozások és a képek csempéire kattintva a szerkesztőként beállított URL-címekre léphet.
+Keresse meg az URL-címeket lehet beállítani egy jelentéskészítő-hivatkozásokon és csempéket is választhat.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -10,19 +10,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/13/2018
+ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 779ae6030c7d36c60dbd0ad00daaf1423a21eb04
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: fc6acb211e30af460106acd1c19b61db52f09269
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269042"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311882"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>Oktatóanyag: Több erőforráspéldány létrehozásával létrehozása a Resource Manager-sablonokkal
 
 Ismerje meg, hogyan hozhat létre több Azure-erőforráspéldányt az Azure Resource Manager-sablonban való iterálással. Ebben az oktatóanyagban egy sablon módosításával három tárfiókpéldányt hoz létre.
+
+![Az Azure Resource Manager hoz létre több példány diagramja](./media/resource-manager-tutorial-create-multiple-instances/resource-manager-template-create-multiple-instances-diagram.png)
 
 Ez az oktatóanyag a következő feladatokat mutatja be:
 

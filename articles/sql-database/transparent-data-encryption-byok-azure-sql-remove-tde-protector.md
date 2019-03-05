@@ -12,20 +12,22 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/12/2018
-ms.openlocfilehash: 95a86dafc4705d58ac459ff57e4f221d19fb7a37
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4a3677dc5402948fc0105190d1891d709291d0f7
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990291"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57317730"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Távolítsa el a transzparens adattitkosítás (TDE) védőelem a PowerShell használatával
 
 ## <a name="prerequisites"></a>Előfeltételek
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 - Azure-előfizetés és a lehet az előfizetés-rendszergazda
-- Rendelkeznie kell Azure PowerShell 4.2.0-s verzió vagy újabb telepítése és futtatása. 
-- Ez az útmutató feltételezi, hogy már használja egy kulcs Azure Key vault a TDE-védőhöz, egy Azure SQL Database vagy Data warehouse-bA. Lásd: [transzparens adattitkosítás az Azure Key Vault-integráció - BYOK-támogatással](transparent-data-encryption-byok-azure-sql.md) további.
+- Azure PowerShell telepítenie és futtatnia kell rendelkeznie. 
+- Ez az útmutató feltételezi, hogy már használja egy kulcs Azure Key vault a TDE-védőhöz, egy Azure SQL Database vagy Data warehouse-bA. Lásd: [transzparens adattitkosítás BYOK-támogatással](transparent-data-encryption-byok-azure-sql.md) további.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -45,34 +47,34 @@ Ez az útmutató két módszer attól függően, a kívánt eredményt keresztü
 ## <a name="to-keep-the-encrypted-resources-accessible"></a>Elérhető-e tartani a titkosított erőforrások
 
 1. Hozzon létre egy [új kulcsot a Key Vaultban](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultkey?view=azurermps-4.1.0). Ellenőrizze, hogy ez az új kulcs a potenciálisan veszélyeztetett TDE-védőhöz, a különálló a kulcstartóban található jön létre, mivel hozzáférés-vezérlés a tároló szinten van kiépítve. 
-2. Adja meg az új kulcsot a kiszolgálóra történő a [Add-AzureRmSqlServerKeyVaultKey](/powershell/module/azurerm.sql/add-azurermsqlserverkeyvaultkey) és [Set-azurermsqlservertransparentdataencryptionprotector parancsmag](/powershell/module/azurerm.sql/set-azurermsqlservertransparentdataencryptionprotector) parancsmagok és a kiszolgáló új TDE-védőhöz szerint módosítsa azt.
+2. Adja meg az új kulcsot a kiszolgálóra történő a [Add-AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey) és [Set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) parancsmagok és a kiszolgáló új TDE-védőhöz szerint módosítsa azt.
 
    ```powershell
    # Add the key from Key Vault to the server  
-   Add-AzureRmSqlServerKeyVaultKey `
+   Add-AzSqlServerKeyVaultKey `
    -ResourceGroupName <SQLDatabaseResourceGroupName> `
    -ServerName <LogicalServerName> `
    -KeyId <KeyVaultKeyId>
 
    # Set the key as the TDE protector for all resources under the server
-   Set-AzureRmSqlServerTransparentDataEncryptionProtector `
+   Set-AzSqlServerTransparentDataEncryptionProtector `
    -ResourceGroupName <SQLDatabaseResourceGroupName> `
    -ServerName <LogicalServerName> `
    -Type AzureKeyVault -KeyId <KeyVaultKeyId> 
    ```
 
-3. Győződjön meg arról, hogy a kiszolgáló és az esetleges replikákat frissítve, az új a TDE-védőhöz használatával a [Get-azurermsqlservertransparentdataencryptionprotector parancsmag](/powershell/module/azurerm.sql/get-azurermsqlservertransparentdataencryptionprotector) parancsmagot. 
+3. Győződjön meg arról, hogy a kiszolgáló és az esetleges replikákat frissítve, az új a TDE-védőhöz használatával a [Get-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector) parancsmagot. 
 
    >[!NOTE]
    > Eltarthat néhány percig, az új TDE-védőhöz, adatbázisok és a másodlagos adatbázisokat a kiszolgálóhoz való propagálása.
 
    ```powershell
-   Get-AzureRmSqlServerTransparentDataEncryptionProtector `
+   Get-AzSqlServerTransparentDataEncryptionProtector `
    -ServerName <LogicalServerName> `
    -ResourceGroupName <SQLDatabaseResourceGroupName>
    ```
 
-4. Igénybe vehet egy [az új kulcs biztonsági mentési](/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey) a Key Vaultban.
+4. Igénybe vehet egy [az új kulcs biztonsági mentési](/powershell/module/az.keyvault/backup-azurekeyvaultkey) a Key Vaultban.
 
    ```powershell
    <# -OutputFile parameter is optional; 
@@ -82,18 +84,18 @@ Ez az útmutató két módszer attól függően, a kívánt eredményt keresztü
    -Name <KeyVaultKeyName> `
    -OutputFile <DesiredBackupFilePath>
    ```
-
-5. A feltört kulcs törlése a Key Vault használatával a [Remove-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/remove-azurekeyvaultkey) parancsmagot. 
+ 
+5. A feltört kulcs törlése a Key Vault használatával a [Remove-AzKeyVaultKey](/powershell/module/az.keyvault/remove-azurekeyvaultkey) parancsmagot. 
 
    ```powershell
-   Remove-AzureKeyVaultKey `
+   Remove-AzKeyVaultKey `
    -VaultName <KeyVaultName> `
    -Name <KeyVaultKeyName>
    ```
-
-6. Kulcs visszaállítása a Key Vault használatával a jövőben a [Restore-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey) parancsmagot:
+ 
+6. Kulcs visszaállítása a Key Vault használatával a jövőben a [Restore-AzKeyVaultKey](/powershell/module/az.keyvault/restore-azurekeyvaultkey) parancsmagot:
    ```powershell
-   Restore-AzureKeyVaultKey `
+   Restore-AzKeyVaultKey `
    -VaultName <KeyVaultName> `
    -InputFile <BackupFilePath>
    ```

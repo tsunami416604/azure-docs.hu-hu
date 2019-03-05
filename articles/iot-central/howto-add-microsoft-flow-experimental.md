@@ -8,12 +8,12 @@ ms.date: 02/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: ba6b8c76b31f09eb8f04097f935f865728a4e893
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: c2c172dc5f03aee8b167cd65562de3329c54d563
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217495"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57313004"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Hozzon létre munkafolyamatokat az IoT Central-összekötő a Microsoft Flow
 
@@ -30,24 +30,24 @@ Munkafolyamatok automatizálása a számos alkalmazásokat és szolgáltatásoka
 
 Ez a szakasz bemutatja, hogy miként indítható el a Flow mobilalkalmazásnak, amikor egy IoT-központ a szabály aktiválásakor a mobil értesítés.
 
-1. Első lépésként [olyan szabályt hoz létre az IoT-központ](howto-create-telemetry-rules-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json). Miután menti a szabály feltételeit, kattintson a **Microsoft Flow művelet** egy új művelet. Egy új böngészőlapon vagy ablakban kell nyissa meg a böngészőben, átirányítjuk a Microsoft Flow-bA.
+1. Első lépésként [olyan szabályt hoz létre az IoT-központ](howto-create-telemetry-rules-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json). Miután mentette a szabály feltételeit, jelölje be a **Microsoft Flow művelet** új műveletként. Egy új böngészőlapon vagy ablakban kell nyissa meg a böngészőben, átirányítjuk a Microsoft Flow-bA.
 
     ![Hozzon létre egy új Microsoft Flow-művelet](media/howto-add-microsoft-flow-experimental/createflowaction.png)
 
 1. Jelentkezzen be a Microsoft Flow szolgáltatásba. Ez nem kell ugyanazt a fiókot, mint amelyet az IoT-központ használja. Egy Áttekintés lap megjelenítése egy IoT-központ csatlakozó, amely egy egyéni műveleti nyílik.
 
-1. Jelentkezzen be az IoT Central-összekötő, és kattintson a **Folytatás**. Ekkor megnyílik a Microsoft Flow Tervező a munkafolyamat létrehozása alatt. A munkafolyamat, amely rendelkezik az alkalmazás és a szabály már kitöltött IoT-központ eseményindító tartozik.
+1. Jelentkezzen be az IoT Central-összekötő, és válassza ki **Folytatás**. Ekkor megnyílik a Microsoft Flow Tervező a munkafolyamat létrehozása alatt. A munkafolyamat, amely rendelkezik az alkalmazás és a szabály már kitöltött IoT-központ eseményindító tartozik.
 
 1. Válasszon **+ új lépés** és **művelet hozzáadása**. Ezen a ponton a munkafolyamat bármely elvégzendő is hozzáadhat. Példaként nézzük mobil értesítés küldése. Keresse meg **értesítési**, és válassza a **értesítések - mobil értesítés küldése**.
 
 1. A műveletet töltse ki a kívánt tegyük fel, hogy az értesítési szövegmezőben. Megadhat *dinamikus tartalom* az IoT-központ szabályból, mentén fontos információkat, például az eszköz és az időbélyegző-értesítések való átadásához.
 
     > [!NOTE]
-    > Kattintson a "További információk" szöveget, mérés és tulajdonságértékeket, amely kiváltotta a szabály a dinamikus tartalom ablakban.
+    > Válassza ki a **Továbbiak** a dinamikus tartalom ablakban elolvashatja a mérés és tulajdonság értékei, amely kiváltotta a szabály a szöveget.
 
     ![Folyamatvezérlés dinamikus ablaktáblán nyissa meg a művelet szerkesztése](./media/howto-add-microsoft-flow-experimental/flowdynamicpane.png)
 
-1. Ha elkészült a művelet szerkesztését, kattintson a **mentése**. Akkor jut el a munkafolyamatot – áttekintés oldalra. Itt láthatja a futtatási előzményeket, és megoszthatja más munkatársakkal.
+1. Ha elkészült a művelet szerkesztése, válassza ki **mentése**. Akkor jut el a munkafolyamatot – áttekintés oldalra. Itt láthatja a futtatási előzményeket, és megoszthatja más munkatársakkal.
 
     > [!NOTE]
     > Ha azt szeretné, más felhasználók az IoT-központ alkalmazásban ez a szabály szerkesztéséhez, meg kell osztania azt velük a Microsoft Flow. A Microsoft Flow-fiókok hozzáadása tulajdonosként a munkafolyamatban.

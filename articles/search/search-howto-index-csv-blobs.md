@@ -1,7 +1,7 @@
 ---
 title: CSV-blobok indexelése az Azure Search Blob indexelőjével – Azure Search
 description: Feltérképezi az Azure Blob storage használata az Azure Search-index a teljes szöveges keresés a CSV-blobok. Az indexelők automatizálni adatbetöltés a kijelölt adatforrásokhoz, például az Azure Blob storage.
-ms.date: 10/17/2018
+ms.date: 03/01/2019
 author: mgottein
 manager: cgronlun
 ms.author: magottei
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: dce19e750c5546ddd5cac18411dcbb4a603e5c45
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 0bbb131b5fb155443c8c3dc340185f3a6fa950a3
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216101"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312914"
 ---
 # <a name="indexing-csv-blobs-with-azure-search-blob-indexer"></a>CSV-blobok indexelése az Azure Search blob indexelőjével
 Alapértelmezés szerint [Azure Search blob indexelőjével](search-howto-indexing-azure-blob-storage.md) elemzi tagolt szöveges blobok, egy olyan adattömb szöveg. Azonban a blobok CSV-adatokat tartalmazó, gyakran szeretné kezelni az egyes sorok a blob, különálló dokumentumként. Például adja meg a következő tagolt szöveg, előfordulhat, hogy szeretné elemezni a két dokumentumot, az egyes tartalmazó, "id", "datePublished" és "címkék" mezőket: 

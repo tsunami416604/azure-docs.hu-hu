@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: a802b12f34c5fe16202f55416a698823e55c01bb
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 67ea9ece7ba0c71484e9117db13fd2c708d87baf
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245897"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312868"
 ---
 # <a name="create-azure-resource-manager-template"></a>Az Azure Resource Manager-sablon létrehozása
 
@@ -38,7 +38,7 @@ A Resource Manager tools bővítmény és a VS Code használata telepítési okt
 
 Tekintse át a sablonokat úgy, hogy a sablon működésének megismerése a részeit. A sablon nem rendelkezhet minden egyes szakaszban. A szakaszok azt szeretné, hogy arra koncentrálhasson, a következők:
 
-* A [paraméterek](resource-manager-templates-parameters.md) rész, amely testre az üzembe helyezett infrastruktúra üzembe helyezése során megadhatja az értékeket mutatja. 
+* A [paraméterek](resource-group-authoring-templates.md#parameters) rész, amely testre az üzembe helyezett infrastruktúra üzembe helyezése során megadhatja az értékeket mutatja. 
 
 * A [változók](resource-group-authoring-templates.md#variables) rész, amely bemutatja a sablonban használt értékeket.
 

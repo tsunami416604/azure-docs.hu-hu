@@ -12,12 +12,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: bbf04104d70ecb6ea8d83c6167b5b9b0dfe2c2dc
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 38a5434d4b6f27aacdf1861fa0b005501ad1e28b
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217444"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308890"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 
@@ -160,7 +160,7 @@ Ha úgy döntött, hogy auditnaplók írni az Azure storage-fiók, több módon 
 
     4. Az egyesített fájl megnyílik az ssms-ben, ahol meg is megtekintése és elemezhetők a, valamint exportálja az xel-fájlt vagy CSV-fájl, illetve egy táblázat.
 
-- A Power BI használata. Megtekintheti és elemezheti a naplózási adatokat a Power bi-ban. További információ és a egy letölthető sablon eléréséhez tekintse meg a [elemzés naplózási adatokat a Power bi-ban](https://blogs.msdn.microsoft.com/azuresqldbsupport/2017/05/26/sql-azure-blob-auditing-basic-power-bi-dashboard/).
+- A Power BI használata. Megtekintheti és elemezheti a naplózási adatokat a Power bi-ban. További információ és a egy letölthető sablon eléréséhez tekintse meg a [elemzés naplózási adatokat a Power bi-ban](https://blogs.msdn.microsoft.com/azuresqldbsupport/20../../sql-azure-blob-auditing-basic-power-bi-dashboard/).
 - Letölti a naplófájlokat a portálon keresztül, vagy egy eszköz használatával az Azure Storage blob-tárolóból [Azure Storage Explorer](http://storageexplorer.com/).
   - Miután letöltötte helyileg egy naplófájl, kattintson duplán a fájlra nyissa meg a, megtekintheti és elemezheti a naplókat az ssms-ben.
   - Azure Storage Explorer használatával egyszerre több fájl is letölthető. Ehhez kattintson a jobb gombbal egy adott almappát, és válassza ki **Mentés másként** egy helyi mappába menti.
@@ -170,8 +170,8 @@ Ha úgy döntött, hogy auditnaplók írni az Azure storage-fiók, több módon 
   - Több fájlt vagy egy almappát, amely tartalmazza a naplófájlok a letöltés után egyesítheti őket helyileg a korábban leírt utasításokat SSMS egyesítési naplófájlokat leírtak szerint.
   - Nézet blobnaplózás programozott módon jelentkezik:
 
-    - Használja a [bővített események olvasó](https://blogs.msdn.microsoft.com/extended_events/2011/07/20/introducing-the-extended-events-reader/) C# könyvtár.
-    - [Bővített események lekérdezésfájlok](https://sqlscope.wordpress.com/2014/11/15/reading-extended-event-files-using-client-side-tools-only/) PowerShell használatával.
+    - Használja a [bővített események olvasó](https://blogs.msdn.microsoft.com/extended_events/20../../introducing-the-extended-events-reader/) C# könyvtár.
+    - [Bővített események lekérdezésfájlok](https://sqlscope.wordpress.com/20../../reading-extended-event-files-using-client-side-tools-only/) PowerShell használatával.
 
 ## <a id="subheading-5"></a>Éles eljárások
 

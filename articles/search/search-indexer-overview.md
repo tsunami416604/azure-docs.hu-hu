@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/17/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 754bd06e6033b49d24112cb20686e1c9b200d0d0
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 0a6c894b08fd76a018035a824b463e41e31c2f2f
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875480"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310199"
 ---
 # <a name="indexers-in-azure-search"></a>Indexelők az Azure Search szolgáltatásban
 
@@ -48,14 +48,16 @@ Az indexelők adattárak feltérképezi az Azure-ban.
 * [Azure Cosmos DB](search-howto-index-cosmosdb.md)
 * [Azure Blob Storage](search-howto-indexing-azure-blob-storage.md)
 * [Azure Table Storage](search-howto-indexing-azure-tables.md) 
-    * Vegye figyelembe, hogy az Azure Table Storage esetén nem támogatott [kognitív keresés](cognitive-search-concept-intro.md)
 
+> [!Note]
+> Az Azure Table Storage esetén nem támogatott [cognitive search](cognitive-search-concept-intro.md).
+>
 
 ## <a name="basic-configuration-steps"></a>Alapszintű konfigurációs lépések
 Az indexelők az adott adatforrások esetében egyedi funkciókat biztosítanak. Ezért az indexelő- vagy az adatforrás-konfiguráció egyes szempontjai az indexelő típusától függően változnak. Az alapvető felépítés és követelmények azonban minden indexelő esetében azonosak. Az alábbiakban az összes indexelőre érvényes lépések láthatóak.
 
 ### <a name="step-1-create-a-data-source"></a>1. lépés: Adatforrás létrehozása
-Az indexelők olyan *adatforrásokból* kérnek le adatokat, amelyek különböző adatokat, például kapcsolati sztringekat és esetleg hitelesítő adatokat is tartalmaznak. Hívja a [adatforrás létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-data-source) REST API vagy [DataSource osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource) az erőforrás létrehozásához.
+Az indexelő beolvassa az adatforrás-kapcsolat egy *adatforrás* objektum. Az adatforrás-definíciót egy kapcsolati karakterláncot, és esetleg hitelesítő adatokat biztosít. Hívja a [adatforrás létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-data-source) REST API vagy [DataSource osztály](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.datasource) az erőforrás létrehozásához.
 
 Az adatforrások konfigurálása és kezelése az azokat használó indexelőktől függetlenül történik, ami azt jelenti, hogy egy adatforrást több indexelő is használhat egyidejűleg, egynél több index betöltésére.
 
@@ -67,6 +69,59 @@ Az indexelők automatizálni tudják az adatfeldolgozáshoz kapcsolódó bizonyo
 
 ### <a name="step-3-create-and-schedule-the-indexer"></a>3. lépés: Az indexelő létrehozása és ütemezése
 Az indexelődefiníció egy olyan konstrukció, amely megadja az indexet, az adatforrást és az ütemezést. Az indexelők egy másik szolgáltatásból is hivatkozhatnak egy adatforrásra, ha az adott adatforrás ugyanabból az előfizetésből származik. További információk az indexelők strukturálásáról: [Indexelő létrehozása (Azure Search REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer).
+
+<a id="RunIndexer"></a>
+
+## <a name="run-indexers-on-demand"></a>Az indexelők igény szerinti futtatása
+
+Bár a közös indexelő ütemezése, az indexelő is elindítható, a Futtatás paranccsal igény szerinti:
+
+    POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2017-11-11
+    api-key: [Search service admin key]
+
+> [!NOTE]
+> API futtatása sikeresen adja vissza, az indexelő meghívási be van ütemezve, de a tényleges feldolgozást aszinkron módon történik. 
+
+Megfigyelheti, hogy az indexelő állapotát a portál vagy API-val beolvasása indexelő állapota, amelyek ezután ismertetünk. 
+
+<a name="GetIndexerStatus"></a>
+
+## <a name="get-indexer-status"></a>Az indexelő állapotának beolvasása
+
+Állapot és végrehajtási előzményeit, az indexelők REST API-val lekérheti:
+
+    GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2017-11-11
+    api-key: [Search service admin key]
+
+A válasz teljes indexelő állapot, az utolsó (vagy a folyamatban lévő) az indexelő meghívása és az indexelő legutóbbi indítások előzményeit tartalmazza.
+
+    {
+        "status":"running",
+        "lastResult": {
+            "status":"success",
+            "errorMessage":null,
+            "startTime":"2014-11-26T03:37:18.853Z",
+            "endTime":"2014-11-26T03:37:19.012Z",
+            "errors":[],
+            "itemsProcessed":11,
+            "itemsFailed":0,
+            "initialTrackingState":null,
+            "finalTrackingState":null
+         },
+        "executionHistory":[ {
+            "status":"success",
+             "errorMessage":null,
+            "startTime":"2014-11-26T03:37:18.853Z",
+            "endTime":"2014-11-26T03:37:19.012Z",
+            "errors":[],
+            "itemsProcessed":11,
+            "itemsFailed":0,
+            "initialTrackingState":null,
+            "finalTrackingState":null
+        }]
+    }
+
+Végrehajtási előzmények akár a 50 utolsó befejezett végrehajtások, amely rendezi a rendszer fordított időrendben (így a legújabb végrehajtása a válaszban hamarabb elérik) tartalmazza.
 
 ## <a name="next-steps"></a>További lépések
 Az alapok megismerése után következő lépés a követelmények és az egyes adatforrástípusokra jellemző feladatok áttekintése.

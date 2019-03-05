@@ -11,22 +11,26 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: 96b22a6e44142fef8d47dc228d5491c31c65478f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 14a9e369f3366fc103cde2f0faafb570de409de7
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823059"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311865"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Az Azure Functions Java fejlesztői útmutatója
 
 Az Azure Functions runtime támogatja [Java használata 8 LTS (zulu8.31.0.2-jre8.0.181-win_x64)](https://repos.azul.com/azure-only/zulu/packages/zulu-8/8u181/).
 
-## <a name="programming-model"></a>A programozási modell
+Ez az útmutató az Azure Functions és a Java együttes írása jainak részleteivel kellene információt tartalmaz.
+
+Egy Java-függvény egy `public` metódus a jegyzet kitüntetett `@FunctionName`. Ez a módszer a java-függvények a bejegyzés határozza meg, és egy adott csomag egyedinek kell lennie. 
+
+Ez a cikk feltételezi, hogy már elolvasta a [Azure Functions fejlesztői segédanyagai](functions-reference.md). Is hajtsa végre a függvények gyors útmutató: hozzon létre az első függvény használatával [Visual Studio Code](functions-create-first-function-vs-code.md) vagy [maven használatával szeretné](functions-create-first-java-maven.md).
+
+## <a name="programming-model"></a>A programozási modell 
 
 A fogalmait [eseményindítók és kötések](functions-triggers-bindings.md) alapvető fontosságú, az Azure Functionsben. Eseményindítók egy kód végrehajtásának indítása. Kötések lehetővé teszik, adja át az adatokat, és a egy függvényt, az adatokat egyéni adat-hozzáférési kód írása nélkül adja vissza.
-
-Egy függvény dolgozza fel a bemeneti és kimeneti előállításához állapotmentes metódus kell lennie. A függvény nem szabad függenie az osztály példánya mezőket. A függvény az összes módszer lehet `public` és jegyzet metódust @FunctionName egyedinek kell lennie, mivel a metódus nevét határozza meg a bejegyzést egy függvényhez.
 
 ## <a name="folder-structure"></a>gyökérmappa-szerkezetében
 

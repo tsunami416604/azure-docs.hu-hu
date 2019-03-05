@@ -1,5 +1,5 @@
 ---
-title: Határozza meg nem felelés oka
+title: A nemmegfelelőség okainak meghatározása
 description: Amikor az erőforrás nem megfelelő, nincsenek számos oka lehet. Ismerje meg, mi okozta a meg nem felelés megtanulhatja, hogyan.
 services: azure-policy
 author: DCtheGeek
@@ -8,14 +8,14 @@ ms.date: 02/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: bdc7e635537eb4f836f0d4b5e2c18cc62b7fd310
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: dba8d9413229a0fa236b082e2e11dbd1a9fe5a5f
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56890467"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314126"
 ---
-# <a name="determine-causes-of-non-compliance"></a>Határozza meg nem felelés oka
+# <a name="determine-causes-of-non-compliance"></a>A nemmegfelelőség okainak meghatározása
 
 Ha egy Azure-erőforrás nem kompatibilis a szabály a házirend, hasznos lehet tudni, mely az erőforrás nem felelnek meg a szabály részét. Emellett hasznos megérteni, milyen módosítása módosítani egy korábban megfelelő erőforrással, hogy nem megfelelő. Ezen adatok két módja van:
 
@@ -108,7 +108,7 @@ A következő mátrix térképek minden lehetséges _OK_ a a felelős [feltétel
 
 ## <a name="change-history-preview"></a>Változások nyomon követése (előzetes verzió)
 
-Egy új részeként **nyilvános előzetes verzióban**, az elmúlt 14 napban változtatás előzmények érhető el, amelyek támogatják az összes Azure-beli erőforráshoz [mód törlésének befejezéséhez](../../../azure-resource-manager/complete-mode-deletion.md). Változások nyomon követése kapcsolatos tudnivalókat tartalmaz, amikor a rendszer észlelte a változást, és a egy _diff vizuális_ minden módosításakor. Egy címváltozásának felderítését akkor aktiválódik, ha a Resource Manager-tulajdonságok hozzáadott, eltávolított vagy módosítani.
+Egy új részeként **nyilvános előzetes verzióban**, az elmúlt 14 napban változtatás előzmények érhető el az összes Azure-erőforrások, amelyek támogatják a [mód törlésének befejezéséhez](../../../azure-resource-manager/complete-mode-deletion.md). Változások nyomon követése kapcsolatos tudnivalókat tartalmaz, amikor a rendszer észlelte a változást, és a egy _diff vizuális_ minden módosításakor. Egy címváltozásának felderítését akkor aktiválódik, ha a Resource Manager-tulajdonságok hozzáadott, eltávolított vagy módosítani.
 
 1. Indítsa el az Azure Policy szolgáltatást az Azure Portalon. Ehhez kattintson a **Minden szolgáltatás** elemre, majd keresse meg és válassza ki a **Szabályzat** elemet.
 

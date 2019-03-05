@@ -8,17 +8,16 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: sogup
-ms.openlocfilehash: b08e8ea6a8768510177f1ea664f3036813e1a890
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 47acccf0cdb246683314322ed73f21446e3a9345
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57009919"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310029"
 ---
 # <a name="manage-azure-vm-backups"></a>Azure-beli virtuális gépek biztonsági mentésének kezelése
 
 Ez a cikk bemutatja, hogyan kezelheti az Azure-beli virtuális gépek biztonsági mentése a [Azure Backup szolgáltatás](backup-overview.md) biztonsági mentéseket, és a portál irányítópultján elérhető biztonsági riasztások tudnivalókat foglalja össze.
-
 
 Az Azure Portalon a Recovery Services-tároló irányítópultján információit, beleértve a tároló hozzáférést biztosít:
 
@@ -42,20 +41,17 @@ Az irányítópult használatával készített biztonsági kezelheti és összev
 4. Nyissa meg a tároló irányítópultján.
     ![Nyissa meg a tároló irányítópultját és a beállítások panel](./media/backup-azure-manage-vms/full-view-rs-vault.png)
 
-4. Az a **biztonsági másolati elemek** csempére, **Azure Virtual Machines**.
+5. Az a **biztonsági másolati elemek** csempére, **Azure Virtual Machines**.
 
     ![Nyissa meg a biztonsági másolati elemek csempe](./media/backup-azure-manage-vms/contoso-vault-1606.png)
 
-5. A **biztonsági másolati elemek** panelen megtekintheti az egyes elemekhez az utolsó biztonsági mentési feladat. Ebben a példában egy virtuális gép működik, demovm-markgal, ez a tár által védett.  
+6. A **biztonsági másolati elemek** panelen megtekintheti az egyes elemekhez az utolsó biztonsági mentési feladat. Ebben a példában egy virtuális gép működik, demovm-markgal, ez a tár által védett.  
 
     ![Biztonsági másolati elemek csempe](./media/backup-azure-manage-vms/backup-items-blade-select-item.png)
 
-
-6. A tároló elem irányítópultjáról is hozzon létre vagy módosítsa a biztonsági mentési szabályzatok, visszaállítási pont megtekintése, futtatásakor egy igény szerinti biztonsági mentés leállítása és a virtuális gépek védelmének folytatása, törölni a helyreállítási pontok, és futtathat visszaállítást.
+7. A tároló elem irányítópultjáról is hozzon létre vagy módosítsa a biztonsági mentési szabályzatok, visszaállítási pont megtekintése, futtatásakor egy igény szerinti biztonsági mentés leállítása és a virtuális gépek védelmének folytatása, törölni a helyreállítási pontok, és futtathat visszaállítást.
 
     ![Biztonsági másolati elemek az irányítópultot a beállítások panel](./media/backup-azure-manage-vms/item-dashboard-settings.png)
-
-
 
 ## <a name="manage-backup-policies"></a>Biztonsági mentési irányelvek kezelése
 1. Az a [tároló elem irányítópulton](#view-vms-in-the-dashboard), kattintson a **minden beállítás** .
@@ -71,7 +67,9 @@ Az irányítópult használatával készített biztonsági kezelheti és összev
 
 
 ## <a name="run-an-on-demand-backup"></a>Egy igény szerinti biztonsági mentés futtatása
+
 Egy igény szerinti virtuális gépek biztonsági mentési eltarthat, ha konfigurálva van a védelem.
+
 - Ha a kezdeti biztonsági mentés függőben, igény szerinti biztonsági mentést a Recovery Services-tárolóban hoz létre a virtuális gép teljes másolata.
 - Ha a kezdeti biztonsági mentés befejeződött, egy igény szerinti biztonsági mentést fogja csak elküldi a módosításokat a korábbi pillanatképből a Recovery Services-tároló. Azt jelenti az azt követő biztonsági mentéseket állandóan növekményes.
 - Egy igény szerinti biztonsági mentés a megőrzési tartomány biztonsági mentési feladat aktiválása idején a megadott adatmegőrzési érték.
@@ -101,7 +99,7 @@ Virtuális gépek védelmének leállítani két módja van:
 
 >[!NOTE]
 >
-* Ha Ön **biztonsági mentés leállítása** a **biztonsági mentési adatok megőrzése**, a helyreállítási pontok nem jár le a biztonsági mentési szabályzat összhangban. A védett példányok és a felhasznált tárterület mérete díjkötelesek. A helyreállítási pontok csak el foguk szabályzatának megfelelően (védelem ismételt engedélyezése) biztonsági mentés folytatásához, vagy manuálisan a biztonsági mentési adatok törlése után.
+* Ha Ön **biztonsági mentés leállítása** a **biztonsági mentési adatok megőrzése**, a helyreállítási pontok nem jár nevezhetnek, a biztonsági mentési szabályzat, mivel a szemétgyűjtési (GC) gyűjtemény nem fut az inaktív adatforrások esetében. A védett példányok és a felhasznált tárterület mérete díjkötelesek. A helyreállítási pontok csak el foguk szabályzatának megfelelően (védelem ismételt engedélyezése) biztonsági mentés folytatásához, vagy manuálisan a biztonsági mentési adatok törlése után.
 * Ha töröl egy adatforrást leállításával biztonsági mentés nélkül, új biztonsági mentései fog kezdenek. Ismét házirend szerint régi helyreállítási pontok érvényessége lejár, de egy, a legutóbbi helyreállítási pont mindig megőrzi a rendszer mindaddig, amíg a biztonsági mentés leállítása, és törölheti az adatokat.
 
 Virtuális gép védelmének megszüntetése:
@@ -112,7 +110,6 @@ Virtuális gép védelmének megszüntetése:
     ![Védelem leállítása](./media/backup-azure-manage-vms/retain-or-delete-option.png)
 
  Egy értesítési üzenet jelzi, a biztonsági mentési feladatok le lett állítva.
-
 
 ## <a name="resume-protection-of-a-vm"></a>A virtuális gépek védelmének folytatása
 
@@ -145,7 +142,7 @@ Ez az eljárás feltételezi, hogy a biztonsági mentési feladatot a virtuális
 
     ![Ellenőrzési leállítása](./media/backup-azure-manage-vms/item-verification-box.png)
 
-4. A biztonsági mentési adatok az aktuális elem törléséhez kattintson ![leállítási biztonsági mentés gomb](./media/backup-azure-manage-vms/delete-button.png)
+3. A biztonsági mentési adatok az aktuális elem törléséhez kattintson ![leállítási biztonsági mentés gomb](./media/backup-azure-manage-vms/delete-button.png)
 
     Egy értesítési üzenet jelzi, a biztonsági mentési adatok törölve lett.
 

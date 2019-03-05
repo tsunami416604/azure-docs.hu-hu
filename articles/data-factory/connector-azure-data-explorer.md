@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 03/04/2019
 ms.author: orspod
-ms.openlocfilehash: d30eab024fa988b3341c5efc9fe188ee4802720a
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 41cdae310fb9c2fc66ec9ed78ddc21596c9a5ba9
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961074"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57317849"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Adatok másolása, vagy az Azure az adatkezelőt az Azure Data Factory használatával
 
@@ -137,6 +137,9 @@ Adatok másolása az Azure az adatkezelőt, állítsa be a **típus** tulajdons�
 | type | A **típus** értékre kell állítani a másolási tevékenység forrása tulajdonságát: **AzureDataExplorerSource** | Igen |
 | lekérdezés | Megadott olvasási kérést egy [KQL formátum](/azure/kusto/query/). Használja az egyéni KQL lekérdezés referenciaként. | Igen |
 | queryTimeout | A várakozási idő előtt a lekérdezési kérés túllépi az időkorlátot. Alapértelmezett érték 10 perc (00: 10:00); engedélyezett maximális értéke 1 óra (01: 00:00). | Nem |
+
+>[!NOTE]
+>Alapértelmezés szerint az Azure Data Explorer forrás rendelkezik 500 000 rekord vagy 64 MB-os méretkorlátot. Csonkolási nélkül a rekordok lekéréséhez is megadhat `set notruncation;` , a lekérdezés elején. Tekintse meg [lekérdezési korlátok](https://docs.microsoft.com/en-us/azure/kusto/concepts/querylimits) a további részleteket.
 
 **Példa**
 

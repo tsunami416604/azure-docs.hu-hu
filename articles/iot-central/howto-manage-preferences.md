@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 21814ddf6af5e65725f5e0e6ebdf31206565baa2
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: dd6148d2d817b1f2465b6beaba5fd488b16ead21
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57218005"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315962"
 ---
 # <a name="manage-your-application-preferences"></a>Az alkalmazás-beállítások kezelése
 
@@ -27,7 +27,7 @@ IoT-központ több nyelven is támogatott. Elsődleges nyelv használatával vá
 
 ## <a name="changing-theme"></a>Téma módosítása
 
-Támogatja a sötét téma és világos téma van. Alapértelmezés szerint a világos téma pedig a felső navigációs sávon a beállítások ikonra kattintva módosíthatja ezt.
+Támogatja a sötét téma és világos téma van. Alapértelmezés szerint a világos téma pedig módosíthatja ezt a beállítások ikonra a felső navigációs sávban a kiválasztásával.
 
 ![IoT-központ témaválasztóval](media/howto-manage-preferences/settings.png)
 

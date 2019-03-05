@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/24/2018
 ms.author: bwren
-ms.openlocfilehash: b903d20136beb306d3f38fbebdb70562b3634d31
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 55aed5d1133756789c3ed8979f0a9599f465e5d9
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749783"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315095"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Az Azure Monitor az adatok megjelenítése
 Ez a cikk összefoglalja a napló- és az Azure monitorban tárolt metrikai adatok megjelenítése a választható módszerek.
@@ -71,9 +71,8 @@ Vizualizációk, például diagramokat és ábrákat segíthet a problémák ré
 - Válasz mérete 110 másodperc 8MB, a lekérdezés végrehajtási ideje a lekérdezések korlátozott.
 
 
-
-## <a name="application-insights-workbooks"></a>Application Insights munkafüzetek
-[Munkafüzetek](../application-insights/app-insights-usage-workbooks.md) adataihoz, vizsgálati és együttműködési belül a team betekintést nyújtó interaktív dokumentumok. Útmutatók és az incidens postmortem konkrét példákat, ahol munkafüzetek hasznosak hibaelhárítást.
+## <a name="workbooks"></a>Munkafüzetek
+[Munkafüzetek](../azure-monitor/app/usage-workbooks.md) adataihoz, vizsgálati és együttműködési belül a team betekintést nyújtó interaktív dokumentumok. Útmutatók és az incidens postmortem konkrét példákat, ahol munkafüzetek hasznosak hibaelhárítást.
 
 ![Munkafüzet](media/visualizations/workbook.png)
 
@@ -122,7 +121,6 @@ Vizualizációk, például diagramokat és ábrákat segíthet a problémák ré
 - Paramétereket támogatja.
 
 ### <a name="limitations"></a>Korlátozások
-- Támogatja a mérőszámok használatát, de nem naplózza.
 - Nem Azure-integráció. Nem tudja kezelni az irányítópultok és -modellek Azure Resource Manageren keresztül.
 - További Grafana infrastruktúrát vagy a további költségek támogatása a Grafana felhő költsége.
 
@@ -142,6 +140,7 @@ Napló adatai és az Azure monitorban metrikaadatok hozzáférhet bármely REST-
 - További információ a [Azure Monitor által gyűjtött adatok](platform/data-collection.md).
 - Ismerje meg [Azure-irányítópultok](../azure-portal/azure-portal-dashboards.md).
 - Ismerje meg [nézetek az Azure Monitor](platform/view-designer.md).
-- Ismerje meg [az Application Insights-munkafüzetek](app/usage-workbooks.md).
-- Ismerje meg [Teljesítménynapló-adatok importálása a Power BI-bA](platform/powerbi.md).
-- További információ a [Grafana az Azure Monitor adatforrás-beépülő modul](platform/grafana-plugin.md).
+- Ismerje meg [munkafüzetek](../azure-monitor/app/usage-workbooks.md).
+- Ismerje meg [Teljesítménynapló-adatok importálása a Power BI-bA](../azure-monitor/platform/powerbi.md).
+- További információ a [Grafana az Azure Monitor adatforrás-beépülő modul](../azure-monitor/platform/grafana-plugin.md).
+

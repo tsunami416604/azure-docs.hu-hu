@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/6/2018
 ms.author: victorh
-ms.openlocfilehash: 884775fc2783256d9fff43e8bc6b26cc4f638648
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 15481706d56af6cd9565e8c475b4770e432c1838
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998620"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337362"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Application Gateway állapotfigyelés – áttekintés
 
@@ -22,6 +22,8 @@ Az Azure Application Gateway alapértelmezés szerint a háttérkészlet összes
 ![Application gateway értékként megadhat például][1]
 
 Alapértelmezett mintavételi állapotfigyelés használatán is testreszabhatja az állapotminta az alkalmazás követelményeinek megfelelően. Ebben a cikkben alapértelmezett és egyéni állapotmintákat is vonatkozik.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="default-health-probe"></a>Alapértelmezett állapotadat-mintavétel
 
@@ -33,20 +35,20 @@ Ha a kiszolgáló az alapértelmezett mintavétel-ellenőrzés sikertelen, az ap
 
 ### <a name="probe-matching"></a>Mintavételi egyeztetése
 
-Alapértelmezés szerint a 200-as állapotkód HTTP (S) választ kifogástalan számít. Egyéni állapot-mintavételei emellett támogatja a két folyamatmegfeleltetési feltételek. Megadott feltételeknek megfelelő segítségével szükség esetén módosítsa az alapértelmezett értelmezésének mi számít egy megfelelő választ.
+Alapértelmezés szerint HTTP (S) választ, állapotkód: 200-as és 399 közötti megfelelő számít. Egyéni állapot-mintavételei emellett támogatja a két folyamatmegfeleltetési feltételek. Megadott feltételeknek megfelelő segítségével szükség esetén módosítsa az alapértelmezett értelmezésének mi számít egy megfelelő választ.
 
 A következő vannak egyező feltételek: 
 
 - **HTTP válasz állapota kód egyezés** - mintavétel megfelelő elfogadására vonatkozó feltétel a felhasználó által meghatározott http válasz kódja vagy válasz állapotkód-tartományok. Az egyes vesszővel elválasztott állapotkódok vagy állapotkód számos támogatott.
 - **HTTP válasz törzsében egyezés** - mintavétel megfelelő feltétel, hogy megállapítja, hogy a HTTP-válasz törzsében és a egy felhasználó-egyezések a megadott karakterlánc. A match csak megkeresi a megadott felhasználó jelenléte karakterlánc-válasz törzsében, és nem egy teljes reguláris kifejezés egyeztetése.
 
-Egyezés kritériumok adhatók meg a `New-AzureRmApplicationGatewayProbeHealthResponseMatch` parancsmagot.
+Egyezés kritériumok adhatók meg a `New-AzApplicationGatewayProbeHealthResponseMatch` parancsmagot.
 
 Példa:
 
-```powershell
-$match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
-$match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
+```azurepowershell
+$match = New-AzApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
+$match = New-AzApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 ```
 Után az egyezési feltételek meg van adva, akkor lehet csatolni, mintavételi konfiguráció használatával, egy `-Match` paraméter a PowerShellben.
 

@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
 ms.date: 02/20/2019
-ms.openlocfilehash: 6ded590ac5a9c30655d8ed19c370ce476d1c9631
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 15ca464e8e44183b445bfdabe9abf5dd560a4f70
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456282"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312256"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Az adatbázis-kiszolgálók virtuális hálózati Szolgáltatásvégpontok és szabályok használata
 
@@ -174,6 +174,8 @@ PolyBase az adatok betöltése az Azure SQL Data Warehouse-bA az Azure Storage-f
 
 #### <a name="prerequisites"></a>Előfeltételek
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 1.  Ez az Azure PowerShell telepítése [útmutató](https://docs.microsoft.com/powershell/azure/install-az-ps).
 2.  Ha rendelkezik egy általános célú v1- vagy blob storage-fiókot, először frissítenie kell, általános célú v2 ez [útmutató](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade).
 3.  Rendelkeznie kell **engedélyezése megbízható Microsoft-szolgáltatások a tárfiók** kapcsolva az Azure Storage-fiók **tűzfalak és virtuális hálózatok** beállítások menüjében. Ebben [útmutató](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) további információt.
@@ -182,9 +184,9 @@ PolyBase az adatok betöltése az Azure SQL Data Warehouse-bA az Azure Storage-f
 1.  A PowerShellben **az SQL Database-kiszolgáló regisztrálása** az Azure Active Directory (AAD):
 
     ```powershell
-    Add-AzureRmAccount
-    Select-AzureRmSubscription -SubscriptionId your-subscriptionId
-    Set-AzureRmSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
+    Connect-AzAccount
+    Select-AzSubscription -SubscriptionId your-subscriptionId
+    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-database-servername -AssignIdentity
     ```
     
  1. Hozzon létre egy **általános célú v2-Tárfiók** ez [útmutató](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
@@ -273,7 +275,7 @@ Ez a szakasz bemutatja, hogyan használhatja a [az Azure portal] [ http-azure-po
 
 ## <a name="powershell-alternative"></a>PowerShell alternatív
 
-Egy PowerShell-parancsfájlt is létrehozhat a virtuális hálózati szabályok. A kulcsfontosságú parancsmag **új New-AzureRmSqlServerVirtualNetworkRule**. Ha szeretné megtudni, tekintse meg [egy virtuális hálózati szolgáltatásvégpont és a szabály létrehozása az Azure SQL Database PowerShell][sql-db-vnet-service-endpoint-rule-powershell-md-52d].
+Egy PowerShell-parancsfájlt is létrehozhat a virtuális hálózati szabályok. The crucial cmdlet **New-AzSqlServerVirtualNetworkRule**. Ha szeretné megtudni, tekintse meg [egy virtuális hálózati szolgáltatásvégpont és a szabály létrehozása az Azure SQL Database PowerShell][sql-db-vnet-service-endpoint-rule-powershell-md-52d].
 
 ## <a name="rest-api-alternative"></a>Alternatív REST API-val
 

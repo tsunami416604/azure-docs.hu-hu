@@ -10,12 +10,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 5/15/2018
 ms.author: victorh
-ms.openlocfilehash: 2ae8c14b40fa13a1aa8008588fb0efb1b1d2c3f6
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 33e24a8d8715dd6f2b37ed566a1479dffd93c466
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159417"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57308091"
 ---
 # <a name="configure-an-application-gateway-with-ssl-termination-using-the-azure-portal"></a>Egy application gateway konfigurálása SSL-lezárást az Azure portal használatával
 
@@ -29,6 +29,8 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * A háttér-kiszolgálóként használt virtuális gépek létrehozása
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
@@ -132,7 +134,7 @@ Ebben a példában két virtuális gépet hozunk létre, amelyeket az alkalmazá
 2. Futtassa a következő parancsot az IIS a virtuális gépen való telepítéséhez: 
 
     ```azurepowershell-interactive
-    Set-AzureRmVMExtension `
+    Set-AzVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -ExtensionName IIS `
       -VMName myVM `
@@ -143,7 +145,7 @@ Ebben a példában két virtuális gépet hozunk létre, amelyeket az alkalmazá
       -Location EastUS
     ```
 
-3. Hozzon létre egy második virtuális gépet, és telepítse az IIS-t az imént befejezett lépésekkel. Adja meg a *myVM2* nevet a virtuális gép neveként és a Set-AzureRmVMExtension parancs VMName paramétereként.
+3. Hozzon létre egy második virtuális gépet, és telepítse az IIS-t az imént befejezett lépésekkel. Adja meg *myVM2* nevéből és a Set-AzVMExtension VMName.
 
 ### <a name="add-backend-servers"></a>Háttérkiszolgálók hozzáadása
 

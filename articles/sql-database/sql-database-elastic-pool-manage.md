@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 2a719fcbe2180e366060fba11bf64ad9770aa672
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: e35de707abe04702201969fdfd008fc9713fc391
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756121"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309740"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>Az Azure SQL Database rugalmas készletek létrehozása és kezelése
 
@@ -39,6 +39,8 @@ Itt választhat bármilyen kombinációja a következő módosításokat, és me
 
 ## <a name="powershell-manage-elastic-pools-and-pooled-databases"></a>PowerShell: Rugalmas készletek és a készletezett adatbázisok kezelése
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Hozzon létre és kezeli az SQL Database rugalmas készletek és a készletezett adatbázisok az Azure PowerShell-lel, használja a következő PowerShell-parancsmagok. Ha telepíteni vagy frissíteni a PowerShell, lásd: kell [Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps). Hozhat létre, és az SQL Database-kiszolgálók, rugalmas készletek kezelése, tekintse meg a [létrehozása és kezelése az SQL Database-kiszolgálók](sql-database-servers.md). Hozzon létre és tűzfalszabályok kezelése: [létrehozása és a tűzfalszabályok kezelése PowerShell használatával](sql-database-firewall-configure.md#manage-server-level-ip-firewall-rules-using-azure-powershell).
 
 > [!TIP]
@@ -47,15 +49,15 @@ Hozzon létre és kezeli az SQL Database rugalmas készletek és a készletezett
 
 | Parancsmag | Leírás |
 | --- | --- |
-|[New-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/new-azurermsqlelasticpool)|Egy rugalmas készletet hoz létre.|
-|[Get-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/get-azurermsqlelasticpool)|Lekérdezi a rugalmas készletek és azok tulajdonság értéke.|
-|[Set-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/set-azurermsqlelasticpool)|Például egy rugalmas készlet tulajdonságainak módosítása a **StorageMB** tulajdonság az egy rugalmas készlet adatbázisonkénti maximális tárolási módosításához.|
-|[Remove-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/remove-azurermsqlelasticpool)|Rugalmas készlet törlése.|
-|[Get-AzureRmSqlElasticPoolActivity](/powershell/module/azurerm.sql/get-azurermsqlelasticpoolactivity)|Rugalmas készlet műveletek állapotának beolvasása|
-|[New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase)|Létrehoz egy új adatbázist egy meglévő készlet vagy önálló adatbázisként. |
-|[Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase)|Egy vagy több adatbázist kér le.|
-|[Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase)|Beállítja egy adatbázis tulajdonságait, vagy be, összesen: vagy rugalmas készletek között helyezi át a létező adatbázis.|
-|[Remove-AzureRmSqlDatabase](/powershell/module/azurerm.sql/remove-azurermsqldatabase)|Eltávolít egy adatbázist.|
+|[New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool)|Egy rugalmas készletet hoz létre.|
+|[Get-AzSqlElasticPool](/powershell/module/az.sql/get-azsqlelasticpool)|Lekérdezi a rugalmas készletek és azok tulajdonság értéke.|
+|[Set-AzSqlElasticPool](/powershell/module/az.sql/set-azsqlelasticpool)|Például egy rugalmas készlet tulajdonságainak módosítása a **StorageMB** tulajdonság az egy rugalmas készlet adatbázisonkénti maximális tárolási módosításához.|
+|[Remove-AzSqlElasticPool](/powershell/module/az.sql/remove-azsqlelasticpool)|Rugalmas készlet törlése.|
+|[Get-AzSqlElasticPoolActivity](/powershell/module/az.sql/get-azsqlelasticpoolactivity)|Rugalmas készlet műveletek állapotának beolvasása|
+|[New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase)|Létrehoz egy új adatbázist egy meglévő készlet vagy önálló adatbázisként. |
+|[Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase)|Egy vagy több adatbázist kér le.|
+|[Set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase)|Beállítja egy adatbázis tulajdonságait, vagy be, összesen: vagy rugalmas készletek között helyezi át a létező adatbázis.|
+|[Remove-AzSqlDatabase](/powershell/module/az.sql/remove-azsqldatabase)|Eltávolít egy adatbázist.|
 
 > [!TIP]
 > A rugalmas készletek több adatbázis létrehozásának befejezése után a portál vagy az egyszerre csak egy önálló adatbázis létrehozása PowerShell-parancsmagok használatával időt vehet igénybe. Rugalmas készlet automatizálásához, lásd: [CreateOrUpdateElasticPoolAndPopulate](https://gist.github.com/billgib/d80c7687b17355d3c2ec8042323819ae).

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 962f394607d20869bf00db624533996b0060eaf2
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 39359054818b81c0f5f2cdc9413ae2a0c1dc8c65
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45986307"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310267"
 ---
 # <a name="monitor-device-connectivity-using-the-azure-iot-central-explorer"></a>Az Azure IoT Central Explorer használatával eszközkapcsolatok figyelése
 
@@ -46,10 +46,10 @@ Az alábbiakban néhány parancsok és a gyakori beállítások használata eset
 
 Mielőtt kezdheti, szüksége lesz az IoT-központ alkalmazás használatra hozzáférési jogkivonatot kapjon a rendszergazda. A rendszergazda hajtja végre az alábbi lépéseket:
 1. Lépjen a **felügyeleti/hozzáférési jogkivonatok**. 
-1. Kattintson a **készítése**.
+1. Válassza ki **készítése**.
 ![Hozzáférési jogkivonat lap képernyőképe](media/howto-use-iotc-explorer/accesstokenspage.png)
 
-1. Adja meg a jogkivonat nevét, kattintson a **tovább**, és **másolja ki a Token értékét**.
+1. Adja meg a jogkivonat nevét, válassza ki **tovább**, és **másolja ki a Token értékét**.
     > [!NOTE]
     > A jogkivonat értéke csak jelenik meg egyszer, a párbeszédpanel bezárása előtt lehet másolni. A párbeszédpanel bezárása, után ez soha nem jelenik meg újra.
 

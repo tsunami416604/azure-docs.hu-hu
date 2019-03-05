@@ -13,12 +13,12 @@ ms.author: ninarn
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 11/14/2018
-ms.openlocfilehash: 1a13f5f038afed914fd2b2a178974a0ba2e7255f
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 0377f192ea9bc6502065fa037704ec8461ce1447
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984220"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311101"
 ---
 # <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>Az SQL-adatbázis kapcsolati hibák és átmeneti hibák
 
@@ -211,7 +211,7 @@ Ha a program használja az ADO.NET-osztályok hasonló **System.Data.SqlClient.S
 
 Egy kapcsolat objektumot a kapcsolatkészlet használata esetén javasoljuk, hogy a programot ideiglenesen lezárja a kapcsolatot, ha nem azonnal használatban van. Nem költséges, nyissa meg újra a kapcsolatot, de egy új kapcsolatot létrehozni.
 
-Ha korábban, azt javasoljuk, hogy frissítsen a legújabb ADO.NET vagy ADO.NET 4.0-s verzióját használja. 2018 augusztus is [töltse le az ADO.NET 4.6.2-es](https://blogs.msdn.microsoft.com/dotnet/2018/04/30/announcing-the-net-framework-4-7-2/).
+Ha korábban, azt javasoljuk, hogy frissítsen a legújabb ADO.NET vagy ADO.NET 4.0-s verzióját használja. 2018 augusztus is [töltse le az ADO.NET 4.6.2-es](https://blogs.msdn.microsoft.com/dotnet/20../../announcing-the-net-framework-4-7-2/).
 
 <a id="e-diagnostics-test-utilities-connect" name="e-diagnostics-test-utilities-connect"></a>
 

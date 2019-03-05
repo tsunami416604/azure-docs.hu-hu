@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: d2093c5b4c07e6e62df4d1f52a7fbe6e12a91ea0
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: d9a911dccf3d59bf1159cf8576b95d86ef26657b
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217053"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314245"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse naplózása
 
@@ -133,7 +133,7 @@ Többféleképpen naplófájlokat blob megtekintéséhez használhatja:
 
 * Használja a [alkalmazás szinkronizálása](https://github.com/Microsoft/Azure-SQL-DB-auditing-OMS-integration) készült. Az Azure-ban fut, és használja a log analytics nyilvános API-kat SQL leküldése az Azure Monitor naplóira auditnaplók. A szinkronizálási kérelem leküldéses értesítések, a log analytics-irányítópult keresztül SQL auditnaplók az Azure Monitor naplóira felhasználásra.
 
-* A Power BI használata. Megtekintheti és elemezheti a naplózási adatokat a Power bi-ban. Tudjon meg többet [Power BI és a egy letölthető sablon hozzáférés](https://blogs.msdn.microsoft.com/azuresqldbsupport/2017/05/26/sql-azure-blob-auditing-basic-power-bi-dashboard/).
+* A Power BI használata. Megtekintheti és elemezheti a naplózási adatokat a Power bi-ban. Tudjon meg többet [Power BI és a egy letölthető sablon hozzáférés](https://blogs.msdn.microsoft.com/azuresqldbsupport/20../../sql-azure-blob-auditing-basic-power-bi-dashboard/).
 
 * Letölti a naplófájlokat a portálon keresztül, vagy egy eszköz használatával az Azure Storage blob-tárolóból [Azure Storage Explorer](http://storageexplorer.com/).
     * Miután letöltötte helyileg egy naplófájl, duplán a fájlt, nyissa meg a, megtekintheti és elemezheti a naplókat az ssms-ben.
@@ -144,8 +144,8 @@ Többféleképpen naplófájlokat blob megtekintéséhez használhatja:
 
    * Nézet blobnaplózás programozott módon jelentkezik:
 
-     * Használja a [bővített események olvasó](https://blogs.msdn.microsoft.com/extended_events/2011/07/20/introducing-the-extended-events-reader/) C# könyvtár.
-     * [Bővített események lekérdezésfájlok](https://sqlscope.wordpress.com/2014/11/15/reading-extended-event-files-using-client-side-tools-only/) PowerShell használatával.
+     * Használja a [bővített események olvasó](https://blogs.msdn.microsoft.com/extended_events/20../../introducing-the-extended-events-reader/) C# könyvtár.
+     * [Bővített események lekérdezésfájlok](https://sqlscope.wordpress.com/20../../reading-extended-event-files-using-client-side-tools-only/) PowerShell használatával.
 
 
 
@@ -169,17 +169,20 @@ A sablon képzeletbeli mintaadatokat tartalmaz, és beállíthatja a Power Query
 4. Lépjen vissza a felhasználói felület tárolási és **újragenerálása** a *másodlagos hozzáférési kulcs* (mint a következő előkészítése kulcsok a frissítés.
 
 ## <a id="subheading-5"></a>Automation (PowerShell/REST API-t)
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Naplózás az Azure SQL Data Warehouse a következő automatizálási eszközökkel is konfigurálhatja:
 
 * **PowerShell-parancsmagok**:
 
-   * [Get-AzureRMSqlDatabaseAuditingPolicy](/powershell/module/azurerm.sql/get-azurermsqldatabaseauditingpolicy)
-   * [Get-AzureRMSqlServerAuditingPolicy](/powershell/module/azurerm.sql/Get-AzureRMSqlServerAuditingPolicy)
-   * [Remove-AzureRMSqlDatabaseAuditing](/powershell/module/azurerm.sql/Remove-AzureRMSqlDatabaseAuditing)
-   * [Remove-AzureRMSqlServerAuditing](/powershell/module/azurerm.sql/Remove-AzureRMSqlServerAuditing)
-   * [Set-AzureRMSqlDatabaseAuditingPolicy](/powershell/module/azurerm.sql/Set-AzureRMSqlDatabaseAuditingPolicy)
-   * [Set-AzureRMSqlServerAuditingPolicy](/powershell/module/azurerm.sql/Set-AzureRMSqlServerAuditingPolicy)
-   * [Use-AzureRMSqlServerAuditingPolicy](/powershell/module/azurerm.sql/Use-AzureRMSqlServerAuditingPolicy)
+   * [Get-AzSqlDatabaseAuditingPolicy](/powershell/module/az.sql/get-azsqldatabaseauditingpolicy)
+   * [Get-AzSqlServerAuditingPolicy](/powershell/module/az.sql/Get-azSqlServerAuditingPolicy)
+   * [Remove-AzSqlDatabaseAuditing](/powershell/module/az.sql/Remove-azSqlDatabaseAuditing)
+   * [Remove-AzSqlServerAuditing](/powershell/module/az.sql/Remove-azSqlServerAuditing)
+   * [Set-AzSqlDatabaseAuditingPolicy](/powershell/module/az.sql/Set-azSqlDatabaseAuditingPolicy)
+   * [Set-AzSqlServerAuditingPolicy](/powershell/module/az.sql/Set-azSqlServerAuditingPolicy)
+   * [Use-AzSqlServerAuditingPolicy](/powershell/module/az.sql/Use-azSqlServerAuditingPolicy)
 
 
 ## <a name="downlevel-clients-support-for-auditing-and-dynamic-data-masking"></a>Naplózási és dinamikus adatmaszkolási alacsonyabb szintű ügyfelek támogatása

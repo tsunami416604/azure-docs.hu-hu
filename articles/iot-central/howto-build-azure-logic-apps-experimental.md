@@ -8,12 +8,12 @@ ms.date: 02/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: 47e34596c37463be92b0d995440173f2426a182a
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 77737db30c7a2c5c6350e4ae1ab70310036bd0e5
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216611"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57311355"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-azure-logic-apps"></a>Hozzon létre munkafolyamatokat az IoT Central-összekötő az Azure Logic Appsben
 
@@ -32,13 +32,13 @@ Az IoT Central-összekötő a Microsoft Flow is használhatja. Azure Logic Apps 
 
 Ez a szakasz bemutatja, hogyan üzenet küldése a Microsoft Teams, amikor egy szabály akkor lesz kiváltva. Konfigurálhatja a munkafolyamatba műveleteket, mint küldése egy eseményt az eseményközpontnak, Azure DevOps új munkaelem létrehozása vagy új sort beszúrni az SQL server más összekötők használatával.
 
-1. Első lépésként [olyan szabályt hoz létre az IoT-központ](howto-create-telemetry-rules-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json). Miután menti a szabály feltételeit, kattintson a **Azure Logic Apps** új műveletként csempére. Kattintson a **létrehozása az Azure Portalon**. Ekkor megnyílik az Azure Portalra egy új logikai alkalmazás létrehozásához. Szükség lehet bejelentkezni az Azure-fiókjával.
+1. Első lépésként [olyan szabályt hoz létre az IoT-központ](howto-create-telemetry-rules-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json). Miután mentette a szabály feltételeit, jelölje be a **Azure Logic Apps** új műveletként csempére. Válassza ki **létrehozása az Azure Portalon**. Ekkor megnyílik az Azure Portalra egy új logikai alkalmazás létrehozásához. Szükség lehet bejelentkezni az Azure-fiókjával.
 
-1. Adja meg a szükséges, hozzon létre egy új logikai alkalmazást. Kiválaszthatja azokat az új logikai alkalmazás létrehozásához Azure-előfizetés. Nincs kell ugyanabban az előfizetésben az IoT Central-alkalmazást sikeresen létrehozva. Kattintson a **Create** (Létrehozás) gombra.
+1. Adja meg a szükséges, hozzon létre egy új logikai alkalmazást. Kiválaszthatja azokat az új logikai alkalmazás létrehozásához Azure-előfizetés. Nincs kell ugyanabban az előfizetésben az IoT Central-alkalmazást sikeresen létrehozva. Kattintson a **Létrehozás** gombra.
 
     ![Logikai alkalmazás létrehozása az Azure Portalon](./media/howto-build-azure-logic-apps-experimental/createinazureportal.png)
 
-1. Után a logikai alkalmazás sikeresen létrejött, akkor automatikusan léptetését, a Logic Apps Designerben. Kattintson a **üres logikai alkalmazás**. 
+1. Után a logikai alkalmazás sikeresen létrejött, akkor automatikusan léptetését, a Logic Apps Designerben. Válassza ki **üres logikai alkalmazás**. 
 
     ![Üres logikai alkalmazás létrehozása](./media/howto-build-azure-logic-apps-experimental/blanklogicapp.png)
 
@@ -54,11 +54,11 @@ Ez a szakasz bemutatja, hogyan üzenet küldése a Microsoft Teams, amikor egy s
 
 1. A műveletet, válassza a **csapat** és **csatorna**. Töltse ki a **üzenet** mezőt a választható tegyük fel, hogy minden üzenetet. Megadhat *dinamikus tartalom* az IoT-központ szabályból, mentén fontos információkat, például az eszköz és az időbélyegző-értesítések való átadásához.
     > [!NOTE]
-    > Kattintson a "További információk" szöveget, mérés és tulajdonságértékeket, amely kiváltotta a szabály a dinamikus tartalom ablakban.
+    > Válassza ki a **Továbbiak** a dinamikus tartalom ablakban elolvashatja a mérés és tulajdonság értékei, amely kiváltotta a szabály a szöveget.
 
     ![Nyissa meg a logikai alkalmazás szerkesztési művelet dinamikus ablaktábla](./media/howto-build-azure-logic-apps-experimental/buildworkflow.png)
 
-1. Ha elkészült a művelet szerkesztését, kattintson a **mentése**.
+1. Ha elkészült a művelet szerkesztése, válassza ki **mentése**.
 
 1. Ha visszatér az IoT Central alkalmazáshoz, megjelenik ez a szabály rendelkezik egy Azure Logic Apps műveletet az műveletek területen.
 

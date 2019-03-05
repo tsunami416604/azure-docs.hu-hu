@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
-ms.openlocfilehash: d81ab4283b408f7490f0dc40cce3199ca29c0af1
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 92546e6aabdf43c2f9cb0339fb21dd2dfc641d44
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737229"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314313"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Öt lépést a személyazonosság-infrastruktúra védelme
 
-Ez a dokumentum acélja épp az, ha biztosan tisztában biztonsági jelentőségét van. Valószínűleg már sokat biztonságossá tétele a vállalata a felelősséget. Ha szeretné a biztonsági fontosságát, másokat meggyőzni a felhasználót, küldje el a olvassa el a legújabb [Microsoft biztonsági információs jelentései](https://www.microsoft.com/security/intelligence-report).
+Ez a dokumentum acélja épp az, ha biztosan tisztában biztonsági jelentőségét van. Valószínűleg már sokat biztonságossá tétele a vállalata a felelősséget. Ha szeretné a biztonsági fontosságát, másokat meggyőzni a felhasználót, küldje el a olvassa el a legújabb [Microsoft biztonsági információs jelentései](https://go.microsoft.com/fwlink/p/?linkid=2073747).
 
 Ez a dokumentum segít egy biztonságosabb állapotáról, az Azure Active Directory képességeit használja ahhoz a kibertámadások ellen a szervezet egy 5-lépés ellenőrzőlista használatával beolvasása.
 

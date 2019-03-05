@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: kasinh
-ms.openlocfilehash: bb13e507e7992f4cd4d767a7a18850739b8dccf2
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: f119d128b35b93d7e18d514c09d187689d8dffe9
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270198"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57306901"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Az Azure-ba, a System Center DPM-mel biztonsági másolatot előkészítése
 
@@ -48,20 +48,17 @@ A DPM egy Azure virtuális gépen | System Center 2012 R2 DPM 2012 R2 3. kumulat
 DPM fizikai kiszolgálón | A System Center 2012 SP1 vagy újabb, illetve A System Center 2012 R2.
 A DPM a Hyper-V virtuális gépen | A System Center 2012 SP1 vagy újabb, illetve A System Center 2012 R2.
 DPM VMware virtuális gépen | System Center 2012 R2 5. kumulatív frissítés vagy újabb.
-Összetevők | A DPM-kiszolgálóval kell rendelkeznie a Windows PowerShell és a .net keretrendszer 4.5-ös verzióját.
+Összetevők | A DPM-kiszolgálón Windows PowerShell és a .NET-keretrendszer 4.5 telepítve kell rendelkezniük.
 Támogatott alkalmazások | [Ismerje meg,](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix) milyen biztonsági mentéseket.
 Támogatott fájltípusok | Az ilyen biztonsági másolat készíthető a Azure Backup szolgáltatással: Titkosított (csak teljes biztonsági mentések); Tömörített (növekményes biztonsági mentések támogatva); Ritka (növekményes biztonsági mentések támogatva); Tömörített és ritka (kezelt, ritka).
 Nem támogatott fájltípusok | A kis-és nagybetűket fájlrendszerek; kiszolgálók a rögzített hivatkozások (kimaradnak); újraelemzési pontok (kimaradnak); titkosított és tömörített (kimaradnak); titkosított és ritka (kimaradnak); Tömörített stream; elemezni az adatfolyamot.
-Helyi tárhely | Egyes gépek biztonsági helyi szabad tárhely, amely az adatokat, amelyek készül biztonsági másolat méretének legalább 5 %-át kell rendelkeznie.  Például 100 GB adat biztonsági mentésével legalább 5 GB szabad hely az ideiglenes hely szükséges.
+Helyi tárhely | Egyes gépek biztonsági helyi szabad tárhely, amely az adatokat, amelyek készül biztonsági másolat méretének legalább 5 %-át kell rendelkeznie. Például 100 GB adat biztonsági mentésével legalább 5 GB szabad hely az ideiglenes hely szükséges.
 Tároló tárolási | Nem a biztonsági másolatot készíthet az Azure Backup-tároló adatok mennyisége korlátozott, de egy adatforráshoz (például egy virtuális gép vagy adatbázis) mérete nem haladhatja meg a 54400 GB.
 Az Azure Backup ügynöke | Ha a DPM a System Center 2012 SP1 rendszeren fut, telepítse a 2-es vagy újabb kumulatív DPM SP1. Ez az ügynök telepítéséhez szükséges.<br/><br/> Ez a cikk ismerteti, hogyan helyezhet üzembe az Azure Backup ügynököt, más néven a Microsoft Azure Recovery Service-(MARS-) ügynök legújabb verzióját. Ha egy korábbi verziója telepítve van, győződjön meg arról, hogy a biztonsági mentés a várt módon működik a legújabb verzióra frissíteni.
 
-
 Mielőtt elkezdené, egy Azure-fiókra van szüksége az Azure Backup szolgáltatás engedélyezve van. Ha nincs fiókja, néhány perc alatt létrehozhat egy ingyenes próbafiókot. További információ [Azure Backup árairól](https://azure.microsoft.com/pricing/details/backup/).
 
-
 [!INCLUDE [backup-create-rs-vault.md](../../includes/backup-create-rs-vault.md)]
-
 
 ## <a name="modify-storage-settings"></a>Tárolási beállítások módosítása
 
@@ -82,7 +79,6 @@ A tárreplikációs beállítás szerkesztése:
 
     ![A Backup-tárolók listája](./media/backup-azure-dpm-introduction/choose-storage-configuration-rs-vault.png)
 
-
 ## <a name="download-vault-credentials"></a>A tároló hitelesítő adatainak letöltése
 
 A tároló hitelesítő adatainak használnia, ha a DPM-kiszolgálón regisztrálja a tárolóban.
@@ -98,7 +94,7 @@ Szerezze be a hitelesítő adatokat, töltse le a tároló hitelesítő adatait 
 
 - A tároló hitelesítő adatai csak a regisztrációs munkafolyamat során használt.
 - A feladata, hogy a tároló hitelesítőadat-fájlja biztonságos, és nem sérült.
-    -  Vezérlő a hitelesítő adatok nem vesztek el, ha a tároló hitelesítő adatainak a tárba más gépek használható.
+    - Vezérlő a hitelesítő adatok nem vesztek el, ha a tároló hitelesítő adatainak a tárba más gépek használható.
     - Biztonsági mentési adatok azonban van titkosítva, így a meglévő biztonsági mentési adatok biztonsága nem sérülhet az ügyfélhez tartozó jelszóval.
 - Győződjön meg arról, hogy a fájl mentése egy olyan helyre, amely a DPM-kiszolgáló elérhető lesz. Ha egy fájl megosztási/SMB tárolva van, ellenőrizze a hozzáférési engedélyeket.
 - A tároló hitelesítő adatai lejárnak 48 óra. Új tároló hitelesítő adatait annyiszor szükséges töltheti le. Azonban csak a legújabb tároló hitelesítőadat-fájlja a regisztrációs munkafolyamat során használható.
@@ -138,8 +134,7 @@ Minden olyan gép, amely biztonsági másolatot készít az Azure Backup a Backu
 7. Az Azure Backup ügynököt telepíti a .NET-keretrendszer 4.5 és Windows PowerShell (Ha még nincs telepítve) a telepítés befejezéséhez.
 8. Az ügynök telepítése után **Bezárás** az ablakban.
 
-   ![Bezárás](../../includes/media/backup-install-agent/dpm_FinishInstallation.png)
-
+    ![Bezárás](../../includes/media/backup-install-agent/dpm_FinishInstallation.png)
 
 ## <a name="register-the-dpm-server-in-the-vault"></a>A DPM-kiszolgálón regisztrálja a tárolóban
 
@@ -175,8 +170,7 @@ Minden olyan gép, amely biztonsági másolatot készít az Azure Backup a Backu
     > A titkosítási jelszó a saját és a Microsoft nem rendelkezik, betekintést.
     > Ha a jelszó elvesztése vagy elfelejtése; A Microsoft nem segít a biztonsági mentési adatok helyreállítása.
 
-13. Kattintson a **regisztrálása** a DPM-kiszolgáló a tárolóban való regisztrálásához.  
-
+13. Kattintson a **regisztrálása** a DPM-kiszolgáló a tárolóban való regisztrálásához.
 
 A kiszolgáló sikeresen való regisztrálása után a tárolóban, és most már készen áll indítsa el a biztonsági mentés a Microsoft Azure.
 

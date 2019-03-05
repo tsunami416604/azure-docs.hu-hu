@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 8127a7a10c117edaefc4a215366990d847a165ec
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 346d97e6e3dad6ebacaae6c789137df4f33e2e72
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238283"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316387"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>Gyors útmutató: Beállítása és lekérése a titkos kulcs Azure Key vault használatával a .NET-webalkalmazás
 
@@ -171,7 +171,7 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --s
 
 ```
 
-Az alkalmazás futtatásakor meg kell jelennie a titkos kulcs lekért értékének. Az előző parancsban, akkor Ön jogosultságot ad az alkalmazás identitását aervice engedéllyel, hogy tegye **első** és **lista** a kulcstartóra vonatkozó műveleteket.
+Az alkalmazás futtatásakor meg kell jelennie a titkos kulcs lekért értékének. Az előző parancsban szereplő, még az alkalmazás identitását szolgáltatás engedélyeket ad ehhez **első** és **lista** a kulcstartóra vonatkozó műveleteket.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha már nincs szüksége, törölje az erőforráscsoportot, virtuális gép és minden kapcsolódó erőforrás. Ehhez válassza ki az erőforráscsoportot a virtuális Gépet, majd válassza a **törlése**.

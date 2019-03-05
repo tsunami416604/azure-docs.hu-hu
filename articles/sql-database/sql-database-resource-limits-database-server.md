@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: conceptual
 author: CarlRabeler
 ms.author: carlrab
-ms.reviewer: sashan,moslake
+ms.reviewer: sashan,moslake,josack
 manager: craigg
 ms.date: 03/01/2019
-ms.openlocfilehash: 011aa97d44a92feced7328b2bd014395d2c5b765
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 00b20b3f144a2e98fb028e3db7c50af61330d721
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57246698"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316455"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Az Azure SQL Database-kiszolgálóhoz tartozó SQL Database erőforráskorlátok
 
@@ -74,7 +74,7 @@ Amikor magas munkamenet vagy feldolgozói kihasználtság, kockázatcsökkentés
 - Növelése a szolgáltatási szint, vagy számítási az adatbázisához vagy rugalmas készlet mérete. Lásd: [egyetlen adatbázis-erőforrások skálázása](sql-database-single-database-scale.md) és [méretezhető rugalmas adatbáziskészlet erőforrásainak](sql-database-elastic-pool-scale.md).
 - A számítási erőforrások optimalizálása minden egyes lekérdezés az erőforrás-használat csökkentésére, ha a megnövekedett feldolgozó kihasználtsági oka miatt a versengés a lekérdezéseket. További információkért lásd: [lekérdezés hangolása/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
-### <a name="transaction-log-rate-governance"></a>Tranzakciós napló arány Cégirányítási 
+## <a name="transaction-log-rate-governance"></a>Tranzakciós napló arány Cégirányítási 
 Tranzakciós napló arány cégirányítási egy Azure SQL Database magas Adatbetöltési díjait számoljuk fel, például a kötegelt számítási feladatok esetében korlátozhatja a folyamat insert, SELECT INTO és indexek. Ezek a korlátok követ nyomon és érvényesítése a másodperc törtrésze szintjén, a napló rekord létrehozásakor díjaival, előfordulhat, hogy korlátozó átviteli sebesség függetlenül attól, hogy hány IOs állították adatfájlokat.  Tranzakciódíjak naplófájl létrehozásának jelenleg lineárisan lehessen skálázni addig a pontig, amely a függő hardver, a napló a maximális sebesség engedélyezett 48 MB/s a vcore magok vásárlási modell a folyamatban. 
 
 > [!NOTE]

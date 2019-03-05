@@ -10,22 +10,25 @@ ms.subservice: manage
 ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
-ms.openlocfilehash: 70a59ddc1b15693cb2a50c1dc2da6dd9233e0811
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 8ec6ffaba8056eacf44d8e1bd911eb1f22daad84
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990017"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314840"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Teljesítményoptimalizálás az SQL Data Warehouse frissítésével
+
 Azure SQL Data Warehouse frissítsen a legújabb generációja, az Azure hardver- és tárolási architektúrát.
 
 ## <a name="why-upgrade"></a>Miért érdemes frissíteni?
+
 Most már zökkenőmentesen frissítheti az Azure Portalon az SQL Data Warehouse számítási optimalizált Gen2 szintre [támogatott régiók](gen2-migration-schedule.md#automated-schedule-and-region-availability-table). Ha a régió nem támogatja a helyi frissítés, váltson egy támogatott régióban, vagy várjon, amíg az Ön régiójában érhető el helyi frissítése. Frissítsen most kihasználhatja az Azure-beli hardveres és továbbfejlesztett tárolási architektúrát, beleértve a gyorsabb teljesítmény, méretezhetőség és korlátlan Oszlopalapú tárolást legújabb generációja. 
 
 > [!VIDEO https://www.youtube.com/embed/9B2F0gLoyss]
 
 ## <a name="applies-to"></a>A következőkre vonatkozik
+
 Ez a frissítés alkalmazva lesz optimalizált Gen1 számítási szinten található adattárházak [támogatott régiók](gen2-migration-schedule.md#automated-schedule-and-region-availability-table).
 
 ## <a name="before-you-begin"></a>Előkészületek
@@ -49,10 +52,15 @@ Ez a frissítés alkalmazva lesz optimalizált Gen1 számítási szinten találh
    |           DW2000            |           DW2000c           |
    |           DW3000            |           DW3000c           |
    |           DW6000            |           DW6000c           |
->[!Note]
->Javasolt teljesítményszintek közvetlen konverzió nem tartoznak. Ha például DW500c dw600 értékre a ajánlott folyamatban.
+
+> [!Note]
+> Javasolt teljesítményszintek közvetlen konverzió nem tartoznak. Ha például DW500c dw600 értékre a ajánlott folyamatban.
 
 ## <a name="upgrade-in-a-supported-region-using-the-azure-portal"></a>Frissítse egy támogatott régióban az Azure portal használatával
+
+## <a name="before-you-begin"></a>Előkészületek
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 > [!NOTE]
 > Áttelepítés Gen1 Gen2-re az Azure Portalon keresztül nem vonható vissza. Nem áll egy folyamatot Gen1 adnak vissza.  
@@ -73,13 +81,13 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
    Eredeti Gen1 PowerShell-parancsot:
 
    ```powershell
-   Set-AzureRmSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300"
+   Set-AzSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300"
    ```
 
    A módosítás:
 
    ```powershell
-   Set-AzureRmSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300c"
+   Set-AzSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300c"
    ```
 
    > [!NOTE] 
@@ -100,8 +108,6 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
    > [!NOTE] 
    > SERVICE_OBJECTIVE = "DW300" változott SERVICE_OBJECTIVE = ' DW300**c**"
 
-
-
 ## <a name="start-the-upgrade"></a>A frissítés megkezdése
 
 1. Nyissa meg az optimalizált Gen1 számítási réteg data warehouse az Azure Portalon. Ha a frissítendő optimalizált Gen1 számítási réteg adattárház szüneteltetve van, [folytathatja az adattárház](pause-and-resume-compute-portal.md). 
@@ -110,7 +116,6 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
     > [!NOTE]
     > Ha nem látja a **frissítés Gen2-re** feladatok lapján, az előfizetés típusa kártya korlátozva van a jelenlegi régióban.
     > [Küldjön el egy támogatási jegyet](sql-data-warehouse-get-started-create-support-ticket.md) beolvasni az előfizetés szerepel az engedélyezési listán.
-
 
 3. Győződjön meg arról, a számítási feladat befejeződött fut, és zajlanak a frissítés előtt. Néhány percet, mielőtt újra online állapotba, az optimalizált Gen2 számítási réteg adattárházak kerül az adattárház szoftverkarbantartás lesz. **Válassza a frissítési**:
 
@@ -173,6 +178,7 @@ FROM   sys.indexes idx
                        AND idx.object_id = part.object_id 
 WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE'; 
 ```
+
 ## <a name="upgrade-from-an-azure-geographical-region-using-restore-through-the-azure-portal"></a>Frissítse az Azure-régióból egy földrajzi visszaállítással az Azure Portalon keresztül
 
 ## <a name="create-a-user-defined-restore-point-using-the-azure-portal"></a>Hozzon létre egy felhasználói visszaállítási pontot, az Azure portal használatával
@@ -190,6 +196,7 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
     ![Visszaállítási pont nevét](./media/sql-data-warehouse-restore-database-portal/creating_restore_point_1.png)
 
 ## <a name="restore-an-active-or-paused-database-using-the-azure-portal"></a>Az Azure portal használatával egy aktív vagy szüneteltetett adatbázis visszaállítása
+
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Keresse meg az SQL data warehouse, a visszaállítani kívánt.
 3. Az Áttekintés szakasz tetején válassza **visszaállítása**.
@@ -205,11 +212,13 @@ WHERE  idx.type_desc = 'CLUSTERED COLUMNSTORE';
     ![Felhasználó által definiált visszaállítási pontok](./media/sql-data-warehouse-restore-database-portal/restoring_2_udrp.png)
 
 ## <a name="restore-from-an-azure-geographical-region-using-powershell"></a>Visszaállítás Azure-régióból egy földrajzi PowerShell-lel
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Adatbázis helyreállítása, használja a [Restore-AzureRmSqlDatabase](/powershell/module/azurerm.sql/restore-azurermsqldatabase) parancsmagot.
 
 > [!NOTE]
 > Gen2-re a geo-visszaállítás elvégzése! Ehhez adjon meg egy Gen2 ServiceObjectiveName (pl. dw1000 értékre**c**), mint egy nem kötelező paraméter.
->
 
 1. Nyissa meg a Windows PowerShellt.
 2. Azure-fiókjához csatlakozhat, és a fiókjához társított összes előfizetés listázása.
@@ -235,7 +244,6 @@ $GeoRestoredDatabase.status
 
 > [!NOTE]
 > A visszaállítás befejezése után az adatbázis beállítása: [konfigurálása az adatbázis helyreállítása után](../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery).
->
 
 A helyreállított adatbázis TDE-kompatibilis akkor lesz a forrásadatbázis TDE-t.
 
@@ -243,4 +251,5 @@ A helyreállított adatbázis TDE-kompatibilis akkor lesz a forrásadatbázis TD
 Ha problémákat tapasztal az adatraktárban, hozzon létre egy [támogatási kérelem](sql-data-warehouse-get-started-create-support-ticket.md) és "Frissítés Gen2" lehetséges okaként hivatkoznak.
 
 ## <a name="next-steps"></a>További lépések
+
 A frissített adattárház online állapotú. A továbbfejlesztett architektúra előnyeit, lásd: [erőforrásosztályok számítási feladatok kezeléséhez](resource-classes-for-workload-management.md).

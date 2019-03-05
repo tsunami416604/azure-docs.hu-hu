@@ -17,12 +17,12 @@ ms.date: 10/03/2018
 ms.author: markvi
 ms.reviewer: raluthra
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9dc40af397e0d97ac5ddf47901c7da818faf8ae
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 2c3543b217339c39ad79c2125afdef8f087a70b3
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56957793"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57336686"
 ---
 # <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Mi az Azure Active Directory Identity Protection (frissíthetők)?
 
@@ -58,7 +58,7 @@ Azure AD Identity Protection válaszolni a fenyegetések, lehetővé teszi, hogy
 
 Az Azure AD Identity Protection az Azure Active Directory Premium P2, amely lehetővé teszi, hogy a házirendek úgy, hogy automatikusan válaszol, amikor a felhasználó identitásáról biztonsága sérül egyik szolgáltatása, vagy ha valaki más, mint a fiók tulajdonosa próbál jelentkezzen be a saját identitás. A megadott ezeket a szabályzatokat, kívül más feltételes hozzáférés-vezérlés az Azure AD képes vagy automatikus letiltása hozzáférés vagy kezdeményezési kockázatcsökkentési műveleteket, például a jelszó-visszaállítás vagy a többtényezős hitelesítés kényszerítése. Identity Protection emellett figyelési és jelentéskészítési lehetőségeket a mélyebb betekintést nyerhet a kockázatokat és a szervezet esetleges támadások. 
 
-> [!VIDEO https://youtu.be/1REQYdZ6364]
+>[!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWsS6Q]
 
 
 ## <a name="risk-events"></a>Kockázati események

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: a42e88de693f93e0407c185efc84d17a03d16116
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 033a7207765f2ee6712f8552d5c1585280250d5e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57215852"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57312069"
 ---
 # <a name="configure-the-application-dashboard"></a>Az irányítópult konfigurálása
 
@@ -24,15 +24,15 @@ A **irányítópult** az oldal, amely betölti, ha az alkalmazáshoz hozzáfér�
 
 ## <a name="add-tiles"></a>Csempék hozzáadása
 
-Az alábbi képernyőképen az irányítópult látható a létrehozott alkalmazás a **minta Contoso** sablont. Testre szabhatja az alkalmazás az alapértelmezett irányítópultot, kattintson a **szerkesztése** tetején, az oldal jobb.
+Az alábbi képernyőképen az irányítópult látható a létrehozott alkalmazás a **minta Contoso** sablont. Lehetőséggel testre szabhatja az alkalmazás az alapértelmezett irányítópult, **szerkesztése** tetején, az oldal jobb.
 
 ![A "Contoso minta" sablonon alapuló alkalmazások irányítópult](media/howto-configure-homepage/image1.png)
 
-Kattintson a **szerkesztése**, az irányítópult könyvtár panel nyílik meg. A függvénytár tartalmazza a csempék és irányítópult primitívek segítségével testre szabhatja az irányítópultot.
+Kiválasztásával **szerkesztése**, az irányítópult könyvtár panel nyílik meg. A függvénytár tartalmazza a csempék és irányítópult primitívek segítségével testre szabhatja az irányítópultot.
 
 ![Irányítópult-könyvtár](media/howto-configure-homepage/image2.png)
 
-Hozzáadhat például egy **eszközbeállítások, illetve tulajdonságok** mozaiklapra a választott eszköz aktuális beállítások és tulajdonságok értékeit. Ehhez először válassza ki a **eszköz sablon** válassza ki a **eszközpéldány**. Miután egy cím, és kattintson a csempére, adjon egy **beállítás** vagy egy **tulajdonság** megjelenítéséhez. Az alábbi képernyőfelvételen a **beállítása hőmérséklet** a csempe hozzáadása a beállítást. Kattintson a **kész** menteni a módosítást az irányítópulton.
+Hozzáadhat például egy **eszközbeállítások, illetve tulajdonságok** mozaiklapra a választott eszköz aktuális beállítások és tulajdonságok értékeit. Ehhez először válassza ki a **eszköz sablon** válassza ki a **eszközpéldány**. Miután egy cím, és kattintson a csempére, adjon egy **beállítás** vagy egy **tulajdonság** megjelenítéséhez. Az alábbi képernyőfelvételen a **beállítása hőmérséklet** a csempe hozzáadása a beállítást. Válassza ki **kész** menteni a módosítást az irányítópulton.
 
 ![Részletes beállítások és tulajdonságok "Konfigurálása eszköz részletei" képernyő](media/howto-configure-homepage/image3.png)
 

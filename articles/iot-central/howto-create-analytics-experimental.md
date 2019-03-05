@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 83225af7cb2cbdff4a264693e30b2a813f6ec9c7
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 69b941b97a533740322d9070497de6845e834a16
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214928"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315639"
 ---
 # <a name="how-to-use-analytics-to-analyze-your-device-data"></a>Az adatok elemzéséhez analytics használata
 
@@ -23,7 +23,7 @@ Az Azure IoT Central jelentéssel bírnak az eszközök adatainak nagy mennyisé
 
 ## <a name="querying-your-data"></a>Az adatok lekérdezése
 
-Választania kell egy **eszköz beállítása**, adja hozzá egy **szűrő** (nem kötelező), és válassza ki egy **időszakban** a kezdéshez. Miután elkészült, kattintson a *találat megjelenítése a* elindítani az adatai megjelenítéséhez.
+Választania kell egy **eszköz beállítása**, adja hozzá egy **szűrő** (nem kötelező), és válassza ki egy **időszakban** a kezdéshez. Miután elkészült, válassza ki a **találat megjelenítése a** elindítani az adatai megjelenítéséhez.
 
 * **Eszköz beállítása:** A [eszköz set](howto-use-device-sets-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json) az eszközök felhasználó által definiált csoportjai. Ha például Oakland az összes hűtőszekrények, vagy az összes rev 2.0-s szél csatlakozó.
 
