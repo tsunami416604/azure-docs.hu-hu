@@ -51,10 +51,9 @@ Ezeket a tartalmakat azért hoztuk létre, hogy segítséget nyújtsunk a bizton
                         <p>
                         <a href="/azure/active-directory/user-help/myprofile-portal-overview">Áttekintés</a><br/>
                         <a href="/azure/active-directory/user-help/user-help-security-info-overview">Biztonsági adatok kezelése</a><br/>
-                        <a href="/azure/active-directory/user-help/myprofile-portal-recent-activity-page">Legutóbbi bejelentkezési tevékenység megtekintése</a><br/>
                         <a href="/azure/active-directory/user-help/myprofile-portal-organizations-page">Saját szervezetek kezelése</a><br/>
                         <a href="/azure/active-directory/user-help/myprofile-portal-devices-page">Csatlakoztatott eszközök kezelése</a><br/>
-                        <a href="/azure/active-directory/user-help/myprofile-portal-privacy-page">Adatvédelemmel kapcsolatos információk megtekintése</a><br/>                       
+                        <a href="/azure/active-directory/user-help/myprofile-portal-privacy-page">Adatvédelemmel kapcsolatos információk megtekintése</a>
                         </p>
                     </div>
                 </div>
