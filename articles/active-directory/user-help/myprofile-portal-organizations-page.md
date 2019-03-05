@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 67a8c4d4fe5476d00677c08bef9668066c4ec4f3
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: c6053313c6971f1bcf66bc447b4f4f5fe5817666
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56458062"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339742"
 ---
 # <a name="manage-your-organizations-from-the-my-profile-preview-portal"></a>A szervezetek kezelése a saját profil (előzetes verzió) portálról
 A szervezetek kezelheti a **szervezetek** lapján a **profilom** portálon.
@@ -35,7 +35,7 @@ A szervezetek látható két típusa van a **szervezetek** oldalon:
 
 2. Válassza ki **szervezetek** a bal oldali navigációs panelen, vagy válassza ki a **szervezetek kezelése** hivatkozásra a **szervezetek** letiltása.
 
-    ![Saját profil lap, amely kiemeli a szervezetek hivatkozások](media/myprofile-portal/myprofile-portal-organizations-links.png)
+    ![Saját profil lap, amely kiemeli a szervezetek hivatkozások](media/myprofile-portal/myprofile-portal-organizations.png)
 
 3. Tekintse át az adatait a **szervezet otthoni**. 
 
@@ -57,4 +57,4 @@ Minden olyan szervezet, amely a kezdőlap szervezet nem hagyhatja.
 
 ## <a name="next-steps"></a>További lépések
 
-- A legutóbbi bejelentkezési tevékenységek megtekintése, után kiválaszthatja megtekintéséhez és kezeléséhez a [biztonsági adatok](user-help-security-info-overview.md), [legutóbbi bejelentkezési tevékenység](myprofile-portal-recent-activity-page.md), csatlakoztatott [eszközök](myprofile-portal-devices-page.md), vagy megtekintéséhez hogyan a szervezet [használ az adatok](myprofile-portal-privacy-page.md).
+- A szervezetek megtekintése, után kiválaszthatja megtekintéséhez és kezeléséhez a [biztonsági adatok](user-help-security-info-overview.md), csatlakoztatott [eszközök](myprofile-portal-devices-page.md), vagy a nézet hogyan a szervezet [használ az adatok](myprofile-portal-privacy-page.md).

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 1d7f58780819202eb02e3a48b4b5e0ac108a0432
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: e418cf8d619b55fde56a4d6d7d7cd9a8b36a112e
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447463"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339232"
 ---
 # <a name="understand-cost-management-data"></a>A Cost Management adatainak értelmezése
 
@@ -62,8 +62,9 @@ Az alábbi táblázat az ajánlatok nem támogatott.
 | **Támogatási csomagok** | Az Azure Government Pro-Direct Support | MS-AZR-USGOV-0042P |
 | **Támogatási csomagok** | Az Azure Government fejlesztői támogatás | MS-AZR-USGOV-0043P |
 
-Használatalapú fizetés, az MSDN és a Visual Studio ajánlat kategóriák élvező vásárlók esetében az adatok a Cost Management 2018-10-02-től érhető el.
+Használatalapú fizetés, az MSDN és a Visual Studio ajánlat kategóriák élvező vásárlók esetében az adatok a Cost Management 2018-10-02-től érhető el. Mielőtt 2018-10-02-előfizetéséhez tartozó adatok eléréséhez használható a [Azure Account Center](https://account.azure.com/subscriptions) részletesen a használati adatok letöltése CSV-fájl, vagy használhatja a [használati részletek API](/rest/api/consumption/usagedetails).
 
+## <a name="determine-your-offer-type"></a>Az ajánlat típusát határozza meg
 Ha nem lát adatokat egy előfizetéshez, és meg szeretné határozni, ha az előfizetés a támogatott ajánlatok hatálya alá tartozik, ellenőrizheti, hogy az előfizetés támogatott. Ellenőrzése, hogy támogatott-e egy Azure-előfizetést, jelentkezzen be a [az Azure portal](https://portal.azure.com). Válassza ki **minden szolgáltatás** a bal oldali menü ablaktáblán. A szolgáltatások listájában jelölje ki **előfizetések**. Előfizetési lista menüjében kattintson az ellenőrizni kívánt előfizetést. Az előfizetés az Áttekintés lap jelenik meg, és láthatja a **ajánlat** és **Ajánlatazonosító**. Az alábbi képen egy példa látható.
 
 ![Az előfizetés – Áttekintés lap ajánlat és Ajánlatazonosító – példa](./media/understand-cost-mgt-data/offer-and-offer-id.png)

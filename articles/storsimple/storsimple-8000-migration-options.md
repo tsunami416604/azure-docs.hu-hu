@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/31/2019
 ms.author: alkohli
-ms.openlocfilehash: e3412e31ae976efc8164076b30ad61360a030db4
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: ea8a6d604187a25e5186d7200feba6aaab1f676a
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511938"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339453"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>Adatok áttelepítése az a StorSimple 5000-7000-es sorozat beállításai 
 
@@ -39,7 +39,7 @@ A StorSimple 8000 sorozat váltson, és így továbbra is a StorSimple-platformo
 
 A StorSimple 8000 sorozat használata az adatok migrálása további információkért látogasson el [át adatokat a StorSimple 5000-7000-es sorozat a 8000-es sorozatú eszköz](storsimple-8000-migrate-from-5000-7000.md).
 
-#### <a name="migrate-to-azure-file-sync"></a>Az Azure File Sync áttelepítése
+#### <a name="migrate-to-azure-file-sync"></a>Migrálás az Azure File Syncre
 
 A teljesen új áttelepítési beállítás lehetővé teszi, hogy az ügyfelek számára a szervezeti fájlmegosztások tárolása az Azure Files. Ezek a fájlmegosztások az Azure File Sync (AFS) használatával a helyszíni hozzáférés majd központi üzemelnek. AFS is telepíthető a Windows Server-gazdagépen. Az adatok tényleges áttelepítése akkor hajt végre gazdagépként példányát, vagy az áttelepítési eszköz használata.
 
@@ -54,6 +54,10 @@ A StorSimple 5000-7000-es ügyfelek kiválaszthatják a Panzura szabadon NAS tá
 #### <a name="migrate-to-cohesity"></a>A Cohesity áttelepítése
 
 Cohesity lehetővé teszi, hogy a jelenlegi storsimple 5000 – 7000-es adatok áttelepítését a Cohesity Data Platform az Azure-ban. A Cohesity Adatplatform, amely egyesíti a fájlokat, a biztonsági mentések, a objektumok és a virtuális gépek egyetlen natív felhőalapú megoldás alakzatot szoftveresen definiált webes méretű megoldás is. A Data platform az áttelepítés után kezelése, védelme és kiépítése az adatokhoz és alkalmazásokhoz a felhőből egy egyetlen tekinthesse keresztül maghoz. Indítsa el a Cohesity, mindössze három csomóponttal. További információ a [áttelepítés, a Cohesity DataPlatform](https://info.cohesity.com/migrate-from-storsimple-to-cohesity.html).
+
+#### <a name="migrate-to-nasuni"></a>A Nasuni áttelepítése
+
+A Nasuni megkönnyíti a StorSimple 5000-7000-es ügyfelek migrálása és tárolni az adatokat az Azure-ban.  A Nasuni vezető NAS Azure-alapú tárolási megoldás, így a vevők a teljesítmény és a biztonság feláldozása a helyszíni megoldások, a felhőbeli adatvédelemmel és a méretezési csoport.  Mellett a file storage nagy teljesítményű, és az Azure a Nasuni leíró biztonsági mentés és Vészhelyreállítás, miközben lehetővé teszi, hogy a megosztás és együttműködés az adatokon a központosított fájl storage management a világ minden pontján. A Nasuni a működés, győződjön meg arról, a migrálás egyszerű – kezdje el már ma rendelkezik: https://info.nasuni.com/nasuni-storsimple-migration
 
 ## <a name="migration---frequently-asked-questions"></a>Migrálás – gyakori kérdések
 

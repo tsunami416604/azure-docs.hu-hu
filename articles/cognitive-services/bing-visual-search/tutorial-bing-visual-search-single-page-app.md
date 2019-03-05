@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: article
-ms.date: 10/04/2017
+ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: cf8525d4cc829805532210bf09e9ea9da240405d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e06fd7a4b2d072e5528643c2c8517d7545c36ef3
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857749"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338654"
 ---
 # <a name="create-a-visual-search-single-page-web-app"></a>Hozzon létre egy vizuális keresés egyoldalas webalkalmazást 
 
-A Bing Visual Search API a Bing.com képeket kereső szolgáltatásában látható képadatokhoz hasonló élményt nyújt. A Visual Search segítségével megadhat egy képet, és olyan információkat kaphat vissza a képpel kapcsolatban, mint a vizuálisan hasonló képek, a vásárlási lehetőségek, a képet tartalmazó weboldalak stb. 
+A Bing Visual Search API-Bing.com/images látható részletei hasonló élményt nyújt. A Visual Search segítségével megadhat egy képet, és olyan információkat kaphat vissza a képpel kapcsolatban, mint a vizuálisan hasonló képek, a vásárlási lehetőségek, a képet tartalmazó weboldalak stb. 
 
 Ez a cikk ismerteti a Bing Image Search API-k kiterjesztése egy egyoldalas webalkalmazást. Oktatóanyag megtekintése, vagy szerezze be az itt használt forráskódját, lásd: [oktatóanyag: Hozzon létre egy egyoldalas alkalmazásból a Bing Image Search API](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md). 
 

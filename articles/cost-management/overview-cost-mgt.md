@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/05/2018
+ms.date: 02/28/2018
 ms.topic: overview
 ms.service: cost-management
 manager: benshy
 ms.custom: ''
-ms.openlocfilehash: 6e9eb5709882cc084da8fe02ebb23b70852185d3
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: d5ed8e896034341dcc9a776d722144bb5879568b
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240099"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337957"
 ---
 # <a name="what-is-azure-cost-management"></a>Mi az Azure Cost Management?
 
@@ -41,7 +41,7 @@ Ha külső rendszereket használ a költségadatokhoz való hozzáféréshez vag
 
 ## <a name="consider-cloudyn"></a>Fontolja meg a Cloudyn használatát
 
-A [Cloudyn](overview.md) egy, a Cost Managementhez kapcsolódó Azure-szolgáltatás. A Cloudyn használatával nyomon követheti Azure-erőforrásai felhőhasználatát és költségeit. Ezenkívül támogatja az egyéb felhőszolgáltatókat, beleértve az AWS-t és a Google-t. A könnyen értelmezhető irányítópult-jelentések segítenek a költséglefoglalásban és a költséghelyi visszacsatolásban/elszámolásban. A Cost Management jelenleg nem támogatja költséghelyi visszacsatolásos/elszámolásos, valamint az egyéb felhőszolgáltatókat. Azonban a Cloudyn _igen_. A Cost Management jelenleg kizárólag Azure EA-fiókokat támogat. Habár a Cost Management nem támogatja az egyéni használatalapú fizetéses vagy a Microsoft Cloud szolgáltatói fiókokat, a Cloudyn igen. Ha az említett fiókok valamelyikével rendelkezik, a Cloudyn segítségével azokkal is lehetősége van költségeit kezelni.
+A [Cloudyn](overview.md) egy, a Cost Managementhez kapcsolódó Azure-szolgáltatás. A Cloudyn használatával nyomon követheti Azure-erőforrásai felhőhasználatát és költségeit. Ezenkívül támogatja az egyéb felhőszolgáltatókat, beleértve az AWS-t és a Google-t. A könnyen értelmezhető irányítópult-jelentések segítenek a költséglefoglalásban és a költséghelyi visszacsatolásban/elszámolásban. A Cost Management jelenleg nem támogatja költséghelyi visszacsatolásos/elszámolásos, valamint az egyéb felhőszolgáltatókat. Azonban a Cloudyn _igen_. Jelenleg nem támogatja a Cost Management Microsoft Felhőszolgáltató (CSP) fiókok, azonban a Cloudyn nem. Ha rendelkezik a CSP-partnerek vagy költséghelyi visszacsatolási és költséghelyi elszámolás használni kívánt, használhatja a Cloudyn költségek kezelése érdekében.
 
 ## <a name="additional-azure-tools"></a>További Azure-eszközök
 

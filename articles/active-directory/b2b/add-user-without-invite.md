@@ -1,5 +1,5 @@
 ---
-title: Adja hozzá a B2B-együttműködés felhasználók Azure Active Directory - meghívás nélkül |} A Microsoft Docs
+title: Hozzáadása nélkül egy meghívót hivatkozás vagy e-mail-cím – Azure Active Directory B2B együttműködési felhasználókat |} A Microsoft Docs
 description: Engedélyezheti, a vendégfelhasználó más vendég felhasználók hozzáadása az Azure ad nélkül váltja be az Azure Active Directory B2B együttműködés meghívót.
 services: active-directory
 documentationcenter: ''
@@ -12,14 +12,14 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a75656eec8e2c79c48ab48bd96a504d6e5dbac3a
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 8c33d9a3755f2fb5397dd013c88ab542e727e125
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672236"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337668"
 ---
-# <a name="add-b2b-collaboration-guest-users-without-an-invitation"></a>B2B együttműködés meghívó nélküli vendégfelhasználók hozzáadása
+# <a name="add-b2b-collaboration-guest-users-without-an-invitation-link-or-email"></a>B2B együttműködés egy meghívót hivatkozás vagy e-mailek nélküli vendégfelhasználók hozzáadása
 
 Most már ki egy megosztott alkalmazás közvetlen hivatkozás elküldésével vendégfelhasználókat is meghívhat. Ezzel a módszerrel vendégfelhasználók már nem szeretné használni a meghívó e-mailt, kivéve a bizonyos speciális esetekben. Vendégfelhasználó az alkalmazás hivatkozásra kattint, ellenőrzi és fogadja el az adatvédelmi szabályzat feltételeit, és zökkenőmentesen fér hozzá az alkalmazást. További információkért lásd: [B2B együttműködés vendégmeghívás beváltása](redemption-experience.md).   
 

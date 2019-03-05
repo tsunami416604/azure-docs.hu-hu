@@ -15,12 +15,12 @@ ms.date: 01/09/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: a075fdceaf57625280ef73499d868d5c3724426c
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 1211edde43d802a4c48cbd936473b1a6f83af705
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236481"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342088"
 ---
 # <a name="delegate-offers-in-azure-stack"></a>Ajánlat delegálása az Azure Stackben
 
@@ -78,7 +78,7 @@ Ez az útmutató használatához két Azure AD-fiókokat az Azure Stack operáto
 | Felhasználó |Felhasználó |
 
  > [!NOTE]
-   > Egy CSP-viszonteladó esetén ez a delegált szolgáltató létrehozásához ehhez szükség lesz ezek a felhasználók a bérlő-könyvtárban (a felhasználó aad-ben). Az Azure Stack-operátorokról kell [első bevezetésében](https://docs.microsoft.com/azure/azure-stack/azure-stack-enable-multitenancy) , amelyek AAD-bérlőben és a használati és számlázási majd konfigurálja a következő [ezeket a lépéseket](https://docs.microsoft.com/azure/azure-stack/azure-stack-csp-howto-register-tenants).
+ > A CSP-viszonteladó esetén ez a delegált szolgáltató létrehozásához szükséges ezek a felhasználók (a felhasználó AAD) bérlői a címtárban. Az Azure Stack-operátorokról kell [első bevezetésében](azure-stack-enable-multitenancy.md) , amelyek AAD-bérlőben, és adja meg használat és számlázás az alábbi [ezeket a lépéseket](azure-stack-csp-howto-register-tenants.md).
 
 ### <a name="identify-the-delegated-provider"></a>A delegált szolgáltatói azonosítása
 

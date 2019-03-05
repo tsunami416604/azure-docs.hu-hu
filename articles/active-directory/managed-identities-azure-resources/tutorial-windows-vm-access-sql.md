@@ -1,5 +1,5 @@
 ---
-title: Hozzáférés az Azure SQL-hez egy Windows VM-beli, rendszer által hozzárendelt felügyelt identitással
+title: Egy Windows virtuális gép alapértelmezett felügyelt identitás használata Azure SQL eléréséhez
 description: Az oktatóanyag azt ismerteti, hogyan lehet hozzáférni az Azure SQL-hez egy Windows VM rendszer által hozzárendelt felügyelt identitásával.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/07/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cbb7684f3d684588ab4263683806e602e1346d5d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a269c15b9b38b190196e6c2e77ff5b4b3826ba65
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217802"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342154"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Oktatóanyag: Egy Windows virtuális gép alapértelmezett felügyelt identitás használata Azure SQL eléréséhez
 
@@ -40,12 +40,12 @@ Az oktatóanyag bemutatja, hogyan használhat rendszer által hozzárendelt iden
 
 ## <a name="grant-your-vm-access-to-a-database-in-an-azure-sql-server"></a>Hozzáférés engedélyezése a virtuális gép számára egy Azure SQL Server-adatbázishoz
 
-A virtuális gép egy Azure SQL Server-adatbázishoz való hozzáférésének engedélyezéséhez használhat egy meglévő SQL-kiszolgálót, vagy létrehozhat egy újat.  Ha új kiszolgálót és adatbázist szeretne létrehozni az Azure Portalon, kövesse ennek az [Azure SQL rövid útmutatónak](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal) a lépéseit. Az [Azure SQL dokumentációjában](https://docs.microsoft.com/azure/sql-database/) olyan rövid útmutatók is vannak, amelyek az Azure CLI-t és az Azure PowerShellt használják.
+A virtuális gép egy Azure SQL Server-adatbázishoz való hozzáférésének engedélyezéséhez használhat egy meglévő SQL-kiszolgálót, vagy létrehozhat egy újat. Ha új kiszolgálót és adatbázist szeretne létrehozni az Azure Portalon, kövesse ennek az [Azure SQL rövid útmutatónak](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal) a lépéseit. Az [Azure SQL dokumentációjában](https://docs.microsoft.com/azure/sql-database/) olyan rövid útmutatók is vannak, amelyek az Azure CLI-t és az Azure PowerShellt használják.
 
 Két lépés kell hozzá, hogy a VM hozzá tudjon férni egy adatbázishoz:
 
-1.  Engedélyezni kell az Azure AD-hitelesítést az SQL-kiszolgáló számára.
-2.  Létre kell hozni egy, a virtuális gép rendszerhez hozzárendelt identitását képviselő **tartalmazott felhasználót** az adatbázisban.
+1. Engedélyezni kell az Azure AD-hitelesítést az SQL-kiszolgáló számára.
+2. Létre kell hozni egy, a virtuális gép rendszerhez hozzárendelt identitását képviselő **tartalmazott felhasználót** az adatbázisban.
 
 ## <a name="enable-azure-ad-authentication-for-the-sql-server"></a>Azure AD-hitelesítés engedélyezése az SQL-kiszolgáló számára
 
@@ -67,43 +67,43 @@ A következő lépéshez a [Microsoft SQL Server Management Studióra](https://d
 
 Az SQL DB szükséges egyedi AAD megjelenítendő nevét. Ennek az AAD-fiókok például a felhasználók, csoportok és az egyszerű szolgáltatások (alkalmazások), és felügyelt identitás számára engedélyezve van egy virtuális gép neve egyedileg kell meghatározni az aad-ben megjelenített neveinek kapcsolatban. Az SQL DB ellenőrzi az aad-ben az ilyen felhasználók T-SQL-létrehozása során megjelenített neve, és ha nem egyedi, a parancs sikertelen kér, adja meg egy adott fiókon egy egyedi AAD megjelenítendő nevét.
 
-1.  Indítsa el az SQL Server Management Studiót.
-2.  A **Connect to Server** (Csatlakozás kiszolgálóhoz) párbeszédablakban írja be az SQL-kiszolgáló nevét a **Server name** (Kiszolgáló neve) mezőbe.
-3.  Az **Authentication** (Hitelesítés) mezőben válassza ki az **Active Directory - Universal with MFA support** (Active Directory – univerzális, MFA-támogatással) lehetőséget.
-4.  A **User name** (Felhasználónév) mezőbe írja be azon Azure AD-fiók nevét, amelyet a kiszolgáló rendszergazdájaként szeretne beállítani (például helen@woodgroveonline.com).
-5.  Kattintson a **Beállítások** gombra.
-6.  A **Connect to database** (Csatlakozás az adatbázishoz) mezőbe írja be a konfigurálni kívánt, nem rendszerszintű adatbázis nevét.
-7.  Kattintson a **Connect** (Csatlakozás) gombra.  Fejezze be a bejelentkezést.
-8.  Az **Object Explorerben** bontsa ki a **Databases** (Adatbázisok) mappát.
-9.  Kattintson a jobb gombbal egy felhasználói adatbázisra, majd kattintson a **New Query** (Új lekérdezés) menüpontra.
+1. Indítsa el az SQL Server Management Studiót.
+2. A **Connect to Server** (Csatlakozás kiszolgálóhoz) párbeszédablakban írja be az SQL-kiszolgáló nevét a **Server name** (Kiszolgáló neve) mezőbe.
+3. Az **Authentication** (Hitelesítés) mezőben válassza ki az **Active Directory - Universal with MFA support** (Active Directory – univerzális, MFA-támogatással) lehetőséget.
+4. A **User name** (Felhasználónév) mezőbe írja be azon Azure AD-fiók nevét, amelyet a kiszolgáló rendszergazdájaként szeretne beállítani (például helen@woodgroveonline.com).
+5. Kattintson a **Beállítások** gombra.
+6. A **Connect to database** (Csatlakozás az adatbázishoz) mezőbe írja be a konfigurálni kívánt, nem rendszerszintű adatbázis nevét.
+7. Kattintson a **Connect** (Csatlakozás) gombra. Fejezze be a bejelentkezést.
+8. Az **Object Explorerben** bontsa ki a **Databases** (Adatbázisok) mappát.
+9. Kattintson a jobb gombbal egy felhasználói adatbázisra, majd kattintson a **New Query** (Új lekérdezés) menüpontra.
 10. A lekérdezési ablakban írja be a következő sort, és kattintson az eszköztár **Execute** (Végrehajtás) gombjára:
 
     > [!NOTE]
     > Az alábbi parancsban a `VMName` a virtuális gép neve, amelyen az előfeltételek szakaszban a rendszerhez hozzárendelt identitást engedélyezte.
     
-     ```
-     CREATE USER [VMName] FROM EXTERNAL PROVIDER
-     ```
+    ```
+    CREATE USER [VMName] FROM EXTERNAL PROVIDER
+    ```
     
-     A parancsnak sikeresen futnia kell, és létre kell hoznia a virtuális gép rendszerhez hozzárendelt identitásának tartalmazott felhasználóját.
-11.  Törölje a lekérdezési ablakot, írja be a következő sort, és kattintson az eszköztár **Execute** (Végrehajtás) gombjára:
+    A parancsnak sikeresen futnia kell, és létre kell hoznia a virtuális gép rendszerhez hozzárendelt identitásának tartalmazott felhasználóját.
+11. Törölje a lekérdezési ablakot, írja be a következő sort, és kattintson az eszköztár **Execute** (Végrehajtás) gombjára:
 
     > [!NOTE]
     > Az alábbi parancsban a `VMName` a virtuális gép neve, amelyen az előfeltételek szakaszban a rendszerhez hozzárendelt identitást engedélyezte.
-     
-     ```
-     ALTER ROLE db_datareader ADD MEMBER [VMName]
-     ```
+    
+    ```
+    ALTER ROLE db_datareader ADD MEMBER [VMName]
+    ```
 
-     A parancsnak sikeresen futnia kell, így a tartalmazott felhasználó képes lesz a teljes adatbázis olvasására.
+    A parancsnak sikeresen futnia kell, így a tartalmazott felhasználó képes lesz a teljes adatbázis olvasására.
 
 A virtuális gépen futó kód most le tud kérni egy jogkivonatot a rendszer által hozzárendelt felügyelt identitással, amellyel hitelesíthet az SQL-kiszolgálón.
 
-## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-sql"></a>Hozzáférési jogkivonat lekérése a VM rendszer által hozzárendelt felügyelt identitásával, majd az Azure SQL meghívása a használatával 
+## <a name="get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-sql"></a>Hozzáférési jogkivonat lekérése a VM rendszer által hozzárendelt felügyelt identitásával, majd az Azure SQL meghívása a használatával
 
-Az Azure SQL natív támogatást nyújt az Azure AD-hitelesítéshez, így közvetlenül is elfogadhatja az Azure-erőforrások felügyelt identitásaival beszerzett hozzáférési jogkivonatokat.  Az SQL-lel létesített kapcsolat létrehozásához használja az **access token** metódust.  Ez az Azure SQL és az Azure AD integrációjának része, és eltér attól a megoldástól, amikor a kapcsolati sztringen adja meg a hitelesítő adatokat.
+Az Azure SQL natív támogatást nyújt az Azure AD-hitelesítéshez, így közvetlenül is elfogadhatja az Azure-erőforrások felügyelt identitásaival beszerzett hozzáférési jogkivonatokat. Az SQL-lel létesített kapcsolat létrehozásához használja az **access token** metódust. Ez az Azure SQL és az Azure AD integrációjának része, és eltér attól a megoldástól, amikor a kapcsolati sztringen adja meg a hitelesítő adatokat.
 
-Bemutatunk egy .Net-kódpéldát arra, hogyan létesíthető kapcsolat az SQL-kiszolgálóval egy hozzáférési jogkivonattal.  Ennek a kódnak a virtuális gépen kell futnia a VM rendszer által hozzárendelt felügyelt identitásához tartozó végpont eléréséhez.  A **.NET-keretrendszer 4.6-os** vagy újabb verziójára van szükség az access token (hozzáférési jogkivonat) metódus használatához.  Cserélje le az AZURE-SQL-SERVERNAME és a DATABASE értékét a megfelelő értékre.  Figyelje meg, hogy az Azure SQL erőforrás-azonosítója a „https://database.windows.net/”.
+Bemutatunk egy .Net-kódpéldát arra, hogyan létesíthető kapcsolat az SQL-kiszolgálóval egy hozzáférési jogkivonattal. Ennek a kódnak a virtuális gépen kell futnia a VM rendszer által hozzárendelt felügyelt identitásához tartozó végpont eléréséhez. **.NET-keretrendszer 4.6** vagy újabb verziója szükséges az access-token módszer használatához. Cserélje le az AZURE-SQL-SERVERNAME és a DATABASE értékét a megfelelő értékre. Figyelje meg, hogy az Azure SQL erőforrás-azonosítója a „https://database.windows.net/”.
 
 ```csharp
 using System.Net;
@@ -125,7 +125,7 @@ try
     HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
     // Pipe response Stream to a StreamReader and extract access token.
-    StreamReader streamResponse = new StreamReader(response.GetResponseStream()); 
+    StreamReader streamResponse = new StreamReader(response.GetResponseStream());
     string stringResponse = streamResponse.ReadToEnd();
     JavaScriptSerializer j = new JavaScriptSerializer();
     Dictionary<string, string> list = (Dictionary<string, string>) j.Deserialize(stringResponse, typeof(Dictionary<string, string>));
@@ -149,13 +149,13 @@ if (accessToken != null) {
 
 A PowerShell használatával is gyorsan tesztelhető a végpontok közötti beállítás anélkül, hogy alkalmazást kellene írnia és üzembe helyeznie a virtuális gépen.
 
-1.  A portálon lépjen a **Virtuális gépek** lapra, lépjen a Windows VM-hez, és az **Áttekintés** területen kattintson a **Csatlakozás** elemre. 
-2.  A **Felhasználónév** és a **Jelszó** mezőbe azt a felhasználónevet és jelszót írja be, amelyet a Windows VM létrehozásakor adott meg. 
-3.  Most, hogy létrehozott egy **távoli asztali kapcsolatot** a virtuális géppel, nyissa meg a **PowerShellt** a távoli munkamenetben. 
+1.  A portálon lépjen a **Virtuális gépek** lapra, lépjen a Windows VM-hez, és az **Áttekintés** területen kattintson a **Csatlakozás** elemre.
+2.  A **Felhasználónév** és a **Jelszó** mezőbe azt a felhasználónevet és jelszót írja be, amelyet a Windows VM létrehozásakor adott meg.
+3.  Most, hogy létrehozott egy **távoli asztali kapcsolatot** a virtuális géppel, nyissa meg a **PowerShellt** a távoli munkamenetben.
 4.  A PowerShell `Invoke-WebRequest` parancsával küldjön kérést a helyi felügyelt identitás végpontjára, hogy lekérjen egy hozzáférési jogkivonatot az Azure SQL-hez.
 
     ```powershell
-       $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatabase.windows.net%2F' -Method GET -Headers @{Metadata="true"}
+        $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fdatabase.windows.net%2F' -Method GET -Headers @{Metadata="true"}
     ```
     
     Konvertálja a választ JSON-objektumból PowerShell-objektummá. 
@@ -170,7 +170,7 @@ A PowerShell használatával is gyorsan tesztelhető a végpontok közötti beá
     $AccessToken = $content.access_token
     ```
 
-5.  Nyisson meg egy kapcsolatot az SQL-kiszolgálóval. Ne felejtse el lecserélni az AZURE-SQL-SERVERNAME és a DATABASE értékét.
+5. Nyisson meg egy kapcsolatot az SQL-kiszolgálóval. Ne felejtse el lecserélni az AZURE-SQL-SERVERNAME és a DATABASE értékét.
     
     ```powershell
     $SqlConnection = New-Object System.Data.SqlClient.SqlConnection
@@ -179,7 +179,7 @@ A PowerShell használatával is gyorsan tesztelhető a végpontok közötti beá
     $SqlConnection.Open()
     ```
 
-    Ezután hozzon létre és küldjön el egy lekérdezést a kiszolgálónak.  Ne felejtse el lecserélni a TABLE értékét.
+    Ezután hozzon létre és küldjön el egy lekérdezést a kiszolgálónak. Ne felejtse el lecserélni a TABLE értékét.
 
     ```powershell
     $SqlCmd = New-Object System.Data.SqlClient.SqlCommand
@@ -195,7 +195,7 @@ Vizsgálja meg a `$DataSet.Tables[0]` értékét, hogy áttekinthesse a lekérde
 
 ## <a name="next-steps"></a>További lépések
 
-Az oktatóanyag bemutatta, hogyan használható a rendszer által hozzárendelt felügyelt identitás az Azure SQL Serverhez való hozzáférésre.  További információ az Azure SQL Serverről:
+Az oktatóanyag bemutatta, hogyan használható a rendszer által hozzárendelt felügyelt identitás az Azure SQL Serverhez való hozzáférésre. További információ az Azure SQL Serverről:
 
 > [!div class="nextstepaction"]
->[Az Azure SQL Database szolgáltatás](/azure/sql-database/sql-database-technical-overview)
+> [Az Azure SQL Database szolgáltatás](/azure/sql-database/sql-database-technical-overview)

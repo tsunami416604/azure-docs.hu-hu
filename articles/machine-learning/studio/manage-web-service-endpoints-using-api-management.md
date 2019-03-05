@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
-ms.openlocfilehash: b15fddcace19abcd1cd08d059c497c1c209f74d0
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: d4029d7f15918ea75ebcb10bfa8f8f7657eb11ca
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823433"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342581"
 ---
 # <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>Az API Management használata az Azure Machine Learning Studio-webszolgáltatások kezelése
 ## <a name="overview"></a>Áttekintés
@@ -23,9 +23,6 @@ Ez az útmutató bemutatja, hogyan gyorsan használatba az API Management az Azu
 
 ## <a name="what-is-azure-api-management"></a>Mi az Azure API Management?
 Az Azure API Management egy Azure-szolgáltatás, amellyel a REST API-végpontokat kezelheti a felhasználói hozzáférés-szabályozás és figyelési irányítópult definiálásával. Kattintson a [Itt](https://azure.microsoft.com/services/api-management/) Azure API Management részleteiért. Kattintson a [Itt](/azure/api-management/import-and-publish) útmutató az első lépések az Azure API Management szolgáltatással. A többi útmutató, amely a jelen útmutató alapján, termékek, a fejlesztői előfizetésekhez és a használati dashboarding további témaköreit, beleértve az értesítési konfiguráció, szint díjszabása, válasz kezelését, felhasználói hitelesítés, ismerteti.
-
-## <a name="what-is-azureml"></a>Mi az AzureML?
-Az AzureML egy Azure-szolgáltatás a machine learning, amely lehetővé teszi, hogy egyszerűen elkészítheti, telepítheti, és megoszthatja a fejlett elemzési megoldásokat. Kattintson a [Itt](https://azure.microsoft.com/services/machine-learning/) AzureML részleteiért.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez az útmutató végrehajtásához lesz szüksége:

@@ -5,24 +5,24 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 2/28/2018
 ms.author: mayg
-ms.openlocfilehash: b52bdd5948676c09c433cbda249248ce26ce8a48
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: c4309b20664520bc1912adadee72d614a085f573
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56866028"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338953"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>A hálózatleképezés és virtuális hálózatok IP-címzés beállítása
 
-Ez a cikk bemutatja, hogyan képezhet le az Azure virtuális hálózatok (Vnetek) a különböző Azure-régiókban található két példányát, és a hálózatok közötti IP-címzés beállítása. A hálózatleképezés biztosítja, hogy a replikált virtuális gép létrejött-e a cél Azure-beli régióban jön létre a virtuális hálózattal, a forrás virtuális gép virtuális hálózat lesz leképezve.
+Ez a cikk bemutatja, hogyan képezhet le az Azure virtuális hálózatok (Vnetek) a különböző Azure-régiókban található két példányát, és a hálózatok közötti IP-címzés beállítása. Hálózatleképezés olyan alapértelmezett működés biztosít a célként megadott hálózat kiválasztása a replikáció engedélyezése idején a Forráshálózat alapján.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Hálózatok leképezése, mielőtt rendelkeznie kell [Azure virtuális hálózatok](../virtual-network/virtual-networks-overview.md) a forrás és cél Azure-régióban. 
 
-## <a name="set-up-network-mapping"></a>A hálózatleképezés beállítása
+## <a name="set-up-network-mapping-manually-optional"></a>Állítsa be a hálózatleképezés manuálisan (nem kötelező)
 
 Hálózatok leképezése a következőképpen:
 
@@ -44,8 +44,13 @@ Ha még nem készített hálózatleképezés vészhelyreállítás az Azure virt
 
 - Alapján, válassza ki a cél a Site Recovery automatikusan létrehozza hálózatleképezések a célrégióban a forrás és a célként megadott forrásrégióba.
 - Alapértelmezés szerint a Site Recovery létrehoz egy hálózatot a célrégióban a forrás hálózati azonos. Site Recovery szolgáltatással biztonságba **-asr** utótagként a Forráshálózat nevét. Testre szabhatja a célhálózat.
-- Ha már elvégezte a hálózatleképezést, ha engedélyezi a replikációt a cél virtuális hálózattal nem módosítható. Ha módosítani szeretné a cél virtuális hálózattal, meg kell a meglévő hálózatleképezés módosítása.
-- B régióba régióból A hálózatleképezés módosítása esetén győződjön meg arról, hogy is a hálózatleképezés módosítása B régióból régióba A.]
+- Hálózatleképezést a forrás-hálózat már bekövetkezett, ha a csatlakoztatott célhálózat mindig legyen az alapértelmezett engedélyezése a további virtuális gépek replikálását időpontjában. Ha szeretné, módosítsa a cél virtuális hálózat más elérhető lehetőségek kiválasztásával a legördülő listából. 
+- Ha módosítani szeretné az alapértelmezett cél virtuális hálózattal az új replikációk, módosítania a meglévő hálózatleképezést.
+- Ha régióba B régióból A hálózatleképezés módosítása, ügyeljen arra, hogy először törölnie a hálózatleképezést B régióból régióba rögzíti. Fordított leképezés törlés után régióba B régióból A hálózatleképezés módosítása, és hozzon létre a megfelelő fordított leképezés.
+
+>[!NOTE]
+>* Csak a hálózatleképezés módosítása folyamatban módosítja az alapértelmezett beállításokat az új virtuális gép replikálását. Nem érinti a meglévő replikációk a cél virtuális hálózati beállításokat. 
+>* Ha szeretné módosítani egy meglévő replikáció a célhálózat, folytassa a számítási és hálózati beállításokat a replikált elem.
 
 ## <a name="specify-a-subnet"></a>Adjon meg egy alhálózatot
 

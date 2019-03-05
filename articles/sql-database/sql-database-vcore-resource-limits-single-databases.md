@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: 735c3dc4764f45512386a0c53a389f355f069aa3
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 03/04/2019
+ms.openlocfilehash: f4d6826d13f92db7a430f668c56825926d198235
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998127"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57340099"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Az Azure SQL Database Virtuálismag-alapú vásárlási modell korlátok egy önálló adatbázis
 
@@ -47,6 +47,7 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 |Tárolási típus|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|
 |IO-késés (becsült)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|
 |Cél IOPS (64 KB)|500|1000|1500|2000|2500|3000|
+|Napló Sebességhatár (MB/s)|2.5|5|7.5|10|12.5|15|
 |Egyidejű feldolgozók (kérelmek) maximális|200|400|600|800|1000|1200|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|
 |Replikák száma|1|1|1|1|1|1|
@@ -69,6 +70,7 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 |Tárolási típus|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|
 |IO-késés (becsült)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)
 |Cél IOPS (64 KB)|3500|4000|4500|5000|7000|7000|
+|Napló Sebességhatár (MB/s)|17.5|20|20|20|20|20|
 |Egyidejű feldolgozók (kérelmek) maximális|1400|1600|1800|2000|3200|4800|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|
 |Replikák száma|1|1|1|1|1|1|
@@ -85,12 +87,13 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 |Memória (GB)|10.2|20.4|30.6|40.8|51|61.2|71.4|
 |Oszlopcentrikus támogatása|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
 |Memóriabeli OLTP storage (GB)|–|N/A|N/A|N/A|N/A|N/A|–|
-|Maximális adatméret (GB)|1024|1024|1024|1536|1536|1536|1536|
+|Maximális adatméret (GB)|1024|1024|1536|1536|1536|3072|3072|
 |Max. napló mérete (GB)|307|307|307|461|461|461|461|
 |A TempDB mérete (GB)|64|128|192|256|320|384|384|
 |Tárolási típus|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|
 |IO-késés (becsült)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|
 |Cél IOPS (64 KB)|500|1000|1500|2000|2500|3000|3500|
+|Napló Sebességhatár (MB/s)|2.5|56|7.5|10|12.5|15|17.5|
 |Egyidejű feldolgozók (kérelmek) maximális|200|400|600|800|1000|1200|1400|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|30000|
 |Replikák száma|1|1|1|1|1|1|1|
@@ -113,6 +116,7 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 |Tárolási típus|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|Premium (Remote) Storage|
 |IO-késés (becsült)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|5 – 7 ms (írás)<br>5 – 10 ms (olvasás)|
 |Cél IOPS (64 KB)|4000|4500|5000|6000|7000|7000|7000|
+|Napló Sebességhatár (MB/s)|20|20|20|20|20|20|20|
 |Egyidejű feldolgozók (kérelmek) maximális|1600|1800|2000|2400|3200|4000|8000|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|30000|
 |Replikák száma|1|1|1|1|1|1|1|
@@ -129,15 +133,17 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 |H/W generálása|4|4|4|4|4|4|
 |Virtuális magok|1|2|3|4|5|6|
 |Memória (GB)|7|14|21|28|35|42|
-|Oszlopcentrikus támogatása|–|N/A|N/A|N/A|N/A|–|
+|Oszlopcentrikus támogatása|Igen|Igen|Igen|Igen|Igen|Igen|
 |Memóriabeli OLTP storage (GB)|1|2|3|4|5|6|
 |Tárolási típus|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
-|Maximális adatméret (GB)|1024|1024|1024|1024|1024|1024|
-|Max. napló mérete (GB)|307|307|307|307|307|307|
+|Maximális adatméret (GB)|650|650|650|650|650|650|
+|Max. napló mérete (GB)|195|195|195|195|195|195|
 |A TempDB mérete (GB)|32|64|96|128|160|192|
 |IO-késés (becsült)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|
 |Cél IOPS (64 KB)|5000|10000|15 000|20000|25000|30000|
+|Napló Sebességhatár (MB/s)|6|12|18|24|30|36|
 |Egyidejű feldolgozók (kérelmek) maximális|200|400|600|800|1000|1200|
+|Egyidejű bejelentkezések maximális száma|200|400|600|800|1000|1200|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|
 |Replikák száma|4|4|4|4|4|4|
 |Több-AZ|Igen|Igen|Igen|Igen|Igen|Igen|
@@ -151,15 +157,17 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 |H/W generálása|4|4|4|4|4|4|
 |Virtuális magok|7|8|9|10|16|24|
 |Memória (GB)|49|56|63|70|112|168|
-|Oszlopcentrikus támogatása|–|N/A|N/A|N/A|N/A|–|
+|Oszlopcentrikus támogatása|Igen|Igen|Igen|Igen|Igen|Igen|
 |Memóriabeli OLTP storage (GB)|7|8|9.5|11|20|36|
 |Tárolási típus|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
-|Maximális adatméret (GB)|1024|1024|1024|1024|1024|1024|
-|Max. napló mérete (GB)|307|307|307|307|307|307|
+|Maximális adatméret (GB)|650|650|650|650|1024|1024|
+|Max. napló mérete (GB)|195|195|195|195|307|307|
 |A TempDB mérete (GB)|224|256|288|320|384|384|
 |IO-késés (becsült)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|
 |Cél IOPS (64 KB)|35000|40000|45000|50000|80000|120000|
+|Napló Sebességhatár (MB/s)|42|48|48|48|48|48|
 |Egyidejű feldolgozók (kérelmek) maximális|1400|1600|1800|2000|3200|4800|
+|Egyidejű bejelentkezések maximális száma (kérelmek)|1400|1600|1800|2000|3200|4800|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|
 |Replikák száma|4|4|4|4|4|4|
 |Több-AZ|Igen|Igen|Igen|Igen|Igen|Igen|
@@ -175,13 +183,15 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 |Memória (GB)|10.2|20.4|30.6|40.8|51|61.2|71.4|
 |Oszlopcentrikus támogatása|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
 |Memóriabeli OLTP storage (GB)|1.571|3.142|4.713|6.284|8.655|11.026|13.397|
-|Maximális adatméret (GB)|1024|1024|1024|1536|1536|1536|1536|
-|Max. napló mérete (GB)|307|307|307|461|461|461|461|
+|Maximális adatméret (GB)|1024|1024|1536|1536|1536|3072|3072|
+|Max. napló mérete (GB)|307|307|307|461|461|922|922|
 |A TempDB mérete (GB)|64|128|192|256|320|384|384|
 |Tárolási típus|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
 |IO-késés (becsült)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|
 |Cél IOPS (64 KB)|5000|10000|15 000|20000|25000|30000|35000|
+|Napló Sebességhatár (MB/s)|6|12|18|24|30|36|42|
 |Egyidejű feldolgozók (kérelmek) maximális|200|400|600|800|1000|1200|1400|
+|Egyidejű bejelentkezések maximális száma|200|400|600|800|1000|1200|1400|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|30000|
 |Replikák száma|4|4|4|4|4|4|4|
 |Több-AZ|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
@@ -203,10 +213,12 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 |Tárolási típus|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
 |IO-késés (becsült)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|
 |Cél IOPS (64 KB)|40000|45000|50000|60000|80000|100000|200000|
+|Napló Sebességhatár (MB/s)|48|48|48|48|48|48|48|
 |Egyidejű feldolgozók (kérelmek) maximális|1600|1800|2000|2400|3200|4000|8000|
+|Egyidejű bejelentkezések maximális száma|1600|1800|2000|2400|3200|4000|8000|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|30000|
-|Replikák száma|4|4|4|4|4|4|
-|Több-AZ|Igen|Igen|Igen|Igen|Igen|Igen|
+|Replikák száma|4|4|4|4|4|4|4|
+|Több-AZ|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
 |Felskálázás olvasása|–|N/A|N/A|N/A|N/A|N/A|–|
 |Biztonsági mentési tárterület|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 
@@ -262,7 +274,7 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 
 - Önálló adatbázis dtu-k erőforráskorlátok, lásd: [erőforráskorlátok és önálló adatbázisokat a DTU-alapú vásárlási modell használatával](sql-database-dtu-resource-limits-single-databases.md)
 - Rugalmas készletek erőforráskorlátok virtuális mag, lásd: [erőforráskorlátok a rugalmas készletek a Virtuálismag-alapú vásárlási modell használatával](sql-database-vcore-resource-limits-elastic-pools.md)
-- DTU-erőforrás limites rugalmas készletek esetén, lásd: [erőforráskorlátok a rugalmas készletek a DTU-alapú vásárlási modell használatával](sql-database-dtu-resource-limits-elastic-pools.md)
+- Dtu-k erőforráskorlátok a rugalmas készletek, lásd: [erőforráskorlátok a rugalmas készletek a DTU-alapú vásárlási modell használatával](sql-database-dtu-resource-limits-elastic-pools.md)
 - Erőforráskorlátok a felügyelt példányok, lásd: [felügyelt példány erőforráskorlátok](sql-database-managed-instance-resource-limits.md).
 - Azure – általános korlátozások kapcsolatos információkért lásd: [Azure-előfizetés és a szolgáltatások korlátozásai, kvótái és megkötései](../azure-subscription-service-limits.md).
 - Adatbázis-kiszolgáló erőforráskorlátok kapcsolatos információkért lásd: [az SQL Database-kiszolgálóhoz erőforráskorlátok áttekintése](sql-database-resource-limits-database-server.md) kapcsolatos korlátozásokat a kiszolgálók és az előfizetés szintjén.

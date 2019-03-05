@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/11/2018
 ms.author: banders
-ms.openlocfilehash: 58a84848c8a0ccfe906cde7027129e2ca022ec0f
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 9004802220f6aeb867e8a9880336416573c795fb
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244893"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57341526"
 ---
 # <a name="view-your-billing-accounts-in-azure-portal"></a>A számlázási fiókok megtekintése az Azure Portalon  
 
-Minden egyezmény jelentkezik a Microsoft az Azure számlázási fiók jön létre. A számlák és a fizetési módok kezelése a számlázási fiók használatával, és nyomon követheti a költségek az Azure-szolgáltatásokhoz. Több számlázási fiók rendelkezhet. Például előfordulhat, hogy feliratkozott az Azure-hoz a személyes projektekhez. Hozzáférés a szervezet nagyvállalati szerződéssel vagy Microsoft Ügyfélszerződéséhez keresztül is lehet.
+Minden egyezmény jelentkezik a Microsoft az Azure számlázási fiók jön létre. A számlák és a fizetési módok kezelése a számlázási fiók használatával, és nyomon követheti a költségek az Azure-szolgáltatásokhoz. Több számlázási fiók rendelkezhet. Például előfordulhat, hogy feliratkozott az Azure-hoz a személyes projektekhez. Hozzáférés a szervezet nagyvállalati szerződéssel vagy Microsoft Ügyfélszerződéséhez keresztül is lehet. Az egyes forgatókönyvek esetében, a számlázási fiókra kell.
 
 Az Azure portal jelenleg a következő típusú számlázási fiókok használatát támogatja:
 
@@ -33,17 +33,21 @@ Az Azure portal jelenleg a következő típusú számlázási fiókok használat
 
 - **A Microsoft Ügyfélszerződéséhez**: Amikor egy szervezet előfizet a Microsoft Ügyfélszerződéséhez használható az Azure a Microsoft vevői szerződés egy számlázási fiók jön létre. A rendszergazdák a Microsoft vevői szerződés számlázási fiók számlázási-profilok használatához, és számlázása a szakaszokban a hatókörök kezeléséhez és rendezéséhez számlázási a cégük számára a számlázási. További információkért lásd: [Microsoft Ügyfélszerződéséhez Ismerkedés az Ön számlázási fiókjához](billing-mca-overview.md).
 
-## <a name="change-billing-account-view"></a>Módosítsa a számlázási fiók megtekintése
+## <a name="change-billing-account-view-in-the-azure-portal"></a>Módosítsa a számlázási fiók megtekintése az Azure Portalon
+
+A hatókör egy csomópontot egy számlázási fiókot használó felhasználók megtekintése és kezelése a számlázási belül. Például a Microsoft Online Services Program fiókok számlázási hatóköre csak - számlázási fiók, míg a számlázási fiókok a nagyvállalati szerződés számlázási fiók, a részleg és a fiók hatóköröket. Ha alapértelmezés szerint több számlázási hatókör, hogy rendelkezik hozzáféréssel, a hatókörök egyike jelenik meg az Azure Cost Management + számlázás lapján. Az alábbi utasításokat követve módosíthatja a hatókör:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. A Keresés **Cost Management és számlázás**.
 
-   ![Az Azure portál keresési bemutató képernyőkép](./media/billing-mca-section-invoice/billing-search-cost-management-billing.png)
+   ![Az Azure portál keresési bemutató képernyőkép](./media/billing-view-all-accounts/billing-search-cost-management-billing.png)
 
-3. Alapértelmezés szerint a számlázási hatókör, például a számlázási fiók részleg a nagyvállalati szerződés vagy a Microsoft vevői szerződés számlázási profilja egyik részleteinek megtekintéséhez.
+3. Válassza ki **számlázási mindegyikének** , a bal oldali.
 
-4. A hatókör kiválasztásával módosíthatja **számlázási hatókörök** a bal oldali és a egy hatókört válassza ki.
+   ![Minden elszámolási hatókör bemutató képernyőkép](./media/billing-view-all-accounts/billing-list-of-accounts.png)
+
+4. Válassza ki a hatókör részleteinek megtekintéséhez.
 
 ## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
 

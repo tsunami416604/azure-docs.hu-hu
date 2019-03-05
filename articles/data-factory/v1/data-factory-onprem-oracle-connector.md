@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6b97968540914bf1edf5624d04e8f47956de7f0d
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 28227ce9ebc5680f68c05cb1296a8ba35eac2c74
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822255"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338348"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Adatok másolása, vagy a helyszíni Oracle az Azure Data Factory használatával
 
@@ -183,7 +183,7 @@ A másolási tevékenység, ha a forrás a **OracleSource** típusa, a következ
 | writeBatchTimeout |A várakozási idő a köteg beszúrási művelet befejezését, mielőtt azt az időkorlátot. |**timespan**<br/><br/> Példa: 00:30:00 (30 minutes) |Nem |
 | WriteBatchSize |Szúr be adatokat az SQL-táblába, amikor a puffer mérete eléri a értékét **writeBatchSize**. |Egész szám (sorok száma) |Nem (alapértelmezett: 100) |
 | sqlWriterCleanupScript |Adja meg egy lekérdezést a másolási tevékenység végrehajtásához, hogy az adott szeletre vonatkozó adatok törlődnek. |A lekérdezési utasítást. |Nem |
-| sliceIdentifierColumnName |Meghatározza a másolási tevékenységhez egy automatikusan létrehozott szelet azonosító töltse ki az oszlop neve.  Az érték **sliceIdentifierColumnName** mikor futtassa újra a adott szeletre adatainak szolgál. |Az oszlop nevét, amely rendelkezik az adattípus oszlop **binary(32)**. |Nem |
+| sliceIdentifierColumnName |Meghatározza a másolási tevékenységhez egy automatikusan létrehozott szelet azonosító töltse ki az oszlop neve. Az érték **sliceIdentifierColumnName** mikor futtassa újra a adott szeletre adatainak szolgál. |Az oszlop nevét, amely rendelkezik az adattípus oszlop **binary(32)**. |Nem |
 
 ## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>JSON-példák az adatok másolása, és az Oracle-adatbázisból
 
@@ -557,7 +557,7 @@ A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkész
 
 **Hibaüzenet**
 
-    Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .Net Framework Data Provider. It may not be installed.
+    Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .NET Framework Data Provider. It may not be installed.
 
 **Lehetséges okok**
 
@@ -568,8 +568,8 @@ A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkész
 
 * Ha még nem telepítette, Oracle, a .NET-szolgáltatója [telepítheti](http://www.oracle.com/technetwork/topics/dotnet/downloads/), és ismételje meg a forgatókönyvet.
 * Ha a szolgáltató telepítése után is a hibaüzenetet látja, hajtsa végre az alábbi lépéseket:
-   1. Nyissa meg a gép konfigurációs fájlját a mappából a .NET 2.0-s < rendszerlemez\>: \Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
-   2. Keresse meg **Oracle-adatszolgáltató a .NET-hez**. Egy bejegyzés található, ahogyan az alábbi minta alapján elvileg **system.data** > **DbProviderFactories**: `<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
+    1. Nyissa meg a gép konfigurációs fájlját a mappából a .NET 2.0-s < rendszerlemez\>: \Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
+    2. Keresse meg **Oracle-adatszolgáltató a .NET-hez**. Egy bejegyzés található, ahogyan az alábbi minta alapján elvileg **system.data** > **DbProviderFactories**: `<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
 * Ez a bejegyzés átmásolása a machine.config fájlban a következő .NET 4.0-s: < rendszerlemez\>: \Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config. Ezután módosítsa a verzió 4.xxx.x.x.
 * Telepítés < ODP.NET telepített elérési\>a globális szerelvény-gyorsítótárban (GAC) futtatásával \11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll **gacutil /i [a szolgáltató elérési út]**.
 

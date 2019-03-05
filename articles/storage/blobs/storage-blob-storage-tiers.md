@@ -5,15 +5,15 @@ services: storage
 author: kuhussai
 ms.service: storage
 ms.topic: article
-ms.date: 01/09/2018
+ms.date: 03/05/2019
 ms.author: kuhussai
 ms.subservice: blobs
-ms.openlocfilehash: 3e89f5de247cf18abdb710577ce55c6e2cb5765e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4660a45014e6afdb091fb40b8fe7f03fdb647aab
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251894"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339198"
 ---
 # <a name="azure-blob-storage-premium-preview-hot-cool-and-archive-storage-tiers"></a>Az Azure Blob storage: Prémium (előzetes verzió), a gyors Elérésűre, ritka elérésű és archív tárolási szintek
 
@@ -56,16 +56,6 @@ BLOB storage és GPv2-fiókokban fiókszinten elérhető a **hozzáférési szin
 Előzetes verzióban elérhető van egy prémium szintű hozzáférési szint, mely teszi a gyakran használt adatok nagy teljesítményű hardveren keresztül érhető el. Ez a szint a tárolt adatok tárolják, SSD-meghajtókat, amelyek kisebb késés és a hagyományos merevlemezek képest nagyobb tranzakciós sebesség vannak optimalizálva. A prémium szintű hozzáférési szint a Blokkblob típusú tárfiók típusa csak keresztül érhető el.
 
 Ez a szint a gyors és következetes válaszidők megkövetelő számítási feladatokhoz ideális. Olyan adatok, amely magában foglalja a végfelhasználók számára, például az interaktív videó szerkesztésére statikus webes tartalom online tranzakció- és hasonló esetén használható jól a prémium szintű hozzáférési szintet. Ez a szint személyre szabott sok kis tranzakció, például a telemetriai adatok rögzítését, üzenetküldési és átalakítását végző számítási feladatokhoz.
-
-Ez a csomag használatára, új Block Blob storage-fiók kiépítése, és kezdjen el tárolók és blobok használatával a [Blob Service REST API](/rest/api/storageservices/blob-service-rest-api), [AzCopy](/azure/storage/common/storage-use-azcopy), vagy [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/).
-
-Az előzetes verzióban a prémium szintű hozzáférési szint:
-
-- Helyileg redundáns tárolás (LRS) érhető el
-- Csak érhető el ezekben a régiókban: USA 2. keleti régiója, USA középső régiója és USA nyugati régiója
-- Objektum szintű rétegezést vagy automatizált adatrétegzést kínáló, az adatok életciklus-felügyelet nem támogatja
-
-Megtudhatja, hogyan regisztrálhat a prémium szint előzetes verzió eléréséhez, lásd: [Azure prémium szintű Blob Storage bemutatása](https://aka.ms/premiumblob).
 
 ## <a name="hot-access-tier"></a>Gyakran használt adatok hozzáférési szintje
 

@@ -2,19 +2,19 @@
 title: fájl belefoglalása
 description: fájl belefoglalása
 services: site-recovery
-author: rayne-wiselman
-manager: carmonm
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: include
-ms.date: 09/06/2018
-ms.author: raynew
+ms.date: 02/28/2019
+ms.author: mayg
 ms.custom: include file
-ms.openlocfilehash: 2ca4916d48da6fe8a2c061056a1ea0fed9a78bb6
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 7c682105113dac7c1d457489cf926210ead77993
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44058303"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57343567"
 ---
 1. Futtassa az egyesített telepítő fájlját.
 2. A **alapismeretek**válassza **a konfigurációs kiszolgáló és a folyamatkiszolgáló telepítése**.
@@ -43,7 +43,7 @@ ms.locfileid: "44058303"
 9. A **Telepítés helye** területen válassza ki, hová szeretné telepíteni a bináris fájlokat, és hol kívánja tárolni a gyorsítótárat. A kiválasztott meghajtón legalább 5 GB szabad lemezterületre van szükség, de javasoljuk, hogy a gyorsítótárazáshoz használt lemezen legyen legalább 600 GB szabad hely.
 
     ![Telepítés helye](./media/site-recovery-add-configuration-server/combined-wiz8.png)
-10. A **Hálózat kiválasztása** területen adja meg a figyelőt (hálózati adaptert és SSL-portot), amelyen keresztül a konfigurációs kiszolgáló küldi és fogadja a replikált adatokat. A 9443-as port a replikációs forgalom küldésére és fogadására használt alapértelmezett port, ez azonban a környezeti követelményektől függően módosítható. A 9443-as port mellett a 443-as portot is megnyitjuk, amelyen keresztül egy webkiszolgáló a replikálási műveleteket vezényli. Ne használja a 443-as porton küldése vagy fogadása a replikációs forgalom számára.
+10. A **hálózat kiválasztása**, először válassza ki a hálózati Adaptert, a beépített folyamatkiszolgáló által a felderítés és leküldéses telepítési forrásgépek a mobilitási szolgáltatást, és válassza ki a konfigurációs kiszolgáló által a kapcsolat hálózati adapter az Azure-ral. A 9443-as port a replikációs forgalom küldésére és fogadására használt alapértelmezett port, ez azonban a környezeti követelményektől függően módosítható. A 9443-as port mellett a 443-as portot is megnyitjuk, amelyen keresztül egy webkiszolgáló a replikálási műveleteket vezényli. Ne használja a 443-as porton küldése vagy fogadása a replikációs forgalom számára.
 
     ![Hálózat kiválasztása](./media/site-recovery-add-configuration-server/combined-wiz9.png)
 

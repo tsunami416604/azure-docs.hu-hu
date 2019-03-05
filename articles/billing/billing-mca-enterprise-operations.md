@@ -14,34 +14,39 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/24/2018
 ms.author: banders
-ms.openlocfilehash: 5980b8b701695d002d58b6b5239e6fa04c02fb2f
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 9b76fa935263904957c87cd062c84d0607771369
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57248945"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57341381"
 ---
 # <a name="complete-enterprise-agreement-tasks-in-your-billing-account-for-a-microsoft-customer-agreement"></a>A Microsoft vevői szerződés az Ön számlázási fiókjához a teljes nagyvállalati szerződés feladatok
 
-Ha a szervezet egy Microsoft Ügyfélszerződéséhez, hogy újítsa meg a nagyvállalati szerződésre való beléptetésről van bejelentkezve, majd be kell állítania az új számlázási fiók, a szerződés létrehozva. Az új számlázási fiók a, továbbfejlesztett számlázási és a cost management lehetőségei a egy új egyszerű és egységesített kezelést biztosít. További információkért lásd: [számlázási fiók beállítása a Microsoft vevői szerződés](billing-mca-setup-account.md).
+Ha a szervezet egy Microsoft Ügyfélszerződéséhez, hogy újítsa meg a nagyvállalati szerződésre való beléptetésről van bejelentkezve, a szerződés egy új számlázási fiók jön létre. A számlázás pedig az új fiók eltérően a nagyvállalati szerződéshez vannak rendezve. Ez a cikk bemutatja, hogyan használhatja az új számlázási fiók a nagyvállalati szerződés végrehajtott feladatok végrehajtásához.
 
-A telepítés befejezése után ez a cikk segítségével megismerheti, hogyan hajthat végre a nagyvállalati szerződésre való beléptetésről végrehajtott feladatokat.
+## <a name="how-billing-is-organized-in-the-new-account"></a>Hogyan vannak rendezve, a számlázás az új fiók
 
-Ez a cikk a Microsoft vevői szerződés számlázási fiók vonatkozik. [Ellenőrizze, hogy egy Microsoft Ügyfélszerződéséhez hozzáférést](#check-your-access-to-a-microsoft-customer-agreement).
+A következő ábra ismerteti, hogyan vannak rendezve, a számlázás az új számlázási fiók.
 
-## <a name="mapping-of-enterprise-agreements-billing-to-the-new-billing-account"></a>Az új számlázási fiókjához nagyvállalati szerződés számlázási leképezése
+![Ea-mca-post-váltás-hierarchia képe](./media/billing-mca-setup-account/mca-post-transition-hierarchy.png)
 
-A számlázás pedig az új fiók eltér a nagyvállalati szerződésre való beléptetésről van rendezve. Az alábbi táblázat az új számlázási fiókba, a nagyvállalati szerződésre való beléptetésről számlázási hozzárendelését ismerteti. Az új számlázási fiók kapcsolatos további információkért lásd: [Microsoft Ügyfélszerződéséhez Ismerkedés az Ön számlázási fiókjához](billing-mca-overview.md).
-
-| Nagyvállalati szerződés   | Microsoft ügyfélszerződés    |
+| Nagyvállalati szerződés   | Microsoft Ügyfélszerződés    |
 |------------------------|--------------------------------------------------------|
 | Regisztráció            | A számlázási profilja segítségével kezelheti a számlázási szervezetben, a nagyvállalati szerződésre való beléptetésről hasonló. Vállalati rendszergazdák a számlázási profilja tulajdonosai lesznek. Számlázási profilokkal kapcsolatos további tudnivalókért lásd: [számlázási a profilok megismerése](billing-mca-overview.md#understand-billing-profiles).
 | Részleg            | Egy számla szakasz használata a költségeket, a nagyvállalati szerződésre való beléptetésről részlegek hasonló rendszerezéséhez. Részleg számla szakaszok válik, és a részleg rendszergazdái válnak a megfelelő számla szakaszok tulajdonosai. Számla szakaszok kapcsolatos további információkért lásd: [Understand számla szakaszok](billing-mca-overview.md#understand-invoice-sections). |
 | Fiók               | A fiókok létrejöttek a nagyvállalati szerződésbe, az új számlázási fiók nem támogatottak. A fiók előfizetés tartozik, azok számára a megfelelő számla szakaszra. Fióktulajdonosok is előfizetéseinek létrehozásához és kezeléséhez a számla szakaszokat. |
 
-## <a name="tasks-performed-by-an-enterprise-administrator"></a>A vállalati rendszergazdák által végrehajtott feladatok
+## <a name="changes-for-enterprise-administrators-in-the-new-billing-account"></a>A vállalati rendszergazdák az új számlázási fiók módosítása
 
-Ha Ön egy vállalati rendszergazda engedélyezte a nagyvállalati szerződéssel, van egy Microsoft-ügyfél megállapodás megújítani, a következő szerepkörök a a szerződés létrehozott új számlázási fiók rendelt:
+A következő módosításokat vállalati rendszergazdák nagyvállalati szerződéssel, van egy Microsoft-ügyfél megállapodás megújítani a alkalmazni.
+
+- A regisztráció egy számlázási profil jön létre. A számlázási profilja kezelheti a számlázás a szervezete számára, mint a nagyvállalati szerződésre való beléptetésről fogja használni. További információ a számlázási profilok [számlázási a profilok megismerése](billing-mca-overview.md#understand-billing-profiles).
+- Egy számla szakasz mindegyik részlege a nagyvállalati szerződésre való beléptetésről jön létre. A számla szakaszok használni a szervezeti egységek kezelése. Létrehozhat új számla szakaszok további szervezeti egységek beállításához. Számla szakaszok kapcsolatos további információkért lásd: [számla szakaszokban megismerheti](billing-mca-overview.md#understand-invoice-sections).
+- A számla szakaszok az Azure-előfizetés létrehozója szerepkör segítségével engedélyezze a más Azure-előfizetéssel, például a nagyvállalati szerződésre való beléptetésről létrehozott fiókok létrehozása.
+- Szeretné használni a [az Azure portal](https://portal.azure.com) számlázás a szervezet helyett az Azure nagyvállalati szerződések portálján kezelheti.
+
+A következő szerepkörök kapják meg az új számlázási fiók:
 
 **A számlázás profiltulajdonossal** -jött létre, amikor a szerződés aláírásának számlázási profilon számlázási profil tulajdonosi szerepkör van rendelve. A szerepkör lehetővé teszi a szervezet számára a számlázás kezelését. Díjak és számlák megtekintéséhez, rendszerezheti a költségek, a számlán, fizetési módok kezelése és ki férhet hozzá a szervezet számlái.
 
@@ -51,7 +56,7 @@ Ha Ön egy vállalati rendszergazda engedélyezte a nagyvállalati szerződésse
 
 A számlázási profilja segítségével nyomon követheti a költségek és az Azure-kreditek egyenleg a nagyvállalati szerződésre való beléptetésről hasonlóan a szervezet számára.
 
-A számlázási profilja kreditegyenlegét megtekintése kapcsolatban lásd: [kreditegyenlegét nyomon követése az Azure számlázási profilját](billing-mca-check-azure-credits-balance.md).
+A számlázási profilja kreditegyenlegét megtekintése kapcsolatban lásd: [nyomon követheti a számlázási profilja Azure kreditegyenlegét](billing-mca-check-azure-credits-balance.md).
 
 Megtudhatja, hogyan kell fizetni egy számlázási profilja megtekintéséhez, lásd: [a költségek, a Microsoft Ügyfélszerződéséhez számlán ismertetése](billing-mca-understand-your-bill.md).
 
@@ -69,74 +74,77 @@ A fiókok, a nagyvállalati szerződésre való beléptetésről létrejöttek a
 
 A havi számla jön létre minden egyes számlázási profilja az Ön számlázási fiókjához. Minden számlán a letöltheti az Azure használat és költségek csv-fájl, árlista és adó dokumentum (ha van). Az Azure használat és költségek csv-fájl az aktuális hónap díjakat is letölthető.
 
-Az Azure használat és költségek csv-fájl letöltésére megismerkedni, lásd: [töltse le az Azure számlázási és napi használati adatok megtekintéséhez vagy](billing-download-azure-invoice-daily-usage-date.md). <!--Todo update the link -->
+Az Azure használat és költségek csv-fájl letöltésére megismerkedni, lásd: [használati adatok letöltése a Microsoft vevői szerződés hatálya alá tartozó](billing-download-azure-daily-usage.md#download-usage-for-your-microsoft-customer-agreement).
 
-Megtudhatja, hogyan töltse le a lap- és adózási dokumentumok ár, [letöltési adó dokumentumok számláit](billing-download-azure-invoice-daily-usage-date.md). <!--Todo update the link -->
+Töltse le az árlista ismertetését lásd: [töltse le a Microsoft vevői szerződés díjszabását](billing-ea-pricing.md#view-and-download-pricing-for-your-microsoft-customer-agreement).
+
+Adózási dokumentumok letöltése kapcsolatban lásd: [adó dokumentumok megtekintése a Microsoft vevői szerződés hatálya alá tartozó](billing-mca-download-tax-document.md#view-and-download-tax-documents).
 
 ### <a name="add-an-additional-enterprise-administrator"></a>A vállalati további rendszergazdák hozzáadása
 
-Használja a **hozzáférés Control(IAM)** oldal megtekintése és kezelése a számlázási profilja hozzáférés biztosítása más az Azure Portalon. Profil szerepkörök számlázással kapcsolatos további információkért lásd: [számlázási profil szerepkörök és feladatok](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
+Felhasználók hozzáférést biztosíthat, hogy azok a számlázási profil megtekintése és kezelése a szervezet számára. Használhatja a **hozzáférés-vezérlés (IAM)** oldal az Azure Portalon való hozzáférést.  Profil szerepkörök számlázással kapcsolatos további információkért lásd: [számlázási profil szerepkörök és feladatok](billing-understand-mca-roles.md#billing-profile-roles-and-tasks).
 
 Adja meg, a számlázási profilja megismeréséhez, tekintse meg a [kezelése az Azure Portal számlázási szerepkörök](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
 
 ### <a name="create-a-new-department"></a>Hozzon létre egy új szervezeti egység
 
-Az új számlázási fiók egy számla szakaszban használhatja a saját igényei szerint, a nagyvállalati szerződésre való beléptetésről részlegek hasonló költségeket rendszerezéséhez. Számla című új szakasszal létrehozhat egy új szervezeti egység az Azure beállítása az Azure Portalon. További tudnivalókért lásd: [szakaszok létrehozása a számla a költségek rendszerezéséhez](billing-mca-section-invoice.md).
+Hozzon létre egy saját igényei szerint, például a nagyvállalati szerződésre való beléptetésről részlegek költségeit rendszerezéséhez számla szakaszt. Az Azure Portalon létrehozhat számla című új szakasszal. További tudnivalókért lásd: [szakaszok létrehozása a számla a költségek rendszerezéséhez](billing-mca-section-invoice.md).
 
 ### <a name="create-a-new-account"></a>Új fiók létrehozása
 
-A számlázási környezetét a nagyvállalati szerződést az új számlázási fiók nem támogatott. Azonban megadhat Azure-előfizetés létrehozója szerepkör a felhasználók számára, hogy azokat az Azure-előfizetéseket hozhasson létre a szervezetében. További információkért lásd: [engedélyezze a más Azure-előfizetések létrehozására](billing-mca-create-subscription.md#give-others-permission-to-create-azure-subscriptions).
+Felhasználók hozzárendelése az Azure-előfizetés létrehozója szerepkör számla szakaszok adni nekik az Azure-előfizetéssel, például a nagyvállalati szerződésre való beléptetésről létrehozott fiókok létrehozásához szükséges engedéllyel. További információkért lásd: [engedélyezze a más Azure-előfizetések létrehozására](billing-mca-create-subscription.md#give-others-permission-to-create-azure-subscriptions).
 
-## <a name="tasks-performed-by-a-department-administrator"></a>A részleg rendszergazdája által végrehajtott feladatok
+## <a name="changes-for-department-administrators-in-the-new-billing-account"></a>A részleg rendszergazdái az új számlázási fiók módosítása
 
-Ha egy részleg rendszergazdája, amely a Microsoft ügyfél-megállapodás megújítani nagyvállalati szerződéssel, a következő szerepkörök az új számlázási fiókjához rendelt:
+A következő módosításokat részleg rendszergazdái nagyvállalati szerződéssel, van egy Microsoft-ügyfél megállapodás megújítani a alkalmazni.
 
-**Számla szakasz tulajdonosa** -jön létre a szervezeti egységek, a nagyvállalati szerződés kellett számla szakasz a számla szakasz tulajdonosi szerepkör van rendelve. A szerepkör lehetővé teszi megtekintése és költségek nyomon követése és vezérlés ki Azure-előfizetések létrehozására és egyéb termékek, a számla szakaszának vásárolni.
+- Egy számla szakasz mindegyik részlege a nagyvállalati szerződésre való beléptetésről jön létre. A számla szakasz a department(s) kezelésére fogja használni. Számla szakaszok kapcsolatos további információkért lásd: [számla szakaszokban megismerheti](billing-mca-overview.md#understand-invoice-sections).
+- A számla szakaszban az Azure-előfizetés létrehozója szerepkör segítségével engedélyezze a más Azure-előfizetéssel, például a nagyvállalati szerződésre való beléptetésről létrehozott fiókok létrehozása.
+- Az Azure Portalon való kezelése helyett az Azure nagyvállalati szerződések portálján, a szervezet használni kívánt.
 
-Ha egy részleg rendszergazdája több részlegek számára a nagyvállalati szerződés, rendelt számla szakasz tulajdonosi szerepkör a részlegek számára létrehozott összes számla szakaszokat.
+A következő szerepkörök kapják meg az új számlázási fiók:
+
+**Számla szakasz tulajdonosa** -jön létre a nagyvállalati szerződés kellett department(s) számla szakasz a számla szakasz tulajdonosi szerepkör van rendelve. A szerepkör lehetővé teszi megtekintése és költségek nyomon követése és vezérlés ki Azure-előfizetések létrehozására és egyéb termékek, a számla szakaszának vásárolni.
 
 ### <a name="view-charges-for-your-department"></a>A részleg költségek megtekintése
 
-Az egyes részlegek, a nagyvállalati szerződést kellett egy számla szakasz jön létre. A számla a szakasz a nagyvállalati szerződés neve megegyezik a szervezeti egység tartalmaz. Az Azure Portalon is megtekintheti a számla szakaszban kell fizetni. <!-- Todo Add a link -->
+Megtekintheti a számla szakaszban létrehozott kell fizetni az osztálynak az Azure Portalon [Költségkezelés + számlázás lapján](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview).
 
 ### <a name="add-an-additional-department-administrator"></a>A további részleg rendszergazda hozzáadása
 
-Az egyes részlegek, a nagyvállalati szerződést kellett egy számla szakasz jön létre. Használhatja a **hozzáférés Control(IAM)** oldal megtekintése és kezelése a számla szakasz hozzáférés biztosítása más az Azure Portalon. Számla szakasz szerepkörök kapcsolatos további információkért lásd: [profil szerepkörök és feladatok számla](billing-understand-mca-roles.md#invoice-section-roles-and-tasks).
+Az egyes részlegek, a nagyvállalati szerződést kellett egy számla szakasz jön létre. Használhatja a **hozzáférés Control(IAM)** oldal megtekintése és kezelése a számla szakasz hozzáférés biztosítása más az Azure Portalon. Számla szakasz szerepkörök kapcsolatos további információkért lásd: [szakasz szerepkörök és feladatok számla](billing-understand-mca-roles.md#invoice-section-roles-and-tasks).
 
 Adja meg, a számla a szakasz a kezelésével kapcsolatos információkért lásd: [kezelése az Azure Portal számlázási szerepkörök](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
 
 ### <a name="create-a-new-account-in-your-department"></a>Hozzon létre egy új fiókot a osztály
 
-A számlázási környezetét a nagyvállalati szerződést az új számlázási fiók nem támogatott. Azonban megadhat Azure-előfizetés létrehozója szerepkör a felhasználók számára, hogy azokat az Azure-előfizetéseket hozhasson létre a szervezetében. További információkért lásd: [engedélyezze a más Azure-előfizetések létrehozására](billing-mca-create-subscription.md#give-others-permission-to-create-azure-subscriptions).
+A számla a szakasz a részleg számára létrehozott Azure-előfizetés létrehozója szerepkört rendelje hozzá a felhasználókat. További információkért lásd: [engedélyezze a más Azure-előfizetések létrehozására](billing-mca-create-subscription.md#give-others-permission-to-create-azure-subscriptions).
 
 ### <a name="view-charges-for-accounts-in-your-departments"></a>A szervezeti fiókokat a költségek megtekintése
 
-A számlázási környezetét a nagyvállalati szerződést az új számlázási fiók nem támogatott. A fiók-előfizetések tartoznak a számla a szakasz a részleg számára létrehozott. Fióktulajdonosok is előfizetéseinek létrehozásához és kezeléséhez a számla szakaszokat.
+A fiókok, a nagyvállalati szerződésre való beléptetésről létrejöttek az új számlázási fiók nem támogatottak. A fiók előfizetés tartozik, azok számára a megfelelő számla szakaszra. Fióktulajdonosok is előfizetéseinek létrehozásához és kezeléséhez a számla szakaszokat.
 
-Összesített költségét a részleg egy fiókhoz tartoztak előfizetések megtekintéséhez be kell egy erőforrás minden egyes előfizetés esetén. Ezt követően használhatja azt, hogy a használat és költségek az Azure file szűrése a költséghely szerint az előfizetéseket. <!-- Todo - can they go to cost analysis -->
+Összesített költségét a részleg egy fiókhoz tartoztak előfizetések megtekintéséhez be kell egy erőforrás minden egyes előfizetés esetén. Ezt követően használhatja azt, hogy a használat és költségek az Azure file szűrése a költséghely szerint az előfizetéseket.
 
-## <a name="tasks-performed-by-an-account-owner"></a>Fiók tulajdonosa által végrehajtott feladatok
+## <a name="changes-for-account-owners-in-the-new-billing-account"></a>A fióktulajdonosok az új számlázási fiók módosítása
 
-Ha Ön nagyvállalati szerződéssel, van egy Microsoft-ügyfél megállapodás megújítani a fiók tulajdonosa, az új számlázási fiók, a szerződés létrehozva a következő szerepkört rendelt:
+A nagyvállalati szerződés a fióktulajdonosok kérjen engedélyt az új számlázási fiók az Azure-előfizetések létrehozására. A meglévő Azure-előfizetések tartoznak a számla a szakasz a részleg számára létrehozott. Ha fiókja egy szervezeti egység nem tartozik, az előfizetés tartozik egy alapértelmezett számla szakasz nevű számla szakaszban.
 
-**Azure-előfizetés létrehozója** -a a számla szakaszban létrehozott azure-előfizetés létrehozója szerepkört a nagyvállalati szerződés osztály vannak hozzárendelve. Ha a fiókja nem tartozik egy részleg, az előfizetések a számla szakasz nevű alapértelmezett számla szakaszban fog tartozni, és a szakasz az Azure-előfizetés létrehozója kap. A szerepkör lehetővé teszi a számla szakaszának Azure-előfizetések létrehozására.
+További Azure-előfizetések létrehozása, a következő szerepkör kapják meg az új számlázási fiók.
 
-### <a name="view-charges-for-your-account"></a>A fiók költségek megtekintése
-
-A számlázási környezetét a nagyvállalati szerződést az új számlázási fiók nem támogatott. A fiók-előfizetések tartoznak a számla szakaszban, a fiók számára létrehozott.
-
-Egy fiókhoz tartoztak-szolgáltatások díjai megtekintéséhez nyissa meg a **előfizetések lapon** az Azure Portalon. Az előfizetések lap az összes előfizetéshez tartozó díjakat jeleníti meg. <!-- Todo - can they go to cost analysis -->
-
-### <a name="view-charges-for-a-subscription"></a>Egy előfizetéshez tartozó költségek megtekintése
-
-Az Azure cost analysis segítségével egy előfizetéshez tartozó díjaikat. További információkért lásd: [vizsgálata és elemzése a költségeket a költségelemzés](../cost-management/quick-acm-cost-analysis.md).
+**Azure-előfizetés létrehozója** -a a számla szakaszban létrehozott azure-előfizetés létrehozója szerepkört a nagyvállalati szerződés osztály vannak hozzárendelve. Ha a fiókja nem tartozik egy részleg, Azure-előfizetés létrehozója szerepkör kap egy alapértelmezett számla szakasz nevű szakaszban. A szerepkör lehetővé teszi a számla szakaszának Azure-előfizetések létrehozására.
 
 ### <a name="create-an-azure-subscription"></a>Azure-előfizetés létrehozása
 
 A számla című rész ismerteti az Azure Portalon az Azure-előfizetéseket hozhat létre. További információkért lásd: [további Azure-előfizetés létrehozása a Microsoft ügyfél-szerződés](billing-mca-create-subscription.md)
 
-## <a name="check-access-to-a-microsoft-customer-agreement"></a>A Microsoft Ügyfélszerződéséhez való hozzáférés ellenőrzése
-[!INCLUDE [billing-check-mca](../../includes/billing-check-mca.md)]
+### <a name="view-charges-for-your-account"></a>A fiók költségek megtekintése
+
+Egy fiókhoz tartoztak-szolgáltatások díjai megtekintéséhez nyissa meg a [előfizetések lapon](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) az Azure Portalon. Az előfizetések lap az összes előfizetéshez tartozó díjakat jeleníti meg.
+
+### <a name="view-charges-for-a-subscription"></a>Egy előfizetéshez tartozó költségek megtekintése
+
+Megtekintheti egy előfizetési díjai vagy a a [előfizetések lapon](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) vagy az Azure-elemzés. További információ az Azure cost analysis: [vizsgálata és elemzése a költségeket a költségelemzés](../cost-management/quick-acm-cost-analysis.md).
 
 ## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel a támogatási szolgáltatással
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: efd6db6b8dbbe051dba129b0d9f3e87f293d6706
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: bea9a987078799436c9dcad650ee56d5d6d81512
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56458069"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57341340"
 ---
 # <a name="manage-your-connected-devices-from-the-my-profile-preview-portal"></a>A csatlakoztatott eszközök kezelése a saját profil (előzetes verzió) portálról
 Csatlakozott a munkahelyi vagy iskolai fiók használatával szükségesekre már nem saját, az eszközök kezeléséhez, a **eszközök** lapján a **profilom** portálon.
@@ -29,7 +29,7 @@ Csatlakozott a munkahelyi vagy iskolai fiók használatával szükségesekre má
 
 2. Válassza ki **eszközök** a bal oldali navigációs panelen, vagy válassza ki a **Eszközkezelés** hivatkozás a **eszközök** letiltása.
 
-    ![Saját profil lapot, amely a kijelölt eszközök hivatkozások](media/myprofile-portal/myprofile-portal-devices-links.png)
+    ![Saját profil lapot, amely a kijelölt eszközök hivatkozások](media/myprofile-portal/myprofile-portal-devices.png)
 
 3. Tekintse át a csatlakoztatott eszközökből, és gondoskodik róla, hogy azokat az összes ismeri fel az adatait. 
 
@@ -49,4 +49,4 @@ Bármikor letilthatja a csatlakoztatott eszközökhöz. Ez akkor kifejezetten fo
 
 ## <a name="next-steps"></a>További lépések
 
-- A legutóbbi bejelentkezési tevékenységek megtekintése, után kiválaszthatja megtekintéséhez és kezeléséhez a [biztonsági adatok](user-help-security-info-overview.md), [legutóbbi bejelentkezési tevékenység](myprofile-portal-recent-activity-page.md), a csatlakoztatott [szervezetek](myprofile-portal-organizations-page.md), vagy megtekintése Hogyan a szervezet [használ az adatok](myprofile-portal-privacy-page.md).
+- A csatlakoztatott eszközök megtekintése, után kiválaszthatja megtekintéséhez és kezeléséhez a [biztonsági adatok](user-help-security-info-overview.md), a [szervezetek](myprofile-portal-organizations-page.md), vagy a nézet hogyan a szervezet [használ az adatok](myprofile-portal-privacy-page.md).

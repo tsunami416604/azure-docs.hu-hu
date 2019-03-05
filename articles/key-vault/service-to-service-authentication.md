@@ -2,20 +2,20 @@
 title: Szolgáltatások közötti hitelesítés az Azure Key Vaultba .NET használatával
 description: A Microsoft.Azure.Services.AppAuthentication könyvtár segítségével hitelesíti az Azure Key Vaultba .NET használatával.
 keywords: az Azure key-vault helyi hitelesítő adatok
-author: bryanla
+author: msmbaldwin
 manager: barbkess
 services: key-vault
-ms.author: bryanla
+ms.author: mbaldwin
 ms.date: 01/04/2019
 ms.topic: conceptual
 ms.service: key-vault
 ms.assetid: 4be434c4-0c99-4800-b775-c9713c973ee9
-ms.openlocfilehash: 4d572472cfab36ac252878195a526c9ad05c813b
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: d0ccf25ed0071e9d89b3728048435b0b657026c0
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670128"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342317"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Szolgáltatások közötti hitelesítés az Azure Key Vaultba .NET használatával
 
@@ -29,7 +29,6 @@ A `Microsoft.Azure.Services.AppAuthentication` könyvtár kezeli a hitelesítés
 
 A `Microsoft.Azure.Services.AppAuthentication` kódtár támogatja a helyi fejlesztés a Microsoft Visual Studio, az Azure parancssori felület vagy az Azure AD integrált hitelesítést. Amikor telepít egy Azure-erőforrás, amely támogatja a felügyelt identitás, automatikusan használja-e a szalagtár [felügyelt identitások az Azure-erőforrások](/azure/active-directory/msi-overview). Nincs kódírásra vagy konfigurálásra módosításokra szükség. A kódtár emellett támogatja az Azure AD közvetlenül is felhasználható [ügyfél-hitelesítő adatok](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal) Ha egy felügyelt identitás nem érhető el, vagy ha a fejlesztői biztonsági környezetben nem lehet megállapítani a helyi fejlesztés során.
 
-<a name="asal"></a>
 ## <a name="using-the-library"></a>A kódtár használatával
 
 A .NET-alkalmazásokban, a legegyszerűbb módszer egy felügyelt identitás használata keresztül, a `Microsoft.Azure.Services.AppAuthentication` csomagot. Első lépések a következő:
@@ -55,8 +54,6 @@ A `AzureServiceTokenProvider` osztály gyorsítótárazza a memóriában, és le
 
 A `GetAccessTokenAsync` módszerhez egy erőforrás-azonosítója. További tudnivalókért lásd: [mely Azure-szolgáltatások felügyelt identitások támogatása az Azure-erőforrások](https://docs.microsoft.com/azure/active-directory/msi-overview).
 
-
-<a name="samples"></a>
 ## <a name="samples"></a>Példák
 
 A következő minták megjelenítése a `Microsoft.Azure.Services.AppAuthentication` könyvtár működés közben:
@@ -67,8 +64,6 @@ A következő minták megjelenítése a `Microsoft.Azure.Services.AppAuthenticat
 
 3. [Minta .NET Core és a egy felügyelt identitás használata Azure-szolgáltatások meghívása az Azure Linux virtuális](https://github.com/Azure-Samples/linuxvm-msi-keyvault-arm-dotnet/).
 
-
-<a name="local"></a>
 ## <a name="local-development-authentication"></a>Helyi fejlesztés hitelesítés
 
 A helyi fejlesztési két forgatókönyv közül választhat az elsődleges hitelesítés:
@@ -157,13 +152,12 @@ Az Azure-ba, bejelentkezés után `AzureServiceTokenProvider` használja az egys
 
 Ez csak helyi fejlesztési vonatkozik. Telepítésekor a megoldás az Azure-ba, a tár átvált egy felügyelt identitás a hitelesítéshez.
 
-<a name="msi"></a>
-## <a name="running-the-application-using-managed-identity"></a>Az alkalmazás felügyelt identitás használatával fut 
+## <a name="running-the-application-using-managed-identity-or-user-assigned-identity"></a>Az alkalmazás felügyelt identitás vagy felhasználó által hozzárendelt identitás használatával fut 
 
 Amikor futtatja a kódot egy Azure App Service-ben vagy egy Azure virtuális Gépen engedélyezve van egy felügyelt identitás, a tár automatikusan használja a felügyelt identitás. Kódmódosítás nélkül szükség. 
 
+Azt is megteheti előfordulhat, hogy a hitelesítést egy felhasználó által hozzárendelt identitással. További információ a felhasználó által hozzárendelt identitások: [kapcsolatos felügyelt identitások az Azure-erőforrások](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-worka-namehow-does-it-worka). A kapcsolati karakterlánc szerepel a [kapcsolati karakterlánc támogatási](#connection-string-support) szakaszt.
 
-<a name="sp"></a>
 ## <a name="running-the-application-using-a-service-principal"></a>Egyszerű szolgáltatás használatával az alkalmazás futtatása 
 
 Elképzelhető, hogy hitelesítéséhez az Azure AD-ügyfél hitelesítő adatok létrehozásához szükséges. Gyakori példák:
@@ -207,7 +201,6 @@ Jelentkezzen be az Azure AD közös titkos hitelesítő adat:
 
 Miután minden van beállítva, további kódmódosítás nélkül szükség.  `AzureServiceTokenProvider` a környezeti változót, és a tanúsítvány használatával az Azure AD-hitelesítést. 
 
-<a name="connectionstrings"></a>
 ## <a name="connection-string-support"></a>Kapcsolati karakterlánc-támogatás
 
 Alapértelmezés szerint `AzureServiceTokenProvider` több módszert használ a jogkivonat beszerzésére. 
@@ -220,11 +213,13 @@ A következő beállítások támogatottak:
 |:--------------------------------|:------------------------|:----------------------------|
 | `RunAs=Developer; DeveloperTool=AzureCli` | Helyi fejlesztés | AzureServiceTokenProvider AzureCli használatával szerezze be a tokent. |
 | `RunAs=Developer; DeveloperTool=VisualStudio` | Helyi fejlesztés | AzureServiceTokenProvider uses Visual Studio to get token. |
-| `RunAs=CurrentUser;` | Helyi fejlesztés | AzureServiceTokenProvider beszerezni a jogkivonatot az Azure AD integrált hitelesítést használ. |
-| `RunAs=App;` | Felügyelt identitások az Azure-erőforrásokhoz | AzureServiceTokenProvider egy felügyelt identitás használatával szerezze be a tokent. |
-| `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint`<br>`   ={Thumbprint};CertificateStoreLocation={LocalMachine or CurrentUser}`  | Szolgáltatásnév | `AzureServiceTokenProvider` a tanúsítványt használja, szerezze be a tokent az Azure ad-ből. |
-| `RunAs=App;AppId={AppId};TenantId={TenantId};`<br>`   CertificateSubjectName={Subject};CertificateStoreLocation=`<br>`   {LocalMachine or CurrentUser}` | Szolgáltatásnév | `AzureServiceTokenProvider` tanúsítványt használ, szerezze be a tokent az Azure ad-ből|
+| `RunAs=CurrentUser` | Helyi fejlesztés | AzureServiceTokenProvider beszerezni a jogkivonatot az Azure AD integrált hitelesítést használ. |
+| `RunAs=App` | [Azure-erőforrások felügyelt identitásai](../active-directory/managed-identities-azure-resources/index.yml) | AzureServiceTokenProvider egy felügyelt identitás használatával szerezze be a tokent. |
+| `RunAs=App;AppId={ClientId of user-assigned identity}` | [Felhasználó által hozzárendelt identitás az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/overview.md#how-does-the-managed-identities-for-azure-resources-worka-namehow-does-it-worka) | AzureServiceTokenProvider egy felhasználó által hozzárendelt identitás használatával szerezze be a tokent. |
+| `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateThumbprint={Thumbprint};CertificateStoreLocation={LocalMachine or CurrentUser}`   | Szolgáltatásnév | `AzureServiceTokenProvider` a tanúsítványt használja, szerezze be a tokent az Azure ad-ből. |
+| `RunAs=App;AppId={AppId};TenantId={TenantId};CertificateSubjectName={Subject};CertificateStoreLocation={LocalMachine or CurrentUser}` | Szolgáltatásnév | `AzureServiceTokenProvider` tanúsítványt használ, szerezze be a tokent az Azure ad-ből|
 | `RunAs=App;AppId={AppId};TenantId={TenantId};AppKey={ClientSecret}` | Szolgáltatásnév |`AzureServiceTokenProvider` titkos kulcs használatával szerezze be a tokent az Azure ad-ből. |
+
 
 
 ## <a name="next-steps"></a>További lépések

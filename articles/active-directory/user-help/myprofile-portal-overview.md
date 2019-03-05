@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 472c39a7220c4e84bff429097fef6d0ed721fd01
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: d59bd14b52124282e1e07d60daa4b891c2bab938
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56457681"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337821"
 ---
 # <a name="my-profile-preview-portal-overview"></a>Saját profil (előzetes verzió) portál áttekintése
 
@@ -26,8 +26,6 @@ ms.locfileid: "56457681"
 Használhatja a **profilom** (előzetes verzió) portálon is lehet kezelni a munkahelyi vagy iskolai fiókját:
 
 - Állítsa be, és a kétlépéses ellenőrzés és új jelszó kérése a biztonsági adatok kezelése.
-
-- A bejelentkezési tevékenységeket tekintheti meg.
 
 - A csatlakoztatott szervezetek és eszközök kezelésére.
 
@@ -45,7 +43,7 @@ Szeretné a **profilom** a portál https://myprofile.microsoft.com, az az alább
 - Firefox
 - Internet Explorer 11
 
-    ![Saját profil portal Áttekintés lapján](media/myprofile-portal/myprofile-portal-overview-page.png)
+    ![Saját profil portal Áttekintés lapján](media/myprofile-portal/myprofile-portal-overview.png)
 
 ## <a name="in-this-section"></a>Ebben a szakaszban
 Kapcsolatos további információkat talál a **profilom** portál és az oldalak, az alábbi cikkeket.
@@ -53,7 +51,6 @@ Kapcsolatos további információkat talál a **profilom** portál és az oldala
 |Cikk |Leírás |
 |------|------------|
 |[A biztonsági adatok (előzetes verzió) kezelése](user-help-security-info-overview.md)|Ismerteti, hogyan állíthatja be, és a biztonsági adatok kezelése.|
-|[A legutóbbi bejelentkezési tevékenységek megtekintése](myprofile-portal-recent-activity-page.md)|Ismerteti, hogyan lehet a munkahelyi vagy iskolai fiók legutóbbi bejelentkezési tevékenység megtekintéséhez.|
-|[A szervezetek kezelése](myprofile-portal-organizations-page.md)|Ismerteti, hogyan kezelheti a szervezetek számára a munkahelyi vagy iskolai fiókkal csatlakozik.|
-|[A csatlakoztatott eszközök kezelése](myprofile-portal-devices-page.md)| Ismerteti, hogyan kezelheti az eszközöket a munkahelyi vagy iskolai fiókjával kapcsolódott.|
-|[Az adatvédelemmel kapcsolatos adatok megtekintése](myprofile-portal-privacy-page.md)|Ismerteti, hogyan lehet a szervezet célja az adatok megtekintéséhez.|
+|[Saját szervezetek kezelése](myprofile-portal-organizations-page.md)|Ismerteti, hogyan kezelheti a szervezetek számára a munkahelyi vagy iskolai fiókkal csatlakozik.|
+|[Csatlakoztatott eszközök kezelése](myprofile-portal-devices-page.md)| Ismerteti, hogyan kezelheti az eszközöket a munkahelyi vagy iskolai fiókjával kapcsolódott.|
+|[Adatvédelemmel kapcsolatos információk megtekintése](myprofile-portal-privacy-page.md)|Ismerteti, hogyan lehet a szervezet célja az adatok megtekintéséhez.|

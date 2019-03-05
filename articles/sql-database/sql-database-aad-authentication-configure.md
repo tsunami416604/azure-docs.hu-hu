@@ -11,13 +11,13 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 02/20/2019
-ms.openlocfilehash: ced83fc31e9e4944f7392169b703056dc5b4fd98
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.date: 03/04/2019
+ms.openlocfilehash: e4ccb9be5d13ea72086fbaae2ffb2ec63ad55786
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454837"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57340320"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurálhatja és kezelheti az Azure Active Directory-hitelesítés az SQL
 
@@ -28,11 +28,13 @@ Ez a cikk bemutatja, hogyan hozhat létre és töltse fel az Azure ad-ben, és m
 > [!IMPORTANT]  
 > Egy Azure virtuális gépeken futó SQL Serverhez való csatlakozáshoz nem támogatott az Azure Active Directory-fiók használatával. Használja helyette a tartomány Active Directory-fiókot.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="create-and-populate-an-azure-ad"></a>Létrehozása és feltöltése az Azure ad-ben
 
 Hozzon létre egy Azure ad-ben, és a felhasználók és csoportok való feltöltéséhez. Az Azure AD lehetnek a kezdeti Azure ad-ben felügyelt tartományhoz. Az Azure AD lehetnek egy helyszíni Active Directory tartományi szolgáltatások, amelyek össze van vonva az Azure AD-vel is.
 
-További információk a következő témakörökben találhatók: [Helyszíni identitások integrálása az Azure Active Directoryval](../active-directory/hybrid/whatis-hybrid-identity.md), [Saját tartománynév hozzáadása az Azure AD-hez](../active-directory/active-directory-domains-add-azure-portal.md), [A Microsoft Azure mostantól támogatja a Windows Server Active Directoryval való összevonást](https://azure.microsoft.com/blog/2012/11/28/windows-azure-now-supports-federation-with-windows-server-active-directory/), [Az Azure AD-címtár felügyelete](../active-directory/fundamentals/active-directory-administer.md), [Az Azure AD kezelése Windows PowerShell használatával](/powershell/azure/overview?view=azureadps-2.0) és [Hibrid identitás – szükséges portok és protokollok](../active-directory/hybrid/reference-connect-ports.md).
+További információk a következő témakörökben találhatók: [Helyszíni identitások integrálása az Azure Active Directoryval](../active-directory/hybrid/whatis-hybrid-identity.md), [Saját tartománynév hozzáadása az Azure AD-hez](../active-directory/active-directory-domains-add-azure-portal.md), [A Microsoft Azure mostantól támogatja a Windows Server Active Directoryval való összevonást](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/), [Az Azure AD-címtár felügyelete](../active-directory/fundamentals/active-directory-administer.md), [Az Azure AD kezelése Windows PowerShell használatával](/powershell/azure/overview?view=azureadps-2.0) és [Hibrid identitás – szükséges portok és protokollok](../active-directory/hybrid/reference-connect-ports.md).
 
 ## <a name="associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Hozzárendelése vagy Azure-előfizetés hozzáadása az Azure Active Directoryhoz
 
@@ -186,35 +188,35 @@ Később eltávolítja a rendszergazda, felső részén a **Active Directory-ren
 
 PowerShell-parancsmagok futtatásához szüksége lesz az Azure PowerShell telepítenie és futtatnia. Részletes információk: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview). Üzembe helyez egy Azure AD-rendszergazda, hajtsa végre a következő Azure PowerShell-parancsokat:
 
-- Connect-AzureRmAccount
-- Select-AzureRmSubscription
+- Connect-AzAccount
+- Select-AzSubscription
 
 Parancsmagok üzembe helyezése és kezelése az Azure AD-rendszergazda segítségével:
 
 | A parancsmag neve | Leírás |
 | --- | --- |
-| [Set-AzureRmSqlServerActiveDirectoryAdministrator](/powershell/module/azurerm.sql/set-azurermsqlserveractivedirectoryadministrator) |Az Azure Active Directory-rendszergazda, az Azure SQL server- vagy Azure SQL Data Warehouse kiépítése. (Kell lennie az aktuális előfizetésben.) |
-| [Remove-AzureRmSqlServerActiveDirectoryAdministrator](/powershell/module/azurerm.sql/remove-azurermsqlserveractivedirectoryadministrator) |Eltávolítja az Azure Active Directory-rendszergazda, az Azure SQL server- vagy Azure SQL Data warehouse-bA. |
-| [Get-AzureRmSqlServerActiveDirectoryAdministrator](/powershell/module/azurerm.sql/get-azurermsqlserveractivedirectoryadministrator) |Az Azure SQL-kiszolgáló vagy az Azure SQL Data Warehouse jelenleg konfigurált Azure Active Directory-rendszergazda adatait adja vissza. |
+| [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |Az Azure Active Directory-rendszergazda, az Azure SQL server- vagy Azure SQL Data Warehouse kiépítése. (Kell lennie az aktuális előfizetésben.) |
+| [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |Eltávolítja az Azure Active Directory-rendszergazda, az Azure SQL server- vagy Azure SQL Data warehouse-bA. |
+| [Get-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/get-azsqlserveractivedirectoryadministrator) |Az Azure SQL-kiszolgáló vagy az Azure SQL Data Warehouse jelenleg konfigurált Azure Active Directory-rendszergazda adatait adja vissza. |
 
-További információ az egyes, az alábbi parancsok például a PowerShell-parancs-get-help használatával ``get-help Set-AzureRmSqlServerActiveDirectoryAdministrator``.
+További információ az egyes, az alábbi parancsok például a PowerShell-parancs-get-help használatával ``get-help Set-AzSqlServerActiveDirectoryAdministrator``.
 
 Az alábbi parancsfájl egy Azure AD felügyeleti csoport neve rendelkezések **DBA_Group** (objektumazonosító: `40b79501-b343-44ed-9ce7-da4c8cc7353f`) esetében a **demo_server** nevű erőforráscsoportot a kiszolgáló **csoport – 23**:
 
 ```powershell
-Set-AzureRmSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23"
+Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23"
 -ServerName "demo_server" -DisplayName "DBA_Group"
 ```
 
 A **DisplayName** bemeneti paramétert fogad el, vagy az Azure ad-ben megjelenített neve, vagy az egyszerű felhasználónév. Ha például ``DisplayName="John Smith"`` és ``DisplayName="johns@contoso.com"``. Az Azure AD-csoportokat az Azure AD a megjelenítendő név használata támogatott.
 
 > [!NOTE]
-> Az Azure PowerShell-paranccsal ```Set-AzureRmSqlServerActiveDirectoryAdministrator``` nem akadályozzák meg kiépítése az Azure AD-rendszergazdái a felhasználók nem támogatott. Egy nem támogatott felhasználó bővítheti, de nem tud kapcsolódni egy adatbázist.
+> Az Azure PowerShell-paranccsal ```Set-AzSqlServerActiveDirectoryAdministrator``` nem akadályozzák meg kiépítése az Azure AD-rendszergazdái a felhasználók nem támogatott. Egy nem támogatott felhasználó bővítheti, de nem tud kapcsolódni egy adatbázist.
 
 Az alábbi példa használja az opcionális **ObjectID**:
 
 ```powershell
-Set-AzureRmSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23"
+Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23"
 -ServerName "demo_server" -DisplayName "DBA_Group" -ObjectId "40b79501-b343-44ed-9ce7-da4c8cc7353f"
 ```
 
@@ -224,16 +226,16 @@ Set-AzureRmSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23"
 Az alábbi példában az aktuális kapcsolatos információkat ad vissza az Azure SQL Serverhez készült Azure AD-rendszergazda:
 
 ```powershell
-Get-AzureRmSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server" | Format-List
+Get-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server" | Format-List
 ```
 
 A következő példa eltávolítja az Azure AD-rendszergazda:
 
 ```powershell
-Remove-AzureRmSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server"
+Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server"
 ```
 
-Azure Active Directory-rendszergazda a REST API-k használatával is kiépíthetők. További információkért lásd: [műveletek az Azure SQL adatbázis-műveletek az Azure SQL Database és Service Management REST API-referencia](https://msdn.microsoft.com/library/azure/dn505719.aspx)
+Azure Active Directory-rendszergazda a REST API-k használatával is kiépíthetők. További információkért lásd: [műveletek az Azure SQL adatbázis-műveletek az Azure SQL Database és Service Management REST API-referencia](https://docs.microsoft.com/rest/api/sql/)
 
 ### <a name="cli"></a>parancssori felület  
 
@@ -308,7 +310,7 @@ További információ található adatbázis-felhasználók az Azure Active Dire
 > [!NOTE]
 > Az Azure Active Directory-rendszergazda az Azure SQL server eltávolítása megakadályozza, hogy Azure AD-hitelesítés felhasználók kapcsolódni a kiszolgálóhoz. Ha szükséges, használhatatlan Azure AD-felhasználók manuálisan az SQL-adatbázis-rendszergazda által törölhetők.
 > [!NOTE]
-> Ha megjelenik egy **kapcsolat időkorlátja lejárt**, szükség lehet beállítani a `TransparentNetworkIPResolution` paraméter false értékre a kapcsolati karakterlánc. További információkért lásd: [kapcsolat időtúllépési problémát a .NET-keretrendszer 4.6.1-es - TransparentNetworkIPResolution](https://blogs.msdn.microsoft.com/dataaccesstechnologies/2016/05/07/connection-timeout-issue-with-net-framework-4-6-1-transparentnetworkipresolution/).
+> Ha megjelenik egy **kapcsolat időkorlátja lejárt**, szükség lehet beállítani a `TransparentNetworkIPResolution` paraméter false értékre a kapcsolati karakterlánc. További információkért lásd: [kapcsolat időtúllépési problémát a .NET-keretrendszer 4.6.1-es - TransparentNetworkIPResolution](https://blogs.msdn.microsoft.com/dataaccesstechnologies/20../../connection-timeout-issue-with-net-framework-4-6-1-transparentnetworkipresolution/).
 
 Adatbázis-felhasználó létrehozásakor, hogy a felhasználó megkapja a **CONNECT** engedély tagjaként csatlakozhat az adatbázishoz, és a **nyilvános** szerepkör. Kezdetben az elérhetővé válik a felhasználó csak engedélyek-e bármely adott engedélyek a **nyilvános** szerepkör, illetve bármely engedélyeken minden olyan Azure AD-csoportokat, hogy azok a tagja. Miután üzembe helyezi az Azure AD-alapú tartalmazott adatbázis-felhasználó, megadhatja az engedélyeket a felhasználó további, ugyanúgy, engedélyezi a felhasználók bármilyen más típusú. Általában az adatbázis-szerepkörök, engedélyek, és felhasználók hozzáadása szerepkörökhöz. További információkért lásd: [Database Engine engedély alapjai](https://social.technet.microsoft.com/wiki/contents/articles/4433.database-engine-permission-basics.aspx). Speciális SQL adatbázis-szerepkörökkel kapcsolatos további információkért lásd: [adatbázisok és bejelentkezések Azure SQL Database-ben kezelésével](sql-database-manage-logins.md).
 Összevont tartományi felhasználói fiókot, amelyet importáltak a felügyelt tartomány külső felhasználóként, a felügyelt tartomány identitást kell használnia.
@@ -403,7 +405,7 @@ conn.AccessToken = "Your JWT token"
 conn.Open();
 ```
 
-További információkért lásd: [SQL Server Security Blog](https://blogs.msdn.microsoft.com/sqlsecurity/2016/02/09/token-based-authentication-support-for-azure-sql-db-using-azure-ad-auth/). A tanúsítvány hozzáadásával kapcsolatos további információkért lásd: [Ismerkedés az Azure Active Directory ügyféltanúsítvány-alapú hitelesítés](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md).
+További információkért lásd: [SQL Server Security Blog](https://blogs.msdn.microsoft.com/sqlsecurity/20../../token-based-authentication-support-for-azure-sql-db-using-azure-ad-auth/). A tanúsítvány hozzáadásával kapcsolatos további információkért lásd: [Ismerkedés az Azure Active Directory ügyféltanúsítvány-alapú hitelesítés](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md).
 
 ### <a name="sqlcmd"></a>sqlcmd
 

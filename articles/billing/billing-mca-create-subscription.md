@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
-ms.openlocfilehash: 89c2f380fb4007256273b10b1fcc0fc99627ccb4
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 7c93911ce824bc1111e0c348070cc11817c5b45c
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57249012"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57341850"
 ---
 # <a name="create-an-additional-azure-subscription-for-microsoft-customer-agreement"></a>További Azure-előfizetés létrehozása a Microsoft ügyfél-szerződés
 
@@ -27,7 +27,7 @@ Hozzon létre külön környezeteket, fejlesztési és tesztelési, biztonsági 
 
 Ez a cikk a Microsoft vevői szerződés számlázási fiók vonatkozik. [Ellenőrizze, hogy egy Microsoft Ügyfélszerződéséhez hozzáférést](#check-access-to-a-microsoft-customer-agreement). Ha azt szeretné, a többi számlázási fiók-előfizetések létrehozása, lásd: [egy kiegészítő előfizetés létrehozása az Azure Portalon](billing-create-subscription.md).
 
-Hozzon létre egy előfizetést, kell lennie egy **számla szakasz tulajdonosa**, **számla szakasz közreműködői**, vagy **Azure-előfizetés létrehozója**. További információkért lásd: [előfizetés szerepkörök és feladatok](billing-understand-mca-roles.md#subscription-billing-roles-and-tasks). Ahhoz, hogy más Azure-előfizetések Számlázási-fiókja létrehozásához szükséges engedéllyel, lásd: [engedélyezze a más Azure-előfizetések létrehozására](#give-others-permission-to-create-azure-subscriptions).
+Hozzon létre egy előfizetést, kell lennie egy **számla szakasz tulajdonosa**, **számla szakasz közreműködői**, vagy **Azure-előfizetés létrehozója**. További információkért lásd: [előfizetés számlázási szerepkörök és feladatok](billing-understand-mca-roles.md#subscription-billing-roles-and-tasks). Ahhoz, hogy más Azure-előfizetések Számlázási-fiókja létrehozásához szükséges engedéllyel, lásd: [engedélyezze a más Azure-előfizetések létrehozására](#give-others-permission-to-create-azure-subscriptions).
 
 ## <a name="create-a-subscription-in-the-azure-portal"></a>Előfizetés létrehozása az Azure Portalon
 
@@ -43,9 +43,9 @@ Hozzon létre egy előfizetést, kell lennie egy **számla szakasz tulajdonosa**
 
    ![Képernyőkép a előfizetés-lap létrehozása](./media/billing-mca-create-subscription/billing-mca-create-azure-subscription.png)
 
-5. Válassza ki a számlázási profilt. Az előfizetési díjai a számlázási profilja számlán jelennek meg, és fogja a fizetési módokat kell fizetni. Ha csak egy számlázási profilja hozzáféréssel rendelkezik, a kijelölt szürkén jelennek meg.
+5. Válassza ki a számlázási profilt. Az előfizetési díjai fog megjelenni a számlán a számlázási profilja, és fogja a fizetési módokat kell fizetni. Ha csak egy számlázási profilja hozzáféréssel rendelkezik, a kijelölt szürkén jelennek meg.
 
-6. Válassza ki a számlát szakaszt. Az előfizetési díjai az ebben a szakaszban a számlázási profilja számla jelennek meg. Ha rendelkezik hozzáféréssel egyetlen számlán szakaszra, a kijelölt szürkén jelennek meg.
+6. Válassza ki a számlát szakaszt. Az előfizetési díjai az ebben a szakaszban a számlázási profilja számla fogja tartalmazni. Ha rendelkezik hozzáféréssel egyetlen számlán szakaszra, a kijelölt szürkén jelennek meg.
 
 7. Válassza ki az előfizetés díjcsomagot. Válassza ki **a Microsoft Azure-csomagot DevTest**, ha azt tervezi, fejlesztési célra ez az előfizetés vagy más tesztelési számítási feladatokat **a Microsoft Azure csomag**. Ha rendelkezik hozzáféréssel egyetlen csomagra, a kijelölt szürkén jelennek meg.
 

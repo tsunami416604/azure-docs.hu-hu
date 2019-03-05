@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 3075f515b8095451a873727fef696fd523664d0a
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 5ec6325f3fae21e62fe4a3fb6452aa11158047a4
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891712"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57340235"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Szolgáltatások közötti hitelesítés az Azure Data Lake Storage Gen1 .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -24,11 +24,10 @@ ms.locfileid: "55891712"
 > * [A .NET SDK használata](data-lake-store-service-to-service-authenticate-net-sdk.md)
 > * [A Python használata](data-lake-store-service-to-service-authenticate-python.md)
 > * [A REST API használata](data-lake-store-service-to-service-authenticate-rest-api.md)
-> 
->  
+>
+>
 
 Ebben a cikkben megismerkedhet a .NET SDK használata a szolgáltatások közötti hitelesítés az Azure Data Lake Storage Gen1 tennie. Végfelhasználói hitelesítés a Data Lake Storage Gen1 .NET SDK használatával, lásd: [végfelhasználói hitelesítés a Data Lake Storage Gen1 .NET SDK használatával](data-lake-store-end-user-authenticate-net-sdk.md).
-
 
 ## <a name="prerequisites"></a>Előfeltételek
 * **Visual Studio 2013, 2015 vagy 2017** Az alábbi utasítások a Visual Studio 2017-et használják.
@@ -80,11 +79,11 @@ using Microsoft.IdentityModel.Clients.ActiveDirectory;
 ```
 
 ## <a name="service-to-service-authentication-with-client-secret"></a>Szolgáltatások közötti hitelesítés a titkos Ügyfélkód
-Ez a kódrészlet adja hozzá a .NET-ügyfélalkalmazás. A helyőrző értékeket cserélje le az értékeket (az előfeltételként felsorolt) egy Azure AD-webalkalmazás lekért.  Ez a kódrészlet lehetővé teszi az alkalmazás hitelesítéséhez **nem interaktív módon** Data Lake Storage Gen1 használja az ügyfél titkos/kulcsát az Azure AD-webalkalmazás. 
+Ez a kódrészlet adja hozzá a .NET-ügyfélalkalmazás. A helyőrző értékeket cserélje le az értékeket (az előfeltételként felsorolt) egy Azure AD-webalkalmazás lekért. Ez a kódrészlet lehetővé teszi az alkalmazás hitelesítéséhez **nem interaktív módon** Data Lake Storage Gen1 használja az ügyfél titkos/kulcsát az Azure AD-webalkalmazás.
 
 ```csharp
 private static void Main(string[] args)
-{    
+{
     // Service principal / application authentication with client secret / key
     // Use the client ID of an existing AAD "Web App" application.
     string TENANT = "<AAD-directory-domain>";
@@ -125,5 +124,3 @@ Ebben a cikkben megtanulta, hogyan service-to-service-hitelesítés használatá
 
 * [Fiókkezelési műveletek a Data Lake Storage Gen1 .NET SDK használatával](data-lake-store-get-started-net-sdk.md)
 * [A Data Lake Storage Gen1 Adatműveletek .NET SDK használatával](data-lake-store-data-operations-net-sdk.md)
-
-

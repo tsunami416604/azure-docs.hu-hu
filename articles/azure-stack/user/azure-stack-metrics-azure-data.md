@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2018
+ms.date: 03/04/2018
 ms.author: mabrigg
 ms.lastreviewed: 12/01/2018
-ms.openlocfilehash: c16f218903557a6d3a10f3ef201587d2885fffa9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b8df87e5d5091219b9b44a6b957250e254c97fec
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239103"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57341796"
 ---
 # <a name="azure-monitor-on-azure-stack"></a>Az Azure Monitor az Azure Stackben
 
@@ -27,7 +27,7 @@ ms.locfileid: "55239103"
 
 Ez a cikk az Azure Stack az Azure Monitor szolgáltatás áttekintése. A művelet az Azure monitor és a további információk az Azure Monitor használata az Azure Stack tárgyalja. 
 
-Bevezetésért áttekintése, és hogyan Ismerkedés az Azure Monitor szolgáltatással, a globális Azure-cikket [Ismerkedés az Azure Monitor szolgáltatással](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started).
+Bevezetésért áttekintése, és hogyan Ismerkedés az Azure Monitor szolgáltatással, a globális Azure-cikket [Ismerkedés az Azure Monitor az Azure Stacken](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started).
 
 ![Az Azure Stack Monitor panel](./media/azure-stack-metrics-azure-data/azs-monitor.png)
 
@@ -36,7 +36,7 @@ Az Azure Monitor egy olyan platformszolgáltatás, mely egyetlen forrást kíná
 > [!Note]  
 Metrikák és diagnosztikai naplók nem állnak rendelkezésre az Azure Stack fejlesztői készlete számára.
 
-## <a name="prerequisites"></a>Előfeltételek
+## <a name="prerequisites-for-azure-monitor-on-azure-stack"></a>Az Azure Monitor az Azure Stackben előfeltételei
 
 Regisztrálja a **Microsoft.insights** az előfizetéshez tartozó ajánlat erőforrás-szolgáltatók beállításokat az erőforrás-szolgáltató. Ellenőrizheti, hogy az erőforrás-szolgáltató érhető el az előfizetéséhez tartozó ajánlat:
 
@@ -46,13 +46,13 @@ Regisztrálja a **Microsoft.insights** az előfizetéshez tartozó ajánlat erő
 4. Válassza ki **erőforrás-szolgáltatók** alatt **beállításait.** 
 5. Keresés **Microsoft.Insights** a listában, és győződjön meg arról, hogy a állapota **regisztrált.**.
 
-## <a name="overview"></a>Áttekintés
+## <a name="overview-of-azure-monitor-on-azure-stack"></a>Az Azure Stack az Azure Monitor áttekintése
 
 Azure Monitor az Azure-ban, mint például az Azure Monitor az Azure Stacken biztosít a legtöbb szolgáltatás alapszinten – infrastruktúra-metrikák és naplók.
 
-## <a name="azure-monitor-sources-compute-subset"></a>Az Azure monitor forrásokból: részhalmazát compute
+## <a name="azure-monitor-sources-compute-subset"></a>Az Azure Monitor forrásokból: részhalmazát compute
 
-![Az Azure monitor forrásokból – számítási részére](media//azure-stack-metrics-azure-data/azs-monitor-computersubset.png)
+![Az Azure Monitor az Azure Stacken forrásokból – számítási részére](media//azure-stack-metrics-azure-data/azs-monitor-computersubset.png)
 
 A **Microsoft.Compute** erőforrás-szolgáltató az Azure Stackben tartalmazza:
  - Virtuális gépek 
@@ -86,7 +86,7 @@ A számítási erőforrásokat az Azure Stack-infrastruktúra a kapcsolatos info
 
 ## <a name="azure-monitor-sources-everything-else"></a>Az Azure monitor forrásokból: minden más
 
-![Az Azure monitor források – minden más](media//azure-stack-metrics-azure-data/azs-monitor-othersubset.png)
+![Az Azure Monitor az Azure Stack-források – minden más](media//azure-stack-metrics-azure-data/azs-monitor-othersubset.png)
 
 ### <a name="resources---metrics-and-diagnostics-logs"></a>Erőforrás - metrikák és diagnosztikai naplók
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: 8927213dc4f1cf01eccdd8f54a946f9dbbaaa04d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c173152d0a59e391fe77ee855311a867a1b2b6c0
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869959"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338433"
 ---
 # <a name="model-and-usage-statistics-in-the-dashboard"></a>Az irányítópult-modell és a használati statisztikáit
 Alkalmazás irányítópult lehetővé teszi az alkalmazás egyetlen pillantással figyelésére. A **irányítópult** jelenít meg, amikor megnyit egy alkalmazást az alkalmazás neve kattintva **saját alkalmazások** lapon válassza ki **irányítópult** az ablak tetején. 
@@ -69,21 +69,8 @@ A **szándékot lebontása** jelenít meg információkat a leképezések címk�
 
 ![Leképezési lebontása](./media/luis-how-to-use-dashboard/intent-breakdown.png)
 
-Szabályozhatja, hogy táblázat összefoglalja alapul címkézett utterances vagy a végpont a találatok:
-
-1. Kattintson a **további beállítás** ![további beállítások gomb-hozzáférési listához](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) eléréséhez a listában, ahogyan az alábbi képen is látható:
-
-    ![Leképezési lebontása listája](./media/luis-how-to-use-dashboard/intent-breakdown-based-on.png)
-2. Válasszon ki egy értéket a listából, és kattintson a Vissza nyíl ![Vissza nyíl](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) a diagram megjelenítése.
-
 ## <a name="entity-breakdown"></a>Entitás lebontása
 Az irányítópult egy bontása entitások címkézett utterances vagy a végpont a találatok alapján jeleníti meg. Az összegző diagram megjeleníti a minden entitás relatív fontosságát az alkalmazásban. Ha az egérmutatót egy szeletet, megjelenik az entitás nevét és a címkézett kimondott szöveg/végpont találatok százalékos. 
 
 ![Entitás lebontása](./media/luis-how-to-use-dashboard/entity-breakdown.png)
 
-Szabályozhatja, hogy táblázat összefoglalja alapul címkézett utterances vagy a végpont a találatok:
-
-1. Kattintson **további beállítás** ![további beállítások megadására szolgáló gombra listájának lekérése](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png) eléréséhez a listában, ahogyan az alábbi képen is látható:
-
-    ![Entitáslista lebontása](./media/luis-how-to-use-dashboard/entity-breakdown-based-on.png)
-2. Válasszon ki egy értéket a listából, és kattintson a Vissza nyíl ![Vissza nyíl](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) a diagram ennek megfelelően megjelenítéséhez.

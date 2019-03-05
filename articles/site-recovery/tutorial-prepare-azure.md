@@ -2,18 +2,18 @@
 title: Az Azure előkészítése helyszíni gépek vészhelyreállításához az Azure Site Recoveryvel | Microsoft Docs
 description: Ismerje meg, hogyan készítheti elő az Azure-t a helyszíni gépek vészhelyreállításához az Azure Site Recovery használatával.
 services: site-recovery
-author: rayne-wiselman
+author: mayurigupta13
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 01/08/2019
-ms.author: raynew
+ms.date: 03/03/2019
+ms.author: mayg
 ms.custom: MVC
-ms.openlocfilehash: da71857e84b27b9e9a063d707f75fdf33e5d6a96
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: dd84becdf7043f3ae1c8070bdc1918d377bc3e3b
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159009"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337872"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>Azure-erőforrások előkészítése helyszíni gépek vészhelyreállításához
 
@@ -28,7 +28,6 @@ A cikk bemutatja, hogyan készítse elő az Azure-összetevőket, amikor helysz�
 
 > [!div class="checklist"]
 > * Ellenőrizze, hogy az Azure-fiók rendelkezik-e replikálási engedélyekkel.
-> * Hozzon létre egy Azure-tárfiókot. Ez a replikált gépek rendszerképeit tárolja.
 > * Recovery Services-tároló létrehozása. A tároló virtuális gépek és más replikációs összetevők metaadatait és konfigurációs adatait tárolja.
 > * Azure-hálózat beállítása. Amikor a feladatátvétel után Azure-beli virtuális gépek jönnek létre, ehhez az Azure-hálózathoz csatlakoznak.
 
@@ -44,27 +43,11 @@ Ha most hozta létre az ingyenes Azure-fiókját, akkor Ön az előfizetés rend
 
 - Virtuális gépek létrehozása a kiválasztott erőforráscsoportban.
 - Virtuális gépek létrehozása a kiválasztott virtuális hálózaton.
-- Írás a kiválasztott tárfiókra.
+- Storage-fiók írni.
+- Felügyelt lemezre írni.
 
 A feladatok végrehajtásához az Ön fiókjának rendelkeznie kell a Virtuális gépek közreműködője beépített szerepkörrel. Emellett a fiókhoz hozzá kell rendelni a Site Recovery-közreműködő beépített szerepkört is, a Site Recovery-műveletek tárolókban való kezeléséhez.
 
-## <a name="create-a-storage-account"></a>Tárfiók létrehozása
-
-A replikált gépek rendszerképeit egy Azure-tároló tartalmazza. Az Azure-beli virtuális gépek a tárolóból lesznek létrehozva a helyszínről az Azure-ba történő feladatátvétel során. A tárfióknak és a Recovery Services-tárolónak ugyanabban a régióban kell elhelyezkednie. Ebben az oktatóanyagban a Nyugat-Európa régiót használjuk.
-
-1. Az [Azure Portal](https://portal.azure.com) menüjében válassza az **Erőforrás létrehozása** > **Tárolás** > **Tárfiók – blob, fájl, tábla, üzenetsor** elemet.
-2. A **Tárfiók létrehozása** területen írja be a fiók nevét. Ezekben az oktatóanyagokban a **contosovmsacct1910171607** nevet használjuk. A kiválasztott névnek egyedinek kell lennie az Azure-ban, 3–24 karakter közé kell esnie, továbbá csak számokat és kisbetűket tartalmazhat.
-3. Az **Üzemi modell** mezőben válassza a **Resource Manager** lehetőséget.
-4. A **Fiók típusa** mezőben válassza a **Storage (általános célú v1)** lehetőséget. Ne válasszon blob-tárolót.
-5. A **Replikáció** mezőben válassza az alapértelmezett **Írásvédett georedundáns tárolás** értéket a tárhely-redundanciához. A **Biztonságos átvitelre van szükség** beállítást hagyja **Letiltva** állapotban.
-6. A **Teljesítmény** mezőben válassza a **Standard** lehetőséget, a **Hozzáférési szint** mezőben pedig az alapértelmezett **Gyakran használt adatok** beállítást.
-7. Az **Előfizetés** mezőben válassza ki azt az előfizetést, amelyikben az új tárfiókot létre szeretné hozni.
-8. Az **Erőforráscsoport** mezőben adjon meg egy új erőforráscsoportot. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Ezekben az oktatóanyagokban a **ContosoRG** nevet használjuk.
-9. A **Hely** mezőben válassza ki a tárfiók földrajzi helyét. 
-
-   ![Tárfiók létrehozása](media/tutorial-prepare-azure/create-storageacct.png)
-
-9. Kattintson a **Létrehozás** gombra a tárfiók létrehozásához.
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
@@ -81,7 +64,7 @@ A replikált gépek rendszerképeit egy Azure-tároló tartalmazza. Az Azure-bel
 
 ## <a name="set-up-an-azure-network"></a>Azure-hálózat beállítása
 
-Amikor a feladatátvétel után Azure-beli virtuális gépek jönnek létre a tárolóból, ehhez az Azure-hálózathoz csatlakoznak.
+Ha az Azure virtuális gépek a feladatátvételt követően létrejönnek a felügyelt lemezekről, ehhez a hálózathoz csatlakoznak.
 
 1. Az [Azure Portalon](https://portal.azure.com) válassza az **Erőforrás létrehozása** > **Hálózatkezelés** > **Virtuális hálózat** lehetőséget.
 2. Hagyja kiválasztva a **Resource Manager** üzemi modellt.
@@ -100,8 +83,7 @@ Amikor a feladatátvétel után Azure-beli virtuális gépek jönnek létre a t�
 ## <a name="useful-links"></a>Hasznos hivatkozások
 
 - Az Azure Networks [ismertetése](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview).
-- Az Azure Storage típusainak [ismertetése](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts).
-- [További információk](https://docs.microsoft.com/azure/storage/common/storage-redundancy-grs#read-access-geo-redundant-storage) a tárhely-redundanciáról és a tárhely [biztonságos átviteléről](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer).
+- [Ismerje meg](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) felügyelt lemezeket.
 
 
 

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: trbye
 ms.date: 02/20/2019
-ms.openlocfilehash: 08e83cdcadabdcf7234d0bbd0fb7e6d103c8369c
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 8e39734a6f5fa13240d24eb35c431f746e540484
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447531"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342122"
 ---
 # <a name="enable-logging-in-azure-machine-learning-service"></a>Engedélyezze a naplózást az Azure Machine Learning szolgáltatás
 
@@ -41,7 +41,7 @@ run = exp.start_logging()
 run.log("test-val", 10)
 ```
 
-Tekintse meg a hivatkozás [dokumentáció](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py) számára a `Run` függvényeihez kapcsolódó további naplózási osztály.
+Lásd: a dokumentáció a a [futtatása](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py) további naplózás funkciók osztályt.
 
 Ahhoz, hogy a betanítási folyamat során az alkalmazásállapot helyi naplózását, használja a `show_output` paraméter. Részletes naplózás engedélyezése lehetővé teszi, hogy a betanítási folyamat, valamint minden olyan távoli erőforrásokkal kapcsolatos információkat a részletek megtekintéséhez vagy számítási céljainak. A következő kód használatával kísérlet beküldéskor naplózás engedélyezése.
 

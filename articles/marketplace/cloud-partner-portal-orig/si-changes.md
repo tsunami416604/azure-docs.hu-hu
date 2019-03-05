@@ -12,24 +12,36 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 3/3/2019
 ms.author: pbutlerm
-ms.openlocfilehash: ec3784a91f8aeb7f0fedd13c9ab86a844832a578
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 7df96d53b02e80283f263901dc7e26ed4edb947d
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809702"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342377"
 ---
-<a name="seller-insights-release-notes"></a>Értékesítői Insights kibocsátási megjegyzései 
-===============================
-(Kiadás dátuma: 2018. július 28.)
+# <a name="seller-insights-release-notes"></a>Értékesítői Insights kibocsátási megjegyzései 
+
+(Kiadás dátuma: 2019. március 1.)
 
 Ez a cikk ismertetése az értékesítői elemzés szolgáltatás a módosítások a [Cloud Partner Portalon](https://cloudpartner.azure.com/#insights).
 
+## <a name="release-highlights-for-march-1-2019"></a>Kiadási területeit 2019. március 1.
 
-<a name="release-highlights"></a>Kiadási emeli ki.
-------------------
+* *Ügyfél Trend* összegzés hozzáadása
+* *Az első öt ügyfelek* összegzése a tükrözik az ügyfél rendelkezik az összes Azure-előfizetések
+* *Használati Trend & Aktív rendelések Trend normalized* mellett összegzése a *egyetlen pillantással havi rendelések*
+* *Küldenie jóváhagyásra cége kifizetési Licencegyeztetési jelentése* frissítve
+* *Az első öt ügyfelek* küldenie jóváhagyásra cége kifizetési a tükrözik az ügyfél rendelkezik az összes Azure-előfizetések
+* *Használati jelentés* frissíteni az ügyfél-azonosító
+* *Ügyfél bérleti idő* rendelések & használati tükrözi az ügyfél rendelkezik az összes Azure-előfizetések
+
+
+(Kiadás dátuma: 2018. július 28.)
+
+## <a name="release-highlights-for-july-28-2018"></a>Kiadási területeit 28 2018. július
+
 
 -   *Az árak becsült* felhasználói díjak nézetét a pénznem adja meg a konverziós következményeiről.
 -   *Előrejelzett kifizetések* lehetséges kifizetések egy korábbi betekintést nyújtanak.
@@ -37,8 +49,7 @@ Ez a cikk ismertetése az értékesítői elemzés szolgáltatás a módosítás
 -   *Napi bontásban használatát* több beállítási lehetőséget és nagyobb betekintést ügyfelek általi használatot biztosít.
 
 
-<a name="changes-to-data-structure-and-taxonomy"></a>Adatok szerkezetét és besorolás módosítása
---------------------------------------
+### <a name="changes-to-data-structure-and-taxonomy"></a>Adatok szerkezetét és besorolás módosítása
 
 A következő táblázat felsorolja, hogy a hozzáadott vagy közel teljes értékesítése miatt ebben a kiadásban megváltozott. 
 

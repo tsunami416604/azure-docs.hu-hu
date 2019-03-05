@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: a8e52af1a1feb8a01ed5556efb6e153c56b25cca
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 52058469b531383b32974ccc5bc77b31783583bd
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700587"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339947"
 ---
 # <a name="sample-application-for-use-with-dmzs"></a>A mintaalkalmazás a DMZ-k segítségével
 [Térjen vissza a biztonsági határ ajánlott eljárások lap][HOME]
@@ -42,7 +42,7 @@ Használja az alábbi parancsfájlok, a tűzfal szabály hozzáadás-e az első 
 Ezt a szkriptet fogja végrehajtani:
 
 1. Nyissa meg a IMCPv4 (Ping), a helyi kiszolgáló windows tűzfalon, a könnyebb tesztelés
-2. Telepítse az IIS és a .net keretrendszer legalább 4.5
+2. Telepítse az IIS és a .NET keretrendszer legalább 4.5
 3. Create an ASP.NET web page and a Web.config file
 4. A fájlhozzáférés könnyebbé tenni az alapértelmezett alkalmazáskészlet módosítása
 5. A rendszergazdai fiókot és jelszót a névtelen felhasználó beállítása
@@ -152,12 +152,12 @@ Ez a szkript állítja be a háttéralkalmazás az egyszerű alkalmazáshoz. Ezt
 2. Hozzon létre egy könyvtárat a webhelyhez
 3. Hozzon létre egy szövegfájlt, távolról a weblap által érhetők el
 4. A könyvtár- és a névtelen hozzáférés engedélyezése az engedélyek beállítása
-5. Kapcsolja ki az Internet Explorer – fokozott biztonsági, hogy könnyebben böngészés erről a kiszolgálóról 
+5. Kapcsolja ki az Internet Explorer – fokozott biztonsági, hogy könnyebben böngészés erről a kiszolgálóról
 
 > [!IMPORTANT]
 > **Ajánlott eljárás**: Soha ne kapcsolja ki az Internet Explorer fokozott biztonsági éles kiszolgálón, valamint célszerű általában egy rossz böngészik az éles kiszolgálón. Nyissa meg a névtelen hozzáférés fájlmegosztásokat is egy rossz ötlete, de kész itt az egyszerűség kedvéért.
-> 
-> 
+>
+>
 
 Ez a PowerShell-szkript helyileg kell futtatni RDP AppVM01 be kellett közben. PowerShell az annak biztosítása érdekében a sikeres végrehajtást rendszergazdaként kell futtatni.
 

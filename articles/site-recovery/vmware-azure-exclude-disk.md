@@ -1,19 +1,19 @@
 ---
 title: Lemezek kizárása a replikációból VMware-vészhelyreállításhoz az Azure-bA az Azure Site Recoveryvel |} A Microsoft Docs
 description: Leírja, hogy miért és hogyan zárhat ki Virtuálisgép-lemezek a replikációból VMware-vészhelyreállításhoz az Azure-bA.
-author: Rajeswari-Mamilla
+author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
-ms.date: 11/27/2018
-ms.author: ramamill
+ms.date: 3/3/2019
+ms.author: mayg
 ms.topic: conceptual
-ms.openlocfilehash: af610aaec238e1b2ae8ec2387e5a8f71225cab8c
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: b281531e76ecb73947597bb97110dc18d4e99c59
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848166"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339759"
 ---
 # <a name="exclude-disks-from-replication-of-vmware-vms-to-azure"></a>Lemezek kizárása a VMware virtuális gépek replikálása az Azure-bA
 
@@ -56,8 +56,8 @@ Ha az Azure Site Recovery portálról szeretne virtuális gépet védelemmel ell
 > * Csak az alaplemezek zárhatók ki a replikációból. Nem zárhatja ki az operációsrendszer-lemezeket és a dinamikus lemezeket.
 > * A replikáció engedélyezése után már nem lehet ahhoz lemezeket hozzáadni, vagy lemezeket eltávolítani belőle. Lemez hozzáadásához vagy eltávolításához le kell tiltania, majd újra engedélyeznie kell a gép védelmét.
 > * Ha kizár egy olyan lemezt, amely valamely alkalmazás működéséhez szükséges, az Azure-ba történő feladatátvétel esetén manuálisan létre kell majd hozni a lemezt az Azure-ban, hogy a replikált alkalmazás futtatható legyen. Másik megoldásként integrálhatja az Azure Automationt egy helyreállítási tervbe a lemez a gép feladatátvétele során való létrehozásához.
-> * Windows rendszerű virtuális gépek: Az Azure-ban manuálisan létrehozott lemezek nem vesznek részt a feladatátvételben. Ha például végrehajtja három lemez feladatátvételét, kettőt pedig közvetlenül az Azure Virtual Machinesben hoz létre, csak a feladatátvételben részt vevő három lemezen lesz végrehajtva a feladat-visszavétel. A manuálisan létrehozott lemezek nem vehetők fel a feladat-visszavételbe vagy a helyszínről az Azure-ba történő védelem-újrabeállításba.
-> * Linux rendszerű virtuális gépek: Az Azure-ban manuálisan létrehozott lemezek részt vesznek a feladatátvételben. Ha például végrehajtja három lemez feladatátvételét, kettőt pedig közvetlenül az Azure Virtual Machinesben hoz létre, mind az öt lemezen végre lesz hajtva a feladat-visszavétel. A manuálisan létrehozott lemezek nem zárhatók ki a feladat-visszavételből.
+> * Windows rendszerű virtuális gépek: Az Azure-ban manuálisan létrehozott lemezek a vissza nem. Ha például végrehajtja három lemez feladatátvételét, kettőt pedig közvetlenül az Azure Virtual Machinesben hoz létre, csak a feladatátvételben részt vevő három lemezen lesz végrehajtva a feladat-visszavétel. A manuálisan létrehozott lemezek nem vehetők fel a feladat-visszavételbe vagy a helyszínről az Azure-ba történő védelem-újrabeállításba.
+> * Linuxos virtuális gépek: Az Azure-ban manuálisan létrehozott lemezek vannak feladatátvételben. Ha például végrehajtja három lemez feladatátvételét, kettőt pedig közvetlenül az Azure Virtual Machinesben hoz létre, mind az öt lemezen végre lesz hajtva a feladat-visszavétel. A manuálisan létrehozott lemezek nem zárhatók ki a feladat-visszavételből.
 >
 
 
@@ -67,7 +67,7 @@ Az alábbiakban két forgatókönyvet találhat a lemezek kizárása funkció me
 - SQL Server tempdb lemeze
 - Lapozófájl (pagefile.sys) lemeze
 
-## <a name="example-1-exclude-the-sql-server-tempdb-disk"></a>1. példa: SQL Server tempdb adatbázist tartalmazó lemezének kizárása
+## <a name="example-1-exclude-the-sql-server-tempdb-disk"></a>1. példa: SQL Server tempdb-adatbázist tartalmazó lemezének kizárása
 Vegyünk egy SQL Server virtuális gépet, amely tempdb-adatbázisa kizárható.
 
 A virtuális gép neve a SalesDB-ben.
@@ -168,12 +168,12 @@ DISK0 | C:\ | Operációsrendszer-lemez
 Disk1 | D:\ | SQL-rendszeradatbázis és 1. felhasználói adatbázis
 Disk2 | G:\ | 2. felhasználói adatbázis
 
-## <a name="example-2-exclude-the-paging-file-pagefilesys-disk"></a>2. példa: A lapozófájl (pagefile.sys) lemezének kizárása
+## <a name="example-2-exclude-the-paging-file-pagefilesys-disk"></a>2. példa A lapozófájl (pagefile.sys) lemezének kizárása
 
 Vegyünk egy virtuális gépet, amely lapozófájllemeze kizárható.
 Két eset létezik.
 
-### <a name="case-1-the-paging-file-is-configured-on-the-d-drive"></a>1. eset: A lapozófájl a D: meghajtón van konfigurálva
+### <a name="case-1-the-paging-file-is-configured-on-the-d-drive"></a>1. eset: A lapozófájl a D: meghajtón van konfigurálva.
 Itt láthatja a lemezkonfigurációt:
 
 **Lemez neve** | **Vendég operációsrendszer-lemez száma** | **Meghajtó betűjele** | **A lemez adattípusa**
@@ -203,7 +203,7 @@ Itt láthatja az Azure virtuális gép lapozófájl-beállításait:
 
 ![Lapozófájl-beállítások az Azure virtuális gépen](./media/vmware-azure-exclude-disk/pagefile-on-azure-vm-after-failover.png)
 
-### <a name="case-2-the-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>2. eset: A lapozófájl másik meghajtón van konfigurálva (nem a D: meghajtón)
+### <a name="case-2-the-paging-file-is-configured-on-another-drive-other-than-d-drive"></a>2. eset: A lapozófájl másik meghajtón (nem a D: meghajtón) van konfigurálva.
 
 Itt láthatja a forrás virtuális gép lemezkonfigurációját:
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: douglasl
-ms.openlocfilehash: 408776b0b0053b2b2d45112568a2e28467123768
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: ba59ca4ac9a200c4579a4f71ff94be6bd554f180
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805375"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57341561"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -107,12 +107,13 @@ A következő táblázat ismerteti a neveket és leírásokat erre a tevékenys�
 | folderPath            | Az egyéni alkalmazást és annak összes függőségét a mappa elérési útja<br/><br/>Ha rendelkezik egy hierarchikus mapparendszert almappák – azaz tárolt függőségek *folderPath* – a gyökérmappa-szerkezetében jelenleg lett simítva, amikor a rendszer átmásolja a fájlokat az Azure Batch. Azt jelenti minden fájl átkerülnek egy mappát az almappák nélkül. Ez a probléma megkerüléséhez, fontolja meg a fájlok tömörítése, a tömörített fájl másolása és majd kicsomagolta egyéni kódot a kívánt helyre. | nem&#42;       |
 | referenceObjects      | Meglévő társított szolgáltatásokat és adatkészleteket tömbje. A hivatkozott társított szolgáltatásokat és adatkészleteket lesznek átadva a egyéni alkalmazás JSON formátumban, az egyéni kódot is lehet hivatkozni az adat-előállító erőforrások | Nem       |
 | extendedProperties    | Ezért az egyéni kódot is lehet hivatkozni a további tulajdonságok az egyéni alkalmazás JSON formátumban kell átadni, felhasználó által definiált tulajdonságai | Nem       |
+| retentionTimeInDays | A megőrzési időtartam, az egyéni tevékenység elküldött fájlok. Alapértelmezett érték 30 nap. | Nem |
 
 &#42;A Tulajdonságok `resourceLinkedService` és `folderPath` kell adható meg egyszerre, vagy mindkettő ki lehet hagyni.
 
 > [!NOTE]
 > Társított szolgáltatások, az egyéni tevékenység referenceObjects átadott, hogy át az Azure Key Vault ajánlott biztonsági eljárás engedélyezve társított szolgáltatás (mivel az nem tartalmaz minden olyan biztonságos karakterlánc) és a fetch a hitelesítő adatok használatával közvetlenül a kulcs titkos neve Tár a kódból. Egy példa annak [Itt](https://github.com/nabhishek/customactivity_sample/tree/linkedservice) , hogy a hivatkozások AKV társított szolgáltatás engedélyezve a hitelesítő adatokat kéri le a Key vaultból, és ezután hozzáfér a tárolót a kódban.  
- 
+
 ## <a name="custom-activity-permissions"></a>Egyéni tevékenység engedélyek
 
 Az egyéni tevékenység állítja be az Azure Batch automatikusan-felhasználói fiók *a tevékenység hatóköre nem rendszergazda hozzáférési* (az alapértelmezett felhasználói automatikus specifikáció). Az automatikus felhasználói fiók jogosultsági szintje nem módosítható. További információ: [a felhasználói fiókok feladatok futtatása a Batchben |} Automatikus felhasználói fiókok](../batch/batch-user-accounts.md#auto-user-accounts).
@@ -321,7 +322,7 @@ A típus tulajdonságai *SecureString* az egyéni tevékenységek, olvassa el a 
 
 ## <a name="compare-v2-v1"></a> Hasonlítsa össze a v2 egyéni tevékenységei és verzió 1 (egyéni) DotNet tevékenységi
 
-Az Azure Data Factory 1. verziójának meg, hogy egy (egyéni) DotNet tevékenységi létrehoz egy .net osztálytár projektek egy olyan osztállyal, amely megvalósítja a `Execute` módszere a `IDotNetActivity` felületet. A társított szolgáltatások, adatkészletek és a egy (egyéni) DotNet tevékenységi JSON hasznos az Extended Properties továbbítódnak a végrehajtási módszer szigorú típusmegadású objektumként. Az 1. verziójának működéssel kapcsolatos részletekért lásd: [az 1. verzió (egyéni) DotNet](v1/data-factory-use-custom-activities.md). Ez a megvalósítás miatt az 1. verziójának DotNet tevékenységi kódokat rendelkezik, amelyekre a .net keretrendszer 4.5.2-es verzióját. Az 1. verziójának DotNet tevékenységi is rendelkezik Windows-alapú Azure Batch Pool-csomópontokon kell végrehajtani.
+Az Azure Data Factory 1. verziójának meg, hogy egy (egyéni) DotNet tevékenységi létrehoz egy .net osztálytár projektek egy olyan osztállyal, amely megvalósítja a `Execute` módszere a `IDotNetActivity` felületet. A társított szolgáltatások, adatkészletek és a egy (egyéni) DotNet tevékenységi JSON hasznos az Extended Properties továbbítódnak a végrehajtási módszer szigorú típusmegadású objektumként. Az 1. verziójának működéssel kapcsolatos részletekért lásd: [az 1. verzió (egyéni) DotNet](v1/data-factory-use-custom-activities.md). Ez a megvalósítás miatt az 1. verziójának DotNet tevékenységi kódokat, amelyekre a .NET-keretrendszer 4.5.2-es rendelkezik. Az 1. verziójának DotNet tevékenységi is rendelkezik Windows-alapú Azure Batch Pool-csomópontokon kell végrehajtani.
 
 Az Azure Data Factory V2 egyéni tevékenységei a meg nem kell .net felületet megvalósítani. Most közvetlenül futtathat parancsokat, parancsprogramok és végrehajtható fájlként összeállított, saját egyéni kódot. Ez a megvalósítás konfigurálásához adja meg a `Command` tulajdonsággal együtt a `folderPath` tulajdonság. Az egyéni tevékenység feltölti a végrehajtható fájlt, és annak függőségeit, `folderpath` és végrehajtja a parancsot az Ön számára.
 
@@ -335,7 +336,7 @@ A következő táblázat ismerteti a Data Factory V2 egyéni tevékenységei és
 |Különbségek      | Egyéni tevékenység      | verzió 1 (egyéni) DotNet tevékenységi      |
 | ---- | ---- | ---- |
 |Hogyan egyéni logikát van definiálva.      |Azáltal, hogy egy végrehajtható fájl      |Egy .net DLL-fájl végrehajtása      |
-|Az egyéni logikát végrehajtási környezetbe      |Windows vagy Linux rendszeren      |Windows (.Net-keretrendszer 4.5.2-es verziója)      |
+|Az egyéni logikát végrehajtási környezetbe      |Windows vagy Linux rendszeren      |Windows (.NET-keretrendszer 4.5.2-es verziója)      |
 |Szkriptek végrehajtása      |Parancsfájlok közvetlenül (például "cmd /c echo hello world" Windows virtuális gépeken) végrehajtása támogatja      |Szükséges a .NET-keretrendszerben dll-fájl végrehajtása      |
 |Adatkészlet szükséges      |Optional      |Összekapcsolja a tevékenységek információkezelési és -átadási szükséges      |
 |A tevékenység át adatokat egyéni logikát      |ReferenceObjects (LinkedServices és adatkészletek) és ExtendedProperties (egyéni tulajdonságok)      |ExtendedProperties (egyéni tulajdonságokat), bemeneti és kimeneti adatkészletek      |

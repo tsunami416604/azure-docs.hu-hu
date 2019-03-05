@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 02/04/2019
+ms.date: 03/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: c0202dfa8316caec036b4ad288c2bd32f1c4eaf3
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: d4698ad54e08587b223bb65388d399c0cbf3ff63
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56989404"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342513"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Az Azure Disk Encryption – hibaelhárítási útmutató
 
@@ -60,14 +60,14 @@ A Linux operációsrendszer-lemez titkosítási feladatütemezési ideiglenesen 
 A titkosítás állapotának lekérdezéséhez a **Feladatnézetben** által visszaadott mező a [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) parancsot. Az operációs rendszer meghajtójának titkosított, miközben a virtuális gép karbantartási állapotba kerül, és letiltja az SSH a folyamatban lévő folyamat bármely szolgáltatáskimaradás elkerülése érdekében. A **EncryptionInProgress** üzenet jelentésekben a legtöbb az idő, amíg folyamatban van a titkosítás. Néhány óra múlva, egy **VMRestartPending** üzenetben kéri, hogy indítsa újra a virtuális Gépet. Példa:
 
 
-```
-PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName $resourceGroupName -VMName $vmName
+```azurepowershell
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyVirtualMachineResourceGroup" -VMName "VirtualMachineName"
 OsVolumeEncrypted          : EncryptionInProgress
 DataVolumesEncrypted       : EncryptionInProgress
 OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
 ProgressMessage            : OS disk encryption started
 
-PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName $resourceGroupName -VMName $vmName
+PS > Get-AzVMDiskEncryptionStatus -ResourceGroupName "MyVirtualMachineResourceGroup" -VMName "VirtualMachineName"
 OsVolumeEncrypted          : VMRestartPending
 DataVolumesEncrypted       : Encrypted
 OsVolumeEncryptionSettings : Microsoft.Azure.Management.Compute.Models.DiskEncryptionSettings
@@ -93,7 +93,7 @@ Hálózati biztonsági csoport beállításai alkalmazott továbbra is engedély
 Ha titkosítás alatt álló engedélyezve van a [Azure AD hitelesítő adatait](azure-security-disk-encryption-prerequisites-aad.md), a cél virtuális Gépen kell engedélyezi a csatlakozást az Azure Active Directory-végpontokhoz és a Key Vault-végpont. Azure Active Directory-hitelesítés aktuális végpontokat karbantartása az 56. és 59 a [Office 365 URL-címei és IP-címtartományok](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) dokumentációját. A Key Vault utasítások itt találhatók a dokumentációban való [hozzáférés az Azure Key Vault tűzfal mögötti](../key-vault/key-vault-access-behind-firewall.md).
 
 ### <a name="azure-instance-metadata-service"></a>Az Azure Instance Metadata szolgáltatás 
-A virtuális gép eléréséhez képesnek kell lennie a [Azure Instance Metadata szolgáltatás](../virtual-machines/windows/instance-metadata-service.md) végpontot, amely jól ismert nem átirányítható IP-címet használ (`169.254.169.254`), amelyek elérhetők csak a virtuális gépen.
+A virtuális gép eléréséhez képesnek kell lennie a [Azure Instance Metadata szolgáltatás](../virtual-machines/windows/instance-metadata-service.md) végpontot, amely jól ismert nem átirányítható IP-címet használ (`169.254.169.254`), amelyek elérhetők csak a virtuális gépen.  Amely erre a címre (például egy X-továbbított – a fejléc hozzáadása) helyi HTTP-forgalom alter proxykiszolgáló-konfigurációk nem támogatottak.
 
 ### <a name="linux-package-management-behind-a-firewall"></a>Linux-csomagkezelés tűzfal mögött
 
@@ -138,6 +138,12 @@ DISKPART> list vol
 
 If the expected encryption state does not match what is being reported in the portal, see the following support article:
 [Encryption status is displayed incorrectly on the Azure Management Portal](https://support.microsoft.com/en-us/help/4058377/encryption-status-is-displayed-incorrectly-on-the-azure-management-por) --> 
+
+## <a name="troubleshooting-encryption-status"></a>Titkosítási állapot hibaelhárítása 
+
+A portál pedig megjelenítheti egy lemezt titkosított, volt a virtuális gépen nem titkosított után is.  Ez akkor fordulhat elő, amikor az alacsony szintű parancsok használják a lemezt a virtuális gépen, a magasabb szintű Azure Disk Encryption-kezelési parancsok használata helyett közvetlenül feloldására.  A magasabb szintű parancsai nem csak a lemezt a virtuális gépen feloldására, de a VM-en kívül is frissítse fontos platform a blokkszintű titkosítás és a virtuális Géphez társított bővítmény beállításait.  Ha ezek nem tartják összhangban, a platform nem lesz képes titkosítási állapotát, vagy a virtuális gép megfelelően üzembe.   
+
+Az Azure Disk Encryption megfelelően letiltásához a titkosítás engedélyezve van egy korábbi hibátlan állapotra kezdhet, és használja a [Disable-AzureRmVmDiskEncryption](https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/disable-azurermvmdiskencryption) és [Remove-azurermvmdiskencryptionextension parancs](https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/remove-azurermvmdiskencryptionextension) PowerShell-parancsok, vagy a [letiltása az vm encryption](https://docs.microsoft.com/en-us/cli/azure/vm/encryption) CLI-parancsot. 
 
 ## <a name="next-steps"></a>További lépések
 

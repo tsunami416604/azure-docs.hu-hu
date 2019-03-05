@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/05/2019
+ms.date: 02/28/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: alavital
 ms.custom: ''
-ms.openlocfilehash: 813ec8f74371b6ae76ac306aea2c462f0beea1fb
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: d6f7a597ff5737bb5e9a3f07122ece313bd432ff
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55773671"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337776"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>Költség riasztások, a használat és költségek monitorozása
 
@@ -23,7 +23,7 @@ Ez a cikk segít megismerni, és figyelheti az Azure Cost Management riasztások
 
 ## <a name="budget-alerts"></a>Költségvetés riasztások
 
-Költségvetés riasztások figyelmeztetik, ha a kiadások, a használat és költségek alapján eléri vagy meghaladja a meghatározott a [riasztási feltétel a költségvetés](tutorial-acm-create-budgets.md). A Cost Management költségvetése jönnek létre az Azure portal használatával, vagy a [Azure Consumption](https://docs.microsoft.com/rest/api/consumption) API-t. 
+Költségvetés riasztások figyelmeztetik, ha a kiadások, a használat és költségek alapján eléri vagy meghaladja a meghatározott a [riasztási feltétel a költségvetés](tutorial-acm-create-budgets.md). A Cost Management költségvetése jönnek létre az Azure portal használatával, vagy a [Azure Consumption](https://docs.microsoft.com/rest/api/consumption) API-t.
 
 Az Azure Portalon költségvetések költség határozzák meg. Az Azure Consumption API-val, költségvetések vannak meghatározva költség vagy szolgáltatáshasználatot. Költségvetés riasztások költségvetése költség-alapú és a használat alapú is támogatja. Költségvetés riasztások automatikusan jönnek létre, amikor a költségvetés riasztási feltételek teljesülnek. Megtekintheti az összes költség riasztások az Azure Portalon. A rendszer riasztást állít elő, amikor a költségek riasztások jelenik meg. Riasztás e-mailt is zajlik a személyeknek a költségvetés riasztási címzettek listájában.
 
@@ -34,6 +34,18 @@ Kredit riasztások figyelmeztetik, ha az Azure-kredit program pénzügyi kötele
 ## <a name="department-spending-quota-alerts"></a>Részleg költségkeret kvóta riasztások
 
 Részleg költségkeret kvóta riasztások figyelmeztetik, ha a department költségkeret-beállítási eléri a rögzített méretű kvóta. A nagyvállalati szerződések portáljának költségkeret kvóták lehet konfigurálni. Minden alkalommal, amikor egy küszöbértéket állít elő, egy e-mailek részleg tulajdonosai, és költség riasztás jelenik meg. Például 50 %-os vagy 75 %-a kvótát.
+
+## <a name="supported-alert-features-by-offer-categories"></a>Riasztási funkciók támogatott ajánlat kategóriák szerint
+
+Riasztástípusok támogatása (Microsoft ajánlat), hogy rendelkezik Azure-fiók típusú függ. Az alábbi táblázat a riasztási funkciók által támogatott különböző Microsoft-ajánlatok. A Microsoft-ajánlatok teljes listáját megtekintheti [megismerheti a Cost Management adataihoz](understand-cost-mgt-data.md).
+
+| Riasztás típusa | Nagyvállalati szerződés | Microsoft Ügyfélszerződés | Web direct/Pay-As-You-Go |
+|---|---|---|---|
+| Költségkeret | ✔ | ✔ | ✔ |
+| Kreditösszeg | ✔ |✘ | ✘ |
+| Részleg költségkvótája | ✔ | ✘ | ✘ |
+
+
 
 ## <a name="view-cost-alerts"></a>Riasztások megtekintése
 

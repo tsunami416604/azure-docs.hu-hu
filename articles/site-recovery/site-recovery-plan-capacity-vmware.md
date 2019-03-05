@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 29e01177d4b096449cd906a22b47223078c6493e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 8325e2d1dccf1184c5297a60161200b41fc1d412
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107820"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338280"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Kapacitás és méretezés az Azure-bA VMware vész-helyreállítási terv
 
@@ -42,7 +42,7 @@ CPU | Memory (Memória) | Gyorsítótár-lemez mérete | A módosult adatok ará
 12 vcpu-k (2 sockets * 6 magok \@ 2,5 GHz-es) | 18 GB | 600 GB | 501 GB – 1 TB | Használatával a 100-150 gépeket replikálni.
 16 vcpu-k (2 sockets * 8 magos \@ 2,5 GHz-es) | 32 GB | 1 TB | > 1 TB-os 2 TB-ig | Használatával 151 és 200 gépeket replikálni.
 Egy másik konfigurációs kiszolgáló telepítése használatával egy [OVF-sablon](vmware-azure-deploy-configuration-server.md#deployment-of-configuration-server-through-ova-template). | | | | Helyezzen üzembe egy új konfigurációs kiszolgálót, ha több mint 200 olyan gépet replikál.
-Üzembe helyezése egy másik [folyamatkiszolgáló](vmware-azure-set-up-process-server-scale.md#download-installation-file). | | | &GT; 2 TB-OS| Új horizontális felskálázási folyamatkiszolgáló üzembe helyezése, 2 TB-nál nagyobb összesített napi adatváltozási sebesség esetén.
+Üzembe helyezése egy másik [folyamatkiszolgáló](vmware-azure-set-up-process-server-scale.md#download-installation-file). | | | >2 TB| Új horizontális felskálázási folyamatkiszolgáló üzembe helyezése, 2 TB-nál nagyobb összesített napi adatváltozási sebesség esetén.
 
 Az alábbi konfigurációk:
 
@@ -114,7 +114,7 @@ A Site Recovery-infrastruktúra beállítása előtt férhet hozzá a környezet
 1. Azoknak az ezeket a paramétereket, futtassa a Site Recovery Deployment Planner a környezetben. További praktikus útmutatók: [kapcsolatos Site Recovery Deployment Planner VMware – Azure](site-recovery-deployment-planner.md).
 2. Konfigurációs kiszolgáló üzembe helyezése, amely megfelel a [a konfigurációs kiszolgáló méretével](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-and-inbuilt-process-server). Ha az éles számítási feladatok nagyobb, mint 650 virtuális gépek, egy másik konfigurációs kiszolgáló telepítése.
 3. Mért napi adatváltozási sebessége alapján, üzembe helyezése [horizontális felskálázási folyamatkiszolgáló](vmware-azure-set-up-process-server-scale.md#download-installation-file) segítségével [irányelvek méretezés](site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-process-server).
-4. Ha az adatváltozási sebessége meghaladja a 2 MB/s lemez virtuális gép várható [Premium storage-fiók beállítása](tutorial-prepare-azure.md#create-a-storage-account). Site Recovery Deployment Planner futtatása egy adott időszakban. Egyéb időszakokban adatváltozási sebesség csúcsok se zachytit előfordulhat, hogy a jelentésben.
+4. Ha az adatváltozási sebessége meghaladja a 2 MB/s lemez virtuális géphez, győződjön meg arról, hogy prémium szintű felügyelt lemezek használata. Site Recovery Deployment Planner futtatása egy adott időszakban. Egyéb időszakokban adatváltozási sebesség csúcsok se zachytit előfordulhat, hogy a jelentésben.
 5. [Állítsa be a hálózati sávszélesség](site-recovery-plan-capacity-vmware.md#control-network-bandwidth) alapján az elérni kívánt rpo-t.
 6. Amikor az infrastruktúra beállításával, a számítási feladatok vészhelyreállítása engedélyezése. További információ [a forráskörnyezet beállítása VMware-ről az Azure-bA](vmware-azure-set-up-source.md).
 

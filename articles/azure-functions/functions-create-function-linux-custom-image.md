@@ -1,28 +1,28 @@
 ---
-title: Függvény létrehozása Linux rendszerben egyéni rendszerkép használatával (előzetes verzió) | Microsoft Docs
+title: Az Azure Functions létrehozása Linux rendszerben egyéni rendszerkép használatával
 description: Megismerheti, hogyan hozhat létre egyéni Linux-rendszerképeken futó Azure Functions-függvényeket.
 services: functions
 keywords: ''
 author: ggailey777
 ms.author: glenga
-ms.date: 10/19/2018
+ms.date: 02/25/2019
 ms.topic: tutorial
 ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: 2c80f988583571f3394a29747a6f452951cea878
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 976bab529dc77621ce92dff0d2ae665777023a01
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978034"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337574"
 ---
-# <a name="create-a-function-on-linux-using-a-custom-image-preview"></a>Függvény létrehozása Linux rendszerben egyéni rendszerkép használatával (előzetes verzió)
+# <a name="create-a-function-on-linux-using-a-custom-image"></a>Függvény létrehozása Linux rendszerben egyéni rendszerkép használatával
 
-Az Azure Functions lehetővé teszi, hogy a függvényeit Linux rendszerben egy saját egyéni tárolóban üzemeltesse. Emellett [egy alapértelmezett Azure App Service-tárolóban is üzemeltetheti](functions-create-first-azure-function-azure-cli-linux.md). Ez a szolgáltatás jelenleg csak előzetes verzióban érhető el, és a használatához [Functions 2.0 futtatókörnyezet](functions-versions.md) szükséges.
+Az Azure Functions lehetővé teszi, hogy a függvényeit Linux rendszerben egy saját egyéni tárolóban üzemeltesse. Emellett [egy alapértelmezett Azure App Service-tárolóban is üzemeltetheti](functions-create-first-azure-function-azure-cli-linux.md). Ez a szolgáltatás csak [a Functions 2.x verziójú futtatókörnyezet](functions-versions.md).
 
-Ez az oktatóanyag bemutatja, hogyan helyezhetők üzembe a függvények az Azure-ban egyéni Docker-rendszerképként. Ez a minta akkor hasznos, ha testre kell szabnia a beépített App Service-tároló rendszerképét. Érdemes lehet egyéni rendszerképet használnia, ha a funkciók egy adott nyelvi verziójára vagy egy konkrét függőségre vagy konfigurációra van szükség, amely a beépített rendszerképben nem biztosított.
+Ez az oktatóanyag bemutatja, hogyan helyezhetők üzembe a függvények az Azure-ban egyéni Docker-rendszerképként. Ez a minta akkor hasznos, ha testre kell szabnia a beépített App Service-tároló rendszerképét. Érdemes lehet egyéni rendszerképet használnia, ha a funkciók egy adott nyelvi verziójára vagy egy konkrét függőségre vagy konfigurációra van szükség, amely a beépített rendszerképben nem biztosított. Alaplemezképek támogatott Azure-funkciók találhatók a [Azure Functions alapjául lemezképek tárház](https://hub.docker.com/_/microsoft-azure-functions-base). [Podpora Pythonu](functions-reference-python.md) jelenleg előzetes verzióban érhető el.
 
 Ez az oktatóanyag bemutatja, hogyan hozhat létre függvényeket egyéni Linux-rendszerképekben az Azure Functions Core Tools használatával. A rendszerképet egy, az Azure CLI-vel létrehozott függvényalkalmazásban teszi közzé az Azure-ban.
 
@@ -36,6 +36,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Linux App Service-csomag létrehozása.
 > * Függvényalkalmazás üzembe helyezése a Docker Hubból.
 > * Alkalmazásbeállítások hozzáadása a függvényalkalmazáshoz.
+> * Folyamatos üzembe helyezés engedélyezése
 
 Az alábbi lépéseket Mac, Windows vagy Linux rendszert futtató számítógépeken követheti.  
 
@@ -67,6 +68,8 @@ Amikor a rendszer kéri, válasszon ki egy feldolgozói futtatókörnyezetet az 
 * `dotnet`: létrehoz egy .NET osztálytárprojektet (.csproj).
 * `node`: létrehoz egy JavaScript-projektet.
 * `python`: egy Python-projektet hoz létre.
+
+[! TARTALMAZZA a funkciók – python-előzetes verzió – megjegyzés]
 
 A parancs végrehajtásakor a következő kimenethez hasonlót fog látni:
 
@@ -101,7 +104,7 @@ COPY . /home/site/wwwroot
 ```
 
 > [!NOTE]
-> Ha egy privát tárolójegyzékben tesz elérhetővé egy rendszerképet, a kapcsolati beállításokat a Dockerfile **ENV** változóival adja a függvényalkalmazáshoz. Mivel ebben az oktatóanyagban nem garantálható, hogy privát adatbázist fog használni, ajánlott biztonsági eljárásként a kapcsolati beállításokat [az üzembe helyezést követően az Azure CLI használatával](#configure-the-function-app) adjuk hozzá.
+> Az Azure Functions támogatott alaplemezképek teljes listája megtalálható a [Azure Functions alaplemezkép lapján](https://hub.docker.com/_/microsoft-azure-functions-base).
 
 ### <a name="run-the-build-command"></a>A `build` parancs futtatása
 A gyökérmappában futtassa a [docker build](https://docs.docker.com/engine/reference/commandline/build/) parancsot, és adjon meg egy nevet (`mydockerimage`) és egy címkét (`v1.0.0`). A `<docker-id>` helyére a Docker Hub-fiók azonosítóját írja. Ez a parancs létrehozza a tároló Docker-rendszerképét.
@@ -223,20 +226,20 @@ A függvény létrehozása után az Azure CLI az alábbi példához hasonló inf
 }
 ```
 
-A _deployment-container-image-name_ paraméter jelöli a Docker Hubon tárolt rendszerképet, amelynek használatával a függvényalkalmazást létrehozzuk.
+A _deployment-container-image-name_ paraméter jelöli a Docker Hubon tárolt rendszerképet, amelynek használatával a függvényalkalmazást létrehozzuk. Használja a [az functionapp config container show](/cli/azure/functionapp/config/container#az-functionapp-config-container-show) parancsot az üzembe helyezéshez használt rendszerkép kapcsolatos információk megtekintéséhez. Használja a [az functionapp config container set](/cli/azure/functionapp/config/container#az-functionapp-config-container-set) parancsot egy másik lemezkép alapján üzembe helyezéséhez.
 
 ## <a name="configure-the-function-app"></a>A függvényalkalmazás konfigurálása
 
 A függvénynek a kapcsolati sztringre az alapértelmezett tárfiókhoz való kapcsolódáshoz van szüksége. Ha az egyéni rendszerképet egy privát tárolófiókon teszi közzé, ehelyett ezeket az alkalmazásbeállításokat környezeti változókként kell megadnia a Docker-fájlban az [ENV utasítás](https://docs.docker.com/engine/reference/builder/#env) vagy egy hasonló utasítás használatával.
 
-Ebben az esetben a `<storage_account>` a létrehozott tárfiók neve. Kérje le a kapcsolati sztringet az [az storage account show-connection-string](/cli/azure/storage/account) paranccsal. Adja hozzá ezeket az alkalmazásbeállításokat a függvényalkalmazáshoz az [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) paranccsal.
+Ebben az esetben a `<storage_name>` a létrehozott tárfiók neve. Kérje le a kapcsolati sztringet az [az storage account show-connection-string](/cli/azure/storage/account) paranccsal. Adja hozzá ezeket az alkalmazásbeállításokat a függvényalkalmazáshoz az [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) paranccsal.
 
 ```azurecli-interactive
-$storageConnectionString=$(az storage account show-connection-string \
---resource-group myResourceGroup --name <storage_account> \
+storageConnectionString=$(az storage account show-connection-string \
+--resource-group myResourceGroup --name <storage_name> \
 --query connectionString --output tsv)
 
-az functionapp config appsettings set --name <function_app> \
+az functionapp config appsettings set --name <app_name> \
 --resource-group myResourceGroup \
 --settings AzureWebJobsDashboard=$storageConnectionString \
 AzureWebJobsStorage=$storageConnectionString
@@ -252,6 +255,24 @@ AzureWebJobsStorage=$storageConnectionString
 Most tesztelheti a Linuxon futó Azure-függvényeit.
 
 [!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
+
+## <a name="enable-continuous-deployment"></a>Folyamatos üzembe helyezés engedélyezése
+
+Tárolók használatával járó előnyöket egyik folyamatban van, képes a frissítések automatikus telepítése a tárolók a beállításjegyzékben frissítésekor. A folyamatos üzembe helyezés engedélyezése a [az functionapp deployment adattároló konfigurációját](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-config) parancsot.
+
+```azurecli-interactive
+az functionapp deployment container config --enable-cd \
+--query CI_CD_URL --output tsv \
+--name <app_name> --resource-group myResourceGroup
+```
+
+Ez a parancs visszaadja az üzembe helyezés a webhook URL-cím engedélyezve van a folyamatos üzembe helyezés után. Is használhatja a [az functionapp deployment tároló show-cd-URL-címe](/cli/azure/functionapp/deployment/container#az-functionapp-deployment-container-show-cd-url) parancsba is, az URL-címet. 
+
+Másolja az üzembe helyezési URL-címet, és tallózással keresse meg a DockerHub-tárházban, válassza a **Webhookok** fülre, írja be egy **Webhook neve** webhook, illessze be az URL-címet **Webhook URL-CÍMÉT**, és válassza a a plusz jelre (**+**).
+
+![Hozzáadja a webhookot a DockerHub tárházban](media/functions-create-function-linux-custom-image/dockerhub-set-continuous-webhook.png)  
+
+A webhook értéke a csatolt kép DockerHub a frissítéseket a függvényalkalmazás, letöltik és telepítik a legfrissebb képet eredményez.
 
 [!INCLUDE [functions-cleanup-resources](../../includes/functions-cleanup-resources.md)]
 

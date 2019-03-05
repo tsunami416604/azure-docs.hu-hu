@@ -16,12 +16,12 @@ ms.date: 05/18/2018
 ms.author: anwestg
 ms.reviewer: sethm
 ms.lastreviewed: 05/18/2018
-ms.openlocfilehash: 0fa938b02b24bd79017bede5346b882e6587bd5d
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 8126397dfb3b02778413ab6ee696a8138c792c15
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766924"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342564"
 ---
 # <a name="app-service-on-azure-stack-update-2-release-notes"></a>App Service-ben az Azure Stack 2-es frissítés – kibocsátási megjegyzések
 
@@ -56,7 +56,7 @@ Az Azure App Service az Azure Stack Update 2 tartalmazza a következő fejleszt�
 - Fokozható a megbízhatóság és a hibaüzenetek gyakori problémák egyszerűbb diagnosztika engedélyezése a core-szolgáltatás frissítése.
 
 - **A következő alkalmazás-keretrendszerek és eszközök frissítések**:
-  - A hozzáadott .net-keretrendszer 4.7.1.
+  - A hozzáadott .NET-keretrendszer 4.7.1.
   - Hozzáadott **Node.JS** verziók:
     - NodeJS 6.12.3
     - NodeJS 8.9.4
@@ -84,15 +84,15 @@ Az Azure App Service az Azure Stack Update 2 tartalmazza a következő fejleszt�
 - Feldolgozók nem érhető el a fájlkiszolgálót, amikor az App Service-ben meglévő virtuális hálózaton van üzembe helyezve, és a fájlkiszolgáló csak érhető el a magánhálózaton.
 
 Ha úgy döntött, hogy egy meglévő virtuális hálózattal és belső IP-cím szeretne csatlakozni a fájlkiszolgáló üzembe helyezése, hozzá kell adnia egy kimenő biztonsági szabályt a feldolgozó és a fájlkiszolgáló között SMB-forgalom engedélyezése. Ehhez nyissa meg a WorkersNsg a felügyeleti portálon, és adjon hozzá egy kimenő biztonsági szabályt a következő tulajdonságokkal:
- * Forrás: Bármelyik
- * Forrás porttartomány: *
- * Cél: IP-címek
- * Cél IP-címtartomány: IP-címtartományt a fájlkiszolgálóhoz
- * Cél porttartomány: 445
- * Protokoll: TCP
- * Művelet: Engedélyezés
- * Prioritás: 700
- * Név: Outbound_Allow_SMB445
+* Forrás: Bármelyik
+* Forrás porttartomány: *
+* Cél: IP-címek
+* Cél IP-címtartomány: IP-címtartományt a fájlkiszolgálóhoz
+* Cél porttartomány: 445
+* Protokoll: TCP
+* Művelet: Engedélyezés
+* Prioritás: 700
+* Név: Outbound_Allow_SMB445
 
 ### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>Ismert problémák működtetése az Azure App Service az Azure Stack felhő-rendszergazdák számára
 

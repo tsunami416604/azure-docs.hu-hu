@@ -11,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: kumud
-ms.openlocfilehash: f24bcebb04c3cb17b5e0420695504541c54e88f3
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 9a7bdb10c43f9192599f8b65be106597b4770e8e
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198219"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338297"
 ---
-# <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application"></a>Gyors útmutató: Magas rendelkezésre állású webalkalmazás számára a Traffic Manager-profil létrehozása
+# <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Gyors útmutató: Az Azure portal használatával Traffic Manager-profil létrehozása
 
 Ebben a rövid útmutató egy Traffic Manager-profilt, amely a webalkalmazás magas rendelkezésre állást nyújt.
 
@@ -51,7 +51,7 @@ Ebben a rövid útmutatóban két különböző Azure-régióban üzembe helyeze
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | App Service-csomag | Adja meg *myAppServicePlanEastUS*. |
+    | App Service-csomag | Enter *myAppServicePlanEastUS*. |
     | Hely | USA keleti régiója |
     | Tarifacsomag | S1 – Standard |
 
@@ -84,7 +84,7 @@ Hozzon létre egy Traffic Manager-profilt, amely a felhasználói adatforgalmat 
     | Name (Név) | Adja meg a Traffic Manager-profil egyedi nevét.|
     | Útválasztási metódus | Válassza ki **prioritású**.|
     | Előfizetés | A traffic manager-profilt a alkalmazni kívánt előfizetés kiválasztásához. |
-    | Erőforráscsoport | Válassza ki *myResourceGroupTM1*.|
+    | Erőforráscsoport | Select *myResourceGroupTM1*.|
     | Hely |Ez a beállítás az erőforráscsoport helyére vonatkozik. Ez nem befolyásolja a globálisan üzembe helyezendő Traffic Manager-profil.|
 
 3. Kattintson a **Létrehozás** gombra.
@@ -100,7 +100,7 @@ Adja hozzá az *USA keleti régiójában* lévő webhelyt elsődleges végpontk�
 
     | Beállítás | Érték |
     | ------- | ------|
-    | Típus | Válassza ki **Azure-végpont**. |
+    | Typo | Válassza ki **Azure-végpont**. |
     | Name (Név) | Adja meg *myPrimaryEndpoint*. |
     | Célerőforrás típusa | Válassza ki **App Service-ben**. |
     | Célerőforrás | Válassza ki **alkalmazásszolgáltatás kiválasztása** > **USA keleti Régiójában**. |
@@ -113,7 +113,7 @@ Adja hozzá az *USA keleti régiójában* lévő webhelyt elsődleges végpontk�
 
     | Beállítás | Érték |
     | ------- | ------|
-    | Típus | Válassza ki **Azure-végpont**. |
+    | Typo | Válassza ki **Azure-végpont**. |
     | Name (Név) | Adja meg *myFailoverEndpoint*. |
     | Célerőforrás típusa | Válassza ki **App Service-ben**. |
     | Célerőforrás | Válassza ki **alkalmazásszolgáltatás kiválasztása** > **Nyugat-Európa**. |

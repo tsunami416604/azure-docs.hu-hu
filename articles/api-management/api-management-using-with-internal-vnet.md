@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 03/01/2019
 ms.author: apimpm
-ms.openlocfilehash: 9a2cf35203c673d6296754360ac4f794241d4c43
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 0fe4da13e8242d858d553e0532b82cf1adca450a
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57008678"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338759"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Belső virtuális hálózathoz az Azure API Management szolgáltatás használatával
 Azure virtuális hálózatokkal az Azure API Management API-k nem érhető el az interneten is kezelheti. Számos VPN technológia érhetők el a kapcsolatot. Az API Management egy virtuális hálózaton belül két fő módban telepíthető:
@@ -59,7 +59,7 @@ Az API Management szolgáltatás a belső virtuális hálózathoz egy belső ter
 
 4. Kattintson a **Mentés** gombra.
 
-Miután az üzembe helyezés sikeres, megjelenik a szolgáltatás belső virtuális IP-cím az irányítópulton.
+Miután az üzembe helyezés sikeres, megtekintheti az **privát** virtuális IP-cím és **nyilvános** az áttekintési panelen az API Management-szolgáltatás virtuális IP-címét. A **privát** virtuális IP-cím egy betöltési belül az API Management elosztott terhelésű IP-cím az alhálózat delegált keresztül, amely `gateway`, `portal`, `management` és `scm` végpontok érhetők el. A **nyilvános** virtuális IP-címet használja **csak** vezérlési sík felé irányuló forgalom `management` több mint port 3443 és zárhatók le a végpont a [az ApiManagement] [ ServiceTags] servicetag.
 
 ![Belső virtuális hálózathoz konfigurálni az API Management az irányítópulton][api-management-internal-vnet-dashboard]
 
@@ -83,25 +83,25 @@ Ha az API Management a külső virtuális hálózat módban van, a DNS-ben az Az
 > API Management-szolgáltatás nem fog IP-címekről érkező kéréseket. Csak válaszol a kérelmekre, a gazdagép nevét a Szolgáltatásvégpontok konfigurálva. Ezek a végpontok közé tartoznak az átjáró, az Azure portal és a fejlesztői portált, közvetlen felügyeleti végpont és Git.
 
 ### <a name="access-on-default-host-names"></a>Alapértelmezett állomásnevek eléréséhez
-Az API Management-szolgáltatás, például a "contoso" nevű létrehozásakor a következő Szolgáltatásvégpontok alapértelmezés szerint vannak konfigurálva:
+Az API Management-szolgáltatás, például a "contosointernalvnet" nevű létrehozásakor a következő Szolgáltatásvégpontok alapértelmezés szerint vannak konfigurálva:
 
-   * -Átjáróval vagy proxyval: contoso.azure-API.NET webhelyen
+   * Gateway or proxy: contosointernalvnet.azure-api.net
 
-   * Az Azure portal és a fejlesztői portál: contoso.portal.azure-API.NET webhelyen
+   * Az Azure portal és a fejlesztői portál: contosointernalvnet.portal.azure-API.NET webhelyen
 
-   * Direct management endpoint: contoso.management.azure-api.net
+   * Direct management endpoint: contosointernalvnet.management.azure-api.net
 
-   * Git: contoso.scm.azure-api.net
+   * Git: contosointernalvnet.scm.azure-api.net
 
-Ezek az API Management szolgáltatás végpontjainak eléréséhez hozzon létre egy virtuális gép csatlakozik, amely az API Management üzembe lesz helyezve a virtuális hálózat alhálózatán. Ha a szolgáltatás belső virtuális IP-címe 10.0.0.5, leképezheti a hosts fájl, % SystemDrive%\drivers\etc\hosts, a következő:
+Ezek az API Management szolgáltatás végpontjainak eléréséhez hozzon létre egy virtuális gép csatlakozik, amely az API Management üzembe lesz helyezve a virtuális hálózat alhálózatán. Ha a szolgáltatás belső virtuális IP-címe 10.1.0.5, leképezheti a hosts fájl, % SystemDrive%\drivers\etc\hosts, a következő:
 
-   * 10.0.0.5 contoso.azure-API.NET webhelyen
+   * 10.1.0.5     contosointernalvnet.azure-api.net
 
-   * 10.0.0.5 contoso.portal.azure-API.NET webhelyen
+   * 10.1.0.5     contosointernalvnet.portal.azure-api.net
 
-   * 10.0.0.5 contoso.management.azure-API.NET webhelyen
+   * 10.1.0.5     contosointernalvnet.management.azure-api.net
 
-   * 10.0.0.5     contoso.scm.azure-api.net
+   * 10.1.0.5     contosointernalvnet.scm.azure-api.net
 
 A Szolgáltatásvégpontok a virtuális gépből létrehozott elérheti. Ha egyéni DNS-kiszolgáló egy virtuális hálózatot használ, is egy DNS-rekordok létrehozása és bárhonnan elérheti ezeket a végpontokat a virtuális hálózaton. 
 
@@ -125,10 +125,12 @@ További tudnivalókért tekintse meg a következő cikkeket:
 * [Virtuális hálózat – gyakori kérdések](../virtual-network/virtual-networks-faq.md)
 * [A DNS-rekord létrehozása](https://msdn.microsoft.com/library/bb727018.aspx)
 
-[api-management-using-internal-vnet-menu]: ./media/api-management-using-with-internal-vnet/api-management-internal-vnet-menu.png
+[api-management-using-internal-vnet-menu]: ./media/api-management-using-with-internal-vnet/api-management-using-with-internal-vnet.png
 [api-management-internal-vnet-dashboard]: ./media/api-management-using-with-internal-vnet/api-management-internal-vnet-dashboard.png
 [api-management-custom-domain-name]: ./media/api-management-using-with-internal-vnet/api-management-custom-domain-name.png
 
 [Create API Management service]: get-started-create-service-instance.md
 [Common network configuration problems]: api-management-using-with-vnet.md#network-configuration-issues
+
+[ServiceTags]: ../virtual-network/security-overview.md#service-tags
 

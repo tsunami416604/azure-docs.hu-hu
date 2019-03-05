@@ -11,22 +11,22 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 66137f01672820584f97273ddca26a66ada781ba
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 92859667e1dc53b9c6ca9e46a2db1c6dc335ae37
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312532"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339011"
 ---
 # <a name="detect-domain-specific-content"></a>Tartomány-specifikus tartalom észlelése
 
-Emellett a címkézési és a magas szintű kategorizálási, Computer Vision is támogatja a további speciális adatokon, amely rendelkezik betanítva modellek használatával tartomány-specifikus elemzés. 
+Emellett a címkézési és a magas szintű kategorizálási, Computer Vision is támogatja a további speciális adatokon, amely rendelkezik betanítva modellek használatával tartomány-specifikus elemzés.
 
 A tartományspecifikus modellek használata két módja van: magukat (hatókörön belüli elemzés), akár a kategorizálási funkció továbbfejlesztése.
 
 ### <a name="scoped-analysis"></a>Hatókörön belüli elemzés
 
-Csak a kiválasztott tartomány-specifikus modellt használó meghívásával kép elemezheti a [modellek /\<modell\>/elemzése](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) API-t. 
+Csak a kiválasztott tartomány-specifikus modellt használó meghívásával kép elemezheti a [modellek /\<modell\>/elemzése](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) API-t.
 
 Az alábbiakban a minta által visszaadott JSON-választ a **modellek, hírességek és elemzése** API a megadott lemezkép:
 
@@ -55,28 +55,28 @@ Az alábbiakban a minta által visszaadott JSON-választ a **modellek, híressé
 }
 ```
 
-### <a name="enhanced-categorization-analysis"></a>Továbbfejlesztett kategorizálási elemzése  
+### <a name="enhanced-categorization-analysis"></a>Továbbfejlesztett kategorizálási elemzése
 
-Tartomány-specifikus modellek használatával általános képelemzés kiegészítésére. Részeként ehhez [magas szintű kategorizálási](concept-categorizing-images.md) adja meg a tartomány-specifikus modelleket a *részletek* paraméterében a [elemzés](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API-hívás. 
+Tartomány-specifikus modellek használatával általános képelemzés kiegészítésére. Részeként ehhez [magas szintű kategorizálási](concept-categorizing-images.md) adja meg a tartomány-specifikus modelleket a *részletek* paraméterében a [elemzés](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API-hívás.
 
-Ebben az esetben a 86 kategóriaelnevezési osztályozó először neve. Ha észlelt kategóriákra rendelkezik a megfelelő tartomány-specifikus modellek, a lemezkép átadott is a modell és az eredmények kerülnek. 
+Ebben az esetben a 86 kategóriaelnevezési osztályozó először neve. Ha észlelt kategóriákra rendelkezik a megfelelő tartomány-specifikus modellek, a lemezkép átadott is a modell és az eredmények kerülnek.
 
 A következő JSON-válasz bemutatja, hogyan tartomány-specifikus elemzését is meg lehet adni, mint a `detail` egy szélesebb körű kategorizálási elemzési csomópontja.
 
 ```json
-"categories":[  
-  {  
+"categories":[
+  {
     "name":"abstract_",
     "score":0.00390625
   },
-  {  
+  {
     "name":"people_",
     "score":0.83984375,
-    "detail":{  
-      "celebrities":[  
-        {  
+    "detail":{
+      "celebrities":[
+        {
           "name":"Satya Nadella",
-          "faceRectangle":{  
+          "faceRectangle":{
             "left":597,
             "top":162,
             "width":248,
@@ -85,8 +85,8 @@ A következő JSON-válasz bemutatja, hogyan tartomány-specifikus elemzését i
           "confidence":0.999028444
         }
       ],
-      "landmarks":[  
-        {  
+      "landmarks":[
+        {
           "name":"Forbidden City",
           "confidence":0.9978346
         }
@@ -108,20 +108,20 @@ Számítógépes Látástechnológia jelenleg a következő tartomány-specifiku
 Hívása a [modellek](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fd) API ad vissza, ez az információ, amelyhez alkalmazhat az egyes kategóriák együtt:
 
 ```json
-{  
-  "models":[  
-    {  
+{
+  "models":[
+    {
       "name":"celebrities",
-      "categories":[  
+      "categories":[
         "people_",
         "人_",
         "pessoas_",
         "gente_"
       ]
     },
-    {  
+    {
       "name":"landmarks",
-      "categories":[  
+      "categories":[
         "outdoor_",
         "户外_",
         "屋外_",

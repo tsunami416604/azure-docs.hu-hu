@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/05/2019
+ms.date: 02/28/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: b41d086c092f3b18715d8fb70cd1a487a97c6869
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1db3fbbd39418504f98469c7b4999c5a91b5d6de
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814044"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57342190"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Oktatóanyag: Létrehozása és kezelése az Azure költségvetése
 
@@ -39,7 +39,7 @@ Többféle Azure-fiók típusú költségvetéshez támogatottak. A támogatott 
 
  Az Azure EA-előfizetések költségvetések megtekintése olvasási hozzáféréssel kell rendelkeznie. Hozhat létre és kezelheti költségvetése közreműködő engedéllyel kell rendelkeznie. Az EA-előfizetések és -erőforráscsoportok egyes költségvetése hozhat létre. Azonban a nagyvállalati szerződéssel rendelkező fiókok számlázási költségvetése nem hozható létre.
 
-A következő Azure-engedélyeket felhasználó és csoport által támogatott költségvetése előfizetésenként:
+A következő Azure-engedélyeket, vagy a hatókör, költségvetések előfizetésenként által támogatott felhasználók és csoportok. Hatókörök kapcsolatos további információkért lásd: [megismerése és együttműködnek a hatókörök](understand-work-scopes.md).
 
 - Tulajdonos – Költségvetéseket hozhat létre, módosíthat vagy törölhet az előfizetésben.
 - Közreműködő, és a Cost Management közreműködője – létrehozása, módosítása vagy törlése a saját költségvetése. Módosíthatja a mások által létrehozott költségvetések költségvetési összegét.
@@ -53,7 +53,7 @@ Engedélyek hozzárendelése a Cost Management adataihoz kapcsolatos további in
 
 ## <a name="create-a-budget-in-the-azure-portal"></a>Költségvetés létrehozása az Azure Portalon
 
-Létrehozhat egy Azure-előfizetés költségvetés havi, negyedéves és éves időszakra. A navigációs tartalom az Azure Portalon határozza meg, hogy költségvetés-előfizetéssel, vagy egy erőforráscsoport létrehozása. Ha például az Azure Portalon lépjen **előfizetések** &gt; válasszon ki egy előfizetést &gt; **költségvetése**. Ebben a példában a költségvetést, hoz létre a kiválasztott előfizetéshez van. Ha azt szeretné, hozzon létre egy erőforráscsoportot a költségvetést, lépjen **erőforráscsoportok** > Válasszon ki egy erőforráscsoportot > **költségvetése**.
+Létrehozhat egy Azure-előfizetés költségvetés havi, negyedéves és éves időszakra. A navigációs tartalom az Azure Portalon határozza meg, hogy költségvetés-előfizetéssel, vagy egy erőforráscsoport létrehozása. Ha például az Azure Portalon lépjen **előfizetések** &gt; válasszon ki egy előfizetést &gt; **költségvetése**. Ebben a példában a költségvetést, hoz létre a kiválasztott előfizetéshez van. Ha azt szeretné, hozzon létre egy erőforráscsoportot a költségvetést, lépjen **erőforráscsoportok** > Válasszon ki egy erőforráscsoportot > **költségvetése**...
 
 Után a költségvetés hoz létre, azok őket az aktuális költségeket az egyszerű nézet jelenik meg.
 
@@ -85,6 +85,28 @@ Függően a hozzáférési szintet, amelyet rendelkezik szerkesztheti a költsé
 
 ![Példa a különböző tulajdonságok módosításához költségvetési szerkesztése](./media/tutorial-acm-create-budgets/edit-budget.png)
 
+## <a name="trigger-an-action-group"></a>Műveletcsoport-trigger
+
+Hozzon létre vagy egy előfizetést, vagy az erőforrás-csoport hatóköre költségvetést szerkesztésekor, hogy meghívjon egy műveletcsoporton konfigurálhatja. A műveletcsoport hajthat végre számos különböző műveletet, amikor a költségvetés küszöbértéket. Műveletcsoportok kapcsolatos további információkért lásd: [létrehozása és kezelése az Azure Portalon Műveletcsoportok](../azure-monitor/platform/action-groups.md). Költségvetés-alapú automatizálási Műveletcsoportok való használatával kapcsolatos további információkért lásd: [Azure költségvetése költségek kezelése](../billing/billing-cost-management-budget-scenario.md).
+
+Csoportok létrehozása vagy frissítése a művelet, kattintson a **Műveletcsoportok kezelése** létrehozása vagy költségvetési szerkesztése közben.
+
+![Példa műveleti csoportok kezelése megjeleníthető költségvetési létrehozása](./media/tutorial-acm-create-budgets/manage-action-groups01.png)
+
+Ezután kattintson **műveleti csoport hozzáadása** és a műveletcsoport létrehozásához.
+
+
+![Az Add műveleti csoport mezőt ábrázoló kép](./media/tutorial-acm-create-budgets/manage-action-groups02.png)
+
+A művelet után csoport jön létre, zárja be a mezőbe, térjen vissza a költségvetést.
+
+Konfigurálja a költségvetést, használja a műveletcsoport, ha egy adott küszöbértéket. Akár öt különböző küszöbértékek támogatottak.
+
+![Példa műveleti csoport kijelölése egy riasztási feltétel](./media/tutorial-acm-create-budgets/manage-action-groups03.png)
+
+Az alábbi példa bemutatja a költségvetés küszöbértékek 50 %-os, 75 %-os és 100 %-os beállítása. Minden egyes van konfigurálva a megadott a kijelölt művelet csoporton belüli műveletek indításához.
+
+![Példa a különböző Műveletcsoportok és műveletek típusú konfigurált riasztási feltételek](./media/tutorial-acm-create-budgets/manage-action-groups04.png)
 
 ## <a name="next-steps"></a>További lépések
 

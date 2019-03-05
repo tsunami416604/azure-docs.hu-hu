@@ -14,56 +14,42 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
-ms.openlocfilehash: 0bb5b118b3d1bc7b89354bb23305eed15a96985d
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 3cd1bbf1852c440172913467c5c8523c520cac2f
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57249013"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337515"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>A Microsoft vevői szerződés számlázási fiók beállítása
 
-Ha a szervezet rendelkezik egy Microsoft Ügyfélszerződéséhez, hogy újítsa meg a nagyvállalati szerződésre való beléptetésről, be kell állítania az Ön számlázási fiókjához. Az új számlázási fiók továbbfejlesztett számlázási és a cost management lehetőségei a egy új egyszerű és egységesített kezelést biztosít:  
+Ha a nagyvállalati szerződésre való beléptetésről lejárt, vagy készül, hogy lejárt, hogy újítsa meg a regisztráció egy Microsoft Ügyfélszerződéséhez jelentkezhet be. A megújítás a következő lépésekből áll:
 
-- Kezelheti a szervezet Azure-szolgáltatások és a számlázás, többek között számlákat, az Azure Portalon
+1. Fogadja el az új Microsoft-ügyfél szerződését. Megismerheti a részleteket, és fogadja el az új szerződés, a Microsoft mező képviselőjével együttműködve.
+2. Állítsa be az új számlázási fiók, amely a Microsoft új Ügyfélszerződéséhez jön létre.
 
-- A költségek, a számla egyszerűen nyomon követheti az igényei alapján, és a költségek felosztási rendszerezése
+Ez a cikk a telepítés után a meglévő számlázási változásokat tárgyalja, és végigvezeti Önt az új számlázási fiók beállítását.
 
-- Áttekintheti és elemezheti a havi, digitális számla Azure Költségkezelés + számlázás lapján
+A számlázási fiók beállításához kell az Azure-előfizetések számlázási a nagyvállalati szerződésre való beléptetésről a munkafolyamatra való áttérést az új fiókot. A telepítő nem érinti az Azure-előfizetésében futó szolgáltatások. Azonban ez módosítja a számlázás az előfizetések kezelése.
 
-A számlázási fiók beállításakor a Váltás a számlázás a meglévő Azure-előfizetések az új fiókhoz. A számlázás fog kezelni az új fiókot az előfizetések módja eltér a nagyvállalati szerződésre való beléptetésről a kezelésének módját. Javasoljuk, hogy a telepítés megkezdése előtt hajtsa végre a következőket:
+- Helyett a [a nagyvállalati szerződések portáljának](https://ea.azure.com), az Azure-szolgáltatások és a számlázási fog kezelni az a [az Azure portal](https://portal.azure.com).
+- A díjakat a havi, digitális számlát fog kapni. Megtekintheti és elemezheti a számla a Azure Költségkezelés + számlázás lapján.
+- Szervezeti egységek és a nagyvállalati szerződésre való beléptetésről fiók helyett fogja használni a számlázási szerkezetét és az új fiókot a hatókörök kezelése és a számlázás rendezéséhez.
 
+A telepítés megkezdése előtt tegye a következőket javasoljuk:
+
+- **Megismerheti az új számlázási fiók**
+  - Az új fiók egyszerűbbé teszi a számlázás a szervezet számára. [Az új számlázási fiók gyors áttekintés](billing-mca-overview.md)
+- **A telepítés befejezéséhez a hozzáférés ellenőrzése**
+  - Csak bizonyos rendszergazdai engedélyekkel rendelkező felhasználók is a telepítés befejezéséhez. Ellenőrizze, hogy a [a telepítés befejezéséhez szükséges hozzáférést](#access-required-to-complete-the-setup).
 - **A számlázási hierarchia módosításai ismertetése**
-    - Új számlázási fiók meg van rendezve eltérően, mint a nagyvállalati szerződésre való beléptetésről. További információkért lásd: [megismerheti a számlázási hierarchia módosításai](#understand-changes-to-your-billing-hierarchy).
+  - Új számlázási fiók meg van rendezve eltérően, mint a nagyvállalati szerződésre való beléptetésről. [Megismerheti az új fiókot a számlázási hierarchia módosításai](#understand-changes-to-your-billing-hierarchy).
 - **A számlázási Adminisztrátorok hozzáférés módosításainak ismertetése**
-    - A nagyvállalati szerződésre való beléptetésről a rendszergazdák hozzáférhetnek az új fiókot a számlázási hatókörök. További információkért lásd: [megismerheti a számlázási Adminisztrátorok hozzáférés módosításainak](#understand-changes-to-your-billing-administrators-access).
-- **Tekintse át az új fiók helyébe a nagyvállalati szerződés szolgáltatásokat**
-    - Tekintse meg a nagyvállalati szerződésre való beléptetésről funkcióját, amely az új fiók frissített szolgáltatásai helyén. [Tekintse át az új számlázási fiók helyébe szolgáltatásokat](#review-features-replaced-by-the-new-billing-account).
+  - A nagyvállalati szerződésre való beléptetésről a rendszergazdák hozzáférhetnek az új fiókot a számlázási hatókörök. [Megismerheti a hozzáférés módosításainak](#understand-changes-to-your-billing-administrators-access).
+- **Váltják fel az új fiók nézetet nagyvállalati szerződés funkciók**
+  - Megtekintheti a funkciókat, a nagyvállalati szerződésre való beléptetésről, amelyek [váltotta fel az új fiók szolgáltatásainak](#review-features-replaced-by-the-new-billing-account).
 - **Leggyakoribb kérdésekre adott válaszok megtekintése**
-    - További információ a telepítő további információk megtekintéséhez. Lépjen a [további információkat](#additional-information).
-
-## <a name="set-up-your-billing-account-in-the-azure-portal"></a>Az Azure Portal számlázási fiók
-
-A telepítés befejezéséhez hozzáférésre van szüksége az új számlázási fiók és a nagyvállalati szerződésre való beléptetésről is. További információkért lásd: [hozzáférés az Ön számlázási fiókjához a beállításának befejezéséhez szükséges](#access-required-to-complete-the-setup).
-
-1. Jelentkezzen be az Azure Portalon, az e-mailben Önnek küldött a Microsoft Ügyfélszerződéséhez aláírásakor választott található hivatkozás segítségével.
-
-2. Ha valaki a szervezetben a megállapodás, vagy nem rendelkezik az e-mailt, jelentkezzen be a következő hivatkozás használatával. Cserélje le **enrollmentNumber** sikerült megújítani a nagyvállalati szerződésen beléptetési számát.
-
-   `https://portal.azure.com/#blade/Microsoft_Azure_Billing/EATransitionToMCA/enrollmentId/enrollmentNumber`
-
-3. Válassza ki **átmenet Start** a beállítása az előző lépésben. Ha kiválasztotta az átállás kezdete:
-
-    ![A telepítővarázsló bemutató képernyőkép](./media/billing-mca-setup-account/ea-mca-set-up-wizard.png)
-
-    - A nagyvállalati szerződés hierarchia megfelelő számlázási hierarchia az új számlázási fiók jön létre. További információkért lásd: [megismerheti a számlázási hierarchia módosításai](#understand-changes-to-your-billing-hierarchy).
-    - A nagyvállalati szerződésre való beléptetésről rendszergazdákat, hogy azok továbbra is kezelheti a szervezete számlázását hozzáférést kapnak az új számlázási fiók.
-    - A számlázás az Azure-előfizetések továbbítjuk az új fiókot. **Nem kell semmilyen hatással lévő Azure-szolgáltatások az átállás során. Futnak fog tartani üzemszünet nélkül**.
-    - Ha rendelkezik Azure-foglalásokat, áthelyezett az új számlázási fiók azonos kedvezményt és kifejezés. A foglalási kedvezményt a váltás során alkalmazandó továbbra is.
-
-4. Az átállás állapotát figyelemmel kísérheti a a **átmeneti állapot** lapot.
-
-   ![Az átmeneti állapot bemutató képernyőkép](./media/billing-mca-setup-account/ea-mca-set-up-status.png)
+  - Nézet [további információkat](#additional-information) további információ a telepítés.
 
 ## <a name="access-required-to-complete-the-setup"></a>A telepítés befejezéséhez szükséges hozzáférést
 
@@ -81,7 +67,7 @@ Kérheti, hogy a vállalati rendszergazdák, a beléptetési a számlázási fi�
 
 2. Ha valaki a szervezetben a megállapodás, vagy nem rendelkezik az e-mailt, jelentkezzen be a következő hivatkozás használatával. Cserélje le **enrollmentNumber** sikerült megújítani a nagyvállalati szerződésen beléptetési számát.
 
-   (https://portal.azure.com/#blade/Microsoft_Azure_Billing/EATransitionToMCA/enrollmentId/enrollmentNumber)
+   `https://portal.azure.com/#blade/Microsoft_Azure_Billing/EATransitionToMCA/enrollmentId/enrollmentNumber`
 
 3. Válassza ki a vállalati rendszergazdák, amelyet szeretne elküldeni a kérelmet.
 
@@ -99,34 +85,32 @@ A felhasználó a szervezetben, akik a Microsoft Ügyfélszerződéséhez aláí
 
 Az új számlázási fiók egyszerűbbé teszi a továbbfejlesztett számlázási és felügyeleti képességek optimalizálhatja a költségeket, miközben a szervezete számlázását. Az alábbi diagram bemutatja, hogyan vannak rendezve, a számlázás az új számlázási fiók.
 
-![Ea-mca-post-váltás-hierarchia képe](./media/billing-mca-setup-account/mca-post-transition-hierarchy.svg)
+![Ea-mca-post-váltás-hierarchia képe](./media/billing-mca-setup-account/mca-post-transition-hierarchy.png)
 
 1. A számlázási fiók használatával kezelheti a számlázás a Microsoft ügyfél-szerződését. Számlázási fiók kapcsolatos további információkért lásd: [számlázási fiók ismertetése](billing-mca-overview.md#understand-billing-account).
 2. A számlázási profilja segítségével kezelheti a számlázási szervezetben, a nagyvállalati szerződésre való beléptetésről hasonló. Vállalati rendszergazdák a számlázási profilja tulajdonosai lesznek. Számlázási profilokkal kapcsolatos további tudnivalókért lásd: [számlázási a profilok megismerése](billing-mca-overview.md#understand-billing-profiles).
-3. Egy számla szakasz használata a saját igényei szerint, a nagyvállalati szerződésre való beléptetésről részlegek hasonló költségeket rendszerezéséhez. Részleg számla szakaszok válik, és a részleg rendszergazdái válnak a megfelelő számla szakaszok tulajdonosai. Számla szakaszok kapcsolatos további információkért lásd: [Understand számla szakaszok](billing-mca-overview.md#understand-invoice-sections).
+3. Egy számla szakasz használata a saját igényei szerint, a nagyvállalati szerződésre való beléptetésről részlegek hasonló költségeket rendszerezéséhez. Részleg számla szakaszok válik, és a részleg rendszergazdái válnak a megfelelő számla szakaszok tulajdonosai. Számla szakaszok kapcsolatos további információkért lásd: [számla szakaszokban megismerheti](billing-mca-overview.md#understand-invoice-sections).
 4. A fiókok létrejöttek a nagyvállalati szerződésbe, az új számlázási fiók nem támogatottak. A fiók előfizetés tartozik, azok számára a megfelelő számla szakaszra. Fióktulajdonosok is előfizetéseinek létrehozásához és kezeléséhez a számla szakaszokat.
 
 ## <a name="understand-changes-to-your-billing-administrators-access"></a>A számlázási Adminisztrátorok hozzáférés módosításainak ismertetése
 
-A hozzáférést, attól függően a nagyvállalati szerződésre való beléptetésről a számlázási Adminisztrátorok hozzáférhetnek az új fiókot a számlázási hatóköreit. A következő ábra mutatja be a hozzáférés áttérés során:
+A hozzáférést, attól függően a nagyvállalati szerződésre való beléptetésről a számlázási Adminisztrátorok hozzáférhetnek az új fiókot a számlázási hatóköreit. Az alábbi táblázat mutatja be a hozzáférés a telepítés során:
 
-![Ea-mca-post-átmenet-hozzáférés képe](./media/billing-mca-setup-account/mca-post-transition-access.png)
-
-| Meglévő szerepkört | POST átmenet szerepkör  |
-|---------|---------|
-|Vállalati rendszergazda (Csak olvasható = Nem)     |-A számlázási profilt a regisztráció a tulajdonos </br> -A számla-szakaszok tulajdonos |
-|Vállalati rendszergazda | -Olvasó a számlázási a beléptetési profil </br> -Olvasó összes számla szakaszokon |
-|Szervezeti egység rendszergazdája (olvasás = csak a nem)    |/ A számla szakaszban a megfelelő részleg számára létrehozott tulajdonos      |
-|Részleg adminisztrátora     | -A számla szakaszban a megfelelő részleg számára létrehozott olvasó      |
-|Fiók tulajdonosa     | -A számla szakaszban a megfelelő részleg számára létrehozott azure előfizetésének létrehozója |
+| Meglévő szerepkört | POST átmenet szerepkör |
+| --- | --- |
+| **A vállalati rendszergazdák (olvasás = csak a nem)** | **-Számlázási profil tulajdonosa** </br> A számlázási profilt az összes funkció kezelését </br> - **A számla szakasz tulajdonos összes számla szakasz** </br> A számla szakaszokban az összes funkció kezelését |
+| **A vállalati rendszergazdák (olvasás csak = Yes)** | **-A számlázás profil olvasója** </br> Írásvédett nézetben minden, a számlázási fiók</br>**-A számla szakasz olvasó összes számla szakaszban**</br> -A számla szakaszban minden, a csak olvasható nézet|
+| **Szervezeti egység rendszergazdája (olvasás = csak a nem)** |**-A számla szakaszban a megfelelő részleg számára létrehozott számla szakasz a tulajdonos** </br>A számla a szakasz az összes funkció kezelését|
+| **Szervezeti egység rendszergazdája (olvasás csak = Yes)**|**-A számla szakaszban a megfelelő részleg számára létrehozott számla szakasz olvasó**</br> A számla szakaszban minden, a csak olvasható nézet|
+| **Fióktulajdonos** | **-A számla szakaszban a megfelelő részleg számára létrehozott azure előfizetésének létrehozója** </br>  A számla a szakasz az Azure-előfizetések létrehozása|
 
 Az Azure Active Directory-bérlő van kiválasztva az új számlázási fiók a Microsoft vevői szerződés aláírása közben. Ha a bérlő nem létezik a szervezet számára, egy új bérlő jön létre. A bérlő Azure Active Directoryban a szervezet jelöli. A szervezet globális bérlői rendszergazdák a bérlő használatához az alkalmazások és a szervezeti adatok kezelésére.
 
-Az új fiók csak a felhasználók a Microsoft vevői szerződés aláírása közben kiválasztott bérlőtől támogatja. Ha a nagyvállalati szerződés rendszergazdai engedéllyel rendelkező felhasználók a bérlő részét képezik, azok az új számlázási fiók hozzáférést fog kapni az áttérés során. Ha nem a bérlő egy része, nem érhetik el az új számlázási fiók, kivéve, ha felkéri őket.
+Az új fiók csak a felhasználók a Microsoft vevői szerződés aláírása közben kiválasztott bérlőtől támogatja. Ha a nagyvállalati szerződés rendszergazdai engedéllyel rendelkező felhasználók a bérlő részét képezik, azok az új számlázási fiók hozzáférést fog kapni a telepítés során. Ha nem a bérlő egy része, nem érhetik el az új számlázási fiók, kivéve, ha felkéri őket.
 
 Amikor meghívja a felhasználókat, azokat hozzá szeretné adni a bérlő vendégfelhasználók, és hozzáférhet a számlázási fiókba. A felhasználókat meghívni, a vendéghozzáférés bekapcsolva kell lennie a bérlő számára. További információkért lásd: [szabályozhatja a vendéghozzáférés az Azure Active Directoryban](https://docs.microsoft.com/en-us/microsoftteams/teams-dependencies#control-guest-access-in-azure-active-directory). Ha a vendéghozzáférés ki van kapcsolva, lépjen kapcsolatba a kapcsolhatja be a bérlő globális rendszergazdája. <!-- Todo - How can they find their global administrator -->
 
-## <a name="review-features-replaced-by-the-new-billing-account"></a>Tekintse át a szolgáltatásokat váltotta fel az új számlázási fiók
+## <a name="view-features-replaced-by-the-new-billing-account"></a>Megtekintheti a funkciókat váltotta fel az új számlázási fiók
 
 A következő nagyvállalati szerződés funkciók cserélése számlázási fiókjához új funkciói a Microsoft ügyfél-szerződés.
 
@@ -190,6 +174,29 @@ A váltás nem állítható vissza. Után az új számlázási fiók továbbítj
 
 Végül kattintson a **átmenet Start**, bezárhatja a böngészőt. A beállítás az e-mailben kapott hivatkozásra kattintva térjen vissza, és indítsa el a váltás. Ha a böngésző, zárja be az átállás indítása után, az átmenet úgy működik tovább, a. Térjen vissza az átmenet állapotlapon átállás legfrissebb állapotának monitorozásához. E-mailt fog kapni, amikor a Váltás befejeződött.
 
+## <a name="complete-the-setup-in-the-azure-portal"></a>Az Azure Portalon a telepítés befejezéséhez
+
+A telepítés befejezéséhez hozzáférésre van szüksége az új számlázási fiók és a nagyvállalati szerződésre való beléptetésről is. További információkért lásd: [az Ön számlázási fiókjához a beállításának befejezéséhez szükséges hozzáférést](#access-required-to-complete-the-setup).
+
+1. Jelentkezzen be az Azure Portalon, az e-mailben Önnek küldött a Microsoft Ügyfélszerződéséhez aláírásakor választott található hivatkozás segítségével.
+
+2. Ha valaki a szervezetben a megállapodás, vagy nem rendelkezik az e-mailt, jelentkezzen be a következő hivatkozás használatával. Cserélje le **enrollmentNumber** sikerült megújítani a nagyvállalati szerződésen beléptetési számát.
+
+   `https://portal.azure.com/#blade/Microsoft_Azure_Billing/EATransitionToMCA/enrollmentId/enrollmentNumber`
+
+3. Válassza ki **átmenet Start** a beállítása az előző lépésben. Ha kiválasztotta az átállás kezdete:
+
+    ![A telepítővarázsló bemutató képernyőkép](./media/billing-mca-setup-account/ea-mca-set-up-wizard.png)
+
+    - A nagyvállalati szerződés hierarchia megfelelő számlázási hierarchia az új számlázási fiók jön létre. További információkért lásd: [megismerheti a számlázási hierarchia módosításai](#understand-changes-to-your-billing-hierarchy).
+    - A nagyvállalati szerződésre való beléptetésről rendszergazdákat, hogy azok továbbra is kezelheti a szervezete számlázását hozzáférést kapnak az új számlázási fiók.
+    - A számlázás az Azure-előfizetések továbbítjuk az új fiókot. **Nem kell semmilyen hatással lévő Azure-szolgáltatások az átállás során. Futnak fog tartani üzemszünet nélkül**.
+    - Ha rendelkezik Azure-foglalásokat, áthelyezett az új számlázási fiók azonos kedvezményt és kifejezés. A foglalási kedvezményt a váltás során alkalmazandó továbbra is.
+
+4. Az átállás állapotát figyelemmel kísérheti a a **átmeneti állapot** lapot.
+
+   ![Az átmeneti állapot bemutató képernyőkép](./media/billing-mca-setup-account/ea-mca-set-up-status.png)
+
 ## <a name="validate-the-billing-account-is-set-up-properly"></a>A számlázási ellenőrzése fiók megfelelően van beállítva
 
  Ellenőrizze a következőket annak biztosítása érdekében az új számlázási fiók megfelelően van beállítva:
@@ -208,7 +215,7 @@ Végül kattintson a **átmenet Start**, bezárhatja a böngészőt. A beállít
 
    ![Előfizetések listáját bemutató képernyőkép](./media/billing-mca-setup-account/billing-mca-subscriptions-post-transition.png)
 
-Az összes Azure-előfizetések átalakulnak a nagyvállalati szerződésre való beléptetésről az új számlázási fiókba az Azure-előfizetések oldalon jelennek meg. Ha úgy véli, hogy hiányzik egy előfizetést, áttérés a számlázás az előfizetés manuálisan az Azure Portalon. További információkért lásd: [első számlázási tulajdonosi jogokat, más felhasználók az Azure-előfizetések](billing-mca-request-billing-ownership.md)
+Az új számlázási fiók érdekében átalakulnak a nagyvállalati szerződésre való beléptetésről az Azure-előfizetések az Azure-előfizetések oldalon jelennek meg. Ha úgy véli, hogy hiányzik egy előfizetést, áttérés a számlázás az előfizetés manuálisan az Azure Portalon. További információkért lásd: [első számlázási tulajdonosi jogokat, más felhasználók az Azure-előfizetések](billing-mca-request-billing-ownership.md)
 
 ### <a name="azure-reservations"></a>Azure-foglalások
 
@@ -228,7 +235,7 @@ Az összes Azure-előfizetések átalakulnak a nagyvállalati szerződésre val�
 
     ![Előfizetések post átmenet listáját bemutató képernyőkép](./media/billing-mca-setup-account/billing-mca-azure-reservations-post-transition.png)
 
-Minden Azure-foglalást, amely az új számlázási fiók kerülnek át a nagyvállalati szerződésre való beléptetésről az összes termék oldalon jelennek meg. Ismételje meg a lépéseket, győződjön meg arról, hogy minden Azure-foglalást a nagyvállalati szerződésre való beléptetésről átkerülnek a számla szakaszokat. Ha úgy véli, hogy minden olyan Azure-foglalás hiányzik, [lépjen kapcsolatba az Azure-támogatás](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a Foglalás áthelyezése az új számlázási fiók.
+Az Azure foglalásokat, hogy az új számlázási fiók kerülnek át a nagyvállalati szerződésre való beléptetésről az összes termék oldalon jelennek meg. Ismételje meg a lépéseket, győződjön meg arról, hogy minden Azure-foglalást a nagyvállalati szerződésre való beléptetésről átkerülnek a számla szakaszokat. Ha úgy véli, hogy minden olyan Azure-foglalás hiányzik, [lépjen kapcsolatba az Azure-támogatás](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) a Foglalás áthelyezése az új számlázási fiók.
 
 ### <a name="access-of-enterprise-administrators-on-the-billing-profile"></a>Hozzáférés a vállalati rendszergazdák a számlázási profilban
 
@@ -244,7 +251,7 @@ Minden Azure-foglalást, amely az új számlázási fiók kerülnek át a nagyv�
 
    ![Hozzáférés a vállalati rendszergazdák post átmeneti bemutató képernyőkép](./media/billing-mca-setup-account/billing-mca-ea-admins-access-post-transition.png)
 
-Vállalati rendszergazdák profil tulajdonosai a vállalati rendszergazdák csak olvasási engedélyekkel rendelkező felsorolt közben számlázási, profil-olvasók számlázási szerepelnek. Hiányzik a hozzáférést a vállalati rendszergazdák, ha azok hozzáférést biztosíthat az Azure Portalon. További információkért lásd: [kezelése az Azure Portal számlázási szerepkörök](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
+Vállalati rendszergazdák profil tulajdonosai a vállalati rendszergazdák csak olvasási engedélyekkel rendelkező felsorolt közben számlázási, profil-olvasók számlázási szerepelnek. Ha úgy véli, hogy hiányzik a hozzáférést a vállalati rendszergazdák, számukra hozzáférést biztosíthat az Azure Portalon. További információkért lásd: [kezelése az Azure Portal számlázási szerepkörök](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
 
 ### <a name="access-of-enterprise-administrators-department-administrators-and-account-owners-on-invoice-sections"></a>Hozzáférés a vállalati rendszergazdák, a részleg rendszergazdái és a számla szakaszokon tulajdonosai
 
@@ -262,7 +269,7 @@ Vállalati rendszergazdák profil tulajdonosai a vállalati rendszergazdák csak
 
     ![Képernyőkép a osztály és rendszergazdák hozzáférési bejegyzés átmenet fiók hozzáférési](./media/billing-mca-setup-account/billing-mca-department-account-admins-access-post-transition.png)
 
-Vállalati rendszergazdák és a részleg rendszergazdái szerepelnek számla szakasz tulajdonosai vagy a számla szakasz olvasók közben a részleg tulajdonosai Azure-előfizetés alkotói megjelöléssel láthatók. Ismételje meg az összes számla szakasz a nagyvállalati szerződésre való beléptetésről az összes részlegek számára a hozzáférés ellenőrzéséhez. Nem minden részleg részét tulajdonosai engedély be a egy számla szakasz nevű **alapértelmezett számla szakasz**. Hiányzik a rendszergazdák számára a hozzáférést, ha azok hozzáférést biztosíthat az Azure Portalon. További információkért lásd: [kezelése az Azure Portal számlázási szerepkörök](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
+Vállalati rendszergazdák és a részleg rendszergazdái szerepelnek számla szakasz tulajdonosai vagy a számla szakasz olvasók közben a részleg tulajdonosai Azure-előfizetés alkotói megjelöléssel láthatók. Ismételje meg az összes számla szakasz a nagyvállalati szerződésre való beléptetésről az összes részlegek számára a hozzáférés ellenőrzéséhez. Nem minden részleg részét tulajdonosai engedély be a egy számla szakasz nevű **alapértelmezett számla szakasz**. Ha úgy véli, hogy hiányzik a hozzáférést minden olyan rendszergazdák, számukra hozzáférést biztosíthat az Azure Portalon. További információkért lásd: [kezelése az Azure Portal számlázási szerepkörök](billing-understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
 
 ## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel a támogatási szolgáltatással
 
@@ -272,4 +279,6 @@ Ha segítségre van szüksége, kell [forduljon az ügyfélszolgálathoz](https:
 
 - [Az új számlázási fiók használatának első lépései](billing-mca-overview.md)
 
-- [Ismerje meg, hogyan hajthat végre gyakori EA-feladatokat az új számlázási fiókban](billing-mca-enterprise-operations.md)
+- [A Microsoft vevői szerződés az Ön számlázási fiókjához a teljes nagyvállalati szerződés feladatok](billing-mca-enterprise-operations.md)
+
+- [Ön számlázási fiókjához való hozzáférés kezelése](billing-understand-mca-roles.md)

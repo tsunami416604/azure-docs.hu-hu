@@ -2,17 +2,17 @@
 title: Az Azure-bA az Azure Site Recovery a helyszíni fizikai kiszolgálók vészhelyreállítása a konfigurációs kiszolgáló kezelése |} A Microsoft Docs
 description: Ez a cikk ismerteti, hogyan kezelheti az Azure Site Recovery konfigurációs kiszolgálónak a fizikai kiszolgáló vészhelyreállítása az Azure-bA.
 services: site-recovery
-author: Rajeswari-Mamilla
+author: mayurigupta13
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
-ms.author: ramamill
-ms.openlocfilehash: d5ce80e44ee1a3a48443b190ea9259fe2dea0dcb
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.date: 02/28/2019
+ms.author: mayg
+ms.openlocfilehash: 80fbc84c2284b7078b07040a74566cf1e8d57fb4
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983219"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57341085"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Fizikai kiszolgáló vészhelyreállításhoz használt konfigurációs kiszolgáló kezelése
 
@@ -77,7 +77,7 @@ A konfigurációs kiszolgáló telepítési fájl legújabb verzióját a Site R
 9. A **Telepítés helye** területen válassza ki, hová szeretné telepíteni a bináris fájlokat, és hol kívánja tárolni a gyorsítótárat. A kiválasztott meghajtón legalább 5 GB szabad lemezterületre van szükség, de javasoljuk, hogy a gyorsítótárazáshoz használt lemezen legyen legalább 600 GB szabad hely.
 
     ![Telepítés helye](./media/physical-manage-configuration-server/combined-wiz8.png)
-10. A **Hálózat kiválasztása** területen adja meg a figyelőt (hálózati adaptert és SSL-portot), amelyen keresztül a konfigurációs kiszolgáló küldi és fogadja a replikált adatokat. A 9443-as port a replikációs forgalom küldésére és fogadására használt alapértelmezett port, ez azonban a környezeti követelményektől függően módosítható. A 9443-as port mellett a 443-as portot is megnyitjuk, amelyen keresztül egy webkiszolgáló a replikálási műveleteket vezényli. Ne használja a 443-as porton küldése vagy fogadása a replikációs forgalom számára.
+10. A **hálózat kiválasztása**, először válassza ki a hálózati Adaptert, a beépített folyamatkiszolgáló által a felderítés és leküldéses telepítési forrásgépek a mobilitási szolgáltatást, és válassza ki a konfigurációs kiszolgáló által a kapcsolat hálózati adapter az Azure-ral. A 9443-as port a replikációs forgalom küldésére és fogadására használt alapértelmezett port, ez azonban a környezeti követelményektől függően módosítható. A 9443-as port mellett a 443-as portot is megnyitjuk, amelyen keresztül egy webkiszolgáló a replikálási műveleteket vezényli. Ne használja a 443-as porton küldése vagy fogadása a replikációs forgalom számára.
 
     ![Hálózat kiválasztása](./media/physical-manage-configuration-server/combined-wiz9.png)
 
