@@ -1,18 +1,18 @@
 ---
 title: Azure Site Recovery VMware virtuális gépek vészhelyreállítása az Azure használatával |} A Microsoft Docs
 description: Ez a cikk áttekintést VMware virtuális gépek vészhelyreállítása az Azure-bA az Azure Site Recovery szolgáltatással.
-author: rayne-wiselman
+author: mayurigupta13
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 12/31/2018
-ms.author: raynew
-ms.openlocfilehash: 38f344ef9e24816a17975c60a5863be46da1364b
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 3/3/2019
+ms.author: mayg
+ms.openlocfilehash: aa7ea43f3c41c6200e4cf796b0f09dca995791df
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210335"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339674"
 ---
 # <a name="about-disaster-recovery-of-vmware-vms-to-azure"></a>Tudnivalók a VMware virtuális gépek vészhelyreállítása az Azure-bA
 
@@ -34,7 +34,7 @@ Ez a cikk a vész-helyreállítási áttekintést nyújt a helyszíni VMware vir
     - A részletezés segítségével, győződjön meg arról, hogy a feladatátvétel egy valódi igény szerint növelhesse várt módon fog működni.
     - A részletezés az éles környezet befolyásolása nélkül hajtja végre feladatátvételi tesztet.
 5. Egy kimaradás lép fel, ha feladatátvételt végez teljes Azure-bA. Egyetlen gép feladatai, vagy létrehozhat egy helyreállítási tervbe, hogy átadja a feladatokat több gép egyszerre.
-6. Feladatátvétel esetén a virtuális gép adatait az Azure Storage-ban az Azure virtuális gépek jönnek létre. Felhasználók továbbra is hozzáférő alkalmazások és számítási feladatok az Azure virtuális Gépen
+6. Feladatátvétel esetén a virtuális gép adatait a felügyelt lemezek vagy a storage-fiókok az Azure virtuális gépek jönnek létre. Felhasználók továbbra is hozzáférő alkalmazások és számítási feladatok az Azure virtuális Gépen
 7. Ha a helyszíni hely megint elérhetővé válik, átadja az Azure-ból.
 8. Miután a feladat-visszavételt, és az elsődleges webhelyről még egyszer dolgozik, először a helyszíni virtuális gépek replikálása Azure-bA újra.
 
@@ -56,13 +56,12 @@ A Site Recovery a támogatott VMware virtuális gép vagy fizikai kiszolgálón 
 Az Azure-ban kell a következő:
 
 1. Ellenőrizze, hogy az Azure-fiókja rendelkezik-e az Azure-beli virtuális gépek létrehozásához szükséges engedélyek.
-2. Hozzon létre egy tárfiókot a replikált gépek rendszerképek tárolásához.
-3. Hozzon létre egy Azure-hálózatra, amelyhez az Azure virtuális gépek csatlakozni fog a feladatátvételt követően létrehozott storage-ból.
-4. Állítsa be az Azure Recovery Services-tárolót a Site Recovery. A tároló az Azure Portalon található, és központi telepítése, konfigurálása, szervezését, figyelése és hibaelhárítása a Site Recovery üzembe helyezése szolgál.
+2. Hozzon létre egy Azure-hálózatra, amelyhez Azure virtuális gépek csatlakozni fog a feladatátvételt követően létrehozott storage-fiókok vagy a felügyelt lemezeket.
+3. Állítsa be az Azure Recovery Services-tárolót a Site Recovery. A tároló az Azure Portalon található, és központi telepítése, konfigurálása, szervezését, figyelése és hibaelhárítása a Site Recovery üzembe helyezése szolgál.
 
 *További segítségre van szüksége?*
 
-Ismerje meg, hogyan állítható be az Azure által [a fiók ellenőrzésének](tutorial-prepare-azure.md#verify-account-permissions)létrehozását, egy [tárfiók](tutorial-prepare-azure.md#create-a-storage-account) és [hálózati](tutorial-prepare-azure.md#set-up-an-azure-network), és [tároló beállítása](tutorial-prepare-azure.md#create-a-recovery-services-vault).
+Ismerje meg, hogyan állítható be az Azure által [a fiók ellenőrzésének](tutorial-prepare-azure.md#verify-account-permissions), létrehozni egy [hálózati](tutorial-prepare-azure.md#set-up-an-azure-network), és [tároló beállítása](tutorial-prepare-azure.md#create-a-recovery-services-vault).
 
 
 
@@ -94,10 +93,10 @@ Miután az Azure-ban és a helyszíni infrastruktúra helyen, akkor vész-helyre
     - A konfigurációs kiszolgálón egy egyetlen helyszíni gépre. VMware-vészhelyreállítás javasoljuk, hogy telepíteni a VMware virtuális gépként helyezhető egy letölthető OVF-sablon alapján.
     - A konfigurációs kiszolgáló koordinálja a helyszíni és Azure közötti kommunikációt
     - A konfigurációs kiszolgáló gépen futó egyéb összetevők néhány.
-        - A folyamatkiszolgáló fogadja, optimalizálja, és elküldi a replikációs adatokat az Azure storage. Is kezeli a mobilitási szolgáltatás gépekre szeretne replikálni, az automatikus telepítés és a virtuális gépek automatikus felderítését végzi, VMware-kiszolgálók.
+        - A folyamatkiszolgáló fogadja, optimalizálja, és a replikációs adatokat küld a gyorsítótár az Azure storage-fiók. Is kezeli a mobilitási szolgáltatás gépekre szeretne replikálni, az automatikus telepítés és a virtuális gépek automatikus felderítését végzi, VMware-kiszolgálók.
         - A fő célkiszolgáló az Azure-ból történő feladat-visszavétel során kezeli a replikációs adatokat.
     - Beállítása magában foglalja a konfigurációs kiszolgáló regisztrálása a tárolóban, a MySQL-kiszolgáló és a VMware powercli-t, letöltése és a fiókok megadása létrehozott automatikus felderítését és a mobilitási szolgáltatás telepítése.
-4. **Célkörnyezet**: Beállíthatja a cél Azure-környezet az Azure-előfizetéssel, tárolási és hálózati beállításainak megadásával.
+4. **Célkörnyezet**: Beállíthatja a cél Azure-környezet az Azure-előfizetés és a hálózati beállítások megadásával.
 5. **Replikációs házirend**: Azt adja meg, hogyan történjen a replikáció. A beállítások tartalmazzák, milyen gyakran helyreállítási pontok létrehozása és tárolása, és hogy alkalmazáskonzisztens pillanatképek kell létrehozni.
 6. **Engedélyezze a replikációt**. Engedélyezheti a helyszíni gépek replikációját. Ha a mobilitási szolgáltatás telepítése egy fiókot, majd azt esetén telepítve lesz az adott gép replikálását engedélyezi. 
 

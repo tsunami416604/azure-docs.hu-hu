@@ -10,15 +10,15 @@ ms.subservice: design
 ms.date: 04/17/2018
 ms.author: acomet
 ms.reviewer: igorstan
-ms.openlocfilehash: cede105f0bff9a65f88e06467e4d13419d389f04
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 795facc6148d33592ff8eac5083a273dc3d5cb26
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461559"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314908"
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Hasznos tanácsok az Azure SQL Data Warehouse-hoz
-Ez a témakör az Azure SQL Data Warehouse-megoldások összeállításával kapcsolatos hasznos tippeket és ajánlott eljárásokat tartalmaz. Mielőtt belekezdene, részletesen ismerje meg az egyes lépéseket az [Azure SQL Data Warehouse-munkaterhelési mintákat és kizárási mintákat](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns) ismertető témakör elolvasásával, amely leírja, mi az az SQL Data Warehouse.
+Ez a témakör az Azure SQL Data Warehouse-megoldások összeállításával kapcsolatos hasznos tippeket és ajánlott eljárásokat tartalmaz. Mielőtt belekezdene, részletesen ismerje meg az egyes lépéseket az [Azure SQL Data Warehouse-munkaterhelési mintákat és kizárási mintákat](https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns) ismertető témakör elolvasásával, amely leírja, mi az az SQL Data Warehouse.
 
 A következő ábra egy adattárház tervezésének folyamatát mutatja be:
 
@@ -129,7 +129,7 @@ Az Azure Functions használatával mostantól bármikor használhatja az automat
 
 Küllős architektúra esetén az SQL Database és az Azure Analysis Services használatát javasoljuk. Ez a megoldás a munkaterhelések elkülönítését biztosítja a különböző felhasználói csoportok között, és az SQL Database és az Azure Analysis Services speciális biztonsági funkcióinak használatát teszi lehetővé. Emellett ezzel a módszerrel korlátlan párhuzamos működést biztosíthat a felhasználók számára.
 
-További információk az [SQL Data Warehouse előnyeit kihasználó tipikus architektúrákról](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/common-isv-application-patterns-using-azure-sql-data-warehouse/).
+További információk az [SQL Data Warehouse előnyeit kihasználó tipikus architektúrákról](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/).
 
 Egyetlen kattintással helyezhet üzembe küllőket az SQL-adatbázisokban az SQL Data Warehouse-ból:
 
@@ -155,9 +155,9 @@ Egyetlen kattintással helyezhet üzembe küllőket az SQL-adatbázisokban az SQ
 
 
 <!--Other Web references-->
-[typical architectures that take advantage of SQL Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/common-isv-application-patterns-using-azure-sql-data-warehouse/
-[is and is not]:https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns/
-[adatok migrálásáról]:https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/
+[typical architectures that take advantage of SQL Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/
+[is and is not]:https://blogs.msdn.microsoft.com/sqlcat/20../../azure-sql-data-warehouse-workload-patterns-and-anti-patterns/
+[adatok migrálásáról]:https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/
 
 [Azure Data Lake Store]: ../data-factory/connector-azure-data-lake-store.md
 [sys.dm_pdw_nodes_db_partition_stats]: /sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql

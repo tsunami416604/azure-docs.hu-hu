@@ -11,18 +11,29 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 2e2a388b399ff34e36ab65a734593704cf274dc0
+ms.openlocfilehash: 401cd6b2a78072c8299f32f60f1ac3677f05557c
 ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312086"
+ms.locfileid: "57318746"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Az Azure Functions Core Tools használata
 
 Az Azure Functions Core Tools lehetővé teszi a fejlesztés és tesztelés a helyi számítógépen a parancssorba vagy terminálba az a funkciók. A helyi függvények élő Azure-szolgáltatások is csatlakozhat, és akkor is a függvények hibakeresése a helyi számítógépen a teljes Functions futtatókörnyezete használatával. Akkor is telepítheti egy függvényalkalmazást az Azure-előfizetéshez.
 
 [!INCLUDE [Don't mix development environments](../../includes/functions-mixed-dev-environments.md)]
+
+Függvények a helyi számítógépen, és ezek közzététele az Azure-bA Core Tools használatával a következő alapvető lépéseket:
+
+> [!div class="checklist"]
+> * [A Core Tools és függőségeinek telepítéséhez.](#v2)
+> * [Függvényalkalmazás-projekt létrehozása egy nyelvspecifikus sablon alapján.](#create-a-local-functions-project)
+> * [Regisztrálja az eseményindítót és a kötési bővítményeket.](#register-extensions)
+> * [Adja meg a tárolási és egyéb kapcsolatok.](#local-settings-file)
+> * [Függvény létrehozása egy eseményindító és egy nyelvspecifikus sablont.](#create-func)
+> * [A függvény helyi futtatása](#start)
+> * [A projekt közzététele az Azure-bA](#publish)
 
 ## <a name="core-tools-versions"></a>Core Tools-verzió
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.reviewer: sdash
 ms.author: lagayhar
-ms.openlocfilehash: d3127b7f9bea9a35d9ac25d0724700cad72fa509
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: b5bca3b4c9f5fbe4c9d7dd917b4e2f0767abf145
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54857148"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57341017"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Webhelyek rendelkezésre állásának és válaszkészségének megfigyelése
 Miután telepítette a webappot vagy a webhelyet bármely kiszolgálóra, webes teszteket állíthat be az alkalmazás rendelkezésre állásának és válaszkészségének megfigyeléséhez. Az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) rendszeres időközönként, világszerte különböző helyekről webes kéréseket küld az alkalmazására. Riasztást jelenít meg, ha az alkalmazás nem válaszol, vagy lassan válaszol.
@@ -329,7 +329,8 @@ A teszt befejezése után a válaszidők és a sikerességi arány jelenik meg.
 
 * *Támogatott a HTTPS?*
 
-    A TLS 1.1 és a TLS 1.2 támogatott.
+    A TLS 1.1 és a TLS 1.2 támogatott. Jelenleg nem ellenőrizzük a HTTPS-tanúsítvány hibákat.  
+
 * *Van különbség a „webes tesztek” és a „rendelkezésre állási tesztek” között?*
 
     A két kifejezés hasonló értelmű, felcserélhető. A „rendelkezésre állási teszt” általánosabb fogalom, amely az URL-ping tesztek mellett a többlépéses webes teszteket is magában foglalja.

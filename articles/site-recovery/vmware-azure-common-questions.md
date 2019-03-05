@@ -5,15 +5,15 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 02/13/2019
+ms.date: 03/03/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 84f53b0ddf2d9dfbf25eabbe028c2cfaa0c3fb55
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 038716161845e94011688e8af80a5d4830ac1a5b
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880053"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338144"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Gyakori kérdések – VMware-ből az Azure-bA
 
@@ -33,13 +33,10 @@ A replikáció során az adatok az Azure storage replikációja, és nem kell fi
 
 ## <a name="azure"></a>Azure
 ### <a name="what-do-i-need-in-azure"></a>Mi szükséges az Azure-ban?
-Azure-előfizetés, egy Recovery Services-tárolót, egy storage-fiókot és egy virtuális hálózaton van szüksége. A tároló, a storage-fiók és a hálózati ugyanabban a régióban kell lennie.
-
-### <a name="what-azure-storage-account-do-i-need"></a>Milyen Azure-tárfiókra van szükségem?
-Az LRS vagy GRS tárfiókra van szükség. Mi a GRS használatát javasoljuk, mivel ez akár regionális kimaradás során, illetve az elsődleges régió helyreállíthatatlansága esetében gondoskodik az adatok hibatűréséről. A Premium storage használata támogatott.
+Azure-előfizetés, egy Recovery Services-tárolót, gyorsítótárfiókot, felügyelt lemezek és virtuális hálózat van szüksége. A tárolóhoz, a gyorsítótárfiókot, felügyelt lemez és hálózat ugyanabban a régióban kell lennie.
 
 ### <a name="does-my-azure-account-need-permissions-to-create-vms"></a>Nem a saját Azure-fiók létrehozása a virtuális gépek van szüksége?
-Ha Ön olyan előfizetés rendszergazdája, akkor a replikációs szükséges engedélyekkel. Ha nem Ön, szüksége van egy Azure virtuális gép létrehozása az az erőforráscsoport és a Site Recovery konfigurálásakor megadott virtuális hálózat és a kiválasztott tárfiók írási engedélyekkel. [További információk](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines).
+Ha Ön olyan előfizetés rendszergazdája, akkor a replikációs szükséges engedélyekkel. Ha még nem, egy Azure virtuális gép létrehozása az erőforráscsoportot és a virtuális hálózatot, adja meg a Site Recovery és a kiválasztott tárfiók írási engedélyek konfigurálására vagy felügyelt lemez a konfiguráció alapján az engedélyek szükségesek. [További információk](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines).
 
 ### <a name="can-i-use-guest-os-server-license-on-azure"></a>Használható az Azure-ban a vendég operációs rendszer server-licence?
 Igen, a Microsoft frissítési garanciával rendelkező ügyfelek használhatják a [Azure Hybrid Benefit](https://azure.microsoft.com/en-in/pricing/hybrid-benefit/) menteni a licencelési költségei **Windows Serveres gépek** , amely az Azure-ba, vagy használhatja az Azure-vész-helyreállítási lesznek áttelepítve.
@@ -107,7 +104,7 @@ A helyszíni konfigurációs kiszolgálót a következőképpen telepíthető:
 
 
 ### <a name="where-do-on-premises-vms-replicate-to"></a>Ha ehhez a helyszíni virtuális gépek replikálása?
-Az Azure storage replikálja az adatokat. Feladatátvétel futtatásakor a Site Recovery automatikusan létrehozza az Azure virtuális gépek a tárfiókból.
+Az Azure storage replikálja az adatokat. Ha feladatátvételt végez, a Site Recovery automatikusan hoz létre az Azure virtuális gépek a tárfiókból, vagy felügyelt lemez a konfiguráció alapján.
 
 ## <a name="replication"></a>Replikáció
 
@@ -122,15 +119,19 @@ Nem, ez a nem támogatott forgatókönyv.
 A Site Recovery replikálja az adatokat a helyszínről az Azure storage egy nyilvános végpontot, vagy használja az ExpressRoute nyilvános társviszony-létesítés. Site-to-site VPN hálózaton keresztül a replikáció nem támogatott.
 
 ### <a name="can-i-replicate-to-azure-with-expressroute"></a>Replikálás az Azure ExpressRoute használatával is?
-Igen, az ExpressRoute segítségével virtuális gépek replikálása az Azure-bA. A Site Recovery replikálja az adatokat egy Azure Storage-fiókot, egy nyilvános végpontot keresztül. Be kell állítania [nyilvános társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#publicpeering) vagy [Microsoft társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) ExpressRoute használata a Site Recovery replikációjára. Microsoft társviszony-létesítés a replikáció ajánlott útválasztási tartományhoz. Ügyeljen arra, hogy a [hálózati követelmények](vmware-azure-configuration-server-requirements.md#network-requirements) is teljesülnek-e a replikáció. Miután a virtuális gépek átadja a feladatokat az Azure virtuális hálózat, elérheti azokat használó [magánhálózati társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#privatepeering).
+Igen, az ExpressRoute segítségével virtuális gépek replikálása az Azure-bA. A Site Recovery replikálja az adatokat az Azure Storage egy nyilvános végpontot keresztül. Be kell állítania [nyilvános társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#publicpeering) vagy [Microsoft társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) ExpressRoute használata a Site Recovery replikációjára. Microsoft társviszony-létesítés a replikáció ajánlott útválasztási tartományhoz. Ügyeljen arra, hogy a [hálózati követelmények](vmware-azure-configuration-server-requirements.md#network-requirements) is teljesülnek-e a replikáció. Miután a virtuális gépek átadja a feladatokat az Azure virtuális hálózat, elérheti azokat használó [magánhálózati társviszony-létesítés](../expressroute/expressroute-circuit-peerings.md#privatepeering).
 
 ### <a name="how-can-i-change-storage-account-after-machine-is-protected"></a>Hogyan válthatok storage-fiók után a gép védelméhez?
 
-Storage-fiók csak a prémium szintű frissíthetők. Ha azt szeretné, egy másik tárfiók használatára, szüksége tiltsa le a forrásgép replikációját, és engedélyezze újra a védelmet az új tárfiókot. Szereplőkkel, ez nem egy más módon nem lehet módosítani a storage-fiók védelmének engedélyezése után.
+Egy folyamatban lévő replikáció, a storage-fiókot is csak frissíthető a prémium szintű. Ha szeretné használni a normál díjszabásra, szeretné letiltani a forrásgép replikációját, és engedélyezze újra a védelmet, a standard szintű felügyelt lemez. Szereplőkkel, ez nem egy más módon nem lehet módosítani a storage-fiók védelmének engedélyezése után.
+
+### <a name="how-can-i-change-managed-disk-type-after-machine-is-protected"></a>Hogyan válthatok felügyelt lemez típusa után a gép védelméhez?
+
+Igen, egyszerűen módosíthatja a felügyelt lemez típusa. [További információk](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage).
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Miért nem tudja replikálni VPN-kapcsolaton keresztül?
 
-Az Azure-bA replikálja, amikor replikációs forgalom eléri a nyilvános végpontokat az Azure Storage-fiók, így csak replikálhatja az expressroute-tal (nyilvános társviszony-létesítés) a nyilvános interneten keresztül, és VPN nem működik.
+Az Azure-bA replikálja, amikor replikációs forgalom eléri a nyilvános végpontokat egy Azure Storage, így csak replikálhatja az expressroute-tal (nyilvános társviszony-létesítés) a nyilvános interneten keresztül, és VPN nem működik.
 
 ### <a name="what-are-the-replicated-vm-requirements"></a>Mik azok a replikált virtuális gépek követelményeinek?
 
@@ -150,6 +151,9 @@ Ez a funkció nem támogatott. Ennek a funkciónak a kérelem a [Visszajelzési 
 
 ### <a name="can-i-exclude-disks"></a>Kizárhatok egyes lemezek?
 Igen, kizárhat lemezeket a replikációból.
+
+### <a name="can-i-change-the-target-vm-size-or-vm-type-before-failover"></a>Módosíthatom a cél virtuális gép méretét vagy a virtuális gép típusát a feladatátvétel előtt?
+Igen, módosíthatja a típus vagy a virtuális gép méretét a feladatátvétel előtt bármikor a számítás és hálózat beállításlapon, a replikáció elem a portálról.
 
 ### <a name="can-i-replicate-vms-with-dynamic-disks"></a>Virtuális gépek replikálhatok dinamikus lemezeken?
 A dinamikus lemezek lehet replikálni. Az operációsrendszer-lemez alaplemeznek kell lennie.
@@ -267,6 +271,9 @@ Igen, mindkét – az átvitel közbeni titkosítás és [titkosítás az Azure-
 
 
 ## <a name="failover-and-failback"></a>Feladatátvétel és feladat-visszavétel
+### <a name="can-i-use-the-process-server-at-on-premises-for-failback"></a>Használható a folyamatkiszolgálót a helyszínen, a feladat-visszavételhez?
+Erősen ajánlott a folyamatkiszolgáló létrehozása az Azure-ban feladat-visszavétel célja az adatok átvitel késések elkerülése érdekében. Emellett abban az esetben, ha a forrás virtuális gépek hálózati elválasztva konfigurációs kiszolgáló, az Azure-internetkapcsolattal rendelkező hálózathoz, majd elengedhetetlen a létrehozott Azure-ban feladat-visszavételi Folyamatkiszolgáló használatára.
+
 ### <a name="how-far-back-can-i-recover"></a>Milyen biztonsági állíthatja helyre?
 VMware-ről az Azure-bA a legrégebbi helyreállítási pont használható érték 72 óra.
 
