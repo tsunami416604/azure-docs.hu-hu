@@ -7,14 +7,14 @@ ms.service: site-recovery
 services: site-recovery
 ms.topic: article
 ms.workload: storage-backup-recovery
-ms.date: 1/29/2019
+ms.date: 03/04/2019
 ms.author: mayg
-ms.openlocfilehash: 62b69364f0b3d3e14d0b2d877604cecfcc346dce
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 811d75ec2246199662a25afd6b96b23035444211
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207496"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436034"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>VMware virtuális gép vagy fizikai gép – Azure feladatátvétele során előforduló hibák elhárítása
 
@@ -110,7 +110,50 @@ Ha a **Connect** gombjára a feladatátvételen átesett virtuális gép az Azur
 
 Másolatából egy Windows virtuális gép feladatátvétel után, ha a helyreállított virtuális gép egy nem tervezett leállás üzenetet kap, amikor azt jelzi, hogy egy virtuális gép Leállítás utáni állapotba nem lett rögzítve a feladatátvételhez használt helyreállítási pontot. Ez akkor történik, ha egy állít helyre, ha a virtuális Gépet kellett nem teljesen le lett állítva.
 
-Ez általában nem egy okának aggodalomra és a nem tervezett feladatátvételeket általában figyelmen kívül hagyhatja. Egy tervezett feladatátvétel esetén győződjön meg arról, hogy a virtuális gép megfelelően leállt feladatátvétel előtt, és adja meg a replikációs adatokat a helyszíni Azure-bA küldendő függőben lévő elegendő időt. Ezután a **legújabb** beállítást a [feladatátvételi képernyő](site-recovery-failover.md#run-a-failover) úgy, hogy a függőben lévő adatokat az Azure-ban egy helyreállítási pontot, majd használja a virtuális gép feladatátvételre való feldolgozása.
+Ez általában nem egy okának aggodalomra és a nem tervezett feladatátvételeket általában figyelmen kívül hagyhatja. A feladatátvétel tervezett, győződjön meg arról, hogy a virtuális gép megfelelően leállt feladatátvétel előtt, és a függőben lévő replikációs adatokat a helyszíni Azure-bA küldendő elegendő időt biztosít. Ezután a **legújabb** beállítást a [feladatátvételi képernyő](site-recovery-failover.md#run-a-failover) úgy, hogy a függőben lévő adatokat az Azure-ban egy helyreállítási pontot, majd használja a virtuális gép feladatátvételre való feldolgozása.
+
+## <a name="unable-to-select-the-datastore"></a>Nem sikerült az adattároló kiválasztása
+
+A probléma az jelzi, ha nem látja a a portálon az adattárhoz, az Azure-ban észlelt a feladatátvevő virtuális gép ismételt védelme tett kísérlet során. Ennek oka, hogy a fő cél virtuális gépként az Azure Site Recoveryhez hozzáadott vCenters alatt nem ismerhető fel.
+
+A virtuális gépek ismételt védelme kapcsolatos további információkért lásd: [ismételt védelme, és a egy helyszíni helyhez vissza gépek feladatai az Azure-bA a feladatátvételt követően](vmware-azure-reprotect.md).
+
+A probléma megoldásához:
+
+Manuálisan hozzon létre a fő cél az, hogy a forrásgép felügyeli a vcenter-kiszolgáló. Az adattár a következő vCenter felderítése és frissítése fabric műveletek után lesz elérhető.
+
+> [!Note]
+> 
+> A felderítés és a frissítési fabric műveleteket akár 30 percet is igénybe vehet. 
+
+## <a name="linux-master-target-registration-with-cs-fails-with-an-ssl-error-35"></a>CS Linuxos fő célkiszolgáló regisztráció meghiúsul, és 35 SSL hiba 
+
+A konfigurációs kiszolgálóval az Azure Site Recovery fő cél regisztrálása meghiúsul az miatt a hitelesített proxyt a fő célkiszolgálón való engedélyezése. 
+ 
+Ez a hiba a következő karakterláncot a telepítési naplóban jelzi: 
+
+RegisterHostStaticInfo észlelt kivétel config/talwrapper.cpp(107) [post] CurlWrapper bejegyzés sikertelen volt: kiszolgáló: 10.38.229.221, port: 443-as, phpUrl: request_handler.php, biztonságos: true, ignoreCurlPartialError: False (hamis) a hiba: [címen curlwrapperlib/curlwrapper.cpp:processCurlResponse:231] nem sikerült elküldeni a kérelmet: (35) - SSL connect error. 
+ 
+A probléma megoldásához:
+ 
+1. A virtuális gép konfigurációs kiszolgálón nyisson meg egy parancssort, és ellenőrizze a proxybeállításokat a következő parancsokkal:
+
+    cat /etc/environment echo $http_proxy $https_proxy echo 
+
+2. Ha az előző parancsok kimenetét mutatja, hogy a http_proxy vagy https_proxy beállítások vannak definiálva, használja a következő módszerek egyikét a konfigurációs kiszolgálót a fő célkiszolgáló kommunikáció feloldása:
+   
+   - Töltse le a [PsExec eszköz](https://aka.ms/PsExec).
+   - Az eszköz segítségével elérheti a felhasználói környezetet, és határozza meg, hogy konfigurálva van-e a proxykiszolgáló címét. 
+   - Ha a proxy van konfigurálva, nyissa meg az Internet Explorer egy rendszer felhasználói környezetben a PsExec eszköz használatával.
+  
+     **psexec -s -i "%programfiles%\Internet Explorer\iexplore.exe"**
+
+   - Annak érdekében, hogy a fő célkiszolgáló és a konfigurációs kiszolgáló közötti kommunikációhoz:
+  
+     - Módosítsa a proxybeállításokat az Internet Explorerben a fő célkiszolgáló IP-címét a proxyn keresztül kihagyásához.   
+     Vagy
+     - Tiltsa le a fő célkiszolgálón a proxy. 
+
 
 ## <a name="next-steps"></a>További lépések
 - Hibaelhárítás [Windows virtuális gép RDP-kapcsolatának](../virtual-machines/windows/troubleshoot-rdp-connection.md)

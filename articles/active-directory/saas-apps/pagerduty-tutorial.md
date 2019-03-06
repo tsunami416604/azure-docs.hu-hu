@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c68fdadcf115f57ba524b1b4dc8a2c800cbfaf8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1a48b9e70fe3373b9bc87788ff11fc0a8edc7bdf
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177920"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439656"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagerduty"></a>Oktatóanyag: Az Azure Active Directory-integráció a pagerduty segítségével
 
@@ -252,7 +252,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Kattintás után a PagerDuty csempét a hozzáférés Panelyou kell lekérése automatikusan bejelentkezett a PagerDuty-alkalmazásba.
+Ha a hozzáférési panelen a PagerDuty csempére kattint, kell lekérése automatikusan bejelentkezett a PagerDuty-alkalmazásba.
 
 A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
 

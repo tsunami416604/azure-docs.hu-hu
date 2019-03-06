@@ -16,12 +16,12 @@ ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7054946a15ca27f4b5a36d3d2ac712cba2fd68d8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ea658f18af7ae44d73f78cb5fe4f7ae1316ea901
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185128"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439118"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Hibaelhárítás az Azure Active Directory hibrid csatlakoztatott régebbi verziójú eszközök 
 
@@ -95,7 +95,7 @@ Ha az eszköz nem volt a hibrid Azure AD-hez, megpróbálhatja hibrid Azure AD-c
      
      - Hálózati kapcsolódási problémák miatt **autoworkplace.exe** elérni az AD FS vagy az Azure AD URL-címeket. 
      
-     - **Autoworkplace.exe** megköveteli, hogy közvetlen üzemel az ügyféltől a orgnanization a helyszínen rendelkeznek az ügyfél AD tartományvezérlőt, ami azt jelenti, hogy a hibrid Azure AD-csatlakozás sikeres, csak ha az ügyfél csatlakozik a szervezeti intraneten .
+     - **Autoworkplace.exe** megköveteli, hogy közvetlen üzemel az ügyfél a szervezet a helyszínen rendelkeznek az ügyfél AD tartományvezérlőt, ami azt jelenti, hogy a hibrid Azure AD-csatlakozás sikeres, csak ha az ügyfél csatlakozik a szervezeti intraneten.
      
      - A szervezet használja az Azure AD közvetlen egyszeri bejelentkezés, `https://autologon.microsoftazuread-sso.com` vagy `https://aadg.windows.net.nsatc.net` nem találhatók az eszközök Internet Explorer intranetes beállításait, és **lehetővé teszik a frissítések állapotsor parancsfájl keresztül** nincs engedélyezve az Intranet zóna.
 

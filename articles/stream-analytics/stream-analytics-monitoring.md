@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: f4dbfae4bada77cf882f7249353a17defebf312e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: ce6fc0a90ad093a6bba5a4720777e409202c73ea
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55209349"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439825"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>Megismerheti a Stream Analytics-feladat figyelése és lekérdezések figyelése
 
@@ -43,7 +43,7 @@ Az ablakban látható módon jelenik meg:
 | Késedelmes bemeneti események      | Később, mint a beállított késői érkezési tolerancia ablak érkező események. Tudjon meg többet [Azure Stream Analytics esemény rendelés szempontok](stream-analytics-out-of-order-and-late-events.md) . |
 | Kimenő soron kívüli események    | Fogadott lettek eldobva, vagy egy módosított időbélyeget, az esemény rendezése házirend alapján adott üzemen kívüli események száma. Ez lehet negatív hatással lehet a konfigurációs beállítás Out of rendelés tolerancia ablakban. |
 | Kimeneti események          | A kimeneti tárolóhoz az események száma a Stream Analytics-feladat által küldött adatok mennyisége. |
-| Futásidejű hibák         | Lekérdezés-feldolgozás (kivéve a fürtjét az események vagy outputing eredmények során talált hibákat) kapcsolatos hibák teljes száma |
+| Futásidejű hibák         | Lekérdezés-feldolgozás (kivéve a talált események feldolgozására, vagy eredmények írása közben hibák) kapcsolatos hibák teljes száma |
 | SU százalékos kihasználtsága       | A folyamatos átviteli egység felhasználása a méretezés lapon, a feladat hozzárendelt feladathoz. Ez a kijelző elérhető 80 %-os, vagy a fenti nincs nagy valószínűséggel, hogy az események feldolgozása késhet, vagy megáll. |
 | Vízjel-késleltetés       | A vízjel maximális késleltetés, a feladat összes kimeneti összes partíciójára. |
 
