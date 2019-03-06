@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: d976a1c5e9366069b82cff718593ce72d7ad8a08
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: a95f5ee5105c45ba9e5b1705e83d60bf24b1dc12
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588942"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57457958"
 ---
 ## <a name="create-a-namespace-in-the-azure-portal"></a>Névtér létrehozása az Azure Portalon
 A Service Bus-üzenetküldési entitások Azure-ban való használatának megkezdéséhez először létre kell hoznia egy, az Azure-ban egyedi névvel rendelkező névteret. A névtér egy hatókörkezelési tárolót biztosít a Service Bus erőforrásainak címzéséhez az alkalmazáson belül.
@@ -25,7 +25,7 @@ Névtér létrehozása:
 
     ![Erőforrás létrehozása integráció -> a Service Bus ->](./media/service-bus-create-namespace-portal/create-resource-service-bus-menu.png)
 3. Az a **névtér létrehozása** párbeszédpanelen tegye a következőket: 
-    1. Adjon meg egy **a névtér neve**. A rendszer azonnal ellenőrzi, hogy a név elérhető-e.
+    1. Adjon meg egy **a névtér neve**. A rendszer azonnal ellenőrzi, hogy a név elérhető-e. A névtér elnevezési szabályok listáját lásd: [Namespace REST API létrehozása](/rest/api/servicebus/create-namespace).
     2. Válassza ki a tarifacsomagot (Basic, Standard vagy prémium) a névtérhez. Ha a használni kívánt [üzenettémák és előfizetések](../articles/service-bus-messaging/service-bus-queues-topics-subscriptions.md#topics-and-subscriptions), válassza a Standard vagy Premium. A témakörök és az előfizetések nem támogatottak az alapszintű tarifacsomagban.
     3. Ha bejelölte a **prémium** tarifacsomagban van, kövesse az alábbi lépéseket: 
         1. Adja meg, hány **üzenetkezelési egységek**. A prémium szintű erőforrás-elkülönítést, a CPU és memória szintjén biztosít, így minden számítási feladata elkülönítve fut. Ez az erőforrás-tárolónak egy üzenetkezelési egység neve. Egy prémium szintű névtér legalább egy üzenetkezelési egység van. Kiválaszthatja, 1, 2 vagy 4 üzenetkezelési egység minden prémium szintű Service Bus-névtér esetében. További információkért lásd: [Service Bus prémium szintű üzenetkezelés](../articles/service-bus-messaging/service-bus-premium-messaging.md).

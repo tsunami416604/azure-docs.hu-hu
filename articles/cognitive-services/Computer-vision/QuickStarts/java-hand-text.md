@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/08/2019
+ms.date: 03/04/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 443b57986f7080970780c108447e9d7d4e4ea365
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: fb039f58a9a13cf3241c50d6cf31e777a654dcdb
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311392"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435150"
 ---
 # <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-java-in-computer-vision"></a>Gyors útmutató: A REST API-t és a Java használatával a Computer Vision kézzel írt szöveg kinyerése
 
-Ebben a rövid útmutatóban kézzel írt szöveget fog kinyerni egy képből a Computer Vision REST API-jának használatával. A [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) és a [Get Recognize Text Operation Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) metódussal kézzel írott szöveget észlelhet egy képen, és géppel olvasható karakterfolyamba nyerheti ki a felismert karaktereket.
+Ebben a rövid útmutatóban kézzel írt szöveget fog kinyerni egy képből a Computer Vision REST API-jának használatával. Az a [kötegelt olvasási](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) API és a [olvasási művelet eredményének](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API-t, elvégezheti a szöveg felismerése képekből a képet, majd a kivonat felismert karakterek egy számítógép felhasználható karakter streambe.
 
 > [!IMPORTANT]
-> Az [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) metódussal ellentétben a [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) metódus aszinkron módon fut. Ez a metódus nem adja vissza információt a sikeres válaszok törzsében. A Recognize Text metódus ehelyett egy `Operation-Content` értékű URI-t eredményez a válasz fejlécmezőjében. Ezután meghívhatja ezt az URI-t, amely a [Get Recognize Text Operation Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) metódust képviseli, és ellenőrizheti a Recognize Text metódus állapotát, valamint lekérheti annak eredményeit.
+> Ellentétben a [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) metódus, a [kötegelt olvasási](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) metódus aszinkron módon fut. Ez a metódus nem adja vissza információt a sikeres válaszok törzsében. Ehelyett a kötegelt olvasási metódus adja vissza egy URI értékét a `Operation-Content` válasz fejléce mező. Ezt követően meghívhatja az URI, amely a [olvasási művelet eredményének](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) módszer annak érdekében, hogy ellenőrizze az állapotát, és a kötegelt olvasási metódus meghívása eredményét adja vissza.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) a virtuális gép létrehozásának megkezdése előtt.
 
@@ -60,8 +60,8 @@ A minta létrehozásához és futtatásához az alábbi lépéseket kell végreh
 
 1. Cserélje le a `Main` nyilvános osztály teljes tartalmát az alábbi kódra, majd hajtsa végre a következő változtatásokat, ahol szükséges:
    1. Cserélje le a `subscriptionKey` értéket az előfizetői azonosítóra.
-   1. Szükség esetén cserélje le az `uriBase` értékét azon [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) metódus végpontjának URL-címére, amely az előfizetési kulcsokat tartalmazó Azure-régióból származik.
-   1. Ha szeretné, cserélje le az `imageToAnalyze` értéket annak a képnek az URL-címére, amelyből ki szeretné nyerni a kézzel írott szöveget.
+   1. Értékét cserélje `uriBase` a végpont URL-CÍMÉT a [kötegelt olvasási](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) metódus, ahol szerezte be az előfizetési kulcsok szükség esetén az Azure-régiókba.
+   1. Ha szeretné, cserélje le az `imageToAnalyze` értéket egy másik olyan kép URL-címére, amelyből kézzel írt szöveget szeretne kinyerni.
 1. Mentse a változtatásokat, majd hozza létre a Java-projektet.
 1. Ha IDE-t használ, futtassa a `Main` metódust. Egyéb esetben nyisson meg egy parancssori ablakot, majd a `java` paranccsal futtassa a lefordított osztályt. Például: `java Main`.
 
@@ -83,7 +83,7 @@ public class Main {
     // If you use a free trial subscription key, you shouldn't need to change
     // this region.
     private static final String uriBase =
-        "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/recognizeText";
+        "https://westus.api.cognitive.microsoft.com/vision/v2.0/read/core/asyncBatchAnalyze";
 
     private static final String imageToAnalyze =
         "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/" +
@@ -196,272 +196,100 @@ Text recognition result response:
 
 {
   "status": "Succeeded",
-  "recognitionResult": {"lines": [
+  "recognitionResults": [
     {
-      "boundingBox": [
-        2,
-        84,
-        783,
-        96,
-        782,
-        154,
-        1,
-        148
-      ],
-      "words": [
+      "page": 1,
+      "clockwiseOrientation": 349.59,
+      "width": 3200,
+      "height": 3200,
+      "unit": "pixel",
+      "lines": [
         {
-          "boundingBox": [
-            6,
-            86,
-            92,
-            87,
-            71,
-            151,
-            0,
-            150
-          ],
-          "text": "Pack"
+          "boundingBox": [202,618,2047,643,2046,840,200,813],
+          "text": "Our greatest glory is not",
+          "words": [
+            {
+              "boundingBox": [204,627,481,628,481,830,204,829],
+              "text": "Our"
+            },
+            {
+              "boundingBox": [519,628,1057,630,1057,832,518,830],
+              "text": "greatest"
+            },
+            {
+              "boundingBox": [1114,630,1549,631,1548,833,1114,832],
+              "text": "glory"
+            },
+            {
+              "boundingBox": [1586,631,1785,632,1784,834,1586,833],
+              "text": "is"
+            },
+            {
+              "boundingBox": [1822,632,2115,633,2115,835,1822,834],
+              "text": "not"
+            }
+          ]
         },
         {
-          "boundingBox": [
-            86,
-            87,
-            172,
-            88,
-            150,
-            152,
-            64,
-            151
-          ],
-          "text": "my"
+          "boundingBox": [420,1273,2954,1250,2958,1488,422,1511],
+          "text": "but in rising every time we fall",
+          "words": [
+            {
+              "boundingBox": [423,1269,634,1268,635,1507,424,1508],
+              "text": "but"
+            },
+            {
+              "boundingBox": [667,1268,808,1268,809,1506,668,1507],
+              "text": "in"
+            },
+            {
+              "boundingBox": [874,1267,1289,1265,1290,1504,875,1506],
+              "text": "rising"
+            },
+            {
+              "boundingBox": [1331,1265,1771,1263,1772,1502,1332,1504],
+              "text": "every"
+            },
+            {
+              "boundingBox": [1812, 1263, 2178, 1261, 2179, 1500, 1813, 1502],
+              "text": "time"
+            },
+            {
+              "boundingBox": [2219, 1261, 2510, 1260, 2511, 1498, 2220, 1500],
+              "text": "we"
+            },
+            {
+              "boundingBox": [2551, 1260, 3016, 1258, 3017, 1496, 2552, 1498],
+              "text": "fall"
+            }
+          ]
         },
         {
-          "boundingBox": [
-            165,
-            88,
-            241,
-            89,
-            219,
-            152,
-            144,
-            152
-          ],
-          "text": "box"
-        },
-        {
-          "boundingBox": [
-            234,
-            89,
-            343,
-            90,
-            322,
-            154,
-            213,
-            152
-          ],
-          "text": "with"
-        },
-        {
-          "boundingBox": [
-            347,
-            90,
-            432,
-            91,
-            411,
-            154,
-            325,
-            154
-          ],
-          "text": "five"
-        },
-        {
-          "boundingBox": [
-            432,
-            91,
-            538,
-            92,
-            516,
-            154,
-            411,
-            154
-          ],
-          "text": "dozen"
-        },
-        {
-          "boundingBox": [
-            554,
-            92,
-            696,
-            94,
-            675,
-            154,
-            533,
-            154
-          ],
-          "text": "liquor"
-        },
-        {
-          "boundingBox": [
-            710,
-            94,
-            800,
-            96,
-            800,
-            154,
-            688,
-            154
-          ],
-          "text": "jugs"
+          "boundingBox": [1612, 903, 2744, 935, 2738, 1139, 1607, 1107],
+          "text": "in never failing ,",
+          "words": [
+            {
+              "boundingBox": [1611, 934, 1707, 933, 1708, 1147, 1613, 1147],
+              "text": "in"
+            },
+            {
+              "boundingBox": [1753, 933, 2132, 930, 2133, 1144, 1754, 1146],
+              "text": "never"
+            },
+            {
+              "boundingBox": [2162, 930, 2673, 927, 2674, 1140, 2164, 1144],
+              "text": "failing"
+            },
+            {
+              "boundingBox": [2703, 926, 2788, 926, 2790, 1139, 2705, 1140],
+              "text": ",",
+              "confidence": "Low"
+            }
+          ]
         }
-      ],
-      "text": "Pack my box with five dozen liquor jugs"
-    },
-    {
-      "boundingBox": [
-        2,
-        52,
-        65,
-        46,
-        69,
-        89,
-        7,
-        95
-      ],
-      "words": [{
-        "boundingBox": [
-          0,
-          62,
-          79,
-          39,
-          94,
-          82,
-          0,
-          105
-        ],
-        "text": "dog"
-      }],
-      "text": "dog"
-    },
-    {
-      "boundingBox": [
-        6,
-        2,
-        771,
-        13,
-        770,
-        75,
-        5,
-        64
-      ],
-      "words": [
-        {
-          "boundingBox": [
-            8,
-            4,
-            92,
-            5,
-            77,
-            71,
-            0,
-            71
-          ],
-          "text": "The"
-        },
-        {
-          "boundingBox": [
-            89,
-            5,
-            188,
-            5,
-            173,
-            72,
-            74,
-            71
-          ],
-          "text": "quick"
-        },
-        {
-          "boundingBox": [
-            188,
-            5,
-            323,
-            6,
-            308,
-            73,
-            173,
-            72
-          ],
-          "text": "brown"
-        },
-        {
-          "boundingBox": [
-            316,
-            6,
-            386,
-            6,
-            371,
-            73,
-            302,
-            73
-          ],
-          "text": "fox"
-        },
-        {
-          "boundingBox": [
-            396,
-            7,
-            508,
-            7,
-            493,
-            74,
-            381,
-            73
-          ],
-          "text": "jumps"
-        },
-        {
-          "boundingBox": [
-            501,
-            7,
-            604,
-            8,
-            589,
-            75,
-            487,
-            74
-          ],
-          "text": "over"
-        },
-        {
-          "boundingBox": [
-            600,
-            8,
-            673,
-            8,
-            658,
-            75,
-            586,
-            75
-          ],
-          "text": "the"
-        },
-        {
-          "boundingBox": [
-            670,
-            8,
-            800,
-            9,
-            787,
-            76,
-            655,
-            75
-          ],
-          "text": "lazy"
-        }
-      ],
-      "text": "The quick brown fox jumps over the lazy"
+      ]
     }
-  ]}
+  ]
 }
 ```
 

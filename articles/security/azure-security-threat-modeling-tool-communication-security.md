@@ -14,19 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: d451b53868dcd3253aba2a1c3118ddcc140445c3
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 3f4e87e5602b3c77178ab5bc842705cfedf64af2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882994"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448373"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Biztonsági keret: Kommunikációs biztonság |} Megoldások 
 | Termék vagy szolgáltatás | Cikk |
 | --------------- | ------- |
 | **Azure Event Hub** | <ul><li>[Biztonságos kommunikáció SSL/TLS eseményközpontba](#comm-ssltls)</li></ul> |
 | **Dynamics CRM** | <ul><li>[Ellenőrizze a jogosultsággal, és ellenőrizze, hogy az egyéni szolgáltatásokat vagy az ASP.NET-lapok tiszteletben CRM a biztonság](#priv-aspnet)</li></ul> |
-| **Azure Data Factory** | <ul><li>[Az adatkezelési átjáró használata az Azure Data Factory a helyszíni SQL Server a kapcsolódáshoz](#sqlserver-factory)</li></ul> |
+| **Azure Data Factory** | <ul><li>[Az adatkezelési átjáró használata az Azure Data Factory a helyszíni SQL Server kapcsolódáshoz](#sqlserver-factory)</li></ul> |
 | **Identitáskezelési kiszolgáló** | <ul><li>[Gondoskodjon arról, hogy minden forgalmat az identitás-kiszolgálót HTTPS-kapcsolaton keresztül](#identity-https)</li></ul> |
 | **Webalkalmazás** | <ul><li>[Ellenőrizze az X.509 SSL, a TLS és DTLS kapcsolat hitelesítéséhez használt tanúsítványok](#x509-ssltls)</li><li>[Egyéni tartomány SSL-tanúsítvány konfigurálása az Azure App Service-ben](#ssl-appservice)</li><li>[Az összes forgalom kényszerített az Azure App Service-HTTPS-kapcsolaton keresztül](#appservice-https)</li><li>[HTTP szigorú Transport Security (HSTS) engedélyezése](#http-hsts)</li></ul> |
 | **Adatbázis** | <ul><li>[Győződjön meg, hogy az SQL server-kapcsolat titkosítási és a tanúsítvány érvényesítése](#sqlserver-validation)</li><li>[Az SQL server titkosított kommunikáció kényszerítése](#encrypted-sqlserver)</li></ul> |
@@ -60,14 +60,14 @@ ms.locfileid: "56882994"
 | **Hivatkozások**              | –  |
 | **Lépések** | Ellenőrizze a jogosultsággal, és ellenőrizze, hogy az egyéni szolgáltatásokat vagy az ASP.NET-lapok tiszteletben CRM a biztonság |
 
-## <a id="sqlserver-factory"></a>Az adatkezelési átjáró használata az Azure Data Factory a helyszíni SQL Server a kapcsolódáshoz
+## <a id="sqlserver-factory"></a>Az adatkezelési átjáró használata az Azure Data Factory a helyszíni SQL Server kapcsolódáshoz
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
 | **Összetevő**               | Azure Data Factory | 
 | **SDL Phase**               | Környezet |  
 | **Megfelelő technológiák** | Általános |
-| **Attribútumok**              | Típusú társított szolgáltatás – Azure és helyszíni |
+| **Attribútumok**              | Társított szolgáltatás típusa – Azure és helyszíni |
 | **Hivatkozások**              |[Adatok áthelyezése a helyszíni és az Azure Data Factory](https://azure.microsoft.com/documentation/articles/data-factory-move-data-between-onprem-and-cloud/#create-gateway), [adatkezelési átjáró](https://azure.microsoft.com/documentation/articles/data-factory-data-management-gateway/) |
 | **Lépések** | <p>A Data Management Gateway (DMG) eszköz már csatlakozhat adatforrásokhoz, amelyeket a vállalati hálózat vagy tűzfal mögé.</p><ol><li>A gép sémákra elkülöníti a DMG-eszközt, és megakadályozza, hogy a hibás programok sérülhetnek vagy megfigyelő adatok forrásoldali virtuális gépen. (E.g. telepíteni kell a legújabb frissítéseket, minimális engedélyezése szükséges portok, ellenőrzött fiókok kiépítése, naplózás engedélyezve van, lemeztitkosítás engedélyezve stb.)</li><li>Data Gateway kulcsot kell forgatni gyakori időközönként, vagy minden alkalommal, amikor megújítja a DMG szolgáltatásfiók jelszavát</li><li>Hivatkozás szolgáltatáson keresztül adatok továbbítását titkosítva kell lennie</li></ol> |
 

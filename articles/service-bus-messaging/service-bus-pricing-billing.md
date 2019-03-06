@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2018
+ms.date: 03/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 5b9aae979a25a1f175b3d5a5e24960d6f392b9b4
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 859add6c9310cf5f18ed7090c8e93d4896b59a0b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852932"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433382"
 ---
 # <a name="service-bus-pricing-and-billing"></a>A Service Bus árak és számlázás
 
@@ -74,7 +74,7 @@ A Standard szintű megszűnik az a névtér kapcsolatonként korlátozás, és a
 <br />
 
 > [!NOTE]
-> A szolgáltatás díjszabását az egyidejű kapcsolatok maximális száma határozza meg. Az elszámolás óraszám alapján, havi 744 óra figyelembe vételével történik.
+> A számlázás az egyidejű kapcsolatok maximális száma alapján, és az elszámolás óraszám alapján, havi 730 órán.
 >
 >
 
@@ -91,12 +91,12 @@ Felügyelt kapcsolat a következők egyike lehet:
 1. Az AMQP-kapcsolaton egy ügyfél egy Service Bus-üzenetsor vagy üzenettéma/előfizetés.
 2. Egy HTTP-hívás üzenetet fogad egy Service Bus-üzenettémától vagy -várólistától, amelynek fogadási időkorlátja nagyobb, mint nulla.
 
-A Service Bus díjszabást a szolgáltatásban foglalt mennyiséget (Standard szinten 1000) túllépő, egyidejű felügyelt kapcsolatok maximális száma határozza meg. A maximális szám mérése óránként történik, majd havi 744 órával elosztva elkészül az elszámolás, amely a havi számlázási időszak alatt halmozódik. A szolgáltatásban foglalt mennyiség (1000 felügyelt kapcsolat havonta) a számlázási időszak végén kerül felszámításra az óránként megállapított maximális kapcsolatok összege alapján.
+A Service Bus díjszabást a szolgáltatásban foglalt mennyiséget (Standard szinten 1000) túllépő, egyidejű felügyelt kapcsolatok maximális száma határozza meg. A maximális szám mérése óránként történik, havi 730 órán halmozódik arányosan, és a havi számlázási időszakon belül összeadódik. A szolgáltatásban foglalt mennyiség (1000 felügyelt kapcsolat havonta) a számlázási időszak végén kerül felszámításra az óránként megállapított maximális kapcsolatok összege alapján.
 
 Példa:
 
-1. Minden 10 000 eszköz egyetlen AMQP-kapcsolaton keresztül kapcsolódik, és parancsokat fogad egy Service Bus-témakörbe. Az eszközök telemetrikus eseményeket küld egy eseményközpontnak. Ha az összes eszköz 12 órán keresztül minden nap, akkor a következő csatlakozási díjakkal alkalmazni (más Service Bus témakör vonatkozó díjakon felül): 10 000 kapcsolódás * 12 óra * 31 nap / 744 = 5000 felügyelt kapcsolat. Havi kedvezmény az 1000 felügyelt kapcsolatot számlázunk 4000 felügyelt kapcsolatot, a 0,03 $ $120 összesen, felügyelt kapcsolatonként aránya.
-2. 10 000 készülék fogad egy Service Bus-üzenetsorba, HTTP-n keresztül nem nulla értékű időkorlát megadása mellett üzeneteket. Ha az összes eszköz 12 órán keresztül minden nap, látni fogja a következő csatlakozási díjakkal (bármely más Service Bus-díjon felül): 10 000 HTTP-fogadási kapcsolódás * 12 óra naponta * 31 nap / 744 óra = 5000 felügyelt kapcsolat.
+1. Minden 10 000 eszköz egyetlen AMQP-kapcsolaton keresztül kapcsolódik, és parancsokat fogad egy Service Bus-témakörbe. Az eszközök telemetrikus eseményeket küld egy eseményközpontnak. Ha az összes eszköz 12 órán keresztül minden nap, akkor a következő csatlakozási díjakkal alkalmazni (más Service Bus témakör vonatkozó díjakon felül): 10 000 kapcsolódás * 12 óra * 30 nap / 730 = 4,931 felügyelt kapcsolat. Havi kedvezmény az 1000 felügyelt kapcsolatot számlázunk 4000 felügyelt kapcsolatot, a 0,03 $ $120 összesen, felügyelt kapcsolatonként aránya.
+2. 10 000 készülék fogad egy Service Bus-üzenetsorba, HTTP-n keresztül nem nulla értékű időkorlát megadása mellett üzeneteket. Ha az összes eszköz 12 órán keresztül minden nap, látni fogja a következő csatlakozási díjakkal (bármely más Service Bus-díjon felül): 10 000 HTTP-fogadási kapcsolódás * 12 óra naponta * 30 nap / 730 órán át futtatva = 4,931 felügyelt kapcsolat.
 
 ### <a name="do-brokered-connection-charges-apply-to-queues-and-topicssubscriptions"></a>A felügyelt kapcsolatok díjai a várólistákra és az üzenettémákra/előfizetésekre is vonatkoznak?
 
