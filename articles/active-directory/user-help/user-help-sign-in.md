@@ -1,5 +1,5 @@
 ---
-title: Bejelentkezés a kétlépéses ellenőrzés vagy a biztonsági adatokkal – Azure Active Directory |} A Microsoft Docs
+title: Jelentkezzen be a kétlépéses ellenőrzés vagy biztonsági adatait – Azure Active Directory |} A Microsoft Docs
 description: Ismerje meg, jelentkezzen be a biztonsági adatokat a különböző identitás-ellenőrzési módszerek használatáról.
 services: active-directory
 author: eross-msft
@@ -11,13 +11,14 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
+ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2aca321ac0902d115f4fc7622992d29183c1d35c
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: c892d616609151b5ad6025b4d0b535c494e6af82
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56452595"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454221"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>Jelentkezzen be a kétlépéses ellenőrzés vagy a biztonsági adatok
 Miután beállította a kétlépéses ellenőrzés vagy a biztonsági adatok fogja jelentkezzen be a fiók a megadott hitelesítési módszerrel.

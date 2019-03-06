@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 09/26/2018
+ms.date: 03/04/2019
 ms.author: iainfou
-ms.openlocfilehash: f1507bc2aebcd29feea7480761cd1b4949439583
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: d2e4314948eeda0c82c004414f894dafc4d4cff6
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994487"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57408683"
 ---
 # <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Az Azure Kubernetes Service (AKS) terheléselosztót statikus nyilvános IP-cím használata
 
@@ -24,17 +24,17 @@ Ez a cikk bemutatja, hogyan hozhat létre egy statikus nyilvános IP-címet, és
 
 Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel] [ aks-quickstart-cli] vagy [az Azure portal használatával][aks-quickstart-portal].
 
-Emellett az Azure CLI 2.0.46-os vagy újabb, telepített és konfigurált verziójával is rendelkeznie kell. Futtatás `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni, tekintse meg kell [Azure CLI telepítése][install-azure-cli].
+Emellett az Azure CLI 2.0.59 verziójára van szükség, vagy később telepített és konfigurált. Futtatás `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni, tekintse meg kell [Azure CLI telepítése][install-azure-cli].
 
-Jelenleg csak alapszintű IP-Termékváltozat használata támogatott. Szabványos IP-címek támogatása folyamatban van.
+Jelenleg csak *IP alapszintű Termékváltozat*használata támogatott. Támogatásához folyamatban van a *Standard IP-cím* erőforrás Termékváltozata. További információkért lásd: [IP-címtípusokat és foglalási módszereket az Azure-ban][ip-sku].
 
 ## <a name="create-a-static-ip-address"></a>Hozzon létre statikus IP-cím
 
-Amikor az aks-sel használható statikus nyilvános IP-címet hoz létre, az IP-cím erőforrás létre kell hozni a **csomópont** erőforráscsoportot. Ha azt szeretné, az erőforrások szétválasztásához, [kívül a csomópont erőforráscsoportba tartozó statikus IP-cím](#use-a-static-ip-address-outside-of-the-node-resource-group).
+Amikor az aks-sel használható statikus nyilvános IP-címet hoz létre, az IP-cím erőforrás létre kell hozni a **csomópont** erőforráscsoportot. Ha azt szeretné, az erőforrások szétválasztásához, tekintse meg az alábbi szakaszt [kívül a csomópont erőforráscsoportba tartozó statikus IP-cím](#use-a-static-ip-address-outside-of-the-node-resource-group).
 
-A csomópont erőforráscsoport-név az első a [az aks show] [ az-aks-show] parancsot, majd adja hozzá a `--query nodeResourceGroup` lekérdezési paraméter. Az alábbi példa lekéri az AKS-fürt nevét a csomópont erőforráscsoport *myAKSCluster* az erőforráscsoport nevét a *myResourceGroup*:
+Először kérje le a csomópont erőforráscsoport nevéből és a [az aks show] [ az-aks-show] parancsot, majd adja hozzá a `--query nodeResourceGroup` lekérdezési paraméter. Az alábbi példa lekéri az AKS-fürt nevét a csomópont erőforráscsoport *myAKSCluster* az erőforráscsoport nevét a *myResourceGroup*:
 
-```azurecli
+```azurecli-interactive
 $ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
 
 MC_myResourceGroup_myAKSCluster_eastus
@@ -42,7 +42,7 @@ MC_myResourceGroup_myAKSCluster_eastus
 
 Most hozzon létre egy statikus nyilvános IP-címet a [az hálózati nyilvános IP-cím létrehozása] [ az-network-public-ip-create] parancsot. Adja meg az előző paranccsal beszerzett a csomópont erőforráscsoport-név, és ezután a egy nevet az IP-cím erőforrás, például *myAKSPublicIP*:
 
-```azurecli
+```azurecli-interactive
 az network public-ip create \
     --resource-group MC_myResourceGroup_myAKSCluster_eastus \
     --name myAKSPublicIP \
@@ -61,11 +61,12 @@ Az IP-cím jelenik meg, ahogyan az a következő sűrített példához kimenet:
     "ipAddress": "40.121.183.52",
     [...]
   }
+}
 ```
 
 Később a nyilvános IP cím használatával lekérheti a [az network public-ip list] [ az-network-public-ip-list] parancsot. Adja meg a csomópont erőforráscsoportot és a létrehozott nyilvános IP-cím és a lekérdezés nevét a *IP-cím* az alábbi példában látható módon:
 
-```azurecli
+```azurecli-interactive
 $ az network public-ip show --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --query ipAddress --output tsv
 
 40.121.183.52
@@ -99,7 +100,7 @@ kubectl apply -f load-balancer-service.yaml
 
 Kubernetes 1.10 vagy újabb, illetve használhatja a statikus IP-cím kívül a csomópont erőforráscsoport jön létre. Az AKS-fürt által használt egyszerű szolgáltatást kell delegált engedélyekkel kell rendelkeznie a másik erőforráscsoportban, az alábbi példában látható módon:
 
-```azurecli
+```azurecli-interactive
 az role assignment create\
     --assignee <SP Client ID> \
     --role "Network Contributor" \
@@ -126,7 +127,7 @@ spec:
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-Ha a statikus IP-címet megadva a *loadBalancerIP* Kubernetes Szolgáltatásjegyzék tulajdonság nem létezik, vagy a csomópont erőforráscsoportban nem lett létrehozva, a load balancer szolgáltatás létrehozása sikertelen lesz. A hibaelhárításhoz tekintse át a szolgáltatás-létrehozási események és a [írja le a kubectl] [ kubectl-describe] parancsot. Adja meg a szolgáltatás a YAML-jegyzékfájlban megadott nevét, az alábbi példában látható módon:
+Ha a statikus IP-címet megadva a *loadBalancerIP* Kubernetes Szolgáltatásjegyzék tulajdonság nem létezik, vagy a csomópont erőforráscsoport és nincs további delegálásokat konfigurálni, a terheléselosztó szolgáltatás nem lett létrehozva létrehozása meghiúsul. A hibaelhárításhoz tekintse át a szolgáltatás-létrehozási események és a [írja le a kubectl] [ kubectl-describe] parancsot. Adja meg a szolgáltatás a YAML-jegyzékfájlban megadott nevét, az alábbi példában látható módon:
 
 ```console
 kubectl describe service azure-load-balancer
@@ -173,3 +174,4 @@ A hálózati forgalom az alkalmazások további szabályozásához érdemes ink�
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
+[ip-sku]: ../virtual-network/virtual-network-ip-addresses-overview-arm.md#sku

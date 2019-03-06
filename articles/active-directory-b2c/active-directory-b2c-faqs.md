@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: cef6f47b62a500737e5b01865f73253f18fa470c
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 12b8fc2fb8df7fd730e220a3c1b60097ed7748a2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55960598"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433722"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Gyakori kérdések (GYIK) 
 Ez az oldal az Azure Active Directory (Azure AD) B2C-vel kapcsolatos gyakori kérdésekre ad választ. Tartsa vissza a frissítések keresése.
@@ -64,7 +64,7 @@ Használhatja a [vállalati arculat megjelenítése a szolgáltatás](../active-
 * **A szalagcím emblémája**: A jobb alsó látható.
 * **Háttérszín**: A felül látható.
 
-    ![Képernyőfelvétel a testre szabott visszaigazoló e-mailt](./media/active-directory-b2c-faqs/company-branded-verification-email.png)
+    ![A testre szabott megerősítő e-mail képernyőképe](./media/active-directory-b2c-faqs/company-branded-verification-email.png)
 
 E-mail aláírásának tartalmazza az Azure AD B2C-bérlő neve az Azure AD B2C-bérlő első létrehozásakor megadott. Módosíthatja a nevét, ezen utasításokat követve:
 

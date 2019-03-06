@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 9d6b72a994b034b0bbc735e5cca2ce987a02af61
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 0fa3638ef47fb8cb1d0237a2ab9530ab76d316dc
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53197108"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449268"
 ---
 # <a name="saas-application-test-drive-tab"></a>SaaS-alkalmazás Tesztverziós lapon
 
@@ -33,7 +33,7 @@ Próbálja ki a termék főbb funkciók és előnyök, mutatja be egy való éle
 
 ## <a name="how-a-test-drive-works"></a>Próbálja ki az működése
 
-A potenciális ügyfelek keres, és felderíti az alkalmazás a Marketplace-en. Az ügyfél jelentkezik be, és elfogadja a használati feltételeket. Ezen a ponton az ügyfél megkapja az előre konfigurált környezet rögzített számú óra, próbálja ki a szerepeltetendő magas minősített érdeklődő kap közben. További információkért lásd: [Mi a Test Drive?](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/what-is-test-drive)
+A potenciális ügyfelek keres, és felderíti az alkalmazás a Marketplace-en. Az ügyfél jelentkezik be, és elfogadja a használati feltételeket. Ezen a ponton az ügyfél megkapja az előre konfigurált környezet rögzített számú óra, próbálja ki a szerepeltetendő magas minősített érdeklődő kap közben. További információkért lásd: [Mi a Test Drive?](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
 
 ## <a name="publishing-steps"></a>Közzétételi lépéseket
 
@@ -49,10 +49,10 @@ A test Drive hozzáadásának a fő közzétételi lépései a következők:
 Nincsenek elérhető Tesztverzió négy különböző típusú, minden egyes termék, a forgatókönyv és a piactér típusa alapján.
 |  **Típus**          |  **Leírás**  |  **Telepítési utasítások**  |
 |  ---------------   |  ---------------  |  ---------------  |
-|     Azure Resource Manager               |    Egy Azure Resource Manager Test Drive egy központi telepítési sablont, amely tartalmazza az összes Azure-erőforrást, amely tartalmazza a megoldás a közzétevő létrehozása folyamatban. Termékek, amelyek illeszkednek a Test Drive az ilyen típusú, amelyekről csak Azure-erőforrások használatához.               |       [Azure Resource Manager – Tesztverzió](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/azure-resource-manager-test-drive)            |
-|       Szolgáltatott             |       Egy üzemeltetett Test Drive megszűnnek a telepítő által a Microsoft üzemeltetési és karbantartását hajtja végre a Test Drive felhasználói kiépítésének és megszüntetésének biztosítása.             |         [Szolgáltatott tesztverzió](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/hosted-test-drive)          |
-|      Logikai alkalmazás              |       A logikai alkalmazás Tesztverziós olyan központi telepítési sablont, amely magában foglalja az összes összetett megoldások létrehozására szolgáló architektúrák hivatott. Az összes Dynamics-alkalmazások vagy egyéni termékek Test Drive az ilyen típusú kell használnia.            |      [Logikai alkalmazás kipróbálása](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/logic-app-test-drive)             |
-|       Power BI             |         A Power BI Test Drive egy személyre szabott irányítópult mutató beágyazott hivatkozást tartalmaz. Minden olyan terméket, amely egy interaktív Power BI vizuális kell használnia a Test Drive az ilyen típusú bemutatásához szeretne. A feltöltendő szüksége a Power BI embedded URL-CÍMÉT.          |        [A Power BI kipróbálása](#Power-BI-test-drive)           |
+|     Azure Resource Manager               |    Egy Azure Resource Manager Test Drive egy központi telepítési sablont, amely tartalmazza az összes Azure-erőforrást, amely tartalmazza a megoldás a közzétevő létrehozása folyamatban. Termékek, amelyek illeszkednek a Test Drive az ilyen típusú, amelyekről csak Azure-erőforrások használatához.               |       [Azure Resource Manager – Tesztverzió](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)            |
+|       Szolgáltatott             |       Egy üzemeltetett Test Drive megszűnnek a telepítő által a Microsoft üzemeltetési és karbantartását hajtja végre a Test Drive felhasználói kiépítésének és megszüntetésének biztosítása.             |         [Szolgáltatott tesztverzió](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/hosted-test-drive)          |
+|      Logikai alkalmazás              |       A logikai alkalmazás Tesztverziós olyan központi telepítési sablont, amely magában foglalja az összes összetett megoldások létrehozására szolgáló architektúrák hivatott. Az összes Dynamics-alkalmazások vagy egyéni termékek Test Drive az ilyen típusú kell használnia.            |      [Logikai alkalmazás kipróbálása](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)             |
+|       Power BI             |         A Power BI Test Drive egy személyre szabott irányítópult mutató beágyazott hivatkozást tartalmaz. Minden olyan terméket, amely egy interaktív Power BI vizuális kell használnia a Test Drive az ilyen típusú bemutatásához szeretne. A feltöltendő szüksége a Power BI embedded URL-CÍMÉT.          |        [Power BI Test Drive](#Power-BI-test-drive)           |
 
 ### <a name="power-bi-test-drive"></a>A Power BI kipróbálása
 
@@ -83,4 +83,4 @@ A következő lépések segítségével konfigurálhatja a tesztverziós.
 
 ## <a name="next-steps"></a>További lépések
 
-[Storefront részletei lapon](./cpp-storefront-tab.md)
+[Áruház részletei lap](./cpp-storefront-tab.md)

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3af5c3d5d92dea804221b2285d4fa5b9cedae665
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c6b8109c8d3834f932ba492eddb8d6332acc1707
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168090"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443617"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező RFPIO
 
@@ -234,7 +234,7 @@ RFPIO, esetén kiépítése a manuális feladat.
 
     a. Adjon meg **E-mail-cím** a a **adjon meg soronként egy e-mail** mező.
 
-    b. Újra válassza **szerepkör** igényeinek megfelelően.
+    b. Válasszon **szerepkör** igényeinek megfelelően.
 
     c. Kattintson a **tagok hozzáadása**.
         

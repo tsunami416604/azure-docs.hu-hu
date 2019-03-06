@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: ccompy
-ms.openlocfilehash: 1c05a50f82f5c235c76ff234efe183172e0863bf
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0a9197c8c46cc480f5f096f1d2ef98c0d5823f35
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51232980"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455785"
 ---
 # <a name="create-and-manage-hybrid-connections"></a>Hibridkapcsolatok létrehozása és felügyelete
 
@@ -42,7 +42,7 @@ Ez a témakör felsorolja az alábbi lépéseket.
 > Megadhat például (pseudocode) **10.4.5.6** a helyszíni gazdagépként:
 > 
 > **A következő esetben működik:**  
-> `Application code -> GetHostByName("10.4.5.6") -> Resolves to 127.0.0.3 -> Connect("127.0.0.3") -> Hybrid Connection -> on-prem host`
+> `Application code -> GetHostByName("10.4.5.6") -> Resolves to 127.0.0.3 -> Connect("127.0.0.3") -> Hybrid Connection -> on premises host`
 > 
 > **Az alábbi forgatókönyv nem működik:**  
 > `Application code -> Connect("10.4.5.6") -> ?? -> No route to host`
@@ -55,8 +55,8 @@ A hibrid kapcsolat hozható létre [Azure App Service hibrid kapcsolataira](../a
 <!-- **To create Hybrid Connections using Web Apps**, see [Connect Azure Web Apps to an On-Premises Resource](../app-service-web/web-sites-hybrid-connection-get-started.md). You can also install the Hybrid Connection Manager (HCM) from your web app, which is the preferred method.  -->
 
 #### <a name="additional"></a>További
-* Több hibrid kapcsolatot lehet létrehozni. Tekintse meg a [BizTalk Services: kiadások diagramja](biztalk-editions-feature-chart.md) a kapcsolatok engedélyezett számát. 
-* Minden hibrid kapcsolat létrehozása két kapcsolati karakterláncok: alkalmazás kulcsok, a KÜLDÉS és a helyszíni kulcsok, amelyek FIGYELIK. Minden átjárópárhoz egy elsődleges és másodlagos kulcsot tartalmaz. 
+* Több hibrid kapcsolatot lehet létrehozni. Tekintse meg a [a BizTalk Services: Kiadások diagramja](biztalk-editions-feature-chart.md) a kapcsolatok engedélyezett számát. 
+* Kapcsolati karakterláncok két minden hibrid kapcsolat jön létre: Alkalmazás kulcsainak, KÜLDÉSE és a helyszíni kulcsok, amelyek FIGYELIK. Minden átjárópárhoz egy elsődleges és másodlagos kulcsot tartalmaz. 
 
 ## <a name="LinkWebSite"></a>Az Azure App Service-webalkalmazás vagy hivatkozás
 Egy webalkalmazás vagy az Azure App Service Mobile Apps összekapcsolása egy meglévő hibrid kapcsolatot, jelölje be a **egy létező hibrid kapcsolat használata** a hibrid kapcsolatok panelen. 
@@ -119,9 +119,9 @@ Ha már másolva lettek, a Helyicsoportházirend-szerkesztő használatával mó
 
 ## <a name="see-also"></a>Lásd még:
 [REST API a BizTalk Services felügyeletéhez a Microsoft Azure-ban](https://msdn.microsoft.com/library/azure/dn232347.aspx)  
-[BizTalk Services: Kiadások diagramja](biztalk-editions-feature-chart.md)  
+[A BizTalk Services: Kiadások diagramja](biztalk-editions-feature-chart.md)  
 [BizTalk-szolgáltatás létrehozása](biztalk-provision-services.md)  
-[BizTalk Services: Irányítópult, Figyelés és Méret lapok](biztalk-dashboard-monitor-scale-tabs.md)
+[A BizTalk Services: Irányítópult, figyelés és méret lapok](biztalk-dashboard-monitor-scale-tabs.md)
 
 [HybridConnectionTab]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionTab.png
 [HCOnPremSetup]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionOnPremSetup.png

@@ -9,14 +9,14 @@ ms.reviewer: jehollan, klam, LADocs
 ms.topic: article
 ms.assetid: 19cbd921-7071-4221-ab86-b44d0fc0ecef
 ms.date: 08/25/2018
-ms.openlocfilehash: 69a4e4c59038599a7375466c46878bdd017582fa
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 3a72689be1902a05a2df409366bc5caba94d6a77
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50231610"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436102"
 ---
-# <a name="scenario-trigger-logic-apps-with-azure-functions-and-azure-service-bus"></a>Forgatókönyv: A logic apps az Azure Functions és az Azure Service Bus-Trigger
+# <a name="scenario-trigger-logic-apps-with-azure-functions-and-azure-service-bus"></a>Forgatókönyv: Az eseményindító logikai alkalmazások az Azure Functions és az Azure Service Bus
 
 Az Azure Functions segítségével egy eseményindítót egy logikai alkalmazást létrehozni, amikor üzembe kell helyeznie egy hosszú ideig futó figyelő vagy feladat. Például hozzon létre egy függvényt, amely figyeli üzenetsorba, és azonnal aktiválódik a logikai alkalmazás leküldéses eseményindítóként.
 
@@ -34,9 +34,9 @@ Ebben a példában minden egyes logikai alkalmazás aktiválódik, akit egy füg
 
 1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), és hozzon létre üres logikai alkalmazás. 
 
-   Ha most ismerkedik a logic apps, tekintse át [a rövid útmutató: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+   Ha most ismerkedik a logic apps, tekintse át [a rövid útmutató: Az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-1. A Keresés mezőbe írja be a "http-kérelem". Eseményindítók listájában válassza a következő eseményindítót: **amikor egy HTTP-kérés fogadásakor.**
+1. A Keresés mezőbe írja be a "http-kérelem". Eseményindítók listájában válassza az eseményindító: **HTTP-kérés fogadásakor**
 
    ![Trigger kiválasztása](./media/logic-apps-scenario-function-sb-trigger/when-http-request-received-trigger.png)
 
@@ -98,7 +98,7 @@ Ezután hozzon létre a függvényt, amely az eseményindító funkcionál, és 
 
 1. Az Azure Portalon nyissa meg és bontsa ki a függvényalkalmazást, ha nem már megnyitásához. 
 
-1. Bontsa ki a függvényalkalmazás nevére, **funkciók**. Az a **funkciók** panelen válassza a **új függvény**. Válassza ki az ezzel a sablonnal: **Service Bus-üzenetsor eseményindító – C#**
+1. Bontsa ki a függvényalkalmazás nevére, **funkciók**. Az a **funkciók** panelen válassza a **új függvény**. Ez a sablon kiválasztása: **Service Bus-üzenetsor eseményindító-C#**
    
    ![Válassza ki az Azure Functions portálra](./media/logic-apps-scenario-function-sb-trigger/newqueuetriggerfunction.png)
 
@@ -114,14 +114,14 @@ Ezután hozzon létre a függvényt, amely az eseményindító funkcionál, és 
    
    private static string logicAppUri = @"https://prod-05.westus.logic.azure.com:443/.........";
    
+   // Re-use instance of http clients if possible - https://docs.microsoft.com/en-us/azure/azure-functions/manage-connections
+   private static HttpClient httpClient = new HttpClient();
+   
    public static void Run(string myQueueItem, TraceWriter log)
    {
        log.Info($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
 
-       using (var client = new HttpClient())
-       {
-           var response = client.PostAsync(logicAppUri, new StringContent(myQueueItem, Encoding.UTF8, "application/json")).Result;
-       }
+       var response = httpClient.PostAsync(logicAppUri, new StringContent(myQueueItem, Encoding.UTF8, "application/json")).Result;
    }
    ```
 

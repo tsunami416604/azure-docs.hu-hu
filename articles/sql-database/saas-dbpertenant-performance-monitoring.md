@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 902fbde0eca8db9113dda51e5d912fa9d94644ee
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: df54f9dd4047fffb578a1a95a2edc47cba711ba1
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57215166"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433518"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Az Azure SQL Database-adatbázisok és a készletek a több-bérlős SaaS-alkalmazás teljesítményének figyelése és kezelése
 
@@ -83,10 +83,10 @@ A *Demo-PerformanceMonitoringAndManagement.ps1* parancsfájl van, feltéve, hogy
 
 | Bemutató | Forgatókönyv |
 |:--|:--|
-| 2 | Normál intenzitású terhelés létrehozása (kb. 40 DTU) |
+| 2 | Normál intenzitású terhelés (hozzávetőlegesen 40 DTU) |
 | 3 | Terhelés létrehozása adatbázisonkénti hosszabb és gyakoribb adatlöketekkel|
-| 4 | Terhelés létrehozása adatbázisonkénti magasabb DTU-löketekkel (kb. 80 DTU)|
-| 5 | Normál terhelés létrehozása, valamint magasabb terhelés létrehozása egyetlen bérlő számára (kb. 95 DTU)|
+| 4 | (KB. 80 DTU) adatbázisonkénti magasabb DTU-löketekkel terhelés létrehozása|
+| 5 | Hozzon létre egy normál terhelés, valamint magasabb terhelés létrehozása egyetlen bérlő (számára körülbelül 95 DTU)|
 | 6 | Kiegyensúlyozatlan terhelés létrehozása több készlet számára|
 
 A terhelésgenerátor egy *szintetikus* CPU-terhelést alkalmaz az összes bérlői adatbázison. A generátor minden bérlői adatbázis számára elindít egy feladatot, amely időközönként meghív egy, a terhelést létrehozó tárolt eljárást. A terhelések szintje (eDTU-ban mérve), időtartama és időköze minden adatbázis esetén más és más, ezzel szimulálva a kiszámíthatatlan bérlői aktivitást.
@@ -196,7 +196,7 @@ Ha a készletben egy önálló adatbázis tartósan magas terhelés, a készlet 
 Ez a gyakorlat a Contoso Concert Hall magas terhelésének a hatását szimulálja, amikor megkezdődik a jegyek árusítása egy népszerű koncertre.
 
 1. Az a **PowerShell ISE-ben**, nyissa meg a... \\ *Demo-PerformanceMonitoringAndManagement.ps1* parancsfájlt.
-1. Állítsa be a **$DemoScenario = 5, Normál terhelés létrehozása, valamint magasabb terhelés létrehozása egyetlen bérlő számára (kb. 95 DTU)** értéket.
+1. Állítsa be **$DemoScenario = 5, normál terhelés létrehozása, valamint magasabb terhelés létrehozása egyetlen bérlő (KB. 95 DTU).**
 1. Állítsa be a **$SingleTenantDatabaseName = contosoconcerthall**értéket.
 1. Futtassa a szkriptet az **F5** billentyűvel.
 

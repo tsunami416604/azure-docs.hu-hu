@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c1b653ee16864f5076cdad9d1dbc33e63b175ca
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: bf1dc33276c10a9b7fe7c7ebb6619b8c47d66bfb
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167594"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447829"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health – gyakori kérdések
 Ez a cikk az Azure Active Directory (Azure AD) Connect Health szolgáltatással kapcsolatos gyakori kérdések (GYIK) rájuk adott válaszokat tartalmazza. Ezek a gyakori kérdések a szolgáltatás, amely tartalmazza a számlázási modell, képességek, korlátozások és támogatás használatáról terjed ki.
@@ -155,7 +155,7 @@ Az Azure AD Connect Health for AD FS ezt a riasztást állít elő, ha az AD FS-
 
 Általában ez a teszt meghiúsul, mert a Health-ügynök nem tudja feloldani az AD FS-farm neve. Ez akkor fordulhat elő, ha a kérelem egy csomópontról (ellentétben rendszeres ügyfél, amely a terheléselosztó elé) a terheléselosztó mögötti lekérdezi kezdeményezett, és az AD FS-kiszolgálók egy hálózati terheléselosztók mögött. Ez a "C:\Windows\System32\drivers\etc" az AD FS-kiszolgáló IP-címét és a egy visszacsatolási IP-cím (127.0.0.1) számára az AD FS-farm neve (például sts.contoso.com) alatt található "hosts" fájl frissítésével kell rögzíteni. Hozzáadása a gazdagép-fájlt fogja testzárlat a hálózati hívást, ezzel lehetővé téve a Health Agent beszerezni a jogkivonatot.
 
-**K: Kaptam egy e-mailt, jelezve, hogy a gép nem a legutóbbi ransomeware támadások tudjon fókuszálni. Miért kapott e-mailt?**
+**K: Kaptam egy e-mailt, jelezve, hogy a gépek nem javítva van a legutóbbi zsarolóprogram-támadásoknak. Miért kapott e-mailt?**
 
 Az Azure AD Connect Health service vizsgálja a gépek figyeli annak biztosítása érdekében a szükséges javítások lettek telepítve az összes. Ha legalább egy gép nincs a kritikus javításokat az e-mailben küldött a bérlői rendszergazdák. A következő logikai ennek meghatározásához használt.
 1. Keresse meg az összes gyorsjavítás telepítve van a gépen.

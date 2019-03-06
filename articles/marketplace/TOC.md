@@ -99,12 +99,12 @@
 #### [Ajánlat törlése](./cloud-partner-portal/manage-offers/cpp-delete-offer.md) 
 
 ### Tesztverzió
-#### [Mi a Tesztverzió?](./cloud-partner-portal-orig/what-is-test-drive.md)
-#### [Azure Resource Manager – Tesztverzió](./cloud-partner-portal-orig/azure-resource-manager-test-drive.md)
-#### [Szolgáltatott tesztverzió](./cloud-partner-portal-orig/hosted-test-drive.md)
-#### [Logikai alkalmazás – Tesztverzió](./cloud-partner-portal-orig/logic-app-test-drive.md)
-#### [Példák átalakítása a tesztverzióhoz](./cloud-partner-portal-orig/transforming-examples-for-test-drive.md)
-#### [Marketing és ajánlott eljárások](./cloud-partner-portal-orig/marketing-and-best-practices.md)
+#### [Mi a Tesztverzió?](./cloud-partner-portal/test-drive/what-is-test-drive.md)
+#### [Azure Resource Manager – Tesztverzió](./cloud-partner-portal/test-drive/azure-resource-manager-test-drive.md)
+#### [Szolgáltatott tesztverzió](./cloud-partner-portal/test-drive/hosted-test-drive.md)
+#### [Logikai alkalmazás – Tesztverzió](./cloud-partner-portal/test-drive/logic-app-test-drive.md)
+#### [Példák átalakítása a tesztverzióhoz](./cloud-partner-portal/test-drive/transforming-examples-for-test-drive.md)
+#### [Marketing és ajánlott eljárások](./cloud-partner-portal/test-drive/marketing-and-best-practices.md)
 
 ### [Azure-alkalmazásajánlat](./cloud-partner-portal/azure-applications/cpp-azure-app-offer.md)
 #### [Előfeltételek](./cloud-partner-portal/azure-applications/cpp-prerequisites.md)

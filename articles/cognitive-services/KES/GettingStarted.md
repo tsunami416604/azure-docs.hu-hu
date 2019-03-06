@@ -10,12 +10,12 @@ ms.subservice: knowledge-exploration
 ms.topic: sample
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 815147abba444f0a55a8455c0a818aa048271b92
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: a48fecd910d87af23a9385270878b0d1b6737007
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309641"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452538"
 ---
 # <a name="get-started-with-the-knowledge-exploration-service"></a>Első lépések a Knowledge Exploration Service szolgáltatással
 
@@ -238,7 +238,7 @@ Ebben a példában feltételezzük, hogy a következő blobtártároló konténe
 
 `kes.exe build_index http://<account>.blob.core.windows.net/<container>/Academic.schema http://<account>.blob.core.windows.net/<container>/Academic.full.data http://<account>.blob.core.windows.net/<container>/Academic.full.index --remote <vm_size>`
 
-Vegye figyelembe, hogy egy ideiglenes virtuális gép létrehozása az index kiépítésére 5 – 10 percig is eltarthat. Gyors prototípuskészítéséhez a következőket teheti:
+Vegye figyelembe, hogy a virtuális gép egy ideiglenes hozhat létre az index 5 – 10 percig is eltarthat. Gyors prototípuskészítéséhez a következőket teheti:
 - Fejleszthet helyileg kisebb adathalmazzal bármilyen gépen.
 - Manuálisan [hozzon létre egy Azure virtuális gépet](../../../articles/virtual-machines/windows/quick-create-portal.md), [csatlakozzon hozzá](../../../articles/virtual-machines/windows/quick-create-portal.md#connect-to-virtual-machine) távoli asztalon keresztül, telepítse a [Knowledge Exploration Service SDK](https://www.microsoft.com/en-us/download/details.aspx?id=51488)-t és futtassa [ `kes.exe` ](CommandLine.md)-t a virtuális gépen.
 

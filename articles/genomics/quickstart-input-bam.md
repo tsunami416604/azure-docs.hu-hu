@@ -1,26 +1,26 @@
 ---
-title: 'Rövid útmutató: Munkafolyamat elküldése BAM bemeneti fájllal | Microsoft Genomics'
+title: Munkafolyamat elküldése egy BAM-fájlt adjon meg – a Microsoft Genomics használatával
 titleSuffix: Azure
-description: Ez a rövid útmutató feltételezi, hogy az msgen kliens telepítve van, és sikeresen futtatta a mintaadatokat a szolgáltatáson keresztül.
+description: Ez a cikk feltételezi, hogy az msgen kliens telepítve van és sikeresen futtatta a mintaadatokat a szolgáltatáson keresztül.
 services: genomics
 author: grhuynh
 manager: cgronlun
 ms.author: grhuynh
 ms.service: genomics
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 12/07/2017
-ms.openlocfilehash: 91bc13dbf024df20ac23ca0ff83a73ed246dce28
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
-ms.translationtype: HT
+ms.openlocfilehash: 329ac374edbffa65a1b654a05a4934828f25d5de
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729504"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435082"
 ---
 # <a name="submit-a-workflow-using-a-bam-file-input"></a>Munkafolyamat elküldése BAM bemeneti fájllal
 
-Ez a rövid útmutató azt ismerteti, hogyan lehet elküldeni egy munkafolyamatot a Microsoft Genomics szolgáltatásba, ha a bemenet egyetlen BAM-fájlból áll. Ez a témakör feltételezi, hogy már telepítette és futtatta az `msgen` klienst, továbbá megismerkedett az Azure Storage használatával. Ha sikeresen elküldte a munkafolyamatot a rendelkezésre álló mintaadatokkal, készen áll a rövid útmutató folytatására. 
+Ez a cikk bemutatja, hogyan lehet elküldeni egy munkafolyamatot a Microsoft Genomics szolgáltatásba, ha a bemeneti fájl egyetlen BAM-fájlból. Ez a témakör feltételezi, hogy már telepítette és futtatta az `msgen` klienst, továbbá megismerkedett az Azure Storage használatával. Sikeresen elküldte a munkafolyamatot, a megadott mintaadatokat használja, ha készen áll, folytassa az ebben a cikkben. 
 
-## <a name="set-up-upload-your-bam-file-to-azure-storage"></a>Előkészületek: BAM-fájl feltöltése az Azure Storage-ba
+## <a name="set-up-upload-your-bam-file-to-azure-storage"></a>Állítsa be: Az Azure storage-BAM-fájl feltöltése
 Tegyük fel, hogy egyetlen BAM-fájllal rendelkezik (*reads.bam*), amelyet feltöltött saját *myaccount* nevű tárfiókjába az Azure-ban: **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/inputs/reads<span></span>.bam<span></span>**. Emellett rendelkezik az API URL-címével és a hozzáférési kulccsal. Azt szeretné, hogy a kimenetek a következő helyre kerüljenek: **https://<span></span>myaccount.blob.core<span></span>.windows<span></span>.net<span></span>/outputs<span></span>**.
 
 

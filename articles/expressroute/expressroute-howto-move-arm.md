@@ -1,19 +1,19 @@
 ---
-title: 'Helyezze át Kapcsolatcsoportok a klasszikusból a Resource Manager - ExpressRoute: PowerShell: Azure |} A Microsoft Docs'
+title: 'Helyezze át Kapcsolatcsoportok a klasszikusból a Resource Manager - ExpressRoute: PowerShell: Azure | Microsoft Docs'
 description: Ezen a lapon azt ismerteti, miként helyezhetők át klasszikus expressroute-kapcsolatcsoporthoz a PowerShell-lel Resource Manager-alapú üzemi modellbe.
 services: expressroute
 author: ganesr
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 01/07/2019
-ms.author: ganesr;cherylmc
+ms.date: 02/25/2019
+ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 984ccfa9bad99281418ba891ce188536ae13d8e5
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: a561ae5d46222ed9da75d0d32948ee3f0b66658d
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106766"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57408411"
 ---
 # <a name="move-expressroute-circuits-from-classic-to-resource-manager-deployment-model-using-powershell"></a>Az ExpressRoute-Kapcsolatcsoportok áthelyezése a klasszikusból Resource Manager-alapú üzemi modellbe PowerShell-lel
 
@@ -21,7 +21,9 @@ Szeretne használni egy ExpressRoute-kapcsolatcsoportot a klasszikus és Resourc
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-* Ellenőrizze, hogy rendelkezik-e az Azure PowerShell-modulok a legújabb verzióra (legalább 1.0-s verzió). További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/overview) foglalkozó témakörben talál.
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+* Győződjön meg arról, hogy telepítette a klasszikus és Az Azure PowerShell-modulok helyileg a számítógépen. További információt [az Azure PowerShell telepítésével és konfigurálásával](/powershell/azure/overview) foglalkozó témakörben talál.
 * Győződjön meg arról, hogy áttekintette a [Előfeltételek](expressroute-prerequisites.md), [útválasztási követelmények](expressroute-routing.md), és [munkafolyamatok](expressroute-workflows.md) konfigurálás megkezdése előtt.
 * Tekintse át az adatokat a megadott [az ExpressRoute-Kapcsolatcsoportok áthelyezése klasszikusból Resource Manager](expressroute-move.md). Győződjön meg arról, hogy megértette a korlátok és korlátozások.
 * Ellenőrizze, hogy a kapcsolatcsoport teljesen működőképes, a klasszikus üzemi modellben.
@@ -65,19 +67,19 @@ Jelentkezzen be a Resource Manager-környezetben, és hozzon létre egy új erő
 1. Jelentkezzen be az Azure Resource Manager-környezetben.
 
   ```powershell
-  Connect-AzureRmAccount
+  Connect-AzAccount
   ```
 
 2. Válassza ki a megfelelő Azure-előfizetést.
 
   ```powershell
-  Get-AzureRmSubscription -SubscriptionName "<Enter Subscription Name here>" | Select-AzureRmSubscription
+  Get-AzSubscription -SubscriptionName "<Enter Subscription Name here>" | Select-AzSubscription
   ```
 
 3. Módosítsa a hozzon létre egy új erőforráscsoportot, ha még nem rendelkezik egy erőforráscsoportot az alábbi kódrészletet.
 
   ```powershell
-  New-AzureRmResourceGroup -Name "DemoRG" -Location "West US"
+  New-AzResourceGroup -Name "DemoRG" -Location "West US"
   ```
 
 ### <a name="step-3-move-the-expressroute-circuit-to-the-resource-manager-deployment-model"></a>3. lépés: Az ExpressRoute-kapcsolatcsoport áthelyezése a Resource Manager-alapú üzemi modellbe
@@ -87,10 +89,10 @@ Most már készen áll az ExpressRoute-kapcsolatcsoport áthelyezése a klasszik
 A kapcsolatcsoport áthelyezése, módosíthatja, és futtassa az alábbi kódrészletet:
 
 ```powershell
-Move-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Location "West US" -ServiceKey "<Service-key>"
+Move-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "DemoRG" -Location "West US" -ServiceKey "<Service-key>"
 ```
 
-Klasszikus módban ExpressRoute-kapcsolatcsoport nem rendelkezik a régió nem kötődik fogalmát. Azonban a Resource Managerben minden erőforrás kell le kell képezni egy Azure-régióban. A régió van megadva. a Move-AzureRmExpressRouteCircuit parancsmagban technikailag lehet bármelyik régióban. Szervezeti okokból érdemes válasszon, amely szorosan jelöli a társviszony-létesítési helyszínen régiót.
+Klasszikus módban ExpressRoute-kapcsolatcsoport nem rendelkezik a régió nem kötődik fogalmát. Azonban a Resource Managerben minden erőforrás kell le kell képezni egy Azure-régióban. A régió van megadva. a Move-AzExpressRouteCircuit parancsmagban technikailag lehet bármelyik régióban. Szervezeti okokból érdemes válasszon, amely szorosan jelöli a társviszony-létesítési helyszínen régiót.
 
 > [!NOTE]
 > Az Áthelyezés befejezése után, az új nevet, amely az előző parancsmag szerepel-e, oldja meg az erőforrás használható. A kapcsolatcsoport lényegében neve lesz.
@@ -105,7 +107,7 @@ Helyezze át a klasszikus ExpressRoute-kapcsolatcsoport a Resource Manager-alap�
 1. Ismerje meg a kapcsolatcsoport részleteket.
 
   ```powershell
-  $ckt = Get-AzureRmExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
+  $ckt = Get-AzExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
   ```
 
 2. Állítsa be a "Klasszikus működés engedélyezése" TRUE.
@@ -117,7 +119,7 @@ Helyezze át a klasszikus ExpressRoute-kapcsolatcsoport a Resource Manager-alap�
 3. Frissítse a kapcsolatcsoportot. Ez a művelet sikeres futtatása után lesz megtekintheti a kapcsolatcsoportot a klasszikus üzemi modellben.
 
   ```powershell
-  Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+  Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
   ```
 
 4. Az ExpressRoute-kapcsolatcsoport részleteit a következő parancsmag futtatásával. Megtekintheti a felsorolt kulcsot kell lennie.
@@ -138,7 +140,7 @@ A klasszikus üzemi modellben való hozzáférés letiltása a következő paran
 1. Az ExpressRoute-kapcsolatcsoport részleteinek beolvasása.
 
   ```powershell
-  $ckt = Get-AzureRmExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
+  $ckt = Get-AzExpressRouteCircuit -Name "DemoCkt" -ResourceGroupName "DemoRG"
   ```
 
 2. Állítsa be a "Klasszikus működés engedélyezése" FALSE.
@@ -150,7 +152,7 @@ A klasszikus üzemi modellben való hozzáférés letiltása a következő paran
 3. Frissítse a kapcsolatcsoportot. Miután a művelet sikeresen befejeződött, nem tudja megtekinteni a kapcsolatcsoportot a klasszikus üzemi modellben.
 
   ```powershell
-Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
   ```
 
 ## <a name="next-steps"></a>További lépések

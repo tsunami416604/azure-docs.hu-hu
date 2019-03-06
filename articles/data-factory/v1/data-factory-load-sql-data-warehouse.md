@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 145a1d24e877cc4083706310694005c01c8c8fbf
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 727a503a2fd942e6fbef9009c760a39f90828d2f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020149"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433127"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>1 TB adat betöltése az Azure SQL Data Warehouse-bA a Data Factory 15 perc alatt
 > [!NOTE]
@@ -199,7 +199,7 @@ Ez a szakasz bemutatja, hogyan konfigurálhatja a cél: `lineitem` az Azure SQL 
 
     Megtekintheti a Futtatás részletei példányt a **Activity Window Explorer** a jobb oldali panelen, beleértve a forrás olvas és ír be a cél, időtartama és az átlagos átviteli sebességet a Futtatás adatmennyiség.
 
-    Az alábbi képernyőfelvételen látható, mint 1 TB-os másolása az Azure Blob Storage-ból az SQL Data Warehouse-bA tartott 14 perc, hatékonyan a 1.22 GB/s átviteli sebesség eléréséhez!
+    Az alábbi képernyőképen az látható, mint 1 TB-os másolása az Azure Blob Storage-ból az SQL Data Warehouse-bA tartott 14 perc, hatékonyan a 1.22 GB/s átviteli sebesség eléréséhez!
 
     ![Másolás varázsló – sikeres párbeszédpanel](media/data-factory-load-sql-data-warehouse/succeeded-info.png)
 

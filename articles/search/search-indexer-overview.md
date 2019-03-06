@@ -7,21 +7,21 @@ services: search
 ms.service: search
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/17/2017
+ms.date: 03/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 0a6c894b08fd76a018035a824b463e41e31c2f2f
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: b485b6b7f6ddbdb45d3ca6170c29a9af3c5b63dc
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310199"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57407986"
 ---
 # <a name="indexers-in-azure-search"></a>Indexelők az Azure Search szolgáltatásban
 
-Egy *indexelő* az Azure Search egy olyan webbejáró, amely kinyeri a kereshető adatok és metaadatok egy külső Azure adatforrásból és tölti fel az indexet alapján mező mező leképezések az index és az adatforrás között. Ezt a megközelítést néha „lekérési modellnek” is nevezik, mivel a szolgáltatás anélkül végzi az adatok lekérését, hogy az adatokat az indexbe küldő kód írására szükség lenne.
+Egy *indexelő* az Azure Search egy olyan webbejáró, amely kinyeri a kereshető adatok és metaadatok egy külső Azure adatforrásból és tölti fel az indexet alapján mező mező leképezések az index és az adatforrás között. Ez a módszer van más néven "lekérési modellnek", mert a szolgáltatás végzi az adatok lekérését, amelyek adatokat ad hozzá egy index kód írása nélkül.
 
-Az indexelők adatforrástípusokon vagy -platformokon alapulnak. Az SQL Server egyéni indexelővel rendelkezik az Azure, Cosmos DB, Azure Table Storage, Blob Storage stb. esetében.
+Az indexelők adatforrástípusokon vagy egyéni indexelők az SQL Server Azure, a Cosmos DB, az Azure Table Storage és a Blob Storage-platformokon alapulnak. BLOB storage-indexelő a blob tartalomtípusok jellemző további tulajdonságokkal rendelkezik.
 
 Az indexelőt használhatja kizárólag adatfeldolgozásra, illetve olyan kombinált műveletekben is, amelyek részeként az indexelő használatával csak az index bizonyos mezőinek betöltése történik meg.
 
@@ -37,6 +37,9 @@ Az indexelők létrehozása és kezelése a következő módszerekkel történhe
 
 Az új indexelőket először előzetes verziójú funkcióként vezetjük be. Az előzetes verziójú funkciók API-kban (REST és .NET) kerülnek bemutatásra, majd később, azok általánosan elérhetővé tétele után integráljuk őket a portál rendszerével. Új indexelő kiértékelése esetén érdemes számolni azzal, hogy kódírásra is sor fog kerülni.
 
+## <a name="permissions"></a>Engedélyek
+
+Az indexelők, beleértve az állapot vagy a definíciók, GET-kérésekhez kapcsolódó minden művelethez szükség van egy [rendszergazdai api-kulcsát](search-security-api-keys.md). 
 
 <a name="supported-data-sources"></a>
 
@@ -62,19 +65,19 @@ Az indexelő beolvassa az adatforrás-kapcsolat egy *adatforrás* objektum. Az a
 Az adatforrások konfigurálása és kezelése az azokat használó indexelőktől függetlenül történik, ami azt jelenti, hogy egy adatforrást több indexelő is használhat egyidejűleg, egynél több index betöltésére.
 
 ### <a name="step-2-create-an-index"></a>2. lépés: Index létrehozása
-Az indexelők automatizálni tudják az adatfeldolgozáshoz kapcsolódó bizonyos feladatokat, de az indexek létrehozása nem tartozik ezek közé. Előfeltételként olyan előre meghatározott indexre van szükség, amelynek mezői egyeznek a külső adatforrás mezőivel. További információk az indexek strukturálásáról: [(Azure Search REST API) Index létrehozása](https://docs.microsoft.com/rest/api/searchservice/Create-Index) vagy [osztály Index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index). A mezőtársításokkal kapcsolatos további információkért lásd [az Azure Search indexelők mezőleképezéseivel](search-indexer-field-mappings.md) foglalkozó témakört.
+Az indexelők automatizálni tudják az adatfeldolgozáshoz kapcsolódó bizonyos feladatokat, de az indexek létrehozása nem tartozik ezek közé. Előfeltételként olyan előre meghatározott indexre van szükség, amelynek mezői egyeznek a külső adatforrás mezőivel. Mezők meg kell egyeznie a nevét és adattípusát. További információk az indexek strukturálásáról: [(Azure Search REST API) Index létrehozása](https://docs.microsoft.com/rest/api/searchservice/Create-Index) vagy [osztály Index](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index). A mezőtársításokkal kapcsolatos további információkért lásd [az Azure Search indexelők mezőleképezéseivel](search-indexer-field-mappings.md) foglalkozó témakört.
 
 > [!Tip]
 > Az indexelők nem tudnak indexet létrehozni Önnek, de a portál **Adatok importálása** varázslója a segítségére lehet ebben. A legtöbb esetben a varázsló következtetni tud az indexsémára a forrás meglévő metaadataiból, és előállít egy olyan előzetes indexsémát, amely beágyazott módon szerkeszthető mindaddig, amíg a varázsló aktív. Miután létrejött az index a szolgáltatásban, a további szerkesztés a portálon a legtöbb esetben új mezők hozzáadására van korlátozva. A varázsló használatát érdemes megfontolnia az indexek létrehozásakor, de az áttekintésükkor nem. A gyakorlati tanuláshoz végezze el a [portál útmutatójában](search-get-started-portal.md) foglalt lépéseket.
 
 ### <a name="step-3-create-and-schedule-the-indexer"></a>3. lépés: Az indexelő létrehozása és ütemezése
-Az indexelődefiníció egy olyan konstrukció, amely megadja az indexet, az adatforrást és az ütemezést. Az indexelők egy másik szolgáltatásból is hivatkozhatnak egy adatforrásra, ha az adott adatforrás ugyanabból az előfizetésből származik. További információk az indexelők strukturálásáról: [Indexelő létrehozása (Azure Search REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer).
+Az indexelő definíciója egy szerkezet, amely egyesíti az adatfeldolgozáshoz kapcsolódó összes elemet. Szükséges elemek a következők: adatforrás és index. Nem kötelező elemek közé tartozik egy ütemezés és a mező-leképezések. Mezőt leképezés csak megadása nem kötelező, ha forrás mezők és az index mezőire egyértelműen felel meg. Az indexelők egy másik szolgáltatásból is hivatkozhatnak egy adatforrásra, ha az adott adatforrás ugyanabból az előfizetésből származik. További információk az indexelők strukturálásáról: [Indexelő létrehozása (Azure Search REST API)](https://docs.microsoft.com/rest/api/searchservice/Create-Indexer).
 
 <a id="RunIndexer"></a>
 
 ## <a name="run-indexers-on-demand"></a>Az indexelők igény szerinti futtatása
 
-Bár a közös indexelő ütemezése, az indexelő is elindítható, a Futtatás paranccsal igény szerinti:
+Bár a közös indexelő ütemezése, az indexelő is elindítható, az adatkészletet a a [futtatása paranccsal](https://docs.microsoft.com/rest/api/searchservice/run-indexer):
 
     POST https://[service name].search.windows.net/indexers/[indexer name]/run?api-version=2017-11-11
     api-key: [Search service admin key]
@@ -82,13 +85,14 @@ Bár a közös indexelő ütemezése, az indexelő is elindítható, a Futtatás
 > [!NOTE]
 > API futtatása sikeresen adja vissza, az indexelő meghívási be van ütemezve, de a tényleges feldolgozást aszinkron módon történik. 
 
-Megfigyelheti, hogy az indexelő állapotát a portál vagy API-val beolvasása indexelő állapota, amelyek ezután ismertetünk. 
+Az indexelő állapota a portálon vagy lekérése az indexelő állapotának API-n keresztül figyelheti. 
 
 <a name="GetIndexerStatus"></a>
 
 ## <a name="get-indexer-status"></a>Az indexelő állapotának beolvasása
 
-Állapot és végrehajtási előzményeit, az indexelők REST API-val lekérheti:
+Kérheti, hogy az indexelő keresztül állapotát és végrehajtási előzményeinek a [indexelő állapotának beolvasása parancs](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status):
+
 
     GET https://[service name].search.windows.net/indexers/[indexer name]/status?api-version=2017-11-11
     api-key: [Search service admin key]
@@ -100,8 +104,8 @@ A válasz teljes indexelő állapot, az utolsó (vagy a folyamatban lévő) az i
         "lastResult": {
             "status":"success",
             "errorMessage":null,
-            "startTime":"2014-11-26T03:37:18.853Z",
-            "endTime":"2014-11-26T03:37:19.012Z",
+            "startTime":"2018-11-26T03:37:18.853Z",
+            "endTime":"2018-11-26T03:37:19.012Z",
             "errors":[],
             "itemsProcessed":11,
             "itemsFailed":0,
@@ -111,8 +115,8 @@ A válasz teljes indexelő állapot, az utolsó (vagy a folyamatban lévő) az i
         "executionHistory":[ {
             "status":"success",
              "errorMessage":null,
-            "startTime":"2014-11-26T03:37:18.853Z",
-            "endTime":"2014-11-26T03:37:19.012Z",
+            "startTime":"2018-11-26T03:37:18.853Z",
+            "endTime":"2018-11-26T03:37:19.012Z",
             "errors":[],
             "itemsProcessed":11,
             "itemsFailed":0,

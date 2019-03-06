@@ -11,12 +11,12 @@ ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 03/04/2019
 ms.author: scottwhi
-ms.openlocfilehash: 1e61ef59bba56a7cc7271c3b42f4d7986c59c004
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 33dfbe70d75335eca79d32807407b97e32c2dbbf
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337779"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440862"
 ---
 # <a name="get-image-insights-with-the-bing-image-search-api"></a>A Bing Image Search API-lemezkép elemzések lekérése
 
@@ -374,7 +374,7 @@ A válasz egy felismert entitás jeleníti meg.
 
 ## <a name="finding-visually-similar-products"></a>Vizuálisan hasonló termékek keresése  
 
-Keresse meg, amelyek tartalmazzák a termékhez, melyek a termékek található az eredeti képet a vizuálisan hasonló képek, állítsa be a [modueles](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modulesrequested) lekérdezési paraméter, SimilarProducts.  
+Keresse meg, amelyek tartalmazzák a termékhez, melyek a termékek található az eredeti képet a vizuálisan hasonló képek, állítsa be a [modulok](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#modulesrequested) lekérdezési paraméter, SimilarProducts.  
 
 A következő kérelmet termékek vizuálisan hasonló képek bekérése mutatja be. A kérelem a [insightsToken](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#insightstoken) lekérdezési paraméterrel meghatározhatja az eredeti rendszerkép, amely a korábbi kérelmekre adott vissza. Találati pontosság javítása érdekében a felhasználói lekérdezési karakterláncot tartalmaznia kell.  
 

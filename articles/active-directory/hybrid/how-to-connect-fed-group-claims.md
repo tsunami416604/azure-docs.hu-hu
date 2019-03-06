@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 8e4f9e76baf07e6ea2cb4cccb63ed0a9add5d767
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 12ccb4978a8cfbaa7dede8d0093c78da05295fec
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57012048"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57410009"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>Alkalmazások csoport-jogcímek konfigurálása az Azure Active Directoryval (nyilvános előzetes verzió)
 
@@ -26,8 +26,8 @@ Az Azure Active Directory biztosíthat a felhasználók csoporttagsági informá
 - Az Azure Active Directory-objektumazonosító (OID) (általánosan elérhető) által azonosított csoportok
 - Csoportok SAMAccountName vagy GroupSID által azonosított Active Directory (AD) szinkronizált csoportok és felhasználók (nyilvános előzetes verzió)
 
->[!Note]
->Használja a neveket és a helyszíni biztonsági azonosítók (SID) támogatása lehetővé teszi, hogy az AD FS már meglévő alkalmazások áthelyezését.    Az Azure AD-ban kezelt csoportok nem gridre bocsáthatja ki ezeket a jogcímeket szükséges attribútumokat tartalmazza.
+> [!Note]
+> Használja a neveket és a helyszíni biztonsági azonosítók (SID) támogatása lehetővé teszi, hogy az AD FS már meglévő alkalmazások áthelyezését.    Az Azure AD-ban kezelt csoportok nem gridre bocsáthatja ki ezeket a jogcímeket szükséges attribútumokat tartalmazza.
 
 ## <a name="group-claims-for-applications-migrating-from-ad-fs-and-other-idps"></a>Csoport jogcímek az AD FS és az egyéb identitásszolgáltató-ről alkalmazások
 
@@ -42,8 +42,8 @@ Csoport jogcímek a támogatott formátumok a következők:
 - **NetbiosDomain\samAccountName** (az Active Directoryból szinkronizált csoportok számára érhető el)
 - **DNSDomainName\samAccountName** (az Active Directoryból szinkronizált csoportok számára érhető el)
 
->[!NOTE]
->SAMAccountName és OnPremisesGroupSID attribútumok az Active Directoryból szinkronizált objektumok csak érhetők el.   Nem érhetők el az Azure Active Directory vagy Office 365-öt létrehozott csoportok.   A helyi csoport attribútumok az alkalmazások csak a szinkronizált csoportokhoz megkapja őket.
+> [!NOTE]
+> SAMAccountName és OnPremisesGroupSID attribútumok az Active Directoryból szinkronizált objektumok csak érhetők el.   Nem érhetők el az Azure Active Directory vagy Office 365-öt létrehozott csoportok.   A helyi csoport attribútumok az alkalmazások csak a szinkronizált csoportokhoz megkapja őket.
 
 ## <a name="options-for-applications-to-consume-group-information"></a>Alkalmazások felhasználhatják őket a csoportinformációk lehetőségei
 
@@ -57,7 +57,7 @@ Azonban ha már meglévő alkalmazás vár fogyasztanak csoport információkat 
 - Ha az alkalmazás az Active Directoryból szinkronizált attribútumok csoport beolvasására konfigurált, és a egy csoport nem tartalmazhat. Ezek az attribútumok nem fog szerepelni a jogcímeket.
 - A jogkivonatok csoportjogcímek közé tartozik a beágyazott csoportokat.   Ha egy felhasználó tagja GroupB és GroupB GroupA tagja, majd a csoport jogcímek a felhasználó tartalmazni fogja a GroupA és GroupB. A szervezetek számára a beágyazott csoportok gyakori használati és a felhasználói csoporttagságok nagy számú a jogkivonatban szereplő csoportok száma növelhető a jogkivonat mérete.   Az Azure Active Directory a SAML helyességi feltételek 150 és 200 a JWT jogkivonatot eredményez, csoportok száma korlátozza.
 
->Az Active Directoryból szinkronizált csoport attribútumok használatának előfeltételei:   A csoportok szinkronizálni kell az Active Directoryból az Azure AD Connect használatával.
+> Az Active Directoryból szinkronizált csoport attribútumok használatának előfeltételei:   A csoportok szinkronizálni kell az Active Directoryból az Azure AD Connect használatával.
 
 Gridre bocsáthatja ki az Active Directory-csoportok a csoport nevét az Azure Active Directory konfigurálása két lépésből áll.
 
@@ -100,21 +100,21 @@ Csoportok az Active Directory segítségével kibocsátható attribútumok helye
 
 ![a jogcímek felhasználói felület](media/how-to-connect-fed-group-claims/group-claims-ui-5.png)
 
-Egyes alkalmazásoknak a csoporttagsági információkat a "szerepkör" jogcím jelennek meg. A felhasználói csoportok szerepkörökként "Kibocsátható egy szerepkör jogcím-csoportok" négyzet bejelölésével opcionálisan küldik.  
+Egyes alkalmazásoknak a csoporttagsági információkat a "szerepkör" jogcím jelennek meg. A felhasználói csoportok szerepkörökként "Kibocsátható egy szerepkör jogcím-csoportok" négyzet bejelölésével opcionálisan küldik.
 
 ![a jogcímek felhasználói felület](media/how-to-connect-fed-group-claims/group-claims-ui-6.png)
 
->[!NOTE]
->A csoport adatai szerepkörökként kibocsátható beállítást használja, ha csak a csoportok megjelennek a szerepkör jogcím.  Bármely alkalmazás-szerepkörök, a felhasználó hozzá van rendelve a szerepkör jogcím nem jelenik.
+> [!NOTE]
+> A csoport adatai szerepkörökként kibocsátható beállítást használja, ha csak a csoportok megjelennek a szerepkör jogcím.  Bármely alkalmazás-szerepkörök, a felhasználó hozzá van rendelve a szerepkör jogcím nem jelenik.
 
-## <a name="configure-the-azure-ad-application-registration-for-group-attributes"></a>Az Azure AD alkalmazás regisztrálása csoport attribútumok konfigurálása  
+## <a name="configure-the-azure-ad-application-registration-for-group-attributes"></a>Az Azure AD alkalmazás regisztrálása csoport attribútumok konfigurálása
 
 Csoportjogcímek is megadható az a [választható jogcímek](../../active-directory/develop/active-directory-optional-claims.md) szakaszában a [Application Manifest](../../active-directory/develop/reference-app-manifest.md).
 
  1. A portálon az Azure Active Directory -> Alkalmazás -> -> Válassza ki a regisztrációk alkalmazás-jegyzékfájl >
 
  2. A groupMembershipClaim módosításával csoport tagsági jogcímek engedélyezése
- 
+
     Az érvényes értékek a következők:
 
     - "All"
@@ -124,10 +124,10 @@ Csoportjogcímek is megadható az a [választható jogcímek](../../active-direc
 
     Példa:
 
-    ```
+    ```json
     "groupMembershipClaims": "SecurityGroup"
     ```
- 
+
     Csoport objectid azonosítójának fog bocsátja ki a csoport alapértelmezés szerint a jogcím értéke.  A helyi csoport attribútumait tartalmazza, vagy módosítsa a jogcímtípus szerepkör jogcím értéke módosításához használja a következő OptionalClaims konfiguráció:
 
  3. Állítsa be a csoport konfigurációja nem kötelező jogcímekben.
@@ -138,12 +138,12 @@ Csoportjogcímek is megadható az a [választható jogcímek](../../active-direc
     - az OAuth/OIDC jogkivonat a hozzáférési tokent
     - Az SAML-jogkivonatok Saml2Token.
 
-    >[!NOTE]
-    >SAML1.1 és a SAML2.0 formátumú jogkivonatokat vonatkozik a Saml2Token típusa  
+    > [!NOTE]
+    > SAML1.1 és a SAML2.0 formátumú jogkivonatokat vonatkozik a Saml2Token típusa
 
-    Minden releváns token típusának módosítása a jogcímet a csoportok a jegyzékfájlban OptionalClaims területén. A OptionalClaims séma a következőképpen történik:
+    Megfelelő jogkivonat alkalmazástípust módosítsa a csoportok jogcím OptionalClaims szakasz a jegyzékfájlban. A OptionalClaims séma a következőképpen történik:
 
- ```
+ ```json
  {
     "name": "groups",
     "source": null,
@@ -163,14 +163,14 @@ Csoportjogcímek is megadható az a [választható jogcímek](../../active-direc
 
  Egyes alkalmazásoknak a felhasználó a szerepkör jogcím csoport adatait.  Ha módosítani szeretné a szerepkör jogcím egy csoportból jogcímet a jogcím típusa, adja hozzá a további tulajdonságok "emit_as_roles".  A csoport értékeket fogja a szerepkör jogcím bocsátja ki.
 
- >[!NOTE]
- >"Emit_as_roles" használata egyetlen alkalmazás-szerepkör konfigurálva, hogy a felhasználó lesz hozzárendelve a szerepkör jogcím nem jelennek meg
+ > [!NOTE]
+ > "Emit_as_roles" használata egyetlen alkalmazás-szerepkör konfigurálva, hogy a felhasználó lesz hozzárendelve a szerepkör jogcím nem jelennek meg
 
 ### <a name="examples"></a>Példák
 
 Csoportok kibocsátható, az OAuth hozzáférési tokenek dnsDomainName\SAMAccountName formátumban nevei
 
-```
+```json
 "optionalClaims": {
     "accessToken": [{
         "name": "groups",
@@ -181,7 +181,7 @@ Csoportok kibocsátható, az OAuth hozzáférési tokenek dnsDomainName\SAMAccou
 
 Kibocsátható csoportnevek netbiosDomain\samAccountName formátumban kell visszaadni, SAML és OIDC azonosító-jogkivonatokat a jogcím a szerepkörök:
 
-```
+```json
 "optionalClaims": {
     "saml2Token": [{
         "name": "groups",

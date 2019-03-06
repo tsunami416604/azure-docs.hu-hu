@@ -1,18 +1,18 @@
 ---
 title: Az Azure Data Factory-folyamat adatkészletek adatok leképezése
-description: Az Azure Data Factory leképezési adatfolyam sepecific adatkészlet tesztkiszolgálókon rendelkezik
+description: Az Azure Data Factory leképezési adatfolyam sepecific adatkészlet kompatibilitási rendelkezik
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: a8e366b14eb73403bfe50af19e4df56dd220d273
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: c704fdba22138eb8e4610a7bc34bd4c2cc98f4ca
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737056"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432090"
 ---
 # <a name="mapping-data-flow-datasets"></a>Data Flow adatkészletek leképezése
 

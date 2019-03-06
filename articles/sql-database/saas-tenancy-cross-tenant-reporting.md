@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewers: billgib,ayolubek
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: ccf6ff75cb041c7d9998f67d579d1b392f83cee9
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 39ff70670d628ca672022b84e59ed3cc8a17d925
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476247"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447022"
 ---
 # <a name="cross-tenant-reporting-using-distributed-queries"></a>Bérlők közötti jelentéskészítés használatával az elosztott lekérdezések
 
@@ -61,7 +61,7 @@ Lekérdezések futtatásához egy érdekesebb adatkészlet, a jegy-generátor fu
 
 1. Az a *PowerShell ISE-ben*, nyissa meg a... \\Tanulási modulok\\működési elemzések\\ad hoc ad hoc jelentéskészítés\\*Demo-AdhocReporting.ps1* szkriptet, és állítsa be a következő értéket:
    * **$DemoScenario** = 1, **jegyek beszerzése minden helyszínen**.
-2. Nyomja meg **F5** futtassa a szkriptet, és jegyeladásokkal létrehozásához. A parancsfájl futása közben továbbra is ebben az oktatóanyagban a lépéseket. A jegy adatainak lekérdezése abban a *ad hoc elosztott lekérdezések futtatása* szakaszban, ezért Várjon, amíg a jegy generátor végrehajtásához.
+2. Nyomja meg **F5** futtassa a szkriptet, és jegyeladásokkal létrehozásához. A parancsfájl futása közben továbbra is ebben az oktatóanyagban a lépéseket. A jegy adatainak lekérdezése abban a *az ad hoc az elosztott lekérdezések futtatása* szakaszban, ezért Várjon, amíg a jegy generátor végrehajtásához.
 
 ## <a name="explore-the-global-views"></a>Fedezze fel a globális nézetek
 
@@ -106,7 +106,7 @@ Ebben a gyakorlatban üzembe helyezi a _adhocreporting_ adatbázis. Ez az össze
 
 1. a *PowerShell ISE-ben*, nyissa meg... \\Tanulási modulok\\működési elemzések\\ad hoc ad hoc jelentéskészítés\\*Demo-AdhocReporting.ps1*. 
 
-1. Állítsa be **$DemoScenario = 2**, _jelentési adatbázis központi telepítése az Ad-hoc_.
+1. Állítsa be **$DemoScenario = 2**, _jelentési adatbázis központi telepítése az Ad hoc_.
 
 1. Nyomja meg **F5** futtassa a szkriptet, és hozzon létre a *adhocreporting* adatbázis.
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: spelluru
-ms.openlocfilehash: fff484f2ee6722083a34383b8960931cb37b8316
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 206cca95c590a01f69d3664fb87398bc2fcb4ad9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700446"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445789"
 ---
 # <a name="azure-relay-authentication-and-authorization"></a>Az Azure Relay-hitelesítés és engedélyezés
 
@@ -29,7 +29,7 @@ Alkalmazások az Azure Relay-hitelesítés közös hozzáférésű Jogosultságk
 
 [SAS hitelesítési](../service-bus-messaging/service-bus-sas.md) lehetővé teszi, hogy egy felhasználó hozzáférést biztosítani Azure Relay-erőforrás meghatározott jogosultságokkal. SAS hitelesítési egy titkosítási kulcs az erőforrás társított jogosultsággal rendelkező konfigurációja magában foglalja. Az ügyfelek így az ezekből nyerhető erőforráshoz való hozzáférést egy SAS-token, amely tartalmazza az erőforrás-URI elért szabályzatkérelem, és a egy lejárati aláírva a konfigurált kulcs.
 
-Kulcsok a Relay-névtér SAS konfigurálható. A Service Bus-üzenetkezelés, eltérően [Relay hibrid kapcsolatai](relay-hybrid-connections-protocol.md) támogatja a nem hitelesített vagy névtelen feladók. Engedélyezheti a névtelen hozzáférés az entitás létrehozásakor, a portálon az alábbi képernyőfelvételen látható módon:
+Kulcsok a Relay-névtér SAS konfigurálható. A Service Bus-üzenetkezelés, eltérően [Relay hibrid kapcsolatai](relay-hybrid-connections-protocol.md) támogatja a nem hitelesített vagy névtelen feladók. Engedélyezheti a névtelen hozzáférés az entitás létrehozásakor, a portálon az alábbi képernyőképen látható módon:
 
 ![][0]
 

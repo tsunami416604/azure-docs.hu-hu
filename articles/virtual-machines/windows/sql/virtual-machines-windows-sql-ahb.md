@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 1c3f67cbe422ffe839018f0682fa2de6440de773
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 8578cd24b585bb5f0ba4930f005d8d2b2fece7f7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823365"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449682"
 ---
 # <a name="how-to-change-the-licensing-model-for-a-sql-server-virtual-machine-in-azure"></a>Az Azure-beli SQL Server virtuális gép licencelési modelljét módosítása
 Ez a cikk bemutatja, hogyan módosíthatja az Azure-ban az új SQL Server virtuális gép licencelési modelljét SQL virtuális gép erőforrás-szolgáltató – **Microsoft.SqlVirtualMachine**. Kettő licencelési üzemeltető SQL Server – használatalapú fizetés, egy virtuális gépet (VM) modellt és a hozott licences (BYOL). És most már, PowerShell vagy az Azure CLI használatával, módosíthatja licencelési modellt az SQL Server virtuális gép használja. 
@@ -32,7 +32,7 @@ A **bring-your-saját licenc** modellje (BYOL) néven is ismert a [Azure Hybrid 
 Váltás a két licenc modell között felmerülő **állásidő nélkül**, nem indítja újra a virtuális Gépet, hozzáadja **további költségek nélkül** (valójában aktiválása AHB *csökkenti a* költség) ,és**azonnali hatállyal**. 
 
   >[!NOTE]
-  > - Válthat a licencelési modell érhető el jelenleg csak egy használatalapú fizetéses SQL Server Virtuálisgép-rendszerkép használata esetén. Ha a portálról bring-your-saját licenc-lemezképpel indul el, nem lesz képes átalakítani a rendszerképet a használatalapú fizetéses előfizetésre.
+  > - A licencmodell konvertálása jelenleg csak használatalapú fizetéses SQL Server virtuálisgép-rendszerképek esetén érhető el. A rendszerképek saját licenccel használható verziói nem konvertálhatóak használatalapú fizetésessé.
   > - CSP-ügyfeleknek a AHB juttatás képes használni, először a használatalapú fizetést biztosító virtuális gépek telepítése, majd a bring-your-saját licenc által. 
   > - Ez a lehetőség jelenleg csak akkor használható a nyilvános felhőben telepítések.
 
@@ -65,7 +65,7 @@ Az alábbi lépéseket az Azure-előfizetését az Azure portal használatával 
   ![A szolgáltató módosítása](media/virtual-machines-windows-sql-ahb/select-resource-provider-sql.png)
 
 ### <a name="with-azure-cli"></a>Az Azure CLI-vel
-A következő kódrészletet az az Azure susbcription fognak regisztrálni az erőforrás-szolgáltató SQL. 
+A következő kódrészletet az erőforrás-szolgáltató SQL regisztrálja az Azure-előfizetésében. 
 
 ```cli
 # Register the new SQL resource provider for your subscription 
@@ -109,7 +109,7 @@ Miután az SQL Server virtuális gép az erőforrás-szolgáltató regisztrálva
 
 
   >[!NOTE]
-  >  Válthat a licencelési modell érhető el jelenleg csak egy használatalapú fizetéses SQL Server Virtuálisgép-rendszerkép használata esetén. Ha a portálról bring-your-saját licenc-lemezképpel indul el, nem lesz képes átalakítani a rendszerképet a használatalapú fizetéses előfizetésre. 
+  >  A licencmodell konvertálása jelenleg csak használatalapú fizetéses SQL Server virtuálisgép-rendszerképek esetén érhető el. A rendszerképek saját licenccel használható verziói nem konvertálhatóak használatalapú fizetésessé. 
 
 ### <a name="with-the-azure-portal"></a>Az Azure Portallal
 Módosíthatja a licencelési modell, közvetlenül a portálról. 

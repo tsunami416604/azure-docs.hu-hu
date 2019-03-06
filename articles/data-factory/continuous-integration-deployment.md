@@ -11,18 +11,20 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/17/2019
 ms.author: douglasl
-ms.openlocfilehash: 0d7c8640cb2a3f6d4d1a32a555c03dc2eca48b9a
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: bfab3c94892b94eaf1c0585ee47a6dcbdb161776
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901224"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452725"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Folyamatos integráció és teljesítés (CI/CD) az Azure Data Factoryban
 
 Folyamatos integráció az eljárás a tesztelési minden módosítás történik az automatikusan és a lehető leghamarabb kódbázis. Folyamatos Készregyártás követi a tesztelés, amely történik a folyamatos integráció során, majd leküldi a módosítások egy átmeneti és éles rendszerbe.
 
 Az Azure Data Factoryhoz folyamatos integráció és teljesítés azt jelenti, hogy a másikra történő áthelyezésének Data Factory-folyamatok az egyik környezetből (fejlesztési, tesztelési és éles környezetben). Ehhez a folyamatos integráció és teljesítés, Data Factory felhasználói felülete integrációs használhatja az Azure Resource Manager-sablonok. A Data Factory felhasználói felülete egy Resource Manager-sablont hozhat létre, kiválasztásakor a **ARM-sablon** beállítások. Ha bejelöli **exportálása ARM-sablon**, a portál létrehozza a Resource Manager-sablon a data factory és a egy konfigurációs fájl, amely tartalmazza az összes kapcsolat-karakterlánc és más paramétereket. Akkor rendelkezik az egyes környezetekhez (fejlesztési, tesztelési és éles környezetben) egy konfigurációs fájl létrehozása céljából. A fő Resource Manager-sablonfájl minden környezet esetében ugyanaz marad.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 A 9 perces bevezető és a funkció bemutatójáért tekintse meg a következő videót:
 
@@ -161,7 +163,7 @@ A titkos kulcsok kezeléséhez két módja van:
     ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
 ### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Engedélyek megadása az Azure-folyamatok ügynök
-Az Azure Key Vault feladat sikertelen lehet a hozzáférés megtagadva hiba fIntegration Runtimest időben. A kiadás a naplók letöltéséhez, és keresse meg a `.ps1` fájlt a paranccsal az Azure-folyamatok ügynök engedélyt. Futtathatja a parancsot közvetlenül, vagy a résztvevő-azonosító átmásolhatja a fájlt, és manuálisan adja hozzá a hozzáférési szabályzat az Azure Portalon. (*Első* és *lista* rendszer szükséges minimális engedélyeket).
+Az Azure Key Vault feladat sikertelen lehet a hozzáférés megtagadva hiba fIntegration modul időpontjának. A kiadás a naplók letöltéséhez, és keresse meg a `.ps1` fájlt a paranccsal az Azure-folyamatok ügynök engedélyt. Futtathatja a parancsot közvetlenül, vagy a résztvevő-azonosító átmásolhatja a fájlt, és manuálisan adja hozzá a hozzáférési szabályzat az Azure Portalon. (*Első* és *lista* rendszer szükséges minimális engedélyeket).
 
 ### <a name="update-active-triggers"></a>Aktív eseményindítók frissítése
 Központi telepítés is sikertelen, ha aktív eseményindítók frissíti. Aktív eseményindítók frissítéséhez szüksége manuális állítják őket, és indítsa el őket az üzembe helyezés után. Erre a célra az Azure PowerShell-lel feladat adhat hozzá az alábbi példában látható módon:
@@ -173,14 +175,14 @@ Központi telepítés is sikertelen, ha aktív eseményindítók frissíti. Akt�
 1.  Válasszon **beágyazott parancsfájlja** szkriptet írja be, és adja meg a kódot. A következő példa leállítja az eseményindítók:
 
     ```powershell
-    $triggersADF = Get-AzureRmDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
+    $triggersADF = Get-AzDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
 
-    $triggersADF | ForEach-Object { Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.name -Force }
+    $triggersADF | ForEach-Object { Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.name -Force }
     ```
 
     ![](media/continuous-integration-deployment/continuous-integration-image11.png)
 
-Hasonló lépésekkel és a hasonló kóddal (az a `Start-AzureRmDataFactoryV2Trigger` függvény) a telepítést követően újraindítható az eseményindítók.
+Hasonló lépésekkel és a hasonló kóddal (az a `Start-AzDataFactoryV2Trigger` függvény) a telepítést követően újraindítható az eseményindítók.
 
 > [!IMPORTANT]
 > A folyamatos integrációt és üzembe helyezési forgatókönyvek ugyanaz a saját üzemeltetésű integrációs típusát különböző környezetek között kell lennie. Például, ha rendelkezik egy *saját üzemeltetésű* Integration Runtime (IR) a fejlesztési környezetben, ugyanezt az integrációs Modult típusúnak kell lennie *saját üzemeltetésű* más, például a tesztelési és éles környezetekben is. Hasonlóképpen, ha az integrációs modulok között több szakaszt, hogy az integrációs modulok, konfigurálnia *saját üzemeltetésű társított* összes környezetekben, például fejlesztési, tesztelési és éles környezetben.
@@ -727,7 +729,7 @@ Hasonló lépésekkel és a hasonló kóddal (az a `Start-AzureRmDataFactoryV2Tr
 
 ## <a name="sample-script-to-stop-and-restart-triggers-and-clean-up"></a>Mintaparancsfájl állítsa le és indítsa újra az eseményindítók és karbantartása
 
-Íme egy minta parancsfájlt eseményindítók telepítés előtt állítsa le, és ezt követően indítsa újra az eseményindítók. A parancsfájl használatával törölje az erőforrást, amelyek el lettek távolítva a kódot is tartalmaz. Telepítse az Azure PowerShell legújabb verzióját, lásd: [Azure PowerShell telepítése a Windows a Powershellgettel](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.9.0).
+Íme egy minta parancsfájlt eseményindítók telepítés előtt állítsa le, és ezt követően indítsa újra az eseményindítók. A parancsfájl használatával törölje az erőforrást, amelyek el lettek távolítva a kódot is tartalmaz. Telepítse az Azure PowerShell legújabb verzióját, lásd: [Azure PowerShell telepítése a Windows a Powershellgettel](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
 ```powershell
 param
@@ -745,7 +747,7 @@ $resources = $templateJson.resources
 
 #Triggers 
 Write-Host "Getting triggers"
-$triggersADF = Get-AzureRmDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
+$triggersADF = Get-AzDataFactoryV2Trigger -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
 $triggersTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/triggers" }
 $triggerNames = $triggersTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
 $activeTriggerNames = $triggersTemplate | Where-Object { $_.properties.runtimeState -eq "Started" -and ($_.properties.pipelines.Count -gt 0 -or $_.properties.pipeline.pipelineReference -ne $null)} | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
@@ -757,32 +759,32 @@ if ($predeployment -eq $true) {
     Write-Host "Stopping deployed triggers"
     $triggerstostop | ForEach-Object { 
         Write-host "Disabling trigger " $_
-        Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
+        Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
     }
 }
 else {
     #Deleted resources
     #pipelines
     Write-Host "Getting pipelines"
-    $pipelinesADF = Get-AzureRmDataFactoryV2Pipeline -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
+    $pipelinesADF = Get-AzDataFactoryV2Pipeline -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
     $pipelinesTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/pipelines" }
     $pipelinesNames = $pipelinesTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
     $deletedpipelines = $pipelinesADF | Where-Object { $pipelinesNames -notcontains $_.Name }
     #datasets
     Write-Host "Getting datasets"
-    $datasetsADF = Get-AzureRmDataFactoryV2Dataset -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
+    $datasetsADF = Get-AzDataFactoryV2Dataset -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
     $datasetsTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/datasets" }
     $datasetsNames = $datasetsTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40) }
     $deleteddataset = $datasetsADF | Where-Object { $datasetsNames -notcontains $_.Name }
     #linkedservices
     Write-Host "Getting linked services"
-    $linkedservicesADF = Get-AzureRmDataFactoryV2LinkedService -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
+    $linkedservicesADF = Get-AzDataFactoryV2LinkedService -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
     $linkedservicesTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/linkedservices" }
     $linkedservicesNames = $linkedservicesTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
     $deletedlinkedservices = $linkedservicesADF | Where-Object { $linkedservicesNames -notcontains $_.Name }
     #Integrationruntimes
     Write-Host "Getting integration runtimes"
-    $integrationruntimesADF = Get-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
+    $integrationruntimesADF = Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -ResourceGroupName $ResourceGroupName
     $integrationruntimesTemplate = $resources | Where-Object { $_.type -eq "Microsoft.DataFactory/factories/integrationruntimes" }
     $integrationruntimesNames = $integrationruntimesTemplate | ForEach-Object {$_.name.Substring(37, $_.name.Length-40)}
     $deletedintegrationruntimes = $integrationruntimesADF | Where-Object { $integrationruntimesNames -notcontains $_.Name }
@@ -791,112 +793,182 @@ else {
     Write-Host "Deleting triggers"
     $deletedtriggers | ForEach-Object { 
         Write-Host "Deleting trigger "  $_.Name
-        $trig = Get-AzureRmDataFactoryV2Trigger -name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName
+        $trig = Get-AzDataFactoryV2Trigger -name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName
         if ($trig.RuntimeState -eq "Started") {
-            Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name -Force 
+            Stop-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_.Name -Force 
         }
-        Remove-AzureRmDataFactoryV2Trigger -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
+        Remove-AzDataFactoryV2Trigger -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
     }
     Write-Host "Deleting pipelines"
     $deletedpipelines | ForEach-Object { 
         Write-Host "Deleting pipeline " $_.Name
-        Remove-AzureRmDataFactoryV2Pipeline -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
+        Remove-AzDataFactoryV2Pipeline -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
     }
     Write-Host "Deleting datasets"
     $deleteddataset | ForEach-Object { 
         Write-Host "Deleting dataset " $_.Name
-        Remove-AzureRmDataFactoryV2Dataset -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
+        Remove-AzDataFactoryV2Dataset -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
     }
     Write-Host "Deleting linked services"
     $deletedlinkedservices | ForEach-Object { 
         Write-Host "Deleting Linked Service " $_.Name
-        Remove-AzureRmDataFactoryV2LinkedService -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
+        Remove-AzDataFactoryV2LinkedService -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
     }
     Write-Host "Deleting integration runtimes"
     $deletedintegrationruntimes | ForEach-Object { 
         Write-Host "Deleting integration runtime " $_.Name
-        Remove-AzureRmDataFactoryV2IntegrationRuntime -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
+        Remove-AzDataFactoryV2IntegrationRuntime -Name $_.Name -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Force 
     }
 
     if ($deleteDeployment -eq $true) {
         Write-Host "Deleting ARM deployment ... under resource group: " $ResourceGroupName
-        $deployments = Get-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName
+        $deployments = Get-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName
         $deploymentsToConsider = $deployments | Where { $_.DeploymentName -like "ArmTemplate_master*" -or $_.DeploymentName -like "ArmTemplateForFactory*" } | Sort-Object -Property Timestamp -Descending
         $deploymentName = $deploymentsToConsider[0].DeploymentName
 
        Write-Host "Deployment to be deleted: " $deploymentName
-        $deploymentOperations = Get-AzureRmResourceGroupDeploymentOperation -DeploymentName $deploymentName -ResourceGroupName $ResourceGroupName
+        $deploymentOperations = Get-AzResourceGroupDeploymentOperation -DeploymentName $deploymentName -ResourceGroupName $ResourceGroupName
         $deploymentsToDelete = $deploymentOperations | Where { $_.properties.targetResource.id -like "*Microsoft.Resources/deployments*" }
 
         $deploymentsToDelete | ForEach-Object { 
             Write-host "Deleting inner deployment: " $_.properties.targetResource.id
-            Remove-AzureRmResourceGroupDeployment -Id $_.properties.targetResource.id
+            Remove-AzResourceGroupDeployment -Id $_.properties.targetResource.id
         }
         Write-Host "Deleting deployment: " $deploymentName
-        Remove-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroupName -Name $deploymentName
+        Remove-AzResourceGroupDeployment -ResourceGroupName $ResourceGroupName -Name $deploymentName
     }
 
     #Start Active triggers - After cleanup efforts
     Write-Host "Starting active triggers"
     $activeTriggerNames | ForEach-Object { 
         Write-host "Enabling trigger " $_
-        Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
+        Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name $_ -Force 
     }
 }
 ```
 
 ## <a name="use-custom-parameters-with-the-resource-manager-template"></a>Egyéni paraméterek használata a Resource Manager-sablon
 
-A Resource Manager-sablon egyéni paraméterek határozhatja meg. Rendelkezik egy fájlt a `arm-template-parameters-definition.json` a tárház gyökérmappájában. (A fájl nevének egyeznie kell a név pontosan az itt látható.) A Data Factory megpróbálja beolvasni a fájlt, bármelyik ágból az éppen dolgozik, ne csak az együttműködés ágból. Ha nincs fájl található, adat-előállító használ, az alapértelmezett paramétereket és értékeket.
+A GIT módban van, ha a sablon és a csoport tulajdonságok vannak paraméteres tulajdonságok beállítása a Resource Manager-sablon a felülbírálhatja az alapértelmezett tulajdonságokat. Előfordulhat, hogy szeretné felülbírálni az alapértelmezett paraméterezés sablon a következő használati helyzetekben:
+
+* Automatizált CI/CD használ, és meg szeretné változtatni az egyes tulajdonságok Resource Manager üzembe helyezése során, de a tulajdonságok nem paraméterezett alapértelmezés szerint.
+* A gyári olyan nagy méretű, hogy az alapértelmezett Resource Manager-sablon érvénytelen, mert több, mint a megengedett paraméterek (256).
+
+Ezen feltételek mellett felülbírálhatja az alapértelmezett paraméterezés sablont, hozzon létre egy fájlt *arm-sablon-paraméterek-definition.json* a tárház gyökérmappájában. A fájl neve pontosan egyeznie kell. A Data Factory próbál bármelyik ágból, jelenleg az Azure Data Factory-portálon, nem csak az együttműködés ágból a fájl olvasásához. Létrehozhat vagy szerkessze a fájlt egy privát ágban, ahol tesztelheti a módosításokat a használatával a **exportálása ARM-sablon** a felhasználói felületen. A fájlt, majd egyesítheti az együttműködés ággal való. Ha nem fájl található, használja az alapértelmezett sablont.
+
 
 ### <a name="syntax-of-a-custom-parameters-file"></a>Egy egyéni paraméterfájl szintaxisa
 
-Az alábbiakban néhány irányelv használatához az egyéni paraméterfájl runboookok létrehozásakor. A a szintaxisra vonatkozó példákat lásd a következő szakaszban [egyéni paraméterek mintafájl](#sample).
+Íme néhány a szabályokat, akkor használja, ha az egyéni paramétereket tartalmazó fájlt hoz létre. A fájl minden egyes entitástípus szakasz áll: eseményindító, folyamat, linkedservice, dataset, integrationruntime és így tovább.
+* Adja meg az útvonal a kapcsolódó entitás típusa alapján.
+* Ha beállította a tulajdonság neve "\*:" %, jelzésére, hogy szeretné-e az összes tulajdonság alapján (csak az első szintű, nem a rekurzív módon) le paraméterezni. Olyan kivételek, ez is megadhatja.
+* A tulajdonság értékének beállításakor karakterláncként, jelzésére, hogy szeretné-e paraméterezni a tulajdonságot. Használja a következő formátumot `<action>:<name>:<stype>`.
+   *  `<action>` a következő karakterek egyike lehet:
+      * `=` azt jelenti, hogy a jelenlegi érték folyamatosan, a paraméter alapértelmezett értéke.
+      * `-` azt jelenti, hogy ne legyenek a paraméter alapértelmezett értéke.
+      * `|` van egy különleges esetben a kapcsolati karakterláncok vagy a kulcsok Azure Key vault titkos kulcsok.
+   * `<name>` a paraméter neve van. Ha üres, a tulajdonság nevét vesz igénybe. Ha az érték kezdődik a `-` karakter, a neve van lerövidítettük. Ha például `AzureStorage1_properties_typeProperties_connectionString` lenne csonkolva `AzureStorage1_connectionString`.
+   * `<stype>` a paraméter típusa. Ha `<stype>` van üres, az alapértelmezett típus az `string`. Támogatott értékek: `string`, `bool`, `number`, `object`, és `securestring`.
+* Ha megad egy tömböt a szolgáltatásdefiníciós fájlban, jelzi, hogy a megfelelő tulajdonság a sablonban egy tömb. A Data Factory használatával a definíció az Integration Runtime-objektum a tömb a megadott végighalad a tömbben található összes objektumot. A második objektum egy karakterláncot, a tulajdonság, amely minden egyes ismétléskor szolgál a neveként a paraméter neve lesz.
+* Nem alkalmas egy adott erőforrás-példány definíciója. Bármely definíció az adott típusú valamennyi erőforrására vonatkozik.
+* Alapértelmezés szerint minden biztonságos karakterlánc, például a Key Vault titkos kódok és a biztonságos karakterláncot, például kapcsolati karakterláncokat, a kulcsok és a jogkivonatok, paraméteres vannak.
+ 
+## <a name="sample-parameterization-template"></a>Paraméterezés mintasablon
 
-1. Tömb a szolgáltatásdefiníciós fájlban adja meg, ha azt jelzi, hogy az egyező tulajdonság a sablonban egy tömb. A Data Factory végighalad az Integration Runtime-objektum a tömb a megadott definíció használatával a tömbben található összes objektumot. A második objektum egy karakterláncot, a tulajdonság, amely minden egyes ismétléskor szolgál a neveként a paraméter neve lesz.
-
-    ```json
-    ...
+```json
+{
+    "Microsoft.DataFactory/factories/pipelines": {
+        "properties": {
+            "activities": [{
+                "typeProperties": {
+                    "waitTimeInSeconds": "-::number",
+                    "headers": "=::object"
+                }
+            }]
+        }
+    },
+    "Microsoft.DataFactory/factories/integrationRuntimes": {
+        "properties": {
+            "typeProperties": {
+                "*": "="
+            }
+        }
+    },
     "Microsoft.DataFactory/factories/triggers": {
         "properties": {
-            "pipelines": [{
-                    "parameters": {
-                        "*": "="
-                    }
+            "typeProperties": {
+                "recurrence": {
+                    "*": "=",
+                    "interval": "=:triggerSuffix:number",
+                    "frequency": "=:-freq"
                 },
-                "pipelineReference.referenceName"
-            ],
-            "pipeline": {
-                "parameters": {
-                    "*": "="
+                "maxConcurrency": "="
+            }
+        }
+    },
+    "Microsoft.DataFactory/factories/linkedServices": {
+        "*": {
+            "properties": {
+                "typeProperties": {
+                    "accountName": "=",
+                    "username": "=",
+                    "connectionString": "|:-connectionString:secureString",
+                    "secretAccessKey": "|"
+                }
+            }
+        },
+        "AzureDataLakeStore": {
+            "properties": {
+                "typeProperties": {
+                    "dataLakeStoreUri": "="
                 }
             }
         }
     },
-    ...
-    ```
+    "Microsoft.DataFactory/factories/datasets": {
+        "properties": {
+            "typeProperties": {
+                "*": "="
+            }
+        }
+    }
+}
+```
 
-2. Ha beállította a tulajdonságnév `*`, azt jelzi, amelyet az összes tulajdonság használata ezen a szinten csak az általunk explicit módon definiálva a sablon.
+### <a name="explanation"></a>Leírás:
 
-3. A tulajdonság értékének beállításakor karakterláncként, jelzésére, hogy szeretné-e paraméterezni a tulajdonságot. Használja a következő formátumot: `<action>:<name>:<stype>`.
-    1.  `<action>` a következő karakterek egyike lehet: 
-        1.  `=`  azt jelenti, hogy a jelenlegi érték folyamatosan, a paraméter alapértelmezett értéke.
-        2.  `-` azt jelenti, hogy ne legyenek a paraméter alapértelmezett értéke.
-        3.  `|` van egy különleges esetben egy kapcsolati karakterláncot az Azure Key vault titkos kulcsok számára.
-    2.  `<name>` a paraméter neve van. Ha `<name`> van üres, vesz igénybe a paraméter neve 
-    3.  `<stype>` a paraméter típusa. Ha `<stype>` van üres, az alapértelmezett típus: karakterlánc.
-4.  Ha megad egy `-` karakter a paraméternév megadásához, paraméter neve röviden teljes erőforrás-kezelő elején `<objectName>_<propertyName>`.
-Ha például `AzureStorage1_properties_typeProperties_connectionString` csonkolva van `AzureStorage1_connectionString`.
+#### <a name="pipelines"></a>Folyamatok
+    
+* A tevékenységek/typeProperties/waitTimeInSeconds elérési út minden tulajdonság van paraméterezni. Ez azt jelenti, hogy minden tevékenység egy folyamatot, amely rendelkezik a kód szintű vlastnost s `waitTimeInSeconds` (például a `Wait` tevékenység) egy számot, egy alapértelmezett névvel rendelkező paraméteres van. De azt a Resource Manager-sablon nem rendelkezik alapértelmezett értékkel. Egy kötelező bemeneti csak a Resource Manager üzembe helyezése során.
+* Hasonlóképpen, egy nevű `headers` (például egy `Web` tevékenység) típussal van paraméterezve `object` (JObject). Alapértelmezett érték, amely ugyanazt az értéket, mint a forrás gyári rendelkezik.
 
+#### <a name="integrationruntimes"></a>IntegrationRuntimes
 
-### <a name="sample"></a> Mintafájl egyéni paraméterek
+* Csak a tulajdonságokat, és az összes tulajdonság, az elérési út alatt `typeProperties` vannak paraméteres megfelelő alapértelmezett értékükön. Például az aktuális séma, állapot nincsenek két tulajdonság alatt **IntegrationRuntimes** típusú tulajdonságok: `computeProperties` és `ssisProperties`. Mindkét tulajdonság típusa megfelelő alapértelmezett értékek és típusok (objektum) együtt jönnek létre.
 
-Az alábbi példa bemutatja egy minta paramétereket tartalmazó fájlt. Referenciaként a minta használatával hozza létre a saját egyéni paramétereket tartalmazó fájlt. Ha Ön a fájl nem a megfelelő JSON formátumban, a Data Factory kimenete egy a böngészőbeli konzolon megjelenő hibaüzenet, és visszaáll az alapértelmezett paraméterek és a Data Factory felhasználói felülete látható értékeket.
+#### <a name="triggers"></a>Eseményindítók
+
+* A `typeProperties`, két tulajdonság paraméteres vannak. Az első egy `maxConcurrency`, amelyhez van megadva, alapértelmezett értékkel rendelkező és a típus lenne `string`. Az alapértelmezett paraméter neve van `<entityName>_properties_typeProperties_maxConcurrency`.
+* A `recurrence` tulajdonság is van paraméterezni. Részre ezen a szinten az összes tulajdonság megadott lehet paraméterezni karakterláncként, az alapértelmezett értékeket, és a paraméterek nevei. Kivétel ez alól a `interval` tulajdonság, amely paraméteres szám típusú, és a paraméternév utótaggal `<entityName>_properties_typeProperties_recurrence_triggerSuffix`. Ehhez hasonlóan a `freq` tulajdonság egy karakterlánc, és karakterláncként van paraméteres. Azonban a `freq` tulajdonság alapértelmezett érték nélkül van paraméterezni. A név lerövidítettük, suffixed. Például: `<entityName>_freq`.
+
+#### <a name="linkedservices"></a>LinkedServices
+
+* Társított szolgáltatásokat egy egyedülálló megoldás. Társított szolgáltatásokat és adatkészleteket lehet számos különböző, mert típusspecifikus testreszabási biztosíthat. Akkor előfordulhat, hogy tegyük fel például, hogy az összes társított szolgáltatás típusa `AzureDataLakeStore`, egy adott sablon lesz alkalmazott, és minden egyéb esetében (keresztül \*) egy másik sablon lépnek érvénybe.
+* Az előző példában a `connectionString` tulajdonság lesz lehet paraméterezni, mint egy `securestring` érték, nem rendelkezik alapértelmezett értékkel, és a egy rövidített paraméternév van utótaggal fog rendelkezni `connectionString`.
+* A tulajdonság `secretAccessKey`, azonban nem kell történik egy `AzureKeyVaultSecret` (például egy `AmazonS3` társított szolgáltatás). Így paraméterekkel, automatikusan a az Azure Key Vault titkos kulcsából, rendelkeznek, és azt a mavenből lekért a kulcstartóhoz, amely a forrás-előállító lesz konfigurálva. Akkor is is parametrizálja a key vault magát.
+
+#### <a name="datasets"></a>Adathalmazok
+
+* Annak ellenére, hogy a típus-specifikus testreszabási adatkészletek esetében érhető el, anélkül, hogy explicit módon kellene konfigurációs adható meg egy \*-szolgáltatásiszint-konfiguráció. Az előző példában az összes adatkészlet tulajdonságai alapján `typeProperties` paraméteres vannak.
+
+Az alapértelmezett paraméterezés sablon módosíthatja, de ez az aktuális sablon. Ez akkor lehet hasznos, ha csupán hozzáadása egy további tulajdonságot paraméterként, de még ha nem szeretné a meglévő parameterizations elvesznek, és újból létre kell hozni.
+
 
 ```json
 {
-    "Microsoft.DataFactory/factories/pipelines": {},
-    "Microsoft.DataFactory/factories/integrationRuntimes": {
+    "Microsoft.DataFactory/factories/pipelines": {
+    },
+    "Microsoft.DataFactory/factories/integrationRuntimes":{
         "properties": {
             "typeProperties": {
                 "ssisProperties": {
@@ -916,7 +988,8 @@ Az alábbi példa bemutatja egy minta paramétereket tartalmazó fájlt. Referen
                 "linkedInfo": {
                     "key": {
                         "value": "-::secureString"
-                    }
+                    },
+                    "resourceId": "="
                 }
             }
         }
@@ -927,14 +1000,18 @@ Az alábbi példa bemutatja egy minta paramétereket tartalmazó fájlt. Referen
                     "parameters": {
                         "*": "="
                     }
-                },
+                },  
                 "pipelineReference.referenceName"
             ],
             "pipeline": {
                 "parameters": {
                     "*": "="
                 }
+            },
+            "typeProperties": {
+                "scope": "="
             }
+
         }
     },
     "Microsoft.DataFactory/factories/linkedServices": {
@@ -957,7 +1034,25 @@ Az alábbi példa bemutatja egy minta paramétereket tartalmazó fájlt. Referen
                     "tenant": "=",
                     "dataLakeStoreUri": "=",
                     "baseUrl": "=",
+                    "database": "=",
+                    "serviceEndpoint": "=",
+                    "batchUri": "=",
+                    "databaseName": "=",
+                    "systemNumber": "=",
+                    "server": "=",
+                    "url":"=",
+                    "aadResourceId": "=",
                     "connectionString": "|:-connectionString:secureString"
+                }
+            }
+        },
+        "Odbc": {
+            "properties": {
+                "typeProperties": {
+                    "userName": "=",
+                    "connectionString": {
+                        "secretName": "="
+                    }
                 }
             }
         }
@@ -970,8 +1065,7 @@ Az alábbi példa bemutatja egy minta paramétereket tartalmazó fájlt. Referen
                     "fileName": "="
                 }
             }
-        }
-    }
+        }}
 }
 ```
 

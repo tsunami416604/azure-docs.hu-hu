@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: pullabhk
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: e7b1b3e3fba04276fc284fd71adabedc01185251
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 7daf76605d40495d6c9cb5076f0403a78819adfc
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984815"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439163"
 ---
 # <a name="monitoring-at-scale-using-azure-monitor"></a>Az Azure Monitor használatával nagy mennyiségű figyelése
 
@@ -254,7 +254,7 @@ Az RS vault Íme az erőforrást, és ezért meg kell ismételni ugyanaz a műve
 
 ***Tevékenységnaplók alapján létrehozott összes riasztás és LA munkaterületek lehet megtekinteni az Azure monitorban az "Értesítések" a bal oldali panelen.***
 
-Az értesítés útján tevékenységeket tartalmazó naplók is használható, amíg ***nyomatékosan javasolja az Azure Backup szolgáltatás [LA használni ipari méretekben](#monitoring-at-scale) és a következő okok miatt nem Tevékenységnaplók***.
+Az értesítés útján tevékenységeket tartalmazó naplók is használható, amíg ***Azure Backup szolgáltatás nyomatékosan javasolja LA használja a következő okok miatt a méretezési csoport és a nem Tevékenységnaplók figyelés***.
 
 - **Korlátozott alkalmazási helyzetek:** Csak az Azure virtuális gép biztonsági mentéseinek érvényes, és meg kell ismételni minden RS-tároló.
 - **Szélességhez definíciója:** Az ütemezett biztonsági mentési művelet nem fér el a tevékenységeket tartalmazó naplók a legújabb definíció- és igazodik a [diagnosztikai naplók](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#what-are-azure-monitor-diagnostic-logs). Az érdeklődő váratlan hatásra, az adatok szivattyúzó tevékenység log csatornán keresztül, az alább hivatkozott módosítás esetén.

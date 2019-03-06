@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
-ms.openlocfilehash: 0760d850bdc6dab84722f00f1061d53f9b95cfcf
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 0d57c65c93ffcd6c4c5249a1e5effeb457ed1736
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912418"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440896"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Több HDInsight-fürt használata az Azure Data Lake Storage-fiók
 
@@ -30,7 +30,7 @@ Ez a cikk kapcsolatos javaslatokat tartalmaz a Data Lake Storage rendszergazda �
 Ez a cikk többi része feltételezi, hogy a fájl- és szintű hozzáférés-vezérlési listák jó ismerete, részletes ismertetése az Azure Data Lake Storage a [hozzáférés-vezérlés az Azure Data Lake Storage](../data-lake-store/data-lake-store-access-control.md).
 
 ## <a name="data-lake-storage-setup-for-multiple-hdinsight-clusters"></a>Több HDInsight-fürtök esetén a Data Lake-tárolás beállítása
-Ossza meg velünk igénybe vehet egy kétszintű hierarchiájának annak magyarázata, mutilple HDInsight-fürtök használatával a Data Lake Storage-fiókkal kapcsolatos ajánlások. Vegye figyelembe, rendelkezik egy Data Lake Storage-fiókkal, és a gyökérmappa-szerkezetében **/fürtök/pénzügyi**. Ez a struktúra a pénzügyi intézmény szükséges összes fürt segítségével /clusters/finance tárolási helyeként. A jövőben, ha egy másik szervezet Tegyük fel, hogy a Marketing, kívánja létrehozni a HDInsight-fürtök használatával a Data Lake Storage ugyanazt a fiókot, azok sikerült létrehozni vagy fürtök vagy marketinges munkatársaival. Most használjuk **/fürtök/pénzügyi**.
+Ossza meg velünk igénybe vehet egy kétszintű hierarchiájának annak magyarázata, több HDInsight-fürtök használatával a Data Lake Storage-fiókkal kapcsolatos ajánlások. Vegye figyelembe, rendelkezik egy Data Lake Storage-fiókkal, és a gyökérmappa-szerkezetében **/fürtök/pénzügyi**. Ez a struktúra a pénzügyi intézmény szükséges összes fürt segítségével /clusters/finance tárolási helyeként. A jövőben, ha egy másik szervezet Tegyük fel, hogy a Marketing, kívánja létrehozni a HDInsight-fürtök használatával a Data Lake Storage ugyanazt a fiókot, azok sikerült létrehozni vagy fürtök vagy marketinges munkatársaival. Most használjuk **/fürtök/pénzügyi**.
 
 Ahhoz, hogy a HDInsight-fürtök által ténylegesen használt mappaszerkezet, a Data Lake Storage rendszergazdai engedélyeket kell rendelnie megfelelő, a táblában leírtak szerint. A táblázatban szereplő engedélyek Access-ACL-EK és ACL nem alapértelmezett felelnek meg. 
 
@@ -54,7 +54,7 @@ Néhány alapvető szempontokat kell figyelembe venni.
 - A két szint mappastruktúra (**/fürtök/pénzügyi/**) kell létrehozni és a megfelelő engedélyekkel a Data Lake Storage rendszergazda által üzembe helyezett **előtt** fürtök esetén a tárfiók használatával. Ez a struktúra nem jön automatikusan fürtök létrehozása során.
 - A fenti példa javasolja a tulajdonoscsoportját beállítás **/fürtök/pénzügyi** , **FINGRP** lehetővé tevő és **r-x** FINGRP hozzáférést a teljes mappát hierarchiába indítása a legfelső szintű. Ez biztosítja, hogy FINGRP tagjai navigálhat a gyökérmappa-szerkezetében kezdve a legfelső szintű.
 - Abban az esetben, ha különböző AAD-szolgáltatásnevek hozhat létre alá tartozó fürtök **/fürtök/pénzügyi**, a ragadós (ha van beállítva a a **pénzügyi** mappa) biztosítja, hogy a mappák létrehozása egy szolgáltatásnév nem lehet törölni a többi.
-- A mappastruktúra és az engedélyek vannak érvényben, ha HDInsight-fürt létrehozását hoz létre a fürtre jellemző tárolási helynek alatt **/fürtök/pénzügyi/**. A név fincluster01 a fürthöz a tároló lehet például **/clusters/finance/fincluster01**. A tulajdonosi és a HDInsight-fürt által létrehozott mappákra vonatkozó engedélyek Itt a táblázatban látható.
+- A mappastruktúra és az engedélyek vannak érvényben, ha HDInsight-fürt létrehozását létrehoz egy fürtre jellemző tárolási helyére **/fürtök/pénzügyi/**. A név fincluster01 a fürthöz a tároló lehet például **/clusters/finance/fincluster01**. A tulajdonosi és a HDInsight-fürt által létrehozott mappákra vonatkozó engedélyek Itt a táblázatban látható.
 
     |Mappa  |Engedélyek  |Tulajdonos felhasználó  |Tulajdonoscsoport  | Nevesített felhasználó | Névvel ellátott felhasználói engedélyek | Nevesített csoportra | Elnevezett biztonságicsoport-engedélyeit |
     |---------|---------|---------|---------|---------|---------|---------|---------|

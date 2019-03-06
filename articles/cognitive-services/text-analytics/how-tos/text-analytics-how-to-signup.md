@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 355a144597ce384725d92e64d4a5e4909b18c3d7
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 53532a19482a33f8727e71d44ae169225b5b1c98
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246102"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449957"
 ---
 # <a name="how-to-sign-up-for-the-text-analytics-api"></a>Regisztráció a szövegelemzési API
 
@@ -25,7 +25,7 @@ A Text Analytics erőforrásai folyamatosan elérhetők a felhőben. Tartalmaina
 
 + A **Text Analytics API** kiválasztásával létrehozhat egy [Cognitive Services API-fiókot](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account). A kulcsot a rendszer a regisztráció során állítja elő.
 
-A Text Analytics esetében a megismeréshez és kiértékeléshez elérhető egy ingyenes szint, az éles számítási feladatokhoz tartozó szintek viszont fizetősek. Az egyes előfizetésekhez több regisztráció is tartozhat: egy ingyenes, egy fizetős stb. Ha a kérések száma megnő, átválthat egy több tranzakciót biztosító szintre.
+A Text Analytics esetében a megismeréshez és kiértékeléshez elérhető egy ingyenes szint, az éles számítási feladatokhoz tartozó szintek viszont fizetősek. Az egyes előfizetésekben rendelkezhet több feliratkozások: egy ingyenes, egy fizetős, és így tovább. Ha a kérések száma megnő, átválthat egy több tranzakciót biztosító szintre.
 
 Az előzetes verziójú szolgáltatásokhoz és az ingyenes szinthez nem tartozik szolgáltatói szerződés. További információt a [Cognitive Services szolgáltatói szerződését](https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/) ismertető szakaszban talál.
 

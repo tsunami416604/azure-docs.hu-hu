@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 045b010736f8cecf877408f23530022af1f94f14
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 0fedfdbb04dd7aa3ff077c13653a22ed710aff9f
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991422"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405317"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Felkészülés az Avere vFXT létrehozására
 
@@ -152,7 +152,7 @@ Az Azure-fürtön a Avere vFXT létrehozása előtt létre kell hoznia a fürtsz
 
 A szerepkör neve szolgál a fürt létrehozásakor. Ebben a példában a neve a következő ``avere-operator``.
 
-## <a name="optional-create-a-storage-service-endpoint-in-your-virtual-network"></a>(Nem kötelező) Hozzon létre egy tárolási végpontot a virtuális hálózaton
+## <a name="create-a-storage-service-endpoint-in-your-virtual-network-if-needed"></a>Hozzon létre egy tárolási végpontot a virtuális hálózaton (ha szükséges)
 
 A [szolgáltatásvégpont](../virtual-network/virtual-network-service-endpoints-overview.md) helyett átirányítására a virtuális hálózaton kívül helyi tartja az Azure Blob-forgalmat. Az Azure által a háttér-adatokat tároló Azure Blob-fürt bármely Avere vFXT ajánlott. 
 

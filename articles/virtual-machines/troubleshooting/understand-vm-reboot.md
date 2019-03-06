@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 734889905719e0b15b32988e90b48721372076cc
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 70a6845349b90cf614a84e13680ebb6fc6b3e2a9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329149"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433161"
 ---
 # <a name="understand-a-system-reboot-for-azure-vm"></a>Azure virtuális Géphez tartozó rendszer-újraindítás ismertetése
 
@@ -102,7 +102,7 @@ Az adott gazdagép összes virtuális gép automatikusan áthelyezéséről van 
 
 Ritka esetekben az Azure üzemeltetési csapat kell végrehajtani a karbantartási tevékenységek annak biztosítása érdekében az Azure platform általános állapotát. Ez a viselkedés hatással lehet a virtuális gépek rendelkezésre állása, és általában eredményez a ugyanaz a automatikus helyreállítási művelet az korábban leírtaknak megfelelően.  
 
-Nem tervezett maintenances a következők:
+Nem tervezett karbantartás a következők:
 
 - Sürgős csomópont töredezettségmentesítése
 - Sürgős hálózati kapcsoló frissítések

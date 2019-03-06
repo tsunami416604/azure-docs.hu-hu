@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.author: dariagrigoriu;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 2c547eba931e23b6ffc7cae176e19959d43bcf5e
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: b879036dcd79901cb634fa197932e833cb22d12a
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602494"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405028"
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Helyi üzembe helyezés Git használatával az Azure App Service szolgáltatásban
 
@@ -44,7 +44,7 @@ git clone https://github.com/Azure-Samples/nodejs-docs-hello-world.git
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="deploy-from-local-git-with-kudu-builds"></a>Üzembe helyezés a Kudu-buildek használatával a helyi Gitből
+## <a name="deploy-with-kudu-builds"></a>Üzembe helyezés a Kudu-buildelési
 
 Helyi Git üzemelő példányt az alkalmazás a Kudu-buildelési kiszolgáló engedélyezése a legegyszerűbb módja, hogy a Cloud Shellt használja.
 
@@ -102,7 +102,7 @@ A kimenetben, például az ASP.NET, MSBuild futtatókörnyezet-specifikus automa
 
 Keresse meg az alkalmazásba és ellenőrizze, hogy telepítve van-e a tartalmat.
 
-## <a name="deploy-from-local-git-with-azure-devops-services-builds"></a>Üzembe helyezés a helyi Gitből az Azure DevOps-szolgáltatásokkal-buildek használatával
+## <a name="deploy-with-azure-devops-builds"></a>Az Azure DevOps-buildek használatával üzembe helyezése
 
 > [!NOTE]
 > Az App Service a szükséges Azure-folyamatok létrehozására a szervezet az Azure DevOps-szolgáltatásokkal, az Azure-fiókkal kell rendelkeznie szerepe **tulajdonos** az Azure-előfizetésében.
@@ -110,20 +110,18 @@ Keresse meg az alkalmazásba és ellenőrizze, hogy telepítve van-e a tartalmat
 
 Ahhoz, hogy az alkalmazás a Kudu-buildelési kiszolgáló tartozó helyi Git üzemelő példányt, keresse meg az alkalmazás a [az Azure portal](https://portal.azure.com).
 
-Az alkalmazás lapjának bal oldali navigációs sávján kattintson **üzembe helyezési központ** > **helyi Git** > **Folytatás**. 
+Az alkalmazás lapjának bal oldali navigációs sávján kattintson **üzembe helyezési központ** > **helyi Git** > **Folytatás**.
 
 ![](media/app-service-deploy-local-git/portal-enable.png)
 
-Kattintson a **Services az Azure DevOps, a folyamatos teljesítés** > **továbbra is**.
+Kattintson a **Azure folyamatok (előzetes verzió)** > **továbbra is**.
 
-![](media/app-service-deploy-local-git/vsts-build-server.png)
+![](media/app-service-deploy-local-git/pipeline-builds.png)
 
-Az a **konfigurálása** oldalon konfigurálása az Azure DevOps-szolgáltatásokkal új szervezetet, vagy adjon meg egy már meglévő szervezet. Ha befejezte, kattintson a **Folytatás**.
+Az a **konfigurálása** lapon konfigurálja egy új Azure DevOps-szervezetet, vagy adjon meg egy már meglévő szervezet. Ha befejezte, kattintson a **Folytatás**.
 
 > [!NOTE]
-> Ha egy már meglévő Azure DevOps-szolgáltatásokkal szervezet, amely nem szerepel a használni kívánt, kell [az Azure DevOps-szolgáltatásokkal szervezet összekapcsolása az Azure-előfizetés](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
-
-Az a **teszt** lapon, döntse el, hogy engedélyezze a terhelési teszteket, majd kattintson a **Folytatás**.
+> Ha egy már meglévő Azure DevOps-szervezet, amely nem szerepel a használni kívánt, kell [az Azure DevOps-szolgáltatásokkal szervezet összekapcsolása az Azure-előfizetés](https://github.com/projectkudu/kudu/wiki/Setting-up-a-VSTS-account-so-it-can-deploy-to-a-Web-App).
 
 Attól függően, a [tarifacsomag](https://azure.microsoft.com/pricing/details/app-service/plans/) az App Service-csomag is megjelenhetnek egy **üzembe helyezés átmeneti környezetbe** lapot. Döntse el, hogy az üzembe helyezési pontok engedélyezése, majd kattintson a **Folytatás**.
 
@@ -158,23 +156,23 @@ Az alábbiakban gyakori hibák vagy problémák az Azure App Service-alkalmazás
 ---
 **Jelenség**: `Unable to access '[siteURL]': Failed to connect to [scmAddress]`
 
-**OK**: Ez a hiba akkor fordulhat elő, ha az alkalmazás működése nem áll.
+**Ok**: Ez a hiba akkor fordulhat elő, ha az alkalmazás működése nem áll.
 
-**Feloldási**: Indítsa el az alkalmazást az Azure Portalon. Git-telepítés nem érhető el, ha a webalkalmazás leállt.
+**Megoldás**: Indítsa el az alkalmazást az Azure Portalon. Git-telepítés nem érhető el, ha a webalkalmazás leállt.
 
 ---
 **Jelenség**: `Couldn't resolve host 'hostname'`
 
-**OK**: Ez a hiba akkor fordulhat elő, ha a megadott létrehozásakor az "azure" távoli címadatok helytelen volt.
+**Ok**: Ez a hiba akkor fordulhat elő, ha a megadott létrehozásakor az "azure" távoli címadatok helytelen volt.
 
-**Feloldási**: Használja a `git remote -v` paranccsal listát készíthet az összes távoli, és a társított URL-címe. Győződjön meg arról, hogy helyesen szerepel-e az "azure" távoli URL-CÍMÉT. Ha szükséges, távolítsa el, és hozza létre újból a távoli, a helyes URL-cím használatával.
+**Megoldás**: Használja a `git remote -v` paranccsal listát készíthet az összes távoli, és a társított URL-címe. Győződjön meg arról, hogy helyesen szerepel-e az "azure" távoli URL-CÍMÉT. Ha szükséges, távolítsa el, és hozza létre újból a távoli, a helyes URL-cím használatával.
 
 ---
 **Jelenség**: `No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`
 
-**OK**: Ez a hiba akkor fordulhat elő, ha nem ad meg egy ágat során `git push`, vagy ha nem állított be a `push.default` értékét `.gitconfig`.
+**Ok**: Ez a hiba akkor fordulhat elő, ha nem ad meg egy ágat során `git push`, vagy ha nem állított be a `push.default` értékét `.gitconfig`.
 
-**Feloldási**: Futtatás `git push` újra, adja meg a master ágról. Példa:
+**Megoldás**: Futtatás `git push` újra, adja meg a master ágról. Példa:
 
 ```bash
 git push azure master
@@ -183,9 +181,9 @@ git push azure master
 ---
 **Jelenség**: `src refspec [branchname] does not match any.`
 
-**OK**: Ez a hiba akkor fordulhat elő, ha megpróbálja a főadatbázison kívül egyik ágára való leküldés az "Azure" a távoli mappához küldéssel.
+**Ok**: Ez a hiba akkor fordulhat elő, ha megpróbálja a főadatbázison kívül egyik ágára való leküldés az "Azure" a távoli mappához küldéssel.
 
-**Feloldási**: Futtatás `git push` újra, adja meg a master ágról. Példa:
+**Megoldás**: Futtatás `git push` újra, adja meg a master ágról. Példa:
 
 ```bash
 git push azure master
@@ -194,9 +192,9 @@ git push azure master
 ---
 **Jelenség**: `RPC failed; result=22, HTTP code = 5xx.`
 
-**OK**: Ez a hiba akkor fordulhat elő, ha megpróbál egy nagy git-tárház leküldéses HTTPS-kapcsolaton keresztül.
+**Ok**: Ez a hiba akkor fordulhat elő, ha megpróbál egy nagy git-tárház leküldéses HTTPS-kapcsolaton keresztül.
 
-**Feloldási**: A helyi gépen, hogy a postBuffer nagyobb a git-konfiguráció módosítása
+**Megoldás**: A helyi gépen, hogy a postBuffer nagyobb a git-konfiguráció módosítása
 
 ```bash
 git config --global http.postBuffer 524288000
@@ -205,9 +203,9 @@ git config --global http.postBuffer 524288000
 ---
 **Jelenség**: `Error - Changes committed to remote repository but your web app not updated.`
 
-**OK**: Ez a hiba akkor fordulhat elő, ha, a Node.js-alkalmazás üzembe helyezése egy _package.json_ fájlt, amely meghatározza a további szükséges modulokat.
+**Ok**: Ez a hiba akkor fordulhat elő, ha, a Node.js-alkalmazás üzembe helyezése egy _package.json_ fájlt, amely meghatározza a további szükséges modulokat.
 
-**Feloldási**: A(z) "npm ERR!' a további üzeneteket Ez a hiba előtt be kell jelentkeznie, és a hibával kapcsolatban további környezet tud biztosítani. Az alábbiakban néhány ismert oka ezt a hibát, és a megfelelő "npm ERR!" üzenet:
+**Megoldás**: A(z) "npm ERR!' a további üzeneteket Ez a hiba előtt be kell jelentkeznie, és a hibával kapcsolatban további környezet tud biztosítani. Az alábbiakban néhány ismert oka ezt a hibát, és a megfelelő "npm ERR!" üzenet:
 
 * **Helytelen formátumú package.json fájl**: npm hiba! Nem lehetett olvasni a függőségek.
 * **Natív modul, hogy egy nem bináris terjesztési Windows**:

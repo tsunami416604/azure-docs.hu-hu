@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: 7b3a8ac0500652b8c4250b4bc3b4f5514b62c4aa
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 45f0b7deb0e14a398c4f1220e66239c3727e46e1
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816935"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444226"
 ---
 # <a name="quickstart-communicate-to-device-applications-in-c-via-iot-hub-device-streams-preview"></a>Gyors útmutató: Az eszköz alkalmazások kommunikálni C# keresztül az IoT Hub eszköz adatfolyamok (előzetes verzió)
 
@@ -140,7 +140,7 @@ dotnet run "<DeviceConnectionString>"
 dotnet run <DeviceConnectionString>
 ```
 
-Az utolsó lépés végén a Szolgáltatásoldali program egy streamet, az eszközre, és lesz létrejöttét követően megkezdődik a szolgáltatás egy karakterláncpuffert küldenie a streamet. Ebben a példában a Szolgáltatásoldali ugyanazokat az adatokat az eszközre sikeres kétirányú kommunikációt a két alkalmazás közötti bemutatásához program egyszerűen majd továbbítja vissza. Lásd az alábbi ábrát.
+Az utolsó lépés végén a Szolgáltatásoldali program egy streamet, az eszközre, és lesz létrejöttét követően megkezdődik a szolgáltatás egy karakterláncpuffert küldenie a streamet. Ebben a példában a Szolgáltatásoldali program egyszerűen ad vissza az eszköz sikeres kétirányú kommunikációt a két alkalmazás közötti bemutatásához ugyanazokat az adatokat. Lásd az alábbi ábrát.
 
 Az eszköz oldalán konzolkimenetet: ![helyettesítő szöveg](./media/quickstart-device-streams-echo-csharp/device-console-output.png "Konzolkimenetet eszköz-oldalán")
 

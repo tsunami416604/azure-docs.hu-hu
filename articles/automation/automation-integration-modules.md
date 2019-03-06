@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/24/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9122cf5cc908d578d8b781c6fdc49d7b04b0ab58
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 2800385581ea3f08fc1013e980f8c133a2f7241e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990342"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443732"
 ---
 # <a name="azure-automation-integration-modules"></a>Azure Automation integrációs modulok
 
@@ -227,7 +227,7 @@ Annak ellenére, hogy az integrációs modulok olyan PowerShell-modulok, van mé
     }
     ```
 
-6. A modulnak teljes egészében egy Xcopy-kompatibilis csomagban kell lennie. Azure Automation-modulokat az Automation próbakörnyezetekbe distributd akkor, ha a runbookok végre kell hajtani. A modulok kell működniük a gazdagéptől futnak. Meg kell tudni Zip beállítása és a egy csomag és normális működtetésére, amikor egy másik gazdagép PowerShell környezetébe importálja azt. Ahhoz, hogy ez megtörténjen a modul a modul mappákon kívül semmilyen fájl nem függenek. Ez a mappa az a mappa, a modul importálása az Azure Automationbe modulmappán. A modul is nem függhet egy gazdagép bármilyen egyedi beállításjegyzék-beállításokat, mint például állítsa be ezeket a beállításokat, a termék telepítésekor. Ha ez az ajánlott eljárás nem követik, a modul nem használható az Azure Automationben.  
+6. A modulnak teljes egészében egy Xcopy-kompatibilis csomagban kell lennie. Azure Automation-modulokat az Automation próbakörnyezetekbe oszlanak meg, amikor a forgatókönyveket végre kell hajtani. A modulok kell működniük a gazdagéptől futnak. Meg kell tudni Zip beállítása és a egy csomag és normális működtetésére, amikor egy másik gazdagép PowerShell környezetébe importálja azt. Ahhoz, hogy ez megtörténjen a modul a modul mappákon kívül semmilyen fájl nem függenek. Ez a mappa az a mappa, a modul importálása az Azure Automationbe modulmappán. A modul is nem függhet egy gazdagép bármilyen egyedi beállításjegyzék-beállításokat, mint például állítsa be ezeket a beállításokat, a termék telepítésekor. Ha ez az ajánlott eljárás nem követik, a modul nem használható az Azure Automationben.  
 
 7. Ha a hivatkozó [Az Azure Powershell-modulok](/powershell/azure/new-azureps-module-az?view=azps-1.1.0) a modult, ellenőrizze, nem is hivatkozó `AzureRM`. A `Az` modul nem használható együtt a `AzureRM` modulok. `Az` a runbookok támogatott, de alapértelmezés szerint nincsenek importálva. További információ a `Az` modulok és szempontokat vegye figyelembe, hogy tekintse meg a [házirendmodul-támogatás Az Azure Automation](az-modules.md).
 

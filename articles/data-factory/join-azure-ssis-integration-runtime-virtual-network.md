@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 8693c5e255020e30c2e8ed52a3199712089e4503
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 24e2d7be0dfc32e499bc864f2fdf7e2b1c108969
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119084"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440212"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Egy Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz
 Csatlakozás az Azure-SSIS integrációs modulját (IR) az Azure virtual Networkhöz a következő esetekben: 
@@ -83,9 +83,9 @@ Az Azure-SSIS integrációs modul létrehozó felhasználó a következő enged�
 
 - Ha az SSIS integrációs modul egy Azure Resource Manager virtuális hálózathoz csatlakozik, két lehetősége van:
 
-  - A beépített *hálózati közreműködő* szerepkör. Ez a szerepkör együttműködik a *Microsoft.Network/\**  engedéllyel, amely a szükségesnél sokkal nagyobb hatóköre.
+  - A beépített *hálózati közreműködő* szerepkör. Ez a szerepkör együttműködik a _Microsoft.Network/\*_  engedéllyel, amely a szükségesnél sokkal nagyobb hatóköre.
 
-  - Hozzon létre egy egyéni szerepkört, amely tartalmazza az csak a szükséges *Microsoft.Network/virtualNetworks/\*/join/művelet* engedéllyel. 
+  - Hozzon létre egy egyéni szerepkört, amely tartalmazza az csak a szükséges _Microsoft.Network/virtualNetworks/\*/join/művelet_ engedéllyel. 
 
 - Ha az SSIS integrációs Modult egy klasszikus virtuális hálózathoz csatlakozik, azt javasoljuk, hogy használja-e a beépített *virtuális gépek hagyományos Közreműködője* szerepkör. Ellenkező esetben meg kell adnia egy egyéni biztonsági szerepkört, amely tartalmazza a csatlakozzon a virtuális hálózat számára.
 
@@ -115,7 +115,7 @@ Ha egy hálózati biztonsági csoport (NSG) megvalósítása az Azure-SSIS integ
 | Bejövő | TCP | AzureCloud<br/>(vagy nagyobb hatókör, például az Internet) | * | VirtualNetwork | 29876-os, a 29877-es portot (ha az integrációs modul csatlakoztatása egy Azure Resource Managerbeli virtuális hálózat) <br/><br/>10100, 20100, 30100-as portokat (ha az integrációs modul csatlakoztatása egy klasszikus virtuális hálózat)| A Data Factory szolgáltatás használ a ezeket a portokat a virtuális hálózatban, az Azure-SSIS integrációs modul csomópontján folytatott kommunikációhoz. <br/><br/> Egy alhálózat-szintű NSG-t hoz létre, vagy sem, hogy Data Factory mindig konfigurálja a hálózati biztonsági csoportok, amelyek az Azure-SSIS integrációs modult. a virtuális gépekhez csatlakoztatott hálózati adapterek (NIC) szintjén Csak az Data Factory IP-címek a megadott porton érkező bejövő forgalmat a NIC-szintű NSG által engedélyezett. Akkor is, ha megnyitja ezeket a portokat az internetes forgalmat az alhálózatok, IP-címek, amelyek nem a Data Factory IP-címek érkező forgalom le van tiltva, a hálózati adapterek szintjén. |
 | Kimenő | TCP | VirtualNetwork | * | AzureCloud<br/>(vagy nagyobb hatókör, például az Internet) | 443 | A virtuális hálózatban, az Azure-SSIS integrációs modul csomópontján el az Azure-szolgáltatások, például az Azure Storage és az Azure Event Hubs ezen a porton. |
 | Kimenő | TCP | VirtualNetwork | * | Internet | 80 | A virtuális hálózatban, az Azure-SSIS integrációs modul csomópontján ezt a portot használja a visszavont tanúsítványok listájának letöltése az internetről. |
-| Kimenő | TCP | VirtualNetwork | * | SQL<br/>(vagy nagyobb hatókör, például az Internet) | 1433-as, 11000-11999, 14000-14999 | Az Azure-SSIS integrációs modul az Azure SQL Database-kiszolgáló – futó SSISDB el ezeket a portokat a virtuális hálózat használatban csomópontjai az erre a célra nem alkalmazható a felügyelt példány által üzemeltetett KATALÓGUSADATBÁZISBA. |
+| Kimenő | TCP | VirtualNetwork | * | SQL<br/>(vagy nagyobb hatókör, például az Internet) | 1433, 11000-11999, 14000-14999 | Az Azure-SSIS integrációs modul az Azure SQL Database-kiszolgáló – futó SSISDB el ezeket a portokat a virtuális hálózat használatban csomópontjai az erre a célra nem alkalmazható a felügyelt példány által üzemeltetett KATALÓGUSADATBÁZISBA. |
 ||||||||
 
 ### <a name="route"></a> Használja az Azure expressroute-on vagy a felhasználó által megadott útvonal
@@ -280,6 +280,8 @@ Virtuális hálózat konfigurálása előtt, akkor csatlakozhat egy Azure-SSIS i
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ### <a name="configure-a-virtual-network"></a>Virtuális hálózat konfigurálása
 Virtuális hálózat konfigurálása előtt az Azure-SSIS integrációs modul csatlakozhat hozzá kell. Az Azure-SSIS integrációs modul csatlakozni a virtuális hálózathoz virtuális hálózat engedélyeinek/beállításainak automatikus konfigurálásához, adja hozzá a következő szkriptet:
 
@@ -289,16 +291,16 @@ if(![string]::IsNullOrEmpty($VnetId) -and ![string]::IsNullOrEmpty($SubnetName))
 {
     # Register to the Azure Batch resource provider
     $BatchApplicationId = "ddbf3205-c6bd-46ae-8127-60eb93363864"
-    $BatchObjectId = (Get-AzureRmADServicePrincipal -ServicePrincipalName $BatchApplicationId).Id
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch
-    while(!(Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Batch").RegistrationState.Contains("Registered"))
+    $BatchObjectId = (Get-AzADServicePrincipal -ServicePrincipalName $BatchApplicationId).Id
+    Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
+    while(!(Get-AzResourceProvider -ProviderNamespace "Microsoft.Batch").RegistrationState.Contains("Registered"))
     {
     Start-Sleep -s 10
     }
     if($VnetId -match "/providers/Microsoft.ClassicNetwork/")
     {
         # Assign the VM contributor role to Microsoft.Batch
-        New-AzureRmRoleAssignment -ObjectId $BatchObjectId -RoleDefinitionName "Classic Virtual Machine Contributor" -Scope $VnetId
+        New-AzRoleAssignment -ObjectId $BatchObjectId -RoleDefinitionName "Classic Virtual Machine Contributor" -Scope $VnetId
     }
 }
 ```
@@ -326,7 +328,7 @@ $SubnetName = "<the name of subnet in your virtual network>"
 Leállította az Azure-SSIS integrációs modul virtuális hálózathoz csatlakozzon. Ez a parancs kiadja az összes hozzá tartozó csomópont, és leállítja a számlázási:
 
 ```powershell
-Stop-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
+Stop-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
                                             -DataFactoryName $DataFactoryName `
                                             -Name $AzureSSISName `
                                             -Force 
@@ -339,25 +341,25 @@ if(![string]::IsNullOrEmpty($VnetId) -and ![string]::IsNullOrEmpty($SubnetName))
 {
     # Register to the Azure Batch resource provider
     $BatchApplicationId = "ddbf3205-c6bd-46ae-8127-60eb93363864"
-    $BatchObjectId = (Get-AzureRmADServicePrincipal -ServicePrincipalName $BatchApplicationId).Id
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch
-    while(!(Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Batch").RegistrationState.Contains("Registered"))
+    $BatchObjectId = (Get-AzADServicePrincipal -ServicePrincipalName $BatchApplicationId).Id
+    Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
+    while(!(Get-AzResourceProvider -ProviderNamespace "Microsoft.Batch").RegistrationState.Contains("Registered"))
     {
         Start-Sleep -s 10
     }
     if($VnetId -match "/providers/Microsoft.ClassicNetwork/")
     {
         # Assign VM contributor role to Microsoft.Batch
-        New-AzureRmRoleAssignment -ObjectId $BatchObjectId -RoleDefinitionName "Classic Virtual Machine Contributor" -Scope $VnetId
+        New-AzRoleAssignment -ObjectId $BatchObjectId -RoleDefinitionName "Classic Virtual Machine Contributor" -Scope $VnetId
     }
 }
 ```
 
 ### <a name="configure-the-azure-ssis-ir"></a>Az Azure-SSIS integrációs modul konfigurálása
-Az Azure-SSIS integrációs modul csatlakozni a virtuális hálózat konfigurálásához futtassa a `Set-AzureRmDataFactoryV2IntegrationRuntime` parancsot: 
+Az Azure-SSIS integrációs modul csatlakozni a virtuális hálózat konfigurálásához futtassa a `Set-AzDataFactoryV2IntegrationRuntime` parancsot: 
 
 ```powershell
-Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
+Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
                                            -DataFactoryName $DataFactoryName `
                                            -Name $AzureSSISName `
                                            -Type Managed `
@@ -369,7 +371,7 @@ Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName
 Az Azure-SSIS integrációs modul indításához futtassa a következő parancsot: 
 
 ```powershell
-Start-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
+Start-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `
                                              -DataFactoryName $DataFactoryName `
                                              -Name $AzureSSISName `
                                              -Force

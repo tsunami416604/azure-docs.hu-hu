@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 395b0cadf3ba3313a9a1304d9244f1fe72a8209c
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 1534a3f010183cd91c444b577d26e3f21e296d27
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53016878"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57434319"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Gyakorlati tanácsok a speciális scheduler funkciók az Azure Kubernetes Service (AKS)
 
@@ -151,11 +151,11 @@ További információkért lásd: [affinitás és affinitást][k8s-affinity].
 
 A Kubernetes a Scheduler logikailag a számítási feladatok elkülönítésére az egyik utolsó megközelítés közötti pod affinitás vagy affinitást használ. A beállítások határozzák meg, hogy a podok *nem* ütemezhetők, amely rendelkezik egy meglévő megfelelő pod csomópont, vagy adott ezek *kell* ütemezhető. Alapértelmezés szerint a Kubernetes-ütemező próbál egy replikát, állítsa be a csomópontok között több podok ütemezése. E probléma részletesebb szabályozás határozhatja meg.
 
-Egy jó példa egy webalkalmazást, amely is használ az Azure Cache Redis. Podok affinitást szabályok segítségével kérés, hogy a Kubernetes-ütemező replikák elosztja a csomópontok között. Ezek közül ise affinitás szabályokat, győződjön meg arról, hogy egyes webes alkalmazás-összetevők ugyanazon a gazdagépen a megfelelő gyorsítótárként van ütemezve. Podok csomópontok közötti elosztása az alábbi példához hasonlóan néz ki:
+Egy jó példa egy webalkalmazást, amely is használ az Azure Cache Redis. Podok affinitást szabályok segítségével kérés, hogy a Kubernetes-ütemező replikák elosztja a csomópontok között. Affinitás szabályok használatával győződjön meg arról, hogy egyes webes alkalmazás-összetevők ugyanazon a gazdagépen a megfelelő gyorsítótárként van ütemezve, majd. Podok csomópontok közötti elosztása az alábbi példához hasonlóan néz ki:
 
 | **1. csomópont** | **2. csomópont** | **3. csomópont** |
 |------------|------------|------------|
-| webalkalmazás-1   | webalkalmazás-2   | WebApp – 3   |
+| webapp-1   | webapp-2   | webapp-3   |
 | gyorsítótár-1    | gyorsítótár-2    | gyorsítótár-3    |
 
 Ebben a példában az összetettebb üzemelő használatát, mint a csomópont választók vagy csomópont-affinitásának. Az üzembe helyezési lehetőséget biztosít, hogyan Kubernetes ütemezi a podok csomópontokon felett ellenőrzést, és logikailag is erőforrások elkülönítése. Ez a webalkalmazás az Azure Cache Redis például egy teljes példa: [ugyanazon a csomóponton podok elhelyezése][k8s-pod-affinity].

@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: b4b514350e36e9fe71e7c5cb5cd978764e0108d5
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 90f7ef32a54f257a64942b37938cff5703112d6c
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57317186"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409856"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Automatikus biztonsági adatbázismentés használatával Azure SQL-adatbázis helyreállítása
 
@@ -141,7 +141,7 @@ Korábban már említettük, az Azure Portalon kívül, mint az adatbázis helyr
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- Önálló vagy készletezett adatbázis visszaállítása, lásd: [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azurermsqldatabase)
+- Önálló vagy készletezett adatbázis visszaállítása, lásd: [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase).
 
   | Parancsmag | Leírás |
   | --- | --- |
@@ -153,7 +153,7 @@ Korábban már említettük, az Azure Portalon kívül, mint az adatbázis helyr
   > [!TIP]
   > Egy PowerShell-példaszkript egy adatbázis-időponthoz visszaállításhoz bemutató, lásd: [PowerShell-lel SQL-adatbázis visszaállítása](scripts/sql-database-restore-database-powershell.md).
 
-- Felügyelt példány adatbázisok visszaállítását, lásd: [-időponthoz visszaállítását egy adatbázist az Azure SQL felügyelt példányhoz az azurerm.SQL-hez a PowerShell-könyvtár](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../point-in-time-restore-of-a-database-on-azure-sql-managed-instance-using-Az-sql-powershell-library/)
+- Felügyelt példány adatbázisok visszaállítását, lásd: [azAzureSQLfelügyeltpéldányhozazazurerm.SQL-hezaPowerShell-könyvtáradatbázisokvisszaállítását-időponthoz](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/28/point-in-time-restore-of-a-database-on-azure-sql-managed-instance-using-azurerm-sql-powershell-library/).
 
 ### <a name="rest-api"></a>REST API
 

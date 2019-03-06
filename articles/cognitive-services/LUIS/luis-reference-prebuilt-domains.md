@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: 964a0e0d4dd7ebae9f2881230fec921c3740ac39
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: e1e579233a5ad1af1ef8ee84019cd995959d3b2b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340592"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433773"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>A LUIS-alkalmazás az előre összeállított útmutatója
 Ez az útmutató információkkal szolgál a [előre összeállított tartományok](luis-how-to-use-prebuilt-domains.md), amely gyűjteményei előre összeállított szándékok és entitások, amelyek a LUIS kínál.
@@ -62,7 +62,7 @@ A naptár tartományban szándékok és entitások naptárbejegyzések megőrzé
 | Hozzáadás | Új egyszeri elem felvétele a naptárba.| Győződjön meg arról, Lisa vasárnap 2-kor egy találkozót <br/><br/>Értekezlet ütemezése<br/><br/>Kell egy értekezlet beállítása|
 | CheckAvailability | Rendelkezésre állási találkozó vagy a felhasználó vagy egy másik személy naptárat az értekezlet található.| Ha van elérhető teljesítéséhez Jim? <br/><br/>Ha Carol holnap elérhető megjelenítése<br/><br/>Chris szombat ingyenes van?|
 | Törlés | Kérelem törlése egy naptár-bejegyzést.| Carol saját találkozót megszakítása <br/><br/>Értekezlet a 9: 00 törlése<br/>|
-| Szerkesztés | Módosíthatja egy meglévő megbeszélésen vagy a naptár belépési kérelmet.| Helyezze át 9: 00-értekezlet a 10-kor.<br/><br/>Szeretnék saját ütemezés frissítése.<br/><br/>Értekezlet a Reschdule Ryan együtt.|
+| Szerkesztés | Módosíthatja egy meglévő megbeszélésen vagy a naptár belépési kérelmet.| Helyezze át 9: 00-értekezlet a 10-kor.<br/><br/>Szeretnék saját ütemezés frissítése.<br/><br/>Értekezlet a következővel Ryan le.|
 | Keresés | A heti naptár megjelenítése.| A fogorvosnak tekintse át a találkozó keresése. <br/><br/>Naptár megjelenítése<br/>|
 
 ### <a name="entities"></a>Entitások
@@ -106,7 +106,7 @@ A kommunikációs tartományban szándékok és entitások kapcsolatos e-mailek,
 | Megerősítés| Erősítse meg a műveletet.|Igen<br/>Rendben<br/>rendben<br/>Megerősítem, hogy szeretnék-e e-mailt.<br/>|
 | Telefonos kapcsolat létrehozása| Telefonhívás.|Jim hívása<br/>Adjon tárcsázza a 311<br/>|
 | FindContact| Kapcsolattartási adatok keresése név alapján.|Carol szám keresése<br/>Carol szám megjelenítése<br/>|
-| FindSpeedDial| Található a speedial telefonszám van beállítva, és ez fordítva is igaz.|Mi az a telefonos számot 5?<br/>Tárcsázza a set sebesség van?<br/>Mi a telefonszáma 941-5555-333?|
+| FindSpeedDial| Található a sebesség tárcsázás telefonszám van beállítva, és ez fordítva is igaz.|Mi az a telefonos számot 5?<br/>Tárcsázza a set sebesség van?<br/>Mi a telefonszáma 941-5555-333?|
 | GetForwardingsStatus| Átirányítás aktuális állapotának lekéréséhez.|A hívás továbbítás engedélyezve van?<br/>Figyelmeztessen, ha hívás Állapotom-e a be- vagy kikapcsolása<br/>|
 | GoBack| Lépjen vissza az előző lépésben.|Lépjen vissza a twitteren<br/>Lépjen vissza az adott lépés<br/>Vissza|
 | Kihagyás| Bejövő hívás figyelmen kívül.|Nem válaszol<br/>Hagyja figyelmen kívül a hívás|
@@ -252,7 +252,7 @@ A MovieTickets tartományi biztosítja, leképezések és a egy filmet mozi film
 ### <a name="intents"></a>Leképezések
 | Leképezés neve | Leírás | Példák |
 | ---------------- |-----------------------|----|
-| Könyv | Film jegyek.|Könyv me kapitány Omar és a két musketeers két jegyek<br/>Holnapi movie egy jegyet vásárolni kívánt<br/>2. rész Captian Omar tovább szerda kívánt jegy|
+| Könyv | Film jegyek.|Könyv me kapitány Omar és a két musketeers két jegyek<br/>Holnapi movie egy jegyet vásárolni kívánt<br/>2. rész kapitány Omar tovább szerda kívánt jegy|
 |GetShowTime| Az egy filmet showtime beolvasása.|Ha látható a kapitány Omar?|
 
 
@@ -412,7 +412,7 @@ A helyek tartományban szándékok kezeléséhez, többek között a vállalkoz�
 |GetMenu|Kérjen egy étterem menü elemei.|Nem Zucca kiszolgálása bármit kis?<br/>Mi az a Sizzler menü<br/>A Applebee menü megjelenítése|
 |GetPhoneNumber| Kérdezze meg a telefonszámát helyen.|Mi az a legközelebbi Kávézik telefonszáma?<br/>A szám Depot kezdőlap meg kell adni| 
 |GetPriceRange| Egy hely ár tartományán kér.|Az olcsó Zucca?<br/>Az a Cineplex féláron szerdánként?<br/>Mennyibe kerül, Sizzler teljes lobster vacsora költsége?|
-|GetReviews|Kérje meg a hely felülvizsgálatai.|Cheesecase Factory felülvizsgálatok megjelenítése<br/>Olvassa el a Yelppel Cineplex értékelések|
+|GetReviews|Kérje meg a hely felülvizsgálatai.|Cheesecake Factory felülvizsgálatok megjelenítése<br/>Olvassa el a Yelppel Cineplex értékelések|
 |GetRoute|Kérje meg egy helyen irányban.|Hogyan végigvezetheti a Bellevue négyzetes<br/>Megjelenítés a legrövidebb 8. között, valamint elvégezhető 59th innen<br/>Hegyi nézet hitelesítésszolgáltatóhoz irányban első kérek|
 |GetStarRating|Kérje meg a minősítést, egy helyen.|Hogyan besorolása alapján Yelppel Zucca?<br/>Hány csillagot rendelkezik a francia ruhák?<br/>A aquarium Monterrey a jó van?|
 |GetTransportationSchedule|Szerezze be a busz ütemezés egy helyen.|Milyen ideje a következő busz, New York?<br/>A King County megye a buszok megjelenítése|

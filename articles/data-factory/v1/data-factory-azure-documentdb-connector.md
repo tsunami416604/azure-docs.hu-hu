@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 54e78496b98fffefd2932a2ce7625f8b325fb32a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: bda3df3ce869d7717f572f72c38472e7eae4a0ef
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812650"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437428"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Adatok importálására és az Azure Cosmos DB az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -139,7 +139,7 @@ Ha forrás típusa másolási tevékenység esetén **DocumentDbCollectionSource
 A Cosmos DB-összekötő használatával egyszerűen
 
 * JSON-dokumentumok importálása különböző forrásokból származó az Azure Blob, beleértve az Azure Data Lake, a helyi fájlrendszer vagy egyéb fájlalapú tárolók az Azure Data Factory által támogatott, Cosmos DB-be.
-* JSON-dokumentumok exportálása a Cosmos DB collecton különböző fájlalapú tárolók.
+* JSON-dokumentumok exportálása a Cosmos DB-gyűjtemények különböző fájlalapú tárolók be.
 * Adatok áttelepítése a között, két Cosmos DB-gyűjtemények-van.
 
 Az ilyen sémafüggetlen másolási eléréséhez

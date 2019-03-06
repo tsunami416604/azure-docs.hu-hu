@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e70a74be372e4374fac5aaa2bfda8ca955e6d305
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 1ee08e4dc2f6a4616c4b427ad7d33f56e135b27a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671862"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442495"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Az Azure Active Directory B2B-együttműködés – gyakori kérdések
 
@@ -107,7 +107,7 @@ Ha a partner van összevonva a helyszíni hitelesítési infrastruktúráját az
 B2B és üzleti – fogyasztói (B2C) együttműködés szempontjából, amely az identitások támogatottak közötti különbségekről megszüntetjük. Az identitásnak nem választhat B2B használatával, vagy pedig a B2C jó oka. Az együttműködési lehetőség kiválasztásával kapcsolatban további információkért lásd: [összehasonlítása B2B-együttműködés és az Azure Active Directory B2C](compare-with-b2c.md).
 
 ### <a name="what-applications-and-services-support-azure-b2b-guest-users"></a>Milyen alkalmazásokat és szolgáltatásokat támogatják az Azure B2B vendégfelhasználók?
-Minden Azure AD-val integrált alkalmazásokat Azure B2B vendégfelhasználókat is támogatja, de a vendég felhasználók hitelesítése egy ábráját végpontot kell használniuk. Előfordulhat, hogy szükség [testre szabhatja a jogcímek](claims-mapping.md) az SAML-jogkivonatban kiadott, ha a Vendég felhasználó hitelesíti magát az alkalmazást. 
+Minden Azure AD-val integrált alkalmazásokat Azure B2B vendégfelhasználókat is támogatja, de a vendégfelhasználók hitelesítést kell használniuk a bérlőként beállítani a végpont. Előfordulhat, hogy szükség [testre szabhatja a jogcímek](claims-mapping.md) az SAML-jogkivonatban kiadott, ha a Vendég felhasználó hitelesíti magát az alkalmazást. 
 
 ### <a name="can-we-force-multi-factor-authentication-for-b2b-guest-users-if-our-partners-dont-have-multi-factor-authentication"></a>Hogy kényszerítheti a többtényezős hitelesítés B2B vendégfelhasználók Ha partnerei nem rendelkeznek a multi-factor authentication?
 Igen. További információkért lásd: [feltételes hozzáférés B2B-együttműködés felhasználók](conditional-access.md).

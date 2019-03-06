@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be5220c5f28505bd83110705e08a6b1c7fb12529
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b2346c0631bb4540aef27623f82f72f4eabd0d23
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210696"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433552"
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Hibaelhárítás az Azure Active Directory-Tevékenységnaplók tartalomcsomag-hibái naplók 
 
@@ -71,6 +71,6 @@ A cikk ismerteti a lehetséges okok és a hibák kijavításához információt.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure AD-jelentések a Power BI contect csomag telepítése](quickstart-install-power-bi-content-pack.md).
+* [Az Azure AD-jelentések Power BI-tartalomcsomag telepítése](quickstart-install-power-bi-content-pack.md).
 * [Használja a Power BI-tartalomcsomag jelenti a csomag az Azure ad-adatok megjelenítése](howto-power-bi-content-pack.md)
 * [Hogyan kérhet támogatást az Azure Active Directoryhoz](../fundamentals/active-directory-troubleshooting-support-howto.md)

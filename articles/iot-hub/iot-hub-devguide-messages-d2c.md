@@ -8,14 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: dd811a48d6f3f1061bad49a81b7e833dcb40e1e3
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 20e7f8f5d2c0eb9fbfb231adfd20ff54d9eda20a
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241289"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404195"
 ---
-# <a name="use-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Üzenet-útválasztása használatával eszköz – felhő üzeneteket küldhet a különböző végpontok
+# <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Használja az IoT Hub üzenet-útválasztása eszköz – felhő üzeneteket küldeni a különböző végpontok
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
@@ -35,19 +35,39 @@ Az IoT hub tartalmaz egy alapértelmezett beépített-az-végpont (**üzenetek/e
 
 ### <a name="built-in-endpoint"></a>Beépített végpont
 
-Használhat standard [Event Hubs-integráción és SDK-k](iot-hub-devguide-messages-read-builtin.md) eszköz – felhő üzenetek fogadása a beépített végpontról (**üzenetek/események**). Vegye figyelembe, hogy egy útvonal létrehozása után adatok leáll, ha az adott végpontra hozzon létre egy útvonalat a beépített-az-végpont halad.
+Használhat standard [Event Hubs-integráción és SDK-k](iot-hub-devguide-messages-read-builtin.md) eszköz – felhő üzenetek fogadása a beépített végpontról (**üzenetek/események**). Útvonal létrehozása után adatok leállítja, kivéve, ha az adott végpontra hozzon létre egy útvonalat a beépített-az-végpont halad.
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 
-IoT Hub által támogatott csak, írja az adatokat az Azure Blob Storage-ban a [Apache Avro](http://avro.apache.org/) formátumban. Az IoT Hub kötegeli az üzeneteket, és adatokat ír egy blobot, ha a köteg bizonyos méretet elér egy bizonyos mennyi idő telt el.
+IoT Hub által támogatott írja az adatokat az Azure Blob Storage-ban a [Apache Avro](http://avro.apache.org/) és JSON-formátumban. A szolgáltatás JSON formátumban kódolása előzetes verzióként érhető minden IoT Hub érhető el, kivéve az USA keleti RÉGIÓJA, USA nyugati Régiójában és Nyugat-európai régióban. Az alapértelmezett érték az avro-hoz. A kódolási formátum használatával az IoT Hub létrehozása vagy frissítése – REST API-t, kifejezetten választhatja a [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), az Azure Portal [Azure CLI-vel](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest#optional-parameters) vagy a [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0#optional-parameters). A kódolási formátum csak állítható, ha a blob storage-végpont konfigurálva van. A formátum nem szerkeszthető egy meglévő végpontot. A következő ábra bemutatja az Azure Portalon válassza ki a kódolási formátum.
 
-Az IoT Hub az alapértelmezett fájl alábbi elnevezési szabályt követik:
+![A BLOB storage endpoint kódolás](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
+
+Az IoT Hub kötegeli az üzeneteket, és adatokat ír egy blobot, ha a köteg bizonyos méretet elér egy bizonyos mennyi idő telt el. Az IoT Hub az alapértelmezett fájl alábbi elnevezési szabályt követik:
 
 ```
 {iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}
 ```
 
 Bármely fájl elnevezési konvenciót, használhatja azonban a listában szereplő összes jogkivonatok kell használnia. Az IoT Hub üres blob fog írni, ha ott nem szerepel megjeleníthető adat írni.
+
+Útválasztás blob storage-ba, amikor ajánlott felvétel a blobok és majd léptetés át őket, anélkül, hogy a partíció jósolható olvasható az összes tárolót. A partíciótartomány sikerült potenciálisan módosítása során egy [a Microsoft által kezdeményezett feladatátvételi](iot-hub-ha-dr.md#microsoft-initiated-failover) vagy IoT hubot [manuális feladatátvétel](iot-hub-ha-dr.md#manual-failover-preview). Használhatja a [lista Blobok API](https://docs.microsoft.com/rest/api/storageservices/list-blobs) enumerálásakor a blobok listáját. Tekintse át az alábbi minta útmutatásként.
+
+   ```csharp
+        public void ListBlobsInContainer(string containerName, string iothub)
+        {
+            var storageAccount = CloudStorageAccount.Parse(this.blobConnectionString);
+            var cloudBlobContainer = storageAccount.CreateCloudBlobClient().GetContainerReference(containerName);
+            if (cloudBlobContainer.Exists())
+            {
+                var results = cloudBlobContainer.ListBlobs(prefix: $"{iothub}/");
+                foreach (IListBlobItem item in results)
+                {
+                    Console.WriteLine(item.Uri);
+                }
+            }
+        }
+   ```
 
 ### <a name="service-bus-queues-and-service-bus-topics"></a>Service Bus-üzenetsorok és Service Bus-témakörök
 
@@ -56,8 +76,6 @@ Service Bus-üzenetsorok és témakörök használt IoT Hub-végpontok nesmí m�
 ### <a name="event-hubs"></a>Event Hubs
 
 A beépített-Event-Hubs kompatibilis végpontot, szereplőkkel is irányíthatja adatokat az Event Hubs típusú egyéni végpontok. 
-
-Útválasztási és egyéni végpontok használata esetén üzenetek jelenjenek meg csak a beépített végpont, ha a szabályok nem egyeznek. A beépített végpont és az egyedi végpontok kézbesíti az üzeneteket, adjon hozzá egy útvonalat, amely üzeneteket küld az események végpont.
 
 ## <a name="reading-data-that-has-been-routed"></a>Az adatok olvasása, amely rendelkezik lett irányítva
 
@@ -77,7 +95,7 @@ Az alábbi oktatóanyagok segítségével megismerheti, hogyan végpontról val�
 
 ## <a name="fallback-route"></a>Tartalék útvonal
 
-A tartalék útvonal az üzeneteket, amelyek nem felelnek meg a meglévő útvonalakat a beépített Event Hubs valamelyik lekérdezési feltételek küldi (**üzenetek/események**), azaz kompatibilis [az Event Hubs](/azure/event-hubs/). Üzenet-útválasztása be van kapcsolva, ha a tartalék útvonal funkció engedélyezheti. Figyelje meg, hogy egy útvonal létrehozása után adatok leállítja halad a beépített-az-végpont, kivéve, ha az adott végpontra hozzon létre egy útvonalat. Ha nem léteznek útvonalak a beépített-az-végponthoz, és a egy tartalék útvonalat engedélyezve van, csak az útvonalakra lekérdezési feltételek nem egyező üzeneteket küld a beépített-az-végpontra. Ezenkívül az összes meglévő útvonal törlése, ha tartalék útvonal engedélyezni kell a beépített-az-végpont összes adatok fogadására. 
+A tartalék útvonal az üzeneteket, amelyek nem felelnek meg a meglévő útvonalakat a beépített Event Hubs valamelyik lekérdezési feltételek küldi (**üzenetek/események**), azaz kompatibilis [az Event Hubs](/azure/event-hubs/). Üzenet-útválasztása be van kapcsolva, ha a tartalék útvonal funkció engedélyezheti. Útvonal létrehozása után adatok leállítja halad a beépített-az-végpont, kivéve, ha az adott végpontra hozzon létre egy útvonalat. Ha nem léteznek útvonalak a beépített-az-végponthoz, és a egy tartalék útvonalat engedélyezve van, csak az útvonalakra lekérdezési feltételek nem egyező üzeneteket küld a beépített-az-végpontra. Ezenkívül az összes meglévő útvonal törlése, ha tartalék útvonal engedélyezni kell a beépített-az-végpont összes adatok fogadására. 
 
 Engedélyezheti vagy letilthatja a tartalék útvonal az Azure Portal -> üzenet-útválasztása panelen. Használhatja az Azure Resource Manager- [FallbackRouteProperties](/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) tartalék útvonalak egyéni végpontok használata.
 
@@ -89,13 +107,13 @@ Eszköztelemetria, mellett üzenet-útválasztással is lehetővé teszi a küld
 
 ## <a name="testing-routes"></a>Útvonal tesztelése
 
-Hozzon létre egy új útvonalat, vagy szerkesztheti a meglévő útvonalat, amikor az útválasztási lekérdezés minta üzenetet kell tesztelni. Egyéni útvonalak tesztelése, vagy egyszerre az összes útvonal tesztelése, és nincsenek üzenetek a végpontok legyenek átirányítva a vizsgálat során. Az Azure Portal, Azure Resource Manager, az Azure PowerShell és Azure parancssori felület teszteléséhez használható. Eredmények érdekében adja meg, hogy a minta üzenet egyezik a lekérdezést, üzenet nem egyezik meg a lekérdezés vagy teszt nem sikerült futtatni, mert a minta üzenet vagy a lekérdezés szintaxisát helytelenek. További tudnivalókért lásd: [vizsgálati útvonal](/rest/api/iothub/iothubresource/testroute) és [összes útvonal tesztelése](/rest/api/iothub/iothubresource/testallroutes).
+Hozzon létre egy új útvonalat, vagy szerkesztheti a meglévő útvonalat, amikor az útválasztási lekérdezés minta üzenetet kell tesztelni. Egyéni útvonalak tesztelése, vagy egyszerre az összes útvonal tesztelése, és nincsenek üzenetek a végpontok legyenek átirányítva a vizsgálat során. Az Azure Portal, Azure Resource Manager, az Azure PowerShell és Azure parancssori felület teszteléséhez használható. Eredmények érdekében adja meg, hogy a minta üzenet egyezik a lekérdezés, üzenet nem egyezik meg a lekérdezés vagy teszt nem sikerült futtatni, mert a minta üzenet vagy a lekérdezés szintaxisa helytelen. További tudnivalókért lásd: [vizsgálati útvonal](/rest/api/iothub/iothubresource/testroute) és [összes útvonal tesztelése](/rest/api/iothub/iothubresource/testallroutes).
 
 ## <a name="latency"></a>Késés
 
 Ha irányíthatja a beépített végpontokról eszköz – felhő telemetriát üzenetek, akkor a végpontok közötti késés enyhe növekedése van, az első útvonal a létrehozása után.
 
-A legtöbb esetben az átlagos késés növekedése kisebb, mint 500ms. Figyelhető a késés **útválasztás: közel valós idejű üzenetek/események üzenet** vagy **d2c.endpoints.latency.builtIn.events** az IoT Hub-metrikát. Létrehozása vagy törlése az útvonalakat az első után nincs hatással a végpontok közötti késését.
+A legtöbb esetben az átlagos késés növekedése kevesebb, mint 500 ms. Figyelhető a késés **útválasztás: közel valós idejű üzenetek/események üzenet** vagy **d2c.endpoints.latency.builtIn.events** az IoT Hub-metrikát. Létrehozása vagy törlése az útvonalakat az első után nincs hatással a végpontok közötti késését.
 
 ## <a name="monitoring-and-troubleshooting"></a>Megfigyelés és hibaelhárítás
 

@@ -10,12 +10,12 @@ ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: a45ed3ad5360f613a4949799c60ec09f4a30afb9
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 7a02fff5a727bd0a3be762e9e458a71f66b87ba2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56427768"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452674"
 ---
 # <a name="sql-data-warehouse-business-intelligence-partners"></a>Az SQL Data warehouse-bA üzleti intelligencia partnerek
 A teljes körű adattárház-megoldást létrehozni, számos különböző iparágvezető eszközök közül választhat.  Ez a cikk a Microsoft partnervállalatokban az üzleti intelligenciára épülő (BI) megoldások támogatása az Azure SQL Data Warehouse emeli ki.

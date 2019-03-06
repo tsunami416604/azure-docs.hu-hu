@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 135b684c67776da7d722074abe185b5ed2a860fa
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 5e614d7fc1b45e5a1e1c11d04ed80fbb66bfbd28
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889409"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441610"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Megnevezett entitások felismerése használata a Text Analytics (előzetes verzió)
 
@@ -23,7 +23,7 @@ A [entitás Recognition API](https://westus.dev.cognitive.microsoft.com/docs/ser
 
 ## <a name="entity-linking-and-named-entity-recognition"></a>Entitáskapcsolás és nevesített entitások felismerése
 
-A Text Analytics `entities` mindkét végpont supprts nevű (NER) entitásfelismeréssel és -entitáskapcsolás.
+A Text Analytics `entities` mindkettő (NER) entitásfelismeréssel és -entitáskapcsolás nevű végpont támogatja.
 
 ### <a name="entity-linking"></a>Entitáskapcsolás
 Entitáskapcsolás rendszer azon képessége, azonosíthatja és a egy entitás (például meghatározása-e a "Mars" globális vagy a latin god háború használja) szöveg található az identitás megkülönböztetéséhez. Ez a folyamat, amely felismeri a kapcsolódó entitások – Wikipedia szolgál a Tudásbázisban alapszintű ismerete szükséges a `entities` végpontot Text Analytics.

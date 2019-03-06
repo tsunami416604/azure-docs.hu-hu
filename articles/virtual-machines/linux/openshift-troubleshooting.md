@@ -13,26 +13,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: ''
+ms.date: 02/02/2019
 ms.author: haroldw
-ms.openlocfilehash: 6a4af0efb14d8ad45add906262ffd2121e8b78d0
-ms.sourcegitcommit: 5de9de61a6ba33236caabb7d61bee69d57799142
+ms.openlocfilehash: f94189e8f39771e0c3d7856ccbb8a23ba81d94aa
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50085825"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447274"
 ---
 # <a name="troubleshoot-openshift-deployment-in-azure"></a>Az Azure-ban az OpenShift telepítés hibaelhárítása
 
 Nem sikerült az OpenShift-fürt üzembe helyezése, ha az Azure portal nyújt hibakimenet. Lehet, hogy a kimenet nehezen olvasható, így nehéz a probléma meghatározásához. Ez a kimenet a kilépési kód 3, 4 vagy 5 gyors vizsgálat. A következő információkat tartalmazza az alábbi három kilépési kódot:
 
-- Kilépési kód 3: A Red Hat előfizetés felhasználónév / jelszó vagy a szervezeti azonosító / aktiválási kulcs helytelen
-- Kilépési kód 4: helytelen a Red Hat Készletazonosító vagy jogosultságok nem állnak rendelkezésre
-- Kilépési kód 5: nem sikerült kiépíteni a Docker vékony tárolókészlet kötetét
+- 3. kilépési kód: A Red Hat-előfizetés felhasználónév / jelszó vagy a szervezeti azonosító / aktiválási kulcs helytelen
+- 4. kilépési kód: A Red Hat-készlet azonosítója nem megfelelő, vagy a jogosultságok nem állnak rendelkezésre
+- 5. kilépési kód: Nem sikerült kiépíteni a Docker vékony tárolókészlet kötetét
 
 Más kilépési kódok csatlakozni a állomásokkal keresztül az ssh naplófájljainak megtekintéséhez.
 
-**OpenShift Tárolóplatform**
+**OpenShift Container Platform**
 
 Az ansible forgatókönyv állomás ssh-KAPCSOLATOT. A sablon vagy a Piactéri ajánlat használja a bástyagazdagép. A megerősített SSH lehetővé minden más csomópontokhoz a fürtben (master, infra, CNS, számítás). A naplófájlok megtekintése gyökérkönyvtára kell. Legfelső szintű ezért ne használjon más csomópontokhoz legfelső szintű ssh alapértelmezés szerint nem végezhető el SSH-hozzáférést.
 

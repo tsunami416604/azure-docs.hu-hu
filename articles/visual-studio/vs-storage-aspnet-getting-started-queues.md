@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/23/2016
 ms.author: ghogen
-ms.openlocfilehash: 5234f5c82e98fcb402cadf9a8a469a15bbb7ac6d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: ac36502a67f9deddf14b5eeae64df6f799d25e97
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250815"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57446078"
 ---
 # <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>Ismerkedés az Azure queue storage és a Visual Studio csatlakoztatott szolgáltatások (ASP.NET)
 
@@ -83,7 +83,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy várólista:
     }
     ```
 
-1. Belül a **CreateQueue** metódus első egy **CloudStorageAccount** objektum, amely a storage-fiók adatait jelöli. A tárolási kapcsolati karakterlánccal és a tárfiókjával kapcsolatos információkat kaphat az Azure szolgáltatás konfigurációja a következő kód használatával: (módosítása  *&lt;storage-fiók-neve >* Ön az Azure storage-fiók neve fér hozzá.)
+1. Belül a **CreateQueue** metódus első egy **CloudStorageAccount** objektum, amely a storage-fiók adatait jelöli. A tárolási kapcsolati karakterlánccal és a tárfiókjával kapcsolatos információkat kaphat az Azure-szolgáltatás konfigurációs használja a következő kódot: (Változás  *&lt;storage-fiók-neve >* az Azure storage-fiók nevére éri el.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -137,7 +137,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy várólista:
     <li>@Html.ActionLink("Create queue", "CreateQueue", "Queues")</li>
     ```
 
-1. Futtassa az alkalmazást, és válassza ki **üzenetsor létrehozása** eredmények az alábbi képernyőfelvételhez hasonló megtekintéséhez:
+1. Futtassa az alkalmazást, és válassza ki **üzenetsor létrehozása** eredmények az alábbi képernyőfelvételhez hasonlóan megtekintéséhez:
   
     ![Üzenetsor létrehozása](./media/vs-storage-aspnet-getting-started-queues/create-queue-results.png)
 
@@ -164,7 +164,7 @@ Miután [létrehozott egy üzenetsort](#create-a-queue), üzenetet az üzenetsor
     }
     ```
  
-1. Belül a **AddMessage** metódus első egy **CloudStorageAccount** objektum, amely a storage-fiók adatait jelöli. A tárolási kapcsolati karakterlánccal és a tárfiókjával kapcsolatos információkat kaphat az Azure szolgáltatás konfigurációja a következő kód használatával: (módosítása  *&lt;storage-fiók-neve >* Ön az Azure storage-fiók neve fér hozzá.)
+1. Belül a **AddMessage** metódus első egy **CloudStorageAccount** objektum, amely a storage-fiók adatait jelöli. A tárolási kapcsolati karakterlánccal és a tárfiókjával kapcsolatos információkat kaphat az Azure-szolgáltatás konfigurációs használja a következő kódot: (Változás  *&lt;storage-fiók-neve >* az Azure storage-fiók nevére éri el.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -226,7 +226,7 @@ Miután [létrehozott egy üzenetsort](#create-a-queue), üzenetet az üzenetsor
     <li>@Html.ActionLink("Add message", "AddMessage", "Queues")</li>
     ```
 
-1. Futtassa az alkalmazást, és válassza ki **üzenet hozzáadása** eredmények az alábbi képernyőfelvételhez hasonló megtekintéséhez:
+1. Futtassa az alkalmazást, és válassza ki **üzenet hozzáadása** eredmények az alábbi képernyőfelvételhez hasonlóan megtekintéséhez:
   
     ![Üzenet hozzáadása](./media/vs-storage-aspnet-getting-started-queues/add-message-results.png)
 
@@ -253,7 +253,7 @@ Ez a szakasz bemutatja, hogyan betekintés az üzenetsorban található üzenet 
     }
     ```
  
-1. Belül a **PeekMessage** metódus első egy **CloudStorageAccount** objektum, amely a storage-fiók adatait jelöli. A tárolási kapcsolati karakterlánccal és a tárfiókjával kapcsolatos információkat kaphat az Azure szolgáltatás konfigurációja a következő kód használatával: (módosítása  *&lt;storage-fiók-neve >* Ön az Azure storage-fiók neve fér hozzá.)
+1. Belül a **PeekMessage** metódus első egy **CloudStorageAccount** objektum, amely a storage-fiók adatait jelöli. A tárolási kapcsolati karakterlánccal és a tárfiókjával kapcsolatos információkat kaphat az Azure-szolgáltatás konfigurációs használja a következő kódot: (Változás  *&lt;storage-fiók-neve >* az Azure storage-fiók nevére éri el.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -278,7 +278,7 @@ Ez a szakasz bemutatja, hogyan betekintés az üzenetsorban található üzenet 
     CloudQueueMessage message = queue.PeekMessage();
     ```
 
-1. Frissítés a **ViewBag** a két érték: a várólista nevét és az üzenetet, amely lett beolvasva. A **CloudQueueMessage** objektum esetében az objektum érték első két tulajdonságok közzététele: **CloudQueueMessage.AsBytes** és **CloudQueueMessage.AsString**. **AsString** (ebben a példában használt) egy karakterláncot ad vissza, miközben **AsBytes** Bájttömbbel adja vissza.
+1. Frissítés a **ViewBag** a két érték: a várólista nevét és az üzenetet, amely lett beolvasva. A **CloudQueueMessage** objektum mutatja meg az objektum érték első két tulajdonságait: **CloudQueueMessage.AsBytes** and **CloudQueueMessage.AsString**. **AsString** (ebben a példában használt) egy karakterláncot ad vissza, miközben **AsBytes** Bájttömbbel adja vissza.
 
     ```csharp
     ViewBag.QueueName = queue.Name; 
@@ -312,7 +312,7 @@ Ez a szakasz bemutatja, hogyan betekintés az üzenetsorban található üzenet 
     <li>@Html.ActionLink("Peek message", "PeekMessage", "Queues")</li>
     ```
 
-1. Futtassa az alkalmazást, és válassza ki **Peek message** eredmények az alábbi képernyőfelvételhez hasonló megtekintéséhez:
+1. Futtassa az alkalmazást, és válassza ki **Peek message** eredmények az alábbi képernyőfelvételhez hasonlóan megtekintéséhez:
   
     ![Belepillantás üzenetbe](./media/vs-storage-aspnet-getting-started-queues/peek-message-results.png)
 
@@ -337,7 +337,7 @@ Ebben a szakaszban megismerheti, hogyan olvassa el, és távolítsa el az üzene
     }
     ```
  
-1. Belül a **ReadMessage** metódus első egy **CloudStorageAccount** objektum, amely a storage-fiók adatait jelöli. A tárolási kapcsolati karakterlánccal és a tárfiókjával kapcsolatos információkat kaphat az Azure szolgáltatás konfigurációja a következő kód használatával: (módosítása  *&lt;storage-fiók-neve >* Ön az Azure storage-fiók neve fér hozzá.)
+1. Belül a **ReadMessage** metódus első egy **CloudStorageAccount** objektum, amely a storage-fiók adatait jelöli. A tárolási kapcsolati karakterlánccal és a tárfiókjával kapcsolatos információkat kaphat az Azure-szolgáltatás konfigurációs használja a következő kódot: (Változás  *&lt;storage-fiók-neve >* az Azure storage-fiók nevére éri el.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -403,7 +403,7 @@ Ebben a szakaszban megismerheti, hogyan olvassa el, és távolítsa el az üzene
     <li>@Html.ActionLink("Read/Delete message", "ReadMessage", "Queues")</li>
     ```
 
-1. Futtassa az alkalmazást, és válassza ki **olvasása/törlése üzenet** eredmények az alábbi képernyőfelvételhez hasonló megtekintéséhez:
+1. Futtassa az alkalmazást, és válassza ki **olvasása/törlése üzenet** eredmények az alábbi képernyőfelvételhez hasonlóan megtekintéséhez:
   
     ![Olvassa el, és az üzenet törlése](./media/vs-storage-aspnet-getting-started-queues/read-message-results.png)
 
@@ -428,7 +428,7 @@ Ez a szakasz mutatja be, hogyan tehet szert az üzenetsor hossza (üzenetek szá
     }
     ```
  
-1. Belül a **ReadMessage** metódus első egy **CloudStorageAccount** objektum, amely a storage-fiók adatait jelöli. A tárolási kapcsolati karakterlánccal és a tárfiókjával kapcsolatos információkat kaphat az Azure szolgáltatás konfigurációja a következő kód használatával: (módosítása  *&lt;storage-fiók-neve >* Ön az Azure storage-fiók neve fér hozzá.)
+1. Belül a **ReadMessage** metódus első egy **CloudStorageAccount** objektum, amely a storage-fiók adatait jelöli. A tárolási kapcsolati karakterlánccal és a tárfiókjával kapcsolatos információkat kaphat az Azure-szolgáltatás konfigurációs használja a következő kódot: (Változás  *&lt;storage-fiók-neve >* az Azure storage-fiók nevére éri el.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -490,7 +490,7 @@ Ez a szakasz mutatja be, hogyan tehet szert az üzenetsor hossza (üzenetek szá
     <li>@Html.ActionLink("Get queue length", "GetQueueLength", "Queues")</li>
     ```
 
-1. Futtassa az alkalmazást, és válassza ki **üzenetsor hosszának lekérése** eredmények az alábbi képernyőfelvételhez hasonló megtekintéséhez:
+1. Futtassa az alkalmazást, és válassza ki **üzenetsor hosszának lekérése** eredmények az alábbi képernyőfelvételhez hasonlóan megtekintéséhez:
   
     ![Első sor hossza](./media/vs-storage-aspnet-getting-started-queues/get-queue-length-results.png)
 
@@ -515,7 +515,7 @@ Ez a szakasz bemutatja, hogyan várólistát töröl.
     }
     ```
  
-1. Belül a **DeleteQueue** metódus első egy **CloudStorageAccount** objektum, amely a storage-fiók adatait jelöli. A tárolási kapcsolati karakterlánccal és a tárfiókjával kapcsolatos információkat kaphat az Azure szolgáltatás konfigurációja a következő kód használatával: (módosítása  *&lt;storage-fiók-neve >* Ön az Azure storage-fiók neve fér hozzá.)
+1. Belül a **DeleteQueue** metódus első egy **CloudStorageAccount** objektum, amely a storage-fiók adatait jelöli. A tárolási kapcsolati karakterlánccal és a tárfiókjával kapcsolatos információkat kaphat az Azure-szolgáltatás konfigurációs használja a következő kódot: (Változás  *&lt;storage-fiók-neve >* az Azure storage-fiók nevére éri el.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -570,7 +570,7 @@ Ez a szakasz bemutatja, hogyan várólistát töröl.
     <li>@Html.ActionLink("Delete queue", "DeleteQueue", "Queues")</li>
     ```
 
-1. Futtassa az alkalmazást, és válassza ki **üzenetsor hosszának lekérése** eredmények az alábbi képernyőfelvételhez hasonló megtekintéséhez:
+1. Futtassa az alkalmazást, és válassza ki **üzenetsor hosszának lekérése** eredmények az alábbi képernyőfelvételhez hasonlóan megtekintéséhez:
   
     ![Üzenetsor törlése](./media/vs-storage-aspnet-getting-started-queues/delete-queue-results.png)
 

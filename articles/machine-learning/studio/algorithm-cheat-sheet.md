@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
-ms.date: 12/18/2017
-ms.openlocfilehash: 8d0b123045ace223dbea6c8fa98980091cfe73e1
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.date: 03/04/2019
+ms.openlocfilehash: 4adcef601ca84b94d88ed65278310a94c7273353
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819990"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433318"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-studio"></a>Gépi tanulási algoritmus-Adatlap az Azure Machine Learning Studióban
 
@@ -36,7 +36,7 @@ Töltse le, és a Machine Learning Studio algoritmus Adatlap lap nyomtatása tab
 
 ## <a name="notes-and-terminology-definitions-for-the-machine-learning-studio-algorithm-cheat-sheet"></a>Megjegyzések és a Machine Learning Studio algoritmus terminológiai definíciók – Adatlap
 
-* A javaslat érhető el az algoritmus-Adatlap hozzávetőleges szabályok-az-bütykének. Néhány hajlított, és néhány is lehet flagrantly megsértve. Ennek célja, és kiindulási pontot javasolja. Ne féljen head-to-head versenyt között számos algoritmust az adatokon való futtatásához. Nincs egyszerűen nincs helyettesítő egyes algoritmus alapelveinek ismertetése, és a rendszer az adatokat létrehozó ismertetése.
+* A javaslat érhető el az algoritmus-Adatlap hozzávetőleges szabályok-az-bütykének. Néhány hajlított, és néhány is lehet flagrantly megsértve. Ennek célja, és kiindulási pontot javasolja. Ne féljen head-to-head versenyt között számos algoritmust az adatokon való futtatásához. Nincs egyszerűen nem helyettesíti az egyes algoritmus és a rendszer az adatokat létrehozó ismertetése.
 
 * Minden gépi tanulási algoritmus rendelkezik a saját style vagy *induktív eltérés*. Egy meghatározott problémára vonatkozó számos algoritmust célszerű lehet, és a egy algoritmus lehet, mint a többi jobban megfelel. De nem mindig lehetséges tudja előre, azaz az ideális megoldást. Ilyen esetekben számos algoritmust szerepelnek együtt a Adatlap. Próbáljon meg egy algoritmust, és ha az eredmények egyelőre nem kielégítő, próbálja ki, a többi lehet a megfelelő stratégiát. Íme egy példa a a [Azure AI-katalógusban](http://gallery.azure.ai/) kísérletet, amelyek az ugyanazon adatokra irányuló számos algoritmust megpróbál, és összehasonlítja az eredmények: [Hasonlítsa össze a többcsoportos besorolások: Elismerési betűs](http://gallery.azure.ai/Details/a635502fc98b402a890efe21cec65b92).
 
@@ -52,7 +52,7 @@ Töltse le, és a Machine Learning Studio algoritmus Adatlap lap nyomtatása tab
 
 * **Súlyozott regressziós döntési fa** kihasználja a szolgáltatás között átfedés van, vagy a szolgáltatások közötti interakció. Azt jelenti, hogy, hogy az adott adatpontok, egy szolgáltatás értéke némileg prediktív egy másik érték. Például a napi magas és alacsony hőmérsékletadatokat, a legalacsonyabb hőmérséklet, hogy a nap lehetővé teszi, hogy a nagy egy ésszerű találgatásos. A két funkció található információkat, valamennyire redundáns.
 
-* Adatok besorolása több mint két kategóriába sorolhatók teheti meg vagy egy eredendően több osztály osztályozó, vagy csoportjának egyesítésével képzett két osztályú osztályozás be egy **ensemble**. A ensemble módszert használja, nincs külön két osztályú besorolás az egyes osztályok – az adatok mindegyik elválasztja a két kategóriába sorolhatók: "Ez az osztály" és "nem ez az osztály." Ezek a besorolások majd helyes hozzárendelését az adatpont is szavazhat. Ez az a működési elv mögött [egy-multi-osztályú osztályozási műveletet][one-vs-all-multiclass].
+* Adatok besorolása több mint két kategóriába sorolhatók teheti meg egy eredendően több osztály osztályozó használatával vagy csoportjának egyesítésével képzett két osztályú osztályozás be egy **ensemble**. A ensemble módszert használja, nincs külön két osztályú besorolás az egyes osztályok – az adatok mindegyik elválasztja a két kategóriába sorolhatók: "Ez az osztály" és "nem ez az osztály." Ezek a besorolások majd helyes hozzárendelését az adatpont is szavazhat. Ez az a működési elv mögött [egy-multi-osztályú osztályozási műveletet][one-vs-all-multiclass].
 
 * Tegyük fel, több módszer, beleértve a logisztikai regressziós és a Bayes pontozó gépet **lineáris osztály határok**. Ez azt jelenti, hogy azt feltételezik, hogy az osztályok között határok körülbelül egyenes vonalak (vagy az általános esetben hyperplanes). Gyakran ez az adatok, amíg nem tudja után való elhatárolásra próbálta jellemzők, de valami, amely általában is lehet megtanult előre vizualizációjával. Az osztály határok nagyon szabálytalan tekinti meg, ha jól döntési fák, decision jungle algoritmust, támogatja a vektoros gépek vagy a Neurális hálózatokat.
 
@@ -69,7 +69,7 @@ Töltse le, és a Machine Learning Studio algoritmus Adatlap lap nyomtatása tab
 
 
 <!-- Module References -->
-[a-z-list]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/a-z-module-list
-[initialize-model]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/machine-learning-initialize-model
-[k-means-clustering]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/k-means-clustering
-[one-vs-all-multiclass]: https://docs.microsoft.com/azure/machine-learning/studio-module-reference/one-vs-all-multiclass
+[a-z-list]: /azure/machine-learning/studio-module-reference/a-z-module-list
+[initialize-model]: /azure/machine-learning/studio-module-reference/machine-learning-initialize-model
+[k-means-clustering]: /azure/machine-learning/studio-module-reference/k-means-clustering
+[one-vs-all-multiclass]: /azure/machine-learning/studio-module-reference/one-vs-all-multiclass

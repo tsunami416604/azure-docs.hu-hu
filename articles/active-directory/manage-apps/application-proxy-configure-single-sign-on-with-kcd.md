@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017, it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19ea76f28995dfa7f7dd5a6f280f8319f5b4ca26
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b82f32477efb2e45eb95651dd21ccd2ae3095e7c
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180760"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431309"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-to-your-apps-with-application-proxy"></a>Kerberos által korlátozott delegálás az egyszeri bejelentkezést az alkalmazásokba az alkalmazásproxy használatával
 
@@ -30,15 +30,15 @@ Egyszeri bejelentkezés biztosíthatja a helyszíni Application Proxy védett in
 Az alkalmazásproxy-összekötők jogosultság, így az Active Directory integrált Windows-hitelesítés (IWA) használatával a felhasználók megszemélyesítésére alkalmazások engedélyezheti az egyszeri bejelentkezés. Az összekötők küldjön és fogadjon a tokeneket a felhasználók nevében használja ezt az engedélyt.
 
 ## <a name="how-single-sign-on-with-kcd-works"></a>Az egyszeri bejelentkezés KCD Works
-Ez az ábra ismerteti a folyamatot, amikor egy felhasználó megpróbál hozzáférni IWA használó helyszíni alkalmazások.
+Ez az ábra a folyamatot ismerteti, amikor egy felhasználó megpróbál hozzáférni a IWA használó helyszíni alkalmazások.
 
 ![A Microsoft AAD-hitelesítés folyamatábrája](./media/application-proxy-configure-single-sign-on-with-kcd/AuthDiagram.png)
 
-1. A felhasználó megadja az URL-cím alkalmazásproxyn keresztül a helyszíni alkalmazás eléréséhez.
+1. A felhasználó megadja az alkalmazáshoz való hozzáférés a helyszíni proxyn keresztül történő alkalmazás URL-CÍMÉT.
 2. Az alkalmazásproxy átirányítja a kérést az Azure AD authentication szolgáltatások tudnak preauthenticate. Ezen a ponton az Azure AD bármilyen megfelelő hitelesítési és engedélyezési házirendeket, mint a többtényezős hitelesítés vonatkozik. Ha a felhasználó érvényesítését, Azure ad-ben létrehoz egy jogkivonatot, és elküldi azokat a felhasználó.
 3. A felhasználó az alkalmazásproxy továbbítja a jogkivonatot.
 4. Proxy érvényesíti a jogkivonatot, és az egyszerű felhasználónév (UPN) beolvassa és és továbbítja a kérést, az egyszerű Felhasználónevet és az egyszerű szolgáltatásnév (SPN) az összekötő dually hitelesített biztonságos csatornán keresztül történik.
-5. Az összekötő végez egyeztetést Kerberos által korlátozott delegálás (KCD) a helyszíni Active Directory, az alkalmazásnak a Kerberos jogkivonat beszerzéséhez a felhasználó megszemélyesítésekor.
+5. Az összekötő a helyszíni Active Directory, az alkalmazásnak a Kerberos jogkivonat beszerzéséhez a felhasználó megszemélyesítésekor, a Kerberos által korlátozott delegálás (KCD) egyeztetést végez.
 6. Az Active Directory elküldi az alkalmazás az összekötő Kerberos-jogkivonat.
 7. Az összekötő az eredeti kérés küldése az application server, az AD-ből kapott Kerberos-jogkivonat használatával.
 8. Az alkalmazás visszaküldi a választ, az összekötőre, amelyet ezután visszaküld az alkalmazásproxy-szolgáltatás, és végül a felhasználó számára.
@@ -118,7 +118,7 @@ Ez a funkció lehetővé teszi, hogy számos különböző helyszíni és felhő
 * Több tartományom van belső használatra (joe@us.contoso.com, joe@eu.contoso.com) és a egy egyetlen tartományt a felhőben (joe@contoso.com).
 * Belső használatra van nem átirányítható tartománynevet (joe@contoso.usa) és a egy jogi megjegyzés a felhőben.
 * Belsőleg nem használja a tartománynevek (joe)
-* Használjon különböző aliasnevet a helyszíni és a felhőben. Ha például joe-johns@contoso.com vs. joej@contoso.com  
+* Más aliasok használhatók a helyszínen és a felhőben. Ha például joe-johns@contoso.com vs. joej@contoso.com  
 
 A proxyval kiválaszthatja, melyik identitás a Kerberos-jegy beszerzéséhez használhatnak. Ez a beállítás akkor alkalmazásonként. Ezek a beállítások némelyike rendszerek, amelyek nem fogadja el az e-mail cím formátuma megfelelő, mások alternatív bejelentkezési lettek kialakítva.
 

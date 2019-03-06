@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36b717bfd05a71639c5d1f467af8e9238474160d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f1f34796a98acb3ed4241edff57e506990479d1a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170194"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443266"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-device-code-flow"></a>Az Azure Active Directory 2.0-s verzió és az OAuth 2.0 eszköz kódfolyamat
 
@@ -32,7 +32,7 @@ ms.locfileid: "56170194"
 Az Azure AD támogatja a [eszköz kódmegadás](https://tools.ietf.org/html/draft-ietf-oauth-device-flow-12), amely lehetővé teszi, hogy a felhasználók számára, hogy jelentkezzen be a bemeneti korlátozott eszközök, mint egy Okostelevízió, IoT-eszközből vagy nyomtató.  Ahhoz, hogy ez a folyamat, az eszköz a böngészőben egy másik eszközön, hogy jelentkezzen be a felhasználói látogatás egy weblap rendelkezik.  Miután a felhasználó bejelentkezik, az eszköz nem képes hozzáférési és frissítési jogkivonatok, igény szerint.  
 
 > [!Important] 
-> Jelenleg a v2.0-végpont csak támogatja az eszköz a folyamat az Azure AD-bérlőt, de nem személyes fiókokat.  Ez azt jelenti, hogy kell használnia egy ábráját végponton, vagy a szervezetek végpont.  
+> Jelenleg a v2.0-végpont csak támogatja az eszköz a folyamat az Azure AD-bérlőt, de nem személyes fiókokat.  Ez azt jelenti, hogy kell használni, állítsa be bérlőként végpont, vagy a szervezetek végpont.  
 >
 > Személyes fiókokat is meghív egy Azure AD-bérlővel, használhatja az eszköz folyamat engedély megadása, de csak a bérlői kontextusában lesz.
 

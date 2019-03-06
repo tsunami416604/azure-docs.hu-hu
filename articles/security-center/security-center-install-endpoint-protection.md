@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 2065381063058eb59dd5896e12c1aa34184148bf
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: c2cb4c2f1154be56b7237a6cb12c87fcc3e00467
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247001"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455870"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Az Azure Security Center végpontvédelmi problémák kezelése
 Az Azure Security Center figyeli a kártevőkkel szembeni védelem állapotát, és ezt jelzi az Endpoint protection problémák panel alatt. A Security Center problémákról, például az észlelt fenyegetések és a nem megfelelő védelemmel, amely sérülékennyé teheti a virtuális gépek (VM) és a számítógépek kártevőirtó fenyegetések emeli ki. Az információk használatával **végpontvédelem**, azonosíthatja a terv azonosított problémák elhárítása.
@@ -60,7 +60,7 @@ Ebben a példában használjuk **számítási**.  Áttekintjük, hogyan telepít
    - Telepített végpontvédelmi szolgáltatók – a Security Center által azonosított különböző szolgáltatók listája.
    - Telepített végpontvédelem állapota – a virtuális gépeket és számítógépeket, amelyek rendelkeznek telepített végpontvédelmi megoldás állapotát jeleníti meg. A diagram bemutatja a virtuális gépek és számítógépek, amelyek a megfelelő és nem megfelelő védelemmel a számát.
    - Kártevő észlelve – virtuális gépek számát jeleníti meg, és hol van a Security Center jelentést készítő számítógépek kártevő észlelhető.
-   - Megtámadott számítógépek – virtuális gépek és számítógépek, ahol a Security Center jelent támadások által forgalmazóival számát jeleníti meg.
+   - Megtámadott számítógépek – virtuális gépek és számítógépek, ahol a Security Center jelent támadások kártevő számát jeleníti meg.
 
    Az irányítópult alján nincs végpont listáját védelmével kapcsolatos problémák, amely tartalmazza a következő információkat:  
 

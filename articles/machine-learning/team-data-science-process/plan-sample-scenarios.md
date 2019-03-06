@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 514242eb759a2349d96b38ebe54bb98cf0e83423
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 6838f4db240a0712eece7a97bc2cfe99efb87215
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468818"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454944"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Speciális elemzési forgatókönyvek az Azure Machine Learning rendszerben
 Ez a cikk ismerteti a különböző minta adatforrások és a cél forgatókönyvek tudja kezelni a [csoportos adatelemzési folyamat (TDSP)](overview.md). A TDSP rendszerezett megközelítést biztosít olyan munkacsoportok számára az intelligens alkalmazások készítéséhez. Az itt bemutatott forgatókönyveket mutatnak be lehetőségek az adatok feldolgozása a munkafolyamat, amely a adatjellemzők, az adatforrás helyének és az Azure-beli cél tárházak függ.
@@ -146,7 +146,7 @@ A következő szakaszok mindegyike megjelenít egy mintaforgatókönyv. Minden f
 1. Az adatok beolvasása közvetlenül az SQL Server használatával a [adatok importálása] [ import-data] modul. Illessze be a szükséges lekérdezést, amely kinyeri a mezők, szolgáltatásokat hoz létre, és minták adatokat, ha közvetlenül a szükséges a [adatok importálása] [ import-data] lekérdezés.
 1. Az Azure Machine Learning-kísérlet egyszerű folyamatot kezdve a feltöltött adatkészlet
 
-## <a name="largedbtodb"></a>A forgatókönyv \#6: Nagy méretű adatkészlet egy SQL Server adatbázis helyben, SQL Server egy Azure virtuális gép célzó
+## <a name="largedbtodb"></a>A forgatókönyv \#6: Az SQL Server-adatbázis a helyszínen, az SQL Server egy Azure virtuális gép célzó nagy méretű adathalmazt
 ![Nagy SQL DB – helyszíni SQL-adatbázisba az Azure-ban][6]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>További Azure-erőforrások: Az Azure virtuális gép (az SQL Server / IPython Notebook server)
@@ -154,7 +154,7 @@ A következő szakaszok mindegyike megjelenít egy mintaforgatókönyv. Minden f
 1. Az adatok közül export metódus az adatok exportálása az SQL Server memóriaképeket.
    
    > [!NOTE]
-   > Ha úgy dönt, hogy minden adat áthelyezése a helyszíni adatbázisból, a teljes adatbázis áthelyezése az Azure-beli SQL Server-példány (gyorsabb) alternatív módszert. Adatok exportálása, hozzon létre adatbázist, és terhelés /-importálási adatok a céladatbázis és kövesse a másik módszer a lépés kihagyható.
+   > Ha úgy dönt, hogy minden adat áthelyezése az adatbázisból a helyi, a teljes adatbázis áthelyezése az Azure-beli SQL Server-példány (gyorsabb) alternatív módszert. Adatok exportálása, hozzon létre adatbázist, és terhelés /-importálási adatok a céladatbázis és kövesse a másik módszer a lépés kihagyható.
    > 
    > 
 1. Memóriaképek feltöltése az Azure storage-tárolóba.

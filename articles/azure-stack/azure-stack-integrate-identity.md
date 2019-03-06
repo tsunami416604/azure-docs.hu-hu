@@ -6,29 +6,19 @@ author: PatAltimore
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 03/04/2019
 ms.author: patricka
 ms.reviewer: thoroet
-ms.lastreviewed: 01/23/19
-ms.openlocfilehash: 86a7f98f8232d4fb3e915efee6d9b53f1fae6e7e
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.lastreviewed: 03/04/2019
+ms.openlocfilehash: 65e5a678b4619897930873e77208005e14c054d2
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737705"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57410281"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Az Azure Stack adatközpont integrációja - identitás
-Az identitás-szolgáltatóktól, Azure Active Directory (Azure AD) vagy az Active Directory összevonási szolgáltatások (AD FS) használatával az Azure-verem üzembe helyezhető. Ellenőrizze a kiválasztott Azure Stack üzembe helyezése előtt. Az AD FS telepítési is nevezik üzembe helyezése az Azure Stack kapcsolat nélküli módban.
-
-Az alábbi táblázat a két identitás lehetőségek közötti különbségeket mutatja:
-
-||Kapcsolódik az internethez|Csatlakozik az internethez|
-|---------|---------|---------|
-|Számlázás|Kapacitás kell lennie.<br> Nagyvállalati Szerződés (EA) csak|Kapacitás vagy a fizetési mint-akkor-használható<br>Nagyvállalati szerződés vagy a Cloud Solution Provider (CSP)|
-|Identitás|Az AD FS kell lennie.|Az Azure AD vagy az AD FS|
-|Piactér |Támogatott<br>BYOL-licencelés|Támogatott<br>BYOL-licencelés|
-|Regisztráció|Szükséges, cserélhető adathordozóra van szükség<br> és a egy különálló csatlakoztatott eszközön.|Automatikus|
-|A javítások és frissítések|Szükséges, cserélhető adathordozóra van szükség<br> és a egy különálló csatlakoztatott eszközön.|Frissítési csomag közvetlenül letölthető<br> az Azure Stack az internetről.|
+Az identitás-szolgáltatóktól, Azure Active Directory (Azure AD) vagy az Active Directory összevonási szolgáltatások (AD FS) használatával az Azure-verem üzembe helyezhető. Ellenőrizze a kiválasztott Azure Stack üzembe helyezése előtt. Egy csatlakoztatott esetben válassza ki az Azure AD vagy az AD FS. A leválasztott esetben csak az AD FS használata támogatott.
 
 > [!IMPORTANT]
 > Az identitásszolgáltató nem válthat a teljes Azure Stack megoldás újbóli üzembe helyezése nélkül.
@@ -43,7 +33,7 @@ Hitelesítés az identitás egy részét. Szerepkör alapú hozzáférés-vezér
 
 A meglévő AD FS a fiók biztonsági jogkivonat-szolgáltatás (STS) által küldött jogcímek, az Azure Stack Active Directory összevonási szolgáltatások (az erőforrás STS). Az Azure Stackben automation hoz létre a jogcím-szolgáltatói megbízhatóság a metaadatok végpontján a meglévő AD FS számára.
 
-A meglévő AD FS-ben található egy függőentitás-megbízhatóságot kell konfigurálni. Ebben a lépésben nem történik meg az automation, és meg kell adni az operátor. Az Azure Stack-metaadatok végpontja dokumentálja a AzureStackStampDeploymentInfo.JSON fájlban, vagy a kiemelt jogosultságú végponton keresztül a parancs futtatásával `Get-AzureStackInfo`.
+A meglévő AD FS-ben található egy függőentitás-megbízhatóságot kell konfigurálni. Ebben a lépésben nem történik meg az automation, és meg kell adni az operátor. A minta használatával hozható létre az AD FS az Azure Stack VIP végpont `https://adfs.<Region>.<ExternalFQDN>/`.
 
 A függő entitás megbízhatósági konfiguráció is megköveteli, hogy a Microsoft által biztosított jogcím-átalakítási szabályok konfigurálása.
 

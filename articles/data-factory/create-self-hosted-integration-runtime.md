@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: abnarain
-ms.openlocfilehash: 68878a68b5f0051c1ee9beda96293dd7cd00eaf1
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: dc9f24f948e32d1b87745016852a875d440323de
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493592"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443697"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Létrehozhat és konfigurálhat egy saját üzemeltetésű integrációs modul
 Az integrációs modul (IR) a számítási infrastruktúra, amellyel Azure Data Factory adatintegrációs képességeket biztosítja különböző hálózati környezetekben. Integrációs modul kapcsolatos részletekért lásd: [Integration runtime áttekintése](concepts-integration-runtime.md).
@@ -25,11 +25,13 @@ Egy saját üzemeltetésű integrációs modulját futtathatja a másolási tev�
 
 Ez a dokumentum ismerteti, hogyan, létrehozhat és konfigurálhat egy saját üzemeltetésű
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="high-level-steps-to-install-a-self-hosted-ir"></a>Magas szintű lépéseket kell egy saját üzemeltetésű integrációs modul telepítése
 1. Hozzon létre egy saját üzemeltetésű integrációs modult. Ez a feladat használható az Azure Data Factory felhasználói felületén. Itt látható egy PowerShell-példa:
 
     ```powershell
-    Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
+    Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
     ```
   
 2. [Töltse le](https://www.microsoft.com/download/details.aspx?id=39717) , és telepítse a saját üzemeltetésű integrációs modult egy helyi gépen.
@@ -37,7 +39,7 @@ Ez a dokumentum ismerteti, hogyan, létrehozhat és konfigurálhat egy saját ü
 3. A hitelesítési kulcs lekérése, és regisztrálja a kulcsot a saját üzemeltetésű integrációs modult. Itt látható egy PowerShell-példa:
 
     ```powershell
-    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime.  
+    Get-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime.  
     ```
 
 ## <a name="setting-up-a-self-hosted-ir-on-an-azure-vm-by-using-an-azure-resource-manager-template-automation"></a>Egy saját üzemeltetésű integrációs modul egy Azure virtuális gépen az Azure Resource Manager-sablon (automatizálás) beállítása
@@ -96,7 +98,7 @@ A saját üzemeltetésű integrációs modult telepítheti az MSI-telepítő cso
 9. A hitelesítési kulcs beszerzése az Azure PowerShell használatával. Itt látható egy PowerShell-példa a hitelesítési kulcs beolvasása céljából:
 
     ```powershell
-    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime
+    Get-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime
     ```
 11. Az a **integrációs modul regisztrálása (saját üzemeltetésű)** oldal a Microsoft Integration Runtime konfigurációkezelőjének a gépen futó, az alábbi lépéseket:
 
@@ -112,7 +114,7 @@ Egy saját üzemeltetésű integrációs modul több helyszíni gép társíthat
 * A saját üzemeltetésű integrációs modult úgy, hogy a már nem az egypontos meghibásodás big Data típusú adatok megoldást vagy felhőalapú Adatintegráció az Azure Data Factoryt, legfeljebb négy csomópont folytonosság biztosítása a magasabb rendelkezésre állás.
 * Javult a teljesítmény és az átviteli sebesség a helyszíni és felhő közötti adatátvitel során adattárakban. További információ [teljesítmény összehasonlítások](copy-activity-performance.md).
 
-Több csomópont társíthatja a saját üzemeltetésű integrációs modul szoftver telepítésével a [letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=39717). Ezután, azt a hitelesítési kulcsok egyikével kapott Regisztrálás a **New-AzureRmDataFactoryV2IntegrationRuntimeKey** leírtak szerint a parancsmag a [oktatóanyag](tutorial-hybrid-copy-powershell.md).
+Több csomópont társíthatja a saját üzemeltetésű integrációs modul szoftver telepítésével a [letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=39717). Ezután, azt a hitelesítési kulcsok egyikével kapott Regisztrálás a **New-AzDataFactoryV2IntegrationRuntimeKey** leírtak szerint a parancsmag a [oktatóanyag](tutorial-hybrid-copy-powershell.md).
 
 > [!NOTE]
 > Hozzon létre új saját üzemeltetésű integrációs modul minden egyes csomópont társíthatunk nincs szükségünk. A saját üzemeltetésű integrációs modul telepítése egy másik gépen, és ugyanazt a hitelesítési kulcs használatával regisztrálja. 
@@ -197,8 +199,6 @@ A tizenkét perces bevezető és a funkció bemutatójáért tekintse meg a köv
 * Az adat-előállítót, társított IR létrehozott rendelkeznie kell egy [MSI](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview). Alapértelmezés szerint az Azure Portalon létrehozott adat-előállítók vagy PowerShell-parancsmagokkal rendelkezik egy olyan MSI Csomaghoz implicit módon létrehozva. De ha egy adat-előállító jön létre egy Azure Resource Manager-sablon vagy az SDK-t, a **identitás** tulajdonság explicit módon kell állítani annak érdekében, hogy az Azure Resource Manager létrehoz egy adat-előállítót, amely tartalmazza az MSI. 
 
 * Az Azure Data Factory .NET SDK, amely támogatja ezt a szolgáltatást az 1.1.0-s verzió vagy újabb.
-
-* Az Azure PowerShell-verzió, amely támogatja ezt a szolgáltatást a 6.6.0 vagy újabb (AzureRM.DataFactoryV2, 0.5.7 vagy újabb).
 
 * Engedélyt adni a felhasználónak a tulajdonosi szerepkör vagy az örökölt tulajdonosi szerepkör a data factoryban, ahol a megosztott integrációs modul létezik.
 
@@ -343,7 +343,7 @@ msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
 > [!NOTE]
 > A hitelesítőadat-kezelő alkalmazás még nem érhető el az Azure Data Factory V2 hitelesítő adatok titkosításához.  
 
-Ha nem kíván nyissa meg a saját üzemeltetésű integrációs modul gépen 8060 portot, a mechanizmus a hitelesítő adatok beállítása alkalmazás eltérő segítségével konfigurálhatja az adattár hitelesítő adatait. Használhatja például a **New-AzureRmDataFactoryV2LinkedServiceEncryptCredential** PowerShell-parancsmagot.
+Ha nem kíván nyissa meg a saját üzemeltetésű integrációs modul gépen 8060 portot, a mechanizmus a hitelesítő adatok beállítása alkalmazás eltérő segítségével konfigurálhatja az adattár hitelesítő adatait. Használhatja például a **New-AzDataFactoryV2LinkedServiceEncryptCredential** PowerShell-parancsmagot.
 
 
 ## <a name="next-steps"></a>További lépések

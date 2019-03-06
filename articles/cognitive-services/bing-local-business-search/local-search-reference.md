@@ -10,12 +10,12 @@ ms.subservice: bing-local-business
 ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 1a55a4e3f25bc5afef30e325ccdd38615ba7cc2b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: de9c79d09c400aa95775b332580c3658c349ede7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820742"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449087"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>Helyi üzleti keresési Bing-API 7-es referencia
 
@@ -73,7 +73,7 @@ A kérelem lekérdezési paraméterek tartalmazhat. Tekintse meg a szükséges o
   
 |Name (Név)|Érték|Typo|Szükséges|  
 |----------|-----------|----------|--------------|
-|<a name="count" />Száma|A számát adja vissza, kezdve az index által megadott resuts a `offset` paraméter.|String|Nem|   
+|<a name="count" />Száma|Az eredményeket adja vissza, kezdve az index által megadott száma a `offset` paraméter.|String|Nem|   
 |<a name="localCategories" />localCategories|Keresés üzleti kategória szerint meghatározó beállítások listája.  Lásd: [helyi üzleti kategóriák keresése](local-categories.md)|String|Nem|  
 |<a name="mkt" />mkt|A piac, ahonnan az eredmények származnak. <br /><br />Tekintse meg piaci kódok piaci a lehetséges értékek listáját.<br /><br /> **MEGJEGYZÉS:** A helyi üzleti Search API jelenleg csak támogatja az en-us piacon és a nyelvet.<br /><br />|String|Igen|
 |<a name="offset"/>eltolás|Az index által megadott eredmények elindításához a `count` paraméter.|Egész szám|Nem|  
@@ -154,7 +154,7 @@ Határozza meg a helyi vállalati, például egy étterem vagy Szálloda kapcsol
 |Name (Név)|Érték|Typo|  
 |----------|-----------|----------|  
 |_type|Írja be a mutatót, amely a következők egyikére lehet beállítani:<br /><br /><ul><li>Szálloda</li><li>LocalBusiness<br /></li><li>Étterem</ul><li>|String|  
-|Cím|A postai címét, ahol az entitás.|PostalAddress|  
+|cím|A postai címét, ahol az entitás.|PostalAddress|  
 |entityPresentationInfo|További információ az entitás, például a mutatók, amelyek segítségével az entitás típusa határozza meg. Például hogy egy étterem vagy szállodában. A `entityScenario` mező ListItem értékre van állítva.|EntityPresentationInfo|  
 |név|Az entitás nevét.|String|  
 |Telefon|Az entitás telefonszáma.|String|  

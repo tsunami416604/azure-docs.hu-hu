@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/26/2018
-ms.openlocfilehash: 0c962dc6d8aff63a3b7dd34133a40c7ff9feec4c
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: c4fcdc43e8c88bf307e4de5727df0641616d7b78
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540741"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448135"
 ---
 # <a name="best-practices-for-query-store"></a>Ajánlott eljárások a Query Store
 
@@ -28,7 +28,7 @@ Lehetővé teszik a Query Store rögzíteni az adatokat, az Ön számára fontos
 
 |**pg_qs.query_capture_mode** | **Forgatókönyv**|
 |---|---|
-|_Az összes_  |A számítási feladatok alaposan tekintetében az összes lekérdezés és a végrehajtás gyakoriságát és más statisztikai elemzése. A számítási feladatok az új lekérdezések azonosítása. Észlelés, ha ad hoc lekérdezések segítségével lehetőségeket határozhat meg a felhasználó vagy az automatikus paraméterezés. _Az összes_ egy nagyobb erőforrás-használat költség is tartalmaz. |
+|_Az összes_  |A számítási feladatok alaposan tekintetében az összes lekérdezés és a végrehajtás gyakoriságát és más statisztikai elemzése. A számítási feladatok az új lekérdezések azonosítása. Észlelés, ha ad hoc lekérdezéseket lehetőségek a felhasználókkal vagy automatikus paraméterezés azonosítására szolgál. _Az összes_ egy nagyobb erőforrás-használat költség is tartalmaz. |
 |_felső_  |A leggyakoribb lekérdezések – ezek az ügyfelek által kibocsátott figyelmet összpontosítanak.
 |_Nincsenek_ |Korábban már rögzített egy lekérdezési készlet, és ez alatt az időszak, amely a vizsgálni kívánt, és szeretné, hogy más lekérdezések vezethet be a felesleges kiküszöbölése. _Nincs_ egy megfelelő tesztelési és a teljesítménymérés környezetekben. _Nincs_ kell legyen óvatos, előfordulhat, hogy kihagyná nyomon követésére, és fontos új lekérdezések optimalizálása lehetőséget. Adott múltbeli idő Windows adatok nem állíthatók vissza. |
 

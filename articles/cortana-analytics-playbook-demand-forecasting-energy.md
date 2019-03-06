@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/24/2016
 ms.author: garye
-ms.openlocfilehash: 40bff35c1136d55e968a287d259f2304252f5248
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: bb5ef610e55495c372a47ff78e3252c9d8ec7055
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078780"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435916"
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>Cortana Intelligence megoldás sablon forgatókönyve a kereslet-előrejelzés, energia
 ## <a name="executive-summary"></a>Vezetői összefoglaló
@@ -187,7 +187,7 @@ Ez az alábbi ábrán látható:
 
 A következő bekezdést a 4. lépés folyamatát ismerteti:
 
-1. **Adatgyűjtés** – semmilyen speciális alapú analytics megoldás adatokon alapul. (lásd: **Data Understanding**). Pontosabban a esetén, a prediktív elemzés és előrejelzését, telefonszámokkal kapcsolatos adatok folyamatban lévő, dinamikus folyamat. Energia kereslet-előrejelzés, esetén ezeket az adatokat közvetlenül az intelligens mérőktől származó beolvasva is, vagy már összesíteni kell egy helyi adatbázist. Azt is támaszkodik más külső forrásokból, például az időjárás és hőmérséklettel kapcsolatos adatok. Az adatok folyamatban lévő folyamat kell vezényelt, ütemezett és tárolva. [Az Azure Data Factory](https://azure.microsoft.com/services/data-factory/) (ADF) a fő workhorse szól ez a feladat teljesítéséért.
+1. **Adatgyűjtés** – semmilyen speciális alapú analytics megoldás adatokon alapul. (lásd: **Data Understanding**). Pontosabban a esetén, a prediktív elemzés és előrejelzését, telefonszámokkal kapcsolatos adatok folyamatban lévő, dinamikus folyamat. Energia kereslet-előrejelzés, esetén ezeket az adatokat közvetlenül az intelligens mérőktől származó beolvasva is, vagy már összesíteni kell a helyi-adatbázist. Azt is támaszkodik más külső forrásokból, például az időjárás és hőmérséklettel kapcsolatos adatok. Az adatok folyamatban lévő folyamat kell vezényelt, ütemezett és tárolva. [Az Azure Data Factory](https://azure.microsoft.com/services/data-factory/) (ADF) a fő workhorse szól ez a feladat teljesítéséért.
 2. **Modellezés** – pontos és megbízható energia-előrejelzés, (train) fejlesztéséhez és karbantartásához, hogy révén az előzményadatok használja, és kinyeri az adatokat a beállítás után sokatmondóbbak és prediktív mintákat egy nagyszerű modellt kell egyet. A terület a Machine Learning (gépi tanulás) rendelkezik lett gyorsan növekszik az speciális algoritmusokkal rendszeresen fejlesztés alatt áll. Az Azure gépi tanulás Stúdióban, amely segít a legtöbb fejlett gépi Tanulási algoritmusokat, egy teljes munkahelyi flow-ban használják nagyszerű felhasználói élményt nyújt. A munkafolyamat egy intuitív folyamatábrája mutatja be, és az adat-előkészítés, a szolgáltatás kivonása, modellezés és modell kiértékelése tartalmazza. Több száz különböző modelleket, amelyek szerepelnek ebben a környezetben, a felhasználó lehet kötni. Ebben a fázisban a végén működő modell, amely teljes mértékben kiértékelt és készen áll a központi telepítési kell értenie az adatokhoz.
 
    Az alábbi ábrán egy tipikus munkafolyamat ábrája:

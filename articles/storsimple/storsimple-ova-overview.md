@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/02/2018
 ms.author: alkohli
-ms.openlocfilehash: a7aace89ad4323d6fad6942fe03c4240fb53c8fd
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: decc63ad7ce0b35de41ec53e6b5e02276aa33705
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811198"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456074"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>A StorSimple Virtual Array – bevezetés
 
@@ -101,7 +101,7 @@ Az Azure Portalon fut, a StorSimple-Eszközkezelő szolgáltatás segítségéve
 ![Felhőalapú tárolók kezelése](./media/storsimple-ova-overview/cloud-based-storage-management.png)
 
 ### <a name="location-independent-backup"></a>Helyszínfüggetlen biztonsági mentést
-A virtuális tömb felhőbeli pillanatképek biztosíthat egy kötetet vagy megosztást helyfüggetlen, időponthoz másolatát. Felhőbeli pillanatképek alapértelmezés szerint engedélyezve vannak, és nem tiltható le. Minden kötetek és megosztások biztonsági mentése napi biztonsági mentési szabályzat használatával egy időben, és elvégezhető a további ad hoc biztonsági mentések, amikor szükséges.
+A virtuális tömb felhőbeli pillanatképek biztosíthat egy kötetet vagy megosztást helyfüggetlen, időponthoz másolatát. Felhőbeli pillanatképek alapértelmezés szerint engedélyezve vannak, és nem tiltható le. Minden kötetek és megosztások biztonsági mentése napi biztonsági mentési szabályzat használatával egy időben, és elvégezhető további alkalmi biztonsági mentéseket, amikor szükséges.
 
 ### <a name="data-protection-and-disaster-recovery"></a>Adat-helyreállítás védelem és vészhelyreállítás
 A virtuális tömb az alábbi az adatvédelem és a vészhelyreállítási forgatókönyveket támogatja:

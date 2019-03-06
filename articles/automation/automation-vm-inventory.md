@@ -10,12 +10,12 @@ ms.author: jehunte
 ms.date: 02/06/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c0caece57885dfa3c26d368990a6af8e5b14eed6
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 59f36595e0b6cc8b9d9ea0669c9ecb5be1e74b42
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823994"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441389"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Azure-beli virtuális gépek kezelése leltár használatával
 
@@ -105,7 +105,7 @@ Egy gép csoportot a listából nyitja meg a gép csoportok lapon. Ezen a lapon 
 
 Kattintson a **+ Klónozás** klónozásához a gép csoport gombra. Itt meg kell adnia a csoport egy új nevet és egy alias a csoporthoz. A definíció jelenleg is módosítható. A lekérdezés nyomja meg módosítása után **lekérdezések érvényesítés** az előzetes verzióra, hogy ki kellene választani a gépek. Ha elégedett a csoport kattintson **létrehozás** a gép csoport létrehozása
 
-Ha azt szeretné, hozzon létre egy új mchine csoportot, válassza ki a **+ hozzon létre egy gép csoportot**. Ezzel a gombbal megnyithatja a **hozzon létre egy gép csoportlapot** ahol megadhatja az új csoporthoz. Kattintson a **létrehozás** a csoport létrehozásához.
+Ha azt szeretné, hozzon létre egy új gép csoportot, válassza ki a **+ hozzon létre egy gép csoportot**. Ezzel a gombbal megnyithatja a **hozzon létre egy gép csoportlapot** ahol megadhatja az új csoporthoz. Kattintson a **létrehozás** a csoport létrehozásához.
 
 ![Új számítógépcsoport létrehozása](./media/automation-vm-inventory/create-new-group.png)
 

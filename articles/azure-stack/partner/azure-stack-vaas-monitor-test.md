@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8784acc0180be1c3e0ac277b7c2a21d422ebccd0
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: d4854bd623bb11d50a712be3a5aea07db24c2951
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341051"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432243"
 ---
 # <a name="monitor-and-manage-tests-in-the-vaas-portal"></a>Figyelheti és kezelheti a VaaS portálon tesztek
 
@@ -140,7 +140,7 @@ A tesztelési fázisban munkafolyamat **újraütemezése** egy teszt példány �
 
 #### <a name="cancel-a-test-instance"></a>Egy teszt példány megszakítása
 
-Ütemezett vizsgálat törlődhet, ha az állapot `Pending` vagy `Running`.  
+Ütemezett vizsgálat Ha állapota lehet érvényteleníteni `Pending` vagy `Running`.  
 
 1. Válassza ki **Mégse** nyisson meg egy parancssort a test-példány a törlés, a helyi menüből.
 

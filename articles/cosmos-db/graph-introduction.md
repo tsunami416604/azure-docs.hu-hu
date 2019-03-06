@@ -7,14 +7,14 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 09/05/2018
 ms.author: lbosq
-ms.openlocfilehash: a0d782ac1ba14e58e3cc377bb55ea25bb923c5c4
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 10565839148eae0db4bb374939eb3725f6262e60
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038908"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452946"
 ---
-# <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Az Azure Cosmos DB bemutatása: Gremlin API
+# <a name="introduction-to-azure-cosmos-db-gremlin-api"></a>Bevezetés: az Azure Cosmos DB: Gremlin API
 
 Az [Azure Cosmos DB](introduction.md) a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása kritikus fontosságú alkalmazások számára. Többmodelles adatbázis, amely támogatja a dokumentumokat, a kulcs-érték párokat, a gráfokat és az oszlopos adatmodelleket. Az Azure Cosmos DB Gremlin API segítségével gráfadatokat lehet tárolni, és műveleteket lehet rajtuk végezni. A Gremlin API segítségével gráfadatok modellezhetők és járhatók be.
 
@@ -94,7 +94,7 @@ Az alábbi táblázat az Azure Cosmos DB-n használható népszerű Gremlin-ille
 
 ## <a name="graph-database-design-considerations"></a>Gráfadatbázisok kialakítási szempontjai
 
-Ha a gráftervezés során úgy dönt, hogy egy entitást különálló csúcspontként, és nem más csúcspontentitások tulajdonságaként fog modellezni, akkor ez befolyásolja a teljesítményt és a költségeket is. E döntéshozatal alapjául főként az adatok lekérdezésének módja és a modell méretezhetősége szolgál.
+Graph tervezés közben a döntést, mint egy saját, nem pedig más csúcspont entitások tulajdonságaként csúcspont egy entitás modellezési következményeket teljesítménnyel és költségekkel. E döntéshozatal alapjául főként az adatok lekérdezésének módja és a modell méretezhetősége szolgál.
 
 Az entitás modelljének megtervezése előtt a következő kérdéseket kell megfontolni:
 

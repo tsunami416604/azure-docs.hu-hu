@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/07/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: de2cfbf2b4119daf965c95d8973b8528799c9502
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 42da285fbb55df43959506996bcde9cf547c2a22
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454626"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439261"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>Munkafolyamat-minta a merevlemezek importálási feladatokhoz való előkészítésére
 
@@ -112,7 +112,7 @@ Most már készen áll a két merevlemez-meghajtók előkészítése az Azure Im
 WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1  /sk:************* /InitialDriveSet:driveset-1.csv /DataSet:dataset-1.csv /logdir:F:\logs
 ```
 
-Ha további adatokat hozzá kell adnia, hozzon létre egy másik adatkészletfájlt (Initialdataset megegyező formátumban).
+Ha további adatokat hozzá kell adnia, hozzon létre egy másik adatkészletfájlt (kezdeti adatkészlet megegyező formátumban).
 
 **A második munkamenethez:**
 

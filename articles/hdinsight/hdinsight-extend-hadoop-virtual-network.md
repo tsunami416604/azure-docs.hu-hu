@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: bf9d8e6d3aa8d1995c705ecdec95b6f3dea028ff
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 8a67b94c7f2355872b243a05a7908604e88cf778
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242343"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433790"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Az Azure Virtual Network használata Azure HDInsight kiterjesztése
 
@@ -235,7 +235,7 @@ Ha azt tervezi, hogy használatával **hálózati biztonsági csoportok** vagy *
 3. Hozzon létre vagy módosítsa a hálózati biztonsági csoportok vagy a felhasználó által megadott útvonalakat az alhálózatot, amelyet a HDInsight azokat telepíteni szeretné a.
 
     * __Hálózati biztonsági csoportok__: engedélyezése __bejövő__ port forgalmát __443-as__ IP-címek. Ez biztosítja, hogy HDI-felügyeleti szolgáltatásokat a fürt elérje a külső virtuális hálózaton.
-    * __Felhasználó által megadott útvonalak__: Ha azt tervezi, használja az udr-EK, hozzon létre egy útvonalat, minden IP-címhez, és állítsa be a __következő ugrás típusa__ való __Internet__. Minden kimenő forgalmat is engedélyezni a virtuális hálózatról korlátozás nélkül. Például az összes többi forgalom átirányítása az Azure tűfzal vagy a hálózati virtuális berendezés (az Azure-ban üzemeltetett) figyelési célból, de nem lesznek letiltva a kimenő forgalmat.
+    * __Felhasználó által megadott útvonalak__: Ha azt tervezi, használja az udr-EK, hozzon létre egy útvonalat, minden IP-címhez, és állítsa be a __következő ugrás típusa__ való __Internet__. Minden kimenő forgalmat is engedélyezni a virtuális hálózatról korlátozás nélkül. Például az összes többi forgalom átirányítása az Azure tűzfal vagy a hálózati virtuális berendezés (az Azure-ban üzemeltetett) figyelési célból, de nem lesznek letiltva a kimenő forgalmat.
 
 További információ a hálózati biztonsági csoportok vagy felhasználó által megadott útvonalakat a következő dokumentációban tekintheti meg:
 
@@ -245,7 +245,7 @@ További információ a hálózati biztonsági csoportok vagy felhasználó ált
 
 #### <a name="forced-tunneling-to-on-premise"></a>Kényszerített bújtatás helyszíni
 
-Kényszerített bújtatás egy felhasználó által meghatározott útválasztási konfigurációja ahol alhálózatból származó összes forgalom kényszerített egy adott hálózaton vagy a helyen, például a helyszíni hálózathoz. HDInsight does __nem__ támogatási kényszerített bújtatás a helyszíni hálózatokhoz. Azure tűzfal- vagy Azure-ban üzemeltetett létesítésével virtuális berendezés használatakor udr-EK segítségével átirányítja a forgalmat, hogy a figyelési célból, és lehetővé teszi minden kimenő forgalmat.
+Kényszerített bújtatás egy felhasználó által meghatározott útválasztási konfigurációja ahol alhálózatból származó összes forgalom kényszerített egy adott hálózaton vagy a helyen, például a helyszíni hálózathoz. HDInsight does __nem__ támogatási kényszerített bújtatás a helyszíni hálózatokhoz. Ha Azure tűzfal vagy egy Azure-ban üzemeltetett hálózati virtuális készüléket használ, udr-EK segítségével rá, ellenőrzési célból átirányítja a forgalmat, és lehetővé teszi minden kimenő forgalmat.
 
 ## <a id="hdinsight-ip"></a> Szükséges IP-címek
 

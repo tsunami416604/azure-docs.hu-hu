@@ -1,41 +1,50 @@
+items:
 - name: A Microsoft Genomics dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Mi az a Microsoft Genomics?
-      href: overview-what-is-genomics.md
+  - name: Mi az a Microsoft Genomics?
+    href: overview-what-is-genomics.md
 - name: Gyors útmutatók
-  expanded: true
   items:
-    - name: Minta Genomics-munkafolyamat futtatása
-      href: quickstart-run-genomics-workflow-portal.md
-    - name: Különféle bemenetifájl-formátumok használata
-      items:
-        - name: FASTQ-fájlpárok
-          href: quickstart-input-pair-fastq.md
-        - name: BAM-fájl
-          href: quickstart-input-bam.md
-        - name: Több FASTQ- vagy BAM-fájl
-          href: quickstart-input-multiple.md
-    - name: SAS-token megadása fiókkulcs helyett
-      href: quickstart-input-sas.md
+  - name: Minta Genomics-munkafolyamat futtatása
+    href: quickstart-run-genomics-workflow-portal.md
+  expanded: true
+- name: Útmutatók
+  items:
+  - name: Különféle bemenetifájl-formátumok használata
+    items:
+    - name: FASTQ-fájlpárok
+      href: quickstart-input-pair-fastq.md
+    - name: BAM-fájl
+      href: quickstart-input-bam.md
+    - name: Több FASTQ- vagy BAM-fájl
+      href: quickstart-input-multiple.md
+  - name: SAS-token megadása fiókkulcs helyett
+    href: quickstart-input-sas.md
 - name: További források
   items:
-    - name: Gyakori kérdések
-      href: frequently-asked-questions-genomics.md
-    - name: Hibaelhárítási útmutató
-      href: troubleshooting-guide-genomics.md
-    - name: Támogatáskérés küldése
-      href: file-support-ticket-genomics.md
-    - name: Verziókiadások előzményei
-      href: version-release-history-genomics.md
-    - name: Az üzletmenet folytonossága
-      href: business-continuity-genomics.md
-    - name: Azure-ütemterv
-      href: 'https://azure.microsoft.com/roadmap/?category=cognitive-services'
-    - name: Díjszabás
-      href: 'https://azure.microsoft.com/pricing/details/genomics/'
-    - name: Régiónkénti elérhetőség
-      href: 'https://azure.microsoft.com/regions/services/'
-    - name: Támogatási lehetőségek
-      href: 'https://azure.microsoft.com/support/options/'
+  - name: Gyakori kérdések
+    href: frequently-asked-questions-genomics.md
+  - name: Hibaelhárítási útmutató
+    href: troubleshooting-guide-genomics.md
+  - name: Támogatáskérés küldése
+    href: file-support-ticket-genomics.md
+  - name: Verziókiadások előzményei
+    href: version-release-history-genomics.md
+  - name: Az üzletmenet folytonossága
+    href: business-continuity-genomics.md
+  - name: Azure-ütemterv
+    href: https://azure.microsoft.com/roadmap/?category=cognitive-services
+  - name: Díjszabás
+    href: https://azure.microsoft.com/pricing/details/genomics/
+  - name: Régiónkénti elérhetőség
+    href: https://azure.microsoft.com/regions/services/
+  - name: Támogatási lehetőségek
+    href: https://azure.microsoft.com/support/options/
+ms.openlocfilehash: aaeaa293d6ceed3281db2cde59ada94d44ddc217
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57446730"

@@ -10,12 +10,12 @@ ms.date: 01/25/2019
 ms.author: zarhoads
 ms.custom: mvc
 keywords: A cosmos DB, nyissa meg a Service Brokert, az Open Service Broker for Azure
-ms.openlocfilehash: 3146d11f33809391d93305d63bad757ed281fb70
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 0655176a044da6b4dd6b7327aedf5eb17d79f04a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977015"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432790"
 ---
 # <a name="integrate-existing-mongodb-application-with-azure-cosmos-db-api-for-mongodb-and-open-service-broker-for-azure-osba"></a>Integrálható meglévő MongoDB-alkalmazások Azure Cosmos DB API a mongodb-hez és az Open Service Broker for Azure (OSBA)
 
@@ -189,7 +189,7 @@ Navigáljon a http://localhost:8080 a böngészőben. Figyelje meg, hogy a progr
 
 ## <a name="run-your-application-on-your-aks-cluster"></a>Futtassa az alkalmazást a az AKS-fürt
 
-Használhat [Azure fejlesztési tárolóhelyek](../dev-spaces/azure-dev-spaces.md) való az alkalmazás az AKS-fürt üzembe helyezése. Az Azure fejlesztői, szóközök köszönhetően Ön hozza létre az összetevők, például Dockefiles és a Helm-diagramok, és üzembe helyezése és alkalmazás futtatása az aks-ben.
+Használhat [Azure fejlesztési tárolóhelyek](../dev-spaces/azure-dev-spaces.md) való az alkalmazás az AKS-fürt üzembe helyezése. Az Azure fejlesztői, szóközök köszönhetően Ön hozza létre az összetevők, például a docker-fájlok és a Helm-diagramok, és üzembe helyezése és alkalmazás futtatása az aks-ben.
 
 Az AKS-fürt Azure fejlesztési tárolóhelyek engedélyezése:
 

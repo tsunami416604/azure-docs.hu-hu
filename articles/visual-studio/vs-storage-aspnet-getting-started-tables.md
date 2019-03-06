@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/21/2016
 ms.author: ghogen
-ms.openlocfilehash: 518e14b991aa110a6ed55f984a66cd386a618f0f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1a35d1cbd49a55b0c25f5e2b993358130589c125
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228963"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444633"
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>Ismerkedés az Azure table storage és a Visual Studio csatlakoztatott szolgáltatások (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -114,7 +114,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy táblát:
     }
     ```
 
-1. Belül a **CreateTable** metódus első egy **CloudStorageAccount** objektum, amely a storage-fiók adatait jelöli. A tárolási kapcsolati karakterlánccal és a tárfiókjával kapcsolatos információkat kaphat az Azure szolgáltatás konfigurációja a következő kód használatával: (módosítása  *&lt;storage-fiók-neve >* Ön az Azure storage-fiók neve fér hozzá.)
+1. Belül a **CreateTable** metódus első egy **CloudStorageAccount** objektum, amely a storage-fiók adatait jelöli. A tárolási kapcsolati karakterlánccal és a tárfiókjával kapcsolatos információkat kaphat az Azure-szolgáltatás konfigurációs használja a következő kódot: (Változás  *&lt;storage-fiók-neve >* az Azure storage-fiók nevére éri el.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -169,7 +169,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy táblát:
     <li>@Html.ActionLink("Create table", "CreateTable", "Tables")</li>
     ```
 
-1. Futtassa az alkalmazást, és válassza ki **Create table** eredmények az alábbi képernyőfelvételhez hasonló megtekintéséhez:
+1. Futtassa az alkalmazást, és válassza ki **Create table** eredmények az alábbi képernyőfelvételhez hasonlóan megtekintéséhez:
   
     ![Tábla létrehozása](./media/vs-storage-aspnet-getting-started-tables/create-table-results.png)
 
@@ -203,7 +203,7 @@ Az entitásosztály *kell* deklaráljon egy nyilvános paraméter nélküli kons
     }
     ```
 
-1. Belül a **AddEntity** metódus első egy **CloudStorageAccount** objektum, amely a storage-fiók adatait jelöli. A tárolási kapcsolati karakterlánccal és a tárfiókjával kapcsolatos információkat kaphat az Azure szolgáltatás konfigurációja a következő kód használatával: (módosítása  *&lt;storage-fiók-neve >* Ön az Azure storage-fiók neve fér hozzá.)
+1. Belül a **AddEntity** metódus első egy **CloudStorageAccount** objektum, amely a storage-fiók adatait jelöli. A tárolási kapcsolati karakterlánccal és a tárfiókjával kapcsolatos információkat kaphat az Azure-szolgáltatás konfigurációs használja a következő kódot: (Változás  *&lt;storage-fiók-neve >* az Azure storage-fiók nevére éri el.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -271,7 +271,7 @@ Az entitásosztály *kell* deklaráljon egy nyilvános paraméter nélküli kons
     <li>@Html.ActionLink("Add entity", "AddEntity", "Tables")</li>
     ```
 
-1. Futtassa az alkalmazást, és válassza ki **entitás hozzáadása** eredmények az alábbi képernyőfelvételhez hasonló megtekintéséhez:
+1. Futtassa az alkalmazást, és válassza ki **entitás hozzáadása** eredmények az alábbi képernyőfelvételhez hasonlóan megtekintéséhez:
   
     ![Entitás hozzáadása](./media/vs-storage-aspnet-getting-started-tables/add-entity-results.png)
 
@@ -298,7 +298,7 @@ Mellett [hozzáadása egy entitás egy táblához, egy egyszerre](#add-an-entity
     }
     ```
 
-1. Belül a **AddEntities** metódus első egy **CloudStorageAccount** objektum, amely a storage-fiók adatait jelöli. A tárolási kapcsolati karakterlánccal és a tárfiókjával kapcsolatos információkat kaphat az Azure szolgáltatás konfigurációja a következő kód használatával: (módosítása  *&lt;storage-fiók-neve >* Ön az Azure storage-fiók neve fér hozzá.)
+1. Belül a **AddEntities** metódus első egy **CloudStorageAccount** objektum, amely a storage-fiók adatait jelöli. A tárolási kapcsolati karakterlánccal és a tárfiókjával kapcsolatos információkat kaphat az Azure-szolgáltatás konfigurációs használja a következő kódot: (Változás  *&lt;storage-fiók-neve >* az Azure storage-fiók nevére éri el.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -391,7 +391,7 @@ Mellett [hozzáadása egy entitás egy táblához, egy egyszerre](#add-an-entity
     <li>@Html.ActionLink("Add entities", "AddEntities", "Tables")</li>
     ```
 
-1. Futtassa az alkalmazást, és válassza ki **entitások hozzáadása** eredmények az alábbi képernyőfelvételhez hasonló megtekintéséhez:
+1. Futtassa az alkalmazást, és válassza ki **entitások hozzáadása** eredmények az alábbi képernyőfelvételhez hasonlóan megtekintéséhez:
   
     ![Entitások hozzáadása](./media/vs-storage-aspnet-getting-started-tables/add-entities-results.png)
 
@@ -418,7 +418,7 @@ Ez a szakasz bemutatja, hogyan beolvasása egyetlen entitás az a entitás sorku
     }
     ```
 
-1. Belül a **GetSingle** metódus első egy **CloudStorageAccount** objektum, amely a storage-fiók adatait jelöli. A tárolási kapcsolati karakterlánccal és a tárfiókjával kapcsolatos információkat kaphat az Azure szolgáltatás konfigurációja a következő kód használatával: (módosítása  *&lt;storage-fiók-neve >* Ön az Azure storage-fiók neve fér hozzá.)
+1. Belül a **GetSingle** metódus első egy **CloudStorageAccount** objektum, amely a storage-fiók adatait jelöli. A tárolási kapcsolati karakterlánccal és a tárfiókjával kapcsolatos információkat kaphat az Azure-szolgáltatás konfigurációs használja a következő kódot: (Változás  *&lt;storage-fiók-neve >* az Azure storage-fiók nevére éri el.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -493,7 +493,7 @@ Ez a szakasz bemutatja, hogyan beolvasása egyetlen entitás az a entitás sorku
     <li>@Html.ActionLink("Get single", "GetSingle", "Tables")</li>
     ```
 
-1. Futtassa az alkalmazást, és válassza ki **beolvasása egyetlen** eredmények az alábbi képernyőfelvételhez hasonló megtekintéséhez:
+1. Futtassa az alkalmazást, és válassza ki **beolvasása egyetlen** eredmények az alábbi képernyőfelvételhez hasonlóan megtekintéséhez:
   
     ![Egyetlen beolvasása](./media/vs-storage-aspnet-getting-started-tables/get-single-results.png)
 
@@ -518,7 +518,7 @@ A szakaszban ismertetett módon [hozzáadása egy entitás egy táblához](#add-
     }
     ```
 
-1. Belül a **GetPartition** metódus első egy **CloudStorageAccount** objektum, amely a storage-fiók adatait jelöli. A tárolási kapcsolati karakterlánccal és a tárfiókjával kapcsolatos információkat kaphat az Azure szolgáltatás konfigurációja a következő kód használatával: (módosítása  *&lt;storage-fiók-neve >* Ön az Azure storage-fiók neve fér hozzá.)
+1. Belül a **GetPartition** metódus első egy **CloudStorageAccount** objektum, amely a storage-fiók adatait jelöli. A tárolási kapcsolati karakterlánccal és a tárfiókjával kapcsolatos információkat kaphat az Azure-szolgáltatás konfigurációs használja a következő kódot: (Változás  *&lt;storage-fiók-neve >* az Azure storage-fiók nevére éri el.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -603,7 +603,7 @@ A szakaszban ismertetett módon [hozzáadása egy entitás egy táblához](#add-
     <li>@Html.ActionLink("Get partition", "GetPartition", "Tables")</li>
     ```
 
-1. Futtassa az alkalmazást, és válassza ki **partíció beolvasása** eredmények az alábbi képernyőfelvételhez hasonló megtekintéséhez:
+1. Futtassa az alkalmazást, és válassza ki **partíció beolvasása** eredmények az alábbi képernyőfelvételhez hasonlóan megtekintéséhez:
   
     ![Partíció beolvasása](./media/vs-storage-aspnet-getting-started-tables/get-partition-results.png)
 
@@ -628,7 +628,7 @@ Ez a szakasz bemutatja, hogyan olyan entitást töröl egy táblából.
     }
     ```
 
-1. Belül a **DeleteEntity** metódus első egy **CloudStorageAccount** objektum, amely a storage-fiók adatait jelöli. A tárolási kapcsolati karakterlánccal és a tárfiókjával kapcsolatos információkat kaphat az Azure szolgáltatás konfigurációja a következő kód használatával: (módosítása  *&lt;storage-fiók-neve >* Ön az Azure storage-fiók neve fér hozzá.)
+1. Belül a **DeleteEntity** metódus első egy **CloudStorageAccount** objektum, amely a storage-fiók adatait jelöli. A tárolási kapcsolati karakterlánccal és a tárfiókjával kapcsolatos információkat kaphat az Azure-szolgáltatás konfigurációs használja a következő kódot: (Változás  *&lt;storage-fiók-neve >* az Azure storage-fiók nevére éri el.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -703,7 +703,7 @@ Ez a szakasz bemutatja, hogyan olyan entitást töröl egy táblából.
     <li>@Html.ActionLink("Delete entity", "DeleteEntity", "Tables")</li>
     ```
 
-1. Futtassa az alkalmazást, és válassza ki **entitás törlése** eredmények az alábbi képernyőfelvételhez hasonló megtekintéséhez:
+1. Futtassa az alkalmazást, és válassza ki **entitás törlése** eredmények az alábbi képernyőfelvételhez hasonlóan megtekintéséhez:
   
     ![Egyetlen beolvasása](./media/vs-storage-aspnet-getting-started-tables/delete-entity-results.png)
 

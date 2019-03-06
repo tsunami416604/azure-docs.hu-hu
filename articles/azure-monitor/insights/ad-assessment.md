@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: magoedte
-ms.openlocfilehash: 8a1e08263790f1a04e672fd9d5a17c2bd1b45ce8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 113408b49297a292967be9215291b3cecfa7384d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999028"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431600"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Az Active Directory állapotának ellenőrzése megoldással az Azure monitorban az Active Directory-környezet optimalizálása
 
@@ -128,7 +128,7 @@ A következő lista ajánlásokat, amelyek nem tudták lekérdezés használata 
 ADAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation
 ```
 
-A következő bejelentkezéshez a naplólekérdezés:<br><br> ![nem sikerült javaslatokat](media/ad-assessment/ad-failed-recommendations.png)
+Íme egy Képernyőkép a naplólekérdezés:<br><br> ![nem sikerült javaslatokat](media/ad-assessment/ad-failed-recommendations.png)
 
 Válassza ki a javaslatok, amelyek figyelmen kívül kívánja. Szeretné használni az értékeket a RecommendationId az alábbi eljárás írja le.
 

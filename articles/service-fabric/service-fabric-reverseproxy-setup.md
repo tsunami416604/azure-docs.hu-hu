@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/13/2018
 ms.author: v-jamebr
-ms.openlocfilehash: 52d6781f83262162f261d094d4818f803e5f3866
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 8c405941417ad1a4e877cfd8fd0bdb53e186f6d0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670213"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452300"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Állítsa be, és az Azure Service Fabric fordított proxy konfigurálása
 Fordított proxy egy nem kötelező az Azure Service Fabric-szolgáltatás, amely segít a Service Fabric-fürtön futó mikroszolgáltatásokat felderítése és kommunikálni más szolgáltatásokkal, amelyek http-végpontokat. További tudnivalókért lásd: [fordított proxy az Azure Service Fabric](service-fabric-reverseproxy.md). Ez a cikk bemutatja, hogyan állíthatja be, és a fürtben a fordított proxy konfigurálása. 
@@ -47,7 +47,7 @@ A fürtök az Azure-ban az Azure Resource Manager-sablon használatával a Servi
 
 Mintául szolgáló Resource Manager-sablonok, amelyek segítségével egy Azure-fürtön a biztonságos fordított proxy konfigurálása annak a [biztonságos fordított Proxy Mintasablonokat](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample) a Githubon. Tekintse meg [konfigurálása HTTPS fordított Proxy egy biztonságos fürt](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample/README.md#configure-https-reverse-proxy-in-a-secure-cluster) útmutatásért és a sablonok használatával biztonságos fordított proxy konfigurálása egy tanúsítvánnyal, illetve tanúsítványváltás kezelésére, az információs fájlban.
 
-Egy meglévő fürthöz, exportálhatja a Resource Manager-sablon a fürterőforrás használó csoport a [az Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template#export-the-template-from-resource-group), [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell#export-resource-group-as-template), vagy a [Azure CLI-vel](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli#export-resource-group-as-template).
+Egy meglévő fürthöz, exportálhatja a Resource Manager-sablon a fürterőforrás használó csoport a [az Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template), [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-powershell), vagy a [Azure CLI-vel](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-export-template-cli).
 
 Miután egy Resource Manager-sablon, engedélyezheti a fordított proxy, az alábbi lépéseket követve:
 
@@ -334,7 +334,7 @@ Az értékét állítsa például **DefaultHttpRequestTimeout** , a kérelem id�
 
 Azure fürtök hálóbeállítások frissítésével kapcsolatos további információkért lásd: [testre szabhatja a Resource Manager-sablonok használatával fürtök beállításait](service-fabric-cluster-config-upgrade-azure.md). Az önálló fürtök esetén lásd: [fürtbeállításokhoz az önálló fürtök testreszabása](service-fabric-cluster-config-upgrade-windows-server.md). 
 
-Több hálóbeállítások szolgálnak a fordított proxy és a szolgáltatások közötti biztonságos kommunikáció érdekében. Ezek a beállítások kapcsolatos részletes információkért lásd: [Csatlakozás biztonságos szolgáltatás, amely a fordított proxy](service-fabric-reverseproxy-configure-secure-communication.md).
+Több hálóbeállítások szolgálnak a fordított proxy és a szolgáltatások közötti biztonságos kommunikáció érdekében. Ezekkel a beállításokkal kapcsolatos részletes információkért lásd: [Csatlakozás biztonságos szolgáltatás, amely a fordított proxy](service-fabric-reverseproxy-configure-secure-communication.md).
 
 ## <a name="next-steps"></a>További lépések
 * [A fordított proxy-továbbítást a biztonságos HTTP-szolgáltatás beállítása](service-fabric-reverseproxy-configure-secure-communication.md)

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 33b3ed52d198d162af666e0f38066ba936d7874f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 7eb841a0f4a34e708734cf433fac82ab35ef35b6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819820"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451263"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>Azure Automation Állapotkonfiguráció számára az Azure Monitor naplóira továbbítása
 
@@ -97,7 +97,7 @@ Riasztási szabályt létrehozni, akkor először létrehozni egy naplókeresés
 
    Ha meg van naplók egynél több Automation-fiókot vagy előfizetést a munkaterületre, előfizetése és az Automation-fiók által a riasztásokat csoportosíthatók.  
    Automation-fiók nevét a erőforrás mező DscNodeStatusData keresési származtatható.  
-1. Megnyitásához a **létrehozás szabály** kattintson **+ Új riasztási szabály** az oldal tetején. A beállítások konfigurálása a riasztás további információkért lásd: [hozzon létre egy riasztási rulelert](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).
+1. Megnyitásához a **létrehozás szabály** kattintson **+ Új riasztási szabály** az oldal tetején. A beállítások konfigurálása a riasztás további információkért lásd: [riasztási szabályt létrehozni](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).
 
 ### <a name="find-failed-dsc-resources-across-all-nodes"></a>Az összes csomópont között sikertelen DSC-erőforrások keresése
 

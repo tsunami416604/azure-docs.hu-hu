@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3465a891d91bc54bfe39b9501a7ad0e970932860
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 62d8236abb2b5f21bdb4111480d95376faa2e379
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309624"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432600"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Virtuális gép létrehozása a tárfiókban lévő speciális virtuális merevlemezből
 
@@ -271,7 +271,7 @@ $vm = Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id
     ```powershell
     $osDiskUri = "https://myStorageAccount.blob.core.windows.net/myContainer/myOsDisk.vhd"
     ```
-2. Adja hozzá az operációsrendszer-lemez. Ebben a példában az operációsrendszer-lemez létrehozásakor a "osDisk" kifejezés appened létrehozása az operációs rendszer lemezének neve a virtuális gép nevére. Ebben a példában is megadja, hogy a Windows-alapú virtuális Merevlemezt a virtuális Gépet az operációsrendszer-lemezként akarjuk csatolni.
+2. Adja hozzá az operációsrendszer-lemez. Ebben a példában az operációsrendszer-lemez létrehozásakor a "osDisk" kifejezést a rendszer hozzáfűzi a virtuális gép nevét, az operációs rendszer lemezének neve létrehozásához. Ebben a példában is megadja, hogy a Windows-alapú virtuális Merevlemezt a virtuális Gépet az operációsrendszer-lemezként akarjuk csatolni.
     
     ```powershell
     $osDiskName = $vmName + "osDisk"

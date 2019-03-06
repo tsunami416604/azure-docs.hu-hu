@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3f42ccb50496ed53ea9a68b60301f9feccccb16
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 59bfc13053a33b8f29f09a9ab93a108e746ea012
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188494"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431155"
 ---
 # <a name="delete-an-azure-active-directory-tenant"></a>Az Azure Active Directory-bérlő törlése
 
@@ -36,7 +36,7 @@ Egy bérlő az Azure AD, amíg nem adja át, több ellenőrzést nem törölhet�
 
 ## <a name="delete-an-azure-ad-tenant"></a>Az Azure AD-bérlő törlése
 
-1. Jelentkezzen be a [Azure AD felügyeleti központ](https://aad.portal.azure.com) egy olyan fiókkal, amely a globális rendszergazdai a bérlőhöz.
+1. Jelentkezzen be a [Azure AD felügyeleti központ](https://aad.portal.azure.com) egy olyan fiókkal, amely a bérlő globális rendszergazdája.
 
 2. Válassza az **Azure Active Directory** elemet.
 

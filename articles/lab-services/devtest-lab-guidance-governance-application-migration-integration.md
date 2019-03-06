@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: c57385bc398544e786aec77dae9886784e3a0b3c
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 75ce5d6a88b5398bd010cc363b4241bc90068f55
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243620"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436578"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---application-migration-and-integration"></a>Az Azure DevTest Labs-infrastruktúra - alkalmazás áttelepítését és integrálását cégirányítási
 A fejlesztési/tesztelési hálózati környezet létrehozása után kell gondolja át az alábbi kérdésekre:
@@ -117,7 +117,7 @@ Hány virtuális gépet tekintetében felhasználónként vagy labor kiszolgál�
 Ha a mérlegeli felhasználónként vagy tesztlabor virtuális gépek számát, az alábbi három fő területtel kell foglalkoznunk:
 
 - A **teljes költség** , amely a csapat a laborkörnyezetben található erőforrásokat fordítani. Több gép üzembe helyezése könnyebbé vált. Szabályozhatja a költségeket, egy mechanizmust, hogy a virtuális gépek száma felhasználónként és/vagy egy tesztkörnyezet
-- A labor virtuális gépek teljes száma hatással van a [előfizetés szintje szerinti kvóták](../azure-subscription-service-limits.md) érhető el. A felső határértékek egyik 800 előfizetésenkénti erőforráscsoportok. DevTest Labs szolgáltatásban egy új erőforráscsoportot jelenleg minden virtuális géphez hoz létre (kivéve, ha a megosztott nyilvános IP-címek használata esetén). Ha egy adott előfizetés 10 labs, labs sikerült elfér KB. 79 virtuális gépek minden labor (800 felső korlátja – a 10 labs magukat a 10 erőforráscsoportok) = 79 tesztkörnyezeti virtuális gépet.
+- A labor virtuális gépek teljes száma hatással van a [előfizetés szintje szerinti kvóták](../azure-subscription-service-limits.md) érhető el. A felső határértékek egyik 800 előfizetésenkénti erőforráscsoportok. DevTest Labs szolgáltatásban egy új erőforráscsoportot jelenleg minden virtuális géphez hoz létre (kivéve, ha a megosztott nyilvános IP-címek használata esetén). Ha egy adott előfizetés 10 labs, labs sikerült elfér körülbelül 79 virtuális gépek minden labor (800 felső korlátja – a 10 labs magukat a 10 erőforráscsoportok) = 79 tesztkörnyezeti virtuális gépet.
 - Ha a labor (például) a helyszíni Express Route-n keresztül csatlakozik, nincsenek **meghatározott IP-címterek elérhető** a virtuális hálózat/alhálózat számára. Annak érdekében, hogy a labor virtuális gépek nem nem hozható létre (hiba: nem olvasható be az IP-cím), labortulajdonosok adhatja meg a maximális EK elérhető IP-címterület igazítva.
 
 ## <a name="use-resource-manager-templates"></a>Resource Manager-sablonok használata

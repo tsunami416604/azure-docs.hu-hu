@@ -13,18 +13,20 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 2012ccf4d9fd3e62ba248f29f922f868077e4061
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: dea0153b9ca6d8e751fd94cc558abd44b2591907
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42061382"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453031"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-azure-sql-database-geo-replication-and-failover"></a>Az Azure SQL Database georeplikációja és a feladatátvétel az Azure-SSIS integrációs modul konfigurálása
 
 Ez a cikk ismerteti az Azure-SSIS integrációs modul konfigurálása az Azure SQL Database georeplikáció az SSISDB-adatbázisba. A feladatátvétel esetén biztosítható, hogy az Azure-SSIS integrációs modul használata a másodlagos adatbázis követi.
 
-Georeplikáció és feladatátvétel az SQL Database kapcsolatos további információkért lásd: [áttekintése: aktív georeplikációs és automatikus feladatátvételi csoportok](../sql-database/sql-database-geo-replication-overview.md).
+Georeplikáció és feladatátvétel az SQL Database kapcsolatos további információkért lásd: [áttekintése: Aktív georeplikáció és automatikus feladatátvételi csoportok](../sql-database/sql-database-geo-replication-overview.md).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="scenario-1---azure-ssis-ir-is-pointing-to-read-write-listener-endpoint"></a>1. forgatókönyv – Azure-SSIS integrációs modul mutat-e írási-olvasási figyelői végpont
 
@@ -87,7 +89,7 @@ A következő szakaszok ismertetik részletesebben ezeket a lépéseket.
 2. Hívja meg a következő parancsot a PowerShellben az integrációs modul frissítéséhez az új beállításokkal.
 
     ```powershell
-    Set-AzureRmDataFactoryV2IntegrationRuntime -Location "new region" `
+    Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
                     -CatalogServerEndpoint "Azure SQL Database server endpoint" `
                     -CatalogAdminCredential "Azure SQL Database server admin credentials" `
                     -VNetId "new VNet" `

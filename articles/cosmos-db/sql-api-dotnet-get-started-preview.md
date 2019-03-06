@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/01/2018
 ms.author: dech
-ms.openlocfilehash: 2e0dc5c69a6cc875f4e673a494387db79c1dd1fa
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 718a519786f31d796b0cb2e3924c9361ebd65fbc
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672546"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433246"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account-sdk-version-3-preview"></a>Adatkezelés az Azure Cosmos DB SQL API-fiók (a SDK verziója 3 előzetes verzió) egy .NET-Konzolalkalmazás létrehozása
 
@@ -61,14 +61,14 @@ Hozzunk létre egy Azure Cosmos DB-fiókot. Ha van már olyan fiókja, amelyet h
 1. Nyissa meg a **Visual Studio 2017-et** a számítógépén.
 1. A **Fájl** menüben válassza az **Új**, majd a **Projekt** elemet.
 1. Az a **új projekt** párbeszédablakban válassza **Visual C#**   /  **Console App (.NET Framework)**, nevezze el a projektet, és kattintson **OK** .
-    ![Képernyőfelvétel az Új projekt ablakról](./media/sql-api-get-started/dotnet-tutorial-visual-studio-new-project.png)
+    ![Képernyőfelvétel az új projekt ablakról](./media/sql-api-get-started/dotnet-tutorial-visual-studio-new-project.png)
 1. A **Megoldáskezelőben** kattintson a jobb gombbal az új konzolalkalmazásra, amely a Visual Studio megoldás alatt található, majd kattintson a **NuGet-csomagok kezelése...** lehetőségre.
     
-    ![A Projekt jobb gombos kattintással elérhető menüjének képernyőfelvétele](./media/sql-api-get-started/dotnet-tutorial-visual-studio-manage-nuget.png)
+    ![A projekt jobb gombos kattintással elérhető menüjének képernyőképe](./media/sql-api-get-started/dotnet-tutorial-visual-studio-manage-nuget.png)
 1. Az a **NuGet** lapra, majd **Tallózás**, és írja be **Microsoft.Azure.Cosmos** kifejezést a keresőmezőbe. Ügyeljen arra, hogy ellenőrizze, hogy *Belefoglalás prelease* található az előzetes verzióra.
 1. A találatok között keresse meg a **Microsoft.Azure.Cosmos** kattintson **telepítése**.
    Az Azure Cosmos DB SQL API ügyfélkódtárának csomagazonosítója a következő: [Microsoft Azure Cosmos DB Client Library](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/).
-   ![Képernyőkép a NuGet menüről az Azure Cosmos DB ügyféloldali SDK megkereséséhez](./media/sql-api-get-started/dotnet-tutorial-visual-studio-manage-nuget-2.png)
+   ![Képernyőfelvétel a NuGet menüről az Azure Cosmos DB ügyféloldali SDK megkereséséhez menü](./media/sql-api-get-started/dotnet-tutorial-visual-studio-manage-nuget-2.png)
 
     Ha a megoldás módosításainak áttekintéséről szóló üzenetet kap, kattintson az **OK** gombra. Ha a licenc elfogadásáról szóló üzenetet kap, kattintson az **Elfogadom** gombra.
 
@@ -119,7 +119,7 @@ Remek! Most, hogy befejeztük a beállítást, lássunk neki a kód megírásán
 
     Másolja az URI-t a portálról, és illessze be azt `<your endpoint URL>` a a ```Program.cs``` fájlt. Másolja az elsődleges kulcsot a portálról, és illessze be azt `<your primary key>`.
 
-   ![Képernyőkép az Azure Portalról az Azure Cosmos DB-kulcsok beolvasása](./media/sql-api-get-started/dotnet-tutorial-portal-keys.png)
+   ![Képernyőkép: az Azure Portalról az Azure Cosmos DB-kulcsok beolvasása](./media/sql-api-get-started/dotnet-tutorial-portal-keys.png)
 
 1. Ezután létrehozunk egy új példányát ```CosmosClient``` , és állítsa be a program bizonyos szerkezetkialakító.
 
@@ -331,7 +331,7 @@ Egy elem használatával hozható létre a [ **CreateItemAsync** ](https://docs.
 Először létre kell hozni egy **Család** osztályt, amely ebben a mintában az Azure Cosmos DB-ben tárolt objektumokat képviseli. Létrehozunk még egy **Szülő**, **Gyermek**, **Háziállat** és **Cím** alosztályt is a **Család** osztályban való használatra. Ne feledje, hogy a dokumentumoknak rendelkezniük kell egy **Azonosító** tulajdonsággal, amely a JSON-fájlban **id**-ként van szerializálva. 
 1. Válassza ki **Ctrl + Shift + A** megnyitásához a **új elem hozzáadása** párbeszédpanel. Adjon hozzá egy új osztályt **Family.cs** a projekthez. 
 
-    ![Képernyőfelvétel a projektbe a Finderből új Family.cs osztály hozzáadása](./media/sql-api-get-started/dotnet-tutorial-visual-studio-add-family-class.png)
+    ![Képernyőkép a projektbe a Finderből új Family.cs osztály hozzáadása](./media/sql-api-get-started/dotnet-tutorial-visual-studio-add-family-class.png)
 
 1. Másolja és illessze be a **termékcsalád**, **szülő**, **gyermek**, **Kisállat**, és **cím** be osztály**Family.cs**. 
     ```csharp

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 86b33bfa0f5383ac68080e2f8f7f9a004a1364a0
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 618414331ab22cff41c7ac02c78f4bef333d0c84
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652614"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433450"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Az üzembe helyezés éles környezetben az IoT Edge-megoldás előkészítése
 
@@ -167,11 +167,11 @@ Ezzel az ellenőrzőlistával tűzfalszabályokat kiindulópontként szolgál:
 
    | URL-címe (\* = helyettesítő karakter) | Kimenő TCP-portok | Használat |
    | ----- | ----- | ----- |
-   | MCR.microsoft.com  | 443 | A Microsoft tárolóregisztrációs adatbázis |
-   | Global.Azure-eszközök – provisioning.net  | 443 | A DPS hozzáféréséhez (nem kötelező) |
-   | \*. azurecr.io | 443 | Személyes, mind a 3. fél tárolóregisztrációs adatbázis |
+   | mcr.microsoft.com  | 443 | A Microsoft tárolóregisztrációs adatbázis |
+   | global.azure-devices-provisioning.net  | 443 | A DPS hozzáféréséhez (nem kötelező) |
+   | \*.azurecr.io | 443 | Személyes, mind a 3. fél tárolóregisztrációs adatbázis |
    | \*.blob.core.windows.net | 443 | Töltse le a lemezkép eltérések | 
-   | \*.Azure-devices.net | 5671, 8883, 443-as porton | Az IoT Hub-hozzáférés |
+   | \*.azure-devices.net | 5671, 8883, 443 | Az IoT Hub-hozzáférés |
    | \*. docker.io  | 443 | Docker-hozzáférés (nem kötelező) |
 
 ### <a name="configure-communication-through-a-proxy"></a>Egy proxyn keresztül történő kommunikáció konfigurálása
@@ -186,7 +186,7 @@ Az eszközök fog üzembe helyezni a hálózaton, proxykiszolgálót használ, h
 
 ### <a name="set-up-logs-and-diagnostics"></a>Naplók és diagnosztika beállítása
 
-Linux rendszeren az IoT Edge-démon journald használja az alapértelmezett naplózási illesztőprogramot. A parancssori eszközzel `journalctl` lekérdezni a démon naplózza. A Windows az IoT Edge-démon a PowerShell diagnosztikai használ. Használat `Get-WinEvent` a lekérdezések naplói a démonból. IoT Edge-modulok a JSON-illesztőprogram naplózása, a Docker alapértelmezett használja.  
+Linux rendszeren az IoT Edge-démon illesztőprogram naplózása alapértelmezés szerint használja a naplók. A parancssori eszközzel `journalctl` lekérdezni a démon naplózza. A Windows az IoT Edge-démon a PowerShell diagnosztikai használ. Használat `Get-WinEvent` a lekérdezések naplói a démonból. IoT Edge-modulok a JSON-illesztőprogram naplózása, a Docker alapértelmezett használja.  
 
 Amikor egy IoT Edge-példányban tesztel, kérheti le a naplókat és hárítsa el az eszközök általában hozzáférhet. A telepítési forgatókönyvben nem lehet ezt a lehetőséget. Vegye figyelembe, hogy azt a módszert, éles környezetben az eszközökkel kapcsolatos információk összegyűjtéséhez. Az egyik lehetőség, hogy egy naplózási modul, amely adatokat gyűjt a más modulok tesznek, és elküldi a felhőbe. Például egy naplózási modul [logspout-loganalytics](https://github.com/veyalla/logspout-loganalytics), vagy a saját is tervezhet. 
 
@@ -194,7 +194,7 @@ Ha aggódik túl nagy a korlátozott erőforráshoz eszközön naplókat, a mem�
 
 * A Docker-démont, maga az összes docker logfiles mérete kifejezetten korlátozhatja. A Linux rendszerre, konfigurálása, a démon `/etc/docker/daemon.json`. A Windows `C:\ProgramData\docker\confige\daemon.json`. 
 * Ha azt szeretné beállítani az egyes tárolók naplófájl méretét, az egyes modul a CreateOptions megteheti. 
-* Konfigurálja az automatikus kezelésére naplók által beállítás journald Docker illesztőprogram naplózása alapértelmezés szerint a Docker. 
+* Konfigurálja az automatikus kezelésére naplókat a naplók állítsa az alapértelmezett naplózási illesztőprogram, a Docker a Docker. 
 * Bizonyos időközönként eltávolítja az régi naplókat az eszközről a logrotate eszköz a Docker telepítésével. Használja a következő fájl megadása: 
 
    ```

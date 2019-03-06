@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 3/3/2019
 ms.author: mayg
 ms.custom: MVC
-ms.openlocfilehash: 45a0a70aa42449895c5a7e0aba2963e928a4b6f2
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 5b3dca8bd5135581afc12303ed9fa8c532c56258
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340728"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438890"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Az Azure-ba irányuló vészhelyreállítás beállítása helyszíni VMware virtuális gépekhez
 
@@ -84,7 +84,7 @@ A konfigurációs kiszolgáló magas rendelkezésre állású VMware virtuális 
  >A konfigurációs kiszolgálói sablon legújabb verzióját közvetlenül letöltheti a [Microsoft letöltőközpontból](https://aka.ms/asrconfigurationserver).
 
 >[!NOTE]
-Az OVF-sablonhoz járó licence egy 180 napig érvényes próbalicenc. Az ügyfélnek egy megvásárolt licenccel kell aktiválnia az ablakokat.
+Az OVF-sablon a megadott licenc egy próbalicencre 180 napig érvényes. Ügyfél kell határidődátumával licenccel a windows aktiválása.
 
 ## <a name="import-the-template-in-vmware"></a>A sablon importálása a VMware-ben
 

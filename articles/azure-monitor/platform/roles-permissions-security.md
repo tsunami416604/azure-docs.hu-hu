@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 55a7a26815dac1140d100c05a47057f8d5000f9d
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 591b30d0147e427e8a0dbc2d25276bdcd3b54be6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57317815"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445483"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Szerepkörök, engedélyek és biztonság az Azure Monitor használatának első lépései
 
@@ -160,7 +160,7 @@ New-AzRoleDefinition -Role $role
 Az event hubs használatával követheti hasonló mintát, de először hozzon létre egy dedikált Listen engedélyezési szabályt. Ha azt szeretné, adja meg, egy alkalmazás, amely csak a figyelési kapcsolatos event hubs figyelni kell a hozzáférést, tegye a következőket:
 
 1. Megosztott hozzáférési szabályzat létrehozása a streamelési figyelési jogcímek csak a figyelési adatok létrehozott esemény példáink a. Ezt megteheti a portálon. Például előfordulhat, hogy felhívja azt "monitoringReadOnly." Ha lehetséges érdemes a kulcs közvetlenül adhat a fogyasztói, majd ugorjon a következő lépéssel.
-2. Ha a fogyasztó kell helyeznie a kulcs az ad-hoc van szüksége, adja meg a felhasználónak az adott event hubs listkeys műveletének műveletet. Ez akkor is szükséges a felhasználók számára a diagnosztikai beállítás, vagy jelentkezzen profil streamelés az event hubs képeseknek kell lenniük. Például előfordulhat, hogy az RBAC szabály létrehozása:
+2. Ha a fogyasztó képesnek kell lennie az ad hoc lekérni a kulcsot, adja meg a felhasználónak az adott event hubs listkeys műveletének műveletet. Ez akkor is szükséges a felhasználók számára a diagnosztikai beállítás, vagy jelentkezzen profil streamelés az event hubs képeseknek kell lenniük. Például előfordulhat, hogy az RBAC szabály létrehozása:
    
    ```powershell
    $role = Get-AzRoleDefinition "Reader"

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: c8043064ac1df40eaa31ae56e9ec31c0152e0130
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 6062c31d1ec87d7b958feafef5824a5814995541
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888430"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431971"
 ---
 # <a name="how-to-install-mysql-on-azure"></a>A MySQL telepítése Azure-ban
 Ebből a cikkből megismerheti, hogyan telepítése és konfigurálása a MySQL a Linux operációs rendszert futtató Azure virtuális gép lesz.
@@ -51,7 +51,7 @@ Linux rendszerű virtuális gépek itt lesz használt az Ubuntut, az Azure-ból.
             #[root@mysqlnode ~]# apt-get update
             #[root@mysqlnode ~]# apt-get -y install mysql-server-5.6
   
-    A telepítés során megjelenik egy párbeszédpanel ablak poping akár kérje meg az alábbi MySQL gyökér szintű jelszó beállítását, és akkor van szükség a jelszó beállítása itt.
+    A telepítés során megjelenik egy párbeszédablak jelenik meg, kérje meg az alábbi MySQL gyökér szintű jelszó beállítását, és a jelszó itt kell beállítani.
   
     ![image](./media/mysql-install/virtual-machines-linux-install-mysql-p1.png)
 

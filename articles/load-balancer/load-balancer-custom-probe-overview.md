@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2018
 ms.author: kumud
-ms.openlocfilehash: dc22f1392d14529c2944dde67315a278fca4fa73
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 913693e684ba8640a93f50d21dd3df6a6295e1c5
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195336"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450447"
 ---
 # <a name="load-balancer-health-probes"></a>Load Balancer állapot-mintavételei
 
@@ -212,7 +212,7 @@ Ne engedélyezze a [TCP időbélyegeket](https://tools.ietf.org/html/rfc1323).  
 
 ## <a name="monitoring"></a>Figyelés
 
-A nyilvános és a belső [Standard Load Balancer](load-balancer-standard-overview.md) végpont és a háttérkiszolgáló példány állapota Hálózatfigyelő állapot szerint, többdimenziós metrikák az Azure monitoron keresztül teszi közzé. Ezek a metrikák más Azure-szolgáltatások vagy harmadik arty alkalmazások felhasználhassák. 
+A nyilvános és a belső [Standard Load Balancer](load-balancer-standard-overview.md) végpont és a háttérkiszolgáló példány állapota Hálózatfigyelő állapot szerint, többdimenziós metrikák az Azure monitoron keresztül teszi közzé. Ezek a metrikák más Azure-szolgáltatások vagy külső alkalmazások is felhasználhatnak. 
 
 Alapszintű nyilvános Load Balancer összegzése a háttérkészlet keresztül az Azure Monitor naplóira mintavételi állapotát mutatja.  Az Azure Monitor naplóira belső alapszintű Load Balancer Terheléselosztók esetében nem érhetők el.  Használhat [naplózza az Azure Monitor](load-balancer-monitor-log.md) a nyilvános load balancer mintavételi állapot ellenőrzéséhez és mintavételi száma. Adja meg a load balancer állapot statisztikája naplózás használható a Power bi-ban vagy az Azure Operational Insights.
 

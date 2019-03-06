@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: sashan,moslake,josack
 manager: craigg
 ms.date: 03/01/2019
-ms.openlocfilehash: 00b20b3f144a2e98fb028e3db7c50af61330d721
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 801b7de4b82c37503f2a14619112cbf46ca60a43
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316455"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447081"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Az Azure SQL Database-kiszolgálóhoz tartozó SQL Database erőforráskorlátok
 
@@ -96,6 +96,11 @@ Napló arány vezérlő forgalomformálásra van illesztett keresztül a követk
 | HADR_THROTTLE_LOG_RATE_SEND_RECV_QUEUE_SIZE | Visszajelzés-vezérlés, a rendelkezésre állási csoport fizikai replikációs a prémium és üzletileg kritikus nem |  
 | HADR_THROTTLE_LOG_RATE_LOG_SIZE | Visszajelzés-vezérlés, korlátozza a díjak elkerülése érdekében kívüli naplófeltétel terület |
 ||||
+
+Amikor egy napló költési korlát, amely a méretezhetőség kívánt akadályozása, vegye figyelembe a következő beállításokat:
+- Vertikális felskálázás nagyobb csomagra a maximális 48 MB/s log sebesség eléréséhez. 
+- Adatok betöltése nem átmeneti, ha egy ETL-folyamattal adatokat pl. átmeneti, töltődnek be a tempdb (amely minimálisan kerül). 
+- Elemzési forgatókönyvek esetén töltse be a hatálya alá tartozó fürtözött oszlopcentrikus táblába. Ez csökkenti a szükséges log tömörítés miatt. Ez a módszer megnöveli a CPU-kihasználtság, és csak akkor érvényes, az adatkészleteket, amelyek a fürtözött oszloptár-indexekben. 
 
 ## <a name="next-steps"></a>További lépések
 

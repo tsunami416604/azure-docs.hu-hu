@@ -17,12 +17,12 @@ ms.date: 07/31/2018
 ms.author: markvi
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66506a8abf130f27950fd958ba1a7c291e55a5a5
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 8b113dd3e354e778d2cf16182665afff5440d2e5
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674252"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57408530"
 ---
 # <a name="control-the-hybrid-azure-ad-join-of-your-devices"></a>Az eszközök hibrid Azure AD-csatlakozásának vezérlése
 
@@ -99,16 +99,16 @@ Az eszköz regisztrációs viselkedését az aktuális eszközök szabályozhatj
 
 Ügyfélbeállítás konfigurálása:
 
-1.  Nyissa meg **Configuration Manager**, majd lépjen **Cloud Services**.
+1.  Nyissa meg **Configuration Manager**válassza **felügyeleti**, majd lépjen **ügyfélbeállítások**.
 
-2.  A **eszközbeállítások**, válasszon egyet a következő értékeket a **automatikusan regisztrálja az Azure Active Directory új Windows 10-tartományhoz csatlakozott eszközökkel**:
+2.  Nyissa meg a tulajdonságait **alapértelmezett ügyfélbeállítások** válassza **Cloud Services**.
+
+3.  A **eszközbeállítások**, válasszon egyet a következő értékeket a **automatikusan regisztrálja az Azure Active Directory új Windows 10-tartományhoz csatlakozott eszközökkel**:
 
     - **Nem**: Automatikus eszközregisztráció megakadályozására.
     - **Igen**: Automatikus eszközregisztráció engedélyezése.
 
-
-3.  Kattintson az **OK** gombra.
-    
+4.  Kattintson az **OK** gombra.
 
 Kíván hivatkozni egy Ön által választott helyre ezt az ügyfélbeállítást. Adja meg ezt az ügyfélbeállítást a minden Windows aktuális a szervezetnél található eszközökön, például az ügyfélbeállítás, a tartományhoz kell társítani. Ehhez egy ellenőrzött központi telepítést, az ügyfél-eszközbeállítást Windows-tartományhoz tartozó szervezeti egység vagy egy biztonsági csoport aktuális eszközök konfigurálhatja.
 

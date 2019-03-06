@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
 ms.custom: seodec18
-ms.openlocfilehash: 4911a872a4b5479abe84c2e06573256092185cf2
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 6a576f2817069d7095ea863198168be083d0c6b5
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56669701"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450943"
 ---
 # <a name="use-connected-services-in-visual-studio-to-connect-to-the-computer-vision-api"></a>Connected Services használata a Visual Studióban a Computer Vision API-hoz való csatlakozáshoz
 
@@ -92,7 +92,7 @@ Ez a cikk és a kísérő cikkek részletesen ismertetik, hogyan használható a
       }
    ```
 
-1. A projekt wwwroot mappájában hozzon létre egy képek mappát, és adjon egy képfájlt a wwwroot mappához. Példaként használhat egy képet erről a [Computer Vision API-oldalról](https://azure.microsoft.com/services/cognitive-services/computer-vision/). Kattintson a jobb gombbal az egyik képre, mentse a helyi merevlemezre, majd a Megoldáskezelőben kattintson a jobb gombbal a képek mappára, és válassza az **Add** > **Existing Item** (Hozzáadás, Meglévő elem) lehetőséget, hogy hozzáadja a projekthez. A projektnek ehhez hasonlóan kell kinéznie a Megoldáskezelőben: 
+1. A projekt wwwroot mappájában hozzon létre egy képek mappát, és adjon egy képfájlt a wwwroot mappához. Példaként használhat egy képet erről a [Computer Vision API-oldalról](https://azure.microsoft.com/services/cognitive-services/computer-vision/). Kattintson a jobb gombbal a rendszerképeket, mentse a helyi merevlemezről, majd a Megoldáskezelőben, kattintson a jobb gombbal a képek mappa és válassza a **Hozzáadás** > **meglévő elem** , adja hozzá a projekthez. A projektnek ehhez hasonlóan kell kinéznie a Megoldáskezelőben: 
   
    ![A kiválasztott képfájllal megoldáskezelő-nézet képernyőképe](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-3.PNG) 
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/30/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 311ec7bacdfe58982ee670277000d81756f92005
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 03e10497b033fc3d97fde4cd524b358c05fdc943
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55648659"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57457933"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>Azure IaaS virtuális gépek és a felügyelt és nem felügyelt prémium szintű lemezek – gyakori kérdések
 
@@ -347,7 +347,7 @@ Standard SSD és Standard HDD nagy lemezméretek, az adatátviteli sebességet e
 
 **Mely régiók csak a felügyelt lemezek mérete nagyobb, mint a támogatott 4 Tib-ra?**
 
-Az előzetes verzióban érhető el jelenleg a felügyelt lemezek mérete támogatottak, az USA nyugati középső Régiója, Észak-Európa, Nyugat-Európa, USA 2. nyugati régiója, USA 2. keleti régiója, USA keleti régiójában.
+Az előzetes verziója a felügyelt lemezek méretei túli 4 Tib-ra az Azure éles régiót kivéve Gov, Kínában, és Németországban támogatottak. 
 
 **Hogy támogatják-állomás gyorsítótárazásának engedélyezése az újabb lemezméretek a?**
 

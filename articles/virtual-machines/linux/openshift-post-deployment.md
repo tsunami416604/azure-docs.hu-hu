@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: ''
+ms.date: 02/02/2019
 ms.author: haroldw
-ms.openlocfilehash: 8436b530ac01f03e071604e5023b50f8de6989fd
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: b2a2e0ed48004a731ca15b3fb1d985bbee7e0c29
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51034807"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440659"
 ---
 # <a name="post-deployment-tasks"></a>Üzembe helyezés utáni feladatok
 
@@ -39,10 +39,10 @@ Azure Active Directory-hitelesítéshez használandó, először hozzon létre e
 
 Ezeket a lépéseket az Azure CLI használatával hozzon létre az alkalmazás regisztrációját, és a grafikus felhasználói Felülettel (portál) állítsa be az engedélyeket. Szeretne létrehozni az alkalmazás regisztrációját, az alábbi öt adatokra van szükség:
 
-- Megjelenített név: alkalmazás regisztrációja nevét (például OCPAzureAD)
-- Kezdőlap: OpenShift-konzol URL-címe (például https://masterdns343khhde.westus.cloudapp.azure.com/console)
-- URI-azonosító: OpenShift konzol URL-címe (például https://masterdns343khhde.westus.cloudapp.azure.com/console)
-- Válasz URL-cím: Fő nyilvános URL-CÍMÉT és az alkalmazás regisztrációs nevét (például https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD)
+- Megjelenített név: Alkalmazás regisztrálása nevét (például OCPAzureAD)
+- Kezdőlap: OpenShift konzol URL-címe (például https://masterdns343khhde.westus.cloudapp.azure.com/console)
+- Identifier URI: OpenShift konzol URL-címe (például https://masterdns343khhde.westus.cloudapp.azure.com/console)
+- Válasz URL-címe: Nyilvános URL-CÍMÉT és az alkalmazás regisztrációs nevét (például fő https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD)
 - Jelszó: Biztonságos jelszó (erős jelszó használata)
 
 A következő példában létrehozunk egy alkalmazásregisztráció az előző információk alapján:
@@ -87,7 +87,7 @@ Az Azure Portalon:
 
   ![Alkalmazásregisztráció kijelölt API](media/openshift-post-deployment/app-registration-select-api.png)
 
-7.  A 2. lépés: Válassza ki az engedélyeket, jelölje be **bejelentkezés és felhasználói profil olvasása** alatt **delegált engedélyek**, és kattintson a **válassza**.
+7.  On Step 2: Jelölje be az engedélyeket, jelölje be **jelentkezzen be és felhasználói profil olvasása** alatt **delegált engedélyek**, és kattintson a **válassza**.
 
   ![Alkalmazásregisztráció-hozzáférés](media/openshift-post-deployment/app-registration-access.png)
 

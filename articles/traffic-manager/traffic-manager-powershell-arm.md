@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: efaa9101fbe46e0db2f582fe5a208dd8b16f095f
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 2b480df0100690a7a5064044d435a34845516fa6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003584"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442103"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Traffic Manager kezelése a PowerShell segítségével
 
@@ -63,7 +63,7 @@ A következő táblázat ismerteti a paramétereket:
 | ResourceGroupName |A profil-erőforrást tartalmazó erőforráscsoport neve. |
 | TrafficRoutingMethod |Adja meg a forgalom-útválasztási módszer segítségével meghatározhatja, melyik végponthoz válaszban visszaadott DNS-lekérdezést. Lehetséges értékek: "Teljesítmény", "Súlyozott" vagy "Priority". |
 | RelativeDnsName |Adja meg a Traffic Manager-profil által biztosított DNS-név állomásnév részét. Ezt az értéket a profil teljesen minősített tartománynevét (FQDN) az Azure Traffic Manager által használt DNS-tartománynév együtt. Például "contoso" értékre állítja lesz "contoso.trafficmanager.net." |
-| TTL |A DNS Time-to-Live élettartam (TTL) megadja a másodpercek alatt. A TTL tájékoztatja a helyi DNS-feloldók és a DNS-ügyfelek mennyi a gyorsítótár DNS-válaszok a Traffic Manager-profil. |
+| Élettartam |A DNS Time-to-Live élettartam (TTL) megadja a másodpercek alatt. A TTL tájékoztatja a helyi DNS-feloldók és a DNS-ügyfelek mennyi a gyorsítótár DNS-válaszok a Traffic Manager-profil. |
 | MonitorProtocol |A végpont állapotának figyeléséhez használt protokollt adja. Lehetséges értékek: "HTTP" és "HTTPS". |
 | MonitorPort |Adja meg a végpont állapotának figyeléséhez használt TCP-portot. |
 | MonitorPath |A végpont számára, hogy megvizsgálja a végpontonkénti állapotot használt tartománynév képest relatív elérési útja. |
@@ -208,7 +208,7 @@ New-AzTrafficManagerEndpoint -Name child-endpoint -ProfileName parent -ResourceG
 
 ## <a name="adding-endpoints-from-another-subscription"></a>Végpontok hozzáadása egy másik előfizetésből
 
-A TRAFFIC Manager képes együttműködni különböző előfizetésekről csatlakoztat végpontok. Váltson át az előfizetést az a végpont beolvasni a szükséges bemeneti átirányítása a Traffic Managerhez hozzáadni kívánt kell. Majd váltson át a Traffic Manager-profilt az előfizetéseket, és hozzá tud adni a encpoint kell. Az alábbi példa bemutatja, hogyan ehhez a nyilvános IP-címmel.
+A TRAFFIC Manager képes együttműködni különböző előfizetésekről csatlakoztat végpontok. Váltson át az előfizetést az a végpont beolvasni a szükséges bemeneti átirányítása a Traffic Managerhez hozzáadni kívánt kell. Ezután kell váltson arra a felsorolt előfizetéssel, valamint a Traffic Manager-profil, és hozzá tud adni a végponthoz. Az alábbi példa bemutatja, hogyan ehhez a nyilvános IP-címmel.
 
 ```powershell
 Set-AzContext -SubscriptionId $EndpointSubscription

@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2019
+ms.date: 03/04/2019
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.lastreviewed: 02/14/2019
-ms.openlocfilehash: 1fb9917e30a88cf5a68c9e170d66eeaa1d477deb
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.lastreviewed: 03/04/2019
+ms.openlocfilehash: 12edea505ba3b0c8009512a52e3eea9ecea5bb26
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56877146"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405198"
 ---
 # <a name="register-azure-stack-with-azure"></a>Regisztráljon az Azure Stack az Azure-ral
 
@@ -325,7 +325,7 @@ Használhatja a **régiók kezelése** csempére kattintva ellenőrizze, hogy az
 
     Az Azure Stack alkalmazásregisztrációk van fűzve előtagként **Azure Stack**.
 
-Azt is megteheti ellenőrizheti, ha a regisztráció sikeres volt a Marketplace-en a felügyeleti szolgáltatás. Ha a Marketplace-en felügyeleti panelen a marketplace-elemek listáját látja, a regisztráció sikeres volt. Azonban a leválasztott környezetben lévő nem láthatja a marketplace-elemek a Marketplace-kezelés. Azonban használhatja az offline eszköz regisztrációjának ellenőrzése.
+Azt is megteheti ellenőrizheti, ha a regisztráció sikeres volt a Marketplace-en a felügyeleti szolgáltatás. Ha a Marketplace-en felügyeleti panelen a marketplace-elemek listáját látja, a regisztráció sikeres volt. Azonban a leválasztott környezetben lévő nem láthatja a marketplace-elemek a Marketplace-kezelés.
 
 > [!NOTE]
 > Regisztráció befejezése után az aktív figyelmeztetés nem regisztrálásához már nem jelenik meg. A kapcsolat nélküli esetekben használható akkor megjelenik egy üzenet, a Marketplace-kezelés kéri, hogy regisztráljon, és aktiválja az Azure Stack, még akkor is, ha sikeresen regisztrálta.

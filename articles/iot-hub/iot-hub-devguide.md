@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: 0246b19c0155fe2707ac780c7acb61be424d2caf
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 1ff7d430edd3f638ad5efcc5a89604e4ed732211
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57008931"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450991"
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Az Azure IoT Hub fejlesztői útmutató
 
@@ -55,7 +55,7 @@ Ez az IoT Hub fejlesztői útmutató a következő cikkeket tartalmazza:
 
 * [Ki férhet hozzá az IoT Hub](iot-hub-devguide-security.md) a biztonsági modell hozzáférést biztosít az IoT Hub funkció mindkét eszközökhöz és felhőalapú összetevőit ismerteti. A cikk tokeneket és X.509-tanúsítványokat, és részleteket adhat az engedélyek használatával kapcsolatos információt tartalmaz.
 
-* [Ikereszközök használata az állapot és a konfiguráció szinkronizálása](iot-hub-devguide-device-twins.md) ismerteti a *ikereszköz* fogalom. A cikk a funkciók ikereszközök descibes felületén is, például az eszköz az ikereszköz való szinkronizálása. A cikk az ikereszközök tárolt adatokra vonatkozó információkat tartalmaz.
+* [Ikereszközök használata az állapot és a konfiguráció szinkronizálása](iot-hub-devguide-device-twins.md) ismerteti a *ikereszköz* fogalom. A cikk is ismerteti a funkció eszköz twins teszi közzé, például az eszköz az ikereszköz való szinkronizálása. A cikk az ikereszközök tárolt adatokra vonatkozó információkat tartalmaz.
 
 * [Az eszközön közvetlen metódus meghívása](iot-hub-devguide-direct-methods.md) közvetlen metódus életciklusának ismerteti. A cikk ismerteti az eszköznek a háttéralkalmazás metódusokat hívhat meg, és kezelni a közvetlen metódus az eszközön.
 

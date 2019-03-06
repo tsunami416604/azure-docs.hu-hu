@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: brandwe
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 602fba95b3cc69521fe3fe17d8c89cc332131566
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e79b73123b33a012c062a89fb9748fa101fabcea
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190228"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448679"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Útmutató: IOS-es adal-t használó alkalmazások közötti SSO engedélyezése
 
@@ -231,7 +231,7 @@ Ha jogosultságokat állítsa be a megfelelő, tekintse meg a egy fájlt a proje
 </plist>
 ```
 
-A kulcslánc-jogosultság engedélyezve van az alkalmazások minden rendelkezik, és készen áll az egyszeri bejelentkezés használata után mutassa be a odentity SDK-t a kulcskarikában az alábbi beállítást a `ADAuthenticationSettings` a következő beállítással:
+A kulcslánc-jogosultság engedélyezve van az alkalmazások minden rendelkezik, és készen áll az egyszeri bejelentkezés használata után mutassa be az identitást, SDK-t a kulcskarikában az alábbi beállítást a `ADAuthenticationSettings` a következő beállítással:
 
 ```
 defaultKeychainSharingGroup=@"com.myapp.mycache";

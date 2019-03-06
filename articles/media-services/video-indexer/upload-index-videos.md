@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/17/2019
 ms.author: juliako
-ms.openlocfilehash: 657b726dc3724637a3099e95d4974840fbb0cc8c
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: ddf090664b1e5197603dadc26da92a0a1da1a63d
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316336"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404943"
 ---
 # <a name="upload-and-index-your-videos"></a>Videók feltöltése és indexelése  
 
@@ -31,8 +31,9 @@ A videó feltöltése után a Video Indexer, igény szerint kódolja a videó (a
 ## <a name="uploading-considerations"></a>Feltöltési szempontok
 
 - A videó URL-cím alapján történő feltöltésekor (előnyben részesített) a végpontot a TLS 1.2-es (vagy újabb) verziójával kell védeni
-- Az URL-cím beállítással feltöltési mérete legfeljebb 30 GB
-- A feltöltés a byte tömb lehetőséggel mérete legfeljebb 2 GB
+- Az URL-cím beállítással feltöltési mérete legfeljebb 30GB
+- A legtöbb böngésző URL-cím hossza legfeljebb 2000 karakter hosszúságú lehet
+- A feltöltés a byte tömb lehetőséggel mérete legfeljebb 2GB
 - A bájt tömb beállítás túllépi az időkorlátot 30 perc után
 - A `videoURL` paraméterben megadott URL-címet kódolni kell
 

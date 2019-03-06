@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: 8a711596140340b5e6e69d04959abfef36332869
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: ffc8bd21468847a71a44be2244c72af7016cd65f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813789"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432022"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Windows látható "Kritikus szolgáltatás sikertelen" kék képernyő egy Azure virtuális gép indításakor
 Ez a cikk ismerteti a "Kritikus szolgáltatás sikertelen" hibát tapasztalhat, amikor elindítja a Windows virtuális gép (VM) a Microsoft Azure-ban. A problémák megoldása érdekében hibaelhárítási lépéseket biztosít. 
@@ -106,7 +106,7 @@ Memóriakép naplók és a soros konzol engedélyezéséhez futtassa a következ
 
 ### <a name="optional-analyze-the-dump-logs-in-dump-crash-mode"></a>Nem kötelező: A memóriakép-naplók módban összeomlási memóriakép elemzése
 
-A memóriakép elemzése naplózza a saját magának, kövesse az alábbi lépéseket:
+A memóriakép-naplók elemzése saját magának, kövesse az alábbi lépéseket:
 
 1. Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális géphez.
 2. A csatolt operációsrendszer-lemezen tallózzon a **\windows\system32\config**. Az összes fájl másolása biztonsági mentéséhez, abban az esetben egy visszaállítási megadása kötelező.

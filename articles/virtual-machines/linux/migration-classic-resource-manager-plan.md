@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: ff3fdec2f427e095c748e4a47079d783fa83802d
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: bd3bd4937bd376c696df98af0b535aeda5027ddc
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341334"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437088"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Az IaaS-erőforrások klasszikusból Azure Resource Manager az áttelepítés tervezése
 Azure Resource Manager sok nagyszerű funkciókat biztosít, rendkívül fontos tervezze meg, hogy zökkenőmentességét sure dolgot a migrálási folyamat elkezdésekor. Tervezési idő kiadások biztosítja, hogy nem problémák merülnek fel migrálási tevékenységek végrehajtása közben. 
@@ -124,7 +124,7 @@ A következő számos, a nagyobb áttelepítések a felmerült problémák volta
 
     Az aktuális Azure erőforrás-kezelő kvótái, az Azure CLI legújabb verzióját a következő parancsokkal ellenőrizheti.
 
-    **COMPUTE** *(magok, állásról beállítása)*
+    **COMPUTE** *(magok, a rendelkezésre állási csoportok)*
 
     ```bash
     az vm list-usage -l <azure-region> -o jsonc 

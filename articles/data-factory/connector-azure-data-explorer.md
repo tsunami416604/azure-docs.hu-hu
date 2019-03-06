@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: orspod
-ms.openlocfilehash: 41cdae310fb9c2fc66ec9ed78ddc21596c9a5ba9
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 94cf153d7d88e0589edfb3c126c18e04e25e2ef2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57317849"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431920"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Adatok másolása, vagy az Azure az adatkezelőt az Azure Data Factory használatával
 
@@ -29,7 +29,7 @@ Ez a cikk ismerteti, hogyan használja a másolási tevékenység az Azure Data 
 Bármely támogatott forrásadattárból adatokat másolhatja az Adatkezelőbe az Azure. Másolhat adatokat is az Azure Data Explorer bármely támogatott fogadó adattárba. A másolási tevékenység által források vagy fogadóként támogatott adattárak listáját lásd: a [támogatott adattárak](copy-activity-overview.md) tábla.
 
 >[!NOTE]
->3,14-es verziótól kezdve támogatja az adatok és-tárolókról az Azure Data Explorer /, a helyi integrációs modul használatával a helyszíni adattárban való másolását.
+>3,14-es verziótól kezdve támogatott másolása az adatok Azure az adatkezelőt, és hogy a helyi adattár helyi integrációs modul használatával.
 
 Az Azure Data Explorer-összekötő teszi lehetővé tegye a következőket:
 
@@ -181,7 +181,7 @@ Adatok másolása az Azure az adatkezelőt, állítsa be a type tulajdonság, a 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A **típus** értékre kell állítani a másolási tevékenység fogadó tulajdonságát: **AzureDataExplorerSink** | Igen |
-| ingestionMappingName | Egy előre létrehozott nevét **[CSV leképezés](/azure/kusto/management/mappings#csv-mapping)** Kusto táblán. Az oszlopok forrásból az Adatkezelőbe az Azure - vonatkozik, amelyek leképezése **[összes támogatott forrás-tárolók/formátumok](copy-activity-overview.md#supported-data-stores-and-formats)** stb formázza a CSV vagy JSON/Avro is beleértve, használhatja a másolási tevékenység [oszlop leképezés](copy-activity-schema-and-type-mapping.md) (név alapján implicit vagy explicit módon konfigurált) és/vagy az Azure Data Explorer CSV-leképezések. | Nem |
+| ingestionMappingName | Egy előre létrehozott nevét **[leképezés](/azure/kusto/management/mappings#csv-mapping)** Kusto táblán. Az oszlopok forrásból az Adatkezelőbe az Azure - vonatkozik, amelyek leképezése **[összes támogatott forrás-tárolók/formátumok](copy-activity-overview.md#supported-data-stores-and-formats)** stb formázza a CSV vagy JSON/Avro is beleértve, használhatja a másolási tevékenység [oszlop leképezés](copy-activity-schema-and-type-mapping.md) (név alapján implicit vagy explicit módon konfigurált) és/vagy Azure Data Explorer leképezések. | Nem |
 
 **Példa**
 
@@ -196,7 +196,7 @@ Adatok másolása az Azure az adatkezelőt, állítsa be a type tulajdonság, a 
             },
             "sink": {
                 "type": "AzureDataExplorerSink",
-                "ingestionMappingName": "<optional csv mapping name>"
+                "ingestionMappingName": "<optional Azure Data Explorer mapping name>"
             }
         },
         "inputs": [

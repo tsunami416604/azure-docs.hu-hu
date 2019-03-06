@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/09/2018
 ms.author: artemuwka
 ms.subservice: common
-ms.openlocfilehash: c9009e898b00212dba4dec9bf38af2bfa057b8ea
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 86d2569d0ab920bd32a25e1331d74ed4f623143a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244606"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437666"
 ---
 # <a name="transfer-data-with-the-azcopy-v10-preview"></a>Adatátvitel az AzCopy v10 (előzetes verzió)
 
@@ -265,7 +265,7 @@ Szűrés állapot szerint átvitelek, használja a következő parancsot:
 .\azcopy jobs show <job-id> --with-status=Failed
 ```
 
-Sikertelen/megszakított feladatok azonosítójával együtt (Ez még nem állandó biztonsági okokból) SAS-jogkivonat folytathatja:
+Folytathatja a feladat sikertelen vagy megszakítva azonosítójával együtt (Ez még nem állandó biztonsági okokból) SAS-jogkivonat:
 
 ```azcopy
 .\azcopy jobs resume <jobid> --sourcesastokenhere --destinationsastokenhere

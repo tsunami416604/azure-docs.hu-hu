@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.author: hrasheed
 ms.date: 11/06/2018
-ms.openlocfilehash: 4dd9634d5d5e6ce749a4ee563903b07e22bc45ee
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: ddcde2956da774e687c1e587649e65b79003bf3a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652332"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448985"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>Oktatóanyag: Adatok betöltése, és lekérdezéseket futtathat az Azure HDInsight az Apache Spark-fürt
 
@@ -83,7 +83,7 @@ A tábla létrehozása után az adatokon interaktív lekérdezéseket futtathat.
 
 10. A notebook **File** (Fájl) menüjében kattintson a **Save and Checkpoint** (Mentés és ellenőrzőpont) elemre. 
 
-11. Ha most kezd bele a [következő oktatóanyagba](apache-spark-use-bi-tools.md), hagyja nyitva a notebookot. Ha nem, zárja be a notebookot a fürterőforrások felszabadításához. Ehhez a notebook **File** (Fájl) menüjében kattintson a **Close and Halt** (Bezárás és leállítás) elemre.
+11. Ha most kezd bele a [következő oktatóanyagba](apache-spark-use-bi-tools.md), hagyja nyitva a notebookot. Ha nem, állítsa le a notebookot a fürt erőforrásainak felszabadítása érdekében: az a **fájl** a jegyzetfüzetet, válassza a menü **zárja be és Halt**.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

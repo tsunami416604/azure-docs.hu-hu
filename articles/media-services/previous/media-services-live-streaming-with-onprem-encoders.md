@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: cenkd;juliako
-ms.openlocfilehash: 67d86ca7ed79f431bf762d4a3679e18a7b4bc373
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 7fa2dad124b5ef9e93402d6d4c03d956b00184af
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990216"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442368"
 ---
 # <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>Élő Stream továbbítása többszörös átviteli sebességű streamet létrehozó helyszíni kódolókkal
 
@@ -45,7 +45,7 @@ A Media Services 2.10 kiadástól kezdve, amikor létrehoz egy csatornát, megad
 > [!NOTE]
 > Ez a cikk nem élő kódolásra képes csatornák attribútumait ismerteti. További információ az élő kódolásra képes csatornák használata: [élő adatfolyam továbbítása az Azure Media Services használatával és többféle sávszélességű adatfolyamok létrehozása a](media-services-manage-live-encoder-enabled-channels.md).
 >
->Ajánlott helyszíni kódolók használatával kapcsolatos információkért lásd: [ajánlott helyszíni kódolók](media-services-recommended-encoders.md).
+>További információ a helyszíni kódolókkal történő továbbítását, ajánlott: [ajánlott helyszíni kódolók a](media-services-recommended-encoders.md).
 
 A következő ábra jelöli egy élő közvetítés munkafolyamatot, amely egy helyszíni élő kódoló használatával és többféle sávszélességű RTMP vagy darabolt MP4 (Smooth Streaming) Streamek kimenetként.
 
@@ -229,7 +229,7 @@ Az alábbiakban az egyéb csatornákkal és kapcsolódó összetevők működő 
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-topics"></a>Kapcsolódó témakörök
-[Ajánlott helyszíni kódolók](media-services-recommended-encoders.md)
+[Ajánlott a helyszíni kódolók](media-services-recommended-encoders.md)
 
 [Az Azure Media Services darabolt MP4 életét specifikáció feldolgozása](media-services-fmp4-live-ingest-overview.md)
 

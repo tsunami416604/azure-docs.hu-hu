@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: b4ed878b19b2eebe01c9888388949600e85c56e3
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 5282f2e153ec2f1304bec9aadaf8fab88961edd9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792980"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443616"
 ---
 # <a name="set-up-the-source-environment-for-vmware-to-azure-replication"></a>A forráskörnyezet beállítása VMware-ről az Azure-bA
 
@@ -41,7 +41,7 @@ A cikk feltételezi, hogy már:
 
 1. További információ a [Előfeltételek](vmware-azure-deploy-configuration-server.md#prerequisites) server központi telepítésére vonatkozóan.
 2. [Ellenőrizze a kapacitás számok](vmware-azure-deploy-configuration-server.md#capacity-planning) üzembe helyezéshez.
-3. [Töltse le](vmware-azure-deploy-configuration-server.md#download-the-template) és [importálása](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) az OVA sablon egy helyszíni VMware virtuális gép, amely futtatja a konfigurációs kiszolgáló beállításához. Az engedélyt a sablonhoz megadott értékelési engedélyhez és érvényes 180 napig. POST ennek az időtartamnak kell határidődátumával engedéllyel rendelkező a windows aktiválása.
+3. [Töltse le](vmware-azure-deploy-configuration-server.md#download-the-template) és [importálása](vmware-azure-deploy-configuration-server.md#import-the-template-in-vmware) az OVA sablon egy helyszíni VMware virtuális gép, amely futtatja a konfigurációs kiszolgáló beállításához. A sablon biztosított licencet egy próbalicencre és érvényes 180 napig. POST ennek az időtartamnak kell határidődátumával licenccel a windows aktiválása.
 4. A VMware virtuális gép bekapcsolása és [regisztrálja](vmware-azure-deploy-configuration-server.md#register-the-configuration-server-with-azure-site-recovery-services) a Recovery Services-tároló.
 
 ## <a name="azure-site-recovery-folder-exclusions-from-antivirus-program"></a>Az Azure Site Recovery mappakivételek víruskereső program
@@ -56,19 +56,19 @@ A következő mappák a víruskereső szoftver zökkenőmentes replikáció és 
 
 - C:\Program Files\Microsoft Azure Recovery Services Agent.
 - C:\Program Files\Microsoft Azure Site Recovery Provider
-- C:\Program Files\Microsoft Azure Site Recovery Konfigurációkezelő 
+- C:\Program Files\Microsoft Azure Site Recovery Configuration Manager 
 - C:\Program Files\Microsoft Azure Site Recovery hiba gyűjtemény eszköz 
  - C:\thirdparty
  - C:\Temp
  - C:\strawberry
  - C:\ProgramData\MySQL
- - C:\Program Files (x86) \MySQL
+ - C:\Program Files (x86)\MySQL
  - C:\ProgramData\ASR
  - C:\ProgramData\Microsoft Azure Site Recovery
  - C:\ProgramData\ASRLogs
  - C:\ProgramData\ASRSetupLogs
  - C:\ProgramData\LogUploadServiceLogs
- - C:\Inetpub
+ - C:\inetpub
  - ASR-kiszolgáló telepítési könyvtárában. Példa: E:\Program fájlok (x86) \Microsoft Azure Site Recovery
 
 ### <a name="if-antivirus-software-is-active-on-scale-out-process-servermaster-target"></a>Ha a víruskereső szoftver aktív, a horizontális felskálázás feldolgozása vagy a fő cél
@@ -81,7 +81,7 @@ A következő mappák a víruskereső szoftver kizárása
 4. C:\ProgramData\ASRSetupLogs
 5. C:\ProgramData\LogUploadServiceLogs
 6. C:\ProgramData\Microsoft Azure Site Recovery
-7. Az ASR terhelés elosztott terhelésű folyamat kiszolgáló telepítési mappájában, például: C:\Program Files (x86) \Microsoft Azure Site Recovery
+7. Az ASR terhelés elosztott terhelésű folyamat kiszolgáló telepítési mappájában, például: C:\Program Files (x86)\Microsoft Azure Site Recovery
 
 
 ## <a name="next-steps"></a>További lépések

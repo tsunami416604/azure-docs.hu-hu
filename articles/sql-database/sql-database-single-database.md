@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: e8af73c955305c54efc478290608e627acb431ea
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: ad164e150b22af7d5a0c91fa0a8a80156952cfd0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099326"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431115"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Mi az az Azure SQL Database egy adatbázis
 
@@ -28,7 +28,7 @@ Egyetlen adatbázis-telepítési beállítás saját erőforráskészlettel az A
 > [!NOTE]
 > Egy Azure SQL Database-ben szószedet, lásd: [SQL-adatbázis használati szószedet](sql-database-glossary-terms.md)
 
-## <a name="dynamic-scalabilty"></a>A dinamikus scalabilty
+## <a name="dynamic-scalability"></a>A dinamikus méretezhetőség
 
 Létrehozhatja első alkalmazását egy egyedülálló, kisméretű adatbázis alacsony áron alacsony ár-teljesítmény szolgáltatási szinten a havonta, majd [módosíthatja a szolgáltatásszintet](sql-database-single-database-scale.md) manuálisan vagy programon keresztül bármikor thehigher ár-teljesítmény Service szint, hogy a megoldás igényeinek. Úgy módosíthatja a teljesítményt, hogy az nem jár leállással az alkalmazás vagy az ügyfelek számára. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre, és lehetővé teszi, hogy csak azokért az erőforrásokért fizessen, amelyekre és amikor szüksége van.
 
@@ -42,7 +42,7 @@ Használja a beépített [alkalmazásteljesítmény-figyelési](sql-database-per
 
 ## <a name="availability-capabilities"></a>Rendelkezésre állás
 
-Önálló adatbázisok, rugalmas készletek és a felügyelt példányok összes adja meg a rendelkezésre állási számos characterics. További információ: [rendelkezésre állási jellemzőinek](sql-database-technical-overview.md#availability-capabilities).
+Önálló adatbázisok, rugalmas készletek és a felügyelt példányok összes adja meg a rendelkezésre állási jellemzői. További információ: [rendelkezésre állási jellemzőinek](sql-database-technical-overview.md#availability-capabilities).
 
 ## <a name="transact-sql-differences"></a>A Transact-SQL eltérései
 

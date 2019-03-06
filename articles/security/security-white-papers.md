@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2018
 ms.author: tomsh
-ms.openlocfilehash: 01688c120a8302da4903302ab8bcd2d1fa4ab351
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 3fb6e42e55119684ace8547a55297d38dbb9a26e
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113413"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57402376"
 ---
 # <a name="azure-security-white-papers"></a>Az Azure Security-tanulmányok
 | | |
@@ -42,4 +42,4 @@ ms.locfileid: "56113413"
 |[Az Azure megfelelőségi áttekintése](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)|A cikk ismerteti az Azure megfelelőségi ajánlatainak, beleértve a hivatalos minősítései, tanúsítványok, ellenőrzés, engedélyek és független, külső naplózási cégek, valamint szerződéses módosítások által előállított értékelések a letölthető tanulmány önértékelésekben, és a Microsoft által gyártott felhasználói útmutatót. <br/> Minden ajánlat állapotok leírását, mely Azure-ügyfelek által használt szolgáltatások terjed ki az értékelést, és a felhasználók a saját megfelelőségi kötelezettségeket letölthető forrásokra mutató hivatkozásokat biztosít.|
 |[Biztonságkezelés az Azure-ban](azure-security-management.md)|A távoli hozzáférés az Azure-erőforrások problémákat tárgyalja. A felhőalapú a növekvő igények szerint távelérési felügyeleti és jellegét, ezért biztonsági létfontosságú. Általános biztonsági irányelveket, ügyfél-konfiguráció, ajánlott eljárások és működési alapelvek és eljárásokat ismerteti. |
 |[Az Azure AD-adatok és biztonság](https://aka.ms/aaddatawhitepaper) | A letölthető dokumentum ismerteti az Azure Active Directory és azok egymáshoz való interakció más összetevői. Ismerteti, hogyan a különböző összetevők védelmére, biztonságos, titkosítása vagy ujjlenyomat-átvitt adatok (például az interneten) keresztül, és hogyan védett inaktív. Ismerteti az Azure AD különböző adatközpontban és a helyszíni címtárak, valamint a flow való interakció, és az Azure AD-ből. Végül az operatív eljárások felügyeletére és védelmére, a szolgáltatás az Azure AD-mérnöki csapata által használt ismerteti.|
-
+|[A jelszó nélküli hitelesítés áttekintése](https://aka.ms/pwdless-whitepaper)|Ez a dokumentum a jelszó nélküli hitelesítése Windows Hello üzleti FIDO2 biztonsági kulcsok és a Microsoft Authenticator alkalmazást a fontosabb előnye nyújt áttekintést. Ajánlott biztonsági szakemberek és CISOs érdekelt ismertetése, hogyan segíthet a Microsoft nemcsak a jelszavakat, és üzembe helyezéséhez a következő generációs hitelesítő adatok.|

@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: 509d529c7e860f4c46bc3368028a4e8d24812051
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: ed43a376dd5bb3279fd7e6aa6522980234db3c5f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242819"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441797"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure biztonsági és megfelelőségi terv – a HIPAA/HITRUST-állapotadatok és mesterséges Intelligencia
 
@@ -48,7 +48,7 @@ Ez a megoldás alkalmas szolgál az ügyfelek számára állítsa be az adott k�
 
 -   **Architekturális diagramja.** Az ábrán látható a referenciaarchitektúrát a tervezet használt, és a példát használja használatieset-forgatókönyvek.
 
--   [IaaS-bővítményt](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/README%20IaaS.md) ebben a megoldásban bemutatjuk, hogyan egy helyszíni SQL-alapú megoldás áttelepítése az Azure-ba, és a egy emelt szintű hozzáférési szintű munkaállomásokat biztonságosan kezelheti a felhő-bsed szolgáltatások és megoldások megvalósításához. 
+-   [IaaS-bővítményt](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/README%20IaaS.md) ebben a megoldásban bemutatjuk, hogyan egy helyszíni SQL-alapú megoldás áttelepítése az Azure-ba, és a egy emelt szintű hozzáférési szintű munkaállomásokat biztonságosan kezelheti a felhő alapú szolgáltatások és megoldások megvalósításához. 
 
 ## <a name="solution-components"></a>Megoldás-összetevők
 

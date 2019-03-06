@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: shlo
-ms.openlocfilehash: e5910d08cf7ea5e1da094a0313513123d7c7813c
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 6fbdee71ab1123c258a5191a78e38f51eb41cbab
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567032"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433229"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Hozzon létre egy eseményindítót, amely futtatja a folyamatot egy átfedésmentes ablak
 Ez a cikk létrehozása, indítása és monitorozása az átfedésmentes ablakos eseményindító lépéseit ismerteti. Eseményindítók és a támogatott típusok kapcsolatos általános információkért lásd: [folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md).
@@ -120,7 +120,7 @@ Használhatja a **WindowStart** és **WindowEnd** átfedésmentes ablak esemény
 Használatához a **WindowStart** és **WindowEnd** rendszer változó értékeit a folyamat meghatározásának, használja a "MyWindowStart" és "MyWindowEnd" paramétereket, ennek megfelelően.
 
 ### <a name="execution-order-of-windows-in-a-backfill-scenario"></a>Visszatöltési forgatókönyvek esetében a Windows végrehajtásának sorrendje
-Ha több windows regisztrálásához végrehajtási (különösen a visszatöltési forgatókönyvek esetében), a Windows végrehajtási sorrendje determinisztikus, a legrégebbitől a legújabbig időközönként. Jelenleg ez a viselkedés nem módosítható.
+Ha több windows regisztrálásához végrehajtási (különösen a visszatöltési forgatókönyvek esetében), a Windows végrehajtási sorrendje determinisztikus, a legrégebbitől a legújabbig időközönként. Ez a viselkedés jelenleg nem módosítható.
 
 ### <a name="existing-triggerresource-elements"></a>Meglévő TriggerResource elemek
 A következő szempontokat alkalmazni a meglévő **TriggerResource** elemek:
@@ -129,6 +129,9 @@ A következő szempontokat alkalmazni a meglévő **TriggerResource** elemek:
 * Ha az érték a **endTime** elem eseményindító változásokat (hozzáadott vagy frissített), a windows állapotának feldolgozása már *nem* alaphelyzetbe állítása. Az eseményindító figyelembe veszi az új **endTime** értéket. Ha az új **endTime** értéke előtt a windows-már tevékenységében, a trigger leáll. Ellenkező esetben az eseményindító leáll, ha az új **endTime** értéket észlelt.
 
 ## <a name="sample-for-azure-powershell"></a>Az Azure PowerShell-minta
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Ez a szakasz bemutatja, hogyan hozhat létre, indítsa el, és a egy eseményindító figyelni az Azure PowerShell használatával.
 
 1. Hozzon létre egy JSON-fájlt **MyTrigger.json** a C:\ADFv2QuickStartPSH\ mappában az alábbi tartalommal:
@@ -167,34 +170,34 @@ Ez a szakasz bemutatja, hogyan hozhat létre, indítsa el, és a egy eseményind
     }
     ```
 
-2. Az eseményindító létrehozása a **Set-AzureRmDataFactoryV2Trigger** parancsmagot:
+2. Az eseményindító létrehozása a **Set-AzDataFactoryV2Trigger** parancsmagot:
 
     ```powershell
-    Set-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
+    Set-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
     ```
     
-3. Győződjön meg arról, hogy az eseményindító állapotának **leállítva** használatával a **Get-AzureRmDataFactoryV2Trigger** parancsmagot:
+3. Győződjön meg arról, hogy az eseményindító állapotának **leállítva** használatával a **Get-AzDataFactoryV2Trigger** parancsmagot:
 
     ```powershell
-    Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
+    Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-4. Indítsa el az eseményindítót a használatával a **Start-AzureRmDataFactoryV2Trigger** parancsmagot:
+4. Indítsa el az eseményindítót a használatával a **Start-AzDataFactoryV2Trigger** parancsmagot:
 
     ```powershell
-    Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
+    Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-5. Győződjön meg arról, hogy az eseményindító állapotának **elindítva** használatával a **Get-AzureRmDataFactoryV2Trigger** parancsmagot:
+5. Győződjön meg arról, hogy az eseményindító állapotának **elindítva** használatával a **Get-AzDataFactoryV2Trigger** parancsmagot:
 
     ```powershell
-    Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
+    Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-6. Az eseményindító fut. az Azure PowerShell használatával Get a **Get-AzureRmDataFactoryV2TriggerRun** parancsmagot. Információt szeretne kapni az eseményindító-futtatások, rendszeres időközönként hajtsa végre a következő parancsot. Frissítés a **TriggerRunStartedAfter** és **TriggerRunStartedBefore** értékeit, hogy megfeleljenek az eseményindító definíciójában szereplő értékeket:
+6. Az eseményindító fut. az Azure PowerShell használatával Get a **Get-AzDataFactoryV2TriggerRun** parancsmagot. Információt szeretne kapni az eseményindító-futtatások, rendszeres időközönként hajtsa végre a következő parancsot. Frissítés a **TriggerRunStartedAfter** és **TriggerRunStartedBefore** értékeit, hogy megfeleljenek az eseményindító definíciójában szereplő értékeket:
 
     ```powershell
-    Get-AzureRmDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
+    Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
     ```
     
 Eseményindító-futtatások és a folyamat figyelése fut, az Azure Portalon, tekintse meg [folyamatfuttatások monitorozása](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).

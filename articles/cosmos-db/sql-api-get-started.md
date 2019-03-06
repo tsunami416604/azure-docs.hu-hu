@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/16/2017
 ms.author: sngun
-ms.openlocfilehash: d73638e0c02af5dc07e80084dd2ce5a7e090ecd2
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4b04a1a5805ff11ad51cec53cdcccf2ea34f1c65
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54043447"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443249"
 ---
 # <a name="azure-cosmos-db-sql-api-getting-started-tutorial"></a>Az Azure Cosmos DB: Az SQL API kezdeti lépéseket ismertető oktatóanyag
 
@@ -62,14 +62,14 @@ Hozzunk létre egy Azure Cosmos DB-fiókot. Ha van már olyan fiókja, amelyet h
 1. Nyissa meg a **Visual Studio 2017-et** a számítógépén.
 2. A **Fájl** menüben válassza az **Új**, majd a **Projekt** elemet.
 3. Az **Új projekt** párbeszédpanelen válassza a **Sablonok** / **Visual C#** / **Konzolalkalmazás** elemet, nevezze el a projektet, majd kattintson az **OK** gombra.
-   ![Képernyőfelvétel az Új projekt ablakról](./media/sql-api-get-started/nosql-tutorial-new-project-2.png)
+   ![Képernyőfelvétel az új projekt ablakról](./media/sql-api-get-started/nosql-tutorial-new-project-2.png)
 4. A **Megoldáskezelőben** kattintson a jobb gombbal az új konzolalkalmazásra, amely a Visual Studio megoldás alatt található, majd kattintson a **NuGet-csomagok kezelése...** lehetőségre.
     
-    ![A Projekt jobb gombos kattintással elérhető menüjének képernyőfelvétele](./media/sql-api-get-started/nosql-tutorial-manage-nuget-pacakges.png)
+    ![A projekt jobb gombos kattintással elérhető menüjének képernyőképe](./media/sql-api-get-started/nosql-tutorial-manage-nuget-pacakges.png)
 5. A **NuGet** lapon kattintson a **Browse** (Tallózás) elemre, majd írja be az **azure documentdb** kifejezést a keresőmezőbe.
 6. A találatok között keresse meg a **Microsoft.Azure.DocumentDB** elemet, majd kattintson a **Telepítés** lehetőségre.
    Az Azure Cosmos DB SQL API ügyfélkódtárának csomagazonosítója a következő: [Microsoft Azure Cosmos DB Client Library](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/).
-   ![Képernyőkép a NuGet menüről az Azure Cosmos DB ügyféloldali SDK megkereséséhez](./media/sql-api-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
+   ![Képernyőfelvétel a NuGet menüről az Azure Cosmos DB ügyféloldali SDK megkereséséhez menü](./media/sql-api-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
 
     Ha a megoldás módosításainak áttekintéséről szóló üzenetet kap, kattintson az **OK** gombra. Ha a licenc elfogadásáról szóló üzenetet kap, kattintson az **Elfogadom** gombra.
 
@@ -108,7 +108,7 @@ Az Azure Portalon lépjen az Azure Cosmos DB-fiókra, majd kattintson a **Kulcso
 
 Másolja ki az URI-t a portálról, és illessze be a program.cs fájl `<your endpoint URL>` elemébe. Ezután másolja ki a PRIMARY KEY kulcsot a portálról, és illessze be a `<your primary key>` elembe.
 
-![Képernyőkép a NoSQL-oktatóanyagban a C# konzolalkalmazás létrehozásához használt Azure Portalról. Megjelenít egy Azure Cosmos DB-fiókot, amelyen az ACTIVE központ, az Azure Cosmos DB-fiók oldalán lévő KEYS gomb, valamint a Kulcsok oldalon lévő URI, PRIMARY KEY és SECONDARY KEY értékek vannak kiemelve][keys]
+![Képernyőfelvétel a NoSQL-oktatóanyagban a létrehozásához használt Azure Portalról egy C# Konzolalkalmazás. Megjelenít egy Azure Cosmos DB-fiókot, amelyen az ACTIVE központ, az Azure Cosmos DB-fiók oldalán lévő KEYS gomb, valamint a Kulcsok oldalon lévő URI, PRIMARY KEY és SECONDARY KEY értékek vannak kiemelve][keys]
 
 Ezt követően létrehozunk egy új **DocumentClient** példányt az alkalmazás elindításához.
 

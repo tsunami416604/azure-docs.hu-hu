@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 04/09/2018
 ms.author: makromer
-ms.openlocfilehash: f898b21e84cc57327991c97d2694e9e44e608417
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 976724a40b604bcdc3c83ef1b3d2e95268f75304
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014896"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432702"
 ---
 # <a name="compare-azure-data-factory-with-data-factory-version-1"></a>Az Azure Data Factory és a Data Factory 1. verziójának összehasonlítása
 Ez a cikk a Data Factoryt hasonlítja össze a Data Factory 1. verziójával. A Data Factory megismeréséhez tekintse meg a [Data Factoryt bemutató](introduction.md) cikket. A Data Factory 1. verziójának megismeréséhez olvassa el az [Azure Data Factory használatának első lépéseit](v1/data-factory-introduction.md) ismertető cikket. 
@@ -116,13 +116,13 @@ További információ: [Az egyéni tevékenységek közötti különbségek a Da
 ## <a name="sdks"></a>SDK-k
  a Data Factory aktuális verziója az SDK-k szélesebb választékát biztosítja, amelyeket folyamatok létrehozásához, kezeléséhez és monitorozásához használhat.
 
-- **.NET SDK-VAL**: A .NET SDK frissült a jelenlegi verzióban.
+- **.NET SDK**: A .NET SDK frissült a jelenlegi verzióban.
 
-- **PowerShell**: A PowerShell-parancsmagok frissültek a jelenlegi verzióban. Az aktuális verzió esetében a parancsmagjainak **DataFactoryV2** a nevében, például: Get-AzureRmDataFactoryV2. 
+- **PowerShell**: A PowerShell-parancsmagok frissültek a jelenlegi verzióban. Az aktuális verzió esetében a parancsmagjainak **DataFactoryV2** a nevében, például: Get-AzDataFactoryV2. 
 
 - **Python SDK**: Ez az SDK a jelenlegi verzióban jelent meg.
 
-- **REST API-VAL**: A REST API frissült a jelenlegi verzióban. 
+- **REST API**: A REST API frissült a jelenlegi verzióban. 
 
 Az aktuális verzióban frissített SDK-k visszamenőlegesen nem kompatibilisek a V1 verzió ügyfeleivel. 
 
@@ -146,4 +146,4 @@ az aktuális verzióban a data factorykat az [Azure Monitor](monitor-using-azure
 
 
 ## <a name="next-steps"></a>További lépések
-Útmutató: adat-előállító létrehozása a következő gyors útmutatók részletes utasításait követve: [PowerShell](quickstart-create-data-factory-powershell.md), [.NET](quickstart-create-data-factory-dot-net.md), [Python](quickstart-create-data-factory-python.md), [REST API-val](quickstart-create-data-factory-rest-api.md). 
+Útmutató: adat-előállító létrehozása a következő gyors útmutatók részletes utasításait követve: [PowerShell](quickstart-create-data-factory-powershell.md), [.NET](quickstart-create-data-factory-dot-net.md), [Python](quickstart-create-data-factory-python.md), [REST API](quickstart-create-data-factory-rest-api.md). 

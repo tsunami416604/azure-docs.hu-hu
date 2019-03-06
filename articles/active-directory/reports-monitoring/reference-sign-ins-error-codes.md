@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7f3c50a272ef5cc0d4980cb4a623ac043d764dd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0f1ce786b748fedd1ec4c722b28bc11c28672c2f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190908"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443402"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Bejelentkezési tevékenységre vonatkozó jelentések hibakódjai 
 
@@ -79,7 +79,7 @@ Szoftveresen is segítségével végezheti el a bejelentkezési adatokat a [repo
 |50027|A JWT-jogkivonat az alábbi okok miatt érvénytelen:<ul><li>nem tartalmazza az egyszeri kulcs jogcímét vagy a tárgy jogcímét</li><li>tárgyazonosító eltérése</li><li>dupla jogcím az idToken-jogcímekben</li><li>nem várt kiállító</li><li>nem várt célközönség</li><li>nem az érvényes időtartományon belül van </li><li>a jogkivonat formátuma nem megfelelő</li><li>A kiállító külső azonosító jogkivonata nem felelt meg az aláírás-ellenőrzésen.</li></ul>Lépjen kapcsolatba az alkalmazás tulajdonosával|
 |50029|Érvénytelen URI – a tartománynév érvénytelen karaktert tartalmaz. Lépjen kapcsolatba a bérlői rendszergazda.|
 |50034|A felhasználó nem létezik a címtárban. A bérlői rendszergazdától.|
-|50042|Salt érték szükséges a névből hiányzó páros azonosító létrehozásához. Lépjen kapcsolatba a bérlői rendszergazda.|
+|50042|A védőérték elő az páros azonosítója nincs megadva elvileg. Lépjen kapcsolatba a bérlői rendszergazda.|
 |50048|A tárgy nem egyezik meg a kiállító jogcímmel az ügyfél helyességi feltételében. Lépjen kapcsolatba a bérlői rendszergazda.|
 |50050|A kérelem nem megfelelő formátumú. Lépjen kapcsolatba az alkalmazás tulajdonosával.|
 |50053|Fiók zárolva van, mert a felhasználó próbált meg bejelentkezni túl sokszor helytelen felhasználói Azonosítóval vagy jelszóval.|
@@ -129,7 +129,7 @@ Szoftveresen is segítségével végezheti el a bejelentkezési adatokat a [repo
 |50180|Integrált Windows-hitelesítés szükséges. Engedélyezze a Seamless SSO-t a bérlőn.|
 |51001|Tartományemlékeztető nem szerepel a helyszíni biztonsági azonosítóval – a helyszíni egyszerű Felhasználónévvel.|
 |51004|A felhasználói fiók nem létezik a címtárban.|
-|51006|Integrált Windows-hitelesítés szükséges. A felhasználó egy olyan munkamenet-jogkivonat használatával jelentkezett be, amely nem rendelkezik WIA-jogcímmel. A felhasználónak újra be kell jelentkeznie.|
+|51006|Integrált Windows-hitelesítés szükséges. A felhasználó jelentkezett be, hogy hiányzik a jogcím-n keresztül munkamenet-jogkivonat használatával. A felhasználónak újra be kell jelentkeznie.|
 |52004|A felhasználó nem járult hozzá a LinkedIn-erőforrásokhoz való hozzáféréshez. |
 |53000|A feltételes hozzáférési szabályzathoz megfelelő eszköz szükséges, és az eszköz nem megfelelő. A felhasználónak regisztrálnia kell az eszközét az Intune-ban például egy jóváhagyott MDM-szolgáltató rendelkezik.|
 |53001|A feltételes hozzáférési szabályzathoz tartományhoz csatlakoztatott eszköz szükséges, és az eszköz nincs tartományhoz csatlakoztatva. Rendelkezik felhasználói használata egy tartományhoz csatlakoztatott eszköz.|
@@ -138,7 +138,7 @@ Szoftveresen is segítségével végezheti el a bejelentkezési adatokat a [repo
 |53004|A tartalom elérése előtt a felhasználónak el kell végeznie a többtényezős hitelesítés regisztrációs folyamatát. A felhasználónak regisztrálnia kell többtényezős hitelesítésre.|
 |65001|Az X alkalmazás nem rendelkezik engedéllyel az Y alkalmazás eléréséhez, vagy az engedély vissza lett vonva. Vagy: a felhasználó vagy a rendszergazda nem egyezett bele az alkalmazás X azonosítóval való használatába. Küldjön egy interaktív engedélyezési kérést ehhez a felhasználóhoz és erőforráshoz. Vagy a felhasználó vagy a rendszergazda nem egyezett bele az alkalmazás segítségével azonosító x küldjön egy engedélyezési kérést a bérlő rendszergazdájának alkalmazás nevében: Y erőforrás: Z.|
 |65004|A felhasználó elutasította az alkalmazáshoz való hozzáférés jóváhagyását. Kérje meg a felhasználót, hogy jelentkezzen be újra, és hagyja jóvá az alkalmazást|
-|65005|Az alkalmazás által igényelt erőforrás-hozzáférési lista nem tartalmaz az erőforrás által felderíthető alkalmazásokat, vagy az ügyfélalkalmazás olyan erőforrás hozzáférését kérte, amely nincs meghatározva a szükséges erőforrás-hozzáférési listán, vagy a Graph szolgáltatás rossz kérést adott vissza, vagy az erőforrás nem található. Ha az alkalmazás támogatja az SAML-t, akkor előfordulhat, hogy nem a megfelelő azonosítóval (entitással) konfigurálta az alkalmazást. Próbálja ki az SAML-lel kapcsolatos megoldásokat, amelyek a következő hivatkozáson találhatók: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list)|
+|65005|Az alkalmazás által igényelt erőforrás-hozzáférési lista nem tartalmaz az erőforrás által felderíthető alkalmazásokat, vagy az ügyfélalkalmazás olyan erőforrás hozzáférését kérte, amely nincs meghatározva a szükséges erőforrás-hozzáférési listán, vagy a Graph szolgáltatás rossz kérést adott vissza, vagy az erőforrás nem található. Ha az alkalmazás támogatja az SAML-t, akkor előfordulhat, hogy nem a megfelelő azonosítóval (entitással) konfigurálta az alkalmazást. Próbálja ki az SAML-lel kapcsolatos megoldásokat, amelyek a következő hivatkozáson találhatók: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)|
 |70000|A hozzáférés érvénytelen az alábbi okok miatt:<ul><li>A szükséges SAML 2.0 helyességi feltétel érvénytelen tárgyjóváhagyási metódussal rendelkezik</li><li>Az alkalmazás OnBehalfOf folyamata nem támogatott a V2-ben</li><li>Elsődleges frissítési jogkivonat nincs aláírva a munkamenetkulccsal</li><li>Érvénytelen külső frissítési jogkivonat</li><li>A megadott hozzáférés egy másik bérlőhöz lett beszerezve.</li></ul>|
 |70001|Az X nevű alkalmazás nem található az Y nevű bérlőben. Ez akkor történhet, ha az X azonosítójú alkalmazást nem a bérlő rendszergazdája telepítette, vagy nem fogadta el egy felhasználó sem a bérlőben. Előfordulhat, hogy van konfigurálva az azonosító értékét az alkalmazás vagy rossz bérlőhöz küldte a a hitelesítési kérést.|
 |70002|Az alkalmazás érvénytelen ügyfél-hitelesítő adatokat adott vissza. Lépjen kapcsolatba az alkalmazás tulajdonosával.|

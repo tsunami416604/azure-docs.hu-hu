@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4d770e091c8786972e3f15a03fc5af9ec9445002
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: da9aec6c449802ee9296ea4e60efe47650176212
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327799"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433348"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>SAP MaxDB, liveCache és a webtartalom-kiszolgáló üzembe helyezés az Azure virtuális gépekhez
 
@@ -440,7 +440,7 @@ Ismerje meg a támogatott Windows-verziót, SAP-kiszolgálóhoz az Azure-ban, l�
 Erősen ajánlott a Microsoft Windows Server legújabb verzióját használja.
 
 ### <a name="sap-content-server-configuration-guidelines-for-sap-installations-in-azure-vms"></a>SAP webtartalom-kiszolgáló beállítási útmutatója az Azure-beli virtuális gépeken SAP-telepítések
-#### <a name="storage-configuration-foir-content-server-in-azure"></a>Tárolási konfiguráció foir webtartalom-kiszolgáló az Azure-ban
+#### <a name="storage-configuration-for-content-server-in-azure"></a>Tárolási konfiguráció-kiszolgálóhoz az Azure-ban
 Ha konfigurálja az SAP az SAP MaxDB adatbázis fájlok tárolására kiszolgáló, az összes Azure storage ajánlott eljárások javaslat az SAP MaxDB ebben a dokumentumban említett is érvényesek a webtartalom-kiszolgáló az SAP-forgatókönyvhöz. 
 
 Ha konfigurálja az SAP webtartalom-kiszolgáló tárolja a fájlokat a fájlrendszer, dedikált logikai meghajtó használata ajánlott. A Windows tárolóhelyek használata lehetővé teszi, hogy is növelheti a logikai lemez méretét és IOPS-teljesítmény, leírtak szerint [SAP számítási feladatok Azure virtuális gépek DBMS üzembe szempontjai](dbms_guide_general.md). 

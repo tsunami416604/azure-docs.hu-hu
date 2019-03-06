@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 60790f0f31915a50829df09d039a4f74860a47d7
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: d8f2ae64e2f8e694de5a7cf5aa9049e63998dca0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076434"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452657"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Az Azure DevTest Labs-képletek kezelése
 
@@ -69,7 +69,7 @@ A következő lépések végigvezetik az egyéni rendszerkép, Piactéri rendsze
     - **IP-címének konfigurációja** – adja meg, ha a nyilvános, magán vagy megosztott IP-címeket. További információ a közös IP-címek: [Understand megosztott IP-címek az Azure DevTest Labs szolgáltatásban](./devtest-lab-shared-ip.md).
     - **Lejárati dátum és idő** – adja meg a lejárati dátum és idő a virtuális gép számára, hogy a virtuális Gépet a rendszer automatikusan törli. 
     - **Ez a gép igényelhető legyen** – így egy gép "igényelhető" azt jelenti, hogy a rendszer nem hozzárendel tulajdonjogát a létrehozása idején. Ehelyett labor felhasználók tudják saját tulajdonba vétel ("jogcím") a gép a labor oldalon.     
-    - **Igényelhető példányok** – adja meg, hogy hány igényelhető instacnes szeretne létrehozni. 
+    - **Igényelhető példányok** – adja meg, hány igényelhető példányok létrehozása. 
 8. Válassza ki **küldés** a képlet létrehozása.
 
 9. Ha a képlet létrehozása után jelenik meg a listában a **képletek** lapot.

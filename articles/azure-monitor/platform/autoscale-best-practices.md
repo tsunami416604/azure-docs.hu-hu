@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 85a326c97ecf8476bdd802a718e082d0e5c7a89c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 3700fb90318da3787830f9b6c202436c0e45e2fe
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467357"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454102"
 ---
 # <a name="best-practices-for-autoscale"></a>Ajánlott eljárások az automatikus méretezéshez
 Az Azure Monitor automatikus skálázása csak érvényes [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [App Service - webalkalmazások](https://azure.microsoft.com/services/app-service/web/), és [APIManagement-szolgáltatások](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
@@ -38,7 +38,7 @@ Ha egy beállítás, amely rendelkezik a minimális = 2, maximális = 2, és a j
 Ha manuálisan frissíti a példányszám felett vagy alatt a maximális értéket, az automatikus skálázási motor automatikusan alkalmazkodik vissza (ha alább) minimális vagy maximális (Ha a fent). Például állítsa be a 3. és 6 közötti tartományba esik. Ha egy futó példány, az automatikus skálázási motor a következő futtatáskor három példányban méretezhető. Hasonlóan, ha manuálisan állítsa be a méretezési csoport-példányokhoz nyolc, a következő futtatási maximumára skálázza azt vissza a hat példány a következő futásakor.  Manuális skálázás csak átmenetileg létezik, kivéve, ha alaphelyzetbe állítja az automatikus méretezési szabályokat is.
 
 ### <a name="always-use-a-scale-out-and-scale-in-rule-combination-that-performs-an-increase-and-decrease"></a>Mindig használja a horizontális felskálázást és a horizontális leskálázási szabály, amely végrehajtja az növelése és csökkentése
-Csak egy részét a kombinációt használja, ha az automatikus méretezés csak lépnek művelet (horizontális felskálázás, vagy a) egy irányban mindaddig, amíg eléri a maximális, vagy a minimális távolság megjelenítése megszámolja a profilban megadott. Ez nem optimális, ideális esetben azt szeretné, hogy az erőforrást az vertikális felskálázás a rendelkezésre állás biztosítása érdekében magas kihasználtságú időszakokban. Ehhez hasonlóan időnként, azt szeretné, hogy az erőforrás használatával csökkentheti az alacsony kihasználtságú, így is kiderülhet költséget takaríthat meg.
+Csak egy részét a kombinációt használja, ha az automatikus méretezés csak lépnek művelet (horizontális felskálázás, vagy a) egy irányban mindaddig, amíg eléri a maximális, vagy a példányok minimális száma a profilban megadott. Ez nem optimális, ideális esetben azt szeretné, hogy az erőforrást az vertikális felskálázás a rendelkezésre állás biztosítása érdekében magas kihasználtságú időszakokban. Ehhez hasonlóan időnként, azt szeretné, hogy az erőforrás használatával csökkentheti az alacsony kihasználtságú, így is kiderülhet költséget takaríthat meg.
 
 ### <a name="choose-the-appropriate-statistic-for-your-diagnostics-metric"></a>Válassza ki a megfelelő statisztika a diagnosztikai metrika
 Diagnosztikai metrikák, közül választhat *átlagos*, *minimális*, *maximális* és *teljes* mint metrika szerint méretezhető. A leggyakrabban használt érték *átlagos*.

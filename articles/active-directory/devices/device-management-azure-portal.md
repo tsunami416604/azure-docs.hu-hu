@@ -17,12 +17,12 @@ ms.date: 10/26/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05e245bb55747b9415c16386cff48e5ac758f529
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fd57b753a4e59f2fb9590f081345d7af0de9124d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177886"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451469"
 ---
 # <a name="how-to-manage-devices-using-the-azure-portal"></a>Eszközkezelés az Azure portal használatával
 
@@ -152,7 +152,7 @@ Engedélyezi / letiltja az eszközt, két lehetősége van:
 **Megjegyzés:**
 
 - Engedélyezi / letiltja az eszköz Azure AD-ben globális rendszergazdának lennie kell. 
-- Eszköz letiltása megakadályozza, hogy egy eszközt az Azure AD-alhálózatra megakadályozza, hogy az eszköz regisztrációját az Azure ad-ben vannak eszköz CA által védett erőforrások eléréséhez, vagy a WH4B hitelesítő adatok használatával sikeres hitelesítése. 
+- Eszköz letiltása megakadályozza, hogy egy eszközt az Azure AD, meggátolva az eszköz regisztrációját az Azure ad-ben vannak eszköz CA által védett erőforrások eléréséhez, vagy a WH4B hitelesítő adatok használatával sikeres hitelesítése. 
 
 
 

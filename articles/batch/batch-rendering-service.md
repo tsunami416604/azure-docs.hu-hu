@@ -6,18 +6,18 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: bc8c96345aeb1886696326edd230666ac8b6c41d
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: dbe3fe59fd2674cf3475fc5b589a2c938e706ab2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542210"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441338"
 ---
 # <a name="rendering-using-azure"></a>Renderelés az Azure használatával
 
 Renderelési véve a 3D-modellek és átalakítás őket, 2D lemezképek. 3D jelenet fájlok készült alkalmazások például az Autodesk 3ds Max, az Autodesk Maya és a Blender.  Renderelési alkalmazások, például az Autodesk Maya, az Autodesk Arnold, a Chaos Group V-Ray és a Blender ciklusok 2D lemezképek előállításához.  Néha egyetlen lemezképek alapján a jelenetfájlok hoztak létre. Azonban szokás modellezheti és jelennek meg több lemezképet, és majd ötvözze őket egy animációt.
 
-A renderelési számítási erősen használatos különleges hatások (VFX) médiában és iparág. Renderelési számos egyéb, például a hirdetések, kereskedelmi, olaj és gáz és gyártási industires is használatban van.
+A renderelési számítási erősen használatos különleges hatások (VFX) médiában és iparág. Renderelési számos más, például a hirdetések, kereskedelmi, olaj és gáz és gyártási iparágban is szolgál.
 
 A folyamat leképezésének a nagy számítási igényű; számos keretek/rendszerkép létrehozására lehet, és minden egyes képe jelennek meg több órát is igénybe vehet.  Renderelés, amelyek kihasználhatják az Azure és az Azure Batch számos rendereket párhuzamosan futó tökéletes kötegelt feldolgozási számítási feladatok ezért.
 
@@ -89,8 +89,8 @@ Többféleképpen is az Azure Batch, amelyek mindegyike is vonatkoznak az Azure 
   * Beépülő modulok érhetők el, amelyek engedélyezik a Batch rendering közvetlenül az ügyfél szakterület való használatra, és modellező alkalmazásokban. A beépülő modulok főként hívja meg a Batch Explorer alkalmazás a jelenlegi 3D modell környezeti információkat.
   * A következő modulok érhetők el:
     * [A Maya alkalmazáshoz készült Azure Batch](https://github.com/Azure/azure-batch-maya)
-    * [3DS Max](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/3ds-max)
-    * [A Blender](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
+    * [3ds Max](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/3ds-max)
+    * [Blender](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
 
 ## <a name="getting-started-with-azure-batch-rendering"></a>Ismerkedés az Azure Batch rendering
 

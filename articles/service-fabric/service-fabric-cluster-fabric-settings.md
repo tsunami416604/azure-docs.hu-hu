@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/11/2018
 ms.author: aljo
-ms.openlocfilehash: c8cfa0174d3e3300bdc3cfbc68ca416d9b736300
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: cefdc8819162a19a9b73b99a38f7028aa5fbacac
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674905"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438142"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Service Fabric-fürt beállítások testre szabása
 Ez a cikk ismerteti a Service Fabric-fürtöt, amely testre szabható a különböző fabric beállításait. A fürtök az Azure-ban üzemeltetett, testre szabhatja a beállításokat a [az Azure portal](https://portal.azure.com) vagy Azure Resource Manager-sablon használatával. További információkért lásd: [egy Azure-fürtön konfigurációjának frissítése](service-fabric-cluster-config-upgrade-azure.md). Az önálló fürtök esetén, testre szabható beállítások frissítése a *ClusterConfig.json* fájl- és a egy konfigurálási frissítse a fürtön. További információkért lásd: [önálló fürt konfigurációjának frissítése](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -374,7 +374,7 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |SharedLogId |sztring, alapértelmezett érték a "" |Statikus|Közös naplózási tároló egyedi GUID azonosítója. Használatát "" Ha az alapértelmezett elérési út a fabric adatgyökere alatt. |
 |SharedLogPath |sztring, alapértelmezett érték a "" |Statikus|Helyre helyezi el a megosztott naplózási tároló elérési útja és fájlneve neve. Használatát "" az alapértelmezett elérési út alapján a fabric adatgyökere használatával. |
 |SharedLogSizeInMB |Int, az alapértelmezett érték 8192 |Statikus|Az a közös naplózási tároló lefoglalása MB száma. |
-|SharedLogThrottleLimitInPercentUsed|int, alapértelmezett érték 0 | Statikus | A megosztott napló végrehajtását fogja szabályozás használati aránya. Értékének 0 és 100 között kell lennie. A 0 érték azt jelenti, az alapértelmezett százalékos értéket használja. A 100 érték azt jelenti, hogy egyáltalán nincs szabályozás. 1 és 99 közötti értéket adja meg a napló használati fenti melyik kerül sor szabályozásra; aránya például ha a megosztott napló 10 GB-os és az érték érték 90 majd throttleing történik után 9GB használatban van. Az alapértelmezett érték használata javasolt.|
+|SharedLogThrottleLimitInPercentUsed|int, alapértelmezett érték 0 | Statikus | A megosztott napló végrehajtását fogja szabályozás használati aránya. Értékének 0 és 100 között kell lennie. A 0 érték azt jelenti, az alapértelmezett százalékos értéket használja. A 100 érték azt jelenti, hogy egyáltalán nincs szabályozás. 1 és 99 közötti értéket adja meg a napló használati fenti melyik kerül sor szabályozásra; aránya például ha a megosztott napló 10 GB-os és az érték érték 90 akkor kerül sor szabályozásra után 9GB használatban van. Az alapértelmezett érték használata javasolt.|
 |WriteBufferMemoryPoolMaximumInKB | int, alapértelmezett érték 0 |Dinamikus|A száma, hogy az írási memória pufferkészletben akár nő KB. A 0 korlátlan jelzi. |
 |WriteBufferMemoryPoolMinimumInKB |Int, az alapértelmezett érték 8388608 |Dinamikus|Kezdetben a írási pufferkészlet-memória lefoglalása KB száma. Használja a 0 korlátlan alapértelmezett jelzi az alábbi SharedLogSizeInMB összhangban kell lennie. |
 
@@ -671,7 +671,7 @@ A következő fabric testreszabható, beállítások szakasz szerint vannak rend
 |InvokeInfrastructureCommand |sztring, alapértelmezett az "Admin" |Dinamikus| A feladat-kezelési parancsok infrastruktúra biztonsági beállításainak konfigurálása. |
 |InvokeInfrastructureQuery |sztring, alapértelmezett érték a "rendszergazda\|\|felhasználói" | Dinamikus|Biztonsági konfigurációs feladatok lekérdezéséhez. |
 |Lista |sztring, alapértelmezett érték a "rendszergazda\|\|felhasználói" | Dinamikus|Biztonsági konfiguráció lemezképhez ügyfél file list művelet tárolja. |
-|MoveNextFabricUpgradeDomain |sztring, alapértelmezett az "Admin" |Dinamikus| Biztonsági beállítások egy frissítési tartományt explicit a fürtfrissítések folytatásához. |
+|MoveNextFabricUpgradeDomain |sztring, alapértelmezett az "Admin" |Dinamikus| Biztonsági konfiguráció folytatásához a fürtfrissítések explicit frissítési tartománnyal. |
 |MoveNextUpgradeDomain |sztring, alapértelmezett az "Admin" |Dinamikus| Biztonsági konfiguráció folytatásához alkalmazásfrissítések explicit frissítési tartománnyal. |
 |MoveReplicaControl |sztring, alapértelmezett az "Admin" | Dinamikus|Helyezze át a replikát. |
 |NameExists |sztring, alapértelmezett érték a "rendszergazda\|\|felhasználói" | Dinamikus|Biztonsági konfiguráció az elnevezési URI meglétének ellenőrzése. |

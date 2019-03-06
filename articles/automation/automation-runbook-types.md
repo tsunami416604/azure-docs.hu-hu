@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/11/2018
+ms.date: 03/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 940a5839fe2c2eea11d9570d3dca48cd514e21af
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 7a3990366814beda83852fc7c07c896445388c23
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417244"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454901"
 ---
 # <a name="azure-automation-runbook-types"></a>Az Azure Automation forgatókönyveinek típusai
 
@@ -22,10 +22,10 @@ Az Azure Automation az alábbi táblázatban számos különböző típusú, ame
 
 | Typo | Leírás |
 |:--- |:--- |
-| [Grafikus](#graphical-runbooks) |A Windows PowerShell és a létrehozott és szerkesztett teljes egészében az Azure Portalon grafikus szerkesztő alapján. |
-| [Grafikus PowerShell-munkafolyamat](#graphical-runbooks) |Windows PowerShell-munkafolyamaton alapuló és a létrehozott és szerkesztésük teljes egészében az Azure Portalon a grafikus szerkesztőben. |
+| [Grafikus](#graphical-runbooks)|A Windows PowerShell és a létrehozott és szerkesztett teljes egészében az Azure Portalon grafikus szerkesztő alapján. |
+| [Grafikus PowerShell-munkafolyamat](#graphical-runbooks)|Windows PowerShell-munkafolyamaton alapuló és a létrehozott és szerkesztésük teljes egészében az Azure Portalon a grafikus szerkesztőben. |
 | [PowerShell](#powershell-runbooks) |Szöveges forgatókönyv Windows PowerShell-szkript alapján. |
-| [PowerShell-munkafolyamat](#powershell-workflow-runbooks) |Windows PowerShell-munkafolyamaton alapuló szöveges forgatókönyv. |
+| [PowerShell-munkafolyamat](#powershell-workflow-runbooks)|Windows PowerShell-munkafolyamaton alapuló szöveges forgatókönyv. |
 | [Python](#python-runbooks) |Python-alapú szöveges forgatókönyv. |
 
 ## <a name="graphical-runbooks"></a>Grafikus runbookokban
@@ -45,6 +45,7 @@ Az Azure Automation az alábbi táblázatban számos különböző típusú, ame
 * Az Azure Portalon kívül a runbook nem szerkeszthető.
 * PowerShell-kódot kell végrehajtani a összetett logikát tartalmazó kóddal végzett tevékenység lehet szükség.
 * Nem lehet megtekintése, vagy közvetlenül szerkesztheti a grafikus munkafolyamat által létrehozott PowerShell-kódot. A kódot hoz létre, a kód tevékenységeket tekintheti meg.
+* Nem lehet futtatunk egy hibrid Runbook-feldolgozója Linuxra
 
 ## <a name="powershell-runbooks"></a>PowerShell-forgatókönyvek
 
@@ -54,6 +55,7 @@ PowerShell-forgatókönyvek Windows Powershellen alapulnak.  Közvetlenül szerk
 
 * PowerShell-kóddal további vesződni PowerShell-munkafolyamat minden összetett logikát alkalmazzák.
 * Runbook, mint a PowerShell-munkafolyamati runbookok gyorsabban indul, mivel nincs szüksége futtatása előtt kell összeállítani.
+* Az Azure-ban vagy a Linux-és Windows hibrid Runbook-feldolgozók kell futott
 
 ### <a name="limitations"></a>Korlátozások
 
@@ -88,6 +90,7 @@ PowerShell-munkafolyamati runbookok alapuló szöveges runbookok [Windows PowerS
 * A Runbook például a PowerShell-munkafolyamat további összetettsége kell foglalkozniuk [objektumok deszerializálni](automation-powershell-workflow.md#code-changes).
 * A Runbook elindításához, mint a PowerShell-forgatókönyvek, mivel fordítható futtatása előtt kell hosszabb időt vesz igénybe.
 * PowerShell-forgatókönyvek csak lehet része gyermek runbookok a Start-AzureAutomationRunbook parancsmagot, amely létrehoz egy új feladatot használatával.
+* Nem lehet futtatunk egy hibrid Runbook-feldolgozója Linuxra
 
 ## <a name="python-runbooks"></a>Python-runbookok
 
@@ -96,6 +99,7 @@ Python runbooks compile under Python 2.  A runbook a szöveges szerkesztő haszn
 ### <a name="advantages"></a>Előnyök
 
 * A robusztus Python-kódtárakat használni.
+* Is futtatni az Azure-ban vagy mindkét Linux hibrid Runbook-feldolgozók. Windows hibrid Runbook-feldolgozók használata támogatott [python2.7](https://www.python.org/downloads/release/latest/python2) telepítve.
 
 ### <a name="limitations"></a>Korlátozások
 

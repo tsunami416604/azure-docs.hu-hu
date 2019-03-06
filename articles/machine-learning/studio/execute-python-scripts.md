@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: ca1487bea969703fddffd664b899d4e2f47b4277
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 15aa3921703871b9403ed4c01e800e4ae61594ea
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56824045"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432397"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>A Python Machine Learning parancsfájlok végrehajtása az Azure Machine Learning Studióban
 
@@ -58,7 +58,7 @@ Az Azure Machine Learning Studio Python elsődleges felületén keresztül van a
 
 1. ábra A **Python-szkript végrehajtására** modul.
 
-A [Python-szkript végrehajtására] [ execute-python-script] modul az Azure Machine Learning Studióban legfeljebb három bemenetek fogad, és legfeljebb két kimenetek (a következő szakaszban részletezett), például az R analóg elkészíti a [R végrehajtása Parancsfájl] [ execute-r-script] modul. A Python-kód végrehajtását is meg kell adni a paraméter mezőbe, mint egy külön elnevezett belépési ponttal a hívott függvény `azureml_main`. Ez a modul megvalósításához használt fő tervezési elvek a következők:
+A [Python-szkript végrehajtására] [ execute-python-script] modul az Azure Machine Learning Studióban legfeljebb három bemenetek fogad, és legfeljebb két kimenetek (a következő szakaszban részletezett), például az R analóg elkészíti a [R-szkript végrehajtása ] [ execute-r-script] modul. A Python-kód végrehajtását is meg kell adni a paraméter mezőbe, mint egy külön elnevezett belépési ponttal a hívott függvény `azureml_main`. Ez a modul megvalósításához használt fő tervezési elvek a következők:
 
 1. *Python-felhasználók számára bármilyen kell lennie.* A felhasználók többsége Python kódját kéttényezős funkciókként modulok belül. Ezért üzembe egy legfelső szintű modulban végrehajtható utasítások sok viszonylag ritkán fordul elő. A parancsfájl mező, ezért is utasításokat egy sorozatát ellentétben kifejezetten elnevezett Python függvény vesz igénybe. Az objektumok között szerepelnek a függvényt is Python-kódtár alaptípusok például [Pandas](http://pandas.pydata.org/) adatkeretek és [NumPy](http://www.numpy.org/) tömböket.
 2. *Rendelkeznie kell a helyi közötti élethű és végrehajtásainak felhőbeli.* A háttérrendszer a Python-kód végrehajtására szolgáló alapján [Anaconda](https://store.continuum.io/cshop/anaconda/), a széles körben használt többplatformos tudományos Python elosztási. Közel 200-as, a leggyakoribb Python-csomagok együtt származik. Az adatszakértők, ezért hibakeresést, és a kódját az Azure Machine Learning Studio-kompatibilis Anaconda helyi környezetben minősítéséhez. Majd használjon például egy már létező fejlesztési környezetben [IPython](http://ipython.org/) notebook vagy [Python Tools for Visual Studio](https://aka.ms/ptvs), egy Azure Machine Learning-kísérlet keretében futtatásához. A `azureml_main` belépési pontja pedig egy vanília Python-függvény, így x hozhatóak létre az Azure Machine Learning-specifikus kód vagy az SDK telepítése nélkül.

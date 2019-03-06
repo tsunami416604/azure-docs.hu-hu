@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3037d1de83e34aa8489498c65dbc5fd3423b081b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7475969f3b1437a8d42345f00a974957c15d00fa
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162662"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444290"
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>Nem várt alkalmazás alkalmazáslistában
 
@@ -108,7 +108,7 @@ A **törölhető az alkalmazás**, kövesse az alábbi lépéseket:
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>Szeretném tiltani minden jövőbeli felhasználói jóváhagyási művelet bármely alkalmazás
 
-Felhasználói beleegyezés letiltása, a teljes címtárban megakadályozza, hogy a végfelhasználók hozzájárul ahhoz, hogy minden olyan alkalmazás esetében. A rendszergazdák továbbra is a felhasználó behalves hagyhatja jóvá. További információ az alkalmazás jóváhagyásának, és ezért lehetséges, hogy, vagy nem biztos, hogy engedélyt adjanak, olvassa el a [ismertetése felhasználói és rendszergazdai jóváhagyás](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview).
+Felhasználói beleegyezés letiltása, a teljes címtárban megakadályozza, hogy a végfelhasználók hozzájárul ahhoz, hogy minden olyan alkalmazás esetében. A rendszergazdák továbbra is hagyhatja jóvá a felhasználó nevében. További információ az alkalmazás jóváhagyásának, és ezért lehetséges, hogy, vagy nem biztos, hogy engedélyt adjanak, olvassa el a [ismertetése felhasználói és rendszergazdai jóváhagyás](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview).
 
 A **tiltsa le az összes jövőbeli felhasználói jóváhagyási művelet a teljes címtárban**, kövesse az alábbi lépéseket:
 

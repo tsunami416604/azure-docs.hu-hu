@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/27/2019
 ms.author: tomfitz
-ms.openlocfilehash: 618412f27efb71caf6e044b4768d7be00f0d0f47
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 5213affe953636c46486614ee2a020d7727e1478
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57009240"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57407515"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Az Azure Resource Manager üzembe helyezési mód
 
@@ -26,7 +26,7 @@ Mindkét mód esetében az erőforrás-kezelő megpróbálja létrehozni a sablo
 
 ## <a name="complete-mode"></a>Teljes mód
 
-Resource Manager a teljes módban **törli** erőforráscsoportban létezik, de nem a sablonban megadott erőforrások. Erőforrások, amelyek a sablonban megadott, de nincs telepítve, mert egy [feltétel](resource-manager-templates-resources.md#condition) kifejezés hamis, a rendszer nem törli.
+Resource Manager a teljes módban **törli** erőforráscsoportban létezik, de nem a sablonban megadott erőforrások. Erőforrások, amelyek a sablonban megadott, de nincs telepítve, mert egy [feltétel](resource-group-authoring-templates.md#condition) kifejezés hamis, a rendszer nem törli.
 
 Van néhány különbség hogyan kezelik az erőforrástípusok a teljes mód törlések. Szülő erőforrások telepítésekor nem a sablon, amely teljes körű módban automatikusan törlődnek. Néhány gyermekerőforrásait automatikusan nem, amely a sablon nem törlődnek. A gyermek-erőforrás azonban akkor is törlődik, ha a szülő erőforrás törléséig. 
 

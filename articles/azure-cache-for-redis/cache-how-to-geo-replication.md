@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: yegu
-ms.openlocfilehash: e5e60e3370cc813685403cc979e6ef8dc043b7ac
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 383ea07005d7dae47cd0ef1da8a4a57d8b20d613
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233268"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435813"
 ---
 # <a name="how-to-configure-geo-replication-for-azure-cache-for-redis"></a>Georeplikáció konfigurálása az Azure Cache Redis
 
@@ -175,7 +175,7 @@ Ha két gyorsítótárak össze vannak kapcsolva, cache vagy az erőforráscsopo
 
 ### <a name="how-does-failing-over-to-the-secondary-linked-cache-work"></a>Hogyan működik a másodlagos társított gyorsítótár-ba irányuló feladatátvétel?
 
-A georeplikáció, az eredeti kiadásban Azure Cache redis nem támogatja az Automatikus feladatátvétel Azure-régióban. Georeplikáció elsősorban a vész-helyreállítási helyzetekre szolgál. Distater helyreállítás ügyfelek kell viszi, megjelenik egy biztonsági mentési régióban az egész alkalmazáscsoportokat az koordinált módon ahelyett, hogy az egyes alkalmazás-összetevők megállapítani, hogy mikor váltson át a saját biztonsági másolatokat. Ez különösen fontos a Redis. Egyik fő előnye, Redis, hogy azt egy rendkívül alacsony késésű tárolóban. Ha az alkalmazás a Redis átadja a feladatokat más Azure-régióban, de a számítási kapacitás nem létezik, a hozzáadott ideje kellene észrevehető hatása a teljesítményre. Ebből kifolyólag szeretnénk kerülni a Redis futtatása sikertelen keresztül automatikusan átmeneti rendelkezésre állási problémák miatt.
+A georeplikáció, az eredeti kiadásban Azure Cache redis nem támogatja az Automatikus feladatátvétel Azure-régióban. Georeplikáció elsősorban a vész-helyreállítási helyzetekre szolgál. A vész-helyreállítási helyzetekre ügyfelek kell viszi, megjelenik egy biztonsági mentési régióban az egész alkalmazáscsoportokat az koordinált módon ahelyett, hogy az egyes alkalmazás-összetevők megállapítani, hogy mikor váltson át a saját biztonsági másolatokat. Ez különösen fontos a Redis. Egyik fő előnye, Redis, hogy azt egy rendkívül alacsony késésű tárolóban. Ha az alkalmazás a Redis átadja a feladatokat más Azure-régióban, de a számítási kapacitás nem létezik, a hozzáadott ideje kellene észrevehető hatása a teljesítményre. Ebből kifolyólag szeretnénk kerülni a Redis futtatása sikertelen keresztül automatikusan átmeneti rendelkezésre állási problémák miatt.
 
 Jelenleg kezdeményezze a feladatátvételt, kell a georeplikációs hivatkozás eltávolítása az Azure Portalon, és lépjen be a kapcsolati végpontot, a Redis-ügyfél a társított elsődleges-gyorsítótárból (korábbi nevén társított) másodlagos gyorsítótárba. Amikor a rendszer a két gyorsítótárak azok a tárfióktárolók, a replika egy szokásos írási-olvasási gyorsítótár válik újra, és közvetlenül a Redis-ügyfelektől érkező kéréseket fogad.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: d0f9002da3efd19625928a1e1f58d66f468c748f
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: c2d9e83b28ac18f08ca67e9c4f675b1fe9d5d17c
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240677"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431784"
 ---
 # <a name="connect-data-sources"></a>Adatforrások csatlakoztatása
 
@@ -70,14 +70,14 @@ A következő adatgyűjtési módszerek az Azure-Sentinel támogatja:
     
 ## Az ügynök csatlakozási lehetőségek<a name="agent-options"></a>
 
-A külső berendezés csatlakozni az Azure-Sentinel, az ügynök egy dedikált gépen (VM vagy helyszíni) a készüléket és a Sentinel-Azure közötti kommunikáció támogatásához telepíteni kell. Az ügynök deploly automatikusan vagy manuálisan is. Automatikus központi telepítési csak akkor használható, ha dedikált számítógépe egy új virtuális Gépet hoz létre az Azure-ban. 
+A külső berendezés csatlakozni az Azure-Sentinel, az ügynököt telepíteni kell egy dedikált gépen (VM vagy a helyszínen) a készüléket és a Sentinel-Azure közötti kommunikáció támogatásához. Az ügynök deploly automatikusan vagy manuálisan is. Automatikus központi telepítési csak akkor használható, ha dedikált számítógépe egy új virtuális Gépet hoz létre az Azure-ban. 
 
 
 ![Az Azure-ban CEF](./media/connect-cef/cef-syslog-azure.png)
 
 Azt is megteheti telepítheti az ügynököt manuálisan a meglévő Azure virtuális gép, egy virtuális gépen egy másik felhőben vagy a helyszíni gépen.
 
-![Helyszíni CEF](./media/connect-cef/cef-syslog-onprem.png)
+![A helyszíni CEF](./media/connect-cef/cef-syslog-onprem.png)
 
 
 ## <a name="next-steps"></a>További lépések

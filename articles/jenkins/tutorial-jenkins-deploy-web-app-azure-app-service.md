@@ -8,12 +8,12 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.openlocfilehash: b0f909bb7f4b59e083f0ef1c8a19c11d5d9fb312
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: d59a811b09d2c60627f7d506f1f5fd3513c914e8
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821303"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57408020"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Oktatóanyag: Üzembe helyezés a Githubról Azure App Service-ben a Jenkins folyamatos integrációs és üzembe helyezés
 
@@ -193,7 +193,7 @@ A jenkins kifejezést a folyamat feladat létrehozásához és telepítéséhez 
 
    1. Az a **tulajdonságok tartalom** megjelenő, adja hozzá ezekhez a környezeti változókhoz és értékeikhez. 
 
-      ```text
+      ```ini
       AZURE_CRED_ID=yourAzureServicePrincipalName
       RES_GROUP=yourWebAppAzureResourceGroupName
       WEB_APP=yourWebAppName
@@ -212,7 +212,7 @@ Most hozzon létre, amely a Jenkins létrehozásához és az alkalmazás telepí
 1. A GitHub-elágazásba a `src/main/resources/` mappában hozzon létre az alkalmazás konfigurációs fájlt `web.config`, amely tartalmazza az XML, de cserélje le `$(JAR_FILE_NAME)` a `gs-spring-boot-0.1.0.jar`:
 
    ```xml
-   <?xml version="1.0" encoding="UTF-8">
+   <?xml version="1.0" encoding="UTF-8"?>
    <configuration>
       <system.webServer>
          <handlers>
@@ -225,7 +225,7 @@ Most hozzon létre, amely a Jenkins létrehozásához és az alkalmazás telepí
 
 1. A GitHub-elágazásba legfelső szintű mappában hozza létre a buildelési és üzembe helyezési szkript nevű `Jenkinsfile`, amely tartalmazza ezt a szöveget ([a GitHub forrás Itt](https://github.com/Microsoft/todo-app-java-on-azure/blob/master/doc/resources/jenkins/Jenkinsfile-webapp-se)):
 
-   ```text  
+   ```groovy
    node {
       stage('init') {
          checkout scm

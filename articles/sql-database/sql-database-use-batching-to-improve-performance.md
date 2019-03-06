@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: genemi
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: b94c5f712469183d64704307316f8bbdaa3d5a11
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 0ef6d258be0165c7a73ce060879f55f1c7f404f9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751633"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453524"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Kötegelés használata SQL Database-alkalmazások teljesítményének javítása érdekében
 
@@ -94,7 +94,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 Tranzakciók ténylegesen használnak a mindkét példa. Az első példában az egyes hívások egy implicit tranzakciók. A második példában az explicit tranzakciók burkolja az összes, a hívások. A dokumentációban száma a [írási előre tranzakciónapló](https://msdn.microsoft.com/library/ms186259.aspx), naplórekordok kiürített a lemezre, ha a tranzakció-véglegesítések. További hívások együtt egy tranzakcióban, így az a tranzakciós naplóba írás késleltetheti mindaddig, amíg a tranzakció véglegesítve. Érvényben engedélyezi az írási műveletek a kiszolgáló tranzakciónapló-kötegelésében.
 
-Az alábbi táblázat néhány ad hoc vizsgálati eredményeket jeleníti meg. A tesztek kerülnek végrehajtásra azonos szekvenciális Beszúrások rendelkező és anélküli tranzakciók. Több szempontból a tesztek első készlete futtatott esetében távolról a laptopjáról a Microsoft Azure-adatbázishoz. Tesztek a második csoporton futtatott felhőszolgáltatást, illetve, hogy mindkét tartózkodott a ugyanazt a Microsoft Azure-adatközpont (USA nyugati RÉGIÓJA) adatbázis. Az alábbi táblázat az időtartam ezredmásodpercben, egymást követő Beszúrások rendelkező és anélküli tranzakciók.
+Az alábbi táblázat néhány alkalmi vizsgálati eredményeket jeleníti meg. A tesztek kerülnek végrehajtásra azonos szekvenciális Beszúrások rendelkező és anélküli tranzakciók. Több szempontból a tesztek első készlete futtatott esetében távolról a laptopjáról a Microsoft Azure-adatbázishoz. Tesztek a második csoporton futtatott felhőszolgáltatást, illetve, hogy mindkét tartózkodott a ugyanazt a Microsoft Azure-adatközpont (USA nyugati RÉGIÓJA) adatbázis. Az alábbi táblázat az időtartam ezredmásodpercben, egymást követő Beszúrások rendelkező és anélküli tranzakciók.
 
 **Az Azure-bA helyszíni**:
 
@@ -192,7 +192,7 @@ cmd.CommandType = CommandType.StoredProcedure;
 
 A legtöbb esetben tábla értékű paraméterek rendelkezik egyenértékű vagy annál nagyobb teljesítmény, mint a többi kötegelés technikákat. Tábla értékű paraméterek gyakran előnyös, mivel olyan rugalmasabb, mint a többi példány. Egyéb technikák, például az SQL tömeges másolási, például csak az új sorok beszúrását teszi lehetővé. De a tábla értékű paraméter használható logikai a tárolt eljárás annak meghatározására, hogy mely sorokat frissítések és amelyek szúr be. A tábla típusa is módosíthatja, amely azt jelzi, hogy egy megadott sorának kell lennie beszúrt, frissített vagy törölt egy "Művelet" oszlop tartalmazhat.
 
-Az alábbi táblázat mutatja a tábla értékű paraméterek használatával ad-hoc terhelésiteszt-eredményei ezredmásodpercben.
+Az alábbi táblázat bemutatja a tábla értékű paraméterek használatával ad-hoc terhelésiteszt-eredményei ezredmásodpercben.
 
 | Műveletek | A helyszíni az Azure-ba (ms) | Az Azure ugyanabban az adatközpontban (ms) |
 | --- | --- | --- |
@@ -232,7 +232,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 Vannak bizonyos esetekben, amikor a tömeges másolási előnyben részesített tábla értékű paraméterek keresztül. Lásd a táblázat értékű paraméterek a cikk a TÖMEGES Beszúrás műveletek és-összehasonlító táblázatot [Table-Valued paraméterek](https://msdn.microsoft.com/library/bb510489.aspx).
 
-A következő ad hoc vizsgálati eredmények megjelenítése a kötegelés teljesítményét **kapcsolatot az SqlBulkCopy** ezredmásodpercben.
+A következő alkalmi vizsgálati eredmények megjelenítése a kötegelés teljesítményét **kapcsolatot az SqlBulkCopy** ezredmásodpercben.
 
 | Műveletek | A helyszíni az Azure-ba (ms) | Az Azure ugyanabban az adatközpontban (ms) |
 | --- | --- | --- |
@@ -277,7 +277,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 Ebben a példában az adott megjelenítése alapvető fogalma. Ha valószerűbb forgatókönyvet szeretne egyszerre létrehozni a lekérdezési karakterláncot, és a parancs paraméterei a szükséges entitások lenne hurkot. Ön 2100 lekérdezési paramétereket, összesen legfeljebb ez korlátozza az ilyen módon feldolgozható sorok száma.
 
-A következő ad hoc vizsgálati eredmények megjelenítése a teljesítmény, az ilyen típusú insert utasítás ezredmásodpercben.
+A következő alkalmi vizsgálati eredmények megjelenítése a teljesítmény, az ilyen típusú insert utasítás ezredmásodpercben.
 
 | Műveletek | Tábla értékű paraméter (ms) | Utasításból INSERT (ms) |
 | --- | --- | --- |

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 5412e0a7bae3667ceb29085da566ef3b73c82c35
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 6c9f128a046904eb8df90625ce1043b3d42e8be4
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316625"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448543"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Az MXChip IoT DevKit eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz
 
@@ -31,7 +31,7 @@ A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
 A létrehozott alkalmazáshoz a **minta Devkits** alkalmazást sablon tartalmaz egy **MXChip** eszköz sablon a következő jellemzőkkel: 
 
-- Telemetriai adatokat, amely tartalmazza az eszköz a mérések **páratartalom**, **hőmérséklet**, **nyomás**, **Magnometer** (mért mentén X Y, tengely Z), **Accelorometer** (X, Y, mentén mért Z tengely) és **Giroszkóp** (X, Y, mentén mért Z tengely).
+- Telemetriai adatokat, amely tartalmazza az eszköz a mérések **páratartalom**, **hőmérséklet**, **nyomás**, **Magnometer** (mért mentén X Y, tengely Z), **érzékelőből** (X, Y, mentén mért Z tengely) és **Giroszkóp** (X, Y, mentén mért Z tengely).
 - Állapot, amely tartalmaz egy példa meghatározásáért **Eszközállapot**.
 - Az esemény mérési egy **B bekapcsolva** esemény. 
 - Beállítások megjelenítése **feszültség**, **aktuális**, **ventilátor sebesség**, és a egy **integrációs modul** be-vagy kikapcsolása.
@@ -56,7 +56,7 @@ Az Azure IoT Central-alkalmazás hozzáadása a valós eszközöknek a **MXChip*
  
     ![Kapcsolat adatai](media/concepts-connectivity/device-connect.PNG)
 
-3. Ügyeljen arra, hogy ezek az adatok mentése során fog temporaritly lekérése kapcsolódik az internethez az DevKit eszköz előkészítése. 
+3. Ügyeljen arra, hogy ezek az adatok mentése, akkor lesz ideiglenesen első kapcsolódik az internethez az DevKit eszköz előkészítése. 
 
 
 ### <a name="prepare-the-devkit-device"></a>A fejlesztői készlet eszköz előkészítése

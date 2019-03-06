@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/17/2019
 ms.author: srrengar
-ms.openlocfilehash: bb4ffe959fd3b973f55b08908ea603839222365d
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 71bff5473abe9f53804d702625b871f41309a787
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243262"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441831"
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Monitorozás és diagnosztika az Azure Service Fabrichez
 
@@ -73,7 +73,7 @@ Most, hogy az alkalmazás, valamint a platformot a diagnosztikai már szó, hogy
 
 Az infrastruktúra szintjén kell gyűjtött teljesítményszámlálók listája található [teljesítmény-mérőszámok](service-fabric-diagnostics-event-generation-perf.md). 
 
-Service Fabric alsp biztosít teljesítményszámlálók a Reliable Services és Actors programozási modell. Ezek a modellek valamelyikét használja, ha ezeket a teljesítményszámlálókat is győződjön meg arról, hogy az aktorok vannak működtetésével felfelé és lefelé megfelelően, illetve, hogy a reliable Services-kérések kezelésének elég gyorsan adatokat. További információkért lásd: [Reliable Service szolgáltatás táveléréséhez figyelésének](service-fabric-reliable-serviceremoting-diagnostics.md#performance-counters) és [alkalmazásteljesítmény-figyelés a Reliable actors](service-fabric-reliable-actors-diagnostics.md#performance-counters). 
+Service Fabric Reliable Services és Actors programozási modell is biztosít teljesítményszámlálók készletét. Ezek a modellek valamelyikét használja, ha ezeket a teljesítményszámlálókat is győződjön meg arról, hogy az aktorok vannak működtetésével felfelé és lefelé megfelelően, illetve, hogy a reliable Services-kérések kezelésének elég gyorsan adatokat. További információkért lásd: [Reliable Service szolgáltatás táveléréséhez figyelésének](service-fabric-reliable-serviceremoting-diagnostics.md#performance-counters) és [alkalmazásteljesítmény-figyelés a Reliable actors](service-fabric-reliable-actors-diagnostics.md#performance-counters). 
 
 Az Azure Monitor megoldás ezek gyűjtéséhez az Azure Monitor naplóira hasonlóan platform szintű figyelése. Használjon a [Log Analytics-ügynököket](service-fabric-diagnostics-oms-agent.md) a megfelelő teljesítményszámlálót gyűjt, és ezeket az Azure Monitor naplókat is megtekintheti.
 

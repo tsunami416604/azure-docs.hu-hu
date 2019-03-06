@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: bfc1c419d5d58b4528b76dbed6fd0060f6b2833d
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 914dcd02f2d35d56b50169967ca1f5c251a6e6f3
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446664"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57408615"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Az Azure Backup – gyakori kérdések
 Ez a cikk az Azure Backup szolgáltatással kapcsolatos gyakori kérdésekre ad választ.
@@ -101,7 +101,8 @@ Windows 8.1 64 bites | Enterprise, Pro | Gépek a legújabb szolgáltatások cso
 Windows 8 64 bites | Enterprise, Pro | Gépek a legújabb szolgáltatások csomagokat és frissítéseket kell futtatnia.
 Windows 7 64 bites | Ultimate, Enterprise, Professional, Home Premium, Home Basic, Starter | Gépek a legújabb szolgáltatások csomagokat és frissítéseket kell futtatnia.
 Kiszolgáló | |
-A Windows Server 2016 64 bites | Standard, Datacenter, Essentials | Rogramtelepítés a legújabb szolgáltatási csomagokat és frissítéseket.
+A Windows Server 2019 64 bites | Standard, Datacenter, Essentials | A legújabb szolgáltatási csomagokat és frissítésekkel.
+A Windows Server 2016 64 bites | Standard, Datacenter, Essentials | A legújabb szolgáltatási csomagokat és frissítésekkel.
 A Windows Server 2012 R2 64 bites | Standard, Datacenter, Foundation | A legújabb szolgáltatási csomagokat és frissítésekkel.
 A Windows Server 2012 64 bites | Datacenter, Foundation, Standard | A legújabb szolgáltatási csomagokat és frissítésekkel.
 A Windows Storage Server 2016 64 bites | Standard, Workgroup | A legújabb szolgáltatási csomagokat és frissítésekkel.

@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 01/09/2019
+ms.date: 02/27/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: db10361707d83fcda20f0e4bf2adc2abc4176808
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 67f4eb5383452a81ba288f5fe611242259217951
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156171"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404892"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Oktatóanyag: Az Azure Data Box-lemezek ORDER
 
@@ -80,11 +80,25 @@ A Data Box Disk megrendeléséhez a következő lépéseket kell végrehajtania 
     |Name (Név)|Adjon meg egy rövid nevet a megrendelés nyomon követéséhez.<br> A névnek 3-24 karakter hosszúságúnak kell lennie, és csak betűket, számokat és kötőjelet tartalmazhat. <br> A névnek betűvel vagy számmal kell kezdődnie és végződnie. |
     |Erőforráscsoport| Használjon egy már létezőt, vagy hozzon létre újat. <br> Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója. |
     |Azure-beli célrégió| Válasszon ki egy régiót a tárfiókhoz.<br> Jelenleg csak az USA régióiban, Nyugat-és Észak-Európában, Kanadában és Ausztráliában működő tárfiókok támogatottak. |
-    |Tárfiók(ok)|A megadott Azure-régió alapján válasszon ki egy meglévő tárfiókot a szűrt listából. <br>Létre is hozhat egy új Általános célú v1 vagy Általános célú v2 fiókot. |
     |Adatok becsült mérete (TB)| Adjon meg egy becsült mennyiséget TB-ban. <br>Az adatmennyiség alapján a Microsoft kiküldi Önnek a megfelelő számú 8 TB-os SSD-t (7 TB felhasználható kapacitás). <br>5 lemez maximális felhasználható kapacitása 35 TB. |
     |Lemez hozzáférési kulcsa| Ha bejelölte az **Egyéni kulcs használata az Azure által létrehozott hozzáférési kulcs helyett** lehetőséget, adja meg a lemez hozzáférési kulcsát. <br> Adja meg egy 12 – 32 karakter alfanumerikus kulcsát, amelynek legalább egy numerikus és a egy különleges karakter. Az engedélyezett speciális karakterek a következők: `@?_+`. <br> Úgy is dönthet, hogy kihagyja ezt a lehetőséget, és az Azure által létrehozott hozzáférési kulcsot használja a lemezek feloldásához.|
+    |A rendeltetési tárolási hely     | Válassza ki a tárfiókot, a felügyelt lemezek vagy mindkettőhöz. <br> A megadott Azure-régió alapján, válassza ki a tárfiók egy meglévő tárfiókot a szűrt listájából. A Data Box legfeljebb 10 tárfiókkal köthető össze. <br> Ezenkívül létrehozhat egy új **általános célú v1**, **általános célú v2**, vagy **Blob storage-fiók**. <br>Storage-fiókok, amelyek rendelkeznek a konfigurált szabályok nem használható. A storage-fiókok kell **engedélyezze a hozzáférést minden hálózatból elérhető** a tűzfalak és virtuális hálózatok szakaszban.|
 
-13. Kattintson a **tovább**. 
+    Ha a storage-fiókot használ a célhelyet, az alábbi képernyőképen láthatja:
+
+    ![Data Box-lemezrendelését storage-fiók](media/data-box-disk-deploy-ordered/order-storage-account.png)
+
+    Data Box-lemezek használatával felügyelt lemez gyors létrehozásához a helyi VHD-ből, ha akkor is meg kell adja meg a következő információkat:
+
+    |Beállítás  |Érték  |
+    |---------|---------|
+    |Erőforráscsoport     | Hozzon létre egy új erőforráscsoportot, ha szeretne felügyelt lemez gyors létrehozásához a helyi VHD-ből. Használjon egy meglévő erőforráscsoportot, csak akkor, ha a Data Box szolgáltatás által létrehozott volt a Data Box-lemezrendelését felügyelt lemez. <br> Csak egy erőforráscsoport használata támogatott.|
+
+    ![Data Box-lemezrendelését felügyelt lemez](media/data-box-disk-deploy-ordered/order-managed-disks.png)
+
+    Felügyelt lemezek megadott tárfiók egy átmeneti tárfiókban lesz. A Data Box szolgáltatás feltölti a virtuális merevlemezeket az előkészítési tárfiókból konvertálja azokat a felügyelt lemezek, és áthelyezi az erőforráscsoportokat. További információkért lásd: [adatok ellenőrzése a feltöltése az Azure-bA](data-box-disk-deploy-picked-up.md#verify-data-upload-to-azure).
+
+13. Kattintson a **tovább**.
 
     ![A megrendelés részletei](media/data-box-disk-deploy-ordered/data-box-order-details.png)
 
@@ -102,7 +116,7 @@ A Data Box Disk megrendeléséhez a következő lépéseket kell végrehajtania 
  
 ## <a name="track-the-order"></a>A megrendelés nyomon követése
 
-Miután elküldte a megrendelését, annak állapotát az Azure Portalon követheti nyomon. Keresse meg a megrendelést, és nyissa meg az **Áttekintés** területet az állapot megtekintéséhez. A portál a **Megrendelve** állapotot mutatja. 
+Miután elküldte a megrendelését, annak állapotát az Azure Portalon követheti nyomon. Keresse meg a megrendelést, és nyissa meg az **Áttekintés** területet az állapot megtekintéséhez. A portál a **Megrendelve** állapotot mutatja.
 
 ![Data Box Disk állapot megrendelve](media/data-box-disk-deploy-ordered/data-box-portal-ordered.png) 
 
@@ -118,9 +132,9 @@ A Microsoft ezután előkészíti, majd lebonyolítja a szállítást egy region
 
 ## <a name="cancel-the-order"></a>A rendelés lemondása
 
-A rendelés lemondásához az Azure Portalon lépjen az **Áttekintés** területre, és kattintson a **Megszakítás** gombra a parancssávon. 
+A rendelés lemondásához az Azure Portalon lépjen az **Áttekintés** területre, és kattintson a **Megszakítás** gombra a parancssávon.
 
-Csak akkor mondhatja le a rendelést, ha a lemezek megrendelése után a szállításra való előkészítés még folyamatban van. Ha a megrendelés feldolgozása már megtörtént, nem mondhatja le a rendelést. 
+Csak akkor mondhatja le a rendelést, ha a lemezek megrendelése után a szállításra való előkészítés még folyamatban van. Ha a megrendelés feldolgozása már megtörtént, nem mondhatja le a rendelést.
 
 ![Rendelés lemondása](media/data-box-disk-deploy-ordered/cancel-order1.png)
 
@@ -140,5 +154,3 @@ A következő oktatóanyag a Data Box Disk beállítását mutatja be.
 
 > [!div class="nextstepaction"]
 > [Az Azure Data Box Disk beállítása](./data-box-disk-deploy-set-up.md)
-
-
