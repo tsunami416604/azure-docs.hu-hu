@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 3/26/2018
 ms.author: victorh
-ms.openlocfilehash: 108045c691d711dfdd12df39fe72e536f842f68f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 5d9f973926a46e61d83cba6fb52a543bddf26f99
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993219"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315860"
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Hozzon létre egy application gateway-alapú útválasztási szabályok az Azure portal használatával
 
@@ -33,6 +33,8 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 ![URL-útválasztási példa](./media/application-gateway-create-url-route-portal/scenario.png)
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
@@ -104,7 +106,7 @@ Ebben a példában az application gateway használható háttérkiszolgálóiké
 
     ```azurepowershell-interactive
     $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/Azure/azure-docs-powershell-samples/master/application-gateway/iis/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
-    Set-AzureRmVMExtension `
+    Set-AzVMExtension `
       -ResourceGroupName myResourceGroupAG `
       -Location eastus `
       -ExtensionName IIS `
@@ -115,7 +117,7 @@ Ebben a példában az application gateway használható háttérkiszolgálóiké
       -Settings $publicSettings
     ```
 
-3. Két további virtuális gépek létrehozása és az IIS telepítése a lépéseket, amelyek csak végzett használatával. Adja meg a nevei *myVM2* és *myVM3* a neveket és a Set-AzureRmVMExtension VMName értékeit.
+3. Két további virtuális gépek létrehozása és az IIS telepítése a lépéseket, amelyek csak végzett használatával. Adja meg a nevei *myVM2* és *myVM3* a neveket és a Set-AzVMExtension VMName értékeit.
 
 ## <a name="create-backend-pools-with-the-virtual-machines"></a>Háttérkészletek a virtuális gépek létrehozása
 

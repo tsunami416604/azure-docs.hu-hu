@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: cb85d09a1d5dee6cb54254baac4698cdad093785
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e6814224827aac0da9c6faf5108ecf585bae7c35
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457666"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445381"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>Az Azure Cosmos DB lekérdezési költségek optimalizálása
 
@@ -53,7 +53,7 @@ while (queryable.HasMoreResults)
 
 ## <a name="factors-influencing-request-unit-charge-for-a-query"></a>A lekérdezés díja kérelemegység befolyásoló tényezők
 
-Lekérdezések kérelemegységekről is számos tényezőtől függ. Például az Azure Cosmos-elemek száma betöltött/ad vissza, szemben az index keresések száma a lekérdezés fordítási idő részletei stb. Az Azure Cosmos DB garantálja, hogy ugyanabból a lekérdezés végrehajtásakor ugyanazokat az adatokat bármikor felhasználhatja a azonos számú kérelemegység ismétlési végrehajtások mellett is. A lekérdezés-végrehajtási mérőszámokkal lekérdezés profilt biztosít, a kérelemegységek fordított hogyan érdemes.  
+Lekérdezések kérelemegységekről is számos tényezőtől függ. Például az Azure Cosmos-elemek száma betöltött/ad vissza, időt szemben az indexet, a lekérdezés fordítása keresések száma stb. részleteket. Az Azure Cosmos DB garantálja, hogy ugyanabból a lekérdezés végrehajtásakor ugyanazokat az adatokat bármikor felhasználhatja a azonos számú kérelemegység ismétlési végrehajtások mellett is. A lekérdezés-végrehajtási mérőszámokkal lekérdezés profilt biztosít, a kérelemegységek fordított hogyan érdemes.  
 
 Bizonyos esetekben 200 429 válaszokat, és a lekérdezések, lapozható végrehajtása, mert a lekérdezéseket a lehető legnagyobb a rendelkezésre álló kérelemegység alapján fog futni a változó kérelemegység sorozatát jelenhet meg. A lekérdezés végrehajtása több oldal felosztása/kiszolgáló és ügyfél közötti lelassítja kerekíteni jelenhet meg. Például 10 000 elemek visszaadott több oldalon, egyes díját a számítás, az oldal hajtott végre. Ezek az oldalak közötti, sum, kell kap RUs azonos számú, a teljes lekérdezés számíthat.  
 

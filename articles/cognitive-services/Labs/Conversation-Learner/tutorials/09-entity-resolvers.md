@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: e6a671470a87f4509e466bcdfe7845b7bf7ec8dc
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: ebe555bfd7b34efd87d400d786049964665c76e6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55209148"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451059"
 ---
 # <a name="entity-resolvers"></a>Entitás feloldók
 
@@ -80,7 +80,7 @@ Ehhez az oktatóanyaghoz, hogy fut-e az általános oktatóanyag robotot
 8. Is címkézését a szöveg "Sunday jövő héten", "return"
 9. A "Score műveletek" gombra.
     - Figyelje meg, hogyan a "Memória" panelen az indulási és visszaadandó dátumokat tartalmaz.
-    - Mindegyik mutasson, és figyelje meg, hogyan történik az entitásokat a dátum objektumokat, amely egyértelműen rögzítése a tényleges calandar dátum ellentétben a "Sunday" vagy "holnap".
+    - Mindegyik mutasson, és figyelje meg, hogyan történik az entitásokat a dátum objektumokat, amely egyértelműen rögzítése a tényleges naptári dátum ellentétben a "Sunday" vagy "holnap".
 10. Válassza ki a "elhagyását választotta a …" A robot választ.
 11. A "Mentés" gombra.
 

@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 0e6db6ad4d2f3dfdf6aa95c0ee2255328de7e4ef
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b675ab9663be674ec2439bfe9139b7c79c144cbd
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55996321"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453388"
 ---
 # <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Gyors útmutató: Azure-beli adat-előállító létrehozása a PowerShell használatával
 
@@ -35,7 +35,9 @@ Ez a rövid útmutató bemutatja, hogyan használható a PowerShell egy Azure-be
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikkben szereplő utasításokat a legújabb Azure PowerShell-modulok telepítéséhez.
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-Az-ps) ismertető cikkben szereplő utasításokat a legújabb Azure PowerShell-modulok telepítéséhez.
 
 #### <a name="log-in-to-powershell"></a>Bejelentkezés a PowerShellbe
 
@@ -44,19 +46,19 @@ Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/
 2. Futtassa a következő parancsot, és adja meg az Azure Portalra való bejelentkezéshez használt Azure-beli felhasználónevét és jelszavát:
 
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 
 3. Futtassa a következő parancsot a fiókhoz tartozó előfizetések megtekintéséhez.
 
     ```powershell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```
 
 4. Ha több előfizetés is tartozik a fiókjához, futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje le a **SubscriptionId** kifejezést az Azure-előfizetés azonosítójára:
 
     ```powershell
-    Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"
+    Select-AzSubscription -SubscriptionId "<SubscriptionId>"
     ```
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
@@ -72,7 +74,7 @@ Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/
 2. Futtassa az alábbi parancsot az Azure-erőforráscsoport létrehozásához:
 
     ```powershell
-    $ResGrp = New-AzureRmResourceGroup $resourceGroupName -location 'East US'
+    $ResGrp = New-AzResourceGroup $resourceGroupName -location 'East US'
     ```
 
     Ha az erőforráscsoport már létezik, előfordulhat, hogy nem kívánja felülírni. Rendeljen egy másik értéket a `$ResourceGroupName` változóhoz, majd futtassa újra a parancsot.
@@ -86,10 +88,10 @@ Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/
     $dataFactoryName = "ADFQuickStartFactory";
     ```
 
-4. Az adat-előállító létrehozásához futtassa az alábbi **Set-AzureRmDataFactoryV2** parancsmagot a $ResGrp változó Location és ResourceGroupName tulajdonsága használatával:
+4. Az adat-előállító létrehozásához futtassa a következő **Set-AzDataFactoryV2** parancsmagot a $ResGrp változó Location és ResourceGroupName tulajdonság használatával:
 
     ```powershell
-    $DataFactory = Set-AzureRmDataFactoryV2 -ResourceGroupName $ResGrp.ResourceGroupName `
+    $DataFactory = Set-AzDataFactoryV2 -ResourceGroupName $ResGrp.ResourceGroupName `
         -Location $ResGrp.Location -Name $dataFactoryName
     ```
 
@@ -137,10 +139,10 @@ Társított szolgáltatásokat hozhat létre egy adat-előállítóban az adatt�
     Set-Location 'C:\ADFv2QuickStartPSH'
     ```
 
-3. Futtassa a **Set-AzureRmDataFactoryV2LinkedService** parancsmagot a társított szolgáltatás létrehozásához: **AzureStorageLinkedService**.
+3. Futtassa a **Set-AzDataFactoryV2LinkedService** parancsmagot a társított szolgáltatás létrehozásához: **AzureStorageLinkedService**.
 
     ```powershell
-    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $DataFactory.DataFactoryName `
+    Set-AzDataFactoryV2LinkedService -DataFactoryName $DataFactory.DataFactoryName `
         -ResourceGroupName $ResGrp.ResourceGroupName -Name "AzureStorageLinkedService" `
         -DefinitionFile ".\AzureStorageLinkedService.json"
     ```
@@ -181,10 +183,10 @@ Ebben a lépésben megad egy adatkészletet, amely a forrásból a fogadóba má
     }
     ```
 
-2. Az adatkészlet létrehozásához: **BlobDataset**futtassa a **Set-AzureRmDataFactoryV2Dataset** parancsmagot.
+2. Az adatkészlet létrehozásához: **BlobDataset**futtassa a **Set-AzDataFactoryV2Dataset** parancsmagot.
 
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $DataFactory.DataFactoryName `
+    Set-AzDataFactoryV2Dataset -DataFactoryName $DataFactory.DataFactoryName `
         -ResourceGroupName $ResGrp.ResourceGroupName -Name "BlobDataset" `
         -DefinitionFile ".\BlobDataset.json"
     ```
@@ -253,10 +255,10 @@ Ebben a rövid útmutatóban létrehoz egy folyamatot egy tevékenységgel, amel
     }
     ```
 
-2. A folyamat létrehozásához: **Adfv2QuickStartPipeline**futtassa a **Set-AzureRmDataFactoryV2Pipeline** parancsmagot.
+2. A folyamat létrehozásához: **Adfv2QuickStartPipeline**futtassa a **Set-AzDataFactoryV2Pipeline** parancsmagot.
 
     ```powershell
-    $DFPipeLine = Set-AzureRmDataFactoryV2Pipeline `
+    $DFPipeLine = Set-AzDataFactoryV2Pipeline `
         -DataFactoryName $DataFactory.DataFactoryName `
         -ResourceGroupName $ResGrp.ResourceGroupName `
         -Name "Adfv2QuickStartPipeline" `
@@ -275,10 +277,10 @@ Ebben a lépésben beállítja a folyamatparaméterek értékeit: az **inputPath
         "outputPath": "adftutorial/output"
     }
     ```
-2. Futtassa az **Invoke-AzureRmDataFactoryV2Pipeline** parancsmagot egy folyamat futásának létrehozásához és a paraméterértékek megadásához. A parancsmag visszaadja a folyamat futásának azonosítóját a későbbi monitorozás céljából.
+2. Futtassa a **Invoke-AzDataFactoryV2Pipeline** parancsmaggal hozzon létre egy folyamatot futtatni, és adja át a paraméterértékeket. A parancsmag visszaadja a folyamat futásának azonosítóját a későbbi monitorozás céljából.
 
     ```powershell
-    $RunId = Invoke-AzureRmDataFactoryV2Pipeline `
+    $RunId = Invoke-AzDataFactoryV2Pipeline `
         -DataFactoryName $DataFactory.DataFactoryName `
         -ResourceGroupName $ResGrp.ResourceGroupName `
         -PipelineName $DFPipeLine.Name `
@@ -291,7 +293,7 @@ Ebben a lépésben beállítja a folyamatparaméterek értékeit: az **inputPath
 
     ```powershell
     while ($True) {
-        $Run = Get-AzureRmDataFactoryV2PipelineRun `
+        $Run = Get-AzDataFactoryV2PipelineRun `
             -ResourceGroupName $ResGrp.ResourceGroupName `
             -DataFactoryName $DataFactory.DataFactoryName `
             -PipelineRunId $RunId
@@ -356,7 +358,7 @@ Ebben a lépésben beállítja a folyamatparaméterek értékeit: az **inputPath
 
     ```powershell
     Write-Output "Activity run details:"
-    $Result = Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -PipelineRunId $RunId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
+    $Result = Get-AzDataFactoryV2ActivityRun -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -PipelineRunId $RunId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
     $Result
 
     Write-Output "Activity 'Output' section:"

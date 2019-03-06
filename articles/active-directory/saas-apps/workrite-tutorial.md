@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d3b3702ca2daad002bde1b4e64bf9d43a03028d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cb64debca10cf7be6e2e328a1f401f125b67d940
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180436"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447166"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workrite"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Workrite
 
@@ -184,7 +184,7 @@ Ez a szakasz célja Workrite Britta Simon nevű felhasználó létrehozásához.
 
 1. Az a **Create User** párbeszédpanelen hajtsa végre az alábbi lépéseket:
    
-    ![Hozzon létre felhasználói Dailog][402]
+    ![Felhasználói párbeszédpanel létrehozása][402]
     
     a. Az a **E-mail** szövegmezőbe írja be az e-mail-cím, felhasználó, például Brittasimon@contoso.com.
 

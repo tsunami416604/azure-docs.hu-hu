@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: bwren
-ms.openlocfilehash: 62dffffee411519cdcafe80a11404f9e273dd9dd
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 65713ed9c2d0635e776a7a7e5f205b6d55438ed4
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880784"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451620"
 ---
 # <a name="writing-advanced-queries-in-azure-monitor"></a>Speciális lekérdezések az Azure monitorban írása
 
@@ -76,7 +76,7 @@ Event
 ```
 
 ## <a name="print"></a>Nyomtatás
-`print` csak egy oszlop, és a egy számítás eredménye megjelenítése egyetlen sor tartalmazó táblát adja vissza. Ez azokban az esetekben, ahol meg kell egy egyszerű calcuation gyakran használják. Ha például az aktuális idő PST megkereséséhez, és adjon hozzá egy oszlopot a keleti téli idő:
+`print` csak egy oszlop, és a egy számítás eredménye megjelenítése egyetlen sor tartalmazó táblát adja vissza. Ez azokban az esetekben, ahol meg kell egy egyszerű számítási gyakran használják. Ha például az aktuális idő PST megkereséséhez, és adjon hozzá egy oszlopot a keleti téli idő:
 
 ```Kusto
 print nowPst = now()-8h

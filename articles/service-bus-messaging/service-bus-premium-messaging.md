@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/30/2018
+ms.date: 03/05/2019
 ms.author: aschhab
-ms.openlocfilehash: ae35f73e601cfa83fc960c5331f9956863677941
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 3c5666922c89819d9959af5cf77a640efb023ad0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54855295"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455513"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>A Service Bus prémium és standard szintű üzenetkezelés szintjei
 
@@ -54,6 +54,21 @@ A prémium szintű üzenetkezelés nem támogatja a particionált üzenetsorokat
 Mivel a prémium szintű üzenetkezelés teljesen izolált futtatókörnyezetben fut, a prémium szintű névterek nem támogatják az expressz entitásokat. Az expressz szolgáltatásra vonatkozó további információkért lásd a [QueueDescription.EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) tulajdonságot.
 
 Ha szabványos üzenetkezelés alatt futtat kódot, és továbbítani szeretné a prémium szintre, ügyeljen arra, hogy az [EnableExpress](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enableexpress#Microsoft_ServiceBus_Messaging_QueueDescription_EnableExpress) tulajdonság beállítása **false** legyen (ez az alapértelmezett érték).
+
+## <a name="premium-messaging-resource-usage"></a>Prémium szintű üzenetkezelés erőforrás-használat
+Általában minden művelet egy entitás okozhat Processzor-és memóriahasználatát. Íme néhány ezeket a műveleteket: 
+
+- Például a CRUD műveletek az üzenetsorok, témakörök és előfizetések (létrehozása, beolvasása, frissítése és törlése) műveleteket.
+- Futásidejű műveletek (üzenetek küldése és fogadása)
+- Műveletek és a riasztások figyelése
+
+A további CPU és memória használata nem árazása emellett, ha. A prémium szintű üzenetkezelés szint nincs egyetlen díjjal rendelkezik egy üzenet egységben.
+
+A Processzor és a memória kihasználtsági nyomon követni, és megjelenik az Ön számára a következő okok miatt: 
+
+- Adja meg a átlátható képet adnak a rendszer belső elemei
+- Ismerje meg, a megvásárolt erőforrások kapacitását.
+- Kapacitás megtervezése, amelyek segítségével könnyebben meghatározhatja a felfelé és lefelé méretezését.
 
 ## <a name="get-started-with-premium-messaging"></a>Ismerkedés a prémium szintű üzenetkezeléssel
 

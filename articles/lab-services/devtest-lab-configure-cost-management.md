@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: e616df772bf11d1247f96c78bea2392252f5e5d0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d3a02a850059dc96e4e4ba306fed7cded2f7dd7d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259751"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454187"
 ---
 # <a name="view-the-monthly-estimated-lab-cost-trend-in-azure-devtest-labs"></a>A havi becsült labor költség trend megtekintése az Azure DevTest Labs szolgáltatásban
 A Cost Management szolgáltatás a DevTest Labs segítségével nyomon követheti a labor költségét. Ez a cikk bemutatja, hogyan használhatja a **havi becsült költség Trend** diagram a jelenlegi naptári hónap becsült költség dátumig és a hónap teljes költségről megtekintése az aktuális hónap. Ez a cikk emellett bemutatja, hogyan kontrollja tesztlabor beállításával költségkeret célokhoz és küszöbértékekhez, elérésekor, eseményindító DevTest Labs-jelentik az eredményeket.
@@ -33,7 +33,7 @@ A havi becsült költség Trend diagram megtekintéséhez kövesse az alábbi l�
 1. A laborgyakorlat **áttekintése** területen válassza **Konfigurace a zásady**.   
 1. A bal oldali alatt **költségek nyomon követése**, jelölje be **költség trend**.
 
-   Az alábbi képernyőfelvételhez költség diagram egy példát mutat be. 
+   Az alábbi képernyőképen költség diagram egy példát mutat be. 
    
     ![A Cost diagram](./media/devtest-lab-configure-cost-management/graph.png)
 
@@ -76,7 +76,7 @@ DevTest Labs lehetővé teszi kontrollja a tesztkörnyezetben, majd megtekinthet
       - **Rögzített**: költség célok nyomon követi a kezdő dátum és végső dátummezők megadott dátumtartományra vonatkozóan. Általában ezt meg az mennyi ideig a projekthez való futásra van ütemezve.
    - Adjon meg egy **költség cél**. Előfordulhat például, ez mennyi azt tervezi, hogy a megadott időszakban a jelen labor beváltható.
    - Engedélyezheti vagy tilthatja le semmilyen küszöbérték válassza azt szeretné, akár 125 %-át a megadott, 25 %-os léptékben – jelentett **költség cél**.
-      - **Értesítés**: a küszöbértéket, amikor értesítést kap, adja meg a webhook URL-cím szerint.
+      - **Értesítés**: Ha a küszöbértéket, által egy webhook URL-CÍMÉT adja meg, hogy értesítést kap.
       - **Vykreslit v grafu**: Ha ezt a küszöbértéket, az eredmények ábrázolási is megtekintheti, költség trend gráfokon leírtak szerint [a havi becsült költség Trend diagram megtekintése](#viewing-the-monthly-estimated-cost-trend-chart).
    - Ha úgy dönt, hogy **értesítendő** a küszöbértéket, amikor meg kell adnia a webhook URL-CÍMÉT. A költségek Integrációk területen jelölje ki a **Ide kattintva hozzáadhat egyet integrációs**.
 

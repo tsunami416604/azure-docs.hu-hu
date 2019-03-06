@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a80ed6af005f04ec48729e918543b2de67810eba
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 16f7dc81d8174e3d8da39d3af95b945f8034cecd
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738589"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452013"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Hitelesítés és hitelesítési hibakódok
 
@@ -68,7 +68,7 @@ Az Azure Active Directory (Azure AD) biztonsági jogkivonat-szolgáltatás (STS)
 | AADSTS50032 | WeakRsaKey - azt jelzi, hogy a hibás felhasználói kísérlet a gyenge RSA-kulcsok használata. |
 | AADSTS50033 | RetryableError - azt jelzi, hogy egy átmeneti hiba nem kapcsolódik az adatbázis-műveletek. |
 | AADSTS50034 | UserAccountNotFound – jelentkezzen be az alkalmazáshoz, hogy a fiókot hozzá kell adni a könyvtárhoz. |
-| AADSTS50042 | UnableToGeneratePairwiseIdentifierWithMissingSalt - elő az páros azonosítónak a védőérték hiányzik a rendszerbiztonsági tag. Lépjen kapcsolatba a bérlő rendszergazdájával. |
+| AADSTS50042 | UnableToGeneratePairwiseIdentifierWithMissingSalt - elő az páros azonosítónak a védőérték hiányzik a elvet. Lépjen kapcsolatba a bérlő rendszergazdájával. |
 | AADSTS50043 | UnableToGeneratePairwiseIdentifierWithMultipleSalts |
 | AADSTS50048 | SubjectMismatchesIssuer - tulajdonos eltérést kibocsátó ügyféltény igényt. Lépjen kapcsolatba a bérlő rendszergazdájával. |
 | AADSTS50049 | NoSuchInstanceForDiscovery – ismeretlen vagy érvénytelen példány. |
@@ -140,7 +140,7 @@ Az Azure Active Directory (Azure AD) biztonsági jogkivonat-szolgáltatás (STS)
 | AADSTS54000 | MinorUserBlockedLegalAgeGroupRule |
 | AADSTS65001 | DelegationDoesNotExist - felhasználó vagy rendszergazda nem egyezett bele az alkalmazás azonosítója x küldjön egy interaktív engedélyezési kérést ehhez a felhasználóhoz és erőforráshoz használni. |
 | AADSTS65004 | UserDeclinedConsent – a felhasználó elutasította az alkalmazás eléréséhez jóváhagyást. Kérje meg a felhasználót, hogy jelentkezzen be újra, és hagyja jóvá az alkalmazást|
-| AADSTS65005 | MisconfiguredApplication – az alkalmazás szükséges erőforrás-hozzáférési lista nem tartalmazza az erőforrás által felderíthető alkalmazásokat, vagy az ügyfélalkalmazás-erőforrás, amely nincs megadva a szükséges erőforrás-hozzáférési listán, vagy a Graph szolgáltatás rossz visszaadott hozzáférést igényelt kérelem vagy az erőforrás nem található. Ha az alkalmazás támogatja az SAML, előfordulhat, hogy konfigurálta az alkalmazást a megfelelő azonosítóval (entitás). Próbálja ki az SAML-lel kapcsolatos megoldásokat, amelyek a következő hivatkozáson találhatók: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list) |
+| AADSTS65005 | MisconfiguredApplication – az alkalmazás szükséges erőforrás-hozzáférési lista nem tartalmazza az erőforrás által felderíthető alkalmazásokat, vagy az ügyfélalkalmazás-erőforrás, amely nincs megadva a szükséges erőforrás-hozzáférési listán, vagy a Graph szolgáltatás rossz visszaadott hozzáférést igényelt kérelem vagy az erőforrás nem található. Ha az alkalmazás támogatja az SAML, előfordulhat, hogy konfigurálta az alkalmazást a megfelelő azonosítóval (entitás). Próbálja ki az SAML-lel kapcsolatos megoldásokat, amelyek a következő hivatkozáson találhatók: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant - hitelesítés nem sikerült. A frissítési token nem érvényes. Hiba történt a következő okok miatt lehet:<ul><li>Token kötelező fejléc hiányzik.</li><li>Token kötés kivonata nem egyezik</li></ul> |
 | AADSTS70001 | UnauthorizedClient – az alkalmazás le van tiltva. |

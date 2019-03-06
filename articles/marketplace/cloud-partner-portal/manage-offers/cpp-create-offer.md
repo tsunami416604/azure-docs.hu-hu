@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 9b53a26f5163eae17198302fc26c079185cb7bd8
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: af9b34d90098409135020fa8a45ecd0253f25b22
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355605"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454544"
 ---
 # <a name="create-azure-marketplace-and-appsource-offers"></a>Hozzon létre az Azure Marketplace és AppSource ajánlatok
 
@@ -55,7 +55,7 @@ Ajánlat létrehozásakor, adja meg a szükséges és választható adatokat az 
 |      --------       |   -------                                                            |
 | **Ajánlat beállításai**  | Gyűjti az ajánlat és a közzétevő azonosító adatokat.                    |
 | **Termékváltozatok**            | Minden készletkezelési egysége (Termékváltozat) verzióhoz az Ön ajánlatát a technikai és üzleti jellemzők meghatározása |
-| **Test Drive**      | Ezt az opcionális szolgáltatást támogató-típusokhoz határozza meg az ajánlatban bemutatója.  További információkért lásd: [Mi a Test Drive?](../../cloud-partner-portal-orig/what-is-test-drive.md)  |
+| **Test Drive**      | Ezt az opcionális szolgáltatást támogató-típusokhoz határozza meg az ajánlatban bemutatója.  További információkért lásd: [Mi a Test Drive?](../test-drive/what-is-test-drive.md)  |
 | **Marketplace-en** vagy **áruház oldala** | Gyűjti a szöveges karakterláncot, dokumentumok és képek listáját tartalmazza az ajánlatot a piactéren |
 | **Támogatás**         | Összegyűjti az ügyfél, az adatfeldolgozás és online támogatást kapcsolattartási adatok  |
 |  |  |

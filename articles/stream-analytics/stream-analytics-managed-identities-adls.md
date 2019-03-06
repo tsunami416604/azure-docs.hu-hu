@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4537d15f88732d4b0c3c3cf514d6b8528af10f81
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 8b8d56befa49b74ba123ff250720ac581604bbd6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737467"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452318"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>Hitelesítés a Stream Analytics használatával az Azure Data Lake Storage Gen1 felügyelt identitások (előzetes verzió) használatával
 
@@ -172,14 +172,14 @@ Ez a cikk bemutatja, háromféleképpen engedélyezni az Azure Stream Analytics-
    User -Id 14c6fd67-d9f5-4680-a394-cd7df1f9bacf -Permissions WriteExecute
    ```
 
-   A fenti PowerShell-paranccsal kapcsolatos további információkért tekintse meg a [Set-AzDataLakeStoreItemAclEntry](https://docs.microsoft.com/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry#optional-parameters) dokumentációját.
+   A fenti PowerShell-paranccsal kapcsolatos további információkért tekintse meg a [Set-AzDataLakeStoreItemAclEntry](https://docs.microsoft.com/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry) dokumentációját.
 
 ## <a name="limitations"></a>Korlátozások
 Ez a funkció nem támogatja a következőket:
 
 1.  **Több-bérlős hozzáférés**: Az egyszerű szolgáltatás egy adott Stream Analytics-feladat létrehozása az Azure Active Directory-bérlővel, amelyen a feladat lett létrehozva, és nem használható olyan erőforrások, amelyek egy másik Azure Active Directory-bérlőben található találhatók. Ezért csak használhatja MSI ADLS általános 1 erőforrást, amely az Azure Stream Analytics-feladat, ugyanazon az Azure Active Directory a bérlőn belül. 
 
-2.  **[Felhasználói hozzárendelt identitás](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview#how-does-the-managed-identities-for-azure-resources-worka-namehow-does-it-worka/)**: nem támogatott ez azt jelenti, hogy a felhasználó nem sikerül a saját a Stream Analytics-feladat által használt egyszerű szolgáltatásának megadása. Az egyszerű szolgáltatás Azure Stream Analytics hozza létre. 
+2.  **[Felhasználói hozzárendelt identitás](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)**: nem támogatott ez azt jelenti, hogy a felhasználó nem sikerül a saját a Stream Analytics-feladat által használt egyszerű szolgáltatásának megadása. Az egyszerű szolgáltatás Azure Stream Analytics hozza létre. 
 
 
 ## <a name="next-steps"></a>További lépések

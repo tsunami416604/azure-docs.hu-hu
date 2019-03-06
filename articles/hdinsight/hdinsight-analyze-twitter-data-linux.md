@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: a3687a4b8bb4e0d900ee96f52c40352db4e96df6
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 270708496fbe13b9061abe5d64d5577193db4027
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635561"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450651"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>A HDInsight az Apache Hive- és Apache Hadoop használatával Twitter-adatok elemzése
 
@@ -70,7 +70,7 @@ A következő Python-kód letölti 10 000 tweetek twitterről, és mentse őket 
 
     További információ: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
 
-3. Telepítse az alábbi parancsokkal [Tweepy](https://www.tweepy.org/), [folyamatjelző](https://pypi.python.org/pypi/progressbar/2.2), és a többi szükséges csomagot:
+3. Telepítse az alábbi parancsokkal [Tweepy](https://www.tweepy.org/), [folyamatjelző sáv](https://pypi.python.org/pypi/progressbar/2.2), és a többi szükséges csomagot:
 
    ```bash
    sudo apt install python-dev libffi-dev libssl-dev
