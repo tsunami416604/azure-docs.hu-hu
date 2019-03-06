@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: ff905f34ab63027e9708082c4690e4275220854f
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: fc2333b6bd41b9efdd1fcafd6168906525cb537a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53406793"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440573"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>Az Apache Hadoop MapReduce feladatok futtatása HDInsight REST használatával
 
@@ -36,7 +36,7 @@ Megtudhatja, hogyan használható az Apache Hive-WebHCat REST API egy HDInsight-
 >
 > A REST API használatával védett [alapszintű hitelesítés](https://en.wikipedia.org/wiki/Basic_access_authentication). Kérések mindig készítsen, győződjön meg arról, hogy a hitelesítő adatait biztonságos módon küldje el a kiszolgáló a HTTPS-en keresztül.
 
-1. Állítsa be a fürtre való bejelentkezéshez, a jelen dokumentum a parancsfájlok által használt, használja a followig parancsok egyikét:
+1. Állítsa be a fürtre való bejelentkezéshez, a jelen dokumentum a parancsfájlok által használt, használja a következő parancsok egyikét:
 
     ```bash
     read -p "Enter your cluster login account name: " LOGIN
@@ -107,9 +107,9 @@ Megtudhatja, hogyan használható az Apache Hive-WebHCat REST API egy HDInsight-
     Az URI-t (vagy a mapreduce/jar) végén közli, hogy a kérelem első eleme egy MapReduce-feladatot egy jar-fájlt egy osztály WebHCat. Ezen parancs paraméterei a következők:
 
    * **-d**: `-G` nem használják, ezért a kérelem az alapértelmezett a POST metódust. `-d` Megadja a küldött adatok értékeket a kérelemmel.
-    * **User.name**: A parancsot futtató felhasználó
-    * **JAR**: A jar-fájlt, amely tartalmazza a futtatni kívánt osztály helye
-    * **osztály**: A MapReduce logikát tartalmazó osztály
+    * **user.name**: A parancsot futtató felhasználó
+    * **jar**: A jar-fájlt, amely tartalmazza a futtatni kívánt osztály helye
+    * **class**: A MapReduce logikát tartalmazó osztály
     * **arg**: Az átadott argumentum is, a MapReduce-feladatot. Ebben az esetben, a bemeneti szövegfájl és a használt a kimeneti könyvtár
 
    Ezzel a paranccsal ellenőrizheti az állapotot, a feladat használható Feladatazonosítót kell visszaadnia:

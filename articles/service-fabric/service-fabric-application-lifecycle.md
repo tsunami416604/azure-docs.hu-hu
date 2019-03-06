@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 1e714faa04717ac8e6687db3c074b8a77d649fb2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 65104503af2e177f1898d8509c2d82bd9b58c266
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217207"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57446962"
 ---
 # <a name="service-fabric-application-lifecycle"></a>A Service Fabric-alkalmazás-életciklus
 Egyéb platformok esetén az Azure Service fabric-alkalmazás általában halad végig a következő fázisok szerint: tervezési, fejlesztési, tesztelési, üzembe helyezés, frissítése, karbantartási és eltávolítását. A Service Fabric első osztályú támogatási szolgáltatásokat biztosít a felhőalapú alkalmazások, a fejlesztéstől az üzembe helyezés, a napi felügyeleti és a karbantartási végleges leszerelésének alkalmazás teljes életciklusa. A modell lehetővé teszi, hogy több különböző szerepkörök egymástól függetlenül részt vesznek az alkalmazásfejlesztési életciklust. Ez a cikk áttekintést az API-k és azok hogyan használhatók a eltérő szerepkörök fázisai a a Service Fabric-alkalmazás életciklusa során.
@@ -29,7 +29,7 @@ Egyéb platformok esetén az Azure Service fabric-alkalmazás általában halad 
 ## <a name="service-model-roles"></a>Modell szerepkörök
 A modell szerepkörök a következők:
 
-* **Fejlesztői szolgáltatás**: Moduláris és általános szolgáltatásokat, amelyek újra végezhesse, és az azonos típusú vagy különböző több alkalmazásokban használt alakul ki. A queue szolgáltatás például egy hibajegykezelő alkalmazást (segélyszolgálat) vagy egy e-kereskedelmi alkalmazásban (bevásárlókocsiba) létrehozásához használható.
+* **Fejlesztői szolgáltatás**: Moduláris és általános szolgáltatásokat, amelyek azt egy megváltozott célra, és az azonos típusú vagy különböző több alkalmazásokban használt alakul ki. A queue szolgáltatás például egy hibajegykezelő alkalmazást (segélyszolgálat) vagy egy e-kereskedelmi alkalmazásban (bevásárlókocsiba) létrehozásához használható.
 * **Alkalmazás fejlesztője**: Alkalmazások létrehoz egy bizonyos különleges követelmények vagy forgatókönyvek kielégítéséhez szolgáltatások gyűjteménye integrálásával. Ha például egy elektronikus kereskedelmi webhellyel integrálódhatnak "JSON állapotmentes előtér-szolgáltatás," "Árverés állapotalapú szolgáltatás" és "Várólista állapotalapú szolgáltatás" hozhat létre egy auctioning megoldást.
 * **Alkalmazás-rendszergazda**: Az alkalmazás konfigurációja (Ehhez adja meg a konfigurációs paraméterei), deployment (elérhető erőforrásokhoz való hozzárendelés) és szolgáltatás-minőségi döntéseket. Például egy alkalmazás-rendszergazda úgy dönt, hogy az alkalmazás nyelvi kódot Japánban, például japán vagy (az Egyesült Államok angol nyelven). Egy másik üzembe helyezett alkalmazás különböző beállítással is rendelkezhetnek.
 * **Operátor**: Üzembe helyez, az alkalmazás konfigurációja alapján alkalmazásokat és az alkalmazás-rendszergazda által meghatározott követelményeknek. Az operátornak például építi ki és helyez üzembe az alkalmazást, és biztosítja, hogy fut-e az Azure-ban. Operátorok alkalmazás állapotának és teljesítményének adatainak figyelése és a fizikai infrastruktúra karbantartása, igény szerint.

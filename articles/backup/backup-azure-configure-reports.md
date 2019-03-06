@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: adigan
-ms.openlocfilehash: 945d8690ccb61916455ba4137f59c67c9a3d9f76
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: dbfe33d062c4609ba29adbaa2d9956687115cb5a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237688"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440998"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 Ez a cikk bemutatja a lépést kell végrehajtania a jelentések az Azure Backup konfigurálása a Recovery Services-tároló használatával. Azt is bemutatja, hogyan lehet hozzáférni a jelentésekhez a Power BI használatával. Miután elvégezte ezeket a lépéseket, megnyithatja közvetlenül a Power BI segítségével megtekintheti, testreszabása és jelentéseket hozhat létre.
@@ -29,7 +29,7 @@ Töltse le a legújabb alkalmazást (1.8-as) a probléma elkerülése érdekébe
 - Az Azure Backup-jelentések támogatottak az Azure virtuális gépek biztonsági mentésének és a fájl és mappa biztonsági mentés a felhőbe az Azure Recovery Services Agent használatával.
 - Az Azure SQL Database, Azure-beli fájlmegosztásokat, a Data Protection Manager és az Azure Backup server jelentések jelenleg nem támogatottak.
 - Tárolók és az előfizetések között megtekintheti jelentéseket, ha ugyanazt a tárfiókot az egyes a tárolók van konfigurálva. A kiválasztott tárfiók és a Recovery Services-tárolónak ugyanabban a régióban kell lennie.
-- A jelentések ütemezett frissítésének gyakoriságát a Power BI 24 óra. Egy ad-hoc frissítése a jelentéseket a Power bi-ban hajthat végre. Ebben az esetben az ügyfél tárfiókja a legfrissebb adatok jelentések előállítására szolgál.
+- A jelentések ütemezett frissítésének gyakoriságát a Power BI 24 óra. A jelentések egy ad-hoc frissítése a Power bi-ban hajthat végre. Ebben az esetben az ügyfél tárfiókja a legfrissebb adatok jelentések előállítására szolgál.
 
 ## <a name="prerequisites"></a>Előfeltételek
 - Hozzon létre egy [Azure storage-fiók](../storage/common/storage-quickstart-create-account.md) jelentések konfigurálásához. Ez a tárfiók jelentések kapcsolódó adatok tárolására szolgál.

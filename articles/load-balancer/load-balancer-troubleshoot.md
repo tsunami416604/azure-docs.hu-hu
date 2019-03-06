@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/09/2018
 ms.author: genli
-ms.openlocfilehash: 495325696dad79a6cc1a77b9a87f6db0af4c1156
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 26f60a6f1796b080df3294737ce93bfb43029bf1
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253255"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439117"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Az Azure Load Balancer hibaelhárítása
 
@@ -77,7 +77,7 @@ Ha az előző okok úgy tűnik, ellenőrizni kell, és helyesen feloldani, és a
     - Futtassa egy egyidejű Netsh trace, a cél háttérkészletének virtuális Gépén futó és a egy másik tesztelési virtuális gép ugyanazon a Vneten. Most futtassa a PsPing tesztet egy kis ideig, bizonyos hálózati nyomkövetések gyűjtéséhez és majd leállítja a tesztet. 
     - A hálózati rögzítés elemzése, és tekintse meg, hogy vannak-e a ping lekérdezés kapcsolódó bejövő és kimenő csomagok. 
         - Nincs bejövő csomagok a háttérkészletének virtuális Gépén futó jelennek meg, van-e vélhetően egy hálózati biztonsági csoportok vagy UDR konfiguráció blokkolja a forgalmat. 
-        - Nincs kimenő csomagok háttérkészletének virtuális Gépén futó jelennek meg, ha a virtuális Gépet kell ellenőrizni kell a nem kapcsolódó problémákat (a szolgáltatást, az alkalmazás blokkolja-e a mintavételi portot). 
+        - Nincs kimenő csomagok háttérkészletének virtuális Gépén futó jelennek meg, ha a virtuális Gépet kell ellenőrizni kell a nem kapcsolódó problémákat (például alkalmazás blokkolja-e a mintavételi portot). 
     - Győződjön meg arról, ha a mintavételi csomagok folyamatban van kényszerítve (udr-t beállításainál valószínűleg) egy másik cél a terheléselosztó elérése előtt. Emiatt a forgalmat a háttérbeli virtuális gép soha nem érkezik. 
 * Módosítsa a mintavétel típusát (például HTTP-TCP-), és a megfelelő portot konfigurálja a hálózati biztonsági csoportok hozzáférés-vezérlési listák és a tűzfal ellenőrizheti, hogy a probléma van a mintavétel válasz konfigurációval. Állapot-mintavételi konfigurációban kapcsolatos további információkért lásd: [Endpoint Load Balancing egészségügyi mintavételi konfiguráció](https://blogs.msdn.microsoft.com/mast/2016/01/26/endpoint-load-balancing-heath-probe-configuration-details/).
 

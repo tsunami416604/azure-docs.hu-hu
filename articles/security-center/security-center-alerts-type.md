@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 1f9ea2fd1e9a346046c55db451bc333373896db5
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6bd05a417bfb011dd86b61d654be836ef76099b7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118088"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439683"
 ---
 # <a name="understanding-security-alerts-in-azure-security-center"></a>Az Azure Security Center biztonsági riasztásainak megismerése
 Ez a cikk segít megismerni az Azure Security Centerben elérhető biztonsági riasztások különböző típusait, valamint a kapcsolódó elemzéseket. A riasztások és incidensek kezelésével kapcsolatos további információkért olvassa el a [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](security-center-managing-and-responding-alerts.md) című cikket.
@@ -96,7 +96,7 @@ A Security Center fejlett elemzési módszerekkel azonosítja a feltört erőfor
 * **Az összes fájl árnyékmásolata törölve lett**: Ez a riasztás azt jelzi, hogy árnyékmásolatok törölve lettek.
 * **Gyanús fájltörlési parancsok**: Ez a riasztás azt jelzi, hogy hozható systeminfo parancsok végrehajtására utáni öntörlési tevékenységhez használt kombinációját.  Bár a *systeminfo.exe* megbízható Windows-eszköznek minősül, az egymás után kétszeri futtatása, majd ezt követően egy törlési parancs használata, ahogy ebben az esetben is történt, igen ritka.
 * **Gyanús fióklétrehozás**: Ez a riasztás azt jelzi, hogy a fiók létrejött-e az egy aktivál egy meglévő beépített rendszergazdai jogosultságú fiókhoz. Ezzel a technikával a támadók feltűnésmentesen hozhatnak létre rosszindulatú fiókokat.
-* **Gyanús kötet-árnyékmásolati tevékenység**: Ez a riasztás árnyékmásolati törlési tevékenységet az erőforráson jelzi. A kötet árnyékmásolata (Volume Shadow Copy, VSC) az adatok pillanatképeit tároló fontos összetevő. Ezt a tevékenységet, Zsarolóprogrammal társítva, de az is előfordulhat, hogy jogosult.
+* **Gyanús kötet-árnyékmásolati tevékenység**: Ez a riasztás árnyékmásolati törlési tevékenységet az erőforráson jelzi. A kötet árnyékmásolata (Volume Shadow Copy, VSC) az adatok pillanatképeit tároló fontos összetevő. Ezt a tevékenységet, Zsarolóprogramok társítva, de is lehet, hogy jogosult.
 * **Windows beállításjegyzék adatmegőrzési metódusa**: Ez a riasztás azt jelzi, hogy a Windows beállításjegyzék egy végrehajtható kód megőrzésére tett kísérlet. A rosszindulatú folyamatok gyakran alkalmaznak ehhez hasonló technikákat, hogy a rendszer újraindítása után is megmaradjanak.
 * **Gyanús Új tűzfalszabály**: Ez a riasztás azt jelzi, hogy egy új tűzfalszabály lett hozzáadva *netsh.exe* egy gyanús helyen található végrehajtható érkező adatforgalom engedélyezéséhez.
 * **Gyanús XCOPY-végrehajtások**: Ez a riasztás jelzi, hogy sikerült jelezze, hogy a gépek egy XCOPY-végrehajtások egy sorozatát biztonsága sérült, és a kártevők használták.

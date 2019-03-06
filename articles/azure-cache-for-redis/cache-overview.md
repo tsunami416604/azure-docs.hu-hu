@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 5b2b3a3ec0e9aec603a69211a7493afc31e83283
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 9d789572abf0545eb51b357da091e5a1d712eab2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236549"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433807"
 ---
 # <a name="what-is-azure-cache-for-redis"></a>Mi az Azure Cache redis
 
@@ -57,7 +57,7 @@ Alapszintű | Egy csomópontos gyorsítótár. Ez a szint több memóriaméretet
 
 A gyorsítótárat a létrehozása után is vertikálisan felskálázhatja magasabb szintűvé. Az alacsonyabb szintre való vertikális leskálázás nem támogatott. A méretezési részletes tudnivalókért lásd: [How to Scale Azure Cache redis](cache-how-to-scale.md) és [hogyan automatizálhatja a skálázási művelet](cache-how-to-scale.md#how-to-automate-a-scaling-operation).
 
-### <a name="feature-comparision"></a>Funkciók összehasonlítása
+### <a name="feature-comparison"></a>Funkciók összehasonlítása
 
 A [Azure Cache Redis díjszabási](https://azure.microsoft.com/pricing/details/cache/) oldal nyújt részletes összehasonlítását láthatja az egyes csomagok. Az alábbi táblázat a szintek által támogatott néhány funkciót írja le:
 

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 1629e08d4ba1a7fd7cedb40b1e46d1bfd2766497
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 731b87d7958bb461466b16f2ff724ea33f234ba8
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57215540"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439808"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Szilánkokra osztott több-bérlős egy több-bérlős SaaS-alkalmazás az Azure SQL adatbázis teljesítményének figyelése és kezelése
 
@@ -78,10 +78,10 @@ A *Demo-PerformanceMonitoringAndManagement.ps1* parancsfájl, amely kiható terh
 
 | Bemutató | Forgatókönyv |
 |:--|:--|
-| 2 | Normál intenzitású terhelés létrehozása (körülbelül 30 DTU) |
+| 2 | Normál intenzitású terhelés (nagyjából 30 DTU) |
 | 3 | Bérlőnként hosszabb adatlöketekkel terhelés létrehozása|
-| 4 | Magasabb DTU-löketekkel bérlőnként terhelés létrehozása (hozzávetőleges 70 DTU)|
-| 5 | Hozzon létre egy magas intenzitása (körülbelül 90 dtu-k) létrehozása egyetlen bérlő és a egy normál intenzitású terhelés a minden más bérlők |
+| 4 | Magasabb DTU-löketekkel (KB 70 DTU) bérlőnként terhelés létrehozása|
+| 5 | A magas intenzitása (körülbelül 90 DTU) az egyetlen új bérlő, valamint az összes többi bérlő normál intenzitású terhelés létrehozása |
 
 A terhelésgenerátor egy *szintetikus* CPU-terhelést alkalmaz az összes bérlői adatbázison. A generátor minden bérlői adatbázis számára elindít egy feladatot, amely időközönként meghív egy, a terhelést létrehozó tárolt eljárást. A terhelések szintje (a dtu-k), időtartama és időközönként sokfélék minden adatbázis szimulálva a kiszámíthatatlan bérlői aktivitást.
 
@@ -168,7 +168,7 @@ Ha egy több-bérlős adatbázison belül egyetlen bérlő tartósan magas terhe
 Ebben a gyakorlatban a fűzfa milyen magasabb terhelés tapasztal, amikor a jegyek árusítása egy népszerű esemény hatását szimulálja.
 
 1. Nyissa meg a... \\ *Demo-PerformanceMonitoringAndManagement.ps1* parancsfájlt.
-1. Állítsa be **$DemoScenario = 5**, _normál terhelés, valamint magasabb terhelés létrehozása egyetlen bérlő létrehozása (körülbelül 90 dtu-k)._
+1. Állítsa be **$DemoScenario = 5**, _normál terhelés, valamint magasabb terhelés létrehozása egyetlen bérlő (körülbelül 90 dtu-k) létrehozása._
 1. Állítsa be **$SingleTenantName fűzfa milyen =**
 1. Futtassa a szkriptet az **F5** billentyűvel.
 

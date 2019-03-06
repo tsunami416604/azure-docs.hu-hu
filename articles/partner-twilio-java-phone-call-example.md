@@ -14,15 +14,15 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: microsofthelp@twilio.com
-ms.openlocfilehash: 84c37927eda65be71eb837aef2cb4968a121ee29
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 71ffcc420372215a393f560d01d6c08dee03dfbd
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52426893"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433671"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-java-application-on-azure"></a>A Twilio használata Java-alkalmazás az Azure-ban a telefonhívás módját
-Az alábbi példa bemutatja, hogyan használhatja a Twilio segítségével az Azure-ban üzemeltetett weboldalakról hívást. Az eredményül kapott alkalmazás fogja kérni a felhasználót, telefonhívás-értékek, az alábbi képernyőfelvételen látható módon.
+Az alábbi példa bemutatja, hogyan használhatja a Twilio segítségével az Azure-ban üzemeltetett weboldalakról hívást. Az eredményül kapott alkalmazás fogja kérni a felhasználót, telefonhívás-értékek, az alábbi képernyőképen látható módon.
 
 ![A Twilio és a Java használatával Azure hívás űrlap][twilio_java]
 
@@ -162,7 +162,7 @@ A következő kódra, amely nevezzük, amikor a felhasználó befejezi az űrlap
     </body>
     </html>
 
-Amellett, hogy a hívás, makecall.jsp a Twilio-végpont, API-verzió és a hívás állapotát jeleníti meg. Egy példa az alábbi képernyőfelvételen:
+Amellett, hogy a hívás, makecall.jsp a Twilio-végpont, API-verzió és a hívás állapotát jeleníti meg. Ilyen például, az alábbi képernyőfelvételen látható:
 
 ![A Twilio és a Java használatával Azure hívás válasz][twilio_java_response]
 

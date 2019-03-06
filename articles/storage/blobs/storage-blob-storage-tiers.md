@@ -5,15 +5,15 @@ services: storage
 author: kuhussai
 ms.service: storage
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 03/06/2019
 ms.author: kuhussai
 ms.subservice: blobs
-ms.openlocfilehash: 4660a45014e6afdb091fb40b8fe7f03fdb647aab
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: ec024f8f1cd411455a6cbb2a0b12e7b4751af5fe
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339198"
+ms.locfileid: "57405334"
 ---
 # <a name="azure-blob-storage-premium-preview-hot-cool-and-archive-storage-tiers"></a>Az Azure Blob storage: Prémium (előzetes verzió), a gyors Elérésűre, ritka elérésű és archív tárolási szintek
 
@@ -56,6 +56,8 @@ BLOB storage és GPv2-fiókokban fiókszinten elérhető a **hozzáférési szin
 Előzetes verzióban elérhető van egy prémium szintű hozzáférési szint, mely teszi a gyakran használt adatok nagy teljesítményű hardveren keresztül érhető el. Ez a szint a tárolt adatok tárolják, SSD-meghajtókat, amelyek kisebb késés és a hagyományos merevlemezek képest nagyobb tranzakciós sebesség vannak optimalizálva. A prémium szintű hozzáférési szint a Blokkblob típusú tárfiók típusa csak keresztül érhető el.
 
 Ez a szint a gyors és következetes válaszidők megkövetelő számítási feladatokhoz ideális. Olyan adatok, amely magában foglalja a végfelhasználók számára, például az interaktív videó szerkesztésére statikus webes tartalom online tranzakció- és hasonló esetén használható jól a prémium szintű hozzáférési szintet. Ez a szint személyre szabott sok kis tranzakció, például a telemetriai adatok rögzítését, üzenetküldési és átalakítását végző számítási feladatokhoz.
+
+Az előzetes verzióra vonatkozó további információkért lásd: [Azure prémium szintű Blob Storage előzetes](https://azure.microsoft.com/blog/azure-premium-blob-storage-public-preview/).
 
 ## <a name="hot-access-tier"></a>Gyakran használt adatok hozzáférési szintje
 

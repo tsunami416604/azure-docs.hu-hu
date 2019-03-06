@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: d22ea75dff884adbfaaa7975eb1d1542b4721f16
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 718e34cdba31b3b747ebb5c10f5c5708c0572448
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438575"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436595"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Táblák tömeges másolása az Azure Data Factory használatával
 Ez az oktatóanyag azt mutatja be, hogyan lehet **táblákat másolni az Azure SQL Database-ből az Azure SQL Data Warehouse-ba**. A minta egyéb másolási forgatókönyvek esetén is alkalmazható. Például táblák másolására az SQL Serverről/Oracle-ből az Azure SQL Database-be/Data Warehouse-ba/Azure Blobba, vagy különböző elérési utak másolására a Blobból Azure SQL Database-táblákba.
@@ -46,7 +46,9 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure PowerShell**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikkben szereplő utasításokat.
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+* **Azure PowerShell**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-Az-ps) ismertető cikkben szereplő utasításokat.
 * **Azure Storage-fiók** Az Azure Storage-fiók a tömeges másolási műveletben átmeneti blobtárolóként működik. 
 * **Azure SQL Database** Ez az adatbázis tartalmazza a forrásadatokat. 
 * **Azure SQL Data Warehouse**. Ez az adattárház tárolja az SQL Database-ből átmásolt adatokat. 
@@ -78,24 +80,24 @@ Az SQL Database és az SQL Data Warehouse esetében is engedélyezze az SQL Ser
     Futtassa a következő parancsot, és adja meg az Azure Portalra való bejelentkezéshez használt felhasználónevet és jelszót.
         
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
     Futtassa a következő parancsot a fiókhoz tartozó előfizetések megtekintéséhez.
 
     ```powershell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```
     Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje le a **SubscriptionId** kifejezést az Azure-előfizetés azonosítójára:
 
     ```powershell
-    Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"
+    Select-AzSubscription -SubscriptionId "<SubscriptionId>"
     ```
-2. Futtassa a **Set-AzureRmDataFactoryV2** parancsmagot egy adat-előállító létrehozásához. A parancs végrehajtása előtt cserélje le a helyőrzőket a saját értékeire. 
+2. Futtassa a **Set-AzDataFactoryV2** parancsmaggal hozzon létre egy adat-előállítót. A parancs végrehajtása előtt cserélje le a helyőrzőket a saját értékeire. 
 
     ```powershell
     $resourceGroupName = "<your resource group to create the factory>"
     $dataFactoryName = "<specify the name of data factory to create. It must be globally unique.>"
-    Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName
+    Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName
     ```
 
     Vegye figyelembe a következő szempontokat:
@@ -137,10 +139,10 @@ Ebben az oktatóanyagban létrehoz három társított szolgáltatást a forrás,
 
 2. Az **Azure PowerShellben** váltson az **ADFv2TutorialBulkCopy** mappára.
 
-3. Futtassa a **Set-AzureRmDataFactoryV2LinkedService** parancsmagot a társított szolgáltatás létrehozásához: **AzureSqlDatabaseLinkedService**. 
+3. Futtassa a **Set-AzDataFactoryV2LinkedService** parancsmagot a társított szolgáltatás létrehozásához: **AzureSqlDatabaseLinkedService**. 
 
     ```powershell
-    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseLinkedService" -File ".\AzureSqlDatabaseLinkedService.json"
+    Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseLinkedService" -File ".\AzureSqlDatabaseLinkedService.json"
     ```
 
     Itt látható a minta kimenete:
@@ -174,10 +176,10 @@ Ebben az oktatóanyagban létrehoz három társított szolgáltatást a forrás,
     }
     ```
 
-2. A társított szolgáltatás létrehozásához: **AzureSqlDWLinkedService**futtassa a **Set-AzureRmDataFactoryV2LinkedService** parancsmagot.
+2. A társított szolgáltatás létrehozásához: **AzureSqlDWLinkedService**futtassa a **Set-AzDataFactoryV2LinkedService** parancsmagot.
 
     ```powershell
-    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWLinkedService" -File ".\AzureSqlDWLinkedService.json"
+    Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWLinkedService" -File ".\AzureSqlDWLinkedService.json"
     ```
 
     Itt látható a minta kimenete:
@@ -213,10 +215,10 @@ Ebben az oktatóanyagban a jobb másolási teljesítmény érdekében az Azure B
     }
     ```
 
-2. A társított szolgáltatás létrehozásához: **AzureStorageLinkedService**futtassa a **Set-AzureRmDataFactoryV2LinkedService** parancsmagot.
+2. A társított szolgáltatás létrehozásához: **AzureStorageLinkedService**futtassa a **Set-AzDataFactoryV2LinkedService** parancsmagot.
 
     ```powershell
-    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
+    Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
     ```
 
     Itt látható a minta kimenete:
@@ -252,10 +254,10 @@ Ebben az oktatóanyagban létrehozza a forrás és a fogadó adatkészletet, ame
     }
     ```
 
-2. Az adatkészlet létrehozásához: **AzureSqlDatabaseDataset**futtassa a **Set-AzureRmDataFactoryV2Dataset** parancsmagot.
+2. Az adatkészlet létrehozásához: **AzureSqlDatabaseDataset**futtassa a **Set-AzDataFactoryV2Dataset** parancsmagot.
 
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseDataset" -File ".\AzureSqlDatabaseDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDatabaseDataset" -File ".\AzureSqlDatabaseDataset.json"
     ```
 
     Itt látható a minta kimenete:
@@ -296,10 +298,10 @@ Ebben az oktatóanyagban létrehozza a forrás és a fogadó adatkészletet, ame
     }
     ```
 
-2. Az adatkészlet létrehozásához: **AzureSqlDWDataset**futtassa a **Set-AzureRmDataFactoryV2Dataset** parancsmagot.
+2. Az adatkészlet létrehozásához: **AzureSqlDWDataset**futtassa a **Set-AzDataFactoryV2Dataset** parancsmagot.
 
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWDataset" -File ".\AzureSqlDWDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureSqlDWDataset" -File ".\AzureSqlDWDataset.json"
     ```
 
     Itt látható a minta kimenete:
@@ -388,10 +390,10 @@ Ez a folyamat a táblák listáját használja paraméterként. A lista minden e
     }
     ```
 
-2. A folyamat létrehozásához: **IterateAndCopySQLTables**futtassa a **Set-AzureRmDataFactoryV2Pipeline** parancsmagot.
+2. A folyamat létrehozásához: **IterateAndCopySQLTables**futtassa a **Set-AzDataFactoryV2Pipeline** parancsmagot.
 
     ```powershell
-    Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IterateAndCopySQLTables" -File ".\IterateAndCopySQLTables.json"
+    Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IterateAndCopySQLTables" -File ".\IterateAndCopySQLTables.json"
     ```
 
     Itt látható a minta kimenete:
@@ -464,10 +466,10 @@ Ez a folyamat két lépést hajt végre:
     }
     ```
 
-2. A folyamat létrehozásához: **GetTableListAndTriggerCopyData**futtassa a **Set-AzureRmDataFactoryV2Pipeline** parancsmagot.
+2. A folyamat létrehozásához: **GetTableListAndTriggerCopyData**futtassa a **Set-AzDataFactoryV2Pipeline** parancsmagot.
 
     ```powershell
-    Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "GetTableListAndTriggerCopyData" -File ".\GetTableListAndTriggerCopyData.json"
+    Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "GetTableListAndTriggerCopyData" -File ".\GetTableListAndTriggerCopyData.json"
     ```
 
     Itt látható a minta kimenete:
@@ -485,14 +487,14 @@ Ez a folyamat két lépést hajt végre:
 1. Indítsa el a fő „GetTableListAndTriggerCopyData” folyamat futását, és őrizze meg a folyamat futtatási azonosítóját későbbi monitorozás céljából. Eközben az ExecutePipeline tevékenységben megadott módon elindítja az „IterateAndCopySQLTables” folyamat futását.
 
     ```powershell
-    $runId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName 'GetTableListAndTriggerCopyData'
+    $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName 'GetTableListAndTriggerCopyData'
     ```
 
 2.  Futtassa a következő szkriptet a **GetTableListAndTriggerCopyData** folyamat futási állapotának folyamatos ellenőrzéséhez, majd nyomtassa ki az utolsó folyamatfuttatás és tevékenységfuttatás eredményét.
 
     ```powershell
     while ($True) {
-        $run = Get-AzureRmDataFactoryV2PipelineRun -ResourceGroupName $resourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $runId
+        $run = Get-AzDataFactoryV2PipelineRun -ResourceGroupName $resourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $runId
 
         if ($run) {
             if ($run.Status -ne 'InProgress') {
@@ -507,7 +509,7 @@ Ez a folyamat két lépést hajt végre:
         Start-Sleep -Seconds 15
     }
 
-    $result = Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
+    $result = Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
     Write-Host "Activity run details:" -foregroundcolor "Yellow"
     $result
     ```
@@ -574,7 +576,7 @@ Ez a folyamat két lépést hajt végre:
     ```
 
     ```powershell
-    $result2 = Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId <copy above run ID> -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
+    $result2 = Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId <copy above run ID> -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
     $result2
     ```
 

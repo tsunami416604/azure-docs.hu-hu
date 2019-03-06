@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
-ms.openlocfilehash: 31959cc1bef6b6434f6d3f586052a845837aa438
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: fe77361c4c9bed9310f8443ed4ff37faf7ea53a9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52442591"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454507"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Az Azure API Management példányok kapacitását
 
@@ -78,7 +78,7 @@ A kérelmeket az összetettebb műveleteket is, a magasabb a **kapacitás** hasz
 4. A zöld területen válassza ki **hely** vágását meghatározó a mérőszám a dimenzió által.
 5. Válassza ki a felső sávon a szakasz egy kívánt időkeretet.
 
-    Metrikariasztás értesíti, amikor valami váratlan történik állíthatja be. Ha például értesítések küldése, ha az APIM-példányra lett túllépi a hívásdíjkorlátját több mint 20 percig a várható maximális kapacitást.
+    Metrikariasztás értesíti, amikor valami váratlan történik állíthatja be. Ha például a értesítéseket kapjon az APIM-példányra meghaladja a várható maximális kapacitást, több mint 20 percig.
 
     >[!TIP]
     > Lehetővé teszi, hogy értesíti, amikor a szolgáltatás kevés a kapacitás, vagy az Azure Monitor automatikus skálázási funkció használatával automatikusan adja hozzá az Azure API Management egységek riasztásokat lehet konfigurálni. Skálázási művelet is igénybe vehet körülbelül 30 percet, hogy ennek megfelelően meg kell terveznie a szabályok.  
@@ -86,7 +86,7 @@ A kérelmeket az összetettebb műveleteket is, a magasabb a **kapacitás** hasz
 
 ## <a name="use-capacity-for-scaling-decisions"></a>Használja a kapacitás méretezését döntéseket hozhat
 
-**Kapacitás** a metrika a döntéseket, e skálázásra API Management-példány, a további terhelés kezelésére. Vegye figyelembe:
+**Kapacitás** a metrika a döntéseket, e skálázásra API Management-példány, a további terhelés kezelésére. Consider:
 
 + A hosszú távú trendek és az átlag Hibaoldal.
 + A terhelés növelése figyelmen kívül hagyja a hirtelen ugrásszerűen legtöbbször nem kapcsolódik (lásd "A metrikákkal kapcsolatos viselkedést kapacitás" ismertetése).

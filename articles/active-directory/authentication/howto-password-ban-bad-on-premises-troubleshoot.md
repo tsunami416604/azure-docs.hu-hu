@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e3632fdb3b4d5c1d2b5465671f36a201c5ff990
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 63fdd60c4c462626cc43a7a453bddc0b020b92cf
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193296"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409890"
 ---
 # <a name="preview-azure-ad-password-protection-troubleshooting"></a>Előzetes verzió: Az Azure AD jelszóvédelem hibáinak elhárítása
 
@@ -55,13 +55,13 @@ Ellenőrizze a proxy gép rendelkezik-e a felsorolt végpontokra irányuló a [k
 
 Ez a probléma a tünetek különböző manifest is, de általában rendelkezik egy közös alapvető ok.
 
-Az Azure AD jelszóvédelem kritikus függőségi rendelkezik a titkosítási és visszafejtési funkciót, a Microsoft kulcsszolgáltató szolgáltatás, által biztosított, vagyis a Windows Server 2012 rendszert futtató tartományvezérlőkön és újabb verziói. A KDS engedélyezve van és működőképes a minden Windows Server 2012 és újabb rendszerű tartományvezérlők olyan tartományban kell lennie.  
+Az Azure AD jelszóvédelem kritikus függőségi rendelkezik a titkosítási és visszafejtési funkciót, a Microsoft kulcsszolgáltató szolgáltatás, által biztosított, vagyis a Windows Server 2012 rendszert futtató tartományvezérlőkön és újabb verziói. A KDS engedélyezve van és működőképes a minden Windows Server 2012 és újabb rendszerű tartományvezérlők olyan tartományban kell lennie.
 
-A KDS alapértelmezés szerint a szolgáltatás a szolgáltatás indítási módja manuális (eseményindító indítás) van konfigurálva. Ez a konfiguráció azt jelenti, hogy egy ügyfél megpróbálja a szolgáltatás használatához először elindul igény szerinti. Az alapértelmezett szolgáltatás indítási módja elfogadható-e az Azure AD-jelszó védelmi működjön. 
+A KDS alapértelmezés szerint a szolgáltatás a szolgáltatás indítási módja manuális (eseményindító indítás) van konfigurálva. Ez a konfiguráció azt jelenti, hogy egy ügyfél megpróbálja a szolgáltatás használatához először elindul igény szerinti. Az alapértelmezett szolgáltatás indítási módja elfogadható-e az Azure AD-jelszó védelmi működjön.
 
 Ha le van tiltva a KDS-szolgáltatás indítási módja van konfigurálva, ez a konfiguráció előtt fog megfelelően működni az Azure AD jelszóvédelem kell rögzíteni.
 
-Egy egyszerű tesztelési erre a problémára az, hogy a KDS, akár manuálisan elindítani a Service management MMC-konzolt, vagy más szolgáltatás-felügyeleti eszközöket használ (például futtassa a "net start kdssvc" parancssort konzolon). Sikeresen elindul-e és fut a KDS várt.
+Egy egyszerű tesztelési erre a problémára az, hogy manuálisan indítsa el a KDS, vagy a szolgáltatás az MMC-kezelőkonzolon keresztül, vagy más szolgáltatás-felügyeleti eszközök használata (például futtassa a "net start kdssvc" parancssort konzolon). Sikeresen elindul-e és fut a KDS várt.
 
 A leggyakoribb okát, hogy az Active Directory tartományvezérlő-objektum kívül az alapértelmezett tartományi szervezeti Egységbe. Ez a konfiguráció nem támogatott, amelyet a KDS, és nem egy Azure AD jelszóvédelem által meghatározott korlátozás. A probléma javítása, hogy a tartományvezérlő-objektum az alapértelmezett tartományi szervezeti Egységbe alatt.
 
@@ -118,7 +118,7 @@ Ha úgy döntenek, hogy távolítsa el a nyilvános előzetes verziójú szoftve
 
    Nem hagyja ki a csillag ("*") a $keywords változó értékét a végén.
 
-   Az eredményül kapott objektumok található keresztül a `Get-ADObject` parancs majd átadható olyan parancsoknak `Remove-ADObject`, vagy manuálisan törölték. 
+   Az eredményül kapott objektumok található keresztül a `Get-ADObject` parancs majd átadható olyan parancsoknak `Remove-ADObject`, vagy manuálisan törölték.
 
 4. Manuálisan távolítsa el az összes tartományvezérlő ügynök csatlakozási pontok minden tartományi névhasználati környezetében. Lehet, hogy egy ezeket az objektumokat az erdő, attól függően, hogyan széles körben a nyilvános előzetes verziójú szoftver telepítve lett a tartományvezérlőnkénti. Előfordulhat, hogy felderítése a helyét annak az objektumnak a következő Active Directory PowerShell-paranccsal:
 

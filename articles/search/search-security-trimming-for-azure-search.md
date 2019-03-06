@@ -9,12 +9,12 @@ author: brjohnstmsft
 ms.author: brjohnst
 manager: jlembicz
 ms.custom: seodec2018
-ms.openlocfilehash: 84147b250ea17df9af67cc8a9025cdf6ec59a705
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 326a449d3992d22a4be2d365061c99ef8b13aef9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314227"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453490"
 ---
 # <a name="security-filters-for-trimming-results-in-azure-search"></a>Biztonsági szűrők a tisztítás eredmények elérése érdekében az Azure Search szolgáltatásban
 
@@ -111,7 +111,7 @@ Hozzáadása vagy frissítése a dokumentumok teljes részleteiért olvassa [sze
    
 ## <a name="apply-the-security-filter"></a>A biztonsági szűrők alkalmazása
 
-Annak érdekében, hogy a tároló visszaigénylésének dokumentumok alapján `group_ids` hozzáférést, meg kell keresési lekérdezés küldése az egy `group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))` szűrőt, ahol "group_id1 group_id2...", amely a keresési kérelmet kibocsátó tartozik csoportjai.
+Annak érdekében, hogy a tároló visszaigénylésének dokumentumok alapján `group_ids` hozzáférést, meg kell keresési lekérdezés küldése az egy `group_ids/any(g:search.in(g, 'group_id1, group_id2,...'))` szűrőt, amelyben "group_id1 group_id2, …" a csoportjai, amelyhez a keresési kérelmet kibocsátó tartozik.
 Ez a szűrő megfelel összes dokumentumot, amelynek a `group_ids` mező tartalmaz egy adott azonosítók.
 További részletek az Azure Search-dokumentumok keresése, beolvashatja [dokumentumok keresése](https://docs.microsoft.com/rest/api/searchservice/search-documents).
 Vegye figyelembe, hogy ez a minta bemutatja, hogyan kereshet egy POST kérést dokumentumok.
@@ -152,7 +152,7 @@ A dokumentumok szerezheti vissza, ahol `group_ids` "group_id1" vagy "group_id2" 
 ```
 ## <a name="conclusion"></a>Összegzés
 
-Ez a hogyan felhasználói identitás és az Azure Search az eredményeket szűrheti `search.in()` függvény. Ez a funkció használatával adja át az egyes céldokumentumban társított egyszerű azonosítók egyeztetéshez a kérelmező felhasználó egyszerű azonosítók. Egy keresési kérelmet történik, ha a `search.in` függvény kiszűri a keresési eredmények, amelyekhez a felhasználó rendszerbiztonsági tagok közül egyik sem rendelkezik olvasási hozzáféréssel. Az egyszerű azonosítók hozhat létre például a biztonsági csoportok, szerepkörök vagy akár a felhasználó saját identitását.
+Ez a hogyan felhasználói identitás és az Azure Search az eredményeket szűrheti `search.in()` függvény. Ez a funkció segítségével a kérelmező felhasználó az egyszerű azonosítók társított minden egyes céldokumentumban egyeztetéshez elv azonosítók adja át. Egy keresési kérelmet történik, ha a `search.in` függvény kiszűri a keresési eredmények, amelyekhez a felhasználó rendszerbiztonsági tagok közül egyik sem rendelkezik olvasási hozzáféréssel. Az egyszerű azonosítók hozhat létre például a biztonsági csoportok, szerepkörök vagy akár a felhasználó saját identitását.
  
 ## <a name="see-also"></a>Lásd még
 

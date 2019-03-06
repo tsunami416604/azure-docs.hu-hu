@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/07/2019
 ms.author: alzam
 Customer intent: As someone with a networking background, I want to connect remote users to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 87b8543d8cb658b46ab5e589a310a17a69508a47
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 38ef2d9e95bda21b1b348d996b8856213c657fd7
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411390"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57410179"
 ---
 # <a name="tutorial-create-a-point-to-site-connection-using-azure-virtual-wan-preview"></a>Oktatóanyag: Hozzon létre egy pont – hely kapcsolattal az Azure virtuális WAN (előzetes verzió)
 
@@ -38,11 +38,13 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="before-you-begin"></a>Előkészületek
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
 
 ## <a name="register"></a>A funkció regisztrálása
 
-Kattintson a **Kipróbálás** gombra a funkció egyszerű regisztrálásához az Azure Cloud Shell használatával. Ha a PowerShell helyi inkább futtatná, győződjön meg arról, a legújabb verzióval rendelkezik, és jelentkezzen be a **Connect-AzureRmAccount** és **Select-AzureRmSubscription** parancsokat.
+Kattintson a **Kipróbálás** gombra a funkció egyszerű regisztrálásához az Azure Cloud Shell használatával. Ha a PowerShell helyi inkább futtatná, győződjön meg arról, a legújabb verzióval rendelkezik, és jelentkezzen be a **Connect-AzAccount** és **Select-AzSubscription** parancsokat.
 
 >[!NOTE]
 >Ha nem regisztrálja a funkciót, nem használhatja, és nem jelenik meg a portálon sem.
@@ -52,25 +54,25 @@ Kattintson a **Kipróbálás** gombra a funkció egyszerű regisztrálásához a
 Miután a **Kipróbálás** gombra kattintva megnyílik az Azure Cloud Shell, másolja és illessze be a következő parancsokat:
 
 ```azurepowershell-interactive
-Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowP2SCortexAccess
+Register-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowP2SCortexAccess
 ```
  
 ```azurepowershell-interactive
-Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
+Register-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
 ```
 
 ```azurepowershell-interactive
-Get-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowP2SCortexAccess
+Get-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowP2SCortexAccess
 ```
 
 ```azurepowershell-interactive
-Get-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
+Get-AzProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
 ```
 
 Amikor a funkció már regisztráltként jelenik meg, regisztrálja újra az előfizetést a Microsoft.Network névtérben.
 
 ```azurepowershell-interactive
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
+Register-AzResourceProvider -ProviderNamespace Microsoft.Network
 ```
 
 ## <a name="vnet"></a>1. Virtuális hálózat létrehozása
@@ -149,7 +151,7 @@ A letöltött profillal konfigurálhatja a távelérésű ügyfeleket. Az eljár
 #### <a name="openvpn"></a>OpenVPN
 
 1.  Töltse le az OpenVPN-ügyfelet a hivatalos webhelyről, majd telepítse.
-2.  Töltse le az átjáró VPN-profilját. Ez a pont – hely konfigurációk fülre az Azure Portalon vagy a PowerShell New-AzureRmVpnClientConfiguration teheti meg.
+2.  Töltse le az átjáró VPN-profilját. Ez a pont – hely konfigurációk fülre az Azure Portalon vagy a PowerShell New-AzVpnClientConfiguration teheti meg.
 3.  Csomagolja ki a profilt. Nyissa meg az OpenVPN mappában található vpnconfig.ovpn konfigurációs fájlt a Jegyzettömbben.
 4.  Töltse ki a pont–hely ügyféltanúsítványra vonatkozó részt a pont–hely ügyféltanúsítvány Base-64-kódolású nyilvános kulcsával. PEM formátumú tanúsítvány esetén egyszerűen nyissa meg a .cer-fájlt, és másolja a Base64-kódolású kulcsot a tanúsítványfejlécek között. Itt tekintheti meg, hogyan szerezheti meg a kódolt nyilvános kulcsot a tanúsítvány exportálásával.
 5.  Töltse ki a titkos kulcsra vonatkozó részt a pont–hely ügyféltanúsítvány Base-64-kódolású titkos kulcsával. Itt tekintheti meg a titkos kulcs kinyerésének a módját.
@@ -168,7 +170,7 @@ A letöltött profillal konfigurálhatja a távelérésű ügyfeleket. Az eljár
 #### <a name="openvpn"></a>OpenVPN
 
 1.  Töltsön le egy OpenVPN-ügyfelet, például a Tunnelblicket (innen tölthető le: https://tunnelblick.net/downloads.html), majd telepítse. 
-2.  Töltse le az átjáró VPN-profilját. Ez a pont – hely konfiguráció lapon az Azure Portalon vagy a PowerShell New-AzureRmVpnClientConfiguration teheti meg.
+2.  Töltse le az átjáró VPN-profilját. Ez a pont – hely konfiguráció lapon az Azure Portalon vagy a PowerShell New-AzVpnClientConfiguration teheti meg.
 3.  Csomagolja ki a profilt. Nyissa meg az OpenVPN mappában található vpnconfig.ovpn konfigurációs fájlt a Jegyzettömbben.
 4.  Töltse ki a pont–hely ügyféltanúsítványra vonatkozó részt a pont–hely ügyféltanúsítvány Base-64-kódolású nyilvános kulcsával. PEM formátumú tanúsítvány esetén egyszerűen nyissa meg a .cer-fájlt, és másolja a Base64-kódolású kulcsot a tanúsítványfejlécek között. Itt tekintheti meg, hogyan szerezheti meg a kódolt nyilvános kulcsot a tanúsítvány exportálásával.
 5.  Töltse ki a titkos kulcsra vonatkozó részt a pont–hely ügyféltanúsítvány Base-64-kódolású titkos kulcsával. Itt tekintheti meg a titkos kulcs kinyerésének a módját.
@@ -201,10 +203,10 @@ Létrehozhat egy kapcsolatot az Azure-beli virtuális gépek és a távoli helye
 
 ## <a name="cleanup"></a>12. Az erőforrások eltávolítása
 
-Ha már nincs szükség ezekre az erőforrásokra, a [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) paranccsal törölheti az erőforráscsoportot és az összes benne található erőforrást. A „myResourceGroup” helyére írja be az erőforráscsoport nevét, és futtassa a következő PowerShell-parancsot:
+Ha ezekre az erőforrásokra már nincs szüksége, használhatja [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) , távolítsa el az erőforráscsoportot és az összes benne található erőforrást. A „myResourceGroup” helyére írja be az erőforráscsoport nevét, és futtassa a következő PowerShell-parancsot:
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>További lépések

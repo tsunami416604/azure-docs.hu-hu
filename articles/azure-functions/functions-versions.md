@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: glenga
-ms.openlocfilehash: 6d4f588a98e519298b91c158b11730a23567aa7f
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: aff7bd1d186c0b5e90657361aadb2a7b8b7b9951
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310964"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433323"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Az Azure Functions runtime verziók áttekintése
 
@@ -95,7 +95,7 @@ A Visual Studióban, válassza ki a futtatókörnyezet-verzió a projekt létreh
 ##### <a name="version-2x"></a>Verzió 2.x
 
 ```xml
-<TargetFramework>netstandard2.0</TargetFramework>
+<TargetFramework>netcoreapp2.1</TargetFramework>
 <AzureFunctionsVersion>v2</AzureFunctionsVersion>
 ```
 
@@ -126,6 +126,8 @@ HTTP- és időzítő eseményindító kivételével minden kötések kell explic
 Az alábbi táblázat mutatja, melyik kötések támogatottak a minden egyes modul verzióját.
 
 [!INCLUDE [Full bindings table](../../includes/functions-bindings.md)]
+
+[!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
 ## <a name="next-steps"></a>További lépések
 

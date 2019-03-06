@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e96c7da9ac53927ed48003370f40f5861f48d3d6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 71eeed62c6de2a3771909e8489ca816930993435
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204771"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442222"
 ---
 # <a name="linkedin-integration-data-sharing-and-consent"></a>LinkedIn-integráció az adatok megosztása és jóváhagyás
 
@@ -76,7 +76,7 @@ Ha csatlakozik a Microsoft és a LinkedIn-fiók, engedélyezi a Microsoftnak adj
 
 A Microsoft elérhető adatok nincsenek maradandóan tárolva a Linkedinnel, kivéve a névjegyeket. A Microsoft Contacts tárolják a Linkedinen, amíg a felhasználók távolítsa el őket. Tudjon meg többet [importált névjegyek törlése a LinkedIn](https://www.linkedin.com/help/linkedin/answer/43377).
 
-A személyes adatok LinkedIn-a használja a további információkért lásd: a [LinkedIn adatvédelmi szabályzatát](https://www.linkedin.com/legal/privacy-policy). LinkedIn szolgáltatások, az adatátviteli és tárolási adatok áramolhasson az Európai Unióból, az Egyesült Államokban és a biztonsági és oldhatja meg, az adatvédelem védelemmel [Európai Unió adatforgalom](https://www.linkedin.com/help/linkedin/answer/62533).
+A személyes adatok LinkedIn-a használja a további információkért lásd: a [LinkedIn adatvédelmi szabályzatát](https://www.linkedin.com/legal/privacy-policy). LinkedIn szolgáltatások, az adatátviteli és tárolási is adatfolyam az Európai Unióból, az Egyesült Államokban és vissza, és az adatvédelem védett leírtak szerint [Európai Unió adatforgalom](https://www.linkedin.com/help/linkedin/answer/62533).
 
 ## <a name="next-steps"></a>További lépések
 

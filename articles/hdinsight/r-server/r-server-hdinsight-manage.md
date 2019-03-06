@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 7e135432ce8490c505e7d3a1022407dd5d9b9776
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 0699686338a14ed6cc1ddcb076e14de86d0249d9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584394"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438605"
 ---
 # <a name="manage-ml-services-cluster-on-azure-hdinsight"></a>Machine Learning-szolgáltatások az Azure HDInsight-fürt kezelése
 
-Ebben a cikkben megismerheti, hogyan kezelheti a Machine Learning Services meglévő fürt az Azure HDInsight végrehajtani a feladatokat, mint a mulitiple egyidejű felhasználók hozzáadása, a távoli kapcsolódás a Machine Learning-szolgáltatások-fürthöz, a számítási környezet módosítása stb.
+Ebből a cikkből megismerheti, hogyan kezelheti a Machine Learning Services meglévő fürt az Azure HDInsight végrehajtani a feladatokat, mint a több egyidejű felhasználók hozzáadása, egy gépi Tanulási szolgáltatások fürthöz való távoli csatlakozást számítási környezet módosítása stb.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

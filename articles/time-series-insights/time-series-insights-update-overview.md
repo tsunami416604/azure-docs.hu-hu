@@ -11,16 +11,16 @@ ms.workload: big-data
 ms.topic: overview
 ms.date: 12/05/2018
 ms.custom: seodec18
-ms.openlocfilehash: 847eddc78f8abc938e68e6fe383a773dadeaf779
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 7f8731f48b96ccbe0e77970af1ccefa1d7a7155f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557835"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438771"
 ---
 # <a name="azure-time-series-insights-preview-overview"></a>Az Azure Time Series Insights előzetes verziója – áttekintés
 
-Az Azure Time Series Insights előzetes verziója olyan teljes körű platform--szolgáltatásként ajánlat. Betöltési, feldolgozásához, tárolásához és magas contextualized, time series-optimalizált IoT-méretű adatok lekérdezésére szolgál. A Time Series Insights ad hoc adatáttekintés és működési elemzés ideális. A Time Series Insights egy olyan ajánlat, hogy megfelel-e a széles körű kell ipari IoT központi telepítések egyedileg bővíthető és testre szabott szolgáltatás.
+Az Azure Time Series Insights előzetes verziója olyan teljes körű platform--szolgáltatásként ajánlat. Betöltési, feldolgozásához, tárolásához és magas contextualized, time series-optimalizált IoT-méretű adatok lekérdezésére szolgál. A Time Series Insights alkalmi adatfeltárás és működési elemzés ideális. A Time Series Insights egy olyan ajánlat, hogy megfelel-e a széles körű kell ipari IoT központi telepítések egyedileg bővíthető és testre szabott szolgáltatás.
 
 ## <a name="video"></a>Videó
 
@@ -44,7 +44,7 @@ Egy tipikus IoT-adatfolyam az alábbi képen látható.
 
 ## <a name="azure-time-series-insights-for-industrial-iot"></a>Az Azure Time Series Insights az ipari IoT
 
-Az aktuális IoT fekvő változatos. Ügyfeleink a gyártási, a gépjárműipar, energia, segédprogramok, okosépületek és tanácsadási iparágak kiterjednek. Forgatókönyvek között megtalálható az ad hoc adatfeltárás, ahol az adatok alakját az ismeretlen. Funkciók működési elemzés is között a működési hatékonyság növelésén sematikus, vagy explicit módon modellezett adatok. Ezekben az esetekben általában egymás mellett, és támogatja a különböző használati helyzetekhez. Platform-képességeket, ipari IoT a vállalatok és a digitális revolution sikeréhez kulcsfontosságú, hogy a következők:
+Az aktuális IoT fekvő változatos. Ügyfeleink a gyártási, a gépjárműipar, energia, segédprogramok, okosépületek és tanácsadási iparágak kiterjednek. Forgatókönyvek között megtalálható az ad-hoc adatfeltárás, ahol az adatok alakját az ismeretlen. Funkciók működési elemzés is között a működési hatékonyság növelésén sematikus, vagy explicit módon modellezett adatok. Ezekben az esetekben általában egymás mellett, és támogatja a különböző használati helyzetekhez. Platform-képességeket, ipari IoT a vállalatok és a digitális revolution sikeréhez kulcsfontosságú, hogy a következők:
 
 - Többrétegű tárolás, online és offline is. 
 - Évtizednyi alatt az idősorozat-adatok tárolásának képessége. 

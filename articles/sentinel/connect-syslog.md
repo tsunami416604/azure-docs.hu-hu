@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: ec23d4cec5ec1dbcaba5eca73ae6aba8391f2742
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 55949da97f58f1d8c1670f69d25e92d6bb4e9eef
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242139"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447302"
 ---
 # <a name="connect-your-external-solution-using-syslog"></a>A Syslog használatával külső megoldás csatlakoztatása
 
@@ -27,7 +27,7 @@ ms.locfileid: "57242139"
 > Az Azure Sentinel jelenleg nyilvános előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Bármely helyszíni berendezés, amely támogatja az Azure-Sentinel Syslog kapcsolódhat. Ez a készüléket és a Sentinel-Azure közötti Linux gépen alapuló ügynök használatával történik. Ha a Linux-gép az Azure-ban, streamelheti a készülék vagy az alkalmazás létrehozása az Azure-ban, és csatlakoztassa egy dedikált munkaterület a naplókat. Ha a Linux-gép nem az Azure-ban, egy dedikált helyszíni virtuális gép vagy a gép, amelyre a Linuxhoz készült ügynök telepítése a naplók streamelheti a a berendezéshez. 
+Bármely helyszíni berendezés, amely támogatja az Azure-Sentinel Syslog kapcsolódhat. Ez a készüléket és a Sentinel-Azure közötti Linux gépen alapuló ügynök használatával történik. Ha a Linux-gép az Azure-ban, streamelheti a készülék vagy az alkalmazás létrehozása az Azure-ban, és csatlakoztassa egy dedikált munkaterület a naplókat. Ha a Linux-gép nem az Azure-ban, streamelheti a naplókat az a készülék egy dedikált a helyszíni virtuális gép vagy gép, amelyre a Linuxhoz készült ügynök telepítése. 
 
 > [!NOTE]
 > Ha a készülék támogatja a Syslog CEF, a kapcsolat teljes körű és kell ezt a lehetőséget, és kövesse a [adatgyűjtés a CEF](connect-common-event-format.md).

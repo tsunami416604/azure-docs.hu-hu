@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 5d0259726a45346f1e9b891cb235531d6c24d4a2
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 488e1adb6d533dc88994e1dc08513870f56bd9c0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53433423"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433042"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>A helyszíni Apache Hadoop-fürtök áttelepítése az Azure HDInsight - adatok áttelepítése – ajánlott eljárások
 
@@ -34,9 +34,9 @@ Két fő lehetőség át a helyszíni adatok Azure-környezet van:
 
 Az alábbi táblázat a hozzávetőleges adatok átvitel időtartama az adatok mennyisége és a hálózati sávszélesség alapján van. A Data box használja, ha az adatok migrálása várhatóan több mint három hetet igénybe vehet.
 
-|**Adatok mennyisége**|**Hálózati sávszélesség**|||
+|**Adatok mennyisége**|**Network Bandwidth**|||
 |---|---|---|---|
-|| **45 MB/s (T3)**|**100 MB/s**|**1 GB/s**|**10 GB/s**
+|| **45 MB/s (T3)**|**100 Mbps**|**1 GB/s**|**10 GB/s**
 |1 TB|2 nap|1 nap| 2 óra|14 perc|
 |10 TB|22 nap|10 nap|1 nap|2 óra|
 |35 TB|76 nap|34 nap|3 nap|8 óra|
@@ -94,7 +94,7 @@ A hive-metaadattár a parancsprogramok használatával vagy az adatbázis-replik
 
 #### <a name="hive-metastore-migration-using-scripts"></a>Hive-metaadattár áttelepítési parancsfájlok használata
 
-1. Hozza létre a Hive-DDLs helyszíni Hive-metaadattár. Ebben a lépésben végezhető használatával egy [burkoló bash-szkript](https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md).
+1. A Hive-DDLs, a Hive-metaadattár helyi létrehozásához. Ebben a lépésben végezhető használatával egy [burkoló bash-szkript](https://github.com/hdinsight/hdinsight.github.io/blob/master/hive/hive-export-import-metastore.md).
 1. A létrehozott DDL HDFS URL-címet lecseréli a WASB vagy ADLS/ABFS URL-címek szerkesztése.
 1. Futtassa a frissített DDL a metaadattár a HDInsight-fürtből.
 1. Győződjön meg arról, hogy a Hive-metaadattár verziója kompatibilis a helyszíni és a felhő között.

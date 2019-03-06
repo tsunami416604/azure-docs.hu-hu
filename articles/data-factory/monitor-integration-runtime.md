@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: douglasl
-ms.openlocfilehash: 8c3883ae6dd2928fb6cc4f22510e7992daac7793
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 60d4d9224a6a70c8fa2702dede8721f742fa6256
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015304"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57434946"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Az Azure Data Factory integrációs modul monitorozása  
 **Az Integration runtime** különböző adatintegrációs képességeket biztosít a különböző hálózati környezetekben az Azure Data Factory által használt számítási infrastruktúra áll. Integrációs modulok a Data Factory által kínált három típusa van:
@@ -26,16 +26,18 @@ ms.locfileid: "54015304"
 - Saját üzemeltetésű integrációs modul
 - Azure SSIS integrációs modul
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Az integrációs modul (IR) példányát állapotának lekéréséhez futtassa a következő PowerShell-parancsot: 
 
 ```powershell
-Get-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName MyDataFactory -ResourceGroupName MyResourceGroup -Name MyAzureIR -Status
+Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName MyDataFactory -ResourceGroupName MyResourceGroup -Name MyAzureIR -Status
 ``` 
 
 A parancsmag visszaadja a különböző adatokat a különböző típusú integrációs modult. Ez a cikk ismerteti a tulajdonságok és az állapotok az egyes integrációs modul.  
 
 ## <a name="azure-integration-runtime"></a>Azure-beli integrációs modul
-A számítási erőforrás egy Azure-beli integrációs modul teljes körűen felügyelt rugalmasan az Azure-ban. Az alábbi táblázat ismerteti által visszaadott tulajdonságokat a **Get-AzureRmDataFactoryV2IntegrationRuntime** parancsot:
+A számítási erőforrás egy Azure-beli integrációs modul teljes körűen felügyelt rugalmasan az Azure-ban. Az alábbi táblázat ismerteti által visszaadott tulajdonságokat a **Get-AzDataFactoryV2IntegrationRuntime** parancsot:
 
 ### <a name="properties"></a>Tulajdonságok
 Az alábbi táblázat ismerteti az Azure-beli integrációs modul a parancsmag által visszaadott tulajdonságait:
@@ -58,7 +60,7 @@ A következő táblázat tartalmazza az Azure-beli integrációs modul lehetség
 | Offline | Az Azure-beli integrációs modul az offline állapotú egy belső hiba miatt. |
 
 ## <a name="self-hosted-integration-runtime"></a>Saját üzemeltetésű integrációs modul
-Ez a szakasz ismerteti a Get-AzureRmDataFactoryV2IntegrationRuntime parancsmag által visszaadott tulajdonságokat. 
+Ez a szakasz ismerteti a Get-AzDataFactoryV2IntegrationRuntime parancsmag által visszaadott tulajdonságokat. 
 
 > [!NOTE] 
 > A visszaadott tulajdonságait és általános saját üzemeltetésű integrációs modult, és a futtatókörnyezet lévő mindegyik csomópont adatait tartalmazzák.  
@@ -86,7 +88,7 @@ Az alapértelmezett érték az egyidejű feladatok határérték van beállítva
 
 A horizontális felskálázáshoz csomópontok számának növelése. Ha növeli a csomópontok számát, az egyidejű feladatok határértéke az összes elérhető csomópont egyidejű feladat korlát értékeinek összegét.  Például ha egy csomópont engedélyezi, hogy legfeljebb 12 egyidejű feladatok futtatásához, majd a három több hasonló csomópontok hozzáadása lehetővé teszi, hogy legfeljebb 48 egyidejű feladatok (4 x 12) futtatása. Azt javasoljuk, hogy egyidejű feladatok korlátjának növelését, csak akkor, ha kevés az erőforrás-használat az alapértelmezett értékekre láthatja minden egyes csomóponton.
 
-A számított alapértelmezett érték az Azure Portalon felül lehet bírálni. Válassza ki a szerző > kapcsolatok > integrációs modulok > szerkesztése > csomópont > / csomópont egyidejű feladat érték módosítása. A PowerShell is használható [update-azurermdatafactoryv2integrationruntimenode](https://docs.microsoft.com/powershell/module/azurerm.datafactoryv2/update-azurermdatafactoryv2integrationruntimenode?view=azurermps-6.4.0#examples) parancsot.
+A számított alapértelmezett érték az Azure Portalon felül lehet bírálni. Válassza ki a szerző > kapcsolatok > integrációs modulok > szerkesztése > csomópont > / csomópont egyidejű feladat érték módosítása. A PowerShell is használható [update-Azdatafactoryv2integrationruntimenode](https://docs.microsoft.com/powershell/module/az.datafactory/update-Azdatafactoryv2integrationruntimenode#examples) parancsot.
   
 ### <a name="status-per-node"></a>Állapot (csomópontonkénti)
 Az alábbi táblázatban egy saját üzemeltetésű integration runtime csomópontját a lehetséges állapotok:
@@ -111,10 +113,10 @@ A következő táblázat a lehetséges állapotok egy saját üzemeltetésű int
 | Offline | Nem csomópont online állapotú. |
 | Korlátozott | A saját üzemeltetésű integrációs modul csomópontja nem minden kifogástalan állapotban vannak. Ez az állapot nem figyelmezteti, hogy egyes csomópontok esetleg nem működik. Ez az állapot okozhatja egy credential szinkronizálási problémát a kezelő/munkavégző csomópont. |
 
-Használja a **Get-AzureRmDataFactoryV2IntegrationRuntimeMetric** parancsmag használatával beolvassa a részletes tartalmazó JSON-adattartalom saját üzemeltetésű integrációs modul tulajdonságait, és a pillanatkép értékeket végrehajtásának ideje alatt a a parancsmag.
+Használja a **Get-AzDataFactoryV2IntegrationRuntimeMetric** parancsmag használatával beolvassa a részletes tartalmazó JSON-adattartalom saját üzemeltetésű integrációs modul tulajdonságok és azok pillanatkép értékeket a parancsmag a Futtatás ideje alatt.
 
 ```powershell
-Get-AzureRmDataFactoryV2IntegrationRuntimeMetric -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName  | | ConvertTo-Json 
+Get-AzDataFactoryV2IntegrationRuntimeMetric -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName  | | ConvertTo-Json 
 ```
 
 Példa a kimenetre (azt feltételezi, hogy nincsenek-e a saját üzemeltetésű integrációs modul társított két csomópont):
@@ -174,7 +176,7 @@ Az Azure-SSIS integrációs modul, az Azure virtuális gépeken (vagy csomópont
 | VNetId | A virtuális hálózati erőforrás-azonosító az Azure-SSIS integrációs modullal való csatlakozásra. |
 | Alhálózat | Az alhálózat neve az Azure-SSIS integrációs modul csatlakozni. |
 | ID (Azonosító) | Erőforrás-Azonosítóját az Azure-SSIS integrációs modult. |
-| Típus | A típusa (felügyelt/önkiszolgáló-Hosted) az Azure-SSIS integrációs modult. |
+| Typo | A típusa (felügyelt/önkiszolgáló-Hosted) az Azure-SSIS integrációs modult. |
 | ResourceGroupName | Az Azure-erőforráscsoport, amelyben az adat-előállító és az Azure-SSIS integrációs modul létrehozott neve. |
 | DataFactoryName | Az Azure-beli adat-előállító neve. |
 | Name (Név) | Az Azure-SSIS integrációs modul neve. |
@@ -213,16 +215,16 @@ A következő képernyőfelvételek bemutatják, hogyan válassza ki az Azure-SS
 Az alábbi példához hasonlóan parancsfájl segítségével ellenőrizze az állapotát az Azure-SSIS integrációs modult.
 
 ```powershell
-Get-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Status
+Get-AzDataFactoryV2IntegrationRuntime -DataFactoryName $DataFactoryName -Name $AzureSSISName -ResourceGroupName $ResourceGroupName -Status
 ```
 
 ### <a name="more-info-about-the-azure-ssis-integration-runtime"></a>További információ az Azure-SSIS integrációs modul
 
 További információ az Azure-SSIS integrációs modul a következő cikkekben talál:
 
-- [Az Azure-SSIS integrációs modul](concepts-integration-runtime.md#azure-ssis-integration-runtime). Ez a cikk tájékoztatást integrációs modulok általában többek között az Azure-SSIS integrációs modult. 
+- [Azure-SSIS Integration Runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime). Ez a cikk tájékoztatást integrációs modulok általában többek között az Azure-SSIS integrációs modult. 
 - [Oktatóanyag: SSIS-csomagok üzembe helyezése az Azure-ban](tutorial-create-azure-ssis-runtime-portal.md). Ez a cikk lépésenként mutatja be egy Azure-SSIS integrációs modul létrehozását, és egy Azure SQL-adatbázist használ az SSIS-katalógus futtatására. 
-- [kézikönyv: Hozzon létre egy Azure-SSIS integrációs modul](create-azure-ssis-integration-runtime.md). Ez a cikk az oktatóanyagon alapul, és útmutatás az Azure SQL Database felügyelt példány használatával és az integrációs modul csatlakoztatása virtuális hálózathoz. 
+- [Útmutató: Hozzon létre egy Azure-SSIS integrációs modul](create-azure-ssis-integration-runtime.md). Ez a cikk az oktatóanyagon alapul, és útmutatás az Azure SQL Database felügyelt példány használatával és az integrációs modul csatlakoztatása virtuális hálózathoz. 
 - [Azure-SSIS integrációs modul kezelése](manage-azure-ssis-integration-runtime.md). Ez a cikk bemutatja, hogyan lehet leállítani, elindítani vagy eltávolítani egy Azure-SSIS integrációs modult. Azt is bemutathatja, hogyan skálázhatja fel horizontálisan az Azure-SSIS integrációs modult úgy, hogy további csomópontokat ad hozzá. 
 - [Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz](join-azure-ssis-integration-runtime-virtual-network.md). Ez a cikk egy Azure-SSIS integrációs modul Azure virtuális hálózathoz való csatlakoztatásával kapcsolatos elméleti információkat tartalmaz. Azt is ismerteti a virtuális hálózat konfigurálása, hogy az Azure-SSIS integrációs modul csatlakozhat a virtuális hálózat az Azure portal használatával. 
 

@@ -16,12 +16,12 @@ ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57f7d72be86a05b9785f7714380363d9c6ddb5c6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c0afc31bf08a5037d91885bc6a85c6aeaf858825
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205698"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436655"
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Az Azure AD Connect kapcsolati problémáinak hibaelhárítása
 Ez a cikk azt ismerteti, hogyan működik az Azure AD Connect és az Azure AD közötti kapcsolat és a kapcsolódási problémák elhárítása. Ezek olyan problémák, nagy valószínűséggel olyan környezetben, egy proxykiszolgáló láthatók legyenek.
@@ -76,7 +76,7 @@ Ez a hiba akkor jelenik meg, ha a végpont **https://secure.aadcdn.microsoftonli
 
 ### <a name="the-password-cannot-be-verified"></a>A jelszó nem lehet ellenőrizni.
 Ha a telepítővarázsló sikeres a Kapcsolódás az Azure ad-ben, de maga a jelszó nem ellenőrizhető, hogy ezt a hibaüzenetet:  
-![badpassword](./media/tshoot-connect-connectivity/badpassword.png)
+![Helytelen jelszó.](./media/tshoot-connect-connectivity/badpassword.png)
 
 * Az a jelszó egy ideiglenes jelszót, és kötelező megváltoztatni? Ennyi az egész ténylegesen a helyes jelszót? Próbáljon meg bejelentkezni https://login.microsoftonline.com (egy másik számítógépre, mint az Azure AD Connect-kiszolgáló) és ellenőrizze, hogy a fiók használható.
 
@@ -165,7 +165,7 @@ A hitelesítő adatok lejártak. Módosítsa a jelszót.
 ### <a name="authorization-failure"></a>Engedélyezési hiba
 Nem sikerült engedélyezni a felhasználót, hogy az Azure ad-ben a műveletre.
 
-### <a name="authentication-cancelled"></a>Hitelesítési megszakítva
+### <a name="authentication-canceled"></a>A hitelesítéshez meg lett szakítva
 A többtényezős hitelesítés (MFA) kihívás meg lett szakítva.
 
 <div id="connect-msolservice-failed">

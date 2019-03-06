@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: b8264e4f69a7561865f5d14087bc81bc933a6c59
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: cd02930394fd4cd09808a808765e54ff9ea6b4ea
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821404"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57434301"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>HDInsight az Apache Hadoop-fürtök létrehozása Resource Manager-sablonok használatával
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -30,7 +30,7 @@ A cikkben található útmutatások követéséhez lesz szüksége:
 * Az Azure PowerShell, illetve az Azure klasszikus parancssori felület.
 
 ### <a name="resource-manager-templates"></a>Resource Manager-sablonok
-A Resource Manager-sablon megkönnyíti a következő resoruces az alkalmazás létrehozása az egyetlen, koordinált műveletben:
+A Resource Manager-sablon megkönnyíti a következőket az alkalmazás létrehozása az egyetlen, koordinált műveletben:
 * HDInsight-fürtök és a tőle függő erőforrások (például az alapértelmezett tárfiók).
 * Egyéb erőforrások (például az Azure SQL Database használatához [Apache Sqoop](https://sqoop.apache.org/)).
 

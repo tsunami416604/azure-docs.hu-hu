@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 02/09/2019
-ms.openlocfilehash: ddc363e6dd9fda1c8c97a0dd89bf3764c48bf06d
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: dea0a38b1f543fbb17cb0cd98ee4f96144d07f4e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195293"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432903"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Frissítse az adattárház Gen2-re
 
@@ -69,7 +69,7 @@ A következő táblázat összefoglalja régió szerint, amikor a alacsonyabb Ge
 
 A fenti rendelkezésre állási diagram alapján, azt fogja ütemezni a Gen1-példányok automatikus frissítéseket. Váratlan megakadás rendelkezésre az adatraktár elkerülése érdekében az automatikus frissítésekre lesz ütemezve a karbantartási ütemezéshez során. Ütemezések szerint további információkért lásd: [karbantartási ütemezés megtekintése](viewing-maintenance-schedule.md)
 
-A frissítési folyamat is szükség lesz egy rövid dobja el a kapcsolat (KB. 5 perc), hogy indítsa újra az adattárházba.  Az adattárház újra lett indítva, miután teljes mértékben elérhető lesz. Azonban a teljesítménye léphetnek fel, a frissítési folyamat továbbra is a háttérben lévő adatfájlok frissítése. Változnak, hogy a teljesítményromlást fordított időt az adatfájlokat méretétől függ.
+A frissítési folyamat is szükség lesz egy rövid dobja el a kapcsolat (körülbelül 5 perc), hogy indítsa újra az adattárházba.  Az adattárház újra lett indítva, miután teljes mértékben elérhető lesz. Azonban a teljesítménye léphetnek fel, a frissítési folyamat továbbra is a háttérben lévő adatfájlok frissítése. Változnak, hogy a teljesítményromlást fordított időt az adatfájlokat méretétől függ.
 
 A fájl adatfrissítési folyamat futtatásával is felgyorsíthatja [Alter Index rebuild](sql-data-warehouse-tables-index.md) az összes elsődleges oszlopcentrikus táblákba, az újraindítás után egy nagyobb slo-t és az erőforrás osztály használatával.
 
@@ -82,7 +82,7 @@ Választhat, saját frissítéséhez az alábbi lépéseket egy meglévő Gen1 a
 
 Két lehetőség van során egy helyi frissítése.  Az aktuális data warehouse helyben vagy frissítheti, vagy Gen1 adattárház állíthatja be egy Gen2-példányt.
 
-- [Frissítés helyben](upgrade-to-latest-generation.md) – Ez a beállítás frissíti a meglévő Gen1 adattárház Gen2-re. A frissítési folyamat is szükség lesz egy rövid dobja el a kapcsolat (KB. 5 perc), hogy indítsa újra az adattárházba.  Az adattárház újra lett indítva, miután teljes mértékben elérhető lesz. Ha a frissítés során problémákat tapasztal, nyisson meg egy [támogatási kérelem](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) és "Frissítés Gen2" lehetséges okaként hivatkoznak.
+- [Frissítés helyben](upgrade-to-latest-generation.md) – Ez a beállítás frissíti a meglévő Gen1 adattárház Gen2-re. A frissítési folyamat is szükség lesz egy rövid dobja el a kapcsolat (körülbelül 5 perc), hogy indítsa újra az adattárházba.  Az adattárház újra lett indítva, miután teljes mértékben elérhető lesz. Ha a frissítés során problémákat tapasztal, nyisson meg egy [támogatási kérelem](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket) és "Frissítés Gen2" lehetséges okaként hivatkoznak.
 - [Frissítés a visszaállítási pont](sql-data-warehouse-restore.md) – egy felhasználói visszaállítási pont létrehozása az aktuális Gen1 adattárházra, és állítsa vissza a közvetlenül egy Gen2-példányt. A meglévő Gen1 adatraktár érvényben marad. A visszaállítás befejezését követően az Gen2-adattárház teljes mértékben elérhető lesz.  A visszaállított Gen2-példányon összes tesztelés és ellenőrzés folyamat futtatása után az eredeti Gen1 példány lehet törölni.
 
    - 1. lépés: Az Azure Portalról [egy felhasználói visszaállítási pont létrehozása a](sql-data-warehouse-restore.md#create-a-user-defined-restore-point-using-the-azure-portal).

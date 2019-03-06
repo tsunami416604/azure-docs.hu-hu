@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: 67ea9ece7ba0c71484e9117db13fd2c708d87baf
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: b198f860c10bd207a191057e21a8a159c5ebde26
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312868"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57403515"
 ---
 # <a name="create-azure-resource-manager-template"></a>Az Azure Resource Manager-sablon létrehozása
 
@@ -44,7 +44,7 @@ Tekintse át a sablonokat úgy, hogy a sablon működésének megismerése a ré
 
 * A [funkciók](resource-group-authoring-templates.md#functions) szakaszt, amely bemutatja a sablonban használt sablon kifejezések testre szabott.
 
-* A [erőforrások](resource-manager-templates-resources.md) rész, amely bemutatja az Azure-erőforrások, amelyek az előfizetés vannak telepítve.
+* A [erőforrások](resource-group-authoring-templates.md#resources) rész, amely bemutatja az Azure-erőforrások, amelyek az előfizetés vannak telepítve.
 
 * A [kimenete](resource-group-authoring-templates.md#outputs) rész, amely megjeleníti az üzembe helyezés befejezése után visszaadott értékeket.
 
@@ -98,7 +98,7 @@ Címkék hozzáadása az erőforrások, hogy logikusan rendszerezhesse kategóri
 }
 ```
 
-A címkék dinamikusan is alkalmazhat a paramétereket. További információkért lásd: [sablonban címkék](resource-manager-templates-resources.md#tags).
+A címkék dinamikusan is alkalmazhat a paramétereket. További információkért lásd: [sablonban címkék](resource-group-using-tags.md#templates).
 
 ## <a name="review-template-functions"></a>Tekintse át a sablonokban használható függvények
 
@@ -176,7 +176,7 @@ Az alábbi példa feltételesen helyezi üzembe a storage-fiók:
 }
 ```
 
-További információkért lásd: a [feltétel elem](resource-manager-templates-resources.md#condition).
+További információkért lásd: a [feltétel elem](resource-group-authoring-templates.md#condition).
 
 ## <a name="review-dependencies"></a>Tekintse át a függőségek
 

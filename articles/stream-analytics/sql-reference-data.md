@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: 79f0e58ea11d8bdb8c30ca1e50fae2635f719681
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: cc6e4083ba952eb9799aa91f76cf6e5ab75c7f64
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118020"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449580"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job-preview"></a>Egy SQL Database-ből a referenciaadatok használata az Azure Stream Analytics-feladat (előzetes verzió)
 
@@ -158,7 +158,7 @@ Nincsenek további nem [folyamatos átviteli egység költség](https://azure.mi
 
 **Hogyan tudhatom meg, hogy folyamatban van a referencia-adatok pillanatkép, az SQL DB lekérdezhetők, és használja az Azure Stream Analytics-feladatot?**
 
-Nincsenek logikai név (a metrikák az Azure Portal) használatával az SQL database referenciaadatok bemeneti állapotának figyelésére, amelyek alapján szűrt tagnak metrikákat.
+Nincsenek két mérőszám logikai név (a metrikák az Azure Portal) használatával az SQL database referenciaadatok bemeneti állapotának figyelésére, amelyek alapján szűrve.
 
    * InputEvents: Ez a metrika az SQL database referencia-adatkészlet a betöltött rekordok számát méri.
    * InputEventBytes: Ez a mérőszám a hivatkozás adatok pillanatkép betölti a Stream Analytics-feladat memória mérete méri. 

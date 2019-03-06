@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: f0d3641800d8ec2f9fd403b006e81af04444c143
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a6e4f816d3c5be9d3a4f4824ad7ed26d48763034
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813126"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433270"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Csatlakozás az Azure ITSM-eszközeit IT Service Management-összekötő használatával
 
@@ -289,7 +289,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
     - Ellenőrizze, helyes megadása a felhasználónév, jelszó, ügyfél-azonosító és titkos Ügyfélkód az egyes kapcsolatok.  
     - Ellenőrizze, hogy az a megfelelő ITSM-termékben hozhatja létre a kapcsolatot, hogy megfelelő jogosultságokkal.  
  - A Service Manager-kapcsolatok esetén  
-    - Győződjön meg arról, hogy a webalkalmazás sikeresen telepítve lesz, és a hibrid kapcsolat jön létre. A helyszíni Service Manager géppel sikeresen létrejött a kapcsolat ellenőrzéséhez keresse fel a webes alkalmazás URL-CÍMÉT, így a dokumentációban leírt módon a [hibrid kapcsolat](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection).  
+    - Győződjön meg arról, hogy a webalkalmazás sikeresen telepítve lesz, és a hibrid kapcsolat jön létre. A helyi a Service Manager géppel sikeresen létrejött a kapcsolat ellenőrzéséhez keresse fel a webes alkalmazás URL-CÍMÉT, így a dokumentációban leírt módon a [hibrid kapcsolat](../../azure-monitor/platform/itsmc-connections.md#configure-the-hybrid-connection).  
 
 2.  Ha ServiceNow adatait nem első szinkronizálva van a Log Analyticsbe, győződjön meg arról, hogy a ServiceNow-példány nem alszik. ServiceNow fejlesztési példányok néha lépjen alvó állapotba üresjáratban hosszabb ideig. Ellenkező esetben jelentse a problémát.
 3.  Ha a Log Analytics-riasztásokkal aktiválódik, de a munka elemek nem jönnek létre az ITSM-termékben vagy konfigurációelemek nem létrehozott/kapcsolódó munkaelemek vagy egyéb általános információkat, tekintse meg a következő helyeken:

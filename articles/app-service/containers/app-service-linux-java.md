@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 0d24fbe075316e492b638a2877439af270250d70
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: b28316242f608fcfc2b368170190a771c4abbc8e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234631"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456108"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>A linuxon futó App Service-hez Java fejlesztői útmutatója
 
@@ -28,7 +28,7 @@ Ez az útmutató a főbb fogalmakat és a Linux App Service-ben használata Java
 
 ## <a name="deploying-your-app"></a>Az alkalmazás üzembe helyezése
 
-A Maven beépülő modul segítségével telepítheti a .jar és a .war-fájlok. Lásd: [ebben a dokumentációban](https://docs.microsoft.com/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme?view=azure-java-stable) bővebben a Maven bővítménnyel. 
+A Maven beépülő modul segítségével telepítheti a .jar és a .war-fájlok. Lásd: [ebben a dokumentációban](https://docs.microsoft.com/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme?view=azure-java-stable) bővebben a Maven bővítménnyel.
 
 Ha nem használ Mavent, a telepítési módszertől függ az archív típusát:
 
@@ -45,9 +45,9 @@ Teljesítményjelentések készítésére, forgalom Vizualizációk és egészs�
 
 Lásd: [az alkalmazásteljesítmény-figyelés Java-alkalmazások a Linuxon futó Azure App Service-eszközöket](how-to-java-apm-monitoring.md) útmutatókra New Relic és az AppDynamics konfigurálása az App Service Linux rendszeren futó Java alkalmazásokat.
 
-### <a name="ssh-console-access"></a>SSH hozzáféréséhez a konzolhoz 
+### <a name="ssh-console-access"></a>SSH hozzáféréséhez a konzolhoz
 
-A Linuxos környezetben az alkalmazást futtató SSH-kapcsolatának áll rendelkezésre áll-e. Lásd: [SSH-támogatás a Linuxon futó Azure App Service](/azure/app-service/containers/app-service-linux-ssh-support) teljes körű útmutatás a webböngészőt vagy a helyi terminálban a Linux rendszerhez való csatlakozáshoz.
+A Linuxos környezetben az alkalmazást futtató SSH-kapcsolatának érhető el. Lásd: [SSH-támogatás a Linuxon futó Azure App Service](/azure/app-service/containers/app-service-linux-ssh-support) teljes körű útmutatás a webböngészőt vagy a helyi terminálban a Linux rendszerhez való csatlakozáshoz.
 
 ### <a name="streaming-logs"></a>Folyamatos átviteli naplók
 
@@ -71,7 +71,7 @@ További információkért lásd: [folyamatos átviteli naplók az Azure CLI-vel
 
 Engedélyezése [alkalmazásnaplózás](/azure/app-service/troubleshoot-diagnostic-logs#enablediag) az Azure Portalon keresztül vagy [Azure CLI-vel](/cli/azure/webapp/log#az-webapp-log-config) App Service-ben az alkalmazás normál konzolkimenet és standard szintű konzol hibaadatfolyamok írni a helyi konfigurálása fájlrendszer- vagy Azure Blob Storage. Az App Service helyi fájlrendszer naplózása példány le van tiltva 12 óra után van konfigurálva. Ha hosszabb adatmegőrzés megadásához, az alkalmazás kiírhatja a kimenetet egy Blob storage-tároló konfigurálása.
 
-Ha az alkalmazás [Logback](https://logback.qos.ch/) vagy [Log4j](https://logging.apache.org/log4j) nyomkövetés, is továbbíthatja, tekintse át az Azure Application Insights a nyomkövetések utasításai a naplózási keretrendszer konfigurációs [Ismerkedés a Java-nyomkövetési naplókat az Application Insights](/azure/application-insights/app-insights-java-trace-logs). 
+Ha az alkalmazás [Logback](https://logback.qos.ch/) vagy [Log4j](https://logging.apache.org/log4j) nyomkövetés, is továbbíthatja, tekintse át az Azure Application Insights a nyomkövetések utasításai a naplózási keretrendszer konfigurációs [Ismerkedés a Java-nyomkövetési naplókat az Application Insights](/azure/application-insights/app-insights-java-trace-logs).
 
 ## <a name="customization-and-tuning"></a>Testreszabás és hangolás
 
@@ -91,12 +91,12 @@ Az Azure Portalon alatt **Alkalmazásbeállítások** a webalkalmazást, hozzon 
 A alkalmazás beállításai az Azure App Service Linux Maven beépülő modul konfigurálásához beállításérték/címkéket adhat hozzá, az Azure beépülő modul szakaszban. Az alábbi példa egy adott minimális és maximális Java heapsize állítja be:
 
 ```xml
-<appSettings> 
-    <property> 
-        <name>JAVA_OPTS</name> 
-        <value>$JAVA_OPTS -Xms512m -Xmx1204m</value> 
-    </property> 
-</appSettings> 
+<appSettings>
+    <property>
+        <name>JAVA_OPTS</name>
+        <value>$JAVA_OPTS -Xms512m -Xmx1204m</value>
+    </property>
+</appSettings>
 ```
 
 Az egyetlen alkalmazást futtató és egy üzembe helyezési pont az App Service-csomag a fejlesztők használhatják a következő beállításokat:
@@ -104,7 +104,6 @@ Az egyetlen alkalmazást futtató és egy üzembe helyezési pont az App Service
 - B1 és S1-példányok:-Xms1024m-Xmx1024m
 - B2 és S2-példányok:-Xms3072m-Xmx3072m
 - B3 és S3-példányok:-Xms6144m-Xmx6144m
-
 
 Amikor alkalmazás halommemória finomhangolásának beállításai, tekintse át az App Service-csomag részletei, és több alkalmazás és üzembe helyezési pont figyelembe kell keresnie a optimális lefoglalt memória.
 
@@ -115,34 +114,34 @@ Kapcsolja be az Azure Portalon, a web sockets támogatása a **Alkalmazásbeáll
 Kapcsolja be, a web socket támogatása az Azure CLI használatával a következő paranccsal:
 
 ```azurecli-interactive
-az webapp config set -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME} --web-sockets-enabled true 
+az webapp config set -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME} --web-sockets-enabled true
 ```
 
 Indítsa újra az alkalmazást:
 
 ```azurecli-interactive
-az webapp stop -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME} 
+az webapp stop -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME}
 az webapp start -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME}  
 ```
 
-### <a name="set-default-character-encoding"></a>Állítsa be alapértelmezett forráskarakter-kódolás 
+### <a name="set-default-character-encoding"></a>Állítsa be alapértelmezett forráskarakter-kódolás
 
 Az Azure Portalon alatt **Alkalmazásbeállítások** a webalkalmazást, hozzon létre egy új alkalmazásbeállítást nevű `JAVA_OPTS` értékkel `$JAVA_OPTS -Dfile.encoding=UTF-8`.
 
-Másik lehetőségként konfigurálnia az alkalmazásbeállítást, az App Service-Maven bővítménnyel. A beállítás nevét és értékét címkék hozzáadása a beépülő modul konfiguráció: 
+Másik lehetőségként konfigurálnia az alkalmazásbeállítást, az App Service-Maven bővítménnyel. A beállítás nevét és értékét címkék hozzáadása a beépülő modul konfiguráció:
 
 ```xml
-<appSettings> 
-    <property> 
-        <name>JAVA_OPTS</name> 
-        <value>$JAVA_OPTS -Dfile.encoding=UTF-8</value> 
-    </property> 
-</appSettings> 
+<appSettings>
+    <property>
+        <name>JAVA_OPTS</name>
+        <value>$JAVA_OPTS -Dfile.encoding=UTF-8</value>
+    </property>
+</appSettings>
 ```
 
 ## <a name="secure-applications"></a>Alkalmazások védelme
 
-Az App Service Linux rendszeren futó Java-alkalmazások rendelkeznek ugyanazokat a [ajánlott biztonsági eljárások](/azure/security/security-paas-applications-using-app-services) más alkalmazásokként. 
+Az App Service Linux rendszeren futó Java-alkalmazások rendelkeznek ugyanazokat a [ajánlott biztonsági eljárások](/azure/security/security-paas-applications-using-app-services) más alkalmazásokként.
 
 ### <a name="authenticate-users"></a>Felhasználók hitelesítése
 
@@ -150,15 +149,15 @@ Az Azure Portalon, az alkalmazás-hitelesítés beállítása a **hitelesítési
 
 Ha több bejelentkezési szolgáltatók engedélyeznie kell, kövesse az utasításokat a a [testre szabhatja az App Service-hitelesítés](https://docs.microsoft.com/azure/app-service/app-service-authentication-how-to) cikk.
 
-Spring Boot fejlesztők használhatják a [Azure Active Directory Spring Boot starter](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory?view=azure-java-stable) ismerős Spring biztonsági jegyzetek és API-kat használó alkalmazások biztonságossá tételéhez. Ügyeljen arra, hogy növelje a fejléc maximális méretét a a `application.properties` fájlt. Javasoljuk, hogy a egy értéke `16384`. 
+Spring Boot fejlesztők használhatják a [Azure Active Directory Spring Boot starter](/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory?view=azure-java-stable) ismerős Spring biztonsági jegyzetek és API-kat használó alkalmazások biztonságossá tételéhez. Ügyeljen arra, hogy növelje a fejléc maximális méretét a a `application.properties` fájlt. Javasoljuk, hogy a egy értéke `16384`.
 
 ### <a name="configure-tlsssl"></a>A TLS/SSL konfigurálása
 
 Kövesse az utasításokat a [meglévő egyéni SSL-tanúsítvány kötése](/azure/app-service/app-service-web-tutorial-custom-ssl) meglévő SSL-tanúsítvány feltöltéséhez, és kösse az alkalmazás tartománynév. Alapértelmezés szerint az alkalmazás továbbra is lehetővé teszi a HTTP kapcsolatok – az adott lépése az oktatóanyagban az SSL és TLS.
 
-## <a name="tomcat"></a>Tomcat 
+## <a name="data-sources"></a>Adatforrások
 
-### <a name="connecting-to-data-sources"></a>Kapcsolódás az adatforrásokhoz
+### <a name="tomcat"></a>Tomcat
 
 >[!NOTE]
 > Ha az alkalmazás a Spring-keretrendszert vagy a Spring Boot, beállíthatja Spring adatok JPA adatbázis-kapcsolódási információt környezeti változókként [fájlban az alkalmazás Tulajdonságok]. Ezután [Alkalmazásbeállítások](/azure/app-service/web-sites-configure#app-settings) határozhat meg ezeket az értékeket az alkalmazás az Azure portal vagy a parancssori felület.
@@ -174,19 +173,19 @@ Ezek az utasítások érvényesek az összes adatbázis-kapcsolatok. Töltse ki 
 Tomcat a Java adatbázis-kapcsolat (JDBC) vagy a Java adatmegőrzés API (JPA) használatára konfigurálja, hogy először testre szabhatja a `CATALINA_OPTS` környezeti változó, Tomcat indításakor a olvassa be. Állítsa be ezeket az értékeket az Alkalmazásbeállítás keresztül a [App Service-Maven bővítménnyel](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md):
 
 ```xml
-<appSettings> 
-    <property> 
-        <name>CATALINA_OPTS</name> 
-        <value>"$CATALINA_OPTS -Ddbuser=${DBUSER} -Ddbpassword=${DBPASSWORD} -DconnURL=${CONNURL}"</value> 
-    </property> 
-</appSettings> 
+<appSettings>  
+    <property>  
+        <name>CATALINA_OPTS</name>  
+        <value>"$CATALINA_OPTS -Ddbuser=${DBUSER} -Ddbpassword=${DBPASSWORD} -DconnURL=${CONNURL}"</value>  
+    </property>  
+</appSettings>  
 ```
 
 Vagy állítsa be a környezeti változókat az Azure Portalon az "Alkalmazás beállítások" panelen.
 
 Következő lépésként határozza meg, ha az adatforrás elérhető, több alkalmazást vagy a Tomcat servlet futó összes alkalmazás kell lennie.
 
-#### <a name="for-application-level-data-sources"></a>Alkalmazásszintű adatforrások: 
+#### <a name="application-level-data-sources"></a>Alkalmazásszintű adatforrások
 
 1. Hozzon létre egy `context.xml` fájlt a `META-INF/` könyvtárat a projekthez. Hozzon létre a `META-INF/` könyvtárat, ha még nem létezik.
 
@@ -195,11 +194,11 @@ Következő lépésként határozza meg, ha az adatforrás elérhető, több alk
     ```xml
     <Context>
         <Resource
-            name="jdbc/dbconnection" 
+            name="jdbc/dbconnection"
             type="javax.sql.DataSource"
             url="${dbuser}"
             driverClassName="<insert your driver class name>"
-            username="${dbpassword}" 
+            username="${dbpassword}"
             password="${connURL}"
         />
     </Context>
@@ -214,10 +213,11 @@ Következő lépésként határozza meg, ha az adatforrás elérhető, több alk
     </resource-env-ref>
     ```
 
-#### <a name="for-shared-server-level-resources"></a>A kiszolgálói szintű közös erőforrások:
+#### <a name="shared-server-level-resources"></a>Megosztott, kiszolgálószintű erőforrások
 
 1. Másolja ki a tartalmát `/usr/local/tomcat/conf` be `/home/tomcat/conf` az App Service Linux rendszeren az SSH használatával, ha nem rendelkezik olyan konfigurációs van már példány.
-    ```
+
+    ```bash
     mkdir -p /home/tomcat
     cp -a /usr/local/tomcat/conf /home/tomcat/conf
     ```
@@ -229,11 +229,11 @@ Következő lépésként határozza meg, ha az adatforrás elérhető, több alk
     ...
     <Context>
         <Resource
-            name="jdbc/dbconnection" 
+            name="jdbc/dbconnection"
             type="javax.sql.DataSource"
             url="${dbuser}"
             driverClassName="<insert your driver class name>"
-            username="${dbpassword}" 
+            username="${dbpassword}"
             password="${connURL}"
         />
     </Context>
@@ -250,7 +250,7 @@ Következő lépésként határozza meg, ha az adatforrás elérhető, több alk
     </resource-env-ref>
     ```
 
-#### <a name="finally-place-the-driver-jars-in-the-tomcat-classpath-and-restart-your-app-service"></a>Végül a Tomcat osztályútvonal helyezze az illesztőprogram JAR-fájlok kivételével, és indítsa újra az App Service: 
+#### <a name="finally-place-the-driver-jars-in-the-tomcat-classpath-and-restart-your-app-service"></a>Végül a Tomcat osztályútvonal helyezze az illesztőprogram JAR-fájlok kivételével, és indítsa újra az App Service
 
 1. Győződjön meg arról, hogy a JDBC-illesztőprogram fájlokat is helyezheti őket a Tomcat classloader rendelkezésére állnak a `/home/tomcat/lib` könyvtár. (Létrehozza ezt a könyvtárat, ha ezt még nem létezik.) Ezeket a fájlokat feltöltheti az App Service-példányhoz, hajtsa végre az alábbi lépéseket:  
     1. Az Azure App Service-webpp bővítményének telepítése:
@@ -259,17 +259,36 @@ Következő lépésként határozza meg, ha az adatforrás elérhető, több alk
       az extension add –name webapp
       ```
 
-    2. Futtassa a következő CLI-parancsot hozhat létre egy SSH-alagutat a helyi rendszerről, App Service-ben:
+    1. Futtassa a következő CLI-parancsot hozhat létre egy SSH-alagutat a helyi rendszerről, App Service-ben:
 
       ```azurecli-interactive
       az webapp remote-connection create –g [resource group] -n [app name] -p [local port to open]
       ```
 
-    3. Az SFTP-ügyféllel a helyi bújtatás port csatlakozik és tölt fel a fájlokat, és a `/home/tomcat/lib` mappát.
+    1. Az SFTP-ügyféllel a helyi bújtatás port csatlakozik és tölt fel a fájlokat, és a `/home/tomcat/lib` mappát.
 
     Az FTP-ügyfél segítségével azt is megteheti, töltse fel a JDBC-illesztővel. Kövesse az alábbi [vonatkozó, az FTP-hitelesítő adatok első](https://docs.microsoft.com/azure/app-service/deploy-configure-credentials).
 
 2. Ha létrehozott egy kiszolgálószintű adatforrást, az App Service Linux alkalmazás újraindítása. Alaphelyzetbe állítja a tomcat `CATALINA_HOME` való `/home/tomcat/conf` és a frissített konfigurációt használja.
+
+### <a name="spring-boot"></a>Spring Boot
+
+Csatlakozás adatforrásokhoz a Spring Boot-alkalmazások, javasoljuk, hogy kapcsolati karakterláncainak létrehozása és betöltése őket a `application.properties` fájlt.
+
+1. Az "Alkalmazás beállítások" szakaszban az App Service panel állítsa be a karakterlánc nevét, az érték mezőbe illessze be a JDBC kapcsolati karakterlánc, és állítsa be az "Egyéni" típusát. Tárhelybeállítás, igény szerint állíthatja be ezt a kapcsolati karakterláncot.
+
+    ![Kapcsolati karakterlánc létrehozása a portálon.][1]
+
+    Ez a kapcsolati karakterlánc érhető el az alkalmazás nevű környezeti változóban `CUSTOMCONNSTR_<your-string-name>`. A fentiekben létrehozott kapcsolati karakterlánc neve például `CUSTOMCONNSTR_exampledb`.
+
+2. Az a `application.properties` fájlt, hivatkozhat a kapcslat karakterláncot a környezeti változó neve. A jelen példában a következő lenne használjuk.
+
+    ```yml
+    app.datasource.url=${CUSTOMCONNSTR_exampledb}
+    ```
+
+Tekintse át a [adatok elérése a Spring Boot-dokumentáció](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-data-access.html
+) és [konfigurációk externalized](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html) Ez a témakör a további információt.
 
 ## <a name="docker-containers"></a>Docker-tárolók
 
@@ -282,7 +301,7 @@ App Service Linux rendszeren Java-webalkalmazások felügyelt üzemeltetési ké
 - A [Tomcat-szervlet tároló](https://tomcat.apache.org/) csomagolt alkalmazások futtatásához, web archive-(WAR-) fájlok. Támogatott verziók a következők: 8.5 és 9.0-s.
 - Java használata futtatókörnyezetének futó alkalmazások a csomagolt Java archiválására (JAR) fájlokat. Az egyetlen támogatott főbb verzió Java 8.
 
-## <a name="java-runtime-statement-of-support"></a>Java runtime rendszerállapot-támogatás 
+## <a name="java-runtime-statement-of-support"></a>Java runtime rendszerállapot-támogatás
 
 ### <a name="jdk-versions-and-maintenance"></a>JDK-verziók és karbantartás
 
@@ -315,3 +334,6 @@ A fejlesztők is [nyissa meg a probléma](/azure/azure-supportability/how-to-cre
 ## <a name="next-steps"></a>További lépések
 
 Látogasson el a [Azure Java-fejlesztőknek készült](/java/azure/) center az Azure gyors útmutatók, oktatóanyagok és Java-dokumentáció található.
+
+<!--Image references-->
+[1]: ./media/app-service-linux-java/connection-string.png

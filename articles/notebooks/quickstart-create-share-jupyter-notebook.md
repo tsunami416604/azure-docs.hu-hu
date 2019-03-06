@@ -1,5 +1,5 @@
 ---
-title: Létrehozhat és megoszthat a Jupyter notebook az Azure-ban |} A Microsoft Docs
+title: Létrehozhat és megoszthat a Jupyter notebook az Azure-ban
 description: Gyorsan létrehozása és futtatása a Jupyter notebook Azure notebookokban, majd a notebook megoszthatja másokkal.
 services: app-service
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: eddeb251bac3cc0d02573c4c0b3047a2eafd8237
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.openlocfilehash: 3e9850a40d949ce09e9c44a6b4b63a1f58259e7a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865116"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447132"
 ---
-# <a name="quickstart-create-and-share-a-notebook"></a>Gyors útmutató: Létrehozása, és a egy jegyzetfüzetet megosztása
+# <a name="quickstart-create-and-share-a-notebook"></a>Gyors útmutató: Notebook létrehozása és megosztása
 
 1. Lépjen a [Azure notebookok](https://notebooks.azure.com) , és jelentkezzen be. (További információkért lásd: [rövid útmutató – jelentkezzen be Azure-jegyzetfüzetek](quickstart-sign-in-azure-notebooks.md)).
 
@@ -83,7 +83,7 @@ ms.locfileid: "52865116"
     print(msg)
     ```
 
-1. Válassza ki **futtatása** (billentyűparancs: a Shift + Enter) a kód futtatásához. A cella alatti kimenetnek kell megjelennie a sikeres az alábbi szöveghez hasonló:
+1. Válassza ki **futtatása** (billentyűparancs: Shift + Enter) futtassa a kódot. A cella alatti kimenetnek kell megjelennie a sikeres az alábbi szöveghez hasonló:
 
     ```output
     Hello, Azure Notebooks! Today is Thursday, 15 November, 2018
@@ -93,7 +93,7 @@ ms.locfileid: "52865116"
 
     ![Mentés ikonra a Jupyter notebook eszköztár](media/quickstarts/hello-results-save-icon.png)
 
-1. Válassza ki a **fájl** > **Halt, zárja be** menü paranccsal állíthatja le a kiszolgálón, és zárja be a böngészőablakot.
+1. Válassza ki a **fájl** > **zárja be és Halt** menü paranccsal állíthatja le a kiszolgálón, és zárja be a böngészőablakot.
 
 ## <a name="share-the-notebook"></a>A notebook megosztása
 

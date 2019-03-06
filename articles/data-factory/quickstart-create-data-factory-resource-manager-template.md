@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: douglasl
-ms.openlocfilehash: c3a9864a901d44d0c84c6946c55e5dc2c700cbac
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 7d02dedc6979f1b9b78ef1ec3f74728c67574f56
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447599"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437054"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Oktatóanyag: Hozzon létre egy Azure data factoryt az Azure Resource Manager-sablon használatával
 
@@ -34,7 +34,9 @@ A rövid útmutató bemutatja, hogyan hozhat létre Azure-beli adat-előállít�
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikkben szereplő utasításokat a legújabb Azure PowerShell-modulok telepítéséhez.
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-Az-ps) ismertető cikkben szereplő utasításokat a legújabb Azure PowerShell-modulok telepítéséhez.
 
 ## <a name="resource-manager-templates"></a>Resource Manager-sablonok
 
@@ -328,7 +330,7 @@ Hozzon létre egy **ADFTutorialARM-Parameters.json** elnevezésű JSON-fájlt, a
 A PowerShellben futtassa a következő parancsot Data Factory-entitások a rövid útmutató során korábban létrehozott Resource Manager-sablonnal történő üzembe helyezéséhez.
 
 ```PowerShell
-New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFTutorial\ADFTutorialARM.json -TemplateParameterFile C:\ADFTutorial\ADFTutorialARM-Parameters.json
+New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile C:\ADFTutorial\ADFTutorialARM.json -TemplateParameterFile C:\ADFTutorial\ADFTutorialARM-Parameters.json
 ```
 
 A következő mintához hasonló kimenet jelenik meg:
@@ -368,9 +370,9 @@ A sablon a következő Data Factory-entitásokat helyezi üzembe:
 - Másolási tevékenységgel rendelkező folyamat
 - A folyamatot elindító eseményindító
 
-Az üzembe helyezett eseményindító leállított állapotban van. Az eseményindító elindításának egyik módja a **Start-AzureRmDataFactoryV2Trigger** PowerShell-parancsmag használata. A következő eljárás részletesen bemutatja a lépéseket:
+Az üzembe helyezett eseményindító leállított állapotban van. A módon az eseményindító elindításának egyik használata a **Start-AzDataFactoryV2Trigger** PowerShell-parancsmagot. A következő eljárás részletesen bemutatja a lépéseket:
 
-1. A PowerShell ablakában hozzon létre egy változót, amely az erőforráscsoport nevét tárolja. Másolja be a következő parancsot a PowerShell ablakába, majd nyomja le az ENTER billentyűt. Ha más erőforráscsoport-nevet adott meg a New-AzureRmResourceGroupDeployment parancs számára, itt frissítheti az értéket.
+1. A PowerShell ablakában hozzon létre egy változót, amely az erőforráscsoport nevét tárolja. Másolja be a következő parancsot a PowerShell ablakába, majd nyomja le az ENTER billentyűt. Ha a New-AzResourceGroupDeployment parancs egy másik erőforráscsoport-nevet adta meg, Itt frissítheti az értéket.
 
     ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup"
@@ -388,7 +390,7 @@ Az üzembe helyezett eseményindító leállított állapotban van. Az eseményi
 4. Az adat-előállító és az eseményindító nevének megadása után kérje le **az eseményindító állapotát** a következő PowerShell-parancs futtatásával:
 
     ```powershell
-    Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $triggerName
+    Get-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $triggerName
     ```
 
     Itt látható a minta kimenete:
@@ -405,7 +407,7 @@ Az üzembe helyezett eseményindító leállított állapotban van. Az eseményi
 5. **Indítsa el az eseményindítót**. Az eseményindító egész órakor futtatja a sablonban meghatározott folyamatot. Ez azt jelenti, hogy ha 14:25-kor hajtotta végre a parancsot, az eseményindító 15:00-kor futtatja először a folyamatot. Ezután futtatja a folyamatot a megadott befejezési időpontja az eseményindító óránként amíg.
 
     ```powershell
-    Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
+    Start-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
     ```
     
     Itt látható a minta kimenete:
@@ -416,10 +418,10 @@ Az üzembe helyezett eseményindító leállított állapotban van. Az eseményi
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
     True
     ```
-6. A Get-AzureRmDataFactoryV2Trigger parancs újbóli futtatásával ellenőrizze, hogy elindult-e az eseményindító.
+6. Győződjön meg arról, hogy az eseményindító elindítása a Get-AzDataFactoryV2Trigger parancs újbóli futtatásával.
 
     ```powershell
-    Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
+    Get-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -TriggerName $triggerName
     ```
     
     Itt látható a minta kimenete:
@@ -466,7 +468,7 @@ Az üzembe helyezett eseményindító leállított állapotban van. Az eseményi
 8. Ha sikeres/sikertelen futtatást lát, állítsa le az eseményindítót. Az eseményindító óránként egyszer futtatja a folyamatot. A folyamat minden futtatáskor átmásolja ugyanazt a fájlt a bemeneti mappából a kimeneti mappába. Az eseményindító leállításához futtassa a következő parancsot a PowerShell ablakában.
     
     ```powershell
-    Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $triggerName
+    Stop-AzDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $triggerName
     ```
 
 [!INCLUDE [data-factory-quickstart-verify-output-cleanup.md](../../includes/data-factory-quickstart-verify-output-cleanup.md)]
@@ -604,7 +606,7 @@ Meghatározhat egy folyamatot, amely adatokat másol egy Azure Blob-adatkészlet
 
 #### <a name="trigger"></a>Eseményindító
 
-Meghatározhat egy eseményindítót, amely óránként egyszer futtatja a folyamatot. Az üzembe helyezett eseményindító leállított állapotban van. Indítsa el az eseményindítót a **Start-AzureRmDataFactoryV2Trigger** parancsmaggal. Az eseményindítókról további információkat a [Folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md#triggers) című cikkben talál.
+Meghatározhat egy eseményindítót, amely óránként egyszer futtatja a folyamatot. Az üzembe helyezett eseményindító leállított állapotban van. Indítsa el az eseményindítót a használatával a **Start-AzDataFactoryV2Trigger** parancsmagot. Az eseményindítókról további információkat a [Folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md#triggers) című cikkben talál.
 
 ```json
 {
@@ -647,11 +649,11 @@ Az oktatóanyagban létrehozott egy sablont a Data Factory-entitások definiál�
 Példa:
 
 ```PowerShell
-New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Dev.json
+New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Dev.json
 
-New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Test.json
+New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Test.json
 
-New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Production.json
+New-AzResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Production.json
 ```
 
 Megfigyelheti, hogy az első parancs a fejlesztőkörnyezet, a második a tesztkörnyezet, a harmadik pedig az éles környezet paraméterfájlját használja.

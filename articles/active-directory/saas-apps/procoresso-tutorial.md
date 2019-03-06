@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/13/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d72f4ac39ac992d0386b3971cd4d3bc6616f0a28
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 62320d6523652d91f35e55196a84cc32ea7bc55d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186455"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440165"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Oktatóanyag: Az Azure Active Directory-integráció Procore SSO-val
 
@@ -214,7 +214,7 @@ Kérjük, kövesse az alábbi lépéseket Procore tesztfelhasználó létrehozá
 
     ![Egyszeri bejelentkezés konfigurálása](./media/procoresso-tutorial/Procore_user_check.png)
 
-5. Kattintson a **mentés és küldés Invitiation** (ha szükséges mail keresztül) vagy **mentése** (mentse közvetlenül) a felhasználói regisztráció befejezéséhez.
+5. Kattintson a **mentés és küldés meghívó** (ha szükséges mail keresztül) vagy **mentése** (mentse közvetlenül) a felhasználói regisztráció befejezéséhez.
     
     ![Egyszeri bejelentkezés konfigurálása](./media/procoresso-tutorial/Procore_user_save.png)
 

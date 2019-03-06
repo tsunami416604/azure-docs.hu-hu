@@ -8,18 +8,18 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 03/05/2019
 ms.author: carlrab
-ms.openlocfilehash: af0fd591393f9f187a75f79fea980d41085df5cb
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 9bd330c2be2b543bd7238dd1641df0d092a8a17d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342445"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57434902"
 ---
 # <a name="sql-database-release-notes"></a>Az SQL Database kibocsátási megjegyzései
 
-Ez a cikk felsorolja az új funkciók és fejlesztések az SQL Database szolgáltatás és az SQL Database-dokumentáció. Más Azure-szolgáltatások fejlesztései, lásd: [Szolgáltatásfrissítésekkel](https://azure.microsoft.com/updates).
+Ez a cikk felsorolja az új funkciók és fejlesztések az SQL Database szolgáltatás és az SQL Database-dokumentáció. Az SQL Database szolgáltatás javításai, lásd még [SQL Database szolgáltatási hírek](https://azure.microsoft.com/updates/?product=sql-database). Más Azure-szolgáltatások fejlesztései, lásd: [Szolgáltatásfrissítésekkel](https://azure.microsoft.com/updates).
 
 ## <a name="march-2019"></a>2019. március
 
@@ -27,15 +27,17 @@ Ez a cikk felsorolja az új funkciók és fejlesztések az SQL Database szolgál
 
 | Szolgáltatás fejlesztései | Részletek |
 | --- | --- |
+| &nbsp; |
 
 ### <a name="documentation-improvements"></a>Dokumentáció fejlesztései
 
 | Dokumentáció fejlesztései | Részletek |
 | --- | --- |
-| A hozzáadott log egyetlen adatbázisok korlátai|További információkért lásd: [egyetlen adatbázis virtuális mag erőforráskorlátok](sql-database-vcore-resource-limits-single-databases.md)|
-| Hozzáadott log rugalmas készletek és a készletezett adatbázisok korlátai|További információkért lásd: [rugalmas adatbáziskészletekhez virtuális mag erőforráskorlátok](sql-database-vcore-resource-limits-elastic-pools.md)|
-| A hozzáadott tranzakciós napló arány cégirányítási| Hozzáadott új tartalmak [tranzakciós napló arány cégirányítási](sql-database-resource-limits-database-server.md#transaction-log-rate-governance)|
-| Frissített PowerShell-minták az önálló adatbázisok és rugalmas készletek az.sql modul használata | További információkért lásd: [önálló adatbázisok és rugalmas készletek PowerShell-minták](sql-database-powershell-samples.md#single-database-and-elastic-pools).
+| A hozzáadott log egyetlen adatbázisok korlátai|További információkért lásd: [egyetlen adatbázis virtuális mag erőforráskorlátok](sql-database-vcore-resource-limits-single-databases.md).|
+| Hozzáadott log rugalmas készletek és a készletezett adatbázisok korlátai|További információkért lásd: [rugalmas adatbáziskészletekhez virtuális mag erőforráskorlátok](sql-database-vcore-resource-limits-elastic-pools.md).|
+| A hozzáadott tranzakciós napló arány cégirányítási| Hozzáadott új tartalmak [tranzakciós napló arány cégirányítási](sql-database-resource-limits-database-server.md#transaction-log-rate-governance).|
+| Frissített PowerShell-minták az önálló adatbázisok és rugalmas készletek az.sql modul használata | További információkért lásd: [önálló adatbázisok és rugalmas készletek PowerShell-minták](sql-database-powershell-samples.md#single-database-and-elastic-pools).|
+| &nbsp; |
 
 ## <a name="february-2019"></a>2019. február
 
@@ -43,16 +45,24 @@ Ez a cikk felsorolja az új funkciók és fejlesztések az SQL Database szolgál
 
 | Szolgáltatás fejlesztései | Részletek |
 | --- | --- |
-|A folytatható online index létrehozását már általánosan elérhető| További információkért lásd: [Index létrehozása](https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql)|
-|Felügyelt példány támogatása továbbfejlesztett útvonaltáblák| További információkért lásd: [hálózati követelmények](sql-database-managed-instance-connectivity-architecture.md#network-requirements)|
+|A folytatható online index létrehozását már általánosan elérhető| További információkért lásd: [a Create Index](https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql).|
+|Felügyelt példány támogatása továbbfejlesztett útvonaltáblák| További információkért lásd: [hálózati követelmények](sql-database-managed-instance-connectivity-architecture.md#network-requirements).|
+|Adatbázis átnevezése támogatja a felügyelt példány | További részletekért tekintse meg a [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) és [sp_rename szintaxis](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-rename-transact-sql) szintaxist.|
+|SQL-adatbázis a Stream Analytics referenciaadatok forrásaként. | További információkért lásd: [Stream Analytics](https://azure.microsoft.com/services/stream-analytics/).|
+|Data Migration Assistant felügyelt példányt támogat. |További információkért lásd: [What's new in DMA](https://docs.microsoft.com/sql/dma/dma-whatsnew?view=sql-server-2017).|
+|Az SQL Server Migration Assistant szolgáltatást támogat a felügyelt példány cél readiness assessment. | További információkért lásd: [SQL Server Migration Assistant](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant).
+|Adatok áttelepítése szolgáltatás támogatja az Amazon RDS felügyelt példányába történő migrálás | További információkért lásd: [oktatóanyag: A távoli asztali szolgáltatások SQL Server migrálása az Azure SQL Database vagy Azure SQL Database felügyelt példány online DMS használatával](../dms/tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md).|
+| &nbsp; |
 
 ### <a name="documentation-improvements"></a>Dokumentáció fejlesztései
 
 | Dokumentáció fejlesztései | Részletek |
 | --- | --- |
-|A felügyelt példány üzembe helyezési lehetőség magyarázata|Frissítve azzal a pontosítással önálló adatbázis, a rugalmas készlet és a felügyelt példány üzembe helyezési beállítások alkalmazhatósági számos cikkek |
-|DTU-alapú vásárlási modell frissített tempdb méretei | További információkért lásd: [Tempdb-adatbázis, SQL Database-ben](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database)|
-|Frissített importálása és exportálása a felügyelt példány támogatás bacpac-fájlba| További információkért lásd: [importálás BACPAC a](sql-database-import.md) és [BACPAC exportálása](sql-database-export.md) |
+|A felügyelt példány üzembe helyezési lehetőség magyarázata|Frissítve azzal a pontosítással önálló adatbázis, a rugalmas készlet és a felügyelt példány üzembe helyezési beállítások alkalmazhatósági cikkeket. |
+|DTU-alapú vásárlási modell frissített tempdb méretei | További információkért lásd: [Tempdb-adatbázis az SQL Database](https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database?view=sql-server-2017#tempdb-database-in-sql-database).|
+|Frissített importálása és exportálása a felügyelt példány támogatás bacpac-fájlba| További információkért lásd: [importálás BACPAC a](sql-database-import.md) és [exportálása BACPAC](sql-database-export.md). |
+| &nbsp; |
+
 
 ## <a name="january-2019"></a>2019. január
 
@@ -62,7 +72,7 @@ Ez a cikk felsorolja az új funkciók és fejlesztések az SQL Database szolgál
 | --- | --- |
 | A számítási erőforrások további granularitási lehetőségei | Az általános célú és a kritikus fontosságú üzleti szolgáltatás réteget [önálló adatbázisok](sql-database-vcore-resource-limits-single-databases.md) és [rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md) most már további részletes számítási lehetőségek.|
 | A naplórekordok megtekintése a felügyelt példány az Azure Portalon | Megtekintés [naplórekordok felügyelt példányok](sql-database-managed-instance-auditing.md) az Azure Portalon mostantól támogatott.|
-| Speciális veszélyforrások elleni duplikálásészlelési szolgáltatását a speciális adatbiztonság neve: | Új előzetes threat detection funkció [adatok biztonságú](sql-advanced-threat-protection.md) önálló adatbázisok, rugalmas készletek és a felügyelt példány |
+| Speciális veszélyforrások elleni duplikálásészlelési szolgáltatását a speciális adatbiztonság neve: | Új előzetes threat detection funkció [adatok biztonságú](sql-advanced-threat-protection.md) önálló adatbázisok, rugalmas készletek és a felügyelt példányok. |
 | &nbsp; |
 
 ### <a name="documentation-improvements"></a>Dokumentáció fejlesztései

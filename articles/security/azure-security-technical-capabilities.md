@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 22160a46b0c1d8fe53abe20b3d8a1b83891de5da
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: aa003d5c56e374c99b26beb884fce27b9b16298e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247579"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440063"
 ---
 # <a name="azure-security-technical-capabilities"></a>Az Azure biztonságtechnikai képességek
 
@@ -192,7 +192,7 @@ Támogatja az adatok titkosítása az alábbi táblázatban részletes ajánlott
 | Titkosítási modellek |  |  |  |
 | ----------------  | ----------------- | ----------------- | --------------- |
 | Server Encryption | Server Encryption | Server Encryption | Ügyféloldali titkosítás
-| Kiszolgálóoldali titkosítás szolgáltatás kezelt kulcsok használata | Kiszolgálóoldali titkosítás Customer-Managed kulcsok használata az Azure Key Vaultban | Kiszolgálóoldali titkosítás használatával a helyszíni ügyfél által kezelt kulcsok |
+| Kiszolgálóoldali titkosítás szolgáltatás kezelt kulcsok használata | Kiszolgálóoldali titkosítás Customer-Managed kulcsok használata az Azure Key Vaultban | Kiszolgálóoldali titkosítás használata a helyi ügyfél által kezelt kulcsok |
 | • Azure erőforrás-szolgáltatók a titkosítási és visszafejtési műveleteket végre <br> • A Microsoft kezeli a kulcsok <br>• Teljes felhőalapú funkciókkal | • Azure erőforrás-szolgáltatók a titkosítási és visszafejtési műveleteket végre<br>• Ügyfél szabályozza, kulcsok Azure Key Vault-n keresztül<br>• Teljes felhőalapú funkciókkal | • Azure erőforrás-szolgáltatók a titkosítási és visszafejtési műveleteket végre <br>• Ügyfél szabályozza a helyszíni kulcsok <br> • Teljes felhőalapú funkciókkal| • Azure-szolgáltatások visszafejtett adatait nem látja. <br>• Az ügyfelek kulcsait a helyi környezetben tarthatja, (vagy más biztonságos tárolók). Kulcsok nem érhetők el az Azure-szolgáltatások <br>• Csökkentett felhőalapú funkciókkal|
 
 ### <a name="enabling-encryption-at-rest"></a>Titkosítás inaktív állapotban engedélyezése

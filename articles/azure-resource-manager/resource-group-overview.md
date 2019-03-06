@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/13/2019
+ms.date: 03/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: d275455f502cf20eaa573c1716c38023f8e7236e
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 115b1fcd1b1e878a9b4a7efdf6f24d7391945619
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821900"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409840"
 ---
 # <a name="azure-resource-manager-overview"></a>Az Azure Resource Manager áttekintése
 
@@ -51,7 +51,16 @@ A Resource Manager számos előnyt kínál:
 * Címkékkel láthatja el az erőforrásokat, így logikusan rendszerezhető az előfizetés összes erőforrása.
 * Az azonos címkén osztozó erőforrások csoportjának költségeit megtekintve jól átláthatók a szervezet számlái.
 
+## <a name="understand-management-scope"></a>Megismerheti a felügyeleti hatóköre
+
+Az Azure biztosít a felügyeleti hatókör négy szintű: felügyeleti csoportok, előfizetések, erőforráscsoportok és erőforrásokat. A [felügyeleti csoportok](../governance/management-groups/index.md) szintje egyelőre előzetes verzióban érhető el. Az alábbi ábra ezekre a rétegekre mutat egy példát.
+
+![Hatókör](./media/resource-group-overview/scope-levels.png)
+
+Felügyeleti beállításokat a hatókörszintek bármelyikéhez megadhat. A kiválasztott szint határozza meg, milyen széles körben lesz alkalmazva a beállítás. Az alacsonyabb szintek öröklik a magasabb szintek beállításait. Például, amikor alkalmaz egy [házirend](../governance/policy/overview.md) az előfizetéséhez, a szabályzat érvényes az összes erőforráscsoportra és az előfizetése. A szabályzat alkalmazásakor az erőforráscsoport, amely a házirend alkalmazva az erőforráscsoportot és az ahhoz tartozó összes erőforrást. Egy másik erőforráscsoportot azonban nem rendelkezik a szabályzat-hozzárendelést.
+
 ## <a name="guidance"></a>Útmutatás
+
 Az alábbi javaslatokat követve teljes mértékben kihasználhatja a Resource Manager előnyeit a megoldásaival végzett munka során.
 
 * Az infrastruktúrát a Resource Manager-sablonok deklaratív szintaxisán keresztül határozhatja meg és telepítheti imperatív parancsok helyett.

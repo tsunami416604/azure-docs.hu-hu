@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: sethm
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 4ec662cd60e2ca8e5db76a3fda4c68df6f3164e4
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: b5c43215ce1800ac162c8b5d19ba4d4c987a3bac
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893681"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445806"
 ---
 # <a name="manage-key-vault-in-azure-stack-using-powershell"></a>Kezelése a Key Vault az Azure Stack PowerShell-lel
 
@@ -33,7 +33,7 @@ A Key Vault az Azure Stack PowerShell használatával kezelheti. További tudniv
 * Engedélyezze a felhasználónak vagy alkalmazásnak a tárban lévő műveletek meghívását.
 
 >[!NOTE]
->A Key Vault PowerShell-parancsmagok oldhatja meg ez a cikk az Azure PowerShell SDK vannak megadva.
+>A Key Vault PowerShell-parancsmagok ebben a cikkben leírt az Azure PowerShell SDK vannak megadva.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

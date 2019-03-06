@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: f4559c05a9f3d09feef12b0391e313ecd9a88142
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: b03b787e245129e5e51304a2bcc8740ebf3f6196
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241238"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57406147"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Töltse le, vagy az Azure számlázási számlázási és napi használati adatok megtekintése
 
@@ -65,7 +65,7 @@ Számlák jönnek létre az egyes [profil számlázási](billing-mca-overview.md
 5. Kattintson a három (`...`) a sor végén található.
 6. A letöltési helyi menüben válassza ki a **számla**.
 
-Ha számla alapján az előző elszámolási időszakban nem látja, tekintse meg [további információk]() <!-- Fix this -->
+Ha számla alapján az előző elszámolási időszakban nem látja, tekintse meg **további információkat**. <!-- Fix this -->
 ### <a name="noinvoice"></a> Miért nem látom számla alapján az előző elszámolási időszakban?
 
 Számos oka lehet annak, hogy nem jelenik meg számla:
@@ -100,7 +100,7 @@ Ha a lépések végrehajtása után nem kap egy e-mailt, győződjön meg arról
 
 ### <a name="opt-out-of-getting-your-subscriptions-invoices-in-email"></a>Tilthatják le az első az előfizetéshez tartozó számlákat e-mailben
 
-Kikapcsolja a számla első e-mail gombra kattintva és a fenti lépések elvégzésével **tilthatják le az e-mailben elküldött számlákhoz**. Ez a beállítás eltávolítja minden olyan e-mail-címeket úgy, hogy fogadják a számlákat e-mailben. Amennyiben vissza a címzettek újrakonfigurálhatja az.
+Kikapcsolja a számla első e-mail gombra kattintva és a fenti lépések elvégzésével **tilthatják le az e-mailben elküldött számlákhoz**. Ez a beállítás eltávolít minden olyan e-mail-címet, amelyre be volt állítva a számlák küldése e-mailben. Amennyiben vissza a címzettek újrakonfigurálhatja az.
 
  ![A letiltási folyamat bemutató képernyőkép](./media/billing-download-azure-invoice-daily-usage-date/InvoiceArticleStep4.PNG)
 

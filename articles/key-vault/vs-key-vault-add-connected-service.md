@@ -11,12 +11,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: ghogen
-ms.openlocfilehash: a6de5385046918c48b3f606477727ca4623a784c
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 098958cd729f1c616a93bbb5264445cb6d877f8b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53998625"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441984"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Key Vault hozzáadása a webalkalmazás a Visual Studio csatlakoztatott szolgáltatásai segítségével
 
@@ -29,7 +29,7 @@ A módosításokat, hogy csatlakoztatott szolgáltatásai lehetővé teszi a pro
 - **Azure-előfizetés**. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes fiókkal](https://azure.microsoft.com/pricing/free-trial/).
 - A **Visual Studio 2017 15.7-es verziója**, telepített **webfejlesztési** számítási feladattal. [Ezt innen töltheti le](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs).
 - ASP.NET (és nem alapvető) szüksége lesz a .NET-keretrendszer 4.7.1 fejlesztői eszközök, amelyek alapértelmezés szerint nincs telepítve. A telepítéshez indítsa el a Visual Studio telepítőjét, válassza a **módosítás**, és válassza a **az egyes összetevők**, majd a jobb oldalon bontsa ki a **ASP.NET és webfejlesztési**, és válassza a **4.7.1 .NET-keretrendszer fejlesztői eszközök**.
-- Egy ASP.NET 4.7.1 vagy ASP.NET Core 2.0-s webes projekt megnyitása.
+- An ASP.NET 4.7.1 or ASP.NET Core 2.0 web project open.
 
 ## <a name="add-key-vault-support-to-your-project"></a>Key Vault támogatásának hozzáadása a projekthez
 
@@ -49,7 +49,7 @@ A módosításokat, hogy csatlakoztatott szolgáltatásai lehetővé teszi a pro
 
    ![Nevezze át a Key Vaultban, és válasszon ki egy erőforráscsoportot](media/vs-key-vault-add-connected-service/KeyVaultConnectedService-Edit.PNG)
 
-1. Válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat egy automatikusan létrehozott egyedi neve.  Ha szeretne létrehozni egy új csoportot egy másik névvel, használhatja a [az Azure Portal](https://portal.azure.com), majd zárja be a lapot, és töltse be újra az erőforráscsoportok listájának újraindítás.
+1. Válasszon ki egy meglévő erőforráscsoportot, vagy hozzon létre egy újat egy automatikusan létrehozott egyedi névvel.  Ha szeretne létrehozni egy új csoportot egy másik névvel, használhatja a [az Azure Portal](https://portal.azure.com), majd zárja be a lapot, és töltse be újra az erőforráscsoportok listájának újraindítás.
 1. Válassza ki a régiót, amelyben létrehozza a Key Vaultban. Ha webalkalmazása az Azure-ban üzemeltetett, válassza ki a régiót, amelyben az optimális teljesítmény webes alkalmazást.
 1. Válasszon ki egy díjszabási modellt. További információkért lásd: [Key Vault díjszabását ismertető](https://azure.microsoft.com/pricing/details/key-vault/).
 1. Kattintson az OK gombra, fogadja el a konfigurációs beállításokkal.

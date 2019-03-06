@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: ce377234cceb22bc2c6979bedd92d800355e75da
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3f567e66a1e84dccaa18db550f30d6bb34ad8162
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872084"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442936"
 ---
 # <a name="bake-acoustics"></a>Bake Akusztika
 
@@ -243,7 +243,7 @@ Tegyük fel, az Intel Xeon E5-1660 @ 3 GHz-es és 32 GB RAM - gépen 8 mag
 ### <a name="setup-docker"></a>A telepítő Docker
 Telepítse és konfigurálja a Docker a számítógépen, amely feldolgozza a szimuláció-
 1. Telepítse a [Docker eszközkészlet](https://www.docker.com/products/docker-desktop).
-2. Indítsa el a Docker-beállítások, keresse meg a "Speciális" beállításokat, és 8 GB RAM-MAL konfigurálására, hogy az erőforrások. A több processzort foglalhat le a Docker, annál gyorsabban bake fog befejeződni. ![Docker-példabeállítások](media/DockerSettings.png)
+2. Indítsa el a Docker-beállításait, keresse meg a "Speciális" lehetőség, és legalább 8GB RAM-MAL rendelkezik az erőforrások. A több processzort foglalhat le a Docker, annál gyorsabban bake fog befejeződni. ![Docker-példabeállítások](media/DockerSettings.png)
 3. Keresse meg "Megosztott meghajtók", és kapcsolja be a feldolgozáshoz használt meghajtó megosztása.![DockerDriveSharing](media/DockerSharedDrives.png)
 
 ### <a name="run-local-bake"></a>Helyi bake futtatása

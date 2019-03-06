@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: dekapur
-ms.openlocfilehash: 69680331bdad0faa36cb3df6117baf8b358da132
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e9b87c19977fe35132d80729810c3a0547c486fe
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251019"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57446112"
 ---
 # <a name="add-or-remove-nodes-to-a-standalone-service-fabric-cluster-running-on-windows-server"></a>Hozzáadása vagy eltávolítása, csomópontok, a Windows Server rendszert futtató önálló Service Fabric-fürt
 Miután [az önálló Service Fabric-fürt létrehozása a Windows Server-gépek](service-fabric-cluster-creation-for-windows-server.md), a (vállalati) igényeinek megfelelően módosíthatja, és adjon hozzá vagy távolíthat el csomópontokat a fürthöz kell. Ez a cikk részletesen bemutatja a lépéseket ennek eléréséhez. Vegye figyelembe, hogy hozzáadása/eltávolítása csomópont funkció nem támogatott a helyi fejlesztési fürtök.
@@ -38,7 +38,7 @@ Miután [az önálló Service Fabric-fürt létrehozása a Windows Server-gépek
     ```
     Miután a parancsfájl a lejáratot követően újrainduljon, ha hozzá van adva az új csomópont futtatásával ellenőrizheti a [Get-ServiceFabricNode](/powershell/module/servicefabric/get-servicefabricnode?view=azureservicefabricps) parancsmagot.
 
-7. A konzisztencia érdekében a fürt csomópontjai között, akkor a konfiguráció frissítése kell kezdeményezni. Futtatás [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) a legfrissebb konfigurációs fájlt, és adja hozzá az újonnan hozzáadott csomópontot "Csomópont" szakaszban. Azt is javasoljuk, hogy mindig a legújabb fürtkonfiguráció érhető el, abban az esetben módosítania helyezéskor egy fürt ugyanazt a konfigurációt.
+7. A konzisztencia érdekében a fürt csomópontjai között, akkor a konfiguráció frissítése kell kezdeményezni. Futtatás [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) a legfrissebb konfigurációs fájlt, és adja hozzá az újonnan hozzáadott csomópontot "Csomópont" szakaszban. Azt is javasoljuk, hogy mindig a legújabb elérhető abban az esetben, az ismételt üzembe helyezése azonos konfigurációval rendelkező fürtöt kell fürtkonfigurációt.
 
     ```
         {

@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 66f41ffef5d72f5d574bb78d3b810f4a4dc2c4c1
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 5ade16bbd45203892cd9a3117dd52471884cf700
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098731"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455819"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>A telepítő az Azure-SSIS integrációs modul testreszabása
 
@@ -42,6 +42,8 @@ Ingyenes vagy a nem licencelt összetevőinek és fizetős vagy licenccel rendel
 
 ## <a name="prerequisites"></a>Előfeltételek
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Testre szabhatja az Azure-SSIS integrációs modul, a következőkre van szükség:
 
 -   [Azure-előfizetés](https://azure.microsoft.com/)
@@ -54,7 +56,7 @@ Testre szabhatja az Azure-SSIS integrációs modul, a következőkre van szüks�
 
 ## <a name="instructions"></a>Utasítások
 
-1.  Töltse le és telepítse [Azure PowerShell-lel](https://github.com/Azure/azure-powershell/releases/tag/v5.5.0-March2018) (5.4 vagy újabb verzió).
+1.  Töltse le és telepítse [Azure PowerShell-lel](/powershell/azure/install-az-ps).
 
 1.  Készítse elő a egyéni telepítési parancsfájlt, és az ahhoz tartozó fájlokat (például, .bat, .cmd, .exe, .dll, .msi vagy .ps1 fájlok).
 
@@ -103,15 +105,15 @@ Testre szabhatja az Azure-SSIS integrációs modul, a következőkre van szüks�
 
        ![Adja meg a közös hozzáférésű Jogosultságkód](media/tutorial-create-azure-ssis-runtime-portal/advanced-settings.png)
 
-       Amikor üzembe, vagy konfigurálja újra a PowerShell-lel, az Azure-SSIS integrációs modul az Azure-SSIS integrációs modul indítása előtt, futtassa a `Set-AzureRmDataFactoryV2IntegrationRuntime` parancsmagot az új értéket a tároló SAS URI-azonosítójú `SetupScriptContainerSasUri` paraméter. Példa:
+       Amikor üzembe, vagy konfigurálja újra a PowerShell-lel, az Azure-SSIS integrációs modul az Azure-SSIS integrációs modul indítása előtt, futtassa a `Set-AzDataFactoryV2IntegrationRuntime` parancsmagot az új értéket a tároló SAS URI-azonosítójú `SetupScriptContainerSasUri` paraméter. Példa:
 
        ```powershell
-       Set-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $MyDataFactoryName `
+       Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName $MyDataFactoryName `
                                                   -Name $MyAzureSsisIrName `
                                                   -ResourceGroupName $MyResourceGroupName `
                                                   -SetupScriptContainerSasUri $MySetupScriptContainerSasUri
 
-       Start-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName $MyDataFactoryName `
+       Start-AzDataFactoryV2IntegrationRuntime -DataFactoryName $MyDataFactoryName `
                                                     -Name $MyAzureSsisIrName `
                                                     -ResourceGroupName $MyResourceGroupName
        ```
@@ -160,7 +162,7 @@ Testre szabhatja az Azure-SSIS integrációs modul, a következőkre van szüks�
 
     ![A felhasználó forgatókönyvek mappában található mappák](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image12.png)
 
-    e. Próbálja ki ezeket az egyéni telepítés a mintákat, másolja be a tartalom a kiválasztott mappát a tárolóba. Amikor üzembe, vagy konfigurálja újra a PowerShell-lel az Azure-SSIS integrációs modul, futtassa a `Set-AzureRmDataFactoryV2IntegrationRuntime` parancsmagot az új értéket a tároló SAS URI-azonosítójú `SetupScriptContainerSasUri` paraméter.
+    e. Próbálja ki ezeket az egyéni telepítés a mintákat, másolja be a tartalom a kiválasztott mappát a tárolóba. Amikor üzembe, vagy konfigurálja újra a PowerShell-lel az Azure-SSIS integrációs modul, futtassa a `Set-AzDataFactoryV2IntegrationRuntime` parancsmagot az új értéket a tároló SAS URI-azonosítójú `SetupScriptContainerSasUri` paraméter.
 
 ## <a name="next-steps"></a>További lépések
 

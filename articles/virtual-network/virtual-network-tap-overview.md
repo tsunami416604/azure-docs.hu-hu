@@ -13,35 +13,36 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/17/2018
+ms.date: 03/04/2019
 ms.author: kaanan
-ms.openlocfilehash: 7270ab6203cfa3602fc36bc6fa7d30cd622ce3a3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5532174b6fc72f51e7ba7a946e601e7d97c7808e
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946595"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57408445"
 ---
-# <a name="virtual-network-tap"></a>Virtuális hálózati TAP
+# <a name="virtual-network-tap"></a>Virtuális hálózat TAP-jai
 
 Az Azure virtuális hálózati TAP (Terminálszolgáltatások hozzáférési pont) lehetővé teszi folyamatosan stream a virtuális gép hálózati forgalmat egy hálózati csomag adatgyűjtőnek vagy az analytics eszközt. A gyűjtő vagy analytics eszközt által biztosított egy [hálózati virtuális berendezésen](https://azure.microsoft.com/solutions/network-appliances/) partner. Dolgozunk a virtuális hálózati TAP érvényesített partneri megoldások listáját lásd: [partneri megoldások](#virtual-network-tap-partner-solutions).
 
 > [!IMPORTANT]
-> Virtuális hálózati TAP jelenleg fejlesztői előzetes verzióban a WestCentralUS Azure-régióban. Virtuális hálózati TAP használatához regisztrálnia kell az előzetes verzióban érhető el az e-mail <azurevnettap@microsoft.com> az előfizetés-azonosítóval. Az előfizetés regisztrációja után egy e-mailt fog kapni. Ön nem használhatja a funkció, amíg nem kap egy megerősítő e-mailt. A developer Preview verzióját egy szolgáltatásiszint-szerződés nélkül, és nem használható éles számítási feladatok esetében. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Virtuális hálózati TAP jelenleg fejlesztői előzetes verzióban a WestCentralUS Azure-régióban. Virtuális hálózati TAP használatához regisztrálnia kell az előzetes verzióban érhető el az e-mail <azurevnettap@microsoft.com> az előfizetés-azonosítóval. Az előfizetés regisztrációja után egy e-mailt fog kapni. Ön nem használhatja a funkció, amíg nem kap egy megerősítő e-mailt. A developer Preview verzióját egy szolgáltatásiszint-szerződés nélkül, és nem használható éles számítási feladatok esetében. Előfordulhat, hogy néhány funkció nem támogatott, korlátozott képességekkel rendelkezik, vagy nem érhető el minden Azure-helyen. Tekintse meg a [kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) részleteiről.
 
 ## <a name="virtual-network-tap-partner-solutions"></a>Virtuális hálózati TAP partnermegoldások
 
 ### <a name="network-packet-brokers"></a>Hálózati csomag közvetítők
 
 - [Big Data típusú kapcsoló big Data típusú a Fabric figyelése](https://www.bigswitch.com/products/big-monitoring-fabric/public-cloud/microsoft-azure)
-- [Flowmon](https://www.flowmon.com/blog/azure-vtap)
 - [Gigamon GigaSECURE](https://blog.gigamon.com/2018/09/13/why-microsofts-new-vtap-service-works-even-better-with-gigasecure-for-azure)
 - [Ixia CloudLens](https://www.ixiacom.com/cloudlens/cloudlens-azure)
 
 ### <a name="security-analytics-networkapplication-performance-management"></a>Biztonsági elemzés, hálózati és alkalmazásteljesítmény-felügyelet
 
+- [Biztonsági ébren](https://awakesecurity.com/technology-partners/microsoft-azure/)
 - [ExtraHop Reveal(x)](https://www.extrahop.com/company/tech-partners/microsoft/)
 - [Fidelis Kiberbiztonsági](https://www.fidelissecurity.com/technology-partners/microsoft-azure )
+- [Flowmon](https://www.flowmon.com/blog/azure-vtap)
 - [Netscout vSTREAM]( https://www.netscout.com/technology-partners/microsoft/azure-vtap)
 - [Nubeva Prizmákkal](https://www.nubeva.com/azurevtap)
 - [RSA NetWitness® Platform](https://www.rsa.com/azure)

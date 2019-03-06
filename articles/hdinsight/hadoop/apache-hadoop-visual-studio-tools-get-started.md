@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 02/21/2019
-ms.openlocfilehash: 951bb978ac78529959acbf878a72c22573400f11
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 7d93e5777e3456098e1282fd70da55e85e1f80d0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56822786"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438245"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>A Data Lake Tools for Visual Studio használatával csatlakozhat az Azure HDInsight és az Apache Hive-lekérdezések futtatása
 
@@ -113,7 +113,7 @@ Egy tároló megnyitása után a következő gombokkal tölthet fel, törölhet 
 ## <a name="run-interactive-apache-hive-queries"></a>Az Apache Hive interaktív lekérdezések futtatása
 Az [Apache Hive](https://hive.apache.org) egy Hadoop-alapú adattárház-infrastruktúra. A Hive adatösszegzéseket, lekérdezéseket és elemzéseket biztosít. A Data Lake Tools for Visual Studio segítségével Hive-lekérdezéseket futtathat a Visual Studióból. Hive-ról további információkért lásd: [Apache Hive használata a HDInsight](hdinsight-use-hive.md).
 
-Az [interaktív lekérdezés](../interactive-query/apache-interactive-query-get-started.md) az Apache Hive 2.1-en futó [Hive LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) funkcióit használja. Az interaktív lekérdezés interaktivitást biztosít a nagy tárolt adathalmazokon végzett összetett, adattárház-jellegű lekérdezésekhez. A Hive-lekérdezések futtatása sokkal gyorsabb az interaktív lekérdezésekben, mint a hagyományos Hive-alapú kötegelt feladatokban. További információkért lásd: [kötegelt feladatok futtatása az Apache Hive](#run-hive-batch-jobs).
+Az [interaktív lekérdezés](../interactive-query/apache-interactive-query-get-started.md) az Apache Hive 2.1-en futó [Hive LLAP](https://cwiki.apache.org/confluence/display/Hive/LLAP) funkcióit használja. Az interaktív lekérdezés interaktivitást biztosít a nagy tárolt adathalmazokon végzett összetett, adattárház-jellegű lekérdezésekhez. A Hive-lekérdezések futtatása sokkal gyorsabb az interaktív lekérdezésekben, mint a hagyományos Hive-alapú kötegelt feladatokban. További információkért lásd: kötegelt feladatok futtatása az Apache Hive.
 
 > [!NOTE]  
 > Interaktív Hive-lekérdezéseket csak akkor futtathat, ha kapcsolódik egy [HDInsight interaktív lekérdezési](../interactive-query/apache-interactive-query-get-started.md) fürthöz.
@@ -158,7 +158,7 @@ Hive-lekérdezések létrehozására és futtatására két lehetősége van:
 * Alkalmi lekérdezések létrehozása
 * Hive alkalmazás létrehozása
 
-Hozzon létre, és ad hoc lekérdezések futtatásához:
+Hozzon létre, és alkalmi lekérdezések futtatása:
 
 1. Kattintson a jobb gombbal a fürt, ahol szeretné futtatni a lekérdezést, és válassza ki **egy Hive-lekérdezés írása**.  
 

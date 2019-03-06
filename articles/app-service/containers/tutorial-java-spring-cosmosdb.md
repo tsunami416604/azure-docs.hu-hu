@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 12/10/2018
 ms.custom: seodec18
-ms.openlocfilehash: a0a07a78d36e4c0d11132d0c7d5ff947f7073029
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: a48fb0b84e99f01798caabf7e713992af5a04ad9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353566"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441287"
 ---
 # <a name="tutorial-build-a-java-web-app-using-spring-and-azure-cosmos-db"></a>Oktatóanyag: Spring és az Azure Cosmos DB Java webes alkalmazás készítése
 
@@ -45,7 +45,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 Ebben az oktatóanyagban egy mintául szolgáló Teendőlista-alkalmazás egy webes felhasználói felület által támogatott Spring REST API-hívások [Spring adatokat az Azure Cosmos DB](https://github.com/Microsoft/spring-data-cosmosdb). Az alkalmazás kódja érhető el [a Githubon](https://github.com/Microsoft/spring-todo-app). Spring és a Cosmos DB Java-alkalmazások írására kapcsolatos további információkért tekintse meg a [Spring Boot Starter az Azure Cosmos DB SQL API – oktatóanyag](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-starter-java-app-with-cosmos-db ) és a [Spring adatokat az Azure Cosmos DB gyors üzembe helyezési](https://github.com/Microsoft/spring-data-cosmosdb#quick-start).
 
 
-Futtassa a folllowing parancsokat a terminálon a minta tárház klónozásához, és állítsa be a minta app környezetet.
+Futtassa az alábbi parancsokat a terminálon a minta tárház klónozásához, és állítsa be a minta app környezetet.
 
 ```bash
 git clone --recurse-submodules https://github.com/Azure-Samples/e2e-java-experience-in-app-service-linux-part-2.git
@@ -171,7 +171,7 @@ Spring Teendőkezelő alkalmazást helyben ezen hivatkozás használatával, ha 
 
  ![](./media/tutorial-java-spring-cosmosdb/spring-todo-app-running-locally.jpg)
 
-Ha kivételek instaead "Lépések TodoApplication" üzenet jelenik meg, ellenőrizze, hogy a `bash` parancsfájlt az előző lépésben exportált a környezeti változók megfelelően és, hogy az értékek helyesek-e az Azure Cosmos DB-adatbázishoz létrehozott.
+Ha kivételek helyett a "Lépések TodoApplication" üzenetet látja, ellenőrizze, hogy a `bash` parancsfájlt az előző lépésben exportált a környezeti változók megfelelően és, hogy az értékek helyesek-e az Azure Cosmos DB-adatbázishoz létrehozott.
 
 ## <a name="configure-azure-deployment"></a>Az Azure-telepítés konfigurálása
 

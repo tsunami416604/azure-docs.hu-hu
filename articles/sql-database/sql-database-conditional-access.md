@@ -12,12 +12,12 @@ ms.author: mireks
 ms.reviewer: vanto
 manager: craigg
 ms.date: 09/24/2018
-ms.openlocfilehash: 95103ec7438a01e73617587bf919404e2bdcc686
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 8e7e72236abdaeb77a6bfe3dd85c9ab0c8fbe40e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567196"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442698"
 ---
 # <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Feltételes hozzáférés (MFA) az Azure SQL Database és a Data warehouse-bA  
 
@@ -42,7 +42,7 @@ A következő lépések bemutatják, hogyan konfigurálja az SQL Database egy fe
 
 4.  Válassza ki **Felhőalkalmazások**, kattintson a **alkalmazások kiválasztása**. Láthatja, hogy minden alkalmazás elérhető feltételes hozzáférés. Válassza ki **Azure SQL Database**, kattintson az alul **válassza**, és kattintson a **kész**.  
   ![select SQL Database](./media/sql-database-conditional-access/select-sql-database.png)  
-  Ha nem találja a **Azure SQL Database** a harmadik képernyőképen látható, a következő lépéseket:   
+  Ha nem találja a **Azure SQL Database** harmadik következőképen látható, a következő lépéseket:   
   - Jelentkezzen be az Azure SQL DB/DW-példány AAD-rendszergazdai fiók az SSMS használatával.  
   - Hajtsa végre `CREATE USER [user@yourtenant.com] FROM EXTERNAL PROVIDER`.  
   - Jelentkezzen be az aad-be, és győződjön meg arról, hogy az Azure SQL Database és az adatraktár szerepel az alkalmazásokban az AAD-ben.  

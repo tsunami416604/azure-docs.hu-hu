@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 72a666db6157300942b966b88d9c3369495b9fd4
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 4c431b149edb0677585da3c84e37d64873478ccf
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331234"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432736"
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Adatok másolása és az Azure SQL Data Warehouse az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -228,7 +228,7 @@ A követelmények nem teljesülnek, ha az Azure Data Factory ellenőrzi a beáll
 Ha a forrásadatok nem felel meg az előző szakaszban bemutatott, másolhatja az adatokat egy átmeneti előkészítési Azure Blob Storage (nem lehet a Premium Storage) keresztül is engedélyezheti. Ebben az esetben az Azure Data Factory automatikusan végrehajtja az átalakítások a PolyBase az adatok formátuma követelményeinek, majd az adatok betöltése az SQL Data Warehouse-ba, vagy egy legutóbbi törölje a PolyBase használatával az adatok az ideiglenes adatokat a Blob storage-ból. Lásd: [szakaszos Másolás](data-factory-copy-activity-performance.md#staged-copy) adatmásolás keresztül az Azure Blob átmeneti működése általában részleteiért.
 
 > [!NOTE]
-> Amikor másolása adatok és a egy a helyszíni adatok tárolása az Azure SQL Data Warehouse a PolyBase, és átmeneti, ha a Data Management Gateway verzió 2.4 alább, a JRE (Java-futtatókörnyezet) megléte szükséges a az átjárót tartalmazó számítógépen, amely a forrásadatok átalakítására használatos megfelelő formátumba. Javasoljuk, hogy az átjáró a legújabb verzióra történő elkerülheti az ilyen függőségi.
+> Amikor az adatok másolása a helyszíni adatok tárolása az Azure SQL Data Warehouse a PolyBase, és átmeneti, ha a Data Management Gateway verzió 2.4 alább, a JRE (Java-futtatókörnyezet) megléte szükséges a az átjárót tartalmazó számítógépen, amely átalakítja a forrás szolgál adatok megfelelő formátumba. Javasoljuk, hogy az átjáró a legújabb verzióra történő elkerülheti az ilyen függőségi.
 >
 
 Ez a funkció használatához hozzon létre egy [Azure Storage társított szolgáltatás](data-factory-azure-blob-connector.md#azure-storage-linked-service) hivatkozik, amely az Azure Storage-fiókot, amely rendelkezik az átmeneti blob storage, majd adja meg a `enableStaging` és `stagingSettings` , ahogyan a másolási tevékenység tulajdonságai a következő kódot:
@@ -307,8 +307,8 @@ A Data Factory a tábla a ugyanazon tábla neve a source data Store céltár hoz
 | SmallInt | SmallInt |
 | TinyInt | TinyInt |
 | bit | bit |
-| Tizedes tört | Tizedes tört |
-| Numerikus | Tizedes tört |
+| Decimal | Decimal |
+| Numerikus | Decimal |
 | Lebegőpontos | Lebegőpontos |
 | költséget takaríthat meg | költséget takaríthat meg |
 | Real | Real |

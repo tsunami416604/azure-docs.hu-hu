@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 5d7e21661d7ee905ff77a4856544d358924cd9ea
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: b21d9fe7c92edef13e717399c1f7a2b0e704e583
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700876"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433484"
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Az Azure Linux virtuális Gépen futó Oracle Golden kapu megvalósítása 
 
@@ -699,7 +699,7 @@ Ebben a lépésben a kiindulási Állapotváltozás, amelyek később fogja hasz
   MAP pdb1.test.*, TARGET pdb1.test.*;
   ```
 
-5. Replicat ellenőrzőpont beállítása:
+5. Replikálás ellenőrzőpont beállítása:
 
   ```bash
   GGSCI> ADD REPLICAT REPORA, INTEGRATED, EXTTRAIL ./dirdat/rt

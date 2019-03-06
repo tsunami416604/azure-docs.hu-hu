@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: pbutlerm
-ms.openlocfilehash: f13d49fde7f0e40f6dcb026fcb20cb11c028c64b
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: fd51a9f70d60219a9429ff66d6f1d404391f6fb0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100883"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57446709"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Az Azure és az appsource-ban Marketplace-ajánlat
 
@@ -41,7 +41,7 @@ A folyamaton, létrehozhat egy új ajánlat szolgáltatásfrissítési jelentős
 
 ## <a name="test-drive"></a>Tesztverzió
 
-*Próbálja ki a* lehetővé az ügyfelek számára egy bemutató "próbálja ki a vásárlás előtt" beállítást engedélyezve ajánlatok piactéren funkció.  A Test Drive funkció korlátozódik ajánlattípusokról következő részét: [Az Azure-alkalmazások](./azure-applications/cpp-azure-app-offer.md), [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md), [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md), [Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md), [ SaaS-alkalmazások](./saas-app/cpp-saas-offer.md), és [virtuális gépek](./virtual-machine/cpp-virtual-machine-offer.md).  Ez a funkció a közzétevő számára hozzon létre egy Test Drive-sablont, az ajánlat testre szabott van szükség.  További információkért lásd: a szakasz [Test Drive](../cloud-partner-portal-orig/what-is-test-drive.md).
+*Próbálja ki a* lehetővé az ügyfelek számára egy bemutató "próbálja ki a vásárlás előtt" beállítást engedélyezve ajánlatok piactéren funkció.  A Test Drive funkció korlátozódik ajánlattípusokról következő részét: [Az Azure-alkalmazások](./azure-applications/cpp-azure-app-offer.md), [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md), [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md), [Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md), [ SaaS-alkalmazások](./saas-app/cpp-saas-offer.md), és [virtuális gépek](./virtual-machine/cpp-virtual-machine-offer.md).  Ez a funkció a közzétevő számára hozzon létre egy Test Drive-sablont, az ajánlat testre szabott van szükség.  További információkért lásd: a szakasz [Test Drive](./test-drive/what-is-test-drive.md).
 
 Megnyithatja a meglévő marketplace-ajánlat, amelyek rendelkeznek a Test Drive bemutatók alkalmazásával a [test drive szűrő](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=test-drive). 
 

@@ -13,20 +13,50 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1fef19c555b9d2e52d4734a8f7bc5e39183e684
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2a1210360690384b07e6d88007ccd118731ecce0
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169309"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405436"
 ---
-# <a name="troubleshooting-dynamic-memberships-for-groups"></a>Dinamikus csoporttagságok hibaelhárítása
+# <a name="troubleshoot-and-resolve-groups-issues"></a>Hibaelhárításához és megoldásához kapcsolatos problémák szerepelnek
 
-**Konfiguráltam egy szabály a csoport, de a csoport frissítésére nincs tagságok**<br/>Ellenőrizze a szabály a felhasználói attribútumok értékei: vannak-e felhasználók, amelyek megfelelnek a szabályt? Ha mindent rendben talál, engedélyezze a csoport feltöltése egy kis ideig. Az első feltöltésnél és szabálymódosítás után a bérlő méretétől függően ez akár 24 órát is jelenthet.
+## <a name="troubleshooting-group-creation-issues"></a>Csoport létrehozásával kapcsolatos problémák elhárítása
+**Tudok biztonsági csoport létrehozása az Azure Portalon le van tiltva, de a csoportok továbbra is PowerShell-lel hozható létre** a **felhasználók létrehozhatnak biztonsági csoportokat az Azure-portálokon** beállítása az Azure portál-vezérlőelemek az-e a nem rendszergazda felhasználók létrehozhatnak biztonsági csoportokat a hozzáférési panelen és az Azure Portalon. Nem szabályozza a biztonsági csoport létrehozása Powershell segítségével.
+
+Csoport létrehozása a Powershell nem rendszergazdai felhasználók letiltása:
+1. Győződjön meg arról, hogy a nem rendszergazda felhasználók hozhatnak létre csoportokat:
+   
+  ```
+  PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
+  ```
+  
+2. Ha a visszaadott érték `UsersPermissionToCreateGroupsEnabled : True`, akkor a nem rendszergazda jogosultságú felhasználók létrehozhatnak csoportokat. Ez a funkció letiltása:
+  
+  ``` 
+  Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
+  ```
+
+<br/>**A maximális csoportok hiba engedélyezett, ha a Powershell egy dinamikus csoport létrehozása során kapott**<br/>
+Ha egy üzenetet kap a Powershell jelző _max engedélyezett csoportok száma elérte a dinamikus csoportházirendek_, ez azt jelenti, hogy elérte a maximális korlát dinamikus csoportok a bérlőben. Bérlőnként dinamikus csoportok maximális száma érték az 5 000.
+
+Minden olyan új dinamikus csoportok létrehozására, először szüksége néhány meglévő dinamikus csoportok törlése. Nincs lehetőség a korlát növelését.
+
+## <a name="troubleshooting-dynamic-memberships-for-groups"></a>Dinamikus csoporttagságok hibaelhárítása
+
+**Konfiguráltam egy szabály a csoport, de a csoport frissítésére nincs tagságok**<br/>
+1. Ellenőrizze a felhasználó vagy a szabály lévő értékeket. Győződjön meg arról, vannak olyan felhasználók, amelyek megfelelnek a szabályt. Eszközökhöz ellenőrizze az eszköztulajdonságok annak érdekében, hogy minden szinkronizált attribútumok a várt értékeket tartalmazza.<br/>
+2. Ellenőrizze, győződjön meg arról, ha befejeződött a feldolgozási állapot a tagságát. Ellenőrizheti a [tagság a feldolgozási állapot](\groups-create-rule.md#check-processing-status-for-a-rule) és az utolsó frissítés dátuma a **áttekintése** a csoporthoz tartozó oldal.
+
+Ha mindent rendben talál, engedélyezze a csoport feltöltése egy kis ideig. Az első feltöltésnél és szabálymódosítás után a bérlő méretétől függően ez akár 24 órát is jelenthet.
 
 **Egy szabály konfiguráltam, de mostantól a meglévő csoporttagok, a szabály el lesznek távolítva**<br/>Ez az elvárt működés. A csoport tagjai meglévő el lesznek távolítva, amikor egy szabály engedélyezve van, vagy módosítani. A kiértékelés a szabály által visszaadott felhasználók tagjai a csoportba kerülnek.
 
 **Nem látom a tagsága instantly hozzáadása vagy egy szabály, miért nem módosítása esetén?**<br/>Dedikált gyűjteménytagság értékelése egy aszinkron háttérfolyamat rendszeres időközönként történik. Mennyi ideig tart határozza meg a címtárban található felhasználók száma és mérete miatt a szabály létrehozta a csoportot. A felhasználók kis számú könyvtárak általában megjelenik a csoporttagsági változások kisebb, mint néhány perc múlva. A felhasználók nagy számú könyvtárak 30 percet is igénybe vehet, vagy hosszabb adatokkal való feltöltéséhez.
+
+**Hogyan kényszerítheti a csoport már feldolgozásra?**<br/>
+Jelenleg nincs semmilyen módon nem lehet automatikusan aktiválja a csoport igény szerint lesz feldolgozva. Azonban manuálisan is aktiválhatja az újrafeldolgozás a tagsági szabály hozzáadása egy szóköz végén frissítésével.  
 
 **Egy szabály feldolgozási hiba jelent meg.**<br/>A következő táblázat felsorolja a dinamikus tagsági szabály előforduló gyakori hibák és a rendszernaplóban őket.
 

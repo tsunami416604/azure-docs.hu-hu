@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.author: bsiva
-ms.openlocfilehash: 48e53bcc542b9a0e00a544f80ec796082fa71f7b
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 7deea91a016616d9015004857ad9e5ae70e24111
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210420"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432872"
 ---
 # <a name="monitor-and-troubleshoot-site-recovery"></a>Monitorozás és hibaelhárítás a Site Recovery
 
@@ -84,7 +84,7 @@ A **souhrn Chyb** szakasz azt mutatja be, amely hatással lehet a tárolóhoz, �
 A **infrastruktúranézet** érintett látható az infrastruktúra-összetevőket a replikáció és a kiszolgálók és az Azure-szolgáltatások közötti kapcsolat állapotát.
 
 - Zöld vonal jelzi, hogy a kapcsolat állapota kifogástalan.
-- A piros vonalat verlaid hiba ikon azt jelzi, hogy létezik-e egy vagy több hiba történt a jelenség, hogy hatással lehet az összekapcsolhatóságra.
+- A piros vonalat az átfedett hibajelző ikon azt jelzi, hogy létezik-e egy vagy több hiba történt a jelenség, hogy hatással lehet az összekapcsolhatóságra.
 -  Vigye az egérmutatót a hibajelző ikon megjelenítése a hibát, és az érintett entitások száma. Kattintson az érintett entitások szűrt listája.
 
     ![Site Recovery infrastruktúra-nézet (tár)](./media/site-recovery-monitor-and-troubleshoot/site-recovery-vault-infra-view.png)

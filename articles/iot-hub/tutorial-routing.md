@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: cc3f7c72acc0723c522b595ea106f72947e9d014
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: df98be4dbb65088951968a16198b41d3d6d0bb67
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728726"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57410213"
 ---
 # <a name="tutorial-configure-message-routing-with-iot-hub"></a>Oktatóanyag: Az IoT Hub üzenet-útválasztás konfigurálása
 
@@ -276,7 +276,7 @@ Az üzeneteket különböző forrásokhoz fogja irányítani azon tulajdonságok
 
 Most beállíthatja az útválasztást a tárfiókhoz. Lépjen az Üzenetirányítás panelre, majd adjon hozzá egy útvonalat. Az útvonal hozzáadásakor definiáljon egy új végpontot az útvonalhoz. Ezután azokat az üzeneteket, amelyeknél a **level** tulajdonság **storage** értékre van állítva, automatikusan egy tárfiókba írja a rendszer. 
 
-Az adatokat a rendszer Avro formátumban írja a Blob Storage-ba.
+Az adatok alapértelmezés szerint a blob storage a Avro formátumban íródik.
 
 1. Az [Azure Portalon](https://portal.azure.com) kattintson az **Erőforráscsoportok** elemre, majd válassza ki az erőforráscsoportot. Ez az oktatóanyag a **ContosoResources** erőforráscsoportot használja. 
 
@@ -301,7 +301,9 @@ Az adatokat a rendszer Avro formátumban írja a Blob Storage-ba.
    > 
    > Ha például az alapértelmezett blobfájlnév-formátumot használja egy ContosoTestHub nevű központ esetében, és a dátum/idő érték 2018. október 30., 10:56, akkor a blob neve a következő lesz: `ContosoTestHub/0/2018/10/30/10/56`.
    > 
-   > A blobok írása Avro formátumban történik.
+   > A blobok alapértelmezés szerint az Avro formátumban készültek. Kiválaszthatja a fájlok írása JSON formátumban. A szolgáltatás JSON formátumban kódolása előzetes verzióként érhető minden IoT Hub érhető el, kivéve az USA keleti RÉGIÓJA, USA nyugati Régiójában és Nyugat-európai régióban. Lásd: [útmutatás az Útválasztás a blob storage-bA] (iot-hub-devguide-messages-d2c.md#azure-blob-storage).
+   > 
+   > Útválasztás blob storage-ba, amikor ajánlott felvétel a blobok és majd léptetés át őket, anélkül, hogy a partíció jósolható olvasható az összes tárolót. A partíciótartomány sikerült potenciálisan módosítása során egy [a Microsoft által kezdeményezett feladatátvételi](iot-hub-ha-dr.md#microsoft-initiated-failover) vagy IoT hubot [manuális feladatátvétel](iot-hub-ha-dr.md#manual-failover-preview). Megtudhatja, hogyan kell felsorolni a blobok lásd [útválasztási a blob storage](iot-hub-devguide-messages-d2c.md#azure-blob-storage)
    >
 
 8. A tárolási végpont létrehozásához és az útvonalhoz való hozzáadásához kattintson a **Létrehozás** lehetőségre. Ekkor visszakerül az **Útvonal hozzáadása** panelre.

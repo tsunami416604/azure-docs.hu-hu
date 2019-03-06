@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 02/20/2019
+ms.date: 03/04/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 84287191af60a5e9306f03ca2ebd10f9e347c9ac
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 87c5d24f0e9077acf66bacd97097cfc32bd49ead
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453052"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432107"
 ---
 # <a name="what-is-computer-vision"></a>Mi a Computer Vision?
 
@@ -42,12 +42,11 @@ Elemezheti a képek észlelése és azok vizuális jellemzőinek és jellemzők 
 |**[Miniatűr létrehozása](concept-generating-thumbnails.md)**|Elemzi a kép tartalmát, hogy megfelelő miniatűrt tudjon létrehozni a képhez. Számítógépes Látástechnológia először létrehoz egy jó minőségű miniatűrt, és ezután elemzi a tárgyakat meghatározni a *érdeklődési körét*. Számítógépes Látástechnológia majd körülvágja a képet a terület a lényeges követelményeinek. Igény szerint a létrehozott miniatűr az eredeti képtől eltérő oldalaránnyal is rendelkezhet.|
 |**[A terület a lényeges beolvasása](concept-generating-thumbnails.md#area-of-interest)**|Elemezheti a koordinátáit adja vissza a kép tartalmát a *érdeklődési körét*. Ugyanezt a funkciót, amellyel miniatűrkép generálása, de ahelyett, hogy a kép levágás, Computer Vision adja vissza a határolókeret koordinátái a régió, így a hívó alkalmazás az eredeti képet igény szerint módosíthatja.|
 
-
 ## <a name="extract-text-from-images"></a>Képek szöveg kinyerése
 
-Használhatja a Computer Vision [optikai karakterfelismerés (OCR) segítségével szöveg kinyerése](concept-extracting-text-ocr.md) karaktersorozattá be egy rendszerképből. Ha szükséges, optikai Karakterfelismerés kijavítja a elforgatási szögét a felismert szöveget, és biztosítja a keret koordináták minden szó. Az optikai Karakterfelismeréssel 25 nyelveket támogatja, és automatikusan észleli a nyelvet a felismert szöveget.
+Computer Vision segítségével képet be egy géppel feldolgozható formátumra alakítja a stream a szöveg kinyerése [optikai karakterfelismerés (OCR)](concept-recognizing-text.md#ocr-optical-character-recognition-api). Ha szükséges, optikai Karakterfelismerés kijavítja a elforgatási szögét a felismert szöveget, és biztosítja a keret koordináták minden szó. Az optikai Karakterfelismeréssel 25 nyelveket támogatja, és automatikusan észleli a nyelvet a felismert szöveget.
 
-Emellett [nyomtatott és kézzel írt szöveg felismerése](concept-recognizing-text.md) a képet. A Computer Vision észleli és kinyeri a nyomtatott és a kézzel írt szövegeket is a különböző tárgyakat, felületeket és háttereket ábrázoló képekről, például nyugtákról, plakátokról, névjegykártyákról, levelekről és táblákról. Jelenleg nyomtatott és kézzel írt szöveg felismerése előzetes verzióban érhető el, pedig angol nyelven az egyetlen támogatott nyelv. 
+Is használhatja a [elolvashatják az API](concept-recognizing-text.md#read-api) nyomtatott és a kézzel írt szöveg kinyerésére képeket és szöveges adatokat használó dokumentumokat. Az olvasási API a frissített modelleket és működik a különböző objektumok, a különféle felületekkel és hátterek, például a visszaigazolások, poszterek, névjegyek, betűket és hátterekkel használja. Jelenleg a elolvashatják az API előzetes verzióban érhető el, pedig angol nyelven az egyetlen támogatott nyelv.
 
 ## <a name="moderate-content-in-images"></a>Mérsékelt tartalmú képeket
 

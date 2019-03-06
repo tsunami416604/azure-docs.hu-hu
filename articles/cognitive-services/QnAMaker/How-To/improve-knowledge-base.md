@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 03/05/2019
 ms.author: diberry
-ms.openlocfilehash: cff4199663bce39353f8c10c68f51f15d6a72a22
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 7281fb15e91195e1dd20095d9fdf80d3d9894a26
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314823"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433059"
 ---
 # <a name="use-active-learning-to-improve-knowledge-base"></a>Aktív tanulás használata a tudásbázis továbbfejlesztéséhez
 
@@ -37,6 +37,8 @@ Bármelyik módszert biztosít a rangsorolás fürtözöttek hasonló lekérdez�
 Aktív tanulás akkor aktiválódik, a felső néhány válasz bármely adott lekérdezésre vonatkozó QnA Maker által visszaadott eredmények alapján. A pontszám különbségek egy kis tartományon belülre esik, akkor a lekérdezés számít egy lehetséges _javaslat_ minden lehetséges válaszokat. 
 
 Az összes javaslat listája együtt fürtözöttek és felső javaslatokat alternatív kérdések jelennek meg a végfelhasználók számára az adott lekérdezések gyakorisága alapján. Aktív tanulás azokban az esetekben, ahol a végpontok egy ésszerű, illetve a különböző használati lekérdezések kihozhatják a lehetséges legjobb javaslatokat nyújt.
+
+5 vagy több hasonló lekérdezések fürtözöttek, 30 percenként, QnA Maker javasolja a Tudásbázis designer elfogadja vagy elutasítja a felhasználó-alapú kérdések.
 
 Miután kérdések a QnA Maker Portal használata javasolt, tekintse át és fogadja el vagy elutasítása szólhatnak kell. 
 
@@ -77,7 +79,7 @@ Aktív tanulás alapértelmezés szerint ki van kapcsolva. Kapcsolja be a javaso
 
     [![A szolgáltatás beállítások lapon a javaslatok megjelenítése gomb megjelenítése](../media/improve-knowledge-base/show-suggestions-button.png)](../media/improve-knowledge-base/show-suggestions-button.png#lightbox)
 
-1. A Tudásbázis következő, a kérdés és válasz párok kiválasztásával javaslatok csak megjeleníthető szűrése **javaslatok szűrés**.
+1. A kérdés és válasz párok kiválasztásával csak javaslatok megjelenítése a Tudásbázis szűrése **javaslatok szűrés**.
 
     [![A Szolgáltatásbeállítások oldal, a javaslatokat tekintse meg a szűrés csak kérdés-válasz párt](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
 
@@ -162,6 +164,31 @@ Content-Type: application/json
 ```
 
 További információ az aktív tanulás használata egy [Azure Bot C# példa](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-activelearning-bot)
+
+## <a name="active-learning-is-saved-in-the-exported-apps-tsv-file"></a>Aktív tanulás a rendszer menti az exportált alkalmazást tsv-fájlt
+
+Ha az alkalmazás rendelkezik aktív tanulás engedélyezve van, és exportálja az alkalmazás a `SuggestedQuestions` oszlop a tsv-fájl az aktív tanulás adatait őrzi meg. 
+
+A `SuggestedQuestions` oszlop egy JSON-objektum adatainak implicit (`autosuggested`), és explicit (`usersuggested`) [visszajelzés](#active-learning). A JSON-objektum egyetlen felhasználó által beküldött kérdés, például `help` van:
+
+```JSON
+[
+    {
+        "clusterHead": "help",
+        "totalAutoSuggestedCount": 1,
+        "totalUserSuggestedCount": 0,
+        "alternateQuestionList": [
+            {
+                "question": "help",
+                "autoSuggestedCount": 1,
+                "userSuggestedCount": 0
+            }
+        ]
+    }
+]
+```
+
+Ha Ön importálja újra az alkalmazást, az aktív tanulás továbbra is információkat gyűjthet, és javasolja a Tudásbázis javaslatokat. 
 
 ## <a name="next-steps"></a>További lépések
  

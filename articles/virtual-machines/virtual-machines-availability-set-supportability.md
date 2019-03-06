@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 13448f4b335d84264d4141cb4fb8c3eadcf0303e
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 7a5e97b66fec040b4ec32caa8d58cf9b50169a33
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092140"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433144"
 ---
 # <a name="supportability-of-adding-azure-vms-to-an-existing-availability-set"></a>Támogatás az Azure virtuális gépeket ad hozzá egy meglévő rendelkezésre állási csoport
 
@@ -27,15 +27,15 @@ Alkalmanként korlátozások során felmerülő új virtuális gépek (VM) hozz�
 
 Itt látható a virtuális gépek különböző típusú értékek nagyságrendjeit támogatási mátrix:
 
-Sorozatok és a rendelkezésre állási csoport|Második virtuális gép|A|Av2|D|A Dv2|Dv3|
+Sorozatok és a rendelkezésre állási csoport|Második virtuális gép|A|Av2|D|Dv2|Dv3|
 |---|---|---|---|---|---|---|
 |Első virtuális gép|||||||
 |A||OK|OK|OK|OK|OK|
 |Av2||OK|OK|OK|OK|OK|
 |D||OK|OK|OK|OK|OK|
-|A Dv2||OK|OK|OK|OK|OK|
+|Dv2||OK|OK|OK|OK|OK|
 |Dv3||OK|OK|OK|OK|OK|
 
 Az összes többi sorozat nem sikerült beállítani, mert azok megkövetelik, hogy egy adott hardverekhez, egyazon rendelkezésre állási.
 
-A8/a9-es virtuális gép mérete miatt a dedikált RDMA-háttérhálózatot requirment nem keveredhet.
+A8/a9-es virtuális gép mérete nem keveredhet a dedikált RDMA-háttérhálózatot követelmény miatt.

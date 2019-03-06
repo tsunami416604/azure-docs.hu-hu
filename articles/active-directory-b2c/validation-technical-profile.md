@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 220a95f1bc95a8866a459eb878047e7f47920bd1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4652f23bdf30e1b9e582cd1e83dc95f7716c8394
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55175094"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436408"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Egyéni Azure Active Directory B2C-házirendek egy érvényesítési technikai profil meghatározása
 
@@ -52,7 +52,7 @@ A **ValidationTechnicalProfile** elem tartalmazza a következő attribútumot:
 | Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | ReferenceId | Igen | Egy már definiált vagy a szülő házirend technikai profil azonosítója. |
-|ContinueOnError|Nem| Jelzi, hogy bármely ezt követő érvényesítési technikai profilok érvényesítése továbbra is ha ez validaiton technikai profil hibát jelez. A lehetséges értékek: `true` vagy `false` (alapértelmezés szerint a további ellenőrzési profilok feldolgozása leáll, és hibát adott vissza). |
+|ContinueOnError|Nem| Jelzi, hogy bármely ezt követő érvényesítési technikai profilok érvényesítése továbbra is ha az érvényesítés technikai profil hibát jelez. A lehetséges értékek: `true` vagy `false` (alapértelmezés szerint a további ellenőrzési profilok feldolgozása leáll, és hibát adott vissza). |
 |ContinueOnSuccess | Nem | Jelzi, hogy bármely ezt követő érvényesítési profilok érvényesítése továbbra is ha az érvényesítés technikai profil sikeres. A lehetséges értékek: `true` vagy `false`. Az alapértelmezett érték `true`, tehát továbbra is a további ellenőrzési profilok feldolgozására. |
 
 A **ValidationTechnicalProfile** elem tartalmazza a következő elemet:
@@ -72,7 +72,7 @@ A **előfeltétel** elem a következő elemeket tartalmazza:
 
 | Elem | Ismétlődések | Leírás |
 | ------- | ----------- | ----------- |
-| Value | 1:n | Az ellenőrzés által használt adatokat. Ha ez az ellenőrzés típusát `ClaimsExist`, ebben a mezőben adja meg egy ClaimTypeReferenceId lekérdezéséhez. Ha a jelölőnégyzet típusú `ClaimEquals`, ebben a mezőben adja meg egy ClaimTypeReferenceId lekérdezéséhez. Míg egy másik értéket elem tartalmazza az ellenőrizendő értékkel.|
+| Érték | 1:n | Az ellenőrzés által használt adatokat. Ha ez az ellenőrzés típusát `ClaimsExist`, ebben a mezőben adja meg egy ClaimTypeReferenceId lekérdezéséhez. Ha a jelölőnégyzet típusú `ClaimEquals`, ebben a mezőben adja meg egy ClaimTypeReferenceId lekérdezéséhez. Míg egy másik értéket elem tartalmazza az ellenőrizendő értékkel.|
 | Műveletek | 1:1 | Az előfeltétel-ellenőrzés belül egy vezénylési lépés teljesülése esetén végrehajtandó művelet. Értékét a **művelet** értékre van állítva `SkipThisValidationTechnicalProfile`. Itt adhatja meg, hogy a társított ellenőrzési technikai profil nem lehet végrehajtani. |
 
 ### <a name="example"></a>Példa

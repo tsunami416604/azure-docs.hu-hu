@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 94ed136b48c53bd582a8b3ad210d421764b9f0f6
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 8e8b9536c96b1f5ed899695a3715021b9f9875cf
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808459"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440369"
 ---
 # <a name="contoso-migration-refactor-an-on-premises-app-to-an-azure-web-app-and-azure-sql-database"></a>Contoso áttelepítése: Egy Azure Web App és az Azure SQL Database-adatbázishoz a helyszíni alkalmazás újrabontása
 
@@ -277,7 +277,7 @@ Contoso rendszergazdák kell, hogy a web apps és az adatbázis összes kommunik
 
     ![Kapcsolati sztring](media/contoso-migration-refactor-web-app-sql/strings3.png)
 
-5. A módosítások vannak a kódot, miután a rendszergazdáknak kell gombra a módosítások véglegesítéséhez. A Visual Studio Team Explorer használatával azok commmit és szinkronizálása.
+5. A módosítások vannak a kódot, miután a rendszergazdáknak kell gombra a módosítások véglegesítéséhez. A Visual Studio Team Explorer révén, érvényesítése és szinkronizálása.
 
 
 ## <a name="step-6-set-up-build-and-release-pipelines-in-azure-devops"></a>6. lépés: Állítsa be a build és az Azure fejlesztési és üzemeltetési folyamatok felszabadítása

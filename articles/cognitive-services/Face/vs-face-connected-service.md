@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 05/07/2018
 ms.author: ghogen
-ms.openlocfilehash: a8c3bc7a3a659809f1602ffae303f9bd26f2c35a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: aafa115ee1e270b903e958e5b43826dfb4ff8bdb
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857783"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435226"
 ---
 # <a name="connecting-to-cognitive-services-face-api-by-using-connected-services-in-visual-studio"></a>Csatlakozás a Cognitive Services arcfelismerési API-hoz a Visual Studio csatlakoztatott szolgáltatásai használatával
 
@@ -79,7 +79,7 @@ Ez a cikk és kísérő cikkek részletesen ismertetik, hogyan lehet a Visual St
       }
    ```
 
-1. A projekt wwwroot mappában készítsen egy képek mappát, és adjon egy képfájlt a wwwroot mappába. Példaként használhatja a képeket erről a [Face API oldalról](https://azure.microsoft.com/services/cognitive-services/face/). A jobb gombbal kattintson a képekre, mentse el a helyi merevlemezre, majd a jobb gombbal kattintson a képek mappán és a **Meglevő elem** > **hozzáadása** kiválasztásával adja hozzá a projekthez. A projektnek ehhez hasonlóan kell kinéznie a Megoldáskezelőben:
+1. A projekt wwwroot mappában készítsen egy képek mappát, és adjon egy képfájlt a wwwroot mappába. Példaként használhatja a képeket erről a [Face API oldalról](https://azure.microsoft.com/services/cognitive-services/face/). A jobb gombbal a rendszerképeket, mentse a helyi merevlemezről, majd a Megoldáskezelőben, kattintson a jobb gombbal a képek mappa és válassza a **Hozzáadás** > **meglévő elem** , adja hozzá a projekthez. A projektnek ehhez hasonlóan kell kinéznie a Megoldáskezelőben:
  
    ![Képek mappa a képfájllal](media/vs-face-connected-service/Cog-Face-Connected-Service-6.PNG)
 

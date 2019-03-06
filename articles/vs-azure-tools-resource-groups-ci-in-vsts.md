@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: a3dfca48b52af39e7a536b3012a3f4cdac4e9a94
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: d7859572b090913db13fe9bb7f3ed67619fe5521
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955167"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456346"
 ---
 # <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>Az Azure DevOps szolgáltatás használatával Azure erőforráscsoport-telepítési projektek folyamatos integráció
-Azure-sablon üzembe helyezéséhez, feladatok különböző lépésben hajtaná végre: az Azure-bA Buildelési, tesztelési, másolási (más néven "Átmeneti"), és a sablon üzembe helyezése. Sablonok üzembe helyezése az Azure DevOps-szolgáltatásokkal való két különböző módja van. Mindkét módszer ugyanazt az eredményt adja meg, tehát azt, amelyik leginkább megfelel a munkafolyamatot.
+Azure-sablon üzembe helyezéséhez, feladatokat különböző szakaszaiban: Buildelési, tesztelési, másolása az Azure-ba (más néven "Átmeneti"), és a sablon üzembe helyezése. Sablonok üzembe helyezése az Azure DevOps-szolgáltatásokkal való két különböző módja van. Mindkét módszer ugyanazt az eredményt adja meg, tehát azt, amelyik leginkább megfelel a munkafolyamatot.
 
 1. Egyetlen lépésben adja hozzá a buildelési folyamat, amely futtatja a PowerShell-parancsfájlt, amely az Azure-erőforráscsoport üzembe helyezési projektben (üzembe helyezés – AzureResourceGroup.ps1) szerepel. A parancsfájl másolja át az összetevőket, és majd üzembe helyezi a sablont.
 2. Adja hozzá a több Azure-fejlesztési és üzemeltetési szolgáltatásokat hozhat létre lépéseket, mindegyiknél fázis feladatot végez.
@@ -78,7 +78,7 @@ Az alábbi eljárások végigvezetik a folyamatos üzembe helyezés konfigurál�
       
       * Előfizetési azonosító
       * Előfizetés neve
-      * Egyszerű szolgáltatás azonosítója
+      * Szolgáltatásnév azonosítója
       * Egyszerű szolgáltatásnév kulcsa
       * Bérlő azonosítója
    6. Adjon hozzá egy szabadon választott nevet a **előfizetés** neve mező. Ez az érték jelenik meg, később a a **Azure-előfizetés** legördülő listából válassza ki az Azure DevOps-szolgáltatásokkal. 
@@ -136,7 +136,7 @@ Az alábbi eljárások végigvezetik a folyamatos üzembe helyezés konfigurál�
 
 1. Szerkessze az Azure DevOps-szolgáltatásokkal buildelési folyamat két új build lépések hozzáadása. Válassza ki a buildelési folyamat alatt a **Builddefinícióiról** kategória majd válassza a **szerkesztése** hivatkozásra.
    
-   ![Build definíció szerkesztése][12]
+   ![Builddefiníció szerkesztése][12]
 2. Az új létrehozási lépések hozzáadása a buildelési folyamat használatával a **felépítési lépés hozzáadása...** gombra.
    
    ![Felépítési lépés hozzáadása][13]

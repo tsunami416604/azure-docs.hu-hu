@@ -11,12 +11,12 @@ ms.date: 11/20/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
 ms.lastreviewed: 11/20/2018
-ms.openlocfilehash: bd1994aca3dbbc23977b01d3511f87b5ec08b96d
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 41609a75efec6c15d894b61867fb9d3ae727dc8c
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251860"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440556"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Azure Stack-diagnosztikai eszközök
 
@@ -163,7 +163,7 @@ Ezeket a lépéseket használatával futtassa a Get-AzureStackLog ASDK gazdaszá
     -   A gyűjtött naplók az ACS a *tárolási* és *ACS* szerepköröket.
 
 > [!NOTE]
-> Méret és a korszűrő vannak korlátozva a naplókban gyűjtött, fontos, hogy annak érdekében, nem áramlanak a naplókkal a tárterület hatékony felhasználása érdekében. Azonban a probléma diagnosztizálásakor néha szüksége naplóival, amelyeket már nem létezik ezek a korlátok miatt. Így **erősen ajánlott** , hogy a egy külső tárhelyen (az Azure storage-fiók, egy további helyszíni eszköz stb.) a naplók kiürítési 8 – 12 óránként és láthatóan tartja őket van 1 – 3 hónapos, attól függően, a követelmények. Gondoskodjon arról is, a tárolási hely titkosítása.
+> Méret és a korszűrő vannak korlátozva a naplókban gyűjtött, fontos, hogy annak érdekében, nem áramlanak a naplókkal a tárterület hatékony felhasználása érdekében. Azonban a probléma diagnosztizálásakor néha szüksége naplóival, amelyeket már nem létezik ezek a korlátok miatt. Így **erősen ajánlott** , hogy egy külső tárhelyen (tárfiókok az Azure-ban, egy további helyi tárolóeszközön stb.) a naplók kiürítési 8 – 12 óránként, és tartsa ott 1 – 3 hónapos, attól függően, a követelmények. Gondoskodjon arról is, a tárolási hely titkosítása.
 
 ## <a name="next-steps"></a>További lépések
 [A Microsoft Azure Stack hibaelhárítása](azure-stack-troubleshooting.md)

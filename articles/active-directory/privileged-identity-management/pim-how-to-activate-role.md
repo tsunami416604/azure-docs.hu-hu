@@ -14,12 +14,12 @@ ms.date: 11/21/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0023ac374ef70593d0ab2d9589c99d0f37e19ff8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: dc20a3739c7dab68728535cc05db400545fbcdf8
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189599"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436391"
 ---
 # <a name="activate-my-azure-ad-directory-roles-in-pim"></a>A PIM az Azure AD-címtárbeli szerepkörök aktiválása
 
@@ -131,7 +131,7 @@ Jóváhagyást igénylő szerepkörök aktiválási nincs szükség, ha egy füg
 
 1. A szerepkör, amely megszakítja, kattintson a **Mégse** gombra.
 
-    Ha a Mégse gombra kattint, a kérelem megszakítása A szerepkör aktiválását ismét el küldjön új aktiválási kérelmet.
+    Ha a Mégse gombra kattint, a kérelem meg lesz szakítva. A szerepkör aktiválását ismét el küldjön új aktiválási kérelmet.
 
    ![Függőben lévő kérelem megszakítása](./media/pim-how-to-activate-role/directory-role-cancel.png)
 

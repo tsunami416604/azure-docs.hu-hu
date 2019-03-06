@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: wielriac
 ms.subservice: blobs
-ms.openlocfilehash: a61e78ff54cdc2a3db6c166686c2c51a19856a9c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b03da04c97475dcb9ce15f2ed69d7ca333d6f431
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252307"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456210"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Az Azure-lapblobok áttekintése
 
@@ -29,7 +29,7 @@ Vizsgáljuk meg néhány használati esetek kezdve az Azure IaaS-lemezek lapblob
 
 Belső Microsoft-szolgáltatások, az Azure Site Recovery, Azure biztonsági mentés, valamint számos külső fejlesztők valósította olyan piacvezető innovációkat lapblob a REST-felület használatával. Az alábbiakban néhány, az Azure-ban megvalósított egyedi forgatókönyvekről: 
 * Alkalmazás által vezérelt növekményes pillanatkép-kezelés: Alkalmazások lap tárolóblob-pillanatképek és a REST API-k használhatnak anélkül költséges másolása az adatok az alkalmazás ellenőrzőpontokat mentéséhez. Az Azure Storage támogatja a helyi pillanatképek a lapblobokhoz, amelyek nem igényelnek, a teljes blob másolása. Ezek nyilvános pillanatkép API-k is engedélyezheti elérése és -pillanatképek közötti eltérések szinte azonnali másolását.
-* Élő áttelepítés alkalmazás és a helyszíni adatokat a felhőbe: A helyszíni adatok másolása, és közvetlenül egy oldala az Azure-blobba való írása közben a helyszíni virtuális gép továbbra is fut a REST API-k használatával. Ha a cél rendelkezik szerepelnek, is gyorsan használatával az adatokat az Azure virtuális géphez feladatátvétel. Ezzel a módszerrel a virtuális gépeket telepíthet át, és virtuális lemezek helyszíni tárolóból felhőbe minimális állásidővel, mivel az adatok migrálása a háttérben történik, miközben továbbra is használhatja a virtuális gép és a feladatátvételhez szükséges állásidő (percben) rövid lesz.
+* Élő áttelepítés alkalmazás és az adatok a helyszínről a felhőbe: Az a helyszíni adatok másolása, és REST API-k segítségével közvetlenül során a helyszíni virtuális gép továbbra is fut egy oldala az Azure-blobba írni. Ha a cél rendelkezik szerepelnek, is gyorsan használatával az adatokat az Azure virtuális géphez feladatátvétel. Ezzel a módszerrel a virtuális gépeket telepíthet át, és virtuális lemezeket a helyszínen a felhőbe minimális állásidővel, mivel az adatok migrálása a háttérben történik, miközben továbbra is használhatja a virtuális gép és a feladatátvételhez szükséges állásidő (percben) rövid lesz.
 * [SAS-alapú](../common/storage-dotnet-shared-access-signature-part-1.md) megosztott hozzáférés, amely lehetővé teszi a több-olvasók és a egy-író egyidejűség-vezérlés támogatása.
 
 ## <a name="page-blob-features"></a>Lapblobok funkciói

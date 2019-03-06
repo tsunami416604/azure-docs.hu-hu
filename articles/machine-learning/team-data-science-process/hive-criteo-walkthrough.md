@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 55b6e6db14f3847eb659f9bee05b12585a613693
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5cb3a029795dd69c80cfa580aa1bd135c67e609e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477216"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451944"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>A csoportos adatelemzési folyamat működés közben – használatával egy Azure HDInsight Hadoop-fürt az 1 TB-os adatkészlet
 
@@ -417,7 +417,7 @@ A count adatok-összeállítási táblázatok száma, használja az adatok a map
 A modell az Azure Machine Learning folyamat létrehozásához kövesse az alábbi lépéseket:
 
 1. [Az adatok beolvasása a Hive-táblák az Azure Machine Learningbe](#step1)
-2. [A kísérlet létrehozása: tisztítsa meg az adatokat és a szabadkézi táblák száma](#step2)
+2. [A kísérlet létrehozása: törölje, és adja meg egy szolgáltatása, amely rendelkezik a táblák száma](#step2)
 3. [Hozhat létre, betanítását és pontozását a modellt.](#step3)
 4. [A modell értékelése](#step4)
 5. [A modell közzététele webszolgáltatásként-](#step5)
@@ -451,7 +451,7 @@ Kattintson a jobb gombbal a kimeneti portjára, a **adatok importálása** modul
 
 Ki a mentett adatkészlet használható a machine learning-kísérlet, keresse meg az adatkészleteket használja a **keresési** be az alábbi ábrán látható. Egyszerűen írja be a nevét, az adatkészlet részlegesen való eléréséhez és az adatkészletet a fő panelen húzzon rendelte. Húzza azt a fő panelen kiválasztja a machine learning modellezési használatos.
 
-![A fő panelen való Drage adatkészlet](./media/hive-criteo-walkthrough/cl5tpGw.png)
+![A fő panelen húzzon adatkészlet](./media/hive-criteo-walkthrough/cl5tpGw.png)
 
 > [!NOTE]
 > Ehhez a tanítási és a teszt adatkészletek. Azt se feledje, az adatbázis neve és a táblaneveket, hogy a megadott erre a célra. Az ábrán használt értékek kizárólag az ábra purposes.* *

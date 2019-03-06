@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: e44b4a2c21cf340683ffbca71f609db58c8f363b
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 5e25de83ddec2884d4bd10ea85f4708d534b8e3f
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337039"
+ms.locfileid: "57403243"
 ---
 # <a name="quickstart-convert-text-to-speech-using-nodejs"></a>Gyors útmutató: Átalakítás szöveg-hang transzformációs Node.js használatával
 
@@ -136,7 +136,7 @@ function textToSpeech(accessToken, text) {
 
 ## <a name="put-it-all-together"></a>Az alkalmazás összeállítása
 
-Már majdnem kész. Az utolsó lépéseként hozhat létre egy aszinkron függvényt. Ez a függvény az előfizetési kulcs fogja beolvasni egy környezeti változóból, Rákérdezés a szöveg, egy token beszerzéséhez, várja meg a kérés befejezéséhez, majd a szöveg-beszéd átalakítás, és mentse a hanganyag egy .wav.
+Már majdnem kész. Az utolsó lépés, hogy hozzon létre egy aszinkron függvényt. Ez a függvény az előfizetési kulcs fogja beolvasni egy környezeti változóból, Rákérdezés a szöveg, egy token beszerzéséhez, várja meg a kérés befejezéséhez, majd a szöveg-beszéd átalakítás, és mentse a hanganyag egy .wav.
 
 Ha még nem használta a környezeti változókat, vagy inkább az előfizetési kulcs szoftveresen kötött karakterláncként tesztelése, cserélje le a `process.env.SPEECH_SERVICE_KEY` karakterláncként az előfizetési kulccsal végzett.
 

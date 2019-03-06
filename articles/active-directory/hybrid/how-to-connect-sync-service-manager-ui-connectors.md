@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a0d42ff70bfaebf4d544fd81e6767592198ccef
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ae932191c7b76590ea217386dfd729add5566f87
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205596"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431172"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Összekötők használata az Azure AD Connect szinkronizálása a Service Manager rendszerrel
 
@@ -86,7 +86,7 @@ A probléma megoldásához frissítse az Active Directory tartományi szolgálta
 3. Válassza ki az AD-összekötő, amely a Tartományi fiók használatára van konfigurálva.
 4. A műveletek, válassza ki a **tulajdonságok**.
 5. Az előugró párbeszédpanelen válassza ki a csatlakozás az Active Directory-erdő:
-6. Az erdő nevét azt jelzi, hogy a megfelelő helyszíni AD.
+6. Az erdő nevét jelzi, hogy a megfelelő a helyszíni AD.
 7. A felhasználó nevét jelzi a szinkronizáláshoz használt AD DS-fiókot.
 8. Adja meg az új jelszót az AD DS-fiók a jelszó szövegmező ![az Azure AD Connect szinkronizálási titkosítási kulcs segédprogram](./media/how-to-connect-sync-service-manager-ui-connectors/key6.png)
 9. Kattintson az OK gombra az új jelszó mentése, és indítsa újra a szinkronizálási szolgáltatást a régi jelszó törlése a memória-gyorsítótárból.

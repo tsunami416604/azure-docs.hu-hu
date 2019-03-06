@@ -1,6 +1,6 @@
 ---
 title: Megismerheti az Azure IoT Hub üzenet formátuma |} A Microsoft Docs
-description: Fejlesztői útmutató – descibes formátuma és az IoT Hub-üzenetek várt tartalom.
+description: Fejlesztői útmutató – ismerteti a formátum és az IoT Hub-üzenetek várt tartalom.
 author: ash2017
 manager: briz
 ms.service: iot-hub
@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: f5d25232ebbdb6f8cf07839cc51485dd53381cd9
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: c882907ef2763f13a3806c335dabf330d35a0831
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733843"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433212"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub-üzenetek létrehozása és olvasása
 

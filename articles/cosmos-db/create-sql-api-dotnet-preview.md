@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 12/01/2018
 ms.author: dech
-ms.openlocfilehash: 11b89cd33346c2d6da2269bbc2a4b9550f3120b3
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 1589c938e635ccff02f94a176b7fc886dbccb779
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587385"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455768"
 ---
 # <a name="quickstart-build-an-aspnet-web-app-using-azure-cosmos-db-sql-api-account"></a>Gyors útmutató: Egy ASP.NET-webalkalmazás létrehozása az Azure Cosmos DB SQL API-fiók használatával
 
@@ -140,12 +140,12 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 1. Az a **Megoldáskezelőben**, kattintson az új Konzolalkalmazás-projektet, amely a Visual Studio megoldás alatt található, a jobb gombbal, és kattintson a **NuGet-csomagok kezelése...**
     
-    ![A Projekt jobb gombos kattintással elérhető menüjének képernyőfelvétele](./media/create-sql-api-dotnet/manage-nuget-package.png)
+    ![A projekt jobb gombos kattintással elérhető menüjének képernyőképe](./media/create-sql-api-dotnet/manage-nuget-package.png)
 1. Az a **NuGet** lapra, majd **Tallózás**, és írja be **Microsoft.Azure.Cosmos** kifejezést a keresőmezőbe.
 1. A találatok között keresse meg a **Microsoft.Azure.Cosmos** kattintson **telepítése**.
    Az Azure Cosmos DB SQL API ügyfélkódtárának csomagazonosítója a következő: [Microsoft Azure Cosmos DB Client Library](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/).
 
-   ![Képernyőfelvétel a NuGet menüről az Azure Cosmos DB ügyféloldali SDK megkereséséhez](./media/sql-api-get-started/dotnet-tutorial-visual-studio-manage-nuget-2.png)
+   ![Képernyőfelvétel a NuGet menüről az Azure Cosmos DB ügyféloldali SDK megkereséséhez menü](./media/sql-api-get-started/dotnet-tutorial-visual-studio-manage-nuget-2.png)
 
     Ha a megoldás módosításainak áttekintéséről szóló üzenetet kap, kattintson az **OK** gombra. Ha a licenc elfogadásáról szóló üzenetet kap, kattintson az **Elfogadom** gombra.
 

@@ -7,16 +7,16 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: quickstart
 ms.reviewer: sgilley
-author: hning86
-ms.author: haining
+author: sdgilley
+ms.author: sgilley
 ms.date: 01/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 513df9f68fdd54b5dc90e57bd8389688c46bf615
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 950ea04addb0c88d4c745d2de3d95df787885137
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804246"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57403430"
 ---
 # <a name="quickstart-use-the-python-sdk-to-get-started-with-azure-machine-learning"></a>Gyors útmutató: Az Azure Machine Learning használatának első lépései a Python SDK használatával
 
@@ -94,9 +94,9 @@ Ebben a rövid útmutatóban található utasításokat a rövid útmutató és 
 
 ### <a name="install-the-sdk"></a>Az SDK telepítése
 
-1. Aktivált conda a környezetben telepítse a Machine Learning SDK alapvető összetevői a Jupyter notebook képességeket.  A telepítés befejezéséhez a számítógép konfigurációja alapján néhány percet vesz igénybe.
+1. Aktivált conda a környezetben telepítse a Machine Learning SDK alapvető összetevői a Jupyter notebook képességeket. A telepítés befejezéséhez a számítógép konfigurációja alapján néhány percet vesz igénybe.
 
-  ```shell
+    ```shell
     pip install --upgrade azureml-sdk[notebooks]
     ```
 
@@ -111,6 +111,11 @@ Ebben a rövid útmutatóban található utasításokat a rövid útmutató és 
     ```shell
     pip install --upgrade azureml-sdk[automl]
     ```
+
+> [!IMPORTANT]
+> Az egyes parancssori eszközök, előfordulhat, hogy hozzá kell idézőjelek közé a következő: * "azureml-sdk [notebookok]" * "azureml-sdk [automl]"
+>
+
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
 

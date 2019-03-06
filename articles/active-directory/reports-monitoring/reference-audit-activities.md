@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a60f95bc8a98ea15c174f48bc3c3e63eae534d1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 88fc78a1263ac4587a98288dc71df26385bc81ce
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164057"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453643"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD naplózott tevékenységekre vonatkozó referencia
 
@@ -66,10 +66,10 @@ Ez a cikk a naplókban rögzíthető tevékenységeket sorolja fel.
 |Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálat frissítése|
 |Hozzáférési felülvizsgálatok|Azure AD hozzáférési felülvizsgálatok előkészítése állapotának frissítése|
 |Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálati e-mail-értesítési beállításainak frissítése|
-|Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálat ismétlődésszám-beállításának frissítése|
-|Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálat napokban megadott ismétlődési időtartamának frissítése|
-|Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálat ismétlődési befejezéstípusának frissítése|
-|Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálat ismétlődéstípus-beállításának frissítése|
+|Hozzáférési felülvizsgálatok|A hozzáférési felülvizsgálathoz tartozó ismétlődésszám beállításának frissítése|
+|Hozzáférési felülvizsgálatok|A hozzáférési felülvizsgálathoz tartozó ismétlődési időtartam (nap) beállításának frissítése|
+|Hozzáférési felülvizsgálatok|A hozzáférési felülvizsgálathoz tartozó ismétlődési befejezési típus beállításának frissítése|
+|Hozzáférési felülvizsgálatok|A hozzáférési felülvizsgálathoz tartozó ismétlődési típus beállításának frissítése|
 |Hozzáférési felülvizsgálatok|Hozzáférési felülvizsgálati emlékeztető beállításainak frissítése|
 |Hozzáférési felülvizsgálatok|Program frissítése|
 |Hozzáférési felülvizsgálatok|Kérelem-jóváhagyás frissítése|

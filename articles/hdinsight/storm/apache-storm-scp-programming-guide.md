@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: d017a2758ccd1530c4558f3dc92559f807df36b9
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 848663c509fd3635b33b8e7735feb940da215bfa
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332098"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441814"
 ---
 # <a name="scp-programming-guide"></a>Szolgáltatáskapcsolódási pont programozási útmutató
 Szolgáltatáskapcsolódási pont platformot hozhat létre valós idejű, megbízható és konzisztens, és nagy teljesítményű adatokat feldolgozó alkalmazást. Be van építve a [Apache Storm](https://storm.incubator.apache.org/) – egy streamfeldolgozó rendszer, a nyílt Forráskódú Közösségek által tervezték. A Storm Nathan Marz által készült, és a nyílt forráskódú lett a Twitteren. A modul [Apache ZooKeeper](https://zookeeper.apache.org/), magas megbízhatóságú engedélyezése egy másik Apache-projecttel elosztott koordinálása és állapot-kezelés. 
@@ -71,7 +71,7 @@ ISCPSpout a nem tranzakcióalapú spout felületet.
 
 Amikor `NextTuple()` nevezzük, a C\# felhasználói kód kibocsátható egy vagy több rekord. Ha semmi sem kibocsátható, ez a módszer kibocsátó semmit nem kell visszaadnia. Érdemes megjegyezni, hogy `NextTuple()`, `Ack()`, és `Fail()` összes nevezzük az egyetlen szálból c. szoros hurokba\# folyamat. Vannak nem rekordok kibocsátható, esetén NextTuple alvó rendelkeznie rövid időn (például 10 ezredmásodperc) számára, hogy ne túl sok CPU pazarlom udvarias.
 
-`Ack()` és `Fail()` csak engedélyezésekor ack mechanizmus dokumentumspecifikáció fájlban nevezzük. A `seqId` nyugtázva vagy sikertelen volt a rekord azonosítására szolgál. Így ha ack nem tranzakciós topológiában engedélyezve van, a következő kibocsátása függvényt kell használni a Spout:
+`Ack()` és `Fail()` csak engedélyezésekor ack mechanizmus dokumentumspecifikáció fájlban nevezzük. A `seqId` azonosítja a rekord, amely arra vonatkozik, vagy nem sikerült. Így ha ack nem tranzakciós topológiában engedélyezve van, a következő kibocsátása függvényt kell használni a Spout:
 
     public abstract void Emit(string streamId, List<object> values, long seqId); 
 
@@ -431,7 +431,7 @@ Két módszer az SCP.NET Context objektumot hozzáadni. Generuje rekordot vagy r
 Futásidejű kivételek a nem létező adatfolyam vezérlés okoz.
 
 ### <a name="fields-grouping"></a>Mezők csoportosítás
-A beépített Strom mezők csoportosítása nem működik megfelelően az SCP.NET. A Java-Proxy oldalon a mezők adattípusok ténylegesen byte [], és a csoportosítási mezők byte [] objektum kivonatkódját segítségével hajtsa végre a csoportosítást. A byte [] objektum kivonatoló kódot az a cím az objektum a memóriában. Ezért a csoportosítás két byte [] objektumok, amelyek ugyanahhoz a tartalomhoz, de nem ugyanazt a címet helytelen lesz.
+A beépített mezők csoportosítása a Storm az SCP.NET nem működik megfelelően. A Java-Proxy oldalon a mezők adattípusok ténylegesen byte [], és a csoportosítási mezők byte [] objektum kivonatkódját segítségével hajtsa végre a csoportosítást. A byte [] objektum kivonatoló kódot az a cím az objektum a memóriában. Ezért a csoportosítás két byte [] objektumok, amelyek ugyanahhoz a tartalomhoz, de nem ugyanazt a címet helytelen lesz.
 
 SCP.NET hozzáad egy testre szabott csoportosítási módszert, és ehhez a csoportosítás használ a byte [] tartalmát. A **specifikációja** fájlt, a szintaxis hasonlít:
 
@@ -573,7 +573,7 @@ Két dokumentumspecifikáció fájl, **HelloWorld.spec** és **HelloWorld\_Enabl
     }
     Context.Logger.Info("enableAck: {0}", enableAck);
 
-A spout a ack engedélyezve van, ha egy szótár segítségével a rekordokat, amelyek nincsenek nyugtázva gyorsítótár. Ha Fail() nevezzük, akkor a hibás rekord játssza vissza:
+A spout a ack engedélyezve van, ha egy szótár segítségével gyorsítótárazzák a rekordokat, amelyek nem nyugtázták. Ha Fail() nevezzük, akkor a hibás rekord játssza vissza:
 
     public void Fail(long seqId, Dictionary<string, Object> parms)
     {

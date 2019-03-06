@@ -12,12 +12,12 @@ ms.date: 01/08/2019
 ms.author: celested
 ms.reviewer: asmalser,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2804ebdbeb72bd35c7e63553184157066f9cfd32
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 93e33ea311a064058e739bfcf6d63dc2d5462110
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177296"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435065"
 ---
 # <a name="configure-single-sign-on-to-non-gallery-applications-in-azure-active-directory"></a>Egyszeri bejelentkezés nem katalógusból származó alkalmazások az Azure Active Directory konfigurálása
 
@@ -60,7 +60,7 @@ Az Azure AD beállításához, adja meg az alapszintű SAML-konfigurációja. Ma
 
   ![Litware tartomány és URL-címek](./media/configure-single-sign-on-non-gallery-applications/customapp4.png)
 
-- **Bejelentkezési URL-(SP által kezdeményezett csak)** – Ha a felhasználó megnyitja a jelentkezzen be az alkalmazás. Ha az alkalmazás szolgáltatás szolgáltató által kezdeményezett egyszeri bejelentkezést, végrehajtására van konfigurálva, majd amikor a felhasználók az URL-címet, a szolgáltató a szükséges átirányítást tegye fel az Azure AD-hitelesítést, és jelentkezzen be a felhasználó. Ha ez a mező fel van töltve, majd Azure AD fog használni az Office 365 és az Azure AD hozzáférési Panel az alkalmazás elindításához az URL-címet. Ha kihagyja ezt a mezőt, majd az Azure AD ehelyett hajtsa végre az identitásszolgáltató-kezdeményezett bejelentkezési, amikor az alkalmazás elindítása az Azure AD egyszeri bejelentkezési URL-cím (másolható, az irányítópult lapon) vagy az Office 365, az Azure AD hozzáférési Panel.
+- **Bejelentkezési URL-(SP által kezdeményezett csak)** – Ha a felhasználó megnyitja a jelentkezzen be az alkalmazás. Ha az alkalmazás szolgáltatás szolgáltató által kezdeményezett egyszeri bejelentkezést, végrehajtására van konfigurálva, majd amikor a felhasználók az URL-címet, a szolgáltató a szükséges átirányítást tegye fel az Azure AD-hitelesítést, és jelentkezzen be a felhasználó. Ha ez a mező fel van töltve, majd Azure AD fog használni az Office 365 és az Azure AD hozzáférési Panel az alkalmazás elindításához az URL-címet. Ha kihagyja ezt a mezőt, majd az Azure AD ehelyett hajtsa végre az identitásszolgáltató-kezdeményezett bejelentkezési, amikor az alkalmazás elindítása az Azure AD egyszeri bejelentkezési URL-cím (másolható át az irányítópult lap) vagy az Office 365, az Azure AD hozzáférési Panel.
 - **Azonosító** -egyedileg kell azonosítania az alkalmazást, amelyhez egyszeri bejelentkezés konfigurálása történik. Ezt az értéket a AuthRequest (SAML-kérelem) kibocsátói elemében az alkalmazás által küldött találja. Ez az érték is frissült: a **Entitásazonosító** a az alkalmazás által biztosított bármely SAML-metaadatokat. Ellenőrizze az alkalmazás SAML dokumentációjában az Entitásazonosító vagy célközönség értékét is. 
 
     Az alábbiakban látható egy példát, hogyan az azonosító vagy a kiállító szerepel-e az alkalmazás az Azure AD által küldött SAML-kérelem:

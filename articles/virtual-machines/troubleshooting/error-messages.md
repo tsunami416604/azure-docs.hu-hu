@@ -12,12 +12,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
-ms.openlocfilehash: 80b99880362c3979ae5ead6d1cdff4091d23d065
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 5945be210812a6cbc24c9a3bb12414be5212be17
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118975"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437598"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>Gyakori hibaüzenetek ismertetése, ha Ön kezeli az Azure virtual machines
 
@@ -172,8 +172,8 @@ Ez a szakasz ismerteti a Gyakori hibaüzenetek jelentkezhetnek, ha a virtuális 
 |  OperationNotAllowed  |  Nem sikerült átméretezni a virtuális Gépet, mert a kért méret {0} nem érhető el a fürt, ahol a virtuális gép jelenleg lefoglalt. A virtuális gép átméretezése {1} szabadítsa fel (Ez a leállítási művelet az Azure Portalon), és próbálkozzon újra az átméretezés. Információ a virtuális gépek átméretezésének stratégiájával címen olvasható https://aka.ms/azure-resizevm.  |
 |  OSProvisioningClientError  |  Virtuális gép operációs rendszerének kiépítése nem sikerült "{0}", mert a vendég operációs rendszer kiépítése folyamatban van.  |
 |  OSProvisioningClientError  |  Virtuális gép operációs rendszerének kiépítése "{0}" nem sikerült. Hiba részletei: {1} Győződjön meg arról, hogy a lemezkép megfelelően lett előkészítve (általánosítva). <ul><li>Windows utasításokat: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/  </li></ul> |
-|  OSProvisioningClientError  |  SSH-állomáskulcs létrehozása nem sikerült. A hiba részletei: {0}. Oldja meg a probléma ellenőrizze-e ha Linux-ügynök megfelelően van-e beállítva. <ul><li>Ellenőrizheti a webhelyen található utasításokat: https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/ </li></ul> |
-|  OSProvisioningClientError  |  A virtuális Géphez megadott felhasználónév érvénytelen ezen Linux-disztribúció. A hiba részletei: {0}.  |
+|  OSProvisioningClientError  |  SSH-állomáskulcs létrehozása nem sikerült. Hiba részletei: {0}. Oldja meg a probléma ellenőrizze-e ha Linux-ügynök megfelelően van-e beállítva. <ul><li>Ellenőrizheti a webhelyen található utasításokat: https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux/ </li></ul> |
+|  OSProvisioningClientError  |  A virtuális Géphez megadott felhasználónév érvénytelen ezen Linux-disztribúció. Hiba részletei: {0}.  |
 |  OSProvisioningInternalError  |  Virtuális gép operációs rendszerének kiépítése nem sikerült "{0}" belső hiba miatt.  |
 |  OSProvisioningTimedOut  |  Virtuális gép operációs rendszerének kiépítése "{0}" a megengedett időn belül nem fejeződött be. Előfordulhat, hogy a virtuális gép továbbra is be a sikeres kiépítés. Ellenőrizze később a telepítés állapotát.  |
 |  OSProvisioningTimedOut  |  Virtuális gép operációs rendszerének kiépítése "{0}" a megengedett időn belül nem fejeződött be. Előfordulhat, hogy a virtuális gép továbbra is be a sikeres kiépítés. Ellenőrizze később a telepítés állapotát. Ellenőrizzük, hogy a lemezkép megfelelően lett előkészítve (általánosítva).   <ul><li>Windows utasításokat: https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/ </li><li> Útmutatás Linux rendszerhez: https://azure.microsoft.com/documentation/articles/virtual-machines-linux-capture-image/</li></ul>  |

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53eb0c4ad5c0a21f46985062ef8202a87dc0d5e6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c23f16f5d3c665cb74e9e0460d2e5658fa716d72
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189361"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452861"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>Oktatóanyag: Végtelen Campus az Azure Active Directory-integráció
 
@@ -49,7 +49,7 @@ Ebben az oktatóanyagban a lépéseket teszteléséhez kövesse ezeket a javasla
 
 - Ne használja az éles környezetben, csak szükség esetén.
 - Ha nem rendelkezik egy Azure ad-ben a próbakörnyezet, [egy hónapos próbaverzió beszerzése](https://azure.microsoft.com/pricing/free-trial/).
-- Legalább kell lennie az Azure Active Directory-rendszergazda, a konfiguráció befejezéséhez.
+- Legalább szüksége lehet az Azure Active Directory-rendszergazda, és telephelyi termék biztonsági szerepkör a "tanuló információk System (SIS)" konfigurálásának befejezéséhez.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -112,7 +112,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     ![Egyszeri bejelentkezés konfigurálása](common/editconfigure.png)
 
-4. Az a **alapszintű SAML-konfigurációja** szakaszt, ha rendelkezik egy **szolgáltató metaadatait tartalmazó fájl**, teljes lépések 4.a 4.d keresztül, és folytassa a 11.c lépést. Ha nem rendelkezik a Service Provider metaadatait tartalmazó fájl, ugorjon az 5.
+4. A a **alapszintű SAML-konfigurációja** szakaszt, ha rendelkezik egy **szolgáltató metaadatait tartalmazó fájl** végtelen Campus exportál, végezze el lépések 4.a 4.d keresztül, és folytassa a 11.c lépést. Ha nem rendelkezik a Service Provider metaadatait tartalmazó fájl, ugorjon az 5.
 
     a. Kattintson a **metaadatfájl feltöltése**.
 
@@ -168,13 +168,15 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
     a. Válassza ki **engedélyezése SAML egyszeri bejelentkezési**.
     
-    b. Az a **válassza ki a Identity Provider (IDP) kiszolgáló adatainak beolvasása** szakaszban válassza ki **metaadatok URL-címe**, illessze be a **alkalmazás összevonási metaadatainak URL-címe** a mezőbe, majd Kattintson a **szinkronizálási**.
+    b. Szerkessze a **nem kötelező attribútum neve** tartalmaznia **neve**
+    
+    c. Az a **válassza ki a Identity Provider (IDP) kiszolgáló adatainak beolvasása** szakaszban válassza ki **metaadatok URL-címe**, illessze be a **alkalmazás összevonási metaadatainak URL-címe** (a fenti lépés 6) a a mezőbe, és kattintson **szinkronizálási**.
 
-    c. Kattintson a **Service Provider metaadatok** menteni a kapcsolat a **szolgáltató metaadatait tartalmazó fájl** a számítógépen, és töltse fel a **alapszintű SAML-konfigurációja** automatikus szakasz Töltse fel a **azonosító** és **válasz URL-cím** értékeket az Azure Portalon (4. lépés a fel- és az értékek az automatikus feltöltési tekintse meg, vagy manuális bejegyzést az 5. lépés).
+    d. Kattintson a **Service Provider metaadatok** menteni a kapcsolat a **szolgáltató metaadatait tartalmazó fájl** a számítógépen, és töltse fel a **alapszintű SAML-konfigurációja** automatikus szakasz Töltse fel a **azonosító** és **válasz URL-cím** értékeket az Azure Portalon (4. lépés a fel- és az értékek az automatikus feltöltési tekintse meg, vagy manuális bejegyzést az 5. lépés).
 
-    d. Kattintás után **szinkronizálási** az értékek első automatikusan kitölti a **SSO szolgáltató konfigurációja** lapot.
+    e. Kattintás után **szinkronizálási** az értékek első automatikusan kitölti a **SSO szolgáltató konfigurációja** lapot.
 
-    e. Kattintson a **Save** (Mentés) gombra.
+    f. Kattintson a **Save** (Mentés) gombra.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó létrehozása
 
@@ -233,7 +235,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
 
-Ha a hozzáférési panelen a végtelen Campus csempére kattint, meg kell lekérése automatikusan bejelentkezett a végtelen Campus alkalmazásba. Ha ugyanabból a böngészőből, Azure AD szolgáltatás felügyeletéről végtelen Camnpus alkalmazásba jelentkezik, győződjön meg arról, jelentkezzen be a tesztfelhasználó számára, az Azure AD-be. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
+Ha a hozzáférési panelen a végtelen Campus csempére kattint, meg kell lekérése automatikusan bejelentkezett a végtelen Campus alkalmazásba. Ha ugyanabból a böngészőből, Azure AD szolgáltatás felügyeletéről végtelen Campus alkalmazásba jelentkezik, győződjön meg arról, jelentkezzen be a tesztfelhasználó számára, az Azure AD-be. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>További források
 

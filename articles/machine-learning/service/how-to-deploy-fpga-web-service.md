@@ -11,12 +11,12 @@ ms.author: tedway
 author: tedway
 ms.date: 1/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: d7403d4f791151b167f03ee79c30623bbd644008
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: a82c3b3aef59ef53e5054f2beb2880e8a01dc8fa
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100685"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448660"
 ---
 # <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning-service"></a>Modell üzembe helyezése az Azure Machine Learning szolgáltatás egy FPGA a webszolgáltatásként
 
@@ -51,7 +51,7 @@ Telepíthet egy modellt webszolgáltatásként, amely a [programmable gate array
 Az Ön kényelme érdekében ez az oktatóanyag Jupyter-notebookként is elérhető. Kövesse az itt, vagy futtassa a kódot a [rövid notebook](https://github.com/Azure/aml-real-time-ai/blob/master/notebooks/project-brainwave-quickstart.ipynb).
 
 ## <a name="create-and-deploy-your-model"></a>Hozzon létre, és a modell üzembe helyezése
-A bemeneti kép, a szabadkézi előfeldolgozása ResNet-50 használatával egy FPGA a folyamat létrehozása, és futtassa a funkciók egy osztályozó épít adatkészlet tanított keresztül.
+A bemeneti kép előfeldolgozása, adja meg a funkciót a ResNet-50 használatával egy FPGA a folyamat létrehozása, és futtassa a funkciók egy osztályozó épít adatkészlet tanított keresztül.
 
 Kövesse az utasításokat:
 

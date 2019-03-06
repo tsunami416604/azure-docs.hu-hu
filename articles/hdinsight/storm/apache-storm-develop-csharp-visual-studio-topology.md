@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 11/27/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: cf258637311cd22964723da6bad3451dff6cccf6
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 1bcb50829dca59f8a467c2c1d2381b5463ef9471
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632012"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437394"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Az Apache Storm C#-topológiák fejlesztése a Data Lake tools for Visual Studio használatával
 
@@ -47,7 +47,7 @@ C#-topológiák SCP.NET is fejleszthet a Visual Studio a következő verziók eg
 
 * Visual Studio 2015 vagy [Visual Studio 2015 Community](https://go.microsoft.com/fwlink/?LinkId=532606)
 
-* A Visual Studio 2017 (bármely kiadás esetén)
+* Visual Studio 2017 (any edition)
 
 ## <a name="install-data-lake-tools-for-visual-studio"></a>Install Data Lake tools for Visual Studio
 
@@ -433,7 +433,7 @@ Tranzakciós topológiák megvalósítása visszajátszását az adatok támogat
 
 * **Metaadatok gyorsítótárazása**: A spout bocsát ki, hogy az adatok lekérése, illetve bocsátja ki újra, ha hiba történik az adatok kapcsolatos metaadatokat kell tárolnia. Mivel az adatok a minta által kibocsátott kis méretű, a nyers adatok a rekordok egy szótárban a visszajátszás tárolódik.
 
-* **Nyugtázási**: A topológia összes bolt meghívhatja `this.ctx.Ack(tuple)` gombra annak megerősítéséhez, hogy sikeresen feldolgozta-e egy rekord. Ha az összes boltok nyugtázva a rekord a `Ack` a spout-metódusa meghívásainak. A `Ack` módszer lehetővé teszi, hogy a spout a visszajátszás gyorsítótárazott adatokat.
+* **Nyugtázási**: A topológia összes bolt meghívhatja `this.ctx.Ack(tuple)` gombra annak megerősítéséhez, hogy sikeresen feldolgozta-e egy rekord. Ha az összes boltok vette az a rekord a `Ack` a spout-metódusa meghívásainak. A `Ack` módszer lehetővé teszi, hogy a spout a visszajátszás gyorsítótárazott adatokat.
 
 * **Sikertelen**: Minden egyes bolt meghívhatja `this.ctx.Fail(tuple)` jelzi, hogy egy rekord feldolgozása nem sikerült. A hiba propagálás a a `Fail` a spout, ahol a rekord is megismétlését segítségével módszert gyorsítótárazott metaadatok.
 
@@ -684,7 +684,7 @@ Bár könnyen topológia üzembe helyezése egy fürtön, bizonyos esetekben az 
 
 2. Mentse a módosításokat, és kattintson a **F5** , vagy válasszon **Debug** > **Start Debugging** a projekt indításához. A konzolablakban kell jelenik meg, és állapot naplózásához a tesztek állapotát. Amikor **tesztek befejeződött** jelenik meg, nyomja le bármelyik billentyűt az ablak bezárásához.
 
-3. Használat **Windows Explorer** keresse meg a projekt tartalmazó könyvtárra. Példa: **C:\Users\<your_user_name > \Documents\Visual Studio 2013\Projects\WordCount\WordCount**. Ebben a könyvtárban, nyissa meg a **Bin**, és kattintson a **Debug**. A szöveges fájlokat, amelyeket a vizsgálatok futtatásakor kell megjelennie: sentences.txt counter.txt és splitter.txt. Nyissa meg a szöveges fájlokat, és vizsgálja meg az adatokat.
+3. Használat **Windows Explorer** keresse meg a projekt tartalmazó könyvtárra. Példa: **C:\Users\<your_user_name>\Documents\Visual Studio 2013\Projects\WordCount\WordCount**. Ebben a könyvtárban, nyissa meg a **Bin**, és kattintson a **Debug**. A szöveges fájlokat, amelyeket a vizsgálatok futtatásakor kell megjelennie: sentences.txt counter.txt és splitter.txt. Nyissa meg a szöveges fájlokat, és vizsgálja meg az adatokat.
 
    > [!NOTE]  
    > Ezeket a fájlokat a tizedes értékeket egy tömbként karakterláncadatokat továbbra is fennáll. Ha például \[[97,103,111]] az a **splitter.txt** fájl szó *és*.
@@ -751,12 +751,12 @@ További részleteket a HDInsight használata és további Storm on HDInsight mi
 
 * [Szolgáltatáskapcsolódási pont programozási útmutató](apache-storm-scp-programming-guide.md)
 
-**Az Apache Storm on HDInsight**
+**Apache Storm on HDInsight**
 
 * [Telepítheti és figyelheti a HDInsight Apache Storm-topológiák](apache-storm-deploy-monitor-topology.md)
 * [HDInsight alatt futó Apache Storm példatopológiái](apache-storm-example-topology.md)
 
-**Az Apache Hadoop on HDInsight**
+**Apache Hadoop on HDInsight**
 
 * [Apache Hive használata a HDInsight Apache Hadoop-keretrendszerrel](../hadoop/hdinsight-use-hive.md)
 * [Az Apache Pig használata a HDInsight Apache Hadoop-keretrendszerrel](../hadoop/hdinsight-use-pig.md)

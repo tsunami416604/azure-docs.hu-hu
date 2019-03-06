@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: rosh
-ms.openlocfilehash: ff214a545023364b09a0e757462a1b3f3d963d44
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 34555ec3315c1fd7322c249e59744cb512ac2d37
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55885021"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437480"
 ---
 # <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-java"></a>Gyors útmutató: Hajtsa végre a videókeresési Bing Video Search SDK-val Java
 
@@ -41,7 +41,7 @@ Telepítse a Bing Video Search SDK függőségeit a Maven, a Gradle vagy más f�
   </dependencies> 
 ```
 
-## <a name="create-and-initalize-a-project"></a>Hozzon létre és a egy projektet sikerült
+## <a name="create-and-initialize-a-project"></a>Projekt létrehozása és inicializálása
 
 
 Hozzon létre egy új Java-projektet a kedvenc IDE-környezetében vagy szerkesztőjében, és importálja az alábbi kódtárakat.
@@ -115,7 +115,7 @@ Hozzon létre egy új Java-projektet a kedvenc IDE-környezetében vagy szerkesz
         //...
         ```
 
-## <a name="send-a-search-request-and-recieve-the-response"></a>A keresési kéréseket küldeni és fogadni a válasz 
+## <a name="send-a-search-request-and-receive-the-response"></a>A keresési kéréseket küldeni és fogadni a válasz 
 
 1. Hozzon létre egy függvényt, nevű `VideoSearch()` , amely karakterláncként az előfizetési kulcs szükséges. Hozza létre a korábban létrehozott keresési ügyfél.
     

@@ -1,6 +1,6 @@
 ---
 title: Engedélyezés B2B-felhasználók a hozzáférést a helyszíni alkalmazások – Azure Active Directory |} A Microsoft Docs
-description: Felhőbeli B2B-felhasználók hozzáférésének biztosítása a helyszíni alkalmazásokba az Azure AD B2B együttműködés mutatja.
+description: Bemutatja, hogyan biztosíthat a B2B-felhasználók hozzáférésének a helyi alkalmazások az Azure AD B2B együttműködés a felhőben.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d353fa49fe054a28a913cef631cc500b5d6e937c
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: b0e9536f009d478796bc9367a66630c02019dcd2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673596"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441250"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Támogatás B2B-felhasználók Azure AD-ben a hozzáférést a helyszíni alkalmazások
 

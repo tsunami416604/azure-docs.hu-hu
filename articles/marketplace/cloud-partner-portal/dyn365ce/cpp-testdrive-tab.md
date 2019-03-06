@@ -14,18 +14,18 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/25/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 664a2c6bfc4a73b7d792b71c4b81df54b05fcd74
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 373312b4c7f05fe41c9ca8165b8ff6f1b0e56f1b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54083033"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454969"
 ---
 # <a name="dynamics-365-for-customer-engagement-application-test-drive-tab"></a>Dynamics 365 Customer Engagement-alkalmazás Tesztverziós lap
 
-Használja a **Test Drive** lap használatával létrehozhat egy próbaverziója az ügyfelek számára.  Az ajánlat főbb funkciók és előnyök, mutatja be egy való életből vett megvalósítási forgatókönyv gyakorlati, önálló irányítású próbaverzió ügyfelek biztosít.  Próbaverziós lehetőségekről Test Drive az Érdeklődők generálása kiváló minőségű, a leghatékonyabb, és ezek nagyobb átalakítás vezet.  További információkért lásd: [Mi a Test Drive?](../../cloud-partner-portal-orig/what-is-test-drive.md)
+Használja a **Test Drive** lap használatával létrehozhat egy próbaverziója az ügyfelek számára.  Az ajánlat főbb funkciók és előnyök, mutatja be egy való életből vett megvalósítási forgatókönyv gyakorlati, önálló irányítású próbaverzió ügyfelek biztosít.  Próbaverziós lehetőségekről Test Drive az Érdeklődők generálása kiváló minőségű, a leghatékonyabb, és ezek nagyobb átalakítás vezet.  További információkért lásd: [Mi a Test Drive?](../test-drive/what-is-test-drive.md)
 
-A Test Drive élményt, a Dynamics 365-alkalmazások automatikusan fut egy Microsoft által üzemeltetett megoldás.  További információkért lásd: [üzemeltetett Test Drive](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/hosted-test-drive).
+A Test Drive élményt, a Dynamics 365-alkalmazások automatikusan fut egy Microsoft által üzemeltetett megoldás.  További információkért lásd: [üzemeltetett Test Drive](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/hosted-test-drive).
 
 A Test Drive lap három lehetséges részből áll: **Próbálja ki a**, **részletek**, és **műszaki konfigurációs**.  Az utolsó két szakasz csak akkor jelenik meg, miután engedélyezte a Test Drive-funkciókat.  Egy csillag (*) hozzáfűzi a mező nevét jelzi, hogy ez szükséges. 
 
@@ -66,8 +66,8 @@ Ha a mezők rendelkezik a következő célokra:
 | Tesztelje a meghajtó időtartama (óra)   | Órák maximális száma a felhasználó Test Drive-példány lesz aktív. Miután ez az időszak túllépése esetén a példány – a bérlőről figyelmeztetés megszüntetésről. Javasolt érték 2 – 24 óra alkalmazásához összetettségétől függően. A felhasználó mindig kérheti egy másik Test Drive, ha elfogy a ideje, és újra ki kell számítani.  |
 | Példány URL-címe                  | URL-cím a Test Drive először nyitja meg. Ez általában a Dynamics 365-példány, amelyen az alkalmazás URL-CÍMÉT és mintaadatok telepítve.  |
 | Az Azure AD-bérlő azonosítója            | A Dynamics 365-példány az Azure-bérlő GUID Azonosítóját. Lekérje ezt az értéket, jelentkezzen be az Azure Portalon, és keresse meg a **Azure Active Directory** > **tulajdonságok kiválasztása** > **másolja ki a címtár-azonosító**.  |
-| Azure AD-alkalmazás azonosítója               | Az Azure AD-alkalmazás GUID azonosítója  |
-| Az Azure AD alkalmazás-kulcs              | A titkos kulcsot az Azure AD alkalmazás, például: `IJUgaIOfq9b9LbUjeQmzNBW4VGn6grr1l/n3aMrnfdk=` |
+| Azure AD App ID               | Az Azure AD-alkalmazás GUID azonosítója  |
+| Azure AD App Key              | A titkos kulcsot az Azure AD alkalmazás, például: `IJUgaIOfq9b9LbUjeQmzNBW4VGn6grr1l/n3aMrnfdk=` |
 | Az Azure AD-bérlő neve          | Az Azure-bérlőhöz, a Dynamics 365-példány neve. Például használja a < tenantname. > onmicrosoft.com, formátuma: `testdrive.onmicrosoft.com`  |
 | Példány webes API URL-címe          | Webes API URL-címe a Dynamics 365-példány. Ezt az értéket lekérheti azokat a Microsoft Dynamics 365-példány, és ellenőrizheti, hogy **beállítások** > **testreszabási** > **fejlesztői Erőforrások** > **webes API-t (az URL-cím másolása) példány**. Példaérték: `https://testdrive.crm.dynamics.com/api/data/v9.0`  |
 | Szerepkörnév                     | Az egyéni Dynamics 365-biztonsági szerepkör a Test Drive hozott létre, és hozzá lesz rendelve a felhasználók futnak, például amikor `testdriveuser`. |

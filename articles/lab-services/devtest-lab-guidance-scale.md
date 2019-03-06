@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 781a897c99a28fbd1b695876f477b140521068e3
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 25a088686c739c53feadd6354baf75f3147bdc33
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244879"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431190"
 ---
 # <a name="scale-up-your-azure-devtest-labs-infrastructure"></a>Vertikális felskálázás az Azure DevTest Labs-infrastruktúra
 DevTest Labs megvalósítása nagyvállalati szintű, mielőtt nincsenek több fő döntési pontokat. A döntési pontokat magas szintű megismerése segít tervezési döntéseket a szervezete a jövőben. Azonban ezeket a pontokat kell tartalmaz vissza egy szervezet a koncepció igazolása elindítását. A kezdeti tervezésen növelheti az első három területek a következők:
@@ -46,7 +46,7 @@ Ezután azt jelöljön ki egyes megközelítés a szakemberek számára.
 A módszer egy előfizetés gyakran nem áll nagy vállalatok kezelhető. Azonban az előfizetések számának korlátozása a következő előnyöket nyújtja:
 
 - **Előrejelzés** vállalati költségeit.  Költségvetés lesz egy előfizetés sokkal egyszerűbb, mivel egyetlen szerepelnek az összes erőforrás. Ez a megközelítés lehetővé teszi, hogy egyszerűbb döntési végzett az elszámolási időszakban egy adott időpontban méri a költségek ellenőrzés során.
-- **Kezelhetőségi** virtuális gépek, összetevők, képleteket, hálózati konfigurációt, engedélyek, szabályzatok, stb az egyszerűbb, mivel a frissítések csak szükséges egy adott előfizetéshez szemben, így a frissítések sok előfizetések között.
+- **Kezelhetőségi** virtuális gépeket, összetevők, képleteket, hálózati konfigurációt, engedélyek, szabályzatok, stb. egyszerűbb, mivel a frissítések csak szükséges egy adott előfizetéshez szemben, így a frissítések sok előfizetések között.
 - **Hálózatkezelés** erőfeszítés nagyban megkönnyíti a vállalatok számára, ahol a helyszíni kapcsolat egy előfizetés. Virtuális hálózatok összekapcsolása az előfizetések (küllős modell) szükség további előfizetésekkel, amelyhez szükséges további konfigurációs, felügyeleti, IP-címtereket, stb.
 - **Csoportmunka** esetén könnyebb mindenki ugyanabban az előfizetésben működik – például egyszerűbb újbóli hozzárendelése a virtuális gép egy munkatársnak, megoszthatja a csapatával erőforrások stb.
 

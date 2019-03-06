@@ -6,19 +6,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: quickstart
-ms.date: 01/09/2019
+ms.date: 02/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to quickly deploy Data Box Disk so as to import data into Azure.
-ms.openlocfilehash: 3b158e0743a811f0d8f478c15b64c2b8b99a748a
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 298c5f718d10a318ff241cf000f24b5484485489
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156000"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57408581"
 ---
 # <a name="quickstart-deploy-azure-data-box-disk-using-the-azure-portal"></a>Gyors útmutató: Üzembe helyezése az Azure Data Box-lemezek az Azure portal használatával
 
-A rövid útmutató az Azure Data Box Disk az Azure Portal használatával való üzembe helyezését írja le. A lépések bemutatják, hogyan hozhat gyorsan létre rendeléseket, hogyan kaphatja kézhez, csomagolhatja ki és csatlakoztathatja a meghajtókat, majd másolhatja rájuk az adatokat azok az Azure-ba való feltöltéséhez. 
+A rövid útmutató az Azure Data Box Disk az Azure Portal használatával való üzembe helyezését írja le. A lépések bemutatják, hogyan hozhat gyorsan létre rendeléseket, hogyan kaphatja kézhez, csomagolhatja ki és csatlakoztathatja a meghajtókat, majd másolhatja rájuk az adatokat azok az Azure-ba való feltöltéséhez.
 
 Részletes részletes üzembe helyezés és a nyomkövetési utasításokat, keresse fel [oktatóanyag: Az Azure Data Box-lemezek ORDER](data-box-disk-deploy-ordered.md). 
 
@@ -41,9 +41,9 @@ Ez a lépés nagyjából 5 percet vesz igénybe.
 1. Hozzon létre egy új Azure Data Box-erőforrást az Azure Portalon. 
 2. Válasszon ki egy előfizetést a szolgáltatáshoz, és az átvitel típusánál válassza az **Importálás** lehetőséget. Adja meg a **Forrásország** mezőben azt a helyet, ahol az adatok jelenleg találhatók, az **Azure-beli célrégió** mezőben pedig az adatátvitel célját.
 3. Válassza a **Data Box Disk** lehetőséget. A megoldás maximális kapacitása 35 TB, nagyobb mennyiségű adat esetén több meghajtórendelést is létrehozhat.  
-4. Adja meg a rendelés részleteit és a szállítási adatokat. Ha a szolgáltatás elérhető az Ön régiójában, adja meg az értesítési e-mail-címeket, tekintse át az összefoglalót, és hozza létre a rendelést. 
+4. Adja meg a rendelés részleteit és a szállítási adatokat. Ha a szolgáltatás elérhető az Ön régiójában, adja meg az értesítési e-mail-címeket, tekintse át az összefoglalót, és hozza létre a rendelést.
 
-A rendelés létrehozását követően megtörténik a meghajtók szállításra való előkészítése. 
+A rendelés létrehozását követően megtörténik a meghajtók szállításra való előkészítése.
 
 ## <a name="unpack"></a>Kicsomagolás
 
@@ -52,7 +52,7 @@ Ez a lépés nagyjából 5 percet vesz igénybe.
 A Data Box Disk-meghajtót egy UPS Express dobozban küldjük el Önnek. Nyissa ki a dobozt, és ellenőrizze, hogy tartalmazza-e a következőket:
 
 - 1–5 buborékfóliába csomagolt USB-meghajtó.
-- Meghajtónként egy csatlakozókábel. 
+- Meghajtónként egy csatlakozókábel.
 - Fuvarlevélcímke a csomag visszaküldéséhez.
 
 ## <a name="connect-and-unlock"></a>Csatlakoztatás és a zárolás feloldása
@@ -69,18 +69,20 @@ Ez a lépés nagyjából 5 percet vesz igénybe.
 
 ## <a name="copy-data-and-validate"></a>Adatok másolása és ellenőrzés
 
-A művelet végrehajtásának időtartama az adatok mennyiségétől függ. 
+A művelet végrehajtásának időtartama az adatok mennyiségétől függ.
 
-1. A meghajtó a *PageBlob*, a *BlockBlob* és a *DataBoxDiskImport* mappát tartalmazza. A blokkblobokként importálandó adatokat húzással másolja a *BlockBlob* mappába. Hasonlóképpen húzza a VHD/VHDX és hasonló típusú adatokat a *PageBlob* mappába.
+1. A meghajtó tartalmaz *PageBlob*, *BlockBlob*, *AzureFile*, *ManagedDisk*, és *DataBoxDiskImport* mappákat. A blokkblobokként importálandó adatokat húzással másolja a *BlockBlob* mappába. Ehhez hasonlóan áthúzása adatok, például VHD/VHDX-re *PageBlob* mappát, és a megfelelő adatok *AzureFile*. Másolja a VHD-k, felügyelt lemezeket kell egy mappába a feltölteni kívánt *ManagedDisk*.
 
-    A rendszer a *BlockBlob* és a *PageBlob* mappa alatt található minden almappához létrehoz egy tárolót az Azure-tárfiókban. A *BlockBlob* és a *PageBlob* mappa alatt található összes fájl az Azure Storage-fiók alatti alapértelmezett `$root` tárolóba lesz átmásolva.
+    A rendszer a *BlockBlob* és a *PageBlob* mappa alatt található minden almappához létrehoz egy tárolót az Azure-tárfiókban. Egy fájlmegosztás jön létre egy olyan almappa is alatt *AzureFile*.
 
-    > [!NOTE] 
-    > - Minden tároló és blob nevének követnie kell az [Azure elnevezési konvencióit](data-box-disk-limits.md#azure-block-blob-and-page-blob-naming-conventions). Ha a szabályok nem teljesülnek, az adatok az Azure-ba való feltöltése meghiúsul.
-    > - Győződjön meg róla, hogy a fájlok mérete blokkblobok esetén nem haladja meg a ~4,75 TiB, lapblobok esetén a ~8 TiB méretet.
+    A *BlockBlob* és a *PageBlob* mappa alatt található összes fájl az Azure Storage-fiók alatti alapértelmezett `$root` tárolóba lesz átmásolva. Fájlok másolása egy mappába belül *AzureFile*. Összes másolt fájl közvetlenül a *AzureFile* mappában fellépő hibák és a feltöltött blokkblobok formájában.
 
-2. (Nem kötelező) Javasoljuk, hogy a másolás után a *DataBoxDiskImport* mappában elérhető `DataBoxDiskValidation.cmd` futtatásával hozzon létre ellenőrzőösszegeket az ellenőrzéshez. Az adatok mennyiségétől függően ez a lépés némi időt vehet igénybe. 
-3. Válassza le a meghajtót. 
+    > [!NOTE]
+    > - A tárolók, blobok és fájlok meg kell felelnie [elnevezési konvenciók Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). Ha a szabályok nem teljesülnek, az adatok az Azure-ba való feltöltése meghiúsul.
+    > - Győződjön meg arról, hogy a fájlok nem haladhatja meg ~4.75 Tib-ra a blokkblobok, lapblobok esetében ~ 8 Tib-ra és a ~ 1 Tib-ra az Azure Files számára.
+
+2. **(Nem kötelező, de ajánlott)**  a másolás után erősen javasoljuk, hogy legalább futtassa a `DataBoxDiskValidation.cmd` megadott a *DataBoxDiskImport* mappára, és válassza lehetőséget 1 és érvényesítheti a fájlokat. Azt javasoljuk, hogy időt lehetővé tevő, 2. lehetőség használatával is létrehozhat az ellenőrzőösszegek érvényesítéshez (időt is igénybe vehet attól függően, hogy az adatok mérete). Ezeket a lépéseket az esetleges hibák esélyét minimalizálása érdekében, amikor az adatok feltöltése az Azure-bA.
+3. Biztonságosan távolítsa el a meghajtót.
 
 ## <a name="ship-to-azure"></a>Elküldés az Azure-nak
 
@@ -95,8 +97,8 @@ A Data Box Disk szolgáltatás egy e-mail-értesítést küld, és frissíti a r
 
 A művelet végrehajtásának időtartama az adatok mennyiségétől függ.
 
-1. A Data Box-meghajtók az Azure-adatközpont hálózatához való csatlakoztatásakor az adatok az Azure-ba való feltöltése automatikusan megkezdődik. 
-2. Az Azure Data Box szolgáltatás az Azure Portalon értesíti, ha az adatok másolása befejeződött. 
+1. A Data Box-meghajtók az Azure-adatközpont hálózatához való csatlakoztatásakor az adatok az Azure-ba való feltöltése automatikusan megkezdődik.
+2. Az Azure Data Box szolgáltatás az Azure Portalon értesíti, ha az adatok másolása befejeződött.
     
     1. Ellenőrizze a hibákat a hibanaplókban, és tegye meg a szükséges intézkedéseket.
     2. Ellenőrizze, hogy az adatok jelen vannak-e a tárfiók(ok)ban, mielőtt törölné azokat a forrásról.
@@ -107,17 +109,17 @@ Ez a lépés 2–3 percet vehet igénybe.
 
 Az erőforrások eltávolításához visszavonhatja a Data Box-rendelést, és törölheti azt.
 
-- A Data Box-rendelést a feldolgozása előtt bármikor visszavonhatja az Azure Portalon. A rendelést a teljesítése után már nem lehet visszavonni. A rendelés halad a maga útján, amíg el nem éri a teljesített állapotot. 
+- A Data Box-rendelést a feldolgozása előtt bármikor visszavonhatja az Azure Portalon. A rendelést a teljesítése után már nem lehet visszavonni. A rendelés halad a maga útján, amíg el nem éri a teljesített állapotot.
 
     A rendelés visszavonásához lépjen az **Áttekintés** oldalra, és kattintson a **Megszakítás** parancsra a parancssávon.  
 
-- A rendelés akkor törölhető, ha a **Teljesítve** vagy a **Megszakítva** állapot jelenik meg az Azure Portalon. 
+- A rendelés akkor törölhető, ha a **Teljesítve** vagy a **Megszakítva** állapot jelenik meg az Azure Portalon.
 
     A rendelés törléséhez lépjen az **Áttekintés** oldalra, és kattintson a **Törlés** parancsra a parancssávon.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban egy Azure Data Box Disk-meghajtót helyezett üzembe az adatok az Azure-ba való importálásához. Folytassa a következő cikkel, ha többet szeretne megtudni az Azure Data Box Disk kezeléséről: 
+Ebben a rövid útmutatóban egy Azure Data Box Disk-meghajtót helyezett üzembe az adatok az Azure-ba való importálásához. Folytassa a következő cikkel, ha többet szeretne megtudni az Azure Data Box Disk kezeléséről:
 
 > [!div class="nextstepaction"]
 > [A Data Box Disk az Azure Portal használatával történő kezelése](data-box-portal-ui-admin.md)

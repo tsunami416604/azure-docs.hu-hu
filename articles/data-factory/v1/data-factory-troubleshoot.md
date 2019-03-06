@@ -13,18 +13,20 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: c41f03494720c9283bb3ce91fda6e3981f305084
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 053cabfa29bd5e436fecd922e4bcdbca9483d25a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023022"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455683"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Data Factory-hibák elhárítása
 > [!NOTE]
 > Ez a cikk az Azure Data Factory 1-es verziójára vonatkozik. 
 
 Ez a cikk hibaelhárítási tippek az Azure Data Factory használata során problémák nyújt. Ez a cikk nem tartalmazza a lehetséges problémákat, a szolgáltatás használatához, de bizonyos problémákat és az általános hibaelhárítási tippek lefedi.   
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="troubleshooting-tips"></a>Hibaelhárítási tippek
 ### <a name="error-the-subscription-is-not-registered-to-use-namespace-microsoftdatafactory"></a>Hiba: Az előfizetés nincs regisztrálva a "Microsoft.DataFactory" névtér
@@ -34,20 +36,20 @@ Amennyiben ezt a hibaüzenetet kapja, az Azure Data Factory erőforrás-szolgál
 2. Jelentkezzen be az Azure-fiókjába a következő paranccsal.
 
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 3. Futtassa a következő parancsot az Azure Data Factory-szolgáltató regisztrálásához.
 
     ```powershell        
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+    Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
     ```
 
 ### <a name="problem-unauthorized-error-when-running-a-data-factory-cmdlet"></a>Probléma: A Data Factory-parancsmagok futtatásakor jogosulatlan hiba
 Valószínűleg nem a megfelelő Azure-fiókot vagy előfizetést használja az Azure PowerShell futtatásához. Az alábbi parancsmagokkal válassza ki a megfelelő Azure-fiókot és előfizetést az Azure PowerShell használatához.
 
-1. Connect-AzureRmAccount – használja a megfelelő felhasználói Azonosítót és jelszót
-2. Get-AzureRmSubscription – a fiókhoz tartozó előfizetések megtekintéséhez.
-3. SELECT-AzureRmSubscription &lt;előfizetésnevet&gt; – válassza ki a megfelelő előfizetést. Használja ugyanazt, adat-előállító létrehozása az Azure Portal használatával.
+1. Connect-AzAccount – használja a megfelelő felhasználói Azonosítót és jelszót
+2. Get-AzSubscription – a fiókhoz tartozó előfizetések megtekintéséhez.
+3. SELECT-AzSubscription &lt;előfizetésnevet&gt; – válassza ki a megfelelő előfizetést. Használja ugyanazt, adat-előállító létrehozása az Azure Portal használatával.
 
 ### <a name="problem-fail-to-launch-data-management-gateway-express-setup-from-azure-portal"></a>Probléma: Nem sikerült elindítani az adatkezelési átjáró expressz telepítését az Azure Portalról
 Az adatkezelési átjáró expressz telepítéséhez az Internet Explorer vagy egy Microsoft ClickOnce-kompatiblis webböngésző szükséges. Amennyiben az expressz telepítés nem indul el, tegye a következők egyikét:

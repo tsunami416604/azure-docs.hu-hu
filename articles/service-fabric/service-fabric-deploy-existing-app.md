@@ -3,7 +3,7 @@ title: Egy meglévő végrehajtható telepítése Azure Service fabric |} A Micr
 description: Ismerje meg, hogyan végrehajtható, vendégként meglévő alkalmazás becsomagolása úgy is üzembe helyezhető a Service Fabric-fürtön.
 services: service-fabric
 documentationcenter: .net
-author: msfussell
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: d799c1c6-75eb-4b8a-9f94-bf4f3dadf4c3
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/02/2017
-ms.author: mfussell
-ms.openlocfilehash: d8b78e42dc5909e6c80f100c9337880b1ad2d9e6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.author: aljo
+ms.openlocfilehash: 2035ee27aecdf2ec1ab8bf1166f667b5595a7cbb
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168413"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439485"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Csomagolása és üzembe helyezése egy meglévő végrehajtható fájlt a Service Fabric
 Amikor csomagolására, meglévő végrehajtható egy [futtatható vendégalkalmazás](service-fabric-guest-executables-introduction.md), választhat egy Visual Studio-projektsablont használja, vagy [hozza létre manuálisan az alkalmazáscsomag](#manually). A Visual Studiót használja, az alkalmazás-csomag szerkezete és a jegyzékfájlok hozza létre az új webesprojekt-sablon az Ön számára.
@@ -73,7 +73,7 @@ A folyamat manuális becsomagolásához egy Vendég végrehajtható fájlt az al
 -->
 
 ### <a name="create-the-package-directory-structure"></a>A csomag directory-struktúra létrehozása
-A fenti, "Application package fájlstruktúra." című részben leírtak szerint indítsa el a könyvtárstruktúra létrehozásával
+Leírtak szerint indítsa el a könyvtárstruktúra létrehozásával [egy Azure Service Fabric-alkalmazás becsomagolása](https://docs.microsoft.com/azure/service-fabric/service-fabric-package-apps).
 
 ### <a name="add-the-applications-code-and-configuration-files"></a>Adja hozzá az alkalmazás kódja és a konfigurációs fájlok
 Miután létrehozta a könyvtárstruktúra, az alkalmazás kódjában és konfigurációs fájlok mellett a kódot és a konfigurációverziókat könyvtárakat adhat hozzá. További címtárak vagy a kódot vagy konfigurációverziót könyvtárak alkönyvtárat is létrehozhat.

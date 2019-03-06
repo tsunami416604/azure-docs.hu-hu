@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/03/2017
 ms.author: sngun
-ms.openlocfilehash: 138df4aa0a0e23bd97bca960573cc0971b66b869
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 778c5c50e2742dd7436f809be06c625254973b49
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041407"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440845"
 ---
 # <a name="_Toc395809351"></a>ASP.NET MVC oktatóprogram: Webalkalmazás-fejlesztés az Azure Cosmos DB használatával
 
@@ -27,7 +27,7 @@ ms.locfileid: "54041407"
 
 Ez a cikk teljes körűen bemutatja, hogyan építhet teendőkezelő alkalmazást az Azure Cosmos DB eszközzel, és ezáltal hogyan használhatja hatékonyan az Azure Cosmos DB-t a JSON-dokumentumok tárolására és lekérdezésére. A feladatok JSON-dokumentumokként lesznek tárolva az Azure Cosmos DB-ben.
 
-![Az oktatóprogram során létrehozott teendőlista-kezelő MVC webalkalmazás képernyőfelvétele – ASP NET MVC oktatóprogram lépésről lépésre](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-image01.png)
+![Az MVC-webalkalmazás oktatóanyag – ASP NET MVC oktatóprogram lépésről lépésre során létrehozott teendőlista képernyőképe](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-image01.png)
 
 Ez az útmutató bemutatja, hogyan használhatja az Azure Cosmos DB szolgáltatást az Azure rendszeren üzemeltetett ASP.NET MVC webalkalmazásról származó adatok eléréséhez. Ha olyan oktatóprogramot keres, amely csak az Azure Cosmos DB szolgáltatással foglalkozik, az ASP.NET MVC összetevőkkel nem, akkor tekintse meg: [Azure Cosmos DB C# konzolalkalmazás felépítése](sql-api-get-started.md).
 
@@ -46,7 +46,7 @@ A jelen cikkben lévő utasítások követése előtt rendelkeznie kell a követ
 * [!INCLUDE [cosmos-db-emulator-vs](../../includes/cosmos-db-emulator-vs.md)]  
 * Microsoft Azure SDK for .NET a Visual Studio 2017-hez – a Visual Studio telepítőjén keresztül érhető el.
 
-A jelen cikk összes képernyőfelvétele a Microsoft Visual Studio Community 2017 programmal készült. Ha a rendszere más verzióval van konfigurálva, akkor előfordulhat, hogy a képernyők és beállítások nem egyeznek tökéletesen, de ha megfelel a fenti előfeltételeknek, ennek a megoldásnak működnie kell.
+Ez a cikk a képernyőképek csak a Microsoft Visual Studio Community 2017 használatával került sor. Ha a rendszere más verzióval van konfigurálva, akkor előfordulhat, hogy a képernyők és beállítások nem egyeznek tökéletesen, de ha megfelel a fenti előfeltételeknek, ennek a megoldásnak működnie kell.
 
 ## <a name="_Toc395637761"></a>1. lépés: Az Azure Cosmos DB-adatbázisfiók létrehozása
 Először hozzon létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik SQL-fiókkal az Azure Cosmos DB-hez, vagy az oktatóanyagban az Azure Cosmos DB Emulatort használja, továbbléphet az [Új ASP.NET MVC alkalmazás létrehozása](#_Toc395637762) című lépésre.
@@ -64,14 +64,14 @@ Most végigvezetjük azon, hogyan hozhat létre új ASP.NET MVC alkalmazást az 
 
 2. A **Project types** (Projekttípusok) panelen bontsa ki a **Templates** (Sablonok), **Visual C#**, **Web** elemeket, majd válassza az **ASP.NET Web Application** (ASP.NET webalkalmazás) elemet.
 
-      ![Képernyőfelvétel a New Project (Új projekt) párbeszédpanelről, ahol az ASP.NET webalkalmazás projekttípus van kijelölve](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png)
+      ![Az ASP.NET webalkalmazás projekttípus van kijelölve az új projekt párbeszédpanel képernyőképe](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png)
 
 3. A **Name** (Név) szövegmezőbe írja be a projekt nevét. Ez az oktatóprogram a „todo” (teendők) nevet használja. Ha más nevet választ, akkor amikor az oktatóprogram a „todo” (teendők) névteréről beszél, akkor a megadott kódmintákat úgy kell módosítania, hogy az alkalmazás tényleges nevét használja. 
 4. Kattintson a **Browse** (Böngészés) gombra azon mappa megkereséséhez, ahol létre szeretné hozni a projektet, majd kattintson az **OK** gombra.
    
       Megjelenik a **Új ASP.NET-webalkalmazás** párbeszédpanel.
    
-    ![Képernyőfelvétel az Új ASP.NET-webalkalmazás párbeszédpanelről, ahol az MVC alkalmazássablon van kiemelve](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-MVC.png)
+    ![Az MVC alkalmazássablon van kiemelve az új ASP.NET-webalkalmazás párbeszédpanel képernyőképe](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-MVC.png)
 5. A sablonok panelén válassza az **MVC** elemet.
 
 6. Kattintson az **OK** gombra, és várja meg, hogy a Visual Studio kialakítsa a szerkezetet az üres ASP.NET MVC sablonban. 
@@ -86,14 +86,14 @@ Most, hogy rendelkezünk a megoldáshoz szükséges ASP.NET MVC bekötések nagy
 
 1. Az Azure Cosmos DB .NET SDK NuGet-csomagként van csomagolva és elosztva. A Visual Studióban a NuGet-csomag beszerzéséhez használja a Visual Studio NuGet-csomagkezelőjét. Ehhez kattintson a jobb gombbal a projektre a **Megoldáskezelőben**, majd kattintson a **Manage NuGet Packages** (NuGet-csomagok kezelése) parancsra.
    
-    ![A Megoldáskezelőben a webalkalmazás projekt helyi menüjének képernyőfelvétele, ahol a Manage NuGet Packages (NuGet-csomagok kezelése) parancs van kiemelve.](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-manage-nuget.png)
+    ![Képernyőfelvétel a NuGet-csomagok kezelése kiemelve a Megoldáskezelőben a webalkalmazás projekt helyi közül.](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-manage-nuget.png)
    
     Megjelenik a **Manage NuGet Packages** (NuGet-csomagok kezelése) párbeszédpanel.
 2. A NuGet **Browse** (Tallózás) mezőjébe írja be az ***Azure DocumentDB*** szöveget. (A csomag neve nem lett Azure Cosmos DB-re frissítve).
    
     Az eredmények közül telepítse a **Microsoft.Azure.DocumentDB by Microsoft** csomagot. Ez letölti és telepíti az Azure Cosmos DB-csomagot, valamint az összes függőségét, például a Newtonsoft.Json elemet. Kattintson az **OK** gombra a **Preview** (Előnézet) ablakban, majd az **I Accept** (Elfogadás) gombra a **License Acceptance** (Licenc elfogadása) ablakban a telepítés befejezéséhez.
    
-    ![A NuGet-csomagok kezelése ablak képernyőfelvétele, ahol a Microsoft Azure Cosmos DB Client Library elem van kiemelve](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-install-nuget.png)
+    ![A NuGet-csomagok kezelése ablak Sreenshot együtt a Microsoft Azure Cosmos DB Ügyfélkódtárának kiemelésével](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-install-nuget.png)
    
       A Csomagkezelő konzollal is telepítheti a csomagot. Ehhez a **Tools** (Eszközök) menüben kattintson a **NuGet Package Manager** (NuGet-csomagkezelő) elemre, majd kattintson a **Package Manager Console** (Csomagkezelő konzol) elemre. A parancssorba írja be a következőt.
    
@@ -101,7 +101,7 @@ Most, hogy rendelkezünk a megoldáshoz szükséges ASP.NET MVC bekötések nagy
         
 3. A csomag telepítése után a Visual Studio megoldásnak a következőre kell hasonlítania két hozzáadott hivatkozással: Microsoft.Azure.Documents.Client és Newtonsoft.Json.
    
-    ![A Megoldáskezelőben a JSON adatprojekthez adott két hivatkozás képernyőfelvétele](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-added-references.png)
+    ![A megoldáskezelőben a JSON adatprojekthez adott két hivatkozás képernyőképe](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-added-references.png)
 
 ## <a name="_Toc395637763"></a>4. lépés: Az ASP.NET MVC alkalmazás beállítása
 Most adjuk hozzá a modelleket, a nézeteket és a vezérlőket ehhez az MVC alkalmazáshoz:
@@ -155,14 +155,14 @@ Ezzel megvagyunk az **M-mel**, most hozzuk létre az MVC **C-jét**, amely vezé
     Megjelenik az **Add Scaffold** (Szerkezet hozzáadása) párbeszédpanel.
 2. Válassza az **MVC 5 Controller - Empty** (MVC 5 vezérlő - Üres) elemet, majd kattintson az **Add** (Hozzáadás) gombra.
    
-    ![Az Add Scaffold (Szerkezet hozzáadása) párbeszédpanel képernyőfelvétele, ahol ki van jelölve az MVC 5 Controller - Empty (MVC 5 vezérlő - Üres) lehetőség](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png)
+    ![A Scaffold hozzáadása párbeszédpanelen az MVC 5 vezérlő - üres opció kiemelésével – képernyőfelvétel](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png)
 3. Adja az **ItemController** nevet az új vezérlőnek.
    
-    ![Az Add Controller (Vezérlő hozzáadása) párbeszédpanel képernyőfelvétele](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-controller.png)
+    ![A vezérlő hozzáadása párbeszédpanel képernyőképe](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-controller.png)
    
     A fájl létrehozása után a Visual Studio megoldásnak a következőre kell hasonlítania az új ItemController.cs fájllal a **Megoldáskezelőben**. A korábban létrehozott új Item.cs fájl is látható.
    
-    ![A Visual Studio megoldás - Megoldáskezelő képernyőfelvétele, ahol ki van emelve az új ItemController.cs és Item.cs fájl](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-item-solution-explorer.png)
+    ![Képernyőfelvétel a Visual Studio megoldás - megoldáskezelő az új ItemController.cs és Item.cs fájl kiemelésével](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-item-solution-explorer.png)
    
     Bezárhatja az ItemController.cs fájlt, később visszatérünk ahhoz. 
 
@@ -176,7 +176,7 @@ Most hozzuk létre az MVC **V** elemét, a nézeteket:
 #### <a name="AddItemIndexView"></a>Elemindexnézet hozzáadása
 1. A **Megoldáskezelőben** bontsa ki a **Nézetek** mappát, kattintson a jobb gombbal az üres **Elem** mappára, amelyet a Visual Studio az **ItemController** korábbi hozzáadásakor hozott létre, kattintson az **Add** (Hozzáadás) parancsra, majd kattintson a **View** (Nézet) elemre.
    
-    ![A Megoldáskezelő képernyőfelvétele, amelyen a Visual Studio által létrehozott Item mappa látható, és az Add View (Nézet hozzáadása) parancsok vannak kiemelve](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-view.png)
+    ![Képernyőkép a Megoldáskezelőben, amely a Visual Studio használatával a nézet hozzáadása a parancsok vannak kiemelve létrehozott Item mappa](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-view.png)
 2. Az **Add View** (Nézet hozzáadása) párbeszédpanelen tegye a következőket:
    
    * A **View name** (Nézet neve) mezőbe írja be az ***Index*** nevet.
@@ -184,7 +184,7 @@ Most hozzuk létre az MVC **V** elemét, a nézeteket:
    * A **Model class** (Modellosztály) mezőben válassza ki az ***Item (todo.Models)*** elemet.
    * A layout page (elrendezéslap) mezőbe írja be a ***~/Views/Shared/_Layout.cshtml*** szöveget.
      
-   ![Az Add View (Nézet hozzáadása) párbeszédpanelt megjelenítő képernyőfelvétel](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-view-dialog.png)
+   ![Képernyőfelvétel a nézet hozzáadása párbeszédpanel:](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-view-dialog.png)
 3. Amikor ezen értékek mindegyike már be van állítva, kattintson az **Add** (Hozzáadás) gombra és várja meg, hogy a Visual Studio létrehozzon egy új sablonnézetet. Ha ezzel végzett, a rendszer megnyitja a létrehozott cshtml fájlt. Bezárhatjuk ezt a fájlt a Visual Studióban, mivel később visszatérünk hozzá.
 
 #### <a name="AddNewIndexView"></a>Új elemnézet hozzáadása
@@ -369,7 +369,7 @@ Ha most futtatja az alkalmazást, az az **ItemController** vezérlőt hívja meg
 
 Ha most felépíti és futtatja ezt a projektet, valami ilyesmit kell látnia.    
 
-![A jelen adatbázis-oktatóprogram során létrehozott teendőlista webalkalmazás képernyőfelvétele](./media/sql-api-dotnet-application/build-and-run-the-project-now.png)
+![A teendőlista webalkalmazás az adatbázis-oktatóprogram során létrehozott képernyőképe](./media/sql-api-dotnet-application/build-and-run-the-project-now.png)
 
 ### <a name="_Toc395637771"></a>Elemek hozzáadása
 Tegyünk néhány elemet az adatbázisba, hogy ne csak egy üres táblát lássunk.
@@ -496,12 +496,12 @@ Az alkalmazás helyi gépen való teszteléséhez tegye a következőket:
 
 1. Nyomja le az F5 billentyűt a Visual Studióban az alkalmazás hibakeresési módban történő összeállításához. Ennek fel kell építenie az alkalmazást és el kell indítania egy böngészőt a korábban látott üres rácsoldallal:
    
-    ![A jelen adatbázis-oktatóprogram során létrehozott teendőlista webalkalmazás képernyőfelvétele](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item-a.png)
+    ![A teendőlista webalkalmazás az adatbázis-oktatóprogram során létrehozott képernyőképe](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item-a.png)
    
      
 2. Kattintson a **Create New** (Új létrehozása) hivatkozásra, és adjon értékeket a **Name** (Név) és a **Description** (Leírás) mezőkbe. Hagyja bejelöletlenül a **Completed** (Befejezve) jelölőnégyzetet, különben az új **elem** befejezett állapotban lesz hozzáadva és nem jelenik meg a kiindulási listában.
    
-    ![Képernyőfelvétel a Create (Létrehozás) nézetről](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-new-item.png)
+    ![A létrehozás nézet képernyőképe](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-new-item.png)
 3. Kattintson a **Create** (Létrehozás) gombra, és a rendszer visszairányítja az **Index** nézetre, ahol az **elem** megjelenik a listában.
    
     ![Képernyőfelvétel az Index nézetről](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item.png)
@@ -510,7 +510,7 @@ Az alkalmazás helyi gépen való teszteléséhez tegye a következőket:
     
 4. Kattintson az **Edit** (Szerkesztés) gombra a lista egy **eleme** mellett, és az **Edit** (Szerkesztés) nézetbe kerül, ahol frissítheti az objektum bármely tulajdonságát, beleértve a **Completed** (Befejezve) jelzőt. Ha bejelöli a **Complete** (Befejezve) jelzőt és a **Save** (Mentés) gombra kattint, azzal eltávolítja az **elemet** a hiányos feladatok listájából.
    
-    ![Képernyőfelvétel az Index nézetről, bejelölt Completed (Befejezve) jelölőnégyzettel](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-completed-item.png)
+    ![Képernyőfelvétel az Index nézetről, bejelölt Completed (Befejezve) be van jelölve](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-completed-item.png)
 5. Ha befejezte az alkalmazás tesztelését, nyomja meg a Ctrl+F5 billentyűkombinációt az alkalmazás hibakeresésének befejezéséhez. Készen áll a telepítésre!
 
 ## <a name="_Toc395637774"></a>7. lépés: Az Azure App Service-alkalmazás üzembe helyezése 
@@ -518,7 +518,7 @@ Most, hogy a teljes alkalmazás megfelelően működik az Azure Cosmos DB-adatb�
 
 1. Az alkalmazás közzétételéhez egyszerűen a jobb gombbal a projektre kell kattintania a **Megoldáskezelőben**, majd a **Publish** (Közzététel) parancsot választania.
    
-    ![Képernyőfelvétel a Közzététel lehetőségről a Megoldáskezelőben](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-publish.png)
+    ![Képernyőfelvétel a közzététel lehetőségről a Megoldáskezelőben](./media/sql-api-dotnet-application/asp-net-mvc-tutorial-publish.png)
 
 2. A **Közzététel** párbeszédpanelen kattintson a **Microsoft Azure App Service** lehetőségre, majd válassza az **Új létrehozása** elemet egy App Service-profil létrehozásához, vagy kattintson a **Meglévő kiválasztása** elemre egy meglévő profil használatához.
 

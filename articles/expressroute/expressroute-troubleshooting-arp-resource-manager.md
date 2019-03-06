@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 1807bda35f6bfcc9dbbb30f054cedb9454a88a7f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 01eac27b63f9eaaf62e863cd023201c3eab4b74e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158570"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432141"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>ARP-táblák a Resource Manager-alapú üzemi modellben
 > [!div class="op_single_selector"]
@@ -28,6 +28,8 @@ Ez a cikk bemutatja az ExpressRoute-kapcsolatcsoport ARP-táblák további lép�
 > A dokumentum célközönsége, egyszerű hibák azonosítása és kijavítása érdekében. Nem célja a helyettesítheti a Microsoft ügyfélszolgálatához. Meg kell nyitnia egy támogatási jegyet a [a Microsoft támogatási](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) Ha nem tudja megoldani a problémát, használja az alább leírt útmutatást.
 > 
 > 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="address-resolution-protocol-arp-and-arp-tables"></a>Cím Resolution Protocol (ARP) és az ARP-táblák
 Address Resolution Protocol (ARP) definiálva a 2. rétegbeli protokoll [RFC 826](https://tools.ietf.org/html/rfc826). ARP az Ethernet-címe (MAC-cím) ip-címmel leképezésére szolgál.
@@ -69,10 +71,10 @@ A következő parancsmagot biztosít az ARP táblák az Azure privát társviszo
         $Name = "<Your ExpressRoute Circuit Name Here>"
 
         # ARP table for Azure private peering - Primary path
-        Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePrivatePeering -DevicePath Primary
+        Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePrivatePeering -DevicePath Primary
 
         # ARP table for Azure private peering - Secondary path
-        Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePrivatePeering -DevicePath Secondary 
+        Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePrivatePeering -DevicePath Secondary 
 
 Kimeneti elérési utak egyik az alább látható
 
@@ -90,10 +92,10 @@ A következő parancsmagot biztosít az ARP táblák az Azure nyilvános társvi
         $Name = "<Your ExpressRoute Circuit Name Here>"
 
         # ARP table for Azure public peering - Primary path
-        Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePublicPeering -DevicePath Primary
+        Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePublicPeering -DevicePath Primary
 
         # ARP table for Azure public peering - Secondary path
-        Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePublicPeering -DevicePath Secondary 
+        Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType AzurePublicPeering -DevicePath Secondary 
 
 
 Kimeneti elérési utak egyik az alább látható
@@ -112,10 +114,10 @@ A következő parancsmagot biztosít az ARP táblák Microsoft társviszony-lét
         $Name = "<Your ExpressRoute Circuit Name Here>"
 
         # ARP table for Microsoft peering - Primary path
-        Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType MicrosoftPeering -DevicePath Primary
+        Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType MicrosoftPeering -DevicePath Primary
 
         # ARP table for Microsoft peering - Secondary path
-        Get-AzureRmExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType MicrosoftPeering -DevicePath Secondary 
+        Get-AzExpressRouteCircuitARPTable -ResourceGroupName $RG -ExpressRouteCircuitName $Name -PeeringType MicrosoftPeering -DevicePath Secondary 
 
 
 Kimeneti elérési utak egyik az alább látható
@@ -141,7 +143,7 @@ A társviszony-létesítések ARP-táblázat segítségével határozza meg 2. r
           0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
 
 ### <a name="arp-table-when-on-premises--connectivity-provider-side-has-problems"></a>ARP táblából a helyszíni / szolgáltató kiszolgálóoldali csatlakozási problémák vannak
-Ha probléma adódik a helyszíni vagy a kapcsolatszolgáltató látni, hogy mindkét csak egy bejegyzés jelenik meg a saját ARP- vagy a helyszíni MAC-cím nem teljes jelennek meg. Ez a MAC-cím és a Microsoft oldalán használt IP-cím közötti jelennek meg. 
+Ha probléma adódik a helyszíni vagy a kapcsolatszolgáltató látni, hogy mindkét csak egy bejegyzés jelenik meg a saját ARP- vagy a helyi MAC-címe nem teljes jelennek meg. Ez a MAC-cím és a Microsoft oldalán használt IP-cím közötti jelennek meg. 
   
        Age InterfaceProperty IpAddress  MacAddress    
        --- ----------------- ---------  ----------    

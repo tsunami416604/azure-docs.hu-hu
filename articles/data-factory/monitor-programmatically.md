@@ -12,19 +12,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: douglasl
-ms.openlocfilehash: e004dc6b7d78849705f8d3fa3545efe7318d3911
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 938392cea3e6fe001e662a60e17b936415e7e4f2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022801"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439281"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Programozott módon az Azure data factory monitorozása
 Ez a cikk ismerteti az adat-előállító folyamat monitorozása a különböző szoftverfejlesztői készletek (SDK-k) használatával. 
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="data-range"></a>Tartomány
 
-A Data Factory csak 45 nap folyamatfuttatás adatokat tárolja. Amikor lekérdezheti, ha programozott módon a Data Factory a folyamatfuttatások - adatait például a PowerShell-paranccsal `Get-AzureRmDataFactoryV2PipelineRun` – nincsenek a választható maximális dátumok `LastUpdatedAfter` és `LastUpdatedBefore` paramétereket. De ha lekérdezési adatok az elmúlt év, például a lekérdezés nem ad vissza hibát, de csak akkor adja folyamat futtatási adatait az elmúlt 45 nap.
+A Data Factory csak 45 nap folyamatfuttatás adatokat tárolja. Amikor lekérdezheti, ha programozott módon a Data Factory a folyamatfuttatások - adatait például a PowerShell-paranccsal `Get-AzDataFactoryV2PipelineRun` – nincsenek a választható maximális dátumok `LastUpdatedAfter` és `LastUpdatedBefore` paramétereket. De ha lekérdezési adatok az elmúlt év, például a lekérdezés nem ad vissza hibát, de csak akkor adja folyamat futtatási adatait az elmúlt 45 nap.
 
 Ha szeretne folyamatfuttatás adatok legalább 45 napig maradnak, állítsa be a saját a diagnosztikai naplózás [Azure Monitor](monitor-using-azure-monitor.md).
 
@@ -119,7 +121,7 @@ Létrehozásának és a egy PowerShell-lel folyamat figyelését részletes útm
 
     ```powershell
     while ($True) {
-        $run = Get-AzureRmDataFactoryV2PipelineRun -ResourceGroupName $resourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $runId
+        $run = Get-AzDataFactoryV2PipelineRun -ResourceGroupName $resourceGroupName -DataFactoryName $DataFactoryName -PipelineRunId $runId
 
         if ($run) {
             if ($run.Status -ne 'InProgress') {
@@ -137,7 +139,7 @@ Létrehozásának és a egy PowerShell-lel folyamat figyelését részletes útm
 
     ```powershell
     Write-Host "Activity run details:" -foregroundcolor "Yellow"
-    $result = Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
+    $result = Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
     $result
     
     Write-Host "Activity 'Output' section:" -foregroundcolor "Yellow"
@@ -147,7 +149,7 @@ Létrehozásának és a egy PowerShell-lel folyamat figyelését részletes útm
     $result.Error -join "`r`n"
     ```
 
-A PowerShell-parancsmagok teljes dokumentációjáért lásd: [Data Factory PowerShell-parancsmagok leírása](/powershell/module/azurerm.datafactoryv2/?view=azurermps-4.4.1).
+A PowerShell-parancsmagok teljes dokumentációjáért lásd: [Data Factory PowerShell-parancsmagok leírása](/powershell/module/az.datafactory).
 
 ## <a name="next-steps"></a>További lépések
 Lásd: [-folyamatok figyelése az Azure Monitor használatával](monitor-using-azure-monitor.md) a cikkben megismerheti az Azure Monitor használatával a Data Factory-folyamatok figyelése. 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: douglasl
-ms.openlocfilehash: f9dfb2dde4c49d9ca167b0f4ea6af28bd1db6872
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 93777a3d9ecbb6c2749594985494975f61cc1948
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54013587"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455700"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Hogyan hozhat létre, és az Azure integrációs modul konfigurálása
 Az Integration Runtime (IR) a különböző hálózati környezetekben adatintegrációs képességeket biztosít az Azure Data Factory által használt számítási infrastruktúra áll. Integrációs modul kapcsolatos további információkért lásd: [integrációs modul](concepts-integration-runtime.md).
@@ -25,18 +25,20 @@ Azure integrációs modul natív módon végrehajtani az adatok mozgását és k
 
 Ez a dokumentum bemutatja, hogyan létrehozása és konfigurálása az Azure integrációs modul. 
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="default-azure-ir"></a>Alapértelmezett Azure integrációs modul
 Alapértelmezés szerint minden adat-előállító egy Azure integrációs modul van a háttérrendszerhez, amely támogatja a műveleteket a felhő adatokat tárolja, és a számítási szolgáltatások a nyilvános hálózatban. Automatikus feloldása, hogy az Azure integrációs modul helye. Ha **connectVia** tulajdonság nincs megadva az alapértelmezett Azure integrációs Modult használja a társított szolgáltatás definíciójában. Csak akkor kell explicit módon szeretne explicit módon határozhatja meg az integrációs modul helyét, vagy ha, amelyet szeretne a tevékenység-végrehajtások a különböző IRs felügyeleti célú gyakorlatilag csoport hozzon létre egy Azure integrációs modul. 
 
 ## <a name="create-azure-ir"></a>Az Azure integrációs modul létrehozása
-Integrációs modul hozható létre a **Set-AzureRmDataFactoryV2IntegrationRuntime** PowerShell-parancsmagot. Hozzon létre egy Azure integrációs Modult, adja meg a nevét, helyét és írja be a következő paranccsal. Egy mintául szolgáló parancs egy Azure integrációs modul létrehozása "Nyugat-európai" állítsa helyre az itt látható:
+Integrációs modul hozható létre a **Set-AzDataFactoryV2IntegrationRuntime** PowerShell-parancsmagot. Hozzon létre egy Azure integrációs Modult, adja meg a nevét, helyét és írja be a következő paranccsal. Egy mintául szolgáló parancs egy Azure integrációs modul létrehozása "Nyugat-európai" állítsa helyre az itt látható:
 
 ```powershell
-Set-AzureRmDataFactoryV2IntegrationRuntime -DataFactoryName "SampleV2DataFactory1" -Name "MySampleAzureIR" -ResourceGroupName "ADFV2SampleRG" -Type Managed -Location "West Europe"
+Set-AzDataFactoryV2IntegrationRuntime -DataFactoryName "SampleV2DataFactory1" -Name "MySampleAzureIR" -ResourceGroupName "ADFV2SampleRG" -Type Managed -Location "West Europe"
 ```  
 Az Azure IR, a típus értékre kell állítani **felügyelt**. Nem kell megadnia a számítási részletei, mert azt teljes körűen felügyelt rugalmasan a felhőben. Adja meg a számítási részletesen, a csomópont méretét és a csomópont száma, ha szeretne létrehozni az Azure-SSIS integrációs modult. További információkért lásd: [létrehozása és konfigurálása az Azure-SSIS integrációs modul](create-azure-ssis-integration-runtime.md).
 
-Beállíthatja, hogy egy meglévő Azure integrációs modul helyét a Set-AzureRmDataFactoryV2IntegrationRuntime PowerShell-parancsmag használatával módosíthatja. Az Azure integrációs modul helyének kapcsolatos további információkért lásd: [Bevezetés a saját üzemeltetésű integrációs](concepts-integration-runtime.md).
+Beállíthatja, hogy egy meglévő Azure integrációs modul helyét a Set-AzDataFactoryV2IntegrationRuntime PowerShell-parancsmag használatával módosíthatja. Az Azure integrációs modul helyének kapcsolatos további információkért lásd: [Bevezetés a saját üzemeltetésű integrációs](concepts-integration-runtime.md).
 
 ## <a name="use-azure-ir"></a>Azure integrációs modul használata
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: douglasl
-ms.openlocfilehash: 5e620b03f5588369fc73a62f2019d857766596fd
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 490f11b4a35bb7e5669ccf1554c3a73f5156f3c7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321942"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445653"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Számítási környezetek Azure Data Factory által támogatott
 Ez a cikk ismerteti a különböző számítási környezetekben használható folyamat vagy átalakítási adatok. Emellett biztosítja linking ezeket a társított szolgáltatások konfigurálásakor a Data Factory által támogatott különböző konfigurációt (igény szerinti és használata a saját) adatait számítási környezeteket az Azure data factoryt.
@@ -304,13 +304,15 @@ Létrehozhat egy Azure HDInsight társított szolgáltatás regisztrálni a saj�
 
 ## <a name="azure-batch-linked-service"></a>Az Azure Batch-beli társított szolgáltatás
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Regisztrálja a Batch-készlet, a virtuális gépek (VM) egy társított Azure Batch szolgáltatás létrehozhat egy adat-előállítóhoz. Egyéni tevékenység az Azure Batch segítségével is futtathatja.
 
 Lásd az alábbi témakörök, ha most ismerkedik az Azure Batch szolgáltatás:
 
 * [Az Azure Batch alapjai](../batch/batch-technical-overview.md) az Azure Batch szolgáltatás áttekintése.
-* [Új AzureRmBatchAccount](/powershell/module/azurerm.batch/New-AzureRmBatchAccount?view=azurermps-4.3.1) parancsmaggal hozzon létre egy Azure Batch-fiók (vagy) [az Azure portal](../batch/batch-account-create-portal.md) létrehozása az Azure Batch-fiókot az Azure portal használatával. Lásd: [PowerShell használata kezelheti az Azure Batch-fiók](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) témakör nyújt részletes tájékoztatást a parancsmag használatával.
-* [Új-AzureBatchPool](/powershell/module/azurerm.batch/New-AzureBatchPool?view=azurermps-4.3.1) parancsmaggal hozzon létre egy Azure Batch-készletben.
+* [Új AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) parancsmaggal hozzon létre egy Azure Batch-fiók (vagy) [az Azure portal](../batch/batch-account-create-portal.md) létrehozása az Azure Batch-fiókot az Azure portal használatával. Lásd: [PowerShell használata kezelheti az Azure Batch-fiók](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) témakör nyújt részletes tájékoztatást a parancsmag használatával.
+* [Új AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) parancsmaggal hozzon létre egy Azure Batch-készletben.
 
 ### <a name="example"></a>Példa
 
@@ -380,7 +382,7 @@ Létrehoz egy társított Azure Machine Learning szolgáltatást a Machine Learn
 ### <a name="properties"></a>Tulajdonságok
 | Tulajdonság               | Leírás                              | Szükséges                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
-| Típus                   | A type tulajdonságot kell beállítani: **AzureML**. | Igen                                      |
+| Typo                   | A type tulajdonságot kell beállítani: **AzureML**. | Igen                                      |
 | mlEndpoint             | A kötegelt pontozás URL-CÍMÉT.                   | Igen                                      |
 | apiKey                 | A közzétett munkaterület-modell API-t.     | Igen                                      |
 | updateResourceEndpoint | Frissítés erőforrás URL-CÍMÉT a prediktív webszolgáltatás frissítheti a betanított modell fájlt az Azure ML Web Service-végpont | Nem                                       |

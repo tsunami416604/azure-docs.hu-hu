@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: a5c08536614476de38c7bfde524a12163162bed4
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: f6ebeb1d9953311ad1cb85d8ab33c83d5e92d687
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339260"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405521"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Gyakori Azure-beli hibák az Azure Resource Manager hibaelhárítása
 
@@ -37,7 +37,7 @@ Ez a cikk ismerteti az Azure-beli leggyakoribb hibák, és információkat a hib
 | AllocationFailed | A fürt vagy a régiót nem rendelkezik elérhető erőforrásokat, vagy nem támogatja a kért Virtuálisgép-méretet. Próbálja megismételni a kérést később, vagy kérje meg egy másik Virtuálisgép-méretet. | [Kiépítés és foglalással kapcsolatos problémák Linux rendszerben](../virtual-machines/linux/troubleshoot-deployment-new-vm.md), [kiépítési és foglalással kapcsolatos problémák Windows](../virtual-machines/windows/troubleshoot-deployment-new-vm.md) és [foglalási hibák elhárítása](../virtual-machines/troubleshooting/allocation-failure.md)|
 | AnotherOperationInProgress | Várjon, amíg a párhuzamos művelet végrehajtásához. | |
 | AuthorizationFailed | A fióknév vagy a szolgáltatásnév nem rendelkezik megfelelő hozzáférési jogosultsággal a telepítés befejezéséhez. Ellenőrizze a fiók tartozik a szerepkör és a hozzáférés az üzembe helyezés hatálya.<br><br>Ez a hiba jelenhet meg, ha egy szükséges erőforrás-szolgáltató nincs regisztrálva. | [Azure szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md)<br><br>[Oldja meg a regisztráció](resource-manager-register-provider-errors.md) |
-| Hibás kérés | Üzembe helyezés értékek nem egyezik a várt Resource Manager által küldött. Ellenőrizze a belső állapotüzenet a hibaelhárítás. | [Sablon hivatkozása](/azure/templates/) és [támogatott helyek](resource-manager-templates-resources.md#location) |
+| Hibás kérés | Üzembe helyezés értékek nem egyezik a várt Resource Manager által küldött. Ellenőrizze a belső állapotüzenet a hibaelhárítás. | [Sablon hivatkozása](/azure/templates/) és [támogatott helyek](resource-group-authoring-templates.md#resource-location) |
 | Ütközés | Ön a kért művelet nem megengedett az erőforrás jelenlegi állapotában. Ha például a lemezek átméretezése engedélyezett csak a virtuális gép létrehozásakor, vagy ha a virtuális gép fel van szabadítva. | |
 | DeploymentActive | Várjon, amíg befejeződik ez az erőforráscsoport párhuzamos üzembe helyezés. | |
 | Sikertelen | A "deploymentfailed" hiba, amely nem biztosítja a részletek a hiba megoldásához szükséges általános hiba. Tekintse meg a hibaüzenet részleteiben talál egy hibakód, amely további információkat biztosít. | [Hibakód keresése](#find-error-code) |
@@ -58,7 +58,7 @@ Ez a cikk ismerteti az Azure-beli leggyakoribb hibák, és információkat a hib
 | InvalidTemplateCircularDependency | Távolítsa el a felesleges függőségek. | [Körkörös függőségek feloldása](resource-manager-invalid-template-errors.md#circular-dependency) |
 | LinkedAuthorizationFailed | Ellenőrizze, hogy ha a fiók megegyezik az erőforráscsoport, helyezi üzembe, ugyanazt bérlőhöz tartozik. | |
 | LinkedInvalidPropertyId | Az erőforrás-azonosítója egy erőforrás megfelelően nem feloldása. Ellenőrizze, hogy az erőforrás-azonosítóhoz, beleértve a előfizetés-azonosító, erőforráscsoport-nevet, erőforrás típusa, szülő erőforrás nevét (ha szükséges) és erőforrás nevét adja meg az összes szükséges értékeket. | |
-| LocationRequired | Adja meg az erőforráscsoport helyét. | [Hely beállítása](resource-manager-templates-resources.md#location) |
+| LocationRequired | Adja meg az erőforráscsoport helyét. | [Hely beállítása](resource-group-authoring-templates.md#resource-location) |
 | MismatchingResourceSegments | Győződjön meg arról, hogy beágyazott erőforrás neve és típusa a szegmensek megfelelő számú rendelkezik. | [Oldja meg az erőforrás-szegmensek](resource-manager-invalid-template-errors.md#incorrect-segment-lengths)
 | MissingRegistrationForLocation | Ellenőrizze az erőforrás-szolgáltató regisztrációs állapota és a támogatott helyek. | [Oldja meg a regisztráció](resource-manager-register-provider-errors.md) |
 | MissingSubscriptionRegistration | Regisztrálja az előfizetését az erőforrás-szolgáltatónál. | [Oldja meg a regisztráció](resource-manager-register-provider-errors.md) |

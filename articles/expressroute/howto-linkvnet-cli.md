@@ -1,5 +1,5 @@
 ---
-title: 'Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoport: parancssori felület: Azure |} A Microsoft Docs'
+title: 'Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoport: CLI: Azure| Microsoft Docs'
 description: Ez a cikk bemutatja, hogyan virtuális hálózatok (Vnetek) az ExpressRoute-Kapcsolatcsoportok összekapcsolása a Resource Manager üzemi modell és a CLI használatával.
 services: expressroute
 author: cherylmc
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: anzaman,cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: ae97fff6a81f437510def1141dd226ad4e67209a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 5ddcfe14873d13384b043f7a977dc4f069dbe8dd
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53074043"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57408258"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporthoz parancssori felület használatával
 
@@ -57,7 +57,7 @@ az network vpn-connection create --name ERConnection --resource-group ExpressRou
 
 ExpressRoute-kapcsolatcsoport több előfizetésre kiterjedő megoszthatja. Az alábbi ábra egy egyszerű az ExpressRoute-Kapcsolatcsoportok hogyan megosztási alkotások sematikus több előfizetéshez.
 
-A nagyméretű felhőbeli belül a kisebb felhők mindegyike egy szervezet különböző részlegei tartozó előfizetések megjelenítésére szolgál. Minden, a szervezeti egységek, a szervezeten belül használhatja a saját előfizetés üzembe helyezéséhez a szolgáltatásaik –, de egyetlen ExpressRoute-kapcsolatcsoporthoz szeretne csatlakozni a helyszíni hálózaton is megoszthatja. Egyetlen részleg (ebben a példában: informatikai) is a saját ExpressRoute-kapcsolatcsoportot. Más előfizetésekre, a szervezeten belül használható az ExpressRoute-kapcsolatcsoporthoz.
+A nagyméretű felhőbeli belül a kisebb felhők mindegyike egy szervezet különböző részlegei tartozó előfizetések megjelenítésére szolgál. Minden, a szervezeti egységek, a szervezeten belül használhatja a saját előfizetés üzembe helyezéséhez a szolgáltatásaik –, de egyetlen ExpressRoute-kapcsolatcsoporthoz szeretne csatlakozni a helyszíni hálózaton is megoszthatja. Egyetlen részleg (ebben a példában: Informatikai) is a saját ExpressRoute-kapcsolatcsoportot. Más előfizetésekre, a szervezeten belül használható az ExpressRoute-kapcsolatcsoporthoz.
 
 > [!NOTE]
 > Az ExpressRoute-kapcsolatcsoport tulajdonosát a kapcsolatot és a sávszélesség díjak a dedikált kapcsolatcsoport lépnek érvénybe. Minden virtuális hálózat ossza meg ugyanazt a sávszélesség.
@@ -125,7 +125,7 @@ az network express-route auth delete --circuit-name MyCircuit -g ExpressRouteRes
 A kapcsolatcsoport-felhasználó a társ-azonosító és a egy engedélyezési kulcsot, a kapcsolatcsoport tulajdonosát a van szüksége. A hitelesítési kulcs a GUID Azonosítót.
 
 ```azurecli
-Get-AzureRmExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
+Get-AzExpressRouteCircuit -Name "MyCircuit" -ResourceGroupName "MyRG"
 ```
 
 **Hogy a kapcsolati engedély beváltása**

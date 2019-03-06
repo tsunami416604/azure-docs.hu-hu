@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 02/05/2019
 ms.author: v-doglov
-ms.openlocfilehash: 9423fc844e766129ad81a8a286cb5bbdc722e2ca
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 3a3e9da66cf9ca6e08bb25b4f4b9d09aa0c5b6e7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989314"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431937"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>A Microsoft Azure Site Recovery Provider frissítésével kapcsolatos hibák elhárítása
 
@@ -42,9 +42,9 @@ Szeretné frissíteni, használja az alábbi lépéseket:
 
 1. Térjen vissza a mappát, amelyhez az egyesített telepítő letöltötte és MicrosoftAzureSiteRecoveryUnifiedSetup.exe a frissítés befejezéséhez futtassa. 
 
-## <a name="upgrade-failure-due-to-the-thirdparty-folder-being-renamed"></a>Frissítse a átnevezését thirdparty mappa miatti hiba
+## <a name="upgrade-failure-due-to-the-3rd-party-folder-being-renamed"></a>Frissítse a 3. fél mappa átnevezését miatti hiba
 
-A frissítés sikeres a thirdparty mappába kell nem nevezhető át.
+A frissítés sikeres a 3. fél mappába kell nem nevezhető át.
 
 A probléma megoldásához.
 

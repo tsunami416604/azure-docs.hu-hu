@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 19a4f8fc41ed4d6850f114e19f49f239befe08d0
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 8050027bac3d2f13ac457edcdad9275c040305da
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242649"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431856"
 ---
 # <a name="grant-access-to-azure-containers-and-queues-with-rbac-in-the-azure-portal-preview"></a>Hozzáférés engedélyezése az Azure-tárolók és a várólisták RBAC használata az Azure Portalon (előzetes verzió)
 
@@ -62,16 +62,16 @@ Az itt bemutatott eljárás hozzárendel egy szerepkör hatóköre egy tároló,
 1. Keresse meg a helyet, amelynek meg szeretné rendelhet egy szerepkört, és megjeleníti a tároló beállításait. 
 1. Válassza ki **hozzáférés-vezérlés (IAM)** a tárolóhoz a hozzáférés-vezérlési beállítások megjelenítéséhez. Válassza ki a **szerepkör-hozzárendelések** lapján megtekintheti a szerepkör-hozzárendelések listáját.
 
-    ![Képernyő-tároló hozzáférés-vezérlési beállításokkal bemutató képernyőkép](media/storage-auth-aad-rbac/portal-access-control-container.png)
+    ![Képernyőfelvétel: a tároló hozzáférés-vezérlési beállításokkal](media/storage-auth-aad-rbac/portal-access-control-container.png)
 
 1. Kattintson a **szerepkör-hozzárendelés hozzáadása** gombra kattintva adhat hozzá egy új szerepkör.
 1. Az a **szerepkör-hozzárendelés hozzáadása** ablakban válassza ki a hozzárendelni kívánt Azure Storage-szerepkört. Ezután keresse meg a rendszerbiztonsági tagot, amelyhez szeretné, hogy a szerepkör hozzárendelése.
 
-    ![Az RBAC szerepkör hozzárendelése bemutató képernyőkép](media/storage-auth-aad-rbac/add-rbac-role.png)
+    ![Képernyőfelvétel: hogyan kell egy RBAC szerepkör hozzárendelése](media/storage-auth-aad-rbac/add-rbac-role.png)
 
 1. Kattintson a **Save** (Mentés) gombra. Az identitás, akinek a szerepköre alatt a szerepkör a listán jelenik meg. Ha például az alábbi képen látható, hogy a hozzáadott felhasználó már rendelkezik olvasási engedéllyel a nevű tárolóban lévő adatok *minta-tároló*.
 
-    ![Képernyőn egy szerepkörhöz rendelt felhasználók listáját bemutató képernyőkép](media/storage-auth-aad-rbac/container-scoped-role.png)
+    ![Képernyőkép a lista megjelenítve egy szerepkörhöz rendelt felhasználók](media/storage-auth-aad-rbac/container-scoped-role.png)
 
 A storage-fiók, erőforráscsoport vagy előfizetés hatóköre szerepkör hozzárendelése hasonló lépéseket követheti.
 

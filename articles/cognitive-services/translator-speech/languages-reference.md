@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: v-jansko
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 111adad627ffd830d69efc61bc7a06a99fee30f3
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 7498ba08b9ce7b6aae10f38a393eb8cba37f3f4e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673324"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435762"
 ---
 # <a name="translator-speech-api-languages"></a>Beszédfordító API: Languages
 
@@ -65,7 +65,7 @@ Az egyes tulajdonság megadott értéke a következő.
 A hang-szöveg transzformációs tulajdonság társított értéket `speech`, egy szótár (kulcs, érték) párok. Minden egyes kulcs azonosítja a hang-szöveg transzformációs támogatja. A kulcs az azonosítója, amely az API-t, hogy az ügyfél továbbítja. A kulcshoz tartozó érték a következő tulajdonságokkal rendelkező objektum:
 
 * `name`: A nyelv nevének megjelenítéséhez.
-* `language`: A társított nyelven írt, nyelvcímke. Olvassa el a "Szöveg traznakció".
+* `language`: A társított nyelven írt, nyelvcímke. Olvassa el a "Szöveg tranzakció".
 A következő egy példa:
 
 ```

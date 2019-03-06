@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
-ms.openlocfilehash: 1f6ce2e51255ddf43b6c123585866117d76f8d0b
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: d5d7f45b4833bb535e98542ee513e9ea8bf0f9e5
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313650"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432991"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>A Windows operációs rendszer a Service Fabric-fürtben
 
@@ -418,4 +418,4 @@ A rendszergazdák beavatkozhat kell, és határozza meg, miért érdemes az alka
 - Változó alapértelmezett értéke InstallWindowsOSOnlyUpdates FALSE.
 
 ### <a name="version-132"></a>1.3.2 verzió
-- Egy probléma, amely befolyásolja a javítási lifecyle egy csomóponton, abban az esetben, ha az aktuális csomópont nevét részhalmaza nevű csomópont kijavítása. Az ilyen csomópontokon, lehetséges, a javítás hiányzik, vagy újraindítás függőben. 
+- Egy probléma, amely befolyásolja a javítási élettartam-cyle egy csomóponton, abban az esetben, ha az aktuális csomópont nevét részhalmaza nevű csomópont kijavítása. Az ilyen csomópontokon, lehetséges, a javítás hiányzik, vagy újraindítás függőben. 

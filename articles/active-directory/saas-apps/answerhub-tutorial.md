@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 818b91d7-01df-4b36-9706-f167c710a73c
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95d6ff44a8d760150df491b67ee56d62c4daff31
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: e05f865f0fd76e93b92f3bb09f1babd780074065
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882790"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442579"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező AnswerHub
 
@@ -80,7 +80,7 @@ Az Azure AD egyszeri bejelentkezés az AnswerHub tesztelése és konfigurálása
 2. [AnswerHub egyszeri bejelentkezés konfigurálása](#configure-answerhub-single-sign-on) állíthatja be az egyszeri bejelentkezés beállításai az alkalmazás oldalán.
 3. [Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user) Britta Simon nevű.
 4. [Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user) Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. [Hozzon létre egy AnswerHub tesztfelhasználót](#create-answerhub-test-user) , amely megfelel, és az Azure ad-ben tesztfelhasználó van csatolva.
+5. Hozzon létre egy AnswerHub tesztfelhasználó, amely megfelel, és az Azure ad-ben tesztfelhasználó van csatolva.
 6. [Egyszeri bejelentkezés tesztelése](#test-single-sign-on) , hogy működik-e a konfiguráció ellenőrzéséhez.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása

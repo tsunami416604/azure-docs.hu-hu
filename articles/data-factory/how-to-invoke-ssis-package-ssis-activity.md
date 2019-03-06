@@ -13,17 +13,19 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 2a948a75ce3f6c21d7e92e3e1ccb1ef98dbe2ea0
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 846fc5de6470326fbd51d19397503e4eee2ee15b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114382"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436085"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Futtassa a Azure Data Factory SSIS-csomag végrehajtása tevékenysége egy SSIS-csomag
 Ez a cikk ismerteti, hogyan futtathat egy SSIS-csomag az Azure Data Factory (ADF) folyamat az SSIS-csomag végrehajtása tevékenységek segítségével. 
 
 ## <a name="prerequisites"></a>Előfeltételek
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Hozzon létre egy Azure-SSIS integrációs modul (IR), ha nem rendelkezik a részletes utasításait követve már a [oktatóanyag: SSIS csomagok üzembe helyezése az Azure-bA](tutorial-create-azure-ssis-runtime-portal.md).
 
@@ -111,7 +113,7 @@ Is létrehozhat ütemezett eseményindítóként a folyamathoz, hogy a folyamat 
 ## <a name="run-a-package-with-powershell"></a>A csomag futtatása a PowerShell-lel
 Ebben a szakaszban az Azure PowerShell használatával hozhat létre az ADF-folyamatot az SSIS-csomag végrehajtása tevékenység, amelyen az SSIS-csomag. 
 
-A legújabb Azure PowerShell-modulok telepítése a részletes utasításait követve [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/azurerm/install-azurerm-ps).
+A legújabb Azure PowerShell-modulok telepítése a részletes utasításait követve [telepítése és konfigurálása az Azure PowerShell-lel](/powershell/azure/install-az-ps).
 
 ### <a name="create-an-adf-with-azure-ssis-ir"></a>Azure-SSIS integrációs modul létrehozása az ADF használatával
 Használhatja egy meglévő ADF, amely már rendelkezik Azure-SSIS integrációs modul üzembe helyezett vagy hozzon létre egy új ADF Azure-SSIS integrációs modul részletes utasításait a [oktatóanyag: SSIS csomagok üzembe helyezése az Azure Powershellen keresztül](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure-powershell).
@@ -198,10 +200,10 @@ Ebben a lépésben létrehoz egy folyamatot egy SSIS-csomag végrehajtása tevé
 
 2. Az Azure PowerShellben váltson a `C:\ADF\RunSSISPackage` mappát.
 
-3. A folyamat létrehozásához **RunSSISPackagePipeline**futtassa a **Set-AzureRmDataFactoryV2Pipeline** parancsmagot.
+3. A folyamat létrehozásához **RunSSISPackagePipeline**futtassa a **Set-AzDataFactoryV2Pipeline** parancsmagot.
 
    ```powershell
-   $DFPipeLine = Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName `
+   $DFPipeLine = Set-AzDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName `
                                                   -ResourceGroupName $ResGrp.ResourceGroupName `
                                                   -Name "RunSSISPackagePipeline"
                                                   -DefinitionFile ".\RunSSISPackagePipeline.json"
@@ -218,10 +220,10 @@ Ebben a lépésben létrehoz egy folyamatot egy SSIS-csomag végrehajtása tevé
    ```
 
 ### <a name="run-the-pipeline"></a>A folyamat futtatása
-Használja a **Invoke-AzureRmDataFactoryV2Pipeline** parancsmagot futtathatja a folyamatot. A parancsmag visszaadja a folyamat futásának azonosítóját a későbbi monitorozás céljából.
+Használja a **Invoke-AzDataFactoryV2Pipeline** parancsmagot futtathatja a folyamatot. A parancsmag visszaadja a folyamat futásának azonosítóját a későbbi monitorozás céljából.
 
 ```powershell
-$RunId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName `
+$RunId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName `
                                              -ResourceGroupName $ResGrp.ResourceGroupName `
                                              -PipelineName $DFPipeLine.Name
 ```
@@ -232,7 +234,7 @@ A folyamat futási állapotának folyamatos, az adatok másolásának befejezés
 
 ```powershell
 while ($True) {
-    $Run = Get-AzureRmDataFactoryV2PipelineRun -ResourceGroupName $ResGrp.ResourceGroupName `
+    $Run = Get-AzDataFactoryV2PipelineRun -ResourceGroupName $ResGrp.ResourceGroupName `
                                                -DataFactoryName $DataFactory.DataFactoryName `
                                                -PipelineRunId $RunId
 
@@ -280,31 +282,31 @@ Az előző lépésben a folyamat igény szerinti futtatta. A folyamatok futtatá
    }    
    ```
 2. A **Azure PowerShell-lel**, váltson át a **C:\ADF\RunSSISPackage** mappát.
-3. Futtassa a **Set-AzureRmDataFactoryV2Trigger** parancsmagot, amely az eseményindítót hoz létre. 
+3. Futtassa a **Set-AzDataFactoryV2Trigger** parancsmagot, amely az eseményindítót hoz létre. 
 
    ```powershell
-   Set-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResGrp.ResourceGroupName `
+   Set-AzDataFactoryV2Trigger -ResourceGroupName $ResGrp.ResourceGroupName `
                                    -DataFactoryName $DataFactory.DataFactoryName `
                                    -Name "MyTrigger" -DefinitionFile ".\MyTrigger.json"
    ```
-4. Alapértelmezés szerint az eseményindító leállított állapotban van. Az eseményindító elindításához futtassa a **Start-AzureRmDataFactoryV2Trigger** parancsmagot. 
+4. Alapértelmezés szerint az eseményindító leállított állapotban van. Az eseményindító elindításához futtassa a **Start-AzDataFactoryV2Trigger** parancsmagot. 
 
    ```powershell
-   Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResGrp.ResourceGroupName `
+   Start-AzDataFactoryV2Trigger -ResourceGroupName $ResGrp.ResourceGroupName `
                                      -DataFactoryName $DataFactory.DataFactoryName `
                                      -Name "MyTrigger" 
    ```
-5. Győződjön meg arról, hogy az eseményindító futtatásával el van-e a **Get-AzureRmDataFactoryV2Trigger** parancsmagot. 
+5. Győződjön meg arról, hogy az eseményindító futtatásával el van-e a **Get-AzDataFactoryV2Trigger** parancsmagot. 
 
    ```powershell
-   Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName `
+   Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName `
                                    -DataFactoryName $DataFactoryName `
                                    -Name "MyTrigger"     
    ```    
 6. Futtassa a következő parancsot a következő óra elteltével. Például ha az aktuális idő 3:25-kor (UTC), futtassa a parancsot, 4 Órakor (UTC). 
     
    ```powershell
-   Get-AzureRmDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName `
+   Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName `
                                       -DataFactoryName $DataFactoryName `
                                       -TriggerName "MyTrigger" `
                                       -TriggerRunStartedAfter "2017-12-06" `

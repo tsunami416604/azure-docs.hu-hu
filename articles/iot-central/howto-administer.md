@@ -1,6 +1,6 @@
 ---
 title: Felügyelheti az Azure IoT Central alkalmazáshoz |} A Microsoft Docs
-description: Egy rendszergazdaként az Azure IoT központi alkalmazás felügyelete
+description: A rendszergazdák az Azure IoT központi alkalmazás felügyelete
 author: viv-liu
 ms.author: viviali
 ms.date: 04/16/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: d325c30173955ff7c08099a125094ffe620c7ee3
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 1b79b6870766f9595e731206bae2d4251d294942
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313378"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431326"
 ---
 # <a name="administer-your-iot-central-application"></a>Az IoT-központ alkalmazás felügyelete
 
@@ -149,7 +149,7 @@ Csatlakozás az alkalmazásban, a kulcsok és tanúsítványok ide használatáv
 
 ## <a name="use-access-tokens"></a>Hozzáférési kódok használata
 
-A fejlesztői eszközök használandó hozzáférési jogkivonatokat hoz létre. Jelenleg nincs egy fejlesztői eszköz, amely egyben az IoT-központ explorer figyeléshez az eszközre és változások a propreties és a beállítások. További információ az IoT-központ explorer. 
+A fejlesztői eszközök használandó hozzáférési jogkivonatokat hoz létre. Jelenleg nincs egy fejlesztői elérhető eszköz, amely az IoT-központ explorer van az eszközre, és a változások tulajdonságokat és beállításokat a figyelés. További információ az IoT-központ explorer. 
 
 ## <a name="use-the-azure-sdks-for-control-plane-operations"></a>Az Azure SDK-k használata vezérlési síkjával végzett műveletek
 

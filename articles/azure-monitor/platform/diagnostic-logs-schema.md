@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 10/11/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 6470e2e48854d091c219fb4ec3224e87b1567dd7
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 6e67b049ca179b1e93bcf645afd89b4a2eb0048d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300217"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436481"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Támogatott szolgáltatások, a sémák és a kategóriákat, az Azure diagnosztikai naplók
 
@@ -47,7 +47,7 @@ A séma az erőforrás-diagnosztikai naplók az erőforrás- és naplózási kat
 
 | Szolgáltatás | Séma és a dokumentumok |
 | --- | --- |
-| Azure Active Directory | [Áttekintés](../../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md), [naplózási séma](../../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md) és [Sign-Ins séma](../../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
+| Azure Active Directory | [Áttekintés](../../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md), [naplózási séma](../../active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema.md) és [bejelentkezések séma](../../active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md) |
 | Analysis Services | https://azure.microsoft.com/blog/azure-analysis-services-integration-with-azure-diagnostic-logs/ |
 | API Management | [API Management-diagnosztikai naplók](../../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
 | Application Gateway-átjárók |[Az Application Gateway diagnosztikai naplózás](../../application-gateway/application-gateway-diagnostics.md) |
@@ -83,7 +83,7 @@ A séma az erőforrás-diagnosztikai naplók az erőforrás- és naplózási kat
 ## <a name="supported-log-categories-per-resource-type"></a>Támogatott erőforrás-típusonként naplókategóriák
 |Erőforrás típusa|Kategória|Kategória megjelenített neve|
 |---|---|---|
-|Microsoft.AnalysisServices/servers|Adatbázismotor|Adatbázismotor|
+|Microsoft.AnalysisServices/servers|Motor|Motor|
 |Microsoft.AnalysisServices/servers|Szolgáltatás|Szolgáltatás|
 |Microsoft.ApiManagement/service|GatewayLogs|Az ApiManagement-átjáróhoz kapcsolódó naplók|
 |Microsoft.Automation/automationAccounts|JobLogs|Feladatnaplók|
@@ -165,7 +165,7 @@ A séma az erőforrás-diagnosztikai naplók az erőforrás- és naplózási kat
 |Microsoft.Network/expressRouteCircuits|PeeringRouteLog|Társviszony-létesítési útvonal Táblanaplók|
 |Microsoft.Network/frontdoors|FrontdoorAccessLog|Frontdoor hozzáférési napló|
 |Microsoft.Network/frontdoors|FrontdoorWebApplicationFirewallLog|Frontdoor webes alkalmazás tűzfal naplója|
-|Microsoft.PowerBIDedicated/capacities|Adatbázismotor|Adatbázismotor|
+|Microsoft.PowerBIDedicated/capacities|Motor|Motor|
 |Microsoft.RecoveryServices/Vaults|AzureBackupReport|Az Azure Backup-jelentésadatok|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryJobs|Az Azure Site Recovery-feladatok|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryEvents|Az Azure Site Recovery-események|

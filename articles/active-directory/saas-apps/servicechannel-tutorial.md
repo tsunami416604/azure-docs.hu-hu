@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/3/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7d8f42b49fe3dbdecec163ab47579346b71f0bf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b4be5087af70e10e5a73ea2a183a25b326aea664
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190500"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433467"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicechannel"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező ServiceChannel
 
@@ -155,7 +155,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure fe
 
     ![Egyszeri bejelentkezés konfigurálása](./media/servicechannel-tutorial/tutorial_general_400.png)
 
-1. Az a **ServiceChannel konfigurációs** területén kattintson **konfigurálása ServiceChannel** megnyitásához **bejelentkezés konfigurálása** ablak. Vegye figyelembe, hogy a **SAML Enitity azonosító** származó a **rövid összefoglaló** szakaszban.
+1. Az a **ServiceChannel konfigurációs** területén kattintson **konfigurálása ServiceChannel** megnyitásához **bejelentkezés konfigurálása** ablak. Vegye figyelembe, hogy a **SAML Entitásazonosító** származó a **rövid összefoglaló** szakaszban.
 
 1. Az egyszeri bejelentkezés konfigurálása **ServiceChannel** oldalon kell küldenie a letöltött **tanúsítvány (Base64)** és **SAML Entitásazonosító** való [ServiceChannel támogatási csoport](https://servicechannel.zendesk.com/hc/en-us). Ezek beállítja ezt annak érdekében, hogy a SAML SSO kapcsolat mindkét oldalán megfelelően beállítva.
 

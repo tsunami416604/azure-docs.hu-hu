@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: bahariri
-ms.openlocfilehash: 1345a5814faefd4074e7d9548d374bd79d977514
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: e704a2595130a2a815388447ac482ab96789d64a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53015585"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453983"
 ---
-# <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>Exchange-események a fogyasztók és más protokollt használó gyártók között: HTTPS, AMQP és a Kafka
-Azure Event hubs szolgáltatás három protokollt támogat a fogyasztók: AMQP, a Kafka és a HTTPS. Ezeket a protokollokat mindegyike rendelkezik a saját módja egy üzenetet, így természetesen felmerül a következő kérdés jelölő: Ha egy alkalmazás küldi az eseményeket egy Eseményközpontba, egy protokollal, és a egy másik protokoll használja őket, mire a különböző részeit és értékeit a amikor megérkeznek a fogyasztó esemény néz? Ez a cikk ismerteti az ajánlott eljárások az előállítói és a fogyasztói annak érdekében, hogy az esemény található értékek helyesen értelmezi a fogyasztó alkalmazás általi.
+# <a name="exchange-events-between-consumers-and-producers-that-use-different-protocols-amqp-kafka-and-https"></a>Az Exchange-események a fogyasztók és más protokollt használó gyártók között: AMQP, Kafka, and HTTPS
+Azure Event hubs szolgáltatás három protokoll támogatja a fogyasztók: Az AMQP-, Kafka, és HTTPS. Ezeket a protokollokat mindegyike rendelkezik a saját módja egy üzenetet, így természetesen felmerül a következő kérdés jelölő: Ha egy alkalmazás küldi az eseményeket egy Eseményközpontba, egy protokollal, és a egy másik protokoll használja őket, mire a különböző részeit és értékeit a amikor megérkeznek a fogyasztó esemény néz? Ez a cikk ismerteti az ajánlott eljárások az előállítói és a fogyasztói annak érdekében, hogy az esemény található értékek helyesen értelmezi a fogyasztó alkalmazás általi.
 
 Ebben a cikkben a tanácsadás ezek az ügyfelek kifejezetten felsorolt verzióival használható kódrészletek mutatja be:
 
@@ -344,5 +344,5 @@ Ebben a cikkben bemutattuk, hogyan streamelhet Kafka-kompatibilis Event Hubsba a
 * [Ismerkedés az Event Hubs szolgáltatással](event-hubs-what-is-event-hubs.md)
 * [Ismerkedés a Kafkához készült Event Hubs szolgáltatással](event-hubs-for-kafka-ecosystem-overview.md)
 * [További minták megismerése a Kafkához készült Event Hubs GitHub-oldalán](https://github.com/Azure/azure-event-hubs-for-kafka)
-* A [MirrorMaker](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) használatával [eseményeket streamelhet a helyszíni Kafkából a felhőben található Kafka-kompatibilis Event Hubsba.](event-hubs-kafka-mirror-maker-tutorial.md)
+* Használat [Mirrormakerrel](https://cwiki.apache.org/confluence/pages/viewpage.action?pageId=27846330) a [a Kafkából a helyszíni eseményeket stream Kafka engedélyezve van az Event hubs szolgáltatás a felhőben.](event-hubs-kafka-mirror-maker-tutorial.md)
 * Ismerje meg, hogyan streamelése Kafka az engedélyezett az Event Hubs használatával [Kafka natív alkalmazások](event-hubs-quickstart-kafka-enabled-event-hubs.md), [Apache Flink](event-hubs-kafka-flink-tutorial.md), vagy [Akka adatfolyamok](event-hubs-kafka-akka-streams-tutorial.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 0d9ee24e9ab104fb554033802507f78fcbf38fc3
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e3aae5f7936204a7fe4fbce4102fc2727088e025
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55170929"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442031"
 ---
 # <a name="sfctl-cluster"></a>sfctl-fürt
 Válassza ki, kezelése és üzemeltetése a Service Fabric-fürtök.
@@ -140,7 +140,7 @@ A Service Fabric fürtjegyzék beolvasása. A fürtjegyzék tartalmazza a fürt 
 ## <a name="sfctl-cluster-operation-cancel"></a>sfctl fürt művelet megszakítás
 Egy felhasználó által előidézett hibák művelet megszakítása.
 
-A következő API-kat, indítsa el CancelOperation használatával törlődhet tartalék műveletek\: StartDataLoss, StartQuorumLoss, StartPartitionRestart, StartNodeTransition. Ha kényszerített false (hamis), majd a megadott felhasználó által kiváltott művelet szabályosan leállítja, majd törlődik.  Kényszerített értéke igaz, ha a rendszer megszakítja a parancs, és egyes belső állapot maradhatnak.  Adja meg a force TRUE körültekintően kell használni. Kényszerített igaz értékű-e API meghívása nem engedélyezett, amíg az API már meghívta a kényszerített értéke FALSE (hamis) első ugyanazt a teszt parancsot, vagy, ha a vizsgálat parancs már van egy OperationState.RollingBack OperationState. 
+A következő API-kat, indítsa el CancelOperation használatával lehet érvényteleníteni tartalék műveletek\: StartDataLoss, StartQuorumLoss, StartPartitionRestart, StartNodeTransition. Ha kényszerített false (hamis), majd a megadott felhasználó által kiváltott művelet szabályosan leállítja, majd törlődik.  Kényszerített értéke igaz, ha a rendszer megszakítja a parancs, és egyes belső állapot maradhatnak.  Adja meg a force TRUE körültekintően kell használni. Kényszerített igaz értékű-e API meghívása nem engedélyezett, amíg az API már meghívta a kényszerített értéke FALSE (hamis) első ugyanazt a teszt parancsot, vagy, ha a vizsgálat parancs már van egy OperationState.RollingBack OperationState. 
 
 Pontosítás\: OperationState.RollingBack azt jelenti, hogy a rendszer lesz/törli az belső állapot parancs végrehajtása okozta.  Ez lesz nem esetén az adatok helyreállítását a vizsgálat parancs lett az adatvesztést okozhat.  Például ha StartDataLoss hívja meg az API meghívásához, a rendszer fogja csak a törlés belső állapot a következő parancs futtatásával. Ez lesz nem a célpartíción esetén az adatok helyreállítását, a parancs elegendő haladt előre a adatvesztést okozhat. 
 

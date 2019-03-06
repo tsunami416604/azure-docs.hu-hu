@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 87c624e0fc5eac60b309a2535afc7508f1b6b3ac
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 946af124c5e16620c5052ac32d47ddb5fe4537d2
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56986107"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57406018"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>A TRAFFIC Analytics – gyakori kérdések
 
@@ -83,6 +83,7 @@ A traffic analytics használhat NSG-k, a következő támogatott régiók egyik�
 - Közép-India
 - Dél-India
 - Kelet-Japán
+- USA-beli államigazgatás – Virginia
 
 A Log Analytics-munkaterület léteznie kell a következő régióban:
 - Közép-Kanada
@@ -94,6 +95,7 @@ A Log Analytics-munkaterület léteznie kell a következő régióban:
 - Délkelet-Ázsia 
 - Közép-India
 - Kelet-Japán
+- USA-beli államigazgatás – Virginia
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>Az NSG-k engedélyezhető a flow is, mint a saját munkaterület különböző régiókban lehet naplókat?
 

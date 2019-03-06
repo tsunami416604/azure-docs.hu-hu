@@ -8,16 +8,16 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: bb173981e3f06c923fa7357eb64777493bd17b8c
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 33169448b5b1e4496f42d157cb77134b90804fa6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958269"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433178"
 ---
 # <a name="what-is-azure-data-explorer"></a>Mi az az Azure Data Explorer?
 
-Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Segít kezelni a modern szoftverek által kibocsátott számos adatfolyamot, hogy begyűjthesse, tárolhassa és elemezhesse az adatokat. Az Azure Adatkezelő ideális választás nagy mennyiségű, különböző forrásokból (például webhelyekről, alkalmazásokból, IoT-eszközökről stb.) származó adatok elemzéséhez. Ezek az adatok a diagnosztikához, a monitorozáshoz, a jelentéskészítéshez, a gépi tanuláshoz és a további elemzési funkciókhoz szükségesek. Az Azure Data Explorer leegyszerűsíti az adatok betöltését, és lehetővé teszi összetett alkalmi lekérdezések végrehajtását az adatokon másodpercek alatt.
+Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Segít kezelni a modern szoftverek által kibocsátott számos adatfolyamot, hogy begyűjthesse, tárolhassa és elemezhesse az adatokat. Az Azure Adatkezelő ideális választás nagy mennyiségű, különböző forrásokból (például webhelyekről, alkalmazásokból, IoT-eszközökről stb.) származó adatok elemzéséhez. Ezek az adatok a diagnosztikához, a monitorozáshoz, a jelentéskészítéshez, a gépi tanuláshoz és a további elemzési funkciókhoz szükségesek. Az Azure Data Explorer lehetővé teszi, hogy ezek az adatok egyszerű, és lehetővé teszi, hogy komplex ad hoc lekérdezéseket az adatok másodpercek alatt.
 
 ## <a name="what-makes-azure-data-explorer-unique"></a>Mitől egyedi az Azure Data Explorer?
 
@@ -53,7 +53,7 @@ Az Azure Data Explorerben történő munkavégzés általában a következő fol
 
 ## <a name="query-experience"></a>A lekérdezések használata
 
-A lekérdezések az Azure Data Explorerben csak olvasható kérések az adatok feldolgozására és a feldolgozás eredményeinek visszaadására az adatok vagy metaadatok módosítása nélkül. Addig pontosíthatók a lekérdezések, amíg be nem fejeződik az elemzés. Az Azure Data Explorer a rendkívül gyors ad-hoc lekérdezésekkel megkönnyíti ezt a folyamatot.
+A lekérdezések az Azure Data Explorerben csak olvasható kérések az adatok feldolgozására és a feldolgozás eredményeinek visszaadására az adatok vagy metaadatok módosítása nélkül. Addig pontosíthatók a lekérdezések, amíg be nem fejeződik az elemzés. Az adatkezelő az Azure megkönnyíti a folyamat nagyon gyorsan alkalmi lekérdezést szerzett tapasztalat miatt.
 
 Az Azure Data Explorer egyaránt jól kezel nagy mennyiségű strukturált, félig strukturált (JSON-szerű beágyazott típusú) és strukturálatlan (szabad szöveges) adatot. Lehetővé teszi adott szöveges kifejezések és adott események keresését, valamint metrikus számítások végrehajtását a strukturált adatokon. Az Azure Data Explorer a szabad formátumú szövegmezők futásidejű értékeinek kinyerésével áthidalja a strukturálatlan szövegnaplók és a strukturált számok és dimenziók világát. A gyors szövegindexelés, az oszloptár és az idősorozat-műveletek kombinálásával egyszerűbbé válik az adatfeltárás.
 

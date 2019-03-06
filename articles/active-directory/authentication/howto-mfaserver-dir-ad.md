@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9910155b439b5ee6d0e5abd96d750943605098a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 88839598b3ae11f0041b3451ba5481547c019c9d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211597"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449614"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Címtár-integráció az Azure MFA-kiszolgáló és az Active Directory között
 
@@ -61,7 +61,7 @@ Az Azure Multi-Factor Authentication az alábbi három szűrőbeállítással re
 * **Felhasználószűrő** – Megadhatja a címtárkereséskor a felhasználórekordok minősítéséhez használt szűrőfeltételeket.  Active Directory és ADAM esetén általában a következő feltétel használatos: (&(objectClass=user)(objectCategory=person)).  Egyéb LDAP-címtárak esetén a címtársémától függően használja az (objectClass=inetOrgPerson) vagy valamilyen hasonló szűrőfeltételt. <br>Megjegyzés:  Ha üresen hagyja, a (& (objectCategory=person)(objectClass=User)) értéket használja alapértelmezetten.
 
 ## <a name="attributes"></a>Attribútumok
-Az attribútumok igény szerint testreszabhatók egy adott címtárhoz.  Ez lehetővé teszi egyéni attribútumok hozzáadását és a szinkronizálás finomhangolását csak a szükséges attribútumokra. Az egyes attribútummezők értékeként használja a címtársémában meghatározott attribútumneveket. Az alábbi táblázatban további információkat talál az egyes szolgáltatásokról.
+Az attribútumok igény szerint testreszabhatók egy adott címtárhoz.  Ez lehetővé teszi egyéni attribútumok hozzáadását és a szinkronizálás finomhangolását csak a szükséges attribútumokra. Az attribútum nevét használja, az egyes attribútummezők értékének a címtársémában meghatározott módon. Az alábbi táblázatban további információkat talál az egyes szolgáltatásokról.
 
 Az attribútumokat manuálisan is megadhatja, és nem kell egyezniük az attribútumlistán szereplő attribútumokkal.
 
@@ -71,7 +71,7 @@ Az attribútumokat manuálisan is megadhatja, és nem kell egyezniük az attrib�
 | --- | --- |
 | Egyedi azonosító |Megadhatja a tároló-, biztonságicsoport- és felhasználórekordok egyedi azonosítójaként szolgáló attribútum nevét.  Az Active Directoryban ez általában az objectGUID. Egyéb LDAP-megvalósításokban az entryUUID vagy valami ehhez hasonló is előfordulhat.  Az alapértelmezett érték az objectGUID. |
 | Egyedi azonosító típusa |Válassza ki az egyedi azonosító attribútum típusát.  Az Active Directoryban az objectGUID attribútum típusa GUID. Egyéb LDAP-megvalósításokban az ASCII bájttömb vagy Sztring típusok is előfordulhatnak.  Az alapértelmezett érték a GUID. <br><br>Fontos, hogy ezt a típust helyesen adja meg, mivel a rendszer a szinkronizált elemekre az egyedi azonosítójuk alapján hivatkozik. Az objektumok a címtárban közvetlenül az egyedi azonosítótípusuk segítségével kereshetők meg.  Ha a típust Sztringre állítja, miközben a címtár valójában ASCII-karakterek bájttömbjeként tárolja az értéket, a szinkronizálás nem fog megfelelően működni. |
-| Megkülönböztető név |Megadhatja azon attribútum nevét, amely az egyes rekordok megkülönböztető nevét tartalmazza.  Active Directoryban ez általában a distinguishedName. Egyéb LDAP-megvalósításokban az entryDN vagy valami ehhez hasonló is előfordulhat.  Az alapértelmezett érték a distinguishedName. <br><br>Ha nem létezik csak a megkülönböztető nevet tartalmazó attribútum, az adspath attribútum használható.  Az elérési út „LDAP://\<server\>/” részét a rendszer automatikusan leválasztja, csak az objektum megkülönböztető nevét hagyja meg. |
+| Megkülönböztető név |Megadhatja azon attribútum nevét, amely az egyes rekordok megkülönböztető nevét tartalmazza.  Active Directoryban ez általában a distinguishedName. Egyéb LDAP-megvalósításokban az entryDN vagy valami ehhez hasonló is előfordulhat.  Az alapértelmezett érték a distinguishedName. <br><br>Ha csak a megkülönböztető nevet tartalmazó attribútum nem létezik, az ads elérési útja, attribútum is használható.  Az elérési út „LDAP://\<server\>/” részét a rendszer automatikusan leválasztja, csak az objektum megkülönböztető nevét hagyja meg. |
 | Tárolónév |Megadhatja azon attribútum nevét, amely a nevet egy tárolórekordban tárolja.  Az attribútum értéke megjelenik a tárolóhierarchiában az Active Directoryból való importáláskor vagy szinkronizált elemek hozzáadásakor.  Az alapértelmezett érték a name. <br><br>Ha a különböző tárolók különböző attribútumokat használnak a neveikhez, akkor az egyes tárolónév-attribútumokat pontosvesszővel válassza el.  A rendszer a tárolóobjektumokban található első tárolónév-attribútumot használja az objektumok nevének megjelenítéséhez. |
 | Biztonsági csoport neve |Megadhatja azon attribútum nevét, amely a nevet egy biztonságicsoport-rekordban tárolja.  Az attribútum értéke megjelenik a Biztonsági csoport listában az Active Directoryból való importáláskor vagy szinkronizált elemek hozzáadásakor.  Az alapértelmezett érték a name. |
 | Felhasználónév |Megadhatja azon attribútum nevét, amely a felhasználónevet egy felhasználórekordban tárolja.  A rendszer az attribútum értékét a Multi-Factor Auth-kiszolgáló felhasználóneveként használja fel.  Egy második attribútumot is megadhat tartalékként.  A második attribútumot a rendszer csak akkor használja, ha az első attribútum nem tartalmaz értéket a felhasználóhoz.  Az alapértelmezett érték a userPrincipalName és az sAMAccountName. |

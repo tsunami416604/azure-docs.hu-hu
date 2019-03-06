@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: dad97fab8c4c8fe997ee9b8d9ac8c7dc6c0d1e48
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d0e62edd156e8fafbf16437af33941a99f4607fd
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454470"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440607"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>Technikai útmutató a Cortana Intelligence Megoldássablon prediktív karbantartás a légi közlekedésben
 
@@ -195,7 +195,7 @@ Az alábbi lépéseket leírja, hogyan csatlakozhat az SQL-adatbázis, amely a m
      <br/>
      ![Végső megtekintése](./media/cortana-analytics-technical-guide-predictive-maintenance/final-view.png)
      <br/>
-   * Frissítés ütemezéséhez az adatokat, az egérmutatóval rámutat a **PredictiveMaintenanceAerospace** adatkészletet, kattintson a ![jelölő három pontra ikon](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-elipsis.png) majd **frissítés ütemezése**.
+   * Frissítés ütemezéséhez az adatokat, az egérmutatóval rámutat a **PredictiveMaintenanceAerospace** adatkészletet, kattintson a ![három pontot ábrázoló ikonra](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-elipsis.png) majd **frissítés ütemezése**.
      <br/>
      **Megjegyzés:** Ha megjelenik egy figyelmeztetés masszírozó, kattintson a **hitelesítő adatok szerkesztése** , és győződjön meg arról, hogy az adatbázis hitelesítő adatai ugyanazok, mint az 1. lépésben leírt.
      <br/>

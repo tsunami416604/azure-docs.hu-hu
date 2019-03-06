@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 7550eac600f5b504d80bcc6b5465e24e8d423d2a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: c4d694621e4ac5428256346e3994bc3233d399a2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015083"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441406"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>Adatok másolása a Salesforce-hoz, és az Azure Data Factory használatával
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](v1/data-factory-salesforce-connector.md)
 > * [Aktuális verzió](connector-salesforce.md)
 
@@ -33,7 +33,7 @@ A Salesforce-ból adatokat másolhatja bármely támogatott fogadó adattárba. 
 Pontosabban a Salesforce-összekötő támogatja:
 
 - Salesforce-fejlesztő, Professional, Enterprise vagy korlátlan kiadások.
-- Adatok másolása a és a Salesforce éles, védőfal és az egyéni tartomány.
+- Copying data from and to Salesforce production, sandbox, and custom domain.
 
 A Salesforce-összekötő épül a Salesforce REST API [v39](https://developer.salesforce.com/docs/atlas.en-us.206.0.api_rest.meta/api_rest/resources_list.htm) az adatok másolása és [v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm) az adatok másolása.
 
@@ -289,9 +289,9 @@ Lekérdezés a helyreállíthatóan törölt rekordok a Salesforce Lomtárból, 
 
 Adatok másolása a Salesforce-ból, ha SOQL lekérdezés vagy SQL-lekérdezést is használhatja. Ne feledje, hogy ezt a két különböző szintaxist és a funkciók támogatása, nem használhatók vegyesen. Ön az SOQL lekérdezéssel, amelyet natív módon támogat a Salesforce használata javasolt. Az alábbi táblázat a fő különbség:
 
-| Szintaxis | SOQL mód | SQL-módja |
+| Szintaxis | SOQL Mode | SQL Mode |
 |:--- |:--- |:--- |
-| Oszlop kiválasztása | Kell felsorolni a lekérdezés, pl. másolandó mezők `SELECT field1, filed2 FROM objectname` | `SELECT *` Oszlop kiválasztása mellett támogatott. |
+| Oszlop kiválasztása | A lekérdezés, pl. másolandó mezők számbavétele kell `SELECT field1, filed2 FROM objectname` | `SELECT *` Oszlop kiválasztása mellett támogatott. |
 | Idézőjelek között | Nem szerepelhetnek idézőjelek között az iktatott/objektumok nevét. | A mező/objektumok nevét is szerepelhetnek idézőjelek között, például: `SELECT "id" FROM "Account"` |
 | Dátum és idő formátumban |  Tekintse meg a részleteket [Itt](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql_select_dateformats.htm) és a felhozott példák a következő szakaszban. | Tekintse meg a részleteket [Itt](https://docs.microsoft.com/sql/odbc/reference/develop-app/date-time-and-timestamp-literals?view=sql-server-2017) és a felhozott példák a következő szakaszban. |
 | Logikai értékek | -Kiszolgálókként `False` és `True`, pl. `SELECT … WHERE IsDeleted=True`. | 0 vagy 1, pl. kiszolgálókként `SELECT … WHERE IsDeleted=1`. |
@@ -311,25 +311,25 @@ Adatok másolása a Salesforce-ból, ha a Data Factory-közbenső adattípusok a
 
 | Salesforce-adatok típusa | Data Factory közbenső adattípus |
 |:--- |:--- |
-| Automatikus száma |Karakterlánc |
+| Automatikus száma |String |
 | Jelölőnégyzet |Logikai |
-| Currency (Pénznem) |Tizedes tört |
+| Currency (Pénznem) |Decimal |
 | Dátum |DateTime |
 | Dátum/idő |DateTime |
-| E-mail |Karakterlánc |
-| Azonosító |Karakterlánc |
-| Keresési kapcsolat |Karakterlánc |
-| Többszörös kijelöléses értéklista |Karakterlánc |
-| Szám |Tizedes tört |
-| Százalék |Tizedes tört |
-| Telefonszám |Karakterlánc |
-| Értéklista |Karakterlánc |
-| Szöveg |Karakterlánc |
-| Szövegterület |Karakterlánc |
-| Szövegterület (hosszú) |Karakterlánc |
-| Szövegterület (részletes) |Karakterlánc |
-| Szöveg (titkosítva) |Karakterlánc |
-| URL-cím |Karakterlánc |
+| E-mail |String |
+| Azonosító |String |
+| Keresési kapcsolat |String |
+| Többszörös kijelöléses értéklista |String |
+| Szám |Decimal |
+| Százalék |Decimal |
+| Telefonszám |String |
+| Értéklista |String |
+| Szöveg |String |
+| Szövegterület |String |
+| Szövegterület (hosszú) |String |
+| Szövegterület (részletes) |String |
+| Szöveg (titkosítva) |String |
+| URL-cím |String |
 
 ## <a name="next-steps"></a>További lépések
 A másolási tevékenység, Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

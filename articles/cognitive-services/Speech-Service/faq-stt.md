@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: 5c5a42908198b3a8f473efbe4f54bc481e250efa
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 29ec50a1d2e0aebb1aeb73b38c662f4a18624754
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55875994"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431988"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Beszédfelismerés – gyakori kérdések
 
 Ha nem találja a kérdésekre adott válaszok a gyakori kérdések, tekintse meg az [más támogatási lehetőségeket](support.md).
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 **K: Mi a különbség egy alapkonfiguráció modell és a egy egyéni beszéd szöveges modellre?**
 
@@ -63,7 +63,7 @@ A régi adatkészletet, és az új adatkészletet egy zip-fájlba (az akusztikai
 
 **A**: Üzemelő példányok nem automatikusan frissül.
 
-Ha módosítani, és a telepített alapkonfiguráció 1.0-s verziójú modell, a telepítés marad. Ügyfelek decommision is az üzembe helyezett modell, újra alkalmazkodjon az alapkonfiguráció újabb verzióját használja, és helyezze újra üzembe.
+Ha módosítani, és a telepített alapkonfiguráció 1.0-s verziójú modell, a telepítés marad. Ügyfeleink az üzembe helyezett modell leszerelése, újra alkalmazkodjon az alapkonfiguráció újabb verzióját használja és helyezze újra üzembe.
 
 **K: Mi történik, ha van szükség magasabb szintű egyidejűség érdekében, mire a portál érhető el, mint az üzembe helyezett modell?**
 
@@ -151,5 +151,5 @@ Ha további adatvédelmi megfontolások, amelyek nem engedik a custom Speech ser
 
 ## <a name="next-steps"></a>További lépések
 
-* [Hibaelhárítás](troubleshooting.md)
+* [hibaelhárítással](troubleshooting.md)
 * [Kibocsátási megjegyzések](releasenotes.md)

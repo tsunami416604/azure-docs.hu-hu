@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: msfussell
-ms.openlocfilehash: 0012304412b343918ab69abf6eababc033cddc6f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 492afcdd5143aa5a6597ba8c296d15059f9c7d64
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55198214"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453269"
 ---
 # <a name="partition-service-fabric-reliable-services"></a>A Service Fabric reliable services particionálása
 Ez a cikk mutatja be az Azure Service Fabric reliable services particionálása alapvető fogalmait. A cikkben használt forráskódja is elérhető a [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions).
@@ -59,7 +59,7 @@ Egy szolgáltatás-k megvalósítása előtt minden esetben fontolja meg a szük
 
 Egy jó módszer, gondolja át az állapot, amely lehet particionálni első lépéseként meg kell a struktúra.
 
-Vessünk egy egyszerű példa. Ha egy szolgáltatás countywide lekérdezési hozhat létre, létrehozhat egy partíció mindegyik városhoz a megyét. Ezután minden egyes személy számára a szavazatok tárolhatja az a partíció, amely megfelel a várost az városa. 3. ábra azt szemlélteti, személyek és a város, amelyben található.
+Vessünk egy egyszerű példa. Ha egy szolgáltatás megye kiterjedő voksát egy szavazáson hozhat létre, létrehozhat egy partíció mindegyik városhoz a megyét. Ezután minden egyes személy számára a szavazatok tárolhatja az a partíció, amely megfelel a várost az városa. 3. ábra azt szemlélteti, személyek és a város, amelyben található.
 
 ![Egyszerű partíció](./media/service-fabric-concepts-partitioning/cities.png)
 

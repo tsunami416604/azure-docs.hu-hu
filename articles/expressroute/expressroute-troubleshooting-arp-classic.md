@@ -1,5 +1,5 @@
 ---
-title: 'ARP táblák – hibaelhárítás ExpressRoute első: klasszikus: Azure |} A Microsoft Docs'
+title: 'ARP táblák – hibaelhárítás ExpressRoute első: klasszikus: Azure| Microsoft Docs'
 description: Ez az oldal nyújt útmutatást az ARP-táblák beolvasása egy ExpressRoute-kapcsolatcsoport – klasszikus üzemi modellben.
 services: expressroute
 author: ganesr
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 367a79b04a8736e2eafb6851b682f2c244e80522
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 3e49a1da0e8ea83faf5fc5a10d4c01a41d62fa88
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272286"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439638"
 ---
 # <a name="getting-arp-tables-in-the-classic-deployment-model"></a>ARP-táblák a klasszikus üzemi modellben
 > [!div class="op_single_selector"]
@@ -54,7 +54,7 @@ Az alábbi szakasz ismerteti a ARP-táblák, amely az ExpressRoute-peremhálóza
 Győződjön meg arról, hogy rendelkezik a következő, a folytatás előtt:
 
 * Egy érvényes ExpressRoute-kapcsolatcsoport, amely legalább egy társviszony-létesítés van konfigurálva. A kapcsolatcsoport a kapcsolatszolgáltató által teljes kell konfigurálni. Ön (vagy a kapcsolatszolgáltató) kell konfigurálnia a társviszony-létesítések (az Azure privát, Azure nyilvános vagy Microsoft) legalább egy ebben a kapcsolatcsoportban.
-* IP-címtartományok a társviszony-létesítések (az Azure privát, Azure nyilvános és Microsoft) konfigurálásához használt. Tekintse át az IP-cím hozzárendelés szereplő példák a [ExpressRoute útválasztási követelményei lapon](expressroute-routing.md) végigvezetnek, hogyan a aise és az ExpressRoute oldalán felületek IP-címek vannak leképezve. A társviszony-létesítési konfigurálásával kapcsolatos információkat szerezhet a áttekintésével a [ExpressRoute-társviszony-létesítési konfiguráció lap](expressroute-howto-routing-classic.md).
+* IP-címtartományok a társviszony-létesítések (az Azure privát, Azure nyilvános és Microsoft) konfigurálásához használt. Tekintse át az IP-cím hozzárendelés szereplő példák a [ExpressRoute útválasztási követelményei lapon](expressroute-routing.md) végigvezetnek, hogyan az ügyféloldali és az ExpressRoute oldalán felületek IP-címek vannak leképezve. A társviszony-létesítési konfigurálásával kapcsolatos információkat szerezhet a áttekintésével a [ExpressRoute-társviszony-létesítési konfiguráció lap](expressroute-howto-routing-classic.md).
 * A hálózati csapata vagy a kapcsolat szolgáltatójától vonatkozó adatokat a MAC-címek ezen IP-címek használt csatolók közül.
 * A legújabb Windows PowerShell-modul az Azure-hoz (1,50 vagy újabb verzió).
 

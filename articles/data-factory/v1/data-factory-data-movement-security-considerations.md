@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 197762255a1a693821b8416227b4abf52755eb31
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 0d601df7914b7280de4b3c16c8b00c96cb5427e4
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015746"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435984"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Az Azure Data Factory - adatáthelyezés biztonsági szempontjai
 
@@ -45,6 +45,8 @@ Ez a cikk a következő két adattovábbítási esetekben biztonsági szempontok
 
 - **Alkalmazási helyzetben**– ebben a forgatókönyvben a forrás- és program interneten keresztül nyilvánosan elérhető. Ezek közé tartozik például az Azure Storage, Azure SQL Data Warehouse, Azure SQL Database, Azure Data Lake Store, az Amazon S3, Amazon Redshift, SaaS-szolgáltatásokhoz, például a Salesforce és a webes protokollok, mint például az FTP- és OData felügyelt felhőalapú tárolási szolgáltatásokról. Támogatott adatforrások teljes listáját megtalálhatja [Itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats).
 - **Hibrid forgatókönyv**– ebben a forgatókönyvben a cél- és van egy tűzfal mögött található, vagy egy helyszíni vállalati hálózat vagy az adatokat tároló van egy magánhálózaton lévő / virtuális hálózat (általában a forrás), és nem nyilvánosan elérhető-e. Ebben a forgatókönyvben is tartozik a virtuális gépeken futtatott adatbázis-kiszolgálók.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="cloud-scenarios"></a>Felhőbeli forgatókönyvek
 ### <a name="securing-data-store-credentials"></a>Biztonságossá tétele adattár hitelesítő adatait
@@ -93,7 +95,7 @@ A rendszer helyben tárolja a hitelesítő adatokat a helyszíni adattárakban (
 - Használatával **egyszerű szöveges** (kevésbé biztonságos) Azure Portal használatával HTTPS-kapcsolaton keresztül / másolás varázslójával. A helyszíni átjáró az egyszerű szöveges rendszer átadja a hitelesítő adatokat.
 - Használatával **JavaScript titkosítás könyvtár a másolás varázsló**.
 - Használatával **kattintson-alapú hitelesítő adatokat kezelő alkalmazás után**. Kattintson a – Miután az alkalmazás végrehajtja a helyszíni gépen, amely rendelkezik hozzáféréssel az átjáróhoz, és az adattár hitelesítő adatait. Ez a beállítás és a következő módon a legbiztonságosabb. A credential manager alkalmazást, alapértelmezés szerint a portot használja 8050 a gépen az átjárót a biztonságos kommunikáció érdekében.  
-- Használat [New-AzureRmDataFactoryEncryptValue](/powershell/module/azurerm.datafactories/New-AzureRmDataFactoryEncryptValue) hitelesítő adatainak titkosítása PowerShell-parancsmagot. A parancsmag a tanúsítványt használja, hogy az átjáró a hitelesítő adatok titkosításához használatára van konfigurálva. Ez a parancsmag által visszaadott titkosított hitelesítő adatokat, majd adja hozzá a **EncryptedCredential** eleme a **connectionString** a JSON-fájlban, amelyet a [ Új AzureRmDataFactoryLinkedService](/powershell/module/azurerm.datafactories/new-azurermdatafactorylinkedservice) parancsmag vagy a JSON-kódrészletben a Data Factory szerkesztőjében a portálon. Ezt a beállítást, és kattintson a – Ha az alkalmazás a legbiztonságosabb lehetőség. 
+- Használat [New-AzDataFactoryEncryptValue](/powershell/module/az.datafactory/New-azDataFactoryEncryptValue) hitelesítő adatainak titkosítása PowerShell-parancsmagot. A parancsmag a tanúsítványt használja, hogy az átjáró a hitelesítő adatok titkosításához használatára van konfigurálva. Ez a parancsmag által visszaadott titkosított hitelesítő adatokat, majd adja hozzá a **EncryptedCredential** eleme a **connectionString** a JSON-fájlban, amelyet a [ Új AzDataFactoryLinkedService](/powershell/module/az.datafactory/new-azdatafactorylinkedservice) parancsmag vagy a JSON-kódrészletben a Data Factory szerkesztőjében a portálon. Ezt a beállítást, és kattintson a – Ha az alkalmazás a legbiztonságosabb lehetőség. 
 
 #### <a name="javascript-cryptography-library-based-encryption"></a>JavaScript-titkosítás library-alapú titkosítás
 Tár hitelesítő adatainak használatával titkosíthatók [titkosítás JavaScript-kódtár](https://www.microsoft.com/download/details.aspx?id=52439) származó a [másolása varázsló](data-factory-copy-wizard.md). Ha ezt a lehetőséget választja, a másolás varázsló kérdezi le a nyilvános kulcsot az átjáró, és a segítségével a tároló hitelesítő adatainak titkosítása. A hitelesítő adatok vannak visszafejteni az átjárót tartalmazó számítógépen, és a Windows által védett [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx).

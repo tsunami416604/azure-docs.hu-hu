@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
-ms.openlocfilehash: b88d850b708a10d0e0fdff2f54b68cb9b39988f5
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 8638b788762a56813c622c0abffe2a8eae3c70c2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42059478"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437105"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Az Azure egyéni parancsfájl bővítmény 1. verzió használata Linux rendszerű virtuális gépek
 
@@ -34,9 +34,9 @@ Ez a cikk részletezi, hogyan használhatja az egyéni szkriptek bővítménye a
 
 Nincsenek egyéni parancsfájl-kiterjesztés két Linux:
 
-* 1. verzió – Microsoft.OSTCExtensions.CustomScriptForLinux
+* Version 1 - Microsoft.OSTCExtensions.CustomScriptForLinux
 
-* 2. verzió – Microsoft.Azure.Extensions.CustomScript
+* Version 2 - Microsoft.Azure.Extensions.CustomScript
 
 Váltson a meglévő és újonnan üzembe helyezett új verziója használatára ([Microsoft.Azure.Extensions.CustomScript](custom-script-linux.md)) helyett. Az új verzióra van készült protokollkompatibilitását. Ezért az áttelepítés megírásához módosítása a neve és verziója, nem kell módosítani a bővítmény konfigurációját.
 
@@ -126,9 +126,9 @@ Ezeket az elemeket kell kezelni, mint a bizalmas adatok és a bővítmények vé
 | type | CustomScriptForLinux | sztring |
 | typeHandlerVersion | 1.5 | int |
 | fileUris (például:) | https://github.com/MyProject/Archive/MyPythonScript.py | tömb |
-| commandToExecute (például:) | Python MyPythonScript.py \<saját param1\> | sztring |
+| commandToExecute (például:) | python MyPythonScript.py \<my-param1\> | sztring |
 | enableInternalDNSCheck | true | logikai |
-| storageAccountName (például:) | examplestorageacct | sztring |
+| storageAccountName (e.g) | examplestorageacct | sztring |
 | storageAccountKey (például:) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | sztring |
 
 ### <a name="property-value-details"></a>A tulajdonság értéke részletei
@@ -305,7 +305,7 @@ Következő lépés az, hogy go-ellenőrzés a naplófájlt, ez a következő fo
 /var/log/azure/<extension-name>/<version>/extension.log file.
 ```
 
-Meg kell keresnie az induvidual végrehajtását, a következőhöz hasonlóan kell kinéznie:
+Meg kell keresnie az egyes végrehajtását, a következőhöz hasonlóan kell kinéznie:
 
 ```text
 2018/04/26 15:29:46 [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] Enable,transitioning,0,Launching the script...

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 47fde9099ed8172b83f9f12085c5aee219c4716c
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 46e8c0185ec94d0ea3429f761b3760dcbccc25aa
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57318019"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432617"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Eszköz csatlakoztatása az Azure IoT Central
 
@@ -33,9 +33,9 @@ A DPS használatával a következőket:
 A cikkben található útmutató ismerteti a következő négy használati esetek:
 
 1. [Gyorsan kapcsolatba léphet egy adott eszköz SAS használatával](#connect-a-single-device)
-1. [SAS használatával nagy mennyiségű eszköz csatlakoztatása](#connect-devices-at-scale-using-shared-access-signatures)
+1. SAS használatával nagy mennyiségű eszköz csatlakoztatása
 1. [X.509-tanúsítványok használatával nagy mennyiségű eszköz csatlakoztatása](#connect-devices-using-x509-certificates) Ez az az ajánlott módszer az éles környezetekhez.
-1. [Csatlakozzon az első regisztráló eszközök nélkül](#connect-without-first-registering-devices) 
+1. Csatlakozzon az első regisztráló eszközök nélkül
 
 ## <a name="connect-a-single-device"></a>Egyetlen eszköz csatlakoztatása
 
@@ -69,7 +69,7 @@ Az IoT-központ alkalmazását egy nagy számú regisztrálásához használja a
 Az importált eszközök kapcsolati adatainak lekéréséhez [CSV-fájlba exportálhat az IoT-központ alkalmazás](howto-manage-devices-experimental.md?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json#export-devices).
 
 > [!NOTE]
-> Ha szeretné megtudni, hogyan kapcsolódhatnak eszközök nélkül első regisztrálja őket az IoT-központ, lásd: [első regisztráló eszközök nélkül Connect](#connect-without-first-registering-devices).
+> Ismerje meg, hogyan kapcsolódhatnak eszközök nélkül első regisztrálja őket az IoT-központ, lásd: Connect első regisztráló eszközök nélkül.
 
 ### <a name="set-up-your-devices"></a>Az eszközök beállítása
 

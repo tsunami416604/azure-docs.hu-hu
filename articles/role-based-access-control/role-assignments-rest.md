@@ -1,5 +1,5 @@
 ---
-title: Az RBAC és a REST API – Azure Azure resoruces való hozzáférés kezelése |} A Microsoft Docs
+title: Az Azure rbac-RÓL és a REST API – Azure erőforrások elérésének kezelése |} A Microsoft Docs
 description: Ismerje meg, hogyan kezelheti a felhasználók, csoportok és szerepköralapú hozzáférés-vezérlés (RBAC) és a REST API-t használó alkalmazások Azure-erőforrásokhoz való hozzáférését. Ez tartalmazza a hozzáférés felsorolásának, a hozzáférés adásának és a hozzáférés eltávolításának módját.
 services: active-directory
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c2ef9b0070cc9ac190b773f023ffc18d1b251a41
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: a66969504dee5ba526cdccbbb39471ef5af971c0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338410"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439332"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-the-rest-api"></a>Rbac-RÓL és a REST API használatával Azure-erőforrásokhoz való hozzáférés kezelése
 

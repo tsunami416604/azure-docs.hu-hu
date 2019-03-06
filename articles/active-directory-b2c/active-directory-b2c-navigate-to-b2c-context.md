@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 4/13/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 9522e921b59ddc57a6039c625bf6b0af4c4b4af2
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 9315b3a5e1641098daf2c7dadf9fa4f09d0cb2a7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181809"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438501"
 ---
 # <a name="switching-to-your-azure-ad-b2c-tenant"></a>Átváltás az Azure AD B2C-bérlőre
 
@@ -37,7 +37,7 @@ Az Azure Portal frissül.  Sikeresen bejelentkezett az Azure Portalra az Azure A
 1. Kattintson a **Minden szolgáltatás** elemre, majd keresse meg az `Azure AD B2C` elemet a bal oldali navigációs ablaktáblán.  (A bal oldali kezdőpulthoz való rögzítéshez kattintson az Azure AD B2C-től balra található csillagra.)
 1. A B2C-funkciók ablaktábla eléréséhez kattintson az **Azure AD B2C** elemre.
    
-    ![A B2C-funkciók ablaktábla tallózásának képernyőképe](./media/active-directory-b2c-get-started/b2c-browse.png)
+    ![Képernyőkép, keresse meg a B2C funkciók ablaktáblára](./media/active-directory-b2c-get-started/b2c-browse.png)
 
 > [!IMPORTANT]
 > A B2C-bérlő globális rendszergazdájának kell lennie ahhoz, hogy hozzáférhessen a B2C-funkciók ablaktáblához. Más bérlők globális rendszergazdái vagy felhasználói nem férhetnek hozzá a panelhez.  A B2C-bérlőre az Azure Portal jobb felső sarkában található bérlőváltó használatával válthat át.

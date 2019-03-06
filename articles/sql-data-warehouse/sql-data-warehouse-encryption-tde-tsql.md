@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 50b6077687da2ed24a3a90b227d129c43f70bfc9
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 295b1e598161820a67461ed22a86500f8ed58590
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465809"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451824"
 ---
 # <a name="get-started-with-transparent-data-encryption-tde"></a>Ismerkedés a transzparens adattitkosítás (TDE)
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ ms.locfileid: "55465809"
 > 
 > 
 
-## <a name="required-permssions"></a>Szükséges engedélyek
+## <a name="required-permissions"></a>Szükséges engedélyek
 Ahhoz, hogy a transzparens adattitkosítás (TDE), a rendszergazda vagy a dbmanager szerepkör tagjának kell lennie.
 
 ## <a name="enabling-encryption"></a>Titkosítás engedélyezése

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: adb9fb649d934d08ea546759bcf4733a1c6d9080
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a0d5f42fa6725ba23a89904779040f379f31e59e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822748"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454153"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Nagyméretű adatkészletek folyamatot a Data Factory és a Batch használatával
 > [!NOTE]
@@ -26,9 +26,12 @@ ms.locfileid: "55822748"
 
 Ez a cikk ismerteti az architektúra a minta megoldás, amely helyezi át, és feldolgozza a nagyméretű adatkészletek automatikus és ütemezett módon. A megoldás megvalósítása a Data Factory és az Azure Batch használatával egy végpontok közötti forgatókönyv is tartalmazza.
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Ez a cikk hosszabb, mint egy tipikus cikket, mert tartalmaz egy teljes mintamegoldást bemutató. Ha most ismerkedik a Batch és Data Factory áttekintése, ezek a szolgáltatások talál további információt, és hogyan működnek együtt. Ha ismeri a szolgáltatásokkal kapcsolatos hiba, és vannak tervezése/mikroszolgáltatásokra egy megoldást, összpontosíthat a cikk architektúra szakasza. Ha fejleszt egy prototípusként vagy egy megoldást, érdemes próbálja ki az útmutató részletes utasításokat. Felkérjük ezt a tartalmat, és miként használják a megjegyzéseit.
 
 Először nézzük, hogyan Data Factory és a Batch szolgáltatás segíthet folyamat nagy méretű adatkészleteket a felhőben.     
+
 
 ## <a name="why-azure-batch"></a>Miért érdemes az Azure Batch?
  A Batch használatával hatékonyan futtathat nagy méretű párhuzamos és nagy teljesítményű feldolgozási (HPC) alkalmazásokat a felhőben. Olyan platformszolgáltatás, amely úgy ütemezi a nagy számítási igényű munkák futtatását (VM) virtuális gépek felügyelt gyűjteményében. Automatikusan képes méretezni a számítási erőforrásokat a feladatok igényeinek kielégítése érdekében.
@@ -40,7 +43,7 @@ A Batch szolgáltatással Azure számítási erőforrásokat határoz meg az alk
 * [A Batch alapjai](../../batch/batch-technical-overview.md)
 * [A Batch funkcióinak áttekintése](../../batch/batch-api-basics.md)
 
-Szükség esetén a Batch kapcsolatos további információkért lásd: [a Batch documentatnion](https://docs.microsoft.com/azure/batch/).
+Szükség esetén a Batch kapcsolatos további információkért lásd: [a Batch dokumentációja](https://docs.microsoft.com/azure/batch/).
 
 ## <a name="why-azure-data-factory"></a>Miért érdemes az Azure Data Factoryt választani?
 A Data Factory egy felhőalapú adatintegrációs szolgáltatás, amellyel előkészíthető és automatizálható az adatok továbbítása és átalakítása. A Data Factory segítségével felügyelt adatfolyamatokat állíthat össze, amelyek az adatok áthelyezése a helyszíni és felhőbeli adattárolókból egy központi adattárban való létrehozásához. Ilyen például, az Azure Blob storage. A Data Factory használatával feldolgozhatók és átalakíthatók adatok például az Azure HDInsight és az Azure Machine Learning services használatával. Adatfolyamatok ütemezett módon (például óránként, naponta, és hetente) futtatását is ütemezheti. Akkor is folyamatok figyelése és felügyelete a ránézésre azonosíthatja a problémákat, és hajtsa végre műveletet.
@@ -93,7 +96,7 @@ Ha nem rendelkezik Azure-előfizetéssel, gyorsan létrehozhat egy ingyenes pró
 Storage-fiók segítségével adatokat tárolni ebben az oktatóanyagban. Ha egy storage-fiók nem rendelkezik, tekintse meg [hozzon létre egy tárfiókot](../../storage/common/storage-quickstart-create-account.md). A mintául szolgáló megoldás használja a blob storage-bA.
 
 #### <a name="azure-batch-account"></a>Az Azure Batch-fiók
-A Batch-fiók létrehozása a [az Azure portal](http://portal.azure.com/). További információkért lásd: [létrehozása és kezelése a Batch-fiók](../../batch/batch-account-create-portal.md). Vegye figyelembe a Batch-fiók tárfióknév és fiókkulcs. Használhatja még a [New-AzureRmBatchAccount](https://docs.microsoft.com/powershell/module/azurerm.batch/new-azurermbatchaccount) parancsmaggal hozzon létre egy Batch-fiókot. Ez a parancsmag használatával, lásd: [Batch PowerShell-parancsmagok használatának első lépései](../../batch/batch-powershell-cmdlets-get-started.md).
+A Batch-fiók létrehozása a [az Azure portal](http://portal.azure.com/). További információkért lásd: [létrehozása és kezelése a Batch-fiók](../../batch/batch-account-create-portal.md). Vegye figyelembe a Batch-fiók tárfióknév és fiókkulcs. Használhatja még a [New-AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccount) parancsmaggal hozzon létre egy Batch-fiókot. Ez a parancsmag használatával, lásd: [Batch PowerShell-parancsmagok használatának első lépései](../../batch/batch-powershell-cmdlets-get-started.md).
 
 A minta megoldás dolgozza fel az adatokat egy készlet számítási csomópontok (virtuális gépek felügyelt gyűjteményében) párhuzamos módon Batch (közvetetten egy data factory-folyamatot) keresztül használja.
 
@@ -201,7 +204,7 @@ A módszer van néhány kulcsfontosságú összetevők, ismernie kell:
 1. Importálás a **Azure Storage** NuGet-csomagot a projektbe. Mivel ebben a példában a Blob Storage API-t használja ezt a csomagot kell:
 
     ```powershell
-    Install-Package Azure.Storage
+    Install-Package Az.Storage
     ```
 1. Adja hozzá az alábbi irányelvek használatával a projektben a forrásfájl:
 

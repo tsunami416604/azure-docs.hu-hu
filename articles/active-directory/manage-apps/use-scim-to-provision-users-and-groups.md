@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 785c02a0187cf02df3bb3cf5d248f97a3edf74c6
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: b1b1fd5976189c4c74791bf2e6a80a494a2fccc6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961754"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433297"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>A rendszer a tartományok közötti Identity Management (SCIM) használatával automatikus kiépítésére a felhasználók és csoportok alkalmazásokhoz az Azure Active Directoryból
 
@@ -51,7 +51,7 @@ Ez a cikk van felosztva, amelyek négy részből áll:
 * **[Felhasználók és csoportok sémaleírása](#user-and-group-schema-reference)**  -katalógusban nem szereplő alkalmazásokat az Azure AD SCIM végrehajtása támogatja a felhasználó és csoport séma ismerteti. 
 
 ## <a name="provisioning-users-and-groups-to-applications-that-support-scim"></a>Felhasználók és csoportok alkalmazásokhoz, amelyek támogatják az SCIM-kiépítés
-Az Azure AD beállítható úgy, hogy az automatikusan hozzárendelt felhasználók és csoportok olyan alkalmazások, amelyek egy adott profiljának megvalósítása a [SCIM 2.0 protokoll](https://tools.ietf.org/html/rfc7644). A profil tulajdonságairól vannak dokumentálva [ismertetése az Azure AD SCIM megvalósítási](#implementing-a-scim-endpoint-that-works-with-azure-ad-user-provisioning).
+Az Azure AD beállítható úgy, hogy az automatikusan hozzárendelt felhasználók és csoportok olyan alkalmazások, amelyek egy adott profiljának megvalósítása a [SCIM 2.0 protokoll](https://tools.ietf.org/html/rfc7644). A profil adatait az Azure AD SCIM végrehajtásának megértése vannak dokumentálva.
 
 Ellenőrizze az alkalmazás szolgáltatója vagy utasítások, ezek a követelmények való kompatibilitás érdekében az alkalmazás szolgáltatója dokumentációját.
 

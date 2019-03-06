@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 18cd27ae8bf0a395fa351cf283bc1d40f94dac53
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 72238db8322132f42e14656c106b82d8604af21f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53100106"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435099"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Az automatikus központi IoT Edge egy eszközök vagy ipari méretekben ismertetése
 
@@ -62,7 +62,7 @@ Ha a modul rendszerképet egy privát tárolójegyzékben található, az IoT Ed
 
 ### <a name="target-condition"></a>Célfeltétel
 
-A célfeltétel folyamatosan kiértékelt throughtout az üzembe helyezés élettartama. A követelményeknek megfelelő új eszközök megtalálhatók, és a meglévő eszközöket, amelyek többé nem törlődnek. A központi telepítés akkor aktiválódik, ha a szolgáltatás észleli a célként megadott feltétel tejes. 
+A célfeltétel az üzembe helyezés élettartama során folyamatosan értékeli. A követelményeknek megfelelő új eszközök megtalálhatók, és a meglévő eszközöket, amelyek többé nem törlődnek. A központi telepítés akkor aktiválódik, ha a szolgáltatás észleli a célként megadott feltétel tejes. 
 
 Például rendelkezik, egy-egy cél feltétel tags.environment = 'prod'. Az üzembe helyezés indíthat, ha nincsenek 10 eszközökre. A modulok telepítése sikeresen megtörtént a 10 ezeket az eszközöket. Összes eszköz 10, 10 sikeres válaszok, 0 meghibásodási válaszok és 0 függőben lévő válaszok formájában jelenik meg az IoT Edge-ügynök állapota. Most már hozzáadhat öt további eszközök tags.environment = 'prod'. A szolgáltatás észleli a változást, és az IoT Edge-ügynök állapota 15 összes eszköz, 10 sikeres válaszok, 0 meghibásodási válaszok és 5 függőben lévő válaszok válik az öt új eszközökre való.
 

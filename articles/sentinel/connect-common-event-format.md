@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: c09e999779ddc384cf70d20c9368f9d93d695e2a
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: b1065c583bb7f10f2a584f77b182e4e53084073b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243533"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440200"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>A Common Event formattal külső megoldás csatlakoztatása
 
@@ -48,13 +48,13 @@ Az Azure Sentinel- és a CEF-berendezés közötti kapcsolatot három lépésben
 
 ## <a name="step-1-connect-to-your-cef-appliance-via-dedicated-azure-vm"></a>1. lépés: A CEF-berendezés dedikált Azure-beli Virtuálisgép-n keresztül kapcsolódni
 
-Dedikált Linuxos gépen (VM vagy helyszíni) a készüléket és a Sentinel-Azure közötti kommunikáció támogatásához az ügynökök telepítéséhez van szükség. Az ügynök automatikusan vagy manuálisan telepítheti. Automatikus központi telepítési Resource Manager-sablonok alapján, és csak akkor, ha a dedikált Linux-gép egy új virtuális Gépet hoz létre az Azure-ban nem használható.
+Üzembe kell helyeznie egy dedikált gépen Linux ügynök (virtuális gép vagy a helyszínen) a készüléket és a Sentinel-Azure közötti kommunikáció támogatásához. Az ügynök automatikusan vagy manuálisan telepítheti. Automatikus központi telepítési Resource Manager-sablonok alapján, és csak akkor, ha a dedikált Linux-gép egy új virtuális Gépet hoz létre az Azure-ban nem használható.
 
  ![Az Azure-ban CEF](./media/connect-cef/cef-syslog-azure.png)
 
 Azt is megteheti telepítheti az ügynököt manuálisan a meglévő Azure virtuális gép, egy virtuális gépen egy másik felhőben vagy a helyszíni gépen. 
 
- ![Helyszíni CEF](./media/connect-cef/cef-syslog-onprem.png)
+ ![A helyszíni CEF](./media/connect-cef/cef-syslog-onprem.png)
 
 ### <a name="deploy-the-agent-in-azure"></a>Telepítse az ügynököt az Azure-ban
 
@@ -91,7 +91,7 @@ Azt is megteheti telepítheti az ügynököt manuálisan a meglévő Azure virtu
       2. Indítsa újra a Syslog-ügynök a következő paranccsal: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
       1. Győződjön meg arról, hogy nincsenek hibák az ügynöknaplóban Ez a parancs futtatásával: `tail /var/opt/microsoft/omsagent/log/omsagent.log`
 
-### <a name="deploy-the-agent-on-an-on-prem-linux-server"></a>Egy helyszíni Linux-kiszolgálón az ügynök telepítése
+### <a name="deploy-the-agent-on-an-on-premises-linux-server"></a>A helyi Linux-kiszolgálón az ügynök telepítése
 
 Ha nem használja az Azure, ügynököt manuálisan telepíti az Azure-Sentinel futtatása egy dedikált Linux-kiszolgálón.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/30/2017
 ms.author: mbullwin
-ms.openlocfilehash: 4115ec5add9ac523852b4c60c4f9d750bc430a37
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 79adfbfde25903bfe92c94507071c9d0fe303ef1
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121447"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448390"
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>Az Application Insights a HockeyApp-adatok feltárása
 
@@ -56,7 +56,7 @@ Ennyi az egész! Ettől kezdve a HockeyApp-kialakítva alkalmazásban gyűjtött
 Röviden vizsgáljuk meg ezeket a funkciókat elérhető.
 
 ## <a name="analytics"></a>Elemzés
-Analytics az alkalmi lekérdezéseket, diagnosztizálása és a telemetria elemzését, és gyorsan felderítése kiváltó okokért és minták lehetővé teszi az adatok hatékony eszköz.
+Analytics az ad hoc lekérdezését az adatokról, diagnosztizálása és a telemetria elemzését, és gyorsan felderítése kiváltó okokért és minták lehetővé teszi a hatékony eszközzel.
 
 ![Elemzés](./media/hockeyapp-bridge-app/05.png)
 

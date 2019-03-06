@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: fbb7ae2e741ab6f2c5045f412e18cd9ce1d5b812
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: d9d2b58ff249e765620e2fbae5c9677e9412f1ea
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56870924"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432056"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Teljesítménnyel kapcsolatos tippek az Azure Cosmos DB- és .NET
 
@@ -38,7 +38,7 @@ Az Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, teljesítmény �
 
    * Közvetlen mód
 
-     Közvetlen mód támogatja a TCP- és HTTPS protokollok keresztüli kapcsolat. Jelenleg a .NET Standard 2.0 direct támogatott. Közvetlen mód használatakor kétféle protokoll érhető el:
+     Közvetlen mód támogatja a TCP- és HTTPS protokollok keresztüli kapcsolat. A legújabb .net SDK-t használ, ha közvetlen kapcsolódás módban támogatott a .NET Standard 2.0 és a .net-keretrendszer. Közvetlen mód használatakor kétféle protokoll érhető el:
 
     * TCP
     * HTTPS

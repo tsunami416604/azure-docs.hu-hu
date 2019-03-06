@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, srbozovi, bonova
 manager: craigg
 ms.date: 02/18/2019
-ms.openlocfilehash: 640182b50492ed21cd604423fe1cef7301095941
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
+ms.openlocfilehash: 66ac3cf786abeebc2579a937d8670d639c1af270
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408799"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57446996"
 ---
 # <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>Gyors útmutató: Azure-beli virtuális gép csatlakozni egy Azure SQL Database felügyelt példányába konfigurálása
 
@@ -84,7 +84,7 @@ Az ügyfél virtuális gép létrehozása az összes szükséges eszközökkel l
    |**Jelszó**|Bármely érvényes jelszó|A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).<br>Használja ezt a jelszót, tetszőleges időpontban [csatlakozzon a virtuális Géphez](#connect-to-virtual-machine).|
    | **Virtuális gép mérete** | Bármely érvényes mérete | Ez a sablon az alapértelmezett **Standard_B2s** elegendő ehhez a gyors útmutatóhoz. |
    | **Hely**|[resourceGroup () .location].| Ez az érték nem módosítható. |
-   | **Virtuális hálózat neve**|A virtuális netword, amelyben létrehozta a felügyelt példányhoz.|
+   | **Virtuális hálózat neve**|A virtuális hálózat, amelyben létrehozta a felügyelt példányhoz.|
    | **Alhálózat neve**|Az alhálózatot, amelyet az előző eljárásban létrehozott neve| Ne válassza ki az alhálózatot, amelyben létrehozta a felügyelt példányhoz.|
    | **összetevők helye** | [.properties.templateLink.uri a központi telepítés ()] | Ez az érték nem módosítható. |
    | **összetevők hely Sas-jogkivonat** | Hagyja üresen | Ez az érték nem módosítható. |

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: azfuncdf
-ms.openlocfilehash: e81e842e059e09f24627138ba9fbf6510a603efe
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: d225ece7b8a8841d17f20bc27de3aa640fa7d37b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353294"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57436425"
 ---
 # <a name="timers-in-durable-functions-azure-functions"></a>Időzítők a tartós függvények (az Azure Functions)
 
@@ -132,7 +132,7 @@ module.exports = df.orchestrator(function*(context) {
 ```
 
 > [!WARNING]
-> Használja a `CancellationTokenSource` egy tartós időzítő (C#) vagy a hívás megszakításához `cancel()` a által visszaadott `TimerTask` (JavaScript), ha a kód nem várakozik, amíg az befejeződik. Tartós feladat keretében nem módosítja egy vezénylési állapot "kész" mindaddig, amíg az összes függőben lévő feladatokról befejeződött vagy megszakítva.
+> Használja a `CancellationTokenSource` egy tartós időzítő (C#) vagy a hívás megszakításához `cancel()` a által visszaadott `TimerTask` (JavaScript), ha a kód nem várakozik, amíg az befejeződik. Tartós feladat keretében nem módosítja egy vezénylési állapot "kész" mindaddig, amíg az összes függőben lévő feladatokról befejeződött vagy meg lett szakítva.
 
 Ez a mechanizmus ténylegesen nem szünteti meg a folyamatban lévő tevékenység függvény-végrehajtási. Inkább egyszerűen lehetővé teszi a az orchestrator-függvény, amely figyelmen kívül hagyja az eredményt, és lépjen tovább. A függvényalkalmazást a Használatalapú csomag használja, ha meg fog díjat idő-és a elhagyott tevékenység függvény által felhasznált memória. Alapértelmezés szerint a függvények a Használatalapú csomagban fut, a időkorlát van meghatározva öt perc alatt. Ha meghaladja a korlátot, az Azure Functions házigazdája újrahasznosított állítsa le az összes végrehajtás, és a egy elszabadult számlázási helyzet elkerülése. A [függvény időtúllépési érték konfigurálható](../functions-host-json.md#functiontimeout).
 

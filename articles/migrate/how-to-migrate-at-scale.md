@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 02/07/2019
 ms.author: snehaa
-ms.openlocfilehash: c0fc4fa0bdd58b8ecdf4f26051d60324118c4b21
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 74dabc49dd3d0e38f43dc758204c35ea1c0efd99
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55896690"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438482"
 ---
 # <a name="scale-migration-of-vms-using-azure-site-recovery"></a>Méretezési csoport áttelepítése a virtuális gépek Azure Site Recovery használatával
 
@@ -30,8 +30,8 @@ Mielőtt elkezdené, tegye a következőket kell:
 - Győződjön meg arról, hogy a Site Recovery-tároló létrehozása az Azure-előfizetésben
 - Ellenőrizze, hogy a konfigurációs kiszolgáló és a Folyamatkiszolgáló telepítve van a forrás környezetében, és a tároló találják meg a környezet
 - Győződjön meg arról, hogy egy replikációs házirend létrehozása és a konfigurációs kiszolgálóhoz társított
-- Győződjön meg arról, hogy hozzáadta a virtuális gép rendszergazdai fiók a konfigurációs kiszolgáló (azaz a rendszer a helyszíni virtuális gépek replikálása)
-- Győződjön meg arról, hogy jönnek létre a cél vakpróbát az Azure-ban
+- Győződjön meg arról, hogy hozzáadta a virtuális gép rendszergazdai fiók a konfigurációs kiszolgáló (azaz a rendszer replikálja a helyszíni virtuális gépek)
+- Győződjön meg arról, hogy jönnek létre a cél-összetevők az Azure-ban
     - Céloldali erőforráscsoport
     - Storage-fiók (és az erőforráscsoport)
     - A feladatátvételi virtuális hálózat (és az erőforráscsoport)

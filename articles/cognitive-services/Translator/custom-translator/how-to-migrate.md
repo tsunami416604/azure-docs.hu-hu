@@ -9,12 +9,12 @@ ms.subservice: custom-translator
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: 6cab76a1169469853a4eb82a934bdc665e07ef8d
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 3442e322ac75f7757d7a59f6035fc35d77e70702
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217512"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431580"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Egyéni a fordítót Hub munkaterületet és projektek áttelepítése
 
@@ -31,7 +31,7 @@ Sikeres képzéshez egyéni fordító szükséges legalább 10 000 egyedi kinyer
 
 ## <a name="enable-account-migration"></a>Fiókáttelepítés engedélyezése
 
-Annak érdekében, hogy az áttelepítési eszköz használata, szüksége van a Hub fiókáttelepítés engedélyezve van. Ehhez az szükséges, e-mailben [ custommt@microsoft.com ](mailto:custommt@microsoft.com) az összes Live ID fiókok listáját, amelyet engedélyezve van. Ezeket a fiókokat kell jelentkeznie az e-mail-címek.
+Annak érdekében, hogy az áttelepítési eszköz használata, szüksége van a Hub fiókáttelepítés engedélyezve van. Ehhez az szükséges, e-mailben [ custommt@microsoft.com ](mailto:custommt@microsoft.com) az összes live ID azonosító fiókok listáját, amelyet engedélyezve van. Ezeket a fiókokat kell jelentkeznie az e-mail-címek.
 
 ## <a name="find-custom-translator-workspace-id"></a>Keresse meg az egyéni a fordítót a munkaterület-azonosító
 
@@ -141,6 +141,10 @@ Ez a tábla között a Microsoft Translator Hub és az egyéni a fordítót a sz
 | NMT testreszabása | Nem    | Igen |
 | Új egyesített Speech services testreszabása | Nem    | Igen |
 | Nincs nyomkövetés | Igen | Igen |
+
+## <a name="new-languages"></a>Új nyelvek
+
+Ha egy közösségi vagy a szervezet új nyelvi rendszert hoz létre a Microsoft Translator dolgozik, bizalommal az [ custommt@microsoft.com ](mailto:custommt@microsoft.com) további információt.
 
 ## <a name="next-steps"></a>További lépések
 

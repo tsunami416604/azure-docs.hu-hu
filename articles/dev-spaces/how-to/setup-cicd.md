@@ -11,12 +11,12 @@ ms.topic: conceptual
 manager: yuvalm
 description: Gyors Kubernetes-fejlesztés tárolókkal és mikroszolgáltatásokkal az Azure-ban
 keywords: Docker, Kubernetes, Azure, az AKS, az Azure Container Service, tárolók
-ms.openlocfilehash: b614a517874363be95ff17d802995a927a15af2f
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: ba5032e5d52d1fd70d0bfd4f1d677e17df7deffd
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194625"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437445"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>CI/CD használata az Azure fejlesztői, szóközök
 
@@ -46,6 +46,17 @@ azds space select -n dev
 
 Amikor a rendszer kéri, válassza ki a szülő fejlesztési szóközzel, válassza ki a  _\<nincs\>_.
 
+A fejlesztési tárhely létrehozása után meg kell határoznia az állomásnév-utótagja. Használja a `azds show-context` parancsot az Azure fejlesztési tárolóhelyek Bejövőforgalom-vezérlőt az állomásnév-utótagja megjelenítéséhez.
+
+```cmd
+$ azds show-context
+Name   ResourceGroup    DevSpace  HostSuffix
+-----  ---------------  --------  ----------------------
+MyAKS  MyResourceGroup  dev       fedcba098.eus.azds.io
+```
+
+A fenti példában az állomásnév-utótagja a _fedcba098.eus.azds.io_. Ezt az értéket később a kiadási definíció létrehozása során használatos.
+
 A _fejlesztési_ terület mindig tartalmazza a tárházban, a baseline legfrissebb állapotát, így a fejlesztők _gyermek tárolóhelyek_ a _fejlesztési_ elkülönített módosítások teszteléséhez a nagyobb alkalmazás összefüggésében. A fogalom a fejlesztői, szóközök oktatóanyagok tárgyalja részletesen.
 
 ## <a name="creating-the-build-definition"></a>A build definíció létrehozása
@@ -65,17 +76,17 @@ Az a _azds_updates_ bővítettük egy egyszerű ág [Azure folyamat YAML](https:
 A nyelvet, úgy döntött, attól függően a folyamat YAML volt bejelentkezett egy hasonló elérési úton: `samples/dotnetcore/getting-started/azure-pipelines.dotnetcore.yml`
 
 Folyamat létrehozása ebben a fájlban:
-1. A DevOps-projekt fő lapján, a folyamatok navigáljon > buildek
-1. Válassza a hozzon létre egy **új** folyamat létrehozása
-1. Válassza ki **GitHub** forrásaként, engedélyezze a GitHub-fiókját, ha szükséges, és válassza a _azds_updates_ ág a fejlesztési-tárolóhelyek PéldaAlkalmazás tárház az elágaztatott verziójáról
-1. Válassza ki **kódként konfigurációs**, vagy **YAML**, a sablont
-1. Mostantól lehetősége lesz a konfigurációs lapon a buildelési folyamat. Ahogy korábban említettük a nyelvspecifikus elérési útját adja meg a **YAML-fájl elérési útja**. Például: `samples/dotnetcore/getting-started/azure-pipelines.dotnetcore.yml`
-1. Nyissa meg a változók lapot
+1. A DevOps-projekt fő lapján, a folyamatok navigáljon > épít.
+1. Válassza a hozzon létre egy **új** folyamatát.
+1. Válassza ki **GitHub** forrásaként, engedélyezze a GitHub-fiókját, ha szükséges, és válassza a _azds_updates_ ág a fejlesztési-tárolóhelyek PéldaAlkalmazás tárház az elágaztatott verziójáról.
+1. Válassza ki **kódként konfigurációs**, vagy **YAML**, a sablont.
+1. Mostantól lehetősége lesz a konfigurációs lapon a buildelési folyamat. A nyelvspecifikus elérési utat a fent említett a **YAML-fájl elérési útja** használatával a **...**  gombra. Például: `samples/dotnetcore/getting-started/azure-pipelines.dotnet.yml`.
+1. Nyissa meg a **változók** fülre.
 1. Adja hozzá manuálisan _dockerId_ változóként, vagyis felhasználóneve a [Azure Container Registry-rendszergazdai fiók](../../container-registry/container-registry-authentication.md#admin-account). (Az a cikk Előfeltételek között ismertetett)
 1. Adja hozzá manuálisan _dockerPassword_ változóként, azaz a jelszót a [Azure Container Registry-rendszergazdai fiók](../../container-registry/container-registry-authentication.md#admin-account). Ne felejtse megadni _dockerPassword_ , (a lakat ikon kiválasztásával) titkos kulcs biztonsági okokból.
-1. Válassza ki **várólistára & mentése**
+1. Válassza ki **várólistára & mentése**.
 
-Most már a CI-megoldás, amely automatikusan hozhat létre *mywebapi* és *webfrontend* a leküldött bármilyen frissítést a _azds_updates_ a GitHub-elágazásba ága. Ellenőrizheti a Docker-rendszerképek leküldött ellenőrizheti, hogy az Azure Portalon, az Azure Container Registry kiválasztásával, és keresse a _Tárházak_ lapon:
+Most már a CI-megoldás, amely automatikusan hozhat létre *mywebapi* és *webfrontend* a leküldött bármilyen frissítést a _azds_updates_ a GitHub-elágazásba ága. Ellenőrizheti a Docker-rendszerképek leküldött ellenőrizheti, hogy az Azure Portalon, az Azure Container Registry kiválasztásával, és keresse a **Tárházak** fülre. A lemezképeket hozhat létre és jelennek meg a tárolóregisztrációs adatbázis több percig is eltarthat.
 
 ![Az Azure Container Registry-adattárak](../media/common/ci-cd-images-verify.png)
 
@@ -83,31 +94,44 @@ Most már a CI-megoldás, amely automatikusan hozhat létre *mywebapi* és *webf
 
 1. A DevOps-projekt fő lapján, a folyamatok navigáljon > kiadások
 1. Ha egy vadonatúj DevOps-projekt, amely még nem tartalmaz a kiadási definíció dolgozik, szüksége lesz, először hozzon létre egy üres kiadási definíciót, mielőtt továbblépne. Az importálási funkcióval nem jeleníti meg a felhasználói felületen, amíg nincs egy meglévő kiadási definíciót.
-1. A bal oldalon kattintson a **+ új** gombra, majd kattintson a **folyamat importálása**
-1. Válassza ki a .json fájlt: `samples/release.json`
-1. Kattintson az OK gombra. Figyelje meg a folyamat ablaktábla be van töltve, és a kiadási definíció szerkesztése oldal. Figyelje meg ott is néhány piros figyelmeztető ikon jelzi a fürtre jellemző részletek, amelyek továbbra is be kell állítani.
+1. A bal oldalon kattintson a **+ új** gombra, majd kattintson a **folyamat importálása**.
+1. Kattintson a **Tallózás** válassza `samples/release.json` a projektből.
+1. Kattintson az **OK** gombra. Figyelje meg a folyamat ablaktábla be van töltve, és a kiadási definíció szerkesztése oldal. Figyelje meg ott is néhány piros figyelmeztető ikon jelzi a fürtre jellemző részletek, amelyek továbbra is be kell állítani.
 1. A folyamat panel bal oldalán kattintson a **egy összetevő hozzáadása** buborékra.
-1. Az a **forrás** legördülő menüben válassza ki a létrehozási folyamatot a jelen dokumentum korábbi kissé létrehoztunk.
-1. Az a **alapértelmezett verzió**, javasoljuk, hogy kiválasztása **legújabb a buildelési folyamat alapértelmezett ágból**. Nem kell minden olyan címkék adhatók meg.
-1. Állítsa be a **forrás alias** való `drop`. Az előre meghatározott kiadási tevékenységek használata **forrás alias** úgy kell beállítani.
+1. Az a **forrás** legördülő menüben válassza a buildelési folyamat korábban létrehozott.
+1. Az a **alapértelmezett verzió**, válassza a **legújabb ágból a buildelési folyamat alapértelmezett címkékkel**.
+1. Hagyja **címkék** üres.
+1. Állítsa be a **forrás alias** való `drop`. A **forrás alias** érték előre meghatározott kiadási tevékenységek által használt, úgy kell beállítani.
 1. Kattintson a **Hozzáadás** parancsra.
 1. Most kattintson az újonnan létrehozott villámgyors bolt ikonjára `drop` összetevő forrás, az alább látható módon:
 
     ![Kiadási összetevő folyamatos üzembe helyezés beállítása](../media/common/release-artifact-cd-setup.png)
-1. Engedélyezze a **a folyamatos készregyártás eseményindítója**
-1. Most nyissa meg a feladatok ablaktáblán. A _fejlesztési_ szakaszban van kiválasztva, és az alábbi például három piros legördülő vezérlőt a rendszer visszaadja:
-
-    ![Kiadási definíció beállítása](../media/common/release-setup-tasks.png)
-1. Adja meg az Azure-előfizetés, erőforráscsoport és használata az Azure fejlesztési tárolóhelyek fürtöt.
-1. Ezen a ponton; piros megjelenítő csak egy több szakaszt kell lennie a **ügynöki feladat** szakaszban. Nyissa meg a hiba, és adja meg **üzemeltetett Ubuntu 1604** ebben a szakaszban az ügynök-címkészlettel.
-1. Vigye a kurzort a képernyő felső részén válassza a feladatok választó _prod_.
-1. Adja meg az Azure-előfizetés, erőforráscsoport és használata az Azure fejlesztési tárolóhelyek fürtöt.
-1. Alatt **ügynöki feladat**, konfigurálja **üzemeltetett Ubuntu 1604** az ügynök-címkészlettel.
+1. Engedélyezze a **a folyamatos készregyártás eseményindítója**.
+1. A kurzort a **feladatok** melletti lapon **folyamat** , és kattintson a _fejlesztési_ szerkesztése a _fejlesztési_ feladatok ütemezése.
+1. Győződjön meg arról **Azure Resource Manager** ki van választva **kapcsolattípus.** és a három legördülő vezérlőt, vörös színnel látja: ![Kiadási definíció beállítása](../media/common/release-setup-tasks.png)
+1. Válassza ki az Azure-előfizetés használata az Azure fejlesztési szóközöket. Emellett szükség lehet kattintson **engedélyezés**.
+1. Válassza ki az erőforráscsoportot és a fürt az Azure fejlesztési tárolóhelyek használata esetén.
+1. Kattintson a **ügynöki feladat**.
+1. Válassza ki **üzemeltetett Ubuntu 1604** alatt **ügynökkészlet**.
+1. A kurzort a **feladatok** választó a lap tetején kattintson _prod_ szerkesztése a _prod_ feladatok ütemezése.
+1. Győződjön meg arról **Azure Resource Manager** ki van választva **kapcsolattípus.** és válassza ki az Azure-előfizetés, erőforráscsoport és használata az Azure fejlesztési tárolóhelyek fürtöt.
+1. Kattintson a **ügynöki feladat**.
+1. Válassza ki **üzemeltetett Ubuntu 1604** alatt **ügynökkészlet**.
+1. Kattintson a **változók** fülre, és frissítse a kiadás a változókat.
+1. Frissítse az értéket a **DevSpacesHostSuffix** a **UPDATE_ME** , az állomásnév-utótagja. Az állomásnév-utótagja jelenik meg, ha futtatta a `azds show-context` korábban parancsot.
 1. Kattintson a **mentése** a jobb felső sarokban lévő, és **OK**.
 1. Kattintson a **+ kiadás** (mellett a Mentés gombot), és **hozzon létre egy kiadási**.
-1. Ellenőrizze az összeállítási folyamatból legújabb buildjének az összetevők szakaszban kiválasztott, és kattintson a **létrehozás**.
+1. A **összetevők**, ellenőrizze az összeállítási folyamatból legújabb buildjének van kiválasztva.
+1. Kattintson a **Create** (Létrehozás) gombra.
 
-Az automatizált kibocsátási folyamatok most elkezdi, üzembe helyezése a *mywebapi* és *webfrontend* diagramok a kubernetes-fürt a _fejlesztési_ legfelső szintű helyet. Megfigyelheti, hogy a kiadás az Azure DevOps-webportál előrehaladását.
+Az automatizált kibocsátási folyamatok most elkezdi, üzembe helyezése a *mywebapi* és *webfrontend* diagramok a kubernetes-fürt a _fejlesztési_ legfelső szintű helyet. A kiadás az Azure DevOps-webportál előrehaladásának figyelése is lehetséges:
+
+1. Keresse meg a **kiadásokban** szakaszba **folyamatok**.
+1. Kattintson a kiadási folyamathoz a mintaalkalmazáshoz.
+1. Kattintson a legfrissebb kiadás neve.
+1. A kurzort **fejlesztési** mező alatt **szakaszok** kattintson **naplók**.
+
+A kiadás történik, ha minden feladat befejeződött.
 
 > [!TIP]
 > Például ha a kiadás egy hibaüzenettel meghiúsul *frissítése sikertelen volt: a feltétel várakozás túllépte az időkorlátot*, próbálja meg a fürt a podok vizsgálatával [a Kubernetes-irányítópult használatával](../../aks/kubernetes-dashboard.md). Ha megjelenik a podok nem működik a kezdéshez hibaüzenetek, például *nem sikerült lekérni a lemezkép "azdsexample.azurecr.io/mywebapi:122": RPC-hiba: kód = ismeretlen desc démon válaszát hiba =: Első https://azdsexample.azurecr.io/v2/mywebapi/manifests/122: jogosulatlan: hitelesítés szükséges*, mert a fürt nem engedélyezett az Azure Container Registry lekéréshez lehet. Győződjön meg arról, hogy végrehajtotta a [engedélyezik az AKS-fürt az Azure Container Registry lekéréshez](../../container-registry/container-registry-auth-aks.md) előfeltétel.
@@ -115,31 +139,37 @@ Az automatizált kibocsátási folyamatok most elkezdi, üzembe helyezése a *my
 Most már rendelkezik egy teljesen automatizált CI/CD-folyamat számára a fejlesztői, szóközök mintaalkalmazások, a GitHub-elágazásba. Minden alkalommal, amikor véglegesítése és leküldése kód, a létrehozási folyamat elkészíti és leküldése a *mywebapi* és *webfrontend* rendszerképeket az egyéni ACR-példányba. A kiadási folyamathoz telepíteni fogja a Helm-diagram minden alkalmazáshoz, majd a _fejlesztési_ terület fejlesztési tárolóhelyek engedélyezve van a fürtön.
 
 ## <a name="accessing-your-dev-services"></a>Hozzáférés a _fejlesztési_ szolgáltatások
-Az üzembe helyezést követően a _fejlesztési_ verziója *webfrontend* nyilvános URL-címmel elérhetőek legyenek: `http://dev.webfrontend.<hash>.<region>.aksapp.io`.
+Az üzembe helyezést követően a _fejlesztési_ verziója *webfrontend* nyilvános URL-címmel elérhetőek legyenek: `http://dev.webfrontend.fedcba098.eus.azds.io`. Annak az URL-cím futtatásával a `azds list-uri` parancsot: 
 
-Az URL-cím használatával is megtalálhatja a *kubectl* CLI:
 ```cmd
-kubectl get ingress -n dev webfrontend -o=jsonpath="{.spec.rules[0].host}"
+$ azds list-uris
+
+Uri                                           Status
+--------------------------------------------  ---------
+http://dev.webfrontend.fedcba098.eus.azds.io  Available
 ```
 
 ## <a name="deploying-to-production"></a>Az éles környezetben való
-Kattintson a **szerkesztése** a kiadási definíció, és figyelje meg, nincs egy _prod_ szakaszban definiált:
-
-![Termelési fázisban](../media/common/prod-env.png)
 
 A manuálisan főkiszolgálóvá előléptetni egy adott kiadását _prod_ a CI/CD-rendszer ebben az oktatóanyagban létrehozott használatával:
-1. Nyisson meg egy korábban sikeresen végrehajtott kiadásban a DevOps-portál
-1. Mutasson az "éles" szakasz
-1. Válassza ki a központi telepítése
+1. Keresse meg a **kiadásokban** szakaszba **folyamatok**.
+1. Kattintson a kiadási folyamathoz a mintaalkalmazáshoz.
+1. Kattintson a legfrissebb kiadás neve.
+1. A kurzort a **prod** mező alatt **szakaszok** , és kattintson a **üzembe helyezés**.
+    ![Éles környezetbe való előléptetése](../media/common/prod-promote.png)
+1. A kurzort **prod** mezőbe újra a **szakaszok** kattintson **naplók**.
 
-![Éles környezetbe való előléptetése](../media/common/prod-promote.png)
+A kiadás történik, ha minden feladat befejeződött.
 
-CI/CD-folyamat példánkban teszi változók módosításához használja a DNS-előtagot a *webfrontend* attól függően, hogy mely környezetben lesz üzembe helyezve. Így a 'prod' szolgáltatások eléréséhez használhatja egy URL-címet, például: `http://prod.webfrontend.<hash>.<region>.aksapp.io`.
+A _prod_ a CI/CD-folyamat szakaszában terheléselosztót használ a fejlesztési tárolóhelyek Bejövőforgalom-vezérlőjéhez helyett segítségével hozzáférést biztosíthat _prod_ szolgáltatások. Szolgáltatások telepítése a _prod_ szakaszában érhetők el az IP-címek, DNS-nevek helyett. Éles környezetben dönthet úgy, hogy hozzon létre saját Bejövőforgalom-vezérlőt, a saját DNS-konfiguráció alapján a szolgáltatásokat.
 
-Az üzembe helyezést követően annak az URL-cím használatával a *kubectl* CLI: <!-- TODO update below to use list-uris when the product has been updated to list non-azds ingresses #769297 -->
+Az IP-címét a webfrontend szolgáltatás határozza meg, kattintson a a **webfrontend nyilvános IP-cím nyomtatása** bontsa ki a kimenet a lépést. Használja a IP-cím jelenik meg a napló való hozzáférést a **webfrontend** alkalmazás.
 
 ```cmd
-kubectl get ingress -n prod webfrontend -o=jsonpath="{.spec.rules[0].host}"
+...
+2019-02-25T22:53:02.3237187Z webfrontend can be accessed at http://52.170.231.44
+2019-02-25T22:53:02.3320366Z ##[section]Finishing: Print webfrontend public IP
+...
 ```
 
 ## <a name="dev-spaces-instrumentation-in-production"></a>A fejlesztői, szóközök instrumentation éles környezetben

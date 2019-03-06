@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: 4e56d22dde5fca50d17c055be93db5b91deeb287
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 0a03bfe61da6a1de073401fca9c61f3212b9d0bb
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819173"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440097"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Az Apache Sqoop használata a HDInsight Hadoop-keretrendszerrel
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -82,9 +82,9 @@ Ha a fürt és az SQL-adatbázis létrehozásához, tekintse meg az Azure PowerS
     - **Fürt bejelentkezési neve és jelszava**: Az alapértelmezett bejelentkezési név az admin.
     - **SSH-felhasználónév és -jelszó**.
     - **Az SQL server bejelentkezési nevét és jelszavát adatbázis**.
-    - **_artifacts hely**: Használja az alapértelmezett értéket, hacsak nem szeretné használni a saját backpac fájlt egy másik helyen található.
+    - **_artifacts hely**: Használja az alapértelmezett értéket, hacsak nem szeretné használni a saját bacpac-fájlt egy másik helyen található.
     - **_artifacts hely Sas-jogkivonat**: Hagyja üresen.
-    - **Bacpac-fájl neve**: Használja az alapértelmezett értéket, hacsak nem szeretné használni a saját backpac fájlt.
+    - **Bacpac-fájl neve**: Használja az alapértelmezett értéket, hacsak nem szeretné használni a saját bacpac-fájlba.
      
         A következő értékek közül, szoftveresen kötött a változók szakaszban:
         

@@ -1,6 +1,6 @@
 ---
 title: Az Azure Windows virtuális gép mérete – előző generációs szoftvereknél jobban |} A Microsoft Docs
-description: Az előző generációs szoftvereknél jobban elérhető méretek az Azure-beli Windows virtuális gépek listája. Tartalmazza a vcpu-k, az adatlemezeket és a hálózati adapterek, valamint tárolási átviteli sebesség és a hálózati sávszélesség-sorozat méretei száma.
+description: Az előző generációs szoftvereknél jobban elérhető méretek az Azure-beli Windows virtuális gépek listája.
 services: virtual-machines-windows
 documentationcenter: ''
 author: jonbeck7
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/06/2018
 ms.author: jonbeck
-ms.openlocfilehash: b4b4c3fb1b0045edf59f1c29769659d7000278d4
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: c39a744a5ef57efa6486460ab84998d6600e7bc5
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673375"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405598"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Előző generációs szoftvereknél jobban virtuálisgép-méretek
 

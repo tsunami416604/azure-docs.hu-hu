@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: b76162606c4d21cb6979d410fbaaaafc539cf403
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: b53e052182e3d775bdd3309bfd1e986c4f5896ed
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56668650"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432260"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>AD FS egyéni szabályzatok használatával az Azure Active Directory B2C egy SAML-identitásszolgáltató hozzáadása
 
@@ -167,7 +167,7 @@ Nyisson meg egy böngészőt, és keresse meg az URL-címet. Győződjön meg r�
 10. A **Jogcímszabály-sablon**válassza **LDAP attribútumok küldése jogcímekként**.
 11. Adjon meg egy **Jogcímszabály neve**. Az a **attribútumtár**válassza **válassza ki az Active Directory**, adja hozzá a következő jogcímeket, majd kattintson a **Befejezés** és **OK**.
 
-    | LDAP attrubute | A kimenő jogcím típusa |
+    | LDAP attribútum | A kimenő jogcím típusa |
     | -------------- | ------------------- |
     | User-Principal-Name | userPrincipalName |
     | vezetéknév; | family_name |

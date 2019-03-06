@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2018
+ms.date: 03/05/2019
 ms.author: tomfitz
-ms.openlocfilehash: d40fcacc4612761b2c43b0dd3658042c38a0df75
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: bcc529b02505359e6e4e320d4991a082797c5261
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309519"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440472"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Ajánlott eljárások az Azure Resource Manager sablon
 
@@ -26,7 +26,25 @@ Annak a szabályozására, az Azure-előfizetésekre vonatkozó javaslatokról, 
 
 Javaslatok az összes Azure-felhő környezetben működő sablonok létrehozásáról, lásd: [felhőalapú konzisztencia fejlesztése az Azure Resource Manager-sablonokkal](templates-cloud-consistency.md).
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+## <a name="template-limits"></a>Sablon korlátok
+
+A sablon 1 MB-ra, és minden egyes alkalmazásparaméter-fájlt a 64 KB-os mérete korlátozza. Az 1 MB-os korlát vonatkozik a sablon a végállapot után ki lett terjesztve az iteratív erőforrás-definíciók és a változók és paraméterek értékeit. 
+
+Korlátot is jelent a:
+
+* 256 paraméterek
+* 256 változók
+* 800-erőforrásokat (például a példányszám)
+* 64 kimeneti értékeket
+* egy kifejezés 24,576 karakter
+
+Néhány sablon korlát beágyazott sablonok segítségével is lehet. További információkért lásd: [kapcsolt sablonok használata az Azure-erőforrások üzembe helyezésekor](resource-group-linked-templates.md). A paraméterek, a változók és a kimenetek számának csökkentése, több értéket is egyesítendő objektum. További információkért lásd: [paraméterekként objektumok](resource-manager-objects-as-parameters.md).
+
+## <a name="resource-group"></a>Erőforráscsoport
+
+Erőforrásokat egy erőforráscsoportba történő telepítésekor az az erőforráscsoport erőforrásokra vonatkozó metaadatokat tárol. A metaadatok tárolódnak az erőforráscsoport helyét.
+
+Ha az erőforráscsoport átmenetileg nem érhető el, mert a metaadatok nem érhető el az erőforráscsoportban lévő erőforrásokat nem frissíthető. Más régiókban található erőforrások továbbra is elvárt módon működnek, de azokat nem lehet frissíteni. A kockázat minimalizálása érdekében keresse meg az erőforráscsoport és erőforrások ugyanabban a régióban.
 
 ## <a name="parameters"></a>Paraméterek
 Ebben a szakaszban található információk hasznos lehet, ha [paraméterek](resource-group-authoring-templates.md#parameters).
@@ -155,7 +173,7 @@ Amikor eldönti, milyen [függőségek](resource-group-define-dependencies.md) b
 
 * A gyermek-erőforrás beállítása a szülő erőforrástól függ-e.
 
-* Az erőforrások a [feltétel elem](resource-manager-templates-resources.md#condition) hamis értékre van állítva a függőségi sorrend automatikusan törlődnek. Állítsa be a függőségeket, ha az erőforrás minden esetben üzembe van helyezve.
+* Az erőforrások a [feltétel elem](resource-group-authoring-templates.md#condition) hamis értékre van állítva a függőségi sorrend automatikusan törlődnek. Állítsa be a függőségeket, ha az erőforrás minden esetben üzembe van helyezve.
 
 * Az eszközkorlátozásokkal függőségek cascade anélkül, hogy explicit módon állítja be őket. Például a virtuális gép virtuális hálózati adapter függ, és a virtuális hálózati adaptert egy virtuális hálózat és a nyilvános IP-címek függ. Ezért a virtuális gépet üzembe helyezett összes három erőforrást, de nincs explicit módon állítja be a virtuális gép összes három erőforrástól függ. Ez a megközelítés a függőségi sorrend tisztázza, és megkönnyíti a sablon később módosíthatja.
 
@@ -163,7 +181,7 @@ Amikor eldönti, milyen [függőségek](resource-group-define-dependencies.md) b
 
 ## <a name="resources"></a>További források
 
-A következő információ hasznos lehet a végzett munka során [erőforrások](resource-manager-templates-resources.md):
+A következő információ hasznos lehet a végzett munka során [erőforrások](resource-group-authoring-templates.md#resources):
 
 * Adjon meg más közreműködőkkel az erőforrás rendeltetésének megismerése érdekében **megjegyzések** az egyes erőforrások a sablonban:
    

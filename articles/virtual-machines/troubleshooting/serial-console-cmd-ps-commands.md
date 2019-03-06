@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 6eb0ce9098b5cc5f66035851c6837e9e46fcf2df
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 69aecf3d107000408f98f8ae53968355943c2881
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47414223"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440811"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows-parancsok - CMD és a PowerShell használatával
 
@@ -118,7 +118,7 @@ Ha korlátozott a Windows által választható módszerek alapértelmezés szeri
 ### <a name="disable-windows-firewall"></a>Windows tűzfal letiltása
 `netsh advfirewall set allprofiles state off`
 
-Hibaelhárításkor ideiglenesen zárja ki a Windows tűzfal is használhatja ezt a parancsot. Akkor lehet engedélyezése a következő újraindítás, vagy ha Ön enaable azt az alábbi paranccsal. Ne állítsa le a Windows tűzfalszolgáltatást (MPSSVC) vagy az Alap szűrőprogram (BFE) szolgáltatás, így zárja ki a Windows tűzfal. MPSSVC vagy BFE leállítása blokkolja az összes kapcsolat eredményez.
+Hibaelhárításkor ideiglenesen zárja ki a Windows tűzfal is használhatja ezt a parancsot. Csak engedélyezze a következő újraindítás, vagy ha engedélyezi azt az alábbi paranccsal. Ne állítsa le a Windows tűzfalszolgáltatást (MPSSVC) vagy az Alap szűrőprogram (BFE) szolgáltatás, így zárja ki a Windows tűzfal. MPSSVC vagy BFE leállítása blokkolja az összes kapcsolat eredményez.
 ### <a name="enable-windows-firewall"></a>Windows tűzfal engedélyezése
 `netsh advfirewall set allprofiles state on`
 ## <a name="manage-users-and-groups"></a>Felhasználók és csoportok kezelése
@@ -462,15 +462,15 @@ További információkért lásd: [Azure Instance Metadata szolgáltatás](https
 `$im.Compute.platformFaultDomain`
 ### <a name="platform-update-domain-instance-metadata"></a>Platformfrissítési tartomány (Instance Metadata)
 `$im.Compute.platformUpdateDomain`
-### <a name="ipv4-private-ip-address-instance-metadata"></a>IPv4 magánhálózati IP-címet (Instance Metadata)
+### <a name="ipv4-private-ip-address-instance-metadata"></a>IPv4 Private IP Address (Instance Metadata)
 `$im.network.interface.ipv4.ipAddress.privateIpAddress`
-### <a name="ipv4-public-ip-address-instance-metadata"></a>IPv4-nyilvános IP-cím (Instance Metadata)
+### <a name="ipv4-public-ip-address-instance-metadata"></a>IPv4 Public IP Address (Instance Metadata)
 `$im.network.interface.ipv4.ipAddress.publicIpAddress`
 ### <a name="ipv4-subnet-address--prefix-instance-metadata"></a>IPv4 alhálózati cím / előtag (példány-metaadat)
 `$im.network.interface.ipv4.subnet.address`
 
 `$im.network.interface.ipv4.subnet.prefix`
-### <a name="ipv6-ip-address-instance-metadata"></a>IPv6-alapú IP-cím (Instance Metadata)
+### <a name="ipv6-ip-address-instance-metadata"></a>IPv6 IP Address (Instance Metadata)
 `$im.network.interface.ipv6.ipAddress`
 ### <a name="mac-address-instance-metadata"></a>MAC-cím (Instance Metadata)
 `$im.network.interface.macAddress`

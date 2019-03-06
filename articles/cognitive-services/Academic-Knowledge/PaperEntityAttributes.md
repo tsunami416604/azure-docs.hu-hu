@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
-ms.openlocfilehash: 240541dd76221ee19c96b162da02ced90fb0ad90
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bd37665e962ada59149b54075d7f8acbea895c50
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873087"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437462"
 ---
 # <a name="paper-entity"></a>A tanulmány entitás
 
@@ -61,7 +61,7 @@ VSN     | Helyszín rövid neve – a napló vagy konferencián rövid neve
 V       | Kötet - napló kötet
 BV      | Napló neve
 BT      | 
-PB      | Napló Abreviations
+PB      | Napló rövidítések
 I       | Probléma - napló probléma
 FP      | FirstPage - tanulmány első oldalán
 LP      | LastPage - tanulmány utolsó oldalán
