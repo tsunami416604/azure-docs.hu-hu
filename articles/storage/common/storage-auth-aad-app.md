@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/21/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 4c39f47169071ceb9430f419a144e11f425d65b0
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 6d283840116a5e1f996602fd792456d3b8e8d9a0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240726"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456091"
 ---
 # <a name="authenticate-with-azure-active-directory-from-an-application-for-access-to-blobs-and-queues-preview"></a>Hozzáférés egy alkalmazás hitelesítése az Azure Active Directoryval, blobok és üzenetsorok (előzetes verzió)
 
@@ -39,11 +39,11 @@ Ha regisztrálja az alkalmazást, adja meg információkat az alkalmazásról, a
 
 Az Azure Storage-alkalmazás regisztrálásához kövesse a [egy alkalmazás hozzáadása](../../active-directory/develop/quickstart-v1-add-azure-ad-app.md) szakasz [alkalmazások integrálása az Azure Active Directory](../../active-directory/active-directory-integrating-applications.md). Natív alkalmazás regisztrálhatja alkalmazását, ha bármely érvényes URI-azonosítóját is megadhat a **átirányítási URI-t**. Az érték nem kell valódi végpontnak lennie.
 
-![A storage-alkalmazás regisztrálása az Azure ad-vel bemutató képernyőkép](./media/storage-auth-aad-app/app-registration.png)
+![Képernyőfelvétel: a storage-alkalmazás regisztrálása az Azure ad-vel](./media/storage-auth-aad-app/app-registration.png)
 
 Miután regisztrálta az alkalmazást, láthatja az alkalmazás azonosítója (vagy ügyfél-azonosító) alatt **beállítások**:
 
-![Képernyőfelvétel az ügyfél-azonosító](./media/storage-auth-aad-app/app-registration-client-id.png)
+![Képernyőfelvétel: az ügyfél-azonosító](./media/storage-auth-aad-app/app-registration-client-id.png)
 
 Egy alkalmazás regisztrálása az Azure ad-vel kapcsolatos további információkért lásd: [alkalmazások integrálása az Azure Active Directory](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md). 
 
@@ -57,14 +57,14 @@ Ezt követően kell biztosítania az alkalmazás engedélyeit az Azure Storage A
 4. Az a **szükséges engedélyek** panelen kattintson a **Hozzáadás** gombra.
 5. A **API kiválasztása**, "Az Azure Storage" keresése és kiválasztása **Azure Storage** az eredmények listájában.
 
-    ![Tároló engedélyeinek ábrázoló képernyőfelvétel](media/storage-auth-aad-app/registered-app-permissions-1.png)
+    ![Tároló ábrázoló engedélyeinek képernyőképe](media/storage-auth-aad-app/registered-app-permissions-1.png)
 
 6. Alatt **engedélyek kiválasztása**, melletti jelölőnégyzetet a **az Azure Storage elérése**, és kattintson a **kiválasztása**.
 7. Kattintson a **Done** (Kész) gombra.
 
 A **szükséges engedélyek** windows most látható, hogy az Azure AD-alkalmazást az Azure Storage és Azure Active Directory hozzáféréssel rendelkezik. Engedélyek az Azure AD automatikusan amikor először regisztrál az alkalmazás Azure ad-ben.
 
-![Bejelentkezéshez Alkalmazásengedélyek regisztrálása](media/storage-auth-aad-app/registered-app-permissions-2.png)
+![Képernyőfelvétel: regisztrálja Alkalmazásengedélyek](media/storage-auth-aad-app/registered-app-permissions-2.png)
 
 ## <a name="net-code-example-create-a-block-blob"></a>.NET-kód példa: Egy blokkblob létrehozása
 
@@ -101,7 +101,7 @@ A Bérlőazonosító lekéréséhez kövesse az alábbi lépéseket:
 2. Kattintson a **Tulajdonságok** elemre.
 3. Másolja a megadott GUID értéket a **címtár-azonosító**. Ennek az értéknek is nevezik a bérlő azonosítója.
 
-![A Bérlőazonosító másolása bemutató képernyőkép](./media/storage-auth-aad-app/aad-tenant-id.png)
+![Képernyőfelvétel: hogyan kell másolni a bérlő azonosítója](./media/storage-auth-aad-app/aad-tenant-id.png)
 
 ### <a name="add-references-and-using-statements"></a>Mutató hivatkozásokat tudjon felvenni, és utasításokkal  
 

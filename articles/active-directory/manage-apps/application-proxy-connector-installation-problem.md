@@ -16,12 +16,12 @@ ms.date: 05/21/2018
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75570cb289af7c7b718414974e5770f692233758
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 645ba6e8306b063892babe25fde41d8dd3144fee
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210866"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444283"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Probléma az alkalmazásproxy-ügynök összekötőjének telepítésekor
 
@@ -64,7 +64,7 @@ Az összekötő telepítése nem sikerül, az alapvető ok általában a követk
 
 ## <a name="verify-admin-is-used-to-install-the-connector"></a>Ellenőrizze, hogy az összekötő telepítéséhez használt rendszergazdai
 
-**Cél:** Ellenőrizze, hogy a felhasználó, aki próbálja telepíteni az összekötőt a rendszergazda a helyes hitelesítő adatokkal. Jelenleg a felhasználónak kell lennie egy alkalmazás rendszergazdai vagy a globális rendszergazda a telepítés sikeres.
+**Cél:** Ellenőrizze, hogy a felhasználó, aki próbálja telepíteni az összekötőt a rendszergazda a helyes hitelesítő adatokkal. Jelenleg a felhasználónak kell lennie egy alkalmazás-rendszergazda vagy egy globális rendszergazdai, a telepítés sikeres.
 
 **Annak ellenőrzése, hogy a hitelesítő adatok helyesek:**
 

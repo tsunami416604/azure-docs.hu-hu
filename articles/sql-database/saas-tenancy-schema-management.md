@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: 2f747eb09fd13647c4b6764ce3cc4fe72c00bcf0
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 39c4884fcca2b041603305d73526e3310ab99a21
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47054846"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441882"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>A bérlőnkénti adatbázis minta használatával az Azure SQL Database SaaS-alkalmazásokban séma kezelése
  
@@ -73,7 +73,7 @@ A *Demo-SchemaManagement.ps1* szkript a *Deploy-SchemaManagement.ps1* nevű SQL-
 
 ## <a name="create-a-job-to-deploy-new-reference-data-to-all-tenants"></a>Feladat létrehozása új referenciaadatok bevezetéséhez az összes bérlőn
 
-A Wingtip Tickets alkalmazás minden bérlői adatbázis tartalmaz egy támogatott helyszíntípuskészleteket tartalmaznak. Minden egyes helyszín, egy adott helyszín típusának felhasználásával, amely meghatározza, milyen típusú eseményeket, amelyek lehet üzemeltetni, és meghatározza, hogy az alkalmazásban használt háttérkép van. Az alkalmazás támogatásához új típusú eseményeket ezek a referenciaadatok frissítése és az új helyszíntípusokat hozzá kell lennie.  Ebben a gyakorlatban frissítést helyezhet üzembe az összes bérlői adatbázison két további helyszíntípus hozzáadásához: *Motorkerékpár-verseny* és *Úszóklub*.
+A Wingtip Tickets alkalmazás minden bérlői adatbázis tartalmaz egy támogatott helyszíntípuskészleteket tartalmaznak. Minden egyes helyszín, egy adott helyszín típusának felhasználásával, amely meghatározza, milyen típusú eseményeket, amelyek lehet üzemeltetni, és meghatározza, hogy az alkalmazásban használt háttérkép van. Az alkalmazás támogatásához új típusú eseményeket ezek a referenciaadatok frissítése és az új helyszíntípusokat hozzá kell lennie.  Ebben a gyakorlatban, frissítést helyezhet üzembe az összes bérlői adatbázison két további helyszíntípus hozzáadásához: *Motorkerékpár-verseny* és *Úszóklub*.
 
 Először tekintse át az egyes bérlői adatbázisok szerepelnek a helyszíntípusok. A bérlői adatbázisokat az SQL Server Management Studio (SSMS) egyik csatlakozhat, és vizsgálja meg a VenueTypes tábla.  Is lekérdezheti, ha ezt a táblázatot a Lekérdezésszerkesztő az Azure Portalon érhető el, amely az adatbázis oldal. 
 
@@ -86,8 +86,8 @@ Egy új feladat létrehozásához használni létrehozott tárolt eljárásokat,
 
 1. Az ssms-ben, a kiszolgáló csatlakozni: *katalógus-dpt -&lt;felhasználói&gt;. database.windows.net* kiszolgáló 
 1. Az ssms-ben a fájl megnyitása... \\Tanulási modulok\\Sémakezelés\\DeployReferenceData.sql
-1. Az utasítás módosítása: állítsa be @wtpUser = &lt;felhasználói&gt; , és illessze be a felhasználó értéket a Wingtip Tickets SaaS adatbázis Per bérlői alkalmazás üzembe helyezésekor használt
-1. Győződjön meg arról, hogy csatlakozik az _jobagent_ adatbázist, majd nyomja le **F5** a parancsfájl futtatása
+1. Módosítsa az utasítást: Állítsa be @wtpUser = &lt;felhasználói&gt; , és illessze be a felhasználó értéket a Wingtip Tickets SaaS adatbázis Per bérlői alkalmazás üzembe helyezésekor használt
+1. Győződjön meg arról, hogy csatlakozik az _jobagent_ adatbázist, majd nyomja le **F5** a parancsfájl futtatása
 
 Figyelje meg a következő elemeket az a *DeployReferenceData.sql* parancsfájlt:
 * **SP\_hozzáadása\_cél\_csoport** létrehozza a DemoServerGroup nevű.
@@ -127,7 +127,7 @@ Ennek az oktatóanyagnak a segítségével megtanulta a következőket:
 > * Az összes bérlői adatbázis referenciaadatok frissítése
 > * Index létrehozása a táblához az összes bérlői adatbázisban
 
-Ezt követően próbálja meg a [alkalmi jelentéskészítő oktatóanyag](saas-tenancy-cross-tenant-reporting.md) elosztott lekérdezések futtatását több bérlői adatbázisok megismerése.
+Ezt követően próbálja meg a [Ad hoc jelentéskészítés oktatóanyag](saas-tenancy-cross-tenant-reporting.md) elosztott lekérdezések futtatását több bérlői adatbázisok megismerése.
 
 
 ## <a name="additional-resources"></a>További források

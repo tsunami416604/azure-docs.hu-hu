@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: 7625eb383beef2e86cc8a977362db09329a6ea1b
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: f4e14435c2ccab98619bec57fef0e121e2df4403
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556713"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431606"
 ---
 # <a name="azure-time-series-insights-preview-use-cases"></a>Az Azure Time Series Insights előzetes verzió használati esetek
 
@@ -32,7 +32,7 @@ Ez a dokumentum áttekintést a használati esetek, amely az Azure Time Series I
 
 ## <a name="introduction"></a>Bevezetés
 
-A Time Series Insights egy teljes körű platform--szolgáltatásként ajánlat. Betöltési, feldolgozásához, tárolásához és magas contextualized, time series-optimalizált IoT-méretű adatok lekérdezésére szolgál. A Time Series Insights ad hoc adatáttekintés és működési elemzés ideális. A Time Series Insights egy olyan ajánlat, hogy megfelel-e a széles körű kell ipari IoT központi telepítések egyedileg bővíthető, testre szabott, szolgáltatás.
+A Time Series Insights egy teljes körű platform--szolgáltatásként ajánlat. Betöltési, feldolgozásához, tárolásához és magas contextualized, time series-optimalizált IoT-méretű adatok lekérdezésére szolgál. A Time Series Insights alkalmi adatfeltárás és működési elemzés ideális. A Time Series Insights egy olyan ajánlat, hogy megfelel-e a széles körű kell ipari IoT központi telepítések egyedileg bővíthető, testre szabott, szolgáltatás.
 
 ## <a name="data-exploration-and-visual-anomaly-detection"></a>Adatfeltárás és vizuális anomáliadetektálás
 

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3eb68c4394afeb4719d92fb56d3ae9028d8566c9
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: b53cb65ec99637dadb16ed9d97c495571be956d7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456112"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451195"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Példa: Az Automation konfigurációs és a chocolatey-t használó virtuális gépek folyamatos üzembe helyezés
 
@@ -51,7 +51,7 @@ Resource Manager-sablon egyik fontos szolgáltatása a lehetőség ki van épít
 ## <a name="quick-trip-around-the-diagram"></a>A diagram körül gyors utazás
 
 Indítása az oldal tetején, a kód írása hozhat létre és tesztelheti, majd telepítőcsomag létrehozása.
-Chocolatey-t a különböző típusú telepítőcsomagok, például az MSI-vel az MSU, ZIP képes kezelni. És a tényleges telepítési teendő Chocolateys natív funkciók nem teljesen, akár a teljes power PowerShell rendelkezik. A csomag üzembe valahol érhető el – a csomagtárház. A használati példában egy nyilvános mappában egy Azure blob storage-fiókot, de bárhol lehet. Felügyeleti csomag metaadatok natív módon a NuGet-kiszolgálók és néhány másik chocolatey működik. [Ez a cikk](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed) lehetőségeit ismerteti. A használati példa NuGet. Egy Nuspec metaadatait, a csomagok. A Nuspec "lefordítva" NuPkg a, és a egy NuGet-kiszolgálón tárolt. Ha a konfigurációs csomagot kérelmek név szerint, és a egy NuGet-kiszolgálóra hivatkozik, a Chocolatey DSC-erőforrás (mostantól megtalálható a virtuális gép) begyűjti a csomagot, és telepíti azt. A csomag egy adott verzióját is kérheti.
+Chocolatey-t a különböző típusú telepítőcsomagok, például az MSI-vel az MSU, ZIP képes kezelni. És a tényleges telepítési teendő Chocolateys natív funkciók nem teljesen, akár a teljes power PowerShell rendelkezik. Bevezetni a csomag néhány érhető el – a csomagtárház. A használati példában egy nyilvános mappában egy Azure blob storage-fiókot, de bárhol lehet. Felügyeleti csomag metaadatok natív módon a NuGet-kiszolgálók és néhány másik chocolatey működik. [Ez a cikk](https://github.com/chocolatey/choco/wiki/How-To-Host-Feed) lehetőségeit ismerteti. A használati példa NuGet. Egy Nuspec metaadatait, a csomagok. A Nuspec "lefordítva" NuPkg a, és a egy NuGet-kiszolgálón tárolt. Ha a konfigurációs csomagot kérelmek név szerint, és a egy NuGet-kiszolgálóra hivatkozik, a Chocolatey DSC-erőforrás (mostantól megtalálható a virtuális gép) begyűjti a csomagot, és telepíti azt. A csomag egy adott verzióját is kérheti.
 
 A bal alsó részén található a kép van egy Azure Resource Manager-sablon. Használat ebben a példában a Virtuálisgép-bővítmény regisztrálja a Azure Automation állapota konfigurációs lekérési kiszolgálóval (azaz egy lekéréses kiszolgálót) a virtuális gép egy csomópontnak tekinti. A konfiguráció a lekéréses kiszolgálón tárolja.
 Valójában, tárolva kétszer: egyszer pedig egyszerű szövegként, és miután összeállított, MOF-fájlt (azok számára, többek között ismert.) A portálon az MOF "csomópont-konfiguráció" (nem egyszerűen csak "beállítások"). A lehívandó összetevő, amely egy csomópont van társítva, így a csomópont tudni fogja a konfigurációs. Az alábbi részletek bemutatják, hogyan a csomópont-konfiguráció hozzárendelése a csomópontra.

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/24/2018
-ms.openlocfilehash: aa884f2df76c20d3119022069179b08ba2f2a6b7
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: ada0a54f014e4e896c0e91d1eeafb94e6d254d5b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565213"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445081"
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>Ismerje meg, hogyan új bérlők kiépítése és regisztrálása a katalógusban
 
@@ -46,7 +46,7 @@ A katalógus lehetővé teszi a nevét vagy módosítható az alkalmazás csak m
 
 A katalógus is tárolhatja további bérlő vagy az adatbázis metaadatait, például a sémaverzió, a szolgáltatáscsomag vagy a SLA-k a bérlők számára érhető el. A katalógus tárolhat, amely lehetővé teszi az Alkalmazáskezelés, ügyfél-támogatási vagy a DevOps más információkat. 
 
-A SaaS-alkalmazás túl a katalógus adatbáziseszközöket is engedélyezheti. A Wingtip Tickets SaaS bérlőnkénti adatbázis mintában a katalógus segítségével engedélyezhető a több-bérlős lekérdezés, amely van írja le a [alkalmi jelentéskészítő oktatóanyag](saas-tenancy-cross-tenant-reporting.md). Adatbázisközi feladatok kezelése a rendszer megvizsgálta a [Sémakezelés](saas-tenancy-schema-management.md) és [bérlői analitikák](saas-tenancy-tenant-analytics.md) oktatóanyagok. 
+A SaaS-alkalmazás túl a katalógus adatbáziseszközöket is engedélyezheti. A Wingtip Tickets SaaS bérlőnkénti adatbázis mintában a katalógus segítségével engedélyezhető a több-bérlős lekérdezés, amely van írja le a [Ad hoc jelentéskészítés oktatóanyag](saas-tenancy-cross-tenant-reporting.md). Adatbázisközi feladatok kezelése a rendszer megvizsgálta a [Sémakezelés](saas-tenancy-schema-management.md) és [bérlői analitikák](saas-tenancy-tenant-analytics.md) oktatóanyagok. 
 
 A Wingtip Tickets SaaS-mintákban a katalógus Szilánkkezelési funkcióját segítségével történik a [Elastic Database ügyfélkódtár (EDCL)](sql-database-elastic-database-client-library.md). Az EDCL a Java és a .NET-keretrendszer érhető el. Az EDCL lehetővé teszi, hogy az alkalmazás létrehozása, kezelése és használata egy adatbázis-alapú horizontális skálázási térképet. 
 

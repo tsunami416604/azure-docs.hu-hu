@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 9760e6b9cdcd6f03f4377277f3426189b1fe0a61
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.lastreviewed: 02/21/2019
+ms.openlocfilehash: f58d4e4f8b0e095fe64489fb42f78ef82c5af359
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182017"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57407816"
 ---
 # <a name="azure-stack-integrated-systems-connection-models"></a>Az Azure Stackkel integrált rendszerek kapcsolati modellek
 Ha Ön a powerappsot, olvassa az Azure Stackkel integrált rendszer, kell megérteni [több adatközpont integrációja szempontok](azure-stack-datacenter-integration.md) való határozza meg, hogyan elférnek a rendszer a helyi adatközpontban Azure Stack üzembe helyezéshez. Emellett szüksége annak eldöntése, hogyan fogja integrálja az Azure Stack a hibridfelhő-környezet. Ez a cikk a főbb kérdései, többek között az Azure-kapcsolat, ügyfélidentitás-tárolóval, és a számlázási modell döntések áttekintést nyújt.
@@ -38,12 +38,14 @@ Kiválaszthatja, hogy csatlakozik az internethez (és az Azure-bA), vagy csatlak
 
 
 |Beállítások|Az Azure-hoz csatlakoztatva|Az Azure-ból leválasztva|
-|-----|-----|-----|
+|-----|:-----:|:-----:|
 |Azure AD|![Támogatott](media/azure-stack-connection-models/check.png)| |
 |AD FS|![Támogatott](media/azure-stack-connection-models/check.png)|![Támogatott](media/azure-stack-connection-models/check.png)|
 |Fogyasztás alapú számlázáshoz|![Támogatott](media/azure-stack-connection-models/check.png)| |
 |Kapacitás-alapú számlázás|![Támogatott](media/azure-stack-connection-models/check.png)|![Támogatott](media/azure-stack-connection-models/check.png)|
-|Töltse le a frissítési csomagok közvetlenül az Azure Stackhez|![Támogatott](media/azure-stack-connection-models/check.png)|  |
+|Licencek| Nagyvállalati szerződés vagy a Cloud Solution Provider | Nagyvállalati szerződés |
+|A javítások és frissítések|Frissítési csomag közvetlenül az internetről letölthető az Azure Stackhez |  Szükséges<br><br>Cserélhető adathordozó is szükséges<br> és a egy különálló csatlakoztatott eszköz |
+| Regisztráció | Automatikus | Szükséges<br><br>Cserélhető adathordozó is szükséges<br> és a egy különálló csatlakoztatott eszköz |
 
 Miután kiválasztotta az az Azure-kapcsolat modell használható az Azure Stack üzemelő példányához, további, a kapcsolat-függő döntéseket kell meghozni az ügyfélidentitás-tárolóval és a számlázási mód. 
 

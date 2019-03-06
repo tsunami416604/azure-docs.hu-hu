@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: ab72091c58420459620352c8169773111149316d
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: a81bcf26234f3b7840a75e7134596cb777071e8f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245728"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432775"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Konfigurációs kiszolgáló hibáinak elhárítása
 
@@ -82,7 +82,7 @@ A Site Recovery hitelesítéséhez szükséges tanúsítvány nem hozható létr
 
 ## <a name="failure-to-activate-windows-licence-from-server-standard-evaluation-to-server-standard"></a>Hiba a kiszolgáló Standard Server Standard próbaverzióról Windows engedély aktiválásához
 
-1. OVF keresztül a konfigurációs kiszolgáló telepítésének részeként a kiértékelési engedély van használatban, amely érvényes 180 napig. Kell aktiválnia a jelen licenc, mielőtt ez lejár. Más esetben ez eredményez a konfigurációs kiszolgáló gyakori leállítása, és így a replikációs tevékenységek hinderance okozhat.
+1. OVF-keresztül a konfigurációs kiszolgáló telepítésének részeként egy próbalicencre van használatban, amely érvényes 180 napig. Kell aktiválnia a jelen licenc, mielőtt ez lejár. Más esetben ez eredményez a konfigurációs kiszolgáló gyakori leállítása, és így a replikációs tevékenységek hinderance okozhat.
 2. Ha nem tudja aktiválni a Windows-licenccel, kapcsolatba [Windows támogatási csoportjának](https://aka.ms/Windows_Support) a probléma megoldásához.
 
 ## <a name="register-source-machine-with-configuration-server"></a>Forrásgép regisztrálni a konfigurációs kiszolgáló

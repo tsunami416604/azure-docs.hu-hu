@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 02/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 3ba9d7ab9e05c3c5480e1832cc5ddd0ce91a3ae1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f35ed65b25d469b524e7174affecb45ad7c4735c
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094202"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405868"
 ---
 # <a name="configure-a-site-to-site-vpn-over-expressroute-microsoft-peering"></a>Site-to-site VPN konfigurálása ExpressRoute Microsoft társviszony-létesítésen keresztül
 
@@ -23,6 +23,8 @@ Ez a cikk segít a helyszíni hálózat és az Azure virtuális hálózatok (Vne
 >Amikor beállít site-to-site VPN keresztül a Microsoft társviszony-létesítés, díjkötelesek a VPN-átjáró és a VPN-forgalom. További információkért lásd: [VPN-átjáró](https://azure.microsoft.com/pricing/details/vpn-gateway).
 >
 >
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="architecture"></a>Architektúra
 
@@ -89,7 +91,7 @@ Ebben a példában egy Cisco IOS-XE parancsot használja. A példában egy virtu
 show ip bgp vpnv4 vrf 10 summary
 ```
 
-A következő részleges kimenet látható, hogy 68 előtagok érkezett a szomszédos *.243.229.34 és az ASN 12076 számot használja (MSEE):
+A következő részleges kimenet látható, hogy 68 előtagok érkezett a szomszédos \*.243.229.34 és az ASN 12076 számot használja (MSEE):
 
 ```
 ...
@@ -107,7 +109,7 @@ sh ip bgp vpnv4 vrf 10 neighbors X.243.229.34 received-routes
 Győződjön meg arról, hogy a helyes beállítása az előtagok azért küldtük Önnek, hogy cross-ellenőrizheti. A következő Azure PowerShell-parancs kimenete listázza a Microsoft társviszony-létesítést az minden és az egyes Azure-régióhoz keresztül meghirdetett előtagokat:
 
 ```azurepowershell-interactive
-Get-AzureRmBgpServiceCommunity
+Get-AzBgpServiceCommunity
 ```
 
 ## <a name="vpngateway"></a>3. A VPN-átjáró és az IPsec-alagutak konfigurálása
@@ -482,7 +484,7 @@ A tűzfal és a szűrést az igényeknek megfelelően konfigurálja.
 Az IPsec-alagutak állapotát az Azure VPN gatewayen Powershell-parancsok ellenőrizhető:
 
 ```azurepowershell-interactive
-Get-AzureRmVirtualNetworkGatewayConnection -Name vpn2local1 -ResourceGroupName myRG | Select-Object  ConnectionStatus,EgressBytesTransferred,IngressBytesTransferred | fl
+Get-AzVirtualNetworkGatewayConnection -Name vpn2local1 -ResourceGroupName myRG | Select-Object  ConnectionStatus,EgressBytesTransferred,IngressBytesTransferred | fl
 ```
 
 Példa a kimenetre:
@@ -496,7 +498,7 @@ IngressBytesTransferred : 10538211
 Az Azure VPN gatewayen az alagutak állapotának ellenőrzéséhez példányok egymástól függetlenül, használja a következő példát:
 
 ```azurepowershell-interactive
-Get-AzureRmVirtualNetworkGatewayConnection -Name vpn2local1 -ResourceGroupName myRG | Select-Object -ExpandProperty TunnelConnectionStatus
+Get-AzVirtualNetworkGatewayConnection -Name vpn2local1 -ResourceGroupName myRG | Select-Object -ExpandProperty TunnelConnectionStatus
 ```
 
 Példa a kimenetre:
@@ -618,7 +620,7 @@ Success rate is 100 percent (5/5), round-trip min/avg/max = 4/5/6 ms
 Az Azure VPN gateway a BGP-társ állapotának ellenőrzése:
 
 ```azurepowershell-interactive
-Get-AzureRmVirtualNetworkGatewayBGPPeerStatus -VirtualNetworkGatewayName vpnGtw -ResourceGroupName SEA-C1-VPN-ER | ft
+Get-AzVirtualNetworkGatewayBGPPeerStatus -VirtualNetworkGatewayName vpnGtw -ResourceGroupName SEA-C1-VPN-ER | ft
 ```
 
 Példa a kimenetre:
@@ -634,7 +636,7 @@ Példa a kimenetre:
 Ha ellenőrizni szeretné a VPN kívánt elemet a helyi eBGP-n keresztül fogadott hálózati előtagok listáját, szűrheti "Origin" attribútum által:
 
 ```azurepowershell-interactive
-Get-AzureRmVirtualNetworkGatewayLearnedRoute -VirtualNetworkGatewayName vpnGtw -ResourceGroupName myRG  | Where-Object Origin -eq "EBgp" |ft
+Get-AzVirtualNetworkGatewayLearnedRoute -VirtualNetworkGatewayName vpnGtw -ResourceGroupName myRG  | Where-Object Origin -eq "EBgp" |ft
 ```
 
 A példa a kimenetre az ASN 65010 a BGP-autonóm rendszer száma a VPN helyszíni.
@@ -649,7 +651,7 @@ AsPath LocalAddress Network      NextHop     Origin SourcePeer  Weight
 A hirdetett útvonalakat listája:
 
 ```azurepowershell-interactive
-Get-AzureRmVirtualNetworkGatewayAdvertisedRoute -VirtualNetworkGatewayName vpnGtw -ResourceGroupName myRG -Peer 10.2.0.228 | ft
+Get-AzVirtualNetworkGatewayAdvertisedRoute -VirtualNetworkGatewayName vpnGtw -ResourceGroupName myRG -Peer 10.2.0.228 | ft
 ```
 
 Példa a kimenetre:

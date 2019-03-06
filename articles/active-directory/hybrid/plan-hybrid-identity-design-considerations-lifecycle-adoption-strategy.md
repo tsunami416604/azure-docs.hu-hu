@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6d11de9dc82dad0426f141049603e99e99690f5
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 19b312f284d557c2c1344b82b9fcd570d3392077
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56873219"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433739"
 ---
 # <a name="determine-hybrid-identity-lifecycle-adoption-strategy"></a>Hibrid identitás-életciklus bevezetési stratégiája határozza meg
 Ebben a feladatban meg fogja definiálni, a hibrid identitáskezelési megoldás az üzleti szükségletek kielégítése céljából, amelyet a megadott identity management stratégiája [határozza meg a hibrid identitáskezelési feladatokat](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md).
@@ -95,7 +95,7 @@ Tekintse át a következő táblázat segítségével összehasonlíthatja a szi
 | Szinkronizálási lehetőséget | Előnyök | Hátrányai |
 | --- | --- | --- |
 | Szinkronizálási-alapú (a DirSync vagy az aad Connect) |Felhasználók és csoportok szinkronizálása a helyszíni és felhőbeli <br>  **A házirend-szabályozás**: Active Directory, amely lehetővé teszi a rendszergazda tudja felügyelni a jelszóházirendek, munkaállomás, korlátozások, zárolás kibővített vezérlők és több, nem kell további feladatokat a felhőben szabályzatainak beállítása.  <br>  **Hozzáférés-vezérlés**: Korlátozhatja a hozzáférést a felhőszolgáltatáshoz, hogy a szolgáltatások érhetők el a vállalati környezetben keresztül online kiszolgálók, vagy mindkettőt. <br>  Támogatási hívások szűkíteni: Ha a felhasználók kevesebb jelszót kell fejben rendelkeznek, valószínűleg kevesebb felejtse el őket. <br>  Biztonság: Felhasználói identitások és információk védettek, mert a kezelt kiszolgálók és egyszeri bejelentkezést, a használt szolgáltatások mindegyikét, és a helyszínen felügyelt. <br>  Erős hitelesítés támogatása: A felhőalapú szolgáltatás erős hitelesítést (más néven a kéttényezős hitelesítés) is használhatja. Azonban ha erős hitelesítés használata esetén kell használnia az egyszeri bejelentkezés. | |
-| Összevonás-alapú (AD FS) n keresztül |Biztonságijogkivonat-szolgáltatás (STS) által engedélyezett. Az STS szolgáltatással történő egyszeri bejelentkezéses hozzáférést biztosítanak a Microsoft felhőszolgáltatással való konfigurálásakor, hozhat létre egy összevont megbízhatósági kapcsolat a helyszíni STS és az Azure AD-bérlőben már megadott összevont tartomány között. <br> Lehetővé teszi, hogy a végfelhasználók számára, hogy ugyanazokat a hitelesítő adatok használatával férhet hozzá több erőforrást <br>a végfelhasználók nem kell több hitelesítőadat-készletek kezelése. Még, a felhasználóknak meg kell adnia a hitelesítő adataikat a programban részt vevő erőforrásokhoz, minden egyes támogatott B2B és B2C-forgatókönyveket. |Speciális személyzetet igényel üzembe helyezése és karbantartása dedikált helyszíni AD FS-kiszolgálók. Erős hitelesítés használatára vonatkozó korlátozások vonatkoznak, ha azt tervezi, hogy az STS az AD FS használata. További információkért lásd: [speciális beállításainak konfigurálása az AD FS 2.0](https://go.microsoft.com/fwlink/?linkid=235649). |
+| Összevonás-alapú (AD FS) n keresztül |Biztonságijogkivonat-szolgáltatás (STS) által engedélyezett. Az STS szolgáltatással történő egyszeri bejelentkezéses hozzáférést biztosítanak a Microsoft felhőszolgáltatással való konfigurálásakor, hozhat létre egy összevont megbízhatósági kapcsolat a helyszíni STS és az Azure AD-bérlőben már megadott összevont tartomány között. <br> Lehetővé teszi, hogy a végfelhasználók számára, hogy ugyanazokat a hitelesítő adatok használatával férhet hozzá több erőforrást <br>a végfelhasználók nem kell több hitelesítőadat-készletek kezelése. Még, a felhasználóknak meg kell adnia a hitelesítő adataikat a programban részt vevő erőforrásokhoz, minden egyes támogatott B2B és B2C-forgatókönyveket. |Speciális személyzet üzembe helyezése és karbantartása dedikált a helyszíni AD FS-kiszolgálókat igényel. Erős hitelesítés használatára vonatkozó korlátozások vonatkoznak, ha azt tervezi, hogy az STS az AD FS használata. További információkért lásd: [speciális beállításainak konfigurálása az AD FS 2.0](https://go.microsoft.com/fwlink/?linkid=235649). |
 
 > [!NOTE]
 > További információ: [a helyszíni identitások integrálása az Azure Active Directory](whatis-hybrid-identity.md).

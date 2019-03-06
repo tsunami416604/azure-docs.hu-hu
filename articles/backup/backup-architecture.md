@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: raynew
-ms.openlocfilehash: 4be483994bd7bc5bd97b1e59df230f66e9b4e24e
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 034f7f6d8636ced748987c9b0e584790205c0083
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430346"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435303"
 ---
 # <a name="azure-backup-architecture"></a>Az Azure Backup-architektúra
 
@@ -138,7 +138,7 @@ Vegye figyelembe, hogy az Azure virtuális gépek internet-hozzáférés szüks�
     - A MARS-ügynök csak használja a Windows rendszer írni a pillanatképek rögzítése.
     - Az ügynök minden olyan alkalmazás VSS-írók nem használ, és így alkalmazáskonzisztens pillanatképek nem rögzíti.
 3. Miután elvégezte a VSS-pillanatkép, a MARS-ügynök hoz létre egy virtuális Merevlemezt a gyorsítótármappa, ha konfigurálta a biztonsági mentés, a megadott és az egyes adatblokkok ellenőrzőösszegek tárolja. 
-4. Növekményes biztonsági mentések futtatása megfelelően az ütemezést adja meg, kivéve, ha az ad hoc biztonsági mentés futtatása.
+4. Növekményes biztonsági mentések futtatása megfelelően az ütemezést adja meg, kivéve, ha egy ad-hoc biztonsági mentés futtatása.
 5. A növekményes biztonsági mentést azonosítja a megváltozott fájlokat, és létrejön egy új virtuális Merevlemezt. Azt tömörítve és titkosítva, és a tárolóba.
 6. A növekményes biztonsági mentés befejezése után az új virtuális merevlemez van egyesítve lesznek a létrehozott virtuális Merevlemezt a kezdeti replikációt követően a folyamatban lévő biztonsági mentés összehasonlításhoz használható legújabb állapot megadása. 
 

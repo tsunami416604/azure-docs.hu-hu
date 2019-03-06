@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: ac40c4c974049f802da97846db5010652a420691
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 556ed3553185445432f9f95731ccfec0578fab62
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961210"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455666"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Az Azure Blob Storage a peremhálózaton data Store az IoT Edge-ben (előzetes verzió)
 
@@ -236,7 +236,7 @@ Az alábbi rövid útmutatókat használja, így sikerült telepítheti őket, I
 
 BLOB storage-modulok IoT Edge ugyanazt az Azure Storage SDK-k használata, és konzisztensek legyenek az Azure Storage block blob végpontok API 2018-03-28-as verzióját. Újabb kiadásaiban ügyfelek igényeitől függnek. 
 
-Nem minden Azure Blob Storage-műveletek az Azure Blob Storage, az IoT Edge-ben támogatottak. A következő szakaszokban, mely műveletek a következők a rendszer nem támogatott. 
+Nem minden Azure Blob Storage-műveletek az Azure Blob Storage, az IoT Edge-ben támogatottak. A következő szakaszokban mely műveletek nem támogatottak. 
 
 ### <a name="account"></a>Fiók
 

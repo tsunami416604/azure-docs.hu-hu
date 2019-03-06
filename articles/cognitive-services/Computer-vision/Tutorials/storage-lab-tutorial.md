@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: tutorial
 ms.date: 01/03/2019
 ms.author: pafarley
-ms.openlocfilehash: 650696d1eb3979447bffa7312e91b4fe1a57652c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e5124b07a5aff67d53213149565ddae4ea6dda33
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865012"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447999"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Oktatóanyag: A képek metaadatai létrehozni az Azure Storage használata a Computer Vision
 
@@ -48,7 +48,7 @@ Szüksége lesz az Azure-fiókjával; a Computer Vision erőforrás létrehozás
 
 1. A párbeszédpanelen adja meg az "látás-api-key" az a **neve** mezőbe, majd válasszon **F0** , a **tarifacsomag**. Válassza ki ugyanazt **hely** az Azure Storage-fiók beállításakor kiválasztott. Alatt **erőforráscsoport**válassza **meglévő** , és válassza ki ugyanazt az erőforráscsoportot is. Ellenőrizze a **megerősítem, hogy** mezőbe, majd kattintson a **létrehozás**.
 
-    ![A Computer Vision API, Subcribing](../Images/create-vision-api.png)
+    ![Feliratkozás a Computer Vision API](../Images/create-vision-api.png)
 
 1. Térjen vissza az erőforráscsoport a menüben, majd kattintson az imént létrehozott Computer Vision API-előfizetés. Másolja az URL-CÍMÉT a **végpont** valahol, hogy könnyen hozzáférhet kis idő múlva. Kattintson a **hozzáférési kulcsok megjelenítése**.
 

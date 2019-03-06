@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/13/2018
 ms.author: ryanwi
-ms.openlocfilehash: d93ebb01c905be6bf799ed6e4a037e3ddfdc2430
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 527ab4ee0edaf3ac2048403d7063edef8fc58ae8
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094172"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451977"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>Méretezés az Azure Service Fabric-fürtök
 Service Fabric-fürt, amelybe mikroszolgáltatásokat helyezhet üzembe és felügyelhet virtuális vagy fizikai gépek hálózaton keresztül csatlakozó készlete áll. Egy számítógép vagy virtuális Gépet, amely egy fürt része csomópontoknak nevezzük. Fürtök potenciálisan több ezer csomóponton is tartalmazhat. Egy Service Fabric-fürt létrehozását követően, horizontálisan a fürt (módosíthatja a csomópontok számát), vagy függőlegesen (módosíthatja a csomópontok az erőforrások).  Méretezheti a fürt bármikor, még akkor is, ha a számítási feladatok a fürtön futnak.  A fürt skálázható, mivel az alkalmazások automatikus méretezése is.
@@ -81,7 +81,7 @@ Ha méretezése egy Azure-fürtön, vegye figyelembe a következő arról:
 Typ uzlu kiterjesztése vagy szűkítése folyamata attól függően, hogy-e egy nem elsődleges vagy az elsődleges csomópont típusa eltér.
 
 ### <a name="scaling-non-primary-node-types"></a>Nem elsődleges csomóponttípusok méretezése
-Hozzon létre egy új csomópont típusa a szükséges erőforrásokat.  Frissítse az elhelyezési korlátozások futó szolgáltatások közé tartozik az új csomópont típusa.  Fokozatosan (egyenként), csökkentheti a régi csomópont típusa példányszám példányainak száma nulla, hogy az nem befolyásolja a fürt megbízhatóságát.  Szolgáltatások fokozatosan fog át az új csomópont típusa, mint a régi csomóponttípus decommisioned.
+Hozzon létre egy új csomópont típusa a szükséges erőforrásokat.  Frissítse az elhelyezési korlátozások futó szolgáltatások közé tartozik az új csomópont típusa.  Fokozatosan (egyenként), csökkentheti a régi csomópont típusa példányszám példányainak száma nulla, hogy az nem befolyásolja a fürt megbízhatóságát.  Szolgáltatások fokozatosan fog át az új csomópont típusa, a régi csomóponttípus leszereltként van.
 
 ### <a name="scaling-the-primary-node-type"></a>Az elsődleges csomóponttípushoz méretezése
 Azt javasoljuk, hogy az elsődleges csomóponttípushoz VM-Termékváltozat nem módosítja. Ha a fürt nagyobb kapacitásra van szüksége, azt javasoljuk, további példányok hozzáadása. 

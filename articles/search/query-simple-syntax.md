@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 12589d9fa4623dbb6ebfd12d2e007eb9303ecdbf
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4f06af8044a79a7dc54d6fde55992111d24d22a7
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008327"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441560"
 ---
 # <a name="simple-query-syntax-in-azure-search"></a>Az Azure Search egyszerű lekérdezési szintaxis
 Az Azure Search két Lucene-alapú lekérdezési nyelv valósít meg: [Egyszerű Lekérdezéselemzőt](https://lucene.apache.org/core/4_7_0/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) és a [Lucene lekérdezéselemző](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). Az Azure Search szolgáltatásban az egyszerű lekérdezési szintaxis nem tartalmazza az intelligens/olajsár lehetőségek.  
@@ -46,7 +46,7 @@ A hangok szerint egyértelmű nincs lekérdezés végrehajtása az Azure Search 
 
 ## <a name="operators-in-simple-search"></a>Az egyszerű keresés operátorok
 
-Operátorok feltételek, amelyek egyező dokumentumok találhatók riche csoportja hozhat létre egy lekérdezési karakterláncban ágyazhatók be. 
+Operátorok feltételek, amelyek az egyező dokumentumok találhatók széles skáláját hozhat létre egy lekérdezési karakterláncban ágyazhatók be. 
 
 ## <a name="and-operator-"></a>ÉS operátor `+`
 

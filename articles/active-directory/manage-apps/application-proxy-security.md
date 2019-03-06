@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef9dbe1bb0ed9e5aad545453c409b0959bdd3fd4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7bb9fc806779565581fa7667749402f5608edd80
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207228"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438074"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Távolról az Azure AD-alkalmazásproxy-alkalmazások eléréséhez szükséges biztonsági szempontok
 
@@ -69,7 +69,7 @@ Alkalmazásproxy-összekötők csak akkor használja az Azure AD-alkalmazásprox
 
 A legmodernebb biztonsági védelmet kap.
 
-Mivel az Azure Active Directory részét, kihasználhatják a Application Proxy [Azure AD Identity Protection](../active-directory-identityprotection.md), a Microsoft Security Response Center és a digitális bűnözés elleni Egységünkkel származó adatokkal. Együtt és amelyet a proaktív módon azonosíthatja a feltört fiókoktól nyújtanak védelmet a magas kockázatú bejelentkezések. Hogy figyelembe venniük annak meghatározására, hogy melyik bejelentkezési megkísérel magas kockázatú számos tényező. Ezek a tényezők közé tartozik a megjelölés fertőzött eszközök, a hálózatok névtelenítését és a szokatlan vagy nem valószínű, helyek.
+Mivel az Azure Active Directory részét, kihasználhatják a Application Proxy [Azure AD Identity Protection](../active-directory-identityprotection.md), a Microsoft Security Response Center és a digitális bűnözés elleni Egységünkkel származó adatokkal. Együtt és amelyet a proaktív módon azonosíthatja a feltört fiókoktól nyújtanak védelmet a magas kockázatú bejelentkezések. Hogy figyelembe venniük annak meghatározására, hogy melyik bejelentkezési kísérletek nagy kockázatot jelentő számos tényező. Ezek a tényezők közé tartozik a megjelölés fertőzött eszközök, a hálózatok névtelenítését és a szokatlan vagy nem valószínű, helyek.
 
 Ezeket a jelentéseket és események számos már elérhető a biztonságiadat-és eseménykezelő (SIEM) rendszerekbe-integráció az API-n keresztül.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/18/2019
 ms.custom: mvc
-ms.openlocfilehash: 5163f2596e9ba08754cd3a5e49040a9d95764192
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 02159f58b5e1db3de92e88dae3f6eba38b24e3c4
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312953"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450855"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -240,7 +240,7 @@ A következő képernyőkép bemutatja a szimulált eszközalkalmazás kimeneté
 
 ![Szimulált eszköz](./media/tutorial-device-twins/SimulatedDevice2.png)
 
-A következő képernyőkép bemutatja a háttéralkalmazás kimenetét, a kiemelt rész pedig arra vonatkozik, hogyan fogad és dolgoz fel egy eszközről érkező, jelentett tulajdonságra vonatkozó frissítést:
+Az alábbi képernyőképen a háttér-alkalmazásból kimenetét mutatja be, és kiemeli a hogyan kap, és feldolgozza a jelentett tulajdonság frissítése az eszközről:
 
 ![Háttéralkalmazás](./media/tutorial-device-twins/BackEnd2.png)
 

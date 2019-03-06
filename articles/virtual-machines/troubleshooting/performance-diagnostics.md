@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: 67778a269aa962b3184bf55c692154570e8357ba
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: c2089f9f6267f318dafe641a6a5b22e7e87427ca
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387388"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441066"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Azure-beli virtuális gépek teljesítménydiagnosztikája
 
@@ -42,7 +42,7 @@ Teljesítménybeli problémák diagnosztizálása telepíti a VM-bővítmény, a
     ![Képernyőkép az Azure portal, a telepítés teljesítmény diagnosztikai gomb kiemelésével](media/performance-diagnostics/performance-diagnostics-install.png)
 
     > [!NOTE]
-    > A képernyőfelvételen a virtuális gép neve panel el van rejtve.
+    > Ezen a képernyőképen látható a virtuális gép neve panel el van rejtve.
 1. Válassza ki a storage-fiók (nem kötelező)
 
     Ha azt szeretné, egyetlen tárfiókban használata a teljesítmény diagnosztikai eredmények tárolására több virtuális gép, tárfiók kattintva kiválaszthatja a **beállítások** gomb az eszköztáron. Kattintson a **OK** gombra, miután a storage-fiókot.
@@ -143,10 +143,10 @@ A tárfiók-információ megtekintéséhez használja a beállítások gombra az
 ### <a name="how-do-i-share-this-data-with-microsoft-customer-support"></a>Hogyan oszthatom meg ezeket az adatokat a Microsoft ügyfélszolgálata? 
 A diagnosztikai jelentés megosztása a Microsofttal többféle módon lehet.
 
-**1. lehetőség:** automatikusan megoszthatja a legújabb jelentésre  
+**1. lehetőség:** Automatikusan megoszthatja a legújabb jelentésre  
 Egy támogatási jegyet a Microsofttal, ha fontos a teljesítmény diagnosztikai jelentés megosztásához. Ha rögzítette ezek az információk megosztása a Microsofttal a diagnosztika futtatása közben (kiválasztásával a "**elfogadom a diagnosztikai információ megosztása a Microsofttal**" jelölőnégyzet), a Microsoft fog tudni hozzáférni a jelentés a storage-ból a fiók SAS-kapcsolaton keresztül kimeneti zip-fájl legfeljebb 30 napig Futtatás időpontjától számított. Csak a legutóbbi jelentés érhető el, a támogatási szakértőhöz. 
 
-**2. lehetőség:** számára a diagnosztikai jelentést a tömörített fájlt, hozzon létre egy közös hozzáférésű jogosultságkód igénylése  
+**2. lehetőség:** A diagnosztikai jelentés tömörített fájl egy közös hozzáférésű Jogosultságkód létrehozása  
 A jelentések tömörített fájlra mutató hivatkozást megoszthatja a közös hozzáférési aláírások használatával. Ehhez kövesse az alábbi lépéseket: 
 1.  Az Azure Portalon keresse meg a tárfiók, amelyben a diagnosztikai adatokat tárolja.
 1.  Válassza ki **Blobok** alatt a **Blob service** szakaszban. 
@@ -156,7 +156,7 @@ A jelentések tömörített fájlra mutató hivatkozást megoszthatja a közös 
 1.  Kattintson a **készítése a blob SAS-jogkivonat és URL-cím**.
 1.  Másolás a **a Blob SAS URL-cím**, és megoszthatja a támogatási szakértőhöz. 
 
-**3. lehetőség:** a jelentés letöltése a storage-fiókból
+**3. lehetőség:** A jelentés letöltése a storage-fiókból
 
 1 – 4. lépéseket a 2. lehetőség használatával is megkeresheti a teljesítmény diagnosztikai jelentés tömörített fájl. Válassza ki, töltse le a fájlt, majd ossza meg e-mailben, vagy kérje meg az utasításokat követve töltse fel a fájlt a támogatási szakértőhöz.  
 

@@ -1,5 +1,5 @@
 ---
-title: Az Azure MFA jelentkezzen be a kétlépéses ellenőrzés |} A Microsoft Docs
+title: Az Azure MFA jelentkezzen be a kétlépéses ellenőrzés – Azure Active Directory |} A Microsoft Docs
 description: Ezen a lapon, útmutatást nyújtanak a, hogy hová lépjen a különböző bejelentkezési módszerekről elérhető az Azure MFA megtekintéséhez.
 keywords: felhasználói hitelesítés, a bejelentkezési élmény, jelentkezzen be a mobiltelefon, jelentkezzen be az irodai telefonomra
 services: active-directory
@@ -13,13 +13,14 @@ ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: lizross
 ms.reviewer: librown
+ms.custom: end-user, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 153b3d61324d504fe260b104bf412913f9692627
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: cd109637379f1fd2cdb108fbbb6c6c47224e00a2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56957538"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431767"
 ---
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication a bejelentkezési élmény
 > [!NOTE]
@@ -32,8 +33,8 @@ A bejelentkezési felület használatához a második tényezőként beállítá
 | --- |
 | [A telefonon hívja fel a mobil- vagy office telefonomra](#signing-in-with-a-phone-call) |
 | [Az SMS-t kérek a mobiltelefonomra](#signing-in-with-a-text-message)
-| Az értesítések a Microsoft Authenticator alkalmazásból |
-| Az ellenőrző kódok kezelésére a Microsoft Authenticator alkalmazásból |
+| [Az értesítések a Microsoft Authenticator alkalmazásból](#to-sign-in-with-a-notification-from-the-microsoft-authenticator-app) |
+| [Az ellenőrző kódok kezelésére a Microsoft Authenticator alkalmazásból](#to-sign-in-using-a-verification-with-the-microsoft-authenticator-app) |
 | [Az alternatív módszert mert jelenleg nem használható az előnyben részesített módszere](#signing-in-with-an-alternate-method) |
 
 ## <a name="signing-in-with-a-phone-call"></a>Bejelentkezés a telefonhívás

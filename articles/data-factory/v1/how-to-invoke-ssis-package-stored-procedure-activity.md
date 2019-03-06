@@ -13,12 +13,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: c7731de810dab8b252294d694ace5df3f5d0a185
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 859cd6cfd3db68dad2607f1dc8905facb43dd290
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427559"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453771"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Egy tárolt eljárási tevékenység használatával az Azure Data Factory SSIS-csomagok meghívásához
 Ez a cikk bemutatja, hogyan kell elindítani az SSIS-csomag az Azure Data Factory-folyamatot egy tárolt eljárási tevékenység használatával. 
@@ -165,7 +165,9 @@ Folyamatok figyelésével kapcsolatos további információkért lásd: [figyel�
 ## <a name="azure-powershell"></a>Azure PowerShell
 Ebben a szakaszban az Azure PowerShell használatával hozzon létre egy Data Factory-folyamatot egy tárolt eljárási tevékenység, amely SSIS-csomag hív meg.
 
-Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikkben szereplő utasításokat a legújabb Azure PowerShell-modulok telepítéséhez.
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-az-ps) ismertető cikkben szereplő utasításokat a legújabb Azure PowerShell-modulok telepítéséhez.
 
 ### <a name="create-a-data-factory"></a>Data factory létrehozása
 Az alábbi eljárás lépéseit egy adat-előállító létrehozásához. Egy tárolt eljárási tevékenység, a data factory-folyamatot hoz létre. A tárolt eljárási tevékenység végrehajt egy tárolt eljárást az SSISDB adatbázis futtatásához az SSIS-csomag.
@@ -180,7 +182,7 @@ Az alábbi eljárás lépéseit egy adat-előállító létrehozásához. Egy t�
 2. Futtassa az alábbi parancsot az Azure-erőforráscsoport létrehozásához: 
 
     ```powershell
-    $ResGrp = New-AzureRmResourceGroup $resourceGroupName -location 'eastus'
+    $ResGrp = New-AzResourceGroup $resourceGroupName -location 'eastus'
     ``` 
     Ha az erőforráscsoport már létezik, előfordulhat, hogy nem kívánja felülírni. Rendeljen egy másik értéket a `$ResourceGroupName` változóhoz, majd futtassa újra a parancsot. 
 3. Adjon meg egy változót az adat-előállító nevéhez. 
@@ -192,10 +194,10 @@ Az alábbi eljárás lépéseit egy adat-előállító létrehozásához. Egy t�
     $DataFactoryName = "ADFTutorialFactory";
     ```
 
-5. Az adat-előállító létrehozásához futtassa a következő **New-AzureRmDataFactory** parancsmagot a $ResGrp változó Location és ResourceGroupName tulajdonság használatával: 
+5. Az adat-előállító létrehozásához futtassa a következő **New-AzDataFactory** parancsmagot a $ResGrp változó Location és ResourceGroupName tulajdonság használatával: 
     
     ```powershell       
-    $df = New-AzureRmDataFactory -ResourceGroupName $ResourceGroupName -Name $dataFactoryName -Location "East US"
+    $df = New-AzDataFactory -ResourceGroupName $ResourceGroupName -Name $dataFactoryName -Location "East US"
     ```
 
 Vegye figyelembe a következő szempontokat:
@@ -227,10 +229,10 @@ Hozzon létre egy társított szolgáltatást, az Azure SQL-adatbázis üzemelte
         }
     ```
 2. A **Azure PowerShell-lel**, váltson át a **C:\ADF\RunSSISPackage** mappát.
-3. Futtassa a **New-AzureRmDataFactoryLinkedService** parancsmagot a társított szolgáltatás létrehozásához: **AzureSqlDatabaseLinkedService**. 
+3. Futtassa a **New-AzDataFactoryLinkedService** parancsmagot a társított szolgáltatás létrehozásához: **AzureSqlDatabaseLinkedService**. 
 
     ```powershell
-    New-AzureRmDataFactoryLinkedService $df -File ".\AzureSqlDatabaseLinkedService.json"
+    New-AzDataFactoryLinkedService $df -File ".\AzureSqlDatabaseLinkedService.json"
     ```
 
 ### <a name="create-an-output-dataset"></a>Kimeneti adatkészlet létrehozása
@@ -252,10 +254,10 @@ A kimeneti adatkészlet egy helyőrző adatkészletet, amely a folyamat ütemez�
         }
     }
     ```
-2. Futtassa a **New-AzureRmDataFactoryDataset** parancsmaggal hozzon létre egy adatkészletet. 
+2. Futtassa a **New-AzDataFactoryDataset** parancsmaggal hozzon létre egy adatkészletet. 
 
     ```powershell
-    New-AzureRmDataFactoryDataset $df -File ".\OutputDataset.json"
+    New-AzDataFactoryDataset $df -File ".\OutputDataset.json"
     ```
 
 ### <a name="create-a-pipeline-with-stored-procedure-activity"></a>Tárolt eljárási tevékenység rendelkező folyamat létrehozása 
@@ -294,24 +296,24 @@ Ebben a lépésben létrehoz egy folyamatot egy tárolt eljárási tevékenység
     }    
     ```
 
-2. A folyamat létrehozásához: **RunSSISPackagePipeline**futtassa a **New-AzureRmDataFactoryPipeline** parancsmagot.
+2. A folyamat létrehozásához: **RunSSISPackagePipeline**futtassa a **New-AzDataFactoryPipeline** parancsmagot.
 
     ```powershell
-    $DFPipeLine = New-AzureRmDataFactoryPipeline -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -Name "RunSSISPackagePipeline" -DefinitionFile ".\RunSSISPackagePipeline.json"
+    $DFPipeLine = New-AzDataFactoryPipeline -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -Name "RunSSISPackagePipeline" -DefinitionFile ".\RunSSISPackagePipeline.json"
     ```
 
 ### <a name="monitor-the-pipeline-run"></a>A folyamat futásának monitorozása
 
-2. Futtatás **Get-AzureRmDataFactorySlice** részletes információkat az összes szelet részleteit a kimeneti adatkészlet **, amely a folyamat kimeneti táblája.
+2. Futtatás **Get-AzDataFactorySlice** részletes információkat az összes szelet részleteit a kimeneti adatkészlet **, amely a folyamat kimeneti táblája.
 
     ```PowerShell
-    Get-AzureRmDataFactorySlice $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z
+    Get-AzDataFactorySlice $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z
     ```
     Megfigyelheti, hogy a StartDateTime itt megadott értéke megegyezik a folyamat JSON-fájljában megadott kezdési idővel. 
-3. A **Get-AzureRmDataFactoryRun** parancs futtatásával lekérheti az adott szeletre vonatkozó tevékenységfuttatások részleteit.
+3. Futtatás **Get-AzDataFactoryRun** részleteit a tevékenység futtatása egy adott szeletre.
 
     ```PowerShell
-    Get-AzureRmDataFactoryRun $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z
+    Get-AzDataFactoryRun $df -DatasetName sprocsampleout -StartDateTime 2017-10-01T00:00:00Z
     ```
 
     Futtassa a parancsmagot, amíg a szelet **Ready** (Kész) vagy **Failed** (Sikertelen) állapotú nem lesz. 

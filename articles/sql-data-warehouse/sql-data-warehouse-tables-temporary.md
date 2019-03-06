@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: db13064c93381f87f82959ed3386abfc0a8e4593
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c989e53113557219e13dd730ac43621d3824baac
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238662"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57434759"
 ---
 # <a name="temporary-tables-in-sql-data-warehouse"></a>Az SQL Data Warehouse az ideiglenes táblák
 Ez a cikk alapvető útmutatást nyújt az ideiglenes táblák használatával, és kiemeli a munkamenet szintű ideiglenes táblák alapelveit. Ebben a cikkben szereplő információk segítségével segítségével modularize újrahasznosíthatóság és a könnyű karbantartás a kód a kódba.
@@ -193,7 +193,7 @@ FROM    t1
 GO
 ```
 
-Ezen a ponton az egyetlen művelet történt a tárolt eljárás létrehozása az adott generatess egy ideiglenes táblát #stats_ddl a DDL-utasítások.  Ez a tárolt eljárás #stats_ddl csökken, ha már létezik, győződjön meg arról, ha futtassa többször a munkameneten belül nem sikertelen.  Azonban mivel nincs `DROP TABLE` a tárolt eljárás végén található a tárolt eljárás befejeződésekor elhagyják a létrejött táblában, hogy a tárolt eljárás kívül is olvasható.  Az SQL Data Warehouse ellentétben más SQL Server-adatbázisok is lehet használni az ideiglenes tábla kívül az eljárást, amely létrehozta.  Az ideiglenes táblák az SQL Data Warehouse segítségével **bárhol** a munkamenetből. Ezzel a módszerrel több moduláris és felügyelhető kódot az alábbi példában látható módon:
+Ezen a ponton az egyetlen művelet történt, amely létrehoz egy ideiglenes táblát, #stats_ddl DDL-utasítások a tárolt eljárás létrehozása.  Ez a tárolt eljárás #stats_ddl csökken, ha már létezik, győződjön meg arról, ha futtassa többször a munkameneten belül nem sikertelen.  Azonban mivel nincs `DROP TABLE` a tárolt eljárás végén található a tárolt eljárás befejeződésekor elhagyják a létrejött táblában, hogy a tárolt eljárás kívül is olvasható.  Az SQL Data Warehouse ellentétben más SQL Server-adatbázisok is lehet használni az ideiglenes tábla kívül az eljárást, amely létrehozta.  Az ideiglenes táblák az SQL Data Warehouse segítségével **bárhol** a munkamenetből. Ezzel a módszerrel több moduláris és felügyelhető kódot az alábbi példában látható módon:
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;

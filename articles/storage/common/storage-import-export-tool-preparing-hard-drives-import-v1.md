@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 185e243838d2ccdc920fa5b5714995801567a24f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5ea510d8335437cb43f3e8824ec73175c35dcd03
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454674"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452368"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Merevlemezek előkészítése importálási feladatokhoz
 Egy vagy több merevlemezek előkészítése importálási feladatokhoz, kövesse az alábbi lépéseket:
@@ -108,7 +108,7 @@ Egy vagy több merevlemezek előkészítése importálási feladatokhoz, kövess
 |**/csas:**<ContainerSas\>|`Optional`. A tároló SAS használatával importálja az adatokat a tárfiók. Meg kell adni vagy **/sk:**< StorageAccountKey\> vagy **/csas:**< ContainerSas\> parancsban.<br /><br /> Ez a paraméter értéke a tároló nevét, egy kérdőjelet (?) és a SAS-jogkivonatot kell kezdődnie. Példa:<br /><br /> `mycontainer?sv=2014-02-14&sr=c&si=abcde&sig=LiqEmV%2Fs1LF4loC%2FJs9ZM91%2FkqfqHKhnz0JM6bqIqN0%3D&se=2014-11-20T23%3A54%3A14Z&sp=rwdl`<br /><br /> Az engedélyeket, akár az URL-cím vagy egy tárolt hozzáférési házirendben megadott, tartalmaznia kell olvasási, írási és törlési az importálási feladatokhoz, és olvasási, írási és a lista az export-feladatok.<br /><br /> Ha ez a paraméter meg van adva, az importált vagy exportált összes blobot a tárolóban, a közös hozzáférésű jogosultságkód található a megadott kell lennie.|
 |**/t:**<TargetDriveLetter\>|`Required.` A cél merevlemez-meghajtó a jelenlegi példány munkamenet a záró kettőspont nélkül meghajtóbetűjelet.|
 |**Format**|`Optional.` Adja meg ezt a paramétert, ha a meghajtó kell formázni; Ellenkező esetben hagyja azt. Az eszköz formázza a meghajtón, mielőtt a rendszer kér megerősítést konzolról. A jóváhagyás le, adja meg a /silentmode paramétert.|
-|**/silentmode**|`Optional.` Adja meg ezt a paramétert a megerősítést a targert meghajtón le.|
+|**/silentmode**|`Optional.` Adja meg ezt a paramétert a megerősítés a célmeghajtó formázási le.|
 |**/encrypt**|`Optional.` Amikor a meghajtót a BitLocker még nem titkosítva, és titkosítani kell az eszköz a megadott ezt a paramétert. Ha a meghajtó már a Bitlockerrel titkosított, majd hagyja ki ezt a paramétert, és adja meg a `/bk` paramétert, a meglévő BitLocker-kulcs megadása.<br /><br /> Ha megad a `/format` paramétert, akkor is meg kell adnia a `/encrypt` paraméter.|
 |**/bk:**<BitLockerKey\>|`Optional.` Ha `/encrypt` van adva, hagyja ki ezt a paramétert. Ha `/encrypt` van megadva, rendelkeznie kell már titkosította a meghajtó bitlockerrel van. Ez a paraméter használatával adja meg a BitLocker-kulcsot. BitLocker-titkosítást az összes merevlemezek importálási feladatokhoz szükség.|
 |**/ logdir:**< LogDirectory\>|`Optional.` A naplózási könyvtár részletes naplók, valamint az ideiglenes fájlok tárolására szolgáló könyvtár megadása Ha nincs megadva, a naplózási könyvtár az aktuális könyvtárban lesz.|

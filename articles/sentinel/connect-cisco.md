@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: bfdd2d2f78635f417127632d77b24c48dd6d5b81
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 92b42c54afd06a9ded3e9d9e672ae2d4558ad415
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244502"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442800"
 ---
 # <a name="connect-your-cisco-asa-appliance"></a>Csatlakozás a Cisco ASA-berendezés 
 
@@ -34,7 +34,7 @@ Csatlakozhat az Azure-Sentinel bármely Cisco ASA-berendezés. Cisco ASA natív 
 
 ## <a name="step-1-connect-your-cisco-asa-appliance-using-an-agent"></a>1. lépés: A Cisco ASA-berendezés használatával egy ügynök csatlakoztatása
 
-A Cisco ASA-berendezés csatlakozni az Azure-Sentinel, szüksége egy dedikált gépen (VM vagy helyszíni) a készüléket és a Sentinel-Azure közötti kommunikáció támogatásához az ügynökök telepítéséhez. Az ügynök deploly automatikusan vagy manuálisan is. Automatikus központi telepítési csak akkor használható, ha dedikált számítógépe egy új virtuális Gépet hoz létre az Azure-ban. 
+A Cisco ASA-berendezés csatlakozni az Azure-Sentinel, dedikált gépre az ügynökök telepítéséhez szüksége (virtuális gép vagy a helyszínen) a készüléket és a Sentinel-Azure közötti kommunikáció támogatásához. Az ügynök deploly automatikusan vagy manuálisan is. Automatikus központi telepítési csak akkor használható, ha dedikált számítógépe egy új virtuális Gépet hoz létre az Azure-ban. 
 
 Azt is megteheti telepítheti az ügynököt manuálisan a meglévő Azure virtuális gép, egy virtuális gépen egy másik felhőben vagy a helyszíni gépen.
 
@@ -74,7 +74,7 @@ A hálózati diagram mindkét lehetőség előnyeivel, olvassa el [adatforrások
       2. Indítsa újra a Syslog-ügynök a következő paranccsal: `sudo /opt/microsoft/omsagent/bin/service_control restart [{workspace GUID}]`
       1. Győződjön meg arról, hogy nincsenek hibák az ügynöknaplóban Ez a parancs futtatásával: `tail /var/opt/microsoft/omsagent/log/omsagent.log`
 
-### <a name="deploy-the-agent-on-an-on-prem-linux-server"></a>Egy helyszíni Linux-kiszolgálón az ügynök telepítése
+### <a name="deploy-the-agent-on-an-on-premises-linux-server"></a>A helyi Linux-kiszolgálón az ügynök telepítése
 
 Ha nem használja az Azure, ügynököt manuálisan telepíti az Azure-Sentinel futtatása egy dedikált Linux-kiszolgálón.
 

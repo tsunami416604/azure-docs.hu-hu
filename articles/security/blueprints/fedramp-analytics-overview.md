@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
-ms.openlocfilehash: e3bfc3d0f444bece0afe7b7f5bcdac343a693a13
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: fa10ff14bf893c268d6b6b1a0d181d11a3f27dc4
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243703"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451875"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-fedramp"></a>Azure biztonsági és megfelelőségi terv: FedRAMP elemzés
 
@@ -140,7 +140,7 @@ Az Azure SQL Database biztonsági szolgáltatásaival kapcsolatos további infor
 [Az Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) elengedhetetlen a központi telepítés kezelése és kiépítése a környezet implementálására csoporthoz való hozzáférést. Az AAD-ben meglévő Windows Server Active Directory integrálhatók [négy kattintással](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-express). Ügyfelek egy meglévő AAD-be való elősegítsék a telepített Active Directory-infrastruktúrát (tartományvezérlők) is, azáltal, hogy a telepített Active Directory-infrastruktúra egy AAD-erdőhöz tartozó altartományban.
 
 ### <a name="additional-services"></a>További szolgáltatások
-#### <a name="iaas---vm-vonsiderations"></a>IaaS - virtuális gép vonsiderations
+#### <a name="iaas---vm-considerations"></a>IaaS - virtuális gépekkel kapcsolatos szempontok
 A PaaS-megoldás nem foglalják magukban az olyan Azure IaaS virtuális gépek. Egy ügyfél létrehozhat egy Azure virtuális gép számos, a PaaS-szolgáltatások futtatásához. Ebben az esetben a funkciók és szolgáltatások üzletmenet-folytonosság és az Azure Monitor naplóira sikerült jól használható:
 
 ##### <a name="business-continuity"></a>Az üzletmenet folytonossága

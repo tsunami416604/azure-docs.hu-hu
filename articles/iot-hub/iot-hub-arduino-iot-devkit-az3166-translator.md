@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 12/19/2018
 ms.author: liydu
-ms.openlocfilehash: 038b1d9fa319837f3877c20c9fc3b1b83970e7b4
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: b072efbbf02528a3c62662c5543007ef3332d434
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158618"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440712"
 ---
 # <a name="use-iot-devkit-az3166-with-azure-functions-and-cognitive-services-to-make-a-language-translator"></a>Az Azure Functions és a Cognitive Services IoT DevKit AZ3166 használata nyelvű fordító
 
@@ -54,7 +54,7 @@ Ez az oktatóanyag lépéseinek végrehajtásához először a következő felad
 
   Jegyezze fel az Azure IoT Hub-eszköznév hozott létre.
 
-1. Nyissa meg `Functions\DevKitTranslatorFunction.cs` , és frissítse a következő kódsorokat devce nevét és útmutatóban lejegyzett beszédszolgáltatás kulcsát.
+1. Nyissa meg `Functions\DevKitTranslatorFunction.cs` , és frissítse az alábbi kódsorokkal az eszköz nevét és útmutatóban lejegyzett beszédszolgáltatás kulcs.
   ```csharp
   // Subscription Key of Speech Service
   const string speechSubscriptionKey = "";
@@ -128,7 +128,7 @@ A fordítási eredmény képernyőn a következő műveletek végezhetők el:
 
 ## <a name="how-it-works"></a>Működés
 
-![Mini-Solution-Voice-to-tweet-diagram](media/iot-hub-arduino-iot-devkit-az3166-translator/diagram.png)
+![mini-solution-voice-to-tweet-diagram](media/iot-hub-arduino-iot-devkit-az3166-translator/diagram.png)
 
 Az IoT DevKit rögzíti a hangját, majd közzéteszi a HTTP-kérést az Azure Functions eseményindítóra. Az Azure Functions meghívja a cognitive Services-szolgáltatás a beszédfordító API-t ehhez a fordítás. Miután az Azure Functions lekérdezi a fordítandó szöveg, C2D üzenetet küld az eszközre. Majd a fordítást a képernyő jelenik meg.
 

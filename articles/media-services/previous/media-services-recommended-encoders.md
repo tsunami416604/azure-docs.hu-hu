@@ -9,15 +9,15 @@ ms.author: johndeu
 ms.date: 02/09/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: f07b2d128bd770854b7c240fd3c964d880029d3c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 76c5c5d90045e1697f698895e522ffda47d47565
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999011"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447721"
 ---
 # <a name="recommended-on-premises-encoders"></a>Ajánlott helyszíni kódolók
-Amikor az élő adások online közvetítése az Azure Media Services, megadhatja, hogyan történjen a csatorna a bemeneti streamet. Ha egy helyszíni kódolót használata élő kódolás csatornát választja, a kódoló leküldéses egy kiváló minőségű egyszeres átviteli sebességű streamet kimenetként. Ha egy helyszíni kódolót használata a pass-csatornán keresztül, a kódoló leküldéses egy többszörös sávszélességű streamet az összes kívánt kimeneti minőség kimenetként. További információkért lásd: [élő adások online közvetítése helyszíni kódolókkal](media-services-live-streaming-with-onprem-encoders.md).
+Amikor az élő adások online közvetítése az Azure Media Services, megadhatja, hogyan történjen a csatorna a bemeneti streamet. Ha egy a helyszíni kódolót használata élő kódolás csatornát választja, a kódoló leküldéses egy kiváló minőségű egyszeres átviteli sebességű streamet kimenetként. Ha egy a helyszíni kódolót használata a pass-csatornán keresztül, a kódoló leküldéses egy többszörös sávszélességű streamet az összes kívánt kimeneti minőség kimenetként. További információkért lásd: [az élő adások online közvetítése a helyszíni kódolókkal](media-services-live-streaming-with-onprem-encoders.md).
 
 Az Azure Media Services javasolja, hogy valamelyik a következő élő kódolók képesek kimenetként RTMP rendelkezik:
 - Az Adobe Flash Media Live Encoder 3.2-es verzióját
@@ -44,8 +44,8 @@ Az Azure Media Services a következő élő kódolók többféle sávszélesség
 > [!NOTE]
 > Az élő kódolók olyan egy egyféle sávszélességű adatfolyamot küldeni a csatorna továbbítása, de ez a konfiguráció nem ajánlott, mert nem teszi lehetővé az adaptív sávszélességű streamelés az ügyfélnek.
 
-## <a name="how-to-become-an-on-prem-encoder-partner"></a>Hogyan válhat egy helyszíni kódolót partner
-Egy Azure Media Services – helyszíni kódolót partnerként a Media Services a termék elősegíti a vállalati ügyfelek számára a kódoló javaslatot. Egy helyszíni kódolót partner szeretne lenni, ellenőriznie kell a helyszíni kódolót kompatibilitását a Media Services használatával. Ehhez hajtsa végre a következő ellenőrzések:
+## <a name="how-to-become-an-on-premises-encoder-partner"></a>Hogyan válhat egy a helyszíni kódolót partner
+Egy Azure Media Services encoder partnernél helyi, mint a Media Services a termék elősegíti a vállalati ügyfelek számára a kódoló javaslatot. -Partner szeretne lenni a helyszíni kódolót, ellenőriznie kell az on premises kódoló hogy kompatibilis-e a Media Services. Ehhez hajtsa végre a következő ellenőrzések:
 
 Csatorna ellenőrzési továbbítása
 1. Hozzon létre, vagy keresse fel az Azure Media Services-fiók

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 02/14/2019
+ms.date: 02/26/2019
 ms.author: alkohli
-ms.openlocfilehash: 5f44e3c4a1b7f28133ecd232fc49a34931bddfa4
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: eeac05ec86161e60ed9f34b94802c24004de0d4e
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729822"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57407612"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Mi az az Azure Data Box Disk-lemez?
 
@@ -51,7 +51,7 @@ A.  Az Azure Data Box-lemezek jelentkezzen be az Azure Portalra, és hozzon lét
 A. 5 darab egyenként 8 TB-os lemez (7 TB-os felhasználható kapacitással) esetén a felhasználható kapacitás legfeljebb 35 TB. Így egyszerre legfeljebb 35 TB-nyi adat vihető át. Több adat átviteléhez több lemez megrendelése szükséges.
 
 ### <a name="q-how-can-i-check-if-data-box-disks-are-available-in-my-region"></a>K. Honnan tudhatom meg, hogy a Data Box Disk-lemezek elérhetők-e a régiómban? 
-A.  Data Box-lemezek elérhetők jelenleg az Egyesült Államok, Kanada, Ausztrália és az Európai Unió minden országban.  
+A.  Ahol a Data Box-lemezek elérhetők jelenleg megtekintéséhez nyissa meg a [régiók rendelkezésre állása](data-box-disk-overview.md#).  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>K. Mely régiókban tárolhatok adatokat a Data Box Disk-lemezekkel?
 A. Data Box-lemezek díját minden régióhoz az USA, Kanadában, Ausztráliában, és Nyugat-Európa és Észak-Európa belül támogatott. Csak a nyilvános Azure-felhőrégiók támogatottak. Az Azure Government és más független felhők nem támogatottak.
@@ -126,14 +126,14 @@ A.  Nem. A Data Box Disk-lemezekkel jelenleg csak egyetlen általános célú va
 A. A Data Box-lemezek érhető el az eszközkészlet három eszközöket tartalmaz:
  - **Data Box-lemez zárolásának feloldásához eszköz**: Az eszköz zárolásának feloldásához a titkosított lemezek, a Microsoft szállított használható. A lemezek segítségével az eszköz zárolásának feloldása, amikor meg kell adnia a Data Box-lemezrendelését az Azure Portalon a hozzáférési kulcs. 
  - **Data Box Disk fürtérvényesítési eszköz**: Ezzel az eszközzel ellenőrizze a mérete, a formátum és a blob neve az Azure elnevezési konvencióinak megfelelően használja. Emellett a másolt adatokat, majd ellenőrizze az adatokat az Azure-bA feltöltött használt az ellenőrzőösszegek állít elő.
- - **Data Box lemez felosztása Fájlmásoló eszközt**: Használja ezt az eszközt, ha több lemezeket használ, és a egy nagy méretű adathalmazt, amelyek felosztása és lemez minden másolt kell rendelkeznie. Ez az eszköz Windows jelenleg érhető el.
+ - **Data Box lemez felosztása Fájlmásoló eszközt**: Használja ezt az eszközt, ha több lemezeket használ, és a egy nagy méretű adathalmazt, amelyek felosztása és lemez minden másolt kell rendelkeznie. Ez az eszköz Windows jelenleg érhető el. Ez az eszköz nem felügyelt lemezekkel rendelkező támogatott. Ez az eszköz azt is ellenőrzi, mivel átmásolja az adatokat, így az ellenőrzési lépést kihagyhatja az eszköz használatakor.
 
 Az eszközkészlet Windows és Linux egyaránt érhető el. Az eszközkészlet Itt töltheti le:
  - [Data Box Disk eszközkészlet letöltése Windowsra](https://aka.ms/databoxdisktoolswin) 
  - [Data Box Disk eszközkészlet letöltése Linuxra](https://aka.ms/databoxdisktoolslinux)
  
-### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>K. Használható az Azure Files adatátvitelt, majd az adatokat az Azure File Sync Data Box-lemezek? 
-A. Az Azure Files Data Box-lemezek használata nem támogatott. Metaadatok is nem marad meg, ha a fájladatok később használja az Azure File Sync használatával.
+ ### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>K. Használható az Azure Files adatátvitelt, majd az adatokat az Azure File Sync Data Box-lemezek? 
+ A. Az Azure Files Data Box-lemezek használata támogatott, de nem működnek jól az Azure File Sync használatával. Metaadatok nem marad meg, ha a fájl adatait használja az Azure File Sync használatával.
 
 
 ## <a name="verify-and-upload"></a>Ellenőrzés és feltöltés
@@ -142,10 +142,10 @@ A. Az Azure Files Data Box-lemezek használata nem támogatott. Metaadatok is ne
 A.  Amint az Adatmásolás megrendelési állapota befejeződöttként jelenik meg, azonnal hozzáférhet az adataihoz.
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>K. A feltöltést követően hol lesznek az adataim az Azure-ban?
-A.  Ha a lemezen a *BlockBlob* és a *PageBlob* mappákba másolta az adatait, akkor a *BlockBlob* és a *PageBlob* mappákban található almappáknak létrejön az Azure-tárfiókban egy-egy tároló. Ha a fájlokat közvetlenül a *BlockBlob* és a *PageBlob* mappákba másolta, akkor ezek az alapértelmezett *$root* tárolóban lesznek megtalálhatók az Azure-tárfiókban.
+A.  Ha a lemezen a *BlockBlob* és a *PageBlob* mappákba másolta az adatait, akkor a *BlockBlob* és a *PageBlob* mappákban található almappáknak létrejön az Azure-tárfiókban egy-egy tároló. Ha a fájlokat közvetlenül a *BlockBlob* és a *PageBlob* mappákba másolta, akkor ezek az alapértelmezett *$root* tárolóban lesznek megtalálhatók az Azure-tárfiókban. Ha az adatok másolása egy mappába a *AzureFile* , egy fájlmegosztást hoz létre.
 
 ### <a name="q-i-just-noticed-that-i-did-not-follow-the-azure-naming-requirements-for-my-containers-will-my-data-fail-to-upload-to-azure"></a>K. Most vettem észre, hogy nem követtem az Azure elnevezési követelményeit a tárolóim esetében. Így is fel lehet tölteni az adataimat az Azure-ba?
-A. Ha a tárolók nevei nagybetűket tartalmaznak, akkor azokat automatikusan kisbetűsekké alakítja át a rendszer. Ha a nevek valami más szempontból nem megfelelőek (például speciális karaktereket tartalmaznak, más nyelvűek stb.) akkor a feltöltés meghiúsul. További információt az [Azure elnevezési konvencióit](data-box-disk-limits.md#azure-block-blob-and-page-blob-naming-conventions) ismertető szakaszban talál.
+A. Ha a tárolók nevei nagybetűket tartalmaznak, akkor azokat automatikusan kisbetűsekké alakítja át a rendszer. Ha a nevek valami más szempontból nem megfelelőek (például speciális karaktereket tartalmaznak, más nyelvűek stb.) akkor a feltöltés meghiúsul. További információt az [Azure elnevezési konvencióit](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions) ismertető szakaszban talál.
 
 ### <a name="q-how-do-i-verify-the-data-i-copied-onto-multiple-data-box-disks"></a>K. Hogyan tudom ellenőrizni a több Data Box Disk-lemezre feltöltött adataimat?
 A.  Az adatok másolásának befejezése után futtassa az `DataBoxDiskValidation.cmd` fájlt a *DataBoxDiskImport* mappából, hogy létrehozzon az érvényesítéshez egy ellenőrzőösszeget. Ha több lemeze is van, akkor minden egyes lemezen meg kell nyitnia a parancssori ablakot, és le kell futtatnia ezt a parancsot. Vegye figyelembe, hogy ez a művelet az adatok méretétől függően akár hosszú ideig (órákig) is eltarthat.
@@ -160,7 +160,13 @@ A.  A Data Box Disk-lemezek 128 bites Microsoft BitLocker AES-titkosítással va
 A. Igen. Ha úgy dönt, hogy érvényesíti az adatait (ezt mi is javasoljuk), akkor ha további adatokat másol a lemezre, újra le kell futtatnia az érvényesítést.
 
 ### <a name="q-i-used-all-my-disks-to-transfer-data-and-need-to-order-more-disks-is-there-a-way-to-quickly-place-the-order"></a>K. Az összes lemezt felhasználtam az adataim átviteléhez, és szükségem van további lemezek megrendelésére. Fel lehet adni gyorsan a megrendelést?
-A. Lehetősége van klónozni az előző megrendelését. A klónozással létrehozhat egy, az előzővel azonos megrendelést, amelynek szerkesztheti a részleteit, anélkül, hogy újra meg kellene adnia a címet vagy az értesítési adatokat. 
+A. Lehetősége van klónozni az előző megrendelését. A klónozással létrehozhat egy, az előzővel azonos megrendelést, amelynek szerkesztheti a részleteit, anélkül, hogy újra meg kellene adnia a címet vagy az értesítési adatokat.
+
+### <a name="q-i-copied-data-to-manageddisk-folder-i-dont-see-any-managed-disks-with-the-resource-group-specified-for-managed-disks-was-my-data-uploaded-to-azure-and-how-can-i-locate-it"></a>K. ManagedDisk mappába másolt adatokat. A felügyelt lemezek a megadott erőforráscsoport nem látható a felügyelt lemezeket. Adatok feltöltése az Azure-ba, és hogyan kikereshetők?
+A. Igen. Az adatok feltöltése az Azure-ba, de ha nem látja a felügyelt lemezeket a megadott erőforrás-csoportokat, valószínű, mert nem volt érvényes az adatok. A lapblobok blokkblobokat, az Azure Files, és a felügyelt lemezeket nem érvényes, ha ezek akkor lépjen a következő mappák:
+ - Lapblobok block blob-tárolóba kezdődően lép majd *databoxdisk – érvénytelen-pb -*.
+ - Az Azure Files helyezkedik el kezdve block blob-tárolóba *databoxdisk – érvénytelen-af -*.
+ - A felügyelt lemezek helyezkedik el kezdve block blob-tárolóba *databoxdisk-invliad-md -*.
 
 ## <a name="next-steps"></a>További lépések
 

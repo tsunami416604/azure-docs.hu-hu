@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37d34d6df23b22466f3016841685ec2797a5c9ea
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 45983a4aecd61babf4e4262d708ac323f9773546
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177958"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443953"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Verziókiadások előzményei
 Az Azure Active Directory-csapat rendszeresen frissíti az Azure AD Connect Health új szolgáltatásait és funkcióit. Ez a cikk felsorolja és kiadott funkciókról.
@@ -39,7 +39,7 @@ Az Azure AD Connect Health szinkronizálási szolgáltatás integrálva van az A
 *   Az Azure AD Connect Health agent for AD FS (3.1.24.0 verzió)
 1. Transport Layer Security (TLS) protokoll 1.2-es verziójában megfelelőségi és végrehajtás
 2. A Test-ADFSRequestToken honosított operációs rendszer támogatása
-3. Az ügynök disgnostic EventHandler zárolási problémát megoldotta
+3. Diagnosztikai ügynök EventHandler zárolási problémát megoldani.
 4. Health ügynök regisztrációs hibajavítások
 
 ## <a name="august-2018"></a>2018. augusztus 

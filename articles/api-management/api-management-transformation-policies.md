@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 5dc39d2f64aa2cd895cbf57d95100d831a6f4432
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 4e7af92ed0ce04bb14bd49c24de4928baa4f00ec
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159791"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448066"
 ---
 # <a name="api-management-transformation-policies"></a>Az API Management átalakítási szabályzatok
 Ez a témakör egy hivatkozást kínál a következő az API Management házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [az API Management házirendek](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -72,14 +72,14 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 
 |Name (Név)|Leírás|Szükséges|
 |----------|-----------------|--------------|
-|JSON-xml|A gyökérelem.|Igen|
+|json-to-xml|A gyökérelem.|Igen|
 
 ### <a name="attributes"></a>Attribútumok
 
 |Name (Név)|Leírás|Szükséges|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
 |alkalmaz|Az attribútum a következő értékek egyikére kell beállítani.<br /><br /> -mindig - mindig érvényes átalakítás.<br />csak akkor, ha a válasz Content-Type fejléce azt jelzi, hogy jelenléte JSON - tartalom típusa, json - convert.|Igen|–|
-|Fontolja meg – fogadja el-fejléc|Az attribútum a következő értékek egyikére kell beállítani.<br /><br /> átalakítás – igaz - vonatkoznak, ha JSON Accept fejléc kérelem van szükség.<br />-false - mindig érvényes átalakítás.|Nem|true|
+|consider-accept-header|Az attribútum a következő értékek egyikére kell beállítani.<br /><br /> átalakítás – igaz - vonatkoznak, ha JSON Accept fejléc kérelem van szükség.<br />-false - mindig érvényes átalakítás.|Nem|true|
 |Parse-dátuma|Ha a beállítása `false` dátumértékeket egyszerűen másolja átalakítás során|Nem|true|
 
 ### <a name="usage"></a>Használat
@@ -116,7 +116,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 
 |Name (Név)|Leírás|Szükséges|
 |----------|-----------------|--------------|
-|XML-json|A gyökérelem.|Igen|
+|xml-to-json|A gyökérelem.|Igen|
 
 ### <a name="attributes"></a>Attribútumok
 
@@ -124,7 +124,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 |----------|-----------------|--------------|-------------|
 |típusa|Az attribútum a következő értékek egyikére kell beállítani.<br /><br /> -javascript-barát – az átalakított JSON a JavaScript-fejlesztőinek rövid űrlapot befogadó.<br />a konvertált JSON - közvetlen – jeleníti meg az eredeti XML-dokumentum szerkezete.|Igen|–|
 |alkalmaz|Az attribútum a következő értékek egyikére kell beállítani.<br /><br /> -mindig - mindig konvertálni.<br />csak akkor, ha a válasz Content-Type fejléce azt jelzi, hogy jelenléte XML - tartalom típusa, xml - convert.|Igen|–|
-|Fontolja meg – fogadja el-fejléc|Az attribútum a következő értékek egyikére kell beállítani.<br /><br /> átalakítás – igaz - alkalmazni, ha XML van szükség a kérelem Accept fejlécet.<br />-false - mindig érvényes átalakítás.|Nem|true|
+|consider-accept-header|Az attribútum a következő értékek egyikére kell beállítani.<br /><br /> átalakítás – igaz - alkalmazni, ha XML van szükség a kérelem Accept fejlécet.<br />-false - mindig érvényes átalakítás.|Nem|true|
 
 ### <a name="usage"></a>Használat
  Ez a házirend használható a következő szabályzatot [szakaszok](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) és [hatókörök](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
@@ -152,7 +152,7 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 
 |Name (Név)|Leírás|Szükséges|
 |----------|-----------------|--------------|
-|Keresés és csere|A gyökérelem.|Igen|
+|find-and-replace|A gyökérelem.|Igen|
 
 ### <a name="attributes"></a>Attribútumok
 
@@ -261,8 +261,8 @@ Ebben a példában a házirend továbbítja a kérést egy service fabric hátt�
 |Name (Név)|Leírás|Szükséges|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
 |alap URL-címet|Új háttérrendszer szolgáltatás kiindulási URL-címe.|Nem|–|
-|háttér-azonosító|A háttérrendszer irányíthatja a azonosítója.|Nem|–|
-|SF partíciókulcs|Csak akkor alkalmazható, ha a háttérrendszer egy Service Fabric-szolgáltatás, és meghatározott backend-id használatával. A névfeloldási szolgáltatás egy adott partícióra feloldásához használt.|Nem|–|
+|backend-id|A háttérrendszer irányíthatja a azonosítója.|Nem|–|
+|sf-partition-key|Csak akkor alkalmazható, ha a háttérrendszer egy Service Fabric-szolgáltatás, és meghatározott backend-id használatával. A névfeloldási szolgáltatás egy adott partícióra feloldásához használt.|Nem|–|
 |sf-replica-type|Csak akkor alkalmazható, ha a háttérrendszer egy Service Fabric-szolgáltatás, és meghatározott backend-id használatával. Ha a kérelem el kell küldeni az elsődleges vagy másodlagos replika partíció szabályozza. |Nem|–|
 |sf-resolve-condition|Csak akkor alkalmazható, ha a háttérrendszer a Service Fabric-szolgáltatás. A feltétel azonosítása kell-e a hívás a Service Fabric háttérrendszeréhez új megoldás meg kell ismételni.|Nem|–|
 |sf-service-instance-name|Csak akkor alkalmazható, ha a háttérrendszer a Service Fabric-szolgáltatás. Lehetővé teszi szolgáltatáspéldányok futásidőben módosításához. |Nem|–|
@@ -358,7 +358,7 @@ A `set-body` házirend használatára konfigurálható a [Liquid](https://shopif
 > [!IMPORTANT]
 > Folyékony megvalósítása a használt a `set-body` szabályzat van konfigurálva, a "C# mód". Ez akkor különösen fontos, ha például a szűrés dologra. Tegyük fel, a dátum szűrő használatával szükséges Pascal kis-és és a C# dátum formázása, például:
 >
-> {{body.foo.startDateTime| Dátum: "yyyyMMddTHH:mm:ddZ"}}
+> {{body.foo.startDateTime| Date:"yyyyMMddTHH:mm:ddZ"}}
 
 > [!IMPORTANT]
 > Annak érdekében, hogy megfelelően Liquid-sablonnal egy XML-törzs kötést létrehozni, használjon egy `set-header` házirend beállítása a Content-Type vagy application/xml, text és xml (vagy bármely típusú végződő + xml); egy JSON-törzse, kell application/json, text/json (vagy bármilyen végződésű + JSON-).
@@ -376,7 +376,7 @@ A `set-body` házirend használatára konfigurálható a [Liquid](https://shopif
 </set-body>
 ```
 
-#### <a name="tranform-json-using-a-liquid-template"></a>Tranform JSON Liquid-sablon használatával
+#### <a name="transform-json-using-a-liquid-template"></a>Folyékony sablon használatával JSON-átalakítás
 ```xml
 {
 "order": {

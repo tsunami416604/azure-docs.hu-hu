@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: diberry
-ms.openlocfilehash: 1c408a77f0bdd097db1fb462fa06245133773b71
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: af73d78b911d59f68c5e824931b5634d8c69f309
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195387"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449002"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Minták előrejelzési pontosság növeléséhez.
 Pontosság javításához, ha több utterances nagyon hasonló minták lettek kialakítva.  Egy minta segítségével megjelölésű a nagyobb pontosság számos további kimondott szöveg megadása nélkül. 
@@ -62,7 +62,7 @@ Entitások minták a kapcsos zárójeleket veszi körül `{}`. Minták lehetnek,
 
 A minta szintaxis támogatja a következő szintaxist:
 
-|Függvény|Szintaxis|[A beágyazási szint](#nesting-syntax)|Példa|
+|Függvény|Szintaxis|A beágyazási szint|Példa|
 |--|--|--|--|
 |entitás| {} -kapcsos zárójelek|2|Hol található az űrlap {entitás neve üzemeltetett szolgáltatás}?|
 |választható|[] - szögletes zárójelek<BR><BR>A 3-ból a beágyazási szinttel, tetszőleges választható és csoportosítás kombinációját korlátja |2|A kérdőjel [?]|
@@ -167,7 +167,7 @@ A reguláris kifejezés szögletes zárójel szintaxis használatával az uttera
 |Nem kötelező szöveg minta|Jelentés|
 |--|--|
 |`[find] email about {subject} [from {person}]`|`find` és `from {person}` megadása nem kötelező|
-|"Lehet, segítséget kérek a [?] |} Nem kötelező, az írásjelek|
+|"Lehet, segítséget kérek a [?]|Nem kötelező, az írásjelek|
 
 Írásjelek (`?`, `!`, `.`) figyelmen kívül lesz hagyva, és ezek a minták a szögletes zárójelet szintaxis használatával figyelmen kívül kell. 
 

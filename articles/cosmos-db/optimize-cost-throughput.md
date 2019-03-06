@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 040fac6cd4feb60b6635ba0868634f16dd9f146f
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: e4d4d15ebb8200f16be8953e955b2e793be03c3a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56881726"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452186"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>Az Azure Cosmos DB kiosztott átviteli sebesség költségek optimalizálása
 
@@ -113,7 +113,7 @@ Továbbá ha az Azure Cosmos DB használ, és tudja, nem fogják keresni egyes a
 
 ## <a name="optimize-by-changing-indexing-policy"></a>Indexelési házirend módosításával optimalizálása 
 
-Alapértelmezés szerint az Azure Cosmos DB automatikusan indexeli az összes rekord minden egyes tulajdonság. Ennek célja, hogy a fejlesztés megkönnyítése érdekében és ad hoc jellegű lekérdezésekkel sok különböző típusú kiváló teljesítmény biztosítása érdekében. Ha több ezer tulajdonságok nagy méretű rekordok, és az átviteli sebesség költség indexelő minden egyes tulajdonság nem lehet hasznos, különösen akkor, ha a 10-es vagy 20. Ezek a tulajdonságok csak lekérdezni. Növekedésével közelebb első leírót a adott számítási feladatra, ügyfeleinket, az index szabályzat finomhangolásához. Részletes információk az Azure Cosmos DB indexelési szabályzat található [Itt](indexing-policies.md). 
+Alapértelmezés szerint az Azure Cosmos DB automatikusan indexeli az összes rekord minden egyes tulajdonság. Ennek célja, hogy a fejlesztés megkönnyítése érdekében, és a kiváló teljesítmény biztosítása érdekében számos különböző típusú ad hoc lekérdezéseket. Ha több ezer tulajdonságok nagy méretű rekordok, és az átviteli sebesség költség indexelő minden egyes tulajdonság nem lehet hasznos, különösen akkor, ha a 10-es vagy 20. Ezek a tulajdonságok csak lekérdezni. Növekedésével közelebb első leírót a adott számítási feladatra, ügyfeleinket, az index szabályzat finomhangolásához. Részletes információk az Azure Cosmos DB indexelési szabályzat található [Itt](indexing-policies.md). 
 
 ## <a name="monitoring-provisioned-and-consumed-throughput"></a>Figyelési kiépített és felhasznált átviteli sebesség 
 

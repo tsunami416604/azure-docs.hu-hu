@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: shlo
-ms.openlocfilehash: 70f8533843668a86607e31a551e6ebf9abeab6c4
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 62c9a8e6375f6ac7db86ae81cdd4e5c9eb445770
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016630"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432821"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>Hozzon létre egy eseményindítót, amely egy ütemezés szerint futtatja a folyamatot
 Ez a cikk az ütemezési eseményindító és létrehozása, indítása és monitorozása az ütemezési eseményindító lépéseit ismerteti. Más típusú eseményindítókat, lásd: [folyamat-végrehajtás és eseményindítók](concepts-pipeline-execution-triggers.md).
@@ -66,6 +66,9 @@ Létrehozhat egy **ütemezési eseményindító** ütemezni egy folyamat futtat�
     ![Eseményindító-futtatások monitorozása](./media/how-to-create-schedule-trigger/monitor-trigger-runs.png)
 
 ## <a name="azure-powershell"></a>Azure PowerShell
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Ez a szakasz bemutatja, hogyan hozhat létre, indítsa el, és az ütemezési eseményindító figyelni az Azure PowerShell használatával. Minta működés, először lépjen a [a rövid útmutató: Adat-előállító létrehozása az Azure PowerShell-lel](quickstart-create-data-factory-powershell.md). Ezt követően adja a következő kódot a fő metódus létrehozza és elindítja egy ütemezési eseményindítót, amely 15 percenként fut le. Nevű folyamatot az eseményindító társítva **Adfv2QuickStartPipeline** a rövid útmutató során létrehozott.
 
 1. Hozzon létre egy JSON-fájlt **MyTrigger.json** a C:\ADFv2QuickStartPSH\ mappában az alábbi tartalommal:
@@ -108,34 +111,34 @@ Ez a szakasz bemutatja, hogyan hozhat létre, indítsa el, és az ütemezési es
     - Az eseményindító társítva van a **Adfv2QuickStartPipeline** folyamat. Eseményindító több folyamatot társítható, adjon hozzá további **pipelineReference** szakaszokat.
     - A rövid útmutatóban a folyamat vesz igénybe, két **paraméterek** értékek: **inputPath** és **outputPath**. Ezért adja át a paraméterek értékei a trigger által.
 
-2. Az eseményindító létrehozása a **Set-AzureRmDataFactoryV2Trigger** parancsmagot:
+2. Az eseményindító létrehozása a **Set-AzDataFactoryV2Trigger** parancsmagot:
 
     ```powershell
-    Set-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
+    Set-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
     ```
 
-3. Győződjön meg arról, hogy az eseményindító állapotának **leállítva** használatával a **Get-AzureRmDataFactoryV2Trigger** parancsmagot:
+3. Győződjön meg arról, hogy az eseményindító állapotának **leállítva** használatával a **Get-AzDataFactoryV2Trigger** parancsmagot:
 
     ```powershell
-    Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
+    Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-4. Indítsa el az eseményindítót a használatával a **Start-AzureRmDataFactoryV2Trigger** parancsmagot:
+4. Indítsa el az eseményindítót a használatával a **Start-AzDataFactoryV2Trigger** parancsmagot:
 
     ```powershell
-    Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
+    Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-5. Győződjön meg arról, hogy az eseményindító állapotának **elindítva** használatával a **Get-AzureRmDataFactoryV2Trigger** parancsmagot:
+5. Győződjön meg arról, hogy az eseményindító állapotának **elindítva** használatával a **Get-AzDataFactoryV2Trigger** parancsmagot:
 
     ```powershell
-    Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
+    Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-6.  Az eseményindító fut. az Azure PowerShell használatával Get a **Get-AzureRmDataFactoryV2TriggerRun** parancsmagot. Az eseményindító-futtatások kapcsolatos információk lekérése, rendszeres időközönként hajtsa végre a következő parancsot. Frissítés a **TriggerRunStartedAfter** és **TriggerRunStartedBefore** értékeit, hogy megfeleljenek az eseményindító definíciójában szereplő értékeket:
+6.  Az eseményindító fut. az Azure PowerShell használatával Get a **Get-AzDataFactoryV2TriggerRun** parancsmagot. Az eseményindító-futtatások kapcsolatos információk lekérése, rendszeres időközönként hajtsa végre a következő parancsot. Frissítés a **TriggerRunStartedAfter** és **TriggerRunStartedBefore** értékeit, hogy megfeleljenek az eseményindító definíciójában szereplő értékeket:
 
     ```powershell
-    Get-AzureRmDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
+    Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
     ```
     
     Az eseményindító figyelése fut, és az Azure Portalon folyamatfuttatások, lásd: [folyamatfuttatások monitorozása](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
@@ -322,12 +325,12 @@ Az alábbi táblázat magas szintű áttekintést nyújt az eseményindítóval 
 
 ### <a name="schema-defaults-limits-and-examples"></a>Séma alapértékei, korlátai és példái
 
-| JSON-tulajdonság | Típus | Szükséges | Alapértelmezett érték | Érvényes értékek | Példa |
+| JSON-tulajdonság | Typo | Szükséges | Alapértelmezett érték | Érvényes értékek | Példa |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| **startTime** | Karakterlánc | Igen | None | ISO-8601 dátum-idők | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **startTime** | String | Igen | None | ISO-8601 dátum-idők | `"startTime" : "2013-01-09T09:30:00-08:00"` |
 | **recurrence** | Objektum | Igen | None | Recurrence objektum | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
 | **interval** | Szám | Nem | 1 | 1–1000 | `"interval":10` |
-| **endTime** | Karakterlánc | Igen | None | Egy jövőbeli időpontot jelölő dátum-idő érték. | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **endTime** | String | Igen | None | Egy jövőbeli időpontot jelölő dátum-idő érték. | `"endTime" : "2013-02-09T09:30:00-08:00"` |
 | **schedule** | Objektum | Nem | None | Schedule objektum | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
 
 ### <a name="starttime-property"></a>startTime tulajdonság

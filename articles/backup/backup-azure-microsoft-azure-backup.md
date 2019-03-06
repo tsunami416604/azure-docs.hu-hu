@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: kasinh
-ms.openlocfilehash: b94d6bd9cc129d80f3ece82c13df375abecafd26
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: f81e7a0008c015c033d30045970fe1bd67597ff9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493411"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452190"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Telepítése és az Azure Backup Server frissítése
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ Ez a cikk bemutatja, hogyan készítse elő a környezetét a Microsoft Azure Ba
 >
 >
 
-Egy Azure-beli virtuális gépen telepített MABS készíthet biztonsági másolatot a virtuális gép az Azure-ban, de azok a biztonsági mentési művelet engedélyezéséhez azonos tartományban kell lennie. Az Azure virtuális gép biztonsági folyamat továbbra is ugyanaz, mint a helyszíni virtuális gépek biztonsági mentésével, azonban üzembe helyezése az Azure-ban MABS vannak bizonyos korlátai. További információ a korlátozás: [DPM Azure virtuális gépként](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-1807#setup-prerequisites)
+Egy Azure-beli virtuális gépen telepített MABS készíthet biztonsági másolatot a virtuális gép az Azure-ban, de azok a biztonsági mentési művelet engedélyezéséhez azonos tartományban kell lennie. A folyamat egy Azure virtuális gép biztonsági ugyanaz, mint a virtuális gépek biztonsági mentésének a helyszínen marad, azonban üzembe helyezése az Azure-ban MABS vannak bizonyos korlátai. További információ a korlátozás: [DPM Azure virtuális gépként](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-1807#setup-prerequisites)
 
 > [!NOTE]
 > Az Azure az erőforrások létrehozásához és használatához két üzembe helyezési modellel rendelkezik: [Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md). A cikk a Resource Manager modellel üzembe helyezett virtuális gépek visszaállításához információkat és eljárásokat ismerteti.
@@ -51,7 +51,7 @@ Ha nem szeretné, hogy a kiszolgáló futtatása az Azure-ban, a Hyper-V virtuá
 
 | Operációs rendszer | Platform | SKU |
 |:--- | --- |:--- |
-| A Windows Server 2019 |64 bit |Standard, Datacenter, Essentials (MABS v3-as és újabb verziók) |
+| Windows Server 2019 |64 bit |Standard, Datacenter, Essentials (MABS v3-as és újabb verziók) |
 | A Windows Server 2016 és a legújabb szervizcsomagok |64 bit |Standard, Datacenter, Essentials (MABS V2 és újabb verziók) |
 | Windows Server 2012 R2 és a legújabb szervizcsomagok |64 bit |Standard, Datacenter, Foundation |
 | Windows Server 2012 és a legújabb szervizcsomagok |64 bit |Datacenter, Foundation, Standard |

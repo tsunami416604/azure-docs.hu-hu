@@ -10,12 +10,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/17/2019
 ms.author: kgremban
-ms.openlocfilehash: df1c0f8256b49e23b720df47c513fba8c62677b5
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 5fcd7c10002e7e1ae9683fdd89d3af14a1500050
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54475203"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449189"
 ---
 # <a name="azure-event-grid-event-schema-for-iot-hub"></a>Az Azure IoT hub Event Grid-eseménysémája
 
@@ -141,7 +141,7 @@ Az objektum tartalmát minden egyes esemény-közzétevő eltérőek. A **létre
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| ikereszköz | objektum | Az ikereszközök, amely a felhőalapú represenation alkalmazás eszköz metaadatainak kapcsolatos információk. | 
+| ikereszköz | objektum | Az ikereszközök, amely a felhőalapú alkalmazások eszköz metaadatainak ábrázolása kapcsolatos információk. | 
 | deviceID | sztring | Az ikereszközök egyedi azonosítója. | 
 | ETag | sztring | Egy érvényesítő egy ikereszköz-frissítések konzisztencia biztosításához. Minden egyes etag garantáltan ikereszköz minden egyedi. |  
 | deviceEtag| sztring | Egy érvényesítő frissítések egy eszközjegyzékébe konzisztencia biztosításához. Minden egyes deviceEtag garantáltan eszközjegyzék minden egyedi. |

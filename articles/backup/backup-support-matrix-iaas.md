@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/17/2019
+ms.date: 02/24/2019
 ms.author: raynew
-ms.openlocfilehash: da615d76e9efa0ad8d0952a6d75bc341336a6596
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 264f10be1ecb22b6261a14f7185f88b101242d36
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312970"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440777"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM backup-támogatási mátrixa
 Használhatja a [Azure Backup szolgáltatás](backup-overview.md) a helyszíni gépek és a számítási feladatok és Azure-beli virtuális gépek (VM) biztonsági mentése. Ez a cikk összegzi a támogatási beállításait és korlátozások biztonsági mentésekor az Azure-beli virtuális gépek az Azure Backup szolgáltatással.
@@ -157,8 +157,8 @@ Az Azure-bA áttelepített virtuális gépek biztonsági mentése  | Támogatott
 **Összetevő** | **Támogatás**
 --- | ---
 Az Azure virtuális gép adatlemezek | Készítsen biztonsági másolatot egy 16 vagy annál kisebb adatlemezekkel rendelkező virtuális Gépet.
-Adatlemez mérete | Az egyes lemezek legfeljebb 4095 GB is lehet.<br/><br/> Azure VM backup (más néven azonnali visszaállítása) legújabb verzióját futtatja, ha a lemez mérete legfeljebb 4 TB-os támogatottak. [További információk](backup-instant-restore-capability.md).
-Tárolási típus | Standard HDD, standard SSD, prémium szintű SSD. <br/><br/> Standard SSD használata támogatott, ha az Azure VM backup (vagyis az azonnali visszaállítása) legújabb verzióját futtatja. [További információk](backup-instant-restore-capability.md).
+Adatlemez mérete | Az egyes lemezek legfeljebb 4095 GB is lehet.<br/><br/> Ha a tárolók az Azure Backup (más néven azonnali visszaállítása) legújabb verzióját futtatja, a lemez mérete akár 4 TB-os támogatottak. [További információk](backup-instant-restore-capability.md).
+Tárolási típus | Standard HDD, standard SSD, prémium szintű SSD. <br/><br/> Standard SSD akkor támogatott, ha a tárolók az Azure VM backup (vagyis az azonnali visszaállítása) a legújabb verzióra frissül. [További információk](backup-instant-restore-capability.md).
 Felügyelt lemezek | Támogatott.
 Titkosított lemezek | Támogatott.<br/><br/> Az Azure virtuális gépek engedélyezve van az Azure Disk Encryption (a vagy anélkül, hogy az Azure AD-alkalmazás) is készíthető.<br/><br/> Titkosított virtuális gépek nem állítható helyre, a fájl vagy mappa szintjén. A teljes virtuális Gépet helyre kell állítania.<br/><br/> Engedélyezheti a titkosítást az Azure Backup által már védett virtuális gépeken.
 Az engedélyezett Írásgyorsító lemezek | Nem támogatott.<br/><br/> Ha futtatja a legújabb Azure VM backup (más néven [azonnali visszaállítása](backup-instant-restore-capability.md)), lemezeket zárhat ki a biztonsági másolatból engedélyezett Írásgyorsító.

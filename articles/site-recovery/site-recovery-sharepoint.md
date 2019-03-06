@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 1f3168cef503fed0aea09228c9bc11dfb456f2ab
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 5f477cf20b817d7a6c8be856636bf1e3755b5424
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848476"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443487"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Állítsa be az Azure Site Recovery használata vész-helyreállítási SharePoint Többrétegű alkalmazások vészhelyreállítása
 
@@ -29,7 +29,7 @@ Egy jó vész-helyreállítási megoldás engedélyeznie kell a modellezést, a 
 
 Ez a cikk részletesen ismerteti, hogyan védheti meg a SharePoint alkalmazást a [Azure Site Recovery](site-recovery-overview.md). Ez a cikk azzal foglalkozik, ajánlott eljárások a replikál egy három réteg Azure, hogyan teheti egy vészhelyreállítási próba végrehajtása és feladatátvétel az Azure-ban az alkalmazás adhat a SharePoint-alkalmazás.
 
-Megtekintheti a helyreállítani egy több rétegből álló alkalmazás az Azure-bA a videó alatt látható.
+Megtekintheti az alábbi videó az Azure-bA Többrétegű alkalmazások helyreállításával kapcsolatban.
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/Disaster-Recovery-of-load-balanced-multi-tier-applications-using-Azure-Site-Recovery/player]
 
@@ -93,7 +93,7 @@ Hajtsa végre a [Ez az útmutató](site-recovery-vmware-to-azure.md) elindítani
 
 ## <a name="networking-configuration"></a>Hálózati konfiguráció
 
-### <a name="network-properties"></a>Hálózati tulajdonságok
+### <a name="network-properties"></a>Hálózat tulajdonságai
 
 * Az alkalmazás és a webes szintű virtuális gépek hálózati beállítások konfigurálása az Azure Portalon, hogy a virtuális gépek beolvasása a megfelelő DR hálózathoz csatlakozik a feladatátvételt követően.
 
@@ -111,7 +111,7 @@ Internetkapcsolattal rendelkező helyek ["Priority" típusú Traffic Manager-pro
 
 | **ahol** | **Forrás** | **Target**|
 | --- | --- | --- |
-| Nyilvános DNS-ben | Nyilvános DNS-ben a SharePoint-webhelyek <br/><br/> Például: sharepoint.contoso.com | Traffic Manager <br/><br/> contososharepoint.trafficmanager.net |
+| Public DNS | Nyilvános DNS-ben a SharePoint-webhelyek <br/><br/> Például: sharepoint.contoso.com | Traffic Manager <br/><br/> contososharepoint.trafficmanager.net |
 | On-premises DNS | sharepointonprem.contoso.com | Nyilvános IP-címet a helyszíni farm |
 
 

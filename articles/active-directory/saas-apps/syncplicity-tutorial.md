@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3df48fd42ca998e2a64f2fbe685047da16a8bae7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5f6fcc4d2920841c730ef179497f9184b1f6649d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193482"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451952"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-syncplicity"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Syncplicity
 
@@ -206,7 +206,7 @@ AAD-felhasználók számára jelentkezhetnek be akkor ki kell építeni Syncplic
    
     ![Felhasználók kezelése](./media/syncplicity-tutorial/ic769764.png "felhasználók kezelése")
 
-1. Írja be a **E-mail állomásról** egy AAD-fiók kíván üzembe helyezni, válassza ki a **felhasználói** , **szerepkör**, és kattintson a **tovább**.
+1. Írja be a **E-mail-címek** egy AAD-fiók kíván üzembe helyezni, válassza ki a **felhasználói** , **szerepkör**, és kattintson a **tovább**.
    
     ![Fiókadatok](./media/syncplicity-tutorial/ic769765.png "fiókadatok")
    

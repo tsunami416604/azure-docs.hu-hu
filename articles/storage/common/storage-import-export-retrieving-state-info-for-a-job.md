@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/16/2016
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: e40d8e7c05213e99fc2ef65f5dc05f17ba0d185e
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 1a878b5a9f0502ff9acd411359895d7431fb76f4
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55890535"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437242"
 ---
 # <a name="retrieving-state-information-for-an-importexport-job"></a>Importálási/exportálási feladat állapotinformációinak lekérése
 Hívása a [Get Job](/rest/api/storageimportexport/jobs) mindkettő adatainak beolvasásához művelet importálja és a feladatok exportálása. A visszaadott információ tartalmazza:
@@ -45,7 +45,7 @@ A következő táblázat ismerteti az egyes állapot esetében egy feladat mehet
 |`Completed`|Miután az összes meghajtó térjen vissza az ügyfél rendelkezik elküldtük Önnek, ha a feladat hiba nélkül befejeződött, majd a feladat értékre lesz beállítva az `Completed` állapota. A feladat automatikusan törlődni fognak a 90 nap után a `Completed` állapota.|
 |`Closed`|Miután az összes meghajtó térjen vissza az ügyfél rendelkezik elküldtük Önnek, ha sor került esetleges hibákat a feladat feldolgozása során, majd a feladat értékre lesz beállítva az `Closed` állapota. A feladat automatikusan törlődni fognak a 90 nap után a `Closed` állapota.|
 
-Egy feladat csak egyes állapotok lemondhatja a szolgáltatásokat. Megszakított feladat kihagyja az adatok másolása lépés, de ellenkező esetben az azonos állapotváltásra egy feladatot, amely nem meg lett szakítva, következik.
+Egy feladat csak egyes állapotok lemondhatja a szolgáltatásokat. Megszakított feladat kihagyja az adatok másolása lépés, de ellenkező esetben az azonos állapotváltásra egy feladatot, amely nem lett törölve, következik.
 
 A következő táblázat ismerteti a hibákat, amelyek előfordulhatnak esetében minden egyes feladat állapotát, valamint a feladat milyen hatása, ha hiba lép fel.
 

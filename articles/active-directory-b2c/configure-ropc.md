@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: ce65f71349ae6d7e86ebae1ee2067653a63b89b4
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e464787919577b89b1cfec11e579cb17c18e2878
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55161061"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404219"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Az erőforrás tulajdonosának jelszavas hitelesítő adatainak folyamata konfigurálása az Azure AD B2C-vel
 
@@ -40,7 +40,7 @@ A következő folyamatok nem támogatottak:
 1.  Jelentkezzen be az Azure Portalon az Azure AD B2C-bérlő globális rendszergazdájaként.
 2.  Váltson át az Azure AD B2C-bérlő, válassza ki a B2C-címtárat a portál jobb felső sarkában.
 3.  Kattintson a **felhasználói folyamatok**, és válassza ki **új felhasználói folyamat**.
-4.  Kattintson a **összes** lapot, és válasszon **erőforrás tulajdonosa**.
+4.  Kattintson a **összes** lapot, és válasszon **jelentkezzen be a ROPC**.
 5.  Adjon meg egy nevet a felhasználói folyamatot, például: *ROPC_Auth*.
 6.  A **alkalmazásjogcímek**, kattintson a **Továbbiak megjelenítése**.
 7.  Válassza ki az alkalmazáshoz, például a megjelenített név, E-mail-címét és identitásszolgáltató kell application jogcímeket.
@@ -69,7 +69,7 @@ A kedvenc API-fejlesztési alkalmazás használatával létrehozhat egy olyan AP
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Kulcs | Value |
+| Kulcs | Érték |
 | --- | ----- |
 | felhasználónév | leadiocl@outlook.com |
 | jelszó | Passxword1 |
@@ -83,7 +83,7 @@ A kedvenc API-fejlesztési alkalmazás használatával létrehozhat egy olyan AP
 A tényleges POST-kérés a következőhöz hasonlóan néz ki:
 
 ```
-POST /yourtenant.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
+POST /yourtenant.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth HTTP/1.1
 Host: yourtenant.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
@@ -109,7 +109,7 @@ A POST híváson a kérelem törzse a következő táblázatban a információka
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| Kulcs | Value |
+| Kulcs | Érték |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |

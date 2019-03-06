@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e44b6a8232bcd0bc72c4faa0f7116d42cec79111
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 67f2af94f32d5439585ad4d727fd2b1bd80fc41b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172416"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431701"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Az Azure Active Directory intelligens zárolás
 
@@ -72,9 +72,9 @@ Ellenőrizze, vagy módosítani az intelligens zárolás értékeket a szervezet
 
 ![Szabja testre az Azure AD az intelligens zárolási házirendet az Azure Portalon](./media/howto-password-smart-lockout/azure-active-directory-custom-smart-lockout-policy.png)
 
-## <a name="how-to-determine-if-the-smartlockout-feature-is-working-or-not"></a>Annak megállapítása, hogy a Smartlockout funkció működik-e, vagy nem
+## <a name="how-to-determine-if-the-smart-lockout-feature-is-working-or-not"></a>Annak megállapítása, hogy működik-e az intelligens zárolás funkciót, vagy sem
 
-A smartlockout küszöbértéket akkor aktiválódik, amikor a következő üzenetet kap, amíg a fiók zárolva van:
+Az intelligens zárolási küszöbértéke akkor aktiválódik, amikor a következő üzenetet kap, amíg a fiók zárolva van:
 
 **Fiókja jogosulatlan használatának megakadályozása érdekében ideiglenesen zárolva van. Próbálkozzon újra később, és ha továbbra sem tud bejelentkezni, forduljon a rendszergazdához.**
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 1bf2222e09644520bbfc6c5424c7f29d05b3c799
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 454d06912c34a07b0b2617936769888e92adaba1
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257697"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453660"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>Teljesítménnyel kapcsolatos megfontolások a Traffic Manager esetében
 
@@ -58,7 +58,7 @@ Az eszközök ezeket a helyek mérték DNS késéseket és megjelenítési a fel
 
 * [Hitelesítésszolgáltató alkalmazás szintetikus figyelője](https://asm.ca.com/en/checkit.php)
 
-    Korábbi nevén a Watchmouse ellenőrzés webhely eszköz, ezen a helyen bemutatják, a DNS-feloldási idő a több földrajzi régióban egyszerre. Adja meg az URL-cím DNS-feloldási idő, a kapcsolat ideje és a több földrajzi helyről sebessége. Ez a teszt segítségével megtekintheti, mely üzemeltetett szolgáltatás számára a világ különböző pontjain különböző helyeken adja vissza.
+    Korábbi nevén a Watch-egér ellenőrzés webhely eszköz, ezen a helyen bemutatják, a DNS-feloldási idő a több földrajzi régióban egyszerre. Adja meg az URL-cím DNS-feloldási idő, a kapcsolat ideje és a több földrajzi helyről sebessége. Ez a teszt segítségével megtekintheti, mely üzemeltetett szolgáltatás számára a világ különböző pontjain különböző helyeken adja vissza.
 
     ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-watchmouse.png)
 

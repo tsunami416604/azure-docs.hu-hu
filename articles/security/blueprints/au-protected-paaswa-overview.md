@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: meladie
-ms.openlocfilehash: 3eff78aa6b13c48868b95bae03a8406a550a42c9
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: c17f16ce796c9f296facd69c18de4effc7ff5258
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243873"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57440981"
 ---
 # <a name="azure-security-and-compliance-blueprint---paas-web-application-for-australia-protected"></a>Azure biztonsági és megfelelőségi terv – PaaS-webalkalmazás Ausztráliában védett
 
@@ -30,7 +30,7 @@ Ez a megoldás egy referencia-architektúra biztosít egy PaaS-webalkalmazás, e
 
 Az architektúra egy biztonságos hibrid környezetben, amely kiterjeszti a helyszíni hálózatot az Azure-bA web-alapú számítási feladatok biztonságosan a vállalati felhasználók a szervezet helyi magánhálózat és az internetről elérhető, így biztosítható. A helyszíni megoldások esetén egy elszámoltathatóvá és a biztonság, a műveletek és a megfelelőség minden aspektusát felelős.
 
-Az Azure-erőforrások a megoldásban lévő csatlakozhat egy helyszíni hálózat vagy felhőkörnyezetekből közös elhelyezési létesítményből csatlakozó (pl. a Canberra CDC) keresztül egy VPN-átjáró használatával IPSec VPN és expressroute-on keresztül. VPN használni a döntést a besorolású, az átvitt adatok és a hálózati elérési út szem előtt kell elvégezni. Ügyfelek, amellyel nagy méretű, alapvető fontosságú számítási feladataikat a big data-követelményekhez figyelembe kell venni az ExpressRoute használatával privát hálózati kapcsolatot az Azure-szolgáltatások hibrid hálózati architektúra. Tekintse meg a [útmutatást és javaslatokat](#guidance-and-recommendations) szakasz további tájékoztatást talál a kapcsolódási mechanizmusok az Azure-bA.
+Az Azure-erőforrások a megoldásban lévő csatlakozhat egy helyszíni hálózat vagy felhőkörnyezetekből közös elhelyezési létesítményből csatlakozó (pl. a Canberra CDC) keresztül egy VPN-átjáró használatával IPSec VPN és expressroute-on keresztül. A döntés használják a VPN a besorolású, az átvitt adatok és a hálózati elérési út szem előtt kell elvégezni. Ügyfelek, amellyel nagy méretű, alapvető fontosságú számítási feladataikat a big data-követelményekhez figyelembe kell venni az ExpressRoute használatával privát hálózati kapcsolatot az Azure-szolgáltatások hibrid hálózati architektúra. Tekintse meg a [útmutatást és javaslatokat](#guidance-and-recommendations) szakasz további tájékoztatást talál a kapcsolódási mechanizmusok az Azure-bA.
 
 Az Azure Active Directory összevonási használandó, így a felhasználók hitelesítéséhez a helyszíni hitelesítő adatok használatával, és egy helyszíni Active Directory összevonási szolgáltatások infrastruktúra használatával a felhőbeli erőforrások elérését. Active Directory összevonási szolgáltatások egyszerűsített, biztonságos identitás-összevonási és webes egyszeri bejelentkezést biztosító funkciókkal lehetővé a hibrid környezet biztosíthat. Tekintse meg a [útmutatást és javaslatokat](#guidance-and-recommendations) további részletek az Azure Active Directory beállítása a következő szakaszban.
 
@@ -123,11 +123,11 @@ A hálózati biztonsági csoportok rendelkezik bizonyos portokat és protokollok
 **Az Azure Load Balancer**: [Az Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) lehetővé teszi az alkalmazások méretezése és magas rendelkezésre állású szolgáltatások létrehozása. Load Balancer bejövő, valamint a kimenő forgatókönyveket teszi lehetővé, és alacsony késleltetésű, nagy teljesítményű, és akár több milliónyi összes TCP és UDP-alkalmazás méretezhető.
 
 ### <a name="data-in-transit"></a>Az átvitt adatok
-Az Azure alapértelmezés szerint minden kommunikáció és az Azure datacentres titkosítja. 
+Az Azure és az Azure adatközpontok bemenő kommunikáció alapértelmezés szerint titkosítja. 
 
 Védett adatok továbbításához a vásárlói kezelésű hálózatok az architektúra az Azure az interneten vagy az ExpressRoute egy konfigurált IPSEC VPN-átjáróval.
 
-Emellett minden tranzakció az Azure-bA az Azure felügyeleti portálján keresztül HTTPS felhasználásával a TLS 1.2-es verzió történik.
+Emellett minden tranzakció az Azure-bA az Azure felügyeleti portálján a TLS 1.2-es verzió használatával HTTPS-kapcsolaton keresztül történik.
 
 ### <a name="data-at-rest"></a>Inaktív adat
 Az architektúra a titkosítás, az adatbázis naplózási és más intézkedéseket az inaktív adatok védi.
@@ -189,7 +189,7 @@ Azure-szolgáltatások széles körben system és a felhasználói tevékenység
 - **A Tevékenységnaplók**: [A Tevékenységnaplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) adjon meg egy előfizetéshez tartozó erőforrásokon végrehajtott műveletekkel kapcsolatos információk. A Tevékenységnaplók segítségével határozza meg a műveletet kezdeményező, az eseményt, és állapot ideje.
 - **Diagnosztikai naplók**: [Diagnosztikai naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs) minden erőforrás által kibocsátott az összes napló tartalmazza. Ezek a naplók például a Windows rendszer-eseménynaplói, az Azure Storage-naplók, a Key Vault-naplók és az Application Gateway hozzáférés és a tűzfal a naplókat. Az összes diagnosztikai naplók írni egy központosított, titkosított csatornákon történik az Azure storage-fiókját archiválási. A megőrzési felhasználó által konfigurálható, mentése és 730 nap között, a megőrzési a szervezet konkrét követelményeinek.
 
-**Az Azure Monitor naplóira**: Ezeket a naplókat a rendszer összevont [naplózza az Azure Monitor](https://azure.microsoft.com/services/log-analytics/) feldolgozási, tárolására és-irányítópult jelentéseit. Követően az adatok felépítéséről különböző adattípusokhoz, amely elemzett összes adat össze az eredeti forrástól függetlenül lehetővé teszi külön táblába. Az Azure Security Center ezenkívül lehetővé teszi az ügyfelek számára, hogy a biztonsági események adatainak eléréséhez, és adatokat más szolgáltatásokból való összevonásához Kusto-lekérdezések használata az Azure Monitor naplóira integrálható.
+**Az Azure Monitor naplóira**: Ezeket a naplókat a rendszer összevont [naplózza az Azure Monitor](https://azure.microsoft.com/services/log-analytics/) feldolgozási, tárolására és-irányítópult jelentéseit. Az adatgyűjtés után a rendszer adattípusonként külön táblába rendezi az adatokat, ez az eredeti forrástól függetlenül lehetővé teszi az adatok együttes elemzését. Az Azure Security Center ezenkívül lehetővé teszi az ügyfelek számára, hogy a biztonsági események adatainak eléréséhez, és adatokat más szolgáltatásokból való összevonásához Kusto-lekérdezések használata az Azure Monitor naplóira integrálható.
 
 A következő Azure [figyelési megoldások](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions) Ez az architektúra egy része szerepel:
 -   [Az Active Directory Assessment](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment): Az Active Directory állapotának ellenőrzése megoldás a kockázat és kiszolgálói környezetek állapotát értékeli a rendszeres időközönkénti, és a telepített kiszolgálói infrastruktúra vonatkozó javaslatok rangsorolt listáját tartalmazza.

@@ -10,18 +10,18 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: maheshb
-ms.openlocfilehash: e0c1ec55a7f21ad223629d6d478cbd97c7974abb
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: f00a8a02ac7f9468516506b6e6a376209d24c270
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237977"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448884"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>A Bing Custom Search példány meghívása a portálról
 
 Miután konfigurálta az egyéni keresési funkciót, tesztelheti, a Bing Custom Search belül [portál](https://customsearch.ai). 
 
-![a bing egyéni keresés portál képernyőképe](media/portal-search-screen.png)
+![a Bing egyéni keresés portál képernyőképe](media/portal-search-screen.png)
 ## <a name="create-a-search-query"></a>Hozzon létre egy keresési lekérdezést 
 
 Miután bejelentkezett, a Bing Custom Search [portál](https://customsearch.ai), válassza ki a keresési példányát, és kattintson a **éles** lapon. A **végpontok**, válasszon ki egy API-végpontot (például a webes API). Az előfizetés határozza meg, milyen végpontokat jelennek meg.

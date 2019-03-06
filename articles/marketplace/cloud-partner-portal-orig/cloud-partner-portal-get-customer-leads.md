@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 997727acd1bbaf17577160bb996aad7e21d49c86
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 2ebc0c90d62d1299c076f8d91ba9fed1998a20e5
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809798"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450192"
 ---
 <a name="get-customer-leads"></a>Ügyfélérdeklődések lekérése
 ==================
@@ -83,7 +83,7 @@ Egy érdeklődő forrás formátuma **forrás**-**művelet** |  **ajánlat**
 
 **Ajánlatok**
 
-Az alábbi példák bemutatják a közzétevő és a egy adott ajánlat rendelt egyedi azonosítónak: checkpoint.check – pont-r77-10sg-byol bitnami.openedxcypress és 56-91e6-3ed0b622145a docusign.3701c77e-1cfa - 4c.
+Az alábbi példák bemutatják a közzétevő és a egy adott ajánlat rendelt egyedi azonosítói: checkpoint.check – pont-r77-10sg-byol bitnami.openedxcypress és 56-91e6-3ed0b622145a docusign.3701c77e-1cfa - 4c.
 
 
 ### <a name="customer-info"></a>Customer Info
@@ -92,10 +92,10 @@ A mezőket az alábbi példában a felhasználó adatait, amely tartalmazza az �
 - Vezetéknév: János
 - Vezetéknév: Smith
 - E-mail cím: jsmith\@microsoft.com
-- Telefonszám: 1234567890
-- Ország: USA
+- Telefon: 1234567890
+- Ország/régió: USA
 - Vállalati: Microsoft
-- Title: műszaki Igazgatója
+- Cím: MŰSZAKI IGAZGATÓJA
 
 >[!Note]
 >Az előző példában nem minden adat nem mindig érhető el az egyes potenciális ügyfelek.

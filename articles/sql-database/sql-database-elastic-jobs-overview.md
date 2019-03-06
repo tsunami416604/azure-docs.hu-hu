@@ -12,18 +12,18 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 396e8a487feb2f7a7cb45f3713e641b5ebc6abcd
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 8abb2e3ac4f62a3ea51cc686bbf23260fccc4077
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565241"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57441372"
 ---
 # <a name="managing-scaled-out-cloud-databases"></a>Horizontálisan felskálázott felhőalapú adatbázisok kezelése
 
 [!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
 
-**Elastic Database-feladatok** van egy ügyfél által üzemeltetett Azure-Felhőszolgáltatás, amely lehetővé teszi az igény szerinti és ütemezett felügyeleti feladatokat, amelyeket a rendszer meghív végrehajtásának **feladatok**. A feladatok is egyszerűen és megbízhatóan kezelése az Azure SQL Database-adatbázisok nagy mennyiségű felügyeleti műveletek végrehajtása a Transact-SQL-szkriptek futtatásával.
+**Elastic Database-feladatok** egy ügyfél által üzemeltetett, az Azure felhőalapú szolgáltatás, amely lehetővé teszi, hogy az ütemezett és alkalmi felügyeleti feladatok, az úgynevezett végrehajtásának **feladatok**. A feladatok is egyszerűen és megbízhatóan kezelése az Azure SQL Database-adatbázisok nagy mennyiségű felügyeleti műveletek végrehajtása a Transact-SQL-szkriptek futtatásával.
 
 Horizontálisan felskálázott szilánkokra osztott adatbázisok, kezelheti a **rugalmas adatbázis-feladatok** funkció (előzetes verzió) lehetővé teszi megbízható között adatbáziscsoportok, beleértve a Transact-SQL (T-SQL) parancsprogram végrehajtása:
 

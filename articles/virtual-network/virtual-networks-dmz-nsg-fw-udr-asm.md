@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: 93402f9124a5c2f6a251cb0e3b3dab21386fa5ff
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: c3a5cb540843c5ec4ceaf8522e9148cc7171149c
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55965256"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456465"
 ---
 # <a name="example-3--build-a-dmz-to-protect-networks-with-a-firewall-udr-and-nsg"></a>Például: 3 – semleges egy tűzfal, az udr-t és az NSG-t a hálózatok védelme
 [Térjen vissza a biztonsági határ ajánlott eljárások lap][HOME]
@@ -356,7 +356,7 @@ Ebben a példában végrehajtásához szükséges minden egyes szabály tulajdon
   
     A Pass-szabály lehetővé teszi, hogy a bármely az IIS-kiszolgálón az előtérbeli alhálózat elérni a AppVM01 (IP-cím 10.0.2.5) bármely porton bármely protokoll, a webes alkalmazás számára szükséges adatok elérését használatával.
   
-    A képernyőfelvételen egy "\<explicit-dest\>" jelölésére 10.0.2.5 célhelyként szolgál a cél mezőben. Ez lehet, vagy explicit módon, vagy nevű objektum (ahogyan az az előfeltételeket a DNS-kiszolgáló). Ez a csak az a tűzfal feltárhatja, hogy mely metódus lesz használva. Adja hozzá a 10.0.2.5 létrehozását célként, kattintson duplán az első üres sor alatt \<explicit-dest\> és a címet írja be a felugró ablakban.
+    Ezen a képernyőképen látható egy "\<explicit-dest\>" jelölésére 10.0.2.5 célhelyként szolgál a cél mezőben. Ez lehet, vagy explicit módon, vagy nevű objektum (ahogyan az az előfeltételeket a DNS-kiszolgáló). Ez a csak az a tűzfal feltárhatja, hogy mely metódus lesz használva. Explicit célként 10.0.2.5 hozzáadásához kattintson duplán az első üres sor alatt \<explicit-dest\> és a címet írja be a felugró ablakban.
   
     Ez a fázis szabály, és nem NAT van szükség, mivel ez a belső forgalom, így "No SNAT" értékre lehet beállítani a kapcsolódási módszert.
   
@@ -381,7 +381,7 @@ Ebben a példában végrehajtásához szükséges minden egyes szabály tulajdon
   
     ![DNS-tűzfalszabály][15]
   
-    **Megjegyzés**: Ezen a képernyőn a képernyőkép-készítés a kapcsolódási módszert részét képezi. Mivel ez a szabály belső IP-cím forgalmat a belső IP-címhez, nincs NATing nem szükséges, a kapcsolódási beállított érték "No SNAT" a hozzáférési szabályhoz.
+    **Megjegyzés**: Ezen a képernyőfelvételen a kapcsolódási módszert részét képezi. Mivel ez a szabály belső IP-cím forgalmat a belső IP-címhez, nincs NATing nem szükséges, a kapcsolódási beállított érték "No SNAT" a hozzáférési szabályhoz.
 * **Az alhálózat alhálózati szabály**: A Pass-szabály egy alapértelmezett szabályt, amely lett aktiválva és módosítani kell az összes olyan kiszolgálónak engedélyezi az előtér-alhálózat bármely kiszolgálóhoz való csatlakozáshoz a háttérrendszer alhálózaton. Ez a szabály az összes belső forgalom, így a nem SNAT értékre lehet beállítani a kapcsolódási módszert.
   
     ![Belüli virtuális hálózatok közötti tűzfalszabály][16]

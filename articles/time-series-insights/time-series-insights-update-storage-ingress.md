@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6f0002c6aa98aaaddf50e4aac8929e8ddd379fd8
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: eba4c70a25cba2e456ed418a98b938f2029c4c1f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301672"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438363"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Az adattárolás és a bejövő forgalom az Azure Time Series Insights előzetes verziója
 
@@ -116,7 +116,7 @@ Fontos, válasszon egy megfelelő idő Azonosítót, egy a tulajdonság nem mód
 
 Amikor létrehoz egy használatalapú fizetéses Time Series Insights-környezetet, létrehozhat két erőforrás: a Time Series Insights-környezet és az Azure Storage-általános célú V1 fiók az adatok tárolásához. Győződjön meg arról, általános célú Azure Storage V1 az alapértelmezett erőforrás miatt az együttműködés, ára és teljesítménye választottuk. 
 
-A Time Series Insights eseményekhez két másolatát közzéteszi az Azure storage-fiókban. A kezdeti másolat mindig megőrződik, hogy kérdezhet le róla performantly más szolgáltatások használatával. Könnyen használható Spark, a Hadoopról és más jól ismert eszközökkel Time Series azonosítók között nyers a Parquet-fájlokat, mert ezek motorok támogatja az alapszintű szűrés fájlnév. Év és hónap szerint blobok csoportosítási módja a hasznos belül egy adott időtartományt a vonatkozó egyéni feladat blobok listázása. 
+A Time Series Insights eseményekhez két másolatát közzéteszi az Azure storage-fiókban. A kezdeti másolat mindig megőrződik, hogy más szolgáltatások használatával gyorsan lekérdezheti. Könnyen használható Spark, a Hadoopról és más jól ismert eszközökkel Time Series azonosítók között nyers a Parquet-fájlokat, mert ezek motorok támogatja az alapszintű szűrés fájlnév. Év és hónap szerint blobok csoportosítási módja a hasznos belül egy adott időtartományt a vonatkozó egyéni feladat blobok listázása. 
 
 Emellett a Time Series Insights repartitions a Parquet-fájlokat, optimalizálása a Time Series Insights API-k esetében. A közelmúltban repartitioned fájlt is menti.
 

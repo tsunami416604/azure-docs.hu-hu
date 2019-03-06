@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 8115994d1e4ac116a410cfa69824dc800717ab6f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 9aebe878be97b489b460fff96001e2908cdb7b87
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819237"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57432379"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio"></a>Adja meg az egyéni R-modulok az Azure Machine Learning Studióban
 
@@ -123,7 +123,7 @@ A modul elemek karakter korlátozások szabályok:
 * Tartalma a **leírás** elem nem haladhatja meg a 128 karakternél hosszabb.
 * Tartalma a **tulajdonosa** elem nem haladhatja meg a 32 karakternél hosszabb.
 
-Egy modul eredmények determinisztikus vagy nondeterministic.* * alapértelmezés szerint, az összes modulok tekintendők determinisztikus. Ez azt jelenti, hogy megadva bemeneti paraméterek, az adatok állandó készletét, a modul adja vissza az azonos eredmények eacRAND vagy egy functionh futtatáskor. Adja meg ezt a viselkedést, az Azure Machine Learning Studio csak Újrafuttatja a modulok determinisztikus, ha egy paraméter megjelölve, vagy a bemeneti adatok megváltoztak. A gyorsítótárazott eredményt adnak vissza a kísérleteket sokkal gyorsabb végrehajtását is biztosít.
+Egy modul eredmények determinisztikus vagy nondeterministic.* * alapértelmezés szerint, az összes modulok tekintendők determinisztikus. Vagyis megadva bemeneti paraméterek, az adatok állandó készletét, a modul adja vissza az azonos eredmények eacRAND vagy a függvény futásakor. Adja meg ezt a viselkedést, az Azure Machine Learning Studio csak Újrafuttatja a modulok determinisztikus, ha egy paraméter megjelölve, vagy a bemeneti adatok megváltoztak. A gyorsítótárazott eredményt adnak vissza a kísérleteket sokkal gyorsabb végrehajtását is biztosít.
 
 Nincsenek funkciók, amelyek determinált, például RAND vagy függvény, amely az aktuális dátum vagy idő értéket ad vissza. Ha a modul egy determinált függvényt használja, megadhatja, a modul nem determinisztikus a beállításával a választható **isDeterministic** attribútumot **hamis**. Ez az adatblokkok, hogy a modul akkor fut újra, amikor a kísérlet fut, akkor is, ha a modul bemeneti és a paraméterek nem változtak. 
 

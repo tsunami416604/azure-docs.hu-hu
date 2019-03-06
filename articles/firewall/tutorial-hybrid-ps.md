@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 1/30/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: cf3c691553f2bc7ae8f10345daee92a8380aba25
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 3a1edde2f51abbe60370eefee1b0c141f772c547
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815744"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57405462"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása hibrid hálózatban az Azure PowerShell használatával
 
@@ -25,7 +25,7 @@ Ebben az oktatóanyagban három virtuális hálózatot hoz létre:
 
 - **VNet-Hub** – Ez a virtuális hálózat van a tűzfal.
 - **VNet-küllő** -küllő virtuális hálózat a számítási feladatok Azure-ban található jelöli.
-- **VNet-rendszert** – a helyi virtuális hálózat egy helyszíni hálózat jelöli. -Tényleges telepítés megjeleníthet útvonal vagy VPN-kapcsolat. Az egyszerűség kedvéért ez az oktatóanyag a VPN gateway-kapcsolatot használ, és az Azure-található virtuális hálózat egy helyszíni hálózat megjelenítésére szolgál.
+- **VNet-rendszert** – a helyi virtuális hálózat egy helyszíni hálózat jelöli. -Tényleges telepítés megjeleníthet egy VPN vagy ExpressRoute-kapcsolat. Az egyszerűség kedvéért ez az oktatóanyag a VPN gateway-kapcsolatot használ, és az Azure-található virtuális hálózat egy helyszíni hálózat megjelenítésére szolgál.
 
 ![Tűzfal a hibrid hálózatban](media/tutorial-hybrid-ps/hybrid-network-firewall.png)
 

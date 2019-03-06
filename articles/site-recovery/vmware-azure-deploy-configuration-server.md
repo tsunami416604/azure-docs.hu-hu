@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/28/2019
-ms.author: mayg
-ms.openlocfilehash: e7ee8f58e42f99ebc087f21837511979c578fb89
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.date: 03/06/2019
+ms.author: ramamill
+ms.openlocfilehash: 3f500abe0ea37b35236547824c655adc1a4c4d93
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340082"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448832"
 ---
 # <a name="deploy-a-configuration-server"></a>Konfigurációs kiszolgáló üzembe helyezése
 
@@ -74,7 +74,7 @@ Ha egynél több VMware virtuális gép replikál, olvassa el a [kapacitásterve
 >Emellett közvetlenül, a konfigurációs kiszolgálói sablon legújabb verzióját letöltheti [Microsoft Download Center](https://aka.ms/asrconfigurationserver).
 
 >[!NOTE]
-Az OVA sablonnal megadott engedély egy értékelési engedély 180 napig érvényes. POST ennek az időtartamnak kell határidődátumával engedéllyel rendelkező a windows aktiválása.
+Az OVA sablonnal a megadott licenc egy 180 napig érvényes próbalicencre. POST ennek az időtartamnak kell határidődátumával licenccel a windows aktiválása.
 
 ## <a name="import-the-template-in-vmware"></a>A sablon importálása a VMware-ben
 
@@ -113,8 +113,8 @@ Ha szeretne további hálózati Adaptereket adhat hozzá a konfigurációs kiszo
 3. A telepítés befejezése után jelentkezzen be rendszergazdaként a virtuális gépre.
 4. Az első alkalommal bejelentkezik, néhány másodpercen belül az Azure Site Recovery Configuration Tool elindul.
 5. Adjon meg egy nevet, amelyen a konfigurációs kiszolgálót regisztrálja a Site Recovery szolgáltatásban. Ezután kattintson a **Tovább** gombra.
-6. Az eszköz ellenőrzi, hogy a virtuális gép tud-e csatlakozni az Azure-hoz. A kapcsolat létrejötte után a **Sign in** (Bejelentkezés) gombra kattintva jelentkezzen be az Azure-előfizetésbe.
-    a. Olyan hitelesítő adatokra van szükség, amelyekkel hozzá lehet férni a tárolóhoz, amelyben regisztrálni kívánja a konfigurációs kiszolgálót.
+6. Az eszköz ellenőrzi, hogy a virtuális gép tud-e csatlakozni az Azure-hoz. A kapcsolat létrejötte után a **Sign in** (Bejelentkezés) gombra kattintva jelentkezzen be az Azure-előfizetésbe.</br>
+    a. Olyan hitelesítő adatokra van szükség, amelyekkel hozzá lehet férni a tárolóhoz, amelyben regisztrálni kívánja a konfigurációs kiszolgálót.</br>
     b. Győződjön meg arról, hogy kiválasztott felhasználói fiók rendelkezik-e engedélyekkel alkalmazás létrehozása az Azure-ban. Ahhoz, hogy a szükséges engedélyekkel, hajtsa végre a megadott irányelveket [Itt](#azure-active-directory-permission-requirements).
 7. Az eszköz végrehajt néhány konfigurációs feladatot, majd újraindul.
 8. Jelentkezzen be újra a gépre. Elindul a konfigurációs kiszolgáló felügyeleti varázslójában **automatikusan** néhány másodperc múlva.
@@ -155,7 +155,7 @@ Folyamatban lévő replikáció megszakítása a szükséges elkerülése érdek
 
 1. Mennyi ideig tart a konfigurációs kiszolgáló OVF helyezzük a megadott engedély érvénytelen? Mi történik, ha szeretnék ne aktiválja újra a licenc?
 
-    Az OVA sablonnal megadott engedély egy értékelési engedély 180 napig érvényes. A lejárat előtt kell aktiválnia a licencet. Más esetben ez eredményez a konfigurációs kiszolgáló gyakori leállítása, és így a replikációs tevékenységek hinderance okozhat.
+    Az OVA sablonnal a megadott licenc egy 180 napig érvényes próbalicencre. A lejárat előtt kell aktiválnia a licencet. Más esetben ez eredményez a konfigurációs kiszolgáló gyakori leállítása, és így a replikációs tevékenységek hinderance okozhat.
 
 2. A virtuális gép, amelyen a konfigurációs kiszolgáló telepítve van, különböző célokra használható?
 

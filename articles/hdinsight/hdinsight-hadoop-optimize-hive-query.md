@@ -9,18 +9,18 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 57e23c55342ee397ecb8590dd6da639ba766f351
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: ba332bb0f77dc198abdd76ccf024336788a77a33
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53385431"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435031"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Az Azure HDInsight az Apache Hive-lekérdezések optimalizálása
 
 Az Azure HDInsight, a számos több fürttípusokat és technológiákat, amelyek Apache Hive-lekérdezéseket is futtathat. A HDInsight-fürt létrehozásakor válassza ki a megfelelő fürt segítségével optimalizálják a teljesítményt a munkaterhelés igényei szerint. 
 
-Például választhatja, **interaktív lekérdezés** fürt típusát az ad hoc, interaktív lekérdezésekhez optimalizálja. Válassza ki az Apache **Hadoop** fürt típusa a kötegelt műveletként használható a Hive-lekérdezések optimalizálása érdekében. **A Spark** és **HBase** típusok fürtöt is futtathat Hive-lekérdezéseket. További információ a Hive-lekérdezések futtatása HDInsight-fürt különböző: [Mi az Apache Hive és az Azure HDInsight HiveQL?](hadoop/hdinsight-use-hive.md).
+Például választhatja, **interaktív lekérdezés** fürt típusát az alkalmi, interaktív lekérdezésekhez optimalizálja. Válassza ki az Apache **Hadoop** fürt típusa a kötegelt műveletként használható a Hive-lekérdezések optimalizálása érdekében. **A Spark** és **HBase** típusok fürtöt is futtathat Hive-lekérdezéseket. További információ a Hive-lekérdezések futtatása HDInsight-fürt különböző: [Mi az Apache Hive és az Azure HDInsight HiveQL?](hadoop/hdinsight-use-hive.md).
 
 HDInsight-fürtökkel a Hadoop-fürt típusa nem optimalizált teljesítményt alapértelmezés szerint. Ez a cikk ismerteti az egyes a leggyakoribb struktúra módszereit, hogy a lekérdezések alkalmazhat.
 

@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 12/10/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: d2c21e82447c4be8b7e0cfaa023f87547277433a
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 541d431c9387d512374047c4cc004e1a237e1ef1
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195200"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57406524"
 ---
 # <a name="quickstart-create-a-java-app-in-app-service-on-linux"></a>Gyors útmutató: Egy Java-alkalmazás létrehozása Linuxon futó App Service-ben
 
@@ -108,7 +108,6 @@ Az üzembe helyezést követően keresse meg az üzembe helyezett alkalmazást a
 Ez a rövid útmutatóban használt Maven konfigurált Java-alkalmazás létrehozása a [Azure Web Appshez készült maven bővítmény](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin), majd üzembe helyezi a linuxon futó App Service web archive csomagolt Java-alkalmazás. Tekintse meg az alábbi oktatóanyagok és útmutatók további információk az App Service Linux rendszeren Java-alkalmazások futtatására.
 
 - [Oktatóanyag: Üzembe helyezése egy Java vállalati alkalmazás-és PostgreSQL](tutorial-java-enterprise-postgresql-app.md)
-- [A Tomcat-adatforrás konfigurálása](app-service-linux-java.md#connecting-to-data-sources)
+- [A Tomcat-adatforrás konfigurálása](app-service-linux-java.md#tomcat)
 - [CI/CD a jenkins-szel](/azure/jenkins/deploy-jenkins-app-service-plugin)
 - [Alkalmazásteljesítmény-figyelési eszközök beállítása](how-to-java-apm-monitoring.md)
-

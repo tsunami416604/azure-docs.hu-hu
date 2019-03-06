@@ -1,19 +1,19 @@
 ---
-title: 'Létrehozása és módosítása egy ExpressRoute-kapcsolatcsoport - PowerShell: Azure |} A Microsoft Docs'
+title: 'Hozzon létre, és módosítsa az ExpressRoute-kapcsolatcsoport - PowerShell: Azure | Microsoft Docs'
 description: Hozzon létre, üzembe helyezése, győződjön meg arról, frissítése, törlése és ExpressRoute-kapcsolatcsoport megszüntetése.
 services: expressroute
-author: ganesr
+author: cherylmc
 ms.service: expressroute
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 02/20/2019
 ms.author: ganesr;cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: ff86c87690f5dd4a919929f0deef4af739cbe4d3
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2b32c97f636cc6b918a883ea3e2a2b540890084f
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53105002"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409862"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>Létrehozása és módosítása a PowerShell használatával egy ExpressRoute-kapcsolatcsoporttal
 > [!div class="op_single_selector"]
@@ -31,37 +31,23 @@ Ez a cikk segít a PowerShell-parancsmagok és az Azure Resource Manager üzemi 
 Mielőtt elkezdené, tekintse át a [Előfeltételek](expressroute-prerequisites.md) és [munkafolyamatok](expressroute-workflows.md) konfigurálás megkezdése előtt.
 
 ### <a name="working-with-azure-powershell"></a>Az Azure PowerShell használata
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
 
 ## <a name="create"></a>Létrehozása és kiépítése az ExpressRoute-kapcsolatcsoport
 ### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1. Jelentkezzen be az Azure-fiókjával, és válassza ki az előfizetését
-A konfiguráció első lépésként jelentkezzen be az Azure-fiókjával. Az alábbi példák segítségével segíthet a kapcsolódásban:
 
-Az Azure cloud Shell használatakor, nem kell Connect-AzureRmAccount, futtassa, automatikusan csatlakozik.
-
-```azurepowershell
-Connect-AzureRmAccount
-```
-
-Keresse meg a fiókot az előfizetésekben:
-
-```azurepowershell-interactive
-Get-AzureRmSubscription
-```
-
-Hozzon létre egy ExpressRoute-kapcsolatcsoporttal a kívánt előfizetés kiválasztásához:
-
-```azurepowershell-interactive
-Select-AzureRmSubscription -SubscriptionId "<subscription ID>"
-```
+[!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
 
 ### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2. A támogatott szolgáltatók, a helyek és a sávszélesség-lista lekérése
 ExpressRoute-kapcsolatcsoport létrehozása, birtokában támogatott kapcsolatszolgáltatók, helyek és sávszélesség-lehetőségek listája.
 
-A PowerShell-parancsmag **Get-AzureRmExpressRouteServiceProvider** adja vissza ezt az információt fogja használni a későbbi lépésekben:
+A PowerShell-parancsmag **Get-AzExpressRouteServiceProvider** adja vissza ezt az információt fogja használni a későbbi lépésekben:
 
 ```azurepowershell-interactive
-Get-AzureRmExpressRouteServiceProvider
+Get-AzExpressRouteServiceProvider
 ```
 
 Ellenőrizze, hogy a kapcsolatszolgáltató szerepel-e ott. Jegyezze fel az alábbi adatokat, amelyek később szüksége lesz egy kapcsolatcsoport létrehozásakor:
@@ -70,20 +56,19 @@ Ellenőrizze, hogy a kapcsolatszolgáltató szerepel-e ott. Jegyezze fel az alá
 * PeeringLocations
 * BandwidthsOffered
 
-Most már készen áll az ExpressRoute-kapcsolatcsoport létrehozása.   
+Most már készen áll az ExpressRoute-kapcsolatcsoport létrehozása.
 
 ### <a name="3-create-an-expressroute-circuit"></a>3. ExpressRoute-kapcsolatcsoport létrehozása
 Ha még nem rendelkezik egy erőforráscsoport, egy az ExpressRoute-kapcsolatcsoport létrehozása előtt kell létrehoznia. Ehhez futtassa a következő parancsot:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -Name "ExpressRouteResourceGroup" -Location "West US"
+New-AzResourceGroup -Name "ExpressRouteResourceGroup" -Location "West US"
 ```
-
 
 Az alábbi példa bemutatja, hogyan hozhat létre egy 200 Mbps ExpressRoute-kapcsolatcsoporton keresztül Equinix szilícium-völgy. Másik szolgáltatóhoz, és különböző beállításokat használja, ha helyettesítse be ezt az információt, amikor a kérést. Használja az alábbi példa egy új kulcs kérése:
 
 ```azurepowershell-interactive
-New-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup" -Location "West US" -SkuTier Standard -SkuFamily MeteredData -ServiceProviderName "Equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 200
+New-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup" -Location "West US" -SkuTier Standard -SkuFamily MeteredData -ServiceProviderName "Equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 200
 ```
 
 Ügyeljen arra, hogy megadja a helyes Termékváltozat-szint és a Termékváltozat-család:
@@ -99,15 +84,15 @@ New-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName
 A válasz tartalmazza a kulcsot. A paraméterek a részletes leírását a következő parancs futtatásával kaphat:
 
 ```azurepowershell-interactive
-get-help New-AzureRmExpressRouteCircuit -detailed
+get-help New-AzExpressRouteCircuit -detailed
 ```
 
 
 ### <a name="4-list-all-expressroute-circuits"></a>4. Minden ExpressRoute-kapcsolatcsoport listázása
-Az összes Ön által létrehozott ExpressRoute-Kapcsolatcsoportok listájának lekéréséhez futtassa a **Get-AzureRmExpressRouteCircuit** parancsot:
+Az összes Ön által létrehozott ExpressRoute-Kapcsolatcsoportok listájának lekéréséhez futtassa a **Get-AzExpressRouteCircuit** parancsot:
 
 ```azurepowershell-interactive
-Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 ```
 
 A válasz a következő példához hasonlóan néz ki:
@@ -134,10 +119,10 @@ A válasz a következő példához hasonlóan néz ki:
     ServiceKey                        : **************************************
     Peerings                          : []
 
-Ezt az információt bármikor használatával lekérheti a `Get-AzureRmExpressRouteCircuit` parancsmagot. Minden kapcsolatcsoportra paraméterek nélkül a következő hívással sorolja fel. A szolgáltatás kulcs szerepel az *ServiceKey* mező:
+Ezt az információt bármikor használatával lekérheti a `Get-AzExpressRouteCircuit` parancsmagot. Minden kapcsolatcsoportra paraméterek nélkül a következő hívással sorolja fel. A szolgáltatás kulcs szerepel az *ServiceKey* mező:
 
 ```azurepowershell-interactive
-Get-AzureRmExpressRouteCircuit
+Get-AzExpressRouteCircuit
 ```
 
 
@@ -166,12 +151,6 @@ A válasz a következő példához hasonlóan néz ki:
     Peerings                         : []
 
 
-A paraméterek a részletes leírását a következő parancs futtatásával kaphat:
-
-```azurepowershell-interactive
-get-help Get-AzureRmExpressRouteCircuit -detailed
-```
-
 ### <a name="5-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>5. A kulcs küldése a kapcsolatszolgáltató a kiépítés
 *ServiceProviderProvisioningState* provisioning service-szolgáltató oldalán aktuális állapotát ismerteti. Állapot a Microsoft oldalon az állapot biztosít. A kapcsolatcsoport kiépítési állapotok kapcsolatos további információkért lásd: [munkafolyamatok](expressroute-workflows.md#expressroute-circuit-provisioning-states).
 
@@ -196,7 +175,7 @@ ExpressRoute-kapcsolatcsoport segítségével tudja meg a következő állapotba
 A kapcsolatcsoport kulcs állapotát és az állapot ellenőrzése jelzi, ha a szolgáltató engedélyezve van a kapcsolatcsoport. A kapcsolatcsoport konfigurálása után *ServiceProviderProvisioningState* jelenik meg *kiépített*, az alábbi példában látható módon:
 
 ```azurepowershell-interactive
-Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 ```
 
 
@@ -236,10 +215,10 @@ Részletes útmutatásért tekintse meg a [ExpressRoute-Kapcsolatcsoportok útv�
 Ezután egy virtuális hálózat összekapcsolása az ExpressRoute-kapcsolatcsoportot. Használja a [virtuális hálózatok összekapcsolása az ExpressRoute-Kapcsolatcsoportok](expressroute-howto-linkvnet-arm.md) című cikket, amikor a Resource Manager üzemi modellel dolgozik.
 
 ## <a name="getting-the-status-of-an-expressroute-circuit"></a>Az ExpressRoute-Kapcsolatcsoportok állapotának beolvasása
-Ezt az információt bármikor használatával lekérheti a **Get-AzureRmExpressRouteCircuit** parancsmagot. Minden kapcsolatcsoportra paraméterek nélkül a következő hívással sorolja fel.
+Ezt az információt bármikor használatával lekérheti a **Get-AzExpressRouteCircuit** parancsmagot. Minden kapcsolatcsoportra paraméterek nélkül a következő hívással sorolja fel.
 
 ```azurepowershell-interactive
-Get-AzureRmExpressRouteCircuit
+Get-AzExpressRouteCircuit
 ```
 
 
@@ -271,7 +250,7 @@ A válasz a következő példához hasonló:
 Az egy adott ExpressRoute-kapcsolatcsoport információkat szerezhet az erőforráscsoport-nevet és a kapcsolatcsoport neve paraméterként átadva a hívást:
 
 ```azurepowershell-interactive
-Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 ```
 
 
@@ -322,12 +301,12 @@ További információ a korlátok és korlátozások: a [ExpressRoute – gyakor
 Az ExpressRoute prémium bővítmény használatával a következő PowerShell-kódrészlettel a meglévő kapcsolatcsoport engedélyezheti:
 
 ```azurepowershell-interactive
-$ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+$ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 
 $ckt.Sku.Tier = "Premium"
 $ckt.sku.Name = "Premium_MeteredData"
 
-Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 A kapcsolatcsoport most már engedélyezve van az ExpressRoute prémium bővítmény szolgáltatásokat. Az első lépések a premium bővítmény funkció számlázása, amint a parancs már sikeresen futott.
@@ -347,12 +326,12 @@ Tekintse meg az alábbi információkat:
 Az ExpressRoute prémium bővítmény a meglévő kapcsolatcsoport letilthatja az alábbi PowerShell-parancsmag segítségével:
 
 ```azurepowershell-interactive
-$ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+$ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 
 $ckt.Sku.Tier = "Standard"
 $ckt.sku.Name = "Standard_MeteredData"
 
-Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 ### <a name="to-update-the-expressroute-circuit-bandwidth"></a>Az ExpressRoute-kapcsolatcsoport sávszélességét frissítése
@@ -367,11 +346,11 @@ Támogatott sávszélesség-lehetőségek a szolgáltató, ellenőrizze a [Expre
 Miután eldöntötte, milyen méretű van szüksége, a következő paranccsal méretezheti át a kapcsolatcsoport:
 
 ```azurepowershell-interactive
-$ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+$ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 
 $ckt.ServiceProviderProperties.BandwidthInMbps = 1000
 
-Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 
@@ -381,12 +360,12 @@ A kapcsolatcsoport fogja méretezni, a Microsoft oldalán. Ezután kapcsolatba k
 Az ExpressRoute-kapcsolatcsoport SKU-ja a következő PowerShell-kódrészlettel módosíthatja:
 
 ```azurepowershell-interactive
-$ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
+$ckt = Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 
 $ckt.Sku.Family = "UnlimitedData"
 $ckt.sku.Name = "Premium_UnlimitedData"
 
-Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
+Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
 ### <a name="to-control-access-to-the-classic-and-resource-manager-environments"></a>A klasszikus és Resource Manager-környezetben való hozzáférés szabályozásához
@@ -402,7 +381,7 @@ Tekintse meg az alábbi információkat:
 Az ExpressRoute-kapcsolatcsoport a következő parancs futtatásával törölheti:
 
 ```azurepowershell-interactive
-Remove-AzureRmExpressRouteCircuit -ResourceGroupName "ExpressRouteResourceGroup" -Name "ExpressRouteARMCircuit"
+Remove-AzExpressRouteCircuit -ResourceGroupName "ExpressRouteResourceGroup" -Name "ExpressRouteARMCircuit"
 ```
 
 ## <a name="next-steps"></a>További lépések

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: barclayn
-ms.openlocfilehash: c60022d43af1601359ab5de8b4d3e4eb06dd239a
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: da165634f5323183b633ee3c8a59e0d2607e8ef1
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243227"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409752"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Ajánlott biztonsági eljárások IaaS számítási feladatokhoz az Azure-ban
 
@@ -153,7 +153,7 @@ Ajánlott eljárások az Azure Disk Encryption használatával a következők:
 **Részletes**: Az Azure Disk Encryption állít elő, és írja a titkosítási kulcsok a key vaultban. Az Azure AD-hitelesítés kezelése a titkosítási kulcsok a key vaultban lévő igényel. Hozzon létre egy Azure AD-alkalmazást erre a célra. Hitelesítési célra használhatja vagy titkos kulcs-alapú ügyfélhitelesítés vagy [az Azure AD ügyféltanúsítvány-alapú ügyfél-hitelesítés](../active-directory/active-directory-certificate-based-authentication-get-started.md).
 
 **Ajánlott eljárás**: A kulcstitkosítási kulcs-(KEK) használata egy további titkosítási kulcsok biztonsági réteget. Egy KEK hozzáadása a kulcstartóhoz.   
-**Részletes**: Használja a [Add-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/add-azurekeyvaultkey) parancsmaggal hozzon létre egy fő titkosítási kulcsot a key vaultban. A helyszíni hardveres biztonsági modul (HSM) a kulcskezeléshez is importálhat egy KEK. További információkért lásd: a [Key Vault-dokumentáció](../key-vault/key-vault-hsm-protected-keys.md). Amikor egy kulcsalapú titkosítás kulcsa van megadva, az Azure Disk Encryption a kulcs segítségével burkolhatja a titkosítási titkos kulcsait a Key Vault írása előtt. Ezt a kulcsot egy letéti másolatát tárolja egy helyszíni HSM kulcskezelés kulcsok a véletlen törlés elleni további védelmet nyújt.
+**Részletes**: Használja a [Add-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultkey) parancsmaggal hozzon létre egy fő titkosítási kulcsot a key vaultban. A helyszíni hardveres biztonsági modul (HSM) a kulcskezeléshez is importálhat egy KEK. További információkért lásd: a [Key Vault-dokumentáció](../key-vault/key-vault-hsm-protected-keys.md). Amikor egy kulcsalapú titkosítás kulcsa van megadva, az Azure Disk Encryption a kulcs segítségével burkolhatja a titkosítási titkos kulcsait a Key Vault írása előtt. Ezt a kulcsot egy letéti másolatát tárolja egy helyszíni HSM kulcskezelés kulcsok a véletlen törlés elleni további védelmet nyújt.
 
 **Ajánlott eljárás**: Igénybe vehet egy [pillanatkép](../virtual-machines/windows/snapshot-copy-managed-disk.md) és/vagy lemezek előtt biztonsági másolatot készíteni. Biztonsági másolatok adja meg a helyreállítási beállítást, ha a nem várt hiba történik a titkosítás során.   
 **Részletes**: A felügyelt lemezekkel rendelkező virtuális gépek biztonsági szükséges, a titkosítás előtt. Biztonsági másolat elkészítése után használhatja a **Set-AzVMDiskEncryptionExtension** parancsmag megadásával a felügyelt lemezek titkosítása a *- skipVmBackup* paraméter. Biztonsági mentése és visszaállítása titkosított virtuális gépek kapcsolatos további információkért lásd: a [Azure Backup](../backup/backup-azure-vms-encryption.md) cikk.

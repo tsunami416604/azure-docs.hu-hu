@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 199e1dda3e4629c0298d4aae1cb5d09e20e4b3b8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d0bb9ad5c3a39f4065a81fb218a4b167f6fde9b1
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452040"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447557"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>Hozzáférés az Azure Cosmos DB a virtuális hálózatok (VNet)
 
@@ -47,7 +47,7 @@ Csak a virtuális hálózat és az Azure Cosmos-fiókhoz hozzáadott alhálózat
 Egy Azure Cosmos-fiók számára engedélyezett legfeljebb 64 alhálózatok jelenleg is rendelkezhet.
 
 ### <a name="can-i-enable-access-from-vpn-and-express-route"></a>Engedélyezheti a hozzáférést a VPN és Expressroute? 
-Az Azure Cosmos-fiók eléréséhez feletti Express route a helyileg, kell engedélyezni a Microsoft társviszony-létesítés. Ha IP-tűzfal vagy a virtuális hálózati hozzáférési szabályok, a Microsoft társviszony-létesítéshez az Azure Cosmos fiók IP-tűzfalon, hogy az Azure Cosmos-fiók a helyi szolgáltatások hozzáférést használt nyilvános IP-címeket is hozzáadhat. 
+Az Azure Cosmos-fiók eléréséhez feletti Express route a helyszínen, kell engedélyezni a Microsoft társviszony-létesítés. Ha IP-tűzfal vagy a virtuális hálózati hozzáférési szabályok, a Microsoft társviszony-létesítéshez az Azure Cosmos fiók IP-tűzfalon, hogy az Azure Cosmos-fiók a helyi szolgáltatások hozzáférést használt nyilvános IP-címeket is hozzáadhat. 
 
 ### <a name="do-i-need-to-update-the-network-security-groups-nsg-rules"></a>Kell frissíteni a hálózati biztonsági csoportok (NSG) szabályai? 
 NSG-szabályok és a egy alhálózatot a virtuális hálózati kapcsolat korlátozására használhatók. Hozzáadásakor szolgáltatásvégpontot az Azure Cosmos DB az alhálózathoz, van, a nem szükséges, a kimenő kapcsolat megnyitása az NSG-t az Azure Cosmos-fiók. 

@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 7081d46af335f29e5723ef8d471814a1564907c2
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 7dbfc39075bb42b1ec13823849eb769e117ddd4a
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990204"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57409686"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>A vFXT-fürt üzembe helyezése
 
@@ -32,7 +32,7 @@ Mielőtt az létrehozása sablon használatával ellenőrizze, rendelkezik az El
 1. [Előfizetés tulajdonosi engedélyekkel](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
 1. [A vFXT fürt kvóta](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
 1. [Egyéni hozzáférési szerepkörök](avere-vfxt-prereqs.md#create-access-roles) -létre kell hoznia egy szerepköralapú hozzáférés-vezérlési szerepkör hozzárendelése a fürtcsomópontok. Lehetősége van is létre kell hoznia egy egyéni hozzáférés szerepkört a fürt vezérlő, de a felhasználók többsége az alapértelmezett tulajdonosi szerepkört, amely megfelelő vezérlő jogosultságot ad az egy erőforráscsoport-tulajdonosnak vesz igénybe. Olvasási [beépített szerepkörök az Azure-erőforrások](../role-based-access-control/built-in-roles.md#owner) további részleteket talál.
-1. [Storage-szolgáltatásvégpont (ha szükséges)](avere-vfxt-prereqs.md#optional-create-a-storage-service-endpoint-in-your-virtual-network) szükséges – telepíti a meglévő virtuális hálózattal, és a blob-tároló létrehozása
+1. [Storage-szolgáltatásvégpont (ha szükséges)](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) szükséges – telepíti a meglévő virtuális hálózattal, és a blob-tároló létrehozása
 
 Fürt telepítés lépéseit, valamint a tervezési kapcsolatos további információkért olvassa el a [megtervezése a Avere vFXT rendszer](avere-vfxt-deploy-plan.md) és [üzembe helyezés – áttekintés](avere-vfxt-deploy-overview.md).
 
@@ -104,7 +104,7 @@ A második oldalán a központi telepítési sablont a fürt mérete, a csomópo
 
 * **Avere vFXT fürtnév** – adjon meg egy egyedi nevet a fürt. 
 
-* **Méret** – Ez a szakasz bemutatja, hogy a fürtcsomópontok használandó Virtuálisgép-típusra. Bár csak egy ajánlott beállításnál a **méretének módosítása** hivatkozás információkat e-példányok típusát és a egy díjkalkulátor mutató hivatkozást tartalmazó megnyit egy táblát.  <!-- old: Specify the VM type to use when creating the cluster nodes.  -->
+* **Méret** – Ez a szakasz bemutatja, hogy a fürtcsomópontok használandó Virtuálisgép-típusra. Bár csak egy ajánlott beállításnál a **méretének módosítása** hivatkozás információkat e-példányok típusát és a egy díjkalkulátor mutató hivatkozást tartalmazó megnyit egy táblát.  
 
 * **Gyorsítótár mérete csomópontonként** – a fürt gyorsítótár megoszlik a fürtcsomópontok között, így a gyorsítótár teljes mérete a Avere vFXT fürtön a gyorsítótár méretét a csomópontok számát megszorozva csomópontonként lesz. 
 
@@ -120,7 +120,7 @@ A második oldalán a központi telepítési sablont a fürt mérete, a csomópo
   >  * Nincs beállítva egy nyilvános IP-címet a vezérlőn, ha egy másik jump host, egy VPN-kapcsolat vagy ExpressRoute kell használnia, aki a fürtöt. Hozzon létre például a vezérlő, amely már rendelkezik egy VPN-kapcsolat konfigurálása virtuális hálózat része.
   >  * Ha egy vezérlő hoz létre egy nyilvános IP-címmel, a tartományvezérlő virtuális gép egy hálózati biztonsági csoporttal kell védeni. Alapértelmezés szerint a Avere vFXT az Azure-beli egy hálózati biztonsági csoportot hoz létre, és korlátozza a bejövő hozzáférést csak a 22-es nyilvános IP-címekkel rendelkező vezérlők portot. További védelmet biztosíthat a rendszer zárolja a forrás az IP-címek – való hozzáférés, kapcsolatok engedélyezése csak a fürt hozzáféréshez használni kívánt gépeket.
 
-  Az üzembe helyezés sablon is konfigurálja az új virtuális hálózat, az Azure Blob storage tárolási szolgáltatásvégponttal, és a hálózati hozzáférés-vezérléssel együtt használható a fürt alhálózatból csak IP-címek. <!-- xxx make sure this is accurate --> <!-- do I need to say that this only happens if you choose to create storage? -->
+  Az üzembe helyezés sablon is konfigurálja az új virtuális hálózat, az Azure Blob storage tárolási szolgáltatásvégponttal, és a hálózati hozzáférés-vezérléssel együtt használható a fürt alhálózatból csak IP-címek. 
 
 * **Alhálózat** – válasszon egy alhálózatot a meglévő virtuális hálózatból, vagy hozzon létre egy újat. 
 

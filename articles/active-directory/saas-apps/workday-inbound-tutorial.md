@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/19/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 722fc5366d8f6863d19d09bd6e555fcc9a73d570
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 73c921df493eeda25c50047e861d3d30e6dc52a8
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868119"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456482"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása a Workday konfigurálása
 
@@ -853,12 +853,12 @@ A változók [proxykiszolgáló] és [proxyport] cserélje le a proxykiszolgál�
 
 #### <a name="how-do-i-ensure-that-the-provisioning-agent-is-able-to-communicate-with-the-azure-ad-tenant-and-no-firewalls-are-blocking-ports-required-by-the-agent"></a>Hogyan biztosítja, hogy a kiépítési ügynök nem tud kommunikálni az Azure AD-bérlővel, és nincs tűzfal forgalomszűrők blokkolják az ügynök által használt portokat?
 
-Azt is ellenőrizze, hogy rendelkezik-e a szükséges portok megnyitásához nyissa meg az összes a [összekötő portok vizsgálati eszköz](https://aadap-portcheck.connectorporttest.msappproxy.net/) a helyszíni hálózatból. További zöld jelöljük azt jelenti, hogy a nagyobb rugalmasság.
+Azt is ellenőrizze, hogy rendelkezik-e a szükséges portok megnyitásához nyissa meg az összes a [összekötő portok vizsgálati eszköz](https://aadap-portcheck.connectorporttest.msappproxy.net/) , a helyszíni hálózat. További zöld jelöljük azt jelenti, hogy a nagyobb rugalmasság.
 
 Győződjön meg arról, hogy az eszközt a megfelelő eredményeket ad meg, hogy ne felejtse el:
 
 * Az eszköz a böngészőben nyissa meg a kiszolgálón, amelyre a kiépítési ügynök van telepítve.
-* Győződjön meg arról, hogy minden olyan proxyk vagy a tűzfalak alkalmazható a kiépítési ügynök is érvényesek, ezen a weblapon. Ezt megteheti az Internet Explorerben a **beállítások -> Internet-beállítások -> kapcsolatok Lan-beállítások ->**. Ezen a lapon láthatja a mezőben "Használatát Proxy Server számára a helyi hálózaton". Válassza ezt a jelölőnégyzetet, és a proxykiszolgáló címét helyezze az "Address" mezőbe.
+* Győződjön meg arról, hogy minden olyan proxyk vagy a tűzfalak alkalmazható a kiépítési ügynök is érvényesek, ezen a weblapon. Ezt megteheti az Internet Explorerben a **beállítások -> Internet-beállítások -> kapcsolatok LAN-beállítások ->**. Ezen a lapon láthatja a mezőben "Használatát Proxy Server számára a helyi hálózaton". Válassza ezt a jelölőnégyzetet, és a proxykiszolgáló címét helyezze az "Address" mezőbe.
 
 #### <a name="can-one-provisioning-agent-be-configured-to-provision-multiple-ad-domains"></a>Konfigurálható egy kiépítési ügynök kiépítése több AD-tartomány?
 

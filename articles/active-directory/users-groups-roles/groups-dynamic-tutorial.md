@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3883ddcad1c41e131d52016e4fa94a3e668adcd1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 564cfe0bb0b95d12d91b7d8d4e3f1f0549ec73e4
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56209727"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451756"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>Oktatóanyag: Tagok hozzáadása vagy eltávolítása csoport automatikusan
 
@@ -36,7 +36,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A funkcióhoz egy prémium szintű Azure AD-licenccel kell rendelkeznie a bérlő globális rendszergazdájaként. Ha még nem rendelkezik ilyennel, válassza az Azure AD-ben a **Licencek** > **Termékek** > **Kipróbálás/vásárlás** lehetőséget.
+Ez a funkció egy prémium szintű Azure AD-licenc szükséges az Ön számára a bérlő globális rendszergazdájaként. Ha még nem rendelkezik ilyennel, válassza az Azure AD-ben a **Licencek** > **Termékek** > **Kipróbálás/vásárlás** lehetőséget.
 
 A felhasználókhoz nem szükséges licenceket hozzárendelnie ahhoz, hogy dinamikus csoportok tagjai lehessenek. Csupán a bérlőn elérhető minimális számú prémium szintű Azure AD P1 licencre van szükség az összes ilyen felhasználó lefedéséhez. 
 
@@ -44,7 +44,7 @@ A felhasználókhoz nem szükséges licenceket hozzárendelnie ahhoz, hogy dinam
 
 Először létrehozunk egy csoportot az egy partnervállalatból származó vendégfelhasználók számára. Esetükben speciális licencelésre van szükség, ezért érdemes erre a célra létrehozni egy csoportot.
 
-1. Jelentkezzen be az Azure Portalra (https://portal.azure.com) egy olyan fiókkal, amely a bérlő globális rendszergazdája.
+1. Jelentkezzen be az Azure Portalon (https://portal.azure.com) egy olyan fiókkal, amely a bérlő globális rendszergazdája.
 2. Válassza az **Azure Active Directory** > **Csoportok** > **Új csoport** lehetőséget.
   ![az Új csoport parancs kiválasztása](./media/groups-dynamic-tutorial/new-group.png)
 3. A **Csoport** panelen:

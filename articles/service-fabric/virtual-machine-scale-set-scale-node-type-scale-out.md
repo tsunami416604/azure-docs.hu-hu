@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/13/2019
 ms.author: aljo
-ms.openlocfilehash: 01d4af8349d3f5a0f58c4c3fa56b489d739c7b42
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: d732c26fd503f65bbd82bff076873ea5de4edb39
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301706"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455598"
 ---
 # <a name="scale-a-service-fabric-cluster-out-by-adding-a-virtual-machine-scale-set"></a>Service Fabric-fürt ki egy virtuálisgép-méretezési csoportot hozzáadásával méretezhető
 Ez a cikk ismerteti, hogyan méretezzünk át egy Azure Service Fabric-fürtöt egy meglévő fürthöz ad hozzá egy új csomópont típusa. Service Fabric-fürt, amelybe mikroszolgáltatásokat helyezhet üzembe és felügyelhet virtuális vagy fizikai gépek hálózaton keresztül csatlakozó készlete áll. Egy számítógép vagy virtuális Gépet, amely egy fürt része csomópontoknak nevezzük. Virtuálisgép-méretezési csoportok olyan számítási Azure-erőforrások üzembe helyezése és kezelése a virtuális gépek gyűjteményét készletként használt. Minden csomópont-típus egy Azure-fürtön definiált [külön méretezési csoportként](service-fabric-cluster-nodetypes.md). Mindegyik csomóponttípus kezelhetők külön-külön. Egy Service Fabric-fürt létrehozását követően akkor is egy fürt hozzáadásával horizontálisan skálázhatja egy új csomópont típusa (virtuálisgép-méretezési csoportot) egy meglévő fürthöz.  Méretezheti a fürt bármikor, még akkor is, ha a számítási feladatok a fürtön futnak.  A fürt skálázható, mivel az alkalmazások automatikus méretezése is.
 
 ## <a name="add-an-additional-scale-set-to-an-existing-cluster"></a>Adjon hozzá egy további méretezési csoport meglévő fürthöz
-Egy új csomópont típusa (amely egy virtuálisgép-méretezési készlet biztonsági) hozzáadása egy meglévő fürthöz hasonlít a [történő frissítését az elsődleges csomóponttípushoz](service-fabric-scale-up-node-type.md), azzal a különbséggel nem fog használni az azonos nodetyperef hivatkozással; természetesen nem kell szükségesekre aktívan használt a Virtual machine scale sets, és meg akar nem fürt rendelkezésre állási elvesznek, ha nem frissíti az elsődleges csomóponttípushoz. 
+Egy új csomópont típusa (amely egy virtuálisgép-méretezési készlet biztonsági) hozzáadása egy meglévő fürthöz hasonlít a [történő frissítését az elsődleges csomóponttípushoz](service-fabric-scale-up-node-type.md), azzal a különbséggel nem fog használni az azonos nodetyperef hivatkozással; természetesen nem kell szükségesekre aktívan használt Virtuálisgép-méretezési csoportok, és a fürt rendelkezésre állását nem vesznek el, ha nem frissíti az elsődleges csomóponttípushoz. 
 
 Nodetyperef hivatkozással tulajdonság lett deklarálva belül a virtuális gép méretezési Service Fabric-bővítmény tulajdonságai:
 ```json

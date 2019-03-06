@@ -14,12 +14,12 @@ ms.workload: azure-app-configuration
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: e69e2ca5ccd8e8edc2f55d74a0cca03eaabc9f49
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 9288ea08da6335dd29e7a15a9bc871b76c1ce7e9
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56884739"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57438431"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>Együttműködve a kulcs-értékeket egy alkalmazások konfigurálása az Azure áruházban
 
@@ -70,9 +70,9 @@ Ez a szkript a következő parancsokat használja egy alkalmazás a konfiguráci
 
 | Parancs | Megjegyzések |
 |---|---|
-| [az appconfig-kv beállítása](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-kv-set) | Létrehozza vagy frissíti a kulcs-érték. |
-| [az appconfig kv listája](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-kv-list) | Egy alkalmazás a konfigurációs adattárolónál a kulcs-értékeit sorolja fel. |
-| [az appconfig kv delete](/cli/azure/ext/appconfig/appconfig#ext-appconfig-az-appconfig-kv-delete) | Töröl egy kulcs-érték. |
+| [az appconfig-kv beállítása](/cli/azure/ext/appconfig/appconfig) | Létrehozza vagy frissíti a kulcs-érték. |
+| [az appconfig kv listája](/cli/azure/ext/appconfig/appconfig) | Egy alkalmazás a konfigurációs adattárolónál a kulcs-értékeit sorolja fel. |
+| [az appconfig kv delete](/cli/azure/ext/appconfig/appconfig) | Töröl egy kulcs-érték. |
 
 ## <a name="next-steps"></a>További lépések
 

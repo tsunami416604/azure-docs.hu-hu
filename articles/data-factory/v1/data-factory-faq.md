@@ -13,16 +13,18 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 81c7c98f29c2e507e165a3943395e36a453cbf06
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 01ed1b94ffedb273321fa49653a614c659611e6a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024042"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453201"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Az Azure Data Factory – gyakori kérdések
 > [!NOTE]
 > Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a jelenlegi verzió a Data Factory szolgáltatás használ, tekintse meg [– gyakori kérdések – Data Factory](../frequently-asked-questions.md).
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="general-questions"></a>Általános kérdések
 ### <a name="what-is-azure-data-factory"></a>Mi az az Azure Data Factory?
@@ -171,12 +173,12 @@ A szelet futtathatja a következő módszerek valamelyikével:
 
 * Monitor and Manage Appot használatával futtassa egy tevékenységablakot vagy a szeletet. Lásd: [kijelölt tevékenység windows újrafuttatása](data-factory-monitor-manage-app.md#perform-batch-actions) útmutatást.   
 * Kattintson a **futtatása** a parancssorban a a **ADATSZELET** panelen a szelet az Azure Portalon.
-* Futtatás **Set-AzureRmDataFactorySliceStatus** parancsmagot és az állapot beállítása **Várakozás** a szelet.   
+* Futtatás **Set-AzDataFactorySliceStatus** parancsmagot és az állapot beállítása **Várakozás** a szelet.   
 
     ```PowerShell
-    Set-AzureRmDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00"
+    Set-AzDataFactorySliceStatus -Status Waiting -ResourceGroupName $ResourceGroup -DataFactoryName $df -TableName $table -StartDateTime "02/26/2015 19:00:00" -EndDateTime "02/26/2015 20:00:00"
     ```
-Lásd: [Set-AzureRmDataFactorySliceStatus] [ set-azure-datafactory-slice-status] a parancsmag részleteit.
+Lásd: [Set-AzDataFactorySliceStatus] [ set-azure-datafactory-slice-status] a parancsmag részleteit.
 
 ### <a name="how-long-did-it-take-to-process-a-slice"></a>Mennyi volt időt vesz igénybe egy szelet feldolgozása?
 A Monitor & Manage alkalmazással Activity Window Explorer használatával tudja, hogy mennyi ideig tartott adatszelet feldolgozni. Lásd: [Activity Window Explorer](data-factory-monitor-manage-app.md#activity-window-explorer) részleteiről.
@@ -191,7 +193,7 @@ Az Azure Portalon a következőket is teheti:
 6. Megtekintheti a **időtartama** mezőt a egy értéke. Ez az érték a szelet feldolgozásának ideje.   
 
 ### <a name="how-to-stop-a-running-slice"></a>Hogyan lehet leállítani a futó szelet?
-Ha szeretné megszüntetni a folyamat futtatásának, [Suspend-AzureRmDataFactoryPipeline](/powershell/module/azurerm.datafactories/suspend-azurermdatafactorypipeline) parancsmagot. Jelenleg az felfüggesztése a folyamat nem állítja le a folyamatban lévő szelet végrehajtások. Miután végzett a folyamatban lévő végrehajtások, nincsenek felesleges szelet van mértékének.
+Ha szeretné megszüntetni a folyamat futtatásának, [Suspend-AzDataFactoryPipeline](/powershell/module/az.datafactory/suspend-azdatafactorypipeline) parancsmagot. Jelenleg az felfüggesztése a folyamat nem állítja le a folyamatban lévő szelet végrehajtások. Miután végzett a folyamatban lévő végrehajtások, nincsenek felesleges szelet van mértékének.
 
 Ha valóban szeretné azonnal leállítja az összes végrehajtás, az egyetlen módszer a folyamat törléséhez, és újra létre kell hoznia lesz. Ha törli a folyamatot, nem kell a táblákat és a folyamat által használt összekapcsolt szolgáltatások törlése.
 
@@ -199,9 +201,9 @@ Ha valóban szeretné azonnal leállítja az összes végrehajtás, az egyetlen 
 [msdn-class-library-reference]: /dotnet/api/microsoft.azure.management.datafactories.models
 [msdn-rest-api-reference]: /rest/api/datafactory/
 
-[adf-powershell-reference]: /powershell/module/azurerm.datafactories/
+[adf-powershell-reference]: /powershell/module/az.datafactory/
 [azure-portal]: http://portal.azure.com
-[set-azure-datafactory-slice-status]: /powershell/module/azurerm.datafactories/set-azurermdatafactoryslicestatus
+[set-azure-datafactory-slice-status]: /powershell/module/az.datafactory/set-Azdatafactoryslicestatus
 
 [adf-pricing-details]: http://go.microsoft.com/fwlink/?LinkId=517777
 [hdinsight-supported-regions]: http://azure.microsoft.com/pricing/details/hdinsight/

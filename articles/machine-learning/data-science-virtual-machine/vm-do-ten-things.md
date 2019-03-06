@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: e08b38fcea152489455eb4b4f66e56bc609a09db
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 725580a01c8dd60003cfc11910a3e5183624b1b1
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251724"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437538"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Tíz dolog, amire alkalmas a Windows Data Science virtuális gépen
 
@@ -262,7 +262,7 @@ A kód letöltése a GitHub-adattárból, használhatja a ```git clone``` paranc
 
     git clone https://github.com/Azure/DataScienceVM.git
 
-A Visual Studióban érdemes ugyanazt a Klónozási műveletet. Az alábbi képernyőfelvételhez bemutatja a Git és a GitHub, Visual Studio eszközök elérése.
+A Visual Studióban érdemes ugyanazt a Klónozási műveletet. Az alábbi képernyőfelvételen a Git és a GitHub, a Visual Studio eszközök elérése.
 
 ![A Visual Studio képernyőképe a megjelenített GitHub-kapcsolattal](./media/vm-do-ten-things/VSGit.PNG)
 

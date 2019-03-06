@@ -7,18 +7,18 @@ ms.service: container-service
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: iainfou
-ms.openlocfilehash: 250c4fc6e51bacc68c965394b9fd430b1b75a52c
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: d7d23300936cd512466e5c4b18f1f0922c81ceff
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447174"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57408190"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Podok hálózati házirendek segítségével az Azure Kubernetes Service (AKS) közötti adatforgalom védelme
 
 A modern, mikroszolgáltatás-alapú alkalmazások a Kubernetesben való futtatásakor gyakran érdemes szabályozhatja, hogy mely összetevők kommunikálhatnak egymással. Hogyan lehet adatforgalom podok AKS-fürt között a legalacsonyabb jogosultsági szint elvének kell alkalmazni. Például valószínűleg már szeretné adatforgalmat közvetlenül a háttéralkalmazásokhoz. A Kubernetes a *hálózati házirend* szolgáltatás lehetővé teszi egy fürt podok közötti bejövő és kimenő forgalomra vonatkozó szabályok meghatározásához.
 
-Ez a cikk bemutatja, hogyan hálózati házirendek használata az aks-ben podok közötti forgalom szabályozására.
+Calico, egy nyílt forráskódú hálózatkezeléssel és a hálózati biztonsági megoldás Tigera, által megalkotott kínál egy hálózati házirend motor, amely a Kubernetes hálózati házirend-szabályok valósíthat meg. Ez a cikk bemutatja, hogyan telepíti az Calico hálózati házirend-motort, és hozhat létre Kubernetes hálózati szabályzatokat, amelyekkel szabályozható a podok az aks-ben közötti forgalmat.
 
 > [!IMPORTANT]
 > Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.

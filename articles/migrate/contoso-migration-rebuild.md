@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: a4e5087e53d4505d54b5ff4b8d17ad6166c6174b
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: c0e953434e947703308ff8d796107838df8cc979
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002501"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57437314"
 ---
 # <a name="contoso-migration-rebuild-an-on-premises-app-to-azure"></a>Contoso áttelepítése: Az Azure-bA a helyszíni alkalmazás újraépítése
 
@@ -93,7 +93,7 @@ Után rögzíthet célokat és követelményeket állapította meg, a Contoso te
 
 Contoso kiértékeli a javasolt tervezési által bármik lehetnek, és hátrányai listáját.
 
-**Szempontok** | **Részletek**
+**Consideration** | **Részletek**
 --- | ---
 **Szakemberek számára** | PaaS- és kiszolgáló nélküli megoldások teljes körű központi telepítésére vonatkozó használata jelentősen csökkenti a felügyeleti időt, amely a Contoso meg kell adnia.<br/><br/> Áthelyezése a mikroszolgáltatási architektúrát lehetővé teszi, hogy a Contoso, könnyedén kiterjesztheti a megoldásokat az idő függvényében.<br/><br/> Új funkciók online állapotba helyezhetők a már meglévő megoldások kódbázissal bármelyikét megszakítása nélkül.<br/><br/> A webalkalmazás több példányával, és nem rendszerkritikus meghibásodási pontot lesz konfigurálva.<br/><br/> Az automatikus skálázás engedélyezve lesz, hogy az alkalmazás válaszolhat a különböző forgalommal képes kezelni.<br/><br/> A PaaS-szolgáltatások helyezze át a Contoso kivonhatja az elavult megoldások Windows Server 2008 R2 operációs rendszeren.<br/><br/> Cosmos DB, amely nem igényel konfigurálást a Contoso beépített hibatűrő képességgel rendelkezik. Ez azt jelenti, hogy az adatréteg már nem feladatátvételi hibaérzékeny pont.
 **Hátrányai** | Tárolók összetettebbek, mint más áttelepítési lehetőségek. Gyorsan elsajátítható contoso problémát okozhatja.  Egy új szint által biztosított nagy mennyiségű értéket a görbe érték összetettségi vezetnek.<br/><br/> Az üzemeltetési csapat, contoso kell számára és Azure-tárolók és mikroszolgáltatások az alkalmazás támogatja.<br/><br/> Contoso még nem teljes körűen megvalósítva fejlesztési és üzemeltetési a teljes megoldás. Gondolja át, amely a központi telepítés az AKS, a functions és az App Services-szolgáltatások a Contoso cégnek szüksége van.
@@ -114,7 +114,7 @@ Contoso kiértékeli a javasolt tervezési által bármik lehetnek, és hátrán
 
 **Szolgáltatás** | **Leírás** | **Költségek**
 --- | --- | ---
-[AZ AKS](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | Leegyszerűsíti a Kubernetes felügyeleti, üzembe helyezési és műveleteket. Egy teljes körűen felügyelt Kubernetes tárolószervező szolgáltatást biztosít.  | Az AKS szolgáltatás ingyenes.  Csak a virtuális gépeket, és a hozzájuk kapcsolódó tárterületért és a felhasznált hálózati erőforrásokért kell fizetnie. [További információk](https://azure.microsoft.com/pricing/details/kubernetes-service/).
+[AKS](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | Leegyszerűsíti a Kubernetes felügyeleti, üzembe helyezési és műveleteket. Egy teljes körűen felügyelt Kubernetes tárolószervező szolgáltatást biztosít.  | Az AKS szolgáltatás ingyenes.  Csak a virtuális gépeket, és a hozzájuk kapcsolódó tárterületért és a felhasznált hálózati erőforrásokért kell fizetnie. [További információk](https://azure.microsoft.com/pricing/details/kubernetes-service/).
 [Azure Functions](https://azure.microsoft.com/services/functions/) | Gyorsítja egy eseményvezérelt, kiszolgáló nélküli számítási környezettel történő fejlesztést. Igény szerint skálázhatja.  | Fizetés csak a felhasznált erőforrásokat. Csomag / másodperc erőforrás-használat és a végrehajtás alapján számítjuk fel. [További információk](https://azure.microsoft.com/pricing/details/functions/).
 [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) | Tárolja a lemezképeket a tárolópéldányok összes típusára vonatkozóan. | A Funkciók, a storage és a használati időtartama alapján költsége. [További információk](https://azure.microsoft.com/pricing/details/container-registry/).
 [Azure App Service](https://azure.microsoft.com/services/app-service/containers/) | Gyorsan létrehozhat, üzembe helyezhet és méretezhet nagyvállalati szintű webes, mobil- és API-alkalmazásokat, amelyek bármilyen platformon képesek futni. | Az App Service-csomagok díjszabása másodpercalapú. [További információk](https://azure.microsoft.com/pricing/details/app-service/windows/).
@@ -127,7 +127,7 @@ Contoso kiértékeli a javasolt tervezési által bármik lehetnek, és hátrán
 --- | ---
 **Azure-előfizetés** | Contoso előfizetések létrehozása közben egy korábbi cikkben. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).<br/><br/> Ha ingyenes fiókot hoz létre, Ön lesz az előfizetés rendszergazdája, és minden műveletet végrehajthat.<br/><br/> Ha egy meglévő előfizetést használ, és Ön nem a rendszergazda, kérjen a rendszergazdától tulajdonosi vagy közreműködői jogosultságot rendelhet, szeretne.
 **Azure-infrastruktúra** | [Ismerje meg, hogyan](contoso-migration-infrastructure.md) Contoso beállítása az Azure-infrastruktúrát.
-**Fejlesztői Előfeltételek** | Contoso cégnek szüksége van a következő eszközök egy fejlesztői munkaállomáson:<br/><br/> - [A Visual Studio 2017 Community Edition: 15.5 verziót](https://www.visualstudio.com/)<br/><br/> .NET-munkaterhelés engedélyezve van.<br/><br/> [Git](https://git-scm.com/)<br/><br/> [Azure PowerShell](https://azure.microsoft.com/downloads/)<br/><br/> [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)<br/><br/> [A docker CE (Windows 10 esetén) vagy a Docker VM (Windows Server) –](https://docs.docker.com/docker-for-windows/install/) be a Windows-tárolók használatára.
+**Fejlesztői Előfeltételek** | Contoso cégnek szüksége van a következő eszközök egy fejlesztői munkaállomáson:<br/><br/> - [Visual Studio 2017 Community Edition: 15.5 verziót](https://www.visualstudio.com/)<br/><br/> .NET-munkaterhelés engedélyezve van.<br/><br/> [Git](https://git-scm.com/)<br/><br/> [Azure PowerShell](https://azure.microsoft.com/downloads/)<br/><br/> [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)<br/><br/> [A docker CE (Windows 10 esetén) vagy a Docker VM (Windows Server) –](https://docs.docker.com/docker-for-windows/install/) be a Windows-tárolók használatára.
 
 
 
@@ -154,7 +154,7 @@ AKS és az Azure Container Registry (ACR) segítségével felügyelt Kubernetes-
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-1. Ahhoz, hogy, Contoso rendszergazdák győződjön meg arról, hogy az összes prerequisitie szoftver telepítve van az üzemelő példány használatát a fejlesztési gépen.
+1. Ahhoz, hogy, Contoso rendszergazdák győződjön meg arról, hogy az összes előfeltételként szükséges szoftver telepítve van az üzemelő példány használatát a fejlesztési gépen.
 2. Ezek a fejlesztői gépen, Git használatával helyi tárház klónozása: **git-klón https://github.com/Microsoft/SmartHotel360-Azure-backend.git**
 
 
@@ -204,7 +204,7 @@ A Contoso-rendszergazdák az üzembe helyezés végrehajtása:
 
 11. Ezek a következő parancsot a Kubernetes-irányítópult indításához: 
 
-    **az aks browse--resource-group ContosoRG--name smarthotelakseus2**
+    **az aks browse --resource-group ContosoRG --name smarthotelakseus2**
 
 12. Az irányítópult egy böngészőlapon nyílik meg. Ez a bújtatott kapcsolatot az Azure CLI használatával. 
 
@@ -374,15 +374,15 @@ Ehhez útmutatást szakasz használata a [SmartHotel360-public-web](https://gith
 1.  Az Azure Portalon, a storage-fiók létrejött, és rákattint megnyitják **Blobok**.
 2.  Akkor hozzon létre egy új tárolót (**Kisállatok**) tároló beállítása a nyilvános hozzáférési szinttel. Felhasználók saját kisállat fényképeket feltölteni ezt a tárolót.
 
-    ![Storage-blobba](./media/contoso-migration-rebuild/blob1.png)
+    ![Tárolóblob](./media/contoso-migration-rebuild/blob1.png)
 
 3. Akkor hozzon létre egy második új tárolót **beállítások**. Egy fájl az előtér alkalmazásbeállításokat kerülnek ebben a tárolóban.
 
-    ![Storage-blobba](./media/contoso-migration-rebuild/blob2.png)
+    ![Tárolóblob](./media/contoso-migration-rebuild/blob2.png)
 
 4. Rögzítése a hozzáféréshez szükséges adatokat a tárfiók egy szövegfájlba későbbi felhasználásra.
 
-    ![Storage-blobba](./media/contoso-migration-rebuild/blob2.png)
+    ![Tárolóblob](./media/contoso-migration-rebuild/blob2.png)
 
 ### <a name="provision-a-cosmos-database"></a>Cosmos-adatbázis kiépítése
 

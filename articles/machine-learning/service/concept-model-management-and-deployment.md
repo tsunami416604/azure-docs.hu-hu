@@ -11,12 +11,12 @@ author: chris-lauren
 ms.author: clauren
 ms.date: 1/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: 583573db99eb6b59b82eb22ed88ed5265352e7dd
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 8dea667b15471accd4fc8b09d0ff1eb7aa5daed5
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876024"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57403685"
 ---
 # <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>Kezelheti, telepítheti és figyelheti a modellek az Azure Machine Learning szolgáltatás
 
@@ -105,6 +105,6 @@ A modell frissítések automatikusan nincs regisztrálva. Ehhez hasonlóan egy �
 
 ## <a name="next-steps"></a>További lépések
 
-Tudjon meg többet [hol és hogyan telepítheti a modellek](how-to-deploy-and-where.md) az Azure Machine Learning szolgáltatással.
+Tudjon meg többet [hol és hogyan telepítheti a modellek](how-to-deploy-and-where.md) az Azure Machine Learning szolgáltatással. A központi telepítés egy példa: [oktatóanyag: Egy kép besorolási modell az Azure Container Instancesben üzembe](tutorial-deploy-models-with-aml.md).
 
 Ismerje meg, hogyan hozhat létre ügyfél alkalmazások és szolgáltatások, amelyek [webszolgáltatásként üzembe helyezett modell felhasználása](how-to-consume-web-service.md).
