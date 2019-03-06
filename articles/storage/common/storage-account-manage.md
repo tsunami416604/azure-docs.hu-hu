@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: tamram
-ms.openlocfilehash: 768fd4a715d4c0df154f823d159fd63898c9715b
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d3f6009c77618bc043586771a6f67442533b2a0d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981331"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444055"
 ---
 # <a name="manage-storage-account-settings-in-the-azure-portal"></a>Az Azure Portal tárfiók-beállítások kezelése
 
@@ -51,7 +51,7 @@ A tárfiók hitelesítő adatainak megtekintéséhez a következőt kell tennie:
 4. Keresse meg a **Kulcs** értéket a **key1** területen, majd kattintson a **Másolás** gombra a fiókkulcs másolásához.
 5. Másik lehetőségként másolhatja a teljes kapcsolati karakterlánc. Keresse meg a **Kapcsolati sztring** értéket a **key1** területen, és kattintson a **Másolás** gombra a kapcsolati sztring másolásához.
 
-    ![Tárelérési kulcsok megtekintése az Azure Portalon bemutató képernyőkép](media/storage-manage-account/portal-connection-string.png)
+    ![Képernyőfelvétel: a tárelérési kulcsok megtekintése az Azure Portalon](media/storage-manage-account/portal-connection-string.png)
 
 ### <a name="regenerate-access-keys"></a>Elérési kulcsok újragenerálása
 

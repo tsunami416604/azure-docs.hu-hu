@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: cff96ecb4f4b20e7e3542f6ae6e3e7740b750235
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: d35918659acb899e43f76e94168abcba080aa006
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729795"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452130"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor megoldás az Azure-ban
 
@@ -119,19 +119,13 @@ A Network Performance Monitor szintetikus tranzakciók használatával a forrás
 
    **ExpressRoute-figyelő**: Válassza ki **felderítése most** minden az ExpressRoute privát társviszony-létesítéseket, amely csatlakozik a virtuális hálózatok az Azure-előfizetést a Log Analytics-munkaterülettel társított felderítéséhez. 
 
-   >[!NOTE] 
-   > A megoldás jelenleg csak az ExpressRoute privát társviszony-létesítéseket deríti fel. 
-
-   >[!NOTE] 
-   > Csak privát társviszony-létesítéseket a virtuális hálózatok, a Log Analytics-munkaterülettel társított az előfizetéssel társított csatlakozó felderített. Ha ExpressRoute kívül az előfizetés ehhez a munkaterülethez társított virtuális hálózatok csatlakoztatva van, hozzon létre egy Log Analytics-munkaterület ezen előfizetések. Ezeket a társviszony figyelése a Network Performance Monitor.
-
    ![ExpressRoute-figyelő nézet](media/network-performance-monitor/npm-express-route.png)
 
-   A felderítés befejezése után egy táblázatban láthatók a felderített privát társviszony-létesítéseket. 
+   Ha a felderítés befejeződött, a felderített kapcsolatok és a társviszony-létesítéseket egy táblázatban láthatók. 
 
    ![Hálózati Teljesítményfigyelő beállítása lap](media/network-performance-monitor/npm-private-peerings.png)
     
-A társviszony-létesítéshez figyelési kezdetben letiltott állapotban van egy. Válassza ki, minden társviszonyhoz, amely a figyelni kívánt és a számukra az részletei nézeten a jobb figyelés konfigurálása. Válassza ki **mentése** a konfiguráció mentéséhez. További tudnivalókért tekintse meg a "Konfigurálása ExpressRoute-figyelés" cikket. 
+A Kapcsolatcsoportok és a társviszony figyelése kezdetben letiltott állapotban van egy. Válassza ki a figyelni kívánt egyes erőforrások és a számukra az részletei nézeten a jobb figyelés konfigurálása. Válassza ki **mentése** a konfiguráció mentéséhez. További tudnivalókért tekintse meg a "Konfigurálása ExpressRoute-figyelés" cikket. 
 
 A telepítés befejezése után az adatok feltöltése egy órát vesz igénybe 30 perc. Az üzenet jelenik meg a megoldás összesíti az adatokat a hálózatról, amíg *megoldás további konfigurálást igényel* a Network Performance Monitor **áttekintése** csempére. Miután az adatok gyűjtése és indexelt, a **áttekintése** csempén megváltozik, és tájékoztatja, hogy a hálózat állapotának összegzését az. Majd módosíthatja a csomópontok, mely Log Analytics, az ügynökök telepítve vannak, valamint az alhálózatok a környezetből felderített figyelését.
 
@@ -269,7 +263,7 @@ Ha Ön egy NPM-felhasználó hoz létre riasztást, az Azure Portalon keresztül
 3. Ha Műveletcsoportok használata mellett dönt, akkor kiválaszthat egy korábban létrehozott művelet. Műveletcsoport létrehozása tudhat [itt.](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal) 
 4. Ha a riasztás sikeresen létrejött, a riasztások kezelése hivatkozás segítségével a riasztásokat. 
 
-Minden alkalommal, amikor létrehoz egy riasztás npm-et az Azure Monitor egy lekérdezés alapú riasztási szabály hoz létre. Ez a lekérdezés triggerred van alapértelmezés szerint 5 percenként. Az Azure monitor nem kell fizetni az első 250 létrehozott riasztási szabályok jelentkezik, és korlátozza a 250 naplóriasztási szabály riasztási szabályok fenti lesznek kiszámlázva, [riasztást küld, az Azure monitorban díjszabását ismertető lapon díjszabás](https://azure.microsoft.com/en-us/pricing/details/monitor/).
+Minden alkalommal, amikor létrehoz egy riasztás npm-et az Azure Monitor egy lekérdezés alapú riasztási szabály hoz létre. Ez a lekérdezés akkor aktiválódik, alapértelmezés szerint 5 percenként. Az Azure monitor nem kell fizetni az első 250 létrehozott riasztási szabályok jelentkezik, és korlátozza a 250 naplóriasztási szabály riasztási szabályok fenti lesznek kiszámlázva, [riasztást küld, az Azure monitorban díjszabását ismertető lapon díjszabás](https://azure.microsoft.com/en-us/pricing/details/monitor/).
 Értesítések megfelelően külön számoljuk [díjszabás az Azure monitorban díjszabását ismertető lapon értesítések](https://azure.microsoft.com/en-us/pricing/details/monitor/).
 
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2019
 ms.author: monhaber
-ms.openlocfilehash: 312e6c3c102946bcd19247f0730369dc7d0c8aba
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: e42deed992496cc28bdf92c01934d74361f2de6f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247426"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444021"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure Security Center – gyakori kérdések
 Ez a GYIK az Azure Security Center egy szolgáltatás, amellyel megelőzését, észlelését és háríthatja el a fenyegetéseket átláthatóbbá és a Microsoft Azure-erőforrások kézben kapcsolatos kérdésekre ad választ.
@@ -42,7 +42,7 @@ A Security Center két szinten érhető el:
 
 A **ingyenes szint** biztonsági állapotát az Azure-erőforrások, az alapszintű biztonsági házirend, a biztonsági javaslatok és a integrációs rálátást biztosít a biztonsági termékeket és szolgáltatásokat partnereinktől.
 
-A **Standard szintű** hozzáadja a komplex veszélyforrások elleni képességeket tartalmaz, beleértve a fenyegetésészlelési intelligencia, a viselkedés-elemzés, a rendellenességek észlelése, a biztonsági incidensek és tesznek elérhetővé; ilyenek jelentések fenyegetés. Egy Standard tierfree próba megkezdése. Szeretné frissíteni, válassza ki a [Tarifacsomag](https://docs.microsoft.com/azure/security-center/security-center-pricing) a biztonsági szabályzatban. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
+A **Standard szintű** hozzáadja a komplex veszélyforrások elleni képességeket tartalmaz, beleértve a fenyegetésészlelési intelligencia, a viselkedés-elemzés, a rendellenességek észlelése, a biztonsági incidensek és tesznek elérhetővé; ilyenek jelentések fenyegetés. Standard szint ingyenes próba megkezdése. Szeretné frissíteni, válassza ki a [Tarifacsomag](https://docs.microsoft.com/azure/security-center/security-center-pricing) a biztonsági szabályzatban. További részletekért tekintse át az [árképzést ismertető oldalt](https://azure.microsoft.com/pricing/details/security-center/).
 
 ## <a name="permissions"></a>Engedélyek
 Az Azure Security Center [szerepköralapú hozzáférés-vezérlést (RBAC)](../role-based-access-control/role-assignments-portal.md) használ, amelynek [beépített szerepköreit](../role-based-access-control/built-in-roles.md) az Azure különböző csoportjaihoz, felhasználóihoz és szolgáltatásaihoz rendelheti.

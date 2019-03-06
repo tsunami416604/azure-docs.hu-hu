@@ -1,5 +1,5 @@
 ---
-title: Store-sendgrid-Java-How-to-send-email-example
+title: store-sendgrid-java-how-to-send-email-example
 description: Hogyan lehet e-mail küldése a SendGrid, a Java használatával egy Azure-környezetben
 services: ''
 documentationcenter: java
@@ -14,19 +14,19 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 10/30/2014
 ms.author: vibhork;dominic.may@sendgrid.com;elmer.thomas@sendgrid.com
-ms.openlocfilehash: c2f2a6e5f2dd551cfb300d333081874fef2f405c
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: fecc3b411211ceb8aa6db5a0e0c0c6b07f19a63f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52421947"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442461"
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java-in-an-azure-deployment"></a>Hogyan lehet E-mail küldése a SendGrid, a Java használatával Azure-környezetben
-Az alábbi példa bemutatja, hogyan használhatja a SendGrid e-mailek küldése az Azure-ban üzemeltetett weboldalakról. Az eredményül kapott alkalmazás fogja kérni a felhasználót e-mail-értékek, az alábbi képernyőfelvételen látható módon.
+Az alábbi példa bemutatja, hogyan használhatja a SendGrid e-mailek küldése az Azure-ban üzemeltetett weboldalakról. Az eredményül kapott alkalmazás fogja kérni a felhasználót e-mail-értékek, az alábbi képernyőképen látható módon.
 
 ![E-mailek űrlap][emailform]
 
-Az eredményül kapott e-mailt az alábbi képernyőfelvételhez hasonlóan néz ki.
+Az eredményül kapott e-mailt a következő képernyőképhez hasonlóan fog kinézni.
 
 ![E-mail-üzenet][emailsent]
 
@@ -204,7 +204,7 @@ A következő kódra, amely nevezzük, amikor befejezte az űrlap emailform.jsp,
     </body>
     </html>
 
-Az e-mailt küld, mellett emailform.jsp eredményét, egy a felhasználó; egy példa az alábbi képernyőfelvételen:
+Az e-mailt küld, mellett emailform.jsp eredményét, egy a felhasználó; ilyen például, az alábbi képernyőfelvételen látható:
 
 ![Eredmény e-mail küldése][emailresult]
 

@@ -16,12 +16,12 @@ ms.date: 12/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca5dc106d3a524f9bdd6f2d989ef1189032cd60f
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: fd90cd18be1fdbac5948fb076a3358b070bad8eb
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195523"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455071"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verziókiadások előzményei
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden hozzárendelések nem gyarapítsa alkalmazható.
@@ -833,7 +833,7 @@ Kiadás dátuma: 2017. március
 Az Azure AD Connect szinkronizálása
 * Kijavítva egy probléma, amely hatására az Azure AD Connect varázsló a meghiúsuljon, ha az Azure AD-összekötő megjelenített neve nem tartalmaz az Azure AD-bérlőhöz rendelt kezdeti.onmicrosoft.com-tartománnyal.
 * Javítva lett egy probléma, amely az Azure AD Connect varázsló sikertelen lesz, miközben az SQL database-kapcsolat létrehozása, amikor a szinkronizálási szolgáltatásfiók jelszavának például aposztróf, a kettőspont és a hely speciális karaktereket tartalmaz.
-* Javítva lett egy probléma okozza a hibát, "a dimage rendelkezik, amely eltér a kép horgonyra", amely egy Azure AD Connect-kiszolgáló átmeneti módra, miután ideiglenesen kizárt egy helyszíni számítógépen AD szinkronizálása objektumra, és ezután történő szinkronizálás újra vettem fel.
+* Javítva lett egy probléma okozza a hibát, "a lemezképben van, amely eltér a kép horgonyra", amely egy Azure AD Connect-kiszolgáló átmeneti módra, miután ideiglenesen kizárt egy helyszíni számítógépen AD szinkronizálása objektumra, és ezután történő szinkronizálás újra vettem fel.
 * Javítva lett egy probléma okozza a hibát, "az objektum megkülönböztető neve szerint is egy látszólagos", amely egy Azure AD Connect-kiszolgáló átmeneti módra, miután ideiglenesen kizárt egy helyszíni számítógépen AD szinkronizálása objektumra, és ezután történő szinkronizálás újra vettem fel.
 
 AD FS-kezelőben

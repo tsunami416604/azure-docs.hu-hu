@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 02/05/2019
+ms.date: 02/22/2019
 ms.author: alkohli
-ms.openlocfilehash: 0effc6af1ddc3273f0c6e2bf9cbfd0f2ecadf0a2
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 067bb6b806ddd9b83d4ea755876a980ca45d76e9
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747322"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57407629"
 ---
 # <a name="azure-data-box-disk-system-requirements"></a>Az Azure Data Box-lemezek rendszerkövetelményei
 
@@ -52,7 +52,7 @@ Linux-ügyfél a Data Box-lemezek eszközkészlet telepíti a következő szüks
 
 ## <a name="supported-connection"></a>Támogatott kapcsolatok
 
-Az ügyfélszámítógépen, az adatokat tartalmazó rendelkeznie kell egy USB 3.0-s vagy újabb port. Ez az ügyfél a megadott kábelen csatlakozzon a lemezek. 
+Az ügyfélszámítógépen, az adatokat tartalmazó rendelkeznie kell egy USB 3.0-s vagy újabb port. Ez az ügyfél a megadott kábelen csatlakozzon a lemezek.
 
 ## <a name="supported-storage-accounts"></a>Támogatott tárfiókok
 
@@ -62,19 +62,22 @@ Az ügyfélszámítógépen, az adatokat tartalmazó rendelkeznie kell egy USB 3
 | --- | --- |
 | Klasszikus | Standard |
 | Általános rendeltetés  |Standard; a V1 és V2 is támogatja. A gyakori és ritka elérésű szint használata támogatott. |
+| BLOB storage-fiók | |
 
 >[!NOTE]
 > Az Azure Data Lake Storage 2. generációs gyűjtések fiókok nem támogatottak.
 
 
-## <a name="supported-storage-types"></a>Támogatott tárolási típus
+## <a name="supported-storage-types-for-upload"></a>A feltöltéshez támogatott tárolási típus
 
-Íme a támogatott tárolási típusokat a Data Box-lemezek listája.
+Íme a Data Box-lemezek használata Azure-bA feltöltött támogatott tárolási típusok listáját.
 
 | **Fájlformátum** | **Megjegyzések** |
 | --- | --- |
 | Az Azure blokkblob | |
 | Oldala az Azure blob  | |
+| Azure Files  | |
+| Felügyelt lemezek | |
 
 
 ## <a name="next-step"></a>Következő lépés

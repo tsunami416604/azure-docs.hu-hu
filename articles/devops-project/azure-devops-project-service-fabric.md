@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/09/2018
 author: mlearned
 monikerRange: vsts
-ms.openlocfilehash: 2bba5d54c2b6298c2dd8059d47e5975ad3f176c8
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 8ba217cb9ce849e57b15d3e6cc73529c78bf340e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264760"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453758"
 ---
 # <a name="tutorial-deploy-your-aspnet-core-app-to-azure-service-fabric-by-using-azure-devops-projects"></a>Oktatóanyag: Az ASP.NET Core-alkalmazás telepítése Azure Service Fabric az Azure DevOps Projects használatával
 
@@ -39,7 +39,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 * Azure-előfizetés. Létrehozhat egy ingyenes fiókot a [Visual Studio Dev Essentials](https://visualstudio.microsoft.com/dev-essentials/) segítségével.
 
-## <a name="use-devops-projects-to-create-an-aspnet-core-app-and-deploy-it-to-service-fabricc"></a>ASP.NET Core-alkalmazás létrehozása és üzembe helyezése Service Fabricc az DevOps Projects segítségével
+## <a name="use-devops-projects-to-create-an-aspnet-core-app-and-deploy-it-to-service-fabric"></a>ASP.NET Core-alkalmazás létrehozása és üzembe helyezése a Service Fabric az DevOps Projects segítségével
 
 A DevOps Projects a CI/CD-folyamat Azure folyamatokat hoz létre. Hozzon létre egy új Azure DevOps szervezetet, vagy használjon egy már meglévő szervezet. DevOps-projektek Azure-erőforrások, például egy Service Fabric-fürt is létrehoz az Ön által választott Azure-előfizetésben.
 
@@ -79,7 +79,7 @@ A DevOps Projects a CI/CD-folyamat Azure folyamatokat hoz létre. Hozzon létre 
 
 A DevOps Projects automatikusan konfigurálja a CI/CD-folyamat Azure folyamatokban. Megvizsgálhatja és testre szabhatja a folyamatot. Ismerje meg az azt, tegye a következőket:
 
-1. Nyissa meg a fejlesztési és üzemeltetési Projectss irányítópultot.
+1. A DevOps-projekt-irányítópult megnyitása.
 
 1. Válassza ki a DevOps Projects irányítópult tetején lévő **folyamatok alakíthatók ki**.  
     Egy böngészőben lap megjeleníti a buildelési folyamat az új projekt.

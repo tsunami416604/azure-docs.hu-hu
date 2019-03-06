@@ -9,12 +9,12 @@ ms.subservice: custom-translator
 ms.date: 02/21/2019
 ms.author: v-jansko
 ms.topic: conceptual
-ms.openlocfilehash: 5fab0446fe28cc279a732f48ca7560792f611e86
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 46af936cc479770fe5db8085106c9da310a9717e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731480"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452402"
 ---
 # <a name="data-filtering"></a>Adatszűrés
 
@@ -23,7 +23,7 @@ Egy egyéni rendszer betanításához használandó dokumentumok elküldésekor 
 ## <a name="sentence-alignment"></a>Mondatok igazítása
 Ha a dokumentumot nem XLIFF, TMX vagy IGAZÍTÁS formátumban, egyéni a fordítót igazítja a mondatok egymással mondatról mondatra a forrás- és dokumentumok. Translator dokumentum igazítás végre – következik az elnevezési a dokumentumok keresése a megfelelő dokumentum más nyelv. A dokumentum egyéni Translator megpróbálja megkeresni a megfelelő mondat más nyelven. A dokumentum használ jelölés, például a beágyazott HTML-címkék zarovnání segítségre.  
 
-Tekintse meg a számot a forrás a mondatok közötti nagy eltérés, és célozhat ügyféloldali dokumentumok, a dokumentum nem lehet párhuzamos elkerülésükre, vagy más okokból is alignable. A dokumentum nagy különbség a régiópárok (> 10 %) mindkét oldalon a mondatok garantálja, hogy azok valóban párhuzamos második meg. Egyéni a fordítót a dokumentum mellett figyelmeztetést jelenít meg, ha a mondat száma gyanúsan.  
+Tekintse meg a számot a forrás a mondatok közötti nagy eltérés, és célozhat ügyféloldali dokumentumok, a dokumentumot nem lehet párhuzamos először, vagy valamilyen más okból nem sikerült igazítva. A dokumentum nagy különbség a régiópárok (> 10 %) mindkét oldalon a mondatok garantálja, hogy azok valóban párhuzamos második meg. Egyéni a fordítót a dokumentum mellett figyelmeztetést jelenít meg, ha a mondat száma gyanúsan.  
 
 
 ## <a name="deduplication"></a>Deduplikáció

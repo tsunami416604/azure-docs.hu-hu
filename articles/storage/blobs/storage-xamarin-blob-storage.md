@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: michaelhauss
-ms.openlocfilehash: b35bec31035c0219bf34a31cb34e20f7dc3a72c5
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: cac889b83bb0e7a7aab12ff4097556abf60663b6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397029"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449121"
 ---
 # <a name="how-to-use-blob-storage-from-xamarin"></a>A Xamarin Blob Storage használata
 
@@ -29,7 +29,7 @@ Ebben az oktatóanyagban azt hoz létre egy alkalmazást, amely az Android, iOS 
 Kövesse az alábbi lépéseket az alkalmazás létrehozása:
 
 1. Ha még nem tette, töltse le és telepítse [Xamarin for Visual Studio](https://www.xamarin.com/download).
-2. Nyissa meg a Visual Studiót, és hozzon létre egy üres alkalmazás (natív hordozható): **File > New > Project > többplatformos > üres App(Native Portable)**.
+2. Nyissa meg a Visual Studiót, és létrehoz egy üres alkalmazást (natív hordozható): **Fájl > Új > Projekt > többplatformos > Üres alkalmazás (natív hordozható)**.
 3. Kattintson a jobb gombbal a megoldás a Solution Explorer panelen, és válassza ki **NuGet-csomagok kezelése megoldáshoz**. Keresse meg **WindowsAzure.Storage** , és telepítse a legújabb stabil verzióra az összes projektet a megoldásban.
 4. Hozhat létre, és futtassa a projektet.
 
@@ -155,7 +155,7 @@ namespace XamarinApp.iOS
             public override void DidReceiveMemoryWarning ()
             {
                 base.DidReceiveMemoryWarning ();
-                // Release any cached data, images, etc that aren't in use.
+                // Release any cached data, images, etc. that aren't in use.
             }
         }
     }

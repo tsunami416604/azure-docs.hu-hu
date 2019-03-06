@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 1af6214833109ad89e8b5f27eefc0c99cdaf2496
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 2eb57268aece081423b6b0beaa314a244b6fdd8f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984186"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456006"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-storage-account"></a>Gyors útmutató: Az Azure Data Lake Storage Gen2-storage-fiók létrehozása
 
@@ -76,7 +76,7 @@ Az Azure Portalon a következő lépések végrehajtásával hozhat létre egy e
 5. Válassza ki az erőforráscsoport helyét.
 6. Kattintson a **Létrehozás** gombra.  
 
-   ![Az erőforráscsoportok Azure Portalon történő létrehozását bemutató képernyőkép](./media/data-lake-storage-quickstart-create-account/create-resource-group.png)
+   ![Képernyőfelvétel: az erőforrás-csoport létrehozása az Azure Portalon](./media/data-lake-storage-quickstart-create-account/create-resource-group.png)
 
 ### <a name="create-a-general-purpose-v2-storage-account"></a>Általános célú 2-es verziójú tárfiók létrehozása
 
@@ -96,7 +96,7 @@ Kövesse az alábbi lépéseket egy általános célú v2-tárfiók létrehozás
 9. Az a **Data Lake Storage Gen2** beállítása című **hierarchikus névtér** való **engedélyezve**.
 10. Kattintson a **felülvizsgálat + létrehozás** a tárfiók létrehozásához.
 
-    ![A tárfiók Azure Portalon történő létrehozását bemutató képernyőkép](./media/data-lake-storage-quickstart-create-account/azure-data-lake-storage-account-create-advanced.png)
+    ![Képernyőfelvétel: a tárfiók létrehozása az Azure Portalon](./media/data-lake-storage-quickstart-create-account/azure-data-lake-storage-account-create-advanced.png)
 
 Ezzel a tárfiók létrejött a portálon.
 

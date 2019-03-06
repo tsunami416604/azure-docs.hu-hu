@@ -9,12 +9,12 @@ ms.subservice: bing-visual-search
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: rosh
-ms.openlocfilehash: 6444a49a95ee53fb624501bc464f6378423e6e26
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2f7de10eeb65b36823d6c4cc84b0032913638889
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863023"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444599"
 ---
 # <a name="tutorial-crop-an-image-with-the-bing-visual-search-sdk-for-c"></a>Oktatóanyag: A Bing Visual Search készült SDK-val kép levágásaC#
 
@@ -28,7 +28,7 @@ Ez az oktatóanyag bemutatja, hogyan lehet:
 > * A Bing Visual Search SDK használatával egy kérelem küldése
 > * Lemezkép keresése a Bing vizuális keresés egy adott területre levágása
 > * Fogadása és válasz kezelésére is alkalmas
-> * Műveleti elemek URL-címei a resposne megkeresése
+> * A válaszban az URL-címek műveleti elemek keresése
 
 ## <a name="prerequisites"></a>Előfeltételek
 

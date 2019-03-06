@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: magoedte
-ms.openlocfilehash: b42eb963e33c14b003c053bb0f7fca6361dbd555
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: d09ce810605055b5be53219f254beb6660addbee
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985104"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445704"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Naplóadatok és az Azure monitorban munkaterületek kezelése
 Az Azure Monitor-tárolók adatok jelentkezzen be a Log Analytics-munkaterület, amely lényegében, ha egy tároló, amely adatot és konfigurációs információt tartalmazza. Az adatok hozzáférésének kezelése, munkaterületekhez kapcsolódó különféle adminisztratív feladatokat végezhet. Ön vagy a szervezet más tagjai több munkaterületet is használhatnak az informatikai infrastruktúra egészéből vagy egyes részeiből begyűjtött különböző adatkészletek kezeléséhez.
@@ -153,7 +153,7 @@ A hozzáférési mód az Azure Resource Manager-sablon konfigurálásához áll�
 
 
 ## <a name="manage-accounts-and-users"></a>Fiókok és felhasználók kezelése
-Határozza meg az engedélyek a munkaterülethez, amely egy adott felhasználó érvénybe lépnek a [hozzáférési mód](#access-mode) és a [hozzáférés-vezérlési mód](#access-control-mode) a munkaterület. **A munkaterület-engedélyek** lépnek, amikor egy felhasználó hozzáfér minden olyan munkaterület használatával **munkaterület-központú** a [munkaterület-központú mód](#access-modes). **Erőforrás-engedélyek** lépnek, amikor egy felhasználó hozzáfér egy munkaterület **erőforrás vagy a munkaterület engedélyeket használ** [hozzáférés-vezérlési mód](#access-control-mode) használatával [erőforrás-központú mód ](#access-modes).
+Az engedélyek a munkaterülethez egy adott felhasználóra alkalmazott határozza meg a hozzáférési mód és a [hozzáférés-vezérlési mód](#access-control-mode) a munkaterület. **A munkaterület-engedélyek** lépnek, amikor egy felhasználó hozzáfér minden olyan munkaterület használatával **munkaterület-központú** a [munkaterület-központú mód](#access-modes). **Erőforrás-engedélyek** lépnek, amikor egy felhasználó hozzáfér egy munkaterület **erőforrás vagy a munkaterület engedélyeket használ** [hozzáférés-vezérlési mód](#access-control-mode) használatával [erőforrás-központú mód ](#access-modes).
 
 ### <a name="workspace-permissions"></a>A munkaterület-engedélyek
 Minden munkaterülethez társítva több fiókot lehet, és minden egyes fiók férhet hozzá több munkaterülettel. Access-n keresztül kezelt [Azure szerepköralapú hozzáférés-](../../role-based-access-control/role-assignments-portal.md). 

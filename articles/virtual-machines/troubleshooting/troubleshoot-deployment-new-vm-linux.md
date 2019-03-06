@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: cjiang
-ms.openlocfilehash: 08009ca7f9faaa75e593670c22cf864c12236e8b
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 9fea914fdf9b025fd5d38219a6bfc81b4a9cc584
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47414107"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450283"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>Új Linux rendszerű virtuális gép létrehozása az Azure Resource Manager üzembe helyezés hibáinak elhárítása
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -43,23 +43,23 @@ Hibaelhárítás indítása, hogy azonosítsa a hibát a probléma társított a
 
 [!INCLUDE [virtual-machines-linux-troubleshoot-deployment-new-vm-table](../../../includes/virtual-machines-linux-troubleshoot-deployment-new-vm-table.md)]
 
-**Y:** az operációs rendszer általánosított, Linux és a feltöltött, illetve rögzíteni az általánosított beállítást, akkor a hibák nem lesz. Hasonlóan ha az operációs rendszer Linux specializált, feltöltött, illetve a speciális beállítással rögzített, majd hibákat nem lesz.
+**Y:** Ha az operációs rendszer általánosított Linux, és a feltöltött, illetve rögzíteni az általánosított beállítást, majd nem kell esetleges hibákat. Hasonlóan ha az operációs rendszer Linux specializált, feltöltött, illetve a speciális beállítással rögzített, majd hibákat nem lesz.
 
 **Feltöltéssel kapcsolatos hibák:**
 
 **N<sup>1</sup>:** Ha az operációs rendszer általánosított Linux, és a feltöltés speciális, kap egy kiépítési időtúllépési hiba, mert a virtuális gép elakadt a kiépítési szakaszában.
 
-**N<sup>2</sup>:** az operációs rendszer Linux kifejezetten, és fel lesz töltve általánosítottként, ha egy kiépítési hibák kap, mert az új virtuális gép fut-e az eredeti számítógép neve, felhasználónévvel és jelszóval.
+**N<sup>2</sup>:** Ha az operációs rendszer Linux kifejezetten, és fel lesz töltve általánosítottként, egy kiépítési hibák kap, mert az új virtuális gép fut-e az eredeti számítógép neve, felhasználónévvel és jelszóval.
 
 **Megoldás:**
 
-Mindkét hibák elhárításához, töltse fel az eredeti virtuális merevlemez, rendelkezésre álló helyi, ugyanazokat a beállításokat, mint az operációs rendszer (általánosítva/speciális) számára. Általánosként feltölteni, ne felejtse el run - először megszüntetése.
+Mindkét hibák elhárításához, töltse fel az eredeti virtuális merevlemez, a helyszínen, ugyanazokat a beállításokat, mint az operációs rendszer (általánosítva/speciális) számára érhető el. Általánosként feltölteni, ne felejtse el run - először megszüntetése.
 
 **Rögzítés a hibák:**
 
 **N<sup>3</sup>:** Ha az operációs rendszer általánosított Linux, és azt rögzíti speciális, kap egy kiépítési időtúllépési hiba, mert az eredeti virtuális gép már nem használható, mert általánosként van megjelölve.
 
-**N<sup>4</sup>:** Linux kifejezetten, és általánosként rögzítése az operációs rendszer esetén a kiépítési hibák kap, mert az új virtuális gép fut-e az eredeti számítógép neve, felhasználónévvel és jelszóval. Ezenkívül az eredeti virtuális gép nem áll használható, mert meg van jelölve a speciális.
+**N<sup>4</sup>:** Linux kifejezetten, és általánosként rögzítése az operációs rendszer esetén kap egy kiépítési hibák, mert az új virtuális gép fut-e az eredeti számítógép neve, felhasználónévvel és jelszóval. Ezenkívül az eredeti virtuális gép nem áll használható, mert meg van jelölve a speciális.
 
 **Megoldás:**
 
@@ -68,7 +68,7 @@ Mindkét a hibák elhárításához, az aktuális lemezkép törlése a portálr
 ## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>Probléma: Egyéni / katalógus / Piactéri lemezképhez; foglalási hibák
 Ez a hiba helyzetekben akkor keletkezik, ha az új virtuális gép kérelem rögzítve van egy fürtöt, amely nem támogatja a kért Virtuálisgép-méretet, vagy nem rendelkezik a rendelkezésre álló szabad területet a kérelem befogadásához.
 
-**1. ok:** a fürt nem támogatja a kért Virtuálisgép-méretet.
+**1. ok:** A fürt nem támogatja a kért Virtuálisgép-méretet.
 
 **1. megoldás:**
 
@@ -79,7 +79,7 @@ Ez a hiba helyzetekben akkor keletkezik, ha az új virtuális gép kérelem rög
   * Után állítsa le a virtuális gépek, a új virtuális gép létrehozása a kívánt méretet.
   * Először indítsa el az új virtuális Gépet, majd válassza ki a leállított virtuális gépek mindegyike és kattintson **Start**.
 
-**2. ok:** a fürt nem rendelkezik ingyenes erőforrások.
+**2. ok:** A fürt nem rendelkezik ingyenes erőforrások.
 
 **2. megoldás:**
 

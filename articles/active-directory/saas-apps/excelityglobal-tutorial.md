@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/28/2019
+ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 60d004413fbdf01b271231f754aef5aa46b48763
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: a65f326498427f5180baa677ea3a22d1f5207e36
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57196255"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57406235"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-excelityglobal"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező ExcelityGlobal
 
@@ -106,19 +106,19 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés ExcelityGlobal, hajt
 
     a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím:
 
-    **Az éles Envoronment** : `https://ess.excelityglobal.com`
+    **Éles környezet** : `https://ess.excelityglobal.com`
 
-    **A védőfal Envoronment** : `https://s6.excelityglobal.com`
+    **A védőfal mögötti környezet** : `https://s6.excelityglobal.com`
 
     b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím:
 
-    **Az éles Envoronment** : `https://ess.excelityglobal.com/ACS`
+    **Éles környezet** : `https://ess.excelityglobal.com/ACS`
 
-    **A védőfal Envoronment** : `https://s6.excelityglobal.com/ACS`
+    **A védőfal mögötti környezet** : `https://s6.excelityglobal.com/ACS`
 
 5. ExcelityGlobal alkalmazását a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg, hol **nameidentifier** le van képezve a **user.userprincipalname**. ExcelityGlobal alkalmazás vár **nameidentifier** a leképezendő **user.mail**, így kell szerkesztenie a attribútumleképezés kattintva **szerkesztése** ikonra, és módosítsa a Attribútumleképzés.
  
-    ![image](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
 6. Az a **SAML-aláíró tanúsítvány** területén kattintson **szerkesztése** gombra kattintva nyissa meg a **SAML-aláíró tanúsítvány** párbeszédpanel.
 
@@ -140,7 +140,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés ExcelityGlobal, hajt
 
 ### <a name="configure-excelityglobal-single-sign-on"></a>ExcelityGlobal egyszeri bejelentkezés konfigurálása
 
-Az egyszeri bejelentkezés konfigurálása **ExcelityGlobal** oldalon kell küldenie a **az ujjlenyomat értéket** és az Azure Portalról másolt URL-címek megfelelő [ExcelityGlobal támogatási csapatának](mailto:yashwanths@quinnox.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
+Az egyszeri bejelentkezés konfigurálása **ExcelityGlobal** oldalon kell küldenie a **az ujjlenyomat értéket** és az Azure Portalról másolt URL-címek megfelelő [ExcelityGlobal támogatási csapatának](https://www.excelityglobal.com/contact-us/our-locations/). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 
@@ -195,7 +195,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 ### <a name="create-excelityglobal-test-user"></a>ExcelityGlobal tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű ExcelityGlobal hoz létre. Együttműködve [ExcelityGlobal támogatási csapatának](mailto:yashwanths@quinnox.com) a felhasználók hozzáadása az ExcelityGlobal platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
+Ebben a szakaszban egy felhasználói Britta Simon nevű ExcelityGlobal hoz létre. Együttműködve [ExcelityGlobal támogatási csapatának](https://www.excelityglobal.com/contact-us/our-locations/) a felhasználók hozzáadása az ExcelityGlobal platformon. Felhasználók kell létrehozni és egyszeri bejelentkezés használata előtt aktiválva.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 

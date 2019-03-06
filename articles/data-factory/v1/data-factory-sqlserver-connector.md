@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 38070c3073febbdbea896c177ae68d4b9519314d
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4fd3bd635cd45b3358d47cb1cfc6e88f3fafbe0d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813381"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453354"
 ---
 # <a name="move-data-to-and-from-sql-server-on-premises-or-on-iaas-azure-vm-using-azure-data-factory"></a>Helyezze át az adatokat, és a helyszíni SQL Server vagy az IaaS (Azure VM) az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -29,6 +29,8 @@ ms.locfileid: "55813381"
 > Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a jelenlegi verzió a Data Factory szolgáltatás használ, tekintse meg [a v2-ben az SQL Server-összekötő](../connector-sql-server.md).
 
 Ez a cikk bemutatja, hogyan kell használni a másolási tevékenység az Azure Data Factoryban az adatok egy helyszíni SQL Server-adatbázis áthelyezése. Épül a [adattovábbítási tevékenységek](data-factory-data-movement-activities.md) című cikket, amely megadja az adatok áthelyezését a másolási tevékenységgel rendelkező általános áttekintése.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
 Adatokat másolja **SQL Server-adatbázisból** tárolja, a következő adatokat:
@@ -80,7 +82,7 @@ Az alábbi táblázatban az adott SQL Server-alapú társított szolgáltatás J
 | felhasználónév |Ha Windows-hitelesítést használ, adja meg a felhasználónevet. Példa: **domainname\\felhasználónév**. |Nem |
 | jelszó |Adja meg a felhasználónévhez megadott felhasználói fiók jelszavát. |Nem |
 
-A hitelesítő adatok titkosíthatók a **New-AzureRmDataFactoryEncryptValue** parancsmag és a kapcsolati karakterláncot használja őket az alábbi példában látható módon (**EncryptedCredential** tulajdonság):
+A hitelesítő adatok titkosíthatók a **New-AzDataFactoryEncryptValue** parancsmag és a kapcsolati karakterláncot használja őket az alábbi példában látható módon (**EncryptedCredential** tulajdonság):
 
 ```JSON
 "connectionString": "Data Source=<servername>;Initial Catalog=<databasename>;Integrated Security=True;EncryptedCredential=<encrypted credential>",

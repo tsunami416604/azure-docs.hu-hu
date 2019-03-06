@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 02/06/2019
 ms.author: aschhab
-ms.openlocfilehash: aaa8615c0358b89c02aad8241262320771e426a8
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: ea5f0e1ad6af6f301b684337941c7d9bce8590c1
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818073"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444475"
 ---
 # <a name="partitioned-queues-and-topics"></a>Particionált üzenetsorok és témakörök
 
@@ -27,9 +27,9 @@ Már nem módosíthatja a particionálási lehetőséget, bármely meglévő üz
 
 ## <a name="how-it-works"></a>Működés
 
-Minden egyes particionált üzenetsor vagy témakör több töredékkel áll. Minden részlet egy különböző üzenetküldési tárolóban tárolja, és egy másik közvetítő kezeli. Ha egy üzenetet küld egy particionált üzenetsorra vagy témakörbe, a Service Bus hozzárendeli az üzenetet a töredék egyikéhez. A Service Bus vagy egy partíciókulcsot, hogy a küldő megadhatja a kijelölt véletlenszerűen történik.
+Minden egyes particionált üzenetsor vagy témakör több partíciót tartalmaz. Mindegyik partíció egy különböző üzenetküldési tárolóban tárolja, és egy másik közvetítő kezeli. Ha egy üzenetet küld egy particionált üzenetsorra vagy témakörbe, a Service Bus hozzárendeli az üzenetet a partíciók egyikéhez. A Service Bus vagy egy partíciókulcsot, hogy a küldő megadhatja a kijelölt véletlenszerűen történik.
 
-Amikor egy ügyfél kéri egy üzenetet egy particionált üzenetsorra vagy egy particionált témakör lekérdezések a Service Bus-előfizetés minden naplóhasználatra üzeneteket, majd adja vissza az első üzenet, amely a fogadó kérhető le az üzenetküldési tárolók bármelyikét. A Service Bus-gyorsítótárak a további üzeneteket, és adja vissza őket, amikor kap további kérések fogadására. A fogadó ügyfél még nem ismeri a particionálás; az ügyfél irányultságú viselkedését egy particionált üzenetsorra vagy témakörbe (például olvasási, végezze el, késlelteti, a kézbesítetlen, prefetching) azonos a normál entitások viselkedését.
+Amikor egy ügyfél kéri egy üzenetet egy particionált üzenetsorra vagy egy particionált témakör lekérdezések a Service Bus-előfizetés üzeneteket tartozó összes partíció, majd adja vissza az első üzenet, amely a fogadó kérhető le az üzenetküldési tárolók bármelyikét. A Service Bus-gyorsítótárak a további üzeneteket, és adja vissza őket, amikor kap további kérések fogadására. A fogadó ügyfél még nem ismeri a particionálás; az ügyfél irányultságú viselkedését egy particionált üzenetsorra vagy témakörbe (például olvasási, végezze el, késlelteti, a kézbesítetlen, prefetching) azonos a normál entitások viselkedését.
 
 Nincs üzenet küldésekor, vagy üzenet fogadása a particionált üzenetsor vagy témakör a további költségek nélkül.
 
@@ -43,7 +43,7 @@ A Standard szintű üzenetküldés, a Service Bus-üzenetsorok és témakörök 
 
 ### <a name="premium"></a>Prémium
 
-Egy prémium szintű névtér particionálás az entitások nem támogatott. Azonban továbbra is létrehozhat Service Bus-üzenetsorok és témakörök az 1, 2, 3, 4, 5, 10, 20, 40 vagy 80 GB-os méret (az alapértelmezett érték 1 GB-os). Megjelenik az üzenetsor vagy témakör mérete hozzá tartozó bejegyzés megnézzük a [az Azure portal][Azure portal], a a **áttekintése** panel az adott entitáshoz.
+Egy prémium szintű névtér particionálási entitások nem támogatottak. Azonban továbbra is létrehozhat Service Bus-üzenetsorok és témakörök az 1, 2, 3, 4, 5, 10, 20, 40 vagy 80 GB-os méret (az alapértelmezett érték 1 GB-os). Megjelenik az üzenetsor vagy témakör mérete hozzá tartozó bejegyzés megnézzük a [az Azure portal][Azure portal], a a **áttekintése** panel az adott entitáshoz.
 
 ### <a name="create-a-partitioned-entity"></a>A particionált entitás létrehozása
 
@@ -61,11 +61,11 @@ Másik lehetőségként létrehozhat a particionált üzenetsor vagy témakör, 
 
 ## <a name="use-of-partition-keys"></a>Partíciós kulcsok használata
 
-Amikor egy üzenet sorba egy particionált üzenetsorra vagy témakörbe történő, a Service Bus ellenőrzi, hogy az egy partíciókulcsot. Ha talál egyet, a részlet a kulcs alapján választja ki. Ha nem talál egy partíciókulcsot, a részlet egy belső algoritmus alapján választja ki.
+Amikor egy üzenet sorba egy particionált üzenetsorra vagy témakörbe történő, a Service Bus ellenőrzi, hogy az egy partíciókulcsot. Ha talál egyet, a partíció, a kulcs alapján választja ki. Ha nem talál egy partíciókulcsot, a partíció egy belső algoritmus alapján választja ki.
 
 ### <a name="using-a-partition-key"></a>A partíciókulcsok használatával
 
-Bizonyos példahelyzetekben a munkamenetek vagy tranzakciók, például egy adott töredék a tárolandó üzenetek szükséges. Ezek a forgatókönyvek olyan partíciókulcsot használatának megkövetelése. Ugyanazzal a partíciókulccsal használó összes üzenet ugyanarra a töredékre vannak hozzárendelve. Ha a részlet átmenetileg nem érhető el, a Service Bus hibát ad vissza.
+Bizonyos példahelyzetekben a munkamenetek vagy tranzakciók, például egy adott partíció tárolandó üzenetek szükséges. Ezek a forgatókönyvek olyan partíciókulcsot használatának megkövetelése. Összes üzenet, amely ugyanazt a partíciókulcsot használja az ugyanazon a partíción vannak hozzárendelve. Ha a partíció átmenetileg nem érhető el, a Service Bus hibát ad vissza.
 
 A forgatókönyvtől függően a különböző üzenettulajdonságok partíciókulcsként használhatók:
 
@@ -77,13 +77,13 @@ A forgatókönyvtől függően a különböző üzenettulajdonságok partíciók
 
 ### <a name="not-using-a-partition-key"></a>A partíciókulcsok nem használatával
 
-A partíciós kulcs hiányában a Service Bus üzenetek a particionált üzenetsor vagy témakör összes töredékekre Ciklikus időszeleteléses módon osztja el. A kiválasztott töredék nem érhető el, ha a Service Bus hozzárendeli az üzenetet egy másik kódrészletet. Ezzel a módszerrel a küldési művelet sikeres, annak ellenére, hogy az átmeneti elérhetetlensége, valamint egy üzenetküldési tárolóban. Azonban Ön nem éri el a garantált rendezése, amelyek egy partíciókulcsot biztosít.
+A partíciós kulcs hiányában a Service Bus üzenetek a particionált üzenetsor vagy témakör összes partíciókra Ciklikus időszeleteléses módon osztja el. A kiválasztott partíció nem érhető el, ha a Service Bus hozzárendeli az üzenetet egy másik partíció. Ezzel a módszerrel a küldési művelet sikeres, annak ellenére, hogy az átmeneti elérhetetlensége, valamint egy üzenetküldési tárolóban. Azonban Ön nem éri el a garantált rendezése, amelyek egy partíciókulcsot biztosít.
 
 Rendelkezésre állás (nem partíciós kulcs) és a konzisztencia (használatával egy partíciókulcsot) közötti több részletes tárgyalását lásd: [Ez a cikk](../event-hubs/event-hubs-availability-and-consistency.md). Ezeket az információkat egyaránt particionált Service Bus-entitások vonatkozik.
 
-Adni a Service Bus elegendő időt sorba helyezni az üzenetet be egy másik töredék a [így időtúllépés történt](/dotnet/api/microsoft.azure.servicebus.queueclient.operationtimeout) az ügyfél által küldött üzenet 15 másodpercnél nagyobbnak kell lennie. megadott érték. Javasoljuk, hogy állítsa a [így időtúllépés történt](/dotnet/api/microsoft.azure.servicebus.queueclient.operationtimeout) tulajdonságot az alapértelmezett érték 60 másodperc.
+A Service Bus lehetővé elegendő időt, hogy sorba helyezni az üzenetet be egy másik partíció a [így időtúllépés történt](/dotnet/api/microsoft.azure.servicebus.queueclient.operationtimeout) az ügyfél által küldött üzenet 15 másodpercnél nagyobbnak kell lennie. megadott érték. Javasoljuk, hogy állítsa a [így időtúllépés történt](/dotnet/api/microsoft.azure.servicebus.queueclient.operationtimeout) tulajdonságot az alapértelmezett érték 60 másodperc.
 
-A partíciós kulcs "rögzítése" egy adott kódrészletet egy üzenet. Az üzenetkezelési tárba, amely tartalmazza az e töredékben nem érhető el, ha a Service Bus hibát ad vissza. Egy partíciókulcsot hiányában a Service Bus választhat egy másik kódrészletet, és a művelet sikeres. Ezért ajánlott, hogy nem ad meg partíciókulcsot, kivéve, ha szükség rá.
+A partíciós kulcs "rögzítése" egy üzenetet, amely egy adott partícióra. Az üzenetkezelési tárba, hogy ez a partíció nem érhető el, ha a Service Bus hibát ad vissza. A partíciós kulcs hiányában a Service Bus választhat egy másik partíció, és a művelet sikeres. Ezért ajánlott, hogy nem ad meg partíciókulcsot, kivéve, ha szükség rá.
 
 ## <a name="advanced-topics-use-transactions-with-partitioned-entities"></a>Speciális témakörök: tranzakciók használata particionált entitások
 
@@ -101,7 +101,7 @@ using (TransactionScope ts = new TransactionScope(committableTransaction))
 committableTransaction.Commit();
 ```
 
-Ha a tulajdonságok, amelyek egy partíciókulcsot szolgálhat, a Service Bus rögzíti az üzenet egy adott töredékre. Ez akkor fordul elő, egy tranzakció használja-e. Javasoljuk, hogy nincs megadva egy partíciókulcsot. Ha nem szükséges.
+A tulajdonságok, amelyek egy partíciókulcsot szolgálhat vannak beállítva, ha a Service Bus rögzíti az üzenet egy adott partícióra. Ez akkor fordul elő, egy tranzakció használja-e. Javasoljuk, hogy nincs megadva egy partíciókulcsot. Ha nem szükséges.
 
 ## <a name="using-sessions-with-partitioned-entities"></a>Munkamenetek használata particionált entitások
 
@@ -126,9 +126,9 @@ committableTransaction.Commit();
 A Service Bus továbbítási származó, a vagy particionált entitások közötti üzenetek automatikus támogatja. Ahhoz, hogy az automatikus üzenetek továbbítása, állítsa be a [QueueDescription.ForwardTo] [ QueueDescription.ForwardTo] tulajdonság a forrásüzenetsor vagy előfizetés esetében. Ha az üzenetet határozza meg, a partíciókulcs ([SessionId](/dotnet/api/microsoft.azure.servicebus.message.sessionid), [PartitionKey](/dotnet/api/microsoft.azure.servicebus.message.partitionkey), vagy [üzenetazonosító](/dotnet/api/microsoft.azure.servicebus.message.messageid)), a partíciókulcsot használt a cél az entitáshoz.
 
 ## <a name="considerations-and-guidelines"></a>Megfontolandó szempontok és irányelvek
-* **Magas konzisztencia funkciók**: Ha egy entitás előadások, kettős észlelés és partíciós kulcs explicit irányítását funkciókat használ, majd az üzenetküldési művelet mindig kapcsolódóak pedig az adott töredék. Ha bármelyik a szilánkok tapasztal nagy forgalom, illetve az alapul szolgáló tárolónak nem megfelelő állapotban, ezek a műveletek sikertelenek, és a rendelkezésre állási csökken. A teljes továbbra is sokkal magasabb, mint a nem particionált entitások;-e a konzisztencia forgalom egy része figyelésekor minden forgalom a problémák tapasztalhatók. További információkért lásd: Ez [rendelkezésre állás és konzisztencia](../event-hubs/event-hubs-availability-and-consistency.md).
-* **Felügyeleti**: Az a entitás a szilánkok létrehozási, frissítési és törlési műveleteket kell elvégezni. Minden részlet állapota nem megfelelő, ha azt hibák ezeket a műveleteket eredményezhet. A Get művelethez információkat, mint például üzenet összesíteni kell az összes töredék. Ha minden részlet állapota nem megfelelő, entitás rendelkezésre állását az elvártnak megfelelően korlátozott.
-* **Kis mennyiségű üzenet erőforrás esetén**: Ilyen esetekben, különösen akkor, ha a HTTP protokollt használja, előfordulhat, hogy rendelkezik több végrehajtásához fogadási műveletek összes üzenetet a beszerzéséhez. Fogadási kérelmek az előtér egy fogadás hajt végre a töredékek száma, és minden, a kapott válaszok gyorsítótárazza. Egy későbbi fogadási kérést, ugyanazon a kapcsolaton kihasználhatják a gyorsítótárazás és fogadni a késésük alacsonyabbak lesznek. Azonban, ha több kapcsolat van, vagy a HTTP Protokollt használja, amely egy új kapcsolatot létesít az egyes kérések. Mint ilyen nincs garancia arra, hogy azt kellene land ugyanazon a csomóponton. Ha az összes meglévő üzeneteket zárolva van, és tárolja a rendszer egy másik előtér, a receive műveletet adja vissza **null**. Üzenetek idővel jár le, és újra megkapja őket. HTTP életben tartást használata javasolt.
+* **Magas konzisztencia funkciók**: Ha egy entitás előadások, kettős észlelés és partíciós kulcs explicit irányítását funkciókat használ, majd az üzenetküldési művelet mindig kapcsolódóak pedig az adott partíció. Ha a partíciók egyikéhez sem nagy forgalom tapasztalható, vagy az alapul szolgáló tárolónak nem megfelelő állapotban, ezek a műveletek sikertelenek, és a rendelkezésre állási csökken. A teljes továbbra is sokkal magasabb, mint a nem particionált entitások;-e a konzisztencia forgalom egy része figyelésekor minden forgalom a problémák tapasztalhatók. További információkért lásd: Ez [rendelkezésre állás és konzisztencia](../event-hubs/event-hubs-availability-and-consistency.md).
+* **Felügyeleti**: Az a entitás összes partíciót létrehozási, frissítési és törlési műveleteket kell elvégezni. Ha bármelyik partíció nem megfelelő állapotú, azt hibák ezeket a műveleteket eredményezhet. A Get művelethez információkat, mint például üzenet összesíteni kell az összes partíciót. Ha bármelyik partíció nem megfelelő állapotú, entitás rendelkezésre állását az elvártnak megfelelően korlátozott.
+* **Kis mennyiségű üzenet erőforrás esetén**: Ilyen esetekben, különösen akkor, ha a HTTP protokollt használja, előfordulhat, hogy rendelkezik több végrehajtásához fogadási műveletek összes üzenetet a beszerzéséhez. Fogadási kérelmek az előtér hajt végre a receive összes partíciót, és minden, a kapott válaszok gyorsítótárazza. Egy későbbi fogadási kérést, ugyanazon a kapcsolaton kihasználhatják a gyorsítótárazás és fogadni a késésük alacsonyabbak lesznek. Azonban, ha több kapcsolat van, vagy a HTTP Protokollt használja, amely egy új kapcsolatot létesít az egyes kérések. Mint ilyen nincs garancia arra, hogy azt kellene land ugyanazon a csomóponton. Ha az összes meglévő üzeneteket zárolva van, és tárolja a rendszer egy másik előtér, a receive műveletet adja vissza **null**. Üzenetek idővel jár le, és újra megkapja őket. HTTP életben tartást használata javasolt.
 * **Tallózással keresse meg és betekintés üzenetek**: Csak a régebbi a [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) könyvtár. [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) nem mindig ad vissza a megadott üzenetek számát a [MessageCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.messagecount) tulajdonság. Ez a viselkedés a két gyakori oka van. Egyik oka, hogy az üzenetek a gyűjtemény összesített mérete meghaladja a maximális 256 KB-os. A másik OK, hogy ha az üzenetsor vagy témakör a [EnablePartitioning tulajdonság](/dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning) beállítása **igaz**, egy partíció nem rendelkezik elegendő üzenetek hajtsa végre a kért üzenetek száma. Általánosságban elmondható, ha meghatározott számú üzenet egy alkalmazás kéri, akkor meg kell hívnia [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) ismétlődő, amíg kap, hogy az üzenetek száma, vagy nincsenek a betekintés további üzenetek. További információk, beleértve a kódmintákban: a [QueueClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch) vagy [SubscriptionClient.PeekBatch](/dotnet/api/microsoft.servicebus.messaging.subscriptionclient.peekbatch) API dokumentációja.
 
 ## <a name="latest-added-features"></a>Legújabb új funkciók

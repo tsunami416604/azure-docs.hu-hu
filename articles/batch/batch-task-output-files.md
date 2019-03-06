@@ -10,15 +10,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 11/14/2018
+ms.date: 03/05/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 77d8504dba180cfb56807344e659d6b22231f931
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 1d2d53213af34377d23c9ea140bab15822fc1b2e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56866640"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444769"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>A feladat adatmegőrzésre, az Azure Storage a Batch szolgáltatás API-val
 
@@ -36,9 +36,6 @@ Az Azure Batch segítségével több feladat kimenetének megőrzése. A Batch s
 - Szeretné megőrizni a kimenet a Batch-feladatok és a virtuálisgép-konfigurációval létrehozott készletek a Feladatkezelő tevékenységekről.
 - Szeretné megőrizni a kimenet egy Azure Storage-tárolóhoz, az egy tetszőleges nevet.
 - Egy Azure Storage-tárolóba, a következők szerint nevű kimenet megőrzése szeretné a [Batch File Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions). 
-
-> [!NOTE]
-> A Batch szolgáltatás API nem támogatja a felhő-konfigurációval létrehozott készletek futtatott feladatok az adatok megtartását. Persisting feladat fut a cloud services-konfiguráció készletek kimenete kapcsolatos információkért lásd: [Adatmegőrzésre feladatok és tevékenységek az Azure Storage a .NET-hez megőrizni a Batch File Conventions-könyvtárral való](batch-task-output-file-conventions.md).
 
 Ha a forgatókönyv eltér a fent felsoroltak, szükség lehet érdemes lehet eltérő megközelítést. Például a Batch szolgáltatás API-ja jelenleg nem támogatja az Azure Storage-streamelési kimeneti a feladat futása közben. A kimeneti stream, érdemes lehet a Batch File Conventions-könyvtárral, a .NET-hez elérhető. Más nyelven kell a saját megoldást valósíthat meg. További megőrzése tevékenység kimenetének lehetőségekről további információkért lásd: [az Azure Storage-feladatok és tevékenységek kimenetének megőrzése](batch-task-output.md).
 

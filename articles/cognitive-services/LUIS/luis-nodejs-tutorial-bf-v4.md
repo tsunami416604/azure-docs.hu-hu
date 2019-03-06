@@ -5,18 +5,18 @@ description: A Node.js használatával hozzon létre egy csevegőrobotot integr�
 services: cognitive-services
 author: diberry
 ms.custom: seodec18
-manager: cjgronlund
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: diberry
-ms.openlocfilehash: 852cc5e5b3b018d871bd40775dce64d669fb3011
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 54bae5548764ed1f89a2ffb7992eb222a058c706
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880614"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57403651"
 ---
 # <a name="tutorial-luis-bot-in-nodejs-with-the-bot-framework-4x-and-the-azure-web-app-bot"></a>Oktatóanyag: A LUIS-robot Node.js-ben a Bot keretrendszer 4.x-es és az Azure Web app bot
 A Node.js használatával létrehozhat egy integrált nyelvfelismerési (LUIS) képességekkel rendelkező csevegőrobotot. Ez a robot a HomeAutomation app használatával valósítja meg a robotmegoldást. A robot összeállításához a [Bot Framework 4-es verzióját](https://github.com/Microsoft/botbuilder-js) és az Azure [webalkalmazás-robotot](https://docs.microsoft.com/azure/bot-service/) használja.

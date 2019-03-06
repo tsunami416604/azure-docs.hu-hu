@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2018
+ms.date: 03/05/2019
 ms.author: terrylan
-ms.openlocfilehash: 497fc1dd5691b5aa33207c6a3943a51c473d2f6c
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: e833317fa16576fa0006a774226d12974fd93ed8
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247205"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404807"
 ---
 # <a name="securing-paas-deployments"></a>PaaS üzemelő példányainak biztonságossá tétele
 
@@ -85,7 +85,7 @@ Alapelvek és a hálózat szegélyén mintákat volt elérhető évtizedes. Ezze
 Az alábbiakban az identitás peremhálózati kezelésére vonatkozó ajánlott eljárások.
 
 **Ajánlott eljárás**: A kulcsok és a PaaS üzemelő példány biztonságos hitelesítő adatok biztonságos.   
-**Részletes**: Kulcsok és hitelesítő adatok elvesztése gyakori probléma. Egy központi megoldás használható, ahol kulcsok és titkos kulcsok tárolhatók a hardveres biztonsági modulok. Az Azure biztosít a felhőben a hardveres biztonsági modul [Azure Key Vault](../key-vault/key-vault-whatis.md).
+**Részletes**: Kulcsok és hitelesítő adatok elvesztése gyakori probléma. Egy központi megoldás használható, ahol kulcsok és titkos kulcsok tárolhatók a hardveres biztonsági modulokban (HSM). [Az Azure Key Vault](../key-vault/key-vault-whatis.md) a kulcsok és titkok megvédi a hitelesítési kulcsokat, a tárfiókkulcsok, az adattitkosítási kulcsokat, PFX-fájlokat és a jelszavak HSM által védett kulcsok titkosításával.
 
 **Ajánlott eljárás**: Ne helyezzen hitelesítő adatait, valamint egyéb titkok forráskódja vagy a GitHub.   
 **Részletes**: Csak rosszabb, mint a kulcsok és hitelesítő adatok elvesztése kellene a jogosulatlan személyek érni őket. A támadók kihasználhatja a robot technológiák kulcsok és titkok forráskódtárakból, például a GitHub tárolt található. Ne tegye kulcs és titkos kulcsok az alábbi nyilvános kódtárházakhoz.

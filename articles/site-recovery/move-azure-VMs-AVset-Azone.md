@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 77c38089a4f9c6518d9736df7f3020c66ad17b3b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 573eb3a8ae6c9ee7c5b80e9621ebbfd04aaf5354
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56877044"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57446537"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Az Azure virtuális gépek áthelyezése a rendelkezésre állási zónában történő
 Az Azure-beli rendelkezésre állási zónák adatközpont meghibásodása ellen védi az alkalmazásait és adatait. Egyes rendelkezésre állási zónák épül fel egy vagy több adatközpont független áramellátással, hűtéssel és hálózati található. Rugalmasság biztosítása érdekében legalább három különálló zónát, az összes engedélyezett régióban van. Egy adott régión belül a rendelkezésre állási zónák fizikai elválasztása adatközpont meghibásodása ellen védi az alkalmazásokat és adatokat. A rendelkezésre állási zónákban az Azure iparági ajánlott 99,99 %-os virtuális gép ÜZEMIDŐT biztosít. Rendelkezésre állási zónában a említett egyes régiókban támogatott [Itt](https://docs.microsoft.com/azure/availability-zones/az-overview#regions-that-support-availability-zones). 
@@ -92,14 +92,14 @@ Az alábbi lépéseket végigvezeti Önt az Azure Site Recovery használata az a
 ![Enable-rep-1. PNG](media/azure-vms-to-zones/enable-rep-1.PNG)
 
 1. Válassza ki **tovább: Speciális beállítások**
-2. Válassza ki a cél subscriptiom, a cél virtuális gép erőforráscsoportja és a virtuális hálózati helyénvalónak értékeit.
-3. Az a **rendelkezésre állási** területén válassza a globális zóna, amelybe át szeretné helyezni a virtuális gép. 
+2. Válassza ki a cél előfizetés, a cél virtuális gép erőforráscsoportja és a virtuális hálózat a megfelelő értékekre.
+3. Az a **rendelkezésre állási** , amelybe át szeretné helyezni a virtuális gép rendelkezésre állási zóna válassza. 
 > [!NOTE]
 > Ha nem látja a rendelkezésre állási csoport vagy a globális zóna lehetőséget, győződjön meg arról, hogy a [Előfeltételek](#prepare-the-source-vms) teljesülnek-e, és a [előkészítési](#prepare-the-source-vms) forrás virtuális gépek teljes.
 
    ![enable-rep-2.PNG](media/azure-vms-to-zones/enable-rep-2.PNG)
 
-7. Kattintson az engedélyezés beállításjegyzékkel. Ekkor elindul a virtuális gép replikálásának engedélyezési feladata.
+7. Kattintson a replikáció engedélyezése. Ekkor elindul a virtuális gép replikálásának engedélyezési feladata.
 
 ## <a name="verify-settings"></a>A beállítások ellenőrzése
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: d41ec0bc959eb264564d49ae6ac31aa30b3be98a
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 32b9a00aa943813bec3c518c3c9dbf0e37a9bc63
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492759"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445925"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Egy alárendelt eszköz csatlakoztatása az Azure IoT Edge-átjáró
 
@@ -40,7 +40,10 @@ Ebben a cikkben található lépések elvégzése előtt rendelkeznie kell két 
 2. Egy alárendelt eszköz, amely rendelkezik egy eszközidentitást az IoT hubról. 
     Az alsóbb rétegbeli eszközök IoT Edge-eszköz nem használható. Ehelyett használjon rendszeres IoT-eszközt az IoT Hub regisztrált eszközt. A portálon regisztrálhat egy új eszközt az **IoT-eszközök** szakaszban. Vagy használhatja az Azure CLI használatával [eszköz regisztrálása](../iot-hub/quickstart-send-telemetry-c.md#register-a-device). Másolja a kapcsolati karakterláncot, és hogy elérhető legyen a későbbi szakaszokban. 
 
-    Jelenleg csak a szimmetrikus kulcsot az alsóbb rétegbeli eszközök csatlakozhatnak az IoT Edge-átjárókon keresztül. X.509-hitelesítésszolgáltatók és önaláírt X.509-tanúsítványok jelenleg nem támogatottak. 
+    Jelenleg csak a szimmetrikus kulcsot az alsóbb rétegbeli eszközök csatlakozhatnak az IoT Edge-átjárókon keresztül. X.509-hitelesítésszolgáltatók és önaláírt X.509-tanúsítványok jelenleg nem támogatottak.
+    
+> [!NOTE]
+> Ezeket az utasításokat a tanúsítványok létrehozásához használja az "átjáró neve" kell lennie a neve megegyezik használt állomásnév az IoT Edge config.yaml fájlban és a kapcsolati karakterláncban az alsóbb rétegbeli eszköz GatewayHostName. A "gateway neve" kell lennie az IP-címet, vagy DNS- vagy gazdafájlbejegyzéssel használatával oldható fel. Kommunikáció a használt protokoll alapján (MQTTS:8883 / AMQPS:5671 / HTTPS:433) lehetséges alsóbb rétegbeli eszközök és az IoT Edge transparant között kell lennie. Ha tűzfal a kettő között, a megfelelő portot kell lennie nyitva.
 
 ## <a name="prepare-a-downstream-device"></a>Alsóbb rétegbeli eszközök előkészítése
 

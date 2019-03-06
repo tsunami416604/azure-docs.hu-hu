@@ -10,12 +10,12 @@ manager: jeconnoc
 ms.reviewer: klam, LADocs
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: aac59e087ba106bc20d94fea85cb8a3cd9273482
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 9e485797dcc40c426b208971c04acffa168e528a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233072"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455904"
 ---
 # <a name="run-actions-based-on-group-status-with-scopes-in-azure-logic-apps"></a>Az Azure Logic Appsben hatókörökkel csoport állapota alapján műveletek futtatása
 
@@ -54,7 +54,7 @@ A logikai alkalmazás mentése bármikor, ezért mentse gyakran a munkáját.
 
 1. Jelentkezzen be a <a href="https://portal.azure.com" target="_blank">az Azure portal</a>, ha még nem tette. Üres logikai alkalmazás létrehozása.
 
-1. Adja hozzá a **ütemezés – ismétlődés** eseményindító ezekkel a beállításokkal: **időköz** = "1" és a **gyakorisága** = "Perc."
+1. Adja hozzá a **ütemezés – ismétlődés** eseményindító ezekkel a beállításokkal: **Intervallum** = "1" és a **gyakorisága** = "Perc."
 
    ![Állítsa be a "Ütemezés – ismétlődés" eseményindító](./media/logic-apps-control-flow-run-steps-group-scopes/recurrence.png)
 
@@ -91,7 +91,7 @@ A logikai alkalmazás mentése bármikor, ezért mentse gyakran a munkáját.
 
 1. [Feltétel hozzáadása](../logic-apps/logic-apps-control-flow-conditional-statement.md) , amely ellenőrzi, hogy a forgalom a jelenlegi utazási idő meghaladja-e adott ideje. Ebben a példában az alábbi lépéseket követve:
 
-   1. Nevezze át a feltételt a következő leírással: **ha forgalmat idő több, mint a megadott időtartam**
+   1. Nevezze át a feltételt a következő leírással: **Ha a forgalom idő több, mint a megadott időtartam**
 
    1. Kattintson a bal szélső oszlopban a **válasszon egy értéket** mezőbe, így a dinamikus tartalmak listája jelenik meg. A listában jelölje ki a **utazás időtartama forgalommal** mező, amely másodpercek alatt. 
 
@@ -99,7 +99,7 @@ A logikai alkalmazás mentése bármikor, ezért mentse gyakran a munkáját.
 
    1. A középső mezőben válassza ki azt a operátort: **nagyobb, mint**
 
-   1. A jobb szélső oszlopban, adja meg a összehasonlító értéket, amely másodperc és 10 percre equivlent: **600**
+   1. A jobb szélső oszlopban adja meg a összehasonlító értéket, amely másodperc és az azzal egyenértékű, 10 percre van: **600**
 
       Ha elkészült, a feltétel a következő példához hasonlít:
 
@@ -179,7 +179,7 @@ Ezután adjon hozzá egy hatókörhöz, hogy bizonyos műveletek csoport, és az
 
    ![Hozzáadott hatókör](./media/logic-apps-control-flow-run-steps-group-scopes/scope-added.png)
 
-1. A hatókör alatt adjon hozzá egy feltételt, amely a hatókör állapotát ellenőrzi. Nevezze át a feltételt a következő leírással: **hatókör sikertelen**
+1. A hatókör alatt adjon hozzá egy feltételt, amely a hatókör állapotát ellenőrzi. Nevezze át a feltételt a következő leírással: **Ha a hatókör nem sikerült**
 
    ![Hatókör állapotának feltétel hozzáadása](./media/logic-apps-control-flow-run-steps-group-scopes/add-condition-check-scope-status.png)
   

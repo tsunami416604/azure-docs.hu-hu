@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: 933506e732926b0f3827f039a65e78acd3a6932b
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 52b52cce1e93e55563cf695f06bd7821ebcfc585
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653815"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444905"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>Az Apache HBase-fürt replikációja az Azure virtuális hálózatok beállítása
 
@@ -70,7 +70,7 @@ Egyes változtatható értékek a sablonban:
 | Tulajdonság | Érték |
 |----------|-------|
 | Hely | USA nyugati régiója |
-| Virtuális hálózat neve | &lt;ClusterNamePrevix >-vnet1 |
+| Virtuális hálózat neve | &lt;ClusterNamePrevix>-vnet1 |
 | Címtér-előtagját | 10.1.0.0/16 |
 | Alhálózat neve | 1. alhálózata |
 | Alhálózati előtag | 10.1.0.0/24 |
@@ -87,7 +87,7 @@ Egyes változtatható értékek a sablonban:
 | Tulajdonság | Érték |
 |----------|-------|
 | Hely | USA keleti régiója |
-| Virtuális hálózat neve | &lt;ClusterNamePrevix >-vnet2 |
+| Virtuális hálózat neve | &lt;ClusterNamePrevix>-vnet2 |
 | Címtér-előtagját | 10.2.0.0/16 |
 | Alhálózat neve | 1. alhálózata |
 | Alhálózati előtag | 10.2.0.0/24 |
@@ -136,7 +136,7 @@ Kötési telepítéséhez használja a következő eljárást:
     sudo apt-get install bind9 -y
     ```
 
-3. Továbbítsa a névfeloldási kérelmeket a helyi DNS-kiszolgáló Bind konfigurálása. Ehhez használja a következő szöveget a tartalmát, a `/etc/bind/named.conf.options` fájlt:
+3. Továbbítsa a névfeloldási kérelmeket a a helyi DNS-kiszolgáló Bind konfigurálása. Ehhez használja a következő szöveget a tartalmát, a `/etc/bind/named.conf.options` fájlt:
 
     ```
     acl goodclients {
@@ -315,11 +315,11 @@ Nem kötelező argumentumok:
 |----|-----------|
 |--src-ambari-user - su, | Adja meg a rendszergazdai felhasználóneve Ambari a kiindulási HBase-fürt. Az alapértelmezett érték **rendszergazdai**. |
 |-du, nyári időszámítás –-ambari-felhasználó | A cél HBase-fürt Ambari rendszergazdai felhasználónevet megadása Az alapértelmezett érték **rendszergazdai**. |
-|-t, a--tábla-lista | Megadja a replikálni kívánt táblák. Például:--tábla-list = "tábla1; table2; Tábl3". Táblák nem ad meg, ha a rendszer replikálja az összes meglévő HBase-táblákat.|
-|-m,--gép | Adja meg a fő csomópont, ahol a parancsfájlművelet fut-e. Az érték kisebb, mint **hn0** vagy **hn1** és a választott alapján ez az aktív fő csomópontja. Használja ezt a beállítást, ha futtatja a 0 USD parancsfájl szkriptműveletet, a HDInsight-portál vagy az Azure PowerShell-lel.|
+|-t, a--tábla-lista | Megadja a replikálni kívánt táblák. For example: --table-list="table1;table2;table3". Táblák nem ad meg, ha a rendszer replikálja az összes meglévő HBase-táblákat.|
+|-m, --machine | Adja meg a fő csomópont, ahol a parancsfájlművelet fut-e. Az érték kisebb, mint **hn0** vagy **hn1** és a választott alapján ez az aktív fő csomópontja. Használja ezt a beállítást, ha futtatja a 0 USD parancsfájl szkriptműveletet, a HDInsight-portál vagy az Azure PowerShell-lel.|
 |-cp, - copydata | Lehetővé teszi a meglévő adatok a táblák, ahol a replikáció engedélyezve van-e az áttelepítés. |
-|-rpm, - replikálás-phoenix-metaadatok | Lehetővé teszi a Phoenix rendszertáblákra replikációt. <br><br>*Használja ezt a beállítást körültekintéssel.* Azt javasoljuk, hogy újra létrehozza a Phoenix táblák replika fürtökön Ez a szkript használata előtt. |
-|-h, – Súgó | Megjeleníti a használati adatokat. |
+|-rpm, -replicate-phoenix-meta | Lehetővé teszi a Phoenix rendszertáblákra replikációt. <br><br>*Használja ezt a beállítást körültekintéssel.* Azt javasoljuk, hogy újra létrehozza a Phoenix táblák replika fürtökön Ez a szkript használata előtt. |
+|-h, --help | Megjeleníti a használati adatokat. |
 
 A `print_usage()` szakaszában a [parancsfájl](https://github.com/Azure/hbase-utils/blob/master/replication/hdi_enable_replication.sh) rendelkezik paraméterekkel részletes leírását.
 

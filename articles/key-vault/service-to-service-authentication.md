@@ -6,16 +6,16 @@ author: msmbaldwin
 manager: barbkess
 services: key-vault
 ms.author: mbaldwin
-ms.date: 01/04/2019
+ms.date: 03/05/2019
 ms.topic: conceptual
 ms.service: key-vault
 ms.assetid: 4be434c4-0c99-4800-b775-c9713c973ee9
-ms.openlocfilehash: d0ccf25ed0071e9d89b3728048435b0b657026c0
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 4436fc3c1bec4cdb8e301edd185f4416c931e24f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342317"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456499"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Szolgáltatások közötti hitelesítés az Azure Key Vaultba .NET használatával
 
@@ -27,7 +27,7 @@ Helyi fejlesztés során fejlesztői hitelesítő adatok használatával haszná
 
 A `Microsoft.Azure.Services.AppAuthentication` könyvtár kezeli a hitelesítés automatikusan, amely viszont lehetővé teszi, hogy a megoldás ahelyett, hogy a hitelesítő adatok összpontosíthat.
 
-A `Microsoft.Azure.Services.AppAuthentication` kódtár támogatja a helyi fejlesztés a Microsoft Visual Studio, az Azure parancssori felület vagy az Azure AD integrált hitelesítést. Amikor telepít egy Azure-erőforrás, amely támogatja a felügyelt identitás, automatikusan használja-e a szalagtár [felügyelt identitások az Azure-erőforrások](/azure/active-directory/msi-overview). Nincs kódírásra vagy konfigurálásra módosításokra szükség. A kódtár emellett támogatja az Azure AD közvetlenül is felhasználható [ügyfél-hitelesítő adatok](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal) Ha egy felügyelt identitás nem érhető el, vagy ha a fejlesztői biztonsági környezetben nem lehet megállapítani a helyi fejlesztés során.
+A `Microsoft.Azure.Services.AppAuthentication` kódtár támogatja a helyi fejlesztés a Microsoft Visual Studio, az Azure parancssori felület vagy az Azure AD integrált hitelesítést. Amikor telepít egy Azure-erőforrás, amely támogatja a felügyelt identitás, automatikusan használja-e a szalagtár [felügyelt identitások az Azure-erőforrások](../active-directory/msi-overview.md). Nincs kódírásra vagy konfigurálásra módosításokra szükség. A kódtár emellett támogatja az Azure AD közvetlenül is felhasználható [ügyfél-hitelesítő adatok](../azure-resource-manager/resource-group-authenticate-service-principal.md) Ha egy felügyelt identitás nem érhető el, vagy ha a fejlesztői biztonsági környezetben nem lehet megállapítani a helyi fejlesztés során.
 
 ## <a name="using-the-library"></a>A kódtár használatával
 
@@ -52,7 +52,7 @@ A .NET-alkalmazásokban, a legegyszerűbb módszer egy felügyelt identitás has
 
 A `AzureServiceTokenProvider` osztály gyorsítótárazza a memóriában, és lekéri az Azure ad-ből lejárata előtt. Ennek következtében, már nem rendelkezik a lejárati hívása előtt ellenőrizze a `GetAccessTokenAsync` metódust. Ha meg szeretné használni a jogkivonat csak a metódust hívja. 
 
-A `GetAccessTokenAsync` módszerhez egy erőforrás-azonosítója. További tudnivalókért lásd: [mely Azure-szolgáltatások felügyelt identitások támogatása az Azure-erőforrások](https://docs.microsoft.com/azure/active-directory/msi-overview).
+A `GetAccessTokenAsync` módszerhez egy erőforrás-azonosítója. További tudnivalókért lásd: [mely Azure-szolgáltatások felügyelt identitások támogatása az Azure-erőforrások](../active-directory/msi-overview.md).
 
 ## <a name="samples"></a>Példák
 
@@ -71,9 +71,6 @@ A helyi fejlesztési két forgatókönyv közül választhat az elsődleges hite
 - [Hitelesítés az Azure-szolgáltatások](#authenticating-to-azure-services)
 - [Egyéni szolgáltatások való hitelesítése](#authenticating-to-custom-services)
 
-Itt megismerheti, minden egyes forgatókönyv és a támogatott eszközök a követelményeknek.
-
-
 ### <a name="authenticating-to-azure-services"></a>Hitelesítés az Azure-szolgáltatások
 
 Helyi gépek nem támogatják a felügyelt identitások az Azure-erőforrásokhoz.  Ennek eredményeképpen a `Microsoft.Azure.Services.AppAuthentication` könyvtár a fejlesztői hitelesítő adatait használja a helyi fejlesztési környezet futtatásához. Telepítésekor a megoldás az Azure-ba, a tár használja egy felügyelt identitás váltson át egy OAuth 2.0 ügyfél-hitelesítő adatok megadási folyamatában.  Ez azt jelenti, hogy nélkül lehet tesztelni ugyanazt a kódot helyileg és távolról aggódjon.
@@ -82,17 +79,17 @@ A helyi fejlesztési `AzureServiceTokenProvider` jogkivonatok segítségével be
 
 ### <a name="authenticating-with-visual-studio"></a>A Visual Studióval hitelesítése
 
-Visual Studio használata esetén győződjön meg:
+A Visual Studio használatával hitelesíti a következő előfeltételeket tartalmazza:
 
-1. Telepítette [Visual Studio 2017 v15.5](https://blogs.msdn.microsoft.com/visualstudio/2017/10/11/visual-studio-2017-version-15-5-preview/) vagy újabb.
+1. [A Visual Studio 2017 v15.5](https://blogs.msdn.microsoft.com/visualstudio/2017/10/11/visual-studio-2017-version-15-5-preview/) vagy újabb.
 
-2. A [for Visual Studio App hitelesítési kiterjesztés](https://go.microsoft.com/fwlink/?linkid=862354) telepítve van.
+2. A [for Visual Studio App hitelesítési kiterjesztés](https://go.microsoft.com/fwlink/?linkid=862354), a Visual Studio 2017 Update 5 külön bővítményeként érhető el, és az a 6. frissítés és újabb verzióiban a termék. 6. frissítés vagy újabb, illetve az alkalmazás hitelesítési bővítmény telepítését az Azure fejlesztői eszközök a Visual Studio telepítőjében kiválasztásával ellenőrizheti.
  
-3. A Visual Studio bejelentkezett, és kiválasztott egy fiókot a helyi fejlesztési célra. Használat **eszközök**&nbsp;>&nbsp;**beállítások**&nbsp;>&nbsp;**Azure-szolgáltatás hitelesítési**, válasszon ki egy helyi fejlesztői fiókot. 
+Jelentkezzen be a Visual Studióban, és használjon **eszközök**&nbsp;>&nbsp;**beállítások**&nbsp;>&nbsp;**Azure-szolgáltatás Hitelesítési** ki kell választania egy fiókot a helyi fejlesztési. 
 
 Ha hibákba ütközne a Visual studióval, például a jogkivonat-szolgáltató fájl kapcsolatos hibákat el figyelmesen ezeket a lépéseket. 
 
-Azt is szükség lehet hitelesítse magát újra a fejlesztői jogkivonatot.  Ehhez nyissa meg **eszközök**&nbsp;>&nbsp;**beállítások**>**Azure&nbsp;szolgáltatás&nbsp;hitelesítés**  , és keressen egy **újra hitelesíteni kell** a kiválasztott fiók alatti hivatkozásra.  Válassza ki azt a hitelesítéshez. 
+Azt is szükség lehet hitelesítse magát újra a fejlesztői jogkivonatot. Ehhez nyissa meg **eszközök**&nbsp;>&nbsp;**beállítások**>**Azure&nbsp;szolgáltatás&nbsp;hitelesítés**  , és keressen egy **újra hitelesíteni kell** a kiválasztott fiók alatti hivatkozásra.  Válassza ki azt a hitelesítéshez. 
 
 ### <a name="authenticating-with-azure-cli"></a>Hitelesítés az Azure CLI-vel
 
@@ -122,7 +119,7 @@ az account list
 
 Az Azure AD-hitelesítés használatához ellenőrizze, hogy:
 
-- A helyszíni active Directoryban [szinkronizálja az Azure AD](/azure/active-directory/connect/active-directory-aadconnect).
+- A helyszíni active Directoryban [szinkronizálja az Azure AD](../active-directory/connect/active-directory-aadconnect.md).
 
 - A kód egy tartományhoz csatlakoztatott számítógépen fut.
 
@@ -162,7 +159,7 @@ Azt is megteheti előfordulhat, hogy a hitelesítést egy felhasználó által h
 
 Elképzelhető, hogy hitelesítéséhez az Azure AD-ügyfél hitelesítő adatok létrehozásához szükséges. Gyakori példák:
 
-1. A kód a helyi fejlesztési környezetet, de nem a fejlesztői identitás alatt fut.  A Service Fabric, például használja a [NetworkService fiók](/azure/service-fabric/service-fabric-application-secret-management) a helyi fejlesztési.
+1. A kód a helyi fejlesztési környezetet, de nem a fejlesztői identitás alatt fut.  A Service Fabric, például használja a [NetworkService fiók](../service-fabric/service-fabric-application-secret-management.md) a helyi fejlesztési.
  
 2. A kód fut a helyi fejlesztési környezetet, és a egy egyéni szolgáltatás, ezért nem használható a fejlesztői személyazonosság hitelesítéséhez. 
  
@@ -170,7 +167,7 @@ Elképzelhető, hogy hitelesítéséhez az Azure AD-ügyfél hitelesítő adatok
 
 A tanúsítvány használata az Azure AD-ba való bejelentkezéshez:
 
-1. Hozzon létre egy [szolgáltatásnév](/azure/azure-resource-manager/resource-group-authenticate-service-principal). 
+1. Hozzon létre egy [szolgáltatásnév](../azure-resource-manager/resource-group-authenticate-service-principal.md). 
 
 2. A tanúsítvány központi telepítése vagy a *LocalMachine* vagy *CurrentUser* tárolásához. 
 
@@ -187,7 +184,7 @@ A tanúsítvány használata az Azure AD-ba való bejelentkezéshez:
 
 Jelentkezzen be az Azure AD közös titkos hitelesítő adat:
 
-1. Hozzon létre egy [egy jelszót a szolgáltatásnév](/azure/azure-resource-manager/resource-group-authenticate-service-principal) , és adja meg azt a Key Vaulthoz való hozzáférése. 
+1. Hozzon létre egy [egy jelszót a szolgáltatásnév](../azure-resource-manager/resource-group-authenticate-service-principal.md) , és adja meg azt a Key Vaulthoz való hozzáférése. 
 
 2. Nevű környezeti változó értéke **AzureServicesAuthConnectionString** való:
 
@@ -224,5 +221,5 @@ A következő beállítások támogatottak:
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudjon meg többet [felügyelt identitások az Azure-erőforrások](/azure/active-directory/managed-identities-azure-resources/).
-- Tudjon meg többet [az Azure AD hitelesítési forgatókönyvei](/azure/active-directory/develop/active-directory-authentication-scenarios).
+- Tudjon meg többet [felügyelt identitások az Azure-erőforrások](../active-directory/managed-identities-azure-resources/index.yml).
+- Tudjon meg többet [az Azure AD hitelesítési forgatókönyvei](../active-directory/develop/active-directory-authentication-scenarios.md).

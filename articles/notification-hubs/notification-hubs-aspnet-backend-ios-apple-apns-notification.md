@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 23c532f6c344f8be37c3bf3d77f30effa4ec17e8
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: d69a2a26fb0b487a3efa4b5376ca6480569aa846
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227709"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450889"
 ---
 # <a name="tutorial-push-notifications-to-specific-users-using-azure-notification-hubs"></a>Oktatóanyag: Leküldéses értesítések küldése megadott felhasználóknak Azure Notification Hubs használatával
 
@@ -54,7 +54,7 @@ Ha szeretné a háttér-szolgáltatásként használhatja a Mobile Apps, tekints
 
 2. Az a `Main.storyboard` fájlt, adja hozzá a összetevőket az objektumtárból a képernyőképen látható.
 
-    ![Az xcode-ban felület builder storybard szerkesztése][1]
+    ![Storyboard fájlt az xcode-ban felület builder szerkesztése][1]
 
    * **Felhasználónév**: A helyőrző szöveg, UITextField *adja meg felhasználónevét*, azonnal eredmények címkét, és korlátozza a bal és jobb margók a küldés alatt, és a küldési eredmények felirat alatt.
    * **Jelszó**: A helyőrző szöveg, UITextField *jelszó megadása*, azonnal a felhasználónév alatt szöveges mezőt, és korlátozott, a bal és jobb margók és a felhasználónév szövegmező alatt található. Ellenőrizze a **szöveg biztonságos** a beállítást a attribútum vizsgáló *kulcsát adja vissza*.

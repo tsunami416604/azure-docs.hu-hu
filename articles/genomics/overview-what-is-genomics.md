@@ -9,18 +9,18 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: ecd6dd9e8eb6d11161faf6ed3b51f06cf0d3f454
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 1b52f47d692cf2fb2925ebb2a9882b9c79c29a87
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868816"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452640"
 ---
 # <a name="what-is-microsoft-genomics"></a>Mi az a Microsoft Genomics?
 A Microsoft Genomics kínál felhőalapú megvalósítása a Burrows-Wheeler Aligner (BWA) és a Genome Analysis Toolkit (GATK) másodlagos elemzéshez. A szolgáltatás ISO-minősítéssel rendelkezik, és megfelel a HIPAA előírásainak, és az alkalmazás-előkészítés genom igényeinek árkiszámíthatóságot kínál. Megtudhatja, hogyan használja a Microsoft Genomics szolgáltatásba, és integrálhatja az API a rövid útmutatók, oktatóanyagok és dokumentáció olvasásakor.
 
 ## <a name="support-your-most-demanding-sequencing-needs"></a>A legmagasabb szekvenálási igények támogatása
-Saját adatközpontok kezelése helyett élvezze azokat az előnyöket, amelyeket a Microsoft mérete és exabájtos méretű számítási feladatok terén szerzett tapasztalata nyújt. A felhő megvalósítással kapcsolatos, a BWA GATK magas concordant folyamatokkal a széles körű Institute ajánlott eljárásokat.
+Saját adatközpontok kezelése helyett élvezze azokat az előnyöket, amelyeket a Microsoft mérete és exabájtos méretű számítási feladatok terén szerzett tapasztalata nyújt. Felhőalapú megvalósítása a BWA GATK magas concordant folyamatokkal a széles körű Institute ajánlott eljárásokat.
 
 
 ## <a name="keep-your-business-running"></a>Az üzletmenet megtartása

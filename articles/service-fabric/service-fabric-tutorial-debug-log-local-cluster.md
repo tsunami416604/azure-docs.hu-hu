@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: abcc317233d7304365f8687de3c9bec2d09f7b33
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: c5ff1a0373fcce339bea2b235d86f20dc861a15c
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247409"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444259"
 ---
 # <a name="tutorial-debug-a-java-application-deployed-on-a-local-service-fabric-cluster"></a>Oktatóanyag: A helyi Service Fabric-fürtben üzembe helyezett Java-alkalmazás hibakeresése
 
@@ -55,7 +55,7 @@ Ha nem hozta létre a mintául szolgáló szavazóalkalmazást [az oktatóanyag-
 git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 ```
 
-[Állítsa össze és helyezze üzembe](service-fabric-tutorial-create-java-app.md#deploy-application-to-local-cluster) az alkalmazást a helyi fejlesztési fürtön.
+[Készíthet és helyezhet üzembe](service-fabric-tutorial-create-java-app.md#deploy-application-to-local-cluster) az alkalmazást a helyi fejlesztési fürtön.
 
 ## <a name="debug-java-application-using-eclipse"></a>Hibakeresés Java-alkalmazásokban az Eclipse használatával
 

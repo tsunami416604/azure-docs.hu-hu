@@ -4,14 +4,14 @@ description: – Gyakran ismételt kérdések Avere vFXT az Azure-hoz
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 02/28/2019
 ms.author: v-erkell
-ms.openlocfilehash: 83229cdca0ccff68dcdd543495a7a19b6e6c4c5b
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 1dda3e379a9dcec9dc48d741c107ee352c4f2033
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990051"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404637"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Gyakori kérdések az Azure-hoz készült Avere vFXT-ről
 
@@ -216,6 +216,10 @@ Avere vFXT tároló nem áll. A gyorsítótár, amely adatokat olvas be ír a co
 
 * A Dell EMC Isilon (OneFS 7.1-es, 7.2, 8.0-s és 8.1-es) 
 * NetApp ONTAP (9.3, 9.2, mód 9.4, fürtözött 9.1P1, 8.0-8.3) és (7 módú 7.*, 8.0-8.3) 
+
+  > [!NOTE] 
+  > NetApp Azure Files jelenleg nem támogatott. 
+
 * Az Azure blob-tárolók (csak a helyileg redundáns tárolás) 
 * Az AWS S3 gyűjtő 
 * Google Cloud gyűjtők

@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3bae6d93ffe7ea028d3329dcc69c2f33bdf7aa2a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: ce458328967337976ed713f78ead24e2f1fcdb96
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635459"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451274"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Mi az Azure HDInsight alatt futó Apache Storm?
 
@@ -48,7 +48,7 @@ A HDInsight alatt futó Storm a következő szolgáltatásokat biztosítja:
 
 A valós idejű elemzési megoldásaikhoz Apache Stormot használó vállalatok listája itt található: [Az Apache Stormot használó vállalatok](https://storm.apache.org/documentation/Powered-By.html).
 
-A Storm használatának megkezdéséhez lásd [Ismerkedés a HDInsight alatt futó Stormmal pache][gettingstarted].
+A Storm használatának megkezdéséhez lásd [Apache Storm on HDInsight – első lépések][gettingstarted].
 
 ## <a name="how-does-apache-storm-work"></a>Hogyan működik az Apache Storm
 
@@ -94,7 +94,7 @@ Az új Storm-fürtök percek alatt létrehozhatók a HDInsightban. További info
 
 * __Az Azure Data Lake Storage__: Példa egy Storm-fürt a Data Lake Storage használatával, lásd: [használata Azure Data Lake Storage a HDInsight-alapú Apache Storm](apache-storm-write-data-lake-store.md).
 
-* __Az Event Hubs__: Például egy Event Hubs és egy Storm-fürt használatával lásd az alábbi példákat:
+* __Event Hubs__: Például egy Event Hubs és egy Storm-fürt használatával lásd az alábbi példákat:
 
     * [Események feldolgozása az Azure Event Hubsból az Apache Storm on HDInsight (Java)](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/)
 
@@ -142,7 +142,7 @@ További információk: [Adatfeldolgozási garancia](https://storm.apache.org/ab
 
 ### <a name="ibasicbolt"></a>IBasicBolt
 
-Gyakori műveleti minta egy bemeneti rekord olvasása, nulla vagy több rekord kibocsátása, majd a bemeneti rekord nyugtázása rögtön a művelet végrehajtásának végén. A Storm lehetővé teszi ennek a mintának az automatizálását az [IBasicBolt](https://storm.apache.org/releases/current/javadocs/org/apache/storm/topology/IBasicBolt.html) felület segítségével.
+A minta egy bemeneti rekord olvasása, nulla vagy több rekord kibocsátó és a bemeneti rekord azonnal az execute metódus végén majd bosszankodnak szokás. A Storm lehetővé teszi ennek a mintának az automatizálását az [IBasicBolt](https://storm.apache.org/releases/current/javadocs/org/apache/storm/topology/IBasicBolt.html) felület segítségével.
 
 ### <a name="joins"></a>Illesztések
 

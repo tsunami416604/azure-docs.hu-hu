@@ -18,12 +18,12 @@ ms.author: billmath
 author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a45d776ea241e04aacf39e45f7bf6d2cc58c689
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8bd46bb820c7127c4fa6105fcc0be73bb66024c6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172165"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57446639"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>AD FS-megbízhatóság kezelése az Azure AD Connect használatával az Azure AD-vel
 
@@ -105,7 +105,7 @@ Az Azure AD Connect gondoskodik arról, hogy az Azure AD-megbízhatóság mindig
 
 Az Azure AD Connect verziója 1.1.873.0 vagy újabb teszi a biztonsági másolatot az Azure AD megbízhatósági beállítások, amikor egy frissítés jön létre az Azure AD-megbízhatóság beállításokat. Az Azure AD-megbízhatóság beállításokat készül biztonsági másolat **%ProgramData%\AADConnect\ADFS**. A fájlnév formátuma a következő formátumban AadTrust -&lt;dátum&gt;-&lt;idő&gt;.txt, például: AadTrust-20180710-150216.txt
 
-![A példában egy sanpshot biztonsági mentése az Azure AD-megbízhatóság](./media/how-to-connect-azure-ad-trust/backup.png)
+![Képernyőkép: a példában biztonsági mentése az Azure AD-megbízhatóság](./media/how-to-connect-azure-ad-trust/backup.png)
 
 Visszaállíthatja az alábbi javasolt lépésekkel jogcímkiadás-átalakítási szabályok
 

@@ -10,20 +10,20 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: seodec18
 manager: benshy
-ms.openlocfilehash: 02ff1822bab0abb4850541135a6ea51ea0e7119f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: bc1212c7ea7425e59da30478dbd58772fa1b748b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083563"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451014"
 ---
-# <a name="tutorial-manage-costs-by-using-cloudyn"></a>Oktatóanyag: Költségek kezelése a Cloudyn használatával
+# <a name="tutorial-manage-costs-by-using-cloudyn"></a>Oktatóanyag: A Cloudyn költségek kezelése
 
 A Cloudynben a költségeket címkék alapján foglalhatja le a költségek kezelése és a visszacsatolási jelentések előállítása során. A költséglefoglalási folyamat során költségeket rendel hozzá a felhasznált felhőalapú erőforrásokhoz. A költségek teljes lefoglalása akkor történik meg, ha az összes erőforrást kategóriákba sorolta címkék segítségével. A költségek lefoglalását követően irányítópultokon és jelentéseken keresztül biztosíthat költséghelyi visszacsatolást és elszámolást a felhasználóknak. Azonban a Cloudyn használatba vételekor előfordulhat, hogy számos erőforrás nem rendelkezik vagy nem látható el címkével.
 
 Például előfordulhat, hogy szeretné megtéríttetni a műszaki tervezési költségeket. Be kell tudnia mutatni a műszaki csapat számára az adott igényelt összeget az erőforrásköltségek alapján. Mutathat nekik egy jelentést, amely a *műszaki tervezés* címkével ellátott összes felhasznált erőforrást tartalmazza.
 
-A cikkben a címkéket és a kategóriákat helyenként azonos értelemben használjuk. A kategóriák tág gyűjtemények, melyek sok mindent jelölhetnek. Ezek lehetnek üzleti egységek, költséghelyek, webszolgáltatások vagy bármely felcímkézett dolog. A címkék olyan név/érték párok, amelyek segítségével kategóriákba sorolhatja az erőforrásokat, és ha ugyanazt a címkét több erőforrásra és erőforráscsoportra is alkalmazza, ezzel együtt jelenítheti meg és kezelheti azok összesített számlázási adatait. Az Azure Portal korábbi verzióiban a *címkenév* helyett a *kulcs* kifejezést alkalmaztuk. A címkék egy adott Azure-előfizetésre vonatkozóan hozhatók létre és abban tárolhatók. Az AWS címkéi kulcs/érték párok. Mivel az Azure és az AWS is a *kulcs* kifejezést használta, a Cloudyn is megmaradt ennél. A Category Manager kulcsok (címkenevek) használatával egyesíti a címkéket.
+A cikkben a címkéket és a kategóriákat helyenként azonos értelemben használjuk. A kategóriák tág gyűjtemények, melyek sok mindent jelölhetnek. Ezek lehetnek üzleti egységek, költséghelyek, webszolgáltatások vagy bármely felcímkézett dolog. A címkék olyan név/érték párok, amelyek lehetővé teszik, hogy az erőforrások kategorizálása, valamint hogy megtekintése és kezelése a számlázási adatokat leltároz alkalmazza ugyanazt a címkét több erőforrásra és erőforráscsoportra. Az Azure Portal korábbi verzióiban a *címkenév* helyett a *kulcs* kifejezést alkalmaztuk. A címkék egy adott Azure-előfizetésre vonatkozóan hozhatók létre és abban tárolhatók. Az AWS címkéi kulcs/érték párok. Mivel az Azure és az AWS is a *kulcs* kifejezést használta, a Cloudyn is megmaradt ennél. A Category Manager kulcsok (címkenevek) használatával egyesíti a címkéket.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 

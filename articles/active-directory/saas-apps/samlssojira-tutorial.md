@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/03/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 434a22c56e0ac6476138ef258e7d83a2bfecb63f
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: df7860361bb785e0f16947a29d25c43fc02f126b
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871247"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456125"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>Oktatóanyag: Feloldási GmbH által az Azure Active Directory-integráció a Jira SAML SSO-val
 
@@ -206,7 +206,7 @@ Konfigurálja az Azure AD egyszeri bejelentkezés a Jira SAML SSO-val feloldási
     
     ![Egyszeri bejelentkezés konfigurálása](./media/samlssojira-tutorial/addon6b.png)
     
-16. Apprearing párbeszédpanel olvasási **a rendszer kihagyja a teszt azt jelenti, hogy...** , kattintson a **OK**.
+16. Amely párbeszédpanel olvasási **a rendszer kihagyja a teszt azt jelenti, hogy...** , kattintson a **OK**.
     
     ![Egyszeri bejelentkezés konfigurálása](./media/samlssojira-tutorial/addon6c.png)
 

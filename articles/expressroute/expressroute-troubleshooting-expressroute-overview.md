@@ -1,5 +1,5 @@
 ---
-title: 'Ellenőrizze a kapcsolatot – ExpressRoute-hibaelhárítási útmutató: Azure |} A Microsoft Docs'
+title: 'Ellenőrizze a kapcsolatot – ExpressRoute-hibaelhárítási útmutató: Azure| Microsoft Docs'
 description: Ezen a lapon útmutatás hibaelhárítás és a egy ExpressRoute-kapcsolatcsoport a teljes körű kapcsolódás ellenőrzése.
 services: expressroute
 author: rambk
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/26/2017
 ms.author: rambala
 ms.custom: seodec18
-ms.openlocfilehash: a64aa59b205e8986b80a575c50041f826606e16f
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: c4b20b4007a4824ee2dea0e1b22f1ea886218885
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53272813"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453609"
 ---
 # <a name="verifying-expressroute-connectivity"></a>Az ExpressRoute-kapcsolat ellenőrzése
 Ez a cikk segítséget nyújt a ellenőrizze-e, és az ExpressRoute-kapcsolat hibaelhárítása. Az ExpressRoute, amely kiterjeszti a helyszíni hálózatot a Microsoft-felhőbe, hogy a kapcsolatszolgáltató megkönnyíthető privát kapcsolaton keresztül, a következő három különböző hálózati zónák foglalja magában:
@@ -28,6 +28,8 @@ Ez a dokumentum célja, hogy segítséget nyújtson a felhasználót, hogy hatá
 > Ez a dokumentum célja felderítésére és egyszerű problémák elhárítására. Nem célja a helyettesítheti a Microsoft ügyfélszolgálatához. Nyisson meg egy támogatási jegyet a [Support] [ Support] Ha nem tudja megoldani a problémát, útmutatása.
 >
 >
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Áttekintés
 Az alábbi ábrán a logikai egy ExpressRoute-tal a Microsoft hálózati ügyfél hálózati kapcsolatát.
@@ -72,7 +74,7 @@ Függetlenül a kapcsolat modell egy ExpressRoute-kapcsolatcsoporttal rendelkezi
 >
 
 ### <a name="verification-via-the-azure-portal"></a>Az Azure Portalon keresztül ellenőrzése
-Az Azure Portalon, az ExpressRoute-kapcsolatcsoport állapota ellenőrizhető kiválasztásával ![2][2] a bal oldali oldalsó sáv menüben, és kiválasztja az ExpressRoute-kapcsolatcsoportot. Kiválasztása az ExpressRoute kapcsolatcsoport "Minden erőforrás" részen az ExpressRoute-kapcsolatcsoport panel megnyílik. Az a ![3][3] részében, az ExpressRoute essentials láthatók, az alábbi képernyőfelvételen látható módon:
+Az Azure Portalon, az ExpressRoute-kapcsolatcsoport állapota ellenőrizhető kiválasztásával ![2][2] a bal oldali oldalsó sáv menüben, és kiválasztja az ExpressRoute-kapcsolatcsoportot. Kiválasztása az ExpressRoute kapcsolatcsoport "Minden erőforrás" részen az ExpressRoute-kapcsolatcsoport panel megnyílik. Az a ![3][3] részében, az ExpressRoute essentials láthatók, az alábbi képernyőképen látható módon:
 
 ![4][4]    
 
@@ -88,16 +90,16 @@ ExpressRoute-kapcsolatcsoport működik, hogy a *kapcsolatcsoport állapota* kel
 ### <a name="verification-via-powershell"></a>Ellenőrzési PowerShell-lel
 Egy erőforráscsoport ExpressRoute-Kapcsolatcsoportok listájában, használja a következő parancsot:
 
-    Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG"
+    Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG"
 
 >[!TIP]
->Az Azure-on keresztül kérheti le az erőforráscsoport nevét. Tekintse meg az előző ebben a dokumentumban, és vegye figyelembe, hogy az erőforráscsoport neve szerepel-e a példa képernyőfelvételen.
+>Az Azure-on keresztül kérheti le az erőforráscsoport nevét. Tekintse meg az előző ebben a dokumentumban, és vegye figyelembe, hogy az erőforráscsoport neve szerepel-e a példaként szolgáló képernyőképen.
 >
 >
 
 Egy adott ExpressRoute-kapcsolatcsoport ki egy erőforráscsoportot, használja a következő parancsot:
 
-    Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+    Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
 
 Van egy mintaválasz:
 
@@ -155,7 +157,7 @@ Van egy mintaválasz:
     Sku                              : Standard
     Status                           : Enabled
 
-Annak ellenőrzéséhez, ha az ExpressRoute-kapcsolatcsoport működik, különös figyelmet fordítani a következő mezőket: ServiceProviderProvisioningState: Üzembe helyezett állapot: Engedélyezve
+Annak ellenőrzéséhez, ha az ExpressRoute-kapcsolatcsoport működik, különös figyelmet fordítani a következő mezőket: ServiceProviderProvisioningState : Üzembe helyezett állapot: Engedélyezve
 
 >[!NOTE]
 >Ha a *állapot* van nincs engedélyezve, lépjen kapcsolatba [Support][Support]. Ha a *ServiceProviderProvisioningState* van nincs kiépítve, forduljon a szolgáltatójához.
@@ -172,7 +174,7 @@ A szolgáltatót az ExpressRoute-kapcsolatcsoport kiépítési befejezését kö
 >
 >
 
-Az Azure Portalon, az ExpressRoute-kapcsolatcsoport állapota kiválasztásával ellenőrizhetők ![2][2] a bal oldali oldalsó sáv menüben, és kiválasztja az ExpressRoute-kapcsolatcsoportot. Kiválasztása az ExpressRoute kapcsolatcsoport "Minden erőforrás" alatt felsorolt nyitna az ExpressRoute-kapcsolatcsoport panelen. Az a ![3][3] részében, az ExpressRoute essentials kellene szerepelnie, az alábbi képernyőfelvételen látható módon:
+Az Azure Portalon, az ExpressRoute-kapcsolatcsoport állapota kiválasztásával ellenőrizhetők ![2][2] a bal oldali oldalsó sáv menüben, és kiválasztja az ExpressRoute-kapcsolatcsoportot. Kiválasztása az ExpressRoute kapcsolatcsoport "Minden erőforrás" alatt felsorolt nyitna az ExpressRoute-kapcsolatcsoport panelen. Az a ![3][3] részében, az ExpressRoute essentials kellene szerepelnie, az alábbi képernyőképen látható módon:
 
 ![5][5]
 
@@ -186,8 +188,8 @@ Az előző példában feljegyzett Azure privát társviszony-létesítési útv�
 ### <a name="verification-via-powershell"></a>Ellenőrzési PowerShell-lel
 Az Azure privát társviszony-létesítési konfiguráció részletei lekéréséhez használja a következő parancsokat:
 
-    $ckt = Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
-    Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt
+    $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+    Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt
 
 Egy mintaválasz egy konfigurálása sikerült privát társviszony-létesítéshez, a következő:
 
@@ -210,21 +212,21 @@ Egy mintaválasz egy konfigurálása sikerült privát társviszony-létesítés
 
 Az Azure nyilvános társviszony-létesítési konfiguráció részletei lekéréséhez használja a következő parancsokat:
 
-    $ckt = Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
-    Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt
+    $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+    Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt
 
 A Microsoft társviszony-létesítési konfiguráció részletei lekéréséhez használja a következő parancsokat:
 
-    $ckt = Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
-     Get-AzureRmExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
+    $ckt = Get-AzExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
+     Get-AzExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
 
 Ha a társviszony nincs konfigurálva, egy hibaüzenet lenne. Mintaválasz, ha a megadott társviszony-létesítés (Azure-beli nyilvános társviszony-létesítés ebben a példában) nincs konfigurálva a kapcsolatcsoport belül:
 
-    Get-AzureRmExpressRouteCircuitPeeringConfig : Sequence contains no matching element
+    Get-AzExpressRouteCircuitPeeringConfig : Sequence contains no matching element
     At line:1 char:1
-        + Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering ...
+        + Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering ...
         + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-            + CategoryInfo          : CloseError: (:) [Get-AzureRmExpr...itPeeringConfig], InvalidOperationException
+            + CategoryInfo          : CloseError: (:) [Get-AzExpr...itPeeringConfig], InvalidOperationException
             + FullyQualifiedErrorId : Microsoft.Azure.Commands.Network.GetAzureExpressRouteCircuitPeeringConfigCommand
 
 

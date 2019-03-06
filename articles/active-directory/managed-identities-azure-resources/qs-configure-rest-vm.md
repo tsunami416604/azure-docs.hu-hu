@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/25/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e3933f10a777a1aa10a4e04f8901e7fd1af5c48
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 09bdffbceafc11d99889cbda1461e4af4d89168e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56195634"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444616"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-rest-api-calls"></a>Felügyelt identitások az Azure-erőforrások konfigurálása a REST API hívásait használja, az Azure virtuális Gépekhez
 
@@ -294,7 +294,7 @@ A virtuális gép felügyelt identitás alapértelmezett letiltásához a fiókn
 
    Egy virtuális gépet, amely felhasználó által hozzárendelt felügyelt identitások felügyelt identitás alapértelmezett eltávolításához távolítsa el `SystemAssigned` származó a `{"identity":{"type:" "}}` értéket, miközben megtartja a `UserAssigned` érték és a `userAssignedIdentities` szótár értékek használata **API-verzió a 2018-06-01**. Ha használ **API 2017-12-01-es verzió** vagy korábbi, hagyja a `identityIds` tömb.
 
-## <a name="user-assigned-managed-identity"></a>felhasználó által hozzárendelt felügyelt identitás
+## <a name="user-assigned-managed-identity"></a>Felhasználó által hozzárendelt felügyelt identitás
 
 Ebben a szakaszban megismerheti, hogyan hozzáadása és eltávolítása, felhasználó által hozzárendelt felügyelt identitás-beli virtuális gépen az Azure Resource Manager REST-végponton való meghíváshoz a CURL használatával.
 
@@ -511,7 +511,7 @@ A felhasználó által hozzárendelt identitás hozzárendelése egy virtuális 
    |---------|---------|
    |*Engedélyezés*     | Kötelező. Egy érvényes értékre `Bearer` hozzáférési jogkivonatot.
 
-    Ha a felhasználó vagy a virtuális géphez hozzárendelt, a rendszer által hozzárendelt felügyelt identitások a `identity` értéke a válaszban, ugorjon az 5. lépés, amely bemutatja, hogyan csatlakoztatás a gazdagép alapértelmezett felügyelt identitás megőrzéséhez a felhasználó által hozzárendelt felügyelt identitás hozzáadása során a virtuális gép.
+    Ha a felhasználó vagy a virtuális géphez hozzárendelt, a rendszer által hozzárendelt felügyelt identitások a `identity` értéke a válaszban, ugorjon az 5. lépés, amely bemutatja, hogyan a rendszer által hozzárendelt felügyelt identitás megőrzéséhez a felhasználó által hozzárendelt felügyelt identitás hozzáadása során a virtuális gép.
 
 4. Ha nem rendelkezik a virtuális Géphez rendelt felügyelt felhasználó által hozzárendelt identitások, az első felhasználóhoz felügyelt identitásnak hozzárendelése a virtuális gép az Azure Resource Manager REST-végpont meghívása a következő CURL-parancs használatával.
 

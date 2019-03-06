@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: 22b3480093b85507123cab886340713747433928
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: e4e29f4b714fe187622d778db58743ca4f02e84e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818357"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445585"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Az Azure Machine Learning Studió mintaadatkészleteinek használata
 [top]: #machine-learning-sample-datasets
@@ -233,7 +233,7 @@ Talán ez az a legjobb ismert adatbázis található, a minta felismerés elsaj�
 <tr>
   <td>Film Tweetek</td>
   <td>
-Az adatkészlet jelent a film Tweetings adatkészlet. Az adatkészlet 170K minősítések filmekhez, a Twitteren jól strukturált tweetek kinyert rendelkezik. Minden példány egy tweetet jelöl, és egy rekord: felhasználói azonosító IMDB film-azonosító, minősítés, timestamp, számának kedvenceihez, így a tweet, valamint a tweet retweets számát. Az adatkészlet intéztek elérhető A. mondta, %s Dooms a, b Loni és D. Tikk ajánló rendszerek Challenge 2014.
+Az adatkészlet jelent a film Tweetings adatkészlet. Az adatkészlet 170K minősítések filmekhez, a Twitteren jól strukturált tweetek kinyert rendelkezik. Minden példány egy tweetet jelöl, és egy rekord: felhasználói azonosító, IMDB movie azonosítója, minősítés, timestamp, a tweet Kedvencek száma és a tweet retweets száma. Az adatkészlet intéztek elérhető A. mondta, %s Dooms a, b Loni és D. Tikk ajánló rendszerek Challenge 2014.
   </td>
 </tr>
 

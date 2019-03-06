@@ -9,12 +9,12 @@ ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 798cf405c222a443dbbd3a316d20c482daf4429f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: b09282d3e897018aa6d5b2561f08d8eee0757d7a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563252"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455428"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-and-deploy-to-your-simulated-device"></a>Oktatóanyag: A C IoT Edge-modul fejlesztése és üzembe helyezése a szimulált eszköz
 
@@ -137,7 +137,7 @@ Adjon olyan kódot a C-modulhoz, amely lehetővé teszi adatok beolvasását az 
 
    4. Mentse a **CMakeLists.txt** fájlt.
 
-   5. Nyissa meg a **modules** > **CModule** > **main.c** fájlt. A beszúrási utasítások listájának alján adjon hozzá egy újat a JSON-t támogató `parson.h` fájl beillesztése céljából:
+   5. Nyissa meg a **modules** > **CModule** > **main.c** fájlt. Az a lista alján utasításokat tartalmaznak, adjon hozzá egy új felvenni `parson.h` JSON-támogatás:
 
       ```c
       #include "parson.h"

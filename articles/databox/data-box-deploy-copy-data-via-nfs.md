@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 35a041216bf24a4c6ab73f9d5c3e85dff38a4501
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 423db264c8035f9b089524eb4b19a13baccdf2e0
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588109"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404705"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Oktatóanyag: Adatok másolása az Azure Data Box NFS-n keresztül
 
@@ -40,7 +40,8 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 A kiválasztott tárfiók alapján a Data Box hoz létre, akár:
 - Három megosztás minden társított tárfiókhoz, GPv1-hez és GPv2-höz.
-- Egy megosztás a prémium vagy Blob Storage-fiók számára. 
+- Egy prémium szintű Storage-megosztást. 
+- Blob storage-fiók egy megosztást. 
 
 A blokkblob- és lapblobmegosztások alatti első szintű entitások tárolók, a második szintű entitások pedig blobok. Az Azure Files-megosztások alatti első szintű entitások megosztások, a második szintű entitások pedig fájlok.
 
@@ -125,6 +126,9 @@ Amennyiben az rsyncet használja többszálas másoláshoz, a következő irány
      A j a párhuzamos folyamatok számát jelöli, X = párhuzamos példányok száma
 
      Azt javasoljuk, hogy kezdetben 16 párhuzamos példánnyal dolgozzon, és az elérhető erőforrásoknak megfelelően növelje a szálak számát.
+
+> [!IMPORTANT]
+> A következő Linux fájltípusok nem támogatottak: szimbolikus hivatkozásokat, karakter fájlok, blokk-fájlok, sockets és csövek. Az ilyen során fellépő hibák eredményez a **szállításra való** . lépés.
 
 - Az adatok integritásának biztosítása érdekében az ellenőrzőösszeg kiszámítására beágyazva, az adatok másolása közben kerül sor. A másolás befejezése után ellenőrizze, hogy mekkora a felhasznált és a szabad tárhely az eszközén.
     

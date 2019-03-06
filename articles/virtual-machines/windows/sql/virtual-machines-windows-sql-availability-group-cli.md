@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: fd33966a7c7d2ea72cdc98a23f601687d9577dde
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 058ed349e1aeb17dea7d550b9760082b464453f1
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56825212"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404128"
 ---
 # <a name="use-azure-sql-vm-cli-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Azure SQL virtuális gép CLI használatával az Azure virtuális Gépeken futó SQL Server AlwaysOn rendelkezésre állási csoport konfigurálása
 Ez a cikk ismerteti, hogyan használható [Azure SQL virtuális gép CLI](https://docs.microsoft.com/mt-mt/cli/azure/ext/sqlvm-preview/sqlvm?view=azure-cli-2018-03-01-hybrid) való üzembe helyezése a Windows feladatátvevő fürt (WSFC), és az SQL Server virtuális gépek hozzáadása a fürthöz, valamint a belső Load Balancer és a egy Always On rendelkezésre állási csoport figyelőjének létrehozásához.  Az Always On rendelkezésre állási csoport a tényleges telepítési továbbra is végezhető el manuálisan az SQL Server Management Studio (SSMS) keresztül. 
@@ -151,6 +151,6 @@ További információkért tekintse át a következő cikkeket:
 * [Always On rendelkezésre állási csoportok áttekintése &#40;az SQL Server&#41;](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)   
 * [Always On rendelkezésre állási csoportok a Server-példány konfigurációs &#40;az SQL Server&#41;](/sql/database-engine/availability-groups/windows/configuration-of-a-server-instance-for-always-on-availability-groups-sql-server)   
 * [Egy rendelkezésre állási csoport felügyeleti &#40;az SQL Server&#41;](/sql/database-engine/availability-groups/windows/administration-of-an-availability-group-sql-server)   
-* [Rendelkezésre állási csoportok figyelési &#40;az SQL Server&#41;](/sql/database-engine/availability-groups/windows/monitoring-of-availability-groups-sql-server.md)
+* [Rendelkezésre állási csoportok figyelési &#40;az SQL Server&#41;](/sql/database-engine/availability-groups/windows/monitoring-of-availability-groups-sql-server)
 * [Transact-SQL-utasítások az Always On rendelkezésre állási csoportok áttekintése &#40;az SQL Server&#41;](/sql/database-engine/availability-groups/windows/transact-sql-statements-for-always-on-availability-groups)   
 * [PowerShell-parancsmagok a Always On rendelkezésre állási csoportok áttekintése &#40;az SQL Server&#41;](/sql/database-engine/availability-groups/windows/overview-of-powershell-cmdlets-for-always-on-availability-groups-sql-server)  

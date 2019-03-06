@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/30/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 77c55657f57af655b5b8154dbcf58472434396a6
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 64fae56bfc95b62bd60444d49100689845f64278
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015492"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445143"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Folyamatok figyelése és felügyelete az Azure Data Factory az Azure portal és a PowerShell használatával
 > [!div class="op_single_selector"]
@@ -35,6 +35,8 @@ Ez a cikk ismerteti figyelése, kezelése és a folyamatok hibakeresése az Azur
 
 > [!IMPORTANT]
 > Az Azure Data Factory verziója 1 most használja az új [Azure Monitor riasztási infrastruktúra](../../monitoring-and-diagnostics/monitor-alerts-unified-usage.md). A régi riasztási infrastruktúra elavult. Ennek eredményeképpen a meglévő riasztásokat konfigurálni verzió 1 data factoryk nem fognak működni. A meglévő adat-előállítók v1 riasztások nem települnek át automatikusan. Hozza létre újra az Új riasztási infrastruktúra a riasztásokban kell. Jelentkezzen be az Azure Portalon, és válassza **figyelő** az új riasztások a metrikák (például sikertelen futtatások vagy sikeres futtatások)-verzióra vonatkozó 1 adat-előállítók létrehozását.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="understand-pipelines-and-activity-states"></a>Megismerheti a folyamatokat és tevékenységi állapotok
 Az Azure portal használatával a következőket teheti:
@@ -121,7 +123,7 @@ Az adatkészlet szeleteit adat-előállító a következő állapotok egyike leh
 <td>A szelet feldolgozása folyamatban van.</td>
 </tr>
 <tr>
-<td rowspan="4">Meghiúsult</td><td>Időtúllépés miatt megszakadt</td><td>A tevékenység-végrehajtási a tevékenység által engedélyezett hosszabb időt vett igénybe.</td>
+<td rowspan="4">Meghiúsult</td><td>TimedOut</td><td>A tevékenység-végrehajtási a tevékenység által engedélyezett hosszabb időt vett igénybe.</td>
 </tr>
 <tr>
 <td>Megszakítva</td><td>A szelet felhasználói művelet megszakította.</td>
@@ -173,26 +175,26 @@ Azure PowerShell használatával kezelheti a folyamatokat. Például felfüggesz
 > [!NOTE] 
 > A diagram nézet nem támogatja a felfüggesztése és folytatása a folyamatokat. Ha szeretne egy felhasználói felületet használja, a figyelési és azzal való kezelésének alkalmazást kell használni. Az alkalmazás használatával kapcsolatos részletekért lásd: [figyelése és Data Factory-folyamatok felügyelete a Monitoring and Management app használatával](data-factory-monitor-manage-app.md) cikk. 
 
-Is szüneteltetése/felfüggeszteni folyamatok használatával a **Suspend-AzureRmDataFactoryPipeline** PowerShell-parancsmagot. Ez a parancsmag akkor hasznos, ha nem kívánja a folyamatok futtatásához, amíg egy probléma nem oldódik. 
+Is szüneteltetése/felfüggeszteni folyamatok használatával a **Suspend-AzDataFactoryPipeline** PowerShell-parancsmagot. Ez a parancsmag akkor hasznos, ha nem kívánja a folyamatok futtatásához, amíg egy probléma nem oldódik. 
 
 ```powershell
-Suspend-AzureRmDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
+Suspend-AzDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 ```
 Példa:
 
 ```powershell
-Suspend-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
+Suspend-AzDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
 ```
 
 Miután a problémát megoldottuk a folyamat, folytathatja a felfüggesztett folyamat a következő PowerShell-parancs futtatásával:
 
 ```powershell
-Resume-AzureRmDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
+Resume-AzDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 ```
 Példa:
 
 ```powershell
-Resume-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
+Resume-AzDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
 ```
 
 ## <a name="debug-pipelines"></a>Kereshet bennük hibákat
@@ -217,29 +219,29 @@ Ha a tevékenység futása sikertelen, a folyamat, az adatkészlet, a folyamat �
 
 #### <a name="use-powershell-to-debug-an-error"></a>Hiba hibakeresés a PowerShell használatával
 1. Indítsa el a **PowerShellt**.
-2. Futtassa a **Get-AzureRmDataFactorySlice** paranccsal megtekintheti az adatszeletek, és azok állapotát. Megjelenik a szelet állapotát tartalmazó **sikertelen**.        
+2. Futtassa a **Get-AzDataFactorySlice** paranccsal megtekintheti az adatszeletek, és azok állapotát. Megjelenik a szelet állapotát tartalmazó **sikertelen**.        
 
     ```powershell   
-    Get-AzureRmDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
+    Get-AzDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
     ```   
    Példa:
 
     ```powershell   
-    Get-AzureRmDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
+    Get-AzDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
     ```
 
    Cserélje le **StartDateTime** a folyamat kezdési időponttal. 
-3. Most futtassa a **Get-AzureRmDataFactoryRun** parancsmag részletes információkat a tevékenység futtatása a szelet.
+3. Most futtassa a **Get-AzDataFactoryRun** parancsmag részletes információkat a tevékenység futtatása a szelet.
 
     ```powershell   
-    Get-AzureRmDataFactoryRun [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime]
+    Get-AzDataFactoryRun [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime]
     <DateTime> [-Profile <AzureProfile> ] [ <CommonParameters>]
     ```
 
     Példa:
 
     ```powershell   
-    Get-AzureRmDataFactoryRun -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime "5/5/2014 12:00:00 AM"
+    Get-AzDataFactoryRun -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime "5/5/2014 12:00:00 AM"
     ```
 
     A StartDateTime értéke, amely az előző lépésben feljegyzett hiba vagy probléma szelet kezdési ideje. A dátum-idő kettős idézőjelek közé kell foglalni.
@@ -267,10 +269,10 @@ Ha a tevékenység futása sikertelen, a folyamat, az adatkészlet, a folyamat �
     PipelineName            : EnrichGameLogsPipeline
     Type                    :
     ```
-5. Futtathatja a **Save-AzureRmDataFactoryLog** parancsmagot az azonosító értéke, hogy tekintse meg a kimenetben, és töltse le a naplófájlok segítségével a **- DownloadLogsoption** a parancsmaghoz.
+5. Futtathatja a **Save-AzDataFactoryLog** parancsmagot az azonosító értéke, hogy tekintse meg a kimenetben, és töltse le a naplófájlok segítségével a **- DownloadLogsoption** a parancsmaghoz.
 
     ```powershell
-    Save-AzureRmDataFactoryLog -ResourceGroupName "ADF" -DataFactoryName "LogProcessingFactory" -Id "841b77c9-d56c-48d1-99a3-8c16c3e77d39" -DownloadLogs -Output "C:\Test"
+    Save-AzDataFactoryLog -ResourceGroupName "ADF" -DataFactoryName "LogProcessingFactory" -Id "841b77c9-d56c-48d1-99a3-8c16c3e77d39" -DownloadLogs -Output "C:\Test"
     ```
 
 ## <a name="rerun-failures-in-a-pipeline"></a>A folyamat hibák újrafuttatása
@@ -288,7 +290,7 @@ Az esetben a szelet érvényesítése miatt meghiúsult a házirend-hiba (péld�
 ![Javítsa a hibákat, és ellenőrzés](./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png)
 
 ### <a name="use-azure-powershell"></a>Azure PowerShell használatával
-Hibák használatával futtathatja a **Set-AzureRmDataFactorySliceStatus** parancsmagot. Tekintse meg a [Set-AzureRmDataFactorySliceStatus](https://docs.microsoft.com/powershell/module/azurerm.datafactories/set-azurermdatafactoryslicestatus) szintaxisát és egyéb részletek a parancsmaggal kapcsolatban a témakör.
+Hibák használatával futtathatja a **Set-AzDataFactorySliceStatus** parancsmagot. Tekintse meg a [Set-AzDataFactorySliceStatus](https://docs.microsoft.com/powershell/module/az.datafactory/set-azdatafactoryslicestatus) szintaxisát és egyéb részletek a parancsmaggal kapcsolatban a témakör.
 
 **Példa**
 
@@ -297,7 +299,7 @@ Az alábbi példa állítja be a tábla összes szelet állapota "DAWikiAggregat
 A "frissítés"típusa "Upstreaminpipeline paramétert", ami azt jelenti, hogy a tábla minden egyes szelet és minden függő (upstream) tábla állapotok vannak beállítva "Várakozás" értékre van állítva. Más lehetséges Ez a paraméter értéke "Egyéni".
 
 ```powershell
-Set-AzureRmDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -DatasetName DAWikiAggregatedData -Status Waiting -UpdateType UpstreamInPipeline -StartDateTime 2014-05-21T16:00:00 -EndDateTime 2014-05-21T20:00:00
+Set-AzDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -DatasetName DAWikiAggregatedData -Status Waiting -UpdateType UpstreamInPipeline -StartDateTime 2014-05-21T16:00:00 -EndDateTime 2014-05-21T20:00:00
 ```
 ## <a name="create-alerts-in-the-azure-portal"></a>Riasztások létrehozása az Azure Portalon
 

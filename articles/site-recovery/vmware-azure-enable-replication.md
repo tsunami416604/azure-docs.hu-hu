@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.date: 3/3/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 043a49e679f2b8ec48213e28d229121d3f0e070d
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 47cd1c8e7a8ea02175f1f35eaf8c1658e03a2a53
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338637"
+ms.locfileid: "57403311"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Az Azure-bA VMware virtuális gépek replikálásának engedélyezése
 
@@ -51,12 +51,15 @@ VMware virtuális gépek replikálásához:
 
 7. Válassza ki azt az Azure-hálózatot, valamint alhálózatot, amelyhez a feladatátvételt követően felálló Azure virtuális gépek csatlakozni fognak. A hálózatnak és a Recovery Services-tárolónak ugyanabban a régióban kell elhelyezkednie. Ha a megadott hálózati beállításokat az összes védelemre kijelölt gépre szeretné alkalmazni, válassza a **Beállítás most a kijelölt gépekhez** lehetőséget. Ha az egyes gépeknél külön-külön szeretné beállítani az Azure-hálózatot, kattintson a **Beállítás később** elemre. Ha nem rendelkezik a hálózathoz, létre kell hoznia egyet. Hálózat létrehozása a Resource Manager használatával, kattintson a **új létrehozása**. Válasszon egy olyan alhálózatot, ha van ilyen, és kattintson a **OK**.
 
-    ![Replikációs cél beállítás engedélyezése](./media/vmware-azure-enable-replication/enable-rep3.png)
+>[!NOTE]
+>Az Azure Site Recovery most már közvetlenül az összes új replikációk Managed Disks replikálja. Nem érinti a meglévő replikációt. Egy új gép tárfiókokba történő replikálást csak akkor használható REST API és Powershell használatával. 
+
+    ![Enable replication target setting](./media/vmware-azure-enable-replication/enable-rep3.png)
 8. A **Virtuális gépek** > **Virtuális gépek kijelölése** menüben válassza ki a replikálni kívánt virtuális gépeket. Csak olyan gépeket választhat, amelyeken használható a replikáció funkció. Ezután kattintson az **OK** gombra. Ha nem tudja megtekintése/kiválasztani bármely adott virtuális gép, kattintson a [Itt](https://aka.ms/doc-plugin-VM-not-showing) a probléma megoldásához.
 
     ![Replikációs válassza a virtuális gépek engedélyezése](./media/vmware-azure-enable-replication/enable-replication5.png)
-9. A **tulajdonságok** > **tulajdonságainak konfigurálása**, válassza ki a fiókot használják a folyamatkiszolgáló automatikusan telepíti a mobilitási szolgáltatást a gépen.  
-10. Rendszer alapértelmezés szerint minden lemezét replikálja. Lemezek kizárása a replikációból, kattintson a **az összes lemez** , és törölje az összes lemezt nem szeretné replikálni.  Ezután kattintson az **OK** gombra. A további tulajdonságokat később is beállíthatja. [További](vmware-azure-exclude-disk.md) kapcsolatos lemezek kizárása.
+9. A **tulajdonságok** > **tulajdonságainak konfigurálása**, válassza ki a fiókot használják a folyamatkiszolgáló automatikusan telepíti a mobilitási szolgáltatást a gépen. Válassza ki, a cél felügyelt lemezről, amely szeretne replikálni az adatok alapján típusát churn mintákat.
+10. Alapértelmezés szerint a rendszer replikálja a forrásgép összes lemeze. A lemezek kizárása a replikációból, törölje a jelet **Belefoglalás** be nem szeretné replikálni lemezeket.  Ezután kattintson az **OK** gombra. A további tulajdonságokat később is beállíthatja. [További](vmware-azure-exclude-disk.md) kapcsolatos lemezek kizárása.
 
     ![Engedélyezése replikációs tulajdonságainak konfigurálása](./media/vmware-azure-enable-replication/enable-replication6.png)
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/10/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: f72f75013d69533eeda0e69acbff1c4f7047f509
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 67f87729dbfb792b88f28a772f15e233f0fa60dc
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55193683"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452113"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: Régiónkénti elérhetőség és az adatok tárolási helye
 Régiónkénti elérhetőség és az adattárolási két különböző fogalmak eltérően az Azure AD B2C a többi Azure. Ez a cikk a két módszer közötti különbségeket ismertetik, és a ezek hogyan vonatkoznak az Azure és az Azure AD B2C összehasonlítása.
@@ -37,7 +37,7 @@ Az Azure AD B2C felhasználói adatokat az Egyesült Államokban vagy Európába
 
 Adattárolás helye határozza meg a kiválasztott melyik ország/régió alapján amikor [létrehozása az Azure AD B2C-bérlő](active-directory-b2c-get-started.md).
 
-![Képernyőfelvétel egy bérlő előnézete](./media/active-directory-b2c-reference-tenant-type/data-residency-b2c-tenant.png)
+![Képernyőkép egy bérlő előnézete](./media/active-directory-b2c-reference-tenant-type/data-residency-b2c-tenant.png)
 
 A következő országban és régióban az Egyesült Államokban található adatokat:
 
@@ -58,4 +58,4 @@ Ha a B2C-bérlő Azure AD B2C előzetes verzió ideje alatt hozta létre, akkor 
 > Üzemi szintű B2C-bérlőre egy előnézeti B2C-bérlő áttelepítési útvonal van. Vegye figyelembe, hogy vannak ismert problémák, amikor egy előnézeti B2C-bérlő törlése, és hozza létre újból az adott tartománynév egy üzemi szintű B2C-bérlő. Üzemi szintű B2C-bérlő létrehozása egy másik tartománynévvel rendelkezik.
 
 
-![Képernyőfelvétel egy bérlő előnézete](./media/active-directory-b2c-reference-tenant-type/preview-b2c-tenant.png)
+![Képernyőkép egy bérlő előnézete](./media/active-directory-b2c-reference-tenant-type/preview-b2c-tenant.png)

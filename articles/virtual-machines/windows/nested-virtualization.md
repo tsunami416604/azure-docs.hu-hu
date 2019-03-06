@@ -11,12 +11,12 @@ ms.topic: howto
 ms.service: virtual-machines-windows
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.openlocfilehash: 6a116c2f3d92b19f266be4d3b467a93fdeaced2c
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 096c7d54d0d6a166f62456e951b4c739074a8011
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888974"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444412"
 ---
 # <a name="how-to-enable-nested-virtualization-in-an-azure-vm"></a>Egy Azure virtuális Gépen a beágyazott virtualizálás engedélyezése
 
@@ -26,7 +26,7 @@ Ez a cikk végigvezeti a Hyper-V-beli virtuális gépen engedélyezése és konf
 
 ## <a name="create-a-nesting-capable-azure-vm"></a>A beágyazási képesek Azure virtuális gép létrehozása
 
-Hozzon létre egy új Windows Server 2016 az Azure virtuális Gépet.  A gyors tengelynek összes v3-as virtuális gép támogatja a beágyazott virtualizálás. A virtuális gép teljes listáját, hogy a támogatási beágyazási méreteit, tekintse meg a [Azure számítási egységek cikk](acu.md).
+Hozzon létre egy új Windows Server 2016 az Azure virtuális Gépet.  Gyors referenciaként összes v3-as virtuális gép támogatja a beágyazott virtualizálás. A virtuális gép teljes listáját, hogy a támogatási beágyazási méreteit, tekintse meg a [Azure számítási egységek cikk](acu.md).
 
 Fontos, hogy válassza ki a virtuális gép méretét elég nagy legyen a Vendég virtuális gép igényeinek támogatásához. Ebben a példában használjuk egy Azure virtuális gép D3_v3 méretét. 
 

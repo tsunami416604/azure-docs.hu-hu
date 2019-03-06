@@ -1,27 +1,27 @@
 ---
-title: 'Rövid útmutató: Munkafolyamat elküldése több bemenet használatával | Microsoft Genomics'
+title: Munkafolyamat elküldése több bemenet - a Microsoft Genomics használatával
 titleSuffix: Azure
-description: Ez a rövid útmutató feltételezi, hogy az msgen kliens telepítve van, és sikeresen futtatta a mintaadatokat a szolgáltatáson keresztül.
+description: Ez a cikk bemutatja, hogyan lehet elküldeni egy munkafolyamatot a Microsoft Genomics szolgáltatásba, ha a bemeneti fájl több FASTQ vagy BAM-fájl egyazon mintából származó. Már rendelkezik az msgen kliens telepítve van, és sikeresen futtatta a mintaadatokat a szolgáltatáson keresztül.
 services: genomics
 author: grhuynh
 manager: cgronlund
 ms.author: grhuynh
-ms.topic: quickstart
+ms.topic: conceptual
 ms.date: 02/05/2018
-ms.openlocfilehash: 1007d81a73ce9f183f997354188e534274b2fe95
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
-ms.translationtype: HT
+ms.openlocfilehash: 6d7ce959c92755a1da9eca0b069ebb7a8269e0a6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730362"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57450719"
 ---
 # <a name="submit-a-workflow-using-multiple-inputs-from-the-same-sample"></a>Munkafolyamat elküldése azonos mintából származó több bemenet használatával
 
-Ez a rövid útmutató ismerteti, hogyan lehet elküldeni egy munkafolyamatot a Microsoft Genomics szolgáltatásba, ha a bemenet több, **egyazon mintából származó** FASTQ- vagy BAM-fájlból áll. Ha például **egyazon mintát** a sorrendvezérlő több sávjában futtatja, a sorrendvezérlő FASTQ-fájlpárokat ad vissza kimenetként minden egyes sávhoz. Ahelyett, hogy összefűzné ezeket a FASTQ-fájlokat az illesztés és a variánskeresés előtt, közvetlenül elküldheti ezeket a bemeneteket az `msgen` ügyfélnek. Az `msgen` ügyfél kimenete **egyetlen** fájlkészlet lesz, köztük egy .bam, .bai és .vcf fájl. 
+Ez a cikk bemutatja, hogyan lehet elküldeni egy munkafolyamatot a Microsoft Genomics szolgáltatásba, ha a bemeneti fájl több FASTQ vagy BAM-fájl **egyazon mintából származó**. Ha például **egyazon mintát** a sorrendvezérlő több sávjában futtatja, a sorrendvezérlő FASTQ-fájlpárokat ad vissza kimenetként minden egyes sávhoz. Ahelyett, hogy összefűzné ezeket a FASTQ-fájlokat az illesztés és a variánskeresés előtt, közvetlenül elküldheti ezeket a bemeneteket az `msgen` ügyfélnek. Az `msgen` ügyfél kimenete **egyetlen** fájlkészlet lesz, köztük egy .bam, .bai és .vcf fájl. 
 
 Ne feledje azonban, hogy FASTQ- és BAM-fájlokat **nem** küldhet egyszerre. Emellett ügyeljen rá, hogy **nem** küldhet több FASTQ- vagy BAM-fájlt, amelyek több személytől származnak. 
 
-Ez a cikk feltételezi, hogy már telepítette és futtatta az `msgen` ügyfelet, és megismerkedett az Azure Storage használatával. Ha sikeresen elküldte a munkafolyamatot a rendelkezésre álló mintaadatokkal, készen áll a rövid útmutató folytatására. 
+Ez a cikk feltételezi, hogy már telepítette és futtatta az `msgen` ügyfelet, és megismerkedett az Azure Storage használatával. Sikeresen elküldte a munkafolyamatot, a megadott mintaadatokat használja, ha készen áll, folytassa az ebben a cikkben. 
 
 
 ## <a name="multiple-bam-files"></a>Több BAM-fájl

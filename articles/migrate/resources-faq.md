@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: snehaa
-ms.openlocfilehash: 9577e2c8eea153b38475bf5126a41641b3642ae9
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 26992cfe1c6cb8555a7084075fed4d9c8daed031
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991325"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444378"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Az Azure Migrate – gyakori kérdések (GYIK)
 
@@ -104,7 +104,7 @@ A berendezés-alapú felderítés a helyszíni virtuális gépek metaadatait gy�
   - A hálózati
   - Kimenő hálózati forgalom
 
-Az ügynökalapú felderítés a berendezésalapú felderítést kiegészítő megoldásként érhető el, és segítséget nyújt az ügyfeleknek a helyszíni virtuális gépek [függőségeinek megjelenítésében](how-to-create-group-machine-dependencies.md). A függőségi ügynökök olyan adatokat gyűjtenek be a virtuális gépről, mint a teljes tartománynév, az operációs rendszer, az IP-cím, a MAC-cím, a virtuális gépen futó folyamatok és a bejövő/kimenő TCP-kapcsolatok. Az ügynökalapú felderítés nem kötelező, és ha szeretné, ha nem szeretné a virtuális gépek a függőségek képi megjelenítése érdekében telepítse az ügynököket.
+Az ügynökalapú felderítés beállítás elérhető, a készülék-alapú felderítés felett, és segítséget nyújt ügyfeleinknek [függőségek vizualizálása](how-to-create-group-machine-dependencies.md) , a helyszíni virtuális gépeket. A függőségi ügynökök olyan adatokat gyűjtenek be a virtuális gépről, mint a teljes tartománynév, az operációs rendszer, az IP-cím, a MAC-cím, a virtuális gépen futó folyamatok és a bejövő/kimenő TCP-kapcsolatok. Az ügynökalapú felderítés nem kötelező, és ha szeretné, ha nem szeretné a virtuális gépek a függőségek képi megjelenítése érdekében telepítse az ügynököket.
 
 ### <a name="would-there-be-any-performance-impact-on-the-analyzed-esxi-host-environment"></a>A elemzett ESXi-gazdagép környezet teljesítményét hatással az ott lenne?
 
@@ -217,7 +217,7 @@ Függőségi ügynök által támogatott Windows operációs rendszerek listája
 Függőségi ügynök által támogatott Linux operációs rendszerek listája [Itt](https://docs.microsoft.com/azure/monitoring/monitoring-service-map-configure#supported-linux-operating-systems).
 
 ### <a name="can-i-visualize-dependencies-in-azure-migrate-for-more-than-one-hour-duration"></a>Megjeleníthetők az Azure Migrate függőségeinek több mint egy óra időtartama?
-Nem, az Azure Migrate segítségével vizualizálhatja függőségek legfeljebb egy órát részére. Az Azure Migrate lehetővé teszi, hogy térjen vissza az az előzmények között az utolsó egy hónap legfeljebb egy adott dátumot, de a maximális időtartamot, amelynek jelenítheti meg a függőségek legfeljebb 1 óra. Például hogy használhatja tegnap függőségek megtekintése a függőségi térkép az idő időtartamát funkciót, de csak megtekintheti azt számára egy egy órás időszak. Azonban használhatja az Azure Monitor naplók [a függőségi adatok lekérdezése](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies#query-dependency-data-from-log-analytics) hosszabb ideig keresztül.
+Nem, az Azure Migrate segítségével vizualizálhatja függőségek legfeljebb egy órát részére. Az Azure Migrate lehetővé teszi, hogy térjen vissza az az előzmények között az utolsó egy hónap legfeljebb egy adott dátumot, de a maximális időtartamot, amelynek jelenítheti meg a függőségek legfeljebb 1 óra. Például hogy használhatja tegnap függőségek megtekintése a függőségi térkép az idő időtartamát funkciót, de csak megtekintheti azt számára egy egy órás időszak. Azonban használhatja az Azure Monitor naplók [a függőségi adatok lekérdezése](https://docs.microsoft.com/azure/migrate/how-to-create-group-machine-dependencies) hosszabb ideig keresztül.
 
 ### <a name="is-dependency-visualization-supported-for-groups-with-more-than-10-vms"></a>Függőségek képi megjelenítésének támogatott csoportok több mint 10-alapú virtuális gépekhez?
 Is [csoportokra vonatkozó függőségek vizualizálása](https://docs.microsoft.com/azure/migrate/how-to-create-group-dependencies) , amelyek legfeljebb 10 virtuális gépeket. Ha egy csoport több mint 10 virtuális géppel rendelkezik, azt javasoljuk, hogy a csoport a kisebb csoportok osztani, és a Függőségek megjelenítése.

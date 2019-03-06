@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 204898026dc55e7111d3810d4938101ffaddc3f9
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 5f6cb29d8fb3fd1c3b75e18330e3ad2711a61aab
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698326"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444922"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms"></a>Contoso áttelepítése: Egy helyszíni Linux alkalmazás újratárolása az Azure virtuális gépek
 
@@ -408,7 +408,7 @@ Contoso rendszergazdák immár készen áll a feladatátvétel futtatása a hely
 
 ### <a name="connect-the-vm-to-the-database"></a>A virtuális gép kapcsolódni az adatbázishoz
 
-Az áttelepítési folyamat utolsó lépéseként, Contoso adins, hogy a futó alkalmazás-adatbázis mutasson az alkalmazás a kapcsolati karakterlánc frissítése az **OSTICKETMYSQL** virtuális Gépet. 
+Az áttelepítési folyamat utolsó lépéseként, Contoso rendszergazdák, hogy a futó alkalmazás-adatbázis mutasson az alkalmazás a kapcsolati karakterlánc frissítése az **OSTICKETMYSQL** virtuális Gépet. 
 
 1. Egy SSH-kapcsolatot vállalnak a **OSTICKETWEB** virtuális Gépet a Putty használatával vagy egy másik SSH-ügyfelet. A virtuális gép nem nyilvános, így a privát IP-cím használatával csatlakoznak.
 

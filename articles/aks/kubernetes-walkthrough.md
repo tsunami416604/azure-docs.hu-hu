@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 5e53a0658809cd278841b39b1015a6051cebf371
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2c613a42278fb4064e5c1cdbff5ebd3b4000092c
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204638"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444837"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Gyors útmutató: Fürt üzembe helyezése az Azure Kubernetes Service (AKS) az Azure CLI használatával
 
@@ -31,7 +31,7 @@ Ha helyi telepítése és használata a parancssori felület, ehhez a rövid út
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik. Az erőforráscsoportok létrehozásakor meg kell adnia egy helyet. Ez a hely az erőforrás-csoport metaadatok tárolására, egyben ahol az erőforrások futtatása az Azure-ban, ha nem ad meg egy másik régióba erőforrás létrehozása során. Hozzon létre egy erőforrás csoport a [az csoport létrehozása] [ az-group-create] parancsot.
+Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik. Az erőforráscsoportok létrehozásakor meg kell adnia egy helyet. Ez a hely az erőforrás-csoport metaadatok tárolására, egyben ahol az erőforrások futtatása az Azure-ban, ha nem ad meg egy másik régióba erőforrás létrehozásakor. Hozzon létre egy erőforrás csoport a [az csoport létrehozása] [ az-group-create] parancsot.
 
 A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot az *eastus* helyen.
 

@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: f5d75e817da843e0b6a8e86fb055cc723e45a2bb
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: e46dae199f4d45c325e41fa5432e98cba9a2f4ae
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54109104"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449597"
 ---
 # <a name="use-azure-application-insights-to-understand-how-customers-are-using-your-application"></a>Az alkalmazás ügyfelek általi használatának megismerése az Azure Application Insights használatával
 
@@ -86,7 +86,7 @@ A **Munkamenetek** panel a **Felhasználók** panelhez hasonló.  Míg a **Felha
     ![Munkamenetek idővonala](media/tutorial-users/SessionsTimeline.png)
 
 ## <a name="group-together-similar-users"></a>Hasonló felhasználók csoportosítása
-Egy **Kohorsz** a hasonló tulajdonságaik alapján csoportosított felhasználók halmaza.  A kohorszok segítségével a többi panelen szűrheti az adatokat, így az elemzéseket adott felhasználói csoportokra szűkítheti.  Például elképzelhető, hogy csak az olyan felhasználókat szeretné elemezni, akik vásároltak is.
+A **Kohorsz** csoportosítja a hasonló jellemzőkkel felhasználók csoportja.  A kohorszok segítségével a többi panelen szűrheti az adatokat, így az elemzéseket adott felhasználói csoportokra szűkítheti.  Például elképzelhető, hogy csak az olyan felhasználókat szeretné elemezni, akik vásároltak is.
 
 1.  Kattintson a **Kohorsz** elemre a menüben.
 2.  Kattintson az **Új** gombra egy új kohorsz létrehozásához.

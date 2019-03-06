@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: d684ec56c7dfcc28d1057d0b20905db49bce9723
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: a996703f3719c2be90851241c1fe23c89f24e606
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55498065"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447948"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factoryban történő futtatásának biztonsági szempontjai
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -51,6 +51,8 @@ Ez a cikk a következő két adattovábbítási esetekben biztonsági szempontok
 
 - **Alkalmazási helyzetben**: Ebben a forgatókönyvben a forrás- és a célkiszolgálón is az interneten keresztül nyilvánosan elérhető. Ezek közé tartozik például az Azure Storage, Azure SQL Data Warehouse, Azure SQL Database, Azure Data Lake Store, az Amazon S3, Amazon Redshift, SaaS-szolgáltatásokhoz, például a Salesforce és a webes protokollok, mint például az FTP- és OData felügyelt felhőalapú tárolási szolgáltatásokról. Keresse meg a támogatott adatforrások teljes listája [támogatott adattárak és formátumok](copy-activity-overview.md#supported-data-stores-and-formats).
 - **Hibrid forgatókönyv**: Ebben a forgatókönyvben a forrás- vagy a cél van egy tűzfal mögött található, vagy egy helyszíni vállalati hálózaton belül. Vagy az adattár egy saját hálózaton vagy virtuális hálózaton (általában a forrás) és nem nyilvánosan elérhető-e. Ebben a forgatókönyvben is tartozik a virtuális gépeken futtatott adatbázis-kiszolgálók.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="cloud-scenarios"></a>Felhőbeli forgatókönyvek
 
@@ -109,9 +111,9 @@ A hitelesítő adatokat a helyszíni adattárakban mindig titkosítva, és táro
 
 - **Hitelesítő adatok helyben Store**. Ha azt szeretné, titkosítására és a saját üzemeltetésű integrációs modulban helyileg tárolja a hitelesítő adatait, hajtsa végre a lépéseit [adattárak az Azure Data Factory a helyszíni hitelesítő adatok titkosításához](encrypt-credentials-self-hosted-integration-runtime.md). Összekötők támogatják ezt a beállítást. A saját üzemeltetésű integrációs modult használja a Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) titkosíthatja a bizalmas adatokat és hitelesítő adatokat. 
 
-   Használja a **New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential** parancsmag társított szolgáltatás hitelesítő adatai és a hivatkozott szolgáltatásban található bizalmas adatainak titkosításához. Ezután használhatja a visszaadott JSON-(az a **EncryptedCredential** elemet a kapcsolati karakterlánc) használatával egy társított szolgáltatás létrehozásához a **Set-AzureRmDataFactoryV2LinkedService** parancsmagot.  
+   Használja a **New-AzDataFactoryV2LinkedServiceEncryptedCredential** parancsmag társított szolgáltatás hitelesítő adatai és a hivatkozott szolgáltatásban található bizalmas adatainak titkosításához. Ezután használhatja a visszaadott JSON-(az a **EncryptedCredential** elemet a kapcsolati karakterlánc) használatával egy társított szolgáltatás létrehozásához a **Set-AzDataFactoryV2LinkedService** parancsmagot.  
 
-- **Az Azure Data Factory által felügyelt tárolási Store**. Ha közvetlenül a **Set-AzureRmDataFactoryV2LinkedService** parancsmag és a kapcsolati sztringeket, és hitelesítő adatokat beágyazva a JSON-fájlban, a társított szolgáltatás titkosított, az Azure Data Factory által felügyelt storage tárolja. A bizalmas adatok továbbra is titkosítja a tanúsítványt, és a Microsoft felügyeli ezeket a tanúsítványokat.
+- **Az Azure Data Factory által felügyelt tárolási Store**. Ha közvetlenül a **Set-AzDataFactoryV2LinkedService** parancsmag és a kapcsolati sztringeket, és hitelesítő adatokat beágyazva a JSON-fájlban, a társított szolgáltatás titkosított, az Azure Data Factory által felügyelt storage tárolja. A bizalmas adatok továbbra is titkosítja a tanúsítványt, és a Microsoft felügyeli ezeket a tanúsítványokat.
 
 
 

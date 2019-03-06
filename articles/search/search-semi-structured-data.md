@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.date: 07/12/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: ba9b34dbd9d0959e79c755abc8dad9fe1d358a50
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 44c818cba760fb5cd7d496fd45ea321ef38248f3
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632942"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445084"
 ---
 # <a name="tutorial-search-semi-structured-data-in-azure-cloud-storage"></a>Oktatóanyag: Részben strukturált adatok keresése az Azure felhőalapú tárolóban
 
 Ebben a kétrészes oktatóanyag-sorozatban megismerheti, hogyan kereshet részben strukturált és strukturálatlan adatokat az Azure Search használatával. Az [1. rész](../storage/blobs/storage-unstructured-search.md) bemutatta a strukturálatlan adatok keresését, de az ehhez az oktatóanyaghoz fontos előfeltételeket is tartalmazott, ilyen például a tárfiók létrehozása. 
 
-A 2. részben a hangsúly a részben strukturált adatokra helyeződik át, például az Azure-blobokban tárolt JSON-ra. A részben strukturált adatok címkéket és jelölőket tartalmaznak, amelyek a tartalmakat választják el az adatokon belül. Kompromisszumot jelent a holisztikusan indexelendő strukturálatlan adatok és a formálisan strukturált adatok között, amelyek egy adatmodellt követnek, például egy relációsadatbázis-sémát, amely mezőnként könnyen bejárható.
+A 2. részben a hangsúly a részben strukturált adatokra helyeződik át, például az Azure-blobokban tárolt JSON-ra. A részben strukturált adatok címkéket és jelölőket tartalmaznak, amelyek a tartalmakat választják el az adatokon belül. A különbség a között a strukturálatlan adatok, amelyek teljes mértékben indexelendő, és a formálisan strukturált adatok egy adatmodellt, például egy relációsadatbázis-sémát, amely egy mezőnként könnyen bejárható osztja.
 
 A 2. részben a következőkkel ismerkedhet meg:
 

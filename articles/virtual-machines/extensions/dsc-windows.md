@@ -14,12 +14,12 @@ ms.tgt_pltfrm: windows
 ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
-ms.openlocfilehash: 4f4793e18185c16ef144de33b4f116eff89a9969
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 9f81e2b7537a5ecc6778baa93a1bab23dd30ff8a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960156"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451909"
 ---
 # <a name="powershell-dsc-extension"></a>PowerShell DSC bővítmény
 
@@ -149,7 +149,7 @@ Kiterjesztési csomag letöltése és ezen a helyen, az Azure virtuális gépen 
 C:\Packages\Plugins\{Extension_Name}\{Extension_Version}
 ```
 
-A bővítményfájl állapot sub állapota és sikeres/meghiúsult állapotkódok együtt a részletes hibaüzeneteket és a leírása a egyes kiterjesztések, futtassa tartalmazza.
+A bővítményfájl állapota sub állapota és együtt a hibával kapcsolatos részletes és a leírás a egyes kiterjesztések futtatása sikeres/meghiúsult állapotkódok tartalmazza.
 ```
 C:\Packages\Plugins\{Extension_Name}\{Extension_Version}\Status\{0}.Status  -> {0} being the sequence number
 ```

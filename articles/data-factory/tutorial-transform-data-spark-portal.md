@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/10/2018
 ms.author: douglasl
-ms.openlocfilehash: be9ed1d840eab5478dee4d212705211c0967bdbd
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 0f8b2d3040a6fb5aeaa03a9508fbf17393152a9f
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427967"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449529"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Adatátalakítás a felhőben egy Spark-tevékenység az Azure Data Factoryban való használatával
 Ebben az oktatóanyagban egy Azure Data Factory-folyamatot hoz létre az Azure Portal használatával. Ez a folyamat egy Spark-tevékenységgel és egy igény szerinti Azure HDInsight társított szolgáltatással alakítja át az adatokat. 
@@ -32,12 +32,15 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 * **Egy Azure Storage-fiók**. Létrehoz egy Python-szkriptet és egy bemeneti fájlt, és feltölti őket az Azure Storage-be. A Spark-program kimenetét ebben a tárfiókban tárolja a rendszer. Az igény szerinti Spark-fürt ugyanezt a tárfiókot használja elsődleges tárterületként.  
 
 > [!NOTE]
 > A HdInsight csak az általános célú, standard szintű tárfiókokat támogatja. Győződjön meg róla, hogy nem prémium szintű tárfiókot vagy blobfiókot adott meg.
 
-* **Azure PowerShell**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikkben szereplő utasításokat.
+* **Azure PowerShell**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-Az-ps) ismertető cikkben szereplő utasításokat.
 
 
 ### <a name="upload-the-python-script-to-your-blob-storage-account"></a>Python-szkript feltöltése a Blob Storage-fiókba

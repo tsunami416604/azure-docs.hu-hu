@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 449df8e49eb63cb6e52cd4ec25dafc2bb0851347
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 89623adbddce07cbc3c3ead811f5174d108c9b0e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241770"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444786"
 ---
 # <a name="configure-an-external-listener-for-always-on-availability-groups-in-azure"></a>Always On rendelkezésre állási csoportok külső figyelő konfigurálása az Azure-ban
 > [!div class="op_single_selector"]
@@ -123,11 +123,11 @@ A rendelkezésre állási csoport figyelőjének létrehozása két lépésben. 
 [!INCLUDE [Test-Listener-Within-VNET](../../../../includes/virtual-machines-ag-listener-test.md)]
 
 ## <a name="test-the-availability-group-listener-over-the-internet"></a>A rendelkezésre állási csoport figyelőjének tesztelése (az interneten keresztül)
-Ahhoz, hogy hozzáférhessen a figyelő a virtuális hálózaton kívülről érkező, kell használnia terheléselosztás külső/nyilvános (ebben a témakörben ismertetett) ILB, ahelyett, hogy ez az egyetlen érhető el. az azonos virtuális hálózaton belül. A kapcsolati karakterláncban adja meg a felhőszolgáltatás neve. Ha például egy felhőalapú szolgáltatás nevű kellett *mycloudservice*, az sqlcmd utasítás a következő lenne:
+Ahhoz, hogy hozzáférhessen a figyelő a virtuális hálózaton kívülről érkező, kell használnia terheléselosztás külső/nyilvános (ebben a témakörben ismertetett) helyett ILB, azaz csak ugyanazon a Vneten belül elérhető. A kapcsolati karakterláncban adja meg a felhőszolgáltatás neve. Ha például egy felhőalapú szolgáltatás nevű kellett *mycloudservice*, az sqlcmd utasítás a következő lenne:
 
     sqlcmd -S "mycloudservice.cloudapp.net,<EndpointPort>" -d "<DatabaseName>" -U "<LoginId>" -P "<Password>"  -Q "select @@servername, db_name()" -l 15
 
-Ellentétben az előző példában SQL-hitelesítést kell használni, mert a hívó nem tudja kezelni a windows-hitelesítés az interneten keresztül. További információkért lásd: [Always On rendelkezésre állási csoportot az Azure virtuális Gépen: ügyfél-kapcsolódási forgatókönyvek](https://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx). SQL-hitelesítés használata esetén győződjön meg arról, hogy mindkét replikákon ugyanazokat a bejelentkezési adatokat létrehozni. Rendelkezésre állási csoportok használatának hibaelhárítással kapcsolatos további információkért lásd: [bejelentkezések leképezése, vagy használja tartalmazott SQL adatbázis-felhasználó más replikák csatlakozhat, és a rendelkezésre állási adatbázisok leképezése](https://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx).
+Ellentétben az előző példában SQL-hitelesítést kell használni, mert a hívó nem tudja kezelni a windows-hitelesítés az interneten keresztül. További információkért lásd: [Always On rendelkezésre állási csoportot az Azure virtuális Gépen: Ügyfél kapcsolódási forgatókönyvek](https://blogs.msdn.com/b/sqlcat/archive/2014/02/03/alwayson-availability-group-in-windows-azure-vm-client-connectivity-scenarios.aspx). SQL-hitelesítés használata esetén győződjön meg arról, hogy mindkét replikákon ugyanazokat a bejelentkezési adatokat létrehozni. Rendelkezésre állási csoportok használatának hibaelhárítással kapcsolatos további információkért lásd: [bejelentkezések leképezése, vagy használja tartalmazott SQL adatbázis-felhasználó más replikák csatlakozhat, és a rendelkezésre állási adatbázisok leképezése](https://blogs.msdn.com/b/alwaysonpro/archive/2014/02/19/how-to-map-logins-or-use-contained-sql-database-user-to-connect-to-other-replicas-and-map-to-availability-databases.aspx).
 
 Ha az AlwaysOn-replikákat külön alhálózatokon vannak, az ügyfelek meg kell adnia **MultisubnetFailover = True** a kapcsolati karakterláncban. Az eredmény párhuzamos kapcsolódási kísérletek a replikákat a különböző alhálózatokon. Vegye figyelembe, hogy ez az eset tartalmazza-e a központi telepítés régiók közötti Always On rendelkezésre állási csoportot.
 

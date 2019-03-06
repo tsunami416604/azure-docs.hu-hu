@@ -8,12 +8,12 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: 83bcdfa1de3968fbb6fdf427879d84f917610c42
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 6feeaeb71818f355c0d91d5b49b4162a33682fa0
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339895"
+ms.locfileid: "57408751"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Gyors útmutató: Azure PowerShell-lel a Stream Analytics-feladat létrehozása
 
@@ -117,7 +117,7 @@ Az alábbi Azure PowerShell-kódblokkot parancsokat használja a feladat kimenet
 
 2. Kérje le a `$storageAccount.Context` nevű tárfiókkörnyezetet, amely meghatározza a használni kívánt tárfiókot. Ha a tárfiókok használatával történő munka során erre a környezetre hivatkozik, nem kell minden alkalommal megadnia a hitelesítő adatokat.
 
-3. Hozzon létre egy storage tárolót [New-AzStorageContainer](https://docs.microsoft.com/powershell/module/azure.storage/new-AzStoragecontainer).
+3. Hozzon létre egy storage tárolót [New-AzStorageContainer](https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontainer).
 
 4. A tárfiók hívóbetűjét, a kód által használt kimeneti adattípus másolja, majd mentse a kulcsot később létrehozása a streamelési feladat kimenetének a.
 

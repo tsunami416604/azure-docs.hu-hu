@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: xpouyat
-ms.openlocfilehash: 1954ccf07badbd4632c653bb1af4d6e96153e1fb
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6aefa6b8745d14f59981520660b1f4c1323f8617
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000073"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456159"
 ---
 # <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Licencelési Microsoft® Smooth Streaming Ügyfélportolási készlet 
 ## <a name="overview"></a>Áttekintés
@@ -125,7 +125,7 @@ Ideiglenes és végső SSPK licenctulajdonosok esetében technikai kérdéseket 
 * Dongguan digitális AV technológiai vállalat esetében, Ltd.
 * EchoStar megvásárlásával Corporation
 * Enseo, Inc.
-* Filmflex filmek korlátozott
+* FilmFlex filmek korlátozott
 * Fluendo S.A.
 * Gibson Innovációkat korlátozott
 * Haier információk Applicantion S.R.L

@@ -16,12 +16,12 @@ ms.date: 05/21/2018
 ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc032a15a2938333cd25d05c271187f218f9be4d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 995f9d2bc0ad0a6b985790d75a63866a3a2d55bc
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206803"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445364"
 ---
 # <a name="cant-access-this-corporate-application-error-when-using-an-application-proxy-application"></a>Az Application Proxy-alkalmazások használata esetén "Nem tud hozzáférni a vállalati alkalmazás" hiba
 
@@ -69,7 +69,7 @@ Ha Ön kijelenti, hogy a felhasználó hozzá van rendelve az alkalmazás az Azu
 
 ## <a name="check-the-applications-internal-url"></a>Az alkalmazás belső URL-cím ellenőrzése
 
-Első gyors lépésben ellenőrizze és javítsa ki a belső URL-cím megnyitásával az alkalmazást **vállalati alkalmazások**, majd válassza a **alkalmazásproxy** menü. Ellenőrizze, hogy a belső URL-cím a helyszíni hálózatból az alkalmazás eléréséhez használt.
+Első gyors lépésben ellenőrizze és javítsa ki a belső URL-cím megnyitásával az alkalmazást **vállalati alkalmazások**, majd válassza a **alkalmazásproxy** menü. Ellenőrizze, hogy a belső URL-címe, a helyszíni hálózat az alkalmazás eléréséhez használt.
 
 ## <a name="check-the-application-is-assigned-to-a-working-connector-group"></a>Ellenőrizze, hogy az alkalmazás hozzá van rendelve egy működő Összekötőcsoport
 
@@ -85,7 +85,7 @@ Ellenőrizze az alkalmazás hozzá van rendelve egy működő Összekötőcsopor
 
   * Egy aktív összekötőt áthelyezni a csoportot: Ha egy aktív összekötőt, amely ehhez a csoporthoz kell tartoznia, és a háttérrendszer célalkalmazásnak üzemel, továbbléphet az összekötő a hozzárendelt csoportba. Ehhez kattintson arra az összekötőre. A "Összekötőcsoport" mezőjében használatával a listából válassza ki a megfelelő csoportba, és kattintson a Mentés gombra.
 
-  * Az adott csoporthoz új összekötő letöltéséhez: A hivatkozásra kattintva megjelenik ezen az oldalon [új összekötő letöltéséhez](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). Telepítse az egy gépen a közvetlen üzemel, a háttéralkalmazás. Typicall, az összekötő ugyanarra a kiszolgálóra, az alkalmazás telepítve van. A letöltési hivatkozás összekötő használatával a célgépen alakzatot összekötő letöltéséhez. Ezután kattintson az összekötőt, és a "Összekötő csoport" legördülő menü használatával ellenőrizze, hogy a megfelelő csoporthoz tartozik.
+  * Az adott csoporthoz új összekötő letöltéséhez: A hivatkozásra kattintva megjelenik ezen az oldalon [új összekötő letöltéséhez](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/Download). Telepítse az egy gépen a közvetlen üzemel, a háttéralkalmazás. Általában az összekötő telepítve van az alkalmazás ugyanazon a kiszolgálón. A letöltési hivatkozás összekötő használatával a célgépen alakzatot összekötő letöltéséhez. Ezután kattintson az összekötőt, és a "Összekötő csoport" legördülő menü használatával ellenőrizze, hogy a megfelelő csoporthoz tartozik.
 
   * Az inaktív csatlakozó vizsgálata: Egy összekötő akkor jeleníti meg inaktívként, ha az nem érhető el a szolgáltatást. Ez a hiba általában néhány szükséges portokat nem blokkolja miatt nem lehetséges. A probléma megoldásához, helyezze át a "Ellenőrizze minden szükséges port szerepel az engedélyezési listán."
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 07/05/2018
 ms.author: shlo
-ms.openlocfilehash: d103061289991fb149b7c8d76430b37a6b385f80
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 21e66f962d1cc0bbbe8d780a702216d40abe2836
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064372"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453473"
 ---
 # <a name="pipeline-execution-and-triggers-in-azure-data-factory"></a>Folyamat-végrehajtás és eseményindítók az Azure Data Factoryban
 > [!div class="op_single_selector" title1="Select the version of the Data Factory service that you're using:"]
@@ -94,10 +94,13 @@ https://management.azure.com/subscriptions/mySubId/resourceGroups/myResourceGrou
 A teljes minta: [a rövid útmutató: Adat-előállító létrehozása a REST API-val](quickstart-create-data-factory-rest-api.md).
 
 ### <a name="azure-powershell"></a>Azure PowerShell
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 A következő mintaparancs bemutatja, hogyan futtathatja manuálisan a folyamatot az Azure PowerShell használatával:
 
 ```powershell
-Invoke-AzureRmDataFactoryV2Pipeline -DataFactory $df -PipelineName "Adfv2QuickStartPipeline" -ParameterFile .\PipelineParameters.json
+Invoke-AzDataFactoryV2Pipeline -DataFactory $df -PipelineName "Adfv2QuickStartPipeline" -ParameterFile .\PipelineParameters.json
 ```
 
 A kérelem hasznos adatainak törzsébe adja át a paramétereket. A .NET SDK, az Azure PowerShell és a Python SDK esetében az értékeket a hívás argumentumaként átadott szótárba adja át:
@@ -274,7 +277,7 @@ Az alábbi táblázat nagy vonalakban áttekintést nyújt az eseményindítóva
 
 ### <a name="schema-defaults-limits-and-examples"></a>Séma alapértékei, korlátai és példái
 
-| JSON-tulajdonság | Típus | Szükséges | Alapértelmezett érték | Érvényes értékek | Példa |
+| JSON-tulajdonság | Typo | Szükséges | Alapértelmezett érték | Érvényes értékek | Példa |
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | **startTime** | sztring | Igen | None | ISO 8601 dátum-idő értékek | `"startTime" : "2013-01-09T09:30:00-08:00"` |
 | **recurrence** | objektum | Igen | None | Recurrence objektum | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
@@ -377,6 +380,6 @@ Az alábbi táblázatban az átfedésmentes ablakos eseményindító és az üte
 ## <a name="next-steps"></a>További lépések
 Lásd az alábbi oktatóanyagokat:
 
-- [Gyors útmutató: Adat-előállító létrehozása a .NET SDK-val](quickstart-create-data-factory-dot-net.md)
+- [Rövid útmutató: Adat-előállító létrehozása a .NET SDK-val](quickstart-create-data-factory-dot-net.md)
 - [Ütemezési eseményindító létrehozása](how-to-create-schedule-trigger.md)
 - [Átfedésmentes ablakos eseményindító létrehozása](how-to-create-tumbling-window-trigger.md)

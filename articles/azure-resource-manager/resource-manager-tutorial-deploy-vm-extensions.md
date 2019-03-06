@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 9361c8b17d1b43b4ef63aca6ab4660571efddcde
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: a1df94c7157823a4d7dcdcf652b1c7c926f4dbba
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492787"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57406507"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>Oktatóanyag: Az Azure Resource Manager-sablonok virtuálisgép-bővítmények telepítése
 
@@ -108,7 +108,7 @@ Adjon hozzá a meglévő sablonhoz egy virtuális gépi bővítmény erőforrás
 
 Az erőforrás-definíció kapcsolatos további információkért lásd: a [kiterjesztéshivatkozásának](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines/extensions). A következők a fontosabb elemek:
 
-* **Név**: A bővítmény erőforrás egy gyermek-erőforrás a virtuális gép objektum, mert a név rendelkeznie kell a virtuális gépnév előtagja. Tekintse meg a [gyermekerőforrásokkal](./resource-manager-templates-resources.md#child-resources) kapcsolatos részt.
+* **Név**: A bővítmény erőforrás egy gyermek-erőforrás a virtuális gép objektum, mert a név rendelkeznie kell a virtuális gépnév előtagja. Tekintse meg a [gyermekerőforrásokkal](./resource-group-authoring-templates.md#child-resources) kapcsolatos részt.
 * **dependsOn**: A virtuális gép létrehozása után a bővítmény erőforrás létrehozása
 * **fileUris**: A helyek, a parancsfájl-fájlok tárolására. Ha nem kíván használni a megadott hely, az értékek frissíteni szeretné.
 * **commandToExecute**: Ez a parancs a parancsfájl meghívja.  

@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7f221b815b6800f635c07525fdbd332ac508786
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5895ad1f1452b5a0c13765821c5b623472a0bb1e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171536"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57447115"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Naplózott tevékenységekre vonatkozó jelentések az Azure Active Directory portálon 
 
@@ -41,7 +41,7 @@ Ez a cikk áttekintést, a naplózási jelentésben.
  
 ## <a name="who-can-access-the-data"></a>Ki férhet hozzá az adatokhoz?
 
-* A felhasználók a **biztonsági rendszergazdai**, **biztonsági olvasó** vagy **globális rendszergazdai** szerepkörök
+* A felhasználók a **biztonsági rendszergazda**, **biztonsági olvasó** vagy **globális rendszergazdai** szerepkörök
 * Emellett minden felhasználója (nem rendszergazda) láthatja-e a saját naplózási tevékenységek
 
 ## <a name="audit-logs"></a>Naplók

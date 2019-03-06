@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: seguler
-ms.openlocfilehash: 5bafceca09cfe5a981365a39e4f3803b5865ce73
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: abe3d79f352ef04abf8f90f50824b6426457c2a1
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754815"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57445466"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Gyors útmutató: Blobok feltöltése, letöltése, és lista Go használatával
 
@@ -208,7 +208,7 @@ for marker := (azblob.Marker{}); marker.NotDone(); {
 
 ### <a name="download-the-blob"></a>A blob letöltése
 
-A blobok letöltéséhez használja a **Download** alacsony szintű függvényt a BlobURL-eken. A függvény egy **DownloadResponse** struktúrát ad vissza. A **Body** függvény a struktúrán való futtatásával egy **RetryReader** streamet kap az adatok olvasásához. Ha az olvasás során egy kapcsolat meghiúsul, a függvény további kéréseket kezdeményez a kapcsolat újbóli létesítésére és az olvasás folytatására. Ha a RetryReaderOption MaxRetryRequests értékét 0-ra állítja (ez az alapértelmezett érték), a rendszer az eredeti kéréstörzset adja vissza, és nem próbálkozik újra. Másik megoldásként használhatja a magas szintű **DownloadBlobToBuffer** vagy **DownloadBlobToFile** API-t is a kód egyszerűsítése érdekében.
+A blobok letöltéséhez használja a **Download** alacsony szintű függvényt a BlobURL-eken. A függvény egy **DownloadResponse** struktúrát ad vissza. A **Body** függvény a struktúrán való futtatásával egy **RetryReader** streamet kap az adatok olvasásához. Kapcsolat beolvasás során nem sikerül, ha fog létrehozni, akkor további kérések a kapcsolatot, és olvassa tovább. Ha a RetryReaderOption MaxRetryRequests értékét 0-ra állítja (ez az alapértelmezett érték), a rendszer az eredeti kéréstörzset adja vissza, és nem próbálkozik újra. Másik megoldásként használhatja a magas szintű **DownloadBlobToBuffer** vagy **DownloadBlobToFile** API-t is a kód egyszerűsítése érdekében.
 
 Az alábbi kód a **Download** függvény használatával tölti le a blobot. A blob tartalmát a rendszer egy pufferbe írja, és megjeleníti a konzolon.
 

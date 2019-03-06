@@ -7,7 +7,7 @@ author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 7284dfb6-df62-41f1-a4a4-1b8322b7ef44
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24f816a6629ef561067f5a40ba15064b98b34c99
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 8e588dc0e2821a1dcc3e6bb424752b5ce4d7a176
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871434"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448050"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-accredible"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Accredible
 
@@ -51,7 +51,7 @@ Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri b
 
 Az Azure AD integrálása a Accredible konfigurálásához hozzá kell Accredible a katalógusból a felügyelt SaaS-alkalmazások listájára.
 
-**Accredible hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+**A katalógusból Accredible hozzáadásához tegye a következőket:**
 
 1. Az a **[az Azure portal](https://portal.azure.com)**, kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
 
@@ -189,7 +189,7 @@ Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés 
 
 ### <a name="create-accredible-test-user"></a>Accredible tesztfelhasználó létrehozása
 
-Ebben a szakaszban egy felhasználói Britta Simon nevű Accredible hoz létre. Kíván küldeni a felhasználó emailid való [Accredible támogatási csapatának](mailto:support@accredible.com), akkor ellenőrizze az e-mailt, és a, a meghívó e-mail küldése, hogy a felhasználó accredible platform adhat hozzá.
+Ebben a szakaszban egy felhasználói Britta Simon nevű Accredible hoz létre. Kíván küldeni a felhasználó e-mail-azonosító, [Accredible támogatási csapatának](mailto:support@accredible.com), akkor ellenőrizze az e-mailt, és a, a meghívó e-mail küldése, hogy a felhasználó accredible platform adhat hozzá.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 

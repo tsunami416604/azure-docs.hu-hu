@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: douglasl
-ms.openlocfilehash: e643dc2167457b9dc3183e101e816b3a1eb8f052
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 4496a9fed34523defae07608b26de710ed58a333
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54422457"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57443902"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure virtuális hálózaton lévő adatok átalakítása Hive-tevékenység segítségével az Azure Data Factoryben
 Ebben az oktatóanyagban az Azure PowerShell-lel hoz létre egy Data Factory-folyamatot, amely egy Azure virtuális hálózaton (VNET) lévő HDInsight-fürtön futó Hive-tevékenységgel alakítja át az adatokat. Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
@@ -33,6 +33,9 @@ Ebben az oktatóanyagban az Azure PowerShell-lel hoz létre egy Data Factory-fol
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 - **Azure Storage-fiók** Létrehoz egy Hive-szkriptet, és feltölti az Azure Storage-ba. A Hive-szkript kimenetét ebben a Storage-fiókban tárolja a rendszer. A példában a HDInsight-fürt ezt az Azure Storage-fiókot használja elsődleges tárolóként. 
 - **Egy Azure virtuális hálózat.** Ha nem rendelkezik Azure virtuális hálózattal, hozzon létre egyet [ezeket az utasításokat](../virtual-network/quick-create-portal.md) követve. Ebben a példában a HDInsight egy Azure virtuális hálózaton található. Itt látható az Azure virtuális hálózat egy példa konfigurációja. 
 
@@ -40,7 +43,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 - **HDInsight-fürt.** Hozzon létre egy HDInsight-fürtöt, és csatlakoztathatja azt a következő Ez a cikk az előző lépésben létrehozta a virtuális hálózatot: [Az Azure Virtual Network használata Azure HDInsight kiterjesztése](../hdinsight/hdinsight-extend-hadoop-virtual-network.md). Itt látható a virtuális hálózaton található HDInsight egy példa konfigurációja. 
 
     ![HDInsight virtuális hálózaton](media/tutorial-transform-data-using-hive-in-vnet/hdinsight-in-vnet-configuration.png)
-- **Azure PowerShell**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikkben szereplő utasításokat.
+- **Azure PowerShell**. Kövesse [az Azure PowerShell telepítését és konfigurálását](/powershell/azure/install-Az-ps) ismertető cikkben szereplő utasításokat.
 
 ### <a name="upload-hive-script-to-your-blob-storage-account"></a>Hive-szkript feltöltése Blob Storage-fiókba
 
@@ -93,27 +96,27 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
     Futtassa a következő parancsot, és adja meg az Azure Portalra való bejelentkezéshez használt felhasználónevet és jelszót.
         
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```        
     Futtassa a következő parancsot a fiókhoz tartozó előfizetések megtekintéséhez.
 
     ```powershell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```
     Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje le a **SubscriptionId** kifejezést az Azure-előfizetés azonosítójára:
 
     ```powershell
-    Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"    
+    Select-AzSubscription -SubscriptionId "<SubscriptionId>"    
     ```  
 3. Hozza létre az erőforráscsoportot: Ha még nem létezik már az előfizetésében ADFTutorialResourceGroup. 
 
     ```powershell
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location "East Us" 
+    New-AzResourceGroup -Name $resourceGroupName -Location "East Us" 
     ```
 4. Hozza létre az adat-előállítót. 
 
     ```powershell
-     $df = Set-AzureRmDataFactoryV2 -Location EastUS -Name $dataFactoryName -ResourceGroupName $resourceGroupName
+     $df = Set-AzDataFactoryV2 -Location EastUS -Name $dataFactoryName -ResourceGroupName $resourceGroupName
     ```
 
     A kimenet megtekintéséhez futtassa a következő parancsot: 
@@ -128,13 +131,13 @@ Ebben a szakaszban egy saját üzemeltetésű integrációs modult hozhat létre
 1. Saját üzemeltetésű integrációs modul létrehozása Használjon egy egyedi nevet, amennyiben már létezne egy integrációs modul ezen a néven.
 
    ```powershell
-   Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted
+   Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted
    ```
     Ez a parancs létrehozza a saját üzemeltetésű integrációs modul logikai regisztrációját. 
 2. A PowerShell-lel kérje le a hitelesítési kulcsokat a saját üzemeltetésű integrációs modul regisztrálásához. Másolja be az egyik kulcsot a saját üzemeltetésű integrációs modul regisztrálásához.
 
    ```powershell
-   Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName | ConvertTo-Json
+   Get-AzDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName | ConvertTo-Json
    ```
 
    Itt látható a minta kimenete: 
@@ -233,12 +236,12 @@ A PowerShell-ben váltson arra a mappára, ahol létrehozta a JSON-fájlokat, é
 2. Futtassa a következő parancsot egy Azure Storage társított szolgáltatás létrehozásához. 
 
     ```powershell
-    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "MyStorageLinkedService" -File "MyStorageLinkedService.json"
+    Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "MyStorageLinkedService" -File "MyStorageLinkedService.json"
     ```
 3. Futtassa a következő parancsot egy Azure HDInsight társított szolgáltatás létrehozásához. 
 
     ```powershell
-    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "MyHDInsightLinkedService" -File "MyHDInsightLinkedService.json"
+    Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "MyHDInsightLinkedService" -File "MyHDInsightLinkedService.json"
     ```
 
 ## <a name="author-a-pipeline"></a>Folyamat létrehozása
@@ -284,7 +287,7 @@ Váltson arra a mappára, ahol létrehozta a JSON-fájlokat, és futtassa a köv
 
 
 ```powershell
-Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name $pipelineName -File "MyHivePipeline.json"
+Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name $pipelineName -File "MyHivePipeline.json"
 ```
 
 ## <a name="start-the-pipeline"></a>A folyamat elindítása 
@@ -292,13 +295,13 @@ Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGrou
 1. Folyamat futásának indítása Így megőrizheti a folyamat futásának azonosítóját későbbi monitorozás céljából.
 
     ```powershell
-    $runId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName
+    $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName
    ```
 2. A folyamatfuttatás állapotának a befejezésig való folyamatos ellenőrzéséig futtassa az alábbi szkriptet.
 
     ```powershell
     while ($True) {
-        $result = Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
+        $result = Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
 
         if(!$result) {
             Write-Host "Waiting for pipeline to start..." -foregroundcolor "Yellow"

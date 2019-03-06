@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: ff1d873b44f91f64a114a6da01091bbd3aa01663
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 8131806aa741c3f2c347599f857f45ade392d90e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424812"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57451637"
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Oktatóanyag: Adatok másolása helyszíni SQL Server-adatbázisból Azure Blob Storage-tárolóba
 Ebben az oktatóanyagban az Azure PowerShell használatával egy Data Factory-folyamatot hozunk létre az adatok egy helyszíni SQL Server-adatbázisból egy Azure Blob-tárolóba történő másolására. Létrehozhat és alkalmazhat egy saját üzemeltetésű integrációs modult, amely adatokat helyez át a helyszíni és a felhőalapú adattárolók között. 
@@ -112,15 +112,10 @@ Ebben a szakaszban egy **adftutorial** nevű blobtárolót hoz létre az Azure B
 ### <a name="windows-powershell"></a>Windows PowerShell
 
 #### <a name="install-azure-powershell"></a>Az Azure PowerShell telepítése
-Ha még nincs a gépén, telepítse az Azure PowerShell legújabb verzióját. 
 
-1. Lépjen az [Azure SDK letöltések](https://azure.microsoft.com/downloads/) lapjára. 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-1. A **Parancssori eszközök** terület **PowerShell** szakaszában kattintson a **Telepítés Windows rendszeren** elemre. 
-
-1. Futtassa az MSI-fájlt az Azure PowerShell telepítéséhez. 
-
-Részletes információk: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/azurerm/install-azurerm-ps). 
+Ha még nincs a gépén, telepítse az Azure PowerShell legújabb verzióját. Részletes információk: [Az Azure PowerShell telepítése és konfigurálása](/powershell/azure/install-Az-ps). 
 
 #### <a name="log-in-to-powershell"></a>Bejelentkezés a PowerShellbe
 
@@ -131,13 +126,13 @@ Részletes információk: [Az Azure PowerShell telepítése és konfigurálása]
 1. Futtassa a következő parancsot, majd adja meg az Azure Portalra való bejelentkezéshez használt Azure-beli felhasználói nevét és jelszavát:
        
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```        
 
 1. Ha több Azure-előfizetéssel rendelkezik, futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. Cserélje le a **SubscriptionId** kifejezést az Azure-előfizetés azonosítójára:
 
     ```powershell
-    Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"       
+    Select-AzSubscription -SubscriptionId "<SubscriptionId>"    
     ```
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
@@ -151,7 +146,7 @@ Részletes információk: [Az Azure PowerShell telepítése és konfigurálása]
 1. Futtassa az alábbi parancsot az Azure-erőforráscsoport létrehozásához: 
 
     ```powershell
-    New-AzureRmResourceGroup $resourceGroupName $location
+    New-AzResourceGroup $resourceGroupName $location
     ``` 
 
     Ha az erőforráscsoport már létezik, előfordulhat, hogy nem kívánja felülírni. Rendeljen egy másik értéket a `$resourceGroupName` változóhoz, majd futtassa újra a parancsot.
@@ -171,10 +166,10 @@ Részletes információk: [Az Azure PowerShell telepítése és konfigurálása]
     $location = "East US"
     ```  
 
-1. Az adat-előállító létrehozásához futtassa az alábbi `Set-AzureRmDataFactoryV2`-parancsmagot: 
+1. Az adat-előállító létrehozásához futtassa az alábbi `Set-AzDataFactoryV2`-parancsmagot: 
     
     ```powershell       
-    Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $location -Name $dataFactoryName 
+    Set-AzDataFactoryV2 -ResourceGroupName $resourceGroupName -Location $location -Name $dataFactoryName 
     ```
 
 > [!NOTE]
@@ -201,7 +196,7 @@ Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hoz
 1. Hozzon létre egy saját üzemeltetésű integrációs modult. 
 
     ```powershell
-    Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $integrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
+    Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $integrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
     ``` 
     Itt látható a minta kimenete:
 
@@ -217,7 +212,7 @@ Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hoz
 1. Futtassa az alábbi parancsot a létrehozott Integration Runtime állapotának lekéréséhez:
 
     ```powershell
-   Get-AzureRmDataFactoryV2IntegrationRuntime -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Status
+   Get-AzDataFactoryV2IntegrationRuntime -name $integrationRuntimeName -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Status
     ```
 
     Itt látható a minta kimenete:
@@ -242,7 +237,7 @@ Ebben a szakaszban egy saját üzemeltetésű Integration Runtime átjárót hoz
 1. Futtassa az alábbi parancsot a *hitelesítési kulcsok* lekéréséhez, hogy a saját üzemeltetésű Integration Runtime átjárót regisztrálhassa a Data Factory-szolgáltatásban a felhőben. Másolja be az egyik kulcsot (idézőjelek nélkül) a saját üzemeltetésű Integration Runtime regisztrálásához, amelyet a következő lépésben telepíteni fog a gépére. 
 
     ```powershell
-    Get-AzureRmDataFactoryV2IntegrationRuntimeKey -Name $integrationRuntimeName -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName | ConvertTo-Json
+    Get-AzDataFactoryV2IntegrationRuntimeKey -Name $integrationRuntimeName -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName | ConvertTo-Json
     ```
     
     Itt látható a minta kimenete:
@@ -345,10 +340,10 @@ Ebben a lépésben az Azure Storage-fiókot társítja az adat-előállítóval.
 
 1. A PowerShellben váltson a *C:\ADFv2Tutorial* mappára.
 
-1. Futtassa a `Set-AzureRmDataFactoryV2LinkedService` parancsmagot az AzureStorageLinkedService társított szolgáltatás létrehozásához: 
+1. Futtassa a `Set-AzDataFactoryV2LinkedService` parancsmagot az AzureStorageLinkedService társított szolgáltatás létrehozásához: 
 
    ```powershell
-   Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
+   Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "AzureStorageLinkedService" -File ".\AzureStorageLinkedService.json"
    ```
 
    Itt látható egy mintakimenet:
@@ -423,17 +418,17 @@ Ebben a lépésben a helyszíni SQL Server-példányt társítja az adat-előál
     > - A fájl mentése előtt a **\<servername>**, **\<databasename>**, **\<username>** és **\<password>** értékeket cserélje le az SQL Server-példány értékeire.
     > - Ha fordított perjel karaktert (\\) kell használnia a felhasználói fiók vagy a kiszolgáló nevében, használja előtte a feloldójelet (\\). Használja például a *sajáttartomány\\\\sajátfelhasználó* értéket. 
 
-1. A bizalmas adatok (felhasználónév, jelszó stb.) titkosításához futtassa a `New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential` parancsmagot.  
+1. A bizalmas adatok (felhasználónév, jelszó stb.) titkosításához futtassa a `New-AzDataFactoryV2LinkedServiceEncryptedCredential` parancsmagot.  
     A titkosítás a hitelesítő adatokat az adatvédelmi API (DPAPI) segítségével titkosítja. A titkosított hitelesítő adatok tárolása a saját üzemeltetésű integrációs modul csomópontján helyileg történik (a helyi gépen). A kimenő hasznos adatok átirányíthatóak egy másik JSON-fájlba (ebben az esetben az *encryptedLinkedService.json* fájlba), amely titkosított hitelesítő adatokat tartalmaz.
     
    ```powershell
-   New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -IntegrationRuntimeName $integrationRuntimeName -File ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json
+   New-AzDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -IntegrationRuntimeName $integrationRuntimeName -File ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json
    ```
 
 1. Futtassa az alábbi parancsot, amely létrehozza az EncryptedSqlServerLinkedService fájlt:
 
    ```powershell
-   Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "EncryptedSqlServerLinkedService" -File ".\encryptedSqlServerLinkedService.json"
+   Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -Name "EncryptedSqlServerLinkedService" -File ".\encryptedSqlServerLinkedService.json"
    ```
 
 
@@ -475,10 +470,10 @@ Ebben a lépésben megadhat egy adatkészletet, amely az SQL Server-adatbázisp�
     }
     ```
 
-1. Az SqlServerDataset adatkészlet létrehozásához futtassa a `Set-AzureRmDataFactoryV2Dataset` parancsmagot.
+1. Az SqlServerDataset adatkészlet létrehozásához futtassa a `Set-AzDataFactoryV2Dataset` parancsmagot.
 
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SqlServerDataset" -File ".\SqlServerDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SqlServerDataset" -File ".\SqlServerDataset.json"
     ```
 
     Itt látható a minta kimenete:
@@ -517,10 +512,10 @@ A társított szolgáltatás azon kapcsolatadatokkal rendelkezik, amelyeket az a
     }
     ```
 
-1. Az AzureBlobDataset adatkészlet létrehozásához futtassa a `Set-AzureRmDataFactoryV2Dataset` parancsmagot.
+1. Az AzureBlobDataset adatkészlet létrehozásához futtassa a `Set-AzDataFactoryV2Dataset` parancsmagot.
 
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureBlobDataset" -File ".\AzureBlobDataset.json"
+    Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "AzureBlobDataset" -File ".\AzureBlobDataset.json"
     ```
 
     Itt látható a minta kimenete:
@@ -572,10 +567,10 @@ Ebben az oktatóanyagban létre fog hozni egy másolási tevékenységgel rendel
     }
     ```
 
-1. Az SQLServerToBlobPipeline folyamat létrehozásához futtassa a `Set-AzureRmDataFactoryV2Pipeline` parancsmagot.
+1. Az SQLServerToBlobPipeline folyamat létrehozásához futtassa a `Set-AzDataFactoryV2Pipeline` parancsmagot.
 
     ```powershell
-    Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SQLServerToBlobPipeline" -File ".\SQLServerToBlobPipeline.json"
+    Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SQLServerToBlobPipeline" -File ".\SQLServerToBlobPipeline.json"
     ```
 
     Itt látható a minta kimenete:
@@ -592,7 +587,7 @@ Ebben az oktatóanyagban létre fog hozni egy másolási tevékenységgel rendel
 Indítsa el az SQLServerToBlobPipeline folyamat futását, és őrizze meg a folyamat futtatási azonosítóját későbbi monitorozás céljából.
 
 ```powershell
-$runId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName 'SQLServerToBlobPipeline'
+$runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName 'SQLServerToBlobPipeline'
 ```
 
 ## <a name="monitor-the-pipeline-run"></a>A folyamat futásának monitorozása
@@ -601,7 +596,7 @@ $runId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -
 
     ```powershell
     while ($True) {
-        $result = Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
+        $result = Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
 
         if (($result | Where-Object { $_.Status -eq "InProgress" } | Measure-Object).count -ne 0) {
             Write-Host "Pipeline run status: In Progress" -foregroundcolor "Yellow"

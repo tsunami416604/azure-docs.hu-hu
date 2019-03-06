@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 06/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 1aca53c876b6cc982c141d74cdf727f9c966adfe
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 0ca4b3b353dd3985680fbf71afbf5ba6a35644fa
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233863"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57456278"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Adatok másolása az Azure Blob Storage-ból egy SQL Database-be az Azure Data Factory segítségével
 Ebben az oktatóanyagban az Azure Data Factory felhasználói felületének használatával hoz létre egy adat-előállítót. Az adat-előállító folyamata adatokat másol az Azure Blob Storage-ból egy SQL Database-be. Az oktatóanyagban szereplő konfigurációs minta fájlalapú adattárból relációs adattárba való másolásra vonatkozik. A forrásként és fogadóként támogatott adattárak listája a [támogatott adattárakat tartalmazó](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban található.
@@ -176,7 +176,7 @@ Ebben az oktatóanyagban először létrehozzuk a folyamatot. Ezután társítot
 1. Váltson a **Fogadó** lapra, és válassza az **+ Új** elemet egy fogadó-adatkészlet létrehozásához. 
 
     ![Fogadó-adatkészlet](./media/tutorial-copy-data-portal/new-sink-dataset-button.png)
-1. Az **Új adatkészlet** ablakban lévő keresőmezőbe írja az „SQL” kifejezést az összekötők szűréséhez, válassza az **Azure SQL Database** lehetőséget, majd válassza a **Befejezés** gombot. Ebben az oktatóanyagban adatokat másol egy SQL Database-be. 
+1. Az a **új adatkészlet** ablakban a szűrés az összekötők, majd jelölje be a keresőmezőbe írja "SQL" bemeneti **Azure SQL Database**, majd válassza ki **Befejezés**. Ebben az oktatóanyagban adatokat másol egy SQL Database-be. 
 
     ![SQL Database kiválasztása](./media/tutorial-copy-data-portal/select-azure-sql-dataset.png)
 1. Az **Általános** lap **Tulajdonságok** ablakában a **Név** alatt írja be az **OutputSqlDataset** nevet. 
@@ -232,7 +232,7 @@ Elvégezheti a folyamat hibakeresését, mielőtt összetevőket (társított sz
 
 1. A folyamat hibakereséséhez válassza a **Hibakeresés** elemet az eszköztáron. A folyamat futtatási állapotát az ablak alján található **Kimenet** lapon tekintheti meg. 
 
-1. Ha a folyamat sikeresen fut, válassza az **Összes közzététele** lehetőséget a felső eszköztárból. Ez a művelet közzéteszi a létrehozott entitásokat (adatkészleteket és folyamatokat) a Data Factoryben.
+1. Ha a folyamat sikeres, futtathatja a felső eszköztáron kattintson **összes közzététele**. Ez a művelet közzéteszi a létrehozott entitásokat (adatkészleteket és folyamatokat) a Data Factoryben.
 
     ![Közzététel](./media/tutorial-copy-data-portal/publish-button.png)
 

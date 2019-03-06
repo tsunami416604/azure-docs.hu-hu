@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/16/2019
+ms.date: 03/05/2019
 ms.author: alkohli
-ms.openlocfilehash: 43dc9edf715e20c84515d6acf4884e97c3b28184
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 16a3fab1fe2338611823a9ab559826302bd06d13
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451884"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57403838"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Oktatóanyag: Az Azure Data Box sorrend
 
@@ -38,7 +38,7 @@ Mielőtt hozzákezd, győződjön meg az alábbiakról:
 - Győződjön meg róla, hogy a Data Box szolgáltatáshoz használt előfizetés a következő típusok valamelyikébe tartozik:
     - Microsoft nagyvállalati szerződés (EA). További információk az [EA-előfizetésekről](https://azure.microsoft.com/pricing/enterprise-agreement/).
     - Felhőszolgáltató (CSP). További információk az [Azure CSP programjáról](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-overview).
-    - Microsoft Azure szponzorálás. További információk az [Azure szponzorálási programjáról](https://azure.microsoft.com/offers/ms-azr-0036p/). 
+    - Microsoft Azure szponzorálás. További információk az [Azure szponzorálási programjáról](https://azure.microsoft.com/offers/ms-azr-0036p/).
 
 - A Data Box-rendelések létrehozásához tulajdonosi vagy közreműködői jogosultsággal kell rendelkeznie az előfizetésen.
 
@@ -68,7 +68,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket az Azure Po
     |Forrásország     |   Válassza ki azt az országot, ahol az adatok jelenleg találhatók.         |
     |Azure-beli célrégió     |     Válassza ki azt az Azure-régiót, ahova át szeretné vinni az adatokat.        |
 
-5. Válassza a Data **Box** lehetőséget. A megoldás maximális kapacitása rendelésenként 80 TB. Nagyobb mennyiségű adat esetén több rendelést is létrehozhat.
+5. Válassza a Data **Box** lehetőséget. A megrendelésenkénti maximális felhasználható kapacitás esetében 786 TB. Nagyobb mennyiségű adat esetén több rendelést is létrehozhat.
 
       [![Az 1-es Data Box lehetőség kiválasztása](media/data-box-deploy-ordered/select-data-box-option1.png)](media/data-box-deploy-ordered/select-data-box-option1.png#lightbox)
 
@@ -79,8 +79,22 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket az Azure Po
     |Name (Név)     |  Adjon meg egy rövid nevet a megrendelés nyomon követéséhez. <br> A névnek 3-24 karakter hosszúságúnak kell lennie, és csak betűket, számokat és kötőjelet tartalmazhat. <br> A névnek betűvel vagy számmal kell kezdődnie és végződnie.      |
     |Erőforráscsoport     |   Használjon egy már létezőt, vagy hozzon létre újat. <br> Az erőforráscsoport az együtt kezelhető vagy üzembe helyezhető erőforrások logikai tárolója.         |
     |Azure-beli célrégió     | Válasszon ki egy régiót a tárfiókhoz. <br> További információt a [regionális elérhetőséget](data-box-overview.md#region-availability) tárgyaló témakörben talál.        |
-    |Tárfiók(ok)     | A megadott Azure-régió alapján válasszon ki egy vagy több tárfiókot a meglévő tárfiókok szűrt listájából. A Data Box legfeljebb 10 tárfiókkal köthető össze. <br> Létre hozhat egy új **Általános célú v1**, **Általános célú v2** fiókot vagy egy **Blob Storage-fiókot** is. Storage-fiókok, amelyek rendelkeznek a konfigurált szabályok nem használható. A storage-fiókok kell **engedélyezze a hozzáférést minden hálózatból elérhető** a tűzfalak és virtuális hálózatok szakaszban.|
-    
+    |A rendeltetési tárolási hely     | Válassza ki a tárfiókot, a felügyelt lemezek vagy mindkettőhöz. <br> A megadott Azure-régió alapján válasszon ki egy vagy több tárfiókot a meglévő tárfiókok szűrt listájából. A Data Box legfeljebb 10 tárfiókkal köthető össze. <br> Ezenkívül létrehozhat egy új **általános célú v1**, **általános célú v2**, vagy **Blob storage-fiók**. <br>Storage-fiókok a virtuális hálózatok támogatottak. Ahhoz, hogy a Data Box szolgáltatás-biztonságos tárfiókokkal működik, a megbízható szolgáltatások belül a tárfiók hálózati tűzfal beállításainak engedélyezése. További információkért lásd: hogyan [hozzáadása az Azure Data Box megbízható szolgáltatásként](../storage/common/storage-network-security.md#exceptions).|
+
+    Ha a storage-fiókot használ a célhelyet, az alábbi képernyőképen láthatja:
+
+    ![Data Box-rendelés storage-fiók](media/data-box-deploy-ordered/order-storage-account.png)
+
+    Data Box segítségével felügyelt lemez gyors létrehozásához a helyi VHD-ből, ha akkor is kell a következő információkat biztosítja:
+
+    |Beállítás  |Érték  |
+    |---------|---------|
+    |Erőforráscsoportok     | Hozzon létre új erőforrás-csoportokat, ha szeretne felügyelt lemez gyors létrehozásához a helyi VHD-ből. Csak akkor, ha az erőforráscsoport korábban lett létrehozva a Data Box-rendelés felügyelt lemez létrehozásakor Data Box szolgáltatás által használható egy meglévő erőforráscsoportot. <br> Adja meg pontosvesszővel elválasztva több erőforráscsoporthoz. Legfeljebb 10 az erőforrás-csoportok támogatottak.|
+
+    ![Data Box-rendelés felügyelt lemez](media/data-box-deploy-ordered/order-managed-disks.png)
+
+    Felügyelt lemezek megadott tárfiók egy átmeneti tárfiókban lesz. A Data Box szolgáltatás feltöltések a VHD-k lapként blobok, az előkészítési tárfiókból felügyelt lemezekké alakítja, és áthelyezi az erőforráscsoportok előtt. További információkért lásd: [adatok ellenőrzése a feltöltése az Azure-bA](data-box-deploy-picked-up.md#verify-data-upload-to-azure).
+
 7. A **Szállítási cím** területen adja meg a vezeték- és utónevét, a vállalata nevét és postai címét, valamint egy érvényes telefonszámot. Kattintson a **Cím ellenőrzése** elemre. A rendszer ellenőrzi, hogy a szolgáltatás elérhető-e a megadott szállítási címen. Ha a szolgáltatás elérhető a megadott szállítási címen, értesítést fog kapni erről. Kattintson a **tovább**.
 
 8. Az **Értesítési adatok** területen adja meg az e-mail-címeket. A szolgáltatás e-mail-értesítést küld a megrendelés állapotának minden változásáról a megadott e-mail-címekre.
@@ -89,7 +103,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket az Azure Po
 
 9. Tekintse át a megrendeléshez kapcsolódó **Összefoglalót** a kapcsolattartási adatokról, az értesítésekről és az adatvédelmi feltételekről. Jelölje ki az adatvédelmi feltételek elfogadásához tartozó jelölőnégyzetet.
 
-10. Kattintson a **Megrendelés** elemre. A megrendelés létrehozása néhány percet vesz igénybe. 
+10. Kattintson a **Megrendelés** elemre. A megrendelés létrehozása néhány percet vesz igénybe.
 
 
 ## <a name="track-the-order"></a>A megrendelés nyomon követése
@@ -98,9 +112,9 @@ Miután elküldte a megrendelését, annak állapotát az Azure Portalon követh
 
 Ha nem áll rendelkezésre eszköz, értesítést fog kapni. Ha van elérhető eszköz, a Microsoft kiválaszt egyet a szállításhoz, és előkészíti a csomagot. Az eszköz előkészítése során a következő műveletek lesznek végrehajtva:
 
-- SMB-megosztások létrehozása az eszközzel társított mindegyik tárfiókhoz. 
+- SMB-megosztások létrehozása az eszközzel társított mindegyik tárfiókhoz.
 - Hozzáférési hitelesítő adatok (felhasználónév és jelszó) kiosztása mindegyik megosztáshoz.
-- Az eszköz zárolásának feloldásához szükséges jelszó létrehozása. 
+- Az eszköz zárolásának feloldásához szükséges jelszó létrehozása.
 - A Data Box zárolásának célja, hogy megakadályozza az eszközhöz való illetéktelen hozzáférést a teljes eljárás során.
 
 Az eszköz előkészítésének befejeztével a portálon a megrendelés **Feldolgozott** állapotban jelenik meg.

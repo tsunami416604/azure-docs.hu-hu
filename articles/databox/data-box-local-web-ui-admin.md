@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: overview
-ms.date: 12/27/2018
+ms.date: 02/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 6df44afee26570dbdc5d64b449c4e33d6a0956ae
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: d5b6949930161f78c6edf4213df98471e96b1d42
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885710"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57404042"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box"></a>A Data Box felügyelete a helyi webes felhasználói felülettel
 
@@ -25,6 +25,7 @@ A cikk az alábbi oktatóanyagokat tartalmazza:
 
 - Támogatási csomag létrehozása
 - Az eszköz leállítása és újraindítása
+- Töltse le a AJ vagy fájlok manifest
 - Az eszköz rendelkezésre álló kapacitásának megtekintése
 - Ellenőrzőösszeg-érvényesítés kihagyása 
 
@@ -104,6 +105,8 @@ Mielőtt elkezdené, győződjön meg arról, hogy befejeződött-e a Data Box *
     |databoxe2etest_AzFile-BOM.txt    |Azure Files         |AZ SMB ÉS NFS         |
     |databoxe2etest_PageBlock_Rest-BOM.txt     |Lapblobok         |REST        |
     |databoxe2etest_BlockBlock_Rest-BOM.txt    |Blokkblobok         |REST         |
+    |mydbmdrg1_MDisk-BOM.txt    |Managed Disk         |AZ SMB ÉS NFS         |
+    |mydbmdrg2_MDisk-BOM.txt     |Managed Disk         |AZ SMB ÉS NFS         |
 
 Ez a lista után az Azure-adatközpontban és a Data Box ad vissza az Azure Storage-fiókhoz feltöltött fájlok ellenőrzésére használhatja. Az alábbiakban látható egy minta jegyzékfájl.
 

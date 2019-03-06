@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: ce19041b29d567f061dde59fbe041adf61f889a0
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 850bb044e5ab9e653bf343b4f222cf21b159bd5d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961482"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57446758"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Gyors útmutató: ASP.NET Core-alkalmazás létrehozása az Azure-alkalmazás konfigurációja
 
@@ -89,7 +89,7 @@ Hozzáadja a [Secret Manager eszköz](https://docs.microsoft.com/aspnet/core/sec
 
     SECRET Manager csak a webes alkalmazás helyi teszteléséhez használható. Amikor az alkalmazás telepítve van (például, hogy [Azure App Service](https://azure.microsoft.com/services/app-service/web)), használhat alkalmazás-beállítás (például **kapcsolati karakterláncok** App Service-ben) helyett a titkos kulcsot a kapcsolati karakterlánc Kezelő.
 
-    A titkos kulcs a konfigurációs API-val érhető el. A konfigurációs API-val a konfigurációk nevében használható a kettőspont (:) az összes támogatott platformon. Lásd [az egyes környezetek konfigurációs lehetőségeit](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0#configuration-by-environment) bemutató cikket.
+    A titkos kulcs a konfigurációs API-val érhető el. A konfigurációs API-val a konfigurációk nevében használható a kettőspont (:) az összes támogatott platformon. Lásd [az egyes környezetek konfigurációs lehetőségeit](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0) bemutató cikket.
 
 4. Nyissa meg *Program.cs* és frissítheti a `CreateWebHostBuilder` metódus meghívásával használhatja az Alkalmazáskonfigurációt az `config.AddAzureAppConfiguration()` metódust.
 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f14d29ef3d03a0899fe208d801e127ecfc28168b
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 81ce9cb2667ce9f21d7c18a92e417e47768d7efb
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889137"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57407937"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>Az Azure Automationben Python 2-csomagok kezelése
 
@@ -40,7 +40,7 @@ Az Azure automation az importálási folyamat során nem oldja meg függőségek
 
 ### <a name="manually-download"></a>Manuális letöltés
 
-A Windows 64 bites gép [python2.7](https://www.python.org/downloads/release/latest/python2) és [pip](https://pip.pypa.io/stable/installing/) telepítve, a következő parancsot egy csomagot és annak összes függőségét letöltéséhez:
+A Windows 64 bites gép [python2.7](https://www.python.org/downloads/release/latest/python2) és [pip](https://pip.pypa.io/en/stable/) telepítve, a következő parancsot egy csomagot és annak összes függőségét letöltéséhez:
 
 ```
 C:\Python27\Scripts\pip2.7.exe download -d <output dir> <package name>

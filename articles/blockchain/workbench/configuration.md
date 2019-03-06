@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 6024a11f518432b735ccec6a3d89db687aed8ae6
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: b45cd84322279d7f81cc3f047f72a75a6d898bc6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332591"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452691"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Az Azure Blockchain Workbench konfiguráció leírása
 
@@ -67,15 +67,15 @@ Egy alkalmazás üzleti logika egy állapotú gép, hol tart a művelet hatásá
 
 Egy vonatkozó példáért lásd: [konfigurációs fájl példa](#configuration-file-example).
 
-## <a name="type"></a>Típus
+## <a name="type"></a>Typo
 
 Támogatott adattípusok.
 
-| Típus | Leírás |
+| Typo | Leírás |
 |-------|-------------|
-| Cím  | Blockchain-címtípus, mint például *szerződések* vagy *felhasználók*. |
+| cím  | Blockchain-címtípus, mint például *szerződések* vagy *felhasználók*. |
 | tömb    | Egyetlen szolgáltatói tömb egész szám típusú, logikai, pénzt és időt. Tömbök lehet statikus vagy dinamikus. Használat **ElementType** az elemek a tömbön belüli adattípusának megadásához. Lásd: [konfiguráció például](#example-configuration-of-type-array). |
-| Logikai     | Logikai adattípust. |
+| logikai     | Logikai adattípust. |
 | Szerződés | Cím típusa kontraktu. |
 | Enum     | Névvel ellátott értékek sorszámozott készlete. A számbavételi típus használatakor is EnumValues listáját adja meg. Minden egyes értéke legfeljebb 255 karakter hosszúságú lehet. Érvényes értéket karakterek a következők felső és kisbetűs betűket (A – Z, a – z), és számokat (0 – 9). Lásd: [példa konfigurációját és használatát a Solidity](#example-configuration-of-type-enum). |
 | int      | Integer adattípus. |
@@ -312,7 +312,7 @@ Egy munkafolyamaton belül egyedi állapotok gyűjteménye. Minden állapot egyi
     {
       "Name": "Terminated",
       "DisplayName": "Terminated",
-      "Description": "Asset transfer has been cancelled",
+      "Description": "Asset transfer has been canceled",
       "PercentComplete": 100,
       "Style": "Failure",
       "Transitions": []
@@ -988,7 +988,7 @@ A következő konfigurációs fájl van az eszköz adatátviteli mintában:
         {
           "Name": "Terminated",
           "DisplayName": "Terminated",
-          "Description": "Asset transfer has been cancelled",
+          "Description": "Asset transfer has been canceled",
           "PercentComplete": 100,
           "Style": "Failure",
           "Transitions": []

@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 08/10/2018
+ms.date: 03/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 23a0c731eea22a772d7423bc3047af1183d55b7f
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 2cba3744180a257638aca202d44fa433a5e1a2bc
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312889"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57453405"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>A Service Bus és az AMQP 1.0-t a Java Message Service (JMS) API használata
 A speciális Message Queuing AMQP protokoll 1.0-s egy hatékony, megbízható, alkalmazásszintű üzenetkezelő protokoll, amely nagy teherbírású, többplatformos üzenetkezelési alkalmazások létrehozásához használható.
@@ -341,6 +341,16 @@ MODIFIED_FAILED = 4; -> Abandon() which increases delivery count
 MODIFIED_FAILED_UNDELIVERABLE = 5; -> Defer()
 ```
 
+## <a name="jms-topics-vs-service-bus-topics"></a>JMS Topics vs. Service Bus-üzenettémák
+Azure Service Bus-üzenettémák és előfizetések révén a Java Message Service (JMS) API-t használó egyszerű küldési biztosít, és szolgáltatásokat. Egy kényelmes választott, akkor, ha a többi üzenetközvetítők JMS megfelelő API-k, az alkalmazások portol, annak ellenére, hogy a Service Bus-témakörök eltérnek a JMS, és néhány stabilitásjavító megkövetelése. 
+
+Az Azure Service Bus-üzenettémakörök üzenetek útvonal nevesített, megosztott és tartós előfizetések az Azure Resource Management felületen, az Azure parancssori eszközök, vagy az Azure Portalon keresztül felügyelt be. Az egyes előfizetésekhez legfeljebb 2000 kijelölés szabályt, minden egyes előfordulhat, hogy rendelkezik, amelyek egy szűrési feltételt, és az SQL-szűrők is a metaadatok átalakítási művelet lehetővé teszi. Minden egyes szűrési feltétel egyezik a bemeneti üzenet tehj előfizetés másolását választja ki.  
+
+Üzenetek fogadása az előfizetések megegyezik az üzenetsorok üzenetek fogadására. Minden előfizetési csomaghoz tartozik egy társított kézbesítetlen levelek várólistájára vonatkozik, valamint automatikusan a várólistához vagy témaköröket üzenetek elküldhetők. 
+
+JMS témakörök engedélyezése az ügyfelek dinamikusan hozhat létre rövid életű és hosszú élettartamú engedélyező előfizetőknél igény szerint az üzenet választók üzenetek szűrése. Service Bus által a fiókirodát ezek az entitások nem támogatottak. SQL szűrési szabály a Service Bus szintaxisa a következő, azonban nagyon hasonlít a üzenet-választó JMS által támogatott szintaxist. 
+
+A témakör JMS közzétevő oldalon kompatibilis Service Bus, az ebben a példában látható módon, de dinamikus előfizetőink nem. A Service Bus a következő topológia kapcsolatos JMS API-k használata nem támogatott. 
 
 ## <a name="unsupported-features-and-restrictions"></a>Nem támogatott szolgáltatások és korlátozások
 A következő korlátozások érvényesek a JMS nevezetesen keresztül a Service Bus, az AMQP 1.0-s használata esetén:

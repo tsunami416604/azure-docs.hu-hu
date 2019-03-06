@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mikeray
-ms.openlocfilehash: 5e665cd0bcfdea436c2f493187c5bbea756f8f09
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 43f2694f597d99edaf127a6afd64376cca33dad2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248306"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57448152"
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>Egy Always On rendelkezésre állási csoport terheléselosztó konfigurálása az Azure-ban
 Ez a cikk bemutatja egy SQL Server Always On rendelkezésre állási csoport terheléselosztó létrehozása az Azure virtual machines szolgáltatásban, amely futtatja az Azure Resource Manager. Rendelkezésre állási csoport terheléselosztó van szükség, ha az SQL Server-példányok Azure-beli virtuális gépeken. A terheléselosztó IP-címét a rendelkezésre állási csoport figyelőjének tárolja. Ha egy rendelkezésre állási csoportban több régióban is kiterjed, minden egyes régió egy terheléselosztó van szüksége.
@@ -66,8 +66,8 @@ Először hozza létre a terheléselosztót.
    | Beállítás | Érték |
    | --- | --- |
    | **Name (Név)** |A load balancer jelölő szöveges nevét. Ha például **sqlLB**. |
-   | **Típus** |**Belső**: a legtöbb megvalósításokban belső terheléselosztó, amely lehetővé teszi az alkalmazások az adott virtuális hálózaton belül kapcsolódni a rendelkezésre állási csoporthoz.  </br> **Külső**: lehetővé teszi az alkalmazások szeretne csatlakozni a nyilvános internetkapcsolaton keresztül a rendelkezésre állási csoportot. |
-   | **Virtuális hálózat** |Válassza ki a virtuális hálózat, amely az SQL Server vendégfelhasználói szerepelnek. |
+   | **Típus** |**Belső**: A legtöbb megvalósításokban belső terheléselosztó, amely lehetővé teszi az alkalmazások az adott virtuális hálózaton belül kapcsolódni a rendelkezésre állási csoporthoz.  </br> **Külső**: Lehetővé teszi az alkalmazások szeretne csatlakozni a nyilvános internetkapcsolaton keresztül a rendelkezésre állási csoportot. |
+   | **Virtuális hálózat** |Válassza ki a virtuális hálózathoz, amelyek az SQL Server-példányokat. |
    | **Alhálózat** |Válassza ki az alhálózatot, amelyet az SQL Server-példányok szerepelnek. |
    | **IP-cím hozzárendelése** |**Static** |
    | **Magánhálózati IP-cím** |Adjon meg egy elérhető IP-címet az alhálózatról. Az IP-címet használja, a figyelő a fürt létrehozásakor. Egy PowerShell-parancsprogram, ez a cikk későbbi részében használni ezt a címet a `$ILBIP` változó. |
@@ -79,7 +79,7 @@ Először hozza létre a terheléselosztót.
 
 Az Azure létrehozza a terheléselosztóhoz. A terheléselosztó egy adott hálózati, alhálózat, erőforráscsoport és hely tartozik. Az Azure a feladat befejezése után ellenőrizze a terheléselosztó beállításai az Azure-ban. 
 
-### <a name="step-2-configure-the-back-end-pool"></a>2. lépés: Konfigurálja a háttérkészlet
+### <a name="step-2-configure-the-back-end-pool"></a>2. lépés: A háttérkészlet konfigurálása
 Az Azure meghívja a háttér-címkészletet *háttérkészlet*. Ebben az esetben a háttérkészlet a rendelkezésre állási csoport két SQL Server-példánya a címeket. 
 
 1. Az erőforráscsoportban kattintson a létrehozott terheléselosztó. 
@@ -141,8 +141,8 @@ A terheléselosztási szabályok konfigurálása, hogy a terheléselosztó hogya
    | **Protocol (Protokoll)** |**TCP** |
    | **Port** |*1433* |
    | **Háttérport** |*1433*. Rendszer figyelmen kívül hagyja ezt az értéket, mert ez a szabály használ **fix IP-(közvetlen kiszolgálói válasz)**. |
-   | **Mintavétel** |A mintavétel létrehozott nevét használja ehhez a terheléselosztóhoz. |
-   | **Munkamenet megőrzését** |**Egyik sem** |
+   | **Probe** |A mintavétel létrehozott nevét használja ehhez a terheléselosztóhoz. |
+   | **Munkamenet megőrzését** |**Nincsenek** |
    | **Üresjárat időkorlátja (perc)** |*4* |
    | **Nem fix IP (közvetlen kiszolgálói válasz)** |**Engedélyezve** |
 
@@ -226,7 +226,7 @@ Az IP-címet ad hozzá egy terheléselosztó és az Azure portal, tegye a követ
    |**Name (Név)** |A mintavétel azonosító nevet.
    |**Protocol (Protokoll)** |TCP
    |**Port** |Egy nem használt TCP-portot, amely az összes virtuális gép rendelkezésre kell állnia. Semmilyen más célra nem használható. Két figyelői nem használhatja ugyanazt a mintavételi portot. 
-   |**Intervallum** |A mintavételi kísérletek közötti idő mennyisége. Használja az alapértelmezett (5).
+   |**Intervallum** |A mintavételi kísérletek közötti idő. Használja az alapértelmezett (5).
    |**Nem kifogástalan állapot küszöbértéke** |Hány egymást követő küszöbértékeket, amelyek nem kell a virtuális gép nem megfelelő állapotúnak számít.
 
 8. Kattintson a **OK** a mintavétel mentése. 
