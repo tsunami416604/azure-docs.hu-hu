@@ -25,6 +25,9 @@
 #### [2 – Többszolgáltatású fejlesztés](multi-service-nodejs.md)
 #### [3 – Csoportos fejlesztés](team-development-nodejs.md)
 
+## Alapelvek
+### [A Dev Spaces működése](how-dev-spaces-works.md)
+
 ## Útmutató
 ### [Kubernetes-fürt létrehozása az Azure Cloud Shell-lel](how-to/create-cluster-cloud-shell.md)
 ### [Azure Dev Spaces megosztása](how-to/share-dev-spaces.md)
