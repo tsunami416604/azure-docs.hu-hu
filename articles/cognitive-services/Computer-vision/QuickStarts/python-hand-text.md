@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/21/2019
+ms.date: 03/04/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: defe3bb47ad6e6d6f8a7095f7020ad11266cfa23
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 78dfb6a78bff8aaf4fe3cc316a6614c3c4af65d2
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649101"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57433535"
 ---
 # <a name="quickstart-extract-handwritten-text-using-the-rest-api-and-python-in-computer-vision"></a>Gyors útmutató: A REST API-t és a Python használatával a Computer Vision kézzel írt szöveg kinyerése
 
-Ebben a rövid útmutatóban kézzel írt szöveget fog kinyerni egy képből a Computer Vision REST API-jának használatával. A [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) és a [Get Recognize Text Operation Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) metódussal kézzel írott szöveget észlelhet egy képen, és géppel olvasható karakterfolyamba nyerheti ki a felismert karaktereket.
+Ebben a rövid útmutatóban kézzel írt szöveget fog kinyerni egy képből a Computer Vision REST API-jának használatával. Az a [kötegelt olvasási](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) API és a [olvasási művelet eredményének](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API-t, elvégezheti a szöveg felismerése képekből a képet, majd a kivonat felismert karakterek egy számítógép felhasználható karakter streambe.
 
 > [!IMPORTANT]
-> Az [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) metódussal ellentétben a [Recognize Text](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) metódus aszinkron módon fut. Ez a metódus nem adja vissza információt a sikeres válaszok törzsében. A Recognize Text metódus ehelyett egy `Operation-Content` értékű URI-t eredményez a válasz fejlécmezőjében. Ezután meghívhatja ezt az URI-t, amely a [Get Recognize Text Operation Result](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2cf1154055056008f201) metódust képviseli, és ellenőrizheti a Recognize Text metódus állapotát, valamint lekérheti annak eredményeit.
+> Ellentétben a [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) metódus, a [kötegelt olvasási](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) metódus aszinkron módon fut. Ez a metódus nem adja vissza információt a sikeres válaszok törzsében. Ehelyett a kötegelt olvasási metódus adja vissza egy URI értékét a `Operation-Content` válasz fejléce mező. Ezt követően meghívhatja az URI, amely a [olvasási művelet eredményének](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/5be108e7498a4f9ed20bf96d) API-t, ellenőrizze az állapotát és a kötegelt olvasási metódus meghívása eredményét adja vissza.
 
 Ezt a rövid útmutatót futtathatja lépésenként egy Jupyter-notebook segítségével a [MyBinderben](https://mybinder.org). A Binder indításához válassza az alábbi gombot:
 
@@ -72,7 +72,7 @@ assert subscription_key
 # this region.
 vision_base_url = "https://westcentralus.api.cognitive.microsoft.com/vision/v2.0/"
 
-text_recognition_url = vision_base_url + "recognizeText"
+text_recognition_url = vision_base_url + "read/core/asyncBatchAnalyze"
 
 # Set image_url to the URL of an image that you want to analyze.
 image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/" + \

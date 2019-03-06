@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: bc0afcf1ac7d9e7a777d850e1b6df7b915837f3a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 1283f812799fe71ef6987dbc7fab092aed4d3417
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956874"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435133"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>IOS-mobilalkalmazásokban offline szinkronizálás engedélyezése
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -101,7 +101,7 @@ Most tegyük a tényleges szinkronizálási művelet hajtható végre, és adato
 
           if error != nil {
               // A real application would handle various errors like network conditions,
-              // server conflicts, etc via the MSSyncContextDelegate
+              // server conflicts, etc. via the MSSyncContextDelegate
               print("Error: \(error!.description)")
 
               // We will discard our changes and keep the server's copy for simplicity
@@ -143,8 +143,8 @@ A legfontosabb adatainak helyi tároló használata esetén meg kell határoznia
 Nyissa meg **QSDataModel.xcdatamodeld**. A négy tábla meghatározott--három, amelyeket az SDK-t használ, a másik használható a teendő elemek maguk:
   * MS_TableOperations: Nyomon követi a kiszolgáló szinkronizálni kell igénylő elemeket.
   * MS_TableOperationErrors: Kapcsolat nélküli szinkronizálás során esetlegesen előforduló hibák nyomon követi.
-  * MS_TableConfig: Nyomon követi az utolsó az idő az utolsó szinkronizálási művelet a pull művelet frissítése.
-  * TodoItem: Tárolja a Tennivalólista elemein. A rendszer oszlopok **createdAt**, **updatedAt**, és **verzió** nem kötelező tulajdonságai vannak.
+  * MS_TableConfig: Nyomon követi az utolsó frissítése a legutóbbi szinkronizálás művelet összes lekéréses műveletek.
+  * TodoItem: A teendők tárolja. A rendszer oszlopok **createdAt**, **updatedAt**, és **verzió** nem kötelező tulajdonságai vannak.
 
 > [!NOTE]
 > A Mobile Apps SDK fenntartja az oszlopnevek kezdődő "**``**". A rendszer oszlopok csakis ne használja ezt az előtagot. Ellenkező esetben az oszlopnevek módosítják a távoli háttérrendszer használata esetén.
@@ -159,12 +159,12 @@ A kapcsolat nélküli szinkronizálás – a szolgáltatás használatakor a ren
 
 ![MS_TableOperations tábla attribútumai][defining-core-data-tableoperations-entity]
 
-| Attribútum | Típus |
+| Attribútum | Typo |
 | --- | --- |
 | id | Egész 64 |
-| Elemazonosító | Karakterlánc |
+| itemId | String |
 | properties | A bináris adatok |
-| tábla | Karakterlánc |
+| tábla | String |
 | tableKind | Egész 16 |
 
 
@@ -172,9 +172,9 @@ A kapcsolat nélküli szinkronizálás – a szolgáltatás használatakor a ren
 
  ![MS_TableOperationErrors tábla attribútumai][defining-core-data-tableoperationerrors-entity]
 
-| Attribútum | Típus |
+| Attribútum | Typo |
 | --- | --- |
-| id |Karakterlánc |
+| id |String |
 | operationId |Egész 64 |
 | properties |A bináris adatok |
 | tableKind |Egész 16 |
@@ -183,26 +183,26 @@ A kapcsolat nélküli szinkronizálás – a szolgáltatás használatakor a ren
 
  ![][defining-core-data-tableconfig-entity]
 
-| Attribútum | Típus |
+| Attribútum | Typo |
 | --- | --- |
-| id |Karakterlánc |
-| kulcs |Karakterlánc |
-| KeyType |Egész 64 |
-| tábla |Karakterlánc |
-| érték |Karakterlánc |
+| id |String |
+| kulcs |String |
+| keyType |Egész 64 |
+| tábla |String |
+| érték |String |
 
 ### <a name="data-table"></a>Adattábla
 
 **TodoItem**
 
-| Attribútum | Típus | Megjegyzés |
+| Attribútum | Typo | Megjegyzés |
 | --- | --- | --- |
 | id | Karakterlánc, kötelezőként megjelölt |Távoli tároló az elsődleges kulcs |
 | Hajtsa végre | Logikai | TEENDŐ elem mező |
-| szöveg |Karakterlánc |TEENDŐ elem mező |
+| szöveg |String |TEENDŐ elem mező |
 | createdAt | Dátum | (nem kötelező) A Maps **createdAt** rendszertulajdonság |
 | updatedAt | Dátum | (nem kötelező) A Maps **updatedAt** rendszertulajdonság |
-| version | Karakterlánc | (nem kötelező) Ütközések, a maps-verzióra észleléséhez használt |
+| version | String | (nem kötelező) Ütközések, a maps-verzióra észleléséhez használt |
 
 ## <a name="setup-sync"></a>Az alkalmazás a szinkronizálási viselkedésének módosítása
 Ebben a szakaszban módosítja az alkalmazást úgy, hogy nem szinkronizálja az alkalmazás indítása, vagy ha insert és elemek frissítése. A szinkronizált csak akkor, ha a frissítés kézmozdulat gomb történik.
@@ -242,7 +242,7 @@ Ebben a szakaszban csatlakoztatja egy kapcsolat nélküli forgatókönyv szimul�
    ```objc
    self.client = [MSClient clientWithApplicationURLString:@"https://sitename.azurewebsites.net.fail"];
    ```
-   **SWIFT**. A ToDoTableViewController.swift:
+   **SWIFT**. In ToDoTableViewController.swift:
    ```swift
    let client = MSClient(applicationURLString: "https://sitename.azurewebsites.net.fail")
    ```
@@ -272,7 +272,7 @@ A helyi tároló szinkronizálja azt a kiszolgálón, amikor használtuk a **MSS
 
 ## <a name="additional-resources"></a>További források
 * [Offline Adatszinkronizálás a mobilalkalmazásokban]
-* [Cloud Cover: Offline szinkronizálás az Azure Mobile Services] \(a videó tudnivalók a mobilszolgáltatások, de a Mobile Apps kapcsolat nélküli szinkronizálás működésének hasonló módon.\)
+* [Cloud Cover: Az Azure mobilszolgáltatások offline szinkronizálás] \(a videó tudnivalók a mobilszolgáltatások, de a Mobile Apps kapcsolat nélküli szinkronizálás működésének hasonló módon.\)
 
 <!-- URLs. -->
 
@@ -285,5 +285,5 @@ A helyi tároló szinkronizálja azt a kiszolgálón, amikor használtuk a **MSS
 [defining-core-data-tableconfig-entity]: ./media/app-service-mobile-ios-get-started-offline-data/defining-core-data-tableconfig-entity.png
 [defining-core-data-todoitem-entity]: ./media/app-service-mobile-ios-get-started-offline-data/defining-core-data-todoitem-entity.png
 
-[Cloud Cover: Offline szinkronizálás az Azure Mobile Services]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
+[Cloud Cover: Az Azure mobilszolgáltatások offline szinkronizálás]: https://channel9.msdn.com/Shows/Cloud+Cover/Episode-155-Offline-Storage-with-Donna-Malayeri
 [Azure Friday: Offline-enabled apps in Azure Mobile Services]: https://azure.microsoft.com/documentation/videos/azure-mobile-services-offline-enabled-apps-with-donna-malayeri/

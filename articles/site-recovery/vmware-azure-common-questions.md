@@ -8,12 +8,12 @@ services: site-recovery
 ms.date: 03/03/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 038716161845e94011688e8af80a5d4830ac1a5b
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 9e15f2e1b064ec2e64bfa8254075eac5bc801115
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338144"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442613"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Gyakori kérdések – VMware-ből az Azure-bA
 
@@ -49,7 +49,7 @@ Tekintse meg a licenc Kérdésekben [Itt](https://aka.ms/asr_pricing_FAQ) továb
 
 ### <a name="how-can-i-calculate-approximate-charges-during-the-use-of-site-recovery"></a>Hogyan lehet becsült költségek kiszámítása a Site Recovery használata során?
 
-Használhat [díjkalkulátor](https://aka.ms/asr_pricing_calculator) alapján az Azure Site Recovery használata közben. A részletes becsült költségek, futtassa a deployment planner eszköz (https://aka.ms/siterecovery_deployment_planner) és elemzi a [költségbecslési jelentés költség](https://aka.ms/asr_DP_costreport).
+Használhat [díjkalkulátor](https://aka.ms/asr_pricing_calculator) alapján az Azure Site Recovery használata közben. A részletes becsült költségek, futtassa a deployment planner eszköz (https://aka.ms/siterecovery_deployment_planner) és elemezheti a [költségbecslési jelentés költség](https://aka.ms/asr_DP_costreport).
 
 ### <a name="i-have-been-an-azure-site-recovery-user-for-over-a-month-do-i-still-get-the-first-31-days-free-for-every-protected-instance"></a>Már több mint egy hónapja Azure Site Recovery-felhasználó vagyok. Továbbra is minden egyes védett példány esetében vonatkozik rám a díjmentes első 31 nap?
 
@@ -165,7 +165,7 @@ Igen, adhat hozzá új virtuális gépek egy meglévő replikációs csoporthoz.
 
 A VMware – Azure replikálás módosíthatja a lemez méretét. Ha azt szeretné, adjon hozzá új lemezeket kell a lemezt adja hozzá, és engedélyezheti a virtuális gép védelmét.
 
-### <a name="can-i-migrate-on-prem-machines-to-a-new-vcenter-without-impacting-ongoing-replication"></a>Át tudom telepíteni a helyszíni gépeket az új Vcenter folyamatban lévő replikáció befolyásolása nélkül?
+### <a name="can-i-migrate-on-premises-machines-to-a-new-vcenter-without-impacting-ongoing-replication"></a>Át tudom telepíteni a helyi gépek az új Vcenter folyamatban lévő replikáció befolyásolása nélkül?
 Nem, Vcenter vagy a migrálás folyamatban lévő replikáció hatással van. A vcenter-kiszolgáló az automatikus rendszer-Helyreállítás beállítása és a gépek replikációjának engedélyezéséhez kell.
 
 ### <a name="can-i-replicate-to-cachetarget-storage-account-which-has-a-vnet-with-azure-storage-firewalls-configured-on-it"></a>Replikálhatok gyorsítótár vagy a céloldali tárfiókot, amely egy virtuális hálózathoz (az Azure storage-tűzfalak) konfigurálva van?

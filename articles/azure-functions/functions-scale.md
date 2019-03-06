@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 02/28/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1d385fd8c8388e3ce54b89ff2ac863cd5a1aa0df
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 5cd3f7f1f1f17d6dedea0157760b03c7e55e3d8a
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216135"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57410094"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Az Azure Functions méretezése és üzemeltetése
 
@@ -43,9 +43,6 @@ Az App Service-csomag méretezhető különböző mennyiségű erőforrás lefog
 
 A Használatalapú csomag használatakor példányok az Azure Functions-gazdagép dinamikusan hozzáadása és eltávolítása a bejövő események száma alapján. A kiszolgáló nélküli csomag automatikusan skálázható, és kell fizetnie a számítási erőforrásokat, csak akkor, amikor a függvények futnak. A Használatalapú csomag a függvény végrehajtási időkorlátja konfigurálható bizonyos idő után.
 
-> [!NOTE]
-> Functions Használatalapú csomagok esetében az alapértelmezett időtúllépési érték 5 perc. Az érték a tulajdonság módosításával növelhető a függvényalkalmazás legfeljebb 10 perces `functionTimeout` a a [host.json](functions-host-json.md#functiontimeout) soubor projektu.
-
 Végrehajtások száma, végrehajtási időt, és a használt memória alapján számoljuk. A számlázás belül függvényalkalmazás a függvények összesített érték. További információkért lásd: a [Az Azure Functions díjszabását ismertető lapon].
 
 A Használatalapú szolgáltatási csomag alapértelmezett és a következő előnyöket biztosítja:
@@ -62,7 +59,7 @@ Fontolja meg az App Service-csomag, a következő esetekben:
 * Rendelkezik már meglévő, azokat az alacsony kihasználtságú virtuális gépeket, amelyek már fut más App Service-példányt.
 * A függvényalkalmazások futtassa folyamatosan vagy gyakorlatilag, folyamatosan. Ebben az esetben egy App Service-csomag költséghatékonyabban helyezhetők.
 * Több CPU és memória lehetőség milyen áll rendelkezésre a Használatalapú díjcsomag szükséges.
-* A kód kell futtatni a Használatalapú csomag, amely akár 10 percet engedélyezett maximális végrehajtási ideje hosszabb.
+* A kód futtatásához hosszabb, mint a [engedélyezett maximális végrehajtási ideje](#timeout) a Használatalapú díjcsomag.
 * Csak az App Service-csomag, például az App Service Environment-környezet, a virtuális hálózat és VPN-kapcsolat és a nagyobb Virtuálisgép-méretek támogatása elérhető funkciókat követel meg.
 * Szeretné futtatni a függvényalkalmazást linuxon, vagy szeretne biztosítani egy egyéni rendszerképet, amelyre a függvények futtatását.
 
@@ -77,6 +74,8 @@ JavaScript-függvények az App Service-csomag futtatásakor, kevesebb vcpu-k ren
 ###<a name="always-on"></a> Always On
 
 Ha az App Service-csomagot futtatja, engedélyeznie kell a **mindig** beállítást, hogy a függvényalkalmazás megfelelően fut-e. App Service-csomag a functions futtatókörnyezete ismertetett üresjárati néhány perc inaktivitás után, így csak a HTTP-eseményindítók fog "felébresztéséhez" az funkciók. Mindig érhető el csak az App Service-csomag. A Használatalapú csomag a platform aktiválja a függvényalkalmazás automatikusan.
+
+[!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
 ## <a name="what-is-my-hosting-plan"></a>Mit jelent a szolgáltatási csomag
 

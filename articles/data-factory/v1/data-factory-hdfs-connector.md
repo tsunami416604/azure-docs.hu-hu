@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e8af817c942a28cfd28d1b13303aebfcc10d31ba
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 45b3149c0d546be201412567041ab1c5a86036e6
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016054"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57455972"
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factory használatával a helyszíni HDFS-ből
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -34,6 +34,8 @@ Másolhat adatokat HDFS bármely támogatott fogadó adattárba. A másolási te
 
 > [!NOTE]
 > A másolási tevékenység nem törli a forrásfájl, miután sikerült a célhelyre másolja. Ha a forrásfájl törlése után a sikeres másolási van szüksége, hozzon létre egy egyéni tevékenységet, törölje a fájlt, és használja a tevékenységet a folyamat. 
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="enabling-connectivity"></a>Kapcsolat engedélyezése
 A Data Factory szolgáltatás támogatja a helyszíni HDFS az adatkezelési átjáró segítségével csatlakozik. Lásd: [adatok áthelyezése a helyszíni és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) cikk további információt talál az adatkezelési átjáró-lépésenként az átjáró beállítása. Az átjáró használatára HDFS kapcsolódni, még akkor is, ha az Azure IaaS virtuális Gépekhez vannak tárolva.
@@ -71,7 +73,7 @@ A társított szolgáltatás egy adattárba hivatkozik, adat-előállító. Lét
 | Felhasználónév |Felhasználónév a Windows-hitelesítés. A Kerberos-hitelesítéshez, adja meg a `<username>@<domain>.com`. |Igen (a Windows-hitelesítés) |
 | jelszó |Windows-hitelesítés jelszava. |Igen (a Windows-hitelesítés) |
 | átjáró neve |Neve az átjáró, amely a Data Factory szolgáltatás csatlakozik a HDFS csatlakoznia kell. |Igen |
-| encryptedCredential |[Új AzureRMDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) a hozzáférési hitelesítő adatok kimenetét. |Nem |
+| encryptedCredential |[Új AzDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/az.datafactory/new-azdatafactoryencryptvalue) a hozzáférési hitelesítő adatok kimenetét. |Nem |
 
 ### <a name="using-anonymous-authentication"></a>A névtelen hitelesítés használatával
 
@@ -247,7 +249,7 @@ Beállítás az "external": "true" tájékoztatja a Data Factory szolgáltatásb
 
 **Azure blobkimeneti adatkészlet:**
 
-Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1.). A mappa elérési útját a BLOB a feldolgozás alatt álló szelet kezdő időpontja alapján dinamikusan kiértékeli. A mappa elérési útját használja, év, hónap, nap és óra részei a kezdési időpontot.
+Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1). A mappa elérési útját a BLOB a feldolgozás alatt álló szelet kezdő időpontja alapján dinamikusan kiértékeli. A mappa elérési útját használja, év, hónap, nap és óra részei a kezdési időpontot.
 
 ```JSON
 {
@@ -349,8 +351,8 @@ A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkész
 
 ## <a name="use-kerberos-authentication-for-hdfs-connector"></a>HDFS-összekötő Kerberos-hitelesítés használata
 A helyszíni környezet beállítása úgy, hogy a Kerberos-hitelesítés használatát a HDFS-összekötőben két lehetőség van. Kiválaszthatja, hogy a legjobban az esetet.
-* 1. lehetőség: [Csatlakozás az átjárót tartalmazó számítógépen a Kerberos-tartomány](#kerberos-join-realm)
-* 2. lehetőség: [Windows-tartomány és a Kerberos-tartomány közötti kölcsönös megbízhatósági kapcsolat engedélyezése](#kerberos-mutual-trust)
+* Option 1: [Csatlakozás az átjárót tartalmazó számítógépen a Kerberos-tartomány](#kerberos-join-realm)
+* Option 2: [Windows-tartomány és a Kerberos-tartomány közötti kölcsönös megbízhatósági kapcsolat engedélyezése](#kerberos-mutual-trust)
 
 ### <a name="kerberos-join-realm"></a>1. lehetőség: Csatlakozás az átjárót tartalmazó számítógépen a Kerberos-tartomány
 

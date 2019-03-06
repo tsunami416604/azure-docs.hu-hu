@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: jingwang
-ms.openlocfilehash: d0f22360a36105e5bfb877d7478b58c37fcc4353
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 4a1b1a32a488395c6a0b3f19de727802a329930a
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213773"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57439859"
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával HDFS-ből
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -138,6 +138,7 @@ Adatok másolása a HDFS-ből, állítsa be a type tulajdonság, az adatkészlet
         },
         "typeProperties": {
             "folderPath": "folder/subfolder/",
+            "fileName": "*",
             "modifiedDatetimeStart": "2018-12-01T05:00:00Z",
             "modifiedDatetimeEnd": "2018-12-01T06:00:00Z",
             "format": {
@@ -203,7 +204,7 @@ További információ a DistCp használatával hatékonyan a következő szakasz
 
 Másolja a DistCp használata, a fájlok másolása tevékenység támogatási-van az Azure Blob (beleértve a [szakaszos Másolás](copy-activity-performance.md) vagy az Azure Data Lake Store ebben az esetben azt teljes körűen kihasználhatják a fürt power helyett a helyi Integration Runtime futó . Ez különösen akkor, ha a fürt nagyon hatékony biztosít jobb másolási teljesítmény. Az Azure Data Factoryban a konfiguráció alapján, a másolási tevékenység automatikusan hozza létre a distcp parancsot, az elküldés elemre kattintva a Hadoop-fürt és a másolat állapotának figyelése.
 
-### <a name="prerequsites"></a>Prerequsites
+### <a name="prerequisites"></a>Előfeltételek
 
 Fájlok másolása a DistCp használatával – a HDFS-ből az Azure Blob (beleértve a szakaszos másolás) vagy az Azure Data Lake Store, ellenőrizze, hogy a Hadoop-fürt megfelel az alábbi követelményeknek:
 

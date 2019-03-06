@@ -6,14 +6,14 @@ services: site-recovery
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 68892faf707a767ba9c25ce7317f775708e61a90
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 28b28dc15809aa5d37eb9347ff3bc7eecccc9a20
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217985"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57452708"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Telepítse a Linuxos fő célkiszolgáló a feladat-visszavételhez
 Miután átadja a feladatokat a virtuális gépek az Azure-ba, visszaadhatja a virtuális gépek, a helyszíni helyre. Feladat-visszavételt, ismételt védelem a virtuális gép az Azure-ból a helyszíni helyre kell. Ez a folyamat szüksége lesz egy a helyszíni fő célkiszolgáló forgalom fogadására. 
@@ -62,7 +62,7 @@ A következő támogatott Ubuntu kernelekkel támogatottak.
 
 Vegye figyelembe a következőket az Ubuntu 16.04.2 64 bites operációs rendszer telepítésének lépéseit.
 
-1.   Nyissa meg a [letöltési hivatkozás](http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.2-server-amd64.iso), válassza a legközelebbi tükrözött anddownload egy Ubuntu 16.04.2 minimális 64-bit ISO.
+1.   Nyissa meg a [letöltési hivatkozás](http://old-releases.ubuntu.com/releases/16.04.2/ubuntu-16.04.2-server-amd64.iso), válassza a legközelebbi tükrözött, és töltse le egy Ubuntu 16.04.2 minimális 64-bit ISO.
 Egy Ubuntu 16.04.2 minimális 64-bit ISO tartsa a DVD-meghajtóba, és indítsa el a rendszer.
 
 1.  Válassza ki **angol** a választott nyelven, és válassza ki, **Enter**.
@@ -287,7 +287,6 @@ A következő lépések segítségével hozzon létre egy adatmegőrzési lemez:
 2. Jegyezze fel a konfigurációs kiszolgáló IP-címet. Futtassa a következő parancsot a fő célkiszolgáló telepítéséhez, és a konfigurációs kiszolgálót regisztrálja a kiszolgálót.
 
     ```
-    ./install -q -d /usr/local/ASR -r MT -v VmWare
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <ConfigurationServer IP Address> -P passphrase.txt
     ```
 

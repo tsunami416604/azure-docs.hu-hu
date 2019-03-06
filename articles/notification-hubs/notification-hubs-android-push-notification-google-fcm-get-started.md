@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/05/2019
 ms.author: jowargo
-ms.openlocfilehash: d2de4a4be8838cf696d2d3ed6589e8f154a6ca05
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: c4932bcb890770ac3914198e511c3890e29b26cb
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55959834"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57449920"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-firebase-cloud-messaging"></a>Oktatóanyag: Az Azure Notification Hubs és a Google Firebase Cloud Messaging leküldéses értesítések Android-eszközök
 
@@ -74,7 +74,7 @@ Az oktatóanyag elvégzéséhez egy aktív Azure-fiókra lesz szüksége. Ha nin
 
 1. Válassza ki **Google (GCM/FCM)** alatt **beállítások** a bal oldali menüben. 
 2. Illessze be a **kiszolgálókulcs** a korábban mentett FCM-projekt. 
-3. Selct **mentése** az eszköztáron. 
+3. Válassza az eszköztár **Save** (Mentés) elemét. 
 
     ![Az Azure Notification Hubs – Google (FCM)](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
 4. Riasztások, hogy a notification hubs sikeresen frissítve az üzenet jelenik meg. A **mentése** gomb le van tiltva. 
@@ -531,7 +531,7 @@ Az [Azure Portal] az alábbi műveletek végrehajtásával küldhet leküldéses
 5. A művelet **eredményeit** a lap alján található listában láthatja.
 
     ![Azure Notification Hubs – küldés tesztelése](./media/notification-hubs-android-push-notification-google-fcm-get-started/notification-hubs-test-send.png)
-6. A Notification üzenetet lát az eszközén. 
+6. Az értesítési üzenetet lát az eszközén. 
 
     ![Értesítési üzenet az eszközön](./media/notification-hubs-android-push-notification-google-fcm-get-started/notification-on-device.png)
     

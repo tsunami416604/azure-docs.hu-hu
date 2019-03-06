@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 68fb7678fac2a0a32278e813d03a0eebd20565ec
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 908422927feabd156c5dcdc7a04d44ff8fc42094
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216041"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442877"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhook-műveletek a riasztási szabály
 Ha egy [riasztás jön létre az Azure-ban](alerts-log.md), lehetősége van a [konfigurálása a Műveletcsoportok használatával](action-groups.md) egy vagy több művelet végrehajtásához.  Ez a cikk ismerteti a rendelkezésre álló különböző webhook-műveletek és a részletek az egyéni JSON-alapú webhook konfigurálásáról.
@@ -54,7 +54,7 @@ Webhookok tartalmaznak egy URL-CÍMÉT és a egy hasznos, amely a külső szolg�
 | Előfizetés azonosítója |#subscriptionid |Az Application insights szolgáltatással használt Azure-előfizetésében azonosítója. 
 
 > [!NOTE]
-> LinkToSearchResults átadja SearchQuery, keresési intervallum StartTime & keresési intervallum befejezési idő például paramétereket az URL-címben Analytics szakaszban megtekintése az Azure Portalon. Az Azure portal méretezés hozzávetőleges 2000 karakterből áll, és automatikusan URI tartozik *nem* riasztásokat, ha paraméterek értékét az említett korlátját meghaladja a megadott hivatkozás megnyitása. Felhasználók manuálisan bevinni részleteit az eredmények megtekintése az Analytics-portálon, vagy használja a [Application Insights Analytics REST API](https://dev.applicationinsights.io/documentation/Using-the-API) vagy [Log Analytics REST API](https://dev.loganalytics.io/reference) eredmények programozott módon lekéréséhez 
+> LinkToSearchResults átadja SearchQuery, keresési intervallum StartTime & keresési intervallum befejezési idő például paramétereket az URL-címben Analytics szakaszban megtekintése az Azure Portalon. Az Azure portal mérete megközelítőleg 2000 karakterből áll, és automatikusan URI tartozik *nem* riasztásokat, ha paraméterek értékét az említett korlátját meghaladja a megadott hivatkozás megnyitása. Felhasználók manuálisan bevinni részleteit az eredmények megtekintése az Analytics-portálon, vagy használja a [Application Insights Analytics REST API](https://dev.applicationinsights.io/documentation/Using-the-API) vagy [Log Analytics REST API](https://dev.loganalytics.io/reference) eredmények programozott módon lekéréséhez 
 
 Például megadhatja a következő nevű egyetlen paramétert tartalmazó egyéni adattartalom *szöveg*.  A szolgáltatás, amely meghívja ezt a webhookot szeretné ezt a paramétert várt lehet.
 

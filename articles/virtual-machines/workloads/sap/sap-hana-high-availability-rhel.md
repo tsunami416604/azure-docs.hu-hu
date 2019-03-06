@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 503e056a3fa87e48f61d26661110b9bb89456a51
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 0bed75090e82287e1239342884b5acea64e69bf0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53338522"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444004"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Magas rendelkezésre állás az SAP HANA, Red Hat Enterprise Linux-alapú Azure virtuális gépeken
 
@@ -85,7 +85,7 @@ SAP HANA magas rendelkezésre állás, telepítve van a két virtuális gépen. 
 
 ![SAP HANA magas rendelkezésre állás – Áttekintés](./media/sap-hana-high-availability-rhel/ha-hana.png)
 
-Az SAP HANA-Rendszerreplikálást telepítő használ egy dedikált virtuális állomásnevet és a virtuális IP-címek. Az Azure-ban a terheléselosztó virtuális IP-cím szükséges. Az alábbi lista a terheléselosztó konfigurációját jeleníti meg:
+SAP HANA System Replication setup uses a dedicated virtual hostname and virtual IP addresses. Az Azure-ban a terheléselosztó virtuális IP-cím szükséges. Az alábbi lista a terheléselosztó konfigurációját jeleníti meg:
 
 * Előtér-konfiguráció: IP-cím 10.0.0.13 hn1-DB-hez készült
 * Háttér-konfiguráció: HANA-Rendszerreplikálást részének kell lennie az összes virtuális gépek elsődleges hálózati adaptere csatlakozik
@@ -187,9 +187,9 @@ Az SAP Hana-hoz a szükséges portok kapcsolatos további információkért olva
 
 A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
 
-* **[A]** : A lépés minden csomópont számára vonatkozik.
-* **[1]** : A lépés csak 1 csomópont vonatkozik.
-* **a(z) [2]** : A lépés fürtcsomópont 2 támasztja csak vonatkozik.
+* **[A]**: A lépés minden csomópont számára vonatkozik.
+* **[1]**: A lépés csak 1 csomópont vonatkozik.
+* **[2]**: A lépés fürtcsomópont 2 támasztja csak vonatkozik.
 
 1. **[A]**  a lemez elrendezése beállítása: **A Logical Volume Manager (LVM)**.
 
@@ -307,7 +307,7 @@ A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
    * Válassza ki a további összetevők telepítéséhez: Adja meg **1**.
    * Adja meg a telepítési útvonal [/ hana/megosztott]: Válassza ki a adja meg.
    * Adja meg a helyi gazdagép neve [.]: Válassza ki a adja meg.
-   * Biztosan további állomásokat adhat hozzá a rendszer? (i/n) [n]: Válassza ki a adja meg.
+   * Biztosan további állomásokat adhat hozzá a rendszer? (y/n) [n]: Válassza ki a adja meg.
    * Adja meg az SAP HANA rendszer-azonosító: Adja meg például a HANA biztonsági azonosító: **HN1**.
    * Adja meg a [00] száma: Adja meg a HANA-példányok számát. Adja meg **03** Ha használja az Azure-sablon vagy követni a manuális központi telepítése című szakaszát.
    * Válassza ki az adatbázis mód / adja meg az Index [1]: Válassza ki a adja meg.
@@ -316,18 +316,18 @@ A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
    * Adja meg a helyet, Log kötetek [/ hana/log/HN1]: Válassza ki a adja meg.
    * Maximális memória mennyiségét korlátozza? [n]: Válassza ki a adja meg.
    * Adja meg a tanúsítvány állomásneve gazdagép "..." [...]: Válassza ki a adja meg.
-   * Adja meg az SAP gazdagép ügynök felhasználói (sapadm) jelszavát: Adja meg a gazdagép-ügynök felhasználói jelszót.
-   * SAP-gazdagép ügynök felhasználó (sapadm) jelszó megerősítése: Adja meg a gazdagép ügynök felhasználói jelszót kétszer.
+   * Enter SAP Host Agent User (sapadm) Password: Adja meg a gazdagép-ügynök felhasználói jelszót.
+   * Confirm SAP Host Agent User (sapadm) Password: Adja meg a gazdagép ügynök felhasználói jelszót kétszer.
    * Adja meg a rendszergazdát (hdbadm) jelszavát: Adja meg a rendszergazda jelszavát.
    * A rendszergazda (hdbadm) jelszó megerősítése: Adja meg a rendszer rendszergazdai jelszót kétszer.
    * Adja meg a rendszer rendszergazdai kezdőkönyvtár [/ usr/sap/HN1/home]: Válassza ki a adja meg.
    * Adja meg a rendszer rendszergazdai bejelentkezési rendszerhéj [/ bin/sh]: Válassza ki a adja meg.
    * Adja meg a rendszergazda felhasználó azonosítója [1001]: Válassza ki a adja meg.
    * Adjon meg azonosító a felhasználói csoportot (sapsys) [79]: Válassza ki a adja meg.
-   * Adatbázis (rendszer) felhasználói jelszó: Adja meg az adatbázis felhasználói jelszót.
+   * Enter Database User (SYSTEM) Password: Adja meg az adatbázis felhasználói jelszót.
    * Adatbázis (rendszer) felhasználói jelszó megerősítése: Adja meg az adatbázis felhasználói jelszót kétszer.
    * Számítógép újraindítása után indítsa újra a rendszert? [n]: Válassza ki a adja meg.
-   * Folytatja? (i/n): Ellenőrizze az összegzést. Adja meg **y** folytatásához.
+   * Folytatja? (y/n): Ellenőrizze az összegzést. Adja meg **y** folytatásához.
 
 1. **[A]**  SAP gazdagép-ügynök frissítése.
 
@@ -348,9 +348,9 @@ A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
 
 A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
 
-* **[A]** : A lépés minden csomópont számára vonatkozik.
-* **[1]** : A lépés csak 1 csomópont vonatkozik.
-* **a(z) [2]** : A lépés fürtcsomópont 2 támasztja csak vonatkozik.
+* **[A]**: A lépés minden csomópont számára vonatkozik.
+* **[1]**: A lépés csak 1 csomópont vonatkozik.
+* **[2]**: A lépés fürtcsomópont 2 támasztja csak vonatkozik.
 
 1. **[A]**  Tűzfal konfigurálása
 
@@ -439,9 +439,9 @@ sudo firewall-cmd --zone=public --add-port=30342/tcp
 
 A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
 
-* **[A]** : A lépés minden csomópont számára vonatkozik.
-* **[1]** : A lépés csak 1 csomópont vonatkozik.
-* **a(z) [2]** : A lépés fürtcsomópont 2 támasztja csak vonatkozik.
+* **[A]**: A lépés minden csomópont számára vonatkozik.
+* **[1]**: A lépés csak 1 csomópont vonatkozik.
+* **[2]**: A lépés fürtcsomópont 2 támasztja csak vonatkozik.
 
 1. **[A]**  Tűzfal konfigurálása
 
@@ -643,7 +643,7 @@ Resource Group: g_ip_HN1_03
 </code></pre>
 
 Tiltsa le a hálózati adaptert a csomóponton hol futnak az SAP HANA-főkiszolgálóként tesztelheti az Azure az elkerítés ügynök beállítása.
-Lásd: [Red Hat tudásbázisában cikk 79523](https://access.redhat.com/solutions/79523) egy descricption hálózati hiba szimulálása a számára. Ebben a példában használjuk a net_breaker parancsfájlt a hálózathoz való hozzáférés teljes letiltása.
+Lásd: [Red Hat tudásbázisában cikk 79523](https://access.redhat.com/solutions/79523) hálózati hiba szimulálása a leírást. Ebben a példában használjuk a net_breaker parancsfájlt a hálózathoz való hozzáférés teljes letiltása.
 
 <pre><code>[root@hn1-db-1 ~]# sh ./net_breaker.sh BreakCommCmd 10.0.0.6
 </code></pre>
