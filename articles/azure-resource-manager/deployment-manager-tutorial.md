@@ -10,19 +10,17 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/27/2018
+ms.date: 03/05/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 9f548fbb9611b6d4b16efe5c4d26db73d85c9654
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 4fb4989327896a74a33e16635a3ce37d1dbbc889
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882297"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57435286"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>Oktatóanyag: Az Azure Deployment Manager használata a Resource Manager-sablonok (privát előzetes verzió)
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Ebből a cikkből megtudhatja, hogyan helyezheti üzembe alkalmazásait több régióban az [Azure Deployment Manager](./deployment-manager-overview.md) használatával. Deployment Manager használatához szeretne létrehozni a két sablon:
 
@@ -59,6 +57,13 @@ Az oktatóanyag elvégzéséhez az alábbiakra van szükség:
     ```powershell
     Install-Module -Name AzureRM.DeploymentManager -AllowPrerelease
     ```
+
+    Az Az Azure PowerShell-modul telepítve van, két további kapcsolók szükségesek:
+
+    ```powershell
+    Install-Module -Name AzureRM.DeploymentManager -AllowPrerelease -AllowClobber -Force
+    ```
+
 * [Microsoft Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/). Az Azure Storage Explorer használata nem kötelező, de megkönnyíti a dolgokat.
 
 ## <a name="understand-the-scenario"></a>A forgatókönyv megismerése
@@ -204,9 +209,6 @@ Az alábbi képernyőképen a szolgáltatástopológiának, a szolgáltatásokna
 - **dependsOn**: A szolgáltatás topológia összes erőforrást az összetevő-forrás erőforrás függenek.
 - Az **artifacts** elem a sablonösszetevőkre mutat.  Itt relatív elérési utakat használunk. A teljes elérési út a következők összefűzésével áll elő: artifactSourceSASLocation (az összetevőforrásban definiálva), artifactRoot (az összetevőforrásban definiálva) és templateArtifactSourceRelativePath (vagy parametersArtifactSourceRelativePath).
 
-> [!NOTE]
-> A szolgáltatásnevek egység 31 karaktereket tartalmazhat, vagy kisebb. 
-
 ### <a name="topology-parameters-file"></a>Topológia-paraméterek fájlja
 
 Hozzon létre egy paraméterfájlt, amely a topológiasablonnal használható.
@@ -276,7 +278,7 @@ Hozzon létre egy paraméterfájlt, amely a bevezetési sablonnal használható.
 2. Töltse ki a paraméterek értékeit:
 
     - **namePrefix**: Adja meg a 4 – 5 karakterből álló karakterlánc. Az előtag használatával egyedi Azure-erőforrásnevek hozhatók létre.
-    - **azureResourceLocation**: Jelenleg az Azure Deployment Manager-erőforrások csak az USA középső és **2. keleti régiójában** hozhatók létre.
+    - **azureResourceLocation**: Jelenleg az Azure Deployment Manager-erőforrások csak az **USA középső** és **2. keleti régiójában** hozhatók létre.
     - **artifactSourceSASLocation**: Adja meg a SAS URI-t a gyökérkönyvtárba (a Blob-tároló) szolgáltatás egység sablon és paraméterek fájlokat tároló üzembe helyezéshez.  Lásd: [Az összetevők előkészítése](#prepare-the-artifacts).
     - **binaryArtifactRoot**: Ha nem módosítja a mappastruktúra az összetevők, használja **binaries/1.0.0.0** ebben az oktatóanyagban.
     - **managedIdentityID**: Adja meg a felhasználóhoz felügyelt identitásnak. Lásd: [A felhasználó által hozzárendelt felügyelt identitás létrehozása](#create-the-user-assigned-managed-identity). A szintaxis a következő:
@@ -294,13 +296,13 @@ A sablonok az Azure PowerShell használatával telepíthetők.
 
 1. Futtassa a szkriptet a szolgáltatástopológia üzembe helyezéséhez.
 
-    ```azurepowershell-interactive
+    ```azurepowershell
     $resourceGroupName = "<Enter a Resource Group Name>"
     $location = "Central US"  
     $filePath = "<Enter the File Path to the Downloaded Tutorial Files>"
     
     # Create a resource group
-    New-AzureRmResourceGroup -Name $resourceGroupName -Location $location
+    New-AzureRmResourceGroup -Name $resourceGroupName -Location "$location"
     
     # Create the service topology
     New-AzureRmResourceGroupDeployment `
@@ -317,7 +319,7 @@ A sablonok az Azure PowerShell használatával telepíthetők.
 
 3. <a id="deploy-the-rollout-template"></a>A bevezetési sablon üzembe helyezéséhez:
 
-    ```azurepowershell-interactive
+    ```azurepowershell
     # Create the rollout
     New-AzureRmResourceGroupDeployment `
         -ResourceGroupName $resourceGroupName `
@@ -327,19 +329,60 @@ A sablonok az Azure PowerShell használatával telepíthetők.
 
 4. A bevezetés állapotát a következő PowerShell-szkripttel ellenőrizheti:
 
-    ```azurepowershell-interactive
+    ```azurepowershell
     # Get the rollout status
     $rolloutname = "<Enter the Rollout Name>" # "adm0925Rollout" is the rollout name used in this tutorial
     Get-AzureRmDeploymentManagerRollout `
         -ResourceGroupName $resourceGroupName `
-        -Name $rolloutName
+        -Name $rolloutName `
+        -Verbose
     ```
 
-    A Deployment Manager PowerShell-parancsmagjait telepíteni kell ahhoz, hogy a parancsmagot futtatni lehessen. Tekintse meg az előfeltételeket.
+    A Deployment Manager PowerShell-parancsmagjait telepíteni kell ahhoz, hogy a parancsmagot futtatni lehessen. Tekintse meg az előfeltételeket. A - Verbose kapcsoló segítségével tekintse meg a teljes kimenetet.
 
     Az alábbi példa mutatja a futtatási állapotot:
     
     ```
+    VERBOSE: 
+    
+    Status: Succeeded
+    ArtifactSourceId: /subscriptions/<AzureSubscriptionID>/resourceGroups/adm0925rg/providers/Microsoft.DeploymentManager/artifactSources/adm0925ArtifactSourceRollout
+    BuildVersion: 1.0.0.0
+    
+    Operation Info:
+        Retry Attempt: 0
+        Skip Succeeded: False
+        Start Time: 03/05/2019 15:26:13
+        End Time: 03/05/2019 15:31:26
+        Total Duration: 00:05:12
+    
+    Service: adm0925ServiceEUS
+        TargetLocation: EastUS
+        TargetSubscriptionId: <AzureSubscriptionID>
+    
+        ServiceUnit: adm0925ServiceEUSStorage
+            TargetResourceGroup: adm0925ServiceEUSrg
+    
+            Step: Deploy
+                Status: Succeeded
+                StepGroup: stepGroup3
+                Operation Info:
+                    DeploymentName: 2F535084871E43E7A7A4CE7B45BE06510adm0925ServiceEUSStorage
+                    CorrelationId: 0b6f030d-7348-48ae-a578-bcd6bcafe78d
+                    Start Time: 03/05/2019 15:26:32
+                    End Time: 03/05/2019 15:27:41
+                    Total Duration: 00:01:08
+                Resource Operations:
+    
+                    Resource Operation 1:
+                    Name: txq6iwnyq5xle
+                    Type: Microsoft.Storage/storageAccounts
+                    ProvisioningState: Succeeded
+                    StatusCode: OK
+                    OperationId: 64A6E6EFEF1F7755
+
+    ...
+
     ResourceGroupName       : adm0925rg
     BuildVersion            : 1.0.0.0
     ArtifactSourceId        : /subscriptions/<SubscriptionID>/resourceGroups/adm0925rg/providers/Microsoft.DeploymentManager/artifactSources/adm0925ArtifactSourceRollout
