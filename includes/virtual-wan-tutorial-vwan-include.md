@@ -5,18 +5,18 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 09/12/2018
+ms.date: 02/27/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 95202a5cff90f4e8d803091d05fe15926e779182
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 094c2e43a1d2d67aebe0c4154175969544ec4cdf
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47004142"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57552966"
 ---
 1. A virtuális WAN-ok megkereséséhez lépjen a **Minden szolgáltatás** felületre, és keressen rá a virtuális WAN-okra. Azt is megteheti, hogy az Azure Portal tetején lévő keresőmezőben is keres rá a virtuális WAN-okra. Kattintson a **Virtuális WAN-ok** elemre a lap megnyitásához.
-2. A **WAN létrehozása** lap megnyitásához kattintson a *+ Hozzáadás* gombra.
+2. A **WAN létrehozása** lap megnyitásához kattintson a **+ Hozzáadás** gombra.
 3. A WAN létrehozása lapon töltse ki a következő mezőket.
 
   * **Név** – Válasszon egy tetszés szerinti nevet a WAN számára.
