@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: danlep
-ms.openlocfilehash: 79ba32f85c608d98b29b235bf1417e74f7e2a4d4
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 5382c565e5afc42d65a3198d797b51d1b1a9dde6
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313483"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550770"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Egy Azure-beli virtuális hálózatban a tárolópéldányok üzembe helyezése
 
@@ -40,19 +40,13 @@ Bizonyos korlátozások érvényesek, amikor üzembe helyezi a tárolócsoportok
 
 ## <a name="preview-limitations"></a>Előzetes verzió korlátozásai
 
-Bár ez a funkció előzetes verzióban érhető el, az alábbi korlátozások érvényesek a példányok üzembe helyezésekor tárolót egy virtuális hálózathoz. 
+Bár ez a funkció előzetes verzióban érhető el, az alábbi korlátozások érvényesek, ha tárolócsoportok telepítése egy virtuális hálózathoz. 
 
-**Támogatott régiók és erőforráskorlátok**
-
-| Hely | Operációs rendszer | CPU | Memória (GB) |
-| -------- | :---: | :---: | :-----------: |
-| Nyugat-Európa | Linux | 4 | 14 |
-| USA keleti RÉGIÓJA, USA nyugati RÉGIÓJA | Linux | 2 | 3.5 |
-| Kelet-Ausztrália, Észak-Európa | Linux | 1 | 1.5 |
+[!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
 
 Tároló erőforráskorlátok ezekben a régiókban nem hálózati container Instances korlátok eltérhet. Ez a funkció jelenleg csak Linux-tárolók támogatják. Windows támogatási tervezünk.
 
-**Nem támogatott hálózati erőforrások és szolgáltatások**
+### <a name="unsupported-network-resources-and-features"></a>Nem támogatott hálózati erőforrások és szolgáltatások
 
 * Azure Load Balancer
 * Társviszony létesítése virtuális hálózatok között

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 3d4be0466f7f91c23666af4b155fe3b69c868d58
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 94c464733d731505cde0327ce9a295d3b4ab68de
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449546"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538688"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Adatok áthelyezése egy helyszíni forrásra, és a felhő között az adatkezelési átjáróval
 > [!NOTE]
@@ -362,7 +362,7 @@ Ebben a lépésben hozzon létre egy **folyamat** egy **másolási tevékenység
    * Az a **typeProperties** szakaszban **SqlSource** a következőként van megadva a **adatforrástípust** és ** BlobSink ** a következőként van megadva a **fogadó típusa**.
    * SQL-lekérdezés `select * from emp` van megadva a **sqlReaderQuery** tulajdonsága **SqlSource**.
 
-   Mind a kezdő, mind a befejező dátum-időpont értéket [ISO formátumban](http://en.wikipedia.org/wiki/ISO_8601) kell megadni. Példa: 2014-10-14T16:32:41Z. Az **end** (befejező) időpont megadása opcionális, a jelen oktatóanyagban azonban azt is használjuk.
+   Mind a kezdő, mind a befejező dátum-időpont értéket [ISO formátumban](https://en.wikipedia.org/wiki/ISO_8601) kell megadni. Példa: 2014-10-14T16:32:41Z. Az **end** (befejező) időpont megadása opcionális, a jelen oktatóanyagban azonban azt is használjuk.
 
    Ha nem adja meg az **end** (befejezés) tulajdonság értékét, akkor a rendszer a „**kezdő időpont + 48 óra**” számítással határozza meg azt. A folyamat határozatlan ideig történő futtatásához adja meg a **9/9/9999** értéket az **end** (befejezés) tulajdonsághoz.
 
@@ -407,7 +407,7 @@ Ebben a lépésben az Azure Portal használatával figyeli egy Azure data factor
 6. Kattintson a **X** gombra kattintva zárja be az oldalak, amíg ki nem
 7. a kezdőlapja való visszatéréshez a **ADFTutorialOnPremDF**.
 8. (nem kötelező) Kattintson a **folyamatok**, kattintson a **ADFTutorialOnPremDF**, és lefúrással megjelenítheti a bemeneti táblák (**Consumed**) vagy a kimeneti adatkészleteket (**Produced**).
-9. Például használja az eszközök [Microsoft Storage Explorer](http://storageexplorer.com/) , győződjön meg arról, hogy egy blob/fájl jön létre minden egyes órában.
+9. Például használja az eszközök [Microsoft Storage Explorer](https://storageexplorer.com/) , győződjön meg arról, hogy egy blob/fájl jön létre minden egyes órában.
 
    ![Azure Storage Explorer](./media/data-factory-move-data-between-onprem-and-cloud/OnPremAzureStorageExplorer.png)
 

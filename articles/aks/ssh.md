@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 08/21/2018
+ms.date: 03/05/2019
 ms.author: iainfou
-ms.openlocfilehash: d687467e6bd64363c78f60064c6a17adbc5e0d1f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 680e087e80d3e9891e201e7cb474ccfcf7fcc70b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52846129"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538799"
 ---
 # <a name="connect-with-ssh-to-azure-kubernetes-service-aks-cluster-nodes-for-maintenance-or-troubleshooting"></a>Csatlakozzon SSH-n keresztül az Azure Kubernetes Service (AKS) karbantartási és hibaelhárítási fürtcsomópontok
 
@@ -20,21 +20,27 @@ Az Azure Kubernetes Service (AKS)-fürt életciklusa során szükség lehet egy 
 
 Ez a cikk bemutatja, hogyan hozhat létre az SSH-kapcsolatot egy AKS-csomópont privát IP-címeik használatával.
 
+## <a name="before-you-begin"></a>Előkészületek
+
+Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel] [ aks-quickstart-cli] vagy [az Azure portal használatával][aks-quickstart-portal].
+
+Emellett az Azure CLI 2.0.59 verziójára van szükség, vagy később telepített és konfigurált. Futtatás `az --version` a verzió megkereséséhez. Ha telepíteni vagy frissíteni, tekintse meg kell [Azure CLI telepítése][install-azure-cli].
+
 ## <a name="add-your-public-ssh-key"></a>A nyilvános SSH-kulcs hozzáadása
 
-Alapértelmezés szerint az SSH-kulcsok egy AKS-fürt létrehozásakor jönnek létre. Ha nem adta meg a saját SSH-kulcsokat, az AKS-fürt létrehozása során, a nyilvános SSH-kulcsok hozzáadása az AKS-csomópontok. 
+Alapértelmezés szerint az SSH-kulcsok egy AKS-fürt létrehozásakor jönnek létre. Ha nem adta meg a saját SSH-kulcsokat, az AKS-fürt létrehozása során, a nyilvános SSH-kulcsok hozzáadása az AKS-csomópontok.
 
 Az SSH-kulcs ad hozzá egy AKS-csomópont, hajtsa végre az alábbi lépéseket:
 
 1. Az erőforráscsoport nevét az AKS-fürt használatával erőforrások beolvasása [az aks show][az-aks-show]. Adja meg a saját alapvető erőforrás-csoport és az AKS-fürt nevét:
 
-    ```azurecli
+    ```azurecli-interactive
     az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
     ```
 
 1. Az AKS fürt erőforrás csoport használatával listázni a [az virtuálisgép-lista] [ az-vm-list] parancsot. Ezek a virtuális gépek az AKS-csomópontok:
 
-    ```azurecli
+    ```azurecli-interactive
     az vm list --resource-group MC_myResourceGroup_myAKSCluster_eastus -o table
     ```
 
@@ -48,7 +54,7 @@ Az SSH-kulcs ad hozzá egy AKS-csomópont, hajtsa végre az alábbi lépéseket:
 
 1. Az SSH-kulcsokat a csomópont hozzáadásához használja a [az vm user frissítése] [ az-vm-user-update] parancsot. Adja meg az erőforráscsoport nevét, majd az előző lépésben lekért az AKS-csomópontok egyikét. Alapértelmezés szerint az AKS-csomópontok tartozó felhasználónév a *azureuser*. Adja meg a helyét, a saját SSH nyilvános kulcs helyét, például *~/.ssh/id_rsa.pub*, vagy illessze be az SSH nyilvános kulcs tartalmát:
 
-    ```azurecli
+    ```azurecli-interactive
     az vm user update \
       --resource-group MC_myResourceGroup_myAKSCluster_eastus \
       --name aks-nodepool1-79590246-0 \
@@ -58,11 +64,11 @@ Az SSH-kulcs ad hozzá egy AKS-csomópont, hajtsa végre az alábbi lépéseket:
 
 ## <a name="get-the-aks-node-address"></a>Az AKS címe beolvasása
 
-Az AKS-csomópontok nyilvánosan nem jelennek meg a az interneten. Az AKS-csomópontok ssh-n használhatja a magánhálózati IP-címet.
+Az AKS-csomópontok nyilvánosan nem jelennek meg a az interneten. Az AKS-csomópontok ssh-n használhatja a magánhálózati IP-címet. A következő lépésben létrehozott segítő podot az AKS-fürt, amely lehetővé teszi az SSH a csomópont a magánhálózati IP-címe.
 
 A magánhálózati IP-címe egy AKS fürt csomópont használatával megtekintheti a [az vm list-ip-addresses] [ az-vm-list-ip-addresses] parancsot. Adja meg a saját AKS-fürt erőforrás csoport nevét egy korábbi kapott [az-aks-show] [ az-aks-show] . lépés:
 
-```azurecli
+```azurecli-interactive
 az vm list-ip-addresses --resource-group MC_myAKSCluster_myAKSCluster_eastus -o table
 ```
 
@@ -154,3 +160,6 @@ Ha további hibaelhárítási adatokat van szüksége, akkor az [kubelet-naplók
 [az-vm-list-ip-addresses]: /cli/azure/vm#az-vm-list-ip-addresses
 [view-kubelet-logs]: kubelet-logs.md
 [view-master-logs]: view-master-logs.md
+[aks-quickstart-cli]: kubernetes-walkthrough.md
+[aks-quickstart-portal]: kubernetes-walkthrough-portal.md
+[install-azure-cli]: /cli/azure/install-azure-cli

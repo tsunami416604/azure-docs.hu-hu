@@ -1,5 +1,5 @@
 ---
-title: Az Azure Log Analytics virtuálisgép-bővítmény linuxhoz |} A Microsoft Docs
+title: Az Azure Monitor virtuálisgép-bővítmény linuxhoz |} A Microsoft Docs
 description: A Linux rendszerű virtuális gép, virtuálisgép-bővítmények használatával a Log Analytics-ügynök telepítése.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,21 +15,23 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/30/2018
 ms.author: roiyz
-ms.openlocfilehash: 3bb6bdfa849894547175c5ccf79ee476b4987a97
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: a004182371299e98933d0469e9c85313b29ede3e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57408819"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550736"
 ---
-# <a name="log-analytics-virtual-machine-extension-for-linux"></a>Log Analytics virtuálisgép-bővítmény linuxhoz
+# <a name="azure-monitor-virtual-machine-extension-for-linux"></a>Az Azure Monitor virtuálisgép-bővítmény linuxhoz
 
 ## <a name="overview"></a>Áttekintés
 
-A log Analytics monitorozási, riasztási és riasztási szervizelési képességeket biztosít a felhőben és helyszíni eszközökön. A Log Analytics-ügynököket a virtuálisgép-bővítmény linuxhoz közzétett és a Microsoft támogatja. A bővítmény a Log Analytics-ügynököket telepíti az Azure-beli virtuális gépeken, és regisztrálja a virtuális gépek egy meglévő Log Analytics-munkaterületet. Ez a dokumentum részletesen, a támogatott platformok, konfigurációk és a Log Analytics virtuálisgép-bővítmény linuxhoz üzembe helyezési lehetőségeit.
+Az Azure Monitor naplóira monitorozási, riasztási és riasztási szervizelési képességeket biztosít a felhőben és a helyszíni eszközök között. A Log Analytics-ügynököket a virtuálisgép-bővítmény linuxhoz közzétett és a Microsoft támogatja. A bővítmény a Log Analytics-ügynököket telepíti az Azure-beli virtuális gépeken, és regisztrálja a virtuális gépek egy meglévő Log Analytics-munkaterületet. Ez a dokumentum részletesen, a támogatott platformok, konfigurációkat és a telepítési lehetőségei az Azure Monitor virtuálisgép-bővítmény linuxhoz.
 
 >[!NOTE]
 >Az Azure Monitor folyamatos Váltás a Microsoft Operations Management Suite (OMS) részeként az OMS ügynök a Windows vagy Linux rendszerű fog példányaként a Log Analytics-ügynököket Windows és a Log Analytics-ügynök Linux rendszeren.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -52,9 +54,9 @@ A Log Analytics-ügynök bővítményt a Linux-disztribúciók is futtatni.
 >
 
 ### <a name="agent-and-vm-extension-version"></a>Az ügynök és a Virtuálisgép-bővítmény verziója
-Az alábbi táblázat tartalmazza a Log Analytics Virtuálisgép-bővítmény és a Log Analytics ügynök csomag minden kiadott verziójáról. A Log Analytics csomag verziója kibocsátási megjegyzései mutató hivatkozás megtalálható. Kibocsátási megjegyzések a hibajavítások és a egy adott ügynök kiadásban elérhető új szolgáltatások közé tartozik.  
+Az alábbi táblázat tartalmazza az Azure Monitor Virtuálisgép-bővítmény és a Log Analytics ügynök csomag minden kiadott verziójáról. A Log Analytics csomag verziója kibocsátási megjegyzései mutató hivatkozás megtalálható. Kibocsátási megjegyzések a hibajavítások és a egy adott ügynök kiadásban elérhető új szolgáltatások közé tartozik.  
 
-| Log Analytics Linux VM-bővítmény verziója | Log Analytics-ügynököket csomag verziója | 
+| Az Azure Monitor Linux rendszerű virtuális gép bővítmény verziója | Log Analytics-ügynököket csomag verziója | 
 |--------------------------------|--------------------------|
 | 1.8.11 | [1.8.1-256](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.8.1.256)| 
 | 1.8.0-as | [1.8.0-256](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/tag/1.8.0-256)| 
@@ -125,7 +127,7 @@ A következő JSON a Log Analytics-ügynök bővítmény sémáját jeleníti me
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
-Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. Sablonok ideálisak, egy vagy több Log Analytics üzembe helyezése például üzembe helyezést követő konfiguráció igénylő virtuális gépek üzembe helyezésekor. Egy mintául szolgáló Resource Manager-sablon, amely tartalmazza a Log Analytics ügynök Virtuálisgép-bővítmény találhatók a [Azure gyors üzembe helyezési katalógus](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm). 
+Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. Sablonok ideálisak, legalább egy üzembe helyezést követő konfiguráció üzembe helyezése az Azure Monitor naplóira például igénylő virtuális gépek üzembe helyezésekor. Egy mintául szolgáló Resource Manager-sablon, amely tartalmazza a Log Analytics ügynök Virtuálisgép-bővítmény találhatók a [Azure gyors üzembe helyezési katalógus](https://github.com/Azure/azure-quickstart-templates/tree/master/201-oms-extension-ubuntu-vm). 
 
 Virtuálisgép-bővítmények JSON konfigurációjának a virtuális gép típusú erőforrást belülre, vagy elhelyezve, a legfelső szintű vagy a legfelső szintű Resource Managerből származó JSON-sablon. A JSON konfigurációs elhelyezését hatással van az erőforrás nevét, és írja be az értékét. További információkért lásd: [állítsa be a nevét és típusát gyermekerőforrásait](../../azure-resource-manager/resource-group-authoring-templates.md#child-resources). 
 
@@ -220,7 +222,7 @@ Bővítmény végrehajtás kimenetének a rendszer naplózza a következő fájl
 | 19 | OMI csomag telepítési hiba | 
 | 20 | Az SCX-csomag telepítési hiba |
 | 51 | Ezt a bővítményt a virtuális gép operációs rendszer nem támogatott | |
-| 55 | Nem lehet kapcsolódni a Log Analytics szolgáltatással vagy a szükséges csomagokat a hiányzó vagy dpkg Csomagkezelő zárolva van| Ellenőrizze, hogy a rendszer rendelkezik Internet-hozzáféréssel, vagy az, hogy érvényes HTTP proxy lett megadva. Ezenkívül ellenőrizze a munkaterület azonosítójának helyességét, és a curl és tar segédprogram telepítve van. |
+| 55 | Nem lehet csatlakozni az Azure Monitor szolgáltatásban vagy a szükséges csomagokat a hiányzó vagy dpkg Csomagkezelő zárolva van| Ellenőrizze, hogy a rendszer rendelkezik Internet-hozzáféréssel, vagy az, hogy érvényes HTTP proxy lett megadva. Ezenkívül ellenőrizze a munkaterület azonosítójának helyességét, és a curl és tar segédprogram telepítve van. |
 
 További hibaelhárítási információk találhatók a [Log Analytics –--Linux-ügynök hibaelhárítási útmutatója](../../azure-monitor/platform/vmext-troubleshoot.md).
 

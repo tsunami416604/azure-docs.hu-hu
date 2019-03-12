@@ -9,12 +9,12 @@ author: mgottein
 manager: cgronlun
 ms.author: magottei
 ms.custom: seodec2018
-ms.openlocfilehash: dcecb98d5e254e3fadd114c227e783a60fc6fa4e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: b7e7ecd2a82a8d64967288def9c6ede7a292f72a
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316149"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57759391"
 ---
 # <a name="searching-blob-storage-with-azure-search"></a>Keresés a Blob Storage-tárolókban az Azure Search szolgáltatással
 
@@ -52,5 +52,5 @@ Az Azure Search BLOB közvetlenül a Blob storage portáloldalán a lehet hozzá
 
 Kattintson a **Azure Search hozzáadása** , válasszon ki egy meglévő Azure Search szolgáltatást, vagy hozzon létre egy új folyamat elindításához. Ha létrehoz egy új szolgáltatás, akkor ki a tárfiók portálja léptetését. Lépjen vissza a tároló portáloldalán, és jelölje ki újra a **Azure Search hozzáadása** lehetőség, ahol kiválaszthatja a meglévő szolgáltatás.
 
-### <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>További lépések
 További információ az Azure Search Blob Indexelőjével a teljes [dokumentáció](https://aka.ms/azsblobindexer).

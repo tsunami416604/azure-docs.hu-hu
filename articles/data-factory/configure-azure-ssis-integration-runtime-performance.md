@@ -8,14 +8,14 @@ ms.service: data-factory
 ms.workload: data-services
 author: swinarko
 ms.author: sawinark
-ms.reviewer: douglasl
+ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: 2592c81947f48c10891fe920647612d5c30af64f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 271da0a6ff443fcee28bc870821f4222b3018c91
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46989081"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576871"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>A nagy teljesítményű, az Azure-SSIS integrációs modul konfigurálása
 
@@ -61,12 +61,12 @@ $SSISDBPricingTier = "<pricing tier of your Azure SQL server. Examples: Basic, S
 
 ## <a name="azuressisnodesize"></a>AzureSSISNodeSize
 A Data Factory, többek között az Azure-SSIS integrációs modul támogatja a következő beállításokat:
--   Standard szintű\_A4\_v2
--   Standard szintű\_a8-as\_v2
--   Standard szintű\_D1\_v2
--   Standard szintű\_D2\_v2
--   Standard szintű\_D3\_v2
--   Standard szintű\_D4\_v2.
+-   Standard\_A4\_v2
+-   Standard\_A8\_v2
+-   Standard\_D1\_v2
+-   Standard\_D2\_v2
+-   Standard\_D3\_v2
+-   Standard\_D4\_v2.
 
 A munkaköröket külsős informatikusok belső tesztjei az SSIS-mérnöki csapata a D sorozat jelenik meg jobban működik, az SSIS-csomag végrehajtása, mint az A sorozatú.
 
@@ -95,14 +95,14 @@ Ha, örömét fogja lelni csomagot kell futtatni, és az Ön számára legfontos
 Hatékony munkavégző csomópont használatával már-csomagok futtatása, ha növekvő **AzureSSISMaxParallelExecutionsPerNode** előfordulhat, hogy általános növeléséhez, az integrációs modul. Standard D1 v2 csomópontok 1 – 4 párhuzamos végrehajtások száma csomópontonként támogatottak. A csomópontok minden más típusú 1 – 8 párhuzamos végrehajtások száma csomópontonként támogatottak.
 A megfelelő értéket a csomag és a következő konfigurációk a munkavégző csomópontok alapján meg tudja becsülni. További információkért lásd: [általános célú virtuális gépek méretei](../virtual-machines/windows/sizes-general.md).
 
-| Méret             | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / Olvasási MBps / Írási MBps | Adatlemezek max. száma / teljesítménye: IOPS | Hálózati adapterek max. száma / várt hálózati teljesítmény (Mbps) |
+| Méret             | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Ideiglenes tárterület maximális teljesítménye: IOPS / olvasási MBps / írási MBps | Adatlemezek max. száma / átviteli sebesség: IO | Hálózati adapterek max. száma / várt hálózati teljesítmény (Mbps) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|
-| Standard szintű\_D1\_v2 | 1    | 3.5         | 50                     | 3000 / 46 / 23                                             | 2 / 2x500                         | 2 / 750                                        |
-| Standard szintű\_D2\_v2 | 2    | 7           | 100                    | 6000 / 93 / 46                                             | 4 / 4x500                         | 2 / 1500                                       |
-| Standard szintű\_D3\_v2 | 4    | 14          | 200                    | 12000 / 187 / 93                                           | 8 / 8x500                         | 4 / 3000                                       |
-| Standard szintű\_D4\_v2 | 8    | 28          | 400                    | 24000 / 375 / 187                                          | 16 / 16x500                       | 8 / 6000                                       |
-| Standard szintű\_A4\_v2 | 4    | 8           | 40                     | 4000 / 80 / 40                                             | 8 / 8x500                         | 4 / 1000                                       |
-| Standard szintű\_a8-as\_v2 | 8    | 16          | 80                     | 8000 / 160 / 80                                            | 16 / 16x500                       | 8 / 2000                                       |
+| Standard\_D1\_v2 | 1    | 3.5         | 50                     | 3000 / 46 / 23                                             | 2 / 2x500                         | 2 / 750                                        |
+| Standard\_D2\_v2 | 2    | 7           | 100                    | 6000 / 93 / 46                                             | 4 / 4x500                         | 2 / 1500                                       |
+| Standard\_D3\_v2 | 4    | 14          | 200                    | 12000 / 187 / 93                                           | 8 / 8x500                         | 4 / 3000                                       |
+| Standard\_D4\_v2 | 8    | 28          | 400                    | 24000 / 375 / 187                                          | 16 / 16x500                       | 8 / 6000                                       |
+| Standard\_A4\_v2 | 4    | 8           | 40                     | 4000 / 80 / 40                                             | 8 / 8x500                         | 4 / 1000                                       |
+| Standard\_A8\_v2 | 8    | 16          | 80                     | 8000 / 160 / 80                                            | 16 / 16x500                       | 8 / 2000                                       |
 
 Az alábbiakban az irányelvek a megfelelő értéket a **AzureSSISMaxParallelExecutionsPerNode** tulajdonság: 
 

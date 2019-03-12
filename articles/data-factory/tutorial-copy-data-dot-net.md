@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 3cbfb29542f2c71f4308b63319e77b37093529d4
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: e855c7c7f7c74ee9c8c30cd618260ad284b1c7f7
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445900"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541740"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Adatok másolása az Azure Blobból az Azure SQL Database-be az Azure Data Factory segítségével
 Ebben az oktatóanyagban olyan adat-előállító folyamatot hoz létre, amely az Azure Blob Storage-ból az Azure SQL Database-be másol adatokat. Az oktatóanyagban szereplő konfigurációs minta fájlalapú adattárból relációs adattárba való másolásra vonatkozik. A forrásként és fogadóként támogatott adattárak listája a [támogatott adattárakat tartalmazó](copy-activity-overview.md#supported-data-stores-and-formats) táblázatban található.
@@ -57,7 +57,7 @@ Készítse elő az Azure Blobot és az Azure SQL Database-t az oktatóanyaghoz a
     Jane|Doe
     ```
 
-2. Az [Azure Storage Explorerrel](http://storageexplorer.com/) vagy egy hasonló eszközzel hozza létre az **adfv2tutorial** tárolót, és töltse fel az **inputEmp.txt** fájlt a tárolóba.
+2. Az [Azure Storage Explorerrel](https://storageexplorer.com/) vagy egy hasonló eszközzel hozza létre az **adfv2tutorial** tárolót, és töltse fel az **inputEmp.txt** fájlt a tárolóba.
 
 #### <a name="create-a-sink-sql-table"></a>Fogadó SQL-tábla létrehozása
 

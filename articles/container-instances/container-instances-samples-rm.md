@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 03/07/2019
 ms.author: danlep
-ms.openlocfilehash: e825e0bdd08db0e9c1b51c09859aba2e7c716f91
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: bf9f2be8a0854a6968f3be6bfdaf3a59fc81dc76
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856465"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57728964"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Azure Container Instances szolgáltatásban az Azure Resource Manager-sablonokkal
 
@@ -25,15 +25,16 @@ A központi telepítési lehetőségekről a [üzembe helyezési](#deployment) s
 | | |
 |-|-|
 | **Alkalmazások** ||
-| [A WordPress][app-wp] | Létrehoz egy tárolópéldányt egy WordPress-webhely létrehozása és a MySQL-adatbázis. A WordPress-webhely tartalmát és a MySQL-adatbázis tárolja az Azure-fájlok megosztása. |
+| [Wordpress][app-wp] | Létrehoz egy tárolópéldányt egy WordPress-webhely létrehozása és a MySQL-adatbázis. A WordPress-webhely tartalmát és a MySQL-adatbázis tárolja az Azure-fájlok megosztása. |
 | [Az SQL Server- és IIS MS NAV][app-nav] | Üzembe helyez egy egyetlen Windows-tárolóban egy teljes körű önálló Dynamics NAV vagy Dynamics 365 Business Central-környezetben. |
 | **Kötetek** ||
 | [az emptyDir][vol-emptydir] | Az emptyDir köteten osztozó két Linux-tárolók üzembe helyezése. |
-| [A GitRepo][vol-gitrepo] | Üzembe helyez egy Linux-tároló, amely klónozza a GitHub-tárházba, és csatlakoztatja, kötetként. |
+| [gitRepo][vol-gitrepo] | Üzembe helyez egy Linux-tároló, amely klónozza a GitHub-tárházba, és csatlakoztatja, kötetként. |
 | [Titkos kulcs][vol-secret] | Üzembe helyezett egy Linux-tárolót egy PFX-tanúsítványt, mint titkos kötet csatlakoztatva van. |
 | **Hálózat** ||
 | [UDP-elérhetővé tett tárolók][net-udp] | Üzembe helyez egy Windows vagy Linux-alapú tárolót, amely közzéteszi az UDP-port. |
 | [Nyilvános IP-Címmel rendelkező Linux-tárolóban][net-publicip] | Üzembe helyez egy egyetlen nyilvános IP-cím-en keresztül elérhető Linux-tárolót. |
+| [Egy tárolócsoport és a virtuális hálózat (előzetes verzió) üzembe helyezése][net-vnet] | Üzembe helyez egy új virtuális hálózat, alhálózat, a hálózati profil és a tárolócsoport. |
 | **Azure-erőforrások** ||
 | [Azure Storage-fiók létrehozása és fájlok megosztása][az-files] | Tárolópéldány az Azure CLI használatával hozzon létre egy tárfiókot és egy Azure-fájlmegosztást.
 
@@ -43,11 +44,11 @@ Resource Manager-sablonok az erőforrások üzembe helyezésének számos lehet�
 
 [Az Azure CLI][deploy-cli]
 
-[Azure PowerShell-lel][deploy-powershell]
+[Azure PowerShell][deploy-powershell]
 
 [Az Azure Portalon][deploy-portal]
 
-[REST API-VAL][deploy-rest]
+[REST API][deploy-rest]
 
 <!-- LINKS - External -->
 [app-nav]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-dynamicsnav
@@ -55,6 +56,7 @@ Resource Manager-sablonok az erőforrások üzembe helyezésének számos lehet�
 [az-files]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-storage-file-share
 [net-publicip]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-linuxcontainer-public-ip
 [net-udp]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-udp
+[net-vnet]: https://github.com/Azure/azure-quickstart-templates/tree/master/101-aci-vnet
 [repo]: https://github.com/Azure/azure-quickstart-templates
 [vol-emptydir]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-linuxcontainer-volume-emptydir
 [vol-gitrepo]: https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-linuxcontainer-volume-gitrepo

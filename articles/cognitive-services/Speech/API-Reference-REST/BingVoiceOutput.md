@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: priyar
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: f7620c29e7d00a06be6d14740f05cc7543e49837
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 8f7de542610731f88104591dc27baac1406a9514
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674565"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548404"
 ---
 # <a name="bing-text-to-speech-api"></a>A Bing szöveg-beszéd átalakítás API
 
@@ -71,7 +71,7 @@ Engedélyezés | Engedélyezési jogkivonat |  Tekintse meg a <a href="#Subscrip
 
 ### <a name="InputParam"></a>Bemeneti paraméterek
 
-A Bing szöveg-beszéd átalakítás API a kérések HTTP POST-hívásokkal. A fejlécek az előző szakaszban vannak megadva. A szervezet Speech összefoglaló Markup Language (SSML) bemeneti szöveg lehet synthesized képviselő tartalmazza. Például a nyelvi beszédfelismerési jellemzőit és nem a beszélő vezérelhetők jelölőnyelvi ismertetését lásd: a [SSML W3C specifikáció](http://www.w3.org/TR/speech-synthesis/).
+A Bing szöveg-beszéd átalakítás API a kérések HTTP POST-hívásokkal. A fejlécek az előző szakaszban vannak megadva. A szervezet Speech összefoglaló Markup Language (SSML) bemeneti szöveg lehet synthesized képviselő tartalmazza. Például a nyelvi beszédfelismerési jellemzőit és nem a beszélő vezérelhetők jelölőnyelvi ismertetését lásd: a [SSML W3C specifikáció](https://www.w3.org/TR/speech-synthesis/).
 
 >[!NOTE]
 >A SSML bemenet támogatott maximális mérete 1024 karakter hosszúságú, beleértve az összes címke.
@@ -141,42 +141,42 @@ Voice name not supported
 
 ## <a name="ChangeSSML"></a>SSML keresztül hangkimenet módosítása
 
-A Microsoft szöveg-hang transzformációs API támogatja SSML 1.0 a W3C [Speech összefoglaló Markup Language (SSML) 1.0-s verzió](http://www.w3.org/TR/2009/REC-speech-synthesis-20090303/). Ez a szakasz példát módosítása bizonyos létrehozott hangkimenet, például a különféle jellemzőit értékelje, írásmódja SSML címkék használatával stb.
+A Microsoft szöveg-hang transzformációs API támogatja SSML 1.0 a W3C [Speech összefoglaló Markup Language (SSML) 1.0-s verzió](https://www.w3.org/TR/2009/REC-speech-synthesis-20090303/). Ez a szakasz példát módosítása bizonyos létrehozott hangkimenet, például a különféle jellemzőit értékelje, írásmódja SSML címkék használatával stb.
 
 1. Szünet hozzáadása
 
   ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, BenjaminRUS)'> Welcome to use Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.</voice> </speak>
+  <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, BenjaminRUS)'> Welcome to use Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.</voice> </speak>
   ```
 
 2. Nyelvű sebességének módosítása
 
   ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody rate="+30.00%">Welcome to use Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
+  <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody rate="+30.00%">Welcome to use Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
   ```
 
 3. Kiejtése
 
   ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'> <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme></voice> </speak>
+  <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'> <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme></voice> </speak>
   ```
 
 4. Kötet módosítása
 
   ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody volume="+20.00%">Welcome to use Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
+  <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody volume="+20.00%">Welcome to use Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
   ```
 
 5. Térköz módosítása
 
   ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>Welcome to use <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
+  <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>Welcome to use <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
   ```
 
 6. Változás prosody eloszlás
 
   ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody contour="(80%,+20%) (90%,+30%)" >Good morning.</prosody></voice> </speak>
+  <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody contour="(80%,+20%) (90%,+30%)" >Good morning.</prosody></voice> </speak>
   ```
 
 > [!NOTE]

@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: d44cfc0164892c34bcbe16ca07e9ec67190ada24
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: c961238d1fbce1ff590e0b0843ae1390aa7f1cd9
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50415304"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534820"
 ---
-# <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az Azure Cloud Services üzembe helyezési problémák: gyakran ismételt kérdések (GYIK)
+# <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az Azure Cloud Services üzembe helyezési problémák: Gyakori kérdések (GYIK)
 
 Ez a cikk tartalmazza a felmerülő üzembehelyezési hibák – gyakori kérdések [a Microsoft Azure Cloud Services](https://azure.microsoft.com/services/cloud-services). Is tud kezelni a [Cloud Services Virtuálisgép-méretet lapján](cloud-services-sizes-specs.md) mérete információt.
 
@@ -33,29 +33,29 @@ Ha egy felhőalapú szolgáltatás egy központi telepítést vagy a tárolóhel
 
 Foglalási hibák fordulhatnak elő, amikor a fürt hol helyezkedik el a felhőalapú szolgáltatás nem rendelkezik elég fizikai számítási erőforrásokat az üzembe helyezés kérelem teljesítéséhez.
 
-Az ilyen hibák csökkentése, lásd [Felhőszolgáltatás-foglalási hiba: megoldások](cloud-services-allocation-failures.md#solutions).
+Az ilyen hibák csökkentése, lásd [Felhőszolgáltatás-foglalási hiba: Megoldások](cloud-services-allocation-failures.md#solutions).
 
 ## <a name="why-does-scaling-up-or-scaling-out-a-cloud-service-deployment-sometimes-result-in-allocation-failure"></a>Miért nem és leskálázása ki egy felhőszolgáltatás üzembe helyezésének néha eredményez a foglalási hiba?
 Amikor telepít egy felhőalapú szolgáltatás, általában lekérdezi rögzítve egy adott fürtön. Ez azt jelenti, hogy új példányok ugyanazon fürt méretezése felfelé és kimenő egy meglévő felhőszolgáltatáshoz kell lefoglalni. Ha a fürt közelít kapacitásának határához, vagy nem érhető el a kívánt virtuális gép méretének/típusának, a kérelem sikertelen lehet.
 
-Az ilyen hibák csökkentése, lásd [Felhőszolgáltatás-foglalási hiba: megoldások](cloud-services-allocation-failures.md#solutions).
+Az ilyen hibák csökkentése, lásd [Felhőszolgáltatás-foglalási hiba: Megoldások](cloud-services-allocation-failures.md#solutions).
 
 ## <a name="why-does-deploying-a-cloud-service-into-an-affinity-group-sometimes-result-in-allocation-failure"></a>Miért nem környezetbe való üzembe helyezés egy felhőalapú szolgáltatás affinitáscsoporthoz néha eredményez foglalási hiba?
 Új üzemelő példányt egy üres felhőszolgáltatásban a háló minden olyan fürt, az adott régióban, oszthat ki, kivéve, ha a felhőszolgáltatás egy affinitáscsoporthoz van rögzítve. Központi telepítések számára ugyanabban az affinitáscsoportban kísérli meg a rendszer ugyanazon a fürtön. Ha a fürt közelít kapacitásának határához, a kérelem sikertelen lehet.
 
-Az ilyen hibák csökkentése, lásd [Felhőszolgáltatás-foglalási hiba: megoldások](cloud-services-allocation-failures.md#solutions).
+Az ilyen hibák csökkentése, lásd [Felhőszolgáltatás-foglalási hiba: Megoldások](cloud-services-allocation-failures.md#solutions).
 
 ## <a name="why-does-changing-vm-size-or-adding-a-new-vm-to-an-existing-cloud-service-sometimes-result-in-allocation-failure"></a>Miért nem virtuális gép méretének módosítása vagy egy új virtuális gép hozzáadása egy meglévő felhőszolgáltatáshoz néha eredményez foglalási hiba?
 Előfordulhat, hogy az egy kínai adatközpont fürtök különböző konfigurációjú géptípus (például egy sorozat, az Av2 sorozat, a D sorozat, a Dv2 sorozat, G sorozat, H-sorozat stb.). De a fürtök nem feltétlenül kell minden olyan virtuális gépek. Például ha a D sorozatú virtuális gép hozzáadása egy felhőszolgáltatás, amely már üzembe helyezte A csak sorozat fürtben, tapasztalható-foglalási hiba. Ez is történik, ha megpróbálja módosítani a VM-Termékváltozatok (például az A sorozatú átváltása a D sorozat) mérete.
 
-Az ilyen hibák csökkentése, lásd [Felhőszolgáltatás-foglalási hiba: megoldások](cloud-services-allocation-failures.md#solutions).
+Az ilyen hibák csökkentése, lásd [Felhőszolgáltatás-foglalási hiba: Megoldások](cloud-services-allocation-failures.md#solutions).
 
-A régióban elérhető méretek megtekintéséhez [Microsoft Azure: elérhető termékek régiók szerint](https://azure.microsoft.com/regions/services).
+A régióban elérhető méretek megtekintéséhez [Microsoft Azure: Régiónként elérhető termékek](https://azure.microsoft.com/regions/services).
 
 ## <a name="why-does-deploying-a-cloud-service-sometime-fail-due-to-limitsquotasconstraints-on-my-subscription-or-service"></a>Miért nem egy felhőszolgáltatás telepítésének valamikor miatt meghiúsul korlátok és kvóták/megkötések a saját előfizetés vagy szolgáltatás?
-A felhőszolgáltatás üzemelő példányának meghiúsulhatnak, ha az erőforrások lefoglalását szükséges meghaladja az alapértelmezett vagy a régió/adatközpont szinten a szolgáltatás számára engedélyezett maximális kvótát. További információkért lásd: [korlátozza a Cloud Services](../azure-subscription-service-limits.md#cloud-services-limits).
+A felhőszolgáltatás üzemelő példányának meghiúsulhatnak, ha az erőforrások lefoglalását szükséges meghaladja az alapértelmezett vagy a régió/adatközpont szinten a szolgáltatás számára engedélyezett maximális kvótát. További információkért lásd: [korlátozza a Cloud Services](../azure-subscription-service-limits.md#azure-cloud-services-limits).
 
-Az előfizetést, a portálon is a jelenlegi használati kvóta sikerült nyomon: az Azure portal = > előfizetések = > \<a megfelelő előfizetést > = > "Használati + kvóta".
+Az előfizetést, a portálon is a jelenlegi használati kvóta sikerült nyomon: Az Azure portal = > előfizetések = > \<a megfelelő előfizetést > = > "Használati + kvóta".
 
 Erőforrás-használat, felhasználás-kapcsolatos adatai is beolvashatók az Azure számlázási API-kon keresztül. Lásd: [Azure erőforrás-használati API (előzetes verzió)](../billing/billing-usage-rate-card-overview.md#azure-resource-usage-api-preview).
 

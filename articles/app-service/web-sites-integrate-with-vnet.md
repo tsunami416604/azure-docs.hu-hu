@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: cddc6ccd8360ef88c95cd33c0bc8e141d721042d
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 951f8f887a7b29aac67b50ff8f92ddfd4a66e26b
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010514"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766878"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Az alkalmazás integrálása az Azure-beli virtuális hálózathoz
 Ez a dokumentum ismerteti az Azure App Service virtuális hálózat integrációja, és bemutatja, hogyan állíthatja be az Apps [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). [Azure virtuális hálózatok] [ VNETOverview] (Vnetek) lehetővé teszi számos, az Azure-erőforrások nem internetes routeable hálózati helyezni. Ezek a hálózatok csatlakozhat a helyszíni hálózatot VPN-technológiák segítségével. 
@@ -277,7 +277,8 @@ Az új verzió előzetes verzióban érhető el, és a következő jellemzőkkel
 * Az új VNet-integráció szolgáltatás nem működik az alkalmazások App Service Environment-környezetben.
 * Integrált alkalmazás a virtuális hálózat nem törölhető.  
 * Útválasztási táblázatokat és globális társviszony-létesítés még nem érhető el az új VNet-integráció.  
-* Az App Service-csomag példányonként egy címet használja. Alhálózat méretét a hozzárendelés után nem módosítható, mivel a is több, mint a maximális skálázhatósága alhálózatot használjon. 32-címekkel rendelkező/27-es nem az ajánlott mérete, mert a 20-példányok méretezett App Service-csomagot, amely helyet biztosít.  Védett erőforrásokhoz az új VNet-integráció funkcióval szolgáltatásvégpont használhatja fel. Ehhez engedélyezze a szolgáltatásvégpontokat a virtuális hálózatok közötti integráció használt alhálózat.
+* Az App Service-csomag példányonként egy címet használja. Alhálózat méretét a hozzárendelés után nem módosítható, mivel a is több, mint a maximális skálázhatósága alhálózatot használjon. 32-címekkel rendelkező/27-es nem az ajánlott mérete, mert a 20-példányok méretezett App Service-csomagot, amely helyet biztosít.
+* Védett erőforrásokhoz az új VNet-integráció funkcióval szolgáltatásvégpont használhatja fel. Ehhez engedélyezze a szolgáltatásvégpontokat a virtuális hálózatok közötti integráció használt alhálózat.
 
 Az új funkció használatához:
 

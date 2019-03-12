@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: e49a3063d6314947c59c5ae863077748d997f2b5
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: ae123638e26c9fb6c82666efddabf06874c7b7a8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515471"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539960"
 ---
 # <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>Adafruit Feather HUZZAH ESP8266 csatlakoztatása Azure IoT hubhoz a felhőben
 
@@ -27,7 +27,7 @@ ms.locfileid: "51515471"
 Adafruit Feather HUZZAH ESP8266 csatlakozni az IoT hub által létrehozott. Ezután egy mintaalkalmazás futtatunk ESP8266 DHT22 érzékelő hőmérséklettel és páratartalommal kapcsolatos adatok gyűjtését. Végül az érzékelő adatokat küld az IoT hubnak.
 
 > [!NOTE]
-> Ha használ egyéb ESP8266 célra szolgáló kártyákat, ezeket a lépéseket csatlakozni az IoT hub továbbra is követheti. Az ESP8266 táblához használ, attól függően előfordulhat, hogy szeretne a `LED_PIN`. Például ha ESP8266 az AI-Thinker használ, érdemes lehet módosítani a `0` való `2`. Még nem rendelkezik egy csomagot? A letöltés a [Azure-webhelyen](http://azure.com/iotstarterkits).
+> Ha használ egyéb ESP8266 célra szolgáló kártyákat, ezeket a lépéseket csatlakozni az IoT hub továbbra is követheti. Az ESP8266 táblához használ, attól függően előfordulhat, hogy szeretne a `LED_PIN`. Például ha ESP8266 az AI-Thinker használ, érdemes lehet módosítani a `0` való `2`. Még nem rendelkezik egy csomagot? A letöltés a [Azure-webhelyen](https://azure.com/iotstarterkits).
 
 ## <a name="what-you-learn"></a>Ismertetett témák
 
@@ -160,7 +160,7 @@ A mintaalkalmazás GitHub-ban üzemel. Klónozza a mintatárházat, amely tartal
 
 6. Adja meg a Visual Studio Code-ban `F1`.
 
-7. Típus **Arduino** válassza **Arduino: tábla Manager**.
+7. Típus **Arduino** válassza **Arduino: Üzenőfal Manager**.
 
 8. Az a **Arduino tábla Manager** lapra, majd **további URL-címek**.
 
@@ -184,7 +184,7 @@ A mintaalkalmazás GitHub-ban üzemel. Klónozza a mintatárházat, amely tartal
 
    ![Az esp8266 csomag telepítve van](media/iot-hub-arduino-huzzah-esp8266-get-started/13_vscode-esp8266-installed.png)
 
-13. Adja meg `F1`, majd írja be a **Arduino** válassza **Arduino: tábla Config**.
+13. Adja meg `F1`, majd írja be a **Arduino** válassza **Arduino: Board Config**.
 
 14. Jelölje be a **kijelölt táblához:** , és írja be **esp8266**, majd **Adafruit HUZZAH ESP8266 (esp8266)**.
 
@@ -192,7 +192,7 @@ A mintaalkalmazás GitHub-ban üzemel. Klónozza a mintatárházat, amely tartal
 
 ### <a name="install-necessary-libraries"></a>Szükséges kódtárak telepítése
 
-1. Adja meg a Visual Studio Code-ban `F1`, majd írja be a **Arduino** válassza **Arduino: könyvtárkezelő**.
+1. Adja meg a Visual Studio Code-ban `F1`, majd írja be a **Arduino** válassza **Arduino: Szalagtár Manager**.
 
 2. Keresse meg a következő könyvtár egyenként neveket. Minden könyvtár talált, kattintson a **telepítése**.
    * `AzureIoTHub`
@@ -222,7 +222,7 @@ A mintaalkalmazás abban az esetben nem kell valódi érzékelő DHT22 szimulál
 
 1. A Visual Studio Code-ban kattintson **<Select Serial Port>** állapotát, és majd kattintson a soros port Feather HUZZAH ESP8266 a.
 
-2. Adja meg `F1`, majd írja be a **Arduino** válassza **Arduino: feltöltése** készíthet és helyezhet üzembe a mintaalkalmazás Feather HUZZAH ESP8266.
+2. Adja meg `F1`, majd írja be a **Arduino** válassza **Arduino: Töltse fel** készíthet és helyezhet üzembe a mintaalkalmazás Feather HUZZAH ESP8266.
 
 ### <a name="enter-your-credentials"></a>Adja meg hitelesítő adatait
 

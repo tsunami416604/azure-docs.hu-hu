@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 0ca82da43ea53aed3fbcf858b34a3ad94d712661
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d5d3d7031f9795db0ae04bc707bd9e7707137210
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864944"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530739"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Hozzon létre egy egyéni beszédfelismerési rekord hangalapú minták
 
@@ -150,7 +150,7 @@ A legtöbb digitális felvétel elérhető dinamikus tartományának overdriving
 
 Itt a tartomány (magasság) a legtöbb használatos, de a jel a legmagasabb csúcsok nem érte el a top vagy az ablak alsó részén. Is láthatja, hogy a csend elszámolása megközelíti a dinamikus kiosztás vízszintes vonal, egy alacsony zaj emelet jelzi. Ez a felvétel elfogadható dinamikus tartomány és a jel zaj arány rendelkezik.
 
-Közvetlenül a számítógéphez egy kiváló minőségű hang felület vagy egy USB-porttal, attól függően, a mic rekordot használ. Analóg, tartsa meg a hang lánc egyszerű: mic, preamp, hang felület, a számítógép. Mindkét licencelheti [Avid Pro eszközök](http://www.avid.com/en/pro-tools) és [Adobe Audition](https://www.adobe.com/products/audition.html) havi elfogadható áron. Ha a költségvetés rendkívül szoros, próbálja ki az ingyenes [Audacity](https://www.audacityteam.org/).
+Közvetlenül a számítógéphez egy kiváló minőségű hang felület vagy egy USB-porttal, attól függően, a mic rekordot használ. Analóg, tartsa meg a hang lánc egyszerű: mic, preamp, hang felület, a számítógép. Mindkét licencelheti [Avid Pro eszközök](https://www.avid.com/en/pro-tools) és [Adobe Audition](https://www.adobe.com/products/audition.html) havi elfogadható áron. Ha a költségvetés rendkívül szoros, próbálja ki az ingyenes [Audacity](https://www.audacityteam.org/).
 
 Jegyezze fel minőségben 44,1 kHz 16 bites monophonic (CD), vagy még jobb. Aktuális állapot,-legújabb 48 kHz 24 bites esetén a berendezés támogatja azt. Akkor lesz lefelé-sample 16 kHz 16 bites, a hang az egyéni beszédfelismerési portálra való mentése előtt. Továbbra is hogy megéri rendelkezik egy kiváló minőségű eredeti rögzítése abban az esetben, ha módosítások szükségesek.
 
@@ -204,7 +204,7 @@ A modern felvétel studios futtasson azokon a számítógépeken. A munkamenet v
 
 Az egyéni beszédfelismerési portálon minden egyes megadott utterance (kifejezés) kell lennie a saját fájl szükséges. A studio által kínált egyes hangfájl több kimondott szöveg tartalmazza. Ezért az elsődleges utáni üzemi feladata felosztani a máshogy a felvételt, és készítse elő azokat küldésének. A rögzítés mérnök lehet, hogy a fájlban elhelyezni jelölők (vagy egy külön köteg táblázatban megadott) annak jelzésére, ahol minden kimondásakor kezdődik.
 
-Található, a pontos vesz igénybe, a megjegyzéseket szeretne, és hogyan segédprogram, például a Szerkesztés hang használatát [Avid Pro eszközök](http://www.avid.com/en/pro-tools), [Adobe Audition](https://www.adobe.com/products/audition.html), vagy az ingyenes [Audacity](https://www.audacityteam.org/), minden egyes másolása utterance (kifejezés) egy új fájlba.
+Található, a pontos vesz igénybe, a megjegyzéseket szeretne, és hogyan segédprogram, például a Szerkesztés hang használatát [Avid Pro eszközök](https://www.avid.com/en/pro-tools), [Adobe Audition](https://www.adobe.com/products/audition.html), vagy az ingyenes [Audacity](https://www.audacityteam.org/), minden egyes másolása utterance (kifejezés) egy új fájlba.
 
 Hagyja üresen a csend elején és végén, az első kivételével minden klip mindössze 0,2 másodperc. Ezt a fájlt kell kezdődnie teljes csend öt másodperc. Ne használjon "nulla out" csendes részére a fájl egy hang szerkesztőben. Többek között a "hely"hangfrekvenciás az egyéni beszédfelismerési bármely maradék háttérzaj meghiúsult lépések kompenzációjához algoritmusok segítségével.
 

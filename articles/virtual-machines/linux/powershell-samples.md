@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
-ms.openlocfilehash: e094a95fef5e010471dde3e60f2fc9aaaaad6344
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 53784c3d74f9e6af5f1e84cc098194113e81333b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57246374"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533357"
 ---
 # <a name="azure-virtual-machine-powershell-samples"></a>Azure virtuális gépek PowerShell-minták
 
@@ -43,6 +43,6 @@ Az alábbi táblázat, amely létrehozása és kezelése a Linux rendszerű virt
 | [Pillanatkép létrehozása virtuális merevlemezből](../scripts/virtual-machines-linux-powershell-sample-create-snapshot-from-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Létrehoz egy pillanatképet egy VHD-ből, majd azt több azonos felügyelt lemez gyors létrehozásához.  |
 | [Másolja a pillanatképet, de akár egy másik előfizetésben](../scripts/virtual-machines-linux-powershell-sample-copy-snapshot-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Másolja a pillanatkép, de akár egy másik előfizetést, amely a szülőpillanatkép ugyanabban a régióban. |
 |**Virtuális gépek figyelése**||
-| [A figyelő egy virtuális Gépet az Azure Log Analytics használatával](./../scripts/virtual-machines-linux-powershell-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Létrehoz egy virtuális gépet, telepíti a Log Analytics-ügynököt, és regisztrálja a virtuális gép a Log Analytics-munkaterületen.  |
+| [A figyelő egy virtuális Gépet az Azure Monitor naplóira](./../scripts/virtual-machines-linux-powershell-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Létrehoz egy virtuális gépet, telepíti a Log Analytics-ügynököt, és regisztrálja a virtuális gép a Log Analytics-munkaterületen.  |
 | [Felügyelt lemez másolása, de akár egy másik előfizetésre](../scripts/virtual-machines-linux-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Másolja át egy felügyelt lemezt, de akár egy másik előfizetést, amely a szülő felügyelt lemez ugyanabban a régióban.
 | | |

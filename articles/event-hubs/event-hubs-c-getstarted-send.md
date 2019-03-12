@@ -15,12 +15,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 8c134ae9944517d6ae66fcd22e06bbfc599912b4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 6cb1f788f41fe07516d759b177e1d76405dd2bf8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076392"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57529711"
 ---
 # <a name="send-events-to-azure-event-hubs-using-c"></a>Események küldése az Azure Event Hubs C használatával
 
@@ -38,12 +38,12 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs-névtér és eseményközpont létrehozása
 Első lépésként az [Azure Portalon](https://portal.azure.com) hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazása és az eseményközpont közötti kommunikációhoz szükséges felügyeleti hitelesítő adatokat. A névtér és eseményközpont létrehozásához hajtsa végre az eljárást a [Ez a cikk](event-hubs-create.md).
 
-Az eseményközpont hozzáférési kulcs értékének lekérése kövesse a cikkben szereplő: [kapcsolati sztring lekérése](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). A hozzáférési kulcsot a kód írása az oktatóanyag későbbi részében fogja használni. Az alapértelmezett kulcs neve: **RootManageSharedAccessKey**.
+Az eseményközpont hozzáférési kulcs értékének lekéréséhez kövesse a cikkben szereplő: [Kapcsolati sztring lekérése](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). A hozzáférési kulcsot a kód írása az oktatóanyag későbbi részében fogja használni. Az alapértelmezett nevet, majd: **RootManageSharedAccessKey**.
 
 Most folytassa a következő lépéseket ebben az oktatóanyagban.
 
 ## <a name="write-code-to-send-messages-to-event-hubs"></a>Kód írása az üzenetek küldése az Event hubs szolgáltatásba való
-Ez a rész bemutatja, hogyan küldhet eseményeket az eseményközpontjába C alkalmazások írásához. A kód a Proton AMQP kódtárat használja a [Apache Qpid projekt](http://qpid.apache.org/). Ez hasonló a Service Bus-üzenetsorok és témakörök az amqp-vel a C látható módon a [ebben a példában](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504). További információkért lásd: a [Qpid Proton dokumentáció](http://qpid.apache.org/proton/index.html).
+Ez a rész bemutatja, hogyan küldhet eseményeket az eseményközpontjába C alkalmazások írásához. A kód a Proton AMQP kódtárat használja a [Apache Qpid projekt](https://qpid.apache.org/). Ez hasonló a Service Bus-üzenetsorok és témakörök az amqp-vel a C látható módon a [ebben a példában](https://code.msdn.microsoft.com/Using-Apache-Qpid-Proton-C-afd76504). További információkért lásd: a [Qpid Proton dokumentáció](https://qpid.apache.org/proton/index.html).
 
 1. Az a [Qpid AMQP Messenger lap](https://qpid.apache.org/proton/messenger.html), kövesse az utasításokat követve Qpid Proton, telepítse a környezettől függően.
 2. A Proton könyvtár fordítása, telepítse a következő csomagokat:
@@ -51,10 +51,10 @@ Ez a rész bemutatja, hogyan küldhet eseményeket az eseményközpontjába C al
     ```shell
     sudo apt-get install build-essential cmake uuid-dev openssl libssl-dev
     ```
-3. Töltse le a [Qpid Proton könyvtár](http://qpid.apache.org/proton/index.html), és csomagolja ki, például:
+3. Töltse le a [Qpid Proton könyvtár](https://qpid.apache.org/proton/index.html), és csomagolja ki, például:
    
     ```shell
-    wget http://archive.apache.org/dist/qpid/proton/0.7/qpid-proton-0.7.tar.gz
+    wget https://archive.apache.org/dist/qpid/proton/0.7/qpid-proton-0.7.tar.gz
     tar xvfz qpid-proton-0.7.tar.gz
     ```
 4. Hozzon létre egy build könyvtárat, fordítás, és telepítse:
@@ -66,7 +66,7 @@ Ez a rész bemutatja, hogyan küldhet eseményeket az eseményközpontjába C al
     cmake -DCMAKE_INSTALL_PREFIX=/usr ..
     sudo make install
     ```
-5. A munkahelyi könyvtárban hozzon létre egy új fájlt **sender.c** az alábbi kódra. Ne feledje el az értékeket a SAS/kulcsnév, az eseményközpont neve és a névtér. Továbbá cserélje le a kulcs URL-kódolású verzióját a **SendRule** korábban létrehozott. URL-kódolása is azt [Itt](http://www.w3schools.com/tags/ref_urlencode.asp).
+5. A munkahelyi könyvtárban hozzon létre egy új fájlt **sender.c** az alábbi kódra. Ne feledje el az értékeket a SAS/kulcsnév, az eseményközpont neve és a névtér. Továbbá cserélje le a kulcs URL-kódolású verzióját a **SendRule** korábban létrehozott. URL-kódolása is azt [Itt](https://www.w3schools.com/tags/ref_urlencode.asp).
    
     ```c
     #include "proton/message.h"

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: jingwang
-ms.openlocfilehash: d6a6d9b352db61d98e85c840a3ebc5cb6a832a3f
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: ba268806dccb7c2671825c794383396a2ff20299
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352461"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548813"
 ---
 # <a name="copy-data-from-sap-ecc-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával az SAP ECC
 
@@ -121,7 +121,7 @@ Adatok másolása az SAP ECC, állítsa be a forrás típusaként a másolási t
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **SapEccSource** | Igen |
-| lekérdezés | Adatok szűrése OData-lekérdezés beállításai. Example: "$select=Name,Description&$top=10".<br/><br/>SAP ECC összekötő adatokat másol a kombinált URL-cím: (a társított szolgáltatás megadott URL-címe) / (adatkészletben megadott elérési út)? (a másolási tevékenység forrásban megadott lekérdezést). Tekintse meg [OData URL-címe összetevők](http://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nem |
+| lekérdezés | Adatok szűrése OData-lekérdezés beállításai. Example: "$select=Name,Description&$top=10".<br/><br/>SAP ECC összekötő adatokat másol a kombinált URL-cím: (a társított szolgáltatás megadott URL-címe) / (adatkészletben megadott elérési út)? (a másolási tevékenység forrásban megadott lekérdezést). Tekintse meg [OData URL-címe összetevők](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nem |
 
 **Példa**
 
@@ -161,20 +161,20 @@ Amikor az adatok másolása az SAP ECC, a következő hozzárendeléseket haszn�
 
 | OData-adattípus | Data factory közbenső adattípus |
 |:--- |:--- |:--- |
-| Edm.Binary | Karakterlánc |
-| Edm.Boolean | Logikai |
-| Edm.Byte | Karakterlánc |
+| Edm.Binary | String |
+| Edm.Boolean | Bool |
+| Edm.Byte | String |
 | Edm.DateTime | DateTime |
-| Edm.Decimal | Tizedes tört |
-| Edm.Double | Dupla |
-| Edm.Single | Önálló |
-| Edm.Guid | Karakterlánc |
+| Edm.Decimal | Decimal |
+| Edm.Double | Double |
+| Edm.Single | Single |
+| Edm.Guid | String |
 | Edm.Int16 | Int16 |
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
-| Edm.String | Karakterlánc |
-| Edm.Time | Időtartam |
+| Edm.String | String |
+| Edm.Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 
 > [!NOTE]

@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: b2bfec47bc92ebf5db1561d8fca33940dc376866
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: ede1f031c3c38e714d076b861ba2abdad81c6702
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56752285"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57726855"
 ---
 # <a name="quickstart-create-a-hololens-unity-app-using-azure-spatial-anchors"></a>Gyors útmutató: Egy Azure térbeli horgonyok használatával HoloLens Unity-alkalmazás létrehozása
 
@@ -35,7 +35,7 @@ A következőket fogja megtanulni:
 A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
 - Olyan Windows-gépeken, <a href="https://unity3d.com/get-unity/download" target="_blank">Unity 2018.3 +</a> és <a href="https://www.visualstudio.com/downloads/" target="_blank">Visual Studio 2017 +</a> telepített a **univerzális Windows Platform fejlesztési** számítási feladatot.
-- HoloLens eszköz [fejlesztői mód](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) engedélyezve van.
+- HoloLens eszköz [fejlesztői mód](https://docs.microsoft.com/windows/mixed-reality/using-visual-studio) engedélyezve van. Ez a cikk a HoloLens eszköz van szükség a [Windows 2018. október 10. frissítés](https://docs.microsoft.com/en-us/windows/mixed-reality/release-notes-october-2018) (más néven RS5). A legújabb verziót a HoloLens frissítéséhez nyissa meg a **beállítások** alkalmazást, lépjen a **frissítés és biztonság**, majd válassza a **frissítések keresése** gombra.
 - Az alkalmazás be kell állítani a **SpatialPerception** funkció alatt **Build Settings**->**Player beállítások**->**közzétételi Beállítások**->**képességek**.
 - Engedélyeznie kell az alkalmazás **virtuális valóságban támogatott** a **Windows vegyes valóság SDK** alatt **Build Settings**->**lejátszóbeállításai** -> **XR beállítások**.
 
@@ -51,7 +51,7 @@ Nyissa meg **Build Settings** kiválasztásával **fájl** -> **Build Settings**
 
 Az a **Platform** szakaszban jelölje be **univerzális Windows Platform**. Majd módosíthatja a **céleszköz** való **HoloLens**.
 
-Válassza ki **kapcsoló Platform** módosítása a platform **univerzális Windows Platform**.
+Válassza ki **kapcsoló Platform** módosítása a platform **univerzális Windows Platform**. Unity megkérheti, hogy UWP támogatási összetevők telepítéséhez, ha hiányzik.
 
 ![Unity-létrehozási beállítások](./media/get-started-unity-hololens/unity-build-settings.png)
 

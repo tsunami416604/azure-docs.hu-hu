@@ -12,12 +12,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 38a5434d4b6f27aacdf1861fa0b005501ad1e28b
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 7069114a8cb63b8b166bc29e92d8f355c49824bb
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308890"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57727144"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 
@@ -230,28 +230,28 @@ Georeplikált adatbázisokhoz amikor engedélyezi a naplózást az elsődleges a
 
 **PowerShell-parancsmagok (beleértve a WHERE záradék támogatási további szűréshez)**:
 
-- [Create or Update Database Blob Auditing Policy (Set-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseauditing)
-- [Create or Update Server Blob Auditing Policy (Set-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserverauditing)
+- [Naplózási házirend (Set-AzSqlDatabaseAuditing) adatbázis frissítése](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseauditing)
+- [Létrehozni vagy frissíteni a kiszolgáló naplózási házirend (Set-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserverauditing)
 - [Get Database Auditing Policy (Get-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseauditing)
-- [Get Server Blob Auditing Policy (Get-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverauditing)
+- [Get Server Auditing Policy (Get-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverauditing)
 
 A parancsfájl példa: [PowerShell-lel, naplózás és fenyegetésészlelés konfigurálása](scripts/sql-database-auditing-and-threat-detection-powershell.md).
 
 ## <a id="subheading-9"></a>Kezelheti az SQL database naplózási REST API használatával
 
-**REST API - blobnaplózás**:
+**REST API**:
 
-- [Hozzon létre vagy adatbázis Blob naplózási szabályzatának frissítése](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/createorupdate)
-- [Hozzon létre vagy frissítési kiszolgáló Blob naplózási házirend](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
-- [Adatbázis Blob naplózási szabályzatának beolvasása](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/get)
-- [Kiszolgáló Blob naplózási szabályzatának beolvasása](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
+- [Adatbázis naplózási szabályzatának frissítése](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/createorupdate)
+- [Hozzon létre vagy naplózási házirend-kiszolgáló frissítése](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [Adatbázis naplózási szabályzatának beolvasása](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/get)
+- [Kiszolgáló naplózási szabályzat lekérése](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
 AHOL záradékot támogatja a további szűréshez a kiterjesztett házirend:
 
-- [Adatbázis frissítése *kiterjesztett* Blob naplózási házirend](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
-- [Hozzon létre vagy frissítési kiszolgáló *kiterjesztett* Blob naplózási házirend](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
-- [Adatbázis beolvasása *kiterjesztett* Blob naplózási házirend](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
-- [Első kiszolgáló *kiterjesztett* Blob naplózási házirend](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
+- [Adatbázis frissítése *kiterjesztett* naplózási házirend](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
+- [Hozzon létre vagy frissítési kiszolgáló *kiterjesztett* naplózási házirend](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [Adatbázis beolvasása *kiterjesztett* naplózási házirend](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
+- [Első kiszolgáló *kiterjesztett* naplózási házirend](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
 ## <a id="subheading-10"></a>Kezelheti az SQL database naplózási ARM-sablonok használatával
 

@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 07/31/2018
-ms.openlocfilehash: 0ecd0603a5750b6d03da7cf2c577c668482048aa
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 98e1f982eb627db2a7d2126109e5897c45649ce9
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077317"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57545124"
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Üzembe helyezés az Azure App Service-ben a Jenkins beépülő modullal 
 
@@ -77,7 +77,7 @@ Mielőtt beállítaná a feladatot a Jenkinsben, szüksége van egy Azure App Se
     az webapp create --name <myAppName> --resource-group <myResourceGroup> --plan <myAppServicePlan>
     ```
     
-3. Állítsa be az alkalmazáshoz szükséges Java-futtatókörnyezetet. Az alábbi Azure CLI-parancs a webalkalmazást arra konfigurálja, hogy a legutóbbi JDK 8-on és az [Apache Tomcat](http://tomcat.apache.org/) 8.0-s verzióján fusson:
+3. Állítsa be az alkalmazáshoz szükséges Java-futtatókörnyezetet. Az alábbi Azure CLI-parancs a webalkalmazást arra konfigurálja, hogy a legutóbbi JDK 8-on és az [Apache Tomcat](https://tomcat.apache.org/) 8.0-s verzióján fusson:
     ```azurecli-interactive
     az webapp config set \
     --name <myAppName> \

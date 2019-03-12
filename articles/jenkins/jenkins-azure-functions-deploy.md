@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 02/23/2019
-ms.openlocfilehash: 1138af0e073f68842861df86acd4d9d6eb467782
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 93504de6384be530ba037f662f7b043729aa3f99
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56825042"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536914"
 ---
 # <a name="deploy-to-azure-functions-using-the-jenkins-azure-functions-plugin"></a>A Jenkins az Azure Functions beépülő modul használata az Azure Functions üzembe helyezése
 
@@ -89,6 +89,14 @@ A következő lépések elmagyarázzák, hogyan készíti elő a Jenkins-kiszolg
 
 1. Használja az Azure-szolgáltatás egyszerű, adja hozzá a "Microsoft Azure szolgáltatás egyszerű" hitelesítő adatok típusa a Jenkinsben. Tekintse meg a [üzembe helyezés az Azure App Service](./tutorial-jenkins-deploy-web-app-azure-app-service.md#add-service-principal-to-jenkins) oktatóanyag.
 
+## <a name="fork-the-sample-github-repo"></a>A minta GitHub-tárház elágaztatása
+
+1. [Jelentkezzen be a GitHub-adattárat a páratlan vagy akár mintát alkalmazáshoz](https://github.com/VSChina/odd-or-even-function.git).
+
+1. Válassza a jobb felső sarokban a GitHub **elágazás**.
+
+1. Kövesse az utasításokat, jelölje be a GitHub-fiókot, és ezzel Befejezés.
+
 ## <a name="create-a-jenkins-pipeline"></a>Hozzon létre egy Jenkins-folyamat
 
 Ebben a szakaszban hoz létre a [Jenkins folyamat](https://jenkins.io/doc/book/pipeline/).
@@ -107,7 +115,27 @@ Ebben a szakaszban hoz létre a [Jenkins folyamat](https://jenkins.io/doc/book/p
     
 1. Az a **folyamat-definíció >** szakaszban jelölje be **SCM parancsfájlt folyamat**.
 
-1. Adja meg az SCM adattár URL-CÍMÉT és a parancsfájl elérési utat a megadott [példaszkript](https://github.com/VSChina/odd-or-even-function/blob/master/doc/resources/jenkins/JenkinsFile).
+1. Adja meg a GitHub-elágazásba URL-CÍMÉT és a parancsfájl elérési útja ("doc/erőforrás/jenkins/JenkinsFile") található a [JenkinsFile példa](https://github.com/VSChina/odd-or-even-function/blob/master/doc/resources/jenkins/JenkinsFile).
+
+   ```
+   node {
+    stage('Init') {
+        checkout scm
+        }
+
+    stage('Build') {
+        sh 'mvn clean package'
+        }
+
+    stage('Publish') {
+        azureFunctionAppPublish appName: env.FUNCTION_NAME, 
+                                azureCredentialsId: env.AZURE_CRED_ID, 
+                                filePath: '**/*.json,**/*.jar,bin/*,HttpTrigger-Java/*', 
+                                resourceGroup: env.RES_GROUP, 
+                                sourceDirectory: 'target/azure-functions/odd-or-even-function-sample'
+        }
+    }
+    ```
 
 ## <a name="build-and-deploy"></a>Létrehozása és üzembe helyezése
 

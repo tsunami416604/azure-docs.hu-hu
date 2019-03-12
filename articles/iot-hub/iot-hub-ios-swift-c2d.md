@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: kgremban
-ms.openlocfilehash: cccffb2f63fe0c929f88d172070ede1c12bcec5b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 882c2f7d9abfa40ddafbba4f98292c3f8f44c459
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51239457"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548711"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-ios"></a>Az IoT Hub (iOS) a felhőből az eszközre irányuló üzenetek küldése
 
@@ -37,7 +37,7 @@ Ez a cikk végén található iOS-projektek két Swift, futtassa:
 * **minta-szolgáltatás**, amely a felhőből az eszközre üzenetet küld az IoT hubon keresztül a szimulált eszközalkalmazásnak, és annak kézbesítési nyugtázási majd kap.
 
 > [!NOTE]
-> Az IoT Hub SDK számos eszközplatformok és nyelveken (például a C, Java és Javascript) keresztül az Azure IoT eszközoldali SDK-k támogatással rendelkezik. Az eszköz csatlakoztatása, ebben az oktatóanyagban a kódot, és általában az Azure IoT hubba a részletes útmutatót lásd: a [Azure IoT fejlesztői központ](http://www.azure.com/develop/iot).
+> Az IoT Hub SDK számos eszközplatformok és nyelveken (például a C, Java és Javascript) keresztül az Azure IoT eszközoldali SDK-k támogatással rendelkezik. Az eszköz csatlakoztatása, ebben az oktatóanyagban a kódot, és általában az Azure IoT hubba a részletes útmutatót lásd: a [Azure IoT fejlesztői központ](https://www.azure.com/develop/iot).
 
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 

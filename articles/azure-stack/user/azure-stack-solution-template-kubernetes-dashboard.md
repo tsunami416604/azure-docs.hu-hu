@@ -1,6 +1,6 @@
 ---
-title: Engedélyezze a Kubernetes-irányítópultot az Azure Stackben |} A Microsoft Docs
-description: Ismerje meg, hogyan engedélyezheti a Kubernetes-irányítópultot az Azure Stackben
+title: Hozzáférés a Kubernetes-irányítópulthoz az Azure Stackben |} A Microsoft Docs
+description: Az Azure Stack a Kubernetes-irányítópult elérése
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,24 +11,24 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 03/07/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 02/27/2019
-ms.openlocfilehash: cdc1be0c0274977fe14ef704fbb74fa955ad7e11
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 243fb01a5c8112afaf310f616b93c2667ac6f19d
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242411"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729854"
 ---
-# <a name="enable-the-kubernetes-dashboard-in-azure-stack"></a>Engedélyezze a Kubernetes-irányítópultot az Azure Stackben 
+# <a name="access-the-kubernetes-dashboard-in-azure-stack"></a>Hozzáférés a Kubernetes-irányítópultot az Azure Stackben 
 
 *Vonatkozik: Az Azure Stack integrált rendszerek és az Azure Stack fejlesztői készlete* 
 > [!Note]   
 > Az Azure Stacken Kubernetes szolgáltatás előzetes verzióban. Az Azure Stack kapcsolat nélküli forgatókönyv jelenleg nem érhető el az előzetes verzió. 
 
-Kubernetes webes irányítópultot is használhatja az alapvető felügyeleti műveletet tartalmaz. Ez az irányítópult lehetővé teszi az alapszintű állapot-állapot és az alkalmazások metrikáinak megtekintése, létrehozása és -szolgáltatások telepítését és szerkesztheti a meglévő alkalmazásokat. Ez a cikk bemutatja, hogyan ahhoz, hogy a Kubernetes-irányítópultot az Azure Stacken.
+Kubernetes webes irányítópultot is használhatja az alapvető felügyeleti műveletet tartalmaz. Ez az irányítópult lehetővé teszi az alapszintű állapot-állapot és az alkalmazások metrikáinak megtekintése, létrehozása és -szolgáltatások telepítését és szerkesztheti a meglévő alkalmazásokat. Ez a cikk bemutatja, hogyan állítható be a Kubernetes-irányítópultot az Azure Stacken.
 
 ## <a name="prerequisites-for-kubernetes-dashboard"></a>A Kubernetes-irányítópult előfeltételei
 

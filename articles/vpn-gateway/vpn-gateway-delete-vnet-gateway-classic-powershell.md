@@ -1,5 +1,5 @@
 ---
-title: 'Virtuális hálózati átjáró törlése: PowerShell: az Azure klasszikus |} A Microsoft Docs'
+title: 'Virtuális hálózati átjáró törlése: PowerShell: Klasszikus Azure portál |} A Microsoft Docs'
 description: PowerShell-lel a klasszikus üzemi modellben virtuális hálózati átjáró törlése.
 services: vpn-gateway
 documentationcenter: na
@@ -10,17 +10,17 @@ tags: azure-service-management
 ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: ''
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/11/2017
 ms.author: cherylmc
-ms.openlocfilehash: 2c92db96820b9796ba2c952affcb3b3eef5b985e
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: ca014e4f5fbc4a5695dbc5fedc85826c71a2a906
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49319846"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767770"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell-classic"></a>PowerShell (klasszikus) használatával virtuális hálózati átjáró törlése
 
@@ -32,7 +32,7 @@ ms.locfileid: "49319846"
 
 Ez a cikk segít a klasszikus üzemi modellben a VPN gateway törlése a PowerShell használatával. Miután a virtuális hálózati átjáró törölve lett, módosítsa a hálózati konfigurációs fájlt, amely már nem használt elemek eltávolítása.
 
-## <a name="connect"></a>1. lépés: Csatlakozás az Azure-bA
+## <a name="connect"></a>1. lépés: Csatlakozás az Azure szolgáltatáshoz
 
 ### <a name="1-install-the-latest-powershell-cmdlets"></a>1. Telepítse a legújabb PowerShell-parancsmagokat.
 
@@ -56,7 +56,7 @@ Ebben a példában a hálózati konfigurációs fájlt a C:\AzureNet helyre expo
 Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ```
 
-Nyissa meg a fájlt egy szövegszerkesztőben, és tekintse meg a nevet a klasszikus virtuális hálózat számára. Az Azure Portalon hoz létre egy virtuális hálózathoz, amikor a teljes Azure használó név nem látható a portálon. Virtuális hálózat neve "ClassicVNet1" az Azure Portalon megjelenő például rendelkezhet egy sokkal hosszabb nevet a hálózat konfigurációs fájljában. Neve a következőhöz hasonló: "Csoport ClassicRG1 ClassicVNet1". Virtuális hálózat nevei jelennek meg **"VirtualNetworkSite name ="**. A hálózati konfigurációs fájlt a neveket használja, ha futtatja a PowerShell-parancsmagokat.
+Nyissa meg a fájlt egy szövegszerkesztőben, és tekintse meg a nevet a klasszikus virtuális hálózat számára. Az Azure Portalon hoz létre egy virtuális hálózathoz, amikor a teljes Azure használó név nem látható a portálon. Virtuális hálózat neve "ClassicVNet1" az Azure Portalon megjelenő például rendelkezhet egy sokkal hosszabb nevet a hálózat konfigurációs fájljában. Neve a következőhöz hasonló: 'Csoport ClassicRG1 ClassicVNet1'. Virtuális hálózat nevei jelennek meg **"VirtualNetworkSite name ="**. A hálózati konfigurációs fájlt a neveket használja, ha futtatja a PowerShell-parancsmagokat.
 
 ## <a name="delete"></a>3. lépés: A virtuális hálózati átjáró törlése
 
@@ -156,7 +156,7 @@ Példa:
  </Gateway>
 ```
 
-### <a name="gwsub"></a>Átjáró-alhálózat
+### <a name="gwsub"></a>GatewaySubnet
 
 Törölje a **GatewaySubnet** , amely megfelel a virtuális hálózathoz.
 

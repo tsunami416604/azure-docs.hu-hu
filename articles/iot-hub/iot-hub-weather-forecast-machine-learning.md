@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: a331f8a8a69ffe41a368c1b36f1680890aaac8bf
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7fdd2a96044acdae223243d751bfcffb7a99da78
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38666874"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534259"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Időjárás-előrejelzés az IoT hub érzékelői adatainak használatával az Azure Machine Learningben
 
@@ -45,7 +45,7 @@ Megismerheti, hogyan használhatja az Azure Machine Learning időjárás előrej
   - Aktív Azure-előfizetés.
   - Az Azure IoT hub az előfizetéséhez.
   - Egy ügyfélalkalmazás, amely üzeneteket küld az Azure IoT hub.
-- Egy Azure Machine Learning Studio-fiók. ([Ingyenesen kipróbálhatja a Machine Learning Studio](https://studio.azureml.net/)).
+- An Azure Machine Learning Studio account. ([Ingyenesen kipróbálhatja a Machine Learning Studio](https://studio.azureml.net/)).
 
 ## <a name="deploy-the-weather-prediction-model-as-a-web-service"></a>Az időjárás-előrejelzési modellt üzembe webszolgáltatásként
 
@@ -81,11 +81,11 @@ Megismerheti, hogyan használhatja az Azure Machine Learning időjárás előrej
 
    **Feladat neve**: A feladat neve. A névnek globálisan egyedinek kell lennie.
 
-   **Erőforráscsoport**: használja ugyanazt az erőforráscsoportot, amely az IoT hub használja.
+   **Erőforráscsoport**: Használja ugyanazt az erőforráscsoportot, amely az IoT hub használja.
 
-   **Hely**: ugyanazt a helyet használja, az erőforráscsoportot.
+   **Hely**: Használja ugyanazt a helyet az erőforráscsoportban.
 
-   **Rögzítés az irányítópulton**: Ezt a lehetőséget kiválasztva könnyen hozzáférhet az IoT Hubhoz az irányítópultról.
+   **Rögzítés az irányítópulton**: Ellenőrizze ezt a lehetőséget kiválasztva könnyen hozzáférhet az IoT hubhoz az irányítópultról.
 
    ![Stream Analytics-feladat létrehozása az Azure-ban](media/iot-hub-weather-forecast-machine-learning/7_create-stream-analytics-job-azure.png)
 
@@ -97,11 +97,11 @@ Megismerheti, hogyan használhatja az Azure Machine Learning időjárás előrej
 1. A **Feladattopológia** területen kattintson a **Bemenetek** elemre.
 1. A a **bemenetek** ablaktáblán kattintson a **hozzáadása**, majd adja meg a következő információkat:
 
-   **Bemeneti áljel**: a bemeneti az egyedi aliast.
+   **Bemeneti áljel**: A bevitelhez egyedi aliasneve.
 
-   **Forrás**: válasszon **az IoT hub**.
+   **forrás**: Válassza ki **az IoT hub**.
 
-   **Fogyasztói csoport**: válassza ki a fogyasztói csoportot hozott létre.
+   **Fogyasztói csoport**: Válassza ki a fogyasztói csoportot hozott létre.
 
    ![A Stream Analytics-feladat bemenete hozzáadása az Azure-ban](media/iot-hub-weather-forecast-machine-learning/8_add-input-stream-analytics-job-azure.png)
 
@@ -112,15 +112,15 @@ Megismerheti, hogyan használhatja az Azure Machine Learning időjárás előrej
 1. A **Feladattopológia** területen kattintson a **Kimenetek** elemre.
 1. Az a **kimenetek** ablaktáblán kattintson a **Hozzáadás**, majd adja meg a következő információkat:
 
-   **Kimeneti áljel**: A kimenet egyedi áljele.
+   **Kimeneti alias**: A kimeneti egyedi aliast.
 
-   **Fogadó**: válasszon **a Blob Storage-**.
+   **Fogadó**: Válassza ki **a Blob Storage-**.
 
-   **Storage-fiók**: A tárfiók a blob Storage. Hozzon létre egy tárfiókot, vagy használjon egy meglévőt.
+   **Storage-fiók**: A tárfiók a blob storage. Hozzon létre egy tárfiókot, vagy használjon egy meglévőt.
 
-   **Tároló**: A tároló, blob mentési helye. Hozzon létre egy tárolót, vagy használjon egy meglévőt.
+   **tároló**: A tároló, blob mentési helye. Hozzon létre egy tárolót, vagy használjon egy meglévőt.
 
-   **Eseményszerializációs formátum**: válasszon **CSV**.
+   **Eseményszerializációs formátum**: Válassza ki **CSV**.
 
    ![Kimenet hozzáadása a Stream Analytics-feladat az Azure-ban](media/iot-hub-weather-forecast-machine-learning/9_add-output-stream-analytics-job-azure.png)
 
@@ -131,15 +131,15 @@ Megismerheti, hogyan használhatja az Azure Machine Learning időjárás előrej
 1. A **Feladattopológia**, kattintson a **funkciók** > **Hozzáadás**.
 1. Adja meg a következő információkat:
 
-   **Függvény aliasa**: Adja meg `machinelearning`.
+   **Függvény aliasa**: Írja be a `machinelearning` (igen) kifejezést.
 
-   **Függvénytípus**: válasszon **Azure gépi tanulás**.
+   **Függvénytípus**: Válassza ki **Azure gépi tanulás**.
 
-   **Importálási beállítás**: válasszon **importálás másik előfizetésből**.
+   **Importálási beállítás**: Válassza ki **importálás másik előfizetésből**.
 
-   **URL-cím**: Adja meg a WEB SERVICE URL-cím útmutatóban lejegyzett az Excel-munkafüzetből.
+   **URL-CÍM**: Adja meg a WEB SERVICE URL-cím útmutatóban lejegyzett az Excel-munkafüzetből.
 
-   **Kulcs**: Adja meg a hozzáférési kulcs útmutatóban lejegyzett az Excel-munkafüzetből.
+   **kulcs**: Adja meg a hozzáférési kulcs útmutatóban lejegyzett az Excel-munkafüzetből.
 
    ![Függvény hozzáadása a Stream Analytics-feladat az Azure-ban](media/iot-hub-weather-forecast-machine-learning/10_add-function-stream-analytics-job-azure.png)
 
@@ -175,9 +175,9 @@ A Stream Analytics-feladat területen kattintson az **Indítás** > **Most** > *
 
 Futtassa az ügyfélalkalmazást, összegyűjtése és hőmérséklettel és páratartalommal kapcsolatos adatok küldését az IoT hub elindításához. Az IoT hub által fogadott üzenetek a Stream Analytics-feladat meghívja az időjárás-előrejelzés webszolgáltatás esőfelhő esélyét előállításához. Az Azure blob storage majd menti az eredményt. Az Azure Storage Explorer egy olyan eszköz, az eredmény megtekintéséhez használhatja.
 
-1. [Töltse le és telepítse a Microsoft Azure Storage Explorer](http://storageexplorer.com/).
+1. [Töltse le és telepítse a Microsoft Azure Storage Explorer](https://storageexplorer.com/).
 1. Nyissa meg az Azure Storage Explorerben.
-1. Jelentkezzen be az Azure-fiókjával.
+1. Jelentkezzen be Azure-fiókjába.
 1. Válassza ki előfizetését.
 1. Kattintson az előfizetésre > **Tárfiókok** > a tárfiók > **Blobtárolók** > a tárolót.
 1. Nyisson meg egy .csv-fájlba, az eredmény megjelenítéséhez. Az utolsó oszlopban az esélye, hogy esőfelhő rögzíti.

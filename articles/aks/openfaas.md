@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: dc0f4bd1e5b07e30f3c89807fbbbc908b3149810
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 5ed6e0b21b00ede3f78a102fd004e5706ae3cea5
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542531"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57571218"
 ---
 # <a name="using-openfaas-on-aks"></a>OpenFaaS használata AKS-en
 
-[OpenFaaS] [ open-faas] egy keretrendszer, amellyel a kiszolgáló nélküli függvények tárolók felett. Egy nyílt forráskódú projektként, szerzett a Közösségben nagyméretű bevezetését. Ez a dokumentum részletesen, telepítése és OpenFaas használata az Azure Kubernetes Service (AKS)-fürtön.
+[OpenFaaS] [ open-faas] egy keretrendszer, amellyel a kiszolgáló nélküli függvények tárolók használatával. Egy nyílt forráskódú projektként, szerzett a Közösségben nagyméretű bevezetését. Ez a dokumentum részletesen, telepítése és OpenFaas használata az Azure Kubernetes Service (AKS)-fürtön.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -29,43 +29,48 @@ Ebben a cikkben található lépések végrehajtásához a következők szüksé
 * Az Azure CLI telepítve van a fejlesztői rendszeren.
 * A Git parancssori eszközök van telepítve a rendszeren.
 
-## <a name="get-openfaas"></a>OpenFaaS beolvasása
+## <a name="add-the-openfaas-helm-chart-repo"></a>Adja hozzá a OpenFaaS helm-diagram adattárat
 
-A fejlesztői rendszerhez a OpenFaaS projekt tárház klónozása.
-
-```azurecli-interactive
-git clone https://github.com/openfaas/faas-netes
-```
-
-Módosítsa a könyvtárat a klónozott adattár.
+OpenFaaS kezeli a saját helm-diagramok a naprakészen tartása a legújabb módosításokkal.
 
 ```azurecli-interactive
-cd faas-netes
+helm repo add openfaas https://openfaas.github.io/faas-netes/
+helm repo update
 ```
 
 ## <a name="deploy-openfaas"></a>OpenFaaS üzembe helyezése
 
 Jó gyakorlat szerint OpenFaaS és OpenFaaS funkciók kell tárolni a saját Kubernetes-névtér.
 
-Hozzon létre egy névteret a OpenFaaS rendszer.
+Hozzon létre egy névteret a OpenFaaS system és a funkciók:
 
 ```azurecli-interactive
-kubectl create namespace openfaas
+kubectl apply -f https://raw.githubusercontent.com/openfaas/faas-netes/master/namespaces.yml
 ```
 
-Hozzon létre egy második névteret OpenFaaS funkciók.
+Hozzon létre egy jelszót a OpenFaaS felhasználói felület portál és a REST API-val:
 
 ```azurecli-interactive
-kubectl create namespace openfaas-fn
+# generate a random password
+PASSWORD=$(head -c 12 /dev/urandom | shasum| cut -d' ' -f1)
+
+kubectl -n openfaas create secret generic basic-auth \
+--from-literal=basic-auth-user=admin \
+--from-literal=basic-auth-password="$PASSWORD"
 ```
+
+Megjelenik a rendelkező titkos kód értékének `echo $PASSWORD`.
+
+A jelszó itt létrehozunk használják a helm-diagramot a OpenFaaS átjáró, amely közvetlenül csatlakozik az interneten keresztül terheléselosztó felhő az alapszintű hitelesítés engedélyezéséhez.
 
 A klónozott adattár egy Helm-diagramot a OpenFaaS tartalmazza. A diagram az AKS-fürt üzembe helyezése a OpenFaaS használata.
 
 ```azurecli-interactive
-helm install --namespace openfaas -n openfaas \
-  --set functionNamespace=openfaas-fn, \
-  --set serviceType=LoadBalancer, \
-  --set rbac=false chart/openfaas/
+helm upgrade openfaas --install openfaas/openfaas \
+    --namespace openfaas  \
+    --set basic_auth=true \
+    --set functionNamespace=openfaas-fn \
+    --set serviceType=LoadBalancer
 ```
 
 Kimenet:
@@ -104,14 +109,23 @@ gateway            ClusterIP      10.0.156.194   <none>         8080/TCP        
 gateway-external   LoadBalancer   10.0.28.18     52.186.64.52   8080:30800/TCP   7m
 ```
 
-A OpenFaaS rendszer teszteléséhez, keresse meg a külső IP-címe, 8080-as porton `http://52.186.64.52:8080` ebben a példában.
+A OpenFaaS rendszer teszteléséhez, keresse meg a külső IP-címe, 8080-as porton `http://52.186.64.52:8080` ebben a példában. Jelentkezzen be fogja kérni. Beolvasni a jelszót, adja meg a `echo $PASSWORD`.
 
-![OpenFaaS felhasználói felület](media/container-service-serverless/openfaas.png)
+![OpenFaaS UI](media/container-service-serverless/openfaas.png)
 
 Végül telepítse a OpenFaaS CLI-t. Ebben a példában használt brew, tekintse meg a [OpenFaaS CLI dokumentációját] [ open-faas-cli] a további lehetőségeket.
 
 ```console
 brew install faas-cli
+```
+
+Állítsa be `$OPENFAAS_URL` felett található nyilvános IP-címhez.
+
+Jelentkezzen be az Azure CLI:
+
+```azurecli-interactive
+export OPENFAAS_URL=http://52.186.64.52:8080
+echo -n $PASSWORD | ./faas-cli login -g $OPENFAAS_URL -u admin --password-stdin
 ```
 
 ## <a name="create-first-function"></a>Első függvény létrehozása
@@ -233,10 +247,11 @@ Tesztelheti a függvényt a OpenFaaS felhasználói felületén belül is.
 
 ## <a name="next-steps"></a>További lépések
 
-OpenFaas alapértelmezett telepítését OpenFaaS átjáró és a Functions zárolni kell. [Alex Ellis blogbejegyzés](https://blog.alexellis.io/lock-down-openfaas/) további részleteket tartalmaz a biztonságos konfigurációs beállításokat.
+Továbbra is a OpenFaaS Workshop foglalkozik, hogyan hozhat létre a saját GitHub-robot esetén például laborgyakorlatok révén további felhasználása titkos adatait, mérőszámok megtekintésével, és automatikus skálázást.
 
 <!-- LINKS - external -->
 [install-mongo]: https://docs.mongodb.com/manual/installation/
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
 [open-faas]: https://www.openfaas.com/
 [open-faas-cli]: https://github.com/openfaas/faas-cli
+[openfaas-workshop]: https://github.com/openfaas/workshop

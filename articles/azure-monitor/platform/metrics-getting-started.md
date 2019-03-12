@@ -8,25 +8,21 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 9d23d4b30ca4d394fb4afd0bb6620be6df179600
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e611f1564896cfdecb3ce34ab7c5361e5200b48a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444939"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537337"
 ---
 # <a name="getting-started-with-azure-metrics-explorer"></a>Ismerkedés az Azure Metrikaböngésző
 
 ## <a name="where-do-i-start"></a>Hogyan kezdjek hozzá
+Az Azure Monitor metrikaböngészőjének összetevő, amely lehetővé teszi a ábrázolási diagramok, vizuálisan naplókezelője trendeket, és vizsgálja a csúcsok és süllyedések értékeihez ' a Microsoft Azure-portálon. A metrikaböngésző használatával vizsgálja meg az állapotát és az erőforrások kihasználását. Indítsa el a következő sorrendben:
 
-> [!NOTE]
-> Ez a cikk ismerteti az alapfogalmakat, amely a új felhasználókat az Azure Monitor metrikaböngészőjének használatának első lépései. Részletes dokumentáció és a diagram a speciális beállításokban és metrikákban kapcsolatos információkat, tekintse meg a [speciális szolgáltatások az Azure Monitor metrikaböngészőjének](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts).
+1. [Válasszon ki egy erőforrást és a egy metrika](#create-your-first-metric-chart) és a egy egyszerű diagramot láthatja. Ezután [jelöljön ki egy időtartományt](#select-a-time-range) Ez a vizsgálat céljából.
 
-A metrikaböngésző használatával vizsgálja meg az állapotát és az erőforrások kihasználását. Indítsa el a következő sorrendben:
-
-1. Első lépésként [erőforrás és a egy metrika kiadási](#creating-your-first-metric-chart) és a egy egyszerű diagramot láthatja. Ezután [jelöljön ki egy időtartományt](#picking-time-range) Ez a vizsgálat céljából.
-
-1. Próbálja ki [dimenzió szűrők alkalmazása és a felosztás](#applying-dimension-filters-and-splitting). A szűrők és a felosztás, elemezheti, hogy melyik szegmens a mérőszám a teljes metrikaérték hozzájárul, és lehetséges kiugró értékek azonosításához.
+1. Próbálja ki [dimenzió szűrők alkalmazása és a felosztás](#apply-dimension-filters-and-splitting). A szűrők és a felosztás, elemezheti, hogy melyik szegmens a mérőszám a teljes metrikaérték hozzájárul, és lehetséges kiugró értékek azonosításához.
 
 1. Használat [speciális beállítások](#advanced-chart-settings-and-next-steps) szabhatja testre a diagram az irányítópultokon rögzítés előtt. [Riasztások beállítása](alerts-metric-overview.md) , hogy értesítést kapjon, amikor metrika értéke meghaladja a, vagy a küszöbérték alá csökken.
 
@@ -49,7 +45,7 @@ Metrikadiagram, az erőforrás, erőforráscsoport, előfizetés vagy az Azure M
 > [!NOTE]
 > Használja a **metrika hozzáadása** gombra, és ismételje meg ezeket a lépéseket, ha szeretné megtekinteni a több metrikát a diagram ugyanaz megjelennek. Egyetlen nézetben több diagramot, válassza a **Hozzáadás diagram** felül gombra.
 
-## <a name="pick-a-time-range"></a>Válasszon ki egy időtartományt
+## <a name="select-a-time-range"></a>Időtartomány megadása
 
 Alapértelmezés szerint a diagram bemutatja a metrikák adatait a legutóbbi 24 óra. Használja a **időválasztó** panelen módosíthatja az időtartományt, nagyítás vagy kicsinyítés a diagramon. 
 
@@ -57,7 +53,7 @@ Alapértelmezés szerint a diagram bemutatja a metrikák adatait a legutóbbi 24
 
 ## <a name="apply-dimension-filters-and-splitting"></a>Dimenzió szűrőket és a felosztás
 
-[Szűrés](metrics-charts.md#apply-filters-to-charts) és [felosztás](metrics-charts.md#apply-splitting-to-a-chart) hatékony diagnosztikai eszközöket a mérőszámhoz, amely rendelkezik a dimenziók vannak. E funkció megjelenítése a különféle metrika szegmensek ("dimenzió values") hatással van a mérőszám a teljes értékét, és lehetővé teszi lehetséges kiugró értékek azonosításához.
+[Szűrés](metrics-charts.md#apply-filters-to-charts) és [felosztás](metrics-charts.md#apply-splitting-to-a-chart) hatékony diagnosztikai eszközöket a mérőszámhoz, amely rendelkezik a dimenziók vannak. Ezek a funkciók különböző metrika szegmensek ("dimenzió values") hatás megjelenítése a mérőszám a teljes értékét, és lehetővé teszi lehetséges kiugró értékek azonosításához.
 
 - **Szűrés** kiválaszthatja, melyik dimenzió értékei szerepelnek a diagramot. Például érdemes sikeres kérések megjelenítése, ha a diagram a *kiszolgáló válaszideje* metrikát. A szűrőt a alkalmazni kell a *kérés sikeres* dimenzió. 
 

@@ -3,25 +3,25 @@ title: Adatok átalakítása a használatával a U-SQL-szkript – Azure |} A Mi
 description: Ismerje meg, feldolgozása és átalakítási adatok Azure Data Lake Analytics számítási szolgáltatás az U-SQL-parancsfájlok futtatásával.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.assetid: e17c1255-62c2-4e2e-bb60-d25274903e80
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/01/2017
-ms.author: douglasl
+author: nabhishek
+ms.author: abnarain
+manager: craigg
 robots: noindex
-ms.openlocfilehash: 7631b103d6d14cceb2c320d56e9f68d9ea57e4d8
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 5835c37363c7e9d2dd3253c08ab97f17852725f5
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020846"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57777294"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Adatok átalakítása az Azure Data Lake Analytics U-SQL-parancsfájlok futtatásával 
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](data-factory-usql-activity.md)
 > * [2-es verzió (aktuális verzió)](../transform-data-using-data-lake-analytics.md)
 
@@ -49,8 +49,8 @@ Az alábbi táblázat ismerteti a JSON-definíciójában használt általános t
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
 | **type** |A type tulajdonságot kell beállítani: **AzureDataLakeAnalytics**. |Igen |
-| **Fióknév** |Az Azure Data Lake Analytics-fiók neve. |Igen |
-| **dataLakeAnalyticsUri** |Az Azure Data Lake Analytics URI. |Nem |
+| **accountName** |Azure Data Lake Analytics Account Name. |Igen |
+| **dataLakeAnalyticsUri** |Azure Data Lake Analytics URI. |Nem |
 | **subscriptionId** |Azure-előfizetés azonosítója |Nem (Ha nincs megadva, a data Factory előfizetés szerepel). |
 | **resourceGroupName** |Azure-erőforráscsoport neve |Nem (Ha nincs megadva, a data Factory erőforrás-csoport szerepel). |
 
@@ -114,7 +114,7 @@ Másik lehetőségként használhatja felhasználói hitelesítő adatok hiteles
 ```
 
 #### <a name="token-expiration"></a>Jogkivonat lejáratáról
-Az engedélyezési kód használatával létrehozott a **engedélyezés** gomb kis idő múlva jár le. Tekintse meg az alábbi táblázat a különböző típusú felhasználói fiókokat a lejárati idejét. Láthatja, hogy a következő hiba jelenik meg, ha a hitelesítés **jogkivonat lejár**: Hitelesítőadat-műveleti hiba: invalid_grant - AADSTS70002: Hiba történt a hitelesítő érvényesítésekor. AADSTS70008: A megadott hozzáférési engedély lejárt vagy visszavont. Nyomkövetési azonosító: d18629e8-af88-43c5-88e3-d8419eb1fca1 korrelációs azonosító: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 időbélyeg: 2015. 12 – 15 21:09:31Z
+Az engedélyezési kód használatával létrehozott a **engedélyezés** gomb kis idő múlva jár le. Tekintse meg az alábbi táblázat a különböző típusú felhasználói fiókokat a lejárati idejét. Láthatja, hogy a következő hiba jelenik meg, ha a hitelesítés **jogkivonat lejár**: Hitelesítőadat-műveleti hiba: invalid_grant - AADSTS70002: Hiba történt a hitelesítő érvényesítésekor. AADSTS70008: A megadott hozzáférési engedély lejárt vagy visszavont. Trace ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 Correlation ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Timestamp: 2015-12-15 21:09:31Z
 
 | Felhasználó típusa | Tétlenség után lejár |
 |:--- |:--- |
@@ -317,7 +317,7 @@ OUTPUT @rs1
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-A tartozó értékeket **@in** és **@out** a U-SQL parancsfájl átadott paraméterek dinamikusan ADF "parameters" szakaszában. A folyamat definíciójában a "parameters" című szakaszában talál.
+A tartozó értékeket  **\@a** és  **\@ki** a U-SQL parancsfájl átadott paraméterek dinamikusan ADF "parameters" szakaszában. A folyamat definíciójában a "parameters" című szakaszában talál.
 
 Megadhat más tulajdonságokat, például degreeOfParallelism és prioritását, valamint a feladatokhoz, amelyek az Azure Data Lake Analytics szolgáltatás futnak a folyamat definíciójában.
 

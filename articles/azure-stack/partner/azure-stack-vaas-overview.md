@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/20/2018
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 12/20/2018
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6126bacf50d47029c29772b35f6dc1d552d47029
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: ca22f29597cb452d6d33338b8ba0367c9377f6fb
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56592638"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772517"
 ---
 # <a name="what-is-validation-as-a-service-for-azure-stack"></a>Mit jelent a szolgáltatását az Azure Stack érvényesítési?
 
@@ -65,7 +65,7 @@ További információkért lásd: [a rövid útmutató: Az első vizsgálat üte
 |----|------------|
 | [Új megoldás érvényesítése](azure-stack-vaas-validate-solution-new.md) | Felhőbeli szimuláció motor<br>COMPUTE SDK üzemeltetési csomag<br>Lemez azonosítása teszt<br>KeyVault Extension SDK Operational Suite<br>KeyVault SDK Operational Suite<br>Hálózati SDK üzemeltetési csomag<br>Tárolási fiók SDK üzemeltetési csomag<br> |
 | [OEM csomag érvényességének ellenőrzése](azure-stack-vaas-validate-oem-package.md) | OEM-bővítmény csomag ellenőrzése<br>Felhőbeli szimuláció motor |
-| [Havi update-ellenőrzés](azure-stack-vaas-validate-microsoft-updates.md) | Havi AzureStack frissítés-ellenőrzés<br>Felhőbeli szimuláció motor<br> |
+| [Havi update-ellenőrzés](azure-stack-vaas-validate-microsoft-updates.md) | Az Azure Stack havi frissítés-ellenőrzés<br>Felhőbeli szimuláció motor<br> |
 
 ## <a name="next-steps"></a>További lépések
 

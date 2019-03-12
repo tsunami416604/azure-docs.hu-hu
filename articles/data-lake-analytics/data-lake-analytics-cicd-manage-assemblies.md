@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 10/30/2018
-ms.openlocfilehash: 0d9192e5ca4dba202ca5287481072bb0f8ae5621
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 27a873fac8bf2b53ee06780b8a348eaaa5c94e97
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53598519"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57768025"
 ---
 # <a name="best-practices-for-managing-u-sql-assemblies-in-a-cicd-pipeline"></a>U-SQL-szerelvények a CI/CD-folyamat kezelésére vonatkozó ajánlott eljárások
 
@@ -56,9 +56,9 @@ Kövesse az alábbi lépéseket hozható létre, és mutató hivatkozásokat tud
 
     ![A Data Lake Tools for Visual Studio – szerelvény létrehozása hivatkozás](./media/data-lake-analytics-cicd-manage-assemblies/data-lake-tools-create-assembly-from-reference.png)
 
-7. Adjon hozzá **felügyelt függőségek** és **további fájlok**, ha vannak ilyenek. Amikor kiegészítő fájlokat, az eszköz a relatív elérési út használatával győződjön meg arról, hogy megtalálja a szerelvények a helyi gépen, és a build gépen később. 
+7. Adjon hozzá **felügyelt függőségek** és **további fájlok**, ha vannak ilyenek. Amikor kiegészítő fájlokat, az eszköz a relatív elérési út használatával győződjön meg arról, hogy megtalálja a szerelvények a helyi gépen, és a build gépen később.
 
-**@_DeployTempDirectory** a szerkesztőben az ablak alján egy előre definiált változó, amely az eszköz mutat a build kimeneti mappába. A build kimeneti mappában az összes szerelvényét rendelkezik egy almappát a szerelvény neve. Az összes DLL-EK és további fájlokat is ebbe a mappába. 
+**\@_DeployTempDirectory** a szerkesztőben ablak alján egy előre definiált változó, amely az eszköz mutat a build kimeneti mappába. A build kimeneti mappában az összes szerelvényét rendelkezik egy almappát a szerelvény neve. Az összes DLL-EK és további fájlokat is ebbe a mappába.
 
 ## <a name="build-a-u-sql-database-project"></a>A U-SQL database-projekt létrehozása
 

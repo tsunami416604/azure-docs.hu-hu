@@ -14,12 +14,12 @@ ms.date: 11/09/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09914de48df09dabd4069cd33e7acbea328fa89d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 26e94c9b56ba65e3a7c51c1a85e97f7521377bae
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193152"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546857"
 ---
 # <a name="start-using-pim"></a>Ismerkedés a PIM-mel
 
@@ -106,7 +106,6 @@ A PIM beállítása után az identitáskezelési feladatokat is végezhet.
 | --- | --- |
 | **Saját szerepkörök**  | Önhöz rendelt elérhető és aktív szerepköröket listáját jeleníti meg. Itt aktiválhatja az Önhöz rendelt elérhető szerepköröket. |
 | **Saját kérések** | Megjeleníti a függőben lévő kérések az elérhető szerepkörök hozzárendelésének aktiválására. |
-| **Alkalmazás-hozzáférés** | Lehetővé teszi lehetséges késedelmeket és aktiválása után azonnal olyan szerepkört használjon. |
 | **Kérések jóváhagyása** | A felhasználók a címtárban jogosult szerepkörök aktiválási kéréseit listáját jeleníti meg, amely jóváhagyásra váró jelölik. |
 | **Hozzáférés áttekintése** | Hozzárendelt végrehajtásához, e, lehetőséggel megtekintheti a saját magának vagy valaki más aktív hozzáférési felülvizsgálatok sorolja fel. |
 | **Az Azure AD-szerepkörök** | Megjeleníti egy irányítópultot és a kiemelt szerepkörű rendszergazdák számára az Azure AD-címtár szerepkör-hozzárendelések kezeléséhez beállításait. Ez az irányítópult kizárólag a kiemelt szerepkörrel rendelkező rendszergazdák számára érhető el. Ezek a felhasználók a Saját nézet nevű speciális irányítópulthoz is hozzáférhetnek. A Saját nézet irányítópult csak az irányítópulthoz hozzáférő felhasználó információit jeleníti meg az egész bérlő helyett. |

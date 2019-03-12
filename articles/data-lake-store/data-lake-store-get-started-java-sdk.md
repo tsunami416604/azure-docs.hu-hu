@@ -1,5 +1,5 @@
 ---
-title: 'A Java SDK: Fájlrendszerműveletek az Azure Data Lake Storage Gen1 |} A Microsoft Docs'
+title: 'Java SDK: Fájlrendszerműveletek az Azure Data Lake Storage Gen1 |} A Microsoft Docs'
 description: Használja az Azure Data Lake Storage Gen1 Java SDK fájlrendszer műveletek végrehajtása a Data Lake Storage Gen1 például mappák létrehozása.
 services: data-lake-store
 documentationcenter: ''
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: edbaa8fe42c0e6bfda8558e7d9e5cd0ce42bfcc4
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: e84e84aac3aca0458dea4f30f6b0e222aafd9d44
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260701"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530296"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>Fájlrendszerműveletek az Azure Data Lake Storage Gen1 Java SDK használatával
 > [!div class="op_single_selector"]
@@ -41,7 +41,7 @@ A Java SDK API-dokumentációja a Data Lake Storage Gen1 címen érheti el [Azur
 ## <a name="create-a-java-application"></a>Java-alkalmazás létrehozása
 A [GitHubon](https://azure.microsoft.com/documentation/samples/data-lake-store-java-upload-download-get-started/) elérhető kódminta végigvezeti a fájlok tárolóban való létrehozásának, a fájlok összetűzésének, a fájlok letöltésének és az egyes fájlok tárolóból való törlésének folyamatán. A cikk ezen szakasza a kód fő részeit mutatja be.
 
-1. Hozzon létre egy Maven-projektet az [mvn archetype](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) használatával parancssorból vagy egy IDE használatával. A Java-projektek IntelliJ használatával való létrehozási útmutatójáért [kattintson ide](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html). A projektek Eclipse használatával való létrehozási útmutatójáért [kattintson ide](http://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm). 
+1. Hozzon létre egy Maven-projektet az [mvn archetype](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) használatával parancssorból vagy egy IDE használatával. A Java-projektek IntelliJ használatával való létrehozási útmutatójáért [kattintson ide](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html). A projektek Eclipse használatával való létrehozási útmutatójáért [kattintson ide](https://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm). 
 
 2. Illessze be a következő függőségeket a Maven **pom.xml** nevű fájljába. Illessze be a következő szövegrészletet a **\</project>** címke elé:
    
@@ -58,7 +58,7 @@ A [GitHubon](https://azure.microsoft.com/documentation/samples/data-lake-store-j
           </dependency>
         </dependencies>
    
-    Az első függőség az, hogy a Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`) a maven tárházból. A második függőség az alkalmazással használandó naplózási keretrendszer (`slf4j-nop`) meghatározása. Használja a Data Lake Storage Gen1 SDK [slf4j](http://www.slf4j.org/) naplózási előtérrendszer, amellyel számos elterjedt naplózási keretrendszer például log4j, Java-naplózás, logback, stb., választhat, vagy nincs naplózás. Ebben a példában kikapcsoljuk a naplózást, mivel az **slf4j-nop** kötést eszközt használjuk. Az alkalmazásban való egyéb naplózási lehetőségek használatáról [itt talál információt](http://www.slf4j.org/manual.html#projectDep).
+    Az első függőség az, hogy a Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`) a maven tárházból. A második függőség az alkalmazással használandó naplózási keretrendszer (`slf4j-nop`) meghatározása. Használja a Data Lake Storage Gen1 SDK [slf4j](https://www.slf4j.org/) naplózási előtérrendszer, amellyel számos elterjedt naplózási keretrendszer például log4j, Java-naplózás, logback, stb., választhat, vagy nincs naplózás. Ebben a példában kikapcsoljuk a naplózást, mivel az **slf4j-nop** kötést eszközt használjuk. Az alkalmazásban való egyéb naplózási lehetőségek használatáról [itt talál információt](https://www.slf4j.org/manual.html#projectDep).
 
 3. Adja hozzá az alábbi importálási utasításokat az alkalmazáshoz.
 
@@ -73,7 +73,7 @@ A [GitHubon](https://azure.microsoft.com/documentation/samples/data-lake-store-j
         import java.util.Arrays;
         import java.util.List;
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>Authentication
 
 * Az alkalmazás végfelhasználói hitelesítésével kapcsolatban lásd: [végfelhasználói hitelesítés a Data Lake Storage Gen1 Java használatával](data-lake-store-end-user-authenticate-java-sdk.md).
 * Az alkalmazás szolgáltatások közötti hitelesítésével kapcsolatban lásd: [szolgáltatások közötti hitelesítés a Data Lake Storage Gen1 Java használatával](data-lake-store-service-to-service-authenticate-java.md).
@@ -205,8 +205,8 @@ A következő kódrészlet törli a megadott fájlokat és mappákat egy Data La
     promptEnterKey();
 
 ## <a name="build-and-run-the-application"></a>Az alkalmazás fordítása és futtatása
-1. Az integrált fejlesztőkörnyezetben történő futtatáshoz keresse meg a **Futtatás** gombot, és kattintson rá. A Mavenben történő futtatáshoz használja az [exec:exec](http://www.mojohaus.org/exec-maven-plugin/exec-mojo.html) beépülő modult.
-2. Parancssorból futtatható, különálló jar-fájlt az összes függőség és a [Maven Assembly Plugin](http://maven.apache.org/plugins/maven-assembly-plugin/usage.html) használatával hozhat létre. Az a pom.xml fájlhoz a [Githubon található mintaforráskód](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml) egy példa látható.
+1. Az integrált fejlesztőkörnyezetben történő futtatáshoz keresse meg a **Futtatás** gombot, és kattintson rá. A Mavenben történő futtatáshoz használja az [exec:exec](https://www.mojohaus.org/exec-maven-plugin/exec-mojo.html) beépülő modult.
+2. Parancssorból futtatható, különálló jar-fájlt az összes függőség és a [Maven Assembly Plugin](https://maven.apache.org/plugins/maven-assembly-plugin/usage.html) használatával hozhat létre. Az a pom.xml fájlhoz a [Githubon található mintaforráskód](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml) egy példa látható.
 
 ## <a name="next-steps"></a>További lépések
 * [A Java SDK JavaDoc-dokumentációjának áttekintése](https://azure.github.io/azure-data-lake-store-java/javadoc/)

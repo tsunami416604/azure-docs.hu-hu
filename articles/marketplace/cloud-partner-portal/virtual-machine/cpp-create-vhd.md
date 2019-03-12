@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 08/27/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 84e0d02f2608a6ee94ee409345e530357d394671
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bd085804f532811e71d421e3f683c50c1c3416cb
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233184"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57575474"
 ---
 # <a name="create-an-azure-compatible-vhd"></a>Hozzon létre egy Azure-kompatibilis virtuális Merevlemezt.
 
@@ -34,8 +34,8 @@ A Virtuálisgép-lemezkép az operációs rendszer virtuális Merevlemeze kell l
 A kezdéshez egy virtuális gép létrehozása az alábbi lemezképek egyikéből található a Microsoft Azure Portalon:
 
 -   A Windows Server ([2016](https://www.microsoft.com/evalcenter/evaluate-windows-server-2016), [2012 R2 Datacenter](https://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2012r2datacenter/), [2012 Datacenter](https://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2012datacenter/), [2008 R2 SP1](https://azure.microsoft.com/marketplace/partners/microsoft/windowsserver2008r2sp1/))
--   [Az SQL Server 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise, Standard, webes)
--   [Az SQL Server 2012 SP2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise, Standard, webes)
+-   [SQL Server 2014](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise, Standard, Web)
+-   [SQL Server 2012 SP2](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-pricing-guidance) (Enterprise, Standard, Web)
 
 > [!TIP]
 > Az aktuális Azure-portálon vagy a PowerShell használatakor közzétett 2014. szeptember 8 és újabb Windows Server-rendszerképeket hagyja jóvá.
@@ -48,7 +48,7 @@ Azt is megteheti Azure által nyújtott széles körű jóváhagyott Linux-diszt
 A Microsoft [az Azure portal](https://ms.portal.azure.com/), az alaprendszerképet az alábbi lépéseket követve hozzon létre.
 
 1. Jelentkezzen be a portálra a Microsoft-fiókot az Azure-előfizetést a Virtuálisgép-ajánlat közzététele szeretné.
-2. Hozzon létre egy új erőforráscsoportot, és adja meg a **erőforráscsoport-név**, **előfizetés**, és **erőforráscsoport helye**.  További útmutatásért lásd: [-erőforráscsoportok kezelése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal#manage-resource-groups).
+2. Hozzon létre egy új erőforráscsoportot, és adja meg a **erőforráscsoport-név**, **előfizetés**, és **erőforráscsoport helye**.  További útmutatásért lásd: [-erőforráscsoportok kezelése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal).
 3. Kattintson a **virtuális gépek** a a bal oldali menüsáv a virtuális gépek részletei lap megjelenítéséhez. 
 4. Ez új oldalon, kattintson a **+ Hozzáadás** megjelenítéséhez a **számítási** panelen.  Ha a kezdeti képernyőn nem jelenik meg a virtuális gép típusát, például is keresése, az alap virtuális gép neve:
 

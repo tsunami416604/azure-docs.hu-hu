@@ -1,85 +1,98 @@
 ---
 title: Azure virtuális gépek biztonsági mentésének engedélyezése a létrehozása során
-description: A lépések az Azure virtuális gépek biztonsági mentésének engedélyezése a létrehozási folyamat során.
+description: Tudnivalók az Azure virtuális gépek biztonsági mentésének engedélyezése a létrehozási folyamat során.
 services: backup, virtual-machines
 author: rayne-wiselman
 manager: carmonm
 tags: azure-resource-manager, virtual-machine-backup
-ms.service: backup, virtual-machines
+ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2018
 ms.author: trinadhk
-ms.openlocfilehash: 0cb1d925d4f9c67439b3c96a85088102c7d0e05c
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: fd2beaa39f03d4f2342c94bf1cd8b8aea7440e62
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737195"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780443"
 ---
-# <a name="enable-backup-during-azure-virtual-machine-creation"></a>Biztonsági mentés engedélyezése az Azure virtuális gép létrehozása közben 
+# <a name="enable-backup-when-you-create-an-azure-virtual-machine"></a>Amikor létrehoz egy Azure virtuális gép biztonsági mentésének engedélyezése
 
-Az Azure Backup szolgáltatás létrehozása és a felhőbeli biztonsági mentések konfigurálása felületet biztosít. Az adatok védelme a biztonsági másolatok, az úgynevezett helyreállítási pontok rendszeres időközönként végrehajtásával. Az Azure Backup georedundáns helyreállítási tárolókban tárolható helyreállítási pontokat hoz létre. Ez a cikk részletesen bemutatja a biztonsági mentés engedélyezése egy virtuális gépet (VM) létrehozása közben az Azure Portalon.  
+Az Azure Backup szolgáltatás használatával az Azure virtuális gépek (VM) biztonsági mentése. Virtuális gépek biztonsági mentése egy biztonsági mentési szabályzatban megadott ütemezés szerint, és helyreállítási pontokat hoz létre, a biztonsági mentésekből. Helyreállítási pontok a Recovery Services-tárolókra vannak tárolva.
 
-## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba 
+Ez a cikk részletesen a biztonsági mentés engedélyezése, amíg egy virtuális gépet (VM) hoz létre az Azure Portalon.  
 
-Ha Ön nem már a fiókjával bejelentkezett, jelentkezzen be a [az Azure portal](http://portal.azure.com).
+## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+
+Ha még nem jelentkezett be a fiókjába, jelentkezzen be a [az Azure portal](https://portal.azure.com).
  
-## <a name="create-virtual-machine-with-backup-configured"></a>Biztonsági mentés konfigurálva a virtuális gép létrehozása 
+## <a name="create-a-vm-with-backup-configured"></a>Biztonsági mentés konfigurálva a virtuális gép létrehozása 
 
-1. Az Azure portal bal felső sarkában kattintson **új**. 
+1. Az Azure portal bal felső sarkában válassza **új**.
 
-2. Válassza ki **számítási**, majd válassza ki a virtuális gép egy lemezképet.   
+1. Válassza ki **számítási**, majd válassza ki a virtuális gép egy lemezképet.
 
-3. Adja meg a virtuális gép adatait. A felhasználónév és a megadott jelszó segítségével jelentkezzen be a virtuális gép. Amikor végzett, kattintson az **OK** gombra. 
+1. Írja be a virtuális gép adatait. A felhasználónév és jelszó megadásával használandó jelentkezzen be a virtuális Gépet. Ha elkészült, válassza ki a **OK**. 
 
-4. Válasszon méretet a virtuális gép számára.  
+1. Válasszon méretet a virtuális gép számára.  
 
-5. A **beállításai > biztonsági mentési**, kattintson a **engedélyezve** viszi, megjelenik a biztonsági mentési beállításait. Fogadja el az alapértelmezett értéket, és kattintson a **OK** összegző lapja a virtuális gép létrehozásához lépjen a beállítások oldalon. Ha azt szeretné, módosítsa az értékeket a következő lépésekkel.  
+1. A **beállítások** > **biztonsági mentési**válassza **engedélyezve** a biztonsági mentési konfiguráció beállításainak megnyitásához.
 
-6. Létrehozhat vagy kiválaszthat egy Recovery Services-tároló, amely tárolja a virtuális gép biztonsági mentését. Recovery services-tároló létrehozásakor kiválaszthatja a tároló egy erőforráscsoportot.  
+   - Az alapértelmezett értékek elfogadásához válassza **OK** a a **beállítások** lapot. Majd kattintva megnyithatja a **összegzése** lapon a virtuális gép létrehozásához. Hagyja ki a 6 – 8.
+   - Biztonsági mentés konfigurációjának módosításához kövesse az alábbi lépésekkel.  
 
-    ![A virtuális gép biztonsági mentési konfiguráció lap létrehozása](./media/backup-during-vm-creation/create-vm-backup-config.png) 
+1. Létrehozhat vagy kiválaszthat egy Recovery Services-tárolót a virtuális gép a biztonsági másolatok tárolásához. Recovery Services-tároló létrehozásával, kiválaszthatja a tároló egy erőforráscsoportot.  
+
+    ![Biztonsági mentés konfigurációs beállításokat a virtuális gép létrehozása lap](./media/backup-during-vm-creation/create-vm-backup-config.png) 
 
     > [!NOTE] 
     > A Recovery Services-tároló az erőforráscsoportot, mint az erőforráscsoport, a virtuális gép eltérő lehet.  
-    > 
-    > 
 
-7. Alapértelmezés szerint a biztonsági mentési szabályzatot, hogy gyorsan megvédheti a virtuális gép van jelölve. Biztonsági mentési szabályzat határozza meg, hogy milyen gyakran kell biztonsági mentési pillanatképek és a biztonsági másolatok ezeket. Elfogadhatja az alapértelmezett házirendet, vagy hozzon létre, vagy egy másik biztonsági mentési házirend kiválasztása. A biztonsági mentési szabályzat szerkesztéséhez jelölje ki **biztonsági mentési szabályzat** és módosítsa az értékeket a házirend.  
+1. Alapértelmezés szerint egy biztonsági mentési szabályzat van jelölve, hogy a virtuális gép védelmét. Biztonsági mentési szabályzat határozza meg, hogy milyen gyakran kell biztonsági mentési pillanatképek és mennyi ideig ezeket a biztonsági másolatok megőrzése. 
 
-8. Ha elégedett a biztonsági mentés konfigurációs értékeket, a beállítások oldalon kattintson a **OK**.  
+   - Elfogadhatja az alapértelmezett házirendet, vagy hozzon létre, vagy egy másik biztonsági mentési házirend kiválasztása. 
+   - A biztonsági mentési szabályzat szerkesztéséhez jelölje ki **biztonsági mentési szabályzat** és módosítsa az értékeket.  
 
-9. Az összefoglalás lapon, ha az érvényesítés, kattintson a **létrehozás** hozhat létre egy virtuális gépet, amely a konfigurált biztonsági mentési beállításait használja. 
+1. Ha elkészült, a biztonsági mentési konfiguráció beállításértékek, válassza ki a **OK** a a **beállítások** lapot.  
 
-## <a name="initiate-a-backup-after-creating-the-vm"></a>A virtuális gép létrehozása után egy biztonsági mentés kezdeményezéséhez 
+1. Az a **összegzése** lap érvényesítése után, válassza ki **létrehozás** hozhat létre virtuális Gépet, amely a konfigurált biztonsági mentési beállításait használja. 
 
-Bár a biztonsági mentési szabályzat létrehozása után hasznos lehet egy kezdeti biztonsági mentés létrehozásához. A biztonsági mentési adatainak megtekintésére, az a virtuális gépet egyszer a virtuális gép létrehozása sablon végeztével a a **műveletek** beállítása a bal oldali menüben, kattintson a **biztonsági mentési**. Ezzel indítson egy igény szerinti biztonsági mentést, egy teljes virtuális Gépet, vagy az összes lemez visszaállítása, visszaállítja a fájlokat a virtuális gép biztonsági mentése vagy a virtuális géphez társított biztonsági mentési szabályzat módosítása.  
+## <a name="start-a-backup-after-creating-the-vm"></a>Biztonsági mentést elindítani a virtuális gép létrehozása után 
 
-## <a name="using-a-resource-manager-template-to-deploy-a-protected-vm"></a>Védett virtuális gép üzembe helyezése Resource Manager-sablon használatával
+Annak ellenére, hogy konfigurálta a biztonsági mentési szabályzatot a virtuális gép, tanácsos hozzon létre egy kezdeti biztonsági mentés. 
 
-Az előző lépések azt ismertetik, hogyan hozzon létre egy virtuális gépet, és védje azt egy Recovery Services-tárolót az Azure portal használatával. Ha szeretne gyorsan egy vagy több virtuális gépek üzembe helyezése és azok védelme Recovery Services-tárolóba, tekintse meg a sablon [Windows virtuális gép üzembe helyezése és a biztonsági mentés engedélyezése](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/).
+Lépjen a virtuális gép létrehozása sablon befejezését követően **műveletek** a bal oldali menüben, és válasszon **biztonsági mentési** a virtuális gép biztonsági mentési részleteinek megtekintéséhez. Ezen az oldalon használhatja:
+
+- Indítson egy igény szerinti biztonsági mentést.
+- Állítsa vissza egy teljes virtuális Gépet, vagy az összes lemez.
+- Fájlok visszaállítása egy virtuális gép biztonsági mentése.
+- Módosítsa a virtuális Géphez társított biztonsági mentési házirendet.  
+
+## <a name="use-a-resource-manager-template-to-deploy-a-protected-vm"></a>A védett virtuális gépek üzembe helyezése Resource Manager-sablon használatával
+
+Az előző lépések bemutatják, hogyan hozzon létre egy virtuális gépet, és védelmét, a Recovery Services-tárolót az Azure portal használatával. Gyors üzembe helyezése az egy vagy több virtuális gépet, és azok védelme Recovery Services-tárolóban, tekintse meg a sablon [Windows virtuális gép üzembe helyezése és a biztonsági mentés engedélyezése](https://azure.microsoft.com/resources/templates/101-recovery-services-create-vm-and-configure-backup/).
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések 
 
-### <a name="which-vm-images-enable-backup-at-the-time-of-vm-creation"></a>Melyik Virtuálisgép-rendszerképek biztonsági mentés engedélyezése a virtuális gép létrehozása idején? 
+### <a name="which-vm-images-support-backup-configuration-during-vm-creation"></a>Melyik Virtuálisgép-rendszerképek támogatja a virtuális gépek létrehozása során a biztonsági mentési konfigurációt?
 
-A biztonsági mentés engedélyezése a virtuális gépek létrehozása során az alábbi lista a Microsoft által közzétett core lemezképek támogatottak. A többi virtuális gép engedélyezheti a biztonsági mentés, a virtuális gép létrehozása után. További [virtuális gép létrehozása után, a biztonságimásolat-készítés engedélyezése](quick-backup-vm-portal.md) 
+Az alábbi fő képeket a Microsoft által közzétett támogatja a biztonsági mentés engedélyezése a virtuális gépek létrehozása során. A többi virtuális gép engedélyezheti a biztonsági mentés, a virtuális gép létrehozása után. További tudnivalókért lásd: [virtuális gép létrehozása után, a biztonságimásolat-készítés engedélyezése](quick-backup-vm-portal.md).
 
-- **Windows** – Windows Server 2016 adatközpontban, a Windows Server 2016 adatközpont alapvető, a Windows Server 2012 DataCenter, Windows Server 2012 R2 DataCenter, Windows Server 2008 R2 SP1 
-- **Ubuntu** – Ubuntu Server 1710-es, Ubuntu Server 1704-es, UUbuntu kiszolgáló 1604(LTS), Ubuntu Server 1404(LTS) 
+- **Windows** – Windows Server 2016 Datacenter, Windows Server 2016 Datacenter mag, Windows Server 2012 Datacenter, Windows Server 2012 R2 Datacenter, Windows Server 2008 R2 SP1 
+- **Ubuntu** – Ubuntu Server 17.10, az Ubuntu Server 17.04, az Ubuntu Server 16.04 (LTS), az Ubuntu Server 14.04 (LTS) 
 - **Red Hat** -RHEL 6.7, 6.8, 6.9, 7.2, 7.3, 7.4 
 - **SUSE** – SUSE Linux Enterprise Server 11 SP4, 12 SP2, 12 SP3 
 - **Debian** – Debian 8, a Debian 9 
 - **CentOS** -CentOS 6.9, a CentOS 7.3. 
 - **Oracle Linux** – Oracle Linux 6.7, 6.8, 6.9, 7.2, 7.3. 
  
-### <a name="is-backup-cost-included-in-the-vm-cost"></a>A virtuális gép díja magában foglalja a biztonsági mentés költsége van? 
+### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>A virtuális gép díja magában foglalja a biztonsági mentési mennyibe kerül? 
 
-Nem, biztonsági mentési díjakat külön, illetve különálló, a virtuális gépek költségeit. További információ a backup díjszabása: a [a Backup díjszabása hely](https://azure.microsoft.com/pricing/details/backup/).
+Nem. Biztonsági mentési díjakat külön, a virtuális gép költségeket. További információ a backup díjszabása: [Azure Backup díjszabása](https://azure.microsoft.com/pricing/details/backup/).
  
 ### <a name="which-permissions-are-required-to-enable-backup-on-a-vm"></a>Milyen engedélyek szükségesek a virtuális gép biztonsági mentésének engedélyezése? 
 
-Ha egy virtuális gép közreműködő, engedélyezheti a virtuális gép biztonsági mentése. Egyéni szerepkör használja, ha a virtuális gép biztonsági mentésének sikeres engedélyezése a következő engedélyekkel kell. 
+Ha Ön egy virtuális gép közreműködő, engedélyezheti a virtuális gép biztonsági mentése. Ha egy egyéni szerepkör használata esetén szüksége a virtuális gép biztonsági mentésének engedélyezése a következő engedélyekkel: 
 
 - Microsoft.RecoveryServices/Vaults/write 
 - Microsoft.RecoveryServices/Vaults/read 
@@ -91,11 +104,11 @@ Ha egy virtuális gép közreműködő, engedélyezheti a virtuális gép bizton
 - Microsoft.RecoveryServices/Vaults/backupPolicies/read 
 - Microsoft.RecoveryServices/Vaults/backupPolicies/write 
  
-Ha a recovery services-tároló és a virtuális gép eltérő erőforráscsoportokban, győződjön meg a recovery services tár erőforráscsoportja van is írási engedélye.  
+Ha a Recovery Services-tároló és a virtuális gép eltérő erőforráscsoportokban, győződjön meg arról, van is írási engedélye a Recovery Services-tároló az erőforráscsoportban.  
 
 ## <a name="next-steps"></a>További lépések 
 
-Most, hogy a virtuális gép védetté, tekintse meg a Virtuálisgép-kezelési feladatok és a virtuális gépek visszaállítása a következő cikkeket. 
+Most, hogy a virtuális gép már védett, lásd: megtudhatja, hogyan kezelhetik és visszaállíthatják a virtuális gépek a következő cikkeket:
 
 - [A virtuális gépek kezelése és figyelése](backup-azure-manage-vms.md) 
 - [Virtuális gépek visszaállítása](backup-azure-arm-restore-vms.md) 

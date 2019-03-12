@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/04/2019
+ms.date: 03/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: f67741417c6d31c4adf1d063aac3bd3ccc310fde
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5c8ec54df0d578c6d12524a4128b9cc54e6464a0
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440250"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57781901"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Megismerheti a szerkezetének és szintaxisának az Azure Resource Manager-sablonok
 
@@ -46,7 +46,7 @@ A legegyszerűbb szerkezetét, a sablon a következő elemekből áll:
 |:--- |:--- |:--- |
 | $schema |Igen |A JSON-fájl, amely leírja a sablon nyelvének verziója helye.<br><br> Erőforráscsoportok üzemelő példányainak használja: `https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>Előfizetések üzemelő példányai használja: `https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#` |
 | contentVersion |Igen |A sablon (például 1.0.0.0) verziója. Bármilyen értéket megadhat ehhez az elemhez. A dokumentum jelentős változásokat ezt az értéket használja a sablonban. A sablon használatával erőforrások üzembe helyezésekor, ezt az értéket segítségével győződjön meg arról, hogy a megfelelő sablon használatban van-e. |
-| apiProfile |Nem | Egy API-verzió, amely erőforrástípusok API-verziók gyűjteményének szolgál. Ez az érték használatával elkerülése érdekében, hogy meg kellene adni az egyes erőforrások API-verziók a sablonban. Adja meg az API-profil verziót, és API-verziót, az erőforrástípushoz nem ad meg, ha a Resource Manager az API-verziót, a profil használja az erőforrás típusát. További információkért lásd: [nyomon követése az API-profilok használatával verziók](templates-cloud-consistency.md#track-versions-using-api-profiles). |
+| apiProfile |Nem | Egy API-verzió, amely erőforrástípusok API-verziók gyűjteményének szolgál. Ez az érték használatával elkerülése érdekében, hogy meg kellene adni az egyes erőforrások API-verziók a sablonban. Adja meg az API-profil verziót, és API-verziót, az erőforrástípushoz nem ad meg, ha a Resource Manager API verzióját használja az erőforrás típusát, akkor a profilban megadott.<br><br>Az API-profil tulajdonság akkor hasznos, ha a különböző környezetekben, például az Azure Stack és a globális Azure-sablonok telepítésével. Az API-profil verzió használatával győződjön meg arról, hogy a sablon automatikusan használja mindkét környezetben támogatott. A jelenlegi API-profil verziók és az erőforrás-profilban megadott API-verziók listáját lásd: [API profil](https://github.com/Azure/azure-rest-api-specs/tree/master/profile).<br><br>További információkért lásd: [nyomon követése az API-profilok használatával verziók](templates-cloud-consistency.md#track-versions-using-api-profiles). |
 | [paraméterek](#parameters) |Nem |Üzembe helyezés testreszabásához erőforrások üzembe helyezésének végrehajtásakor biztosított értékeket. |
 | [Változók](#variables) |Nem |Egyszerűsítése érdekében a Sablonnyelv-kifejezések, JSON-töredék a sablonban használt értékeket. |
 | [Függvények](#functions) |Nem |Felhasználó által megadott funkciók érhetők el a sablonon belül. |
@@ -57,17 +57,38 @@ Minden elem is megadhatja a tulajdonságokkal rendelkezik. Ez a cikk ismerteti a
 
 ## <a name="syntax"></a>Szintaxis
 
-A sablon szintaxisa alapszintű JSON. Kifejezések és függvények kiterjesztheti a sablonon belül elérhető JSON-értékeit.  A szögletes zárójelek kifejezések JSON-karakterlánc-literálnak belül írt amelynek első és utolsó karakterek: `[` és `]`, illetve. A kifejezés értékét a sablon üzembe helyezésekor lesz kiértékelve. Ír egy szöveges karakterlánc, míg a kifejezés kiértékelésének eredménye lehet egy másik JSON típusú, például egy tömb, vagy az egész szám, attól függően, a tényleges kifejezést.  Kezdje egy zárójelet szövegkonstansnak kell `[`, de nem rendelkezik, azt értelmezni, hogy egy kifejezés, adjon hozzá egy extra szögletes zárójelet, indítsa el a karakterlánc `[[`.
-
-Általában akkor kifejezések használata a functions konfigurálásához az üzembe helyezési műveletek végrehajtásához. Csak, például a JavaScript, függvényhívások formázott `functionName(arg1,arg2,arg3)`. A pont és a [index] operátorok használatával tulajdonságok hivatkozik.
-
-Az alábbi példa bemutatja, hogyan hozhat létre, amely egy értéket számos funkciót használni kívánt:
+A sablon szintaxisa alapszintű JSON. Kifejezések használata azonban kiterjesztése a sablonon belül elérhető JSON-értékeit.  Kifejezések indítása és a záró szögletes zárójelbe: `[` és `]`, illetve. A kifejezés értékét a sablon üzembe helyezésekor lesz kiértékelve. Egy kifejezés egy karakterlánc, egész szám, logikai érték beolvasása, tömb vagy objektum adhat vissza. Az alábbi példa egy paraméter alapértelmezett értéke egy kifejezés látható:
 
 ```json
-"variables": {
-  "storageName": "[concat(toLower(parameters('storageNamePrefix')), uniqueString(resourceGroup().id))]"
-}
+"parameters": {
+  "location": {
+    "type": "string",
+    "defaultValue": "[resourceGroup().location]"
+  }
+},
 ```
+
+A kifejezés szintaxisa belül `resourceGroup()` meghívja a függvényt, amely a Resource Manager biztosít egy sablon belüli használathoz. Csak, például a JavaScript, függvényhívások formázott `functionName(arg1,arg2,arg3)`. A szintaxist `.location` egy tulajdonságot kikeresi az adott függvény által visszaadott objektum.
+
+Sablon függvényeket és paramétereket és nagybetűk nincsenek megkülönböztetve. Például, oldja fel az erőforrás-kezelő **variables('var1')** és **VARIABLES('VAR1')** ugyanaz, mint. Kiértékelésekor, hacsak a függvény kifejezetten módosítja (például toUpper vagy toLower) eset, a függvény megőrzi az az eset. Előfordulhat, hogy az egyes erőforrástípusok használatieset-követelmények attól függetlenül, hogyan értékeli ki a funkciók.
+
+Kezdje egy zárójelet szövegkonstansnak kell `[`, de nem rendelkezik, azt értelmezni, hogy egy kifejezés, adjon hozzá egy extra szögletes zárójelet, indítsa el a karakterlánc `[[`.
+
+Egy karakterláncértéket paraméterként átadása egy függvényt, használjon aposztrófot.
+
+```json
+"name": "[concat('storage', uniqueString(resourceGroup().id))]"
+```
+
+Dupla escape-kifejezés, például a JSON-objektum a sablonban szereplő idézőjeleket a program a fordított perjel használja.
+
+```json
+"tags": {
+    "CostCenter": "{\"Dept\":\"Finance\",\"Environment\":\"Production\"}"
+},
+```
+
+Egy kifejezés nem lehet 24,576 karakternél.
 
 A sablonokban használható függvények teljes listájáért lásd: [Azure Resource Manager-sablonfüggvények](resource-group-template-functions.md). 
 

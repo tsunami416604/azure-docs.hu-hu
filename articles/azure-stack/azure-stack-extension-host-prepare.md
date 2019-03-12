@@ -1,26 +1,26 @@
 ---
 title: Azure stack-bővítmény gazdagép előkészítése |} A Microsoft Docs
-description: Megtanulhatja, hogyan készítse elő a bővítmény gazdagép, amely a jövőbeni Azure Stack csomag segítségével automatikusan engedélyezve van.
+description: Ismerje meg, fel a bővítmény gazdagép, a későbbi Azure Stack csomag automatikusan engedélyezve van.
 services: azure-stack
 keywords: ''
 author: mattbriggs
 ms.author: mabrigg
-ms.date: 02/07/2019
+ms.date: 03/07/2019
 ms.topic: article
 ms.service: azure-stack
 ms.reviewer: thoroet
 manager: femila
-ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: b0d3b3e4901fbcece13c201938be8bccb1bb9c82
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.lastreviewed: 03/07/2019
+ms.openlocfilehash: 47cc7d9f09b7fb22cf99ad010f1dc75e6388c314
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962366"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731920"
 ---
 # <a name="prepare-for-extension-host-for-azure-stack"></a>Azure stack-bővítmény gazdagép előkészítése
 
-A bővítmény fogadó Azure Stack védi a szükséges TCP/IP-portok számának csökkentésével. Ez a cikk megvizsgálja a bővítmény gazdagéptől, ami a 1808 frissítés után automatikusan engedélyezve van az Azure Stack frissíteni csomag segítségével az Azure Stack előkészítése. Ez a cikk az Azure Stack frissítéseinek 1808 1809 és 1811 vonatkozik.
+A bővítmény fogadó Azure Stack védi a szükséges TCP/IP-portok számának csökkentésével. Ez a cikk megvizsgálja a bővítmény-gazdagépet, amely a 1808 frissítés után automatikusan engedélyezve van az Azure Stack-frissítési csomag segítségével az Azure Stack előkészítése. Ez a cikk az Azure Stack frissítéseinek 1808 1809 és 1811 vonatkozik.
 
 ## <a name="certificate-requirements"></a>Tanúsítványkövetelmények
 
@@ -66,15 +66,14 @@ Az Azure Stack készültségi ellenőrző eszköz lehetővé teszi a tanúsítv�
     > [!Note]  
     > Az Azure Active Directory összevont szolgáltatások (AD FS) központi telepítésekor a következő könyvtárak fel kell venni **$directories** a szkriptben: `ADFS`, `Graph`.
 
-4. A tanúsítvány-ellenőrzés indítása a következő parancsmagok futtatásához:
+4. Helyezze el a meglévő tanúsítványok, amelyet jelenleg használ az Azure Stackben, a megfelelő címtárakban. Például helyezze a **rendszergazdai ARM** -tanúsítványt a `Arm Admin` mappát. Majd helyezzük az újonnan létrehozott szolgáltatási tanúsítványok a `Admin extension host` és `Public extension host` könyvtárak.
+5. Futtassa a tanúsítvány-ellenőrzés indítása a következő parancsmagot:
 
     ```PowerShell  
     $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
 
     Start-AzsReadinessChecker -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD
     ```
-
-5. A tanúsítvány(ok) jelölje be a megfelelő könyvtárak.
 
 6. Ellenőrizze, hogy a kimenet és az összes tanúsítvány adja át az összes teszt.
 
@@ -141,7 +140,7 @@ A cikk [adatközpont integrációja az Azure Stack - végpontok közzététele](
 
 ### <a name="publish-new-endpoints"></a>Új végpontok közzététele
 
-Kötelező a tűzfalon keresztül nyilvánosságra két új végpontja van. A nyilvános VIP-címkészlet lefoglalt IP-címekről lehet lekérni a következő kódra, amely az Azure Stack-n keresztül kell futtatni [környezet a rendszerjogosultságú végpont](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint).
+Kötelező a tűzfalon keresztül nyilvánosságra két új végpontja van. A nyilvános VIP-címkészlet lefoglalt IP-címekről lehet beolvasni a következő kóddal kell futtatni az Azure Stack [környezet a rendszerjogosultságú végpont](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint).
 
 ```PowerShell
 # Create a PEP Session

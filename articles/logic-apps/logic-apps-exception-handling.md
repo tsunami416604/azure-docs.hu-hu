@@ -10,12 +10,12 @@ ms.date: 01/31/2018
 ms.topic: article
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 56f3573bbab059aed78608209cb2815413876bb0
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 3f812c1142b5cd40169f7340163295b0f7ea6a4d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56308723"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57779147"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Hibák és az Azure Logic Appsben kivételek kezelése
 
@@ -223,9 +223,9 @@ Hatókörök korlátozásairól lásd: [határértékek és konfiguráció](../l
 
 Bár egy hatókörből hibák megelőzésével akkor hasznos, érdemes lehet a környezeti segítenek megérteni, hogy pontosan milyen műveleteket végezzen ezen kívül az esetleges hibákat vagy állapotkódokkal is sikertelen volt. A `@result()` kifejezése egy hatókör összes művelet eredménye kapcsolatos kontextust biztosít a.
 
-A `@result()` kifejezés (a hatókör neve) egyetlen paramétert fogad, és minden művelet eredményeinek hatókörön belüli tömbjét adja vissza. E művelet objektumok például őket a  **@actions()** objektumot, például a művelet kezdési idő, befejezési időpontja, állapota, bemenetei, korrelációs azonosítók és kimenetek. Hatókörön belüli bármely művelet, amelyet nem sikerült a környezet elküldéséhez, könnyen összepárosíthassa egy  **@result()** függvény és egy **runAfter** tulajdonság.
+A `@result()` kifejezés (a hatókör neve) egyetlen paramétert fogad, és minden művelet eredményeinek hatókörön belüli tömbjét adja vissza. E művelet objektumok például őket a  **\@actions()** objektumot, például a művelet kezdési idő, befejezési időpontja, állapota, bemenetei, korrelációs azonosítók és kimenetek. Hatókörön belüli bármely művelet, amelyet nem sikerült a környezet elküldéséhez, könnyen összepárosíthassa egy  **\@result()** függvény és egy **runAfter** tulajdonság.
 
-Minden egyes művelethez művelet futtatása egy hatókör, amely rendelkezik egy **sikertelen** eredményt, és az eredmények a sikertelen műveletek le a tömb szűrése, párosítsa  **@result()** az egy **[Tömb szűrése](../connectors/connectors-native-query.md)** művelet és a egy [ **minden** ](../logic-apps/logic-apps-control-flow-loops.md) ciklus. A szűrt eredmények tömb igénybe és a egy műveletet minden egyes hiba a a **minden** ciklus. 
+Minden egyes művelethez művelet futtatása egy hatókör, amely rendelkezik egy **sikertelen** eredményt, és az eredmények a sikertelen műveletek le a tömb szűrése, párosítsa  **\@result()** az egy **[ Tömb szűrése](../connectors/connectors-native-query.md)** művelet és a egy [ **minden** ](../logic-apps/logic-apps-control-flow-loops.md) ciklus. A szűrt eredmények tömb igénybe és a egy műveletet minden egyes hiba a a **minden** ciklus. 
 
 Íme egy példa, kiegészítve a részletes magyarázatát, amely minden művelettel nem sikerült a válasz törzse a HTTP POST-kérelmet küld a "My_Scope" hatókörön belül:
 
@@ -317,7 +317,7 @@ Referenciaként, Íme egy példa egy adott `@result()` konfigurációelem, amely
 }
 ```
 
-Különböző kivételkezelési minták végrehajtásához használhatja a jelen cikkben korábban ismertetett kifejezések. Előfordulhat, hogy egyetlen kivételkezelési hatálya alá, amely a teljes szűrt tömb hibák művelet végrehajtásához válassza ki, és távolítsa el a **minden** művelet. Egyéb fontos tulajdonságait is használható a  **@result()** választ az előzőleg ismertetett módon.
+Különböző kivételkezelési minták végrehajtásához használhatja a jelen cikkben korábban ismertetett kifejezések. Előfordulhat, hogy egyetlen kivételkezelési hatálya alá, amely a teljes szűrt tömb hibák művelet végrehajtásához válassza ki, és távolítsa el a **minden** művelet. Egyéb fontos tulajdonságait is használható a  **\@result()** választ az előzőleg ismertetett módon.
 
 ## <a name="azure-diagnostics-and-metrics"></a>Azure-diagnosztika és metrikák
 

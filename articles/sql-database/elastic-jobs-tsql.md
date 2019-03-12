@@ -12,12 +12,12 @@ author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: de0227ac3e3d963b5ec196b58e467dbeaf0dff42
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 057f5fcf9f050bdce9efb301db43b909893ade60
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453456"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769166"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Rugalmas adatbázis-feladatok létrehozása és kezelése Transact-SQL (T-SQL) használatával
 
@@ -447,16 +447,16 @@ Hozzáad egy új feladatot.
   
 #### <a name="arguments"></a>Argumentumok  
 
-[  **@job_name =** ] "job_name"  
+[  **\@job_name =** ] "job_name"  
 A feladat neve. A névnek egyedinek kell lennie és nem a százalékos aránya (%) karakter. job_name nvarchar(128), nem alapértelmezett.
 
-[  **@description =** ] "leírás"  
+[  **\@leírás =** ] "leírás"  
 A feladat leírása. Leírás megadása nem nvarchar(512), az alapértelmezett érték NULL. Ha a leírás, a rendszer üres karakterláncot használja.
 
-[  **@enabled =** ] engedélyezve  
+[  **\@engedélyezve =** ] engedélyezve  
 A feladat ütemezés engedélyezve van-e. Engedélyezett bit, az alapértelmezett érték a 0 (letiltva). Ha 0, a feladat nem engedélyezett, és nem fut az ütemezésnek; azonban hogy manuálisan futtatható. Ha 1, a feladat az ütemezése szerint fog futni, és manuálisan is futtathatók.
 
-[  **@schedule_interval_type =**] schedule_interval_type  
+[  **\@schedule_interval_type =**] schedule_interval_type  
 Érték azt jelzi, ha a feladat kell végrehajtani. schedule_interval_type nvarchar(50), az egyszer, alapértelmezett érték, és a következő értékek egyike lehet:
 - Az "egyszeri"
 - "Minutes",
@@ -465,16 +465,16 @@ A feladat ütemezés engedélyezve van-e. Engedélyezett bit, az alapértelmezet
 - "Hét"
 - "Hónapok"
 
-[  **@schedule_interval_count =** ] schedule_interval_count  
+[  **\@schedule_interval_count =** ] schedule_interval_count  
 Minden egyes végrehajtása a feladat a közti schedule_interval_count időszakok száma. schedule_interval_count int, az alapértelmezett 1 érték. Az érték nagyobb, mint 1 vagy azzal egyenlőnek kell lennie.
 
-[  **@schedule_start_time =** ] schedule_start_time  
+[  **\@schedule_start_time =** ] schedule_start_time  
 A dátum mely feladat végrehajtásának kezdete is. schedule_start_time DATETIME2, a rendszer az alapértelmezett 0001-01-01 00:00:00.0000000.
 
-[  **@schedule_end_time =** ] schedule_end_time  
+[  **\@schedule_end_time =** ] schedule_end_time  
 A dátum mely a feladat a végrehajtás leállíthatja. schedule_end_time DATETIME2, akkor az alapértelmezett 9999-12-31 11:59:59.0000000. 
 
-[  **@job_id =** ] job_id KIMENET  
+[  **\@job_id =** ] job_id KIMENET  
 Ha sikeresen létrehozva a feladathoz hozzárendelt feladathoz azonosítószáma. job_id egy UniqueIdentifier típusú kimeneti változó.
 
 #### <a name="return-code-values"></a>Visszatérési kód értéket
@@ -510,19 +510,19 @@ Frissíti egy meglévő feladat.
 ```
 
 #### <a name="arguments"></a>Argumentumok
-[  **@job_name =** ] "job_name"  
+[  **\@job_name =** ] "job_name"  
 Frissíteni kell a feladat neve. job_name nvarchar(128).
 
-[  **@new_name =** ] "új_név"  
+[  **\@új_név =** ] "új_név"  
 A feladat új neve. új_név nvarchar(128).
 
-[  **@description =** ] "leírás"  
+[  **\@leírás =** ] "leírás"  
 A feladat leírása. Leírás megadása nem nvarchar(512).
 
-[  **@enabled =** ] engedélyezve  
+[  **\@engedélyezve =** ] engedélyezve  
 Megadja, hogy a feladatütemezés engedélyezve (1) vagy nem engedélyezett (0). Engedélyezve van-e bit.
 
-[  **@schedule_interval_type=** ] schedule_interval_type  
+[  **\@schedule_interval_type =** ] schedule_interval_type  
 Érték azt jelzi, ha a feladat kell végrehajtani. schedule_interval_type nvarchar(50), és a következő értékek egyike lehet:
 
 - Az "egyszeri"
@@ -532,13 +532,13 @@ Megadja, hogy a feladatütemezés engedélyezve (1) vagy nem engedélyezett (0).
 - "Hét"
 - "Hónapok"
 
-[  **@schedule_interval_count=** ] schedule_interval_count  
+[  **\@schedule_interval_count =** ] schedule_interval_count  
 Minden egyes végrehajtása a feladat a közti schedule_interval_count időszakok száma. schedule_interval_count int, az alapértelmezett 1 érték. Az érték nagyobb, mint 1 vagy azzal egyenlőnek kell lennie.
 
-[  **@schedule_start_time=** ] schedule_start_time  
+[  **\@schedule_start_time =** ] schedule_start_time  
 A dátum mely feladat végrehajtásának kezdete is. schedule_start_time DATETIME2, a rendszer az alapértelmezett 0001-01-01 00:00:00.0000000.
 
-[  **@schedule_end_time=** ] schedule_end_time  
+[  **\@schedule_end_time =** ] schedule_end_time  
 A dátum mely a feladat a végrehajtás leállíthatja. schedule_end_time DATETIME2, akkor az alapértelmezett 9999-12-31 11:59:59.0000000. 
 
 #### <a name="return-code-values"></a>Visszatérési kód értéket
@@ -567,10 +567,10 @@ Egy meglévő feladat törlése.
 ```
 
 #### <a name="arguments"></a>Argumentumok
-[  **@job_name =** ] "job_name"  
+[  **\@job_name =** ] "job_name"  
 A törlendő feladat neve. job_name nvarchar(128).
 
-[  **@force =** ] kényszerítése  
+[  **\@force =** ] kényszerítése  
 Megadja, hogy törölnie kell-e a feladat minden végrehajtás folyamatban van, és megszakítja az összes folyamatban lévő végrehajtások (1) vagy sikertelen, ha bármely feladatvégrehajtások folyamatban (0). kényszerített bit.
 
 #### <a name="return-code-values"></a>Visszatérési kód értéket
@@ -622,79 +622,79 @@ Egy lépést ad egy feladathoz.
 
 #### <a name="arguments"></a>Argumentumok
 
-[  **@job_name =** ] "job_name"  
+[  **\@job_name =** ] "job_name"  
 A feladat, amelyhez a lépés hozzáadása neve. job_name nvarchar(128).
 
-[  **@step_id =** ] step_id  
+[  **\@step_id =** ] step_id  
 A feladat lépésének feladatütemezési azonosítószáma. Lépés azonosítószámokat számozása 1, és növelje hézagok nélkül. Ha egy meglévő lépés már ezt az azonosítót, majd lépés és lépéseket azonosítójának fog kell a növekszik, úgy, hogy ez a lépés szúrhatók be, a feladatütemezés. Ha nincs megadva, a step_id lesz automatikusan hozzárendelve az utolsó a lépések sorrendjét. step_id egy: egész szám.
 
-[  **@step_name =** ] step_name  
+[  **\@step_name =** ] step_name  
 A lépés neve. Meg kell adni, kivéve az első lépés egy feladatot, amely (az egyszerűség) alapértelmezett neve "JobStep". step_name nvarchar(128).
 
-[  **@command_type =** ] "command_type"  
+[  **\@command_type =** ] "command_type"  
 Ez jobstep által végrehajtott parancs típusa. command_type nvarchar(50) a TSQL használatával, ami azt jelenti, hogy értékét, az alapértelmezett érték a @command_type paramétere T-SQL parancsfájl.
 
 Ha meg van adva, az érték a TSQL használatával kell lennie.
 
-[  **@command_source =** ] "command_source"  
+[  **\@command_source =** ] "command_source"  
 A parancs tárolásának helyét típusa. command_source nvarchar(50) soron belüli, ami azt jelenti, hogy értékét az alapértelmezett értékkel a @command_source paraméter a parancs szövegkonstans.
 
 Ha meg van adva, az értéknek a beágyazott kell lennie.
 
-[  **@command =** ] 'parancs'  
+[  **\@parancs =** ] 'parancs'  
 A parancsot érvényes T-SQL parancsfájl kell lennie, és majd a feladat lépésének által végrehajtott. a parancs az nvarchar(max), az alapértelmezett érték NULL esetén.
 
-[  **@credential_name =** ] "credential_name"  
+[  **\@credential_name =** ] "credential_name"  
 Az adatbázis neve kötődő hitelesítőadat-adatbázisban tárolt e feladat vezérlőelem, amellyel csatlakozzon az egyes a céladatbázisok belül a célcsoportot, ez a lépés végrehajtásakor. credential_name nvarchar(128).
 
-[  **@target_group_name =** ] "cél-csoportnév"  
+[  **\@target_group_name =** ] "cél-csoportnév"  
 A cél, hogy a feladat lépésének végrehajtásához adatbázisokat tartalmazó célcsoport neve. target_group_name nvarchar(128).
 
-[  **@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
+[  **\@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
 A késleltetés, mielőtt az első újrapróbálkozás kísérli meg, ha a feladat lépés sikertelen lesz, a kezdeti végrehajtási próbálkozásra. initial_retry_interval_seconds int, alapértelmezett értéke 1.
 
-[  **@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
+[  **\@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
 Az újrapróbálkozási kísérletek közötti maximális késleltetés. Ha az újrapróbálkozások közötti késleltetés nagyobb, mint ez az érték akkor növekszik, azt a maximumon erre az értékre helyette. maximum_retry_interval_seconds int, az alapértelmezett érték 120.
 
-[  **@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
+[  **\@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
 A alkalmazni újrapróbálkozási késleltetéshez, ha több feladat végrehajtási lépés szorzó kísérletek sikertelenek. Például ha az első újrapróbálkozás kellett 5 másodperces késleltetést, és a leállítási szorzó 2.0, majd a második újra lesz 10 másodperc késéssel és a harmadik újrapróbálkozási rendelkeznek majd 20 másodperc késéssel. retry_interval_backoff_multiplier valódi, 2.0 alapértelmezett értékkel.
 
-[  **@retry_attempts =** ] retry_attempts  
+[  **\@retry_attempts =** ] retry_attempts  
 Újrapróbálja a futtatást, ha a kezdeti kísérlet sikertelen bejelentkezések száma. Például ha retry_attempts értéke 10., akkor nem lesznek 1 kezdeti kísérlet és 10 újrapróbálkozások száma, így 11 kísérletek összesen. Ha az utolsó újrapróbálkozási kísérlet sikertelen, majd a feladat végrehajtása le fog állni egy életciklusával sikertelen. retry_attempts int, az alapértelmezett 10 értéket.
 
-[  **@step_timeout_seconds =** ] step_timeout_seconds  
+[  **\@step_timeout_seconds =** ] step_timeout_seconds  
 A lépés végrehajtásához engedélyezett maximális mennyisége. Ez idő túllépése, majd a feladat végrehajtása időtúllépés miatt megszakadt egy életciklusával akkor megszűnik. step_timeout_seconds int, az alapértelmezett érték pedig 43 200 másodperc (12 óra).
 
-[  **@output_type =** ] "output_type"  
+[  **\@output_type =** ] "output_type"  
 Ha nem null értékű, a cél, amely a parancs első eredményt típusát íródik. output_type nvarchar(50), az alapértelmezett érték NULL.
 
 Ha meg van adva, az értéknek az SQL Database kell lennie.
 
-[  **@output_credential_name =** ] "output_credential_name"  
+[  **\@output_credential_name =** ] "output_credential_name"  
 Nem null értékű, ha az adatbázis neve hatóköre a kimeneti cél adatbázishoz való kapcsolódáshoz használt hitelesítő adatok. Kötelező megadni, ha output_type megegyezik-e az SQL Database. output_credential_name nvarchar(128), NULL alapértelmezett értéket.
 
-[  **@output_subscription_id =** ] "output_subscription_id"  
+[  **\@output_subscription_id =** ] "output_subscription_id"  
 Leírás szükséges.
 
-[  **@output_resource_group_name =** ] "output_resource_group_name"  
+[  **\@output_resource_group_name =** ] "output_resource_group_name"  
 Leírás szükséges.
 
-[  **@output_server_name =** ] "output_server_name"  
+[  **\@output_server_name =** ] "output_server_name"  
 Ha nem null, a kimeneti adatbázist tartalmazó kiszolgáló teljesen minősített DNS-nevét. Kötelező megadni, ha output_type megegyezik-e az SQL Database. output_server_name nvarchar(256), az alapértelmezett érték NULL.
 
-[  **@output_database_name =** ] "output_database_name"  
+[  **\@output_database_name =** ] "output_database_name"  
 Ha nem null értékű, az adatbázis nevét, amely tartalmazza a kimeneti céltáblázatban. Kötelező megadni, ha output_type megegyezik-e az SQL Database. output_database_name nvarchar(128), az alapértelmezett érték NULL.
 
-[  **@output_schema_name =** ] "output_schema_name"  
+[  **\@output_schema_name =** ] "output_schema_name"  
 Ha nem null értékű, az SQL-séma neve, amely tartalmazza a kimeneti céltáblázatban. Ha output_type megegyezik az SQL Database, az alapértelmezett érték a dbo. output_schema_name nvarchar(128).
 
-[  **@output_table_name =** ] "output_table_name"  
+[  **\@output_table_name =** ] "output_table_name"  
 Ha nem null értékű, a tábla, amely a parancs első eredményt neve lesz írva. Ha a tábla már nem létezik, jön az adatszolgáltató eredményhalmaz a séma alapján. Kötelező megadni, ha output_type megegyezik-e az SQL Database. output_table_name nvarchar(128), NULL alapértelmezett értéket.
 
-[  **@job_version =** ] job_version KIMENET  
+[  **\@job_version =** ] job_version KIMENET  
 A kimeneti paraméter, amely az új feladat verziószámmal hozzá lesz rendelve. job_version: egész szám.
 
-[  **@max_parallelism =** ] max_parallelism KIMENET  
+[  **\@max_parallelism =** ] max_parallelism KIMENET  
 A rugalmas készletenként párhuzamosság maximális szintjét. Ha be van állítva, a feladat lépésének csak futtatni, amely legfeljebb annyi adatbázist egy rugalmas készlet korlátozott lesz. Ez minden rugalmas készletet, amely közvetlenül vagy tartalmazza a célcsoportban, vagy olyan kiszolgálóra, amely tartalmazza a célcsoportban lévő vonatkozik. max_parallelism: egész szám.
 
 
@@ -746,79 +746,79 @@ Egy feladat lépésének frissíti.
 ```
 
 #### <a name="arguments"></a>Argumentumok
-[  **@job_name =** ] "job_name"  
+[  **\@job_name =** ] "job_name"  
 A feladat, amelyhez tartozik. a lépés neve. job_name nvarchar(128).
 
-[  **@step_id =** ] step_id  
+[  **\@step_id =** ] step_id  
 A feladat lépésének módosítani azonosítószáma. Step_id vagy step_name meg kell adni. step_id egy: egész szám.
 
-[  **@step_name =** ] "step_name"  
+[  **\@step_name =** ] "step_name"  
 Módosítani kell a lépés neve. Step_id vagy step_name meg kell adni. step_name nvarchar(128).
 
-[  **@new_id =** ] new_id  
+[  **\@new_id =** ] new_id  
 A feladat lépésének új feladatütemezési azonosítószáma. Lépés azonosítószámokat számozása 1, és növelje hézagok nélkül. Ha egy lépés átrendezésekor van, majd további lépések fog lehet automatikusan újraszámozásakor.
 
-[  **@new_name =** ] "új_név"  
+[  **\@új_név =** ] "új_név"  
 A lépés új neve. új_név nvarchar(128).
 
-[  **@command_type =** ] "command_type"  
+[  **\@command_type =** ] "command_type"  
 Ez jobstep által végrehajtott parancs típusa. command_type nvarchar(50) a TSQL használatával, ami azt jelenti, hogy értékét, az alapértelmezett érték a @command_type paramétere T-SQL parancsfájl.
 
 Ha meg van adva, az érték a TSQL használatával kell lennie.
 
-[  **@command_source =** ] "command_source"  
+[  **\@command_source =** ] "command_source"  
 A parancs tárolásának helyét típusa. command_source nvarchar(50) soron belüli, ami azt jelenti, hogy értékét az alapértelmezett értékkel a @command_source paraméter a parancs szövegkonstans.
 
 Ha meg van adva, az értéknek a beágyazott kell lennie.
 
-[  **@command =** ] 'parancs'  
+[  **\@parancs =** ] 'parancs'  
 A parancsok a következők érvényes T-SQL parancsfájl kell lennie, és majd a feladat lépésének által végrehajtott. a parancs az nvarchar(max), az alapértelmezett érték NULL esetén.
 
-[  **@credential_name =** ] "credential_name"  
+[  **\@credential_name =** ] "credential_name"  
 Az adatbázis neve kötődő hitelesítőadat-adatbázisban tárolt e feladat vezérlőelem, amellyel csatlakozzon az egyes a céladatbázisok belül a célcsoportot, ez a lépés végrehajtásakor. credential_name nvarchar(128).
 
-[  **@target_group_name =** ] "cél-csoportnév"  
+[  **\@target_group_name =** ] "cél-csoportnév"  
 A cél, hogy a feladat lépésének végrehajtásához adatbázisokat tartalmazó célcsoport neve. target_group_name nvarchar(128).
 
-[  **@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
+[  **\@initial_retry_interval_seconds =** ] initial_retry_interval_seconds  
 A késleltetés, mielőtt az első újrapróbálkozás kísérli meg, ha a feladat lépés sikertelen lesz, a kezdeti végrehajtási próbálkozásra. initial_retry_interval_seconds int, alapértelmezett értéke 1.
 
-[  **@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
+[  **\@maximum_retry_interval_seconds =** ] maximum_retry_interval_seconds  
 Az újrapróbálkozási kísérletek közötti maximális késleltetés. Ha az újrapróbálkozások közötti késleltetés nagyobb, mint ez az érték akkor növekszik, azt a maximumon erre az értékre helyette. maximum_retry_interval_seconds int, az alapértelmezett érték 120.
 
-[  **@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
+[  **\@retry_interval_backoff_multiplier =** ] retry_interval_backoff_multiplier  
 A alkalmazni újrapróbálkozási késleltetéshez, ha több feladat végrehajtási lépés szorzó kísérletek sikertelenek. Például ha az első újrapróbálkozás kellett 5 másodperces késleltetést, és a leállítási szorzó 2.0, majd a második újra lesz 10 másodperc késéssel és a harmadik újrapróbálkozási rendelkeznek majd 20 másodperc késéssel. retry_interval_backoff_multiplier valódi, 2.0 alapértelmezett értékkel.
 
-[  **@retry_attempts =** ] retry_attempts  
+[  **\@retry_attempts =** ] retry_attempts  
 Újrapróbálja a futtatást, ha a kezdeti kísérlet sikertelen bejelentkezések száma. Például ha retry_attempts értéke 10., akkor nem lesznek 1 kezdeti kísérlet és 10 újrapróbálkozások száma, így 11 kísérletek összesen. Ha az utolsó újrapróbálkozási kísérlet sikertelen, majd a feladat végrehajtása le fog állni egy életciklusával sikertelen. retry_attempts int, az alapértelmezett 10 értéket.
 
-[  **@step_timeout_seconds =** ] step_timeout_seconds  
+[  **\@step_timeout_seconds =** ] step_timeout_seconds  
 A lépés végrehajtásához engedélyezett maximális mennyisége. Ez idő túllépése, majd a feladat végrehajtása időtúllépés miatt megszakadt egy életciklusával akkor megszűnik. step_timeout_seconds int, az alapértelmezett érték pedig 43 200 másodperc (12 óra).
 
-[  **@output_type =** ] "output_type"  
+[  **\@output_type =** ] "output_type"  
 Ha nem null értékű, a cél, amely a parancs első eredményt típusát íródik. Visszaállítani output_type értéke NULL, ez a paraméter értékét állítsa "(üres karakterlánc). output_type nvarchar(50), az alapértelmezett érték NULL.
 
 Ha meg van adva, az értéknek az SQL Database kell lennie.
 
-[  **@output_credential_name =** ] "output_credential_name"  
+[  **\@output_credential_name =** ] "output_credential_name"  
 Nem null értékű, ha az adatbázis neve hatóköre a kimeneti cél adatbázishoz való kapcsolódáshoz használt hitelesítő adatok. Kötelező megadni, ha output_type megegyezik-e az SQL Database. Visszaállítani output_credential_name értéke NULL, ez a paraméter értékét állítsa "(üres karakterlánc). output_credential_name nvarchar(128), NULL alapértelmezett értéket.
 
-[  **@output_server_name =** ] "output_server_name"  
+[  **\@output_server_name =** ] "output_server_name"  
 Ha nem null, a kimeneti adatbázist tartalmazó kiszolgáló teljesen minősített DNS-nevét. Kötelező megadni, ha output_type megegyezik-e az SQL Database. Visszaállítani output_server_name értéke NULL, ez a paraméter értékét állítsa "(üres karakterlánc). output_server_name nvarchar(256), az alapértelmezett érték NULL.
 
-[  **@output_database_name =** ] "output_database_name"  
+[  **\@output_database_name =** ] "output_database_name"  
 Ha nem null értékű, az adatbázis nevét, amely tartalmazza a kimeneti céltáblázatban. Kötelező megadni, ha output_type megegyezik-e az SQL Database. Visszaállítani output_database_name értéke NULL, ez a paraméter értékét állítsa "(üres karakterlánc). output_database_name nvarchar(128), az alapértelmezett érték NULL.
 
-[  **@output_schema_name =** ] "output_schema_name"  
+[  **\@output_schema_name =** ] "output_schema_name"  
 Ha nem null értékű, az SQL-séma neve, amely tartalmazza a kimeneti céltáblázatban. Ha output_type megegyezik az SQL Database, az alapértelmezett érték a dbo. Visszaállítani output_schema_name értéke NULL, ez a paraméter értékét állítsa "(üres karakterlánc). output_schema_name nvarchar(128).
 
-[  **@output_table_name =** ] "output_table_name"  
+[  **\@output_table_name =** ] "output_table_name"  
 Ha nem null értékű, a tábla, amely a parancs első eredményt neve lesz írva. Ha a tábla már nem létezik, jön az adatszolgáltató eredményhalmaz a séma alapján. Kötelező megadni, ha output_type megegyezik-e az SQL Database. Visszaállítani output_server_name értéke NULL, ez a paraméter értékét állítsa "(üres karakterlánc). output_table_name nvarchar(128), NULL alapértelmezett értéket.
 
-[  **@job_version =** ] job_version KIMENET  
+[  **\@job_version =** ] job_version KIMENET  
 A kimeneti paraméter, amely az új feladat verziószámmal hozzá lesz rendelve. job_version: egész szám.
 
-[  **@max_parallelism =** ] max_parallelism KIMENET  
+[  **\@max_parallelism =** ] max_parallelism KIMENET  
 A rugalmas készletenként párhuzamosság maximális szintjét. Ha be van állítva, a feladat lépésének csak futtatni, amely legfeljebb annyi adatbázist egy rugalmas készlet korlátozott lesz. Ez minden rugalmas készletet, amely közvetlenül vagy tartalmazza a célcsoportban, vagy olyan kiszolgálóra, amely tartalmazza a célcsoportban lévő vonatkozik. Visszaállítani max_parallelism értéke null, állítsa be a paraméter értéke 1. max_parallelism: egész szám.
 
 
@@ -853,16 +853,16 @@ Egy feladat lépésének távolít el egy feladatot.
 ```
 
 #### <a name="arguments"></a>Argumentumok
-[  **@job_name =** ] "job_name"  
+[  **\@job_name =** ] "job_name"  
 A feladat, amelyről a lépés eltávolítja a neve. job_name nvarchar(128), nem alapértelmezett.
 
-[  **@step_id =** ] step_id  
+[  **\@step_id =** ] step_id  
 Azonosítószáma. a feladat lépésének törölni. Step_id vagy step_name meg kell adni. step_id egy: egész szám.
 
-[  **@step_name =** ] "step_name"  
+[  **\@step_name =** ] "step_name"  
 A törlendő lépés neve. Step_id vagy step_name meg kell adni. step_name nvarchar(128).
 
-[  **@job_version =** ] job_version KIMENET  
+[  **\@job_version =** ] job_version KIMENET  
 A kimeneti paraméter, amely az új feladat verziószámmal hozzá lesz rendelve. job_version: egész szám.
 
 #### <a name="return-code-values"></a>Visszatérési kód értéket
@@ -897,10 +897,10 @@ Elindul egy feladat végrehajtása.
 ```
 
 #### <a name="arguments"></a>Argumentumok
-[  **@job_name =** ] "job_name"  
+[  **\@job_name =** ] "job_name"  
 A feladat, amelyről a lépés eltávolítja a neve. job_name nvarchar(128), nem alapértelmezett.
 
-[  **@job_execution_id =** ] job_execution_id KIMENET  
+[  **\@job_execution_id =** ] job_execution_id KIMENET  
 A kimeneti paraméter, amely a feladat-végrehajtási azonosítóhoz hozzá lesz rendelve. job_version uniqueidentifier.
 
 #### <a name="return-code-values"></a>Visszatérési kód értéket
@@ -928,7 +928,7 @@ Egy feladat végrehajtása leáll.
 
 
 #### <a name="arguments"></a>Argumentumok
-[  **@job_execution_id =** ] job_execution_id  
+[  **\@job_execution_id =** ] job_execution_id  
 A feladat végrehajtásának leállítása azonosítószáma. job_execution_id uniqueidentifier alapértelmezett null értékű.
 
 #### <a name="return-code-values"></a>Visszatérési kód értéket
@@ -958,10 +958,10 @@ Cél csoport hozzáadása.
 
 
 #### <a name="arguments"></a>Argumentumok
-[  **@target_group_name =** ] "target_group_name"  
+[  **\@target_group_name =** ] "target_group_name"  
 Hozhat létre a célcsoport neve. target_group_name nvarchar(128), nem alapértelmezett.
 
-[  **@target_group_id =** ] target_group_id kimeneti a célként megadott csoport azonosító száma pedig a feladathoz hozzárendelt, ha sikeresen létrehozva. target_group_id egy kimeneti változó UniqueIdentifier típusú, az alapértelmezett érték NULL.
+[  **\@target_group_id =** ] target_group_id kimeneti a célként megadott csoport azonosító száma pedig a feladathoz hozzárendelt, ha sikeresen létrehozva. target_group_id egy kimeneti változó UniqueIdentifier típusú, az alapértelmezett érték NULL.
 
 #### <a name="return-code-values"></a>Visszatérési kód értéket
 0 (sikeres) vagy 1 (hiba)
@@ -988,7 +988,7 @@ A célként megadott csoport törlése.
 
 
 #### <a name="arguments"></a>Argumentumok
-[  **@target_group_name =** ] "target_group_name"  
+[  **\@target_group_name =** ] "target_group_name"  
 Törli a célcsoport neve. target_group_name nvarchar(128), nem alapértelmezett.
 
 #### <a name="return-code-values"></a>Visszatérési kód értéket
@@ -1022,31 +1022,31 @@ Egy adatbázis vagy adatbázisokat ad hozzá egy célcsoportot.
 ```
 
 #### <a name="arguments"></a>Argumentumok
-[  **@target_group_name =** ] "target_group_name"  
+[  **\@target_group_name =** ] "target_group_name"  
 A célcsoportot, amely hozzáadja a tag neve. target_group_name nvarchar(128), nem alapértelmezett.
 
-[  **@membership_type =** ] "membership_type"  
+[  **\@membership_type =** ] "membership_type"  
 Ha a célként megadott csoport tagja foglalt vagy kizárt adja meg. target_group_name nvarchar(128) "Include" alapértelmezés szerint a rendszer. Target_group_name érvényes értékei a következők: "Include" vagy "Kizárása".
 
-[  **@target_type =** ] "target_type"  
+[  **\@target_type =** ] "target_type"  
 A céladatbázis vagy -beleértve az összes adatbázis-kiszolgálók, rugalmas készletben található összes adatbázis, horizontálispartíció-térkép található összes adatbázis vagy az egyes adatbázisok adatbázis-gyűjtemény típusa. target_type nvarchar(128), nem alapértelmezett. Target_type érvényes értékei a következők: "SqlServer", "SqlElasticPool", "SqlDatabase" vagy "SqlShardMap". 
 
-[  **@refresh_credential_name =** ] "refresh_credential_name"  
+[  **\@refresh_credential_name =** ] "refresh_credential_name"  
 Az SQL Database-kiszolgáló neve. refresh_credential_name nvarchar(128), nem alapértelmezett.
 
-[  **@server_name =** ] ": kiszolgálónév"  
+[  **\@kiszolgáló_neve =** ] ": kiszolgálónév"  
 A megadott célcsoportot, az új SQL Database-kiszolgáló neve. kiszolgáló_neve target_type "SqlServer" esetén adható meg. kiszolgáló_neve nvarchar(128), nem alapértelmezett.
 
-[  **@database_name =** ] "database_name"  
+[  **\@database_name =** ] "database_name"  
 A megadott célcsoportot, az új adatbázis neve. Ha target_type "SqlDatabase" database_name adható meg. adatbázisnév nvarchar(128), nem alapértelmezett.
 
-[  **@elastic_pool_name =** ] "elastic_pool_name"  
+[  **\@elastic_pool_name =** ] "elastic_pool_name"  
 A rugalmas készlet a megadott célcsoportot, az új neve. Ha target_type "SqlElasticPool" elastic_pool_name adható meg. elastic_pool_name nvarchar(128), nem alapértelmezett.
 
-[  **@shard_map_name =** ] "shard_map_name"  
+[  **\@shard_map_name =** ] "shard_map_name"  
 A szegmens térkép készlet a megadott célcsoportot, az új neve. Ha target_type "SqlSqlShardMap" elastic_pool_name adható meg. shard_map_name nvarchar(128), nem alapértelmezett.
 
-[  **@target_id =** ] target_group_id KIMENET  
+[  **\@target_id =** ] target_group_id KIMENET  
 A célcsoport hozzá rendelt a célként megadott csoport tagja, ha létrehozott cél azonosítószáma. target_id egy kimeneti változó UniqueIdentifier típusú, az alapértelmezett érték NULL.
 Visszatérési kód értékek 0 (sikeres) vagy 1 (hiba)
 
@@ -1157,13 +1157,13 @@ Eltávolít egy feladat replikálásielőzmény-rekord.
 ```
 
 #### <a name="arguments"></a>Argumentumok
-[  **@job_name =** ] "job_name"  
+[  **\@job_name =** ] "job_name"  
 A feladat, amelynek a replikálásielőzmény-rekord törlése neve. job_name nvarchar(128), az alapértelmezett érték NULL. Meg kell adni job_id vagy a job_name, de mindkettő nem adható meg.
 
-[  **@job_id =** ] job_id  
+[  **\@job_id =** ] job_id  
  A feladat a feladat a törlendő rekordok azonosítószáma. job_id uniqueidentifier, az alapértelmezett érték NULL. Meg kell adni job_id vagy a job_name, de mindkettő nem adható meg.
 
-[  **@oldest_date =** ] oldest_date  
+[  **\@oldest_date =** ] oldest_date  
  A legrégebbi az előzményekben megőrizni kívánt rekord. oldest_date DATETIME2, akkor az alapértelmezett érték NULL. Ha oldest_date meg van adva, sp_purge_jobhistory csak eltávolítja azokat a rekordokat, amelyek régebbi, mint a megadott érték.
 
 #### <a name="return-code-values"></a>Visszatérési kód értéket

@@ -8,21 +8,21 @@ ms.topic: include
 ms.date: 11/09/2017
 ms.author: mandia
 ms.custom: include file
-ms.openlocfilehash: 7fa6930acf4d19b3939bb8a5b0306d216346c2b3
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 2697a7d14141682ee8208d8cbe954e6e1679e3b5
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38755719"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553548"
 ---
-| ERŐFORRÁS | INGYENES (ELŐZETES VERZIÓ) | FEJLESZTŐI | ALAPSZINTŰ | STANDARD | PRÉMIUM |
+| Erőforrás | Ingyenes (előzetes verzió) | Fejlesztői | Alapszintű | Standard | Prémium |
 | --- | --- | --- | --- | --- | --- |
-| Horizontális felskálázás |– |– |Igen, 1 alapszintű egységnyi növekményekben |Igen, 1 Standard egységnyi növekményekben |Igen, 1 prémium egységnyi növekményekben |
-| Méretezési korlát |– |– |Legfeljebb 8 egység |Legfeljebb 8 egység |Legfeljebb 8 egység |
-| Egységenkénti EAI hidak |– |25 |25 |125 |500 |
-| Egységenkénti EDI szerződések |– |10 |50 |250 |1000 |
+| Horizontális felskálázás |– |– |Igen, 1 alapszintű egységnyi növekményekben |Igen, 1 standard egységnyi növekményekben |Igen, 1 prémium egységnyi növekményekben |
+| Méretkorlát |– |– |Legfeljebb 8 egység |Legfeljebb 8 egység |Legfeljebb 8 egység |
+| EAI-hidak egységenként |– |25 |25 |125 |500 |
+| Egységenkénti EDI szerződések |– |10 |50 |250 |1,000 |
 | Hibrid kapcsolatok egységenként |5 |5 |10 |50 |100 |
-| Egységenkénti hibrid kapcsolatok adatforgalma (GB) |5 |5 |50 |250 |500 |
+| Hibrid kapcsolat adatátvitele (GB) egységenként |5 |5 |50 |250 |500 |
 | Egységenként a BizTalk Adapter szolgáltatást használó kapcsolatok száma |– |1 |2 |5 |25 |
 | Archiválás |– |Elérhető |– |– |Elérhető |
 | Magas rendelkezésre állás |– |– |Elérhető |Elérhető |Elérhető |

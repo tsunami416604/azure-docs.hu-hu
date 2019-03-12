@@ -7,14 +7,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: f95edc881e26576df216c92ff0b94c5c19bf7fa8
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 204ee1b812949311258be968de387dc5b66c4fc0
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727927"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57726872"
 ---
-# <a name="azure-data-factory-data-flow-join-transformation"></a>Az Azure Data Factory folyamat illesztési átalakítását
+# <a name="mapping-data-flow-join-transformation"></a>Adatátalakítás folyamat illesztési leképezése
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
@@ -24,11 +24,11 @@ Csatlakozás használatával két tábla az adatfolyam származó adatokat kombi
 
 ## <a name="join-types"></a>Csatlakozás típusa
 
-Válassza a csatlakozás típusa szükség az illesztési átalakítás
+Válassza a csatlakozás típusa szükség az illesztési átalakítást.
 
 ### <a name="inner-join"></a>Belső illesztés
 
-Csak a mindkét tábla oszlop feltételeknek megfelelő sorokat továbbítja a belső illesztés
+Belső illesztés csak a mindkét tábla oszlop feltételeknek megfelelő sorokat fog továbbítani.
 
 ### <a name="left-outer"></a>Bal oldali külső
 
@@ -40,11 +40,11 @@ A megfelelő stream nem felel meg az illesztési feltétel az összes sor továb
 
 ### <a name="full-outer"></a>A teljes külső
 
-Teljes külső összes oszlopot hoz létre, és mindkét fél oszlopoknál, amelyek NULL értékkel sorait nem jelenik meg a másik táblában
+Teljes külső összes oszlopot hoz létre, és mindkét fél oszlopoknál, amelyek NULL értékkel sorait nem jelenik meg a másik táblában.
 
 ### <a name="cross-join"></a>Keresztillesztés
 
-A két kifejezés-adatfolyamok keresztszorzatát specifikus
+Adja meg a két adatfolyam keresztszorzatát kifejezése. Ezzel egyéni illesztési feltételek létrehozása.
 
 ## <a name="specify-join-conditions"></a>Adja meg az illesztési feltételek
 
@@ -67,3 +67,7 @@ Az ADF adatfolyam önillesztést feltételek a válassza egy meglévő adatfolya
 ![Önillesztés](media/data-flow/selfjoin.png "Önillesztés")
 
 A fenti ábrán a Select transformaci tetején. Az összes műveletet az aliasképző "OrigSourceBatting" az eredeti adatfolyam. A kijelölt illesztési átalakítás alatta látható, hogy vesszük a Select alias stream a jobb oldali illesztési lehetővé teszi számunkra, hogy ugyanazzal a kulccsal az bal és jobb oldalán a belső illesztéssel hivatkozhat.
+
+## <a name="next-steps"></a>További lépések
+
+Csatlakozás adatok, után használhatja majd [hozhat létre új oszlopokat](data-flow-derived-column.md) és [az adatok gyűjtése a célként megadott adattárba](data-flow-sink.md).

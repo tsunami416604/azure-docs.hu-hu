@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 827990e03ca1bbb4bfd2ca9cf8bf0a9ceccfb51b
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 136b819f6bbbc1b546b66f54e771dbec8c71202c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719387"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548149"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Durable Functions - Phone minta az emberi beavatkozást igényel
 
@@ -118,7 +118,7 @@ Location: http://{host}/admin/extensions/DurableTaskExtension/instances/741c6565
 
 Az orchestrator függvény kap a megadott telefonszámot, és azonnal elküldi egy véletlenszerűen létrehozott 4 jegyű ellenőrző kódot tartalmazó SMS-ben &mdash; például *2168*. A függvény majd vár 90 másodpercet a válaszra.
 
-Válasz a kóddal, használhatja [ `RaiseEventAsync` (.NET) vagy `raiseEvent` (JavaScript)](durable-functions-instance-management.md#sending-events-to-instances) másik függvényt, vagy hívja a **sendEventUrl** a 202-es válaszban a fenti hivatkozott HTTP POST-webhook , és cserélje le `{eventName}` az esemény nevét `SmsChallengeResponse`:
+Válasz a kóddal, használhatja [ `RaiseEventAsync` (.NET) vagy `raiseEvent` (JavaScript)](durable-functions-instance-management.md) másik függvényt, vagy hívja a **sendEventUrl** a 202-es válaszban a fenti hivatkozott HTTP POST-webhook , és cserélje le `{eventName}` az esemény nevét `SmsChallengeResponse`:
 
 ```
 POST http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/SmsChallengeResponse?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}

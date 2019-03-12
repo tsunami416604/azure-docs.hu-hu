@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ea5084128848db7d799b1791aef528305b4f6df4
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 9bb574fcb9782aad41ea0fd276b8addee19caf01
+ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192367"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57588975"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>Nyomtatott és kézzel írt szöveg felismerése
 
@@ -26,7 +26,7 @@ Számítógépes Látástechnológia számos olyan szolgáltatások észlelésé
 
 A elolvashatják az API segítségével azonosíthatja a legújabb modelleket a szöveges tartalom észleli és karaktersorozattá alakítja át a meghatározott szöveget. Szöveges adatot használó rendszerképek (például a digitális a beolvasott dokumentumokat) és a képek vizuális zaj rengeteg optimalizálva. Mert adja vissza az eredményt több percet is igénybe vehet a nagyobb dokumentumok aszinkron módon végrehajtja.
 
-Az olvasási művelet fenntartja a felismerhető szavak kimenetét eredeti sor csoportosítását. A soron belül minden szó a saját koordináták is rendelkezik, és az egyes sorok határolókeret koordinátái tartalmaz. Egy szó alacsony magabiztosan ismerhető fel, ha ezt az információt, valamint továbbítani. Tekintse meg a [elolvashatják az API-referenciadokumentumok](https://westus.api.cognitive.microosft.com/vision/v2.0/read/core/asyncBatchAnalyze) további.
+Az olvasási művelet fenntartja a felismerhető szavak kimenetét eredeti sor csoportosítását. A soron belül minden szó a saját koordináták is rendelkezik, és az egyes sorok határolókeret koordinátái tartalmaz. Egy szó alacsony magabiztosan ismerhető fel, ha ezt az információt, valamint továbbítani. Tekintse meg a [elolvashatják az API-referenciadokumentumok](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) további.
 
 > [!NOTE]
 > Ez a funkció jelenleg előzetes verzióban és csak angol nyelvre érhető el.

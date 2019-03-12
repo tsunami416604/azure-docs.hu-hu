@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: eec13db8bdbe1f40a51df14077adb8740e977f5d
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: 35b4b06a09b8ef7b27e8d105d7f2336668c49f8f
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50138412"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570861"
 ---
 # <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>Valós felhasználói mérések küldése a Traffic Manager a Visual Studio Mobile Center
 
@@ -40,17 +40,17 @@ Az Azure Portalon a következő eljárással RUM kulcs beszerzése:
         
    ![Valós felhasználói mérések kulcsának létrehozása](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
-   **1. ábra: A valós felhasználói mérések kulcsának generálása**
+   **1. ábra: Valós Felhasználóiélmény-mérések kulcs létrehozása**
 
    5.   A lap megjeleníti a RUM kulcs, amely akkor jön létre, és a egy JavaScript kódrészletet, amelyet a HTML-oldalt beilleszthető.
  
    ![Valós felhasználói mérések kulcsát a JavaScript-kódot](./media/traffic-manager-create-rum-visual-studio/rum-key.png)
 
-   **2. ábra: A valós felhasználói mérések kulcsának és a mérési JavaScript**
+   **2. ábra: Valós felhasználói mérések kulcsának és a mérési JavaScript**
  
    6. Kattintson a **másolási** gombra, hogy a RUM kulcsot. 
 
-## <a name="step-2-instrument-your-app-with-the-rum-package-of-mobile-center-sdk"></a>2. lépés: A Mobile Center SDK-t, az csomag az alkalmazás kialakítása
+## <a name="step-2-instrument-your-app-with-the-rum-package-of-mobile-center-sdk"></a>2. lépés: A Mobile Center SDK-t, az csomag az alkalmazás tagolását
 
 Ha most ismerkedik a Visual Studio Mobile Center, keresse fel a [webhely](https://mobile.azure.com). Az SDK-integráció részletes utasításokért lásd: [az Android SDK – első lépések](https://docs.microsoft.com/mobile-center/sdk/getting-started/Android).
 
@@ -72,7 +72,7 @@ Valós felhasználói mérések használatához kövesse az alábbi lépéseket:
     Az a **app/build.gradle** fájlban adja hozzá a következő sorokat:
 
     ```groovy
-    dependencies {   
+    dependencies {
      
         def mobileCenterSdkVersion = '0.12.1-16+3fe5b08'
         compile "com.microsoft.azure.mobile:mobile-center-rum:${mobileCenterSdkVersion}"

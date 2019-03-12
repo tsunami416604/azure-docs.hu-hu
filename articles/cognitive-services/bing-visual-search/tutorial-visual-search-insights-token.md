@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: article
 ms.date: 06/21/2018
 ms.author: rosh
-ms.openlocfilehash: 5b1fc44b06dde7c7aa28a251b7250515998ac604
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c3ceb8f130118ee7abdbe801cd3931e9f870ec4c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857253"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538884"
 ---
 # <a name="find-similar-images-from-previous-searches-using-imageinsightstoken"></a>Keresse meg a korábbi kereséseket ImageInsightsToken használatával hasonló képek
 
@@ -26,7 +26,7 @@ A teljes forráskódot, ehhez a mintához található további hibakezelést és
 ## <a name="prerequisites"></a>Előfeltételek
 
 * A [Visual Studio 2017](https://www.visualstudio.com/downloads/) bármely kiadása.
-* Linux/MacOS rendszer esetében az alkalmazás a [Monóval](http://www.mono-project.com/) futtatható.
+* Linux/MacOS rendszer esetében az alkalmazás a [Monóval](https://www.mono-project.com/) futtatható.
 * A NuGet vizuális keresésre és Képkeresés csomagokat. 
     - A Visual Studio Megoldáskezelőjében kattintson a jobb gombbal a projektre, és válassza a `Manage NuGet Packages` lehetőséget a menüből. Telepítse a `Microsoft.Azure.CognitiveServices.Search.CustomSearch` csomagot, és a `Microsoft.Azure.CognitiveServices.Search.ImageSearch` csomagot. A NuGet-csomagokat is telepíti a következő:
         - Microsoft.Rest.ClientRuntime

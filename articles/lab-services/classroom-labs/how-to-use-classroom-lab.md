@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 387e59eccc7dd9b20142bd692a1fe361435d3d57
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 7b5d9c85a790252b403a04439f326da1d9ea28c6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55965018"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57782955"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>Hozzáférés osztályterem-tesztkörnyezethez az Azure Lab Servicesben
 Ez a cikk bemutatja, hogyan férhet hozzá az osztályterem-tesztkörnyezetekhez, hogyan csatlakozhat a tesztkörnyezetben található virtuális gépekhez, és hogyan állíthatja le a virtuális gépeket. 
@@ -46,9 +46,9 @@ Miután regisztrálta a labs, az osztályterem-tesztkörnyezetek tekintheti meg 
 
 1. A virtuális gép Ha még nem indult el, válassza ki a kezdési **Start** a csempére. 
 2. Válassza a **Csatlakozás** elemet azon a csempén, amely annak a tesztkörnyezetnek a virtuális gépét jelöli, amelyhez hozzá szeretne férni. 
-3. Mentse az RDP-fájlt (a Windows VM-EK) a merevlemezen, és nyissa meg. 
-4. Adja meg a **felhasználónevet** és **jelszót**, amelyet az oktatótól/tanártól kapott a gépbe való bejelentkezéshez. 
-
+3. Hajtsa végre a következő lépések egyikét: 
+    1. A **Windows** virtuális gépeket, mentse a **RDP** a merevlemez-fájlt. Nyissa meg a virtuális géphez csatlakozni RDP-fájlt. Használja a **felhasználónév** és **jelszó** jelentkezzen be a gép az oktató/professzor kérhet. 
+    3. A **Linux** virtuális gépeket, másolja és menti az SSH-kapcsolati karakterláncot a **csatlakozhat a virtuális gép** párbeszédpanel bezárásához. Használja ezt a kapcsolati karakterláncot egy SSH-terminálból (például [Putty](https://www.putty.org/)) a virtuális gép csatlakozni.
 ## <a name="stop-the-virtual-machine-in-a-classroom-lab"></a>Virtuális gép leállítása osztályterem-tesztkörnyezetben
 
 A virtuális gép leállításához válassza ki **leállítása** a csempére. A virtuális gép leállítása után elérhetővé válik a csempén az **Indítás** gomb. 

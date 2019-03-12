@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: genemi,amagarwa,maboja, jrasnick
 manager: craigg
-ms.date: 01/17/2019
-ms.openlocfilehash: f75bb4f46ea6d6d2c8bb00ef2ece1d80634fff92
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/07/2019
+ms.openlocfilehash: cc73ae23b25fbbef2ee058f926138cf0873d451c
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316019"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576599"
 ---
 # <a name="powershell-for-dns-alias-to-azure-sql-database"></a>Az Azure SQL Database DNS-alias PowerShell
 
@@ -27,10 +27,10 @@ Ez a cikk azt mutatja be, hogyan kezelheti DNS-alias az Azure SQL Database Power
 
 A példakódban alkalmazott parancsmagok a következők:
 
-- [New-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias?view=azurermps-5.1.1): Létrehoz egy új DNS-alias az Azure SQL Database szolgáltatás rendszerben. Az alias az Azure SQL Database-kiszolgáló 1 hivatkozik.
-- [Get-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias?view=azurermps-5.1.1): GET, és az SQL DB kiszolgáló 1 rendelt összes DNS-aliasokat listázása.
-- [Set-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias?view=azurermps-5.1.1): Módosítja a kiszolgáló nevét az alias konfigurált kiszolgálóról 1, 2. az SQL DB kiszolgáló hivatkoznak.
-- [Remove-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias?view=azurermps-5.1.1): SQL DB kiszolgáló 2, a DNS-alias eltávolítása az alias nevének megadásával.
+- [New-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias): Létrehoz egy új DNS-alias az Azure SQL Database szolgáltatás rendszerben. Az alias az Azure SQL Database-kiszolgáló 1 hivatkozik.
+- [Get-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias): GET, és az SQL DB kiszolgáló 1 rendelt összes DNS-aliasokat listázása.
+- [Set-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias): Módosítja a kiszolgáló nevét az alias konfigurált kiszolgálóról 1, 2. az SQL DB kiszolgáló hivatkoznak.
+- [Remove-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias): SQL DB kiszolgáló 2, a DNS-alias eltávolítása az alias nevének megadásával.
 
 ## <a name="dns-alias-in-connection-string"></a>DNS-aliast a kapcsolati karakterlánc
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: a21c9682cfeaa7421d089bf75eb9d8b45e1d3d46
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 68376751a3c673b2d89d028312f992aec40d4dee
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982760"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534616"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Az Azure portal használatával ExpressRoute virtuális hálózati átjáró konfigurálása
 > [!div class="op_single_selector"]
@@ -49,7 +49,7 @@ Megtekintheti egy [videó](https://azure.microsoft.com/documentation/videos/azur
 
 ## <a name="create-the-gateway-subnet"></a>Az átjáróalhálózat létrehozása
 
-1. Keresse meg a [portálon](http://portal.azure.com) azt a Resource Manager-alapú virtuális hálózatot, amelyhez létre kíván hozni egy virtuális hálózati átjárót.
+1. Keresse meg a [portálon](https://portal.azure.com) azt a Resource Manager-alapú virtuális hálózatot, amelyhez létre kíván hozni egy virtuális hálózati átjárót.
 2. A virtuális hálózat paneljének **Beállítások** részén az **Alhálózatok** elemre kattintva bontsa ki az Alhálózatok panelt.
 3. Az **Alhálózatok** panel **+Átjáróalhálózat** elemére kattintva nyissa meg az **Alhálózat hozzáadása** panelt. 
    

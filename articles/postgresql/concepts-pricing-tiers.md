@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 0df36f4c939ed9bd7bb6a134a356b37d699abc1d
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: a8dbb2c06d3622dcde19f298ee12fa49afb4cd4b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56586343"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532048"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for postgresql-hez tarifacsomagok
 
@@ -51,30 +51,30 @@ A számítási erőforrások szolgálnak, amelyek jelölik az alapul szolgáló 
 |:---|:----------:|:--------------------:|
 | USA középső régiója |  | X |
 | USA keleti régiója |  | X |
-| USA 2. keleti régiója | X | X |
-| USA északi középső régiója | X | X |
+| USA 2. keleti régiója |  | X |
+| USA északi középső régiója |  | X |
 | USA déli középső régiója | X | X |
-| USA nyugati régiója | X | X |
+| USA nyugati régiója |  | X |
 | USA nyugati régiója, 2. |  | X |
-| Dél-Brazília | X | X |
-| Közép-Kanada | X | X |
-| Kelet-Kanada | X | X |
+| Dél-Brazília |  | X |
+| Közép-Kanada |  | X |
+| Kelet-Kanada |  | X |
 | Észak-Európa | X | X |
 | Nyugat-Európa |  | X |
 | Közép-Franciaország |  | X |
 | Az Egyesült Királyság déli régiója |  | X |
 | Az Egyesült Királyság nyugati régiója |  | X |
-| Kelet-Ázsia | X | X |
+| Kelet-Ázsia |  | X |
 | Délkelet-Ázsia | X | X |
 | Kelet-Ausztrália |  | X |
 | Ausztrália középső régiója |  | X |
 | Ausztrália 2. középső régiója |  | X |
 | Délkelet-Ausztrália |  | X |
-| Közép-India | X | X |
+| Közép-India |  | X |
 | Dél-India |  | X |
-| Nyugat-India | X | X |
+| Nyugat-India |  | X |
 | Kelet-Japán | X | X |
-| Nyugat-Japán | X | X |
+| Nyugat-Japán |  | X |
 | Korea középső régiója |  | X |
 | Korea déli régiója |  | X |
 | Kelet-Kína 1 | X |  |

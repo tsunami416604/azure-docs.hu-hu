@@ -7,14 +7,14 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: victorh
-ms.openlocfilehash: 1b157d8292eacff87a28554939a6f144b9f5d0e9
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
-ms.translationtype: HT
+ms.openlocfilehash: 7dcbfdaf00b0e628541cfd1a3b79df8cf8334ed3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092093"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536878"
 ---
-# <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Oktatóanyag: Aliasrekord konfigurálása egy nyilvános Azure IP-címre való hivatkozáshoz 
+# <a name="tutorial-configure-an-alias-record-to-refer-to-an-azure-public-ip-address"></a>Oktatóanyag: Tekintse meg az Azure nyilvános IP-cím egy aliast rekord konfigurálása 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -30,13 +30,13 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="prerequisites"></a>Előfeltételek
 Elérhetőnek kell lennie egy tartománynévnek, amelyet üzemeltethet az Azure DNS-ben a teszteléshez. Teljes körű irányítással kell rendelkeznie a tartomány felett. A teljes körű irányításba beletartozik a tartomány névkiszolgálói (NS-) rekordjainak beállítására való képesség.
 
-A tartomány Azure DNS-ben való üzemeltetésére vonatkozó utasításokért lásd az [Oktatóanyag: A tartomány üzemeltetése az Azure DNS-ben](dns-delegate-domain-azure-dns.md).
+Üzemeltessen saját tartományt az Azure DNS-ben az utasításokért lásd: [oktatóanyag: Üzemeltessen saját tartományt az Azure DNS](dns-delegate-domain-azure-dns.md).
 
 Az ebben az oktatóanyagban használt példatartománynév a contoso.com, de Ön használja a saját tartománynevét.
 
 ## <a name="create-the-network-infrastructure"></a>A hálózati infrastruktúra létrehozása
 Először hozzon létre egy virtuális hálózatot és egy alhálózatot a webkiszolgálók elhelyezéséhez.
-1. Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
+1. Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 2. Válassza a portál bal felső sarkában az **Erőforrás létrehozása** lehetőséget. Írja be a keresőmezőbe az *erőforráscsoport* kifejezést, és hozzon létre egy **RG-DNS-Alias-pip** nevű erőforráscsoportot.
 3. Válassza az **Erőforrás létrehozása** > **Hálózat** > **Virtuális hálózat** lehetőséget.
 4. Hozzon létre egy **VNet-Server** nevű virtuális hálózatot. Helyezze az **RG-DNS-Alias-pip** erőforráscsoportba, és adja az **SN-Web** nevet az alhálózatnak.

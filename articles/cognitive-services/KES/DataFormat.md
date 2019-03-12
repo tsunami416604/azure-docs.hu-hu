@@ -10,17 +10,17 @@ ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: f17bc3c0588476fdc4f8414fb020b16718bf1d90
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bba257c61509d862bb3161625750f05a86af8770
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55854795"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532167"
 ---
 # <a name="data-format"></a>Adatformátum
 
 Az adatfájlban az objektumok listájában, index ismerteti.
-A fájl minden sorához meghatározza az objektum az attribútumértékek [JSON formátumban](http://json.org/) az UTF-8 kódolást.
+A fájl minden sorához meghatározza az objektum az attribútumértékek [JSON formátumban](https://json.org/) az UTF-8 kódolást.
 A meghatározott attribútumok mellett a [séma](SchemaFormat.md), minden objektum rendelkezik egy "logprob" attribútumot, amely meghatározza az objektumok közötti relatív log valószínűségét.
 A szolgáltatás objektumok valószínűség csökkenő sorrendben adja vissza, ha a "logprob" visszatérési sorrendjét, egyező objektumok is használjuk.
 Adott valószínűség *p* 0 és 1 közötti megfelelő napló valószínűségét, log számított (*p*), ahol a log() a természetes logaritmusát függvény.

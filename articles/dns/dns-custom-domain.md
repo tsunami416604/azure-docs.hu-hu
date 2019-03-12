@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 1/18/2019
 ms.author: victorh
-ms.openlocfilehash: b513e898e25397f54b8f7f7590a4466523a705ff
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: e8163ad34046261d9671c57db2cd2d2052fe35e0
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54401418"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550787"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Adja meg az egyéni tartomány beállításait az Azure-szolgáltatások az Azure DNS használatával
 
@@ -41,8 +41,8 @@ Keresse meg a DNS-zónát, és kattintson a **+ rekordhalmaz**. Adja meg az alá
 |Tulajdonság  |Érték  |Leírás  |
 |---------|---------|---------|
 |Name (Név)     | myfunctionapp        | Ezt az értéket a tartománynév címkéjének együtt az egyéni tartománynév teljes Tartománynevét.        |
-|Típus     | CNAME        | Alias használata egy CNAME-rekordot használ.        |
-|TTL     | 1        | 1 1 órán keresztül van használatban        |
+|Typo     | CNAME        | Alias használata egy CNAME-rekordot használ.        |
+|Élettartam     | 1        | 1 1 órán keresztül van használatban        |
 |Élettartam mértékegysége     | Óra        | Óra van megadva, az idő mérése         |
 |Alias     | adatumfunction.azurewebsites.net        | A DNS-név hoz létre alias, ebben a példában a adatumfunction.azurewebsites.net alapértelmezés szerint a függvényalkalmazás által biztosított DNS-név legyen.        |
 
@@ -54,7 +54,7 @@ Az a **gazdagépnév hozzáadása** panelen adja meg a CNAME rekordot a **állom
 
 ## <a name="public-ip-address"></a>Nyilvános IP-cím
 
-Egy nyilvános IP-címet használó szolgáltatások cím erőforrás, például az Application Gateway, a Load Balancer, a Cloud Service, a Resource Manager virtuális gépek, és klasszikus virtuális gépeket, egy CNAME rekord jegyezze fel az egyéni tartomány konfigurálásához használt.
+Egyéni tartományok konfigurálásához egy nyilvános IP-címet használó szolgáltatások cím erőforrás, például az Application Gateway, a Load Balancer, a Cloud Service, a Resource Manager virtuális gépek, és használja a klasszikus virtuális gépeket, egy A rekordot.
 
 Navigáljon a **hálózatkezelés** > **nyilvános IP-cím**, válassza ki a nyilvános IP-cím-erőforrást, és kattintson a **konfigurációs**. Az IP-cím látható notate.
 
@@ -66,8 +66,8 @@ Keresse meg a DNS-zónát, és kattintson a **+ rekordhalmaz**. Adja meg az alá
 |Tulajdonság  |Érték  |Leírás  |
 |---------|---------|---------|
 |Name (Név)     | mywebserver        | Ezt az értéket a tartománynév címkéjének együtt az egyéni tartománynév teljes Tartománynevét.        |
-|Típus     | A        | Egy A rekordot, hogy az erőforrás IP-cím használata        |
-|TTL     | 1        | 1 1 órán keresztül van használatban        |
+|Typo     | A        | Egy A rekordot, hogy az erőforrás IP-cím használata        |
+|Élettartam     | 1        | 1 1 órán keresztül van használatban        |
 |Élettartam mértékegysége     | Óra        | Óra van megadva, az idő mérése         |
 |IP-cím     | <your ip address>       | A nyilvános IP-cím.|
 
@@ -93,8 +93,8 @@ Keresse meg a DNS-zónát, és kattintson a **+ rekordhalmaz**. Adja meg az alá
 |Tulajdonság  |Érték  |Leírás  |
 |---------|---------|---------|
 |Name (Név)     | mywebserver        | Ezt az értéket a tartománynév címkéjének együtt az egyéni tartománynév teljes Tartománynevét.        |
-|Típus     | CNAME        | Alias használata egy CNAME-rekordot használ. Ha az erőforrás IP-címet használ, rekord használni kívánt.        |
-|TTL     | 1        | 1 1 órán keresztül van használatban        |
+|Typo     | CNAME        | Alias használata egy CNAME-rekordot használ. Ha az erőforrás IP-címet használ, rekord használni kívánt.        |
+|Élettartam     | 1        | 1 1 órán keresztül van használatban        |
 |Élettartam mértékegysége     | Óra        | Óra van megadva, az idő mérése         |
 |Alias     | webserver.azurewebsites.net        | A DNS-név hoz létre alias, ebben a példában a webalkalmazás alapértelmezés szerint a megadott webserver.azurewebsites.net DNS-név legyen.        |
 
@@ -127,8 +127,8 @@ Keresse meg a DNS-zónát, és kattintson a **+ rekordhalmaz**. Adja meg az alá
 |Tulajdonság  |Érték  |Leírás  |
 |---------|---------|---------|
 |Name (Név)     | asverify.mystorageaccount        | Ezt az értéket a tartománynév címkéjének együtt az egyéni tartománynév teljes Tartománynevét.        |
-|Típus     | CNAME        | Alias használata egy CNAME-rekordot használ.        |
-|TTL     | 1        | 1 1 órán keresztül van használatban        |
+|Typo     | CNAME        | Alias használata egy CNAME-rekordot használ.        |
+|Élettartam     | 1        | 1 1 órán keresztül van használatban        |
 |Élettartam mértékegysége     | Óra        | Óra van megadva, az idő mérése         |
 |Alias     | asverify.adatumfunctiona9ed.blob.core.windows.net        | A DNS-név hoz létre alias, ebben a példában a tárfiók alapértelmezés szerint a megadott asverify.adatumfunctiona9ed.blob.core.windows.net DNS-név legyen.        |
 
@@ -155,8 +155,8 @@ Keresse meg a DNS-zónát, és kattintson a **+ rekordhalmaz**. Adja meg az alá
 |Tulajdonság  |Érték  |Leírás  |
 |---------|---------|---------|
 |Name (Név)     | cdnverify.mycdnendpoint        | Ezt az értéket a tartománynév címkéjének együtt az egyéni tartománynév teljes Tartománynevét.        |
-|Típus     | CNAME        | Alias használata egy CNAME-rekordot használ.        |
-|TTL     | 1        | 1 1 órán keresztül van használatban        |
+|Typo     | CNAME        | Alias használata egy CNAME-rekordot használ.        |
+|Élettartam     | 1        | 1 1 órán keresztül van használatban        |
 |Élettartam mértékegysége     | Óra        | Óra van megadva, az idő mérése         |
 |Alias     | cdnverify.adatumcdnendpoint.azureedge.net        | A DNS-név hoz létre alias, ebben a példában a tárfiók alapértelmezés szerint a megadott cdnverify.adatumcdnendpoint.azureedge.net DNS-név legyen.        |
 

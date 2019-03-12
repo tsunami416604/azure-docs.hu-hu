@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/10/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 864e93dcd94fd36b0e34495e0ea27f22d8b0dd0c
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 65ea01047743c5894ac2ae8b38a197b57cb6971c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817677"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531319"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Frissítések kezelése több gép esetén
 
@@ -70,7 +70,7 @@ Előkészítés végeztével az Update Management engedélyezve van a virtuális
 
 ## <a name="enable-update-management-for-non-azure-virtual-machines-and-computers"></a>Nem Azure-beli virtuális gépeken és számítógépeken a frissítéskezelés engedélyezése
 
-Az Update Management engedélyezése az Azure Windows virtuális gépek és számítógépek kezelésével kapcsolatos információkért lásd: [a Log Analytics szolgáltatás az Azure-ban való csatlakozáshoz Windows számítógépek](../log-analytics/log-analytics-windows-agent.md).
+Az Update Management engedélyezése az Azure Windows virtuális gépek és számítógépek kezelésével kapcsolatos információkért lásd: [csatlakozás Windows-számítógépek az Azure-ban az Azure Monitor szolgáltatásba](../log-analytics/log-analytics-windows-agent.md).
 
 Az Update Management engedélyezése nem Azure-beli Linuxos virtuális gépek és számítógépek kezelésével kapcsolatos információkért lásd: [Linux rendszerű számítógépek csatlakoztatása az Azure Monitor naplóira](../log-analytics/log-analytics-agent-linux.md).
 

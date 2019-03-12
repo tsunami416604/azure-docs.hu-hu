@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bea9a987078799436c9dcad650ee56d5d6d81512
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: b303a1cd3da7010573ce34dd4762616f4b6581d0
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341340"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729104"
 ---
 # <a name="manage-your-connected-devices-from-the-my-profile-preview-portal"></a>A csatlakoztatott eszközök kezelése a saját profil (előzetes verzió) portálról
 Csatlakozott a munkahelyi vagy iskolai fiók használatával szükségesekre már nem saját, az eszközök kezeléséhez, a **eszközök** lapján a **profilom** portálon.
@@ -36,7 +36,7 @@ Csatlakozott a munkahelyi vagy iskolai fiók használatával szükségesekre má
     ![Eszköz-oldalról, csatlakoztatott eszközök](media/myprofile-portal/myprofile-portal-devices-page.png)
 
 ## <a name="disable-a-device"></a>Az eszköz letiltása
-Bármikor letilthatja a csatlakoztatott eszközökhöz. Ez akkor kifejezetten fontos, ha egy eszköz nem ismerős, vagy ha az eszköz elveszett vagy ellopták.
+Bármikor letilthatja a csatlakoztatott eszközökhöz. Ez akkor kifejezetten fontos, ha egy eszköz nem ismerős, vagy ha az eszköz elveszett vagy ellopták. Letilt egy eszközt, miután a szervezet által már nem hitelesíthetők, és nem lehet hozzáférni a munkahelyi erőforrásokat.
 
 >[!Important]
 >Ha véletlenül letiltja az eszközt, nincs semmilyen módon nem lehet visszavonni. Lépjen kapcsolatba a szervezet egyik rendszergazda az eszköz újra hozzá kell.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: a54c01385b06aeaf4c894677ea95262ab2135893
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 242c2f63735be33fe933ae3229f7aa28356ea697
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456142"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548387"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Funkciók és az Azure Event Hubs terminológiája
 
@@ -43,7 +43,7 @@ Minden entitás, amely adatokat küld egy eseményközpontnak egy esemény-elő�
 
 ### <a name="publishing-an-event"></a>Esemény közzététele
 
-Egy esemény az AMQP 1.0-t, a Kafka 1.0-ás (és újabb) vagy a HTTPS használatával teheti közzé. Event hubs szolgáltatás [klienskódtárak és -osztályok](event-hubs-dotnet-framework-api-overview.md) számára események közzétételét egy eseményközpontba .NET-ügyfelekről. Egyéb futtatókörnyezetek és platformok esetén használhatja bármelyik AMQP 1.0-ügyfelet, ilyen például az [Apache Qpid](http://qpid.apache.org/). Az eseményeket közzéteheti egyenként vagy kötegelve is. Egyes közzétételekre (eseményadat-példány) a korlát 1 MB-ot, függetlenül attól, hogy-e egy önálló vagy kötegelt rendelkezik. Nagyobb, mint a küszöbérték eredmények események közzététele hibát. Az ajánlott eljárás, hogy a közzétevők ne tudjanak a partíciókról az eseményközpontban, és csupán egy *partíciókulcsot* (ismertetése a következő szakaszban), vagy az azonosságukat kelljen megadniuk a SAS-token használatával.
+Egy esemény az AMQP 1.0-t, a Kafka 1.0-ás (és újabb) vagy a HTTPS használatával teheti közzé. Event hubs szolgáltatás [klienskódtárak és -osztályok](event-hubs-dotnet-framework-api-overview.md) számára események közzétételét egy eseményközpontba .NET-ügyfelekről. Egyéb futtatókörnyezetek és platformok esetén használhatja bármelyik AMQP 1.0-ügyfelet, ilyen például az [Apache Qpid](https://qpid.apache.org/). Az eseményeket közzéteheti egyenként vagy kötegelve is. Egyes közzétételekre (eseményadat-példány) a korlát 1 MB-ot, függetlenül attól, hogy-e egy önálló vagy kötegelt rendelkezik. Nagyobb, mint a küszöbérték eredmények események közzététele hibát. Az ajánlott eljárás, hogy a közzétevők ne tudjanak a partíciókról az eseményközpontban, és csupán egy *partíciókulcsot* (ismertetése a következő szakaszban), vagy az azonosságukat kelljen megadniuk a SAS-token használatával.
 
 Az AMQP vagy HTTPS használata a használati forgatókönyvtől függ. Az AMQP használatához ki kell alakítani egy állandó kétirányú szoftvercsatornát az TLS vagy SSL/TLS mellett. Az AMQP használata a munkamenet inicializálásakor nagyobb hálózati költséggel jár, a HTTPS azonban minden egyes kérés esetében további SSL-többletterhelést igényel. Gyakori közzététel esetén az AMQP nagyobb teljesítményt biztosít.
 

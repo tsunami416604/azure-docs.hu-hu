@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: kasinh
-ms.openlocfilehash: 35f9b76e27a0977a25f6d060f7362bc417e0568e
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 7e8043badbc0accd38ad618a7d455729ab6606b2
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813857"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541289"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>SharePoint-farm biztonsági mentése az Azure-ba
 Készítsen biztonsági másolatot egy SharePoint-farm a Microsoft Azure-ba, hogy készítsen biztonsági mentést más adatforrásokhoz ugyanolyan módon a System Center Data Protection Manager (DPM) használatával. Az Azure Backup rugalmasan hozhat létre naponta a biztonsági mentési ütemezés, heti, havi vagy éves biztonsági mentési mutat, és különböző biztonsági mentési pontok megőrzése házirend lehetőséget kínál fel. A DPM lehetővé teszi a helyi lemez másolatot pedig gyors helyreállítási idő célkitűzései (RTO) tárolására, és tárolja a másolatokat az Azure-bA gazdaságos, hosszú távú megőrzésének.
@@ -47,7 +47,7 @@ Bár a teljesítmény számos tényezőtől, például a SharePoint-farm mérete
 
 ### <a name="dpm-update-rollup-5"></a>A DPM 5. kumulatív frissítése
 Az Azure-bA a SharePoint-farm védelmének megkezdéséhez telepíteni szeretné a DPM-kumulatív frissítés 5-ös vagy újabb. 5. kumulatív frissítése lehetővé teszi az Azure-bA a SharePoint-farm védelméhez, ha a farm SQL AlwaysOn használatára van konfigurálva.
-További információkért lásd a következő blogbejegyzésben, amely bemutatja a post [DPM 5. kumulatív](http://blogs.technet.com/b/dpm/archive/2015/02/11/update-rollup-5-for-system-center-2012-r2-data-protection-manager-is-now-available.aspx)
+További információkért lásd a következő blogbejegyzésben, amely bemutatja a post [DPM 5. kumulatív](https://blogs.technet.com/b/dpm/archive/2015/02/11/update-rollup-5-for-system-center-2012-r2-data-protection-manager-is-now-available.aspx)
 
 ### <a name="whats-not-supported"></a>Nem támogatott műveletek
 * A DPM által védett SharePoint-farm nem nyújt védelmet a keresési indexek vagy az alkalmazásszolgáltatás-adatbázisok. Ezeknek az adatbázisoknak a védelmét külön konfigurálni kell.
@@ -240,6 +240,6 @@ Igen, az elem visszaállíthatja az eredeti SharePoint-webhelyre.
 A SharePoint-adatbázisok az SQL AlwaysOn vannak konfigurálva, mivel azok nem lehet módosítani, ha a rendszer eltávolítja a rendelkezésre állási csoport. Ennek eredményeképpen az a DPM nem tudja visszaállítani az adatbázis az eredeti helyre. SQL Server-adatbázis egy másik SQL Server-példányra helyreállítható.
 
 ## <a name="next-steps"></a>További lépések
-* További tudnivalók a SharePoint védelme a DPM - lásd [videók (sorozat) – a DPM védelmi SharePoint](http://channel9.msdn.com/Series/Azure-Backup/Microsoft-SCDPM-Protection-of-SharePoint-1-of-2-How-to-create-a-SharePoint-Protection-Group)
+* További tudnivalók a SharePoint védelme a DPM - lásd [videók (sorozat) – a DPM védelmi SharePoint](https://channel9.msdn.com/Series/Azure-Backup/Microsoft-SCDPM-Protection-of-SharePoint-1-of-2-How-to-create-a-SharePoint-Protection-Group)
 * Felülvizsgálat [kibocsátási megjegyzések a System Center 2012 – Data Protection Manager](https://technet.microsoft.com/library/jj860415.aspx)
 * Felülvizsgálat [kibocsátási megjegyzések a Data Protection Manager a System Center 2012 SP1](https://technet.microsoft.com/library/jj860394.aspx)

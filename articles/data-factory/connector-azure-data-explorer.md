@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 03/06/2019
 ms.author: orspod
-ms.openlocfilehash: 94cf153d7d88e0589edfb3c126c18e04e25e2ef2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4e2448b3043c194bda884963975d85536c329baf
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431920"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531640"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Adatok másolása, vagy az Azure az adatkezelőt az Azure Data Factory használatával
 
@@ -68,9 +68,9 @@ Azure Data Explorer társított szolgáltatás a következő tulajdonságok tám
 | type | A **típus** tulajdonságot állítsa **AzureDataExplorer** | Igen |
 | endpoint | Végpont fürt URL-címét az Azure Data Explorer, a következő formátumban, `https://<clusterName>.<regionName>.kusto.windows.net `. | Igen |
 | adatbázis | Adatbázis neve. | Igen |
-| bérlő | Adja meg a bérlő információkat (tartomány neve vagy a bérlő azonosítója) alatt az alkalmazás található. Az Azure portal jobb felső sarkában az egérrel viszi, lekéréséhez. | Igen |
-| servicePrincipalId | Adja meg az alkalmazás ügyfél-azonosítót. | Igen |
-| servicePrincipalKey | Adja meg az alkalmazáskulcsot. Jelölje meg a mező egy **SecureString** tárolja biztonságos helyen a Data Factory áttekintése, vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
+| bérlő | Adja meg a bérlő információkat (tartomány neve vagy a bérlő azonosítója) alatt az alkalmazás található. Ez a szokásos módon tapasztalatai szerint "**szolgáltató azonosító**" a [Kusto-kapcsolati karakterlánc](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Az Azure portal jobb felső sarkában az egérrel viszi, lekéréséhez. | Igen |
+| servicePrincipalId | Adja meg az alkalmazás ügyfél-azonosítót. Ez a szokásos módon tapasztalatai szerint "**AAD-alkalmazás Ügyfélazonosítója**" a [Kusto-kapcsolati karakterlánc](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). | Igen |
+| servicePrincipalKey | Adja meg az alkalmazáskulcsot. Ez a szokásos módon tapasztalatai szerint "**AAD alkalmazáskulcsot**" a [Kusto-kapcsolati karakterlánc](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties). Jelölje meg a mező egy **SecureString** tárolja biztonságos helyen a Data Factory áttekintése, vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 
 **Társított szolgáltatás tulajdonságait. példa:**
 
@@ -139,7 +139,7 @@ Adatok másolása az Azure az adatkezelőt, állítsa be a **típus** tulajdons�
 | queryTimeout | A várakozási idő előtt a lekérdezési kérés túllépi az időkorlátot. Alapértelmezett érték 10 perc (00: 10:00); engedélyezett maximális értéke 1 óra (01: 00:00). | Nem |
 
 >[!NOTE]
->Alapértelmezés szerint az Azure Data Explorer forrás rendelkezik 500 000 rekord vagy 64 MB-os méretkorlátot. Csonkolási nélkül a rekordok lekéréséhez is megadhat `set notruncation;` , a lekérdezés elején. Tekintse meg [lekérdezési korlátok](https://docs.microsoft.com/en-us/azure/kusto/concepts/querylimits) a további részleteket.
+>Alapértelmezés szerint az Azure Data Explorer forrás rendelkezik 500 000 rekord vagy 64 MB-os méretkorlátot. Csonkolási nélkül a rekordok lekéréséhez is megadhat `set notruncation;` , a lekérdezés elején. Tekintse meg [lekérdezési korlátok](https://docs.microsoft.com/azure/kusto/concepts/querylimits) a további részleteket.
 
 **Példa**
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 1324700445aebe672b2c5ae2b55ad9bc0bab13b2
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 549cfb84ff247295e01c800aa41ba265bb8921c7
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53384258"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540079"
 ---
 # <a name="active-directory-role-based-access-control-preview"></a>Aktív Directory Role-Based hozzáférés-vezérlés (előzetes verzió)
 
@@ -52,7 +52,7 @@ Miután létrejött a névteret, lépjen a **hozzáférés-vezérlés (IAM)** la
 
 A mintaalkalmazás futtatása előtt az Azure ad-ben regisztrálja, és hagyja jóvá a beleegyezést kérő üzenetet, amely lehetővé teszi az alkalmazás eléréséhez az Event Hubs nyújtsanak a nevében. 
 
-Mivel a mintaalkalmazás egy konzolalkalmazást, kell regisztrálni egy natív alkalmazást és API-hozzáférés biztosítása a **hátralékának** a "szükséges engedélyek" csoporthoz. Natív alkalmazások is kell egy **átirányítási URI** az Azure ad-ben, amely; azonosítót az URI-t kell lennie egy hálózati cél. Használat `http://eventhubs.microsoft.com` ebben a példában, mivel már kód a minta az URI-ra.
+Mivel a mintaalkalmazás egy konzolalkalmazást, kell regisztrálni egy natív alkalmazást és API-hozzáférés biztosítása a **hátralékának** a "szükséges engedélyek" csoporthoz. Natív alkalmazások is kell egy **átirányítási URI** az Azure ad-ben, amely; azonosítót az URI-t kell lennie egy hálózati cél. Használat `https://eventhubs.microsoft.com` ebben a példában, mivel már kód a minta az URI-ra.
 
 A részletes regisztrációs lépéseket mutatjuk be [ebben az oktatóanyagban](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md). Kövesse a lépéseket a regisztráció egy **natív** alkalmazást, majd kövesse a frissítés utasításokat hozzáadása a **hátralékának** API-t a szükséges engedélyekkel. A lépéseket, jegyezze fel a **TenantId** és a **ApplicationId**, mert szüksége lesz ezekre az értékekre, az alkalmazás futtatásához.
 

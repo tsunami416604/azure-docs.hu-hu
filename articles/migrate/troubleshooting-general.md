@@ -4,14 +4,14 @@ description: Ismert problémák az Azure Migrate szolgáltatás és a hibaelhár
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 03/11/2019
 ms.author: raynew
-ms.openlocfilehash: 7479f651a9fce5d65b1faf4113febb6e79c426b2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 0eede0ae4623d68adf749dc528ac5cc1ce81e024
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439078"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730422"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Az Azure Migrate hibaelhárítása
 
@@ -80,11 +80,9 @@ esourceGroups/ContosoDemo/providers/Microsoft.Migrate/projects/Demo/groups/conto
 
 4. A jelentéskészítő letöltését követően Excel segítségével keresse meg a letöltött mappát, és nyissa meg a fájlt az Excelben a megtekintéséhez.
 
-### <a name="performance-data-for-disks-and-networks-adapters-shows-as-zeros"></a>Lemezek és a hálózat adapterek teljesítményadatokat nullák állapota
+### <a name="performance-data-for-cpu-memory-and-disks-is-showing-up-as-zeroes"></a>Nullaként jelennek teljesítményadatokat CPU, memória és lemezek
 
-Ez akkor fordulhat elő, ha a statisztikai beállítást szintje a vCenter-kiszolgálón kevesebb mint három. Vagy magasabb szintű három vCenter tárolja a virtuális gépek korábbi teljesítménye számítási, tárolási és hálózati. A három szint kisebb, mint a vCenter tárolási és hálózati adatok, de csak a CPU és memória adatok nem tárolja. Ebben a forgatókönyvben teljesítmény adatokat jeleníti meg, mint az Azure Migrate nulla, és az Azure Migrate biztosít a lemezek és a helyszíni gépekről gyűjtött metaadatok alapján hálózatok mérete javaslat.
-
-Ahhoz, hogy a lemez- és teljesítményadatok gyűjtése, módosítsa a statisztikai beállítások szintjét három. Ezt követően legalább egy napot várni a környezet felderítéséhez és értékeléséhez.
+Az Azure Migrate folyamatosan profilokat a helyszíni környezetben, a helyszíni virtuális gépek teljesítményadatok gyűjtése. Ha most indította el a környezet felderítését, várjon, amíg legalább egy napját a teljesítményadat-gyűjtés elvégezni kívánt szeretne. Az értékelés egy nap várakozás nélkül jön létre, ha a teljesítmény-mérőszámok jelennek meg nullaként. Miután kivárja egy napon, egy új értékelés létrehozása, vagy a meglévő értékelés frissítése az értékelési jelentés a "Újraszámítása" lehetőség használatával.
 
 ### <a name="i-specified-an-azure-geography-while-creating-a-migration-project-how-do-i-find-out-the-exact-azure-region-where-the-discovered-metadata-would-be-stored"></a>Migrálási projekt, hogyan állapítható meg a felderített metaadatokat lenne tárolásához pontos Azure-régió létrehozása során egy Azure földrajzi meg?
 

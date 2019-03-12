@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 05/02/2018
 ms.author: jomolesk
-ms.openlocfilehash: 426293dbb3650b5a2bb3809b1e808f640392791d
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 3c78aed2f30ea85f5bc16a8c0fb270bb1c761be8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241952"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539513"
 ---
 # <a name="azure-security-and-compliance-blueprint-data-warehouse-for-fedramp-automation"></a>Azure biztonsági és megfelelőségi terv: A FedRAMP Automation Data warehouse-bA
 
@@ -83,7 +83,7 @@ A következő szakasz az fejlesztése és megvalósítása elemek részletei.
 
 Egy virtuális gépet egy tartományhoz csatlakoztatott bástyagazdagép az alábbi konfigurációkkal jött létre:
 -   [A kártevőirtó bővítmény](https://docs.microsoft.com/azure/security/azure-security-antimalware)
--   [Log Analytics-bővítmény](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-oms)
+-   [Az Azure Monitor-naplók bővítmény](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-oms)
 -   [Az Azure Diagnostics bővítmény](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-extensions-diagnostics-template)
 -   [Az Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) az Azure Key Vaulttal (tiszteletben tartja az Azure Government, a PCI DSS, a HIPAA és egyéb követelmények)
 -   Egy [automatikus leállítási házirend](https://azure.microsoft.com/blog/announcing-auto-shutdown-for-vms-using-azure-resource-manager/) csökkenthető a fogyasztása a virtuális gépi erőforrások, amikor nincs használatban

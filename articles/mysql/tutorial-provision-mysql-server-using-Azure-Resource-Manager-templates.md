@@ -8,12 +8,12 @@ ms.devlang: json
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.custom: mvc
-ms.openlocfilehash: bb7a48b08fde07380276d33393225c3f5220b93f
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 8b443d0002b600860597710792054e9531b6cc41
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880699"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532906"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Oktatóanyag: Üzembe helyezése egy Azure Database for MySQL-kiszolgálóhoz az Azure Resource Manager-sablon használatával
 
@@ -87,8 +87,8 @@ Ezt a kérelmet az értékek, amelyek testre kell szabni a következők:
 +   `storageProfile/geoRedundantBackup` -Adjon meg engedélyezési/letiltási Geo-DR-követelményeitől függően.
 +   `sku/tier` -Adja meg az üzembe helyezés alap-, GeneralPurpose vagy MemoryOptimized szint.
 +   `sku/capacity` -Adja meg a virtuális mag kapacitását. Lehetséges értékek a következők: 2, 4, 8, 16, 32 vagy 64.
-+   `sku/family` -Adja meg a Gen4 vagy Gen5 válassza ki a kiszolgáló központi telepítésének hardver generációja.
-+   `sku/name` -Adja meg a TierPrefix_family_capacity. Például B_Gen4_1, GP_Gen5_16, MO_Gen5_32. Tekintse meg a [tarifacsomagok](./concepts-pricing-tiers.md) tudni, hogy az érvényes értékek régiónként és / csomag dokumentációja.
++   `sku/family` -Adja meg a Gen5, válassza ki a kiszolgáló központi telepítésének hardver generációja.
++   `sku/name` -Adja meg a TierPrefix_family_capacity. Például B_Gen5_1, GP_Gen5_16, MO_Gen5_32. Tekintse meg a [tarifacsomagok](./concepts-pricing-tiers.md) tudni, hogy az érvényes értékek régiónként és / csomag dokumentációja.
 +   `resources/properties/virtualNetworkSubnetId` -Adja meg az alhálózati azonosítóját az Azure virtuális hálózatban, ahol az Azure MySQL-kiszolgálót kell elhelyezni. 
 +   `tags(optional)` -Adja meg, nem kötelező a címkék olyan kulcs-érték párok, melyek szeretné használni a számlázási az erőforrások kategorizálása stb.
 
@@ -127,8 +127,8 @@ Az eredmény JSON formátumban van. Jegyezze fel a következőket: **fullyQualif
   "resourceGroup": "myresourcegroup",
  "sku": {
     "capacity": 2,
-    "family": "Gen4",
-    "name": "GP_Gen4_2",
+    "family": "Gen5",
+    "name": "GP_Gen5_2",
     "size": null,
     "tier": "GeneralPurpose"
   },

@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/02/2018
 ms.author: liydu
-ms.openlocfilehash: 8959c1d773a7e4ea79c7a7531c2bba578f2801e2
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 60520f5a72fd7e27d4ea64ac76511a00a727426e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158482"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57552010"
 ---
 # <a name="send-messages-to-an-mqtt-server"></a>Üzenetek küldése MQTT-kiszolgálóra
 
 Internet of Things (IoT) rendszerek gyakran időszakos, gyenge minőség foglalkozik, és a lassú hálózati kapcsolatok használata esetén. MQTT-gép – gép (M2M) csatlakozási protokoll, amely szem előtt az ilyen kihívások fejlesztettek. 
 
-Az itt használt MQTT ügyféloldali kódtár része a [Eclipse Paho](http://www.eclipse.org/paho/) projekt, amely API-kat biztosít több szállítóeszközt MQTT-val.
+Az itt használt MQTT ügyféloldali kódtár része a [Eclipse Paho](https://www.eclipse.org/paho/) projekt, amely API-kat biztosít több szállítóeszközt MQTT-val.
 
 ## <a name="what-you-learn"></a>Ismertetett témák
 
@@ -71,13 +71,13 @@ A VS Code-ban kövesse az alábbi eljárás segítségével nyissa meg, és a so
 
 A soros figyelő a minta áttekintése által küldött összes üzenetet jeleníti meg. A vázlat a DevKit Wi-Fi kapcsolódik. Ha a Wi-Fi-kapcsolat sikeresen megtörtént, a Vázlat üzenetet küld az MQTT broker. Ezt követően a minta ismételten QoS 0 és 1. a QoS, illetve használatával két "iot.eclipse.org" üzenetet küld.
 
-![soros-kimenet](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-output.jpg)
+![serial-output](media/iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld/serial-output.jpg)
 
 ## <a name="problems-and-feedback"></a>Problémák és visszajelzés
 
 Ha problémákat tapasztal, tekintse meg a [IoT DevKit – gyakori kérdések](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) vagy létesítsen a következő csatornákon:
 
-* [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
+* [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="see-also"></a>Lásd még

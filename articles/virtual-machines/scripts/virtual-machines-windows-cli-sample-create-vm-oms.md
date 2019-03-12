@@ -1,6 +1,6 @@
 ---
-title: Az Azure CLI – Log Analytics-figyelési futtató Azure virtuális gép létrehozása |} A Microsoft Docs
-description: Az Azure CLI – Windows Server 2016 virtuális gép és a Log Analytics-figyelési futtató Azure virtuális gép létrehozása.
+title: Az Azure CLI – létrehozása az Azure virtuális Gépet az Azure Monitor |} A Microsoft Docs
+description: Az Azure CLI – Windows Server 2016 virtuális gép és az Azure Monitor futtató Azure virtuális gép létrehozása.
 services: virtual-machines-Windows
 documentationcenter: virtual-machines
 author: rickstercdn
@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 02/23/2017
 ms.author: rclaus
 ms.custom: mvc,seodec18
-ms.openlocfilehash: 06e853534dc811ba5b37b192a9da75e88eedd778
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 2565433b8f42a3b81b843a972dd27850cce124b8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56668313"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543321"
 ---
-# <a name="monitor-a-vm-with-log-analytics"></a>Virtuális gép monitorozása a Log Analytics használatával
+# <a name="monitor-a-vm-with-azure-monitor-logs"></a>A figyelő egy virtuális Gépet az Azure Monitor naplóira
 
 Ez a szkript egy Azure-beli virtuális gépet hoz létre, telepíti a Log Analytics-ügynököt, és regisztrálja a rendszert egy Log Analytics-munkaterületen. A szkript futtatását követően a virtuális gép megjelenik az Azure Monitor szolgáltatásban.
 

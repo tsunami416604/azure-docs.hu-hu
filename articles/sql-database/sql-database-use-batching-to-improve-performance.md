@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: genemi
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 0ef6d258be0165c7a73ce060879f55f1c7f404f9
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 76b53132cca536f66aa2f739b27d74b08a3f16cf
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453524"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57781391"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Kötegelés használata SQL Database-alkalmazások teljesítményének javítása érdekében
 
@@ -168,7 +168,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-Az előző példában a **SqlCommand** objektum egy tábla értékű paraméter a sor beszúrása **@TestTvp**. A korábban létrehozott **DataTable** objektumot hozzá van rendelve ezt a paramétert a **SqlCommand.Parameters.Add** metódust. A teljesítmény hívásonként Beszúrások kötegelés jelentősen növeli a szekvenciális Beszúrások keresztül.
+Az előző példában a **SqlCommand** objektum egy tábla értékű paraméter a sor beszúrása  **\@TestTvp**. A korábban létrehozott **DataTable** objektumot hozzá van rendelve ezt a paramétert a **SqlCommand.Parameters.Add** metódust. A teljesítmény hívásonként Beszúrások kötegelés jelentősen növeli a szekvenciális Beszúrások keresztül.
 
 Az előző példában további javításához használja a tárolt eljárás egy szöveges alapú parancs helyett. A következő Transact-SQL parancs létrehoz egy tárolt eljárást, amely a **SimpleTestTableType** tábla értékű paraméter.
 

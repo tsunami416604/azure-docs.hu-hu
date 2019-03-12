@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: jejiang
-ms.openlocfilehash: 6cc4a5d5bfc2056f2517bcbcecb19b9f6b2f437a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: bf2af67bb9498d4814f63fa66fdd50171ce0b4a1
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52966262"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534344"
 ---
 # <a name="manage-azure-data-lake-storage-gen1-resources-by-using-storage-explorer"></a>Az Azure Data Lake Storage Gen1-erőforrások kezelése a Storage Explorer használatával
 
@@ -195,7 +195,7 @@ Az URL-címeket egyszerűen beírhatja a Fájlkezelő vagy a böngésző címsor
 
 
 ## <a name="next-steps"></a>További lépések
-* A [Storage Explorer legújabb kibocsátási megjegyzéseinek és videóinak megtekintése](http://www.storageexplorer.com).
+* A [Storage Explorer legújabb kibocsátási megjegyzéseinek és videóinak megtekintése](https://www.storageexplorer.com).
 * Megismerheti, hogyan [kezelhető az Azure Cosmos DB az Azure Storage Explorerben](https://docs.microsoft.com/azure/cosmos-db/storage-explorer).
 * [A Storage Explorer használatának első lépései](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
 * [Ismerkedés az Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-overview).

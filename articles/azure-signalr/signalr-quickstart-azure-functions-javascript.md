@@ -5,14 +5,14 @@ author: sffamily
 ms.service: signalr
 ms.devlang: javascript
 ms.topic: quickstart
-ms.date: 09/23/2018
+ms.date: 03/04/2019
 ms.author: zhshang
-ms.openlocfilehash: f0044ca206d15762d44d8d4ea2d58c93950c5e1e
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: c66323a430e86053627577b40f66b3f4be11c74f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252456"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535648"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-javascript"></a>Gyors útmutató: Csevegőszoba létrehozása az Azure Functions és a SignalR Service JavaScript használatával
 
@@ -81,7 +81,7 @@ Jelentkezzen be az Azure Portalra a <https://portal.azure.com/> webhelyen az Azu
 
 ## <a name="next-steps"></a>További lépések
 
-Ennek a rövid útmutatónak a segítségével egy valós idejű, kiszolgáló nélküli alkalmazást készített el és futtatott a Visual Studióban. A következő lépésként tudjon meg többet az Azure-függvények Visual Studióval való fejlesztéséről és üzembe helyezéséről.
+Ebben a rövid útmutatóban létrehozott, és valós idejű kiszolgáló nélküli alkalmazás futtatta a VS Code-ban. A következőkben még többet tudhat meg az Azure Functions VS Code-ból történő üzembe helyezéséről.
 
 > [!div class="nextstepaction"]
-> [Azure-függvények fejlesztése a Visual Studióval](../azure-functions/functions-develop-vs.md)
+> [Az Azure Functions üzembe helyezése VS Code-dal](https://code.visualstudio.com/tutorials/functions-extension/getting-started)

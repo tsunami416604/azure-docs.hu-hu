@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: lmazuel
-ms.openlocfilehash: df949b65ac4a193c9e7bdb6ee3c32d7026f7c93d
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 573c6d3ded8fea58e0c9ba1afa7da2d8dd0fce91
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782964"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531835"
 ---
 # <a name="use-service-management-from-python"></a>Kezelés a Python használata
 Ez az útmutató bemutatja, hogyan programozott módon a Python a gyakori felügyeleti feladatok elvégzéséhez. A **ServiceManagementService** az osztály a [Pythonhoz készült Azure SDK](https://github.com/Azure/azure-sdk-for-python) támogatja a programozási szintű hozzáférést felügyelettel kapcsolatos funkciók, amelyek érhető el a [Azure portál][management-portal]. Ez a funkció segítségével létrehozása, frissítése és törlése a cloud services, központi telepítések, adatkezelési szolgáltatások és virtuális gépeket. Ez a funkció akkor lehet hasznos, a service management programozás alapú hozzáférést igénylő alkalmazások készítése.
@@ -44,7 +44,7 @@ A szolgáltatás felügyeleti végponthoz csatlakozik, szüksége van Azure-elő
 >
 
 ### <a name="management-certificates-on-windowsmaclinux-openssl"></a>Felügyeleti tanúsítványok Windows/Mac/Linux (OpenSSL)
-Használhat [OpenSSL](http://www.openssl.org/) a felügyeleti tanúsítvány létrehozása. Hozzon létre egyet a kiszolgáló két tanúsítványt kell (a `.cer` fájl) és a egy, az ügyfél (egy `.pem` fájlt). Hozhat létre a `.pem` fájlt, hajtsa végre:
+Használhat [OpenSSL](https://www.openssl.org/) a felügyeleti tanúsítvány létrehozása. Hozzon létre egyet a kiszolgáló két tanúsítványt kell (a `.cer` fájl) és a egy, az ügyfél (egy `.pem` fájlt). Hozhat létre a `.pem` fájlt, hajtsa végre:
 
     openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.pem -out mycert.pem
 
@@ -52,7 +52,7 @@ Hozhat létre a `.cer` tanúsítvány, hajtsa végre:
 
     openssl x509 -inform pem -in mycert.pem -outform der -out mycert.cer
 
-Az Azure-tanúsítványokkal kapcsolatos további információkért lásd: [tanúsítványok áttekintése az Azure Cloud Services](cloud-services-certs-create.md). OpenSSL-paraméter teljes leírását lásd: a dokumentációban a [ http://www.openssl.org/docs/apps/openssl.html ](http://www.openssl.org/docs/apps/openssl.html).
+Az Azure-tanúsítványokkal kapcsolatos további információkért lásd: [tanúsítványok áttekintése az Azure Cloud Services](cloud-services-certs-create.md). OpenSSL-paraméter teljes leírását lásd: a dokumentációban a [ https://www.openssl.org/docs/apps/openssl.html ](https://www.openssl.org/docs/apps/openssl.html).
 
 Miután létrehozta ezeket a fájlokat, töltse fel a `.cer` fájlt az Azure-bA. Az a [az Azure portal][management-portal], az a **beállítások** lapon jelölje be **feltöltése**. Vegye figyelembe, ahová mentette a `.pem` fájlt.
 
@@ -399,8 +399,8 @@ A klasszikus üzemi modellben Linux rendszerű virtuális gép rögzítése kapc
 
 A klasszikus üzemi modellben Windows virtuális gép rögzítése kapcsolatos további tudnivalókért lásd: [Windows virtuális gép rögzítése](../virtual-machines/windows/classic/capture-image-classic.md).
 
-## <a name="What's Next"> </a>Következő lépések
-Most, hogy megismerte a service management alapjait, hozzáférhet a [az Azure Python SDK teljes API dokumentációja](http://azure-sdk-for-python.readthedocs.org/) és összetett feladatokat, a Python-alkalmazás kezelése.
+## <a name="What's Next"></a>Következő lépések
+Most, hogy megismerte a service management alapjait, hozzáférhet a [az Azure Python SDK teljes API dokumentációja](https://azure-sdk-for-python.readthedocs.org/) és összetett feladatokat, a Python-alkalmazás kezelése.
 
 További információ: [Python fejlesztői központban](https://azure.microsoft.com/develop/python/).
 
@@ -423,7 +423,7 @@ További információ: [Python fejlesztői központban](https://azure.microsoft.
 [Delete a virtual machine]: #DeleteVM
 [Next steps]: #NextSteps
 [management-portal]: https://portal.azure.com/
-[svc-mgmt-rest-api]: http://msdn.microsoft.com/library/windowsazure/ee460799.aspx
+[svc-mgmt-rest-api]: https://msdn.microsoft.com/library/windowsazure/ee460799.aspx
 
 
 [cloud service]:/azure/cloud-services/

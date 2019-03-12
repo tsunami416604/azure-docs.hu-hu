@@ -8,21 +8,21 @@ ms.topic: include
 ms.date: 10/11/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 23c25953d2f493d2dd799bfd11dbbb69db002d1b
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 62eb75ef18d3ac81be65783e57c21c0aefd7a429
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55736238"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57554659"
 ---
 | Erőforrás | Alapértelmezett korlát |
 | --- | :--- |
-| Fürtök maximális száma előfizetésenként | 100 |
+| Előfizetésenként legfeljebb fürtök | 100 |
 | Csomópontok maximális száma fürtönként | 100 |
 | Csomópontonkénti maximális podok: [Alapszintű hálózatkezelési] [ basic-networking] Kubenet az | 110 |
-| Csomópontonkénti maximális podok: [Speciális hálózatkezelés] [ advanced-networking] az Azure CNI | Az Azure CLI-telepítés: 30<sup>1</sup><br />Resource Manager-sablon: 30<sup>1</sup><br />Portál központi telepítése: 30 |
+| Csomópontonkénti maximális podok: [Speciális hálózatkezelés] [ advanced-networking] az Azure Container hálózati adapter | Az Azure CLI-telepítés: 30<sup>1</sup><br />Az Azure Resource Manager-sablon: 30<sup>1</sup><br />Portál központi telepítése: 30 |
 
-<sup>1</sup> Amikor az Azure CLI-vel vagy a Resource Manager-sablonnal helyez üzembe egy AKS-fürtöt, ez az érték akár **csomópontonként 110 pod** is lehet. Ha már üzembe helyezett egy AKS-fürtöt, vagy ha egy fürtöt az Azure Portalon helyez üzembe, nem konfigurálhatja a podok csomópontonkénti maximális számát.<br />
+<sup>1</sup>központi telepítésekor egy Azure Kubernetes Service (AKS)-fürtöt az Azure CLI vagy a Resource Manager-sablonnal, értéke legfeljebb 110 podok száma csomópontonként konfigurálható. Csomópontonkénti maximális podok után már telepített egy AKS-fürtöt, vagy ha a fürt üzembe helyezése az Azure portal használatával nem konfigurálható.<br />
 
 <!-- LINKS - Internal -->
 [basic-networking]: ../articles/aks/concepts-network.md#kubenet-basic-networking

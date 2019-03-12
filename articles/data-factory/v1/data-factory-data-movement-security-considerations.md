@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 0d601df7914b7280de4b3c16c8b00c96cb5427e4
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 083770c24a6c8939f8d1ff9f0efd5d18aff9dcb0
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57435984"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539615"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Az Azure Data Factory - adatáthelyezés biztonsági szempontjai
 
@@ -74,10 +74,10 @@ Az Azure Data Lake store is biztosít a fiókban tárolt adatok titkosítását.
 Az Azure Blob Storage és Azure Table storage támogatja a Storage Service Encryption (SSE), amely automatikusan titkosítja az adatokat a tárolás előtt, és visszafejti őket a lekérés előtt. További információkért lásd: [Azure Storage Service Encryption az inaktív adatok](../../storage/common/storage-service-encryption.md).
 
 #### <a name="amazon-s3"></a>Amazon S3
-Az Amazon S3 támogatja az ügyfél- és az inaktív adatok titkosítását. További információkért lásd: [védelme használatával adattitkosítás](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html). Jelenleg a Data Factory nem támogatja az Amazon S3 virtuális magánfelhő (VPC) belül.
+Az Amazon S3 támogatja az ügyfél- és az inaktív adatok titkosítását. További információkért lásd: [védelme használatával adattitkosítás](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html). Jelenleg a Data Factory nem támogatja az Amazon S3 virtuális magánfelhő (VPC) belül.
 
 #### <a name="amazon-redshift"></a>Amazon Redshift
-Amazon Redshift fürt titkosítási támogatja az inaktív adatok. További információkért lásd: [Amazon Redshift az adatbázis-titkosítás](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html). A Data Factory jelenleg nem támogatja az Amazon Redshift-VPC belül. 
+Amazon Redshift fürt titkosítási támogatja az inaktív adatok. További információkért lásd: [Amazon Redshift az adatbázis-titkosítás](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html). A Data Factory jelenleg nem támogatja az Amazon Redshift-VPC belül. 
 
 #### <a name="salesforce"></a>Salesforce
 Salesforce Shield Platform titkosítás, amely lehetővé teszi, hogy a titkosítás az összes olyan fájlok, a mellékleteket, egyéni mezők támogatja. További információkért lásd: [ismertetése a Web Server OAuth hitelesítési folyamatát](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm).  
@@ -178,7 +178,7 @@ A következő felhőalapú adattárak alkalmazásátjáróra IP-címét az átj�
 - [Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
 - [Azure Data Lake Store](../../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../../cosmos-db/firewall-support.md)
-- [Amazon Redshift](http://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
+- [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 

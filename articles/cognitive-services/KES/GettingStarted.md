@@ -10,12 +10,12 @@ ms.subservice: knowledge-exploration
 ms.topic: sample
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: a48fecd910d87af23a9385270878b0d1b6737007
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ded681b8776343a778f3e9704fe05d43e8d74774
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452538"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550525"
 ---
 # <a name="get-started-with-the-knowledge-exploration-service"></a>Első lépések a Knowledge Exploration Service szolgáltatással
 
@@ -64,7 +64,7 @@ A sémadefinícióval kapcsolatos további információk: [Sémaformátum](Schem
 
 ## <a name="generate-data"></a>Adatok generálása
 
-Az adatfájl az indexelendő kiadványok listáját adja meg, mindegyik sora egy kiadvány attribútum értékeit adja meg [JSON formátumban](http://json.org/).  Az alábbi példa az *Academic.data* adatfájl egy sora, az olvashatóság érdekében formázva:
+Az adatfájl az indexelendő kiadványok listáját adja meg, mindegyik sora egy kiadvány attribútum értékeit adja meg [JSON formátumban](https://json.org/).  Az alábbi példa az *Academic.data* adatfájl egy sora, az olvashatóság érdekében formázva:
 
 ```
 ...

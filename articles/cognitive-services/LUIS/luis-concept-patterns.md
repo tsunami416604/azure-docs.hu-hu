@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 03/05/2019
 ms.author: diberry
-ms.openlocfilehash: af73d78b911d59f68c5e824931b5634d8c69f309
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 42ac75b6ed0d4489ccae014b9cfe3b08269c1218
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449002"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57547418"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Minták előrejelzési pontosság növeléséhez.
 Pontosság javításához, ha több utterances nagyon hasonló minták lettek kialakítva.  Egy minta segítségével megjelölésű a nagyobb pontosság számos további kimondott szöveg megadása nélkül. 
@@ -41,8 +41,11 @@ Minták oldja meg a következő helyzetekben:
 ## <a name="patterns-are-not-a-guarantee-of-intent"></a>Minták amelyek nem garantálja az leképezés
 Minták előrejelzési technológiák kombinációját használja. Egy leképezésének egy sablon utterance (kifejezés) a mintát, nem garantálja a szándék előrejelzési de erős védelem. 
 
-## <a name="patterns-do-not-improve-entity-detection"></a>Minták növelhető az entitás észlelése
-Minták entitások használatához, a minta nem észlelhetők az entitás. Egy minta csak célja, hogy az előrejelzés leképezések és szerepkörök segítségével.  
+<a name="patterns-do-not-improve-entity-detection"/>
+
+## <a name="patterns-do-not-improve-machine-learned-entity-detection"></a>Minták növelhető az entitás gép megtanult észlelése
+
+A minta elsősorban az adott leképezések és szerepkörök előrejelzését segítségével. Szabad formátumú entitások kinyeréséhez a pattern.any entitás szolgál. Minták entitásokat használ, miközben a minta nem észlelhetők a gép megtanult entitás.  
 
 Továbbfejlesztett entitás előrejelzési megtekintéséhez be egyetlen mintát több utterances összecsukása után nem számít. Egyszerű entitások üzenetszám meg kell beszédmódok hozzáadása, vagy használjon lista entitásokat más a minta nem indulnak el.
 

@@ -1,22 +1,28 @@
 ---
 title: Nézet kubelet-naplók az Azure Kubernetes Service (AKS)
-description: Hibaelhárítási információk megjelenítése az Azure Kubernetes Service (AKS) csomópontjáról kubelet-naplók
+description: Ismerje meg, hogyan hibaelhárítási információk megjelenítése az Azure Kubernetes Service (AKS) csomópontjáról kubelet-naplók
 services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 08/21/2018
+ms.date: 03/05/2019
 ms.author: iainfou
-ms.openlocfilehash: aeab24685f3663ba2c50205344d33db3d34676c2
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: b381145fef7e6fb399fac3387ab01fdc9a51b154
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42441948"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534020"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>Az Azure Kubernetes Service (AKS)-fürt csomópontjának kubelet-naplók beszerzése
 
-Bizonyos esetekben szükség lehet első *kubelet* hibaelhárítás céljából az Azure Kubernetes Service (AKS) csomópont naplóinak. Ez a cikk bemutatja, hogyan használhatja `journalctl` megtekintéséhez a *kubelet* naplókat.
+AKS-fürt operációs részeként szükség lehet tekintse át a naplókat a probléma elhárításához. Az Azure portal beépített rendszer azon képessége, a naplók megtekintéséhez a [AKS fő összetevőinek] [ aks-master-logs] vagy [tárolókat az AKS-fürt][azure-container-logs]. Bizonyos esetekben szükség lehet első *kubelet* naplók hibaelhárítási célból egy AKS-csomópontból.
+
+Ez a cikk bemutatja, hogyan használhatja `journalctl` megtekintéséhez a *kubelet* jelentkezik be egy AKS-csomópont.
+
+## <a name="before-you-begin"></a>Előkészületek
+
+Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel] [ aks-quickstart-cli] vagy [az Azure portal használatával][aks-quickstart-portal].
 
 ## <a name="create-an-ssh-connection"></a>Hozzon létre egy SSH-kapcsolatot
 
@@ -63,3 +69,7 @@ Ha további információkat talál a Kubernetes-főkiszolgálóról van szüksé
 <!-- LINKS - internal -->
 [aks-ssh]: ssh.md
 [aks-master-logs]: view-master-logs.md
+[aks-quickstart-cli]: kubernetes-walkthrough.md
+[aks-quickstart-portal]: kubernetes-walkthrough-portal.md
+[aks-master-logs]: view-master-logs.md
+[azure-container-logs]: ../azure-monitor/insights/container-insights-overview.md

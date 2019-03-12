@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: overview
 ms.date: 04/10/2018
 ms.author: stevelas
-ms.openlocfilehash: d65267992876b3b3255a5eea22ff827522ddcdf1
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 2dc314dd1d1e728f03c1d0c660d9339254ddc462
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674701"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541859"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Georeplikáció az Azure Container Registryben
 
@@ -69,7 +69,7 @@ Georeplikációs funkciója [prémium szintű beállításjegyzékek](container-
 
 ![Váltás a termékváltozatok között az Azure Portalon](media/container-registry-skus/update-registry-sku.png)
 
-A prémium szintű tárolójegyzékkel georeplikációt konfigurálásához jelentkezzen be az Azure Portalra a http://portal.azure.com.
+A prémium szintű tárolójegyzékkel georeplikációt konfigurálásához jelentkezzen be az Azure Portalra a https://portal.azure.com.
 
 Keresse meg az Azure Container Registrybe, és válassza ki **replikációk**:
 

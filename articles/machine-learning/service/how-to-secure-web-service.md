@@ -1,7 +1,7 @@
 ---
-title: Biztonságos webszolgáltatások SSL-lel
+title: Webszolgáltatások biztonságossá tétele SSL használatával
 titleSuffix: Azure Machine Learning service
-description: Ismerje meg, hogyan védheti meg az Azure Machine Learning szolgáltatással üzembe helyezett webszolgáltatások. Webes szolgáltatásokhoz való hozzáférés korlátozása, és a biztonságos szoftvercsatorna-réteg (SSL) használatával az ügyfelek által küldött adatok biztonságossá tétele és a kulcs alapú hitelesítés.
+description: Ismerje meg, hogyan teheti biztonságossá a HTTPS engedélyezésével az Azure Machine Learning szolgáltatással telepített webes szolgáltatás. HTTPS védi a transport layer security (TLS), helyettesíti a biztonságos szoftvercsatorna-réteg (SSL) használó ügyfelek által küldött adatokat. Azt is szolgál az ügyfelek által a web service identitásának ellenőrzéséhez.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,27 +11,34 @@ ms.author: aashishb
 author: aashishb
 ms.date: 02/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 160bc0e67b2686d17357241887a207cb4a03002c
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 91958a76ffb3cafd818949c1475fd13bb978a928
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098102"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731889"
 ---
 # <a name="use-ssl-to-secure-web-services-with-azure-machine-learning-service"></a>SSL használatával biztonságossá tétele az Azure Machine Learning szolgáltatás a webszolgáltatások
 
-Ebben a cikkben megtudhatja, hogyan védheti meg az Azure Machine Learning szolgáltatással üzembe helyezett webszolgáltatások. Webes szolgáltatásokhoz való hozzáférés korlátozása, és a biztonságos szoftvercsatorna-réteg (SSL) használatával az ügyfelek által küldött adatok biztonságossá tétele és a kulcs alapú hitelesítés.
+Ebben a cikkben megtudhatja, hogyan védheti meg az Azure Machine Learning szolgáltatással üzembe helyezett webszolgáltatások. Webes szolgáltatásokhoz való hozzáférés korlátozása, és segítségével az ügyfelek által küldött adatok biztonságossá [Hypertext Transfer Protocol biztonságos (HTTPS)](https://en.wikipedia.org/wiki/HTTPS).
+
+Ügyfél és a webszolgáltatás közötti kommunikáció biztonságossá tételéhez a kettő közötti kommunikáció titkosítása HTTPS segítségével. Titkosítás használatával kezeli [Transport Layer Security (TLS)](https://en.wikipedia.org/wiki/Transport_Layer_Security). Egyes esetekben ez továbbra is hivatkozik, Secure Sockets Layer (SSL), amely a TLS elődje volt.
+
+> [!TIP]
+> Az Azure Machine Learning SDK "SSL" Tulajdonságok biztonságos kommunikáció kapcsolódó kifejezést használja. Ez nem jelenti azt, hogy a webszolgáltatás nem használja a TLS, csak az adott SSL számos olvasók több felismerhető kifejezés.
+
+A TLS és az SSL is támaszkodik __digitális tanúsítványok__, titkosítás és identitás-ellenőrzés végrehajtásához használt. Digitális tanúsítványok működésével kapcsolatban tekintse meg a Wikipédia-bejegyzés [nyilvános kulcsokra épülő infrastruktúrájú (PKI)](https://en.wikipedia.org/wiki/Public_key_infrastructure).
 
 > [!Warning]
-> Ha nem engedélyezi az SSL, az interneten bármely felhasználó tudják a webszolgáltatás-hívások.
+> Ha nem engedélyezi, és a webszolgáltatást a HTTPS PROTOKOLLT használja, előfordulhat, hogy, és a szolgáltatásból küldött adatok jelennek meg mások be az interneten.
+>
+> HTTPS is lehetővé teszi az ügyfél, amely az épp csatlakozik a kiszolgáló hitelességének ellenőrzéséhez. Ez védelmet biztosít az ügyfelek ellen [man-in-the-middle](https://en.wikipedia.org/wiki/Man-in-the-middle_attack) támadásokkal szemben.
 
-SSL titkosítja az ügyfél és a web service között küldött adatokat. Ez a kiszolgáló identitását ellenőrizze az ügyfél által is használt. Hitelesítési szolgáltatások, amelyek egy SSL-tanúsítvány és kulcs megadott csak engedélyezve van.  Ha engedélyezi az SSL, hitelesítési kulcs megadása kötelező a web service elérésekor.
-
-Az SSL engedélyezett webszolgáltatás üzembe, vagy a meglévő üzembe helyezett webszolgáltatáshoz SSL engedélyezése, a lépések ugyanazok:
+A folyamat új webszolgáltatásként, vagy egy meglévő biztonságossá a következőképpen történik:
 
 1. Kérje le egy tartomány nevét.
 
-2. SSL-tanúsítvány beszerzése.
+2. Digitális igazolást kap.
 
 3. Üzembe helyezése, vagy a web service frissíteni az SSL-beállítás engedélyezve van.
 
@@ -45,7 +52,7 @@ Ha Ön nem tulajdonosa a tartománynevet, vásárolhat egyet egy __tartományreg
 
 ## <a name="get-an-ssl-certificate"></a>SSL-tanúsítvány beszerzése
 
-Számos módon SSL-tanúsítvány beszerzése. A leggyakoribb eset az, hogy vásároljon egyet egy __hitelesítésszolgáltató__ (CA). Ha beszerezte a tanúsítványt, függetlenül kell a következő fájlokat:
+Számos módon beolvasása egy SSL-tanúsítványt (digitális tanúsítványt). A leggyakoribb eset az, hogy vásároljon egyet egy __hitelesítésszolgáltató__ (CA). Ha beszerezte a tanúsítványt, függetlenül kell a következő fájlokat:
 
 * A __tanúsítvány__. A tanúsítvány kell tartalmaznia a teljes tanúsítványlánccal, és a PEM-kódolású kell lennie.
 * A __kulcs__. A kulcsnak kell lennie a PEM-kódolású.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: b5e41b1f9ee982b8ff8c86232f715d5dab705cd6
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: becd91b3539ef992289a4032283be64fbf9d123d
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56962162"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729358"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Gyors útmutató: Hozzon létre egy .NET keretrendszerre épülő alkalmazás az Azure-alkalmazás konfigurációja
 
@@ -71,7 +71,7 @@ A rövid útmutató elvégzéséhez telepítse [Visual Studio 2017](https://visu
     </appSettings>
     ```
 
-   Adja vegye figyelembe, hogy fog kell olvasásakor, az alkalmazás a konfigurációs adattárolónál a kapcsolati karakterláncot a környezeti változó, `ConnectionString`, fontos, hogy adja hozzá a `Environment` konfigurációs builder előtt a `MyConfigStore` a a `configBuilders` tulajdonságát a `appSettings` szakaszban.
+   Ne feledje, hogy lesz kell olvasásakor, az alkalmazás a konfigurációs adattárolónál a kapcsolati karakterláncot a környezeti változó `ConnectionString`, fontos, hogy adja hozzá a `Environment` konfigurációs builder előtt a `MyConfigStore` a a `configBuilders` tulajdonságát a `appSettings` szakaszban.
 
 3. Nyissa meg *Program.cs* és frissítheti a `Main` metódus meghívásával használhatja az Alkalmazáskonfigurációt `ConfigurationManager`.
 

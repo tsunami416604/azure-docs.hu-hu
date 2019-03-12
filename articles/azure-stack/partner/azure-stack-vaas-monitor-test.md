@@ -10,23 +10,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/04/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 11/26/2018
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: d4854bd623bb11d50a712be3a5aea07db24c2951
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 9b64631b274423edda35189a942e2f142ae591f1
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432243"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57761172"
 ---
 # <a name="monitor-and-manage-tests-in-the-vaas-portal"></a>Figyelheti és kezelheti a VaaS portálon tesztek
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Feladatütemezést, a tesztek alapján az Azure Stack megoldás után az érvényesítési (VaaS) szolgáltatás elkezdi teszt végrehajtási állapotát. Ezek az információk a műveleteket, például a tesztek visszavonása és állapotfrissítésére együtt VaaS portálon érhető el.
+Feladatütemezést, a tesztek alapján az Azure Stack megoldás után az érvényesítési (VaaS) szolgáltatás elkezdi teszt végrehajtási állapotát. Ezek az információk a műveleteket, például újraütemezése és tesztek megszakítása mellett VaaS portálon érhető el.
 
 ## <a name="navigate-to-the-workflow-tests-summary-page"></a>Keresse meg a munkafolyamat-teszt összefoglaló lap
 
@@ -40,7 +40,7 @@ Feladatütemezést, a tesztek alapján az Azure Stack megoldás után az érvén
 
 ## <a name="change-workflow-parameters"></a>Munkafolyamat-paraméterek módosítása
 
-Minden egyes munkafolyamat típusa lehetővé teszi, hogy szerkesztheti a [teszt paramétereiben](azure-stack-vaas-parameters.md#test-parameters) munkafolyamat létrehozása során megadott.
+Szerkesztheti a [teszt paramétereiben](azure-stack-vaas-parameters.md#test-parameters) bármilyen munkafolyamat a munkafolyamat létrehozása során megadott.
 
 1. A tesztek összesítő lapon válassza ki a **szerkesztése** gombra.
 
@@ -62,7 +62,7 @@ A **Tesztmenetek** munkafolyamatokat, mind a **tesztek hozzáadása** és **szer
 
 Munkaköröket külsős informatikusok futtatások (azaz a **Tesztmenetek** munkafolyamat), a tesztek összegző lap felsorolja az Azure Stack megoldás ütemezett vizsgálatok.
 
-Hivatalos futtatások (azaz a **érvényesítési** munkafolyamatok), a tesztek összegző lap felsorolja a tesztek elvégzése az Azure Stack megoldás érvényesítés szükséges. Ellenőrzések naponkénti gyakoriságra vannak ezen a lapon.
+Hivatalos futtatások (azt jelenti, a **érvényesítési** munkafolyamatok), a tesztek összegző lap felsorolja a tesztek elvégzése az Azure Stack megoldás érvényesítés szükséges. Ellenőrzések naponkénti gyakoriságra vannak ezen a lapon.
 
 Minden egyes ütemezett vizsgálat példány a következő információkat jelenít meg:
 
@@ -81,7 +81,7 @@ Minden egyes ütemezett vizsgálat példány a következő információkat jelen
 
 ### <a name="actions"></a>Műveletek
 
-Minden teszt példány felsorolja az elérhető művelet elvégezhető a helyi menü kattintva **[...]**  a teszt példányok táblában.
+Minden teszt példány felsorolja az elérhető művelet elvégezhető a helyi menü kiválasztásakor **[...]**  a teszt példányok táblában.
 
 #### <a name="view-information-about-the-test-definition"></a>A test-definíció adatainak megtekintése
 
@@ -118,7 +118,7 @@ Válassza ki **műveleteinek megtekintéséhez** a környezetből menü művelet
 
 #### <a name="download-logs-for-a-completed-test-instance"></a>Befejezett teszt példány naplók letöltése
 
-Válassza ki **naplók letöltéséhez** letöltése a helyi menüből a `.zip` teszt végrehajtása során a naplók kimeneti fájlt. Ez a művelet akkor csak tesztek számára elérhető, amely befejeződött, azaz egy tesztet vagy állapottal `Cancelled`, `Failed`, `Aborted`, vagy `Succeeded`.
+Válassza ki **naplók letöltéséhez** letöltése a helyi menüből a `.zip` teszt végrehajtása során a naplók kimeneti fájlt. Ez a művelet csak olyan teszteket, befejezett, azaz egy tesztet vagy állapottal érhető el `Cancelled`, `Failed`, `Aborted`, vagy `Succeeded`.
 
 #### <a name="reschedule-a-test-instance-or-schedule-a-test"></a>Egy teszt példány le, vagy egy vizsgálat ütemezése
 
@@ -142,7 +142,7 @@ A tesztelési fázisban munkafolyamat **újraütemezése** egy teszt példány �
 
 Ütemezett vizsgálat Ha állapota lehet érvényteleníteni `Pending` vagy `Running`.  
 
-1. Válassza ki **Mégse** nyisson meg egy parancssort a test-példány a törlés, a helyi menüből.
+1. Válassza ki **Mégse** , nyisson meg egy parancssort a test-példány leállítása a helyi menüből.
 
 1. Válassza ki **küldés** megszakítja a test-példány.
 

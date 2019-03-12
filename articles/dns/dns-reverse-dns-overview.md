@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: victorh
-ms.openlocfilehash: fa3798a35804998936e0ac166fceff02b01231a0
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 9d3a62ec1c9ede1f25f2b53f800642a792b3aa28
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171510"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534395"
 ---
 # <a name="overview-of-reverse-dns-and-support-in-azure"></a>Fordított DNS és támogatás az Azure-ban – áttekintés
 
@@ -56,7 +56,7 @@ Ha például az IP-címek lévő gazdagépek 192.0.2.0/24 előtagot a gazdagép-
 
 Bizonyos esetekben egy szervezet számára lefoglalt IP-címtartomány kisebb, mint egy osztály C (/ 24) tartomány. Ebben az esetben az IP-címtartomány nem tartozik egy zóna határon belül a `.in-addr.arpa` hierarchia zónát, és ezért nem delegálható, egy gyermekzónát.
 
-Ehelyett egy másik mechanizmust használ a vezérlőelem az egyes névkeresési (PTR) rekordok átvitele egy dedikált DNS-zónát. Ez a mechanizmus delegálja a gyermekzónát az egyes IP-címtartományban, majd a CNAME rekordok használatával a gyermekzóna névkiszolgálóira külön-külön rendeli minden IP-cím a tartományban.
+Ehelyett egy másik mechanizmust használ a vezérlőelem az egyes névkeresési (PTR) rekordok átvitele egy dedikált DNS-zónát. This mechanism delegates a child zone for each IP range, then maps each IP address in the range individually to that child zone using CNAME records.
 
 Tegyük fel, hogy egy szervezet megkapja az IP-címtartomány 192.0.2.128/26 az Internetszolgáltató által. A 192.0.2.191 192.0.2.128 64 IP-címek, ez jelöli. Fordított DNS ezt a tartományt a következőképpen történik:
 - A szervezet egy névkeresési zónát 128-26.2.0.192.in-addr.arpa hoz létre. A "128-26' előtag a szervezeten belül a C osztályú hozzárendelt hálózati szegmenst (/ 24) tartomány.
@@ -94,8 +94,8 @@ Ha például. Ha egy gazdagép-rekordok névkeresési zóna gazdagépek kialakí
 
 |Hálózati előtagok  |Bővített és megfordítva hálózati előtagok |Standard utótag |Névkeresési zóna neve  |
 |---------|---------|---------|---------|
-|2001:db8:abdc:: / 64    | 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2        | . ip6.arpa        | `0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa`       |
-|2001:db8:1000:9102:: / 64    | 2.0.1.9.0.0.0.1.8.b.d.0.1.0.0.2        | . ip6.arpa        | `2.0.1.9.0.0.0.1.8.b.d.0.1.0.0.2.ip6.arpa`        |
+|2001:db8:abdc::/64    | 0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2        | .ip6.arpa        | `0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2.ip6.arpa`       |
+|2001:db8:1000:9102::/64    | 2.0.1.9.0.0.0.1.8.b.d.0.1.0.0.2        | .ip6.arpa        | `2.0.1.9.0.0.0.1.8.b.d.0.1.0.0.2.ip6.arpa`        |
 
 
 ## <a name="azure-support-for-reverse-dns"></a>Azure-támogatás a fordított DNS
@@ -109,7 +109,7 @@ Az Azure DNS az alábbiakra használhatók [a névkeresési zónák üzemelteté
 
 ## <a name="next-steps"></a>További lépések
 
-Fordított DNS további információkért lásd: [Wikipedia DNS-címkeresés](http://en.wikipedia.org/wiki/Reverse_DNS_lookup).
+Fordított DNS további információkért lásd: [Wikipedia DNS-címkeresés](https://en.wikipedia.org/wiki/Reverse_DNS_lookup).
 <br>
 Ismerje meg, hogyan [a névkeresési zóna Azure DNS-ben az Internetszolgáltató által kiosztott IP-címtartományt a gazdagép](dns-reverse-dns-for-azure-services.md).
 <br>

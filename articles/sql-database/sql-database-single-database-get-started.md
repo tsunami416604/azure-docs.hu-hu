@@ -12,12 +12,12 @@ ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/25/2019
-ms.openlocfilehash: 64d16073062c0fd7f0b97a64950ceab9efc0eacf
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 81b09ff3e8bb7e5a41432ff0bdaac36b657d74ea
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984883"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569127"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal"></a>Gyors útmutató: Önálló adatbázis létrehozása az Azure SQL Database az Azure portal használatával
 
@@ -67,7 +67,7 @@ Az AdventureWorksLT mintaadatokat tartalmazó önálló adatbázis létrehozása
    > [!NOTE]
    > Ebben a rövid útmutatóban használja a [DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md), de a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md) is rendelkezésre áll.
    > [!IMPORTANT]
-   > Jelenleg több mint 1 TB tárterület egységára prémium szinten érhető el minden régióban, kivéve: Kelet-Kína, Észak-Kína, közép-Németország, Északkelet-Németország, USA nyugati középső Régiója, USA védelmi Minisztériuma régiók és US Government központi. Ezekben a régiókban a prémium szinthez tartozó tárterület maximuma 1 TB.  További információkért lásd: [P11 – P15 – aktuális korlátozások](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+   > Jelenleg több mint 1 TB tárterület egységára prémium szinten érhető el minden régióban, kivéve: Kelet-Kína, Észak-Kína, közép-Németország, Északkelet-Németország, USA nyugati középső Régiója, USA védelmi Minisztériuma régiók és US Government központi. Ezekben a régiókban a prémium szinthez tartozó tárterület maximuma 1 TB.  További információkért lásd: [P11 – P15 – aktuális korlátozások](sql-database-single-database-scale.md#dtu-based-purchasing-model-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 
 8. Ez a rövid útmutatóhoz válassza a **Standard** szolgáltatásszintet, és a csúszka segítségével válassza ki **10 Dtu (S0)** és **1** GB tárhelyet.
 9. Kattintson az **Alkalmaz** gombra.  

@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: 39271bdda7adf7e8e65d3b5d5ea1844be1ecf233
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 1b2009b54c7f436667c316b7ca002314bc966a1b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237943"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531929"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Az Azure Blob storage-ban az Azure CDN lejáratának kezelése
 > [!div class="op_single_selector"]
@@ -177,7 +177,7 @@ Használhatja a [Azure storage szolgáltatásaihoz való REST API-val](https://m
    - [A Blob tulajdonságainak megadása](https://msdn.microsoft.com/library/azure/ee691966.aspx)
 
 ## <a name="testing-the-cache-control-header"></a>A Cache-Control fejléc tesztelése
-Élettartam beállításait, a blobokat egyszerűen ellenőrizheti. A böngésző [fejlesztői eszközök](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/), tesztelje, hogy a blob magában foglalja a `Cache-Control` válaszfejléc. Például egy eszköz is használható [Wget](https://www.gnu.org/software/wget/), [Postman](https://www.getpostman.com/), vagy [Fiddler](http://www.telerik.com/fiddler) a válaszfejlécek vizsgálatához.
+Élettartam beállításait, a blobokat egyszerűen ellenőrizheti. A böngésző [fejlesztői eszközök](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/), tesztelje, hogy a blob magában foglalja a `Cache-Control` válaszfejléc. Például egy eszköz is használható [Wget](https://www.gnu.org/software/wget/), [Postman](https://www.getpostman.com/), vagy [Fiddler](https://www.telerik.com/fiddler) a válaszfejlécek vizsgálatához.
 
 ## <a name="next-steps"></a>További lépések
 * [Útmutató: Azure CDN-ben a Felhőszolgáltatásbeli tartalom lejáratának kezelése](cdn-manage-expiration-of-cloud-service-content.md)

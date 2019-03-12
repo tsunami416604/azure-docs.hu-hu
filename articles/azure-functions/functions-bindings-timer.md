@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
-ms.openlocfilehash: bdbb9d7c8b129642616a934dcc3d226434e69a03
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 0779ca2083691949821999322a3d732aed7b2694
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558974"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57760767"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Az Azure Functions időzítő eseményindító 
 
@@ -50,13 +50,13 @@ Tekintse meg az adott nyelvű példa:
 
 ### <a name="c-example"></a>C#-példa
 
-A következő példa bemutatja egy [ C# függvény](functions-dotnet-class-library.md) által öt, amely végrehajtott minden alkalommal, amikor a perc osztható fel értékkel rendelkeznie (például a függvény 18:57:00-kor kezdődik, ha a következő lesz a teljesítmény 19:00:00):
+A következő példa bemutatja egy [ C# függvény](functions-dotnet-class-library.md) által öt, amely végrehajtott minden alkalommal, amikor a perc osztható fel értékkel rendelkeznie (például a függvény 18:57:00-kor kezdődik, ha a következő lesz a teljesítmény 19:00:00). A [ `TimerInfo` ](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) objektum átad a függvényt.
 
 ```cs
 [FunctionName("TimerTriggerCSharp")]
 public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger log)
 {
-    if(myTimer.IsPastDue)
+    if (myTimer.IsPastDue)
     {
         log.LogInformation("Timer is running late!");
     }
@@ -66,7 +66,7 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 
 ### <a name="c-script-example"></a>C#-szkript példa
 
-Az alábbi példa bemutatja egy időzítő indítófeltételt kötelező egy *function.json* fájl és a egy [C#-szkriptfüggvény](functions-reference-csharp.md) , amely a kötés használja. A függvény a napló-e a függvény meghívási okozza-e a kihagyott ütemezés előfordulási számainak jelző ír.
+Az alábbi példa bemutatja egy időzítő indítófeltételt kötelező egy *function.json* fájl és a egy [C#-szkriptfüggvény](functions-reference-csharp.md) , amely a kötés használja. A függvény a napló-e a függvény meghívási okozza-e a kihagyott ütemezés előfordulási számainak jelző ír. A [ `TimerInfo` ](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) objektum átad a függvényt.
 
 Itt van a kötési adatait a *function.json* fájlt:
 
@@ -84,7 +84,7 @@ Itt van a kötési adatait a *function.json* fájlt:
 ```csharp
 public static void Run(TimerInfo myTimer, ILogger log)
 {
-    if(myTimer.IsPastDue)
+    if (myTimer.IsPastDue)
     {
         log.LogInformation("Timer is running late!");
     }
@@ -94,7 +94,7 @@ public static void Run(TimerInfo myTimer, ILogger log)
 
 ### <a name="f-example"></a>F#Példa
 
-Az alábbi példa bemutatja egy időzítő indítófeltételt kötelező egy *function.json* fájl és a egy [ F# függvény parancsfájl](functions-reference-fsharp.md) , amely a kötés használja. A függvény a napló-e a függvény meghívási okozza-e a kihagyott ütemezés előfordulási számainak jelző ír.
+Az alábbi példa bemutatja egy időzítő indítófeltételt kötelező egy *function.json* fájl és a egy [ F# függvény parancsfájl](functions-reference-fsharp.md) , amely a kötés használja. A függvény a napló-e a függvény meghívási okozza-e a kihagyott ütemezés előfordulási számainak jelző ír. A [ `TimerInfo` ](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) objektum átad a függvényt.
 
 Itt van a kötési adatait a *function.json* fájlt:
 
@@ -119,7 +119,7 @@ let Run(myTimer: TimerInfo, log: ILogger ) =
 
 ### <a name="javascript-example"></a>JavaScript-példa
 
-Az alábbi példa bemutatja egy időzítő indítófeltételt kötelező egy *function.json* fájl és a egy [JavaScript-függvény](functions-reference-node.md) , amely a kötés használja. A függvény a napló-e a függvény meghívási okozza-e a kihagyott ütemezés előfordulási számainak jelző ír.
+Az alábbi példa bemutatja egy időzítő indítófeltételt kötelező egy *function.json* fájl és a egy [JavaScript-függvény](functions-reference-node.md) , amely a kötés használja. A függvény a napló-e a függvény meghívási okozza-e a kihagyott ütemezés előfordulási számainak jelző ír. A [időzítő objektum](#usage) átad a függvény.
 
 Itt van a kötési adatait a *function.json* fájlt:
 
@@ -138,7 +138,7 @@ A következő JavaScript-kódot:
 module.exports = function (context, myTimer) {
     var timeStamp = new Date().toISOString();
 
-    if(myTimer.isPastDue)
+    if (myTimer.IsPastDue)
     {
         context.log('Node is running late!');
     }
@@ -192,7 +192,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 |**name** | n/a | A függvénykódot az időzítő objektumot képviselő változó neve. | 
 |**schedule**|**ScheduleExpression**|A [CRON-kifejezés](#cron-expressions) vagy egy [TimeSpan](#timespan) értéket. A `TimeSpan` csak egy függvényalkalmazást, amely egy App Service-csomag futtat használható. Az ütemezés kifejezés helyezni egy alkalmazásbeállításhoz, és ezzel a tulajdonsággal, a beállítás neve a beburkolt alkalmazás **%** jelentkezik, mint ebben a példában: "% ScheduleAppSetting %". |
 |**runOnStartup**|**RunOnStartup**|Ha `true`, a függvény meghívása a futtatókörnyezet indításakor. A modul például akkor kezdődik, amikor a függvényalkalmazás felébred végeztével üresjárati inaktivitás miatt. Amikor a függvényalkalmazás újraindítja a függvény változtatások miatt, és amikor a függvényalkalmazás elvégzi a horizontális felskálázást. Ezért **runOnStartup** ritkán, ha minden eddiginél meg `true`, különösen az éles környezetben. |
-|**useMonitor**|**useMonitor**|Állítsa be `true` vagy `false` jelzi, hogy az ütemezés kell figyelni a. Figyelési ütemezés továbbra is fennáll, ezzel elősegítve annak biztosítása, az ütemezés megfelelően, kezelik, akkor is, ha a függvény alkalmazáspéldány indítsa újra az ütemezés előfordulási. Ha nincs explicit módon beállítva, az alapértelmezett érték `true` , amelyek rendelkeznek a nagyobb, mint 1 perces ismétlődési időköz ütemezések esetében. Percenként egynél többször kiváltó ütemezések esetében az alapértelmezett érték `false`.
+|**useMonitor**|**UseMonitor**|Állítsa be `true` vagy `false` jelzi, hogy az ütemezés kell figyelni a. Figyelési ütemezés továbbra is fennáll, ezzel elősegítve annak biztosítása, az ütemezés megfelelően, kezelik, akkor is, ha a függvény alkalmazáspéldány indítsa újra az ütemezés előfordulási. Ha nincs explicit módon beállítva, az alapértelmezett érték `true` , amelyek rendelkeznek a nagyobb, mint 1 perces ismétlődési időköz ütemezések esetében. Percenként egynél többször kiváltó ütemezések esetében az alapértelmezett érték `false`.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -201,7 +201,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 
 ## <a name="usage"></a>Használat
 
-Amikor egy időzítő által aktivált függvény meghívása a [időzítő objektum](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) átad a függvény. A következő JSON-példa reprezentációját az időzítő objektum. 
+Egy időzítő által aktivált függvény meghívásakor egy időzítő objektum átad a függvényt. A következő JSON-példa reprezentációját az időzítő objektum.
 
 ```json
 {
@@ -226,12 +226,12 @@ Azure Functions az a [NCronTab](https://github.com/atifaziz/NCrontab) könyvtár
 
 Minden mező a következő típusú értékek egyike lehet:
 
-|Típus  |Példa  |Adatvezérelt  |
+|Typo  |Példa  |Adatvezérelt  |
 |---------|---------|---------|
 |Egy adott érték |<nobr>"0 5 * * * *"</nobr>|hh:05:00, ahol az ÓÓ az óránként (óránként):|
 |Minden érték (`*`)|<nobr>"0 * 5 * * *"</nobr>|címen 5:mm: 00 minden nap, ahol az mm percenként az óra (60 naponta alkalommal)|
 |A tartomány (`-` operátor)|<nobr>"5-7 * * * * *"</nobr>|hh:mm:05, valamint hh:mm:06 és hh:mm:07 óó: pp esetén percenként, óránként (3-szor perc)|  
-|Értékek egy halmazát (`,` operátor)|<nobr>"5,8,10 x *"</nobr>|hh:mm:05, valamint hh:mm:08 és hh:mm:10 óó: pp esetén percenként, óránként (3-szor perc)|
+|Értékek egy halmazát (`,` operátor)|<nobr>"5,8,10 * * * * *"</nobr>|hh:mm:05, valamint hh:mm:08 és hh:mm:10 óó: pp esetén percenként, óránként (3-szor perc)|
 |Az intervallum értéke (`/` operátor)|<nobr>"0 */5 * * * *"</nobr>|hh:05:00, hh:10:00, hh:15:00, és így tovább – hh:55:00, ahol az ÓÓ az minden óra (12-szer egy óra)|
 
 Adja meg a hónap és nap számértékeket, nevek vagy rövidítések neveket is használhatja:
@@ -277,7 +277,7 @@ Vagy hozzon létre a függvényalkalmazás nevű Alkalmazásbeállítás `WEBSIT
 
 Ha használ `WEBSITE_TIME_ZONE`, az idő az adott időzóna nyári időszámításra például idő változásairól módosul. 
 
-## <a name="timespan"></a>Időtartam
+## <a name="timespan"></a>TimeSpan
 
  A `TimeSpan` csak egy függvényalkalmazást, amely egy App Service-csomag futtat használható.
 

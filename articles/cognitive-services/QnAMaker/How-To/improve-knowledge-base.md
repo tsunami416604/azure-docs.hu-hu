@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: diberry
-ms.openlocfilehash: 7281fb15e91195e1dd20095d9fdf80d3d9894a26
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 76005b153d7a7feabdc1b335a23c6aa1f1fa99f3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433059"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537898"
 ---
 # <a name="use-active-learning-to-improve-knowledge-base"></a>Aktív tanulás használata a tudásbázis továbbfejlesztéséhez
 
@@ -154,7 +154,7 @@ Ha az ügyfélalkalmazás (például csevegőrobotot) megkapja a választ, vissz
 
 Az ügyfélalkalmazás összes kérdést jelenít meg és válassza ki a kérdést, hogy a felhasználó lehetőség, hogy a legtöbb szándékát jelöli. 
 
-Miután a felhasználó kiválaszt közülük egyet a meglévő kérdéseket. A felhasználó visszajelzést küld a QnA Maker [Train](http://www.aka.ms/activelearningsamplebot) API-t továbbra is az aktív tanulás visszajelzés ikonjához. 
+Miután a felhasználó kiválaszt közülük egyet a meglévő kérdéseket. A felhasználó visszajelzést küld a QnA Maker [Train](https://www.aka.ms/activelearningsamplebot) API-t továbbra is az aktív tanulás visszajelzés ikonjához. 
 
 ```http
 POST https://<QnA-Maker-resource-name>.azurewebsites.net/qnamaker/knowledgebases/<knowledge-base-ID>/train

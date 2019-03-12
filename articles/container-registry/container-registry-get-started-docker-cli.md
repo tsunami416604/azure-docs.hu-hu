@@ -9,16 +9,16 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: 164d705a16dd82a1c5f3ff6f5e6982f80eb40dab
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: d2aa05d6648a76b02e09c660d7e6f6f30988db53
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330868"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542165"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Az első rendszerkép leküldése egy privát Docker-tároló beállításjegyzékébe a Docker parancssori felületével
 
-Az Azure-beli tároló-beállításjegyzékek privát [Docker](http://hub.docker.com)-tárolórendszerképeket tárol és felügyel, hasonlóan ahhoz, ahogyan a [Docker Hub](https://hub.docker.com/) nyilvános Docker-rendszerképeket tárol. Használhatja a [Docker parancssori felületével](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) a [bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/), [leküldéses](https://docs.docker.com/engine/reference/commandline/push/), [lekéréses](https://docs.docker.com/engine/reference/commandline/pull/), és a tároló egyéb műveletek beállításjegyzék.
+Az Azure-beli tároló-beállításjegyzékek privát [Docker](https://hub.docker.com)-tárolórendszerképeket tárol és felügyel, hasonlóan ahhoz, ahogyan a [Docker Hub](https://hub.docker.com/) nyilvános Docker-rendszerképeket tárol. Használhatja a [Docker parancssori felületével](https://docs.docker.com/engine/reference/commandline/cli/) (Docker CLI) a [bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/), [leküldéses](https://docs.docker.com/engine/reference/commandline/push/), [lekéréses](https://docs.docker.com/engine/reference/commandline/pull/), és a tároló egyéb műveletek beállításjegyzék.
 
 A következő lépésekben egy hivatalos letöltési [Nginx rendszerképet](https://store.docker.com/images/nginx) a nyilvános Docker Hub beállításjegyzékből felcímkézésével a privát Azure container Registry, küldheti el azt a tárolójegyzékbe, és majd lekérheti a beállításjegyzékből.
 

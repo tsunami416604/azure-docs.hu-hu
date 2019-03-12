@@ -6,12 +6,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0d343ff5d7513500fa7803495dd42eb94b772935
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 15f5fe6e74cbe8cbffff31114e8aa588ec4a7ebb
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546096"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538000"
 ---
 # <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>Tárolás és adatkezelés adatáthelyezési beállítások eszköz- és kimeneti fájlok megjelenítése
 
@@ -25,7 +25,7 @@ A helyszín és az eszközintelligencia fájlokat a virtuális gépek készletet
   * Ez a beállítás az előnnyel jár, hogy rendkívül költséghatékony, nincsenek olyan virtuális gépek szükségesek a fájlrendszerhez, valamint az ismétlődő letöltések több feladatokat és tevékenységeket azonos fájlok blobfuse virtuális gépein gyorsítótár elkerülhető.  A fájlok, blobok egyszerűen és szabványos API-k és eszközök, például az azcopy segítségével másolja a fájlt egy helyi fájlrendszer és az Azure storage között az adatmozgatás is egyszerű.
 * Fájlrendszer vagy fájlmegosztás:
   * Virtuális gép operációs rendszer és a teljesítmény és méretezési igényeknek, majd lehetőségek a következők [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction), használatával egy virtuális Géphez csatlakoztatott adatlemezekkel rendelkező NFS, több virtuális gép használata a csatlakoztatott adatlemezekkel rendelkező GlusterFS, például az elosztott fájlrendszer vagy a külső ajánlat használatával.
-  * [Avere rendszerek](http://www.averesystems.com/) részeként a Microsoft és a nagyméretű, nagy teljesítményű renderelési ideális megoldások a közeljövőben fog rendelkezni.  A Avere megoldás lehetővé teszi az Azure-alapú NFS, vagy az SMB-gyorsítótár létrehozása, amely együttműködik a blob storage- vagy a helyszíni NAS-eszközökön.
+  * [Avere rendszerek](https://www.averesystems.com/) részeként a Microsoft és a nagyméretű, nagy teljesítményű renderelési ideális megoldások a közeljövőben fog rendelkezni.  A Avere megoldás lehetővé teszi az Azure-alapú NFS, vagy az SMB-gyorsítótár létrehozása, amely együttműködik a blob storage- vagy a helyszíni NAS-eszközökön.
   * A fájlrendszer, a fájlok olvasott és írt közvetlenül a fájlrendszert vagy a fájlrendszer és a készlet virtuális gépek között lehet másolni.
   * Egy megosztott fájlrendszert lehetővé teszi, hogy nagy számú projektek és a feladatok között megosztott eszközök használhatók fel a renderelési feladatokat csak a szükséges eléréséhez.
 

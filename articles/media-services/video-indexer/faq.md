@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: bc52c4eaf77b9441683eea8e5f899c6ef34d62e8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8d70fca5820dbd2152ca378916bfbcdbad4a027f
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002357"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776751"
 ---
 # <a name="frequently-asked-questions"></a>Gyakori kérdések
 
@@ -158,6 +158,10 @@ Hozzáférési jogkivonatok lejár óránként, ezért létre kell hoznia egy ú
 
 A video Indexer használ egy egyszerű használatalapú díjszabási modell, a tartalom bemeneti, amely indexeli időtartama alapján. További merülhetnek fel a kódolást, streaming, tárolási, hálózati használati és media szolgáltatás számára fenntartott egységeket. További információkért lásd: a [díjszabás](https://azure.microsoft.com/pricing/details/cognitive-services/video-indexer/) lapot.
 
+### <a name="when-am-i-billed-for-using-video-indexer"></a>Amikor fizetnem a Video Indexer használatát?
+
+Egy videó indexelendő küldésekor a felhasználó határozza meg, az indexelést videóelemzés hangelemzés vagy mindkettőt. Ez határozza meg, amely kell díjat a SKU-k. Ha a feldolgozás során egy kritikus szintű hiba hibakódot adott válaszként lesz visszaadva. Ebben az esetben nincs számlázási akkor fordul elő.  Kritikus hiba okozhatja a hibát a kódban, vagy egy belső függőség a szolgáltatás kritikus hiba van. Hibákat, például a nem megfelelő azonosító vagy insight kinyerése nem számít, kritikus fontosságú, és a válasz. Minden esetben érvényes (nem hibás kód) választ ad vissza, ha számlázás következik be.
+ 
 ### <a name="does-video-indexer-offer-a-free-trial"></a>A Video Indexer kínál egy ingyenes próbaverzióra?
 
 A Video Indexer Igen, a teljes szolgáltatás- és API-funkciókat biztosító ingyenes próbaidőszakot is kínál. Nincs webes felületen felhasználók esetében, és API-t felhasználók 2400 perc videók érdemes 600 perc-kvótát. 

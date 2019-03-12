@@ -11,15 +11,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 01/04/2018
 ms.author: b-juche
-ms.openlocfilehash: 0a5483cd5a6316cb5d6cba3a110ca757eb2171c8
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: dc24165d3a5ee4d72c259753edd4028752828dce
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103995"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772291"
 ---
 # <a name="register-for-azure-netapp-files"></a>Regisztrálás az Azure NetApp Filesra
 Mielőtt Azure NetApp fájlokat használ, a NetApp fájlokat az Azure szolgáltatásban regisztrálni kérelmet kell benyújtania.  A regisztráció után, majd regisztrálja a szolgáltatás használatához.
@@ -75,7 +75,7 @@ A szolgáltatás használatához regisztrálnia kell az Azure erőforrás-szolg�
 7. Az előfizetések panelen kattintson az előfizetési azonosítóját. 
 8. Kattintson a beállítások az előfizetés **erőforrás-szolgáltatók** , győződjön meg arról, hogy Microsoft.NetApp szolgáltató azt jelzi, hogy a regisztrált állapota: 
 
-      ![Regisztrált Microsoft.NetApp](../media/azure-netapp-files/azure-netapp-files-registered-resource-providers.png)
+      ![Registered Microsoft.NetApp](../media/azure-netapp-files/azure-netapp-files-registered-resource-providers.png)
 
 
 ## <a name="next-steps"></a>További lépések  

@@ -4,16 +4,16 @@ description: Ismerje meg, hogyan válassza ki egy Azure-megoldás az adatátvite
 services: storage
 author: alkohli
 ms.service: storage
-ms.subservice: blob
+ms.subservice: blobs
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: alkohli
-ms.openlocfilehash: bc5668d826395fb71ee70907f095303a43f1ec7f
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 4a8a014b365974bb8c138c74197d3d89cc63e42e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214317"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771980"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>A közepes és nagy méretű adatkészletek irányuló adatátvitel nagy hálózati sávszélesség
  
@@ -65,14 +65,14 @@ Offline adatok átvitellel, ha az alábbi táblázat segítségével legfontosab
 |                                     |    Data Box-lemezek (előzetes verzió)    |    Data Box                                      |    Data Box nehéz (előzetes verzió)              |    Import/Export                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
 |    Adatok mérete                        |    Visszamenőleges tárolása akár 35 TB-osra bővül                 |    Legfeljebb 80 TB-osra bővül eszközönként                       |    Akár 800 TB eszközönként               |    Változó                            |
-|    Adattípus                        |    Azure-Blobok                  |    Azure-Blobok<br>Azure Files                    |    Azure-Blobok<br>Azure Files            |    Azure-Blobok<br>Azure Files          |
-|    Helyigény                      |    Megrendelésenként 5 SSD             |    1 x 50-lbs. asztal-méretű eszköz megrendelésenként    |    1 X 500 KB-lbs. megrendelésenként nagy eszköz    |    Megrendelésenként legfeljebb 10 HDD és SSD-k        |
+|    Adattípus                        |    Azure Blobs                  |    Azure Blobs<br>Azure Files                    |    Azure Blobs<br>Azure Files            |    Azure Blobs<br>Azure Files          |
+|    Helyigény                      |    Megrendelésenként 5 SSD             |    1 x 50-lbs. asztal-méretű eszköz megrendelésenként    |    1 X ~500-lbs. megrendelésenként nagy eszköz    |    Megrendelésenként legfeljebb 10 HDD és SSD-k        |
 |    Kezdeti telepítési idővel               |    Alacsony <br>(15 perc)            |    Alacsony – mérsékelt <br> (< 30 perc)               |    Mérsékelt<br>(1 – 2 óra)               |    A bonyolult mérsékelt<br>(változó) |
 |    Odesílání dat do Azure               |    Igen                          |    Igen                                           |    Igen                                   |    Igen                                 |
 |    Adatok exportálása az Azure-ból           |    Nem                           |    Nem                                            |    Nem                                    |    Igen                                 |
 |    Titkosítás                       |    128 bites AES                  |    256 bites AES                                   |    256 bites AES                           |    128 bites AES                         |
 |    Hardver                         |     Microsoft által biztosított          |    Microsoft által biztosított                            |    Microsoft által biztosított                    |    A megadott ügyfél                   |
-|    Hálózati illesztő                |    USB 3.1/SATA                 |    RJ 45, SFP +                                   |    RJ45, QSFP +                           |    SATA II/SATA III.                    |
+|    Hálózati illesztő                |    USB 3.1/SATA                 |    RJ 45, SFP+                                   |    RJ45, QSFP+                           |    SATA II/SATA III.                    |
 |    Partnerintegráció              |    Néhány                         |    [Magas](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [Magas](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    Néhány                                |
 |    Szállítás                         |    A Microsoft által felügyelt            |    A Microsoft által felügyelt                             |    A Microsoft által felügyelt                     |    Felügyelt ügyfél                    |
 | Akkor használja, ha az adatok áthelyezése         |Egy kereskedelmi határán belül|Egy kereskedelmi határán belül|Egy kereskedelmi határán belül|Például az USA, Európa földrajzi határokon keresztül történő|
@@ -83,9 +83,9 @@ Online adatátvitel használja, ha a táblázat használható a következő szak
 
 ### <a name="high-network-bandwidth"></a>Nagy hálózati sávszélesség
 
-|                                     |    Eszközök AzCopy, <br>Az Azure PowerShell <br>Azure CLI             |    Az Azure Storage REST API-k, SDK-k                   |    Adatátjáró mezőben vagy a Data Box Edge (előzetes verzió)           |    Azure Data Factory                                            |
+|                                     |    Eszközök AzCopy, <br>Azure PowerShell, <br>Azure CLI             |    Az Azure Storage REST API-k, SDK-k                   |    Adatátjáró mezőben vagy a Data Box Edge (előzetes verzió)           |    Azure Data Factory                                            |
 |-------------------------------------|------------------------------------|----------------------------------------------|----------------------------------|-----------------------------------------------------------------------|
-|    Adattípus                  |    Azure-Blobok, az Azure Files, Azure-táblák    |    Azure-Blobok, az Azure Files, Azure-táblák    |    Azure-Blobok, az Azure Files                           |   70-nél több adatösszekötők támogatja az adattárak és formátumok    |
+|    Adattípus                  |    Azure-Blobok, az Azure Files, Azure-táblák    |    Azure-Blobok, az Azure Files, Azure-táblák    |    Azure Blobs, Azure Files                           |   70-nél több adatösszekötők támogatja az adattárak és formátumok    |
 |    Helyigény                |    Parancssori eszközök                        |    Programozható felületet                    |    A Microsoft több virtuális tartalmaz <br>vagy a fizikai eszköz     |    Az Azure Portalon                                            |
 |    Kezdeti egyszeri beállítás     |    Egyszerű               |    Mérsékelt                       |    Egyszerű (< 30 perc) közepes (1 – 2 óra)            |    Széles körű                                                          |
 |    Üzem előtti adatfeldolgozás              |    Nem                                        |    Nem                                        |    Igen (az Edge számítás)                               |    Igen                                                                |

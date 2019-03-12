@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: ''
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: fec5ef3ef190270d22e9a7d0306eb9477b39a8c8
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 4e11b1bc16f874f892288f9677a71023f483de7c
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53095234"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769966"
 ---
 # <a name="integrate-azure-vpn-gateway-radius-authentication-with-nps-server-for-multi-factor-authentication"></a>Azure VPN gateway RADIUS-hitelesítés integrálása az NPS-kiszolgálóval a multi-factor Authentication 
 
@@ -32,7 +32,7 @@ Többtényezős hitelesítés engedélyezése a felhasználók az Azure Active D
 
 ## <a name="detailed-steps"></a>Részletes lépések
 
-### <a name="step-1-create-a-virtual-network-gateway"></a>1. lépés: A virtuális hálózati átjáró létrehozása
+### <a name="step-1-create-a-virtual-network-gateway"></a>1. lépés: Virtuális hálózati átjáró létrehozása
 
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com).
 2. A virtuális hálózatban, amely a virtuális hálózati átjárót fogja futtatni, válassza ki a **alhálózatok**, majd válassza ki **átjáró-alhálózat** egy alhálózat létrehozásához. 
@@ -40,10 +40,10 @@ Többtényezős hitelesítés engedélyezése a felhasználók az Azure Active D
     ![Átjáró-alhálózat hozzáadása bemutató kép](./media/vpn-gateway-radiuis-mfa-nsp/gateway-subnet.png)
 3. Hozzon létre egy virtuális hálózati átjáró a következő beállítások megadásával:
 
-    - **Átjáró típusa**: válassza ki a **VPN** elemet.
-    - **VPN-típust**: válasszon **útvonalalapú**.
-    - **Termékváltozat**: Termékváltozatának típusa igényei alapján válassza ki.
-    - **Virtuális hálózat**: válassza ki a virtuális hálózatot, amelyben létrehozta az átjáró-alhálózat.
+    - **Átjáró típusa**: Válassza ki **VPN**.
+    - **VPN-típust**: Válassza ki **útvonalalapú**.
+    - **TERMÉKVÁLTOZAT**: Válassza ki a követelmények alapján Termékváltozatának típusa.
+    - **Virtuális hálózat**: Válassza ki a virtuális hálózatot, amelyben létrehozta az átjáró-alhálózat.
 
         ![Virtuális hálózati átjáró beállításainak bemutató kép](./media/vpn-gateway-radiuis-mfa-nsp/create-vpn-gateway.png)
 
@@ -54,8 +54,8 @@ Többtényezős hitelesítés engedélyezése a felhasználók az Azure Active D
 1. A hálózati házirend-kiszolgálón [az NPS-bővítményének telepítése az Azure MFA-kiszolgáló](../active-directory/authentication/howto-mfa-nps-extension.md#install-the-nps-extension).
 2. Nyissa meg a NSP-konzolon kattintson a jobb gombbal **RADUIS ügyfelek**, majd válassza ki **új**. Hozza létre a RADUIS ügyfél a következő beállítások megadásával:
 
-    - **Rövid név**: adjon neki tetszőleges nevet.
-    - **(IP- vagy DNS-) cím**: írja be az 1. lépésben létrehozott átjáró-alhálózatot.
+    - **Rövid név**: Adjon neki tetszőleges nevet.
+    - **(IP- vagy DNS-) cím**: Írja be az 1. lépésben létrehozott átjáró-alhálózatot.
     - **Közös titkos kulcsot**: írja be a bármely titkos kulcsot, és ne felejtse el későbbi használatra.
 
       ![A kép RADUIS ügyfélbeállítások konfigurálása](./media/vpn-gateway-radiuis-mfa-nsp/create-radius-client1.png)
@@ -73,9 +73,9 @@ Többtényezős hitelesítés engedélyezése a felhasználók az Azure Active D
 2. Nyissa meg a létrehozott virtuális hálózati átjárót. Győződjön meg arról, hogy az átjáró típusának értéke **VPN** és, hogy a VPN-típust **útvonalalapú**.
 3. Kattintson a **Helykonfiguráció mutasson** > **konfigurálás most**, és adja meg a következő beállításokat:
 
-    - **Címkészlet**: írja be az 1. lépésben létrehozott átjáró-alhálózatot.
-    - **Hitelesítési típus**: válasszon **RADIUS-hitelesítés**.
-    - **Kiszolgáló IP-cím**: írja be a hálózati házirend-kiszolgáló IP-címét.
+    - **Címkészlet**: Írja be az 1. lépésben létrehozott átjáró-alhálózatot.
+    - **Hitelesítési típus**: Válassza ki **RADIUS-hitelesítés**.
+    - **Kiszolgáló IP-cím**: Írja be a hálózati házirend-kiszolgáló IP-címét.
 
       ![Mutasson a hely beállításait bemutató kép](./media/vpn-gateway-radiuis-mfa-nsp/configure-p2s.png)
 

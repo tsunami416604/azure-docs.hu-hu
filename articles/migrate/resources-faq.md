@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: snehaa
-ms.openlocfilehash: 26992cfe1c6cb8555a7084075fed4d9c8daed031
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3744e51ffb4e0836eba4b1641413d8c0ee240f87
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444378"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729375"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Az Azure Migrate – gyakori kérdések (GYIK)
 
@@ -21,7 +21,7 @@ Ez a cikk az Azure Migrate – gyakori kérdések tartalmazza. Ha ez a cikk elol
 
 ### <a name="does-azure-migrate-support-assessment-of-only-vmware-workloads"></a>Az Azure Migrate támogatja csak a VMware számítási feladatainak értékelését?
 
-Igen, az Azure Migrate jelenleg csak támogatja a VMware számítási feladatainak értékelését. Hyper-V és fizikai kiszolgálók támogatása a jövőben engedélyezve lesz.
+Igen, az Azure Migrate jelenleg csak támogatja a VMware számítási feladatainak értékelését. Támogatja a Hyper-V előzetes verzióban érhető el, kérjük, jelentkezzen [Itt](http://aka.ms/migratefuture) az előzetes verzió eléréséhez. Fizikai kiszolgálók támogatása a jövőben engedélyezve lesz.
 
 ### <a name="does-azure-migrate-need-vcenter-server-to-discover-a-vmware-environment"></a>Nem kell az Azure Migrate a vCenter-kiszolgáló felderítése a VMware-környezet?
 
@@ -42,7 +42,7 @@ Az Azure Migrate egy migrálási eszközt, és az Azure Site Recovery Deployment
 
 **Áttelepítés a VMware-ből az Azure-bA**: Ha szeretne a helyszíni számítási feladatok migrálása az Azure-ba, az áttelepítés tervezéséhez használja az Azure Migrate. Az Azure Migrate a helyszíni számítási feladatokat értékeli, és útmutatást, insights, és segítséget nyújtanak az Azure-ba való migrálás mechanizmusokat biztosít. Miután elkészült a migrálási terv, szolgáltatások, például az Azure Site Recovery és az Azure Database Migration Service segítségével a gépek áttelepítése az Azure-bA.
 
-**Áttelepítés a Hyper-V-ről az Azure-bA**: Az Azure Migrate jelenleg csak támogatja a VMware virtuális gépek értékelése az Azure-ba való migrálásra. Hyper-V támogatása az Azure Migrate tervbe van véve. A belső, a Site Recovery Deployment Planner is használhatja. Hyper-V támogatása az Azure Migrate engedélyezése után is használhatja az Azure Migrate Hyper-V-alapú számítási feladatok migrálásának megtervezéséhez.
+**Áttelepítés a Hyper-V-ről az Azure-bA**: Az általánosan elérhető verziót az Azure Migrate jelenleg támogatja a VMware virtuális gépek értékelése az Azure-ba való migrálásra. Támogatja a Hyper-V jelenleg éles támogatása előzetes verzióban van. Ha érdekli az előzetes verzió kipróbálásához, regisztráljon [Itt](http://aka.ms/migratefuture).
 
 **Az Azure-ba történő VMware vagy Hyper-V vész-helyreállítási**: Ha azt tervezi, ehhez a vészhelyreállítás (DR) az Azure-ban az Azure Site Recovery (a Site Recovery), használja a Site Recovery Deployment Planner a vészhelyreállítás megtervezése. A Site Recovery Deployment Planner hajtja végre a helyszíni környezet mély, az ASR-specifikus értékelését. Javaslatok a sikeres Vészhelyreállítási műveletek, például a replikáció, feladatátvétel, a virtuális gépek Site Recovery által igényelt biztosít.  
 
@@ -120,7 +120,7 @@ A függőségek képi megjelenítéséről a virtuális gépeket, telepíti a v�
 
 ### <a name="what-is-the-volume-of-data-which-is-uploaded-by-azure-migrate-in-the-case-of-continuous-profiling"></a>Mit jelent, amely esetén a folyamatos profilkészítés az Azure Migrate által feltöltött adatok mennyiségét?
 
-Az Azure Migrate küldött adatmennyiség számos paraméter lenne függ. Adjon meg egy tájékoztató számot, olyan projekt, tíz gépek (amelyek mindegyike egy lemezt, és a egy hálózati adapter), körülbelül 50 MB / nap kellene küldenie. Ez a becsült érték, és a hálózati adapterek és a lemezek (küldött adatok lenne nem lineáris Ha a gépeken, hálózati adapterekhez vagy lemezek száma) adatpontok számát szeretné módosítani. 
+Az Azure Migrate küldött adatmennyiség számos paraméter lenne függ. Adjon meg egy tájékoztató számot, olyan projekt, tíz gépek (amelyek mindegyike egy lemezt, és a egy hálózati adapter), körülbelül 50 MB / nap kellene küldenie. Ez a becsült érték, és a hálózati adapterek és a lemezek (küldött adatok lenne nem lineáris Ha a gépeken, hálózati adapterekhez vagy lemezek száma) adatpontok számát szeretné módosítani.
 
 ### <a name="is-the-data-encrypted-at-rest-and-while-in-transit"></a>Titkosítja az adatokat inaktív állapotban, és az átvitel során?
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 03/05/2019
 ms.author: alkohli
-ms.openlocfilehash: 887c1d554cd5bd2b935178a77a2de19e687ca3f2
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 84eb458c68c7accf1b638b8e21907516328cb892
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450404"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57545090"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway-preview"></a>Oktatóanyag: Csatlakozás, állítsa be, aktiválja az Azure Data Box Gateway (előzetes verzió) 
 
@@ -43,7 +43,6 @@ Mielőtt konfigurálja, és állítsa be a Data Box-Gateway, ellenőrizze, hogy:
 * Virtuális eszközök kiosztása és csatlakoztatott URL-címe, leírt módon beszerzett a [kiépítése a Hyper-V Data Box Gateway](data-box-gateway-deploy-provision-hyperv.md) vagy [üzembe helyezése VMware-ben Data Box Gateway](data-box-gateway-deploy-provision-vmware.md).
 * A Data Box-Gateway szolgáltatás Ön által létrehozott Data Box-Gateway-eszközök kezeléséhez az aktiválási kulcs van. További információért ugorjon [üzembe helyezését az Azure Data Box Gateway](data-box-gateway-deploy-prep.md).
 
-<!--* If this is the second or subsequent virtual device that you are registering with an existing StorSimple Device Manager service, you should have the service data encryption key. This key was generated when the first device was successfully registered with this service. If you have lost this key, see [Get the service data encryption key](storsimple-ova-web-ui-admin.md#get-the-service-data-encryption-key) for your Data Box Gateway.-->
 
 ## <a name="connect-to-the-local-web-ui-setup"></a>Csatlakozás a helyi webes felhasználói felület beállítása 
 
@@ -53,15 +52,15 @@ Mielőtt konfigurálja, és állítsa be a Data Box-Gateway, ellenőrizze, hogy:
    
    Használja az előző oktatóanyagban feljegyzett kapcsolati URL-cím. Jelzi, hogy nincs-e a webhely biztonsági tanúsítványával kapcsolatos problémára hibaüzenet jelenik meg. Kattintson a **tovább a weblapra a**. (Ezeket a lépéseket eltérő lehet a használt böngésző alapján.)
    
-    ![](./media/data-box-gateway-deploy-connect-setup-activate/image2.png)
+    ![Hiba történt a kapcsolat közben](./media/data-box-gateway-deploy-connect-setup-activate/image2.png)
 
 2. Jelentkezzen be a webes felhasználói felületen, a virtuális eszköz. Az alapértelmezett jelszó az *jelszó1*. 
    
-    ![](./media/data-box-gateway-deploy-connect-setup-activate/image3.png)
+    ![Jelentkezzen be a helyi webes felhasználói felületen](./media/data-box-gateway-deploy-connect-setup-activate/image3.png)
 
 3. Módosítani szeretné az eszköz rendszergazdai jelszavát kéri. Írjon be egy új jelszót, 8 és 16 karakter hosszúságú. A jelszónak tartalmaznia kell a 3 az alábbi: nagybetűk, kisbetűk, számjegyeket és speciális karaktereket.
 
-    ![](./media/data-box-gateway-deploy-connect-setup-activate/image4.png)
+    ![Az eszköz rendszergazdai jelszavának módosítása](./media/data-box-gateway-deploy-connect-setup-activate/image4.png)
 
 Ekkor a számítógép a **irányítópult** eszköze.
 
@@ -69,15 +68,15 @@ Ekkor a számítógép a **irányítópult** eszköze.
  
 1. Az irányítópultról megnyithatja a különböző beállítások konfigurálásához és a Data Box Gateway szolgáltatással a virtuális eszköz regisztrálásához szükséges. A **hálózati beállítások**, **webalkalmazás-proxy beállításai**, és **időbeállítások** megadása nem kötelező. Csak a szükséges beállítások **eszköznév** és **Felhőbeállítások**.
    
-    ![](./media/data-box-gateway-deploy-connect-setup-activate/image5.png)
+    ![Local web UI "Dashboard" page](./media/data-box-gateway-deploy-connect-setup-activate/image5.png)
 
 2. Az a **eszköznév** lapon, az eszköz rövid nevét konfigurálja. A rövid név 1. és 15 karakter hosszú lehet, és betűvel, számokat és kötőjeleket tartalmazhat.
 
-    ![](./media/data-box-gateway-deploy-connect-setup-activate/image6.png)
+    ![Helyi webes felhasználói felület "Eszköz neve" lap](./media/data-box-gateway-deploy-connect-setup-activate/image6.png)
 
 3. (Opcionális) konfigurálása a **hálózati beállítások**. Láthatja, hogy legalább 1 hálózati adapter és egyéb, attól függően, hogy hány, konfigurálta a mögöttes virtuális gép. A **hálózati beállítások** oldala a virtuális eszköz az egyik hálózati adapter engedélyezve van az alább látható módon.
     
-    ![](./media/data-box-gateway-deploy-connect-setup-activate/image7.png)
+    ![Helyi webes felhasználói felület "Hálózati beállítások" lap](./media/data-box-gateway-deploy-connect-setup-activate/image7.png)
    
     Hálózati beállítások konfigurálásakor vegye figyelembe a következőket:
 
@@ -90,7 +89,7 @@ Ekkor a számítógép a **irányítópult** eszköze.
 
 4. (Nem kötelező) konfigurálja a webproxy-kiszolgálót. Bár a webproxy konfigurálása nem kötelező, vegye figyelembe, hogy ha olyan webproxyt használ, csak konfigurálhatja azt itt.
    
-   ![](./media/data-box-gateway-deploy-connect-setup-activate/image8.png)
+   ![Helyi webes felhasználói felület "Webproxy beállításai" lap](./media/data-box-gateway-deploy-connect-setup-activate/image8.png)
    
    Az a **webalkalmazás-proxy** oldalon:
    
@@ -101,7 +100,7 @@ Ekkor a számítógép a **irányítópult** eszköze.
 
 5. (Opcionális) beállításokat az idő az eszköz, például az időzónát és az elsődleges és másodlagos NTP-kiszolgálót. Az NTP-kiszolgálókra szükség, mert az eszköz szinkronizálnia kell az időt, hogy a felhőszolgáltatókkal hitelesítést.
     
-    ![](./media/data-box-gateway-deploy-connect-setup-activate/image9.png)
+    ![Helyi webes felhasználói felület "Idő beállításai" lap](./media/data-box-gateway-deploy-connect-setup-activate/image9.png)
     
     Az a **időbeállítások** oldalon:
     
@@ -116,10 +115,17 @@ Ekkor a számítógép a **irányítópult** eszköze.
 
     2. Kattintson a **aktiválása**. 
        
-         ![](./media/data-box-gateway-deploy-connect-setup-activate/image10.png)
+         ![Local web UI "Cloud settings" page](./media/data-box-gateway-deploy-connect-setup-activate/image10a.png)
     
-    3. Előfordulhat, hogy Várjon egy percet, mielőtt az eszköz sikeresen aktiválva van szüksége. Az aktiválás után annak jelzésére, hogy az eszköz aktiválása sikeresen frissül az oldal.
+    3. Először az eszköz aktív lesz. Az eszköz ezután a fontos frissítéseket keres a, és ha elérhető, a rendszer automatikusan alkalmazza a frissítéseket. Megjelenik egy értesítés erre a célra. 
 
+        A párbeszédpanelen is, hogy másolja és mentse azt biztonságos helyre a helyreállítási kulccsal rendelkezik. Ezt a kulcsot használja az adatok helyreállításához, abban az esetben, ha az eszköz nem indul el.
+
+        ![Local web UI "Cloud settings" page](./media/data-box-gateway-deploy-connect-setup-activate/image12.png)    
+
+    4. Előfordulhat, hogy a frissítés sikeres végrehajtása után néhány percet várnia kell. Jelzi, hogy az eszköz aktiválása sikeresen frissül az oldal.
+
+        ![Local web UI "Cloud settings" page updated](./media/data-box-gateway-deploy-connect-setup-activate/image13.png)
 
 ## <a name="next-steps"></a>További lépések
 

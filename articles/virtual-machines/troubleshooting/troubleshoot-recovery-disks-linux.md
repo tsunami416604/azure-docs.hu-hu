@@ -3,7 +3,7 @@ title: Használja a hibaelhárító virtuális Géphez az Azure CLI-vel Linux |}
 description: Ismerje meg az operációsrendszer-lemez egy helyreállítási virtuális Géphez az Azure CLI-vel való csatlakoztatásával a Linux rendszerű virtuális gép hibáinak elhárítása
 services: virtual-machines-linux
 documentationCenter: ''
-authors: genlin
+author: genlin
 manager: jeconnoc
 editor: ''
 ms.service: virtual-machines-linux
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: genli
-ms.openlocfilehash: 76a29ce05aab39d9460dcf068ec8a7f60d1e8fac
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: dfb85b0f9f1dda611c613cb296177cf28391adc0
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753282"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776886"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>Az operációsrendszer-lemez egy helyreállítási virtuális Géphez az Azure CLI-vel való csatlakoztatásával Linuxos virtuális gépek hibaelhárítása
 Ha a Linux rendszerű virtuális gép (VM) indítási vagy hiba fordul, szükség lehet a hibaelhárítási lépések végrehajtásához a virtuális merevlemezen magát. Ilyenek például a bejegyzés érvénytelen lenne `/etc/fstab` , amely megakadályozza, hogy a virtuális gép képes arra, hogy sikeresen. Ez a cikk részletesen bemutatja a virtuális merevlemez egy másik Linux rendszerű virtuális géphez, javítsa ki a hibákat, majd hozza létre újból az eredeti virtuális gép csatlakoztatása az Azure CLI használatával. 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: a0d5f42fa6725ba23a89904779040f379f31e59e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 6ffed81390419898847ce1b1b9e6b2b48a749cdf
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57454153"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548472"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Nagyméretű adatkészletek folyamatot a Data Factory és a Batch használatával
 > [!NOTE]
@@ -96,7 +96,7 @@ Ha nem rendelkezik Azure-előfizetéssel, gyorsan létrehozhat egy ingyenes pró
 Storage-fiók segítségével adatokat tárolni ebben az oktatóanyagban. Ha egy storage-fiók nem rendelkezik, tekintse meg [hozzon létre egy tárfiókot](../../storage/common/storage-quickstart-create-account.md). A mintául szolgáló megoldás használja a blob storage-bA.
 
 #### <a name="azure-batch-account"></a>Az Azure Batch-fiók
-A Batch-fiók létrehozása a [az Azure portal](http://portal.azure.com/). További információkért lásd: [létrehozása és kezelése a Batch-fiók](../../batch/batch-account-create-portal.md). Vegye figyelembe a Batch-fiók tárfióknév és fiókkulcs. Használhatja még a [New-AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccount) parancsmaggal hozzon létre egy Batch-fiókot. Ez a parancsmag használatával, lásd: [Batch PowerShell-parancsmagok használatának első lépései](../../batch/batch-powershell-cmdlets-get-started.md).
+A Batch-fiók létrehozása a [az Azure portal](https://portal.azure.com/). További információkért lásd: [létrehozása és kezelése a Batch-fiók](../../batch/batch-account-create-portal.md). Vegye figyelembe a Batch-fiók tárfióknév és fiókkulcs. Használhatja még a [New-AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccount) parancsmaggal hozzon létre egy Batch-fiókot. Ez a parancsmag használatával, lásd: [Batch PowerShell-parancsmagok használatának első lépései](../../batch/batch-powershell-cmdlets-get-started.md).
 
 A minta megoldás dolgozza fel az adatokat egy készlet számítási csomópontok (virtuális gépek felügyelt gyűjteményében) párhuzamos módon Batch (közvetetten egy data factory-folyamatot) keresztül használja.
 
@@ -980,4 +980,4 @@ Miután az adatok feldolgozására, online eszközökkel, mint a Power BI haszn�
   * [Ismerkedés a Batch ügyfél .NET-hez készült](../../batch/quick-run-dotnet.md)
 
 [batch-explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
-[batch-explorer-walkthrough]: http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx
+[batch-explorer-walkthrough]: https://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx

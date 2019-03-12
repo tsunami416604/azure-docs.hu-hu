@@ -1,5 +1,5 @@
 ---
-title: 'Végfelhasználói hitelesítés: Azure Active Directory használatával az Azure Data Lake Storage Gen1 Java |} A Microsoft Docs'
+title: 'Végfelhasználói hitelesítés: Java az Azure Data Lake Storage Gen1 és az Azure Active Directory |} A Microsoft Docs'
 description: Ismerje meg, hogyan érhet el a végfelhasználói hitelesítés az Azure Data Lake Storage Gen1 a Java használatával Azure Active Directory használatával
 services: data-lake-store
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 47b975b3ea0cfa9d2fb2536236b0a8dfaef14503
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: d2c0cc277b2115f50455a1caa825306cc173d94c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126938"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538986"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-java"></a>Végfelhasználói hitelesítés az Azure Data Lake Storage Gen1 a Java használatával
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ Ebben a cikkben megismerkedhet a Java SDK használata az Azure Data Lake Storage
 * (Nem kötelező) [IntelliJ IDEA](https://www.jetbrains.com/idea/download/), [Eclipse](https://www.eclipse.org/downloads/) vagy hasonló integrált fejlesztőkörnyezet.
 
 ## <a name="end-user-authentication"></a>Végfelhasználói hitelesítés
-1. Hozzon létre egy Maven-projektet az [mvn archetype](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) használatával parancssorból vagy egy IDE használatával. A Java-projektek IntelliJ használatával való létrehozási útmutatójáért [kattintson ide](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html). A projektek Eclipse használatával való létrehozási útmutatójáért [kattintson ide](http://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm).
+1. Hozzon létre egy Maven-projektet az [mvn archetype](https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html) használatával parancssorból vagy egy IDE használatával. A Java-projektek IntelliJ használatával való létrehozási útmutatójáért [kattintson ide](https://www.jetbrains.com/help/idea/2016.1/creating-and-running-your-first-java-application.html). A projektek Eclipse használatával való létrehozási útmutatójáért [kattintson ide](https://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.jdt.doc.user%2FgettingStarted%2Fqs-3.htm).
 
 2. Illessze be a következő függőségeket a Maven **pom.xml** nevű fájljába. Illessze be a következő szövegrészletet a **\</project>** címke elé:
    
@@ -56,7 +56,7 @@ Ebben a cikkben megismerkedhet a Java SDK használata az Azure Data Lake Storage
           </dependency>
         </dependencies>
    
-    Az első függőség az, hogy a Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`) a maven tárházból. A második függőség az alkalmazással használandó naplózási keretrendszer (`slf4j-nop`) meghatározása. Használja a Data Lake Storage Gen1 SDK [slf4j](http://www.slf4j.org/) naplózási előtérrendszer, amellyel számos elterjedt naplózási keretrendszer például log4j, Java-naplózás, logback, stb., választhat, vagy nincs naplózás. Ebben a példában kikapcsoljuk a naplózást, mivel az **slf4j-nop** kötést eszközt használjuk. Az alkalmazásban való egyéb naplózási lehetőségek használatáról [itt talál információt](http://www.slf4j.org/manual.html#projectDep).
+    Az első függőség az, hogy a Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`) a maven tárházból. A második függőség az alkalmazással használandó naplózási keretrendszer (`slf4j-nop`) meghatározása. Használja a Data Lake Storage Gen1 SDK [slf4j](https://www.slf4j.org/) naplózási előtérrendszer, amellyel számos elterjedt naplózási keretrendszer például log4j, Java-naplózás, logback, stb., választhat, vagy nincs naplózás. Ebben a példában kikapcsoljuk a naplózást, mivel az **slf4j-nop** kötést eszközt használjuk. Az alkalmazásban való egyéb naplózási lehetőségek használatáról [itt talál információt](https://www.slf4j.org/manual.html#projectDep).
 
 3. Adja hozzá az alábbi importálási utasításokat az alkalmazáshoz.
 

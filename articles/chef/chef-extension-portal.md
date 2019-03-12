@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: d7728dd5c025a88f8912dca708abc45ab519ce2c
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 02a2e9a6d513db5ac82b7bde5c8d3f0ca187ad15
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327544"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533952"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>A Chef-ügyfél telepítése az Azure Portalról
 A Chef ügyféloldali bővítmény közvetlenül be egy Linux vagy Windows gépen is hozzáadhat az Azure Portalról. Ez a cikk végigvezeti a folyamatot egy új Linux rendszerű virtuális gép használatával.
@@ -30,7 +30,7 @@ A Chef ügyféloldali bővítmény közvetlenül be egy Linux vagy Windows gépe
 ## <a name="install-the-chef-extension-on-a-new-linux-virtual-machine"></a>Új Linux rendszerű virtuális gépen a Chef bővítmény telepítése
 Ebben a szakaszban először hozhat létre Linux rendszerű gépen fogja használni az Azure Portalon. A folyamat során is látni fogja az új virtuális gép a Chef-bővítmény telepítése.
 
-1. Keresse fel az [Azure Portalt](http://portal.azure.com).
+1. Keresse fel az [Azure Portalt](https://portal.azure.com).
 
 1. A bal oldali menüben válassza a **virtuális gépek** lehetőséget. Ha a **virtuális gépek** beállítás nincs jelen, jelölje be **minden szolgáltatás** majd **virtuális gépek**.
 

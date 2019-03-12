@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 09/24/2018
 ms.author: deborahc
-ms.openlocfilehash: 221397030377b80c1c63baa3429610a218c5cd75
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: b5f79fccf040c893d02ed82a397f361ae9bf3fd2
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699673"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537541"
 ---
 # <a name="azure-cosmos-db-nodejs-examples"></a>Azure Cosmos DB Node.js-példák
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ A [JavaScript SDK](sql-api-sdk-node.md)-ra is szüksége lesz.
    > 
 
 ## <a name="database-examples"></a>Adatbázispéldák
-A [DatabaseManagement](https://github.com/Azure/azure-cosmos-js/tree/master/samples/DatabaseManagement) projekt [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/DatabaseManagement/app.js) fájlja a következő feladatok végrehajtását mutatja be.
+A [DatabaseManagement](https://github.com/Azure/azure-cosmos-js/tree/master/samples/DatabaseManagement) projekt [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/DatabaseManagement/app.js) fájlja a következő feladatok végrehajtását mutatja be. További információ az Azure Cosmos-adatbázisok a következő minták futtatása előtt,: [-adatbázisok, tárolók és elemek használata](databases-containers-items.md) fogalmi cikk. 
 
 | Tevékenység | API-referencia |
 | --- | --- |
@@ -56,7 +56,7 @@ A [DatabaseManagement](https://github.com/Azure/azure-cosmos-js/tree/master/samp
 | [Adatbázis törlése](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/DatabaseManagement/app.js#L57-L60) |[Database.delete](https://docs.microsoft.com/javascript/api/%40azure/cosmos/database?view=azure-node-latest) |
 
 ## <a name="container-examples"></a>Példák tárolókra
-A [ContainerManagement](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ItemManagement) projekt [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ContainerManagement/app.js) fájlja bemutatja, hogyan végezheti el az alábbi feladatokat.
+A [ContainerManagement](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ItemManagement) projekt [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ContainerManagement/app.js) fájlja bemutatja, hogyan végezheti el az alábbi feladatokat. További információ az Azure Cosmos-gyűjtemények a következő minták futtatása előtt,: [-adatbázisok, tárolók és elemek használata](databases-containers-items.md) fogalmi cikk. 
 
 | Tevékenység | API-referencia |
 | --- | --- |
@@ -66,7 +66,7 @@ A [ContainerManagement](https://github.com/Azure/azure-cosmos-js/tree/master/sam
 | [Tároló törlése](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/ContainerManagement/app.js#L54-L55) |[Container.delete](https://docs.microsoft.com/javascript/api/%40azure/cosmos/container?view=azure-node-latest) |
 
 ## <a name="item-examples"></a>Példák elemekre
-Az [ItemManagement](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ItemManagement) projekt [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ItemManagement/app.js) fájlja bemutatja, hogyan végezheti el az alábbi feladatokat.
+Az [ItemManagement](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ItemManagement) projekt [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ItemManagement/app.js) fájlja bemutatja, hogyan végezheti el az alábbi feladatokat. További információ az Azure Cosmos-dokumentumok, a következő minták futtatása előtt,: [-adatbázisok, tárolók és elemek használata](databases-containers-items.md) fogalmi cikk. 
 
 | Tevékenység | API-referencia |
 | --- | --- |
@@ -80,7 +80,7 @@ Az [ItemManagement](https://github.com/Azure/azure-cosmos-js/tree/master/samples
 | [Elem törlése](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/ItemManagement/app.js#L162-L164) |[Item.delete](https://docs.microsoft.com/javascript/api/%40azure/cosmos/item?view=azure-node-latest) |
 
 ## <a name="indexing-examples"></a>Indexelési példák
-Az [IndexManagement](https://github.com/Azure/azure-cosmos-js/tree/master/samples/IndexManagement) projekt [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/IndexManagement/app.js) fájlja a következő feladatok végrehajtását mutatja be.
+Az [IndexManagement](https://github.com/Azure/azure-cosmos-js/tree/master/samples/IndexManagement) projekt [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/IndexManagement/app.js) fájlja a következő feladatok végrehajtását mutatja be.  A következő minták futtatása előtt az Azure Cosmos DB indexelése kapcsolatos további információkért lásd: [indexelési szabályzataihoz](index-policy.md), [adattípusok indexelése](index-types.md), és [elérési utak indexelő](index-paths.md) elméleti cikkeket. 
 
 | Tevékenység | API-referencia |
 | --- | --- |
@@ -92,11 +92,8 @@ Az [IndexManagement](https://github.com/Azure/azure-cosmos-js/tree/master/sample
 | [Tartományindex létrehozása karakterlánc-útvonalon](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/IndexManagement/app.js#L281-L346) |[IndexKind.Range](https://docs.microsoft.com/javascript/api/%40azure/cosmos/indexkind?view=azure-node-latest), [IndexingPolicy](https://docs.microsoft.com/javascript/api/%40azure/cosmos/indexingpolicy?view=azure-node-latest), [Items.query](https://docs.microsoft.com/javascript/api/%40azure/cosmos/items?view=azure-node-latest) |
 | [Tároló létrehozása alapértelmezett indexPolicyvel, majd ennek online frissítése](https://github.com/Azure/azure-cosmos-js/blob/216672a679ab389e5b341280eeacab1cab3691e4/samples/IndexManagement/app.js#L435-L507) |[Containers.create](https://docs.microsoft.com/javascript/api/%40azure/cosmos/containers?view=azure-node-latest)
 
-
-További információ az indexelésről: [Azure Cosmos DB indexelési szabályzat](index-policy.md).
-
 ## <a name="server-side-programming-examples"></a>Kiszolgálóoldali programozási példák
-A [ServerSideScripts](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ServerSideScripts) projekt [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ServerSideScripts/app.js) fájlja a következő feladatok végrehajtását mutatja be.
+A [ServerSideScripts](https://github.com/Azure/azure-cosmos-js/tree/master/samples/ServerSideScripts) projekt [app.js](https://github.com/Azure/azure-cosmos-js/blob/master/samples/ServerSideScripts/app.js) fájlja a következő feladatok végrehajtását mutatja be. A következő minták futtatása előtt az Azure Cosmos DB kiszolgálóoldali programozása kapcsolatos további információkért lásd: [tárolt eljárások, eseményindítók és felhasználó által definiált függvények](stored-procedures-triggers-udfs.md) fogalmi cikk. 
 
 | Tevékenység | API-referencia |
 | --- | --- |

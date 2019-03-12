@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e20599833d3073e4819dbc974d4b2afe962ba18a
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 540acd1735eb539ecaac468e74511ba5f751278f
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984307"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780014"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Biztonsági mentési v2 automatikus az Azure virtuális gépeken (Resource Manager)
 
@@ -52,7 +52,7 @@ Automatikus biztonsági mentés v2 használja, tekintse át a következő előfe
 
 - Céladatbázis a teljes helyreállítási modellt kell használnia. További információ arról, hogyan befolyásolják a teljes helyreállítási modell biztonsági mentések: [biztonsági mentés alatt a teljes helyreállítási modell](https://technet.microsoft.com/library/ms190217.aspx).
 - Rendszeradatbázisokban nem rendelkezik teljes helyreállítási modell használatára. Naplóalapú biztonsági mentések esetében a modell vagy MSDB van szükség, ha a teljes helyreállítási modellt kell használnia.
-- Céladatbázis alapértelmezett SQL Server-példányon kell lennie. Az SQL Server IaaS-bővítmény nem támogatja a megnevezett példány.
+- Céladatbázis kell lennie, vagy az alapértelmezett SQL Server-példányon, vagy egy [megfelelően telepített](virtual-machines-windows-sql-server-iaas-faq.md#administration) megnevezett példány. 
 
 > [!NOTE]
 > Automatikus biztonsági mentés támaszkodik a **SQL Server IaaS-ügynök bővítmény**. Aktuális SQL virtuálisgép-katalógus rendszerképek alapértelmezés szerint ez a bővítmény hozzáadása. További információkért lásd: [SQL Server IaaS-ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md).
@@ -107,7 +107,7 @@ Van egy SQL Server virtuális Gépet, amely tartalmaz egy nagy méretű adatbáz
 
 Hétfő a következő beállításokkal engedélyezi az automatikus biztonsági mentés v2:
 
-- Biztonsági mentés ütemezése: Manuális
+- Biztonsági mentés ütemezése: Kézi
 - Teljes biztonsági mentés gyakorisága: Napi
 - Teljes biztonsági mentés kezdő időpontja: 22:00
 - Teljes biztonsági mentés időkerete: 6 óra

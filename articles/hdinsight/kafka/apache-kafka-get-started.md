@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.custom: mvc,hdinsightactive
 ms.topic: quickstart
 ms.date: 10/12/2018
-ms.openlocfilehash: 76f09af66e362fb6b03346b43a6be1a3ec7cf681
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 9be3bdd33546a2814af394aedfaa254feb997dcf
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976766"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576752"
 ---
 # <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>Gyors útmutató: Hozzon létre egy Apache Kafka HDInsight-fürtön
 
@@ -180,6 +180,9 @@ Ebben a szakaszban a gazdagép adatait az Apache Ambari REST API a fürtön kap.
     ```
 
 2. A környezeti változók fürtnévként történő beállítását az alábbi paranccsal végezheti el:
+
+    > [!Important]
+    > Adja meg a fürt neve csak kisbetűkkel ezzel a paranccsal a akkor is, ha a nagybetűk használata a nevét a kiosztott. Nagybetűk nevek nem használhatók, Zookeeper vagy broker információt.
 
     ```bash
     read -p "Enter the Kafka on HDInsight cluster name: " CLUSTERNAME

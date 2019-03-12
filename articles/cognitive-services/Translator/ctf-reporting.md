@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: 69fbcad92d31744cae798b7ff376e77f655f6440
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e1af2ef3be2b6cf4b75357107caf9d74c7199e8d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55877559"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539782"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>A Collaborative Translation Framework (CTF) jelentéskészítés használata
 
@@ -32,7 +32,7 @@ Az együttműködési Translation Framework (CTF) Reporting API CTF áruházbeli
 * Az automatikus fordítás (gépi fordítás) nem ad vissza.
 
 ## <a name="endpoint"></a>Végpont
-A CTF Reporting API-végpont http://api.microsofttranslator.com/v2/beta/ctfreporting.svc
+A CTF Reporting API-végpont https://api.microsofttranslator.com/v2/beta/ctfreporting.svc
 
 
 ## <a name="methods"></a>Metódusok
@@ -99,9 +99,9 @@ Az eredményhalmaz tömbjét tartalmazza a **UserTranslationCount**. Minden egye
 | Mező | Leírás |
 |:---|:---|
 | Darabszám| Beolvasott eredmények száma|
-| Forrás | A Forrásnyelv|
+| Ettől: | A Forrásnyelv|
 | Minősítés| A minősítés az alkalmazott a küldőtől AddTranslation() metódushívás|
-| Cél| A Célnyelv|
+| Művelet| A Célnyelv|
 | URI| Az URI-t a AddTranslation() metódus meghívása a alkalmazni|
 | Felhasználó| A felhasználó neve|
 
@@ -170,10 +170,10 @@ Az eredményhalmaz tömbjét tartalmazza a **UserTranslation**. Minden egyes Use
 | Mező | Leírás |
 |:---|:---|
 | CreatedDateUtc| A létrehozást, a bejegyzés AddTranslation() használatával|
-| Forrás| A Forrásnyelv|
+| Ettől:| A Forrásnyelv|
 | OriginalText| A Forrásnyelv szöveget a kérelem elküldésekor használt|
 |Minősítés |A minősítés az alkalmazott a küldőtől AddTranslation() metódushívás|
-|Cél|    A Célnyelv|
+|Művelet|    A Célnyelv|
 |TranslatedText|    A fordítás küldött AddTranslation() metódushívás|
 |URI|   Az URI-t a AddTranslation() metódus meghívása a alkalmazni|
 |Felhasználó   |A felhasználó neve|

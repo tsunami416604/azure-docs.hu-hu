@@ -5,21 +5,23 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: overview
-ms.date: 09/26/2018
+ms.date: 03/05/2019
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: db6a02db3a154193a9326e2957038e5daa2faae7
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 46d667bc32c5c5f3ccb14cf4a43a3441efe94c31
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992356"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57552214"
 ---
 # <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
 
 Az Azure Kubernetes Service (AKS) használatával egyszerűen helyezhetők üzembe a felügyelt Kubernetes-fürtök az Azure-ban. Az AKS egyszerűsíti a Kubernetes kezelését és csökkenti annak működési munkaterhelését azáltal, hogy a felelősség nagy részét az Azure-ra helyezi át. Üzemeltetett Kubernetes-szolgáltatásként az Azure olyan fontos műveleteket bonyolít le, mint az állapotmonitorozás és a karbantartás. A Kubernetes fő csomópontokat az Azure felügyeli. Ön csak az ügynökcsomópontokat felügyeli és tartja karban. Felügyelt Kubernetes-szolgáltatásként az AKS ingyenes, és csak a fürtjei ügynökcsomópontjaiért kell fizetnie, a fő csomópontokért nem.
 
 Létrehozhat AKS-fürtöket a Microsoft Azure Portalon az Azure CLI-vel, vagy sablonalapú üzembehelyezési lehetőségekkel, például Resource Manager-sablonokkal és Terraformmal. Egy AKS-fürt üzembe helyezésekor a rendszer elvégzi Ön helyett a Kubernetes fő és összes más csomópontjának üzembe helyezését és konfigurálását. Az olyan további funkciók, mint a speciális hálózatkezelés, az Azure Active Directory-integráció és a monitorozás szintén konfigurálhatók az üzembehelyezési folyamat során.
+
+További információ a Kubernetes alapjai: [Kubernetes alapvető fogalmait az aks-ben][concepts-clusters-workloads].
 
 Az első lépésekhez végezze el az AKS rövid útmutatójában leírtakat a [Microsoft Azure Portalon][aks-portal] vagy az [Azure CLI használatával][aks-cli].
 
@@ -30,6 +32,8 @@ A továbbfejlesztett biztonság és felügyelet érdekében az AKS lehetővé te
 ### <a name="identity-and-security-management"></a>Identitás és biztonsági felügyelet
 
 Az AKS támogatja a [szerepköralapú hozzáférés-vezérlést (RBAC)][kubernetes-rbac], amellyel korlátozhatja a fürt erőforrásaihoz való hozzáférést. Az RBAC lehetővé teszi a Kubernetes-erőforrások és -névterek hozzáférésének és az ezen erőforrásokhoz tartozó engedélyek felügyeletét. Az AKS-fürtöket az Azure Active Directoryval való integrációhoz is konfigurálhatja. Az Azure AD-integrációval a Kubernetes-hozzáférést a meglévő identitás és csoporttagság alapján lehet konfigurálni. Meglévő Azure AD-felhasználói és -csoportjai kaphatnak hozzáférést az AKS-erőforrásokhoz, amelyeket egy integrált bejelentkezési felületen keresztül érhetnek el.
+
+Az identitás további információkért lásd: [hozzáférési és azonosító beállításai az aks-ben][concepts-identity].
 
 Az AKS-fürtök biztonságossá tételéhez tekintse meg [Az Azure Active Directory és az AKS integrációja][aks-aad] című cikket.
 
@@ -65,13 +69,17 @@ További információ: [GPU-k használata az AKS-en][aks-gpu].
 
 Az alkalmazás számítási feladatának támogatásához csatlakoztathat tárköteteket az állandó adatok tárolásához. Statikus és dinamikus kötetek egyaránt használhatók. Annak függvényében, hogy hány csatlakoztatott podnak kell a tárterületen osztoznia, használhat Azure Disks-alapú tárterületet egyszeres podhozzáférés esetén, vagy Azure Files-alapú tárterületet több egyidejű podhozzáférés esetén.
 
-Ismerkedés a dinamikus tartós kötetek használatával az [Azure Disks][azure-disk] vagy az [Azure Files][azure-files] segítségével.
+További információkért lásd: [tárolási lehetőségek az aks-ben alkalmazásokhoz][concepts-storage].
+
+Ismerkedés a dinamikus állandó mennyiségű [Azure Disks] [ azure-disk] vagy [Azure Files][azure-files].
 
 ## <a name="virtual-networks-and-ingress"></a>Virtuális hálózatok és bejövő forgalom
 
 Az AKS-fürtök egy már meglévő virtuális hálózaton is üzembe helyezhetők. Ebben a konfigurációban a rendszer a fürtben található összes podhoz hozzárendel egy IP-címet a virtuális hálózatban, így azok közvetlenül kommunikálhatnak a fürtben található más podokkal és a virtuális hálózat egyéb csomópontjaival. A podok a virtuális társhálózaton belül más szolgáltatásokhoz is csatlakozhatnak, illetve az ExpressRoute és a helyek közötti (S2S) VPN-kapcsolat segítségével helyszíni hálózatokhoz is.
 
-További információ: [Az AKS hálózatkezelésének áttekintése][aks-networking].
+További információkért lásd: a [fogalmak az aks-ben az alkalmazások hálózati][aks-networking].
+
+A bejövő forgalom megismeréséhez tekintse meg a [HTTP-alkalmazásútválasztás][aks-http-routing] című cikket.
 
 ### <a name="ingress-with-http-application-routing"></a>Bejövő forgalom HTTP-alkalmazásútválasztással
 
@@ -112,10 +120,7 @@ Az Azure CLI gyors útmutatójának segítségével többet tudhat meg az AKS ü
 
 <!-- LINKS - external -->
 [aks-engine]: https://github.com/Azure/aks-engine
-[draft]: https://github.com/Azure/draft
-[helm]: https://helm.sh/
 [kubectl-overview]: https://kubernetes.io/docs/user-guide/kubectl-overview/
-[kubernetes-rbac]: https://kubernetes.io/docs/reference/access-authn-authz/rbac/
 
 <!-- LINKS - internal -->
 [acr-docs]: ../container-registry/container-registry-intro.md
@@ -134,3 +139,7 @@ Az Azure CLI gyors útmutatójának segítségével többet tudhat meg az AKS ü
 [container-health]: ../monitoring/monitoring-container-health.md
 [aks-master-logs]: view-master-logs.md
 [aks-supported versions]: supported-kubernetes-versions.md
+[concepts-clusters-workloads]: concepts-clusters-workloads.md
+[kubernetes-rbac]: concepts-identity.md#role-based-access-controls-rbac
+[concepts-identity]: concepts-identity.md
+[concepts-storage]: concepts-storage.md

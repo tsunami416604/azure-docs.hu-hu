@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 5e53c427564e37e04045d59d35c0d5d5ff285d05
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: a1dba3b497807841f9b86d685f5bb560ebdd9316
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57403947"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532425"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Létrehozása és kiépítése az IoT Edge-eszköz, a Linux rendszerű virtuális gép virtuális TPM-mel
 
@@ -95,7 +95,7 @@ A virtuális gép létrehozása a C SDK eszköz, amellyel az eszköz beolvasása
 3. Jelentkezzen be a virtuális Géphez, majd kövesse a [Linux fejlesztési környezet beállítása](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md#linux) telepítéséhez, és hozhat létre az Azure IoT eszközoldali SDK-t c-hez 
 
    >[!TIP]
-   >Képviselőinkkel ebben a cikkben fogja másolja és illessze be a virtuális gépről, která není révén a Hyper-V Manager kapcsolat alkalmazás. Előfordulhat, hogy szeretné csatlakoztatni a virtuális géphez a Hyper-V Manager egyszer IP-címének lekéréséhez: `ifconfig`. Ezt követően használhatja az IP-cím ssh-n keresztül csatlakozni: `ssh <username>@<ipaddress>`.
+   >Ebben a cikkben képviselőinkkel kell másolnia és illessze be a virtuális gépről, která není révén a Hyper-V Manager kapcsolat alkalmazás. Előfordulhat, hogy szeretné csatlakoztatni a virtuális géphez a Hyper-V Manager egyszer IP-címének lekéréséhez: `ifconfig`. Ezt követően használhatja az IP-cím ssh-n keresztül csatlakozni: `ssh <username>@<ipaddress>`.
 
 4. Futtassa az alábbi parancsokat hozhat létre egy C SDK-eszköz, amely az eszköz kiépítési adatait kérdezi le. 
 

@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/18/2019
-ms.openlocfilehash: ce5635c97d91514f3fca63162f5356cdf89a7ca6
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/11/2019
+ms.openlocfilehash: 27a65a871264fa13a42acfb5be2d4b5f99d31adc
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307479"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57758692"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Azure SQL-adatbázis exportálása BACPAC-fájlba
 
@@ -28,6 +28,7 @@ Archiválás vagy áthelyezése egy másik platformon-adatbázisok exportálás�
 - Az exportálási tranzakciós szempontból konzisztens, gondoskodnia kell arról, hogy nincs írási tevékenység történik az exportálás során, vagy az exportálni kívánt egy [tranzakciós szempontból konzisztens másolatot](sql-database-copy.md) az Azure SQL-adatbázis.
 - Ha exportálja a blob storage, a BACPAC-fájl maximális mérete 200 GB-os. Archiválása BACPAC-fájl, exportálja a helyi tárterület.
 - Ebben a cikkben ismertetett módszerek használatával az Azure premium storage egy BACPAC-fájlba exportálása nem támogatott.
+- Tűzfal mögötti Storage jelenleg nem támogatott.
 - Ha az Azure SQL Database-ből az exportálási művelet meghaladja a 20 óra, előfordulhat, hogy lehet megszakítani. Az exportálás során a teljesítmény növelése érdekében a következőket teheti:
 
   - Ideiglenesen növelheti a számítási méret.

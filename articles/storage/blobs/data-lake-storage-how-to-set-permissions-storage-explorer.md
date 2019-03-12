@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/11/2018
 ms.author: rogarana
-ms.openlocfilehash: b64b433920a5ce769122c7956c18997c28a3d11a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d1e941e41871de4a11641254f40c53285b096807
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867052"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546305"
 ---
 # <a name="set-file-and-directory-level-permissions-using-azure-storage-explorer-with-azure-data-lake-storage-gen2"></a>Azure Storage Explorer használata az Azure Data Lake Storage Gen2 fájl- és oszlopszintű engedélyek beállítása
 
@@ -33,7 +33,7 @@ Annak érdekében, hogy a legjobb tüntetik fel a folyamatot, kérjük, hajtsa v
 
 ## <a name="managing-access"></a>Hozzáférés-kezelés
 
-Beállíthatja, hogy a engedélyeit a fájlrendszer gyökérmappájában. Ehhez kattintson a jobb gombbal a fájlrendszer, és válassza ki **engedélyek kezelése**állapotba helyezése fel, a **kezelése engedély** párbeszédpanel bezárásához.
+Beállíthatja, hogy a engedélyeit a fájlrendszer gyökérmappájában. Ehhez az Azure Storage Explorer jogosultságokkal (azaz nem egy olyan kapcsolati karakterlánccal) ehhez az egyéni fiókjával kell bejelentkeznie. Kattintson a jobb gombbal a fájlrendszer, és válassza ki **engedélyek kezelése**állapotba helyezése fel, a **kezelése engedély** párbeszédpanel bezárásához.
 
 ![A Microsoft Azure Storage Explorer – könyvtár-hozzáférés kezelése](media/storage-quickstart-blobs-storage-Explorer/manageperms.png)
 
@@ -66,4 +66,4 @@ Kezelheti az engedélyeket az egyes könyvtárak, valamint az egyes fájlokat, a
 Ebben az útmutatóban útmutatóból megtudhatta, hogyan engedélyek beállítása a fájlok és könyvtárak használatával **Azure Storage Explorer**. Tudjon meg többet a hozzáférés-vezérlési listák, beleértve az alapértelmezett ACL-EK, hozzáférési ACL-EK, azok működését és a megfelelő engedélyekkel, továbbra is a tárgyban fogalmi című cikkben.
 
 > [!div class="nextstepaction"]
-> [Hozzáférés-vezérlés az Azure Data Lake Storage Gen2](data-lake-storage-access-control.md)
+> [Hozzáférés-vezérlés a 2. generációs Azure Data Lake Storage-ben](data-lake-storage-access-control.md)

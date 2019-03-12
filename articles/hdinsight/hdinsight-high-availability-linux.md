@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 89878b2774727d49d81ebec4c2a3c2cee355d8e8
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 84251b16d91ca74e11298c7aa54c9a7a8b7fd6d6
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743663"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576718"
 ---
 # <a name="availability-and-reliability-of-apache-hadoop-clusters-in-hdinsight"></a>Rendelkezésre állás és megbízhatóság, a HDInsight Apache Hadoop-fürtök
 
@@ -49,7 +49,7 @@ Nimbus-csomópontok az Apache Storm-fürtök érhetők el. A Nimbus-csomópontok
 
 [ZooKeeper](https://zookeeper.apache.org/) csomópontok használt vezetőválasztási az átjárócsomópontokhoz fő szolgáltatások. Annak érdekében, hogy szolgáltatásokat, az adatcsomópontok (munkavégző) és átjárók tudja, melyik átjárócsomópont szolgáltatás főkulcsának aktív a azok is használhatók. Alapértelmezés szerint a HDInsight három ZooKeeper-csomópontok biztosít.
 
-### <a name="worker-nodes"></a>Munkavégző csomópontok
+### <a name="worker-nodes"></a>Feldolgozó-csomópontok
 
 Munkavégző csomópontok a tényleges adatelemzés végrehajtása a feladat elküldésekor a fürthöz. Ha egy feldolgozó csomópont meghibásodik, az általa feladat elküldésekor egy másik munkavégző csomópont. Alapértelmezés szerint a HDInsight négy feldolgozó csomópontokat hoz létre. Ez a szám igényei alatt és fürt létrehozása után módosíthatja.
 
@@ -103,7 +103,7 @@ Csomópontok nem érhetők el közvetlenül az interneten keresztül az alábbi 
 
 Az Ambari webes felület vagy az Ambari REST API használatával az átjárócsomópontokkal futó szolgáltatások állapotának ellenőrzéséhez.
 
-### <a name="ambari-web-ui"></a>Az Ambari webes felhasználói felületen
+### <a name="ambari-web-ui"></a>Ambari Web UI
 
 Az Ambari webes Kezelőfelületen megtekinthető, https://CLUSTERNAME.azurehdinsight.net. Cserélje le a **CLUSTERNAME** elemet a fürt nevére. Ha a rendszer kéri, adja meg a HTTP felhasználói hitelesítő adatok a fürt számára. Az alapértelmezett HTTP-felhasználónév **rendszergazdai** és a jelszó a a fürt létrehozásakor megadott jelszót.
 
@@ -111,7 +111,50 @@ Az Ambari oldalon érkezésekor a telepített szolgáltatások listája láthat�
 
 ![Telepített szolgáltatások](./media/hdinsight-high-availability-linux/services.png)
 
-Nincsenek ikonok mellett egy szolgáltatás, amely állapotát jelzi az esetlegesen megjelenő sorozata. A szolgáltatás olyan riasztások megtekinthetők a a **riasztások** hivatkozásra az oldal tetején. Egyes szolgáltatások további információkat szeretne megtekinteni, választhat.
+Nincsenek ikonok mellett egy szolgáltatás, amely állapotát jelzi az esetlegesen megjelenő sorozata. A szolgáltatás olyan riasztások megtekinthetők a a **riasztások** hivatkozásra az oldal tetején.  Az Ambari kínál számos előre meghatározott riasztásokat.
+
+Az alábbi riasztásokat segíti a fürt rendelkezésre állásának figyelése:
+
+| Riasztás megnevezése                               | Leírás                                                                                                                                                                                  |
+|------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Metrika a figyelő állapota                    | Ez a riasztás azt jelzi, hogy a figyelő állapota parancsfájl határoz meg a metrikák figyelése folyamatának állapotát.                                                                                   |
+| Az Ambari Ügynökszívverés                   | Ez a riasztás akkor aktiválódik, ha a kiszolgáló elvesztette a kapcsolatot az ügynök.                                                                                                                        |
+| ZooKeeper Server folyamatban                 | A gazdagép-szintű riasztás akkor aktiválódik, ha a ZooKeeper server folyamatot nem lehet meghatározni, akár és figyel-e a hálózaton.                                                               |
+| IOCache metaadatok kiszolgáló állapota           | A gazdagép-szintű riasztás akkor aktiválódik, ha a IOCache metaadat-kiszolgáló nem lehet meghatározni, akár és válaszol az ügyfélkérésekre                                                            |
+| JournalNode Web UI                       | A gazdagép-szintű riasztás akkor aktiválódik, ha a JournalNode webes felhasználói felület nem érhető el.                                                                                                                 |
+| Spark2 Thrift-kiszolgáló                     | A gazdagép-szintű riasztás akkor aktiválódik, ha a Spark2 Thrift-kiszolgáló nem lehet meghatározni, fel kell.                                                                                                |
+| Kiszolgálói folyamat előzményei                   | A gazdagép-szintű riasztás akkor aktiválódik, ha a korábbi kiszolgálói folyamat nem lehet a, akár meglévő és figyel-e a hálózaton.                                                                |
+| Előzmények kiszolgáló webes felhasználói felületen                    | A gazdagép-szintű riasztás akkor aktiválódik, ha a korábbi kiszolgáló webes felhasználói felület nem érhető el.                                                                                                              |
+| ResourceManager Web UI                   | A gazdagép-szintű riasztás akkor aktiválódik, ha az erőforrás-kezelő webes felhasználói felület nem érhető el.                                                                                                             |
+| NodeManager Health Summary               | A szolgáltatásiszint-riasztás akkor aktiválódik, ha nem megfelelő állapotú Csomópontkezelők                                                                                                                    |
+| App Timeline Web UI                      | A gazdagép-szintű riasztás akkor aktiválódik, ha az alkalmazás ütemterv kiszolgáló webes felhasználói Felületet nem érhető el.                                                                                                         |
+| DataNode állapot összegzése                  | A szolgáltatásiszint-riasztás akkor aktiválódik, ha nem megfelelő állapotú DataNodes                                                                                                                       |
+| NameNode Web UI                          | A gazdagép-szintű riasztás akkor aktiválódik, ha a NameNode webes felhasználói felület nem érhető el.                                                                                                                    |
+| ZooKeeper feladatátvételi vezérlő folyamat    | A gazdagép-szintű riasztás akkor aktiválódik, ha a ZooKeeper feladatátvételi vezérlő folyamatot nem lehet a, akár a megerősített és figyel-e a hálózaton.                                                   |
+| Az Oozie-kiszolgáló webes felhasználói felületen                      | A gazdagép-szintű riasztás akkor aktiválódik, ha a webes felhasználói felület Oozie-kiszolgáló nem érhető el.                                                                                                                |
+| Az Oozie-kiszolgáló állapota                      | A gazdagépszintű riasztás akkor aktiválódik, ha az Oozie-kiszolgáló nem lehet másolatot vonatkozó és válaszol az ügyfélkérelmekre.                                                                      |
+| Hive-Metaadattár folyamat                   | A gazdagép-szintű riasztás akkor aktiválódik, ha a Hive-Metaadattár folyamatot nem lehet meghatározni, akár és figyel-e a hálózaton.                                                                 |
+| HiveServer2 Process                      | A gazdagépszintű riasztás akkor aktiválódik, ha a HiveServer nem lehet másolatot vonatkozó és válaszol az ügyfélkérelmekre.                                                                        |
+| WebHCat-kiszolgáló állapota                    | A gazdagép-szintű riasztás akkor aktiválódik, ha a templeton eszközön keresztül végzett kiszolgáló állapota nem kifogástalan.                                                                                                            |
+| Elérhető százalékos ZooKeeper-kiszolgálók      | Ez a riasztás akkor aktiválódik, ha le a fürtben található ZooKeeper-kiszolgálók száma meghaladja a beállított kritikus küszöbértéket. ZooKeeper folyamat ellenőrzések gyűjti.     |
+| Spark2 Livy-kiszolgáló                       | A gazdagép-szintű riasztás akkor aktiválódik, ha a Livy2 kiszolgálót nem lehet meghatározni, fel kell.                                                                                                        |
+| Spark2 Előzménykiszolgáló                    | A gazdagép-szintű riasztás akkor aktiválódik, ha a Spark2 Előzménykiszolgáló nem határozható meg, akár.                                                                                               |
+| Metrikák adatgyűjtő folyamat                | Ez a riasztás akkor aktiválódik, ha a metrikák gyűjtő nem lehet megerősítve, akár és figyel-e a konfigurált port egyenlő a küszöbértékkel másodpercben.                                 |
+| Metrikák Collector – a HBase főkiszolgáló folyamat | Ez a riasztás akkor aktiválódik, ha a metrikák gyűjtő HBase főkiszolgáló folyamatok nem lehet megerősítve, akár és figyel-e a hálózat a másodpercben megadott beállított kritikus küszöbértéket. |
+| Százalékos metrikák figyelők érhető el       | Ez a riasztás akkor aktiválódik, ha a folyamatok nem állnak mentése metrikák figyelése és a hálózat fogadja a konfigurált figyelmeztetési és a kritikus küszöbértékek százalékaként.                             |
+| Százalékos NodeManagers érhető el           | Ez a riasztás akkor aktiválódik, ha száma NodeManagers le a fürtben meghaladja a beállított kritikus küszöbértéket. Gyűjti NodeManager folyamat ellenőrzések eredményeit.        |
+| NodeManager Health                       | A gazdagép-szintű riasztás ellenőrzi a NodeManager összetevő elérhető a csomópont állapota tulajdonság.                                                                                              |
+| NodeManager Web UI                       | A gazdagép-szintű riasztás akkor aktiválódik, ha a NodeManager webes felhasználói felület nem érhető el.                                                                                                                 |
+| NameNode magas rendelkezésre állás állapota        | A szolgáltatásiszint-riasztás akkor aktiválódik, ha a NameNode aktív vagy készenléti NameNode nem futnak.                                                                                     |
+| DataNode folyamat                         | A gazdagép-szintű riasztás akkor aktiválódik, ha az egyes DataNode folyamatok nem lehet a, akár meglévő és figyel-e a hálózaton.                                                         |
+| DataNode Web UI                          | A gazdagép-szintű riasztás akkor aktiválódik, ha a DataNode webes felhasználói felület nem érhető el.                                                                                                                    |
+| Százalékos JournalNodes érhető el           | Ez a riasztás akkor aktiválódik, ha száma JournalNodes le a fürtben nem nagyobb a beállított kritikus küszöbértéknél. Gyűjti JournalNode folyamat ellenőrzések eredményeit.        |
+| Százalékos DataNodes érhető el              | Ez a riasztás akkor aktiválódik, ha száma DataNodes le a fürtben meghaladja a beállított kritikus küszöbértéket. Gyűjti DataNode folyamat ellenőrzések eredményeit.              |
+| A Zeppelin kiszolgáló állapota                   | A gazdagépszintű riasztás akkor aktiválódik, ha a Zeppelin-kiszolgáló nem lehet másolatot vonatkozó és válaszol az ügyfélkérelmekre.                                                                   |
+| Interaktív folyamat hiveserver2-n keresztül          | A gazdagépszintű riasztás akkor aktiválódik, ha a HiveServerInteractive nem lehet másolatot vonatkozó és válaszol az ügyfélkérelmekre.                                                             |
+| LLAP-alkalmazás                         | Ez a riasztás akkor aktiválódik, ha az LLAP alkalmazást nem lehet meghatározni, akár és válaszol a kérelmekre.                                                                                    |
+
+Egyes szolgáltatások további információkat szeretne megtekinteni, választhat.
 
 A szolgáltatás lapján információt nyújt az állapotára és az egyes szolgáltatásokat, bár nem biztosít melyik központi csomóponton fut a szolgáltatás az adatokat. Ezek az információk megtekintéséhez használja a **gazdagépek** hivatkozásra az oldal tetején. Ez a lap megjeleníti a gazdagépet a fürtöt, az átjárócsomópontokat.
 
@@ -123,7 +166,7 @@ A szolgáltatások és az ezen a csomóponton futó összetevők számára az eg
 
 Az Ambari használatával kapcsolatos további információkért lásd: [figyelése és kezelése a HDInsight az Apache Ambari webes kezelőfelületen](hdinsight-hadoop-manage-ambari.md).
 
-### <a name="ambari-rest-api"></a>Az Ambari REST API
+### <a name="ambari-rest-api"></a>Ambari REST API
 
 Az Ambari REST API az interneten keresztül érhető el. A HDInsight nyilvános átjárót kezeli a fő csomópont jelenleg a REST API-t üzemeltető érkező kérések útválasztására.
 
@@ -215,7 +258,7 @@ Amikor egy fürtöt hoz létre, megadhatja a csomópontok mérete. A következő
 
 * **Az Azure klasszikus parancssori felület**: Használatakor a `azure hdinsight cluster create` paranccsal beállíthatja a fő, feldolgozó és ZooKeeper-csomópontok mérete használatával a `--headNodeSize`, `--workerNodeSize`, és `--zookeeperNodeSize` paramétereket.
 
-* **Az Azure PowerShell**: Használatakor a `New-AzureRmHDInsightCluster` parancsmaggal beállíthatja a fő, feldolgozó és ZooKeeper-csomópontok mérete használatával a `-HeadNodeVMSize`, `-WorkerNodeSize`, és `-ZookeeperNodeSize` paramétereket.
+* **Azure PowerShell**: Használatakor a `New-AzureRmHDInsightCluster` parancsmaggal beállíthatja a fő, feldolgozó és ZooKeeper-csomópontok mérete használatával a `-HeadNodeVMSize`, `-WorkerNodeSize`, és `-ZookeeperNodeSize` paramétereket.
 
 ## <a name="next-steps"></a>További lépések
 

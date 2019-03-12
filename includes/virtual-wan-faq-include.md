@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 10/19/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c0da70426d8962999fd8d2cf2852a9bd8d255fc8
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 98ea4d78a473123708be6e371587252acad6ffcd
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55735981"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57554660"
 ---
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpngateway"></a>Mi a különbség egy Azure-beli virtuális hálózati átjáró (VPN Gateway) és egy Azure Virtual WAN-beli VPNGateway között?
 
-A Virtual WAN nagy léptékben biztosít helyek közötti kapcsolatokat, és kifejlesztése során elsősorban az átviteli sebességet, a méretezhetőséget és a könnyű használatot tartották szem előtt. Az ExpressRoute és a pont-hely kapcsolati funkciók jelenleg csak előzetes verzióban érhetők el. A CPE-ágeszközök üzembe helyezése Azure Virtual WAN-hoz való csatlakozása automatikusan történik. Ezek az eszközök az SD-WAN- és a VPN-partnerek egyre bővülő körétől szerezhetők be. Tekintse meg a [előnyben részesített partnerek listája](https://go.microsoft.com/fwlink/p/?linkid=2019615).
+A Virtual WAN nagy léptékben biztosít helyek közötti kapcsolatokat, és kifejlesztése során elsősorban az átviteli sebességet, a méretezhetőséget és a könnyű használatot tartották szem előtt. Az ExpressRoute és a pont-hely kapcsolati funkciók jelenleg csak előzetes verzióban érhetők el. A CPE-ágeszközök üzembe helyezése Azure Virtual WAN-hoz való csatlakozása automatikusan történik. Ezek az eszközök az SD-WAN- és a VPN-partnerek egyre bővülő körétől szerezhetők be. Lásd az [előnyben részesített partnerek listáját](https://go.microsoft.com/fwlink/p/?linkid=2019615).
 
 ### <a name="which-device-providers-virtual-wan-partners-are-supported-at-launch-time"></a>A program indításakor mely eszközszolgáltatók (Virtual WAN-partnerek) támogatottak? 
 

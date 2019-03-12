@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 665fbbc8668e465c78d93b134f6a314d58791490
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: f955ed63af221a08313042fcc8373b179ecbc120
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276451"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569382"
 ---
 # <a name="sfctl-chaos-schedule"></a>sfctl-káosz ütemterv
 GET, és a chaos ütemezés beállításához.
@@ -50,7 +50,7 @@ Lekérdezi a verzióját használja a Chaos ütemezés és a Chaos ütemezés, a
 | --help -h | A súgóüzenetet és kilépési jelennek meg. |
 | --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
 | – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| – részletes | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
+| --verbose | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
 
 ## <a name="sfctl-chaos-schedule-set"></a>sfctl-káosz beállítva ütemezés
 A Chaos által használt ütemezés beállításához.
@@ -61,12 +61,12 @@ A Chaos káosz ütemezés szerint fut automatikusan beütemezett. A megadott bem
 
 |Argumentum|Leírás|
 | --- | --- |
-| – a chaos-paraméterek-szótár | JSON kódolású jelölő karakterlánc nevek leképezése a feladatok által használt ChaosParameters listája. |
-| --lejárati – dátum-(UTC) | A dátum és idő az ütemezés használata a Chaos ütemezése leállítására vonatkozó.  Alapértelmezett\: 9999-12-31T23\:59\:59.999Z. |
+| --chaos-parameters-dictionary | JSON kódolású jelölő karakterlánc nevek leképezése a feladatok által használt ChaosParameters listája. |
+| --expiry-date-utc | A dátum és idő az ütemezés használata a Chaos ütemezése leállítására vonatkozó.  Alapértelmezett\: 9999-12-31T23\:59\:59.999Z. |
 | --feladatok | JSON-kódolású lista ChaosScheduleJobs jelölő mikor fusson a káosz, és a Chaos futtatásához paramétereket. |
 | --start – dátum-(UTC) | A dátum és idő kiválasztásakor az ütemezés használatához a Chaos ütemezése.  Alapértelmezett\: 1601-01-01T00\:00\:00.000Z. |
 | --időkorlát -t | Kiszolgálói időtúllépés másodpercben.  Alapértelmezett\: 60. |
-| --verzió | A verziószám az ütemezés. |
+| --version | A verziószám az ütemezés. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
@@ -76,22 +76,22 @@ A Chaos káosz ütemezés szerint fut automatikusan beütemezett. A megadott bem
 | --help -h | A súgóüzenetet és kilépési jelennek meg. |
 | --kimeneti -o | Kimeneti formátum.  Megengedett értékek\: JSON-t, jsonc, tábla, tsv.  Alapértelmezett\: json. |
 | – lekérdezés | JMESPath lekérdezési karakterláncot. Tekintse meg a http\://jmespath.org/ további információt és példákat. |
-| – részletes | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
+| --verbose | Növelése a naplózást. Használja a--debug teljes hibakeresési naplók. |
 
 ### <a name="examples"></a>Példák
 
 Az alábbi parancsot (feltéve, hogy az aktuális ütemezés 0 verzióval rendelkezik) ütemezés, amely elindítja a 2016-01-01, és érvényessége lejár a 2038-01-01, amely a nap, a hét káosz 24 órányi állítja be. A Chaos arra az időpontra lesz ütemezve a fürtön.
 
     sfctl chaos schedule set --version 0 --start-date-utc "2016-01-01T00:00:00.000Z" --expiry-date-utc "2038-01-01T00:00:00.000Z"
-    --chaos-parameters-dictionary 
-    [  
-    {  
+    --chaos-parameters-dictionary
+    [
+    {
         "Key":"adhoc",
-        "Value":{  
+        "Value":{
             "MaxConcurrentFaults":3,
             "EnableMoveReplicaFaults":true,
-            "ChaosTargetFilter":{  
-                "NodeTypeInclusionList":[  
+            "ChaosTargetFilter":{
+                "NodeTypeInclusionList":[
                 "N0010Ref",
                 "N0020Ref",
                 "N0030Ref",
@@ -103,12 +103,12 @@ Az alábbi parancsot (feltéve, hogy az aktuális ütemezés 0 verzióval rendel
             "WaitTimeBetweenIterationsInSeconds":15,
             "WaitTimeBetweenFaultsInSeconds":30,
             "TimeToRunInSeconds":"600",
-            "Context":{  
-                "Map":{  
+            "Context":{
+                "Map":{
                 "test":"value"
                 }
             },
-            "ClusterHealthPolicy":{  
+            "ClusterHealthPolicy":{
                 "MaxPercentUnhealthyNodes":0,
                 "ConsiderWarningAsError":true,
                 "MaxPercentUnhealthyApplications":0
@@ -116,11 +116,11 @@ Az alábbi parancsot (feltéve, hogy az aktuális ütemezés 0 verzióval rendel
         }
     }
     ]
-    --jobs 
-    [  
-    {  
+    --jobs
+    [
+    {
         "ChaosParameters":"adhoc",
-        "Days":{  
+        "Days":{
             "Sunday":true,
             "Monday":true,
             "Tuesday":true,
@@ -129,13 +129,13 @@ Az alábbi parancsot (feltéve, hogy az aktuális ütemezés 0 verzióval rendel
             "Friday":true,
             "Saturday":true
         },
-        "Times":[  
-            {  
-                "StartTime":{  
+        "Times":[
+            {
+                "StartTime":{
                 "Hour":0,
                 "Minute":0
                 },
-                "EndTime":{  
+                "EndTime":{
                 "Hour":23,
                 "Minute":59
                 }

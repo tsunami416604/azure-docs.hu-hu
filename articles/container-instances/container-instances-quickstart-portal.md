@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – alkalmazás futtatása az Azure Container Instances szolgáltatásban – portál
-description: Ebben a rövid útmutatóban használhatja az Azure Portalon egy futtathat az Azure Container Instances szolgáltatásban elkülönített tárolót a Docker-tárolóalkalmazás üzembe helyezése
+title: Rövid útmutató – Docker-tároló üzembe helyezése az Azure Container Instances - portál
+description: Ebben a rövid útmutatóban használhatja az Azure Portalon gyorsan üzembe helyezhet egy tárolóalapú webalkalmazást, amely egy elkülönített Azure-tárolópéldányon
 services: container-instances
 author: dlepow
 ms.service: container-instances
@@ -8,16 +8,18 @@ ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: d6a1d442eca0cf5e433a82fb52ed54b09b56c779
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 41313a8b140886247b830db7ca9b34a22257de96
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566095"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729146"
 ---
-# <a name="quickstart-run-a-container-application-in-azure-container-instances-in-the-azure-portal"></a>Gyors útmutató: Egy tároló-alkalmazás futtatása az Azure Container Instances szolgáltatásban az Azure Portalon
+# <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>Gyors útmutató: Üzembe helyezéséhez az Azure-ban az Azure portal használatával
 
-Az Azure Container Instances segítségével egyszerűen és gyorsan futtathat Docker-tárolókat az Azure-ban. Nem kell virtuális gépeket üzembe helyeznie vagy teljes körű tárolóvezérlési platformot használnia (amilyen például a Kubernetes). Ebben a rövid útmutatóban az Azure Portal használatával tárolót hozhat létre az Azure-ban, és az alkalmazását egy teljes tartománynévvel (FQDN-nel) elérhetővé teheti. Néhány beállítás konfigurálása és a tároló üzembe helyezése után tallózhat a futó alkalmazásban:
+Azure Container Instances használatával kiszolgáló nélküli Docker-tárolókat futtathat az Azure-ban egyszerű és gyors. Egy tároló példány igény szerinti-alkalmazás üzembe helyezése, ha már nincs szükség a teljes tárolót vezénylési platformot hasonlóan az Azure Kubernetes Service-ben.
+
+Ebben a rövid útmutatóban az Azure Portalon használhatja egy elkülönített Docker-tároló üzembe helyezése, és a egy teljesen minősített tartománynevét (FQDN) elérhetővé az alkalmazás. Néhány beállítás konfigurálása és a tároló üzembe helyezése után tallózhat a futó alkalmazásban:
 
 ![Az Azure Container Instances szolgáltatásban üzembe helyezett alkalmazás képe a böngészőben][aci-portal-07]
 
@@ -41,9 +43,9 @@ Válassza az **Erőforrás létrehozása** > **Tárolók** > **Container Instanc
 
 ![Új tárolópéldány alapbeállításainak konfigurálása az Azure Portalon][aci-portal-03]
 
-Ebben a rövid útmutatóban ne módosítsa az alapértelmezett beállítás a **nyilvános** üzembe helyezéséhez a `microsoft/aci-helloworld` rendszerkép a nyilvános Docker Hub-beállításjegyzékből. Ez a rendszerkép csomagok a node.js-ben, amely egy statikus HTML-oldalt szolgál egy kisméretű webalkalmazást.
+Ebben a rövid útmutatóban ne módosítsa az alapértelmezett beállítás a **nyilvános** üzembe helyezéséhez a nyilvános `microsoft/aci-helloworld` kép. Ez a rendszerkép csomagok a node.js-ben, amely egy statikus HTML-oldalt szolgál egy kisméretű webalkalmazást.
 
-A **Konfiguráció** területen adjon meg egy **DNS-névcímkét** a tárolónak. A névnek egyedinek kell lennie abban az Azure-régióban, ahol a tárolópéldányt létrehozza. A tároló nyilvánosan elérhető az alábbi helyen: `<dns-name-label>.<region>.azurecontainer.io`.
+A **Konfiguráció** területen adjon meg egy **DNS-névcímkét** a tárolónak. Neve az Azure-régió, ahol a tárolópéldányt létrehozza egyedinek kell lennie. A tároló nyilvánosan elérhető az alábbi helyen: `<dns-name-label>.<region>.azurecontainer.io`. Ha „A DNS-névcímke nem érhető el” hibaüzenetet kap, próbálkozzon másik DNS-névcímkével.
 
 Hagyja meg a **Konfiguráció** területen található többi beállítás alapértelmezett értékét, majd válassza az **OK** lehetőséget a konfiguráció érvényesítéséhez.
 

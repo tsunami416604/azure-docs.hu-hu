@@ -10,16 +10,16 @@ ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 72dec3effe5e350818c01cf65c9140e778effd17
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 844bd9a88c52fd398fc66c71e59da513c0d7d90d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860286"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544324"
 ---
 # <a name="grammar-format"></a>Szintaxisformátum
 
-A szintaxis egy XML-fájlt, amely meghatározza a természetes nyelvű lekérdezések, amelyek a szolgáltatás el tudja értelmezni, valamint hogyan fordítja az ezeket a természetes nyelvű lekérdezéseket a szemantikai lekérdezési kifejezések súlyozott készletét.  A nyelvi szintaxist alapján [SRGS](http://www.w3.org/TR/speech-grammar/), egy W3C szabvány a speech recognition grammars kiterjesztésű index Adatintegráció és Szemantikus funkciók támogatásához.
+A szintaxis egy XML-fájlt, amely meghatározza a természetes nyelvű lekérdezések, amelyek a szolgáltatás el tudja értelmezni, valamint hogyan fordítja az ezeket a természetes nyelvű lekérdezéseket a szemantikai lekérdezési kifejezések súlyozott készletét.  A nyelvi szintaxist alapján [SRGS](https://www.w3.org/TR/speech-grammar/), egy W3C szabvány a speech recognition grammars kiterjesztésű index Adatintegráció és Szemantikus funkciók támogatásához.
 
 A következő ismerteti a használható egy gramatice szintaktikai elemek.  Lásd: [ebben a példában](#example) , amely bemutatja, hogy ezeket az elemeket a környezet teljes körű nyelvtan esetében.
 

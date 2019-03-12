@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: overview
 ms.date: 02/20/2019
 ms.author: pafarley
-ms.openlocfilehash: 2f5f57f0978adbdf33ed4ce25ba9b32247ea0484
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: dcfb50c58f1205a5ab31c3fc6b9b22fdb503e4ec
+ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455976"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57588958"
 ---
 # <a name="what-is-the-azure-face-api"></a>Mi az Azure Face API?
 
@@ -26,12 +26,12 @@ A Face API több különféle funkciót biztosít, amelyeket az alábbi szakaszo
 
 A Face API képes felismerni az emberi arcokat egy képen, és visszaadja a helyüket jelző téglalap koordinátáit. Szükség esetén arcfelismerés kibonthatja a face kapcsolódó attribútumok, például testtartás, fő testtartás, gender, kor, érzelem, arcfelismerési haj és szemüveg sorozata.
 
+> [!NOTE] 
+> Az arcfelismerési szolgáltatás a [Computer Vision API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) használatával is elérhető, ha azonban további műveleteket szeretne végezni az arcokhoz kapcsolódó adatokkal, a Face API-t (ezt a szolgáltatást) kell használnia.
+
 ![Egy nő és egy férfi képe, téglalappal a személyek arca körül, amely alatt az életkoruk és a nemük látható](./Images/Face.detection.jpg)
 
-> [!NOTE] 
-> Az arcfelismerési szolgáltatás a [Computer Vision API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) használatával is elérhető, ha azonban további műveleteket szeretne végezni az arcokhoz kapcsolódó adatokkal, a Face API-t (ezt a szolgáltatást) kell használnia. 
-
-További információ az arcfelismeréssel kapcsolatban: [Detect API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+Arcfelismerés további információkért lásd: a [Arcfelismerés gyakorlati útmutató](face-api-how-to-topics/howtodetectfacesinimage.md), vagy tallózással keresse meg a [észlelése API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) referenciák dokumentációiba.
 
 ## <a name="face-verification"></a>Arcellenőrzés
 

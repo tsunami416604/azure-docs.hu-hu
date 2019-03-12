@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 6a6f8b47044d36d767721e2d3503d11518dbf5a6
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 34b151c14323e7ee22c31f22a63b07a0fb18671e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036120"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536215"
 ---
 # <a name="optimize-storage-cost-in-azure-cosmos-db"></a>Az Azure Cosmos DB-ben a tárolási költségek optimalizálása
 
@@ -27,7 +27,7 @@ Az Azure Cosmos DB vár az elem méretét 2 MB vagy annál kisebb, optimális te
 
 ## <a name="optimize-cost-with-indexing"></a>Az indexelő költségek optimalizálása
 
-Alapértelmezés szerint az adatok automatikus indexelését, ami növelheti a teljes felhasznált tárterület. A terhelés csökkentése érdekében egyéni index szabályzatokat is alkalmazhat. Körülbelül 10 – 20 %-a cikk automatikus indexelést, amely a szabályzat nem amennyiben. Eltávolításával vagy index házirendek testreszabása, hogy nem kell fizetnie extra írási műveletek költségét, és nem igényel további átviteli kapacitással. Lásd: [indexelése az Azure Cosmos DB](indexing-policies.md) egyéni indexelési szabályzat konfigurálása. Ha dolgozott már relációs adatbázisokat korábban, előfordulhat, hogy véleménye szerint "mindent indexelni" azt jelenti, hogy kétszeresére tárolási vagy magasabb szintű. Az Azure Cosmos DB, a közepes esetben célszerű azonban sokkal alacsonyabb. Az Azure Cosmos DB az index indextárolási terheléssel jár azért általában alacsony (10 – 20 %) még az automatikus indexelést, egy alacsony tárolási erőforrás-igényű számára tervezték. További részletes módon, mivel kezeli az indexelési házirendet, szabályozhatja a kompromisszummal jár, index üzembe helyezésének előkészítése és a lekérdezési teljesítmény.
+Alapértelmezés szerint az adatok automatikus indexelését, ami növelheti a teljes felhasznált tárterület. A terhelés csökkentése érdekében egyéni index szabályzatokat is alkalmazhat. Körülbelül 10 – 20 %-a cikk automatikus indexelést, amely a szabályzat nem amennyiben. Eltávolításával vagy index házirendek testreszabása, hogy nem kell fizetnie extra írási műveletek költségét, és nem igényel további átviteli kapacitással. Lásd: [indexelése az Azure Cosmos DB](indexing-policies.md) egyéni indexelési szabályzat konfigurálása. Ha dolgozott már relációs adatbázisokat korábban, előfordulhat, hogy véleménye szerint "mindent indexelni" azt jelenti, hogy kétszeresére tárolási vagy magasabb szintű. Az Azure Cosmos DB, a közepes esetben célszerű azonban sokkal alacsonyabb. Az Azure Cosmos DB az index indextárolási terheléssel jár általában alacsony (10 – 20 %) még az automatikus indexelést, mert egy alacsony tárolási erőforrás-igényű számára tervezték. További részletes módon, mivel kezeli az indexelési házirendet, szabályozhatja a kompromisszummal jár, index üzembe helyezésének előkészítése és a lekérdezési teljesítmény.
 
 ## <a name="optimize-cost-with-time-to-live-and-change-feed"></a>Optimalizálhatja költségeit a live és a módosítási hírcsatornáról ideje
 
@@ -39,9 +39,9 @@ Ha szeretné tárolni a multimédiás típusok, például videók, képek, stb.,
 
 ## <a name="check-storage-consumed"></a>Ellenőrizze a felhasznált tárterület
 
-Egy Azure Cosmos-tároló tárolófelhasználásának ellenőrzéséhez futtassa egy ÁTJÁRÓ- vagy GET kérelem a tároló, és vizsgálja meg a `x-ms-request-quota` és a `x-ms-request-usage` fejlécek. Azt is megteheti, ha a .net SDK dolgozik, használhatja a [DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100)), és [DocumentSizeUsage](http://msdn.microsoft.com/library/azure/dn850324.aspx) tulajdonságokat lekérni a felhasznált tárterület.
+Egy Azure Cosmos-tároló tárolófelhasználásának ellenőrzéséhez futtassa egy ÁTJÁRÓ- vagy GET kérelem a tároló, és vizsgálja meg a `x-ms-request-quota` és a `x-ms-request-usage` fejlécek. Azt is megteheti, ha a .net SDK dolgozik, használhatja a [DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100)), és [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) tulajdonságokat lekérni a felhasznált tárterület.
 
-## <a name="using-sdk"></a>SDK-val
+## <a name="using-sdk"></a>Using SDK
 
 ```csharp
 // Measure the item size usage (which includes the index size)

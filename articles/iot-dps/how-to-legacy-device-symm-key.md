@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 963d03db2db811b44b1d89df8254f751ec7d3136
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: cf4ee8b1b9d96ad4d32a0ac8b1682968b90653f9
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56877395"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541490"
 ---
 # <a name="how-to-provision-legacy-devices-using-symmetric-keys"></a>A szimmetrikus kulcsok használata örökölt eszközök kiépítése
 
@@ -114,7 +114,7 @@ Az SDK-t magában foglalja a mintakód a szimulált eszközhöz. A szimulált es
 
 ## <a name="create-a-symmetric-key-enrollment-group"></a>Hozzon létre egy szimmetrikus kulcs regisztrációs csoportot
 
-1. Jelentkezzen be a [az Azure portal](http://portal.azure.com), és nyissa meg a Device Provisioning Service-példány.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), és nyissa meg a Device Provisioning Service-példány.
 
 2. Válassza ki a **beléptetések kezelése** fülre, majd a **regisztrációs csoport hozzáadása** gombra a lap tetején. 
 

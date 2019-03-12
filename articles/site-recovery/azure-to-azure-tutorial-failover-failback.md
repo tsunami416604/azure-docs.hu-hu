@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 46dae28fd6c9eaa3d5e03f5f06c5e92449653679
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: ba1e65ca915c576d2424b166488b89baa92c24a9
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737722"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729035"
 ---
-# <a name="fail-over-and-fail-back-azure-vms-between-azure-regions"></a>Azure-beli virtuális gépek feladatátvétele és feladat-visszavétele Azure-régiók között
+# <a name="fail-over-and-reprotect-azure-vms-between-azure-regions"></a>Feladatátvétel és az Azure-régiók közötti Azure virtuális gépek ismételt védelme
 
 Az [Azure Site Recovery](site-recovery-overview.md) szolgáltatás a helyszíni számítógépek és az Azure-beli virtuális gépek replikálásának, feladatátvételének és feladat-visszavételének kezelésével és irányításával járul hozzá a vészhelyreállítási stratégia megvalósításához.
 
@@ -24,9 +24,7 @@ Ez az oktatóanyag leírja, hogyan végezhet feladatátvételt egyetlen Azure-be
 
 > [!div class="checklist"]
 > * Az Azure-beli virtuális gép feladatátvétele
-> * A másodlagos Azure-beli virtuális gép ismételt védelme, hogy az elsődleges régióba replikálódjon
-> * A másodlagos virtuális gép feladat-visszavétele
-> * Az elsődleges virtuális gép ismételt védelme a másodlagos régióban
+> * A másodlagos Azure virtuális gép ismételt védelme, hogy az elsődleges régióba replikálódjon.
 
 > [!NOTE]
 > Ennek az oktatóanyagnak a célja, hogy végigvezesse a felhasználót egy adott célrégióra irányuló feladatátvétel és -visszavétel folyamatán minimális testreszabással. Amennyiben részletesebben szeretné megismerni a feladatátvétellel kapcsolatos különféle szempontokat, beleértve a hálózatkezelést, az automatizálást és a hibaelhárítást, tekintse meg az Azure-beli virtuális gépekre vonatkozó ismertető dokumentumokat.
@@ -74,12 +72,5 @@ A virtuális gép feladatátvétele után ismét meg kell védenie azt, hogy az 
 > Tekintse meg a ["hogyan" szakasz](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect#what-happens-during-reprotection) bővebben az ismételt védelem munkafolyamat, és mi történik a ismételt védelem során.
 
 
-## <a name="fail-back-to-the-primary-region"></a>Feladat-visszavétel az elsődleges régióba
-
-Virtuális gépek ismételt védelme után is visszaadja a feladatokat az elsődleges régió szükség szerint. Ehhez állítsa be a feladatátvételt a másodlagos régióból az elsődleges régióra, ebben a cikkben leírtak szerint.
-
-![Kattintson a jobb gombbal az ismételt védelemhez](./media/azure-to-azure-tutorial-failover-failback/failback.png)
-
-Ha az előző képernyőképen látható, "ContosoWin2016" virtuális gép az USA középső RÉGIÓJA, USA keleti régiója feladatátvételt, és visszaküldi az USA keleti RÉGIÓJA, USA középső RÉGIÓJA nem sikerült.
-
-A feladatátvétel leállítja a virtuális Gépet a másodlagos régióban, azaz a vészhelyreállítási régióban, és hoz létre, és a virtuális gép elindul az elsődleges régióban. Adjon **Megjegyzés** állapotban, hogy a DR-beli virtuális gépek a leállás akkor is szabadítja fel, ahogy fent látható. Ez szándékosan van, mivel az Azure Site Recovery az adatokat a virtuális gépet, amelynek hasznosak lehetnek a feladatátvétel az elsődleges később a másodlagos régióba. Nem kell fizetnie a felszabadított virtuális gépek, így, mert azt kell tárolni.
+## <a name="next-steps"></a>További lépések
+- Olvasási [hogyan történő feladat-visszavételhez. ](azure-to-azure-tutorial-failback.md).

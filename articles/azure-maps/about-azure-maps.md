@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 53f216e19b8e087c0052751e96f203e0db85dc13
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 023f5ed43453d7fb20dec5d91651230aa8fb4370
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990288"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57571303"
 ---
 # <a name="what-is-azure-maps"></a>Mi az Azure Maps?
 
@@ -26,11 +26,17 @@ A következő videó részletesen bemutatja az Azure Mapset:
 
 ## <a name="map-controls"></a>Térképvezérlők
 
-### <a name="web-control"></a>Webes vezérlő
+### <a name="web-sdk"></a>Web SDK
 
-Az Azure Maps webes vezérlővel az interaktív térképek testreszabhatók saját tartalmak és képek hozzáadásával, amelyek megjelennek a webes vagy mobilalkalmazásaiban. Ez a vezérlő a WebGL-t használja, amely lehetővé teszi nagy adatkészletek nagy teljesítményű renderelését. A vezérlővel végzett fejlesztés JavaScript vagy TypeScript használatával történik.
+Az Azure Maps Web SDK lehetővé teszi a saját tartalmat és a webes vagy mobilalkalmazásaiba való megjelenítéshez képanyag interaktív leképezések testreszabása. Ez a vezérlő a WebGL-t használja, amely lehetővé teszi nagy adatkészletek nagy teljesítményű renderelését. Az az SDK-ban a JavaScript- vagy TypeScript nyelven fejleszthet.
 
-![Az Azure Maps webes vezérlője](media/about-azure-maps/Introduction_WebMapControl.png)
+![Azure Maps Web SDK](media/about-azure-maps/Introduction_WebMapControl.png)
+
+### <a name="android-sdk"></a>Android SDK
+
+Az Azure Maps Android SDK hatékony mobil leképezés alkalmazások létrehozását teszi lehetővé. 
+
+![Az Azure Maps SDK Androidra](media/about-azure-maps/AndroidSDK.png)
 
 ## <a name="services-in-azure-maps"></a>Az Azure Maps szolgáltatásai
 

@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/10/2019
+ms.date: 03/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a7d290b9270d5d548a2e2b36cd73588639691b6c
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 84cf7d485295ae1a102957ee1f94ab3e9b2ea954
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819105"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548251"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Runbook végrehajtása az Azure Automationben
 
@@ -49,6 +49,7 @@ Az Azure Automation Runbookjai futhat bármelyiken védőfal mögött az Azure-b
 |Modulok használata az adott követelményekhez| hibrid runbook-feldolgozó|Néhány példa:</br> **WinSCP** -winscp.exe függőség </br> **IISAdministration** -kell az IIS engedélyezve|
 |Telepítő igénylő modul telepítése|hibrid runbook-feldolgozó|A védőfal modulok xcopyable kell lennie.|
 |A runbookok vagy a .NET-keretrendszer 4.7.2 eltérő igénylő modulok|hibrid runbook-feldolgozó|Automation próbakörnyezetbe lefordítja a .NET-keretrendszer 4.7.2 rendelkezik, és azt nem lehet|
+|Magasabb jogosultsági szintet igénylő parancsfájlok|hibrid runbook-feldolgozó|Próbakörnyezetbe lefordítja a jogosultságszint-emelés nem engedélyezett. Ez egy hibrid Runbook-feldolgozó és kikapcsolhatja a felhasználói fiókok felügyelete és használata a használati megoldásához `Invoke-Command` mikor igényel, amely a következő parancs futtatásával jogosultságszint-emelés|
 
 ## <a name="runbook-behavior"></a>A Runbook viselkedése
 
@@ -224,7 +225,7 @@ Megoszthatják az erőforrásokat az összes runbook a felhőben, az Azure Autom
 
 A sokáig futó feladatokat, azt javasoljuk, hogy használjon egy [hibrid Runbook-feldolgozó](automation-hrw-run-runbooks.md#job-behavior). Hibrid Runbook-feldolgozók igazságos elosztás nem korlátozza, és a egy korlátozás nem rendelkezik a mennyi runbookot hajthat végre. A többi feladat [korlátok](../azure-subscription-service-limits.md#automation-limits) Azure próbakörnyezetbe lefordítja a és a hibrid Runbook-feldolgozók egyaránt érvényesek. Hibrid Runbook-feldolgozók nem korlátozza a 3 óra igazságos elosztás korlátot, miközben runbookok futtatta rajtuk továbbra is támogatja a helyi infrastruktúra váratlan problémák újraindítási viselkedés kell kidolgozni.
 
-Egy másik lehetőség, hogy a runbook optimalizálása gyermek runbookok használatával. Ha a runbook végighalad a több erőforrás, például az adatbázis-művelet, a számos adatbázis ugyanannak a függvénynek helyezheti át a függvényt egy [gyermekrunbook](automation-child-runbooks.md) és adja neki a a [ Start-AzureRMAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) parancsmagot. Ezen gyermek runbookok mindegyike különálló folyamatban, egymással párhuzamosan fut, így csökkentik a szülő runbook futtatásának befejezéséhez szükséges teljes időt. Használhatja a [Get-AzureRmAutomationJob](/powershell/module/azurerm.automation/Get-AzureRmAutomationJob) parancsmagot a runbook a feladat állapotának ellenőrzése minden gyermek, ha a művelet, amely a gyermekrunbook befejezése után kell elvégezni.
+Egy másik lehetőség, hogy a runbook optimalizálása gyermek runbookok használatával. Ha a runbook végighalad a több erőforrás, például az adatbázis-művelet, a számos adatbázis ugyanannak a függvénynek helyezheti át a függvényt egy [gyermekrunbook](automation-child-runbooks.md) és adja neki a a [ Start-AzureRMAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) parancsmagot. Ezen gyermek runbookok mindegyike különálló folyamatban, egymással párhuzamosan fut, így csökkentik a szülő runbook futtatásának befejezéséhez szükséges teljes időt. Használhatja a [Get-AzureRmAutomationJob](/powershell/module/azurerm.automation/Get-AzureRmAutomationJob) parancsmagot a feladat állapotának ellenőrzéséhez minden gyermek, ha vannak a műveleteket a gyermekrunbook befejezése után a runbookban.
 
 ## <a name="next-steps"></a>További lépések
 

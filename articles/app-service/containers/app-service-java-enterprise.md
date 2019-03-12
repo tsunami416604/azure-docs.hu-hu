@@ -13,14 +13,17 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 6618e5317db1a7a4332a35b7ee9cd74934c8a787
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: ee39d2d2cf85b8de52804ac764b17db348a053e0
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737892"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538221"
 ---
 # <a name="java-enterprise-guide-for-app-service-on-linux"></a>A linuxon futó App Service-ben a Java Enterprise útmutatója
+
+> [!NOTE] 
+> A Java Enterprise Edition App Service Linux rendszeren jelenleg előzetes verzióban érhető el. Ez a verem **nem** javasolt az éles néző munka. Tekintse át a [Java developer's guide](app-service-linux-java.md) információk a Java SE- és Tomcat implementációt.
 
 Linuxon futó Azure App Service lehetővé teszi, hogy elkészítheti, telepítheti és méretezheti a Java Enterprise (Java EE-alapú) alkalmazásait egy teljes körűen felügyelt Linux-alapú szolgáltatás a Java-fejlesztőknek.  A Java Enterprise alapul szolgáló futtatókörnyezethez a nyílt forráskódú [Wildfly](https://wildfly.org/) alkalmazáskiszolgáló.
 

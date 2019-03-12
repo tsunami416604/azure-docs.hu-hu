@@ -5,18 +5,18 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: tutorial
-ms.date: 10/30/2018
+ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: a952eb679810f36008425ae5daacc4261db50c77
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: c0c5c5fe899c9b9b898973a88c7dac4256959ee4
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999613"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57779776"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>Oktatóanyag: Üzemeltessen saját tartományt az Azure DNS-ben
 
-Az Azure DNS használatával saját DNS-tartományt üzemeltethet, és kezelheti a tartomány DNS-rekordjait. Ha tartományait az Azure-ban üzemelteti, DNS-rekordjait a többi Azure-szolgáltatáshoz is használt hitelesítő adatokkal, API-kkal, eszközökkel és számlázási információkkal kezelheti. 
+Az Azure DNS használatával saját DNS-tartományt üzemeltethet, és kezelheti a tartomány DNS-rekordjait. Ha tartományait az Azure-ban üzemelteti, DNS-rekordjait a többi Azure-szolgáltatáshoz is használt hitelesítő adatokkal, API-kkal, eszközökkel és számlázási információkkal kezelheti.
 
 Tegyük fel, hogy megvette a „contoso.net” tartományt egy tartományregisztrálótól, majd létrehozott egy „contoso.net” nevű zónát az Azure DNS-ben. Mivel Ön a tartomány tulajdonosa, a regisztráló felajánlja, hogy konfigurálja a tartomány névkiszolgálói rekordjait. A regisztráló ezeket a névkiszolgálói rekordokat a „.net” szülőzónában tárolja. A világ különböző pontjain internetes felhasználók majd irányítja az az Azure DNS-zónabeli tartományához, amikor megpróbálják feloldani a "contoso.NET" DNS-rekordjait.
 
@@ -31,6 +31,12 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Teszteli, hogy is üzemeltethet az Azure DNS-ben elérhető tartomány névvel kell rendelkeznie. Teljes körű irányítással kell rendelkeznie a tartomány felett. A teljes körű irányításba beletartozik a tartomány névkiszolgálói (NS-) rekordjainak beállítására való képesség.
+
+Ebben az oktatóanyagban használt példa tartományt contoso.net, de a saját tartománynevét használja.
 
 ## <a name="create-a-dns-zone"></a>DNS-zóna létrehozása
 

@@ -5,19 +5,20 @@ services: sql-data-warehouse
 author: kevinvngo
 manager: craigg
 ms.service: sql-data-warehouse
-ms.topic: conceptual
+ms.topic: quickstart
 ms.subservice: manage
-ms.date: 04/17/2018
+ms.date: 04/18/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: b21c982a7f390855ccb7b9212ea92db8c26d303c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 9c3ed6dd79d6225b38751c910253cfa1f0720d1c
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460284"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731976"
 ---
 # <a name="quickstart-pause-and-resume-compute-for-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Gyors útmutató: Az Azure Portalon az Azure SQL Data Warehouse a számítás szüneteltetése és folytatása
+
 Az Azure SQL Data Warehouse szüneteltetési compute az Azure portal használatával költségeit. [Folytathatja a számítást](sql-data-warehouse-manage-compute-overview.md) Ha készen áll az adattárház használata.
 
 Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
@@ -31,6 +32,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 Használat [létrehozás és csatlakozás – portál](create-data-warehouse-portal.md) nevű adattárház létrehozásához **mySampleDataWarehouse**. 
 
 ## <a name="pause-compute"></a>Számítás szüneteltetése
+
 Költségek csökkentése érdekében is szüneteltetése és folytatása a számítási erőforrások igény szerinti. Például ha nem fogja használni az adatbázis az éjszaka és hétvégén, is szüneteltetheti, ilyen alkalmakkor, és folytathatja a nap folyamán. Nem kell fizetnie a számítási erőforrásokat, miközben az adatbázis fel van függesztve. Azonban továbbra is a tárolásért kell fizetnie. 
 
 Kövesse az alábbi lépéseket egy SQL data warehouse felfüggesztése.
@@ -54,6 +56,7 @@ Kövesse az alábbi lépéseket egy SQL data warehouse felfüggesztése.
 
 
 ## <a name="resume-compute"></a>Számítási folytatása
+
 Kövesse az alábbi lépéseket egy SQL data warehouse folytatásához.
 
 1. Az Azure Portal bal oldali paneljén kattintson az **SQL-adatbázisok** elemre.
@@ -96,7 +99,8 @@ Kövesse az alábbi lépéseket a fölöslegessé vált erőforrások eltávolí
 
 
 ## <a name="next-steps"></a>További lépések
+
 Most fel van függesztve, és az adatraktár számítási folytatódik. Ha bővebb információra van szüksége az Azure SQL Data Warehouse-zal kapcsolatban, folytassa az adatok betöltésével foglalkozó oktatóanyaggal.
 
 > [!div class="nextstepaction"]
->[Adatok betöltése az SQL Data Warehouse-okba](load-data-from-azure-blob-storage-using-polybase.md)
+> [Adatok betöltése az SQL Data Warehouse-okba](load-data-from-azure-blob-storage-using-polybase.md)

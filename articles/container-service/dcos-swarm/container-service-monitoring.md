@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 07/28/2016
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: d881a5c0f994b627b4c7c3da362672b3b887cd5e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: a094369d467b3b1f3d5fe93f870dccc9eae7519c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996154"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57547211"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-datadog"></a>(ELAVULT) Egy Azure Container Service DC/OS fürt megfigyelése a Datadoggal
 
@@ -23,12 +23,12 @@ ms.locfileid: "52996154"
 Ebben a cikkben azt Datadoggal ügynökök telepíti az Azure Container Service-fürt összes ügynökcsomópontjára. Szüksége lesz egy fiókra a Datadoggal ehhez a konfigurációhoz. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-[Helyezzen üzembe](container-service-deployment.md) és [csatlakoztasson](../container-service-connect.md) egy, az Azure Container Service által konfigurált fürtöt. Ismerkedjen meg a [Marathon felhasználói felülettel](container-service-mesos-marathon-ui.md). Lépjen a [ http://datadoghq.com ](http://datadoghq.com) a Datadoggal fiók beállításához. 
+[Helyezzen üzembe](container-service-deployment.md) és [csatlakoztasson](../container-service-connect.md) egy, az Azure Container Service által konfigurált fürtöt. Ismerkedjen meg a [Marathon felhasználói felülettel](container-service-mesos-marathon-ui.md). Lépjen a [ https://datadoghq.com ](https://datadoghq.com) a Datadoggal fiók beállításához. 
 
-## <a name="datadog"></a>Datadoggal
+## <a name="datadog"></a>Datadog
 Datadoggal egy olyan megfigyelő szolgáltatás, amely figyelési adatait gyűjti össze az Azure Container Service-fürtben található tárolókat. Datadoggal rendelkezik, ahol megtekintheti az adott mérőszámok belül a tárolókat a Docker integrációs irányítópult. A tárolók gyűjtött metrikák CPU, memória, hálózati és i/o szerint vannak rendezve. Datadoggal metrikák felosztja a tárolók és a képeket. Egy példa a felhasználói felület néz ki a CPU-használat nem éri el.
 
-![Datadoggal felhasználói felület](./media/container-service-monitoring/datadog4.png)
+![Datadog UI](./media/container-service-monitoring/datadog4.png)
 
 ## <a name="configure-a-datadog-deployment-with-marathon"></a>A marathon segítségével konfigurálhatja a Datadoggal telepítést
 Ezek a lépések bemutatják, a fürtön a Marathonnal Datadoggal alkalmazások központi telepítése és konfigurálása. 

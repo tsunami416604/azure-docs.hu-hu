@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 10/12/2018
-ms.openlocfilehash: 4a3677dc5402948fc0105190d1891d709291d0f7
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/07/2019
+ms.openlocfilehash: a5b544db713f671230e4a226b1e0bdcfa77fbb2b
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57317730"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57575239"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Távolítsa el a transzparens adattitkosítás (TDE) védőelem a PowerShell használatával
 
@@ -46,7 +46,7 @@ Ez az útmutató két módszer attól függően, a kívánt eredményt keresztü
 
 ## <a name="to-keep-the-encrypted-resources-accessible"></a>Elérhető-e tartani a titkosított erőforrások
 
-1. Hozzon létre egy [új kulcsot a Key Vaultban](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultkey?view=azurermps-4.1.0). Ellenőrizze, hogy ez az új kulcs a potenciálisan veszélyeztetett TDE-védőhöz, a különálló a kulcstartóban található jön létre, mivel hozzáférés-vezérlés a tároló szinten van kiépítve. 
+1. Hozzon létre egy [új kulcsot a Key Vaultban](/powershell/module/az.keyvault/add-azkeyvaultkey). Ellenőrizze, hogy ez az új kulcs a potenciálisan veszélyeztetett TDE-védőhöz, a különálló a kulcstartóban található jön létre, mivel hozzáférés-vezérlés a tároló szinten van kiépítve.
 2. Adja meg az új kulcsot a kiszolgálóra történő a [Add-AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey) és [Set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) parancsmagok és a kiszolgáló új TDE-védőhöz szerint módosítsa azt.
 
    ```powershell
@@ -74,12 +74,12 @@ Ez az útmutató két módszer attól függően, a kívánt eredményt keresztü
    -ResourceGroupName <SQLDatabaseResourceGroupName>
    ```
 
-4. Igénybe vehet egy [az új kulcs biztonsági mentési](/powershell/module/az.keyvault/backup-azurekeyvaultkey) a Key Vaultban.
+4. Igénybe vehet egy [az új kulcs biztonsági mentési](/powershell/module/az.keyvault/backup-azkeyvaultkey) a Key Vaultban.
 
    ```powershell
    <# -OutputFile parameter is optional; 
    if removed, a file name is automatically generated. #>
-   Backup-AzureKeyVaultKey `
+   Backup-AzKeyVaultKey `
    -VaultName <KeyVaultName> `
    -Name <KeyVaultKeyName> `
    -OutputFile <DesiredBackupFilePath>
@@ -93,7 +93,7 @@ Ez az útmutató két módszer attól függően, a kívánt eredményt keresztü
    -Name <KeyVaultKeyName>
    ```
  
-6. Kulcs visszaállítása a Key Vault használatával a jövőben a [Restore-AzKeyVaultKey](/powershell/module/az.keyvault/restore-azurekeyvaultkey) parancsmagot:
+6. Kulcs visszaállítása a Key Vault használatával a jövőben a [Restore-AzKeyVaultKey](/powershell/module/az.keyvault/restore-azkeyvaultkey) parancsmagot:
    ```powershell
    Restore-AzKeyVaultKey `
    -VaultName <KeyVaultName> `

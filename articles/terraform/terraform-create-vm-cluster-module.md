@@ -2,19 +2,19 @@
 title: Virtuálisgép-fürt létrehozása az Azure-ban Terraform-modulokkal
 description: Megtudhatja, hogyan használhatók a Terraform-modulok Windows rendszerű virtuálisgép-fürtök létrehozásra az Azure-ban
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, devops, virtuális gép, hálózat, modulok
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/19/2017
-ms.openlocfilehash: d5a820da94254fe0da416d9219f7582d3a4241cb
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: c6aa780b04c85b8156463011c2b90da2da4541f6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696166"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776274"
 ---
 # <a name="create-a-vm-cluster-with-terraform-using-the-module-registry"></a>Virtuálisgép-fürt létrehozása a Terraformmal a Modul Registryvel
 

@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: tutorial
-ms.date: 7/24/2018
+ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: 73b8dfd741543560cd6ebf26178618a70bdae5f6
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b4d75c7a6db89b19d88cddcc564fd4e6a9ad0f49
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992772"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57770459"
 ---
 # <a name="tutorial-create-an-azure-dns-private-zone-using-azure-powershell"></a>Oktatóanyag: Hozzon létre egy privát Azure DNS-zóna, Azure PowerShell-lel
 
@@ -53,7 +53,7 @@ New-AzResourceGroup -name MyAzureResourceGroup -location "eastus"
 
 ## <a name="create-a-dns-private-zone"></a>Saját DNS-zóna létrehozása
 
-DNS-zóna létrehozásához használja a `New-AzDnsZone` parancsmagot, és adja meg a *Private* értéket a **ZoneType** paraméterhez. Az alábbi példaparancs a **MyAzureResourceGroup** erőforráscsoportban létrehozza a **contoso.local** DNS-zónát, majd elérhetővé teszi azt a **MyAzureVnet** nevű virtuális hálózat számára.
+DNS-zóna létrehozásához használja a `New-AzDnsZone` parancsmagot, és adja meg a *Private* értéket a **ZoneType** paraméterhez. A következő példában létrehozunk egy DNS-zónát **private.contoso.com** az erőforráscsoport neve **MyAzureResourceGroup** és elérhetővé teszi a DNS-zóna nevű virtuális hálózathoz való  **MyAzureVnet**.
 
 A **ZoneType** paraméter kihagyása esetén a zóna nyilvános zónaként jön létre, ezért a paraméter megadása kötelező a privát zónák létrehozásához. 
 
@@ -66,7 +66,7 @@ $vnet = New-AzVirtualNetwork `
   -AddressPrefix 10.2.0.0/16 `
   -Subnet $backendSubnet
 
-New-AzDnsZone -Name contoso.local -ResourceGroupName MyAzureResourceGroup `
+New-AzDnsZone -Name private.contoso.com -ResourceGroupName MyAzureResourceGroup `
    -ZoneType Private `
    -RegistrationVirtualNetworkId @($vnet.Id)
 ```
@@ -118,10 +118,10 @@ Ez eltarthat pár percig.
 
 ## <a name="create-an-additional-dns-record"></a>További DNS-rekord létrehozása
 
-Rekordhalmazt a `New-AzDnsRecordSet` parancsmag használatával hozhat létre. Az alábbi példa a **MyAzureResourceGroup** erőforráscsoport **contoso.local** DNS-zónájában hoz létre egy rekordot **db** relatív néven. A rekordkészlet teljes neve **db.contoso.local**. A rekord típusa „A”, az IP-címe „10.2.0.4”, az élettartama pedig 3600 másodperc.
+Rekordhalmazt a `New-AzDnsRecordSet` parancsmag használatával hozhat létre. Az alábbi példa létrehoz egy rekordot a relatív nevű **db** a DNS-zónában **private.contoso.com**, erőforráscsoportban **MyAzureResourceGroup**. A beállított rekord teljes neve **db.private.contoso.com**. A rekord típusa „A”, az IP-címe „10.2.0.4”, az élettartama pedig 3600 másodperc.
 
 ```azurepowershell
-New-AzDnsRecordSet -Name db -RecordType A -ZoneName contoso.local `
+New-AzDnsRecordSet -Name db -RecordType A -ZoneName private.contoso.com `
    -ResourceGroupName MyAzureResourceGroup -Ttl 3600 `
    -DnsRecords (New-AzDnsRecordConfig -IPv4Address "10.2.0.4")
 ```
@@ -131,13 +131,13 @@ New-AzDnsRecordSet -Name db -RecordType A -ZoneName contoso.local `
 A zónájában lévő DNS-rekordokat a következő paranccsal listázhatja:
 
 ```azurepowershell
-Get-AzDnsRecordSet -ZoneName contoso.local -ResourceGroupName MyAzureResourceGroup
+Get-AzDnsRecordSet -ZoneName private.contoso.com -ResourceGroupName MyAzureResourceGroup
 ```
 Ne feledje, hogy a két tesztelési célú virtuális gép automatikusan létrehozott A rekordjai nem jelennek meg.
 
 ## <a name="test-the-private-zone"></a>A saját zóna tesztelése
 
-Most tesztelheti a **contoso.local** privát zóna névfeloldását.
+Most tesztelheti a névfeloldás a **private.contoso.com** saját zóna.
 
 ### <a name="configure-vms-to-allow-inbound-icmp"></a>Virtuális gépek konfigurálása a befelé irányuló ICMP-forgalom engedélyezésére
 
@@ -156,13 +156,13 @@ Ismételje meg ezt a myVM02 gép esetében is.
 
 1. A myVM02 gép Windows PowerShell parancssorából pingelje meg a myVM01 gépet az automatikusan regisztrált gazdagépnév használatával:
    ```
-   ping myVM01.contoso.local
+   ping myVM01.private.contoso.com
    ```
    A következőhöz hasonló kimenetnek kell megjelennie:
    ```
-   PS C:\> ping myvm01.contoso.local
+   PS C:\> ping myvm01.private.contoso.com
 
-   Pinging myvm01.contoso.local [10.2.0.4] with 32 bytes of data:
+   Pinging myvm01.private.contoso.com [10.2.0.4] with 32 bytes of data:
    Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
    Reply from 10.2.0.4: bytes=32 time=1ms TTL=128
    Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
@@ -176,13 +176,13 @@ Ismételje meg ezt a myVM02 gép esetében is.
    ```
 2. Most pingelje meg a korábban létrehozott **db** nevet:
    ```
-   ping db.contoso.local
+   ping db.private.contoso.com
    ```
    A következőhöz hasonló kimenetnek kell megjelennie:
    ```
-   PS C:\> ping db.contoso.local
+   PS C:\> ping db.private.contoso.com
 
-   Pinging db.contoso.local [10.2.0.4] with 32 bytes of data:
+   Pinging db.private.contoso.com [10.2.0.4] with 32 bytes of data:
    Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
    Reply from 10.2.0.4: bytes=32 time<1ms TTL=128
    Reply from 10.2.0.4: bytes=32 time<1ms TTL=128

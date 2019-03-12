@@ -12,20 +12,22 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: 468de59408ae3403fb16e6272bb2f7517e0c2190
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 2038ce62e252260dda73813df97a68ee4b3fff61
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445500"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548898"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Az Azure Log Analytics Nozzle üzembe helyezése a Cloud Foundry figyelése
 
-[Az Azure Log Analytics](https://azure.microsoft.com/services/log-analytics/) egy szolgáltatás az Azure-ban. Ez segít összegyűjteni és elemezni az adatokat, amelyeket akkor jön létre, a felhőből a helyszíni környezetekben.
+[Az Azure Monitor](https://azure.microsoft.com/services/log-analytics/) egy szolgáltatás az Azure-ban. Ez segít összegyűjteni és elemezni az adatokat, amelyeket akkor jön létre, a felhőből a helyszíni környezetekben.
 
-A Log Analytics Nozzle (Nozzle) egy Cloud Foundry (CF) összetevő, amely továbbítja a metrikák a [Cloud Foundry loggregator](https://docs.cloudfoundry.org/loggregator/architecture.html) "firehose" a Log Analytics szolgáltatásba. A Nozzle a collect, megtekintheti, és elemezze a CF-hez rendszer állapotának és teljesítményének metrikákat, a több központi telepítést.
+A Log Analytics Nozzle (Nozzle) egy Cloud Foundry (CF) összetevő, amely továbbítja a metrikák a [Cloud Foundry loggregator](https://docs.cloudfoundry.org/loggregator/architecture.html) "firehose" az Azure Monitor naplóira. A Nozzle a collect, megtekintheti, és elemezze a CF-hez rendszer állapotának és teljesítményének metrikákat, a több központi telepítést.
 
-Ebből a dokumentumból megismerheti, hogyan a Nozzle a CF-hez környezet üzembe helyezése, és majd elérni az adatokat a Log Analytics-konzolról.
+Ebből a dokumentumból megismerheti, hogyan a Nozzle a CF-hez környezet üzembe helyezése, és majd elérni az adatokat az Azure Monitor naplók konzolról.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -53,11 +55,11 @@ Mielőtt beállítaná a UAA parancssori ügyfelét, győződjön meg arról, ho
 
 ### <a name="3-create-a-log-analytics-workspace-in-azure"></a>3. Az Azure Log Analytics-munkaterület létrehozása
 
-A Log Analytics-munkaterületet is létrehozhat, manuálisan vagy egy sablon használatával. A sablon üzembe helyezni egy előre konfigurált KPI-nézetek és riasztások a Log Analytics-konzol telepítése. 
+A Log Analytics-munkaterületet is létrehozhat, manuálisan vagy egy sablon használatával. A sablon egy előre konfigurált KPI nézeteket és riasztásokat az Azure Monitor naplók konzol telepítő telepíti. 
 
 #### <a name="to-create-the-workspace-manually"></a>A munkaterület manuális létrehozásához:
 
-1. Az Azure Portalon a szolgáltatások listájában keresse az Azure piactéren, és válassza ki a Log Analytics.
+1. Az Azure Portalon a szolgáltatások listájában keresse az Azure piactéren, és válassza ki a Log Analytics-munkaterületek.
 2. Válassza ki **létrehozás**, majd válassza ki az egyik lehetőséget a következő elemeknél:
 
    * **Log Analytics-munkaterület**: Írja be a munkaterület nevét.
@@ -66,7 +68,7 @@ A Log Analytics-munkaterületet is létrehozhat, manuálisan vagy egy sablon has
    * **Hely**: Adja meg a helyet.
    * **A tarifacsomag**: Válassza ki **OK** befejezéséhez.
 
-További információkért lásd: [Ismerkedés a Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started).
+További információkért lásd: [Ismerkedés az Azure Monitor naplóira](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started).
 
 #### <a name="to-create-the-log-analytics-workspace-through-the-monitoring-template-from-azure-market-place"></a>A figyelési sablon segítségével a Log Analytics-munkaterület létrehozása az Azure Marketplace-beli:
 
@@ -91,7 +93,7 @@ Többféleképpen is a Nozzle üzembe helyezése néhány: PCF csempe formájáb
 
 ### <a name="deploy-the-nozzle-as-a-pcf-ops-manager-tile"></a>A PCF az Ops Manager csempeként az Nozzle üzembe helyezése
 
-Kövesse a lépéseket a [telepítése és konfigurálása az Azure Log Analytics Nozzle a PCF](http://docs.pivotal.io/partners/azure-log-analytics-nozzle/installing.html). Ez az egyszerűsített módszer, automatikusan konfigurálja és küldje le a nozzle a PCF az Ops manager csempét. 
+Kövesse a lépéseket a [telepítése és konfigurálása az Azure Log Analytics Nozzle a PCF](https://docs.pivotal.io/partners/azure-log-analytics-nozzle/installing.html). Ez az egyszerűsített módszer, automatikusan konfigurálja és küldje le a nozzle a PCF az Ops manager csempét. 
 
 ### <a name="deploy-the-nozzle-manually-as-a-cf-application"></a>Telepítheti manuálisan a Nozzle a CF-alkalmazás
 
@@ -136,9 +138,9 @@ Most már beállíthatja a környezeti változók a manifest.yml fájl az aktuá
 ```
 OMS_WORKSPACE             : Log Analytics workspace ID: Open your Log Analytics workspace in the Azure portal, select **Advanced settings**, select **Connected Sources**, and select **Windows Servers**.
 OMS_KEY                   : OMS key: Open your Log Analytics workspace in the Azure portal, select **Advanced settings**, select **Connected Sources**, and select **Windows Servers**.
-OMS_POST_TIMEOUT          : HTTP post timeout for sending events to Log Analytics. The default is 10 seconds.
-OMS_BATCH_TIME            : Interval for posting a batch to Log Analytics. The default is 10 seconds.
-OMS_MAX_MSG_NUM_PER_BATCH : The maximum number of messages in a batch to Log Analytics. The default is 1000.
+OMS_POST_TIMEOUT          : HTTP post timeout for sending events to Azure Monitor logs. The default is 10 seconds.
+OMS_BATCH_TIME            : Interval for posting a batch to Azure Monitor logs. The default is 10 seconds.
+OMS_MAX_MSG_NUM_PER_BATCH : The maximum number of messages in a batch to Azure Monitor logs. The default is 1000.
 API_ADDR                  : The API URL of the CF environment. For more information, see the preceding section, "Sign in to your CF deployment as an admin through CF CLI."
 DOPPLER_ADDR              : Loggregator's traffic controller URL. For more information, see the preceding section, "Sign in to your CF deployment as an admin through CF CLI."
 FIREHOSE_USER             : CF user you created in the preceding section, "Create a CF user and grant required privileges." This user has firehose and Cloud Controller admin access.
@@ -148,8 +150,8 @@ SKIP_SSL_VALIDATION       : If true, allows insecure connections to the UAA and 
 CF_ENVIRONMENT            : Enter any string value for identifying logs and metrics from different CF environments.
 IDLE_TIMEOUT              : The Keep Alive duration for the firehose consumer. The default is 60 seconds.
 LOG_LEVEL                 : The logging level of the Nozzle. Valid levels are DEBUG, INFO, and ERROR.
-LOG_EVENT_COUNT           : If true, the total count of events that the Nozzle has received and sent are logged to Log Analytics as CounterEvents.
-LOG_EVENT_COUNT_INTERVAL  : The time interval of the logging event count to Log Analytics. The default is 60 seconds.
+LOG_EVENT_COUNT           : If true, the total count of events that the Nozzle has received and sent are logged to Azure Monitor logs as CounterEvents.
+LOG_EVENT_COUNT_INTERVAL  : The time interval of the logging event count to Azure Monitor logs. The default is 60 seconds.
 ```
 
 ### <a name="push-the-application-from-your-development-computer"></a>Az alkalmazás a fejlesztői számítógépről küldése
@@ -176,7 +178,7 @@ Győződjön meg arról, hogy az OMS Nozzle alkalmazás fut-e.
 
 ## <a name="view-the-data-in-the-azure-portal"></a>Az adatok megtekintése az Azure Portalon
 
-Ha telepítette a figyelési megoldás a Marketplace-beli sablonon keresztül, az Azure portal megnyitása, és keresse meg a megoldás. A sablonban megadott erőforráscsoportban találja a megoldást. Kattintson a megoldást, keresse meg a "Log Analytics konzolt", az előre konfigurált nézeteket szerepel a listában, felső Cloud Foundry rendszer KPI-k, az alkalmazásadatok, a riasztások és a virtuális gép mérőszámok. 
+Ha telepítette a figyelési megoldás a Marketplace-beli sablonon keresztül, az Azure portal megnyitása, és keresse meg a megoldás. A sablonban megadott erőforráscsoportban találja a megoldást. Kattintson a megoldást, keresse meg a "log analytics konzolt", az előre konfigurált nézeteket szerepel a listában, felső Cloud Foundry rendszer KPI-k, az alkalmazásadatok, a riasztások és a virtuális gép mérőszámok. 
 
 Ha manuálisan hozott létre a Log Analytics-munkaterülethez, kövesse az alábbi lépéseket, a nézeteket és riasztásokat hozhat létre:
 
@@ -200,7 +202,7 @@ Is [a riasztások létrehozása](https://docs.microsoft.com/azure/log-analytics/
 | Type=CF_ValueMetric_CL Origin_s=route_emitter Name_s=ConsulDownMode Value_d>0 | Eredmények > 0 száma   | Consul rendszeres időközönként bocsát ki a megfelelő állapotot. a 0 azt jelenti, a rendszer kifogástalan állapotú, és 1 azt jelenti, hogy az útvonal vezérlő észleli, hogy Consul le van-e. |
 | Type=CF_CounterEvent_CL Origin_s=DopplerServer (Name_s="TruncatingBuffer.DroppedMessages" or Name_s="doppler.shedEnvelopes") Delta_d>0 | Eredmények > 0 száma | A különbözeti száma miatt nyomása Doppler által szándékosan eldobott üzenetek. |
 | Type=CF_LogMessage_CL SourceType_s=LGR MessageType_s=ERR                      | Eredmények > 0 száma   | Loggregator bocsát ki **LGR** való problémáira utalnak a naplózási folyamatot. Egy példa ilyen probléma esetén, hogy a kimenet üzenet értéke túl magas. |
-| Type=CF_ValueMetric_CL Name_s=slowConsumerAlert                               | Eredmények > 0 száma   | A Nozzle loggregator egy lassú fogyasztói riasztást kap, amikor elküldi a **slowConsumerAlert** ValueMetric a Log Analytics szolgáltatásba. |
+| Type=CF_ValueMetric_CL Name_s=slowConsumerAlert                               | Eredmények > 0 száma   | A Nozzle loggregator egy lassú fogyasztói riasztást kap, amikor elküldi a **slowConsumerAlert** az Azure monitornak ValueMetric naplózza. |
 | Type=CF_CounterEvent_CL Job_s=nozzle Name_s=eventsLost Delta_d>0              | Eredmények > 0 száma   | Ha a különbözeti elveszett események száma eléri a küszöbértéket, az azt jelenti, a Nozzle futó problémák lehetnek. |
 
 ## <a name="scale"></a>Méretezés
@@ -235,7 +237,7 @@ A CF-hez parancssori felület ablakában írja be:
 cf delete <App Name> -r
 ```
 
-Ha eltávolítja a Nozzle, az adatok az OMS-portálon nem törlődik automatikusan. A Log Analytics megőrzési beállítás alapján lejár.
+Ha eltávolítja a Nozzle, az adatok az OMS-portálon nem törlődik automatikusan. Lejár az Azure Monitor naplók megőrzési beállítás alapján.
 
 ## <a name="support-and-feedback"></a>Támogatás és visszajelzés
 
@@ -243,6 +245,6 @@ Az Azure Log Analytics Nozzle a nyílt forráskóddal. A kérdések és visszaje
 
 ## <a name="next-step"></a>Következő lépés
 
-PCF2.0, a virtuális gép teljesítmény-mérőszámok kerüljenek az Azure log analytics nozzle rendszer metrikák továbbítót, és a Log Analytics-munkaterület integrálva. Már nincs szüksége a Log Analytics-ügynököket a virtuális gép teljesítmény-mérőszámon. Syslog kapcsolatos információk összegyűjtéséhez azonban a Log Analytics-ügynökök továbbra is használhatja. A Log Analytics-ügynök telepítve van egy Bosh végpontállapot CF virtuális gépekhez. 
+PCF2.0, a virtuális gép teljesítmény-mérőszámok kerüljenek az Azure Log Analytics nozzle rendszer metrikák továbbítót, és a Log Analytics-munkaterület integrálva. Már nincs szüksége a Log Analytics-ügynököket a virtuális gép teljesítmény-mérőszámon. Syslog kapcsolatos információk összegyűjtéséhez azonban a Log Analytics-ügynökök továbbra is használhatja. A Log Analytics-ügynök telepítve van egy Bosh végpontállapot CF virtuális gépekhez. 
 
 További információkért lásd: [üzembe helyezése a Log Analytics-ügynök a Cloud Foundry telepítés](https://github.com/Azure/oms-agent-for-linux-boshrelease).

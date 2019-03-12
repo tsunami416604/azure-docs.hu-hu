@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 11/20/2017
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24d050cbfbe3def0e6475b807f88102f3edfe4f7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d1d0540ccfb9b4aac03b750b5c0002055bdd536a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204661"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546738"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-data-lake-store"></a>Oktatóanyag: Az Azure Data Lake Storage elérése Linux VM-beli, rendszer által hozzárendelt felügyelt identitással
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]
 
-Ez az oktatóanyag bemutatja, hogyan férhet hozzá a Cosmos DB-hez egy Linux rendszerű virtuális gép (VM) rendszer által hozzárendelt felügyelt identitásával. Az alábbiak végrehajtásának módját ismerheti meg: 
+Az oktatóanyag bemutatja, hogyan lehet egy rendszer által hozzárendelt felügyelt identitás használata Linux rendszerű virtuális gép (VM) az Azure Data Lake Store eléréséhez. Az alábbiak végrehajtásának módját ismerheti meg: 
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 

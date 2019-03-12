@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: dccd685c240d6e007486be6a4f73e0fce0129a82
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: cb18b9063599520ccc6caec44053dc9780969f74
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405232"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532329"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Tudnivalók a kulcsok, titkos kódok és tanúsítványok
 
@@ -39,7 +39,7 @@ Az alábbi szakaszok a Key Vault szolgáltatás megvalósítása között vonatk
 
 A JavaScript Object Notation (JSON) és a JavaScript Object aláírás és titkosítás (JOSE) előírások olyan fontos háttér-információkat.  
 
--   [JSON webes kulcs (JWK)](http://tools.ietf.org/html/draft-ietf-jose-json-web-key)  
+-   [JSON webes kulcs (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key)  
 -   [JSON webes titkosítás (JWE)](http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption)  
 -   [JSON Web Algorithms (JWA)](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms)  
 -   [JSON webes aláírás (KMH)](http://tools.ietf.org/html/draft-ietf-jose-json-web-signature)  
@@ -166,7 +166,7 @@ A Key Vault nem támogatja az EXPORTÁLÁSI műveletekkel. Miután egy kulcsot a
 
 Felhasználók korlátozhatják a titkosítási műveletek, amely támogatja a Key Vault-JWK objektum key_ops tulajdonsággal kulcs alapon.  
 
-JWK-objektumokra vonatkozó további információkért lásd: [JSON webes kulcs (JWK)](http://tools.ietf.org/html/draft-ietf-jose-json-web-key).  
+JWK-objektumokra vonatkozó további információkért lásd: [JSON webes kulcs (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key).  
 
 ###  <a name="key-attributes"></a>Legfőbb attribútumai
 
@@ -189,7 +189,7 @@ Nem, de érvényes és a kulcs, külső lejárt a *nbf* / *exp* ablakban fog mű
 
 Az adattípusok további információkért lásd: [adattípusok](#data-types).
 
-Más lehetséges attribútumok további információkért lásd: a [JSON webes kulcs (JWK)](http://tools.ietf.org/html/draft-ietf-jose-json-web-key).
+Más lehetséges attribútumok további információkért lásd: a [JSON webes kulcs (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key).
 
 ### <a name="key-tags"></a>Kulcs címkék
 

@@ -9,14 +9,14 @@ items:
     items:
     - name: Legutóbbi frissítések
       href: azure-stack-servicing-policy.md#update-package-release-cadence
+    - name: 1902 update
+      href: azure-stack-update-1902.md
     - name: 1901 update
       href: azure-stack-update-1901.md
     - name: 1811 update
       href: azure-stack-update-1811.md
     - name: frissítés 1809
       href: azure-stack-update-1809.md
-    - name: 1808 update
-      href: azure-stack-update-1808.md
 - name: Gyors útmutatók
   items:
   - name: A felügyeleti portál
@@ -294,7 +294,7 @@ items:
       href: azure-stack-app-service-update.md
     - name: Kapcsolat nélküli frissítése az App Service-ben
       href: azure-stack-app-service-update-offline.md
-    - name: További webes feldolgozói szerepkörök hozzáadása
+    - name: Az App Service-infrastruktúra-szerepkörök hozzáadása
       href: azure-stack-app-service-add-worker-roles.md
     - name: Központi telepítés forrásának konfigurálása
       href: azure-stack-app-service-configure-deployment-sources.md
@@ -399,9 +399,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-stack
   - name: Képzés és tanúsítványok
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: 0a38112e8e57c685dec49a380a0e669429dc2673
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: ed6de4a1839c8fe60248e79e5349d8077193d052
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991620"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774268"

@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 02/22/2017
 ms.author: sngun
-ms.openlocfilehash: 5d80c0a8464a9672859a3fbd305bbd4ab322b092
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 203bb0d9630ad50b1a80fcd674322524220b3147
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037089"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57545243"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: .NET-példák az SQL API-hoz
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ A [Microsoft.Azure.DocumentDB NuGet-csomagra](https://www.nuget.org/packages/Mic
 > 
 
 ## <a name="database-examples"></a>Adatbázispéldák
-A DatabaseManagement projekt mintájának [RunDatabaseDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/DatabaseManagement/Program.cs#L72-L121) metódusa mutatja a következő feladatok elvégzési módját.
+A DatabaseManagement projekt mintájának [RunDatabaseDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/DatabaseManagement/Program.cs#L72-L121) metódusa mutatja a következő feladatok elvégzési módját. További információ az Azure Cosmos-adatbázisok a következő minták futtatása előtt,: [-adatbázisok, tárolók és elemek használata](databases-containers-items.md) fogalmi cikk. 
 
 | Tevékenység | API-referencia |
 | --- | --- |
@@ -59,7 +59,7 @@ A DatabaseManagement projekt mintájának [RunDatabaseDemo](https://github.com/A
 | [Adatbázis törlése](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/DatabaseManagement/Program.cs#L118) |[DocumentClient.DeleteDatabaseAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.deletedatabaseasync.aspx) |
 
 ## <a name="collection-examples"></a>Gyűjteménypéldák
-A minta CollectionManagement projekt [RunCollectionDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/CollectionManagement/Program.cs#L96-L185) metódusa mutatja a következő feladatok elvégzési módját.
+A minta CollectionManagement projekt [RunCollectionDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/530c8d9cf7c99df7300246da05206c57ce654233/samples/code-samples/CollectionManagement/Program.cs#L96-L185) metódusa mutatja a következő feladatok elvégzési módját. További információ az Azure Cosmos-gyűjtemények a következő minták futtatása előtt,: [-adatbázisok, tárolók és elemek használata](databases-containers-items.md) fogalmi cikk. 
 
 | Tevékenység | API-referencia |
 | --- | --- |
@@ -71,7 +71,7 @@ A minta CollectionManagement projekt [RunCollectionDemo](https://github.com/Azur
 | [Gyűjtemény törlése](https://github.com/Azure/azure-documentdb-dotnet/blob/89670bc8aefd9bdd932db7f9b6d2fcb9b6acf35e/samples/code-samples/CollectionManagement/Program.cs#L175) |[DocumentClient.DeleteDocumentCollectionAsync](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.documentclient.deletedocumentcollectionasync.aspx) |
 
 ## <a name="document-examples"></a>Dokumentumpéldák
-A minta DocumentManagement projekt [RunDocumentsDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/f374cc601f4cf08d11c88f0c3fa7dcefaf7ecfe8/samples/code-samples/DocumentManagement/Program.cs#L97-L102) metódusa mutatja a következő feladatok elvégzési módját.
+A minta DocumentManagement projekt [RunDocumentsDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/f374cc601f4cf08d11c88f0c3fa7dcefaf7ecfe8/samples/code-samples/DocumentManagement/Program.cs#L97-L102) metódusa mutatja a következő feladatok elvégzési módját. További információ az Azure Cosmos-dokumentumok, a következő minták futtatása előtt,: [-adatbázisok, tárolók és elemek használata](databases-containers-items.md) fogalmi cikk. 
 
 | Tevékenység | API-referencia |
 | --- | --- |
@@ -87,7 +87,7 @@ A minta DocumentManagement projekt [RunDocumentsDemo](https://github.com/Azure/a
 | [A dokumentum olvasása csak akkor, ha a dokumentum megváltozott](https://github.com/Azure/azure-documentdb-dotnet/blob/f2b11dec45a195ddeed333560ebba63055f5ed09/samples/code-samples/DocumentManagement/Program.cs#L442-L470) |[DocumentClient.AccessCondition](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.accesscondition.aspx)<br>[Documents.Client.AccessConditionType](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.accessconditiontype.aspx) |
 
 ## <a name="indexing-examples"></a>Indexelési példák
-A minta IndexManagement projekt [RunIndexDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/ea8c977b9c2f37ddc2894911ec239907ab60e40a/samples/code-samples/IndexManagement/Program.cs#L89-L117) metódusa mutatja a következő feladatok elvégzési módját.
+A minta IndexManagement projekt [RunIndexDemo](https://github.com/Azure/azure-documentdb-dotnet/blob/ea8c977b9c2f37ddc2894911ec239907ab60e40a/samples/code-samples/IndexManagement/Program.cs#L89-L117) metódusa mutatja a következő feladatok elvégzési módját. A következő minták futtatása előtt az Azure Cosmos DB indexelése kapcsolatos további információkért lásd: [indexelési szabályzataihoz](index-policy.md), [adattípusok indexelése](index-types.md), és [elérési utak indexelő](index-paths.md) elméleti cikkeket. 
 
 | Tevékenység | API-referencia |
 | --- | --- |
@@ -102,7 +102,8 @@ A minta IndexManagement projekt [RunIndexDemo](https://github.com/Azure/azure-do
 További információ az indexelésről: [Azure Cosmos DB indexelési szabályzat](index-policy.md).
 
 ## <a name="geospatial-examples"></a>Térinformatikai példák
-A térinformatikai mintafájl ([azure-documentdb-dotnet/samples/code-samples/Geospatial/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs)) bemutatja, hogyan végezheti el a következő feladatokat.  
+A térinformatikai mintafájl ([azure-documentdb-dotnet/samples/code-samples/Geospatial/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Geospatial/Program.cs)) bemutatja, hogyan végezheti el a következő feladatokat.  A GeoJSON és a földrajzi adatokat a következő minták futtatása előtt, lásd: [térinformatikai és GeoJSON a helyadatok használatát](geospatial.md) fogalmi cikk. 
+
 
 | Tevékenység | API-referencia |
 | --- | --- |
@@ -116,7 +117,7 @@ A térinformatikai mintafájl ([azure-documentdb-dotnet/samples/code-samples/Geo
 A térinformatikai adatok használatával kapcsolatban további információt a [térinformatikai adatok Azure Cosmos DB-ben való használatát leíró cikkben talál](geospatial.md).  
 
 ## <a name="query-examples"></a>Lekérdezéspéldák
-A lekérdezési dokumentumfájl ([azure-documentdb-dotnet/samples/code-samples/Queries/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs)), bemutatja, hogyan végezheti el a következő feladatokat az SQL-lekérdezési szintaxissal, a LINQ szolgáltató használatával lekérdezéssel, és a Lambda használatával.
+A lekérdezési dokumentumfájl ([azure-documentdb-dotnet/samples/code-samples/Queries/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs)), bemutatja, hogyan végezheti el a következő feladatokat az SQL-lekérdezési szintaxissal, a LINQ szolgáltató használatával lekérdezéssel, és a Lambda használatával. További információ az SQL-lekérdezés referencia az Azure Cosmos DB a következő minták futtatása előtt,: [SQL-lekérdezés példák](how-to-sql-query.md) fogalmi cikk. 
 
 | Tevékenység | API-referencia |
 | --- | --- |
@@ -138,7 +139,8 @@ A lekérdezési dokumentumfájl ([azure-documentdb-dotnet/samples/code-samples/Q
 További információ a lekérdezések írásáról: [SQL-lekérdezés az Azure Cosmos DB-ben](how-to-sql-query.md).
 
 ## <a name="change-feed-examples"></a>Változáscsatornák példái 
-A változáscsatorna-minta ([azure-documentdb-dotnet/samples/code-samples/ChangeFeed/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs)) bemutatja, hogyan végezheti el a következő feladatokat. 
+A változáscsatorna-minta ([azure-documentdb-dotnet/samples/code-samples/ChangeFeed/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs)) bemutatja, hogyan végezheti el a következő feladatokat. A következő minták futtatása előtt az Azure Cosmos DB csatorna módosítása kapcsolatos további információkért lásd: [beállítások olvasásához a módosítási hírcsatornáról](read-change-feed.md) és [módosítási hírcsatorna processzor](change-feed-processor.md) elméleti cikkeket. 
+
 
 | Tevékenység | API-referencia |
 | --- | --- |
@@ -148,7 +150,7 @@ A változáscsatorna-minta ([azure-documentdb-dotnet/samples/code-samples/Change
 A módosítási hírcsatorna a processzor-minta:  [Módosítsa az áttelepítési eszköz hírcsatorna](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/ChangeFeedMigrationTool) replikálja az adatokat egy másik Cosmos DB-gyűjtemények a változáscsatorna feldolgozói kódtára segítségével mutatja be.   
 
 ## <a name="server-side-programming-examples"></a>Kiszolgálóoldali programozási példák
-A kiszolgálóoldali programozási fájl ([azure-documentdb-dotnet/samples/code-samples/ServerSideScripts/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs)) bemutatja, hogyan végezheti el a következő feladatokat.
+A kiszolgálóoldali programozási fájl ([azure-documentdb-dotnet/samples/code-samples/ServerSideScripts/Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/ServerSideScripts/Program.cs)) bemutatja, hogyan végezheti el a következő feladatokat. A következő minták futtatása előtt az Azure Cosmos DB kiszolgálóoldali programozása kapcsolatos további információkért lásd: [tárolt eljárások, eseményindítók és felhasználó által definiált függvények](stored-procedures-triggers-udfs.md) fogalmi cikk. 
 
 | Tevékenység | API-referencia |
 | --- | --- |

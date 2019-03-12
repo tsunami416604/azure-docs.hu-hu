@@ -2,19 +2,19 @@
 title: Hozzon létre egy küllős hálózati a terraform használatával Azure-ban
 description: Ismerje meg, hogyan valósíthat meg két küllő virtuális hálózatokhoz csatlakoznak a küllős topológiában
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, hub and spoke, networks, hybrid networks, devops, virtual machine, azure, VNet peering, spoke, hub-spoke
 author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
 ms.date: 03/01/2019
-ms.openlocfilehash: 71e8c9f50c4540308380e3f29acfc7bed4b427d7
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 3487d062fb9c3334bcf06c525a3c42faac3014be
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57411405"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780507"
 ---
 # <a name="tutorial-create-a-spoke-virtual-network-with-terraform-in-azure"></a>Oktatóanyag: Az Azure-beli terraform küllő virtuális hálózat létrehozása
 

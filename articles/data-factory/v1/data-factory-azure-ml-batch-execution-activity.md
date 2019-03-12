@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: fe671dec730cd1a593c6413c38625677c3f9d164
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 6c71956bf43a0147d5abff4b708be93f62fe34fa
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894105"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57545040"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Az Azure Machine Learning és az Azure Data Factory prediktív adatcsatornák létrehozása
 
@@ -303,7 +303,7 @@ Azt javasoljuk, hogy mindenképpen haladjon végig a [Data Factory használatán
     }
     ```
 
-      Mindkét **start** és **záró** időpontok kell [ISO formátumban](http://en.wikipedia.org/wiki/ISO_8601). Példa: 2014-10-14T16:32:41Z. A **záró** idő megadása nem kötelező. Ha nem ad meg értéket a **záró** tulajdonságot, akkor számítjuk ki, hogy "**kezdő időpont + 48 óra.**" A folyamat határozatlan ideig történő futtatásához adja meg a **9999-09-09** értéket az **end** (befejezés) tulajdonsághoz. A JSON-tulajdonságokkal kapcsolatos információkért lásd: [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) (Referencia a JSON-parancsprogramokhoz).
+      Mindkét **start** és **záró** időpontok kell [ISO formátumban](https://en.wikipedia.org/wiki/ISO_8601). Példa: 2014-10-14T16:32:41Z. A **záró** idő megadása nem kötelező. Ha nem ad meg értéket a **záró** tulajdonságot, akkor számítjuk ki, hogy "**kezdő időpont + 48 óra.**" A folyamat határozatlan ideig történő futtatásához adja meg a **9999-09-09** értéket az **end** (befejezés) tulajdonsághoz. A JSON-tulajdonságokkal kapcsolatos információkért lásd: [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) (Referencia a JSON-parancsprogramokhoz).
 
       > [!NOTE]
       > Adja meg a AzureMLBatchExecution beviteli tevékenység nem kötelező.
@@ -407,7 +407,7 @@ Az Azure Machine Learning-kísérletből a reader module segítségével, ha az 
 A fenti JSON-példa:
 
 * A telepített Azure Machine Learning Web service olvasási/írási adatokat az Azure SQL Database a és a egy olvasó és a egy író modul használatával. A webszolgáltatás tünteti fel a következő négy paraméterek:  Adatbázis-kiszolgáló nevét, adatbázisnevet, Server felhasználói fiók nevét és kiszolgáló felhasználói fiók jelszavát.
-* Mindkét **start** és **záró** időpontok kell [ISO formátumban](http://en.wikipedia.org/wiki/ISO_8601). Példa: 2014-10-14T16:32:41Z. A **záró** idő megadása nem kötelező. Ha nem ad meg értéket a **záró** tulajdonságot, akkor számítjuk ki, hogy "**kezdő időpont + 48 óra.**" A folyamat határozatlan ideig történő futtatásához adja meg a **9999-09-09** értéket az **end** (befejezés) tulajdonsághoz. A JSON-tulajdonságokkal kapcsolatos információkért lásd: [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) (Referencia a JSON-parancsprogramokhoz).
+* Mindkét **start** és **záró** időpontok kell [ISO formátumban](https://en.wikipedia.org/wiki/ISO_8601). Példa: 2014-10-14T16:32:41Z. A **záró** idő megadása nem kötelező. Ha nem ad meg értéket a **záró** tulajdonságot, akkor számítjuk ki, hogy "**kezdő időpont + 48 óra.**" A folyamat határozatlan ideig történő futtatásához adja meg a **9999-09-09** értéket az **end** (befejezés) tulajdonsághoz. A JSON-tulajdonságokkal kapcsolatos információkért lásd: [JSON Scripting Reference](https://msdn.microsoft.com/library/dn835050.aspx) (Referencia a JSON-parancsprogramokhoz).
 
 ### <a name="other-scenarios"></a>Egyéb forgatókönyvek
 #### <a name="web-service-requires-multiple-inputs"></a>Webszolgáltatás igényel több bemenet
@@ -555,9 +555,9 @@ Egy általános forgatókönyv a webszolgáltatás-paraméterek használata Azur
 További információk az Azure Blob/Azure-beli SQL író vagy olvasó: [olvasó](https://msdn.microsoft.com/library/azure/dn905997.aspx) és [író](https://msdn.microsoft.com/library/azure/dn905984.aspx) témakörök az MSDN könyvtárában. A példa az előző szakaszban használt az Azure Blob-olvasó és az Azure Blob-író. Ez a szakasz bemutatja az Azure SQL-olvasó és az Azure SQL-író segítségével.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
-**KÉRDÉS:** A big data-adatcsatornákat által előállított több fájl van. A AzureMLBatchExecution tevékenység segítségével dolgozhat a fájlokon?
+**K:** A big data-adatcsatornákat által előállított több fájl van. A AzureMLBatchExecution tevékenység segítségével dolgozhat a fájlokon?
 
-**VÁLASZ:** Igen. Tekintse meg a **egy olvasó modul segítségével adatokat olvasni az Azure-Blobban található több fájl** című szakasz részletezi.
+**V:** Igen. Tekintse meg a **egy olvasó modul segítségével adatokat olvasni az Azure-Blobban található több fájl** című szakasz részletezi.
 
 ## <a name="azure-machine-learning-studio-batch-scoring-activity"></a>Az Azure Machine Learning studio kötegelt pontozási tevékenység
 Ha használja a **AzureMLBatchScoring** tevékenység, amely integrálható az Azure Machine Learning, azt javasoljuk, hogy használja-e a legújabb **AzureMLBatchExecution** tevékenység.
@@ -634,4 +634,4 @@ Is [Data Factory-függvények](data-factory-functions-variables.md) paraméterek
 
 [adf-build-1st-pipeline]: data-factory-build-your-first-pipeline.md
 
-[azure-machine-learning]: http://azure.microsoft.com/services/machine-learning/
+[azure-machine-learning]: https://azure.microsoft.com/services/machine-learning/

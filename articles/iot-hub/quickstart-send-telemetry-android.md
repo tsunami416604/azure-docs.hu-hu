@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/05/2018
 ms.author: wesmc
-ms.openlocfilehash: d90595d3d557293bfbc6b06aca638eb1b7c08d30
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 8f30918a73e1e7012ad3be151e778eb073627b84
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164313"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57726685"
 ---
 # <a name="quickstart-send-iot-telemetry-from-an-android-device"></a>Gyors útmutató: IoT-telemetriát küld egy Android-eszközön
 
@@ -86,6 +86,12 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 3. Az Android Studióban kattintson **fájl** > **projekt szinkronizálása a Gradle-fájlokkal**. Ellenőrizze, hogy a build létrehozása után.
 
+   > [!NOTE]
+   > Ha a projekt szinkronizálása sikertelen, a következő okok valamelyike lehet:
+   >
+   > * Az Android Gradle beépülő modul és a gradle-t a projekt hivatkozott verziók elavultak az Android Studio verziójának. Hajtsa végre a [ezek az utasítások](https://developer.android.com/studio/releases/gradle-plugin) való hivatkozást, és telepítheti a megfelelő verzióját a beépülő modul és a gradle-t a telepítéshez.
+   > * A licencszerződés feltételeit, az Android SDK még nincs aláírva. Kövesse az utasításokat a felépítési művelet kimenetében a licencszerződés feltételeit és az SDK letöltéséhez.
+
 4. Kattintson a létrehozás befejezése után **futtatása** > **"alkalmazás" futtatása**. Állítsa be az alkalmazást egy fizikai Android-eszköz vagy egy Android-emulátorban való futtatásához. Az Android-alkalmazás futtatása egy fizikai eszközt vagy emulátort a további információkért lásd: [az alkalmazás futtatása](https://developer.android.com/training/basics/firstapp/running-app).
 
 5. Ha az alkalmazás betöltött, kattintson a **Start** gombra kattintva indítsa el a telemetriai adatokat küldenek az IoT hubnak:
@@ -120,5 +126,5 @@ Ez a rövid útmutatóban beállított egy IoT hubot, regisztrált egy eszközt,
 Ha meg szeretné tudni, hogyan vezérelheti a szimulált eszközt egy háttéralkalmazáson keresztül, folytassa a következő oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [Gyors útmutató: Csatlakozik az IoT hub eszköz vezérlése](quickstart-control-device-android.md)
+> [Rövid útmutató: Csatlakozik az IoT hub eszköz vezérlése](quickstart-control-device-android.md)
 

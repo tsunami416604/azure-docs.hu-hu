@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: a769a71fe1e99467121eb49a490fa2d0ab4339d3
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: ceda22394aab27f27740bb999b36e2cc46a6bd06
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446410"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57568888"
 ---
 #    <a name="text-merge-cognitive-skill"></a>Szöveg egyesítési cognitive szakértelem
 
@@ -43,17 +43,17 @@ JSON-dokumentumok biztosítása használható bemeneti szakértelem lehet:
 
 ```json
 {
-    "values": [
+  "values": [
+    {
+      "recordId": "1",
+      "data":
       {
-        "recordId": "1",
-        "data":
-           {
-             "text": "The brown fox jumps over the dog" ,
-             "itemsToInsert": ["quick", "lazy"],
-             "offsets": [3, 28],
-           }
+        "text": "The brown fox jumps over the dog",
+        "itemsToInsert": ["quick", "lazy"],
+        "offsets": [3, 28],
       }
-    ]
+    }
+  ]
 }
 ```
 
@@ -62,15 +62,15 @@ Ez a példa bemutatja a korábbi bemenet, feltéve, hogy a kimenet a *insertPreT
 
 ```json
 {
-    "values": [
+  "values": [
+    {
+      "recordId": "1",
+      "data":
       {
-        "recordId": "1",
-        "data":
-           {
-             "mergedText": "The quick brown fox jumps over the lazy dog" 
-           }
+        "mergedText": "The quick brown fox jumps over the lazy dog"
       }
-    ]
+    }
+  ]
 }
 ```
 
@@ -86,22 +86,22 @@ A következő példa indexmezők OCR szakértelem szövegeket nyerhet ki képekb
   "skills":
   [
     {
-        "description": "Extract text (plain and structured) from image.",
-        "@odata.type": "#Microsoft.Skills.Vision.OcrSkill",
-        "context": "/document/normalized_images/*",
-        "defaultLanguageCode": "en",
-        "detectOrientation": true,
-        "inputs": [
-          {
-            "name": "image",
-            "source": "/document/normalized_images/*"
-          }
-        ],
-        "outputs": [
-          {
-            "name": "text"
-          }
-        ]
+      "description": "Extract text (plain and structured) from image.",
+      "@odata.type": "#Microsoft.Skills.Vision.OcrSkill",
+      "context": "/document/normalized_images/*",
+      "defaultLanguageCode": "en",
+      "detectOrientation": true,
+      "inputs": [
+        {
+          "name": "image",
+          "source": "/document/normalized_images/*"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text"
+        }
+      ]
     },
     {
       "@odata.type": "#Microsoft.Skills.Text.MergeSkill",
@@ -132,14 +132,14 @@ A következő példa indexmezők OCR szakértelem szövegeket nyerhet ki képekb
 A fenti példa feltételezi, hogy létezik-e a normalized-lemezképek mező. Normalized-lemezképek mező kapni, állítsa be a *imageAction* az indexelő meghatározását, hogy a konfigurációs *generateNormalizedImages* alább látható módon:
 
 ```json
-{  
-   //...rest of your indexer definition goes here ... 
-  "parameters":{  
-      "configuration":{  
-         "dataToExtract":"contentAndMetadata",
-         "imageAction":"generateNormalizedImages"
-      }
-   }
+{
+  //...rest of your indexer definition goes here ...
+  "parameters":{
+    "configuration":{
+        "dataToExtract":"contentAndMetadata",
+        "imageAction":"generateNormalizedImages"
+    }
+  }
 }
 ```
 

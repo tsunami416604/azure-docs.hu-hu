@@ -8,12 +8,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: danlep
-ms.openlocfilehash: adb893a9d37219409f81b2fb402f2d4afd36aa34
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: f35b2cd8d360bd46913eaa34b91e1fd19bc1ba9b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338858"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533595"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU-erőforrásokat használó tárolópéldányok üzembe helyezése
 
@@ -28,15 +28,7 @@ Ahogyan azt ebben a cikkben, ha telepít egy tárolócsoport használatával adh
 
 Előzetes verzióban elérhető az alábbi korlátozások érvényesek a tárolócsoportok az GPU-erőforrások használata során. 
 
-**Támogatott régiók**:
-
-* USA keleti RÉGIÓJA (USA keleti régiója)
-* USA nyugati RÉGIÓJA 2 (westus2)
-* USA déli középső Régiója (southcentralus)
-* Nyugat-Európa (westeurope)
-* Észak-Európa (northeurope)
-* Kelet-Ázsia (eastasia)
-* Közép-India (centralindia)
+[!INCLUDE [container-instances-gpu-regions](../../includes/container-instances-gpu-regions.md)]
 
 Támogatási idővel további régiókban megjelenik.
 
@@ -59,21 +51,9 @@ Tárolópéldány gpu-k használatához adja meg egy *GPU erőforrás* a követk
   | P100 | [NCv2](../virtual-machines/linux/sizes-gpu.md#ncv2-series) |
   | V100 | [NCv3](../virtual-machines/linux/sizes-gpu.md#ncv3-series) |
 
-### <a name="cpu-and-memory"></a>CPU és memória
+[!INCLUDE [container-instances-gpu-limits](../../includes/container-instances-gpu-limits.md)]
 
-GPU-erőforrások üzembe helyezésekor, állítsa be a terhelés, akár a maximális értékeket az alábbi táblázatban látható megfelelő CPU és memória-erőforrások. Ezek az értékek jelenleg nagyobb, mint az erőforrások GPU nélkül a container Instances szolgáltatásban a Processzor- és memóriakorlátokkal.  
-
-| GPU-TERMÉKVÁLTOZAT | GPU-száma | CPU |  Memória (GB) |
-| --- | --- | --- | --- |
-| K80 | 1 | 6 | 56 |
-| K80 | 2 | 12 | 112 |
-| K80 | 4 | 24 | 224 |
-| P100 | 1 | 6 | 112 |
-| P100 | 2 | 12 | 224 |
-| P100 | 4 | 24 | 448 |
-| V100 | 1 | 6 | 112 |
-| V100 | 2 | 12 | 224 |
-| V100 | 4 | 24 | 448 |
+GPU-erőforrások üzembe helyezésekor, állítsa be a terhelés, akár a maximális értékeket az előző táblázatban látható megfelelő CPU és memória-erőforrások. Ezek az értékek jelenleg nagyobb, mint a CPU és memória-erőforrások tárolócsoportok GPU-erőforrások nélkül érhető el.  
 
 ### <a name="things-to-know"></a>Tudnivaló
 

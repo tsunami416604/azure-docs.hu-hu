@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 530bb83d753d27db4869b5725bc6d4c4e020e179
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3be2ab8bd4be56de945303bec9969f531be77864
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57446605"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535589"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibaelhárítása: Az ügynök vagy a bővítmény kapcsolatos problémák
 
@@ -220,7 +220,7 @@ A Linux rendszerű virtuális gép, ha a VMSnapshot-bővítményt nem jeleníti 
 Ezen lépések elvégzése hatására a következő biztonsági mentés során újra kell telepíteni a bővítményt.
 
 ### <a name="remove_lock_from_the_recovery_point_resource_group"></a>Távolítsa el a zárolást a helyreállítási pont erőforráscsoportból
-1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Lépjen a **összes erőforrás lehetőséget**, válassza ki a visszaállítási pont gyűjtemény erőforráscsoportot a következő formátumban AzureBackupRG_`<Geo>`_`<number>`.
 3. Az a **beállítások** szakaszban jelölje be **zárolások** a zárolások megjelenítéséhez.
 4. Távolítsa el a zárolást, kattintson a három pontra, és kattintson a **törlése**.
@@ -241,7 +241,7 @@ Zárolás eltávolítása után az ad hoc vagy manuális biztonsági mentés ind
 #### <a name="clean-up-restore-point-collection-from-azure-portal"></a>Távolítsa el a visszaállítási pont gyűjtemény Azure Portalról <br>
 
 Törölje manuálisan a visszaállítási pontok gyűjteményt, amely miatt a zárolást a az erőforráscsoport nem törlődnek, az alábbi lépéseket:
-1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Az a **Hub** menüben kattintson a **összes erőforrás**, válassza ki az erőforráscsoportot és a következő formátumú AzureBackupRG_`<Geo>`_`<number>` ahol a virtuális gép megtalálható.
 
     ![Törlési zárolást](./media/backup-azure-arm-vms-prepare/resource-group.png)

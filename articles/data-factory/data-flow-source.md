@@ -7,25 +7,25 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: e33606e0b5be0db5306cfd42f87baf59671eb2a8
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 20491981cb02e428ff4114b9456d74b0de651be8
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451729"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569025"
 ---
 # <a name="mapping-data-flow-source-transformation"></a>A folyamat forrás átalakítását leképezése
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Az adatforrás-átalakítás konfigurálása ahhoz, hogy az adatokat a data flow-bA használni kívánt adatforrást. Előfordulhat, hogy egynél több forrás átalakító tartalmaz egyetlen adatfolyam. Mindig kezdeni tervezése az adatáramlás a forrás.
+Az adatforrás-átalakítás konfigurálása ahhoz, hogy az adatokat a data flow-bA használni kívánt adatforrást. Előfordulhat, hogy egynél több forrás átalakító tartalmaz egyetlen adatfolyam. Mindig kezdeni tervezése az adatáramlás a forrás az átalakítás.
 
 > [!NOTE]
-> Minden adatfolyam kell legalább egy adatforrás-átalakítás. Tetszőleges számú további források, amennyi az átalakítási művelet végrehajtásához szükséges hozzá. Csatlakozhat, és a egy illesztési vagy Union átalakítás forrásokat.
+> Minden adatfolyam kell legalább egy adatforrás-átalakítás. Tetszőleges számú további források, amennyi az átalakítási művelet végrehajtásához szükséges hozzá. Csatlakozhat, és a egy illesztési vagy Union átalakítás forrásokat. A hibakeresési munkamenetek hibakeresése az adatfolyamot, rendszer beolvassa az adatokat a forrásból a mintavételi beállítást vagy a hibakeresési forrás korlátok. Azonban adatot nem lesz írva a fogadóba másolt mindaddig, amíg az adatfolyama hajtsa végre egy folyamat data flow tevékenységből. 
 
 ![Átalakítási beállítások a forrás](media/data-flow/source.png "forrás")
 
-Minden forrás adatfolyam átalakítása pontosan egy Data Factory-adatkészlet, az alakzat és írni vagy olvasni az adatok helyét meghatározó társítva kell lennie. A forrás listák fájl és a helyettesítő karakterek használatával egyszerre több fájl használatához.
+Minden forrás adatfolyam átalakítása pontosan egy Data Factory-adatkészlet társítva kell lennie. Az adatkészlet határozza meg, az alakzat és írni vagy olvasni az adatok helyét. Használhatja a helyettesítő karakterek és a fájl a forrás használható egyszerre több fájl fájl adatforrások használatakor.
 
 ## <a name="data-flow-staging-areas"></a>Adatfolyam átmeneti területekből
 
@@ -43,7 +43,7 @@ Jelölje be a séma eltéréseket engedélyezése, ha a forrás oszlopok gyakran
 Ha a forrásadatok bejövő verziója nem egyezik a megadott séma, majd az adatokat a folyamat végrehajtása sikertelen lesz.
 
 ### <a name="sampling"></a>Mintavételezés
-Mintavételi használatával a forrás sorok számának korlátozásához.  Ez akkor hasznos, amikor szüksége van a forrásadatok egy minta csak teszteléshez és hibakereséshez.
+Mintavételi használatával a forrás sorok számának korlátozásához.  Ez akkor hasznos, amikor tesztelési és hibakeresési célokra az adatforrásból származó mintavétel.
 
 ## <a name="define-schema"></a>Séma megadása
 

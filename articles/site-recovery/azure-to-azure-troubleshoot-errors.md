@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: fdeef8be1cfaabde326f68a1207f7c38d037a502
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: b4359a90bb511b538499848effea7be22a23fac0
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313296"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570623"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure – Azure virtuális gép replikálási problémák elhárítása
 
@@ -173,7 +173,9 @@ A Site Recovery replikációja, a kimenő kapcsolat az adott URL-címek vagy IP-
   - Az Azure Site Recovery-hitelesítéshez szükséges hozzáférés az Office 365 IP-címek tartományát.
     Ha az Azure hálózati biztonsági csoport (NSG) szabályai, illetve a tűzfal proxy segítségével szabályozza a kimenő hálózati kapcsolatokra a virtuális Gépen, győződjön meg arról, Office 365 IP-tartományokkal való kommunikáció engedélyezése. Hozzon létre egy [Azure Active Directory (AAD) szolgáltatáscímke](../virtual-network/security-overview.md#service-tags) alapú Hálózatibiztonságicsoport-szabály engedélyezi a hozzáférést az aad-hez tartozó összes IP-címek számára
         - Hozzáadja az új címeket az Azure Active Directory (AAD) a jövőben, ha szeretne létrehozni új NSG-szabályokat.
-
+>[!NOTE]
+> Ha a virtuális gépek mögött **Standard** belső load balancer, akkor azt nem kell a hozzáférést, azaz O365 IP-címek Alapértelmezés szerint login.micorsoftonline.com. Változtassa meg, hogy **alapszintű** belső terheléselosztó típusa, vagy hozzon létre ki kötött access, ahogy korábban már említettük, a [cikk] (https://aka.ms/lboutboundrulescli).
+>
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>3. hiba: Konfigurálni a Site Recovery nem tudta (151197)
 - **Lehetséges ok** </br>

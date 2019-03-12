@@ -3,17 +3,16 @@ title: A függelék – az IaaS virtuális gépekhez az Azure Disk Encryption |}
 description: 'Ez a cikk a függelék: a Microsoft Azure Disk Encryption a Windows és Linux rendszerű IaaS virtuális gépek.'
 author: mestew
 ms.service: security
-ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 01/14/2019
+ms.date: 03/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: d23e6d00b77e69f7f3353938c52b450eebbfd142
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 6632647c7782411d0d124c325f9bf0afff7e699d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990680"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767788"
 ---
 # <a name="appendix-for-azure-disk-encryption"></a>Az Azure Disk Encryption for függelék 
 
@@ -164,14 +163,6 @@ Az alábbi táblázat mutatja, hogy mely paraméterek is használható a PowerSh
 
 - [Új titkosított Windows IaaS felügyelt lemez virtuális gép létrehozása katalógus-lemezkép](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image-managed-disks)
     - Ez a sablon a Windows Server 2012 katalóguslemezt használó felügyelt lemezeket hoz létre egy új titkosított Windows virtuális gép.
-
-- [A teljes lemeztitkosítás felügyelt lemezekkel rendelkező RHEL 7.2 üzembe](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-full-disk-encrypted-rhel)
-    - Ez a sablon létrehoz egy teljes mértékben titkosított RHEL 7.2 rendszerű virtuális Gépet az Azure-ban felügyelt lemezeket használ. Tartalmazza a titkosított meghajtókról 30-GB OS és a csatlakoztatásának helye /mnt/raidencrypted titkosított 200 GB-os tömb (RAID-0). Tekintse meg a [– gyakori kérdések](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) támogatott Linux-kiszolgáló disztribúciókra vonatkozó cikket. 
-
-- [A teljes lemeztitkosítás, nem felügyelt lemezekkel rendelkező RHEL 7.2 üzembe](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-full-disk-encrypted-rhel-unmanaged)
-    - Ez a sablon létrehoz egy teljes mértékben titkosított RHEL 7.2 rendszerű virtuális Gépet az Azure-ban egy titkosított 30 GB-os operációs rendszer meghajtóját és a egy titkosított 200 GB-os tömb (RAID-0) /mnt/raidencrypted felcsatolva. Tekintse meg a [– gyakori kérdések](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) támogatott Linux-kiszolgáló disztribúciókra vonatkozó cikket. 
-
-- [Egy előre titkosított virtuális merevlemez a Windows vagy Linux rendszeren a lemeztitkosítás engedélyezve](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-pre-encrypted-vm)
 
 - [Hozzon létre egy új titkosított felügyelt lemezt egy előzetes titkosítással VHD/storage-blobból](https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk)
     - Létrehoz egy új titkosított felügyelt lemezt előre titkosított virtuális merevlemez és a megfelelő titkosítási beállítások
@@ -555,7 +546,7 @@ Titkosításához az Azure AD-alkalmazás (előző kiadás) használatával, a a
 ``` 
 
 ### <a name="bkmk_SecretnoKEK"></a> Lemeztitkosítás titkos kódja egy KEK nem titkosított
-Állítsa be a titkos kulcsot tárol a kulcstárolóban, használja a [Set-AzureKeyVaultSecret](/powershell/module/az.keyvault/set-azurekeyvaultsecret). Ha egy Windows virtuális gépet, a blokktitkosítási kulcsot fájl Base64 kódolású karakterláncként kódolt és majd a key vaulttal történő feltöltésekor a `Set-AzureKeyVaultSecret` parancsmagot. Linux esetén a hozzáférési kódot Base64 kódolású karakterláncként kódolt és feltölthetők a key vaulthoz. Emellett ellenőrizze, hogy a titkos kulcsot a key vaultban történő létrehozásakor a következő címkék vannak-e beállítva.
+Állítsa be a titkos kulcsot tárol a kulcstárolóban, használja a [Set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret). Ha egy Windows virtuális gépet, a blokktitkosítási kulcsot fájl Base64 kódolású karakterláncként kódolt és majd a key vaulttal történő feltöltésekor a `Set-AzureKeyVaultSecret` parancsmagot. Linux esetén a hozzáférési kódot Base64 kódolású karakterláncként kódolt és feltölthetők a key vaulthoz. Emellett ellenőrizze, hogy a titkos kulcsot a key vaultban történő létrehozásakor a következő címkék vannak-e beállítva.
 
 #### <a name="windows-bek-file"></a>Windows rendelkeznek BEk-KEL fájl
 ```powershell
@@ -604,7 +595,7 @@ $SecretUrl
 Használja a `$secretUrl` esetében a következő lépésben [KEK használata nélkül az operációsrendszer-lemez csatolása](#bkmk_URLnoKEK).
 
 ### <a name="bkmk_SecretKEK"></a> Lemeztitkosítás titkos kódja egy KEK titkosítva
-Mielőtt feltölti a titkos kulcsot a key vaulthoz, igény szerint titkosíthatók, kulcstitkosítási kulcs használatával. Használja a sortörés [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) először mesterkulcs a kulcstitkosítási kulcs használatával. A sortörés művelet kimenete egy base64 URL-kódolású karakterláncot, amely ezt követően feltöltheti, titkos kulcs használatával a [ `Set-AzureKeyVaultSecret` ](/powershell/module/az.keyvault/set-azurekeyvaultsecret) parancsmagot.
+Mielőtt feltölti a titkos kulcsot a key vaulthoz, igény szerint titkosíthatók, kulcstitkosítási kulcs használatával. Használja a sortörés [API](https://msdn.microsoft.com/library/azure/dn878066.aspx) először mesterkulcs a kulcstitkosítási kulcs használatával. A sortörés művelet kimenete egy base64 URL-kódolású karakterláncot, amely ezt követően feltöltheti, titkos kulcs használatával a [ `Set-AzKeyVaultSecret` ](/powershell/module/az.keyvault/set-azkeyvaultsecret) parancsmagot.
 
 ```powershell
     # This is the passphrase that was provided for encryption during the distribution installation

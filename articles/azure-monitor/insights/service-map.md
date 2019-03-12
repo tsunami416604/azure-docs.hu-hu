@@ -1,24 +1,24 @@
 ---
 title: A Service Map megoldást használ az Azure-ban |} A Microsoft Docs
 description: A Service Map az Azure egyik megoldása, amely automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. Ez a cikk részletesen központi telepítése a Service Map a környezetben, és a számos célra használja.
-services: monitoring
+services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
 ms.assetid: 3ceb84cc-32d7-4a7a-a916-8858ef70c0bd
-ms.service: monitoring
+ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 041cc302f05b109de2b79697dd048a6bc0752a4f
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 143d14df3019aa0c5c5dd798f656f95c8ebde372
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232923"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731094"
 ---
 # <a name="using-service-map-solution-in-azure"></a>A Service Map megoldást használ az Azure-ban
 A Szolgáltatástérkép automatikusan felderíti az alkalmazás-összetevőket Windows és Linux rendszereken, és feltérképezi a szolgáltatások közötti kommunikációt. A Service Map, megtekintheti a kiszolgálók ahogyan Ön gondol rájuk: rendszerekként, amelyek kritikus fontosságú szolgáltatások biztosításához. A Service Map megmutatja a kiszolgálók, a folyamatok, a bejövő és kimenő kapcsolat késési kapcsolatokat, és portok között, bármely TCP-kapcsolattal összekötött architektúrában, semmilyen beállítást nem szükséges ügynököt telepíteni.
@@ -147,7 +147,7 @@ Bizonyos folyamatok szolgál adott szerepkörök gépeken: webalkalmazás-kiszol
 | ![Webkiszolgáló](media/service-map/role-web-server.png) | Webkiszolgáló |
 | ![Alkalmazáskiszolgáló](media/service-map/role-application-server.png) | Alkalmazáskiszolgáló |
 | ![Adatbázis-kiszolgáló](media/service-map/role-database.png) | Adatbázis-kiszolgáló |
-| ![LDAP-kiszolgáló](media/service-map/role-ldap.png) | LDAP-kiszolgáló |
+| ![LDAP server](media/service-map/role-ldap.png) | LDAP server |
 | ![SMB-kiszolgálón](media/service-map/role-smb.png) | SMB-kiszolgálón |
 
 ![Szerepkör ikon](media/service-map/role-icons.png)
@@ -191,7 +191,7 @@ A **gép összefoglalás** ablaktáblán egy kiszolgáló operációs rendszer, 
 ![Gép összefoglalás panel](media/service-map/machine-summary.png)
 
 ## <a name="computer-and-process-properties"></a>Számítógép és a folyamat tulajdonságai
-Navigálás a Service Map térképet, kiválaszthatja a gépek és azok tulajdonságaival kapcsolatos további környezet próbál a jeggyel folyamatokat. Gépek DNS neve, IPv4 címeket, a Processzor és memória-kapacitás, virtuális gép típusa, operációs rendszer és verzió, legutóbbi újraindítás időt, és a szolgáltatás és az OMS-ügynökök az azonosítók adatainak megadása.
+Navigálás a Service Map térképet, kiválaszthatja a gépek és azok tulajdonságaival kapcsolatos további környezet próbál a jeggyel folyamatokat. Machines provide information about DNS name, IPv4 addresses, CPU and memory capacity, VM type, operating system and version, last reboot time, and the IDs of their OMS and Service Map agents.
 
 ![Gép Tulajdonságok ablaktábla](media/service-map/machine-properties.png)
 
@@ -374,7 +374,7 @@ Típussal rendelkező rekordok *ServiceMapComputer_CL* rendelkezik a kiszolgál�
 
 | Tulajdonság | Leírás |
 |:--|:--|
-| Típus | *ServiceMapComputer_CL* |
+| Typo | *ServiceMapComputer_CL* |
 | SourceSystem | *OpsManager* |
 | ResourceId | A munkaterületen belül a gépek egyedi azonosítója |
 | ResourceName_s | A munkaterületen belül a gépek egyedi azonosítója |
@@ -399,7 +399,7 @@ Típussal rendelkező rekordok *ServiceMapProcess_CL* rendelkezik TCP-kapcsolatt
 
 | Tulajdonság | Leírás |
 |:--|:--|
-| Típus | *ServiceMapProcess_CL* |
+| Typo | *ServiceMapProcess_CL* |
 | SourceSystem | *OpsManager* |
 | ResourceId | A munkaterületen belül a folyamat egyedi azonosítója |
 | ResourceName_s | A gépen, amelyen fut a folyamat egyedi azonosítója|
@@ -422,19 +422,19 @@ Típussal rendelkező rekordok *ServiceMapProcess_CL* rendelkezik TCP-kapcsolatt
 ## <a name="sample-log-searches"></a>Naplókeresési minták
 
 ### <a name="list-all-known-machines"></a>Az összes ismert gépek listája
-ServiceMapComputer_CL |} Összegzés arg_max(TimeGenerated, *) erőforrás-azonosító szerint
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId
 
 ### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>A fizikai memória-kapacitás az összes felügyelt számítógép listája.
-ServiceMapComputer_CL |} Összegzés arg_max(TimeGenerated, *) erőforrás-azonosító szerint |} Projekt PhysicalMemory_d, ComputerName_s
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s
 
 ### <a name="list-computer-name-dns-ip-and-os"></a>Számítógép neve, DNS, IP és az operációs rendszer.
-ServiceMapComputer_CL |} Összegzés arg_max(TimeGenerated, *) erőforrás-azonosító szerint |} a projekt ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s
+ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s
 
 ### <a name="find-all-processes-with-sql-in-the-command-line"></a>A parancssorban keresse meg az "sql" összes folyamat
 ServiceMapProcess_CL |} ahol CommandLine_s contains_cs "sql" |} Összegzés arg_max(TimeGenerated, *) erőforrás-azonosító szerint
 
 ### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Keresse meg a gép (legutóbbi rekord) erőforrás szerint
-Keresés a (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" |} Összegzés arg_max(TimeGenerated, *) erőforrás-azonosító szerint
+search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId
 
 ### <a name="find-a-machine-most-recent-record-by-ip-address"></a>Keresse meg a gép (legutóbbi rekord) IP-cím alapján
 Keresés a (ServiceMapComputer_CL) "10.229.243.232" |} Összegzés arg_max(TimeGenerated, *) erőforrás-azonosító szerint
@@ -449,7 +449,7 @@ ServiceMapComputer_CL |} ahol a ResourceName_s (((ServiceMapProcess_CL) lévő k
 ServiceMapProcess_CL |} ahol ExecutableName_s == "curl" |} különböző ProductVersion_s
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>Az összes számítógép CentOS rendszerű számítógépcsoport létrehozása
-ServiceMapComputer_CL |} ahol OperatingSystemFullName_s contains_cs "CentOS" |} különböző ComputerName_s
+ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s
 
 ### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>A kimenő kapcsolatok a gépek csoportból összefoglalója
 ```

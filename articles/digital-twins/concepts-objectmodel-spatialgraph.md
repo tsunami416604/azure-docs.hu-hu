@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: alinast
-ms.openlocfilehash: 912a3ed558f8fabfcad517aeb7b7e864cf8f359e
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: e7efe1a8632643e2a299b6c9a1b1407414deee4b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436925"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542947"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Digitális Twins objektum modellek és térbeli intelligencia graph ismertetése
 
@@ -99,7 +99,7 @@ Térbeli intelligencia gráfok használatáról további részletekért látogas
 
 Tudjon meg többet [hogyan generáljon a swaggerrel](how-to-use-swagger.md).
 
-Minden API-hívás használatával hitelesíteni kell [OAuth](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code). Az API-k kövesse [Microsoft REST API-útmutatójának konvenciók](https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md). A gyűjtemények visszaadó API-kat a legtöbb támogatja a [OData](http://www.odata.org/getting-started/basic-tutorial/#queryData) rendszerlekérdezési beállításait.
+Minden API-hívás használatával hitelesíteni kell [OAuth](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code). Az API-k kövesse [Microsoft REST API-útmutatójának konvenciók](https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md). A gyűjtemények visszaadó API-kat a legtöbb támogatja a [OData](https://www.odata.org/getting-started/basic-tutorial/#queryData) rendszerlekérdezési beállításait.
 
 ## <a name="next-steps"></a>További lépések
 

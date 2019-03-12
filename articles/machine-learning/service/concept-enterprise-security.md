@@ -1,6 +1,7 @@
 ---
-title: Biztonságosan használata az Azure Machine Learning szolgáltatás
-description: További információ az Azure Machine Learning szolgáltatással elérhető biztonsági funkciók. Ebből a cikkből megtanulhatja, hitelesítés, engedélyezés, hálózati biztonság, adatok titkosítására és figyelési kapcsolatban.
+title: Vállalati biztonság
+titleSuffix: Azure Machine Learning service
+description: 'Biztonságosan használata az Azure Machine Learning szolgáltatás: hitelesítés, engedélyezés, hálózati biztonság, adatok titkosítására és figyelése.'
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -8,15 +9,15 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 02/26/2018
-ms.openlocfilehash: a4111766da35d7ff558f00c3498a8fb4d9c40e55
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.date: 03/10/2019
+ms.openlocfilehash: b950e7d38235d089c6236c76136d8ec2fc7a1f74
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57196340"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731328"
 ---
-# <a name="enterprise-security-for-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatás nagyvállalati szintű biztonság
+# <a name="enterprise-security-for-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatás nagyvállalati szintű biztonság
 
 Ebben a cikkben ismertetik elérhető biztonsági funkciók és az Azure Machine learning-szolgáltatás.
 

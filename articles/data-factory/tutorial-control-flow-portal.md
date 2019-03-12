@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: 037dafcfc60c629841e326cecc38bb2b3250d77c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 1ee3b3cccd01e4a767a8d1212967b57ff29bea62
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015423"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548098"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Elágaztatási és láncolási tevékenységek a Data Factory-folyamatokban
 Ebben az oktatóanyagban egy olyan adat-előállító folyamatot hoz létre, amely bemutat néhány folyamvezérlési funkciót. A folyamat egy egyszerű másolást hajt végre egy Azure Blob Storage-beli tárolóból egy másik tárolóba, amely ugyanazon tárfiókban található. Ha a másolási tevékenység sikeres, a folyamat egy e-mailt küld a sikeres műveletről, amelyben szerepelnek a sikeres másolási művelet részletei (például az írt adatok mennyisége). Ha a másolási tevékenység sikertelen, a folyamat egy e-mailt küld a sikertelen műveletről, amelyben szerepelnek a sikertelen másolás részletei (például a hibaüzenet). Az oktatóanyag során megismerheti, hogyan adhatók át a paraméterek.
@@ -52,7 +52,7 @@ Ez az oktatóanyag az Azure Portalt használja. Az Azure Data Factoryvel való i
     John,Doe
     Jane,Doe
     ```
-2. Az [Azure Storage Explorerrel](http://storageexplorer.com/) vagy egy hasonló eszközzel hajtsa végre a következő lépéseket: 
+2. Az [Azure Storage Explorerrel](https://storageexplorer.com/) vagy egy hasonló eszközzel hajtsa végre a következő lépéseket: 
     1. Hozza létre az **adfv2branch** tárolót.
     2. Hozza létre az **input** mappát az **adfv2branch** tárolóban.
     3. Töltse fel az **input.txt** fájlt a tárolóba.

@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2018
 ms.author: aschhab
-ms.openlocfilehash: 69dc9c974c259f51ac0c6c9d64bfcda7ee65e181
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: a839a4cad824a74bde388317cf3aaddf9c5bd47f
+ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54844585"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57588754"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>Tranzakciófeldolgozás a Service Bus – áttekintés
 
-Ez a cikk a Microsoft Azure Service Bus tranzakció képességeit ismerteti. A hozzászólás számos ezt a [elemi tranzakciókat és Service Bus-minta](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions). Ez a cikk áttekintést tranzakció-feldolgozás korlátozódik, és a *protokollon keresztül történő küldéshez* szolgáltatást a Service Bus, pedig elemi tranzakciókat minta nagyobb és összetettebb hatókörében.
+Ez a cikk a Microsoft Azure Service Bus tranzakció képességeit ismerteti. A hozzászólás számos ezt a [példa Service Bus AMQP tranzakció](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia). Ez a cikk áttekintést tranzakció-feldolgozás korlátozódik, és a *protokollon keresztül történő küldéshez* szolgáltatást a Service Bus, pedig elemi tranzakciókat minta nagyobb és összetettebb hatókörében.
 
 ## <a name="transactions-in-service-bus"></a>A Service Bus-tranzakciók
 
-A [ *tranzakció* ](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions#what-are-transactions) két vagy több művelet összevonja azokat egy *végrehajtási hatókör*. Természetéből ilyen egy tranzakció biztosítania kell, hogy a műveletek egy adott csoporthoz tartozó összes művelet sikeres vagy sikertelen lehet közösen. Ebben a tekintetben tranzakciók szerepét egy egységet, amelyek gyakran nevezik *atomitást*. 
+A *tranzakció* két vagy több művelet összevonja azokat egy *végrehajtási hatókör*. Természetéből ilyen egy tranzakció biztosítania kell, hogy a műveletek egy adott csoporthoz tartozó összes művelet sikeres vagy sikertelen lehet közösen. Ebben a tekintetben tranzakciók szerepét egy egységet, amelyek gyakran nevezik *atomitást*.
 
 A Service Bus egy tranzakciós üzenet közvetítő, és biztosítja, hogy a belső művelet ellen annak üzenettárak tranzakciós integritását. Például az üzenetek áthelyezése a Service Bus, belül üzenetek áthelyezése egy [kézbesítetlen levelek várólistájára](service-bus-dead-letter-queues.md) vagy [automatikus továbbítását](service-bus-auto-forwarding.md) , az entitások közötti üzenetek, a tranzakciós. Mint ilyen Ha a Service Bus fogad egy üzenetet, azt már tárolt és címkézte meg sorozatszámot. Ettől kezdve az minden üzenet Service Bus belül lévő átvitel megszakad koordinált műveleti entitások között, és sem eredményezi a veszteség (forrás sikeres és sikertelen lesz a cél), vagy duplikáció (sikertelen és a cél sikeres) üzenet.
 
@@ -55,26 +55,47 @@ A funkció hatékonyságának szemléltetése tranzakciós nyilvánvalóvá vál
 Ilyen adatátvitel beállításához hozzon létre egy üzenet küldője, amely a célvárólista keresztül az átviteli sorban célozza. Akkor is egy fogadót, amely lekéri az üzeneteket, hogy ugyanabból az üzenetsorból. Példa:
 
 ```csharp
-var sender = this.messagingFactory.CreateMessageSender(destinationQueue, myQueueName);
-var receiver = this.messagingFactory.CreateMessageReceiver(myQueueName);
+var connection = new ServiceBusConnection(connectionString);
+
+var sender = new MessageSender(connection, QueueName);
+var receiver = new MessageReceiver(connection, QueueName);
 ```
 
-Egy egyszerű tranzakció használja ezeket az elemeket, az alábbi példában látható módon:
+Egy egyszerű tranzakció használja ezeket az elemeket, az alábbi példában látható módon. Tekintse meg a teljes példa, tekintse meg a [forráskód a Githubon](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TransactionsAndSendVia/TransactionsAndSendVia/AMQPTransactionsSendVia):
 
 ```csharp
-var msg = receiver.Receive();
+var receivedMessage = await receiver.ReceiveAsync();
 
-using (scope = new TransactionScope())
+using (var ts = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
 {
-    // Do whatever work is required 
+    try
+    {
+        // do some processing
+        if (receivedMessage != null)
+            await receiver.CompleteAsync(receivedMessage.SystemProperties.LockToken);
 
-    var newmsg = ... // package the result 
+        var myMsgBody = new MyMessage
+        {
+            Name = "Some name",
+            Address = "Some street address",
+            ZipCode = "Some zip code"
+        };
 
-    msg.Complete(); // mark the message as done
-    sender.Send(newmsg); // forward the result
+        // send message
+        var message = myMsgBody.AsMessage();
+        await sender.SendAsync(message).ConfigureAwait(false);
+        Console.WriteLine("Message has been sent");
 
-    scope.Complete(); // declare the transaction done
-} 
+        // complete the transaction
+        ts.Complete();
+    }
+    catch (Exception ex)
+    {
+        // This rolls back send and complete in case an exception happens
+        ts.Dispose();
+        Console.WriteLine(ex.ToString());
+    }
+}
 ```
 
 ## <a name="next-steps"></a>További lépések

@@ -8,12 +8,12 @@ ms.assetid: 3aca9c49-45a4-4352-92e6-bd25ee3eacf7
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 12b8161cc5845bca749c34188835cef1d92b299a
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 60c5b7b55e417a5703010ea34cf75dcb20146c37
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47404551"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531679"
 ---
 # <a name="azure-data-catalog-release-notes"></a>Az Azure Data Catalog kibocsátási megjegyzései
 ## <a name="notes-for-the-november-20-2015-release-of-azure-data-catalog"></a>Az Azure Data Catalog kibocsátási megjegyzései a 2015. November 20.
@@ -29,7 +29,7 @@ Az egyes esetekben a probléma megoldható letöltésével és telepítésével 
 ### <a name="registering-and-connecting-to-teradata"></a>Regisztrálás és csatlakozás a Teradata
 Amikor csatlakozik a Teradata adatforrásokat felhasználók telepíteni kell a megfelelő Teradata ODBC-illesztőt, amelyek megfelelnek a használt szoftver bitszámértékének (32 bites vagy 64 bites).
 
-ADC kiadás dátumot, a legutóbbi [windows (verzió 15.10) készült Teradata ODBC-illesztő](http://downloads.teradata.com/download/connectivity/odbc-driver/windows) kompatibilis az Office 2013, de nem az Office 2016-tal.
+ADC kiadás dátumot, a legutóbbi [windows (verzió 15.10) készült Teradata ODBC-illesztő](https://downloads.teradata.com/download/connectivity/odbc-driver/windows) kompatibilis az Office 2013, de nem az Office 2016-tal.
 
 ## <a name="notes-for-the-july-13-2015-release-of-azure-data-catalog"></a>Az Azure Data Catalog kibocsátási megjegyzései a 13, 2015 július
 ### <a name="registering-and-connecting-to-oracle-database"></a>Regisztráció és Oracle-adatbázishoz való kapcsolódáskor
@@ -53,13 +53,13 @@ Felhasználók előfordulhatnak olyan helyzet, amelyben tudjon jelentkezni az Az
 
 A probléma megoldásához a két lehetséges oka is van:
 
-**1. ok: Az Active Directory összevonási szolgáltatások konfigurációs** az adatforrás-regisztráló eszköz használja az űrlapos hitelesítés Active Directorybeli felhasználói bejelentkezések ellenőrzése. A sikeres bejelentkezéshez az űrlapos hitelesítés engedélyezni kell a globális hitelesítési házirend egy Active Directory-rendszergazda.
+**1. ok: Az Active Directory összevonási szolgáltatások konfigurálása** az adatforrás-regisztráló eszköz használja az űrlapos hitelesítés Active Directorybeli felhasználói bejelentkezések ellenőrzése. A sikeres bejelentkezéshez az űrlapos hitelesítés engedélyezni kell a globális hitelesítési házirend egy Active Directory-rendszergazda.
 
 Bizonyos esetekben a hiba oka lehet csak akkor, amikor a felhasználó a vállalati hálózaton van, vagy csak akkor, amikor a felhasználó a vállalati hálózaton kívülről érkező csatlakozik. A globális hitelesítési házirend lehetővé teszi, hogy a hitelesítési módszerek külön-külön engedélyezni kell az intranetes és extranetes kapcsolatokhoz. Bejelentkezési hiba akkor fordulhat elő, ha a hálózat, amelyről csatlakozik, a felhasználó nincs engedélyezve az űrlapos hitelesítés.
 
 További információkért lásd: [hitelesítési házirendek konfigurálása](https://technet.microsoft.com/library/dn486781.aspx).
 
-**2. ok: Hálózati proxykonfiguráció** a vállalati hálózat proxykiszolgálót használ, ha a regisztrációs eszköz nem lehet csatlakozni az Azure Active Directoryhoz a proxyn keresztül. Felhasználók is biztosítja, hogy a regisztrációs eszköz az eszköz konfigurációs fájl szerkesztésével ebben a szakaszban a fájl hozzáadása:
+**2. ok: Hálózati proxy konfigurációs** a vállalati hálózat proxykiszolgálót használ, ha a regisztrációs eszköz nem lehet csatlakozni az Azure Active Directoryhoz a proxyn keresztül. Felhasználók is biztosítja, hogy a regisztrációs eszköz az eszköz konfigurációs fájl szerkesztésével ebben a szakaszban a fájl hozzáadása:
 
       <system.net>
         <defaultProxy useDefaultCredentials="true" enabled="true">

@@ -15,12 +15,12 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5a06b7f66742ad7e97e4ae2ab57aabf15f21faf3
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: cab5b9317102a86dd75d2cb7e5a820cf64d2e831
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56957730"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535546"
 ---
 # <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>A Tevékenységnaplók megtekintése az Azure-erőforrások RBAC módosítások
 
@@ -123,9 +123,9 @@ az monitor activity-log list --resource-provider "Microsoft.Authorization" --sta
 
 1. [Az Activity Log Analytics megoldás konfigurálása](../azure-monitor/platform/collect-activity-logs.md#configuration) a munkaterületen.
 
-1. [A Tevékenységnaplók megtekintése](../azure-monitor/platform/collect-activity-logs.md#using-the-solution). A Tevékenységnaplók elemzésének áttekintése lapon keresse meg gyorsan, hogy a **Log Analytics** lehetőséget.
+1. [A Tevékenységnaplók megtekintése](../azure-monitor/platform/collect-activity-logs.md#using-the-solution). Az Activity Log Analytics megoldás – áttekintés oldalra navigálhat gyors módja: kattintson a **Log Analytics** lehetőséget.
 
-   ![A portál a log Analytics beállítás](./media/change-history-report/azure-log-analytics-option.png)
+   ![Az Azure Monitor beállítás bejelentkezik a portálra](./media/change-history-report/azure-log-analytics-option.png)
 
 1. Lehetősége van a [naplóbeli keresés](../log-analytics/log-analytics-log-search.md) lap vagy az [bővített analitika portál](../azure-monitor/log-query/get-started-portal.md) lekérdezése és a naplók megtekintéséhez. E két beállítás kapcsolatos további információkért lásd: [naplók keresése oldalát, vagy a bővített analitika portál](../azure-monitor/log-query/portals.md).
 

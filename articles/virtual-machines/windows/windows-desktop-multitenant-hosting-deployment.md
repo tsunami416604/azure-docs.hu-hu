@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: dc798dc78ed0cdbf11bbe3bc2dd805433b127a4d
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 7f43528c55cd22c2649ca0f1208da6f41695b98e
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55976918"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569977"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Az Azure-ban több-Bérlős üzemeltető jogosultságokkal rendelkező Windows 10-es üzembe helyezése 
 Ügyfelek számára a Windows 10 Enterprise E3 és E5 felhasználó vagy a Windows virtuális asztali hozzáférés / felhasználónként (felhasználói előfizetési licenccel vagy felhasználói előfizetés licencek) több-Bérlős üzemeltető Rights for Windows 10 lehetővé teszi a felhőbe a Windows 10-licencek használata és Windows 10-es virtuális gépek futtatása az Azure-ban anélkül egy másik licenc. További információkért tekintse meg [több-Bérlős üzemeltető Windows 10-es](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
@@ -72,11 +72,11 @@ Add-AzVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.
 
 **Üzembe helyezés Azure Resource Manager-sablon telepítése** belül a Resource Manager-sablonok, egy további paraméter `licenseType` adható meg. További információ [Azure Resource Manager-sablonok készítése](../../resource-group-authoring-templates.md). Miután a VHD-t az Azure-bA feltöltött, szerkesztése, Resource Manager-sablont a licenc típusa részét képező a számítási szolgáltató, és helyezze üzembe a sablont a szokásos módon:
 ```json
-"properties": {  
-   "licenseType": "Windows_Client",
-   "hardwareProfile": {
+"properties": {
+    "licenseType": "Windows_Client",
+    "hardwareProfile": {
         "vmSize": "[variables('vmSize')]"
-   }
+    }
 ```
 
 **Üzembe helyezés a PowerShell** Powershellen keresztül a Windows Server virtuális gép üzembe helyezésekor, egy további paramétere rendelkezik `-LicenseType`. Miután a VHD-t az Azure-bA feltöltött, létrehozhat egy virtuális gépet `New-AzVM` , és adja meg a licencelési típusa a következők szerint:

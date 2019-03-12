@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 7cf6b08655174ce6d9b851d635d5c8b9d9d358dd
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 9267360394568f0f9259a3c818b21f4e585fd958
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245539"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543729"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>Data Flow Kifejezésszerkesztő leképezése
 
@@ -51,7 +51,7 @@ Megjegyzések hozzáadása a kifejezések egyetlen sor és többsoros megjegyzé
 
 ## <a name="regular-expressions"></a>Reguláris kifejezések
 
-Az Azure Data Factory adatfolyam kifejezésnyelveket [teljes leírása itt található dokumentáció](http://aka.ms/dataflowexpressions), lehetővé teszi, hogy az funkciók, amelyek tartalmazzák a reguláris kifejezések szintaxisát. Reguláriskifejezés-függvényeket használatakor a Kifejezésszerkesztő megpróbálja értelmezése fordított perjel (\) , az escape-karaktersorozat. Ha fordított perjelet használ a reguláris kifejezés, vagy tegye a teljes regex órajel során végbemenő ` ` vagy használjon egy dupla fordított perjelet.
+Az Azure Data Factory adatfolyam kifejezésnyelveket [teljes leírása itt található dokumentáció](https://aka.ms/dataflowexpressions), lehetővé teszi, hogy az funkciók, amelyek tartalmazzák a reguláris kifejezések szintaxisát. Reguláriskifejezés-függvényeket használatakor a Kifejezésszerkesztő megpróbálja értelmezése fordított perjel (\) , az escape-karaktersorozat. Ha fordított perjelet használ a reguláris kifejezés, vagy tegye a teljes regex órajel során végbemenő ` ` vagy használjon egy dupla fordított perjelet.
 
 Példa órajel során végbemenő használatával
 

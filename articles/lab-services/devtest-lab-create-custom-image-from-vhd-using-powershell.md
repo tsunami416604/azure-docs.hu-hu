@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 7c18ac13b9663ad541ae206347a8df17ff06297c
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: e594ace368799f85eea2e7291ead6febea0ea4b7
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737382"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543882"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file-using-powershell"></a>Egy egyéni lemezkép készítése VHD-fájlból PowerShell-lel
 
@@ -118,7 +118,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $lab.ResourceGroupName -Name Cr
 ## <a name="related-blog-posts"></a>Kapcsolódó blogbejegyzések
 
 - [Egyéni rendszerképek vagy képleteket?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
-- [Egyéni rendszerképek az Azure DevTest Labs közötti másolása](http://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
+- [Egyéni rendszerképek az Azure DevTest Labs közötti másolása](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ## <a name="next-steps"></a>További lépések
 

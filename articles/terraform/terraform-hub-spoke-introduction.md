@@ -2,19 +2,19 @@
 title: Eseményközpont létrehozásához, küllős a hibrid hálózati topológiák a terraform használatával Azure-ban
 description: Az oktatóanyag egy teljes hibrid hálózatok referenciaarchitektúráját létrehozása az Azure-ban a Terraform ábrázoló
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, hub and spoke, networks, hybrid networks, devops, virtual machine, azure,  vnet peering, network virtual appliance
 author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
 ms.date: 03/01/2019
-ms.openlocfilehash: 25ba7016c10fc13357b403efae6e4996de59b624
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 336903b6cd451e25f7c696e445be724989c39996
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57411501"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57761939"
 ---
 # <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-with-terraform-in-azure"></a>Oktatóanyag: Eseményközpont létrehozásához, küllős a hibrid hálózati topológiák a terraform használatával Azure-ban
 

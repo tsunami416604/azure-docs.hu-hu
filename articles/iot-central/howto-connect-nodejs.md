@@ -3,17 +3,17 @@ title: Egy általános Node.js ügyfél-alkalmazás csatlakoztatása az Azure Io
 description: Eszköz fejlesztőként egy általános Node.js-eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz.
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/26/2018
+ms.date: 02/04/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: b22d719a25a93e1dffdba848e18f732b31e6e67d
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: c04358734923654366eb679505910e14d0e0059b
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57214520"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767532"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Az Azure IoT Central-alkalmazást (Node.js) egy általános ügyfél-alkalmazás csatlakoztatása
 
@@ -93,7 +93,7 @@ Adja meg a mező neve pontosan a eszköz sablonba a táblázatban látható mód
 
 ## <a name="add-a-real-device"></a>Valós eszköz hozzáadása
 
-Az Azure IoT Central-alkalmazás hozzáadása egy igazi eszközön az eszköz sablonból, létrehozása, és jegyezze fel az eszköz kapcsolati karakterláncát. IoT Central egy Node.js-alkalmazás csatlakoztatása a részletes útmutatót lásd: [valós eszköz kapcsolati karakterláncára generálhatók az alkalmazás](tutorial-add-device.md#generate-connection-string-for-real-device-from-application) és [előkészítése az Ügyfélkód](tutorial-add-device.md#prepare-the-client-code) az oktatóanyagok > Egy eszköz hozzáadásához.
+Az Azure IoT Central-alkalmazás hozzáadása egy igazi eszközön az eszköz sablonból, létrehozása, és jegyezze fel az eszköz kapcsolati karakterláncát. IoT Central egy Node.js-alkalmazás csatlakoztatása a részletes útmutatót lásd: [valós eszköz kapcsolati karakterláncára generálhatók az alkalmazás](tutorial-add-device.md#generate-connection-string) és [előkészítése az Ügyfélkód](tutorial-add-device.md#prepare-the-client-code) az oktatóanyagok > Egy eszköz hozzáadásához.
 
 ### <a name="create-a-nodejs-application"></a>Node.js alkalmazás létrehozása
 
@@ -129,11 +129,10 @@ A következő lépések bemutatják, hogyan hozhat létre, amely megvalósítja 
     var client = clientFromConnectionString(connectionString);
     ```
 
-  > [!NOTE]
-  > Az Azure IoT Central átváltott használatával az Azure IoT Hub Device Provisioning service (DPS) az összes eszköz kapcsolat, ezeket az utasításokat követve [az eszköz kapcsolati karakterláncának lekérése](concepts-connectivity.md#get-a-connection-string) és az oktatóanyag további részeinek folytatásához. További segítségért keresse meg a részletes utasításkészlet [előkészítése az Ügyfélkód](tutorial-add-device.md#prepare-the-client-code) oktatóanyagok > egy eszköz hozzáadásához.
+    > [!NOTE]
+    > Az Azure IoT Central átváltott használatával az Azure IoT Hub Device Provisioning service (DPS) az összes eszköz kapcsolat, ezeket az utasításokat követve [az eszköz kapcsolati karakterláncának lekérése](concepts-connectivity.md#get-a-connection-string) és az oktatóanyag további részeinek folytatásához. További segítségért keresse meg a részletes utasításkészlet [előkészítése az Ügyfélkód](tutorial-add-device.md#prepare-the-client-code) oktatóanyagok > egy eszköz hozzáadásához.
 
-
-  Frissítse a helyőrző `{your device connection string}` az eszköz kapcsolati karakterlánccal. Ebben a példában azt inicializálása `targetTemperature` nulla, igény szerint elvégezhető az eszköz aktuális olvasásakor vagy értéket az ikereszközről. 
+    Frissítse a helyőrző `{your device connection string}` az eszköz kapcsolati karakterlánccal. Ebben a példában azt inicializálása `targetTemperature` nulla, igény szerint elvégezhető az eszköz aktuális olvasásakor vagy értéket az ikereszközről. 
 
 1. A telemetriai adatokat, állapota és esemény mérések küldése az Azure IoT Central alkalmazáshoz, adja hozzá a fájlhoz a következő függvényt:
 
@@ -269,7 +268,7 @@ Az Azure IoT központi alkalmazás kezelőként a valódi eszköz a következők
 
     ![Telemetria megtekintése](media/howto-connect-nodejs/viewtelemetry.png)
 
-* Tekintse meg az eszköz tulajdonság értékeket, a rendszer küldi az eszközről a **tulajdonságok** lapot. Az eszköz tulajdonságok csempék frissülnek, ha a kapcsolat létrejött.
+* Tekintse meg az eszköz tulajdonság értékeket, a rendszer küldi az eszközről a **tulajdonságok** lapot. Az eszköz tulajdonságok csempék frissítése sikeres kapcsolódás esetén.
 
     ![Az eszköz tulajdonságai](media/howto-connect-nodejs/viewproperties.png)
 

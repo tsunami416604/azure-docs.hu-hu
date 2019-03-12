@@ -16,12 +16,12 @@ ms.date: 02/28/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: 14e587276deab9656c3be04c96182942767ae0f2
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 0e14e7eb20e87f5555fa6b494c0d09ccde08d2dd
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56986022"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731648"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack 1811 frissítése
 
@@ -87,7 +87,7 @@ Az Azure Stack rendszeresen gyorsjavításait. Ne felejtse el telepíteni a [leg
 
     Ez a frissítés telepítése során az Azure Stack felhasználói portálon nem érhető el amíg folyamatban van a bővítmény állomás konfigurálása. A bővítmény gazdagép a konfiguráció legfeljebb 5 órát is igénybe vehet. Ez idő alatt ellenőrizheti a frissítés állapotát, vagy folytathatja egy frissítés sikertelen telepítését az [Azure Stack rendszergazdai PowerShell vagy a kiemelt végpont](azure-stack-monitor-update.md) használatával.
 
-- Ha az Azure Stack felügyelt System Center Operations Manager (SCOM), mindenképpen a felügyeleti csomag a Microsoft Azure Stackhez készült verziójára való frissítéséhez 10.0.3.11 1811 alkalmazása előtt.
+- Ha az Azure Stack felügyelt System Center Operations Manager (SCOM), mindenképpen a felügyeleti csomag a Microsoft Azure Stackhez készült verziójára való frissítéséhez 1.0.3.11 1811 alkalmazása előtt.
 
 ## <a name="new-features"></a>Új funkciók
 

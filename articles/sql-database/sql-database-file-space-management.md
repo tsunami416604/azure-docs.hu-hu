@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 manager: craigg
-ms.date: 02/11/2019
-ms.openlocfilehash: b537dd8360c39a744cf9963376387a4c89e33838
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/07/2019
+ms.openlocfilehash: a6fccb087d8a2c78bb1ad47758952b76b245dbde
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311644"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576191"
 ---
 # <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>Az Azure SQL Database-ben egyetlen vagy készletezett adatbázisok területe kezelése
 
@@ -42,7 +42,7 @@ A következő esetekben szükség lehet a fájlterület használatának monitoro
 
 A legtöbb tárolási hely metrikák jelennek meg az Azure portal és a következő API-k csak mérésére használt lapok mérete:
 
-- Az Azure Resource Manager-alapú API-k metrikák többek között a PowerShell [get-metrikák](https://docs.microsoft.com/powershell/module/az.insights/get-azmetric)
+- Az Azure Resource Manager-alapú API-k metrikák többek között a PowerShell [get-metrikák](https://docs.microsoft.com/powershell/module/az.monitor/get-azmetric)
 - T-SQL: [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
 Azonban a következő API-kat is mérheti az adatbázisok és rugalmas lefoglalt terület méretét készletek:

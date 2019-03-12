@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/7/2019
+ms.date: 03/7/2019
 ms.author: mayg
-ms.openlocfilehash: 71c07d93d75ee372a50ec4ff5fc81e92926d329b
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 3417a6cb4c9af8c315cc84718330b4ab5255ee6c
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55964773"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569263"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware virtuális gépek és fizikai kiszolgálók replikációjával kapcsolatos problémák elhárítása
 
@@ -28,6 +28,8 @@ Győződjön meg arról, hogy a következő szolgáltatások futnak-e a PS-gépe
 
 **A beépített Folyamatkiszolgáló**
 
+* ProcessServer
+* ProcessServerMonitor
 * cxprocessserver
 * Az InMage PushInstall
 * Napló feltöltési szolgáltatás (LogUpload)
@@ -41,6 +43,8 @@ Győződjön meg arról, hogy a következő szolgáltatások futnak-e a PS-gépe
 
 **Kibővíthető Folyamatkiszolgáló**
 
+* ProcessServer
+* ProcessServerMonitor
 * cxprocessserver
 * Az InMage PushInstall
 * Napló feltöltési szolgáltatás (LogUpload)
@@ -51,6 +55,8 @@ Győződjön meg arról, hogy a következő szolgáltatások futnak-e a PS-gépe
 
 **Az Azure-ban feladat-visszavételi Folyamatkiszolgáló**
 
+* ProcessServer
+* ProcessServerMonitor
 * cxprocessserver
 * Az InMage PushInstall
 * Napló feltöltési szolgáltatás (LogUpload)

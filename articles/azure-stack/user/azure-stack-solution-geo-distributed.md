@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 299ea79a7a344a57bf302aae049ba87234427343
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 857aa71a4812534030ca638fd8bab11f60535ea0
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442783"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536946"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>Oktatóanyag: Földrajzilag elosztott alkalmazás megoldás létrehozása az Azure és az Azure Stackben
 
@@ -507,9 +507,9 @@ Amikor az App Service befejezi a tanúsítvány feltöltését, megjelenik a **S
 
 1.  Az a **SSL-kötés hozzáadása** lapon, jelölje be a tartomány nevét a legördülő olyan plusz lehetőségeket, valamint a használni kívánt tanúsítványt.
 
-2.  A **SSL-típus**, válassza ki, hogy használható-e [ **kiszolgálónév jelzése (SNI)**](http://en.wikipedia.org/wiki/Server_Name_Indication)vagy IP-alapú SSL.
+2.  A **SSL-típus**, válassza ki, hogy használható-e [ **kiszolgálónév jelzése (SNI)**](https://en.wikipedia.org/wiki/Server_Name_Indication)vagy IP-alapú SSL.
 
--   **SNI-alapú SSL**– több SNI-alapú SSL-kötés adható hozzá. Ez a beállítás lehetővé teszi, hogy több SSL-tanúsítvány biztosítson védelmet több tartomány számára ugyanazon az IP-címen. A legtöbb modern böngésző (beleértve az Internet Explorert, a Chrome-ot, a Firefox-ot és az Operát) támogatja az SNI-t (átfogóbb böngészőtámogatási információkat a [Kiszolgálónév jelzése](http://wikipedia.org/wiki/Server_Name_Indication) című szakaszban talál).
+-   **SNI-alapú SSL**– több SNI-alapú SSL-kötés adható hozzá. Ez a beállítás lehetővé teszi, hogy több SSL-tanúsítvány biztosítson védelmet több tartomány számára ugyanazon az IP-címen. A legtöbb modern böngésző (beleértve az Internet Explorert, a Chrome-ot, a Firefox-ot és az Operát) támogatja az SNI-t (átfogóbb böngészőtámogatási információkat a [Kiszolgálónév jelzése](https://wikipedia.org/wiki/Server_Name_Indication) című szakaszban talál).
 
 -   **IP-alapú SSL**– csak egy IP-alapú SSL-kötés adható hozzá. Ez a beállítás csak egy SSL-tanúsítványnak engedélyezi egy dedikált nyilvános IP-cím védelmét. Több tartomány védelméhez, védheti meg az összes SSL-tanúsítvány használatával. Ez az SSL-kötések hagyományos beállítása.
 

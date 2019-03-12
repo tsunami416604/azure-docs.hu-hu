@@ -11,13 +11,13 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 12/19/2018
-ms.openlocfilehash: f68097f7b97814bc24926b6fc1b0bb2a750855a2
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/07/2019
+ms.openlocfilehash: 8b82955d7a4bdecf71c9cb4545249a423a5b5dd4
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311270"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57577075"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>Az automatikus hangolási e-mail-értesítések
 
@@ -65,8 +65,6 @@ Kövesse az alábbi lépéseket az Azure PowerShell-modulok frissítése:
 - A modulok panelen kattintson a "**frissítés az Azure-modulok**" tetején, vagy várjon, amíg az "Azure-modulok frissítve lett-e" üzenet jelenik meg. A folyamat eltarthat pár percig.
 
 ![Az Azure automation-modulok frissítése](./media/sql-database-automatic-tuning-email-notifications/howto-email-02.png)
-
-Az AzureRM.Resources és azurerm.SQL-hez modulokat kell lennie a 4-es vagy újabb szükséges verzió.
 
 ## <a name="create-azure-automation-runbook"></a>Az Azure Automation-Runbook létrehozása
 

@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: jhubbard
-ms.date: 03/04/2019
-ms.openlocfilehash: 05398f98bb92da8bf8436f2421beacdde3fd91c9
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.date: 03/07/2019
+ms.openlocfilehash: 4e7f344dfa0b5cf38d36cec786169c5c7a51af3b
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57336564"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576514"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector-using-powershell"></a>A PowerShell-lel transzparens adattitkosítási (TDE) védő elforgatása
 
@@ -43,7 +43,7 @@ Ez az útmutató bemutatja a kiszolgálón a TDE-védőhöz elforgatása két al
 
 ## <a name="manual-key-rotation"></a>Manuális kulcsrotálás
 
-Manuális kulcsrotálás használja a [Add-AzKeyVaultKey](/powershell/module/az.keyvault/Add-AzKeyVaultKey), [Add-AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey), és [Set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/az.sql/set-azsqlservertransparentdataencryptionprotector) parancsmagok hozzáadása a teljesen új kulcsot, amely egy új kulcsnév vagy akár egy másik a key vault lehet. Ez a megközelítés különböző kulcstartókhoz támogatja a magas rendelkezésre állás és a geo-Dr-beli forgatókönyvek ugyanazzal a kulccsal hozzáadását támogatja.
+Manuális kulcsrotálás használja a [Add-AzKeyVaultKey](/powershell/module/az.keyvault/Add-AzKeyVaultKey), [Add-AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey), és [Set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) parancsmagok hozzáadása a teljesen új kulcsot, amely egy új kulcsnév vagy akár egy másik a key vault lehet. Ez a megközelítés különböző kulcstartókhoz támogatja a magas rendelkezésre állás és a geo-Dr-beli forgatókönyvek ugyanazzal a kulccsal hozzáadását támogatja.
 
 >[!NOTE]
 >A kulcstároló nevét és a kulcs nevét együttes hossza nem lehet 94 karakternél.
@@ -71,7 +71,7 @@ Manuális kulcsrotálás használja a [Add-AzKeyVaultKey](/powershell/module/az.
 
 ## <a name="option-2-manual-rotation"></a>Option 2: Manuális rotációja
 
-A beállítást használja a [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azurekeyvaultkey), [Add-AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey), és [Set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) parancsmagok hozzáadása egy teljes mértékben új kulcs, amely egy új kulcsnév vagy akár egy másik a key vault lehet. 
+A beállítást használja a [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey), [Add-AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey), és [Set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) parancsmagok hozzáadása egy teljes mértékben új kulcs, amely egy új kulcsnév vagy akár egy másik a key vault lehet. 
 
 >[!NOTE]
 >A kulcstároló nevét és a kulcs nevét együttes hossza nem lehet 94 karakternél.

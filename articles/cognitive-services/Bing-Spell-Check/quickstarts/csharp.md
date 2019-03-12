@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: a33dfe2e20cdb6c1944d4be89692ec1da5a5482e
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: b439b702fb5ae4990c8c31838fe9677cb882d2a2
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889664"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546311"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-c"></a>Gyors útmutató: Ellenőrizze a helyesírást és a Bing Spell Check REST API és aC#
 
@@ -25,7 +25,7 @@ Ez a rövid útmutató segítségével, a Bing Spell Check REST API első hívá
 
 * A [Visual Studio 2017](https://www.visualstudio.com/downloads/) bármely kiadása.
 * A [Json.NET](https://www.newtonsoft.com/json) keretrendszer, amely NuGet-csomagként letölthető.
-* Linux/MacOS rendszeren használja, ha az alkalmazás használatával futtatható [Mono](http://www.mono-project.com/).
+* Linux/MacOS rendszeren használja, ha az alkalmazás használatával futtatható [Mono](https://www.mono-project.com/).
 
 [!INCLUDE [cognitive-services-bing-spell-check-signup-requirements](../../../../includes/cognitive-services-bing-spell-check-signup-requirements.md)]
 

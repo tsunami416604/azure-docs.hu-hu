@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: cherylmc
-ms.openlocfilehash: 18834357651e5fb72dd849a8d8e2e7687f0a8141
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 6cf427ee1dbd47d3b762035abc2236bda65db116
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730356"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773180"
 ---
 # <a name="create-a-virtual-network-with-a-site-to-site-vpn-connection-using-cli"></a>Virtuális hálózat létrehozása helyek közötti VPN-kapcsolattal a parancssori felület használatával
 
@@ -36,7 +36,7 @@ A helyek közötti VPN-átjárókapcsolat használatával kapcsolat hozható lé
 A konfigurálás megkezdése előtt győződjön meg a következő feltételek teljesüléséről:
 
 * Győződjön meg arról, hogy rendelkezésre áll egy kompatibilis VPN-eszköz és egy azt konfigurálni képes személy. További információk a kompatibilis VPN-eszközökről és az eszközkonfigurációról: [Tudnivalók a VPN-eszközökről](vpn-gateway-about-vpn-devices.md).
-* Győződjön meg arról, hogy rendelkezik egy kifelé irányuló, nyilvános IPv4-címmel a VPN-eszköz számára. Ez az IP-cím nem lehet NAT mögötti.
+* Győződjön meg arról, hogy rendelkezik egy kifelé irányuló, nyilvános IPv4-címmel a VPN-eszköz számára.
 * Ha nem ismeri a helyszíni hálózati konfigurációjában található IP-címtereket, egyeztessen valakivel, aki ezeket az adatokat megadhatja Önnek. Amikor létrehozza ezt a konfigurációt, meg kell határoznia az IP-címtartományok előtagjait, amelyeket az Azure majd a helyszínre irányít. A helyszíni hálózat egyik alhálózata sem lehet átfedésben azokkal a virtuális alhálózatokkal, amelyekhez csatlakozni kíván.
 * Azure Cloud Shell használatával futtassa a CLI-parancsokat (az alábbi utasítások). Azonban ha inkább helyileg futtassa a parancsokat, ellenőrizze, hogy telepítette a CLI-parancsok (2.0-s vagy újabb) legújabb verzióját. Információk a CLI-parancsok telepítéséről: [Az Azure CLI telepítése](/cli/azure/install-azure-cli) és [Bevezetés az Azure CLI használatába](/cli/azure/get-started-with-azure-cli). 
  
@@ -115,7 +115,7 @@ A helyi hálózati átjáró általában a helyszínt jelenti. Olyan nevet adjon
 
 Használja a következő értékeket:
 
-* A helyszíni VPN-eszköz IP-címe: *--gateway-ip-address*. A VPN-eszköz nem lehet NAT mögött.
+* A helyszíni VPN-eszköz IP-címe: *--gateway-ip-address*.
 * A helyszíni címterek: *--local-address-prefixes*.
 
 Az [az network local-gateway create](/cli/azure/network/local-gateway) paranccsal hozzáadhat egy helyi hálózati átjárót több címelőtaggal:

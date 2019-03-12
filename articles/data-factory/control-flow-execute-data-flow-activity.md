@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: makromer
-ms.openlocfilehash: 17bcb9efbf28901f241d44231bc5c71ae20380b5
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 4e661f838cc0b8e52ff72e4e44a43d611fa3355f
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241612"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57727382"
 ---
 # <a name="execute-data-flow-activity-in-azure-data-factory"></a>Data flow tevékenység végrehajtása az Azure Data Factoryban
 A végrehajtási adatok folyamat tevékenység használatával futtassa az ADF adatfolyama folyamatfuttatások hibakeresési (védőfal), és az aktivált folyamatfuttatások.
@@ -54,8 +54,6 @@ A végrehajtási adatok folyamat tevékenység használatával futtassa az ADF a
 ### <a name="run-on"></a>Futtatás a következőn:
 
 Válassza ki a számítási környezetet Ez az adatfolyam végrehajtásához. Az alapértelmezett érték az Azure automatikus feloldása alapértelmezett integrációs modul. Ez a választás végrehajtja az adatok az adatfolyam a Spark-környezetben az adat-előállító ugyanabban a régióban. A számítási típus lesz, ami azt jelenti, hogy a számítási környezet több percet vesz igénybe az indítási feladat fürt.
-
-Ha úgy dönt, hogy egy dedikált IR, hozzon létre egy új Azure integrációs modul egy rögzített régióban, és az adatok folyamat követelményeinek megfelelő méretű számítási. Ez a beállítás lesz léptetéses felfelé induló lesz a kezdeti feladat elküldése után azonnal interaktív fürtök. Ez a fürt életben marad, amíg a TTL le nem jár, a legutóbbi feladat futtatása után.
 
 ### <a name="compute-type"></a>Számítási típus
 

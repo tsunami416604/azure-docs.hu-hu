@@ -3,30 +3,31 @@ title: Az Azure-SSIS integrációs modul az Azure Active Directory-hitelesítés
 description: Ez a cikk ismerteti azokat a felügyelt identitáshoz tartozó Azure Data Factory létrehozása az Azure-SSIS integrációs modul az Azure Active Directory-hitelesítés engedélyezéséhez.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 2/19/2019
-ms.author: douglasl
-ms.openlocfilehash: 159aaf017265c09c2afc4b603ed5172fead9b29d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.date: 3/11/2019
+author: swinarko
+ms.author: sawinark
+manager: craigg
+ms.openlocfilehash: 787c436261635376ff82e8762cbc1469f4375e6b
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438652"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729942"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Az Azure-SSIS integrációs modul az Azure Active Directory-hitelesítés engedélyezése
 
-Ez a cikk bemutatja, hogyan azokat a felügyelt identitáshoz az Azure Data Factory (ADF) az Azure Active Directory (Azure AD-) hitelesítés engedélyezése, és ezzel az SQL-hitelesítés helyett hozzon létre egy Azure-SSIS integrációs modul (IR), amely ezután hozza létre az SSIS katalógusadatbázist (SSISDB) az Azure SQL Database server/Managed Instance az Ön nevében.
+Ez a cikk bemutatja, hogyan engedélyezheti azokat a felügyelt identitáshoz az Azure Data Factory (ADF) az Azure Active Directory (Azure AD) hitelesítési, és ezzel az SQL-hitelesítés helyett hozzon létre egy Azure-SSIS integrációs modul (IR), amely viszont kiépíti a SSIS katalógus-adatbázist (SSISDB) az Azure SQL Database server/Managed Instance az Ön nevében.
 
 A felügyelt identitást az ADF használatával kapcsolatos további információkért lásd: [felügyelt identiy adat-előállító](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity).
 
 > [!NOTE]
-> Ha már létrehozott egy Azure-SSIS integrációs modul SQL-hitelesítéssel, újrakonfigurálhatja az integrációs modul az Azure AD-hitelesítés használatához a PowerShell-lel jelenleg nem, de ehhez az Azure portal/ADF-alkalmazásban. 
+>-  Ebben a forgatókönyvben az ADF a felügyelt identitással Azure AD-hitelesítés használható a létrehozása és későbbi kezdési műveletek, az SSIS integrációs modul, amely a rendszer üzembe helyezése és a KATALÓGUSADATBÁZISBA csatlakoztasson. Az SSIS-csomag végrehajtások SQL-hitelesítés használata a teljes körűen felügyelt SSISDB kiépítés során létrehozott fiókokkal SSISDB az SSIS integrációs modul továbbra is csatlakozhat.
+>-  Ha már létrehozta az SSIS integrációs SQL-hitelesítéssel, nem újrakonfigurálhatja az, hogy jelenleg használja a PowerShell-lel az Azure AD-hitelesítés, de az Azure portal/ADF alkalmazás keresztül teheti. 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 

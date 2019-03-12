@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 1/10/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 74ac8602e61404214f300682f5696100b8fa0c60
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 05f9c0e68dfbc70f3a73d5b5cb0e166f0289c20c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868854"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538136"
 ---
 # <a name="quickstart-search-for-news-using-c-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hírek a keresési C# és a Bing News Search REST API
 
@@ -28,7 +28,7 @@ Bár ez az alkalmazás C# nyelven lett íródott, az API egy RESTful-webszolgál
 
 * A [Visual Studio 2017](https://www.visualstudio.com/downloads/) bármely kiadása.
 * A [Json.NET](https://www.newtonsoft.com/json) keretrendszer, amely NuGet-csomagként letölthető.
-* Linux/MacOS rendszer esetében az alkalmazás a [Monóval](http://www.mono-project.com/) futtatható.
+* Linux/MacOS rendszer esetében az alkalmazás a [Monóval](https://www.mono-project.com/) futtatható.
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 

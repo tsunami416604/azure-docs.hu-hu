@@ -5,17 +5,17 @@ services: azure-stack
 author: mattbriggs
 ms.author: mabrigg
 ms.date: 02/27/2019
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.service: azure-stack
 manager: femila
 ms.reviewer: xiaofmao
 ms.lastreviewed: 02/27/2019
-ms.openlocfilehash: 45bd47d0a55f447cc6222bb24de8eafcf37e263b
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: c1f210f7007426114c30e792186010b8905b1d15
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010650"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57764591"
 ---
 # <a name="get-started-with-azure-stack-storage-development-tools"></a>Ismerkedés az Azure Stack tárolásfejlesztési eszközök
 
@@ -58,7 +58,7 @@ Composer keresztül történő: (például a blob igénybe).
     }
     ```
 
-2. Töltse le [composer.phar](http://getcomposer.org/composer.phar) a projekt gyökérkönyvtárába.
+2. Töltse le [composer.phar](https://getcomposer.org/composer.phar) a projekt gyökérkönyvtárába.
 3. Futtatás: `php composer.phar install`.
 
 ### <a name="previous-versions-1802-to-1809-update"></a>Korábbi verziók (a 1809 1802-es frissítés)
@@ -87,7 +87,7 @@ Composer keresztül történő: (végezze el a blob példaként).
     }
   ```
 
-2. Töltse le [composer.phar](http://getcomposer.org/composer.phar) a projekt gyökérkönyvtárába.
+2. Töltse le [composer.phar](https://getcomposer.org/composer.phar) a projekt gyökérkönyvtárába.
 3. Futtatás: `php composer.phar install`.
 
 ## <a name="endpoint-declaration"></a>Végpont deklarációját

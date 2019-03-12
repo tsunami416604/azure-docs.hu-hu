@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: adigan
-ms.openlocfilehash: cc76b15c3cb108b5181e22330954dfee789b01ba
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: ee62138a56851747e75d75b7a806b2b73ba4fbbb
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251113"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544640"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Tárterület hozzáadása az Azure Backup Serverhez
 
@@ -100,13 +100,13 @@ Védelmi csoportok Modern Backup Storage használatára való frissítése nem k
 
 1. A felügyeleti konzolon válassza a **védelmi** funkció. Az a **védelmi csoport tagjához** listában kattintson a jobb gombbal a tagja, és válassza ki **tag védelmének kikapcsolása**.
 
-  ![Tag védelmének kikapcsolása](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
+  ![Tag védelmének kikapcsolása](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
 2. Az a **eltávolítása a csoportból** párbeszédpanelen tekintse át a felhasznált lemezterület és a rendelkezésre álló szabad területet a tárolókészlethez. Az alapértelmezett érték a helyreállítási pontok meghagyása a lemezen, és lehetővé teszik számukra megőrzési / hamarosan lejár. Kattintson az **OK** gombra.
 
   Ha szeretné azonnal a felhasznált lemezterület térjen vissza a szabad tárolókészletbe, válassza ki a **lemezen tárolt replika törlése** taghoz tartozó melletti jelölőnégyzetet, hogy törölje a biztonsági mentési adatok (és a helyreállítási pontok).
 
-  ![Távolítsa el a csoport párbeszédpanel](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
+  ![Távolítsa el a csoport párbeszédpanel](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-retain-data.png)
 
 3. Hozzon létre egy védelmi csoportot, amely a Modern Backup Storage használja. A nem védett adatforrásokat tartalmaznak.
 
@@ -118,7 +118,7 @@ Lemezterület növelése:
 
 1. A felügyeleti konzolon válassza ki a **felügyeleti** > **Disk Storage** > **Hozzáadás**.
 
-    ![Adja hozzá a lemezes tárolás párbeszédpanel](http://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
+    ![Adja hozzá a lemezes tárolás párbeszédpanel](https://docs.microsoft.com/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-add-disk-storage.png)
 
 4. Az a **lemezterület hozzáadása** párbeszédablakban válassza **lemezekkel Bővíthetem a gépemet**.
 

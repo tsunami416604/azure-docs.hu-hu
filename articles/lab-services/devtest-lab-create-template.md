@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 9d009847856936d14a182b234910fb717c084d11
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 853c138c8cf73b41b0cebb6c1d349865e18eab6a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248061"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550105"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file"></a>Egy egyéni lemezkép készítése VHD-fájlból
 
@@ -60,9 +60,9 @@ A következő lépések végigvezetik egy egyéni rendszerkép VHD-fájlból az 
 
 1. Is megadhatja a csomag neve, csomag ajánlat és terv közzétevő Ha az az egyéni rendszerkép létrehozásához használt lemezkép nem licencelt kép (a Microsoft által közzétett).
 
-   - **Csomag neve:** adja meg a Piactéri rendszerkép (Termékváltozat) nevét, amelyre ez az egyéni rendszerkép létrehozása 
-   - **Nabídka plánu:** adja meg a termék (ajánlat), a Piactéri lemezkép, amelyből ez az egyéni rendszerkép létrehozása 
-   - **Vydavatel plánu:** adja meg a kiadó, a Piactéri lemezkép, amelyből ez az egyéni rendszerkép létrehozása
+   - **Csomag neve:** Adja meg a Piactéri rendszerkép (Termékváltozat) nevét, amelyre ez az egyéni rendszerkép létrehozása 
+   - **Nabídka plánu:** Adja meg a termék (ajánlat), a Piactéri lemezkép, amelyből ez az egyéni rendszerkép létrehozása 
+   - **Vydavatel plánu:** Adja meg a kiadó, a Piactéri lemezkép, amelyből ez az egyéni rendszerkép létrehozása
 
    > [!NOTE]
    > A kép, hozzon létre egy egyéni rendszerképet használ-e **nem** licencelt kép, akkor ezek a mezők üresek, és ha úgy dönt, kitöltött. Ha a kép **van** licencelt kép, majd a mezők a rendszer automatikusan kitölti a terv információit. Ha meg ebben az esetben módosítsa őket, egy figyelmeztető üzenet jelenik meg.
@@ -81,7 +81,7 @@ Néhány perc elteltével az egyéni rendszerkép jön létre, és a labor tárf
 ## <a name="related-blog-posts"></a>Kapcsolódó blogbejegyzések
 
 - [Egyéni rendszerképek vagy képleteket?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
-- [Egyéni rendszerképek az Azure DevTest Labs közötti másolása](http://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
+- [Egyéni rendszerképek az Azure DevTest Labs közötti másolása](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ## <a name="next-steps"></a>További lépések
 

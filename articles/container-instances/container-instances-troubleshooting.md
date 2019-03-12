@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/15/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: bfa616fb16470a3543f8c981a0104f6bda24cf4d
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: eb7a98d22e9005bb1d5db2f1fbd35a1279d84703
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823474"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537219"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Az Azure Container Instances szolgáltatásban gyakori problémáinak elhárítása
 
@@ -197,7 +197,7 @@ Különböző regionális erőforrás miatt betöltése az Azure-ban, előfordul
 
 Ez a hiba azt jelzi, hogy a régióban, amelyben telepíteni kívánt nagy terhelés miatt az a tároló megadott erőforrások nem osztható ki jelenleg. Egy vagy több, a következő kockázatcsökkentési lépések segítségével a probléma megoldása érdekében.
 
-* Ellenőrizze a definiált paraméterek tartoznak a tároló üzembe helyezési beállítások [kvóták és régiók rendelkezésre állása az Azure Container Instances szolgáltatásban](container-instances-quotas.md#region-availability)
+* Ellenőrizze a definiált paraméterek tartoznak a tároló üzembe helyezési beállítások [régiók rendelkezésre állása az Azure Container Instances szolgáltatásban](container-instances-region-availability.md)
 * Adja meg alacsonyabb Processzor- és a tároló beállításait
 * Más Azure-régióban való üzembe helyezése
 * Egy későbbi időpontban központi telepítése

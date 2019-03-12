@@ -3,18 +3,18 @@ title: Azure IoT Central-alkalmazás létrehozása | Microsoft Docs
 description: Új Azure IoT Central-alkalmazás létrehozása. Próbaalkalmazás vagy használatalapú fizetéses alkalmazás létrehozása alkalmazássablonnal.
 author: viv-liu
 ms.author: viviali
-ms.date: 10/31/2018
+ms.date: 02/20/2019
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 9b66e4160dc78286f393257136dbf9375c6f61fb
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 0844737288abeb8d6ab1043b4c55ba5ef1c4883c
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57306731"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780252"
 ---
 # <a name="create-an-azure-iot-central-application"></a>Azure IoT Central-alkalmazás létrehozása
 
@@ -37,6 +37,7 @@ Egy új Azure IoT Central-alkalmazás létrehozásának megkezdéséhez válassz
 1. Válasszon egy rövid alkalmazásnevet, például a **Contoso IoT** nevet. Az Azure IoT Central létrehoz egy egyéni URL-előtagot. Ezt az URL-előtagot egy könnyebben megjegyezhető előtagra módosíthatja.
 
 1. Válasszon ki egy alkalmazássablont. Az alkalmazássablon előre megadott elemeket, például eszközsablonokat és irányítópultokat tartalmazhat, amelyek segítséget nyújtanak az első lépésekhez.
+
     | Alkalmazássablon | Leírás |
     | -------------------- | ----------- |
     | Minta: Contoso       | Létrehoz egy alkalmazást, amely már tartalmaz egy eszközsablont egy hűtött eladóautomatához. Használja ezt a sablont az Azure IoT Central megismerésének megkezdéséhez. |
@@ -44,7 +45,8 @@ Egy új Azure IoT Central-alkalmazás létrehozásának megkezdéséhez válassz
     | Egyéni alkalmazás   | Létrehoz egy üres alkalmazást, amelybe a saját eszközsablonjait és eszközeit helyezheti el. |
 
 1. Ha **használatalapú fizetéses** alkalmazást hoz létre, ki kell választania a *címtárat*, az *Azure-előfizetést* és a *régiót*. 
-    - A *címtár* az az Azure Active Directory, amelyben az alkalmazás létrejön. Felhasználói identitásokat, hitelesítő adatokat és egyéb szervezeti információkat tartalmaz. Ha még nem rendelkezik AAD-vel, létrehozunk egyet Önnek az Azure-előfizetés létrehozásakor.
+
+    - *Directory* van az Azure Active Directory (AD) az alkalmazás létrehozásához. Felhasználói identitásokat, hitelesítő adatokat és egyéb szervezeti információkat tartalmaz. Ha nem rendelkezik egy Azure ad-ben, egy jön létre az Ön számára egy Azure-előfizetés létrehozásakor.
 
     - Az *Azure-előfizetéssel* Azure-szolgáltatások példányait hozhatja létre. Az előfizetésben lévő erőforrásokat az IoT Central osztja ki. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egyet az [Azure regisztrációs lapján](https://aka.ms/createazuresubscription). Az Azure-előfizetés létrehozása után lépjen vissza az **alkalmazás-létrehozási** lapra. Az új előfizetése megjelenik az **Azure-előfizetések** legördülő menüjében.
 
@@ -60,4 +62,4 @@ Egy új Azure IoT Central-alkalmazás létrehozásának megkezdéséhez válassz
 Ebben a rövid útmutatóban létrehozott egy IoT Central-alkalmazást. A következő javasolt lépés:
 
 > [!div class="nextstepaction"]
-> [Ismerkedés az IoT Centrallal](https://docs.microsoft.com/azure/iot-central/overview-iot-central-tour)
+> [Ismerkedés az IoT Centrallal](overview-iot-central-tour.md)

@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/25/2019
+ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: cf82a80d0b812ab5540796c8e7758e6ff85952c5
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: fad3d77d15d78ffdaf1afca3675a82242b844778
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804774"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730390"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Az Azure Automationben az Azure PowerShell-modulok frissítése
 
@@ -41,7 +41,7 @@ Az alábbiakban néhány szempontot figyelembe kell venni, amikor ez a folyamat 
 
 * Ha ez a forgatókönyv az eredeti nevén importálja `Update-AutomationAzureModulesForAccount`, felülírja a belső runbook ezen a néven. Ennek eredményeképpen az importált runbook akkor futtatható, ha a **frissítés az Azure-modulok** gomb leküldéssel, vagy ha a runbook meghívása az Automation-fiókhoz tartozó Azure Resource Manager API segítségével közvetlenül.
 
-* Csak `Azure` és `AzureRM.*` modulok jelenleg támogatott. Az új [Az Azure PowerShell-modulok](/powershell/azure/new-azureps-module-az) még nem támogatottak.
+* Ez a runbook támogatja frissítése csak a **Azure** és **AzureRm** modulok jelenleg. [PowerShell Az Azure-modulok](/powershell/azure/new-azureps-module-az) Automation-fiókok által támogatott, de az a runbook nem frissíthető.
 
 * Kerülje a runbook indítása az Automation-fiókok, amelyek tartalmazzák Az modulok.
 

@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 5ade16bbd45203892cd9a3117dd52471884cf700
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 27ebcee961cc81ad088cadfa8980b3bd51b3d7a4
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57455819"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536921"
 ---
 # <a name="customize-setup-for-the-azure-ssis-integration-runtime"></a>A telepítő az Azure-SSIS integrációs modul testreszabása
 
@@ -64,7 +64,7 @@ Testre szabhatja az Azure-SSIS integrációs modul, a következőkre van szüks�
 
     1.  Ha azt szeretné, hogy más eszközök által létrehozott további naplók (például `msiexec.exe`) kell feltölteni a tárolóba, adja meg az előre definiált környezeti változót `CUSTOM_SETUP_SCRIPT_LOG_DIR` , a parancsfájlok a mappájához (például `msiexec /i xxx.msi /quiet /lv %CUSTOM_SETUP_SCRIPT_LOG_DIR%\install.log`).
 
-1.  Töltse le, telepítse és indítsa el a [Azure Storage Explorer](http://storageexplorer.com/).
+1.  Töltse le, telepítse és indítsa el a [Azure Storage Explorer](https://storageexplorer.com/).
 
     1.  A **(helyi és csatolt)**, a jobb gombbal válassza **Tárfiókok** válassza **csatlakozás az Azure storage**.
 
@@ -148,9 +148,9 @@ Testre szabhatja az Azure-SSIS integrációs modul, a következőkre van szüks�
 
        1. Egy `EXCEL` mappába, amely egy egyéni telepítőt, és telepítse a nyílt forráskódú szerelvényeket tartalmazza (`DocumentFormat.OpenXml.dll`, `ExcelDataReader.DataSet.dll`, és `ExcelDataReader.dll`) minden egyes csomópontján az Azure-SSIS integrációs modult.
 
-       1. Egy `ORACLE ENTERPRISE` mappába, amely tartalmazza az egyéni telepítési parancsfájl (`main.cmd`) és a Csendes telepítési konfigurációs fájl (`client.rsp`) az Oracle-összekötők és OCI illesztőprogram telepítése az Azure-SSIS integrációs modul Enterprise Edition minden egyes csomópontjára. Ez a beállítás lehetővé teszi az Oracle-Csatlakozáskezelő, forrás és cél használatát. Először töltse le a Microsoft Connectors 5.0-s verzió Oracle (`AttunitySSISOraAdaptersSetup.msi` és `AttunitySSISOraAdaptersSetup64.msi`) származó [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=55179) és a legújabb Oracle-ügyfél – például `winx64_12102_client.zip` – ki [Oracle](http://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html), majd feltölti őket az összes együtt `main.cmd` és `client.rsp` alkalmazásfájlokat a tárolóba. Ha TNS használatával csatlakozhat az Oracle, is szeretné letölteni `tnsnames.ora`, szerkeszthetik és feltöltése a tárolóba, akkor lehet másolni az Oracle telepítési mappába telepítés során.
+       1. Egy `ORACLE ENTERPRISE` mappába, amely tartalmazza az egyéni telepítési parancsfájl (`main.cmd`) és a Csendes telepítési konfigurációs fájl (`client.rsp`) az Oracle-összekötők és OCI illesztőprogram telepítése az Azure-SSIS integrációs modul Enterprise Edition minden egyes csomópontjára. Ez a beállítás lehetővé teszi az Oracle-Csatlakozáskezelő, forrás és cél használatát. Először töltse le a Microsoft Connectors 5.0-s verzió Oracle (`AttunitySSISOraAdaptersSetup.msi` és `AttunitySSISOraAdaptersSetup64.msi`) származó [Microsoft Download Center](https://www.microsoft.com/en-us/download/details.aspx?id=55179) és a legújabb Oracle-ügyfél – például `winx64_12102_client.zip` – ki [Oracle](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/database12c-win64-download-2297732.html), majd feltölti őket az összes együtt `main.cmd` és `client.rsp` alkalmazásfájlokat a tárolóba. Ha TNS használatával csatlakozhat az Oracle, is szeretné letölteni `tnsnames.ora`, szerkeszthetik és feltöltése a tárolóba, akkor lehet másolni az Oracle telepítési mappába telepítés során.
 
-       1. Egy `ORACLE STANDARD ADO.NET` mappába, amely tartalmazza az egyéni telepítési parancsfájl (`main.cmd`) telepítése az Oracle ODP.NET-illesztőt használja az Azure-SSIS integrációs modult. minden egyes csomópontjára Ez a beállítás lehetővé teszi az ADO.NET kapcsolati Manager forrás és cél használatát. Először töltse le a legújabb Oracle ODP.NET-illesztőt – például `ODP.NET_Managed_ODAC122cR1.zip` – ki [Oracle](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html), majd töltse fel a `main.cmd` alkalmazásfájlokat a tárolóba.
+       1. Egy `ORACLE STANDARD ADO.NET` mappába, amely tartalmazza az egyéni telepítési parancsfájl (`main.cmd`) telepítése az Oracle ODP.NET-illesztőt használja az Azure-SSIS integrációs modult. minden egyes csomópontjára Ez a beállítás lehetővé teszi az ADO.NET kapcsolati Manager forrás és cél használatát. Először töltse le a legújabb Oracle ODP.NET-illesztőt – például `ODP.NET_Managed_ODAC122cR1.zip` – ki [Oracle](https://www.oracle.com/technetwork/database/windows/downloads/index-090165.html), majd töltse fel a `main.cmd` alkalmazásfájlokat a tárolóba.
        
        1. Egy `ORACLE STANDARD ODBC` mappába, amely tartalmazza az egyéni telepítési parancsfájl (`main.cmd`) az Oracle ODBC-illesztőprogram telepítése és konfigurálása a DSN mindegyik csomópontján az Azure-SSIS integrációs modult. Ez a beállítás lehetővé teszi az ODBC-kapcsolat kezelő, a forrás és a cél vagy a Power Query kapcsolat Manager/forrása ODBC adatforrás típusa az Oracle-kiszolgálóhoz való csatlakozáshoz. Először töltse le a legújabb Oracle azonnali ügyfelet (alapszintű csomag vagy alapszintű Lite csomag) és az ODBC-csomag – például a 64 bites csomagok [Itt](https://www.oracle.com/technetwork/topics/winx64soft-089540.html) (alapszintű csomag: `instantclient-basic-windows.x64-18.3.0.0.0dbru.zip`, Lite alapszintű csomag: `instantclient-basiclite-windows.x64-18.3.0.0.0dbru.zip`, ODBC-csomag : `instantclient-odbc-windows.x64-18.3.0.0.0dbru.zip`) vagy a 32 bites csomagok [Itt](https://www.oracle.com/technetwork/topics/winsoft-085727.html) (alapszintű csomag: `instantclient-basic-nt-18.3.0.0.0dbru.zip`, Lite alapszintű csomag: `instantclient-basiclite-nt-18.3.0.0.0dbru.zip`, ODBC-csomag: `instantclient-odbc-nt-18.3.0.0.0dbru.zip`), majd töltse fel őket a `main.cmd` be a tároló.
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: 185ff9c7f50fa08ba952f1519bf406d9017982e0
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 5833ee3964958437b7834ff25f1bce7837370fb1
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455959"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550583"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Az Azure Cosmos DB SQL lekérdezési példák
 
@@ -160,7 +160,7 @@ Az alábbiakban néhány aspektusait a Cosmos DB lekérdezési nyelv bemutatott 
 
 * A strukturált lekérdezési nyelvi séma nélküli adatokkal dolgozik. Ezért a típus rendszer kell dinamikusan van kötve. Egyazon kifejezésre sikerült eddig is számtalan előnyét eltérő konfigurációs elemeket a különböző típusú. A lekérdezés eredménye egy érvényes JSON-értéket, de nem garantált, hogy a rögzített sémát kell.  
 
-* Az Azure Cosmos DB támogatja a szigorú JSON-elemek csak. Ez azt jelenti, hogy a rendszer típusa és -kifejezések csak JSON típusú kezelésére korlátozva. Tekintse meg a [JSON-specifikáció](http://www.json.org/) további részletekért.  
+* Az Azure Cosmos DB támogatja a szigorú JSON-elemek csak. Ez azt jelenti, hogy a rendszer típusa és -kifejezések csak JSON típusú kezelésére korlátozva. Tekintse meg a [JSON-specifikáció](https://www.json.org/) további részletekért.  
 
 * A Cosmos DB-tárolók gyűjteménye sémamentes JSON-elemek. Az adatok entitáson belül és azok a tárolóban lévő elemek között kapcsolatok implicit módon rögzítve lesznek a tartalmazási, és nem a primary key és az idegen kulcs kapcsolatokat. Ez az a cikkben később tárgyalt intra-cikk illesztéseket naprakészségét megjegyeznünk fontos elemét alkotják.
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: fea90d273d156eec3bf29f376e4cf6668c68170f
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 0e0a249c53c90d3d8d03dcdb5fbb4f11f31c54df
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697517"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57545149"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Számítási környezetek Azure Data Factory által támogatott
 > [!NOTE]
@@ -116,7 +116,7 @@ A következő JSON egy Linux-alapú igény szerinti HDInsight társított szolg�
 > [!IMPORTANT]
 > A HDInsight-fürt létrehoz egy *alapértelmezett tároló* az Azure Blob Storage, a JSON-megadott **linkedServiceName** tulajdonság. A kialakításból fakadóan HDInsight nem törli ezt a tárolót, a fürt törlésekor. Az egy igény szerinti HDInsight társított szolgáltatás egy HDInsight-fürt jön létre minden alkalommal, amikor egy szeletet kell feldolgozni, kivéve, ha van meglévő élő fürt (**timeToLive**). A fürt törlődik a feldolgozás végeztével. 
 >
-> Ahogy több szelet lesz feldolgozva, több tároló jelenik a Blob storage. Ha már nincs szüksége a tárolók feladatok hibaelhárításhoz, előfordulhat, hogy törölni kívánja a tárolók a tárolási költségek csökkentése érdekében. A tárolók neve a következő mintát követi: `adf<your Data Factory name>-<linked service name>-<date and time>`. Egy hasonló eszközzel [Microsoft Storage Explorer](http://storageexplorer.com/) törölheti a Blob Storage-tárolókat.
+> Ahogy több szelet lesz feldolgozva, több tároló jelenik a Blob storage. Ha már nincs szüksége a tárolók feladatok hibaelhárításhoz, előfordulhat, hogy törölni kívánja a tárolók a tárolási költségek csökkentése érdekében. A tárolók neve a következő mintát követi: `adf<your Data Factory name>-<linked service name>-<date and time>`. Egy hasonló eszközzel [Microsoft Storage Explorer](https://storageexplorer.com/) törölheti a Blob Storage-tárolókat.
 >
 > 
 
@@ -271,7 +271,7 @@ Regisztrálja a Batch-készlet, a virtuális gépek (VM) egy adat-előállítóh
 Ha most ismerkedik a Batch szolgáltatás segítségével:
 
 * Ismerje meg [Azure Batch alapjai](../../batch/batch-technical-overview.md).
-* További információ a [New-AzureBatchAccount](https://msdn.microsoft.com/library/mt125880.aspx) parancsmagot. Ez a parancsmag segítségével hozzon létre egy Batch-fiókot. Vagy, a Batch-fiók használatával is létrehozhat a [az Azure portal](../../batch/batch-account-create-portal.md). A parancsmag használatával kapcsolatos részletes információkért lásd: [PowerShell használata kezelheti a Batch-fiók](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx).
+* További információ a [New-AzureBatchAccount](https://msdn.microsoft.com/library/mt125880.aspx) parancsmagot. Ez a parancsmag segítségével hozzon létre egy Batch-fiókot. Vagy, a Batch-fiók használatával is létrehozhat a [az Azure portal](../../batch/batch-account-create-portal.md). A parancsmag használatával kapcsolatos részletes információkért lásd: [PowerShell használata kezelheti a Batch-fiók](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx).
 * További információ a [New-AzureBatchPool](https://msdn.microsoft.com/library/mt125936.aspx) parancsmagot. Ez a parancsmag segítségével hozzon létre egy Batch-készletet.
 
 ### <a name="example"></a>Példa

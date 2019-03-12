@@ -5,17 +5,17 @@ services: azure-stack
 author: mattbriggs
 manager: femila
 ms.service: azure-stack
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: scottnap
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: c54f1f8ed8447c69dbfa924469d854ebdd97407f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 67465a64f38ce4767b384cf5395179c0dbcb99fe
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252200"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769897"
 ---
 # <a name="introduction-to-azure-stack-networking"></a>Az Azure Stack-hálózat bemutatása
 
@@ -43,4 +43,4 @@ Az Azure Stack használható együtt vagy külön-külön hálózati képessége
 
 ## <a name="next-steps"></a>További lépések
 
-* [Azure Stack hálózati szempontjai](azure-stack-network-differences.md)
+* [Az Azure Stack-hálózatkezelés szempontjai](azure-stack-network-differences.md)

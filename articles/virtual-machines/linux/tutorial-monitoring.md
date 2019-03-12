@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 01/26/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7916995d2630e9b33e3695c5c505925851ba4934
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: fba54fa1d2ca6675b41728b460a07515b05758f8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55092770"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531589"
 ---
 # <a name="tutorial-monitor-and-update-a-linux-virtual-machine-in-azure"></a>Oktatóanyag: Figyelheti és frissítheti a Linux rendszerű virtuális gép az Azure-ban
 
@@ -177,7 +177,7 @@ A frissítést igénylő virtuális gépeken további műveletek elvégzése ér
 
 Az érvényesítési folyamat is ellenőrzi, hogy ha a virtuális gép a Log Analytics-ügynököket és az Automation hibrid runbook-feldolgozó üzembe. Ez az ügynök kommunikál a virtuális géppel, továbbá begyűjti a frissítési állapottal kapcsolatos információkat.
 
-A megoldás engedélyezéséhez válassza ki a Log Analytics-munkaterületet és az Automation-fiókot, majd válassza az **Engedélyezés** lehetőséget. A megoldás engedélyezése akár 15 percet is igénybe vehet.
+A Log Analytics-munkaterületet és automation-fiók, és válasszon **engedélyezése** a megoldás engedélyezéséhez. A megoldás engedélyezése akár 15 percet is igénybe vehet.
 
 Ha az előkészítés közben az alábbi előfeltételek bármelyike hiányzik, a rendszer automatikusan hozzáadja azt:
 
@@ -185,11 +185,11 @@ Ha az előkészítés közben az alábbi előfeltételek bármelyike hiányzik, 
 * [Automation-fiók](../../automation/automation-offering-get-started.md)
 * Engedélyezett [hibrid runbook-feldolgozó](../../automation/automation-hybrid-runbook-worker.md) a virtuális gépen
 
-Megnyílik az **Update Management** képernyő. Konfigurálja a használni kívánt helyet, Log Analytics-munkaterületet és Automation-fiókot, majd válassza az **Engedélyezés** lehetőséget. Ha a mezők szürkén jelennek meg, az azt jelenti, hogy egy másik automatizálási megoldás már engedélyezve van a virtuális gépen, ezért az ahhoz tartozó munkaterületet és Automation-fiókot kell használnia.
+Megnyílik az **Update Management** képernyő. Konfigurálja a helyet, Log Analytics-munkaterületet és Automation-fiókot használja, és válassza ki, **engedélyezése**. Ha a mezők szürkén jelennek meg, az azt jelenti, hogy egy másik automatizálási megoldás már engedélyezve van a virtuális gépen, ezért az ahhoz tartozó munkaterületet és Automation-fiókot kell használnia.
 
 ![Az Update Management megoldás engedélyezése](./media/tutorial-monitoring/manage-updates-update-enable.png)
 
-A megoldás engedélyezése akár 15 percet is igénybe vehet. Ez idő alatt ne zárja be a böngészőablakot. A megoldás engedélyezését követően a virtuális gép hiányzó frissítéseivel kapcsolatos adatok elkezdenek beérkezni a Log Analytics szolgáltatásba. Az adatok legalább 30 perc és legfeljebb 6 óra múlva állnak készen az elemzésre.
+A megoldás engedélyezése akár 15 percet is igénybe vehet. Ez idő alatt ne zárja be a böngészőablakot. A megoldás engedélyezését követően hiányzó a virtuális gép frissítéseivel kapcsolatos adatok elkezdenek beérkezni a Azure Monitor naplóira. Az adatok legalább 30 perc és legfeljebb 6 óra múlva állnak készen az elemzésre.
 
 ### <a name="view-update-assessment"></a>A frissítésfelmérés megtekintése
 
@@ -258,7 +258,7 @@ A változás- és leltárkezelés engedélyezése a virtuális géphez:
 2. Válasszon ki egy virtuális gépet a listából.
 3. A virtuális gép képernyőjének **Műveletek** szakaszában válassza az **Inventory** vagy a **Change Tracking** elemet. Megnyílik **A Change Tracking and Inventory engedélyezése** képernyő.
 
-Konfigurálja a használni kívánt helyet, Log Analytics-munkaterületet és Automation-fiókot, majd válassza az **Engedélyezés** lehetőséget. Ha a mezők szürkén jelennek meg, az azt jelenti, hogy egy másik automatizálási megoldás már engedélyezve van a virtuális gépen, ezért az ahhoz tartozó munkaterületet és Automation-fiókot kell használnia. Bár a megoldások elkülönülve jelennek meg a menüben, ugyanarról a megoldásról van szó. Ha engedélyezi az egyiket, a virtuális gépen mindkét megoldás engedélyezve lesz.
+Konfigurálja a helyet, Log Analytics-munkaterületet és Automation-fiókot használja, és válassza ki, **engedélyezése**. Ha a mezők szürkén jelennek meg, az azt jelenti, hogy egy másik automatizálási megoldás már engedélyezve van a virtuális gépen, ezért az ahhoz tartozó munkaterületet és Automation-fiókot kell használnia. Bár a megoldások elkülönülve jelennek meg a menüben, ugyanarról a megoldásról van szó. Ha engedélyezi az egyiket, a virtuális gépen mindkét megoldás engedélyezve lesz.
 
 ![A változások és a leltár követésének engedélyezése](./media/tutorial-monitoring/manage-inventory-enable.png)
 
@@ -294,7 +294,7 @@ Speciális egy megoldást, például a Virtuálisgép-monitorozási teheti [-bel
 
 A virtuális gép csatlakozik-e a Log Analytics-munkaterület is lekéréséhez, összesítése, és elemezheti az összegyűjtött adatokat a [teljes funkcionalitású lekérdezésnyelvet](../../azure-monitor/log-query/log-query-overview.md). 
 
-![Log Analytics](./media/tutorial-monitoring/tutorial-monitor-oms.png)
+![Log Analytics-munkaterület](./media/tutorial-monitoring/tutorial-monitor-oms.png)
 
 ## <a name="next-steps"></a>További lépések
 

@@ -3,20 +3,20 @@ title: Számítási környezetek Azure Data Factory által támogatott |} A Micr
 description: Tudnivalók a számítási környezetek, amelyek segítségével az Azure Data Factory-folyamatok (például Azure HDInsight) adatok átalakítás vagy folyamat.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/15/2019
-ms.author: douglasl
-ms.openlocfilehash: 490f11b4a35bb7e5669ccf1554c3a73f5156f3c7
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: b4078303a0fabf70fe8bda82875dd312714f73de
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445653"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576888"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Számítási környezetek Azure Data Factory által támogatott
 Ez a cikk ismerteti a különböző számítási környezetekben használható folyamat vagy átalakítási adatok. Emellett biztosítja linking ezeket a társított szolgáltatások konfigurálásakor a Data Factory által támogatott különböző konfigurációt (igény szerinti és használata a saját) adatait számítási környezeteket az Azure data factoryt.
@@ -91,7 +91,7 @@ A következő JSON egy Linux-alapú igény szerinti HDInsight társított szolg�
 > [!IMPORTANT]
 > A HDInsight-fürt létrehoz egy **alapértelmezett tárolót** a JSON-fájlban megadott blob-tárolóban (**linkedServiceName**). A fürt törlésekor a HDInsight nem törli ezt a tárolót. Ez a működésmód szándékos. Igény szerinti HDInsight társított szolgáltatás esetén a rendszer mindig létrehoz egy HDInsight-fürt, amikor fel kell dolgozni egy szeletet, kivéve, ha van meglévő élő fürt (**timeToLive**), majd a feldolgozás végén a rendszer törli a fürtöt. 
 >
-> Ahogy több tevékenység fut, az Azure blob storage több tároló jelenik. Ha nincs szüksége rájuk a feladatokkal kapcsolatos hibaelhárításhoz, törölheti őket a tárolási költségek csökkentése érdekében. A tárolók neve a következő mintát követi: `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp`. Az Azure Blob Storage-tárból olyan eszközökkel törölheti a tárolókat, mint például a [Microsoft Storage Explorer](http://storageexplorer.com/).
+> Ahogy több tevékenység fut, az Azure blob storage több tároló jelenik. Ha nincs szüksége rájuk a feladatokkal kapcsolatos hibaelhárításhoz, törölheti őket a tárolási költségek csökkentése érdekében. A tárolók neve a következő mintát követi: `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp`. Az Azure Blob Storage-tárból olyan eszközökkel törölheti a tárolókat, mint például a [Microsoft Storage Explorer](https://storageexplorer.com/).
 >
 > 
 
@@ -311,7 +311,7 @@ Regisztrálja a Batch-készlet, a virtuális gépek (VM) egy társított Azure B
 Lásd az alábbi témakörök, ha most ismerkedik az Azure Batch szolgáltatás:
 
 * [Az Azure Batch alapjai](../batch/batch-technical-overview.md) az Azure Batch szolgáltatás áttekintése.
-* [Új AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) parancsmaggal hozzon létre egy Azure Batch-fiók (vagy) [az Azure portal](../batch/batch-account-create-portal.md) létrehozása az Azure Batch-fiókot az Azure portal használatával. Lásd: [PowerShell használata kezelheti az Azure Batch-fiók](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) témakör nyújt részletes tájékoztatást a parancsmag használatával.
+* [Új AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) parancsmaggal hozzon létre egy Azure Batch-fiók (vagy) [az Azure portal](../batch/batch-account-create-portal.md) létrehozása az Azure Batch-fiókot az Azure portal használatával. Lásd: [PowerShell használata kezelheti az Azure Batch-fiók](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) témakör nyújt részletes tájékoztatást a parancsmag használatával.
 * [Új AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) parancsmaggal hozzon létre egy Azure Batch-készletben.
 
 ### <a name="example"></a>Példa

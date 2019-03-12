@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: d1ad1f34f51adbc177e5b4163d528dbe45ce03af
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 33f5cd6e1d2989a9ca5c26bbcf947bd6eade3831
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339147"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774200"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Egy proxykiszolgálón keresztül kommunikáljon az IoT Edge-eszköz konfigurálása
 
@@ -25,23 +25,23 @@ Proxykiszolgáló használata az IoT Edge-eszköz konfigurálása a következő 
 1. Telepítse az IoT Edge-futtatókörnyezet az eszközön. 
 2. A Docker-démont és az IoT Edge-démon konfigurálja a proxykiszolgáló használatára az eszközön.
 3. Az eszközön a config.yaml fájlban edgeAgent tulajdonságainak konfigurálása.
-4. Környezeti változókat az IoT Edge-futtatókörnyezet és az egyéb IoT Edge modulok beállítása manifest nasazení. 
+4. Környezeti változókat az IoT Edge-futtatókörnyezet és az egyéb IoT Edge modulok beállítása manifest nasazení.
 
 ## <a name="know-your-proxy-url"></a>Tudja, a proxy URL-címe
 
-A Docker-démont és az IoT Edge konfigurálása az eszközön, akkor ismernie kell a proxykiszolgáló URL-CÍMÉT. 
+A Docker-démont és az IoT Edge konfigurálása az eszközön, akkor ismernie kell a proxykiszolgáló URL-CÍMÉT.
 
-Proxykiszolgáló URL-címeket is a következő formátumban: **protokoll**://**proxy_host**:**proxyport**. 
+Proxykiszolgáló URL-címeket is a következő formátumban: **protokoll**://**proxy_host**:**proxyport**.
 
 * A **protokoll** HTTP vagy HTTPS van. A Docker-démon használhatja mindkét protokollt, a tároló-beállításjegyzékek beállításai, attól függően, de az IoT Edge-démont és futásidejű tárolók mindig HTTPS PROTOKOLLT használnak.
 
-* A **proxy_host** esetében a proxykiszolgáló-cím. Ha a proxykiszolgáló hitelesítést igényel, a hitelesítő adatokat biztosíthat a proxy_host formátumban részeként **felhasználói**:**jelszó**@**proxy_host**. 
+* A **proxy_host** esetében a proxykiszolgáló-cím. Ha a proxykiszolgáló hitelesítést igényel, a hitelesítő adatokat biztosíthat a proxy_host formátumban részeként **felhasználói**:**jelszó**\@**proxy_host**.
 
-* A **proxyport** a hálózati portot, amelyen a proxy válaszol hálózati forgalmat. 
+* A **proxyport** a hálózati portot, amelyen a proxy válaszol hálózati forgalmat.
 
 ## <a name="install-the-runtime"></a>A modul telepítése
 
-Az IoT Edge-futtatókörnyezet telepítése egy Linux rendszerű eszközön, konfigurálja a package manager haladhat végig a proxykiszolgáló eléréséhez a telepítési csomagot. Ha például [apt-get paranccsal beállítása egy http-proxy használatára](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy). Miután konfigurálta a Csomagkezelő, kövesse a [(ARM32v7/armhf) Linux rendszeren telepítse az Azure IoT Edge-futtatókörnyezet](how-to-install-iot-edge-linux-arm.md) vagy [(x64) linuxon az Azure IoT Edge-futtatókörnyezet telepítéséhez](how-to-install-iot-edge-linux.md) a szokásos módon. 
+Az IoT Edge-futtatókörnyezet telepítése egy Linux rendszerű eszközön, konfigurálja a package manager haladhat végig a proxykiszolgáló eléréséhez a telepítési csomagot. Ha például [apt-get paranccsal beállítása egy http-proxy használatára](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy). Miután konfigurálta a Csomagkezelő, kövesse a [(ARM32v7/armhf) Linux rendszeren telepítse az Azure IoT Edge-futtatókörnyezet](how-to-install-iot-edge-linux-arm.md) vagy [(x64) linuxon az Azure IoT Edge-futtatókörnyezet telepítéséhez](how-to-install-iot-edge-linux.md) a szokásos módon.
 
 Ha az IoT Edge-futtatókörnyezet telepít egy Windows-eszközön, akkor nyissa meg a proxykiszolgálón keresztül után töltse le a telepítési parancsfájlt, majd újból letölteni a szükséges összetevők telepítése során. A Windows-beállítások konfigurálása a proxyadatokat, vagy a proxy adatait tartalmazzák a telepítési parancsfájlt közvetlenül a. A következő powershell-parancsfájl példaként szolgál a windows telepítési használatával a `-proxy` argumentum:
 

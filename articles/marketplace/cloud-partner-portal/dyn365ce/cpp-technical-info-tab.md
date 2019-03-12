@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 03/05/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 214abd64232130dd3fd5fdde510f7545732ac82e
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 1dd488c2eb419b5e210a48d7a94f7d0bb423a2b1
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082942"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731483"
 ---
 # <a name="dynamics-365-for-customer-engagement-technical-info-tab"></a>Dynamics 365 Customer Engagement technikai információ lap
 
@@ -58,7 +58,7 @@ A következő táblázat ismerteti ezeket a mezőket.
 |  A csomag fájlneve     |  A fájlnév a csomag (.zip).  Ez a név *nem* nyilvános és a Dynamics 365 hitelesítő csapata által belsőleg használandó.  |
 |  URL-cím                          |  Azure Storage-fiókot, amely tartalmazza a feltöltött alkalmazáscsomag-fájl URL-címe. Az URL-címet tartalmaznia kell egy írásvédett SAS-kulcs, hogy a csomag az ellenőrzéshez csomópontmetrikák csapatunk.  |
 | Egynél több crm-csomag     | Válassza ki a csak igen, ha támogatja a különböző verzióinak különböző csomagokkal crm.  Minden verzió lesz a megfelelő csomag fájl munkamegosztást külön-külön kell létrehoznia.  |
-| A forgatókönyv és a használati eset eszköz   | Lehetővé teszi a egy működési specifikáció szerinti dokumentum, a Dynamics 365-ellenőrzési csoportja általi használatra, az alkalmazás feltöltésének.  Ez specifikációja előnyben részesített formátuma a [E2E felhasználói forgatókönyv sablon](http://download.microsoft.com/download/5/1/8/51812AC9-BCD8-489F-937C-5D439C494EC1/E2E%20User%20Scenario%20Template.docx).  |
+| A forgatókönyv és a használati eset eszköz   | Lehetővé teszi a egy működési specifikáció szerinti dokumentum, a Dynamics 365-ellenőrzési csoportja általi használatra, az alkalmazás feltöltésének.  Ez specifikációja előnyben részesített formátuma a [E2E felhasználói forgatókönyv sablon](https://isvdocumentation.blob.core.windows.net/d365documentation/Power%20Platform%20E2E%20document.docx).  |
 |  |  |
 
 

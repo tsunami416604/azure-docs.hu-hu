@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: mcoskun
-ms.openlocfilehash: 986a7be49f8ae0f683b89596204845bb08eeaf2d
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: d01d2f18ed35d1752f97f405ae7f7bfb4708ca0d
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095770"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570045"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Biztonsági mentését és visszaállítását a Reliable Services és Reliable Actors
 Az Azure Service Fabric egy magas rendelkezésre állású platform, amely az állapot replikál a magas rendelkezésre állás fenntartása érdekében több csomópontra.  Ily módon még akkor is, ha a fürtben egy csomópont meghibásodik, a szolgáltatások továbbra is elérhető. Bár ez a platform által biztosított beépített redundancia néhány elegendő, bizonyos esetekben célszerű a szolgáltatás számára az adatok biztonsági másolatát (egy külső tároló).
@@ -188,13 +188,13 @@ A Reliable Actors-keretrendszer Reliable Services épül. A ActorService, amely 
 ```csharp
 class MyCustomActorService : ActorService
 {
-     public MyCustomActorService(StatefulServiceContext context, ActorTypeInformation actorTypeInfo)
-            : base(context, actorTypeInfo)
-     {                  
-     }
+    public MyCustomActorService(StatefulServiceContext context, ActorTypeInformation actorTypeInfo)
+          : base(context, actorTypeInfo)
+    {
+    }
     
     //
-   // Method overrides and other code.
+    // Method overrides and other code.
     //
 }
 ```
@@ -203,7 +203,7 @@ Amikor létrehoz egy egyéni aktor service osztályt, szeretne regisztrálni, am
 
 ```csharp
 ActorRuntime.RegisterActorAsync<MyActor>(
-   (context, typeInfo) => new MyCustomActorService(context, typeInfo)).GetAwaiter().GetResult();
+    (context, typeInfo) => new MyCustomActorService(context, typeInfo)).GetAwaiter().GetResult();
 ```
 
 Az alapértelmezett állapotba szolgáltató a Reliable actors `KvsActorStateProvider`. Alapértelmezés szerint nincs engedélyezve a növekményes biztonsági mentés `KvsActorStateProvider`. Engedélyezheti a növekményes biztonsági mentés létrehozásával `KvsActorStateProvider` a megfelelő beállítás a konstruktorban és átadásával ActorService konstruktor az alábbi kódrészletben látható módon:
@@ -211,13 +211,13 @@ Az alapértelmezett állapotba szolgáltató a Reliable actors `KvsActorStatePro
 ```csharp
 class MyCustomActorService : ActorService
 {
-     public MyCustomActorService(StatefulServiceContext context, ActorTypeInformation actorTypeInfo)
-            : base(context, actorTypeInfo, null, null, new KvsActorStateProvider(true)) // Enable incremental backup
-     {                  
-     }
+    public MyCustomActorService(StatefulServiceContext context, ActorTypeInformation actorTypeInfo)
+          : base(context, actorTypeInfo, null, null, new KvsActorStateProvider(true)) // Enable incremental backup
+    {
+    }
     
     //
-   // Method overrides and other code.
+    // Method overrides and other code.
     //
 }
 ```

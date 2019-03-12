@@ -1,5 +1,5 @@
 ---
-title: Windows Azure Log Analytics virtuális gépi bővítmény |} A Microsoft Docs
+title: A figyelő a Windows Azure virtuális gépi bővítmény |} A Microsoft Docs
 description: Windows virtuális gép, virtuálisgép-bővítmények használatával a Log Analytics-ügynök telepítése.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,16 +15,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: roiyz
-ms.openlocfilehash: 66240ffebcd98bb8e14fb21bcb5c54b8fceb7a64
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 7c56b54f2d5be2bd47644e07369120468bb6015e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57406388"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533697"
 ---
-# <a name="log-analytics-virtual-machine-extension-for-windows"></a>Log Analytics virtuálisgép-bővítmény a Windows
+# <a name="azure-monitor-virtual-machine-extension-for-windows"></a>A figyelő a Windows Azure virtuális gépi bővítmény
 
-A log Analytics monitorozási képességeket biztosít a felhőben és helyszíni eszközökön. A Log Analytics ügynök virtuálisgép-bővítmény a Windows közzétett és a Microsoft támogatja. A bővítmény a Log Analytics-ügynököket telepíti az Azure-beli virtuális gépeken, és regisztrálja a virtuális gépek egy meglévő Log Analytics-munkaterületet. Ez a dokumentum részletesen, a támogatott platformok, konfigurációk és üzembe helyezési lehetőségeit a Log Analytics virtuálisgép-bővítmény Windows.
+Az Azure Monitor naplóira monitorozási képességeket biztosít a felhőbeli és helyszíni eszközök között. A Log Analytics ügynök virtuálisgép-bővítmény a Windows közzétett és a Microsoft támogatja. A bővítmény a Log Analytics-ügynököket telepíti az Azure-beli virtuális gépeken, és regisztrálja a virtuális gépek egy meglévő Log Analytics-munkaterületet. Ez a dokumentum részletesen, a támogatott platformok, a konfigurációk és a Windows Azure Monitor virtuálisgép-bővítmény az üzembe helyezési lehetőségeit.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -34,7 +36,7 @@ A Log Analytics-ügynök bővítmény esetében a Windows is futtatható a Windo
 
 ### <a name="azure-security-center"></a>Azure Security Center
 
-Az Azure Security Center automatikusan építi ki a Log Analytics-ügynököket, és csatlakoztatja a az alapértelmezett log analytics-munkaterületet az Azure-előfizetés. Ha az Azure Security Center használ, ne futtassa a jelen dokumentumban leírt lépések segítségével. Ez felülírja a konfigurált munkaterületével és a szünet a kapcsolatot az Azure Security Centerrel.
+Az Azure Security Center automatikusan építi ki a Log Analytics-ügynököket, és csatlakoztatja az Azure-előfizetés alapértelmezett Log Analytics-munkaterületen. Ha az Azure Security Center használ, ne futtassa a jelen dokumentumban leírt lépések segítségével. Ez felülírja a konfigurált munkaterületével és a szünet a kapcsolatot az Azure Security Centerrel.
 
 ### <a name="internet-connectivity"></a>Internetkapcsolat
 A Log Analytics Windows agent bővítmény szükséges, hogy a céloldali virtuális gép csatlakozik az internethez. 
@@ -85,7 +87,7 @@ Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource
 
 A JSON-t egy virtuálisgép-bővítményt a virtuális gép típusú erőforrást belülre, vagy elhelyezve, a legfelső szintű vagy a legfelső szintű Resource Managerből származó JSON-sablon. A JSON-fájllal való elhelyezését hatással van az erőforrás nevét, és írja be az értékét. További információkért lásd: [állítsa be a nevét és típusát gyermekerőforrásait](../../azure-resource-manager/resource-group-authoring-templates.md#child-resources). 
 
-Az alábbi példa azt feltételezi, hogy a Log Analytics-bővítményt a virtuális gép típusú erőforrást van beágyazva. A bővítmény erőforrás beágyazása, ha a JSON az kerül a `"resources": []` objektum a virtuális gép.
+Az alábbi példa azt feltételezi, hogy az Azure Monitor-bővítményt a virtuális gép típusú erőforrást van beágyazva. A bővítmény erőforrás beágyazása, ha a JSON az kerül a `"resources": []` objektum a virtuális gép.
 
 
 ```json

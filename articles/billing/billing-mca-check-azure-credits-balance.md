@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: amberb
-ms.openlocfilehash: 1c1a706fb423f440d40c49a9a19cc54ed63ac636
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 1e8c3e6863b9cd8f2f5ced18a57918c32c865e75
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57248972"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544596"
 ---
 # <a name="track-azure-credit-balance-for-microsoft-customer-agreement"></a>Nyomon követheti az Azure kreditegyenlegét Microsoft Ügyfélszerződéséhez
 
@@ -31,7 +31,7 @@ Ez a cikk a Microsoft vevői szerződés számlázási fiók vonatkozik. [Ellen�
 
 ## <a name="check-credit-balance-in-the-azure-portal"></a>Az Azure Portalon kreditegyenlegét ellenőrzése
 
-1. Jelentkezzen be az [Azure Portalra]( http://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra]( https://portal.azure.com).
 
 2. A Keresés **Cost Management és számlázás**.
 

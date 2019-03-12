@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: raynew
-ms.openlocfilehash: f4a2fe4c9307f7e59ca94e47683356143546d090
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 077b3e8b9aac47818b82384584d9b3cb410f9422
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310739"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541383"
 ---
 # <a name="about-azure-vm-backup"></a>Azure-beli virtuális gépek biztonsági mentése
 
@@ -61,7 +61,7 @@ Ha Ön Azure virtuális gépek biztonsági mentése az Azure Backup szolgáltat�
 Az Azure a biztonsági mentési pillanatképek a biztonsági mentési ütemterv szerint.
 
 - **Windows virtuális gépek**: Windows virtuális gépek a Backup szolgáltatás koordinálja a a kötet árnyékmásolata másolási szolgáltatás (VSS) egy alkalmazáskonzisztens pillanatképet készíteni a Virtuálisgép-lemezek.
-    - Alapértelmezés szerint az Azure Backup elkészítette a teljes VSS biztonsági mentést. [További információk](http://blogs.technet.com/b/filecab/archive/2008/05/21/what-is-the-difference-between-vss-full-backup-and-vss-copy-backup-in-windows-server-2008.aspx).
+    - Alapértelmezés szerint az Azure Backup elkészítette a teljes VSS biztonsági mentést. [További információk](https://blogs.technet.com/b/filecab/archive/2008/05/21/what-is-the-difference-between-vss-full-backup-and-vss-copy-backup-in-windows-server-2008.aspx).
     - Ha szeretné módosítani a beállítást, hogy az Azure biztonsági mentések VSS másolásos biztonsági mentéshez szükséges, állítsa be a következő beállításkulcsot a parancssorból: **REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgent" /v USEVSSCOPYBACKUP /t REG_SZ /d TRUE /f**.
 - **Linux rendszerű virtuális gépek**: Szeretne Linux rendszerű virtuális gépek alkalmazáskonzisztens pillanatképek készítése, ha a Linux előtti parancsfájlt, és utólagos parancsfájl keretrendszer konzisztencia biztosításához a saját egyéni parancsfájlok írása.
     -  Az Azure Backup csak az Ön által írt előtti/utáni parancsfájlok hív meg.

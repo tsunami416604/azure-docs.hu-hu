@@ -15,12 +15,12 @@ ums.workload: na
 ms.date: 01/14/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: a8b792ee7731a9994ded76ef1614fc3966d033d0
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 7e43af7d749719c2f69df9b53766c5452931884b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243805"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542913"
 ---
 # <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Az Azure diagnosztikai naplózás és a Windows-eseménytovábbítás Azure Log Integration
 
@@ -228,7 +228,7 @@ Az Azure-tevékenységnapló egy előfizetési napló, amely az Azure-ban beköv
 
     ```Azlog.exe authorize subscriptionId``` Példa:
 
-```AZLOG.exe authorize ba2c2367-d24b-4a32-17b5-4443234859```
+   ```AZLOG.exe authorize ba2c2367-d24b-4a32-17b5-4443234859```
 
 4.  Ellenőrizze a következő mappák győződjön meg arról, hogy az Azure Active Directory naplózási log JSON-fájlok jönnek létre számukra:
     - C:\Users\azlog\AzureResourceManagerJson

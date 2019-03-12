@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
-ms.openlocfilehash: 7c93911ce824bc1111e0c348070cc11817c5b45c
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 686543a322d1c87760060a1f4db1b26abca75cb8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341850"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539411"
 ---
 # <a name="create-an-additional-azure-subscription-for-microsoft-customer-agreement"></a>További Azure-előfizetés létrehozása a Microsoft ügyfél-szerződés
 
@@ -57,7 +57,7 @@ Hozzon létre egy előfizetést, kell lennie egy **számla szakasz tulajdonosa**
 
 Adja hozzá a felhasználókat, az Azure-előfizetés és közös kiindulópontként szolgálhat egy számla szakaszban tegye lehetővé számukra az Azure-előfizetések létrehozásához szükséges engedéllyel.
 
-1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. A Keresés **Cost Management és számlázás**.
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fed31d07f4bbe9fc47ce0d2c31f45fed288c4c4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e5639984c6eef7d1c081fd52061988d3535c00fa
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56218023"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576990"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Jelszóházirendek és -korlátozások az Azure Active Directoryban
 
@@ -50,6 +50,8 @@ A két-kezdő szabályzat adatokra van szükség két hitelesítési adatok, pé
   * Alkalmazásproxy szolgáltatásadminisztrátora
   * CRM-szolgáltatásadminisztrátor
   * A Power BI-szolgáltatásadminisztrátor
+  * Hitelesítési rendszergazda
+  * A kiemelt hitelesítést rendszergazda
 
 * Ha a 30 nap eltelt a egy próbaverziós előfizetés; vagy
 * Egy személyes tartomány jelen, mint például a contoso.com; vagy
@@ -75,13 +77,13 @@ Minden felhasználói fiók, amelyet az Azure AD-bejelentkezés rendelkeznie kel
 
 ## <a name="password-policies-that-only-apply-to-cloud-user-accounts"></a>Jelszó-házirenddel, csak felhőalapú felhasználói fiókok
 
-A következő táblázat ismerteti a rendelkezésre álló jelszó szabályzatbeállítások létrehozása és felügyelete az Azure AD felhasználói fiókokhoz alkalmazható:
+A következő táblázat ismerteti a felhasználói fiókok létrehozása és felügyelete az Azure ad-ben, a alkalmazni jelszóval szabályzatbeállítások:
 
 | Tulajdonság | Követelmények |
 | --- | --- |
 | Karakterek használhatók |<ul><li>A – Z</li><li>a – z</li><li>0 – 9</li> <li>@ # $ % ^ & * - _ ! + = [ ] { } &#124; \ : ‘ , . ? / ` ~ " ( ) ;</li></ul> |
-| Karakterek nem használhatók |<ul><li>Unicode-karaktereket.</li><li>Tárolóhelyek.</li><li> Csak a erős jelszavak: A pont karakter nem tartalmazhat "." Közvetlenül a "\@ \" szimbólum".</li></ul> |
-| Jelszó-korlátozások |<ul><li>Legalább 8 karakter és legfeljebb 16 karakter.</li><li>Csak a erős jelszavak: Az alábbi három közül négy van szükség:<ul><li>Kisbetűs karaktert.</li><li>Nagybetűs karaktereket.</li><li>Számok (0 – 9).</li><li>A szimbólumok (lásd az előző Jelszó korlátozásai).</li></ul></li></ul> |
+| Karakterek nem használhatók |<ul><li>Unicode-karaktereket.</li><li>Tárolóhelyek.</li><li> A pont karakter nem tartalmazhat "." közvetlenül a "\@ \" szimbólum".</li></ul> |
+| Jelszó-korlátozások |<ul><li>Legalább 8 karakter és legfeljebb 16 karakter.</li><li>Az alábbi három közül négy van szükség:<ul><li>Kisbetűs karaktert.</li><li>Nagybetűs karaktereket.</li><li>Számok (0 – 9).</li><li>A szimbólumok (lásd az előző Jelszó korlátozásai).</li></ul></li></ul> |
 | Jelszó lejárati időtartama |<ul><li>Alapértelmezett érték: **90** nap.</li><li>Az érték konfigurálható használatával a `Set-MsolPasswordPolicy` az Azure Active Directory modul a Windows PowerShell parancsmagot.</li></ul> |
 | Jelszó lejáratáról szóló értesítés |<ul><li>Alapértelmezett érték: **14** nap (elteltével jelszó lejár).</li><li>Az érték konfigurálható használatával a `Set-MsolPasswordPolicy` parancsmagot.</li></ul> |
 | Jelszó lejárata |<ul><li>Alapértelmezett érték: **hamis** nap (azt jelzi, hogy a jelszó lejárati engedélyezve van).</li><li>Az érték használatával konfigurálhatók az egyes felhasználói fiókok esetében a `Set-MsolUser` parancsmagot.</li></ul> |

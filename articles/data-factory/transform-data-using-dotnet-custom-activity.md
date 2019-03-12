@@ -3,20 +3,20 @@ title: Egyéni tevékenységek használata Azure Data Factory-folyamatban
 description: Ismerje meg, hogyan hozhat létre egyéni tevékenységeket, és használja őket az Azure Data Factory-folyamatot.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: douglasl
-ms.openlocfilehash: 6947ac5819a8e096f3be4edf6f2891974829e422
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: d68910c32c53128704004d356062aca2c328e7d5
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440455"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576701"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -35,7 +35,7 @@ Két típusa a tevékenységeket, az Azure Data Factory-folyamatban van.
 Lásd az alábbi cikkeket, ha most ismerkedik az Azure Batch szolgáltatás:
 
 * [Az Azure Batch alapjai](../batch/batch-technical-overview.md) az Azure Batch szolgáltatás áttekintése.
-* [Új AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) parancsmaggal hozzon létre egy Azure Batch-fiók (vagy) [az Azure portal](../batch/batch-account-create-portal.md) létrehozása az Azure Batch-fiókot az Azure portal használatával. Lásd: [PowerShell használata kezelheti az Azure Batch-fiók](http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) cikk nyújt részletes tájékoztatást a parancsmag használatával.
+* [Új AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) parancsmaggal hozzon létre egy Azure Batch-fiók (vagy) [az Azure portal](../batch/batch-account-create-portal.md) létrehozása az Azure Batch-fiókot az Azure portal használatával. Lásd: [PowerShell használata kezelheti az Azure Batch-fiók](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) cikk nyújt részletes tájékoztatást a parancsmag használatával.
 * [Új AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) parancsmaggal hozzon létre egy Azure Batch-készletben.
 
 ## <a name="azure-batch-linked-service"></a>Az Azure Batch-beli társított szolgáltatás

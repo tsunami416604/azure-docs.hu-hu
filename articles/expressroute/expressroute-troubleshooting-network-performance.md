@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/20/2017
 ms.author: jonor
 ms.custom: seodec18
-ms.openlocfilehash: dfd55ac12587cf99cc3fc3ff8eac4f4572229396
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 17f239dc3ba9714c01f55a88419df2d3416908fa
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753500"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539700"
 ---
 # <a name="troubleshooting-network-performance"></a>A hálózati teljesítmény hibaelhárítása
 ## <a name="overview"></a>Áttekintés
@@ -198,7 +198,7 @@ Beállítások ellenőrzése:
 \* A késés, Brazília jó példa, ahol lineáris távolság jelentősen eltér a fiber távolság futtassa. Szeretné, hogy a késés szerepelnie kell a hálózatok 160 MS, de ténylegesen 189 MS várt. Ez a különbség az elvárás elleni utalhat hálózati probléma valahol, de valószínű, hogy futnak-e a fiber Brazília egyenes halad és tartalmaz egy extra 1000 km-re vagy utazási hozhatja a Seattle, Brazília, így.
 
 ## <a name="next-steps"></a>További lépések
-1. Az Azure Connectivity Toolkit letöltése a githubról [http://aka.ms/AzCT][ACT]
+1. Az Azure Connectivity Toolkit letöltése a githubról [https://aka.ms/AzCT][ACT]
 2. Kövesse az utasításokat [hivatkozásra a Teljesítménytesztelés][Performance Doc]
 
 <!--Image References-->
@@ -212,7 +212,7 @@ Beállítások ellenőrzése:
 [Availability Doc]: https://github.com/Azure/NetworkMonitoring/blob/master/AzureCT/AvailabilityTesting.md
 [Network Docs]: https://docs.microsoft.com/azure/index
 [Ticket Link]: https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview
-[ACT]: http://aka.ms/AzCT
+[ACT]: https://aka.ms/AzCT
 
 
 

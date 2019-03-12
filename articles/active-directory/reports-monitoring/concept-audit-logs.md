@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5895ad1f1452b5a0c13765821c5b623472a0bb1e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 65bc0c0ee1ccc1e1f3da5e364582534dfbc0d425
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447115"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530705"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Naplózott tevékenységekre vonatkozó jelentések az Azure Active Directory portálon 
 
@@ -41,7 +41,7 @@ Ez a cikk áttekintést, a naplózási jelentésben.
  
 ## <a name="who-can-access-the-data"></a>Ki férhet hozzá az adatokhoz?
 
-* A felhasználók a **biztonsági rendszergazda**, **biztonsági olvasó** vagy **globális rendszergazdai** szerepkörök
+* A felhasználók a **biztonsági rendszergazdai**, **biztonsági olvasó**, **jelentés olvasó** vagy **globális rendszergazdai** szerepkörök
 * Emellett minden felhasználója (nem rendszergazda) láthatja-e a saját naplózási tevékenységek
 
 ## <a name="audit-logs"></a>Naplók
@@ -53,38 +53,93 @@ Az Azure AD naplózási naplók, adja meg a megfelelőség a rendszertevékenys�
 Az auditnapló alapértelmezett listanézete az alábbi adatokat jeleníti meg:
 
 - az előfordulás dátuma és időpontját
-- a tevékenység kezdeményezőjét / szereplőjét (*ki?*) 
-- a tevékenységet (*mi?*) 
+- a szolgáltatás, amely az eseményt naplózza
+- a kategória- és a tevékenység neve (*mi*) 
+- a tevékenység (sikeres vagy sikertelen) állapota
 - a célt
+- A kezdeményező / aktor (ki) a tevékenységek
 
-![Naplók](./media/concept-audit-logs/18.png "Naplók")
+![Naplók](./media/concept-audit-logs/listview.png "Naplók")
 
 A listanézetet az eszköztár **Oszlopok** elemére kattintva lehet testre szabni.
 
-![Naplók](./media/concept-audit-logs/19.png "Naplók")
+![Naplók](./media/concept-audit-logs/columns.png "Naplók")
 
 További mezőket jeleníthet meg, vagy eltávolíthatja a már megjelenített mezőket.
 
-![Naplók](./media/concept-audit-logs/21.png "Naplók")
+![Naplók](./media/concept-audit-logs/columnselect.png "Naplók")
 
 Jelöljön ki egy elemet a listanézet, melyeken részletesebb információkat találhat.
 
-![Naplók](./media/concept-audit-logs/22.png "Naplók")
+![Naplók](./media/concept-audit-logs/details.png "Naplók")
 
 
 ## <a name="filtering-audit-logs"></a>Auditnaplók szűrése
 
 A naplózási adatok az alábbi mezőkkel szűrheti:
 
-- Dátumtartomány
-- Kezdeményező (Szereplő)
+- Szolgáltatás
 - Kategória
-- Tevékenység erőforrástípusa
 - Tevékenység
+- status
+- Cél
+- Kezdeményező (Szereplő)
+- Dátumtartomány
 
-![Naplók](./media/concept-audit-logs/23.png "Naplók")
+![Naplók](./media/concept-audit-logs/filter.png "Naplók")
 
-A **dátumtartomány** szűrővel időkeretet lehet meghatározni a visszaadott adatokhoz.  
+A **szolgáltatás** szűrő lehetővé teszi, hogy a következő szolgáltatások a legördülő listából választhatja ki:
+
+- Összes
+- Hozzáférési felülvizsgálatok
+- Fiók kiépítése 
+- Alkalmazás egyszeri Bejelentkezéssel
+- Hitelesítési módszerek
+- B2C
+- Feltételes hozzáférés
+- Alapvető könyvtár
+- Tagjogosultság-kezelés
+- Identity Protection
+- Meghívott felhasználók
+- PIM
+- Önkiszolgáló csoportkezelés
+- Önkiszolgáló Passord kezelése
+- Használati feltételek
+
+A **kategória** szűrővel az alábbi szűrők egyikét választhatja ki:
+
+- Összes
+- AdministrativeUnit
+- ApplicationManagement
+- Authentication
+- Engedélyezés
+- Kapcsolattartó
+- Eszköz
+- DeviceConfiguration
+- DirectoryManagement
+- EntitlementManagement
+- GroupManagement
+- Egyéb
+- Szabályzat
+- ResourceManagement
+- RoleManagement
+- UserManagement
+
+A **tevékenység** szűrő alapján a kategória és tevékenység erőforrás adattípus-választást meg. Választhat egy adott tevékenységet, amelyet meg szeretne tekinteni, vagy kiválaszthatja az összeset. 
+
+A Graph API https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?api-version=beta használatával lekérheti az összes naplózási tevékenység listáját, ahol a $tenantdomain a tartománynév, illetve megtekintheti [naplózási jelentési eseményekkel kapcsolatos](reference-audit-activities.md) cikket.
+
+A **állapot** szűrő lehetővé teszi a szűrést, egy naplózási művelet állapota alapján. Az állapot a következők egyike lehet:
+
+- Összes
+- Sikeres
+- Hiba
+
+A **cél** szűrő lehetővé teszi, hogy egy adott célhoz keresése név vagy egyszerű felhasználónév (UPN) alapján. A cél neve és az egyszerű felhasználónév-és nagybetűk. 
+
+A **által kezdeményezett** szűrő lehetővé teszi egy szereplő nevének vagy egy univerzális egyszerű felhasználónév (UPN). A nevét és az egyszerű felhasználónév-és nagybetűk.
+
+A **dátumtartomány** szűrővel időkeretet lehet a visszaadott adatokhoz.  
 Lehetséges értékek:
 
 - 1 hónap
@@ -94,41 +149,9 @@ Lehetséges értékek:
 
 Egyéni időkeret kiválasztásakor beállíthatja a kezdő és a záró időpontot.
 
-A **által kezdeményezett** szűrő lehetővé teszi egy szereplő nevének vagy egy univerzális egyszerű felhasználónév (UPN).
+Azt is beállíthatja, töltse le a szűrt adatokat, legfeljebb 250 000 rekordot kiválasztásával a **letöltése** gombra. Választhatja a CSV vagy JSON formátumban a naplók letöltéséhez. Letöltheti a rekordok száma korlátozza a [Azure Active Directory-jelentések adatmegőrzési szabályzatában](reference-reports-data-retention.md).
 
-A **kategória** szűrővel az alábbi szűrők egyikét választhatja ki:
-
-- Összes
-- Alapvető kategória
-- Alapvető könyvtár
-- Önkiszolgáló jelszókezelés
-- Önkiszolgáló csoportkezelés
-- Fiók kiépítése – Automatizált jelszóváltás
-- Meghívott felhasználók
-- MIM szolgáltatás
-- Identity Protection
-- B2C
-
-A **tevékenység erőforrástípusa** szűrővel az alábbi szűrők egyikét választhatja ki:
-
-- Összes 
-- Csoport
-- Címtár
-- Felhasználó
-- Alkalmazás
-- Szabályzat
-- Eszköz
-- Egyéb
-
-Ha a **Csoport** elemet választja a **tevékenység erőforrástípusaként**, kap egy kiegészítő szűrőkategóriát, amelyben megadhatja a **forrást**:
-
-- Azure AD
-- O365
-
-
-A **tevékenység** szűrő alapján a kategória és tevékenység erőforrás adattípus-választást meg. Választhat egy adott tevékenységet, amelyet meg szeretne tekinteni, vagy kiválaszthatja az összeset. 
-
-A Graph API https://graph.windows.net/$tenantdomain/activities/auditActivityTypes?api-version=beta használatával lekérheti az összes naplózási tevékenység listáját, ahol a $tenantdomain a tartománynév, illetve megtekintheti [naplózási jelentési eseményekkel kapcsolatos](reference-audit-activities.md) cikket.
+![Naplók](./media/concept-audit-logs/download.png "Naplók")
 
 ## <a name="audit-logs-shortcuts"></a>Rövidebb utak a naplók eléréséhez
 
@@ -157,9 +180,13 @@ A felhasználó- és csoportalapú naplózási jelentésekkel az alábbi kérdé
 
 - Milyen licencek lettek hozzárendelve egy adott csoporthoz vagy felhasználóhoz?
 
-Ha csak át szeretné tekinteni a felhasználókhoz és csoportokhoz kapcsolódó naplózási adatokat, megnyithat egy szűrt nézetet az **Auditnaplók** menüpontból, amely a **Felhasználók és csoportok** **Tevékenység** szakaszában található. Ennél a lehetőségnél a **Felhasználók és csoportok** van előre kiválasztva **tevékenység-erőforrástípusként**.
+Ha csak át szeretné tekintse át a felhasználók kapcsolódó naplózási adatokat, Észreveheti, hogy egy szűrt nézetet **Auditnaplók** a a **tevékenység** szakaszában a **felhasználók** fülre. Ez a belépési pont rendelkezik **UserManagement** telepítendő, előre kiválasztott kategória szerint.
 
-![Naplók](./media/concept-audit-logs/93.png "Naplók")
+![Naplók](./media/concept-audit-logs/users.png "Naplók")
+
+Ha csak szeretné ellenőrizni a csoportokhoz kapcsolódó naplózási adatokat, Észreveheti, hogy egy szűrt nézetet **Auditnaplók** a a **tevékenység** szakaszában a **csoportok** fülre. Ez a belépési pont rendelkezik **GroupManagement** telepítendő, előre kiválasztott kategória szerint.
+
+![Naplók](./media/concept-audit-logs/groups.png "Naplók")
 
 ### <a name="enterprise-applications-audit-logs"></a>Vállalati alkalmazások naplói
 
@@ -171,13 +198,9 @@ Az alkalmazásalapú naplózási jelentésekkel az alábbi kérdésekre kaphat v
 * Történt változás az alkalmazások nevében?
 * Ki hagyott jóvá egy adott alkalmazást?
 
-Ha szeretné ellenőrizni az alkalmazásaihoz kapcsolódó naplózási adatokat, Észreveheti, hogy egy szűrt nézetet **Auditnaplók** a a **tevékenység** szakaszában a **vállalati alkalmazások** panel. Ez a belépési pont rendelkezik **vállalati alkalmazások** előre kiválasztott, mint a **tevékenység erőforrástípusa**.
+Ha szeretné ellenőrizni az alkalmazásaihoz kapcsolódó naplózási adatokat, Észreveheti, hogy egy szűrt nézetet **Auditnaplók** a a **tevékenység** szakaszában a **vállalati alkalmazások** panel. Ez a belépési pont rendelkezik **vállalati alkalmazások** előre kiválasztott, mint a **alkalmazástípus**.
 
-![Naplók](./media/concept-audit-logs/134.png "Naplók")
-
-Ez a nézet le a szűrheti **csoportok** vagy **felhasználók**.
-
-![Naplók](./media/concept-audit-logs/25.png "Naplók")
+![Naplók](./media/concept-audit-logs/enterpriseapplications.png "Naplók")
 
 ## <a name="office-365-activity-logs"></a>Az Office 365-Tevékenységnaplók
 

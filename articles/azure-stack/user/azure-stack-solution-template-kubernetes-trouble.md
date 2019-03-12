@@ -1,5 +1,5 @@
 ---
-title: A Kubernetes üzembe helyezés Azure Stackk hibaelhárítása |} A Microsoft Docs
+title: A Kubernetes üzembe helyezés az Azure Stack hibaelhárítása |} A Microsoft Docs
 description: Ismerje meg, hogyan háríthatók el a Kubernetes üzembe helyezés az Azure Stackhez.
 services: azure-stack
 documentationcenter: ''
@@ -11,16 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/05/2019
-ms.author: mabrigg
+ms.author: mabvrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 551958317249cbfa25e3af9922f9ded6850c2521
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 5436b562b4f9054e0e00e3cc6abb1724797437db
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752296"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729642"
 ---
 # <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>A Kubernetes üzembe helyezés az Azure Stack hibaelhárítása
 
@@ -87,7 +86,7 @@ Az alábbi ábrán látható, az általános folyamat a fürt üzembe helyezés�
 A virtuális gépeken, amelyek támogatják a Kubernetes-fürtöt is összegyűjtheti a naplókat. Emellett áttekintheti a telepítési naplót. Szüksége lehet az Azure Stack rendszergazdai ellenőrizni a verziószámot, amely használja, és a naplók lekérése az Azure Stacken, amely a központi telepítés kapcsolódó van szüksége az Azure Stack-kommunikációhoz.
 
 1. Tekintse át a [központi telepítési állapot](#review-deployment-status) és [a naplók begyűjtéséről](#get-logs-from-a-vm) a Kubernetes-fürt fő csomópontból.
-2. Győződjön meg arról, hogy használ-e az Azure Stack legújabb verzióját. Ha biztos abban, hogy melyik verziót használ, lépjen kapcsolatba az Azure Stack rendszergazdai. A Kubernetes fürt marketplace idő 0.3.0 1808 vagy nagyobb Azure Stack-verzió szükséges.
+2. Győződjön meg arról, hogy használ-e az Azure Stack legújabb verzióját. Ha biztos abban, hogy melyik verziót használ, lépjen kapcsolatba az Azure Stack rendszergazdai.
 3.  Tekintse át a virtuális gép létrehozása fájljait. Előfordulhat, hogy a következő problémák rendelkeztek:  
     - Lehet, hogy a nyilvános kulcs érvénytelen. Tekintse át a kulcsot, amelyet Ön hozott létre.  
     - A virtuális gép létrehozása előfordulhat, hogy indított belső hiba történt, vagy aktivált-létrehozási hiba. Számos tényezőtől okozhat hibát, beleértve a kapacitás-korlátozások az Azure Stack-előfizetéshez.
@@ -148,21 +147,26 @@ Naplók lekérése, hajtsa végre az alábbi lépéseket:
 3. Ugyanabban a munkamenetben futtassa a következő parancsot a frissítve, hogy a környezet megfelelő paraméterekkel:
 
     ```Bash  
-    ./getkuberneteslogs.sh --identity-file id_rsa --user azureuser --vmdhost 192.168.102.37
+    ./getkuberneteslogs.sh --identity-file id_rsa --user azureuser --vmd-host 192.168.102.37
     ```
 
 4. Tekintse át a paramétereket, és állítsa az értékeket az adott környezet alapján.
     | Paraméter           | Leírás                                                                                                      | Példa                                                                       |
     |---------------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
-    | -i – identitás-fájlja | Az RSA titkos kulcs fájlját a Kubernetes fő virtuális gép csatlakozni. A kulcs kell kezdődnie `-----BEGIN RSA PRIVATE KEY-----` | C:\data\privatekey.pem                                                        |
-    | -h, --host          | A nyilvános IP-cím vagy a Kubernetes-fürt fő virtuális gép teljesen minősített tartománynevét (FQDN). A virtuális gép neve kezdődik `k8s-master-`.                       | IP-cím: 192.168.102.37<br><br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
+    | -d, --vmd-host       | A nyilvános IP-cím vagy a DVM teljes Tartománynevét. A virtuális gép neve kezdődik `vmd-`.                                                       | IP-cím: 192.168.102.38<br><br>DNS: vmd-dnsk8-frog.local.cloudapp.azurestack.external |
+    | -f, --force | Ne jelenjen meg újra a titkos kulcs feltöltése előtt. | |
+    | -i – identitás-fájlja | Az RSA titkos kulcs fájlját a Kubernetes fő virtuális gép csatlakozni. A kulcs a kezdéshez: <br>`-----BEGIN RSA PRIVATE KEY-----` | C:\data\id_rsa.pem                                                        |
+    | -h, --help  | A parancs használatát, a nyomtatási `getkuberneteslogs.sh` parancsfájlt. | |
+    | -m, --master-host          | A nyilvános IP-cím vagy a Kubernetes-fürt fő virtuális gép teljesen minősített tartománynevét (FQDN). A virtuális gép neve kezdődik `k8s-master-`.                       | IP-cím: 192.168.102.37<br><br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
     | -u: – a felhasználó          | A Kubernetes-fürt fő virtuális gép felhasználóneve. A Piactéri elem konfigurálásakor beállíthatja ezt a nevet.                                                                    | azureuser                                                                     |
-    | -d, --vmdhost       | A nyilvános IP-cím vagy a DVM teljes Tartománynevét. A virtuális gép neve kezdődik `vmd-`.                                                       | IP-cím: 192.168.102.38<br><br>DNS: vmd-dnsk8-frog.local.cloudapp.azurestack.external |
+
+
+
 
    Amikor hozzáadja a paraméterértékeket, lehet például a következő kódot:
 
     ```Bash  
-    ./getkuberneteslogs.sh --identity-file "C:\secretsecret.pem" --user azureuser --vmdhost 192.168.102.37
+    ./getkuberneteslogs.sh --identity-file "C:\id_rsa.pem" --user azureuser --vmdhost 192.168.102.37
      ```
 
     Sikeres futtatás a naplókat hoz létre.

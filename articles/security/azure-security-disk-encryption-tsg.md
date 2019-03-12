@@ -3,17 +3,16 @@ title: Hibaelhárítás – IaaS virtuális gépekhez az Azure Disk Encryption |
 description: Ez a cikk a hibaelhárítási tippek a Microsoft Azure Disk Encryption a Windows és Linux rendszerű IaaS virtuális gépek.
 author: mestew
 ms.service: security
-ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
 ms.date: 03/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: d4698ad54e08587b223bb65388d399c0cbf3ff63
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 7e2fa8c526a1016e5b8157f5f8b3ecb38bf8ef15
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342513"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57779963"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Az Azure Disk Encryption – hibaelhárítási útmutató
 
@@ -143,7 +142,7 @@ If the expected encryption state does not match what is being reported in the po
 
 A portál pedig megjelenítheti egy lemezt titkosított, volt a virtuális gépen nem titkosított után is.  Ez akkor fordulhat elő, amikor az alacsony szintű parancsok használják a lemezt a virtuális gépen, a magasabb szintű Azure Disk Encryption-kezelési parancsok használata helyett közvetlenül feloldására.  A magasabb szintű parancsai nem csak a lemezt a virtuális gépen feloldására, de a VM-en kívül is frissítse fontos platform a blokkszintű titkosítás és a virtuális Géphez társított bővítmény beállításait.  Ha ezek nem tartják összhangban, a platform nem lesz képes titkosítási állapotát, vagy a virtuális gép megfelelően üzembe.   
 
-Az Azure Disk Encryption megfelelően letiltásához a titkosítás engedélyezve van egy korábbi hibátlan állapotra kezdhet, és használja a [Disable-AzureRmVmDiskEncryption](https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/disable-azurermvmdiskencryption) és [Remove-azurermvmdiskencryptionextension parancs](https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/remove-azurermvmdiskencryptionextension) PowerShell-parancsok, vagy a [letiltása az vm encryption](https://docs.microsoft.com/en-us/cli/azure/vm/encryption) CLI-parancsot. 
+Az Azure Disk Encryption megfelelően letiltásához a titkosítás engedélyezve van egy korábbi hibátlan állapotra kezdhet, és használja a [Disable-AzVMDiskEncryption](/powershell/module/az.compute/disable-azvmdiskencryption) és [Remove-AzVMDiskEncryptionExtension](/powershell/module/az.compute/remove-azvmdiskencryptionextension) Powershell parancsok, vagy a [letiltása az vm encryption](/cli/azure/vm/encryption) CLI-parancsot. 
 
 ## <a name="next-steps"></a>További lépések
 

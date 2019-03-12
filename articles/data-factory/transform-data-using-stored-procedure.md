@@ -3,20 +3,19 @@ title: Adatok átalakítása a tárolt eljárási tevékenység használatával 
 description: Azt ismerteti, hogyan használhatja az SQL Server tárolt eljárási tevékenység egy tárolt eljárást az Azure SQL Database/Data Warehouse a Data Factory-folyamatok meghívásához.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: douglasl
-ms.openlocfilehash: a56e9c2a7cceed8012f35c9d02e9c3bc5703b31f
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: 806654b7586895b62b014a49b8b3a00fb18f008f
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353209"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57575891"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Adatok átalakítása az Azure Data Factoryban az SQL Server tárolt eljárási tevékenység használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

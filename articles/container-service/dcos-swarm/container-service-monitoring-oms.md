@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
-ms.openlocfilehash: 1278c788c0d36b2cadf860e379791ecd823a510b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 8ed148dfd6441d05891ef38934123a9cd3827b8b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113846"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538544"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>(ELAVULT) Egy Azure Container Service DC/OS fürt megfigyelése a Log Analytics
 
@@ -34,7 +34,7 @@ Ez a cikk feltételezi, hogy beállította-e egy DC/OS és egyszerű webes táro
 ### <a name="pre-requisite"></a>Előfeltétel
 - [A Microsoft Azure-előfizetés](https://azure.microsoft.com/free/) -előfizetés ingyenes beszerzése.  
 - Log Analytics-munkaterület beállítása – lásd: "3. lépés" alatt
-- [DC/OS parancssori felület](http://docs.mesosphere.com/1.12/cli) telepítve.
+- [DC/OS parancssori felület](https://docs.mesosphere.com/1.12/cli) telepítve.
 
 1. A DC/OS irányítópultján kattintson a Universe, és keressen a "OMS" alább látható módon.
 

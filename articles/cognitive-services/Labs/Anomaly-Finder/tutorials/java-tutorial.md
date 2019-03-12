@@ -10,12 +10,12 @@ ms.subservice: anomaly-detection
 ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: wenya
-ms.openlocfilehash: 8f087e07bbf5033698b18b4349c4d13e862a1555
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: ba66c96f9129b253fc5897c3a2eaaefb53056cea
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223340"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548728"
 ---
 # <a name="tutorial-anomaly-detection-with-java-application"></a>Oktatóanyag: Rendellenességek észlelése, a Java-alkalmazás
 
@@ -28,7 +28,7 @@ A példa elküldi az idősoradatokat az Anomaly Detection API-nak az előfizeté
 
 ### <a name="platform-requirements"></a>Platformkövetelmények
 
-Ezt az oktatóanyagot az [IntelliJ IDEA](https://www.jetbrains.com/idea) használatával állítottuk össze. Emellett a [Java fejlesztői készlet (JDK)](https://aka.ms/azure-jdks) 1.8-as vagy azt követő verzióját és az [Apache Maven](http://maven.apache.org/) összeállítási eszköz egy naprakész verzióját is telepítenie kell.
+Ezt az oktatóanyagot az [IntelliJ IDEA](https://www.jetbrains.com/idea) használatával állítottuk össze. Emellett a [Java fejlesztői készlet (JDK)](https://aka.ms/azure-jdks) 1.8-as vagy azt követő verzióját és az [Apache Maven](https://maven.apache.org/) összeállítási eszköz egy naprakész verzióját is telepítenie kell.
 
 ### <a name="subscribe-to-anomaly-detection-and-get-a-subscription-key"></a>Előfizetés az anomáliadetektálás használatára és előfizetői azonosító beszerzése 
 

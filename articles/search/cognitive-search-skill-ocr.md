@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.date: 01/17/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: a978e1054367620f25043ab810c3fb78c45d9f72
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: fb7fe0689ce54031880565c0c6409afeab2ff523
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310675"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57777891"
 ---
 # <a name="ocr-cognitive-skill"></a>Optikai Karakterfelismerés cognitive szakértelem
 
@@ -33,6 +33,7 @@ A **OCR** szakértelem szöveges állomány kinyerésére képfájlok. Támogato
 + .PNG
 + .BMP
 + .GIF
++ .TIFF
 
 > [!NOTE]
 > 2018. December 21., kezdési is [Cognitive Services-erőforrás csatolása](cognitive-search-attach-cognitive-services.md) és a egy Azure Search-képességek alkalmazási lehetőségét. Ez lehetővé teszi indexmezők végrehajtási díjszabási elindításához. Ezen a napon azt is már díjszabási kép kinyerése a dokumentumfeltörést fázis részeként. A dokumentumok szövegkinyerés továbbra is ingyenesen kínáljuk.

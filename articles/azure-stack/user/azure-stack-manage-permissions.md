@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 03/11/2019
 ms.author: patricka
-ms.reviewer: unknown
-ms.lastreviewed: 12/06/2018
-ms.openlocfilehash: 03c1879c34a00bb09b5a4dee6af7da7b984045fc
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.reviewer: fiseraci
+ms.lastreviewed: 03/11/2019
+ms.openlocfilehash: 3565bf4c4a19bcf1b136b4cbb781006658865a1c
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241185"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767209"
 ---
 # <a name="manage-access-to-resources-with-azure-stack-role-based-access-control"></a>A hozzáférés-vezérléssel Azure Stack Role-Based erőforrásaihoz való hozzáférés kezelése
 
@@ -93,8 +93,8 @@ A következő lépések bemutatják, hogyan engedélyek konfigurálása a felhas
 2. A bal oldali navigációs panelen válassza az **Erőforráscsoportok** lehetőséget.
 3. Válassza ki a használni kívánt engedélyeket állíthat be az erőforráscsoport nevét.
 4. Az erőforrás csoport navigációs ablaktábláján válassza **hozzáférés-vezérlés (IAM)**. A **szerepkör-hozzárendelések** megtekintése az erőforráscsoport számára elérhető elemeket sorolja fel. Szűrheti és az eredmények csoportosítása.
-5. Az a **hozzáférés-vezérlés** menü sávot, válassza a **szerepkör-hozzárendelés hozzáadása**.
-6. A **szerepkör-hozzárendelés hozzáadása** panelen:
+5. Az a **hozzáférés-vezérlés** menü sávot, válassza a **Hozzáadás**.
+6. A **engedélyek hozzáadása** panelen:
 
    * Válassza ki a hozzárendelni kívánt szerepkört az **szerepkör** legördülő listából.
    * Válassza ki a hozzárendelni kívánt erőforrást a **rendelhet hozzáféréseket** legördülő listából.

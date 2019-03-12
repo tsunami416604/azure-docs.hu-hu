@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 2b570fdb42c29c6ad68add32be660ef57f1eec1f
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 6cbfc06f380d7c4818ca82e858c23bb18849fb7c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468301"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535740"
 ---
 # <a name="azure-event-grid-event-schema-for-resource-groups"></a>Az erőforráscsoportok az Azure Event Grid eseménysémája
 
@@ -250,7 +250,7 @@ Az objektum a következő tulajdonságokkal rendelkezik:
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | Engedélyezési | objektum | A kért hitelesítést biztosít a műveletet. |
-| jogcímek | objektum | A jogcímek tulajdonságait. További információkért lásd: [JWT-specifikáció](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
+| jogcímek | objektum | A jogcímek tulajdonságait. További információkért lásd: [JWT-specifikáció](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
 | correlationId | sztring | A hibaelhárítási művelet azonosítója. |
 | httpRequest | objektum | A művelet részleteit. Ez az objektum csak van hozzáadva, amikor egy meglévő erőforrás frissítése vagy töröl egy erőforrást. |
 | resourceProvider | sztring | Az erőforrás-szolgáltató a művelethez. |

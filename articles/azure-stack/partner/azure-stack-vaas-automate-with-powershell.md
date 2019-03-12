@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/04/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 11/26/2018
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7d675eb55e7ecda1dcf79859e85821c4e86ccbdd
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 7f9a4ce4f1e16f69a1d8998e24c1bfe955d17d92
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338518"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767107"
 ---
 # <a name="automate-azure-stack-validation-with-powershell"></a>A PowerShell-lel az Azure Stack Kódérvényesítés automatizálása
 
@@ -29,13 +29,13 @@ Ellenőrzés (VaaS) szolgáltatás lehetővé teszi a indítása tesztek segíts
 > [!NOTE]  
 > Automation csak a Tesztmenetek munkafolyamat érhető el. A csomag és a megoldás értékelési munkafolyamatokat csak támogatottak a VaaS portálon keresztül.
 
-Ebben az oktatóanyagban megismerheti, hogyan hozhat létre olyan parancsfájlt, amely:
+Ez a szkript segítségével:
 
 > [!div class="checklist"]
-> * Előfeltételek telepítése
-> * Telepíti és elindítja a helyi ügynök
-> * Elindítja a tesztet hajt végre, például integráció, működési, megbízhatóság kategória
-> * A vizsgálati eredmények jelentések
+> * Az előfeltételek telepítése
+> * Telepítse és indítsa el a helyi ügynök
+> * Indítsa el például egy kategóriájú tesztek, *integrációs*, *működési*, *megbízhatóság*
+> * A jelentés teszt eredményei
 
 ## <a name="launch-the-test-pass-workflow"></a>Indítsa el a Tesztmenetek munkafolyamat
 
@@ -89,7 +89,7 @@ Ebben az oktatóanyagban megismerheti, hogyan hozhat létre olyan parancsfájlt,
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure Stack PowerShell kapcsolatos további információkért tekintse át a legújabb modulokat.
+Az Azure Stack PowerShell kapcsolatos további információkért tekintse át a legújabb modulok.
 
 > [!div class="nextstepaction"]
 > [Az Azure Stack-modul](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.6.0)

@@ -9,18 +9,20 @@ ms.author: gwallace
 ms.date: 03/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 33a01c7bfeacd57d2bea13318d054514daba008c
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: c8b25c0caf71835ccb5a055956d73a713efa5da0
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410247"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541213"
 ---
 # <a name="update-management-solution-in-azure"></a>Frissítéskezelési megoldás az Azure-ban
 
 A frissítéskezelési megoldás az Azure Automation segítségével operációs rendszer frissítéseinek kezelése az Azure-ban, a helyszíni környezetben vagy az egyéb felhőszolgáltatók üzembe helyezett Windows és Linux számítógépek. Az elérhető frissítések állapota minden ügynökszámítógépen egyszerűen felmérhető, és felügyelhető a kiszolgálók szükséges frissítéseinek telepítése is.
 
 Az Update Management a virtuális gépek közvetlenül az Azure Automation-fiókjából engedélyezheti. Az Update Management engedélyezése a virtuális gépek az Automation-fiókjából kapcsolatban lásd: [több virtuális gép frissítéseinek kezelése](manage-update-multi.md). Az Update Management egy virtuális gép az Azure Portalon a virtuális gép oldaláról is engedélyezheti. Ebben a forgatókönyvben érhető el a [Linux](../virtual-machines/linux/tutorial-monitoring.md#enable-update-management) és [Windows](../virtual-machines/windows/tutorial-monitoring.md#enable-update-management) virtuális gépeket.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="solution-overview"></a>Megoldás áttekintése
 
@@ -155,12 +157,12 @@ Heartbeat
 | where OSType == "Windows" | summarize arg_max(TimeGenerated, *) by SourceComputerId | top 500000 by Computer asc | render table
 ```
 
-A Windows-számítógépen tekintse át, ellenőrizze az ügynök kapcsolatot a Log Analytics használatával a következő információkat:
+A Windows-számítógépen áttekintheti az ügynök csatlakozását az Azure Monitor naplóira ellenőrzése a következő információkat:
 
 1. A Vezérlőpulton nyissa meg a **Microsoft Monitoring Agent**. Az a **Azure Log Analytics** fülön az ügynök a következő üzenet jelenik meg: **A Microsoft Monitoring Agent sikeresen csatlakozott a Log Analytics**.
 2. Nyissa meg a Windows eseménynaplóban. Lépjen a **alkalmazás- és Services Logs\Operations Manager** , és keresse meg az eseményt azonosító 3000 és a forrás-esemény azonosítója 5002 **Service Connector**. Ezek az események azt jelzik, hogy a számítógép regisztrálva van a Log Analytics-munkaterületet, és konfigurációt kap.
 
-Ha az ügynököt a Log Analytics és az ügynök nem tud kommunikálni az interneten egy tűzfalon vagy proxykiszolgálón keresztül kommunikáljon-e, ellenőrizze, hogy a tűzfal vagy proxy server megfelelően van konfigurálva van konfigurálva. Ismerje meg, hogyan ellenőrizheti, hogy a tűzfal vagy proxy server megfelelően van konfigurálva, lásd: [Windows ügynök hálózati konfigurációja](../azure-monitor/platform/agent-windows.md) vagy [Linux-ügynök hálózati konfigurációja](../log-analytics/log-analytics-agent-linux.md).
+Ha az ügynök nem tud kommunikálni az Azure Monitor-naplók és az ügynök az interneten egy tűzfalon vagy proxykiszolgálón keresztül kommunikáljon-e, ellenőrizze a tűzfal van beállítva, vagy proxykiszolgáló megfelelően van konfigurálva. Ismerje meg, hogyan ellenőrizheti, hogy a tűzfal vagy proxy server megfelelően van konfigurálva, lásd: [Windows ügynök hálózati konfigurációja](../azure-monitor/platform/agent-windows.md) vagy [Linux-ügynök hálózati konfigurációja](../log-analytics/log-analytics-agent-linux.md).
 
 > [!NOTE]
 > Ha Linux rendszerei való kommunikációhoz proxykiszolgáló beállítva, vagy a Log Analytics-átjáró, és máris bevezetési a megoldást, frissítse a *proxy.conf* engedélyeket biztosítson az omiuser csoportnak olvasási engedélyt a fájlhoz használatával a a következő parancsokat:
@@ -170,7 +172,7 @@ Ha az ügynököt a Log Analytics és az ügynök nem tud kommunikálni az inter
 
 Újonnan hozzáadott Linux-ügynökök állapota **frissített** értékelés végrehajtását követően. A folyamat akár hat órát is igénybe vehet.
 
-Ellenőrizheti, hogy az Operations Manager felügyeleti csoport kommunikál a Log Analytics [ellenőrzése az Operations Manager Log Analytics-integráció](../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-log-analytics).
+Győződjön meg arról, hogy az Operations Manager felügyeleti csoport kommunikál-e az Azure Monitor naplóira, lásd: [ellenőrzése az Operations Manager integrálása az Azure Monitor naplóira](../azure-monitor/platform/om-agents.md#validate-operations-manager-integration-with-log-analytics).
 
 ## <a name="data-collection"></a>Adatgyűjtés
 
@@ -182,7 +184,7 @@ A következő táblázat ismerteti a megoldás által támogatott csatlakoztatot
 | --- | --- | --- |
 | Windows-ügynökök |Igen |A megoldás begyűjti a Windows ügynököktől a rendszerfrissítésekről szóló információkat, és ezután kezdeményezi a szükséges frissítések telepítését. |
 | Linux-ügynökök |Igen |A megoldás Linux-ügynököktől a rendszerfrissítésekről szóló információkat gyűjti, és ezután kezdeményezi a támogatott disztribúciókon szükséges frissítések telepítését. |
-| Az Operations Manager felügyeleti csoportja |Igen |A megoldás információt szerez be a csatlakoztatott felügyeleti csoportban lévő ügynököktől a rendszerfrissítésekről.<br/>A Log Analyticshez való közvetlen kapcsolat legyen az Operations Manager-ügynököt nem szükséges. Adatok lesznek továbbítva a felügyeleti csoportból a Log Analytics-munkaterületet. |
+| Az Operations Manager felügyeleti csoportja |Igen |A megoldás információt szerez be a csatlakoztatott felügyeleti csoportban lévő ügynököktől a rendszerfrissítésekről.<br/>Az Azure Monitor naplóira közvetlen kapcsolat legyen az Operations Manager-ügynököt nem szükséges. Adatok lesznek továbbítva a felügyeleti csoportból a Log Analytics-munkaterületet. |
 
 ### <a name="collection-frequency"></a>A gyűjtés gyakorisága
 
@@ -192,7 +194,7 @@ Vizsgálat három óránként történik, az egyes által felügyelt Linux-szám
 
 30 perc és a felügyelt számítógépekből származó frissített adatok megjelennek az irányítópulton 6 óráig is eltarthat.
 
-A Log Analytics-adatok használat az Update Management megoldással gép átlag körülbelül 25MB / hó. Ez az érték csak közelítés, és az adott környezet alapján változhatnak. Ajánlott a pontos használati, amely rendelkezik a környezet figyelését.
+Az Azure Monitor naplók adathasználat az Update Management megoldással gép átlag körülbelül 25MB / hó. Ez az érték csak közelítés, és az adott környezet alapján változhatnak. Ajánlott a pontos használati, amely rendelkezik a környezet figyelését.
 
 ## <a name="viewing-update-assessments"></a>A frissítési felmérések megtekintése
 
@@ -206,7 +208,7 @@ Egy Naplókeresés futtatásához, amely a gép, frissítés vagy telepítés ka
 
 ## <a name="install-updates"></a>Frissítések telepítése
 
-Frissítések értékelni az összes Linux és Windows számítógéphez a munkaterületen, után szükséges frissítések létrehozásával telepíthet egy *frissítéstelepítés*. A frissítéstelepítések egy vagy több számítógép szükséges frissítéseinek ütemezett telepítése. Megadhatja, hogy az érintett foglalandó dátuma és időpontja az üzembe helyezés és a egy számítógép vagy számítógépek csoportja. A számítógépcsoportokkal kapcsolatos további információkért tekintse meg a [Log Analytics számítógépcsoportjaival](../azure-monitor/platform/computer-groups.md) kapcsolatos részt.
+Frissítések értékelni az összes Linux és Windows számítógéphez a munkaterületen, után szükséges frissítések létrehozásával telepíthet egy *frissítéstelepítés*. A frissítéstelepítések egy vagy több számítógép szükséges frissítéseinek ütemezett telepítése. Megadhatja, hogy az érintett foglalandó dátuma és időpontja az üzembe helyezés és a egy számítógép vagy számítógépek csoportja. Számítógépcsoportokkal kapcsolatos további tudnivalókért lásd: [számítógépcsoportokat az Azure Monitor naplóira](../azure-monitor/platform/computer-groups.md).
 
  Ha számítógépcsoportok szerepelnek a, csoporttagság ütemezés létrehozása idején már csak egyszer lesz kiértékelve. A csoportot érintő későbbi változások nem tükrözi. Ez a használati eléréséhez [dinamikus csoportok](#using-dynamic-groups), ezek a csoportok üzembe helyezéskor feloldása és a egy lekérdezés által meghatározott.
 
@@ -224,7 +226,7 @@ Hozzon létre egy új frissítéstelepítést, jelölje be **frissítések közp
 | Name (Név) |A frissítéstelepítést beazonosító egyedi név. |
 |Operációs rendszer| Linux vagy Windows|
 | A csoportok frissítése (előzetes verzió)|Egy előfizetés, erőforráscsoport, helyek és címkék felvenni az üzembe helyezés az Azure-beli virtuális dinamikus csoportot hozhat létre kombinációja alapján lekérdezést határoz meg. További tudnivalókért lásd: [dinamikus csoportok](automation-update-management.md#using-dynamic-groups)|
-| Frissítendő gépek |Válassza ki, mentett keresést, importált csoporthoz, vagy a legördülő listából válassza ki a gépet, és válassza ki az egyes gépek. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható.</br> A számítógépcsoportok Log Analyticsben lévő létrehozásának különböző módszereivel kapcsolatos további információkért tekintse meg a [Log Analytics számítógépcsoportjait](../azure-monitor/platform/computer-groups.md) ismertető részt |
+| Frissítendő gépek |Válassza ki, mentett keresést, importált csoporthoz, vagy a legördülő listából válassza ki a gépet, és válassza ki az egyes gépek. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható.</br> Számítógépcsoportok létrehozását az Azure Monitor naplóira különböző módszereivel kapcsolatos további információkért lásd: [számítógépcsoportokat az Azure Monitor naplóira](../azure-monitor/platform/computer-groups.md) |
 |Frissítési besorolások|Válassza ki az összes szükséges|
 |Frissítések belefoglalása vagy kizárása|Ekkor megnyílik a **beszámítása vagy kihagyása** lapot. A belefoglalandó vagy kizárandó frissítések külön lapokon jelennek meg. A belefoglalási kezelésének további információkért lásd: [belefoglalási viselkedés](automation-update-management.md#inclusion-behavior) |
 |Ütemezési beállítások|Válassza ki az időpontot, elindításához, és válassza ki bármelyik egyszer, vagy az ismétlődés ismétlődés|
@@ -353,7 +355,7 @@ Az alábbi szakaszok nyújtanak naplózási mintalekérdezések Ez a megoldás �
 
 #### <a name="single-azure-vm-assessment-queries-windows"></a>Egyetlen Azure Virtuálisgép-kiértékelés lekérdezések (Windows)
 
-A VMUUID értékét cserélje le a virtuális gép lekérdezésekor a virtuális gép GUID Azonosítóját. A Log Analytics a következő lekérdezés futtatásával használandó VMUUID találhatja meg: `Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
+A VMUUID értékét cserélje le a virtuális gép lekérdezésekor a virtuális gép GUID Azonosítóját. Az Azure Monitor-naplókban a következő lekérdezés futtatásával használandó VMUUID találhatja meg: `Update | where Computer == "<machine name>" | summarize by Computer, VMUUID`
 
 ##### <a name="missing-updates-summary"></a>Hiányzó frissítések összegzése
 
@@ -382,7 +384,7 @@ Update
 
 #### <a name="single-azure-vm-assessment-queries-linux"></a>Egyetlen Azure virtuális gépek értékelése lekérdezések (Linux)
 
-Az egyes Linux-disztribúciók egy [bájtsorrend](https://en.wikipedia.org/wiki/Endianness) eltérés a VMUUID értékkel, amely az Azure Resource Manager és a Log Analytics tárolja származik. A következő lekérdezés vagy bájtsorrend egyeztetés ellenőrzi. A VMUUID értékeket cserélje le a GUID-megfelelően a eredményeket adja vissza csökkenő helyiértékű és növekvő bájtsorrendű formátumát. A Log Analytics a következő lekérdezés futtatásával használandó VMUUID találhatja meg: `Update | where Computer == "<machine name>"
+Az egyes Linux-disztribúciók egy [bájtsorrend](https://en.wikipedia.org/wiki/Endianness) eltérés a VMUUID értékkel, amely az Azure Resource Manager és az Azure Monitor naplóira tárolja származik. A következő lekérdezés vagy bájtsorrend egyeztetés ellenőrzi. A VMUUID értékeket cserélje le a GUID-megfelelően a eredményeket adja vissza csökkenő helyiértékű és növekvő bájtsorrendű formátumát. Az Azure Monitor-naplókban a következő lekérdezés futtatásával használandó VMUUID találhatja meg: `Update | where Computer == "<machine name>"
 | summarize by Computer, VMUUID`
 
 ##### <a name="missing-updates-summary"></a>Hiányzó frissítések összegzése
@@ -623,7 +625,7 @@ Folytassa a következő oktatóanyagban megtudhatja, hogyan kezelheti a frissít
 > [!div class="nextstepaction"]
 > [Az Azure Windows rendszerű virtuális gépek frissítéseinek és javításainak kezelése](automation-tutorial-update-management.md)
 
-* Naplókeresés funkciójával [Log Analytics](../log-analytics/log-analytics-log-searches.md) frissítés részletes adatainak megtekintéséhez.
+* Naplókeresés funkciójával [naplózza az Azure Monitor](../log-analytics/log-analytics-log-searches.md) frissítés részletes adatainak megtekintéséhez.
 * [Riasztások létrehozása](automation-tutorial-update-management.md#configure-alerts) frissítés telepítési állapota.
 
 * Hogyan kezelheti az Update Management REST API-val kapcsolatban lásd: [szoftverkonfigurációjáról Update](/rest/api/automation/softwareupdateconfigurations)

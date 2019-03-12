@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f47de0544d6d708d3c8b104be4edada86c11551
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 993a8ca48df40b400c21852d3d28941d9d62affb
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190364"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549017"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon
 
@@ -149,23 +149,13 @@ Ha további mezőket ad hozzá a bejelentkezési nézethez, a rendszer automatik
 
 ## <a name="download-sign-in-activities"></a>Bejelentkezési tevékenységek letöltése
 
-Is [töltse le a bejelentkezési adatokat](quickstart-download-sign-in-report.md) Ha azt szeretné használni az Azure Portalon kívül. A **Letöltés** gombra kattintva létrejön egy CSV-fájl a legutóbbi 5 ezer rekordból.  A Letöltés gombra az Azure portal is nyújt, és lehetőség [létrehozni egy szkriptet, amellyel az adatok letöltése](tutorial-signin-logs-download-script.md).  
+Is [töltse le a bejelentkezési adatokat](quickstart-download-sign-in-report.md) Ha azt szeretné használni az Azure Portalon kívül. Kattintson a **letöltése** lehetővé teszi egy CSV- vagy JSCON fájlt a legutóbbi 250 000 rekord létrehozásához.  
 
 ![Letöltés](./media/concept-sign-ins/71.png "Letöltés")
-
-Ha nagyobb rugalmasságra van szüksége, használhat szkriptet. Kattintson a **parancsfájl** létrehoz egy PowerShell-parancsfájlt, amely tartalmazza az összes beállított szűrőket. Töltse le és futtassa ezt a szkriptet **módban rendszergazdának** a CSV-fájl létrehozásához. 
 
 > [!IMPORTANT]
 > Letöltheti a rekordok száma korlátozza a [Azure Active Directory-jelentések adatmegőrzési szabályzatában](reference-reports-data-retention.md).  
 
-### <a name="running-the-script-on-a-windows-10-machine"></a>A Windows 10-es gépen a szkript futtatása
-
-Ha azt szeretné, futtassa a parancsfájlt egy **Windows 10-es** gépen kell néhány további lépést végeznie. 
-
-1. Telepítse a [Az modul](/powershell/azure/install-az-ps).
-2. A modul importálásához nyissa meg egy PowerShell-parancssort, és a következő parancs futtatásával **Az Import-Module**.
-3. Futtatás **Set-ExecutionPolicy unrestricted** válassza **Igen, az összeset**. 
-4. Most futtathatja a letöltött PowerShell-parancsfájl rendszergazdai módban, a CSV-fájl létrehozásához.
 
 ## <a name="sign-ins-data-shortcuts"></a>Bejelentkezési adatok parancsikonok
 

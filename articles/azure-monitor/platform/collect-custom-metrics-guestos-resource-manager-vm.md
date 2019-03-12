@@ -4,16 +4,16 @@ description: Küldés a vendég operációs rendszer mérőszámok az Azure Moni
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
-ms.topic: howto
+ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 6e79aba5ae6d06c207b0070fd7741471db7d820c
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 63b134ab9bfdac3617c845da7a14ee6b9234c84d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316914"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57782020"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Küldés a vendég operációs rendszer mérőszámok az Azure Monitor metrika tárolja a Windows virtuális gép Resource Manager-sablon használatával
 

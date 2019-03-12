@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
-ms.openlocfilehash: 43bf977483e9f24eb446e1c4c7b168c890604c39
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 9b14174541117878d7fd98b79d1cd139babb1027
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57248948"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543457"
 ---
 # <a name="understand-microsoft-customer-agreement-administrative-roles-in-azure"></a>Megismerheti a Microsoft Ügyfélszerződéséhez rendszergazdai szerepkörök az Azure-ban
 
@@ -183,7 +183,7 @@ Az alábbi táblázat bemutatja, milyen szerepet feladatot elvégezhet az előfi
 
 ## <a name="manage-billing-roles-in-the-azure-portal"></a>Az Azure Portal számlázási szerepkörök kezelése
 
-1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. A Keresés **Cost Management és számlázás**.
 

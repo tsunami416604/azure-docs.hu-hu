@@ -4,15 +4,15 @@ description: A cikk áttekintést nyújt az Azure Migrate szolgáltatásról.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 01/11/2019
+ms.date: 03/11/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e2cafe0c8c5d8194519428839ec3c73f5dc726c0
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: bbb3e4f319584740f165b64948e1fd4dca2722b0
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992029"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729520"
 ---
 # <a name="about-azure-migrate"></a>Az Azure Migrate bemutatása
 
@@ -30,7 +30,8 @@ Az Azure Migrate az alábbiakban nyújt segítséget:
 ## <a name="current-limitations"></a>Aktuális korlátozások
 
 - Csak a helyszíni VMware virtuális gépeket értékelheti ki az Azure-beli virtuális gépekre való migráláshoz. A VMware virtuális gépeket (verziójú 5.5-ös, 6.0-s, 6.5-ös vagy 6.7) vCenter Servernek kell felügyelnie.
-- Hyper-V virtuális gépek felméréséhez az [Azure Site Recovery Deployment Plannert](https://aka.ms/asr-dp-hyperv-doc), fizikai gépek felméréséhez pedig [partnereszközeinket](https://azure.microsoft.com/migration/partners/) használja.
+- Támogatja a Hyper-V szolgáltatás jelenleg előzetes verzióban a termelési támogatásával, ha szeretné kipróbálni szeretné azt, a regisztráljon [itt.](http://aka.ms/migratefuture)
+- A fizikai kiszolgálók értékeléséhez, kihasználhatja az [eszközök partneri](https://azure.microsoft.com/migration/partners/).
 - Egyetlen felderítéssel legfeljebb 1500 virtuális gépet, egyetlen projekt részeként pedig szintén legfeljebb 1500 virtuális gépet deríthet fel. Egyetlen értékeléssel emellett legfeljebb 1500 virtuális gépet értékelhet.
 - Ha egy nagyobb méretű környezetet szeretne felderíteni, feloszthatja a felderítést, és létrehozhat több projektet. [További információk](how-to-scale-assessment.md). Az Azure Migrate előfizetésenként legfeljebb 20 projektet támogat.
 - Az Azure Migrate kizárólag a felügyelt lemezek migrálásfelmérését támogatja.
@@ -38,7 +39,7 @@ Az Azure Migrate az alábbiakban nyújt segítséget:
     **Régiócsoport** | **Tárolási hely**
     --- | ---
     Azure Government | USA-beli államigazgatás – Virginia
-    Ázsia | Délkelet-Ázsia
+    Ázsia | Délkelet-Ázsia és Kelet-Ázsia
     Európa | Észak-Európában és Nyugat-Európa
     Egyesült Államok | USA keleti RÉGIÓJA és USA nyugati középső RÉGIÓJA
 

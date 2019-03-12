@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/07/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 01/07/2019
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 20a48e67a24763af7bcce9e8831e2a1d1846d094
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: d3db8ea8639f73f3522ddaa358195e7c9ef2f9a9
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594304"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766002"
 ---
 # <a name="interactive-feature-verification-testing"></a>Interaktív funkció ellenőrzési tesztelés  
 
@@ -35,13 +35,13 @@ Ez a cikk ismerteti egy egyszerű manuális forgatókönyvet. A teszt ellenőrzi
 
 ## <a name="overview-of-interactive-testing"></a>Interaktív vizsgálati áttekintése
 
-Egy teszt lemezcsere egy gyakori forgatókönyvet. Ebben a példában a teszt hét lépésből áll:
+Egy teszt lemezcsere egy gyakori forgatókönyvet. Ebben a példában a teszt öt lépésből áll:
 
-1. Hozzon létre egy új **Tesztmenetek** munkafolyamat
-1. Válassza ki a **lemez azonosítása teszt**
-1. Amikor a rendszer kéri a manuális lépés befejezése
-1. A forgatókönyv eredményének ellenőrzése
-1. A teszt eredménye küldeni a Microsoftnak
+1. Hozzon létre egy új **Tesztmenetek** munkafolyamat.
+2. Válassza ki a **lemez azonosítása teszt**.
+3. Végezze el a manuális lépés, amikor a rendszer kéri.
+4. Ellenőrizze a forgatókönyv eredményét.
+5. A teszt eredménye küldeni a Microsoftnak.
 
 ## <a name="create-a-new-test-pass"></a>Hozzon létre egy új tesztelési fázis
 

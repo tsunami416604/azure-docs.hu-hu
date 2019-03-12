@@ -3,18 +3,18 @@ title: Interaktív térképes keresés az Azure Maps |} A Microsoft Docs
 description: Azure rövid útmutató – bemutató interaktív térképes keresés létrehozása az Azure Maps használatával
 author: walsehgal
 ms.author: v-musehg
-ms.date: 12/02/2018
+ms.date: 03/07/2018
 ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 681a76de02d91b39ee74d1e4fa764c06d79ff3ab
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: cc16c47f3b1764ba6887fd832656dfe2567ba0e4
+ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065137"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57588941"
 ---
 # <a name="create-an-interactive-search-map-by-using-azure-maps"></a>Az Azure Maps segítségével egy interaktív keresés térkép létrehozása
 
@@ -47,7 +47,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 ## <a name="download-the-application"></a>Az alkalmazás letöltése
 
-1. Töltse le vagy másolja ki az [interactiveSearch.html](https://github.com/Azure-Samples/azure-maps-samples/blob/master/src/interactiveSearch.html) fájl tartalmát.
+1. Töltse le vagy másolja ki az [interactiveSearch.html](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/interactiveSearch.html) fájl tartalmát.
 2. Mentse a fájlt helyileg a tartalmát **AzureMapDemo.html**. Nyissa meg egy szövegszerkesztőben.
 3. Keresse meg benne `<insert-key>`. Cserélje le a **elsődleges kulcs** az előző szakaszból származó értékre.
 

@@ -7,16 +7,16 @@ manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
 ms.devlang: nodejs
-ms.topic: hero-article
+ms.topic: conceptual
 ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: shwetams
-ms.openlocfilehash: 8844260c4364776ad0fc828dcd66932d37474ecf
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: bb0bfa5eac3dd9031718fb12f270f5fc03bbaea6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164619"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772174"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Ismerkedés a Node.js-hez készült Batch SDK-val
 
@@ -65,7 +65,7 @@ Ezzel a paranccsal telepítheti az Azure Batch Node SDK legújabb verzióját.
 >
 >
 
-### <a name="step-2-create-an-azure-batch-account"></a>2. lépés: Az Azure Batch-fiók létrehozása
+### <a name="step-2-create-an-azure-batch-account"></a>2. lépés: Az Azure Batch-fiók létrehozása
 
 A fiókot az [Azure Portalon](batch-account-create-portal.md) vagy a parancssorból ([Powershell](batch-powershell-cmdlets-get-started.md) /[Azure CLI](/cli/azure)) hozhatja létre.
 
@@ -260,7 +260,7 @@ Az Azure Batch-feladatok hasonló feladatok logikai csoportjai. Ebben az esetben
 E feladatok párhuzamosan futtathatók és több csomóponton üzembe helyezhetők, a vezénylésüket az Azure Batch-szolgáltatás végzi.
 
 > [!Tip]
-> A [maxTasksPerNode](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) tulajdonság segítségével az egyetlen csomóponton egyidejűleg futtatható feladatok maximális száma adható meg.
+> A [maxTasksPerNode](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) tulajdonság segítségével az egyetlen csomóponton egyidejűleg futtatható feladatok maximális száma adható meg.
 >
 >
 
@@ -273,17 +273,17 @@ Az e példában szereplő [héjszkript](https://github.com/shwetams/azure-batchc
 Feltöltheti a szkriptet egy Azure Storage-fiókba, és létrehozhat egy SAS URI-t a szkripthez történő hozzáféréshez. Az Azure Storage Node.js SDK használatával ez a folyamat automatizálható.
 
 > [!Tip]
-> Az adott feladathoz tartozó előkészítő feladat csak azokon a virtuálisgép-csomópontokon fut, ahol az adott feladatnak futnia kell. Ha azt szeretné, hogy az előfeltételek az összes csomóponton telepítve legyenek (függetlenül az azokon futó feladatoktól), készlet hozzáadásakor használhatja a [startTask](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) tulajdonságot. Referenciaként az alábbi előkészítőfeladat-meghatározás használható.
+> Az adott feladathoz tartozó előkészítő feladat csak azokon a virtuálisgép-csomópontokon fut, ahol az adott feladatnak futnia kell. Ha azt szeretné, hogy az előfeltételek az összes csomóponton telepítve legyenek (függetlenül az azokon futó feladatoktól), készlet hozzáadásakor használhatja a [startTask](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) tulajdonságot. Referenciaként az alábbi előkészítőfeladat-meghatározás használható.
 >
 >
 
 Az Azure Batch-feladat beküldése során megtörténik egy előkészítő feladat meghatározása. Az előkészítő feladat konfigurációs paraméterei a következők:
 
 * **ID**: Az előkészítő feladat egyedi azonosítója
-* **CommandLine**: A feladat végrehajtható fájljának végrehajtására szolgáló parancssor
+* **commandLine**: A feladat végrehajtható fájljának végrehajtására szolgáló parancssor
 * **resourceFiles**: Szükséges a feladat futtatásához letöltendő fájlok részletes adatait biztosító tömbje.  Ennek beállítási lehetőségei a következők:
     - blobSource: A fájl SAS URI-t
-    - fájl elérési útja: Töltse le és mentse a fájlt helyi elérési útja
+    - filePath: Töltse le és mentse a fájlt helyi elérési útja
     - fileMode: Csak Linux-csomópontok esetében alkalmazható, fileMode van formátuma oktális, egy alapértelmezett értéke 0770
 * **waitForSuccess**: Ha igaz értékű, a feladat nem fut előkészítőtevékenység-hibák
 * **runElevated**: Állítsa az igaz értékre, ha a feladat futtatásához emelt szintű jogosultságokra van szükség.
@@ -318,7 +318,7 @@ A CSV-feldolgozási feladat létrehozását követően hozzunk létre tevékenys
 A [Python-szkript](https://github.com/shwetams/azure-batchclient-sample-nodejs/blob/master/processcsv.py) két paramétert fogad el:
 
 * tároló neve: A fájlok letöltése a Storage-tároló
-* minta: Egy választható paramétere Fájlnévminta.
+* pattern: Egy választható paramétere Fájlnévminta.
 
 Feltételezve, hogy négy tárolóval („con1”, „con2”, „con3”, „con4”) rendelkezünk, az alábbi kód a korábban létrehozott „CSV-feldolgozás” nevű Azure Batch-feladat számára történő négy tevékenység beküldését mutatja be.
 
@@ -349,7 +349,7 @@ var container_list = ["con1","con2","con3","con4"]
 
 A kód több tevékenységet ad hozzá a készlethez. Minden egyes tevékenység a létrehozott virtuális gépek készletének egyik csomópontján lesz végrehajtva. Ha a tevékenységek száma meghaladja az adott készletben lévő virtuális gépek számát vagy a maxTasksPerNode tulajdonság értékét, a rendszer a csomópont elérhetővé válásáig várakoztatja a tevékenységeket. Ennek vezénylését az Azure Batch automatikusan elvégzi.
 
-A portálon részletesen megtekinthetők a tevékenységek és a feladatok állapotai. Használhatja az Azure Node SDK listázási és lekérési funkcióit is. Részletes információkat a dokumentáció [hivatkozását](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/Job.html) megnyitva talál.
+A portálon részletesen megtekinthetők a tevékenységek és a feladatok állapotai. Használhatja az Azure Node SDK listázási és lekérési funkcióit is. Részletes információkat a dokumentáció [hivatkozását](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Job.html) megnyitva talál.
 
 ## <a name="next-steps"></a>További lépések
 

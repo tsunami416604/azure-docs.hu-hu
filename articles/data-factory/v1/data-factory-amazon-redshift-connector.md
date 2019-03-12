@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: b7a785cc506f12360edc14555b7241a557dc400c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: dc72ec9bf2e7e7c5c77685368167357a0108f2d3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817335"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541927"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Adatok áthelyezése az Amazon Redshift Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -36,7 +36,7 @@ A Data Factory jelenleg támogatja az Amazon Redshift csak helyez át adatokat e
 > Az a legjobb teljesítményt nyújtsák, amikor nagy mennyiségű adat átmásolása Amazon Redshift, fontolja meg a beépített Redshift **UNLOAD** keresztül az Amazon Simple Storage Service (Amazon S3) parancsot. További információkért lásd: [használata UNLOAD adatokat másol az Amazon Redshift](#use-unload-to-copy-data-from-amazon-redshift).
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Ha adatok egy helyszíni adattárolóban helyez át, telepítse a [adatkezelési átjáró](data-factory-data-management-gateway.md) egy a helyszíni gépen. Hozzáférést biztosít egy átjáróhoz, az Amazon Redshift-fürtön a helyi gép IP-cím használatával. Útmutatásért lásd: [engedélyezik a hozzáférést a fürthöz](http://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html).
+* Ha adatok egy helyszíni adattárolóban helyez át, telepítse a [adatkezelési átjáró](data-factory-data-management-gateway.md) egy a helyszíni gépen. Hozzáférést biztosít egy átjáróhoz, az Amazon Redshift-fürtön a helyi gép IP-cím használatával. Útmutatásért lásd: [engedélyezik a hozzáférést a fürthöz](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html).
 * Adatok áthelyezése az Azure-adattárba, tekintse meg a [számítási IP-cím és a Microsoft Azure-adatközpontok által használt SQL-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653).
 
 ## <a name="getting-started"></a>Első lépések
@@ -100,7 +100,7 @@ Másik lehetőségként használhatja a **RelationalSource** típus, amely tarta
 
 ## <a name="use-unload-to-copy-data-from-amazon-redshift"></a>Használja az adatok másolása az Amazon Redshift eltávolítása
 
-Az Amazon Redshift [ **UNLOAD** ](http://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) parancs eltávolítja az adott, az Amazon S3 egy vagy több fájl egy lekérdezés eredményeit. Ez a parancs által az Amazon redshiftből nagy mennyiségű adat másolása ajánlott.
+Az Amazon Redshift [ **UNLOAD** ](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) parancs eltávolítja az adott, az Amazon S3 egy vagy több fájl egy lekérdezés eredményeit. Ez a parancs által az Amazon redshiftből nagy mennyiségű adat másolása ajánlott.
 
 **Példa: Adatok másolása az Amazon Redshift az Azure SQL Data warehouse-bA**
 

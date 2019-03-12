@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: v-gedod
-ms.openlocfilehash: 6a365ef5421de3ceb31c5cc78a424f786f174ab3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 00a4f222e45bcb62db13e420c6b1829d8be8a14b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861918"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57529325"
 ---
 # <a name="send-a-search-request-with-the-bing-entity-search-sdk-for-c"></a>A Bing Entity Search SDK-keresési kérelem küldéseC#
 
@@ -26,7 +26,7 @@ Kezdje a keresést, a Bing Entity Search SDK rendelkező entitások esetében ez
 
 * A [Visual Studio 2017](https://www.visualstudio.com/downloads/) bármely kiadása.
 * A [Json.NET](https://www.newtonsoft.com/json) keretrendszer, amely NuGet-csomagként letölthető.
-* Linux/MacOS rendszer esetében az alkalmazás a [Monóval](http://www.mono-project.com/) futtatható.
+* Linux/MacOS rendszer esetében az alkalmazás a [Monóval](https://www.mono-project.com/) futtatható.
 * A [Bing News Search SDK NuGet-csomagot](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.EntitySearch/1.2.0). Ez a csomag is telepíti a következő:
     * Microsoft.Rest.ClientRuntime
     * Microsoft.Rest.ClientRuntime.Azure

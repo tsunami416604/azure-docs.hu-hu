@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 03/11/2019
 ms.author: jeffgilb
 ms.reviewer: anwestg
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 20b79b3c2581db94627746f52ed6837aa80b6be5
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 2c726675d799a8bb5f9ed1d1dd595aa7f4700036
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447739"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774593"
 ---
 # <a name="capacity-planning-for-azure-app-service-server-roles-in-azure-stack"></a>Az Azure App Service-ben kiszolgálói szerepkörök az Azure Stackben kapacitástervezése
 
@@ -52,7 +52,7 @@ Az Azure App Service-vezérlő általában teljesen alacsony felhasználás a Pr
 
 **Ajánlott minimális**: A1 Standard két példánya
 
-Az előtér irányítja a kérelmeket a webes feldolgozók webes feldolgozó rendelkezésre állás. A magas rendelkezésre állás érdekében egynél több előtér rendelkeznie kell, és legfeljebb két rendelkezhet. Kapacitástervezési célból fontolja meg, hogy egyes maghoz kezelhetik a körülbelül 100 vonatkozó kérelmek másodpercenkénti száma.
+A webes feldolgozó rendelkezésre állás a webes feldolgozók előtér-útvonalak kéréseket. A magas rendelkezésre állás érdekében egynél több előtér rendelkeznie kell, és legfeljebb két rendelkezhet. Kapacitástervezési célból fontolja meg, hogy egyes maghoz kezelhetik a körülbelül 100 vonatkozó kérelmek másodpercenkénti száma.
 
 ## <a name="management-role"></a>Felügyeleti szerepkör
 

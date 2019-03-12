@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/19/2018
 ms.author: wesmc
-ms.openlocfilehash: b8623acc9d29f083e34c7fa7494e866317146802
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: d42bf11f97d7ba532ea41350522e3a8c71ff7f86
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53252558"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57727110"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Gyors útmutató: A vezérlőelem egy eszköz csatlakozik az IoT hub (Android)
 
@@ -116,6 +116,13 @@ Az eszköz SDK-mintaalkalmazás futtatni a fizikai Android-eszköz vagy egy Andr
 
 3. Az Android Studióban kattintson **fájl** > **projekt szinkronizálása a Gradle-fájlokkal**. Ellenőrizze, hogy a build létrehozása után.
 
+   > [!NOTE]
+   > Ha a projekt szinkronizálása sikertelen, a következő okok valamelyike lehet:
+   >
+   > * Az Android Gradle beépülő modul és a gradle-t a projekt hivatkozott verziók elavultak az Android Studio verziójának. Hajtsa végre a [ezek az utasítások](https://developer.android.com/studio/releases/gradle-plugin) való hivatkozást, és telepítheti a megfelelő verzióját a beépülő modul és a gradle-t a telepítéshez.
+   > * A licencszerződés feltételeit, az Android SDK még nincs aláírva. Kövesse az utasításokat a felépítési művelet kimenetében a licencszerződés feltételeit és az SDK letöltéséhez.
+
+
 4. Kattintson a létrehozás befejezése után **futtatása** > **"alkalmazás" futtatása**. Állítsa be az alkalmazást egy fizikai Android-eszköz vagy egy Android-emulátorban való futtatásához. Az Android-alkalmazás futtatása egy fizikai eszközt vagy emulátort a további információkért lásd: [az alkalmazás futtatása](https://developer.android.com/training/basics/firstapp/running-app).
 
 5. Ha az alkalmazás betöltött, kattintson a **Start** gombra kattintva indítsa el a telemetriai adatokat küldenek az IoT hubnak:
@@ -163,6 +170,13 @@ Egy IoT Hub háttérszolgáltatás alkalmazás általában fut a felhőben, kön
     ```
 
 3. Az Android Studióban kattintson **fájl** > **projekt szinkronizálása a Gradle-fájlokkal**. Ellenőrizze, hogy a build létrehozása után.
+
+   > [!NOTE]
+   > Ha a projekt szinkronizálása sikertelen, a következő okok valamelyike lehet:
+   >
+   > * Az Android Gradle beépülő modul és a gradle-t a projekt hivatkozott verziók elavultak az Android Studio verziójának. Hajtsa végre a [ezek az utasítások](https://developer.android.com/studio/releases/gradle-plugin) való hivatkozást, és telepítheti a megfelelő verzióját a beépülő modul és a gradle-t a telepítéshez.
+   > * A licencszerződés feltételeit, az Android SDK még nincs aláírva. Kövesse az utasításokat a felépítési művelet kimenetében a licencszerződés feltételeit és az SDK letöltéséhez.
+
 
 4. Kattintson a létrehozás befejezése után **futtatása** > **"alkalmazás" futtatása**. Állítsa be az alkalmazás egy külön fizikai Android-eszköz vagy egy Android-emulátorban való futtatásához. Az Android-alkalmazás futtatása egy fizikai eszközt vagy emulátort a további információkért lásd: [az alkalmazás futtatása](https://developer.android.com/training/basics/firstapp/running-app).
 

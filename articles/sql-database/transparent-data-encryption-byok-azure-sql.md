@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 02/20/2019
-ms.openlocfilehash: a0f909dcb78a782945517b6691805ea66f2d0cfd
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.date: 03/07/2019
+ms.openlocfilehash: 13642827a6a0f6524a1f9222b72e75f51a5442a3
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456380"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576905"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-keys-in-azure-key-vault-bring-your-own-key-support"></a>Az Azure SQL transzparens adattitkosítás az ügyfél által felügyelt kulcsok Azure Key vaultban: Bring Your Own Key-támogatás
 
@@ -88,11 +88,11 @@ TDE először a TDE-védőhöz, a Key Vault használatára van konfigurálva, am
 
 - Lejárati dátummal – nélkül van szükség, és a lejárati dátum nem állít be egy kulcs már használatban van: **után lejár, a kulcsot, a titkosított adatbázis elveszíti a hozzáférést a TDE-Védőhöz, és 24 órán belül elérhetetlenné válnak**.
 - Győződjön meg arról, a kulcs engedélyezve van, és jogosult végrehajtásához *első*, *kulcs becsomagolása*, és *kulcs kicsomagolása* műveleteket.
-- Hozzon létre egy Azure Key Vault-kulcs biztonsági mentése előtt először az Azure Key Vaultban kulccsal. Tudjon meg többet a [Backup-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1) parancsot.
+- Hozzon létre egy Azure Key Vault-kulcs biztonsági mentése előtt először az Azure Key Vaultban kulccsal. Tudjon meg többet a [Backup-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey) parancsot.
 - Hozzon létre egy új biztonsági másolatot, amikor végzett módosítások a kulcsot (például hozzáférés-vezérlési listák, adjon hozzá címkéket adhat hozzá, kulcs attribútumok hozzáadása).
 - **Korábbi verziók megtartása** a kulcs a kulcsok a key vaultban, így régebbi adatbázis biztonsági másolatok visszaállíthatók. Ha a TDE-Védőhöz módosul, a régi biztonsági másolatok, az adatbázis egy adatbázis **nem frissülnek a** a legújabb TDE-Védőhöz használatára.  Minden egyes biztonsági másolat a TDE-Védőhöz lett létrehozva a helyreállításkor szüksége van. Kulcsrotálás végrehajtható megadott utasítások [elforgatása a transzparens adatok titkosítási védelmet a PowerShell](transparent-data-encryption-byok-azure-sql-key-rotation.md).
 - Minden korábban használt kulcsok Azure Key Vault vegye vissza a szolgáltatás által kezelt kulcsokkal módosítása után.  Ez biztosítja az adatbázisok biztonsági mentése az Azure Key vaultban tárolt a TDE-protectors vissza tudja állítani.  TDE kulcsvédők az Azure Key Vault létrehozása szükséges fenn kell tartani, amíg a szolgáltatás által kezelt kulcsokkal létrehozott összes tárolt biztonsági másolat.  
-- Győződjön meg arról, ezek a kulcsok használatával helyreállítható biztonsági másolatait [Backup-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1).
+- Győződjön meg arról, ezek a kulcsok használatával helyreállítható biztonsági másolatait [Backup-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey).
 - Egy esetleg feltört kulcsot egy biztonsági incidens anélkül, hogy az adatvesztést eltávolításához kövesse [egy esetleg feltört kulcs eltávolítására](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md).
 
 ## <a name="high-availability-geo-replication-and-backup--restore"></a>Magas rendelkezésre állás, a Georeplikáció és a biztonsági mentés / visszaállítás
@@ -126,7 +126,7 @@ A következő szakaszban fog haladnak át a beállítási és konfigurációs l�
   - RSA/RSA-HSA 2048 key
   - Nincs lejárati dátuma
   - Kulcs engedélyezve van, és jogosult végrehajtani a get, wrap key és kulcsműveletek kicsomagolása
-- Az elsődleges kulcs biztonsági mentése, és állítsa vissza a kulcsot a második key vaulthoz.  Lásd: [BackupAzureKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-5.1.1) és [Restore-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyvaultkey?view=azurermps-5.5.0).
+- Az elsődleges kulcs biztonsági mentése, és állítsa vissza a kulcsot a második key vaulthoz.  Lásd: [BackupAzureKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey) és [Restore-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey).
 
 ### <a name="azure-sql-database-configuration-steps"></a>Az Azure SQL Database konfigurációs lépések
 

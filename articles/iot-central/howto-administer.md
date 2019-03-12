@@ -3,17 +3,17 @@ title: Felügyelheti az Azure IoT Central alkalmazáshoz |} A Microsoft Docs
 description: A rendszergazdák az Azure IoT központi alkalmazás felügyelete
 author: viv-liu
 ms.author: viviali
-ms.date: 04/16/2018
+ms.date: 02/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1b79b6870766f9595e731206bae2d4251d294942
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 29ded279e2a76940049c257b954b1dae75f14836
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431326"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57778603"
 ---
 # <a name="administer-your-iot-central-application"></a>Az IoT-központ alkalmazás felügyelete
 
@@ -44,11 +44,11 @@ Az a **Alkalmazásbeállítások** lapon módosítsa a nevét és az alkalmazás
 Ha módosítani szeretné az alkalmazás rendszerképét, lásd: [előkészítése és a feltöltés rendszerképek az Azure IoT Central alkalmazásnak](howto-prepare-images.md).
 
 ### <a name="copy-an-application"></a>Alkalmazás másolása
-Minden olyan alkalmazás, bármely eszköz példányok, az adatok eszközelőzmények és a felhasználói adatok mínusz egy másolatát is létrehozhat. A példány lesz egy használatalapú fizetéses alkalmazást, amely akkor kell fizetnie. Ezzel a módszerrel egy próba-alkalmazás nem hozható létre.
+Minden olyan alkalmazás, bármely eszköz példányok, az adatok eszközelőzmények és a felhasználói adatok mínusz egy másolatát is létrehozhat. A példány egy használatalapú fizetéses alkalmazást, amely akkor kell fizetnie. Ezzel a módszerrel egy próba-alkalmazás nem hozható létre.
 
 Válassza ki **másolási**. A párbeszédpanelen adja meg, hogy az új használatalapú fizetéses alkalmazás. Válassza ki **másolási** annak ellenőrzéséhez, hogy végre szeretné hajtani. További információ a mezőket az űrlapon található [hozzon létre egy alkalmazást](quick-deploy-iot-central.md) rövid.
 
-![Alkalmazás-Beállítások lap](media/howto-administer/appCopy2.png)
+![Alkalmazás-Beállítások lap](media/howto-administer/appcopy2.png)
 
 Miután az alkalmazás másolási művelet sikeres, az új alkalmazást, az alkalmazás használatával, amely megjelenik a hivatkozás másolása által létrehozott léphet.
 
@@ -62,7 +62,7 @@ Miután az alkalmazás másolási művelet sikeres, az új alkalmazást, az alka
 > [!Note]
 > Egy alkalmazás törléséhez, jogosultnak kell lennie is törölje az erőforrást az Azure-előfizetésében választotta, az alkalmazás létrehozásakor. További tudnivalókért lásd: [az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése szerepköralapú hozzáférés-vezérlés használatával](https://docs.microsoft.com/azure/active-directory/role-based-access-control-configure).
 
-Használja a **törlése** gombra kattintva véglegesen törli az IoT Central alkalmazáshoz. Ezzel véglegesen törli az adott alkalmazáshoz társított összes adatot.
+Használja a **törlése** gombra kattintva véglegesen törli az IoT Central alkalmazáshoz. Ezzel véglegesen törli az adott alkalmazáshoz tartozó összes adatot.
 
 ## <a name="manage-users"></a>Felhasználók kezelése
 
@@ -95,7 +95,7 @@ Törli a felhasználókat, válassza ki egy vagy több jelölőnégyzetet az **f
 
 ## <a name="manage-roles"></a>Szerepkörök kezelése
 
-Szerepkörök lehetővé teszi annak vezérléséhez a szervezeten belül az IoT-központ különböző feladatok végrehajtására. Nincsenek három szerepkört hozzárendelheti az alkalmazást. 
+Szerepkörök lehetővé teszi annak vezérléséhez a szervezeten belül az IoT-központ különböző feladatok végrehajtására. Nincsenek három szerepkört hozzárendelheti az alkalmazást.
 
 ### <a name="administrator"></a>Rendszergazda
 
@@ -111,7 +111,6 @@ A felhasználók a **alkalmazás Builder** szerepkör műveletek mindegyikét eg
 
 A felhasználók a **alkalmazást üzemeltető** szerepkör nem hajthat végre változtatásokat eszközsablonok és az alkalmazás nem tudja felügyelni. Ez azt jelenti, operátorok is hozzáadások és törlések eszközök, eszköz-készletek felügyelete és analytics és a feladatok futtatásához. Operátorok többé nem fér hozzá a **alkalmazás Builder** és **felügyeleti** oldalakat.
 
-
 ## <a name="view-your-bill"></a>A számla megtekintése
 
 A számla megtekintéséhez nyissa meg a **számlázási** lapját a **felügyeleti** szakaszban. Az Azure számlázási oldalán, ahol megtekintheti a számla minden, az Azure IoT Central alkalmazások egy új lapon nyílik meg.
@@ -124,14 +123,14 @@ A számla megtekintéséhez nyissa meg a **számlázási** lapját a **felügyel
 - A **használatalapú fizetéses** alkalmazások díjának felszámítása eszközönként történik. Az első 5 eszköz ingyenes.
 
 További információk a díjszabásról az [Azure IoT Central díjszabását ismertető oldalon](https://azure.microsoft.com/pricing/details/iot-central/) találhatók.
-    
+
 Az önkiszolgáló folyamat befejezéséhez kövesse az alábbi lépéseket:
 
-1. Nyissa meg a **számlázási** lapját a **felügyeleti** szakaszban. 
+1. Nyissa meg a **számlázási** lapját a **felügyeleti** szakaszban.
 
     ![Próbaverziós állapota](media/howto-administer/freetrialbilling.png)
 
-1. Válassza ki **utólagos elszámolású előfizetésre átváltani**. 
+1. Válassza ki **utólagos elszámolású előfizetésre átváltani**.
 
     ![Átalakítás próba](media/howto-administer/convert.png)
 
@@ -141,15 +140,15 @@ Az önkiszolgáló folyamat befejezéséhez kövesse az alábbi lépéseket:
 
 ## <a name="export-data"></a>Adatok exportálása
 
-Engedélyezheti a **folyamatos adatexportálás** mérések, eszközök és eszközadatok sablonok exportálása az Azure Blob storage-fiókot. További információ az adatok exportálása.
+Engedélyezheti a **folyamatos adatexportálás** mérések, eszközök és eszközadatok sablonok exportálása az Azure Blob storage-fiókot. Ismerje meg, hogyan [exportálhatja az adatokat](howto-export-data.md).
 
 ## <a name="manage-device-connection"></a>Eszköz kapcsolat kezelése
 
-Csatlakozás az alkalmazásban, a kulcsok és tanúsítványok ide használatával nagy mennyiségű eszközt. További információ az eszközök csatlakoztatásáról.
+Csatlakozás az alkalmazásban, a kulcsok és tanúsítványok ide használatával nagy mennyiségű eszközt. Tudjon meg többet [eszközök csatlakoztatásáról](concepts-connectivity.md).
 
 ## <a name="use-access-tokens"></a>Hozzáférési kódok használata
 
-A fejlesztői eszközök használandó hozzáférési jogkivonatokat hoz létre. Jelenleg nincs egy fejlesztői elérhető eszköz, amely az IoT-központ explorer van az eszközre, és a változások tulajdonságokat és beállításokat a figyelés. További információ az IoT-központ explorer. 
+A fejlesztői eszközök használandó hozzáférési jogkivonatokat hoz létre. Jelenleg nincs egy fejlesztői elérhető eszköz, amely az IoT-központ explorer van az eszközre, és a változások tulajdonságokat és beállításokat a figyelés. Tudjon meg többet a [IoT-központ explorer](howto-use-iotc-explorer.md).
 
 ## <a name="use-the-azure-sdks-for-control-plane-operations"></a>Az Azure SDK-k használata vezérlési síkjával végzett műveletek
 
