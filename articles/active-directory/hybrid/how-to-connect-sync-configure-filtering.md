@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5cc09756e30cec75a1a121c25f162aa0408fd7a9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 53c14ce92a422c2254a1e9b7fc4989b49790a88a
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173691"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774438"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Az Azure AD Connect szinkronizálása: A szűrés konfigurálása
 Szűrés segítségével szabályozhatja, mely objektumai jelenjenek meg az Azure Active Directory (Azure AD) a helyszíni címtárból. Az alapértelmezett konfiguráció minden objektumot a konfigurált erdőben lévő minden tartományban vesz igénybe. Ez általában az ajánlott konfiguráció. Felhasználók használják az Office 365 számítási feladatok, például az Exchange Online és Skype vállalati verzió, egy teljes globális címlista előnyös, így e-mailt, és mindenki hívja. Az alapértelmezett konfigurációnál, ugyanazt a felhasználói élményt, hogy azok egy a helyszíni Exchange-hez vagy a Lync végrehajtásának kellene.
@@ -261,7 +261,7 @@ Ebben a példában módosítja a szűrést, hogy csak a felhasználók, amelyek 
 4. Connect használata verziójától függően akár található nevű szabályt **ki az aad-be – a felhasználó csatlakozzon** vagy **ki az AAD - felhasználók csatlakozásra SOAInAD**, és kattintson a **szerkesztése**.
 5. Az előugró ablakban választ **Igen** másolatot készítsen a szabály.
 6. Az a **leírás** lapon, majd **elsőbbséget** fel nem használt érték, például 50.
-7. Kattintson a **Scoping szűrő** a bal oldali navigációs, és kattintson a **Hozzáadás záradék**. A **attribútum**válassza **mail**. A **operátor**válassza **ENDSWITH**. A **érték**, típus **@contoso.com**, és kattintson a **Hozzáadás záradék**. A **attribútum**válassza **userPrincipalName**. A **operátor**válassza **ENDSWITH**. A **érték**, típus **@contoso.com**.
+7. Kattintson a **Scoping szűrő** a bal oldali navigációs, és kattintson a **Hozzáadás záradék**. A **attribútum**válassza **mail**. A **operátor**válassza **ENDSWITH**. A **érték**, típus  **\@contoso.com**, és kattintson a **Hozzáadás záradék**. A **attribútum**válassza **userPrincipalName**. A **operátor**válassza **ENDSWITH**. A **érték**, típus  **\@contoso.com**.
 8. Kattintson a **Save** (Mentés) gombra.
 9. A konfigurálás befejezéséhez, futtatnia kell egy **teljes szinkronizálás**. A szakasz olvassa [alkalmaz, és ellenőrizze a módosítások](#apply-and-verify-changes).
 

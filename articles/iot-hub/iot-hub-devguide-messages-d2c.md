@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 20e7f8f5d2c0eb9fbfb231adfd20ff54d9eda20a
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: dc5bfe6b431659b7b99140eb29a0e64922a42275
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404195"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576336"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Használja az IoT Hub üzenet-útválasztása eszköz – felhő üzeneteket küldeni a különböző végpontok
 
@@ -39,7 +39,7 @@ Használhat standard [Event Hubs-integráción és SDK-k](iot-hub-devguide-messa
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 
-IoT Hub által támogatott írja az adatokat az Azure Blob Storage-ban a [Apache Avro](http://avro.apache.org/) és JSON-formátumban. A szolgáltatás JSON formátumban kódolása előzetes verzióként érhető minden IoT Hub érhető el, kivéve az USA keleti RÉGIÓJA, USA nyugati Régiójában és Nyugat-európai régióban. Az alapértelmezett érték az avro-hoz. A kódolási formátum használatával az IoT Hub létrehozása vagy frissítése – REST API-t, kifejezetten választhatja a [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), az Azure Portal [Azure CLI-vel](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest#optional-parameters) vagy a [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0#optional-parameters). A kódolási formátum csak állítható, ha a blob storage-végpont konfigurálva van. A formátum nem szerkeszthető egy meglévő végpontot. A következő ábra bemutatja az Azure Portalon válassza ki a kódolási formátum.
+IoT Hub által támogatott írja az adatokat az Azure Blob Storage-ban a [Apache Avro](https://avro.apache.org/) és JSON-formátumban. A szolgáltatás JSON formátumban kódolása előzetes verzióként érhető minden IoT Hub érhető el, kivéve az USA keleti RÉGIÓJA, USA nyugati Régiójában és Nyugat-európai régióban. Az alapértelmezett érték az avro-hoz. A kódolási formátum csak állítható, ha a blob storage-végpont konfigurálva van. A formátum nem szerkeszthető egy meglévő végpontot. JSON-kódolás használatakor be kell a contentType JSON-ra, az üzenetben UTF-8 contentEncoding [Rendszertulajdonságok](iot-hub-devguide-routing-query-syntax.md#system-properties). A kódolási formátum használatával az IoT Hub létrehozása vagy frissítése – REST API-t, kifejezetten választhatja a [RoutingStorageContainerProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#routingstoragecontainerproperties), az Azure Portal [Azure CLI-vel](https://docs.microsoft.com/cli/azure/iot/hub/routing-endpoint?view=azure-cli-latest) vagy a [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubroutingendpoint?view=azps-1.3.0). A következő ábra bemutatja az Azure Portalon válassza ki a kódolási formátum.
 
 ![A BLOB storage endpoint kódolás](./media/iot-hub-devguide-messages-d2c/blobencoding.png)
 
@@ -118,6 +118,8 @@ A legtöbb esetben az átlagos késés növekedése kevesebb, mint 500 ms. Figye
 ## <a name="monitoring-and-troubleshooting"></a>Megfigyelés és hibaelhárítás
 
 IoT Hub által biztosított több útválasztási, és a végpont kapcsolódó metrikák, hogy a hub és elküldött üzenetek állapotának áttekintése. Több metrika azonosíthatja a problémák kiváltó információkat kombinálhatók. Például használja a metrikát **útválasztás: eldobott telemetriai üzeneteket** vagy **d2c.telemetry.egress.dropped** azonosításához, amelyek el lettek dobva, amikor azok az útvonalak valamelyik lekérdezések nem egyeztek üzenetek száma és a tartalék útvonal le lett tiltva. [Az IoT Hub-metrikák](iot-hub-metrics.md) felsorolja az összes metrikát, amely az IoT hub alapértelmezés szerint engedélyezve vannak.
+
+A REST API-hoz [végpont állapotának lekérése](https://docs.microsoft.com/de-de/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) beolvasni [állapot](iot-hub-devguide-endpoints.md#custom-endpoints) a végpontok. Javasoljuk, hogy használja a [az IoT Hub-metrikák](iot-hub-metrics.md) útválasztási üzenet késése alapján azonosíthatja és elháríthatja a hibákat, amikor végpontonkénti állapotot kézbesíthetetlen vagy nem megfelelő állapotú kapcsolódó. Ha például az Event Hubs típusú végpont, figyelheti **d2c.endpoints.latency.eventHubs**. Nem megfelelő állapotú végpont állapota kifogástalanra frissül, az IoT Hub állapotának egy végül konzisztens állapotba létrejöttekor.
 
 Használatával a **útvonalak** diagnosztikai naplók az Azure Monitor [diagnosztikai beállítások](../iot-hub/iot-hub-monitor-resource-health.md), akkor is, például az IoT Hub, által érzékelt egy útválasztási lekérdezés és a végpont állapotának kiértékelése során felmerülő hibák nyomon követi Ha a végpont nem működik. Ezek a diagnosztikai naplók küldhetők az Azure Monitor naplók, az Event Hubs vagy Azure Storage egyéni feldolgozáshoz.
 

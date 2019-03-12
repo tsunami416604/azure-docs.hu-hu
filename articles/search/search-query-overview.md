@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 5cddf69f700c971d22384dadb00d3becc4a8385f
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: d2f3eb25c2193ad94098acd714d934795d007e98
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300875"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543916"
 ---
 # <a name="how-to-compose-a-query-in-azure-search"></a>Hogyan lehet lekérdezést adhat az Azure Search szolgáltatásban
 
@@ -38,15 +38,15 @@ A következő táblázat felsorolja az API-k és a lekérdezések elküldése az
 Példák lehetnek hasznosak új fogalmak ismertetése. Egy reprezentatív lekérdezés kialakítani, a [REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents), ez például célok a [ingatlan bemutató index](search-get-started-portal.md) és a gyakori paramétereket.
 
 ```
-{  
+{
     "queryType": "simple" 
-    "search": "seattle townhouse* +\"lake\"", 
-    "searchFields": "description, city",  
-    "count": "true", 
+    "search": "seattle townhouse* +\"lake\"",
+    "searchFields": "description, city",
+    "count": "true",
     "select": "listingId, street, status, daysOnMarket, description",
     "top": "10",
     "orderby": "daysOnMarket"
- } 
+}
 ```
 
 + **`queryType`** az elemző, amely az Azure Search lehet beállítja a [alapértelmezett egyszerű lekérdezéselemzőt](search-query-simple-examples.md) (a teljes szöveges keresés optimális), vagy a [teljes Lucene lekérdezéselemző](search-query-lucene-examples.md) használt speciális lekérdezési szerkezeteket, például a reguláris kifejezések , közelségi keresésre, intelligens és helyettesítő karakteres keresés, hogy néhányat említsünk.

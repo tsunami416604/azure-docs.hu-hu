@@ -4,16 +4,16 @@ description: Útmutató egy Azure-megoldás az adatátvitelhez válassza, ha a k
 services: storage
 author: alkohli
 ms.service: storage
-ms.subservice: blob
+ms.subservice: blobs
 ms.topic: article
 ms.date: 12/10/2018
 ms.author: alkohli
-ms.openlocfilehash: 54a51f5f124857419727ed7ca574f717e17b125a
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: a6505232066d7a2e63c3e9508cb16cb9a31f8e35
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263803"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776665"
 ---
 # <a name="data-transfer-for-large-datasets-with-low-or-no-network-bandwidth"></a>Adatok áthelyezése az alacsony vagy nincs hálózati sávszélesség a nagyméretű adathalmazok
  
@@ -48,14 +48,14 @@ Az alábbi táblázat a legfontosabb képességei a különbségeket foglalja ö
 |                                     |    Data Box-lemezek (előzetes verzió)    |    Data Box                                      |    Data Box nehéz (előzetes verzió)              |    Import/Export                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
 |    Adatok mérete                        |    Visszamenőleges tárolása akár 35 TB-osra bővül                 |    Legfeljebb 80 TB-osra bővül eszközönként                       |    Akár 800 TB eszközönként               |    Változó                            |
-|    Adattípus                        |    Azure-Blobok                  |    Azure-Blobok<br>Azure Files                    |    Azure-Blobok<br>Azure Files            |    Azure-Blobok<br>Azure Files          |
-|    Helyigény                      |    Megrendelésenként 5 SSD             |    1 x 50-lbs. asztal-méretű eszköz megrendelésenként    |    1 X 500 KB-lbs. megrendelésenként nagy eszköz    |    Megrendelésenként legfeljebb 10 HDD és SSD-k        |
+|    Adattípus                        |    Azure Blobs                  |    Azure Blobs<br>Azure Files                    |    Azure Blobs<br>Azure Files            |    Azure Blobs<br>Azure Files          |
+|    Helyigény                      |    Megrendelésenként 5 SSD             |    1 x 50-lbs. asztal-méretű eszköz megrendelésenként    |    1 X ~500-lbs. megrendelésenként nagy eszköz    |    Megrendelésenként legfeljebb 10 HDD és SSD-k        |
 |    Kezdeti telepítési idővel               |    Alacsony <br>(15 perc)            |    Alacsony – mérsékelt <br> (< 30 perc)               |    Mérsékelt<br>(1 – 2 óra)               |    A bonyolult mérsékelt<br>(változó) |
 |    Odesílání dat do Azure               |    Igen                          |    Igen                                           |    Igen                                   |    Igen                                 |
 |    Adatok exportálása az Azure-ból           |    Nem                           |    Nem                                            |    Nem                                    |    Igen                                 |
 |    Titkosítás                       |    128 bites AES                  |    256 bites AES                                   |    256 bites AES                           |    128 bites AES                         |
 |    Hardver                         |     Microsoft által biztosított          |    Microsoft által biztosított                            |    Microsoft által biztosított                    |    A megadott ügyfél                   |
-|    Hálózati illesztő                |    USB 3.1/SATA                 |    RJ 45, SFP +                                   |    RJ45, QSFP +                           |    SATA II/SATA III.                    |
+|    Hálózati illesztő                |    USB 3.1/SATA                 |    RJ 45, SFP+                                   |    RJ45, QSFP+                           |    SATA II/SATA III.                    |
 |    Partnerintegráció              |    Néhány                         |    [Magas](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [Magas](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    Néhány                                |
 |    Szállítás                         |    A Microsoft által felügyelt            |    A Microsoft által felügyelt                             |    A Microsoft által felügyelt                     |    Felügyelt ügyfél                    |
 | Akkor használja, ha az adatok áthelyezése         |Egy kereskedelmi határán belül|Egy kereskedelmi határán belül|Egy kereskedelmi határán belül|Például az USA, Európa földrajzi határokon keresztül történő|

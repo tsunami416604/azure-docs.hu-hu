@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: fd7308e7ecb6e086dffb4bae0cc99c57dd699861
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 5548a62218aaac2e4da3853e8e5d43a584922bc0
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729820"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569892"
 ---
 # <a name="azure-data-factory-mapping-data-flow-pivot-transformation"></a>Az Azure Data Factory-folyamat Pivot adatátalakítás leképezése
 
@@ -42,7 +42,7 @@ Végül az összesítést, az elforgatott értékeket, és hogyan szeretne a kí
 
 (Nem kötelező) Beállíthat egy elnevezési mintát egy előtagot, középső és utótagot hozzá kell minden egyes új oszlop neve, a sorok értékei.
 
-Például "Értékesítés" frissítésének "Régió" eredményezne új oszlop értékeit az egyes értékesítési értékét, azaz "25", "50", "1000", stb. Azonban ha egy "Eladások" előtag értékét 
+Például "Értékesítés" frissítésének "Régió" eredményezne új oszlop értékeit az egyes értékesítési értékét, azaz "25", "50", "1000", stb. Azonban ha egy előtag-érték a "Sales-", minden oszlop értéke lenne hozzáadása "Sales-" az érték elejéhez.
 
 ![Forgáspont beállítások](media/data-flow/pivot5.png "forgáspont 5")
 
@@ -56,4 +56,8 @@ Az ADF Data Flow kifejezés nyelve segítségével ismertetik a Kifejezésszerke
 
 ### <a name="how-to-rejoin-original-fields"></a>Hogyan kell csatlakozni az eredeti mezők
 > [!NOTE]
-> A Pivot átalakítási csak fog projekt a összesítését, a csoportosítás és a pivot műveletet a használt oszlopok. Kíván foglalni a többi oszlopot az előző lépésben a folyamatban, ha az előző lépésből származó új ágat használja, és a folyamat összekapcsolása metaadatait az önillesztés minta használatával
+> A Pivot átalakítási csak fog projekt a összesítését, a csoportosítás és a pivot műveletet a használt oszlopok. Kíván foglalni a többi oszlopot az előző lépésben a folyamatban, ha az előző lépésből származó új ágat használja, és a folyamat összekapcsolása metaadatait az önillesztés minta használatával.
+
+## <a name="next-steps"></a>További lépések
+
+Próbálja ki a [elemi értékekre bontása átalakítási](data-flow-unpivot.md) kapcsolja be az oszlopértékeket sor értékekké. 

@@ -10,26 +10,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/25/2019
+ms.date: 03/08/2019
 ms.author: jingwang
-ms.openlocfilehash: fe0783891bd5f571c06551e19c154d6f22768e84
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 474ebaad60328b011e91337c46040ae37c603e21
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821541"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731054"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Adatok másolása az SAP Business warehouse-hoz az Azure Data Factory használatával nyissa meg központon keresztül
 
 Ez a cikk ismerteti, hogyan használja a másolási tevékenység az Azure Data Factory adatokat másolni a egy SAP Business Warehouse (BW) megnyitott központon keresztül. Épül a [másolási tevékenység áttekintése](copy-activity-overview.md) cikket, amely megadja a másolási tevékenység általános áttekintést.
-
-## <a name="sap-bw-open-hub-integration"></a>SAP BW Open Hub Integration 
-
-[Az SAP BW Open Hub Service](https://wiki.scn.sap.com/wiki/display/BI/Overview+of+Open+Hub+Service) hatékony módja az adatok kinyerése az SAP BW. Az alábbi ábrán egy tipikus folyamatok rendelkező ügyfeleink az SAP-rendszerhez, mely megkülönbözteti a kis adatfolyam-gyűjteményre, a SAP ECC -> PSA az -> DSO adatkocka ->.
-
-Az SAP BW Open Hub cél (OHD), amelyhez az SAP-adatok továbbítón keresztüli a cél határozza meg. Támogatott által SAP adatok átvitele folyamatban (DTP) objektumok használható nyílt hub adatforrások, például DSO InfoCube, adatforrás, stb. Nyissa meg Hub cél típusa – a továbbítón keresztüli tárolódnak az adatok - adatbázistáblák (helyi vagy távoli) is lehet, és egybesimított fájlok. Az SAP BW Open Hub connector támogatása az adatok másolása OHD BW helyi táblájában. Abban az esetben, ha használ egyéb, közvetlenül csatlakozhat az adatbázis vagy fájl rendszer más összekötők használatával.
-
-![SAP BW Open Hub](./media/connector-sap-business-warehouse-open-hub/sap-bw-open-hub.png)
 
 ## <a name="supported-capabilities"></a>Támogatott képességek
 
@@ -41,6 +33,37 @@ Pontosabban az SAP Business Warehouse nyílt Hub összekötő támogatja:
 - Adatmásolás keresztül nyitva Hub cél helyi táblában, amely alá lehet DSO, InfoCube, MultiProvider, adatforrás, stb.
 - Alapszintű hitelesítés használata az adatok másolását.
 - Csatlakozás az alkalmazáskiszolgáló.
+
+## <a name="sap-bw-open-hub-integration"></a>SAP BW Open Hub Integration 
+
+[Az SAP BW Open Hub Service](https://wiki.scn.sap.com/wiki/display/BI/Overview+of+Open+Hub+Service) hatékony módja az adatok kinyerése az SAP BW. Az alábbi ábrán egy tipikus folyamatok rendelkező ügyfeleink az SAP-rendszerhez, mely megkülönbözteti a kis adatfolyam-gyűjteményre, a SAP ECC -> PSA az -> DSO adatkocka ->.
+
+Az SAP BW Open Hub cél (OHD), amelyhez az SAP-adatok továbbítón keresztüli a cél határozza meg. Támogatott által SAP adatok átvitele folyamatban (DTP) objektumok használható nyílt hub adatforrások, például DSO InfoCube, adatforrás, stb. Nyissa meg Hub cél típusa – a továbbítón keresztüli tárolódnak az adatok - adatbázistáblák (helyi vagy távoli) is lehet, és egybesimított fájlok. Az SAP BW Open Hub connector támogatása az adatok másolása OHD BW helyi táblájában. Abban az esetben, ha használ egyéb, közvetlenül csatlakozhat az adatbázis vagy fájl rendszer más összekötők használatával.
+
+![SAP BW Open Hub](./media/connector-sap-business-warehouse-open-hub/sap-bw-open-hub.png)
+
+## <a name="delta-extraction-flow"></a>Változások a kinyerési folyamat
+
+Az ADF SAP BW Open Eseményközpont-összekötő biztosít két nem kötelező tulajdonság: `excludeLastRequest` és `baseRequestId` nyílt hubról különbözeti terhelés kezelésére használható. 
+
+- **excludeLastRequestId**: -E zárva a legutóbbi kérés rekordjait. Alapértelmezett érték: igaz. 
+- **baseRequestId**: A változásadatok betöltéséhez vonatkozó kérés azonosítója. Be van állítva, csak a Kérelemazonosító: Ez a tulajdonság értéke nagyobb az adatok lekérésének. 
+
+Az Azure Data Factory (ADF) az SAP InfoProviders kinyerési összességében 2 lépésekből áll: 
+
+1. **SAP BW adatok átvitele folyamatban (DTP)** ebben a lépésben az adatokat másolja az SAP BW InfoProvider SAP BW Open Hub táblához 
+
+1. **Adatok másolása az ADF** ebben a lépésben a nyitott Hub tábla olvassa el az ADF-összekötővel 
+
+![Változások a kinyerési folyamat](media\connector-sap-business-warehouse-open-hub\delta-extraction-flow.png)
+
+Az első lépésben egy DTP hajtja végre. Minden egyes végrehajtása hoz létre egy új SAP-kérelmet. A kérelem azonosítója a nyitott Hub tábla tárolja, és ezután az ADF-összekötő által azonosítására szolgál a különbözeti. Aszinkron módon futtatja a két lépés: a DTP az SAP által aktivált, és az ADF adatmásolás keresztül ADF aktiválódik. 
+
+Alapértelmezés szerint az ADF nem olvassa a legújabb különbözeti a nyitott Hub tábla ("kizárása utolsó kérelem" beállítás értéke igaz). Ezennel az ADF-ben az adatok nem 100 %-os naprakészen tartása a (a legutóbbi különbözeti nem található) nyissa meg a Hub táblában lévő adatokat. Cserébe Ez az eljárás biztosítja, hogy nincsenek sorok beolvasása elveszett aszinkron kibontásával okozhatja. Jól működik akkor is, ha az ADF éppen olvas az Open Hub táblázat, a DTP még mindig ugyanazon a táblán való írása közben. 
+
+Általában a maximális másolt Kérelemazonosító tárolása a legutóbbi futtatás ADF egy átmeneti adattár (például az Azure Blob a fenti ábra). Ezért a kérésben nem olvasható másodszor ADF a következő futtatás. Ugyanakkor vegye figyelembe az adatok nem törlődnek automatikusan, a nyílt Hub táblából.
+
+Megfelelő különbözeti azt nem engedélyezett szeretné, hogy a kérelem különböző DTPs azonosítókat nyissa meg az Eseményközpont ugyanabban a táblában. Ezért kell ne hozzon létre több DTP minden nyitott Hub cél (OHD) számára. Ha az azonos InfoProvider a teljes és különbözeti kinyerési, létre kell hoznia két OHDs számára az azonos InfoProvider. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -60,6 +83,10 @@ Az SAP Business Warehouse nyílt Hub összekötő használatához meg kell:
 - Hozzon létre az SAP nyílt Hub cél típusú, mint **adatbázistábla** "Műszaki Key" beállítás be van jelölve.  Emellett javasoljuk, hogy a törlés adatok tábla nincs bejelölve, bár ez nem szükséges. Használja ki a DTP (közvetlenül hajtsa végre vagy integrálható a meglévő folyamat lánc) adatok kerül az adatforrás-objektum (például a kocka) nyissa meg a hub céltábla választotta.
 
 ## <a name="getting-started"></a>Első lépések
+
+> [!TIP]
+>
+> Az SAP BW Open Eseményközpont-összekötő használatával, olvassa [SAP Business Warehouse (BW) az adatok betöltése az Azure Data Factory használatával](load-sap-bw-data.md).
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 

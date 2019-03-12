@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 2/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0fe77a1093bec52c3786a9ae623a2d63e1ba82ce
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: a056f5df12deb50ad64f90c19201942204e774f1
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750939"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57779368"
 ---
 # <a name="load-and-read-data-with-azure-machine-learning"></a>Betölteni, és az Azure Machine Learning adatokat olvasni.
 
@@ -45,7 +45,7 @@ Adatok betöltése automatikusan a fájl típusa megadása nélkül, használja 
 ```python
 import azureml.dataprep as dprep
 
-dataflow = dprep.auto_read_file(path='./data/any-file.txt')
+dflow = dprep.auto_read_file(path='./data/any-file.txt')
 ```
 
 Ez a függvény akkor hasznos, ha automatikus észlelése a fájl típusa, a kódolási és a egy kényelmes belépési pontot egy elemzési argumentumok. A függvény automatikusan is gyakran hajtanak végre tagolt adatok betöltésekor a következő lépéseket hajtja végre:
@@ -61,8 +61,8 @@ Azt is megteheti Ha tudja, hogy a fájlt, írja be a kívánt időben, és expli
 Egyszerű szöveges adatot olvas be egy adatfolyamot, használja a `read_lines()` választható paraméterek megadása nélkül.
 
 ```python
-dataflow = dprep.read_lines(path='./data/text_lines.txt')
-dataflow.head(5)
+dflow = dprep.read_lines(path='./data/text_lines.txt')
+dflow.head(5)
 ```
 
 ||Vonal|
@@ -75,7 +75,7 @@ dataflow.head(5)
 Miután a betöltött, futtassa a következő kódot az adatfolyamot objektum alakítható Pandas dataframe.
 
 ```python
-pandas_df = dataflow.to_pandas_dataframe()
+pandas_df = dflow.to_pandas_dataframe()
 ```
 
 ## <a name="load-csv-data"></a>Adatok betöltése CSV
@@ -83,8 +83,8 @@ pandas_df = dataflow.to_pandas_dataframe()
 Tagolt fájlok olvasásakor a az alapul szolgáló modul is kikövetkeztetni a elemzési paraméterek (elválasztó, kódolás, hogy kíván használni, fejlécek stb.). Futtassa a következő kódot próbálnak meg olvasni a CSV-fájl csak a hely megadásával.
 
 ```python
-dataflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv?st=2018-06-15T23%3A01%3A42Z&se=2019-06-16T23%3A01%3A00Z&sp=r&sv=2017-04-17&sr=b&sig=ugQQCmeC2eBamm6ynM7wnI%2BI3TTDTM6z9RPKj4a%2FU6g%3D')
-dataflow.head(5)
+dflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv?st=2018-06-15T23%3A01%3A42Z&se=2019-06-16T23%3A01%3A00Z&sp=r&sv=2017-04-17&sr=b&sig=ugQQCmeC2eBamm6ynM7wnI%2BI3TTDTM6z9RPKj4a%2FU6g%3D')
+dflow.head(5)
 ```
 
 | |stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
@@ -97,9 +97,9 @@ dataflow.head(5)
 Kizárandó sorok betöltése során, adja meg a `skip_rows` paraméter. Ez a paraméter (egy egy-alapú index használatával) a CSV-fájl csökkenő betöltése sorok kihagyja.
 
 ```python
-dataflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv',
+dflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv',
                           skip_rows=1)
-dataflow.head(5)
+dflow.head(5)
 ```
 
 | |stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
@@ -110,7 +110,7 @@ dataflow.head(5)
 Futtassa a következő kódot az oszlop adattípusait megjelenítéséhez.
 
 ```python
-dataflow.head(1).dtypes
+dflow.dtypes
 ```
 Kimenet:
 
@@ -126,10 +126,10 @@ Kimenet:
 Alapértelmezés szerint az Azure Machine Learning Data Prep SDK nem változik az adatok típusát. Az adatforrás is olvassa a szöveges fájlt, így az SDK olvassa be az összes értékeket karakterláncként. Ebben a példában a numerikus oszlopok as-számokat nelze analyzovat. Állítsa be a `inference_arguments` paramétert `InferenceArguments.current_culture()` automatikus kikövetkeztetni és oszloptípusának konvertálja a fájl olvasása közben.
 
 ```
-dataflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv',
+dflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv',
                           skip_rows=1,
                           inference_arguments=dprep.InferenceArguments.current_culture())
-dataflow.head(1).dtypes
+dflow.dtypes
 ```
 Kimenet:
 
@@ -150,8 +150,8 @@ Több oszlop numerikus megfelelően rendszer és a típusuk értéke `float64`.
 Az SDK tartalmaz egy `read_excel()` függvény betöltése Excel-fájlokat. Alapértelmezés szerint a függvény betölti a munkafüzet első lapja. Egy adott lap betöltése definiálásához adja meg a `sheet_name` paraméter a munkalap neve karakterlánc értékét.
 
 ```python
-dataflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2')
-dataflow.head(5)
+dflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2')
+dflow.head(5)
 ```
 
 ||1. oszlop|Column2|Column3|4. oszlopig|Column5|Column6|Column7|Column8|
@@ -165,7 +165,7 @@ dataflow.head(5)
 A kimenet mutatja, hogy az adatokat, a második táblázatban volt-e a fejlécek előtt három üres sor. A `read_excel()` függvény kihagyja a sorokat, és a fejlécek használata nem kötelező paramétereket tartalmaz. Futtassa a következő kódot, hagyja ki az első három sort, és a fejlécek a negyedik sor használja.
 
 ```python
-dataflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2', use_column_headers=True, skip_rows=3)
+dflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2', use_column_headers=True, skip_rows=3)
 ```
 
 ||Rang|Beosztás|Studio|Világszerte|Hazai / %|1. oszlop|Tengerentúli / %|Column2|Év ^|
@@ -175,11 +175,11 @@ dataflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2', use_c
 
 ## <a name="load-fixed-width-data-files"></a>Rögzített szélességű adatok fájl betöltése
 
-Loadfixed szélességű fájlok karakter eltolások listáját adja meg. Az első oszlop mindig feltételezi, hogy a nulla eltolás kezdőpont.
+Rögzített szélességű betölteni, karakter eltolások listáját adja meg. Az első oszlop mindig feltételezi, hogy a nulla eltolás kezdőpont.
 
 ```python
-dataflow = dprep.read_fwf('./data/fixed_width_file.txt', offsets=[7, 13, 43, 46, 52, 58, 65, 73])
-dataflow.head(5)
+dflow = dprep.read_fwf('./data/fixed_width_file.txt', offsets=[7, 13, 43, 46, 52, 58, 65, 73])
+dflow.head(5)
 ```
 
 ||010000|99999|HAMIS NORVÉGIA|NO|NO_1|ENRS|Column7|Column8|Column9|
@@ -191,7 +191,7 @@ dataflow.head(5)
 Fejléc észlelési elkerülése és a megfelelő adatok elemzése, át kell adnia `PromoteHeadersMode.NONE` , a `header` paraméter.
 
 ```python
-dataflow = dprep.read_fwf('./data/fixed_width_file.txt',
+dflow = dprep.read_fwf('./data/fixed_width_file.txt',
                           offsets=[7, 13, 43, 46, 52, 58, 65, 73],
                           header=dprep.PromoteHeadersMode.NONE)
 ```
@@ -221,8 +221,8 @@ ds = dprep.MSSQLDataSource(server_name="[SERVER-NAME]",
 Miután létrehozott egy adatforrás-objektum, folytassa a lekérdezés kimeneti adatokat olvasni.
 
 ```python
-dataflow = dprep.read_sql(ds, "SELECT top 100 * FROM [SalesLT].[Product]")
-dataflow.head(5)
+dflow = dprep.read_sql(ds, "SELECT top 100 * FROM [SalesLT].[Product]")
+dflow.head(5)
 ```
 
 ||Termékazonosító|Name (Név)|ProductNumber|Szín|StandardCost|ListPrice|Méret|Tömeg|ProductCategoryID|ProductModelID|SellStartDate|SellEndDate|DiscontinuedDate|ThumbNailPhoto|ThumbnailPhotoFileName|ROWGUID|A ModifiedDate|
@@ -246,7 +246,7 @@ A helyi gépén futtassa a következő parancsot.
 ```azurecli
 az login
 az account show --query tenantId
-dataflow = read_csv(path = DataLakeDataSource(path='adl://dpreptestfiles.azuredatalakestore.net/farmers-markets.csv', tenant='microsoft.onmicrosoft.com')) head = dataflow.head(5) head
+dflow = read_csv(path = DataLakeDataSource(path='adl://dpreptestfiles.azuredatalakestore.net/farmers-markets.csv', tenant='microsoft.onmicrosoft.com')) head = dflow.head(5) head
 ```
 
 > [!NOTE]
@@ -299,8 +299,8 @@ from azureml.dataprep.api.datasources import DataLakeDataSource
 
 ctx = adal.AuthenticationContext('https://login.microsoftonline.com/microsoft.onmicrosoft.com')
 token = ctx.acquire_token_with_client_certificate('https://datalake.azure.net/', servicePrincipalAppId, certificate, certThumbprint)
-dataflow = dprep.read_csv(path = DataLakeDataSource(path='adl://dpreptestfiles.azuredatalakestore.net/farmers-markets.csv', accessToken=token['accessToken']))
-dataflow.to_pandas_dataframe().head()
+dflow = dprep.read_csv(path = DataLakeDataSource(path='adl://dpreptestfiles.azuredatalakestore.net/farmers-markets.csv', accessToken=token['accessToken']))
+dflow.to_pandas_dataframe().head()
 ```
 
 ||FMID|MarketName|Webhely|Utca.|city|Megye|

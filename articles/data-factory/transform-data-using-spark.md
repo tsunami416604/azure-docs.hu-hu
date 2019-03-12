@@ -3,23 +3,23 @@ title: Adatok átalakítása a Spark-tevékenység használatával az Azure Data
 description: 'Útmutató: adatok átalakítása a Spark program való futtatásával egy, a Spark-tevékenység használatával az Azure data factory-folyamatot.'
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/31/2018
-ms.author: douglasl
-ms.openlocfilehash: a25505a976be9d9ae38f562591d86ca9b56b8859
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: cdf4dba3996668b3c9fe31df10050ff2cbff6cb3
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025612"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576200"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory"></a>Adatok átalakítása a Spark-tevékenység használatával az Azure Data Factoryban
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](v1/data-factory-spark.md)
 > * [Aktuális verzió](transform-data-using-spark.md)
 
@@ -80,7 +80,7 @@ Spark-feladatok olyan, mint a Pig/Hive-feladatok több bővíthető. A Spark-fel
 
 A következő gyökérmappa-szerkezetében létrehozása az Azure Blob storage a HDInsight társított szolgáltatás által hivatkozott. Ezután töltse fel a függő fájl a gyökérmappában által képviselt megfelelő sub mappákhoz **entryFilePath**. Például töltse fel a pyFiles almappába python-fájlok és a jar-fájlok a JAR-fájlok kivételével a legfelső szintű mappa almappája. Futásidőben a Data Factory szolgáltatás a következő mappastruktúra vár az Azure Blob storage-ban:     
 
-| Útvonal                  | Leírás                              | Szükséges | Típus   |
+| Útvonal                  | Leírás                              | Szükséges | Typo   |
 | --------------------- | ---------------------------------------- | -------- | ------ |
 | `.` (root)            | A meghajtógyökér elérési útja a Spark-feladat, a storage-beli társított szolgáltatás | Igen      | Mappa |
 | &lt;felhasználó által definiált &gt; | Az elérési a bejegyzés fájlt a Spark-feladat | Igen      | Fájl   |

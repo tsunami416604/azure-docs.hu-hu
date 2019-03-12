@@ -3,17 +3,17 @@ title: Képek feltöltése az Azure IoT Central alkalmazáshoz |} A Microsoft Do
 description: A jelentéskészítő, megtudhatja, hogyan készítheti elő és képek feltöltése az Azure IoT Central alkalmazáshoz.
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/31/2018
+ms.date: 02/05/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 4378ff4155cf0b2f9c4af8176f41fe35fc433792
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: c8444fd57fe939dfb212d88c22a071c13dac691e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57310709"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767328"
 ---
 # <a name="prepare-and-upload-images-to-your-azure-iot-central-application"></a>Készítse elő és képek feltöltése az Azure IoT Central alkalmazáshoz
 
@@ -30,7 +30,7 @@ A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
 Egyéni rendszerképek adhat hozzá a következő helyeken és az Azure IoT Central alkalmazáshoz:
 
-* A **alkalmazáskezelő** lap
+* A **alkalmazásaimat** lap
 
     ![Kép application manager oldalon](media/howto-prepare-images/applicationmanager.png)
 
@@ -70,7 +70,7 @@ A következő szakaszok ismertetik a különböző helyeken található rendszer
 
 ### <a name="application-manager"></a>Alkalmazás-kezelő
 
-Tölthet fel képeket a a **alkalmazáskezelő**, keresse meg a **Alkalmazásbeállítások** lapját a **felügyeleti** szakaszban. Ez a feladat végrehajtásához rendszergazdának kell lennie:
+Tölthet fel képeket a használandó a **alkalmazásaimat** lapon, keresse meg a **nastavení Aplikace** lap a **felügyeleti** szakaszban. Ez a feladat végrehajtásához rendszergazdának kell lennie:
 
 ![Alkalmazás-Rendszerkép feltöltése](media/howto-prepare-images/uploadapplicationmanager.png)
 
@@ -78,9 +78,9 @@ Válassza ki az előkészített Rendszerkép feltöltése az alkalmazás-lemezk�
 
 ### <a name="application-dashboard"></a>Alkalmazás irányítópultja
 
-Töltsön fel egy képet, az alkalmazás irányítópult, lépjen a **irányítópult** az alkalmazás és a select **szerkesztése**. Ez a feladat végrehajtásához egy jelentéskészítő kell lennie:
+Töltsön fel egy képet, az alkalmazás irányítópult, lépjen a **irányítópult** az alkalmazást, és válassza az oldal **szerkesztése**. Ez a feladat végrehajtásához egy jelentéskészítő kell lennie:
 
-![Alkalmazás irányítópult Rendszerkép feltöltése](media/howto-prepare-images/uploadhomepage.png)
+![Irányítópult-Rendszerkép feltöltése](media/howto-prepare-images/uploadhomepage.png)
 
 Konfigurálása kép alatt válassza ki a kép csempére, és töltse fel az előkészített rendszerképet a helyi gépen. A legkisebb méretű csempe 200 x 200 képpont, nagyobb csempék kisméretű csempe négyzet vagy téglalap alakú többszöröse lehet. Ha például 200-as x 400 képpont, 400 x 200 képpont vagy 400 x 400 képpont.
 
@@ -88,15 +88,15 @@ Konfigurálása kép alatt válassza ki a kép csempére, és töltse fel az el�
 
 ### <a name="device-template"></a>Eszközsablon
 
-Töltsön fel egy képet, az eszköz sablonból, navigáljon a **Device Explorer**, válassza ki az eszköz sablont, majd egy eszközt. Ez a feladat végrehajtásához egy jelentéskészítő kell lennie:
+Töltsön fel egy képet, az eszköz sablonból, navigáljon a **eszközsablonok** és az eszköz-sablon kiválasztása. Ez a feladat végrehajtásához egy jelentéskészítő kell lennie:
 
 ![Eszköz sablon Rendszerkép feltöltése](media/howto-prepare-images/uploaddevicetemplate.png)
 
-Válassza ki az előkészített kép feltöltése a képcsempe (64 x 64 képpont) a helyi gépen. 
+Válassza ki az előkészített kép feltöltése a képcsempe (64 x 64 képpont) a helyi gépen.
 
 ### <a name="device-dashboard"></a>Az eszköz irányítópultja
 
-Töltsön fel egy képet, az eszköz irányítópulton, navigáljon a **Device Explorer**, válassza ki az eszköz sablont, majd egy eszközt. Majd válassza ki a **irányítópult** lapon, és válassza **sablon szerkesztése**. Ez a feladat végrehajtásához egy jelentéskészítő kell lennie:
+Töltsön fel egy képet, az eszköz irányítópulton, navigáljon a **eszközsablonok** és az eszköz-sablon kiválasztása. Majd válassza ki a **irányítópult** fülre. Ez a feladat végrehajtásához egy jelentéskészítő kell lennie:
 
 ![Eszköz irányítópult Rendszerkép feltöltése](media/howto-prepare-images/uploaddevicedashboard.png)
 

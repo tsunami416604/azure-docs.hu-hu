@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 60c709108da041dc1e54ba69d3b1b153accebc19
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: ab067d09d1e161e463922eeae90fe3b46e887150
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54401401"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544290"
 ---
 # <a name="programming-guide-for-azure-event-hubs"></a>Az Azure Event Hubs programozási útmutatója
 Ez a cikk ismerteti az Azure Event Hubs használatával kód írása néhány gyakori forgatókönyvet. A témakör feltételezi az Event Hubs szolgáltatással kapcsolatos előzetes ismeretek meglétét. Az Event Hubs fogalmi áttekintése: [Event Hubs – áttekintés](event-hubs-what-is-event-hubs.md).
@@ -27,7 +27,7 @@ A .NET által felügyelt API-k használatakor az adatoknak az Event Hubs számá
 
 ## <a name="get-started"></a>Bevezetés
 
-A .NET-osztályok támogató az Event Hubs szerepelnek a [Microsoft.Azure.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) NuGet-csomagot. Telepítheti a Visual Studio Solution explorer használatával vagy a [Package Manager Console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) a Visual Studióban. Ehhez adja ki a következő parancsot a [Csomagkezelő konzol](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) ablakában:
+A .NET-osztályok támogató az Event Hubs szerepelnek a [Microsoft.Azure.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) NuGet-csomagot. Telepítheti a Visual Studio Solution explorer használatával vagy a [Package Manager Console](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) a Visual Studióban. Ehhez adja ki a következő parancsot a [Csomagkezelő konzol](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) ablakában:
 
 ```shell
 Install-Package Microsoft.Azure.EventHubs

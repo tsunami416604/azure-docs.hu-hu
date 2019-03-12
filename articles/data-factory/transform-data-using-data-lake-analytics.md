@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: abnarain
-ms.openlocfilehash: 9918dd55181eb82257f23f8974159ed5e762fedd
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: d5b074fcf182bcc9bf4dc17ba21215d27e13cbdd
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268081"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57760970"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Adatok átalakítása az Azure Data Lake Analytics U-SQL-parancsfájlok futtatásával 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -162,7 +162,7 @@ OUTPUT @rs1
       USING Outputters.Tsv(quoting:false, dateTimeFormat:null);
 ```
 
-A fenti szkript a példában a bemeneti és kimeneti parancsfájl van definiálva **@in** és **@out** paramétereket. A tartozó értékeket **@in** és **@out** a U-SQL parancsfájl átadott paraméterek dinamikusan adat-előállítók által "parameters" szakaszában. 
+A fenti szkript a példában a bemeneti és kimeneti parancsfájl van definiálva  **\@a** és  **\@ki** paramétereket. A tartozó értékeket  **\@a** és  **\@ki** a U-SQL parancsfájl átadott paraméterek dinamikusan adat-előállítók által "parameters" szakaszában. 
 
 Megadhat más tulajdonságokat, például degreeOfParallelism és prioritását, valamint a feladatokhoz, amelyek az Azure Data Lake Analytics szolgáltatás futnak a folyamat definíciójában.
 

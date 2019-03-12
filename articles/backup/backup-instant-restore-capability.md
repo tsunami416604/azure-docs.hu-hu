@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: sogup
-ms.openlocfilehash: 3b367619e2d22754b45e8178a25021a677cab6da
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 7d54e137cbfb35c84173c79e65a1070eabb52e78
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405759"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731631"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Továbbfejlesztett biztonsági mentés, és állítsa vissza a teljesítmény az Azure Backup azonnali visszaállítási képesség
 
@@ -78,7 +78,7 @@ Másik lehetőségként megnyithatja **tulajdonságok** beolvasni a tároló old
 
 
 ## <a name="configure-snapshot-retention-using-azure-portal"></a>Az Azure portal használatával pillanatképek megőrzésének konfigurálása
-A jelenleg elérhető **USA nyugati középső Régiója**, **Dél-India**, **Kelet-Ausztrália**, **Észak-Európa**,  **Közép-Kanada**, **kelet-Kanada**, **közép-Franciaország**, **Dél-Franciaország**, **Korea középső régiója**,  **Korea déli régiója**, **Egyesült Királyság 2. déli régiója**, **Egyesült Királyság északi régiója**, **Egyesült Királyság déli régiója**, **Egyesült Királyság nyugati régiója**, **közép-India** , **Délkelet-Ausztrália**, **Kelet-Ázsia**, **USA középső RÉGIÓJA**, **Délkelet-Ázsia**,  **USA északi középső RÉGIÓJA**, **USA 2. nyugati régiója**, **USA déli középső RÉGIÓJA**, **kelet-japán**, **Nyugat-japán**, és **USA 2. keleti régiója**.
+Összes felhasználó összes **nyilvános helyeken** frissítettek az azonnali helyreállítás.
 
 A frissített felhasználókhoz, az Azure Portalon látható egy új funkció a mezőt a **virtuális gép biztonsági mentési szabályzat** panel a **azonnali visszaállítása** szakaszban. Módosíthatja a pillanatkép megőrzési időtartamot a **virtuális gép biztonsági mentési szabályzat** panel az összes virtuális gép az adott biztonsági mentési szabályzathoz társított.
 

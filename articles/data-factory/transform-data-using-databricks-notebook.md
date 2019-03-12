@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/12/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: 181e2c1d1a9758d6f196c9cb2b281eefa141d81a
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 85c3c913564dd38ece76ddd7f72b8ea4da52958e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984764"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57778824"
 ---
 # <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Databricks-jegyzetfüzet futtatása a Databricks-jegyzetfüzet tevékenységeivel az Azure Data Factoryban
 
@@ -173,13 +173,13 @@ Ebben a szakaszban létrehoz egy Databricks társított szolgáltatást. Ez a t�
 
        1. Ebben az esetben a **jegyzetfüzet útvonala** **/adftutorial/mynotebook**.
 
-1.  Váltson vissza a **Data Factory felhasználói felületet létrehozó eszközre**. Navigáljon a **Beállítások** lapra az **1. jegyzetfüzet tevékenységei** területen. 
-    
+1.  Váltson vissza a **Data Factory felhasználói felületet létrehozó eszközre**. Navigáljon a **Beállítások** lapra az **1. jegyzetfüzet tevékenységei** területen.
+
     a.  **Adjon paramétert** a jegyzetfüzet tevékenységeihez. Ugyanazt a paramétert használja, mint amit korábban hozzáadott a **folyamathoz**.
 
        ![Paraméter hozzáadása](media/transform-data-using-databricks-notebook/new-adf-parameters.png)
 
-    b.  A paraméter neve legyen **input**, értékként pedig a **@pipeline().parameters.name** kifejezést adja meg.
+    b.  A paraméter neve legyen **bemeneti** , és az értéket kifejezésként  **\@folyamat ().parameters.name**.
 
 1.  A folyamat érvényesítéséhez kattintson az **ellenőrzése** gombra az eszköztáron. Az érvényesítési ablak bezárásához válassza a **\>\>** (jobbra mutató nyíl) gombra.
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 8ff100cd3fc1c9def10b4e585119414281b90d92
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 4a3d1c513bcfb6449ca73d873c0dd9831c6fe01d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017378"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540130"
 ---
 # <a name="use-case---product-recommendations"></a>Használati eset – Termékajánlások
 Az Azure Data Factory a Cortana Intelligence Suite-megoldásgyorsítók megvalósításához használt számos szolgáltatás egyike.  Lásd: [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics) oldalán Ez az alkalmazáscsomag adatait. Ez a dokumentum egy gyakori alkalmazási helyzet, hogy az Azure-felhasználók már megoldott és az Azure Data Factory és az egyéb Cortana Intelligence Komponensszolgáltatások használatával implementált ismertetünk.
@@ -50,7 +50,7 @@ Az online kereskedő az adatok tárolási lehetőségek a munkafolyamaton keresz
 
 A nyers webes naplófájlok gigabájt jönnek létre naponta az online kereskedő webhelyről félig strukturált fájlok formájában. A nyers webes naplófájlokat és az ügyfél és a termékkatalógus információit be lett töltve rendszeresen egy Azure Blob storage használatával a Data Factory globálisan üzemelő adatáthelyezési szolgáltatás. A nyers naplófájlokat a nap (év és hónap) szerint vannak particionálva, blob Storage-hosszú távú tárolás céljából.  [Az Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) particionálása a nyers naplófájlokat a blob-tárolóban és a Hive és a Pig-parancsfájlok használatával nagy mennyiségű betöltött naplók feldolgozása. A particionált webnaplók adatok kinyerése a szükséges bemenetek a machine learning-javaslat rendszer hoz létre a személyre szabott Termékajánlatok majd dolgozzák fel.
 
-A javaslat a machine learning-ebben a példában használt a rendszer egy nyílt forráskódú gépi tanulási javaslat-platformja [Apache Mahout](http://mahout.apache.org/).  Bármely [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) vagy egyéni modell forgatókönyvet is alkalmazható.  Előre jelezni az összesített használati mintái alapján a webhelyen található elemek koszinuszhasonlóságát, valamint az egyes felhasználó alapján a személyre szabott javaslatok létrehozása a Mahout modellt használja.
+A javaslat a machine learning-ebben a példában használt a rendszer egy nyílt forráskódú gépi tanulási javaslat-platformja [Apache Mahout](https://mahout.apache.org/).  Bármely [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) vagy egyéni modell forgatókönyvet is alkalmazható.  Előre jelezni az összesített használati mintái alapján a webhelyen található elemek koszinuszhasonlóságát, valamint az egyes felhasználó alapján a személyre szabott javaslatok létrehozása a Mahout modellt használja.
 
 Végül az eredményhalmaz, személyre szabott Termékajánlatok került egy relációs adatpiacot felhasználásra a kereskedő webhely által.  Az eredményhalmaz sikerült is közvetlenül a blob storage-ból egy másik alkalmazás érhető el, vagy más fogyasztók és a használati esetek további áruházak áthelyezni.
 

@@ -8,14 +8,14 @@ author: derek1ee
 ms.author: deli
 ms.reviewer: klam
 ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: 5ed15a58e5b709b003e9f45d04c3654f814aefc7
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: a58b247732125574a067deff1d5b03859cd036fc
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334227"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57782292"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Az Azure Scheduler alapfogalmai, terminológiája és entitásai
 
@@ -69,9 +69,9 @@ Az Azure Scheduler több feladattípust támogat:
 Magasabb szinteken a Scheduler-feladatok az alábbi alapszintű összetevőkből állnak:
 
 * A feladat időzítőjének indításakor futó művelet
-* Nem kötelező: A feladat futtatásának időpontja
-* Nem kötelező: A feladat megismétlésének időpontja és gyakorisága
-* Nem kötelező: Az elsődleges művelet meghiúsulása esetén futó hibaművelet
+* Nem kötelező: Az idő a feladat futtatása
+* Nem kötelező: Mikor és hogyan a feladat megismétlésének
+* Nem kötelező: Egy hiba műveletet, amely akkor fut, ha az elsődleges művelet sikertelen
 
 A feladat olyan, a rendszer által biztosított adatokat is tartalmaz, mint a következő ütemezett futás időpontja. A feladat kóddefiníciója egy JavaScript Object Notation (JSON) formátumú objektum, amely a következő elemeket tartalmazza:
 
@@ -239,7 +239,7 @@ Egy feladat akkor ismétlődik, ha annak JSON-definíciója tartalmazza a **recu
 },
 ```
 
-| Tulajdonság | Szükséges | Érték | Leírás | 
+| Tulajdonság | Szükséges | Value | Leírás | 
 |----------|----------|-------|-------------| 
 | **frequency** | Igen, a **recurrence** használatakor | Percenként, óránként, naponta, hetente, havonta, évente | Az előfordulások közötti időegység | 
 | **interval** | Nem | 1 és 1000 között, a szélsőértékeket is beleértve | Pozitív egész szám, amely a **frequency** gyakoriságérték alapján meghatározza az egyes előfordulások közötti időegységek számát | 
@@ -269,7 +269,7 @@ Arra az esetre, ha a Scheduler-feladat hibába ütközik, beállíthat egy újra
 },
 ```
 
-| Tulajdonság | Szükséges | Érték | Leírás | 
+| Tulajdonság | Szükséges | Value | Leírás | 
 |----------|----------|-------|-------------| 
 | **retryType** | Igen | **Fixed**, **None** | Azt határozza meg, hogy megad-e egy újrapróbálkozási szabályzatot (**fixed** – rögzített) vagy sem (**none** – nincs). | 
 | **retryInterval** | Nem | PT30S | Megadja az újrapróbálkozások gyakoriságát [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). A minimális érték 15 másodperc, a maximális érték pedig 18 hónap. | 

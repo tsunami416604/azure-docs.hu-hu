@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 03/04/2019
-ms.openlocfilehash: f4d6826d13f92db7a430f668c56825926d198235
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.date: 03/06/2019
+ms.openlocfilehash: 127e3385f1fd9cf0975ff19818d3112fe5a713d0
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340099"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57571014"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Az Azure SQL Database Virtuálismag-alapú vásárlási modell korlátok egy önálló adatbázis
 
@@ -29,6 +29,9 @@ DTU-alapú vásárlási modell korlátok és a egy SQL Database-kiszolgáló ön
 > Bizonyos körülmények között szükség lehet az adatbázis nem használt terület felszabadítását zsugorítani. További információkért lásd: [kezelése az Azure SQL Database területe](sql-database-file-space-management.md).
 
 A szolgáltatási rétegben, a számítási méretét és a egy önálló adatbázis a tárolókapacitás is megadhatja a [az Azure portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server), [Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-sql-database-servers-and-single-databases), [PowerShell](sql-database-single-databases-manage.md#powershell-manage-sql-database-servers-and-single-databases), a [ Az Azure CLI](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases), vagy a [REST API-val](sql-database-single-databases-manage.md#rest-api-manage-sql-database-servers-and-single-databases).
+
+> [!IMPORTANT]
+> Skálázás útmutatást és szempontokat, lásd: [a különálló adatbázisok](sql-database-single-database-scale.md).
 
 ## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>Általános célú szolgáltatásszint: Tárterületet és számítási méretek
 
@@ -51,7 +54,7 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 |Egyidejű feldolgozók (kérelmek) maximális|200|400|600|800|1000|1200|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|
 |Replikák száma|1|1|1|1|1|1|
-|Több-AZ|–|N/A|N/A|N/A|N/A|–|000
+|Több-AZ|–|N/A|N/A|N/A|N/A|N/A|–|
 |Felskálázás olvasása|–|N/A|N/A|N/A|N/A|–|
 |Biztonsági mentési tárterület|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 
@@ -146,7 +149,7 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 |Egyidejű bejelentkezések maximális száma|200|400|600|800|1000|1200|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|
 |Replikák száma|4|4|4|4|4|4|
-|Több-AZ|Igen|Igen|Igen|Igen|Igen|Igen|
+|Több-AZ|–|N/A|N/A|N/A|N/A|–|
 |Felskálázás olvasása|Igen|Igen|Igen|Igen|Igen|Igen|
 |Biztonsági mentési tárterület|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 
@@ -170,7 +173,7 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 |Egyidejű bejelentkezések maximális száma (kérelmek)|1400|1600|1800|2000|3200|4800|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|
 |Replikák száma|4|4|4|4|4|4|
-|Több-AZ|Igen|Igen|Igen|Igen|Igen|Igen|
+|Több-AZ|–|N/A|N/A|N/A|N/A|–|
 |Felskálázás olvasása|Igen|Igen|Igen|Igen|Igen|Igen|
 |Biztonsági mentési tárterület|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 

@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 6f88079c5baac8cef677fd3afc5696cec5c00d92
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: d007f688483366f2f714a78b5bf9b56a67c55490
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653662"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730097"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>Tartomány és az Azure App Service SSL tanúsítvánnyal kapcsolatos problémák elhárítása
 
@@ -96,6 +96,77 @@ Ez a probléma a következő okokból fordulhat elő:
     2. Lépjen a **App Service-tanúsítványok**, és válassza ki a tanúsítványt.
     3. Válassza ki **Tanúsítványkonfiguráció** > **2. lépés: Győződjön meg arról** > **tartomány-ellenőrzés**. Ebben a lépésben egy e-mailben értesítést küld az Azure-tanúsítvány-szolgáltatóhoz a probléma megoldásához.
 
+## <a name="custom-domain-problems"></a>Egyéni tartomány kapcsolatos problémák
+
+### <a name="a-custom-domain-returns-a-404-error"></a>Egyéni tartomány 404-es hibát ad vissza. 
+
+#### <a name="symptom"></a>Jelenség
+
+Ha a felhasználó a helynek az egyéni tartománynév használatával, a következő hibaüzenet jelenhet meg:
+
+"Hiba 404-webalkalmazás nem található."
+
+#### <a name="cause-and-solution"></a>OK és megoldás
+
+**OK: 1** 
+
+Az egyéni tartomány konfigurált hiányzik egy CNAME és a egy rekordot. 
+
+**1 OK megoldás**
+
+- Ha hozzáadott egy A rekordot, győződjön meg arról, hogy egy txt típusú rekordot adott is. További információkért lásd: [a rekord létrehozása](./app-service-web-tutorial-custom-domain.md#create-the-a-record).
+- A legfelső szintű tartományt használja, az alkalmazás nem rendelkezik, azt javasoljuk, hogy használja-e egy CNAME-rekordot helyett egy A rekordot.
+- Ne használja egy CNAME-rekordot és a egy A rekordot is ugyanabban a tartományban. A probléma ütközést okozhat, és megakadályozza, hogy a tartomány feloldva. 
+
+**OK 2** 
+
+Az internetböngészőben továbbra is előfordulhat, hogy gyorsítótárazza a tartomány régi IP-címét. 
+
+**Megoldás ok 2**
+
+Törölje a böngészőben. Windows-eszközök esetén a parancs futtatása `ipconfig /flushdns`. Használat [WhatsmyDNS.net](https://www.whatsmydns.net/) , ellenőrizze, hogy a tartomány az alkalmazás IP-címre mutat-e. 
+
+### <a name="you-cant-add-a-subdomain"></a>Nem adhat hozzá egy altartományt 
+
+#### <a name="symptom"></a>Jelenség
+
+Altartomány hozzárendelése egy alkalmazást egy új nevet nem lehet hozzáadni.
+
+#### <a name="solution"></a>Megoldás
+
+- Ellenőrizze az előfizetés adminisztrátorát, hogy győződjön meg arról, hogy Ön jogosult állomásnév hozzáadása az alkalmazáshoz.
+- Ha több altartománnyal van szüksége, azt javasoljuk, hogy módosítsa a tartományt üzemeltető Azure Domain Name Service (DNS). Az Azure DNS használata esetén az alkalmazás 500 állomásnevek adhat hozzá. További információkért lásd: [altartomány hozzáadása](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/).
+
+### <a name="dns-cant-be-resolved"></a>DNS nem oldható fel
+
+#### <a name="symptom"></a>Jelenség
+
+A következő hibaüzenetet kapott:
+
+"A DNS-rekord nem található."
+
+#### <a name="cause"></a>Ok
+Ez a probléma akkor fordul elő, a következő okok valamelyike:
+
+- Az élő (TTL) időszak ideje nem járt le. Ellenőrizze az élettartam értéke határozza meg, és ezután Várjon, amíg az időszak lejár, a tartomány DNS-konfigurációját.
+- A DNS-konfiguráció helytelen.
+
+#### <a name="solution"></a>Megoldás
+- Várjon, amíg ez a probléma megoldódik, hogy 48 órán belül.
+- Ha a DNS-konfiguráció is megváltoztatjuk a TTL-értéket, módosítsa az értéket 5 perc megtekintéséhez, hogy ez megoldja a problémát.
+- Használat [WhatsmyDNS.net](https://www.whatsmydns.net/) , ellenőrizze, hogy a tartomány az alkalmazás IP-címre mutat-e. Ha nem, az A rekord helyes IP-címet az alkalmazás konfigurálása
+
+### <a name="you-need-to-restore-a-deleted-domain"></a>Vissza kell állítania egy tartomány törlése 
+
+#### <a name="symptom"></a>Jelenség
+A tartomány már nem jelenik meg az Azure Portalon.
+
+#### <a name="cause"></a>Ok 
+Az előfizetés tulajdonosa előfordulhat, hogy véletlenül törölt a tartományhoz.
+
+#### <a name="solution"></a>Megoldás
+Ha a tartomány törölték a kevesebb mint hét napja, a tartomány még nem indult a törlési folyamat. Ebben az esetben is vásárolhatnak ugyanahhoz a tartományhoz újra, az Azure Portalon egy előfizetésen belül. (Ügyeljen arra, hogy a Keresés mezőbe írja be a pontos tartománynév.) Nem kell fizetnie az újra ezt a tartományt. Ha a tartományt törölték a több mint hét napja, lépjen kapcsolatba [az Azure-támogatás](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) visszaállítása a segítséget.
+
 ## <a name="domain-problems"></a>Tartomány-problémák
 
 ### <a name="you-purchased-an-ssl-certificate-for-the-wrong-domain"></a>Megvásárolta a megfelelő tartomány SSL-tanúsítvány
@@ -135,7 +206,7 @@ Az App Service-tanúsítvány tartomány-ellenőrzés van szükség, mielőtt a 
 #### <a name="solution"></a>Megoldás
 Manuálisan ellenőrizze a tartomány egy txt típusú rekord hozzáadásával:
  
-1.  Nyissa meg a tartomány neve szolgáltatás (DNS) szolgáltató, amelyen a tartomány nevét.
+1.  Go to the Domain Name Service (DNS) provider that hosts your domain name.
 2.  Adjon hozzá egy txt típusú rekordot a tartományhoz, amely a tartomány-token, amely az Azure Portalon látható értékét használja. 
 
 Várjon néhány percet a DNS-propagálás futtatásához, és válassza ki a **frissítése** gombra az ellenőrzés indításához. 
@@ -196,105 +267,62 @@ Ez a probléma akkor fordul elő, a következő okok valamelyike:
     |Rekordtípus|Gazdagép|Mutasson|
     |------|------|-----|
     |A|@|Az alkalmazás IP-cím|
-    |TXT|@|< alkalmazásnév >. azurewebsites.net|
-    |CNAME|www|< alkalmazásnév >. azurewebsites.net|
+    |TXT|@|<app-name>.azurewebsites.net|
+    |CNAME|www|<app-name>.azurewebsites.net|
 
-### <a name="dns-cant-be-resolved"></a>DNS nem oldható fel
+## <a name="faq"></a>GYIK
 
-#### <a name="symptom"></a>Jelenség
+**Van webhelyem saját egyéni tartomány konfigurálása után azt díjcsomagot?**
 
-A következő hibaüzenetet kapott:
+Amikor egy tartományt az Azure Portalon vásárol, az App Service-alkalmazás automatikusan használatára van konfigurálva, hogy egyéni tartományt. Nem kell semmilyen további lépések végrehajtására. További információkért tekintse meg a [Azure App Service önkiszolgáló súgó: Egyéni tartománynév hozzáadása](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name) channel9-on található.
 
-"A DNS-rekord nem található."
+**Használható inkább egy Azure virtuális gép átirányítása egy tartományt az Azure Portalon vásárolt?**
 
-#### <a name="cause"></a>Ok
-Ez a probléma akkor fordul elő, a következő okok valamelyike:
+Igen, a tartomány mutathat egy virtuális géphez, tárolás stb. További információkért lásd: [hozzon létre egy egyéni teljes tartománynév az Azure Portalon egy Windows virtuális gép](../virtual-machines/windows/portal-create-fqdn.md).
 
-- Az élő (TTL) időszak ideje nem járt le. Ellenőrizze az élettartam értéke határozza meg, és ezután Várjon, amíg az időszak lejár, a tartomány DNS-konfigurációját.
-- A DNS-konfiguráció helytelen.
+**GoDaddy- vagy az Azure DNS által futtatott saját tartomány?**
 
-#### <a name="solution"></a>Megoldás
-- Várjon, amíg ez a probléma megoldódik, hogy 48 órán belül.
-- Ha a DNS-konfiguráció is megváltoztatjuk a TTL-értéket, módosítsa az értéket 5 perc megtekintéséhez, hogy ez megoldja a problémát.
-- Használat [WhatsmyDNS.net](https://www.whatsmydns.net/) , ellenőrizze, hogy a tartomány az alkalmazás IP-címre mutat-e. Ha nem, az A rekord helyes IP-címet az alkalmazás konfigurálása
+App Service-tartományok GoDaddy tartomány regisztráció és az Azure DNS segítségével a tartományok. 
 
-### <a name="you-need-to-restore-a-deleted-domain"></a>Vissza kell állítania egy tartomány törlése 
+**Szeretnék feltenni az automatikus megújítás engedélyezve van, de továbbra is a saját tartomány e-mailen keresztül megújítási értesítést kapott. Mit tegyek?**
 
-#### <a name="symptom"></a>Jelenség
-A tartomány már nem jelenik meg az Azure Portalon.
+Ha az automatikus megújítás engedélyezve van, akkor nem kell semmit sem kell. Az értesítés e-mailben tájékoztatja, hogy a tartományban van, hamarosan lejár, és manuálisan megújítani, ha az automatikus megújítás engedélyezve van a nem áll rendelkezésre.
 
-#### <a name="cause"></a>Ok 
-Az előfizetés tulajdonosa előfordulhat, hogy véletlenül törölt a tartományhoz.
+**Kell fizetnem az Azure DNS saját tartomány üzemeltető?**
 
-#### <a name="solution"></a>Megoldás
-Ha a tartomány törölték a kevesebb mint hét napja, a tartomány még nem indult a törlési folyamat. Ebben az esetben is vásárolhatnak ugyanahhoz a tartományhoz újra, az Azure Portalon egy előfizetésen belül. (Ügyeljen arra, hogy a Keresés mezőbe írja be a pontos tartománynév.) Nem kell fizetnie az újra ezt a tartományt. Ha a tartományt törölték a több mint hét napja, lépjen kapcsolatba [az Azure-támogatás](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) segítséget visszaállítani a tartományhoz.
+Tartomány kezdeti költsége csak a tartomány regisztrációs vonatkozik. A regisztrációs költség kívül további Azure DNS-ben a használat alapján kell fizetni. További információkért lásd: [Azure DNS díjszabási](https://azure.microsoft.com/pricing/details/dns/) további részletekért.
 
-### <a name="a-custom-domain-returns-a-404-error"></a>Egyéni tartomány 404-es hibát ad vissza. 
+**Szeretnék saját tartományt az Azure Portalról korábban beszerzett, és szeretne áttérni az Azure DNS-ben üzemeltető, üzemeltetési GoDaddy. Hogyan tehetem ezt?**
 
-#### <a name="symptom"></a>Jelenség
+Esetén nem kötelező az Azure DNS-ben tároló áttelepítése. Ha szeretné, hogy a migrálása az Azure DNS, a tartomány-kezelést biztosít az Azure Portalon kapcsolatos információkat biztosít áthelyezése az Azure DNS-ben szükséges lépéseket. Ha a tartomány az App Service keretében vásárolt, a GoDaddy üzemeltetése az Azure DNS-be való áttelepítést az viszonylag zökkenőmentesen eljárás.
 
-Ha a felhasználó a helynek az egyéni tartománynév használatával, a következő hibaüzenet jelenhet meg:
+**Szeretném, ha saját tartományt az App Service-tartomány, de üzemeltethet szeretnék a GoDaddy helyett az Azure DNS saját tartomány?**
 
-"Hiba 404-webalkalmazás nem található."
+2017. július 24-én kezdve a portálon megvásárolt App Service-tartományok Azure DNS-kiszolgálón üzemelnek. Ha szeretné használni egy másik szolgáltatóhoz, meg kell lépnie a webhely-üzemeltetési megoldás tartomány beszerzése.
 
+**Kell fizetnie, a tartomány számára az adatvédelem?**
 
-#### <a name="cause-and-solution"></a>OK és megoldás
+Amikor egy tartományt az Azure Portalon vásárol, kiválaszthatja adatvédelmi adja hozzá a további költségek nélkül. Ez az egyik előnye, hogy az Azure App Service segítségével tartomány vásárlása.
 
-**OK: 1** 
+**Eldönteni, hogy a tartomány már nem szeretné, amennyiben szerezhető be saját pénzt vissza?**
 
-Az egyéni tartomány konfigurált hiányzik egy CNAME és a egy rekordot. 
+Vásárolhat egy tartományt, ha nem terheli az öt napig, amely idő alatt eldöntheti, hogy nem szeretné, hogy a tartományhoz. Ha úgy dönt, a tartomány nem szeretné, hogy 5 napos időszakon belül, nem számítunk fel. (a .uk tartományokban ez kivételt jelentenek. Ha .uk tartományt vásárolnia, azonnal számítjuk fel, és nem térítjük.)
 
-**1 OK megoldás**
+**Használhatom az Azure App Service-alkalmazás egy másik tartományhoz az előfizetésemben?**
 
-- Ha hozzáadott egy A rekordot, győződjön meg arról, hogy egy txt típusú rekordot adott is. További információkért lásd: [a rekord létrehozása](./app-service-web-tutorial-custom-domain.md#create-the-a-record).
-- A legfelső szintű tartományt használja, az alkalmazás nem rendelkezik, azt javasoljuk, hogy használja-e egy CNAME-rekordot helyett egy A rekordot.
-- Ne használja egy CNAME-rekordot és a egy A rekordot is ugyanabban a tartományban. Ez egy ütközést okozhat, és megakadályozza, hogy a tartomány feloldva. 
+Igen. Amikor fér hozzá az egyéni tartományok és SSL panel az Azure Portalon, tekintse meg a tartományok vásárolt. Beállíthatja, hogy az alkalmazás használatához ezeket a tartományokat.
 
-**OK 2** 
+**Áthelyezhetők-e egy tartományhoz egy előfizetésből egy másik előfizetéshez?**
 
-Az internetböngészőben továbbra is előfordulhat, hogy gyorsítótárazza a tartomány régi IP-címét. 
+A tartomány áthelyezése egy másik előfizetés/erőforráscsoport csoport használatával a [Move-AzureRmResource](https://docs.microsoft.com/powershell/module/AzureRM.Resources/Move-AzureRmResource?view=azurermps-6.13.0) PowerShell-parancsmagot.
 
-**Megoldás ok 2**
+**Hogyan kezelhetem a saját egyéni tartomány Ha jelenleg nincs Azure App Service-alkalmazások?**
 
-Törölje a böngészőben. Windows-eszközök esetén a parancs futtatása `ipconfig /flushdns`. Használat [WhatsmyDNS.net](https://www.whatsmydns.net/) , ellenőrizze, hogy a tartomány az alkalmazás IP-címre mutat-e. 
+Kezelheti a tartomány még akkor is, ha nem rendelkezik egy App Service Webappban. Tartományi használható az Azure-szolgáltatásokhoz hasonlóan a virtuális gép, tárolás stb. Ha szeretne használni a tartomány az App Service Web Appshez, majd kell, amely nem az ingyenes App Service-csomag annak érdekében, hogy a webalkalmazás kötést létrehozni a tartomány a webes alkalmazás közé tartozik.
 
-### <a name="you-cant-add-a-subdomain"></a>Nem adhat hozzá egy altartományt 
+**Áthelyezhető egyéni tartományt használó webalkalmazás egy másik előfizetésbe, vagy az App Service Environment-környezet v1, V2?**
 
-#### <a name="symptom"></a>Jelenség
+Igen, továbbléphet a webalkalmazás, előfizetések között. Kövesse az útmutató [erőforrások áthelyezése az Azure-ban](../azure-resource-manager/resource-group-move-resources.md). Van néhány korlátozás a webalkalmazás áthelyezésekor. További információkért lásd: [App Service-erőforrások áthelyezésére korlátozások](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations
+).
 
-Altartomány hozzárendelése egy alkalmazást egy új nevet nem lehet hozzáadni.
-
-#### <a name="solution"></a>Megoldás
-
-- Ellenőrizze az előfizetés adminisztrátorát, hogy győződjön meg arról, hogy Ön jogosult állomásnév hozzáadása az alkalmazáshoz.
-- Ha több altartománnyal van szüksége, javasoljuk, hogy módosítsa az Azure DNS-tartomány üzemeltetése. Az Azure DNS használata esetén az alkalmazás 500 állomásnevek adhat hozzá. További információkért lásd: [altartomány hozzáadása](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/).
-
-
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Helyezze át a web app, ugyanaz a gazdagép neve kötéseket a tartományok beállítása az egyéni tartományok belül kell maradnia. Állítsa be a gazdagép neve kötéseket további lépések nem szükségesek.

@@ -2,19 +2,19 @@
 title: Hozzon létre egy Kubernetes-fürt bejövőforgalom-vezérlőt az Azure Kubernetes Service (AKS) az Application Gateway segítségével
 description: Az oktatóanyagban egy Kubernetes-fürt létrehozása az Azure Kubernetes Service az Application Gatewayen a bejövőforgalom-vezérlőt, ábrázoló
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: a terraform, devops, virtuális gépek, azure, kubernetes, bejövő forgalom, az application gateway
 author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 1/10/2019
-ms.openlocfilehash: 6add7323fdbcf07681e8566437632aa6679828e4
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 7eb88f0bd30c9f28f8980cdc0e16ba46a9da9551
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891981"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57765594"
 ---
 # <a name="create-a-kubernetes-cluster-with-application-gateway-ingress-controller-using-azure-kubernetes-service-and-terraform"></a>Kubernetes-fürt létrehozása az Application Gateway bejövőforgalom-vezérlőjéhez Azure Kubernetes Service-ben és a Terraform használatával
 [Az Azure Kubernetes Service (AKS)](/azure/aks/) felügyeli az üzemeltetett Kubernetes környezetet. Az AKS segítségével gyorsan és egyszerűen üzembe és kezelhet tárolóalapú alkalmazásokat tárolóvezénylési szakértelem nélkül is. Ezenkívül a folyamatban lévő műveletek és karbantartás terhét is megszünteti az erőforrások igény szerinti kiépítésével, frissítésével és méretezésével anélkül, hogy offline állapotba kellene helyezni az alkalmazásait.
@@ -642,7 +642,7 @@ Ha a Cloud Shell-munkamenetek időkorlátja lejár, a helyreállításához hasz
     cd /clouddrive/terraform-aks-k8s
     ```
 
-1. Futtassa a következő parancsot:
+1. Futtassa az alábbi parancsot:
 
     ```bash
     export KUBECONFIG=./azurek8s

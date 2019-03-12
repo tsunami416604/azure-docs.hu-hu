@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: a6aab8fda2459804b38afc113be58db7c31b54c5
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 89a97b583407b448f296b1a54f5aabbf825b8b65
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56586851"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537745"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Translator Text API V2 V3 áttelepítése
 
@@ -136,13 +136,13 @@ A Translator Text API 3-as verziójához használja a api.cognitive.microsofttra
 * A Microsoft Translator Hub használatával létrehozott egyéni fordítási rendszerekhez való hozzáférést biztosít.
 * A Translator Text API 2-es verzióját használja a api.microsofttranslator.com végpont használata.
 
-Nincs a fordító API-verzió létrehoz egy rekordot a fordítások. A fordítások soha nem bárkivel vannak megosztva. További információ a [Translator nyomkövetés-mellőzési](http://www.aka.ms/NoTrace) weblapon.
+Nincs a fordító API-verzió létrehoz egy rekordot a fordítások. A fordítások soha nem bárkivel vannak megosztva. További információ a [Translator nyomkövetés-mellőzési](https://www.aka.ms/NoTrace) weblapon.
 
 ## <a name="links"></a>Hivatkozások
 
 * [A Microsoft adatvédelmi szabályzata](https://privacy.microsoft.com/privacystatement)
 * [A Microsoft Azure – jogi információk](https://azure.microsoft.com/support/legal)
-* [Online Services Terms](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
+* [Online Services Terms](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
 
 ## <a name="next-steps"></a>További lépések
 

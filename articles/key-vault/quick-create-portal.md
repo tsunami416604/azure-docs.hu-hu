@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 4dd81fd03c39dec3c34e614234a563ec8c2ced38
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 4e31e5d6f1f08012c2ab0dbccb7a0f6c2df89a9a
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117102"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57728877"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Gyors útmutató: Beállítása és lekérése a titkos kulcs Azure Key vault az Azure portal használatával
 
@@ -28,7 +28,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
+Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 ## <a name="create-a-vault"></a>Tároló létrehozása
 
@@ -70,7 +70,11 @@ Titkos kód a tárolóhoz való hozzáadásához csak néhány további lépést
 
 Miután megérkezett az üzenet arról, hogy a titkos kulcs sikeresen létrejött, kattintson rá a listában. Ezután megjelenik néhány tulajdonság. Ha a jelenlegi verzióra kattint, láthatja az előző lépésben megadott értéket.
 
-![Titkos kulcs tulajdonságai](./media/quick-create-portal/version.png)
+![Titkos kulcs tulajdonságai](./media/quick-create-portal/current-version-hidden.png)
+
+A jobb oldali "Titkos érték megjelenítése" gombra kattintva megtekintheti a rejtett érték. 
+
+![A titkos értéket jelent meg.](./media/quick-create-portal/current-version-shown.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

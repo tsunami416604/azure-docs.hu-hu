@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 28796c753e32a3c3b18052190618152c7669c93d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 6bb37008b6a8b37e575dcf83dffcf57ab08996fd
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437071"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539994"
 ---
 # <a name="data-management-gateway"></a>Adatkezelési átjáró
 > [!NOTE]
@@ -439,7 +439,7 @@ Ez a szakasz lépéseit mozgó átjáró ügyfél egyik gépről egy másik szá
 ## <a name="encrypting-credentials"></a>Hitelesítő adatok titkosítása
 A Data Factory Editorban hitelesítő adatok titkosításához, tegye a következőket:
 
-1. A webböngésző indítása a **átjárót tartalmazó számítógépen**, navigáljon a [az Azure portal](http://portal.azure.com). Az adat-előállító keresése, ha szükséges, nyissa meg az adat-előállítóhoz a **adat-előállító** lapon, majd kattintson **létrehozás és üzembe helyezés** Data Factory Editor elindításához.
+1. A webböngésző indítása a **átjárót tartalmazó számítógépen**, navigáljon a [az Azure portal](https://portal.azure.com). Az adat-előállító keresése, ha szükséges, nyissa meg az adat-előállítóhoz a **adat-előállító** lapon, majd kattintson **létrehozás és üzembe helyezés** Data Factory Editor elindításához.
 2. Kattintson egy meglévő **társított szolgáltatás** a fanézetben megtekintheti a JSON-definíciójában, vagy létrehoz egy társított szolgáltatást, amely egy adatkezelési átjárón igényel (például: Az SQL Server vagy Oracle).
 3. A JSON-szerkesztőben a a **átjárónév** tulajdonság, adja meg az átjárója nevére.
 4. Adja meg a kiszolgáló nevét a **adatforrás** tulajdonságot a **connectionString**.

@@ -4,16 +4,16 @@ description: Ismerje meg, hogyan választható ki egy Azure-megoldás az adatát
 services: storage
 author: alkohli
 ms.service: storage
-ms.subservice: blob
+ms.subservice: blobs
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: alkohli
-ms.openlocfilehash: b9c19c4cd85b1ab2bc3ea010d029361957de3943
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 7cdaebe62c7071b26c29e599bb0614dbe7631085
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53264111"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57778025"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>Bejövő adatátvitel kis adatkészletekhez, az alacsony, közepes hálózati sávszélesség
  
@@ -64,5 +64,5 @@ Az alábbi táblázat a legfontosabb képességei a különbségeket foglalja ö
 ## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan [adatok áthelyezése az Azure Storage Explorer](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/move-data-to-azure-blob-using-azure-storage-explorer).
-- [Adatok áthelyezése az Azcopyval](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
+- [Adatok áthelyezése az AzCopyval](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10)
 

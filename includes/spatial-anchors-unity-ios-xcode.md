@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
-ms.openlocfilehash: b802c9dbd0cef65325cb03538b68b49c57b85bb3
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 8047ed27c732cabf92f53b4b70c22471ecb848aa
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56890945"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57588134"
 ---
 Válassza ki **összeállítása** egy párbeszédpanel megnyitásához. Ezután válassza ki egy mappát, amelybe exportálni az Xcode-projektben.
 
@@ -17,7 +17,7 @@ Az Exportálás befejeződése után egy mappa jelenik meg amely tartalmazza az 
 
 ### <a name="open-the-xcode-project"></a>Nyissa meg az Xcode-projektben
 
-Az exportált Xcode projekt mappában futtassa a következő parancsot a projekthez szükséges CocoaPods telepítéséhez:
+Az exportált Xcode projekt mappában futtassa a következő parancsot a terminálon a projekthez szükséges CocoaPods telepítéséhez:
 
 ```bash
 pod install --repo-update

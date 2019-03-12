@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 3/2/2019
+ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: 38b60536a05fc726ddcd06b631078c0a5f3d89ce
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 4ef9089c94d9e806cc519c4f8243cdcb7e73953a
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57248962"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730527"
 ---
 # <a name="azure-firewall-threat-intelligence-based-filtering---public-preview"></a>Azure tűzfal threat intelligence-alapú szűrés – nyilvános előzetes verzió
 
@@ -22,8 +22,6 @@ Threat intelligence szerinti szűrés a tűzfalat, hogy a riasztás és a forgal
 
 > [!IMPORTANT]
 > Threat intelligence alapú szűrés jelenleg nyilvános előzetes verzióban és a egy előzetes szolgáltatói szerződést. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.  A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
->Threat intelligence szűrés érhető el az összes nyilvános régióban. A társított portál konfigurációs felhasználói felületet ad hozzá régiókat Növekményesen, és lesz elérhető az összes régióban a közeljövőben.
 
 Threat intelligence szerinti szűrés engedélyezve van, ha a hozzárendelt szabályokat dolgozza fel előbb bármelyikét a NAT-szabályok, a hálózati szabályok és alkalmazás szabályokat. Az előzetes verzióban csak a legmagasabb megbízhatósági rekordokat is.
 

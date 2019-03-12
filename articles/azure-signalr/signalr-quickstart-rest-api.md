@@ -3,16 +3,15 @@ title: Rövid útmutató – az Azure SignalR Service REST API-val
 description: Rövid útmutató az Azure SignalR szolgáltatás REST API-jának használatához.
 author: sffamily
 ms.service: signalr
-ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 06/13/2018
+ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 1443508985c7c7fef313a7eea3f622e7759a71ef
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 88a5a1bcff8542ac500bbb5e0da790f77c90a825
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540096"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530790"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Gyors útmutató: Valós idejű üzenetek szórási konzol alkalmazásból
 
@@ -176,3 +175,10 @@ Verzió | API HTTP-metódus | Kérés URL-címe
 `1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<userid>`
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
+
+## <a name="next-steps"></a>További lépések
+
+Ebből a gyors útmutatóból megtudhatta, hogyan REST API használatával valós idejű üzenetek szórási SignalR Service az ügyfelek számára. Ezután megtudhatja, hogyan fejleszthet és helyezhet üzembe Azure Functions SignalR Service kötést, amely a REST API-val épül.
+
+> [!div class="nextstepaction"]
+> [Fejlesztés az Azure Functions Azure SignalR Service kötések használata](signalr-quickstart-azure-functions-csharp.md)

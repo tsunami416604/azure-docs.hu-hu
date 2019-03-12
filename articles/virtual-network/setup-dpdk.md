@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: ''
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/27/2018
 ms.author: labattul
-ms.openlocfilehash: 34647c218bd5fd2eec775599a4d2f10373dbd2fd
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: b50f7c9b76e9309a1ee08257dd8b13ec289397a5
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268276"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775917"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>A Linux rendszerű virtuális gép DPDK beállítása
 
@@ -33,7 +33,7 @@ Az Azure virtuális gépek, amelyek támogatják a több operációs rendszer di
 
 ## <a name="benefit"></a>Előny
 
-**Magasabb csomagok másodpercenként (PPS)**: megkerüli a kernel és a felhasználói térben csomagok véve irányítását csökkenti a ciklus száma elkerülve a környezet kapcsolók. Ez növeli a csomagok Azure-beli Linuxos virtuális gépek a másodpercenként feldolgozott is.
+**Magasabb csomagok másodpercenként (PPS)**: A ciklus száma megkerüli a kernel és a felhasználói térben csomagok véve irányítását csökkenti a környezet kapcsolók kiküszöbölése révén. Ez növeli a csomagok Azure-beli Linuxos virtuális gépek a másodpercenként feldolgozott is.
 
 
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
@@ -42,9 +42,9 @@ Az Azure katalógusából a következő disztribúciók támogatottak:
 
 | Linux operációs rendszer     | Kernel verziója        |
 |--------------|----------------       |
-| Ubuntu 16.04 | 4.15.0-1015-Azure     |
-| Ubuntu 18.04 | 4.15.0-1015-Azure     |
-| SLES 15      | 4.12.14-5.5-Azure     |
+| Ubuntu 16.04 | 4.15.0-1015-azure     |
+| Ubuntu 18.04 | 4.15.0-1015-azure     |
+| SLES 15      | 4.12.14-5.5-azure     |
 | RHEL 7.5     | 3.10.0-862.9.1.el7    |
 | CentOS 7.5   | 3.10.0-862.3.3.el7    |
 
@@ -77,7 +77,7 @@ sudo apt-get update
 sudo apt-get install -y librdmacm-dev librdmacm1 build-essential libnuma-dev libmnl-dev
 ```
 
-### <a name="rhel75centos-75"></a>7.5 RHEL7.5/CentOS
+### <a name="rhel75centos-75"></a>RHEL7.5/CentOS 7.5
 
 ```bash
 yum -y groupinstall "Infiniband Support"
@@ -133,7 +133,7 @@ Az újraindítás után futtassa egyszer a következő parancsokat:
      > [!NOTE]
      > Egy lehetséges, hogy módosítsa a grub-fájlt, hogy a hugepages vannak fenntartva az rendszerindításkor az alábbi a [utasításokat](http://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment) a DPDK számára. Az utasítások vannak a lap alján. Ha egy Azure-beli Linuxos virtuális gép használja, módosíthatja a fájlokat a **/etc/config/grub.d** ehelyett hugepages lefoglalása újraindítások között.
 
-2. MAC és IP-címek: használata `ifconfig –a` megtekintéséhez a hálózati adapterek MAC- és IP-címét. A *VF* hálózati adapter és *NETVSC* hálózati adapter van az azonos MAC-címet, de csak a *NETVSC* hálózati illesztőnek egy IP-címet. Futtatja a VF felületek, alárendelt felületek NETVSC felületek.
+2. MAC és IP-címek: Használat `ifconfig –a` megtekintéséhez a hálózati adapterek MAC- és IP-címét. A *VF* hálózati adapter és *NETVSC* hálózati adapter van az azonos MAC-címet, de csak a *NETVSC* hálózati illesztőnek egy IP-címet. Futtatja a VF felületek, alárendelt felületek NETVSC felületek.
 
 3. PCI-címek
 
@@ -152,7 +152,7 @@ A failsafe PMD keresztül futtatja egy DPDK alkalmazást, azt garantálja, hogy 
 
 Legfelső szintű módban testpmd futtatásához használja `sudo` előtt a *testpmd* parancsot.
 
-### <a name="basic-sanity-check-failsafe-adapter-initialization"></a>Alapszintű: Megerősítést jelölőnégyzet, failsafe adapter inicializálása
+### <a name="basic-sanity-check-failsafe-adapter-initialization"></a>Alapszintű: Ellenőrzés megerősítést failsafe adapter inicializálása
 
 1. Futtassa a következő parancsokat egy egyetlen port testpmd alkalmazás elindításához:
 
@@ -244,7 +244,7 @@ A következő parancsok rendszeres időközönként nyomtatása a csomagok máso
      -w <pci address NIC2> \
      --vdev="net_vdev_netvsc<id>,iface=<the iface to attach to>" \
      --vdev="net_vdev_netvsc<2nd id>,iface=<2nd iface to attach to>" (you need as many --vdev arguments as the number of devices used by testpmd, in this case) \
-     -- --nb-cores <number of cores to use for test pmd> \
+     -- --nb-cores <number of cores to use for test pmd> \
      --forward-mode=io \
      --eth-peer=<recv port id>,<sender peer MAC address> \
      --stats-period <display interval in seconds>

@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: f402aeb82271d4e0f5023f05b0d61713c4ab73c1
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 2a88781e17313557438e64492ab84f59018f9914
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338467"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730188"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Az Azure Machine Learning szolgáltatással modellek üzembe helyezése
 
@@ -30,7 +30,7 @@ A következő számítási célnak modellek helyezhető üzembe:
 | Számítási célt | Üzemelő példány típusa | Leírás |
 | ----- | ----- | ----- |
 | [Az Azure Kubernetes Service (AKS)](#aks) | Valós idejű következtetésekhez | Megfelelő választás a nagy méretű éles környezetekben üzemelő példányok. Automatikus skálázást és gyors válaszidők biztosít. |
-| Az Azure ML Compute | A Batch következtetésekhez | Kiszolgáló nélküli számítási batch előrejelzési futtassa. A normál és alacsony prioritású virtuális gépeket támogatja. |
+| [Az Azure ML Compute](#azuremlcompute) | A Batch következtetésekhez | Kiszolgáló nélküli számítási batch előrejelzési futtassa. A normál és alacsony prioritású virtuális gépeket támogatja. |
 | [Az Azure Container Instances (aci Szolgáltatásban)](#aci) | Tesztelés | Jó fejlesztési vagy tesztelési célokra. **Nem megfelelő az éles számítási feladatokhoz.** |
 | [Azure IoT Edge](#iotedge) | (Előzetes verzió) IoT-modul | Az IoT-eszközökön a modellek üzembe helyezése. Következtetési történik az eszközön. |
 | [A mező-programmable gate array (FPGA)](#fpga) | (Előzetes verzió) Webszolgáltatás | Valós idejű következtetési ultraalacsony késése. |
@@ -328,7 +328,7 @@ print(aks_target.provisioning_errors)
 
 #### <a name="use-an-existing-cluster"></a>Használjon egy meglévő fürthöz
 
-Ha már rendelkezik az AKS-fürtöt az Azure-előfizetésben, és 1.11-es verzió. *, használhatja a rendszerképének üzembe helyezéséhez. A következő kód bemutatja, hogyan csatlakoztathat egy meglévő fürthöz a munkaterülethez mutat be:
+Ha már rendelkezik az AKS-fürtöt az Azure-előfizetésben, és 1.11-es verzió. ## és van legalább 12 virtuális processzort, a rendszerképének üzembe helyezéséhez használhatja. A következő kód bemutatja, hogyan csatlakoztathat egy meglévő AKS 1.11 bemutatja. ## fürt a munkaterülethez:
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
@@ -346,6 +346,11 @@ aks_target.wait_for_completion(True)
 ```
 
 **Becsült időtartam**: Körülbelül 3 perc.
+
+Egy AKS-fürtöt az Azure Machine Learning SDK kívül létrehozásával kapcsolatos további információkért tekintse meg a következő cikkeket:
+
+* [Hozzon létre egy AKS clsuter](https://docs.microsoft.com/cli/azure/aks?toc=%2Fen-us%2Fazure%2Faks%2FTOC.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json&view=azure-cli-latest#az-aks-create)
+* [Hozzon létre egy AKS-fürt (portál)](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal?view=azure-cli-latest)
 
 #### <a name="deploy-the-image"></a>A rendszerkép üzembe helyezése
 
@@ -372,7 +377,7 @@ print(service.state)
 
 További információkért lásd: a dokumentáció a a [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) és [webszolgáltatás](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) osztályokat.
 
-### <a id="fpga"></a> Az Azure ML Compute következtetésekhez
+### <a id="azuremlcompute"></a> Az Azure ML Compute következtetésekhez
 
 Az Azure Machine Learning számítási célnak létrehozása és felügyelete az Azure Machine Learning szolgáltatás által. A batch-előrejelzés az Azure gépi Tanulási folyamatok használható.
 
@@ -387,9 +392,14 @@ A Project Brainwave használatával üzembe helyezéséhez, olvassa az [üzembe 
 
 ### <a id="iotedge"></a> Az Azure IoT Edge üzembe helyezése
 
-Az Azure IoT Edge-eszköz, Linux vagy Windows-alapú eszköz, amely az Azure IoT Edge-futtatókörnyezet. Machine learning-modellek IoT Edge-modulok ezekre az eszközökre telepíthető. Az IoT Edge-eszköz üzembe helyezéséhez lehetővé teszi, hogy az eszköz a modell használatának közvetlenül, ahelyett, hogy adatokat küldeni a felhőbe feldolgozásra. Gyorsabb válaszidőt és alacsonyabb az adatforgalom kap.
+Az Azure IoT Edge-eszköz, Linux vagy Windows-alapú eszköz, amely az Azure IoT Edge-futtatókörnyezet. Az Azure IoT Hub használatával, telepíthet gépi tanulási modellek ezekre az eszközökre, IoT Edge-modulok. Az IoT Edge-eszköz üzembe helyezéséhez lehetővé teszi, hogy az eszköz a modell használatának közvetlenül, ahelyett, hogy adatokat küldeni a felhőbe feldolgozásra. Gyorsabb válaszidőt és alacsonyabb az adatforgalom kap.
 
 A tárolóregisztrációs adatbázisból az Azure IoT Edge-modulok az eszközre vannak telepítve. Kép a modellből származó létrehozásakor tárolódik a tároló-beállításjegyzékbe a munkaterület.
+
+> [!IMPORTANT]
+> Ebben a szakaszban található információk azt feltételezi, hogy már ismeri az Azure IoT Hub és az Azure IoT Edge-modulok. Bár ebben a szakaszban az adatok egy részét az Azure Machine Learning szolgáltatásra, a legtöbb, a folyamat az edge-eszköz üzembe helyezése az Azure IoT service történik.
+>
+> Ha ismeri az Azure IoT-vel, tekintse meg [Azure IoT – alapok](https://docs.microsoft.com/azure/iot-fundamentals/) és [Azure IoT Edge](https://docs.microsoft.com/azure/iot-edge/) alapvető tudnivalókat. Ezután ebben a szakaszban az egyéb hivatkozások segítségével további tudnivalók a meghatározott műveleteket.
 
 #### <a name="set-up-your-environment"></a>A környezet kialakítása
 
@@ -399,36 +409,11 @@ A tárolóregisztrációs adatbázisból az Azure IoT Edge-modulok az eszközre 
 
 * Betanított modell. Találhat egy példát a modell betanítására, a [betanításához egy kép osztályozási modell az Azure Machine Learning](tutorial-train-models-with-aml.md) dokumentumot. Előre betanított modell érhető el a [AI-eszközkészlet az Azure IoT Edge GitHub-adattárat](https://github.com/Azure/ai-toolkit-iot-edge/tree/master/IoT%20Edge%20anomaly%20detection%20tutorial).
 
-#### <a name="prepare-the-iot-device"></a>Az IoT-eszköz előkészítése
-Kell egy IoT hub létrehozása és eszköz regisztrálása, vagy használja újra úgy, hogy az egyik [Ez a szkript](https://raw.githubusercontent.com/Azure/ai-toolkit-iot-edge/master/amliotedge/createNregister).
+#### <a id="getcontainer"></a> A container registry hitelesítő adatainak lekérése
 
-``` bash
-ssh <yourusername>@<yourdeviceip>
-sudo wget https://raw.githubusercontent.com/Azure/ai-toolkit-iot-edge/master/amliotedge/createNregister
-sudo chmod +x createNregister
-sudo ./createNregister <The Azure subscriptionID you want to use> <Resourcegroup to use or create for the IoT hub> <Azure location to use e.g. eastus2> <the Hub ID you want to use or create> <the device ID you want to create>
-```
-
-Az eredményül kapott kapcsolati karakterláncot mentése után "cs": "{másolja ezt a karakterláncot}".
-
-Inicializálja az eszköz letöltésével [Ez a szkript](https://raw.githubusercontent.com/Azure/ai-toolkit-iot-edge/master/amliotedge/installIoTEdge) egy UbuntuX64 IoT élcsomóponton, vagy a dsvm-hez, futtassa a következő parancsokat:
-
-```bash
-ssh <yourusername>@<yourdeviceip>
-sudo wget https://raw.githubusercontent.com/Azure/ai-toolkit-iot-edge/master/amliotedge/installIoTEdge
-sudo chmod +x installIoTEdge
-sudo ./installIoTEdge
-```
-
-Az IoT élcsomóponton elkészült az IoT hub kapcsolati karakterláncát fogadásához. Keresse meg a sor ```device_connection_string:``` , és illessze be a kapcsolati karakterláncot az idézőjelek között a fent.
-
-Akkor is is megtudhatja, hogyan regisztrálja az eszközt, és az IoT-modul telepítéséhez az alábbi a [a rövid útmutató: Az első IoT Edge-modul üzembe helyezése Linux x64 eszköz](../../iot-edge/quickstart-linux.md) dokumentumot.
-
-
-#### <a name="get-the-container-registry-credentials"></a>A container registry hitelesítő adatainak lekérése
 Az eszköz IoT Edge-modul telepítéséhez az Azure IoT a hitelesítő adatokat a tároló-beállításjegyzékbe, amely az Azure Machine Learning szolgáltatás tárolja, a docker-rendszerképek van szüksége.
 
-Később könnyen hozzáférhet a szükséges tárolót a tárolójegyzék hitelesítő adatainak két módon:
+A hitelesítő adatokat kétféleképpen kaphat:
 
 + **Az Azure Portalon**:
 
@@ -469,24 +454,21 @@ Később könnyen hozzáférhet a szükséges tárolót a tárolójegyzék hitel
 
      Adja meg az IoT Edge-ben a privát tárolójegyzékben található rendszerképek elérése ezen hitelesítő adatok szükségesek.
 
+#### <a name="prepare-the-iot-device"></a>Az IoT-eszköz előkészítése
+
+Az eszköz regisztrálása az Azure IoT Hub szolgáltatással, és telepítse az IoT Edge-futtatókörnyezet az eszközön. Ha nem ismeri ezt a folyamatot, tekintse meg a [a rövid útmutató: Az első IoT Edge-modul üzembe helyezése Linux x64 eszköz](../../iot-edge/quickstart-linux.md).
+
+Vannak más módszerek az eszköz regisztrálása:
+
+* [Azure Portal](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-portal)
+* [Azure CLI](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-cli)
+* [Visual Studio Code](https://docs.microsoft.com/azure/iot-edge/how-to-register-device-vscode)
+
 #### <a name="deploy-the-model-to-the-device"></a>Az eszközön a modell üzembe helyezése
 
-Egyszerűen üzembe helyezhetők a modell futtatásával [Ez a szkript](https://raw.githubusercontent.com/Azure/ai-toolkit-iot-edge/master/amliotedge/deploymodel) és biztosítják, hogy a fenti lépéseket a következő információkat: tárolóregisztrációs adatbázis nevét, felhasználónevét, jelszavát, hely URL-címe, kívánt központi telepítés nevét, IoT Hub nevére, és a az Eszközazonosító hozott létre. Ezt megteheti is a virtuális gépen az alábbi lépéseket: 
+A modell üzembe helyezése az eszközhöz, használja a beállításjegyzék-információk gyűjtött a [container registry hitelesítő adatainak lekérése](#getcontainer) az üzembe helyezett házirendmodul szakaszban ismertetett lépéseket, az IoT Edge-modulok. Például, hogy amikor [üzembe helyezése az Azure IoT Edge-modulok az Azure Portalról](../../iot-edge/how-to-deploy-modules-portal.md), konfigurálnia kell a __beállításjegyzék-beállítások__ az eszközhöz. Használja a __bejelentkezési kiszolgáló__, __felhasználónév__, és __jelszó__ a munkaterület tároló-beállításjegyzékhez.
 
-```bash 
-wget https://raw.githubusercontent.com/Azure/ai-toolkit-iot-edge/master/amliotedge/deploymodel
-sudo chmod +x deploymodel
-sudo ./deploymodel <ContainerRegistryName> <username> <password> <imageLocationURL> <DeploymentID> <IoTHubname> <DeviceID>
-```
-
-Azt is megteheti, követheti a lépések a [üzembe helyezése az Azure IoT Edge-modulok az Azure Portalról](../../iot-edge/how-to-deploy-modules-portal.md) a dokumentumot, a lemezkép telepítése az eszközre. Konfigurálásakor a __beállításjegyzék-beállítások__ az eszközhöz, használja a __bejelentkezési kiszolgáló__, __felhasználónév__, és __jelszó__ a munkaterület tárolóregisztrációs adatbázis.
-
-> [!NOTE]
-> Ha még nem ismeri az Azure IoT Edge segítségével, a szolgáltatás első lépésekről lásd: a következő dokumentumokban talál:
->
-> * [Rövid útmutató: Az első IoT Edge-modul üzembe egy Linux rendszerű eszközön](../../iot-edge/quickstart-linux.md)
-> * [Rövid útmutató: Helyezze üzembe az első IoT Edge-modul a Windows-eszköz](../../iot-edge/quickstart.md)
-
+Ezenkívül telepítheti használatával [Azure CLI-vel](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-cli) és [Visual Studio Code](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-vscode).
 
 ## <a name="testing-web-service-deployments"></a>Webszolgáltatások üzembe helyezéséhez tesztelése
 

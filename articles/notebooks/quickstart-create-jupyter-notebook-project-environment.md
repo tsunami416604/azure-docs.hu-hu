@@ -6,21 +6,21 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: e049f591-27a7-440f-a1a3-c5bef25e8a28
-ms.service: notebooks
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 9e5f4d6f2086048e428f313bc49cc6f599ee1bec
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 35b5f1e29ae125dcac79c278578e900a73ffc7be
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53085331"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771385"
 ---
-# <a name="quickstart-create-a-project-with-a-custom-environment"></a>Gyors útmutató: Egyéni környezettel rendelkező-projekt létrehozása
+# <a name="quickstart-create-a-project-with-a-custom-environment"></a>Gyors útmutató: Projekt létrehozása egyéni környezettel
 
 A projekt Azure notebookok gyűjteménye, fájlok, például a notebookok, adatfájlokat, dokumentáció, lemezképek és így tovább, és a egy környezetben, amelyek adott telepítő parancsokkal konfigurálhatók. A környezet a projekttel definiálásával bárki, aki a projekt klónozza a saját Azure-jegyzetfüzetek fiókba, létre kell hoznia a szükséges környezetet minden adattal rendelkezik.
 
@@ -38,7 +38,7 @@ A projekt Azure notebookok gyűjteménye, fájlok, például a notebookok, adatf
 
 1. Az a **új projekt létrehozása** előugró ablak, amely akkor jelenik meg, adja meg, vagy állítsa be a következő adatokat, majd válassza ki **létrehozás**:
 
-    - **Projektnév**: egyéni környezettel rendelkező projekt
+    - **Projektnév**: Egyéni környezettel rendelkező projekt
     - **A projekt Azonosítóját**: project-egyéni-környezet
     - **Nyilvános projekt**: (törölve)
     - **Hozzon létre egy README.md**: (törölve)

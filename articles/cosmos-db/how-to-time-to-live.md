@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/14/2018
 ms.author: mjbrown
-ms.openlocfilehash: c9437f69bf337f79c9531a12af6ac7868261f5b1
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: a7fedf0907ecc4c8ced4c5bfe30bb30aeb8f4aca
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992437"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570895"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Az Azure Cosmos DB élettartam konfigurálása
 
@@ -70,6 +70,20 @@ DocumentCollection ttlEnabledCollection = await client.CreateDocumentCollectionA
     UriFactory.CreateDatabaseUri("myDatabaseName"),
     collectionDefinition,
     new RequestOptions { OfferThroughput = 20000 });
+```
+
+### <a id="nodejs-enable-withexpiry"></a>NodeJS SDK
+
+```javascript
+const containerDefinition = {
+          id: "sample container1",
+        };
+
+async function createcontainerWithTTL(db: Database, containerDefinition: ContainerDefinition, collId: any, defaultTtl: number) {
+      containerDefinition.id = collId;
+      containerDefinition.defaultTtl = defaultTtl;
+      await db.containers.create(containerDefinition);
+}
 ```
 
 ## <a name="set-time-to-live-on-an-item"></a>Az elem élettartam beállítása
@@ -138,6 +152,19 @@ SalesOrder salesOrder = new SalesOrder
 };
 ```
 
+### <a id="nodejs-set-ttl-item"></a>NodeJS SDK
+
+```javascript
+const itemDefinition = {
+          id: "doc",
+          name: "sample Item",
+          key: "value", 
+          ttl: 2
+        };
+}
+```
+
+
 ## <a name="reset-time-to-live"></a>Élettartam alaphelyzetbe állítása
 
 Alaphelyzetbe állíthatja a írási végrehajtásával egy elemet az élő vagy az elemre a frissítés ideje. Az írási vagy frissítési műveletben fogja beállítani a `_ts` az aktuális idő lejár a cikk az élettartam újra megkezdődik. Ha szeretné módosítani az élettartam egy elem, frissítheti a mező, ugyanúgy, mint bármely más mező frissíti.
@@ -177,7 +204,7 @@ response = await client.ReplaceDocumentAsync(readDocument);
 
 ## <a name="disable-time-to-live"></a>Élettartam letiltása
 
-A tároló élő, és állítsa le a háttérben futó folyamatot lejárt elemek keresése letiltása a `DefaultTimeToLive` a tárolón a tulajdonság azt törölni kell. Ez a tulajdonság törlése nem azonos a -1 értékre állítaná. -1 értéket állítsa be, amikor a tároló új elemek megtalálhatók lesznek tartja, azonban felülbírálhatja ezt az értéket az adott elem a tárolóban. A TTL tulajdonsága a tárolóból való eltávolításakor az elemek lejár, akkor sem, ha azok explicit módon kell felülbírálni, az előző alapértelmezett TTL-érték.
+A tároló élő, és állítsa le a háttérben futó folyamatot lejárt elemek keresése letiltása a `DefaultTimeToLive` a tárolón a tulajdonság azt törölni kell. Ez a tulajdonság törlése nem azonos a -1 értékre állítaná. -1 értéket állítsa be, amikor a tároló új elemek megtalálhatók lesznek tartja, azonban felülbírálhatja ezt az értéket az adott elem a tárolóban. A TTL tulajdonsága a tárolóból való eltávolításakor az elemek nem jár, még akkor is, ha vannak, akik explicit módon bírálták felül az előző alapértelmezett TTL-érték.
 
 ### <a id="dotnet-disable-ttl"></a>.NET SDK
 

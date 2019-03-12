@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 07e95905-0f1b-49ce-a0f9-820f61952278
-ms.service: notebooks
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: f71f1e086e584d1d26b067de001bf83d15bf7961
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 86821e2082deb500f050eeab827dcee593082661
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54243678"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776359"
 ---
 # <a name="discover-and-use-sample-notebooks"></a>Fedezze fel, és a minta notebookok használata
 
@@ -41,7 +41,7 @@ Ismerje meg, szeretné jegyzetfüzet azonosítása, után az alábbiakban néhá
 
 ## <a name="next-steps"></a>További lépések  
 
-- [kézikönyv: Konfigurálhatja és kezelheti a projektek](configure-manage-azure-notebooks-projects.md)
-- [kézikönyv: Adatfájlok használata](work-with-project-data-files.md)
-- [kézikönyv: Adatok erőforrások eléréséhez](access-data-resources-jupyter-notebooks.md)
-- [kézikönyv: Az Azure Machine Learning-szolgáltatások használata](use-machine-learning-services-jupyter-notebooks.md)
+- [Útmutató: Konfigurálhatja és kezelheti a projektek](configure-manage-azure-notebooks-projects.md)
+- [Útmutató: Adatfájlok használata](work-with-project-data-files.md)
+- [Útmutató: Adatok erőforrások eléréséhez](access-data-resources-jupyter-notebooks.md)
+- [Útmutató: Az Azure Machine Learning-szolgáltatások használata](use-machine-learning-services-jupyter-notebooks.md)

@@ -7,17 +7,17 @@ author: vhorne
 manager: jpconnock
 ms.service: application-gateway
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/23/2018
 ms.author: victorh
-ms.openlocfilehash: cf3e051e4833c6b654e5ff89cd084911521b3d67
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ms.openlocfilehash: 759f5e8441ec62ef11d4be93921e3c4f2629145c
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049239"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774162"
 ---
 # <a name="azure-application-gateway-url-path-based-routing-overview"></a>Az Azure Application Gateway URL-címalapú útválasztás áttekintése
 
@@ -25,7 +25,7 @@ Az URL-alapú útválasztás lehetővé teszi, hogy a kérésben szereplő URL-c
 
 Az egyik lehetőség az, hogy a különböző típusú tartalmakra vonatkozó kéréseket a megfelelő háttér-kiszolgálókészlethez irányítja.
 
-Az alábbi példában az alkalmazásátjáró a contoso.com webhelyet szolgálja ki a VideoServerPool, az ImageServerPool és a DefaultServerPool háttér-kiszolgálókészlettel.
+A következő példában az Application Gateway szolgálja ki a három háttér kiszolgálókészlettel contoso.com forgalom például: Kérések a VideoServerPool, az ImageServerPool és a DefaultServerPool.
 
 ![imageURLroute](./media/url-route-overview/figure1.png)
 
@@ -68,7 +68,7 @@ Az UrlPathMap elem elérésiút-minták meghatározására szolgál a háttér-k
 ```
 
 > [!NOTE]
-> PathPattern: ez a beállítás tartalmazza az elérésiút-minták listáját. Minden mintának a / jellel kell kezdődnie, a „*” jel pedig kizárólag a mintavégi „/” jel után állhat. Az elérésiút-megfeleltetőben megadott sztring nem tartalmaz szöveget az első ? vagy # után, és ezek a karakterek itt nem megengedettek.
+> PathPattern: Ez a beállítás az elérésiút-minták listája. Minden mintának a / jellel kell kezdődnie, a „*” jel pedig kizárólag a mintavégi „/” jel után állhat. Az elérésiút-megfeleltetőben megadott sztring nem tartalmaz szöveget az első ? vagy # után, és ezek a karakterek itt nem megengedettek.
 
 További információért tekintse át az [URL-alapú átirányításhoz készült Resource Manager-sablonokat](https://azure.microsoft.com/documentation/templates/201-application-gateway-url-path-based-routing).
 

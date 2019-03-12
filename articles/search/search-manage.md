@@ -7,28 +7,30 @@ tags: azure-portal
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 08/28/2018
+ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 70343c0d66eb2a00ff2245b7e4876c2e94a96855
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: d5820c927b88eba37eaf092dfd4b209180bfc8eb
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314489"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775594"
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Az Azure Portalon az Azure Search szolgáltatás-felügyelet
 > [!div class="op_single_selector"]
-> * [Portál](search-manage.md)
 > * [PowerShell](search-manage-powershell.md)
+> * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
+> * [Portál](search-manage.md)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
 Az Azure Search egy olyan teljes körűen felügyelt, felhőalapú keresési szolgáltatás, amely fejlett keresési funkciókat beépítés egyéni alkalmazásokba. Ez a cikk ismerteti a szolgáltatás felügyeleti feladatokat hajthat végre a a [az Azure portal](https://portal.azure.com) már kiépített egy keresési szolgáltatás. Szolgáltatásfelügyeleti egyszerűsített kialakításból fakadóan csak a következő feladatokat:
 
-* Való hozzáférés kezelése a *api-kulcsainak* olvasási vagy írási hozzáférés a szolgáltatáshoz használt.
-* Módosítsa a szolgáltatáskapacitás partíciókat és -replikákat a lefoglalt módosításával.
-* Megfigyelheti az erőforrások felhasználását, a szolgáltatási szintben maximálisan korlátait viszonyítva.
+> [!div class="checklist"]
+> * Való hozzáférés kezelése a *api-kulcsainak* olvasási vagy írási hozzáférés a szolgáltatáshoz használt.
+> * Módosítsa a szolgáltatáskapacitás partíciókat és -replikákat a lefoglalt módosításával.
+> * Megfigyelheti az erőforrások felhasználását, a szolgáltatási szintben maximálisan korlátait viszonyítva.
 
 Figyelje meg, hogy *frissítése* egy felügyeleti feladat nem szerepel. Ha a szolgáltatás ki van építve az erőforrások kiosztásakor, mert egy új szolgáltatás áthelyezése másik tarifacsomagra igényel. További információkért lásd: [Azure Search szolgáltatás létrehozása](search-create-service-portal.md).
 
@@ -58,7 +60,7 @@ A szolgáltatással kapcsolatos általános információkért tekintetében a k�
 <a id="sub-5"></a>
 
 ## <a name="monitor-resource-usage"></a>Erőforrás-használat monitorozása
-Az irányítópult erőforrások monitorozása korlátozódik a szolgáltatás irányítópultját és a szolgáltatás lekérdezésével szerezheti be néhány metrikák látható információk. A szolgáltatás irányítópultján, a használati szakaszban gyorsan meghatározhatja e partíció erőforrásszintek megfelelőek-e az alkalmazás.
+Az irányítópult erőforrások monitorozása korlátozódik a szolgáltatás irányítópultját és a szolgáltatás lekérdezésével szerezheti be néhány metrikák látható információk. A szolgáltatás irányítópultján, a használati szakaszban gyorsan meghatározhatja e partíció erőforrásszintek megfelelőek-e az alkalmazás. Telepíthet külső erőforrások, például az Azure monitoring, ha azt szeretné, rögzítése és a naplózott események megőrzése. További információkért lásd: [figyelése az Azure Search](search-monitor-usage.md).
 
 A Search szolgáltatás REST API használatával, kérheti a száma a dokumentumokban és indexekben programozott módon: 
 

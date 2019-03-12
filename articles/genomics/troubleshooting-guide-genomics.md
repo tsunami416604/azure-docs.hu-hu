@@ -7,16 +7,16 @@ services: microsoft-genomics
 author: ruchir
 editor: jasonwhowell
 ms.author: ruchir
-ms.service: microsoft-genomics
+ms.service: genomics
 ms.workload: genomics
 ms.topic: article
 ms.date: 10/29/2018
-ms.openlocfilehash: 2c10259e4b9fa180d09ceef0359e7ec99e8200b1
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 01f4cca8e177d8f9c9325a7920eb7e72c005bbd6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239899"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57760938"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
 
@@ -93,13 +93,13 @@ Keresse meg a szóban forgó munkafolyamat a kimeneti tárolóhoz. MSGEN létreh
 Hibaelhárítási, vizsgálja meg a standardoutput.txt tartalmát, és jegyezze fel a megjelenő hibaüzeneteket.
 
 
-## <a name="step-2-try-recommended-steps-for-common-errors"></a>2. lépés: Próbálja meg a javasolt lépéseket a gyakori hibák elhárításához
+## <a name="step-2-try-recommended-steps-for-common-errors"></a>2. lépés: Próbálja ki a gyakori hibák elhárításához ajánlott lépéseket
 
 Ez a szakasz röviden kiemeli a gyakori hibák kimeneti (msgen) a Microsoft Genomics szolgáltatásba, és a problémák megoldásához használható stratégiákról. 
 
 A Microsoft Genomics szolgáltatással (msgen) a következő két típusú hibákat nagyvállalat:
 
-1. Belső szolgáltatás hibák: A szolgáltatás, amely előfordulhat, hogy nem oldható fel paraméterek vagy a bemeneti fájlok kijavítását belüli hibák. A munkafolyamat néha újraküldése előfordulhat, hogy javítsa ki a hibákat.
+1. Belső hiba: Előfordulhat, hogy nem oldható fel paraméterek vagy a bemeneti fájlok kijavítását, a szolgáltatás belső hibákat. A munkafolyamat néha újraküldése előfordulhat, hogy javítsa ki a hibákat.
 2. Beviteli hibák: A hibákat, javítása vagy megfelelő argumentumokkal megoldhatók a fájlformátumokat.
 
 ### <a name="1-internal-service-errors"></a>1. Belső hiba

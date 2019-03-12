@@ -2,19 +2,19 @@
 title: A helyszíni virtuális hálózat létrehozása terraform az Azure-ban
 description: Az oktatóanyagban egy helyszíni virtuális hálózat megvalósítása az Azure-környezetet tároló helyi erőforrások ábrázoló
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: a terraform, küllős topológiájú, hálózatok, a hibrid hálózatok, devops, virtuális gép, azure, virtuális hálózatok közötti társviszony, a helyszíni
 author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
 ms.date: 03/01/2019
-ms.openlocfilehash: d8b6142514808213553ba602c8ff6b3af1e4e972
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: fedd83276a0182ecf2d39e43382bc264c6f88de5
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57411413"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57761685"
 ---
 # <a name="tutorial-create-on-premises-virtual-network-with-terraform-in-azure"></a>Oktatóanyag: A helyszíni virtuális hálózat létrehozása terraform az Azure-ban
 

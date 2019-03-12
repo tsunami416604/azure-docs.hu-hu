@@ -9,14 +9,14 @@ ms.topic: reference
 author: hning86
 ms.author: haining
 ms.reviewer: j-martens
-ms.date: 2/25/2019
+ms.date: 03/11/2019
 ms.custom: seodec18
-ms.openlocfilehash: d72676d7eaad539fc6e023bc96ccbb16f0958a7a
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: bb074dd848ce5e752ba8e4ca1d3a8ee533a2f5d2
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311372"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57777447"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Az Azure Machine Learning szolgáltatás kibocsátási megjegyzései
 
@@ -24,6 +24,21 @@ Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások.
 + Az Azure Machine Learning [ **fő SDK a Pythonhoz**](https://aka.ms/aml-sdk)
 + Az Azure Machine Learning [ **adat-előkészítési SDK**](https://aka.ms/data-prep-sdk)
 
+## <a name="2019-03-11"></a>2019-03-11
+
+### <a name="azure-machine-learning-sdk-for-python-v1018"></a>Az Azure Machine Learning SDK for Python v1.0.18
+
+ + **Módosítások**
+   + Az azureml-tensorboard csomag azureml-contrib-tensorboard váltja fel.
+
+### <a name="azure-machine-learning-data-prep-sdk-v1017"></a>Az Azure Machine Learning adat-előkészítési SDK v1.0.17
+
++ **Új funkciók**
+  + Most már két numerikus oszlopok létrehozásához a kifejezés nyelv használatával eredő oszlop hozzáadását támogatja.
+
++ **Hibajavítások és kapcsolatos fejlesztések**
+  + Továbbfejlesztett dokumentáció és random_split paraméter.
+  
 ## <a name="2019-02-27"></a>2019-02-27
 
 ### <a name="azure-machine-learning-data-prep-sdk-v1016"></a>Az Azure Machine Learning adat-előkészítési SDK v1.0.16
@@ -37,25 +52,27 @@ Ebben a cikkben megismerheti az Azure Machine Learning szolgáltatás kiadások.
 
 + **Új funkciók**
 
-  + Az Azure Machine Learning SDK már támogatja a [ `Chainer` ](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) estimator osztály képzés és üzembe helyezéséhez Chainer egyéni kódot használó folyamatot.
+  + Az Azure Machine Learning most már elterjedt DNN keretrendszer Chainer első osztályú támogatást nyújt. Használatával [ `Chainer` ](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) osztály felhasználók könnyedén betanítása és Chainer modellek üzembe helyezése.
+    + Ismerje meg, hogyan [ChainerMN elosztott betanítási Futtatás](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/distributed-chainer/distributed-chainer.ipynb)
+    + Ismerje meg, hogyan [hiperparaméter finomhangolása a Chainer HyperDrive használatával futtassa](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/train-hyperparameter-tune-deploy-with-chainer/train-hyperparameter-tune-deploy-with-chainer.ipynb)
   + Az Azure Machine Learning-folyamatokat Folyamatfuttatás adattárolója módosítások alapján lehetővé teszi az eseményindító hozzáadása. A folyamat [ütemezés notebook](https://aka.ms/pl-schedule) frissül, és ez a funkció bemutatására.
-  
+
 + **Hibajavítások és kapcsolatos fejlesztések**
   + Hozzáadtuk a támogatást az Azure Machine Learning-folyamatokat a source_directory_data_store tulajdonság egy kívánt adattár (például egy blob storage) állítja a [RunConfigurations](https://docs.microsoft.com/en-us/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) , amely megadott a [ PythonScriptStep](https://docs.microsoft.com/en-us/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py). Alapértelmezés szerint az lépéseket az Azure fájltároló használjuk a biztonsági adattár, amely megadtuk szabályozási problémák lépések nagy számú párhuzamosan végrehajtásakor.
 
 ### <a name="azure-portal"></a>Azure Portal
 
 + **Új funkciók**
-    + Új fogd és vidd tábla szerkesztő élmény a jelentések. Felhasználók oszlop húzhat a tábla területre, ahol a táblázat előnézetét megjelenik a jól. Az oszlopok alakítható át.
-    + Új naplókat megjelenítő
-    + Hivatkozások való kísérletezéshez fut, számítási, modelleket, lemezképek és a tevékenységek lapról központi telepítések
+  + Új fogd és vidd tábla szerkesztő élmény a jelentések. Felhasználók oszlop húzhat a tábla területre, ahol a táblázat előnézetét megjelenik a jól. Az oszlopok alakítható át.
+  + Új naplókat megjelenítő
+  + Hivatkozások való kísérletezéshez fut, számítási, modelleket, lemezképek és a tevékenységek lapról központi telepítések
 
 ### <a name="azure-machine-learning-data-prep-sdk-v1015"></a>Az Azure Machine Learning adat-előkészítési SDK v1.0.15
 
 + **Új funkciók**
   + Adat-előkészítési mostantól támogatja a írása egy adatfolyam érkező adatfolyamok fájlt. Emellett a fájlnevek stream hozhat létre új fájlnevek módosítására.
     + Útmutató: [Működik az fájl Streamek notebook](https://aka.ms/aml-data-prep-file-stream-nb)
- 
+
 + **Hibajavítások és kapcsolatos fejlesztések**
   + A nagy méretű adatkészleteket a t-kivonatoló javított teljesítménye.
   + Data Prep mostantól támogatja a DataPath olvasási adatait.

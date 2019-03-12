@@ -1,26 +1,27 @@
 ---
 title: Metaadatok beolvasása tevékenység az Azure Data Factoryban |} A Microsoft Docs
-description: Ismerje meg, hogyan használhatja az SQL Server tárolt eljárási tevékenység egy tárolt eljárást az Azure SQL Database vagy Azure SQL Data Warehouse a Data Factory-folyamatok meghívásához.
+description: Ismerje meg, hogyan használhatja a Data Factory-folyamatot a GetMetadata tevékenység.
 services: data-factory
 documentationcenter: ''
-author: sharonlo101
+author: linda33wj
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: ''
 ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/22/2019
-ms.author: shlo
-ms.openlocfilehash: ca77fa092e41534e0f18323014c9cea583c19758
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.date: 03/11/2019
+ms.author: jingwang
+ms.openlocfilehash: 78f63b4f46fe5479d4d0fd5849ad80536d8a137c
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671658"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730705"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Metaadatok beolvasása tevékenység az Azure Data Factoryban
+
 GetMetadata tevékenység is lehet lekérni **metaadatok** minden adat, az Azure Data Factoryban. Ez a tevékenység a következő esetekben használhatók:
 
 - Metaadat-információkat az adatok ellenőrzése
@@ -48,6 +49,7 @@ A GetMetadata tevékenység egy kötelező bemeneti adatkészlet szükséges, é
 | Google Cloud Storage | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
 | Azure-blob | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
 | 1. generációs Azure Data Lake Storage | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| 2. generációs Azure Data Lake Storage | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | Azure File Storage | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | Fájlrendszer | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | SFTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |

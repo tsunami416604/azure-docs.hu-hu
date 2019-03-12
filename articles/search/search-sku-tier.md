@@ -7,15 +7,15 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: cf2359834aa79b1d3fef8b65e4ef4191eb6ff867
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d325a5dfd57bb6b69e6cf171487adfa8d374512f
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467441"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762925"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Válasszon egy tarifacsomagot az Azure Search
 
@@ -32,30 +32,57 @@ Bár minden szint esetében, beleértve a **ingyenes** réteg, általában kín�
 > Funkcióparitás kivételt [indexelők](search-indexer-overview.md), amely nem áll rendelkezésre a S3HD.
 >
 
-A szinten belül is [módosíthatja a replika és a partíció erőforrások](search-capacity-planning.md) a teljesítmény finomhangolásának. Két vagy három az egyes kezdődhet, és átmenetileg emelni a indexelési számítási nagy számítási teljesítménnyel. Lehetővé teszi a szinten belüli erőforrásszintek hangolása növeli a rugalmasságot, de is némileg megnehezíti az elemzést. Előfordulhat, hogy talál-e egy alacsonyabb szintre magasabb erőforrások/replikákkal rendelkező kínál a nagyobb érték és a teljesítmény, mint az alacsonyabb szabályozásával magasabb szintre kísérletezést. Mikor és miért módosíthatja lenne a kapacitás kapcsolatos további információkért lásd: [teljesítmény és optimalizálás szempontok](search-performance-optimization.md).
+A szinten belül is [módosíthatja a replika és a partíció erőforrások](search-capacity-planning.md) növelheti vagy csökkentheti a méretezési csoport. Egy vagy két, az egyes kezdődhet, és átmenetileg emelni a indexelési számítási nagy számítási teljesítménnyel. Lehetővé teszi a szinten belüli erőforrásszintek hangolása növeli a rugalmasságot, de is némileg megnehezíti az elemzést. Előfordulhat, hogy talál-e egy alacsonyabb szintre magasabb erőforrások/replikákkal rendelkező kínál a nagyobb érték és a teljesítmény, mint az alacsonyabb szabályozásával magasabb szintre kísérletezést. Mikor és miért módosíthatja lenne a kapacitás kapcsolatos további információkért lásd: [teljesítmény és optimalizálás szempontok](search-performance-optimization.md).
 
-<!---
-The purpose of this article is to help you choose a tier. It supplements the [pricing page](https://azure.microsoft.com/pricing/details/search/) and [Service Limits](search-limits-quotas-capacity.md) page with a digest of billing concepts and consumption patterns associated with various tiers. It also recommends an iterative approach for understanding which tier best meets your needs. 
---->
+## <a name="tiers-for-azure-search"></a>Az Azure Search csomag
+
+A következő táblázat felsorolja az elérhető tarifacsomag. Egyéb információforrások szint közé tartozik a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/search/), [szolgáltatás és adat korlátok](search-limits-quotas-capacity.md), és a egy szolgáltatást üzembe helyezésekor a portál oldala.
+
+|Szint | Kapacitás |
+|-----|-------------|
+|Ingyenes | Más előfizetőkkel megosztott. Nem méretezhető, legfeljebb 3 indexszel és 50 MB tárhely. |
+|Alapszintű | Dedikált számítási erőforrások a kisebb léptékű termelési számítási feladatokhoz. 2 GB egy partíciót, és legfeljebb három replika. |
+|Standard 1 (S1 esetén) | Az S1 a további tárolási és feldolgozási kapacitással, minden szinten dedikált gépek mentése. Partíció mérete 25 GB/partíció (legfeljebb 300 GB-os dokumentum szolgáltatásonként) s1 esetén. |
+|Standard szintű 2 (S2) | Hasonló az S1 szintre, de a 100 GB/partíció (maximális 1,2 TB-os dokumentum szolgáltatásonként) |
+|Standard 3 (S3 esetén) | 200 GB/partíció (maximális 2,4 TB-os dokumentum szolgáltatásonként). |
+|Standard 3 nagy sűrűségű (S3-HD) | Nagy sűrűségű van egy *üzemeltetési mód* S3. Az alapul szolgáló hardver sok kisebb indexek, több-bérlős forgatókönyvek számára van optimalizálva. S3-HD S3, de a hardver optimalizált sok kisebb indexeket a gyors olvasást az azonos egységenkénti díj rendelkezik.|
+
 
 ## <a name="how-billing-works"></a>A számlázás működése
 
-Az Azure Search szolgáltatásban többféleképpen négy Ön is a személy költségei a portálon egy keresési erőforrás létrehozásakor:
+Az Azure Search szolgáltatásban az Azure Search szolgáltatásban a személy költségei három módja van, és a rögzített és változó összetevőből áll. Ez a szakasz a megvizsgálja az egyes számlázási összetevők.
 
-* Megjelenik a replikák és partíciók rendszeres indexelés és a feladatok lekérdezése. Először egy a, de az egyik vagy mindkét adja hozzá a kapacitás növeléséhez kiválasztása vagy szabályozásával szintű kellene fizetnie. 
-* Kimenő adatforgalom díját az indexelés során. Ha az adatok lekérése egy Azure SQL Database vagy a Cosmos DB-adatforrásból, díjkategóriát alkalmazzuk a tranzakció a számlán, az erőforrásokhoz.
-* A [cognitive search](cognitive-search-concept-intro.md) csak, kép kibontása során dokumentumfeltörést alapján számítjuk fel a dokumentumok kinyert képek számát. Szövegkinyerés jelenleg díjmentes.
-* A [cognitive search](cognitive-search-concept-intro.md) csak végrehajtott információbeolvasás alapján [beépített kognitív képességeket](cognitive-search-predefined-skills.md) Cognitive Services-erőforrás terhelve van. Végrehajtott információbeolvasás számlázása megegyező módon, ha végrehajtotta a Cognitive Services használatával közvetlenül a feladatot.
+### <a name="1-core-service-costs-fixed-and-variable"></a>1. Core szolgáltatási költségei (rögzített és változó)
+
+A szolgáltatás magát a minimális díj megfizetése alól az első keresési egység (1 replika x 1 partíció), és ez a mennyiség állandó, a szolgáltatás teljes élettartama, mert a szolgáltatás bármit kevesebb, mint ez a konfiguráció nem futtatható. 
+
+Az alábbi képernyőképen / alapegység jelzi a Basic, S1 és az ingyenes (S2 és S3 nem jelennek meg). Ha létrehozott egy alapszintű vagy standard szolgáltatást, a havi költségek lenne átlagos az érték, amely megjelenik az *ár-1* és *ár-2* jelölik. Egység költségek fel az egyes szintek mert a számítási teljesítmény és tárterület-kapacitás nagyobb, minden egyes egymást követő szinten.
+
+![/ Alapegység](./media/search-sku-tier/per-unit-pricing.png "/ alapegység")
+
+További replikák és partíciók olyan bővítménye, a kezdeti díja. Egy keresési szolgáltatás, a minimális konfigurációs egy replika és a partíció szükséges. A minimális túli hozzáadhat replikák és partíciók egymástól függetlenül. Például hozzáadhat csak a replikákat és a csak a partíciókat. 
+
+További replikák és partíciók alapján lesznek kiszámlázva egy [képlet](#search-units). A költségek, amelyek nem lineáris (kétszeresére matematikában költsége nagyobb kapacitás). Példa bemutatja, hogyan a képlet működését, lásd: ["Útmutató a replikák és partíciók lefoglalni"](search-capacity-planning.md#how-to-allocate-replicas-and-partitions)
+
+### <a name="2-data-egress-charges-during-indexing"></a>2. Kimenő adatforgalom díját az indexelés során
+
+Ha az adatok lekérése egy Azure SQL Database vagy a Cosmos DB-adatforrásból, díjkategóriát alkalmazzuk a tranzakció a számlán, az erőforrásokhoz. Ezek a díjak nem Azure Search-mérőszámok, de itt azok szerepelnek, mert ha adatok kérhetők le az Azure SQL Database vagy Azure Cosmos DB-hez indexelők használ, látni fogja, hogy a díj szerepel a számlán.
+
+### <a name="3-ai-enriched-indexing-using-cognitive-services"></a>3. AI-bővített indexelés kognitív szolgáltatások használata
+
+A [cognitive search](cognitive-search-concept-intro.md) csak, kép kibontása során dokumentumfeltörést alapján számítjuk fel a dokumentumok kinyert képek számát. Szövegkinyerés jelenleg díjmentes. Más végrehajtott információbeolvasás alapján [beépített kognitív képességeket](cognitive-search-predefined-skills.md) Cognitive Services-erőforrás terhelve van. Végrehajtott információbeolvasás számlázása megegyező módon, ha végrehajtotta a Cognitive Services használatával közvetlenül a feladatot.
 
 Ha nem használ [cognitive search](cognitive-search-concept-intro.md) vagy [Azure Search-indexelők](search-indexer-overview.md), replikák és partíciók aktívan használnak, rendszeres indexelés és a lekérdezési számítási feladatokhoz kapcsolódó csak költségeit.
 
-### <a name="billing-for-general-purpose-indexing-and-queries"></a>Általános célú indexelés és a lekérdezések
+<a name="search-units"></a>
+
+### <a name="billing-based-on-search-units"></a>A számlázás alapját a keresési egységek
 
 Az Azure Search-műveletek, a legfontosabb számlázási megértéséhez koncepciójuk egy *keresési egység* (SU). Azure Search a replikák és partíciók indexelést és lekérdezést is függ, mivel csak az egyik vagy másik számlázási nincs értelme. Ehelyett mindkét összetett számlázási alapul. 
 
 SU, a termék *replika* és *partíciók* a szolgáltatás által használt: **`(R X P = SU)`**
 
-Mindegyik szolgáltatás egy SU (egy másodpéldány egy partíciót megszorozza) kezdődik, az a minimális. Bármely szolgáltatás a maximális mérete 36 SUS-t, amely többféle módon is megvalósítható: 6 partíciók x 6 replikák, illetve 3 partíció x 12 replikákat, hogy néhányat említsünk. Kevesebb, mint a teljes kapacitás szokás. Például egy 3-replika, a 3-partition szolgáltatás 9 SUS-t számít. 
+Mindegyik szolgáltatás egy SU (egy másodpéldány egy partíciót megszorozza) kezdődik, az a minimális. Bármely szolgáltatás a maximális mérete 36 SUS-t, amely többféle módon is megvalósítható: 6 partíciók x 6 replikák, illetve 3 partíció x 12 replikákat, hogy néhányat említsünk. Kevesebb, mint a teljes kapacitás szokás. Például egy 3-replika, a 3-partition szolgáltatás 9 SUS-t számít. Áttekintheti [ezen a diagramon](search-capacity-planning.md#chart) érvényes kombinációk egyetlen pillantással megtekintheti.
 
 A számlázási sebessége **óránkénti száma SU**, minden egyes kellene fokozatosan magasabb szinten. A magasabb szintű nagyobb és gyorsabb partíciókat, hozzájárul a magasabb, a teljes óránkénti elszámolása kapható. Értékeli az egyes szintek találhatók [díjszabása](https://azure.microsoft.com/pricing/details/search/). 
 

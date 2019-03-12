@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/08/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/08/2019
-ms.openlocfilehash: 9300e60902b9234af01a64173eefcfb1bc033c61
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 1e5154f4f6c77e9a024ced58f3b75a0111a614c3
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410196"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769373"
 ---
 # <a name="validate-azure-stack-pki-certificates"></a>Az Azure Stack PKI-tanúsítványok ellenőrzése
 
@@ -75,7 +75,7 @@ Használja ezeket a lépéseket, előkészítéséhez és az Azure Stack PKI-tan
     ```PowerShell  
     New-Item C:\Certificates -ItemType Directory
     
-    $directories = 'ACSBlob','ACSQueue','ACSTable','Admin Portal','ARM Admin','ARM Public','KeyVault','KeyVaultInternal','Public Portal','Admin Extension Host','Public Extension Host'
+    $directories = 'ACSBlob', 'ACSQueue', 'ACSTable', 'Admin Extension Host', 'Admin Portal', 'api_appservice', 'ARM Admin', 'ARM Public', 'ftp_appservice', 'KeyVault', 'KeyVaultInternal', 'Public Extension Host', 'Public Portal', 'sso_appservice', 'wildcard_dbadapter', 'wildcard_sso_appservice'
     
     $destination = 'c:\certificates'
     
@@ -86,7 +86,7 @@ Használja ezeket a lépéseket, előkészítéséhez és az Azure Stack PKI-tan
     > Az AD FS- és Graph szükségesek, ha az AD FS használja, a identitáskezelő rendszerbe. Példa:
     >
     > ```PowerShell  
-    > $directories = 'ADFS','Graph','ACSBlob','ACSQueue','ACSTable','Admin Portal','ARM Admin','ARM Public','KeyVault','KeyVaultInternal','Public Portal','Admin Extension Host','Public Extension Host'
+    > $directories = 'ACSBlob', 'ACSQueue', 'ACSTable', 'ADFS', 'Admin Extension Host', 'Admin Portal', 'api_appservice', 'ARM Admin', 'ARM Public', 'ftp_appservice', 'Graph', 'KeyVault', 'KeyVaultInternal', 'Public Extension Host', 'Public Portal', 'sso_appservice', 'wildcard_dbadapter', 'wildcard_sso_appservice'
     > ```
     
      - A tanúsítvány(ok) jelölje be a megfelelő könyvtárakat az előző lépésben létrehozott. Példa:  
@@ -254,17 +254,17 @@ Segítségével ezeket a lépéseket előkészítése, és ellenőrizze a platfo
 
 | Címtár | Tanúsítvány |
 | ---    | ----        |
-| acsBlob | wildcard_blob_\< régió >\< externalFQDN > |
-| ACSQueue  |  wildcard_queue\< régió >\< externalFQDN > |
-| ACSTable  |  wildcard_table\< régió >\< externalFQDN > |
-| Admin Extension Host  |  wildcard_adminhosting\< régió >\< externalFQDN > |
-| Felügyeleti portál  |  adminportal\< régió >\< externalFQDN > |
-| ARM-rendszergazda  |  adminmanagement\< régió >\< externalFQDN > |
-| ARM-nyilvános  |  felügyeleti\< régió >\< externalFQDN > |
-| KeyVault  |  wildcard_vault\< régió >\< externalFQDN > |
-| KeyVaultInternal  |  wildcard_adminvault\< régió >\< externalFQDN > |
-| A bővítmény nyilvános állomás  |  wildcard_hosting\< régió >\< externalFQDN > |
-| Nyilvános portálra  |  portál\< régió > _\< externalFQDN > |
+| acsBlob | wildcard_blob_\<region>_\<externalFQDN> |
+| ACSQueue  |  wildcard_queue_\<region>_\<externalFQDN> |
+| ACSTable  |  wildcard_table_\<region>_\<externalFQDN> |
+| Admin Extension Host  |  wildcard_adminhosting_\<region>_\<externalFQDN> |
+| Felügyeleti portál  |  adminportal_\<region>_\<externalFQDN> |
+| ARM-rendszergazda  |  adminmanagement_\<region>_\<externalFQDN> |
+| ARM-nyilvános  |  management_\<region>_\<externalFQDN> |
+| KeyVault  |  wildcard_vault_\<region>_\<externalFQDN> |
+| KeyVaultInternal  |  wildcard_adminvault_\<region>_\<externalFQDN> |
+| A bővítmény nyilvános állomás  |  wildcard_hosting_\<region>_\<externalFQDN> |
+| Nyilvános portálra  |  portal_\<region>_\<externalFQDN> |
 
 ## <a name="using-validated-certificates"></a>Ellenőrzött tanúsítványok használatával
 

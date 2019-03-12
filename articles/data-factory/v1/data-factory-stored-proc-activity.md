@@ -3,22 +3,22 @@ title: Az SQL Server tárolt eljárási tevékenység
 description: Ismerje meg, hogyan használhatja az SQL Server tárolt eljárási tevékenység egy tárolt eljárást az Azure SQL Database vagy Azure SQL Data Warehouse a Data Factory-folyamatok meghívásához.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: douglasl
+author: nabhishek
+ms.author: abnarain
+manager: craigg
 robots: noindex
-ms.openlocfilehash: 5604767b49e6234bba5c16179bebe717938170cf
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 77842b60108629168f423f25eb03b01079cf55e5
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753265"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775357"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>Az SQL Server tárolt eljárási tevékenység
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -85,7 +85,7 @@ A következő bemutató egy folyamatban a tárolt eljárási tevékenység haszn
     ```
 
    > [!IMPORTANT]
-   > **Név** és **kis-és** paraméter (dátum és idő ebben a példában) meg kell egyeznie a folyamat/tevékenység a JSON a megadott paraméter. Ellenőrizze, hogy a tárolt eljárás definíciójában **@** paraméter előtagjaként is szolgál.
+   > **Név** és **kis-és** paraméter (dátum és idő ebben a példában) meg kell egyeznie a folyamat/tevékenység a JSON a megadott paraméter. Ellenőrizze, hogy a tárolt eljárás definíciójában **\@** paraméter előtagjaként is szolgál.
 
 ### <a name="create-a-data-factory"></a>Data factory létrehozása
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).

@@ -7,17 +7,17 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: quickstart
-ms.date: 12/03/2018
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.custom: mvc
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: ef2d59393902194af3e257ce0fd5bf403b293af1
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: d9a17bdad0bfa4965d36fbe2a2cf3a7890060e98
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245423"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772568"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-with-the-azure-stack-portal"></a>Gyors útmutató: Linux rendszerű kiszolgáló virtuális gép létrehozása az Azure Stack portálon
 
@@ -43,7 +43,7 @@ Létrehozhat egy Ubuntu Server 16.04 LTS virtuális gépet az Azure Stack-portá
 
    Az Azure Stack Development Kit (ASDK) használatakor, előfordulhat, hogy nincs hozzáférése egy SSH-ügyfél. Egy ügyfél van szüksége, van-e több SSH-ügyfelet tartalmazó csomagot. Például a putty-kapcsolaton keresztül egy SSH-ügyfél és az SSH megosztottelérésikulcs-készítő (puttygen.exe) tartalmaz. Elérhető csomagok kapcsolatos további információkért olvassa el az Azure-cikket: [SSH használata a kulcsok az Azure-on Windows](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows#windows-packages-and-ssh-clients).
 
-   Ez a rövid útmutató használja a putty-kapcsolaton keresztül az SSH-kulcsok létrehozása és a Linux-kiszolgáló virtuális géphez csatlakozni. Töltse le és telepítse a Puttyt, keresse fel a [ http://www.putty.org/ ](http://www.putty.org).
+   Ez a rövid útmutató használja a putty-kapcsolaton keresztül az SSH-kulcsok létrehozása és a Linux-kiszolgáló virtuális géphez csatlakozni. Töltse le és telepítse a Puttyt, keresse fel a [ https://www.putty.org/ ](http://www.putty.org).
 
 ## <a name="create-an-ssh-key-pair"></a>SSH-kulcs létrehozása
 

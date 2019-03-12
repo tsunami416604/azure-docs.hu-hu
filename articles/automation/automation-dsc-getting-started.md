@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 19e1721a638dfc750938e09e1626c4e291367723
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 234d59f9d625af6d0309b2995cc734fad6028b1e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432445"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767039"
 ---
 # <a name="getting-started-with-azure-automation-state-configuration"></a>Ismerkedés az Azure Automation Állapotkonfiguráció
 
@@ -157,7 +157,6 @@ Használhatja az Azure Automation Állapotkonfiguráció kezelése az Azure virt
    ![A regisztrációs panelen – képernyőfelvétel](./media/automation-dsc-getting-started/RegisterVM.png)
 
    A csomópont-konfiguráció által meghatározott időközönként érvényesek a virtuális géphez megadott a **a konfigurációs mód gyakoriságának**, és a csomópont-konfiguráció által meghatározott időközönként frissítéseket keres a virtuális gép a **frissítése Gyakoriság**. Ezek az értékek módjáról további információkért lásd: [a Local Configuration Manager](https://msdn.microsoft.com/PowerShell/DSC/metaConfig).
-1. Az a **hozzáadása az Azure virtuális gépek** panelen kattintson a **létrehozás**.
 
 Az Azure a virtuális gép bevezetési folyamata elindul. Ha elkészült, a virtuális gép megjelenik-e a **csomópontok** lapján a **State configuration (DSC)** lap az Automation-fiókban.
 

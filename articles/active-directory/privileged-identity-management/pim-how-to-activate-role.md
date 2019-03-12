@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/21/2018
+ms.date: 03/05/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dc20a3739c7dab68728535cc05db400545fbcdf8
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 7fc0a22f4300a06b5c827973ffb2436d0b8cfb36
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436391"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542744"
 ---
 # <a name="activate-my-azure-ad-directory-roles-in-pim"></a>A PIM az Azure AD-címtárbeli szerepkörök aktiválása
 
@@ -71,25 +71,15 @@ Amikor szüksége van egy Azure AD directory szerepkör, aktiválás segítség�
 
 1. Kattintson a **aktiválása**.
 
-    Ha a szerepkör nem igényel jóváhagyási, aktiválják, és hozzá az aktív szerepkörök listáját. Ha azt szeretné, a szerepkör azonnal használja, kövesse a következő szakaszban.
+    Ha a szerepkör nem igényel jóváhagyási, egy **aktiválási állapota** panelen megjelennek az aktiválási állapotát jeleníti meg.
+
+    ![Aktiválási állapot](./media/pim-how-to-activate-role/activation-status.png)
+
+    Ha minden szakasz befejeződött, kattintson a **Kijelentkezés** jelentkezzen ki az Azure Portalon mutató hivatkozást. Amikor bejelentkezik vissza a portálra, most már használhatja a szerepkört.
 
     Ha a [a szerepkör megköveteli a jóváhagyási](./azure-ad-pim-approval-workflow.md) aktiválni, egy értesítés jelenik meg a böngészőben arról értesíti, a kérelem van függőben lévő jóváhagyási jobb felső sarkában található.
 
     ![Értesítés függőben lévő kérelem](./media/pim-how-to-activate-role/directory-roles-activate-notification.png)
-
-## <a name="use-a-role-immediately-after-activation"></a>Olyan szerepkört használjon az aktiválás után azonnal
-
-A PIM szerepkör aktiválásakor a kívánt felügyeleti portál eléréséhez vagy funkciók belül egy adott felügyeleti számítási feladatok végrehajtása előtt legalább 10 percet vesz igénybe. Az engedélyek frissítés kényszerítéséhez használja a **alkalmazás-hozzáférés** lapon a következő lépésben ismertetett módon.
-
-1. Nyissa meg az Azure AD Privileged Identity Management.
-
-1. Kattintson a **alkalmazás-hozzáférés** lapot.
-
-    ![A PIM alkalmazás-hozzáférés](./media/pim-how-to-activate-role/pim-application-access.png)
-
-1. Kattintson a **Azure Active Directory** nyissa meg újra a portálon a mutató hivatkozást a **minden felhasználó** lapot.
-
-    Ha erre a hivatkozásra kattint, érvényteleníteni az aktuális token, és kényszerítheti az Azure Portalon, amelyeknek tartalmazniuk kell a frissített engedélyek új token beszerzéséhez.
 
 ## <a name="view-the-status-of-your-requests"></a>A kérések állapotának megtekintése
 
@@ -139,7 +129,7 @@ Jóváhagyást igénylő szerepkörök aktiválási nincs szükség, ha egy füg
 
 ### <a name="permissions-not-granted-after-activating-a-role"></a>A szerepkör aktiválása után nem rendelkezik engedélyekkel
 
-A PIM szerepkör aktiválásakor a kívánt felügyeleti portál eléréséhez vagy funkciók belül egy adott felügyeleti számítási feladatok végrehajtása előtt legalább 10 percet vesz igénybe. Az engedélyek frissítés kényszerítéséhez használja a **alkalmazás-hozzáférés** lapon korábban leírt módon [olyan szerepkört használjon az aktiválás után azonnal](#use-a-role-immediately-after-activation).
+A PIM szerepkör aktiválásakor a kívánt felügyeleti portál eléréséhez vagy funkciók belül egy adott felügyeleti számítási feladatok végrehajtása előtt legalább 10 percet vesz igénybe. Az aktiválás befejeződése után jelentkezzen ki az Azure Portalon, és jelentkezzen be újra az újonnan aktivált szerepkör használatának megkezdéséhez.
 
 További hibaelhárítási lépéseket lásd: [emelt szintű engedélyek hibaelhárítása](https://social.technet.microsoft.com/wiki/contents/articles/37568.troubleshooting-elevated-permissions-with-azure-ad-privileged-identity-management.aspx).
 

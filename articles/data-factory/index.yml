@@ -1,23 +1,23 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 8a1f9967b51d3655c962620b9436dfe4f9ffd521
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 2179b212dbbc7891b003664f4bea3d47cbb3a34e
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442528"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57575392"
 documentType: LandingData
 title: Az Azure Data Factory dokumentációja
 metadata:
   title: Az Azure Data Factory dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
   description: Ismerje meg, hogyan telepíthet a helyszíni és felhőalapú erőforrásokba és azokból kivezető automatizált adatfeldolgozási folyamatokat a Data Factory használatával az adatok áthelyezéséhez és elemzésre való előkészítéséhez.
   services: data-factory
-  author: douglaslMS
+  author: sharonlo101
+  ms.author: shlo
   manager: craigg
   ms.service: data-factory
   ms.tgt_pltfrm: na
   ms.topic: overview
   ms.date: 08/06/2018
-  ms.author: douglasl
 abstract:
   description: 'Ismerkedjen meg a Data Factory felhőalapú integrációs szolgáltatás használatával, amelynek segítségével adattárolási, -továbbítási és -feldolgozási folyamatokat állíthat össze automatizált adatfeldolgozási folyamatokká. Az oktatóanyagok és az egyéb dokumentáció bemutatják az adatfeldolgozási folyamatok telepítésének és felügyeletének, valamint az adatok az elemzéshez való továbbításának és átalakításának módjait. <p>Ha a Data Factory V1 verzióját használja, lásd: <a href=/azure/data-factory/v1/data-factory-introduction>a V1 dokumentációja</a>.</p>'
   aside:

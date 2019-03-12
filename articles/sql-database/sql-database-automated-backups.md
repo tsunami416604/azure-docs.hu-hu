@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 4a3b48be893c596f1a86bbf308a97868ed546006
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: fcd1868c1b17d6c1ad895757b32293d0abc79a24
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313922"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731566"
 ---
 # <a name="automated-backups"></a>Automatikus biztonsági mentések
 
@@ -42,7 +42,7 @@ Ezek a biztonsági mentések használhatók:
 
 ## <a name="how-long-are-backups-kept"></a>Mennyi ideig biztonsági mentések őrzi meg
 
-Minden egyes SQL-adatbázisokban egy alapértelmezett biztonsági másolat megőrzési idejének 7 és 35 nap közötti, amely a vásárlási modell és a szolgáltatási rétegben függ. A biztonsági mentés frissítheti) az SQL Database-kiszolgálót egy adatbázis megőrzési ideje. További információkért lásd: [módosítsa biztonsági mentések megőrzési időszaka](#how-to-change-the-pitr-backup-retention-period).
+Minden egyes SQL-adatbázisokban egy alapértelmezett biztonsági másolat megőrzési idejének 7 és 35 nap közötti, amely a vásárlási modell és a szolgáltatási rétegben függ. Az SQL Database-kiszolgáló az adatbázis biztonsági másolatának megőrzési ideje frissítheti. További információkért lásd: [módosítsa biztonsági mentések megőrzési időszaka](#how-to-change-the-pitr-backup-retention-period).
 
 Ha töröl egy adatbázist, az SQL Database biztosítják a biztonsági másolatok olvasásainál, online adatbázis megegyező módon. Például ha törli egy hét napos megőrzési idővel rendelkező alapszintű adatbázis, egy biztonsági másolatot, amely négy napnál régebbi mentése további három nappal.
 
@@ -66,7 +66,7 @@ A DTU-alapú vásárlási modell használatával létrehozott adatbázis alapér
 Ha használja a [Virtuálismag-alapú vásárlási modell](sql-database-service-tiers-vcore.md), az alapértelmezett biztonsági másolat megőrzési idejének 7 nap (egyetlen, a készletezett és adatbázisok példány). Az összes Azure SQL-adatbázis (önálló, készletezett, és a példányok adatbázisai, akkor is [módosítsa a biztonsági másolat megőrzési idejének 35 napon belül](#how-to-change-the-pitr-backup-retention-period).
 
 > [!WARNING]
-> Ha csökkenti az aktuális megőrzési időszak, az összes meglévő biztonsági másolatok, régebbi, mint az új megőrzési időszak van már nem érhető el. Aktuális megőrzési időszakán növeli, ha az SQL Database megtartja a meglévő biztonsági másolatok a hosszabb adatmegőrzési idő eléréséig.
+> Ha csökkenti az aktuális megőrzési időszak, az összes meglévő biztonsági másolatok, az új megőrzési időszaknál korábbi már nem érhetők el. Aktuális megőrzési időszakán növeli, ha az SQL Database megtartja a meglévő biztonsági másolatok a hosszabb adatmegőrzési idő eléréséig.
 
 ## <a name="how-often-do-backups-happen"></a>Milyen gyakran történjen a biztonsági mentéseket
 
@@ -144,9 +144,9 @@ PUT https://management.azure.com/subscriptions/00000000-1111-2222-3333-444444444
 
 ```json
 {
-  "properties":{  
-      "retentionDays":28
-   }
+  "properties":{
+    "retentionDays":28
+  }
 }
 ```
 

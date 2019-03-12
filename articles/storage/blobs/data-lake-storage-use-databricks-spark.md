@@ -6,14 +6,14 @@ author: dineshmurthy
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: tutorial
-ms.date: 01/29/2019
+ms.date: 03/11/2019
 ms.author: dineshm
-ms.openlocfilehash: 14e8d54b7b9cf579bb5dcbce595e2591c158b841
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 422bf9a3fb4e3168857a78f4f50ac771ef80c6a6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56585429"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766461"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>Oktatóanyag: Data Lake Storage Gen2-adatok elérhetők az Azure Databricks Spark használatával
 
@@ -171,9 +171,10 @@ Az AzCopy használata adatokat másolni a *.csv* fájlt a Data Lake Storage Gen2
 2. Adatokat másolni a *.csv* fiókra, adja meg a következő parancsot.
 
    ```bash
-   azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<file-system-name>/folder1/On_Time
+   azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<file-system-name>/folder1/On_Time.csv
    ```
-   * Cserélje le a `<csv-folder-path>` könyvtár elérési útja, a helyőrző értékét az *.csv* (kivéve a fájl neve) fájlt.
+
+   * Cserélje le a `<csv-folder-path>` helyőrző értékét az elérési útját a *.csv* fájlt.
 
    * Cserélje le a `storage-account-name` helyőrző értéket cserélje a tárfiókja nevére.
 
@@ -187,22 +188,22 @@ A korábban létrehozott jegyzetfüzet adjon hozzá egy új cellát, és illessz
 # Use the previously established DBFS mount point to read the data.
 # create a data frame to read data.
 
-flightDF = spark.read.format('csv').options(header='true', inferschema='true').load("/mnt/flightdata/On_Time/<your-folder-name>/*.csv")
+flightDF = spark.read.format('csv').options(header='true', inferschema='true').load("/mnt/flightdata/*.csv")
 
 # read the airline csv file and write the output to parquet format for easy query.
- flightDF.write.mode("append").parquet("/mnt/flightdata/parquet/flights")
- print("Done")
- ```
+flightDF.write.mode("append").parquet("/mnt/flightdata/parquet/flights")
+print("Done")
+```
 
 ## <a name="explore-data"></a>Adatok megismerése
 
-Egy új cellába illessze be a következő kódot az AzCopy segítségével feltöltött CSV-fájlok listájának lekérése. Cserélje le a `<csv-folder-path>` helyőrző értéket cserélje a korábban már használt helyőrző ugyanazt az értéket.
+Egy új cellába illessze be a következő kódot az AzCopy segítségével feltöltött CSV-fájlok listájának lekérése.
 
 ```python
 import os.path
 import IPython
 from pyspark.sql import SQLContext
-display(dbutils.fs.ls("/mnt/flightdata/On_Time/<your-folder-name>"))
+display(dbutils.fs.ls("/mnt/flightdata"))
 ```
 
 Új fájl létrehozásához és fájlok listázásához a *parquet/flights* mappában futtassa ezt a szkriptet:
@@ -220,13 +221,11 @@ Következő lépésként megkezdheti a tárfiókba feltöltött adatok lekérdez
 
 Az adatforrások adatkeretek létrehozásához futtassa az alábbi parancsfájlt:
 
-* Cserélje le a `<csv-folder-path>` könyvtár elérési útja, a helyőrző értékét az *.csv* (kivéve a fájl neve) fájlt.
-
-* Cserélje le a `<your-csv-file-name` nevére a helyőrző értékét az *csv* fájlt.
+* Cserélje le a `<csv-folder-path>` helyőrző értékét az elérési útját a *.csv* fájlt.
 
 ```python
 #Copy this into a Cmd cell in your notebook.
-acDF = spark.read.format('csv').options(header='true', inferschema='true').load("/mnt/flightdata/On_Time/<your-folder-name>/<your-csv-file-name>.csv")
+acDF = spark.read.format('csv').options(header='true', inferschema='true').load("/mnt/flightdata/On_Time.csv")
 acDF.write.parquet('/mnt/flightdata/parquet/airlinecodes')
 
 #read the existing parquet file for the flights database that was created earlier

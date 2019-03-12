@@ -2,19 +2,19 @@
 title: Kubernetes-fürt létrehozása az Azure Kubernetes Service-szel (AKS) és a Terraformmal
 description: Oktatóanyag, amely bemutatja, hogyan hozhat létre egy Kubernetes-fürtöt az Azure Kubernetes Service-szel és a Terraformmal
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, devops, virtuális gép, azure, kubernetes
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/04/2018
-ms.openlocfilehash: 57615ecd4c81359360004b732736bf757c0026c3
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: ce16e1fbc112c4bd807c42893685643dc0a13992
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892065"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57759749"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Kubernetes-fürt létrehozása az Azure Kubernetes Service és a Terraform segítségével
 Az [Azure Kubernetes Service (AKS)](/azure/aks/) felügyeli az üzemeltetett Kubernetes környezetet, lehetővé téve a tárolóalapú alkalmazások gyors és egyszerű üzembe helyezését és felügyeletét tárolóvezénylési szakértelem nélkül is. Ezenkívül a folyamatban lévő műveletek és karbantartás terhét is megszünteti az erőforrások igény szerinti kiépítésével, frissítésével és méretezésével anélkül, hogy offline állapotba kellene helyezni az alkalmazásait.
@@ -377,7 +377,7 @@ Ha a Cloud Shell-munkamenet túllépi az időkorlátot, az alábbi lépéseket h
     cd /clouddrive/terraform-aks-k8s
     ```
 
-1. Futtassa a következő parancsot:
+1. Futtassa az alábbi parancsot:
 
     ```bash
     export KUBECONFIG=./azurek8s

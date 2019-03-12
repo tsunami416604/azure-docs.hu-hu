@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/10/2019
+ms.date: 03/07/2019
 ms.author: diberry
-ms.openlocfilehash: 093c60287b16073a6c04e824dc439f5dc069ec96
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bbe46db1972951b466b431c9efc0420e15ff6dee
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863669"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57765170"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>Szerzői és régiók és a hozzá tartozó kulcsok közzététele
 
@@ -95,6 +95,9 @@ A következő táblázat ismerteti a paraméterek, a kapcsos zárójelek szintbe
 |appID|A LUIS alkalmazás azonosító URL-CÍMÉT az útvonalban használt és az alkalmazás irányítópulton található|
 |válaszok|például csevegőrobot ügyfélalkalmazástól utterance (kifejezés) szövegét|
 
+## <a name="failover-regions"></a>Feladatátvételi régióban
+
+Minden egyes régió a feladatátvétel egy másodlagos régióba tartozik. Európa meghiúsul, Európa és Délkelet belül több mint átadja a feladatokat Ausztrália belül.
 
 ## <a name="next-steps"></a>További lépések
 

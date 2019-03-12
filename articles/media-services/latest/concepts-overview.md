@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 02/26/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: f9d431fe0ee76edf5d41c1ce7831f335128402a8
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: b346ac0ac456b7f6af078496e8dd1cb738caab67
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244740"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530194"
 ---
 # <a name="media-services-concepts"></a>A Media Services – alapelvek
 
@@ -65,7 +65,7 @@ Az alábbi ábrán a Media Services content protection munkafolyamat:
 
 ![Tartalom védelme](./media/content-protection/content-protection.svg)
 
-&#42;* a dinamikus titkosítás AES-128 "tiszta kulcsot" CBCS és CENC támogatja. 
+&#42;a dinamikus titkosítás AES-128 "tiszta kulcsot" CBCS és CENC támogatja. 
 
 Használhatja a Media Services **dinamikus jegyzékfájlok** csak egy adott megjelenítés vagy subclips a videó továbbításához. A következő példában egy kódoló egy mezzanine eszköz kódolandó hét ISO MP4-fájlnak videó beállításkészletben (a 180p a 1080p) lett megadva. A kódolt objektumhoz dinamikusan csomagolható be a következő adatfolyam-továbbítási protokollok bármelyikét: HLS, MPEG DASH és Smooth.  A diagram tetején jelenik meg a HLS-jegyzékfájl a szűrők az eszköz (tartalmaz minden hét beállításkészletben).  A bal alsó "ott" nevű szűrőt alkalmaztak, amelyhez a HLS-jegyzékfájl jelenik meg. A "ott" szűrő meghatározza, hogy távolítsa el az összes bitsebességre való átkódolása alább 1 MB/s, amely eredményezett az alsó két minőségi szint alatt levágja, a válaszban. Az alul a jobb oldalon a HLS-jegyzékfájlt, amelyhez "mobileszköz" nevű szűrőt alkalmaztak jelenik meg. A "mobileszköz" szűrő Megadja, hogy távolítsa el a beállításkészletben, ahol a megoldás nem haladja meg a két eredményezett 720p 1080p beállításkészletben levágja, folyamatban van.
 

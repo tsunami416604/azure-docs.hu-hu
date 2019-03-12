@@ -6,27 +6,27 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 2e935425-3923-4a33-89b2-0f2100b0c0c4
-ms.service: notebooks
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 3bd7f895e3cc30c4c5a0496977d65d68c220931f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a160bc0247d2f80dda620b67c946805926d78006
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084502"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773954"
 ---
-# <a name="quickstart-migrate-a-local-jupyter-notebook"></a>Gyors útmutató: A helyi Jupyter notebook áttelepítése
+# <a name="quickstart-migrate-a-local-jupyter-notebook"></a>Gyors útmutató: Helyi Jupyter notebook migrálása
 
 A saját számítógépén helyileg létrehozott Jupyter notebookok csak az Ön számára érhetők el. Megoszthatja azt jelenti, hogy, különböző fájljait, de majd címzettek rendelkeznek-e a notebookot a saját helyi példányát, és előfordulhat, hogy minden olyan módosításokat építhet számára nehézséget jelent. Notebookok egy megosztott, például a GitHub online tárházban is tárolhat, de ehhez továbbra is szükséges, hogy rendelkezik-e a saját helyi Jupyter-telepítés az Öné azonos konfigurációjú minden közreműködő.
 
 A helyi vagy a tárház notebookok Azure notebookok áttelepítésével tárolja ezeket a felhőben, amelyen azonnal megoszthatja a közreműködőkkel együtt. Ezeket a közreműködők kell csupán egy böngésző megtekintését és futtatását a jegyzetfüzet, ha azok [jelentkezzen be a](quickstart-sign-in-azure-notebooks.md) az Azure-jegyzetfüzeteket is módosíthatják.
 
-Ez a rövid útmutató azt ismerteti, folyamata az áttelepítéshez a notebookot a helyi számítógépről vagy egy másik elérhető fájl URL-CÍMÉT. A GitHub-adattárból notebookok áttelepítéséhez lásd: [a rövid útmutató: egy jegyzetfüzetet klónozása](quickstart-clone-jupyter-notebook.md).
+Ez a rövid útmutató azt ismerteti, folyamata az áttelepítéshez a notebookot a helyi számítógépről vagy egy másik elérhető fájl URL-CÍMÉT. A GitHub-adattárból notebookok áttelepítéséhez lásd: [a rövid útmutató: Klónozza a Jegyzetfüzet](quickstart-clone-jupyter-notebook.md).
 
 ## <a name="create-a-project-on-azure-notebooks"></a>Hozzon létre egy projektet az Azure-jegyzetfüzetek
 
@@ -48,7 +48,7 @@ Ez a rövid útmutató azt ismerteti, folyamata az áttelepítéshez a notebooko
 
     ![A parancs egy URL-cím vagy a helyi számítógép notebook feltöltéséhez](media/quickstarts/upload-from-computer-url-command.png)
 
-   (Újra, ha a jegyzetfüzet egy GitHub-adattárból, kövesse [a rövid útmutató: egy jegyzetfüzetet klónozása](quickstart-clone-jupyter-notebook.md) helyette.)
+   (Újra, ha a jegyzetfüzet egy GitHub-adattárból, kövesse [a rövid útmutató: Klónozza a Jegyzetfüzet](quickstart-clone-jupyter-notebook.md) helyett.)
 
     - Ha használ **a számítógép**, áthúzása a *.ipynb* fájlok a helyi menü, vagy válasszon **fájlok kiválasztása**, majd keresse meg és jelölje ki az importálni kívánt fájlokat. Válassza ki **feltöltése**. A feltöltött fájlok vannak megadva a neve megegyezik a helyi fájlokat. (Nem szükséges töltse fel a tartalmát bármely *.ipynb_checkpoints* mappák.)
 

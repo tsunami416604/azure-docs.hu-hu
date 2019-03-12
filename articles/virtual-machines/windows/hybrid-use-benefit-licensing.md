@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing-ms
-ms.openlocfilehash: d692eb471c514015271a688e4660700788f1baaa
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 64e9350606748116d2eef247790e88ed0d576c3f
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431462"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570368"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Azure Hybrid Benefit Windows Serverhez
 A frissítési garanciával rendelkező ügyfelek az Azure Hybrid Benefit a Windows Server lehetővé teszi a helyszíni Windows Server-licenceivel és a Windows virtuális gépek futtatásához az Azure-ban költséghatékony. Az Azure Hybrid Benefit a Windows Server használatával a Windows operációs rendszer új virtuális gépek üzembe helyezése. Ez a cikk halad keresztül lépéseket, hogyan helyezhet üzembe új virtuális gépeket az Azure Hybrid Benefit a Windows Server, és hogy miként frissítheti meglévő a futó virtuális gépek. További információ az Azure Hybrid Benefit a Windows Server licencelési és költséghatékonyan takaríthat meg, tekintse meg a [Azure Hybrid Benefit a Windows Server licencelési oldal](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -77,11 +77,11 @@ az vm create \
 ### <a name="template"></a>Sablon
 A Resource Manager-sablonok, egy további paraméter belül `licenseType` meg kell adni. További információ [Azure Resource Manager-sablonok készítése](../../resource-group-authoring-templates.md)
 ```json
-"properties": {  
-   "licenseType": "Windows_Server",
-   "hardwareProfile": {
+"properties": {
+    "licenseType": "Windows_Server",
+    "hardwareProfile": {
         "vmSize": "[variables('vmSize')]"
-   }
+    }
 ```
 
 ## <a name="convert-an-existing-vm-using-azure-hybrid-benefit-for-windows-server"></a>Az Azure Hybrid Benefit a Windows Server egy meglévő virtuális gép átalakítása
@@ -161,7 +161,7 @@ A virtuális gépet vagy virtuális gép méretezési csoportok erőforrás pane
 
 ### <a name="powershell"></a>PowerShell
 ```powershell
-$vms = Get-AzVM 
+$vms = Get-AzVM
 $vms | ?{$_.LicenseType -like "Windows_Server"} | select ResourceGroupName, Name, LicenseType
 ```
 
@@ -171,7 +171,7 @@ az vm list --query "[?licenseType=='Windows_Server']" -o table
 ```
 
 ## <a name="deploy-a-virtual-machine-scale-set-with-azure-hybrid-benefit-for-windows-server"></a>Egy virtuálisgép-méretezési csoportot az Azure Hybrid Benefit a Windows Server üzembe helyezése
-Belül a virtuálisgép-méretezési csoportot, Resource Manager-sablonok, egy további paraméter `licenseType` belül a VirtualMachineProfile tulajdonságot meg kell adni. Ehhez a létrehozás során vagy a méretezési csoportban az ARM-sablon, Powershell, az Azure CLI vagy a REST segítségével frissítheti is.
+Belül a virtuálisgép-méretezési csoportot, Resource Manager-sablonok, egy további paraméter `licenseType` belül a VirtualMachineProfile tulajdonságot meg kell adni. Ehhez a létrehozás során vagy a méretezési csoportban az ARM-sablon, PowerShell, az Azure CLI vagy a REST segítségével frissítheti is.
 
 Az alábbi példa egy Windows Server 2016 Datacenter rendszerképet az ARM-sablont használ:
 ```json

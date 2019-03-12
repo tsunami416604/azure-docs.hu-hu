@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: e49cffc5ba08d400c733ef7c211132c4909f9ef4
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 32962e6d40103c23a0ec7fd1116aec8820f513bd
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343561"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780286"
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>Szabályzatok létrehozása és kezelése a megfelelőség kikényszerítése céljából
 
@@ -87,32 +87,32 @@ Most, hogy hozzárendelt egy beépített szabályzatdefiníciót, még többet v
       - A szabályzat szabályai/feltételei, ebben az esetben: a virtuális gép termékváltozata megegyezik a G sorozattal
       - A szabályzat hatása, ebben az esetben: **Megtagadás**.
 
-    A JSON-kódnak így kell kinéznie. Illessze be a módosított kódot az Azure Portalra.
+   A JSON-kódnak így kell kinéznie. Illessze be a módosított kódot az Azure Portalra.
 
-    ```json
-    {
-        "policyRule": {
-            "if": {
-                "allOf": [{
-                        "field": "type",
-                        "equals": "Microsoft.Compute/virtualMachines"
-                    },
-                    {
-                        "field": "Microsoft.Compute/virtualMachines/sku.name",
-                        "like": "Standard_G*"
-                    }
-                ]
-            },
-            "then": {
-                "effect": "deny"
-            }
-        }
-    }
-    ```
+   ```json
+   {
+       "policyRule": {
+           "if": {
+               "allOf": [{
+                       "field": "type",
+                       "equals": "Microsoft.Compute/virtualMachines"
+                   },
+                   {
+                       "field": "Microsoft.Compute/virtualMachines/sku.name",
+                       "like": "Standard_G*"
+                   }
+               ]
+           },
+           "then": {
+               "effect": "deny"
+           }
+       }
+   }
+   ```
 
-    A *mező* a szabályzatbeli szabályban tulajdonság a következő értékek egyikének kell lennie: Név, típus, hely, címkék vagy alias. Példa egy aliasra: `"Microsoft.Compute/VirtualMachines/Size"`.
+   A *mező* a szabályzatbeli szabályban tulajdonság a következő értékek egyikének kell lennie: Név, típus, hely, címkék vagy alias. Példa egy aliasra: `"Microsoft.Compute/VirtualMachines/Size"`.
 
-    További Azure-szabályzatmintákért lásd: [Az Azure Policy mintái](../samples/index.md).
+   További Azure-szabályzatmintákért lásd: [Az Azure Policy mintái](../samples/index.md).
 
 1. Kattintson a **Mentés** gombra.
 

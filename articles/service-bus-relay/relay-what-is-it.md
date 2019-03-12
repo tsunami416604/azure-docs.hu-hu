@@ -10,15 +10,15 @@ ms.service: service-bus-relay
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: spelluru
-ms.openlocfilehash: 2937d1f665dae03795892f9ff0e8a93a894e1992
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 47fbce7ea26bcb7224fe2624d593d85cd178d610
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818039"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776308"
 ---
 # <a name="what-is-azure-relay"></a>Mi az az Azure Relay?
 Az Azure Relay szolgáltatás biztonságosan lehetővé teszi a vállalati hálózaton futó szolgáltatások közzétételét a nyilvános felhőben. Ezt a port, a tűzfal megnyitása vagy zavaró módosításokat kellene végrehajtani gondoskodik a vállalati hálózati infrastruktúrában anélkül teheti meg. 
@@ -82,7 +82,7 @@ Az alábbi ábra azt mutatja be, hogyan kezeli az Azure Relay szolgáltatás a b
 5. Az átjáró továbbítja a kapcsolódási kérelmet az átjárótárolóban található, megfelelő átjárónak. 
 6. Az átjáró kérelmet küld a figyelő ügyfélnek, hogy hozzon létre egy ideiglenes csatornát a küldő ügyfélhez legközelebbi átjárócsomóponthoz. 
 7. A figyelő ügyfél létrehozza az ideiglenes csatornát a küldő ügyfélhez legközelebbi átjáróhoz. Most, hogy az ügyfelek között létrejött egy átjárókapcsolat, üzeneteket válthatnak egymással. 
-8. Az átjáró továbbítja az üzeneteket a figyelő ügyféltől a küldő ügyfél felé. 
+8. Az átjáró a küldő ügyfél bármilyen üzenetet továbbítja a figyelő ügyfélnek. 
 9. Az átjáró továbbítja az üzeneteket a küldő ügyféltől a figyelő ügyfél felé.  
 
 ## <a name="next-steps"></a>További lépések

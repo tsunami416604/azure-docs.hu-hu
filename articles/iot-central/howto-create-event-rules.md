@@ -3,17 +3,17 @@ title: Létrehozása és kezelése az Azure IoT központi alkalmazás eseménysz
 description: Az Azure IoT Central esemény szabályok lehetővé teszik az eszközök, közel valós időben figyelheti és automatikusan követve indíthatók el műveletek, például egy e-mailt küldhet a szabály aktiválásakor.
 author: ankitscribbles
 ms.author: ankitgup
-ms.date: 08/14/2018
+ms.date: 02/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 84610c94621e887e20bb903385e2d6ddbe67189d
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 2fd06a2164761489af6ee84d56806ef858e3b5d8
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307853"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57782683"
 ---
 # <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Hozzon létre egy esemény szabályt és az Azure IoT központi alkalmazás-értesítések beállítása
 
@@ -27,29 +27,21 @@ Eszközök esemény mérési segítségével eszköz fontos vagy tájékoztató 
 
 Esemény szabály létrehozása esetén az eszköz sablon legalább egy eseményt mérési definiálva kell rendelkeznie. Ebben a példában egy hűtött Eladóautomata eszköz által jelentett motor hibaesemény ventilátor. A szabály az eseményt, az eszköz által jelentett figyeli, és a egy e-mailt küld, amikor az eseményt jelentett.
 
-1. Device Explorer használatával, keresse meg az eszköz sablon, amelynek a szabályt ad hozzá.
-
-1. A kiválasztott sablon alapján válassza ki egy meglévő eszközt.
-
-    >[!TIP] 
-    >Ha a sablon nem minden olyan eszközt, majd egy új eszköz hozzáadásához először.
+1. Használatával a **eszközsablonok** lapon, keresse meg az eszköz sablon, amelynek a szabályt ad hozzá.
 
 1. Szabályok még nem hozta létre, ha a következő képernyő jelenik meg:
 
     ![Még nincsenek szabályai](media/howto-create-event-rules/Rules_Landing_Page.png)
 
-
-1. Az a **szabályok** lapon jelölje be **sablon szerkesztése** , majd **+ új szabály** , milyen típusú szabályokat hozhat létre.
-
+1. Az a **szabályok** lapon jelölje be **+ új szabály** , milyen típusú szabályokat hozhat létre.
 
 1. Válassza ki a **esemény** csempére kattintva hozzon létre egy esemény figyelési szabály.
 
     ![Szabály típusa](media/howto-create-event-rules/Rule_Types.png)
 
-    
 1. Adjon meg egy nevet, amely segít azonosítani a szabály az eszköz sablonban.
 
-1. Váltsa át a szabály a sablon alapján létrehozott összes eszköz azonnal engedélyezéséhez **engedélyezése a szabály a sablon összes eszköz**.
+1. Váltsa át a szabály a sablon alapján létrehozott összes eszköz azonnal engedélyezéséhez **engedélyezése a szabály az összes eszközt, ez a sablon**.
 
     ![Szabály részletei](media/howto-create-event-rules/Rule_Detail.png)
 
@@ -63,26 +55,25 @@ A feltétel a feltételeknek, a szabály által figyelt határozza meg.
 
 1. Válassza ki azt az eseményt, amely szeretné figyelni a mérési legördülő listából. Ebben a példában **ventilátor Motor hiba** esemény lett kiválasztva.
 
-   ![Állapot](media/howto-create-event-rules/Condition_Filled_Out.png) 
-
+   ![Állapot](media/howto-create-event-rules/Condition_Filled_Out.png)
 
 1. Igény szerint is beállíthat **száma** , **összesítési** , és adja meg a megfelelő küszöbértéket.
 
-    - Nélkül összesítés, a szabály aktiválásakor adatpontok esemény, amely megfelel a feltételnek. Például ha a szabály feltételének aktiválásához "Ventilátor Motor Error" esemény bekövetkeztekor majd a szabály aktivál szinte azonnal amikor az eszköz jelenti a kapcsolódó eseményre.
-    - Száma aggregátumfüggvényt használja, akkor meg kell adnia egy **küszöbérték** és a egy **összesített időtartomány** keresztül, amelyet a feltétel ki kell értékelni kell. Ebben az esetben az események száma összesített értéket jelenít meg, és vált, hogy a szabály csak akkor, ha az összesített események száma megegyezik a küszöbértéket.
- 
-    Például ha azt szeretné, a riasztás, ha háromnál több eszköz események 5 percen belül, válassza ki az esemény, és állítsa "count", az aggregate függvényt, operátort, "nagyobb, mint" és "küszöbértéket" 3. Állítsa be a "Összesítési időszak", "5 perc". A szabály akkor aktiválódik, ha több mint három eseménynek az eszköz által küldött 5 percen belül. A szabály a kiértékelés gyakorisága pedig ugyanaz, mint a **összesített időtartomány**, ami azt jelenti, hogy ebben a példában a szabály kiértékelése történik az 5 percenként egyszer. 
+    - Nélkül összesítés, a szabály aktiválásakor adatpontok esemény, amely megfelel a feltételnek. Például, ha a szabály feltétel az indítási feltétel egy **ventilátor Motor hiba** esemény következik be, akkor a szabály gondoskodik arról, szinte azonnal amikor az eszköz jelenti a kapcsolódó eseményre.
+    - Száma aggregátumfüggvényt használja, akkor meg kell adnia egy **küszöbérték** és a egy **összesített időtartomány** keresztül, amelyet a feltétel ki kell értékelni kell. Ebben az esetben az események száma összesített értéket jelenít meg, és csak akkor, ha az összesített száma a küszöbérték megegyezik a szabály aktiválásakor.
+
+    Például ha azt szeretné, a riasztás, ha háromnál több eszköz események 5 percen belül, válassza ki az esemény, és állítsa "count", az aggregate függvényt, operátort, "nagyobb, mint" és "küszöbértéket" 3. Állítsa be a "Összesítési időszak", "5 perc". A szabály akkor aktiválódik, ha több mint három eseménynek az eszköz által küldött 5 percen belül. A szabály a kiértékelés gyakorisága pedig ugyanaz, mint a **összesített időtartomány**, ami azt jelenti, hogy ebben a példában a szabály kiértékelése történik az 5 percenként egyszer.
 
     ![Feltétel hozzáadása](media/howto-create-event-rules/Aggregate_Condition_Filled_Out.png)
 
-    >[!NOTE] 
-    >Egynél több esemény mérték alapján is hozzáadhatók **feltétel**. Ha több feltétel van megadva, minden feltételeknek teljesülniük kell elindítani a szabályhoz. Minden egyes bizonyságául lekérdezi csatlakozott egy "És" záradék által implicit módon. Összesítés használatakor minden mérték összesíteni kell.
+    >[!NOTE]
+    >Egynél több esemény mérték alapján is hozzáadhatók **feltétel**. Ha több feltétel van megadva, minden feltételeknek teljesülniük kell elindítani a szabályhoz. Minden egyes feltétel lekérdezi csatlakozott egy "És" záradék által implicit módon. Összesítés használatakor minden mérték összesíteni kell.
 
 ### <a name="configure-actions"></a>Művelet konfigurálása
 
 Ez a szakasz bemutatja, hogyan állíthatja be a műveleteket, ha a szabály lesz elindítva. Műveletek beolvasása aktiválódnak, ha az a szabályban megadott feltételek kiértékelése igaz értékre.
 
-1. Válassza ki a **+** melletti **műveletek**. Itt láthatja az elérhető műveletek listáját. 
+1. Válassza ki a **+** melletti **műveletek**. Itt láthatja az elérhető műveletek listáját.
 
     ![Művelet hozzáadása](media/howto-create-event-rules/Add_Action.png)
 
@@ -94,8 +85,6 @@ Ez a szakasz bemutatja, hogyan állíthatja be a műveleteket, ha a szabály les
    ![Művelet konfigurálása](media/howto-create-event-rules/Configure_Action.png)
 
 1. A szabály mentéséhez válasszon **mentése**. A szabály élesíti néhány percen belül, és elindítja az alkalmazásnak küldött események figyelését. Megegyezik a feltételt a szabályban megadott, a szabály eseményindítók a beállított e-mail-művelet.
-
-1. Válassza a **Kész** lehetőséget a **Sablon szerkesztése** módból való kilépéshez.
 
 A szabály például a Microsoft Flow és a webhookok más műveleteket is hozzáadhat. Szabályonként legfeljebb 5 műveleteket is hozzáadhat.
 

@@ -12,23 +12,17 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/03/2018
+ms.date: 03/05/2019
 ms.author: tomfitz
-ms.openlocfilehash: a4a86576b8f9f842c54cfa195305a3e0d0ff4724
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: eb3435d8c7b10e2de55cb0cf1f3ad2548bf2bcef
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527619"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766750"
 ---
 # <a name="azure-resource-manager-template-functions"></a>Az Azure Resource Manager-sablonfüggvények
-Ez a cikk ismerteti az Azure Resource Manager-sablon használható összes funkció áttekintésével.
-
-Funkciók hozzáadása zárójelben kötegfájlokban azokat a sablonokat: `[` és `]`, illetve. A kifejezés lesz kiértékelve, üzembe helyezés során. Ír egy szöveges karakterlánc, míg a során a kifejezés eredménye egy másik JSON típusú, például egy tömb, objektumot vagy egész szám lehet. Csak, például a JavaScript, függvényhívások formázott `functionName(arg1,arg2,arg3)`. A pont és a [index] operátorok használatával tulajdonságok hivatkozik.
-
-Egy kifejezés nem lehet 24,576 karakternél.
-
-Sablon függvényeket és paramétereket és nagybetűk nincsenek megkülönböztetve. Például, oldja fel az erőforrás-kezelő **variables('var1')** és **VARIABLES('VAR1')** ugyanaz, mint. Kiértékelésekor, hacsak a függvény kifejezetten módosítja (például toUpper vagy toLower) eset, a függvény megőrzi az az eset. Előfordulhat, hogy az egyes erőforrástípusok használatieset-követelmények attól függetlenül, hogyan értékeli ki a funkciók.
+Ez a cikk ismerteti az Azure Resource Manager-sablon használható összes funkció áttekintésével. A sablonban függvények használatával kapcsolatos információkért lásd: [sablon szintaxisáról](resource-group-authoring-templates.md#syntax).
 
 A saját függvény létrehozásával kapcsolatban lásd: [felhasználó által definiált függvények](resource-group-authoring-templates.md#functions).
 
@@ -62,9 +56,9 @@ A Resource Manager-tömbök és objektumok használata a számos funkciót bizto
 * [első](resource-group-template-functions-array.md#first)
 * [Metszet](resource-group-template-functions-array.md#intersection)
 * [json](resource-group-template-functions-array.md#json)
-* [utolsó](resource-group-template-functions-array.md#last)
+* [last](resource-group-template-functions-array.md#last)
 * [Hossza](resource-group-template-functions-array.md#length)
-* [Min](resource-group-template-functions-array.md#min)
+* [min](resource-group-template-functions-array.md#min)
 * [max](resource-group-template-functions-array.md#max)
 * [range](resource-group-template-functions-array.md#range)
 * [skip](resource-group-template-functions-array.md#skip)
@@ -81,7 +75,7 @@ A Resource Manager-tömbök és objektumok használata a számos funkciót bizto
 Resource Manager összehasonlítások végzett a sablonok számos funkciót biztosít.
 
 * [egyenlő](resource-group-template-functions-comparison.md#equals)
-* [kevesebb](resource-group-template-functions-comparison.md#less)
+* [less](resource-group-template-functions-comparison.md#less)
 * [lessOrEquals](resource-group-template-functions-comparison.md#lessorequals)
 * [greater](resource-group-template-functions-comparison.md#greater)
 * [greaterOrEquals](resource-group-template-functions-comparison.md#greaterorequals)
@@ -126,14 +120,14 @@ A Resource Manager az alábbi funkciókat biztosít a logikai feltételekkel has
 ## <a name="numeric-functions"></a>Numerikus függvények
 A Resource Manager az alábbi funkciókat biztosít az egész számok használata:
 
-* [Hozzáadása](resource-group-template-functions-numeric.md#add)
+* [add](resource-group-template-functions-numeric.md#add)
 * [copyIndex](resource-group-template-functions-numeric.md#copyindex)
 * [div](resource-group-template-functions-numeric.md#div)
 * [float](resource-group-template-functions-numeric.md#float)
 * [int](resource-group-template-functions-numeric.md#int)
-* [Min](resource-group-template-functions-numeric.md#min)
+* [min](resource-group-template-functions-numeric.md#min)
 * [max](resource-group-template-functions-numeric.md#max)
-* [MOD](resource-group-template-functions-numeric.md#mod)
+* [mod](resource-group-template-functions-numeric.md#mod)
 * [MUL számú](resource-group-template-functions-numeric.md#mul)
 * [sub](resource-group-template-functions-numeric.md#sub)
 
@@ -204,9 +198,10 @@ A Resource Manager az alábbi funkciókat biztosít a karakterláncokkal való m
 * [első](resource-group-template-functions-string.md#first)
 * [guid](resource-group-template-functions-string.md#guid)
 * [indexOf](resource-group-template-functions-string.md#indexof)
-* [utolsó](resource-group-template-functions-string.md#last)
+* [last](resource-group-template-functions-string.md#last)
 * [lastIndexOf](resource-group-template-functions-string.md#lastindexof)
 * [Hossza](resource-group-template-functions-string.md#length)
+* [newGuid](resource-group-template-functions-string.md#newguid)
 * [padLeft](resource-group-template-functions-string.md#padleft)
 * [replace](resource-group-template-functions-string.md#replace)
 * [skip](resource-group-template-functions-string.md#skip)
@@ -222,9 +217,10 @@ A Resource Manager az alábbi funkciókat biztosít a karakterláncokkal való m
 * [uri](resource-group-template-functions-string.md#uri)
 * [uriComponent](resource-group-template-functions-string.md#uricomponent)
 * [uriComponentToString](resource-group-template-functions-string.md#uricomponenttostring)
+* [utcNow](resource-group-template-functions-string.md#utcnow)
 
 ## <a name="next-steps"></a>További lépések
 * A szakaszok az Azure Resource Manager-sablon ismertetését lásd: [Azure Resource Manager-sablonok készítése](resource-group-authoring-templates.md)
 * Több sablon egyesíteni, lásd: [kapcsolt sablonok használata az Azure Resource Managerrel](resource-group-linked-templates.md)
 * A megadott számú alkalommal újrafuttathatja egy adott típusú erőforrás létrehozásakor, lásd: [több erőforráspéldány létrehozása az Azure Resource Manager](resource-group-create-multiple.md)
-* Ellenőrizze, hogyan helyezheti üzembe a létrehozott sablont, tekintse meg a [alkalmazás üzembe helyezése Azure Resource Manager-sablonnal](resource-group-template-deploy.md)
+* A létrehozott sablon üzembe helyezése, olvassa el [alkalmazás üzembe helyezése Azure Resource Manager-sablonnal](resource-group-template-deploy.md)

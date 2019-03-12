@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 1a02862d3ea2e17cfa25a2a2d96e1454699ae7f1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 63e4052a2bce6c620180d682d6713d2f1547c956
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166283"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536759"
 ---
 # <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>Gyors útmutató: A php használatával a Bing Web Search API meghívása  
 
@@ -25,7 +25,7 @@ Ez a rövid útmutató segítségével a Bing Web Search API az első hívását
 ## <a name="prerequisites"></a>Előfeltételek
 Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 
-* A [PHP 5.6.x-es](http://php.net/downloads.php) vagy újabb verziója
+* A [PHP 5.6.x-es](https://php.net/downloads.php) vagy újabb verziója
 * Egy előfizetői azonosító  
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]

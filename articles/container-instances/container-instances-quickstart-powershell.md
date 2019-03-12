@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – alkalmazás futtatása az Azure Container Instances szolgáltatásban – PowerShell
-description: Ebben a rövid útmutatóban az Azure PowerShell használatával tároló üzembe helyezése a Docker Azure Container Instances szolgáltatásban az Azure PowerShell használatával
+title: Rövid útmutató – Docker-tároló üzembe helyezése az Azure Container Instances – PowerShell
+description: Ebben a rövid útmutatóban az Azure PowerShell használatával gyorsan üzembe helyezhet egy tárolóalapú webalkalmazást, amely egy elkülönített Azure-tárolópéldányon
 services: container-instances
 author: dlepow
 ms.service: container-instances
@@ -8,16 +8,18 @@ ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: b8cb84523288f45dfb719d69e4f7d227039598a9
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 00f5f8e045a2ec78751d115db3d9d75ec76189e8
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56806912"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57732300"
 ---
-# <a name="quickstart-run-a-container-application-in-azure-container-instances-with-azure-powershell"></a>Gyors útmutató: Egy tároló-alkalmazás futtatása az Azure Container Instances szolgáltatásban az Azure PowerShell használatával
+# <a name="quickstart-deploy-a-container-instance-in-azure-using-azure-powershell"></a>Gyors útmutató: Üzembe helyezéséhez az Azure-ban az Azure PowerShell-lel
 
-Az Azure Container Instances segítségével egyszerűen és gyorsan futtathat Docker-tárolókat az Azure-ban. Nem kell virtuális gépeket üzembe helyeznie vagy teljes körű tárolóvezérlési platformot használnia (amilyen például a Kubernetes). Ebben a rövid útmutatóban létre fog hozni az Azure Portalon egy Azure-beli Windows-tárolót, és egy teljes tartománynévvel (FQDN) elérhetővé fogja tenni az alkalmazását. Egyetlen üzembe helyezési parancsot kell végrehajtania, ami után néhány másodperccel már meg is nyithatja a futó alkalmazást:
+Azure Container Instances használatával kiszolgáló nélküli Docker-tárolókat futtathat az Azure-ban egyszerű és gyors. Egy tároló példány igény szerinti-alkalmazás üzembe helyezése, ha már nincs szükség a teljes tárolót vezénylési platformot hasonlóan az Azure Kubernetes Service-ben.
+
+Ebben a rövid útmutatóban az Azure PowerShell használatával egy elkülönített Windows-tároló üzembe helyezése és elérhetővé teheti az alkalmazás a teljesen minősített tartománynevét (FQDN). Néhány másodpercet, egy egyetlen központi telepítési parancs végrehajtása után megnyithatja az a tárolóban futó alkalmazásnak:
 
 ![Az Azure Container Instances szolgáltatásban üzembe helyezett alkalmazás képe a böngészőben][qs-powershell-01]
 
@@ -45,7 +47,7 @@ Most, hogy már van egy erőforráscsoportja, futtathat egy tárolót az Azure-b
 
 A tárolóit közzéteheti az interneten. Ehhez adjon meg egy vagy több megnyitni kívánt portot, egy DNS-névcímkét vagy mindkettőt. Ebben a rövid útmutatóban üzembe helyezi egy-egy DNS-névcímke tárolóban úgy, hogy az IIS nyilvánosan elérhető.
 
-A tárolópéldány indításához futtassa az alábbi parancsot. A `-DnsNameLabel` értéknek egyedinek kell lennie abban az Azure-régióban, ahol a példányt létrehozza. Ha „DNS-névcímke nem érhető el” hibaüzenetet kap, próbálkozzon másik DNS-névcímkével.
+A tárolópéldány indításához az alábbihoz hasonló parancs végrehajtása. Állítsa be a `-DnsNameLabel` érték, amely egyedi az Azure-régióban, ahol létrehozhatja a példányt. Ha „A DNS-névcímke nem érhető el” hibaüzenetet kap, próbálkozzon másik DNS-névcímkével.
 
  ```azurepowershell-interactive
 New-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer -Image microsoft/iis:nanoserver -OsType Windows -DnsNameLabel aci-demo-win

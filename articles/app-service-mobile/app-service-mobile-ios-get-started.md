@@ -11,15 +11,15 @@ ms.service: app-service-mobile
 ms.workload: na
 ms.tgt_pltfrm: mobile-ios
 ms.devlang: objective-c
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: crdun
-ms.openlocfilehash: 9809b51f1279c99de69cd1c219ffc57351ff21ef
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
-ms.translationtype: HT
+ms.openlocfilehash: d0d6a3d9da2768c2d7b04bd9c4a7c24fba9eb65e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41921053"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57781680"
 ---
 # <a name="create-an-ios-app"></a>iOS-alkalmazás létrehozása
 
@@ -31,15 +31,15 @@ Az útmutató azt mutatja be, hogyan adhatja hozzá az [Azure App Service Mobile
 
 Az oktatóanyag elvégzéséhez egy Mac gépre és [egy Azure-fiókra](https://azure.microsoft.com/pricing/free-trial/) lesz szüksége.
 
-## <a name="step-i-create-a-new-azure-mobile-app-backend"></a>1. lépés: Új Azure Mobile Apps-háttéralkalmazás létrehozása
+## <a name="step-i-create-a-new-azure-mobile-app-backend"></a>I. lépésben Új Azure Mobile Apps-háttéralkalmazás létrehozása
 
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
 
-## <a name="step-ii-configure-the-backend-project"></a>2. lépés: A háttéralkalmazás-projekt konfigurálása
+## <a name="step-ii-configure-the-backend-project"></a>II. lépés: A háttéralkalmazás-projekt konfigurálása
 
 [!INCLUDE [app-service-mobile-configure-new-backend.md](../../includes/app-service-mobile-configure-new-backend.md)]
 
-## <a name="step-iii-download-and-run-the-ios-app"></a>3. lépés: Az iOS-alkalmazás letöltése és futtatása
+## <a name="step-iii-download-and-run-the-ios-app"></a>III. lépés: Az iOS-alkalmazás letöltése és futtatása
 
 [!INCLUDE [app-service-mobile-ios-run-app](../../includes/app-service-mobile-ios-run-app.md)]
 
