@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/12/2018
 ms.author: yexu
-ms.openlocfilehash: af83fe7a750e5dbeb065926f5aed452fdf6e3df6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ce4002ff37de3fcc96b86bcfb8ee9b0239212ef3
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438788"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57760817"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information"></a>Adatok növekményes betöltése az Azure SQL Database-ből az Azure Blob Storage-ba változáskövetési adatok használatával 
 Az oktatóanyag során egy Azure-beli adat-előállítót hoz létre egy olyan folyamattal, amely változásadatokat tölt be a forrás Azure SQL Database-ben lévő **változáskövetési** adatok alapján egy Azure Blob Storage-be.  
@@ -260,7 +260,7 @@ Ebben a lépésben egy adatkészletet hoz létre, amely a forrásadattárból m�
 
     1. A **Társított szolgáltatás** mezőben válassza az **AzureStorageLinkedService** értéket.
     2. A **filePath** **mappa** részéhez írja be az **adftutorial/incchgtracking** kifejezést.
-    3. A **filePath** **fájl** részéhez írja be az **@CONCAT('Incremental-', pipeline().RunId, '.txt')** értéket.  
+    3. Adja meg  **\@CONCAT ("növekményes-', pipeline(). RunId, '.txt')** a **fájl** része a **filePath**.  
 
        ![Fogadó adatkészlet – kapcsolat](./media/tutorial-incremental-copy-change-tracking-feature-portal/sink-dataset-connection.png)
 

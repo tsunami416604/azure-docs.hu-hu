@@ -11,15 +11,15 @@ ms.service: biztalk-services
 ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: fe56b84b881b2afce9da9a7f7dfe4637c3494aa8
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: d47aab9e3d083cd7f51b1c3ba613f421fc1777a6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261961"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57764098"
 ---
 # <a name="create-biztalk-services-using-the-azure-portal"></a>BizTalk Services létrehozása az Azure Portallal
 
@@ -143,8 +143,8 @@ Azure BizTalk Services-szolgáltatások létrehozásakor létrejön a BizTalk Se
 <br/>
 
 <ul>
-<li><strong>Kibővített kulcshasználat</strong>: Az Azure BizTalk Services legalább kiszolgálói hitelesítést igényel.</li>
-<li><strong>Köznapi név</strong>: Adja meg az Azure BizTalk Services-szolgáltatás URL-jének teljes tartománynevét (FQDN-jét). Lásd ezen cikk <a HREF="#CreateService">BizTalk Services-szolgáltatás létrehozása</a> szakaszát.</li>
+<li><strong>Kibővített kulcshasználat</strong>: Az Azure BizTalk Services legalább a kiszolgálói hitelesítést igényel.</li>
+<li><strong>Köznapi név</strong>: Adja meg az Azure BizTalk Service URL-JÉNEK teljes tartománynevét (FQDN). Lásd ezen cikk <a HREF="#CreateService">BizTalk Services-szolgáltatás létrehozása</a> szakaszát.</li>
 </ul>
 <br/>
 A BizTalk szolgáltatás létrehozása után hozzáadható egy új vagy másik tanúsítvány.
@@ -165,14 +165,14 @@ A hibrid kapcsolatok az Azure-webhelyeket vagy Azure-mobilszolgáltatásokat bá
  További információért lásd a [Hibrid kapcsolatok](integration-hybrid-connection-overview.md) című szakaszt, ahol a hibrid kapcsolatok létrehozásáról és felügyeletéről is olvashat.
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy létrejött a BizTalk Services-szolgáltatás, ismerje meg a különböző [BizTalk Services: Irányítópult, Figyelő és Méret lapokat](biztalk-dashboard-monitor-scale-tabs.md). Az Azure BizTalk-szolgáltatás készen áll az alkalmazásokhoz. Az alkalmazások létrehozásának megkezdéséhez ugorjon az [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=235197) című témakörre.
+Most, hogy létrejött a BizTalk-szolgáltatás, ismerkedjen meg a különböző [BizTalk Services: Irányítópult, figyelés és méret lapok](biztalk-dashboard-monitor-scale-tabs.md). Az Azure BizTalk-szolgáltatás készen áll az alkalmazásokhoz. Az alkalmazások létrehozásának megkezdéséhez ugorjon az [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=235197) című témakörre.
 
 ## <a name="see-also"></a>Lásd még
-* [BizTalk Services: Kiadások diagramja](biztalk-editions-feature-chart.md)<br/>
-* [BizTalk Services: Állapottáblázat](biztalk-service-state-chart.md)<br/>
-* [BizTalk Services: Biztonsági mentés és visszaállítás](biztalk-backup-restore.md)<br/>
-* [BizTalk Services: Szabályozás](biztalk-throttling-thresholds.md)<br/>
-* [BizTalk Services: Kiállító neve és kiállító kulcsa](biztalk-issuer-name-issuer-key.md)<br/>
+* [A BizTalk Services: Kiadások diagramja](biztalk-editions-feature-chart.md)<br/>
+* [A BizTalk Services: Állapottáblázat](biztalk-service-state-chart.md)<br/>
+* [A BizTalk Services: Biztonsági mentés és visszaállítás](biztalk-backup-restore.md)<br/>
+* [A BizTalk Services: Szabályozás](biztalk-throttling-thresholds.md)<br/>
+* [A BizTalk Services: Kiállító neve és kiállító kulcsa](biztalk-issuer-name-issuer-key.md)<br/>
 * [Hogyan kezdhetem el az Azure BizTalk Services SDK használatát](https://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 * [Hibrid kapcsolatok](integration-hybrid-connection-overview.md)
 

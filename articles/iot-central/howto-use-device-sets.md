@@ -3,17 +3,17 @@ title: Beállítja a eszköz használata az Azure IoT Central alkalmazáshoz |} 
 description: Kezelőként használata az eszköz beállítása az Azure IoT Central alkalmazáshoz.
 author: ellenfosborne
 ms.author: elfarber
-ms.date: 01/21/2018
+ms.date: 02/05/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: b24c7c6d08b7d7914c7bdef6d2a55eb88689b6ad
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: a28cf68eb449b563d93a139b830752748c448dd6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315197"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57759815"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Eszköz használata az Azure IoT központi alkalmazás beállítása
 
@@ -48,9 +48,11 @@ Miután létrehozta az eszköz beállítása, konfigurálhatja a **irányítópu
 
 1. Válasszon **eszköz csoportok** a bal oldali navigációs menüben.
 
-1. Válassza ki a **irányítópult** fülre.
+1. Válassza ki az eszköz beállítása.
 
-1. Válassza ki **sablon szerkesztése**.
+1. Kattintson az **Irányítópult** fülre.
+
+1. Válassza a **Szerkesztés** elemet.
 
     ![A Tervező módban](media/howto-use-device-sets/image3.png)
 
@@ -69,9 +71,6 @@ Miután létrehozta az eszköz beállítása, konfigurálhatja a **irányítópu
 
 1. Adjon hozzá egy rácsot. Rács az eszköz beállítása az oszlopokat választja a eszközök tábláját.
     1. Válasszon **rács** a jobb oldali ablaktáblán.
-
-        ![Válassza ki a rács](media/howto-use-device-sets/image8.png)
-
     1. A rács adjon egy **cím**.
     1. Válassza ki az oszlopok kiválasztásával megjelenítendő **hozzáadása/eltávolítása**. A felugró panelen válassza ki a jelenjenek, és válassza a jobbra mutató nyílra, válassza ki azt az oszlopban.
     1. Kattintson az **OK** gombra.
@@ -81,31 +80,24 @@ Miután létrehozta az eszköz beállítása, konfigurálhatja a **irányítópu
 
     1. Helyezze el a rácsban áthúzása a **irányítópult**.
 
-    > [!NOTE]
-    > Több lemezképek, a hivatkozások és a rácsok is hozzáadhat.
+        > [!NOTE]
+        > Több lemezképek, a hivatkozások és a rácsok is hozzáadhat.
   
     1. Válassza a **Done** (Kész) lehetőséget.
 
-    ![Tervezési mód kikapcsolása](media/howto-use-device-sets/image10.png)
+### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>Helyek térképe konfigurálása az eszköz beállítása az irányítópult
 
-
-### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>Helyek térképe konfigurálása az eszköz beállítása az irányítópult 
 Hozzáadhat egy helyek térképe jeleníthetik meg az eszközök helyét egy térképen állítja be.
 
 Annak érdekében, hogy adjon hozzá egy eszközhöz, helyek térképe irányítópult rendelkeznie kell konfigurált helyre tulajdonságot állítja az eszköz sablonban, lásd: [hozzon létre egy hely tulajdonságot az Azure Maps segítségével](howto-set-up-template.md).
 
-
 1. Az eszköz beállítása irányítópulton válassza ki a térkép a könyvtárból.
-
-    ![Eszköz beállítása irányítópult térképek](media/howto-use-device-sets/LocationMaps1.png)
-
 2. Adjon címet, és válassza ki a helyet jelölő tulajdonsághoz korábban konfigurálta a Eszköztulajdonság részeként.
 3. Mentés, és megjelenik a csempén, az eszköz beállítása az eszközök helyét megjelenítése térképen.
-4. Most egy operátor nézetek, az eszköz állítja be az irányítópultot, az üzemeltető konfigurálta az összes csempe látható, ha például a helye térkép megjelenítése egyetlen pillantással eszközök helyét! 
-    
-> [!NOTE] 
-> Méretezze át a térkép a megfelelő méretre lehet. PIN-kódot kell választania a térkép megjeleníti az eszközinformációkat, nevét és helyét. Kiválaszthatja az előugró ablak az eszköz tulajdonság lap megnyitásához.  
+4. Most egy operátor nézetek, az eszköz állítja be az irányítópultot, az üzemeltető konfigurálta az összes csempe látható, ha például a helye térkép megjelenítése egyetlen pillantással eszközök helyét!
 
+> [!NOTE]
+> A térkép méretezheti át a kívánt méretre. PIN-kódot kell választania a térkép jeleníti meg az eszközinformációkat, nevét és helyét. Kiválaszthatja az előugró ablak az eszköz tulajdonság lap megnyitásához.
 
 ## <a name="configure-the-list-for-your-device-set"></a>A lista az eszköz készlet konfigurálása
 
@@ -127,7 +119,7 @@ Miután létrehozta az eszköz beállítása, konfigurálhatja a **lista**. A **
 
 ## <a name="analytics"></a>Elemzés
 
-Az eszköz beállítása az analytics megegyezik a fő analytics lapra a bal oldali navigációs menüben. További kapcsolatos elemzések a cikkben a [analytics létrehozása](howto-create-analytics.md).
+Az eszköz beállítása az analytics megegyezik a fő analytics lapra a bal oldali navigációs menüben. További kapcsolatos elemzések a cikkben a [analytics létrehozása](howto-use-device-sets.md).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -5,16 +5,16 @@ description: Ez az útmutató, dokumentum-formátumok és egyéni a fordítót a
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.subservice: custom-translator
+ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: e3d0f254b3927932f195e9d2bed8608be07fb907
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 0b578bfdb75b0ad4d4065d8793a74e7c4284eb74
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56726042"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57781588"
 ---
 # <a name="document-formats-and-naming-convention-guidance"></a>Dokumentum-formátumok és -elnevezési konvenciót útmutató
 

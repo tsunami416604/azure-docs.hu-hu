@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 1/16/2019
+ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: a83ded660b56028ea311992ba6161e8a8e43f65d
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: b8240f69649e9bcb9a705f2c9fcbb819cf119356
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511972"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57761412"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS FAQ
 
@@ -239,7 +239,7 @@ Igen. Leválasztja a regisztrációs virtuális hálózatnak a privát zónák, 
 
 Igen. Ha töröl egy regisztrációs vagy feloldási virtuális hálózatot a privát zónák leválasztása nélkül, a törlési művelet sikeres lesz. De a virtuális hálózat nem automatikusan leválasztása a privát zónából, ha van ilyen. Manuálisan kell megszünteti a virtuális hálózattal a saját zóna. Ebből kifolyólag leválasztása a virtuális hálózaton lévő a privát zónák azok törlése előtt.
 
-### <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-contosolocal-is-linked-to-a-virtual-network"></a>DNS-feloldás az alapértelmezett teljes Tartományneve (internal.cloudapp.net) használatával továbbra is működni fognak még akkor is, ha a privát zónák (például contoso.local) van csatolva a virtuális hálózat?
+### <a name="will-dns-resolution-by-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-privatecontosocom-is-linked-to-a-virtual-network"></a>DNS-feloldás az alapértelmezett teljes Tartományneve (internal.cloudapp.net) használatával továbbra is működni fognak még akkor is, ha a privát zónák (például private.contoso.com) van csatolva a virtuális hálózat?
 
 Igen. Saját zónák nem lecseréli a alapértelmezett DNS-megoldások az Azure által biztosított internal.cloudapp.net zóna használatával. További szolgáltatások vagy a fejlesztés érhető el. E használ, az Azure által biztosított internal.cloudapp.net, illetve a saját privát zónák, használja a feloldás kívánt zóna teljes Tartománynevét. 
 
@@ -262,7 +262,7 @@ Igen. A nyilvános előzetes verzióban létezik a következő korlátozások vo
 
 ### <a name="are-there-any-quotas-or-limits-on-zones-or-records-for-private-zones"></a>Bármely kvóták vagy zónák vagy a saját zónák rekordok vonatkozó korlátozások vannak-e?
 
-A zónák a saját zónák előfizetésenként engedélyezett száma nincs korlátozva van. A saját zónák zónánként rekordhalmazok száma nincs korlátozva van. Nyilvános és privát zónák beleszámítanak az összesített DNS-korlátok. További információkért lásd: a [Azure-előfizetés- és Szolgáltatáskorlátok](../azure-subscription-service-limits.md#dns-limits)
+A zónák a saját zónák előfizetésenként engedélyezett száma nincs korlátozva van. A saját zónák zónánként rekordhalmazok száma nincs korlátozva van. Nyilvános és privát zónák beleszámítanak az összesített DNS-korlátok. További információkért lásd: a [Azure-előfizetés- és Szolgáltatáskorlátok](../azure-subscription-service-limits.md#azure-dns-limits)
 
 ### <a name="is-there-portal-support-for-private-zones"></a>Van-e a saját zónák portal-támogatást?
 

@@ -11,21 +11,22 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 02/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: f489abeab0e1374d2d40ade79c4eb55fd633b909
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: a7c29d1bfcc0737f76afc43cb8997d6a1d16c82b
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443283"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731349"
 ---
 # <a name="access-data-from-your-datastores"></a>Az adattárolók érheti el adatait
-Ebből a cikkből megtudhatja, elérheti és kezelheti az Azure Machine Learning-munkafolyamatokban adattárainak keresztül az adatok különböző módjait.
 
-Ebben az útmutatóban példát a következő feladatokhoz: 
+Adattárolók lehetővé teszik használhatnak, és hozzáférhet az adataihoz, hogy a kód helyileg futtatja, a számítási fürtön, vagy egy virtuális gépen. Ebben a cikkben megismerheti az Azure Machine Learning a munkafolyamatok, amelyek biztosítják az adattárolók érhetők el, és a számítási környezet elérhetővé.
+
+Ebben az útmutatóban példát a következő feladatokhoz:
 * [Egy adattároló kiválasztása](#access)
-* [Egy adattár beolvasása](#get)
-* [Töltse fel és adattárainak adatok letöltése](#upload-and-download-data)
-* Hozzáférés adattárolója betanítás során
+* [Adatok lekérése](#get)
+* [Töltse fel és adattárainak adatok letöltése](#up-and-down)
+* [Hozzáférés adattárolója betanítás során](#train)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -85,7 +86,7 @@ Az alábbi példák bemutatják, hogy egy Azure Blob-tároló vagy egy Azure-fá
 
 <a name="get"></a>
 
-## <a name="get-data-in-your-datastore"></a>Az adattár az adatok lekérése
+## <a name="find--define-datastores"></a>& Definiálása adattárolók keresése
 
 Az aktuális munkaterületen található regisztrált megadott adattárolót használja [ `get()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py#get-workspace--datastore-name-) :
 
@@ -110,7 +111,8 @@ Az aktuális munkaterülethez tartozó más alapértelmezett adattárolót megha
 ws.set_default_datastore('your datastore name')
 ```
 
-## <a name="upload-and-download-data"></a>Adatok le- és feltöltése
+<a name="up-and-down"></a>
+## <a name="upload--download-data"></a>Töltse fel & adatok letöltése
 A [ `upload()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-) és [ `download()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-) a következő példákban leírt módszerek jellemző, és az azonos módon működik a [AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py) és [AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py) osztályokat.
 
 ### <a name="upload"></a>Feltöltés
@@ -142,6 +144,7 @@ ds.download(target_path='your target path',
 ```
 `target_path` az a hely, az adatok letöltése a helyi könyvtárban. Adja meg a mappa elérési útját a letöltéséhez fájlmegosztást (vagy blob-tárolóba), adja meg, hogy az elérési út `prefix`. Ha `prefix` van `None`, a fájlmegosztást (vagy a blob-tároló) teljes tartalmát fogja letöltése.
 
+<a name="train"></a>
 ## <a name="access-datastores-during-training"></a>Hozzáférés adattárainak betanítás során
 Egy adattár (például a képzés és az érvényesítési adatok) futtat egy távoli számítási célnak keresztül a Python SDK használatával egy betanítás során érheti el a [ `DataReference` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py) osztály.
 

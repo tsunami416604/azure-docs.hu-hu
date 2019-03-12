@@ -3,21 +3,20 @@ title: Azure-függvény tevékenység az Azure Data Factoryban |} A Microsoft Do
 description: Ismerje meg, hogyan használható az Azure-függvény tevékenység egy Azure-függvényt a Data Factory-folyamatok futtatásához
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
-editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/09/2019
-ms.author: douglasl
-ms.openlocfilehash: ee99733440d74424f98a2ed16de83c88bae53ff1
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+author: sharonlo101
+ms.author: shlo
+manager: craigg
+ms.openlocfilehash: b98d20a1f96a6ab4a0dc72330e85fdc98ba04eae
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321789"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576378"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Azure-függvény tevékenység az Azure Data Factoryban
 
@@ -42,10 +41,10 @@ Az Azure-függvény visszatérési típusával van, úgy, hogy érvényes `JObje
 
 | **Tulajdonság**  | **Leírás** | **Megengedett értékek** | **Kötelező** |
 | --- | --- | --- | --- |
-| név  | A folyamat a tevékenység neve  | Karakterlánc | igen |
-| type  | A tevékenység típus "AzureFunctionActivity" | Karakterlánc | igen |
+| név  | A folyamat a tevékenység neve  | String | igen |
+| type  | A tevékenység típus "AzureFunctionActivity" | String | igen |
 | Társított szolgáltatás | A társított Azure-függvény szolgáltatás a megfelelő Azure-függvényalkalmazás  | Társított szolgáltatás hivatkozása | igen |
-| Függvény neve  | Az Azure-Függvényalkalmazást, amely meghívja ezt a tevékenységet a függvény neve | Karakterlánc | igen |
+| Függvény neve  | Az Azure-Függvényalkalmazást, amely meghívja ezt a tevékenységet a függvény neve | String | igen |
 | method  | A függvény hívásához szükséges REST API-metódus | Karakterlánc típusok támogatottak: "GET", "POST", "PUT"   | igen |
 | header  | A kérelmet küldött fejlécek. Például állítsa be a nyelvet, és írja be egy kérelemre: "fejlécek": {"Accept-nyelv": "en-us", "Content-Type": "application/json"} | Karakterlánc (vagy a resultType kifejezés karakterlánc) | Nem |
 | törzs  | a függvény api-metódus a kéréssel együtt küldött törzs  | Karakterlánc (vagy a karakterlánc a resultType kifejezés) vagy az objektum.   | PUT/POST metódusok szükséges |

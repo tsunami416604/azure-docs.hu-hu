@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/30/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: fe1227d91c0d039a94e5b9a3046b879f4f17355a
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 4ca9ed2f2cb6f111e15093f0f3a90e2f37ab3521
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246916"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553676"
 ---
 | Erőforrás | Alapszintű | Standard | Prémium |
 |---|---|---|---|---|
@@ -27,13 +27,13 @@ ms.locfileid: "56246916"
 | Georeplikáció | – | – | [Támogatott][geo-replication] |
 | Tartalom-megbízhatóság (előzetes verzió) | – | – | [Támogatott][content-trust] |
 
-<sup>1</sup> a megadott tárolási korlátok a következők mennyisége *foglalt* storage az egyes rétegekhez. Egy további napi díj / GIB-ra a fenti ezeket a korlátokat képtárolás díjkötelesek. Forgalmi információkért lásd: [Container Registry díjszabás][pricing].
+<sup>1</sup>a megadott tárolási korlátok a következők mennyisége *foglalt* storage az egyes rétegekhez. Egy további napi díj / GIB-ra a fenti ezeket a korlátokat képtárolás díjkötelesek. Forgalmi információkért lásd: [Azure Container Registry díjszabás][pricing].
 
-<sup>2</sup> *ReadOps*, *írási műveletek*, és *sávszélesség* minimális becslések. ACR nagy hangsúlyt fektet a teljesítmény javítása, a használatához.
+<sup>2</sup>*ReadOps*, *írási műveletek*, és *sávszélesség* minimális becslések. Az Azure Container Registry nagy hangsúlyt fektet a teljesítmény javítása, a használatához.
 
-<sup>3</sup> [docker pull](https://docs.docker.com/registry/spec/api/#pulling-an-image) a rendszer lefordítja arra több olvasási műveletek a lemezképet, valamint a manifest lekérés a rétegek száma alapján.
+<sup>3</sup>A [docker pull](https://docs.docker.com/registry/spec/api/#pulling-an-image) a rendszer lefordítja arra több olvasási műveletek a lemezképet, valamint a manifest lekérés a rétegek száma alapján.
 
-<sup>4</sup> [docker leküldéses](https://docs.docker.com/registry/spec/api/#pushing-an-image) a rendszer lefordítja arra, hogy kell lehet leküldeni a rétegek száma alapján, több írási műveleteket. A `docker push` tartalmaz *ReadOps* beolvasni a meglévő rendszerképet jegyzékfájl.
+<sup>4</sup>A [docker leküldéses](https://docs.docker.com/registry/spec/api/#pushing-an-image) a rendszer lefordítja arra, hogy kell lehet leküldeni a rétegek száma alapján, több írási műveleteket. A `docker push` tartalmaz *ReadOps* beolvasni a meglévő rendszerképet jegyzékfájl.
 
 <!-- LINKS - External -->
 [pricing]: https://azure.microsoft.com/pricing/details/container-registry/

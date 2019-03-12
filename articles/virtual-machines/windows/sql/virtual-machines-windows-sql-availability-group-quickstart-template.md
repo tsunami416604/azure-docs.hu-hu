@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 675933b46a228f636c4907e84d66263dde52f274
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 5390885ccb4bbc3e1552d3f5e80c1b451b7bee38
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823331"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570164"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Egy Azure virtuális Gépen futó SQL Server AlwaysOn rendelkezésre állási csoport konfigurálása Azure gyorsindítási sablonok használatával
 Ez a cikk ismerteti, hogyan használhatja az Azure gyorsindítási sablonok részlegesen automatizálni az üzembe helyezést egy Always On rendelkezésre állási csoport konfigurációjának az SQL Server Virtual Machines az Azure-ban. Nincsenek az a folyamat által használt két Azure gyorsindítási sablonok. 
@@ -39,6 +39,13 @@ A telepítő egy Always On rendelkezésre állási csoport gyorsindítási sablo
 - Egy [Azure-előfizetés](https://azure.microsoft.com/free/).
 - Egy erőforráscsoport, egy tartományvezérlővel. 
 - Legalább egy tartományhoz csatlakoztatott [virtuális gépek Azure futó SQL Server 2016 (vagy nagyobb) Enterprise verzióban](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) azonos rendelkezésre állási csoport vagy a rendelkezésre állási zónában, amely már a [regisztrálni az SQL virtuális gép erőforrás-szolgáltató](virtual-machines-windows-sql-ahb.md#register-sql-server-vm-with-sql-resource-provider).  
+- (Minden entitás által nem használt) elérhető két IP-címek, egy belső terheléselosztó, és a rendelkezésre állási csoport figyelőjének ugyanabban az alhálózatban, mint a rendelkezésre állási csoport esetében. Ha egy meglévő terheléselosztóhoz használatban van, csak egy elérhető IP-cím van szükség.  
+
+## <a name="permissions"></a>Engedélyek
+Az Always On rendelkezésre állási csoport konfigurálása Azure gyorsindítási sablonok használatával a következő engedélyek szükségesek: 
+
+- Egy meglévő tartományi felhasználói fiók, amely "A számítógép objektum létrehozása" engedéllyel rendelkezik a tartományban.  Például egy tartományi rendszergazdai fiók általában rendelkezik megfelelő engedéllyel (például: account@domain.com). _Ez a fiók is kell a helyi rendszergazdai csoport összes virtuális gépen a fürt létrehozásához._
+- A tartományi felhasználói fiók, amely az SQL Server szolgáltatás vezérli. 
 
 
 ## <a name="step-1---create-the-wsfc-and-join-sql-server-vms-to-the-cluster-using-quickstart-template"></a>1. lépés – a WSFC létrehozása és az SQL Server rendszerű virtuális gépekhez csatlakozhat a fürthöz gyorsindítási sablon használatával 

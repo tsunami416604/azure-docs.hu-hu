@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/01/2019
+ms.date: 03/11/2019
 ms.author: markvi
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 644a2279f555af05d711e1455923795b5271e159
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 97e5976603ee1574e8410702069b97a9f0ef6198
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191622"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57768748"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Útmutató: Örökölt hitelesítés letiltása az Azure AD feltételes hozzáférés   
 
@@ -114,6 +114,8 @@ További információkért lásd: [hogyan kell egy új házirendet telepít?](be
 
 
 ## <a name="what-you-should-know"></a>Alapismeretek
+
+Hozzáférés letiltása **más ügyfelek** is letiltja az Exchange Online PowerShell alapvető Outlookhoz használatával
 
 A házirend beállítása **más ügyfelek** letiltja az egyes ügyfelek, például SPConnect az egész munkahely számára. Ezt a blokkot, mert a régebbi ügyfelek hitelesítése nem várt módon történik. A probléma nem vonatkozik a fő Office-alkalmazások, például a régebbi Office-ügyfelekhez.
 

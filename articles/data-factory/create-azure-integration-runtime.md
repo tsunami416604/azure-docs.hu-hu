@@ -3,20 +3,20 @@ title: Azure-beli integrációs modul létrehozása az Azure Data Factoryban |} 
 description: Ismerje meg, hogyan hozhat létre Azure integrációs modul az Azure Data Factoryben, amely csatolva az átalakítási tevékenységek és az adatok másolása szolgál.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/15/2018
-ms.author: douglasl
-ms.openlocfilehash: 93777a3d9ecbb6c2749594985494975f61cc1948
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: 4b166ded3dcef4a89951eb81f7f1b321f89a0e67
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57455700"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576038"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Hogyan hozhat létre, és az Azure integrációs modul konfigurálása
 Az Integration Runtime (IR) a különböző hálózati környezetekben adatintegrációs képességeket biztosít az Azure Data Factory által használt számítási infrastruktúra áll. Integrációs modul kapcsolatos további információkért lásd: [integrációs modul](concepts-integration-runtime.md).

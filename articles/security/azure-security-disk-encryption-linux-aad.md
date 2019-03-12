@@ -3,17 +3,16 @@ title: Az Azure Disk Encryption az Azure AD-alkalmazás Linux rendszerű IaaS vi
 description: Ez a cikk útmutatást nyújt a Microsoft Azure Disk Encryption engedélyezése a Linux rendszerű IaaS virtuális gépekhez.
 author: mestew
 ms.service: security
-ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 03/04/2019
+ms.date: 03/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 292dafb88362d7f7d0ec07a2a7961b98e6518204
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 659530d1dcea5593e86edf85cb6c2b15da57618e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339385"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775628"
 ---
 # <a name="enable-azure-disk-encryption-for-linux-iaas-vms-previous-release"></a>Az Azure Disk Encryption engedélyezése a Linux rendszerű IaaS virtuális gépekhez (előző kiadás)
 
@@ -32,38 +31,8 @@ Igénybe vehet egy [pillanatkép](../virtual-machines/windows/snapshot-copy-mana
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="bkmk_NewLinux"></a> Új Linux IaaS virtuális gép üzembe helyezése a lemeztitkosítás engedélyezve 
-
-1. Használja a [Resource Manager-sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-full-disk-encrypted-rhel) hozzon létre egy új Linux rendszerű IaaS virtuális gép titkosított. A sablon létrehoz egy új RedHat Linux 7.2 rendszerű virtuális Gépet és a egy 200 GB-os RAID-0 tömb és a teljes lemeztitkosítás, felügyelt lemezeket használ. Az a [– gyakori kérdések](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport) a cikkben azt láthatja, hogy egyes Linux-disztribúciókon csak titkosítás támogatása az adatlemezeket. Azonban ez a sablon lehetővé teszi a sablonok üzembe helyezése és a titkosítás állapotának ellenőrzése a különböző módszerek megismerése. 
- 
-1. Kattintson a **üzembe helyezés az Azure** az Azure Resource Manager-sablon.
-
-2. Válassza ki az előfizetést, erőforráscsoportot, erőforráscsoport helye, paraméterek, jogi feltételek és szerződés. Kattintson a **létrehozás** engedélyezheti a titkosítást a meglévő vagy futó IaaS virtuális gépen.
-
-3. Miután telepíti a sablont, ellenőrizze a virtuális gép titkosítási állapotát a kívánt módszer használatával:
-     - Ellenőrizze az Azure CLI-vel a [az vm encryption show](/cli/azure/vm/encryption#az-vm-encryption-show) parancsot. 
-
-         ```azurecli-interactive 
-         az vm encryption show --name "MySecureVM" --resource-group "MyVirtualMachineResourceGroup"
-         ```
-
-     - Az Azure PowerShell használatával ellenőrizze a [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/get-azvmdiskencryptionstatus) parancsmagot. 
-
-         ```azurepowershell-interactive
-         Get-AzVmDiskEncryptionStatus -ResourceGroupName 'MyVirtualMachineResourceGroup' -VMName 'MySecureVM'
-         ```
-
-     - Válassza ki a virtuális Gépet, majd kattintson a **lemezek** alatt a **beállítások** fejléc encryption státusz a portálon. A diagram alatt **titkosítási**, látni fogja, hogy annak engedélyezve van-e. 
-
-| Paraméter | Leírás |
-| --- | --- |
-| AAD ügyfél-azonosító | Az Azure AD-alkalmazást, amely a key vault titkos kódok írási engedélyekkel rendelkezik ügyfél-azonosítója. |
-| AAD-Ügyfélkulcs | Az Azure AD-alkalmazást, amely titkos kulcsok a key vault írási engedélyekkel rendelkezik a titkos ügyfélkódja. |
-| Kulcstartó neve | A key vaultban kell elhelyezni a kulcs neve. |
-| Key Vault-erőforráscsoport | A kulcstároló erőforráscsoport. |
-
-
 ## <a name="bkmk_RunningLinux"> </a> Engedélyezze a titkosítást egy meglévő vagy futó IaaS Linux rendszerű virtuális gépen
+
 Ebben a forgatókönyvben a Resource Manager-sablon, a PowerShell-parancsmagok vagy a CLI-parancsok használatával engedélyezheti a titkosítást. 
 
 >[!IMPORTANT]

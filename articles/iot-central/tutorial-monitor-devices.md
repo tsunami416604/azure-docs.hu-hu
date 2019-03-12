@@ -3,18 +3,18 @@ title: Az eszközök monitorozása az Azure IoT Centralban | Microsoft Docs
 description: Operátorként az Azure IoT Central alkalmazással monitorozza az eszközöket.
 author: dominicbetts
 ms.author: dobett
-ms.date: 10/12/2018
+ms.date: 02/01/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 941fbffaa7a0129de30d6fdf14d3d0559429309f
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 561477d8bf3a64397e9964499339c368dec5470d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200241"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57760472"
 ---
 # <a name="tutorial-use-azure-iot-central-to-monitor-your-devices"></a>Oktatóanyag: Az eszközök monitorozása az Azure IoT Central használatával
 
@@ -41,7 +41,7 @@ Az Azure IoT Central e-mail-üzenetekként küld értesítéseket az eszközökr
 
 Nyissa meg [Az eszközre vonatkozó szabályok és műveletek konfigurálása](tutorial-configure-rules.md) című oktatóanyag végén kapott e-mail-üzenetet. Az e-mailben válassza a **Kattintson ide az eszköz megnyitásához** lehetőséget:
 
-![Alkalmazásszerkesztő szabályok](media/tutorial-monitor-devices/email.png)
+![Riasztási értesítések e-mailben](media/tutorial-monitor-devices/email.png)
 
 Megnyílik a böngészőben az előző oktatóanyagokban létrehozott szimulált **Csatlakoztatott légkondicionáló-1** eszköz **Eszköz** oldala:
 
@@ -55,13 +55,13 @@ Válassza az **Irányítópult** lehetőséget az eszközzel kapcsolatos inform�
 
 ![Az eszköz irányítópultja](media/tutorial-monitor-devices/initial_screen.png)
 
-Az irányítópulton lévő diagram az eszköz hőmérsékletét ábrázolja. A **Megadott célhőmérséklet** csempén az eszköz aktuális célhőmérsékletét is láthatja. Úgy dönt, hogy a célhőmérséklet túl magas.
+Az irányítópulton lévő diagram az eszköz hőmérsékletét ábrázolja. Emellett megtekintheti az eszköz az aktuális cél hőmérséklet a **eszköztulajdonságok** csempére. Úgy dönt, hogy a célhőmérséklet túl magas.
 
 ## <a name="remediate-an-issue"></a>Probléma elhárítása
 
 Az eszköz célhőmérsékletének módosításához használja a **Beállítások** lapot:
 
-1. Válassza a **Beállítások** lehetőséget. Változtassa a **Megadott hőmérsékletet** 75-ös értékre. Válassza a **Frissítés** lehetőséget, hogy az új célhőmérsékletet az eszközre küldje. Amikor az eszköz elfogadja a beállítások módosítását, a beállítás értéke **szinkronizálva** állapotra változik:
+1. Válassza a **Beállítások** lehetőséget. Változtassa a **Megadott hőmérsékletet** 75-ös értékre. Válassza a **Frissítés** lehetőséget, hogy az új célhőmérsékletet az eszközre küldje. Ha az eszköz megerősíti, hogy a beállítások módosítása, a beállítás állapota **szinkronizált**:
 
     ![Beállítások frissítése](media/tutorial-monitor-devices/change_settings.png)
 

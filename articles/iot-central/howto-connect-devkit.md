@@ -3,17 +3,17 @@ title: Egy fejlesztői készlet eszköz csatlakoztatása az Azure IoT Central al
 description: Eszköz a fejlesztők megtudhatja, hogyan az MXChip IoT DevKit eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz.
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/16/2018
+ms.date: 02/05/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 6c9f128a046904eb8df90625ce1043b3d42e8be4
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 150f2b9155d5e920a7394e2fa55ce28701497868
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448543"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57763010"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Az MXChip IoT DevKit eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz
 
@@ -26,19 +26,17 @@ A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 1. A létrehozott Azure IoT Central alkalmazáshoz a **minta Devkits** alkalmazássablon. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
 1. Egy fejlesztői készlet eszköz. DevKit eszköz vásárol, a Microsoft [MXChip IoT DevKit](http://mxchip.com/az3166).
 
+## <a name="sample-devkits-application"></a>Devkits mintaalkalmazás
 
-## <a name="sample-devkits-application"></a>**Minta Devkits** alkalmazás
+A létrehozott alkalmazáshoz a **minta Devkits** alkalmazást sablon tartalmaz egy **MXChip** eszköz sablon a következő jellemzőkkel:
 
-A létrehozott alkalmazáshoz a **minta Devkits** alkalmazást sablon tartalmaz egy **MXChip** eszköz sablon a következő jellemzőkkel: 
-
-- Telemetriai adatokat, amely tartalmazza az eszköz a mérések **páratartalom**, **hőmérséklet**, **nyomás**, **Magnometer** (mért mentén X Y, tengely Z), **érzékelőből** (X, Y, mentén mért Z tengely) és **Giroszkóp** (X, Y, mentén mért Z tengely).
+- Telemetriai adatokat, amely tartalmazza az eszköz a mérések **páratartalom**, **hőmérséklet**, **nyomás**, **magnetométer** (mérése X, Y, mentén Z tengely), **érzékelőből** (X, Y, mentén mért Z tengely) és **Giroszkóp** (X, Y, mentén mért Z tengely).
 - Állapot, amely tartalmaz egy példa meghatározásáért **Eszközállapot**.
 - Az esemény mérési egy **B bekapcsolva** esemény. 
 - Beállítások megjelenítése **feszültség**, **aktuális**, **ventilátor sebesség**, és a egy **integrációs modul** be-vagy kikapcsolása.
 - Eszköztulajdonság tartalmazó tulajdonságok **die száma** és **eszköz helye** vagyis a location tulajdonság, valamint az egy **gyártott a** felhőbeli tulajdonság. 
 
-
-A konfiguráció teljes részletekért tekintse meg [MXChip eszköz sablon részletei](howto-connect-devkit.md#mxchip-device-template-details)
+A konfiguráció teljes részletekért tekintse meg [MXChip eszköz sablon részletei](#mxchip-device-template-details)
 
 
 ## <a name="add-a-real-device"></a>Valós eszköz hozzáadása
@@ -46,28 +44,24 @@ A konfiguráció teljes részletekért tekintse meg [MXChip eszköz sablon rész
 Az Azure IoT Central-alkalmazás hozzáadása a valós eszközöknek a **MXChip** eszköz sablont, és jegyezze fel az eszköz kapcsolat részleteinek (**hatókör azonosítója, az eszköz Azonosítóját és az elsődleges kulcs**).
 
 1. Adjon hozzá egy **valós eszköz** Device Explorer, jelölje ki **+ új > valós** valós eszköz hozzáadásához.
+
     * Adja meg az eszköz azonosítója **<span style="color:Red">(kell lennie a kisbetűs)</span>** vagy a javasolt eszközazonosítót használ.
     * Adja meg az eszköz nevét, vagy használja a javasolt név
-    
-    ![Eszköz hozzáadása](media/concepts-connectivity/add-device.png)
 
+    ![Eszköz hozzáadása](media/howto-connect-devkit/add-device.png)
 
 1. Például beolvasni a kapcsolat adatait **hatókör azonosítója, az eszköz Azonosítóját és az elsődleges kulcs** a hozzáadott eszköz kiválasztásával **Connect** az eszköz oldalon.
- 
-    ![Kapcsolat adatai](media/concepts-connectivity/device-connect.PNG)
 
-3. Ügyeljen arra, hogy ezek az adatok mentése, akkor lesz ideiglenesen első kapcsolódik az internethez az DevKit eszköz előkészítése. 
+    ![Kapcsolat adatai](media/howto-connect-devkit/device-connect.png)
 
+1. Ügyeljen arra, hogy ezek az adatok mentése, akkor lesz ideiglenesen első kapcsolódik az internethez az DevKit eszköz előkészítése.
 
 ### <a name="prepare-the-devkit-device"></a>A fejlesztői készlet eszköz előkészítése
 
 > [!NOTE]
 > Ha az eszköz korábban használt, és rendelkezik a Wi-Fi hitelesítő adatokat tárolja, és konfigurálja újra az eszközt egy másik Wi-Fi hálózatot, a kapcsolati karakterlánc vagy a telemetriai mérési szeretne, nyomja le az mind a **A** és **B** egyidejűleg gombokat a táblán. Ha nem működik, nyomja le az **alaphelyzetbe** gombra, és próbálkozzon újra.
 
-
-
-#### <a name="to-prepare-the-devkit-device"></a>Az DevKit eszköz előkészítése:
-
+#### <a name="to-prepare-the-devkit-device"></a>Az DevKit eszköz előkészítése
 
 1. Az MXChip a a legújabb előregyártott Azure IoT Central belső vezérlőprogram letöltése a [kiadások](https://aka.ms/iotcentral-docs-MXChip-releases) lapját a githubon.
 1. A fejlesztői készlet eszköz csatlakoztatása a fejlesztői gépén, USB-kábel segítségével. Windows, a fájl explorer megnyílik egy ablak a tárolót a fejlesztői készlet eszközön leképezve meghajtón. Ha például a meghajtó neve lehet **AZ3166 (D:)**.
@@ -78,12 +72,12 @@ Az Azure IoT Central-alkalmazás hozzáadása a valós eszközöknek a **MXChip*
     ```
     Connect HotSpot:
     AZ3166_??????
-    go-> 192.168.0.1 
+    go-> 192.168.0.1
     PIN CODE xxxxx
     ```
 
     > [!NOTE]
-    > A képernyőn megjelenik az bármi más, ha alaphelyzetbe az eszközt, majd kattintson a **A** és **B** gombok használatát az eszközön, az eszköz újraindítását egy időben. 
+    > A képernyőn megjelenik az bármi más, ha alaphelyzetbe az eszközt, majd kattintson a **A** és **B** gombok használatát az eszközön, az eszköz újraindítását egy időben.
 
 1. Az eszköz most már hozzáférési pont (AP) módban van. A Wi-Fi hozzáférési pont a számítógép vagy mobileszköz csatlakozhat.
 
@@ -178,7 +172,7 @@ A kód a **iotHubClient.cpp** forrásfájl funkciókat használ a [ a Microsoft 
 
 Módosítására, hozhat létre, és töltse fel a mintakódot az eszköz kapcsolatos információkért tekintse meg a **readme.md** fájlt a `AZ3166` mappát.
 
-## <a name="mxchip-device-template-details"></a>Az MXChip eszköz sablon részletei 
+## <a name="mxchip-device-template-details"></a>Az MXChip eszköz sablon részletei
 
 A minta Devkits alkalmazást sablon alapján létrehozott alkalmazás tartalmaz egy MXChip eszköz sablont a következő jellemzőkkel:
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/24/2017
 ms.author: dekapur
-ms.openlocfilehash: 1775eb4659ccc71d962d0beab9b605e01eb12f72
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: df836d46f244822c8c3dd35be6de08b0c4f34038
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253618"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57760514"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Különálló fürt védelme a Windows a Windows rendszerbiztonság használatával
 Service Fabric-fürtön való illetéktelen hozzáférés megakadályozása, biztosítania kell a fürtöt. Biztonsági különösen fontos, amikor a fürt futtatása termelési számítási feladatokhoz. Ez a cikk ismerteti a csomópontok közötti és ügyfél-csomópont biztonság konfigurálása a Windows rendszerbiztonság használatával a *ClusterConfig.JSON* fájlt.  A folyamat megfelelő konfigurálás biztonsági lépésére [a Windows rendszert futtató önálló fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md). Hogyan használja a Service Fabric a Windows biztonsági kapcsolatos további információkért lásd: [fürtök – biztonsági helyzetek](service-fabric-cluster-security.md).
@@ -32,22 +32,22 @@ Service Fabric-fürtön való illetéktelen hozzáférés megakadályozása, biz
 ## <a name="configure-windows-security-using-gmsa"></a>Csoportosan felügyelt szolgáltatásfiókot használó Windows biztonságának konfigurálása  
 A minta *ClusterConfig.gMSA.Windows.MultiMachine.JSON* együtt letöltött konfigurációs fájlt a [Microsoft.Azure.ServiceFabric.WindowsServer.<version>.zip](https://go.microsoft.com/fwlink/?LinkId=730690) önálló fürt csomag tartalmaz egy sablon konfigurálásához a Windows biztonsági használatával [csoportosan felügyelt szolgáltatásfiók (gMSA)](https://technet.microsoft.com/library/hh831782.aspx):  
 
-```  
+```
 "security": {
-            "ClusterCredentialType": "Windows",
-            "ServerCredentialType": "Windows",
-            "WindowsIdentities": {  
-                "ClustergMSAIdentity": "[gMSA Identity]", 
-                "ClusterSPN": "[Registered SPN for the gMSA account]",
-                "ClientIdentities": [  
-                    {  
-                        "Identity": "domain\\username",  
-                        "IsAdmin": true  
-                    }  
-                ]  
-            }  
-        }  
-```  
+    "ClusterCredentialType": "Windows",
+    "ServerCredentialType": "Windows",
+    "WindowsIdentities": {  
+        "ClustergMSAIdentity": "[gMSA Identity]",
+        "ClusterSPN": "[Registered SPN for the gMSA account]",
+        "ClientIdentities": [
+            {
+                "Identity": "domain\\username",
+                "IsAdmin": true
+            }
+        ]
+    }
+}
+```
 
 | **Konfigurációs beállítás** | **Leírás** |
 | --- | --- |
@@ -60,43 +60,46 @@ A minta *ClusterConfig.gMSA.Windows.MultiMachine.JSON* együtt letöltött konfi
 | Identitás |Adja hozzá a tartományi felhasználó, tartomány\felhasználónév ügyfél identitását. |  
 | IsAdmin |Adja meg, hogy a tartományi felhasználó rendszergazda ügyfél-hozzáférési és hamis értéket, az ügyfél hozzáférésének felhasználó rendelkezik-e (igaz) értékre. |  
 
-[A csomópont security csomópont](service-fabric-cluster-security.md#node-to-node-security) úgy van konfigurálva **ClustergMSAIdentity** amikor szüksége van a service fabric csoportosan felügyelt szolgáltatásfiók alatt szeretné futtatni. Annak érdekében, hogy a csomópontok közötti bizalmi kapcsolatokat hozhat létre, is el kell tisztában egymással. A két különböző módon lehet elvégezni: Adja meg a csoportosan felügyelt szolgáltatásfiók, amely tartalmazza az összes csomóponton a fürtben, vagy adja meg a tartományi számítógép csoportot, amely tartalmazza az összes csomóponton a fürtben. Kifejezetten javasoljuk a [csoportosan felügyelt szolgáltatásfiók (gMSA)](https://technet.microsoft.com/library/hh831782.aspx) megközelítés, különösen a nagyobb fürtök (10-nél több csomópont) vagy a fürtök, amelyek valószínűleg növekedhet és csökkenhet.  
+> [!NOTE]
+> ClustergMSAIdentity érték nem szerepelhet a tartomány nevét, és csak a csoport felügyelt szolgáltatásfiók neve. I.E. "mysfgmsa" helyességét, és mindkét "tartomany / / mysfgmsa" vagy "mysfgmsa@mydomain" érvénytelenek; a tartomány a gazdagép által implicit módon.
+
+[A csomópont security csomópont](service-fabric-cluster-security.md#node-to-node-security) úgy van konfigurálva **ClustergMSAIdentity** amikor szüksége van a service fabric csoportosan felügyelt szolgáltatásfiók alatt szeretné futtatni. Annak érdekében, hogy a csomópontok közötti bizalmi kapcsolatokat hozhat létre, is el kell tisztában egymással. Ez két különböző módon valósítható meg: Adja meg a csoportosan felügyelt szolgáltatásfiók, amely tartalmazza az összes csomóponton a fürtben, vagy adja meg a tartományi számítógép csoportot, amely tartalmazza az összes csomóponton a fürtben. Kifejezetten javasoljuk a [csoportosan felügyelt szolgáltatásfiók (gMSA)](https://technet.microsoft.com/library/hh831782.aspx) megközelítés, különösen a nagyobb fürtök (10-nél több csomópont) vagy a fürtök, amelyek valószínűleg növekedhet és csökkenhet.  
 Ez a módszer nem igényel, amelynek fürt rendszergazdák kapott hozzáférési jogosultsága ahhoz, hozzáadhat és eltávolíthat tagokat tartományi csoport létrehozását. Ezek a fiókok automatikus jelszókezelés is hasznosak. További információkért lásd: [csoportosan felügyelt szolgáltatásfiókok – első lépések](https://technet.microsoft.com/library/jj128431.aspx).  
  
-[A csomópont security ügyfél](service-fabric-cluster-security.md#client-to-node-security) használatára van konfigurálva, **ClientIdentities**. Annak érdekében, hogy az ügyfél és a fürt közötti megbízhatósági kapcsolatot hoz létre, konfigurálnia kell a fürt tudni, hogy melyik ügyfél, amely megbízható, identitásokat. Ezt kétféleképpen teheti: Adja meg a tartományi felhasználók csoporthoz, amely csatlakozni vagy adja meg a csomópont Tartományfelhasználók kapcsolódhatnak az. A Service Fabric támogatja a különböző hozzáférés-vezérlő kétféle Service Fabric-fürt csatlakozó ügyfelek számára: rendszergazdai és felhasználói. Hozzáférés-vezérlés lehetővé teszi a fürt rendszergazdája a különböző csoportok számára, így több biztonságos a fürt a fürt működését bizonyos típusú való hozzáférés korlátozásához.  A rendszergazdák (beleértve az olvasási/írási képességeket) felügyeleti képességek teljes hozzáféréssel rendelkezik. Felhasználók, alapértelmezés szerint rendelkezik csak olvasási hozzáférés a felügyeleti funkciók (például a lekérdezési képességek), valamint az alkalmazások és szolgáltatások megoldásához. További információ a hozzáférés-vezérlés: [szerepköralapú hozzáférés-vezérlés a Service Fabric-ügyfelek](service-fabric-cluster-security-roles.md).  
+[A csomópont security ügyfél](service-fabric-cluster-security.md#client-to-node-security) használatára van konfigurálva, **ClientIdentities**. Annak érdekében, hogy az ügyfél és a fürt közötti megbízhatósági kapcsolatot hoz létre, konfigurálnia kell a fürt tudni, hogy melyik ügyfél, amely megbízható, identitásokat. Ezt kétféleképpen teheti meg: Adja meg a tartományi felhasználók csoporthoz, amely csatlakozni vagy adja meg a csomópont Tartományfelhasználók kapcsolódhatnak az. A Service Fabric támogatja a különböző hozzáférés-vezérlő kétféle Service Fabric-fürt csatlakozó ügyfelek számára: rendszergazdai és felhasználói. Hozzáférés-vezérlés lehetővé teszi a fürt rendszergazdája a különböző csoportok számára, így több biztonságos a fürt a fürt működését bizonyos típusú való hozzáférés korlátozásához.  A rendszergazdák (beleértve az olvasási/írási képességeket) felügyeleti képességek teljes hozzáféréssel rendelkezik. Felhasználók, alapértelmezés szerint rendelkezik csak olvasási hozzáférés a felügyeleti funkciók (például a lekérdezési képességek), valamint az alkalmazások és szolgáltatások megoldásához. További információ a hozzáférés-vezérlés: [szerepköralapú hozzáférés-vezérlés a Service Fabric-ügyfelek](service-fabric-cluster-security-roles.md).  
  
 Az alábbi példa **biztonsági** szakaszban konfigurálja a Windows biztonsági csoportosan felügyelt szolgáltatásfiókot használó, és azt jelenti, hogy a gépek *ServiceFabric.clusterA.contoso.com* csoportosan felügyelt szolgáltatásfiók a fürt és az adott részétképezik. *CONTOSO\usera* felügyeleti ügyfél hozzáfér:  
   
-```  
+```
 "security": {
-    "ClusterCredentialType": "Windows",            
+    "ClusterCredentialType": "Windows",
     "ServerCredentialType": "Windows",
-    "WindowsIdentities": {  
-        "ClustergMSAIdentity" : "ServiceFabric.clusterA.contoso.com",  
-        "ClusterSPN" : "http/servicefabric/clusterA.contoso.com",  
-        "ClientIdentities": [{  
-            "Identity": "CONTOSO\\usera",  
-            "IsAdmin": true  
-        }]  
-    }  
-}  
-```  
+    "WindowsIdentities": {
+        "ClustergMSAIdentity" : "ServiceFabric.clusterA.contoso.com",
+        "ClusterSPN" : "http/servicefabric/clusterA.contoso.com",
+        "ClientIdentities": [{
+            "Identity": "CONTOSO\\usera",
+            "IsAdmin": true
+        }]
+    }
+}
+```
   
 ## <a name="configure-windows-security-using-a-machine-group"></a>Konfigurálja a Windows biztonsági gép csoport használatával  
 Ez a modell hamarosan elavulttá válik. Az ajánljuk, hogy a csoportosan felügyelt szolgáltatásfiókot használja a fenti útmutató szerint. A minta *ClusterConfig.Windows.MultiMachine.JSON* együtt letöltött konfigurációs fájlt a [Microsoft.Azure.ServiceFabric.WindowsServer.<version>.zip](https://go.microsoft.com/fwlink/?LinkId=730690) önálló fürt csomag tartalmazza a sablon a Windows biztonsági beállításainak megadása.  Windows biztonsági konfigurálva van a **tulajdonságok** szakaszban: 
 
 ```
 "security": {
-            "ClusterCredentialType": "Windows",
-            "ServerCredentialType": "Windows",
-            "WindowsIdentities": {
-                "ClusterIdentity" : "[domain\machinegroup]",
-                "ClientIdentities": [{
-                    "Identity": "[domain\username]",
-                    "IsAdmin": true
-                }]
-            }
-        }
+    "ClusterCredentialType": "Windows",
+    "ServerCredentialType": "Windows",
+    "WindowsIdentities": {
+        "ClusterIdentity" : "[domain\machinegroup]",
+        "ClientIdentities": [{
+            "Identity": "[domain\username]",
+            "IsAdmin": true
+        }]
+    }
+}
 ```
 
 | **Konfigurációs beállítás** | **Leírás** |

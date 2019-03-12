@@ -9,43 +9,29 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 03/01/2019
 ms.author: diberry
-ms.openlocfilehash: 7c9f3c72d94955286d05cf68dbe698a46df3cdf3
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 7315c80ad74eae07e41577fb2ac13742002e729e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867031"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57781697"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>Előfizetési kulcsok használata a LUIS-appal
 
-Nem kell használni az ingyenes első-1000 végpont lekérdezések előfizetői azonosítók létrehozása. Miután ezen végpont-lekérdezést használ, hozzon létre egy Azure-erőforrást a [az Azure portal](http://portal.azure.com), hozzárendelheti a LUIS-alkalmazásokon ennek az erőforrásnak a [LUIS portál](https://www.luis.ai).
+Nem kell használni az ingyenes első-1000 végpont lekérdezések előfizetői azonosítók létrehozása. Miután ezen végpont-lekérdezést használ, hozzon létre egy Azure-erőforrást a [az Azure portal](https://portal.azure.com), hozzárendelheti a LUIS-alkalmazásokon ennek az erőforrásnak a [LUIS portál](https://www.luis.ai).
 
 Ha megjelenik egy _kvótájából_ hiba történt egy HTTP 403-as és 429-es formájában, kell hozzon létre egy kulcsot, és rendelje hozzá az alkalmazáshoz. 
 
 Teszteléshez és prototípus csak az ingyenes (F0) csomagot használja. Éles rendszerek esetén használhatja a [fizetős](https://aka.ms/luis-price-tier) szint. Ne használja a [kulcs létrehozási](luis-concept-keys.md#authoring-key) végpont lekérdezések éles környezetben.
 
 <a name="create-luis-service"></a>
+<a name="create-language-understanding-endpoint-key-in-the-azure-portal"/>
 
-## <a name="create-language-understanding-endpoint-key-in-the-azure-portal"></a>Language Understanding végponti kulcs létrehozása az Azure Portalon
+## <a name="create-prediction-endpoint-runtime-resource-in-the-azure-portal"></a>Előrejelzési végpont futásidejű erőforrás létrehozása az Azure Portalon
 
-Ez az eljárás létrehoz egy **Language Understanding** erőforrás. Ha azt szeretné, hogy egy erőforrás, amely a Cognitive Services is használható, teljes körű kulcs létre **[Cognitive Service](../cognitive-services-apis-create-account.md)** a Language Understanding resource helyett. 
-
-Ezt a kulcsot csak használandó végpont előrejelzési lekérdezések. Ne használja ezt a kulcsot a modell és az alkalmazás módosítása. 
-
-1. Jelentkezzen be a  **[az Azure portal](https://ms.portal.azure.com/)**. 
-1. Válassza ki a zöld **+** jelentkezzen be a felső bal oldali panelen, és keresse meg `Language Understanding` a Marketplace-en, majd válassza ki a **Language Understanding** , és kövesse a  **Hozzon létre felhasználói élményt** LUIS előfizetés fiók létrehozásához. 
-
-    ![Azure Search](./media/luis-azure-subscription/azure-search.png) 
-
-1. Konfigurálja az előfizetés fiók nevét, például beállításokkal árképzési szint stb. 
-
-    ![Az Azure API kiválasztása](./media/luis-azure-subscription/azure-api-choice.png) 
-
-1. Miután létrehozta a Language Understanding resource, megtekintheti a létrehozott hozzáférési kulcsok **erőforrás-kezelés -> kulcsok**. Ez a szakasz bemutatja, hogyan az új erőforrás csatlakozni a LUIS-alkalmazások, a LUIS-portálon. 3. lépésében a LUIS-erőforrás neve van szüksége.
-
-    ![Az Azure-kulcsok](./media/luis-azure-subscription/azure-keys.png)
+Részletes ismertetőt talál a [alkalmazás készítése](get-started-portal-build-app.md) rövid.
 
 <a name="programmatic-key" ></a>
 <a name="authoring-key" ></a>
@@ -63,23 +49,7 @@ Ezt a kulcsot csak használandó végpont előrejelzési lekérdezések. Ne hasz
 
 ## <a name="assign-resource-key-to-luis-app-in-luis-portal"></a>Az erőforráskulcs hozzárendelése a LUIS-portál a LUIS-alkalmazás
 
-1. Jelentkezzen be a LUIS-portálra, válassza ki egy alkalmazást, majd válassza ki az új kulcs hozzáadása **kezelés** a jobb felső menüben, majd válassza ki **kulcsokat és a végpontok**.
-
-    [![Kulcsok és a végpontok lapot.](./media/luis-manage-keys/keys-and-endpoints.png)](./media/luis-manage-keys/keys-and-endpoints.png#lightbox)
-
-1. A LUIS hozzáadásához válassza ki a **erőforrás hozzárendelése +**.
-
-    ![Rendelje hozzá egy erőforrást az alkalmazáshoz](./media/luis-manage-keys/assign-key.png)
-
-1. Válassza ki az e-mailben társított párbeszédpanel a bérlő a cím a használt, jelentkezzen be a LUIS-webhelyre.  
-
-1. Válassza ki a **Előfizetésnevet** társított hozzáadni kívánt Azure-erőforrás.
-
-1. Válassza ki a **LUIS erőforrásnév**. 
-
-1. Válassza ki **erőforrás hozzárendelése**. 
-
-1. Keresse meg az új sort a táblázatban, és másolja a végpont URL-címe. Helyesen kialakítani, egy HTTP GET kérés legyen előrejelzési LUIS végpontját. 
+Részletes ismertetőt talál a [üzembe helyezési](get-started-portal-deploy-app.md) rövid.
 
 <!-- content moved to luis-reference-regions.md, need replacement links-->
 <a name="regions-and-keys"></a>

@@ -15,39 +15,37 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: ef46df4d5162a08d9dc4d8674cf5867f863ce332
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: ad97381d983446dfcc32dd1ba82af587a500b9da
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342479"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762143"
 ---
 # <a name="tutorial-set-up-resources-for-validation-as-a-service"></a>Oktatóanyag: A szolgáltatás érvényesítése erőforrások beállítása
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Szüksége lesz egy megoldás létrehozásához. Egy érvényesítési (VaaS) szolgáltatást az Azure Stack megoldás egy adott hardver anyagjegyzék jelöli. A megoldás ellenőrizheti, ha a hardver támogatja-e futtatása az Azure Stack fog használni. Ez az oktatóanyag készülhet fel a szolgáltatás használata a megoldással.
+Érvényesítés szolgáltatásként (VaaS) egy Azure-szolgáltatás, amellyel ellenőrizheti, és támogatja az Azure Stack megoldásokat a piacon. Kövesse az ebben a cikkben ellenőrzése a megoldás a szolgáltatás használata előtt.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Felkészülés a VaaS használata az Azure AD beállításával (Azure AD)-példányt.
+> * Felkészülés az VaaS használata az Azure Active Directory (AD) mentése beállításával.
 > * Tárfiók létrehozása.
 
 ## <a name="configure-an-azure-ad-tenant"></a>Az Azure AD-bérlő konfigurálása
 
-Azure AD-bérlő szükség, a hitelesítés és VaaS történő regisztrációt. A szerepköralapú hozzáférés-vezérlés (RBAC) funkcióját a bérlő kezelésére is, akik a fiókpartner-szervezet VaaS használni a partner által lesz használható.
-
-Regisztráljon a szervezeti Azure AD-bérlőben könyvtár (nem pedig a az Azure AD bérlő címtárát az Azure Stackhez használható), és létesíteni egy szabályzatot, a felhasználói fiókok kezelése. További információkért lásd: [kezelése az Azure AD-címtár](https://docs.microsoft.com/azure/active-directory/active-directory-administer).
+Az Azure AD-bérlő regisztrálásához a szervezet, és hitelesíti a felhasználókat az VaaS szolgál. A partner fogja használni a szerepköralapú hozzáférés-vezérlés (RBAC) funkcióját a bérlő kezelésére is, akik a fiókpartner-szervezet VaaS használni. További információkért lásd: [Mi az az Azure Active Directory?](https://docs.microsoft.com/en-us/azure/active-directory/fundamentals/active-directory-whatis).
 
 ### <a name="create-a-tenant"></a>Bérlő létrehozása
 
-Létrehoz egy bérlőt kifejezetten a VaaS egy leíró nevet, például `ContosoVaaS@onmicrosoft.com`.
+Hozzon létre egy bérlőt, amelyet a szervezet VaaS szolgáltatások eléréséhez fog használni. Egy leíró nevet, például használja `ContosoVaaS@onmicrosoft.com`.
 
 1. Az Azure AD-bérlő létrehozása a [az Azure portal](https://portal.azure.com), vagy használjon egy meglévő bérlőt. <!-- For instructions on creating new Azure AD tenants, see [Get started with Azure AD](https://docs.microsoft.com/azure/active-directory/get-started-azure-ad). -->
 
 2. Adja hozzá a szervezet tagjai a bérlőhöz. Ezek a felhasználók felelőssége a szolgáltatás használatával megtekinthető és ütemezhető teszteket. Ha befejezte a regisztrációs, felhasználói hozzáférési szintet határozza meg.
- 
+
     Engedélyezi a felhasználókat a bérlőben a VaaS műveletek futtatására a következő szerepkörök hozzárendelésével:
 
     | Szerepkör neve | Leírás |
@@ -63,7 +61,7 @@ Létrehoz egy bérlőt kifejezetten a VaaS egy leíró nevet, például `Contoso
     3. Válassza ki **vállalati alkalmazások** > **Azure Stack érvényesítési Service** alkalmazás.
     4. Válassza a **Felhasználók és csoportok** elemet. A **Azure Stack érvényesítési Service – felhasználók és csoportok** panel felsorolja a felhasználók számára a engedélyt az alkalmazás használatára.
     5. Válassza ki **+ Hozzáadás felhasználó** felhasználó hozzáadása a bérlőről és rendelhet egy szerepkört.
-   
+
     Ha szeretné elkülöníteni a VaaS erőforráshoz és művelethez egy szervezeten belül különböző csoportokkal, az Azure AD-bérlő több címtárat is létrehozhat.
 
 ### <a name="register-your-tenant"></a>A bérlő regisztrálásához
@@ -102,10 +100,7 @@ Az Azure Storage-fiókot az Azure nyilvános felhő, nem pedig az Azure Stack-k�
 
 3. A **erőforráscsoport**válassza **új létrehozása**. Adja meg az új erőforráscsoport nevét.
 
-4. Adja meg a tárfiók nevét. A választott névnek kell lennie:
-    - Egyedi Azure-ban
-    - 3 – 24 karakter hosszúságú
-    - Csak a számokat és kisbetűket tartalmazhat
+4. Tekintse át a [elnevezési konvenciók](https://docs.microsoft.com/en-us/azure/architecture/best-practices/naming-conventions#storage) Azure Storage-fiókok. Adja meg a tárfiók nevét.
 
 5. Válassza ki a **USA nyugati régiójában** a tárfiók régióját.
 
@@ -119,7 +114,7 @@ Az Azure Storage-fiókot az Azure nyilvános felhő, nem pedig az Azure Stack-k�
     - A **replikációs mező** értékre van állítva **helyileg redundáns tárolás (LRS)** alapértelmezés szerint.
     - A **Hozzáférési szint** alapértelmezett beállítása **Gyakori elérésű**.
 
-7. A tárfiók beállításainak áttekintéséhez és a fiók létrehozásához kattintson az **Áttekintés + létrehozás** elemre.
+7. A tárfiók beállításainak áttekintéséhez és a fiók létrehozásához válassza a **Felülvizsgálat + létrehozás** elemet.
 
 ## <a name="next-steps"></a>További lépések
 

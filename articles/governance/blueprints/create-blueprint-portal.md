@@ -4,17 +4,17 @@ description: Szeretne létrehozni, használja az Azure tervek meghatározása, �
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/01/2019
+ms.date: 03/11/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 7aeb3cf2d56dbe20c85adca2243f5830575693e3
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 845d200238c276be3f0d64afb3127864d8d9ae19
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818663"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729924"
 ---
 # <a name="define-and-assign-an-azure-blueprint-in-the-portal"></a>Definiálása és hozzárendelése egy Azure tervezet a portálon
 
@@ -42,7 +42,7 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
 
    ![Terv létrehozása](./media/create-blueprint-portal/create-blueprint-button.png)
 
-1. Adjon meg egy **tervrajznév** például a "MyBlueprint" (betűket és számokat – legfeljebb 48 karakterből állhat, de nincs szóközt vagy különleges karaktert) a tervrajz, de hagyja **leírás tervezetet** üresen.  Az a **definíció helye** kattintson a jobb oldalon a három pontra, válassza ki a [felügyeleti csoport](../management-groups/overview.md) vagy ahol a tervezet mentse, és kattintson a kívánt előfizetés **kiválasztása**.
+1. Adjon meg egy **tervrajznév** például a "MyBlueprint" (betűket és számokat – legfeljebb 48 karakterből állhat, de nincs szóközt vagy különleges karaktert) a tervrajz, de hagyja **leírás tervezetet** üresen. Az a **definíció helye** kattintson a jobb oldalon a három pontra, válassza ki a [felügyeleti csoport](../management-groups/overview.md) vagy ahol a tervezet mentse, és kattintson a kívánt előfizetés **kiválasztása**.
 
 1. Ellenőrizze a helyes-e az adatokat (a **tervrajznév** és **definíció helye** mezők később már nem módosítható), és kattintson a **tovább: Összetevők** a lap alján, vagy a **összetevők** fülre az oldal tetején.
 
@@ -84,7 +84,7 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
            },
            "location": {
                "type": "string",
-               "defaultValue": "[resourceGroup().location]",
+               "defaultValue": "[resourceGroups('ResourceGroup').location]",
                "metadata": {
                    "description": "Location for all resources."
                }
@@ -129,7 +129,7 @@ A [Terv létrehozása](#create-a-blueprint) során nem adott meg leírást, és 
 
 1. Tervezetek listájában kattintson a jobb gombbal a korábban létrehozott, és válassza ki **szerkesztési tervezet**.
 
-1. A **leírás tervezetet**, néhány információt nyújtanak azokról a tervezet és az azt alkotó összetevők.  Ebben az esetben adja meg, például: "Ez a megoldás címke házirend- és szerepkör-hozzárendelés állítja be az előfizetés, létrehoz egy erőforráscsoport és erőforrás-sablon és a szerepkör-hozzárendelés telepíti a ResourceGroup."
+1. A **leírás tervezetet**, néhány információt nyújtanak azokról a tervezet és az azt alkotó összetevők. Ebben az esetben adja meg, például: "Ez a megoldás címke házirend- és szerepkör-hozzárendelés állítja be az előfizetés, létrehoz egy erőforráscsoport és erőforrás-sablon és a szerepkör-hozzárendelés telepíti a ResourceGroup."
 
 1. Kattintson a **tovább: Összetevők** a lap alján, vagy a **összetevők** fülre az oldal tetején.
 
@@ -186,13 +186,17 @@ Miután közzétett egy tervet, az hozzárendelhető az előfizetésekhez. A lé
    > [!NOTE]
    > Minden kijelölt előfizetéshez létrejön egy hozzárendelés, így az egyes előfizetés-hozzárendelések később anélkül módosíthatók, hogy a többi kijelölt előfizetésben is módosítani kellene őket.
 
-1. A **hozzárendelt név**, adjon meg egy egyedi nevet ehhez a hozzárendeléshez.
+1. A **hozzárendelés neve**, adjon meg egy egyedi nevet ehhez a hozzárendeléshez.
 
-1. A **Hely** mezőben válassza ki azt a régiót, amelyben létre kívánja hozni a felügyelt identitást. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További tudnivalók: [Azure-erőforrások felügyelt identitásai](../../active-directory/managed-identities-azure-resources/overview.md).
+1. A **hely**, válassza ki a régiót, a felügyelt identitás- és előfizetés központi telepítési objektum kell létrehozni. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További tudnivalók: [Azure-erőforrások felügyelt identitásai](../../active-directory/managed-identities-azure-resources/overview.md).
 
-1. A **Közzétett** verziók **Tervdefiníció verzió** legördülő listájában hagyja meg a „v1” bejegyzést (alapértelmezett érték a legutóbb **Közzétett** verzióhoz).
+1. Hagyja a **tervrajz-definíció verziója** legördülő **közzétett** verziók "v1" bejegyzésére (alapértelmezett érték a legutóbb **közzétett** verzió).
 
 1. A **Hozzárendelés zárolása** mezőben hagyja meg az alapértelmezett **Nem zárolandó** értéket. További információkat talál a [terv-erőforrások zárolásáról](./concepts/resource-locking.md) szóló cikkben.
+
+   ![Hozzárendelés - zárolási és a felügyelt identitások](./media/create-blueprint-portal/assignment-locking-mi.png)
+
+1. A **felügyelt identitás**, hagyja bejelölve az alapértelmezett **rendszerhez rendelt**.
 
 1. Az előfizetés szintű szerepkör-hozzárendelés **[felhasználói csoport vagy alkalmazás neve]: Közreműködői**, keresse meg és válassza ki a felhasználó, alkalmazás vagy csoport.
 

@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: AzurePortal
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/20/2018
+ms.date: 03/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 87b6dcb007eaea140b9655c248fdfb356cbc9b5f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: bc89b8d830e364c70fef5a5959d4da85c517a5ee
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817320"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57764933"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Azure-erőforrások rendszerezése címkékkel
 
@@ -115,7 +115,7 @@ $r.Tags.Add("Status", "Approved")
 Set-AzResource -Tag $r.Tags -ResourceId $r.ResourceId -Force
 ```
 
-Ha az erőforráscsoport összes címkéjét szeretné alkalmazni a csoport erőforrásaira, és *nem szeretné megőrizni az erőforrások meglévő címkéit*, használja a következő szkriptet:
+Összes címkéjét szeretné alkalmazni egy erőforráscsoportot az erőforrásaira, és *korábbi címkék megőrzése nélkül az erőforrásokon*, használja a következő szkriptet:
 
 ```azurepowershell-interactive
 $groups = Get-AzResourceGroup
@@ -125,7 +125,7 @@ foreach ($g in $groups)
 }
 ```
 
-Ha az erőforráscsoport összes címkéjét szeretné alkalmazni a csoport erőforrásaira, és *nem szeretné megőrizni az erőforrások meglévő, nem ismétlődő címkéit*, a következő szkriptet kell használnia:
+Összes címkéjét szeretné alkalmazni egy erőforráscsoportot az erőforrásaira, és *meglévő címkék maradjon az erőforrásokat, amelyek nem ismétlődő*, használja a következő szkriptet:
 
 ```azurepowershell-interactive
 $group = Get-AzResourceGroup "examplegroup"
@@ -222,7 +222,7 @@ rt=$(echo $jsonrtag | tr -d '"{},' | sed 's/: /=/g')
 az resource tag --tags $rt Project=Redesign -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
 ```
 
-Ha az erőforráscsoport összes címkéjét szeretné alkalmazni a csoport erőforrásaira, és *nem szeretné megőrizni az erőforrások meglévő címkéit*, használja a következő szkriptet:
+Összes címkéjét szeretné alkalmazni egy erőforráscsoportot az erőforrásaira, és *korábbi címkék megőrzése nélkül az erőforrásokon*, használja a következő szkriptet:
 
 ```azurecli
 groups=$(az group list --query [].name --output tsv)
@@ -238,7 +238,7 @@ do
 done
 ```
 
-Összes címkéjét szeretné alkalmazni egy erőforráscsoportot az erőforrásaira, és *szeretné megőrizni az erőforrások meglévő címkéit*, használja a következő szkriptet:
+Összes címkéjét szeretné alkalmazni egy erőforráscsoportot az erőforrásaira, és *erőforrások meglévő címkéit tartsa*, használja a következő szkriptet:
 
 ```azurecli
 groups=$(az group list --query [].name --output tsv)

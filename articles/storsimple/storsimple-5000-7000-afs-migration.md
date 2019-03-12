@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 18853d10c4acf1573772d72a8fb2c347cce545df
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 9992faa11585d49d3024e00338b4c1dc09da9195
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730169"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57726668"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>Az Azure File Sync át adatokat a StorSimple 5000-7000-es sorozat
 
@@ -87,7 +87,7 @@ A következő lépésekkel migrálása az Azure File Sync megosztások a StorSim
     Kihagyhatja ezt a lépést, és folytassa a következő lépés egy másik Windows Server-állomás használata. Az azonos Windows-fájlkiszolgáló AFS használ, ha néhány perc alatt az állásidő most fog tapasztalni. 
     - **A leállás akkor kezdődik** –, amelyet a kiszolgálói végpont törlése *. lépés: 1F*. 
     - Hozzon létre egy új kiszolgálói végpontok az elérési utat, ahol azt szeretné, hogy az adatok tárolási bevezetése előre.
-    - Miután a kiszolgálói végpont állapota kifogástalan (Ez eltarthat néhány percig), látni fogja az adatokat az új helyen. Most konfigurálhatja a Windows Server-gazdagép, az új helyen levő fájlok kiszolgálása érdekében. -  **Állásidő vége**.
+    - Miután a kiszolgálói végpont állapota kifogástalan (Ez eltarthat néhány percig), látni fogja az adatokat az új helyen. Most konfigurálhatja a Windows Server-gazdagép, az új helyen levő fájlok kiszolgálása érdekében. - **Állásidő vége**.
 5.  Ha egy másik Windows-fájlkiszolgáló használ az Azure File Sync, ezután nem fog tapasztalni okoz állásidőt. 
     - Adjon hozzá egy másik kiszolgálói végpont elérési útját a helyi tároló, azaz használata helyett a StorSimple-eszköz gyorsítótárként felkészült. 
     - Néhány perc alatt az új kiszolgálón lévő fájlok látni fogja. Szabadon győződjön meg arról, a Váltás az új helyet a gazdagépen a StorSimple-eszközről, bármikor.

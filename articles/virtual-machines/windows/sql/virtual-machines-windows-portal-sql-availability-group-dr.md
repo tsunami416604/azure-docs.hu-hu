@@ -3,7 +3,7 @@ title: SQL Server rendelkezésre állási csoportok – az Azure Virtual Machine
 description: Ez a cikk bemutatja egy SQL Server rendelkezésre állási csoport konfigurálása és a egy másik régióban lévő replika Azure virtuális gépeken.
 services: virtual-machines
 documentationCenter: na
-authors: MikeRayMSFT
+author: MikeRayMSFT
 manager: craigg
 editor: monicar
 tags: azure-service-management
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: d64c55857cda0aa64dc010566490e1696fffdea0
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 5e4b63d4fc8b437bd4d476c72d23f9dbf5242d5b
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53972379"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780558"
 ---
 # <a name="configure-an-always-on-availability-group-on-azure-virtual-machines-in-different-regions"></a>Az Azure-beli virtuális gépek különböző régiókban Always On rendelkezésre állási csoport konfigurálása
 
@@ -98,7 +98,7 @@ A replika létrehozásához egy távoli adatközpontban, tegye a következőket:
 
    Az IP-cím erőforrás a Feladatátvevőfürt-kezelő hozhat létre. Kattintson a jobb gombbal az rendelkezésre állási csoport **erőforrás hozzáadása**, **további erőforrások**, és kattintson a **IP-cím**.
 
-   ![IP-cím létrehozása](./media/virtual-machines-windows-portal-sql-availability-group-dr/20-add-ip-resource.png)
+   ![Create IP Address](./media/virtual-machines-windows-portal-sql-availability-group-dr/20-add-ip-resource.png)
 
    Az IP-cím a következőképpen konfigurálja:
 
@@ -169,7 +169,7 @@ Kapcsolat tesztelése után lépjen vissza az elsődleges replika az elsődleges
 | ----- | ----- | ----- | ----- | -----
 | Elsődleges adatközpont | SQL-1 | Elsődleges | Szinkron | Automatikus
 | Elsődleges adatközpont | SQL-2 | Másodlagos | Szinkron | Automatikus
-| Másodlagos vagy távoli adatközpontban | SQL-3 | Másodlagos | Aszinkron | Manuális
+| Másodlagos vagy távoli adatközpontban | SQL-3 | Másodlagos | Aszinkron | Kézi
 
 
 ### <a name="more-information-about-planned-and-forced-manual-failover"></a>További információ a tervezett és a kényszerített manuális feladatátvétel

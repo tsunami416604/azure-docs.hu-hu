@@ -3,20 +3,20 @@ title: Azure Data Factory segítségével prediktív adatcsatornák létrehozás
 description: Ismerje meg, hogyan hozhat létre egy prediktív folyamatot az Azure Machine Learning - kötegelt végrehajtási tevékenység az Azure Data Factory használatával.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2019
-ms.author: douglasl
-ms.openlocfilehash: a5ba45b8a7bd507552b49b6a18582c393ad07ff5
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: fa156beba6d5eb1f7e10529d7f1287ab9a148024
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446035"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576565"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Az Azure Machine Learning és az Azure Data Factory prediktív adatcsatornák létrehozása
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

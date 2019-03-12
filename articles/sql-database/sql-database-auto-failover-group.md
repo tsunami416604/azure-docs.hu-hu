@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: 862cc4da99aed02b81b6fd12913736bf30866f72
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/07/2019
+ms.openlocfilehash: 3c65d4360e3a20b7c2228e42fb4b4db1eecc75ff
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313599"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774796"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok segítségével átlátható és koordinált több adatbázis feladatátvételét engedélyezése
 
@@ -215,7 +215,7 @@ Ha az alkalmazás felügyelt példány az adatréteg használja, az üzletmenet 
   > [!NOTE]
   > Az egyes szolgáltatásszintek után az Azure SQL Database használatát támogatja [csak olvasható replikák](sql-database-read-scale-out.md) terheléselosztása csak olvasható lekérdezési számítási feladatok egy csak olvasható replika kapacitását, valamint használatához betölteni a `ApplicationIntent=ReadOnly` paraméter a kapcsolat karakterlánc. Egy georeplikált másodlagos van beállítva, amikor ez a funkció használatával csatlakozni vagy egy csak olvasható replika az elsődleges helyen, illetve a georeplikált helyre.
   > - Csak olvasható replika az elsődleges helyen csatlakozni, használja `failover-group-name.zone_id.database.windows.net`.
-  > - Csak olvasható replika az elsődleges helyen csatlakozni, használja `failover-group-name.secondary.zone_id.database.windows.net`.
+  > - A másodlagos helyen csak olvasható replika csatlakozni, használja `failover-group-name.secondary.zone_id.database.windows.net`.
 
 - **Elő kell készíteni a teljesítményoptimalizált teljesítménycsökkenése**
 
@@ -282,7 +282,9 @@ A feladatátvételi csoportok között két különböző régióban lévő els�
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>A frissítés, vagy egy elsődleges adatbázis alacsonyabb szolgáltatásszintre
 
-Frissítés vagy Visszaléptetés a különböző számítási méret (belül ugyanazon a szolgáltatásszinten, nem az általános célú és a kritikus fontosságú üzleti között) az elsődleges adatbázis bármely másodlagos adatbázisok leválasztása nélkül is. Amikor frissít, javasoljuk, hogy először frissítse a másodlagos adatbázist, és utána frissítse az elsődleges. Ha alacsonyabb szolgáltatásszintre, fordított sorrendben: először alacsonyabbra az elsődleges, majd a gyűjteményt majd a másodlagos. Frissítésekor vagy eltérő szolgáltatási réteg az adatbázisról, a javaslat lép érvénybe.
+Frissítés vagy Visszaléptetés a különböző számítási méret (belül ugyanazon a szolgáltatásszinten, nem az általános célú és a kritikus fontosságú üzleti között) az elsődleges adatbázis bármely másodlagos adatbázisok leválasztása nélkül is. A frissítéskor, azt javasoljuk, hogy először frissítse az összes másodlagos adatbázist, és utána frissítse az elsődleges. Ha alacsonyabb szolgáltatásszintre, fordított sorrendben: először alacsonyabbra az elsődleges, majd a majd mind a másodlagos adatbázisok. Frissítésekor vagy eltérő szolgáltatási réteg az adatbázisról, a javaslat lép érvénybe.
+
+Ez a sorozat ajánlott kifejezetten elkerülheti a problémát, ahol alacsonyabb Termékváltozat, a másodlagos lekérdezi-e túlterhelve, és a egy alacsonyabb szintű vagy a frissítés során újra előkészített kell lennie. Azáltal, hogy az elsődleges csak olvasható, az összes olvasási és írási számítási feladatokat az elsődleges érintő rovására is sikerült elkerülheti a problémát. 
 
 > [!NOTE]
 > Ha másodlagos adatbázis nem javasoljuk, hogy a másodlagos adatbázisról, a feladatátvételi csoport konfigurációjának részeként hozta létre. Ez azért szükséges az adatszint rendelkezzen elegendő kapacitással a normál számítási feladatok feldolgozásához a feladatátvétel aktiválása után.
@@ -303,8 +305,6 @@ A feladatátvételi csoportok időponthoz visszaállítással kapcsolatos továb
 Ahogy korábban tárgyalt, automatikus feladatátvételi csoportok és az aktív georeplikáció is kezelhetők programozott módon az Azure PowerShell és a REST API használatával. Az alábbi táblázatok ismertetik az elérhető parancsok. Aktív georeplikáció tartalmaz egy, az Azure Resource Manager API-k Management, beleértve a [Azure SQL Database REST API-t](https://docs.microsoft.com/rest/api/sql/) és [Azure PowerShell-parancsmagok](https://docs.microsoft.com/powershell/azure/overview). Ezekkel az API-erőforráscsoportok használatát, és támogatja a szerepköralapú biztonság (RBAC). Szerepkörök hozzáférést megvalósításával további információkért lásd: [Azure szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md).
 
 ### <a name="powershell-manage-sql-database-failover-with-single-databases-and-elastic-pools"></a>PowerShell: Az SQL database feladatátvételi az önálló adatbázisok és rugalmas készletek kezelése
-
-[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
 | Parancsmag | Leírás |
 | --- | --- |

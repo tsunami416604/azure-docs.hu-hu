@@ -1,18 +1,18 @@
 ---
 title: Az Azure-beli Kubernetes Helm-tárolók üzembe helyezése
-description: Tárolók az Azure Kubernetes Service (AKS)-fürt üzembe helyezése a Helm csomagolás eszközzel
+description: A Helm csomagolás eszköz használata a tárolók az Azure Kubernetes Service (AKS)-fürt üzembe helyezése
 services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 10/01/2018
+ms.date: 03/06/2019
 ms.author: iainfou
-ms.openlocfilehash: a3f5bad20ddd0968f2e76008799494adbb55bc31
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: ccd98f5bf859673ae69b80dfcd0e5020ba289682
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55092136"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57768552"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>Alkalmazások telepítése a Helm használatával az Azure Kubernetes Service (AKS)
 
@@ -22,7 +22,7 @@ Ez a cikk bemutatja, hogyan konfigurálhatja és használhatja a Helm a Kubernet
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Ebben a dokumentumban ismertetett lépések feltételezik, hogy már létrehozott egy AKS-fürtöt, és létrehozott egy `kubectl` kapcsolatot a fürttel. Ha ezeket az elemeket kell jelenik meg, a [AKS gyors][aks-quickstart].
+Ez a cikk azt feltételezi, hogy egy meglévő AKS-fürtöt. Ha egy AKS-fürtre van szüksége, tekintse meg az AKS gyors [az Azure CLI-vel] [ aks-quickstart-cli] vagy [az Azure portal használatával][aks-quickstart-portal].
 
 A Helm CLI telepítve van, az ügyfél, amely a fejlesztői rendszeren fut, és lehetővé teszi, hogy indítása, leállítása és felügyelje alkalmazásait, a Helm használatával is szükséges. Ha az Azure Cloud Shellt használja, a Helm CLI már telepítve van. A témakör a telepítési utasításokat a helyi platformon, [telepítése Helm][helm-install].
 
@@ -153,7 +153,7 @@ A következő sűrített példához kimenet a Kubernetes-erőforrást a Helm-dia
 $ helm install stable/wordpress
 
 NAME:   wishful-mastiff
-LAST DEPLOYED: Thu Jul 12 15:53:56 2018
+LAST DEPLOYED: Wed Mar  6 19:11:38 2019
 NAMESPACE: default
 STATUS: DEPLOYED
 
@@ -201,8 +201,8 @@ Kiadásokban a fürtön telepíteni listájának megtekintéséhez használja a 
 ```console
 $ helm list
 
-NAME             REVISION    UPDATED                     STATUS      CHART              NAMESPACE
-wishful-mastiff  1           Thu Jul 12 15:53:56 2018    DEPLOYED    wordpress-2.1.3  default
+NAME                REVISION    UPDATED                     STATUS      CHART            APP VERSION    NAMESPACE
+wishful-mastiff   1         Wed Mar  6 19:11:38 2019    DEPLOYED    wordpress-2.1.3  4.9.7          default
 ```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
@@ -236,4 +236,6 @@ Alkalmazástelepítések Kubernetes Helm-kezelésével kapcsolatos további info
 [helm-ssl]: https://docs.helm.sh/using_helm/#using-ssl-between-helm-and-tiller
 
 <!-- LINKS - internal -->
-[aks-quickstart]: ./kubernetes-walkthrough.md
+[aks-quickstart-cli]: kubernetes-walkthrough.md
+[aks-quickstart-portal]: kubernetes-walkthrough-portal.md
+[install-azure-cli]: /cli/azure/install-azure-cli

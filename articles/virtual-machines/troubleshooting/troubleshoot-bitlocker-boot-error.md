@@ -3,7 +3,7 @@ title: Egy Azure-beli virtuális gépen a BitLocker rendszerindítási hibák el
 description: Ismerje meg, egy Azure-beli virtuális gépen a BitLocker rendszerindítás kapcsolatos hibák elhárítása
 services: virtual-machines-windows
 documentationCenter: ''
-authors: genlin
+author: genlin
 manager: cshepard
 editor: v-jesits
 ms.service: virtual-machines-windows
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/31/2018
 ms.author: genli
-ms.openlocfilehash: 13a45593509deb0cb9578c5ea6ed83aab3e008a4
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 1cfba4bf824d381e1b40ea0228ee902a1d6b5a9a
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216560"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57763214"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>A BitLocker rendszerindítási hibák-beli virtuális gépen
 

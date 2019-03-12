@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9e208f899ff26135d3ce26bfa18096210513381
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: bcc93254b50da9bff6f687034d39d0058aa514e1
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192047"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57765952"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Érzete Egyesült Államok (nem-UltiPro)
 
@@ -166,7 +166,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     
     c. A **identitásszolgáltató neve** szövegmezőjébe illessze be az értéket, **SAML Entitásazonosító**, az Azure Portalról másolt. 
 
-    d. A **SAML tartomány szövegmező**, írja be például a tartomány **@contoso.com**.
+    d. A **SAML tartomány szövegmező**, írja be például a tartomány  **\@contoso.com**.
 
     e. Kattintson a **töltse fel újra** feltölteni a **metaadatainak XML** fájlt.
 

@@ -9,18 +9,18 @@ editor: amsriva
 ms.assetid: 3976399b-25ad-45eb-8eb3-fdb736a598c5
 ms.service: application-gateway
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 07/19/2017
 ms.author: amsriva
-ms.openlocfilehash: 689ee54dc1db2ea371b08270718278fd98c65bb5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 856f23de8a8772255f570a923ecf1708dc819bb5
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22704710"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57778348"
 ---
 # <a name="overview-of-end-to-end-ssl-with-application-gateway"></a>Az Application Gatewayen engedélyezett teljes körű SSL áttekintése
 
@@ -40,7 +40,7 @@ Jelen példa esetén a TLS1.2-t használó kérések a Pool1-ben lévő háttér
 
 Az alkalmazásátjáró csak ismert háttérpéldányokkal kommunikál, amelyek tanúsítványa az alkalmazásátjáró engedélyezési listájában szerepel. A tanúsítványok engedélyezéséhez fel kell tölteni a háttérkiszolgáló-tanúsítvány nyilvános kulcsát az alkalmazásátjáróra (főtanúsítványt nem). Ezután kizárólag az ismert és engedélyezett háttérkiszolgálókkal való kapcsolódás engedélyezett. A fennmaradó háttérkiszolgálók átjáróhibához vezetnek. Az önaláírt tanúsítványok csupán tesztelési célokat szolgálnak, és nem ajánlottak éles számítási feladatokra. Az ilyen tanúsítványokat használat előtt a fenti lépések szerint szintén engedélyeztetni kell az alkalmazásátjáróval.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután megismerkedett a teljes körű SSL-lel, tekintse át a [teljes körű SSL-nek az Application Gatewayen történő engedélyezésével](application-gateway-end-to-end-ssl-powershell.md) foglalkozó témakört, amelyből megtudhatja, hogyan hozhat létre átjáróalkalmazást teljes körű SSL segítségével.
 

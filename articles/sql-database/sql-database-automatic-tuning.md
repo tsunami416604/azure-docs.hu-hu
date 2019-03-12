@@ -11,13 +11,13 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: b13becf8530f478a5e58b46a1b422593051c95cf
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 03/06/2019
+ms.openlocfilehash: e872c29712c3fadca676ec87870bcc5c4eb58565
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478168"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57727399"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Az Azure SQL Database automatikus finomhangolása
 
@@ -66,11 +66,13 @@ Automatikus hangolási works áttekintését és a jellemző használati forgat�
 
 Az Azure SQL Database automatikus finomhangolási beállítások a következők:
 
- 1. **A CREATE INDEX** -indexek, amely növelheti a számítási feladatok teljesítményére, indexeli, és automatikusan ellenőrzi, hogy a lekérdezések teljesítménye javult azonosítja.
- 2. **DROP INDEX** -redundáns és ismétlődő indexeket naponta, azonosítja egyedi indexek és az indexek, amelyek hosszú ideje nem használtak (> 90 nap). Vegye figyelembe, hogy jelenleg a beállítást, nem kompatibilis alkalmazások használatával a partíció közötti váltás és index mutatókat.
- 3. **FORCE LAST GOOD Plan csomag** -SQL-lekérdezések végrehajtási terv, amely alacsonyabb, mint az előző jó terv, és lekérdezi az utolsó ismert jó terv helyett a romlott terv használatával azonosítja.
+| Automatikus hangolási beállítás | Önálló adatbázis és a készletezett adatbázisok támogatása | Példány adatbázisok támogatása |
+| :----------------------------- | ----- | ----- |
+| **A CREATE INDEX** -indexek, amely növelheti a számítási feladatok teljesítményére, indexeli, és automatikusan ellenőrzi, hogy a lekérdezések teljesítménye javult azonosítja. | Igen | Nem | 
+| **DROP INDEX** -redundáns és ismétlődő indexeket naponta, azonosítja egyedi indexek és az indexek, amelyek hosszú ideje nem használtak (> 90 nap). Vegye figyelembe, hogy jelenleg a beállítást, nem kompatibilis alkalmazások használatával a partíció közötti váltás és index mutatókat. | Igen | Nem |
+| **FORCE LAST GOOD Plan csomag** – azonosítja az SQL-lekérdezések végrehajtási terv, amely alacsonyabb, mint az előző jó terv, és lekérdezi az utolsó ismert jó terv helyett a romlott csomag használatával. | Igen | Igen |
 
-Az automatikus hangolás azonosítja **a CREATE INDEX**, **DROP INDEX**, és **KÉNYSZERÍTETT utolsó JÓ terv** optimalizálhatja az adatbázis teljesítményét, és megjeleníti őket a javaslatok [Az azure portal](sql-database-advisor-portal.md), és elérhetővé teszi azokat keresztül [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) és [REST API-val](https://docs.microsoft.com/rest/api/sql/serverautomatictuning).
+Az automatikus hangolás azonosítja **a CREATE INDEX**, **DROP INDEX**, és **KÉNYSZERÍTETT utolsó JÓ terv** optimalizálhatja az adatbázis teljesítményét, és megjeleníti őket a javaslatok [Az azure portal](sql-database-advisor-portal.md), és elérhetővé teszi azokat keresztül [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) és [REST API-val](https://docs.microsoft.com/rest/api/sql/serverautomatictuning). 
 
 Manuálisan alkalmazhatja a portál használatával finomhangolási ajánlásait, vagy hagyhatja, hogy az automatikus hangolás autonóm módon alkalmazhatja a hangolási javaslatokat az Ön számára. A finomhangolási ajánlásait, önállóan alkalmazza a rendszer így előnyeit van, hogy automatikusan ellenőrzi a hiba a számítási feladatok teljesítményére pozitív nyereség létezik, és ha nem észlelhető jelentős teljesítménybeli javulást, akkor automatikusan visszaállítja a hangolási javaslat. Vegye figyelembe, hogy érinti a hangolási javaslatokat, nem gyakran végrehajtott lekérdezések esetén az érvényesítési fázist eltarthat akár 72 óra elvárt. Abban az esetben, ha meg vannak manuálisan alkalmaz hangolási javaslatokat, a teljesítmény automatikus ellenőrzés és megfordítása mechanizmusok nem állnak rendelkezésre.
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: c2bee4d35fe857d5ad3bf26dc1145b8721c85df4
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 44252274cc3c0050ba138c3115deeceb2f06f8d8
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594236"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57782768"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Az Azure App Service egyéni tartománynév vásárlása
 
@@ -102,7 +102,7 @@ Az a **egyéni tartományok** kattintson **tartomány vásárlása**.
 ### <a name="configure-the-domain-purchase"></a>Konfigurálja a tartomány vásárlása
 
 Az a **App Service-tartomány** lap a **tartomány keresése** mezőbe írja be a tartománynév vásárlása és írja be a kívánt `Enter`. A javasolt elérhető tartományok a szövegmező alatt jelennek meg. Válassza ki egy vagy több tartományt szeretne vásárolni.
-   
+
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-2.png)
 
 > [!NOTE]
@@ -111,15 +111,15 @@ Az a **App Service-tartomány** lap a **tartomány keresése** mezőbe írja be 
 >
 
 Kattintson a **kapcsolattartási adatai** és a tartomány kapcsolattartási adatait űrlap kitöltésekor. Ha befejezte, kattintson a **OK** az App Service-tartomány lapra való visszatéréshez.
-   
-Fontos a lehető legnagyobb pontosságú minden kötelező mezőt kitöltötte. Helytelen adatok a kapcsolattartási vásárolhat hibát eredményezhet. 
+
+Fontos a lehető legnagyobb pontosságú minden kötelező mezőt kitöltötte. Helytelen adatok a kapcsolattartási vásárolhat hibát eredményezhet.
 
 Ezután válassza ki a kívánt beállításokat a tartomány. Tekintse meg az alábbi táblázatban találja:
 
 | Beállítás | Ajánlott érték | Leírás |
 |-|-|-|
 |Adatvédelem | Bekapcsolás | Részvétel a "Adatvédelem", amely szerepel a vételár _ingyenes_. Néhány legfelső szintű tartományok, amelyek nem támogatják az adatvédelmet regisztráló szervezetek által kezelt, és ezek jelennek meg a **adatvédelmet** lapot. |
-| Alapértelmezett állomásnevek hozzárendelése | **www** és **@** | Ha szükséges, válassza ki a kívánt gazdagépnévvel kötéseket. A tartomány beszerzési művelet befejeződése után az alkalmazás a kijelölt állomásnevek címen érhető el. Ha az alkalmazás mögötti [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/), nem jelenik meg a beállítást, a gyökértartomány hozzárendelése (@), mert a Traffic Manager does nem támogatja A-rekordokat. A tartomány vásárlás befejezése után módosíthatja a hostname-hozzárendeléseket. |
+| Alapértelmezett állomásnevek hozzárendelése | **www** és **\@** | Ha szükséges, válassza ki a kívánt gazdagépnévvel kötéseket. A tartomány beszerzési művelet befejeződése után az alkalmazás a kijelölt állomásnevek címen érhető el. Ha az alkalmazás mögötti [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/), nem jelenik meg a beállítást, a gyökértartomány hozzárendelése (@), mert a Traffic Manager does nem támogatja A-rekordokat. A tartomány vásárlás befejezése után módosíthatja a hostname-hozzárendeléseket. |
 
 ### <a name="accept-terms-and-purchase"></a>Fogadja el a feltételeket, és vásárolja meg
 

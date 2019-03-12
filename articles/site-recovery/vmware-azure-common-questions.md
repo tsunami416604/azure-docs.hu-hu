@@ -5,15 +5,15 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 03/03/2019
+ms.date: 03/07/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 9e15f2e1b064ec2e64bfa8254075eac5bc801115
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 9e192c736235fcf8b8b5374787ad94aaf87427bf
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442613"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57727076"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Gyakori kérdések – VMware-ből az Azure-bA
 
@@ -123,11 +123,15 @@ Igen, az ExpressRoute segítségével virtuális gépek replikálása az Azure-b
 
 ### <a name="how-can-i-change-storage-account-after-machine-is-protected"></a>Hogyan válthatok storage-fiók után a gép védelméhez?
 
-Egy folyamatban lévő replikáció, a storage-fiókot is csak frissíthető a prémium szintű. Ha szeretné használni a normál díjszabásra, szeretné letiltani a forrásgép replikációját, és engedélyezze újra a védelmet, a standard szintű felügyelt lemez. Szereplőkkel, ez nem egy más módon nem lehet módosítani a storage-fiók védelmének engedélyezése után.
+Tiltsa le és engedélyezze a replikálást vagy- és Visszaléptetés a tárfiók típusa kell.
 
 ### <a name="how-can-i-change-managed-disk-type-after-machine-is-protected"></a>Hogyan válthatok felügyelt lemez típusa után a gép védelméhez?
 
-Igen, egyszerűen módosíthatja a felügyelt lemez típusa. [További információk](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage).
+Igen, egyszerűen módosíthatja a felügyelt lemez típusa. [További információk](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage). Azonban után módosítja a felügyelt lemez típusa, győződjön meg arról, hogy várja meg a friss helyreállítási pontot kell létrehozni, ha kell a feladatátvételi teszt vagy feladatátvétel ossza meg ezt a tevékenységet.
+
+### <a name="can-i-switch-the-replication-from-managed-disks-to-unmanaged-disks"></a>Válthatok-e a felügyelt lemezekről történő replikálás nem felügyelt lemezek?
+
+Nem, a nem felügyelt való váltás felügyelt nem támogatott.
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Miért nem tudja replikálni VPN-kapcsolaton keresztül?
 

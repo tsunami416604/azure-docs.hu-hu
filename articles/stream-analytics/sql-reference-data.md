@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: cc6e4083ba952eb9799aa91f76cf6e5ab75c7f64
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: efd450edb87316e75fc240cac80eda93151a22b3
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449580"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57765084"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job-preview"></a>Egy SQL Database-ből a referenciaadatok használata az Azure Stream Analytics-feladat (előzetes verzió)
 
@@ -134,19 +134,44 @@ A feladat üzembe helyezése az Azure-bA előtt tesztelheti a lekérdezés logik
 
 A különbözeti lekérdezés használatakor [az Azure SQL Database időbeli verziózású táblák](../sql-database/sql-database-temporal-tables.md) használata ajánlott.
 
-1. A pillanatkép-lekérdezés létrehozásához. 
+1. A historikus tábla létrehozása az Azure SQL Database.
+   
+   ```SQL 
+      CREATE TABLE DeviceTemporal 
+      (  
+         [DeviceId] int NOT NULL PRIMARY KEY CLUSTERED 
+         , [GroupDeviceId] nvarchar(100) NOT NULL
+         , [Description] nvarchar(100) NOT NULL 
+         , [ValidFrom] datetime2 (0) GENERATED ALWAYS AS ROW START
+         , [ValidTo] datetime2 (0) GENERATED ALWAYS AS ROW END
+         , PERIOD FOR SYSTEM_TIME (ValidFrom, ValidTo)
+      )  
+      WITH (SYSTEM_VERSIONING = ON (HISTORY_TABLE = dbo.DeviceHistory));  -- DeviceHistory table will be used in Delta query
+   ```
+2. A pillanatkép-lekérdezés létrehozásához. 
 
-   Használja a **@snapshotTime** arra utasítani a Stream Analytics-futtatókörnyezet a referencia-adatkészlet beszerzése az SQL database historikus táblán, a rendszer pontos ideje szerinti érvényes paramétert. Ha nem ad meg ezt a paramétert, kockázati, egy pontatlan alap referencia-adatkészlet eltérései miatti beszerzése. Egy teljes pillanatképet lekérdezési példát alább látható:
-
-   ![Stream Analytics pillanatkép-lekérdezés](./media/sql-reference-data/snapshot-query.png)
+   Használja a  **\@snapshotTime** arra utasítani a Stream Analytics-futtatókörnyezet a referencia-adatkészlet beszerzése az SQL database historikus táblán, a rendszer pontos ideje szerinti érvényes paramétert. Ha nem ad meg ezt a paramétert, kockázati, egy pontatlan alap referencia-adatkészlet eltérései miatti beszerzése. Egy teljes pillanatképet lekérdezési példát alább látható:
+   ```SQL
+      SELECT DeviceId, GroupDeviceId, [Description]
+      FROM dbo.DeviceTemporal
+      FOR SYSTEM_TIME AS OF @snapshotTime
+   ```
  
 2. A különbözeti lekérdezés létrehozásához. 
    
-   Ez a lekérdezés lekéri az összes sort az SQL-adatbázisban beszúrt vagy törölt belül a kezdési időt **@deltaStartTime**, és a záró időpontot **@deltaEndTime**. A különbözeti lekérdezés kell visszaadnia, mint a pillanatkép-lekérdezés ugyanazokat az oszlopokat, valamint az oszlop  **_művelet_**. Ez az oszlop határozza meg, ha a sor beszúrt vagy törölt közötti **@deltaStartTime** és **@deltaEndTime**. Az eredményül kapott sorokat a rendszer megjelölt **1** a rekordok beszúrt, ha vagy **2** Ha törölve. 
+   Ez a lekérdezés lekéri az összes sort az SQL-adatbázisban beszúrt vagy törölt belül a kezdési időt  **\@deltaStartTime**, és a záró időpontot  **\@deltaEndTime**. A különbözeti lekérdezés kell visszaadnia, mint a pillanatkép-lekérdezés ugyanazokat az oszlopokat, valamint az oszlop  **_művelet_**. Ez az oszlop határozza meg, ha a sor beszúrt vagy törölt közötti  **\@deltaStartTime** és  **\@deltaEndTime**. Az eredményül kapott sorokat a rendszer megjelölt **1** a rekordok beszúrt, ha vagy **2** Ha törölve. 
 
    A frissített rekordok a historikus tábla hajtja végre könyvelés beszúrási és törlési művelet rögzítésével. A Stream Analytics modul ezután alkalmazza a különbözeti lekérdezés eredményeit az előző pillanatképet a referenciaadatok naprakészen tartani. Különbözeti lekérdezés például a lenti megjelenítése:
 
-   ![Stream Analytics különbözeti lekérdezés](./media/sql-reference-data/delta-query.png)
+   ```SQL
+      SELECT DeviceId, GroupDeviceId, Description, 1 as _operation_
+      FROM dbo.DeviceTemporal
+      WHERE ValidFrom BETWEEN @deltaStartTime AND @deltaEndTime   -- records inserted
+      UNION
+      SELECT DeviceId, GroupDeviceId, Description, 2 as _operation_
+      FROM dbo.DeviceHistory   -- table we created in step 1
+      WHERE ValidTo BETWEEN @deltaStartTime AND @deltaEndTime     -- record deleted
+   ```
  
   Vegye figyelembe, hogy a Stream Analytics modul rendszeres időközönként előfordulhat, hogy futtassa a pillanatkép lekérdezést mellett a különbözeti lekérdezés ellenőrzőpontok tárolásához.
 

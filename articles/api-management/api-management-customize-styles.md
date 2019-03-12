@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: c3c79e7bd68e7c96b57ea66951c080b7d952ee8c
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 4ea64b16a9a581683d3b7a44b4b331af435db22c
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441757"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762721"
 ---
 # <a name="customize-the-style-of-the-developer-portal-pages"></a>A fejlesztői portál oldalstílusának testreszabása
 
@@ -40,8 +40,8 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 ## <a name="prerequisites"></a>Előfeltételek
 
 + Az [Azure API Management terminológiájának](api-management-terminology.md) ismerete.
-+ Tekintse át a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
-+ Végezze el a következő oktatóanyagot is: [Az első API importálása és közzététele](import-and-publish.md).
++ Hajtsa végre a következő rövid útmutatót: [Az Azure API Management szolgáltatáspéldány létrehozása](get-started-create-service-instance.md).
++ Ezenkívül hajtsa végre a következő oktatóanyaggal: [Az első API importálása és közzététele](import-and-publish.md).
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -57,11 +57,11 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
     A **Stílusok** panellel testre szabható összes elem megjelenik az oldalon.
 5. Írja be a „headings-color” (fejléc színe) kifejezést a **Változó értékeinek módosítása a fejlesztői portál megjelenésének testreszabásához:** mezőbe.
 
-    A **@headings-color** elem megjelenik az oldalon. Ez a változó szabályozza a szöveg színét.
+    A  **\@headings-color** elemet oldalon jelenik meg. Ez a változó szabályozza a szöveg színét.
 
     ![stílus testreszabása](./media/modify-developer-portal-style/modify-developer-portal-style02.png)
     
-6. Kattintson a **@headings-color** változó mezőjére. 
+6. Kattintson a mező a  **\@headings-color** változó. 
     
     Megjelenik a színválasztó legördülő menü.
 7. A színválasztó legördülő menüben válassza ki az új színt.

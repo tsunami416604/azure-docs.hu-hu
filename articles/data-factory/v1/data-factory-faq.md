@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 01ed1b94ffedb273321fa49653a614c659611e6a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4c50ba76cf1e9b8103bd006c9f97c18a3e92d0c2
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453201"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550279"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Az Azure Data Factory – gyakori kérdések
 > [!NOTE]
@@ -78,7 +78,7 @@ Az alábbi táblázat a Data Factory és a rajtuk futó tevékenységek által t
 | [Az Azure SQL](data-factory-compute-linked-services.md#azure-sql-linked-service), [Azure SQL Data Warehouse](data-factory-compute-linked-services.md#azure-sql-data-warehouse-linked-service), [az SQL Server](data-factory-compute-linked-services.md#sql-server-linked-service) |[Tárolt eljárás](data-factory-stored-proc-activity.md) |
 
 ### <a name="how-does-azure-data-factory-compare-with-sql-server-integration-services-ssis"></a>Azure Data Factory összehasonlítása az SQL Server Integration Services (SSIS) 
-Tekintse meg a [Azure Data Factory vs. SSIS](http://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) bemutatót az MVP-k (legnagyobb értékű szakemberek számára) közül: Reza Rad. Az útmutató legutóbbi módosításait a Data Factory néhány előfordulhat, hogy nem jelenik meg a bemutatót. Folyamatosan adjuk hozzá további képességek az Azure Data Factory. Folyamatosan adjuk hozzá további képességek az Azure Data Factory. Azt fogja funkcióját beépítse ezeket a frissítéseket a Microsoft integrációs adattechnológiáira összehasonlítása valamikor év.   
+Tekintse meg a [Azure Data Factory vs. SSIS](https://www.sqlbits.com/Sessions/Event15/Azure_Data_Factory_vs_SSIS) bemutatót az MVP-k (legnagyobb értékű szakemberek számára) közül: Reza Rad. Az útmutató legutóbbi módosításait a Data Factory néhány előfordulhat, hogy nem jelenik meg a bemutatót. Folyamatosan adjuk hozzá további képességek az Azure Data Factory. Folyamatosan adjuk hozzá további képességek az Azure Data Factory. Azt fogja funkcióját beépítse ezeket a frissítéseket a Microsoft integrációs adattechnológiáira összehasonlítása valamikor év.   
 
 ## <a name="activities---faq"></a>Tevékenységek – gyakori kérdések
 ### <a name="what-are-the-different-types-of-activities-you-can-use-in-a-data-factory-pipeline"></a>Mik azok a tevékenységek is használhatja a Data Factory-folyamatok különböző típusú?
@@ -202,10 +202,10 @@ Ha valóban szeretné azonnal leállítja az összes végrehajtás, az egyetlen 
 [msdn-rest-api-reference]: /rest/api/datafactory/
 
 [adf-powershell-reference]: /powershell/module/az.datafactory/
-[azure-portal]: http://portal.azure.com
+[azure-portal]: https://portal.azure.com
 [set-azure-datafactory-slice-status]: /powershell/module/az.datafactory/set-Azdatafactoryslicestatus
 
-[adf-pricing-details]: http://go.microsoft.com/fwlink/?LinkId=517777
-[hdinsight-supported-regions]: http://azure.microsoft.com/pricing/details/hdinsight/
-[hdinsight-alternate-storage]: http://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx
-[hdinsight-alternate-storage-2]: http://blogs.msdn.com/b/cindygross/archive/2014/05/05/use-additional-storage-accounts-with-hdinsight-hive.aspx
+[adf-pricing-details]: https://go.microsoft.com/fwlink/?LinkId=517777
+[hdinsight-supported-regions]: https://azure.microsoft.com/pricing/details/hdinsight/
+[hdinsight-alternate-storage]: https://social.technet.microsoft.com/wiki/contents/articles/23256.using-an-hdinsight-cluster-with-alternate-storage-accounts-and-metastores.aspx
+[hdinsight-alternate-storage-2]: https://blogs.msdn.com/b/cindygross/archive/2014/05/05/use-additional-storage-accounts-with-hdinsight-hive.aspx

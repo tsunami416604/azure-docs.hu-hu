@@ -13,14 +13,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 03/11/2019
 ms.author: jowargo
-ms.openlocfilehash: f2f11abcb3290e1d9459c26167706abc79c1b7fa
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 863b380d4f36e24119e64fbd4a59e8cd66c911e1
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670332"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57779419"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Az Azure Notification Hubs leküldéses értesítések: Gyakori kérdések
 
@@ -205,6 +205,13 @@ Az Azure Notification Hubs számos funkciót biztosít, különösen számára a
 ### <a name="what-telemetry-features-are-available"></a>Milyen telemetriai funkciók érhetők el?
 
 Telemetriai adatok megtekintése az Azure Notification hubs szolgáltatás segítségével a [Azure Portal]. A metrikák adatait a érhetők el a [Notification Hubs-metrikák] lap.
+
+Elérheti a mérőszámokat szoftveresen is. További információkért tekintse át a következő cikkeket:
+
+- [.NET-tel az Azure Monitor-metrikák beolvasása](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/). Ebben a példában a felhasználónév és jelszó. Egy tanúsítványt szeretne használni, adja meg a tanúsítvány, ahogyan a FromServicePrincipal metódust túlterhelni [ebben a példában](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs). 
+- [Mérőszámok és Tevékenységnaplók erőforrás beolvasása](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)
+- [Az Azure Monitoring REST API-forgatókönyv](../azure-monitor/platform/rest-api-walkthrough.md)
+
 
 > [!NOTE]
 > Sikeres értesítések, leküldéses értesítések lesz küldve a külső pns-sel (például az Apple APNS) vagy a Google FCM egyszerűen jelenti. A feladata az, hogy az értesítések céleszközökre a PNS. Általában a PNS nem fedi fel kézbesítési metrikák át harmadik félnek.  

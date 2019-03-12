@@ -3,7 +3,7 @@ title: Kritikus fontosságú szolgáltatás nem TUDTA egy Azure virtuális gép 
 description: Ismerje meg, amikor indul el a "Kritikus 0x0000005A szolgáltatás sikertelen" hiba elhárítása |} A Microsoft Docs
 services: virtual-machines-windows
 documentationCenter: ''
-authors: genlin
+author: genlin
 manager: cshepard
 editor: ''
 ms.service: virtual-machines-windows
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: ffc8bd21468847a71a44be2244c72af7016cd65f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4d450bc4e05a70ff8c1698dd2760d0f71140db21
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432022"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57763640"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Windows látható "Kritikus szolgáltatás sikertelen" kék képernyő egy Azure virtuális gép indításakor
 Ez a cikk ismerteti a "Kritikus szolgáltatás sikertelen" hibát tapasztalhat, amikor elindítja a Windows virtuális gép (VM) a Microsoft Azure-ban. A problémák megoldása érdekében hibaelhárítási lépéseket biztosít. 

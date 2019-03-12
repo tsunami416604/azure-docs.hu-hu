@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/13/2018
 ms.author: genli
-ms.openlocfilehash: f64f2cafb15a6cae71c304282e1fe6bd9231ef71
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 978667dcd3f7bd10192a396ec3e8d097bdb73509
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432923"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57577143"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Windows VHD vagy VHDX feltöltése az Azure előkészítése
 Mielőtt egy Windows virtuális gépek (VM) a helyi Microsoft Azure-bA tölt fel, elő kell készítenie a virtuális merevlemez (VHD vagy vhdx-fájlt). Az Azure támogatja a **csak az 1. generációs virtuális gépeket** , amely a VHD formátumban, és rögzített méretű lemezt. A VHD számára engedélyezett maximális mérete 1,023 GB. Átválthat egy generation 1 VM a vhdx-fájlt a fájlrendszer VHD-t és a egy dinamikusan bővülő rögzített méretű lemezt. De nem módosíthatja a virtuális gép létrehozás. További információkért lásd: [érdemes létrehozni egy 1 vagy 2. generációs virtuális gép a Hyper-V](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
@@ -415,11 +415,7 @@ Ez az általánosítás támogatja a nem minden szerepkör vagy alkalmazást, am
 ## <a name="complete-recommended-configurations"></a>Ajánlott beállításait
 A következő beállítások nem befolyásolják a VHD feltöltésével. Azonban erősen ajánlott, hogy konfigurálta azokat.
 
-* Telepítse a [Azure virtuális gépek ügynök](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Ezután engedélyezheti a Virtuálisgép-bővítmények. A Virtuálisgép-bővítmények megvalósítása a legtöbb kritikus funkciója, amely előfordulhat, hogy kíván használni a virtuális gépek új jelszavak, például az RDP konfigurálása, és így tovább. További információkért lásd:
-
-    - [A Virtuálisgép-ügynök és -bővítmények – 1. rész](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-1/)
-    - [A Virtuálisgép-ügynök és -bővítmények – 2. rész](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)
-
+* Telepítse a [Azure virtuális gépek ügynök](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). Ezután engedélyezheti a Virtuálisgép-bővítmények. A Virtuálisgép-bővítmények megvalósítása a legtöbb kritikus funkciója, amely előfordulhat, hogy kíván használni a virtuális gépek új jelszavak, például az RDP konfigurálása, és így tovább. További információkért lásd: [Azure-beli virtuálisgép-ügynök – áttekintés](../extensions/agent-windows.md).
 *  Miután a virtuális gép létrehozása az Azure-ban, azt javasoljuk, hogy a teljesítmény javítása a "Historikus elnevezésű" köteten helyezze a lapozófájl méretét. Beállíthatja a következőképpen:
 
     ```PowerShell

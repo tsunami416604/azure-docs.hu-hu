@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 6bde6e74279fc16237c0c0436296e2d21c3a57c7
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 82559c89094649b377dc2a898798ce6aad5fbcc7
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736617"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570487"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Data Flow hibakeresési módban leképezése
 
@@ -36,7 +36,7 @@ Amikor a hibakeresési módot, egy oldalpanel űrlapot, amely kérni fogja, hogy
 >Az adatfolyam hibakeresési módban történő futtatásakor az adatok nem ír a fogadó átalakítása. A hibakeresési munkamenet célja egy teszt egyikükön > kihasználhatja az átalakításokat. Fogadóként hibakeresés során nem szükségesek, és a data folyamat figyelmen kívül hagyja. Ha az adatok írása tesztelni kívánt > a fogadó hajtsa végre az adatfolyam egy Azure Data Factory-folyamatot, és használja a hibakeresési végrehajtása egy folyamatból.
 
 ## <a name="debug-settings"></a>Hibakeresési beállításokhoz
-Hibakeresési beállításokhoz az adatfolyam minden forrás az oldal panel fog megjelenni, és "adatforrás beállításaiban" adatfolyam Tervező eszköztáron kiválasztásával is szerkeszthető. Kiválaszthatja a korlátok és/vagy itt a forrás-átalakítást az egyes használata forrásfájlt. Is kiválaszthatja, melyik hibakeresési használni kívánt Databricks-fürt.
+Hibakeresési beállításokhoz az adatfolyam minden forrás az oldal panel fog megjelenni, és "adatforrás beállításaiban" a Tervező eszköztárán adatfolyam kiválasztásával is szerkeszthető. Kiválaszthatja a korlátok és/vagy itt a forrás-átalakítást az egyes használata forrásfájlt. A sor korlátokat az ezt a beállítást csak az aktuális hibakeresési munkamenet vonatkoznak. Korlátozza a sorokat, a forrás transforamtion a forrás is használhatja a mintavételi beállítást.
 
 ## <a name="cluster-status"></a>Fürt állapota
 A Tervező felület, amely zöldre, amikor a fürt készen áll a hibakeresési tetején lévő fürt állapotjelző van. Ha a fürt már meleg, majd a zöld jelző jelenik meg szinte azonnal. Ha a fürt nem volt már fut, ha a megadott hibakeresési módban, majd akkor várjon 5 – 7 perc, a fürt üzembe helyezése. A jelzőfény sárga lesz, amíg készen áll. Miután a fürt készen áll a hibakeresési adatfolyam, jelzőfény zöldre.

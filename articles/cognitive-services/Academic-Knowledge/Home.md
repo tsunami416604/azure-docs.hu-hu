@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: overview
 ms.date: 10/30/2018
 ms.author: darrine
-ms.openlocfilehash: 975c36451f0f00ce374a0bbf0a6dd87ec39eb912
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b15ed5e2b31ed817d3f6558858e2b7285f98a70f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871557"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551721"
 ---
 # <a name="academic-knowledge-api"></a>Academic Knowledge API
 
@@ -23,7 +23,7 @@ ms.locfileid: "55871557"
 
 A MAG-adatok a Bing webes indexéből, valamint a Bing egy belső tudásbázisából származnak. A folyamatos Bing-indexelésnek köszönhetően az API friss webes információkat fog tartalmazni, miután azokat a Bing felderítette és indexelte. Ezen adatkészlet segítségével az Academic Knowledge API-k lehetővé teszik a tudásalapú, interaktív párbeszédet, amely zökkenőmentesen kombinálja a reaktív keresést a proaktív javaslati megoldásokkal, a részletes tanulmánykeresési gráfokkal, valamint a tanulmányok és a kapcsolódó entitások attribútumértékeinek hisztogramdisztribúcióival.
 
-A Microsoft Academic Graphról itt talál további információt: [http://aka.ms/academicgraph](https://aka.ms/academicgraph).
+A Microsoft Academic Graphról itt talál további információt: [https://aka.ms/academicgraph](https://aka.ms/academicgraph).
 
 Az Academic Knowledge API átkerült a Cognitive Services előzetes verziójából a Cognitive Services Labsbe. A projekt új kezdőlapja: [https://labs.cognitive.microsoft.com/en-us/project-academic-knowledge](https://labs.cognitive.microsoft.com/en-us/project-academic-knowledge). A meglévő API-kulcsok 2018. május 24-ig működnek. E dátumot követően hozzon létre egy új API-kulcsot. Vegye figyelembe, hogy a fizetett előzetes verzió a meglévő kulcs lejártát követően nem lesz elérhető. Lépjen kapcsolatba velünk, ha az API ingyenes szintje nem elegendő a céljai megvalósításához. 
 

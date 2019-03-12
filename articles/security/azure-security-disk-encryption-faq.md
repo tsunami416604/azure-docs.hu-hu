@@ -3,17 +3,16 @@ title: Gyakori kérdések – IaaS virtuális gépekhez az Azure Disk Encryption
 description: Ez a cikk a Microsoft Azure Disk Encryption a Windows és Linux rendszerű IaaS virtuális gépek kapcsolatos gyakori kérdésekre adott válaszokat ismerteti.
 author: mestew
 ms.service: security
-ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
 ms.date: 03/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 14804de1d8507a49cda2ce1dd8ee97dc56c0223b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c082de09cbe17bd31e50d14329cfb8f58b01d8fe
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439553"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57781323"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>Az Azure Disk Encryption IaaS virtuális gépekhez – gyakori kérdések
 
@@ -44,12 +43,14 @@ Az Azure Disk Encryption támogatott a következő kiszolgáló Linux-disztribú
 | --- | --- |--- |
 | Ubuntu | 16.04| Operációsrendszer- és lemez |
 | Ubuntu | 14.04.5</br>[az Azure-ban beállított kernel 4.15 vagy újabb frissítése](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | Operációsrendszer- és lemez |
+| RHEL | 7.6 | Operációsrendszer- és lemez * |
 | RHEL | 7.5 | Operációsrendszer- és lemez * |
 | RHEL | 7.4 | Operációsrendszer- és lemez * |
 | RHEL | 7.3 | Operációsrendszer- és lemez * |
 | RHEL | 7.2 | Operációsrendszer- és lemez * |
 | RHEL | 6.8 | Adatok lemezre * |
 | RHEL | 6.7 | Adatok lemezre * |
+| CentOS | 7.5 | Operációsrendszer- és lemez |
 | CentOS | 7.4 | Operációsrendszer- és lemez |
 | CentOS | 7.3 | Operációsrendszer- és lemez |
 | CentOS | 7.2n | Operációsrendszer- és lemez |

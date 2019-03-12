@@ -1,18 +1,18 @@
 ---
 title: Egy helyszíni helyhez az Azure virtuális gépek ismételt védelme a során a VMware virtuális gépek és fizikai kiszolgálók vészhelyreállítása |} A Microsoft Docs
 description: Miután a feladatátvétel során a VMware virtuális gépek és fizikai kiszolgálók vészhelyreállítása az Azure-bA megtudhatja, hogyan meghiúsul az Azure-ból a helyszíni helyre.
-author: rajani-janaki-ram
-manager: gauravd
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/17/2018
-ms.author: rajanaki
-ms.openlocfilehash: 06337e205c472d26024289222dc8876d23b4184f
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.date: 3/12/2019
+ms.author: mayg
+ms.openlocfilehash: 4202d95b540efb98b526f8a8abd17da22a908ebe
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791880"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771810"
 ---
 # <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Ismételt védelme, és a egy helyszíni helyhez vissza gépek feladatai az Azure-bA a feladatátvételt követően
 
@@ -114,7 +114,6 @@ Tekintse meg az alábbi információkat:
 
 ## <a name="common-issues"></a>Gyakori problémák
 
-- A Site Recovery jelenleg csak, egy vsan-hoz vagy a VMFS adattárolója feladat-visszavétel támogatja. Az NFS-adattároló nem támogatott. Ez a korlátozás miatt a védelem-újrabeállítás képernyőn adattároló kiválasztása bemeneti üres az NFS-adattárainak, vagy azt jeleníti meg a vSAN-adattár, de a feldolgozás során sikertelen. Ha szeretne feladat-visszavételt, egy VMFS adattároló létrehozása a helyszínen, és a feladat-visszavételhez azt. Ez a feladat-visszavétel hatására a VMDK teljes letöltésére.
 - Ha egy olvasási jogosultsággal rendelkező felhasználó vCenter észlelését, és virtuális gépek védelme, védelmi sikeres lesz, és feladatátvételi működik. Ismételt védelem, során feladatátvétel sikertelen lesz, mivel a állomásához nem lesz felderítve. A probléma tünete, hogy a adattárainak ismételt védelem során nem jelennek meg. A probléma megoldásához, a vCenter hitelesítő adatainak frissítése egy megfelelő engedélyekkel rendelkező fiókkal, és próbálkozzon újra a feladatot. 
 - Ha a feladat-visszavételt Linux rendszerű virtuális gép, és futtassa azt a helyszíni, láthatja, hogy a hálózatkezelő csomagot el lett távolítva a gépről. Ez az Eltávolítás az oka, hogy a hálózatkezelő csomagot törlődik, ha a virtuális gép van helyreállította az Azure-ban.
 - Ha Linux rendszerű virtuális gép statikus IP-címmel van konfigurálva, és a feladatátvétel alatt áll az Azure-ba, az IP-cím igényelve, a DHCP-Kiszolgálótól. Ha átadja a feladatokat a helyszíni, a virtuális gép továbbra is az IP-cím beszerzése a DHCP használatával. Manuálisan jelentkezzen be a gépre, és majd állítsa vissza a statikus cím szükség esetén az IP-címet. Windows virtuális gép újra is szerez a statikus IP-címére.

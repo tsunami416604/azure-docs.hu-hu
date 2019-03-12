@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/13/2018
 ms.author: jafreebe
 ms.custom: seodec18
-ms.openlocfilehash: a6e6dfb70182d8b4924a184dcebd1d06695911a5
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: a4bf2ef252b5a948f2e3614e3e7cf64a4cb19277
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747009"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772058"
 ---
 # <a name="tutorial-build-a-java-ee-and-postgres-web-app-in-azure"></a>Oktatóanyag: A Java EE-alapú és a Postgres-webalkalmazás létrehozása az Azure-ban
 
@@ -200,4 +200,4 @@ az group delete --name <your_resource_group>
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy egy App Service-ben üzembe helyezett Java EE-alapú alkalmazások, tekintse át a [Java Enterprise fejlesztői útmutató](https://aka.ms/wildfly-quickstart) szolgáltatások beállítása, a hibaelhárítás és a méretezés az alkalmazás további tájékoztatást.
+Most, hogy egy App Service-ben üzembe helyezett Java EE-alapú alkalmazások, tekintse át a [Java Enterprise fejlesztői útmutató](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-java) szolgáltatások beállítása, a hibaelhárítás és a méretezés az alkalmazás további tájékoztatást.

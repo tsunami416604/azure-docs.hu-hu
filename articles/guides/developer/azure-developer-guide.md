@@ -7,19 +7,19 @@ documentationcenter: ''
 author: ggailey777
 manager: erikre
 ms.assetid: ''
-ms.service: na
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 7c4eefa09f0a70d42601a5b1fe8694500b5c6be2
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: d78998c3eab79c3c9d5511335c5d27be5803cc3e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118251"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762495"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Első lépésekhez készült útmutató Azure-fejlesztőknek
 
@@ -78,7 +78,7 @@ Miatt mértékű, amely a virtuális gépeken server számítási feladatok szé
 
 >**Első lépések**: Hozzon létre egy [Linux rendszerű virtuális gép](../../virtual-machines/virtual-machines-linux-quick-create-portal.md) vagy [Windows virtuális gép](../../virtual-machines/virtual-machines-windows-hero-tutorial.md) az Azure Portalról.
 
-#### <a name="azure-functions-serverless"></a>Az Azure Functions (a kiszolgáló nélküli)
+#### <a name="azure-functions-serverless"></a>Azure Functions (serverless)
 
 Aggódni ki felépítésére és kezelésére, a kód futtatásához egy egész alkalmazással vagy az infrastruktúra helyett. Mi történik, ha Ön sikerült csak a kód írása és azok válaszként az események vagy ütemezés szerint futtatni?  [Az Azure Functions](../../azure-functions/functions-overview.md) van egy "kiszolgáló nélküli"-stílus ajánlat, amely lehetővé teszi, hogy csak a kód írását, van szüksége. A Functions kódfuttatás HTTP-kérelmekre, a webhookok, a cloud service-események vagy ütemezés szerint aktiválódik. A fejlesztési nyelvet választott, például C nyelven is programozhat\#, F\#, Node.js, Python vagy PHP. A fogyasztás alapú számlázáshoz kell fizetnie csak az idő a kódot, és az Azure méretezhető, igény szerint.
 
@@ -106,7 +106,7 @@ Alkalmazások üzemeltetése, mellett az Azure szolgáltatási ajánlatok, amely
 
 A legtöbb alkalmazást úgy kell tárolja az adatokat, függetlenül attól, hogyan kívánja futtatni az alkalmazást az Azure-ban, fontolja meg legalább egy, a következő tároló- és adatszolgáltatásokat.
 
--   **Az Azure Cosmos DB**: Egy globálisan elosztott, többmodelles adatbázis-szolgáltatás, amely lehetővé teszi, hogy rugalmasan skálázhatja a teljesítményt és tárolókapacitást között tetszőleges számú földrajzi régió egy átfogó SLA-val. 
+-   **Azure Cosmos DB**: Egy globálisan elosztott, többmodelles adatbázis-szolgáltatás, amely lehetővé teszi, hogy rugalmasan skálázhatja a teljesítményt és tárolókapacitást között tetszőleges számú földrajzi régió egy átfogó SLA-val. 
     >**Mikor érdemes használni:** Ha az alkalmazásnak szüksége van, a dokumentum, táblázat vagy gráf típusú adatbázisokat, beleértve a többszörös, jól definiált konzisztenciamodellekkel MongoDB adatbázisok. 
 
     >**Első lépések**: [Egy Azure Cosmos DB-webalkalmazás létrehozása](../../cosmos-db/create-sql-api-dotnet.md). Ha Ön a MongoDB fejlesztő, lásd: [egy MongoDB-webalkalmazás létrehozása az Azure Cosmos DB](../../cosmos-db/create-mongodb-dotnet.md).
@@ -117,7 +117,7 @@ A legtöbb alkalmazást úgy kell tárolja az adatokat, függetlenül attól, ho
 
     >**Első lépések**: Ezek a típusok tárolás közül választhat: [blobok](../../storage/blobs/storage-dotnet-how-to-use-blobs.md), [táblák](../../cosmos-db/table-storage-how-to-use-dotnet.md), [üzenetsorok](../../storage/queues/storage-dotnet-how-to-use-queues.md), vagy [fájlok](../../storage/files/storage-dotnet-how-to-use-files.md).
 
--   **Az Azure SQL Database**: Egy Azure-alapú verzióját a Microsoft SQL Server motoron a relációs adatok tárolása a felhőben. SQL Database kiszámítható teljesítmény, méretezhetőség, nincs állásidő, üzletmenet-folytonosságot és adatvédelmet biztosít.
+-   **Azure SQL Database**: Egy Azure-alapú verzióját a Microsoft SQL Server motoron a relációs adatok tárolása a felhőben. SQL Database kiszámítható teljesítmény, méretezhetőség, nincs állásidő, üzletmenet-folytonosságot és adatvédelmet biztosít.
 
     >**Mikor érdemes használni**: Ha az alkalmazás által kért a hivatkozási integritás, a tranzakciós adattároló támogatja, és támogatja a TSQL-lekérdezést.
 
@@ -138,7 +138,7 @@ Az Azure tárolók használata az alkalmazásokban több módszert is biztosít.
 
     >**Első lépések**: [Hozzon létre egy Docker-környezetben az Azure-ban a Docker VM bővítmény használatával](../../virtual-machines/virtual-machines-linux-dockerextension.md).
 
--   **Az Azure Container Service**: Lehetővé teszi, hogy hozzon létre, konfigurálhatja és tárolóalapú alkalmazások futtatására előre konfigurált virtuálisgép-fürt kezelése. Container Service kapcsolatos további információkért lásd: [Azure Container Service bemutatása](../../container-service/container-service-intro.md).
+-   **Azure Container Service**: Lehetővé teszi, hogy hozzon létre, konfigurálhatja és tárolóalapú alkalmazások futtatására előre konfigurált virtuálisgép-fürt kezelése. Container Service kapcsolatos további információkért lásd: [Azure Container Service bemutatása](../../container-service/container-service-intro.md).
 
     >**Mikor érdemes használni**: Ha szüksége éles használatra kész, méretezhető buildkörnyezeteket, amelyek további ütemezési és felügyeleti eszközöket, vagy ha telepít egy Docker Swarm-fürtöt.
 
@@ -154,7 +154,7 @@ Az Azure tárolók használata az alkalmazásokban több módszert is biztosít.
 
     >**Első lépések**: [Egyéni Docker-rendszerkép használata az App Service linuxon](../../app-service/containers/quickstart-docker-go.md).
 
-### <a name="authentication"></a>Hitelesítés
+### <a name="authentication"></a>Authentication
 
 Nagyon fontos tudni, hogy nem csak az alkalmazásokat használó, hanem az erőforrásokhoz való jogosulatlan hozzáférés elkerülése érdekében. Az Azure az alkalmazás-ügyfelek hitelesítésére több módszert is biztosít.
 
@@ -219,7 +219,7 @@ Az Azure az alkalmazások és szolgáltatások kezelése parancssori Bash, termi
 
 -   [Az Azure parancssori felület (CLI)](../../xplat-cli-install.md): Lehetővé teszi csatlakozás az Azure-előfizetéshez, és a program különböző feladatokat az Azure-erőforrásokon a parancssorból.
 
--   [Az Azure PowerShell](../../powershell-install-configure.md): Biztosít egy modulok a parancsmagok, amelyek lehetővé teszik, hogy az Azure-erőforrások kezelése a Windows PowerShell használatával.
+-   [Azure PowerShell](../../powershell-install-configure.md): Biztosít egy modulok a parancsmagok, amelyek lehetővé teszik, hogy az Azure-erőforrások kezelése a Windows PowerShell használatával.
 
 ### <a name="azure-portal"></a>Azure Portal
 

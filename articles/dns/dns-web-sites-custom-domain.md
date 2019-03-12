@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: tutorial
-ms.date: 2/19/2019
+ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: 9ed0c8763835add485d6c60a43f4e4113ecde12e
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 1066a4f602fb3af1f10fc82026870a5b0497896b
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429281"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57764782"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Oktatóanyag: A webes alkalmazás egyéni tartomány DNS-rekordok létrehozása 
 
@@ -47,12 +47,13 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- [Hozzon létre egy App Service-alkalmazást](../app-service/app-service-web-get-started-html.md), vagy használjon egy másik oktatóanyaghoz létrehozott alkalmazást.
+* Teszteli, hogy is üzemeltethet az Azure DNS-ben elérhető tartomány névvel kell rendelkeznie. Teljes körű irányítással kell rendelkeznie a tartomány felett. A teljes körű irányításba beletartozik a tartomány névkiszolgálói (NS-) rekordjainak beállítására való képesség.
+* [Hozzon létre egy App Service-alkalmazást](../app-service/app-service-web-get-started-html.md), vagy használjon egy másik oktatóanyaghoz létrehozott alkalmazást.
 
-- Hozzon létre egy DNS-zónát az Azure DNS-ben, majd delegálja azt az Azure DNS-be a tartománynév kezelőjénél.
+* Hozzon létre egy DNS-zónát az Azure DNS-ben, majd delegálja azt az Azure DNS-be a tartománynév kezelőjénél.
 
    1. A DNS-zóna létrehozásának lépéseit lásd a [DNS-zóna létrehozását](dns-getstarted-create-dnszone.md) ismertető szakaszban.
-   2. Az Azure DNS-be történő zónadelegálás lépéseit lásd a [DNS-tartomány delegálását](dns-domain-delegation.md) ismertető részben.
+   2. Az Azure DNS-be történő zónadelegálás lépéseit lásd a [DNS-tartomány delegálását](dns-delegate-domain-azure-dns.md) ismertető részben.
 
 Miután létrehozott egy zónát, és delegálta azt az Azure DNS-be, létrehozhat rekordokat az egyéni tartományhoz.
 
@@ -72,7 +73,7 @@ Az **Egyéni tartományok** oldalra másolja be az alkalmazás IPv4-címét:
 
 ### <a name="create-the-a-record"></a>Az A rekord létrehozása
 
-```powershell
+```azurepowershell
 New-AzDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
  -ResourceGroupName "MyAzureResourceGroup" -Ttl 600 `
  -DnsRecords (New-AzDnsRecordConfig -IPv4Address "<your web app IP address>")
@@ -82,7 +83,10 @@ New-AzDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
 
 Az App Services ezt a rekordot csak a konfiguráláskor használja annak ellenőrzéséhez, hogy Ön-e az egyéni tartomány tulajdonosa. Miután az App Service-ben érvényesítette és konfigurálta az egyéni tartományt, törölheti ezt a TXT típusú rekordot.
 
-```powershell
+> [!NOTE]
+> Ha szeretné ellenőrizni a tartománynevet, de nem éles forgalom átirányítása a web app, csak adja meg az ellenőrzési lépés a txt típusú rekordot kell.  Ellenőrzési nem igényel az A vagy CNAME rekord mellett a TXT-rekord.
+
+```azurepowershell
 New-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup `
  -Name "@" -RecordType "txt" -Ttl 600 `
  -DnsRecords (New-AzDnsRecordConfig -Value  "contoso.azurewebsites.net")
@@ -96,7 +100,7 @@ Nyissa meg az Azure PowerShellt, és hozzon létre egy új CNAME-rekordot. Ebben
 
 ### <a name="create-the-record"></a>A rekord létrehozása
 
-```powershell
+```azurepowershell
 New-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName "MyAzureResourceGroup" `
  -Name "www" -RecordType "CNAME" -Ttl 600 `
  -DnsRecords (New-AzDnsRecordConfig -cname "contoso.azurewebsites.net")
@@ -158,7 +162,7 @@ contoso.com text =
 
 Most már hozzáadhatja az egyéni gazdagépneveket a webalkalmazásához:
 
-```powershell
+```azurepowershell
 set-AzWebApp `
  -Name contoso `
  -ResourceGroupName MyAzureResourceGroup `

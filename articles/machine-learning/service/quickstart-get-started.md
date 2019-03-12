@@ -11,12 +11,12 @@ author: hning86
 ms.author: haining
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9d441ed408f9c9348ba091178cf6ce84d67abb3a
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 2dabc331b13bc53a6d8e94d69c64b87c7f175c24
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672933"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762194"
 ---
 # <a name="quickstart-use-the-azure-portal-to-get-started-with-azure-machine-learning"></a>Gyors útmutató: Az Azure Machine Learning használatának első lépései az Azure portal használatával
 
@@ -25,8 +25,8 @@ Az Azure Portalon létrehozhat egy Azure Machine Learning-munkaterületet. A Mac
 Ebben a rövid útmutatóban tegye a következőket:
 
 * Munkaterület létrehozása az Azure-előfizetésben.
-* Próbálja ki a Python egy Jupyter notebook és a naplófájlok értékeket több ismétléseinek között.
-* A naplózott értékek megtekintése a munkaterületen.
+* Próbálja ki a Python egy Jupyter Notebookban. A notebook pi és naplók hibák megbecsülni, minden egyes ismétléskor kódját tartalmazza. 
+* A naplózott hiba értékeinek megtekintése a munkaterületén.
 
 A következő Azure-erőforrásokat a rendszer automatikusan hozzáadja a munkaterületéhez, ha az Ön régiójában rendelkezésre állnak:
 

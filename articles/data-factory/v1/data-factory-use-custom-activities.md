@@ -3,22 +3,22 @@ title: Egyéni tevékenységek használata Azure Data Factory-folyamatban
 description: Ismerje meg, hogyan hozhat létre egyéni tevékenységeket, és használja őket az Azure Data Factory-folyamatot.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.assetid: 8dd7ba14-15d2-4fd9-9ada-0b2c684327e9
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.author: douglasl
+author: nabhishek
+ms.author: abnarain
+manager: craigg
 robots: noindex
-ms.openlocfilehash: 25592f80abc8aea338679f199f03114c2d0785f6
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 6d7aeef415fcc53fda2f5d66d748dd38f6d644fb
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077488"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576735"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -52,7 +52,7 @@ A forgatókönyv futtatása az Azure Batch számítási erőforrásai használat
 
 Az oktatóanyag az Azure Batch-fiók létrehozása készletét, virtuális gépeket. A lépések a következők:
 
-1. Hozzon létre egy **Azure Batch-fiók** használatával a [az Azure portal](http://portal.azure.com). Lásd: [létrehozása és kezelése az Azure Batch-fiók] [ batch-create-account] a cikk útmutatást.
+1. Hozzon létre egy **Azure Batch-fiók** használatával a [az Azure portal](https://portal.azure.com). Lásd: [létrehozása és kezelése az Azure Batch-fiók] [ batch-create-account] a cikk útmutatást.
 2. Jegyezze fel az Azure Batch-fiók neve, fiókkulcs, URI és az alkalmazáskészlet neve. Szükség van rájuk egy Azure Batch-beli társított szolgáltatás létrehozásához.
     1. Az Azure Batch-fiók kezdőlapon látható egy **URL-cím** a következő formátumban: `https://myaccount.westus.batch.azure.com`. Ebben a példában **myaccount** az Azure Batch-fiók neve. Használhatja a társított szolgáltatás definíciójában URI-ja az URL-cím nélkül a fiók nevét. Például: `https://<region>.batch.azure.com`.
     2. Kattintson a **kulcsok** a bal oldali menüben, és másolja a **elsődleges ELÉRÉSI kulcs**.
@@ -1040,15 +1040,15 @@ A [Azure Data Factory – helyi környezetben](https://github.com/gbrueckl/Azure
 [azure-powershell-install]: https://github.com/Azure/azure-sdk-tools/releases
 
 
-[developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
-[cmdlet-reference]: http://go.microsoft.com/fwlink/?LinkId=517456
+[developer-reference]: https://go.microsoft.com/fwlink/?LinkId=516908
+[cmdlet-reference]: https://go.microsoft.com/fwlink/?LinkId=517456
 
 [new-azure-batch-account]: https://msdn.microsoft.com/library/mt125880.aspx
 [new-azure-batch-pool]: https://msdn.microsoft.com/library/mt125936.aspx
-[azure-batch-blog]: http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx
+[azure-batch-blog]: https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx
 
-[nuget-package]: http://go.microsoft.com/fwlink/?LinkId=517478
-[adf-developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
+[nuget-package]: https://go.microsoft.com/fwlink/?LinkId=517478
+[adf-developer-reference]: https://go.microsoft.com/fwlink/?LinkId=516908
 [azure-preview-portal]: https://portal.azure.com/
 
 [adfgetstarted]: data-factory-copy-data-from-azure-blob-storage-to-sql-database.md

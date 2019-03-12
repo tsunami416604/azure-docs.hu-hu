@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/03/2019
+ms.date: 03/05/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 364b0bf611581f88fc87f163acbbb7529862d096
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 5c5f1d8d7a9c84d807db53933f0cbb176f9fb7f2
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309570"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551960"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>SAP HANA (nagyméretű példányok) tároló-architektúra
 
@@ -95,7 +95,7 @@ Nagyméretű HANA-példány felhasznált tárterület lehetővé teszi, hogy egy
 Típusú I osztályhoz termékváltozatok, a LUN-t tárolja, a rendszerindító kötet titkosítva van. Az SKU-k a nagyméretű HANA-példányt, II. típusú osztályhoz a rendszerindító LUN-t az operációs rendszer módszerekkel titkosítania kell. További információért forduljon a Microsoft-kezelési csapatunk.
 
 ## <a name="required-settings-for-larger-hana-instances-on-hana-large-instances"></a>A nagyméretű HANA-példányokhoz nagyobb HANA-példányokhoz kötelező beállítások
-Nagyméretű HANA-példányok a használt tárterület használata fájl mérete korlátozott. A [méretének korlátozása, 16TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) fájlonként. Ellentétben a fájlméretre vonatkozó korlátozások például EXT3 fájlrendszereket, a trendelemzést HANA még nem ismeri implicit módon, a storage korlátozás kényszeríti ki a nagyméretű HANA-példányokhoz tárolót. Ennek eredményeképpen HANA fog nem automatikusan létrehozni egy új adatfájlt a fájl maximális mérete 16 TB-os elérésekor. Mint 16 TB a fájl megcélzott HANA próbál, HANA jelentést hibák és az index kiszolgáló összeomlik, a végén.
+Nagyméretű HANA-példányok a használt tárterület használata fájl mérete korlátozott. A [méretének korlátozása, 16 TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) fájlonként. Ellentétben a fájlméretre vonatkozó korlátozások EXT3 fájlrendszereket, a HANA még nem ismeri implicit módon, a storage korlátozás kényszeríti ki a nagyméretű HANA-példányokhoz tárolót. Ennek eredményeképpen HANA fog nem automatikusan létrehozni egy új adatfájlt a fájl maximális mérete 16 TB-os elérésekor. Mint 16 TB a fájl megcélzott HANA próbál, HANA jelentést hibák és az index kiszolgáló összeomlik, a végén.
 
 > [!IMPORTANT]
 > Az adatfájlokat a 16 TB fájlok méretkorlátjának nagyméretű HANA-példány tárolási túli növekszik próbál HANA elkerülése érdekében állítsa be az alábbi paramétereket a Hana global.ini konfigurációs fájlban kell
@@ -103,6 +103,7 @@ Nagyméretű HANA-példányok a használt tárterület használata fájl mérete
 - datavolume_striping=true
 - datavolume_striping_size_gb = 15000
 - Lásd még az SAP Megjegyzés [#2400005](https://launchpad.support.sap.com/#/notes/2400005)
+- Vegye figyelembe az SAP-jegyzetnek [#2631285](https://launchpad.support.sap.com/#/notes/2631285)
 
 
 

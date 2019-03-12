@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 13495107aff24b868a4188c25768868945e70db8
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: c6d6fc813a2691e821f3ef8f7c719945851a5001
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658215"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570844"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>A Microsoft Azure Service Bus AMQP 1.0-s: kérés-válasz alapú műveletek
 
@@ -45,72 +45,72 @@ A jelen dokumentumban ismertetett műveleteket kérés/válasz mintát követi, 
 
 A felügyeleti csomópont kérelmeket hivatkozást hoz létre.  
   
-```  
-requestLink = session.attach(     
-role: SENDER,   
-    target: { address: "<entity address>/$management" },   
-    source: { address: ""<my request link unique address>" }   
-)  
-  
-```  
+```
+requestLink = session.attach(
+role: SENDER,
+    target: { address: "<entity address>/$management" },
+    source: { address: ""<my request link unique address>" }
+)
+
+```
   
 ### <a name="create-link-for-receiving-responses"></a>A válaszfogadás hivatkozás létrehozása  
 
 A visszajelzések fogadása a felügyeleti csomópont hivatkozást hoz létre.  
   
-```  
-responseLink = session.attach(    
-role: RECEIVER,   
-    source: { address: "<entity address>/$management" }   
-    target: { address: "<my response link unique address>" }   
-)  
-  
-```  
+```
+responseLink = session.attach(
+role: RECEIVER,
+    source: { address: "<entity address>/$management" }
+    target: { address: "<my response link unique address>" }
+)
+
+```
   
 ### <a name="transfer-a-request-message"></a>Átadási kérelem üzenet  
 
 Egy üzenet továbbítja.  
 Egy tranzakció állapota igény szerint, amely támogatja a tranzakciós műveletek is hozzáadhatók.
 
-```  
-requestLink.sendTransfer(  
-        Message(  
-                properties: {  
-                        message-id: <request id>,  
-                        reply-to: "<my response link unique address>"  
-                },  
-                application-properties: {  
-                        "operation" -> "<operation>",  
+```
+requestLink.sendTransfer(
+        Message(
+                properties: {
+                        message-id: <request id>,
+                        reply-to: "<my response link unique address>"
+                },
+                application-properties: {
+                        "operation" -> "<operation>",
                 }
         ),
         [Optional] State = transactional-state: {
                 txn-id: <txn-id>
         }
 )
-```  
+```
   
 ### <a name="receive-a-response-message"></a>A válasz üzenet fogadása  
 
 A válasz hivatkozást kap a válaszüzenet.  
   
-```  
-responseMessage = responseLink.receiveTransfer()  
-```  
+```
+responseMessage = responseLink.receiveTransfer()
+```
   
 A következő formában kell megadni a válaszüzenetben:
   
-```  
-Message(  
-properties: {     
-        correlation-id: <request id>  
-    },  
-    application-properties: {  
-            "statusCode" -> <status code>,  
-            "statusDescription" -> <status description>,  
-           },         
-)  
-  
-```  
+```
+Message(
+properties: {
+        correlation-id: <request id>
+    },
+    application-properties: {
+            "statusCode" -> <status code>,
+            "statusDescription" -> <status description>,
+           },
+)
+
+```
   
 ### <a name="service-bus-entity-address"></a>A Service Bus-entitás címe  
 

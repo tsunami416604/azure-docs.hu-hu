@@ -7,13 +7,12 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
-ms.subservice: common
-ms.openlocfilehash: 15ceaf1a75859ca53ddb946555880b360b29ee58
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: bff1e8c111a8a50e15b6d316e422a641a778c73c
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405691"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775169"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Az Azure Storage Explorer hibaelhárítási útmutatója
 
@@ -97,13 +96,11 @@ Ha nem talál önaláírt tanúsítványokat használ a fenti lépéseket, a vis
 
 Üres bejelentkezési párbeszédpanelek leggyakrabban okozzák ADFS kéri a Storage Explorer egy átirányítási, amely nem támogatja a Electron végrehajtásához. A probléma megkerüléséhez megpróbálhatja eszköz kód Flow használni a bejelentkezéshez. Ehhez végezze el az alábbi lépéseket:
 
-1. "Ugrás a kísérleti" -> "Eszköz kód bejelentkezés használata".
+1. "Ugrás az előzetes verzió" -> "Eszköz kód bejelentkezés használata".
 2. Nyissa meg a Csatlakozás párbeszédpanel (akár a Plug and ikonra a bal oldali függőleges vonal vagy a "Fiók hozzáadása" fiók panelen keresztül).
 3. Válassza ki, milyen jelentkezzen be a kívánt környezet.
 4. Kattintson a "bejelentkezés" gomb.
 5. Kövesse a következő panelen megjelenő utasításokat.
-
-Megjegyzés: Ez a funkció jelenleg csak 1.7.0-ás elérhető előzetes verzió.
 
 Ha azt segítségre van szüksége a fiók használható, mert az alapértelmezett böngészőben már bejelentkezett egy másik fiókkal szeretne bejelentkezni, választhatja:
 
@@ -244,6 +241,14 @@ A Linux-disztribúció, Ubuntu 16.04 eltérő szükség lehet néhány függős�
 * Naprakész GCC
 
 A terjesztési függően más csomagokat telepítenie kell is lehet. A Storage Explorer [kibocsátási megjegyzések](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409) néhány disztribúciók adott lépést tartalmaznak.
+
+## <a name="open-in-explorer-from-azure-portal-doesnt-work"></a>Nyissa meg a Explorer, az Azure portal nem működik
+
+Ha a "Megnyitás az Explorerben" gombra az Azure Portalon az Ön számára nem működik, győződjön meg arról, kompatibilis böngészőt használ. Az alábbi böngészők kompatibilitás teszteltük.
+* Microsoft Edge
+* Mozilla Firefox
+* Google Chrome
+* Microsoft Internet Explorer
 
 ## <a name="next-steps"></a>További lépések
 

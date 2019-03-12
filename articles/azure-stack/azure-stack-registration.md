@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 03/11/2019
 ms.author: jeffgilb
 ms.reviewer: brbartle
 ms.lastreviewed: 03/04/2019
-ms.openlocfilehash: 12edea505ba3b0c8009512a52e3eea9ecea5bb26
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 2ed9598ecfb45323505e8527cfb3ab9fe7d8b58e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405198"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57764727"
 ---
 # <a name="register-azure-stack-with-azure"></a>Regisztráljon az Azure Stack az Azure-ral
 
@@ -483,11 +483,18 @@ Get-AzsRegistrationToken [-PrivilegedEndpointCredential] <PSCredential> [-Privil
 
 ## <a name="registration-failures"></a>Regisztrációs hibák
 
-Az alábbi hibák egyike az Azure Stack-regisztráció során jelenhet meg:
+Az alábbi hibák egyike az Azure Stack-regisztráció közben jelenhetnek meg:
 1. Nem sikerült beolvasni $hostName kötelező hardver adatait. Ellenőrizze a fizikai gazdagép és a kapcsolatot, majd próbálja meg újra futtatni a regisztrációs.
+
 2. Nem lehet csatlakozni a hardver adatainak beolvasása –. Ellenőrizze a fizikai gazdagép és a kapcsolatot, majd próbálja meg újra futtatni a regisztrációs $hostName.
 
-OK: Ennek oka általában azt próbálja meg beszerezni a hardveradatokat, például UUID azonosító, a BIOS-ban és a Processzor próbálják végrehajtani az aktiválást a gazdagépekről, és nem sikerült a nem lehet kapcsolódni a a fizikai gazdagép miatt.
+> OK: Ennek oka általában azt próbálja meg beszerezni a hardveradatokat, például UUID azonosító, a BIOS-ban és a Processzor próbálják végrehajtani az aktiválást a gazdagépekről, és nem sikerült a nem lehet kapcsolódni a a fizikai gazdagép miatt.
+
+Amikor megpróbál hozzáférni a Marketplace-en felügyeleti, hiba történik a termékek szindikálása tett kísérlet során. 
+> OK: Ez általában akkor fordul elő, ha az Azure Stack nem tudja a regisztrációs erőforrás elérésére. Ez az egyik gyakori oka az, hogy ha egy Azure-előfizetés címtárbérlő alaphelyzetbe állítja a regisztráció. Az Azure Stack piactéren vagy a jelentés használati nem érhető el, ha az előfizetéshez tartozó címtárbérlő módosította. A probléma megoldásához újra regisztrálnia kell.
+
+Marketplace-en felügyeleti továbbra is kéri, hogy regisztrálja, és aktiválja az Azure Stack, akkor is, ha már regisztrálta a blokk-a leválasztott folyamat segítségével. 
+> OK: Ez a leválasztott környezetekhez egy ismert probléma. A következő ellenőrizheti a regisztrációs állapot [ezeket a lépéseket](azure-stack-registration.md#verify-azure-stack-registration). Marketplace-en felügyeleti használatához meg kell használandó [a kapcsolat nélküli eszközt](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario). 
 
 ## <a name="next-steps"></a>További lépések
 

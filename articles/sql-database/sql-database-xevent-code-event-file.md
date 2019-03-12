@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: jrasnik
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 61b3c01683318ff1c686ad9e96a420f8ae5e245e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: d7513c4b8ea52b28d138032879f16e5a331853d2
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57306663"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57574447"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>Eseményfájl célkódja az SQL Database bővített események
 
@@ -70,7 +70,7 @@ A szkript után, egy korábbi lehet futtatni, rerunnable karbantartása parancso
 
 ### <a name="powershell-code"></a>PowerShell-kód
 
-Ez a PowerShell-parancsfájl feltételezi, hogy már futtatta a parancsmagot Import-Module az AzureRm-modul. A referencia-dokumentációja: [PowerShell-Modulböngészőt](https://docs.microsoft.com/powershell/module/).
+Ez a PowerShell-parancsfájl feltételezi, hogy már telepítette a Az modul. További információ: [Azure PowerShell-modul telepítéséhez](/powershell/azure/install-Az-ps).
 
 ```powershell
 ## TODO: Before running, find all 'TODO' and make each edit!!

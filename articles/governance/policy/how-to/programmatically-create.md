@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: bf831936f86de9e43170a87c03b61df9a4865b3d
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: e929fd80e87524b62c08a159c457be6f1f21eaad
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878047"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57768604"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>Programozott módon szabályzatok létrehozása és a megfelelőségi adatok megtekintése
 
@@ -183,24 +183,24 @@ Szabályzatdefiníció létrehozásához használja az alábbi eljárást:
 
 1. Másolja a következő JSON-kódrészletben hozhat létre egy JSON-szabályzat-hozzárendelés fájlt.
 
-  ```json
-  {
-      "if": {
-          "allOf": [{
-                  "field": "type",
-                  "equals": "Microsoft.Storage/storageAccounts"
-              },
-              {
-                  "field": "Microsoft.Storage/storageAccounts/networkAcls.defaultAction",
-                  "equals": "Allow"
-              }
-          ]
-      },
-      "then": {
-          "effect": "audit"
-      }
-  }
-  ```
+   ```json
+   {
+       "if": {
+           "allOf": [{
+                   "field": "type",
+                   "equals": "Microsoft.Storage/storageAccounts"
+               },
+               {
+                   "field": "Microsoft.Storage/storageAccounts/networkAcls.defaultAction",
+                   "equals": "Allow"
+               }
+           ]
+       },
+       "then": {
+           "effect": "audit"
+       }
+   }
+   ```
 
    Szabályzat-definíció szerzői kapcsolatos további információkért lásd: [Azure Szabályzatdefiníciók struktúrája](../concepts/definition-structure.md).
 

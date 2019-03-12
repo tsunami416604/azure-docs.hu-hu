@@ -3,7 +3,6 @@ title: Fontos különbség az Azure SQL Database, Machine Learning Services (el�
 description: Ez a témakör az Azure SQL Database Machine Learning-szolgáltatások (az r nyelv) és az SQL Server Machine Learning-szolgáltatások közötti fő különbségeket ismerteti.
 services: sql-database
 ms.service: sql-database
-ms.subservice: machine-learning-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +11,12 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 03/01/2019
-ms.openlocfilehash: c750942f8f0f2727d1d11945a84bffb434a01193
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 57ea52c179376e8378680f436d396ffaf9357f68
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242122"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771850"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-database-preview-and-sql-server"></a>Machine Learning-szolgáltatások az Azure SQL Database (előzetes verzió) és az SQL Server közötti fő különbségeket
 
@@ -59,10 +58,6 @@ Ha nincs elegendő memória áll rendelkezésre az R, hibaüzenetet kap. Gyakori
 - Külső parancsfájlhiba történt: Hiba: nem foglalható le méretű vektort.
 
 Használati attól függ, hogy mennyi memóriát használja az R-szkriptek és a lekérdezések párhuzamos végrehajtása számát. Ha a fenti hibákat kap, magasabb szolgáltatási szintre a probléma megoldásához az adatbázis is méretezhető.
-
-## <a name="security-isolation"></a>Biztonsági elkülönítés
-
-Az Azure SQL Database az SQL Platform absztrakciós réteg (SQLPAL) el vannak különítve a külső folyamatokhoz. Ez az elkülönítés egy további R-szkriptek futtatásához biztonsági réteget nyújt.
 
 ## <a name="next-steps"></a>További lépések
 

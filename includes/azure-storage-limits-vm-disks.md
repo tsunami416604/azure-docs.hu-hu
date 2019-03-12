@@ -4,32 +4,32 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: rogarana
-ms.openlocfilehash: aa701ada917811382351fee9469a5cfa9a7599b8
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 09b4f94db3464943a8367bfb3ca89f9a88446193
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52279683"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553713"
 ---
-Az Azure virtuális gépek több adatlemez csatolását támogatták. Ez a cikk ismerteti a virtuális gép adatlemezek méretezhetőségi és teljesítménycéljai. Ezeken a célokon használatával segít eldönteni, hogy száma és a teljesítmény és kapacitás követelmények teljesítéséhez szükséges lemez típusa. 
+Egy több adatlemez csatlakoztathat egy Azure virtuális gépen. A virtuális gép adatlemezek méretezhetőségi és Teljesítménycélok alapján, meghatározhatja a száma és típusa, amely csak szüksége lehet a teljesítményre és kapacitásra vonatkozó lemez.
 
 > [!IMPORTANT]
-> Az optimális teljesítmény érdekében korlátozhatja a lehetséges szabályozás elkerülése érdekében a virtuális géphez csatlakoztatott nagy kihasználtságú lemezek számát. Az összes csatlakoztatott lemez magas nem használhatók egyszerre, ha a virtuális gép nagyobb számú lemezeket is támogatja.
+> Az optimális teljesítmény érdekében korlátozhatja a lehetséges szabályozás elkerülése érdekében a virtuális géphez csatlakoztatott nagy kihasználtságú lemezek számát. Csatlakoztatott lemezek kihasználtságú nem egy időben, ha a virtuális gép nagyobb számú lemezeket is támogatja.
 
-* **Az Azure Managed Disks:** 
+* **Az Azure-ban felügyelt lemezek:** 
 
 > | Erőforrás | Alapértelmezett korlát | Felső korlát |
 > | --- | --- | --- |
-> | Standard Managed Disks | 10,000 | 50,000 |
-> | Standard SSD Managed Disks | 10,000 | 50,000 |
-> | Premium Managed Disks | 10,000 | 50,000 |
+> | Standard szintű felügyelt lemezekre | 10,000 | 50,000 |
+> | Standard SSD típusú felügyelt lemezek | 10,000 | 50,000 |
+> | Prémium szintű Managed Disks | 10,000 | 50,000 |
 > | Standard_LRS pillanatképek | 10,000 | 50,000 |
 > | Standard_ZRS pillanatképek | 10,000 | 50,000 |
 > | Felügyelt rendszerkép | 10,000 | 50,000 |
 
-* **Standard szintű tárfiókok esetén:** A Standard szintű tárfiókok összesen legfeljebb 20 000 IOPS kérelemaránnyal rendelkeznek. A Standard szintű tárfiókokon az összes virtuálisgép-lemezen lévő teljes IOPS nem léphet túl ezen a korláton.
+* **Standard szintű tárfiókok esetén:** A standard szintű tárfiók a kérelmek maximális száma összesen 20 000 IOPS aránya rendelkezik. Az összes virtuálisgép-lemezek, a standard szintű storage-fiókban a teljes IOPS nem haladhatja meg ezt a korlátot.
   
-    Nagyjából kiszámíthatja az egyetlen Standard szintű tárfiók által támogatott nagy kihasználtságú lemezek számát a kérelemarány korlátja alapján. Ha például egy alapszintű Tarifacsomagot Virtuálisgép, nagy kihasználtságú lemezek maximális száma körülbelül 66 (20 000/300 IOPS lemezenként), és a egy Standard szintű virtuális gép van, pedig körülbelül 40 (20 000/500 IOPS lemezenként). 
+    Nagyjából kiszámíthatja a kérelemarány korlátja alapján egyetlen standard szintű tárfiók által támogatott nagy kihasználtságú lemezek számát. Például egy alapszintű VM, a nagy kihasználtságú lemezek maximális száma érték körülbelül 66, amely 20 000/300 IOPS lemezenként. A Standard szintű virtuális gépek nagy kihasználtságú lemezek maximális száma érték körülbelül 40, amely 20 000/500 IOPS lemezenként. 
 
-* **Prémium szintű tárfiókok esetén:** A prémium szintű tárfiókok összesen legfeljebb 50 Gbps átviteli sebességgel rendelkeznek. Az összes virtuálisgép-lemezen lévő teljes átvitel nem lépheti túl ezt a korlátot.
+* **Prémium szintű tárfiókok esetén:** Premium storage-fiók rendelkezik 50 gbps maximális teljes átviteli sebességet. Az összes virtuálisgép-lemezen lévő teljes átvitel nem lépheti túl ezt a korlátot.
 
