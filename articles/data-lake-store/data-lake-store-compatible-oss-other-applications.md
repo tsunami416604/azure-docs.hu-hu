@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 4a0b3272bc0e4711c555bec17411960aad5a3f16
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 2960e8f438480f3e0ba2dcc26f5fc82e69f55427
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391200"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541876"
 ---
 # <a name="open-source-big-data-applications-that-work-with-azure-data-lake-storage-gen1"></a>Nyílt forráskódú Big Data-alkalmazások, amelyek együttműködnek az Azure Data Lake Storage Gen1
 
@@ -25,17 +25,17 @@ Ez a cikk a nyílt forráskódú big data-alkalmazások, amelyek együttműködn
 
 | Nyílt forráskódú szoftverek | Disztribúció |
 | --- | --- |
-| [Az Apache sqoop használatával](http://sqoop.apache.org/) |A HDInsight 3.2-es, 3.4-es, 3.5-ös és 3.6-os |
-| [MapReduce](http://hadoop.apache.org/docs/r1.0.4/mapred_tutorial.html) |A HDInsight 3.2-es, 3.4-es, 3.5-ös és 3.6-os |
+| [Apache Sqoop](https://sqoop.apache.org/) |A HDInsight 3.2-es, 3.4-es, 3.5-ös és 3.6-os |
+| [MapReduce](https://hadoop.apache.org/docs/r1.0.4/mapred_tutorial.html) |A HDInsight 3.2-es, 3.4-es, 3.5-ös és 3.6-os |
 | [Apache Storm](https://storm.apache.org/) |A HDInsight 3.2-es, 3.4-es, 3.5-ös és 3.6-os |
-| [Az Apache Hive](http://hive.apache.org/) |A HDInsight 3.2-es, 3.4-es, 3.5-ös és 3.6-os |
+| [Apache Hive](https://hive.apache.org/) |A HDInsight 3.2-es, 3.4-es, 3.5-ös és 3.6-os |
 | [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog) |A HDInsight 3.2-es, 3.4-es, 3.5-ös és 3.6-os |
-| [Az Apache mahout használatával](http://mahout.apache.org/) |A HDInsight 3.2-es, 3.4-es, 3.5-ös és 3.6-os |
-| [Az Apache Pig és a Pig Latin](http://pig.apache.org/) |A HDInsight 3.2-es, 3.4-es, 3.5-ös és 3.6-os |
-| [Az Apache Oozie](http://oozie.apache.org/) |A HDInsight 3.2-es, 3.4-es, 3.5-ös és 3.6-os |
-| [Az Apache Zookeeper](http://zookeeper.apache.org/) |A HDInsight 3.2-es, 3.4-es, 3.5-ös és 3.6-os |
-| [Az Apache Tez](http://tez.apache.org/) |A HDInsight 3.2-es, 3.4-es, 3.5-ös és 3.6-os |
-| [Apache Spark](http://spark.apache.org/) |A HDInsight 3.4-es, 3.5-ös és 3.6-os |
+| [Az Apache mahout használatával](https://mahout.apache.org/) |A HDInsight 3.2-es, 3.4-es, 3.5-ös és 3.6-os |
+| [Apache Pig/Pig Latin](https://pig.apache.org/) |A HDInsight 3.2-es, 3.4-es, 3.5-ös és 3.6-os |
+| [Az Apache Oozie](https://oozie.apache.org/) |A HDInsight 3.2-es, 3.4-es, 3.5-ös és 3.6-os |
+| [Az Apache Zookeeper](https://zookeeper.apache.org/) |A HDInsight 3.2-es, 3.4-es, 3.5-ös és 3.6-os |
+| [Apache Tez](https://tez.apache.org/) |A HDInsight 3.2-es, 3.4-es, 3.5-ös és 3.6-os |
+| [Apache Spark](https://spark.apache.org/) |A HDInsight 3.4-es, 3.5-ös és 3.6-os |
 
 
 ## <a name="see-also"></a>Lásd még

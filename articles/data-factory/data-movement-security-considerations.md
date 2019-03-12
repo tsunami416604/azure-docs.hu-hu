@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: a996703f3719c2be90851241c1fe23c89f24e606
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 03976d321a92f6049d06cea88604618d5a2dee67
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447948"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532270"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factoryban történő futtatásának biztonsági szempontjai
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -45,7 +45,7 @@ A Data Factory a hitelesített:
 | **[SOC 1, 2, 3](https://www.microsoft.com/trustcenter/compliance/soc)** |
 | **[HIPAA BAA](https://www.microsoft.com/trustcenter/compliance/hipaa)** |
 
-Ha érdeklik az Azure megfelelőségi, és hogyan védi az Azure a saját infrastruktúráját, látogasson el a [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx). A teljes lista az összes Azure-megfelelőségi ajánlatok ellenőrzése – http://aka.ms/AzureCompliance.
+Ha érdeklik az Azure megfelelőségi, és hogyan védi az Azure a saját infrastruktúráját, látogasson el a [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx). A teljes lista az összes Azure-megfelelőségi ajánlatok ellenőrzése – https://aka.ms/AzureCompliance.
 
 Ez a cikk a következő két adattovábbítási esetekben biztonsági szempontok vizsgáljuk meg: 
 
@@ -91,10 +91,10 @@ Az Azure Data Lake Store is biztosít a fiókban tárolt adatok titkosítását.
 Az Azure Blob storage és Azure Table storage támogatja a Storage Service Encryption (SSE), amely automatikusan titkosítja az adatokat a tárolás előtt, és visszafejti őket a lekérés előtt. További információkért lásd: [Azure Storage Service Encryption az inaktív adatok](../storage/common/storage-service-encryption.md).
 
 #### <a name="amazon-s3"></a>Amazon S3
-Az Amazon S3 támogatja az ügyfél- és az inaktív adatok titkosítását. További információkért lásd: [védelme használatával adattitkosítás](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html).
+Az Amazon S3 támogatja az ügyfél- és az inaktív adatok titkosítását. További információkért lásd: [védelme használatával adattitkosítás](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html).
 
 #### <a name="amazon-redshift"></a>Amazon Redshift
-Amazon Redshift fürt titkosítási támogatja az inaktív adatok. További információkért lásd: [Amazon Redshift az adatbázis-titkosítás](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html). 
+Amazon Redshift fürt titkosítási támogatja az inaktív adatok. További információkért lásd: [Amazon Redshift az adatbázis-titkosítás](https://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html). 
 
 #### <a name="salesforce"></a>Salesforce
 Salesforce Shield Platform titkosítás, amely lehetővé teszi az összes fájlt, a mellékletek és egyéni mezők titkosítási támogatja. További információkért lásd: [ismertetése a Web Server OAuth hitelesítési folyamatát](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm).  
@@ -186,7 +186,7 @@ A következő felhőalapú adattárak van szükség, hogy Ön engedélyezett IP-
 - [Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../cosmos-db/firewall-support.md)
-- [Amazon Redshift](http://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
+- [Amazon Redshift](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) 
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 

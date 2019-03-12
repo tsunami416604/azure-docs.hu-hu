@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 06/01/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1e11f5cfcd80d3aa29530736a7e334c9af741322
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: e228e73283685988247c8d419ba0a97b8c7b2974
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733722"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546965"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Linuxos számítási csomópontok Batch-készletekben kiépítése
 
@@ -327,9 +327,9 @@ A Batch-csomópontokon használatával alkalmazások központi telepítésekor [
 
 A [Python-mintakódot] [ github_samples_py] a a [azure-batch-samples] [ github_samples] tárházban a Githubon tartalmaz parancsprogramokat, amelyek bemutatják, hogyan hajthat végre közös kötegelt műveletek, például a készlet, feladat és a létrehozás. A [információs] [ github_py_readme] , amely társul, a Python minták a szükséges csomagok telepítésével kapcsolatos részleteket is tartalmaz.
 
-[api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
+[api_net]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_net_mgmt]: https://msdn.microsoft.com/library/azure/mt463120.aspx
-[api_rest]: http://msdn.microsoft.com/library/azure/dn820158.aspx
+[api_rest]: https://msdn.microsoft.com/library/azure/dn820158.aspx
 [cloud_services_pricing]: https://azure.microsoft.com/pricing/details/cloud-services/
 [github_py_readme]: https://github.com/Azure/azure-batch-samples/blob/master/Python/Batch/README.md
 [github_samples]: https://github.com/Azure/azure-batch-samples

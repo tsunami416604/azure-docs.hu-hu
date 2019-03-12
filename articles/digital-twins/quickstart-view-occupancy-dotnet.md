@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc seodec18
 ms.date: 12/17/2018
 ms.author: alinast
-ms.openlocfilehash: d2588090ced3e82e63397a416245ca69204f3d87
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 9426fb1df38797ffbb9cc457ba4fe9eb62cfba40
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53583085"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544273"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>Gyors útmutató: Elérhető az Azure digitális Twins teremkeresés
 
@@ -149,7 +149,7 @@ Az oktatóanyagok nyissa meg az útmutató részletesen:
 Továbbra is az oktatóanyagok, hogy ne törölje az erőforrásokat létrehozott ebben a rövid útmutatóban. Ha nem szeretné folytatni, törölje a rövid útmutatóhoz létrehozott összes erőforrást.
 
 1. Törölje a mappát, amely jött létre, amikor a minta tárház letöltött.
-1. A bal oldali menüben a [az Azure portal](http://portal.azure.com)válassza **összes erőforrás**. Ezután válassza ki a digitális Twins erőforrás. Felső részén a **összes erőforrás** ablaktáblán válassza előbb **törlése**.
+1. A bal oldali menüben a [az Azure portal](https://portal.azure.com)válassza **összes erőforrás**. Ezután válassza ki a digitális Twins erőforrás. Felső részén a **összes erőforrás** ablaktáblán válassza előbb **törlése**.
 
     > [!TIP]
     > Ha törli a digitális Twins-példány problémajegyek tapasztal, szolgáltatás frissítése lett állítva a javítás. Ismételje meg a példány törlése.

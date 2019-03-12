@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: 5d360e0959a61cde763f5aafe62de38f6c03e806
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: bb402a5a059fb6f2836bddbd951220271ca77ba3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011177"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534361"
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub-hozzáférés szabályozása
 
@@ -74,7 +74,7 @@ Minden támogatott protokollt, például MQTT, AMQP és a HTTPS, szállítja jog
 
 MQTT használatakor a CONNECT csomag rendelkezik-e az eszköz azonosítójával, mint a ClientId, `{iothubhostname}/{deviceId}` a felhasználónév mezőbe, és a egy SAS-token, a jelszó mezőbe. `{iothubhostname}` a teljes CName az IoT hub (például contoso.azure-devices.net) kell lennie.
 
-Használata esetén [AMQP](https://www.amqp.org/), IoT Hub által támogatott [SASL egyszerű](http://tools.ietf.org/html/rfc4616) és [AMQP jogcím-alapú-biztonsági](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc).
+Használata esetén [AMQP](https://www.amqp.org/), IoT Hub által támogatott [SASL egyszerű](https://tools.ietf.org/html/rfc4616) és [AMQP jogcím-alapú-biztonsági](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc).
 
 AMQP jogcím-alapú-biztonság használatakor a normál ezek a jogkivonatok továbbítására módját adja meg.
 

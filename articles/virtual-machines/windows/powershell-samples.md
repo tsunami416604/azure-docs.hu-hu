@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: f959a22432e82e1a55f613236ce6370ab638ccab
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 576fe268bec12c16c7c2e2076dfa066c908693d5
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245573"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539530"
 ---
 # <a name="azure-virtual-machine-powershell-samples"></a>Azure virtuális gépek PowerShell-minták
 
@@ -49,5 +49,5 @@ A következő táblázat, létrehozása és kezelése Windows virtuális gépek 
 |**Virtuális gépek védelme**||
 | [Virtuális gép és az adatlemezek titkosítása](./../scripts/virtual-machines-windows-powershell-sample-encrypt-vm.md?toc=%2fpowershell%2fazure%2ftoc.json) | Létrehoz egy Azure key vault, a titkosítási kulcsot és a egy egyszerű szolgáltatást, és ezután titkosítja a virtuális gép. |
 |**Virtuális gépek figyelése**||
-| [A Log Analytics használatával egy virtuális gép figyelése](./../scripts/virtual-machines-windows-powershell-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | Létrehoz egy virtuális gépet, telepíti az Azure Log Analytics-ügynököt, és regisztrálja a virtuális gép a Log Analytics-munkaterületen.  |
+| [Virtuális gép monitorozása az Azure monitorral](./../scripts/virtual-machines-windows-powershell-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) | Létrehoz egy virtuális gépet, telepíti az Azure Log Analytics-ügynököt, és regisztrálja a virtuális gép a Log Analytics-munkaterületen.  |
 | | |

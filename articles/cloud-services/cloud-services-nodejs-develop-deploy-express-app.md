@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 260c63ed55b5cb2535567038f27626aa7a085550
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: b212eaffb977846d40270a5f2abc76192aee4c0d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574608"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550630"
 ---
 # <a name="build-and-deploy-a-nodejs-web-application-using-express-on-an-azure-cloud-services"></a>Létrehozása és üzembe helyezése a Node.js-webalkalmazás az Azure Cloud Services az Express használatával
 
@@ -37,7 +37,7 @@ A következő lépésekkel hozzon létre egy új felhőszolgáltatás-projekt "e
 
 1. Az a **Start menü** vagy **kezdőképernyőjén**, keressen **Windows PowerShell**. Végül kattintson a jobb gombbal **Windows PowerShell** válassza **Futtatás rendszergazdaként**.
    
-    ![Az Azure PowerShell ikon](./media/cloud-services-nodejs-develop-deploy-express-app/azure-powershell-start.png)
+    ![Azure PowerShell icon](./media/cloud-services-nodejs-develop-deploy-express-app/azure-powershell-start.png)
 2. Lépjen a **c:\\csomópont** könyvtár és írja be a következő parancsok futtatásával hozzon létre egy új megoldás nevű **expressapp** és a egy webes szerepkörben nevű **WebRole1**:
    
         PS C:\node> New-AzureServiceProject expressapp
@@ -121,8 +121,8 @@ A központi telepítési művelet befejezése után a böngészőben nyissa meg,
 ## <a name="next-steps"></a>További lépések
 További információk: [Node.js fejlesztői központ](https://docs.microsoft.com/javascript/azure/?view=azure-node-latest).
 
-[Node.js Web Application]: http://www.windowsazure.com/develop/nodejs/tutorials/getting-started/
-[Express]: http://expressjs.com/
+[Node.js Web Application]: https://www.windowsazure.com/develop/nodejs/tutorials/getting-started/
+[Express]: https://expressjs.com/
 [http://jade-lang.com]: http://jade-lang.com
 
 

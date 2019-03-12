@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: 72604f84297ddc77b9732c19789d249ac4fa7774
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 28019163cfec1a9d2e3c12346a6aba2bd00b30b1
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010837"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539547"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Referencia – IoT Hub-végpontok
 
@@ -53,7 +53,7 @@ Az alábbi lista ismerteti a végpontok:
 
   * *Közvetlen metódus kérések fogadására*. Eszköz ezt a végpontot használja, figyeljen a [közvetlen metódus](iot-hub-devguide-direct-methods.md)a kérelmeket.
 
-    Ezeket a végpontokat használatával érhetők el [MQTT v3.1.1](http://mqtt.org/), HTTPS 1.1-es és [AMQP 1.0](https://www.amqp.org/) protokollokat. Az AMQP is keresztül érhető el [WebSockets](https://tools.ietf.org/html/rfc6455) 443-as porton.
+    Ezeket a végpontokat használatával érhetők el [MQTT v3.1.1](https://mqtt.org/), HTTPS 1.1-es és [AMQP 1.0](https://www.amqp.org/) protokollokat. Az AMQP is keresztül érhető el [WebSockets](https://tools.ietf.org/html/rfc6455) 443-as porton.
 
 * **Szolgáltatásvégpontokat**. Minden IoT-központ megjelenít egy végpontokat a megoldás háttérrendszerének, és az eszközök közötti kommunikációt. Egy kivétellel ezeket a végpontokat csak akkor érhetők el használatával a [AMQP](https://www.amqp.org/) protokollt. A metódus meghívása végpont a HTTPS protokoll használatával van közzétéve.
   
@@ -83,6 +83,15 @@ Az IoT Hub a következő Azure-szolgáltatások jelenleg további végpontokat t
 * Service Bus-üzenettémák
 
 Hozzáadhat végpontok számának korlátozásairól lásd: [kvóták és szabályozás](iot-hub-devguide-quotas-throttling.md).
+
+A REST API-hoz [végpont állapotának lekérése](https://docs.microsoft.com/de-de/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) beolvasni a végpontok állapotát. Javasoljuk, hogy használja a [az IoT Hub-metrikák](iot-hub-metrics.md) útválasztási üzenet késése alapján azonosíthatja és elháríthatja a hibákat, amikor végpontonkénti állapotot kézbesíthetetlen vagy nem megfelelő állapotú kapcsolódó.
+
+|Állapotadatok|Leírás|
+|---|---|
+|kifogástalan|A végpont már fogad üzeneteket, várt módon.|
+|Nem megfelelő állapotú|A végpont nem fogad üzeneteket várt módon, és az IoT Hub újból megkísérli a adatokat lehet küldeni ennek a végpontnak. Nem megfelelő állapotú végpont állapota kifogástalanra frissül, az IoT Hub állapotának egy végül konzisztens állapotba létrejöttekor.|
+|ismeretlen|Az IoT Hub nem létrehozott egy kapcsolatot a végponthoz. Nincsenek üzenetek érkeznek, vagy elutasították erről a végpontról.|
+|kézbesítetlen levelek|A végpont nem fogad üzeneteket, az IoT Hub újrapróbált üzenetek küldése az retrial időszak után.|
 
 ## <a name="field-gateways"></a>Helyszíni átjárók
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: 47d06ce5a03fe51ba345f60e2feff958ed4a890b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: ec147355d6f61a282a0e6b0950fe03ba0e2341f5
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871162"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530374"
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Biztonsági mentés és visszaállítás Azure-beli SQL Server-alapú virtuális gépeken
 
@@ -144,7 +144,7 @@ A következő táblázat összefoglalja a funkciókat az egyes biztonsági ment�
 | Csatlakoztatott lemezek a virtuális gépen történő biztonsági mentés |   |   | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 | Központi testre szabható biztonsági másolati jelentések |   | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | Konszolidált e-mailes riasztásokhoz hibák |   | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
-| Monitorozás a Log Analyticsre épül testreszabása |   | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
+| Az Azure Monitor naplóira alapján figyelésének testreszabása |   | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   |
 | Az ssms-t vagy a Transact-SQL-parancsfájlok biztonsági mentési feladatok figyelése | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 | Az ssms-t vagy a Transact-SQL szkriptek adatbázisok visszaállítása | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |   | ![Igen](./media/virtual-machines-windows-sql-backup-recovery/yes.png) |
 

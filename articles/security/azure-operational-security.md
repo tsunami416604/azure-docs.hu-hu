@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 2f68156e593281acb46dbeb132f0f45db4b3dfb9
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 5a407db97803d3c3be898893b7da6c1cb4aa94bb
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244774"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536997"
 ---
 # <a name="azure-operational-security"></a>Az Azure működési biztonság
 ## <a name="introduction"></a>Bevezetés
@@ -135,7 +135,7 @@ A Security Center adatokat gyűjt a virtuális gépekről a biztonsági állapot
 
 - Az Azure Security Center az alábbi forrásokból kapott adatok elemzésével biztosítja a biztonsági állapot áttekinthetőségét, azonosítja a biztonsági réseket, javításokat javasolj, valamint észleli az aktív fenyegetéseket:
 
--   Azure Services: Használ, adott erőforrás-szolgáltatóval kommunikálva üzembe helyezett Azure-szolgáltatások konfigurációjával kapcsolatos információkat.
+-   Azure-szolgáltatások: Használ, adott erőforrás-szolgáltatóval kommunikálva üzembe helyezett Azure-szolgáltatások konfigurációjával kapcsolatos információkat.
 
 - Hálózati forgalom: Használja a hálózati forgalom metaadataiból a Microsoft, például a forrás és cél IP-portot, a csomagméretet és a hálózati protokoll mintát venni.
 
@@ -164,7 +164,7 @@ Az Azure Security Center ideiglenes másolatokat gyűjt az összeomlási memóri
 
 ## <a name="azure-monitor"></a>Azure Monitor
 
-A [Log Analytics biztonsági](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources) és naplózási megoldás révén az informatikai aktívan figyeljük az összes erőforrást, amely megkönnyíti a biztonsági incidens hatásának minimalizálása érdekében. Log Analytics biztonsági és auditálási rendelkezik az erőforrások figyeléséhez használt biztonsági tartományok. A biztonsági tartományához beállítások gyors hozzáférést biztosít, a biztonság monitorozására vonatkozó további részleteket a következő tartományok ismertetnek:
+A [Azure Monitor-naplók biztonsági](https://docs.microsoft.com/azure/operations-management-suite/oms-security-monitoring-resources) és naplózási megoldás révén az informatikai aktívan figyeljük az összes erőforrást, amely megkönnyíti a biztonsági incidens hatásának minimalizálása érdekében. Biztonság és auditálás az Azure Monitor naplóira rendelkezik biztonsági tartományok erőforrások figyeléséhez használható. A biztonsági tartományához beállítások gyors hozzáférést biztosít, a biztonság monitorozására vonatkozó további részleteket a következő tartományok ismertetnek:
 
 -   Kártevőfelmérés
 -   Frissítések felmérése

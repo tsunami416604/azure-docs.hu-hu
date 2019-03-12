@@ -13,17 +13,17 @@ caps.latest.revision: 42
 author: jpconnock
 ms.author: jeconnoc
 manager: timlt
-ms.openlocfilehash: 9cb78362b5c0613d6ed6820bbf8e6d3275ab4787
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5f1084090561d3233d0587cf426581ab6ef0ab94
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250662"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533000"
 ---
 # <a name="azure-cloud-services-definition-schema-csdef-file"></a>Az Azure Cloud Services – definíciós séma (.csdef fájl)
 A szolgáltatásdefiníciós fájl határozza meg, hogy a modell egy alkalmazáshoz. A fájl a felhőszolgáltatás számára elérhető szerepköröket definícióit tartalmazza, meghatározza a szolgáltatásvégpontokat, és hozza létre a szolgáltatás konfigurációs beállításait. Konfigurációs beállítás értéke a konfigurációs fájlban, leírtak szerint a [Felhőszolgáltatás (klasszikus) konfigurációs séma](https://msdn.microsoft.com/library/b1ae68cd-cc95-48cb-a4a4-da91dc708a35).
 
-Alapértelmezés szerint a fájl az Azure Diagnostics konfigurációs van telepítve a `C:\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\<version>\schemas` könyvtár. Cserélje le `<version>` telepített verziójának a [Azure SDK](http://www.windowsazure.com/develop/downloads/).
+Alapértelmezés szerint a fájl az Azure Diagnostics konfigurációs van telepítve a `C:\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\<version>\schemas` könyvtár. Cserélje le `<version>` telepített verziójának a [Azure SDK](https://www.windowsazure.com/develop/downloads/).
 
 Az alapértelmezett kiterjesztése a szolgáltatásdefiníciós fájl .csdef esetében.
 

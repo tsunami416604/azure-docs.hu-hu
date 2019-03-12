@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 8b03d6838e9d942da766e0c7aa4c2c2e161a6b14
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4d87f21b6312cad1a40e23f3a3b22fa8cc406186
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990121"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530025"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>Egyéni JSON adatforrások az Azure monitorban Linuxhoz készült Log Analytics-ügynökkel rendelkező gyűjtése
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-Egyéni JSON-adatforrások gyűjthetők be [Azure Monitor](data-collection.md) a Log Analytics ügynökét használja a Linux rendszerre.  Ezek az egyéni adatforrások lehet például visszaadó JSON egyszerű parancsfájlokat [curl](https://curl.haxx.se/) vagy az egyik [FluentD a mint 300 beépülő modulok](http://www.fluentd.org/plugins/all). Ez a cikk ismerteti a adatgyűjteményben szükséges konfigurációnak.
+Egyéni JSON-adatforrások gyűjthetők be [Azure Monitor](data-collection.md) a Log Analytics ügynökét használja a Linux rendszerre.  Ezek az egyéni adatforrások lehet például visszaadó JSON egyszerű parancsfájlokat [curl](https://curl.haxx.se/) vagy az egyik [FluentD a mint 300 beépülő modulok](https://www.fluentd.org/plugins/all). Ez a cikk ismerteti a adatgyűjteményben szükséges konfigurációnak.
 
 
 > [!NOTE]

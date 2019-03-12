@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b134482e571b235b462c027a6d4ae8967fc77413
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: aedbc625bedcbe66b43b66ce96e1b17746b9a47c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175472"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531289"
 ---
 # <a name="tutorial-how-to-download-and-use-a-script-to-access-sign-in-logs"></a>Oktatóanyag: Töltse le és parancsfájl használatával jelentkezzen be a naplók elérése
 
@@ -36,7 +36,6 @@ szükséged van
 
 * Az Azure Active Directory-bérlő prémium verzió (P1 vagy P2) licenccel. Vegye figyelembe, hogy a frissítés előtt tevékenységek adatokat nem rendelkezett, ha igénybe vesz néhány nap alatt az adatok megjelennek a jelentések prémium licencre történő frissítés után. 
 * A felhasználó, aki az a **globális rendszergazdai**, **biztonsági rendszergazda**, **biztonsági olvasó** vagy **jelentést olvasó** szerepkör a bérlő számára. Emellett bármely felhasználó hozzáférhet a saját bejelentkezések. 
-* Ha azt szeretné, a Windows 10-es gépen a letöltött szkript futtatásához [állítsa be az Azure PowerShell-modult, és állítsa be a végrehajtási házirend](concept-sign-ins.md#running-the-script-on-a-windows-10-machine).
 
 ## <a name="tutorial"></a>Oktatóanyag
 

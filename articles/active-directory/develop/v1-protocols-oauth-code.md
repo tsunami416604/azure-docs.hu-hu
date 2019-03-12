@@ -12,17 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2018
+ms.date: 03/5/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cdbde6eda2bd532b1a26a58e4ca82c9b5fab4e6c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2598bb4deef0c7dae9f5df558ec1054ad02fb2f7
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188596"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531113"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Az OAuth 2.0 kód engedélyezési folyamatával használatával az Azure Active Directory webes alkalmazásokhoz való hozzáférés engedélyezése
 
@@ -145,7 +145,7 @@ grant_type=authorization_code
 | client_id |szükséges |Az alkalmazásazonosítót az alkalmazáshoz rendelt Azure AD-vel való regisztrációja. Az Azure Portalon találja. Az alkalmazásazonosító az alkalmazás regisztrációját a beállításait jelenik meg. |
 | grant_type |szükséges |Meg kell `authorization_code` az engedélyezési kód folyamata. |
 | Kód |szükséges |A `authorization_code` az előző szakaszban beszerzett |
-| redirect_uri |szükséges |Azonos `redirect_uri` beszerzéséhez használt értékkel a `authorization_code`. |
+| redirect_uri |szükséges | A `redirect_uri`ügyfélalkalmazás regisztrált. |
 | client_secret |a web apps esetében nem engedélyezett a nyilvános ügyfelek szükséges |Az alkalmazás titkos, amelyet az alkalmazás mellett az Azure Portalon létrehozott **kulcsok**. Ez nem használható egy natív alkalmazást (nyilvános ügyfél), mert client_secrets megbízhatóan nem tárolható az eszközökön. Webalkalmazások és webes API-kat (az összes bizalmas ügyfeleknek), amelyek történő tárolásának lehetőségét szükséges a `client_secret` biztonságosan a kiszolgálói oldalon. A titkos ügyfélkódot kell URL-kódolású elküldése előtt. |
 | erőforrás | Ajánlott |Az Alkalmazásazonosító URI-t a cél a webes API (védett erőforrás). Az Alkalmazásazonosító URI-t, az Azure Portalon kattintson **Azure Active Directory**, kattintson a **alkalmazást az alkalmazásregisztrációk**, nyissa meg az alkalmazás **beállítások** lapon, majd kattintson a  **Tulajdonságok**. Például egy külső erőforrás is lehet `https://graph.microsoft.com`. Ez azért szükséges, egy engedélyezési vagy jogkivonat-kérelmeket. Annak biztosítása érdekében kevesebb hitelesítési kérések helyezze el az engedélyezési kérésben, ha biztosítani szeretné, jóváhagyás a felhasználó. Ha az engedélyezési kérésben, mind a jogkivonat kérése az erőforrás "paramétereknek egyezniük kell. | 
 | code_verifier | választható | Az azonos code_verifier a authorization_code beszerzéséhez használt. Szükséges, ha az engedélyezési kód engedélyezési kérésben PKCE használt. További információkért lásd: a [PKCE RFC](https://tools.ietf.org/html/rfc7636)   |

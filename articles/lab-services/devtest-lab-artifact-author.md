@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 05abc61da7af02c56dacd632175d6fbfa64cb9e1
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: e4fd8d226ebe1cb993e11fb5c9617df3eef08bdc
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098561"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532576"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>A DevTest Labs szolgáltatásban virtuális gép egyéni összetevők létrehozása
 
@@ -126,7 +126,7 @@ Az alábbi példa bemutatja, hogyan hozhat létre egy érték kifejezések és f
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
 * [A DevTest Labs szolgáltatásban az összetevők hibáinak diagnosztizálása](devtest-lab-troubleshoot-artifact-failure.md)
-* [Meglévő Active Directory-tartomány egy Resource Manager-sablon használatával a DevTest Labs szolgáltatásban létrehozott virtuális gépek csatlakoztatása](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
+* [Meglévő Active Directory-tartomány egy Resource Manager-sablon használatával a DevTest Labs szolgáltatásban létrehozott virtuális gépek csatlakoztatása](https://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
 
 ## <a name="next-steps"></a>További lépések
 * Ismerje meg, hogyan [egy Git-tárház összetevő hozzáadása egy laborhoz](devtest-lab-add-artifact-repo.md).

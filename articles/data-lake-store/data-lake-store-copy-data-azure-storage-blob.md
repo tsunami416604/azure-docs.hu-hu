@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 7e218cea543b48371647531cf6d62d8c10a07978
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5049e280b65a9f223ea577ee4fde973657682b4c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230750"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544639"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>Adatok másolása az Azure Storage-blobokat az Azure Data Lake Storage Gen1
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ A cikk elkezdéséhez az alábbiakkal kell rendelkeznie:
 * **Az Azure Storage-blobokat** adatokat tároló.
 * **Az Azure Data Lake Storage Gen1 fiók**. Létrehozásával kapcsolatos utasításokért lásd: [Ismerkedés az Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
 * **Az Azure Data Lake Analytics-fiók (nem kötelező)** – lásd: [Ismerkedés az Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md) létrehozása a Data Lake Analytics-fiók létrehozásával kapcsolatos útmutatást.
-* **Az AdlCopy eszköz**. Telepítse az AdlCopy eszközt [ http://aka.ms/downloadadlcopy ](https://aka.ms/downloadadlcopy).
+* **Az AdlCopy eszköz**. Telepítse az AdlCopy eszközt [ https://aka.ms/downloadadlcopy ](https://aka.ms/downloadadlcopy).
 
 ## <a name="syntax-of-the-adlcopy-tool"></a>Az AdlCopy eszköz szintaxisa
 A következő szintaxis használatával az AdlCopy eszköz használata

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 7ab63b869d9cd8a5b1f2b60429c5b54d0da5761f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: cd2eb3ba1d3207f4f210aa259e938bb42b44d37a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002073"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535450"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>(ELAVULT) Canary kiadás mikroszolgáltatások vamppel az Azure Container Service DC/OS-fürtön
 
@@ -31,7 +31,7 @@ Ez az útmutató beállítjuk Vamp az Azure Container Service DC/OS-fürttel. Ca
 
 [Canary felszabadítása](https://martinfowler.com/bliki/CanaryRelease.html) például a Netflix, a Facebook és a Spotify innovatív szervezetek által elfogadott intelligens központi telepítési stratégiát is. Egy megközelítést, amely így érthető, mivel csökkenti a problémákat, biztonsági-háló vezet be, és növeli az innovációt. Tehát miért nem minden vállalat használja azt? Canary stratégiákat CI/CD-folyamat kiterjesztése bonyolultabbá teszi, és széles körű fejlesztési és üzemeltetési tudásuk és tapasztalataik igényel. Ez elegendő letiltása kisebb cégek és vállalatok egyaránt, mielőtt azok még akkor is. 
 
-[Vamp](http://vamp.io/) egy nyílt forráskódú rendszer kialakítva, hogy a váltás megkönnyítése érdekében, és bring Kanári ad ki az előnyben részesített tároló ütemezőnek funkciókat. Canary funkció vamp a százalékskálájú kibocsátások túllép. Forgalom is szűrve és feltételek, például a cél bizonyos felhasználók, IP-címtartományok és eszközök széles skáláját felosztással állít elő. Vamp nyomon követi, és elemzi a teljesítmény-mérőszámok, lehetővé téve az automation, a való életből vett adatai alapján. A hibák automatikus visszaállítási beállítása, vagy méretezheti a terhelés alapján vagy késés adott szolgáltatás variantní hodnoty.
+[Vamp](https://vamp.io/) egy nyílt forráskódú rendszer kialakítva, hogy a váltás megkönnyítése érdekében, és bring Kanári ad ki az előnyben részesített tároló ütemezőnek funkciókat. Canary funkció vamp a százalékskálájú kibocsátások túllép. Forgalom is szűrve és feltételek, például a cél bizonyos felhasználók, IP-címtartományok és eszközök széles skáláját felosztással állít elő. Vamp nyomon követi, és elemzi a teljesítmény-mérőszámok, lehetővé téve az automation, a való életből vett adatai alapján. A hibák automatikus visszaállítási beállítása, vagy méretezheti a terhelés alapján vagy késés adott szolgáltatás variantní hodnoty.
 
 ## <a name="set-up-azure-container-service-with-dcos"></a>Állítsa be az Azure Container Service DC/OS használatával
 
@@ -129,7 +129,7 @@ Miután az Elasticsearch kiderítheti **futtató**, a DC/OS Universe Vamp csomag
 
 Most, hogy Vamp működik és elérhető, a tervrajz szolgáltatás üzembe helyezése. 
 
-Legegyszerűbb formájukban egy [Vamp tervezet](http://vamp.io/documentation/using-vamp/blueprints/) ismerteti a végpontok (átjárók), a fürtök és a szolgáltatások üzembe helyezéséhez. Vamp fürtök használja ugyanazt a szolgáltatást különböző változatai csoportot logikai csoportokba tesztcsoportos feloldása vagy A / B tesztelés.  
+Legegyszerűbb formájukban egy [Vamp tervezet](https://vamp.io/documentation/using-vamp/blueprints/) ismerteti a végpontok (átjárók), a fürtök és a szolgáltatások üzembe helyezéséhez. Vamp fürtök használja ugyanazt a szolgáltatást különböző változatai csoportot logikai csoportokba tesztcsoportos feloldása vagy A / B tesztelés.  
 
 Ebben a példában egy monolitikus mintaalkalmazás nevű [ **Száva**](https://github.com/magneticio/sava), amely jelenleg az 1.0-s verziója. A monolit egy Docker-tároló, amely a Docker hubon alatt található magneticio/sava:1.0.0 van csomagolva. Az alkalmazás megfelelően fut, a 8080-as porton, de ebben az esetben közzé a port 9050 szeretné. Telepítse az alkalmazást egy egyszerű tervezet használatával Vamp keresztül.
 
@@ -200,7 +200,7 @@ Egyesíteni az új Száva 1.1 szolgáltatásába az üzemelő példányban:
 
 1. A Vamp felhasználói felületén kattintson **tervezetek**.
 
-2. Kattintson a **Hozzáadás** , és illessze be a következő YAML tervezetben: Ez a megoldás bemutatja egy új szolgáltatás variant (Száva: 1.1.0-s) telepítéséhez a meglévő fürtben (sava_cluster).
+2. Kattintson a **Hozzáadás** , és illessze be a következő YAML tervezetben: Ez a megoldás egy új szolgáltatás variant (Száva: 1.1.0-s) telepítéséhez a meglévő fürtben (sava_cluster) ismerteti.
 
   ```YAML
   name: sava:1.1.0      # blueprint name
@@ -291,9 +291,9 @@ Azt is érintőlegesen Vamp néhány hatékony funkcióját: egyesítése egy ú
 
 ## <a name="next-steps"></a>További lépések
 
-* Keresztül Vamp műveletek kezelésével kapcsolatos a [Vamp a REST API-val](http://vamp.io/documentation/api/api-reference/).
+* Keresztül Vamp műveletek kezelésével kapcsolatos a [Vamp a REST API-val](https://vamp.io/documentation/api/api-reference/).
 
 * Node.js-ben Vamp automatizálási szkriptek létrehozásához és futtatásához őket [munkafolyamatok Vamp](https://vamp.io/documentation/using-vamp/v1.0.0/workflows/#create-a-workflow).
 
-* További részletek [VAMP oktatóanyagok](http://vamp.io/documentation/tutorials/).
+* További részletek [VAMP oktatóanyagok](https://vamp.io/documentation/tutorials/).
 

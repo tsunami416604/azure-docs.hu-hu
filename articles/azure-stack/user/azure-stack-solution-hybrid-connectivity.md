@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 2530f6f59ef458d5a7c2de5850d8fab322798ba3
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: a05021255c6226329f1d7a3f0e7fa8c9be756646
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752659"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546721"
 ---
 # <a name="tutorial-configure-hybrid-cloud-connectivity-with-azure-and-azure-stack"></a>Oktatóanyag: hibrid felhő-kapcsolat konfigurálása az Azure és az Azure Stackben
 
@@ -87,7 +87,7 @@ Ebben az oktatóanyagban szereplő példák a következő értékeket használja
 Kapcsolat-leírások:
 
  - **VPN-típust**: Útvonalalapú
- - **Kapcsolat típusa**: Site-to-site (IPsec)
+ - **Kapcsolat típusa**: Helyek közötti (IPsec)
  - **Átjáró típusa**: VPN
  - **Azure-kapcsolat neve**: Az Azure-átjáró-AzureStack-S2SGateway (a portál automatikusan ki lesz ez az érték)
  - **Az Azure Stack kapcsolat neve**: 1.2.9-es-átjáró – Azure-S2SGateway (a portál automatikusan ki lesz ez az érték)
@@ -119,7 +119,7 @@ A következő lépések segítségével hozzon létre egy virtuális hálózatot
 
 VNet létrehozása az Azure-ban:
 
-1. A böngésző használatával kapcsolódhat a [az Azure portal](http://portal.azure.com/) , és jelentkezzen be az Azure-fiókjával.
+1. A böngésző használatával kapcsolódhat a [az Azure portal](https://portal.azure.com/) , és jelentkezzen be az Azure-fiókjával.
 2. Válassza ki **erőforrás létrehozása**. Az a **keresés a piactéren** írja be a következőt `virtual network`meghatározással. Keresés **virtuális hálózati** a találatok listájában, és válassza ki a **virtuális hálózat**.
 3. Az a **telepítési modell kiválasztása** listájáról válassza ki a **Resource Manager**, majd válassza ki **létrehozás**.
 4. A **virtuális hálózat létrehozása**, konfigurálja a VNet beállításait. A kötelező mezők nevei piros csillag előtaggal van.  Egy érvényes értéket ad meg, ha a csillag módosítja egy zöld pipa.
@@ -132,7 +132,7 @@ VNet létrehozása az Azure Stack:
 
 Mielőtt csatlakoztatja virtuális hálózatát egy átjáróhoz, kell hoznia az átjáróalhálózatot a virtuális hálózat, amelyhez csatlakozni kíván. Az Átjárószolgáltatások az átjáróalhálózatban megadott IP-címeket használják.
 
-Az a [az Azure portal](http://portal.azure.com/), keresse meg a Resource Manager virtuális hálózatot, ahol szeretné a virtuális hálózati átjáró létrehozása.
+Az a [az Azure portal](https://portal.azure.com/), keresse meg a Resource Manager virtuális hálózatot, ahol szeretné a virtuális hálózati átjáró létrehozása.
 
 1. Válassza ki a virtuális hálózat számára, hogy nyissa meg a **virtuális hálózati** lapot.
 2. A **beállítások**válassza **alhálózatok**.

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 39ffe1b71fb002658110c63c825e0515f38e2b9e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 6d6f24475497382dd9e04d3335fb89d6f0bdd514
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537324"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57528678"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-server-using-azure-portal"></a>Hozzon létre és kezelhető az Azure Database for MySQL-kiszolgálóhoz az Azure portal használatával
 Ez a témakör ismerteti, hogyan gyorsan létrehozhat egy új, Azure Database for MySQL-kiszolgálóhoz. A kiszolgáló kezelése az Azure portal használatával kapcsolatos információkat is tartalmaz. Felügyeleti kiszolgáló többek között a kiszolgáló adatait, és adatbázisok, a jelszó alaphelyzetbe állítása, erőforrások skálázása és a kiszolgáló törlése megtekintésére.
@@ -44,7 +44,7 @@ Kövesse az alábbi lépéseket követve létrehozhat egy Azure Database for MyS
     | *Hely* | Délkelet-Ázsia (Észak-Európa és az USA nyugati RÉGIÓJA között kijelölés) |
     | *Verzió* | (válassza ki az Azure Database for MySQL-kiszolgáló verziójától) 5.7 |
 
-4. Kattintson a **tarifacsomag** , adja meg a szolgáltatási szint és a teljesítmény szint az új kiszolgáló. Válassza ki a **általános célú** fülre. A **Számítási generáció**, **Virtuális mag**, **Tárolás** és **Biztonsági mentések megőrzési időszaka** beállítások alapértelmezett értékei a következők: *4. generációs*, *2 virtuális mag*, *5 GB* és *7 nap*. A csúszkákat nem szükséges módosítania. A kiszolgáló georedundáns tárhelyre való biztonsági mentésének engedélyezéséhez válassza a **Biztonsági másolat redundanciabeállításai** területen a **Georedundáns** lehetőséget.
+4. Kattintson a **tarifacsomag** , adja meg a szolgáltatási szint és a teljesítmény szint az új kiszolgáló. Válassza ki a **általános célú** fülre. A **Számítási generáció**, **Virtuális mag**, **Tárolás** és **Biztonsági mentések megőrzési időszaka** beállítások alapértelmezett értékei a következők: *5. generációs*, *2 virtuális mag*, *5 GB* és *7 nap*. A csúszkákat nem szükséges módosítania. A kiszolgáló georedundáns tárhelyre való biztonsági mentésének engedélyezéséhez válassza a **Biztonsági másolat redundanciabeállításai** területen a **Georedundáns** lehetőséget.
 
    ![create-server-pricing-tier](./media/howto-create-manage-server-portal/create-server-pricing-tier.png)
 
@@ -62,7 +62,7 @@ Miután az új kiszolgáló kiépítését követően a felhasználók számára
 
 2. Adjon meg egy új jelszót, és a jelszavát az ablakban látható módon:
 
-   ![jelszó alaphelyzetbe állítása](./media/howto-create-manage-server-portal/reset-password.png)
+   ![reset-password](./media/howto-create-manage-server-portal/reset-password.png)
 
 3. Kattintson a **OK** mentse az új jelszót.
 
@@ -72,7 +72,7 @@ Miután az új kiszolgáló kiépítését követően a felhasználók számára
 
 2. Módosítsa a **virtuális mag** a csúszka mozgatásával a kívánt értékre állítja.
 
-    ![számítási bővítés](./media/howto-create-manage-server-portal/scale-compute.png)
+    ![scale-compute](./media/howto-create-manage-server-portal/scale-compute.png)
 
 3. Kattintson az **OK** gombra a módosítások mentéséhez.
 
@@ -82,7 +82,7 @@ Miután az új kiszolgáló kiépítését követően a felhasználók számára
 
 2. Módosítsa a **tárolási** a csúszka mozgatásával a kívánt értékre állítja.
 
-    ![a tárhely méretezése](./media/howto-create-manage-server-portal/scale-storage.png)
+    ![scale-storage](./media/howto-create-manage-server-portal/scale-storage.png)
 
 3. Kattintson az **OK** gombra a módosítások mentéséhez.
 
@@ -110,4 +110,4 @@ Kattintson a **tulajdonságok**, alatt található **beállítások** a kiszolg�
 
 ## <a name="next-steps"></a>További lépések
 
-[Gyors útmutató: Hozzon létre az Azure Database for MySQL-kiszolgálóhoz az Azure portal használatával](./quickstart-create-mysql-server-database-using-azure-portal.md)
+[Rövid útmutató: Hozzon létre az Azure Database for MySQL-kiszolgálóhoz az Azure portal használatával](./quickstart-create-mysql-server-database-using-azure-portal.md)

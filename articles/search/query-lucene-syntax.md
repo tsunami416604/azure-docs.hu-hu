@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 59362b28390556f12cce8813635894c9f06b9a20
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 5bb5993ea47bfcaca96662fbb3d34341e137b929
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008474"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544831"
 ---
 # <a name="lucene-query-syntax-in-azure-search"></a>Lucene lekérdezési szintaxis az Azure Search szolgáltatásban
 Azure Search-lekérdezéseket a gazdag alapján írhat [Lucene lekérdezéselemző](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) Forms speciális lekérdezési szintaxis: helyettesítő karakter, intelligens keresést, közelségi keresésre, reguláris kifejezések összefűzése néhány példa. Nagy része a Lucene lekérdezéselemző szintaxist [átvenni megvalósítása az Azure Search](search-lucene-query-architecture.md), kivéve a *keresések tartomány* az Azure Search révén kialakítani, amely `$filter` kifejezéseket. 
@@ -41,20 +41,20 @@ A következő példa olyan dokumentumokat keres a használatával a Lucene leké
 
 A `searchMode=all` paraméter fontos ebben a példában. Valahányszor operátorok a lekérdezésre, általában célszerű `searchMode=all` annak érdekében, hogy *összes* egyezik a feltételeknek.
 
-```  
-GET /indexes/hotels/docs?search=category:budget AND \"recently renovated\"^3&searchMode=all&api-version=2015-02-28&querytype=full  
-```  
+```
+GET /indexes/hotels/docs?search=category:budget AND \"recently renovated\"^3&searchMode=all&api-version=2015-02-28&querytype=full
+```
 
  Másik megoldásként használhatja a POST:  
 
-```  
-POST /indexes/hotels/docs/search?api-version=2015-02-28  
-{  
-  "search": "category:budget AND \"recently renovated\"^3",  
-  "queryType": "full",  
-  "searchMode": "all"  
-}  
-```  
+```
+POST /indexes/hotels/docs/search?api-version=2015-02-28
+{
+  "search": "category:budget AND \"recently renovated\"^3",
+  "queryType": "full",
+  "searchMode": "all"
+}
+```
 
 További példák: [Lucene lekérdezési szintaxis példái létrehozásához az Azure Searchben a lekérdezések](search-query-lucene-examples.md). A teljes függő a lekérdezési paraméterek megadásával kapcsolatos részletekért lásd: [dokumentumok keresése &#40;Azure Search szolgáltatás REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/Search-Documents).
 

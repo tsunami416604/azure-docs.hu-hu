@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 33abaf7488579a501dc7e2d0b63645726b86c28b
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: ed28c502bb407c65b388704c177fca13cecc38d6
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44390722"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548626"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-python"></a>Fájlrendszerműveletek az Azure Data Lake Storage Gen1 Python használatával
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ A Data Lake Storage Gen1 használata pythonnal, három modult telepítenie kell.
 
 * Az `azure-mgmt-resource` modult, amely további Azure-modulokat tartalmaz az Active Directoryhoz és más eszközökhöz.
 * A `azure-mgmt-datalake-store` modult, amely az Azure Data Lake Storage Gen1 fiókkezelési műveleteit tartalmazza. Ez a modul további információkért lásd: a [azure-mgmt-datalake-store modul-hivatkozás](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python).
-* A `azure-datalake-store` modult, amely az Azure Data Lake Storage Gen1 fájlrendszer-műveleteit tartalmazza. Ez a modul további információkért lásd: a [azure-datalake-store-fájlrendszer modulhivatkozás](http://azure-datalake-store.readthedocs.io/en/latest/).
+* A `azure-datalake-store` modult, amely az Azure Data Lake Storage Gen1 fájlrendszer-műveleteit tartalmazza. Ez a modul további információkért lásd: a [azure-datalake-store-fájlrendszer modulhivatkozás](https://azure-datalake-store.readthedocs.io/en/latest/).
 
 A modulok telepítéséhez használja a következő parancsokat.
 
@@ -86,7 +86,7 @@ pip install azure-datalake-store
 
 3. Mentse a mysample.py módosításait.
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>Authentication
 
 Ebben a szakaszban az Azure AD-hitelesítés különböző módjait tárgyaljuk. Az elérhető lehetőségek:
 
@@ -131,5 +131,5 @@ Az alábbi kódrészlet először a Data Lake Storage Gen1 fiók ügyfél hoz l�
 
 ## <a name="see-also"></a>Lásd még
 
-* [Az Azure Data Lake Storage Gen1 Python (fájlrendszer) referencia](http://azure-datalake-store.readthedocs.io/en/latest)
+* [Az Azure Data Lake Storage Gen1 Python (fájlrendszer) referencia](https://azure-datalake-store.readthedocs.io/en/latest)
 * [Nyílt forráskódú Big Data-alkalmazások kompatibilis az Azure Data Lake Storage Gen1](data-lake-store-compatible-oss-other-applications.md)

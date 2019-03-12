@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: f721c91c828b5c7c8497c07bb0cfe79646daf0f8
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 77e94fd9fc08ad9f7b14e5cf226a6e616b69a37e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868837"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533391"
 ---
 # <a name="speech-synthesis-markup-language"></a>Beszéd összefoglaló Markup Language
 
-A beszédfelismerés összefoglaló Markup Language (SSML) egy XML-alapú jelölőnyelv, amely lehetővé teszi a kiejtés szabályozhatja és *prosody* , szöveg-hang transzformációs. Prosody hivatkozik a munkatevékenységhez és a terv lényegét beszéd – a zene, ha a rendszer. Adja meg a szavak fonetikusan, tegyen számok értelmezéséhez, szünetel, vezérlőelem lényegét, kötet, és a sebesség és egyéb beszúrása. További információkért lásd: [Speech összefoglaló Markup Language (SSML) 1.0-s verzió](http://www.w3.org/TR/2009/REC-speech-synthesis-20090303/).
+A beszédfelismerés összefoglaló Markup Language (SSML) egy XML-alapú jelölőnyelv, amely lehetővé teszi a kiejtés szabályozhatja és *prosody* , szöveg-hang transzformációs. Prosody hivatkozik a munkatevékenységhez és a terv lényegét beszéd – a zene, ha a rendszer. Adja meg a szavak fonetikusan, tegyen számok értelmezéséhez, szünetel, vezérlőelem lényegét, kötet, és a sebesség és egyéb beszúrása. További információkért lásd: [Speech összefoglaló Markup Language (SSML) 1.0-s verzió](https://www.w3.org/TR/2009/REC-speech-synthesis-20090303/).
 
 Beszédhangot (Neurális és standard), támogatott nyelvek és területi beállítások teljes listáját lásd: [nyelvi támogatás](language-support.md#text-to-speech).
 
@@ -31,7 +31,7 @@ A következő szakaszok minták közös beszéd összefoglaló feladatok.
 
 ## <a name="add-a-break"></a>Szünet
 ```xml
-<speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
+<speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
 <voice  name='Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS)'>
     Welcome to Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.
 </voice> </speak>
@@ -39,7 +39,7 @@ A következő szakaszok minták közös beszéd összefoglaló feladatok.
 
 ## <a name="change-speaking-rate"></a>Nyelvű sebességének módosítása
 ```xml
-<speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
+<speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
 <voice  name='Microsoft Server Speech Text to Speech Voice (en-US, Guy24kRUS)'>
 <prosody rate="+30.00%">
     Welcome to Microsoft Cognitive Services Text-to-Speech API.
@@ -48,7 +48,7 @@ A következő szakaszok minták közös beszéd összefoglaló feladatok.
 
 ## <a name="pronunciation"></a>Kiejtése
 ```xml
-<speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
+<speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
 <voice  name='Microsoft Server Speech Text to Speech Voice (en-US, Jessa24kRUS)'>
     <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme>
 </voice> </speak>
@@ -56,7 +56,7 @@ A következő szakaszok minták közös beszéd összefoglaló feladatok.
 
 ## <a name="change-volume"></a>Kötet módosítása
 ```xml
-<speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
+<speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
 <voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>
 <prosody volume="+20.00%">
     Welcome to Microsoft Cognitive Services Text-to-Speech API.
@@ -65,7 +65,7 @@ A következő szakaszok minták közös beszéd összefoglaló feladatok.
 
 ## <a name="change-pitch"></a>Térköz módosítása
 ```xml
-<speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
+<speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
     <voice  name='Microsoft Server Speech Text to Speech Voice (en-US, Guy24kRUS)'>
     Welcome to <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody>
 </voice> </speak>
@@ -73,7 +73,7 @@ A következő szakaszok minták közös beszéd összefoglaló feladatok.
 
 ## <a name="change-pitch-contour"></a>Lényegét kontúrt módosítása
 ```xml
-<speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
+<speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
 <voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>
 <prosody contour="(80%,+20%) (90%,+30%)" >
     Good morning.
@@ -82,7 +82,7 @@ A következő szakaszok minták közös beszéd összefoglaló feladatok.
 
 ## <a name="use-multiple-voices"></a>Több beszédhangot használata
 ```xml
-<speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
+<speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'>
 <voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>
     Good morning!
 </voice>

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 28227ce9ebc5680f68c05cb1296a8ba35eac2c74
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 1dbac37e8b3bac5ee06ac3bdc3270c04efdcd408
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338348"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536691"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Adatok másolása, vagy a helyszíni Oracle az Azure Data Factory használatával
 
@@ -69,7 +69,7 @@ Az Oracle-összekötő illesztőprogramok két verziója támogatja:
     > Jelenleg a Microsoft Oracle-illesztőprogram támogatja az Oracle csak adatmásolásra. Az illesztőprogram nem támogatja az írást és Oracle-ig. A teszt kapcsolat funkció az adatkezelési átjárót a **diagnosztikai** lap nem támogatja az illesztőprogramot. Is használhatja a másolás varázsló a kapcsolat ellenőrzéséhez.
     >
 
-- **Oracle-adatszolgáltató a .NET-hez**: Oracle-adatszolgáltatójának használatával másolja az adatokat, vagy Oracle. Ez az összetevő megtalálható [Oracle Data Access összetevői a Windows](http://www.oracle.com/technetwork/topics/dotnet/downloads/). Telepítse a megfelelő verzió (32 bites vagy 64 bites) a gépen, amelyen az átjáró telepítve van. [Oracle-adatszolgáltató a .NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) Oracle Database 10 g Release 2 és újabb verziói is hozzáférhetnek.
+- **Oracle-adatszolgáltató a .NET-hez**: Oracle-adatszolgáltatójának használatával másolja az adatokat, vagy Oracle. Ez az összetevő megtalálható [Oracle Data Access összetevői a Windows](https://www.oracle.com/technetwork/topics/dotnet/downloads/). Telepítse a megfelelő verzió (32 bites vagy 64 bites) a gépen, amelyen az átjáró telepítve van. [Oracle-adatszolgáltató a .NET 12.1](https://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) Oracle Database 10 g Release 2 és újabb verziói is hozzáférhetnek.
 
     Ha **XCopy telepítési**, végezze el a readme.htm fájlban leírt lépéseket. Javasoljuk, hogy válassza a telepítő, amely a felhasználói felület (nem az XCopy telepítő).
 
@@ -566,7 +566,7 @@ A folyamat egy másolási tevékenység, amely a bemeneti és kimeneti adatkész
 
 **Felbontás**
 
-* Ha még nem telepítette, Oracle, a .NET-szolgáltatója [telepítheti](http://www.oracle.com/technetwork/topics/dotnet/downloads/), és ismételje meg a forgatókönyvet.
+* Ha még nem telepítette, Oracle, a .NET-szolgáltatója [telepítheti](https://www.oracle.com/technetwork/topics/dotnet/downloads/), és ismételje meg a forgatókönyvet.
 * Ha a szolgáltató telepítése után is a hibaüzenetet látja, hajtsa végre az alábbi lépéseket:
     1. Nyissa meg a gép konfigurációs fájlját a mappából a .NET 2.0-s < rendszerlemez\>: \Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
     2. Keresse meg **Oracle-adatszolgáltató a .NET-hez**. Egy bejegyzés található, ahogyan az alábbi minta alapján elvileg **system.data** > **DbProviderFactories**: `<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`

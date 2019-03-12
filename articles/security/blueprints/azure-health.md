@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: ed43a376dd5bb3279fd7e6aa6522980234db3c5f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 92b7714e9f6635cf0b44a98a16ddb4616643ba81
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441797"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544562"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure biztonsági és megfelelőségi terv – a HIPAA/HITRUST-állapotadatok és mesterséges Intelligencia
 
@@ -272,7 +272,7 @@ Ha a bemutató-parancsfájl használatával. . \\A HealthcareDemo.ps1 a **BulkPa
 
 **2. A Key Vault** kért a titkos kulcs, amely a kért jogkivonatot társítva van.
 
-**3. Azure-szerepkörök a kérelem érvényesítéséhez, és engedélyezze a Key Vault hozzáférési kérelmet.
+**3. Azure-szerepkörök** a kérelem érvényesítéséhez, és engedélyezze a Key Vault hozzáférési kérelmet.
 
 **4. A Key Vault** karakterláncot ad vissza, a titkos kulcsot, ebben az esetben az SQL DB-kapcsolat.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Végfelhasználói hitelesítés: Azure Active Directory használatával az Azure Data Lake Storage Gen1 Python |} A Microsoft Docs'
+title: 'Végfelhasználói hitelesítés: Az Azure Active Directoryval Python és az Azure Data Lake Storage Gen1 |} A Microsoft Docs'
 description: Ismerje meg, hogyan érhet el a végfelhasználói hitelesítés az Azure Data Lake Storage Gen1 a Python használatával Azure Active Directory használatával
 services: data-lake-store
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 1ba7dbd9436a15989564a806a7c8f586c01e5243
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 2e8859667e3a69f51ae23bab0487bf15d9eeeab6
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46128069"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537184"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Végfelhasználói hitelesítés az Azure Data Lake Storage Gen1 a Python használatával
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ A Data Lake Storage Gen1 használata pythonnal, három modult telepítenie kell.
 
 * Az `azure-mgmt-resource` modult, amely további Azure-modulokat tartalmaz az Active Directoryhoz és más eszközökhöz.
 * A `azure-mgmt-datalake-store` modult, amely az Azure Data Lake Storage Gen1 fiókkezelési műveleteit tartalmazza. Ez a modul további információkért lásd: [Azure Data Lake Storage Gen1 felügyeleti modul-hivatkozás](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python).
-* A `azure-datalake-store` modult, amely az Azure Data Lake Storage Gen1 fájlrendszer-műveleteit tartalmazza. Ez a modul további információkért lásd: [azure-datalake-store Fájlrendszermoduljához készült referenciaanyagban](http://azure-datalake-store.readthedocs.io/en/latest/).
+* A `azure-datalake-store` modult, amely az Azure Data Lake Storage Gen1 fájlrendszer-műveleteit tartalmazza. Ez a modul további információkért lásd: [azure-datalake-store Fájlrendszermoduljához készült referenciaanyagban](https://azure-datalake-store.readthedocs.io/en/latest/).
 
 A modulok telepítéséhez használja a következő parancsokat.
 

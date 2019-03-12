@@ -1,5 +1,5 @@
 ---
-title: 'Szolgáltatások közötti hitelesítés: Azure Active Directory használatával az Azure Data Lake Storage Gen1 Python |} A Microsoft Docs'
+title: 'Szolgáltatások közötti hitelesítés: Az Azure Active Directoryval Python és az Azure Data Lake Storage Gen1 |} A Microsoft Docs'
 description: Ismerje meg, hogyan érhet el a szolgáltatások közötti hitelesítés az Azure Data Lake Storage Gen1 az Azure Active Directory-ban a Python használatával
 services: data-lake-store
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: a51eb8f560d598f86caf57b7b24737b0a3574b68
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 4cad09877a3fc4f586db2d92ce97a64b6efe295e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49957219"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537150"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Szolgáltatások közötti hitelesítés az Azure Data Lake Storage Gen1 Python használatával
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ A Data Lake Storage Gen1 használata pythonnal, három modult telepítenie kell.
 
 * Az `azure-mgmt-resource` modult, amely további Azure-modulokat tartalmaz az Active Directoryhoz és más eszközökhöz.
 * A `azure-mgmt-datalake-store` modult, amely a Data Lake Storage Gen1 fiókkezelési műveleteit tartalmazza. Ez a modul további információkért lásd: [Azure Data Lake Storage Gen1 felügyeleti modul-hivatkozás](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python).
-* A `azure-datalake-store` modult, amely a Data Lake Storage Gen1 fájlrendszer-műveleteit tartalmazza. Ez a modul további információkért lásd: [azure-datalake-store Fájlrendszermoduljához készült referenciaanyagban](http://azure-datalake-store.readthedocs.io/en/latest/).
+* A `azure-datalake-store` modult, amely a Data Lake Storage Gen1 fájlrendszer-műveleteit tartalmazza. Ez a modul további információkért lásd: [azure-datalake-store Fájlrendszermoduljához készült referenciaanyagban](https://azure-datalake-store.readthedocs.io/en/latest/).
 
 A modulok telepítéséhez használja a következő parancsokat.
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 445ddb3c580218e21410c961c614a8a9e29d21a0
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 2ea228a1db204170f947b5fe71f1865a4620b0f4
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328333"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549034"
 ---
 # <a name="query-an-azure-cosmos-container"></a>A lekérdezés egy Azure Cosmos-tárolóhoz
 
@@ -32,7 +32,7 @@ IQueryable<DeviceReading> query = client.CreateDocumentQuery<DeviceReading>(
 
 A következő lekérdezés nem tartalmaz egy szűrőt a partíciókulcs (`DeviceId`), és az összes partíciót, amelyen fut a partíció indexe alapján van rendezve. Több partícióra kiterjedő lekérdezések futtatása, állítsa be `EnableCrossPartitionQuery` igaz (vagy `x-ms-documentdb-query-enablecrosspartition`  a REST API-ban).
 
-Az EnablecrossPartitionQuery tulajdonság egy logikai értéket fogad el. Ha a beállítása igaz értékre, és ha a lekérdezés nem rendelkezik egy partíciókulcsot, az Azure Cosmos DB ventilátorok fel horizontálisan a lekérdezést a partíciók között. A ventilátor ki az összes partíciót az egyes lekérdezések alapján történik. A quey eredmények olvasni, az ügyfélalkalmazások kell a FeedResponse eredményeinek használják, és ellenőrizze a continuationtoken argumentumot használja tulajdonság. Olvassa el az összes eredmény, hagyja a léptetés az adatokon, mindaddig, amíg a continuationtoken argumentumot használja má hodnotu null. 
+Az EnableCrossPartitionQuery tulajdonság egy logikai értéket fogad el. Ha a beállítása igaz értékre, és ha a lekérdezés nem rendelkezik egy partíciókulcsot, az Azure Cosmos DB ventilátorok fel horizontálisan a lekérdezést a partíciók között. A ventilátor ki az összes partíciót az egyes lekérdezések alapján történik. Olvassa el a lekérdezés eredményeit, hogy az ügyfélalkalmazások kell a FeedResponse eredményeinek használják, és ellenőrizze a continuationtoken argumentumot használja tulajdonság. Olvassa el az összes eredmény, hagyja a léptetés az adatokon, mindaddig, amíg a continuationtoken argumentumot használja má hodnotu null. 
 
 ```csharp
 // Query across partition keys into a class called, DeviceReading

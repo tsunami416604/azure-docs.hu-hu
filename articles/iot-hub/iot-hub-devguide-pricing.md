@@ -7,13 +7,13 @@ ms.author: robin.shahan
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 01/29/2018
-ms.openlocfilehash: 54336de291d01f3741c288756095e40a43800a7f
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.date: 03/11/2019
+ms.openlocfilehash: 23b53e852672c129ff148b0b493a44172f9baf9a
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57009987"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769744"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Az Azure IoT Hub díjszabása
 
@@ -28,8 +28,8 @@ ms.locfileid: "57009987"
 | Identitásjegyzék műveletei <br/> (létrehozása, beolvasása, listázása, frissítése és törlése) | Nem számítunk fel díjat. |
 | Az eszközről a felhőbe irányuló üzenetek | Sikeresen elküldött üzenetet az IoT Hub a bejövő forgalom 4 KB-os blokkonként számítunk fel. Ha például egy 6 KB-os üzenetet 2 darab kell fizetnie. |
 | Felhőből az eszközre irányuló üzenetek | Sikeresen elküldött üzeneteket 4 KB-os blokkonként számítunk, például 6 KB-os üzenetet 2 darab díját. |
-| Fájlfeltöltések | Az Azure Storage-fájlátvitel IoT Hub által nem forgalmi díjas. Fájl adatátviteli kezdeményezése és -befejezési üzenetet számítunk fel, a 4 KB-os egységekben mért messaged. Ha például 10 MB-os fájl áttelepítése közben díjat számítunk fel Azure tárolási költségek mellett két üzenet. |
-| Közvetlen metódusok | Sikeres metódus kérelmek 4 KB-os blokkonként számítunk, válaszoknál, amelyeknél a nem üres szervek 4 KB-os blokkonként számítunk, a további üzeneteket. A leválasztott eszközöket kérelmeket 4 KB-os blokkonként darab üzenetként számítjuk fel. Például egy metódust, amely a válasz nem a szervezetnek az eszközről, 6 KB-os szervezethez, két darab kell fizetnie. A kérelem számára két üzenet és a egy másik üzenet a válasz egy metódust, amely az eszközről egy 1 KB-os válaszul 6 KB-os szervezethez kell fizetnie. |
+| Fájlfeltöltések | Az Azure Storage-fájlátvitel IoT Hub által nem forgalmi díjas. Fájl adatátviteli kezdeményezése és -befejezési üzenetet számítunk fel, a 4 KB-os egységekben mért messaged. Ha például 10 MB-os fájl áttelepítése közben díjat számítunk fel Azure tárolási költségek mellett két darab üzenetként. |
+| Közvetlen metódusok | Sikeres metódus kérelmek 4 KB-os blokkonként számítunk, és a válaszok, a további üzeneteket 4 KB-os blokkonként számítunk. A leválasztott eszközöket kérelmeket 4 KB-os blokkonként darab üzenetként számítjuk fel. Például egy 4 KB-os szervezethez, amely az eszköz válaszára nincs szervezethez eredményez metódus díjat számítunk fel két darab üzenetként. A kérelem számára két üzenet és a egy másik üzenet a válasz egy metódust, amely az eszközről egy 1 KB-os válaszul 6 KB-os szervezethez kell fizetnie. |
 | Eszköz- és a modul a páros olvasási | A páros olvasási az eszköz vagy a modul és a megoldás háttérrendszere a végfelhasználók 512 bájtos tömbökben darab üzenetként számítjuk fel. Ha például egy 6 KB-os pár olvasása díjat számítunk fel 12 darab üzenetként. |
 | Eszköz- és modul ikereszköz-frissítések (címkék és tulajdonságok) | Az eszköz vagy a modul és a megoldás háttérrendszere az ikereszköz-frissítések 512 bájtos tömbökben darab üzenetként számítjuk fel. Ha például egy 6 KB-os pár olvasása díjat számítunk fel 12 darab üzenetként. |
 | Eszköz- és modul ikereszköz-lekérdezések | Lekérdezések függően az eredmény mérete 512 bájtos adattömbök darab üzenetként számítjuk fel. |
@@ -42,7 +42,7 @@ ms.locfileid: "57009987"
 
 ## <a name="example-1"></a>#1. példa
 
-Egy eszközt az IoT hubhoz, amelyeket majd az Azure Stream Analytics egy 1 KB-os eszköz – felhő üzenet percenkénti küld. A megoldás háttérrendszere hív meg (az 512 bájtos adattartalom) egy metódust az eszközön 10 percenként aktiválhat egy bizonyos művelet. Az eszköz válaszol az módszer az eredménye, 200 bájt.
+Egy eszközt az IoT hubhoz, amelyeket majd az Azure Stream Analytics egy 1 KB-os eszköz – felhő üzenet percenkénti küld. A megoldás háttérrendszere hív meg egy metódust (egy 512 bájtos adattartalom) az eszközön 10 percenként egy bizonyos művelet indításához. Az eszköz válaszol az módszer az eredménye, 200 bájt.
 
 Az eszköz felhasználja:
 

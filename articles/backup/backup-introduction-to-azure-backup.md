@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e2b9d380b5e164bb8b730ec7037a6b2836c2af85
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 2888f291980b83b0c917e88f65d06ebaa6c8348e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447361"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544103"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Az Azure Backup szolgáltatásainak áttekintése
 Az Azure Backup olyan Azure-alapú szolgáltatás, amellyel biztonsági másolatot készíthet adatairól (vagy megvédheti adatait), és visszaállíthatja őket a Microsoft-felhőből. Az Azure Backup megbízható, biztonságos és költséghatékony felhőalapú megoldással váltja fel a meglévő helyszíni vagy külső helyszínen lévő biztonsági mentési megoldást. Az Azure Backup több összetevőjét letöltheti és telepítheti a megfelelő számítógépre, kiszolgálóra vagy a felhőbe. A telepítendő összetevő vagy ügynök attól függ, hogy mit szeretne megvédeni. Minden Azure Backup-összetevővel (függetlenül attól, hogy helyszíni vagy a felhőben tárolt adatokat kíván védeni) készíthetők biztonsági másolatok az Azure Recovery Services-tárolójába. Az [Azure Backup-összetevők táblázatában](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (a cikk későbbi részében) azzal kapcsolatban talál információkat, hogy mely összetevőt kell használnia adott adatok, alkalmazások és számítási feladatok védelmére.
@@ -132,7 +132,7 @@ A biztonsági másolatok a szükséges tárterület csökkentése érdekében t�
 
 
 #### <a name="disk-deduplication"></a>Lemezdeduplikáció
-A deduplikáció nyújtotta előnyöket a System Center DPM vagy az Azure Backup Server [Hyper-V virtuális gépeken](http://blogs.technet.com/b/dpm/archive/2015/01/06/deduplication-of-dpm-storage-reduce-dpm-storage-consumption.aspx) való üzembe helyezése esetén használhatja ki. A Windows Server az adatok deduplikációját (a gazdagép szintjén) a virtuális géphez Backup-tárolóként csatlakoztatott virtuális merevlemezeken (VHD-ken) végzi el.
+A deduplikáció nyújtotta előnyöket a System Center DPM vagy az Azure Backup Server [Hyper-V virtuális gépeken](https://blogs.technet.com/b/dpm/archive/2015/01/06/deduplication-of-dpm-storage-reduce-dpm-storage-consumption.aspx) való üzembe helyezése esetén használhatja ki. A Windows Server az adatok deduplikációját (a gazdagép szintjén) a virtuális géphez Backup-tárolóként csatlakoztatott virtuális merevlemezeken (VHD-ken) végzi el.
 
 > [!NOTE]
 > A deduplikáció az Azure-ban egyik Backup-összetevőhöz sem érhető el. Amikor System Center DPM és Backup Server van üzembe helyezve az Azure-ban, a virtuális géphez csatolt tárolólemezek nem deduplikálhatók.

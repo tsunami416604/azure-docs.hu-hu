@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 70bae1558860b763d17d04e10d5d926b39300101
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 48a84520a61d19968b467091871459e21898dd5e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321245"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548643"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Ismerkedés az Azure CDN-fejlesztéssel
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "54321245"
 
 Használhatja a [Azure CDN SDK for Node.js](https://www.npmjs.com/package/azure-arm-cdn) létrehozása és a CDN-profilok és a végpontok felügyeletének automatizálására.  Ez az oktatóanyag végigvezeti az egyszerű Node.js-konzolalkalmazást, amely bemutatja az elérhető műveletek számos létrehozását.  Ebben az oktatóanyagban nem célja, hogy minden szempontból az Azure CDN SDK for node.js használatával részletesen leírja.
 
-Az oktatóanyag elvégzéséhez, már rendelkezik [Node.js](http://www.nodejs.org) **4.x.x** vagy újabb verziója telepítve és konfigurálva.  Használhat bármilyen szövegszerkesztővel, a Node.js-alkalmazás létrehozásához.  Ebben az oktatóanyagban írni használt [Visual Studio Code](https://code.visualstudio.com).  
+Az oktatóanyag elvégzéséhez, már rendelkezik [Node.js](https://www.nodejs.org) **4.x.x** vagy újabb verziója telepítve és konfigurálva.  Használhat bármilyen szövegszerkesztővel, a Node.js-alkalmazás létrehozásához.  Ebben az oktatóanyagban írni használt [Visual Studio Code](https://code.visualstudio.com).  
 
 > [!TIP]
 > A [ebből az oktatóanyagból befejezett projekt](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74) letölthető az MSDN Webhelyén.
@@ -363,9 +363,9 @@ Végül tekintsük törli a profilt.
 ## <a name="next-steps"></a>További lépések
 A kész projektet ebben a bemutatóban a megtekintéséhez [töltse le a mintát](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74).
 
-A hivatkozás megtekintéséhez az Azure CDN SDK a node.js-ben, megtekintheti a [referencia](http://azure.github.io/azure-sdk-for-node/azure-arm-cdn/latest/).
+A hivatkozás megtekintéséhez az Azure CDN SDK a node.js-ben, megtekintheti a [referencia](https://azure.github.io/azure-sdk-for-node/azure-arm-cdn/latest/).
 
-További dokumentáció keresése az Azure SDK a Node.js-hez, tekintse meg a [referencia teljes](http://azure.github.io/azure-sdk-for-node/).
+További dokumentáció keresése az Azure SDK a Node.js-hez, tekintse meg a [referencia teljes](https://azure.github.io/azure-sdk-for-node/).
 
 A CDN-erőforrások kezelése a [PowerShell](cdn-manage-powershell.md).
 

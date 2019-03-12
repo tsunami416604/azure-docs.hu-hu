@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 57d112cfce00839f1381dc41d24bfb697179b5a4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 8276b86df2dc1bc90fc07da262aa0979f7562619
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878680"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548489"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>Oktatóanyag: Egyéni nyelvi modell létrehozása
 
@@ -59,7 +59,7 @@ A nyelvi adatokra vonatkozó főbb követelményeket az alábbi táblázat fogla
 | Kimondott szövegek száma soronként | 1 |
 | Maximális fájlméret | 1,5 GB |
 | Megjegyzések | Az egyes karaktereket négynél többször ne ismételje (például „aaaaa”)|
-| Megjegyzések | Ne alkalmazzon különleges karaktereket, például „\t” vagy bármely egyéb UTF-8-karaktert U+00A1 felett a [Unicode karaktertáblán](http://www.utf8-chartable.de/)|
+| Megjegyzések | Ne alkalmazzon különleges karaktereket, például „\t” vagy bármely egyéb UTF-8-karaktert U+00A1 felett a [Unicode karaktertáblán](https://www.utf8-chartable.de/)|
 | Megjegyzések | A rendszer az URI-azonosítókat sem fogadja be, mivel ezeknek nem létezik egységes kiejtése|
 
 A szövegek importálásakor a rendszer normalizálja őket, hogy fel tudja dolgozni. Azonban bizonyos fontosabb normalizálási tevékenységeket a felhasználónak kell végrehajtania az adatok feltöltése _előtt_. A nyelvi adatok előkészítése során használandó megfelelő nyelv meghatározásához lásd az [átírási irányelveket](prepare-transcription.md).

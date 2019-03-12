@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 698962aa0e3d72b204c4e990aa1384b44bf3896f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 44e13a301117ffe11e978666a38897ffd878c223
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55856892"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551224"
 ---
 # <a name="migrate-from-the-custom-speech-service-to-the-speech-service"></a>A Custom Speech Service áttelepít a beszédszolgáltatás
 
@@ -48,7 +48,7 @@ A meglévő erőforrás kulcsainak áttelepítése a Speech Service, a beszéd p
 > [!NOTE]
 > Erőforrás kulcsainak csak áttelepíthetők ugyanazon a régión belül.
 
-1. Jelentkezzen be a [cris.ai](http://www.cris.ai) portálon, és válassza a jobb felső menüjében az előfizetéshez.
+1. Jelentkezzen be a [cris.ai](https://www.cris.ai) portálon, és válassza a jobb felső menüjében az előfizetéshez.
 
 2. Válassza ki **kiválasztott előfizetés áttelepítése**.
 

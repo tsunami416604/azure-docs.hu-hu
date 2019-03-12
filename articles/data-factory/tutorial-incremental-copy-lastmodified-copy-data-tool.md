@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/24/2019
-ms.openlocfilehash: 22203a0e950a59cb255c8864218d4e03988e6634
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: e5e184e6dadfa993e0b758ad32b54ea6ccfcb272
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56647510"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546534"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Növekményes másolása az adatok másolása eszköz használatával LastModifiedDate alapján új és módosított fájlok
 
@@ -43,9 +43,9 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
 A Blob storage előkészítése az oktatóanyaghoz elvégezhesse ezeket a lépéseket.
 
-1. Hozzon létre egy tárolót **forrás**. Ennek elvégzéséhez különböző eszközök állnak rendelkezésére, például az [Azure Storage Explorer](http://storageexplorer.com/).
+1. Hozzon létre egy tárolót **forrás**. Ennek elvégzéséhez különböző eszközök állnak rendelkezésére, például az [Azure Storage Explorer](https://storageexplorer.com/).
 
-2. Hozzon létre egy tárolót **cél**. Ennek elvégzéséhez különböző eszközök állnak rendelkezésére, például az [Azure Storage Explorer](http://storageexplorer.com/).
+2. Hozzon létre egy tárolót **cél**. Ennek elvégzéséhez különböző eszközök állnak rendelkezésére, például az [Azure Storage Explorer](https://storageexplorer.com/).
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
@@ -174,7 +174,7 @@ A Blob storage előkészítése az oktatóanyaghoz elvégezhesse ezeket a lépé
     
     ![Folyamatfuttatások monitorozása](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3.png)
     
-12. Hozzon létre egy üres szövegfájlba, és nevezze el másként file1.txt. Töltse fel a file1.txt fájlt a **forrás** a storage-fiókban lévő tárolóba. Ennek elvégzéséhez különböző eszközök állnak rendelkezésére, például az [Azure Storage Explorer](http://storageexplorer.com/).    
+12. Hozzon létre egy üres szövegfájlba, és nevezze el másként file1.txt. Töltse fel a file1.txt fájlt a **forrás** a storage-fiókban lévő tárolóba. Ennek elvégzéséhez különböző eszközök állnak rendelkezésére, például az [Azure Storage Explorer](https://storageexplorer.com/).   
 
     ![Folyamatfuttatások monitorozása](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3-1.png)
     
@@ -190,13 +190,13 @@ A Blob storage előkészítése az oktatóanyaghoz elvégezhesse ezeket a lépé
     
     ![Folyamatfuttatások monitorozása](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs6.png)
     
-15. Hozzon létre egy másik üres szövegfájlt, és nevezze el másként fájl2.ref fájllal. Töltse fel a Fájl2.ref fájllal fájlt a **forrás** a storage-fiókban lévő tárolóba. Ennek elvégzéséhez különböző eszközök állnak rendelkezésére, például az [Azure Storage Explorer](http://storageexplorer.com/).   
+15. Hozzon létre egy másik üres szövegfájlt, és nevezze el másként fájl2.ref fájllal. Töltse fel a Fájl2.ref fájllal fájlt a **forrás** a storage-fiókban lévő tárolóba. Ennek elvégzéséhez különböző eszközök állnak rendelkezésére, például az [Azure Storage Explorer](https://storageexplorer.com/).  
     
 16. Tegye meg ugyanezt 13 és 14. lépés, és láthatja, hogy csak az új fájl (fájl2.ref fájllal) másolta a **forrás** tárolót, hogy a **cél** tárolót a storage-fiók található a következő folyamatfuttatáshoz.  
     
     ![Folyamatfuttatások monitorozása](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs7.png)
 
-    Is ellenőrizheti az azonos Azure Storage Explorer használatával (http://storageexplorer.com/) megvizsgálja a fájlokat.
+    Is ellenőrizheti az azonos Azure Storage Explorer használatával (https://storageexplorer.com/) megvizsgálja a fájlokat.
     
     ![Folyamatfuttatások monitorozása](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs8.png)
 

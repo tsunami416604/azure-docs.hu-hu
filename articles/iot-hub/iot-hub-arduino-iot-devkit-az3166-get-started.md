@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 12/19/2018
 ms.author: wesmc
-ms.openlocfilehash: 0e668c0b31defd5c945ddf2fec1b00f75d92f174
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: e35e669c4abc4815b932e09d369af28e42617e8c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990153"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535683"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>Csatlakozás az Azure IoT Hub IoT DevKit AZ3166
 
@@ -175,9 +175,9 @@ Kövesse az alábbi lépéseket a fejlesztési környezet előkészítése a fej
 
 ### <a name="install-st-link-drivers"></a>ST-Link-illesztőprogramok telepítése
 
-[ST-hivatkozás/V2](http://www.st.com/en/development-tools/st-link-v2.html) az USB-felület, amely IoT DevKit segítségével kommunikál a fejlesztői gépen. Telepítenie kell azt a flash engedélyezése Windows a lefordított deivce kódot, a fejlesztői készlet. Operációsrendszer-specifikus kövesse az eszköz a gép hozzáférésének engedélyezéséhez.
+[ST-hivatkozás/V2](https://www.st.com/en/development-tools/st-link-v2.html) az USB-felület, amely IoT DevKit segítségével kommunikál a fejlesztői gépen. Telepítenie kell azt a flash engedélyezése Windows a lefordított deivce kódot, a fejlesztői készlet. Operációsrendszer-specifikus kövesse az eszköz a gép hozzáférésének engedélyezéséhez.
 
-* **Windows**: Töltse le és telepítse az USB-illesztőprogramot az [STMicroelectronics webhely](http://www.st.com/en/development-tools/stsw-link009.html).
+* **Windows**: Töltse le és telepítse az USB-illesztőprogramot az [STMicroelectronics webhely](https://www.st.com/en/development-tools/stsw-link009.html).
 * **macOS**: Nincs illesztőprogram nem szükséges a macOS-hez.
 * **Ubuntu**: Futtassa a következő terminálon és jelentkezzen ki, és jelentkezzen be a csoport módosítás érvénybe léptetéséhez:
     ```bash

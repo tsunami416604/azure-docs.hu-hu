@@ -3,25 +3,25 @@ title: Raspberry Pi felhőbe (Node.js) – a Raspberry Pi csatlakoztatása Azure
 description: Ismerje meg, hogyan beállítása és a Raspberry Pi csatlakoztatása az Azure IoT hubba a Raspberry Pi adatokat küldeni az Azure felhőalapú platformján ebben az oktatóanyagban.
 author: rangv
 manager: ''
-keywords: az Azure iot raspberry pi, a raspberry pi az iot hub, a raspberry pi send adatait a felhőbe, a raspberry pi a felhőbe
+keywords: azure iot raspberry pi, raspberry pi iot hub, raspberry pi send data to cloud, raspberry pi to cloud
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: a4e64259b941a4f2c2727afc8730c6cb0102a061
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: ebdc90dc35f891ea1811ce81c5bdc1b937c58a5c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054879"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57529247"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Raspberry Pi csatlakoztatása Azure IoT hubhoz (Node.js)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
-Ez az oktatóanyag első lépésként, tanulás a Raspberry Pi Raspbian futtató való használatának alapjait. Ezután megismerheti, hogyan zökkenőmentes csatlakozás használatával a felhőbe az eszközök [Azure IoT Hub](about-iot-hub.md). A Windows 10 IoT Core-minta, nyissa meg a [Windows Dev Center](http://www.windowsondevices.com/).
+Ez az oktatóanyag első lépésként, tanulás a Raspberry Pi Raspbian futtató való használatának alapjait. Ezután megismerheti, hogyan zökkenőmentes csatlakozás használatával a felhőbe az eszközök [Azure IoT Hub](about-iot-hub.md). A Windows 10 IoT Core-minta, nyissa meg a [Windows Dev Center](https://www.windowsondevices.com/).
 
 Még nem rendelkezik egy csomagot? Próbálja ki [Raspberry Pi online szimulátor](iot-hub-raspberry-pi-web-simulator-get-started.md). Vagy egy új csomag vásárlása [Itt](https://azure.microsoft.com/develop/iot/starter-kits).
 
@@ -83,7 +83,7 @@ Készítse elő a Raspbian lemezkép telepítésének microSD-kártyán.
 
 1. Töltse le a Raspbian.
 
-   a. [Töltse le a Raspbian Stretch](http://downloads.raspberrypi.org/raspbian/images/raspbian-2017-07-05/) (a .zip-fájlt).
+   a. [Töltse le a Raspbian Stretch](https://downloads.raspberrypi.org/raspbian/images/raspbian-2017-07-05/) (a .zip-fájlt).
 
    > [!WARNING]
    > Használja a fenti hivatkozást letöltéséhez `raspbian-2017-07-5` zip-lemezképet. Raspbian lemezképek legújabb verziója van bizonyos ismert problémák kábelezés-Pi csomóponttal, amely a következő lépésben hibát okozhat.
@@ -133,12 +133,12 @@ A BME280 érzékelő hőmérséklettel és páratartalommal kapcsolatos adatokat
 
 | Indítsa el a (érzékelő & LED)     | Teljes (tábla)            | Kábel színe   |
 | -----------------------  | ---------------------- | ------------: |
-| VDD (5 g. PIN-kód)             | 3.3V PWR (1 PIN-kód)       | Fehér kábel   |
-| GND (PIN-kód 7G)             | GND (6 PIN-kód)            | Barna kábel   |
-| SDI (PIN-kód 10G)            | I2C1 SDA (3 PIN-kód)       | Piros kábel     |
-| SCK (8G PIN-kód)             | I2C1 SCL (5 PIN-kód)       | Narancssárga kábel  |
+| VDD (Pin 5G)             | 3.3V PWR (1 PIN-kód)       | Fehér kábel   |
+| GND (Pin 7G)             | GND (6 PIN-kód)            | Barna kábel   |
+| SDI (PIN-kód 10G)            | I2C1 SDA (Pin 3)       | Piros kábel     |
+| SCK (8G PIN-kód)             | I2C1 SCL (Pin 5)       | Narancssárga kábel  |
 | LED VDD (18F PIN-kód)        | GPIO 24 (18 PIN-kód)       | Fehér kábel   |
-| LED GND (17F PIN-kód)        | GND (20 PIN-kód)           | Fekete kábellel   |
+| LED GND (17F PIN-kód)        | GND (Pin 20)           | Fekete kábellel   |
 
 Kattintson ide a megtekintéshez [Raspberry Pi-2 és 3 PIN-kód-leképezések](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) referenciaként.
 
@@ -163,11 +163,11 @@ A Pi kapcsolja be a micro USB-kábelen keresztül és a tápegység. Az Ethernet
    
    **Windows-felhasználók**
   
-   a. Töltse le és telepítse [PuTTY](http://www.putty.org/) Windows számára. 
+   a. Töltse le és telepítse [PuTTY](https://www.putty.org/) Windows számára. 
 
    b. Másolja ki a gazdagép nevét (vagy IP-cím), a Pi szakasz IP-címét, és válassza ki az SSH a kapcsolat típusaként.
    
-   ![Putty-kapcsolaton keresztül](./media/iot-hub-raspberry-pi-kit-node-get-started/7_putty-windows.png)
+   ![PuTTy](./media/iot-hub-raspberry-pi-kit-node-get-started/7_putty-windows.png)
    
    **Mac- és Ubuntu-felhasználók**
    
@@ -187,7 +187,7 @@ A Pi kapcsolja be a micro USB-kábelen keresztül és a tápegység. Az Ethernet
    Kisebb, mint a 4.x-es verzió esetén, vagy ha nincs Node.js a Pi-on, telepítse a legújabb verziót.
 
    ```bash
-   curl -sL http://deb.nodesource.com/setup_4.x | sudo -E bash
+   curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash
    sudo apt-get -y install nodejs
    ```
 

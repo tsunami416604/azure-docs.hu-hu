@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: d2ec75f233984cdce462ff7b05bbe97e62daeb65
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: f311216182f85da3dd6cf01269062cc9c555f868
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866491"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538527"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-php"></a>Gyors útmutató: Egy keresési kérelmet küld a Bing Entity Search REST API a PHP használatával
 
@@ -25,7 +25,7 @@ Ezt az alkalmazást a PHP nyelven van megírva, míg a API-ját egy REST-alapú 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [PHP 5.6.x-es](http://php.net/downloads.php) vagy újabb verziója
+* A [PHP 5.6.x-es](https://php.net/downloads.php) vagy újabb verziója
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
@@ -64,7 +64,7 @@ function search ($host, $path, $key, $mkt, $query) {
     $headers = "Ocp-Apim-Subscription-Key: $key\r\n";
 
     // NOTE: Use the key 'http' even if you are making an HTTPS request. See:
-    // http://php.net/manual/en/function.stream-context-create.php
+    // https://php.net/manual/en/function.stream-context-create.php
     $options = array (
         'http' => array (
             'header' => $headers,
@@ -122,7 +122,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
         "_type": "Restaurant",
         "webSearchUrl": "https://www.bing.com/search?q=Pickles+and+Preserves...",
         "name": "Munson's Pickles and Preserves Farm",
-        "url": "http://www.princi.com/",
+        "url": "https://www.princi.com/",
         "entityPresentationInfo": {
           "entityScenario": "ListItem",
           "entityTypeHints": [

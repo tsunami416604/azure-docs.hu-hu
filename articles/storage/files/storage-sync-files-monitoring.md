@@ -8,20 +8,20 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 5a0d02768b0fbd23e33d13c5e5c3fe84a41cdc52
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 4ae17249903f317e7a75a3e6bc7c03292021c96a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243654"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534633"
 ---
 # <a name="monitor-azure-file-sync"></a>Az Azure File Sync monitorozása
 
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
 
-Ez a cikk ismerteti az Azure File Sync üzembe helyezés az Azure portal és a Windows Server használatával figyelése.
+Ez a cikk ismerteti az Azure File Sync üzembe helyezésének figyelése az Azure portal és a Windows Server használatával.
 
-Jelenleg érhetők el az alábbi figyelési lehetőségek:
+Az alábbi figyelési lehetőségek érhetők el jelenleg.
 
 ## <a name="azure-portal"></a>Azure Portal
 
@@ -29,20 +29,23 @@ Az Azure Portalon megtekintheti a regisztrált kiszolgáló állapot, a kiszolg�
 
 ### <a name="storage-sync-service"></a>Társzinkronizálási szolgáltatás
 
-Regisztrált kiszolgáló állapota, a kiszolgáló végpontonkénti állapotot és a mérőszámok megtekintéséhez nyissa meg a Storage Sync Service az Azure Portalon. Regisztrált kiszolgáló állapotának ellenőrzése a regisztrált kiszolgálók paneljén megtekinthető. A kiszolgáló végpont állapotának ellenőrzése a szinkronizálási csoportok paneljén megtekinthető.
+Regisztrált kiszolgáló állapota, a kiszolgáló végpontonkénti állapotot és a mérőszámok megtekintéséhez nyissa meg a Storage Sync Service az Azure Portalon. A regisztrált kiszolgáló állapotának megtekintéséhez a **regisztrált kiszolgálókat** panel és a kiszolgáló, a végpontonkénti állapotot a **csoportok szinkronizálása** panelen.
 
-Registered Server Health
-- Ha a regisztrált kiszolgáló állapota Online, a kiszolgáló sikeresen kommunikálnak a szolgáltatással.
-- Ha a regisztrált kiszolgáló állapota Offline jelenik meg, ellenőrizze, fut-e a Storage Sync figyelő (AzureStorageSyncMonitor.exe) folyamat a kiszolgálón. Ha a kiszolgáló egy tűzfal vagy proxy mögött, konfigurálja a tűzfal és proxy / [dokumentáció](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy).
+Regisztrált kiszolgáló állapota:
 
-Server Endpoint Health
-- A kiszolgálói végpont állapota a portálon a szinkronizálási naplózott a telemetriai adatok eseménynaplójában a kiszolgálón (9102 és 9302-azonosító) alapul. A szinkronizálási munkamenet (például hiba megszakítva) egy átmeneti hiba miatt nem sikerül, ha a előfordulhat, hogy továbbra is megjelenítése kifogástalan állapotú, a portál szinkronizálási, mindaddig, amíg a jelenlegi szinkronizálási munkamenet, hogy így a folyamat (Event ID 9302 azt határozza meg, ha a fájlok vannak alkalmazva). További információ a következő dokumentációban tekintheti meg: [Rendszerállapot szinkronizálni](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) & [szinkronizálása folyamatban](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session).
-- Ha a portálon láthatók onnan, és nincs folyamatban szinkronizálás szinkronizálási hibát, ellenőrizze a [hibaelhárítási dokumentáció](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) útmutatást.
+- Ha a **regisztrált kiszolgáló** állapota **Online**, a kiszolgáló sikeresen kommunikálnak a szolgáltatással.
+- Ha a **regisztrált kiszolgáló** állapota **megjelenik Offline**, ellenőrizze, hogy fut-e a Storage Sync figyelő (AzureStorageSyncMonitor.exe) folyamat a kiszolgálón. Ha a kiszolgáló egy tűzfal vagy proxy mögött van, tekintse meg [Ez a cikk](https://docs.microsoft.com/azure/storage/files/storage-sync-files-firewall-and-proxy) a tűzfal és proxy konfigurálása.
 
-Mérőszámok
+Kiszolgálói végpont állapota:
+
+- A kiszolgálói végpont állapota a portálon a szinkronizálási naplózott a telemetriai adatok eseménynaplójában a kiszolgálón (9102 és 9302-azonosító) alapul. Ha a szinkronizálási munkamenet egy átmeneti hiba miatt nem sikerül, például hiba meg lett szakítva, szinkronizálási továbbra is jelenhet meg kifogástalan állapotú a portálon mindaddig, amíg a jelenlegi szinkronizálási munkamenet lehetővé teszi a folyamatban. 9302-es Azonosítójú esemény segítségével határozza meg, ha a fájlok vannak folyamatban van a alkalmazni. További információkért lásd: [rendszerállapot szinkronizálni](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) és [szinkronizálása folyamatban](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session).
+- Ha a portál megjeleníti a szinkronizálási hiba, mert a szinkronizálási folyamat nem készít, tekintse meg a [hibaelhárítási dokumentáció](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) útmutatást.
+
+Metrikák:
+
 - A következő metrikák teljesítményobjektumok a Storage Sync Service portálon:
 
-  | Metrika neve | Leírás | Portál blade(s) | 
+  | Metrika neve | Leírás | Név panel |
   |-|-|-|
   | Szinkronizált bájt | Átvitt adatok (feltöltési és letöltési) mérete | Szinkronizálási csoport, a kiszolgálói végpont |
   | A felhő rétegezési visszaírási | Idézni adatok mérete | Regisztrált kiszolgálók |
@@ -50,17 +53,16 @@ Mérőszámok
   | Fájlok szinkronizálása | Fájlok száma (feltöltési és letöltési) átvitele | Szinkronizálási csoport, a kiszolgálói végpont |
   | Kiszolgáló online állapotát | A kiszolgálótól kapott szívverések száma | Regisztrált kiszolgálók |
 
-- További tudnivalókért lásd: [Azure Monitor](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring#azure-monitor) szakaszban. 
+- További tudnivalókért lásd: [Azure Monitor](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring#azure-monitor).
 
   > [!Note]  
   > A Storage Sync Service portálon diagramnak egy időtartomány 24 óra. Különböző időtartományok vagy méretek megtekintéséhez használja az Azure Monitor.
-
 
 ### <a name="azure-monitor"></a>Azure Monitor
 
 Használat [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) sync monitorozása, felhőbeli rétegezés és a kapcsolat a kiszolgálóval. Metrikák az Azure File Sync alapértelmezés szerint engedélyezve vannak, és az Azure Monitor küldött 15 percenként.
 
-Az Azure Monitor az Azure File Sync metrikák megtekintéséhez válassza ki a Társzinkronizálási szolgáltatás erőforrástípus.
+Az Azure Monitor az Azure File Sync metrikák megtekintéséhez jelölje ki a **Társzinkronizálási szolgáltatás** erőforrástípus.
 
 A következő metrikák az Azure File Sync az Azure monitorban érhetők el:
 
@@ -75,42 +77,45 @@ A következő metrikák az Azure File Sync az Azure monitorban érhetők el:
 
 ## <a name="windows-server"></a>Windows Server
 
-A Windows Serveren felhőbeli rétegezés, a regisztrált kiszolgáló megtekintheti és rendszerállapot szinkronizálni.
+A Windows Server felhőbeli rétegezés, a regisztrált kiszolgáló megtekintheti és rendszerállapot szinkronizálni.
 
 ### <a name="event-logs"></a>Eseménynaplók
 
-A kiszolgálón a telemetriai adatok Eseménynapló használatával figyelheti a regisztrált kiszolgáló, a szinkronizálási és a felhőbeli rétegezés állapotfigyelő. A telemetriai adatok Eseménynapló alkalmazások és az eseménynaplóban Services\Microsoft\FileSync\Agent alatt található.
+A kiszolgálón a telemetriai adatok Eseménynapló használatával figyelheti a regisztrált kiszolgáló, a szinkronizálási és a felhőbeli rétegezés állapotfigyelő. A telemetriai adatok eseménynaplójában található az Eseménynapló alapján *alkalmazásokat és Services\Microsoft\FileSync\Agent*.
 
-Szinkronizálás állapota
-- Eseményazonosító 9102 egy szinkronizálási munkamenet befejezése után a rendszer naplózza. Ez az esemény használandó határozza meg, ha a szinkronizálási munkamenetek sikeresen elvégezte-e (HResult = 0), és nincsenek-e cikk szinkronizálási hibák. További információ a következő dokumentációban tekintheti meg: [Rendszerállapot szinkronizálni](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) & [elemenkénti hibák](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing).
+Szinkronizálás állapota:
+
+- Eseményazonosító 9102 egy szinkronizálási munkamenet befejezése után a rendszer naplózza. Használja ezt az eseményt annak meghatározására, hogy ha a szinkronizálási munkamenetek sikeres (**HResult = 0**), és nincsenek-e cikk szinkronizálási hibák. További információkért lásd: a [rendszerállapot szinkronizálni](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) és [elemenkénti hibák](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing) dokumentációját.
 
   > [!Note]  
-  > Néha szinkronizálási munkamenetek teljes sikertelen, vagy egy nem nulla értékű PerItemErrorCount rendelkezik, de továbbra is meg a folyamat előrehaladását, az egyes fájlok szinkronizálása sikeresen megtörtént. Ez a alkalmazott mezőket (AppliedFileCount, AppliedDirCount, AppliedTombstoneCount és AppliedSizeBytes), amely jelzi, hogy mekkora a munkamenet a következő látható. Ha a sor több olyan szinkronizálási munkamenetek nem működik, de egy növekvő érvényesítettek száma jelenik meg, majd adjon szinkronizálási idő, próbálja meg újra a támogatási jegy megnyitása előtt.
+  > Néha szinkronizálási munkamenetek teljes sikertelen, vagy egy nem nulla értékű PerItemErrorCount rendelkezik. Azonban továbbra is élnek előrefelé görgetést, és egyes fájlok szinkronizálása sikeresen megtörtént. Ez a alkalmazott mezőket, például a AppliedFileCount, AppliedDirCount, AppliedTombstoneCount és AppliedSizeBytes látható. Ezek a mezők jelzi, hogy mekkora a munkamenet sikeresen befejeződött. Ha több szinkronizálási munkamenetek teendőt olyan sorok esetén sikertelen látja, és a egy növekvő érvényesítettek száma rendelkeznek, adjon a szinkronizálási idő, és próbálkozzon újra egy támogatási jegy megnyitása előtt.
 
-- 9302-es Azonosítójú esemény 5-10 percenként kerül, ha van egy aktív szinkronizálási munkamenet. Határozza meg, ha a jelenlegi szinkronizálási munkamenet lehetővé teszi a folyamatban használt ezt az eseményt (AppliedItemCount > 0). Szinkronizálási folyamat nem készít, végül hibával leáll a szinkronizálási munkamenet kell, és a egy Event ID 9102 lesz naplózva a hiba miatt. További információ a következő dokumentációban tekintheti meg: [Szinkronizálás folyamatban](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session)
+- 9302-es Azonosítójú esemény 5-10 percenként kerül, ha van egy aktív szinkronizálási munkamenet. Ez az esemény segítségével határozza meg, ha a szinkronizálási munkamenet jelenlegi, hogy így folyamatban (**AppliedItemCount > 0**). Ha a szinkronizálási folyamat nem készít, végül hibával leáll a szinkronizálási munkamenet kell, és egy Event ID 9102 lesz naplózva a hiba miatt. További információkért lásd: a [szinkronizálása folyamatban dokumentáció](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session).
 
-Registered Server Health
-- Eseményazonosító 9301 Ez lehet 30 másodperc, ha a kiszolgáló lekérdezi a feladatok a szolgáltatás a rendszer naplózza. Ha a GetNextJob állapotú = 0, a kiszolgáló nem tud kommunikálni a szolgáltatás. Ha GetNextJob hibával befejeződött, ellenőrizze a [hibaelhárítási dokumentáció](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) útmutatást.
+Regisztrált kiszolgáló állapota:
 
-A felhő rétegezési állapota
-- Egy kiszolgálói rétegezési tevékenység monitorozásához használja Event ID 9003, 9016 és 9029 a telemetriai adatok eseménynaplóban (alkalmazások és az eseménynaplóban Services\Microsoft\FileSync\Agent alatt található).
+- Eseményazonosító 9301 Ez lehet 30 másodperc, ha a kiszolgáló lekérdezi a feladatok a szolgáltatás a rendszer naplózza. Ha GetNextJob befejezi a **állapot = 0**, a kiszolgáló nem tud kommunikálni a szolgáltatás. Ha GetNextJob hibával ér véget, ellenőrizze a [hibaelhárítási dokumentáció](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) útmutatást.
 
-  - 9003-es Azonosítójú esemény a kiszolgálói végpont hibaeloszlás biztosít. Ha például összesített hibaszám, ErrorCode, stb. Vegye figyelembe, hogy egy eseményt a rendszer naplózza hibakód.
-  - Eseményazonosító 9016 másolatkészítési eredményeket biztosít egy köteten. Például a szabad terület százalékos értéke, a fájlok száma mögé munkamenetben, több fájlt nem sikerült ghost stb.
-  - Eseményazonosító 9029 kiszolgálói végpont másolatkészítési munkamenet információkat nyújt. Például a munkamenet, a fájlok száma a megkísérelt fájlok száma rétegzett a munkamenetben, a fájlok száma már rétegzett, stb.
+A felhő rétegezési állapota:
+
+- Egy kiszolgálói rétegezési tevékenység monitorozásához használja a Event ID 9003, 9016 és a Telemetriai eseménynaplójában, eseménynaplójában alatt található 9029 *alkalmazásokat és Services\Microsoft\FileSync\Agent*.
+
+  - 9003-es Azonosítójú esemény a kiszolgálói végpont hibaeloszlás biztosít. Példa: Összesített hibaszám és hibakód. Hibakód: egy eseményt a rendszer naplózza.
+  - Eseményazonosító 9016 másolatkészítési eredményeket biztosít egy köteten. Példa: Szabad hely %-os, a munkamenetben mögé fájlok száma, amely több fájlt nem sikerült a ghost.
+  - Eseményazonosító 9029 kiszolgálói végpont másolatkészítési munkamenet információkat nyújt. Példa: A munkamenet rétegzett fájlok a munkamenetet, a fájlok száma a megkísérelt száma, és már rétegzett fájlok száma.
   
-- A kiszolgálói tevékenység visszaírási monitorozásához használja Event ID 9005, 9006, 9009 és 9059 a telemetriai adatok eseménynaplóban (alkalmazások és az eseménynaplóban Services\Microsoft\FileSync\Agent alatt található).
+- A kiszolgálói tevékenység visszaírási monitorozásához használja a Event ID 9005, 9006, 9009 és a Telemetriai eseménynaplójában, eseménynaplójában alatt található 9059 *alkalmazásokat és Services\Microsoft\FileSync\Agent*.
 
-  - 9005-es Azonosítójú esemény a kiszolgálói végpont visszaírási megbízhatóságot biztosít. Például teljes egyedi fájlok elérni, egyedi fájlok száma és a sikertelen hozzáférés, stb.
-  - Eseményazonosító 9006 visszaírási hibaeloszlás a kiszolgálói végpont biztosít. Például összes sikertelen kérelem ErrorCode, stb. Vegye figyelembe, hogy egy eseményt a rendszer naplózza hibakód.
-  - Eseményazonosító 9009 kiszolgálói végpont visszaírási munkamenet információkat nyújt. Például DurationSeconds, CountFilesRecallSucceeded, CountFilesRecallFailed, stb.
-  - Eseményazonosító 9059 alkalmazás visszaírási terjesztési a kiszolgálói végpont biztosít. Ha például ShareId, alkalmazás neve és TotalEgressNetworkBytes.
+  - 9005-es Azonosítójú esemény a kiszolgálói végpont visszaírási megbízhatóságot biztosít. Példa: Egyedi fájlok összesen használt és teljes egyedi fájlok sikertelen.
+  - Eseményazonosító 9006 visszaírási hibaeloszlás a kiszolgálói végpont biztosít. Példa: Összes sikertelen kérelem és hibakód. Hibakód: egy eseményt a rendszer naplózza.
+  - Eseményazonosító 9009 kiszolgálói végpont visszaírási munkamenet információkat nyújt. Példa: DurationSeconds, CountFilesRecallSucceeded, and CountFilesRecallFailed.
+  - Eseményazonosító 9059 alkalmazás visszaírási terjesztési a kiszolgálói végpont biztosít. Példa: ShareId, alkalmazás neve és TotalEgressNetworkBytes.
 
 ### <a name="performance-counters"></a>Teljesítményszámlálók
 
 A kiszolgálón az Azure File Sync teljesítményszámlálók használatával figyeli a szinkronizálási tevékenység.
 
-Azure File Sync teljesítményét szeretné megtekinteni számlálókat a kiszolgálón, indítsa el a Teljesítményfigyelő (Perfmon.exe), és a számlálók a AFS bájt, és a szinkronizálási műveletek AFS objektumok területen találhatók.
+A kiszolgálón az Azure File Sync teljesítményszámlálók megtekintéséhez nyissa meg a Teljesítményfigyelőt (Perfmon.exe). A számlálók alatt található a **AFS bájt továbbított** és **AFS szinkronizálási műveletek** objektumokat.
 
 Az Azure File Sync a következő számlálókat a Teljesítményfigyelő érhetők el:
 

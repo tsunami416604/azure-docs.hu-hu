@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: jlembicz
 ms.custom: seodec2018
-ms.openlocfilehash: dedfc7db6aef6d55fd50c94a217bdc489b9615f3
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: d504635121c5153367cd0b89ce593b093bb3cd39
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633861"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537230"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Teljes szöveges keresés működése az Azure Search szolgáltatásban
 
@@ -55,14 +55,14 @@ Az alábbi példában egy keresési kérelmet küldünk előfordulhat, hogy az A
 
 ~~~~
 POST /indexes/hotels/docs/search?api-version=2017-11-11 
-{  
-    "search": "Spacious, air-condition* +\"Ocean view\"",  
-    "searchFields": "description, title",  
+{
+    "search": "Spacious, air-condition* +\"Ocean view\"",
+    "searchFields": "description, title",
     "searchMode": "any",
-    "filter": "price ge 60 and price lt 300",  
+    "filter": "price ge 60 and price lt 300",
     "orderby": "geo.distance(location, geography'POINT(-159.476235 22.227659)')", 
     "queryType": "full" 
- } 
+}
 ~~~~
 
 A kérelem a keresőmotor a következőket teszi:
@@ -117,7 +117,7 @@ Alapértelmezés szerint (`searchMode=any`), a keresőmotor feltételezi, hogy a
 Tegyük fel, hogy most már beállított `searchMode=all`. Ebben az esetben a terület kerül értelmezésre "és" művelet. A fennmaradó feltételek mindegyike is jelen kell lennie ahhoz, hogy egyezés a dokumentumban. Az eredményül kapott mintalekérdezés értelmezését módon: 
 
 ~~~~
-+Spacious,+air-condition*+"Ocean view"  
++Spacious,+air-condition*+"Ocean view"
 ~~~~
 
 A módosított lekérdezés fa ehhez a lekérdezéshez a következők lennének, ahol a megfelelő dokumentum az összes három segédlekérdezések metszetét: 
@@ -155,7 +155,7 @@ Az alapértelmezett elemző feldolgozza az az időszak, amikor azt fogja kisbet�
 Egy elemző viselkedését használatával kell vizsgálni a [elemezheti API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer). Adja meg a fogalmakkal elemző eszköz generál megtekintéséhez elemezni kívánt szöveget. Például ha szeretné látni, hogyan a standard szintű analyzer szeretné feldolgozni a szöveg "air-condition", adhat ki a következő kérelmet:
 
 ~~~~
-{ 
+{
     "text": "air-condition",
     "analyzer": "standard"
 }
@@ -164,7 +164,7 @@ Egy elemző viselkedését használatával kell vizsgálni a [elemezheti API](ht
 A standard szintű analyzer a bemeneti szöveg bontja a következő két tokenek jegyzetkészítés azokat az attribútumokat, például a kezdő és záró eltolás (használt találatok kiemelése), valamint a pozíció (a kifejezés egyeztetéséhez használt):
 
 ~~~~
-{  
+{
   "tokens": [
     {
       "token": "air",
@@ -195,11 +195,11 @@ Lexikai elemzés csak teljes használati – kifejezés lekérdezés vagy egy ki
 A dokumentum lekéréséhez hivatkozik az egyeztetési feltételek az indexben dokumentumok keresése. Ebben a szakaszban egy példán keresztül legjobb értendő. Kezdjük egy "Hotels" index a következő egyszerű séma kellene: 
 
 ~~~~
-{   
-    "name": "hotels",     
-    "fields": [     
-        { "name": "id", "type": "Edm.String", "key": true, "searchable": false },     
-        { "name": "title", "type": "Edm.String", "searchable": true },     
+{
+    "name": "hotels",
+    "fields": [
+        { "name": "id", "type": "Edm.String", "key": true, "searchable": false },
+        { "name": "title", "type": "Edm.String", "searchable": true },
         { "name": "description", "type": "Edm.String", "searchable": true }
     ] 
 } 
@@ -208,28 +208,28 @@ A dokumentum lekéréséhez hivatkozik az egyeztetési feltételek az indexben d
 További azt feltételezik, hogy ez az index tartalmazza a következő négy dokumentumokat: 
 
 ~~~~
-{ 
+{
     "value": [
-        {         
-            "id": "1",         
-            "title": "Hotel Atman",         
-            "description": "Spacious rooms, ocean view, walking distance to the beach."   
-        },       
-        {         
-            "id": "2",         
-            "title": "Beach Resort",        
-            "description": "Located on the north shore of the island of Kauaʻi. Ocean view."     
-        },       
-        {         
-            "id": "3",         
-            "title": "Playa Hotel",         
+        {
+            "id": "1",
+            "title": "Hotel Atman",
+            "description": "Spacious rooms, ocean view, walking distance to the beach."
+        },
+        {
+            "id": "2",
+            "title": "Beach Resort",
+            "description": "Located on the north shore of the island of Kauaʻi. Ocean view."
+        },
+        {
+            "id": "3",
+            "title": "Playa Hotel",
             "description": "Comfortable, air-conditioned rooms with ocean view."
-        },       
-        {         
-            "id": "4",         
-            "title": "Ocean Retreat",         
+        },
+        {
+            "id": "4",
+            "title": "Ocean Retreat",
             "description": "Quiet and secluded"
-        }    
+        }
     ]
 }
 ~~~~
@@ -263,7 +263,7 @@ Térjen vissza a jelen példában a **cím** mező, a fordított index néz ki:
 | végső megoldásként | 3 |
 | Retreat | 4 |
 
-A cím mező csak a *Szálloda* megjelenik-e két dokumentumot: 1., 3.
+A cím mező csak a *Szálloda* megjelenik-e két dokumentumot: 1, 3.
 
 Az a **leírás** mező, az index a következőképpen történik:
 
@@ -327,7 +327,7 @@ A három dokumentum, amely megfelel a példalekérdezés visszahívása:
 search=Spacious, air-condition* +"Ocean view"  
 ~~~~
 ~~~~
-{  
+{
   "value": [
     {
       "@search.score": 0.25610128,

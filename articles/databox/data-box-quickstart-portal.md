@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: quickstart
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: ae6ab0eb4c966ef57c7859098217b5b6b560614b
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 95e2a17407ad7d9e108b4ac38e8ff0ff62abf857
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188555"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57529685"
 ---
 # <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>Gyors útmutató: Üzembe helyezése az Azure Data Box az Azure portal használatával
 
@@ -43,7 +43,7 @@ Előkészületek:
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure Portalra a [http://portal.azure.com](http://portal.azure.com) webhelyen.
+Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
 ## <a name="order"></a>Rendelés
 
@@ -86,7 +86,7 @@ A Data Box megérkeztét követően hajtsa végre az alábbi lépéseket az eszk
 
 Ez a lépés kb. 5–7 percet vesz igénybe.
 
-1. Az eszköz jelszavát az [Azure Portal](http://portal.azure.com) **Általános > Eszköz adatai** lapján találja.
+1. Az eszköz jelszavát az [Azure Portal](https://portal.azure.com) **Általános > Eszköz adatai** lapján találja.
 2. A Data Boxhoz csatlakoztatott számítógépen rendelje a 192.168.100.5 statikus IP-címet és a 255.255.255.0 alhálózatot az Ethernet-adapterhez. Nyissa meg az eszköz helyi webes felületét a következő helyen: `https://192.168.100.10`. A csatlakozás az eszköz bekapcsolását követően 5 percet is igénybe vehet. 
 3. Jelentkezzen be az Azure Portalról beszerzett jelszóval. Egy hibaüzenet jelenik meg, miszerint a webhely biztonsági tanúsítványa hibás. A böngészőspecifikus utasításokat követve lépjen a weblapra.
 4. Alapértelmezés szerint a 10 Gb/s (vagy az 1 Gb/s) sebességű adatillesztő DHCP-ként van konfigurálva. Szükség esetén statikusként is konfigurálhatja az illesztőt, és megadhat egy IP-címet. 

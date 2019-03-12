@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
-ms.openlocfilehash: 3cd1bbf1852c440172913467c5c8523c520cac2f
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 389a8ac729cf5f4f95aa37654434245d08ecc87e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337515"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533629"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>A Microsoft vevői szerződés számlázási fiók beállítása
 
@@ -136,7 +136,7 @@ A következő szakaszok a számlázási fiók beállításával kapcsolatos tov�
 
 ### <a name="no-service-downtime"></a>A szolgáltatás leállása nélkül
 
-Megszakítás nélkül Futtatás az Azure-szolgáltatások az előfizetésében. A Microsoft csak az Azure-előfizetések számlázási kapcsolatának átmenet. Nem lesz hatással a meglévő erőforrások, erőforráscsoportok vagy felügyeleti csoportok.
+Az előfizetésében meglévő Azure-szolgáltatások megszakítás nélkül futnak tovább. Csak az Azure-előfizetései számlázási kapcsolatait állítjuk át. Meglévő erőforrásait, erőforráscsoportjait vagy felügyeleti csoportjait ez nem érinti.
 
 ### <a name="user-access-to-azure-resources"></a>Azure-erőforrásokhoz való felhasználói hozzáférés
 
@@ -144,7 +144,7 @@ Az áttérés során nincs hatással az Azure-erőforrásokhoz való hozzáfér�
 
 ### <a name="azure-reservations"></a>Azure-foglalások
 
-A nagyvállalati szerződésre való beléptetésről bármely Azure-foglalásokat átkerül az új számlázási fiók. Az áttérés során módosítania kellene a foglalási kedvezmény, amely vannak alkalmazva az előfizetések nem lesz.
+A nagyvállalati szerződésre való beléptetésről bármely Azure-foglalásokat átkerül az új számlázási fiók. Az átállás alatt az előfizetéseiben érvényesített foglalási kedvezményekre nem lesz díj felszámolva.
 
 ### <a name="azure-marketplace-products"></a>Azure Marketplace-termékekkel
 
@@ -203,7 +203,7 @@ A telepítés befejezéséhez hozzáférésre van szüksége az új számlázás
 
 ### <a name="azure-subscriptions"></a>Azure-előfizetések
 
-1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. A Keresés **Cost Management és számlázás**.
 
@@ -219,7 +219,7 @@ Az új számlázási fiók érdekében átalakulnak a nagyvállalati szerződés
 
 ### <a name="azure-reservations"></a>Azure-foglalások
 
-1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. A Keresés **Cost Management és számlázás**.
 
@@ -239,7 +239,7 @@ Az Azure foglalásokat, hogy az új számlázási fiók kerülnek át a nagyvál
 
 ### <a name="access-of-enterprise-administrators-on-the-billing-profile"></a>Hozzáférés a vállalati rendszergazdák a számlázási profilban
 
-1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. A Keresés **Cost Management és számlázás**.
 
@@ -255,7 +255,7 @@ Vállalati rendszergazdák profil tulajdonosai a vállalati rendszergazdák csak
 
 ### <a name="access-of-enterprise-administrators-department-administrators-and-account-owners-on-invoice-sections"></a>Hozzáférés a vállalati rendszergazdák, a részleg rendszergazdái és a számla szakaszokon tulajdonosai
 
-1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. A Keresés **Cost Management és számlázás**.
 

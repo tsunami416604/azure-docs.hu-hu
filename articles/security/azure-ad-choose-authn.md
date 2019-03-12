@@ -9,18 +9,18 @@ ms.date: 04/12/2018
 ms.topic: article
 ms.service: active-directory
 ms.workload: identity
-ms.openlocfilehash: a05874e28c08087b6f82c3aa5a02e83d2629ffe5
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 7a90a0af8c6c7fd19b784d97e2ce30bea7910089
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728182"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550702"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>Válassza ki a megfelelő hitelesítési módszert az Azure Active Directory hibrid identitáskezelési megoldás 
 
 Ez a cikk egy sorozat, amely megkönnyíti a szervezetek számára a teljes Azure Active Directory (Azure AD) hibrid identitáskezelési megoldás megvalósítása kezdődik. Ez a megoldás volt című rész, mint a [hibrid identitás digitális átalakítási keretrendszer](https://aka.ms/aadframework). Az üzleti eredmények kiterjed, és a hatékony és biztonságos hibrid identitáskezelési megoldás megvalósításához célok szervezetek összpontosíthat. 
 
-Az első üzleti eredmény-keretrendszer határozza meg a szervezetek számára, hogy a hitelesítési folyamat biztonságos, felhőalapú alkalmazások felhasználók általi elérésekor követelményei. Az első üzleti a hitelesítéshez biztonságos üzleti eredmény a célja a felhőalapú alkalmazásokba a helyszíni felhasználónevek és jelszavak használatával jelentkezzen be, hogy a felhasználók. A bejelentkezési folyamat, és hogy miképpen hitelesítik a felhasználókat lehetővé teszik, minden a felhőben.
+Az első üzleti eredmény-keretrendszer határozza meg a szervezetek számára, hogy a hitelesítési folyamat biztonságos, felhőalapú alkalmazások felhasználók általi elérésekor követelményei. Az első üzleti a hitelesítéshez biztonságos üzleti eredmény a célja a felhőalapú alkalmazásokba a helyszíni felhasználónevek és jelszavak használatával jelentkezzen be, hogy a felhasználók. A bejelentkezési és hitelesítési folyamat lehetővé teszi, minden a felhőben.
 
 Az első szempont a szervezet számára, aki a saját alkalmazások a felhőbe helyezheti át a megfelelő hitelesítési módszer választása. Nem kell ezt a döntést a kisebb terhelésű, a következő okok miatt:
 
@@ -161,7 +161,7 @@ Az alábbi ábrák a magas szintű architektúra minden hitelesítési módszert
 
     ![A Jelszókivonat-szinkronizálás az Azure AD hibrid identitás](media/azure-ad/azure-ad-authn-image2.png)
 
-* Átmenő hitelesítés követelményeinek ügynök:
+* Az átmenő hitelesítést, a két ügynök használatával a redundancia biztosítása érdekében az ügynök-követelmények:
 
     ![Az átmenő hitelesítés az Azure AD hibrid identitás](media/azure-ad/azure-ad-authn-image3.png)
 
@@ -204,7 +204,7 @@ Használhatja, vagy bármelyik hitelesítési módszert választja, a következ�
 
    * Szervezetek számára, amelyek korábban bekapcsolta a Jelszókivonat-szinkronizálás módosítani a Jelszókivonat-szinkronizálás használandó hitelesítési módszert. Csupán néhány óra ismét online voltak. Hozzáférés az e-mailek az Office 365-n keresztül, eredménnyel kapcsolatos hibák elhárítása és egyéb felhőalapú számítási feladatok eléréséhez.
 
-   * Nem megbízható külső fogyasztói e-mail rendszerek kommunikációs és feloldó problémák közelítse kellett szervezeteknek, amelyek korábban nem engedélyezte a Jelszókivonat-szinkronizálás. Ezekben az esetekben végrehajtásának őket hét vagy hosszabb lehet újra működik.
+   * Szervezetek számára, amelyek korábban nem engedélyezte a Jelszókivonat-szinkronizálás kellett, hogy nem megbízható külső fogyasztói e-mail rendszerek kommunikációs problémák megoldásához. Ezekben az esetekben, azokat hetekig tartott, állítsa vissza a azok a helyszíni identitás-infrastruktúrát, mielőtt a felhasználók bejelentkezhetnek a felhőalapú alkalmazások újra sikerült.
 
 3. **Identity protection**. Az Azure AD Premium P2 szintű Azure AD Identity Protection védelme érdekében a felhasználók a felhőben a legjobb módszerek valamelyikével. A Microsoft folyamatosan vizsgálatokat végez a felhasználó számára az interneten, és a jelszó sorolja fel, hogy kártékony elemek értékesítésére, és elérhetővé teszi a webről. Azure ad-ben ezen információk használatával győződjön meg arról, ha bármelyik a felhasználónevek és jelszavak a szervezet kerülnek veszélybe. Ezért fontos, függetlenül attól, milyen hitelesítési módszer használata esetén, amelyek összevont-e, vagy az átmenő hitelesítést a Jelszókivonat-szinkronizálás engedélyezése. Egy jelentés kiszivárgott hitelesítő adatok jelennek meg. Ezen információk használatával letiltása, vagy kényszerítse a felhasználókat a jelszavuk módosításához, ha megpróbálnak bejelentkezni a kiszivárgott jelszavát.
 

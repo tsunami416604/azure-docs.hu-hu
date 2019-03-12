@@ -8,16 +8,16 @@ ms.author: tarcher
 manager: jeconnoc
 ms.topic: tutorial
 ms.date: 11/15/2018
-ms.openlocfilehash: d59a811b09d2c60627f7d506f1f5fd3513c914e8
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 90f89f9ffb1d55e7621c87f168375251c78d9730
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57408020"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533493"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-app-service-with-jenkins-continuous-integration-and-deployment"></a>Oktatóanyag: Üzembe helyezés a Githubról Azure App Service-ben a Jenkins folyamatos integrációs és üzembe helyezés
 
-Ebben az oktatóanyagban egy egyszerű Java webalkalmazást a Githubról, telepíti [Linuxon futó Azure App Service](/azure/app-service/containers/app-service-linux-intro) folyamatos integrációs (CI) és a Jenkins folyamatos készregyártás (CD) beállítása. Ha az alkalmazás módosítja a Githubra a véglegesítéseket, a Jenkins automatikusan létrehozza, és addig az Azure App Service-alkalmazás. Ez az oktatóanyag a mintaalkalmazás fejlesztette használatával a [Spring Boot](http://projects.spring.io/spring-boot/) keretrendszer. 
+Ebben az oktatóanyagban egy egyszerű Java webalkalmazást a Githubról, telepíti [Linuxon futó Azure App Service](/azure/app-service/containers/app-service-linux-intro) folyamatos integrációs (CI) és a Jenkins folyamatos készregyártás (CD) beállítása. Ha az alkalmazás módosítja a Githubra a véglegesítéseket, a Jenkins automatikusan létrehozza, és addig az Azure App Service-alkalmazás. Ez az oktatóanyag a mintaalkalmazás fejlesztette használatával a [Spring Boot](https://projects.spring.io/spring-boot/) keretrendszer. 
 
 ![Áttekintés](media/tutorial-jenkins-deploy-web-app-azure-app-service/overview.png)
 

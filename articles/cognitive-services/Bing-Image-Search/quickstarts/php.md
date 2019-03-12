@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 2/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: cca6fba401d8673cf97897c24a9d6de2329f19a4
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 396c50e6697ed1f111d497f7adeb005e268b80bb
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56232489"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546415"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>Gyors útmutató: Képkeresés a Bing Image Search REST API és a PHP használatával
 
@@ -29,7 +29,7 @@ A minta forráskódja a [GitHubon](https://github.com/Azure-Samples/cognitive-se
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [A PHP 5.6.x-es vagy újabb verziója](http://php.net/downloads.php).
+* [A PHP 5.6.x-es vagy újabb verziója](https://php.net/downloads.php).
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 

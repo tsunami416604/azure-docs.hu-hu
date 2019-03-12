@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 7b32a493dc7dc8aa3ac2bbf1f195a43621c7449a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ee09f8defc7a10b153e910cb7208b0ddb21120b2
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447183"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543952"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Az Azure Data Factory - JSON-Parancsprogramokról
 > [!NOTE]
@@ -52,7 +52,7 @@ Következő táblázat ismerteti a tulajdonságokat a folyamat JSON-definíciót
 | név | A folyamat neve. Adjon meg egy műveletet jelölő nevet, hogy a tevékenység vagy a folyamat erre van konfigurálva<br/><ul><li>Karakterek maximális száma: 260</li><li>Betűvel, számmal vagy aláhúzásjellel kell kezdődnie (\_)</li><li>A következő karakterek nem engedélyezettek: ".", "+","?", "/", "<",">", "*", "%", "&", ":","\\"</li></ul> |Igen |
 | leírás |Mi az a tevékenység vagy a folyamat használatos leíró szöveg | Nem |
 | tevékenységek | A tevékenységek listáját tartalmazza. | Igen |
-| start |Kezdő dátum-idő a folyamat. Kell [ISO formátumban](http://en.wikipedia.org/wiki/ISO_8601). Példa: 2014-10-14T16:32:41. <br/><br/>Adja meg a helyi időt, például egy becsült idő, lehetőség. Íme egy példa: `2016-02-27T06:00:00**-05:00`, azaz 6 Órakor becsült<br/><br/>A kezdő és záró tulajdonságok együtt a a folyamat aktív időszakát határozzák meg. Kimeneti szeleteket csak előállítása az aktív ebben az időszakban. |Nem<br/><br/>Ha megad egy záró tulajdonság értéke, kezdő tulajdonság értékének kell megadnia.<br/><br/>A kezdési és befejezési idejének is lehet üres folyamat létrehozása. A folyamat futtatásához egy aktív időszak beállítása mindkét értéket meg kell adnia. Ha nem adja meg a kezdő és befejező időpontok egy folyamat létrehozásakor beállíthatja azokat később a Set-AzDataFactoryPipelineActivePeriod parancsmaggal. |
+| start |Kezdő dátum-idő a folyamat. Kell [ISO formátumban](https://en.wikipedia.org/wiki/ISO_8601). Példa: 2014-10-14T16:32:41. <br/><br/>Adja meg a helyi időt, például egy becsült idő, lehetőség. Íme egy példa: `2016-02-27T06:00:00**-05:00`, azaz 6 Órakor becsült<br/><br/>A kezdő és záró tulajdonságok együtt a a folyamat aktív időszakát határozzák meg. Kimeneti szeleteket csak előállítása az aktív ebben az időszakban. |Nem<br/><br/>Ha megad egy záró tulajdonság értéke, kezdő tulajdonság értékének kell megadnia.<br/><br/>A kezdési és befejezési idejének is lehet üres folyamat létrehozása. A folyamat futtatásához egy aktív időszak beállítása mindkét értéket meg kell adnia. Ha nem adja meg a kezdő és befejező időpontok egy folyamat létrehozásakor beállíthatja azokat később a Set-AzDataFactoryPipelineActivePeriod parancsmaggal. |
 | vége |Záró dátum és időpont a folyamat. Ha meg van adva, ISO formátumban kell megadni. Példa: 2014-10-14T17:32:41 <br/><br/>Adja meg a helyi időt, például egy becsült idő, lehetőség. Íme egy példa: `2016-02-27T06:00:00**-05:00`, azaz 6 Órakor becsült<br/><br/>A folyamat határozatlan ideig történő futtatásához, adja meg a 9999-09-09 end tulajdonság értékeként. |Nem <br/><br/>Ha megadja a (Kezdés) tulajdonság értékét, a végfelhasználók tulajdonság értéke kell megadnia.<br/><br/>Tekintse meg a megjegyzéseit a **start** tulajdonság. |
 | isPaused |Ha nem fut a folyamatok true értékre kell állítani. Alapértelmezett érték = false. Ez a tulajdonság segítségével engedélyezheti vagy tilthatja le. |Nem |
 | pipelineMode |Az ütemezés a folyamat futtatásának módja. Engedélyezett értékek a következők: ütemezett (alapértelmezett), Item parancsot.<br/><br/>"Ütemezett", az azt jelzi, hogy a folyamat megadott időközönként az aktív időtartam (kezdő és záró idő) megfelelően fut-e. "Egyszeri" azt jelzi, hogy a folyamat csak egyszer fut-e. Ezután onetime folyamatok nem lehet módosítani vagy frissíteni jelenleg. Lásd: [Onetime folyamat](data-factory-create-pipelines.md#onetime-pipeline) onetime beállítás részleteit. |Nem |
@@ -4283,7 +4283,7 @@ Társított szolgáltatás határozza meg az OData, állítsa be a **típus** a 
     "properties": {
         "type": "OData",
         "typeProperties": {
-            "url": "http://services.odata.org/OData/OData.svc",
+            "url": "https://services.odata.org/OData/OData.svc",
             "authenticationType": "Basic",
             "username": "username",
             "password": "password"
@@ -4300,7 +4300,7 @@ Társított szolgáltatás határozza meg az OData, állítsa be a **típus** a 
     "properties": {
         "type": "OData",
         "typeProperties": {
-            "url": "http://services.odata.org/OData/OData.svc",
+            "url": "https://services.odata.org/OData/OData.svc",
             "authenticationType": "Anonymous"
         }
     }

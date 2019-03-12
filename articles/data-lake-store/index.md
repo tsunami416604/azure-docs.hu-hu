@@ -1,22 +1,16 @@
 ---
 title: Az 1. generációs Azure Data Lake Storage dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
-description: Ismerje meg, hogy hogyan hozhat létre, kezelhet, és érhet el egy nagykapacitású, Hadoop-kompatibilis Data Lake adattárat, amellyel bármilyen méretű, típusú és feldolgozási sebességű adatot elemezhet.
+description: 'Ismerje meg, hogy hogyan hozhat létre, kezelhet, és érhet el egy nagykapacitású, Hadoop-kompatibilis Data Lake adattárat, amellyel bármilyen méretű, típusú és feldolgozási sebességű adatot elemezhet.'
 services: data-lake-store
 author: twooley
 manager: twooley
 layout: LandingPage
-ms.assetid: ''
+ms.assetid: null
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 68e4a7bd73b7fdd4b21140c912422b062f51c775
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869194"
 ---
 # <a name="azure-data-lake-storage-gen1-documentation"></a>Az 1. generációs Azure Data Lake Storage dokumentációja
 
@@ -198,7 +192,7 @@ Ismerje meg, hogy hogyan használhatja a nagy kapacitású, Hadoop-kompatibilis 
                         <p><a href="/java/api/overview/azure/datalake">Java</a></p>
                         <p><a href="https://www.npmjs.com/package/azure-arm-datalake-store">Node.js</a></p>
                         <p><a href="https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python">Python (Fiókkezelés)</a></p>
-                        <p><a href="http://azure-datalake-store.readthedocs.io/en/latest">Python (Fájlrendszer-kezelés)</a></p>
+                        <p><a href="https://azure-datalake-store.readthedocs.io/en/latest">Python (Fájlrendszer-kezelés)</a></p>
                     </div>
                 </div>
             </div>

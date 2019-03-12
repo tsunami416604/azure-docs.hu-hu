@@ -7,12 +7,12 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.openlocfilehash: 801f6dddfb3aaea850d76c80d43de93181c3d41c
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: f3850623f5918ea9405131edb1821b941019ac34
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913478"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532326"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-cli"></a>Hogyan biztonsági mentése és visszaállítása egy kiszolgálót az Azure Database for MySQL-hez az Azure CLI használatával
 
@@ -94,14 +94,14 @@ Redundáns georedundáns biztonsági másolat segítségével hoz létre, haszn�
 A geo-visszaállítás a kiszolgáló, az Azure CLI-vel parancssorba írja be a következő parancsot:
 
 ```azurecli-interactive
-az mysql server georestore --resource-group myresourcegroup --name mydemoserver-georestored --source-server mydemoserver --location eastus --sku-name GP_Gen4_8 
+az mysql server georestore --resource-group myresourcegroup --name mydemoserver-georestored --source-server mydemoserver --location eastus --sku-name GP_Gen5_8 
 ```
-Ez a parancs létrehoz egy új kiszolgálót nevű *mydemoserver – georestored* fog tartozni, USA keleti régiójában *myresourcegroup*. Egy általános célú, 4. generációs kiszolgáló 8 virtuális maggal rendelkező. A kiszolgáló akkor jön létre, a georedundáns biztonsági mentéséből *mydemoserver*, ami egyben az erőforráscsoportban lévő *myresourcegroup*
+Ez a parancs létrehoz egy új kiszolgálót nevű *mydemoserver – georestored* fog tartozni, USA keleti régiójában *myresourcegroup*. Egy általános célú, 8 virtuális maggal rendelkező Gen 5 kiszolgáló. A kiszolgáló akkor jön létre, a georedundáns biztonsági mentéséből *mydemoserver*, ami egyben az erőforráscsoportban lévő *myresourcegroup*
 
 Ha azt szeretné, majd hozzon létre egy másik erőforráscsoportban található, a meglévő kiszolgálóról egy, az új kiszolgálóra a a `--source-server` paraméter jogosultak lennének az a kiszolgáló nevét az alábbi példában látható módon:
 
 ```azurecli-interactive
-az mysql server georestore --resource-group newresourcegroup --name mydemoserver-georestored --source-server "/subscriptions/$<subscription ID>/resourceGroups/$<resource group ID>/providers/Microsoft.DBforMySQL/servers/mydemoserver" --location eastus --sku-name GP_Gen4_8
+az mysql server georestore --resource-group newresourcegroup --name mydemoserver-georestored --source-server "/subscriptions/$<subscription ID>/resourceGroups/$<resource group ID>/providers/Microsoft.DBforMySQL/servers/mydemoserver" --location eastus --sku-name GP_Gen5_8
 
 ```
 
@@ -113,7 +113,7 @@ A `az mysql server georestore` parancs paraméterei a következők:
 |név | mydemoserver-georestored | Az új kiszolgáló neve. |
 |source-server | mydemoserver | A meglévő kiszolgáló, amelynek földrajzi redundáns biztonsági mentések használhatók neve. |
 |location | eastus | Az új kiszolgáló helyét. |
-|sku-name| GP_Gen4_8 | Ez a paraméter beállítása az árképzési szint, számítási generáció és az új kiszolgáló virtuális magok számát. Egy általános célú, 4. generációs kiszolgáló 8 virtuális maggal rendelkező GP_Gen4_8 rendeli hozzá.|
+|sku-name| GP_Gen5_8 | Ez a paraméter beállítása az árképzési szint, számítási generáció és az új kiszolgáló virtuális magok számát. Egy általános célú, 8 virtuális maggal rendelkező Gen 5 kiszolgáló GP_Gen5_8 rendeli hozzá.|
 
 
 >[!Important]

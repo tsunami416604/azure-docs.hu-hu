@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 03/05/2019
+ms.date: 03/06/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c95fcd2e6369fae920481db2623124342c34a730
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ce9635c108a948b4773c7d27cb254f01d06896f8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447630"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544239"
 ---
 # <a name="azure-storage-account-overview"></a>Az Azure storage-fiókok áttekintése
 
@@ -38,7 +38,7 @@ Ismerje meg, hogyan hozhat létre egy Azure storage-fiókot, lásd: [hozzon lét
 > [!NOTE]
 > A Microsoft azt javasolja, általános célú v2-tárfiókok használata a legtöbb forgatókönyvhöz. Könnyedén frissíthet egy általános célú v1- vagy Blob storage-fiók egy általános célú v2 fiók üzemkimaradás nélkül, valamint az adatok másolása nélkül.
 >
-> Általános célú v2 fiókra frissítésével kapcsolatos további információkért lásd: [frissítsen egy általános célú v2-tárfiók](storage-account-upgrade.md). 
+> Általános célú v2 fiókra frissítésével kapcsolatos további információkért lásd: [frissítsen egy általános célú v2-tárfiók](storage-account-upgrade.md).
 
 Általános célú v2-tárfiókok ajánlat több elérési szint a használati minták alapján adatainak tárolásához. További információkért lásd: [elérési szint a block blob adatok](#access-tiers-for-block-blob-data).
 
@@ -85,7 +85,7 @@ Az Azure Storage eléréséhez a blokkblobok adataival használati mintái alapj
 A rendelkezésre álló hozzáférési szintek a következők:
 
 > [!NOTE]
-> A [prémium szintű hozzáférési szint](../blobs/storage-blob-storage-tiers.md#premium-access-tier) egy helyileg redundáns tárolás (LRS) fiókot az Észak-Európa, USA 2. keleti régiója, USA középső régiója és USA nyugati régiójában régiókban korlátozott előzetes verzióban érhető el. Ismerje meg, hogyan kell regisztrálni az előzetes verzióra, lásd: [Azure prémium szintű Blob Storage bemutatása](https://aka.ms/premiumblob).
+> A [prémium szintű hozzáférési szint (előzetes verzió)](../blobs/storage-blob-storage-tiers.md#premium-access-tier), érzékeny alkalmazások teljesítménye, amely optimalizált biztosít alacsony és következetes késés a magas átviteli sebesség és a tranzakciós díjakat. A prémium szintű hozzáférési szint csak Block Blob storage-fiókok (előzetes verzió) érhető el. További információkért lásd: [Azure prémium szintű Blob Storage előzetes](https://azure.microsoft.com/blog/azure-premium-blob-storage-public-preview/).
 
 * A **interaktív** hozzáférési szint, amely a gyakori hozzáférés a tárfiókban tárolt objektumok számára van optimalizálva. A gyakori elérésű szint adatok elérése a leginkább költséghatékony, amíg némileg magasabb tárolási költségek. Új storage-fiókok jönnek létre a gyakran használt adatok alapértelmezés szerint szint.
 * A **ritkán használt adatok** hozzáférési szint, amely nagy mennyiségű, ritkán elért és legalább 30 nappal a tárolt adatok tárolására van optimalizálva. Adatok tárolása a lassú elérési szint költséghatékonyabban, de valamelyest drágábbak, mint a gyakori elérésű szint adatok elérése, hogy az adatok elérése lehet.

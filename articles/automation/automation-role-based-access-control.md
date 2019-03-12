@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 963bc8f6602a33ed703344f5277bb427f11390bb
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: b307a497e69bd6c2dcc7b415b2d94335459f7fd3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823518"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544980"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Szerepköralapú hozzáférés-vezérlés az Azure Automationben
 
@@ -180,11 +180,11 @@ Közreműködő figyelése olvashatja az összes monitorozási adat, és frissí
 |Microsoft.Insights/Metrics/*|Olvassa el a erőforrás metrikáit.|
 |Microsoft.Insights/Register/Action|Regisztrálja a Microsoft.Insights szolgáltató.|
 |Microsoft.Insights/webtests/*|Az Application Insights-webtesztek kezelése.|
-|Microsoft.OperationalInsights/workspaces/intelligencepacks/*|A Log Analytics megoldás-csomagok kezelése.|
-|Microsoft.OperationalInsights/workspaces/savedSearches/*|Log Analytics-beli mentett keresések kezelése.|
+|Microsoft.OperationalInsights/workspaces/intelligencepacks/*|Az Azure Monitor naplók megoldási csomagok kezelése.|
+|Microsoft.OperationalInsights/workspaces/savedSearches/*|Az Azure Monitor mentett naplók végzett keresések kezelése.|
 |Microsoft.OperationalInsights/workspaces/search/action|Keressen rá a Log Analytics-munkaterületeket.|
 |Microsoft.OperationalInsights/workspaces/sharedKeys/action|Log Analytics-munkaterület kulcsainak listázása.|
-|Microsoft.OperationalInsights/workspaces/storageinsightconfigs/*|A Log Analytics storage insight-konfigurációk kezelése.|
+|Microsoft.OperationalInsights/workspaces/storageinsightconfigs/*|Az Azure Monitor logs storage insight-konfigurációk kezelése.|
 |Microsoft.Support/*|Hozzon létre, és kezelhetik a támogatási jegyeket.|
 |Microsoft.WorkloadMonitor/workloads/*|Feladatok felügyeletét.|
 

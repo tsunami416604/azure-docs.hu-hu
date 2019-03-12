@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: ece3511d0d3c12be13a649385ea9b6dd5c75bfe0
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: a6cf2276da463f71f008c4bfb6eee4c232b18308
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303710"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551701"
 ---
 # <a name="how-to-create-and-deploy-a-cloud-service"></a>Hogyan hozhat létre, és a egy felhőalapú szolgáltatás üzembe helyezése
-Az Azure portal két módon is hozhat létre és telepíthet egy felhőalapú szolgáltatás biztosít: *Gyorslétrehozás* és *egyéni létrehozás*.
+Az Azure portal két módon is hozhat létre és telepíthet egy felhőalapú szolgáltatás biztosít: *Gyors létrehozás* és *egyéni létrehozás*.
 
 Ez a cikk ismerteti, hogyan hozzon létre egy új felhőszolgáltatást, majd a gyors létrehozás módszerrel **feltöltése** és az Azure-ban a felhőszolgáltatás-csomagok telepítése. Ezt a módszert használja, ha az Azure Portalon elérhető hivatkozásokkal, a szükséges összes követelmény fizetést lehetővé teszi. Ha már készen áll, létrehozásakor, üzembe helyezéséhez a cloud service, érdemes egyéni létrehozás használatával egyszerre mindkettő.
 
@@ -58,7 +58,7 @@ Szeretne létrehozni egy felhőalapú szolgáltatás webes szerepkört vagy feld
 * Ha még nem telepítette az Azure SDK-t, kattintson a **Azure SDK telepítése** megnyitásához a [Azure letöltőoldala](https://azure.microsoft.com/downloads/), és töltse le a kívánt nyelven, amelyben a kód fejlesztéséhez készült SDK. (Ezt a lehetőséget rendelkezni fog.)
 * Ha minden szerepkör példányai szükséges tanúsítvány, a tanúsítványok létrehozása. A cloud services és a egy titkos kulcs egy .pfx-fájl szükséges. Az Azure-bA a tanúsítványok létrehozása és üzembe helyezése a felhőszolgáltatás tölthet fel.
 
-## <a name="create-and-deploy"></a>Létrehozása és üzembe helyezése
+## <a name="create-and-deploy"></a>Létrehozás és üzembe helyezés
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Kattintson a **erőforrás létrehozása > Compute**, és görgessen le a, és kattintson a **Felhőszolgáltatás**.
 
@@ -90,7 +90,7 @@ Ha a központi telepítési csomag volt [tanúsítványok](cloud-services-config
 
     ![CloudServices_QuickGlance](./media/cloud-services-how-to-create-deploy-portal/running.png)
 
-[TFSTutorialForCloudService]: http://go.microsoft.com/fwlink/?LinkID=251796
+[TFSTutorialForCloudService]: https://go.microsoft.com/fwlink/?LinkID=251796
 
 ## <a name="next-steps"></a>További lépések
 * [A felhőszolgáltatás általános konfigurációs](cloud-services-how-to-configure-portal.md).

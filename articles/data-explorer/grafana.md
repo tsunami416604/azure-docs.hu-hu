@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/05/2018
-ms.openlocfilehash: 5a9684605de9af1cd9006810d595ae846db01661
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 141859d155383b01cfea998c6b7158848517eac2
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52975157"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531952"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>A Grafana az Azure Data Explorer adatainak megjelenítése
 
@@ -23,11 +23,11 @@ Grafana egy analitikai platform, amely lehetővé teszi, hogy a lekérdezési ad
 
 Ez annak a következőkre lesz szüksége:
 
-* [Grafana 5.3.0-s vagy újabb](http://docs.grafana.org/installation/) az operációs rendszer
+* [Grafana 5.3.0-s vagy újabb](https://docs.grafana.org/installation/) az operációs rendszer
 
 * A [Azure adatkezelő beépülő modul](https://grafana.com/plugins/grafana-azure-data-explorer-datasource/installation) Grafana számára
 
-* A StormEvents mintaadatokat tartalmazó fürt. További információkért lásd: [a rövid útmutató: Azure Data Explorer fürt és -adatbázis létrehozása](create-cluster-database-portal.md) és [mintaadatok betöltése az Azure Data Explorer](ingest-sample-data.md).
+* A StormEvents mintaadatokat tartalmazó fürt. További információkért lásd: [a rövid útmutató: Hozzon létre egy Azure Data Explorer fürt és az adatbázis](create-cluster-database-portal.md) és [mintaadatok betöltése az Azure Data Explorer](ingest-sample-data.md).
 
     [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
@@ -51,7 +51,7 @@ Akkor is az egyszerű szolgáltatás létrehozása a a [az Azure portal](#azure-
 
     1. Az a [alkalmazások szerepkörhöz rendeléséhez](/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) szakaszban, rendelheti hozzá a szerepkör **olvasó** az Azure Data Explorer fürthöz.
 
-    1. Az a [értékek beolvasása bejelentkezés](/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) részen ismertetett lépések három tulajdonságot kimásolhatja: **címtár-azonosító** (bérlőazonosító), **Alkalmazásazonosító**, és  **Jelszó**.
+    1. Az a [értékek beolvasása bejelentkezés](/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) területén másolja a három tulajdonságértékek ismertetett lépéseket: **Címtár-azonosító** (bérlőazonosító), **Alkalmazásazonosító**, és **jelszó**.
 
 1. Az Azure Portalon válassza ki a **előfizetések** majd másolja ki az előfizetést, amelyben létrehozta az egyszerű szolgáltatás azonosítója.
 
@@ -152,7 +152,7 @@ A szolgáltatásnévhez hozzárendelt együtt a *megtekintők* szerepkör, most 
 
     ![Kapcsolat tulajdonságai](media/grafana/connection-properties.png)
 
-    | Grafana felhasználói felület | Azure Portal | Azure CLI |
+    | Grafana UI | Azure Portal | Azure CLI |
     | --- | --- | --- |
     | Előfizetési azonosító | ELŐFIZETÉS AZONOSÍTÓJA | SubscriptionId |
     | Bérlő azonosítója | Címtár azonosítója | bérlő |
@@ -211,4 +211,4 @@ Most már végzett konfigurálása az Azure Data Explorer adatforrásként a Gra
 
 [Lekérdezések írása az Azure Data Explorerhez](write-queries.md)
 
-[Oktatóanyag: Azure Data Explorer a Power bi-ban adatainak megjelenítése](visualize-power-bi.md)
+[Oktatóanyag: A Power bi-ban az Azure Data Explorer adatainak megjelenítése](visualize-power-bi.md)

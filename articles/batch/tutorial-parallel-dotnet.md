@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 9db223075284b02de1cf3de8cfa7a0b5aa35f286
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: a6fe5b0452771cd2e618d1a08cb2f4af52e3cc0d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754220"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538687"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Oktatóanyag: Párhuzamos számítási feladatok futtatása az Azure Batch .NET API használatával
 
@@ -31,7 +31,7 @@ Az Azure Batch használatával hatékonyan futtathat nagy méretű párhuzamos �
 > * Tevékenységek végrehajtásának figyelése
 > * Kimeneti fájlok lekérése
 
-Ebben az oktatóanyagban MP4-médiafájlokat konvertál párhuzamosan MP3 formátumba az [ffmpeg](http://ffmpeg.org/) nyílt forráskódú eszköz segítségével. 
+Ebben az oktatóanyagban MP4-médiafájlokat konvertál párhuzamosan MP3 formátumba az [ffmpeg](https://ffmpeg.org/) nyílt forráskódú eszköz segítségével. 
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 

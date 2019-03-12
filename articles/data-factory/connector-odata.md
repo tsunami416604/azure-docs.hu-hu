@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: jingwang
-ms.openlocfilehash: ed861aa914da999bdb2922bc309f05d1234ef416
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: eeab0311519d7e3410ddb625c1801101ad63ad18
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54018483"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550416"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>OData forrásból származó adatok másolása az Azure Data Factory használatával
 
@@ -70,7 +70,7 @@ Egy társított OData-szolgáltatás a következő tulajdonságok támogatottak:
     "properties": {
         "type": "OData",
         "typeProperties": {
-            "url": "http://services.odata.org/OData/OData.svc",
+            "url": "https://services.odata.org/OData/OData.svc",
             "authenticationType": "Anonymous"
         },
         "connectVia": {
@@ -233,7 +233,7 @@ Adatok másolása az OData, állítsa be a **forrás** írja be a másolási tev
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A **típus** értékre kell állítani a másolási tevékenység forrás tulajdonság **RelationalSource**. | Igen |
-| lekérdezés | Adatok szűrése az OData-lekérdezés beállításai. Példa: `"?$select=Name,Description&$top=5"`.<br/><br/>**Megjegyzés**: Az OData-összekötő adatokat másol a kombinált URL-cím: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`. További információkért lásd: [OData URL-címe összetevők](http://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nem |
+| lekérdezés | Adatok szűrése az OData-lekérdezés beállításai. Példa: `"?$select=Name,Description&$top=5"`.<br/><br/>**Megjegyzés**: Az OData-összekötő adatokat másol a kombinált URL-cím: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`. További információkért lásd: [OData URL-címe összetevők](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nem |
 
 **Példa**
 

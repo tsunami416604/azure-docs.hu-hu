@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 4c01cf93fe3bb66f9bce73acb3c2f100764d1f46
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b008293e06f476109abde5be519489b2e3d4c1e9
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872543"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531385"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>A beszédfelismerés eszközök SDK használatának első lépései
 
@@ -37,7 +37,7 @@ Fejlesztés a Speech Devices SDK-val a Kezdés előtt gyűjtse össze az adatoka
 
 * A beszédfelismerés eszközök SDK-t Androidos mintaalkalmazás tartalmazza a legújabb verziójának beszerzéséhez a [Speech eszközök SDK letöltési hely](https://shares.datatransfer.microsoft.com/). Bontsa ki a zip-fájlt egy helyi mappába, például a C:\SDSDK.
 
-* Telepítés [Android Studio](https://developer.android.com/studio/) és [Vysor](http://vysor.io/download/) a számítógépen.
+* Telepítés [Android Studio](https://developer.android.com/studio/) és [Vysor](https://vysor.io/download/) a számítógépen.
 
 * Get- [Speech service előfizetési kulcs](get-started.md). 30 napos ingyenes próbaverzió beszerzése, illetve egy kulcs lekérése az Azure-irányítópulton.
 

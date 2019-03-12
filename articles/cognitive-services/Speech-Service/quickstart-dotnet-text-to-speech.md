@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
-ms.openlocfilehash: 0086746ee676127a3fcae9e7b05efd3f7a9f65f3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 656ed50b9104fec48ff3eddb3c291608f8f87294
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878425"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534037"
 ---
 # <a name="quickstart-convert-text-to-speech-using-net-core"></a>Gyors útmutató: Átalakítás szöveg-hang transzformációs .NET Core használatával
 
@@ -156,7 +156,7 @@ string host = "https://westus.tts.speech.microsoft.com/cognitiveservices/v1";
 One-time passcode törzseként egy `POST` kérelmet. SSML, a nyelv és is megadhat. Ez a rövid útmutatóban a nyelvi beállítás fogjuk használni SSML `en-US` állítja be a hang és `ZiraRUS`. Most hozza létre a kérés a SSML:
 
 ```csharp
-string body = @"<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xml:lang='en-US'>
+string body = @"<speak version='1.0' xmlns='https://www.w3.org/2001/10/synthesis' xml:lang='en-US'>
               <voice name='Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)'>" +
               text + "</voice></speak>";
 ```

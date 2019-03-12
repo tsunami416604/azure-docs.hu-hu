@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fda80455cf3504bf992fabc3018be2d5c05612ae
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 1f5064cece32cfc38f149816961e5156ff20974a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019146"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536708"
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Adatok áthelyezése az Amazon Simple Storage Service az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -38,7 +38,7 @@ Adatok másolása az Amazon S3, győződjön meg arról, kapott a következő en
 * `s3:GetObject` és `s3:GetObjectVersion` Amazon S3 objektum műveletekhez.
 * `s3:ListBucket` az Amazon S3 gyűjtő műveletekhez. Ha a Data Factory Copy varázslót használja `s3:ListAllMyBuckets` is szükség.
 
-További információk az Amazon S3-engedélyek teljes listája: [engedélyek megadása egy házirendben](http://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html).
+További információk az Amazon S3-engedélyek teljes listája: [engedélyek megadása egy házirendben](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html).
 
 ## <a name="getting-started"></a>Első lépések
 Létrehozhat egy folyamatot egy másolási tevékenységgel az adatok áthelyezéséhez az Amazon S3 forrásból a különböző eszközök vagy API-k használatával.
@@ -69,7 +69,7 @@ A társított szolgáltatás egy adattárba hivatkozik, adat-előállító. Lét
 | secretAccessKey |A titkos hívóbetűje magát. |Titkosított titkos karakterlánc |Igen |
 
 >[!NOTE]
->Az összekötő használatához az adatok másolása az Amazon S3 IAM-fiók hozzáférési kulcsait. [Ideiglenes biztonsági hitelesítő adat](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) nem támogatott.
+>Az összekötő használatához az adatok másolása az Amazon S3 IAM-fiók hozzáférési kulcsait. [Ideiglenes biztonsági hitelesítő adat](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) nem támogatott.
 >
 
 Például:
@@ -94,10 +94,10 @@ Például a szerkezetet, rendelkezésre állás és a házirend szakaszok hasonl
 
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | --- | --- | --- | --- |
-| bucketName |Az S3 gyűjtő neve. |Karakterlánc |Igen |
-| kulcs |Az S3-objektum kulcsa. |Karakterlánc |Nem |
-| előtag |Az S3-objektum kulcs előtag. Ezzel az előtaggal start amelynek kulcsok objektum van kijelölve. Érvényes, csak ha kulcsa üres. |Karakterlánc |Nem |
-| version |Az S3-objektum, ha engedélyezve van a S3 versioning verziója. |Karakterlánc |Nem |
+| bucketName |Az S3 gyűjtő neve. |String |Igen |
+| kulcs |Az S3-objektum kulcsa. |String |Nem |
+| előtag |Az S3-objektum kulcs előtag. Ezzel az előtaggal start amelynek kulcsok objektum van kijelölve. Érvényes, csak ha kulcsa üres. |String |Nem |
+| version |Az S3-objektum, ha engedélyezve van a S3 versioning verziója. |String |Nem |
 | Formátum | A következő formátumtípusokat támogatja: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Állítsa be a **típus** tulajdonság alatt formátumot az alábbi értékek egyikére. További információkért lásd: a [szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [JSON formátumban](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc formátum](data-factory-supported-file-and-compression-formats.md#orc-format), és [Parquet formátum ](data-factory-supported-file-and-compression-formats.md#parquet-format) szakaszokat. <br><br> Ha szeretné, a fájlok másolása a-rendszer közötti fájlalapú tárolók (bináris másolat), hagyja ki a format szakaszban mindkét bemeneti és kimeneti adatkészlet-definíciókban. |Nem | |
 | A tömörítés | Adja meg a típus és az adatok tömörítési szintje. A támogatott típusok a következők: **A GZip**, **Deflate**, **BZip2**, és **ZipDeflate**. A támogatott szintek a következők: **Optimális** és **leggyorsabb**. További információkért lásd: [fájl- és tömörítési formátumok az Azure Data Factoryban](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem | |
 
@@ -248,7 +248,7 @@ Beállítás **"external": true** a Data Factory szolgáltatás értesíti arró
 
 ### <a name="azure-blob-output-dataset"></a>Azure Blob kimeneti adatkészlet
 
-Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1.). A mappa elérési útját a BLOB a feldolgozás alatt álló szelet kezdő időpontja alapján dinamikusan kiértékeli. A mappa elérési útját használja, az év, hónap, nap és óra részei a kezdési időpontot.
+Adatokat írt egy új blob minden órában (frequency: óra, időköz: 1). A mappa elérési útját a BLOB a feldolgozás alatt álló szelet kezdő időpontja alapján dinamikusan kiértékeli. A mappa elérési útját használja, az év, hónap, nap és óra részei a kezdési időpontot.
 
 ```json
 {

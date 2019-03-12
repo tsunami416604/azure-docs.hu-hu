@@ -17,12 +17,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01cc85f7eba2aefd08192c4e3f4e5151e7645238
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 311ba489073805fdb034b435ab9e5e1ddc2c4e3c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269110"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535042"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: Tervezési alapelvek
 A jelen dokumentum célja, hogy írja le, amely az Azure AD Connect megvalósítási tervezése során kell gondoltam területeket. Ez a dokumentum az egyes területeken egy részletes bemutatása, és ezek a fogalmak rövid leírását, valamint az egyéb dokumentumokat.
@@ -157,7 +157,7 @@ Váltás az objectGUID ConsistencyGuid Forráshorgony-attribútumként:
 
 ![ConsistencyGuid előkészítése a meglévő üzembe helyezés – hiba](./media/plan-connect-design-concepts/consistencyguidexistingdeploymenterror.png)
 
- Ha biztos benne, hogy az attribútum nem használja másik meglévő alkalmazásokat, tilthatja le a hiba az Azure AD Connect varázsló újraindításával a **/SkipLdapSearchcontact** megadott. Ehhez futtassa a következő parancsot a parancssorba:
+ Ha biztos benne, hogy az attribútum nem használja másik meglévő alkalmazásokat, tilthatja le a hiba az Azure AD Connect varázsló újraindításával a **/SkipLdapSearch** megadott kapcsolóhoz. Ehhez futtassa a következő parancsot a parancssorba:
 
 ```
 "c:\Program Files\Microsoft Azure Active Directory Connect\AzureADConnect.exe" /SkipLdapSearch
@@ -171,7 +171,7 @@ Ha az AD FS az Azure AD Connect-en kívül kezeli, vagy harmadik féltől szárm
 ![Harmadik féltől származó összevonási konfiguráció](./media/plan-connect-design-concepts/consistencyGuid-03.png)
 
 ### <a name="adding-new-directories-to-existing-deployment"></a>Új könyvtárak hozzáadása meglévő üzemelő példányt
-Tegyük fel, hogy telepítette az Azure AD Connect a ConsistencyGuid szolgáltatás engedélyezve van, és most szeretné a központi telepítés hozzáadása egy másik címtárban. Próbál meg hozzáadni a könyvtár, amikor az Azure AD Connect varázsló a címtárban az ms-DS-ConsistencyGuid attribútum állapotát ellenőrzi. Az attribútum konfigurálva van egy vagy több objektumot a címtárban, ha a varázsló azt állapítja meg az attribútum az egyéb alkalmazások használják, és hibát ad vissza, az alábbi ábrán szemléltetett módon. Ha biztos benne, hogy az attribútum nem használja meglévő alkalmazásokkal, tilthatja le a hiba az Azure AD Connect varázsló újraindításával a **/SkipLdapSearchcontact** megadva a fent leírtak szerint, vagy forduljon a További információ támogatása.
+Tegyük fel, hogy telepítette az Azure AD Connect a ConsistencyGuid szolgáltatás engedélyezve van, és most szeretné a központi telepítés hozzáadása egy másik címtárban. Próbál meg hozzáadni a könyvtár, amikor az Azure AD Connect varázsló a címtárban az ms-DS-ConsistencyGuid attribútum állapotát ellenőrzi. Az attribútum konfigurálva van egy vagy több objektumot a címtárban, ha a varázsló azt állapítja meg az attribútum az egyéb alkalmazások használják, és hibát ad vissza, az alábbi ábrán szemléltetett módon. Ha biztos benne, hogy az attribútum nem használja meglévő alkalmazásokkal, tilthatja le a hiba az Azure AD Connect varázsló újraindításával a **/SkipLdapSearch** kapcsoló megadott a fent leírtak szerint, vagy módosítania kell a kapcsolatba További információ támogatása.
 
 ![Új könyvtárak hozzáadása meglévő üzemelő példányt](./media/plan-connect-design-concepts/consistencyGuid-04.png)
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 5e8aa310d518ff26d2d0224797b2feb0745896d1
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 5694f8eead2b0fd4be75ee858c3c124dd8c53e03
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56864906"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540378"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>Hozzon létre egy HDInsight-fürtöt az Azure Data Lake Storage Gen1 Azure Resource Manager-sablon használatával
 > [!div class="op_single_selector"]
@@ -88,7 +88,7 @@ Ahhoz, hogy a HDInsight-fürtön elérhető-e a mintaadatok feltöltése, biztos
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>A HDInsight-fürt használata a Data Lake Storage Gen1 tesztelési feladatok futtatása
 Miután konfigurálta egy HDInsight-fürtöt, a fürtön, hogy a HDInsight-fürt hozzáférhet-e a Data Lake Storage Gen1 teszteléséhez tesztelési feladatok futtatásához. Ehhez egy minta Hive-feladatot, amely létrehoz egy táblát a mintaadatokkal, amelyek korábban a Data Lake Storage Gen1 fiókjába feltöltött fog Futtatás.
 
-Ez a szakasz tartalma SSH be egy HDInsight Linux-fürt, és futtassa a mintát Hive-lekérdezést. Ha egy Windows-ügyfelet használ, javasoljuk **PuTTY**, amely letölthető a [ http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html ](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+Ez a szakasz tartalma SSH be egy HDInsight Linux-fürt, és futtassa a mintát Hive-lekérdezést. Ha egy Windows-ügyfelet használ, javasoljuk **PuTTY**, amely letölthető a [ https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html ](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
 A PuTTY használatával kapcsolatos további információkért lásd: [az SSH használata a Linux-alapú Hadooppal a HDInsight, a Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
 
@@ -124,7 +124,7 @@ A PuTTY használatával kapcsolatos további információkért lásd: [az SSH ha
 ## <a name="access-data-lake-storage-gen1-using-hdfs-commands"></a>Data Lake Storage Gen1 eléréséhez HDFS-parancsok használatával
 Miután konfigurálta a HDInsight-fürt használata a Data Lake Storage Gen1, a HDFS-rendszerhéjparancsokat használhatja az áruház.
 
-Ez a szakasz tartalma SSH be egy HDInsight Linux-fürt, és futtassa a HDFS-parancsokat. Ha egy Windows-ügyfelet használ, javasoljuk **PuTTY**, amely letölthető a [ http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html ](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
+Ez a szakasz tartalma SSH be egy HDInsight Linux-fürt, és futtassa a HDFS-parancsokat. Ha egy Windows-ügyfelet használ, javasoljuk **PuTTY**, amely letölthető a [ https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html ](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html).
 
 A PuTTY használatával kapcsolatos további információkért lásd: [az SSH használata a Linux-alapú Hadooppal a HDInsight, a Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md).
 

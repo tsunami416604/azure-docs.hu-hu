@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 2ef0233898836dc35eb6bdedab4caba16cf8c752
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 10e25797c15a821579cd15333cdd833e491acbd0
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011024"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546109"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-c"></a>Gyors útmutató: Javasoljuk, a Bing automatikus kiegészítés REST API-val keresési lekérdezések ésC#
 
@@ -24,7 +24,7 @@ Ez a rövid útmutató elindításához, így a Bing Autosuggest API és a JSON-
 ## <a name="prerequisites"></a>Előfeltételek
 
 * A [Visual Studio 2017](https://www.visualstudio.com/downloads/) bármely kiadása.
-* Linux/MacOS rendszer esetében az alkalmazás a [Monóval](http://www.mono-project.com/) futtatható.
+* Linux/MacOS rendszer esetében az alkalmazás a [Monóval](https://www.mono-project.com/) futtatható.
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-autosuggest-signup-requirements.md)]
 

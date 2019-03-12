@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c622b95572a078d3f5a3e4791f959fd264eddc3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4aac24072bcebb0095c12cee1cfa21cfb9868dc5
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182170"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548592"
 ---
 # <a name="remove-a-user-or-group-assignment-from-an-enterprise-app-in-azure-active-directory"></a>Egy felhasználó vagy csoport-hozzárendelés eltávolítása a vállalati alkalmazásokat az Azure Active Directoryban
 Egy felhasználó vagy csoport eltávolítása folyamatban van hozzárendelve a hozzáférés a vállalati alkalmazások az Azure Active Directoryban (Azure AD) egyik könnyebbé vált. A vállalati alkalmazások kezelésére a megfelelő engedélyekkel kell rendelkeznie, és a címtár globális rendszergazdának kell lennie.
@@ -51,7 +51,7 @@ Egy felhasználó vagy csoport eltávolítása folyamatban van hozzárendelve a 
     > Az Azure ad-modul telepítéséhez szüksége (a parancs használata `Install-Module -Name AzureAD`). Ha kéri, telepítse a NuGet-modult vagy az új Azure Active Directory V2 PowerShell modul, írja be az Y, és nyomja le az ENTER billentyűt.
 
 2. Futtatás `Connect-AzureAD` , és jelentkezzen be egy globális rendszergazdai felhasználói fiókkal.
-3. A következő szkript használatával egy felhasználó és szerepkör hozzárendelése egy alkalmazáshoz:
+3. A következő parancsfájl használatával távolítsa el a felhasználó és szerepkör-alkalmazásból:
 
     ```powershell
     # Store the proper parameters

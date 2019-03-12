@@ -17,16 +17,16 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d702810ae7de03a14e50f56c2b8e819c31f3ea9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e7a45e85b35ab48f95ecff07043484b322f237a8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192710"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538051"
 ---
 # <a name="quickstart-download-an-audit-report-using-the-azure-portal"></a>Gyors útmutató: Töltse le az auditnaplókat, az Azure portal használatával
 
-Ebben a rövid útmutatóban megismerheti, hogyan lehet az elmúlt 24 órára vonatkozóan a bérlő auditnaplókat letölteni. Legfeljebb 5000 rekordok letöltheti az Azure Portalról. A rekordok legtöbb alapján rendezi a rendszer közelmúltbeli, így alapértelmezés szerint a legújabb 5000 rekordokat. 
+Ez a rövid útmutatóban megismerheti, hogyan CSV-fájl, a naplók letöltéséhez a bérlő számára az elmúlt 24 órában. Letöltheti a legfeljebb 250 000 rekord az Azure Portalról. A rekordok legtöbb alapján rendezi a rendszer közelmúltbeli, így alapértelmezés szerint a legutóbbi 250 000 rekord. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,7 +41,7 @@ A következők szükségesek:
 2. Válassza ki **Azure Active Directoryt** a bal oldali navigációs ablaktáblában, és a **címtár váltása** gombra kattintva válassza ki az aktív címtárat.
 3. Az irányítópulton az **Azure Active Directory** kiválasztása után válassza az **Auditnaplót**. 
 4. Válassza az **elmúlt 24 órát** a **Dátumtartomány** szűrő legördülő listájából, majd az **Alkalmaz** választása után megtekintheti az utolsó 24 óra auditnaplóját. 
-5. A **Letöltés** gombra kattintva töltse le a szűrt rekordokat tartalmazó CSV-fájl. 
+5. Válassza ki a **letöltése** gombra, válassza **CSV** a fájl formázása, és adjon meg egy fájlnevet a szűrt rekordok tartalmazó CSV-fájl letöltéséhez. 
 
 ![Jelentéskészítés](./media/quickstart-download-audit-report/download-audit-logs.png)
 

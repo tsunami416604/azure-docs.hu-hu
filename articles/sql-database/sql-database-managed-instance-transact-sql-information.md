@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 02/20/2019
-ms.openlocfilehash: 98ca3478c3a8963c3bf57143354340d6ed14900e
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.date: 03/06/2019
+ms.openlocfilehash: 2f615214fb7b77614054841af7972eb814525dee
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594338"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549918"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Az SQL Serverről Azure SQL Database felügyelt példány T-SQL különbségek
 
@@ -26,6 +26,7 @@ A felügyelt példány üzembe helyezési lehetőséget biztosít nagy mértékb
 ![Áttelepítés](./media/sql-database-managed-instance/migration.png)
 
 Különbségek is vannak a továbbra is a szintaxist és a viselkedés, mivel ez a cikk összefoglalja, és ismerteti a különbségeket. <a name="Differences"></a>
+
 - [Rendelkezésre állási](#availability) többek között a különbségek [Always-On](#always-on-availability) és [biztonsági mentések](#backup),
 - [Biztonsági](#security) többek között a különbségek [naplózási](#auditing), [tanúsítványok](#certificates), [hitelesítő adatok](#credential), [kriptográfiai szolgáltatókat](#cryptographic-providers), [Bejelentkezések és felhasználók](#logins--users), [szolgáltatás kulcs és a szolgáltatás főkulcsát](#service-key-and-service-master-key),
 - [Konfigurációs](#configuration) többek között a különbségek [kiterjesztés puffer](#buffer-pool-extension), [rendezést](#collation), [kompatibilitási szinteken](#compatibility-levels),[adatbázis tükrözés](#database-mirroring), [adatbázis-beállítások](#database-options), [SQL Server Agent](#sql-server-agent), [lehetőségek tábla](#tables),
@@ -61,10 +62,16 @@ Felügyelt példány automatikus biztonsági mentések és engedélyezése a fel
 Korlátozások:  
 
 - A felügyelt példány használatával akkor készíthető-példány adatbázis legfeljebb 32 csíkokkal, amely elegendő az adatbázisok biztonsági akár 4 TB-os biztonságimásolat-tömörítési funkciók használata esetén.
-- Maximális biztonsági mentési stripe mérete 195 GB (blob maximális mérete). A biztonsági mentési parancsban egyes stripe méret csökkentése és belül ezt a korlátot csíkokkal számának növelése.
+- Maximális biztonsági mentési stripe méret használatával a `BACKUP` parancs a felügyelt példány 195 GB (blob maximális mérete). A biztonsági mentési parancsban egyes stripe méret csökkentése és belül ezt a korlátot csíkokkal számának növelése.
 
-> [!TIP]
-> A korlátozás a helyszínen, a biztonsági mentés megkerüléséhez `DISK` történő biztonsági mentés helyett `URL`, blob-, majd állítsa vissza a biztonsági mentési fájl feltöltése. Visszaállítási támogatja a nagyobb méretű fájlokat, mert egy másik blob típust használja.  
+    > [!TIP]
+    > A probléma megoldásához, amikor egy adatbázis biztonsági másolatának vagy SQL Serverről, a helyszíni környezetben vagy egy virtuális gépen, a következőket teheti:
+    >
+    > - A biztonsági mentési `DISK` történő biztonsági mentés helyett `URL`
+    > - A biztonságimásolat-fájlok feltöltése a Blob storage
+    > - Azokat a felügyelt példány visszaállítása
+    >
+    > A `Restore` parancs a figyelt példányokat támogatja a nagyobb méretű blobok a biztonságimásolat-fájlokat, mert egy másik blob típusa a feltöltött biztonságimásolat-fájlok tárolására szolgál.
 
 Biztonsági másolatok a T-SQL használatával kapcsolatos információkért lásd: [BACKUP](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql).
 
@@ -125,44 +132,51 @@ Felügyelt példány nem elérhető fájlok, így nem hozható létre a kriptogr
 
 - Létrehozott SQL-bejelentkezésekben `FROM CERTIFICATE`, `FROM ASYMMETRIC KEY`, és `FROM SID` támogatottak. Lásd: [létrehozás bejelentkezési](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql).
 - Az Azure Active Directory (Azure AD-) kiszolgáló rendszerbiztonsági tagok (Bejelentkezések) használatával létrehozott [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) szintaktikai vagy a [LÉTREHOZNI felhasználó a bejelentkezési [Azure AD bejelentkezési]](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) szintaxis használata támogatott (**nyilvános előzetes verzió** ). Ezek a bejelentkezések a kiszolgáló szintjén hozhatók létre.
-    - Felügyelt példány támogatja az Azure ad-ben adatbázis résztvevőivel szintaxissal `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER`. Ez más néven az Azure ad-ben tárolt adatbázis-felhasználók.
+
+    Felügyelt példány támogatja az Azure ad-ben adatbázis résztvevőivel szintaxissal `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER`. Ez más néven az Azure ad-ben tárolt adatbázis-felhasználók.
+
 - A létrehozott Windows-bejelentkezések `CREATE LOGIN ... FROM WINDOWS` szintaxis nem támogatott. Használja az Azure Active Directory-bejelentkezések és felhasználók.
 - Azure AD-felhasználó, aki létrehozta a példány rendelkezik [rendszergazdai jogosultságokat unrestricted](sql-database-manage-logins.md#unrestricted-administrative-accounts).
 - Nem rendszergazdai Azure Active Directory (Azure AD) adatbázisszintű felhasználók hozható létre `CREATE USER ... FROM EXTERNAL PROVIDER` szintaxist. Lásd: [felhasználó létrehozása... KÜLSŐ SZOLGÁLTATÓI](sql-database-manage-logins.md#non-administrator-users).
 - Az Azure AD kiszolgáló rendszerbiztonsági tagok (Bejelentkezések) belül csak egy Buszpéldány példány az SQL-funkciók támogatásához. Ha az azonos Azure AD-ben vagy különböző bérlőhöz nem támogatott az Azure AD-felhasználók a példányok közötti interakció, függetlenül attól, hogy igénylő szolgáltatások. Ilyen szolgáltatások például a következők:
-    - Az SQL tranzakciós replikáció és a
-    - Hivatkozás-kiszolgáló
+
+  - Az SQL tranzakciós replikáció és a
+  - Hivatkozás-kiszolgáló
+
 - A beállítás az Azure AD bejelentkezési leképezve az Azure AD-csoportok, az adatbázis tulajdonosa nem támogatott.
 - Az Azure AD-kiszolgálószintű rendszerbiztonsági tagok használata más Azure AD rendszerbiztonsági tagok megszemélyesítési támogatott, mint például a [EXECUTE AS](/sql/t-sql/statements/execute-as-transact-sql) záradékban. Hajtsa végre, mint korlátozás:
-    - Az EXECUTE AS USER nem támogatott az Azure AD-felhasználók, ha a neve eltér a bejelentkezési nevet. Ha például a felhasználó létrehozásakor [myAadUser] felhasználó létrehozása a LOGIN-szintaxis használatával [john@contoso.com], és a megszemélyesítési történik meg EXEC AS USER = _myAadUser_. Létrehozásakor egy **felhasználói** , egy Azure ad-ben kiszolgálói tag (bejelentkezés), adja meg a felhasználónév az azonos login_name a **bejelentkezési**.
-    - Csak az SQL kiszolgálószintű rendszerbiztonsági tagok (Bejelentkezések) részét képező a `sysadmin` szerepkör hajthat végre a következő műveleteket hajthatja végre a Azure AD rendszerbiztonsági tagok: 
-        - HAJTSA VÉGRE A FELHASZNÁLÓ NEVÉBEN
-        - HAJTSA VÉGRE A BEJELENTKEZÉSSEL
+
+  - Az EXECUTE AS USER nem támogatott az Azure AD-felhasználók, ha a neve eltér a bejelentkezési nevet. Ha például a felhasználó létrehozásakor [myAadUser] felhasználó létrehozása a LOGIN-szintaxis használatával [john@contoso.com], és a megszemélyesítési történik meg EXEC AS USER = _myAadUser_. Létrehozásakor egy **felhasználói** , egy Azure ad-ben kiszolgálói tag (bejelentkezés), adja meg a felhasználónév az azonos login_name a **bejelentkezési**.
+  - Csak az SQL kiszolgálószintű rendszerbiztonsági tagok (Bejelentkezések) részét képező a `sysadmin` szerepkör hajthat végre a következő műveleteket hajthatja végre a Azure AD rendszerbiztonsági tagok:
+
+    - HAJTSA VÉGRE A FELHASZNÁLÓ NEVÉBEN
+    - HAJTSA VÉGRE A BEJELENTKEZÉSSEL
+
 - **Nyilvános előzetes verzióban** Azure AD-kiszolgáló rendszerbiztonsági tagok (Bejelentkezések) korlátozásai:
-    - Felügyelt példány Active Directory-rendszergazda korlátozásai:
-        - Az Azure AD-rendszergazda állíthatja be a felügyelt példány létrehozása az Azure ad-ben kiszolgálói tag (bejelentkezés) belül a felügyelt példány nem használható. Az első Azure AD kiszolgálói tag (bejelentkezés), amely az SQL Server fiók használatával kell létrehoznia egy `sysadmin`. Ez egy átmeneti korlátozás, amely a rendszer eltávolítja, miután az Azure AD-kiszolgáló rendszerbiztonsági tagok (Bejelentkezések) válnak általánosan elérhető a A következő hiba akkor jelenik meg, ha megpróbálja használni az Azure AD rendszergazdai fiókot létrehozni a bejelentkezési adatait: `Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
-        - Jelenleg a master DB-ben létrehozott első Azure AD bejelentkezési a szokásos SQL Server fiók (nem Azure AD), amely alapján létre kell hozni egy `sysadmin` használatával a [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) az EXTERNAL PROVIDER. POST általánosan elérhető, ez a korlátozás lesz, eltávolított, és a egy kezdeti az Azure AD bejelentkezési hozható létre az Active Directory-rendszergazda által felügyelt példány számára.
+
+  - Felügyelt példány Active Directory-rendszergazda korlátozásai:
+
+    - Az Azure AD-rendszergazda állíthatja be a felügyelt példány létrehozása az Azure ad-ben kiszolgálói tag (bejelentkezés) belül a felügyelt példány nem használható. Az első Azure AD kiszolgálói tag (bejelentkezés), amely az SQL Server fiók használatával kell létrehoznia egy `sysadmin`. Ez egy átmeneti korlátozás, amely a rendszer eltávolítja, miután az Azure AD-kiszolgáló rendszerbiztonsági tagok (Bejelentkezések) válnak általánosan elérhető a A következő hiba akkor jelenik meg, ha megpróbálja használni az Azure AD rendszergazdai fiókot létrehozni a bejelentkezési adatait: `Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
+      - Jelenleg a master DB-ben létrehozott első Azure AD bejelentkezési a szokásos SQL Server fiók (nem Azure AD), amely alapján létre kell hozni egy `sysadmin` használatával a [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) az EXTERNAL PROVIDER. POST általánosan elérhető, ez a korlátozás lesz, eltávolított, és a egy kezdeti az Azure AD bejelentkezési hozható létre az Active Directory-rendszergazda által felügyelt példány számára.
     - Az Azure AD-bejelentkezések használják az SQL Server Management Studio (SSMS) vagy az SqlPackage DacFx (Exportálás/importálás) nem támogatott. Ezt a korlátozást törlődik, miután az Azure AD-kiszolgáló rendszerbiztonsági tagok (Bejelentkezések) válnak általánosan elérhető
     - Az Azure AD-kiszolgáló rendszerbiztonsági tagok (Bejelentkezések) használatával az ssms használatával
-        - Az Azure AD bejelentkezés engedélyezve (bármely hitelesített bejelentkezés) parancsfájlok nem támogatott.
-        - Az IntelliSense nem ismeri fel a **külső SZOLGÁLTATÓ a bejelentkezés létrehozása** utasítás és a egy piros aláhúzás jelennek meg.
+
+      - Az Azure AD bejelentkezés engedélyezve (bármely hitelesített bejelentkezés) parancsfájlok nem támogatott.
+      - Az IntelliSense nem ismeri fel a **külső SZOLGÁLTATÓ a bejelentkezés létrehozása** utasítás és a egy piros aláhúzás jelennek meg.
+
 - Csak a kiszolgálószintű fő bejelentkezéssel (a felügyelt példány kiépítési folyamat által létrehozott), a kiszolgálói szerepkörök tagjai (`securityadmin` vagy `sysadmin`), vagy más bejelentkezések ALTER ANY LOGIN engedéllyel a kiszolgáló szintjén hozhat létre az Azure AD-kiszolgáló rendszerbiztonsági tagok (Bejelentkezések) a felügyelt példány esetében a master adatbázisban.
 - Ha a bejelentkezés, egy SQL egyszerű, csak azok a bejelentkezések, amelyek részei a `sysadmin` szerepkör létrehozás bejelentkezések a create parancs használható egy Azure AD-fiókot.
 - Az Azure AD bejelentkezési belül ugyanabban a címtárban az Azure SQL felügyelt példány szolgál az Azure AD tagjának kell lennie.
 - Az Azure AD kiszolgáló rendszerbiztonsági tagok (Bejelentkezések) már az object Explorerben SSMS 18.0 preview 5 belevághat jelennek meg.
 - Átfedésben lévő Azure AD kiszolgáló rendszerbiztonsági tagok (Bejelentkezések) az Azure AD rendszergazdai fiók használata engedélyezett. Az Azure AD kiszolgáló rendszerbiztonsági tagok (Bejelentkezések) elsőbbséget élveznek az Azure AD-rendszergazda a felügyelt példányhoz az egyszerű és alkalmazása engedélyek feloldásakor.
 - A hitelesítés során a következő feladatütemezési a alkalmazni oldja meg a hitelesítő egyszerű:
+
     1. Ha az Azure AD-fiók létezik, közvetlenül csatlakoztatott az Azure ad-ben server egyszerű (bejelentkezés) (jelen sys.server_principals típusa "E"), és hozzáférést biztosít engedélyeit az Azure ad-ben kiszolgálói tag (bejelentkezés) a alkalmazni.
     2. Ha az Azure AD-fiókot, amely az Azure ad-ben kiszolgálói tag (bejelentkezés) (jelen sys.server_principals, írja be az "X") le van képezve egy Azure AD-csoport tagja, és hozzáférést biztosít a alkalmazni az Azure AD-csoport bejelentkezési engedéllyel.
     3. Ha az Azure AD-fiók egy speciális portál által konfigurált felügyelt példány (nem létezik a felügyelt példány rendszernézetek), az Azure AD-rendszergazda alkalmazni speciális rögzített engedélyeit az Azure AD-rendszergazda a felügyelt példány (örökölt mód) számára.
     4. Ha az Azure AD-fiókot, közvetlenül csatlakoztatott, az Azure AD-felhasználót (a sys.database_principals típusa "E") adatbázisban már létezik, és hozzáférést biztosít a alkalmazni az Azure ad-ben adatbázis-felhasználó engedélyeinek.
     5. Ha az Azure AD-fiók le van képezve egy adatbázist (a "X" típusúként sys.database_principals) az Azure AD-felhasználót az Azure AD-csoport tagja, és hozzáférést biztosít a alkalmazni az Azure AD-csoport bejelentkezési engedéllyel.
     6. Ha egy Azure AD bejelentkezési vagy egy Azure AD-felhasználói fiókot, vagy egy Azure AD-csoport fiókhoz rendelve, oldja fel a hitelesítő felhasználó, az összes engedélyeit az Azure AD bejelentkezési lépnek érvénybe.
-
-
-
-
-
 
 ### <a name="service-key-and-service-master-key"></a>Kulcs és a szolgáltatás főkulcsának szolgáltatás
 
@@ -320,7 +334,6 @@ Felügyelt példány nem férnek hozzá, fájlmegosztások és Windows-mappák, 
 - Csak `CREATE ASSEMBLY FROM BINARY` használata támogatott. Lásd: [CREATE ASSEMBLY BINÁRISRÓL](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).  
 - `CREATE ASSEMBLY FROM FILE` támogatott is't. Lásd: [CREATE ASSEMBLY FÁJLBÓL](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).
 - `ALTER ASSEMBLY` nem lehet hivatkozni a fájlokat. Lásd: [ALTER ASSEMBLY](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
-
 
 ### <a name="dbcc"></a>DBCC
 

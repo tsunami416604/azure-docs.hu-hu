@@ -7,14 +7,14 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: victorh
-ms.openlocfilehash: fc56fe3a5bdfa0f5e1ef4bc309932cb7f57cf27d
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
-ms.translationtype: HT
+ms.openlocfilehash: 6bb3506e60894db525efaf2985dd92f9eaaf9e0a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50978093"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530960"
 ---
-# <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>Oktatóanyag: aliasrekord konfigurálása a hogy, támogassa a legfelső szintű tartományneveket a Traffic Managerrel 
+# <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>Oktatóanyag: -Aliasrekordot támogatásához apex-tartománynevek a Traffic Manager konfigurálása 
 
 Létrehozhat egy aliasrekordot a legfelső szintű tartománynévhez egy Azure Traffic Manager-profilra való hivatkozáshoz. Például: contoso.com. Átirányítási szolgáltatás használata helyett konfigurálhatja az Azure DNS-t, hogy közvetlenül a zónájából hivatkozzon egy Traffic Manager-profilra. 
 
@@ -33,13 +33,13 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="prerequisites"></a>Előfeltételek
 Elérhetőnek kell lennie egy tartománynévnek, amelyet üzemeltethet az Azure DNS-ben a teszteléshez. Teljes körű irányítással kell rendelkeznie a tartomány felett. A teljes körű irányításba beletartozik a tartomány névkiszolgálói (NS-) rekordjainak beállítására való képesség.
 
-A tartomány Azure DNS-ben való üzemeltetésére vonatkozó utasításokért lásd az [Oktatóanyag: Saját tartomány üzemeltetése az Azure DNS-ben](dns-delegate-domain-azure-dns.md) című szakaszt.
+Üzemeltessen saját tartományt az Azure DNS-ben való útmutatásért lásd: [oktatóanyag: Üzemeltessen saját tartományt az Azure DNS](dns-delegate-domain-azure-dns.md).
 
 Az ebben az oktatóanyagban használt példatartománynév a contoso.com, de Ön használja a saját tartománynevét.
 
 ## <a name="create-the-network-infrastructure"></a>A hálózati infrastruktúra létrehozása
 Először hozzon létre egy virtuális hálózatot és egy alhálózatot a webkiszolgálók elhelyezéséhez.
-1. Jelentkezzen be az Azure Portalra a http://portal.azure.com webhelyen.
+1. Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 2. Válassza a portál bal felső sarkában az **Erőforrás létrehozása** lehetőséget. Írja be a keresőmezőbe az *erőforráscsoport* kifejezést, és hozzon létre egy **RG-DNS-Alias-TM** nevű erőforráscsoportot.
 3. Válassza az **Erőforrás létrehozása** > **Hálózat** > **Virtuális hálózat** lehetőséget.
 4. Hozzon létre egy **VNet-Servers** nevű virtuális hálózatot. Helyezze az **RG-DNS-Alias-TM** erőforráscsoportba, és adja az **SN-Web** nevet az alhálózatnak.

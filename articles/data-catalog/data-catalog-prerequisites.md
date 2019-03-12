@@ -8,12 +8,12 @@ ms.assetid: ef497a54-dc4d-4820-b5bf-c361b64b964d
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 5d05371d9b948dc2f7d6f834eb9431af80fc6365
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 788e7a453e9879d9c901448659ff1c8cfa7201ff
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406872"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548310"
 ---
 # <a name="azure-data-catalog-prerequisites"></a>Az Azure Data Catalog előfeltételei
 
@@ -30,7 +30,7 @@ A Data Catalog beállításához kell bejelentkeznie az Azure Active Directory (
 Az Azure AD egyszerű módot kínál vállalkozásának az identitás és a hozzáférés kezelésére, mind a felhőben, mind a helyszínen. Felhasználók egyetlen munkahelyi vagy iskolai fiók egyetlen bejelentkezhet bármely felhőben és a helyileg üzemeltetett webes alkalmazás. A Data Catalog az Azure AD használatával hitelesíti a bejelentkező felhasználókat. További tudnivalókért lásd: [Mi az Azure Active Directory?](../active-directory/fundamentals/active-directory-whatis.md).
 
 > [!NOTE]
-> Használatával a [az Azure portal](http://portal.azure.com/), jelentkezhet be személyes Microsoft-fiókkal vagy egy Azure Active Directory munkahelyi vagy iskolai fiókjával. Az Azure portal használatával, az a Data Catalog beállításához, vagy a [Data Catalog-portál](http://www.azuredatacatalog.com), az Azure Active Directory-fiókkal, nem a személyes fiókjával kell bejelentkeznie.
+> Használatával a [az Azure portal](https://portal.azure.com/), jelentkezhet be személyes Microsoft-fiókkal vagy egy Azure Active Directory munkahelyi vagy iskolai fiókjával. Az Azure portal használatával, az a Data Catalog beállításához, vagy a [Data Catalog-portál](https://www.azuredatacatalog.com), az Azure Active Directory-fiókkal, nem a személyes fiókjával kell bejelentkeznie.
 >
 >
 

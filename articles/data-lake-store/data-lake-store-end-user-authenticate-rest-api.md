@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: ea550c0959f5de13f013f135926251bf9f8b450f
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 1e952e32142672946fa987b763032dad66f564a9
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124439"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537881"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Végfelhasználói hitelesítés az Azure Data Lake Storage Gen1 a REST API használatával
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ Ebben a cikkben megismerkedhet a REST API használata az Azure Data Lake Storage
 
 * **Hozzon létre a "Natív" Azure Active Directory-alkalmazás**. El kell végeznie a lépések [végfelhasználói hitelesítés a Data Lake Storage Gen1 az Azure Active Directoryval](data-lake-store-end-user-authenticate-using-active-directory.md).
 
-* **[cURL](http://curl.haxx.se/)**. Ez a cikk a curl használatával bemutatják, hogyan lehet REST API-hívásokat a Data Lake Storage Gen1 fiók ellen.
+* **[cURL](https://curl.haxx.se/)**. Ez a cikk a curl használatával bemutatják, hogyan lehet REST API-hívásokat a Data Lake Storage Gen1 fiók ellen.
 
 ## <a name="end-user-authentication"></a>Végfelhasználói hitelesítés
 Végfelhasználói hitelesítés használata az ajánlott módszer, ha azt szeretné, hogy a felhasználót, hogy jelentkezzen be az alkalmazás Azure AD használatával. Az alkalmazás el tudja-e a bejelentkezett felhasználóéval megegyező hozzáférési szinttel rendelkező Azure-erőforrások eléréséhez. A felhasználónak kell sorrendben rendszeres időközönként, hogy az alkalmazás karbantartása hozzáférés megadására.

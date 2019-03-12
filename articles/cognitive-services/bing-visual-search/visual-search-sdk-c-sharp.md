@@ -10,12 +10,12 @@ ms.subservice: bing-web-search
 ms.topic: quickstart
 ms.date: 05/16/2018
 ms.author: v-gedod
-ms.openlocfilehash: 3c6a103d3d4c1890a58b833d29c88eb040ac9810
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: a7fc4686ec31b4c3a23d3e0ff72e5e2a270015b0
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860694"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532099"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-sdk-for-c"></a>Gyors útmutató: A Bing Visual Search SDK használatával kép elemzések lekéréseC#
 
@@ -24,7 +24,7 @@ Ez a rövid útmutató segítségével megkezdéséhez hasznos képadatok lekér
 ## <a name="prerequisites"></a>Előfeltételek
 
 * A [Visual Studio 2017](https://www.visualstudio.com/downloads/) bármely kiadása.
-* Linux/MacOS rendszer esetében az alkalmazás a [Monóval](http://www.mono-project.com/) futtatható.
+* Linux/MacOS rendszer esetében az alkalmazás a [Monóval](https://www.mono-project.com/) futtatható.
 * A vizuális keresésre NuGet csomagot. 
     - A Visual Studio Megoldáskezelőjében kattintson a jobb gombbal a projektre, és válassza a `Manage NuGet Packages` lehetőséget a menüből. Telepítse az `Microsoft.Azure.CognitiveServices.Search.VisualSearch` csomagot. A NuGet-csomagokat is telepíti a következő:
         - Microsoft.Rest.ClientRuntime

@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 7c790d03143eece9b0c827a033bdd46bfd1a8f45
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 7fcf08c36d8babd0a318ed5b912823c344f4ce64
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024365"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549952"
 ---
 # <a name="copy-data-from-amazon-redshift-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával az Amazon Redshift
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](v1/data-factory-amazon-redshift-connector.md)
 > * [Aktuális verzió](connector-amazon-redshift.md)
 
@@ -38,7 +38,7 @@ Pontosabban az Amazon Redshift-összekötő támogatja az adatok beolvasása a l
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Másolása adatok egy helyszíni adatokhoz, tárolásához használatával [helyi Integration Runtime](create-self-hosted-integration-runtime.md), hozzáférést biztosít az Integration Runtime (a gép használata IP-címe) az Amazon Redshift-fürtön. Lásd: [engedélyezik a hozzáférést a fürthöz](http://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) útmutatást.
+* Másolása adatok egy helyszíni adatokhoz, tárolásához használatával [helyi Integration Runtime](create-self-hosted-integration-runtime.md), hozzáférést biztosít az Integration Runtime (a gép használata IP-címe) az Amazon Redshift-fürtön. Lásd: [engedélyezik a hozzáférést a fürthöz](https://docs.aws.amazon.com/redshift/latest/gsg/rs-gsg-authorize-cluster-access.html) útmutatást.
 * Adatok másolása az Azure-adattárba, lásd: [Azure Data Center IP-címtartományait](https://www.microsoft.com/download/details.aspx?id=41653) a Compute IP-cím és az SQL tartományokat használja az Azure data centers.
 
 ## <a name="getting-started"></a>Első lépések
@@ -54,9 +54,9 @@ Amazon Redshift-beli társított szolgáltatás a következő tulajdonságok tá
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A type tulajdonságot kell beállítani: **AmazonRedshift** | Igen |
-| kiszolgáló |IP-cím vagy a gazdagép neve az Amazon Redshift-kiszolgáló. |Igen |
+| kiszolgáló |IP address or host name of the Amazon Redshift server. |Igen |
 | port |Az Amazon Redshift-kiszolgáló az ügyfélkapcsolatok figyeléséhez használt TCP-port száma. |Nem, az alapértelmezett érték 5439 |
-| adatbázis |Az Amazon Redshift-adatbázis neve. |Igen |
+| adatbázis |Name of the Amazon Redshift database. |Igen |
 | felhasználónév |Az adatbázishoz hozzáféréssel rendelkező felhasználó nevét. |Igen |
 | jelszó |A felhasználói fiókhoz tartozó jelszót. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). |Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Használhatja az Azure integrációs modul vagy a helyi integrációs modul (ha az adattár magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
@@ -127,7 +127,7 @@ Adatok másolása az Amazon Redshift, állítsa be a forrás típusaként a más
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **AmazonRedshiftSource** | Igen |
 | lekérdezés |Az egyéni lekérdezés segítségével olvassa el az adatokat. |SQL-lekérdezési karakterláncot. Például: válassza ki * from tábla. |Nem (Ha a "tableName" adatkészlet paraméter van megadva) |
-| redshiftunloadsettings beállításaiban | A tulajdonságcsoport Amazon Redshift eltávolítása használatakor. | Nem |
+| redshiftUnloadSettings | A tulajdonságcsoport Amazon Redshift eltávolítása használatakor. | Nem |
 | s3LinkedServiceName | -To-be – használja az ideiglenes tárolóként az Amazon S3 hivatkozik egy "az AmazonS3" típusú társított szolgáltatás neve megadásával. | Igen, ha a MEMÓRIÁBÓL használatával |
 | bucketName | Adja meg, az S3 gyűjtőt átmeneti adatok tárolására. Ha nincs megadva, a Data Factory szolgáltatás állít elő, akkor automatikusan.  | Igen, ha a MEMÓRIÁBÓL használatával |
 
@@ -151,7 +151,7 @@ További UNLOAD használatával adatokat másol az Amazon Redshift hatékonyan a
 
 ## <a name="use-unload-to-copy-data-from-amazon-redshift"></a>Használja az adatok másolása az Amazon Redshift eltávolítása
 
-[MEMÓRIÁBÓL](http://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) egy Amazon Redshift, amely egy vagy több fájlt, az Amazon Simple Storage Service (Amazon S3) lekérdezés eredményeit is el által biztosított mechanizmus. Által az Amazon redshiftből a nagyméretű másolási ajánlott módja.
+[MEMÓRIÁBÓL](https://docs.aws.amazon.com/redshift/latest/dg/r_UNLOAD.html) egy Amazon Redshift, amely egy vagy több fájlt, az Amazon Simple Storage Service (Amazon S3) lekérdezés eredményeit is el által biztosított mechanizmus. Által az Amazon redshiftből a nagyméretű másolási ajánlott módja.
 
 **Példa: adatok másolása az Amazon Redshift az Azure SQL Data Warehouse használatával a memóriából való eltávolítása a szakaszos másolás és a polybase segítségével**
 
@@ -207,20 +207,20 @@ Ez a példa a használati eset, a másolási tevékenység kiürítések száma 
 
 Ha az adatok másolása az Amazon Redshift, az Azure Data Factory-közbenső adattípusok a következő hozzárendeléseket használtak Amazon Redshift-adattípusok. Lásd: [séma és adatok írja be a hozzárendelések](copy-activity-schema-and-type-mapping.md) megismerheti, hogyan másolási tevékenység leképezi a forrás séma és adatok típusa a fogadó.
 
-| Amazon Redshift-adattípus | Data factory közbenső adattípus |
+| Amazon Redshift data type | Data factory közbenső adattípus |
 |:--- |:--- |
 | BIGINT |Int64 |
-| LOGIKAI ÉRTÉK |Karakterlánc |
-| CHAR |Karakterlánc |
+| LOGIKAI ÉRTÉK |String |
+| CHAR |String |
 | DATE |DateTime |
-| TIZEDES TÖRT |Tizedes tört |
-| A KÉTSZERES PONTOSSÁG |Dupla |
-| EGÉSZ SZÁM |Int32 |
-| VALÓDI |Önálló |
+| DECIMAL |Decimal |
+| A KÉTSZERES PONTOSSÁG |Double |
+| INTEGER |Int32 |
+| VALÓDI |Single |
 | SMALLINT |Int16 |
-| SZÖVEG |Karakterlánc |
+| SZÖVEG |String |
 | IDŐBÉLYEG |DateTime |
-| VARCHAR |Karakterlánc |
+| VARCHAR |String |
 
 ## <a name="next-steps"></a>További lépések
 A másolási tevékenység az Azure Data Factory által forrásként és fogadóként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md##supported-data-stores-and-formats).

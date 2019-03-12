@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09151dee2d458e2ff4fae8a8a3bc93fa466e4efc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7b82c2261e949c724b1310ee43c6f3fe29766945
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167796"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531011"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>Egyszeri bejelentkezéshez a SAML 2.0 identitásszolgáltató (IdP) használata
 
@@ -196,7 +196,7 @@ A "Set-MsolDomainAuthentication" kapcsolatos további információkért lásd: [
 >[!NOTE]
 >Használat kell futtatásakor "$ecpUrl ="https://WS2012R2-0.contoso.com/PAOS"" csak akkor, ha az identitásszolgáltató ECP bővítmény beállítása. Az Exchange Online ügyfelek, az Outlook Web Application (OWA), kivéve a POST-alapú aktív végpontot. Ha a SAML 2.0 STS valósít meg egy aktív végpontot egy aktív végpontot a Shibboleth ECP megvalósítása hasonló lehet az ezek olyan funkciógazdag ügyfeleket kommunikáljon az Exchange Online szolgáltatáshoz.
 
-Összevonás konfigurálása után válthat vissza a "nem összevont" (vagy "felügyelt"), azonban ez a módosítás végrehajtásához akár két órát vesz igénybe, és új véletlenszerű jelszót a felhőbeli bejelentkezéshez hozzárendelése minden felhasználóhoz van szükség. Váltás vissza a "felügyeltnek" fiókdíjat bizonyos esetekben hiba a beállítások alaphelyzetbe állítása. A tartomány átalakítás további információk:: [ https://msdn.microsoft.com/library/windowsazure/dn194122.aspx ](httpss://msdn.microsoft.com/library/windowsazure/dn194122.aspx).
+Összevonás konfigurálása után válthat vissza a "nem összevont" (vagy "felügyelt"), azonban ez a módosítás végrehajtásához akár két órát vesz igénybe, és új véletlenszerű jelszót a felhőbeli bejelentkezéshez hozzárendelése minden felhasználóhoz van szükség. Váltás vissza a "felügyeltnek" fiókdíjat bizonyos esetekben hiba a beállítások alaphelyzetbe állítása. A tartomány átalakítás további információk:: [ https://msdn.microsoft.com/library/windowsazure/dn194122.aspx ](https://msdn.microsoft.com/library/windowsazure/dn194122.aspx).
 
 ## <a name="provision-user-principals-to-azure-ad--office-365"></a>Az Azure AD egyszerű felhasználói névnek kiépítése / Office 365-höz
 Hitelesítheti a felhasználókat, hogy az Office 365-höz, mielőtt a felhasználó rendszerbiztonsági tagok, amelyek megfelelnek a helyességi feltétel, a SAML 2.0 jogcímek üzembe helyezése Azure ad-ben. Ha a felhasználó rendszerbiztonsági tagok nem ismertek előzetesen Azure ad-hez, majd azok nem használható az összevont bejelentkezés. Az Azure AD Connect vagy a Windows PowerShell egyszerű felhasználói névnek kiépítéséhez használható.

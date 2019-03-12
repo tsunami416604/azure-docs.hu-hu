@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 06c341da73ad8df96d5c97e1cb9da4b7fd5c804e
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: cc384e9f392aa88342c5b8bd97963bed6d7ee814
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820654"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533324"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>Fiókkezelési műveletek az Azure Data Lake Storage Gen1 Python használatával
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ A Data Lake Storage Gen1 használata pythonnal, három modult telepítenie kell.
 
 * Az `azure-mgmt-resource` modult, amely további Azure-modulokat tartalmaz az Active Directoryhoz és más eszközökhöz.
 * A `azure-mgmt-datalake-store` modult, amely az Azure Data Lake Storage Gen1 fiókkezelési műveleteit tartalmazza. Ez a modul további információkért lásd: [Azure Data Lake Storage Gen1 felügyeleti modul-hivatkozás](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python).
-* A `azure-datalake-store` modult, amely az Azure Data Lake Storage Gen1 fájlrendszer-műveleteit tartalmazza. Ez a modul további információkért lásd: [azure-datalake-store fájlrendszermoduljához készült referenciaanyagban](http://azure-datalake-store.readthedocs.io/en/latest/).
+* A `azure-datalake-store` modult, amely az Azure Data Lake Storage Gen1 fájlrendszer-műveleteit tartalmazza. Ez a modul további információkért lásd: [azure-datalake-store fájlrendszermoduljához készült referenciaanyagban](https://azure-datalake-store.readthedocs.io/en/latest/).
 
 A modulok telepítéséhez használja a következő parancsokat.
 
@@ -135,5 +135,5 @@ Az alábbi kódrészlet először a Data Lake Storage Gen1 fiók ügyfél hoz l�
 
 ## <a name="see-also"></a>Lásd még
 
-* [azure-datalake-store Python (Filesystem) reference](http://azure-datalake-store.readthedocs.io/en/latest)
+* [azure-datalake-store Python (Filesystem) reference](https://azure-datalake-store.readthedocs.io/en/latest)
 * [Nyílt forráskódú Big Data-alkalmazások kompatibilis az Azure Data Lake Storage Gen1](data-lake-store-compatible-oss-other-applications.md)

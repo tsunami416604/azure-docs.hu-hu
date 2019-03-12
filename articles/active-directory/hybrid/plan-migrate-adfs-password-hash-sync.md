@@ -12,12 +12,12 @@ ms.date: 12/13/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 806d060cd58322d745ea6ebdaa59eb85c6a35cbd
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: d522b0740b144c39da81a9838f9d6e259fe62d22
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867133"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532779"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>A Jelszókivonat-szinkronizálás az Azure Active Directory összevonási áttelepítésére
 
@@ -139,9 +139,9 @@ Mielőtt megkezdené az összevont identitás felügyelt identitás, példakódo
 |-|-|
 | Azt tervezi, hogy tovább használhassa a az AD FS más alkalmazásokkal (az Azure AD-től eltérő és az Office 365). | Miután átalakítja a tartományok, az AD FS és az Azure AD fog használni. Fontolja meg a felhasználói élményt. Bizonyos példahelyzetekben a felhasználók hitelesítéséhez kétszer szükség lehet: egyszer az Azure AD-(ahol a felhasználó más alkalmazások, például az Office 365 egyszeri bejelentkezés hozzáférést kap), és újra olyan alkalmazások, mint egy függőentitás-megbízhatóságot az AD FS továbbra is vannak kötve. |
 | Az AD FS-példány nagymértékben testre szabott és támaszkodik a onload.js fájlban meghatározott testreszabási beállítások (például ha módosította a bejelentkezési élmény, hogy a felhasználók használhatják csak egy **SamAccountName** felhasználónevének formátumát egy felhasználó helyett egyszerű felhasználónév (UPN), vagy a szervezet rendelkezik az erősen márkás a bejelentkezési élmény). A onload.js fájl nem duplikálható az Azure AD-ben. | A folytatás előtt ellenőriznie kell, hogy az Azure AD aktuális testreszabási igényeinek megfelel. További információt és útmutatást lásd a az AD FS márkajelzési és az AD FS testreszabás.|
-| Az AD FS használatával blokkolja a hitelesítési ügyfelek korábbi verzióiban.| Fontolja meg, és cserélje le az AD FS vezérlők együttes használatával tiltsa le a hitelesítési ügyfelek korábbi verziói [feltételes hozzáférés-vezérlés](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) és [Exchange Online ügyfél-hozzáférési szabályok](http://aka.ms/EXOCAR). |
+| Az AD FS használatával blokkolja a hitelesítési ügyfelek korábbi verzióiban.| Fontolja meg, és cserélje le az AD FS vezérlők együttes használatával tiltsa le a hitelesítési ügyfelek korábbi verziói [feltételes hozzáférés-vezérlés](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) és [Exchange Online ügyfél-hozzáférési szabályok](https://aka.ms/EXOCAR). |
 | Felhasználók a multi-factor authentication szolgáltatás egy a helyszíni multi-factor authentication kiszolgáló megoldás elleni végrehajtásához, amikor a felhasználók hitelesítéséhez az AD FS-hez van szüksége.| Egy felügyelt identitás a tartományban a multi-factor authentication kihívást keresztül a helyszíni többtényezős hitelesítési megoldás nem behelyezése a hitelesítési folyamatát. Használhatja azonban a multi-factor authentication az Azure multi-factor Authentication szolgáltatás, a tartomány átalakítása után.<br /><br /> Ha a felhasználók jelenleg nem használja az Azure multi-factor Authentication szolgáltatás, a egy onetime felhasználói regisztrációs lépésre szükség. Kell előkészítése és a tervezett regisztrációs kommunikálni a felhasználók számára. |
-| Jelenleg használja a hozzáférés-vezérlési házirendeket (engedélyezési szabályok) az AD FS Office 365-höz való hozzáférés szabályozásához.| Fontolja meg, és cserélje le a szabályzatok Azure ad-ben egyenértékű [feltételes hozzáférési szabályzatok](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) és [Exchange Online ügyfél-hozzáférési szabályok](http://aka.ms/EXOCAR).|
+| Jelenleg használja a hozzáférés-vezérlési házirendeket (engedélyezési szabályok) az AD FS Office 365-höz való hozzáférés szabályozásához.| Fontolja meg, és cserélje le a szabályzatok Azure ad-ben egyenértékű [feltételes hozzáférési szabályzatok](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) és [Exchange Online ügyfél-hozzáférési szabályok](https://aka.ms/EXOCAR).|
 
 ### <a name="common-ad-fs-customizations"></a>Közös AD FS Testreszabás
 
@@ -400,7 +400,7 @@ Hajtsa végre a következő feladatokat a Jelszókivonat-szinkronizálás és az
 A Jelszókivonat-szinkronizálás teszteléséhez:
 
 1. Nyissa meg az Internet Explorer InPrivate módban, úgy, hogy közvetlen egyszeri bejelentkezés nem automatikus bejelentkezés.
-2. Nyissa meg az Office 365 bejelentkezési oldala ([http://portal.office.com](http://portal.office.com/)).
+2. Nyissa meg az Office 365 bejelentkezési oldala ([https://portal.office.com](https://portal.office.com/)).
 3. Adja meg a felhasználó egyszerű Felhasználónevét, és válassza ki **tovább**. Győződjön meg arról, hogy adjon meg egy hibrid felhasználó, aki szinkronizálása a helyszíni Active Directory-példányból, és akik korábban használták az összevont hitelesítés Felhasználóneve. Megjelenik egy oldal, amelyen meg a felhasználónevet és jelszót:
 
    ![Képernyőkép a bejelentkezési oldal, ahol megadhatja a felhasználónevet](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image18.png)

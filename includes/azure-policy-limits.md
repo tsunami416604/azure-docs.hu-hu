@@ -8,23 +8,23 @@ ms.topic: include
 ms.date: 09/18/2018
 ms.author: dacoulte
 ms.custom: include file
-ms.openlocfilehash: 0a54dfdb810ea578c1e7c8fcc7ca0343e72164ae
-ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
-ms.translationtype: HT
+ms.openlocfilehash: 57cec39bde460c6079091490acf541761c61e003
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50964601"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553633"
 ---
-Az Azure Policy egyes objektumtípusainak van egy maximális száma. A _Hatókör_ bejegyzés az előfizetést vagy a [felügyeleti csoportot](../articles/governance/management-groups/overview.md) jelöli.
+Nincs egyes objektumtípusoknál az Azure Policy maximális számát. A _Hatókör_ bejegyzés az előfizetést vagy a [felügyeleti csoportot](../articles/governance/management-groups/overview.md) jelöli.
 
 | Ahol | Mi | Maximális darabszám |
 |---|---|---|
 | Hatókör | Szabályzatdefiníciók | 250 |
 | Hatókör | Kezdeményezési definíciók | 100 |
-| Bérlő | Kezdeményezési definíciók | 1000 |
-| Hatókör | Szabályzat-/Kezdeményezés-hozzárendelések | 100 |
+| Bérlő | Kezdeményezési definíciók | 1,000 |
+| Hatókör | Szabályzat vagy a kezdeményezés-hozzárendelést | 100 |
 | Szabályzatdefiníció | Paraméterek | 20 |
 | Kezdeményezési definíció | Házirendek | 100 |
 | Kezdeményezési definíció | Paraméterek | 100 |
-| Szabályzat-/Kezdeményezés-hozzárendelések | Kizárások (notScope) | 250 |
-| Szabályzat szabálya | Beágyazott feltételes értékek | 512 |
+| Szabályzat vagy a kezdeményezés-hozzárendelést | Kizárások (notScope) | 250 |
+| Szabályzatbeli szabály | Beágyazott feltételek | 512 |

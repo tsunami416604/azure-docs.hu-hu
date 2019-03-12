@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 10/09/2017
 ms.author: erikre
-ms.openlocfilehash: 79582e59d9ad9396acf29d6e35d640edcb20dca3
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: bae35f9e153227ddcca6e0d20ce862317b968eb1
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275955"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536011"
 ---
 # <a name="cloud-cruiser-and-microsoft-azure-billing-api-integration"></a>A cloud Cruiser és a Microsoft Azure Billing API-integráció
 Ez a cikk ismerteti, hogy az új Microsoft Azure Billing API-kkal gyűjtött adatokat is a Cloud Cruiser a munkafolyamat költség szimulációt és elemzést.
@@ -137,7 +137,7 @@ Az új Azure-használati API-val Cloud Cruiser is erőforrás-címkézési vonat
 Díjszabási oldalán a Cloud Cruiser automatizálja a költséghelyi visszacsatolási és költséghelyi elszámolás folyamatát, és a eszközcímke-információ segítségével lehessen vonni a megfelelő végfelhasználói kereskedelem (részleg, részleg, projekt, stb.) használatát. Ezt az automatizálást hatalmas fokozása biztosít, és a egy egységes és naplózható díjszabási folyamat gondoskodhat.
 
 ### <a name="creating-a-resource-group-with-tags-on-microsoft-azure"></a>A címkék a Microsoft Azure-erőforráscsoport létrehozása
-Ez az oktatóanyag első lépéseként a hozzon létre egy erőforráscsoportot az Azure Portalon, majd hozzon létre új címkéket az erőforrásokhoz való társításához. Ebben a példában azt hoz létre a következő címkékkel: részleg, környezet tulajdonosa, projekt.
+Ez az oktatóanyag első lépéseként a hozzon létre egy erőforráscsoportot az Azure Portalon, majd hozzon létre új címkéket az erőforrásokhoz való társításához. Ebben a példában azt hozhat létre a következő címkékkel: Részleg, környezet tulajdonosa, a projekt.
 
 Az alábbi képernyőképen a társított címkékkel rendelkező erőforráscsoporthoz mintáját szemlélteti.
 
@@ -200,7 +200,7 @@ Most már csak hozzá kell adnunk a egy lépéssel a használati adatok közzét
 A legjobb része, hogy csak kell lépnie a folyamat során egyszer. A munkafüzet befejezése után adja hozzá az ütemező egyszerűen, és óránként vagy naponta fusson az ütemezett időpontban. Akkor annyit új jelentések létrehozásakor vagy testreszabása a meglévőket, annak érdekében, hogy a sem értelmezhető elemzési beszerezni a felhőbeli használati adatok elemzése.
 
 ### <a name="next-steps"></a>További lépések
-* A Cloud Cruiser munkafüzetek és a jelentések létrehozásával kapcsolatos részletes útmutatásért tekintse meg Cloud Cruiser online [dokumentáció](http://docs.cloudcruiser.com/) (érvényes bejelentkezés szükséges).  További információ a Cloud Cruiser Forduljon [ info@cloudcruiser.com ](mailto:info@cloudcruiser.com).
+* A Cloud Cruiser munkafüzetek és a jelentések létrehozásával kapcsolatos részletes útmutatásért tekintse meg Cloud Cruiser online [dokumentáció](https://docs.cloudcruiser.com/) (érvényes bejelentkezés szükséges).  További információ a Cloud Cruiser Forduljon [ info@cloudcruiser.com ](mailto:info@cloudcruiser.com).
 * Lásd: [betekintést nyerhet a Microsoft Azure erőforrás-használat](billing-usage-rate-card-overview.md) az Azure erőforrás-használat és RateCard API-k áttekintése.
 * Tekintse meg a [Azure Billing – REST API-referencia](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c) mindkét API-k további információ az Azure Resource Manager által nyújtott API-k készlete részét képező.
 * Ha szeretné, hogy közvetlenül a mintakódot, tekintse meg a Microsoft Azure Billing API-Kódminták a [Azure-Kódminták](https://azure.microsoft.com/documentation/samples/?term=billing).

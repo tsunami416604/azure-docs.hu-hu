@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: article
 ms.date: 02/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 70a611f6a9b52ba6a4c904cc4cfa9bc8f0b4df8e
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 65a3aa41c72341aa57c8cb2ddca5d1ed10f0ec06
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409584"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530841"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box-lemezek korlátai
 
@@ -46,7 +46,7 @@ Az Azure storage szolgáltatási korlátai és gyakorlati tanácsok az elnevezé
 
 - Másolja az adatokat közvetlenül a lemezeket. Adatok másolása az előre létrehozott *BlockBlob*,*PageBlob*, és *AzureFile* mappákat.
 - Egy mappát a *BlockBlob* és *PageBlob* tárolója. Például jönnek létre tárolók *BlockBlob/tároló* és *PageBlob/tároló*.
-- Ha egy meglévő Azure objektum (például blob) a felhőben, a neve megegyezik az objektumot, másolja, a Data Box-lemezek felülírja a fájl a felhőben.
+- Ha a felhőben, a neve megegyezik az objektum, amely másolásakor rendelkezik egy meglévő Azure objektum (pl. blobok), akkor Data Box-lemezek file(1) a felhőben, a fájl átnevezése.
 - Minden fájl kerülnek *BlockBlob* és *PageBlob* megosztások töltenek fel a blokkblobok és lapblobok jelölik.
 - Bármely üres könyvtár-hierarchia (nélküli fájlok) alatt létrehozott *BlockBlob* és *PageBlob* mappák feltöltés nem.
 - Ha bármilyen hiba merül fel, ha az adatok feltöltése az Azure-ba, hibanaplót a célként megadott tárfiók létrejön. Ez hiba a napló elérési útja a Portalon érhető el, ha a feltöltés befejeződött, és a naplóban korrekciós műveletek végrehajtására. A feltöltött adatok ellenőrzése nélkül ne törölje adatokat a forrásból.

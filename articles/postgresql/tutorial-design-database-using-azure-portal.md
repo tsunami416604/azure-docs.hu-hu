@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 03/20/2018
-ms.openlocfilehash: 869bee8fcd0d1c2876ac7317fb239a1d5c61cb87
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 2c613319e635cf83b171da4975fe384b2ea80a2c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56864549"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534923"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-the-azure-portal"></a>Oktatóanyag: Azure Database for postgresql-hez az Azure portal használatával tervezése
 
@@ -57,7 +57,7 @@ Kövesse az alábbi lépéseket az Azure-adatbázis PostgreSQL-kiszolgálóhoz l
    > [!IMPORTANT]
    > A kiszolgáló itt megadott rendszergazdai bejelentkezési nevét és jelszavát kell majd használnia az oktatóanyag későbbi szakaszaiban a kiszolgálóra és az adatbázisaira való bejelentkezéshez. Jegyezze meg vagy jegyezze fel ezt az információt későbbi használatra.
 
-4.  Az új kiszolgáló tarifacsomagjának megadásához kattintson a **Tarifacsomag** elemre. Ehhez az oktatóanyaghoz válassza a következőket: **Általános célú** tarifacsomag, **4. generációs** számítási generáció, 2 **virtuális mag**, 5 GB **tárhely** és 7 napos **megőrzési idő a biztonsági mentésekhez**. Ha azt szeretné, hogy a rendszer georedundáns tárhelyen tárolja a kiszolgáló automatikus biztonsági másolatait, válassza a **Georedundáns** lehetőséget.
+4.  Az új kiszolgáló tarifacsomagjának megadásához kattintson a **Tarifacsomag** elemre. A jelen oktatóanyag esetében válassza ki a **általános célú**, **Gen 5** számítási generáció, 2 **virtuális magok**, 5 GB-os **tárolási** és 7 napos  **biztonsági másolat megőrzési idejének**. Ha azt szeretné, hogy a rendszer georedundáns tárhelyen tárolja a kiszolgáló automatikus biztonsági másolatait, válassza a **Georedundáns** lehetőséget.
  ![Azure Database for PostgreSQL – tarifacsomag kiválasztása](./media/tutorial-design-database-using-azure-portal/2-pricing-tier.png)
 
 5.  Kattintson az **OK** gombra.

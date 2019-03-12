@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: erikre
-ms.openlocfilehash: 1319c44dab465ec2d1fa5ead99e7f3cba8965850
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 52612419599ef69e7476c660b52f9e6e36946825
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265634"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535399"
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>A vállalati ügyfelek a Reporting API-k áttekintése
 A Reporting API-k engedélyezése a nagyvállalati Azure-ügyfelek használati és számlázási adatok programozott módon lekérni az előnyben részesített adatok elemzésére szolgáló eszközöket. A vállalati felhasználók regisztráltak- [nagyvállalati szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) az Azure-ral az egyeztetett pénzügyi kötelezettségvállalások és egyéni díjszabás az Azure-erőforrásokhoz való hozzáférést.
@@ -34,7 +34,7 @@ A Reporting API-k engedélyezése a nagyvállalati Azure-ügyfelek használati �
 |Engedélyezés| Adja meg az értéket a következő formátumban: **tulajdonosi {API_KEY}** <br/> Példa: tulajdonosi eyr... 09| 
 
 ## <a name="consumption-apis"></a>Szolgáltatáshasználati API-jai
-A Swagger-végpont érhető el [Itt](https://consumption.azure.com/swagger/ui/index) esetében az API-k leírt, amely alatt könnyen önelemzési API- és ügyféloldali SDK-k használatával képességét engedélyezze [AutoRest](https://github.com/Azure/AutoRest) vagy [Swagger CodeGen](http://swagger.io/swagger-codegen/). 2014. május 1-én kezdődő adatokat az API-n keresztül érhető el. 
+A Swagger-végpont érhető el [Itt](https://consumption.azure.com/swagger/ui/index) esetében az API-k leírt, amely alatt könnyen önelemzési API- és ügyféloldali SDK-k használatával képességét engedélyezze [AutoRest](https://github.com/Azure/AutoRest) vagy [Swagger CodeGen](https://swagger.io/swagger-codegen/). 2014. május 1-én kezdődő adatokat az API-n keresztül érhető el. 
 
 * **Egyenleg és összegzése** – a [egyenlegét és az API összefoglaló](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) kínál a jóváírásokat összefoglaló balances, új vásárlások, Azure Marketplace szolgáltatási díjai, módosítását és kereten túli díjak havi összegzését.
 

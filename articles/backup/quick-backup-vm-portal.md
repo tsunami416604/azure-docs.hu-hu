@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 7/17/2018
 ms.author: saurse
 ms.custom: mvc
-ms.openlocfilehash: 9d2578e10916d3770e73ab88e4d0e63aea3fe420
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
-ms.translationtype: HT
+ms.openlocfilehash: 445437fe92ec75f1d34021808d7d47a372c2a44b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114776"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535178"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>Virtuális gép biztonsági mentése az Azure-ban
 Az Azure biztonsági másolatok létrehozhatók az Azure Portal segítségével. Ez a módszer egy böngészőalapú felhasználói felületet biztosít az Azure biztonsági másolatok, valamint az összes kapcsolódó erőforrás létrehozásához és konfigurálásához. Adatai védelme érdekében érdemes rendszeres időközönként biztonság mentést végeznie. Az Azure Backup georedundáns helyreállítási tárolókban tárolható helyreállítási pontokat hoz létre. Ez a cikk a virtuális gépek (VM-ek) az Azure Portal használatával való biztonsági mentését mutatja be részletesen. 
@@ -25,7 +25,7 @@ Ez a rövid útmutató a meglévő Azure-beli virtuális gépek biztonsági ment
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
 
-Jelentkezzen be az Azure Portalra a http://portal.azure.com címen.
+Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
 
 ## <a name="select-a-vm-to-back-up"></a>A virtuális gép kiválasztása a biztonsági mentéshez
 Hozzon létre egy egyszerű, ütemezett napi biztonsági mentést egy Recovery Services-tárolóba. 

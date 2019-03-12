@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: kgremban
-ms.openlocfilehash: 7b2876f30af23f73be5a53770ac75ef323d90c37
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 80091adaa364289ec9cddf6e259242e376b76b37
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56668977"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549612"
 ---
 # <a name="get-started-with-device-management-python"></a>Ismerkedés az eszközfelügyelettel (Python)
 
@@ -37,8 +37,8 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 * [Python 2.x vagy 3.x](https://www.python.org/downloads/). Mindenképp a rendszernek megfelelő, 32 vagy 64 bites telepítést használja. Amikor a rendszer erre kéri, mindenképp adja hozzá a Pythont a platformspecifikus környezeti változóhoz. Ha a Python 2.x verziót használja, előfordulhat, hogy [telepítenie vagy frissítenie kell a *pip*-et, a Python csomagkezelő rendszerét](https://pip.pypa.io/en/stable/installing/).
     * Telepítse a [azure-iothub-device-client](https://pypi.org/project/azure-iothub-device-client/) csomag, a parancs használatával   `pip install azure-iothub-device-client`
     * Telepítse a [azure-iothub-service-client](https://pypi.org/project/azure-iothub-service-client/) csomag, a parancs használatával   `pip install azure-iothub-service-client`
-* Ha Windows operációs rendszert használ, a [Visual C++ terjeszthető csomagra](http://www.microsoft.com/download/confirmation.aspx?id=48145) van szükség a Python natív DLL-jei használatához.
-* Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](http://azure.microsoft.com/pricing/free-trial/) mindössze néhány perc alatt.)
+* Ha Windows operációs rendszert használ, a [Visual C++ terjeszthető csomagra](https://www.microsoft.com/download/confirmation.aspx?id=48145) van szükség a Python natív DLL-jei használatához.
+* Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) mindössze néhány perc alatt.)
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 

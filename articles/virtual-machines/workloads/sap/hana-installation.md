@@ -1,6 +1,6 @@
 ---
 title: Az SAP HANA az Azure-ban (nagyméretű példányok) SAP HANA telepítése |} A Microsoft Docs
-description: Útmutató az SAP HANA telepítése egy SAP HANA az Azure-ban (nagyméretű példányok).
+description: Hogyan telepítheti az SAP HANA-SAP HANA az Azure-ban (nagyméretű példányok).
 services: virtual-machines-linux
 documentationcenter: ''
 author: hermanndms
@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/03/2019
+ms.date: 03/05/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d81207195eb19a386d0d98fd4bfa6ba53ca972e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 5bdf23d1a2142e5c83ceeb72a79ca4fbea65d09c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316642"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534276"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Hogyan telepítse és konfigurálja az SAP HANA (nagyméretű példányok) az Azure-ban
 
@@ -28,7 +28,7 @@ A cikk elolvasása előtt ismerkedjen meg [HANA nagyméretű példányok gyakori
 SAP HANA telepítése a feladata. Megkezdése után a kapcsolatot az Azure virtuális hálózatok és a nagyméretű HANA-példány egység között egy új SAP HANA Azure-ban (nagyméretű példányok) kiszolgálóra telepíti. 
 
 > [!Note]
-> SAP szabályzatonként SAP Hana telepítése egy személy, aki a vizsgára Certified SAP technológia társítja, az SAP HANA-telepítés minősítő vizsga megfelelt, vagy az SAP-minősítéssel rendelkező rendszerintegrátor (SI) hajtható végre.
+> SAP szabályzatonként SAP Hana telepítése egy személy, aki a vizsgára Certified SAP technológia társítja, az SAP HANA-telepítés minősítő vizsga megfelelt, vagy egy SAP-minősítéssel rendelkező rendszerintegrátor (SI) hajtható végre.
 
 Ha tervezi az HANA 2.0 telepítése, lásd: [SAP támogatási Megjegyzés #2235581 – SAP HANA: Támogatott operációs rendszerek](https://launchpad.support.sap.com/#/notes/2235581/E) , győződjön meg arról, hogy az operációs rendszer támogatott, az SAP HANA kiadás, amely telepíti. A támogatott operációs rendszer HANA 2.0 szigorúbb korlátozások vonatkoznak, mint a támogatott operációs rendszer HANA 1.0. 
 
@@ -202,14 +202,15 @@ A SAP HANA 1.0-s verzió legfeljebb SPS12, ezeket a paramétereket állítható 
 
 A hdbparam keretrendszer használatával a SAP HANA-adatbázis telepítése után is konfigurálhatja a paramétereket. 
 
-Nagyméretű HANA-példányok a használt tárterület használata fájl mérete korlátozott. A [méretének korlátozása, 16TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) fájlonként. Ellentétben a fájlméretre vonatkozó korlátozások például EXT3 fájlrendszereket, a trendelemzést HANA még nem ismeri implicit módon, a storage korlátozás kényszeríti ki a nagyméretű HANA-példányokhoz tárolót. Ennek eredményeképpen HANA fog nem automatikusan létrehozni egy új adatfájlt a fájl maximális mérete 16 TB-os elérésekor. Mint 16 TB a fájl megcélzott HANA próbál, HANA jelentést hibák és az index kiszolgáló összeomlik, a végén.
+Nagyméretű HANA-példányok a használt tárterület használata fájl mérete korlátozott. A [méretének korlátozása, 16 TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) fájlonként. Ellentétben a fájlméretre vonatkozó korlátozások EXT3 fájlrendszereket, a HANA még nem ismeri implicit módon, a storage korlátozás kényszeríti ki a nagyméretű HANA-példányokhoz tárolót. Ennek eredményeképpen HANA fog nem automatikusan létrehozni egy új adatfájlt a fájl maximális mérete 16 TB-os elérésekor. Mint 16 TB a fájl megcélzott HANA próbál, HANA jelentést hibák és az index kiszolgáló összeomlik, a végén.
 
 > [!IMPORTANT]
-> Az adatfájlokat a 16 TB fájlok méretkorlátjának nagyméretű HANA-példány tárolási túli növekszik próbál HANA elkerülése érdekében állítsa be az alábbi paramétereket a Hana global.ini konfigurációs fájlban kell
+> Az adatfájlokat a 16 TB fájlok méretkorlátjának nagyméretű HANA-példány tárolási túli növekszik próbál HANA elkerülése érdekében állítsa be az alábbi paramétereket az SAP HANA global.ini konfigurációs fájlban kell
 > 
 - datavolume_striping=true
 - datavolume_striping_size_gb = 15000
 - Lásd még az SAP Megjegyzés [#2400005](https://launchpad.support.sap.com/#/notes/2400005)
+- Vegye figyelembe az SAP-jegyzetnek [#2631285](https://launchpad.support.sap.com/#/notes/2631285)
 
 
 Az SAP HANA 2.0-val a hdbparam keretrendszer elavult. Ennek eredményeképpen a paramétert kell beállítani az SQL-parancsok használatával. További információkért lásd: [SAP-jegyzetnek #2399079: A HANA 2 hdbparam felszámolása](https://launchpad.support.sap.com/#/notes/2399079).

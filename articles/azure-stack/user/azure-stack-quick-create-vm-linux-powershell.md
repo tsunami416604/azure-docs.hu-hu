@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 12/03/2018
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.custom: mvc
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: fd7dd06692e20eb0e7cc02af8d2f36c4dad8b597
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: e6afea414ed632dead97a4b9adc7c623e48bd7ef
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251928"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766699"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-by-using-powershell-in-azure-stack"></a>Gyors útmutató: Linuxos virtuális gép létrehozása az Azure Stack PowerShell használatával
 
@@ -390,7 +390,7 @@ A virtuális gép üzembe helyezését követően konfigurálja a virtuális gé
 Get-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
 ```
 
-Az ssh-val telepített ügyfél rendszer a következő parancs segítségével csatlakozhat a virtuális géphez. Ha Windows dolgozik, akkor használhatja [Putty](http://www.putty.org/) a kapcsolat létrehozásához.
+Az ssh-val telepített ügyfél rendszer a következő parancs segítségével csatlakozhat a virtuális géphez. Ha Windows dolgozik, akkor használhatja [Putty](https://www.putty.org/) a kapcsolat létrehozásához.
 
 ```
 ssh <Public IP Address>

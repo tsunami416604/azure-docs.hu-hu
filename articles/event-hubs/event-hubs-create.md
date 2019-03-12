@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/23/2019
 ms.author: shvija
-ms.openlocfilehash: 073d1b54b1c6da2b1178f482d17b4de7abcc8a51
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: a7976c0798bd78fd51632d3025147526a645b041
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888923"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57528796"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-portal"></a>Gyors útmutató: Létrehoz egy eseményközpontot, az Azure portal használatával
 Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
@@ -60,7 +60,7 @@ Egy Event Hubs-névtér egyedi hatókörkezelési tárolót biztosít, amelyre a
    ![Gomb hozzáadása](./media/event-hubs-quickstart-portal/event-hubs-add-toolbar.png)
 4. Az a **névtér létrehozása** lapon, tegye a következőket:
     1. Adja meg a névtér nevét. A rendszer azonnal ellenőrzi, hogy a név elérhető-e.
-    2. Shoose a tarifacsomagot (Basic vagy Standard).
+    2. Válassza ki a tarifacsomagot (Basic vagy Standard).
     3. Válassza ki a **előfizetés** , amelyre szeretné létrehozni a névteret.
     4. Válassza ki a **hely** a névtérhez.
     5. Kattintson a **Létrehozás** gombra. Lehet, hogy néhány percet várnia kell, amíg a rendszer teljes mértékben kiépíti az erőforrásokat.

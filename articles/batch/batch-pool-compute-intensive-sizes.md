@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: lahugh
-ms.openlocfilehash: 3c3d534392431e79feabe37fe940ea87f586c660
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: d3152eb4b2512e05cad60772f8c4c75dd929758a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051696"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535586"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Rdma-t vagy a GPU-példányt használja a Batch-készletekben
 
@@ -45,7 +45,7 @@ Az rdma-t vagy GPU képességeit a Batch számításigényes méretek csak egyes
 
 | Méret | Képesség | Operációs rendszerek | Szükséges szoftverek | Készlet beállításai |
 | -------- | -------- | ----- |  -------- | ----- |
-| [H16r, H16mr, A8, a9-es](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16.04 LTS, vagy<br/>CentOS-alapú HPC<br/>(Az azure Marketplace-en) | Az Intel MPI 5<br/><br/>Linuxos RDMA-illesztőprogramok | Engedélyezze a csomópontok közötti kommunikáció, tiltsa le az egyidejű feladat a végrehajtás |
+| [H16r, H16mr, A8, A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16.04 LTS, vagy<br/>CentOS-alapú HPC<br/>(Az azure Marketplace-en) | Az Intel MPI 5<br/><br/>Linuxos RDMA-illesztőprogramok | Engedélyezze a csomópontok közötti kommunikáció, tiltsa le az egyidejű feladat a végrehajtás |
 | [Hálózati vezérlő által, az NCv2, az NCv3, NDv2 sorozat](../virtual-machines/linux/n-series-driver-setup.md) | Az NVIDIA Tesla GPU (eltérő sorozat) | Ubuntu 16.04 LTS, vagy<br/>CentOS 7.3 vagy 7.4<br/>(Az azure Marketplace-en) | NVIDIA CUDA vagy CUDA eszközkészlet illesztőprogramok | – | 
 | [NV, NVv2 sorozat](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS, vagy<br/>CentOS 7.3.<br/>(Az azure Marketplace-en) | Az NVIDIA GRID illesztőprogramok | – |
 <sup>*</sup>RDMA-kompatibilis N-sorozat méretei is tartalmazhat az NVIDIA Tesla gpu-k
@@ -54,7 +54,7 @@ Az rdma-t vagy GPU képességeit a Batch számításigényes méretek csak egyes
 
 | Méret | Képesség | Operációs rendszerek | Szükséges szoftverek | Készlet beállításai |
 | -------- | ------ | -------- | -------- | ----- |
-| [H16r, H16mr, A8, a9-es](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/windows/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | A Windows Server 2016-ban, 2012 R2-ben, vagy<br/>2012 (az azure Marketplace-en) | A Microsoft MPI 2012 R2 vagy újabb, vagy<br/> Az Intel MPI 5<br/><br/>Windows RDMA-illesztőprogramok | Engedélyezze a csomópontok közötti kommunikáció, tiltsa le az egyidejű feladat a végrehajtás |
+| [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/windows/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | A Windows Server 2016-ban, 2012 R2-ben, vagy<br/>2012 (az azure Marketplace-en) | A Microsoft MPI 2012 R2 vagy újabb, vagy<br/> Az Intel MPI 5<br/><br/>Windows RDMA-illesztőprogramok | Engedélyezze a csomópontok közötti kommunikáció, tiltsa le az egyidejű feladat a végrehajtás |
 | [Hálózati vezérlő, NCv2, az NCv3, ND, NDv2 sorozat](../virtual-machines/windows/n-series-driver-setup.md) | Az NVIDIA Tesla GPU (eltérő sorozat) | A Windows Server 2016-ban, vagy <br/>2012 R2 (az Azure Marketplace-en) | NVIDIA CUDA vagy CUDA eszközkészlet illesztőprogramok| – | 
 | [NV, NVv2 sorozat](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | A Windows Server 2016-ban, vagy<br/>2012 R2 (az Azure Marketplace-en) | Az NVIDIA GRID illesztőprogramok | – |
 <sup>*</sup>RDMA-kompatibilis N-sorozat méretei is tartalmazhat az NVIDIA Tesla gpu-k
@@ -67,7 +67,7 @@ Az rdma-t vagy GPU képességeit a Batch számításigényes méretek csak egyes
 
 | Méret | Képesség | Operációs rendszerek | Szükséges szoftverek | Készlet beállításai |
 | -------- | ------- | -------- | -------- | ----- |
-| [H16r, H16mr, A8, a9-es](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | A Windows Server 2016, 2012 R2, 2012, vagy<br/>2008 R2 (vendég operációs rendszerek) | A Microsoft MPI 2012 R2 vagy újabb, vagy<br/>Az Intel MPI 5<br/><br/>Windows RDMA-illesztőprogramok | Csomópontok közötti kommunikáció,<br/> egyidejű feladat a végrehajtás letiltása |
+| [H16r, H16mr, A8, A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | A Windows Server 2016, 2012 R2, 2012, vagy<br/>2008 R2 (vendég operációs rendszerek) | A Microsoft MPI 2012 R2 vagy újabb, vagy<br/>Az Intel MPI 5<br/><br/>Windows RDMA-illesztőprogramok | Csomópontok közötti kommunikáció,<br/> egyidejű feladat a végrehajtás letiltása |
 
 ## <a name="pool-configuration-options"></a>Készlet konfigurációs lehetőségek
 
@@ -100,7 +100,7 @@ Speciális Virtuálisgép-méretét a Batch-készlet konfigurálásához szüks�
 
 Windows NC-csomópontok készletét a CUDA-alkalmazások futtatásához kell NVDIA GPU-illesztők telepítése. Az alábbi minta lépéseket alkalmazáscsomag telepítéséhez az NVIDIA GPU-illesztőprogramokat használja. Ezt a lehetőséget választhatja azt is, ha a számítási feladat egy adott GPU illesztőprogramjának verziószámát függ.
 
-1. A GPU-illesztőprogramokat, a Windows Server 2016-ot egy telepítési csomagjának letöltése a [NVIDIA webhely](https://www.nvidia.com/Download/index.aspx) – például [verzió 411.82](http://us.download.nvidia.com/Windows/Quadro_Certified/411.82/411.82-tesla-desktop-winserver2016-international.exe). Mentse a fájlt helyileg a például egy rövid nevet használó *GPUDriverSetup.exe*.
+1. A GPU-illesztőprogramokat, a Windows Server 2016-ot egy telepítési csomagjának letöltése a [NVIDIA webhely](https://www.nvidia.com/Download/index.aspx) – például [verzió 411.82](https://us.download.nvidia.com/Windows/Quadro_Certified/411.82/411.82-tesla-desktop-winserver2016-international.exe). Mentse a fájlt helyileg a például egy rövid nevet használó *GPUDriverSetup.exe*.
 2. Hozzon létre a csomag zip-fájlban.
 3. A csomag feltöltése a Batch-fiókhoz. Útmutató: a [alkalmazáscsomagok](batch-application-packages.md) útmutatást. Adjon meg egy alkalmazásazonosítót például *GPUDriver*, és a egy verziót például *411.82*.
 1. A Batch API-k vagy az Azure portal használatával, hoz létre egy készletet a kívánt számú csomópontot és a méretezési csoport virtuálisgép-konfiguráció. Az alábbi táblázatban látható minta beállítások csendes használatával az indítási tevékenység NVIDIA GPU-illesztők telepítése:
@@ -130,7 +130,7 @@ Linux NC-csomópontok készletét a CUDA-alkalmazások futtatásához szüksége
 | ---- | ---- |
 | **Rendszerkép típusa** | Egyéni rendszerkép |
 | **Egyéni rendszerkép** | *A lemezkép nevét* |
-| **Csomóponti ügynök SKU** | Batch.node.ubuntu 16.04 |
+| **Csomóponti ügynök SKU** | batch.node.ubuntu 16.04 |
 | **A csomópont mérete** | NC6 Standard |
 
 ## <a name="example-microsoft-mpi-on-a-windows-h16r-vm-pool"></a>Példa: A Microsoft MPI egy Windows H16r Virtuálisgép-készlet

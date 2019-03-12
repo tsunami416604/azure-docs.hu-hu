@@ -3,17 +3,17 @@ title: Hozzon létre, és az Azure IoT Central alkalmazáshoz a telemetriai adat
 description: Az Azure IoT-központ-telemetria szabályok lehetővé teszik az eszközök, közel valós időben figyelheti és automatikusan követve indíthatók el műveletek, például egy e-mailt küldhet a szabály aktiválásakor.
 author: ankitgupta
 ms.author: ankitgup
-ms.date: 11/02/2018
+ms.date: 02/02/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: aee31f54ddf4e71dd9b9391ec93d0f2319addc3f
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 4668ffd30742f81552cd29f6cdba4c0f82549687
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307959"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773503"
 ---
 # <a name="create-a-telemetry-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Telemetria szabály létrehozása és az Azure IoT központi alkalmazás-értesítések beállítása
 
@@ -27,18 +27,13 @@ Eszközök telemetriai mérési segítségével numerikus adatokat küldjön az 
 
 Hozzon létre egy telemetriai szabályt, az eszköz sablon legalább egy telemetriai mérési meghatározott kell rendelkeznie. Ez a példa hőmérséklettel és páratartalommal kapcsolatos telemetriai adatokat küld hűtött Eladóautomata eszközt használja. A szabály az eszköz által jelentett hőmérséklet figyeli, és a egy e-mailt küld, ha ezt túllépik 80 fok.
 
-1. Device Explorer használatával, keresse meg az eszköz sablon, amelynek a szabályt ad hozzá.
-
-1. A kiválasztott sablon alapján válassza ki egy meglévő eszközt.
-
-    >[!TIP]
-    >Ha a sablon nem minden olyan eszközt, majd egy új eszköz hozzáadásához először.
+1. Használatával a **eszközsablonok** lapon, keresse meg az eszköz sablon, amelynek a szabályt ad hozzá.
 
 1. Szabályok még nem hozta létre, ha a következő képernyő jelenik meg:
 
     ![Még nincsenek szabályai](media/howto-create-telemetry-rules/Rules_Landing_Page.png)
 
-1. Az a **szabályok** lapon jelölje be **sablon szerkesztése** , majd **+ új szabály** , milyen típusú szabályokat hozhat létre.
+1. Az a **szabályok** lapon jelölje be **+ új szabály** , milyen típusú szabályokat hozhat létre.
 
 1. Válassza ki **Telemetriai** hozhat létre egy szabályt, amely az eszköz telemetria figyelése.
 
@@ -49,9 +44,8 @@ Hozzon létre egy telemetriai szabályt, az eszköz sablon legalább egy telemet
 1. Váltsa át a szabály minden olyan eszközre, ezzel a sablonnal létrehozott azonnal engedélyezéséhez **engedélyezése a szabály a sablon összes eszköz**.
 
    ![Szabály részletei](media/howto-create-telemetry-rules/Rule_Detail.png)
-    
+
     Eszköz sablon alapján az eszközök automatikusan alkalmazza a szabályt.
-    
 
 ### <a name="configure-the-rule-conditions"></a>A szabály feltételeinek konfigurálása
 
@@ -61,16 +55,14 @@ A feltétel a feltételeknek, a szabály által figyelt határozza meg.
 
 1. Válassza ki a figyelni kívánt telemetriát a **mérési** legördülő listából.
 
-   ![Állapot](media/howto-create-telemetry-rules/Aggregate_Condition_Filled_Out.png)
-
 1. Következő lépésként válassza ki **összesítési**, **operátor**, és adjon meg egy **küszöbérték** érték.
-    - Összesítés nem kötelező. Nélkül összesítés, a szabály aktiválásakor telemetriai adatpontok, amely megfelel a feltételnek. Például, ha a szabály úgy van konfigurálva, az indítási feltétel hőmérséklete meghaladja a 80-as, akkor a szabály aktivál, szinte instantly mikor jelentett hőmérséklet > 80-as.
+    - Összesítés nem kötelező. Nélkül összesítés, a szabály aktiválásakor telemetriai adatpontok, amely megfelel a feltételnek. Például ha a szabályt úgy eseményindító, ha hőmérséklete meghaladja a 80-as és a szabály aktiválásakor szinte azonnal mikor jelentett hőmérséklet > 80-as.
     - Ha például az átlagos, minimális és maximális összesítő függvényben, Count van kiválasztva, majd a felhasználónak meg kell adnia egy **összesített időtartomány** keresztül, amelyet a feltétel ki kell értékelni kell. Például ha pedig "5 perc" időszak és a szabály keres átlaghőmérséklet 80-as, a szabály akkor aktiválódik, ha az átlaghőmérséklet legalább 5 percnek a 80-as fölött van. fent. A szabály a kiértékelés gyakorisága pedig ugyanaz, mint a **összesített időtartomány**, ami azt jelenti, hogy ebben a példában a szabály kiértékelése történik az 5 percenként egyszer.
+
+    ![Állapot](media/howto-create-telemetry-rules/Aggregate_Condition_Filled_Out.png)
 
     >[!NOTE]
     >Egynél több telemetria mérték alapján is hozzáadhatók **feltétel**. Ha több feltétel van megadva, minden feltételeknek teljesülniük kell elindítani a szabályhoz. Minden egyes bizonyságául lekérdezi csatlakozott egy "És" záradék által implicit módon. Összesítés használatakor minden mérték összesíteni kell.
-    
-    
 
 ### <a name="configure-actions"></a>Művelet konfigurálása
 
@@ -88,8 +80,6 @@ Ez a szakasz bemutatja, hogyan állíthatja be a műveleteket, ha a szabály les
    ![Művelet konfigurálása](media/howto-create-telemetry-rules/Configure_Action.png)
 
 1. A szabály mentéséhez válasszon **mentése**. A szabály élesíti néhány percen belül, és elindítja a telemetriát küld az alkalmazás figyelését. Ha a feltételt a szabályban megadott feltétele teljesül, a szabály elindítja a beállított e-mail-művelet.
-
-1. Válassza a **Kész** lehetőséget a **Sablon szerkesztése** módból való kilépéshez.
 
 A szabály például a Microsoft Flow és a webhookok más műveleteket is hozzáadhat. Szabályonként legfeljebb 5 műveleteket is hozzáadhat.
 

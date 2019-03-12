@@ -16,12 +16,12 @@ ms.date: 09/28/2018
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 09/28/2018
-ms.openlocfilehash: cd02845f648275ee17f763bd5a94b386f7ed64fd
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c7a6330f8e0197092f4c581f46c3cc6e68dba247
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246364"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540225"
 ---
 # <a name="use-api-version-profiles-with-java-in-azure-stack"></a>API-verzióprofilok használata az Azure Stackben Javával
 
@@ -64,7 +64,7 @@ Az alábbi lépések segítségével a Java SDK telepítése:
 
 1.  Kövesse a Git telepítése a hivatalos utasításokat. Útmutatásért lásd: [első lépések – Git telepítése](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
-2.  Hivatalos utasításokat követve telepítse a [Java SDK](http://zulu.org/download/) és [Maven](https://maven.apache.org/). A megfelelő verzió legyen az Java Developer Kit 8 verzióját. A megfelelő Apache Maven a 3.0-s verzió vagy újabb. A JAVA_HOME környezeti változót a rövid útmutató a Java Development Kitet telepítési helyére kell beállítani. További információkért lásd: [az első függvény létrehozása a Java és Maven](../../azure-functions/functions-create-first-java-maven.md).
+2.  Hivatalos utasításokat követve telepítse a [Java SDK](https://zulu.org/download/) és [Maven](https://maven.apache.org/). A megfelelő verzió legyen az Java Developer Kit 8 verzióját. A megfelelő Apache Maven a 3.0-s verzió vagy újabb. A JAVA_HOME környezeti változót a rövid útmutató a Java Development Kitet telepítési helyére kell beállítani. További információkért lásd: [az első függvény létrehozása a Java és Maven](../../azure-functions/functions-create-first-java-maven.md).
 
 3.  A megfelelő függőségi csomagokat telepíteni, nyissa meg a Pom.xml fájlt a Java-alkalmazás. Adja hozzá a függőség, az alábbi kódban látható módon:
 

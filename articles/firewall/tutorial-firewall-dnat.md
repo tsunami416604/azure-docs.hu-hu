@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/28/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: e37d5b050c5ca957b59c1e0a60c88171c1fc4a23
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: df57faad770b252228b6c55d4caff775acfe3594
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582241"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531164"
 ---
 # <a name="tutorial-filter-inbound-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Oktatóanyag: Bejövő forgalom szűrése az Azure Firewall DNAT-tal az Azure Portalon
 
@@ -37,7 +37,7 @@ Ebben az oktatóanyagban két társított virtuális hálózatot hozunk létre:
 
 ## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
-1. Jelentkezzen be az Azure Portalra a [http://portal.azure.com](http://portal.azure.com) webhelyen.
+1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 2. Az Azure Portal kezdőlapján kattintson az **Erőforráscsoportok** elemre, majd a **Hozzáadás** elemre.
 3. Az **Erőforráscsoport neve** mezőbe írja be a következőt: **RG-DNAT-Test**.
 4. Az **Előfizetés** beállításnál válassza ki az előfizetését.
@@ -229,4 +229,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 A következő lépésben monitorozhatja az Azure Firewall naplóit.
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Az Azure Firewall naplóinak monitorozása](./tutorial-diagnostics.md)
+> [Oktatóanyag: A figyelő Azure tűzfal-naplókon](./tutorial-diagnostics.md)

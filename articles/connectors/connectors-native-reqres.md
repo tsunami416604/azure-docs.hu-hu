@@ -1,6 +1,6 @@
 ---
-title: Kérelem és válasz műveletek használata |} Microsoft Docs
-description: A kérelem-válasz eseményindítója és tevékenysége fel az Azure logic App áttekintése
+title: Kérelem- és válaszműveletek használata |} A Microsoft Docs
+description: A kérés- és az eseményindító és művelet az Azure logic app – áttekintés
 services: ''
 documentationcenter: ''
 author: jeffhollan
@@ -15,100 +15,100 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
-ms.openlocfilehash: 58210db585befd7ce915d4579d4d0303eb15bff3
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 2479db2abcb578eb380655346582392770606b39
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27960561"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57552180"
 ---
-# <a name="get-started-with-the-request-and-response-components"></a>Első lépések a kérelem-válasz összetevői
-A logikai alkalmazás kérelem-válasz összetevővel reagálhat valós idejű eseményekre.
+# <a name="get-started-with-the-request-and-response-components"></a>A kérések és válaszok összetevői használatának első lépései
+A logikai alkalmazás a kérések és válaszok összetevőivel reagálhat a valós idejű események.
 
 Megteheti például a következőt:
 
-* Válaszol a HTTP-kérelem adatokkal keresztül logikai alkalmazás a helyi adatbázisból.
-* Indítás, a logikai alkalmazást egy külső webhook eseményből.
-* Hívja meg a logikai alkalmazás belül egy másik logikai alkalmazás a kérelem-válasz művelettel.
+* Válaszol egy HTTP-kérelem adatokkal keresztül egy logikai alkalmazást egy helyszíni adatbázisból.
+* Egy logikai alkalmazást egy külső webhook-esemény indítása.
+* Hívja meg a logikai alkalmazás egy másik logikai alkalmazásban a kérések és válaszok művelettel.
 
-Első lépések egy logikai alkalmazás a kérelem-válasz műveletek használatával, lásd: [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Használatának megkezdéséhez a kérelem- és válaszműveletek egy logikai alkalmazásban, lásd: [hozzon létre egy logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-## <a name="use-the-http-request-trigger"></a>Használja a HTTP-kérelem eseményindító
-Egy eseményindító egy eseményt, amely segítségével indítsa el a munkafolyamatot, amely a logikai alkalmazás van definiálva. [További tudnivalók az eseményindítók](connectors-overview.md).
+## <a name="use-the-http-request-trigger"></a>Használja a HTTP-kérelem típusú trigger
+Egy trigger egy eseményt, amely a logikai alkalmazásban definiált munkafolyamat elindításához használható. [További tudnivalók a triggerek](connectors-overview.md).
 
-Íme egy parancssorozat-példa bemutatja, hogyan állítson be egy HTTP-kérelem a Logic App tervezőben.
+Íme egy parancssorozat-példa HTTP-kérést, a Logic App Designerben beállítása.
 
-1. Adja hozzá az eseményindító **kérelem - amikor egy HTTP-kérelem érkezik** a a Logic Apps alkalmazást. Is megadhat egy JSON-séma (például egy olyan eszközzel [JSONSchema.net](http://jsonschema.net)) vonatkozó kérés törzsében. Ez lehetővé teszi, hogy a Tervező jogkivonatokat a tulajdonságok a HTTP-kérelmet létrehozni.
-2. Egy másik művelet hozzáadása, hogy a logikai alkalmazást is mentheti.
-3. A logikai alkalmazást a mentés után letölthető a HTTP-kérelem URL-CÍMÉT a kérelem kártya.
-4. Egy HTTP POST (használhatja, hogy egy eszköz, például [Postman](https://www.getpostman.com/)) URL-címre akkor váltja ki a logikai alkalmazást.
+1. A trigger hozzáadása **kérelem – Ha egy HTTP-kérelem érkezett** a logikai alkalmazásban. Opcionálisan megadhat egy JSON-sémájában (egy hasonló eszköz használatával [JSONSchema.net](https://jsonschema.net)) a kérés törzse számára. Ez lehetővé teszi a HTTP-kérelem a Tulajdonságok jogkivonatokat hoz létre a tervezőben.
+2. Egy másik művelet hozzáadása, hogy a logikai alkalmazás mentheti.
+3. Után a logikai alkalmazás mentése, a kérelem kártya a HTTP-kérelem URL-CÍMÉT is kérhet.
+4. Egy HTTP POST (például egy eszközzel [Postman](https://www.getpostman.com/)) az URL-címre elindítja a logikai alkalmazás.
 
 > [!NOTE]
-> Ha nem adja meg egy válasz művelet egy `202 ACCEPTED` választ a rendszer azonnal visszaérkezik a hívóhoz. A válasz művelet segítségével testre szabhatja a választ.
+> Ha nem ad meg egy válaszművelet egy `202 ACCEPTED` azonnali válasz a hívónak. A válaszművelet segítségével testre szabhatja a választ.
 > 
 > 
 
 ![Válasz eseményindító](./media/connectors-native-reqres/using-trigger.png)
 
-## <a name="use-the-http-response-action"></a>A HTTP-válasz művelettel
-A HTTP-válasz művelet csak akkor érvényes, ha egy munkafolyamatban, amely egy HTTP-kérés használhatja. Ha nem adja meg egy válasz művelet egy `202 ACCEPTED` választ a rendszer azonnal visszaérkezik a hívóhoz.  Hozzáadhat egy válasz művelet bármely lépése a munkafolyamaton belül. A logikai alkalmazást csak fenntartja a bejövő kérelem választ egy percig.  Ha nincs válasz érkezett a munkafolyamat (és a definíciója van a válasz művelet), egy perc után egy `504 GATEWAY TIMEOUT` van visszaérkezik a hívóhoz.
+## <a name="use-the-http-response-action"></a>A HTTP-válasz művelet használata
+A HTTP-válasz művelet csak akkor érvényes, ha egy munkafolyamatot, amely akkor aktiválódik, egy HTTP-kérelem használatát. Ha nem ad meg egy válaszművelet egy `202 ACCEPTED` azonnali válasz a hívónak.  Hozzáadhat egy válaszművelet bármely lépése a munkafolyamaton belül. A logikai alkalmazás csak fenntartja a bejövő kérelem egy percet a válaszra.  Egy perc, ha nincs válasz érkezett a munkafolyamat (és a egy válaszművelet megtalálható a definíció) után egy `504 GATEWAY TIMEOUT` küld vissza a hívónak.
 
-Megtudhatja, hogyan HTTP-válasz művelet hozzáadása:
+A következő HTTP-válasz művelet hozzáadása:
 
 1. Válassza ki a **új lépés** gombra.
 2. Válasszon **művelet hozzáadása**.
-3. A művelet a keresőmezőbe írja be **válasz** a válasz művelet listázásához.
+3. A művelet be a keresőmezőbe írja be **válasz** a válaszművelet listázásához.
    
-    ![Válassza ki a válasz](./media/connectors-native-reqres/using-action-1.png)
-4. Adja hozzá a HTTP-válaszüzenetnek szükséges paramétereket.
+    ![Válassza ki a válaszművelet](./media/connectors-native-reqres/using-action-1.png)
+4. Adja hozzá a HTTP-válaszüzenet szükséges paramétereket.
    
-    ![A válasz a művelet](./media/connectors-native-reqres/using-action-2.png)
-5. Kattintson az eszköztáron menteni a bal felső sarkában, és a Logic Apps alkalmazást mentése és közzététele (aktiválása).
+    ![Végezze el a válaszművelet](./media/connectors-native-reqres/using-action-2.png)
+5. Kattintson az eszköztár menteni a bal felső sarkában, és a logikai alkalmazás mentése és közzététele (aktiválása).
 
-## <a name="request-trigger"></a>Kérelem eseményindító
-Az alábbiak az eseményindító, amely támogatja ezt az összekötőt. Nincs egyetlen kérelem eseményindítót.
+## <a name="request-trigger"></a>Kérelem típusú trigger
+Az alábbiakban az eseményindító, amely támogatja ezt az összekötőt. Nincs egyetlen kérelem-eseményindítóval.
 
 | Eseményindító | Leírás |
 | --- | --- |
-| Kérés |Akkor következik be, amikor egy HTTP-kérelem érkezik |
+| Kérés |Akkor történik, amikor HTTP-kérés fogadásakor. |
 
-## <a name="response-action"></a>Válasz művelet
-Az alábbiak a művelet, amely támogatja ezt az összekötőt. Nincs olyan egyetlen válasz művelet, amely csak akkor használható, amikor egy kérelem eseményindító kíséri.
+## <a name="response-action"></a>Válaszművelet
+Az alábbiakban a művelet, amely támogatja ezt az összekötőt. Nincs egyetlen válaszművelet, amely csak akkor használható, ha a kérelem-eseményindítóval kíséri.
 
 | Műveletek | Leírás |
 | --- | --- |
-| Válasz |A korrelált HTTP-kérelem választ ad vissza |
+| Válasz |Választ küld a korrelált HTTP-kérelem |
 
-### <a name="trigger-and-action-details"></a>Eseményindítója és tevékenysége részletei
-Az alábbi táblázatban láthatók a beviteli mezők az eseményindító és a művelet, és a megfelelő kimeneti részleteit.
+### <a name="trigger-and-action-details"></a>Az eseményindító és művelet részletei
+Az alábbi táblázatok ismertetik az adatbeviteli mezők az eseményindító és művelet, és a megfelelő kimeneti részleteit.
 
-#### <a name="request-trigger"></a>Kérelem eseményindító
-A bejövő HTTP-kérelem az eseményindító egy beviteli mezőt a következő:
+#### <a name="request-trigger"></a>Kérelem típusú trigger
+Az alábbiakban látható egy beviteli mező, az eseményindító a bejövő HTTP-kérelemből.
 
 | Megjelenített név | Tulajdonság neve | Leírás |
 | --- | --- | --- |
-| JSON-séma |Séma |A JSON-séma, a HTTP-kérelem törzse |
+| JSON-sémája |séma |A HTTP-kérés törzse JSON-sémája |
 
 <br>
 
-**Kimeneti részletei**
+**Kimenet részletei**
 
-Az alábbiakban a kérelem részletes kimenet.
+A kérelem kimenet részletei az alábbiakban.
 
 | Tulajdonság neve | Adattípus | Leírás |
 | --- | --- | --- |
 | Fejlécek |objektum |Kérelemfejlécek |
-| Törzs |objektum |Kérelem objektum |
+| Törzs |objektum |Támogatásikérelem-objektum |
 
-#### <a name="response-action"></a>Válasz művelet
-Az alábbiakban a beviteli mezők a HTTP-válasz művelethez. A * azt jelenti, hogy mezőt kötelező kitölteni.
+#### <a name="response-action"></a>Válaszművelet
+Az alábbiakban a HTTP-válasz művelet beviteli mezőket. A * azt jelenti, hogy egy kötelező mező.
 
 | Megjelenített név | Tulajdonság neve | Leírás |
 | --- | --- | --- |
-| Állapot kód * |állapotkód |A HTTP-állapotkód: |
-| Fejlécek |fejlécek |Bármely válaszfejlécek felvenni, egy JSON-objektum |
-| Törzs |törzs |A választörzs |
+| Állapot kód * |statusCode |A HTTP-állapotkód: |
+| Fejlécek |A fejlécek |Bármely közé tartozik a válaszfejlécek JSON-objektum |
+| Törzs |törzs |A válasz törzse |
 
 ## <a name="next-steps"></a>További lépések
-Most, próbálja ki a platformot és [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md). Az egyéb rendelkezésre álló összekötők logic Apps alkalmazások felmérésével felfedezheti a [API-k lista](apis-list.md).
+Most, próbálja ki a platformot és [hozzon létre egy logikai alkalmazást](../logic-apps/quickstart-create-first-logic-app-workflow.md). Az egyéb elérhető összekötők a logic apps megtekintésével megismerheti a [API-k listája](apis-list.md).
 

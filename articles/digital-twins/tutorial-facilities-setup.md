@@ -8,14 +8,14 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: dkshir
-ms.openlocfilehash: 28433f8f3f181c507521cb12f064df045ae21d9d
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 096df62305af91ac85ce9ddbcff5b0160aaa4e8a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54212192"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537456"
 ---
-# <a name="tutorial-deploy-azure-digital-twins-and-configure-a-spatial-graph"></a>Oktatóanyag: Az Azure digitális Twins telepítheti és konfigurálhatja a térbeli grafikon
+# <a name="tutorial-deploy-azure-digital-twins-and-configure-a-spatial-graph"></a>Oktatóanyag: Az Azure Digital Twins üzembe helyezése és egy térbeli diagram konfigurálása
 
 Az Azure digitális Twins szolgáltatás használatával egyesítheti személyek, helyek és eszközök egy összefüggő információszállá térbeli rendszerben. Ez az oktatóanyag-sorozat bemutatja, hogyan használhatja az Azure digitális Twins észleléséhez helyiségben foglaltsága hőmérséklet és a légi minőségű optimális feltételekkel. 
 
@@ -173,7 +173,7 @@ Mentse és zárja be a provisionSample.yaml fájlt. A következő oktatóanyagga
 
 Ha azt szeretné, ezen a ponton felfedezése az Azure digitális Twins leállítására, nyugodtan ebben az oktatóanyagban létrehozott erőforrások törléséhez:
 
-1. A bal oldali menüben lévő a [az Azure portal](http://portal.azure.com), jelölje be **összes erőforrás**, a digitális Twins erőforráscsoportot, válassza ki és **törlése**.
+1. A bal oldali menüben lévő a [az Azure portal](https://portal.azure.com), jelölje be **összes erőforrás**, a digitális Twins erőforráscsoportot, válassza ki és **törlése**.
 
     > [!TIP]
     > Ha törli a digitális Twins-példány problémajegyek tapasztal, szolgáltatás frissítése lett állítva a javítás. Ismételje meg a példány törlése.

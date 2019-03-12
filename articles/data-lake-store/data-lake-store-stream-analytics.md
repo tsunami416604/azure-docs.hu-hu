@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 0d9ddbeae3a666d3b3cf56f80ae633a7ecaa650a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: e52cf99e3bdd1960ca361ccde50d85dfaa2209c0
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294033"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544920"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Stream-adatokat az Azure Storage-Blobból az Azure Data Lake Storage Gen1 Azure Stream Analytics használatával
 Ebben a cikkben, megtudhatja, hogyan használható az Azure Data Lake Storage Gen1 kimenetként Azure Stream Analytics-feladat. Ez a cikk bemutatja egy egyszerű forgatókönyvet, amely adatokat olvas be egy Azure Storage-blobot (bemenet) és az adatokat ír az Data Lake Storage Gen1 (kimenet).
@@ -106,7 +106,7 @@ Hozzon létre egy Stream Analytics-feladatot, amely tartalmaz egy bemeneti forr�
 
     Kattintson a **Start** elindítani a feladatot. Ez akár is igénybe vehet néhány percre beállítva indítsa el a feladatot.
 
-3. Aktiválja a feladatot, az adatok a blobból választja ki, másolja egy Mintaadat-fájlt a blobtárolóba. Megjelenik a származó mintaadatfájlokat a [Azure Data Lake Git-tárház](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt). Ebben az oktatóanyagban most másolja a fájlt **vehicle1_09142014.csv**. Használhatja például a különböző ügyfelek részére, [Azure Storage Explorer](http://storageexplorer.com/), az adatok feltöltése a blob-tárolóba.
+3. Aktiválja a feladatot, az adatok a blobból választja ki, másolja egy Mintaadat-fájlt a blobtárolóba. Megjelenik a származó mintaadatfájlokat a [Azure Data Lake Git-tárház](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt). Ebben az oktatóanyagban most másolja a fájlt **vehicle1_09142014.csv**. Használhatja például a különböző ügyfelek részére, [Azure Storage Explorer](https://storageexplorer.com/), az adatok feltöltése a blob-tárolóba.
 
 4. Az a **áttekintése** lap **figyelés**, tekintse meg az adatok feldolgozásának módja.
 

@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/18/2016
 ms.author: mikejo
-ms.openlocfilehash: ea46039583681bd89e254d153997e3a300041d4e
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: 40ba5814bce08037b9e4d0787defbab4d02e58df
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341354"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546253"
 ---
 # <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Felhőszolgáltatás teljesítményének helyi tesztelése az Azure Compute Emulator használatával a Visual Studio Profiler
 Felhőszolgáltatás teljesítményének tesztelése a különböző eszközöket és technikákat érhetők el.
@@ -30,8 +30,8 @@ Előfordulhat, hogy is szeretne profilt az alkalmazást helyileg a compute emula
 
 Ez a cikk a profilkészítés CPU-mintavételezési módszerét ismerteti, amely helyben végezhető el az emulátorral. CPU-mintavételezési akkor egy metódust, amely profilkészítés nem nagyon zavaró. A kijelölt mintavételi történik a profiler pillanatképet készít a hívási veremben. Az adatok egy időszakban összegyűjtött, és a jelentésekben látható. Ez a profilkészítési módszer általában azt jelzik, ahol egy nagy számítási igényű alkalmazást a legtöbb munkát a Processzor történik.  Ez lehetővé teszi, hogy a "gyors elérésű útvonalon" Ha az alkalmazás a legtöbb időt tölt.
 
-## <a name="1-configure-visual-studio-for-profiling"></a>1: a profilkészítés a Visual Studio konfigurálása
-Először néhány hasznos lehet a profilkészítés során a Visual Studio konfigurációs lehetőség van. Ahhoz, hogy megismerje a profilkészítési jelentéseket, kell az alkalmazás és a is rendszerkönyvtárak szimbólumokat szimbólumok (.pdb fájlok). Győződjön meg arról, hogy a rendelkezésre álló szimbólum kiszolgálók hivatkoznak, érdemes. Ehhez a a **eszközök** elemét a Visual Studióban válassza **beállítások**, majd válassza a **Debugging**, majd **szimbólumok**. Győződjön meg arról, hogy a Microsoft szimbólum kiszolgálók részen **szimbólum (.pdb) helyei**.  Is hivatkozhat http://referencesource.microsoft.com/symbols, amely előfordulhat, hogy További szimbólumfájlok.
+## <a name="1-configure-visual-studio-for-profiling"></a>1: A Visual Studio konfigurálása profiljának készítéséhez
+Először néhány hasznos lehet a profilkészítés során a Visual Studio konfigurációs lehetőség van. Ahhoz, hogy megismerje a profilkészítési jelentéseket, kell az alkalmazás és a is rendszerkönyvtárak szimbólumokat szimbólumok (.pdb fájlok). Győződjön meg arról, hogy a rendelkezésre álló szimbólum kiszolgálók hivatkoznak, érdemes. Ehhez a a **eszközök** elemét a Visual Studióban válassza **beállítások**, majd válassza a **Debugging**, majd **szimbólumok**. Győződjön meg arról, hogy a Microsoft szimbólum kiszolgálók részen **szimbólum (.pdb) helyei**.  Is hivatkozhat https://referencesource.microsoft.com/symbols, amely előfordulhat, hogy További szimbólumfájlok.
 
 ![Szimbólum beállításai][4]
 
@@ -77,7 +77,7 @@ private async Task RunAsync(CancellationToken cancellationToken)
 
 Helyi létrehozásához és teszteléséhez a felhőszolgáltatás (Ctrl + F5), hibakeresés nélkül a megoldás konfigurációs beállítása a **kiadási**. Ez biztosítja, hogy az összes fájlok és mappák jönnek létre az alkalmazás helyi futtatásához, és biztosítja, hogy a emulátory systému elindulnak. Győződjön meg arról, hogy a feldolgozói szerepkör fut a tálcán a Compute Emulator felhasználói felületén megkezdődött.
 
-## <a name="2-attach-to-a-process"></a>2: egy folyamat csatolása
+## <a name="2-attach-to-a-process"></a>2: Egy folyamat csatolása
 Ahelyett, hogy a profilkészítés az alkalmazás a Visual Studio 2010 IDE-ből elindításával, hozzá kell rendelni a profiler futó folyamat. 
 
 A profiler csatlakoztatása egy folyamatot, az a **elemzés** menüben válassza a **Profiler** és **Attach/Detach**.
@@ -113,7 +113,7 @@ Amikor a Profilkészítés leállítása szeretne, válassza ki a **Profilkész�
 
 ![A beállítás Profilkészítés leállítása][10]
 
-## <a name="3-view-performance-reports"></a>3: teljesítmény-jelentések megtekintése
+## <a name="3-view-performance-reports"></a>3: Teljesítmény-jelentések megtekintése
 A teljesítmény a jelentés az alkalmazás jelenik meg.
 
 Ezen a ponton a profiler végrehajtása megszakad, .vsp fájlba menti az adatokat, és megjelenít egy jelentést, amely megjeleníti az adatok elemzését.
@@ -130,7 +130,7 @@ Ebben a cikkben a karakterlánc-összefűzési kódot adott hozzá, ha megjeleni
 
 ![Teljesítmény-figyelmeztetések][14]
 
-## <a name="4-make-changes-and-compare-performance"></a>4: módosításokat, és a teljesítmény összehasonlítása
+## <a name="4-make-changes-and-compare-performance"></a>4: Hajtsa végre módosításokat, és a teljesítmény összehasonlítása
 Össze is hasonlíthatja a teljesítmény előtt és után a kód megváltoztatására.  Állítsa le a futó folyamat, és cserélje le a karakterlánc-összefűzési művelet StringBuilder használatát a kód szerkesztése:
 
 ```csharp
@@ -162,14 +162,14 @@ Gratulálunk! Ön megtette az első lépéseket a profiler az.
 * Az alkalmazás állapotának megtekintéséhez használja a Compute Emulator felhasználói felületén. 
 * Ha problémába ütközik az emulátorban alkalmazások indításával, vagy állítsa a profiler csatolása a compute emulator le és indítsa újra. Ha ez nem oldja meg a problémát, próbálja meg újraindítani. Ez a probléma akkor fordulhat elő, ha használja a Compute Emulator felfüggesztése és eltávolítása a futó üzemelő példányok.
 * Ha már használt a profilkészítés parancsokhoz a parancssorból, különösen a globális beállítások, győződjön meg arról, hogy VSPerfClrEnv /globaloff lett meghívva, és hogy VsPerfMon.exe le lett állítva.
-* Ha az üzenet jelenik meg, amikor a mintavételi, "PRF0025: nem történt adatgyűjtés," Ellenőrizze, hogy a csatolt folyamat CPU-tevékenységet tartalmaz. Az alkalmazásokat, amelyek nem végeznek számítási munka lehet, hogy nem tudott mintavételi adatokat.  Lehetőség arra is, hogy a folyamat kilépett bármely mintavételi elkészítése előtt. Ellenőrizze, hogy a Run metódus egy szerepkörhöz, a profilkészítés nem zárja be.
+* Ha az üzenet jelenik meg, amikor a mintavételi, "PRF0025: Nem történt adatgyűjtés,"Ellenőrizze, hogy a csatolt folyamat CPU-tevékenységet tartalmaz. Az alkalmazásokat, amelyek nem végeznek számítási munka lehet, hogy nem tudott mintavételi adatokat.  Lehetőség arra is, hogy a folyamat kilépett bármely mintavételi elkészítése előtt. Ellenőrizze, hogy a Run metódus egy szerepkörhöz, a profilkészítés nem zárja be.
 
 ## <a name="next-steps"></a>További lépések
-Azure bináris az emulátorban való műszerezéséről nem támogatja a Visual Studio profilerével, de ha szeretné tesztelni a lefoglalt memória, amikor a profilkészítés is kiválasztja ezt a lehetőséget. Azt is beállíthatja egyidejűségi profilkészítés segítségével határozza meg, hogy szálak oly alkalommal használják a zárolások vannak, vagy réteg kapcsolati adatainak összegyűjtése, amely segítségével nyomon követheti a teljesítménybeli problémákat, az alkalmazás a rétegek közötti interakció során leggyakrabban gyakran között az adatszint és a egy feldolgozói szerepkörben.  Megtekintheti az alkalmazás által létrehozott adatbázis-lekérdezések és a profilkészítési adatok segítségével javíthatja az adatbázis használatát. Réteg interakció profilkészítés kapcsolatos információkért tekintse meg a következő blogbejegyzésben: [forgatókönyv: a csomag kapcsolati Profiler használata a Visual Studio Team System 2010][3].
+Azure bináris az emulátorban való műszerezéséről nem támogatja a Visual Studio profilerével, de ha szeretné tesztelni a lefoglalt memória, amikor a profilkészítés is kiválasztja ezt a lehetőséget. Azt is beállíthatja egyidejűségi profilkészítés segítségével határozza meg, hogy szálak oly alkalommal használják a zárolások vannak, vagy réteg kapcsolati adatainak összegyűjtése, amely segítségével nyomon követheti a teljesítménybeli problémákat, az alkalmazás a rétegek közötti interakció során leggyakrabban gyakran között az adatszint és a egy feldolgozói szerepkörben.  Megtekintheti az alkalmazás által létrehozott adatbázis-lekérdezések és a profilkészítési adatok segítségével javíthatja az adatbázis használatát. Réteg interakció profilkészítés kapcsolatos információkért tekintse meg a következő blogbejegyzésben: [forgatókönyv: A csomag kapcsolati Profiler használatával a Visual Studio Team System 2010][3].
 
 [1]: https://docs.microsoft.com/azure/application-insights/app-insights-profiler
-[2]: http://msdn.microsoft.com/library/azure/hh411542.aspx
-[3]: http://blogs.msdn.com/b/habibh/archive/2009/06/30/walkthrough-using-the-tier-interaction-profiler-in-visual-studio-team-system-2010.aspx
+[2]: https://msdn.microsoft.com/library/azure/hh411542.aspx
+[3]: https://blogs.msdn.com/b/habibh/archive/2009/06/30/walkthrough-using-the-tier-interaction-profiler-in-visual-studio-team-system-2010.aspx
 [4]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally09.png
 [5]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally10.png
 [6]: ./media/cloud-services-performance-testing-visual-studio-profiler/ProfilingLocally02.png

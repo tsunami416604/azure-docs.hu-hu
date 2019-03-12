@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: cb763327eb292feb9d58fb21b1ca808a3f2909aa
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: e4a86585fbf1e00512e9e8e111a9a259663f8a26
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42058417"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536778"
 ---
 # <a name="tpm-attestation"></a>TPM-igazolás
 
 IoT Hub Device Provisioning Service, amellyel egy adott IoT hub használatával beavatkozás nélküli eszközök konfigurálása IoT hub segítő szolgáltatása. A Device Provisioning Service szolgáltatással biztonságosan is millió eszköz kiépítését.
 
-Ez a cikk ismerteti az identitás igazolási folyamat használata esetén egy [TPM](./concepts-device.md). TPM-et a platformmegbízhatósági modul rövidítése, és a egy hardveres biztonsági modul (HSM) típusú. Ez a cikk feltételezi, hogy egy különálló, belső vezérlőprogram használ, vagy TPM integrált. Szoftver emulált TPM kiválóan alkalmas prototípus-készítés, illetve tesztelési, de azok nem nyújtanak biztonsági diszkrét, belső vezérlőprogram, azonos szintű, vagy integrált TPM tegye. Éles környezetben TPM szoftver használatát nem javasoljuk. TPM típusaival kapcsolatban további információkért lásd: [röviden bemutatja A TPM](http://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf).
+Ez a cikk ismerteti az identitás igazolási folyamat használata esetén egy [TPM](./concepts-device.md). TPM-et a platformmegbízhatósági modul rövidítése, és a egy hardveres biztonsági modul (HSM) típusú. Ez a cikk feltételezi, hogy egy különálló, belső vezérlőprogram használ, vagy TPM integrált. Szoftver emulált TPM kiválóan alkalmas prototípus-készítés, illetve tesztelési, de azok nem nyújtanak biztonsági diszkrét, belső vezérlőprogram, azonos szintű, vagy integrált TPM tegye. Éles környezetben TPM szoftver használatát nem javasoljuk. TPM típusaival kapcsolatban további információkért lásd: [röviden bemutatja A TPM](https://trustedcomputinggroup.org/wp-content/uploads/TPM-2.0-A-Brief-Introduction.pdf).
 
 Ez a cikk csak akkor jelentősége HMAC-val kulcs támogatása, valamint azok ellenőrzőkulcs kulcsok TPM 2.0-val használó eszközök esetében. Akkor sem eszközök X.509-tanúsítványokat használnak a hitelesítéshez. A TPM-egész iparágra kiterjedő, ISO szabvány a Trusted Computing Group a, és tudjon meg többet a TPM a [teljes TPM 2.0 specifikációja](https://trustedcomputinggroup.org/tpm-library-specification/) vagy a [ISO/IEC 11889 specifikációja](https://www.iso.org/standard/66510.html). Ez a cikk azt is feltételezi, ismeri a nyilvános és titkos kulcspárokat és azok hogyan használhatók a titkosításhoz.
 
@@ -35,7 +35,7 @@ Ha egy eszköz be van állítva, és készen áll a használatra, fog rendelkezn
 
 ![A TPM saját tulajdonba](./media/concepts-tpm-attestation/tpm-ownership.png)
 
-A TPM-eszköz saját tulajdonba a Megjegyzés: a TPM saját tulajdonba függ, hogy sok-sok dolog, beleértve a TPM gyártójával, használja a TPM-eszközök készlete és az eszköz operációs rendszere. Kövesse az utasításokat saját tulajdonba a rendszerben.
+A TPM-eszköz saját tulajdonba a Megjegyzés: A TPM saját tulajdonba attól függ, hogy sok-sok dolog, beleértve a TPM gyártójával, használja a TPM-eszközök készlete és az eszköz operációs rendszere. Kövesse az utasításokat saját tulajdonba a rendszerben.
 
 A Device Provisioning Service azonosíthatja és-eszközök regisztrálása az Ellenőrzőkulcs (EK_pub) nyilvános részét használja. Az eszköz gyártója olvashatja a EK_pub előállítás vagy végleges tesztelése során, és töltse fel a kiépítési szolgáltatás a EK_pub úgy, hogy az eszköz felismer, amikor csatlakozik a kiépítése. A Device Provisioning Service nem ellenőrzi a tároló gyökérkulcs azonosító vagy a tulajdonos, így "törlésének" a TPM-eszköz törli az ügyféladatokat, de az Ellenőrzőkulcs (és más gyártói adatokat) megmaradjanak, és az eszköz továbbra is felismer a Device Provisioning Service üzembe helyezése szolgáltatáshoz való csatlakozáskor.
 

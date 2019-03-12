@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: victorh
-ms.openlocfilehash: 2d576a0d51eb723efdd1652898c2c019ee7475a8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: f0ab7d4063eea50b58c809aee1b0ea70f8c21c6b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999215"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546840"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Állomás DNS-névkeresési zónák az Azure DNS-ben
 
@@ -269,6 +269,6 @@ További információkért lásd: [importálása és exportálása az Azure CLI-
 
 ## <a name="next-steps"></a>További lépések
 
-Fordított DNS további információkért lásd: [Wikipedia DNS-címkeresés](http://en.wikipedia.org/wiki/Reverse_DNS_lookup).
+Fordított DNS további információkért lásd: [Wikipedia DNS-címkeresés](https://en.wikipedia.org/wiki/Reverse_DNS_lookup).
 <br>
 Ismerje meg, hogyan [fordított DNS-rekordjait az Azure-szolgáltatások kezelése](dns-reverse-dns-for-azure-services.md).

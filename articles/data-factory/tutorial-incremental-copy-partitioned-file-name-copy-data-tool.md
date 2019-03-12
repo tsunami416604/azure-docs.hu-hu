@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/24/2019
-ms.openlocfilehash: 04707a747edb7cf26b4e7f4e3251b958f6f11f38
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: df1542d6d20120a9b1e087fadf3743479ecebf07
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56962295"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533833"
 ---
 # <a name="incrementally-copy-new-files-based-on-time-partitioned-file-name-by-using-the-copy-data-tool"></a>Növekményes másolása az új fájlok particionált fájlnév idő alapján az adatok másolása eszközzel
 
@@ -43,14 +43,14 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 
 A Blob storage előkészítése az oktatóanyaghoz elvégezhesse ezeket a lépéseket.
 
-1. Hozzon létre egy tárolót **forrás**.  Hozzon létre egy mappa elérési útját, **2019/02/26/14** a tárolóban. Hozzon létre egy üres szövegfájlba, és adja neki **file1.txt**. Töltse fel a mappa elérési útját a file1.txt **forrás/2019/02/26/14** a storage-fiókban.  Ennek elvégzéséhez különböző eszközök állnak rendelkezésére, például az [Azure Storage Explorer](http://storageexplorer.com/).
+1. Hozzon létre egy tárolót **forrás**.  Hozzon létre egy mappa elérési útját, **2019/02/26/14** a tárolóban. Hozzon létre egy üres szövegfájlba, és adja neki **file1.txt**. Töltse fel a mappa elérési útját a file1.txt **forrás/2019/02/26/14** a storage-fiókban.  Ennek elvégzéséhez különböző eszközök állnak rendelkezésére, például az [Azure Storage Explorer](https://storageexplorer.com/).
     
     ![Fájlok feltöltése](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/upload-file.png)
     
     > [!NOTE]
     > Módosítsa az UTC-idő a mappa nevét.  Például, ha az aktuális UTC időpontig 2:03 PM 2019. február 26., a hozhat létre a mappa elérési útját, **forrás/2019/02/26/14/** , a szabály által **forrás / {Year} / {Month} / {Day} / {Hour} /**.
 
-2. Hozzon létre egy tárolót **cél**. Ennek elvégzéséhez különböző eszközök állnak rendelkezésére, például az [Azure Storage Explorer](http://storageexplorer.com/).
+2. Hozzon létre egy tárolót **cél**. Ennek elvégzéséhez különböző eszközök állnak rendelkezésére, például az [Azure Storage Explorer](https://storageexplorer.com/).
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
@@ -175,10 +175,10 @@ A Blob storage előkészítése az oktatóanyaghoz elvégezhesse ezeket a lépé
 
     ![Folyamatfuttatások monitorozása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs2.png)
     
-    Is ellenőrizheti az azonos Azure Storage Explorer használatával (http://storageexplorer.com/) megvizsgálja a fájlokat.
+    Is ellenőrizheti az azonos Azure Storage Explorer használatával (https://storageexplorer.com/) megvizsgálja a fájlokat.
     
     ![Folyamatfuttatások monitorozása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs3.png)
-12. Hozzon létre egy másik üres szöveges fájlt új néven **fájl2.ref fájllal**. Töltse fel a mappa elérési útját a Fájl2.ref fájllal fájlt **forrás/2019/02/26 vagy 15** a storage-fiókban.   Ennek elvégzéséhez különböző eszközök állnak rendelkezésére, például az [Azure Storage Explorer](http://storageexplorer.com/).    
+12. Hozzon létre egy másik üres szöveges fájlt új néven **fájl2.ref fájllal**. Töltse fel a mappa elérési útját a Fájl2.ref fájllal fájlt **forrás/2019/02/26 vagy 15** a storage-fiókban.   Ennek elvégzéséhez különböző eszközök állnak rendelkezésére, például az [Azure Storage Explorer](https://storageexplorer.com/).   
     
     ![Folyamatfuttatások monitorozása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs4.png)
     
@@ -197,7 +197,7 @@ A Blob storage előkészítése az oktatóanyaghoz elvégezhesse ezeket a lépé
     
     ![Folyamatfuttatások monitorozása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs7.png) 
     
-    Is ellenőrizheti az azonos Azure Storage Explorer használatával (http://storageexplorer.com/) megvizsgálja a fájlokat a **cél** tároló
+    Is ellenőrizheti az azonos Azure Storage Explorer használatával (https://storageexplorer.com/) megvizsgálja a fájlokat a **cél** tároló
     
     ![Folyamatfuttatások monitorozása](./media/tutorial-incremental-copy-partitioned-file-name-copy-data-tool/monitor-pipeline-runs8.png)
 

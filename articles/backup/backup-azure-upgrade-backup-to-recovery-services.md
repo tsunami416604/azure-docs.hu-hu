@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 1/4/2018
 ms.author: sogup
-ms.openlocfilehash: efd069b90e2f085b7bacf4dfa72478e1232554bc
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: b4ecebc6bef7f49a23455c7a85f25680df087a95
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313360"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530756"
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>Egy Backup tároló frissítése Recovery Services-tároló
 
@@ -80,7 +80,7 @@ A PowerShell-parancsfájlt a hitelesítő adatok megadását kéri. Kétszer adj
 ### <a name="pre-requisites-checking"></a>Előfeltételek ellenőrzése
 Adta meg Azure hitelesítő adatait, ha a Azure ellenőrzi, hogy a környezet megfelel-e a következő előfeltételeknek:
 
-- **Ügynök verziója** – Backup-tárolók frissítése Recovery Services-tárolóra van szükség a MARS-ügynök nem lehet rövidebb 2.0.9083.0 verzió. Ha regisztrált egy Backup-tárolóba rendszernél korábbi 2.0.9083.0 ügynök elemeket tartalmaz, az előfeltétel-ellenőrzés sikertelen lesz. Ha az előfeltétel-ellenőrzés sikertelen, frissítse az ügynököt, és próbálja meg újra frissíteni a tárolóban. Az ügynököt a legújabb verzióját letöltheti [ http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe ](https://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe).
+- **Ügynök verziója** – Backup-tárolók frissítése Recovery Services-tárolóra van szükség a MARS-ügynök nem lehet rövidebb 2.0.9083.0 verzió. Ha regisztrált egy Backup-tárolóba rendszernél korábbi 2.0.9083.0 ügynök elemeket tartalmaz, az előfeltétel-ellenőrzés sikertelen lesz. Ha az előfeltétel-ellenőrzés sikertelen, frissítse az ügynököt, és próbálja meg újra frissíteni a tárolóban. Az ügynököt a legújabb verzióját letöltheti [ https://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe ](https://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe).
 - **A folyamatban lévő konfigurációs feladatok**: Ha valaki frissítendő konfigurálása a Backup-tároló feladat beállítása, vagy egy elemet felvette, az előfeltétel-ellenőrzés sikertelen lesz. A konfigurálás befejezéséhez, illetve befejezéséhez regisztrálja az elem, majd indítsa el a tároló frissítési folyamat.
 - **Storage-alapú számlázási modell**: Recovery Services-tárolók támogatják a példány-alapú számlázási modell. Ha futtatja a tár verziófrissítése Backup-tároló, amely a Storage-alapú számlázási modellt használ, a számlázási modellt, valamint a tároló frissítésére kéri. Ellenkező esetben frissítheti a számlázási modellt, majd futtassa a tár frissítését.
 - Egy erőforráscsoport, a Recovery Services-tároló azonosítása. Kihasználhatja a Resource Manager üzembe helyezési szolgáltatások, egy Recovery Services-tárolót kell helyezzen egy erőforráscsoportban. Ha nem tudja használni, adjon meg egy nevet, hogy melyik erőforráscsoportot, és a frissítési folyamat az erőforráscsoport jön létre az Ön számára. A frissítési folyamat is társítja a tárolót az új erőforráscsoportot.

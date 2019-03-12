@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/20/2018
 ms.author: cherylmc;ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 45e87be071e09a19f1d8164eb9a002909a964201
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: e8b4ba8cddb8298e69ad45016a8e3c335146d226
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960385"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540158"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>Létrehozása és módosítása egy ExpressRoute-kapcsolatcsoporttal
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ Ez a cikk segít az Azure portal és az Azure Resource Manager üzemi modell has
 
 ## <a name="create"></a>Létrehozása és kiépítése az ExpressRoute-kapcsolatcsoport
 ### <a name="1-sign-in-to-the-azure-portal"></a>1. Jelentkezzen be az Azure Portalra
-Egy böngészőből lépjen az [Azure Portalra](http://portal.azure.com), majd jelentkezzen be az Azure-fiókjával.
+Egy böngészőből lépjen az [Azure Portalra](https://portal.azure.com), majd jelentkezzen be az Azure-fiókjával.
 
 ### <a name="2-create-a-new-expressroute-circuit"></a>2. Egy új ExpressRoute-kapcsolatcsoport létrehozása
 > [!IMPORTANT]

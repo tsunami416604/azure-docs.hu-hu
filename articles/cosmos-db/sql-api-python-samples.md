@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: sample
 ms.date: 03/14/2018
 ms.author: sngun
-ms.openlocfilehash: 35ce6a09b77b1cebe00f3ee11f09d526dd9b0b22
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: cf296d8bb494307dbb58b9de522d55a83892c6d5
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768606"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537320"
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Azure Cosmos DB Python-példák
 
@@ -48,7 +48,7 @@ A [Python SDK](sql-api-sdk-python.md)-ra is szüksége lesz.
    > 
 
 ## <a name="database-examples"></a>Adatbázispéldák
-A [Program.py](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DatabaseManagement/Program.py) -fájlját a [DatabaseManagement](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DatabaseManagement) projektet mutatja be a következő feladatokat végezheti el:
+A [Program.py](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DatabaseManagement/Program.py) -fájlját a [DatabaseManagement](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DatabaseManagement) projektet mutatja be a következő feladatokat végezheti el. További információ az Azure Cosmos-adatbázisok a következő minták futtatása előtt,: [-adatbázisok, tárolók és elemek használata](databases-containers-items.md) fogalmi cikk. 
 
 | Tevékenység | API-referencia |
 | --- | --- |
@@ -58,7 +58,7 @@ A [Program.py](https://github.com/Azure/azure-documentdb-python/blob/master/samp
 | [Adatbázis törlése](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DatabaseManagement/Program.py#L113-L126) |[CosmosClient.DeleteDatabase](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient#deletedatabase-database-link--options-none-) |
 
 ## <a name="collection-examples"></a>Gyűjteménypéldák
-A [Program.py](https://github.com/Azure/azure-documentdb-python/blob/master/samples/CollectionManagement/Program.py) -fájlját a [CollectionManagement](https://github.com/Azure/azure-documentdb-python/blob/master/samples/CollectionManagement) projektet mutatja be a következő feladatokat végezheti el:
+A [Program.py](https://github.com/Azure/azure-documentdb-python/blob/master/samples/CollectionManagement/Program.py) -fájlját a [CollectionManagement](https://github.com/Azure/azure-documentdb-python/blob/master/samples/CollectionManagement) projektet mutatja be a következő feladatokat végezheti el. További információ az Azure Cosmos-gyűjtemények a következő minták futtatása előtt,: [-adatbázisok, tárolók és elemek használata](databases-containers-items.md) fogalmi cikk. 
 
 | Tevékenység | API-referencia |
 | --- | --- |
@@ -69,7 +69,7 @@ A [Program.py](https://github.com/Azure/azure-documentdb-python/blob/master/samp
 | [Gyűjtemény törlése](https://github.com/Azure/azure-documentdb-python/blob/master/samples/CollectionManagement/Program.py#L224-L238) |[CosmosClient.DeleteContainer](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient#deletecontainer-collection-link--options-none-) |
 
 ## <a name="document-examples"></a>Dokumentumpéldák
-A [Program.py](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DocumentManagement/Program.py) -fájlját a [DocumentManagement](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DocumentManagement) projektet mutatja be a következő feladatokat végezheti el:
+A [Program.py](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DocumentManagement/Program.py) -fájlját a [DocumentManagement](https://github.com/Azure/azure-documentdb-python/blob/master/samples/DocumentManagement) projektet mutatja be a következő feladatokat végezheti el. További információ az Azure Cosmos-dokumentumok, a következő minták futtatása előtt,: [-adatbázisok, tárolók és elemek használata](databases-containers-items.md) fogalmi cikk. 
 
 | Tevékenység | API-referencia |
 | --- | --- |
@@ -80,7 +80,7 @@ A [Program.py](https://github.com/Azure/azure-documentdb-python/blob/master/samp
 | [Dokumentum lecserélése feltételes ETag-ellenőrzéssel](https://github.com/Azure/azure-cosmos-python/blob/a21f6fb4bad3f59909ef43558b598f9fb476b7bc/test/crud_tests.py#L1216-L1218) | [CosmosClient.ReplaceItem](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient#replaceitem-document-link--new-document--options-none-) |
 
 ## <a name="indexing-examples"></a>Indexelési példák
-A [Program.py](https://github.com/Azure/azure-documentdb-python/blob/master/samples/IndexManagement/Program.py) -fájlját a [IndexManagement](https://github.com/Azure/azure-documentdb-python/blob/master/samples/IndexManagement) projektet mutatja be a következő feladatokat végezheti el:
+A [Program.py](https://github.com/Azure/azure-documentdb-python/blob/master/samples/IndexManagement/Program.py) -fájlját a [IndexManagement](https://github.com/Azure/azure-documentdb-python/blob/master/samples/IndexManagement) projektet mutatja be a következő feladatokat végezheti el.  A következő minták futtatása előtt az Azure Cosmos DB indexelése kapcsolatos további információkért lásd: [indexelési szabályzataihoz](index-policy.md), [adattípusok indexelése](index-types.md), és [elérési utak indexelő](index-paths.md) elméleti cikkeket. 
 
 | Tevékenység | API-referencia |
 | --- | --- |
@@ -92,7 +92,8 @@ A [Program.py](https://github.com/Azure/azure-documentdb-python/blob/master/samp
 | [Indexátalakítás végrehajtása](https://github.com/Azure/azure-documentdb-python/blob/master/samples/IndexManagement/Program.py#L514-L559) |[CosmosClient.ReplaceContainer](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient#replacecontainer-collection-link--collection--options-none-) |
 
 ## <a name="query-examples"></a>Lekérdezéspéldák
-A minta projektek azt is bemutatják, hogyan lekérdezési feladatok a következők:
+A minta projektek azt is bemutatják, hogyan lekérdezési feladatok a következők. További információ az SQL-lekérdezés referencia az Azure Cosmos DB a következő minták futtatása előtt,: [SQL-lekérdezés példák](how-to-sql-query.md) fogalmi cikk. További információ az SQL-lekérdezés referencia az Azure Cosmos DB a következő minták futtatása előtt,: [SQL-lekérdezés példák](how-to-sql-query.md) fogalmi cikk. 
+
 
 | Tevékenység | API-referencia |
 | --- | --- |

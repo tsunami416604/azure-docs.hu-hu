@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 033a7207765f2ee6712f8552d5c1585280250d5e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 3168bbbf70c1ffeb3827482459febbcea256eda6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312069"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773146"
 ---
 # <a name="configure-the-application-dashboard"></a>Az irányítópult konfigurálása
 
@@ -32,7 +32,7 @@ Kiválasztásával **szerkesztése**, az irányítópult könyvtár panel nyíli
 
 ![Irányítópult-könyvtár](media/howto-configure-homepage/image2.png)
 
-Hozzáadhat például egy **eszközbeállítások, illetve tulajdonságok** mozaiklapra a választott eszköz aktuális beállítások és tulajdonságok értékeit. Ehhez először válassza ki a **eszköz sablon** válassza ki a **eszközpéldány**. Miután egy cím, és kattintson a csempére, adjon egy **beállítás** vagy egy **tulajdonság** megjelenítéséhez. Az alábbi képernyőfelvételen a **beállítása hőmérséklet** a csempe hozzáadása a beállítást. Válassza ki **kész** menteni a módosítást az irányítópulton.
+Hozzáadhat például egy **eszközbeállítások, illetve tulajdonságok** mozaiklapra a választott eszköz aktuális beállítások és tulajdonságok értékeit. Ehhez először válassza ki a **eszköz sablon** válassza ki a **eszközpéldány**. Miután egy cím, és kattintson a csempére, adjon egy **beállítás** vagy egy **tulajdonság** megjelenítéséhez. A következő képernyőképen az látható, beállítás- és a csempe hozzáadása kiválasztva. Válassza ki **kész** menteni a módosítást az irányítópulton.
 
 ![Részletes beállítások és tulajdonságok "Konfigurálása eszköz részletei" képernyő](media/howto-configure-homepage/image3.png)
 
