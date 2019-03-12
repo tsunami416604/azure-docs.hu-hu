@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
-ms.openlocfilehash: d79485fa7587a6cf8783f2e5779fa0a1d593aea7
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: ac7043d2967fcf3f083c09622c39f4649f04f6e7
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011432"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551670"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Az IoT Hub kifejezések jegyzéke
 Ez a cikk felsorolja az egyes az IoT Hub-cikkekben használt gyakori kifejezések.
@@ -191,7 +191,7 @@ A modul identitás minden eszközhöz tartozó modul rendelt egyedi azonosítój
 Ikereszköz hasonlóan egy ikermodul is JSON-dokumentumot, például a metaadatokat, konfigurációkat és állapotokat modul állapot adatait tárolja. Az IoT Hub továbbra is fennáll, egy ikermodul alatt egy új eszközidentitást az IoT hubban kiosztott minden egyes modul-identitás. Ikermodulokkal lehetővé szinkronizálják a modul feltételeket és a konfigurációk a modul és a megoldás háttérrendszere között. Keresse meg a modulokról, és a hosszú ideig futó műveletek állapotának lekérdezése ikermodulokkal lekérdezheti.
 
 ## <a name="mqtt"></a>MQTT
-[MQTT](http://mqtt.org/) van, amelyek közül az üzenetküldés van protokollokon [az IoT Hub](#iot-hub) támogatja a eszközökkel való kommunikációhoz. Az üzenetküldési protokollokat, amely az IoT Hub által támogatott kapcsolatos további információkért lásd: [küldhet és fogadhat üzeneteket az IoT Hub](iot-hub-devguide-messaging.md).
+[MQTT](https://mqtt.org/) van, amelyek közül az üzenetküldés van protokollokon [az IoT Hub](#iot-hub) támogatja a eszközökkel való kommunikációhoz. Az üzenetküldési protokollokat, amely az IoT Hub által támogatott kapcsolatos további információkért lásd: [küldhet és fogadhat üzeneteket az IoT Hub](iot-hub-devguide-messaging.md).
 
 ## <a name="operations-monitoring"></a>Műveletek figyelése
 Az IoT Hub [műveletek figyelése](iot-hub-operations-monitoring.md) lehetővé teszi az IoT hub valós idejű műveleti állapotának figyelése. [Az IoT Hub](#iot-hub) események nyomon követi a műveletek számos kategóriájában. Mekkorák egy vagy több kategóriához eseményeket küldeni egy IoT Hub-végponton feldolgozás céljából. Adatok minták alapján összetettebb feldolgozási beállítása, illetve figyelheti az adatait a hibákat.

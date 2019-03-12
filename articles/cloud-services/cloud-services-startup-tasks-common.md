@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: c9f0707f6d24ba899c89bf19066994ae860a69d5
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 2aa32d75edbacdfff6428a6526d9898cb6732d6b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39620987"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534735"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Gyakori Felhőszolgáltatás indítási feladatok
 Ez a cikk példákat néhány gyakori indítási feladatok, érdemes lehet végrehajtani a cloud service-ben. Indítási feladatok segítségével hajtsa végre a műveleteket a szerepkör elindítása előtt. Esetlegesen végrehajtani kívánt műveletek közé tartozik egy összetevő telepítése, COM-összetevők regisztrálása, beállításkulcsokat vagy hosszú ideig futó folyamat indítása. 
@@ -186,7 +186,7 @@ powershell -ExecutionPolicy Unrestricted -command "Install-WindowsFeature Web-IP
 
 Ez a feladat futtatásakor a **startup.cmd** batch fájl futtatását minden alkalommal, amikor a webes szerepkör inicializálva, biztosítva, hogy a szükséges **ipSecurity** szakasz fel oldva.
 
-Végül módosítsa úgy a [system.webServer szakasz](http://www.iis.net/configreference/system.webserver/security/ipsecurity#005) a webes szerepkör **web.config** fájlját, hogy hozzáféréssel, IP-címek listáját az alábbi példában látható módon:
+Végül módosítsa úgy a [system.webServer szakasz](https://www.iis.net/configreference/system.webserver/security/ipsecurity#005) a webes szerepkör **web.config** fájlját, hogy hozzáféréssel, IP-címek listáját az alábbi példában látható módon:
 
 Ez a minta-konfiguráció **lehetővé teszi, hogy** a kiszolgálón, kivéve a két meghatározott összes IP-címek
 

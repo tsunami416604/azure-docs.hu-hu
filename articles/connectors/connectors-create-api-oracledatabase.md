@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 9d606dd4faf324d68e4365eae0802de2384471ab
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 06f65aef203b4f0d765f21b9d17b90081de85c94
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55295357"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551755"
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Az Oracle Database-összekötő használatának első lépései
 
@@ -40,7 +40,7 @@ Ez a cikk bemutatja, hogyan használhatja az Oracle Database-összekötő a logi
 
 * Az Oracle-ügyfél telepítéséhez a számítógépen, amelyre telepítve van a helyszíni adatátjáró. Ügyeljen arra, hogy telepítse a 64 bites Oracle-adatszolgáltató a .NET-hez, az Oracle:  
 
-  [64 bites ODAC 12c Release 4 (12.1.0.2.4) Windows x64](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)
+  [64 bites ODAC 12c Release 4 (12.1.0.2.4) Windows x64](https://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)
 
     > [!TIP]
     > Az Oracle-ügyfél nincs telepítve, ha hiba történik, amikor megpróbálja létrehozni vagy használni a kapcsolatot. A gyakori hibák a cikkben talál.

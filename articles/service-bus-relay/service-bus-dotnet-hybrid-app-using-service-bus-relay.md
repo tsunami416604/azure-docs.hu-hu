@@ -11,15 +11,15 @@ ms.service: service-bus-relay
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 2972d04d1617b755bb6c2ff60d9922accdd09f2a
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
+ms.openlocfilehash: 0dc50da5eb302e2f1b24c265b4675d93f0a2e849
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51614837"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57768365"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>Az Azure Relay használatával teszik közzé a webalkalmazás a felhőben egy helyszíni WCF-szolgáltatások 
 Ez a cikk azt mutatja be, hogyan készíthet felhőbeli hibridalkalmazást a Microsoft Azure és a Visual Studio használatával. Több Azure-erőforrások felfelé és a felhőben futó használó alkalmazást hoz létre.
@@ -185,7 +185,7 @@ Első lépésként létrehozhat egy szimulált helyszíni termékkatalógus-rend
         }
     }
     ```
-12. A Megoldáskezelőben kattintson duplán az **App.config** fájlra a Visual Studio-szerkesztőben való megnyitásához. Alsó részén a `<system.ServiceModel>` elem (azonban továbbra is belül `<system.ServiceModel>`), adja hozzá a következő XML-kódot: ne felejtse el *yourServiceNamespace* a névtér nevével és *yourKey* SAS-kulcsot, korábban a portálról lekért:
+12. A Megoldáskezelőben kattintson duplán az **App.config** fájlra a Visual Studio-szerkesztőben való megnyitásához. Alján a `<system.ServiceModel>` elem (de még mindig belül `<system.ServiceModel>`), adja hozzá a következő XML-kódot: Győződjön meg arról, hogy a *yourServiceNamespace* helyett a saját névterét adja meg, és a *yourKey* helyett pedig a portálról korábban lekért SAS-kulcsot.
 
     ```xml
     <system.serviceModel>
@@ -350,7 +350,7 @@ A következő lépés, hogy a helyszíni termékkiszolgálót az ASP.NET-alkalma
 
    ![Hivatkozás hozzáadása][24]
 
-6. Ezután nyissa meg a **HomeController.cs** fájlt a Visual Studio szerkesztőjében, és cserélje le a névtér definícióját a következő kóddal: ne felejtse el *yourServiceNamespace* a szolgáltatás nevét névtér, és *yourKey* a SAS-kulccsal. Ez lehetővé teszi az ügyfél meghívja a helyi szolgáltatást, a hívás eredménye visszaadása.
+6. Ezután nyissa meg a **HomeController.cs** fájlt a Visual Studio szerkesztőjében, és cserélje le a névtér definícióját a következő kódot: Győződjön meg arról, hogy a *yourServiceNamespace* helyett a saját szolgáltatásnévterét adja meg, és a *yourKey* helyett pedig a saját SAS-kulcsát. Ez lehetővé teszi az ügyfél meghívja a helyi szolgáltatást, a hívás eredménye visszaadása.
 
    ```csharp
    namespace ProductsWeb.Controllers
@@ -448,7 +448,7 @@ Mielőtt futtatná az alkalmazást a felhőben, győződjön meg arról, hogy a 
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
-1. Nyomja le az F5 billentyűt az alkalmazás fordításához és futtatásához. A helyi kiszolgáló (a **ProductsServer** Konzolalkalmazás) először el kell majd a **ProductsPortal** alkalmazás elindul egy böngészőablakban, az alábbi képernyőképen látható módon: Figyelje meg, hogy a Termékleltár adatokat láthat a termékleltárban, a termék szolgáltatás a helyszíni rendszerből, és megjeleníti az adatokat a webalkalmazásban. Ellenőrizze az URL-címet, és győződjön meg arról, hogy a **ProductsPortal** Azure-webalkalmazás fut a felhőben.
+1. Nyomja le az F5 billentyűt az alkalmazás fordításához és futtatásához. A helyi kiszolgáló (a **ProductsServer** Konzolalkalmazás) először el kell majd a **ProductsPortal** alkalmazás elindul egy böngészőablakban, az alábbi képernyőképen látható módon: Figyelje meg, hogy a termék helyszíni rendszeréből származó adatokat láthat a termékleltárban, és ezek az adatok a webalkalmazásban jelennek meg. Ellenőrizze az URL-címet, és győződjön meg arról, hogy a **ProductsPortal** Azure-webalkalmazás fut a felhőben.
 
    ![A webalkalmazás futtatása az Azure-ban][1]
 
