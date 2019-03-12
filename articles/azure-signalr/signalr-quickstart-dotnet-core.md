@@ -5,14 +5,14 @@ author: sffamily
 ms.service: signalr
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 06/13/2018
+ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 1bfe0026e52107c85bf2c7e66414e937ad27f715
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 680036dff856eccb85e600128119b5c0cafc5711
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267750"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543678"
 ---
 # <a name="quickstart-create-a-chat-room-with-signalr-service"></a>Gyors útmutató: A SignalR Service csevegőszoba létrehozása
 
@@ -267,6 +267,6 @@ A rendszer néhány pillanaton belül törli az erőforráscsoportot és a benne
 Ebben a rövid útmutatóban létrehozott egy új Azure SignalR szolgáltatási erőforrást, és egy ASP.NET Core webalkalmazással együtt használva valós idejű tartalomfrissítéseket küldött le több csatlakoztatott ügyfélnek. Az Azure SignalR szolgáltatásról a következő, hitelesítést bemutató oktatóanyagban tudhat meg többet.
 
 > [!div class="nextstepaction"]
-> [Azure SignalR szolgáltatás – hitelesítés](./signalr-authenticate-oauth.md)
+> [Azure SignalR szolgáltatás – hitelesítés](./signalr-concept-authenticate-oauth.md)
 
 

@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 02/15/2019
-ms.openlocfilehash: b2c3e4067fd8e08440f9fe6e15212160aef002f0
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/07/2019
+ms.openlocfilehash: 6669be82877ae5d9465e23dad3c8b310cf24af89
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312920"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576769"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell és CLI: Transzparens adattitkosítás engedélyezése az Azure Key Vault az ügyfél által felügyelt kulccsal
 
@@ -175,7 +175,7 @@ Használja a [Get-AzSqlDatabaseTransparentDataEncryption](/powershell/module/az.
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
 Ellenőrizze a következőket a probléma akkor fordul elő, ha:
-- Ha a key vault nem található, ellenőrizze, hogy használja-e a megfelelő előfizetést használ a [Get-AzSubscription](/powershell/module/az.profile/get-azsubscription) parancsmagot.
+- Ha a key vault nem található, ellenőrizze, hogy használja-e a megfelelő előfizetést használ a [Get-AzSubscription](/powershell/module/az.account/get-azsubscription) parancsmagot.
 
    ```powershell
    Get-AzSubscription `

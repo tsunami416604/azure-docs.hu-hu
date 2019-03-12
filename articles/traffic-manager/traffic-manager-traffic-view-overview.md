@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 9f818715895c2ff2c5d0e1758aaf17a2393287d2
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 70ac4319e2ea0081f7805c2fb936af1310d57d8f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54050645"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534940"
 ---
 # <a name="traffic-manager-traffic-view"></a>Traffic Manager Forgalomáttekintője
 
@@ -35,6 +35,8 @@ Használhatja például a Traffic View tudni, mely régiókban rendelkezik a for
 
 A TRAFFIC View úgy működik, hogy a Traffic Manager, tekintse meg a bejövő lekérdezések elleni egy profilt, amely rendelkezik a szolgáltatás nincs engedélyezve az elmúlt hét napban érkezett. A bejövő lekérdezések alapján a Traffic View kibontja a forrás IP-címét a DNS-feloldó, amely a felhasználók helye reprezentációját. Ezek ezután egy csoportba kerülnek, a DNS-feloldói szintű részletességig alap régiók felhasználó létrehozása a földrajzi információk a Traffic Manager által kezelt IP-címek használatával. Majd megvizsgálja a TRAFFIC Manager az Azure-régiók, amelyhez a lekérdezés lett irányítva, és létrehoz egy traffic folyamat térkép ezekben a régiókban a felhasználók számára.  
 A következő lépésben a Traffic Manager utal. a felhasználó alap régióban az Azure-régió-lel hálózati intelligencia késés táblákkal, amely a karbantartott különböző végfelhasználói hálózatok ezekben a régiókban a felhasználók által tapasztalt átlagos késése ismertetése során Csatlakozás Azure-régióban. Ezeket a számításokat majd kombinálják a helyi DNS-feloldó IP szint előtt, megjelenik egy. Az adatokat különböző módon használhatja fel.
+
+Forgalmi nézet adatok frissítési gyakorisága több belső változók függ. Azonban az adatok általában frissített 24 óránként.
 
 >[!NOTE]
 >A Traffic View ismertetett késés egy reprezentatív késés a végfelhasználó és az Azure-régiók, amelyhez kellett kapcsolódnak, és nem a DNS-keresési késés. Forgalmi nézet teszi egy ajánlott beavatkozást becslése a késés, a helyi DNS-feloldási és a lekérdezés lett irányítva, ha nincs elegendő adat az Azure-régió között, akkor a várakozási visszaadott null értékű lesz. 

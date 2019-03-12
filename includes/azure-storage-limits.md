@@ -8,28 +8,28 @@ ms.topic: include
 ms.date: 01/11/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: e4fa42b6c32c3eb383eea4489ea109c0d496bdb9
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 01d84914682d40b97c3d480a753c8b966cf61acc
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54392705"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57553585"
 ---
-A következő táblázat az Azure Storage alapértelmezett korlátokat ismerteti. A *bejövő* korlát vonatkozik az összes adatot (kérést) küld egy tárfiókba. A *kimenő* korlát vonatkozik egy tárfiók felől fogadott összes adatot (választ).
+A következő táblázat az Azure Storage alapértelmezett korlátokat ismerteti. A *bejövő* korlát a tárfiókhoz küldött kérések hivatkozik az összes adat. A *kimenő* korlát hivatkozik az összes adat, amely egy storage-fiók érkező válaszok.
 
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
-| Storage-fiókok régiónként és előfizetésenként, beleértve a standard és prémium szintű fiókok száma | 250 |
-| Tárfiókok kapacitásával maximális száma | 2 PB Egyesült Államok és Európa, az összes többi régió, többek között az Egyesült Királyság esetében 500 TB |
+| Storage-fiókok régiónként és előfizetésenként, amely tartalmazza a Standard és prémium szintű fiókok száma | 250 |
+| Maximális tárolókapacitás fiók | 2 PB Egyesült Államok és Európa, az összes többi régió esetében 500 TB, amely tartalmazza az Egyesült Királyság |
 | Blob-tárolók, blobok, fájlmegosztások, táblák, üzenetsorok, entitások vagy tárfiókonként üzenetek maximális száma | Korlátlan |
 | Maximális<sup>1</sup> tárfiókonként | másodpercenként 20 000 kérelem |
-| Maximális bejövő<sup>1</sup> tárfiókonként (USA régió) | Ha az RA-GRS/GRS engedélyezve van, 20 GB/s az LRS és zrs esetén 10 GB/s<sup>2</sup> |
-| Maximális bejövő<sup>1</sup> tárfiókonként (Amerikai Egyesült régió) | Ha az RA-GRS/GRS engedélyezve van, 10 GB/s az LRS és zrs esetén 5 GB/s<sup>2</sup> |
+| Maximális bejövő<sup>1</sup> tárfiókonként (Egyesült Államokbeli régiókhoz) | Ha engedélyezve van az RA-GRS/GRS 10 GB/s, 20 GB/s az LRS és zrs esetén<sup>2</sup> |
+| Maximális bejövő<sup>1</sup> tárfiókonként (USA-régió) | Ha engedélyezve van az RA-GRS/GRS 5 GB/s, 10 GB/s az LRS és zrs esetén<sup>2</sup> |
 | Maximális kimenő forgalom, általános célú v2 és Blob storage-fiókok (az összes régióban) | 50 GB/s |
-| Maximális kimenő forgalom, általános célú v1-tárfiókok (USA régióban) | Ha az RA-GRS/GRS engedélyezése esetén 30 GB/s az LRS és zrs esetén 20 GB/s <sup>2</sup> |
-| Maximális kimenő forgalom, általános célú v1-tárfiókok (Amerikai Egyesült régió) | Ha az RA-GRS/GRS engedélyezve van, 15 GB/s az LRS és zrs esetén 10 GB/s <sup>2</sup> |
+| Általános célú v1-tárfiókok (Egyesült Államokbeli régiókhoz) maximális kimenő forgalom | Ha engedélyezve van az RA-GRS/GRS 20 GB/s, 30 GB/s az LRS és zrs esetén<sup>2</sup> |
+| Általános célú v1-tárfiókok (USA-régió) maximális kimenő forgalom | Ha engedélyezve van az RA-GRS/GRS 10 GB/s, 15 GB/s az LRS és zrs esetén<sup>2</sup> |
 
-<sup>1</sup> azure standard szintű storage-fiókok támogatása magasabb korlátok bejövő kérelem által. A bejövő forgalom korlátok növelését, lépjen kapcsolatba a [Azure-támogatási](https://azure.microsoft.com/support/faq/).
+<sup>1</sup>azure standard szintű Storage-fiókok támogatása magasabb korlátok bejövő kérelem által. A bejövő forgalom korlátok növelését, lépjen kapcsolatba a [Azure-támogatási](https://azure.microsoft.com/support/faq/).
 
 <sup>2</sup> [azure Storage replikáció](https://docs.microsoft.com/azure/storage/common/storage-redundancy) lehetőségek a következők:
 * **RA-GRS**: Írásvédett georedundáns tárolás. RA-GRS engedélyezése esetén a másodlagos hely kimenő célok megegyeznek az elsődleges helyen.
@@ -38,11 +38,11 @@ A következő táblázat az Azure Storage alapértelmezett korlátokat ismerteti
 * **LRS**: Helyileg redundáns tárolás. 
 
 > [!NOTE]
-> A Microsoft azt javasolja, általános célú v2-tárfiókok használata a legtöbb forgatókönyvhöz. Könnyedén frissíthet egy általános célú v1- vagy Blob storage-fiók egy általános célú v2 fiók üzemkimaradás nélkül, valamint az adatok másolása nélkül.
+> Javasoljuk, hogy a legtöbb esetben használjon egy általános célú v2-tárfiók. Könnyedén frissíthet egy általános célú V1-es vagy egy Azure Blob storage-fiók egy általános célú v2 fiók üzemkimaradás nélkül, valamint az adatok másolása nélkül.
 >
 > Az Azure Storage-fiókokról további információért lásd: [Tárfiók áttekintésének](../articles/storage/common/storage-account-overview.md). 
 
-Ha az alkalmazása igényeit meghaladja a skálázhatósági célokat, az egy tárfiókban, hozhat létre az alkalmazás több tárfiók használata. Ezután az adatobjektumok particionáló ezen a tárfiókon keresztül. Lásd: [Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/) számára a mennyiségi díjszabásról.
+Ha az alkalmazása igényeit meghaladja a skálázhatósági célokat, az egy tárfiókban, hozhat létre az alkalmazás több tárfiók használata. Ezután az adatobjektumok particionáló ezen a tárfiókon keresztül. A mennyiségi díjszabásról további információkért lásd: [Azure Storage szolgáltatás díjszabása](https://azure.microsoft.com/pricing/details/storage/).
 
 Az összes storage-fiókok egy egybesimított hálózati topológia fut, és támogatja a következő cikkben ismertetett, függetlenül attól, ha létrehozták őket a méretezhetőségi és teljesítménycéljai. További információ az Azure Storage egybesimított hálózati architektúra és a méretezhetőség: [a Microsoft Azure Storage: Erős konzisztencia magas rendelkezésre állású Felhőbeli Tárolószolgáltatásba](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).
 

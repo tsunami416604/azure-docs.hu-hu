@@ -2,19 +2,19 @@
 title: Terraform-modulokkal tesztelése az Azure-ban Terratest használatával
 description: Ismerje meg, hogyan használható a Terratest a Terraform-modulok tesztelésére.
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, devops, tárfiók, azure, terratest, egységteszt, integrációs teszt
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/19/2018
-ms.openlocfilehash: fce70916cef96cee6496478503305e2bb1e73c09
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 936fe347fb4f9d5e27e005099725674341960457
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656337"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773316"
 ---
 # <a name="test-terraform-modules-in-azure-by-using-terratest"></a>Terraform-modulokkal tesztelése az Azure-ban Terratest használatával
 

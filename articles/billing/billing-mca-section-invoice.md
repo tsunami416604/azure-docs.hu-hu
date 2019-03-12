@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
-ms.openlocfilehash: f903f85dfafb61562698a437465f8421aaf3a3d8
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 21d6c1671c57341d785c002f360c05cc5c610657
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339487"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551619"
 ---
 # <a name="create-sections-on-your-invoice-to-organize-your-costs"></a>A számla a költségek rendszerezéséhez szakaszok létrehozása
 
@@ -28,7 +28,7 @@ Ez a cikk a Microsoft vevői szerződés számlázási fiók vonatkozik. [Ellen�
 
 Hozzon létre egy számla szakaszt, lennie kell egy **számlázási profiltulajdonossal** vagy egy **számlázási profil közreműködője**. További információkért lásd: [számla szakaszok számlázási profil kezelése](billing-understand-mca-roles.md#manage-invoice-sections-for-billing-profile).
 
-1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 2. A Keresés **Cost Management és számlázás**.
 

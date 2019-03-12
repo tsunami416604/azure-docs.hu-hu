@@ -15,12 +15,12 @@ ms.date: 07/30/2018
 ms.author: celested
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e8b099f845df66dfe8c43bc6f968fd63b30d09d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 198f32b5f3d7572807b6af3e41ccf8085d9cbc0b
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186352"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576939"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Kiépítés és megszüntetés SaaS-alkalmazásokhoz az Azure Active Directory felhasználói automatizálása
 
@@ -108,11 +108,11 @@ Az alkalmazás felügyeleti szolgáltatásban képernyőjéről, a kiépítés k
 
 ![Beállítások](./media/user-provisioning/provisioning_settings1.PNG)
 
-* **Hatókörkezeléshez kapcsolódó szűrők** mondja el a kiépítési szolgáltatás, mely felhasználók és csoportok a forrásrendszerben kell kell kiépített és/vagy megszűnt a célrendszerbe. Két szempontot hatókörének beállítása szűrőket, amelyek együtt lett kiértékelve, amelyek meghatározzák, hogy ki a kiépítés hatókörébe van:
+* A **hatókörszűrők** adják meg az átadási szolgáltatás számára, hogy a forrásrendszer melyik felhasználóit és csoportjait kell átadni és/vagy megszüntetni a célrendszerben. A hatókörszűrőkben két szempont adható meg, amelyeket együtt kell kiértékelni az átadás hatókörébe eső felhasználók meghatározása során:
 
-    * **Attribútum értékei alapján végezhet szűrést** – meghatározott attribútumértékek szűrését teszi lehetővé az attribútumleképezések "Forrásobjektum hatóköre" menüben. Megadhatja például, hogy csak egy "Eladások", "Részleg" attribútummal rendelkező felhasználók a kiépítés hatókörébe kell lennie. További információkért lásd: [Hatókörszűrő használatával](define-conditional-rules-for-provisioning-user-accounts.md).
+    * **Szűrés attribútumértékek alapján** – Az attribútumleképezések „Forrásobjektum hatóköre” menüjében konkrét attribútumértékek alapján szűrhet. Például megadhatja, hogy csak a „Department” attribútumhoz „Sales” értékkel rendelkező felhasználók tartozzanak az átadás hatókörébe. További információkért tekintse meg [a hatókörszűrők használatát ismertető cikket](define-conditional-rules-for-provisioning-user-accounts.md).
 
-    * **Hozzárendelések szűrő** -létesítése a "Hatókör" menü > Beállítások szakaszban a portál lehetővé teszi, hogy adja meg, hogy csak a "kijelölt" felhasználók és csoportok kell lennie a kiépítés hatókörébe, vagy ha az Azure AD-címtár összes felhasználója kell lennie kiépítve. A "hozzárendelése" felhasználók és csoportok információkért lásd: [egy felhasználó vagy csoport hozzárendelése az Azure Active Directory vállalati alkalmazás](assign-user-or-group-access-portal.md).
+    * **Hozzárendelések szűrő** -létesítése a "Hatókör" menü > Beállítások szakaszban a portál lehetővé teszi, hogy adja meg, hogy csak a "kijelölt" felhasználók és csoportok kell lennie a kiépítés hatókörébe, vagy ha az Azure AD-címtár összes felhasználója kell lennie kiépítve. A felhasználók és csoportok „hozzárendelésével” kapcsolatos információkért lásd [az Azure Active Directoryban a felhasználók és csoportok vállalati alkalmazásokhoz való hozzárendelését ismertető cikket](assign-user-or-group-access-portal.md).
     
 * **Beállítások** egy alkalmazáshoz, beleértve azt, hogy éppen fut-e a kiépítési szolgáltatás működését.
 
@@ -260,7 +260,7 @@ Igen. Ha "szinkronizálás csak a hozzárendelt felhasználók és csoportok" ko
 
 Dinamikus csoportok használatáért azonban befolyásolhatja a SaaS-alkalmazásokhoz való üzembe helyezést, az Azure AD-ből teljes körű felhasználói általános teljesítményét. Dinamikus csoportok használata esetén tartsa az alábbi korlátozásokkal és javaslatok szem előtt:
 
-* Milyen gyorsan egy dinamikus csoport felhasználói kiépített vagy SaaS-alkalmazásokban – figyelmeztetés megszüntetésről függ, milyen gyors képes kiértékelni a dinamikus csoport tagsága módosul. A feldolgozás állapotának egy dinamikus csoport információkért lásd: [ellenőrizze a tagsági szabály feldolgozási állapotát](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule#check-processing-status-for-a-membership-rule).
+* Milyen gyorsan egy dinamikus csoport felhasználói kiépített vagy SaaS-alkalmazásokban – figyelmeztetés megszüntetésről függ, milyen gyors képes kiértékelni a dinamikus csoport tagsága módosul. A feldolgozás állapotának egy dinamikus csoport információkért lásd: [ellenőrizze a tagsági szabály feldolgozási állapotát](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule).
 
 * Dinamikus csoportok használatakor a szabályok alaposan meg kell az üzembe helyezést és megszüntetést szem előtt, felhasználó, a tagsági adatvesztést eredményez a megszüntetési esemény.
 

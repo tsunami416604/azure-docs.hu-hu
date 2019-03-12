@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: banders
-ms.openlocfilehash: 0d1d4358789cce4d393143e8a243ee9a3e06bf36
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 56d392a7df2a659cf457631ec5693766fd674f91
+ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652399"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57727195"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Az Azure-elszámolással és költségkezeléssel váratlan költségek megelőzése
 
@@ -140,7 +140,7 @@ További információkért lásd: [Advisor díjakkal kapcsolatos ajánlások](..
 
 ## <a name="reviewing-costs-at-the-end-of-your-billing-cycle"></a>Az Ön számlázási ciklusa végén költségek áttekintése
 
-Után az elszámolási végén a számla válnak elérhetővé. Emellett [letöltheti a korábbi számlák és használati fájlokat részletességi](billing-download-azure-invoice-daily-usage-date.md) , győződjön meg arról, hogy helyesen lett díj felszámítva. A napi használat a számlán az összehasonlításával kapcsolatban további információkért lásd: [Microsoft Azure-hoz kapcsolódó számlák magyarázata](billing-understand-your-bill.md).
+A számlázási ciklus végén a számla elérhetővé válik. Emellett [letöltheti a korábbi számlák és használati fájlokat részletességi](billing-download-azure-invoice-daily-usage-date.md) , győződjön meg arról, hogy helyesen lett díj felszámítva. A napi használat a számlán az összehasonlításával kapcsolatban további információkért lásd: [Microsoft Azure-hoz kapcsolódó számlák magyarázata](billing-understand-your-bill.md).
 
 ### <a name="billing-api"></a>Számlázási API
 
@@ -184,6 +184,26 @@ Ha Ön a fiókadminisztrátor megtekintéséhez lépjen a [előfizetések az Azu
 Ha Ön nem a fiókadminisztrátor, akkor valaki valószínűleg kaptunk részleges hozzáférés használatával [Azure Active Directory szerepköralapú hozzáférés-vezérlés](../role-based-access-control/role-assignments-portal.md) (RBAC). Előfizetések és a számlázási adatokat, módosítás kezeléséhez [keresse meg a Fiókadminisztrátor](billing-subscription-transfer.md#whoisaa). Kérje meg a feladatokat végezheti el a Fiókadminisztrátor vagy [az előfizetés átvitele](billing-subscription-transfer.md).
 
 Ha a fiókadminisztrátor már nem a szervezeténél, és Önnek kell kezelnie a számlázási [lépjen kapcsolatba velünk](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+
+
+### <a name="how-to-request-a-service-level-agreement-credit-for-a-service-incident"></a>Hogyan kérhetnek tapasztalhatott a szolgáltatás egy-egy szolgáltatásiszint-szerződés kredit
+
+A szolgáltatói szerződések (SLA-k) rögzítik a Microsoft elkötelezettségét a folyamatos rendelkezésre állás és stabil kapcsolatok iránt. Egy szolgáltatás incidens van küldött Azure-szolgáltatások egy problémát a hatások üzemidő vagy a kapcsolatot, más néven "kimaradás." Ha azt nem érhető el, és a szolgáltatási szintek kezelése minden egyes szolgáltatás, az SLA-ban leírtak szerint, majd jogosult lehet számára egy egy része a havi szolgáltatási díját felé.
+
+Kreditek igényléséhez:
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). Ha több fiókot, ellenőrizze a valamelyik Azure üzemszünet által érintett volt. Ez segít a támogatási automatikusan összegyűjti a szükséges háttér-információkkal, és így gyorsabb megoldásához.
+2. Hozzon létre egy új támogatási kérelmet.
+3. A **Problématípus**válassza **számlázási**.
+4. A **Problématípus**válassza **visszatérítés igénylése**.
+5. Adja meg, hogy Ön kéri egy SLA-t a jóváírási, a dátum/idő/időzóna-miközben (virtuális gépek, webhelyek, stb.) az érintett szolgáltatások adatainak hozzáadása
+6. Ellenőrizze a kapcsolattartási adatait, és válassza ki a **létrehozás** gombra kattintva küldje el a kérést.
+
+SLA-küszöbértékek szolgáltatás eltérőek lehetnek. Például SQL webes réteg 99,9 %-os SLA-t, virtuális gépek rendelkeznek 99,95 %-os SLA-t, pedig SQL Standard szintű 99,99 %-os SLA-t.
+
+Egyes szolgáltatások nincsenek előfeltételei a szolgáltatói szerződés érvénybe lépéséhez. Például a virtuális gépek két vagy több példánya azonos rendelkezésre állási csoportban kell rendelkeznie.
+
+További információkért lásd: a [szolgáltatásiszint-szerződései](https://azure.microsoft.com/en-us/support/legal/sla/) dokumentáció és a [SLA összefoglalás az Azure-szolgáltatások](https://azure.microsoft.com/en-us/support/legal/sla/summary/) dokumentációját.
 
 ## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
 

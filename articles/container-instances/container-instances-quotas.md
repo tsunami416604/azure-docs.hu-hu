@@ -5,53 +5,24 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: overview
-ms.date: 02/15/2019
+ms.date: 03/01/2019
 ms.author: danlep
-ms.openlocfilehash: c676989b4b882f2b1887a1b6a5091b60027f61d0
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: c01243a33094a93da1b05ea3b58324b0f3cb2bf9
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328405"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539717"
 ---
-# <a name="quotas-and-region-availability-for-azure-container-instances"></a>Azure Container Instances-kvóták és -régiók rendelkezésre állása
+# <a name="quotas-and-limits-for-azure-container-instances"></a>Kvóták és korlátozások az Azure Container Instances szolgáltatásban
 
-Minden Azure-szolgáltatás tartalmaz az erőforrásokra és a funkciókra vonatkozó alapértelmezett korlátokat. Az alábbi szakaszokban részletes információkat talál az alapértelmezett számos Azure Container Instances-erőforrás, valamint a szolgáltatást az Azure-régiók rendelkezésre állását.
+Minden Azure-szolgáltatás tartalmaz az erőforrásokra és a funkciókra vonatkozó alapértelmezett korlátokat. Ez a cikk részletesen az alapértelmezett kvóták és korlátozások az Azure Container Instances szolgáltatásban.
+
+A rendelkezésre állás az Azure Container Instances-szolgáltatásokat és erőforrásokat az Azure-régióban, lásd: [erőforrás rendelkezésre állási Azure Container Instances](container-instances-region-availability.md).
 
 ## <a name="service-quotas-and-limits"></a>Szolgáltatási kvóták és korlátok
 
 [!INCLUDE [container-instances-limits](../../includes/container-instances-limits.md)]
-
-## <a name="feature-availability"></a>Szolgáltatások rendelkezésre állása
-
-Az Azure Container Instances használatával a Windows- és a Linux-tárolókat ugyanazzal az API-val ütemezheti. Azonban a következő funkciók érhetők el jelenleg csak a Linux rendszerű tárolócsoportok. Windows támogatási tervezünk.
-
-* Több tároló tárolócsoportonként
-* Kötet csatlakoztatási (Azure Files, az emptyDir GitRepo, titkos kulcs)
-* Virtuális hálózat (előzetes verzió)
-* GPU-erőforrások (előzetes verzió)
-
-## <a name="region-availability"></a>Régiónkénti elérhetőség
-
-Az Azure Container Instances a megadott Processzor- és memóriakorlátokkal minden tárolócsoporthoz a következő régiókban érhető el. Értékek: jelenlegi időpontjában aktuálisak. Naprakész információkat a [szolgáltatásai](/rest/api/container-instances/listcapabilities/listcapabilities) API-t. 
-
-Rendelkezésre állás és erőforrás-korlátok eltérőek lehetnek, ha az Azure Container Instances használatával egy [virtuális hálózat](container-instances-vnet.md) (előzetes verzió) vagy [GPU-erőforrások](container-instances-gpu.md) (előzetes verzió).
-
-| Hely | Operációs rendszer | CPU | Memória (GB) |
-| -------- | -- | :---: | :-----------: |
-| Kanada középső régiója, USA középső RÉGIÓJA, USA keleti RÉGIÓJA 2, USA déli középső RÉGIÓJA | Linux | 4 | 16 |
-| USA keleti régiója, Észak-Európa, Nyugat-Európa, USA nyugati régiója, USA 2. nyugati régiója | Linux | 4 | 14 |
-| Kelet-Japán | Linux | 2 | 8 |
-| Kelet-Ausztrália, Délkelet-Ázsia | Linux | 2 | 7 |
-| Közép-India, Kelet-Ázsia, USA északi középső RÉGIÓJA, Dél-India | Linux | 2 | 3.5 |
-| Kelet-Európa, Nyugat-Európa, USA nyugati régiója | Windows | 4 | 14 |
-| Kelet-Ausztrália, közép-Kanada, közép-India, USA középső RÉGIÓJA, Kelet-Ázsia, USA keleti RÉGIÓJA 2, kelet-japán, USA északi középső RÉGIÓJA, Észak-Európa, USA déli középső RÉGIÓJA, Dél-India, Délkelet-Ázsia, USA 2. nyugati | Windows | 2 | 3.5 |
-
-Az ezen erőforráskorlátokon belül létrehozott tárolópéldányok az üzembe helyezés régiójában állnak rendelkezésre. Amikor egy régió nagy terhelés alatt áll, hibát észlelhet a példányok üzembe helyezésekor. Az ilyen üzembe helyezési hibák csillapítása érdekében próbálja meg alacsonyabb processzor- és memóriabeállításokkal üzembe helyezni a példányokat, vagy próbálja meg később az üzembe helyezést.
-
-A további szükséges régiókról vagy processzorra vagy memóriára vonatkozó magasabb korlátozásokról az [aka.ms/aci/feedback](https://aka.ms/aci/feedback) oldalon tájékoztathatja az érintett csapatot.
-
-A tárolópéldány üzembe helyezésének hibaelhárításáról további információt [az Azure Container Instances üzembe helyezési problémáinak elhárítását](container-instances-troubleshooting.md) ismertető cikkben talál.
 
 ## <a name="next-steps"></a>További lépések
 

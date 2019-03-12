@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 03/06/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47d28eb63ffb700dc0f20020ac4007c5485b0edb
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: fa9872ef76264956430bb69856a197042c196dfd
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56589049"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550190"
 ---
 # <a name="combined-security-information-registration-preview"></a>Egyesített biztonsági információk regisztrációs (előzetes verzió)
 
@@ -33,6 +33,8 @@ Mielőtt engedélyezné az új felhasználói felületre, tekintse át a rendsze
 
 > [!IMPORTANT]
 > Ha egy felhasználó az eredeti előzetes verziójának és a továbbfejlesztett kombinált regisztrációs felületet is engedélyezve van, az új felület jelenik meg. Felhasználók, akik mindkét élmény engedélyezve vannak az új profil funkció csak jelenik meg. Az új profil igazodik a kombinált regisztrációs megjelenését és működését, és a felhasználók számára zökkenőmentes élményt nyújt. Felhasználók megtekinthetik a saját profil a [ https://myprofile.microsoft.com ](https://myprofile.microsoft.com).
+
+A MyProfile lapok honosítva megnyitni a lapot a gép az aktuális nyelvi beállításai alapján. A Microsoft tárolja a legutóbbi nyelv, a böngésző gyorsítótárában használt fel, így el az ezt követő kísérletek továbbra is a legutóbbi használt nyelven jelennek meg. A gyorsítótár kiürítése miatt újra kell renderelnie oldalra. Ha szeretné-e egy adott nyelv hozzáadása kényszerítése egy `?lng=de-DE` az URL-cím végéhez ahol `de-DE` be van állítva a megfelelő nyelvi kód kényszeríti a lapok azon a nyelven jelennek meg.
 
 ![Saját profil felület képesség állítsa be az SSPR vagy más további biztonsági ellenőrzési módszerek és a biztonsági adatok megjelenítése.](media/howto-registration-mfa-sspr-combined/combined-security-info-my-profile.png)
 

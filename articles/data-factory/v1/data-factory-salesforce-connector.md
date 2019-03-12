@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c2364715bfeaea473db292baff2eb1e1cce3203b
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 3689c93c392d910d6b3979291bc5a6c81080418c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233014"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551806"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Adatok áthelyezése a Salesforce-ból az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -45,7 +45,7 @@ A Salesforce API-kérések és a párhuzamos API-kérések korlátokkal rendelke
 - Ha az egyidejű kérelmek száma meghaladja a korlátot, szabályozás akkor fordul elő, és látni fogja a véletlen hibákat.
 - Ha a kérelmek teljes száma meghaladja a korlátot, a Salesforce-fiókban 24 órán keresztül blokkolja.
 
-A "REQUEST_LIMIT_EXCEEDED" hiba a mindkét forgatókönyvet is kaphat. "API-t kérelmekre vonatkozó korlátok" című szakaszában talál a [Salesforce fejlesztői korlátok](http://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf) részleteivel.
+A "REQUEST_LIMIT_EXCEEDED" hiba a mindkét forgatókönyvet is kaphat. "API-t kérelmekre vonatkozó korlátok" című szakaszában talál a [Salesforce fejlesztői korlátok](https://resources.docs.salesforce.com/200/20/en-us/sfdc/pdf/salesforce_app_limits_cheatsheet.pdf) részleteivel.
 
 ## <a name="getting-started"></a>Első lépések
 Létrehozhat egy folyamatot egy másolási tevékenységgel az adatok áthelyezéséhez a Salesforce-ból a különböző eszközök/API-k használatával.

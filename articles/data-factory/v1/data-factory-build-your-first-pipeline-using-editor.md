@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 426a8f3df67ee00ded0591024447770e4cfedc32
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 11e92b4c6b8799cde489369a202f8f7c8c05ca6c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020710"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535994"
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>Oktatóanyag: Az első data factory létrehozása az Azure portal használatával
 > [!div class="op_single_selector"]
@@ -162,7 +162,7 @@ Ebben a lépésben egy igény szerinti HDInsight-fürtöt társít a data factor
 
      c. Az HDInsight-fürt létrehoz egy alapértelmezett tárolót a JSON-tulajdonságban megadott blobtárolóban (**linkedServiceName**). Az HDInsight a fürt törlésekor nem törli ezt a tárolót. Ez a működésmód szándékos. Igény szerinti HDInsight társított szolgáltatás esetén a rendszer a szeletek feldolgozásakor mindig létrehoz egy HDInsight-fürtöt, kivéve, ha van meglévő élő fürt (**timeToLive**). A fürt automatikusan törlődik a feldolgozás befejezésekor.
 
-     Ahogy a rendszer egyre több szeletet dolgoz fel, egyre több tároló jelenik meg a blobtárolóban. Ha nincs szüksége rájuk a feladatokkal kapcsolatos hibaelhárításhoz, törölheti őket a tárolási költségek csökkentése érdekében. A tárolók neve a következő mintát követi: „adf**yourdatafactoryname**-**linkedservicename**-datetimestamp”. A blobtárolóból olyan eszközökkel törölheti a tárolókat, mint például az [Azure Storage Explorer](http://storageexplorer.com/).
+     Ahogy a rendszer egyre több szeletet dolgoz fel, egyre több tároló jelenik meg a blobtárolóban. Ha nincs szüksége rájuk a feladatokkal kapcsolatos hibaelhárításhoz, törölheti őket a tárolási költségek csökkentése érdekében. A tárolók neve a következő mintát követi: „adf**yourdatafactoryname**-**linkedservicename**-datetimestamp”. A blobtárolóból olyan eszközökkel törölheti a tárolókat, mint például az [Azure Storage Explorer](https://storageexplorer.com/).
 
      További információ: [Igény szerinti HDInsight társított szolgáltatás](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service).
 

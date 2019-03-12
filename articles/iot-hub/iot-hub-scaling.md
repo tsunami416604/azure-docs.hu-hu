@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: wesmc
-ms.openlocfilehash: 26865acbf635f07db4799ab197e110d37cbe69e8
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 0d40bfa3a4215b671fcd01402a2cbceaea0cd75d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984339"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57536283"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>A megoldás a megfelelő IoT Hub-csomag kiválasztása
 
@@ -33,7 +33,7 @@ A standard szintű IoT-központ összes funkciókat tesz elérhetővé, és köt
 
 Csak egyféle típusú [edition](https://azure.microsoft.com/pricing/details/iot-hub/) szinten belüli választható ki az IoT Hub száma. Létrehozhat például egy IoT hubot, több S1-egységet, de nem különböző kiadásait, például az S1 és B3, vagy S1 és S2 egységek vegyesen.
 
-| Képesség | Alapszintű csomag | Standard csomag |
+| Képesség | Alapszintű csomag | Az ingyenes és Standard szint |
 | ---------- | ---------- | ------------- |
 | [Eszköz – felhő telemetriát](iot-hub-devguide-messaging.md) | Igen | Igen |
 | [Eszközönkénti identitás](iot-hub-devguide-identity-registry.md) | Igen | Igen |
@@ -67,7 +67,7 @@ A partíció konfigurációját változatlan marad, az alapszintű csomag a stan
 
 A támogatott képességek közötti különbség az alapszintű és standard csomagokról az IoT Hub azt jelenti, hogy egyes API-hívások nem működik az alapszintű csomag hubs használatával. Az alábbi táblázat azt mutatja, melyik API-k érhetők el: 
 
-| API | Alapszintű csomag | Standard csomag |
+| API | Alapszintű csomag | Az ingyenes és Standard szint |
 | --- | ---------- | ------------- |
 | [Eszköz törlése](https://docs.microsoft.com/rest/api/iothub/service/deletedevice) | Igen | Igen |
 | [Eszköz](https://docs.microsoft.com/rest/api/iothub/service/getdevice) | Igen | Igen |

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 9697b88e23fea0cb06ab0c4a6197b5255e7076bf
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 6037d6a1b418a4241f1133b8ca7d89764da22f61
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316267"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57571371"
 ---
 # <a name="simple-syntax-query-examples-for-building-queries-in-azure-search"></a>Az Azure Searchben a lekérdezések létrehozásához Példák egyszerű szintaxisú lekérdezésekre
 
@@ -93,21 +93,21 @@ Minden dokumentum rendelkezik egy egyedi azonosítója. Próbálja ki a keresés
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&searchFields=id&$select=id&search=*
- ```
+```
 
 A következő példában egy keresési lekérdezést egy adott dokumentum alapján visszaadó `id` "9E1E3AF9-0660-4E00-AF51-9B654925A2D5", amely jelent meg először az előző válaszban. A következő lekérdezés visszaadja a teljes dokumentumot, nem csak a kijelölt mezők. 
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs/9E1E3AF9-0660-4E00-AF51-9B654925A2D5?api-version=2017-11-11&$count=true&search=*
- ```
+```
 
 ## <a name="example-3-filter-queries"></a>3. példa: Szűrő lekérdezések
 
 [Szintaxis szűrése](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples) van egy is használhatja az OData-kifejezésnek **keresési** vagy önállóan. Egy önálló szűrőt a keresési paramétert, akkor célszerű, ha a szűrőkifejezés nem tudja a lényeges dokumentumok teljes minősítéséhez. A lekérdezési karakterlánc nélkül nem nincs lexikális vagy nyelvi elemzés, nincs (az összes pontszámok 1), és nincs ennek a területnek. Figyelje meg a keresési karakterlánc üres.
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2017-11-11  
-    {  
+POST /indexes/nycjobs/docs/search?api-version=2017-11-11
+    {
       "search": "",
       "filter": "salary_frequency eq 'Annual' and salary_range_from gt 90000",
       "select": "select=job_id, business_title, agency, salary_range_from",
@@ -123,13 +123,13 @@ Ha azt szeretné, a Postman használatával GET ezt kipróbálni, beillesztheti 
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&$select=job_id,business_title,agency,salary_range_from&search=&$filter=salary_frequency eq 'Annual' and salary_range_from gt 90000
- ```
+```
 
 Keresztül történik egy másik hatékonyan egyesítheti a szűrőt, és keressen **`search.ismatch*()`** szűrő kifejezésben, melyekben használhatja a keresési lekérdezést a szűrőben. A szűrőkifejezés helyettesítő karakterként használja a *terv* kiválasztásához business_title, beleértve a távú terv, planner, tervezési és így tovább.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&$count=true&$select=job_id,business_title,agency&search=&$filter=search.ismatch('plan*', 'business_title', 'full', 'any')
- ```
+```
 
 A függvénnyel kapcsolatos további információkért lásd: ["Szűrő példákban" search.ismatch](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search#filter-examples).
 
@@ -142,8 +142,8 @@ Az adattípusok fontosak az tartományszűrő és numerikus mezők, és a karakt
 Az alábbi példák az olvashatóság érdekében (numerikus tartományok szövegtartomány követ) POST-formátumban van:
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2017-11-11  
-    {  
+POST /indexes/nycjobs/docs/search?api-version=2017-11-11
+    {
       "search": "",
       "filter": "num_of_positions ge 5 and num_of_positions lt 10",
       "select": "job_id, business_title, num_of_positions, agency",
@@ -155,8 +155,8 @@ POST /indexes/nycjobs/docs/search?api-version=2017-11-11
 
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2017-11-11  
-    {  
+POST /indexes/nycjobs/docs/search?api-version=2017-11-11
+    {
       "search": "",
       "filter": "business_title ge 'A*' and business_title lt 'C*'",
       "select": "job_id, business_title, agency",
@@ -175,7 +175,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2017-11-11&search=&$filter=business_title ge 'A*' and business_title lt 'C*'&$select=job_id, business_title, agency&$orderby=business_title&$count=true
- ```
+```
 
 > [!NOTE]
 > Jellemzőalapú értéktartományokat keresztül keresése alkalmazás általános követelmény. További információkért és példákért értékkorlátozó navigációs struktúrát szűrők felépítésével, lásd: ["Szűrő alapján számos" *jellemzőalapú navigáció megvalósítása*](search-faceted-navigation.md#filter-based-on-a-range).
@@ -187,8 +187,8 @@ A mintaindex szélességi és hosszúsági koordinátákkal megadott geo_locatio
 Az alábbi példa az olvashatóság érdekében POST-formátumban van:
 
 ```http
-POST /indexes/nycjobs/docs/search?api-version=2017-11-11  
-    {  
+POST /indexes/nycjobs/docs/search?api-version=2017-11-11
+    {
       "search": "",
       "filter": "geo.distance(geo_location, geography'POINT(-74.11734 40.634384)') le 4",
       "select": "job_id, business_title, work_location",

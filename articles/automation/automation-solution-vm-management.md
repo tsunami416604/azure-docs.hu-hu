@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 991a50828059d850627e1f8f3f34f65a55fdf3f6
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 22347ce7296dc55d98f1ee6d4458fa6d7c5a21e6
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56890232"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551266"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Virtuális gépek indítása/leállítása munkaidőn kívül megoldás az Azure Automationben
 
@@ -289,8 +289,8 @@ A következő táblázat a megoldás által összegyűjtött feladatrekordokkal 
 
 |Lekérdezés | Leírás|
 |----------|----------|
-|Runbook ScheduledStartStop_Parent, amelyek sikeresen befejeződött feladatainak megkeresése | ```search Category == "JobLogs" | where ( RunbookName_s == "ScheduledStartStop_Parent" ) | where ( ResultType == "Completed" )  | summarize |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | sort by TimeGenerated desc```|
-|Runbook SequencedStartStop_Parent, amelyek sikeresen befejeződött feladatainak megkeresése | ```search Category == "JobLogs" | where ( RunbookName_s == "SequencedStartStop_Parent" ) | where ( ResultType == "Completed" ) | summarize |AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) | sort by TimeGenerated desc```|
+|Runbook ScheduledStartStop_Parent, amelyek sikeresen befejeződött feladatainak megkeresése | "" kategóriában keresse == "JobLogs." | ahol (RunbookName_s == "ScheduledStartStop_Parent") | ahol (ResultType == "Kész")  | Összegzés |AggregatedValue = count() by ResultType, a bin (TimeGenerated, 1 óra) | Rendezés szempontja: TimeGenerated desc ""|
+|Runbook SequencedStartStop_Parent, amelyek sikeresen befejeződött feladatainak megkeresése | "" kategóriában keresse == "JobLogs." | ahol (RunbookName_s == "SequencedStartStop_Parent") | ahol (ResultType == "Kész") | Összegzés |AggregatedValue = count() by ResultType, a bin (TimeGenerated, 1 óra) | Rendezés szempontja: TimeGenerated desc ""|
 
 ## <a name="viewing-the-solution"></a>A megoldás megtekintése
 
@@ -300,7 +300,7 @@ A megoldás kiválasztásakor megjelenik a **Start – virtuális gépek leáll�
 
 ![Automation Update Management megoldás lapja](media/automation-solution-vm-management/azure-portal-vmupdate-solution-01.png)
 
-Itt meg is további elemzéseket végezhet a feladatrekordokon a fánkdiagram csempére kattintva. A megoldás irányítópultja megjeleníti a feladatelőzményeket, és előre meghatározott naplóbeli keresési lekérdezések. Váltás a Keresés a Log Analytics speciális portál a keresési lekérdezések alapján.
+Itt meg is további elemzéseket végezhet a feladatrekordokon a fánkdiagram csempére kattintva. A megoldás irányítópultja megjeleníti a feladatelőzményeket, és előre meghatározott naplóbeli keresési lekérdezések. Váltás a log analytics speciális portál keresése a keresési lekérdezések alapján.
 
 ## <a name="configure-email-notifications"></a>E-mail értesítések konfigurálása
 

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 3/01/2019
 ms.author: pullabhk
-ms.openlocfilehash: 6c2ade276e43f5e40d334a62c62a1abaa42b1b78
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 9ab271943d33ad63be0fae705ac703d1d98524ef
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308941"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542505"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása Azure virtuális gépek biztonsági mentése
 
@@ -29,7 +29,7 @@ Az Azure Backup lehetővé teszi, hogy a visszaállítás [Azure-beli virtuális
 
 A fájlok és mappák visszaállítása a helyreállítási pontot, nyissa meg a virtuális gép, és válassza ki a kívánt helyreállítási pontot.
 
-1. Jelentkezzen be a [az Azure portal](http://portal.Azure.com) , és kattintson a bal oldali ablaktáblában **virtuális gépek**. Virtuális gépek listájából válassza ki a virtuális gépet, hogy a virtuális gép irányítópultjának megnyitásához.
+1. Jelentkezzen be a [az Azure portal](https://portal.Azure.com) , és kattintson a bal oldali ablaktáblában **virtuális gépek**. Virtuális gépek listájából válassza ki a virtuális gépet, hogy a virtuális gép irányítópultjának megnyitásához.
 
 2. A virtuális gép menüben kattintson **Backup** a biztonsági mentés irányítópultjának megnyitásához.
 

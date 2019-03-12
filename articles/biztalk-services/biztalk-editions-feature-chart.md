@@ -1,6 +1,6 @@
 ---
 title: A BizTalk Services-kiadások funkcióinak megismerése | Microsoft Docs
-description: 'Összehasonlíthatja a BizTalk Services-kiadások képességeit: ingyenes, Fejlesztői, Alapszintű, Standard és Prémium. MABS, WABS.'
+description: 'Hasonlítsa össze a BizTalk Services-kiadások képességeit: Ingyenes, fejlesztői, alapszintű, Standard és prémium. MABS, WABS.'
 services: biztalk-services
 documentationcenter: ''
 author: MandiOhlinger
@@ -11,15 +11,15 @@ ms.service: biztalk-services
 ms.workload: integration
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 8e25f98f1189f71943ece4a7877a86e29698689a
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: d16bf73c1d9871e4de8940e4ab9bbd7ed0f39384
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240511"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57765628"
 ---
 # <a name="biztalk-services-editions-chart"></a>BizTalk Services: Kiadások diagramja
 
@@ -34,7 +34,7 @@ Hibrid kapcsolatokat hozhat létre és felügyelhet. A hibrid kapcsolatokkal kö
 
 **Fejlesztői**
 
-Hibrid kapcsolatokat, a kereskedelmi partnerek felügyeletére szolgáló, könnyen használható portállal feldolgozható EAI- és EDI-üzenetfeldolgozást, az általános EDI-sémák támogatását, valamint az X12-n és AS2-n keresztüli részletes EDI-feldolgozást tartalmaz. A használatával létrehozhat általános EAI-forgatókönyveket, amelyek a felhőbeli szolgáltatásokat csatlakoztatják a HTTP/S, REST, FTP, WCF és SFTP protokollal üzenetek olvasása és írása érdekében.  Kihasználhatja a helyszíni LOB-rendszerekkel létesített kapcsolatok előnyeit a használatra kész SAP-, Oracle eBusiness-, Oracle DB-, Siebel- és SQL Server-adapterekkel. Fejlesztőközpontú környezetet használhat Visual Studio-eszközökkel az egyszerű fejlesztés és üzembe helyezés érdekében. Fejlesztési és tesztelési célokra van korlátozva szolgáltatói szerződés (SLA) nélkül.
+Hibrid kapcsolatokat, a kereskedelmi partnerek felügyeletére szolgáló, könnyen használható portállal feldolgozható EAI- és EDI-üzenetfeldolgozást, az általános EDI-sémák támogatását, valamint az X12-n és AS2-n keresztüli részletes EDI-feldolgozást tartalmaz. A használatával létrehozhat általános EAI-forgatókönyveket, amelyek a felhőbeli szolgáltatásokat csatlakoztatják a HTTP/S, REST, FTP, WCF és SFTP protokollal üzenetek olvasása és írása érdekében.  Kihasználhatja a helyszíni LOB-rendszerekkel létesített kapcsolatok előnyeit a használatra kész SAP-, Oracle eBusiness-, Oracle DB-, Siebel- és SQL Server-adapterekkel. Fejlesztőközpontú környezetet használja a Visual Studio eszközeinek és egyszerű fejlesztését és üzembe helyezéséhez. Fejlesztési és tesztelési célokra van korlátozva szolgáltatói szerződés (SLA) nélkül.
 
 **Basic**
 
@@ -239,20 +239,20 @@ Nem tud új hidakat üzembe helyezni és új egyezményeket létrehozni. Tovább
 #### <a name="how-do-i-migrate-from-one-tier-of-biztalk-services-to-another"></a>Hogyan hajthatok végre áttelepítést át a BizTalk Services egyik szintjéről egy másikra?
 Az ingyenes kiadás nem telepíthető át vagy skálázható fel másik szintre, és nem készíthető róla biztonsági másolat egy másik szinten való visszaállításhoz. Ha másik rétegre van szüksége, hozzon létre egy új BizTalk szolgáltatást az új szinten. Az ingyenes kiadásban létrehozott összes összetevőt, beleértve a hibrid kapcsolatokat is, újra létre kell hozni az új BizTalk szolgáltatásban. 
 
-A többi kiadás esetén biztonsági mentéssel és visszaállítással telepítheti át az összetevőket az egyik rétegről a másikra. Készítsen biztonsági másolatot például az összetevőkről a Standard rétegen, majd állítsa vissza azokat a Prémium rétegen. A [BizTalk Services: Backup and Restore](biztalk-backup-restore.md) (BizTalk Services: Biztonsági mentés és visszaállítás) című témakör ismerteti a támogatott áttelepítési útvonalakat, és felsorolja, mely összetevőkről készül biztonsági másolat. Vegye figyelembe, hogy a hibrid kapcsolatokról nem készül biztonsági másolat. Az új szintre készített biztonsági mentés és visszaállítás után újra létre kell hoznia a hibrid kapcsolatokat.  
+A többi kiadás esetén biztonsági mentéssel és visszaállítással telepítheti át az összetevőket az egyik rétegről a másikra. Készítsen biztonsági másolatot például az összetevőkről a Standard rétegen, majd állítsa vissza azokat a Prémium rétegen. [A BizTalk Services: Biztonsági mentés és visszaállítás](biztalk-backup-restore.md) ismerteti a támogatott áttelepítési útvonalakat, és felsorolja, mely összetevőkről készül biztonsági másolat. Vegye figyelembe, hogy a hibrid kapcsolatokról nem készül biztonsági másolat. Az új szintre készített biztonsági mentés és visszaállítás után újra létre kell hoznia a hibrid kapcsolatokat.  
 
 #### <a name="is-the-biztalk-adapter-service-included-in-the-service-how-do-i-receive-the-software"></a>A BizTalk Adapter Service szerepel a szolgáltatásban? Hogyan kapom meg a szoftvert?
 Igen, a BizTalk Adapter Service és a BizTalk Adapter Pack szerepel a Azure BizTalk Services SDK [letöltésben](https://www.microsoft.com/download/details.aspx?id=39087).
 
 ## <a name="next-steps"></a>További lépések
-Ha az Azure BizTalk Servicest az Azure Portalon szeretné létrehozni, ugorjon a [BizTalk Services: Provisioning using the Azure portal](biztalk-provision-services.md) (BizTalk Services: Kiépítés az Azure Portallal) című témakörre. Az alkalmazások létrehozásának megkezdéséhez ugorjon az [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=235197) című témakörre.
+Azure BizTalk Services létrehozása az Azure Portalon, lépjen a [BizTalk Services: Kiépítés az Azure portal használatával](biztalk-provision-services.md). Az alkalmazások létrehozásának megkezdéséhez ugorjon az [Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=235197) című témakörre.
 
 ## <a name="additional-resources"></a>További források
-* [BizTalk Services: Kiépítés az Azure Portallal](biztalk-provision-services.md)<br/>
-* [BizTalk Services: Kiépítési állapot diagramja](biztalk-service-state-chart.md)<br/>
-* [BizTalk Services: Irányítópult, Figyelés és Méret lapok](biztalk-dashboard-monitor-scale-tabs.md)<br/>
-* [BizTalk Services: Biztonsági mentés és visszaállítás](biztalk-backup-restore.md)<br/>
-* [BizTalk Services: Szabályozás](biztalk-throttling-thresholds.md)<br/>
-* [BizTalk Services: Kiállító neve és kiállító kulcsa](biztalk-issuer-name-issuer-key.md)<br/>
+* [A BizTalk Services: Kiépítés az Azure portal használatával](biztalk-provision-services.md)<br/>
+* [A BizTalk Services: Kiépítési állapot diagramja](biztalk-service-state-chart.md)<br/>
+* [A BizTalk Services: Irányítópult, figyelés és méret lapok](biztalk-dashboard-monitor-scale-tabs.md)<br/>
+* [A BizTalk Services: Biztonsági mentés és visszaállítás](biztalk-backup-restore.md)<br/>
+* [A BizTalk Services: Szabályozás](biztalk-throttling-thresholds.md)<br/>
+* [A BizTalk Services: Kiállító neve és kiállító kulcsa](biztalk-issuer-name-issuer-key.md)<br/>
 * [Hogyan kezdhetem el az Azure BizTalk Services SDK használatát](https://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 

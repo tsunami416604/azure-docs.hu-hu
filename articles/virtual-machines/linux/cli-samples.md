@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4ff0d644ee6e5d5548f1efa5a4647c79d9b05089
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: bf941832a7a8ed9376fe0684edf4c467226cd497
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245590"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550208"
 ---
 # <a name="azure-cli-samples-for-linux-virtual-machines"></a>Linux rendszerű virtuális gépek Azure CLI-minták
 
@@ -49,7 +49,7 @@ A következő táblázat az Azure CLI használatával létrehozott bash parancsf
 |**Virtuális gépek védelme**||
 | [A virtuális gép és az adatlemezek titkosítása](./../scripts/virtual-machines-linux-cli-sample-encrypt-vm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Létrehoz egy Azure Key Vault, a titkosítási kulcsot és az egyszerű szolgáltatás, majd a virtuális gép titkosítja. |
 |**Virtuális gépek figyelése**||
-| [A figyelő egy virtuális Gépet az Azure Log Analytics használatával](./../scripts/virtual-machines-linux-cli-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Létrehoz egy virtuális gépet, telepíti a Log Analytics-ügynököt, és regisztrálja a virtuális gép egy Log Analytics-munkaterületen.  |
+| [A figyelő egy virtuális Gépet az Azure Monitor naplóira](./../scripts/virtual-machines-linux-cli-sample-create-vm-oms.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Létrehoz egy virtuális gépet, telepíti a Log Analytics-ügynököt, és regisztrálja a virtuális gép egy Log Analytics-munkaterületen.  |
 |**Virtuális gépek hibaelhárítása**||
 | [A virtuális gépek operációsrendszer-lemez hibaelhárítása](./../scripts/virtual-machines-linux-cli-sample-mount-os-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Csatlakoztatja az operációsrendszer-lemezt egy virtuális gépről adatlemezként egy második virtuális gépen. |
 | | |

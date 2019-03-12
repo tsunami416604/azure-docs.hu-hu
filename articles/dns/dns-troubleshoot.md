@@ -1,6 +1,6 @@
 ---
-title: Az Azure DNS-hibaelhárítási útmutatója |} Microsoft Docs
-description: Az Azure DNS kapcsolatos gyakori hibák elhárítása
+title: Az Azure DNS – hibaelhárítási útmutató |} A Microsoft Docs
+description: Az Azure DNS használata gyakori hibáinak elhárítása
 services: dns
 documentationcenter: na
 author: genlin
@@ -14,25 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/20/2017
 ms.author: genli
-ms.openlocfilehash: 816ad6c0079e9272286cdc072ff71bf15313eb8e
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 535e7604915555f32a7636b739c49f72cb0220c8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34069099"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541570"
 ---
-# <a name="azure-dns-troubleshooting-guide"></a>Az Azure DNS-hibaelhárítási útmutatója
+# <a name="azure-dns-troubleshooting-guide"></a>Az Azure DNS – hibaelhárítási útmutató
 
-Ezen a lapon hibaelhárításával kapcsolatos kérdésekre Azure DNS-ben.
+Ez az oldal nyújt információkat talál az Azure DNS gyakori kérdésekre.
 
-Ha ezeket a lépéseket nem sikerül megoldani a problémát, keresse meg vagy is a probléma írjon a [közösségi támogatási fórum MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork). Azt is megteheti nyissa meg az Azure támogatási kérelmet.
+Ha ezek a lépések nem oldják meg a problémát, keresse meg vagy is a probléma megoldásához tegye a a [MSDN található közösségi támogatási fórumon](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork). Azt is megteheti nyissa meg az Azure-támogatáskérést.
 
 
-## <a name="i-cant-create-a-dns-zone"></a>Nem lehet létrehozni egy DNS-zóna
+## <a name="i-cant-create-a-dns-zone"></a>Nem tudok létrehozni egy DNS-zóna
 
 A leggyakoribb hibák elhárításához próbálja ki az alábbi lépéseket:
 
-1.  Tekintse át az Azure DNS naplókat a probléma okának megállapításához.
+1.  Tekintse át az Azure DNS-naplók, a hiba okának megállapításához.
 2.  Minden DNS-zónanévnek egyedinek kell lennie a saját erőforráscsoportján belül. Ugyanazzal a névvel rendelkező két DNS-zóna nem használhatja közösen az erőforráscsoportot. Próbáljon meg eltérő zónanevet vagy erőforráscsoportot használni.
 3.  Előfordulhat, hogy megjelenik az „Elérte vagy túllépte a zónák maximális számát az előfizetésben ({előfizetés azonosítója})” hibaüzenet. Használjon másik Azure-előfizetést, töröljön néhány zónát, vagy vegye fel a kapcsolatot az Azure ügyfélszolgálatával az előfizetésre vonatkozó korlát megemeléséhez.
 4.  „A(z) {zónanév} zóna nem érhető el” hibaüzenet is megjelenhet. Ez a hiba azt jelzi, hogy az Azure DNS nem tudott névkiszolgálót lefoglalni ehhez a DNS-zónához. Próbáljon meg egy másik zónanevet használni. Ha Ön a tartománynév tulajdonosa, felveheti a kapcsolatot az Azure ügyfélszolgálatával, ahol le tudnak foglalni egy névkiszolgálót az Ön számára.
@@ -48,7 +48,7 @@ A leggyakoribb hibák elhárításához próbálja ki az alábbi lépéseket:
 
 A leggyakoribb hibák elhárításához próbálja ki az alábbi lépéseket:
 
-1.  Tekintse át az Azure DNS naplókat a probléma okának megállapításához.
+1.  Tekintse át az Azure DNS-naplók, a hiba okának megállapításához.
 2.  A rekordhalmaz már létezik?  Az Azure DNS a rekordokat *rekordhalmazok* használatával kezeli, amelyek ugyanazzal a névvel és típussal rendelkező rekordok gyűjteményei. Ha egy ugyanolyan nevű és típusú rekord már létezik, akkor egy másik ugyanilyen rekord hozzáadásához szerkesztenie kell a meglévő rekordhalmazt.
 3.  A DNS-zóna legfelső pontján (a zóna „gyökerén”) próbál rekordot létrehozni? Ha igen, az általános egyezmény a DNS rendszerben a „@” karakter használata a rekord neveként. Vegye figyelembe, hogy a DNS-szabványok nem engedélyeznek CNAME-rekordokat a zóna legfelső pontján.
 4.  CNAME-ütközést tapasztal?  A DNS-szabványok nem engedélyeznek bármilyen más típusú rekorddal megegyező nevű CNAME-rekordokat. Ha rendelkezik egy meglévő CNAME-mel, nem tud egy másik típusú, de ugyanolyan nevű rekordot létrehozni.  A CNAME létrehozása szintén sikertelen lesz, ha a neve megegyezik egy más típusú, már létező rekord nevével. Szüntesse meg az ütközést a másik rekord eltávolításával vagy egy eltérő rekordnév beállításával.
@@ -69,11 +69,11 @@ A DNS-névfeloldás egy többlépéses folyamat, amely több okból is meghiúsu
 
 1.  Győződjön meg róla, hogy a DNS-rekordok helyesen lettek beállítva az Azure DNS-ben. Tekintse át a DNS-rekordokat az Azure Portalon, és győződjön meg róla, hogy a zónanév, a rekordnév és a rekordtípus helyes.
 2.  Győződjön meg róla, hogy a DNS-rekordok feloldhatók az Azure DNS névkiszolgálóin.
-    - Ha DNS-lekérdezéseket hajt végre a helyi számítógépről, gyorsítótárazott eredményeket láthat, amelyek nem tükrözik a névkiszolgálók aktuális állapotát.  Továbbá a vállalati hálózatok gyakran olyan DNS-proxykiszolgálókat használnak, amelyek megakadályozzák a DNS-lekérdezések adott névkiszolgálókhoz történő továbbítását.  Ha el szeretné kerülni ezeket a problémákat, használjon webes névfeloldási szolgáltatást (ilyen például a [digwebinterface](http://digwebinterface.com)).
+    - Ha DNS-lekérdezéseket hajt végre a helyi számítógépről, gyorsítótárazott eredményeket láthat, amelyek nem tükrözik a névkiszolgálók aktuális állapotát.  Továbbá a vállalati hálózatok gyakran olyan DNS-proxykiszolgálókat használnak, amelyek megakadályozzák a DNS-lekérdezések adott névkiszolgálókhoz történő továbbítását.  Ha el szeretné kerülni ezeket a problémákat, használjon webes névfeloldási szolgáltatást (ilyen például a [digwebinterface](https://digwebinterface.com)).
     - Mindenképpen adja meg a DNS-zónához tartozó helyes névkiszolgálót, ahogy az Azure Portalon látható.
     - Ellenőrizze a DNS-név (meg kell adnia a teljes nevet, a zónanevet is beleértve) és a rekordtípus helyességét
 3.  Győződjön meg róla, hogy a DNS-tartománynév helyesen lett [delegálva az Azure DNS-névkiszolgálókra](dns-domain-delegation.md). [Számos, harmadik féltől származó webhely létezik, amely lehetővé teszi a DNS-delegálás ellenőrzését](https://www.bing.com/search?q=dns+check+tool). Ez egy *zónadelegálási* teszt, így csak a DNS-zónanevét, és nem a teljes rekordnevet kell megadnia.
-4.  A fentiek elvégzése után meg kell történnie a DNS-rekord feloldásának. Az ellenőrzéshez ismét használható a [digwebinterface](http://digwebinterface.com), ezúttal az alapértelmezett névkiszolgáló-beállításokkal.
+4.  A fentiek elvégzése után meg kell történnie a DNS-rekord feloldásának. Az ellenőrzéshez ismét használható a [digwebinterface](https://digwebinterface.com), ezúttal az alapértelmezett névkiszolgáló-beállításokkal.
 
 
 ### <a name="recommended-documents"></a>**Ajánlott dokumentumok**
@@ -95,14 +95,14 @@ Példák az SRV-rekordnevekre („sip” szolgáltatásnév, „tcp” protokoll
 
 [DNS-zónák és -rekordok](dns-zones-records.md)
 <br>
-[DNS-rekordhalmazok és rekordok létrehozása az Azure-portál használatával](dns-getstarted-create-recordset-portal.md)
+[DNS-rekordhalmazok és -rekordok létrehozása az Azure Portal használatával](dns-getstarted-create-recordset-portal.md)
 <br>
-[SRV rekord típusa (Wikipedia)](https://en.wikipedia.org/wiki/SRV_record)
+[SRV rekordtípus (Wikipédia)](https://en.wikipedia.org/wiki/SRV_record)
 
 
 ## <a name="next-steps"></a>További lépések
 
-* További tudnivalók [Azure DNS-zónák és rekordok](dns-zones-records.md)
-* Azure DNS használatának megkezdéséhez megtudhatja, hogyan [hozzon létre egy DNS-zóna](dns-getstarted-create-dnszone-portal.md) és [DNS-rekordok létrehozása](dns-getstarted-create-recordset-portal.md).
-* Egy meglévő DNS-zóna áttelepítéséhez megtudhatja, hogyan [importálni és exportálni egy DNS-zónafájlját](dns-import-export.md).
+* Ismerje meg [Azure DNS-zónák és rekordok](dns-zones-records.md)
+* Az Azure DNS használatának megkezdéséhez, megtudhatja, hogyan [DNS-zóna létrehozása](dns-getstarted-create-dnszone-portal.md) és [DNS-rekordok létrehozása](dns-getstarted-create-recordset-portal.md).
+* Át egy meglévő DNS-zónát, megtudhatja, hogyan [importálása és exportálása a DNS-zónafájl](dns-import-export.md).
 

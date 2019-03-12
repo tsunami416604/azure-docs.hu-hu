@@ -11,12 +11,12 @@ ms.author: nilesha
 ms.reviewer: trbye
 ms.date: 02/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: dfae2d3ec1f6e0e27a108abb085d75663008779d
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 4f82e73518beeeb38be6cc10d7c340b28560a203
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342156"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57570742"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-build-your-regression-model"></a>Oktatóanyag: Automatizált gépi tanulás a regressziós modell létrehozása
 
@@ -82,18 +82,19 @@ Ezek a lépések használatával hozzon létre egy helyi Jupyter Notebook kiszol
 
     ```shell
     jupyter notebook
+    ```
 
-## <a name="start"></a>Set up your development environment
+## <a name="start"></a>A fejlesztési környezet beállítása
 
-All the setup for your development work can be accomplished in a Python notebook. Setup includes the following actions:
+Egy Python-notebookban a fejlesztési munka összes beállítása megadható. A telepítő az alábbi műveleteket tartalmazza:
 
-* Install the SDK
-* Import Python packages
-* Configure your workspace
+* Az SDK telepítése
+* Python-csomagok importálása
+* A munkaterület konfigurálása
 
-### Install and import packages
+### <a name="install-and-import-packages"></a>Telepítse és importálja a csomagok
 
-If you are following the tutorial in your own Python environment, use the following to install necessary packages.
+Ha az oktatóanyag a saját Python-környezetben, használja a következő szükséges csomagok telepítéséhez.
 
 ```shell
 pip install azureml-sdk[automl,notebooks] matplotlib

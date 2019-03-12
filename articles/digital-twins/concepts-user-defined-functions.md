@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: alinast
-ms.openlocfilehash: 897a350c345e6e284f30040c0d4fcf07d5a6f466
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 4db515a931bc7f423eb11ae31b7304a602f0da46
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106841"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531734"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Adatfeldolgozás és felhasználó által definiált függvények
 
@@ -40,7 +40,7 @@ Adatfeldolgozás az Azure digitális Twins áll három objektum meghatározása:
 
 ### <a name="matchers"></a>Matchers
 
-Matchers meghatároz egy olyan feltételek, amelyek kiértékelik a milyen műveletek végrehajtása a bejövő érzékelő telemetriai adatai alapján történik. Az egyezés meghatározásához feltételek az érzékelő, a érzékelő szülő eszköz és az érzékelő szülő hely tulajdonságai tartalmazhatnak. A feltételek fejezik összehasonlítások elleni egy [JSON-útvonal](http://jsonpath.com/) ebben a példában látható módon:
+Matchers meghatároz egy olyan feltételek, amelyek kiértékelik a milyen műveletek végrehajtása a bejövő érzékelő telemetriai adatai alapján történik. Az egyezés meghatározásához feltételek az érzékelő, a érzékelő szülő eszköz és az érzékelő szülő hely tulajdonságai tartalmazhatnak. A feltételek fejezik összehasonlítások elleni egy [JSON-útvonal](https://jsonpath.com/) ebben a példában látható módon:
 
 - Az adattípus az összes érzékelő **hőmérséklet** képviseli az escape-karakterrel megjelölt karakterlánc értéke `\"Temperature\"`
 - Kellene `01` azok port

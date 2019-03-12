@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: edd011509c9129e95bcf7ea49f5a84e17fffd176
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 7f3b6de64343137278895d92835f080f8844dda1
+ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310550"
+ms.lasthandoff: 03/08/2019
+ms.locfileid: "57588924"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Az Azure storage-fiók egy egyéni tartománynév konfigurálása
 
@@ -26,7 +26,10 @@ Konfigurálhat egy egyéni tartományt az Azure-tárfiókjában lévő Blobadato
 > [!NOTE]  
 > Storage-fiókok jelenleg támogatja a-fiókonként csak egy egyéni tartománynevet. A webes és a blob Szolgáltatásvégpontok nem leképez egy egyéni tartománynevet.
 
-Az alábbi táblázatban láthatók a nevű storage-fiókban található blob adatok néhány minta URL-címek *mystorageaccount*. Az egyéni tartományt, amely regisztrálva van a tárfiók *www.contoso.com*:
+> [!NOTE]  
+> A leképezés csak működik altartományt (például www.contoso.com). Ha a webes végpont elérhető legyen a legfelső szintű tartomány (például contoso.com), akkor meg kell [rendelkező egyéni tartományok az Azure CDN használatával](storage-https-custom-domain-cdn.md)
+
+Az alábbi táblázatban láthatók a nevű storage-fiókban található blob adatok néhány minta URL-címek *mystorageaccount*. Az egyéni altartomány, amely regisztrálva van a tárfiók *www.contoso.com*:
 
 | Erőforrás típusa | Alapértelmezett URL-cím | Egyéni tartomány URL-címe |
 | --- | --- | --- | --- |
@@ -38,9 +41,9 @@ Az alábbi táblázatban láthatók a nevű storage-fiókban található blob ad
 > [!NOTE]  
 > Ahogyan az alábbi szakaszokban található, minden példák a blob-szolgáltatásvégpont is alkalmazható a webszolgáltatási végpontot.
 
-## <a name="direct-vs-intermediary-domain-mapping"></a>Közvetlen és a köztes tartomány-hozzárendelés
+## <a name="direct-vs-intermediary-cname-mapping"></a>Direct vs. intermediary CNAME mapping
 
-Az egyéni tartomány két módon a tárfiók blobvégpontjához is mutat: 
+Az egyéni tartomány egy altartományt (például www.contoso.com) előtaggal két módon a tárfiók blobvégpontjához is mutat: 
 * Használjon közvetlen CNAME-leképezés.
 * Használja a *asverify* köztes altartományt.
 
@@ -82,8 +85,8 @@ Egyéni tartománynév beállítása, hozzon létre egy új CNAME-rekordot a DNS
 1. Keresse meg a CNAME-rekordok kezelésére szolgáló felületet.  
    Lehetséges, hogy egy speciális beállítások lapot és keressen **CNAME**, **Alias**, vagy **altartományok**.
 
-1. Hozzon létre egy új CNAME-rekordot, írjon be egy altartomány például **www** vagy **fényképek**, majd adja meg egy állomásnevet.  
-   A gazdagép nevét a blob-szolgáltatásvégpont. A formátum  *\<mystorageaccount >. blob.core.windows.net*, ahol *mystorageaccount* a tárfiók neve. #1 elem szerepel a gazdagép nevét, a **egyéni tartomány** ablaktábláján a [az Azure portal](https://portal.azure.com).
+1. Hozzon létre egy új CNAME-rekordot, írjon be egy altartomány például **www** vagy **fényképek** (altartomány megadása kötelező, a legfelső szintű tartományok nem támogatottak), majd adja meg egy állomásnevet.  
+   A gazdagép nevét a blob-szolgáltatásvégpont. A formátum  *\<mystorageaccount >. blob.core.windows.net*, ahol *mystorageaccount* a tárfiók neve. #1 elem szerepel a gazdagép nevét, a **egyéni tartomány** ablaktábláján a [az Azure portal](https://portal.azure.com). 
 
 1. Az a **egyéni tartomány** panelen szövegbeviteli mezőben adja meg az egyéni tartományt az altartománnyal együtt nevét.  
    Például, ha a tartomány *contoso.com* és az altartomány-alias *www*, adja meg **www.contoso.com**. Ha az altartomány *fényképek*, adja meg **photos.contoso.com**.

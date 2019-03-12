@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: 90f7ef32a54f257a64942b37938cff5703112d6c
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.date: 03/07/2019
+ms.openlocfilehash: f54e715f555f01a265ed89ac633f207546a73904
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409856"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576361"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Automatikus biztonsági adatbázismentés használatával Azure SQL-adatbázis helyreállítása
 
@@ -141,7 +141,7 @@ Korábban már említettük, az Azure Portalon kívül, mint az adatbázis helyr
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-- Önálló vagy készletezett adatbázis visszaállítása, lásd: [Restore-AzSqlDatabase](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase).
+- Önálló vagy készletezett adatbázis visszaállítása, lásd: [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase).
 
   | Parancsmag | Leírás |
   | --- | --- |
@@ -153,7 +153,13 @@ Korábban már említettük, az Azure Portalon kívül, mint az adatbázis helyr
   > [!TIP]
   > Egy PowerShell-példaszkript egy adatbázis-időponthoz visszaállításhoz bemutató, lásd: [PowerShell-lel SQL-adatbázis visszaállítása](scripts/sql-database-restore-database-powershell.md).
 
-- Felügyelt példány adatbázisok visszaállítását, lásd: [azAzureSQLfelügyeltpéldányhozazazurerm.SQL-hezaPowerShell-könyvtáradatbázisokvisszaállítását-időponthoz](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/28/point-in-time-restore-of-a-database-on-azure-sql-managed-instance-using-azurerm-sql-powershell-library/).
+- Felügyelt példány adatbázisok visszaállítását, lásd: [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase).
+
+  | Parancsmag | Leírás |
+  | --- | --- |
+  | [Get-AzSqlInstance](/powershell/module/az.sql/get-azsqlinstance) |Lekérdezi egy vagy több felügyelt példányt. |
+  | [Get-AzSqlInstanceDatabase](/powershell/module/az.sql/get-azsqlinstancedatabase) | Lekérdezi egy példány adatbázisok. |
+  | [Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase) |Visszaállít egy példány-adatbázist. |
 
 ### <a name="rest-api"></a>REST API
 
@@ -166,7 +172,8 @@ A REST API használatával egyetlen vagy készletezett adatbázisok visszaállí
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure CLI-vel önálló vagy készletezett adatbázisok visszaállítását, lásd: [az sql db restore](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-restore).
+- Azure CLI-vel önálló vagy készletezett adatbázisok visszaállítását, lásd: [az sql db restore](/cli/azure/sql/db#az-sql-db-restore).
+- Felügyelt példányok Azure CLI-vel való visszaállításához, lásd: [az sql KÖZÉP2 visszaállítása](/cli/azure/sql/db#az-sql-midb-restore)
 
 ## <a name="summary"></a>Összegzés
 

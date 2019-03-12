@@ -7,7 +7,7 @@ author: jeevansd
 manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 26704ca7-13ed-4261-bf24-fd6252e2072b
-ms.service: Azure-Active-Directory
+ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d0e5f641c46571bc941b6a3bac2debd66804872
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: e4bf593473e646bbfe3d8db1df44bd48195b4cf7
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57246476"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729659"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex-meetings"></a>Oktatóanyag: Cisco Webex értekezletek az Azure Active Directory-integráció
 
@@ -169,7 +169,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Cisco Webex értekez
 
 ### <a name="configure-cisco-webex-meetings-single-sign-on"></a>Cisco Webex értekezletek egyszeri bejelentkezés konfigurálása
 
-1. Lépjen a [Cisco együttműködési Felhőfelügyelet](http://www.webex.com/go/connectadmin) a felügyeleti hitelesítő adataival.
+1. Lépjen a [Cisco együttműködési Felhőfelügyelet](https://www.webex.com/go/connectadmin) a felügyeleti hitelesítő adataival.
 
 2. Lépjen a **biztonsági beállítások** , és keresse meg **összevont webes egyszeri bejelentkezés konfigurálása**.
  

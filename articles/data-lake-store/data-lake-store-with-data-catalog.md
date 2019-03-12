@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 35fc7b2c713f8d4b88f4a44d9ddef5d92ba4c402
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: bc9d6f8f078860000d7a2a38bf4aa1ce00ff450e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294313"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533442"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Az Azure Data Lake Storage Gen1 származó adatok regisztrálása az Azure Data Catalog
 Ebből a cikkből megtudhatja, az Azure Data Lake Storage Gen1 integrálása az Azure Data Catalog, hogy az adatok felderíthető egy szervezeten belül a Data Catalog integrálásával. Az adatok katalogizálása további információkért lásd: [Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md). Forgatókönyvek, ahol használhatja a Data Catalog ismertetése: [Azure Data Catalog gyakori forgatókönyvei](../data-catalog/data-catalog-common-scenarios.md).
@@ -29,7 +29,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 * **Az Azure-előfizetés engedélyezése** a Data Lake Storage Gen1. Lásd az [utasításokat](data-lake-store-get-started-portal.md).
 * **A Data Lake Storage Gen1 fiók**. Kövesse az utasításokat, [Azure Data Lake Storage Gen1 használatának első lépései az Azure Portal használatával](data-lake-store-get-started-portal.md). A jelen oktatóanyag esetében hozzon létre egy Data Lake Storage Gen1 fiókkal, amelynek neve **datacatalogstore**.
 
-    A fiók létrehozása után, és töltse fel egy minta adatkészlet rá. Ebben az oktatóanyagban található összes .csv fájl feltöltéséhez ossza meg velünk az **AmbulanceData** mappájában a [Azure Data Lake Git-tárház](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/). Használhatja például a különböző ügyfelek részére, [Azure Storage Explorer](http://storageexplorer.com/), az adatok feltöltése a blob-tárolóba.
+    A fiók létrehozása után, és töltse fel egy minta adatkészlet rá. Ebben az oktatóanyagban található összes .csv fájl feltöltéséhez ossza meg velünk az **AmbulanceData** mappájában a [Azure Data Lake Git-tárház](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/). Használhatja például a különböző ügyfelek részére, [Azure Storage Explorer](https://storageexplorer.com/), az adatok feltöltése a blob-tárolóba.
 * **Az Azure Data Catalog**. A szervezet már rendelkeznie kell egy Azure Data Catalog létrehozása a szervezet számára. Csak egy katalógus minden szervezet számára engedélyezett.
 
 ## <a name="register-data-lake-storage-gen1-as-a-source-for-data-catalog"></a>Data Lake Storage Gen1 forrásként Regisztráljon a Data Catalog

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 7c76f7c5810370fa396b81bcc16e7e2204393bc1
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 934046ac4be6c0e85ee687cefb46b61ec8affca6
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247545"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543362"
 ---
 # <a name="introduction-to-azure-security"></a>Bevezetés az Azure Security
 ## <a name="overview"></a>Áttekintés
@@ -287,7 +287,7 @@ A felügyeleti portálon, vagy a hálózati konfigurációs fájlt a vnetben has
 
 ### <a name="azure-dns"></a>Azure DNS
 A [Domain Name System](https://technet.microsoft.com/library/bb629410.aspx), vagy a DNS-beli felelős fordítása (vagy feloldása) az IP-címét a webhely vagy szolgáltatás nevét. [Az Azure DNS](https://docs.microsoft.com/azure/dns/dns-overview) egy üzemeltetési szolgáltatás DNS-tartományok biztosítani a névfeloldást a Microsoft Azure infrastruktúráját használja. Ha tartományait az Azure-ban üzemelteti, DNS-rekordjait a többi Azure-szolgáltatáshoz is használt hitelesítő adatokkal, API-kkal, eszközökkel és számlázási információkkal kezelheti. A DNS támogatja a rendelkezésre állási szempontból a "CIA" biztonsági háromrészes.
-### <a name="log-analytics-nsgs"></a>Log Analytics NSG-k
+### <a name="azure-monitor-logs-nsgs"></a>Az Azure Monitor naplózza az NSG-k
 A következő diagnosztikai napló kategóriák engedélyezheti a hálózati biztonsági csoportok:
 -   Esemény: Melyik NSG szabályok érvényesek virtuális gépeket és példányszerepköröket MAC-cím alapján bejegyzést tartalmaz. Ezek a szabályok állapota gyűjtött minden 60 másodpercben.
 

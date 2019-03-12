@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 76b752df4557ac5b0b493f1fb40d1712d37c8e22
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d25963d44960ec3ab15fdee2c264c3bf18e26c2a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207670"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540568"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Az Azure Active Directory 2.0-s verzió és az OAuth 2.0 ügyfél-hitelesítési folyamata
 
@@ -264,7 +264,7 @@ curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dC
 
 ## <a name="code-samples-and-other-documentation"></a>Kódminták és az egyéb dokumentáció
 
-Olvassa el a [ügyfél hitelesítő adatai – áttekintés dokumentáció](http://aka.ms/msal-net-client-credentials) , a Microsoft-hitelesítési tár
+Olvassa el a [ügyfél hitelesítő adatai – áttekintés dokumentáció](https://aka.ms/msal-net-client-credentials) , a Microsoft-hitelesítési tár
 
 | Sample | Platform |Leírás |
 |--------|----------|------------|

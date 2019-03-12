@@ -85,6 +85,6 @@
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/data-lake-analytics/)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=data-lake-analytics)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-lake)
+## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-data-lake)
 ## [Videók](https://azure.microsoft.com/resources/videos/index/?services=data-lake-analytics)
 ## [Kódminták](https://azure.microsoft.com/resources/samples/?service=data-lake-analytics)

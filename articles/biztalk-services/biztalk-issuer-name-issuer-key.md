@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: eb5b4b3741b064a934833b3094c69db85e9ccabb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5eac98ec88b960956c9a0931673e67f530aef8da
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238709"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542182"
 ---
 # <a name="biztalk-services-issuer-name-and-issuer-key"></a>BizTalk Services: Kiállító neve és kiállító kulcsa
 
@@ -38,8 +38,8 @@ Ez a témakör a kiállító neve és kiállító kulcsa lekérdezésének lép�
 ## <a name="access-control-issuer-name-and-issuer-key"></a>Hozzáférés-vezérlési kiállító neve és kiállító kulcsa
 A hozzáférés-vezérlési kiállító neve és kiállító kulcsa használják a következőket:
 
-* Az Azure BizTalk-szolgáltatás-alkalmazás létrehozása a Visual Studióban: sikeresen üzembe helyezhetik a BizTalk-szolgáltatás a Visual Studio Azure, a hozzáférés-vezérlési kiállító neve és kiállító kulcsa adja meg. 
-* Az Azure BizTalk Services portáljának: Amikor BizTalk-szolgáltatás létrehozása és a BizTalk Services portáljának megnyitásához, a hozzáférés-vezérlési kiállító neve és kiállító kulcsa automatikusan regisztrálva vannak a központi telepítések, hozzáférés-vezérlés ugyanazon értékekkel.
+* Azure BizTalk Service-alkalmazás létrehozása a Visual Studióban: Sikeresen üzembe helyezhetik a BizTalk-szolgáltatás a Visual Studio Azure, adja meg a hozzáférés-vezérlési kiállító neve és kiállító kulcsa. 
+* Az Azure BizTalk Services portáljának: Amikor BizTalk-szolgáltatás létrehozása, és nyissa meg a BizTalk Services Portáljára, a hozzáférés-vezérlési kiállító neve és kiállító kulcsa automatikusan regisztrálva vannak a központi telepítések, hozzáférés-vezérlés ugyanazon értékekkel.
 
 ### <a name="get-the-access-control-issuer-name-and-issuer-key"></a>Hozzáférés-vezérlési kiállító neve és kiállító kulcsa
 
@@ -77,7 +77,7 @@ A több a [New-AzureSBNamespace](https://docs.microsoft.com/powershell/module/se
 A BizTalk Adapter szolgáltatás által használt Service Bus kiállító neve és kiállító kulcsa. A BizTalk Services projektre a Visual Studióban a BizTalk Adapter szolgáltatás használhatja egy helyszíni üzletági (LOB) rendszerhez való csatlakozáshoz. Szeretne csatlakozni, hozzon létre a LOB-továbbítót, és adja meg a LOB-rendszer adatait. Ha így tesz, akkor is adja meg a Service Bushoz kapcsolódó kibocsátói név és kiállító kulcsa.
 
 ### <a name="to-retrieve-the-service-bus-issuer-name-and-issuer-key"></a>A Service Bushoz kapcsolódó kibocsátói név és kiállító kulcsa lekéréséhez
-1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Keresse meg **a Service Bus**, és válassza ki a névteret. 
 3. Nyissa meg a **megosztott elérési házirendek** tulajdonságait, válassza ki a szabályzatot, és megtekintheti a **kapcsolati karakterlánc** tartozó név és kulcs értékeit.  
 
@@ -85,16 +85,16 @@ A BizTalk Adapter szolgáltatás által használt Service Bus kiállító neve �
 További Azure BizTalk Services témakörök:
 
 * [Az Azure BizTalk Services SDK telepítése](https://go.microsoft.com/fwlink/p/?LinkID=241589)<br/>
-* [Az oktatóanyagok: Az Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
+* [Az oktatóanyagok: Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=236944)<br/>
 * [Hogyan kezdhetem el az Azure BizTalk Services SDK használatát](https://go.microsoft.com/fwlink/p/?LinkID=302335)<br/>
 * [Az Azure BizTalk Services](https://go.microsoft.com/fwlink/p/?LinkID=303664)<br/>
 
 ## <a name="see-also"></a>Lásd még:
-* [How to: ACS felügyeleti szolgáltatás segítségével Szolgáltatásidentitások konfigurálása](https://go.microsoft.com/fwlink/p/?LinkID=303942)<br/>
+* [Útmutató: Az ACS felügyeleti szolgáltatás segítségével Szolgáltatásidentitások konfigurálása](https://go.microsoft.com/fwlink/p/?LinkID=303942)<br/>
 * [A BizTalk Services: Fejlesztői, alapszintű, Standard és prémium kiadások diagramja](https://go.microsoft.com/fwlink/p/?LinkID=302279)<br/>
-* [A BizTalk Services: kiépítés](https://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
-* [BizTalk Services: Kiépítési állapot diagramja](https://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
-* [BizTalk Services: Irányítópult, Figyelés és Méret lapok](https://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
-* [BizTalk Services: Biztonsági mentés és visszaállítás](https://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
-* [BizTalk Services: Szabályozás](https://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
+* [A BizTalk Services: Kiépítés](https://go.microsoft.com/fwlink/p/?LinkID=302280)<br/>
+* [A BizTalk Services: Kiépítési állapot diagramja](https://go.microsoft.com/fwlink/p/?LinkID=329870)<br/>
+* [A BizTalk Services: Irányítópult, figyelés és méret lapok](https://go.microsoft.com/fwlink/p/?LinkID=302281)<br/>
+* [A BizTalk Services: Biztonsági mentés és visszaállítás](https://go.microsoft.com/fwlink/p/?LinkID=329873)<br/>
+* [A BizTalk Services: Szabályozás](https://go.microsoft.com/fwlink/p/?LinkID=302282)<br/>
 

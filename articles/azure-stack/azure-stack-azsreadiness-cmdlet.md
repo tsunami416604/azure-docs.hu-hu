@@ -11,17 +11,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/04/2018
-ms.openlocfilehash: 861784a2d22d15253c61884bfab62667c0560bcd
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 63de39fa97850c1df72bdcd964ed670e4e8b0608
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250640"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767192"
 ---
 # <a name="start-azsreadinesschecker-cmdlet-reference"></a>Start-AzsReadinessChecker parancsmag-referencia
 
@@ -301,7 +301,7 @@ Ebben a példában az üzembe helyezés vagy a támogatási csapat ügyfelektől
 Az Azure Stack üzembe helyezés régió nevét adja meg.
 |  |  |
 |----------------------------|--------------|
-|Típus:                       |Karakterlánc        |
+|Típus:                       |String        |
 |Pozíció:                   |nevű         |
 |Alapértelmezett érték:              |None          |
 |Adatcsatorna bemenetének elfogadása:      |False (Hamis)         |
@@ -312,7 +312,7 @@ Az Azure Stack üzembe helyezés régió nevét adja meg.
 Adja meg az Azure Stack üzembe helyezés külső teljes Tartományneve, is ExternalFQDN és ExternalDomainName aliasneve.
 |  |  |
 |----------------------------|--------------|
-|Típus:                       |Karakterlánc        |
+|Típus:                       |String        |
 |Pozíció:                   |nevű         |
 |Alapértelmezett érték:              |ExternalFQDN, ExternalDomainName |
 |Adatcsatorna bemenetének elfogadása:      |False (Hamis)         |
@@ -323,7 +323,7 @@ Adja meg az Azure Stack üzembe helyezés külső teljes Tartományneve, is Exte
 Megadja az Azure Stack üzemelő példányához Identitásrendszer érvényes értékek, az AAD vagy az ADFS, Azure Active Directory és az Active Directory összevonási szolgáltatásokat jelölik.
 |  |  |
 |----------------------------|--------------|
-|Típus:                       |Karakterlánc        |
+|Típus:                       |String        |
 |Pozíció:                   |nevű         |
 |Alapértelmezett érték:              |None          |
 |Érvényes értékek:               |'AAD','ADFS'  |
@@ -357,7 +357,7 @@ Az elérési utak és a jelszavakat a PaaS-tanúsítványokat tartalmazó kivona
 Itt adható meg az Azure Stack üzembe helyezési adatok JSON-konfigurációs fájlt. Ez a fájl jön létre a központi telepítés.
 |  |  |
 |----------------------------|---------|
-|Típus:                       |Karakterlánc   |
+|Típus:                       |String   |
 |Pozíció:                   |nevű    |
 |Alapértelmezett érték:              |None     |
 |Adatcsatorna bemenetének elfogadása:      |False (Hamis)    |
@@ -368,7 +368,7 @@ Itt adható meg az Azure Stack üzembe helyezési adatok JSON-konfigurációs f�
 Importálási/exportálási rutin megoldásához, ez az eszköz a tanúsítvány érvényesítése aszinkronitást igénylő problémát észlel tanúsítvány elérési útja.
 |  |  |
 |----------------------------|---------|
-|Típus:                       |Karakterlánc   |
+|Típus:                       |String   |
 |Pozíció:                   |nevű    |
 |Alapértelmezett érték:              |None     |
 |Adatcsatorna bemenetének elfogadása:      |False (Hamis)    |
@@ -379,7 +379,7 @@ Importálási/exportálási rutin megoldásához, ez az eszköz a tanúsítvány
 Itt adhatja meg az importálási/exportálási rutin eredő PFX-fájljának elérési utat.  
 |  |  |
 |----------------------------|---------|
-|Típus:                       |Karakterlánc   |
+|Típus:                       |String   |
 |Pozíció:                   |nevű    |
 |Alapértelmezett érték:              |None     |
 |Adatcsatorna bemenetének elfogadása:      |False (Hamis)    |
@@ -405,7 +405,7 @@ A SAN adja meg a tanúsítványkérelem. Érvényes értékek MultipleCSR, Singl
 
 |  |  |
 |----------------------------|---------|
-|Típus:                       |Karakterlánc   |
+|Típus:                       |String   |
 |Pozíció:                   |nevű    |
 |Alapértelmezett érték:              |None     |
 |Érvényes értékek:               |'MultipleCSR','SingleCSR' |
@@ -417,7 +417,7 @@ A SAN adja meg a tanúsítványkérelem. Érvényes értékek MultipleCSR, Singl
 A cél elérési útját adja meg a tanúsítvány kérést fájlok esetében könyvtár már léteznie kell.
 |  |  |
 |----------------------------|---------|
-|Típus:                       |Karakterlánc   |
+|Típus:                       |String   |
 |Pozíció:                   |nevű    |
 |Alapértelmezett érték:              |None     |
 |Adatcsatorna bemenetének elfogadása:      |False (Hamis)    |
@@ -439,7 +439,7 @@ Adja meg az Azure Active Directory szolgáltatás rendszergazdáját az Azure St
 Azure Stack központi telepítéshez használt adja meg az Azure Active Directoryban.
 |  |  |
 |----------------------------|---------|
-|Típus:                       |Karakterlánc   |
+|Típus:                       |String   |
 |Pozíció:                   |nevű    |
 |Alapértelmezett érték:              |None     |
 |Adatcsatorna bemenetének elfogadása:      |False (Hamis)    |
@@ -450,7 +450,7 @@ Azure Stack központi telepítéshez használt adja meg az Azure Active Director
 Az Azure-szolgáltatások tartalmazó a fiókok, könyvtárak és az előfizetések Azure Stack üzembe helyezésére és regisztrációjára használható példányát határozza meg.
 |  |  |
 |----------------------------|---------|
-|Típus:                       |Karakterlánc   |
+|Típus:                       |String   |
 |Pozíció:                   |nevű    |
 |Alapértelmezett érték:              |None     |
 |Érvényes értékek:               |'AzureCloud','AzureChinaCloud','AzureUSGovernment' |
@@ -462,7 +462,7 @@ Az Azure-szolgáltatások tartalmazó a fiókok, könyvtárak és az előfizeté
 Megadja, hogy a regisztráció az Azure Stack-regisztráció használandó.
 |  |  |
 |----------------------------|---------|
-|Típus:                       |Karakterlánc   |
+|Típus:                       |String   |
 |Pozíció:                   |nevű    |
 |Alapértelmezett érték:              |None     |
 |Adatcsatorna bemenetének elfogadása:      |False (Hamis)    |
@@ -473,7 +473,7 @@ Megadja, hogy a regisztráció az Azure Stack-regisztráció használandó.
 Itt adhatja meg a regisztrációs előfizetés-azonosító használható az Azure Stack-regisztráció.
 |  |  |
 |----------------------------|---------|
-|Típus:                       |GUID     |
+|Típus:                       |Guid     |
 |Pozíció:                   |nevű    |
 |Alapértelmezett érték:              |None     |
 |Adatcsatorna bemenetének elfogadása:      |False (Hamis)    |
@@ -484,7 +484,7 @@ Itt adhatja meg a regisztrációs előfizetés-azonosító használható az Azur
 Alapértelmezés szerint az aktuális címtár és az alapértelmezett a jelentés nevét, adja meg a elérési útja a készültségi jelentést.
 |  |  |
 |----------------------------|---------|
-|Típus:                       |Karakterlánc   |
+|Típus:                       |String   |
 |Pozíció:                   |nevű    |
 |Alapértelmezett érték:              |Összes      |
 |Adatcsatorna bemenetének elfogadása:      |False (Hamis)    |
@@ -506,7 +506,7 @@ ACSBlob, ACSQueue, ACSTable, ADFS, Admin Portal, ARM Admin, ARM Public, Graph, K
 
 |  |  |
 |----------------------------|---------|
-|Típus:                       |Karakterlánc   |
+|Típus:                       |String   |
 |Pozíció:                   |nevű    |
 |Alapértelmezett érték:              |. \Certificates |
 |Adatcsatorna bemenetének elfogadása:      |False (Hamis)    |
@@ -529,7 +529,7 @@ Itt adhatja meg, ha a PaaS szolgáltatások/állomásnevek kell adni a tanúsít
 Itt adhatja meg, hogy csak az jeleníti meg a jelentés összefoglaló, az áttekinthetőség kedvéért kihagyja részletei.
 |  |  |
 |----------------------------|---------|
-|Típus:                       |Karakterlánc   |
+|Típus:                       |String   |
 |Pozíció:                   |nevű    |
 |Alapértelmezett érték:              |Összes      |
 |Érvényes értékek:               |'Certificate','AzureRegistration','AzureIdentity','Jobs','All' |
@@ -565,7 +565,7 @@ Itt adható meg egyéni elérési út készültségi JSON-jelentés és a részl
 
 |  |  |
 |----------------------------|------------------|
-|Típus:                       |Karakterlánc            |
+|Típus:                       |String            |
 |Pozíció:                   |nevű             |
 |Alapértelmezett érték:              |$ENV: TEMP\AzsReadinessChecker  |
 |Adatcsatorna bemenetének elfogadása:      |False (Hamis)             |

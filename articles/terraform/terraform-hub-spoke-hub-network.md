@@ -2,19 +2,19 @@
 title: Hub virtuális hálózat létrehozása terraform az Azure-ban
 description: Az oktatóanyag egy agyi virtuális hálózat létrehozása az Azure-ban, amely a más hálózatok közötti közös kapcsolódási pontot ábrázoló
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: terraform, hub and spoke, networks, hybrid networks, devops, virtual machine, azure, VNet peering, hub-spoke, hub.
 author: VaijanathB
 manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
 ms.date: 03/01/2019
-ms.openlocfilehash: 11603a2863ea9d9a2f5e790a64b1cafef5fc1087
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 52eb6615442618893741f507d9cae6bd31d5f558
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57411401"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774574"
 ---
 # <a name="tutorial-create-a-hub-virtual-network-with-terraform-in-azure"></a>Oktatóanyag: Hub virtuális hálózat létrehozása terraform az Azure-ban
 

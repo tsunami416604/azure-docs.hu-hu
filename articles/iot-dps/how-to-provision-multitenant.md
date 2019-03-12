@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 43989ff9dac7cdad76117aaa6e3c862453b24813
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: ea071b704c58383ce52615bb1dfd88df8017ef7f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56865110"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544443"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>Hogyan helyezhet üzembe több-bérlős módhoz 
 
@@ -86,7 +86,7 @@ Ebben a szakaszban létrehozhat egy új regisztrációs csoport a bérlő eszkö
 
 Ez a cikk az egyszerűség kedvéért használja [szimmetrikus kulcsát a kulcsigazoláshoz](concepts-symmetric-key-attestation.md) a regisztrációval. A biztonságosabb megoldás, fontolja meg [tanúsítvány X.509-igazoláshoz](concepts-security.md#x509-certificates) és a egy megbízhatósági láncot.
 
-1. Jelentkezzen be a [az Azure portal](http://portal.azure.com), és nyissa meg a Device Provisioning Service-példány.
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com), és nyissa meg a Device Provisioning Service-példány.
 
 2. Válassza ki a **beléptetések kezelése** fülre, majd a **regisztrációs csoport hozzáadása** gombra a lap tetején. 
 

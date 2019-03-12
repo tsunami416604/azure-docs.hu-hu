@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 8de155eb0c53a07c88d996e2545be9da3159653f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 6cc5e3f8f188c60a129f6ad6575b348616bdad9b
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565581"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569748"
 ---
 # <a name="using-elastic-database-client-library-with-dapper"></a>Elastic database-ügyfélkódtár használata a dapperrel
 Alkalmazásokat hozhat létre Dapper támaszkodik, de is szeretné kihasználni a fejlesztők számára van ez a dokumentum [elastic database tooling](sql-database-elastic-scale-introduction.md) , alkalmazzon horizontális skálázási horizontális felskálázási méretezhetik alkalmazások létrehozásához.  Ez a dokumentum a Dapper-alapú alkalmazások integrálása az elastic database-eszközökkel való szükséges változásokat mutatja be. A fókusz a rugalmas adatbázis szilánkkezelési és Adatfüggő útválasztásnak dapperrel összeállítása be van kapcsolva. 
@@ -64,8 +64,8 @@ E megfigyelések ellenőrizze a Dapper az elastic database ügyfélkódtár ált
 Ez a Kódpélda (kísérő mintából) a módszert, ahol a szegmenskulcs megfelelő megválasztása közvetítse a kapcsolatot a megfelelő szegmensre az erőforrástárhoz az alkalmazás által biztosított mutatja be.   
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
-                     key: tenantId1, 
-                     connectionString: connStrBldr.ConnectionString, 
+                     key: tenantId1,
+                     connectionString: connStrBldr.ConnectionString,
                      options: ConnectionOptions.Validate))
     {
         var blog = new Blog { Name = name };
@@ -87,13 +87,13 @@ A szegmens térkép objektum, amely a megadott horizontális skálázási kulcs 
 Lekérdezések nagyon ugyanúgy működnek – először megnyitja a kapcsolatot használó [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) az ügyfél API-t. A normál Dapper bővítő metódusok majd képezze le az SQL-lekérdezés eredményeit a .NET-objektumokká használhatja:
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
-                    key: tenantId1, 
-                    connectionString: connStrBldr.ConnectionString, 
+                    key: tenantId1,
+                    connectionString: connStrBldr.ConnectionString,
                     options: ConnectionOptions.Validate ))
-    {    
+    {
            // Display all Blogs for tenant 1
            IEnumerable<Blog> result = sqlconn.Query<Blog>(@"
-                                SELECT * 
+                                SELECT *
                                 FROM Blog
                                 ORDER BY Name");
 
@@ -112,8 +112,8 @@ További kiterjesztések, megadhat további kényelmi célokat szolgál, és abs
 Az alkalmazásban használt DapperExtensions nem változik hogyan adatbázis-kapcsolatok létrehozása és felügyelete. Még mindig az alkalmazás feladata, hogy nyissa meg a kapcsolatokat, és rendszeres SQL-ügyfél kapcsolatobjektumok bővítmény módszerek által várt. Hogy hagyatkozhat a [OpenConnectionForKey](https://msdn.microsoft.com/library/azure/dn807226.aspx) ajánlásait. A következő Kódminták látható, a az egyetlen változás az, hogy már nincs a T-SQL-utasítások írása:
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
-                    key: tenantId2, 
-                    connectionString: connStrBldr.ConnectionString, 
+                    key: tenantId2,
+                    connectionString: connStrBldr.ConnectionString,
                     options: ConnectionOptions.Validate))
     {
            var blog = new Blog { Name = name2 };
@@ -123,8 +123,8 @@ Az alkalmazásban használt DapperExtensions nem változik hogyan adatbázis-kap
 Ez pedig a kódminta található, a lekérdezés: 
 
     using (SqlConnection sqlconn = shardingLayer.ShardMap.OpenConnectionForKey(
-                    key: tenantId2, 
-                    connectionString: connStrBldr.ConnectionString, 
+                    key: tenantId2,
+                    connectionString: connStrBldr.ConnectionString,
                     options: ConnectionOptions.Validate))
     {
            // Display all Blogs for tenant 2
@@ -143,7 +143,7 @@ A kódminta átmeneti hibák elleni védelem érdekében az átmeneti hibák kö
 
     SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
     {
-       using (SqlConnection sqlconn = 
+       using (SqlConnection sqlconn =
           shardingLayer.ShardMap.OpenConnectionForKey(tenantId2, connStrBldr.ConnectionString, ConnectionOptions.Validate))
           {
               var blog = new Blog { Name = name2 };

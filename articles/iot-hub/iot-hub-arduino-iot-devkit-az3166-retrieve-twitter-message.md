@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: f488f8aa991b3d4baae05097af9b6e2f2db481cc
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: d684493a3ede55c241c901bb0814630b1d204e0c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158924"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542879"
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>Rázó, egy tweetet rázza meg – az Azure Functions Twitter-üzenet lekérdezése
 
@@ -79,7 +79,7 @@ Cserélje le a karakterláncot `iot` belül az előnyben részesített hashtagge
 
 Használat `Ctrl+P` (macOS: `Cmd+P`) futtatásához `task cloud-deploy` üzembe helyezése az Azure Functions kódjaiba elindításához:
 
-![felhő üzembe helyezése](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-deploy.png)
+![cloud-deploy](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/cloud-deploy.png)
 
 > [!NOTE]
 > Néha előfordul az Azure-függvény nem működik megfelelően. Ez akkor fordul elő, ha a probléma megoldásához ellenőrizze a ["lekérdezésfordítási hiba" szakaszában az IoT DevKit – gyakori kérdések](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#compilation-error-for-azure-function).
@@ -126,7 +126,7 @@ Alkalmazás inicializálása, után kattintson a gombra A kiadási, majd óvatos
 
 ### <a name="arduino-application-initializing"></a>Arduino alkalmazás inicializálása...
 
-![Arduino-alkalmazás inicializálása](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-1.png)
+![Arduino-application-initializing](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/result-1.png)
 
 ### <a name="press-a-to-shake"></a>Nyomja le a rázza meg A...
 
@@ -169,7 +169,7 @@ A mintaprojekt tesztelési célokra használja az előre konfigurált Twitter tu
 
 4. Az a [az Azure portal](https://portal.azure.com/){: target = "_blank"}, kaphat a **erőforráscsoport** , és keresse meg az Azure-függvény (típusa: App Service-ben) a "Rázó, rázó" projekt. A név mindig tartalmazza a "rázó..." karakterlánc.
 
-   ![az Azure-függvény](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function.png)
+   ![azure-function](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function.png)
 
 5. A kód frissítése `run.csx` belül **Funkciók > shakeshake-cs** saját jogkivonattal:
 
@@ -177,7 +177,7 @@ A mintaprojekt tesztelési célokra használja az előre konfigurált Twitter tu
    string authHeader = "Bearer " + "[your own token]";
   ```
   
-  ![Twitter-token](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/twitter-token.png)
+  ![twitter-token](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/twitter-token.png)
 
 6. Mentse a fájlt, majd kattintson a **futtatása**.
 
@@ -195,13 +195,13 @@ Vagy a kód futtatásakor vannak bizonyos jelekből, amely egy, az alkalmazás �
 
 2. Az a [az Azure portal](https://portal.azure.com/), az Azure Functions-alkalmazás hozott létre, és indítsa újra:
 
-   ![az Azure-függvény-újraindítás](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function-restart.png)
+   ![azure-function-restart](media/iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message/azure-function-restart.png)
 
 ### <a name="feedback"></a>Visszajelzés
 
 Ha más problémákat tapasztal, tekintse meg a [IoT DevKit – gyakori kérdések](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/) , vagy lépjen kapcsolatba velünk a kapcsolatot a következő csatornákon:
 
-* [Gitter.im](http://gitter.im/Microsoft/azure-iot-developer-kit)
+* [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>További lépések

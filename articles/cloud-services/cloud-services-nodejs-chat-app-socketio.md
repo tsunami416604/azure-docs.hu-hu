@@ -14,16 +14,16 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 0fae47f248d5662b69a0d1a12c82b7ded33badd6
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 6a45d6366ef3c581c00b084b7ea2e4095eaaba3f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001983"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57538119"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>A Socket.IO kódtár használatával Node.js-csevegőalkalmazás létrehozásához, egy Azure-Felhőszolgáltatás
 
-A Socket.IO összetevő biztosítja a valós idejű kommunikációt a node.js-kiszolgáló és az ügyfelek között. Ez az oktatóanyag végigvezeti egy szoftvercsatorna üzemeltetéséhez. I/o-alapú csevegőalkalmazás létrehozásához az Azure-ban. A Socket.IO kódtár további információkért lásd: [a Socket.IO kódtár](http://socket.io).
+A Socket.IO összetevő biztosítja a valós idejű kommunikációt a node.js-kiszolgáló és az ügyfelek között. Ez az oktatóanyag végigvezeti egy szoftvercsatorna üzemeltetéséhez. I/o-alapú csevegőalkalmazás létrehozásához az Azure-ban. A Socket.IO kódtár további információkért lásd: [a Socket.IO kódtár](https://socket.io).
 
 Az elkészült alkalmazás képernyőképe nem éri el:
 
@@ -41,7 +41,7 @@ Az alábbi lépéseket a felhőszolgáltatás-projekt, amely üzemelteti a Socke
 
 1. Az a **Start menü** vagy **kezdőképernyőjén**, keressen **Windows PowerShell**. Végül kattintson a jobb gombbal **Windows PowerShell** válassza **Futtatás rendszergazdaként**.
    
-    ![Az Azure PowerShell ikon][powershell-menu]
+    ![Azure PowerShell icon][powershell-menu]
 2. Hozzon létre egy könyvtárat nevű **c:\\csomópont**. 
    
         PS C:\> md node
@@ -84,11 +84,7 @@ Az alkalmazás tesztelése az Azure-emulátorban, előtt bizonyos kisebb módos�
          var port = process.env.PORT || 3000;         //Updated
 3. Annak érdekében, hogy az alkalmazás megfelelő portot figyeli, nyissa meg a server.js a Jegyzettömb vagy a kedvenc szerkesztőjében, és módosítsa a következő sort lecserélésével **3000** a **process.env.port** alább látható módon:
    
-       //app.listen(3000, function () {            //Original
-       app.listen(process.env.port, function () {  //Updated
-         var addr = app.address();
-         console.log('   app listening on http://' + addr.address + ':' + addr.port);
-       });
+       App.listen használatával (3000, a függvény () {//Original       App.listen használatával (process.env.port, a függvény () {//Updated var cím app.address(); =       Console.log ("alkalmazás figyeli a http://" + addr.address + ':' + addr.port);     });
 
 A módosítások mentése után **server.js**, kövesse az alábbi lépéseket a szükséges modulok telepítéséhez, és tesztelje az alkalmazást az Azure emulatorban:
 
@@ -109,7 +105,7 @@ A módosítások mentése után **server.js**, kövesse az alábbi lépéseket a
        PS C:\node\chatapp\WorkerRole1> Start-AzureEmulator -Launch
    
    > [!NOTE]
-   > Ha az emulátorban, például indításával problémák merülnek fel.: Start-AzureEmulator: Váratlan hiba történt.  Részletek: Észlelt váratlan hiba a kommunikációs objektumot System.ServiceModel.Channels.ServiceChannel, nem használható a kommunikációhoz mert Faulted állapotban van.
+   > Ha az emulátorban, például indításával problémák merülnek fel.:      Start-AzureEmulator: Váratlan hiba történt.  Részletek: Észlelt hiba Objekt komunikace, System.ServiceModel.Channels.ServiceChannel, nem használható a kommunikációhoz, mert a Faulted állapotban van.
    
       Telepítse újra a AzureAuthoringTools v 2.7.1-es verziójához és AzureComputeEmulator v 2.7 – győződjön meg arról, hogy a verzió megegyezik.
    >
@@ -156,7 +152,7 @@ További információ: a [Node.js fejlesztői központ](https://docs.microsoft.c
 
 [chatwebsite]: https://docs.microsoft.com/azure/cloud-services/cloud-services-nodejs-develop-deploy-app
 
-[Azure SLA]: http://www.windowsazure.com/support/sla/
+[Azure SLA]: https://www.windowsazure.com/support/sla/
 [Azure SDK for Node.js GitHub repository]: https://github.com/WindowsAzure/azure-sdk-for-node
 [completed-app]: ./media/cloud-services-nodejs-chat-app-socketio/socketio-10.png
 [Azure SDK for Node.js]: https://www.windowsazure.com/develop/nodejs/

@@ -9,17 +9,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 9debcd121cbbde626758abccfe838abda12ad840
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1c59f092957704c44b5cda012aa7c471fdaa3275
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822833"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57763367"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription-or-a-storage-account"></a>Storage explorer csatlakoztatása Azure Stack-előfizetéshez vagy a storage-fiók
 
@@ -30,7 +30,7 @@ Ebben a cikkben megismerheti, hogyan csatlakozhat az Azure Stack-előfizetést �
 > [!NOTE]  
 > Nincsenek elérhető adatok áthelyezése az Azure Stack storage szolgáltatásba vagy onnan számos eszközt. További információkért lásd: [adatátviteli eszközök az Azure Stack storage](azure-stack-storage-transfer.md).
 
-Ha még nem telepítette a storage Explorert, [a storage explorer letöltése](http://www.storageexplorer.com/) , és telepítse.
+Ha még nem telepítette a storage Explorert, [a storage explorer letöltése](https://www.storageexplorer.com/) , és telepítse.
 
 Miután csatlakozott az Azure Stack-előfizetéshez vagy a storage-fiók, használhatja a [az Azure storage explorer cikkek](../../vs-azure-tools-storage-manage-with-storage-explorer.md) az Azure Stack-adatokkal szeretne dolgozni. 
 

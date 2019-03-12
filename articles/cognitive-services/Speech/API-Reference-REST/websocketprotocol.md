@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 35f1d75f28271cd7efc2911fe14de9ed6b525557
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 304df5cc96e7cf12cf74c319bee39f2369fc63e1
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671743"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546347"
 ---
 # <a name="bing-speech-websocket-protocol"></a>A Bing Speech WebSocket protokoll
 
@@ -86,13 +86,13 @@ A jogkivonat-szolgáltatás adja vissza, mint a JWT jogkivonat `text/plain`. A J
 
 `Authorization: Bearer [Base64 access_token]`
 
-### <a name="cookies"></a>A cookie-k
+### <a name="cookies"></a>Cookie-k
 
 Az ügyfelek *kell* támogatja a HTTP-cookie-k a megadott [RFC 6265](https://tools.ietf.org/html/rfc6265).
 
 ### <a name="http-redirection"></a>HTTP-átirányítás
 
-Az ügyfelek *kell* támogatja a standard átirányítási módszerek által megadott a [HTTP-protokoll specifikációinak](http://www.w3.org/Protocols/rfc2616/rfc2616.html).
+Az ügyfelek *kell* támogatja a standard átirányítási módszerek által megadott a [HTTP-protokoll specifikációinak](https://www.w3.org/Protocols/rfc2616/rfc2616.html).
 
 ### <a name="speech-endpoints"></a>Beszédfelismerési végpontokat
 

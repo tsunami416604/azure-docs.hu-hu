@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: cc8c10f8a3f515d3401dbb469a7e4a31c4fe3501
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 4ddbec6b163a939c1663630e39e89140ac6f7efe
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329813"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546475"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>A Stream Analytics keresések referenciaadatok használata
 Referenciaadatok (más néven egy keresési táblázat) egy véges adatkészlet, amely statikus vagy lassan változó természetű, használja a keresés végrehajtásához vagy korrelációját, ha az adatfolyamban. Például egy IoT-forgatókönyvet, sikerült (amelyek nem változnak gyakran) vonatkozó metaadatokat tárolnak a referenciaadatok és csatlakozik azt a valós idejű IoT-adatfolyamaiból. Az Azure Stream Analytics közel valós idejű adatfolyam-feldolgozás eléréséhez a memóriában referenciaadatok tölti be. Győződjön meg arról, hogy az Azure Stream Analytics-feladat a referenciaadatok, az általában használhat egy [referencia-adatok csatlakozzon](https://msdn.microsoft.com/library/azure/dn949258.aspx) a lekérdezésben. 
@@ -78,7 +78,7 @@ Az Azure SQL Database referenciaadatok a Stream Analytics-feladat által beolvas
 
 Lassan változó adatkészlet a referenciaadatok esetén időközönként frissíti a pillanatképet, a feladat használt van szükség. Stream Analytics lehetővé teszi az Azure SQL Database bemeneti kapcsolat konfigurálásakor beállított egy frissítési gyakoriság. A Stream Analytics modul az Azure SQL Database lekérdezi a frissítési gyakoriság a megadott időközönként. A leggyorsabb támogatott frissítési gyakoriság percenként egyszer történik. Minden frissítés egy új pillanatkép Stream Analytics a megadott tárfiók tárolja.
 
-Stream Analytics lekérdezése az Azure SQL Database két lehetőséget biztosít. A pillanatkép-lekérdezés megadása kötelező, és szerepelnie kell minden egyes feladat. Stream Analytics rendszeres időközönként a frissítési gyakoriság alapján a pillanatkép-lekérdezést, és a lekérdezés (Pillanatkép) eredményét használja, mint a referencia-adatkészlet. A pillanatkép-lekérdezést kell fér legtöbb forgatókönyvben, de ha nagy méretű adatkészleteket és a gyors frissítés gyakorisága a teljesítményproblémákat tapasztal, használhatja a különbözeti lekérdezés beállítást.
+Stream Analytics lekérdezése az Azure SQL Database két lehetőséget biztosít. A pillanatkép-lekérdezés megadása kötelező, és szerepelnie kell minden egyes feladat. Stream Analytics rendszeres időközönként a frissítési gyakoriság alapján a pillanatkép-lekérdezést, és a lekérdezés (Pillanatkép) eredményét használja, mint a referencia-adatkészlet. A pillanatkép-lekérdezést kell fér legtöbb forgatókönyvben, de ha nagy méretű adatkészleteket és a gyors frissítés gyakorisága a teljesítményproblémákat tapasztal, használhatja a különbözeti lekérdezés beállítást. Vissza a referencia-adatkészlet több mint 60 másodperc lekérdezések időtúllépés eredményez.
 
 A különbözeti lekérdezés lehetőséggel a Stream Analytics a pillanatkép-lekérdezés kezdetben az alapkonfiguráció referencia-adatkészlet futtat. Után a Stream Analytics futtatja a különbözeti lekérdezés rendszeres időközönként alapján a frissítési időköz beolvasni a növekményes változásokat. Ezek a növekményes változásokat folyamatosan lépnek folyamatosan frissíteni a referencia-adatkészlet. Változáslekérdezések használata segíthet a tárolási költségek csökkentése és a hálózati i/o-műveletek.
 

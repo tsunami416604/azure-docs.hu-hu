@@ -8,16 +8,16 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: babanisa
-ms.openlocfilehash: 81f9db7e90e2cef85d41561cc677db3d6422ef45
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: c9c0fd8bf7dc893ce07a6e3ce9cb392fc652a560
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079868"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535852"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>CloudEvents-séma használata az Event GRID használatával
 
-Mellett a [alapértelmezett eseménysémája](event-schema.md), az Azure Event Grid natív módon támogatja az események a [CloudEvents JSON-sémájában](https://github.com/cloudevents/spec/blob/master/json-format.md). [CloudEvents](http://cloudevents.io/) van egy [nyissa meg a specifikációnak](https://github.com/cloudevents/spec/blob/master/spec.md) leíró események adatait.
+Mellett a [alapértelmezett eseménysémája](event-schema.md), az Azure Event Grid natív módon támogatja az események a [CloudEvents JSON-sémájában](https://github.com/cloudevents/spec/blob/master/json-format.md). [CloudEvents](https://cloudevents.io/) van egy [nyissa meg a specifikációnak](https://github.com/cloudevents/spec/blob/master/spec.md) leíró események adatait.
 
 CloudEvents együttműködési leegyszerűsíti egy közös eseménysémája azáltal, hogy a közzétételre, és a felhőt események alapján. Ez a séma lehetővé teszi, hogy egységes azokat az eszközöket, normál módon az Útválasztás és események kezelése és a külső eseménysémája deszerializálása univerzális módjait. Egy közös sémával rendelkező további egyszerűen integrálható a munkahelyi különböző platformokon.
 
@@ -60,16 +60,16 @@ Ez a cikk ismerteti a CloudEvents-séma használata az Event GRID használatáva
 
 CloudEvents v0.1 érhető el a következő tulajdonságokkal rendelkezik:
 
-| CloudEvents        | Típus     | Példa JSON-értéket             | Leírás                                                        | Event Grid-leképezés
+| CloudEvents        | Typo     | Példa JSON-értéket             | Leírás                                                        | Event Grid-leképezés
 |--------------------|----------|--------------------------------|--------------------------------------------------------------------|-------------------------
-| eventType          | Karakterlánc   | "com.example.someevent"          | Előfordulás történt típusa                                   | eventType
-| eventTypeVersion   | Karakterlánc   | "1.0"                            | Az esemény típusa (nem kötelező) verziója                            | dataVersion
-| cloudEventsVersion | Karakterlánc   | "0.1"                            | Az esemény használ CloudEvents-specifikáció verziója        | *átadni*
+| eventType          | String   | "com.example.someevent"          | Előfordulás történt típusa                                   | eventType
+| eventTypeVersion   | String   | "1.0"                            | Az esemény típusa (nem kötelező) verziója                            | dataVersion
+| cloudEventsVersion | String   | "0.1"                            | Az esemény használ CloudEvents-specifikáció verziója        | *átadni*
 | source             | URI      | "/ mycontext"                     | Az esemény-előállítót ismerteti                                       | topic#subject
-| eventID            | Karakterlánc   | "1234-1234-1234"                 | Esemény azonosítója                                                    | id
+| eventID            | String   | "1234-1234-1234"                 | Esemény azonosítója                                                    | id
 | eventTime          | Időbélyeg| "2018-04-05T17:31:00Z"           | Időbélyeg, ha az esemény történt-e (nem kötelező)                    | eventTime
 | schemaURL          | URI      | „https://myschema.com”           | A séma, az adatok attribútum betartó (nem kötelező) mutató hivatkozás | *nincs használatban*
-| contentType        | Karakterlánc   | "application/json"               | Ismerteti az adatok kódolási formátum (nem kötelező)                       | *nincs használatban*
+| contentType        | String   | "application/json"               | Ismerteti az adatok kódolási formátum (nem kötelező)                       | *nincs használatban*
 | Bővítmények         | Térkép      | { "extA": "vA", "extB", "vB" }  | Minden további metaadatok (nem kötelező)                                 | *nincs használatban*
 | adat               | Objektum   | { "objA": "vA", "objB", "vB" }  | Az eseménytartalom (nem kötelező)                                       | adat
 

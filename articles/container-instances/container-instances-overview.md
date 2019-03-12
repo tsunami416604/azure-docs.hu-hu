@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 11/30/2018
 ms.author: seanmck
 ms.custom: seodec18, mvc
-ms.openlocfilehash: ba454965ff2bb78ebe526e71d9280200b1f4b08b
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d7c63503d0e1c142dfc1ef685453b93e24ec52b3
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53187194"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57730385"
 ---
 # <a name="what-is-azure-container-instances"></a>Mi az Azure Container Instances?
 
@@ -48,9 +48,14 @@ Az állapotok az Azure Container Instanceszel való lekéréséhez és megőrzé
 
 Az Azure Container Instances használatával a Windows- és a Linux-tárolókat ugyanazzal az API-val ütemezheti. Egyszerűen adja meg az operációs rendszer típusát a [tárolócsoportok](container-instances-container-groups.md) létrehozásakor.
 
-Bizonyos funkciók jelenleg Linux-tárolókra vannak korlátozva. Arra törekszünk, hogy idővel az összes funkció elérhető legyen a Windows-tárolókon is. Az egyes platformok közötti aktuális eltérésekről az [Azure Container Instances-kvóták és -régiók rendelkezésre állása](container-instances-quotas.md) részben tájékozódhat.
+Néhány funkció jelenleg csak Linux-tárolók:
 
-Az Azure Container Instances támogatja a Hosszútávú karbantartási csatornán (LTSC) alapuló Windows-rendszerképeket. A Windows féléves csatorna (SAC) egyes kiadásai, például az 1709 és az 1803 nem támogatottak.
+* Több tároló tárolócsoportonként
+* Kötet csatlakoztatási ([Azure Files](container-instances-volume-azure-files.md), [emptyDir](container-instances-volume-emptydir.md), [GitRepo](container-instances-volume-gitrepo.md), [titkos](container-instances-volume-secret.md))
+* [Virtuális hálózat üzembe helyezési](container-instances-vnet.md) (előzetes verzió)
+* [GPU-erőforrások](container-instances-gpu.md) (előzetes verzió)
+
+Az Azure Container Instances támogatja a Windows Server 2016 lemezképek hosszú távú karbantartási csatorna (LTSC) alapján. A Windows féléves csatorna (SAC) egyes kiadásai, például az 1709 és az 1803 nem támogatottak.
 
 ## <a name="co-scheduled-groups"></a>Együttesen ütemezett csoportok
 

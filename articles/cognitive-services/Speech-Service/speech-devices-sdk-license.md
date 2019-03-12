@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 096bc96558f0fe33f8046622dc2443728674e405
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: a9f6dfb0de2cf09b27d08eb6b7dc425c8cd1f17d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876861"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57549221"
 ---
 # <a name="speech-devices-sdk-license-agreement"></a>Beszéd Devices SDK-val a licencszerződést.
 
@@ -52,7 +52,7 @@ e) megosztani, tesz közzé, vagy tartós bérletbe a szoftvert (kivéve a terje
 
 f) szoftvert kell használnia a Microsoft Azure Cognitive Services beszédszolgáltatás kombináltan
 
-**3\. AZ ADATGYŰJTÉST.** Ez a szoftver más Microsoft-terméket, amely a Microsoftnak továbbított adatok gyűjtése is dolgozhat. Tudjon meg többet a hogyan Microsoft folyamatok személyes adatokat gyűjtünk, lásd a Microsoft adatvédelmi nyilatkozatát http://go.microsoft.com/fwlink/?LinkId=248681.
+**3\. AZ ADATGYŰJTÉST.** Ez a szoftver más Microsoft-terméket, amely a Microsoftnak továbbított adatok gyűjtése is dolgozhat. Tudjon meg többet a hogyan Microsoft folyamatok személyes adatokat gyűjtünk, lásd a Microsoft adatvédelmi nyilatkozatát https://go.microsoft.com/fwlink/?LinkId=248681.
 
 **4\. SZOFTVER MEGJELENÉS ELŐTTI.** A szoftver megjelenés előtti verziója is. Nem működhet megfelelően. Elképzelhető, hogy a kereskedelmi forgalomba verziója eltérő.
 

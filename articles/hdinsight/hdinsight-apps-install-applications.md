@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
+ms.date: 03/01/2019
 ms.author: hrasheed
-ms.openlocfilehash: 993d3dc065b792cc6d4ca0b1321cb1950cea85d8
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: a5033b9eab637a62c6bea4f95f4e604313125994
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652613"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542047"
 ---
 # <a name="install-third-party-apache-hadoop-applications-on-azure-hdinsight"></a>Az Azure HDInsight külső Apache Hadoop-alkalmazások telepítése
 
@@ -24,21 +24,24 @@ Egy HDInsight-alkalmazás olyan alkalmazás, amely a felhasználók telepítheti
 
 Az alábbi listában a közzétett alkalmazást mutatja be:
 
-* **AtScale adatelemzési Platform** bekapcsolja a HDInsight-fürt horizontális felskálázás OLAP-kiszolgálón. Az alkalmazás lehetővé teszi interaktív használatával a BI-eszközök a Microsoft Excel, a Power BI, a Tableau Software, a QlikView adatsor milliárd lekérdezéséhez.
-* **A cask CDAP for HDInsight** nyújt az első egységes integrációs platform big Data-80 %-kal kivágása idejét és data Lake tárolók éles környezetben. Ez az alkalmazás kizárólag a Standard HBase 3.4-fürtöket támogatja.
-* **A HDInsight DATAIKU DDS** lehetővé teszi az adatok szakemberek prototípusként, felépíthet és telepíthet rendkívül specifikus szolgáltatások, amelyek átalakítják a nyers adatokat hatékony üzleti előrejelzésekké.
-* **Datameer** önkiszolgáló méretezhető platformra való előkészítéséhez, feltárása, és gyorsítja vonatkozó az adatok elemzési információkká értékes üzleti használatra kész, gyorsabb és okosabb elemzések kézbesítése összetett többforrású adatokat bekapcsolása egy a nagyvállalati szintű.
-* **A HDInsight (béta) a H2O mesterséges intelligencia** H2O Sparkling Water a következő elosztott algoritmusokat támogatja: GLM, Naiv Bayes, elosztott véletlenszerű erdő, átmenetes kiemelési gép, Neurális hálózatokat, a mély tanulás, K-közép, PEM, alacsony rang modellek általánosítva, Anomáliadetektálás és Autoencoders.
-* **Kyligence vállalati**, Apache Kylin működteti, azonnali elemzéseket biztosít a nagy méretű adatkészletek az üzleti felhasználók és az adatelemzők. Az élvonalbeli gépi tanulási technológia és intelligens adatmodellezési funkciót Ez nagyban növeli a hatékonyságot, big data-elemzés. 
-* **Adat-előkészítési Paxata önkiszolgáló**
-* **Spark-feladatkiszolgálót KNIME Spark-végrehajtó** Spark-feladatkiszolgálót KNIME Spark-végrehajtó HDInsight-fürtök csatlakoztatásához az KNIME elemzési Platform szolgál.
-* **A Presto buborék** Presto van a gyors, skálázható elosztott SQL lekérdezési motorja. Tárolási és számítási szétválasztása lett tervezve, Presto tökéletes megoldás az adatok az Azure Data Lake Storage, Azure Blob Storage, SQL és NoSQL-adatbázisok és más adatforrásokhoz.
-* A **Streamsets Data Collector for HDInsight** olyan, átfogó funkciókat kínáló integrált fejlesztőkörnyezetet (IDE) biztosít, amelyben bármely irányú, stream- és batch-adatokat összefűző feldolgozási folyamatok tervezése, tesztelése, üzembe helyezése és felügyelete lehetséges, továbbá különféle streamen belüli transzformációkat is tartalmaz, és mindehhez nincs szükség egyedi kód írására. 
-* **Striim** (ejtsd a "stream") van egy teljes körű streamelési adatok integrálását és üzletiintelligencia-platform, folyamatos adatfeldolgozást, feldolgozási és elemzési különálló adatfolyamok engedélyezése.
-* **[Trifacta](https://www.trifacta.com/)**  lehetővé teszi, az adatmérnökök és az elemzők hatékonyabban vizsgálata, és már ma a különféle adatok előkészítése gépi tanulással biztosít egy átütő felhasználói élmény, a munkafolyamat és architektúra használatával történt.
-* **Unifi Adatplatform** zökkenőmentesen integrált csomagja, önkiszolgáló eszközöket a kiszolgálókon adatkezelési kihívást, hogy a meghajtó növekményes bevétel, csökkentheti a költségeket és az üzemeltetés bonyolult üzleti felhasználó ellátására készült. 
-* **A WANdisco Fusion HDI alkalmazás** lehetővé teszi, hogy egységes kapcsolat adatait, ha azok módosulnak, ahol nem található. Is tartalmaz a hozzáférést az adataihoz bármikor és bárhol az állásidő nélkül és megszakítás nélkül.
-* **Vízvonallal** katalógusokban, rendezi, és automatikus címkézés adatok az üzleti feltételeinek AI használata az adatok szabályozza. Üzleti literate katalógus vízvonallal a része a kritikus fontosságú, sikeres önkiszolgáló elemzési, megfelelőségi és szabályozási és informatikai kezdeményezések előrehaladását.
+|Alkalmazás |Fürt típusa | Leírás |
+|---|---|---|
+|AtScale Intelligence Platform |Hadoop |AtScale bekapcsolja a HDInsight-fürt horizontális felskálázás OLAP-kiszolgálón, amely lehetővé teszi a lekérdezés több milliárd interaktív módon BI-eszközökkel a már ismert, a tulajdonosa, és dolgozhat – a Microsoft Excel, a Power BI, Tableau Software QlikView az adatsorokat. |
+|CDAP 4.2, a HDInsight 4.3. |HBase |CDAP az első egységes integrációs platform big Data-gyorsító idő értékre a önkiszolgáló Hadoop és lehetővé teszi, hogy informatikai. Nyílt forráskódú és bővíthető CDAP eltávolítja a korlátok az innovációt. Követelmények: 4 régió csomópontok, D3 v2 perc. |
+|Datameer |Hadoop |A Datameer önkiszolgáló skálázható platformot való előkészítéséhez, vizsgálatára, és az adatok elemzési szabályozó gyorsítja információkká értékes üzleti használatra kész, gyorsabb és okosabb insights jusson el egy vállalati szintű összetett többforrású adatokat bekapcsolásával. |
+|A Dataiku DSS a HDInsight |Hadoop, Spark |A Dataiku DSS a egy vállalati adatelemzési platform, amely lehetővé teszi az adatszakértők és adatelemzők együttműködésének köszönhetően csökkenthetőek tervezését és új adatok termékek és -szolgáltatások hatékony, futtatását bekapcsolásával a nyers adatok hatásos előrejelzéseket be. |
+|A WANdisco Fusion HDI-alkalmazás – 2.12.3, 2.12.1, 2.11.2 |Hadoop, Spark,HBase,Storm,Kafka |Adatok egységessége az elosztott környezetekben az adatmennyiség nagymértékű műveletek kihívást jelent. A WANdisco Fusion, egy nagyvállalati szintű szoftver platform szerint teszi lehetővé a strukturálatlan adatok konzisztenciájának bármilyen környezetben erre a kérdésre. |
+|A HDInsight H2O SparklingWater |Spark |H2O Sparkling Water a következő elosztott algoritmusokat támogatja: GLM, Naiv Bayes, elosztott, véletlenszerű erdő, átmenetes kiemelési gép, Neurális hálózatokat, mély tanulás, K-közép, PEM, alacsony rang modellek általánosítani, rendellenességek észlelése, Autoencoders. |
+|A Striim valós idejű adatok HDInsight-integráció |Hadoop,HBase,Storm,Spark,Kafka |A Striim (jelentős "stream") egy – teljes körű streamelési adatok integrálását és adatelemzési platform, folyamatos adatfeldolgozást, feldolgozási és elemzési különálló adatfolyamok engedélyezése. |
+|A HDInsight Jumbune |Hadoop, Spark |Magas szinten Jumbune segíti a vállalatok által, 1. Tez felgyorsítása, a MapReduce és a Spark-motort alapú Hive, a Java, a Scala számítási feladatok teljesítményére. 2. Proaktív Hadoop-fürt figyelése, 3. Az elosztott fájlrendszer-kezelés Data Quality meghatározása. |
+|Kyligence Enterprise |Hadoop,HBase,Spark |Apache Kylin működteti, a Kyligence vállalati BI, a Big Data lehetővé teszi. Modulként vállalati OLAP hadoop Kyligence vállalati bi-ban hadoop tervezhet az iparági szabványnak megfelelő data warehouse és BI módszertan üzleti elemző lehetővé teszi. |
+|Spark-feladatkiszolgálót KNIME Spark-végrehajtó |Spark |Spark-feladatkiszolgálót KNIME Spark-végrehajtó HDInsight-fürtök csatlakoztatásához az KNIME elemzési Platform szolgál. |
+|Buborék Presto az Azure HDInsight, a buborék Presto (v0.213-e) |Hadoop |Presto van egy gyors, skálázható elosztott SQL lekérdezési motorja. Tárolási és számítási szétválasztása lett tervezve, Presto tökéletes megoldás az adatok az Azure Data Lake Storage, Azure Blob Storage, SQL és NoSQL-adatbázisok és más adatforrásokhoz. |
+|StreamSets Data Collector for HDInsight felhőalapú |Hadoop, HBase, Spark, Kafka |StreamSets Data Collector egy könnyen használható, nagy teljesítményű motor, amely valós időben streameli. Útvonal és az adatok feldolgozása a data-adatfolyamok a gyűjtő használatával. Ez tartalmaz egy 30 napos próbaverziós licencre. |
+|[Trifacta Wrangler Enterprise](https://www.trifacta.com/) |Hadoop, Spark, HBase |Trifacta Wrangler Enterprise HDInsight a vállalati adatok rugalmasan méretezhető, az adatok konvertálását támogatja. Azure-on futó Trifacta költsége Trifacta előfizetés költségek és az Azure infrastrukturális költségeit a virtuális gépek kombinációját. |
+|3.1 Unifi Data Platform |Hadoop,HBase,Storm,Spark |Lehetővé teheti az üzleti felhasználónak, amelynek célja a adatkezelési kihívást a meghajtó növekményes bevétel, csökkentheti a költségeket és az üzemeltetés bonyolult önkiszolgáló olyan eszközöket, zökkenőmentesen integrált Unifi Adatplatformon olyan. |
+|Unraveldata APM |Spark |HDInsight Spark-fürt adatok alkalmazás unravel. |
+|A Data Catalog vízvonallal |Spark |Vízvonallal katalógusokban, rendezi és mesterséges Intelligencia használatával automatikus címkeadatok üzleti feltételeket adatok szabályozza. Üzleti literate katalógus vízvonallal a része a kritikus fontosságú, sikeres önkiszolgáló elemzési, megfelelőségi és szabályozási és informatikai kezdeményezések előrehaladását. |
 
 A cikkben szereplő utasítások az Azure Portalon alapulnak. Az Azure Resource Manager-sablonok exportálása a portálról vagy a Resource Manager-sablon másolatának beszerzése szállítóktól származó, és a sablon üzembe helyezése az Azure PowerShell és a klasszikus Azure CLI használatával.  Lásd: [Apache Hadoop-fürtök létrehozása a Resource Manager-sablonok használatával HDInsight](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 
@@ -51,20 +54,20 @@ Az alábbi eljárásból megtudhatja, hogyan telepíthet HDInsight-alkalmazások
 **Egy HDInsight-alkalmazás telepítése**
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A bal oldali menüben kattintson a **HDInsight Clusters** (HDInsight-fürtök) elemre.
-3. Kattintson a kívánt HDInsight-fürtre.  Ha még nincs ilyen fürtje, hozzon létre egyet most.  Lásd: [Fürtök létrehozása](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
-4. Kattintson az **Applications** (Alkalmazások) elemre a **Configurations** (Konfigurációk) kategóriában. Láthatja, hogy a telepített alkalmazások listáját. Ha nem látja az Alkalmazások elemet, az azt jelenti, hogy a HDInsight-fürt jelen verziójához nem érhetők el alkalmazások.
+2. Lépjen a bal oldali menüből **minden szolgáltatás** > **Analytics** > **HDInsight-fürtök**.
+3. Válasszon ki egy HDInsight-fürtöt a listából.  Ha még nincs ilyen fürtje, hozzon létre egyet most.  Lásd: [Fürtök létrehozása](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster).
+4. Alatt a **beállítások** kategória, jelölje be **alkalmazások**. Láthatja, hogy a fő ablakban a telepített alkalmazások listáját. 
    
     ![HDInsight-alkalmazások menü a portálon](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)
-5. Kattintson a **Hozzáadás** a menüből. Megjelenik a meglévő HDInsight-alkalmazások listája.
+5. Válassza ki **+ Hozzáadás** a menüből. Láthatja, hogy az elérhető alkalmazások listáját.  Ha **+ Hozzáadás** szürkén jelenik meg, hogy a hiba azt jelenti, hogy a HDInsight-fürt jelen verziójához nem alkalmazások.
    
     ![HDInsight-alkalmazások, elérhető alkalmazások](./media/hdinsight-apps-install-applications/hdinsight-apps-list.png)
-6. Kattintson az egyik az elérhető alkalmazásokat, és kövesse az utasításokat követve fogadja el a jogi feltételeket.
+6. Válasszon egyet az elérhető alkalmazásokat, és kövesse az utasításokat követve fogadja el a jogi feltételeket.
 
-A portál értesítései között megtekintheti a telepítési állapotot (ehhez kattintson a portál felső részén található harang ikonra). Az alkalmazás telepítése után az alkalmazás megjelenik a telepített alkalmazások listájában.
+A telepítési állapotát a portál értesítései (válassza a Harang ikon a portál tetején) látható. Az alkalmazás telepítése után az alkalmazás megjelenik a telepített alkalmazások listájában.
 
 ## <a name="install-applications-during-cluster-creation"></a>Alkalmazások telepítése fürtlétrehozás során
-HDInsight-alkalmazásokat fürt létrehozása közben is telepíthet. A HDInsight-alkalmazásokat azt követően telepíti a rendszer, hogy a fürt létrejött, és futó állapotba került. Alkalmazások telepítése az Azure portal használatával, a fürt létrehozása során, használja a--egyéni – a beállítás helyett az alapértelmezett – gyors létrehozása – lehetőséget.
+HDInsight-alkalmazásokat fürt létrehozása közben is telepíthet. A HDInsight-alkalmazásokat azt követően telepíti a rendszer, hogy a fürt létrejött, és futó állapotba került. Alkalmazások telepítése során a fürt létrehozása az Azure portal használatával, használhatja a **egyéni** helyett az alapértelmezett beállítás **Gyorslétrehozás** lehetőséget.
 
 ## <a name="list-installed-hdinsight-apps-and-properties"></a>Telepített HDInsight-alkalmazások és az alkalmazástulajdonságok listázása
 A portál megjeleníti a fürthöz tartozó telepített HDInsight-alkalmazásokat, valamint az egyes telepített alkalmazásokhoz tartozó tulajdonságokat.
@@ -72,18 +75,21 @@ A portál megjeleníti a fürthöz tartozó telepített HDInsight-alkalmazásoka
 **HDInsight-alkalmazások listázása és az alkalmazástulajdonságok megjelenítése**
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A bal oldali menüben kattintson a **HDInsight Clusters** (HDInsight-fürtök) elemre. 
-3. Kattintson a kívánt HDInsight-fürtre.
-4. A **beállítások**, kattintson a **alkalmazások** alatt a **konfigurációs** kategória. A telepített alkalmazások a jobb oldalon jelennek meg. 
+2. Lépjen a bal oldali menüből **minden szolgáltatás** > **Analytics** > **HDInsight-fürtök**.
+3. Válasszon ki egy HDInsight-fürtöt a listából.
+4. Alatt a **beállítások** kategória, jelölje be **alkalmazások**. Láthatja, hogy a fő ablakban a telepített alkalmazások listáját. 
    
     ![HDInsight-alkalmazások, telepített alkalmazások](./media/hdinsight-apps-install-applications/hdinsight-apps-installed-apps-with-apps.png)
-5. A tulajdonságok megjelenítéséhez kattintson a kívánt telepített alkalmazásra. A tulajdonság tartalmazza:
-   
-   * Alkalmazásnév: az alkalmazás neve.
-   * Állapot: az alkalmazás állapota. 
-   * Weblap: A központilag telepített az élcsomóponthoz webalkalmazás URL-címe A hitelesítő adatok ugyanazok, mint amelyeket a fürthöz beállított HTTP-felhasználónál használt.
-   * HTTP-végpont: A hitelesítő adatok ugyanazok, mint amelyeket a fürthöz beállított HTTP-felhasználónál használt. 
-   * SSH-végpont: Az SSH segítségével kapcsolódni az élcsomóponthoz. Az SSH hitelesítő adatai ugyanazok, mint amelyeket a fürthöz beállított SSH-felhasználónál használt. További információk: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md).
+5. Válassza ki a kívánt telepített alkalmazásra a tulajdonságok megjelenítéséhez. A tulajdonság tartalmazza:
+
+    |Tulajdonság | Leírás |
+    |---|---|
+    |App neve |Alkalmazás neve. |
+    |status |Az alkalmazás állapota. |
+    |Weblap |A központilag telepített az élcsomóponthoz webalkalmazás URL-címe A hitelesítő adatok ugyanazok, mint amelyeket a fürthöz beállított HTTP-felhasználónál használt. |
+    |SSH-végpont |Az SSH segítségével kapcsolódni az élcsomóponthoz. Az SSH hitelesítő adatai ugyanazok, mint amelyeket a fürthöz beállított SSH-felhasználónál használt. További információk: [Az SSH használata HDInsighttal](hdinsight-hadoop-linux-use-ssh-unix.md). |
+    |Leírás | Az alkalmazás leírása. |
+
 6. Egy alkalmazás törléséhez kattintson a jobb gombbal az alkalmazást, és kattintson **törlése** a helyi menüből.
 
 ## <a name="connect-to-the-edge-node"></a>Csatlakozás az élcsomóponthoz

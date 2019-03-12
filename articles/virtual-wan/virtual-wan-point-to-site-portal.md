@@ -5,15 +5,15 @@ services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 01/07/2019
+ms.date: 02/27/2019
 ms.author: alzam
 Customer intent: As someone with a networking background, I want to connect remote users to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 38ef2d9e95bda21b1b348d996b8856213c657fd7
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: a13e8d7b97fcca95c0d90b9dd283b9bafbb4a21f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410179"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541966"
 ---
 # <a name="tutorial-create-a-point-to-site-connection-using-azure-virtual-wan-preview"></a>Oktatóanyag: Hozzon létre egy pont – hely kapcsolattal az Azure virtuális WAN (előzetes verzió)
 
@@ -109,7 +109,7 @@ A pont–hely konfiguráció határozza meg a távoli ügyfelek csatlakoztatás�
   *  **Főtanúsítvány neve** – A tanúsítvány leíró neve.
   *  **Főtanúsítvány adatai** – Az X.509-tanúsítvány Base-64-kódolású adatai.
 
-5. Kattintson a **Létrehozás** elemre a konfiguráció létrehozásához.
+6. Kattintson a **Létrehozás** elemre a konfiguráció létrehozásához.
 
 ## <a name="hub"></a>5. Hubhozzárendelés szerkesztése
 
@@ -117,15 +117,16 @@ A pont–hely konfiguráció határozza meg a távoli ügyfelek csatlakoztatás�
 2. Jelölje ki a központot, amelyhez hozzá kívánja rendelni a pont–hely konfigurációt.
 3. Kattintson a **...** elemre, és válassza a **Virtuális központ szerkesztése** lehetőséget.
 4. Jelölje be a **Pont-hely átjáró belefoglalása** lehetőséget.
-5. Válassza ki a következőket: **Átjáróskálázási egységek**, **Pont–hely konfiguráció**, valamint egy **Címkészlet** az ügyfelek számára.
-6. Kattintson a **Megerősítés** gombra. 
-7. A művelet akár 30 percet is igénybe vehet.
+5. A legördülő listából válassza ki a **átjáró skálázási egységek**.
+6. A legördülő listából válassza ki a **pont – hely konfiguráció** létrehozott.
+7. Konfigurálja a **címkészlet** azoknál az ügyfeleknél.
+8. Kattintson a **Megerősítés** gombra. A művelet akár 30 percet is igénybe vehet.
 
 ## <a name="vnet"></a>6. A virtuális hálózat csatlakoztatása egy elosztóhoz
 
 Ebben a lépésben a társviszony-kapcsolatot hozzuk létre az elosztó és egy virtuális hálózat között. Ismételje meg a fenti lépéseket minden csatlakoztatni kívánt virtuális hálózat esetében.
 
-1. A virtuális WAN lapján kattintson a **Virtuális hálózati kapcsolat** elemre.
+1. A virtuális WAN lapján kattintson a **Virtuális hálózati kapcsolatok** elemre.
 2. A virtuális hálózati kapcsolat lapján kattintson a **+Kapcsolat hozzáadása** elemre.
 3. A **Kapcsolat hozzáadása** lapon töltse ki a következő mezőket:
 
@@ -133,6 +134,7 @@ Ebben a lépésben a társviszony-kapcsolatot hozzuk létre az elosztó és egy 
     * **Elosztók** – Válassza ki azt az elosztót, amelyet a kapcsolattal társítani kíván.
     * **Előfizetés** – Ellenőrizze az előfizetést.
     * **Virtuális hálózat** – Válassza ki azt a virtuális hálózatot, amelyet az elosztóhoz csatlakoztatni kíván. A virtuális hálózat nem rendelkezhet már meglévő virtuális hálózati átjáróval.
+4. Kattintson a **OK** hozzáadni a kapcsolatot.
 
 ## <a name="device"></a>7. VPN-profil letöltése
 

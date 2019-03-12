@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/15/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: be4cbc7e955e56853809378f98e9733ffe4a20c3
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 2dd9fc5691c646a72936039b6bcc5949d227c6b5
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633724"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57545319"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon
 
@@ -54,7 +54,7 @@ Először is hozzon létre egy erőforráscsoportot, amely a tűzfal üzembe hel
 
 Az erőforráscsoport tartalmazza az oktatóanyag összes erőforrását.
 
-1. Jelentkezzen be az Azure Portalra a [http://portal.azure.com](http://portal.azure.com) webhelyen.
+1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 2. Az Azure Portal kezdőlapján kattintson az **Erőforráscsoportok** > **Hozzáadás** elemre.
 3. Az **Erőforráscsoport neve** mezőbe írja be a következőt: **Test-FW-RG**.
 4. Az **Előfizetés** beállításnál válassza ki az előfizetését.
@@ -109,12 +109,12 @@ Most hozza létre a helyettesítő és a számítási feladatokat futtató virtu
 4. A **bejövőport-szabályok**, a **nyilvános bejövő portok**, kattintson a **lehetővé teszi a kiválasztott portok**.
 5. A **bejövő portok kiválasztása**válassza **RDP (3389-es)**.
 
-6. Elfogadhatja az alapértelmezett beállításokat, és kattintson a **tovább: lemezek**.
-7. Fogadja el a lemez alapértelmezett beállításokat, és kattintson a **tovább: hálózatkezelés**.
+6. Elfogadhatja az alapértelmezett beállításokat, és kattintson a **tovább: Lemezek**.
+7. Fogadja el a lemez alapértelmezett beállításokat, és kattintson a **tovább: Hálózatkezelés**.
 8. Győződjön meg arról, hogy **Test-Keretrendszer-VN** a kiválasztott virtuális hálózat és az alhálózat van **Jump-SN**.
 9. A **nyilvános IP-cím**, kattintson a **új létrehozása**.
 10. Típus **Srv-Jump-PIP** a nyilvános IP-cím neve, majd kattintson a **OK**.
-11. Elfogadhatja az alapértelmezett beállításokat, és kattintson a **tovább: felügyeleti**.
+11. Elfogadhatja az alapértelmezett beállításokat, és kattintson a **tovább: Felügyeleti**.
 12. Kattintson a **ki** a rendszerindítási diagnosztika letiltásához. Elfogadhatja az alapértelmezett beállításokat, és kattintson a **felülvizsgálat + létrehozása**.
 13. Tekintse át a beállításokat az Összegzés lapon, és kattintson **létrehozás**.
 
@@ -143,7 +143,7 @@ Helyezze üzembe a tűzfalat a virtuális hálózaton.
    |Előfizetés     |\<az Ön előfizetése\>|
    |Erőforráscsoport     |**Meglévő használata**: Test-FW-RG |
    |Hely     |Válassza a korábban használt helyet|
-   |Válasszon egy virtuális hálózatot     |**Meglévő használata**: Test-FW-VN|
+   |Válasszon egy virtuális hálózatot     |**Meglévő használata**: Test-Keretrendszer-VN|
    |Nyilvános IP-cím     |**Új létrehozása**. A nyilvános IP-címnek standard termékváltozat típusúnak kell lennie.|
 
 5. Kattintson az **Áttekintés + létrehozás** elemre.
@@ -235,12 +235,12 @@ Most tesztelje a tűzfalat, hogy meggyőződjön a megfelelő működéséről.
 1. Az Azure Portalon tekintse át az **Srv-Work** virtuális gép hálózati beállításait, és jegyezze fel a gép magánhálózati IP-címét.
 2. Csatlakoztasson egy távoli asztalt az **Srv-Jump** virtuális géphez, majd onnan hozzon létre egy távoli asztali kapcsolatot az **Srv-Work** magánhálózati IP-címéhez.
 
-3. Nyissa meg az Internet Explorert, és navigáljon a következő címre: http://msn.com.
+3. Nyissa meg az Internet Explorert, és navigáljon a következő címre: https://msn.com.
 4. Kattintson az **OK** > **Bezárás** gombra a biztonsági riasztások oldalon.
 
    Az MSN kezdőlapon megtekintheti.
 
-5. Nyissa meg a következő címet: http://www.msn.com.
+5. Nyissa meg a következő címet: https://www.msn.com.
 
    A tűzfal blokkolja a hozzáférést.
 
@@ -256,4 +256,4 @@ A tűzfalhoz kapcsolódó erőforrásokat a következő oktatóanyagban is haszn
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Az Azure Firewall naplóinak monitorozása](./tutorial-diagnostics.md)
+> [Oktatóanyag: A figyelő Azure tűzfal-naplókon](./tutorial-diagnostics.md)

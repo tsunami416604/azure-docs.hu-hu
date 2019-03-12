@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 02/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 274ba6d6a1ce2e9c8f2cae0ca29de8442525391e
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 06fd66c3fb9e90e0198d40253f3c554fe8596c3d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106479"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57543365"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Az Azure Key Vault fejlesztői útmutató
 
@@ -156,5 +156,5 @@ Ezek a cikkek más forgatókönyvek és a szolgáltatásokat, vagy a Key Vault i
 
 ## <a name="supporting-libraries"></a>Szalagtárak támogatása
 
-- [A Microsoft Azure Key Vault alap függvénytár](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core) biztosít **Rendszerállapotkulcsot** és **IKeyResolver** felületek azonosítók helyenk megkeresése és műveleteket végez a kulcsokat.
-- [Microsoft Azure Key Vault-bővítmények](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions) kiterjesztett képességeket biztosít az Azure Key Vault.
+- [A Microsoft Azure Key Vault alap függvénytár](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core) biztosít **Rendszerállapotkulcsot** és **IKeyResolver** felületek azonosítók helyenk megkeresése és műveleteket végez a kulcsokat.
+- [Microsoft Azure Key Vault-bővítmények](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions) kiterjesztett képességeket biztosít az Azure Key Vault.

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2019
 ms.author: spelluru
-ms.openlocfilehash: 393a5c0af5ff7ccaef8aa462391c5c9457aa9c08
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 85763a895b61d184db033c09a413cc897ef6eaa3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011113"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551602"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>A DevTest Labs szolgáltatásban létrehozott tesztkörnyezet egy összetevőtárban hozzáadása
 DevTest Labs lehetővé teszi, hogy adjon meg egy időben, a virtuális gép létrehozása, vagy a virtuális gép létrehozása után egy virtuális Gépet hozzáadni kívánt összetevőt. Az összetevő egy eszköz és a egy virtuális Gépre telepíteni kívánt alkalmazás lehet. Összetevők egy JSON-fájlt a betöltött GitHub vagy a VSTS Git-adattárból vannak definiálva. 
@@ -377,7 +377,7 @@ if ($ArtifactRepositoryName -eq $null){
 
 A parancsfájl hozzáad egy új erőforrást az aktuális előfizetéshez. Használat [Get-AzContext](/powershell/module/az.accounts/get-azcontext) ezek az információk megtekintéséhez. Használat [Set-AzContext](/powershell/module/az.accounts/set-azcontext) az aktuális bérlő és az előfizetés beállításához.
 
-A legjobb módja az erőforrás nevét és az erőforrás típussal kapcsolatos információk felderítésére az [Test Drive Azure REST API-k](https://azure.github.io/projects/apis/) webhelyén. Tekintse meg a [DevTest Labs – a 2016-05-15](http://aka.ms/dtlrestapis) -szolgáltatót, az elérhető REST API-kat a DevTest Labs-szolgáltatóhoz. A parancsfájl-felhasználók a következő erőforrás-azonosítója. 
+A legjobb módja az erőforrás nevét és az erőforrás típussal kapcsolatos információk felderítésére az [Test Drive Azure REST API-k](https://azure.github.io/projects/apis/) webhelyén. Tekintse meg a [DevTest Labs – a 2016-05-15](https://aka.ms/dtlrestapis) -szolgáltatót, az elérhető REST API-kat a DevTest Labs-szolgáltatóhoz. A parancsfájl-felhasználók a következő erőforrás-azonosítója. 
 
 ```powershell
 "/subscriptions/$SubscriptionId/resourceGroups/$($LabResource.ResourceGroupName)/providers/Microsoft.DevTestLab/labs/$LabName/artifactSources/$ArtifactRepositoryName"

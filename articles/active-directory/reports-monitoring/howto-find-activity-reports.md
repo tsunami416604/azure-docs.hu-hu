@@ -14,12 +14,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ff5b998222f9a7320384edea1ed69e7a65e9139
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 46fc0a49ebae86a715685e1073b4eb7cc10e6032
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171298"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57533408"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Tevékenységjelentések keresése az Azure Portalon
 
@@ -48,15 +48,46 @@ A naplók jelentés összesíti az alábbi jelentések:
 
 ### <a name="filtering-on-audit-logs"></a>Auditnaplók szűrése
 
-Használhatja a naplózási jelentésben Speciális szűrés megadásával, a naplózási adatokat, konkrét kategóriáját eléréséhez a **tevékenység kategóriája** szűrőt. Válassza ki például az önkiszolgáló jelszó-visszaállítás kapcsolódó összes tevékenységének megtekintéséhez, a **önkiszolgáló jelszókezelés** kategória. 
+Használhatja a naplózási jelentésben Speciális szűrés megadásával, a naplózási adatokat, konkrét kategóriáját eléréséhez a **kategória** szűrőt. Jelölje be például a felhasználók számára kapcsolódó összes tevékenységének megtekintéséhez, a **UserManagement** kategória. 
 
-Tevékenységkategóriák a következők:
+Kategóriák a következők:
 
+- Összes
+- AdministrativeUnit
+- ApplicationManagement
+- Authentication
+- Engedélyezés
+- Kapcsolattartó
+- Eszköz
+- DeviceConfiguration
+- DirectoryManagement
+- EntitlementManagement
+- GroupManagement
+- Egyéb
+- Szabályzat
+- ResourceManagement
+- RoleManagement
+- UserManagement
+
+Egy adott szolgáltatás használatával is szűrheti a **szolgáltatás** legördülő menü Szűrés. Önkiszolgáló jelszókezelés kapcsolódó összes naplózási eseményt lekéréséhez válassza például a **önkiszolgáló jelszókezelés** szűrőt.
+
+A szolgáltatások az alábbiak:
+
+- Összes
+- Hozzáférési felülvizsgálatok
+- Fiók kiépítése 
+- Alkalmazás egyszeri Bejelentkezéssel
+- Hitelesítési módszerek
+- B2C
+- Feltételes hozzáférés
 - Alapvető könyvtár
-- Önkiszolgáló jelszókezelés
+- Tagjogosultság-kezelés
+- Identity Protection
+- Meghívott felhasználók
+- PIM
 - Önkiszolgáló csoportkezelés
-- Fiók kiépítése
-
+- Önkiszolgáló Passord kezelése
+- Használati feltételek
 
 ## <a name="sign-ins-report"></a>Bejelentkezések jelentés 
 

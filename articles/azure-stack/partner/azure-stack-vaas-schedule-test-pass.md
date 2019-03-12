@@ -9,17 +9,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: How to
-ms.date: 03/04/2019
+ms.topic: conceptual
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 11/26/2018
-ms.openlocfilehash: 4cd94a0d5891c2d34e152dad87d21cbb45a2ec39
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.lastreviewed: 03/11/2019
+ms.openlocfilehash: 3fb5c3deeddb6f3ee381ca45df76feebf3405b21
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57336869"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766568"
 ---
 # <a name="scheduling-a-test"></a>A vizsgálat ütemezése
 
@@ -53,7 +53,7 @@ Jelentkezzen be a portálra, válassza ki vagy megoldás létrehozása, és vál
 
 ![Helyettesítő szöveg](media/vaas_test_pass_parameters.png)
 
-Adja meg a megoldás a munkafolyamatot. A munkafolyamat rendelkezik, amely a megoldás teszteléséhez használja a folyamat lépéseivel.
+Adja meg a paramétereket, amelyek az összes teszt a munkafolyamaton belül érvényesek.
 
 1. [!INCLUDE [azure-stack-vaas-workflow-step_naming](includes/azure-stack-vaas-workflow-step_naming.md)]
 2. [!INCLUDE [azure-stack-vaas-workflow-step_upload-stampinfo](includes/azure-stack-vaas-workflow-step_upload-stampinfo.md)]
@@ -63,22 +63,23 @@ Adja meg a megoldás a munkafolyamatot. A munkafolyamat rendelkezik, amely a meg
 
 ## <a name="select-tests-to-run"></a>Válassza ki a tesztek futtatása
 
-Válassza ki a tesztek, a munkafolyamatot futtatni szeretné.
+A teszteket, válassza ki a munkafolyamat létrehozása után lesz ütemezve.
 
 1. Válassza ki a teszt szeretné futtatni a munkafolyamatban.
 
     Ha szeretné felülbírálni a következő általános paramétereket (azaz a az előző szakaszban megadott paraméterek) minden olyan tesztelési, válassza ki a a **szerkesztése** meg új értéket a következő hivatkozást.
 
 1. [!INCLUDE [azure-stack-vaas-workflow-step_select-agent](includes/azure-stack-vaas-workflow-step_select-agent.md)]
+
 1. Válassza ki **tovább** , tekintse át a munkafolyamatot.
 
 ## <a name="review-and-submit"></a>Felülvizsgálat és elküldés
 
-Tekintse át, hozzon létre, és adja meg az munkafolyamat ütemezését.
+Munkafolyamat létrehozásának befejezéséhez.
 
 1. Tekintse át a megjelenített információkat.
 
-    A szolgáltatások a munkafolyamatot hoz létre a megadott információkat, és a kijelölt tesztek lesz ütemezve.
+    A szolgáltatás a munkafolyamatot hoz létre a megadott információkat, és a kijelölt tesztek lesz ütemezve.
 
     Ha semmit nem megfelelő, akkor a **előző** gombokra kattintva nyissa meg az előző szakaszban.
 

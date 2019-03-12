@@ -15,19 +15,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/02/2019
 ms.author: haroldw
-ms.openlocfilehash: b2a2e0ed48004a731ca15b3fb1d985bbee7e0c29
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b99490102dd4f2c08a11be066b2ddc5fd6b7ea7b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440659"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535835"
 ---
 # <a name="post-deployment-tasks"></a>Üzembe helyezés utáni feladatok
 
 Miután az OpenShift fürtöt telepít, konfigurálhatja úgy a további elemek. Ez a cikk ismerteti:
 
 - Az Azure Active Directory (Azure AD) használatával az egyszeri bejelentkezés konfigurálása
-- OpenShift figyelése a Log Analytics konfigurálása
+- OpenShift figyelése az Azure Monitor konfigurálásáról
 - Metrikák és naplózás konfigurálása
 - Open Service Broker for Azure (OSBA) telepítése
 
@@ -179,11 +179,11 @@ sudo systemctl restart origin-master
 
 Az OpenShift-konzolon, most már két lehetőség jelenik meg a hitelesítéshez: htpasswd_auth és [Alkalmazásregisztráció].
 
-## <a name="monitor-openshift-with-log-analytics"></a>A figyelő az OpenShift a Log Analytics használatával
+## <a name="monitor-openshift-with-azure-monitor-logs"></a>OpenShift monitorozása az Azure Monitor naplóira
 
 A Log Analytics-ügynök hozzáadása az OpenShift három módja van.
 - A Linuxhoz készült Log Analytics-ügynök telepítése minden egyes OpenShift csomóponton közvetlenül
-- Minden egyes OpenShift csomóponton Log Analytics Virtuálisgép-bővítmény engedélyezése
+- Az Azure Monitor Virtuálisgép-bővítmény engedélyezése a OpenShift csomópontokon
 - A Log Analytics-ügynök telepítése egy OpenShift démon-készletben
 
 Részletes útmutatást itt találhatók: https://docs.microsoft.com/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift.

@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: d84e3f834bd598bbd2cf84dfc46f6cd5507f6d8b
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 21ddeb9cb0621f0f11ca23a7b12a82df0b7aa8ca
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587123"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546672"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL-hez tarifacsomagok
 
@@ -50,30 +50,30 @@ A számítási erőforrások szolgálnak, amelyek jelölik az alapul szolgáló 
 |:---|:----------:|:--------------------:|
 | USA középső régiója |  | X |
 | USA keleti régiója |  | X |
-| USA 2. keleti régiója | X | X |
-| USA északi középső régiója | X | X |
+| USA 2. keleti régiója |  | X |
+| USA északi középső régiója |  | X |
 | USA déli középső régiója | X | X |
-| USA nyugati régiója | X | X |
+| USA nyugati régiója |  | X |
 | USA nyugati régiója, 2. |  | X |
-| Dél-Brazília | X | X |
-| Közép-Kanada | X | X |
-| Kelet-Kanada | X | X |
+| Dél-Brazília |  | X |
+| Közép-Kanada |  | X |
+| Kelet-Kanada |  | X |
 | Észak-Európa | X | X |
 | Nyugat-Európa |  | X |
 | Közép-Franciaország |  | X |
 | Az Egyesült Királyság déli régiója |  | X |
 | Az Egyesült Királyság nyugati régiója |  | X |
-| Kelet-Ázsia | X | X |
+| Kelet-Ázsia |  | X |
 | Délkelet-Ázsia | X | X |
 | Kelet-Ausztrália |  | X |
 | Ausztrália középső régiója |  | X |
 | Ausztrália 2. középső régiója |  | X |
 | Délkelet-Ausztrália |  | X |
-| Közép-India | X | X |
+| Közép-India |  | X |
 | Dél-India |  | X |
-| Nyugat-India | X | X |
+| Nyugat-India |  | X |
 | Kelet-Japán | X | X |
-| Nyugat-Japán | X | X |
+| Nyugat-Japán |  | X |
 | Korea középső régiója |  | X |
 | Korea déli régiója |  | X |
 | Kelet-Kína 1 | X |  |

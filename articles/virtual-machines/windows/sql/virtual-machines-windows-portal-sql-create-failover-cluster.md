@@ -3,7 +3,7 @@ title: Az SQL Server FCI - Azure-beli virtuális gépek |} A Microsoft Docs
 description: Ez a cikk bemutatja, hogyan hozhat létre SQL Server feladatátvevő fürt-példány az Azure Virtual machines szolgáltatásban.
 services: virtual-machines
 documentationCenter: na
-authors: MikeRayMSFT
+author: MikeRayMSFT
 manager: craigg
 editor: monicar
 tags: azure-service-management
@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 778984d4d34d3b63d92378781d377fee557c7148
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 7e0dea82614363883bbfb4a34894a2248faeb176
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821917"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769659"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Azure virtuális gépeken futó SQL Server feladatátvevő Fürtpéldányának konfigurálása
 

@@ -1,6 +1,6 @@
 ---
 title: Az Azure Container Instancesben többtárolós csoportok üzembe helyezése
-description: Ismerje meg, hogyan helyezhet üzembe egy tárolócsoportot több tárolót az Azure Container Instances szolgáltatásban.
+description: Ismerje meg, hogyan helyezhet üzembe egy tárolócsoportot több tárolót az Azure Container Instances szolgáltatásban az Azure Resource Manager-sablon használatával.
 services: container-instances
 author: dlepow
 ms.service: container-instances
@@ -8,14 +8,14 @@ ms.topic: article
 ms.date: 06/08/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: adb284772291dc901dd5302124982948c1f37eea
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 2dfe1bbf01b7e1fae8c07602ac4faa40ae74ecc9
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856479"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57729495"
 ---
-# <a name="deploy-a-container-group"></a>Egy tároló-csoport központi telepítése
+# <a name="deploy-a-multi-container-group-with-a-resource-manager-template"></a>Többtárolós csoport Resource Manager-sablonnal üzembe helyezése
 
 Az Azure Container Instances helyezheti egyetlen gazdagépre használatával több tároló telepítését támogatja egy [tárolócsoport](container-instances-container-groups.md). Ez akkor hasznos egy alkalmazás oldalkocsi, naplózás, figyelés vagy bármely egyéb konfigurációs létrehozását, ahol a szolgáltatás egy második csatolt folyamat kell.
 
@@ -28,6 +28,8 @@ Az Azure CLI használatával többtárolós csoportok üzembe helyezésének ké
 
 > [!NOTE]
 > Többtárolós csoportok olyan Linux-tárolókhoz való hozzáférés jelenleg korlátozott. Arra törekszünk, hogy idővel az összes funkció elérhető legyen a Windows-tárolókon is. Az egyes platformok közötti aktuális eltérésekről a [Azure Container Instances-kvóták és -régiók rendelkezésre állása](container-instances-quotas.md) részben tájékozódhat.
+
+További sablonminták, lásd: [Azure Resource Manager-sablonok az Azure Container Instances](container-instances-samples-rm.md). 
 
 ## <a name="configure-the-template"></a>A sablon konfigurálása
 

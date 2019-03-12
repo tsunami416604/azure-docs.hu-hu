@@ -11,17 +11,17 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/25/2019
-ms.openlocfilehash: e22f830a5da0563f8d62d9f642121d72aa94c2a7
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.date: 03/06/2019
+ms.openlocfilehash: 6de55ec66c4185a198ce819484b71550b05ba8c9
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882807"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569093"
 ---
-# <a name="resources-limits-for-elastic-pools-using-the-dtu-based-purchasing-model"></a>A DTU-alapú vásárlási modellt használó rugalmas készletek korlátai erőforrások 
+# <a name="resources-limits-for-elastic-pools-using-the-dtu-based-purchasing-model"></a>A DTU-alapú vásárlási modellt használó rugalmas készletek korlátai erőforrások
 
-Ez a cikk a részletes erőforráskorlátok Azure SQL Database rugalmas készletek és a készletezett adatbázisokat, a DTU-alapú vásárlási modell használatával. 
+Ez a cikk a részletes erőforráskorlátok Azure SQL Database rugalmas készletek és a készletezett adatbázisokat, a DTU-alapú vásárlási modell használatával.
 
 DTU-alapú vásárlási modell erőforráskorlátok az önálló adatbázisok számára, lásd: [DTU-alapú erőforráskorlátok – önálló adatbázisok](sql-database-vcore-resource-limits-elastic-pools.md). Virtuálismag-alapú erőforráskorlátok, lásd: [Virtuálismag-alapú erőforráskorlátok – önálló adatbázisok](sql-database-vcore-resource-limits-single-databases.md) és [Virtuálismag-alapú erőforráskorlátok – rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md).
 
@@ -32,6 +32,8 @@ DTU-alapú vásárlási modell erőforráskorlátok az önálló adatbázisok sz
 
 Az SQL Database rugalmas készletek esetén az alábbi táblázatok megjelenítése az egyes szolgáltatásszinteken elérhető erőforrások és számítási mérete. A szolgáltatási rétegben, a számítási méretét és a tárolási mennyiséget használatával beállíthatja a [az Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases), a [Azure CLI-vel](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases), vagy a [REST API](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases).
 
+> [!IMPORTANT]
+> Skálázás útmutatást és szempontokat, lásd: [rugalmas készlet méretezése](sql-database-elastic-pool-scale.md)
 > [!NOTE]
 > A rugalmas készletek az egyes adatbázisok erőforráskorlátok megegyeznek a általában önálló adatbázis dtu-k és a szolgáltatásszint alapján készletek kívül. Például az S2 adatbázis maximális egyidejű feldolgozók 120 feldolgozók. Tehát egy adatbázis egy Standard adatbáziskészletben max. egyidejű feldolgozók egyben 120 feldolgozók 50 dtu-k (Ez egyenértékű s2 esetén) a készlet adatbázisonkénti maximális DTU-e.
 
@@ -47,71 +49,71 @@ Az SQL Database rugalmas készletek esetén az alábbi táblázatok megjelenít�
 | Egyidejű munkamenetek maximális száma készletenként | 30000 | 30000 | 30000 | 30000 |30000 | 30000 | 30000 | 30000 |
 | Az adatbázisonkénti minimális edtu-k választási lehetőségek | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 | 0, 5 |
 | Az adatbázisonkénti maximális edtu-k választási lehetőségek | 5 | 5 | 5 | 5 | 5 | 5 | 5 | 5 |
-| Maximális tárterület adatbázisonként (GB) | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 
+| Maximális tárterület adatbázisonként (GB) | 2 | 2 | 2 | 2 | 2 | 2 | 2 | 2 |
 ||||||||
 
 ### <a name="standard-elastic-pool-limits"></a>Standard rugalmas készletek korlátai
 
-| eDTU-k száma készletenként | **50** | **100** | **200** | **300** | **400** | **800**| 
-|:---|---:|---:|---:| ---: | ---: | ---: | 
-| Belefoglalt tárterület készletenként (GB) | 50 | 100 | 200 | 300 | 400 | 800 | 
-| Maximális tárolási lehetőségek száma készletenként (GB) | 50, 250, 500 | 100, 250, 500, 750 | 200, 250, 500, 750, 1024 | 300, 500, 750, 1024, 1280 | 400, 500, 750, 1024, 1280, 1536 | 800, 1024, 1280, 1536, 1792, 2048 | 
-| Maximális In-Memory OLTP storage (GB) készletenként | – | N/A | N/A | N/A | N/A | – | 
-| Adatbázisok maximális száma készletenként | 100 | 200 | 500 | 500 | 500 | 500 | 
+| eDTU-k száma készletenként | **50** | **100** | **200** | **300** | **400** | **800**|
+|:---|---:|---:|---:| ---: | ---: | ---: |
+| Belefoglalt tárterület készletenként (GB) | 50 | 100 | 200 | 300 | 400 | 800 |
+| Maximális tárolási lehetőségek száma készletenként (GB) | 50, 250, 500 | 100, 250, 500, 750 | 200, 250, 500, 750, 1024 | 300, 500, 750, 1024, 1280 | 400, 500, 750, 1024, 1280, 1536 | 800, 1024, 1280, 1536, 1792, 2048 |
+| Maximális In-Memory OLTP storage (GB) készletenként | – | N/A | N/A | N/A | N/A | – |
+| Adatbázisok maximális száma készletenként | 100 | 200 | 500 | 500 | 500 | 500 |
 | Egyidejű feldolgozók (kérelmek) maximális száma készletenként | 100 | 200 | 400 | 600 | 800 | 1600 |
 | Egyidejű munkamenetek maximális száma készletenként | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 | Az adatbázisonkénti minimális edtu-k választási lehetőségek | 0, 10, 20, 50 | 0, 10, 20, 50, 100 | 0, 10, 20, 50, 100, 200 | 0, 10, 20, 50, 100, 200, 300 | 0, 10, 20, 50, 100, 200, 300, 400 | 0, 10, 20, 50, 100, 200, 300, 400, 800 |
-| Az adatbázisonkénti maximális edtu-k választási lehetőségek | 10, 20, 50 | 10, 20, 50, 100 | 10, 20, 50, 100, 200 | 10, 20, 50, 100, 200, 300 | 10, 20, 50, 100, 200, 300, 400 | 10, 20, 50, 100, 200, 300, 400, 800 | 
+| Az adatbázisonkénti maximális edtu-k választási lehetőségek | 10, 20, 50 | 10, 20, 50, 100 | 10, 20, 50, 100, 200 | 10, 20, 50, 100, 200, 300 | 10, 20, 50, 100, 200, 300, 400 | 10, 20, 50, 100, 200, 300, 400, 800 |
 | Maximális tárterület adatbázisonként (GB) | 500 | 750 | 1024 | 1024 | 1024 | 1024 |
 ||||||||
 
-### <a name="standard-elastic-pool-limits-continued"></a>Standard rugalmas készletek korlátai (folytatás) 
+### <a name="standard-elastic-pool-limits-continued"></a>Standard rugalmas készletek korlátai (folytatás)
 
 | eDTU-k száma készletenként | **1200** | **1600** | **2000** | **2500** | **3000** |
 |:---|---:|---:|---:| ---: | ---: |
-| Belefoglalt tárterület készletenként (GB) | 1200 | 1600 | 2000 | 2500 | 3000 | 
+| Belefoglalt tárterület készletenként (GB) | 1200 | 1600 | 2000 | 2500 | 3000 |
 | Maximális tárolási lehetőségek száma készletenként (GB) | 1200, 1280, 1536, 1792, 2048, 2304, 2560 | 1600, 1792, 2048, 2304, 2560, 2816, 3072 | 2000, 2048, 2304, 2560, 2816, 3072, 3328, 3584 | 2500, 2560, 2816, 3072, 3328, 3584, 3840, 4096 | 3000, 3072, 3328, 3584, 3840, 4096 |
-| Maximális In-Memory OLTP storage (GB) készletenként | – | N/A | N/A | N/A | – | 
-| Adatbázisok maximális száma készletenként | 500 | 500 | 500 | 500 | 500 | 
+| Maximális In-Memory OLTP storage (GB) készletenként | – | N/A | N/A | N/A | – |
+| Adatbázisok maximális száma készletenként | 500 | 500 | 500 | 500 | 500 |
 | Egyidejű feldolgozók (kérelmek) maximális száma készletenként | 2400 | 3200 | 4000 | 5000 | 6000 |
-| Egyidejű munkamenetek maximális száma készletenként | 30000 | 30000 | 30000 | 30000 | 30000 | 
+| Egyidejű munkamenetek maximális száma készletenként | 30000 | 30000 | 30000 | 30000 | 30000 |
 | Az adatbázisonkénti minimális edtu-k választási lehetőségek | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500 | 0, 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500, 3000 |
-| Az adatbázisonkénti maximális edtu-k választási lehetőségek | 10, 20, 50, 100, 200, 300, 400, 800, 1200 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500, 3000 | 
-| Maximális tárolási lehetőségeket (GB) adatbázisonként | 1024 | 1024 | 1024 | 1024 | 1024 | 
+| Az adatbázisonkénti maximális edtu-k választási lehetőségek | 10, 20, 50, 100, 200, 300, 400, 800, 1200 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500 | 10, 20, 50, 100, 200, 300, 400, 800, 1200, 1600, 2000, 2500, 3000 |
+| Maximális tárolási lehetőségeket (GB) adatbázisonként | 1024 | 1024 | 1024 | 1024 | 1024 |
 ||||||||
 
 ### <a name="premium-elastic-pool-limits"></a>Prémium rugalmas készletek korlátai
 
-| eDTU-k száma készletenként | **125** | **250** | **500** | **1000** | **1500**| 
-|:---|---:|---:|---:| ---: | ---: | 
-| Belefoglalt tárterület készletenként (GB) | 250 | 500 | 750 | 1024 | 1536 | 
+| eDTU-k száma készletenként | **125** | **250** | **500** | **1000** | **1500**|
+|:---|---:|---:|---:| ---: | ---: |
+| Belefoglalt tárterület készletenként (GB) | 250 | 500 | 750 | 1024 | 1536 |
 | Maximális tárolási lehetőségek száma készletenként (GB) | 250, 500, 750, 1024 | 500, 750, 1024 | 750, 1024 | 1024 | 1536 |
-| Maximális In-Memory OLTP storage (GB) készletenként | 1 | 2 | 4 | 10 | 12 | 
-| Adatbázisok maximális száma készletenként | 50 | 100 | 100 | 100 | 100 | 
-| Egyidejű feldolgozók (kérelmek) maximális száma készletenként | 200 | 400 | 800 | 1600 | 2400 | 
-| Egyidejű munkamenetek maximális száma készletenként | 30000 | 30000 | 30000 | 30000 | 30000 | 
-| eDTU-k minimális száma adatbázisonként | 0, 25, 50, 75, 125 | 0, 25, 50, 75, 125, 250 | 0, 25, 50, 75, 125, 250, 500 | 0, 25, 50, 75, 125, 250, 500, 1000 | 0, 25, 50, 75, 125, 250, 500, 1000, 1500 | 
+| Maximális In-Memory OLTP storage (GB) készletenként | 1 | 2 | 4 | 10 | 12 |
+| Adatbázisok maximális száma készletenként | 50 | 100 | 100 | 100 | 100 |
+| Egyidejű feldolgozók (kérelmek) maximális száma készletenként | 200 | 400 | 800 | 1600 | 2400 |
+| Egyidejű munkamenetek maximális száma készletenként | 30000 | 30000 | 30000 | 30000 | 30000 |
+| eDTU-k minimális száma adatbázisonként | 0, 25, 50, 75, 125 | 0, 25, 50, 75, 125, 250 | 0, 25, 50, 75, 125, 250, 500 | 0, 25, 50, 75, 125, 250, 500, 1000 | 0, 25, 50, 75, 125, 250, 500, 1000, 1500 |
 | eDTU-k maximális száma adatbázisonként | 25, 50, 75, 125 | 25, 50, 75, 125, 250 | 25, 50, 75, 125, 250, 500 | 25, 50, 75, 125, 250, 500, 1000 | 25, 50, 75, 125, 250, 500, 1000, 1500 |
-| Maximális tárterület adatbázisonként (GB) | 1024 | 1024 | 1024 | 1024 | 1024 | 
+| Maximális tárterület adatbázisonként (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
 ||||||||
 
-### <a name="premium-elastic-pool-limits-continued"></a>Prémium rugalmas készletek korlátai (folytatás) 
+### <a name="premium-elastic-pool-limits-continued"></a>Prémium rugalmas készletek korlátai (folytatás)
 
 | eDTU-k száma készletenként | **2000** | **2500** | **3000** | **3500** | **4000**|
-|:---|---:|---:|---:| ---: | ---: | 
+|:---|---:|---:|---:| ---: | ---: |
 | Belefoglalt tárterület készletenként (GB) | 2048 | 2560 | 3072 | 3548 | 4096 |
 | Maximális tárolási lehetőségek száma készletenként (GB) | 2048 | 2560 | 3072 | 3548 | 4096|
 | Maximális In-Memory OLTP storage (GB) készletenként | 16 | 20 | 24 | 28 | 32 |
-| Adatbázisok maximális száma készletenként | 100 | 100 | 100 | 100 | 100 | 
+| Adatbázisok maximális száma készletenként | 100 | 100 | 100 | 100 | 100 |
 | Egyidejű feldolgozók (kérelmek) maximális száma készletenként | 3200 | 4000 | 4800 | 5600 | 6400 |
-| Egyidejű munkamenetek maximális száma készletenként | 30000 | 30000 | 30000 | 30000 | 30000 | 
-| Az adatbázisonkénti minimális edtu-k választási lehetőségek | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750, 4000 | 
-| Az adatbázisonkénti maximális edtu-k választási lehetőségek | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750, 4000 | 
-| Maximális tárterület adatbázisonként (GB) | 1024 | 1024 | 1024 | 1024 | 1024 | 
+| Egyidejű munkamenetek maximális száma készletenként | 30000 | 30000 | 30000 | 30000 | 30000 |
+| Az adatbázisonkénti minimális edtu-k választási lehetőségek | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750 | 0, 25, 50, 75, 125, 250, 500, 1000, 1750, 4000 |
+| Az adatbázisonkénti maximális edtu-k választási lehetőségek | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750 | 25, 50, 75, 125, 250, 500, 1000, 1750, 4000 |
+| Maximális tárterület adatbázisonként (GB) | 1024 | 1024 | 1024 | 1024 | 1024 |
 ||||||||
 
 > [!IMPORTANT]
-> Jelenleg több mint 1 TB tárterület egységára prémium szinten érhető el minden régióban, kivéve: Kelet-Kína, Észak-Kína, közép-Németország, Északkelet-Németország, USA nyugati középső Régiója, USA védelmi Minisztériuma régiók és US Government központi. Ezekben a régiókban a prémium szinthez tartozó tárterület maximuma 1 TB.  További információkért lásd: [P11 – P15 – aktuális korlátozások](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> Jelenleg több mint 1 TB tárterület egységára prémium szinten érhető el minden régióban, kivéve: Kelet-Kína, Észak-Kína, közép-Németország, Északkelet-Németország, USA nyugati középső Régiója, USA védelmi Minisztériuma régiók és US Government központi. Ezekben a régiókban a prémium szinthez tartozó tárterület maximuma 1 TB.  További információkért lásd: [P11 – P15 – aktuális korlátozások](sql-database-single-database-scale.md#dtu-based-purchasing-model-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 
 Ha egy rugalmas készlet minden DTU-ja használatban van, akkor a készletben található minden adatbázis ugyanannyi erőforrást kap a lekérdezések feldolgozásához. Az SQL Database szolgáltatás egyenlő erőforrás-megosztást biztosít az adatbázisok között azáltal, hogy mindegyiküknek egyenlő szeleteket ad a számítási időből. A rugalmas készlet egyenlő erőforrás-megosztása hozzáadódik az egyes adatbázisok számára máshonnan garantált erőforrások mennyiségéhez, ha a minimális DTU/adatbázis érték nem 0-ra van állítva.
 
@@ -125,7 +127,7 @@ A következő táblázat ismerteti a készletezett adatbázisok tulajdonságait.
 | eDTU-k minimális száma adatbázisonként |A készletben található adatbázisok mindegyike számára garantált eDTU-k minimális száma. Ez a beállítás egy globális beállítás, amely a készletben található minden adatbázisra vonatkozik. Az eDTU adatbázisonkénti minimális száma lehet 0, ami egyben az alapértelmezett érték is. Ezen tulajdonság értékeként egy 0 és az adatbázisonkénti átlagosan használt eDTU-k száma közötti mennyiséget adjon meg. A készletben található adatbázisok számának és az eDTU-k adatbázisonkénti minimális számának szorzata nem lehet magasabb az eDTU-k készletenkénti számánál. Például ha egy készletben 20 adatbázis van, és az eDTU-k adatbázisonkénti minimális száma 10-re van állítva, akkor az eDTU-k készletenkénti száma legalább 200 kell, hogy legyen. |
 | Maximális tárterület adatbázisonként |A készletben található adatbázis a felhasználó által beállított adatbázis maximális méretét. Azonban a készletezett adatbázisok osztoznak a készlettárolón lefoglalt. Akkor is, ha az összes adatbázisonkénti maximális tárolási *adatbázisonként* értéke lehet nagyobb, mint a teljes rendelkezésre álló tár *terület a készlet*, az összes adatbázis által ténylegesen felhasznált teljes lemezterület nem fogja tudni haladhatja meg a rendelkezésre álló készlet kapacitása. Az adatbázis maximális mérete az adatfájlok maximális méretére vonatkozik, és nem tartalmazza a naplófájlok által használt területet. |
 |||
- 
+
 ## <a name="next-steps"></a>További lépések
 
 - Önálló adatbázis erőforráskorlátok virtuális mag, lásd: [erőforráskorlátok és önálló adatbázisokat a Virtuálismag-alapú vásárlási modell használatával](sql-database-vcore-resource-limits-single-databases.md)

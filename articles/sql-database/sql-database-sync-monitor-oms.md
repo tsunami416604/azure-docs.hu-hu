@@ -12,12 +12,12 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.date: 12/20/2018
-ms.openlocfilehash: a1f2b0e3095718caad7c35a20bf7e91c88568364
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 1417907bf9472137677a090906fa173c3d1ea571
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213466"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539292"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>Az SQL Data Sync monitorozása az Azure Monitor naplóira 
 
@@ -32,7 +32,7 @@ Az SQL Data Sync áttekintéséhez tekintse meg a [több felhőalapú és helysz
 
 ## <a name="monitoring-dashboard-for-all-your-sync-groups"></a>Az összes szinkronizálási csoport figyelési irányítópult 
 
-Már nincs szüksége, nézze át a naplókat a problémák kereséséhez külön-külön az egyes szinkronizálási csoportok. Bármely, egy helyen az előfizetés összes szinkronizálási csoportot egy egyéni log analytics-nézet használatával figyelheti meg. Ez a nézet a fontos információk az SQL Data Sync ügyfeleknek feltárásával.
+Már nincs szüksége, nézze át a naplókat a problémák kereséséhez külön-külön az egyes szinkronizálási csoportok. Bármely, egy helyen az előfizetés összes szinkronizálási csoportot egy egyéni Azure-figyelő nézet használatával figyelheti meg. Ez a nézet a fontos információk az SQL Data Sync ügyfeleknek feltárásával.
 
 ![Adatok szinkronizálása figyelési irányítópult](media/sql-database-sync-monitor-oms/sync-monitoring-dashboard.png)
 
@@ -50,9 +50,9 @@ Mindhárom összetevő konfigurálni kell:
 
 -   Egy SQL Data Sync naplóadatokat az Azure Monitor naplóira-hírcsatorna PowerShell-forgatókönyvet.
 
--   Log analytics-riasztásból e-mail értesítések.
+-   E-mail értesítések az Azure Monitor riasztás.
 
--   A naplóelemzési nézet figyelésre.
+-   Egy Azure figyelő figyelés nézetben.
 
 ### <a name="samples-to-download"></a>Minták letöltése
 
@@ -60,7 +60,7 @@ Töltse le a következő két mintát:
 
 -   [Adatok szinkronizálása Log PowerShell-forgatókönyv](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogPowerShellRunbook.ps1)
 
--   [Adatok szinkronizálása Log Analytics-nézet](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
+-   [Adatok szinkronizálása az Azure Monitor megtekintése](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
 ### <a name="prerequisites"></a>Előfeltételek
 
@@ -130,7 +130,7 @@ A runbook ütemezése:
 
 Az automation alatt a vártnak megfelelően működik-e figyelése **áttekintése** az automation-fiók található a **feladatstatisztika** nézetében **figyelés**. Ez a nézet egyszerűen megtekinthetők az irányítópulton rögzítheti. Sikeres futtatások a runbook megjelenítése "Befejezettként", és sikertelen futtatások megjelenítése "Sikertelen."
 
-## <a name="create-a-log-analytics-reader-alert-for-email-notifications"></a>Hozzon létre egy Log Analytics-olvasó riasztás E-mail értesítések
+## <a name="create-an-azure-monitor-reader-alert-for-email-notifications"></a>Az Azure Monitor-olvasó riasztás létrehozása az E-mail értesítések
 
 Az Azure Monitor naplóira használó riasztás létrehozásához tegye a következőket. Egy előfeltétel szüksége lesz a Log Analytics-munkaterülettel összekapcsolt Azure Monitor naplóira.
 
@@ -152,9 +152,9 @@ Az Azure Monitor naplóira használó riasztás létrehozásához tegye a követ
 
 6.  Kattintson a **Save** (Mentés) gombra. A megadott címzetteknek most email értesítéseket kapni, ha hibák fordulnak elő.
 
-## <a name="create-a-log-analytics-view-for-monitoring"></a>Figyelés a Log Analytics-nézet létrehozása
+## <a name="create-an-azure-monitor-view-for-monitoring"></a>Figyelés az Azure Monitor nézet létrehozása
 
-Ez a lépés létrehoz egy log analytics-nézet vizuálisan figyelése az összes megadott szinkronizálási csoportot. A nézet több összetevőket tartalmazza:
+Ebben a lépésben az Azure Monitor nézetben vizuálisan figyelése az összes megadott szinkronizálási csoportot hoz létre. A nézet több összetevőket tartalmazza:
 
 -   Az Áttekintés csempe, amely jeleníti meg, hány hibák, a sikeres és a figyelmeztetések összes szinkronizálási csoportot is.
 
@@ -162,9 +162,9 @@ Ez a lépés létrehoz egy log analytics-nézet vizuálisan figyelése az össze
 
 -   Egy csempe az összes szinkronizálási csoportból, amely hibák, sikeresen lezajlott, és a figyelmeztetések és a legutóbbi hiba üzenetek számát jeleníti meg.
 
-A log analytics-nézet konfigurálásához tegye a következőket:
+Az Azure Monitor nézet konfigurálásához tegye a következőket:
 
-1.  A log analytics kezdőlapján válassza a plusz megnyitásához a bal oldali a **adatforrásnézet-tervezőből**.
+1.  A Log Analytics munkaterület kezdőlapján válassza a plusz megnyitásához a bal oldali a **adatforrásnézet-tervezőből**.
 
 2.  Válassza ki **importálás** Az adatforrásnézet-tervezőből, a felső sávon található. Ezután válassza ki a "DataSyncLogOMSView"-mintafájlt.
 
@@ -196,7 +196,7 @@ Letölteni a mintakódokat, a következő helyekről cikkben leírt:
 
 -   [Adatok szinkronizálása Log PowerShell-forgatókönyv](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogPowerShellRunbook.ps1)
 
--   [Adatok szinkronizálása Log Analytics-nézet](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
+-   [Adatok szinkronizálása az Azure Monitor megtekintése](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
 ## <a name="next-steps"></a>További lépések
 További információ az SQL Data Syncről:

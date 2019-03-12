@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/04/2017
 ms.author: juliako
-ms.openlocfilehash: ac94370b1c6a8f48ad55f0e277d93cd2f8388cb1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: a747e5064ff0ef99fb43c545c29c2a34535445d0
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51242603"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540148"
 ---
 # <a name="manage-azure-cdn-caching-policy-in-azure-media-services"></a>Az Azure CDN gyorsítótárazási házirend a az Azure Media Services kezelése
-Az Azure Media Services biztosítja a HTTP-alapú adaptív Streamelés és a progresszív letöltés. HTTP-alapú streamelési az előnyökkel, a gyorsítótárazás a proxy- és a CDN-rétegek, valamint a ügyféloldali gyorsítótárazás rugalmasan méretezhető. Streamvégpontok nyújt általános idejű közvetítési lehetőségeket, és HTTP-fejlécek gyorsítótár konfigurációját. Streamvégpontok beállítja a HTTP Cache-Control: max-age és Expires fejlécet. További információt a HTTP-gyorsítótár fejléceket [W3.org](http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html).
+Az Azure Media Services biztosítja a HTTP-alapú adaptív Streamelés és a progresszív letöltés. HTTP-alapú streamelési az előnyökkel, a gyorsítótárazás a proxy- és a CDN-rétegek, valamint a ügyféloldali gyorsítótárazás rugalmasan méretezhető. Streamvégpontok nyújt általános idejű közvetítési lehetőségeket, és HTTP-fejlécek gyorsítótár konfigurációját. Streamvégpontok beállítja a HTTP Cache-Control: max-age és Expires fejlécet. További információt a HTTP-gyorsítótár fejléceket [W3.org](https://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html).
 
 ## <a name="default-caching-headers"></a>Alapértelmezett gyorsítótárazási fejlécek
 Alapértelmezés szerint a streamelési végpontokkal 3 nap gyorsítótár fejlécek igény szerinti folyamatos átviteli adatok (tényleges media töredék/adattömbök) és az manifest(playlist) alkalmazza. Az élő streameléshez streamvégpontok 3 nap gyorsítótár fejlécek adatok (tényleges media töredék/adattömbök) vonatkoznak, és 2 másodperc gyorsítótár manifest(playlist) kérelem fejléce. Ha élő program kerül, igény szerinti (élő archív), majd igény szerinti folyamatos átviteli gyorsítótár fejlécek érvényesek lesznek.

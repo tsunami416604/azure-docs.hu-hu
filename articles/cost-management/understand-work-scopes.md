@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 3a1d363e08d4c7e9899f034b2260e764d07ed79d
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: c7eb490bdf484651613c5c7a72d2a31be5306634
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57344755"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773792"
 ---
-# <a name="understand-and-work-with-scopes"></a>Megismerheti és hatókörök kezelése
+# <a name="understand-and-work-with-scopes"></a>A hatókörök ismertetése és használata
 
 Ez a cikk segít megérteni a számlázás és a resource management hatókörök elérhető az Azure és a hatóköröket a Cost Management és az API-k használata.
 
@@ -31,7 +31,7 @@ Hatókörök: ahol, számlázási adatok kezelésére, szerepkörök egyedi kifi
 
 ## <a name="how-cost-management-uses-scopes"></a>Hogyan használja a Cost Management a hatókörök
 
-A Cost Management működik minden hatóköröket, hogy a szervezetek számára, hogy a szintjén, amelyen ők is hozzáférhetnek, költségek kezelésére, akár a teljes számlázási fiókra vagy egyetlen erőforrás felett. Bár a számlázási hatókör mennyiségén alapulnak a Microsoft-szerződés (előfizetés-típus), nem az RBAC-hatóköröket.
+A Cost Management működik minden hatóköröket, hogy a szervezetek számára, hogy a szintjén, amelyen ők is hozzáférhetnek, költségek kezelésére, akár a teljes számlázási fiókra vagy egyetlen erőforrás felett. Számlázási hatókör mennyiségén alapulnak a Microsoft-szerződés (előfizetés-típus), az RBAC-hatókörök viszont nem.
 
 ## <a name="azure-rbac-scopes"></a>Az Azure RBAC-hatókörök
 
@@ -145,6 +145,10 @@ Számlázási felhasználóknak nem kell hozzáférést a felügyeleti csoportok
 ## <a name="cloud-solution-provider-csp-scopes"></a>Cloud Solution Provider (CSP) hatókörök
 
 Cloud Solution Provider (CSP) partner nem támogatottak a Cost Management még ma. Ehelyett használhat [Partnerközpont](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview).
+
+## <a name="how-to-switch-between-scopes-within-cost-management"></a>Hogyan lehet váltani a Cost Management hatókörök
+
+Tartalmazza az összes Cost Management környezeteket az Azure Portalon egy **hatókör** megszámlálásához, a bal felső a panel, amely gyorsan a hatókör módosítása hozzáférést biztosít. Kattintson a **hatókör** megszámlálásához megnyílik egy Hatókörválasztó, amely megjeleníti a számlázási fiókok, a legfelső szintű felügyeleti csoport és minden olyan előfizetéseket, ami nem beágyazott a legfelső szintű felügyeleti csoportban. A hatókör kiválasztásához kattintson a háttérben, jelöljön ki, majd kattintson a **kiválasztása** gombra a lap alján. A hatókör neve hivatkozásra kattintva jelenítse meg a beágyazott hatókörök (pl. erőforráscsoportok egy előfizetésen belül). A szülő hatókörnek bármely beágyazott szinten kiválasztásához kattintson a **válassza ezt <scope>**  felső részén a Hatókörválasztó gombra.
 
 ## <a name="identify-the-resource-id-for-a-scope"></a>Az erőforrás-azonosítója egy hatókör azonosítása
 
