@@ -1,6 +1,6 @@
 ---
 title: Az Azure Stack érvényesítési ajánlott eljárások. | Microsoft Docs
-description: Ez a cikk gyakorlati tanácsok érvényesítési szolgáltatásként is rendelkezik.
+description: Ez a cikk ismerteti a gyakorlati tanácsok szolgáltatásként ellenőrzés céljából.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 11/26/2018
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: b61c4a22d0c5343d41e35f2bbd66829b2b9e8d48
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 30b7a5327a709fb35c3c3360f4bb0246e9a5f75f
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57336972"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771225"
 ---
 # <a name="best-practices-for-validation-as-a-service"></a>Ajánlott eljárások a szolgáltatás érvényesítése
 
@@ -46,7 +46,7 @@ Az azonos VaaS megoldást használni, ha ugyanazt a hardvert Termékváltozat mu
 
 ### <a name="naming-convention-for-vaas-workflows"></a>A munkafolyamatok VaaS elnevezési konvenciót
 
-Egy egységes kulcselnevezési konvenció használata minden VaaS munkafolyamat-Futtatás. Például a szerkezetet munkafolyamat neve a build tulajdonságait az alábbi módon:
+Egy egységes kulcselnevezési konvenció használata minden VaaS munkafolyamat-Futtatás. Például hozza létre a következő a munkafolyamat nevét az alábbi build tulajdonságait:
 
 |Buildszám (nagy) | Dátum | Megoldás mérete | A munkafolyamat neve
 |---|---|---| ---|

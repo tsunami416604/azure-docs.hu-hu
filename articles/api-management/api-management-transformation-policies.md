@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/27/2017
+ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 4e7af92ed0ce04bb14bd49c24de4928baa4f00ec
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3d5962ec097c5cd72693530328b710af915054d0
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448066"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57768912"
 ---
 # <a name="api-management-transformation-policies"></a>Az API Management átalakítási szabályzatok
 Ez a témakör egy hivatkozást kínál a következő az API Management házirendek. Hozzáadása és házirendek konfigurálásával kapcsolatos tudnivalókat lásd: [az API Management házirendek](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -208,6 +208,15 @@ Ez a témakör egy hivatkozást kínál a következő az API Management háziren
 <set-backend-service base-url="base URL of the backend service" />
 ```
 
+vagy
+
+```xml
+<set-backend-service backend-id="identifier of the backend entity specifying base URL of the backend service" />
+```
+
+> [!NOTE]
+> Háttér-entitások felügyeleti keresztül kezelhetők [API](https://docs.microsoft.com/en-us/rest/api/apimanagement/backend) és [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).
+
 ### <a name="example"></a>Példa
 
 ```xml
@@ -260,8 +269,8 @@ Ebben a példában a házirend továbbítja a kérést egy service fabric hátt�
 
 |Name (Név)|Leírás|Szükséges|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
-|alap URL-címet|Új háttérrendszer szolgáltatás kiindulási URL-címe.|Nem|–|
-|backend-id|A háttérrendszer irányíthatja a azonosítója.|Nem|–|
+|alap URL-címet|Új háttérrendszer szolgáltatás kiindulási URL-címe.|Egyik `base-url` vagy `backend-id` jelen kell lennie.|–|
+|backend-id|A háttérrendszer irányíthatja a azonosítója. (Háttérrendszer entitások keresztül felügyelt [API](https://docs.microsoft.com/en-us/rest/api/apimanagement/backend) és [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement).)|Egyik `base-url` vagy `backend-id` jelen kell lennie.|–|
 |sf-partition-key|Csak akkor alkalmazható, ha a háttérrendszer egy Service Fabric-szolgáltatás, és meghatározott backend-id használatával. A névfeloldási szolgáltatás egy adott partícióra feloldásához használt.|Nem|–|
 |sf-replica-type|Csak akkor alkalmazható, ha a háttérrendszer egy Service Fabric-szolgáltatás, és meghatározott backend-id használatával. Ha a kérelem el kell küldeni az elsődleges vagy másodlagos replika partíció szabályozza. |Nem|–|
 |sf-resolve-condition|Csak akkor alkalmazható, ha a háttérrendszer a Service Fabric-szolgáltatás. A feltétel azonosítása kell-e a hívás a Service Fabric háttérrendszeréhez új megoldás meg kell ismételni.|Nem|–|
@@ -482,17 +491,15 @@ OriginalUrl.
  További információkért lásd: [házirend-kifejezések](api-management-policy-expressions.md) és [környezeti változó](api-management-policy-expressions.md#ContextVariables).
 
 > [!NOTE]
-> Fejléc több érték is összefűzött a fürt megosztott kötetei szolgáltatás a karakterláncot, például:  
-> `headerName: value1,value2,value3`
+> Fejléc több érték is összefűzött a fürt megosztott kötetei szolgáltatás a karakterláncot, például: `headerName: value1,value2,value3`
 >
 > Kivételek szabványos fejlécek, mely értékeket tartalmazza:
 > - vesszőket tartalmazhat (`User-Agent`, `WWW-Authenticate`, `Proxy-Authenticate`),
 > - Előfordulhat, hogy tartalmazza a dátum (`Cookie`, `Set-Cookie`, `Warning`),
 > - tartalmazza a dátum (`Date`, `Expires`, `If-Modified-Since`, `If-Unmodified-Since`, `Last-Modified`, `Retry-After`).
 >
-> A kivételek esetén fejlécében több érték nem kell fűzni be egy karakterláncot, és lesznek átadva külön fejlécként, például:  
->`User-Agent: value1`  
->`User-Agent: value2`  
+> A kivételek esetén fejlécében több érték nem kell fűzni be egy karakterláncot, és lesznek átadva külön fejlécként, például: `User-Agent: value1`
+>`User-Agent: value2`
 >`User-Agent: value3`
 
 ### <a name="elements"></a>Elemek

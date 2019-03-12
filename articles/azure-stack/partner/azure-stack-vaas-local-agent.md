@@ -10,36 +10,36 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/04/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 11/26/2018
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: c7bf766dc0f73b37fc7de537537c7a885a50c30a
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 09b8556a83dec286ce8d67fa5fd6d27e027325bf
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339572"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769216"
 ---
 # <a name="deploy-the-local-agent"></a>A helyi ügynök telepítése
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Ismerje meg, hogy az érvényesítés egy szolgáltatás (VaaS) helyi ügynök használata a hardver ellenőrzése. A helyi ügynök kell üzembe helyezni az Azure Stack megoldás ellenőrző tesztek futtatása előtt kell kiértékelni.
+Ismerje meg, az érvényesítési használata a Service (VaaS) helyi ügynök Érvényesítési tesztek futtatásához. A helyi ügynök ellenőrző tesztek futtatása előtt kell telepíteni.
 
 > [!Note]  
-> Győződjön meg arról, hogy a gép, amelyen fut a helyi ügynök nem veszíti el élekről kötött access az internethez. Ezen a számítógépen csak a felhasználók számára engedélyezett a bérlő nevében VaaS használandó elérhetőnek kell lennie.
+> Győződjön meg arról, hogy a gép, amelyen fut a helyi ügynök nem veszíti el kimenő hozzáférést az internethez. Lehet, hogy a gép csak a nevében a bérlő VaaS használatára jogosult felhasználók számára elérhető.
 
 A helyi ügynök telepítéséhez:
 
-1. A helyi ügynök telepítése
-2. Hajtsa végre a megerősítések
-3. A helyi ügynök futtatása
+1. A helyi ügynök telepítése.
+2. Hajtsa végre a megerősítések.
+3. A helyi ügynök futtatásával.
 
 ## <a name="download-and-start-the-local-agent"></a>Töltse le és indítsa el a helyi ügynök
 
-Töltse le az ügynök olyan gépre, amely megfelel az előfeltételeknek, amely nem része az Azure Stack rendszer, de egy, amely hozzáfér az Azure Stack-végpontokra irányuló adatközpontjában.
+Töltse le az ügynök olyan gépre, amely megfelel az előfeltételeknek, a helyi adatközpontban, és az Azure Stack-végpontokra irányuló hozzáféréssel rendelkezik. Ezt a gépet nem lehet az Azure Stack rendszer része, vagy az Azure Stack-felhő üzemeltet.
 
 ### <a name="machine-prerequisites"></a>Gép előfeltételei
 
@@ -51,8 +51,6 @@ Ellenőrizze, hogy a gép megfelel-e a következő feltételeknek:
 - Legalább 8 processzormagokkal
 - 200 GB-os minimális szabad lemezterület
 - Állandó hálózati kapcsolat az internethez
-
-Az Azure Stack, a rendszer a tesztelt. A gép nem lehet része az Azure Stack, vagy az Azure Stack-felhő üzemeltet.
 
 ### <a name="download-and-install-the-agent"></a>Az ügynök letöltése és telepítése
 

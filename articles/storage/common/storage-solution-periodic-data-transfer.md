@@ -4,16 +4,16 @@ description: Ismerje meg, hogyan választható ki egy Azure-megoldás az adatát
 services: storage
 author: alkohli
 ms.service: storage
-ms.subservice: blob
+ms.subservice: blobs
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: alkohli
-ms.openlocfilehash: 271be60bc26cf6bc9a64c459d030818d9e493a22
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: ba6d5e20f0d6a004fd85d7e9dc57584547d52ba3
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158448"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772857"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>Rendszeres adatforgalom-megoldások
  
@@ -57,7 +57,7 @@ Az alábbi táblázat a legfontosabb képességei a különbségeket foglalja ö
 | Helyigény                                   | Virtuális eszköz             | Fizikai eszköz          | Az Azure Portalon, az ügynök a helyi szolgáltatás                                                            |
 | Hardver                                      | A hipervizor            | A Microsoft által biztosított    | NA                                                            |
 | Az első telepítés munkamennyiség                          | Alacsony (< 30 perc.)            | Közepes (~ összekapcsolhatja óra) | Nagy (~ nap)                                                 |
-| Adatformátum                                   | Azure-Blobok, az Azure Files   | Azure-Blobok, az Azure Files | [70-nél több adatösszekötők támogatja az adattárak és formátumok](https://docs.microsoft.com/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)|
+| Adatformátum                                   | Azure Blobs, Azure Files   | Azure Blobs, Azure Files | [70-nél több adatösszekötők támogatja az adattárak és formátumok](https://docs.microsoft.com/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)|
 | Üzem előtti adatfeldolgozás                           | Nem                         | Igen, Edge számítási    | Igen                                                           |
 | Helyi gyorsítótár<br>(a helyszíni adatok tárolásához)    | Igen                        | Igen                      | Nem                                                            |
 | Vigye át más felhőkben                    | Nem                         | Nem                       | Igen                                                           |

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: cherylmc
-ms.openlocfilehash: 86eb47f3ee1fa16d786a09bcafc103c70535a28f
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 739d6adb493da2ab0e844f1e219ec422ebeec8d5
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983931"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57768680"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>RADIUS-hitelesítés használatával virtuális hálózathoz pont – hely kapcsolat konfigurálása: PowerShell
 
@@ -20,7 +20,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egy Vnetet a RADIUS-hitelesítést has
 
 A pont–hely (P2S) VPN-átjáró lehetővé teszi biztonságos kapcsolat létesítését a virtuális hálózattal egy különálló ügyfélszámítógépről. Pont – hely VPN-kapcsolatok akkor hasznos, ha szeretne csatlakozni egy távoli helyről, például amikor dolgozzon, az otthonról vagy konferenciáról, a virtuális hálózathoz. A pont–hely VPN emellett akkor is hasznos megoldás lehet a helyek közötti VPN helyett, ha csak néhány ügyfelet szeretne egy VNetre csatlakoztatni.
 
-A pont–hely VPN-kapcsolat indítása a Windows- és Mac-eszközökről történik. A kapcsolódó ügyfelek az alábbi hitelesítési módszereket használhatják:
+A pont–hely VPN-kapcsolat indítása a Windows- és Mac-eszközökről történik. A kapcsolódó ügyfelek az alábbi hitelesítési módszereket használhatják: 
 
 * RADIUS-kiszolgáló
 * VPN-átjáró natív Tanúsítványalapú hitelesítés

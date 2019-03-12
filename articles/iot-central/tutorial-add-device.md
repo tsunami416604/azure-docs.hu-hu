@@ -3,18 +3,18 @@ title: Valós eszköz hozzáadása Azure IoT Central-alkalmazáshoz | Microsoft 
 description: Operátorként valós eszközt adhat az Azure IoT Central-alkalmazáshoz.
 author: sandeeppujar
 ms.author: sandeepu
-ms.date: 10/12/2018
+ms.date: 02/01/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 307449a24555fed48899d67196114cb24f0bb572
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 5d9e33e5cf4c8a7d5b8085e1e2ff8f4bde3274b7
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216849"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57770901"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Oktatóanyag: Valós eszköz hozzáadása az Azure IoT Central-alkalmazáshoz
 
@@ -52,21 +52,19 @@ Ha valós eszközt szeretne hozzáadni az alkalmazáshoz, használja az [Új esz
 
    Az **Eszközkereső** a **Csatlakoztatott légkondicionáló** eszközsablont és azt a szimulált eszközt jeleníti meg, amely automatikusan jött létre, amikor a szerkesztő létrehozta az eszközsablont.
 
-2. Valós csatlakoztatott légkondicionáló eszköz csatlakoztatásához válassza az **Új**, majd a **Valós** lehetőséget:
+2. Kapcsolat egy valós csatlakoztatott légkondicionálóját eszköz elindításához válassza **+**, majd **valós**:
 
    ![Új, valós csatlakoztatott légkondicionáló eszköz hozzáadásának megkezdése](media/tutorial-add-device/newreal.png)
 
-3. Adja meg az eszközazonosítót (**csak kisbetűket tartalmazhat**), vagy használja a javasolt eszközazonosítót. Vagy megadhatja az új eszköz nevét, és kiválaszthatja a **Létrehozás** lehetőséget.  
+3. Adja meg az eszköz azonosítója (kell lennie a kisbetűs) vagy a javasolt eszközazonosítót használ. Vagy megadhatja az új eszköz nevét, és kiválaszthatja a **Létrehozás** lehetőséget.
 
    ![Az eszköz átnevezése](media/tutorial-add-device/rename.png)
-
-
 
 ## <a name="configure-a-real-device"></a>Valós eszköz konfigurálása
 
 A valós eszköz a **Csatlakoztatott légkondicionáló** eszközsablonból jön létre. A **Beállításokkal** konfigurálhatja az eszközt és beállíthatja a tulajdonságértékeket az eszközzel kapcsolatos információk rögzítéséhez.
 
-1. A **Beállítások** lapon figyelje meg, hogy a **Megadott hőmérséklet** beállítás állapota **nincs frissítés** értékű. Ebben az állapotban marad, amíg a valós eszköz nem csatlakozik az alkalmazáshoz, és nem igazolja vissza, hogy módosította a beállítást. 
+1. A **Beállítások** lapon figyelje meg, hogy a **Megadott hőmérséklet** beállítás állapota **nincs frissítés** értékű. Ebben az állapotban marad, amíg a valós eszköz nem csatlakozik az alkalmazáshoz, és nem igazolja vissza, hogy módosította a beállítást.
 
     ![Szinkronizálást mutató beállítások](media/tutorial-add-device/settingssyncing.png)
 
@@ -76,7 +74,7 @@ A valós eszköz a **Csatlakoztatott légkondicionáló** eszközsablonból jön
 
 3. Megtekintheti a valós eszköz **Mérések**, **Szabályok** és **Irányítópult** lapját.
 
-## <a name="generate-connection-string-for-real-device-from-application"></a>Kapcsolati sztring létrehozása a valós eszközhöz az alkalmazásból
+## <a name="generate-connection-string"></a>Kapcsolati karakterlánc létrehozása
 
 Egy eszközfejlesztőnek be kell ágyaznia a valós eszköz *kapcsolati sztringjét* az eszközön futó kódba. A kapcsolati sztring lehetővé teszi, hogy az eszköz biztonságosan csatlakozzon az Azure IoT Central alkalmazáshoz. A kapcsolati sztringet a következő lépésekben a Node.js-kódban írt ügyfélkód előkészítésének részeként hozza létre. A Node.js-alkalmazás a valós csatlakoztatott légkondicionáló eszköz szerepét tölti be. 
 
@@ -89,7 +87,6 @@ A cikkben szereplő példakód [Node.js](https://nodejs.org/) nyelven van megír
 * Eszköztulajdonságok elküldése az Azure IoT Central-alkalmazásnak.
 * Válasz a **Megadott hőmérséklet** beállítást használó operátornak.
 * Az Echo parancs kezelése az Azure IoT Central-alkalmazásból.
-
 
 A [Következő lépések](#next-steps) szakaszban szereplő „Útmutató” hivatkozások teljesebb mintákat nyújtanak, és bemutatják más programozói nyelvek használatát. Az eszközök Azure IoT Central-alkalmazáshoz való kapcsolódásának módjáról további információt az [Eszközkapcsolatok](concepts-connectivity.md) című cikkben talál.
 
@@ -111,59 +108,60 @@ A következő lépések bemutatják, hogyan készítheti elő a [Node.js](https:
 
 1. Az alkalmazásban az eszközpéldányok kapcsolati sztringje az IoT Central által megadott eszközinformációkból jön létre.
 
-    Térjen vissza az IoT Central portálra. A valós csatlakoztatott légkondicionáló eszköz képernyőjén válassza a **Csatlakozás** lehetőséget.
+   Térjen vissza az IoT Central portálra. A valós csatlakoztatott légkondicionáló eszköz képernyőjén válassza a **Csatlakozás** lehetőséget.
 
-    ![A kapcsolat információit megjelenítő hivatkozást mutató eszközoldal](media/tutorial-add-device/connectionlink.png)
+   ![A kapcsolat információit megjelenítő hivatkozást mutató eszközoldal](media/tutorial-add-device/connectionlink.png)
 
 1. Az Eszközkapcsolat oldalon másolja ki és illessze be a hatókör azonosítóját, az eszköz azonosítóját és az elsődleges kulcsot egy szövegszerkesztőbe, majd mentse a fájlt. Ezeket az értékeket a következő lépésben fogja használni.
 
-    ![Kapcsolat adatai](media/tutorial-add-device/device-connect.PNG)
+   ![Kapcsolat adatai](media/tutorial-add-device/device-connect.png)
 
 1. Térjen vissza a parancssori környezethez, és hozza létre a kapcsolati sztringet az alábbiak végrehajtásával:
 
     ```cmd/sh
-     dps-keygen -si:<scope_id> -di:<device_id> -dk:<Primary Key>
+    dps-keygen -si:<scope_id> -di:<device_id> -dk:<Primary Key>
     ```
 
-    Másolja ki a kimenetet, és mentse egy új fájlba (például a connection.txt fájlba).
+   Másolja ki a kimenetet, és mentse egy új fájlba (például a connection.txt fájlba).
 
 1. A Node.js projekt elindításához futtassa az alábbi parancsot az összes alapérték elfogadásával:
 
     ```cmd/sh
     npm init
-    ```
+      ```
 
 1. A szükséges csomagok telepítéséhez futtassa az alábbi parancsot:
 
-   ```cmd/sh
-   npm install azure-iot-device azure-iot-device-mqtt --save
-   ```
+    ```cmd/sh
+    npm install azure-iot-device azure-iot-device-mqtt --save
+    ```
 
 1. Egy szövegszerkesztővel hozzon létre egy **ConnectedAirConditioner.js** fájlt a `connectedairconditioner` mappában.
 
 1. Adja hozzá a következő `require` utasításokat a **ConnectedAirConditioner.js** fájl elejéhez:
 
-   ```javascript
-   'use strict';
+    ```javascript
+    'use strict';
 
-   var clientFromConnectionString = require('azure-iot-device-mqtt').clientFromConnectionString;
-   var Message = require('azure-iot-device').Message;
-   var ConnectionString = require('azure-iot-device').ConnectionString;
-   ```
+    var clientFromConnectionString = require('azure-iot-device-mqtt').clientFromConnectionString;
+    var Message = require('azure-iot-device').Message;
+    var ConnectionString = require('azure-iot-device').ConnectionString;
+    ```
 
 1. Adja a következő változódeklarációkat a fájlhoz:
 
-   ```javascript
-   var connectionString = '{your device connection string}';
-   var targetTemperature = 0;
-   var client = clientFromConnectionString(connectionString);
-   ```
-   > [!NOTE]
-   > A `{your device connection string}` helyőrzőt egy későbbi lépésben fogja frissíteni. 
+    ```javascript
+    var connectionString = '{your device connection string}';
+    var targetTemperature = 0;
+    var client = clientFromConnectionString(connectionString);
+    ```
+
+    > [!NOTE]
+    > A `{your device connection string}` helyőrzőt egy későbbi lépésben fogja frissíteni.
 
 1. Mentse az eddig végrehajtott módosításokat, de hagyja nyitva a fájlt.
 
-## <a name="understand-how-client-code-maps-to-the-application"></a>Annak megértése, hogyan történik az ügyfélkód leképezése az alkalmazásra
+## <a name="review-client-code"></a>Tekintse át az Ügyfélkód
 
 Az előző szakaszban létrehozott egy Node.js vázprojektet az Azure IoT Central-alkalmazáshoz kapcsolódó alkalmazáshoz. Ebben a szakaszban hozzáadja a kódot a következők elvégzéséhez:
 
@@ -173,84 +171,82 @@ Az előző szakaszban létrehozott egy Node.js vázprojektet az Azure IoT Centra
 * Beállítások fogadása az Azure IoT Central-alkalmazásból
 * Az Echo parancs kezelése az Azure IoT Central-alkalmazásból.
 
-
 1. Ha hőmérséklet telemetriát szeretne küldeni az Azure IoT Central-alkalmazásnak, adja a következő kódot a **ConnectedAirConditioner.js** fájlhoz:
 
-   ```javascript
-   // Send device telemetry.
-   function sendTelemetry() {
-     var temperature = targetTemperature + (Math.random() * 15);
-     var data = JSON.stringify({ temperature: temperature });
-     var message = new Message(data);
-     client.sendEvent(message, (err, res) => console.log(`Sent message: ${message.getData()}` +
-       (err ? `; error: ${err.toString()}` : '') +
-       (res ? `; status: ${res.constructor.name}` : '')));
-   }
-   ```
+    ```javascript
+    // Send device telemetry.
+    function sendTelemetry() {
+      var temperature = targetTemperature + (Math.random() * 15);
+      var data = JSON.stringify({ temperature: temperature });
+      var message = new Message(data);
+      client.sendEvent(message, (err, res) => console.log(`Sent message: ${message.getData()}` +
+        (err ? `; error: ${err.toString()}` : '') +
+        (res ? `; status: ${res.constructor.name}` : '')));
+    }
+    ```
 
-   Az elküldött JSON-fájlban lévő mező nevének egyeznie kell az eszközsablonban a hőmérséklet-telemetriához megadott mező nevével. Ebben a példában a mező neve **temperature**.
-
+    Az elküldött JSON-fájlban lévő mező nevének egyeznie kell az eszközsablonban a hőmérséklet-telemetriához megadott mező nevével. Ebben a példában a mező neve **temperature**.
 
 1. Az eszköz tulajdonságai, például a **firmwareVersion** és a **serialNumber** elküldéséhez adja hozzá a következő definíciót:
 
-   ```javascript
-   // Send device properties
-   function sendDeviceProperties(twin) {
-     var properties = {
-       firmwareVersion: "9.75",
-       serialNumber: "10001"
-     };
-     twin.properties.reported.update(properties, (errorMessage) => 
-       console.log(` * Sent device properties ` + (errorMessage ? `Error: ${errorMessage.toString()}` : `(success)`)));
-   }
-   ```
+    ```javascript
+    // Send device properties
+    function sendDeviceProperties(twin) {
+      var properties = {
+        firmwareVersion: "9.75",
+        serialNumber: "10001"
+      };
+      twin.properties.reported.update(properties, (errorMessage) => 
+      console.log(` * Sent device properties ` + (errorMessage ? `Error: ${errorMessage.toString()}` : `(success)`)));
+    }
+    ```
 
 1. Az eszköz által támogatott beállítások, például a **setTemperature** meghatározásához adja hozzá a következő definíciót:
 
-   ```javascript
-   // Add any settings your device supports
-   // mapped to a function that is called when the setting is changed.
-   var settings = {
-     'setTemperature': (newValue, callback) => {
-       // Simulate the temperature setting taking two steps.
-       setTimeout(() => {
-         targetTemperature = targetTemperature + (newValue - targetTemperature) / 2;
-         callback(targetTemperature, 'pending');
-         setTimeout(() => {
-           targetTemperature = newValue;
-           callback(targetTemperature, 'completed');
-         }, 5000);
-       }, 5000);
-     }
-   };
-   ```
+    ```javascript
+    // Add any settings your device supports
+    // mapped to a function that is called when the setting is changed.
+    var settings = {
+      'setTemperature': (newValue, callback) => {
+        // Simulate the temperature setting taking two steps.
+        setTimeout(() => {
+          targetTemperature = targetTemperature + (newValue - targetTemperature) / 2;
+          callback(targetTemperature, 'pending');
+          setTimeout(() => {
+            targetTemperature = newValue;
+            callback(targetTemperature, 'completed');
+          }, 5000);
+        }, 5000);
+      }
+    };
+    ```
 
 1. Az Azure IoT Centralból küldött beállítások kezeléséhez adja hozzá a következő függvényt, amely megkeresi és végrehajtja a megfelelő eszközkódot:
 
-   ```javascript
-   // Handle settings changes that come from Azure IoT Central via the device twin.
-   function handleSettings(twin) {
-     twin.on('properties.desired', function (desiredChange) {
-       for (let setting in desiredChange) {
-         if (settings[setting]) {
-           console.log(`Received setting: ${setting}: ${desiredChange[setting].value}`);
-           settings[setting](desiredChange[setting].value, (newValue, status, message) => {
-             var patch = {
-               [setting]: {
-                 value: newValue,
-                 status: status,
-                 desiredVersion: desiredChange.$version,
-                 message: message
-               }
-             }
-             twin.properties.reported.update(patch, (err) => console.log(`Sent setting update for ${setting}; ` +
-               (err ? `error: ${err.toString()}` : `status: success`)));
-           });
-         }
-       }
-     });
-   }
-   ```
+    ```javascript
+    // Handle settings changes that come from Azure IoT Central via the device twin.
+    function handleSettings(twin) {
+      twin.on('properties.desired', function (desiredChange) {
+        for (let setting in desiredChange) {
+          if (settings[setting]) {
+            console.log(`Received setting: ${setting}: ${desiredChange[setting].value}`);
+            settings[setting](desiredChange[setting].value, (newValue, status, message) => {
+              var patch = {
+                [setting]: {
+                  value: newValue,
+                  status: status,
+                  desiredVersion: desiredChange.$version,
+                  message: message
+                }
+              }
+              twin.properties.reported.update(patch, (err) => console.log(`Sent setting update for ${setting}; ` +
+                (err ? `error: ${err.toString()}` : `status: success`)));
+            });
+          }
+        }
+      });
+    }
+    ```
 
     Ez a függvény:
 
@@ -260,57 +256,57 @@ Az előző szakaszban létrehozott egy Node.js vázprojektet az Azure IoT Centra
 
 1. Ha válaszolni szeretne egy (például az **echo**) parancsra az Azure IoT Central-alkalmazásból, adja hozzá az alábbi definíciót:
 
-   ```javascript
-   // Respond to the echo command
-   function onCommandEcho(request, response) {
-     // Display console info
-     console.log(' * Echo command received');
-     // Respond
-     response.send(10, 'Success', function (errorMessage) {});
-   }
-   ```
+    ```javascript
+    // Respond to the echo command
+    function onCommandEcho(request, response) {
+      // Display console info
+      console.log(' * Echo command received');
+      // Respond
+      response.send(10, 'Success', function (errorMessage) {});
+    }
+    ```
 
 1. Adja hozzá a következő kódot az Azure IoT Central-alkalmazáshoz való csatlakozás befejezéséhez és az ügyfélkódban lévő függvények csatlakoztatásához:
 
-   ```javascript
-   // Handle device connection to Azure IoT Central.
-   var connectCallback = (err) => {
-     if (err) {
-       console.log(`Device could not connect to Azure IoT Central: ${err.toString()}`);
-     } else {
-       console.log('Device successfully connected to Azure IoT Central');
-       // Send telemetry measurements to Azure IoT Central every 1 second.
-       setInterval(sendTelemetry, 1000);
-       // Setup device command callbacks
-       client.onDeviceMethod('echo', onCommandEcho);
-       // Get device twin from Azure IoT Central.
-       client.getTwin((err, twin) => {
-         if (err) {
-           console.log(`Error getting device twin: ${err.toString()}`);
-         } else {
-           // Send device properties once on device start up
-           sendDeviceProperties(twin);
-           // Apply device settings and handle changes to device settings.
-           handleSettings(twin);
-         }
-       });
-     }
-   };
+    ```javascript
+    // Handle device connection to Azure IoT Central.
+    var connectCallback = (err) => {
+      if (err) {
+        console.log(`Device could not connect to Azure IoT Central: ${err.toString()}`);
+      } else {
+        console.log('Device successfully connected to Azure IoT Central');
+        // Send telemetry measurements to Azure IoT Central every 1 second.
+        setInterval(sendTelemetry, 1000);
+        // Setup device command callbacks
+        client.onDeviceMethod('echo', onCommandEcho);
+        // Get device twin from Azure IoT Central.
+        client.getTwin((err, twin) => {
+          if (err) {
+            console.log(`Error getting device twin: ${err.toString()}`);
+          } else {
+            // Send device properties once on device start up
+            sendDeviceProperties(twin);
+            // Apply device settings and handle changes to device settings.
+            handleSettings(twin);
+          }
+        });
+      }
+    };
 
-   client.open(connectCallback);
-   ```
+    client.open(connectCallback);
+    ```
 
 1. Mentse az eddig végrehajtott módosításokat, de hagyja nyitva a fájlt.
 
-## <a name="configure-client-code-for-the-real-device"></a>Ügyfélkód konfigurálása valós eszközhöz
+## <a name="configure-client-code"></a>Ügyfélalkalmazás konfigurálása
 
 <!-- Add the connection string to the sample code, build, and run --> Ha az ügyfélkódot az Azure IoT Central-alkalmazáshoz való kapcsolódáshoz szeretné konfigurálni, hozzá kell adnia a valós eszköz az oktatóanyag korábbi részében feljegyzett kapcsolati sztringjét.
 
 1. A **ConnectedAirConditioner.js** fájlban keresse meg a következő kódsort:
 
-   ```javascript
-   var connectionString = '{your device connection string}';
-   ```
+    ```javascript
+    var connectionString = '{your device connection string}';
+    ```
 
 1. A `{your device connection string}` helyére illessze be a valós eszköz kapcsolati sztringjét. Korábban egy szövegszerkesztőbe mentette a kapcsolati sztringet.
 
@@ -318,12 +314,12 @@ Az előző szakaszban létrehozott egy Node.js vázprojektet az Azure IoT Centra
 
 1. A mintakód futtatásához írja be a következő parancsot a parancssori környezetbe:
 
-   ```cmd/sh
-   node ConnectedAirConditioner.js
-   ```
+    ```cmd/sh
+    node ConnectedAirConditioner.js
+    ```
 
-   > [!NOTE]
-   > Győződjön meg róla, hogy a `connectedairconditioner` mappában áll a parancs futtatásakor.
+    > [!NOTE]
+    > Győződjön meg róla, hogy a `connectedairconditioner` mappában áll a parancs futtatásakor.
 
 1. Az alkalmazás a kimenetet a konzolban jeleníti meg:
 
@@ -331,7 +327,7 @@ Az előző szakaszban létrehozott egy Node.js vázprojektet az Azure IoT Centra
 
 1. Körülbelül 30 másodperc múlva megjelenik a telemetria az eszköz **Mérések** oldalán:
 
-   ![Valós telemetria](media/tutorial-add-device/realtelemetry.png)
+   ![Real ~~telemetry](media/tutorial-add-device/realtelemetry.png)
 
 1. A **Beállítások** lapon láthatja, hogy a beállítás most szinkronizálva van. Az eszköz első csatlakoztatásakor az megkapta a beállításértéket és elfogadta a módosítást:
 
@@ -365,7 +361,7 @@ Operátorként a következőket sajátítja el:
 
 * [Saját eszközök kezelése](howto-manage-devices.md)
 * [Eszközkészletek használata](howto-use-device-sets.md)
-* [Egyéni elemzések létrehozása](howto-create-analytics.md)
+* [Egyéni elemzések létrehozása](howto-use-device-sets.md)
 
 Eszközfejlesztőként a következőket sajátítja el:
 

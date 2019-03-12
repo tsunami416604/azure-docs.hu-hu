@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: c2f11b08f5d8e9bb3be7acfa8ba62100bdc55d99
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: fa6d90866be93645625fa82410f8dd0e3bd33d00
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889800"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774285"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Adatok átalakítása a az Azure Machine Learning Data Prep SDK segítségével
 
@@ -39,8 +39,8 @@ Az Azure Machine Learning Data Prep SDK tartalmaz `substring` kifejezések alapj
 import azureml.dataprep as dprep
 
 # loading data
-dataflow = dprep.read_csv(path=r'data\crime0-10.csv')
-dataflow.head(3)
+dflow = dprep.read_csv(path=r'data\crime0-10.csv')
+dflow.head(3)
 ```
 
 ||ID (Azonosító)|Eset száma|Dátum|Letiltás|IUCR|Elsődleges típusa|Leírás|Leírás helye|Letartóztatás|Hazai|...|Ward|Közösségi terület|Az FBI kód|X koordinátáját|Y koordinátája|Év|Frissítés dátuma|Szélesség|Hosszúság|Hely|
@@ -54,7 +54,7 @@ Használja a `substring(start, length)` előtagot kinyerése a kis számú oszlo
 
 ```python
 substring_expression = dprep.col('Case Number').substring(0, 2)
-case_category = dataflow.add_column(new_column_name='Case Category',
+case_category = dflow.add_column(new_column_name='Case Category',
                                     prior_column='Case Number',
                                     expression=substring_expression)
 case_category.head(3)
@@ -72,7 +72,7 @@ Használja a `substring(start)` kifejezés csak annyi kinyerése a kis számú o
 
 ```python
 substring_expression2 = dprep.col('Case Number').substring(2)
-case_id = dataflow.add_column(new_column_name='Case Id',
+case_id = dflow.add_column(new_column_name='Case Id',
                               prior_column='Case Number',
                               expression=substring_expression2)
 case_id = case_id.to_number('Case Id')
@@ -86,10 +86,10 @@ Az SDK-t is imputálására megadott oszlopokat a hiányzó értékeket. Ebben a
 import azureml.dataprep as dprep
 
 # loading input data
-df = dprep.read_csv(r'data\crime0-10.csv')
-df = df.keep_columns(['ID', 'Arrest', 'Latitude', 'Longitude'])
-df = df.to_number(['Latitude', 'Longitude'])
-df.head(3)
+dflow = dprep.read_csv(r'data\crime0-10.csv')
+dflow = dflow.keep_columns(['ID', 'Arrest', 'Latitude', 'Longitude'])
+dflow = dflow.to_number(['Latitude', 'Longitude'])
+dflow.head(3)
 ```
 
 ||ID (Azonosító)|Letartóztatás|Szélesség|Hosszúság|
@@ -103,12 +103,12 @@ A harmadik rekord hiányzik a szélességi és hosszúsági értékeket. Ezeket 
 Ellenőrizze a `MEAN` használatával szélességi oszlop értékét a [ `summarize()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#summarize-summary-columns--typing-union-typing-list-azureml-dataprep-api-dataflow-summarycolumnsvalue---nonetype----none--group-by-columns--typing-union-typing-list-str---nonetype----none--join-back--bool---false--join-back-columns-prefix--typing-union-str--nonetype----none-----azureml-dataprep-api-dataflow-dataflow) függvény. Ez a függvény elfogad egy tömb, az oszlopok a `group_by_columns` paraméterrel adja meg az összesítési szinten. A `summary_columns` paramétert fogad el egy `SummaryColumnsValue` hívja. A függvény hívásához szükséges, adja meg az aktuális oszlop nevét, az új számított mező neve és a `SummaryFunction` végrehajtásához.
 
 ```python
-df_mean = df.summarize(group_by_columns=['Arrest'],
+dflow_mean = dflow.summarize(group_by_columns=['Arrest'],
                        summary_columns=[dprep.SummaryColumnsValue(column_id='Latitude',
                                                                  summary_column_name='Latitude_MEAN',
                                                                  summary_function=dprep.SummaryFunction.MEAN)])
-df_mean = df_mean.filter(dprep.col('Arrest') == 'false')
-df_mean.head(1)
+dflow_mean = dflow_mean.filter(dprep.col('Arrest') == 'false')
+dflow_mean.head(1)
 ```
 
 ||Letartóztatás|Latitude_MEAN|
@@ -127,12 +127,12 @@ impute_mean = dprep.ImputeColumnArguments(column_id='Latitude',
 impute_custom = dprep.ImputeColumnArguments(column_id='Longitude',
                                             custom_impute_value=42)
 # get instance of ImputeMissingValuesBuilder
-impute_builder = df.builders.impute_missing_values(impute_columns=[impute_mean, impute_custom],
+impute_builder = dflow.builders.impute_missing_values(impute_columns=[impute_mean, impute_custom],
                                                    group_by_columns=['Arrest'])
 
 impute_builder.learn()
-df_imputed = impute_builder.to_dataflow()
-df_imputed.head(3)
+dflow_imputed = impute_builder.to_dataflow()
+dflow_imputed.head(3)
 ```
 
 ||ID (Azonosító)|Letartóztatás|Szélesség|Hosszúság|
@@ -144,7 +144,7 @@ df_imputed.head(3)
 Ahogyan az a fenti eredményt, a hiányzó szélességi a volt imputált a `MEAN` értékét `Arrest=='false'` csoport. A hiányzó hosszúsági a 42 volt imputált.
 
 ```python
-imputed_longitude = df_imputed.to_pandas_dataframe()['Longitude'][2]
+imputed_longitude = dflow_imputed.to_pandas_dataframe()['Longitude'][2]
 assert imputed_longitude == 42
 ```
 
@@ -154,8 +154,8 @@ A speciális eszközök az Azure Machine Learning Data Prep SDK az egyik oszlopa
 
 ```python
 import azureml.dataprep as dprep
-dataflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/BostonWeather.csv')
-dataflow.head(4)
+dflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/BostonWeather.csv')
+dflow.head(4)
 ```
 
 ||DATE|REPORTTPYE|HOURLYDRYBULBTEMPF|HOURLYRelativeHumidity|HOURLYWindSpeed|
@@ -168,8 +168,8 @@ dataflow.head(4)
 Tegyük fel, hogy szeretne-e a fájl egy adatkészlet formátumú dátumot és időt amelyeknél csatlakozzon "2018. március 10. |} 2 AM - 4 AM ".
 
 ```python
-builder = dataflow.builders.derive_column_by_example(source_columns=['DATE'], new_column_name='date_timerange')
-builder.add_example(source_data=df.iloc[1], example_value='Jan 1, 2015 12AM-2AM')
+builder = dflow.builders.derive_column_by_example(source_columns=['DATE'], new_column_name='date_timerange')
+builder.add_example(source_data=dflow.iloc[1], example_value='Jan 1, 2015 12AM-2AM')
 builder.preview(count=5) 
 ```
 
@@ -205,7 +205,7 @@ builder.preview(skip=30, count=5)
 Itt láthatja a létrehozott program problémáját. A származtatása program elemezni a dátum szerint "Nap/hó/év", azaz nem választható ebben az esetben kizárólag a fent megadott egy példa alapján, választotta. A probléma megoldásához, egy adott rekord index célként, és adjon meg egy másik példa használatával a `add_example()` működnek a `builder` változó.
 
 ```python
-builder.add_example(source_data=df.iloc[3], example_value='Jan 2, 2015 12AM-2AM')
+builder.add_example(source_data=dflow.iloc[3], example_value='Jan 2, 2015 12AM-2AM')
 builder.preview(skip=30, count=5)
 ```
 
@@ -233,7 +233,7 @@ builder.preview(skip=75, count=5)
 |4|1/29/2015 7:54|None|
 
 ```python
-builder.add_example(source_data=df.iloc[77], example_value='Jan 29, 2015 6AM-8AM')
+builder.add_example(source_data=dflow.iloc[77], example_value='Jan 29, 2015 6AM-8AM')
 builder.preview(skip=75, count=5)
 ```
 ||DATE|date_timerange|
@@ -263,21 +263,21 @@ Bizonyos esetekben ha törli a hibás, példák formájában adható át vagy `e
 Hívás `to_dataflow()` a szerkesztő a ad vissza egy adatfolyamot hozzáadni kívánt származtatott oszlopokat.
 
 ```python
-dataflow = builder.to_dataflow()
-df = dataflow.to_pandas_dataframe()
+dflow = builder.to_dataflow()
+df = dflow.to_pandas_dataframe()
 ```
 
 ## <a name="filtering"></a>Szűrés
 
-Az SDK-csomagja tartalmazza a módszerek [ `Dataflow.drop_columns()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#drop-columns-columns--multicolumnselection-----azureml-dataprep-api-dataflow-dataflow) és [ `Dataflow.filter()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py) lehetővé teszi, hogy szűrje ki a sorok vagy oszlopok.
+Az SDK-csomagja tartalmazza a módszerek [ `drop_columns()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#drop-columns-columns--multicolumnselection-----azureml-dataprep-api-dataflow-dataflow) és [ `filter()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py) lehetővé teszi, hogy szűrje ki a sorok vagy oszlopok.
 
 ### <a name="initial-setup"></a>Kezdeti beállítás
 
 ```python
 import azureml.dataprep as dprep
 from datetime import datetime
-dataflow = dprep.read_csv(path='https://dprepdata.blob.core.windows.net/demo/green-small/*')
-dataflow.head(5)
+dflow = dprep.read_csv(path='https://dprepdata.blob.core.windows.net/demo/green-small/*')
+dflow.head(5)
 ```
 
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Store_and_fwd_flag|RateCodeID|Pickup_longitude|Pickup_latitude|Dropoff_longitude|Dropoff_latitude|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
@@ -290,15 +290,15 @@ dataflow.head(5)
 
 ### <a name="filtering-columns"></a>Oszlopok szűrése
 
-Az oszlopok szűréséhez használja a `Dataflow.drop_columns()`. Ez a módszer felvesz egy oszlop eldobása, vagy egy összetettebb argumentum nevű [ `ColumnSelector` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.columnselector?view=azure-dataprep-py).
+Az oszlopok szűréséhez használja a `drop_columns()`. Ez a módszer felvesz egy oszlop eldobása, vagy egy összetettebb argumentum nevű [ `ColumnSelector` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.columnselector?view=azure-dataprep-py).
 
 #### <a name="filtering-columns-with-list-of-strings"></a>Oszlopok a karakterláncok listájának szűrése
 
-Ebben a példában `drop_columns` karakterláncok listáját használja. Mindegyik sztring pontosan egyeznie kell az eldobni kívánt oszlop.
+Ebben a példában `drop_columns()` karakterláncok listáját használja. Mindegyik sztring pontosan egyeznie kell az eldobni kívánt oszlop.
 
 ```python
-dataflow = dataflow.drop_columns(['Store_and_fwd_flag', 'RateCodeID'])
-dataflow.head(2)
+dflow = dflow.drop_columns(['Store_and_fwd_flag', 'RateCodeID'])
+dflow.head(2)
 ```
 
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Pickup_longitude|Pickup_latitude|Dropoff_longitude|Dropoff_latitude|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
@@ -311,8 +311,8 @@ dataflow.head(2)
 Másik megoldásként használhatja a `ColumnSelector` kifejezés oszlopokat, amelyek megfelelnek egy regex kifejezés. Ebben a példában az oszlopok, amelyek megfelelnek a kifejezésnek drop `Column*|.*longitude|.*latitude`.
 
 ```python
-dataflow = dataflow.drop_columns(dprep.ColumnSelector('Column*|.*longitud|.*latitude', True, True))
-dataflow.head(2)
+dflow = dflow.drop_columns(dprep.ColumnSelector('Column*|.*longitud|.*latitude', True, True))
+dflow.head(2)
 ```
 
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
@@ -322,21 +322,21 @@ dataflow.head(2)
 
 ## <a name="filtering-rows"></a>Sorok szűrése
 
-Sorok szűrése, használja `DataFlow.filter()`. Ez a módszer egy Azure Machine Learning Data Prep SDK kifejezést argumentumként, és adja vissza egy új adatfolyamot a sorokat, amelyek a kifejezés értéke TRUE. Kifejezések használata kifejezés sikerei beépített (`col`, `f_not`, `f_and`, `f_or`) és a normál operátorok (>, <>, =, < =, ==,! =).
+Sorok szűrése, használja `filter()`. Ez a módszer egy Azure Machine Learning Data Prep SDK kifejezést argumentumként, és adja vissza egy új adatfolyamot a sorokat, amelyek a kifejezés értéke TRUE. Kifejezések használata kifejezés sikerei beépített (`col`, `f_not`, `f_and`, `f_or`) és a normál operátorok (>, <>, =, < =, ==,! =).
 
 ### <a name="filtering-rows-with-simple-expressions"></a>Az egyszerű kifejezések sorok szűrése
 
-Kifejezésszerkesztő `col`, adja meg az oszlop nevét egy karakterlánc-argumentum `col('column_name')`. Ez a kifejezés használata az egyik az alábbi szabványos operátorok >, <>, =, < =, ==,! = hozhat létre például egy kifejezést `col('Tip_amount') > 0`. Végül adja át a beépített kifejezés be a `Dataflow.filter` függvény.
+Kifejezésszerkesztő `col`, adja meg az oszlop nevét egy karakterlánc-argumentum `col('column_name')`. Ez a kifejezés használata az egyik az alábbi szabványos operátorok >, <>, =, < =, ==,! = hozhat létre például egy kifejezést `col('Tip_amount') > 0`. Végül adja át a beépített kifejezés be a `filter()` függvény.
 
-Ebben a példában `dataflow.filter(col('Tip_amount') > 0)` adja vissza egy új adatfolyamot a sorokat, amelyben értékét `Tip_amount` 0-nál nagyobb.
+Ebben a példában `dflow.filter(col('Tip_amount') > 0)` adja vissza egy új adatfolyamot a sorokat, amelyben értékét `Tip_amount` 0-nál nagyobb.
 
 > [!NOTE] 
 > `Tip_amount` numerikus, amely lehetővé teszi számunkra, hogy a többi numerikus értéket összehasonlítja egy kifejezés összeállítása először alakul.
 
 ```python
-dataflow = dataflow.to_number(['Tip_amount'])
-dataflow = dataflow.filter(dprep.col('Tip_amount') > 0)
-dataflow.head(2)
+dflow = dflow.to_number(['Tip_amount'])
+dflow = dflow.filter(dprep.col('Tip_amount') > 0)
+dflow.head(2)
 ```
 
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
@@ -348,12 +348,12 @@ dataflow.head(2)
 
 Összetett kifejezések szűrni, kombinálja a kifejezés sikerei legalább egy egyszerű kifejezést `f_not`, `f_and`, vagy `f_or`.
 
-Ebben a példában `Dataflow.filter()` egy új adatfolyamot a sorokat adja vissza, `'Passenger_count'` kevesebb mint 5 és `'Tolls_amount'` 0-nál nagyobb.
+Ebben a példában `dflow.filter()` egy új adatfolyamot a sorokat adja vissza, `'Passenger_count'` kevesebb mint 5 és `'Tolls_amount'` 0-nál nagyobb.
 
 ```python
-dataflow = dataflow.to_number(['Passenger_count', 'Tolls_amount'])
-dataflow = dataflow.filter(dprep.f_and(dprep.col('Passenger_count') < 5, dprep.col('Tolls_amount') > 0))
-dataflow.head(2)
+dflow = dflow.to_number(['Passenger_count', 'Tolls_amount'])
+dflow = dflow.filter(dprep.f_and(dprep.col('Passenger_count') < 5, dprep.col('Tolls_amount') > 0))
+dflow.head(2)
 ```
 
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
@@ -367,10 +367,10 @@ Akkor is egynél több Kifejezésszerkesztő hozhat létre egy beágyazott kifej
 > `lpep_pickup_datetime` és `Lpep_dropoff_datetime` dátum és idő, amely lehetővé teszi számunkra, hogy a többi datetime értéket összehasonlítja egy kifejezés összeállítása először konvertálja.
 
 ```python
-dataflow = dataflow.to_datetime(['lpep_pickup_datetime', 'Lpep_dropoff_datetime'], ['%Y-%m-%d %H:%M:%S'])
-dataflow = dataflow.to_number(['Total_amount', 'Trip_distance'])
+dflow = dflow.to_datetime(['lpep_pickup_datetime', 'Lpep_dropoff_datetime'], ['%Y-%m-%d %H:%M:%S'])
+dflow = dflow.to_number(['Total_amount', 'Trip_distance'])
 mid_2013 = datetime(2013,7,1)
-dataflow = dataflow.filter(
+dflow = dflow.filter(
     dprep.f_and(
         dprep.f_or(
             dprep.col('lpep_pickup_datetime') > mid_2013,
@@ -378,7 +378,7 @@ dataflow = dataflow.filter(
         dprep.f_and(
             dprep.col('Total_amount') > 40,
             dprep.col('Trip_distance') < 10)))
-dataflow.head(2)
+dflow.head(2)
 ```
 
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
@@ -404,8 +404,8 @@ Első lépésként bizonyos adatok betöltése az Azure-Blobból.
 import azureml.dataprep as dprep
 col = dprep.col
 
-df = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv', skip_rows=1)
-df.head(2)
+dflow = dprep.read_csv(path='https://dpreptestfiles.blob.core.windows.net/testfiles/read_csv_duplicate_headers.csv', skip_rows=1)
+dflow.head(2)
 ```
 
 | |stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
@@ -416,10 +416,10 @@ df.head(2)
 Trim le az adatkészlet, és végezze el néhány alapszintű átalakítások, például oszlopok eltávolítása, értékeket cserélje le, és típusok alakítása.
 
 ```python
-df = df.keep_columns(['stnam', 'leanm10', 'ncessch', 'MAM_MTH00numvalid_1011'])
-df = df.replace_na(columns=['leanm10', 'MAM_MTH00numvalid_1011'], custom_na_list='.')
-df = df.to_number(['ncessch', 'MAM_MTH00numvalid_1011'])
-df.head(2)
+dflow = dflow.keep_columns(['stnam', 'leanm10', 'ncessch', 'MAM_MTH00numvalid_1011'])
+dflow = dflow.replace_na(columns=['leanm10', 'MAM_MTH00numvalid_1011'], custom_na_list='.')
+dflow = dflow.to_number(['ncessch', 'MAM_MTH00numvalid_1011'])
+dflow.head(2)
 ```
 
 | |stnam|leanm10|ncessch|MAM_MTH00numvalid_1011|
@@ -430,7 +430,7 @@ df.head(2)
 Keresse meg a következő szűrő használatával null értékeket.
 
 ```python
-df.filter(col('MAM_MTH00numvalid_1011').is_null()).head(2)
+dflow.filter(col('MAM_MTH00numvalid_1011').is_null()).head(2)
 ```
 
 | |stnam|leanm10|ncessch|MAM_MTH00numvalid_1011|
@@ -465,11 +465,11 @@ Egy Python-szkriptet is használhatja, a megyét, és az állapot nevét tartalm
 A Python-szkriptet meg kell határoznia a hívott függvény `newvalue()` , amely egy egyetlen argumentumot `row`. A `row` argumentum értéke egy dict (`key`: oszlopnév, `val`: jelenlegi érték) és a rendszer átad a függvény az adatkészlet minden egyes sorára. Ez a funkció az új oszlopban használandó értéket kell visszaadnia. Importálja a Python-szkriptet könyvtárra sem a környezetben, ahol az adatfolyamot fut léteznie kell.
 
 ```python
-df = df.new_script_column(new_column_name='county_state', insert_after='leanm10', script="""
+dflow = dflow.new_script_column(new_column_name='county_state', insert_after='leanm10', script="""
 def newvalue(row):
     return row['leanm10'] + ', ' + row['stnam'].title()
 """)
-df.head(2)
+dflow.head(2)
 ```
 
 ||stnam|leanm10|county_state|ncessch|MAM_MTH00numvalid_1011|
@@ -482,12 +482,12 @@ df.head(2)
 Egy Python kifejezés használatával [ `new_script_filter()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#new-script-filter-script--str-----azureml-dataprep-api-dataflow-dataflow) az adatkészlet csak ahol "Hale" nem szerepel az új sorok szűrése `county_state` oszlop. A kifejezés eredménye `True` szeretnénk a sort, ha és `False` eldobni a sor.
 
 ```python
-df = df.new_script_filter("""
+dflow = dflow.new_script_filter("""
 def includerow(row):
     val = row['county_state']
     return 'Hale' not in val
 """)
-df.head(2)
+dflow.head(2)
 ```
 
 ||stnam|leanm10|county_state|ncessch|MAM_MTH00numvalid_1011|

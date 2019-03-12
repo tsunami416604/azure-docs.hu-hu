@@ -3,17 +3,17 @@ title: Egyéni vezérlő hozzáférés szerepkör - Avere vFXT az Azure-hoz
 description: Egy egyéni hozzáférési szerepkör a Avere vFXT fürt vezérlő létrehozása
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: procedural
+ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: 7ed20ccac879ec8eba1c3fbd91e38d05b08a12d2
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: c408efa7ca01928e25ac03f5ca63d0aef7d88839
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55303112"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57770037"
 ---
-# <a name="customized-controller-access-role"></a>Testre szabott hozzáférés szerepkört
+# <a name="customized-controller-access-role"></a>Testreszabott vezérlő-hozzáférési szerepkör
 
 Az Azure-fürtben vezérlő Avere vFXT használja egy felügyelt identitás- és szerepköralapú hozzáférés-vezérlés (RBAC), hogy a fürt létrehozása és kezelése. 
 

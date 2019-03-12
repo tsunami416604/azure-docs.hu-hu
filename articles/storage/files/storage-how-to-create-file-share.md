@@ -4,16 +4,16 @@ description: Azure-fájlmegosztás létrehozása az Azure Files szolgáltatásba
 services: storage
 author: RenaShahMSFT
 ms.service: storage
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 09/19/2017
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: 084a5c8113e73590e3e7b9603542a0d866606f96
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1620683f4bc02d607afd8e0371e8d4a5461612b3
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818957"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772330"
 ---
 # <a name="create-a-file-share-in-azure-files"></a>Fájlmegosztás létrehozása az Azure Filesban
 Azure-fájlmegosztások használatával hozhat létre a [az Azure portal](https://portal.azure.com/), az Azure Storage PowerShell parancsmagjainak, az Azure Storage ügyfélkódtáraival vagy az Azure Storage REST API. Az oktatóanyag során a következőket fogja elsajátítani:

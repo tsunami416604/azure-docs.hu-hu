@@ -1,6 +1,6 @@
 ---
 title: Azure-előfizetés korlátok és kvóták
-description: Gyakori Azure-előfizetés és a szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések listáját tartalmazza. Ez magában foglalja a korlátok és maximális értékeket növelésére vonatkozó információkat.
+description: Gyakori Azure-előfizetés és a szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések listáját tartalmazza. Ez a cikk korlátok és maximális értékeket növelésére vonatkozó információkat tartalmaz.
 services: multiple
 author: rothja
 manager: jeffreyg
@@ -10,33 +10,33 @@ ms.service: billing
 ms.topic: article
 ms.date: 12/10/2018
 ms.author: byvinyal
-ms.openlocfilehash: 00930fd99fd4c0078623aa11f3e2cd5b1c549034
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 21a6734ab8af2e35643f6e9b25500dad2418a8c2
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812667"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772035"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
-Ez a dokumentum felsorolja az egyes a leggyakrabban használt Microsoft Azure korlátok, kvóták néven is ismert. Ez a dokumentum jelenleg nem vonatkozik Azure-szolgáltatásokhoz. Az idő múlásával a lista fog kibontható vagy frissítve, hogy biztosítsák a platform további.
+Ez a dokumentum felsorolja az egyes a leggyakrabban használt Microsoft Azure korlátok, kvóták néven is ismert. Ez a dokumentum jelenleg nem vonatkozik Azure-szolgáltatásokhoz. Az idő múlásával a lista fogja kibontva és a frissített magában foglalja a szolgáltatások további.
 
-Látogasson el [Azure díjszabás áttekintése](https://azure.microsoft.com/pricing/) tudhat meg többet az Azure díjszabása. Itt meg tudja becsülni a költségeket, használja a [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/) vagy egy szolgáltatás a díjszabás részleteit ismertető oldal (például [Windows virtuális gépek](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)). Tippek a költségek kezeléséhez: [az Azure-elszámolással és költségkezeléssel váratlan költségek megelőzése](billing/billing-getting-started.md).
-
-> [!NOTE]
-> Ha azt szeretné, a korlát vagy a fenti kvóta emelése az **alapértelmezett korlát**, [nyisson meg egy online támogatási kérést díjmentesen](azure-resource-manager/resource-manager-quota-errors.md). Korlátait fentiekben nem léptethető elő a **maximálisan** értékét az alábbi táblázatban látható. Ha nincs **maximálisan** oszlop, akkor az erőforrás nem állítható korlátokkal rendelkeznek.
->
-> [Az ingyenes próbaverziós előfizetésekben](https://azure.microsoft.com/offers/ms-azr-0044p) nem jogosultak korlátozása vagy a kvóta növekszik. Ha rendelkezik egy [ingyenes próba-előfizetésre](https://azure.microsoft.com/offers/ms-azr-0044p), frissíthet egy [használatalapú](https://azure.microsoft.com/offers/ms-azr-0003p/) előfizetés. További információkért lásd: [Azure ingyenes próbaverzió frissítése használatalapú fizetésre](billing/billing-upgrade-azure-subscription.md) és [ingyenes próba-előfizetéssel kapcsolatos gyakori kérdések](https://azure.microsoft.com/free/free-account-faq).
->
-
-## <a name="limits-and-the-azure-resource-manager"></a>Korlátozások és az Azure Resource Manager
-Már lehetséges úgy, hogy több Azure-erőforrások az egyetlen Azure-erőforráscsoportot. Erőforráscsoportok használatakor a korlátok, amelyek többször is a globális regionális szinten az Azure Resource Manager felügyelete. Azure erőforráscsoportokkal kapcsolatos további információkért lásd: [Azure Resource Manager áttekintése](azure-resource-manager/resource-group-overview.md).
-
-Az alábbi korlátok egy új táblát bővült, hogy minden korlátokat különbségek az Azure Resource Manager használata esetén. Ha például van egy **előfizetési korlátozásait** tábla és a egy **előfizetési korlátok – Azure Resource Manager** tábla. Mindkét forgatókönyvet korlát vonatkozik, ha azt csak az első táblázatban látható. Eltérő jelzés hiányában korlátok egészére érvényesek minden régióban.
+Az Azure díjszabásával kapcsolatos további információkért lásd: [áttekintése az Azure](https://azure.microsoft.com/pricing/). Itt megbecsülheti költségeit használatával a [díjkalkulátor](https://azure.microsoft.com/pricing/calculator/). Is megnyithatja a díjszabási lapon egy adott szolgáltatáshoz, például [Windows virtuális gépek](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows). Tippek a költségek kezeléséhez: [az Azure-elszámolással és költségkezeléssel váratlan költségek megelőzése](billing/billing-getting-started.md).
 
 > [!NOTE]
-> Fontos kiemelni, hogy meg Azure-erőforráscsoport erőforrásokra vonatkozó kvótákat régiók szerinti az előfizetés által elérhető, és amelyek nem előfizetésenként, mivel a szolgáltatás felügyeleti kvótáit. Példaként használjuk a vCPU-kvóták. Ha szeretné a kvóta növelésére vcpu-k támogatását, döntse el, melyik régióban található, és végezze el az Azure-erőforráscsoport vCPU-kvóták egy adott kérés a összegek és a kívánt régióban szeretné hány vcpu-k szeretne. Ezért ha szüksége van az alkalmazás futtatásához használja a Nyugat-Európában 30 vcpu-k, kifejezetten igényeljen 30 vcpu-k Nyugat-Európában. Azonban nem fog tudni egy vCPU-kvóta bármelyik régióban növelése – csak Nyugat-Európa fog rendelkezni a 30-vCPU-kvóta.
+> Ha azt szeretné, a korlát vagy az alapértelmezett korlát feletti kvóta emelése [nyisson meg egy online támogatási kérést díjmentesen](azure-resource-manager/resource-manager-quota-errors.md). A korlátok nem léptethető fent a maximális határértéket, az alábbi táblázatban látható. Ha egyetlen oszlop sincs maximális korlátot, akkor az erőforrás nem állítható korlátokkal rendelkeznek.
+>
+> [Az ingyenes próbaverziós előfizetésekben](https://azure.microsoft.com/offers/ms-azr-0044p) nem jogosult a korlát vagy kvóta növekszik. Ha rendelkezik egy [ingyenes próba-előfizetésre](https://azure.microsoft.com/offers/ms-azr-0044p), frissíthet egy [használatalapú](https://azure.microsoft.com/offers/ms-azr-0003p/) előfizetés. További információkért lásd: [az Azure ingyenes próbaverziója előfizetés frissítése használatalapú fizetéses előfizetésre](billing/billing-upgrade-azure-subscription.md) és a [ingyenes próba-előfizetéssel kapcsolatos gyakori kérdések](https://azure.microsoft.com/free/free-account-faq).
+>
+
+## <a name="limits-and-azure-resource-manager"></a>Korlátozások és az Azure Resource Manager
+Már lehetséges úgy, hogy több Azure-erőforrások egy egyetlen Azure erőforrás-csoportba. Erőforráscsoportok használatakor korlátai, egyszer a globális azokat egy regionális szinten az Azure Resource Manager felügyelete. Azure erőforráscsoportokkal kapcsolatos további információkért lásd: [Azure Resource Manager áttekintése](azure-resource-manager/resource-group-overview.md).
+
+A korlátok a következők közül egy új táblát korlátok a különbségeket tartalmazza az Azure Resource Manager együttes használata esetén. Ha például van egy **előfizetési korlátozásait** tábla és a egy **előfizetési korlátok – Azure Resource Manager** tábla. Mindkét forgatókönyvet korlát vonatkozik, ha azt csak az első táblázatban látható. Eltérő jelzés hiányában korlátok egészére érvényesek minden régióban.
+
+> [!NOTE]
+> A service management szolgáltatás kvótái meg az Azure-erőforráscsoportok erőforrásokra vonatkozó kvótákat áll régiók szerinti előfizetése nem előfizetésenként érhető el. Példaként használjuk a vCPU-kvóták. Kérje egy kvótájának növelését, vcpu-k támogatását, döntse el, melyik régióban használni kívánt hány vcpu-k. Ezután győződjön meg az Azure-erőforrás-csoport vCPU-kvóták egy adott kérés a összegek és a kívánt régióban. Nyugat-Európában 30 vcpu-k használata az alkalmazás futtatásához nincs szüksége, ha kifejezetten kérelem 30 vcpu-k Nyugat-Európában. A vCPU-kvóta bármelyik régióban – nem növekedett, csak Nyugat-Európában van, a 30-vCPU-kvóta.
 > <!-- -->
-> Ennek eredményeképpen, előfordulhat, hogy érdemes figyelembe venni, mellett dönt, az Azure-erőforráscsoport kvóták kell lennie minden olyan egy adott régióban a számítási feladatok számára hasznos lehet, és minden régióban, amelybe a központi telepítési releváns, összeg kérelem. Lásd: [telepítési problémák elhárítása](resource-manager-common-deployment-errors.md) felderítése az adott régió esetében az aktuális kvótái további segítséget itt találhat.
+> Ennek eredményeképpen döntse el, mi az Azure-erőforrás-csoport kvóták kell lennie minden olyan egy adott régióban a számítási feladatok számára. Majd kérik összeg minden régióban, amely számára telepíteni kívánja. Segítség az adott régió esetében az aktuális kvótái meghatározása: [üzembe helyezés hibáinak elhárítása](resource-manager-common-deployment-errors.md).
 >
 >
 
@@ -47,47 +47,47 @@ Az alábbi korlátok egy új táblát bővült, hogy minden korlátokat különb
 * [Application Gateway](#application-gateway-limits)
 * [Application Insights](#application-insights-limits)
 * [Automatizálás](#automation-limits)
+* [Azure Cache for Redis](#azure-cache-for-redis-limits)
+* [Azure Cloud Services](#azure-cloud-services-limits)
 * [Azure Cosmos DB](#azure-cosmos-db-limits)
 * [Azure Database for MySQL](#azure-database-for-mysql)
 * [Azure Database for PostgreSQL](#azure-database-for-postgresql)
-* [Azure Event Grid](#azure-event-grid-limits)
+* [Azure DNS](#azure-dns-limits)
+* [Az Azure-tűzfal](#azure-firewall-limits)
+* [Azure Kubernetes Service](#azure-kubernetes-service-limits)
 * [Azure Maps](#azure-maps-limits)
 * [Azure Monitor](#monitor-limits)
 * [Azure Policy](#azure-policy-limits)
-* Azure Cache for Redis
+* [Azure Search](#azure-search-limits)
+* [Azure SignalR Service](#azure-signalr-service-limits)
 * [Biztonsági mentés](#backup-limits)
 * [Batch](#batch-limits)
 * [BizTalk Services](#biztalk-services-limits)
-* [TARTALOMKÉZBESÍTÉSI HÁLÓZAT (CDN)](#cdn-limits)
-* [Felhőszolgáltatások](#cloud-services-limits)
 * [Tárolópéldányok](#container-instances-limits)
 * [Container Registry](#container-registry-limits)
-* [Kubernetes Service](#kubernetes-service-limits)
+* [Content Delivery Network](#content-delivery-network-limits)
 * [Data Factory](#data-factory-limits)
 * [Data Lake analitikai szolgáltatás](#data-lake-analytics-limits)
 * [Data Lake Store](#data-lake-store-limits)
 * [Database Migration Service](#database-migration-service-limits)
-* [DNS](#dns-limits)
+* [Event Grid](#event-grid-limits)
 * [Event Hubs](#event-hubs-limits)
-* [Az Azure-tűzfal](#azure-firewall-limits)
-* [Bejárati ajtajának](#azure-front-door-service-limits)
+* [Bejárati ajtajának szolgáltatás](#azure-front-door-service-limits)
+* [Identity Manager](#identity-manager-limits)
 * [IoT Hub](#iot-hub-limits)
 * [IoT Hub eszközregisztrációs szolgáltatás](#iot-hub-device-provisioning-service-limits)
 * [Key Vault](#key-vault-limits)
 * [Log Analytics](#log-analytics-limits)
-* [Managed Identity](#managed-identity-limits)
 * [Médiaszolgáltatások](#media-services-limits)
 * [Mobile Services](#mobile-services-limits)
-* [Többtényezős hitelesítés](#multi-factor-authentication)
+* [Többtényezős hitelesítés](#multi-factor-authentication-limits)
 * [Hálózat](#networking-limits)
 * [A Network Watcher](#network-watcher-limits)
-* [Értesítési központ szolgáltatás](#notification-hub-service-limits)
+* [Értesítési központ](#notification-hubs-limits)
 * [Erőforráscsoport](#resource-group-limits)
 * [Szerepköralapú hozzáférés-vezérlés](#role-based-access-control-limits)
 * [Scheduler](#scheduler-limits)
-* [Search](#search-limits)
 * [Szolgáltatásbusz](#service-bus-limits)
-* [SignalR szolgáltatás](#signalr-service-limits)
 * [Site Recovery](#site-recovery-limits)
 * [SQL Database](#sql-database-limits)
 * [SQL Data Warehouse](#sql-data-warehouse-limits)
@@ -97,32 +97,32 @@ Az alábbi korlátok egy új táblát bővült, hogy minden korlátokat különb
 * [Előfizetés](#subscription-limits)
 * [Traffic Manager](#traffic-manager-limits)
 * [Virtuális gépek](#virtual-machines-limits)
-* [Virtual Machine Scale Sets](#virtual-machine-scale-sets-limits)
+* [A Virtual machine scale sets](#virtual-machine-scale-sets-limits)
 
 ### <a name="subscription-limits"></a>Előfizetés korlátai
-#### <a name="subscription-limits---azure-service-management-classic-resources"></a>Előfizetési korlátok – Azure szolgáltatásfelügyeleti (klasszikus erőforrások)
+#### <a name="subscription-limits---azure-service-management-classic-deployment-model"></a>Előfizetési korlátok – Azure szolgáltatásfelügyeleti (klasszikus üzembe helyezési modell)
 [!INCLUDE [azure-subscription-limits](../includes/azure-subscription-limits.md)]
 
 #### <a name="subscription-limits---azure-resource-manager"></a>Előfizetési korlátok – Azure Resource Manager
-Az alábbi korlátok vonatkoznak az Azure Resource Manager és az Azure-erőforráscsoportok használata esetén. Korlátok, amelyek nem változtak az Azure Resource Manager alább nem láthatók. Tekintse meg az előző táblázatban a ezeket a korlátokat.
+Az alábbi korlátok vonatkoznak az Azure Resource Manager és az Azure-erőforráscsoportok használata esetén. Az Azure Resource Manager nem módosított korlátok nem jelennek meg. Lásd az előző táblázatban ezeket a korlátokat.
 
 További információ a Resource Manager API olvasási és írási korlátok, lásd: [szabályozás Resource Manager-kérelmek](resource-manager-request-limits.md).
 
 [!INCLUDE [azure-subscription-limits-azure-resource-manager](../includes/azure-subscription-limits-azure-resource-manager.md)]
 
-### <a name="resource-group-limits"></a>Erőforráscsoport-korlátok
+### <a name="resource-group-limits"></a>Csoport erőforráskorlátok
 [!INCLUDE [azure-resource-groups-limits](../includes/azure-resource-groups-limits.md)]
 
 ### <a name="virtual-machines-limits"></a>Virtuális gépek korlátaira
-#### <a name="virtual-machine-limits"></a>Virtuális gépek korlátai
+#### <a name="virtual-machines-limits"></a>Virtuális gépek korlátaira
 [!INCLUDE [azure-virtual-machines-limits](../includes/azure-virtual-machines-limits.md)]
 
 #### <a name="virtual-machines-limits---azure-resource-manager"></a>Virtuális gépek korlátok – Azure Resource Manager
-Az alábbi korlátok vonatkoznak az Azure Resource Manager és az Azure-erőforráscsoportok használata esetén. Korlátok, amelyek nem változtak az Azure Resource Manager alább nem láthatók. Tekintse meg az előző táblázatban a ezeket a korlátokat.
+Az alábbi korlátok vonatkoznak az Azure Resource Manager és az Azure-erőforráscsoportok használata esetén. Az Azure Resource Manager nem módosított korlátok nem jelennek meg. Lásd az előző táblázatban ezeket a korlátokat.
 
 [!INCLUDE [azure-virtual-machines-limits-azure-resource-manager](../includes/azure-virtual-machines-limits-azure-resource-manager.md)]
 
-### <a name="virtual-machine-scale-sets-limits"></a>Virtual Machine Scale Sets korlátok
+### <a name="virtual-machine-scale-sets-limits"></a>Virtuálisgép-méretezési csoportok korlátok
 [!INCLUDE [virtual-machine-scale-sets-limits](../includes/azure-virtual-machine-scale-sets-limits.md)]
 
 ### <a name="container-instances-limits"></a>Container Instances korlátok
@@ -133,7 +133,7 @@ Az alábbi táblázat ismerteti a funkciókat és korlátokat az alapszintű, St
 
 [!INCLUDE [container-registry-limits](../includes/container-registry-limits.md)]
 
-### <a name="kubernetes-service-limits"></a>Kubernetes-szolgáltatásokra vonatkozó korlátozások
+### <a name="azure-kubernetes-service-limits"></a>Az Azure Kubernetes Service korlátai
 [!INCLUDE [container-service-limits](../includes/container-service-limits.md)]
 
 ### <a name="networking-limits"></a>Hálózatkezelési korlátok
@@ -153,7 +153,7 @@ Az alábbi táblázat v1, v2, Standard és a WAF termékváltozatban vonatkozik,
 #### <a name="traffic-manager-limits"></a>A TRAFFIC Manager-korlátok
 [!INCLUDE [traffic-manager-limits](../includes/traffic-manager-limits.md)]
 
-#### <a name="dns-limits"></a>DNS-korlátok
+#### <a name="azure-dns-limits"></a>Az Azure DNS-korlátok
 [!INCLUDE [dns-limits](../includes/dns-limits.md)]
 
 #### <a name="azure-firewall-limits"></a>Azure tűzfal korlátai
@@ -166,7 +166,7 @@ Az alábbi táblázat v1, v2, Standard és a WAF termékváltozatban vonatkozik,
 <!--like # storage accts -->
 [!INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
 
-A tárfiókok korlátai további részletekért lásd: [Azure Storage méretezhetőségi és Teljesítménycéljai](storage/common/storage-scalability-targets.md).
+További információ a tárfiókok korlátai: [Azure Storage méretezhetőségi és teljesítménycéljai](storage/common/storage-scalability-targets.md).
 
 #### <a name="storage-resource-provider-limits"></a>Tárolási szolgáltató erőforráskorlátok 
 
@@ -176,7 +176,7 @@ A tárfiókok korlátai további részletekért lásd: [Azure Storage méretezhe
 [!INCLUDE [storage-blob-scale-targets](../includes/storage-blob-scale-targets.md)]
 
 #### <a name="azure-files-limits"></a>Az Azure Files-korlátok
-Az Azure Files korlátok további részletekért lásd: [Azure Files méretezhetőségi és teljesítménycéljai](storage/files/storage-files-scale-targets.md).
+Az Azure Files korlátok további információkért lásd: [Azure Files méretezhetőségi és teljesítménycéljai](storage/files/storage-files-scale-targets.md).
 
 [!INCLUDE [storage-files-scale-targets](../includes/storage-files-scale-targets.md)]
 
@@ -193,7 +193,7 @@ Az Azure Files korlátok további részletekért lásd: [Azure Files méretezhet
 #### <a name="virtual-machine-disk-limits"></a>Virtuális gép korlátok
 [!INCLUDE [azure-storage-limits-vm-disks](../includes/azure-storage-limits-vm-disks.md)]
 
-Lásd: [virtuálisgép-méretek](virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) további részleteket.
+További információkért lásd: [virtuálisgép-méretek](virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 #### <a name="managed-virtual-machine-disks"></a>Felügyelt virtuálisgép-lemezek
 
@@ -205,7 +205,7 @@ Lásd: [virtuálisgép-méretek](virtual-machines/linux/sizes.md?toc=%2fazure%2f
 
 [!INCLUDE [azure-storage-limits-vm-disks-premium](../includes/azure-storage-limits-vm-disks-premium.md)]
 
-### <a name="cloud-services-limits"></a>Cloud Services korlátok
+### <a name="azure-cloud-services-limits"></a>Azure Cloud Services – korlátozások
 [!INCLUDE [azure-cloud-services-limits](../includes/azure-cloud-services-limits.md)]
 
 ### <a name="app-service-limits"></a>Az App Service korlátai
@@ -220,7 +220,7 @@ A következő App Service – korlátok korlátok Web Apps, Mobile Apps és API-
 [!INCLUDE [azure-batch-limits](../includes/azure-batch-limits.md)]
 
 ### <a name="biztalk-services-limits"></a>A BizTalk Services korlátok
-Az alábbi táblázat a korlátokat az Azure Biztalk Services.
+Az alábbi táblázat a korlátokat az Azure BizTalk Services.
 
 [!INCLUDE [biztalk-services-service-limits](../includes/biztalk-services-service-limits.md)]
 
@@ -233,12 +233,12 @@ Az Azure Database for MySQL-korlátok, lásd: [korlátozások az Azure Database 
 ### <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL
 Az Azure Database for PostgreSQL-korlátok, lásd: [korlátozások az Azure Database for postgresql-hez](postgresql/concepts-limits.md).
 
-### <a name="search-limits"></a>Keresés korlátok
+### <a name="azure-search-limits"></a>Az Azure Search korlátozza.
 Tarifacsomag határozza meg, a kapacitás és a keresési szolgáltatás korlátozásait. Szintek a következők:
 
-* *Ingyenes* értékelése és a kisebb fejlesztési projektek szánt más Azure-előfizetők, megosztott több-bérlős szolgáltatás.
-* *Alapszintű* dedikált számítási erőforrások biztosít a kisebb méretű, magas rendelkezésre állású lekérdezési számítási feladatok esetében legfeljebb három replikákkal rendelkező, a termelési számítási feladatokhoz.
-* *Standard (S1, S2, S3, nagy kapacitású S3)* nagyobb éles számítási feladatokra van. Többszintű létezniük a standard szintű, így választhat, hogy egy erőforrás-konfiguráció, amely a legjobban illik a számításifeladat-profil.
+* **Ingyenes** célja, hogy a többi Azure-előfizetők, megosztott több-bérlős szolgáltatást kipróbálási és a kisebb fejlesztési projekteket.
+* **Alapszintű** dedikált számítási erőforrások biztosít a kisebb méretű, magas rendelkezésre állású lekérdezési számítási feladatok esetében legfeljebb három replikákkal rendelkező, a termelési számítási feladatokhoz.
+* **Standard szintű**, amely tartalmazza az S1, S2 és S3 és nagy kapacitású S3, nagyobb méretű éles számítási feladatokra van. Többszintű létezniük a Standard szintű, így választhat, hogy egy erőforrás-konfiguráció, amely a legjobban illik a számításifeladat-profil.
 
 **Előfizetés vonatkozó korlátok**
 
@@ -253,7 +253,7 @@ További kapcsolatos részletesebb szintű, például a dokumentumok méretétő
 ### <a name="media-services-limits"></a>A Media Services-korlátok
 [!INCLUDE [azure-mediaservices-limits](../includes/azure-mediaservices-limits.md)]
 
-### <a name="cdn-limits"></a>A CDN-korlátok
+### <a name="content-delivery-network-limits"></a>A Content Delivery Network korlátozza.
 [!INCLUDE [cdn-limits](../includes/cdn-limits.md)]
 
 ### <a name="mobile-services-limits"></a>A Mobile Services korlátok
@@ -262,7 +262,7 @@ További kapcsolatos részletesebb szintű, például a dokumentumok méretétő
 ### <a name="monitor-limits"></a>A figyelő korlátok
 [!INCLUDE [monitoring-limits](../includes/monitoring-limits.md)]
 
-### <a name="notification-hub-service-limits"></a>Notification Hub szolgáltatási korlátozások
+### <a name="notification-hubs-limits"></a>Notification Hubs korlátok
 [!INCLUDE [notification-hub-limits](../includes/notification-hub-limits.md)]
 
 ### <a name="event-hubs-limits"></a>Event Hubs-korlátok
@@ -295,7 +295,7 @@ További kapcsolatos részletesebb szintű, például a dokumentumok méretétő
 ### <a name="active-directory-limits"></a>Az Active Directory-korlátok
 [!INCLUDE [AAD-service-limits](../includes/active-directory-service-limits-include.md)]
 
-### <a name="azure-event-grid-limits"></a>Az Azure Event Grid-korlátok
+### <a name="event-grid-limits"></a>Event Grid-korlátok
 [!INCLUDE [event-grid-limits](../includes/event-grid-limits.md)]
 
 ### <a name="azure-maps-limits"></a>Azure Maps-korlátozások
@@ -313,7 +313,7 @@ További kapcsolatos részletesebb szintű, például a dokumentumok méretétő
 ### <a name="backup-limits"></a>Biztonsági mentési korlátok
 [!INCLUDE [azure-backup-limits](../includes/azure-backup-limits.md)]
 
-### <a name="signalr-service-limits"></a>A SignalR szolgáltatási korlátozások
+### <a name="azure-signalr-service-limits"></a>Az Azure SignalR Service korlátai
 [!INCLUDE [signalr-service-limits](../includes/signalr-service-limits.md)]
 
 ### <a name="site-recovery-limits"></a>A Site Recovery korlátai
@@ -331,27 +331,25 @@ További kapcsolatos részletesebb szintű, például a dokumentumok méretétő
 ### <a name="key-vault-limits"></a>A Key Vault-korlátok
 [!INCLUDE [key-vault-limits](../includes/key-vault-limits.md)]
 
-### <a name="multi-factor-authentication"></a>Multi-Factor Authentication
+### <a name="multi-factor-authentication-limits"></a>A multi-factor Authentication korlátok
 [!INCLUDE [azure-mfa-service-limits](../includes/azure-mfa-service-limits.md)]
 
 ### <a name="automation-limits"></a>Automation-korlátok
 [!INCLUDE [automation-limits](../includes/azure-automation-service-limits.md)]
 
-### <a name="managed-identity-limits"></a>Felügyelt identitás korlátok
+### <a name="identity-manager-limits"></a>Korlátozza az Identity Manager
 [!INCLUDE [automation-limits](~/includes/managed-identity-limits.md)]
 
 ### <a name="role-based-access-control-limits"></a>Szerepköralapú hozzáférés-vezérlési korlátozások
 [!INCLUDE [role-based-access-control-limits](../includes/role-based-access-control-limits.md)]
 
 ### <a name="sql-database-limits"></a>Az SQL Database-korlátok
-Az SQL Database-korlátok, lásd: [SQL Database erőforrás-korlátozások az önálló adatbázisok](sql-database/sql-database-vcore-resource-limits-single-databases.md) és [SQL Database erőforrás-korlátozások rugalmas készletek és a készletezett adatbázisok](sql-database/sql-database-vcore-resource-limits-elastic-pools.md).
+Az SQL Database-korlátok, lásd: [SQL Database erőforrás-korlátozások az önálló adatbázisok](sql-database/sql-database-vcore-resource-limits-single-databases.md) és [erőforráskorlátok SQL Database rugalmas készletek és a készletezett adatbázisok](sql-database/sql-database-vcore-resource-limits-elastic-pools.md).
 
 ### <a name="sql-data-warehouse-limits"></a>Az SQL Data Warehouse-korlátok
-Az SQL Data Warehouse-korlátok, lásd: [SQL Data Warehouse Erőforráskorlátok](sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
+Az SQL Data Warehouse-korlátok, lásd: [SQL Data Warehouse erőforráskorlátok](sql-data-warehouse/sql-data-warehouse-service-capacity-limits.md).
 
 ## <a name="see-also"></a>Lásd még
-[Az Azure korlátai és nő ismertetése](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
-
-[Virtuális gép és Felhőszolgáltatás-méretek az Azure-hoz](virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
-[A Cloud Services méretei](cloud-services/cloud-services-sizes-specs.md)
+- [Megismerheti az Azure korlátai és növekszik](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
+- [Virtuális gép és felhőszolgáltatás-méretek az Azure-hoz](virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Az Azure Cloud Services méretei](cloud-services/cloud-services-sizes-specs.md)

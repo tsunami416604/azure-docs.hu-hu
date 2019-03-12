@@ -12,14 +12,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 0fe4da13e8242d858d553e0532b82cf1adca450a
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 04712b1ba1eccd71dcfcc9012ebcbdfcbdcd2404
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338759"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57773673"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Belső virtuális hálózathoz az Azure API Management szolgáltatás használatával
 Azure virtuális hálózatokkal az Azure API Management API-k nem érhető el az interneten is kezelheti. Számos VPN technológia érhetők el a kapcsolatot. Az API Management egy virtuális hálózaton belül két fő módban telepíthető:
@@ -32,7 +32,7 @@ Az API Management belső módban, akkor érhető el a következő esetekben:
 
 * Győződjön meg arról, API-kat biztonságosan elérhetik a privát adatközpontban lévő üzemeltetett kívül, harmadik felek által site-to-site- vagy Azure ExpressRoute VPN-kapcsolatok használatával.
 * Engedélyezze a hibrid felhős rendszerekben teszi elérhetővé a felhőalapú API-k és a egy közös átjárón keresztül a helyszíni API-k.
-* Egy átjáró egyetlen végpont használatával több földrajzi helyeken üzemeltetett API-k kezelése. 
+* Egy átjáró egyetlen végpont használatával több földrajzi helyeken üzemeltetett API-k kezelése.
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
@@ -47,7 +47,7 @@ Ebben a cikkben leírt lépések végrehajtásához rendelkeznie:
 + **Az Azure API Management-példány**. További információkért lásd: [Azure API Management szolgáltatáspéldány létrehozása](get-started-create-service-instance.md).
 
 ## <a name="enable-vpn"> </a>Az API Management létrehozása a belső virtuális hálózathoz
-Az API Management szolgáltatás a belső virtuális hálózathoz egy belső terheléselosztóval (ILB) mögött helyezkedik el.
+Az API Management szolgáltatás egy belső virtuális hálózatban lévő üzemeltetett mögött egy [belső terheléselosztó (klasszikus)](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud). Ez az egyetlen lehetőség érhető el, és nem módosítható.
 
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>Engedélyezze a virtuális hálózati kapcsolat az Azure portal használatával
 
@@ -103,11 +103,12 @@ Ezek az API Management szolgáltatás végpontjainak eléréséhez hozzon létre
 
    * 10.1.0.5     contosointernalvnet.scm.azure-api.net
 
-A Szolgáltatásvégpontok a virtuális gépből létrehozott elérheti. Ha egyéni DNS-kiszolgáló egy virtuális hálózatot használ, is egy DNS-rekordok létrehozása és bárhonnan elérheti ezeket a végpontokat a virtuális hálózaton. 
+A Szolgáltatásvégpontok a virtuális gépből létrehozott elérheti.
+Ha egyéni DNS-kiszolgáló egy virtuális hálózatot használ, is egy DNS-rekordok létrehozása és bárhonnan elérheti ezeket a végpontokat a virtuális hálózaton.
 
 ### <a name="access-on-custom-domain-names"></a>Hozzáférés az egyéni tartománynevek
 
-   1. Ha nem szeretne hozzáférni az API Management szolgáltatás az alapértelmezett állomásnevek, akkor állíthatja egyéni tartománynevek minden a Szolgáltatásvégpontok az alábbi képen látható módon: 
+   1. Ha nem szeretne hozzáférni az API Management szolgáltatás az alapértelmezett állomásnevek, akkor állíthatja egyéni tartománynevek minden a Szolgáltatásvégpontok az alábbi képen látható módon:
 
    ![Egyéni tartomány beállítása az API Management szolgáltatáshoz][api-management-custom-domain-name]
 
