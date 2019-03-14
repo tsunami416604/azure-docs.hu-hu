@@ -1,19 +1,19 @@
 ---
 title: Azure Kubernetes Service-fürtök létrehozása és konfigurálása az Azure-ban az Ansible használatával
 description: Megtudhatja, hogyan hozhat létre és felügyelhet Azure Kubernetes Service-fürtöket az Azure-ban az Ansible segítségével.
-ms.service: ansible
+ms.service: azure
 keywords: ansible, azure, devops, bash, cloudshell, forgatókönyv, aks, tároló, Kubernetes
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/23/2018
-ms.openlocfilehash: f4541bb9516855c4391188fb57e5ab64bc03c76e
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 1e56ebe4c1928b455fa5abb626f1a5001af42382
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55890484"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792667"
 ---
 # <a name="create-and-configure-azure-kubernetes-service-clusters-in-azure-using-ansible"></a>Azure Kubernetes Service-fürtök létrehozása és konfigurálása az Azure-ban az Ansible használatával
 Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfigurálását a környezetében. Az Ansible-lel felügyelheti az Azure Kubernetes Service-t (AKS-t). Ebből a cikkből megtudhatja, hogyan hozhat létre és konfigurálhat Azure Kubernetes Service-fürtöket az Ansible használatával.

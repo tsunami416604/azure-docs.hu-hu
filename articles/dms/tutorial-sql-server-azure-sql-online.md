@@ -2,7 +2,7 @@
 title: 'Oktatóanyag: Azure Database Migration Service segítségével online áttelepítése az SQL Server adatbázis egyetlen vagy készletezett Azure SQL Database-ben |} A Microsoft Docs'
 description: Megtanulhatja, hogyan hajtható végre egy online migrálás a helyszíni SQL Server egy önálló adatbázis vagy készletezett Azure SQL Database-adatbázishoz az Azure Database Migration Service használatával.
 services: dms
-author: pochiraju
+author: HJToland3
 ms.author: rajpo
 manager: craigg
 ms.reviewer: douglasl
@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 02/28/2019
-ms.openlocfilehash: 3581bc5d3cb1a0120e8be3df7f2a2ba262453a18
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.date: 03/12/2019
+ms.openlocfilehash: 605986a61ee6a09ccc3bfd6c58719a1d82604c8e
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990968"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792021"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-online-using-dms"></a>Oktatóanyag: SQL Server migrálása az önálló adatbázis vagy készletezett Azure SQL Database-adatbázis online állapotba a DMS használatával
 

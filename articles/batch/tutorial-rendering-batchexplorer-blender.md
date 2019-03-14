@@ -2,18 +2,19 @@
 title: Blender-jelenet renderelése az Azure Batch és a Batch Explorer használatával
 description: Oktatóanyag – Több képkocka renderelése egy Blender-jelenetből az Azure Batch és a Batch Explorer ügyfélalkalmazással
 services: batch
+ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: tutorial
-ms.openlocfilehash: 46c65cd7ac5734134fa7c4ad6fd85f39d1188e28
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
-ms.translationtype: HT
+ms.openlocfilehash: 8a512676ab0e56f51c0fb9c59f2e530cfcf73333
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392553"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791426"
 ---
-# <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>Oktatóanyag: Blender-jelenet renderelése a Batch Explorerrel
+# <a name="tutorial-render-a-blender-scene-using-batch-explorer"></a>Oktatóanyag: A Blender használata Batch Explorer jelenet renderelése
 
 Ez az oktatóanyag bemutatja, hogyan renderelheti egy Blender-bemutatójelenet több képkockáját. Az oktatóanyaghoz a Blendert használjuk, mert a használata ingyenes az ügyfél és a renderelő virtuális gépek számára, de a folyamat más alkalmazások, például a Maya vagy a 3ds Max esetén is nagyon hasonló.
 
@@ -89,7 +90,7 @@ Hozzon létre egy Batch-készletet a Blender alkalmazást tartalmazó Azure Mark
 > [!WARNING]
 > Vegye figyelembe, hogy amikor virtuális gépek vannak egy készletben, akkor azok díjával megterheljük Azure-előfizetését. Ha nem szeretne további költségekkel számolni, törölni kell a készletet vagy a virtuális gépeket. Az oktatóanyag végén törölje a készletet, nehogy továbbra is fizetnie kelljen érte.
 
-A készlet és a virtuális gépek állapota a készletek nézetében monitorozható; a következő példában az látható, hogy mind a három virtuális gép le van foglalva, kettő elindult és inaktív, és egy még indítás alatt áll: ![Készlet intenzitástérképe](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_pool_heatmap.png)
+A készlet és a virtuális gépek állapota figyelhető a "Gyűjtők" nézetben az alábbi példa bemutatja a három virtuális gép le lett foglalva, két elindítása megtörtént, és inaktív, továbbra is indítása: ![Készlet intenzitástérkép](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_pool_heatmap.png)
 
 ## <a name="create-a-rendering-job"></a>Renderelési feladat létrehozása
 
@@ -108,25 +109,25 @@ Hozzon létre egy renderelési feladatot, hogy a létrehozott készlettel render
 
 ![Feladatsablon a Blenderhez](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_job_template.png)
 
-Miután a feladat és minden tevékenység létrejött, a feladat megjelenik a feladattevékenységekkel együtt: ![A feladattevékenységek listája](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_task_list.png)
+A feladat, és minden feladat létrehozása után, a feladat feldolgozás feladatokat jelenik meg: ![Feladatok listája](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_task_list.png)
 
 Amikor egy tevékenység először indul el egy készletezett virtuális gépen, lefut egy Batch-feladatelőkészítési tevékenység, amely átmásolja a jelenetfájlokat a tárolófájlcsoportból a virtuális gépre, hogy a Blender hozzájuk férhessen.
 A renderelés állapota a Blender által készített stdout.txt naplófájlban tekinthető meg.  Válasszon ki egy tevékenységet. Alapértelmezés szerint megjelennek a tevékenységkimenetek, és az „stdout.txt” kiválasztható és megtekinthető.
 ![stdout fájl](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_stdout.png)
 
-Ha a „blender-windows” készlet van kiválasztva, akkor a készlet virtuális gépei futó állapotban láthatók: ![Készlet intenzitástérképe futó csomópontokkal](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_pool_heatmap_running.png)
+A blender-windows-készlet választásakor a készlet virtuális gépek futó állapotban lesz látható: ![A futó csomópontok a készlet intenzitástérkép](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_pool_heatmap_running.png)
 
 A renderelt képek elkészítése több percig is tarthat a kiválasztott virtuálisgép-mérettől függően.  A korábban meghatározott F16 virtuális géppel a képkockák renderelése körülbelül 16 percig tart.
 
 ## <a name="view-the-rendering-output"></a>A renderelés kimenetének megtekintése
 
-Amikor elkészült a képkockák renderelése, a tevékenységek befejezettként jelennek meg: ![Befejezett tevékenységek](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_tasks_complete.png)
+Ha keretek végzett Renderelés, ezeket a feladatokat befejezettként jelenhetnek meg: ![A feladatok elvégzése](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_tasks_complete.png)
 
-A renderelt képet a rendszer először a virtuális gépre írja, és a „wd” mappa kiválasztásával tekinthető meg: ![Renderelt kép a készlet csomópontján](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_output_image.png)
+A renderelt kép íródik a virtuális Gépet először, és a "wd" mappa kiválasztásával tekinthet meg: ![Renderelt kép a készlet csomóponton](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_output_image.png)
 
-A feladatsablon azt is meghatározza, hogy a kimeneti képkockát és a naplófájlokat a rendszer kiírja a feladat létrehozásakor meghatározott Azure Storage-fiók fájlcsoportjába.  A „Data” (Adatok) felhasználói felületen megtekintheti a kimeneti fájlokat és a naplókat, és a fájlokat le is töltheti: ![Renderelt kép a tárolófájlcsoportban](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_output_image_storage.png)
+A feladatsablon azt is meghatározza, hogy a kimeneti képkockát és a naplófájlokat a rendszer kiírja a feladat létrehozásakor meghatározott Azure Storage-fiók fájlcsoportjába.  Az "adatok" felhasználói felület segítségével megtekintheti a kimeneti fájlokat és a naplók; azt is használható a fájlok letöltésére: ![Renderelt kép tárolócsoport fájl](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_output_image_storage.png)
 
-Ha minden tevékenység befejeződött, a feladat befejezettként lesz megjelölve: ![Befejezett feladat és tevékenységek](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_job_alltasks_complete.png)
+Minden feladat befejeződött, ha a feladat befejezését feladatként lesznek megjelölve: ![Feladatok és minden feladat befejeződött](./media/tutorial-rendering-batchexplorer-blender/batch_explorer_job_alltasks_complete.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

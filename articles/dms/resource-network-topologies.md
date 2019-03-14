@@ -2,7 +2,7 @@
 title: Hálózati topológiák az Azure SQL Database felügyelt példányába áttelepítéshez az Azure Database Migration Service segítségével |} A Microsoft Docs
 description: Ismerje meg, a Database Migration Service forrás- és konfigurációkat.
 services: database-migration
-author: pochiraju
+author: HJToland3
 ms.author: rajpo
 manager: craigg
 ms.reviewer: douglasl
@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 12/19/2018
-ms.openlocfilehash: bc54b3dbcdb304b18f916e5fbd4866ff54d1bfa2
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 03/12/2019
+ms.openlocfilehash: 82c91515ac3fae65623e3750471fec46b5d4bf5b
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53713196"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57790679"
 ---
 # <a name="network-topologies-for-azure-sql-db-managed-instance-migrations-using-the-azure-database-migration-service"></a>Hálózati topológiák az Azure SQL DB felügyelt példányainak áttelepítése az Azure Database Migration Service segítségével
 Ez a cikk ismerteti a különböző hálózati topológiákat, amely az Azure Database Migration Service, a helyszíni SQL Server-kiszolgálók teljes körű migrálási felhasználói élményt nyújtson az Azure SQL Database felügyelt példányain használható.
@@ -66,13 +66,13 @@ Akkor használja ezt a hálózati topológiát, ha környezete megköveteli egy 
 
 ## <a name="inbound-security-rules"></a>Bejövő biztonsági szabály
 
-| **NÉV**   | **PORT** | **PROTOKOLL** | **FORRÁS** | **CÉL** | **A MŰVELET** |
+| **NAME**   | **PORT** | **PROTOCOL** | **FORRÁS** | **CÉL** | **A MŰVELET** |
 |------------|----------|--------------|------------|-----------------|------------|
 | DMS_subnet | Bármelyik      | Bármelyik          | A DMS-ALHÁLÓZAT | Bármelyik             | Engedélyezés      |
 
 ## <a name="outbound-security-rules"></a>Kimenő biztonsági szabályok
 
-| **NÉV**                  | **PORT**                                              | **PROTOKOLL** | **FORRÁS** | **CÉL**           | **A MŰVELET** | **A szabály oka**                                                                                                                                                                              |
+| **NAME**                  | **PORT**                                              | **PROTOCOL** | **FORRÁS** | **CÉL**           | **A MŰVELET** | **A szabály oka**                                                                                                                                                                              |
 |---------------------------|-------------------------------------------------------|--------------|------------|---------------------------|------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | felügyelet                | 443,9354                                              | TCP          | Bármelyik        | Bármelyik                       | Engedélyezés      | Felügyeleti sík kommunikáció a service bus és az Azure blob storage-bA. <br/>(Ha a Microsoft társviszony-létesítés engedélyezve van, előfordulhat, hogy nem kell Ez a szabály.)                                                             |
 | Diagnosztika               | 12000                                                 | TCP          | Bármelyik        | Bármelyik                       | Engedélyezés      | A DMS Ez a szabály hibaelhárítási célokra diagnosztikai információkat gyűjthet használ.                                                                                                                      |

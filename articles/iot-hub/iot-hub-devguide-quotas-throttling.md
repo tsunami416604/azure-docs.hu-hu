@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.openlocfilehash: 31d3c404d22c9b8ad66c2d5d1adf34c38cc4a682
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 20e92317e748ebe19661a7c35d68829229b62378
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010854"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791375"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referencia az IoT Hub kvótái és szabályozása
 
@@ -42,8 +42,8 @@ Az alábbi táblázat a kényszerített szabályozások. Értékek tekintse meg 
 | Felhőből az eszközre kap<sup>1</sup> <br/> (csak ha eszköz HTTPS PROTOKOLLT használ)| 16.67/sec/Unit (1000/perc/egység) | 16.67/sec/Unit (1000/perc/egység) | 833.33/sec/Unit (50000/perc/egység) |
 | Fájl feltöltése | 1.67 fájl fájlfeltöltési értesítés/mp/egység (100/perc/egység) | 1.67 fájl fájlfeltöltési értesítés/mp/egység (100/perc/egység) | 83.33 fájl fájlfeltöltési értesítés/mp/egység (5000/perc/egység) |
 | Közvetlen metódusok<sup>1</sup> | 160KB/sec/unit<sup>2</sup> | 480KB/sec/unit<sup>2</sup> | 24MB/mp/egység<sup>2</sup> | 
-| A páros olvasási (eszköz- és modul)<sup>1</sup> | 10/mp | Magasabb 10/mp vagy 1/mp/egység | 50/mp/egység |
-| Ikereszköz frissítések (eszköz- és modul)<sup>1</sup> | 10/mp | Magasabb 10/mp vagy 1/mp/egység | 50/mp/egység |
+| A páros olvasási (eszköz- és modul)<sup>1</sup> | 100/sec | Nagyobb 100/mp és 10/mp/egység | 500-as/mp/egység |
+| Ikereszköz frissítések (eszköz- és modul)<sup>1</sup> | 50/mp | Magasabb 50/mp vagy 5/mp/egység | 250/mp/egység |
 | Operatív feladatok<sup>1,3</sup> <br/> (létrehozás, frissítés, listázás, törlés) | 1.67/sec/Unit (100/perc/egység) | 1.67/sec/Unit (100/perc/egység) | 83.33/sec/Unit (5000/perc/egység) |
 | Eszközművelet feladatok<sup>1</sup> <br/> (iker frissítése, a közvetlen metódus meghívása) | 10/mp | Magasabb 10/mp vagy 1/mp/egység | 50/mp/egység |
 | Konfigurációk és az edge-telepítések<sup>1</sup> <br/> (létrehozás, frissítés, listázás, törlés) | 0.33/sec/Unit (20/perc/egység) | 0.33/sec/Unit (20/perc/egység) | 0.33/sec/Unit (20/perc/egység) |
@@ -52,7 +52,7 @@ Az alábbi táblázat a kényszerített szabályozások. Értékek tekintse meg 
 | Maximális eszköz stream adatátvitel<sup>4</sup> (kötet naponta összesített) | 300 MB | 300 MB | 300 MB |
 
 
-<sup>1</sup>Ez a funkció nem érhető el az IoT hub az alapszintű díjcsomagban. További információkért lásd: [kiválasztása a megfelelő IoT Hub](iot-hub-scaling.md). <br/><sup>2</sup>mérőszám méret lett 8 KB-os. <br/><sup>3</sup>akkor legfeljebb egy aktív eszköz importálási/exportálási feladat egyszerre. <br/><sup>4</sup>az IoT Hub eszköz Streamek csak az S1, S2, S3 és F1 Termékváltozat érhető el.
+<sup>1</sup>Ez a funkció nem érhető el az IoT hub az alapszintű díjcsomagban. További információkért lásd: [kiválasztása a megfelelő IoT Hub](iot-hub-scaling.md). <br/><sup>2</sup>szabályozás mérőszám mérete 4 KB-os. <br/><sup>3</sup>akkor legfeljebb egy aktív eszköz importálási/exportálási feladat egyszerre. <br/><sup>4</sup>az IoT Hub eszköz Streamek csak az S1, S2, S3 és F1 Termékváltozat érhető el.
 
 A *eszközkapcsolatok* késleltetési szabályozza a sebesség, amellyel új eszköz kapcsolatok hozhatók létre az IoT hub. A *eszközkapcsolatok* szabályozás nem szabályozza a egyidejűleg csatlakoztatott eszközök maximális számát. A *eszközkapcsolatok* sebesség szabályozása az IoT hub felhasznált egységek számától függ.
 

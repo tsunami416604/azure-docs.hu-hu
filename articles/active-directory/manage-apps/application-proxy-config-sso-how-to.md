@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 03/12/2019
 ms.author: celested
-ms.reviewer: asteen
+ms.reviewer: japere, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7df7469a6975fa5e84b43487b524ca888718d7d2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5f9c4f2c618851b596cd8f2dfa1fd45820a05049
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162322"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791681"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>Egyszeri bejelentkezés egy alkalmazásproxy-alkalmazás konfigurálása
 
@@ -43,6 +43,8 @@ Az adott típusú egyszeri bejelentkezés konfigurálása. A bejelentkezési mó
 
 -   **Fejlécalapú bejelentkezés**: Fejlécalapú bejelentkezés kialakított partnerség révén engedélyezve van, és további konfigurálást igényel. További információ a partneri kapcsolat és a részletes utasításokat a egyszeri bejelentkezést egy alkalmazáshoz, amely a fejlécek használja a hitelesítéshez, tekintse meg a [dokumentáció az Azure AD-alapú PingAccess](application-proxy-configure-single-sign-on-with-ping-access.md).
 
+-   **SAML egyszeri bejelentkezés**: SAML egyszeri bejelentkezéshez, az Azure AD akkor hitelesíti az alkalmazásnak a felhasználó Azure AD-fiók használatával. Azure ad-ben a bejelentkezési adatait az alkalmazás egy kapcsolat protokollon keresztül kommunikál. SAML-alapú egyszeri bejelentkezés, a felhasználók leképezheti a SAML-jogcímek az meghatározott szabályok alapján adott alkalmazás-szerepkörökhöz. SAML egyszeri bejelentkezés beállításával kapcsolatos további információkért lásd: [SAML egyszeri bejelentkezés alkalmazásproxyval való](application-proxy-configure-single-sign-on-on-premises-apps.md).
+
 A felsorolt lehetőségek találhatók fogja az alkalmazás a "Nagyvállalati alkalmazások", és nyissa meg a **egyszeri bejelentkezés** lapra a bal oldali menüben. Vegye figyelembe, hogy ha az alkalmazás a régi portálon lett létrehozva, nem láthatók ezek a beállítások.
 
 Ezen a lapon is megjelenik egy további bejelentkezési lehetőséget: Csatolt bejelentkezés. Ez a beállítás az alkalmazásproxy is támogatott. Azonban ez a beállítás nem adható hozzá egyszeri bejelentkezést az alkalmazást. Ugyanakkor az alkalmazás lehetséges, hogy már rendelkezik egyszeri bejelentkezés egy másik szolgáltatás, például az Active Directory összevonási szolgáltatások használatával implementált. 
@@ -50,4 +52,7 @@ Ezen a lapon is megjelenik egy további bejelentkezési lehetőséget: Csatolt b
 Ez a beállítás lehetővé teszi, hogy egy rendszergazda hozhat létre egy alkalmazást a felhasználók első föld a elérésekor az alkalmazás. Például ha egy alkalmazás, amely hitelesíti a felhasználót az Active Directory összevonási szolgáltatások 2.0 van beállítva, a rendszergazda segítségével a "csatolt bejelentkezés" lehetőséget a hozzáférési panelen, egy hivatkozás létrehozásához.
 
 ## <a name="next-steps"></a>További lépések
-[Az alkalmazásproxy egyszeri bejelentkezést az alkalmazásokba biztosít](application-proxy-configure-single-sign-on-with-kcd.md)
+- [Az egyszeri bejelentkezés alkalmazásproxyval való vaulting jelszó](application-proxy-configure-single-sign-on-password-vaulting.md)
+- [Kerberos által korlátozott delegálás az egyszeri bejelentkezést az alkalmazásproxy használatával](application-proxy-configure-single-sign-on-with-kcd.md)
+- [Fejlécalapú hitelesítéskor az egyszeri bejelentkezést az alkalmazásproxy használatával](application-proxy-configure-single-sign-on-with-ping-access.md) 
+- [SAML egyszeri bejelentkezés alkalmazásproxyval való](application-proxy-configure-single-sign-on-on-premises-apps.md).

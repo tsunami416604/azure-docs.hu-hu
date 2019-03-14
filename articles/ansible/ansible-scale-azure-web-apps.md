@@ -1,19 +1,19 @@
 ---
 title: Az Azure App Service web Apps alkalmazások méretezése Ansible-lel
 description: Megtudhatja, hogyan hozhat létre az Ansible használatával Linux rendszeren webalkalmazást Java 8-cal és Tomcat-tároló futtatókörnyezettel az App Service-ben.
-ms.service: ansible
+ms.service: azure
 keywords: az ansible, azure, a devops, a bash, a forgatókönyv, az Azure App Service, webalkalmazás, méretezhető, a Java
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/08/2018
-ms.openlocfilehash: 4ef8320d3eba841ee64557e31e63b4e79ee3aa92
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 2bafb73afa35c7670ac45f7027545277c70075ef
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159893"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792276"
 ---
 # <a name="scale-azure-app-service-web-apps-by-using-ansible"></a>Az Azure App Service web Apps alkalmazások méretezése Ansible-lel
 [Az Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/overview) (vagy röviden Web Apps) gazdagépek webes alkalmazások, a REST API-k és a mobil háttérrendszer. Kedvenc nyelvén fejleszthet, legyen az&mdash;.NET, .NET Core, Java, Ruby, Node.js, PHP vagy Python.

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: cbe8970e3e7b924025a93b50f9b8c9e46643b349
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 347ae6dbdbab866b6d82d64bec4e668689078429
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56872046"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791239"
 ---
 # <a name="azure-storage-redundancy"></a>Az Azure Storage-redundancia
 
@@ -51,7 +51,7 @@ Információkat szeretne megtudni az Azure Storage tartóssági és rendelkezés
 > A Premium Storage támogatja a csak a helyileg redundáns tárolás (LRS).
 
 ## <a name="changing-replication-strategy"></a>Replikációs stratégia módosítása
-Módosíthatja a tárfiók replikációs stratégia használatával lehetővé tesszük a [az Azure portal](https://portal.azure.com/), [Azure Powershell](storage-powershell-guide-full.md), [Azure CLI-vel](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), vagy egy a többhöz [ Azure-ügyfélkönyvtárak](https://docs.microsoft.com/azure/index?view=azure-dotnet#pivot=sdkstools). A storage-fiók replikációs típusának módosítása eredményez leállás.
+A tárfiók replikációs stratégia használatával módosíthatja a [az Azure portal](https://portal.azure.com/), [Azure PowerShell-lel](storage-powershell-guide-full.md), [Azure CLI-vel](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), vagy az egyik a [Azure-ügyfél szalagtárak](https://docs.microsoft.com/azure/index?view=azure-dotnet#pivot=sdkstools). A storage-fiók replikációs típusának módosítása eredményez leállás.
 
    > [!NOTE]
    > Jelenleg a portál vagy API nem használható a fiók konvertálása zrs-t. Ha azt szeretné, a fiók replikációs átalakítása zrs-t, tekintse meg a [zónaredundáns tárolás (ZRS)](storage-redundancy-zrs.md) részleteiről.
@@ -59,7 +59,9 @@ Módosíthatja a tárfiók replikációs stratégia használatával lehetővé t
 ### <a name="are-there-any-costs-to-changing-my-accounts-replication-strategy"></a>Vannak-e bármilyen módosítás, a fiók replikációs stratégiát költségek?
 Attól függ, az átalakítás elérési útra. LRS, ZRS, GRS és RA-GRS rendezése a legolcsóbb legköltségesebb redundancia előfizetésért rendelkezünk. Például fog *a* semmit az LRS többletköltségekkel jár, mivel egy kifinomultabb tárhelyredundancia-szint kívánja. Fog *való* GRS vagy RA-GRS számítjuk egy kimenő sávszélesség mert (az elsődleges régióban) az adatok replikálódnak a távoli másodlagos régióba. Ez a kezdeti telepítéskor egyszeri díjat. Miután az adatok másolását követően nem számítunk további átalakítás fel díjat. Csak kell díjat fizetnie replikálásához bármely új vagy meglévő adatok frissítése. További információ a sávszélesség-költségek: [Azure Storage díjszabását ismertető weblapon](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
-Ha módosítjuk GRS az LRS, nem kell további költenie, de a másodlagos helyről a replikált adatok törlődnek.
+Az LRS, GRS át a tárfiók, nem kell további költenie, de a másodlagos helyről a replikált adatok törlődnek.
+
+A storage-fiók konvertálása RA-GRS GRS vagy LRS, fiók számoljuk fel, RA-GRS túl az a dátum, amelyen lett konvertálva, további 30 napig.
 
 ## <a name="see-also"></a>Lásd még
 

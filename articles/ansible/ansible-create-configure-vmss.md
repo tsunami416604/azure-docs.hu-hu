@@ -1,19 +1,19 @@
 ---
 title: Virtuálisgép-méretezési csoportok létrehozása az Azure-ban az Ansible használatával
 description: Megtudhatja, hogyan hozhat létre és konfigurálhat virtuálisgép-méretezési csoportokat az Azure-ban az Ansible használatával
-ms.service: ansible
+ms.service: azure
 keywords: ansible, azure, devops, bash, forgatókönyv, virtuális gép, virtuálisgép-méretezési csoport, vmss
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/24/2018
-ms.openlocfilehash: 920a631ed379651751641c22e4b43f6731197377
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 1b2949aef14b3c8550cef90a18641a3df7d8cd41
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054158"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791698"
 ---
 # <a name="create-virtual-machine-scale-sets-in-azure-using-ansible"></a>Virtuálisgép-méretezési csoportok létrehozása az Azure-ban az Ansible használatával
 Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfigurálását a környezetében. Az Ansible segítségével ugyanúgy felügyelheti a virtuálisgép-méretezési csoportokat (VMSS) az Azure-ban, ahogy azt bármely más Azure-erőforrással tenné. Ebből a cikkből megtudhatja, hogyan hozhat létre és skálázhat fel horizontálisan virtuálisgép-méretezési csoportokat az Ansible használatával. 

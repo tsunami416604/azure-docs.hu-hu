@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/3/2018
 ms.author: pabouwer
-ms.openlocfilehash: f34d8c547738921374eaf5edcfcec4911423d9dc
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 25a68f55eb9a6deb037029d5d8a984ce74f12be5
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699211"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791460"
 ---
 # <a name="install-and-use-istio-in-azure-kubernetes-service-aks"></a>Telepítheti és használhatja Istio Azure Kubernetes Service (AKS)
 
@@ -82,7 +82,7 @@ Expand-Archive -Path "istio-$ISTIO_VERSION.zip" -DestinationPath .
 A `istioctl` ügyfél bináris az ügyfélgépen futtatja, és kezelheti a Istio útválasztási szabályokat és szabályzatokat. A telepítési lépéseket ismét kissé eltérőek ügyfél operációs rendszerek között. Válasszon egyet az alábbi telepítési lépéseket az Ön által preferált környezetben.
 
 > [!IMPORTANT]
-> Futtassa a hátralévő lépéseket a legfelső szintű mappát a Istio kiadás, amely a letöltött és kibontott az előző szakaszban.
+> Győződjön meg arról, hogy futtatja a lépéseket ebben a szakaszban a letöltött és kibontott Istio kiadás a legfelső szintű mappából.
 
 ### <a name="macos"></a>MacOS
 
@@ -145,6 +145,9 @@ $PATH = [environment]::GetEnvironmentVariable("PATH", "User")
 ```
 
 ## <a name="install-the-istio-kubernetes-components"></a>A Istio Kubernetes összetevőinek telepítése
+
+> [!IMPORTANT]
+> Győződjön meg arról, hogy futtatja a lépéseket ebben a szakaszban a letöltött és kibontott Istio kiadás a legfelső szintű mappából.
 
 Telepítse a Istio összetevőket az AKS-fürt, használja a Helm. A Istio erőforrásokhoz történő telepítéséhez a `istio-system` névteret, és a biztonsággal és figyeléssel a következő további beállításainak engedélyezése:
 

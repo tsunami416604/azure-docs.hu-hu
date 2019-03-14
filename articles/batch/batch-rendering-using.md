@@ -2,16 +2,17 @@
 title: Funkciók – Azure Batch Rendering
 description: Azure Batch renderelési képességeket használata
 services: batch
+ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 2f423de63b7cec24d9d9c4541ddab0ac38b1076a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 2dff44f0b5b4b02c39c4c63f23ff64d55ca9d833
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542311"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57789636"
 ---
 # <a name="using-azure-batch-rendering"></a>Az Azure Batch rendering használatával
 
@@ -57,7 +58,7 @@ A Batch Explorer "Adatok" című szakaszában lehetővé teszi, hogy a fájlok e
 
 Beépülő modulok egyes az ügyfélalkalmazások számára érhetők el.  A beépülő modulok lehetővé teszik a készletek és feladatok hozhatók létre közvetlenül az alkalmazásból, vagy hívja a Batch Explorer.
 
-* [A Blender](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
+* [Blender](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/blender)
 * [Autodesk 3ds Max](https://github.com/Azure/azure-batch-rendering/tree/master/plugins/3ds-max)
 * [Autodesk Maya](https://github.com/Azure/azure-batch-maya)
 

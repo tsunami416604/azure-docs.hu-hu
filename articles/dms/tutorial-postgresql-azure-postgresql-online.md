@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 87d4e85cec70ee8b1ac6999fb5d1888eb76988ad
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.date: 03/12/2019
+ms.openlocfilehash: 54df5069970a628962f20761441a8f9947356da9
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990340"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791664"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-database-for-postgresql-online-using-dms"></a>Oktatóanyag: PostgreSQL online migrálása az Azure Database for PostgreSQL-be DMS használatával
 Az Azure Database Migration Service használatával minimális szolgáltatáskieséssel migrálhatja egy helyszíni PostgreSQL-példány adatbázisait az [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/)-be. Ez azt jelenti, hogy a migrálás az alkalmazás minimális ideig tartó leállásával végezhető el. Ebben az oktatóanyagban a **DVD Rental** mintaadatbázist fogja migrálni a PostgreSQL 9.6 egy helyszíni példányáról az Azure Database for PostgreSQL-be az Azure Database Migration Service online migrálási tevékenységének használatával.

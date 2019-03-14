@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed8a07a5578174bec758587fbdbc0710ffae9dc1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e9212493d574762bed3f2204716bd0c81686e93e
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171757"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791283"
 ---
 # <a name="azure-active-directory-code-samples-v20-endpoint"></a>Az Azure Active Directory-Kódminták (v2.0-végpontra)
 
@@ -63,7 +63,7 @@ A következő példák bemutatják, webalkalmazások, amelyek a felhasználók. 
 
  Platform | Csak a felhasználó bejelentkezik | Képes bejelentkeztetni a felhasználókat, és a Microsoft Graph-hívások
  -------- | ------------------- | ---------------------------------
-![ASP.NET-mag](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2.1 | [aspnetcore-webapp-openidconnect-v2](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2) | Ugyanazt a mintát a [aspnetcore2-2-signInAndCallGraph](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/aspnetcore2-2-signInAndCallGraph) ág
+![ASP.NET-mag](media/sample-v2-code/logo_NETcore.png)</p>ASP.NET Core 2.1 | [Az ASP.NET Core-WebApp jelentkezik be a felhasználók oktatóanyag](https://aka.ms/aspnetcore-webapp-sign-in) | Ugyanazt a mintát a [ASP.NET Core-webalkalmazás hívja a Microsoft Graph](https://aka.ms/aspnetcore-webapp-call-msgraph) fázis
 ![ASP.NET](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [Az ASP.NET a rövid útmutató](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [dotnet-webapp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [dotnet-admin-restricted-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p>[msgraph-training-aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
 ![Node.js](media/sample-v2-code/logo_nodejs.png)  |                   | [NODE.js – rövid útmutató](https://github.com/azureadquickstarts/appmodelv2-webapp-openidconnect-nodejs)
 ![Ruby](media/sample-v2-code/logo_ruby.png) |                   | [msgraph-training-rubyrailsapp](https://github.com/microsoftgraph/msgraph-training-rubyrailsapp)

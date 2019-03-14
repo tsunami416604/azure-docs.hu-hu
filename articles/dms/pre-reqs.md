@@ -2,7 +2,7 @@
 title: Az Azure Database Migration Service használatára vonatkozó előfeltételek áttekintése |} A Microsoft Docs
 description: További információ az adatbázis-migrálási parancsait végrehajtásához az Azure Database Migration Service használatára vonatkozó előfeltételek áttekintése.
 services: database-migration
-author: pochiraju
+author: HJToland3
 ms.author: rajpo
 manager: craigg
 ms.reviewer: douglasl
@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 10/09/2018
-ms.openlocfilehash: 63a8d9f23dc9edd8303d8a2c7113a4e00d4a21aa
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 03/12/2019
+ms.openlocfilehash: a6dc9b31052e49eb0312006ea40056067e92b5ee
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715545"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57790415"
 ---
 # <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>Az Azure Database Migration Service használatára vonatkozó előfeltételek áttekintése
 Nincsenek győződjön meg arról, hogy az Azure Database Migration Service zökkenőmentesen adatbázis-migrálások végrehajtása során kell néhány előfeltételnek. Egyes Előfeltételek a alkalmazni közben egyéb előfeltételek egyediek egy adott forgatókönyv a szolgáltatás által támogatott összes forgatókönyv (forrás-cél párok) között.

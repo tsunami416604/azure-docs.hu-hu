@@ -3,17 +3,18 @@ title: Munkafolyamat elküldése több bemenet - a Microsoft Genomics használat
 titleSuffix: Azure
 description: Ez a cikk bemutatja, hogyan lehet elküldeni egy munkafolyamatot a Microsoft Genomics szolgáltatásba, ha a bemeneti fájl több FASTQ vagy BAM-fájl egyazon mintából származó. Már rendelkezik az msgen kliens telepítve van, és sikeresen futtatta a mintaadatokat a szolgáltatáson keresztül.
 services: genomics
+ms.service: genomics
 author: grhuynh
 manager: cgronlund
 ms.author: grhuynh
 ms.topic: conceptual
 ms.date: 02/05/2018
-ms.openlocfilehash: 6d7ce959c92755a1da9eca0b069ebb7a8269e0a6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 399b1ed735ce1b7a3fca1d27155863f6bfa18776
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450719"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791358"
 ---
 # <a name="submit-a-workflow-using-multiple-inputs-from-the-same-sample"></a>Munkafolyamat elküldése azonos mintából származó több bemenet használatával
 

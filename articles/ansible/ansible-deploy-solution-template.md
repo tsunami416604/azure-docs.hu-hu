@@ -1,19 +1,19 @@
 ---
 title: Az Azure-ban, CentOS, az Ansible megoldássablon telepítése
 description: Ismerje meg, hogyan eszközök konfigurálva az Azure-ral együtt az Azure-ban üzemeltetett CentOS virtuális gépeken az Ansible megoldássablon telepítése.
-ms.service: ansible
+ms.service: azure
 keywords: az ansible, azure, devops, megoldássablon, virtuális gép felügyelt identitások azure-erőforrások, a centos, a red hat
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 01/28/2019
-ms.openlocfilehash: 9fa711c86e3ef7f05e87504905ec642808d8f601
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 6dfc1c0f9dcf29d9cf24df19fbd043c71852aeac
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770282"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57790959"
 ---
 # <a name="deploy-the-ansible-solution-template-for-azure-to-centos"></a>Az Azure-ban, CentOS, az Ansible megoldássablon telepítése
 Az Ansible megoldássablon az Azure-hoz készült Ansible és a egy csomag az eszközök konfigurálva az Azure-ral együtt CentOS virtuális gépeken az Ansible-példány konfigurálása. Az eszközök a következőket foglalják magukban:

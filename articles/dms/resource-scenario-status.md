@@ -2,7 +2,7 @@
 title: Adatbázis-áttelepítési forgatókönyv állapot |} A Microsoft Docs
 description: További információ az Azure Database Migration Service által támogatott áttelepítési forgatókönyvek állapotát.
 services: database-migration
-author: pochiraju
+author: HJToland3
 ms.author: rajpo
 manager: craigg
 ms.reviewer: douglasl
@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 02/11/2019
-ms.openlocfilehash: 39a7f7ce6660016f00e36c5f6619eba2fa461023
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 03/12/2019
+ms.openlocfilehash: fea50b896c769587b21b8a4e2ce8c585d7aee8c4
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993163"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791562"
 ---
 # <a name="status-of-migration-scenarios-supported-by-the-azure-database-migration-service"></a>Az Azure Database Migration Service által támogatott áttelepítési forgatókönyvek állapota
 Az Azure Database Migration Service úgy tervezték, hogy különböző áttelepítési forgatókönyveinek (forrás – cél párok) kapcsolat nélküli módban is támogatja (egyszeri) és az online (folyamatos szinkronizálása) áttelepítéseket. Az Azure Database Migration Service által biztosított forgatókönyv lefedettséget idővel történő kiterjesztése. Új forgatókönyvek rendszeresen jelennek meg. Ez a cikk azonosítja az jelenleg támogatja az Azure Database Migration Service és az állapot-áttelepítési forgatókönyvek (privát [vagy korlátozott] Preview-ban, nyilvános előzetes és általánosan elérhető) vagy az egyes forgatókönyvek.

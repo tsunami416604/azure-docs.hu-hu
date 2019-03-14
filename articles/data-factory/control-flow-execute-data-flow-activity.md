@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: makromer
-ms.openlocfilehash: 4e661f838cc0b8e52ff72e4e44a43d611fa3355f
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 856f4bd9c2b04ff10ed598c5e641955e1de99398
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57727382"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792412"
 ---
 # <a name="execute-data-flow-activity-in-azure-data-factory"></a>Data flow tevékenység végrehajtása az Azure Data Factoryban
 A végrehajtási adatok folyamat tevékenység használatával futtassa az ADF adatfolyama folyamatfuttatások hibakeresési (védőfal), és az aktivált folyamatfuttatások.
@@ -54,6 +54,12 @@ A végrehajtási adatok folyamat tevékenység használatával futtassa az ADF a
 ### <a name="run-on"></a>Futtatás a következőn:
 
 Válassza ki a számítási környezetet Ez az adatfolyam végrehajtásához. Az alapértelmezett érték az Azure automatikus feloldása alapértelmezett integrációs modul. Ez a választás végrehajtja az adatok az adatfolyam a Spark-környezetben az adat-előállító ugyanabban a régióban. A számítási típus lesz, ami azt jelenti, hogy a számítási környezet több percet vesz igénybe az indítási feladat fürt.
+
+### <a name="debugging-pipelines-with-data-flows"></a>Hibakeresési adatfolyam-gyűjteményre folyamatok
+
+![Hibakeresési gomb](media/data-flow/debugbutton.png "hibakeresési gomb")
+
+A Data Flow Debug használatával az adatfolyamok egy folyamat hibakeresési futtassa interaktív módon tesztelése egy fűtéssel fürtöt használják. Használja a Pipleine hibakeresési lehetőséget található egy folyamatot az adatok folyamatok tesztelése.
 
 ### <a name="compute-type"></a>Számítási típus
 

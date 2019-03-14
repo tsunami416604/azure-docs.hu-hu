@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/07/2018
+ms.date: 03/12/2019
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f29b55b03d28728ad038f0071a7ba8a75a7acd2c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4d03efe2f8f8c3cad9ab37ea100b050a6e13aafc
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199442"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792123"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Oktatóanyag: A távoli hozzáféréshez alkalmazásproxyn keresztül a helyszíni alkalmazás hozzáadása az Azure Active Directoryban
 
@@ -40,17 +40,18 @@ Ahhoz, hogy hozzáadhasson egy alkalmazást a bérlőhöz, a következőkre van 
 * Alkalmazás rendszergazdai fiókkal.
 
 ### <a name="windows-server"></a>Windows server
+
 A Windows server, a Windows Server 2012 R2 rendszerű kell Application proxyt használ, vagy később. Az alkalmazásproxy-összekötő a kiszolgálón telepít. Az összekötő kiszolgáló csatlakoznia kell az Azure-ban az alkalmazásproxy-szolgáltatásokat, és a helyszíni alkalmazások közzétételének megtervezése.
 
 Magas rendelkezésre álláshoz az éles környezetben javasoljuk, hogy egynél több Windows server. Ebben az oktatóanyagban egy Windows server is használhatók.
 
-**Az összekötő kiszolgáló javaslatok**
+#### <a name="recommendations-for-the-connector-server"></a>Az összekötő kiszolgáló javaslatok
 
 1. Fizikailag keresse meg az összekötő kiszolgáló közel az alkalmazáskiszolgálók között az összekötő és az alkalmazás teljesítményének optimalizálásához. További információkért lásd: [hálózati topológiai szempontok a](application-proxy-network-topology.md).
 
 2. Az összekötő és a webes alkalmazások kiszolgáló az Active Directory-tartományhoz kell tartoznia. A kiszolgálók ugyanabban a tartományban, akkor az integrált Windows-hitelesítés (IWA) és a Kerberos által korlátozott delegálás (KCD) egyszeri bejelentkezéses (SSO) használatára vonatkozó követelmény. Ha az összekötő kiszolgáló és a webalkalmazás-kiszolgálón is eltérő Active Directory-tartományok, delegálási erőforrás-alapú egyszeri bejelentkezést használni szeretne. További információkért lásd: [KCD az egyszeri bejelentkezés alkalmazásproxyval való](application-proxy-configure-single-sign-on-with-kcd.md).
 
-**Szoftverkövetelmények**
+#### <a name="software-requirements"></a>Szoftverkövetelmények
 
 A TLS 1.2 engedélyezve van az alkalmazásproxy-összekötő telepítése előtt rendelkeznie kell a Windows összekötő kiszolgáló. 1.5.612.0 régebbi verziót a meglévő összekötők továbbra is a korábbi verziói a TLS további értesítésig működni fog. 
 
@@ -67,8 +68,8 @@ A TLS 1.2 engedélyezése:
 
 2. Indítsa újra a kiszolgálót
 
-  
 ## <a name="prepare-your-on-premises-environment"></a>A helyszíni környezet előkészítése
+
 A környezet előkészítése az Azure AD-alkalmazásproxy, először az Azure-beli adatközpontok kommunikáció engedélyezésére. Ha az elérési út van egy tűzfal, ellenőrizze meg nyitva, hogy az összekötő HTTPS (TCP-) kéréseket az alkalmazásproxynak.
 
 ### <a name="open-ports"></a>Portok megnyitása
@@ -97,6 +98,7 @@ A következő URL-hozzáférés engedélyezése:
 Ha a tűzfal vagy proxy lehetővé teszi a DNS-engedélyezési, engedélyezett kapcsolatokat is \*. msappproxy.net és \*. servicebus.windows.net. Ha nem, engedélyeznie kell a hozzáférést a [Azure DataCenter IP-címtartományok](https://www.microsoft.com/download/details.aspx?id=41653). Az IP-címtartományok minden héten frissülnek.
 
 ## <a name="install-and-register-a-connector"></a>Telepítés és a egy összekötő regisztrálása
+
 Az alkalmazásproxy használatához telepíteni szeretné egy összekötőt úgy dönt, hogy az alkalmazásproxy-szolgáltatás használata Windows-kiszolgálókon. Az összekötő olyan ügynök, amely felügyeli a kimenő kapcsolatot a helyszíni alkalmazás kiszolgálókról-proxyra történő az Azure ad-ben. Egy összekötő telepíthető is rendelkező más hitelesítési ügynökkel, például az Azure AD Connect-kiszolgálók.
 
 Az összekötő telepítéséhez:
@@ -122,12 +124,12 @@ Ha a szervezete proxykiszolgálóval csatlakozik az internethez, kell őket az A
 
 Ha a Qlik Sense alkalmazás használja, telepítheti a legújabb-összekötőt. Qlik Sense használja a websockets protokoll, amely csak a 1.5.612.0 összekötő verzió vagy újabb.
 
-
 ## <a name="verify-the-connector-installed-and-registered-correctly"></a>Ellenőrizze az összekötő telepítve van és megfelelően regisztrálva
 
 Az Azure portal vagy a Windows server használatával győződjön meg arról, hogy egy új összekötő megfelelően telepítve.
 
 ### <a name="verify---azure-portal"></a>Győződjön meg arról – Azure portal
+
 Az összekötő telepítve és regisztrálva megfelelően ellenőrzése:
 
 1. Jelentkezzen be a bérlő címtárát a a [az Azure portal](https://portal.azure.com).
@@ -139,6 +141,7 @@ Az összekötő telepítve és regisztrálva megfelelően ellenőrzése:
 További összekötő telepítésével kapcsolatos útmutatásért lásd: [egy alkalmazásproxy-összekötő telepítése során felmerülő](application-proxy-connector-installation-problem.md).
 
 ### <a name="verify---windows-server"></a>-Windows-kiszolgáló ellenőrzése
+
 Az összekötő telepítve és regisztrálva megfelelően ellenőrzése:
 
 1. A Windows-szolgáltatások kezelője kattintva megnyithatja a **Windows** kulcsot, és írja be *services.msc*.
@@ -165,7 +168,7 @@ Most, hogy a környezet előkészítése és egy összekötőt, készen áll a h
 
 4. Az a **saját helyszíni alkalmazás hozzáadása** panelen adja meg a következő információkat az alkalmazásról:
 
-    ![Az alkalmazás konfigurálása](./media/application-proxy-publish-azure-portal/configure-app.png)
+    ![A helyszíni alkalmazások konfigurálása](./media/application-proxy-add-on-premises-application/add-on-premises-app-with-application-proxy-updated.png)
 
     | Mező | Leírás |
     | :---- | :---------- |
@@ -186,8 +189,6 @@ Most, hogy a környezet előkészítése és egy összekötőt, készen áll a h
     | **A fejlécek URL-címek lefordítása** | Tartsa ezt az értéket **Igen** , kivéve, ha az alkalmazás által igényelt az eredeti állomásfejlécet a hitelesítési kérelmet. |
     | **A kérelem törzsében URL-címek lefordítása** | Tartsa ezt az értéket **nem** , ha rendelkezik szoftveresen kötött HTML-hivatkozások más helyszíni alkalmazásokhoz, és ne használja az egyéni tartományok. További információkért lásd: [hivatkozásra a proxyval fordítási](application-proxy-configure-hard-coded-link-translation.md).<br><br>Ez az érték **Igen** Ha azt tervezi, hogy az alkalmazás a Microsoft Cloud App Security (MCAS) figyelésére. További információkért lásd: [valós idejű hozzáférés az alkalmazásfigyelés konfigurálása a Microsoft Cloud App Security és az Azure Active Directory](application-proxy-integrate-with-microsoft-cloud-application-security.md) |
    
-
-
 6. Válassza a **Hozzáadás** lehetőséget.
 
 ## <a name="test-the-application"></a>Az alkalmazás tesztelése
@@ -195,6 +196,7 @@ Most, hogy a környezet előkészítése és egy összekötőt, készen áll a h
 Készen áll a teszt megfelelően kell hozzáadnia az alkalmazást. A következő lépésekben fog egy felhasználói fiókot hozzáadni az alkalmazáshoz, és próbáljon meg bejelentkezni.
 
 ### <a name="add-a-user-for-testing"></a>Felhasználó hozzáadása teszteléshez
+
 Mielőtt egy felhasználó hozzáadása az alkalmazáshoz, győződjön meg arról, a felhasználói fiók már rendelkezik engedélyekkel a vállalati hálózaton belülről történő alkalmazás eléréséhez.
 
 Tesztfelhasználó hozzáadása:
@@ -223,6 +225,7 @@ Bejelentkezés az alkalmazás teszteléséhez:
 Című témakörben [problémák elhárítása az Application Proxy és hibaüzenetek](application-proxy-troubleshoot.md).
 
 ## <a name="next-steps"></a>További lépések
+
 Ebben az oktatóanyagban előkészített a helyszíni környezetet a proxyval, és ezután telepítve és regisztrálva az Application Proxy connector. Következő lépésként hozzáadott egy alkalmazást az Azure AD-bérlővel. Ellenőrizte, hogy a felhasználók bejelentkezhetnek az alkalmazás egy Azure AD-fiók használatával.
 
 A következőket hajtotta végre:
@@ -237,8 +240,3 @@ Készen áll az alkalmazás egyszeri bejelentkezés konfigurálása. Egyszeri be
 
 > [!div class="nextstepaction"]
 >[Egyszeri bejelentkezés konfigurálása](what-is-single-sign-on.md#choosing-a-single-sign-on-method)
-
-
-
-
-

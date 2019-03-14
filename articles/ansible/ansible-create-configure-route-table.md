@@ -1,19 +1,19 @@
 ---
 title: Létrehozása, módosítása vagy törlése az Azure útválasztási táblázatot az Ansible-lel
 description: Ismerje meg, hogyan Ansible használatával létrehozása, módosítása vagy törlése egy útválasztási táblázatot az Ansible-lel
-ms.service: ansible
+ms.service: azure
 keywords: az ansible, azure, devops, bash, forgatókönyv, hálózatkezelés, útvonal, útválasztási táblázat
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/17/2018
-ms.openlocfilehash: 29672a75408e42fb9239e5d826784b46e7280805
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 025a8182d32a7d0d00a48795c848d356eb1c3d4e
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332268"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792446"
 ---
 # <a name="create-change-or-delete-an-azure-route-table-using-ansible"></a>Létrehozása, módosítása vagy törlése az Azure útválasztási táblázatot az Ansible-lel
 Az Azure automatikusan irányítja az Azure az alhálózatok, virtuális hálózatok közötti adatforgalom és a helyszíni hálózatokkal. Az Azure alapértelmezett útválasztását módosítani szeretné, ha mégis így hozzon létre egy [útvonaltábla](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview).

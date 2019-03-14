@@ -2,20 +2,20 @@
 title: Az Azure-adatbázis áttelepítésének szolgáltatás áttekintése |} A Microsoft Docs
 description: Az Azure Database Migration Service, amely zökkenőmentes migrálást a számos adatbázis-forrásokhoz, az Azure-adatplatformokra biztosít áttekintése.
 services: database-migration
-author: pochiraju
+author: HJToland3
 ms.author: rajpo
 manager: craigg
 ms.reviewer: douglasl
 ms.service: dms
 ms.workload: data-services
 ms.topic: article
-ms.date: 12/19/2018
-ms.openlocfilehash: 68fb6497141d79dc721af7dfa5a8f69102c7e239
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 03/12/2019
+ms.openlocfilehash: 65825cac0b47fd2afb605c4b585d6536cef70a31
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722200"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57789284"
 ---
 # <a name="what-is-the-azure-database-migration-service"></a>Mi az az Azure Database Migration Service?
 Az Azure Database Migration Service egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a zökkenőmentes migrálást a több adatbázis-forrásokhoz, az Azure data platformokra minimális állásidővel (online áttelepítések).

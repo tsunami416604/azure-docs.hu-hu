@@ -1,16 +1,16 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f7225fece81672e539858567039e1ff086d97c2c
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: ca77662e7756d74f8f939e78af626b7f2da2a3c4
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54197725"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792718"
 documentType: LandingData
 title: Ansible az Azure-ban – dokumentáció
 metadata:
   title: Ansible az Azure-ban – dokumentáció – oktatóanyagok, minták, referenciák és forrásanyagok
   description: Megismerheti, hogyan lehet automatizálni az Ansible segítségével a felhőalapú üzembe helyezést, a konfigurációkezelést és az alkalmazások üzembe helyezését.
-  ms.service: ansible
+  ms.service: azure
   keywords: ansible, azure, devops, oktatóanyagok, minták, referencia
   author: tomarchermsft
   manager: jeconnoc

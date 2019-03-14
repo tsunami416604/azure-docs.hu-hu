@@ -63,33 +63,41 @@ items:
       href: how-to-search-for-address.md
     - name: Egyéni adatok megjelenítése statikus térképen
       href: how-to-render-custom-data.md
-  - name: JavaScript-térképek létrehozása
+  - name: Fejlesztés a webes SDK-val
     items:
-    - name: A térkép vezérlőelem használata
-      href: how-to-use-map-control.md
-    - name: Térkép létrehozása
-      href: map-create.md
-    - name: Térképstílus kiválasztása
-      href: choose-map-style.md
-    - name: Térképvezérlők hozzáadása
-      href: map-add-controls.md
-    - name: Szimbólumréteg hozzáadása
-      href: map-add-pin.md
-    - name: Előugró ablak hozzáadása
-      href: map-add-popup.md
-    - name: Buborékréteg hozzáadása
-      href: map-add-bubble-layer.md
-    - name: Alakzat hozzáadása
-      href: map-add-shape.md
-    - name: Hőtérképréteg hozzáadása
-      href: map-add-heat-map-layer.md
-    - name: Rendszerképréteg hozzáadása
-      href: map-add-image-layer.md
-    - name: Mozaikréteg hozzáadása
-      href: map-add-tile-layer.md
-    - name: HTML-jelölők hozzáadása
-      href: map-add-custom-html.md
-    - name: Szolgáltatások
+    - name: Térképvezérlő
+      items:
+      - name: A térkép vezérlőelem használata
+        href: how-to-use-map-control.md
+      - name: Térkép létrehozása
+        href: map-create.md
+      - name: Térképstílus kiválasztása
+        href: choose-map-style.md
+      - name: Vezérlőelemek hozzáadása a térképhez
+        href: map-add-controls.md
+      - name: Szimbólumréteg hozzáadása
+        href: map-add-pin.md
+      - name: Előugró ablak hozzáadása
+        href: map-add-popup.md
+      - name: Buborékréteg hozzáadása
+        href: map-add-bubble-layer.md
+      - name: Alakzatok hozzáadása
+        href: map-add-shape.md
+      - name: Hőtérképréteg hozzáadása
+        href: map-add-heat-map-layer.md
+      - name: Kép átfedése
+        href: map-add-image-layer.md
+      - name: Csemperétegek hozzáadása
+        href: map-add-tile-layer.md
+      - name: HTML-jelölők
+        href: map-add-custom-html.md
+      - name: Forgalom megjelenítése
+        href: map-show-traffic.md
+      - name: Vezérlés egérrel
+        href: map-events.md
+      - name: Alkalmazás elérhetővé tétele
+        href: map-accessibility.md
+    - name: Szolgáltatások modul
       items:
       - name: Keresési eredmények megjelenítése
         href: map-search-location.md
@@ -97,13 +105,7 @@ items:
         href: map-get-information-from-coordinate.md
       - name: Útvonal megjelenítése A-ból B-be
         href: map-route.md
-    - name: Forgalom megjelenítése
-      href: map-show-traffic.md
-    - name: Vezérlés egérrel
-      href: map-events.md
-    - name: Elérhető térképes alkalmazások
-      href: map-accessibility.md
-  - name: Android-térképek létrehozása
+  - name: Fejlesztés az Android SDK-val
     items:
     - name: Android-térképvezérlőelemek használata
       href: how-to-use-android-map-control-library.md
@@ -150,7 +152,7 @@ items:
 - name: További források
   items:
   - name: Az Azure Maps használati feltételei
-    href: http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31.
+    href: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31.
   - name: Díjszabás
     href: https://azure.microsoft.com/pricing/details/azure-maps
   - name: Díjkalkulátor
@@ -197,9 +199,9 @@ items:
       href: /azure/iot-edge
     - name: IoT eszközoldali SDK-k
       href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
-ms.openlocfilehash: b0584c77ed7d8b3ed6c6962d02b75e061a97bf14
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 2d974c96dd953c7a2727bcd5b1bcc3b60ad807a0
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57336733"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569229"

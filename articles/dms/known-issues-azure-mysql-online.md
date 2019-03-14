@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 03/05/2019
-ms.openlocfilehash: be6c31840abcf2503293c381aad2848afebe3d9b
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.date: 03/12/2019
+ms.openlocfilehash: 75549302ca5d942a8a56cd9f72bc34297078a1e1
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337124"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57790815"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-mysql"></a>Ismert problémák és a migrálás korlátozások az online migrálást az Azure-adatbázis MySQL-hez
 

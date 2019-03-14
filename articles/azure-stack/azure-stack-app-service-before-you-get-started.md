@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 03/11/2019
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 02/22/2019
-ms.openlocfilehash: 01b0a86ede79187d8f180df0f2f71f6eaadb7428
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.lastreviewed: 03/11/2019
+ms.openlocfilehash: e39904378edd9583cd7802d0a75f2f365a35d2b6
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990521"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791953"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Mielőtt elkezdené, az Azure Stack App Service-szel
 
@@ -147,11 +147,11 @@ Identitás tanúsítványa egy témát, amely megfelel a következő formátumba
 | --- | --- |
 | sso.appservice.\<region\>.\<DomainName\>.\<extension\> | sso.appservice.redmond.azurestack.external |
 
-
 ### <a name="validate-certificates"></a>Tanúsítványok ellenőrzése
-Az app service erőforrás-szolgáltató üzembe helyezése előtt kell [használandó tanúsítványok ellenőrzése](azure-stack-validate-pki-certs.md#perform-platform-as-a-service-certificate-validation) elérhető az Azure Stack készültségi ellenőrző eszköz használatával a [PowerShell-galériából](https://aka.ms/AzsReadinessChecker). Az Azure Stack készültségi ellenőrző eszköz ellenőrzi, hogy a generált PKI-tanúsítványokat app services üzembe helyezési alkalmasak. 
 
-Ajánlott eljárásként, azokkal a szükséges munka során [Azure Stack PKI-tanúsítványokat](azure-stack-pki-certs.md), meg kell terveznie, hogy elegendő idő teszteléséhez, és adja ki újból tanúsítványok, ha szükséges. 
+Az app service erőforrás-szolgáltató üzembe helyezése előtt kell [használandó tanúsítványok ellenőrzése](azure-stack-validate-pki-certs.md#perform-platform-as-a-service-certificate-validation) elérhető az Azure Stack készültségi ellenőrző eszköz használatával a [PowerShell-galériából](https://aka.ms/AzsReadinessChecker). Az Azure Stack készültségi ellenőrző eszköz ellenőrzi, hogy a generált PKI-tanúsítványokat app services üzembe helyezési alkalmasak.
+
+Ajánlott eljárásként, azokkal a szükséges munka során [Azure Stack PKI-tanúsítványokat](azure-stack-pki-certs.md), meg kell terveznie, hogy elegendő idő teszteléséhez, és adja ki újból tanúsítványok, ha szükséges.
 
 ## <a name="virtual-network"></a>Virtuális hálózat
 
@@ -170,6 +170,15 @@ Alhálózatok
 - PublishersSubnet /24
 - WorkersSubnet /21
 
+## <a name="licensing-concerns-for-required-file-server-and-sql-server"></a>Szükséges fájlkiszolgáló és az SQL Server licencelési megjegyzése
+
+Az Azure App Service az Azure Stacken fájlkiszolgáló és a működéséhez az SQL Server szükséges.  Ön ingyenes kívül az Azure Stack üzemelő példány már meglévő erőforrásait, vagy az Azure Stack alapértelmezett szolgáltató előfizetésen belüli erőforrások üzembe helyezése.
+
+Üzembe helyezése az Azure Stack alapértelmezett szolgáltató előfizetésen belüli erőforrások választja, ha ezeket az erőforrásokat (Windows Server-licencek és az SQL Server-licencekkel) licencét szerepelnek-e az Azure App Service az Azure Stacken költsége korlátozások:
+
+- az infrastruktúra van üzembe helyezve a **szolgáltatói előfizetés alapértelmezett**;
+- az infrastruktúra kizárólag az Azure App Service az Azure Stack erőforrás-szolgáltatót használják.  Más számítási feladatok, rendszergazdai (egyéb erőforrás-szolgáltatók, például az SQL-RP) vagy bérlői (például bérlői alkalmazások, amelyek egy adatbázis szükséges), nem engedélyezettek, győződjön meg arról, hogy az infrastruktúra használata.
+
 ## <a name="prepare-the-file-server"></a>A fájlkiszolgáló előkészítése
 
 Az Azure App Service egy fájlkiszolgálóhoz van szükség. Éles környezetekben üzemelő példányok a fájlkiszolgáló kell konfigurálni kell a magas rendelkezésre állású és hibák kezelésére képes.
@@ -180,7 +189,7 @@ Csak az Azure Stack Development Kit központi telepítése esetén használhatja
 
 ### <a name="quickstart-template-for-highly-available-file-server-and-sql-server"></a>Magas rendelkezésre állású fájl kiszolgáló és az SQL Server gyorsindítási sablon
 
-A [referencia architektúra gyorsindítási sablon](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/appservice-fileserver-sqlserver-ha) már elérhető, amely telepíti a fájlkiszolgáló, az SQL Server, az Active Directory támogatása a virtuális hálózati infrastruktúra úgy konfigurálva, hogy egy magas rendelkezésre állású telepítésének támogatása Az Azure App Service az Azure Stackben.  
+A [referencia architektúra gyorsindítási sablon](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/appservice-fileserver-sqlserver-ha) már elérhető, amely telepíti a fájlkiszolgáló, az SQL Server, az Active Directory támogatása a virtuális hálózati infrastruktúra úgy konfigurálva, hogy egy magas rendelkezésre állású telepítésének támogatása Az Azure App Service az Azure Stackben.
 
 ### <a name="steps-to-deploy-a-custom-file-server"></a>Egy egyéni fájlkiszolgáló telepítése
 
@@ -303,12 +312,11 @@ Az SQL Server-szerepkörök bármelyikéhez egy alapértelmezett vagy megnevezet
 Az App Service-telepítő ellenőrzi az SQL Server adatbázis tartalmazási engedélyezve legyen. Ahhoz, hogy az SQL Server, az App Service-adatbázisokat üzemeltető adatbázis tartalmazás, a következő SQL-parancsok futtatása:
 
 ```sql
-sp_configure 'contained database authentication', 1;  
-GO  
-RECONFIGURE;  
+sp_configure 'contained database authentication', 1;
+GO
+RECONFIGURE;
 GO
 ```
-
 
 >[!IMPORTANT]
 > Ha úgy dönt, hogy egy meglévő virtuális hálózatot az App Service üzembe helyezése az SQL Server, az App Service-ben és a fájlkiszolgáló egy külön alhálózatot kell telepíteni.

@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/30/2019
+ms.date: 03/12/2019
 ms.author: markvi
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7687cb4eb6cacd604a05a820e04f71755e0b66b1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5e2e8a3c923f18d0e3d481539bb7278bc8fd7aaf
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201414"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792327"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Az Azure Active Directory feltételes hozzáférés beállításainak ismertetése
 
@@ -51,25 +51,43 @@ Feltételes hozzáférési szabályzatok, szabályozhatja, hogy a felhasználók
 
 Feltételes hozzáférési szabályzatot rendelhet a következő felhőalapú alkalmazások a Microsoft:
 
-- Az Azure Information Protection - [további](/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
 
-- Azure RemoteApp
-
-- Az Azure SQL Database - [további](https://docs.microsoft.com/azure/sql-database/sql-database-conditional-access)
-
-- Microsoft Dynamics 365
-
-- Microsoft Office 365 Yammer
-
-- A Microsoft Office 365 Exchange online-hoz
-
-- A Microsoft Office 365 SharePoint Online (onedrive vállalati verzió tartalmazza az üzleti és a Project Online-ban)
-
-- Microsoft Power BI 
-
+- Azure Analysis Services
 - Azure DevOps
+- Az Azure SQL Database és az adatraktár - [további](https://docs.microsoft.com/azure/sql-database/sql-database-conditional-access)
+- Dynamics CRM Online
+- Microsoft Application Insights-elemzési
+- A Microsoft Azure Information Protection - [további](https://docs.microsoft.com/azure/information-protection/faqs#i-see-azure-information-protection-is-listed-as-an-available-cloud-app-for-conditional-accesshow-does-this-work)
+- A Microsoft Azure Management - [további](https://docs.microsoft.com/azure/role-based-access-control/conditional-access-azure-management)
+- A Microsoft Azure RemoteApp
+- A Microsoft Azure-előfizetések kezelése
+- Microsoft Cloud App Security
+- A Microsoft kereskedelmi eszközök, Access Control portál
+- A Microsoft kereskedelmi eszközök hitelesítési szolgáltatás
+- Microsoft Flow
+- Microsoft Forms
+- Microsoft Intune
+- A Microsoft Intune-regisztráció
+- A Microsoft Planner
+- Microsoft Power BI
+- Microsoft PowerApps
+- A Microsoft Bing keresés
+- Microsoft StaffHub
+- Microsoft Stream
+- Microsoft Teams 
+- Az Office 365 Exchange online-hoz
+- Az Office 365 SharePoint Online
+- Office 365 Yammer
+- Office Delve
+- Office Sway 
+- Outlook-csoportok
+- Project Online
+- Skype Vállalati online verzió
+- Virtuális magánhálózat (VPN)
+- Visual Studio App Center
+- Windows Defender ATP
 
-- Microsoft Teams
+
 
 
 ### <a name="other-applications"></a>Más alkalmazások 

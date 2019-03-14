@@ -1,26 +1,26 @@
 ---
-title: Az Azure IoT Hub-műveletek figyelése |} A Microsoft Docs
+title: Az Azure IoT Hub-műveletek (elavult) figyelése |} A Microsoft Docs
 description: Hogyan használható az Azure IoT Hub-műveletek állapotát és működését az IoT hub valós idejű figyelésére.
 author: nberdy
 manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 10/10/2017
+ms.date: 03/11/2019
 ms.author: nberdy
-ms.openlocfilehash: 3aa452cd178bd0d064726c5be7dbdf65c6ef8d92
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: d839e2e9922ac68af3aea37884e8b2f72b80b0e7
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160048"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791579"
 ---
-# <a name="iot-hub-operations-monitoring"></a>IoT Hub-műveletek monitorozása
+# <a name="iot-hub-operations-monitoring-deprecated"></a>IoT Hub-műveletek figyelése (elavult)
 
 Az IoT Hub-műveletek figyelése lehetővé teszi az IoT hub valós idejű műveleti állapotának figyelése. Az IoT Hub események nyomon követi a műveletek számos kategóriájában. Mekkorák egy vagy több kategóriához eseményeket küldeni egy végpontot az IoT hub feldolgozás céljából. Adatok minták alapján összetettebb feldolgozási beállítása, illetve figyelheti az adatait a hibákat.
 
 >[!NOTE]
->IoT Hub-műveletek monitorozása elavult, és a 2019. március 10 törlődik az IoT hubról. Az operatív és az IoT Hub állapotának figyelése, lásd: [Azure IoT Hub állapotának Monitorozásához és a problémák gyorsan diagnosztizálása][lnk-monitor]. Az elavulással kapcsolatos ütemterv kapcsolatos további információkért lásd: [monitorozása az Azure IoT-megoldások az Azure monitorral és az Azure Resource Health][lnk-blog-announcement].
+>Az IoT Hub **műveletek figyelése elavult, és el lett távolítva a 2019. március 10 IoT-központból**. Az operatív és az IoT Hub állapotának figyelése, lásd: [Azure IoT Hub állapotának Monitorozásához és a problémák gyorsan diagnosztizálása][lnk-monitor]. Az elavulással kapcsolatos ütemterv kapcsolatos további információkért lásd: [monitorozása az Azure IoT-megoldások az Azure monitorral és az Azure Resource Health][lnk-blog-announcement].
 
 Az IoT Hub hat azokat a eseményeket figyeli:
 
@@ -196,7 +196,7 @@ A felügyeleti végponthoz csatlakozik, szüksége van egy kapcsolati karakterl�
 
 1. Válassza ki **műveletek figyelése**, és jegyezze fel a **Event Hub-kompatibilis nevet** és **Event Hub-kompatibilis végponthoz** értékek:
 
-    ![Event Hub-kompatibilis végpont értékek][img-endpoints]
+    ![Event Hub-compatible endpoint values][img-endpoints]
 
 1. Válasszon **megosztott elérési házirendek**, majd válassza a **szolgáltatás**. Jegyezze fel a **elsődleges kulcs** érték:
 

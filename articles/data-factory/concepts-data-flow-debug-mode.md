@@ -7,25 +7,25 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 82559c89094649b377dc2a898798ce6aad5fbcc7
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: d3cabbcc04766d4a209ecf96db3f842902b465a5
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570487"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792395"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Data Flow hibakeresési módban leképezése
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-A hibakeresési mód, amely a hibakeresési gomb a felső részén a tervezőfelületére bekapcsolható az Azure Data Factory leképezési adatfolyam rendelkezik. Amikor adatfolyam-gyűjteményre, a hibakeresési mód beállítása a kialakítása lehetővé teszi, hogy interaktív módon figyelje meg, hogy az adatok formázása átalakító hozhat létre és az adatfolyam-gyűjteményre hibakeresésekor.
+A hibakeresési mód, amely a tervezőfelületére tetején lévő adatok Flow hibakeresése gombbal bekapcsolható az Azure Data Factory leképezési adatfolyam rendelkezik. Amikor adatfolyam-gyűjteményre, a hibakeresési mód beállítása a kialakítása lehetővé teszi, hogy interaktív módon figyelje meg, hogy az adatok formázása átalakító hozhat létre és az adatfolyam-gyűjteményre hibakeresésekor. A hibakeresési munkamenet is használható, mind az adatfolyam-munkamenetekben tervezési, valamint folyamat hibakeresési adatfolyamok végrehajtása során.
 
-<img src="media/data-flow/debugbutton.png" width="400">
+![Hibakeresési gomb](media/data-flow/debugbutton.png "hibakeresési gomb")
 
 ## <a name="overview"></a>Áttekintés
-Ha a hibakeresési módban, és egy futó interaktív Azure Databricks-fürt az adatfolyam interaktív módon fog létrehozni. A munkamenet bezárul kikapcsolása után hibakeresése az Azure Data Factoryban. A óránkénti díjat az időszakban, a hibakeresési munkamenet engedélyezve van az Azure Databricks felmerült tisztában kell lennie.
+Ha a hibakeresési módban, a Spark-fürt aktív adatfolyamait, interaktív módon fog létrehozni. A munkamenet bezárul kikapcsolása után hibakeresése az Azure Data Factoryban. A óránkénti díjat az időszakban, a hibakeresési munkamenet engedélyezve van az Azure Databricks felmerült tisztában kell lennie.
 
-A legtöbb esetben tanácsos készítése, az adatok elkezdenek beérkezni hibakeresési módban, hogy az üzleti logika érvényesítéséhez, és a adatátalakítások megtekintése az Azure Data Factoryban a munkahelyi közzététele előtt.
+A legtöbb esetben tanácsos készítése, az adatok elkezdenek beérkezni hibakeresési módban, hogy az üzleti logika érvényesítéséhez, és a adatátalakítások megtekintése az Azure Data Factoryban a munkahelyi közzététele előtt. Az adatok folyamat alapjait az a folyamat teszteléséhez folyamat panelen is használjon a "Debug" gombra.
 
 ## <a name="debug-mode-on"></a>Hibakeresési mód a
 Amikor a hibakeresési módot, egy oldalpanel űrlapot, amely kérni fogja, hogy az interaktív Azure Databricks-fürt mutasson, és jelölje be a forrás mintavételi kéri. Az Azure Databricks egy interaktív fürtöt használ, és a forrás átalakítások válasszon mintavételi méret az egyes, vagy válasszon ki egy szövegfájlt a Tesztadatok használandó.
@@ -54,3 +54,9 @@ A hibakereséssel az adatok előzetes lapon fog világos felfelé az alsó panel
 Az adatok előzetes lapon kiválasztja egyes oszlopai fog előugró ablak a jobb szélső az adatrácsban az egyes mezők részletes statisztikáit, a diagram. Az Azure Data Factory fogja elérhetővé tenni a meghatározásához, hogy milyen típusú diagram az adat-mintavételezés alapján megjelenítéséhez. Magas – számosságú mezők alapértelmezett NULL / NOT NULL diagramok, amíg a kategorikus és numerikus adatok, amelyek alacsony Számosság adatok érték gyakoriságának megjelenítő sávdiagramok jeleníti meg. Látni fogja emellett maximális / karakterlánc-mezők len hossza minimális / maximális numerikus mezők, szabványos fejlesztési, percentilisei, számát és átlagos értékek. 
 
 <img src="media/data-flow/chart.png" width="400">
+
+## <a name="next-steps"></a>További lépések
+
+Ha már létrehozása befejeződött, és az adatfolyam-hibakeresés [hajtsa végre egy folyamat.](control-flow-execute-data-flow-activity.md)
+
+Ha teszteli a folyamatot egy data flow-val, a folyamat használata [hibakeresési Futtatás végrehajtási beállítását.](iterative-development-debugging.md)

@@ -2,7 +2,7 @@
 title: 'Oktatóanyag: Segítségével az Azure Database Migration Service áttelepítheti a MongoDB az Azure Cosmos DB API a mongodb-hez online |} A Microsoft Docs'
 description: Ismerje meg, ha át helyszíni mongodb-hez az Azure Cosmos DB API a mongodb-hez online az Azure Database Migration Service használatával.
 services: dms
-author: pochiraju
+author: HJToland3
 ms.author: rajpo
 manager: craigg
 ms.reviewer: douglasl
@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 02/28/2019
-ms.openlocfilehash: 85455020099ee738425fde9c03df152669f73863
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.date: 03/12/2019
+ms.openlocfilehash: 8bcd51a771b9f0389bb44f916e3ef900cc6aad71
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992498"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792191"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-online-using-dms-preview"></a>Oktatóanyag: Azure Cosmos DB API a mongodb-hez MongoDB át online a DMS (előzetes verzió) használatával
 Az Azure Database Migration Service segítségével online (minimális állásidővel) áttelepítése egy adatbázis egy helyi vagy felhőbeli Azure Cosmos DB API a MongoDB-példány a mongodb-hez.

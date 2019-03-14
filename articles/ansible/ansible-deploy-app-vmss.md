@@ -1,19 +1,19 @@
 ---
 title: Alkalmazások üzembe helyezése virtuálisgép-méretezési csoportokban az Azure-ban az Ansible használatával
 description: Megtudhatja, hogyan konfigurálhat virtuálisgép-méretezési csoportokat, és hogyan helyezhet üzembe alkalmazásokat a virtuálisgép-méretezési csoportokon az Azure-ban az Ansible használatával
-ms.service: ansible
+ms.service: azure
 keywords: ansible, azure, devops, bash, forgatókönyv, virtuális gép, virtuálisgép-méretezési csoport, vmss
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/11/2018
-ms.openlocfilehash: 540634d68f28aadeed308bc6cc84f459b79385e2
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 2214dd9505dff86ac26f01967a360140dee0069f
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729287"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791732"
 ---
 # <a name="deploy-applications-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Alkalmazások üzembe helyezése virtuálisgép-méretezési csoportokban az Azure-ban az Ansible használatával
 Az Ansible-lel automatizálhatja az erőforrások üzembe helyezését és konfigurálását a környezetében. Az Ansible használatával üzembe helyezheti alkalmazásait az Azure-ban. Ez a cikk bemutatja, hogyan helyezhet gyorsan üzembe Java-alkalmazást egy Azure-beli virtuálisgép-méretezési csoportban (VMSS).

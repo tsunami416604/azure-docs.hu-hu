@@ -1,19 +1,19 @@
 ---
 title: Az Azure web Apps alkalmazások létrehozása az Ansible segítségével
 description: Megtudhatja, hogyan hozhat létre az Ansible használatával Linux rendszeren webalkalmazást Java 8-cal és Tomcat-tároló futtatókörnyezettel az App Service-ben.
-ms.service: ansible
+ms.service: azure
 keywords: ansible, azure, devops, bash, forgatókönyv, Azure App Service, webalkalmazás, Java
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/08/2018
-ms.openlocfilehash: 106fe11355d629e57f71b12d1125d188b98c2236
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 5f67a9f7d629eec9ab1462a25940355869c1cd28
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051345"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791222"
 ---
 # <a name="create-azure-app-service-web-apps-by-using-ansible"></a>Az Azure App Service web Apps alkalmazások létrehozása az Ansible segítségével
 [Az Azure App Service Web Apps](https://docs.microsoft.com/azure/app-service/overview) (vagy röviden Web Apps) gazdagépek webes alkalmazások, a REST API-k és a mobilalkalmazások háttérkomponensei. Kedvenc nyelvén fejleszthet, legyen az&mdash;.NET, .NET Core, Java, Ruby, Node.js, PHP vagy Python.

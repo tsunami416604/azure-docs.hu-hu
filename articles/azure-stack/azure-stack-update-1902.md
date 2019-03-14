@@ -16,12 +16,12 @@ ms.date: 03/07/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 03/07/2019
-ms.openlocfilehash: 9bad9b6fb285c27264c8c0567aebd4d4f2850582
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 66dfdf3a88a4bacdc118fed00d79f02b22da7869
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731348"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792463"
 ---
 # <a name="azure-stack-1902-update"></a>Azure Stack 1902 frissítése
 
@@ -73,9 +73,34 @@ Az Azure Stack-gyorsjavítások csak alkalmazhatók az Azure Stackkel integrált
 
 <!-- ## Fixed issues -->
 
-## <a name="changes"></a>Módosítások
+## <a name="improvements"></a>Fejlesztései
 
 - A 1902 build vezet be az Azure Stack rendszergazdai portál csomagok, ajánlatok, kvóták és kiegészítő csomagok létrehozására szolgáló új felhasználói felületet. További információk, többek között a képernyőképek: [csomagok, ajánlatok és kvóták létrehozása](azure-stack-create-plan.md).
+
+<!--
+1426197 3852583: Increase Global VM script mutex wait time to accommodate enclosed operation timeout    PNU
+1399240 3322580: [PNU] Optimize the DSC resource execution on the Host  PNU
+1398846 Bug 3751038: ECEClient.psm1 should provide cmdlet to resume action plan instance    PNU
+1398818 3685138, 3734779: ECE exception logging, VirtualMachine ConfigurePending should take node name from execution context   PNU
+1381018 [1902] 3610787 - Infra VM creation should fail if the ClusterGroup already exists   PNU
+-->
+- Csomag integritás és a biztonsági, valamint offline támogatunk könnyebb kezelhetőség javítása érdekében a Microsoft megváltozott a csomag formátuma .exe és .bin fájlt egy .zip-fájlt. Az új formátum hozzáadja a kicsomagolása folyamat, amely időnként okozhat a frissítés előkészítése stagnálni további megbízhatóságát. A csomag formátuma is vonatkozik, az OEM-csomagok frissítése.
+- Test-AzureStack futtatásakor az Azure Stack-kezelői élmény javításához operátorok most már egyszerűen használhatják, "Test-AzureStack-csoport UpdateReadiness" figyelésekor tíz további paraméterek átadása egy Belefoglalás utasítás után.
+
+  ```powershell
+    Test-AzureStack -Group UpdateReadiness  
+  ```  
+  
+- A teljes megbízhatóságot és alapvető infrastruktúra-szolgáltatások rendelkezésre állásának javítása a frissítési folyamat során, a natív frissítés erőforrás-szolgáltató, a frissítési művelet terv részeként érzékeli, és igény szerint az automatikus globális szervizelések meghívása. Globális szervizelési "javítás" a munkafolyamatok a következők:
+    - A virtuális gépeket, amelyek nem optimális állapotban van, és próbálja meg őket igény szerint ellenőrzése 
+    - Ellenőrizze az SQL-szolgáltatással kapcsolatos problémák, a vezérlő terv részeként, és próbálja meg őket igény szerint
+    - A szoftveres terheléselosztó (SLB) szolgáltatás állapotának ellenőrzése során, a hálózati vezérlő (NC), és próbálja meg őket igény szerint
+    - Ellenőrizze a hálózati vezérlő (NC) szolgáltatás állapotát, és próbálja meg helyreállítani igény szerint
+    - Ellenőrizze a válságkezelési helyreállítási konzol szolgáltatás (ERCS) service fabric csomópontok állapotát, és javítsa ki őket igény szerint
+    - Ellenőrizze a XRP service fabric-csomópont állapotát, és javítsa ki őket igény szerint
+    - Ellenőrizze az Azure-konzisztens tároló (ACS) service fabric csomópontok állapotát, és javítsa ki őket igény szerint
+
+
 
 ## <a name="common-vulnerabilities-and-exposures"></a>Gyakori biztonsági rések és besorolási
 

@@ -124,8 +124,6 @@ items:
     href: monitor.md
   - name: Biztonsági másolat és helyreállítás
     href: backup-recovery.md
-  - name: Nagy teljesítményű feldolgozás
-    href: high-performance-computing.md
   - name: Telepítési szempontok
     items:
     - name: Infrastruktúrával kapcsolatos irányelvek
@@ -398,7 +396,7 @@ items:
       - name: MS SQL Linux rendszeren
         href: /sql/linux/sql-server-linux-azure-virtual-machine
     - name: Nagy teljesítményű számítástechnika (HPC)
-      href: https://docs.microsoft.com/powershell/high-performance-computing/overview
+      href: https://docs.microsoft.com/azure/architecture/topics/high-performance-computing/
     - name: IBM Db2 pureScale
       items:
       - name: Architektúra
@@ -407,49 +405,52 @@ items:
         href: deploy-ibm-db2-purescale-azure.md
   - name: Tárhely kezelése
     items:
-    - name: Lemezek – Gyakori kérdések
-      href: faq-for-disks.md
     - name: Lemez hozzáadása
       items:
       - name: Azure CLI
         href: add-disk.md
       - name: Azure Portal
         href: attach-disk-portal.md
-    - name: Lemez teljesítménytesztelése
-      href: disks-benchmarks.md
     - name: Lemez leválasztása
       href: detach-disk.md
+    - name: Lemezek üzembe helyezése sablonnal
+      href: using-managed-disks-template-deployments.md
     - name: Lemez átméretezése
       href: expand-disks.md
     - name: Lemez pillanatképének elkészítése
       href: snapshot-copy-managed-disk.md
     - name: Nem felügyelt lemezek biztonsági mentése
       href: incremental-snapshots.md
-    - name: Konvertálás felügyelt lemezekké
-      href: convert-unmanaged-to-managed-disks.md
-    - name: Lemez konvertálása a standard és a prémium szint között
-      href: convert-disk-storage.md
+    - name: Migrálás és átalakítás
+      items:
+      - name: Migrálás prémium szintű tárolóba az Azure Site Recoveryvel
+        href: migrate-to-premium-storage-using-azure-site-recovery.md
+      - name: Konvertálás felügyelt lemezekké
+        href: convert-unmanaged-to-managed-disks.md
+      - name: Lemez konvertálása a standard és a prémium szint között
+        href: convert-disk-storage.md
     - name: Fájlok másolása virtuális gépre
       href: copy-files-to-linux-vm-using-scp.md
-    - name: Migrálás prémium szintű tárolóba az Azure Site Recoveryvel
-      href: migrate-to-premium-storage-using-azure-site-recovery.md
-    - name: Nem csatlakozó lemezek megkeresése
-      href: find-unattached-disks.md
-    - name: Fájltároló használata
-      href: mount-azure-file-storage-on-linux-using-smb.md
-    - name: Lemezek üzembe helyezése sablonnal
-      href: using-managed-disks-template-deployments.md
-    - name: Az írásgyorsító használata
-      href: how-to-enable-write-accelerator.md
-    - name: Ultra szintű SSD-k engedélyezése
-      href: disks-enable-ultra-ssd.md
-    - name: Teljesítmény optimalizálása
-      href: optimization.md
+    - name: Teljesítmény
       items:
+      - name: Az írásgyorsító használata
+        href: how-to-enable-write-accelerator.md
+      - name: Ultra szintű SSD-k engedélyezése
+        href: disks-enable-ultra-ssd.md
+      - name: Lemez teljesítménytesztelése
+        href: disks-benchmarks.md
+      - name: Teljesítmény optimalizálása
+        href: optimization.md
       - name: Szoftveres RAID konfigurálása
         href: configure-raid.md
       - name: LVM konfigurálása
         href: configure-lvm.md
+    - name: Nem csatlakozó lemezek megkeresése
+      href: find-unattached-disks.md
+    - name: Fájltároló használata
+      href: mount-azure-file-storage-on-linux-using-smb.md
+    - name: Lemezek – Gyakori kérdések
+      href: faq-for-disks.md
   - name: Hálózatkezelés felügyelete
     items:
     - name: Virtuális hálózat létrehozása
@@ -559,9 +560,9 @@ items:
     href: faq.md
 - name: Hibaelhárítás
   href: ../troubleshooting/index.md
-ms.openlocfilehash: 776adc5310db7c4a7762409a53c57e896cc95360
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ade43488288949aa22942c8df2d6900e4522615a
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57438289"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57732027"

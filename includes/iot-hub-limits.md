@@ -4,12 +4,12 @@ ms.author: robin.shahan
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: ea4931bee17b57260660cc5ba80807a8ae25ca3d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 20553db8c79c960aabda5aba708d315517462126
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553606"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57805173"
 ---
 Az alábbi táblázat a különböző szolgáltatásszinten, S1, S2, S3 és F1 korlátait. A költségek információ az egyes *egység* tekintse meg az egyes szintek [Azure IoT Hub díjszabás](https://azure.microsoft.com/pricing/details/iot-hub/).
 
@@ -70,8 +70,8 @@ Az IoT Hub szabályozza a kéréseket, amikor az alábbi kvóták átlépése.
 | Fogadások a felhőből az eszközökön |833.33/sec/Unit (50 000/perc/egység) (S3 esetén), 16.67/sec/unit (1000/perc/egység) (az S1 és S2 esetén). |
 | Fájlfeltöltési műveletek |83.33 fájlfeltöltési értesítés/mp/egység (5000/perc/egység) (S3 esetén), 1.67 fájl feltöltése értesítések/mp/egység (100/perc/egység) (az S1 és S2 esetén). <br/> 10 000 SAS URI lehet az Azure Storage-fiók egy időben.<br/> Eszközönként egyszerre 10 SAS URI lehet használatban. |
 | Közvetlen metódusok | 24 MB/mp/egység (S3 esetén), 480 KB/s/egység (s2 esetén), 160 KB/s/egység (S1 esetén).<br/> 8 KB-os sávszélesség-szabályozási mérőszám mérete alapján. |
-| Ikereszköz-olvasások | 50/mp/egység (S3 esetén), legfeljebb 10/mp vagy 1/mp/egység (s2 esetén), 10/mp (S1 esetén). |
-| Ikereszköz-frissítések | 50/mp/egység (S3 esetén), legfeljebb 10/mp vagy 1/mp/egység (s2 esetén), 10/mp (S1 esetén). |
+| Ikereszköz-olvasások | 500-as/mp/egység (S3 esetén), legfeljebb 100/mp és 10/mp/egység (s2 esetén), 100/mp (S1 esetén) |
+| Ikereszköz-frissítések | 250/mp/egység (S3 esetén), legfeljebb 50/mp vagy 5/mp/egység (s2 esetén), 50/mp (S1 esetén) |
 | Feladatműveletek <br/> (létrehozása, lista, frissítése és törlése) | 83.33/sec/Unit (5000/perc/egység) (S3 esetén), 1.67/sec/unit (100/perc/egység) (az S2 esetén), 1.67/sec/unit (100/perc/egység) (az S1 esetén). |
 | Feladatok eszközönkénti műveleti teljesítménye | 50/mp/egység (S3 esetén), legfeljebb 10/mp vagy 1/mp/egység (s2 esetén), 10/mp (S1 esetén). |
 | Eszköz stream kezdeményezés sebessége | 5 új adatfolyamok/mp (S1, S2, S3, és csak az F1). |

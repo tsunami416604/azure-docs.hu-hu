@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/21/2019
+ms.date: 03/12/2019
 ms.author: celested
-ms.reviewer: arvindh
+ms.reviewer: arvindh, japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 186bc220778ed669672bfbc689dad6471195f4ce
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 84f1b7c9461d2eba5e13be8b15b2cbcc62715c23
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448560"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792038"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Egyszeri bejelentkezés az Azure Active Directory-alkalmazások
 Egyszeri bejelentkezés (SSO) ad hozzá biztonsági és kényelmet, amikor a felhasználók bejelentkezés az Azure Active Directoryban (Azure AD-) alkalmazások. Ez a cikk az egyszeri bejelentkezési módszereket írja le, és segítséget nyújt az alkalmazások konfigurálásakor, válassza ki a legmegfelelőbb egyszeri bejelentkezési módszert.
@@ -35,14 +35,14 @@ Többféleképpen is lehet az alkalmazás egyszeri bejelentkezés konfigurálás
 
 Ez a folyamatábra segít eldönteni, ajánlott az adott helyzetben melyik egyszeri bejelentkezésének módját. 
 
-![Egyszeri bejelentkezés módszer kiválasztása](./media/what-is-single-sign-on/choose-single-sign-on-method.png)
+![Egyszeri bejelentkezés módszer kiválasztása](./media/what-is-single-sign-on/choose-single-sign-on-method-updated.png)
 
 Az alábbi táblázat foglalja össze az egyszeri bejelentkezési módszereket, és hivatkozásokat tartalmaz további részleteket. 
 
 | Egyszeri bejelentkezési módszer | Alkalmazástípusok | A következő esetekben használja |
 | :------ | :------- | :----- |
 | [OpenID Connect és az OAuth révén](#openid-connect-and-oauth) | Csak a felhőben | OpenID Connect és az OAuth használata egy új alkalmazások fejlesztése során. Ez a protokoll egyszerűbbé teszi az alkalmazás konfigurációja, egyszerűen használható SDK-kkal rendelkezik, és lehetővé teszi, hogy az alkalmazás használhatja az MS Graph.
-| [SAML](#saml-sso) | Csak a felhőben | Válassza ki a SAML, amikor csak lehetséges, a meglévő alkalmazásokat, amelyek nem használnak az OpenID Connect vagy az OAuth szolgáltatástól. Az SAML az alkalmazásokat, amelyek hitelesítést végezni a SAML-protokoll esetében működik.|
+| [SAML](#saml-sso) | felhőbeli és helyszíni | Válassza ki a SAML, amikor csak lehetséges, a meglévő alkalmazásokat, amelyek nem használnak az OpenID Connect vagy az OAuth szolgáltatástól. Az SAML az alkalmazásokat, amelyek hitelesítést végezni a SAML-protokoll esetében működik.|
 | [Jelszóalapú](#password-based-sso) | felhőbeli és helyszíni | Válassza a jelszóalapú, amikor az alkalmazás hitelesíti a felhasználónevet és jelszót. Jelszavas egyszeri bejelentkezés lehetővé teszi a biztonságos tárolását és ismétlését egy webböngésző-bővítmény vagy mobilalkalmazás segítségével. Ezt a módszert használja a meglévő bejelentkezési folyamat az alkalmazás által biztosított, de lehetővé teszi, hogy egy rendszergazda kezelje a jelszavakat. |
 | [A csatolt](#linked-sso) | felhőbeli és helyszíni | Válassza ki társított egyszeri bejelentkezést, amikor az alkalmazás úgy van konfigurálva, az egyszeri bejelentkezés egy másik identitás szolgáltató szolgáltatásban. Ez a beállítás nem adja hozzá egyszeri bejelentkezés az alkalmazáshoz. Az alkalmazás azonban már előfordulhat, hogy rendelkezik az egyszeri bejelentkezés egy másik szolgáltatás, például az Active Directory összevonási szolgáltatások használatával implementált.|
 | [Letiltva](#disabled-sso) | felhőbeli és helyszíni | Válassza a letiltott egyszeri bejelentkezés, ha az alkalmazás nem áll készen az egyszeri bejelentkezéshez konfigurálandó. Adja meg a felhasználónevüket és jelszavukat minden alkalommal, amikor az alkalmazás indításakor kell felhasználók.|

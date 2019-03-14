@@ -124,8 +124,6 @@ items:
     href: monitor.md
   - name: Biztonsági másolat és helyreállítás
     href: backup-recovery.md
-  - name: Nagy teljesítményű feldolgozás
-    href: high-performance-computing.md
   - name: Példa infrastruktúrára
     href: infrastructure-example.md
 - name: Útmutatók
@@ -313,43 +311,46 @@ items:
         href: excel-cluster-hpcpack.md
   - name: Tárhely kezelése
     items:
-    - name: Lemezek – Gyakori kérdések
-      href: faq-for-disks.md
     - name: Lemez hozzáadása
       items:
       - name: Azure PowerShell
         href: attach-disk-ps.md
       - name: Azure Portal
         href: attach-managed-disk-portal.md
-    - name: Lemez teljesítménytesztelése
-      href: disks-benchmarks.md
     - name: Lemez leválasztása
       href: detach-disk.md
+    - name: Lemezek üzembe helyezése sablonnal
+      href: using-managed-disks-template-deployments.md
     - name: Lemez átméretezése
       href: expand-os-disk.md
     - name: Lemez pillanatképének elkészítése
       href: snapshot-copy-managed-disk.md
     - name: Nem felügyelt lemezek biztonsági mentése
       href: incremental-snapshots.md
-    - name: Lemez konvertálása a standard és a prémium szint között
-      href: convert-disk-storage.md
-    - name: Migrálás prémium szintű tárolóba az Azure Site Recoveryvel
-      href: migrate-to-premium-storage-using-azure-site-recovery.md
+    - name: Migrálás és átalakítás
+      items:
+      - name: Lemez konvertálása a standard és a prémium szint között
+        href: convert-disk-storage.md
+      - name: Migrálás prémium szintű tárolóba az Azure Site Recoveryvel
+        href: migrate-to-premium-storage-using-azure-site-recovery.md
+      - name: Migrálás felügyelt lemezekre
+        href: migrate-to-managed-disks.md
+      - name: Felügyeletlen virtuális gépek felügyelt lemezekre
+        href: convert-unmanaged-to-managed-disks.md
+    - name: Teljesítmény
+      items:
+      - name: Írásgyorsító engedélyezése
+        href: how-to-enable-write-accelerator.md
+      - name: Ultra szintű SSD-k engedélyezése
+        href: disks-enable-ultra-ssd.md
+      - name: Lemez teljesítménytesztelése
+        href: disks-benchmarks.md
     - name: Nem csatlakozó lemezek megkeresése
       href: find-unattached-disks.md
     - name: Fájltároló használata
-      href: mount-azure-file-storage.md
-    - name: Lemezek üzembe helyezése sablonnal
-      href: using-managed-disks-template-deployments.md
-    - name: Írásgyorsító engedélyezése
-      href: how-to-enable-write-accelerator.md
-    - name: Ultra szintű SSD-k engedélyezése
-      href: disks-enable-ultra-ssd.md
-    - name: Migrálás felügyelt lemezekre
-      href: migrate-to-managed-disks.md
-      items:
-      - name: Felügyeletlen virtuális gépek felügyelt lemezekre
-        href: convert-unmanaged-to-managed-disks.md
+      href: ../../storage/files/storage-files-quick-create-use-windows.md
+    - name: Lemezek – Gyakori kérdések
+      href: faq-for-disks.md
   - name: Hálózatkezelés felügyelete
     href: ps-common-network-ref.md
     items:
@@ -461,9 +462,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
   - name: GYIK
     href: faq.md
-ms.openlocfilehash: 3ddf84852fee0dc30aa9bc7e9d49f06493f6b0cc
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 78a321bbf5bbf3c970d7b6caef3409d55d33c808
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448441"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57732513"

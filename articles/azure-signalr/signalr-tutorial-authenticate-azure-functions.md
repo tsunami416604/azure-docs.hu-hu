@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: 3d3188afa54232e51efefa9bcf2fe8cd065a99cb
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 52bdbd1f7fb02c33e9cd6eef862d5be299bf1dad
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570963"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792344"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Oktatóanyag: Az Azure SignalR Service – hitelesítés az Azure Functions használatával
 
@@ -113,7 +113,7 @@ Az Azure Functions futtatókörnyezetének helyi futtatása és hibakeresése so
         },
         "Host": {
             "LocalHttpPort": 7071,
-            "CORS": "http://localhost:5500",
+            "CORS": "http://127.0.0.1:5500",
             "CORSCredentials": true
         }
     }
@@ -122,6 +122,9 @@ Az Azure Functions futtatókörnyezetének helyi futtatása és hibakeresése so
     * Adja meg az Azure SignalR Service kapcsolati sztringjét az `AzureSignalRConnectionString` beállítás értékeként. Ezt az értéket az Azure Portalon, az Azure SignalR Service erőforrás **Kulcsok** lapján találja meg. Az elsődleges és a másodlagos kapcsolati sztringek közül bármelyiket használhatja.
     * A `WEBSITE_NODE_DEFAULT_VERSION` beállítást a rendszer a helyi futtatás során nem használja. Akkor van rá szükség, amikor az Azure-ban végez üzembe helyezést.
     * A `Host` szakasz a helyi Functions-gazdagép port- és CORS-beállításait konfigurálja (Azure-beli futtatáskor nincs hatása).
+
+        > [!NOTE]
+        > Élő kiszolgáló jellemzően van konfigurálva a tartalom továbbítása http://127.0.0.1:5500. Ha látja, hogy egy másik URL-címet használ, vagy használja egy másik HTTP-kiszolgálót, módosítsa a `CORS` beállítást, hogy a megfelelő forrás.
 
     ![SignalR Service-kulcs megkeresése](media/signalr-tutorial-authenticate-azure-functions/signalr-get-key.png)
 

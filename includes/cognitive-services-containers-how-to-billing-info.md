@@ -3,14 +3,16 @@ author: diberry
 ms.author: diberry
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 002/08/2019
-ms.openlocfilehash: 12c86ca71b7421678b68684cccca86411d604d61
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.date: 03/06/2019
+ms.openlocfilehash: b20ee2df1f468323c3298854371c97950c017e49
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56741176"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57788858"
 ---
+A tároló a lekérdezések számlázzuk használt Azure-erőforrás tarifacsomagja a `<ApiKey>`.
+
 Cognitive Services-tárolók nem teszi lehetővé az Azure-méréshez való csatlakozás nélkül. Az ügyfeleknek kell ahhoz, hogy a tárolókkal való kommunikációhoz mindig a mérési szolgáltatással számlázási adatokat. Cognitive Services-tárolók nem (például a lemezkép vagy az elemezni kívánt szöveget) a vásárlói adatokat küldeni a Microsoftnak. A tároló használati jelentések kapcsolatos 10 – 15 percenként.
 
 A `docker run` számlázási argumentumai:

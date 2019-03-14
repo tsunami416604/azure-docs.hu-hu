@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/27/2019
+ms.date: 02/07/2019
 ms.author: magoedte
-ms.openlocfilehash: d09ce810605055b5be53219f254beb6660addbee
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 07e3552b58b702cb94c879dd34397010c07522db
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445704"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791936"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>Naplóadatok és az Azure monitorban munkaterületek kezelése
 Az Azure Monitor-tárolók adatok jelentkezzen be a Log Analytics-munkaterület, amely lényegében, ha egy tároló, amely adatot és konfigurációs információt tartalmazza. Az adatok hozzáférésének kezelése, munkaterületekhez kapcsolódó különféle adminisztratív feladatokat végezhet. Ön vagy a szervezet más tagjai több munkaterületet is használhatnak az informatikai infrastruktúra egészéből vagy egyes részeiből begyűjtött különböző adatkészletek kezeléséhez.
@@ -85,6 +85,7 @@ Az adatokat, amely a felhasználó hozzáféréssel rendelkezik az alábbi tábl
 | [Hozzáférési mód](#access-modes) | Módszer, amellyel a felhasználók fér hozzá a munkaterülethez.  A rendelkezésre álló adatok köre és a hozzáférési mód alkalmazott határoz meg. |
 | [Hozzáférés-vezérlési mód](#access-control-mode) | A beállítás a munkaterülethez, amely meghatározza, hogy engedélyeket a munkaterületet, vagy az erőforrás szintre vonatkoznak. |
 | [Engedélyek](#manage-accounts-and-users) | Alkalmazza a személy vagy a munkaterület vagy az erőforrás a felhasználói csoportok engedélyeit. Határozza meg, milyen adatokat a felhasználó hozzáférést kap. |
+| [Táblázatok szintjén RBAC](#table-level-rbac) | Hozzáférési mód vagy a hozzáférés-vezérlési mód függetlenül minden felhasználóra vonatkozik, nem kötelező részletes engedélyeket. Egy felhasználó hozzáférhessen adattípusokat határozza meg. |
 
 
 
@@ -93,7 +94,7 @@ A _hozzáférési mód_ vonatkozik, hogy egy felhasználó hozzáfér a Log Anal
 
 **Workspace-centric**: Ebben a módban a felhasználók megtekinthetik az összes napló, amely engedélyekkel rendelkeznek a munkaterületen. Ebben a módban lekérdezések hatóköre a munkaterület összes táblájában lévő összes adatot. Ez a hozzáférési mód használatos, ha a naplók érhetők el a munkaterület hatókörként, például amikor kiválasztja a **naplók** származó a **Azure Monitor** menü az Azure Portalon.
 
-**Resource-centric**: Amikor hozzáfér a munkaterület egy adott erőforráshoz, például ha **naplók** menüből egy erőforrást az Azure Portalon tekintheti meg az csak az adott erőforráshoz. Ebben a módban lekérdezések hatóköre csak az adott erőforráshoz kapcsolódó adatokat. Ebben a módban a részletes szerepköralapú hozzáférés-vezérlés (RBAC) emellett lehetővé teszi. 
+**Resource-centric**: Amikor hozzáfér a munkaterület egy adott erőforráshoz, például ha **naplók** az Azure Portalon egy erőforrás menüben megtekintheti az adott erőforráshoz csak naplók hozzáféréssel rendelkező összes tábla. Ebben a módban lekérdezések hatóköre csak az adott erőforráshoz kapcsolódó adatokat. Ebben a módban a részletes szerepköralapú hozzáférés-vezérlés (RBAC) emellett lehetővé teszi. 
 
 > [!NOTE]
 > Naplók érhetők el erőforrás-központú lekérdezések csak, mintha azok a megfelelő erőforrás megfelelően társítva. A következő erőforrások jelenleg korlátozásokkal rendelkezik: 
@@ -113,16 +114,16 @@ A következő táblázat összefoglalja a hozzáférési mód:
 |:---|:---|:---|
 | Kinek szól a mindegyik modellt? | Központi adminisztrációs. Rendszergazdák, akik konfigurálnia kell az adatgyűjtést és a felhasználók, akiknek szükség van a számos különböző erőforrásokhoz való hozzáférést. Emellett jelenleg szükséges naplók az Azure-on kívüli erőforrások eléréséhez rendelkező felhasználók számára. | Alkalmazás olyan csoportok számára. A rendszergazdák a figyelt Azure-erőforrások. |
 | Mi a felhasználó igényel a naplók megtekintéséhez? | Engedélyek a munkaterülethez. Lásd: **a munkaterület-engedélyek** a [fiókok és felhasználók kezeléséhez](#manage-accounts-and-users). | Olvasási hozzáférést az erőforráshoz. Lásd: **erőforrás-engedélyek** a [fiókok és felhasználók kezeléséhez](#manage-accounts-and-users). Lehet engedélyeket örökölt (például tartalmazó erőforráscsoport), vagy közvetlenül az erőforráshoz rendelt. A naplókban az erőforrás számára automatikusan hozzá lesz rendelve. |
-| Mi az engedélyek hatóköre? | Munkaterület. A munkaterülethez hozzáféréssel rendelkező felhasználók lekérdezheti az összes napló, az adott munkaterületen. | Azure-erőforrás. Felhasználó lekérdezheti a naplók az erőforrások a bármely munkaterülethez hozzá, de nem tudják lekérdezni a naplók az egyéb erőforrások. |
+| Mi az engedélyek hatóköre? | Munkaterület. A munkaterülethez hozzáféréssel rendelkező felhasználók lekérdezheti az összes napló táblákból származó munkaterület, amely engedélyekkel rendelkeznek. Lásd: [tábla hozzáférés-vezérlés](#table-access-control) | Azure-erőforrás. Felhasználó lekérdezheti a naplók az erőforrások a bármely munkaterülethez hozzá, de nem tudják lekérdezni a naplók az egyéb erőforrások. |
 | Hogyan lehet a felhasználó hozzáférési naplók? | Indítsa el **naplók** a **Azure Monitor** menü vagy **Log Analytics-munkaterületek**. | Indítsa el **naplók** az Azure-beli erőforráshoz a menüből. |
 
 
 ## <a name="access-control-mode"></a>Hozzáférés-vezérlési mód
 A _hozzáférés-vezérlési mód_ egy beállítás az egyes munkaterületek, amely meghatározza, milyen engedélyek határozzák meg az adott munkaterületben.
 
-**Munkaterület-engedélyeket igényelnek**:  Ez a vezérlő mód nem engedélyezi a részletes RBAC. Egy felhasználó a munkaterület eléréséhez akkor kell kell engedéllyel a munkaterületre. 
+**Munkaterület-engedélyeket igényelnek**:  Ez a vezérlő mód nem engedélyezi a részletes RBAC. Egy felhasználó a munkaterület eléréséhez azok a munkaterületet, vagy adott táblák engedélyeket kell adni. 
 
-Ha egy felhasználó hozzáfér a munkaterületet a munkaterület-központú módban, rendelkeznek az összes adat a hozzáférést a munkaterületen. Ha egy felhasználó hozzáfér a munkaterület erőforrás-központú módban, rendelkeznek az adott erőforráshoz csak adatokhoz való hozzáférés.
+Ha egy felhasználó hozzáfér a munkaterületet a munkaterület-központú módban, fog hozzáféréssel rendelkeznek az összes adat bármely táblákhoz, hogy kapott hozzáférést az. Ha egy felhasználó hozzáfér a munkaterület erőforrás-központú módban, rendelkeznek az adott erőforráshoz csak adatokhoz való hozzáférés bármely táblákban, azok hozzáférést szerez.
 
 Ez az alapértelmezés szerint minden március 2019 előtt létrehozott munkaterületeket a.
 
@@ -144,6 +145,46 @@ Megtekintheti a jelenlegi munkaterület hozzáférési mód a **áttekintése** 
 Ezt a beállítást módosíthatja a a **tulajdonságok** a munkaterülethez tartozó oldal. A beállítás módosítása esetén a rendszer letiltja nincs engedélye a munkaterület konfigurálása.
 
 ![Módosítsa a munkaterület hozzáférési mód](media/manage-access/change-access-control-mode.png)
+
+### <a name="define-access-control-mode-in-azure-portal"></a>Adja meg a hozzáférés-vezérlési mód az Azure Portalon
+Megtekintheti a jelenlegi munkaterület hozzáférési mód a **áttekintése** a munkaterület oldalán a **Log Analytics-munkaterület** menü.
+
+![Nézet munkaterület hozzáférési mód](media/manage-access/view-access-control-mode.png)
+
+Ezt a beállítást módosíthatja a a **tulajdonságok** a munkaterülethez tartozó oldal. A beállítás módosítása esetén a rendszer letiltja nincs engedélye a munkaterület konfigurálása.
+
+![Módosítsa a munkaterület hozzáférési mód](media/manage-access/change-access-control-mode.png)
+
+### <a name="define-access-control-mode-in-powershell"></a>Adja meg a hozzáférés-vezérlési mód a PowerShellben
+
+A következő paranccsal vizsgálja meg a hozzáférést az előfizetés minden munkaterülethez mód:
+
+```PowerShell
+Get-AzResource -ResourceType Microsoft.OperationalInsights/workspaces -ExpandProperties | foreach {$_.Name + ": " + $_.Properties.features.enableLogAccessUsingOnlyResourcePermissions} 
+```
+
+A következő parancsfájl használatával állítsa be a hozzáférést egy adott munkaterület mód:
+
+```PowerShell
+$WSName = "my-workspace"
+$Workspace = Get-AzResource -Name $WSName -ExpandProperties
+if ($Workspace.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null) 
+    { $Workspace.Properties.features | Add-Member enableLogAccessUsingOnlyResourcePermissions $true -Force }
+else 
+    { $Workspace.Properties.features.enableLogAccessUsingOnlyResourcePermissions = $true }
+Set-AzResource -ResourceId $Workspace.ResourceId -Properties $Workspace.Properties -Force
+```
+
+Használja a következő szkriptet az előfizetésben a hozzáférést minden munkaterülethez mód beállítása
+
+```PowerShell
+Get-AzResource -ResourceType Microsoft.OperationalInsights/workspaces -ExpandProperties | foreach {
+if ($_.Properties.features.enableLogAccessUsingOnlyResourcePermissions -eq $null) 
+    { $_.Properties.features | Add-Member enableLogAccessUsingOnlyResourcePermissions $true -Force }
+else 
+    { $_.Properties.features.enableLogAccessUsingOnlyResourcePermissions = $true }
+Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
+```
 
 ### <a name="define-access-mode-in-resource-manager-template"></a>Adjon meg a hozzáférési mód a Resource Manager-sablon
 A hozzáférési mód az Azure Resource Manager-sablon konfigurálásához állítsa a **enableLogAccessUsingOnlyResourcePermissions** funkció jelzőt a munkaterület az alábbi értékek egyikére.
@@ -241,6 +282,58 @@ Felhasználók lekérdezés bejelentkezésekor egy munkaterületről, erőforrá
 
 Ezt általában az engedélyt, amely tartalmaz egy szerepkörből  _\*/olvasási vagy_ _\*_ például a beépített engedélyek [olvasó](../../role-based-access-control/built-in-roles.md#reader) és [ Közreműködői](../../role-based-access-control/built-in-roles.md#contributor) szerepköröket. Vegye figyelembe, hogy egyéni szerepköröket, amelyek bizonyos műveleteket, vagy dedikált beépített szerepkörök előfordulhat, hogy ez az engedély nem vonatkozik.
 
+Lásd: [tábla hozzáférés-vezérlés meghatározása](#defining-per-table-access-control) ha alább, kíván létrehozni a különböző táblák különböző hozzáférés-vezérlést.
+
+
+## <a name="table-level-rbac"></a>Táblázatok szintjén RBAC
+**Tábla szint RBAC** lehetővé teszi, hogy az más engedélyek mellett a Log Analytics-munkaterület az adatok részletesebb vezérléshez. Ez a vezérlő lehetővé teszi meghatározott adattípusok, amelyek csak a felhasználók adott csoportja számára elérhető definiálása.
+
+Tábla hozzáférés-vezérlés megvalósítása [Azure egyéni szerepkörök](../../role-based-access-control/custom-roles.md) engedélyezéséhez, vagy megtagadja a hozzáférést az adott [táblák](../log-query/log-query-overview.md#how-azure-monitor-log-data-is-organized) a munkaterületen. Ezek a szerepkörök érvénybe lépnek a munkaterület-központú vagy erőforrás-központú munkaterületek [ellenőrzési mód eléréséhez](#access-control-modes) függetlenül a felhasználói [hozzáférési mód](#access-mode).
+
+Hozzon létre egy [egyéni szerepkör](../../role-based-access-control/custom-roles.md) a hozzáférés-vezérlés táblában való hozzáférés meghatározásához a következő műveleteket.
+
+- Egy tábla hozzáférést, adja meg a a **műveletek** a szerepkör-definíció szakaszában.
+- Engedélyezi a hozzáférést egy táblához, például a a **NotActions** a szerepkör-definíció szakaszában.
+- Használat *, adja meg az összes tábla.
+
+Például hozzon létre egy szerepkörhöz való hozzáféréssel a _szívverés_ és _AzureActivity_ táblákat, hozzon létre egy egyéni biztonsági szerepkört a következő műveletekkel:
+
+```
+"Actions":  [
+              "Microsoft.OperationalInsights/workspaces/query/Heartbeat/read",
+              "Microsoft.OperationalInsights/workspaces/query/AzureActivity/read"
+  ],
+```
+
+Szerepkör létrehozása a hozzáférést csak _SecurityBaseline_ és más táblák, hozzon létre egy egyéni szerepkör segítségével a következő műveleteket:
+
+```
+    "Actions":  [
+        "Microsoft.OperationalInsights/workspaces/query/*/read"
+    ],
+    "NotActions":  [
+        "Microsoft.OperationalInsights/workspaces/query/SecurityBaseline/read"
+    ],
+```
+
+### <a name="custom-logs"></a>Egyéni naplók
+ Egyéni naplók hozza létre az adatforrás, például egyéni naplók és a HTTP-adatgyűjtő API. A legegyszerűbben úgy azonosíthatja a napló típusa van felsorolva a táblák ellenőrzésével [egyéni naplói a napló sémában](../log-query/get-started-portal.md#understand-the-schema).
+
+ Jelenleg nem lehet engedélyezni, vagy megtagadja a hozzáférést az egyes egyéni naplók, de engedélyezheti vagy megtagadhatja a hozzáférést az összes egyéni naplókkal. Egy szerepkör az összes egyéni napló-hozzáféréssel rendelkező, hozzon létre egy egyéni szerepkör segítségével a következő műveleteket:
+
+```
+    "Actions":  [
+        "Microsoft.OperationalInsights/workspaces/query/Tables.Custom/read"
+    ],
+```
+
+### <a name="considerations"></a>Megfontolandó szempontok
+
+- Ha egy felhasználó számára biztosított globális olvasási engedélyt, a standard szintű olvasó és közreműködő szerepkörökhöz, amelyek tartalmazzák a  _\*/olvasási_ műveletet, az felül fogja írni a tábla hozzáférés-vezérlés és azokat elérhetővé teheti az összes naplózási adatokat.
+- Ha egy felhasználó tábla hozzáférés, de semmilyen más engedélyt kap, azok tudná hozzáférés a naplóadatokhoz, az API-ból, de nem az Azure Portalról. Biztosíthat hozzáférést az Azure Portalon, az alap szerepkör Log Analytics olvasó használjuk.
+- Az előfizetés rendszergazdái férhetnek összes adattípusok semmilyen más engedélyt beállításaitól függetlenül.
+- Munkaterület tulajdonosok mint minden más felhasználónak, tábla hozzáférés-vezérlést kell kezelni.
+- Hozzárendelések száma csökkentése érdekében egyéni felhasználók helyett biztonsági csoportokat kell szerepköröket rendelhet. Ez akkor is hasznos, meglévő csoportházirend-felügyeleti eszközök használatával konfigurálhatja, és a hozzáférés ellenőrzéséhez.
 
 
 
