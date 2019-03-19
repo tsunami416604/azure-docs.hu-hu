@@ -11,9 +11,9 @@ ms.date: 02/21/2019
 ms.topic: hub-page
 ---
 
+<div id="main" class="v2">
 <h1>Az Azure Cognitive Services dokumentációja</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">Megtudhatja, hogyan teheti intelligens algoritmusokkal képessé az alkalmazásokat, weboldalakat és robotokat a látásra, hallásra, beszédre és megértésre, hogy azok a felhasználók természetes nyelvi kommunikációját is értelmezni tudják. Oktatóanyagokból, rövid útmutatókból, API-referenciákból és példákból ismerheti meg mindezt.</p>
-
 <ul class="cardsY panelContent singlePanelContent" style="display:flex!important;">
         <li>
             <a href="/azure/cognitive-services/welcome/">
@@ -386,3 +386,4 @@ ms.topic: hub-page
         </div>
     </li>
 </ul>
+</div>
