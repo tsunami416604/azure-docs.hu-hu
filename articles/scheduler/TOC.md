@@ -32,7 +32,7 @@
 ## [Az Azure Scheduler fejlesztési terve](https://azure.microsoft.com/updates/?product=scheduler)
 ## [Azure-ütemterv](https://azure.microsoft.com/updates/)
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/home?forum=azurescheduler)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-scheduler)
+## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-scheduler)
 ## [Díjszabás](https://azure.microsoft.com/pricing/details/scheduler/)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Szolgáltatási hírek](https://azure.microsoft.com/updates/?product=scheduler)
