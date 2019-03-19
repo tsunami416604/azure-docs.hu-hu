@@ -16,12 +16,12 @@ ms.date: 02/25/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 10/23/2018
-ms.openlocfilehash: ed149398a1244ad0cb09c3e0fe128973c6caa00d
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: b61bf4f05f52b9d28ee09bb6c0de30544396e815
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57408003"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58091596"
 ---
 # <a name="tutorial-offer-highly-available-sql-databases"></a>Oktatóanyag: Magas rendelkezésre állású SQL-adatbázisok biztosítása
 
@@ -65,7 +65,7 @@ Ez a szakasz a lépéseket követve üzembe helyezése az SQL Server AlwaysOn re
 - Rendelkezésre állási csoporthoz, amely tartalmazza az SQL és a fájl tanúsító fájlmegosztás virtuális gépek  
 
 1. 
-[!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
+   [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. Válassza ki **\+** **erőforrás létrehozása** > **egyéni**, majd **sablonalapú telepítés**.
 
@@ -156,7 +156,7 @@ Után az SQL AlwaysOn rendelkezésre állási csoport létrehozása, konfigurál
 > Futtassa ezeket a lépéseket az Azure Stack felhasználói portálról bérlői felhasználói biztosít az SQL Server képességet (Microsoft.SQLAdapter szolgáltatás) előfizetéssel.
 
 1. 
-[!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
+   [!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
 
 2. Válassza ki **\+** **erőforrás létrehozása** > **adatok \+ tárolási**, majd **SQL Database**.<br><br>Adja meg a szükséges adatbázis-tulajdonság információkat, beleértve a neve, rendezés, maximális méretét, és az előfizetés, erőforráscsoport és hely, a központi telepítéshez használni. 
 

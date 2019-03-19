@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: c4f32113c0750b825f217330f94b45484dc3be29
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: ad6fd4a75ca139c4943ca0d079a2d041ccb46d09
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313466"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101091"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Adatok betöltése az Azure Data Lake Storage Gen2 az Azure Data Factoryvel
 
@@ -77,12 +77,12 @@ Ez a cikk bemutatja, hogyan használható a Data Factory az adatok másolása es
     
 4. Az a **adja meg az Amazon S3-kapcsolat** lapon, tegye a következőket:
 
-    1. Adja meg a **elérési kulcs Azonosítóját** értéket.
-    2. Adja meg a **titkos elérési kulcsát** értéket.
-    3. Kattintson a **kapcsolat tesztelése** ellenőrzése a beállításokat, majd válassza ki **Befejezés**.
-    4. Megjelenik egy új kapcsolat jön létre. Kattintson a **Tovább** gombra.
+   1. Adja meg a **elérési kulcs Azonosítóját** értéket.
+   2. Adja meg a **titkos elérési kulcsát** értéket.
+   3. Kattintson a **kapcsolat tesztelése** ellenőrzése a beállításokat, majd válassza ki **Befejezés**.
+   4. Megjelenik egy új kapcsolat jön létre. Kattintson a **Tovább** gombra.
    
-    ![Az Amazon S3-fiók megadása](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
+      ![Az Amazon S3-fiók megadása](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
       
 5. Az a **a bemeneti fájl vagy mappa kiválasztása** párbeszédpanelen tallózással keresse meg a mappát és fájlt, amelyet másolja át azokat. Válassza ki a mappát vagy fájlt, jelölje be **válasszon**:
 

@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 08/16/2018
+ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: 0bed75090e82287e1239342884b5acea64e69bf0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b67a65bad06560a09d2ead88bd20f0568f749bb3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444004"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082177"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-red-hat-enterprise-linux"></a>Magas rendelkezésre állás az SAP HANA, Red Hat Enterprise Linux-alapú Azure virtuális gépeken
 
@@ -182,6 +182,10 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
    1. Ismételje meg ezeket a lépéseket a portokhoz 3**03**41-es és 3**03**42.
 
 Az SAP Hana-hoz a szükséges portok kapcsolatos további információkért olvassa el a fejezet [bérlői adatbázis-kapcsolatok](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6/latest/en-US/7a9343c9f2a2436faa3cfdb5ca00c052.html) a a [SAP HANA bérlői adatbázisok](https://help.sap.com/viewer/78209c1d3a9b41cd8624338e42a12bf6) útmutató vagy [SAP Megjegyzés 2388694][2388694].
+
+> [!IMPORTANT]
+> Ne engedélyezze a TCP időbélyegeket Azure Load Balancer mögé helyezett Azure virtuális gépeken. Sikertelen állapotadat-mintavételek engedélyezése TCP időbélyegek miatt. A paramétert **net.ipv4.tcp_timestamps** való **0**. További részletekért lásd: [Load Balancer állapot-mintavételei](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview).
+> SAP-jegyzetnek [2382421](https://launchpad.support.sap.com/#/notes/2382421) ellentmondásos utasítás beküldte net.ipv4.tcp_timestamps állítsa 1-re is tartalmaz. Az Azure virtuális gépek Azure-terheléselosztó mögött elhelyezni, a paraméter értéke **net.ipv4.tcp_timestamps** való **0**.
 
 ## <a name="install-sap-hana"></a>Az SAP HANA telepítése
 
@@ -357,21 +361,21 @@ A jelen szakaszban ismertetett lépések használja az alábbi előtagokat:
    HANA-Rendszerreplikálást és az ügyfél forgalmat engedélyező tűzfalszabályok létrehozása. A szükséges portok a felsorolt [TCP/IP-port minden SAP-termék](https://help.sap.com/viewer/ports). Az alábbi parancsok olyan csak egy példa adatbázis SYSTEMDB, HN1 és NW1 HANA-Rendszerreplikálást 2.0 és az ügyfél forgalom engedélyezésére.
 
    <pre><code>sudo firewall-cmd --zone=public --add-port=40302/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=40302/tcp
-sudo firewall-cmd --zone=public --add-port=40301/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=40301/tcp
-sudo firewall-cmd --zone=public --add-port=40307/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=40307/tcp
-sudo firewall-cmd --zone=public --add-port=40303/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=40303/tcp
-sudo firewall-cmd --zone=public --add-port=40340/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=40340/tcp
-sudo firewall-cmd --zone=public --add-port=30340/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=30340/tcp
-sudo firewall-cmd --zone=public --add-port=30341/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=30341/tcp
-sudo firewall-cmd --zone=public --add-port=30342/tcp --permanent
-sudo firewall-cmd --zone=public --add-port=30342/tcp
+   sudo firewall-cmd --zone=public --add-port=40302/tcp
+   sudo firewall-cmd --zone=public --add-port=40301/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=40301/tcp
+   sudo firewall-cmd --zone=public --add-port=40307/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=40307/tcp
+   sudo firewall-cmd --zone=public --add-port=40303/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=40303/tcp
+   sudo firewall-cmd --zone=public --add-port=40340/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=40340/tcp
+   sudo firewall-cmd --zone=public --add-port=30340/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=30340/tcp
+   sudo firewall-cmd --zone=public --add-port=30341/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=30341/tcp
+   sudo firewall-cmd --zone=public --add-port=30342/tcp --permanent
+   sudo firewall-cmd --zone=public --add-port=30342/tcp
    </code></pre>
 
 1. **[1]**  a bérlői adatbázis létrehozása.

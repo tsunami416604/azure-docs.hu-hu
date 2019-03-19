@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
-ms.openlocfilehash: b8995436677c195317b9ac304fe8c52cc2fcfc80
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: b9b4af353e5bbd36f1f8d7468c38542a0fabda85
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602069"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112177"
 ---
 # <a name="use-azure-kubernetes-service-with-apache-kafka-on-hdinsight"></a>Az Apache Kafka on HDInsight az Azure Kubernetes Service használata
 
@@ -81,17 +81,17 @@ Ha Ön még nem rendelkezik egy AKS-fürtöt, egyet a következő dokumentumok s
 
 5. Konfigurálhatja a társviszony-létesítést a HDInsight-hálózat és az AKS-fürt hálózati között, válassza ki a virtuális hálózatot, majd __Társviszonyok__. Válassza ki __+ Hozzáadás__ és feltölti az űrlapot a következő értékeket használja:
 
-    * __Név__: Adjon meg egy egyedi nevet ehhez a társviszony-létesítési konfigurációhoz.
-    * __Virtuális hálózat__: Ez a mező használatával válassza ki a virtuális hálózat számára a **AKS-fürt**.
+   * __Név__: Adjon meg egy egyedi nevet ehhez a társviszony-létesítési konfigurációhoz.
+   * __Virtuális hálózat__: Ez a mező használatával válassza ki a virtuális hálózat számára a **AKS-fürt**.
 
-    Az alapértelmezett értéket az összes többi mezőt hagyja, majd válassza a __OK__ konfigurálhatja a társviszony-létesítést.
+     Az alapértelmezett értéket az összes többi mezőt hagyja, majd válassza a __OK__ konfigurálhatja a társviszony-létesítést.
 
 6. Konfigurálhatja a társviszony-létesítést az AKS-fürt hálózati és a HDInsight-hálózat között, válassza ki a __AKS-fürt virtuális hálózati__, majd válassza ki __Társviszonyok__. Válassza ki __+ Hozzáadás__ és feltölti az űrlapot a következő értékeket használja:
 
-    * __Név__: Adjon meg egy egyedi nevet ehhez a társviszony-létesítési konfigurációhoz.
-    * __Virtuális hálózat__: Ez a mező használatával válassza ki a virtuális hálózat számára a __HDInsight-fürt__.
+   * __Név__: Adjon meg egy egyedi nevet ehhez a társviszony-létesítési konfigurációhoz.
+   * __Virtuális hálózat__: Ez a mező használatával válassza ki a virtuális hálózat számára a __HDInsight-fürt__.
 
-    Az alapértelmezett értéket az összes többi mezőt hagyja, majd válassza a __OK__ konfigurálhatja a társviszony-létesítést.
+     Az alapértelmezett értéket az összes többi mezőt hagyja, majd válassza a __OK__ konfigurálhatja a társviszony-létesítést.
 
 ## <a name="install-apache-kafka-on-hdinsight"></a>Telepítse az Apache Kafka HDInsight
 
@@ -100,7 +100,7 @@ A Kafka HDInsight-fürt létrehozásakor a HDInsight a korábban létrehozott vi
 > [!IMPORTANT]  
 > A fürt létrehozásakor kell használnia a __speciális beállítások__ csatlakozni a virtuális hálózat, HDInsight létrehozott.
 
-## <a name="configure-apache-kafka-ip-advertising"></a>Az Apache Kafka IP hirdetés konfigurálása
+## <a name="configure-apache-kafka-ip-advertising"></a>Configure Apache Kafka IP Advertising
 
 A következő lépéseket követve konfigurálja Kafka meghirdetése tartománynevek helyett IP-címek:
 

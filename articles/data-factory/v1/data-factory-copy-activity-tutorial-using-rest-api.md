@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1f2b8e79d5b7638a8266ada9f789b055d9249dc5
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: d83b659cc04218fad66ea95216e69682b265dc83
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531062"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077802"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>Oktatóanyag: Hozzon létre egy Azure Data Factory-folyamatot az adatok másolásához a REST API használatával 
 > [!div class="op_single_selector"]
@@ -64,24 +64,24 @@ Egy folyamathoz több tevékenység is tartozhat. Ezenkívül össze is fűzhet 
   
   1. Futtassa a következő parancsot, és adja meg az Azure Portalra való bejelentkezéshez használt felhasználónevet és jelszót.
     
-    ```PowerShell 
-    Connect-AzAccount
-    ```   
+     ```PowerShell 
+     Connect-AzAccount
+     ```   
   2. Futtassa a következő parancsot a fiókhoz tartozó előfizetések megtekintéséhez.
 
-    ```PowerShell     
-    Get-AzSubscription
-    ``` 
+     ```PowerShell     
+     Get-AzSubscription
+     ``` 
   3. Futtassa a következő parancsot a használni kívánt előfizetés kiválasztásához. A **&lt;NameOfAzureSubscription**&gt; helyére írja be Azure-előfizetése nevét. 
      
-    ```PowerShell
-    Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
-    ```
+     ```PowerShell
+     Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
+     ```
   4. Hozzon létre egy **ADFTutorialResourceGroup** nevű Azure-erőforráscsoportot. Ehhez futtassa a következő parancsot a PowerShellben:  
 
-    ```PowerShell     
+     ```PowerShell     
       New-AzResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
-    ```
+     ```
      
       Ha az erőforráscsoport már létezik, adja meg, hogy frissítse azt a rendszer (Y), vagy hagyja változatlanul (N). 
      

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 4f6076407ea4745556e59d44bd37ab85288e6bd2
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 67378a5911e5bd83888342aa3773f7f5ed4ccf29
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772931"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102584"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Adatgyűjtés, a Log Analytics az Azure Automation-runbook
 
@@ -131,13 +131,13 @@ Az Azure Automation tartalmaz egy környezetet [tesztelheti a runbookját](../..
 
 ![Runbook tesztelése](media/runbook-datacollect/test-runbook.png)
 
-6. Kattintson a **mentése** , mentse a forgatókönyvet.
+1. Kattintson a **mentése** , mentse a forgatókönyvet.
 1. Kattintson a **teszt panel** , nyissa meg a runbookot a tesztkörnyezetben.
-3. A runbook paraméterekkel rendelkezik, mivel érték megadására kéri. Adja meg az erőforráscsoport nevét, és az automation-fiók, amely a folyamatban lévő feladat adatainak gyűjtésére.
-4. Kattintson a **Start** a Start a runbookot.
-3. A runbook állapota kezdődik **várólistán** előtt kerül **futó**.
-3. A runbook részletes kimenet megjelenjen a feladatokkal gyűjtött json formátumban. Ha nincsenek feladatok sem jelenik meg, majd nem lehetséges, hogy történt nincsenek feladatok az elmúlt órában az automation-fiókban létrehozott. Próbálja meg elindítani minden runbook az automation-fiókban, és hajtsa végre újból a vizsgálatot.
-4. Győződjön meg arról, a kimenet a Log Analytics nem mutassa a hibákat a post parancsot. A következőhöz hasonló üzenetet kell rendelkeznie.
+1. A runbook paraméterekkel rendelkezik, mivel érték megadására kéri. Adja meg az erőforráscsoport nevét, és az automation-fiók, amely a folyamatban lévő feladat adatainak gyűjtésére.
+1. Kattintson a **Start** a Start a runbookot.
+1. A runbook állapota kezdődik **várólistán** előtt kerül **futó**.
+1. A runbook részletes kimenet megjelenjen a feladatokkal gyűjtött json formátumban. Ha nincsenek feladatok sem jelenik meg, majd nem lehetséges, hogy történt nincsenek feladatok az elmúlt órában az automation-fiókban létrehozott. Próbálja meg elindítani minden runbook az automation-fiókban, és hajtsa végre újból a vizsgálatot.
+1. Győződjön meg arról, a kimenet a Log Analytics nem mutassa a hibákat a post parancsot. A következőhöz hasonló üzenetet kell rendelkeznie.
 
     ![POST-kimenet](media/runbook-datacollect/post-output.png)
 
@@ -189,9 +189,9 @@ Indítson el egy runbookot, amely monitorozási adatokat gyűjt a leggyakoribb m
 
 Az ütemezés létrehozása után kell beállítani, amely minden alkalommal, amikor az ütemezés elindítja a runbookot használható paraméter értékét.
 
-6. Kattintson a **konfigurálása paraméterek és futtatási beállítások**.
-7. Adja meg az értékeket a **ResourceGroupName** és **AutomationAccountName**.
-8. Kattintson az **OK** gombra.
+1. Kattintson a **konfigurálása paraméterek és futtatási beállítások**.
+1. Adja meg az értékeket a **ResourceGroupName** és **AutomationAccountName**.
+1. Kattintson az **OK** gombra.
 
 ## <a name="9-verify-runbook-starts-on-schedule"></a>9. Runbook indítása a ütemezés ellenőrzése
 Minden alkalommal, amikor egy runbook elindult, [létrejön egy feladat](../../automation/automation-runbook-execution.md) és a kimenetet a naplóba. Sőt ezek a ugyanazt a feladatot, amely a runbook gyűjti. Ellenőrizheti, hogy a runbookot a runbook a feladatok ellenőrzésével, az ütemezés kezdési ideje után megfelelően elindul-e.

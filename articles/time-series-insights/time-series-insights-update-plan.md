@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: 09fef060a58723624796fe6192fef2444251cc1c
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 251e95744f57d9b5e42df9bdc3743f4880ff5381
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556084"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076996"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Az Azure Time Series Insights – előzetes környezet megtervezése
 
@@ -90,7 +90,7 @@ A Time Series Insights egy magas rendelkezésre állású szolgáltatás, amely 
 Az üzletmenet-folytonosság és vészhelyreállítás (BCDR) az Azure-ban a beépített funkciók további információkért lásd: [Azure üzleti folytonossági műszaki útmutatást](https://docs.microsoft.com/azure/resiliency/resiliency-technical-guidance). Architektúra-útmutató az Azure-alkalmazások elérjék a magas rendelkezésre állású és vész-helyreállítási stratégiát, tekintse meg a papír [vészhelyreállítás és magas rendelkezésre állás az Azure-alkalmazások](https://docs.microsoft.com/azure/architecture/resiliency/index).
 
 > [!NOTE]
-
+> 
 >  A Time Series Insights nem rendelkezik beépített BCDR.
 > Alapértelmezés szerint az Azure Storage, Azure IoT Hub és az Azure Event Hubs a beépített helyreállítási rendelkeznek.
 

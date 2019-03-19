@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: microsofthelp@twilio.com
-ms.openlocfilehash: 71ffcc420372215a393f560d01d6c08dee03dfbd
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 0d055b1a78622665137a6abad18681a728ae2b30
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433671"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58010565"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-java-application-on-azure"></a>A Twilio használata Java-alkalmazás az Azure-ban a telefonhívás módját
 Az alábbi példa bemutatja, hogyan használhatja a Twilio segítségével az Azure-ban üzemeltetett weboldalakról hívást. Az eredményül kapott alkalmazás fogja kérni a felhasználót, telefonhívás-értékek, az alábbi képernyőképen látható módon.
@@ -173,7 +173,7 @@ Az alábbiakban a magas szintű lépéseket kell az alkalmazás futtatása Ezeke
 2. Módosítsa **startup.cmd** kicsomagolni a TwilioCloud WAR.
 3. A compute Emulator az alkalmazás fordításához.
 4. A compute emulatorban, indítsa el a központi telepítés.
-5. Nyisson meg egy böngészőt, és futtassa **http://localhost:8080/TwilioCloud/callform.jsp**.
+5. Nyisson meg egy böngészőt, és futtassa `http://localhost:8080/TwilioCloud/callform.jsp`.
 6. Adja meg az értékeket a képernyőn, és kattintson a **a következő hívás**, és tekintse meg az eredményeket a makecall.jsp.
 
 Amikor készen áll az Azure-ba, a felhőben való üzembe helyezéshez újrafordítás üzembe helyezéséhez üzembe helyezése az Azure-ba, és futtassa a http://*your_hosted_name*.cloudapp.net/TwilioCloud/callform.jsp a böngészőben (helyettesítse be az értékét  *your_hosted_name*).

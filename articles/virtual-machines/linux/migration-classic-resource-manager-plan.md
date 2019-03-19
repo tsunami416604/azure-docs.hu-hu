@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: bd3bd4937bd376c696df98af0b535aeda5027ddc
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: de2279d7f24400142f9d47ecf25378e7e4c47f9e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437088"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111973"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Az IaaS-erőforrások klasszikusból Azure Resource Manager az áttelepítés tervezése
 Azure Resource Manager sok nagyszerű funkciókat biztosít, rendkívül fontos tervezze meg, hogy zökkenőmentességét sure dolgot a migrálási folyamat elkezdésekor. Tervezési idő kiadások biztosítja, hogy nem problémák merülnek fel migrálási tevékenységek végrehajtása közben. 
@@ -79,8 +79,8 @@ Sikeres ügyfelek tervek, ahol a fenti kérdések tárgyalt, dokumentált és sz
   
   A legjobb módszer a zökkenőmentes áttelepítés a pontos forgatókönyvhöz (számítási, hálózati és tárolási) labor tesztje végző. Ezzel biztosítja:
 
-  - Egy teljesen elkülönített labor- vagy egy meglévő nem éles környezetben tesztelheti. Azt javasoljuk, hogy teljesen elkülönített labor ismételten telepíthető át, és veszélye nélkül módosíthatók.  A valódi előfizetésekből metaadatok gyűjtése és hidrát parancsfájlok alább láthatók.
-  - Célszerű a labor létrehozásához a különálló előfizetést. Az oka, hogy a labor lesz lesz bontva ismételten, és a egy külön kellene, elkülönített előfizetés csökkenti annak az esélyét, hogy valami valós véletlenül törlődni fog.
+- Egy teljesen elkülönített labor- vagy egy meglévő nem éles környezetben tesztelheti. Azt javasoljuk, hogy teljesen elkülönített labor ismételten telepíthető át, és veszélye nélkül módosíthatók.  A valódi előfizetésekből metaadatok gyűjtése és hidrát parancsfájlok alább láthatók.
+- Célszerű a labor létrehozásához a különálló előfizetést. Az oka, hogy a labor lesz lesz bontva ismételten, és a egy külön kellene, elkülönített előfizetés csökkenti annak az esélyét, hogy valami valós véletlenül törlődni fog.
 
   Ez a AsmMetadataParser eszközzel is elvégezhető. [Tudjon meg többet a ezt az eszközt](https://github.com/Azure/classic-iaas-resourcemanager-migration/tree/master/AsmToArmMigrationApiToolset)
 
@@ -114,13 +114,13 @@ A következő számos, a nagyobb áttelepítések a felmerült problémák volta
     > Ezek a korlátok kell áttelepíteni a jelenlegi környezet ugyanabban a régióban kell emelni.
     >
 
-    - Hálózati illesztők
-    - Terheléselosztók
-    - Nyilvános IP-címek
-    - Statikus nyilvános IP-címek
-    - Processzormagok
-    - Network Security Groups (Hálózati biztonsági csoportok)
-    - Útvonaltáblák
+  - Hálózati illesztők
+  - Terheléselosztók
+  - Nyilvános IP-címek
+  - Statikus nyilvános IP-címek
+  - Processzormagok
+  - Network Security Groups (Hálózati biztonsági csoportok)
+  - Útvonaltáblák
 
     Az aktuális Azure erőforrás-kezelő kvótái, az Azure CLI legújabb verzióját a következő parancsokkal ellenőrizheti.
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 47496be907726ca8cd0e235775cdb1a8493310d0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 4f6c420ab76462818fb17308d062cc9d881af7df
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879105"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58091035"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3.0: Translate
 
@@ -38,55 +38,55 @@ A kérelem lekérdezési karakterláncot az átadott paraméterek a következők
   <th>Leírás</th>
   <tr>
     <td>API-verzió</td>
-    <td>*Kötelező paraméter*.<br/>Az ügyfél által kért API-verzió. Az érték lehet `3.0`.</td>
+    <td><em>Kötelező paraméter</em>.<br/>Az ügyfél által kért API-verzió. Az érték lehet <code>3.0</code>.</td>
   </tr>
   <tr>
     <td>forrás:</td>
-    <td>*Nem kötelező paraméter*.<br/>Meghatározza a bemeneti szöveg nyelvét. Milyen nyelveken érhetők el lefordítani a szavazatait található [támogatott nyelvek](./v3-0-languages.md) használatával a `translation` hatókör. Ha a `from` paraméter nincs megadva, az automatikus nyelvfelismerést a Forrásnyelv alkalmazásával.</td>
+    <td><em>Nem kötelező paraméter</em>.<br/>Meghatározza a bemeneti szöveg nyelvét. Milyen nyelveken érhetők el lefordítani a szavazatait található [támogatott nyelvek](./v3-0-languages.md) használatával a <code>translation</code> hatókör. Ha a <code>from</code> paraméter nincs megadva, az automatikus nyelvfelismerést a Forrásnyelv alkalmazásával.</td>
   </tr>
   <tr>
     <td>erre:</td>
-    <td>*Kötelező paraméter*.<br/>Meghatározza a kimeneti szöveg nyelvét. A Célnyelv egyikének kell lennie a [támogatott nyelvek](./v3-0-languages.md) szerepel a `translation` hatókör. Például `to=de` német fordításához.<br/>Újraindításához ismételje meg a paraméter a lekérdezési karakterláncban egyszerre több nyelvhez lefordítani lehetőség. Például `to=de&to=it` , német, olasz lefordítja.</td>
+    <td><em>Kötelező paraméter</em>.<br/>Meghatározza a kimeneti szöveg nyelvét. A Célnyelv egyikének kell lennie a [támogatott nyelvek](./v3-0-languages.md) szerepel a <code>translation</code> hatókör. Például <code>to=de</code> német fordításához.<br/>Újraindításához ismételje meg a paraméter a lekérdezési karakterláncban egyszerre több nyelvhez lefordítani lehetőség. Például <code>to=de&to=it</code> , német, olasz lefordítja.</td>
   </tr>
   <tr>
     <td>textType</td>
-    <td>*Nem kötelező paraméter*.<br/>Határozza meg, hogy a szöveg áll fordítás alatt-e egyszerű szöveges vagy HTML-szöveg. HTML kell lennie egy megfelelően formázott, teljes elemhez. Lehetséges értékek a következők: `plain` (alapértelmezés) vagy `html`.</td>
+    <td><em>Nem kötelező paraméter</em>.<br/>Határozza meg, hogy a szöveg áll fordítás alatt-e egyszerű szöveges vagy HTML-szöveg. HTML kell lennie egy megfelelően formázott, teljes elemhez. Lehetséges értékek a következők: <code>plain</code> (alapértelmezés) vagy <code>html</code>.</td>
   </tr>
   <tr>
     <td>category</td>
-    <td>*Nem kötelező paraméter*.<br/>A kategória (tartomány), a fordítás megadó karakterlánc. Ezzel a paraméterrel fordítások beszerezni egy testre szabott rendszer beépített [egyéni a fordítót](../customization.md). Kategóriaazonosító egyéni a fordítót projektjének hozzá ezt a paramétert használni a telepített testre szabott rendszert. Alapértelmezett érték: `general`.</td>
+    <td><em>Nem kötelező paraméter</em>.<br/>A kategória (tartomány), a fordítás megadó karakterlánc. Ezzel a paraméterrel fordítások beszerezni egy testre szabott rendszer beépített [egyéni a fordítót](../customization.md). Kategóriaazonosító egyéni a fordítót projektjének hozzá ezt a paramétert használni a telepített testre szabott rendszert. Alapértelmezett érték: <code>general</code>.</td>
   </tr>
   <tr>
     <td>ProfanityAction</td>
-    <td>*Nem kötelező paraméter*.<br/>Itt adhatja meg, hogyan kell kezelni profanities fordításokat. Lehetséges értékek a következők: `NoAction` (alapértelmezett), `Marked` vagy `Deleted`. Módon kezelni a vulgáris ismertetése: [Cenzúrázása kezelési](#handle-profanity).</td>
+    <td><em>Nem kötelező paraméter</em>.<br/>Itt adhatja meg, hogyan kell kezelni profanities fordításokat. Lehetséges értékek a következők: <code>NoAction</code> (alapértelmezett), <code>Marked</code> vagy <code>Deleted</code>. Módon kezelni a vulgáris ismertetése: [Cenzúrázása kezelési](#handle-profanity).</td>
   </tr>
   <tr>
     <td>profanityMarker</td>
-    <td>*Nem kötelező paraméter*.<br/>Itt adhatja meg, hogyan profanities kell megjelölni a fordításokat. Lehetséges értékek a következők: `Asterisk` (alapértelmezés) vagy `Tag`. Módon kezelni a vulgáris ismertetése: [Cenzúrázása kezelési](#handle-profanity).</td>
+    <td><em>Nem kötelező paraméter</em>.<br/>Itt adhatja meg, hogyan profanities kell megjelölni a fordításokat. Lehetséges értékek a következők: <code>Asterisk</code> (alapértelmezés) vagy <code>Tag</code>. Módon kezelni a vulgáris ismertetése: [Cenzúrázása kezelési](#handle-profanity).</td>
   </tr>
   <tr>
     <td>includeAlignment</td>
-    <td>*Nem kötelező paraméter*.<br/>Megadja, hogy a igazítás kivetítés forrás szöveget a lefordított szöveg tartalmazza-e. Lehetséges értékek a következők: `true` vagy `false` (alapértelmezett). </td>
+    <td><em>Nem kötelező paraméter</em>.<br/>Megadja, hogy a igazítás kivetítés forrás szöveget a lefordított szöveg tartalmazza-e. Lehetséges értékek a következők: <code>true</code> vagy <code>false</code> (alapértelmezett). </td>
   </tr>
   <tr>
     <td>includeSentenceLength</td>
-    <td>*Nem kötelező paraméter*.<br/>Megadja, hogy a mondat határait a bemeneti szöveg és a lefordított szöveg tartalmazza-e. Lehetséges értékek a következők: `true` vagy `false` (alapértelmezett).</td>
+    <td><em>Nem kötelező paraméter</em>.<br/>Megadja, hogy a mondat határait a bemeneti szöveg és a lefordított szöveg tartalmazza-e. Lehetséges értékek a következők: <code>true</code> vagy <code>false</code> (alapértelmezett).</td>
   </tr>
   <tr>
     <td>suggestedFrom</td>
-    <td>*Nem kötelező paraméter*.<br/>Tartalék nyelvet ad meg, ha a bemeneti szöveg nyelvét nem lehet azonosítani. Automatikus észlelés nyelv alkalmazása során a `from` paraméter nincs megadva. Ha észlelése sikertelen, a `suggestedFrom` nyelvi lesz.</td>
+    <td><em>Nem kötelező paraméter</em>.<br/>Tartalék nyelvet ad meg, ha a bemeneti szöveg nyelvét nem lehet azonosítani. Automatikus észlelés nyelv alkalmazása során a <code>from</code> paraméter nincs megadva. Ha észlelése sikertelen, a <code>suggestedFrom</code> nyelvi lesz.</td>
   </tr>
   <tr>
     <td>fromScript</td>
-    <td>*Nem kötelező paraméter*.<br/>Megadja a parancsprogramot a bemeneti szöveg.</td>
+    <td><em>Nem kötelező paraméter</em>.<br/>Megadja a parancsprogramot a bemeneti szöveg.</td>
   </tr>
   <tr>
     <td>toScript</td>
-    <td>*Nem kötelező paraméter*.<br/>Adja meg a szkript a lefordított szöveg.</td>
+    <td><em>Nem kötelező paraméter</em>.<br/>Adja meg a szkript a lefordított szöveg.</td>
   </tr>
   <tr>
     <td>AllowFallback</td>
-    <td>*Nem kötelező paraméter*.<br/>Itt adhatja meg, hogy a szolgáltatás engedélyezett egy általános rendszer álljon, ha egy egyéni rendszer nem létezik. Lehetséges értékek a következők: `true` (alapértelmezés) vagy `false`.<br/><br/>`allowFallback=false` Megadja, hogy a fordítás csak tanított rendszerek kell használnia a `category` a kérés által megadott. Ha nyelvet X és Y nyelv fordítását igényel láncolási keresztül pivot nyelv E, majd minden a rendszer a lánc (X -> E és E -> Y) kell lennie az egyéni és azonos kategóriába tartoznak. Ha a rendszer nem található az adott kategóriával rendelkezik, a kérelem 400 állapotkódot ad vissza. `allowFallback=true` Itt adhatja meg, hogy a szolgáltatás engedélyezett egy általános rendszer álljon, ha egy egyéni rendszer nem létezik.
+    <td><em>Nem kötelező paraméter</em>.<br/>Itt adhatja meg, hogy a szolgáltatás engedélyezett egy általános rendszer álljon, ha egy egyéni rendszer nem létezik. Lehetséges értékek a következők: <code>true</code> (alapértelmezés) vagy <code>false</code>.<br/><br/><code>allowFallback=false</code> Megadja, hogy a fordítás csak tanított rendszerek kell használnia a <code>category</code> a kérés által megadott. Ha nyelvet X és Y nyelv fordítását igényel láncolási keresztül pivot nyelv E, majd minden a rendszer a lánc (X -> E és E -> Y) kell lennie az egyéni és azonos kategóriába tartoznak. Ha a rendszer nem található az adott kategóriával rendelkezik, a kérelem 400 állapotkódot ad vissza. <code>allowFallback=true</code> Itt adhatja meg, hogy a szolgáltatás engedélyezett egy általános rendszer álljon, ha egy egyéni rendszer nem létezik.
 </td>
   </tr>
 </table> 
@@ -98,19 +98,19 @@ Kérelemfejlécek a következők:
   <th>Leírás</th>
   <tr>
     <td>_Egy engedélyezési_<br/>_header_</td>
-    <td>*Szükséges kérelem fejléce*.<br/>Lásd: [elérhető lehetőségek a hitelesítéshez](./v3-0-reference.md#authentication).</td>
+    <td><em>Szükséges kérelem fejléce</em>.<br/>Lásd: [elérhető lehetőségek a hitelesítéshez](./v3-0-reference.md#authentication).</td>
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td>*Szükséges kérelem fejléce*.<br/>Megadja a hasznos tartalom típusát. Lehetséges értékek a következők: `application/json`.</td>
+    <td><em>Szükséges kérelem fejléce</em>.<br/>Megadja a hasznos tartalom típusát. Lehetséges értékek a következők: <code>application/json</code>.</td>
   </tr>
   <tr>
     <td>Content-Length</td>
-    <td>*Szükséges kérelem fejléce*.<br/>A kérelem törzsében mennyi.</td>
+    <td><em>Szükséges kérelem fejléce</em>.<br/>A kérelem törzsében mennyi.</td>
   </tr>
   <tr>
     <td>X-ClientTraceId</td>
-    <td>*Választható*.<br/>Egy ügyfél által létrehozott GUID egyedi azonosítására szolgál a kérelmet. Kihagyhatja ezt a fejlécet, ha a lekérdezési karakterláncban nevű lekérdezési paraméter használatával adja meg a nyomkövetési azonosító `ClientTraceId`.</td>
+    <td><em>Választható</em>.<br/>Egy ügyfél által létrehozott GUID egyedi azonosítására szolgál a kérelmet. Kihagyhatja ezt a fejlécet, ha a lekérdezési karakterláncban nevű lekérdezési paraméter használatával adja meg a nyomkövetési azonosító <code>ClientTraceId</code>.</td>
   </tr>
 </table> 
 
@@ -209,7 +209,7 @@ Az alábbi táblázat a lehetséges HTTP-állapotkódok, amely egy kérés adja 
   </tr>
   <tr>
     <td>408</td>
-    <td>A kérelem nem teljesíthető, mert egy erőforrás hiányzik. Tekintse meg a részletes hibaüzenetet. Egyéni használatakor `category`, ez gyakran azt jelenti, hogy az egyéni fordítási rendszer még nem érhető el a kérelmek kiszolgálását. A kérelem (pl. 1 perces) várakozási idő elteltével meg kell ismételni.</td>
+    <td>A kérelem nem teljesíthető, mert egy erőforrás hiányzik. Tekintse meg a részletes hibaüzenetet. Egyéni használatakor <code>category</code>, ez gyakran azt jelenti, hogy az egyéni fordítási rendszer még nem érhető el a kérelmek kiszolgálását. A kérelem (pl. 1 perces) várakozási idő elteltével meg kell ismételni.</td>
   </tr>
   <tr>
     <td>429</td>
@@ -217,11 +217,11 @@ Az alábbi táblázat a lehetséges HTTP-állapotkódok, amely egy kérés adja 
   </tr>
   <tr>
     <td>500</td>
-    <td>Váratlan hiba történt. Ha a hiba továbbra is fennáll, jelentse be a: dátum és idő a hiba, a válaszfejlécet a kérelem azonosító `X-RequestId`, és az ügyfél-azonosítója a fejléc `X-ClientTraceId`.</td>
+    <td>Váratlan hiba történt. Ha a hiba továbbra is fennáll, jelentse be a: dátum és idő a hiba, a válaszfejlécet a kérelem azonosító <code>X-RequestId</code>, és az ügyfél-azonosítója a fejléc <code>X-ClientTraceId</code>.</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>A kiszolgáló átmenetileg nem érhető el. Ismételje meg a kérelmet. Ha a hiba továbbra is fennáll, jelentse be a: dátum és idő a hiba, a válaszfejlécet a kérelem azonosító `X-RequestId`, és az ügyfél-azonosítója a fejléc `X-ClientTraceId`.</td>
+    <td>A kiszolgáló átmenetileg nem érhető el. Ismételje meg a kérelmet. Ha a hiba továbbra is fennáll, jelentse be a: dátum és idő a hiba, a válaszfejlécet a kérelem azonosító <code>X-RequestId</code>, és az ügyfél-azonosítója a fejléc <code>X-ClientTraceId</code>.</td>
   </tr>
 </table> 
 
@@ -376,28 +376,28 @@ Ha el szeretné kerülni, a fordítás, függetlenül a forrás szövegben cenz�
   <th width="20%">ProfanityAction</th>
   <th>Műveletek</th>
   <tr>
-    <td>`NoAction`</td>
+    <td><code>NoAction</code></td>
     <td>Ez az az alapértelmezett viselkedést. Káromkodás cél forrásból fogja továbbítani.<br/><br/>
-    **Példa forrás (japán)**: 彼はジャッカスです。<br/>
-    **Példa fordítási (angol nyelven)**: Egy Pápaszemes áll.
+    <strong>Példa forrás (japán)</strong>: 彼はジャッカスです。<br/>
+    <strong>Példa fordítási (angol nyelven)</strong>: Egy Pápaszemes áll.
     </td>
   </tr>
   <tr>
-    <td>`Deleted`</td>
+    <td><code>Deleted</code></td>
     <td>Profán szavakat a kimenet nélküli helyettesítő törlődni fog.<br/><br/>
-    **Példa forrás (japán)**: 彼はジャッカスです。<br/>
-    **Példa fordítási (angol nyelven)**: Ő egy.
+    <strong>Példa forrás (japán)</strong>: 彼はジャッカスです。<br/>
+    <strong>Példa fordítási (angol nyelven)</strong>: Ő egy.
     </td>
   </tr>
   <tr>
-    <td>`Marked`</td>
-    <td>Profán helyébe egy jelölő a kimenetben. A jelölő függ a `ProfanityMarker` paraméter.<br/><br/>
-A `ProfanityMarker=Asterisk`, profán szavak helyén `***`:<br/>
-    **Példa forrás (japán)**: 彼はジャッカスです。<br/>
-    **Példa fordítási (angol nyelven)**: Ő egy \* \* \*.<br/><br/>
-A `ProfanityMarker=Tag`, profán szavak XML-címkék veszi körül &lt;cenzúrázása&gt; és &lt;/profanity&gt;:<br/>
-    **Példa forrás (japán)**: 彼はジャッカスです。<br/>
-    **Példa fordítási (angol nyelven)**: Ő egy &lt;cenzúrázása&gt;Pápaszemes&lt;/profanity&gt;.
+    <td><code>Marked</code></td>
+    <td>Profán helyébe egy jelölő a kimenetben. A jelölő függ a <code>ProfanityMarker</code> paraméter.<br/><br/>
+A <code>ProfanityMarker=Asterisk</code>, profán szavak helyén <code>***</code>:<br/>
+    <strong>Példa forrás (japán)</strong>: 彼はジャッカスです。<br/>
+    <strong>Példa fordítási (angol nyelven)</strong>: Ő egy \* \* \*.<br/><br/>
+A <code>ProfanityMarker=Tag</code>, profán szavak XML-címkék veszi körül &lt;cenzúrázása&gt; és &lt;/profanity&gt;:<br/>
+    <strong>Példa forrás (japán)</strong>: 彼はジャッカスです。<br/>
+    <strong>Példa fordítási (angol nyelven)</strong>: Ő egy &lt;cenzúrázása&gt;Pápaszemes&lt;/profanity&gt;.
   </tr>
 </table> 
 

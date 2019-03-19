@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2018
 ms.author: ergreenl
-ms.openlocfilehash: c71528ed8453bcde05e29eb609ca2cde64bad8de
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 7d99f5a5d027c825fa1145328bb9576229ce39b4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309417"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121995"
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Az Azure AD Domain Services – riasztások hibaelhárítása
 A cikk ismerteti a hibaelhárítási útmutatók tapasztalhat a felügyelt tartományra a riasztás.
@@ -103,13 +103,13 @@ A virtuális hálózaton belüli gépek előfordulhat, hogy kéréseket küld az
 
 1. [A felügyelt tartomány törlése](active-directory-ds-disable-aadds.md) a címtárból.
 2. Javítsa ki az IP-címtartományt az alhálózat
-  1. Keresse meg a [virtuális hálózatok lapján az Azure Portalon](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_AAD_DomainServices=preview#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FvirtualNetworks).
-  2. Válassza ki a virtuális hálózatot szeretne használni az Azure AD tartományi szolgáltatásokhoz.
-  3. Kattintson a **címtér** beállításaiban
-  4. A címtartomány frissítse a meglévő címtartomány kattintva és a Szerkesztés, vagy egy további címtartományt hozzáadása. Ellenőrizze, hogy az új címtartományt a magánhálózati IP-címtartományt. Mentse a módosításokat.
-  5. Kattintson a **alhálózatok** a bal oldali navigációs menüben.
-  6. Kattintson a táblázat a szerkeszteni kívánt alhálózaton található.
-  7. Frissítse a címtartományt, és mentse a módosításokat.
+   1. Keresse meg a [virtuális hálózatok lapján az Azure Portalon](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_AAD_DomainServices=preview#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FvirtualNetworks).
+   2. Válassza ki a virtuális hálózatot szeretne használni az Azure AD tartományi szolgáltatásokhoz.
+   3. Kattintson a **címtér** beállításaiban
+   4. A címtartomány frissítse a meglévő címtartomány kattintva és a Szerkesztés, vagy egy további címtartományt hozzáadása. Ellenőrizze, hogy az új címtartományt a magánhálózati IP-címtartományt. Mentse a módosításokat.
+   5. Kattintson a **alhálózatok** a bal oldali navigációs menüben.
+   6. Kattintson a táblázat a szerkeszteni kívánt alhálózaton található.
+   7. Frissítse a címtartományt, és mentse a módosításokat.
 3. Hajtsa végre a [az első lépések használatával az Azure AD Domain Services útmutató](active-directory-ds-getting-started.md) újra létrehozhatja a felügyelt tartományra. Győződjön meg arról, hogy válasszon ki egy magánhálózati IP-címtartományt a virtuális hálózat.
 4. Tartományhoz való csatlakozás a virtuális gépek az új tartományba, hajtsa végre a [Ez az útmutató](active-directory-ds-admin-guide-join-windows-vm-portal.md).
 8. Annak érdekében, hogy a riasztás fel lett oldva, ellenőrizze a tartomány állapotának két órán belül.
@@ -160,13 +160,13 @@ Vagy áthelyezheti az előfizetéshez társított vissza az előző címtár az 
 
 Az Azure AD Domain Services adott az erőforrásokat hozza létre annak érdekében, hogy a megfelelő működéshez üzembe helyezése során többek között a nyilvános IP-címek, a hálózati adapterek és a egy terheléselosztó. A megnevezett bármelyikét törlődnek, ha ez egy nem támogatott állapotban kell lennie a felügyelt tartomány okoz, és megakadályozza, hogy a tartomány felügyelete alatt áll. Ez a riasztás amikor valakivel, aki képes szerkeszteni az Azure AD Domain Services-erőforrások törli egy szükséges erőforrás található. Hogyan lehet visszaállítani a felügyelt tartomány lépései.
 
-1.  Keresse meg az Azure AD tartományi szolgáltatások health-oldal
-  1.    Utazás a [Azure AD tartományi szolgáltatások lap](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices) az Azure Portalon.
-  2.    A bal oldali navigációs sávján kattintson **állapota**
-2.  Ellenőrizze, hogy ha a riasztás-e a kevesebb mint 4 órája jött létre
-  1.    Az oldalt, kattintson a riasztás azonosítójú **AADDS109**
-  2.    A riasztás számára, amikor először található időbélyeg fog rendelkezni. Ha az időbélyeg kevesebb mint 4 órája, esetén megvan az esélye, hogy az Azure AD tartományi szolgáltatások újra létrehozhatja a törölt erőforráscsoport.
-3.  Ha a riasztás több mint 4 órája jött létre, a felügyelt tartomány helyreállíthatatlan állapotban van. Törölnie kell, majd hozza létre újra az Azure AD tartományi szolgáltatásokat.
+1. Keresse meg az Azure AD tartományi szolgáltatások health-oldal
+   1.    Utazás a [Azure AD tartományi szolgáltatások lap](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices) az Azure Portalon.
+   2.    A bal oldali navigációs sávján kattintson **állapota**
+2. Ellenőrizze, hogy ha a riasztás-e a kevesebb mint 4 órája jött létre
+   1.    Az oldalt, kattintson a riasztás azonosítójú **AADDS109**
+   2.    A riasztás számára, amikor először található időbélyeg fog rendelkezni. Ha az időbélyeg kevesebb mint 4 órája, esetén megvan az esélye, hogy az Azure AD tartományi szolgáltatások újra létrehozhatja a törölt erőforráscsoport.
+3. Ha a riasztás több mint 4 órája jött létre, a felügyelt tartomány helyreállíthatatlan állapotban van. Törölnie kell, majd hozza létre újra az Azure AD tartományi szolgáltatásokat.
 
 
 ## <a name="aadds110-the-subnet-associated-with-your-managed-domain-is-full"></a>AADDS110: Az a felügyelt tartományhoz társított alhálózat megtelt.
@@ -203,13 +203,13 @@ Our service principals need access to be able to manage and create resources on 
 
 1. A felügyelt tartomány bérlőjéből törölni.
 2. Javítsa ki az IP-címtartományt az alhálózat
-  1. Keresse meg a [virtuális hálózatok lapján az Azure Portalon](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_AAD_DomainServices=preview#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FvirtualNetworks).
-  2. Válassza ki a virtuális hálózatot szeretne használni az Azure AD tartományi szolgáltatásokhoz.
-  3. Kattintson a **címtér** beállításaiban
-  4. A címtartomány frissítse a meglévő címtartomány kattintva és a Szerkesztés, vagy egy további címtartományt hozzáadása. Mentse a módosításokat.
-  5. Kattintson a **alhálózatok** a bal oldali navigációs menüben.
-  6. Kattintson a táblázat a szerkeszteni kívánt alhálózaton található.
-  7. Frissítse a címtartományt, és mentse a módosításokat.
+   1. Keresse meg a [virtuális hálózatok lapján az Azure Portalon](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_AAD_DomainServices=preview#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FvirtualNetworks).
+   2. Válassza ki a virtuális hálózatot szeretne használni az Azure AD tartományi szolgáltatásokhoz.
+   3. Kattintson a **címtér** beállításaiban
+   4. A címtartomány frissítse a meglévő címtartomány kattintva és a Szerkesztés, vagy egy további címtartományt hozzáadása. Mentse a módosításokat.
+   5. Kattintson a **alhálózatok** a bal oldali navigációs menüben.
+   6. Kattintson a táblázat a szerkeszteni kívánt alhálózaton található.
+   7. Frissítse a címtartományt, és mentse a módosításokat.
 3. Hajtsa végre a [az első lépések használatával az Azure AD Domain Services útmutató](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started) újra létrehozhatja a felügyelt tartományra. Győződjön meg arról, hogy válasszon ki egy magánhálózati IP-címtartományt a virtuális hálózat.
 4. Tartományhoz való csatlakozás a virtuális gépek az új tartományba, hajtsa végre a [Ez az útmutató](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal).
 5. A tartomány állapotának ellenőrzése annak biztosítása érdekében, hogy végrehajtotta a lépéseket megfelelően két órán belül.

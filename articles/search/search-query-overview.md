@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: seodec2018
-ms.openlocfilehash: d2f3eb25c2193ad94098acd714d934795d007e98
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: a197be06d9c6f4b70b8ffc06712ef315547b4140
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543916"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58136512"
 ---
 # <a name="how-to-compose-a-query-in-azure-search"></a>Hogyan lehet lekérdezést adhat az Azure Search szolgáltatásban
 
@@ -146,7 +146,7 @@ Néha előfordul az anyag nem eredmény szerkezete jsou váratlan. Ha a lekérde
 
 + Változás **`searchMode=any`** (alapértelmezett) **`searchMode=all`** kötelező helyett a kritériumok összes feltételeknek megfelelő találat. Ez akkor különösen igaz, ha a logikai operátorokkal részét képezik a lekérdezést.
 
-+ Módosítsa a lekérdezési módszer, ha a szöveg- vagy lexikai elemzés szükséges, de a lekérdezés típusa kizárja nyelvi feldolgozás. A teljes szöveges keresésben szöveges vagy lexikai elemzés automatikusa kijavítja a helyesírási hibák, egyes számban-plural word űrlapokat, és akár szabálytalan műveletek vagy főneveket. Például bizonyos lekérdezések intelligens vagy helyettesítő karakteres keresés, szövegelemzés nem a lekérdezés elemzési folyamat részét. Bizonyos esetekben a reguláris kifejezések áthidaló használták fel. 
++ Módosítsa a lekérdezési módszer, ha a szöveg- vagy lexikai elemzés szükséges, de a lekérdezés típusa kizárja nyelvi feldolgozás. A teljes szöveges keresés, szöveges vagy helyesírási hibák, egyes számban-plural word űrlapokat, és akár szabálytalan műveletek vagy főneveket lexikai elemzés autocorrects. Például bizonyos lekérdezések intelligens vagy helyettesítő karakteres keresés, szövegelemzés nem a lekérdezés elemzési folyamat részét. Bizonyos esetekben a reguláris kifejezések áthidaló használták fel. 
 
 ### <a name="paging-results"></a>Lapozás eredményei
 A keresési eredmények lapozása az Azure Search segítségével könnyen megvalósítható. Használatával a **`top`** és **`skip`** paraméterek, zökkenőmentesen adhat ki olyan keresési kéréseket, amelyek a keresési eredmények teljes készletében fogadhatja a kezelhető, rendezett alkészletek, amely könnyen engedélyezheti a helyes keresési felhasználói gyakorlat. Az eredmények kisebb alkészleteinek fogadásakor a keresési eredmények teljes készletében lévő dokumentumok darabszámát is megkaphatja.
@@ -167,4 +167,4 @@ Az Azure Search a keresési lekérdezésnek megfelelő keresési eredmények pon
 + [Teljes szöveges keresés működése az Azure Search (lekérdezéselemzési architektúra)](search-lucene-query-architecture.md)
 + [A keresési ablak](search-explorer.md)
 + [Lekérdezése a .NET-ben](search-query-dotnet.md)
-+ [Lekérdezése a REST-ben](search-query-rest-api.md)
++ [Lekérdezése a REST-ben](search-create-index-rest-api.md)

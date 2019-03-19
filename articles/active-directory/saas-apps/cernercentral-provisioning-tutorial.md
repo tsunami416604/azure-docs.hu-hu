@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9c6b1e77b6fce8bedb8f035fcb18acb8c56ad5a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: dda84d30124eca1526f227ffec134f48451c9cb0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200724"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102567"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Cerner központi konfigurálása
 
@@ -60,7 +60,7 @@ A kiépítési szolgáltatás engedélyezése és konfigurálása, mielőtt, meg
 Ez a szakasz végigvezeti az Azure AD-csatlakozás Cerner központi felhasználói Résztvevőlista Cerner az SCIM felhasználói fiók üzembe helyezési API használatával, és konfigurálása az eszközkiépítési szolgáltatás létrehozása, frissítése, és tiltsa le a hozzárendelt felhasználói fiókok Cerner közép-India alapján felhasználók és csoportok hozzárendelése az Azure ad-ben.
 
 > [!TIP]
-> Előfordulhat, hogy meg Cerner központi SAML-alapú egyszeri bejelentkezés engedélyezve, a biztonsági utasítások megadott [az Azure portal (https://portal.azure.com). Egyszeri bejelentkezés konfigurálható az Automatikus kiépítés függetlenül ellenére, hogy ezen két funkció kiegészíti egymást. További információkért lásd: a [Cerner központi egyszeri bejelentkezéses oktatóanyag](cernercentral-tutorial.md).
+> Előfordulhat, hogy meg Cerner központi SAML-alapú egyszeri bejelentkezés engedélyezve, a biztonsági utasítások megadott [az Azure portal](https://portal.azure.com). Egyszeri bejelentkezés konfigurálható az Automatikus kiépítés függetlenül ellenére, hogy ezen két funkció kiegészíti egymást. További információkért lásd: a [Cerner központi egyszeri bejelentkezéses oktatóanyag](cernercentral-tutorial.md).
 
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-cerner-central-in-azure-ad"></a>Konfigurálása automatikus felhasználói fiók kiépítése Cerner középső régiója, az Azure ad-ben:
@@ -68,13 +68,13 @@ Ez a szakasz végigvezeti az Azure AD-csatlakozás Cerner központi felhasznál�
 
 Felhasználói fiókok Cerner központi üzembe helyezéséhez, szüksége Cerner Cerner központi rendszerfiók kérhet, és hozzon létre egy OAuth tulajdonosi jogkivonat, amely az Azure AD használható Cerner az SCIM-végponthoz csatlakozik. Emellett javasoljuk, hogy az integrációs végezhető el egy Cerner próbakörnyezetben éles környezetben való üzembe helyezés előtt.
 
-1.  Az első lépés a személyek a Cerner kezelésének biztosítása érdekében, és az Azure AD-integrációs rendelkezik CernerCare-fiókkal, amely utasítások végrehajtásához szükséges dokumentáció eléréséhez szükséges. Ha szükséges, használja az alábbi URL-címek CernerCare fiókok létrehozásához minden esetben környezetben.
+1. Az első lépés a személyek a Cerner kezelésének biztosítása érdekében, és az Azure AD-integrációs rendelkezik CernerCare-fiókkal, amely utasítások végrehajtásához szükséges dokumentáció eléréséhez szükséges. Ha szükséges, használja az alábbi URL-címek CernerCare fiókok létrehozásához minden esetben környezetben.
 
    * A védőfal:  https://sandboxcernercare.com/accounts/create
 
    * Éles környezetben:  https://cernercare.com/accounts/create  
 
-2.  Ezután a rendszer fiókot kell létrehoznia az Azure ad. Kérjen egy rendszer-fiókot a védőfal vagy éles környezetben használja az alábbi utasításokat.
+2. Ezután a rendszer fiókot kell létrehoznia az Azure ad. Kérjen egy rendszer-fiókot a védőfal vagy éles környezetben használja az alábbi utasításokat.
 
    * Utasítások:  https://wiki.ucern.com/display/CernerCentral/Requesting+A+System+Account
 
@@ -82,7 +82,7 @@ Felhasználói fiókok Cerner központi üzembe helyezéséhez, szüksége Cerne
 
    * Éles környezetben:  https://cernercentral.com/system-accounts/
 
-3.  Következő lépésként hozza létre az OAuth tulajdonosi jogkivonat minden rendszer fiókhoz. Ehhez kövesse az alábbi utasításokat.
+3. Következő lépésként hozza létre az OAuth tulajdonosi jogkivonat minden rendszer fiókhoz. Ehhez kövesse az alábbi utasításokat.
 
    * Utasítások:  https://wiki.ucern.com/display/public/reference/Accessing+Cerner%27s+Web+Services+Using+A+System+Account+Bearer+Token
 
@@ -96,33 +96,33 @@ Felhasználói fiókok Cerner központi üzembe helyezéséhez, szüksége Cerne
 
 6. Ha már konfigurált Cerner központi az egyszeri bejelentkezés, a példány Cerner közép keresési mező használatával keresése. Ellenkező esetben válassza **Hozzáadás** és keressen rá a **Cerner központi** az alkalmazás-katalógusában. A keresési eredmények közül válassza ki a Cerner központi, és adja hozzá az alkalmazások listáját.
 
-7.  Válassza ki azt a példányt Cerner közép, majd válassza ki a **kiépítési** fülre.
+7. Válassza ki azt a példányt Cerner közép, majd válassza ki a **kiépítési** fülre.
 
-8.  Állítsa be a **Kiépítési mód** való **automatikus**.
+8. Állítsa be a **Kiépítési mód** való **automatikus**.
 
    ![Kiépítés Cerner közép-India](./media/cernercentral-provisioning-tutorial/Cerner.PNG)
 
-9.  Töltse ki a következő mezőket alatt **rendszergazdai hitelesítő adataival**:
+9. Töltse ki a következő mezőket alatt **rendszergazdai hitelesítő adataival**:
 
    * Az a **bérlői URL-cím** mezőbe írjon be egy URL-címet az alábbi formátumban "Felhasználói Osztálynévjegyzék-tartomány-azonosító" cserélje le a #4. lépésében beszerzett tartomány azonosítója.
 
 > Sandbox: https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
-
+> 
 > Éles környezetben: https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
    * Az a **titkos jogkivonat** mezőben adja meg a #3. lépésben létrehozott OAuth tulajdonosi jogkivonat, és kattintson a **kapcsolat tesztelése**.
 
    * A portál eddig: upperright oldalán kell megjelennie a sikeres címtármódosítást jelző értesítés.
 
-10. Adja meg az e-mail-címét egy személyt vagy csoportot, amelyre az üzembe helyezési hiba értesítéseket szeretné kapni a **értesítő e-mailt** mezőben, majd jelölje be az alábbi jelölőnégyzetet.
+1. Adja meg az e-mail-címét egy személyt vagy csoportot, amelyre az üzembe helyezési hiba értesítéseket szeretné kapni a **értesítő e-mailt** mezőben, majd jelölje be az alábbi jelölőnégyzetet.
 
-11. Kattintson a **Save** (Mentés) gombra. 
+1. Kattintson a **Save** (Mentés) gombra. 
 
-12. Az a **attribútumleképezések** területen tekintse át a felhasználói és csoportattribútum Cerner központi szinkronizálását az Azure ad-ből. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével megfeleljen a felhasználói fiókok és csoportok Cerner közép-India, a frissítési műveleteket. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
+1. Az a **attribútumleképezések** területen tekintse át a felhasználói és csoportattribútum Cerner központi szinkronizálását az Azure ad-ből. A kiválasztott attribútumok **megfelelést kiváltó** tulajdonságok segítségével megfeleljen a felhasználói fiókok és csoportok Cerner közép-India, a frissítési műveleteket. Válassza ki a Mentés gombra a módosítások véglegesítéséhez.
 
-13. Az Azure AD létesítési szolgáltatás a Cerner központi engedélyezéséhez módosítsa a **üzembe helyezési állapotra** való **a** a a **beállítások** szakasz
+1. Az Azure AD létesítési szolgáltatás a Cerner központi engedélyezéséhez módosítsa a **üzembe helyezési állapotra** való **a** a a **beállítások** szakasz
 
-14. Kattintson a **Save** (Mentés) gombra. 
+1. Kattintson a **Save** (Mentés) gombra. 
 
 Ezzel elindítja a kezdeti szinkronizálás, a felhasználók és/vagy a felhasználók és csoportok szakaszban Cerner központi hozzárendelt csoportokat. A kezdeti szinkronizálás végrehajtásához, mint az ezt követő szinkronizálások, amely körülbelül 40 percenként történik, amennyiben az Azure AD létesítési szolgáltatás fut-e több időt vesz igénybe. Használhatja a **szinkronizálás részleteivel** szakasz előrehaladásának figyeléséhez, és kövesse a hivatkozásokat kiépítés tevékenységeket tartalmazó naplók, amelyek leírják a Cerner központi alkalmazásban a kiépítési szolgáltatás által végrehajtott összes műveletet.
 

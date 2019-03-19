@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: b1ea195ab0b06c4ca0fab37fe7e5701229b34938
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 01d36188c1684eae8303cb20ba0fd0c708ff91ba
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387038"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079912"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>A StorSimple az új hitelesítés használatára
 
@@ -45,7 +45,7 @@ Győződjön meg arról, hogy a szolgáltatás használja-e az AAD-alapú hitele
 
 A StorSimple 8000 sorozat használata esetén győződjön meg arról, hogy a tűzfalszabályok a következő URL-címet tartalmaz:
 
-| Az URL-minta                         | Felhő | Összetevő/funkció         |
+| Az URL-minta                         | Felhő | Component/Functionality         |
 |------------------------------------|-------|----------------------------------|
 | `https://login.windows.net`        | Azure Public |AAD-hitelesítési szolgáltatás      |
 | `https://login.microsoftonline.us` | Az USA kormányzata |AAD-hitelesítési szolgáltatás      |
@@ -59,9 +59,9 @@ A hitelesítési URL-cím nem része a tűzfalszabályok túli elavulásának d�
 A StorSimple 8000 sorozatú eszköz használata esetén a következő táblázat segítségével határozza meg, milyen lépéseket kell tennie az eszköz szoftververzióján futtatja alapján.
 
 | Ha az eszköz fut.| A következő művelet elvégzése                                    |
-|--------------------------|------------------------|--------------------|--------------------------------------------------------------|
+|--------------------------|------------------------|
 | Update 5 vagy újabb verzió és az eszköz offline állapotban. <br> Megjelenik egy értesítés, hogy az URL-je nem szerepel az engedélyezési listán.|1. Módosítsa a tűzfal-szabályokat, a hitelesítési URL-címét. Lásd: [hitelesítési URL-címek](#url-changes-for-aad-authentication).<br>2. [Az AAD-regisztrációs kulcs beolvasása a szolgáltatástól](#aad-based-registration-keys).<br>3. [A Windows PowerShell felületet a StorSimple 8000 sorozatú eszköz csatlakozni](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).<br>4. Használat `Redo-DeviceRegistration` parancsmagot, hogy regisztrálja az eszközt a Windows Powershellen keresztül. Adja meg az előző lépésben kapott kulcsot.|
-| Update 5 vagy újabb verzió és az eszközt.| Semmit nem kell.                                       |
+| Update 5 vagy újabb verzió és az eszközt.| Nincs szükség műveletre.                                       |
 | Update 4-es vagy korábbi és az eszköz offline állapotban. |1. Módosítsa a tűzfal-szabályokat, a hitelesítési URL-címét.<br>2. [5. frissítés letöltése katalógus kiszolgálón keresztül](storsimple-8000-install-update-5.md#download-updates-for-your-device).<br>3. [5. frissítés alkalmazása a gyorsjavítás módszerrel](storsimple-8000-install-update-5.md#install-update-5-as-a-hotfix).<br>4. [Az AAD-regisztrációs kulcs beolvasása a szolgáltatástól](#aad-based-registration-keys).<br>5. [A Windows PowerShell felületet a StorSimple 8000 sorozatú eszköz csatlakozni](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console). <br>6. Használat `Redo-DeviceRegistration` parancsmagot, hogy regisztrálja az eszközt a Windows Powershellen keresztül. Adja meg az előző lépésben kapott kulcsot.|
 | Update 4-es vagy korábbi és az eszköz online állapotban. |Módosítsa a tűzfal-szabályokat, a hitelesítési URL-címét.<br> 5. frissítés telepítése az Azure Portalon keresztül.              |
 | A gyári alaphelyzetbe állítása előtt Update 5 verzióra.      |A portál megjeleníti egy AAD-alapú regisztrációs kulcsot, az eszköz régebbi szoftverek futtatása közben. Kövesse a lépéseket, ha az eszköz fut Update 4-es vagy korábbi az előző forgatókönyvben.              |

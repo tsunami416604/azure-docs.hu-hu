@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: jdial
-ms.openlocfilehash: 9b6db45e38267c70adef3f5a341b8b918b9e78fb
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 42e035b9dca6168fe77e6982505692cf18bfcb40
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714427"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106423"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>Hozzon létre egy virtuális gépet egy statikus nyilvános IP-címet az Azure portal használatával
 
@@ -58,7 +58,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
    ![Válassza ki azt a portot](./media/virtual-network-deploy-static-pip-arm-portal/select-port.png)
 
 7. Fogadja el a többi alapértelmezett beállítást, és válassza ki **OK**.
-8. Az a **összefoglalás** lapon jelölje be **létrehozás**. A virtuális gép üzembe helyezése néhány percet vesz igénybe.
+8. Az **Összefoglalás** lapon válassza a **Létrehozás** lehetőséget. A virtuális gép üzembe helyezése néhány percet vesz igénybe.
 9. A virtuális gép üzembe helyezése után adja meg a *myPublicIpAddress* , a portál tetején található keresőmezőbe. Amikor **myPublicIpAddress** megjelenik a keresési eredmények között, válassza ki.
 10. Megtekintheti a nyilvános IP-címet, amely hozzá van rendelve, és hogy a cím hozzá van rendelve a **myVM** virtuális gépet, az alábbi ábrán látható módon:
 
@@ -71,7 +71,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
     ![Nyilvános IP-cím megtekintése](./media/virtual-network-deploy-static-pip-arm-portal/public-ip-configuration.png)
 
 > [!WARNING]
-Ne módosítsa az IP-címbeállítások, a virtuális gép operációs rendszerén belül. Az operációs rendszer nem észleli az Azure nyilvános IP-címek. Bár a magánhálózati IP-cím beállításait az operációs rendszer is hozzáadhat, javasoljuk, hogy nem így, ha szükséges, és a csak olvasási után nem [magánhálózati IP-cím hozzáadása operációs rendszer](virtual-network-network-interface-addresses.md#private).
+> Ne módosítsa az IP-címbeállítások, a virtuális gép operációs rendszerén belül. Az operációs rendszer nem észleli az Azure nyilvános IP-címek. Bár a magánhálózati IP-cím beállításait az operációs rendszer is hozzáadhat, javasoljuk, hogy nem így, ha szükséges, és a csak olvasási után nem [magánhálózati IP-cím hozzáadása operációs rendszer](virtual-network-network-interface-addresses.md#private).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

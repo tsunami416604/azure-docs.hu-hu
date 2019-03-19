@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 2/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: e918a8624d637e44a4bb1122b58d5bd5dac67690
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: c4998712d77771a5600c06183a76254548289372
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816674"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080082"
 ---
 # <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Az ExpressRoute közvetlen konfigurálása az Azure CLI használatával
 
@@ -23,32 +23,32 @@ Az Azure ExpressRoute közvetlen használatával közvetlenül csatlakozik a Mic
 
 1. Jelentkezzen be az Azure-ba, és válassza ki az előfizetést, amely tartalmazza az ExpressRoute. Az ExpressRoute közvetlen erőforrás és az ExpressRoute-Kapcsolatcsoportok ugyanabban az előfizetésben kell lennie. Az Azure CLI-ben futtassa a következő parancsokat:
 
-  ```azurecli
-  az login
-  ```
+   ```azurecli
+   az login
+   ```
 
-  Keresse meg a fiókot az előfizetésekben: 
+   Keresse meg a fiókot az előfizetésekben: 
 
-  ```azurecli
-  az account list 
-  ```
+   ```azurecli
+   az account list 
+   ```
 
-  Válassza ki az előfizetést, amelynek meg szeretné ExpressRoute-kapcsolatcsoport létrehozása:
+   Válassza ki az előfizetést, amelynek meg szeretné ExpressRoute-kapcsolatcsoport létrehozása:
 
-  ```azurecli
-  az account set --subscription "<subscription ID>"
-  ```
+   ```azurecli
+   az account set --subscription "<subscription ID>"
+   ```
 
 2. Minden hely, ahol támogatott az ExpressRoute közvetlen listázza:
     
-  ```azurecli
-  az network express-route port location list
-  ```
+   ```azurecli
+   az network express-route port location list
+   ```
 
-  **Példa a kimenetre**
+   **Példa a kimenetre**
   
-  ```azurecli
-  [
+   ```azurecli
+   [
    {
     "address": "21715 Filigree Court, DC2, Building F, Ashburn, VA 20147",
     "availableBandwidths": [],
@@ -104,64 +104,64 @@ Az Azure ExpressRoute közvetlen használatával közvetlenül csatlakozik a Mic
     "tags": null,
     "type": "Microsoft.Network/expressRoutePortsLocations"
    }
-  ]
-  ```
+   ]
+   ```
 3. Határozza meg, hogy az az előző lépésben felsorolt helyek valamelyikén van-e rendelkezésre álló sávszélességet:
 
-  ```azurecli
-  az network express-route port location show -l "Equinix-Ashburn-DC2"
-  ```
+   ```azurecli
+   az network express-route port location show -l "Equinix-Ashburn-DC2"
+   ```
 
-  **Példa a kimenetre**
+   **Példa a kimenetre**
 
-  ```azurecli
-  {
-  "address": "21715 Filigree Court, DC2, Building F, Ashburn, VA 20147",
-  "availableBandwidths": [
+   ```azurecli
+   {
+   "address": "21715 Filigree Court, DC2, Building F, Ashburn, VA 20147",
+   "availableBandwidths": [
     {
       "offerName": "100 Gbps",
       "valueInGbps": 100
     }
-  ],
-  "contact": "support@equinix.com",
-  "id": "/subscriptions/<subscriptionID>/providers/Microsoft.Network/expressRoutePortsLocations/Equinix-Ashburn-DC2",
-  "location": null,
-  "name": "Equinix-Ashburn-DC2",
-  "provisioningState": "Succeeded",
-  "tags": null,
-  "type": "Microsoft.Network/expressRoutePortsLocations"
-  }
-  ```
+   ],
+   "contact": "support@equinix.com",
+   "id": "/subscriptions/<subscriptionID>/providers/Microsoft.Network/expressRoutePortsLocations/Equinix-Ashburn-DC2",
+   "location": null,
+   "name": "Equinix-Ashburn-DC2",
+   "provisioningState": "Succeeded",
+   "tags": null,
+   "type": "Microsoft.Network/expressRoutePortsLocations"
+   }
+   ```
 4. Hozzon létre egy ExpressRoute közvetlen erőforrást, amely az előző lépésekben a kiválasztott hely alapján.
 
-  Az ExpressRoute közvetlen QinQ- és Dot1Q beágyazását támogatja. Ha QinQ, mindegyik ExpressRoute-kapcsolatcsoport rendszer dinamikusan rendeli hozzá az S-címke, és egyedi az ExpressRoute közvetlen erőforrás teljes. Minden C-címke a kapcsolatcsoport egyedinek kell lennie. a kapcsolatcsoport, de nem az ExpressRoute közvetlen erőforrás között.  
+   Az ExpressRoute közvetlen QinQ- és Dot1Q beágyazását támogatja. Ha QinQ, mindegyik ExpressRoute-kapcsolatcsoport rendszer dinamikusan rendeli hozzá az S-címke, és egyedi az ExpressRoute közvetlen erőforrás teljes. Minden C-címke a kapcsolatcsoport egyedinek kell lennie. a kapcsolatcsoport, de nem az ExpressRoute közvetlen erőforrás között.  
 
-  Ha Dot1Q beágyazást, egyedi-e a C-Tag (VLAN) között a teljes az ExpressRoute közvetlen erőforrás kell kezelni.  
+   Ha Dot1Q beágyazást, egyedi-e a C-Tag (VLAN) között a teljes az ExpressRoute közvetlen erőforrás kell kezelni.  
 
-  > [!IMPORTANT]
-  > Az ExpressRoute közvetlen csak egy beágyazás típusa lehet. Az ExpressRoute közvetlen erőforrás létrehozása után a Beágyazás típusa nem módosítható.
-  > 
+   > [!IMPORTANT]
+   > Az ExpressRoute közvetlen csak egy beágyazás típusa lehet. Az ExpressRoute közvetlen erőforrás létrehozása után a Beágyazás típusa nem módosítható.
+   > 
  
-  ```azurecli
-  az network express-route port create -n $name -g $RGName --bandwidth 100 gbps  --encapsulation QinQ | Dot1Q --peering-location $PeeringLocationName -l $AzureRegion 
-  ```
+   ```azurecli
+   az network express-route port create -n $name -g $RGName --bandwidth 100 gbps  --encapsulation QinQ | Dot1Q --peering-location $PeeringLocationName -l $AzureRegion 
+   ```
 
-  > [!NOTE]
-  > Beállíthatja a **beágyazás** attribútumot **Dot1Q**. 
-  >
+   > [!NOTE]
+   > Beállíthatja a **beágyazás** attribútumot **Dot1Q**. 
+   >
 
-  **Példa a kimenetre**
+   **Példa a kimenetre**
 
-  ```azurecli
-  {
-  "allocationDate": "Wednesday, October 17, 2018",
-  "bandwidthInGbps": 100,
-  "circuits": null,
-  "encapsulation": "Dot1Q",
-  "etag": "W/\"<etagnumber>\"",
-  "etherType": "0x8100",
-  "id": "/subscriptions/<subscriptionID>/resourceGroups/Contoso-Direct-rg/providers/Microsoft.Network/expressRoutePorts/Contoso-Direct",
-  "links": [
+   ```azurecli
+   {
+   "allocationDate": "Wednesday, October 17, 2018",
+   "bandwidthInGbps": 100,
+   "circuits": null,
+   "encapsulation": "Dot1Q",
+   "etag": "W/\"<etagnumber>\"",
+   "etherType": "0x8100",
+   "id": "/subscriptions/<subscriptionID>/resourceGroups/Contoso-Direct-rg/providers/Microsoft.Network/expressRoutePorts/Contoso-Direct",
+   "links": [
     {
       "adminState": "Disabled",
       "connectorType": "LC",
@@ -190,19 +190,19 @@ Az Azure ExpressRoute közvetlen használatával közvetlenül csatlakozik a Mic
       "routerName": "tst-09xgmr-cis-2",
       "type": "Microsoft.Network/expressRoutePorts/links"
     }
-  ],
-  "location": "westus",
-  "mtu": "1500",
-  "name": "Contoso-Direct",
-  "peeringLocation": "Equinix-Ashburn-DC2",
-  "provisionedBandwidthInGbps": 0.0,
-  "provisioningState": "Succeeded",
-  "resourceGroup": "Contoso-Direct-rg",
-  "resourceGuid": "02ee21fe-4223-4942-a6bc-8d81daabc94f",
-  "tags": null,
-  "type": "Microsoft.Network/expressRoutePorts"
-  }  
-  ```
+   ],
+   "location": "westus",
+   "mtu": "1500",
+   "name": "Contoso-Direct",
+   "peeringLocation": "Equinix-Ashburn-DC2",
+   "provisionedBandwidthInGbps": 0.0,
+   "provisioningState": "Succeeded",
+   "resourceGroup": "Contoso-Direct-rg",
+   "resourceGuid": "02ee21fe-4223-4942-a6bc-8d81daabc94f",
+   "tags": null,
+   "type": "Microsoft.Network/expressRoutePorts"
+   }  
+   ```
 
 ## <a name="state"></a>Változás AdminState hivatkozások
 
@@ -210,26 +210,26 @@ Ez a folyamat használatához egy 1. réteg teszt elvégzéséhez. Győződjön 
 
 1. Hivatkozások beállítása **engedélyezve**. Ismételje meg ezt a lépést minden hivatkozás beállítása **engedélyezve**.
 
-  Hivatkozások [0] az az elsődleges port, a hivatkozások [1] pedig a másodlagos portot.
+   Hivatkozások [0] az az elsődleges port, a hivatkozások [1] pedig a másodlagos portot.
 
-  ```azurecli
-  az network express-route port update -n Contoso-Direct -g Contoso-Direct-rg --set links[0].adminState="Enabled"
-  ```
-  ```azurecli
-  az network express-route port update -n Contoso-Direct -g Contoso-Direct-rg --set links[1].adminState="Enabled"
-  ```
-  **Példa a kimenetre**
+   ```azurecli
+   az network express-route port update -n Contoso-Direct -g Contoso-Direct-rg --set links[0].adminState="Enabled"
+   ```
+   ```azurecli
+   az network express-route port update -n Contoso-Direct -g Contoso-Direct-rg --set links[1].adminState="Enabled"
+   ```
+   **Példa a kimenetre**
 
-  ```azurecli
-  {
-  "allocationDate": "Wednesday, October 17, 2018",
-  "bandwidthInGbps": 100,
-  "circuits": null,
-  "encapsulation": "Dot1Q",
-  "etag": "W/\"<etagnumber>\"",
-  "etherType": "0x8100",
-  "id": "/subscriptions/<subscriptionID>/resourceGroups/Contoso-Direct-rg/providers/Microsoft.Network/expressRoutePorts/Contoso-Direct",
-  "links": [
+   ```azurecli
+   {
+   "allocationDate": "Wednesday, October 17, 2018",
+   "bandwidthInGbps": 100,
+   "circuits": null,
+   "encapsulation": "Dot1Q",
+   "etag": "W/\"<etagnumber>\"",
+   "etherType": "0x8100",
+   "id": "/subscriptions/<subscriptionID>/resourceGroups/Contoso-Direct-rg/providers/Microsoft.Network/expressRoutePorts/Contoso-Direct",
+   "links": [
     {
       "adminState": "Enabled",
       "connectorType": "LC",
@@ -258,21 +258,21 @@ Ez a folyamat használatához egy 1. réteg teszt elvégzéséhez. Győződjön 
       "routerName": "tst-09xgmr-cis-2",
       "type": "Microsoft.Network/expressRoutePorts/links"
     }
-  ],
-  "location": "westus",
-  "mtu": "1500",
-  "name": "Contoso-Direct",
-  "peeringLocation": "Equinix-Ashburn-DC2",
-  "provisionedBandwidthInGbps": 0.0,
-  "provisioningState": "Succeeded",
-  "resourceGroup": "Contoso-Direct-rg",
-  "resourceGuid": "<resourceGUID>",
-  "tags": null,
-  "type": "Microsoft.Network/expressRoutePorts"
-  }
-  ```
+   ],
+   "location": "westus",
+   "mtu": "1500",
+   "name": "Contoso-Direct",
+   "peeringLocation": "Equinix-Ashburn-DC2",
+   "provisionedBandwidthInGbps": 0.0,
+   "provisioningState": "Succeeded",
+   "resourceGroup": "Contoso-Direct-rg",
+   "resourceGuid": "<resourceGUID>",
+   "tags": null,
+   "type": "Microsoft.Network/expressRoutePorts"
+   }
+   ```
 
-  A fenti eljárással le a portok használatával `AdminState = “Disabled”`.
+   A fenti eljárással le a portok használatával `AdminState = “Disabled”`.
 
 ## <a name="circuit"></a>Kapcsolatcsoport létrehozása
 

@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 564cfe0bb0b95d12d91b7d8d4e3f1f0549ec73e4
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.openlocfilehash: f1110ef9383798ddeb8a04a0e19deb441e3d207c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451756"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081304"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>Oktatóanyag: Tagok hozzáadása vagy eltávolítása csoport automatikusan
 
@@ -46,13 +46,13 @@ Először létrehozunk egy csoportot az egy partnervállalatból származó vend
 
 1. Jelentkezzen be az Azure Portalon (https://portal.azure.com) egy olyan fiókkal, amely a bérlő globális rendszergazdája.
 2. Válassza az **Azure Active Directory** > **Csoportok** > **Új csoport** lehetőséget.
-  ![az Új csoport parancs kiválasztása](./media/groups-dynamic-tutorial/new-group.png)
+   ![az Új csoport parancs kiválasztása](./media/groups-dynamic-tutorial/new-group.png)
 3. A **Csoport** panelen:
   
-  * Válassza a **Biztonsági** lehetőséget a csoport típusaként.
-  * Adja meg a következőt a csoport nevénél és leírásánál: `Guest users Contoso`
-  * Módosítsa a **Tagság típusát** a **Dinamikus felhasználó** értékre.
-  * Válassza a **Dinamikus lekérdezés hozzáadása** lehetőséget.
+   * Válassza a **Biztonsági** lehetőséget a csoport típusaként.
+   * Adja meg a következőt a csoport nevénél és leírásánál: `Guest users Contoso`
+   * Módosítsa a **Tagság típusát** a **Dinamikus felhasználó** értékre.
+   * Válassza a **Dinamikus lekérdezés hozzáadása** lehetőséget.
   
 4. Válassza a **Speciális szabály** lehetőséget, majd a **Speciális szabály** mezőbe írja be a következőt: `(user.userType -eq "Guest") -and (user.companyName -eq "Contoso")`.
 5. A panel bezárásához kattintson a **Lekérdezés hozzáadása** gombra.

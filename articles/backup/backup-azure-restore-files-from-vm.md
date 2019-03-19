@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 3/01/2019
 ms.author: pullabhk
-ms.openlocfilehash: 9ab271943d33ad63be0fae705ac703d1d98524ef
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 25c78e4050f1f5fdb02500fa1f206f6cf05e7134
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542505"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111956"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Fájlok helyreállítása Azure virtuális gépek biztonsági mentése
 
@@ -74,9 +74,9 @@ A fájlok és mappák visszaállítása a helyreállítási pontot, nyissa meg a
     - 3260-as kimenő portot
 
 > [!Note]
->
-* A letöltött szkript fájlneve lesz a **geo-name** ki kell tölteni az URL-címben. A példa: A letöltött szkript neve kezdődik \'VMname\'\_\'geoname\'_\'GUID\', például a ContosoVM_wcus_12345678...<br><br>
-* Az URL-cím "https://pod01-rec2.wcus.backup.windowsazure.com"
+> 
+> * A letöltött szkript fájlneve lesz a **geo-name** ki kell tölteni az URL-címben. A példa: A letöltött szkript neve kezdődik \'VMname\'\_\'geoname\'_\'GUID\', például a ContosoVM_wcus_12345678...<br><br>
+> * Az URL-cím "<https://pod01-rec2.wcus.backup.windowsazure.com>"
 
 
    Linux esetén a szkripthez "nyílt-iscsi" és "lshw" összetevők a helyreállítási ponthoz való csatlakozáshoz. Ha az összetevők nem létezik a számítógépen, amelyen a szkript fut, akkor a parancsprogram kéri engedélyt összetevőinek telepítését. Hozzájárulás megadása a szükséges összetevők telepítéséhez.

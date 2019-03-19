@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: 12ccb4978a8cfbaa7dede8d0093c78da05295fec
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 622a3ce0f80bd09bd09fa7ff097f68155318142d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410009"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080356"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>Alkalmazások csoport-jogcímek konfigurálása az Azure Active Directoryval (nyilvános előzetes verzió)
 
@@ -111,60 +111,60 @@ Egyes alkalmazásoknak a csoporttagsági információkat a "szerepkör" jogcím 
 
 Csoportjogcímek is megadható az a [választható jogcímek](../../active-directory/develop/active-directory-optional-claims.md) szakaszában a [Application Manifest](../../active-directory/develop/reference-app-manifest.md).
 
- 1. A portálon az Azure Active Directory -> Alkalmazás -> -> Válassza ki a regisztrációk alkalmazás-jegyzékfájl >
+1. A portálon az Azure Active Directory -> Alkalmazás -> -> Válassza ki a regisztrációk alkalmazás-jegyzékfájl >
 
- 2. A groupMembershipClaim módosításával csoport tagsági jogcímek engedélyezése
+2. A groupMembershipClaim módosításával csoport tagsági jogcímek engedélyezése
 
-    Az érvényes értékek a következők:
+   Az érvényes értékek a következők:
 
-    - "All"
-    - "SecurityGroup"
-    - "DistributionList"
-    - "DirectoryRole"
+   - "All"
+   - "SecurityGroup"
+   - "DistributionList"
+   - "DirectoryRole"
 
-    Példa:
+   Példa:
 
-    ```json
-    "groupMembershipClaims": "SecurityGroup"
-    ```
+   ```json
+   "groupMembershipClaims": "SecurityGroup"
+   ```
 
-    Csoport objectid azonosítójának fog bocsátja ki a csoport alapértelmezés szerint a jogcím értéke.  A helyi csoport attribútumait tartalmazza, vagy módosítsa a jogcímtípus szerepkör jogcím értéke módosításához használja a következő OptionalClaims konfiguráció:
+   Csoport objectid azonosítójának fog bocsátja ki a csoport alapértelmezés szerint a jogcím értéke.  A helyi csoport attribútumait tartalmazza, vagy módosítsa a jogcímtípus szerepkör jogcím értéke módosításához használja a következő OptionalClaims konfiguráció:
 
- 3. Állítsa be a csoport konfigurációja nem kötelező jogcímekben.
+3. Állítsa be a csoport konfigurációja nem kötelező jogcímekben.
 
-    Ha szeretné a jogkivonat csoportok a helyszíni AD-csoport attribútumok az opcionális jogcímek szakaszban adja meg, melyik typ tokenu választható jogcímet kell alkalmazni, a kért választható jogcím és minden egyéb tulajdonságot, kívánt nevét tartalmazza.  Több tokentípusokat is listázva lehet:
+   Ha szeretné a jogkivonat csoportok a helyszíni AD-csoport attribútumok az opcionális jogcímek szakaszban adja meg, melyik typ tokenu választható jogcímet kell alkalmazni, a kért választható jogcím és minden egyéb tulajdonságot, kívánt nevét tartalmazza.  Több tokentípusokat is listázva lehet:
 
-    - idToken a OIDC azonosító jogkivonat
-    - az OAuth/OIDC jogkivonat a hozzáférési tokent
-    - Az SAML-jogkivonatok Saml2Token.
+   - idToken a OIDC azonosító jogkivonat
+   - az OAuth/OIDC jogkivonat a hozzáférési tokent
+   - Az SAML-jogkivonatok Saml2Token.
 
-    > [!NOTE]
-    > SAML1.1 és a SAML2.0 formátumú jogkivonatokat vonatkozik a Saml2Token típusa
+   > [!NOTE]
+   > SAML1.1 és a SAML2.0 formátumú jogkivonatokat vonatkozik a Saml2Token típusa
 
-    Megfelelő jogkivonat alkalmazástípust módosítsa a csoportok jogcím OptionalClaims szakasz a jegyzékfájlban. A OptionalClaims séma a következőképpen történik:
+   Megfelelő jogkivonat alkalmazástípust módosítsa a csoportok jogcím OptionalClaims szakasz a jegyzékfájlban. A OptionalClaims séma a következőképpen történik:
 
- ```json
- {
-    "name": "groups",
-    "source": null,
-    "essential": false,
-    "additionalProperties": []
- }
- ```
+   ```json
+   {
+   "name": "groups",
+   "source": null,
+   "essential": false,
+   "additionalProperties": []
+   }
+   ```
 
- | Nem kötelező jogcímek séma | Érték |
- |----------|-------------|
- | **név:** | "Csoportok" kell lennie. |
- | **Forrás:** | Nincs használatban. Nincs megadva vagy null értéket adjon meg |
- | **alapvető:** | Nincs használatban. Nincs megadva, vagy adja meg a hamis |
- | **additionalProperties:** | További tulajdonságainak listája.  Valid options are "sam_account_name", “dns_domain_and_sam_account_name”, “netbios_domain_and_sam_account_name”, "emit_as_roles" |
+   | Nem kötelező jogcímek séma | Érték |
+   |----------|-------------|
+   | **név:** | "Csoportok" kell lennie. |
+   | **Forrás:** | Nincs használatban. Nincs megadva vagy null értéket adjon meg |
+   | **alapvető:** | Nincs használatban. Nincs megadva, vagy adja meg a hamis |
+   | **additionalProperties:** | További tulajdonságainak listája.  Valid options are "sam_account_name", “dns_domain_and_sam_account_name”, “netbios_domain_and_sam_account_name”, "emit_as_roles" |
 
- In additionalProperties only one of "sam_account_name", “dns_domain_and_sam_account_name”, “netbios_domain_and_sam_account_name” are required.  Ha egynél több található, az első, és a többi figyelmen kívül hagyja.
+   In additionalProperties only one of "sam_account_name", “dns_domain_and_sam_account_name”, “netbios_domain_and_sam_account_name” are required.  Ha egynél több található, az első, és a többi figyelmen kívül hagyja.
 
- Egyes alkalmazásoknak a felhasználó a szerepkör jogcím csoport adatait.  Ha módosítani szeretné a szerepkör jogcím egy csoportból jogcímet a jogcím típusa, adja hozzá a további tulajdonságok "emit_as_roles".  A csoport értékeket fogja a szerepkör jogcím bocsátja ki.
+   Egyes alkalmazásoknak a felhasználó a szerepkör jogcím csoport adatait.  Ha módosítani szeretné a szerepkör jogcím egy csoportból jogcímet a jogcím típusa, adja hozzá a további tulajdonságok "emit_as_roles".  A csoport értékeket fogja a szerepkör jogcím bocsátja ki.
 
- > [!NOTE]
- > "Emit_as_roles" használata egyetlen alkalmazás-szerepkör konfigurálva, hogy a felhasználó lesz hozzárendelve a szerepkör jogcím nem jelennek meg
+   > [!NOTE]
+   > "Emit_as_roles" használata egyetlen alkalmazás-szerepkör konfigurálva, hogy a felhasználó lesz hozzárendelve a szerepkör jogcím nem jelennek meg
 
 ### <a name="examples"></a>Példák
 

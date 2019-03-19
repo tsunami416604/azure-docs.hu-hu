@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 12/07/2018
-ms.openlocfilehash: 6509db136524d90db11b83acb701bda71c541060
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 54a7f308163cb2463554da32f0fae8b897c0742f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882620"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080539"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Oktatóanyag: Streamelési adatok hangulatelemzése az Azure Databricks használatával
 
@@ -40,6 +40,10 @@ Ez az oktatóanyag a következő feladatokat mutatja be:
 > * Hangulatelemzés futtatása tweeteken
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+
+> [!Note]
+> Ebben az oktatóanyagban nem lehet elvégezni használatával **Azure ingyenes próba-előfizetést**.
+> Ha egy ingyenes fiókot használna az Azure Databricks-fürt létrehozásához, a fürt létrehozása előtt nyissa meg a saját profilját, és módosítsa az előfizetését **használatalapú fizetésre**. További információkért lásd az [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) ismertető cikket.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -97,11 +101,11 @@ Ebben a szakaszban egy Azure Databricks-munkaterületet fog létrehozni az Azure
 
     Fogadja el az összes alapértelmezett értéket, kivéve a következőket:
 
-    * Adjon egy nevet a fürtnek.
-    * Ehhez a cikkhez a **4.0 (béta)** futtatókörnyezetben hozzon létre fürtöt.
-    * Mindenképpen jelölje be a **Leállítás \_\_ percnyi tétlenség után** jelölőnégyzetet. Adja meg az időtartamot (percben), amelynek elteltével le kell állítani a fürtöt, amennyiben az használaton kívül van.
+   * Adjon egy nevet a fürtnek.
+   * Ehhez a cikkhez a **4.0 (béta)** futtatókörnyezetben hozzon létre fürtöt.
+   * Mindenképpen jelölje be a **Leállítás \_\_ percnyi tétlenség után** jelölőnégyzetet. Adja meg az időtartamot (percben), amelynek elteltével le kell állítani a fürtöt, amennyiben az használaton kívül van.
 
-    Válassza a **Fürt létrehozása** lehetőséget. Ha a fürt már fut, notebookokat csatlakoztathat hozzá, illetve Spark-feladatokat futtathat.
+     Válassza a **Fürt létrehozása** lehetőséget. Ha a fürt már fut, notebookokat csatlakoztathat hozzá, illetve Spark-feladatokat futtathat.
 
 ## <a name="create-a-twitter-application"></a>Twitter-alkalmazás létrehozása
 
@@ -125,16 +129,16 @@ Mentse a Twitter-alkalmazáshoz lekért értékeket. Az oktatóanyag későbbi r
 
 Ez az oktatóanyag bemutatja, hogyan küldhet tweeteket az Event Hubsnak a Twitter API-k segítségével. Ezenkívül az [Apache Spark Event Hubs-összekötő](https://github.com/Azure/azure-event-hubs-spark) segítségével adatokat olvashat be és írhat az Azure Event Hubsba. Ha az API-kat a fürt részeként kívánja használni, adja hozzá azokat kódtárként az Azure Databrickshez, majd társítsa a Spark-fürthöz. A következőkben megtudhatja, hogyan adhatja hozzá a kódtárat a munkaterület **Megosztott** mappájához.
 
-1.  Az Azure Databricks-munkaterületen válassza a **Munkaterület** lehetőséget, majd kattintson a jobb gombbal a **Megosztott** elemre. A helyi menüben kattintson a **Létrehozás** > **Kódtár** parancsra.
+1. Az Azure Databricks-munkaterületen válassza a **Munkaterület** lehetőséget, majd kattintson a jobb gombbal a **Megosztott** elemre. A helyi menüben kattintson a **Létrehozás** > **Kódtár** parancsra.
 
-    ![Kódtár hozzáadása párbeszédpanel](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-option.png "Kódtár hozzáadása párbeszédpanel")
+   ![Kódtár hozzáadása párbeszédpanel](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-option.png "Kódtár hozzáadása párbeszédpanel")
 
 2. Az Új kódtár oldalon a **Forrás** listából válassza a **Maven-koordináta** lehetőséget. A **Koordináta** mezőben adja meg a hozzáadni kívánt csomag koordinátáit. Az oktatóanyagban használt kódtárak Maven-koordinátái a következők:
 
-    * Spark Event Hubs-összekötő – `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.5`
-    * Twitter API – `org.twitter4j:twitter4j-core:4.0.6`
+   * Spark Event Hubs-összekötő – `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.5`
+   * Twitter API – `org.twitter4j:twitter4j-core:4.0.6`
 
-    ![Maven-koordináták megadása](./media/databricks-sentiment-analysis-cognitive-services/databricks-eventhub-specify-maven-coordinate.png "Maven-koordináták megadása")
+     ![Maven-koordináták megadása](./media/databricks-sentiment-analysis-cognitive-services/databricks-eventhub-specify-maven-coordinate.png "Maven-koordináták megadása")
 
 3. Válassza a **Kódtár létrehozása** lehetőséget.
 
@@ -164,13 +168,13 @@ Ebben az oktatóanyagban használja a [Microsoft Cognitive Services Text Analyti
 
     ![Cognitive Services-fiók létrehozása](./media/databricks-sentiment-analysis-cognitive-services/create-cognitive-services-account.png "Cognitive Services-fiók létrehozása")
 
-    - Adja meg a Cognitive Services-fiók nevét.
-    - Adja meg az Azure-előfizetés nevét, amelyben a fiókot létrehozta.
-    - Válasszon egy Azure-beli helyet.
-    - Válasszon egy tarifacsomagot a szolgáltatáshoz. További információ a Cognitive Services díjszabásáról: [díjszabási lap](https://azure.microsoft.com/pricing/details/cognitive-services/).
-    - Adja meg, hogy hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévőt.
+   - Adja meg a Cognitive Services-fiók nevét.
+   - Adja meg az Azure-előfizetés nevét, amelyben a fiókot létrehozta.
+   - Válasszon egy Azure-beli helyet.
+   - Válasszon egy tarifacsomagot a szolgáltatáshoz. További információ a Cognitive Services díjszabásáról: [díjszabási lap](https://azure.microsoft.com/pricing/details/cognitive-services/).
+   - Adja meg, hogy hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévőt.
 
-    Kattintson a **Létrehozás** gombra.
+     Kattintson a **Létrehozás** gombra.
 
 5. A fiók létrehozása után a a **áttekintése** lapon jelölje be **hozzáférési kulcsok megjelenítése**.
 

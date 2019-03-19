@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 01e5ffc7cf00f7d0e0e97f521b6b6de2abd56567
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: b72966ebc73953e6a89ca1bb2fd4f7ce15f70fee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307683"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111378"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Profil web Apps alkalmazások az Azure virtuális gép vagy virtuálisgép-méretezési csoportot beállítani az Application Insights Profiler segítségével
 
@@ -32,28 +32,28 @@ Ezek a szolgáltatások az Azure Application Insights Profiler is telepítheti:
 Ez a cikk bemutatja, hogyan tehet szert az Application Insights Profiler az Azure virtuális gép (VM) vagy az Azure-beli virtuálisgép-méretezési csoportban futó. Profiler az Azure Diagnostics bővítmény telepítve van a virtuális gépek számára. A bővítmény futtatásának Profiler konfigurálása, és az Application Insights SDK építve az alkalmazásba.
 
 1. Az Application Insights SDK hozzáadása a [ASP.NET-alkalmazás](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net) vagy rendszeres [.NET-alkalmazás](windows-services.md?toc=/azure/azure-monitor/toc.json).  
-  Profilok számára a kérelmek megtekintése, Application Insights – kéréstelemetria kell küldenie.
+   Profilok számára a kérelmek megtekintése, Application Insights – kéréstelemetria kell küldenie.
 
 1. Azure Diagnostics bővítmény telepítése a virtuális Gépen. Teljes Resource Manager sablon példákért lásd:  
-    * [Virtuális gép](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/WindowsVirtualMachine.json)
-    * [Virtuálisgép-méretezési csoportot](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/WindowsVirtualMachineScaleSet.json)
+   * [Virtuális gép](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/WindowsVirtualMachine.json)
+   * [Virtuálisgép-méretezési csoportot](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/WindowsVirtualMachineScaleSet.json)
     
-    A kulcs része a ApplicationInsightsProfilerSink a WadCfg a. Ahhoz, hogy az Azure diagnosztikai adatokat küldeni a Rendszerállapotkulcsot Profiler engedélyezése, ez a szakasz egy másik fogadó hozzá.
+     A kulcs része a ApplicationInsightsProfilerSink a WadCfg a. Ahhoz, hogy az Azure diagnosztikai adatokat küldeni a Rendszerállapotkulcsot Profiler engedélyezése, ez a szakasz egy másik fogadó hozzá.
     
-    ```json
-      "SinksConfig": {
-        "Sink": [
-          {
-            "name": "ApplicationInsightsSink",
-            "ApplicationInsights": "85f73556-b1ba-46de-9534-606e08c6120f"
-          },
-          {
-            "name": "MyApplicationInsightsProfilerSink",
-            "ApplicationInsightsProfiler": "85f73556-b1ba-46de-9534-606e08c6120f"
-          }
-        ]
-      },
-    ```
+     ```json
+     "SinksConfig": {
+       "Sink": [
+         {
+           "name": "ApplicationInsightsSink",
+           "ApplicationInsights": "85f73556-b1ba-46de-9534-606e08c6120f"
+         },
+         {
+           "name": "MyApplicationInsightsProfilerSink",
+           "ApplicationInsightsProfiler": "85f73556-b1ba-46de-9534-606e08c6120f"
+         }
+       ]
+     },
+     ```
 
 1. Helyezze üzembe a módosított környezetben üzemelő példány definíciója.  
 

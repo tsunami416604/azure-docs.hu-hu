@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: e2dd02ada2c22fa8d6c2d79387ea01f3ec97dd7e
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: b9f153aa2da32fac2bf2e64f9fc4cd469acb0b89
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108126"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007498"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Oktatóanyag: Tároló rendszerképek létrehozásának automatizálása az Azure container registry alapképet frissítésekor 
 
@@ -146,7 +146,7 @@ Futtassa helyileg a tárolót a `docker run` paranccsal. A **\<run-id\>** helyé
 docker run -d -p 8080:80 $ACR_NAME.azurecr.io/helloworld:<run-id>
 ```
 
-Lépjen a http://localhost:8080 címre a böngészőben, és a weboldalon a Node.js verziószámának kell megjelennie az alábbihoz hasonlóan. Egy későbbi lépésben majd újabbra frissíti a verziót úgy, hogy egy „a” tagot ad hozzá a verziósztringhez.
+Lépjen a `http://localhost:8080` címre a böngészőben, és a weboldalon a Node.js verziószámának kell megjelennie az alábbihoz hasonlóan. Egy későbbi lépésben majd újabbra frissíti a verziót úgy, hogy egy „a” tagot ad hozzá a verziósztringhez.
 
 ![A böngészőben megjelenített mintaalkalmazás képernyőképe][base-update-01]
 

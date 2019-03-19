@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: alkohli
-ms.openlocfilehash: e3dc4a3128be7014af0454cf78f2c8c5c86f8d77
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: f658b8a0530b0031f0ad22ce3c09ea7cc212430b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409737"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107069"
 ---
 # <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>Oktatóanyag: Vissza az Azure Data Box, és ellenőrizze az adatok feltöltése az Azure-bA
 
@@ -58,8 +58,8 @@ Győződjön meg arról, hogy az adatok feltöltése az Azure-ba, a forrás-tör
 
 - Az Azure Storage-fiókok. A Data Boxra másolt adatok a típusuktól függően a következő elérési utak egyikére lesznek feltöltve az Azure Storage-fiókban.
 
-    - Blokkblobok és lapblobok esetében: `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
-    - Azure Files esetében: `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
+  - Blokkblobok és lapblobok esetében: `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
+  - Azure Files esetében: `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
 
     Alternatív megoldásként navigálhat az Azure Storage-fiókjából is az Azure Portalon.
 

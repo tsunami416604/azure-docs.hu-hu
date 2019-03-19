@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 08/10/2018
-ms.openlocfilehash: 830a7ef1f25ea52959baf992274b5f7711b646b2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f48c3c9691170df6d460bfe9a6da0e02e4be32c3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165406"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077700"
 ---
 # <a name="download-and-extract-the-azure-stack-development-kit-asdk"></a>Töltse le és csomagolja ki az Azure Stack Development Kit (ASDK)
 Miután meggyőződött arról, hogy a fejlesztői csomag fogadó számítógép megfelel-e a ASDK telepítésére vonatkozó minimális követelményeinek, a következő lépés az töltse le és csomagolja ki a ASDK központi telepítési csomag beolvasni a Cloudbuilder.vhdx.
@@ -29,15 +29,15 @@ Miután meggyőződött arról, hogy a fejlesztői csomag fogadó számítógép
 ## <a name="download-the-asdk"></a>Töltse le a ASDK
 1. A letöltés a Kezdés előtt győződjön meg arról, hogy a számítógép megfelel-e a következő előfeltételek vonatkoznak:
 
-  - A számítógépnek rendelkeznie kell legalább 60 GB lemezterület elérhető négy különálló, azonos logikai merevlemezek emellett ingyenesen az operációsrendszer-lemez.
-  - [.NET-keretrendszer 4.6 (vagy újabb verzió)](https://dotnet.microsoft.com/download/dotnet-framework-runtime/net46) kell telepíteni.
+   - A számítógépnek rendelkeznie kell legalább 60 GB lemezterület elérhető négy különálló, azonos logikai merevlemezek emellett ingyenesen az operációsrendszer-lemez.
+   - [.NET-keretrendszer 4.6 (vagy újabb verzió)](https://dotnet.microsoft.com/download/dotnet-framework-runtime/net46) kell telepíteni.
 
 2. [Nyissa meg az első lépések lap](https://azure.microsoft.com/overview/azure-stack/try/?v=try) ahol az Azure Stack Development Kit letöltése, adja meg az adatait és kattintson a **küldés**.
 3. Töltse le és futtassa a [Deployment Checker for Azure Stack Development Kit](https://go.microsoft.com/fwlink/?LinkId=828735&clcid=0x409) előfeltétel-ellenőrző parancsfájlt. Ez a szkript önálló halad át az előfeltételeket ellenőrzi az Azure Stack Development Kit telepítője által végzett. Lehetővé teszi annak ellenőrzéséhez, hogy a hardver- és szoftverkövetelmények, a nagyobb csomag letöltése az Azure Stack Development Kit előtt találkoznak.
 4. A **a szoftverfrissítések letöltéséhez**, kattintson a **Azure Stack Development Kit**.
 
-  > [!NOTE]
-  > A ASDK letöltése (AzureStackDevelopmentKit.exe) körülbelül 10 GB-os.
+   > [!NOTE]
+   > A ASDK letöltése (AzureStackDevelopmentKit.exe) körülbelül 10 GB-os.
 
 ## <a name="extract-the-asdk"></a>Bontsa ki a ASDK
 1. A letöltés befejezése után kattintson a **futtatása** a ASDK mappába (AzureStackDevelopmentKit.exe) elindításához.

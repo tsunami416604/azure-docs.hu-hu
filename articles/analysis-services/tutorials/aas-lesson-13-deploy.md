@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 780853644125c8fa6d5edcef642cfad724516ef2
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 72fa9bf211139b971afa443af812d644c76062fc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188385"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58123470"
 ---
 # <a name="deploy"></a>Üzembe helyezés
 
@@ -49,15 +49,15 @@ Ez a cikk a táblázatos modellezéssel foglalkozó oktatóanyag részét képez
   
 #### <a name="to-deploy-the-adventure-works-internet-sales"></a>Az Adventure Works internetes értékesítési modell központi telepítése
   
-1.  A **Megoldáskezelő** területén kattintson a jobb gombbal az **AW Internet Sales** projektre, majd kattintson a **Létrehozás** parancsra.  
+1. A **Megoldáskezelő** területén kattintson a jobb gombbal az **AW Internet Sales** projektre, majd kattintson a **Létrehozás** parancsra.  
 
-2.  Kattintson a jobb gombbal az **AW Internet Sales** projektre, majd kattintson az **Üzembe helyezés** parancsra.
+2. Kattintson a jobb gombbal az **AW Internet Sales** projektre, majd kattintson az **Üzembe helyezés** parancsra.
 
-    Ha az üzembe helyezést az Azure Analysis Services szolgáltatásban végzi, a rendszer felkérheti, hogy adja meg a fiókja adatait. Adja meg céges fiókját és jelszavát, például: nancy@adventureworks.com. Ennek a fióknak a kiszolgáló Rendszergazdák csoportjába kell tartoznia.
+   Ha az üzembe helyezést az Azure Analysis Services szolgáltatásban végzi, a rendszer felkérheti, hogy adja meg a fiókja adatait. Adja meg céges fiókját és jelszavát, például: nancy@adventureworks.com. Ennek a fióknak a kiszolgáló Rendszergazdák csoportjába kell tartoznia.
   
-    Megjelenik az Üzembe helyezés párbeszédpanel, amelyen a modell metaadatainak és egyes tábláinak üzembehelyezési állapota látható.  
+   Megjelenik az Üzembe helyezés párbeszédpanel, amelyen a modell metaadatainak és egyes tábláinak üzembehelyezési állapota látható.  
     
-    ![aas-lesson13-deploy-status](../tutorials/media/aas-lesson13-deploy-status.png)
+   ![aas-lesson13-deploy-status](../tutorials/media/aas-lesson13-deploy-status.png)
   
 3. Miután az üzembe helyezés sikeresen befejeződött, nyugodtan kattintson a **Bezárás** gombra.  
   

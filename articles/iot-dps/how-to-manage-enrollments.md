@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 0970131c4b674fd864ad574b0f749cd6d7f6f2a2
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 51b072bfd0827528a5504133dff8c1cdd7a7ca86
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42059155"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089386"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Hogyan eszközök beléptetésének kezelése az Azure Portalon
 
@@ -28,15 +28,15 @@ Regisztrálhatja az eszközöket a kiépítési szolgáltatás két módja van:
 
     A portálon az alábbi lépéseket követve eszközök egy csoportját, egy regisztrációs csoportot hozhat létre:
 
-    1. Jelentkezzen be az Azure Portalon, és kattintson a **összes erőforrás** elemet a bal oldali menüben.  
-    1. Kattintson a Device Provisioning service szeretne regisztrálni az eszközt az erőforrások listájából.  
-    1. A kiépítési szolgáltatás:  
-       a. Kattintson a **beléptetések kezelése**, majd válassza ki a **regisztrációs csoportok** fülre.  
-       b. Kattintson a felül lévő **Hozzáadás** gombra.  
-       c. Ha az "A regisztrációs csoport hozzáadása" panel jelenik meg, írja be a beléptetési listabejegyzés adatait.  **Csoport neve** megadása kötelező. Kiválaszthatja a "CA vagy a köztes" lehetőséget a **tanúsítványtípus**, és töltse fel a legfelső szintű **elsődleges tanúsítvány** eszközök csoportja.  
-       d. Kattintson a **Save** (Mentés) gombra. A regisztrációs csoport sikeres létrehozás esetén kell megjelennie a csoport neve meg fog jelenni a **regisztrációs csoportok** fülre.  
+  1. Jelentkezzen be az Azure Portalon, és kattintson a **összes erőforrás** elemet a bal oldali menüben.  
+  1. Kattintson a Device Provisioning service szeretne regisztrálni az eszközt az erőforrások listájából.  
+  1. A kiépítési szolgáltatás:  
+     a. Kattintson a **beléptetések kezelése**, majd válassza ki a **regisztrációs csoportok** fülre.  
+     b. Kattintson a felül lévő **Hozzáadás** gombra.  
+     c. Ha az "A regisztrációs csoport hozzáadása" panel jelenik meg, írja be a beléptetési listabejegyzés adatait.  **Csoport neve** megadása kötelező. Kiválaszthatja a "CA vagy a köztes" lehetőséget a **tanúsítványtípus**, és töltse fel a legfelső szintű **elsődleges tanúsítvány** eszközök csoportja.  
+     d. Kattintson a **Save** (Mentés) gombra. A regisztrációs csoport sikeres létrehozás esetén kell megjelennie a csoport neve meg fog jelenni a **regisztrációs csoportok** fülre.  
 
-       [![Regisztrációs csoportot a portálon](./media/how-to-manage-enrollments/group-enrollment.png)] (. / media/how-to-manage-enrollments/group-enrollment.png#lightbox)
+     [![Regisztrációs csoportot a portálon](./media/how-to-manage-enrollments/group-enrollment.png)](./media/how-to-manage-enrollments/group-enrollment.png#lightbox)
     
 
 * Egy **egyéni regisztráció** regisztrálható egyetlen eszközhöz tartozó bejegyzés. Egyéni regisztrációk használhatja bármelyik x509 tanúsítványokat vagy SAS-tokeneket (az egy fizikai vagy virtuális TPM-ben) igazolási mechanizmusként. Azt javasoljuk, hogy egyéni regisztrációk használatát, eszközök, az egyedi kezdeti konfigurációt igénylő vagy az eszközök, amelyek a TPM-eszköz vagy virtuális TPM-n keresztül SAS-tokeneket csak használhatja az igazolási mechanizmusként. Előfordulhat, hogy az egyéni regisztrációkhoz meg van határozva a kívánt IoT Hub-eszközazonosító.

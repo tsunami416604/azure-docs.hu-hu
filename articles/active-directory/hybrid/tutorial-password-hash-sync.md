@@ -14,12 +14,12 @@ ms.date: 09/17/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54bc5f0a155db5460b3422d03650211175eef89a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 45379f8f955c50e2598ebcebd34e971c29b2c81c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534174"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103230"
 ---
 # <a name="tutorial--integrate-a-single-ad-forest-using-password-hash-sync-phs"></a>Oktatóanyag:  Egyetlen AD-erdő integrálása jelszókivonat-szinkronizálással (PHS)
 
@@ -77,7 +77,7 @@ A virtuális gép kiépítésének befejezéséhez, kell az operációs rendszer
 
 1. Hyper-V kezelőjében, kattintson duplán a virtuális gépen
 2. Kattintson a Start gombra.
-3.  A rendszer bekéri "Nyomja le bármelyik billentyűt CD vagy DVD-ről". Lépjen tovább, és ehhez.
+3. A rendszer bekéri "Nyomja le bármelyik billentyűt CD vagy DVD-ről". Lépjen tovább, és ehhez.
 4. A Windows Server indítási képernyő válassza ki a nyelvet, és kattintson a **tovább**.
 5. Kattintson a **telepítse most**.
 6. Adja meg a licenckulcsot, és kattintson a **tovább**.
@@ -226,9 +226,9 @@ Most ellenőrizzük, hogy a felhasználók a helyszíni címtárban szolgáltat�
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Hogy a felhasználók bejelentkezés tesztelése
 
-1.  Keresse meg a [https://myapps.microsoft.com](https://myapps.microsoft.com)
+1. Keresse meg a [https://myapps.microsoft.com](https://myapps.microsoft.com)
 2. Jelentkezzen be az új bérlő létrehozott felhasználói fiókkal.  Kell jelentkezzen be a következő formátumban: (user@domain.onmicrosoft.com). A felhasználó által használt a bejelentkezéshez ugyanazt a jelszót a helyszínen.</br>
-![Ellenőrizze](media/tutorial-password-hash-sync/verify1.png)</br>
+   ![Ellenőrizze](media/tutorial-password-hash-sync/verify1.png)</br>
 
 Most már sikeresen befejeződött a telepítő egy hibrid identitás környezet, amellyel tesztelheti, és ismerje meg az Azure által biztosított lehetőségeket.
 

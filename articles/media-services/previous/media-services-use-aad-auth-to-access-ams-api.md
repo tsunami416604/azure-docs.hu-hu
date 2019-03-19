@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: b846e1fe4552c6cec356a7e7828135b0e1fdf315
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: fa13ffe450b60bd8c896636911268a98b49bbc0f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994101"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104131"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Hozzáférés az Azure Media Services API Azure AD-hitelesítés  
  
@@ -71,20 +71,20 @@ A fenti ábrán a számok jelölik a folyamatot a kérelmek időrendi sorrendben
 1. A felhasználótól a hitelesítő adatokat.
 2. A kérelem egy Azure AD hozzáférési jogkivonatot a következő paraméterekkel:  
 
-    * Az Azure AD-bérlő végpont.
+   * Az Azure AD-bérlő végpont.
 
-        A bérlői kapcsolatos információkat az Azure Portalról kérhető. Vigye a kurzort az egérmutatót a bejelentkezett felhasználó felső sarokban.
-    * Media Services-erőforrás URI-t. 
+       A bérlői kapcsolatos információkat az Azure Portalról kérhető. Vigye a kurzort az egérmutatót a bejelentkezett felhasználó felső sarokban.
+   * Media Services-erőforrás URI-t. 
 
-        Ez az URI megegyezik a Media Services-fiókok, amelyek ugyanabban az Azure környezetben (például https://rest.media.azure.net).
+       Ez az URI megegyezik a Media Services-fiókok, amelyek ugyanabban az Azure környezetben (például https://rest.media.azure.net).
 
-    * A Media Services (natív) alkalmazás ügyfél-azonosító.
-    * A Media Services (natív) alkalmazás átirányítási URI-t.
-    * Erőforrás-URI REST Media Services.
+   * A Media Services (natív) alkalmazás ügyfél-azonosító.
+   * A Media Services (natív) alkalmazás átirányítási URI-t.
+   * Erőforrás-URI REST Media Services.
         
-        Az URI-t jelöli a REST API-végpont (például https://test03.restv2.westus.media.azure.net/api/).
+       Az URI-t jelöli a REST API-végpont (például https://test03.restv2.westus.media.azure.net/api/).
 
-    Használatával lekérjük az értékeket a paraméterekhez, lásd: [az Azure portal használata az Azure AD-hitelesítési beállítások eléréséhez](media-services-portal-get-started-with-aad.md) a felhasználói hitelesítés lehetőséget.
+     Használatával lekérjük az értékeket a paraméterekhez, lásd: [az Azure portal használata az Azure AD-hitelesítési beállítások eléréséhez](media-services-portal-get-started-with-aad.md) a felhasználói hitelesítés lehetőséget.
 
 3. Az Azure AD hozzáférési jogkivonatot az ügyfélnek zajlik.
 4. Az ügyfél kérést küld az Azure Media REST API-t az Azure AD hozzáférési jogkivonatot.
@@ -113,20 +113,20 @@ A számok az előző ábrán mutatják be a folyamatot a kérelmek időrendi sor
     
 1. A középső rétegbeli alkalmazás (webes API-t vagy webes alkalmazás), amely a következő paraméterekkel rendelkezik az Azure AD hozzáférési jogkivonatot kér:  
 
-    * Az Azure AD-bérlő végpont.
+   * Az Azure AD-bérlő végpont.
 
-        A bérlői kapcsolatos információkat az Azure Portalról kérhető. Vigye a kurzort az egérmutatót a bejelentkezett felhasználó felső sarokban.
-    * Media Services-erőforrás URI-t. 
+       A bérlői kapcsolatos információkat az Azure Portalról kérhető. Vigye a kurzort az egérmutatót a bejelentkezett felhasználó felső sarokban.
+   * Media Services-erőforrás URI-t. 
 
-        Ez az URI megegyezik a Media Services-fiókok, amelyek ugyanabban az Azure-környezetben találhatók (például https://rest.media.azure.net).
+       Ez az URI megegyezik a Media Services-fiókok, amelyek ugyanabban az Azure-környezetben találhatók (például https://rest.media.azure.net).
 
-    * Erőforrás-URI REST Media Services.
+   * Erőforrás-URI REST Media Services.
 
-        Az URI-t jelöli a REST API-végpont (például https://test03.restv2.westus.media.azure.net/api/).
+       Az URI-t jelöli a REST API-végpont (például https://test03.restv2.westus.media.azure.net/api/).
 
-    * Az Azure AD-alkalmazás értékeire: az ügyfél-Azonosítóját és ügyfélkulcsát.
+   * Az Azure AD-alkalmazás értékeire: az ügyfél-Azonosítóját és ügyfélkulcsát.
     
-    Használatával lekérjük az értékeket a paraméterekhez, lásd: [az Azure portal használata az Azure AD-hitelesítési beállítások eléréséhez](media-services-portal-get-started-with-aad.md) a szolgáltatás egyszerű hitelesítési lehetőség használatával.
+     Használatával lekérjük az értékeket a paraméterekhez, lásd: [az Azure portal használata az Azure AD-hitelesítési beállítások eléréséhez](media-services-portal-get-started-with-aad.md) a szolgáltatás egyszerű hitelesítési lehetőség használatával.
 
 2. Az Azure AD hozzáférési jogkivonatot a középső réteg küld.
 4. A középső réteg kérést küld az Azure Media REST API az Azure AD-jogkivonattal.

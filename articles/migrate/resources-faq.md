@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: snehaa
-ms.openlocfilehash: 3744e51ffb4e0836eba4b1641413d8c0ee240f87
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 20a3b790310153ac5bda23fb72baf2ae61e1da52
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729375"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003712"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Az Azure Migrate – gyakori kérdések (GYIK)
 
@@ -21,7 +21,7 @@ Ez a cikk az Azure Migrate – gyakori kérdések tartalmazza. Ha ez a cikk elol
 
 ### <a name="does-azure-migrate-support-assessment-of-only-vmware-workloads"></a>Az Azure Migrate támogatja csak a VMware számítási feladatainak értékelését?
 
-Igen, az Azure Migrate jelenleg csak támogatja a VMware számítási feladatainak értékelését. Támogatja a Hyper-V előzetes verzióban érhető el, kérjük, jelentkezzen [Itt](http://aka.ms/migratefuture) az előzetes verzió eléréséhez. Fizikai kiszolgálók támogatása a jövőben engedélyezve lesz.
+Igen, az Azure Migrate jelenleg csak támogatja a VMware számítási feladatainak értékelését. Támogatja a Hyper-V előzetes verzióban érhető el, kérjük, jelentkezzen [Itt](https://aka.ms/migratefuture) az előzetes verzió eléréséhez. Fizikai kiszolgálók támogatása a jövőben engedélyezve lesz.
 
 ### <a name="does-azure-migrate-need-vcenter-server-to-discover-a-vmware-environment"></a>Nem kell az Azure Migrate a vCenter-kiszolgáló felderítése a VMware-környezet?
 
@@ -42,7 +42,7 @@ Az Azure Migrate egy migrálási eszközt, és az Azure Site Recovery Deployment
 
 **Áttelepítés a VMware-ből az Azure-bA**: Ha szeretne a helyszíni számítási feladatok migrálása az Azure-ba, az áttelepítés tervezéséhez használja az Azure Migrate. Az Azure Migrate a helyszíni számítási feladatokat értékeli, és útmutatást, insights, és segítséget nyújtanak az Azure-ba való migrálás mechanizmusokat biztosít. Miután elkészült a migrálási terv, szolgáltatások, például az Azure Site Recovery és az Azure Database Migration Service segítségével a gépek áttelepítése az Azure-bA.
 
-**Áttelepítés a Hyper-V-ről az Azure-bA**: Az általánosan elérhető verziót az Azure Migrate jelenleg támogatja a VMware virtuális gépek értékelése az Azure-ba való migrálásra. Támogatja a Hyper-V jelenleg éles támogatása előzetes verzióban van. Ha érdekli az előzetes verzió kipróbálásához, regisztráljon [Itt](http://aka.ms/migratefuture).
+**Áttelepítés a Hyper-V-ről az Azure-bA**: Az általánosan elérhető verziót az Azure Migrate jelenleg támogatja a VMware virtuális gépek értékelése az Azure-ba való migrálásra. Támogatja a Hyper-V jelenleg éles támogatása előzetes verzióban van. Ha érdekli az előzetes verzió kipróbálásához, regisztráljon [Itt](https://aka.ms/migratefuture).
 
 **Az Azure-ba történő VMware vagy Hyper-V vész-helyreállítási**: Ha azt tervezi, ehhez a vészhelyreállítás (DR) az Azure-ban az Azure Site Recovery (a Site Recovery), használja a Site Recovery Deployment Planner a vészhelyreállítás megtervezése. A Site Recovery Deployment Planner hajtja végre a helyszíni környezet mély, az ASR-specifikus értékelését. Javaslatok a sikeres Vészhelyreállítási műveletek, például a replikáció, feladatátvétel, a virtuális gépek Site Recovery által igényelt biztosít.  
 

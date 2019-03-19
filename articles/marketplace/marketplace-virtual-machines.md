@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: ellacroi
-ms.openlocfilehash: b9403855949e87a287f543c2ac41738e92238303
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: eb49d0fe610a78b8d1a407644a206fddaba0a67a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217206"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58116215"
 ---
 # <a name="virtual-machine-offer-publishing-guide"></a>Virtuálisgép-ajánlat közzétételi útmutató
 
@@ -56,12 +56,12 @@ Az ügyfelek, hogy a megoldás az interaktív felhasználói élményt nyújtson
 
 Virtuális berendezés az előfizetéshez társított az ügyfelek központi telepítéséhez használja a virtuális gép ajánlat típusát. Virtuális gépek teljes körűen engedélyezve a használatalapú fizetéses vagy bring-your-saját licenc (használata BYOL) licencelési modell használatával kereskedelmi. A Microsoft kereskedelmi-tranzakciót futtat, és az Ön nevében az ügyfél bankkártyáján. Az ügyfél- és Microsoft, beleértve a nagyvállalati szerződéseket közötti előnyben részesített fizetési kapcsolat használatának előnye kap.
 
->[!NOTE]
->Jelenleg a társított nagyvállalati szerződés program pénzügyi kötelezettségvállalásainak keretében tudnak a virtuális gép az Azure-használat alapján, de a szoftverlicenc-díjak ellenében nem használható.  
-
->[!NOTE]
->A felderítési és a virtuális gép üzembe helyezési ügyfelek adott halmazának való korlátozásához a kép közzétételével, és a egy privát ajánlatunk díjszabás érvényesülnek. Saját ajánlatok arra, hogy az exkluzív ajánlatokat létrehozását a legközelebbi ügyfelei számára, és testre szabott szoftver és használati zárolásának feloldásához. A testre szabott használati lehetővé teszi számos forgatókönyv esetében, beleértve a speciális díjszabás és feltételeket, valamint korlátozott kiadású szoftver korai hozzáférést a mező által vezetett üzletek kiemeléséhez. Szóló ajánlatok tenni meghatározott díjszabás vagy termékek korlátozott számú ügyfél engedélyezéséhez hoz létre egy új Termékváltozatban ezeket az adatokat.  
-*   Saját ajánlatok kapcsolatos további információkért látogasson el a privát ajánlatok lapon található Azure Marketplace-en [azure.microsoft.com/blog/private-offers-on-azure-marketplace](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace).  
+> [!NOTE]
+> Jelenleg a társított nagyvállalati szerződés program pénzügyi kötelezettségvállalásainak keretében tudnak a virtuális gép az Azure-használat alapján, de a szoftverlicenc-díjak ellenében nem használható.  
+> 
+> [!NOTE]
+> A felderítési és a virtuális gép üzembe helyezési ügyfelek adott halmazának való korlátozásához a kép közzétételével, és a egy privát ajánlatunk díjszabás érvényesülnek. Saját ajánlatok arra, hogy az exkluzív ajánlatokat létrehozását a legközelebbi ügyfelei számára, és testre szabott szoftver és használati zárolásának feloldásához. A testre szabott használati lehetővé teszi számos forgatókönyv esetében, beleértve a speciális díjszabás és feltételeket, valamint korlátozott kiadású szoftver korai hozzáférést a mező által vezetett üzletek kiemeléséhez. Szóló ajánlatok tenni meghatározott díjszabás vagy termékek korlátozott számú ügyfél engedélyezéséhez hoz létre egy új Termékváltozatban ezeket az adatokat.  
+> *   Saját ajánlatok kapcsolatos további információkért látogasson el a privát ajánlatok lapon található Azure Marketplace-en [azure.microsoft.com/blog/private-offers-on-azure-marketplace](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace).  
 
 | Követelmény | Részletek |  
 |:--- |:--- | 
