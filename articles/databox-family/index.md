@@ -1,6 +1,6 @@
 ---
 title: Azure Data Box-dokumentáció
-description: Az Azure Data Box termékcsalád különböző kapacitású tárolókat biztosít több terabájtnyi adat az Azure-ba való gyors, olcsó és megbízható elküldéséhez. A Microsoft az adatok gyors és biztonságos átviteléhez saját fejlesztésű tárolóeszközöket küld Önnek, amelyekkel kapcsolat nélküli üzemmódban vagy a hálózaton keresztül végezheti az adatátvitelt.
+description: 'Az Azure Data Box termékcsalád különböző kapacitású tárolókat biztosít több terabájtnyi adat az Azure-ba való gyors, olcsó és megbízható elküldéséhez. A Microsoft az adatok gyors és biztonságos átviteléhez saját fejlesztésű tárolóeszközöket küld Önnek, amelyekkel kapcsolat nélküli üzemmódban vagy a hálózaton keresztül végezheti az adatátvitelt.'
 services: databox
 author: alkohli
 manager: twooley
@@ -11,16 +11,10 @@ ms.devlang: na
 ms.topic: hub-page
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 09e0debba88ed87ab84b567e797d3ae63ec32a81
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157105"
 ---
+<div id="main" class="v2">
 <h1>Azure Data Box</h1>
 <p>Az Azure Data Box termékcsalád különböző kapacitású tárolókat biztosít több terabájtnyi (TB) adat az Azure-ba való gyors, olcsó és megbízható elküldéséhez. A Microsoft az adatok gyors és biztonságos átviteléhez saját fejlesztésű tárolóeszközöket küld Önnek, amelyekkel kapcsolat nélküli üzemmódban vagy a hálózaton keresztül végezheti az adatátvitelt.</p>
-
 <h2>Offline adatátvitel</h2>
 <p>Ha a hálózati sávszélesség korlátozott vagy egyáltalán nincs</p>
 <ul class="cardsA panelContent singlePanelContent cols cols3" style="display:flex!important;">
@@ -79,7 +73,6 @@ ms.locfileid: "54157105"
         </a>
     </li>
 </ul>
-
 <h2>Online adatátvitel</h2>
 <p>Hálózaton keresztüli átvitel</p>
 <ul class="cardsA panelContent singlePanelContent cols cols3" style="display:flex!important;">
@@ -120,3 +113,4 @@ ms.locfileid: "54157105"
         </a>
     </li>
 </ul>
+</div>

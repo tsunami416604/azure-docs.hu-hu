@@ -1,24 +1,19 @@
 ---
 title: Az Azure Media Services dokumentációja – oktatóanyagok és API-referencia | Microsoft Docs
-description: Ismerje meg, hogyan streamelhet biztonságosan igény szerinti vagy élő, médiaszínvonalú videókat a Media Services bővíthető felhőalapú platform használatával. Oktatóanyagok, API-referenciák és egyebek.
+description: 'Ismerje meg, hogyan streamelhet biztonságosan igény szerinti vagy élő, médiaszínvonalú videókat a Media Services bővíthető felhőalapú platform használatával. Oktatóanyagok, API-referenciák és egyebek.'
 services: media-services
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: ''
+ms.assetid: null
 ms.service: media-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 02/08/2018
+ms.date: 03/14/2019
 ms.author: carolz
-ms.openlocfilehash: dce69041176840765817d561f61a0d5f3d2b9a66
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
-ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998025"
 ---
+
 # <a name="media-services-documentation"></a>Media Services – dokumentáció  
 
 Ismerje meg, hogyan streamelhet médiaszínvonalú videókat a Media Services bővíthető felhőalapú platform használatával. Az oktatóanyagok, API-referenciák és az egyéb dokumentációk bemutatják, hogyan közvetíthet biztonságosan igény szerinti vagy élő videó- és audióstreameket akár felhasználók millióira méretezhetően is.

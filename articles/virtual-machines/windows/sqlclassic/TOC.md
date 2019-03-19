@@ -40,11 +40,11 @@
 ## [SQL Server-illesztőprogramok](https://docs.microsoft.com/sql/connect/sql-server-drivers)
 ## [REST](/rest/api/)
 
-# Erőforrások
+# További források
 ## [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesforWindows&filter=alltypes&brandIgnore=True&sort=relevancedesc&searchTerm=SQL+Server)
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)
 ## [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)
 ## [SQL Server-eszközök](https://docs.microsoft.com/sql/tools/overview-sql-tools)
-## [Stack Overflow](http://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server)
+## [Stack Overflow](https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server)
 

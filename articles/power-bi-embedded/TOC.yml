@@ -1,82 +1,89 @@
+items:
 - name: Power BI Embedded – dokumentáció
   href: index.md
 - name: Áttekintés
   items:
-    - name: A Power BI Embedded bemutatása
-      href: 'https://docs.microsoft.com/power-bi/developer/azure-pbie-what-is-power-bi-embedded'
+  - name: A Power BI Embedded bemutatása
+    href: https://docs.microsoft.com/power-bi/developer/azure-pbie-what-is-power-bi-embedded
 - name: Oktatóanyagok
   items:
-    - name: Tartalom beágyazása az ügyfeleknek – minta
-      href: 'https://docs.microsoft.com/power-bi/developer/embed-sample-for-customers'
+  - name: Tartalom beágyazása az ügyfeleknek – minta
+    href: https://docs.microsoft.com/power-bi/developer/embed-sample-for-customers
 - name: Alapelvek
   items:
-    - name: Sorszintű biztonság (RLS)
-      href: 'https://docs.microsoft.com/power-bi/developer/embedded-row-level-security'
-    - name: GYIK
-      href: 'https://docs.microsoft.com/power-bi/developer/embedded-faq'
-    - name: Power BI-engedélyek
-      href: 'https://docs.microsoft.com/power-bi/developer/power-bi-permissions'
+  - name: Sorszintű biztonság (RLS)
+    href: https://docs.microsoft.com/power-bi/developer/embedded-row-level-security
+  - name: GYIK
+    href: https://docs.microsoft.com/power-bi/developer/embedded-faq
+  - name: Power BI-engedélyek
+    href: https://docs.microsoft.com/power-bi/developer/power-bi-permissions
 - name: Útmutató
   items:
-    - name: Egy alkalmazás regisztrálása
-      href: 'https://docs.microsoft.com/power-bi/developer/register-app'
-    - name: Hitelesítés Power BI-szolgáltatásban
-      href: 'https://docs.microsoft.com/power-bi/developer/get-azuread-access-token'
-    - name: Kérdések és válaszok szolgáltatás beágyazása
-      href: 'https://docs.microsoft.com/power-bi/developer/qanda'
-    - name: Beágyazott alkalmazás hibaelhárítása
-      href: 'https://docs.microsoft.com/power-bi/developer/embedded-troubleshoot'
-    - name: Kapacitások kezelése az Azure-ban
-      items:
-        - name: Kapacitás létrehozása az Azure-ban
-          href: 'https://docs.microsoft.com/power-bi/developer/azure-pbie-create-capacity'
-        - name: Kapacitás méretezése az Azure-ban
-          href: 'https://docs.microsoft.com/power-bi/developer/azure-pbie-scale-capacity'
-        - name: Kapacitás szüneteltetése és elindítása az Azure-ban
-          href: 'https://docs.microsoft.com/power-bi/developer/azure-pbie-pause-start'
-    - name: Migrálás a Munkaterületi gyűjteményekből
-      items:
-        - name: Migrálás Power BI munkaterületi gyűjteményekből
-          href: 'https://docs.microsoft.com/power-bi/developer/migrate-from-powerbi-embedded'
-        - name: Migrálási eszköz
-          href: 'https://docs.microsoft.com/power-bi/developer/migrate-tool'
-        - name: Migrálási kódrészletek
-          href: 'https://docs.microsoft.com/power-bi/developer/migrate-code-snippetsd'
+  - name: Egy alkalmazás regisztrálása
+    href: https://docs.microsoft.com/power-bi/developer/register-app
+  - name: Hitelesítés Power BI-szolgáltatásban
+    href: https://docs.microsoft.com/power-bi/developer/get-azuread-access-token
+  - name: Kérdések és válaszok szolgáltatás beágyazása
+    href: https://docs.microsoft.com/power-bi/developer/qanda
+  - name: Beágyazott alkalmazás hibaelhárítása
+    href: https://docs.microsoft.com/power-bi/developer/embedded-troubleshoot
+  - name: Kapacitások kezelése az Azure-ban
+    items:
+    - name: Kapacitás létrehozása az Azure-ban
+      href: https://docs.microsoft.com/power-bi/developer/azure-pbie-create-capacity
+    - name: Kapacitás méretezése az Azure-ban
+      href: https://docs.microsoft.com/power-bi/developer/azure-pbie-scale-capacity
+    - name: Kapacitás szüneteltetése és elindítása az Azure-ban
+      href: https://docs.microsoft.com/power-bi/developer/azure-pbie-pause-start
+  - name: Migrálás a Munkaterületi gyűjteményekből
+    items:
+    - name: Migrálás Power BI munkaterületi gyűjteményekből
+      href: https://docs.microsoft.com/power-bi/developer/migrate-from-powerbi-embedded
+    - name: Migrálási eszköz
+      href: https://docs.microsoft.com/power-bi/developer/migrate-tool
+    - name: Migrálási kódrészletek
+      href: https://docs.microsoft.com/power-bi/developer/migrate-code-snippetsd
 - name: Referencia
   items:
-    - name: API-k
-      items:
-        - name: Az Azure erőforrás-kezelési REST API-jai
-          href: 'https://docs.microsoft.com/rest/api/power-bi-embedded/'
-        - name: A Power BI REST API-jai
-          href: 'https://msdn.microsoft.com/library/mt147898.aspx'
+  - name: API-k
+    items:
+    - name: Az Azure erőforrás-kezelési REST API-jai
+      href: https://docs.microsoft.com/rest/api/power-bi-embedded/
+    - name: A Power BI REST API-jai
+      href: https://msdn.microsoft.com/library/mt147898.aspx
 - name: További források
   items:
-    - name: Fejlesztési központ
-      href: 'https://powerbi.microsoft.com/developers/'
-    - name: Előkészítési eszköz a beágyazáshoz
-      href: 'https://aka.ms/embedsetup'
-    - name: Kódminták
-      href: 'https://github.com/Microsoft/PowerBI-Developer-Samples'
-    - name: .NET SDK letöltése
-      href: 'https://www.nuget.org/packages/Microsoft.PowerBI.Api/'
-    - name: A JavaScript SDK letöltése
-      href: 'https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/'
-    - name: .NET a Power BI-ban
-      href: 'https://github.com/Microsoft/PowerBI-CSharp'
-    - name: JavaScript a Power BI-ban
-      href: 'https://github.com/Microsoft/PowerBI-JavaScript'
-    - name: JavaScript-játszótér – minta
-      href: 'https://go.microsoft.com/fwlink/?linkid=848279'
-    - name: Power BI JavaScript – wiki
-      href: 'https://github.com/Microsoft/powerbi-javascript/wiki'
-    - name: JavaScript Git-adattár
-      href: 'https://go.microsoft.com/fwlink/?linkid=848276'
-    - name: 'Power BI C# Git-adattár'
-      href: 'https://go.microsoft.com/fwlink/?linkid=848273'
-    - name: Díjkalkulátor
-      href: 'https://azure.microsoft.com/pricing/calculator/#power-bi-embedded88e5eed8-6a98-4891-a739-15b602b4fb34'
-    - name: Power BI-közösség
-      href: 'http://community.powerbi.com/t5/Developer/bd-p/Developer'
-    - name: Stack Overflow
-      href: 'https://go.microsoft.com/fwlink/?linkid=848281'
+  - name: Fejlesztési központ
+    href: https://powerbi.microsoft.com/developers/
+  - name: Előkészítési eszköz a beágyazáshoz
+    href: https://aka.ms/embedsetup
+  - name: Kódminták
+    href: https://github.com/Microsoft/PowerBI-Developer-Samples
+  - name: .NET SDK letöltése
+    href: https://www.nuget.org/packages/Microsoft.PowerBI.Api/
+  - name: A JavaScript SDK letöltése
+    href: https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/
+  - name: .NET a Power BI-ban
+    href: https://github.com/Microsoft/PowerBI-CSharp
+  - name: JavaScript a Power BI-ban
+    href: https://github.com/Microsoft/PowerBI-JavaScript
+  - name: JavaScript-játszótér – minta
+    href: https://go.microsoft.com/fwlink/?linkid=848279
+  - name: Power BI JavaScript – wiki
+    href: https://github.com/Microsoft/powerbi-javascript/wiki
+  - name: JavaScript Git-adattár
+    href: https://go.microsoft.com/fwlink/?linkid=848276
+  - name: Power BI C# Git-adattár
+    href: https://go.microsoft.com/fwlink/?linkid=848273
+  - name: Díjkalkulátor
+    href: https://azure.microsoft.com/pricing/calculator/#power-bi-embedded88e5eed8-6a98-4891-a739-15b602b4fb34
+  - name: Power BI-közösség
+    href: https://community.powerbi.com/t5/Developer/bd-p/Developer
+  - name: Stack Overflow
+    href: https://go.microsoft.com/fwlink/?linkid=848281
+ms.openlocfilehash: 40d190de6a417a72488619f4d55c825466bc026f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.translationtype: HT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57876833"
