@@ -43,8 +43,6 @@
 ### [Szolgáltatásnév hozzáadása a kiszolgálói rendszergazdai szerepkörhöz](analysis-services-addservprinc-admins.md)
 
 ## Modell
-### [Power BI Desktop-fájlok importálása](analysis-services-import-pbix.md)
-### [Modell létrehozása az Azure Portalon (előnézet)](analysis-services-create-model-portal.md)
 ### [Üzembe helyezés a Visual Studióból (SSDT)](analysis-services-deploy.md)
 ### [Frissítés a REST API-val](analysis-services-async-refresh.md)
 ### [Adatmodellezés a Visual Studióban – útmutató az Adventure Workshöz (1400)](tutorials/aas-adventure-works-tutorial.md)
@@ -97,13 +95,3 @@
 ## [Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/)
 ## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-analysis-services)
 ## [Videók](https://azure.microsoft.com/resources/videos/index/?services=analysis-services&sort=newest)
-
-
-
-
-
-
-
-
-
-
