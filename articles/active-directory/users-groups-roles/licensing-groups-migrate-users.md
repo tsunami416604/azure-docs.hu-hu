@@ -16,12 +16,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: seohack1;it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4067a54326d0a4a8ab9029dd4afceea384cf6aa
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7fd800097ca5107f7df1e67c91ff4c96b9cfcd74
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188630"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107746"
 ---
 # <a name="how-to-add-licensed-users-to-a-group-for-licensing-in-azure-active-directory"></a>A licenccel rendelkező felhasználók felvétele egy csoportba licencelése az Azure Active Directory
 
@@ -39,17 +39,17 @@ A legfontosabb, amit figyelembe kell venni az, hogy egy olyan helyzetet, ahol mi
 
 4. Győződjön meg arról, hogy megtörtént-e a licencek ezeket a csoportokat az összes felhasználóra. Ez az alkalmazás az egyes csoportok a feldolgozási állapot ellenőrzésével és a naplók ellenőrzésével végezheti el.
 
-  - Szúrópróbaszerű ellenőrzésével megerősítheti egyéni felhasználók számára is saját licenc részletek megtekintésével. Látni fogja, hogy rendelkeznek azonos licenccel "közvetlenül" és "örökölt" csoportokból.
+   - Szúrópróbaszerű ellenőrzésével megerősítheti egyéni felhasználók számára is saját licenc részletek megtekintésével. Látni fogja, hogy rendelkeznek azonos licenccel "közvetlenül" és "örökölt" csoportokból.
 
-  - Egy PowerShell-parancsprogram futtatása [győződjön meg arról, hogy a felhasználók hogyan vannak licencek rendelve](licensing-group-advanced.md#use-powershell-to-see-who-has-inherited-and-direct-licenses).
+   - Egy PowerShell-parancsprogram futtatása [győződjön meg arról, hogy a felhasználók hogyan vannak licencek rendelve](licensing-group-advanced.md#use-powershell-to-see-who-has-inherited-and-direct-licenses).
 
-  - Az azonos terméklicenc hozzárendelése a felhasználóhoz mindkét közvetlenül és a egy csoporton keresztül esetén csak egy-egy licencet a felhasználó használja fel. Ezért semmilyen további licenceket áttelepítés végrehajtásához szükséges.
+   - Az azonos terméklicenc hozzárendelése a felhasználóhoz mindkét közvetlenül és a egy csoporton keresztül esetén csak egy-egy licencet a felhasználó használja fel. Ezért semmilyen további licenceket áttelepítés végrehajtásához szükséges.
 
 5. Győződjön meg arról, hogy nincs licenc-hozzárendelés nem sikerült minden csoport a hibás állapotú felhasználók ellenőrzésével. További információkért lásd: [azonosítása és megoldása a csoportok licencproblémáinak](licensing-groups-resolve-problems.md).
 
 6. Fontolja meg az eredeti közvetlen hozzárendelés; eltávolítása fokozatos, ehhez "regisztrálások", a felhasználók egy alhalmazára eredményeinek figyelése először érdemes.
 
-  Az eredeti közvetlen hozzárendelés sikerült hagyja, a felhasználók, de ha a felhasználók elhagyják a licenccel rendelkező csoportok azok továbbra is megőrzik az eredeti licenc, amely valószínűleg nem ajánlott.
+   Az eredeti közvetlen hozzárendelés sikerült hagyja, a felhasználók, de ha a felhasználók elhagyják a licenccel rendelkező csoportok azok továbbra is megőrzik az eredeti licenc, amely valószínűleg nem ajánlott.
 
 ## <a name="an-example"></a>Példa
 
@@ -61,25 +61,25 @@ Egy szervezet 1000 felhasználó rendelkezik. Az összes felhasználóknak szük
 
 2. Mindegyik csoportnál ellenőrizze, hogy a licenc-hozzárendelés az összes felhasználó számára befejeződött. Nyissa meg az egyes csoportokhoz, válassza a panel **licencek**, és a feldolgozás állapotának felső részén a **licencek** panelen.
 
-  - Keressen a "Legújabb licenc változtatások alkalmazása minden felhasználó" megerősítéséhez feldolgozása befejeződött.
+   - Keressen a "Legújabb licenc változtatások alkalmazása minden felhasználó" megerősítéséhez feldolgozása befejeződött.
 
-  - Keresse meg felül minden olyan felhasználók, akiknek előfordulhat, hogy nem lett sikeresen rendelt licenceket kapcsolatos értesítést. Futtattuk bizonyos felhasználók licenceinek kívül? Egyes felhasználók rendelkeznek ütköző licenc, amely megakadályozza, hogy azok örökli a csoport licencek termékváltozatok?
+   - Keresse meg felül minden olyan felhasználók, akiknek előfordulhat, hogy nem lett sikeresen rendelt licenceket kapcsolatos értesítést. Futtattuk bizonyos felhasználók licenceinek kívül? Egyes felhasználók rendelkeznek ütköző licenc, amely megakadályozza, hogy azok örökli a csoport licencek termékváltozatok?
 
 3. Helyszíni néhány felhasználó, ellenőrizze, hogy rendelkeznek-e mind a direct- és licenceket alkalmazott ellenőrizze. Lépjen a felhasználó, válassza a panel **licencek**, és vizsgálja meg a licencek állapotát.
 
-  - Ez az a várt felhasználói állapot áttelepítése során:
+   - Ez az a várt felhasználói állapot áttelepítése során:
 
       ![várt felhasználói állapot](./media/licensing-groups-migrate-users/expected-user-state.png)
 
-  Ezzel megerősíti, hogy a felhasználó rendelkezik-e közvetlen és az örökölt licenceket. Láthatjuk, hogy mindkét **EMS** és **E3** vannak hozzárendelve.
+   Ezzel megerősíti, hogy a felhasználó rendelkezik-e közvetlen és az örökölt licenceket. Láthatjuk, hogy mindkét **EMS** és **E3** vannak hozzárendelve.
 
-  - Válassza ki az egyes licencekhez az engedélyezett szolgáltatások részleteinek megjelenítéséhez. Ez használható ellenőrizheti, ha a direct- és licenceket engedélyezze a pontosan az azonos service-csomagok a felhasználó számára.
+   - Válassza ki az egyes licencekhez az engedélyezett szolgáltatások részleteinek megjelenítéséhez. Ez használható ellenőrizheti, ha a direct- és licenceket engedélyezze a pontosan az azonos service-csomagok a felhasználó számára.
 
       ![Ellenőrizze a service-csomagok](./media/licensing-groups-migrate-users/check-service-plans.png)
 
 4. Miután meggyőződött arról, hogy közvetlen és a csoport licencek egyenértékűek, elindíthatja a felhasználók közvetlen licenceinek eltávolításával. Tesztelje az egyéni felhasználók számára a portál eltávolításával, és majd a tömeges eltávolítja őket az automatizálási szkriptek futtatásához. Íme egy példa ugyanaz a felhasználó eltávolítja a portálon keresztül közvetlen licencekkel. Figyelje meg, hogy a licenc állapotát változatlan marad, de már nem látható a közvetlen hozzárendelések.
 
-  ![a közvetlen licenc eltávolítása](./media/licensing-groups-migrate-users/direct-licenses-removed.png)
+   ![a közvetlen licenc eltávolítása](./media/licensing-groups-migrate-users/direct-licenses-removed.png)
 
 
 ## <a name="next-steps"></a>További lépések

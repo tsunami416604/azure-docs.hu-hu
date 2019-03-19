@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: c9e08cd1daef919fa4bd919c06e402da1c48d5db
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: c7ec3ba960929250f2d23d09b9a5ab06e3f6cd38
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769916"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095415"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Egyéni metrikák az Azure-beli erőforráshoz küldeni az Azure Monitor metrika tároló egy REST API-val
 
@@ -78,13 +78,13 @@ Mentse a hozzáférési jogkivonatot a válaszból.
     ``` 
 
 1. A parancssori ablakban a metrikaadatok közzététele: 
-    - **azureRegion**. Meg kell egyeznie az erőforrás metrikáit, Ön kibocsátó a telepítési régió. 
-    - **erőforrás-azonosító**.  Erőforrás-azonosító az Azure-erőforrás a mutatószám követi nyomon.  
-    - **Hozzáférési tokent**. Illessze be a jogkivonatot, korábban beszerzett.
+   - **azureRegion**. Meg kell egyeznie az erőforrás metrikáit, Ön kibocsátó a telepítési régió. 
+   - **erőforrás-azonosító**.  Erőforrás-azonosító az Azure-erőforrás a mutatószám követi nyomon.  
+   - **Hozzáférési tokent**. Illessze be a jogkivonatot, korábban beszerzett.
 
-    ```Shell 
-    curl -X POST https://<azureRegion>.monitoring.azure.com/<resourceId>/metrics -H "Content-Type: application/json" -H "Authorization: Bearer <AccessToken>" -d @custommetric.json 
-    ```
+     ```Shell 
+     curl -X POST https://<azureRegion>.monitoring.azure.com/<resourceId>/metrics -H "Content-Type: application/json" -H "Authorization: Bearer <AccessToken>" -d @custommetric.json 
+     ```
 1. Módosítsa a timestamp és a JSON-fájlban szereplő értékek. 
 1. Ismételje meg az előző két lépést néhány alkalommal, így adatokat kell néhány percig.
 

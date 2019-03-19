@@ -9,12 +9,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: eb05d1b28b80cb7bf48bc1160c251936423763e6
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: f112bdf9eacf51852659ab49a5673b0c8bfb0e46
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100783"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997545"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Microsoft Graph-kötések az Azure Functions szolgáltatáshoz
 
@@ -360,6 +360,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 ### <a name="excel-input---usage"></a>Az Excel bemeneti - használat
 
 Ennek a kötésnek a következő Azure AD-engedélyekkel kell rendelkeznie:
+
 |Erőforrás|Engedély|
 |--------|--------|
 |Microsoft Graph|Felhasználók fájljainak olvasása|
@@ -522,6 +523,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 ### <a name="excel-output---usage"></a>Az Excel kimenete – használat
 
 Ennek a kötésnek a következő Azure AD-engedélyekkel kell rendelkeznie:
+
 |Erőforrás|Engedély|
 |--------|--------|
 |Microsoft Graph|Teljes hozzáférés a felhasználó fájljaihoz|
@@ -664,6 +666,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 ### <a name="file-input---usage"></a>Fájl bemeneti - használat
 
 Ennek a kötésnek a következő Azure AD-engedélyekkel kell rendelkeznie:
+
 |Erőforrás|Engedély|
 |--------|--------|
 |Microsoft Graph|Felhasználók fájljainak olvasása|
@@ -811,6 +814,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 #### <a name="file-output---usage"></a>Fájl kimeneti - használat
 
 Ennek a kötésnek a következő Azure AD-engedélyekkel kell rendelkeznie:
+
 |Erőforrás|Engedély|
 |--------|--------|
 |Microsoft Graph|Teljes hozzáférés a felhasználó fájljaihoz|
@@ -960,6 +964,7 @@ A következő táblázat ismerteti a megadott kötés konfigurációs tulajdons�
 ### <a name="outlook-output---usage"></a>Az Outlook kimenete – használat
 
 Ennek a kötésnek a következő Azure AD-engedélyekkel kell rendelkeznie:
+
 |Erőforrás|Engedély|
 |--------|--------|
 |Microsoft Graph|E-mail küldése a felhasználó nevében|

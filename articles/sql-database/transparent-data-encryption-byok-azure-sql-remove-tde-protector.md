@@ -11,19 +11,21 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 03/07/2019
-ms.openlocfilehash: a5b544db713f671230e4a226b1e0bdcfa77fbb2b
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.date: 03/12/2019
+ms.openlocfilehash: a49c22a0597c34075de3e5fd7b9a324169e1da00
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57575239"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57895174"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Távolítsa el a transzparens adattitkosítás (TDE) védőelem a PowerShell használatával
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> A PowerShell Azure Resource Manager-modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés Az.Sql modul. Ezeket a parancsmagokat lásd: [azurerm.SQL-hez](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). A parancsok a Az modul, és az AzureRm-modulok argumentumainak lényegében megegyeznek.
 
 - Azure-előfizetés és a lehet az előfizetés-rendszergazda
 - Azure PowerShell telepítenie és futtatnia kell rendelkeznie. 
@@ -85,7 +87,7 @@ Ez az útmutató két módszer attól függően, a kívánt eredményt keresztü
    -OutputFile <DesiredBackupFilePath>
    ```
  
-5. A feltört kulcs törlése a Key Vault használatával a [Remove-AzKeyVaultKey](/powershell/module/az.keyvault/remove-azurekeyvaultkey) parancsmagot. 
+5. A feltört kulcs törlése a Key Vault használatával a [Remove-AzKeyVaultKey](/powershell/module/azurerm.keyvault/remove-azurekeyvaultkey) parancsmagot. 
 
    ```powershell
    Remove-AzKeyVaultKey `

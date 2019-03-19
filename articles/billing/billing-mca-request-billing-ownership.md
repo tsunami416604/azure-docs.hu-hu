@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
-ms.openlocfilehash: 01d34ef722034ef5b56c842bab97a3415a02b0bb
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: be8c7fcebca224196d9eac7d22387989b1bdfd46
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341867"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57890933"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-users"></a>Első számlázási tulajdonosi jogokat, más felhasználók az Azure-előfizetések
 
@@ -96,7 +96,8 @@ Ez a cikk a Microsoft vevői szerződés számlázási fiók vonatkozik. [Ellen�
    |Megszakítva|Valaki hozzáférő az átviteli kérelem a kérelem meg lett szakítva|
    |Elutasítva|A felhasználó elutasította az átviteli kérelem|
 
-6. Válassza ki a átviteli kérést, a részletek megtekintéséhez. Az átviteli részleteit megjelenítő oldalon az alábbi információkat jeleníti meg: <!-- Todo - Add a screenshot -->
+6. Válassza ki a átviteli kérést, a részletek megtekintéséhez. Az átviteli részleteit megjelenítő oldalon az alábbi információkat jeleníti meg:
+   <!-- Todo - Add a screenshot -->
 
    |Oszlop  |Meghatározás|
    |---------|---------|
@@ -149,7 +150,7 @@ Előfizetés típusa és ajánlatokkal, kivéve CSP kínál továbbíthatók.
 
 ### <a name="cancel-a-transfer-request"></a>Egy átviteli kérelem visszavonása
 
-Az átadási kérelem vonhatja vissza addig, amíg a kérelem jóváhagyása vagy próbálkozásai sikertelenek lesznek. Az átviteli kérelem megszakítása [nyissa meg az átvitel részleteit megjelenítő oldalra](#check-status-of-your-transfer-request-in-the-Azure-portal) és válassza a lap alján.
+Az átadási kérelem vonhatja vissza addig, amíg a kérelem jóváhagyása vagy próbálkozásai sikertelenek lesznek. Megszakítja az átviteli kérelmet, nyissa meg a átviteli részleteit megjelenítő oldalon, és válassza a Mégse gombra a lap alján.
 
 ### <a name="software-as-a-service-saas-transfer"></a>A szoftverszolgáltatások (SaaS) átvitel szoftver
 

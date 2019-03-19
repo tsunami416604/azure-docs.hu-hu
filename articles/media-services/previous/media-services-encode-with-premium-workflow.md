@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 7b91f63057fa8b781fdfab17e0837a9f5547c1eb
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: d20fc0cee6bce1389649e6287170b1963e799ccf
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55988034"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58187727"
 ---
 # <a name="advanced-encoding-with-media-encoder-premium-workflow"></a>Speciális kódolás a Media Encoder Premium munkafolyamat
 > [!NOTE]
@@ -62,12 +62,12 @@ Az alábbi lépéseket kell végrehajtani:
     A legtöbb esetben a konfigurációs karakterláncból, a tevékenység az üres (például a következő példában). Néhány speciális esetben (igénylő futásidejű tulajdonságok dinamikusan állítható be), amely esetben biztosítja, a kódolási feladat XML-karakterlánc. Példák ilyen forgatókönyvek például: egy átmeneti területre, párhuzamos és soros vágása, a feliratozás adathordozó létrehozása.
 5. Két bemeneti eszközeinek adja hozzá a feladatot.
 
-    1. 1. – a munkafolyamat-objektumot.
-    2. 2. – a videó eszköz.
+   1. 1. – a munkafolyamat-objektumot.
+   2. 2. – a videó eszköz.
 
-    >[!NOTE]
-    >A feladat a médiaobjektum előtt hozzá kell adni a munkafolyamat-objektumot.
-   Lehet, hogy erre a célra a konfigurációs karakterlánc üres.
+      >[!NOTE]
+      >A feladat a médiaobjektum előtt hozzá kell adni a munkafolyamat-objektumot.
+      Lehet, hogy erre a célra a konfigurációs karakterlánc üres.
    
 6. A kódolási feladat elküldéséhez.
 

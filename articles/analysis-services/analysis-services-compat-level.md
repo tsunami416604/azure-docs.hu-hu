@@ -5,26 +5,21 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 03/13/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 31ca6deef6d81ca7beb08f6df1a15d52ef381a46
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 9f2eae4160dbef164ec70e8fa4d7b3a83706ae96
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190391"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880126"
 ---
 # <a name="compatibility-level-for-analysis-services-tabular-models"></a>Analysis Services rendszerbeli táblázatos modellek kompatibilitási szintje
 
-*Kompatibilitási szint* kiadás-specifikus viselkedést az Analysis Services motor a hivatkozik. A kompatibilitási szint módosítása általában jelentős kiadásokat az SQL Server egybe. Ezek a változások is vannak megvalósítva, az Azure Analysis Servicesben mindkét platform paritása fenntartásához. Kompatibilitási szint érvénybe funkcióját a táblázatos modellek is változik. Például a DirectQuery és az objektum táblázatos metaadatok különböző megvalósításokkal rendelkeznek függően a kompatibilitási szintet. Kompatibilitási szint van megadva a táblázatosmodell-projektet a Visual Studio (SSDT). A Power BI Desktop-ról importált és létrehozott táblázatos modellek az 1400-as kompatibilitási szinten csak olyan.
+*Kompatibilitási szint* kiadás-specifikus viselkedést az Analysis Services motor a hivatkozik. A kompatibilitási szint módosítása általában jelentős kiadásokat az SQL Server egybe. Ezek a változások is vannak megvalósítva, az Azure Analysis Servicesben mindkét platform paritása fenntartásához. Kompatibilitási szint érvénybe funkcióját a táblázatos modellek is változik. Például a DirectQuery és az objektum táblázatos metaadatok különböző megvalósításokkal rendelkeznek függően a kompatibilitási szintet. Kompatibilitási szint van megadva a táblázatosmodell-projektet a Visual Studio (SSDT).
 
-Az Azure Analysis Services támogatja a táblázatos modelleket az 1200-as és 1400-as kompatibilitási szinteken. 
-
-> [!NOTE]
-> A Power BI Desktop 2018 szeptember vagy későbbi kiadásai 1465 .pbix kompatibilitási szinttel rendelkeznek. Az Azure Analysis Servicesben a kompatibilitási szintje támogatott. Azonban a Power BI Desktop-fájl importálása nem ajánlott éles környezetben. További tudnivalókért lásd: [egy Power BI Desktop-fájl importálása](analysis-services-import-pbix.md).
-
-A legújabb kompatibilitási szint az 1400-as. Ez a szint az SQL Server 2017 Analysis Services időpontjával. Az 1400-as kompatibilitási szinten főbb funkciók a következők:
+Az Azure Analysis Services támogatja a táblázatos modelleket az 1200-as és 1400-as kompatibilitási szinteken. A legújabb kompatibilitási szint az 1400-as. Ez a szint az SQL Server 2017 Analysis Services időpontjával. Az 1400-as kompatibilitási szinten főbb funkciók a következők:
 
 *  Új funkciók az Adatkapcsolat és importálása a TOM API-k és a TMSL-szkriptek támogatása. 
 *  Adatátalakítás és -adatok adategyesítési képességek az adatok lekérése és az M kifejezésében.
@@ -55,5 +50,4 @@ A legújabb kompatibilitási szint az 1400-as. Ez a szint az SQL Server 2017 Ana
 
 ## <a name="next-steps"></a>További lépések
 
-  [Modell létrehozása az Azure Portalon](analysis-services-create-model-portal.md)   
   [Analysis Services kezelése](analysis-services-manage.md)  

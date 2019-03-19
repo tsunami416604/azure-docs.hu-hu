@@ -15,12 +15,12 @@ ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: bce00300e62b3ea04331530bbda2c16f0ddd2ab3
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 840445b2c1a28d294027c7fbfda9e6bf6e431f14
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57759372"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57990710"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Az Azure Stack tárfiókok kezelése
 
@@ -45,7 +45,7 @@ Ha érdekli az adott storage-fiók – **szűrése, és a megfelelő fiókok beo
 **Fiókok szűrése:**
 
 1. Válassza ki **szűrő** a panel tetején.
-2. A szűrő panelen lehetővé teszi, hogy adja meg **fióknév**, ** előfizetés-azonosító, vagy **állapot** a tárfiókok listája, megjelenítendő finomhangolásához. Használja őket.
+2. A szűrő panelen lehetővé teszi, hogy adja meg **fióknév**, **előfizetés-azonosító**, vagy **állapot** a tárfiókok listája, megjelenítendő finomhangolásához. Használja őket.
 3. Válassza ki **frissítés**. Ennek megfelelően frissül, a listában.
    
     ![](media/azure-stack-manage-storage-accounts/image5.png)

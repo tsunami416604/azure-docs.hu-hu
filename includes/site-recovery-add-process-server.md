@@ -4,24 +4,24 @@ ms.service: site-recovery
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
-ms.openlocfilehash: b6e3abb56ebd02131fac78c2a8f03ddcbf50958a
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: c9a0d4387511bbfa033bcb90d9f83e1a7bb39719
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164210"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58124675"
 ---
 1. Indítsa ez az Azure Site Recovery UnifiedSetup.exe fájlt
 2. Az **Előkészületek** területen válassza a **További folyamatkiszolgálók hozzáadása az üzembe helyezés horizontális felskálázásához** lehetőséget.
 
-  ![Folyamatkiszolgáló hozzáadása](./media/site-recovery-add-process-server/ps-page-1.png)
+   ![Folyamatkiszolgáló hozzáadása](./media/site-recovery-add-process-server/ps-page-1.png)
 
 3. A **Konfigurációs kiszolgáló részletei** területen adja meg a konfigurációs kiszolgáló IP-címét és a hozzáférési kódot.
 
-  ![2. folyamatkiszolgáló hozzáadása](./media/site-recovery-add-process-server/ps-page-2.png)
+   ![2. folyamatkiszolgáló hozzáadása](./media/site-recovery-add-process-server/ps-page-2.png)
 4. Az **Internetbeállítások** területen adja meg, hogy a konfigurációs kiszolgálón futó Provider hogyan csatlakozzon az Azure Site Recoveryhez az interneten keresztül.
 
-  ![3. folyamatkiszolgáló hozzáadása](./media/site-recovery-add-process-server/ps-page-3.png)
+   ![3. folyamatkiszolgáló hozzáadása](./media/site-recovery-add-process-server/ps-page-3.png)
 
    * Ha a gépen jelenleg beállított proxyval szeretne csatlakozni, válassza a **Csatlakozás a meglévő proxybeállításokkal** lehetőséget.
    * Ha azt szeretné, hogy a Provider közvetlenül kapcsolódjon, válassza a **Connect directly without a proxy** (Közvetlen kapcsolódás proxy nélkül) lehetőséget.

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/18/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5266ca3f50a2d8163dbab95109cb967fb5a63ed8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ebe23c606d95baa6c79c668fc929177c8bc37e44
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474581"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57862947"
 ---
 # <a name="create-a-storage-account"></a>Tárfiók létrehozása
 
@@ -55,6 +55,10 @@ A gombra kattintva megjelenik egy interaktív kezelőfelület jelenik, amelyet a
 
 Az Azure CLI-t helyben is telepítheti és használhatja. A rövid útmutatóhoz az Azure CLI 2.0.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
 
+# <a name="templatetabtemplate"></a>[Sablon](#tab/template)
+
+Nincs.
+
 ---
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
@@ -80,6 +84,10 @@ A parancssori felület helyileg telepített példányára történő bejelentkez
 ```cli
 az login
 ```
+
+# <a name="templatetabtemplate"></a>[Sablon](#tab/template)
+
+–
 
 ---
 
@@ -170,6 +178,33 @@ Egy zónaredundáns tárolást (ZRS előzetes verzió), georedundáns tárolást
 |Georedundáns tárolás (GRS)     |Standard_GRS         |
 |Írásvédett georedundáns tárolás (GRS)     |Standard_RAGRS         |
 
+# <a name="templatetabtemplate"></a>[Sablon](#tab/template)
+
+Azure Powershell vagy az Azure CLI használatával hozzon létre egy tárfiókot a Resource Manager-sablon üzembe helyezése. A rendszer a rövid útmutatóban használt sablon [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/101-storage-account-create/). A parancsfájlok futtatásához válassza **kipróbálás** az Azure Cloud shell megnyitásához. Illessze be a parancsfájlt, kattintson a jobb gombbal a rendszerhéjat, és válassza **illessze be**.
+
+```azurepowershell-interactive
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+$location = Read-Host -Prompt "Enter the location (i.e. centralus)"
+
+New-AzResourceGroup -Name $resourceGroupName -Location "$location"
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
+```
+
+```azurecli-interactive
+echo "Enter the Resource Group name:" &&
+read resourceGroupName &&
+echo "Enter the location (i.e. centralus):" &&
+read location &&
+az group create --name $resourceGroupName --location "$location" &&
+az group deployment create --resource-group $resourceGroupName --template-file "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json"
+```
+
+Sablonok létrehozásával kapcsolatban lásd:
+
+- [Az Azure Resource Manager dokumentációja](/azure/azure-resource-manager/).
+- [Storage-fiók sablonreferenciában](/azure/templates/microsoft.storage/allversions).
+- [További tárolási fiók sablonminták](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Storage).
+
 ---
 
 Az elérhető replikációs beállításokkal kapcsolatban további információt a [Storage replikálási lehetőségeit](storage-redundancy.md) ismertető szakaszban talál.
@@ -202,6 +237,21 @@ Az [az group delete](/cli/azure/group#az_group_delete) paranccsal eltávolíthat
 az group delete --name storage-quickstart-resource-group
 ```
 
+# <a name="templatetabtemplate"></a>[Sablon](#tab/template)
+
+Azure PowerShell vagy az Azure CLI használatával távolítsa el az erőforráscsoportot és az összes kapcsolódó erőforrás, beleértve az új tárfiókot is.
+
+```azurepowershell-interactive
+$resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
+Remove-AzResourceGroup -Name $resourceGroupName
+```
+
+```azurecli-interactive
+echo "Enter the Resource Group name:" &&
+read resourceGroupName &&
+az group delete --name $resourceGroupName
+```
+
 ---
 
 ## <a name="next-steps"></a>További lépések
@@ -222,5 +272,10 @@ Ez a rövid útmutatóban létrehozott egy általános célú v2 standard szint�
 
 > [!div class="nextstepaction"]
 > [Az Azure CLI-vel blobok használata](../blobs/storage-quickstart-blobs-cli.md)
+
+# <a name="templatetabtemplate"></a>[Sablon](#tab/template)
+
+> [!div class="nextstepaction"]
+> [Blobok használata az Azure Portal segítségével](../blobs/storage-quickstart-blobs-portal.md)
 
 ---

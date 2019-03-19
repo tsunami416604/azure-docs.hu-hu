@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 01af5052d8b092d10609769f211d6ffcde03cf8e
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: bd4c024e14e70b5937d85e9917340d25f552096d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190374"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110868"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Telepítse és konfigurálja a helyszíni adatátjáró
 
@@ -90,19 +90,19 @@ Telepítve van, és az átjáró regisztrálása után kell átjáró erőforrá
 
 2. A **kapcsolódási átjáró létrehozása**, adja meg ezeket a beállításokat:
 
-    * **Név**: Adja meg az átjáró-erőforrás nevét. 
+   * **Név**: Adja meg az átjáró-erőforrás nevét. 
 
-    * **Előfizetés**: Válassza ki az Azure-előfizetés társítása az átjáró-erőforrás. 
+   * **Előfizetés**: Válassza ki az Azure-előfizetés társítása az átjáró-erőforrás. 
    
-      Az alapértelmezett előfizetést az Azure-fiókkal való bejelentkezéshez használt alapul.
+     Az alapértelmezett előfizetést az Azure-fiókkal való bejelentkezéshez használt alapul.
 
-    * **Erőforráscsoport**: Hozzon létre egy erőforráscsoportot, vagy válasszon ki egy már meglévőt.
+   * **Erőforráscsoport**: Hozzon létre egy erőforráscsoportot, vagy válasszon ki egy már meglévőt.
 
-    * **Hely**: Válassza ki a régiót az átjárót a regisztrált.
+   * **Hely**: Válassza ki a régiót az átjárót a regisztrált.
 
-    * **Telepítés neve**: Ha az átjáró telepítése még nincs kiválasztva, válassza ki az átjáró regisztrálva. 
+   * **Telepítés neve**: Ha az átjáró telepítése még nincs kiválasztva, válassza ki az átjáró regisztrálva. 
 
-    Ha elkészült, kattintson a **létrehozás**.
+     Ha elkészült, kattintson a **létrehozás**.
 
 ## <a name="connect-servers"></a>Kiszolgálók csatlakoztatása a gateway-erőforráshoz
 

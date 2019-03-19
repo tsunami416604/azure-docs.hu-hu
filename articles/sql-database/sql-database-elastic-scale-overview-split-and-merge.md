@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: 195b513d7cc878045449ed137a2ea72f291a9f6e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/12/2019
+ms.openlocfilehash: 2127c05d7e52b0103d91ecfac4fb5977a4815f31
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308151"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901933"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Adatok mozgatása kiterjesztett felhőalapú adatbázisok között
 
@@ -29,7 +29,7 @@ A felosztási-egyesítési eszközének egy Azure-webalkalmazások szolgáltatá
 
 ## <a name="download"></a>Letöltés
 
-[Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
+[Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
 
 ## <a name="documentation"></a>Dokumentáció
 
@@ -136,7 +136,7 @@ A felosztási-egyesítési szolgáltatás csomag tartalmazza a feldolgozói szer
 
 - **Horizontális skálázási térképet**
 
- A következő szakaszban, a kérelem paramétereit a szegmenstérkép és az adatbázis-üzemeltetési a szegmenstérkép kapcsolatos információkat ismerteti. Különösen meg kell adnia az Azure SQL Database-kiszolgáló és a shardmap eléréséhez megadott hitelesítő adatok a szegmenstérkép-adatbázis, és végül a szegmenstérkép neve üzemeltető adatbázis nevére. A művelet jelenleg csak egyetlen hitelesítő adatra fogad el. Ezekkel a hitelesítő adatokkal kell rendelkeznie a szegmensek a horizontális skálázási térképet, valamint a felhasználói adatok esetleges szabályozási hiányosságok elhárítását módosítások végrehajtásához szükséges engedélyekkel.
+  A következő szakaszban, a kérelem paramétereit a szegmenstérkép és az adatbázis-üzemeltetési a szegmenstérkép kapcsolatos információkat ismerteti. Különösen meg kell adnia az Azure SQL Database-kiszolgáló és a shardmap eléréséhez megadott hitelesítő adatok a szegmenstérkép-adatbázis, és végül a szegmenstérkép neve üzemeltető adatbázis nevére. A művelet jelenleg csak egyetlen hitelesítő adatra fogad el. Ezekkel a hitelesítő adatokkal kell rendelkeznie a szegmensek a horizontális skálázási térképet, valamint a felhasználói adatok esetleges szabályozási hiányosságok elhárítását módosítások végrehajtásához szükséges engedélyekkel.
 
 - **Forrástartomány (felosztása és egyesítése)**
 
@@ -217,6 +217,8 @@ A felosztási-egyesítési szolgáltatás használja az Azure Diagnostics monito
 ## <a name="deploy-diagnostics"></a>Diagnosztikai üzembe helyezése
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> A PowerShell Azure Resource Manager-modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés Az.Sql modul. Ezeket a parancsmagokat lásd: [azurerm.SQL-hez](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). A parancsok a Az modul, és az AzureRm-modulok argumentumainak lényegében megegyeznek.
 
 Figyelési és diagnosztikai konfiguráció használatával a webes és feldolgozói szerepkörök a NuGet-csomag által nyújtott diagnosztika engedélyezéséhez futtassa a következő parancsokat az Azure PowerShell használatával:
 

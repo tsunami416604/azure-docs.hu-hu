@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: dekapur
-ms.openlocfilehash: feb9d0a01cbba75fc9868f5a603d494c5c09ae2e
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: e41647140373fcf637cad55af62764bd87826a62
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49386297"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57849346"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Az Azure Resource Manager-erőforrások, alkalmazások és szolgáltatások kezelése
 
@@ -29,7 +29,7 @@ Ez az az ajánlott módszer, hogy bármely telepítés, a cégirányítási vagy
 
 Ha alkalmazható, kezelhet alkalmazásokat Resource Manager-erőforrásként javítása érdekében:
 * Auditnapló: Resource Manager naplózza minden művelet, és a egy részletes tartja *tevékenységnapló* , amellyel nyomon követése a végzett módosítások ezeket az alkalmazásokat és a fürtjét.
-* Szerepköralapú hozzáférés-vezérlés (RBAC): fürtök, valamint a fürtön üzembe helyezett alkalmazásokhoz való hozzáférés felügyelete megteheti ugyanazon a Resource Manager-sablon.
+* Szerepköralapú hozzáférés-vezérlés (RBAC): Fürtök, valamint a fürtön üzembe helyezett alkalmazásokhoz való hozzáférés felügyelete megteheti ugyanazon a Resource Manager-sablon.
 * Az Azure Resource Manager-(Azure-portálon) lesz egy egy-stop-vásárlása a fürt és a kritikus fontosságú alkalmazások központi telepítésének kezelése.
 
 A következő kódrészlet azt mutatja be, a különböző típusú erőforrások, amelyek egy sablon használatával kezelhetők:
@@ -69,9 +69,9 @@ A következő kódrészlet azt mutatja be, a különböző típusú erőforráso
 3. Ön rendelkezik szükséges milyen alkalmazásokat szeretne ezzel a módszerrel telepített, az alkalmazások után csomagolva, zip és egy fájlmegosztás elhelyezése. A megosztás kell lennie az Azure Resource Manager üzembe helyezése során felhasználásához REST-végponton keresztül érhető el.
 4. A Resource Manager-sablon, a fürt deklarace alább található mindegyik alkalmazás tulajdonságait írják le. E tulajdonságok közé tartozik a replika- vagy példányszámot, és bármilyen (más alkalmazások vagy szolgáltatások) erőforrások közötti függőségi láncok. Átfogó tulajdonságok listáját lásd: a [REST API Swagger-specifikációja](https://aka.ms/sfrpswaggerspec). Vegye figyelembe, hogy ez nem helyettesíti az alkalmazás vagy szolgáltatás jegyzékfájljainak, de inkább néhány mutatja be a őket a fürt Resource Manager-sablon részeként. Íme egy minta-sablont, amely tartalmazza az állapotmentes szolgáltatás telepítése *Service1* és a egy állapotalapú szolgáltatás *Service2* részeként *Alkalmaz1*:
 
-  ```json
-  {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+   ```json
+   {
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
     "contentVersion": "1.0.0.0",
     "parameters": {
       "clusterName": {
@@ -251,11 +251,11 @@ A következő kódrészlet azt mutatja be, a különböző típusú erőforráso
         }
       }
     ]
-  }
-  ```
+   }
+   ```
 
-  > [!NOTE] 
-  > A *API-verzió* értékre kell állítani `"2017-07-01-preview"`. Ez a sablon is üzembe helyezhetők a fürt függetlenül mindaddig, amíg a fürt már telepítve lett.
+   > [!NOTE] 
+   > A *API-verzió* értékre kell állítani `"2017-07-01-preview"`. Ez a sablon is üzembe helyezhetők a fürt függetlenül mindaddig, amíg a fürt már telepítve lett.
 
 5. Üzembe helyezhetők. 
 
@@ -264,7 +264,7 @@ A következő kódrészlet azt mutatja be, a különböző típusú erőforráso
 Ha a fürt már fel, és néhány alkalmazást, hogy szeretné, Resource Manager erőforrások már telepítve lettek, ahelyett, hogy eltávolítaná az alkalmazások kezeléséhez, és újbóli őket, használhatja az azonos API-k használatával szeretné, hogy az alkalmazások Put művelet meghívásával beolvasása arra vonatkozik, mint a Resource Manager-erőforrások. 
 
 > [!NOTE]
-> A vásárló lehetővé teszik a nem megfelelő alkalmazások figyelmen kívül a fürtfrissítések adhat meg "maxPercentUnhealthyApplications: 100" a "upgradeDescription/healthPolicy" szakaszban; a rendszer részletes leírását, hogy minden beállítás [szolgáltatás hálók REST API-t fürtben házirend dokumentációja](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy).
+> A vásárló lehetővé teszik a nem megfelelő alkalmazások figyelmen kívül a fürtfrissítések adhat meg "maxPercentUnhealthyApplications: 100 – a "upgradeDescription/healthPolicy" szakaszban; a rendszer részletes leírását, hogy minden beállítás [szolgáltatás hálók REST API-t fürtben házirend dokumentációja](https://docs.microsoft.com/rest/api/servicefabric/sfrp-model-clusterupgradepolicy).
 
 ## <a name="next-steps"></a>További lépések
 

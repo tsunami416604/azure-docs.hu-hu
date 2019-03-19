@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 01/18/2019
+ms.date: 03/12/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: bfa9bbb9816148182b79a8231f2ddb3e46433804
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: d5fdae09055f922fe9783f6eb074457af12c60df
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413243"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880415"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>Az Azure Search-képességek alkalmazási lehetőségét a Cognitive Services-erőforrás csatolása 
 
@@ -60,21 +60,7 @@ Képességek, amelyek a Cognitive Services API-k hívása csak díjkötelesek. N
 
 1. A **új Cognitive Services-erőforrás létrehozása**, egy új lapon nyílik meg, hogy az erőforrást is létrehozhat. Adjon meg egy egyedi nevet az erőforráshoz.
 
-1. Válassza ki az Azure Search megegyező helyen. Indexelés kognitív képességek jelenleg ezekben a régiókban támogatott:
-
-  * USA nyugati középső régiója
-  * USA déli középső régiója
-  * USA keleti régiója
-  * USA 2. keleti régiója
-  * USA nyugati régiója, 2.
-  * Közép-Kanada
-  * Nyugat-Európa
-  * Az Egyesült Királyság déli régiója
-  * Észak-Európa
-  * Dél-Brazília
-  * Délkelet-Ázsia
-  * Közép-India
-  * Kelet-Ausztrália
+1. Ha létrehoz egy új erőforrást a Cognitive Services **ugyanabban a régióban válasszon** az Azure Search-erőforrásként.
 
 1. Válassza ki a teljes körű tarifacsomagot **S0**. Ez a szint az előre megadott képesség a cognitive search biztonsági látás- és nyelvi szolgáltatásokat biztosítja.
 

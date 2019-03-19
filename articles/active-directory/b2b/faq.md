@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ee08e4dc2f6a4616c4b427ad7d33f56e135b27a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: aa6f0aeaa39114efbf3bd5587eac5744db386672
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442495"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105233"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Az Azure Active Directory B2B-együttműködés – gyakori kérdések
 
@@ -59,12 +59,12 @@ Hacsak egy felhasználó a korlátozott rendszergazda vagy a globális rendszerg
 Igen! Ez a szabályzat konfigurálásakor kell arra, hogy elkerülje a tagjának és rendszergazdájának véletlenül letiltja a hozzáférést.
 A vendégfelhasználó való hozzáférés letiltását a [az Azure portal](https://portal.azure.com), használja a feltételes hozzáférési szabályzat a Windows Azure klasszikus üzemi modell API-ban:
 1. Módosítsa a **minden felhasználó** csoportot, hogy csak a tagok tartalmaz.
-  ![módosíthatja a csoport képernyőképe](media/faq/modify-all-users-group.png)
+   ![módosíthatja a csoport képernyőképe](media/faq/modify-all-users-group.png)
 2. Vendégfelhasználók tartalmazó dinamikus csoport létrehozása.
-  ![képernyőfelvétel a csoport létrehozása](media/faq/group-with-guest-users.png)
+   ![képernyőfelvétel a csoport létrehozása](media/faq/group-with-guest-users.png)
 3. Állítsa be feltételes hozzáférési szabályzat vendég felhasználók számára a portál hozzáférjen az alábbi videóban látható módon:
   
-  > [!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-block-guest-user/Player] 
+   > [!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-block-guest-user/Player] 
 
 ### <a name="does-azure-ad-b2b-collaboration-support-multi-factor-authentication-and-consumer-email-accounts"></a>A multi-factor authentication és a fogyasztói e-mail-fiókokat támogatja az Azure AD B2B együttműködés?
 Igen. Többtényezős hitelesítés és a fogyasztói e-mail-fiókokat az Azure AD B2B együttműködés támogatottak.
@@ -94,7 +94,7 @@ Vendégfelhasználó használhatja bármely identitásszolgáltató hitelesíté
 
 ### <a name="where-can-i-find-a-b2b-collaboration-community-to-share-solutions-and-to-submit-ideas"></a>Hol található a B2B együttműködés közösségi megoldások megosztása és ötleteket szeretne elküldeni?
 Folyamatosan figyelünk a B2B-együttműködés javítása érdekében a visszajelzés. Ossza meg a felhasználó forgatókönyvek, ajánlott eljárások és mi tetszik Önnek az Azure AD B2B együttműködés. Csatlakozzon a beszélgetéshez a [a Microsoft technikai Közösség](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B/bd-p/AzureAD_B2b).
- 
+ 
 Azt is meghívhat, akkor küldje be az ötletek és a későbbi funkciókkal, szavazzon [B2B együttműködés ötleteket](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-B2B-Ideas/idb-p/AzureAD_B2B_Ideas).
 
 ### <a name="can-we-send-an-invitation-that-is-automatically-redeemed-so-that-the-user-is-just-ready-to-go-or-does-the-user-always-have-to-click-through-to-the-redemption-url"></a>Is küldünk egy meghívást arra, hogy automatikusan beváltott, úgy, hogy a felhasználó csak "készen áll"? Vagy a felhasználó mindig rendelkezik, kattintással lépjen a beváltási URL-cím?

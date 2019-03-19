@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 6bb37008b6a8b37e575dcf83dffcf57ab08996fd
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9008c98a086ed2d45b7339fa3f76b33240789db8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539994"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102451"
 ---
 # <a name="data-management-gateway"></a>Adatkezelési átjáró
 > [!NOTE]
@@ -93,7 +93,7 @@ Az adatkezelési átjáró a következő módokon telepíthető:
 
 ### <a name="install-the-gateway-from-download-center"></a>Az átjáró telepítése a letöltőközpontból
 1. Navigáljon a [Microsoft Data Management Gateway letöltési oldal](https://www.microsoft.com/download/details.aspx?id=39717).
-2. Kattintson a **letöltése**, válassza ki a megfelelő verziót (**32 bites** vs. **64 bites**), és kattintson a **tovább**.
+2. Kattintson a **letöltése**, jelölje be a **64 bites** verzió (32 bites nincs több támogatott), és kattintson a **tovább**.
 3. Futtassa a **MSI** közvetlenül, vagy mentse a merevlemezen, és futtassa.
 4. Az a **üdvözlő** lapon válassza ki a **nyelvi** kattintson **tovább**.
 5. **Fogadja el** a végfelhasználói licencszerződést, majd kattintson **tovább**.
@@ -291,7 +291,7 @@ Akkor is tiltsa le/engedélyezze az automatikus frissítési szolgáltatás a k�
     ```PowerShell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -on
     ```
-[Több csomópontos magas rendelkezésre állású és méretezhető átjáró](data-factory-data-management-gateway-high-availability-scalability.md)
+   [Több csomópontos magas rendelkezésre állású és méretezhető átjáró](data-factory-data-management-gateway-high-availability-scalability.md)
 1. Indítsa el a Windows Powershellt az átjárót tartalmazó számítógépen.
 2. Váltson arra a C:\Program Files\Microsoft integrációs Runtime\3.0\PowerShellScript\ mappára.
 3. Futtassa a következő parancsot, kapcsolja be az automatikus frissítési szolgáltatás kikapcsolása (Letiltás).
@@ -467,7 +467,7 @@ A Data Factory Editorban hitelesítő adatok titkosításához, tegye a követke
         }
     }
     ```
-Ha a portálon, amely eltér az átjárót tartalmazó számítógépen gépről éri el, győződjön meg arról, hogy a hitelesítő adatok kezelőjének alkalmazás képes-e csatlakozni az átjárót tartalmazó számítógépen. Ha az alkalmazás nem tudja elérni az átjárót tartalmazó számítógépen, azt nem teszi lehetővé az adatforráshoz tartozó hitelesítő adatok beállítása és az adatforrás kapcsolat ellenőrzéséhez.
+   Ha a portálon, amely eltér az átjárót tartalmazó számítógépen gépről éri el, győződjön meg arról, hogy a hitelesítő adatok kezelőjének alkalmazás képes-e csatlakozni az átjárót tartalmazó számítógépen. Ha az alkalmazás nem tudja elérni az átjárót tartalmazó számítógépen, azt nem teszi lehetővé az adatforráshoz tartozó hitelesítő adatok beállítása és az adatforrás kapcsolat ellenőrzéséhez.
 
 Használatakor a **hitelesítő adatok beállítása** alkalmazás, a portál titkosítja a hitelesítő adatokat a megadott tanúsítvány a **tanúsítvány** lapján a **Gateway Configuration Manager**  az átjárót tartalmazó számítógépen.
 
@@ -511,7 +511,7 @@ Ez a szakasz azt ismerteti, hogyan hozhat létre, és regisztrálnia kell egy á
     Key               : ADF#00000000-0000-4fb8-a867-947877aef6cb@fda06d87-f446-43b1-9485-78af26b8bab0@4707262b-dc25-4fe5-881c-c8a7c3c569fe@wu#nfU4aBlq/heRyYFZ2Xt/CD+7i73PEO521Sj2AFOCmiI
     ```
 
-1. Az Azure PowerShellben váltson arra a mappára: **C:\Program Files\Microsoft Data Management Gateway\2.0\PowerShellScript\**. Futtatás **RegisterGateway.ps1** a helyi változókhoz kapcsolódó **$Key** , ahogyan az alábbi parancsot. Ez a szkript a ügyfél ügynöke telepítve van a gépén a korábban létrehozott logikai átjáróval regisztrálja.
+1. Az Azure PowerShellben váltson arra a mappára: **C:\Program Files\Microsoft Data Management Gateway\2.0\PowerShellScript\\**. Futtatás **RegisterGateway.ps1** a helyi változókhoz kapcsolódó **$Key** , ahogyan az alábbi parancsot. Ez a szkript a ügyfél ügynöke telepítve van a gépén a korábban létrehozott logikai átjáróval regisztrálja.
 
     ```PowerShell
     PS C:\> .\RegisterGateway.ps1 $MyDMG.Key
@@ -529,7 +529,7 @@ Ez a szakasz azt ismerteti, hogyan hozhat létre, és regisztrálnia kell egy á
     ```PowerShell        
     Get-AzDataFactoryGateway -DataFactoryName <dataFactoryName> -ResourceGroupName ADF
     ```
-Egy átjáró használatával eltávolíthatja a **Remove-AzDataFactoryGateway** egy átjáró használatával a parancsmag és a frissítés leírását a **Set-AzDataFactoryGateway** parancsmagok. Szintaxist és egyéb részletek ezekről a parancsmagokról lásd: a Data Factory parancsmagjainak leírása.  
+   Egy átjáró használatával eltávolíthatja a **Remove-AzDataFactoryGateway** egy átjáró használatával a parancsmag és a frissítés leírását a **Set-AzDataFactoryGateway** parancsmagok. Szintaxist és egyéb részletek ezekről a parancsmagokról lásd: a Data Factory parancsmagjainak leírása.  
 
 ### <a name="list-gateways-using-powershell"></a>Lista átjárókon a PowerShell használatával
 

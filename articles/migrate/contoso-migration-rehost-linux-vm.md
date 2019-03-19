@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 5f6cb29d8fb3fd1c3b75e18330e3ad2711a61aab
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4d7f3c8d8efbdc658e4f7621a0606cb7fd92c88d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444922"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103485"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms"></a>Contoso áttelepítése: Egy helyszíni Linux alkalmazás újratárolása az Azure virtuális gépek
 
@@ -314,17 +314,17 @@ Most a Contoso-rendszergazdák is replikáljon az **OSTICKETWEB** virtuális Gé
 
 3. Akkor válassza ki a **OSTICKETWEB** virtuális gép. 
 
-    - Ebben a szakaszban válasszon **OSTICKETWEB** csak, mert a virtuális hálózatot és alhálózatot is be kell jelölni, és a virtuális gépek nem ugyanazon az alhálózaton.
-    - A Site Recovery automatikusan telepíti a mobilitási szolgáltatást, amikor a replikáció engedélyezve van a virtuális gép számára.
+   - Ebben a szakaszban válasszon **OSTICKETWEB** csak, mert a virtuális hálózatot és alhálózatot is be kell jelölni, és a virtuális gépek nem ugyanazon az alhálózaton.
+   - A Site Recovery automatikusan telepíti a mobilitási szolgáltatást, amikor a replikáció engedélyezve van a virtuális gép számára.
 
-    ![A replikáció engedélyezése](./media/contoso-migration-rehost-linux-vm/enable-replication3.png)
+     ![A replikáció engedélyezése](./media/contoso-migration-rehost-linux-vm/enable-replication3.png)
 
 4. A virtuális gép tulajdonságai között, válassza ki a fiókot, amellyel a folyamatkiszolgáló automatikusan telepíti a mobilitási szolgáltatást a gépen.
 
      ![Mobilitási szolgáltatás](./media/contoso-migration-rehost-linux-vm/linux-mobility.png)
 
 5. a **replikációs beállítások** > **replikációs beállítások konfigurálása**, akkor ellenőrizze, hogy a megfelelő replikációs szabályzat-e a alkalmazott, és válassza **Replikációengedélyezése**.
-6.  A replikáció állapotát nyomon követik **feladatok**. A **Védelem véglegesítése** feladat befejeződését követően a gép készen áll a feladatátvételre.
+6. A replikáció állapotát nyomon követik **feladatok**. A **Védelem véglegesítése** feladat befejeződését követően a gép készen áll a feladatátvételre.
 
 
 

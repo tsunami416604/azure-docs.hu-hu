@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 474ebaad60328b011e91337c46040ae37c603e21
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: c64842dc89c9519c738701558f510940f4cc148d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731054"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103910"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Adatok másolása az SAP Business warehouse-hoz az Azure Data Factory használatával nyissa meg központon keresztül
 
@@ -55,7 +55,7 @@ Az Azure Data Factory (ADF) az SAP InfoProviders kinyerési összességében 2 l
 
 1. **Adatok másolása az ADF** ebben a lépésben a nyitott Hub tábla olvassa el az ADF-összekötővel 
 
-![Változások a kinyerési folyamat](media\connector-sap-business-warehouse-open-hub\delta-extraction-flow.png)
+![Változások a kinyerési folyamat](media/connector-sap-business-warehouse-open-hub/delta-extraction-flow.png)
 
 Az első lépésben egy DTP hajtja végre. Minden egyes végrehajtása hoz létre egy új SAP-kérelmet. A kérelem azonosítója a nyitott Hub tábla tárolja, és ezután az ADF-összekötő által azonosítására szolgál a különbözeti. Aszinkron módon futtatja a két lépés: a DTP az SAP által aktivált, és az ADF adatmásolás keresztül ADF aktiválódik. 
 

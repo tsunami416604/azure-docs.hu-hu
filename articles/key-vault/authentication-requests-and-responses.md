@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2d63c14c5eba1a9637cfd5544585e71d2bc86048
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7ca486768cf56059328801b1b4b1036bb8aeece8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535161"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081780"
 ---
 # <a name="authentication-requests-and-responses"></a>Hitelesítés, kérelmek és válaszok
 
@@ -31,17 +31,17 @@ Ez a témakör ismerteti az Azure Key Vault szolgáltatás-adatait. Azure REST-f
 
  Dolgozunk az Azure Key vaultban objektumok, a következők példa URL-címek:  
 
--   A Key Vault használja – TESTKEY nevű kulcs létrehozásához `PUT /keys/TESTKEY?api-version=<api_version> HTTP/1.1`  
+- A Key Vault használja – TESTKEY nevű kulcs létrehozásához `PUT /keys/TESTKEY?api-version=<api_version> HTTP/1.1`  
 
--   Be a Key Vault használata – IMPORTEDKEY nevű kulcs importálása `POST /keys/IMPORTEDKEY/import?api-version=<api_version> HTTP/1.1`  
+- Be a Key Vault használata – IMPORTEDKEY nevű kulcs importálása `POST /keys/IMPORTEDKEY/import?api-version=<api_version> HTTP/1.1`  
 
--   A Key Vault használja – MYSECRET nevű titkos kulcs beolvasásához `GET /secrets/MYSECRET?api-version=<api_version> HTTP/1.1`  
+- A Key Vault használja – MYSECRET nevű titkos kulcs beolvasásához `GET /secrets/MYSECRET?api-version=<api_version> HTTP/1.1`  
 
--   Egy kivonatoló aláírásához egy kulccsal nevű TESTKEY a Key Vault használja – `POST /keys/TESTKEY/sign?api-version=<api_version> HTTP/1.1`  
+- Egy kivonatoló aláírásához egy kulccsal nevű TESTKEY a Key Vault használja – `POST /keys/TESTKEY/sign?api-version=<api_version> HTTP/1.1`  
 
- Az alábbiak szerint, mindig van egy Key Vaultot a kérés a szolgáltató  `https://{keyvault-name}.vault.azure.net/`  
+  Az alábbiak szerint, mindig van egy Key Vaultot a kérés a szolgáltató  `https://{keyvault-name}.vault.azure.net/`  
 
- /Keys elérési mindig tárolt kulcsok, titkos kulcsok mindig /secrets útvonalon tárolja.  
+  /Keys elérési mindig tárolt kulcsok, titkos kulcsok mindig /secrets útvonalon tárolja.  
 
 ## <a name="api-version"></a>API-verzió  
  Az Azure Key Vault szolgáltatás támogatja a protokoll versioning kompatibilitást biztosítanak a alsó szintű ügyfelek számára, bár nem minden képességek azon ügyfelek számára érhető el. Az ügyfeleknek kell használniuk a `api-version` lekérdezési karakterlánc paraméter a protokoll, amely nincs alapértelmezett érték nem támogatják a verzió megadása.  
@@ -64,17 +64,17 @@ Ez a témakör ismerteti az Azure Key Vault szolgáltatás-adatait. Azure REST-f
 ## <a name="error-responses"></a>Hibaválaszok  
  Hibakezelés HTTP-állapotkódok fogja használni. Tipikus eredmények a következők:  
 
--   2xx – sikeres: Használja a normál működést. A válasz törzse fogja tartalmazni a várt eredmény  
+- 2xx – sikeres: Használja a normál működést. A válasz törzse fogja tartalmazni a várt eredmény  
 
--   3xx – átirányítási: A 304 "Nem módosította" Előfordulhat, hogy vissza kell adni egy feltételes GET teljesítéséhez. Egyéb 3xx kódok jelezheti a DNS-és elérési útja a jövőben használhatók.  
+- 3xx – átirányítási: A 304 "Nem módosította" Előfordulhat, hogy vissza kell adni egy feltételes GET teljesítéséhez. Egyéb 3xx kódok jelezheti a DNS-és elérési útja a jövőben használhatók.  
 
--   4xx – ügyfél-hiba: Hibás kérésekből, a hiányzó kulcsok, a szintaktikai hibákat, a érvénytelen paramétereket, a hitelesítési hibák használják, stb. A válasz törzse fogja tartalmazni a hibával kapcsolatos részletes magyarázatát.  
+- 4xx – ügyfél-hiba: Hibás kérésekből, a hiányzó kulcsok, a szintaktikai hibákat, a érvénytelen paramétereket, a hitelesítési hibák használják, stb. A válasz törzse fogja tartalmazni a hibával kapcsolatos részletes magyarázatát.  
 
--   5XX – kiszolgálóhiba: Használja a belső hibákat. A válasz törzse összesített hibaadatokat fog tartalmazni.  
+- 5XX – kiszolgálóhiba: Használja a belső hibákat. A válasz törzse összesített hibaadatokat fog tartalmazni.  
 
- A rendszer tervezték proxy vagy tűzfal mögé. Ezért egy ügyfél más hibakódok kaphat.  
+  A rendszer tervezték proxy vagy tűzfal mögé. Ezért egy ügyfél más hibakódok kaphat.  
 
- Az Azure Key Vault hibaadatok is a válasz törzsében adja vissza, ha probléma merül fel. A válasz törzse JSON formátumban, és nyilvánul meg:  
+  Az Azure Key Vault hibaadatok is a válasz törzsében adja vissza, ha probléma merül fel. A válasz törzse JSON formátumban, és nyilvánul meg:  
 
 ```  
 

@@ -10,12 +10,12 @@ ms.subservice: knowledge-exploration
 ms.topic: sample
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: ded681b8776343a778f3e9704fe05d43e8d74774
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e2678200e2f8c55111e53ab0a341804fd17623a3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550525"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994955"
 ---
 # <a name="get-started-with-the-knowledge-exploration-service"></a>Első lépések a Knowledge Exploration Service szolgáltatással
 
@@ -207,7 +207,7 @@ Miután kész az XML nyelvi specifikáció, a [`kes.exe build_grammar`](CommandL
 
 ## <a name="host-the-grammar-and-index-in-a-web-service"></a>A nyelvtan és az index tárolása webszolgáltatásban
 
-Gyors prototípuskészítéshez a nyelvtan és az index elhelyezhető a helyi gép egy webszolgáltatásán a [`kes.exe host_service`](CommandLine.md#host_service-command) használatával. Utána a szolgáltatás [webes API-k](WebAPI.md) segítségével elérhető az adathelyesség és nyelvtan tervezés helyességének ellenőrzésére. Ebben a példában az *Academic.grammar* nyelvtani fájlnak és az *Academic.index* indexfájlnak az http://localhost:8000/ ad helyet. Használja az alábbi parancsot:
+Gyors prototípuskészítéshez a nyelvtan és az index elhelyezhető a helyi gép egy webszolgáltatásán a [`kes.exe host_service`](CommandLine.md#host_service-command) használatával. Utána a szolgáltatás [webes API-k](WebAPI.md) segítségével elérhető az adathelyesség és nyelvtan tervezés helyességének ellenőrzésére. Ebben a példában az *Academic.grammar* nyelvtani fájlnak és az *Academic.index* indexfájlnak az `http://localhost:8000/` ad helyet. Használja az alábbi parancsot:
 
 `kes.exe host_service Academic.grammar Academic.index --port 8000`
 

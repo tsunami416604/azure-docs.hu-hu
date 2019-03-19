@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: b-juche
-ms.openlocfilehash: 7cb9cc6cc5ce98eb88e9b9cdf76f000c33f5509e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 8f50b2ad34c705c8d3831d8243f136c41d750dc0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780711"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58074437"
 ---
 # <a name="set-up-a-capacity-pool"></a>Kapacitáskészlet beállítása
 
@@ -41,19 +41,19 @@ Már rendelkeznie kell egy létrehozott NetApp-fiókkal.
     Ekkor megjelenik az Új kapacitáskészlet ablak.
 
 3. Adja meg az alábbi, az új kapacitáskészletre vonatkozó információkat:  
-  * **Name (Név)**  
-    Adja meg a kapacitáskészlet nevét.  
-    A kapacitáskészlet nevének a NetApp-fiókban egyedinek kell lennie.
+   * **Name (Név)**  
+     Adja meg a kapacitáskészlet nevét.  
+     A kapacitáskészlet nevének a NetApp-fiókban egyedinek kell lennie.
 
-  * **Szolgáltatásszint**   
-    Ez a mező a kapacitáskészlet célteljesítményét mutatja.  
-    Adja meg a szolgáltatási szint a kapacitás-készlet: [**Prémium szintű** ](azure-netapp-files-service-levels.md#Premium) vagy [ **Standard**](azure-netapp-files-service-levels.md#Standard).
+   * **Szolgáltatásszint**   
+     Ez a mező a kapacitáskészlet célteljesítményét mutatja.  
+     Adja meg a szolgáltatási szint a kapacitás-készlet: [**Prémium szintű** ](azure-netapp-files-service-levels.md#Premium) vagy [ **Standard**](azure-netapp-files-service-levels.md#Standard).
 
-  * **Méret**     
-    Adja meg a megvásárolni kívánt kapacitáskészlet-méretet.        
-    A kapacitáskészletek minimális mérete 4 TiB. A létrehozott kapacitáskészlet méretének a 4 TiB egy szorzatának kell lennie.   
+   * **Méret**     
+     Adja meg a megvásárolni kívánt kapacitáskészlet-méretet.        
+     A kapacitáskészletek minimális mérete 4 TiB. A létrehozott kapacitáskészlet méretének a 4 TiB egy szorzatának kell lennie.   
       
-    ![Új kapacitáskészlet](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
+     ![Új kapacitáskészlet](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
 
 4. Kattintson az **OK** gombra.
 

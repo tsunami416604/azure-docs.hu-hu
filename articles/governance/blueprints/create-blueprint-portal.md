@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 845d200238c276be3f0d64afb3127864d8d9ae19
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: fdf87bff026dee4969b3995b37c31de3ead7714b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729924"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004918"
 ---
 # <a name="define-and-assign-an-azure-blueprint-in-the-portal"></a>Definiálása és hozzárendelése egy Azure tervezet a portálon
 
@@ -249,9 +249,9 @@ Ha már nincs rájuk szükség, eltávolíthatja a tervek hozzárendelését az 
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudnivalók a [tervek életciklusáról](./concepts/lifecycle.md)
-- A [statikus és dinamikus paraméterek](./concepts/parameters.md) használatának elsajátítása
-- A [tervekkel kapcsolatos műveleti sorrend](./concepts/sequencing-order.md) testreszabásának elsajátítása
-- A [tervek erőforrás-zárolásának](./concepts/resource-locking.md) alkalmazásával kapcsolatos részletek
-- A [meglévő hozzárendelések frissítésének](./how-to/update-existing-assignments.md) elsajátítása
-- A tervek hozzárendelése során felmerülő problémák megoldása [általános hibaelhárítással](./troubleshoot/general.md)
+- További információ a [életciklus-tervezetet](./concepts/lifecycle.md).
+- Megtudhatja, hogyan használhatja [statikus és dinamikus paraméterek](./concepts/parameters.md).
+- Ismerje meg, szabhatja testre a [alkalmazás-előkészítés rendelés tervezetet](./concepts/sequencing-order.md).
+- Ismerje meg, győződjön meg arról, hogyan használhatja az [tervezetet erőforrás zárolása](./concepts/resource-locking.md).
+- Ismerje meg, hogyan [meglévő hozzárendelések frissítése](./how-to/update-existing-assignments.md).
+- A tervrajz hozzárendelésének során felmerülő problémák megoldása [általános hibaelhárítási](./troubleshoot/general.md).

@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 04/17/2018
+ms.date: 03/18/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 2d57097e4d3317bfba5055a6b75ae72dd60f046a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: fe19510d9b4c6311923b4b2ea15f133249e6cbd5
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244691"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58190039"
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>Az SQL Data Warehouse az indexelő táblák
 Javaslatok és a példák az indexelés a táblák az Azure SQL Data Warehouse.
@@ -45,12 +45,12 @@ Van néhány olyan forgatókönyvek, ahol a fürtözött oszlopcentrikus nem jó
 
 - Az Oszlopcentrikus táblák nem támogatják a varchar(max), nvarchar(max) és varbinary(max). Érdemes lehet inkább halmot vagy fürtözött index.
 - Lehet, hogy az Oszlopcentrikus táblák kevésbé hatékony, átmeneti adatokhoz. Fontolja meg a halommemória, és akár még az ideiglenes táblák.
-- Kevesebb mint 100 millió sornál kisméretű táblák. Érdemes lehet halomtáblák.
+- Kisebb, mint 60 millió sorral kisméretű táblák. Érdemes lehet halomtáblák.
 
 ## <a name="heap-tables"></a>Halomtáblák
-Amikor ideiglenesen tárol adatokat az SQL Data warehouse-ba, előfordulhat, hogy halomtábla használata lehetővé teszi a teljes folyamatot felgyorsíthatja. Ennek az oka terhelések halommemória a rendszer gyorsabban táblákhoz és bizonyos esetekben az azt követő olvasás a gyorsítótárból teheti meg.  Ha csak az adatokat automatikusan, további átalakítások futtatása előtt tölt be, a halomtábla tábla betöltése, sokkal gyorsabb, mint egy fürtözött oszlopcentrikus táblába az adatok betöltése. Emellett az adatok betöltése egy [ideiglenes tábla](sql-data-warehouse-tables-temporary.md) betölti a gyorsabb, mint egy állandó tároló tábla betöltésekor.  
+Amikor ideiglenesen tárol adatokat az SQL Data Warehouse, előfordulhat, hogy halomtábla használata lehetővé teszi a teljes folyamatot felgyorsíthatja. Ennek az oka terhelések halommemória a rendszer gyorsabban táblákhoz és bizonyos esetekben az azt követő olvasás a gyorsítótárból teheti meg.  Ha csak az adatokat automatikusan, további átalakítások futtatása előtt tölt be, a halomtábla tábla betöltése, sokkal gyorsabb, mint egy fürtözött oszlopcentrikus táblába az adatok betöltése. Emellett az adatok betöltése egy [ideiglenes tábla](sql-data-warehouse-tables-temporary.md) betölti a gyorsabb, mint egy állandó tároló tábla betöltésekor.  
 
-Kis keresési táblák, kevesebb mint 100 millió sorral, gyakran halomtáblák értelme.  Fürt oszlopcentrikus táblák elérése optimális tömörítés után több mint 100 millió sornál kezdődik.
+Kis keresési táblák, kevesebb, mint 60 millió sorral, gyakran halomtáblák értelme.  Fürt oszlopcentrikus táblák megkezdése után több mint 60 millió sorral optimális tömörítési eléréséhez.
 
 Hozzon létre egy halomtábla, egyszerűen adja meg HALOMMEMÓRIA a WITH záradékkal:
 
@@ -79,7 +79,7 @@ CREATE TABLE myTable
 WITH ( CLUSTERED INDEX (id) );
 ```
 
-Egy tábla egy nem fürtözött index hozzáadásához egyszerűen használja a következő szintaxist:
+Egy tábla egy nem fürtözött index hozzáadásához használja a következő szintaxist:
 
 ```SQL
 CREATE INDEX zipCodeIndex ON myTable (zipCode);
@@ -182,7 +182,7 @@ Ha azonosította a táblák a gyenge szegmens minősége, érdemes gyökerének 
 Ezek a tényezők okozhat az optimális 1 millió sor sor csoportonként kisebb szeretné, hogy jelentős mértékben oszlopcentrikus index. Nyissa meg a különbözeti sor csoportot helyett egy tömörített sorcsoport sorok is okozhat. 
 
 ### <a name="memory-pressure-when-index-was-built"></a>Memóriaprobléma index elkészítésekor
-Sorok száma tömörített sorcsoport száma közvetlenül kapcsolódnak a sor- és memória rendelkezésre állnak a sorcsoport szélességét.  Amikor a sorokat nagy memóriaterhelés mellett írja oszlopcentrikus táblákba, az oszlopcentrikus szegmens minősége gyengülhet.  Ezért az ajánlott eljárás, hogy adjon a munkamenetet, amely a lehető legtöbb memória oszlopcentrikus index táblák hozzáférést ír.  Mivel a memória- és egyidejűségi között, a megfelelő memóriafoglalást útmutatást függ, hogy az adatok a táblázat minden egyes sorára, a rendszer, és a párhuzamos időszeletek lefoglalt adattárházegységek segítségével biztosíthat a munkamenet amely Írja az adatokat a táblában.  Ajánlott eljárásként javasoljuk, hogy az xlargerc DW300 használatakor vagy kevesebb, largerc használatakor dw600 értékre és mediumrc DW400 használata dw1000 értékre, vagy újabb.
+Sorok száma tömörített sorcsoport száma közvetlenül kapcsolódnak a sor- és memória rendelkezésre állnak a sorcsoport szélességét.  Amikor a sorokat nagy memóriaterhelés mellett írja oszlopcentrikus táblákba, az oszlopcentrikus szegmens minősége gyengülhet.  Ezért az ajánlott eljárás, hogy adjon a munkamenetet, amely a lehető legtöbb memória oszlopcentrikus index táblák hozzáférést ír.  Mivel a memória- és egyidejűségi között, a megfelelő memóriafoglalást útmutatást függ, hogy az adatok a táblázat minden egyes sorára, a rendszer, és a párhuzamos időszeletek lefoglalt adattárházegységek segítségével biztosíthat a munkamenet amely Írja az adatokat a táblában.
 
 ### <a name="high-volume-of-dml-operations"></a>Nagy mennyiségű DML-műveletek
 Nagy mennyiségű, frissíthet vagy törölhet sorokat DML-műveletek az oszloptárba megjelentetni elégtelenségekkel. Ez különösen igaz a sorokat a sorcsoportonként többsége módosításakor.
@@ -205,7 +205,7 @@ Miután adatokkal lettek betöltve. a táblák, a lépések végrehajtásával a
 
 ## <a name="rebuilding-indexes-to-improve-segment-quality"></a>Szegmens minőségének javítására indexek újraépítése
 ### <a name="step-1-identify-or-create-user-which-uses-the-right-resource-class"></a>1. lépés: Azonosítsa, vagy hozzon létre felhasználói, amely használja a megfelelő erőforrás-osztály
-Azonnal a szegmens minősége javításának egyik gyors módja, hogy az index újraépítése.  A fenti nézetben által visszaadott SQL egy ALTER INDEX REBUILD utasítás, amely az indexek újraépítése segítségével adja vissza. Ha az indexek újraépítése, mindenképpen lefoglalni elegendő memóriát a munkamenetbe, amely újraépíti az index.  Ehhez a erőforrásosztályhoz építenie az indexet a tábla a javasolt minimális engedéllyel rendelkező felhasználó növelése. Az adatbázis-tulajdonos felhasználó erőforrásosztály nem módosítható, így ha egy felhasználó a rendszeren nem hozott, Önnek kell először tegye. A minimális ajánlott erőforrásosztályhoz xlargerc DW300 használatakor, vagy kevesebb, largerc használatakor dw600 értékre és mediumrc DW400 használata dw1000 értékre, vagy újabb.
+Azonnal a szegmens minősége javításának egyik gyors módja, hogy az index újraépítése.  A fenti nézetben által visszaadott SQL egy ALTER INDEX REBUILD utasítás, amely az indexek újraépítése segítségével adja vissza. Ha az indexek újraépítése, mindenképpen lefoglalni elegendő memóriát a munkamenetbe, amely újraépíti az index.  Ehhez a erőforrásosztályhoz építenie az indexet a tábla a javasolt minimális engedéllyel rendelkező felhasználó növelése. 
 
 Alább egy példát egy felhasználóhoz több memóriát lefoglalni a erőforrásosztály növelésével van. Erőforrásosztályok dolgozni, lásd: [erőforrásosztályok számítási feladatok kezeléséhez](resource-classes-for-workload-management.md).
 
@@ -216,7 +216,7 @@ EXEC sp_addrolemember 'xlargerc', 'LoadUser'
 ### <a name="step-2-rebuild-clustered-columnstore-indexes-with-higher-resource-class-user"></a>2. lépés: Magasabb szintű erőforrás osztály felhasználóval fürtözött oszlopcentrikus indexek újraépítése
 Jelentkezzen be a felhasználó 1. lépésben (pl. LoadUser), amely mostantól egy nagyobb erőforrásosztály használata, és hajtsa végre az ALTER INDEX utasításokat. Győződjön meg arról, hogy a felhasználó rendelkezik-e az ALTER engedéllyel a táblákat, ahol az index újraépítése folyamatban van. Ezek a példák megjelenítése a teljes oszlopcentrikus index újraépítése, illetve egy adott partíció számára. A nagyméretű táblák további gyakorlati újraépítése indexeli ugyanazon a partíción egy időben.
 
-Azt is megteheti, ahelyett, hogy az index újraépítése, sikerült másolni a tábla egy új táblát [CTAS használata](sql-data-warehouse-develop-ctas.md). Melyik legjobb módja? Nagy mennyiségű adatot a CTAS általában gyorsabb, mint a [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql). Kisebb mennyiségű adatot ALTER INDEX használata egyszerűbb, és nem szükséges, hogy a táblázat meg felcserélni. Lásd: **a CTAS és a partíció közötti váltás indexek újraépítése** alább a CTAS indexek újraépítése további részleteiért.
+Azt is megteheti, ahelyett, hogy az index újraépítése, sikerült másolni a tábla egy új táblát [CTAS használata](sql-data-warehouse-develop-ctas.md). Melyik legjobb módja? Nagy mennyiségű adatot a CTAS általában gyorsabb, mint a [ALTER INDEX](/sql/t-sql/statements/alter-index-transact-sql). Kisebb mennyiségű adatot ALTER INDEX használata egyszerűbb, és nem szükséges, hogy a táblázat meg felcserélni. 
 
 ```sql
 -- Rebuild the entire clustered index
@@ -263,25 +263,8 @@ WHERE   [OrderDateKey] >= 20000101
 AND     [OrderDateKey] <  20010101
 ;
 
--- Step 2: Create a SWITCH out table
-CREATE TABLE dbo.FactInternetSales_20000101
-    WITH    (   DISTRIBUTION = HASH(ProductKey)
-            ,   CLUSTERED COLUMNSTORE INDEX
-            ,   PARTITION   (   [OrderDateKey] RANGE RIGHT FOR VALUES
-                                (20000101
-                                )
-                            )
-            )
-AS
-SELECT *
-FROM    [dbo].[FactInternetSales]
-WHERE   1=2 -- Note this table will be empty
-
--- Step 3: Switch OUT the data 
-ALTER TABLE [dbo].[FactInternetSales] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales_20000101] PARTITION 2;
-
--- Step 4: Switch IN the rebuilt data
-ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2;
+-- Step 2: Switch IN the rebuilt data with TRUNCATE_TARGET option
+ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [dbo].[FactInternetSales] PARTITION 2 WITH (TRUNCATE_TARGET = ON);
 ```
 
 Hozza létre újra a partíciók használatával a CTAS kapcsolatos további információkért lásd: [partíciók használatával az SQL Data Warehouse](sql-data-warehouse-tables-partition.md).

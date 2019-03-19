@@ -10,12 +10,12 @@ ms.reviewer: klam
 ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
 ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: 7e5abf1100c09f8f28d268b3f2defe953c5f36f0
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 3b2cfc932c6322df8237ec7cdf820fc4242bfa72
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57770135"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57887221"
 ---
 # <a name="create-and-schedule-your-first-job-with-azure-scheduler---azure-portal"></a>Az első feladat létrehozása és ütemezése az Azure Scheduler használatával az Azure Portalon
 
@@ -34,7 +34,7 @@ Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/f
 
    ![A Scheduler-erőforrás létrehozása](./media/scheduler-get-started-portal/scheduler-v2-portal-marketplace-create.png)
 
-   Most hozzon létre egy feladatot, amely egy GET kérést küld az URL-címre: `http://www.microsoft.com/` 
+   Most hozzon létre egy feladatot, amely egy GET kérést küld az URL-címre: `https://www.microsoft.com/` 
 
 1. A **Scheduler-feladat** alatt adja meg ezt az adatot:
 
@@ -51,7 +51,7 @@ Ha nem rendelkezik Azure-előfizetéssel, <a href="https://azure.microsoft.com/f
    |----------|---------------|-------------| 
    | **Művelet** | **Http** | A futtatandó művelet típusa | 
    | **Metódus** | **Get** | A meghívott metódus | 
-   | **URL-cím** | **http://www.microsoft.com** | A cél URL-címe | 
+   | **URL-cím** | **https://www.microsoft.com** | A cél URL-címe | 
    |||| 
    
    ![Feladat meghatározása](./media/scheduler-get-started-portal/scheduler-v2-portal-action-settings.png)

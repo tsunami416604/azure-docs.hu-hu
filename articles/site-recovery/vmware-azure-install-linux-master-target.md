@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: mayg
-ms.openlocfilehash: 28b28dc15809aa5d37eb9347ff3bc7eecccc9a20
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 98718709038d7fd753e5eb3d45c130085c5accd9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452708"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099052"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Telepítse a Linuxos fő célkiszolgáló a feladat-visszavételhez
 Miután átadja a feladatokat a virtuális gépek az Azure-ba, visszaadhatja a virtuális gépek, a helyszíni helyre. Feladat-visszavételt, ismételt védelem a virtuális gép az Azure-ból a helyszíni helyre kell. Ez a folyamat szüksége lesz egy a helyszíni fő célkiszolgáló forgalom fogadására. 
@@ -168,15 +168,15 @@ A Linux rendszerű virtuális gépen, minden egyes SCSI merevlemez Azonosítój�
 
 5. Tekintse meg, hogy a sor **lemez. EnableUUID** már létezik.
 
-    - Ha az érték létezik, és értékre van állítva **hamis**, módosítsa az értéket **igaz**. (Az értékek nem kis-és nagybetűket.)
+   - Ha az érték létezik, és értékre van állítva **hamis**, módosítsa az értéket **igaz**. (Az értékek nem kis-és nagybetűket.)
 
-    - Ha az érték létezik, és értékre van állítva **igaz**válassza **Mégse**.
+   - Ha az érték létezik, és értékre van állítva **igaz**válassza **Mégse**.
 
-    - Ha az érték nem létezik, válassza ki a **sor hozzáadása**.
+   - Ha az érték nem létezik, válassza ki a **sor hozzáadása**.
 
-    - A név oszlop hozzáadása **lemez. EnableUUID**, majd állítsa az értékét, és **igaz**.
+   - A név oszlop hozzáadása **lemez. EnableUUID**, majd állítsa az értékét, és **igaz**.
 
-    ![Annak ellenőrzése e a lemezen. EnableUUID már létezik.](./media/vmware-azure-install-linux-master-target/image25.png)
+     ![Annak ellenőrzése e a lemezen. EnableUUID már létezik.](./media/vmware-azure-install-linux-master-target/image25.png)
 
 #### <a name="disable-kernel-upgrades"></a>Tiltsa le a kernel-frissítések
 

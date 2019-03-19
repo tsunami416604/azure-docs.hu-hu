@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 4eed3825d52fe52025077980e21f3763cc5751ac
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: f23f29d15c4c8f05551b20d42b92dda5632cde08
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049949"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078737"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Útmutató a webes és feldolgozói szerepkörök a Service Fabric állapotmentes szolgáltatások alakítása
 Ez a cikk ismerteti, hogyan telepítheti át a Cloud Services webes és feldolgozói szerepkörök a Service Fabric állapotmentes szolgáltatások. Ez az a legegyszerűbb áttelepítési út a Cloud Servicesből a Service Fabric alkalmazásokhoz, amelyek általános architektúrát fog maradni nagyjából azonos.
@@ -41,10 +41,10 @@ Feldolgozói szerepkör hasonlóan egy webes szerepkörben is jelenti állapot n
 
 | **Alkalmazás** | **Támogatott** | **Áttelepítés** |
 | --- | --- | --- |
-| Az ASP.NET Web Forms |Nem |1. az ASP.NET Core MVC átalakítása |
-| ASP.NET MVC |A Migrálást |Frissítés ASP.NET Core 1 MVC |
-| ASP.NET Web API |A Migrálást |Használja a helyi kiszolgáló vagy az ASP.NET Core-1 |
-| Az ASP.NET Core 1 |Igen |– |
+| ASP.NET Web Forms |Nem |1. az ASP.NET Core MVC átalakítása |
+| ASP.NET, MVC |A Migrálást |Frissítés ASP.NET Core 1 MVC |
+| ASP.NET, webes API |A Migrálást |Használja a helyi kiszolgáló vagy az ASP.NET Core-1 |
+| ASP.NET Core 1 |Igen |– |
 
 ## <a name="entry-point-api-and-lifecycle"></a>Belépési pont API- és életciklus
 Feldolgozói szerepkör és a Service Fabric-szolgáltatás API-k ajánlat hasonló belépési pontok: 
@@ -110,8 +110,8 @@ Egy elsődleges "Futtatás" felülbírálást, amelyben a feldolgozás megkezdé
 
 Az életciklus és feldolgozói szerepkörök és a Service Fabric services élettartama közötti számos fontos különbség van:
 
-* **Életciklus:** a legnagyobb különbség, hogy egy feldolgozói szerepkör egy virtuális Gépet, és a életciklus úgy vannak kötve, a virtuális gép, amely tartalmazza az eseményeket, amikor a virtuális gép indítása és leállítása a. Service Fabric-szolgáltatás egy életciklussal, amely nem azonos azzal a virtuális gép életciklus, ezért nem tartalmaz eseményeket, ha a gazdagép, virtuális gép vagy a gép elindul, és állítsa le, mert nem áll(nak) rendelkezik.
-* **Élettartam:** feldolgozói szerepkörpéldányok újraindítása lesz, ha a `Run` metódus kilép. A `RunAsync` metódus a Service Fabric-szolgáltatás befejezését azonban futtathatja, és a szolgáltatáspéldány be fog maradni. 
+* **Életciklus:** A legnagyobb különbség az, hogy egy feldolgozói szerepkör egy virtuális Gépet, és a életciklus úgy vannak kötve, a virtuális gép, amely tartalmazza az eseményeket, amikor a virtuális gép indítása és leállítása a. Service Fabric-szolgáltatás egy életciklussal, amely nem azonos azzal a virtuális gép életciklus, ezért nem tartalmaz eseményeket, ha a gazdagép, virtuális gép vagy a gép elindul, és állítsa le, mert nem áll(nak) rendelkezik.
+* **Élettartam:** Feldolgozói szerepkörpéldányok újraindítása lesz, ha a `Run` metódus kilép. A `RunAsync` metódus a Service Fabric-szolgáltatás befejezését azonban futtathatja, és a szolgáltatáspéldány be fog maradni. 
 
 A Service Fabric egy választható kommunikációs telepítő belépési pontot nyújt az ügyfélkérelmek szolgáltatásokhoz. A RunAsync és a kommunikáció belépési pont a Service Fabric services – a szolgáltatás is választhat, csak figyelik az ügyfelektől érkező kérelmeket, vagy csak futtatni egy feldolgozási ciklus és / vagy -, ezért a RunAsync metódusában engedélyezett újraindítása nélkül kilép választható felülbírálások a szolgáltatás-példányt, mert előfordulhat, hogy továbbra is az ügyfél kérelmek figyelésére.
 
@@ -209,7 +209,7 @@ private void CodePackageActivationContext_ConfigurationPackageModifiedEvent(obje
 Indítási feladatok olyan műveletek, amelyeket a rendszer egy alkalmazás indítása előtt. Egy indítási feladat általában emelt szintű jogosultságokkal a telepítő szkriptek futtatásához használt. A Cloud Services és a Service Fabric támogatja az indítási feladatok. A fő különbség, hogy a Cloud Services, egy indítási feladat vannak kötve, egy virtuális Gépet egy szerepkörpéldány része, mert ezzel szemben a Service Fabric egy indítási feladat egy szolgáltatás, amely nem kötődik bármely adott virtuális gép van kötve.
 
 | Service Fabric | Cloud Services |
-| --- | --- | --- |
+| --- | --- |
 | Konfigurációs hely |ServiceDefinition.csdef |
 | Jogosultságok |"korlátozott" vagy "emelt szintű" |
 | Alkalmazás-előkészítés |"egyszerű", "Háttér", "előtér" |

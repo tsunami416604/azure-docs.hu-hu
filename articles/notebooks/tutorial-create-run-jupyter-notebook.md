@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: kraigb
-ms.openlocfilehash: 42b8ecf9b2595c9b9406ff4756ed373c6cf98d5d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 8fa873ca1ab20fbd8b3ca4ff57507adf34529246
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57764557"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57903657"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Oktatóanyag: létrehozása és futtatása a Jupyter notebook Python használatával
 
@@ -49,7 +49,7 @@ A befejezett notebook találhatók [GitHub - jegyzetfüzetek minták Azure](http
 
 ## <a name="create-the-data-file"></a>Az adatfájl létrehozása
 
-A lineáris regressziós modellt hoz létre a jegyzetfüzet adatok megrajzolja a nevű projekt fájlból *cricket_chirps.csv*. Ez a fájl lehet [github - jegyzetfüzetek minták Azure] másolásával hozhat létre (https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps), vagy közvetlenül az adatok megadásával. A következő szakaszok mindkét módszert ismertetik.
+A lineáris regressziós modellt hoz létre a jegyzetfüzet adatok megrajzolja a nevű projekt fájlból *cricket_chirps.csv*. Ez a fájl másolásával, vagy hozhat létre [GitHub - jegyzetfüzetek minták Azure](https://github.com/Microsoft/AzureNotebooks/tree/master/Samples/Linear%20Regression%20-%20Cricket%20Chirps), vagy közvetlenül az adatok megadásával. A következő szakaszok mindkét módszert ismertetik.
 
 ### <a name="upload-the-data-file"></a>Az adatfájl feltöltése
 
@@ -181,7 +181,7 @@ Ezek a parancsok számos módon feltölti a notebookot az alábbi szakaszok a ha
     ```markdown
     # Example Linear Regression
 
-    This notebook contains a walkthrough of a simple linear regression. The data, obtained from [college.cengage.com](http://college.cengage.com/mathematics/brase/understandable_statistics/7e/students/datasets/slr/frames/frame.html), relates the rate of cricket chirps to temperature from *The Song of Insects*, by Dr. G. W. Pierce, Harvard College Press.
+    This notebook contains a walkthrough of a simple linear regression. The data, obtained from [college.cengage.com](https://college.cengage.com/mathematics/brase/understandable_statistics/7e/students/datasets/slr/frames/frame.html), relates the rate of cricket chirps to temperature from *The Song of Insects*, by Dr. G. W. Pierce, Harvard College Press.
 
     In this example we're using the count of chirps per minute as the independent varible to then predict the dependent variable, temperature. In short, we're using a little data science to make ourselves a cricket thermometer. (You could also reverse the data and use temperature to predict the number of chirps, but it's more fun to use crickets as the thermometer itself!)
 

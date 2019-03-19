@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dineshm
 ms.subservice: common
-ms.openlocfilehash: 51ee5362a01a846378228a42343cc0e2b9f72497
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 13ddb4d64908421e999174623003acd2fb24024d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470212"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58014893"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>A C++ Azure Storage-erőforrások listázása
 Listaelem műveletekre az Azure Storage számos fejlesztési forgatókönyvek kulcs. Ez a cikk ismerteti a leghatékonyabban számbavétele az objektumok az Azure Storage-ban a listaelem API-k a Microsoft Azure Storage ügyféloldali kódtára a c++ programnyelvhez.
 
 > [!NOTE]
-> Ez az útmutató célozza meg benne az Azure Storage ügyféloldali kódtára a C++-verzió keresztül érhető el 2.x [NuGet](http://www.nuget.org/packages/wastorage) vagy [GitHub](https://github.com/Azure/azure-storage-cpp).
+> Ez az útmutató célozza meg benne az Azure Storage ügyféloldali kódtára a C++-verzió keresztül érhető el 2.x [NuGet](https://www.nuget.org/packages/wastorage) vagy [GitHub](https://github.com/Azure/azure-storage-cpp).
 > 
 > 
 
@@ -34,7 +34,7 @@ A Storage ügyféloldali kódtára számos módszer az Azure Storage-lista vagy 
 Mindkét módszerhez jelenik meg a különböző helyzetekhez különböző túlterheléssel használatával.
 
 ## <a name="asynchronous-versus-synchronous"></a>A szinkron és aszinkron
-Mivel a használatra készült a Storage ügyféloldali kódtára a C++ a [C++ REST könyvtár](https://github.com/Microsoft/cpprestsdk), természetüknél fogva támogatjuk az aszinkron műveletek használatával [pplx::task](http://microsoft.github.io/cpprestsdk/classpplx_1_1task.html). Példa:
+Mivel a használatra készült a Storage ügyféloldali kódtára a C++ a [C++ REST könyvtár](https://github.com/Microsoft/cpprestsdk), természetüknél fogva támogatjuk az aszinkron műveletek használatával [pplx::task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html). Példa:
 
 ```cpp
 pplx::task<list_blob_item_segment> list_blobs_segmented_async(continuation_token& token) const;
@@ -194,7 +194,7 @@ További információ Azure Storage- és ügyféloldali kódtára a C++ a követ
 * [A c++ segítségével Blob Storage használata](../blobs/storage-c-plus-plus-how-to-use-blobs.md)
 * [Hogyan használható a Table Storage, a c++ segítségével](../../cosmos-db/table-storage-how-to-use-c-plus.md)
 * [A c++ segítségével a Queue Storage használata](../storage-c-plus-plus-how-to-use-queues.md)
-* [Az Azure Storage ügyféloldali kódtára a C++ API-dokumentáció esetén.](http://azure.github.io/azure-storage-cpp/)
+* [Az Azure Storage ügyféloldali kódtára a C++ API-dokumentáció esetén.](https://azure.github.io/azure-storage-cpp/)
 * [Az Azure Storage csapat blogja](https://blogs.msdn.com/b/windowsazurestorage/)
 * [Az Azure Storage dokumentációja](https://azure.microsoft.com/documentation/services/storage/)
 

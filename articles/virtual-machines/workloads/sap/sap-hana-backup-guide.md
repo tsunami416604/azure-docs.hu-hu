@@ -13,12 +13,12 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
-ms.openlocfilehash: 9d72bc885bdaaed521042df236dd722b80533186
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 89896fab7b1c359007ed23d4f9d9771e366ca68a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867001"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013344"
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Útmutató az Azure-beli virtuális gépeken futó SAP HANA biztonsági mentéséhez
 
@@ -63,8 +63,8 @@ _Nem, jelenleg csak adatokat és az elsődleges oldalán található biztonsági
 
 - [Az SAP HANA felügyeleti bemutatása](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.00/en-US)
 - [A biztonsági mentési és helyreállítási stratégia tervezése](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ef/085cd5949c40b788bba8fd3c65743e/content.htm)
-- [HANA biztonsági mentés ütemezése a ABAP DBACOCKPIT](http://www.hanatutorials.com/p/schedule-hana-backup-using-abap.html)
-- [Ütemezés biztonsági mentések (SAP HANA Vezérlőpult)](http://help.sap.com/saphelp_hanaplatform/helpdata/en/6d/385fa14ef64a6bab2c97a3d3e40292/frameset.htm)
+- [HANA biztonsági mentés ütemezése a ABAP DBACOCKPIT](https://www.hanatutorials.com/p/schedule-hana-backup-using-abap.html)
+- [Ütemezés biztonsági mentések (SAP HANA Vezérlőpult)](https://help.sap.com/saphelp_hanaplatform/helpdata/en/6d/385fa14ef64a6bab2c97a3d3e40292/frameset.htm)
 - SAP HANA – gyakori kérdések a biztonsági mentési [SAP Megjegyzés 1642148](https://launchpad.support.sap.com/#/notes/1642148)
 - Az adatbázis- és pillanatképek SAP HANA – gyakori kérdések [SAP Megjegyzés 2039883](https://launchpad.support.sap.com/#/notes/2039883)
 - Nem megfelelő hálózati fájl rendszerek biztonsági mentését és helyreállítását [SAP Megjegyzés 1820529](https://launchpad.support.sap.com/#/notes/1820529)
@@ -80,7 +80,7 @@ Storage snapshots használatával egy teszt visszaállítást egy másik rendsze
 
 Tartsa szem előtt, amely ennek során egy egyszerű visszaállítást és ellenőrzi, hogy a HANA működik és fut nem elegendő. Ideális esetben egy győződjön meg arról, hogy a visszaállított adatbázis nem okoz gondot tábla konzisztencia-ellenőrzést kell futtatni. SAP HANA kínál a konzisztencia-ellenőrzések leírt különféle [SAP Megjegyzés 1977584](https://launchpad.support.sap.com/#/notes/1977584).
 
-A tábla konzisztencia-ellenőrzés kapcsolatos információk is találhatók SAP webhellyel [tábla és a katalógus konzisztencia-ellenőrzéseket](http://help.sap.com/saphelp_hanaplatform/helpdata/en/25/84ec2e324d44529edc8221956359ea/content.htm#loio9357bf52c7324bee9567dca417ad9f8b).
+A tábla konzisztencia-ellenőrzés kapcsolatos információk is találhatók SAP webhellyel [tábla és a katalógus konzisztencia-ellenőrzéseket](https://help.sap.com/saphelp_hanaplatform/helpdata/en/25/84ec2e324d44529edc8221956359ea/content.htm#loio9357bf52c7324bee9567dca417ad9f8b).
 
 A szokásos fájlszintű biztonsági a teszt visszaállítás már nem szükséges. Két SAP HANA-eszközzel, amelyek segítségével ellenőrizheti, hogy melyik biztonsági mentés visszaállítási használható: hdbbackupdiag és hdbbackupcheck. Lásd: [manuális ellenőrzése-e a helyreállítás az lehetséges](https://help.sap.com/saphelp_hanaplatform/helpdata/en/77/522ef1e3cb4d799bab33e0aeb9c93b/content.htm) ezekkel az eszközökkel kapcsolatos további részletekért.
 
@@ -90,7 +90,7 @@ SAP adatforgalmi&#39;t részesítik előnyben vagy HANA biztonsági mentés és 
 
 Az Azure-ban, vegye figyelembe, hogy az Azure blob pillanatkép-e a szolgáltatás nem található (tény)&#39;t garancia fájlrendszer-konzisztencia (lásd: [tárolóblob-pillanatképek használata a PowerShell-lel](https://blogs.msdn.microsoft.com/cie/2016/05/17/using-blob-snapshots-with-powershell/)). A következő szakaszban _SAP HANA adatkonzisztencia, amikor a pillanatképeket tároló_, ez a funkció kapcsolatos szempontokat ismerteti.
 
-Emellett egy rendelkezik megszegéseinek számlázási használatakor gyakran blob-pillanatfelvételek ebben a cikkben leírtak szerint: [ismertetése hogyan pillanatképek esedékes díjak](/rest/api/storageservices/understanding-how-snapshots-accrue-charges)–, nem&#39;, nyilvánvaló, mint az Azure-beli virtuális t lemezek.
+Emellett egy rendelkezik megszegéseinek számlázási használatakor gyakran blob-pillanatképekkel ebben a cikkben leírtak szerint: [Understanding hogyan pillanatképek lépheti túl a költségek](/rest/api/storageservices/understanding-how-snapshots-accrue-charges)–, nem&#39;t, nyilvánvaló, mint az Azure virtuális lemezek használatával.
 
 ### <a name="sap-hana-data-consistency-when-taking-storage-snapshots"></a>SAP HANA adatkonzisztencia, amikor a pillanatképeket tároló
 
@@ -129,7 +129,7 @@ Igény szerint egy sikerült go teljesen; tároló-pillanatképek nélkül siker
 A HANA-felügyeleti útmutató egy példa felsorolását tartalmazza. Azt sugallja, hogy egy helyreállítás SAP HANA egy adott időpontra, amikor a biztonsági mentések a következő lépéseket:
 
 1. Adatok teljes biztonsági mentés
-2. Különbségi biztonsági másolat
+2. Különbségi biztonsági mentés
 3. A növekményes biztonsági mentés 1
 4. A növekményes biztonsági mentés 2
 5. Naplóalapú biztonsági mentések
@@ -137,7 +137,7 @@ A HANA-felügyeleti útmutató egy példa felsorolását tartalmazza. Azt sugall
 Vonatkozó pontos ütemezés feltárhatja, hogy mikor és milyen gyakran történjen, egy adott biztonsági mentési típusú, már nem általános útmutatásként biztosíthat – túl az ügyfél-specifikus, és attól függ, hány adatváltozásokat a rendszer fordulnak elő. Márka egy teljes HANA biztonsági mentés hetente egyszer az SAP oldaláról, amely általános útmutatásként látható, egy alapvető javaslat.
 Kapcsolódó elemek naplóalapú biztonsági mentések, az SAP HANA dokumentációjában [Naplóalapú biztonsági mentések](https://help.sap.com/saphelp_hanaplatform/helpdata/en/c3/bb7e33bb571014a03eeabba4e37541/content.htm).
 
-SAP is javasol néhány, a végtelenségig biztosítható, hogy a biztonságimásolat-katalógus housekeeping módon (lásd: [biztonságimásolat-katalógus és a biztonsági mentési tár Housekeeping](http://help.sap.com/saphelp_hanaplatform/helpdata/en/ca/c903c28b0e4301b39814ef41dbf568/content.htm)).
+SAP is javasol néhány, a végtelenségig biztosítható, hogy a biztonságimásolat-katalógus housekeeping módon (lásd: [biztonságimásolat-katalógus és a biztonsági mentési tár Housekeeping](https://help.sap.com/saphelp_hanaplatform/helpdata/en/ca/c903c28b0e4301b39814ef41dbf568/content.htm)).
 
 ### <a name="sap-hana-configuration-files"></a>SAP HANA-konfigurációs fájlok
 

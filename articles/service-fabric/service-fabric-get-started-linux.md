@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 3454f9eecf1f06391b21bc7a3dcd89b7f8e78853
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 13746779d37f6faa6d25f73d6c78523f174b658c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105355"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835240"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>A fejlesztőkörnyezet előkészítése Linuxon
 > [!div class="op_single_selector"]
@@ -74,7 +74,7 @@ Az SDK és a kapcsolódó futtatókörnyezet-csomag apt-get parancssori eszköz 
 2. Adja hozzá a Service Fabric-adattárat a források listájához.
 
     ```bash
-    sudo sh -c 'echo "deb [arch=amd64] http://apt-mo.trafficmanager.net/repos/servicefabric/ xenial main" > /etc/apt/sources.list.d/servicefabric.list'
+    sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/servicefabric/ xenial main" > /etc/apt/sources.list.d/servicefabric.list'
     ```
 
 3. Adja hozzá a(z) `dotnet`-adattárat a források listájához.
@@ -162,7 +162,7 @@ A források frissítése után telepítheti az SDK-t. Telepítse a Service Fabri
 sudo apt-get install servicefabricsdkcommon
 ```
 
->   [!TIP]
+> [!TIP]
 >   A következő parancsok automatizálják a Service Fabric-csomagok licenceinek elfogadását:
 >   ```bash
 >   echo "servicefabric servicefabric/accepted-eula-ga select true" | sudo debconf-set-selections
@@ -179,7 +179,7 @@ Az SDK-telepítéssel együtt érkező Service Fabric-futtatókörnyezet az alá
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
-Ubuntu | 2.0.0 | AzulJDK 1.8-as verziója | Implicit módon az npm-ből | legújabb |
+Ubuntu | 2.0.0 | AzulJDK 1.8 | Implicit módon az npm-ből | legújabb |
 RHEL | - | OpenJDK 1.8 | Implicit módon az npm-ből | legújabb |
 
 ## <a name="set-up-a-local-cluster"></a>Helyi fürt beállítása
@@ -219,7 +219,7 @@ A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyek seg�
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
     nvm install node
     ```
-2. Telepítse a gépre a [Yeoman](http://yeoman.io/) sablongenerátort az npm-ből.
+2. Telepítse a gépre a [Yeoman](https://yeoman.io/) sablongenerátort az npm-ből.
 
     ```bash
     npm install -g yo
@@ -276,7 +276,7 @@ A Service Fabric Eclipse beépülő modulját a Java-fejlesztőknek vagy a Java 
 
 2. A Service Fabric beépülő modul telepítéséhez válassza a **Help** > **Install New Software** (Súgó, Új szoftver telepítése) elemet.
 
-3. A **Work with** (Használat) mezőbe írja be a **http://dl.microsoft.com/eclipse** címet.
+3. A **Work with** (Használat) mezőbe írja be a **https://dl.microsoft.com/eclipse** címet.
 
 4. Válassza a **Hozzáadás** lehetőséget.
 

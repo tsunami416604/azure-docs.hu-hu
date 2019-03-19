@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e19e21ab31fcee87aac6e7e8a0e1d0fbd0a7452c
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 0ca35c5d7a882a67bdce5e006b94d1f16daf9130
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409907"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57893204"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C: Felhasználói áttelepítése
 Az Azure Active Directory B2C az identitásszolgáltató áttelepítéskor (Azure AD B2C-vel), szükség lehet a felhasználói fiók áttelepítéséhez. Ez a cikk bemutatja, hogyan telepítheti át meglévő felhasználói fiókok bármely identitásszolgáltatótól az Azure AD B2C-vel. A cikk nem szinkronban kell lennie az előírásoknak megfelelő, de néhány forgatókönyv bemutatja. A fejlesztő feladata mindkét megközelítés megfelelőségét.
@@ -63,7 +63,7 @@ Először regisztrálja az áttelepítés alkalmazás Azure AD-ben. Ezután hozz
 1. Új alkalmazás létrehozásához az alábbiak szerint:
    - A **neve**, használjon **B2CUserMigration** vagy bármilyen más nevet.
    - A **alkalmazástípus**, használjon **Web app és az API**.
-   - A **bejelentkezési URL-**, használjon **https://localhost** (mert nem megfelelő ehhez az alkalmazáshoz).
+   - A **bejelentkezési URL-**, használjon `https://localhost` (mert nem megfelelő ehhez az alkalmazáshoz).
    - Kattintson a **Létrehozás** gombra.
    
 1. Az alkalmazás létrehozása után a a **alkalmazások** listájához, válassza ki az újonnan létrehozott **B2CUserMigration** alkalmazás.
@@ -94,7 +94,7 @@ Most már van egy alkalmazása, az engedélyek létrehozása, olvasása és fris
 Olvasási és írási könyvtárengedélyek data do *nem* a jogot arra, hogy törli a felhasználókat tartalmazzák. Biztosíthat az alkalmazás a felhasználók (a környezet tisztítása) törli, egy extra lépés, amely magában foglalja a PowerShell beállítása a felhasználói fiók rendszergazdai jogosultságokkal fut kell végrehajtania. Ellenkező esetben kihagyhatja a következő szakaszra.
 
 > [!IMPORTANT]
-> A B2C bérlő rendszergazdai fiók, amely kell használnia *helyi* a B2C-bérlőre. A fiók nevének szintaxisa *admin@contosob2c.onmicrosoft.com*.
+> A B2C bérlő rendszergazdai fiók, amely kell használnia *helyi* a B2C-bérlőre. A fiók nevének szintaxisa *rendszergazdai\@contosob2c.onmicrosoft.com*.
 
 >[!NOTE]
 > A következő PowerShell-parancsfájl igényel [Azure Active Directory PowerShell 2-es verzió][AD-Powershell].

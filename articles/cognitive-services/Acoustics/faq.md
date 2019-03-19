@@ -1,5 +1,5 @@
 ---
-title: Projekt Akusztika kapcsolatos gyakori kérdések
+title: Projekt Akusztika – gyakori kérdések
 titlesuffix: Azure Cognitive Services
 description: Ez az oldal nyújt projekt Akusztika, beleértve a kapcsolatban gyakran felmerülő kérdésekre adott válaszok letöltésiutasítás- és os folyamat.
 services: cognitive-services
@@ -7,25 +7,29 @@ author: kegodin
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
-ms.topic: conceptual
+ms.topic: resources
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 12dda5d7af1236ec2d7eddbe025b8fdba47d7bca
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c43c81d42a39bda504b02eb6c053a16a2cf53aec
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881074"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58138048"
 ---
-# <a name="frequently-asked-questions"></a>Gyakori kérdések
+# <a name="project-acoustics-frequently-asked-questions"></a>Projekt Akusztika – gyakori kérdések
 
 ## <a name="what-is-project-acoustics"></a>Mi az a Project Acoustics?
 
-A projekt Akusztika Unity beépülő modul egy Akusztika rendszer, amely kiszámítja a hangot wave viselkedés-futtatókörnyezet, mintha statikus világítás előtt. A felhő hajtja végre a wave feladatát fizika számításokat, így CPU-környezet futásidejű költségeit alacsony.  
+A projekt Akusztika suite beépülő modulokat a rendszer egy Akusztika, amely kiszámítja a hangot wave viselkedés-futtatókörnyezet, mintha statikus világítás előtt. A felhő hajtja végre a wave feladatát fizika számításokat, így CPU-környezet futásidejű költségeit alacsony.  
 
 ## <a name="where-can-i-download-the-plugin"></a>Honnan tölthetem le a beépülő modult?
 
-Ha szeretné kiértékelni az akusztikai beépülő modult, regisztráljon [itt](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u) az előzetes tervezői verzióra.
+A projekt Akusztika letöltheti a [projekt Akusztika letöltőközpontlapon](https://www.microsoft.com/en-us/download/details.aspx?id=57346).
+
+## <a name="does-project-acoustics-support-x-platform"></a>Nem támogatja a projekt Akusztika <x> platform?
+
+A projekt Akusztika haladásával eszközplatform-támogatás a vásárlók igényei alapján. Forduljon hozzánk bizalommal a [projekt Akusztika fórumok](https://social.msdn.microsoft.com/Forums/en-US/home?forum=projectacoustics) további platformok a támogatással kapcsolatos események beküldéséhez.
 
 ## <a name="is-azure-used-at-runtime"></a>Azure futásidőben használatos?
 
@@ -45,17 +49,17 @@ Nem. A rendszer közvetlenül képes-e feldolgozni a részletes szint geometriai
  
 ## <a name="whats-in-the-runtime-lookup-table"></a>Mi az a futásidejű keresési táblából?
 
-A hozzáférés-vezérlő bejegyzések fájl nem akusztikai paraméterek között számos olyan forrás- és a figyelő hely párok tábláját.
+A hozzáférés-vezérlő bejegyzések fájl tartalmaz egy táblázatot akusztikai paraméterek között számos olyan forrás és a figyelő hely párok, valamint voxelized jelenet geometriai paraméter interpolációs használt.
  
-## <a name="can-it-handle-moving-sources"></a>Kezelheti, áthelyezése források?
+## <a name="can-project-acoustics-handle-moving-sources"></a>Projekt Akusztika mozgó forrásból képes kezelni?
 
-Igen, a **Microsoft Acoustics** Unity spatializer beépülő modul consults szintűre frissül a keresési táblázatban az egyes hang feldolgozási osztásjelek a forrás- és a figyelő helyeket. A spatializer DSP zökkenőmentesen akusztikai feldolgozási paraméterei fog megfelelni a frissíti.
+Igen, a projekt Akusztika consults szintűre frissül a keresési táblában, és frissíti az egyes az órajelhez a hang DSP, így képes kezelni, források és -figyelő áthelyezése.
  
-## <a name="can-it-handle-dynamic-geometry-closing-doors-walls-blown-away"></a>Kezelheti, a dinamikus geometriai? Ajtó bezárása? Elképesztő funkciók azonnal falak?
+## <a name="can-project-acoustics-handle-dynamic-geometry-closing-doors-walls-blown-away"></a>Projekt Akusztika dinamikus geometriai képes kezelni? Ajtó bezárása? Elképesztő funkciók azonnal falak?
 
-Nem. Akusztikai paraméterei a következők illesztésiszűrő játék szintű statikus állapota alapján. Azt elhagyó ajtó geometriai Akusztika kívül javasolt, és ezután alkalmazza a további hangelnyelés meghatározott technikákkal destructible és mozgatható játék objektumok állapota alapján.
+Nem. Akusztikai paraméterei a következők illesztésiszűrő játék szintű statikus állapota alapján. Javasoljuk az ajtó geometriai kívül Akusztika elhagyó, és majd a további hangelnyelés destructible állapota alapján alkalmazza, és mozgatható játék objektumok használatával létrehozott technikákat.
  
-## <a name="does-it-handle-materials"></a>Anyagok kezeli azt?
+## <a name="does-project-acoustics-use-acoustic-materials"></a>Projekt Akusztika használ akusztikai anyagok?
 
 Igen. Anyagok a paraméterkészletben fizikai anyagi a szinten absorptivity vezetési útvonalról.
  
@@ -65,12 +69,12 @@ Mintavételezők egy mintavételi lehetséges player helyek. Egyes Hálózatfigy
  
 ## <a name="why-spend-so-much-compute-in-the-cloud-what-does-it-buy-me"></a>Miért költségek ennél jóval számítási a felhőben? Mi nem azt vásárlása velem?
 
-Projekt Akusztika biztosít pontos és megbízható akusztikai paraméterek még ultramagas összetett virtuális környezeteibe, minden architekturális szempontból figyelembe véve. Zökkenőmentes összes manuális tevékenység nélkül nem érhető el/akadály és dinamikus visszhang variation kötetek anélkül biztosít. Eközben a fennmaradó világos processzor, futtatás közben.
+Projekt Akusztika biztosít pontos és megbízható akusztikai paraméterek még ultramagas összetett virtuális környezeteibe, minden architekturális szempontból figyelembe véve. Zökkenőmentes hangelnyelés és akadály és dinamikus visszhang változata manuális munka nélküli rajzolási kötetek biztosít. Eközben a fennmaradó világos processzor, futtatás közben.
 
 ## <a name="what-exactly-happens-during-baking"></a>Mi pontosan "sütés" során történik?
 
-A rendszer figyelembe veszi a potenciális player helyek egységesen távolságban elhelyezett "mintavételi" minta pozíciók álló készletet hoz létre. Egy szint egy bake egyes mintavétel független feladatokra áll: A rendszer figyelembe veszi a cuboid "Szimuláció régió" a mintavétel: ingyenes, és egy adott régióban legfeljebb 25 cm felbontású részletes wave szimuláció does.
+Egy bake akusztikai wave szimulációk, minden egyes figyelő mintavételi középre cuboid szimuláció régiók áll.
 
 ## <a name="next-steps"></a>További lépések
-* Fedezze fel a [minta jelenet renderelése;](sample-walkthrough.md)
+* Próbálja ki a [Akusztika Unity Project mintatartalmakat próbálhat](unity-quickstart.md) vagy [Unreal minta tartalom](unreal-quickstart.md)
 

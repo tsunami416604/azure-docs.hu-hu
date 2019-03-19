@@ -2,7 +2,6 @@
 title: Az SAP-rendszerek – Azure Logic Apps csatlakoztatása |} A Microsoft Docs
 description: Elérése és SAP-erőforrások kezelése az Azure Logic Apps a munkafolyamatok automatizálásával
 author: ecfan
-manager: jeconnoc
 ms.author: estfan
 ms.date: 05/31/2018
 ms.topic: article
@@ -11,18 +10,17 @@ services: logic-apps
 ms.reviewer: klam, divswa, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 77d1e11c1400f9a3d6bb6bda8e935cd4d24a195e
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: d677c0eae9c92f90783ed4ebd95a528b34c872ec
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230896"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58170836"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Csatlakozás az Azure Logic Apps a SAP-rendszerek
 
 > [!NOTE]
-> Az SAP-összekötő hamarosan elavulttá válik. Új és speciális SAP-összekötő, és válassza ki, vagy helyezze át a javasolt kiadtuk a [új SAP-összekötő](./logic-apps-using-sap-connector.md).
->  
+> Az SAP-összekötő az avuláshoz van ütemezve. Használjon, vagy át a [újabb és speciális SAP-összekötő](./logic-apps-using-sap-connector.md). 
 
 Ez a cikk azt ismerteti, hogyan férhet hozzá a logikai alkalmazás az SAP-erőforrások az SAP-alkalmazáskiszolgáló és az SAP Üzenetkiszolgáló összekötők használatával. Ezzel a módszerrel automatizálhatja feladatok, folyamatok és munkafolyamatok, amelyek a logikai alkalmazások létrehozásával az SAP-adatok és erőforrások kezelése.
 
@@ -38,7 +36,7 @@ Ha nem rendelkezik Azure-előfizetésem, <a href="https://azure.microsoft.com/fr
 
 Ez a cikk követni, ezek az elemek szükségesek:
 
-* A logikai alkalmazás, ahonnan csak szeretné elérni az SAP-rendszerhez, és a egy eseményindítót, amely elindítja a logikai alkalmazás munkafolyamat. Az SAP-összekötők jelenleg csak a műveleteket meg. Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps](../logic-apps/logic-apps-overview.md) és [a rövid útmutató: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+* A logikai alkalmazás, ahonnan csak szeretné elérni az SAP-rendszerhez, és a egy eseményindítót, amely elindítja a logikai alkalmazás munkafolyamat. Az SAP-összekötők jelenleg csak a műveleteket meg. Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps](../logic-apps/logic-apps-overview.md) és [a rövid útmutató: Az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 * A <a href="https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server" target="_blank">SAP-alkalmazáskiszolgáló</a> vagy <a href="https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm" target="_blank">SAP Üzenetkiszolgáló</a>
 
@@ -67,7 +65,7 @@ Ebben a példában egy logikai alkalmazást fog létrehozni az Azure-ban a végp
 
 1. Az Azure Portalon hozzon létre egy üres logikai alkalmazást, amely megnyílik a Logikaialkalmazás-Tervező. 
 
-2. A Keresés mezőbe írja be a "http-kérelem" szűrőként. A eseményindítók listáról válassza ki a következő eseményindítót: **kérés – Ha egy HTTP-kérés fogadásakor.**
+2. A Keresés mezőbe írja be a "http-kérelem" szűrőként. Az eseményindítók listában jelölje ki az eseményindító: **Kérelem - HTTP-kérés fogadásakor.**
 
    ![HTTP-kérelem típusú trigger hozzáadása](./media/logic-apps-using-sap-connector-old/add-trigger.png)
 
@@ -93,7 +91,7 @@ Az Azure Logic Apps- [művelet](../logic-apps/logic-apps-overview.md#logic-app-c
    * **SAP alkalmazáskiszolgáló - SAP küldése**
    * **SAP Üzenetkiszolgáló – SAP küldése**
 
-   Ebben a példában ez a művelet: **SAP-alkalmazáskiszolgáló - SAP küldése**
+   Ebben a példában ez a művelet: **SAP alkalmazáskiszolgáló - SAP küldése**
 
    ![Válassza ki a "SAP-alkalmazáskiszolgáló" vagy "SAP Üzenetkiszolgáló"](media/logic-apps-using-sap-connector-old/select-sap-action.png)
 
@@ -154,7 +152,7 @@ Adja meg a logikai alkalmazás munkafolyamat egy válaszművelet és közé tart
 
 1. A Logic App Designerben az SAP művelet alatt válassza ki a **új lépés** > **művelet hozzáadása**.
 
-2. A Keresés mezőbe írja be a "response" szűrőként. Válassza ezt a műveletet a műveletek listájának: **kérelem - válasz**
+2. A Keresés mezőbe írja be a "response" szűrőként. A műveletek listából válassza a következő műveletet: **Kérés - válasz**
 
 3. Kattintson a **törzs** mezőre, hogy a dinamikus tartalmak listája jelenik meg. A listából a **küldeni az SAP**, jelölje be a **törzs** mező. 
 

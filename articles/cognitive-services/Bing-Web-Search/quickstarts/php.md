@@ -8,21 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: quickstart
-ms.date: 02/12/2019
+ms.date: 03/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 63e4052a2bce6c620180d682d6713d2f1547c956
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ba132adc6b0fd2b8423a7bce30ad6d52fccc898e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57536759"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57858201"
 ---
 # <a name="quickstart-use-php-to-call-the-bing-web-search-api"></a>Gyors útmutató: A php használatával a Bing Web Search API meghívása  
 
-Ez a rövid útmutató segítségével a Bing Web Search API az első hívását, és a JSON-választ kapnak. A Node.js-alkalmazás egy keresési kérelmet küld az API-t, és a válasz megjeleníti. Az alkalmazás JavaScript nyelven van megírva, míg a API-ját egy REST-alapú webszolgáltatás szinte bármelyik programozási nyelvével kompatibilis.
+Ez a rövid útmutató segítségével a Bing Web Search API az első hívását, és a JSON-választ kapnak. A Node.js-alkalmazás egy keresési kérelmet küld az API-t, és bemutatja a választ. Az alkalmazás JavaScript nyelven van megírva, míg a API-ját egy REST-alapú webszolgáltatás szinte bármelyik programozási nyelvével kompatibilis.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 
 * A [PHP 5.6.x-es](https://php.net/downloads.php) vagy újabb verziója
@@ -34,11 +35,11 @@ Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 
 Kezdés előtt keresse meg a `php.ini` fájlt, és távolítsa el a megjegyzés jelölését a következő sornál:
 
-```
-;extension=php_openssl.dll
+```php
+; extension=php_openssl.dll
 ```
 
-## <a name="create-a-project-and-define-variables"></a>Projekt létrehozása és a változók definiálása  
+## <a name="create-a-project-and-define-variables"></a>Projekt létrehozása és a változók definiálása
 
 Hozzon létre egy új PHP-projektet a kedvenc IDE-környezetében vagy szerkesztőjében. Ne felejtse el beírni a nyitó és záró `<?php` és `?>` címkét.
 

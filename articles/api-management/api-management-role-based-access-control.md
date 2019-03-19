@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 21e7406d566be5be73342d530a4ad66b80a1d23f
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: deef5d17f9970f23c40c323bd1612cc3e3e1304e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990441"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107406"
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>Szerepköralapú hozzáférés-vezérlés használata az Azure API Management szolgáltatásban
 Az Azure API Management az Azure szerepköralapú hozzáférés vezérlése (RBAC) ahhoz, hogy az API Management-szolgáltatások és entitások (például API-k és házirendek) részletes hozzáférés-vezérlést támaszkodik. Ez a cikk áttekintést, a beépített és egyéni szerepkörök az API Management szolgáltatásban. A hozzáférés-kezelés az Azure Portalon további információkért lásd: [hozzáférés-kezelés az Azure portal – első lépések](https://azure.microsoft.com/documentation/articles/role-based-access-control-what-is/).
@@ -32,7 +32,7 @@ Az API Management jelenleg három beépített szerepkört biztosít, és felvesz
 A következő táblázat a beépített szerepkörök rövid leírása. Ezeket a szerepköröket rendelhet az Azure Portalon vagy más eszközök, köztük az Azure használatával [PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell), [Azure CLI-vel](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli), és [REST API-val](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest). Beépített szerepkörök hozzárendelése kapcsolatos részletekért lásd: [az Azure-előfizetések erőforrásaihoz való hozzáférés kezelése a szerepkör-hozzárendelésekkel](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
 
 | Szerepkör          | Olvasási hozzáférés<sup>[1]</sup> | Írási hozzáférés<sup>: [2]</sup> | Service creation, deletion, scaling, VPN, and custom domain configuration | Az örökölt publisher Portalon való hozzáférés | Leírás
-| ------------- | ---- | ---- | ---- | ---- | ---- | ---- |
+| ------------- | ---- | ---- | ---- | ---- | ---- 
 | Az Azure API Management szolgáltatás Közreműködője | ✓ | ✓ | ✓ | ✓ | Felügyelői. Entitások (például API-k és házirendek) és az API Management szolgáltatásainak teljes CRUD-hozzáféréssel rendelkezik. Az örökölt közzétevői portálon hozzáféréssel rendelkezik. |
 | Az Azure API Management szolgáltatás olvasói | ✓ | | || API Management-szolgáltatások és entitásokat csak olvasási hozzáféréssel rendelkezik. |
 | Az Azure API Management szolgáltatás operátori | ✓ | | ✓ | | API Management-szolgáltatások, de nem entitások kezelheti.|

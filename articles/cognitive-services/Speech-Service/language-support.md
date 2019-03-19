@@ -1,5 +1,5 @@
 ---
-title: Nyelvi támogatás – Beszédszolgáltatási API Használatába
+title: Nyelvi támogatás – beszédszolgáltatások
 titleSuffix: Azure Cognitive Services
 description: Az Azure Speech Services számos nyelv támogatása a hang-szöveg és a szöveg-beszéd átalakítás, beszédalapú fordítási együtt. Ez a cikk a szolgáltatás által nyelvi támogatás átfogó listáját tartalmazza.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 22916a188c79d5894faf48dd71d6ab17a582cf8b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 927781c61a9ca2a1ef23db47294468dad7140dff
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878034"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57885351"
 ---
-# <a name="language-and-region-support-for-speech-service-api"></a>Nyelvéhez és régiójához támogatása Beszédszolgáltatási API Használatába
+# <a name="language-and-region-support-for-the-speech-services"></a>A beszédfelismerési szolgáltatás nyelvéhez és régiójához támogatása
 
 Beszédszolgáltatások különböző funkciók különböző nyelvekhez támogatottak. A következő táblázat összefoglalja a nyelvi támogatás.
 
@@ -179,7 +179,7 @@ zh-TW | kínai (tajvani)|Nő | "A Microsoft Server beszéd szöveg Speech Voice 
 Hangalapú testreszabási az Amerikai angol (en-US) kontinens kínai (zh-CN), francia (fr-FR), német (de-DE) és olasz (it-IT) érhető el.
 
 > [!NOTE]
-> Francia, német, olasz és hang képzési elindítja egy adatkészlet 2000 + kimondott szöveg. Angol nyelvű kínai kétnyelvű modellek is támogatottak egy kezdeti be, mint 2000 kimondott szöveg.
+> Francia, német és olasz hangalapú képzési egy be, mint 2000 utterances kezdődik. Angol nyelvű kínai kétnyelvű modellek is támogatottak egy kezdeti be, mint 2000 kimondott szöveg.
 
 ## <a name="speech-translation"></a>Tolmácsolás
 
@@ -255,5 +255,5 @@ A **beszédalapú fordítási** API különböző nyelveket támogat a speech be
 
 ## <a name="next-steps"></a>További lépések
 
-* [Próbaverziós Speech-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
+* [Próbaverziós Speech Services-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
 * [A beszédfelismerést a C#-ban való használatáról](quickstart-csharp-dotnet-windows.md)

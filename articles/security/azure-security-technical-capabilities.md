@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: aa003d5c56e374c99b26beb884fce27b9b16298e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 76944d98d6a5fe7c3f83ce12bb2fdf1a34d5e234
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440063"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57839100"
 ---
 # <a name="azure-security-technical-capabilities"></a>Az Azure biztonságtechnikai képességek
 
@@ -75,7 +75,7 @@ Az Azure Active Directory (Azure AD) biztonsági funkcióit is tartalmazzák:
 
 - Építhet ki biztonságos távoli hozzáférést a helyszíni webalkalmazásokhoz az Azure AD-alkalmazásproxyn keresztül.
 
-A [Azure Active Directory portálon](http://aad.portal.azure.com/) érhető el az Azure Portalon egy részét. Ezen az irányítópulton áttekintheti a szervezet állapotát, és könnyedén ismerje meg, a könyvtárban, a felhasználók vagy az alkalmazás-hozzáférés kezelése.
+A [Azure Active Directory portálon](https://aad.portal.azure.com/) érhető el az Azure Portalon egy részét. Ezen az irányítópulton áttekintheti a szervezet állapotát, és könnyedén ismerje meg, a könyvtárban, a felhasználók vagy az alkalmazás-hozzáférés kezelése.
 
 ![Azure Active Directory](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig2.png)
 
@@ -113,7 +113,7 @@ Nem csak felhasználó nem rendelkezik több példányban felhasználónevek és
 
 Biztonsági monitoringgal és figyelmeztetésekkel, illetve a gépi tanuláson alapuló jelentésekkel, amelyek felismerő segíthet a üzleti adatai védelméről. Azure Active Directory hozzáférési és használati jelentések segítségével értékes információkhoz juthat az integritásra és a munkahely címtárában biztonságát. Ezekkel az információkkal a directory-rendszergazda megadhatja jobban, hogy ahol lehetséges, hogy egészülnek biztonsági kockázatokat, úgy, hogy azok megfelelően tervezi, hogy ezek a kockázatok csökkentése.
 
-Az Azure Portalon vagy keresztül a [Azure Active Directory portálon](http://aad.portal.azure.com/), [jelentések](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-guide) szerint vannak kategóriába sorolva a következő módon:
+Az Azure Portalon vagy keresztül a [Azure Active Directory portálon](https://aad.portal.azure.com/), [jelentések](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-guide) szerint vannak kategóriába sorolva a következő módon:
 
 - Anomáliadetektálási jelentések – bejelentkezési eseményeket, amelyek találtunk rendellenes kell tartalmaznia. Célunk, győződjön meg arról, hogy az ilyen tevékenység tisztában, és engedélyezi, hogy tudni arról, hogy az esemény gyanúsnak dönt.
 
@@ -274,7 +274,7 @@ További tudnivalók az Azure VPN-beállítást a cikk elolvasásával [tervezé
 
 [Az Azure RMS](https://technet.microsoft.com/library/jj585026.aspx) titkosítási, identitáskezelési és engedélyezési házirendeket használ a fájlok és e-mailek védelmének elősegítésére. Az Azure RMS működésének bemutatása, több eszközre – telefonokon, táblagépeken és számítógépeken a szervezeten belül, mind a szervezeten kívüli ellenőrzését. Ez a lehetőség azért lehetséges, mert az Azure RMS-t biztosítja, ami az adatok maradnak, még akkor is, ha elhagyják a szervezet területét.
 
-Amikor az Azure RMS használatával védeni a fájlokat, és teljes körű támogatással, iparági szabványos kriptográfia használja [FIPS 140-2](http://csrc.nist.gov/groups/STM/cmvp/standards.html). Azure RMS adatvédelmi használja ki, ha rendelkezik, hogy a fájl védett marad akkor is, ha a ellenőrzése alatt nem álló tárolók másolódik informatikai, például egy felhős társzolgáltatás. Az egyetlen különbség, e-mailben megosztott fájlok a fájl védett, lépéseit egy e-mail üzenet mellékleteként nyitni a védett mellékletet.
+Amikor az Azure RMS használatával védeni a fájlokat, és teljes körű támogatással, iparági szabványos kriptográfia használja [FIPS 140-2](https://csrc.nist.gov/groups/STM/cmvp/standards.html). Azure RMS adatvédelmi használja ki, ha rendelkezik, hogy a fájl védett marad akkor is, ha a ellenőrzése alatt nem álló tárolók másolódik informatikai, például egy felhős társzolgáltatás. Az egyetlen különbség, e-mailben megosztott fájlok a fájl védett, lépéseit egy e-mail üzenet mellékleteként nyitni a védett mellékletet.
 Az Azure RMS bevezetésének tervezésekor a következőket javasoljuk:
 
 - Telepítse a [RMS-megosztó alkalmazás](https://technet.microsoft.com/library/dn339006.aspx). Ez az alkalmazás integrálja az Office-alkalmazásokat telepít egy Office-bővítmény, hogy a felhasználók egyszerűen védhetik a fájlokat közvetlenül.
@@ -406,11 +406,11 @@ Az Azure Operational Security olyan keretrendszer, amely magában foglalja a kü
 
 Az Azure monitorral bármilyen felhőhöz, beleértve a helyszíni, Azure, az AWS, a Windows Server, Linux, VMware és OpenStack, mint az adatbázisszinten megoldások alacsonyabb költséggel lévő bármely példány is kezelheti. A felhő-és felhőközpontú világ számára készült, az Azure Monitor új megközelítést kínál az a vállalat, amely a leggyorsabb és leginkább költséghatékony megoldást új üzleti kihívásokat, valamint új terheléseket, alkalmazások és a felhőalapú környezetek kezeléséhez.
 
-### <a name="azure-monitor-logs"></a>Az Azure Monitor naplóira
+### <a name="azure-monitor-logs"></a>Azure Monitor-naplók
 
 [Az Azure Monitor naplóira](https://azure.microsoft.com/documentation/services/log-analytics) adatokat gyűjt a felügyelt erőforrások egy központi tárházba figyelési szolgáltatásokat biztosít. Ezek az adatok lehetnek események, teljesítményadatok vagy az API segítségével biztosított egyéni adatok. Az összegyűjtésüket követően az adatok használhatók riasztáshoz, elemzéshez vagy exportáláshoz.
 
-![Az Azure Monitor naplóira](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig9.png)
+![Azure Monitor-naplók](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig9.png)
 
 Ezzel a módszerrel konszolidálhatja a különféle forrásokból származó adatokat, így kombinálhatja az Azure-szolgáltatásokat a meglévő adatokat a helyszíni környezetben. Továbbá egyértelműen elkülöníti az adatok gyűjtését az adatokon végzett műveletektől, így az összes művelet végrehajtható a különféle adatokon.
 

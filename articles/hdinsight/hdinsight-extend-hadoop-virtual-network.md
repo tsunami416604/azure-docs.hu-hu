@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 8a67b94c7f2355872b243a05a7908604e88cf778
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ae3b4787928b3a578df30dd7f8a2791ce487305d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433790"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100496"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Az Azure Virtual Network használata Azure HDInsight kiterjesztése
 
@@ -115,8 +115,8 @@ Kövesse a lépéseket ebben a szakaszban egy új HDInsight hozzáadása egy meg
     * [Klasszikus Azure CLI-vel HDInsight létrehozása](hdinsight-hadoop-create-linux-clusters-azure-cli.md)
     * [A HDInsight használata az Azure Resource Manager-sablon létrehozása](hdinsight-hadoop-create-linux-clusters-arm-templates.md)
 
-  > [!IMPORTANT]  
-  > Egy választható konfigurációs lépés HDInsight ad hozzá egy virtuális hálózaton. Mindenképpen jelölje ki a virtuális hálózat, a fürt konfigurálása során.
+   > [!IMPORTANT]  
+   > Egy választható konfigurációs lépés HDInsight ad hozzá egy virtuális hálózaton. Mindenképpen jelölje ki a virtuális hálózat, a fürt konfigurálása során.
 
 ## <a id="multinet"></a>Több hálózat csatlakoztatása
 
@@ -128,8 +128,8 @@ Az Azure névfeloldás kínál Azure-szolgáltatások telepítve vannak a virtu�
 
 * Bármilyen erőforrás, amely az azonos Azure Virtual Network használatával a __belső DNS-név__ az erőforrás. Például az alapértelmezett névfeloldás használata esetén a következők példa HDInsight munkavégző csomópontokhoz rendelt belső DNS-nevek:
 
-    * wn0-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
-    * wn2-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
+  * wn0-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
+  * wn2-hdinsi.0owcbllr5hze3hxdja3mqlrhhe.ex.internal.cloudapp.net
 
     Mindkét ezek a csomópontok közvetlenül kommunikálhatnak egymással, és a HDInsight, a többi csomópont belső DNS-nevek használatával.
 
@@ -148,29 +148,29 @@ A virtuális hálózat és a csatlakoztatott hálózatokon lévő erőforrások 
 
 4. Configure forwarding between the DNS servers. A konfiguráció attól függ, hogy a távoli hálózat típusát.
 
-    * Ha a távoli hálózat egy helyszíni hálózattal, konfigurálja a DNS módon:
+   * Ha a távoli hálózat egy helyszíni hálózattal, konfigurálja a DNS módon:
         
-        * __Egyéni DNS__ (az a virtuális hálózat esetén):
+     * __Egyéni DNS__ (az a virtuális hálózat esetén):
 
-            * Az Azure rekurzív feloldó (168.63.129.16) a virtuális hálózat DNS-utótagját kérelmeket továbbítsa. Azure virtuális hálózatban lévő erőforrásokra vonatkozó kéréseket kezeli
+         * Az Azure rekurzív feloldó (168.63.129.16) a virtuális hálózat DNS-utótagját kérelmeket továbbítsa. Azure virtuális hálózatban lévő erőforrásokra vonatkozó kéréseket kezeli
 
-            * Továbbíthatja a helyi DNS-kiszolgáló minden más kérelemhez. A helyi DNS-ben kezeli az összes többi névfeloldási, még akkor is, kérelmek, az internetes erőforrásokhoz, például a Microsoft.com webhelyre mutat.
+         * Továbbíthatja a helyi DNS-kiszolgáló minden más kérelemhez. A helyi DNS-ben kezeli az összes többi névfeloldási, még akkor is, kérelmek, az internetes erőforrásokhoz, például a Microsoft.com webhelyre mutat.
 
-        * __A helyszíni DNS__: A kérelmeket továbbítsa a virtuális hálózat DNS-utótag egyéni DNS-kiszolgálóra. Az egyéni DNS-kiszolgáló ezután továbbítja az Azure rekurzív feloldó.
+     * __A helyszíni DNS__: A kérelmeket továbbítsa a virtuális hálózat DNS-utótag egyéni DNS-kiszolgálóra. Az egyéni DNS-kiszolgáló ezután továbbítja az Azure rekurzív feloldó.
 
-        A konfiguráció útvonalak kérelmek teljesen minősített tartományneveket tartalmazó egyéni DNS-kiszolgálóra a virtuális hálózat DNS-utótagját. Minden más kérelemhez (akár a nyilvános internet-címekhez) a helyi DNS-kiszolgáló kezeli.
+       A konfiguráció útvonalak kérelmek teljesen minősített tartományneveket tartalmazó egyéni DNS-kiszolgálóra a virtuális hálózat DNS-utótagját. Minden más kérelemhez (akár a nyilvános internet-címekhez) a helyi DNS-kiszolgáló kezeli.
 
-    * Ha a távoli hálózat egy másik Azure Virtual Network, konfigurálja a DNS módon:
+   * Ha a távoli hálózat egy másik Azure Virtual Network, konfigurálja a DNS módon:
 
-        * __Egyéni DNS__ (az egyes virtuális hálózatok):
+     * __Egyéni DNS__ (az egyes virtuális hálózatok):
 
-            * A virtuális hálózat DNS-utótagját a kérelmeket a rendszer az egyéni DNS-kiszolgálókra továbbítja. A DNS-ben az egyes virtuális hálózatok feladata a hálózaton belüli erőforrások feloldása.
+         * A virtuális hálózat DNS-utótagját a kérelmeket a rendszer az egyéni DNS-kiszolgálókra továbbítja. A DNS-ben az egyes virtuális hálózatok feladata a hálózaton belüli erőforrások feloldása.
 
-            * Minden más kérelemhez továbbítja az Azure rekurzív feloldó. A rekurzív feloldó helyi megoldása és az internetes erőforrások felelős.
+         * Minden más kérelemhez továbbítja az Azure rekurzív feloldó. A rekurzív feloldó helyi megoldása és az internetes erőforrások felelős.
 
-        A DNS-kiszolgáló esetében minden egyes hálózati továbbítja a kérelmeket a másik alapján DNS-utótagot. Az Azure rekurzív feloldó használata más kérelmek elhárulnak.
+       A DNS-kiszolgáló esetében minden egyes hálózati továbbítja a kérelmeket a másik alapján DNS-utótagot. Az Azure rekurzív feloldó használata más kérelmek elhárulnak.
 
-    Az egyes konfigurációkhoz egy példa: a [példa: Egyéni DNS](#example-dns) szakaszban.
+     Az egyes konfigurációkhoz egy példa: a [példa: Egyéni DNS](#example-dns) szakaszban.
 
 További információkért lásd: a [virtuális gépek és Szerepkörpéldányok névfeloldása](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) dokumentumot.
 
@@ -647,9 +647,9 @@ Ebben a példában feltételezésekre a következő:
     };
     ```
     
-    * Cserélje le a `10.0.0.0/16` és `10.1.0.0/16` értékek IP-címtartományok a virtuális hálózatok. Ez a bejegyzés lehetővé teszi, hogy erőforrásokat az egyes hálózatok, hogy a DNS-kiszolgálók kéréseket.
+   * Cserélje le a `10.0.0.0/16` és `10.1.0.0/16` értékek IP-címtartományok a virtuális hálózatok. Ez a bejegyzés lehetővé teszi, hogy erőforrásokat az egyes hálózatok, hogy a DNS-kiszolgálók kéréseket.
 
-    Az Azure rekurzív feloldó, amelyek nem a virtuális hálózatok (például microsoft.com) DNS-utótagot a kérések kezeli.
+     Az Azure rekurzív feloldó, amelyek nem a virtuális hálózatok (például microsoft.com) DNS-utótagot a kérések kezeli.
 
 4. A konfiguráció használatához indítsa újra a kötés. Ha például `sudo service bind9 restart` mindkét DNS-kiszolgálókon.
 

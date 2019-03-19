@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 62d8236abb2b5f21bdb4111480d95376faa2e379
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 90d1d752481ada33c038ab563f6bd0d3bf5fad08
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432600"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086802"
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>Virtuális gép létrehozása a tárfiókban lévő speciális virtuális merevlemezből
 
@@ -212,10 +212,10 @@ Hozza létre a virtuális hálózat és alhálózat, a [virtuális hálózat](..
     $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgName -Location $location `
         -AddressPrefix 10.0.0.0/16 -Subnet $singleSubnet
     ```    
-### <a name="create-the-network-security-group-and-an-rdp-rule"></a>A hálózati biztonsági csoport és a egy RDP-szabály létrehozása
-Az, hogy jelentkezzen be a virtuális gép RDP-vel, szüksége lesz egy biztonsági szabályt, amely lehetővé teszi a 3389-es RDP-hozzáférést. Mert a virtuális Merevlemezt az új virtuális gép egy meglévő specializált virtuális gép, miután a virtuális gép létrejött, akkor használhatja egy meglévő fiókot, a forrás virtuális gépen, amely RDP használatával kíván bejelentkezni engedély volna.
-Ezt manuálisan kell végrehajtani, társítva lesz hálózati adapter létrehozása előtt.  
-Ebben a példában állítja be az NSG neve **myNsg** és az RDP-szabály neve, **myRdpRule**.
+   ### <a name="create-the-network-security-group-and-an-rdp-rule"></a>A hálózati biztonsági csoport és a egy RDP-szabály létrehozása
+   Az, hogy jelentkezzen be a virtuális gép RDP-vel, szüksége lesz egy biztonsági szabályt, amely lehetővé teszi a 3389-es RDP-hozzáférést. Mert a virtuális Merevlemezt az új virtuális gép egy meglévő specializált virtuális gép, miután a virtuális gép létrejött, akkor használhatja egy meglévő fiókot, a forrás virtuális gépen, amely RDP használatával kíván bejelentkezni engedély volna.
+   Ezt manuálisan kell végrehajtani, társítva lesz hálózati adapter létrehozása előtt.  
+   Ebben a példában állítja be az NSG neve **myNsg** és az RDP-szabály neve, **myRdpRule**.
 
 ```powershell
 $nsgName = "myNsg"

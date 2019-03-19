@@ -11,15 +11,15 @@ ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
-ms.date: 06/12/2018
+ms.date: 03/13/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 826b0d2e56034a99130962f259c5c4297a31daf7
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7fe75dabe098cf98f0c3c04d592a32d6a44cebf8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537269"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57905018"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Többpéldányos tevékenységek használata Message Passing Interface (MPI) applications futtatása a Batchben
 
@@ -52,7 +52,7 @@ Többpéldányos beállítások egy feladat elküldésekor egy feladatot a Batch
 Többpéldányos tevékenységek elvégzésére egy készletet a **csomópontok közötti kommunikáció engedélyezve**, és a **le van tiltva egyidejű feladat a végrehajtás**. Egyidejű feladat a végrehajtás letiltásához állítsa be a [CloudPool.MaxTasksPerComputeNode](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool) tulajdonságot 1-re.
 
 > [!NOTE]
-> A batch [korlátok](batch-quota-limit.md#other-limits) egy készletet, amelyen a csomópontok közötti kommunikáció engedélyezett méretét.
+> A batch [korlátok](batch-quota-limit.md#pool-size-limits) egy készletet, amelyen a csomópontok közötti kommunikáció engedélyezett méretét.
 
 
 Ez a kódrészlet bemutatja, hogyan hozhat létre egy készletet a Batch .NET-kódtár használatával többpéldányos tevékenységek.

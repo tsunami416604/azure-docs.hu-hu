@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: michaelhauss
 ms.subservice: blobs
-ms.openlocfilehash: 65ecaaea09c28c31d76f31dc447108273b379f9e
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1ab799ef7eb9d7c591e76ab9180d4e3f4ba6ba59
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811664"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007277"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Az IOS-es Blob storage használata
 
@@ -124,7 +124,7 @@ Az Azure Storage összes blobjának egy tárolóban kell lennie. Az alábbi pél
 }
 ```
 
-Ellenőrizheti, hogy ez működik megnézzük a [Microsoft Azure Storage Explorer](http://storageexplorer.com) és ellenőrizte, hogy *newcontainer* szerepel a listán a tárfiókhoz tartozó tárolót.
+Ellenőrizheti, hogy ez működik megnézzük a [Microsoft Azure Storage Explorer](https://storageexplorer.com) és ellenőrizte, hogy *newcontainer* szerepel a listán a tárfiókhoz tartozó tárolót.
 
 ## <a name="set-container-permissions"></a>Tároló engedélyeinek beállítása
 Egy tároló-engedélyek vannak beállítva **privát** hozzáférés alapértelmezés szerint. Azonban tárolók biztosítják a tároló hozzáférésének néhány másik lehetőség:
@@ -203,7 +203,7 @@ Az alábbi példa bemutatja, hogyan tölthet fel egy blokkblobot az egy NSString
 }
 ```
 
-Ellenőrizheti, hogy ez működik megnézzük a [Microsoft Azure Storage Explorer](http://storageexplorer.com) és ellenőrizte, hogy a tároló *containerpublic*, tartalmazza a blob *sampleblob*. Ebben a példában is használt egy nyilvános tárolóban úgy is ellenőrizheti, hogy az alkalmazás a blobok URI-t a dolgozni:
+Ellenőrizheti, hogy ez működik megnézzük a [Microsoft Azure Storage Explorer](https://storageexplorer.com) és ellenőrizte, hogy a tároló *containerpublic*, tartalmazza a blob *sampleblob*. Ebben a példában is használt egy nyilvános tárolóban úgy is ellenőrizheti, hogy az alkalmazás a blobok URI-t a dolgozni:
 
     https://nameofyourstorageaccount.blob.core.windows.net/containerpublic/sampleblob
 
@@ -378,10 +378,10 @@ Az alábbi példa bemutatja, hogyan törölhet egy tárolót.
 Most, hogy megismerte a Blob Storage használata az iOS, az alábbi hivatkozásokból tudhat meg többet az iOS-klienskódtár és a Storage szolgáltatás.
 
 * [IOS-hez készült Azure Storage ügyféloldali kódtára](https://github.com/azure/azure-storage-ios)
-* [Az Azure Storage iOS dokumentációja](http://azure.github.io/azure-storage-ios/)
+* [Az Azure Storage iOS dokumentációja](https://azure.github.io/azure-storage-ios/)
 * [Az Azure Storage-szolgáltatások REST API-ja](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Az Azure Storage csapat blogja](https://blogs.msdn.com/b/windowsazurestorage)
 
-Ha ez a kódtár kapcsolatban kérdése van, nyugodtan közzététele a [MSDN Azure-fórum](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) vagy [Stack Overflow](http://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files).
+Ha ez a kódtár kapcsolatban kérdése van, nyugodtan közzététele a [MSDN Azure-fórum](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) vagy [Stack Overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files).
 Ha az Azure Storage szolgáltatási javaslataikat, helyezzen el bejegyzést [Azure Storage visszajelzési](https://feedback.azure.com/forums/217298-storage/).
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/30/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 3ab98669e01c9cfb2d4f46b8ddd83ff69653337b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a5b4e0465e83dec5620954998db329e7902fb59c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434172"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106049"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>Virtuális gép üzembe helyezése a VHD-ből
 
@@ -51,13 +51,13 @@ Az alábbi lépéseket létrehozása és üzembe helyezése felhasználói Virtu
 
 A virtuális gép üzembe helyezését követően készen áll [igazolja, a Virtuálisgép-lemezkép](./cpp-certify-vm.md).
 
-2.  Kattintson a **új** és keressen rá a **sablonalapú telepítés**, majd **szerkesztőben saját sablon készítése**.  <br/>
-  ![Virtuális merevlemez központi telepítési sablont az Azure Portalon hozhat létre](./media/publishvm_021.png)
+1. Kattintson a **új** és keressen rá a **sablonalapú telepítés**, majd **szerkesztőben saját sablon készítése**.  <br/>
+   ![Virtuális merevlemez központi telepítési sablont az Azure Portalon hozhat létre](./media/publishvm_021.png)
 
-3. Másolja és illessze be a [JSON-sablon](./cpp-deploy-json-template.md) a szerkesztőben, majd kattintson az **mentése**. <br/>
-  ![Virtuális merevlemez üzembe helyezési sablon mentésére az Azure Portalon](./media/publishvm_022.png)
+1. Másolja és illessze be a [JSON-sablon](./cpp-deploy-json-template.md) a szerkesztőben, majd kattintson az **mentése**. <br/>
+   ![Virtuális merevlemez üzembe helyezési sablon mentésére az Azure Portalon](./media/publishvm_022.png)
 
-4. Adja meg a paraméter értékét a megjelenített **egyéni üzembe helyezés** tulajdonságait tartalmazó oldalakon.
+1. Adja meg a paraméter értékét a megjelenített **egyéni üzembe helyezés** tulajdonságait tartalmazó oldalakon.
 
    <table> <tr> <td valign="top"> <img src="./media/publishvm_023.png" alt="Custom deployment property page 1"> </td> <td valign="top"> <img src="./media/publishvm_024.png" alt="Custom deployment property page 2"> </td> </tr> </table> <br/> 
 
@@ -79,7 +79,7 @@ A virtuális gép üzembe helyezését követően készen áll [igazolja, a Virt
    | VHD URL                     | Hajtsa végre az operációsrendszer-lemez VHD URL-címe                                                     |
    |  |  |
             
-5. Ezeket az értékeket ad meg, miután kattintson **beszerzési**. 
+1. Ezeket az értékeket ad meg, miután kattintson **beszerzési**. 
 
 Azure megkezdődik az üzembe helyezés: a megadott felügyelt tartalmazó virtuális Merevlemezt, a megadott tárfiók elérési útja, létrehoz egy új virtuális Gépet.  Követheti a folyamat állapotát, az Azure Portalon kattintson a **virtuális gépek** a portál bal oldalán.  Amikor a virtuális gép létrejött, az állapot változik `Starting` való `Running`. 
 

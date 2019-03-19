@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: glenga
-ms.openlocfilehash: a3a259b9734a1cc313e046d9946a090232cd14a1
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 6988fb547b07f81891efea3caad8bf34f4c8a476
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57727059"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088417"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Az Azure Functions runtime verziók áttekintése
 
@@ -65,9 +65,9 @@ A verzió 2.x-es, a következő változások történtek:
 
 * A gazdagép-konfigurációs fájl (host.json) legyen üres vagy tartalmazza a következő karakterláncot `"version": "2.0"`.
 
-* Figyelés, a WebJobs-irányítópulttal, a portálon használt javítása érdekében a [ `AzureWebJobsDashboard` ](functions-app-settings.md#azurewebjobsdashboard) beállítás váltja fel az Azure Application insights segítségével, amely használja a [ `APPINSIGHTS_INSTRUMENTATIONKEY` ](functions-app-settings.md#appinsightsinstrumentationkey) beállítás. További információkért lásd: [figyelése az Azure Functions](functions-monitoring.md).
+* Figyelés, a WebJobs-irányítópulttal, a portálon használt javítása érdekében a [ `AzureWebJobsDashboard` ](functions-app-settings.md#azurewebjobsdashboard) beállítás váltja fel az Azure Application insights segítségével, amely használja a [ `APPINSIGHTS_INSTRUMENTATIONKEY` ](functions-app-settings.md#appinsights_instrumentationkey) beállítás. További információkért lásd: [figyelése az Azure Functions](functions-monitoring.md).
 
-* A függvényalkalmazás a függvények kell osztani ugyanazt a nyelvet. Amikor létrehoz egy függvényalkalmazást, ki kell választania egy futtatókörnyezeti verem az alkalmazáshoz. A futtatókörnyezeti verem által meghatározott a [ `FUNCTIONS_WORKER_RUNTIME` ](functions-app-settings.md#functionsworkerruntime) értékét az alkalmazás beállításait. Ez a követelmény csökkenthetik a méretük és indítási lett hozzáadva. Amikor helyileg fejlesztésével, ezt a beállítást is fel kell a [local.settings.json fájljában](functions-run-local.md#local-settings-file).
+* A függvényalkalmazás a függvények kell osztani ugyanazt a nyelvet. Amikor létrehoz egy függvényalkalmazást, ki kell választania egy futtatókörnyezeti verem az alkalmazáshoz. A futtatókörnyezeti verem által meghatározott a [ `FUNCTIONS_WORKER_RUNTIME` ](functions-app-settings.md#functions_worker_runtime) értékét az alkalmazás beállításait. Ez a követelmény csökkenthetik a méretük és indítási lett hozzáadva. Amikor helyileg fejlesztésével, ezt a beállítást is fel kell a [local.settings.json fájljában](functions-run-local.md#local-settings-file).
 
 * A functions az App Service-csomag alapértelmezett időtúllépési érték 30 perc értékre módosul. Manuálisan módosíthatja az időtúllépési vissza a korlátlan használatával a [functionTimeout](functions-host-json.md#functiontimeout) host.json beállítását.
 
@@ -109,7 +109,7 @@ A Visual Studio Code-fejlesztéshez is szükség lehet a felhasználó vonatkoz�
 
 ### <a name="changing-version-of-apps-in-azure"></a>Az Azure-beli alkalmazások verziója módosítása
 
-A Functions futtatókörnyezete az Azure-ban közzétett alkalmazások által használt verziójának szabja a [ `FUNCTIONS_EXTENSION_VERSION` ](functions-app-settings.md#functionsextensionversion) nastavení aplikace. Érték `~2` célozza meg, a verzió 2.x verziójú futtatókörnyezet és `~1` 1.x verzió futásidejű célozza. Tetszőlegesen ne módosítsa ezt a beállítást, mert más alkalmazás-beállítások módosításai és a kód módosításait az a funkciók valószínűleg szüksége. A függvényalkalmazás át egy másik futtatókörnyezet-verzió ajánlott módja kapcsolatos további információkért lásd: [bemutatásához az Azure Functions runtime verziók](set-runtime-version.md).
+A Functions futtatókörnyezete az Azure-ban közzétett alkalmazások által használt verziójának szabja a [ `FUNCTIONS_EXTENSION_VERSION` ](functions-app-settings.md#functions_extension_version) nastavení aplikace. Érték `~2` célozza meg, a verzió 2.x verziójú futtatókörnyezet és `~1` 1.x verzió futásidejű célozza. Tetszőlegesen ne módosítsa ezt a beállítást, mert más alkalmazás-beállítások módosításai és a kód módosításait az a funkciók valószínűleg szüksége. A függvényalkalmazás át egy másik futtatókörnyezet-verzió ajánlott módja kapcsolatos további információkért lásd: [bemutatásához az Azure Functions runtime verziók](set-runtime-version.md).
 
 ## <a name="bindings"></a>Kötések
 

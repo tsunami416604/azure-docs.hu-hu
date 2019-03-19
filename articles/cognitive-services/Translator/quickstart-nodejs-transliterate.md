@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 1dcd17854adacc853215f4c5a9982862d3e488c4
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: db2d9fcf3dbb168061805906dae6ecc3a03e3301
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56738572"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57884404"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-with-nodejs"></a>Gyors útmutató: A Translator Text API használatával átbetűzés szöveget a node.js használatával
 
@@ -32,7 +32,7 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
 ## <a name="create-a-project-and-import-required-modules"></a>Projekt létrehozása és a szükséges modulok importálása
 
-Hozzon létre egy új projektet a kedvenc IDE-környezetében vagy szerkesztőjében. Ezután másolja a következő kódrészletet egy `transliterate-text.js` nevű fájlba a projektjében.
+Hozzon létre egy új projektet egy fájlt a kedvenc IDE- vagy szerkesztő, vagy egy új mappát használata `translate-text.js` az asztalon. Ez a kódrészlet majd másolja a projektfájlban:
 
 ```javascript
 const request = require('request');
@@ -126,7 +126,7 @@ Ha szeretné összevetni a saját kódját a miénkkel, a teljes mintakódot meg
 [
     {
         "script": "latn",
-        "text": "konnnichiha"
+        "text": "konnichiwa"
     }
 ]
 ```

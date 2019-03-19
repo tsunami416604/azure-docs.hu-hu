@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: yushwang
-ms.openlocfilehash: d13e0ea365b25bc17ff2d23dfaf86bc057774744
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: f7ee53c10c6597dbf98f8f85fc31fe789137471e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415493"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996320"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>Töltse le a VPN-eszközök konfigurációs szkriptjeinek S2S VPN-kapcsolatok
 
@@ -53,7 +53,7 @@ Az Azure VPN gateway, a helyi hálózati átjáró és a egy összekötő kapcso
 
 A kapcsolati erőforrás létrehozása után kövesse az alábbi utasításokat, hogy a VPN-eszközök konfigurációs szkriptjeinek letöltése:
 
-1. Egy böngészőből keresse fel a [az Azure portal](http://portal.azure.com) , és ha szükséges, jelentkezzen be az Azure-fiókkal
+1. Egy böngészőből keresse fel a [az Azure portal](https://portal.azure.com) , és ha szükséges, jelentkezzen be az Azure-fiókkal
 2. Nyissa meg a létrehozott kapcsolat-erőforrást. Megtalálhatja az összes kapcsolat erőforrások listájában kattintson "Az összes szolgáltatás", majd a "Hálózat" és a "Kapcsolatok."
 
     ![kapcsolat-list](./media/vpn-gateway-download-vpndevicescript/connectionlist.png)

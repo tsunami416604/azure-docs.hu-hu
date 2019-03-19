@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 12/17/2018
 ms.author: diberry
-ms.openlocfilehash: fb976842f3ea6f5df81c795b3be775ed57798b90
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: dd60897d19ef4de7369b2b127c88e778363a387f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870945"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852270"
 ---
 # <a name="quickstart-change-model-using-c"></a>Gyors útmutató: Módosítsa a modell használatávalC#
 
@@ -37,7 +37,7 @@ ms.locfileid: "55870945"
 
 ## <a name="create-quickstart-code"></a>A rövid útmutató kódjának létrehozása 
 
-A Visual Studióban hozzon létre egy új **Windows klasszikus asztali konzol** alkalmazást a .Net keretrendszer használatával. 
+A Visual Studióban hozzon létre egy új **Windows klasszikus asztal konzol** alkalmazás a .NET-keretrendszer használatával. 
 
 ![Visual Studio-projekt típusa](./media/luis-quickstart-cs-add-utterance/vs-project-type.png)
 

@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/04/2019
-ms.openlocfilehash: 58eb7729dd0d2dda728d2008d5bb674f5222c08e
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.date: 03/12/2019
+ms.openlocfilehash: f2ea9f784064a926a391ba0eadebd9fa5224a36d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337838"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57875186"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-ip-firewall-rules"></a>Az Azure SQL Database és az SQL Data Warehouse IP tűzfalszabályok
 
@@ -150,6 +150,8 @@ EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 ## <a name="manage-server-level-ip-firewall-rules-using-azure-powershell"></a>Kiszolgálószintű Azure PowerShell-lel IP-tűzfalszabályainak kezelése
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> A PowerShell Azure Resource Manager-modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés Az.Sql modul. Ezeket a parancsmagokat lásd: [azurerm.SQL-hez](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). A parancsok a Az modul, és az AzureRm-modulok argumentumainak lényegében megegyeznek.
 
 | Parancsmag | Szint | Leírás |
 | --- | --- | --- |
@@ -177,7 +179,7 @@ New-AzSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 |[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|Kiszolgáló|Felsorolja egy kiszolgáló IP-tűzfalszabályainak|
 |[az sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-show)|Kiszolgáló|Egy IP-tűzfalszabály részleteinek megjelenítése|
 |[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|Kiszolgáló|Frissíti egy IP-tűzfalszabály|
-|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|Kiszolgáló|Töröl egy IP-tűzfalszabály|
+|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|Kiszolgáló|Az IP-tűzfalszabály törlése|
 
 Az alábbi példa egy kiszolgálószintű IP tűzfalszabályt az Azure CLI használatával állítja be:
 
@@ -242,7 +244,7 @@ A következő szempontokat vegye figyelembe, ha a Microsoft Azure SQL Database s
 
   Ha internetkapcsolat és a dinamikus IP-címkezelés és problémákat okoz a tűzfalon, próbálkozzon az alábbi megoldások valamelyikét:
   
-  - Az internetszolgáltató (ISP) kérjen a, az Azure SQL Database-kiszolgáló eléréséhez használt ügyfélszámítógépeihez társított IP-címtartományt, és adja hozzá az IP-címtartományt, egy IP-tűzfalszabály.
+  - Az internetszolgáltató (ISP) kérjen a, az Azure SQL Database-kiszolgáló eléréséhez használt ügyfélszámítógépeihez társított IP-címtartományt, és adja hozzá a az IP-címtartományt, egy IP-tűzfalszabály.
   - Első statikus IP-címkezelés helyette az ügyfélszámítógépek számára, és adja hozzá az IP-címeket, IP-tűzfalszabályainak.
 
 ## <a name="next-steps"></a>További lépések

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 372df0bc6ea540b4b2c030ec71acc6889e7c7d19
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 3a1fd81f890e304c6bda75fad609cc8c98cd634d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56874086"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880381"
 ---
 # <a name="certificate-assets-in-azure-automation"></a>Tanúsítványeszközök az Azure Automationben
 
@@ -28,11 +28,12 @@ Az alábbi táblázatban a parancsmagok AzureRM, létrehozása és kezelése aut
 
 |Parancsmagok|Leírás|
 |:---|:---|
-|[Get-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationcertificate)|A tanúsítványt használja, a runbookból vagy DSC-konfigurációból adatait kérdezi le. Get-AutomationCertificate tevékenység csak maga a tanúsítvány lehet lekérdezni.|
-|[New-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/new-azurermautomationcertificate)|Létrehoz egy új tanúsítványt az Azure Automationbe.|
-[Remove-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/remove-azurermautomationcertificate)|Azure Automation tanúsítvány eltávolítása.|Létrehoz egy új tanúsítványt az Azure Automationbe.
+|[Get-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/get-azurermautomationcertificate)|A tanúsítványt használja, a runbookból vagy DSC-konfigurációból adatait kérdezi le. Get-AutomationCertificate tevékenység csak maga a tanúsítvány lehet lekérdezni.| 
+|[New-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/new-azurermautomationcertificate)|Létrehoz egy új tanúsítványt az Azure Automationbe.| 
+[Remove-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/remove-azurermautomationcertificate)|Azure Automation tanúsítvány eltávolítása.|
 |[Set-AzureRmAutomationCertificate](https://docs.microsoft.com/powershell/module/azurerm.automation/set-azurermautomationcertificate)|Egy meglévő, beleértve a tanúsítványfájl feltöltését és a jelszó beállítását a .pfx tanúsítvány tulajdonságainak beállítása.|
 |[Add-AzureCertificate](https://msdn.microsoft.com/library/azure/dn495214.aspx)|Feltölt egy szolgáltatási tanúsítványt a megadott felhőszolgáltatás számára.|
+
 
 ## <a name="activities"></a>Tevékenységek
 Az alábbi táblázatban felsorolt tevékenységek a runbookok és a DSC-konfigurációk tanúsítványok elérésére használhatók.
@@ -62,11 +63,11 @@ Amikor létrehoz egy új tanúsítványt, az Azure Automationhöz feltölt egy .
 ### <a name="to-create-a-new-certificate-with-the-azure-portal"></a>Új tanúsítvány létrehozása az Azure portal használatával
 
 1. Az Automation-fiókjából, kattintson a **eszközök** csempére kattintva nyissa meg a **eszközök** panelen.
-1. Kattintson a **tanúsítványok** csempére kattintva nyissa meg a **tanúsítványok** panelen.
-1. Kattintson a **tanúsítvány hozzáadása** a panel tetején.
-1. Adja meg a tanúsítvány nevét a **neve** mezőbe.
-1. Keresse meg az egy .cer vagy .pfx fájlt, kattintson a **válasszon ki egy fájlt** alatt **töltsön fel egy tanúsítványfájlt**. Ha kiválaszt egy .pfx-fájlt, adja meg a jelszót és exportálható engedélyezett.
-1. Kattintson a **létrehozás** új tanúsítványobjektum mentéséhez.
+2. Kattintson a **tanúsítványok** csempére kattintva nyissa meg a **tanúsítványok** panelen.
+3. Kattintson a **tanúsítvány hozzáadása** a panel tetején.
+4. Adja meg a tanúsítvány nevét a **neve** mezőbe.
+5. Keresse meg az egy .cer vagy .pfx fájlt, kattintson a **válasszon ki egy fájlt** alatt **töltsön fel egy tanúsítványfájlt**. Ha kiválaszt egy .pfx-fájlt, adja meg a jelszót és exportálható engedélyezett.
+6. Kattintson a **létrehozás** új tanúsítványobjektum mentéséhez.
 
 ### <a name="to-create-a-new-certificate-with-windows-powershell"></a>Új tanúsítvány létrehozása a Windows PowerShell-lel
 

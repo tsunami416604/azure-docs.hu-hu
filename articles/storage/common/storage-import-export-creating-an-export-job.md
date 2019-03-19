@@ -8,44 +8,44 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 33234c03a3e691a95e61f825a0351cf481431294
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: e0513bc18f1cf14beb4c1becfc1835235a5ddc96
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731394"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092225"
 ---
 # <a name="creating-an-export-job-for-the-azure-importexport-service"></a>Az Azure Import/Export szolgáltatás exportálási feladat létrehozása
 A Microsoft Azure Import/Export szolgáltatás REST API használatával exportálási feladat létrehozása az alábbi lépésekből áll:
 
--   Az exportálandó blobok kiválasztása.
+- Az exportálandó blobok kiválasztása.
 
--   A szállítási címhez tartozó hely beszerzése.
+- A szállítási címhez tartozó hely beszerzése.
 
--   Az exportálási feladat létrehozása.
+- Az exportálási feladat létrehozása.
 
--   A szállítási támogatott szolgáltató szolgáltatáson keresztül a Microsoft az üres meghajtókon.
+- A szállítási támogatott szolgáltató szolgáltatáson keresztül a Microsoft az üres meghajtókon.
 
--   Az exportálási feladat frissítése a csomaginformációkat használva.
+- Az exportálási feladat frissítése a csomaginformációkat használva.
 
--   A meghajtók kap vissza a Microsofttól.
+- A meghajtók kap vissza a Microsofttól.
 
- Lásd: [a Windows Azure Import/Export szolgáltatás az adatok átvitele a Blob Storage használatával](storage-import-export-service.md) áttekintheti az Import/Export szolgáltatás és a egy oktatóanyag, amely azt ismerteti, hogyan használhatja az a [az Azure portal](https://portal.azure.com/) hozhat létre és Importálás kezelése és a feladatok exportálása.
+  Lásd: [a Windows Azure Import/Export szolgáltatás az adatok átvitele a Blob Storage használatával](storage-import-export-service.md) áttekintheti az Import/Export szolgáltatás és a egy oktatóanyag, amely azt ismerteti, hogyan használhatja az a [az Azure portal](https://portal.azure.com/) hozhat létre és Importálás kezelése és a feladatok exportálása.
 
 ## <a name="selecting-blobs-to-export"></a>Exportálandó blobok kiválasztása
  Exportálási feladat létrehozása, szüksége lesz, amely az Ön tárfiókjából exportálandó blobok listáját adja meg. Válassza ki az exportálandó blobok néhány módja van:
 
--   Egy blob relatív elérési út segítségével válassza ki egy blob és az összes hozzá tartozó pillanatképek.
+- Egy blob relatív elérési út segítségével válassza ki egy blob és az összes hozzá tartozó pillanatképek.
 
--   Egy blob relatív elérési út segítségével válassza ki a pillanatképek nélkül egyetlen blobhoz.
+- Egy blob relatív elérési út segítségével válassza ki a pillanatképek nélkül egyetlen blobhoz.
 
--   A relatív blob elérési útja és a egy pillanatkép idő segítségével válassza ki egy egységes pillanatképet.
+- A relatív blob elérési útja és a egy pillanatkép idő segítségével válassza ki egy egységes pillanatképet.
 
--   Egy blob előtag segítségével válassza ki a blobok és a pillanatképek a megadott előtaggal.
+- Egy blob előtag segítségével válassza ki a blobok és a pillanatképek a megadott előtaggal.
 
--   Exportálhatja a blobok és a pillanatképek a storage-fiókban.
+- Exportálhatja a blobok és a pillanatképek a storage-fiókban.
 
- Exportálandó blobok megadásával kapcsolatos további információkért lásd: a [Put feladat](/rest/api/storageimportexport/jobs) műveletet.
+  Exportálandó blobok megadásával kapcsolatos további információkért lásd: a [Put feladat](/rest/api/storageimportexport/jobs) műveletet.
 
 ## <a name="obtaining-your-shipping-location"></a>A szállítási címhez tartozó hely beszerzése
 Exportálási feladat létrehozása előtt be kell szereznie egy szállítási hely nevét és címét meghívásával a [beolvasása hely](https://portal.azure.com) vagy [lista helyek](https://docs.microsoft.com/rest/api/storageimportexport/locations/list) műveletet. `List Locations` helyek és a levelezési címét listáját adja vissza. Válasszon egy helyet a visszaadott listában, és arra a címre rögzített meghajtók kiszállítása. Is használhatja a `Get Location` művelet egy konkrét hely a szállítási cím közvetlenül beszerzése.

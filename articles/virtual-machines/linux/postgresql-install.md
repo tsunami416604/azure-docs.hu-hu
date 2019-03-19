@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: cynthn
-ms.openlocfilehash: e851f6f5433a832aa30a0d87a917b64d1bc721f2
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 76f1ddeebb173bf19b15753d12e4374e6365bf8f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888277"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57998987"
 ---
 # <a name="install-and-configure-postgresql-on-azure"></a>A PostgreSQL telepítése és konfigurálása Azure-ban
 PostgreSQL az Oracle- és DB2 hasonlít egy speciális nyílt forráskódú adatbázis. Teljes ACID megfelelőségi, megbízható tranzakciós feldolgozást, és többverziós egyidejűségi vezérlésre nagyvállalati szintű funkciókat tartalmaz. Támogatja a szabványok – például az ANSI SQL és az SQL/MED (beleértve a külső adatok burkolókat az Oracle, MySQL, mongodb-hez és sok más) is. Fontos a nagy mértékben bővíthetők, a JSON és a kulcs-érték-alapú alkalmazások több mint 12 eljárási nyelvet, a GIN és GiST indexek, a térbeli adatok támogatása és a több NoSQL-hez hasonló funkciók támogatása.
@@ -238,5 +238,5 @@ A következő parancsot használja egy tábla adatainak frissítéséhez. Ez egy
 
 
 ## <a name="get-more-information-about-postgresql"></a>További információ a PostgreSQL beolvasása
-Most, hogy a PostgreSQL elérhető az Azure Linux VM telepítése befejeződött, élvezheti, használja az Azure-ban. PostgreSQL kapcsolatos további információkért látogasson el a [PostgreSQL webhely](http://www.postgresql.org/).
+Most, hogy a PostgreSQL elérhető az Azure Linux VM telepítése befejeződött, élvezheti, használja az Azure-ban. PostgreSQL kapcsolatos további információkért látogasson el a [PostgreSQL webhely](https://www.postgresql.org/).
 

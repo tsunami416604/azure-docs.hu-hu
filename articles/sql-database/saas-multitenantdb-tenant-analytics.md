@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: anjangsh,billgib,genemi
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: 5de707f3f2e6a82d880363eea91fb8ce644fb3aa
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 340c08841b7bedc9f2453617aeff111beb810961
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055045"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888178"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Több-bérlős analytics kinyert adatok – több-bérlős app használatával
  
@@ -94,7 +94,7 @@ A következő lépésekben az analytics tárolóba, amelyet üzembe **tenantanal
     - Az oszlopcentrikus SQL database használatához állítsa **$DemoScenario** = **3**  
 3. Nyomja meg **F5** a bemutató-parancsfájl futtatása (amely meghívja a *üzembe helyezés – TenantAnalytics<XX>.ps1* parancsfájl) a bérlői analitikai tárolóban hoz létre, amely. 
 
-Most, hogy az alkalmazás üzembe helyezése és érdekes bérlői adatok ki vannak töltve, használjon [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) való csatlakozáshoz **tenants1-mt -\<felhasználói\>**  és **katalógus-mt -\<felhasználói\>**  bejelentkezési kiszolgálók = *fejlesztői*, jelszó = *P@ssword1*.
+Most, hogy az alkalmazás üzembe helyezése és érdekes bérlői adatok ki vannak töltve, használjon [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) való csatlakozáshoz **tenants1-mt -\<felhasználói\>**  és **katalógus-mt -\<felhasználói\>**  bejelentkezési kiszolgálók = *fejlesztői*, jelszó = *P\@ssword1*.
 
 ![architectureOverView](media/saas-multitenantdb-tenant-analytics/ssmsSignIn.png)
 
@@ -154,7 +154,7 @@ A következő lépés, hogy zúzására szolgálnak a kinyert nyers adatokat az 
 Az oktatóanyag jelen szakaszában határozza meg, majd futtassa egy feladatot, amely egyesíti a csillagséma-táblázatokban lévő adatok a kinyert nyers adatokat. A merge feladat befejezése után a nyers adatok törlődnek, készen áll a következő bérlői adatok feltölthető a táblákat és csomagolja ki a feladat.
 
 1. Csatlakozás az ssms-ben, a **jobaccount** katalógus-adatbázis – mt -\<felhasználói\>.
-2. Nyissa meg az ssms-ben, *...\Learning Modules\Operational Analytics\Tenant Analytics\ShredRawExtractedData.sql*.
+2. In SSMS, open *…\Learning Modules\Operational Analytics\Tenant Analytics\ShredRawExtractedData.sql*.
 3. Nyomja meg **F5** futtassa a parancsfájlt egy feladatot, amely meghívja a sp_ShredRawExtractedData meghatározásához tárolt eljárást az analytics-tárolóban.
 4. Hagyjon elegendő időt a feladat sikeresen lefutott.
     - Ellenőrizze a **életciklus** jobs.jobs_execution táblázat a feladat állapotát. Ellenőrizze, hogy a feladat **sikeres** a folytatás előtt. Sikeres futtatás a következő diagram hasonló adatokat jelenít meg:
@@ -176,7 +176,7 @@ Csatlakozás a Power bi-ba, illetve importálhatja a korábban létrehozott néz
 
     ![powerBISignIn](media/saas-multitenantdb-tenant-analytics/powerBISignIn.PNG)
 
-5. Válassza ki **adatbázis** a bal oldali panelen, majd adjon meg felhasználónevet = *fejlesztői*, és adja meg a jelszó = *P@ssword1*. Kattintson a **Connect** (Csatlakozás) gombra.  
+5. Válassza ki **adatbázis** a bal oldali panelen, majd adjon meg felhasználónevet = *fejlesztői*, és adja meg a jelszó = *P\@ssword1*. Kattintson a **Connect** (Csatlakozás) gombra.  
 
     ![DatabaseSignIn](media/saas-multitenantdb-tenant-analytics/databaseSignIn.PNG)
 

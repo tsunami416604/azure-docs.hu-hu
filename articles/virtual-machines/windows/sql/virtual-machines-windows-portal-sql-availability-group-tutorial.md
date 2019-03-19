@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 9242edb8ea08b858ae6ad092f4d855483e72d0bf
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d86538fca907f7181bf58ff236bba8de186641fb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777464"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003451"
 ---
 # <a name="tutorial-configure-always-on-availability-group-in-azure-vm-manually"></a>Oktatóanyag: Konfigurálása Always On rendelkezésre állási csoportot az Azure virtuális Gépen manuálisan
 
@@ -415,6 +415,7 @@ A terheléselosztó konfigurálásához szeretne egy háttérkészlet, a mintav�
 1. Kattintson a terheléselosztóhoz, majd **terheléselosztási szabályok**, és kattintson a **+ Hozzáadás**.
 
 1. A figyelő terheléselosztási szabályok módon állítsa be.
+
    | Beállítás | Leírás | Példa
    | --- | --- |---
    | **Name (Név)** | Szöveg | SQLAlwaysOnEndPointListener |
@@ -455,6 +456,7 @@ A WSFC-IP-cím is kell lennie a terheléselosztón.
 1. A terheléselosztási szabályok megadása Kattintson a **terheléselosztási szabályok**, és kattintson a **+ Hozzáadás**.
 
 1. Állítsa be a fürt alapvető IP cím terheléselosztási szabályok a következő.
+
    | Beállítás | Leírás | Példa
    | --- | --- |---
    | **Name (Név)** | Szöveg | WSFCEndPoint |
@@ -505,15 +507,15 @@ A kapcsolat teszteléséhez:
 
 1. Használat **sqlcmd** segédprogram a kapcsolat teszteléséhez. Például hozza létre a következő parancsfájl egy **sqlcmd** kapcsolatot az elsődleges replika, a figyelő a Windows-hitelesítés használatával:
 
-  ```cmd
-  sqlcmd -S <listenerName> -E
-  ```
+   ```cmd
+   sqlcmd -S <listenerName> -E
+   ```
 
-  Ha a figyelő nem az alapértelmezett portot használ portot (1433), adja meg a portot a kapcsolati karakterláncban. A következő sqlcmd parancsot például egy figyelő 1435 porton csatlakozik:
+   Ha a figyelő nem az alapértelmezett portot használ portot (1433), adja meg a portot a kapcsolati karakterláncban. A következő sqlcmd parancsot például egy figyelő 1435 porton csatlakozik:
 
-  ```cmd
-  sqlcmd -S <listenerName>,1435 -E
-  ```
+   ```cmd
+   sqlcmd -S <listenerName>,1435 -E
+   ```
 
 Az SQLCMD-kapcsolatot automatikusan csatlakozik bármely SQL Server-példány az elsődleges replikát.
 

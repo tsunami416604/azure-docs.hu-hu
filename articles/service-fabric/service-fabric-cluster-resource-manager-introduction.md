@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: f41027b5455aa3b1835a0d4fd0c1be11cddccd0d
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 75aa960ff060d74d0a579b475e4334402992b3c3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871995"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57903360"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>A Service Fabric fürterőforrás-kezelő bemutatása
 Hagyományosan a IT-rendszereit és online szolgáltatások kezelésére hivatott adott fizikai vagy virtuális gépek dedikálni ezeket adott szolgáltatások vagy a rendszer. Szolgáltatások rétegek szerint lettek tervezésnek. A "webes" réteg és a egy "adatok" vagy "tároló" réteget lenne. Alkalmazások kellene egy üzenetkezelési szinttel, ahol kérelmek érkezett be és ki, valamint dedikált gyorsítótár-csoportokon. Minden szintet vagy a számítási feladat volt dedikált, meghatározott gépek: az adatbázis van kijelölve, a webkiszolgálók egy néhány néhány gépek. Ha egy adott típusú számítási feladatok miatt az volt a gépek futtassa túl gyakori elérésű, majd a további gépek ugyanazt a konfigurációt az adott réteg hozzáadott. Azonban nem minden munkaterhelésről így könnyen sikerült terjeszthető ki – különösen az adatréteg-cserélje általában a nagyobb gépek rendelkező gépek. Egyszerű. Ha egy gép elindítása nem sikerült, mindaddig, amíg a gép sikerült visszaállítani a kisebb kapacitással futott, hogy a teljes alkalmazás részét. Továbbra is könnyen (Ha ez nem feltétlenül szórakoztató).
 
 Most azonban a szolgáltatás és szoftver-architektúra a világ megváltozott. Jelenleg egyre gyakoribb, hogy alkalmazásokat elfogadott kibővített kialakítást. A tárolókkal és mikroszolgáltatásokkal alkalmazásokat (vagy mindkettő) szokás. Most, előfordulhat, hogy továbbra is csak néhány olyan gépekkel rendelkezik, amíg azok nem futtat egy számítási feladat csak egyetlen példánya. Akkor esetleg még fut több különböző számítási feladatok egyszerre. Most már több tucatnyi különféle szolgáltatások (nincs erőforrásokat egy teljes gép adatmintát használ), esetleg több száz különböző példányai ezeket a szolgáltatásokat. Minden elnevezett példány rendelkezik egy vagy több példány vagy a replikákat a magas rendelkezésre állású (HA). Azokat a munkaterheléseket, és hogyan elfoglaltak méretét függően akár több száz vagy ezer gépre előfordulhat saját magának. 
 
-Hirtelen kezelése a környezetben nem így egyszerű, mintha egyetlen típusú számítási feladatok számára kijelölt néhány gépek kezeléséhez. A kiszolgálók virtuális, és többé nem kell a nevek (vált a mindsets [szarvasmarha a kisállatok](http://www.slideshare.net/randybias/architectures-for-open-and-scalable-clouds/20) Elvégre). Konfigurációs érték kisebb, a gépek és a szolgáltatások kapcsolatos további információk. Egy számítási feladatot egyetlen példánya dedikált hardver nagymértékben egy a múlté. Szolgáltatások kis méretű elosztott rendszerek, amelyek a hagyományos hardvereken több kisebb darabokra váltak.
+Hirtelen kezelése a környezetben nem így egyszerű, mintha egyetlen típusú számítási feladatok számára kijelölt néhány gépek kezeléséhez. A kiszolgálók virtuális, és többé nem kell a nevek (vált a mindsets [szarvasmarha a kisállatok](https://www.slideshare.net/randybias/architectures-for-open-and-scalable-clouds/20) Elvégre). Konfigurációs érték kisebb, a gépek és a szolgáltatások kapcsolatos további információk. Egy számítási feladatot egyetlen példánya dedikált hardver nagymértékben egy a múlté. Szolgáltatások kis méretű elosztott rendszerek, amelyek a hagyományos hardvereken több kisebb darabokra váltak.
 
 Mivel az alkalmazás már nem helyezkednek el több szinten kódtömbök sorozata, most már számos további kombinációk kezelésére. Akik úgy dönt, hogy milyen típusú munkaterheléseket is hardveren futtatott mely, illetve hány? Mely számítási feladatok ugyanazon a hardveren való jól működik, és amelyek ütköznek? Ha egy gép lefelé Honnan tudja, mi volt hiba fut ezen a gépen futó? Aki felelős gondoskodik róla, hogy az adott számítási feladat van újra elindult? Várjon a (virtuális?) gép ismét elérhető nem lesz, vagy hajtsa végre a számítási feladatok automatikusan átadja a feladatokat más gépek és tarthatja fut? Az emberi beavatkozás szükséges? Mi a helyzet a frissítéseket ebben a környezetben?
 

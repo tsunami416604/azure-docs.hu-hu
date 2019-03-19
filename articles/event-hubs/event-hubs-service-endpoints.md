@@ -1,6 +1,6 @@
 ---
 title: Virtuális hálózati Szolgáltatásvégpontok – Azure Event Hubs |} A Microsoft Docs
-description: Ez a cikk információt nyújt az adda hátralékának szolgáltatás végpontnak egy virtuális hálózathoz.
+description: Ez a cikk információt nyújt az hátralékának szolgáltatásvégpont hozzáadása egy virtuális hálózatot.
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -9,22 +9,23 @@ ms.service: event-hubs
 ms.devlang: na
 ms.topic: article
 ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 03/12/2019
 ms.author: shvija
-ms.openlocfilehash: 077202e65c9e63c8ca5ea1a555ccd70bf27028c6
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 7b5a62f81238d1ae2b627c395613066350b36efe
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56232603"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57887595"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Virtuális hálózati Szolgáltatásvégpontok használata az Azure Event hubs szolgáltatással
 
 Az Event hubs-integráció [virtuális hálózat (VNet) Szolgáltatásvégpontok] [ vnet-sep] lehetővé teszi, hogy biztonságos hozzáférést üzenetküldési funkciókat biztosít a számítási feladatok, például a virtuális gépek, virtuális vannak kötve hálózatok mindkét végén védeni kívánt hálózati forgalom elérési útját.
 
-Legalább egy virtuális hálózati alhálózat szolgáltatásvégpont kell kötni konfigurálása után az adott Event Hubs-névtér már nem fogadja a forgalmat bárhonnan, de engedélyezett a virtuális hálózatok alhálózatokat. A virtuális hálózati szempontból a kötés Event Hubs-névtér egy végpontot az üzenetküldő szolgáltatás a virtuális hálózati alhálózatról egy elkülönített hálózati alagút állítja be.
+Miután legalább egy virtuális hálózati alhálózat szolgáltatásvégpont kötött konfigurálva, az adott Event Hubs-névtér már nem fogadja a forgalmat bárhonnan, de engedélyezett virtuális hálózatok alhálózataihoz. A virtuális hálózati szempontból a kötés Event Hubs-névtér egy végpontot az üzenetküldő szolgáltatás a virtuális hálózati alhálózatról egy elkülönített hálózati alagút állítja be. 
 
-Ez a privát és elkülönített kapcsolat, az az alhálózat és a megfelelő Event Hubs-névtér értéket a megfigyelhető hálózati cím az az üzenetkezelési szolgáltatás végpontja egy nyilvános IP-címtartomány kötött számítási feladatok között.
+Ez a privát és elkülönített kapcsolat, az az alhálózat és a megfelelő Event Hubs-névtér értéket a megfigyelhető hálózati cím az az üzenetkezelési szolgáltatás végpontja egy nyilvános IP-címtartomány kötött számítási feladatok között. Ez a viselkedés kivétel van. Alapértelmezés szerint egy szolgáltatásvégpont engedélyezése lehetővé teszi, hogy a virtuális hálózathoz tartozó IP-tűzfalon a denyall szabályt. Az Event Hub nyilvános végponthoz való hozzáférés engedélyezéséhez IP-tűzfalon is hozzáadhat adott IP-címek. 
+
 
 >[!WARNING]
 > Virtuális hálózatok integráció megvalósítása megakadályozhatja az egyéb Azure-szolgáltatásokhoz az Event hubs szolgáltatással való interakcióhoz.
@@ -48,7 +49,7 @@ Ez a privát és elkülönített kapcsolat, az az alhálózat és a megfelelő E
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>VNet-integráció által engedélyezett speciális biztonsági forgatókönyvek 
 
-Megoldásokat igénylő szoros és elméleti biztonsági, és hogy a virtuális hálózat alhálózataiban, adja meg a szegmentálási a compartmentalized szolgáltatások közötti továbbra is általánosan kell ezeket a veremből a hozzá tartozó szolgáltatások közötti kommunikációs útvonalat.
+Megoldásokat igénylő szoros és elméleti biztonsági, és hogy a virtuális hálózat alhálózataiban, adja meg a szegmentálási a compartmentalized szolgáltatás között kell elvégeznie ezeket veremből a hozzá tartozó szolgáltatások közötti kommunikációs útvonalat.
 
 A környezetben, beleértve a szerepkör végrehajtsa a HTTPS TCP/IP, felett közötti bármely azonnali IP útvonal a hálózati réteg biztonsági rések kiaknázását kockázatát hordozza az fel. Üzenetkezelési szolgáltatások teljesen szigetelt kommunikációs útvonalat, ahol üzeneteket is írja a lemezre, azok tarifacsomagokból a felek biztosítják. Két különböző virtuális hálózatok mindkét kötött ugyanarra az Event Hubs-példányra a számítási feladatok kommunikálhatnak hatékonyan és megbízhatóan keresztül üzenetek, míg a megfelelő hálózati elkülönítési határ integritása.
  

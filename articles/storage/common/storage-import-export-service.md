@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/14/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: e2c770625cf92e0db269d14d2f63dc0c896cbe9c
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 4850dd82ca52a060c921569433035256f5b74cce
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267512"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58164926"
 ---
 # <a name="what-is-azure-importexport-service"></a>Mi az Azure Import/Export szolgáltatás?
 
@@ -76,7 +76,7 @@ Magas szintű az importálási feladat az alábbi lépésekből áll:
 > [!NOTE]
 > Ossza meg a belföldi Szállítmányozói fiókjára (belül data center ország) helyi szállításhoz 
 >
-> Ossza meg a nemzetközi Szállítmányozói fiókjára külföldön (data center ország) kívül eső szállításhoz
+> Ossza meg egy nemzetközi Szállítmányozói fiókjára külföldön (data center ország) kívül eső szállításhoz
 
  ![Ábra 1:Import feladat folyamat](./media/storage-import-export-service/importjob.png)
 
@@ -106,7 +106,7 @@ Magas szintű exportálási feladat az alábbi lépésekből áll:
 > [!NOTE]
 > Ossza meg a belföldi Szállítmányozói fiókjára (belül data center ország) helyi szállításhoz 
 >
-> Ossza meg a nemzetközi Szállítmányozói fiókjára külföldön (data center ország) kívül eső szállításhoz
+> Ossza meg egy nemzetközi Szállítmányozói fiókjára külföldön (data center ország) kívül eső szállításhoz
   
  ![Ábra 2:Export feladat folyamat](./media/storage-import-export-service/exportjob.png)
 

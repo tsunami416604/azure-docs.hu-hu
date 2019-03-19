@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8731857d133e60cad4ecdca21874916949e05ff3
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 3bb372c4c3ddb79429df20c24c691c847e927e2a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813517"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57975610"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Adatok másolása és a Data Lake Storage Gen1 Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -240,7 +240,7 @@ A **typeProperties** szakasz egy adatkészlet típusú **AzureDataLakeStore** a 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | **folderPath** |A tároló és a Data Lake Store-mappában elérési útja. |Igen |
-| **fileName** |Az Azure Data Lake Store a fájl nevét. A **fileName** tulajdonság nem kötelező, és a kis-és nagybetűket. <br/><br/>Ha megad **fileName**, a (beleértve a Másolás) tevékenységet az adott fájlon működik.<br/><br/>Amikor **fileName** nincs megadva, másolási tartalmazza az összes fájl **folderPath** a bemeneti adatkészletben.<br/><br/>Amikor **fileName** nincs megadva a kimeneti adatkészlet és **preserveHierarchy** nincs megadva a tevékenység fogadó, a létrehozott fájl neve a következő formátumban kell adatokat. _GUID_.txt'. Példa: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. | nem |
+| **fileName** |Az Azure Data Lake Store a fájl nevét. A **fileName** tulajdonság nem kötelező, és a kis-és nagybetűket. <br/><br/>Ha megad **fileName**, a (beleértve a Másolás) tevékenységet az adott fájlon működik.<br/><br/>Amikor **fileName** nincs megadva, másolási tartalmazza az összes fájl **folderPath** a bemeneti adatkészletben.<br/><br/>Amikor **fileName** nincs megadva a kimeneti adatkészlet és **preserveHierarchy** nincs megadva a tevékenység fogadó, a létrehozott fájl neve a következő formátumban van `Data._Guid_.txt`. Példa: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |Nem |
 | **partitionedBy** |A **partitionedBy** tulajdonság nem kötelező. Használhatja a dinamikus elérési út és fájlnév idősorozat-adatok megadása. Ha például **folderPath** az adatok óránkénti rendelkeznek. Részletek és példák: A partitionedBy tulajdonság. |Nem |
 | **Formátum** | A következő formátumtípusokat támogatja: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, és **ParquetFormat**. Állítsa be a **típus** tulajdonság alatt **formátum** az alábbi értékek egyikére. További információkért lásd: a [szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), [JSON formátumban](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [ORC formátum](data-factory-supported-file-and-compression-formats.md#orc-format), és [Parquet formátum ](data-factory-supported-file-and-compression-formats.md#parquet-format) szakaszát a [Azure Data Factory által támogatott fájl- és tömörítési formátumok](data-factory-supported-file-and-compression-formats.md) cikk. <br><br> Ha azt szeretné, a fájlok másolása a "as-van" közötti fájlalapú tárolók (bináris másolat), hagyja ki a `format` mindkét bemeneti és kimeneti adatkészlet-definíciók szakaszában. |Nem |
 | **A tömörítés** | Adja meg a típus és az adatok tömörítési szintje. Támogatott típusok a következők **GZip**, **Deflate**, **BZip2**, és **ZipDeflate**. Támogatott szintek a következők **Optimal** és **leggyorsabb**. További információkért lásd: [Azure Data Factory által támogatott fájl- és tömörítési formátumok](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem |

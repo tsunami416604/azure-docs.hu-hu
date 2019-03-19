@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: d9a911dccf3d59bf1159cf8576b95d86ef26657b
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 85693ec6aa67dc69cd65aae8e66e66e2118672ef
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314245"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57898482"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Az Azure SQL Data Warehouse naplózása
 
@@ -135,7 +135,7 @@ Többféleképpen naplófájlokat blob megtekintéséhez használhatja:
 
 * A Power BI használata. Megtekintheti és elemezheti a naplózási adatokat a Power bi-ban. Tudjon meg többet [Power BI és a egy letölthető sablon hozzáférés](https://blogs.msdn.microsoft.com/azuresqldbsupport/20../../sql-azure-blob-auditing-basic-power-bi-dashboard/).
 
-* Letölti a naplófájlokat a portálon keresztül, vagy egy eszköz használatával az Azure Storage blob-tárolóból [Azure Storage Explorer](http://storageexplorer.com/).
+* Letölti a naplófájlokat a portálon keresztül, vagy egy eszköz használatával az Azure Storage blob-tárolóból [Azure Storage Explorer](https://storageexplorer.com/).
     * Miután letöltötte helyileg egy naplófájl, duplán a fájlt, nyissa meg a, megtekintheti és elemezheti a naplókat az ssms-ben.
     * Azure Storage Explorer használatával egyszerre több fájl is letölthető. Kattintson a jobb gombbal egy adott almappát, és válassza ki **Mentés másként** egy helyi mappába menti.
 
@@ -150,8 +150,9 @@ Többféleképpen naplófájlokat blob megtekintéséhez használhatja:
 
 
 <br>
+
 ### <a name="database-level-policy-audit-logs"></a>Adatbázisszintű csoportházirend-auditnaplók
-A gyűjteményét, Store az adatbázisszintű auditnaplók összesítjük egy **SQLDBAuditLogs** előtag telepítés közben választott Azure storage-fiókban. Megtekintheti a naplófájlok, például egy eszközzel [Azure Storage Explorer](http://azurestorageexplorer.codeplex.com).
+A gyűjteményét, Store az adatbázisszintű auditnaplók összesítjük egy **SQLDBAuditLogs** előtag telepítés közben választott Azure storage-fiókban. Megtekintheti a naplófájlok, például egy eszközzel [Azure Storage Explorer](https://azurestorageexplorer.codeplex.com).
 
 Egy előre konfigurált irányítópult jelentéssablon érhető el, mint egy [letölthető Excel-számolótáblában](https://go.microsoft.com/fwlink/?LinkId=403540) segít gyorsan elemezheti a naplófájlok adatait. A naplókat a sablon használatához szükséges Excel 2013-as vagy újabb verzió és a Power Query, amelyet [innen tölthet le](https://www.microsoft.com/download/details.aspx?id=39379).
 
@@ -176,14 +177,19 @@ Naplózás az Azure SQL Data Warehouse a következő automatizálási eszközök
 
 * **PowerShell-parancsmagok**:
 
+<!-- None of the following links exist anymore 3-12-2019
    * [Get-AzSqlDatabaseAuditingPolicy](/powershell/module/az.sql/get-azsqldatabaseauditingpolicy)
    * [Get-AzSqlServerAuditingPolicy](/powershell/module/az.sql/Get-azSqlServerAuditingPolicy)
    * [Remove-AzSqlDatabaseAuditing](/powershell/module/az.sql/Remove-azSqlDatabaseAuditing)
    * [Remove-AzSqlServerAuditing](/powershell/module/az.sql/Remove-azSqlServerAuditing)
    * [Set-AzSqlDatabaseAuditingPolicy](/powershell/module/az.sql/Set-azSqlDatabaseAuditingPolicy)
    * [Set-AzSqlServerAuditingPolicy](/powershell/module/az.sql/Set-azSqlServerAuditingPolicy)
-   * [Use-AzSqlServerAuditingPolicy](/powershell/module/az.sql/Use-azSqlServerAuditingPolicy)
+   * [Use-AzSqlServerAuditingPolicy](/powershell/module/az.sql/Use-azSqlServerAuditingPolicy) -->
 
+   * [Get-AzSqlDatabaseAuditing](/powershell/module/az.sql/get-azsqldatabaseauditing)
+   * [Set-AzSqlDatabaseAuditing](/powershell/module/az.sql/set-azsqldatabaseauditing)
+   * [Get-AzSqlServerAuditing](/powershell/module/az.sql/get-azsqlserverauditing)
+   * [Set-AzSqlServerAuditing](/powershell/module/az.sql/set-azsqlserverauditing)
 
 ## <a name="downlevel-clients-support-for-auditing-and-dynamic-data-masking"></a>Naplózási és dinamikus adatmaszkolási alacsonyabb szintű ügyfelek támogatása
 Naplózás együttműködik a TDS-átirányítást támogató SQL-ügyfelek.

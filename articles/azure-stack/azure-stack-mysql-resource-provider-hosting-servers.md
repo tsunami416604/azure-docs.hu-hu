@@ -15,12 +15,12 @@ ms.date: 02/28/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: eb5d1ca55efed7e83739f21a432b61b6aad25f70
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 68e8bfa16c56b8c864ac99cdf6c19243bc7e881c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194010"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101873"
 ---
 # <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>Üzemeltetési kiszolgáló hozzáadása a MySQL erőforrás-szolgáltató
 
@@ -44,9 +44,9 @@ Győződjön meg arról, hogy rendszergazdai jogosultságokkal rendelkező fiók
 4. Adja meg a MySQL-kiszolgáló példány kapcsolati adatait.
 
    * A **MySQL-kiszolgáló neve üzemeltető**, adja meg a teljesen minősített tartománynevét (FQDN) vagy egy érvényes IPv4-címet. Ne használja a virtuális gép rövid nevét.
-   - Az alapértelmezett rendszergazdai **felhasználónév** tartozó a Bitnami MySQL lemezképeket az Azure Stack piactéren *legfelső szintű*. 
-   - Ha nem ismeri a legfelső szintű **jelszó**, tekintse meg a [Bitnami dokumentáció](https://docs.bitnami.com/azure/faq/#how-to-find-application-credentials) megtudhatja, hogyan tehet szert. 
-   - A MySQL alapértelmezett példány nincs megadva, ezért meg kell adnia a **mérete az üzemeltető kiszolgáló GB-ban**. Adja meg, hogy az adatbázis-kiszolgáló kapacitása megközelíti a méretét.
+   * Az alapértelmezett rendszergazdai **felhasználónév** tartozó a Bitnami MySQL lemezképeket az Azure Stack piactéren *legfelső szintű*. 
+   * Ha nem ismeri a legfelső szintű **jelszó**, tekintse meg a [Bitnami dokumentáció](https://docs.bitnami.com/azure/faq/#how-to-find-application-credentials) megtudhatja, hogyan tehet szert. 
+   * A MySQL alapértelmezett példány nincs megadva, ezért meg kell adnia a **mérete az üzemeltető kiszolgáló GB-ban**. Adja meg, hogy az adatbázis-kiszolgáló kapacitása megközelíti a méretét.
    * Tartsa meg az alapértelmezett beállítás a **előfizetés**.
    * A **erőforráscsoport**, hozzon létre egy új vagy egy meglévő csoportot.
 
@@ -60,8 +60,8 @@ Győződjön meg arról, hogy rendszergazdai jogosultságokkal rendelkező fiók
    A Termékváltozat **neve** Termékváltozat tulajdonságainak tükröznie kell, így a felhasználók adatbázisaikat telepítheti a megfelelő Termékváltozatot.
 
 6. Válassza ki **OK** a Termékváltozat létrehozása.
-> [!NOTE]
-> SKU-k órát is igénybe vehet egy lesznek láthatók a portálon. Egy adatbázis nem hozható létre, amíg a Termékváltozat nem telepítésének és futásának.
+   > [!NOTE]
+   > SKU-k órát is igénybe vehet egy lesznek láthatók a portálon. Egy adatbázis nem hozható létre, amíg a Termékváltozat nem telepítésének és futásának.
 
 7. A **üzemeltető MySQL-kiszolgáló hozzáadása**válassza **létrehozás**.
 

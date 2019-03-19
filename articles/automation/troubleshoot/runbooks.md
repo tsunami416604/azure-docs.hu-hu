@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 77f6a48402aef5b493b115d2137ccb6a507050b7
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: b34a1716d077aeead572c60d0c6b9bcad60a5b1e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760205"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005420"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbookokkal kapcsolatos hibák elhárítása
 
@@ -133,7 +133,7 @@ A klasszikus Azure üzemi modell parancsmagokban tanúsítványt használ, tekin
 
 ## <a name="common-errors-when-working-with-runbooks"></a>A forgatókönyvek használata során előforduló gyakori hibák
 
-###<a name="child-runbook-object"></a>Gyermek runbook hibát ad vissza, ha a kimeneti adatfolyamba tartalmaz objektumokat, hanem az egyszerű adattípusok
+### <a name="child-runbook-object"></a>Gyermek runbook hibát ad vissza, ha a kimeneti adatfolyamba tartalmaz objektumokat, hanem az egyszerű adattípusok
 
 #### <a name="issue"></a>Probléma
 
@@ -303,7 +303,7 @@ Ez a hiba akkor fordul elő, az alábbi problémák egyike miatt:
 
 3. A modul inkompatibilis. Ez a hiba akkor fordulhat elő, ha a modul függőségek nem megfelelőek, és ha nem, a runbook általában adja vissza egy "parancs nem található" vagy "Nem köthető a paraméter" üzenet.
 
-4. A runbook meghívása próbált egy végrehajtható vagy egy runbook, amely egy Azure védőfal részfolyamathoz. Ez a forgatókönyv nem támogatott az Azure próbakörnyezetbe lefordítja a.
+4. A runbook meghívása egy végrehajtható fájl vagy egy runbook, amely egy Azure védőfal subprocess történt kísérlet. Ez a forgatókönyv nem támogatott az Azure próbakörnyezetbe lefordítja a.
 
 #### <a name="resolution"></a>Megoldás:
 

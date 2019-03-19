@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 653d3e357e3a02659a225b4e26c386ca54b6288f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 52ad40a2521f21efee3b9f98b46c2e2e6343b656
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715426"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098304"
 ---
 # <a name="run-apache-pig-jobs-with-apache-hadoop-on-hdinsight-by-using-rest"></a>Az Apache Pig feladatok futtatása az Apache Hadoop HDInsight REST használatával
 
@@ -58,8 +58,8 @@ Ismerje meg, hogyan futtathat Apache Pig Latin feladatokat REST-kérelmeket, íg
 
     Ezen parancs paraméterei a következők:
 
-    * **-u**: A felhasználónév és a kérés hitelesítésére használt jelszó
-    * **-G**: Azt jelzi, hogy a kérelem a GET-kérés
+   * **-u**: A felhasználónév és a kérés hitelesítésére használt jelszó
+   * **-G**: Azt jelzi, hogy a kérelem a GET-kérés
 
      Az URL-cím elején **https://CLUSTERNAME.azurehdinsight.net/templeton/v1**, összes kérelem esetében azonos. Az elérési út **/status**, azt jelzi, hogy a kérelem visszaállíthatja az állapotot, a WebHCat (más néven templeton eszközön keresztül végzett) a kiszolgálón.
 
@@ -71,18 +71,18 @@ Ismerje meg, hogyan futtathat Apache Pig Latin feladatokat REST-kérelmeket, íg
 
     Ezen parancs paraméterei a következők:
 
-    * **-d**: Mivel `-G` nem használ, akkor a kérelem az alapértelmezett a POST metódust. `-d` Megadja a küldött adatok értékeket a kérelemmel.
+   * **-d**: Mivel `-G` nem használ, akkor a kérelem az alapértelmezett a POST metódust. `-d` Megadja a küldött adatok értékeket a kérelemmel.
 
-    * **User.name**: A parancsot futtató felhasználó
-    * **hajtsa végre**: A Pig Latin utasításokkal futtathat
-    * **statusdir**: A könyvtár írt Ez a feladat állapota
+   * **user.name**: A parancsot futtató felhasználó
+   * **hajtsa végre**: A Pig Latin utasításokkal futtathat
+   * **statusdir**: A könyvtár írt Ez a feladat állapota
 
-    > [!NOTE]  
-    > Figyelje meg, hogy a tárolóhelyek a Pig Latin utasításokkal helyébe a `+` . amikor a curl használatával használt karakter.
+     > [!NOTE]  
+     > Figyelje meg, hogy a tárolóhelyek a Pig Latin utasításokkal helyébe a `+` . amikor a curl használatával használt karakter.
 
-    Ez a parancs használható, például a feladat állapota Feladatazonosítót kell visszaadnia:
+     Ez a parancs használható, például a feladat állapota Feladatazonosítót kell visszaadnia:
 
-        {"id":"job_1415651640909_0026"}
+       {"id":"job_1415651640909_0026"}
 
 3. A feladat állapotának ellenőrzéséhez használja a következő parancsot
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 971d9b557b56a645f0c99c41fb3afb3ed01db3d0
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: ea643622973456f6334333731f3a3e7be6a41089
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57732266"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57889522"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező ClickTime
 
@@ -108,6 +108,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés ClickTime, hajtsa v�
     a. Az a **azonosító** szövegmezőbe írja be egy URL-címe: `https://app.clicktime.com/sp/`
 
     b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím:
+    
     | |
     |--|
     | `https://app.clicktime.com/Login/` |
@@ -163,7 +164,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
@@ -222,7 +223,7 @@ ClickTime, esetén kiépítése a manuális feladat.
    
     a.  Az a **teljes név** szövegmező, például a felhasználó teljes neve típusa **Britta Simon**. 
   
-    b.  Az a **e-mail-cím** szövegmezőbe írja be az e-mailt, felhasználó, például **brittasimon@contoso.com**.
+    b.  Az a **e-mail-cím** szövegmezőbe írja be az e-mailt, felhasználó, például **brittasimon\@contoso.com**.
        
     > [!NOTE]
     > Ha szeretné, az új személy objektum további tulajdonságokat is beállíthatja.

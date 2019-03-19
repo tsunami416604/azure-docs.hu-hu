@@ -8,17 +8,19 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: sogup
-ms.openlocfilehash: 7d54e137cbfb35c84173c79e65a1070eabb52e78
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: a618482b73e8e423bc00b7c9010c9282da69cd3d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731631"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57844711"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Továbbfejlesztett biztonsági mentés, és állítsa vissza a teljesítmény az Azure Backup azonnali visszaállítási képesség
 
 > [!NOTE]
 > Vannak átnevezés, hogy a felhasználók visszajelzései alapján **virtuális gép biztonsági mentési vermének v2 verziójára** való **azonnali visszaállítása** elkerülése érdekében az Azure Stack-funkciókkal.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Az új modellre azonnali visszaállítása a következő szolgáltatás fejlesztéseket biztosítja:
 
@@ -27,7 +29,6 @@ Az új modellre azonnali visszaállítása a következő szolgáltatás fejleszt
 * Támogatja a lemez mérete 4 TB-ig.
 * Standard SSD-lemezeket támogatja.
 *   Használhat egy nem felügyelt virtuális gép eredeti tárfiókokban (lemezenként) visszaállítása során. Ez a lehetőség létezik, akkor is, ha a virtuális gép lemezei tárfiókokban vannak elosztva. Felgyorsítja a visszaállítási műveletek számos különböző Virtuálisgép-konfigurációk
-
 
 
 ## <a name="whats-new-in-this-feature"></a>Ez a szolgáltatás újdonságai
@@ -91,19 +92,19 @@ Ha szeretné önkiszolgáló, és frissítse az azonnali helyreállításához, 
 1.  Jelentkezzen be az Azure-fiókjával:
 
     ```
-    PS C:> Connect-AzureRmAccount
+    PS C:> Connect-AzAccount
     ```
 
 2.  Regisztrálni kívánt előfizetés kiválasztásához:
 
     ```
-    PS C:>  Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
+    PS C:>  Get-AzSubscription –SubscriptionName "Subscription Name" | Select-AzSubscription
     ```
 
 3.  Ez az előfizetés regisztrálása:
 
     ```
-    PS C:>  Register-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
+    PS C:>  Register-AzProviderFeature -FeatureName "InstantBackupandRecovery" –ProviderNamespace Microsoft.RecoveryServices
     ```
 
 ## <a name="upgrade-to-instant-restore-using-cli"></a>Frissítse az azonnali helyreállításához parancssori felület használatával
@@ -134,7 +135,7 @@ Futtassa a következő parancsokat egy rendszerhéjból:
 Egy rendszergazda jogú PowerShell terminálból futtassa a következő parancsmagot:
 
 ```
-Get-AzureRmProviderFeature -FeatureName "InstantBackupandRecovery" -ProviderNamespace Microsoft.RecoveryServices
+Get-AzProviderFeature -FeatureName "InstantBackupandRecovery" -ProviderNamespace Microsoft.RecoveryServices
 ```
 
 ### <a name="cli"></a>parancssori felület

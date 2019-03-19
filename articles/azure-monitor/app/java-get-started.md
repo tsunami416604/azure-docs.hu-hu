@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 03/14/2019
 ms.author: lagayhar
-ms.openlocfilehash: 224da9285ab0aef312688e4dfa1da49451abfa5a
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: ece8b4ac3946f543c13975e40b1025bb3cc222f6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674650"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013255"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Ismerkedés az Application Insights szolgáltatással Java webes projektben
 
@@ -39,10 +39,9 @@ Ha a Spring keretrendszert részesíti előnyben, tekintse meg a [Spring Boot in
 1. Jelentkezzen be a [Microsoft Azure Portalra](https://portal.azure.com).
 2. Hozzon létre egy Application Insights-erőforrást. Állítsa be a Java webalkalmazás alkalmazástípust.
 
-    ![Adjon meg egy nevet, válassza ki a Java webalkalmazást, és kattintson a Létrehozás gombra.](./media/java-get-started/02-create.png)
 3. Keresse meg az új erőforrás kialakítási kulcsát. Ezt a kulcsot nemsokára a kódprojektbe kell illesztenie.
 
-    ![Az új erőforrás áttekintésében kattintson a Tulajdonságok gombra, és másolja le a kialakítási kulcsot](./media/java-get-started/03-key.png)
+    ![Az új erőforrás áttekintésében kattintson a Tulajdonságok gombra, és másolja le a kialakítási kulcsot](./media/java-get-started/instrumentation-key-001.png)
 
 ## <a name="2-add-the-application-insights-sdk-for-java-to-your-project"></a>2. A Javához készült Application Insights SDK hozzáadása a projekthez
 *Válassza ki a projektnek megfelelő módszert.*
@@ -301,13 +300,13 @@ Térjen vissza az Application Insights-erőforráshoz a [Microsoft Azure Portalo
 
 A HTTP-kérelemadatok az áttekintési panelen jelennek meg. (Ha nincsenek ott, várjon néhány másodpercig, majd kattintson a Frissítés gombra.)
 
-![mintaadatok](./media/java-get-started/5-results.png)
+![Képernyőkép a mintaadatok áttekintése](./media/java-get-started/overview-graphs.png)
 
 [További információk a metrikákról.][metrics]
 
 Részletesebb összesített mérőszámokért kattintson bármelyik diagramra.
 
-![](./media/java-get-started/6-barchart.png)
+![Application Insights hibák panelen diagramok használata](./media/java-get-started/006-barcharts.png)
 
 > Az Application Insights feltételezi, hogy az MVC alkalmazások HTTP-kérelmeinek formátuma a következő: `VERB controller/action`. Például a `GET Home/Product/f9anuh81`, a `GET Home/Product/2dffwrf5` és a `GET Home/Product/sdf96vws` a következőbe van csoportosítva: `GET Home/Product`. Ez a csoportosítás lehetővé teszi a kérelmek fontos információkat biztosító összesítéseit, például a kérelmek számának és a kérelmek átlagos végrehajtási idejének meghatározását.
 >
@@ -316,16 +315,12 @@ Részletesebb összesített mérőszámokért kattintson bármelyik diagramra.
 ### <a name="instance-data"></a>Példányadatok
 Kattintson az adott kérelemtípusokra az egyes példányok megtekintéséhez.
 
-Két adattípus jelenik meg az Application Insights szolgáltatásban: összesített adatok, tárolva és átlagokként, számokként és összegekként megjelenítve; és példányadatok – a HTTP-kérelmek, kivételek, lapmegtekintések vagy egyéni események egyedi jelentései.
-
-Kérelem tulajdonságainak megtekintésekor láthatja az ahhoz társított telemetriaeseményeket, például a kérelmeket és kivételeket.
-
-![](./media/java-get-started/7-instance.png)
+![Egy adott minta nézet részletesen](./media/java-get-started/007-instance.png)
 
 ### <a name="analytics-powerful-query-language"></a>Analytics: Hatékony lekérdezési nyelvet
 Ahogy egyre több adatot gyűjt össze, lekérdezéseket futtathat az adatok összegzéséhez és egyéni példányok megkereséséhez is.  Az [elemzés](../../azure-monitor/app/analytics.md) erőteljes eszköz a teljesítmény és a használat megértéséhez és diagnosztikai célokra is.
 
-![Példa elemzésre](./media/java-get-started/025.png)
+![Példa elemzésre](./media/java-get-started/0025.png)
 
 ## <a name="7-install-your-app-on-the-server"></a>7. Az alkalmazás telepítése a kiszolgálón
 Most tegye közzé az alkalmazást a kiszolgálón, hagyja, hogy mások használják, és nézze, ahogyan a telemetria megjelenik a portálon.
@@ -343,11 +338,25 @@ Most tegye közzé az alkalmazást a kiszolgálón, hagyja, hogy mások használ
 
     (Ez az összetevő lehetővé teszi a teljesítményszámlálókat.)
 
+## <a name="azure-app-service-config-spring-boot"></a>Az Azure App Service-config (Spring Boot)
+
+Windows rendszeren futó Spring Boot alkalmazásokat igényel további konfigurálást az Azure App Services szolgáltatásban futtathatja. Módosítsa **web.config** , és adja hozzá a következő:
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <system.webServer>
+        <handlers>
+            <add name="httpPlatformHandler" path="*" verb="*" modules="httpPlatformHandler" resourceType="Unspecified"/>
+        </handlers>
+        <httpPlatform processPath="%JAVA_HOME%\bin\java.exe" arguments="-Djava.net.preferIPv4Stack=true -Dserver.port=%HTTP_PLATFORM_PORT% -jar &quot;%HOME%\site\wwwroot\AzureWebAppExample-0.0.1-SNAPSHOT.jar&quot;">
+        </httpPlatform>
+    </system.webServer>
+</configuration>
+```
 
 ## <a name="exceptions-and-request-failures"></a>Kivételek és kérelemhibák
-A rendszer a nem kezelt kivételeket automatikusan begyűjti:
-
-![Beállítások megnyitása, Hibák](./media/java-get-started/21-exceptions.png)
+Nem kezelt kivételeket is összegyűjti.
 
 Adatok és más kivételek gyűjtésére két lehetősége van:
 
@@ -366,9 +375,9 @@ A bejövő SDK konfigurációját és a foglalkozó további kifejtett [korrelá
 Kimenő SDK konfigurációs van definiálva a [AI-Agent.xml](java-agent.md) fájlt.
 
 ## <a name="performance-counters"></a>Teljesítményszámlálók
-Nyissa meg a **Beállítások**, **Kiszolgálók** elemet, ahol láthatja a teljesítményszámlálók készletét.
+Nyissa meg **vizsgálat**, **metrikák**, ahol láthatja a teljesítményszámlálók készletét.
 
-![](./media/java-get-started/11-perf-counters.png)
+![Képernyőkép a metrikák panelen a kiválasztott folyamat saját bájtjai](./media/java-get-started/011-perf-counters.png)
 
 ### <a name="customize-performance-counter-collection"></a>Teljesítményszámláló-gyűjtemény testreszabása
 A teljesítményszámlálók standard készlete gyűjtésének letiltásához adja a következő kódot az ApplicationInsights.xml fájl gyökércsomópontja alatt:
@@ -418,10 +427,6 @@ Mindegyik [Windows-teljesítményszámláló](https://msdn.microsoft.com/library
 * counterName – A teljesítményszámláló neve.
 * instanceName – A teljesítményszámláló-kategória példányneve, vagy üres sztring („”), ha a kategória egyetlen példányt tartalmaz. Ha a categoryName Folyamat, és a gyűjteni kívánt teljesítményszámláló az aktuális JVM folyamatról származik, amelyen az alkalmazása fut, adja meg a következőt: `"__SELF__"`.
 
-A teljesítményszámlálói egyéni mérőszámokként láthatók a [Metrikaböngészőben][metrics].
-
-![](./media/java-get-started/12-custom-perfs.png)
-
 ### <a name="unix-performance-counters"></a>Unix-teljesítményszámlálók
 * [Telepítse a gyűjteményt az Application Insights beépülő modullal](java-collectd.md) számos rendszer- és hálózati adat lekéréséhez.
 
@@ -465,22 +470,12 @@ Most, hogy telepítette az SDK-t, az API-val saját telemetriát küldhet.
 * [Eseményeket és naplókat kereshet][diagnostic], amelyek segítenek a problémák diagnosztizálásában.
 
 ## <a name="availability-web-tests"></a>Rendelkezésre állási webes tesztek
-Az Application Insights rendszeres időközönként teszteli a webhelyét, hogy működik és jól válaszol-e. [A ][availability]beállításához kattintson a Webes tesztek elemre.
+Az Application Insights rendszeres időközönként teszteli a webhelyét, hogy működik és jól válaszol-e.
 
-![Kattintson a Webes tesztek elemre, majd a Webes teszt hozzáadása elemre.](./media/java-get-started/31-config-web-test.png)
-
-Megkapja a válaszidők diagramjait, valamint e-mailes értesítéseket kap, ha a webhely leáll.
-
-![Példa webes tesztre](./media/java-get-started/appinsights-10webtestresult.png)
-
-[További információk a rendelkezésre állási webes tesztekről.][availability]
+[További információ a rendelkezésre állási webes tesztek-telepítés.][availability]
 
 ## <a name="questions-problems"></a>Kérdései vannak? Problémákat tapasztal?
 [A Java hibaelhárítása](java-troubleshoot.md)
-
-## <a name="video"></a>Videó
-
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
 ## <a name="next-steps"></a>További lépések
 * [Függőségi hívások figyelése](java-agent.md)

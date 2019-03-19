@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 11/05/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 5588d2bd6cf2098d8744479c2bf2d308c9bf8f0d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b275f23209979e1a8068ecd99465f7b52392bc6c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460438"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082908"
 ---
 # <a name="sql-data-warehouse-recommendations"></a>Az SQL Data Warehouse javaslatok
 
@@ -63,4 +63,3 @@ Jelenleg az Advisor csak akkor jelenik meg, legfeljebb négy replikált tábla j
 
 > [!IMPORTANT]
 > A replikált tábla javaslat nem teljes koncepció, és nem veszik figyelembe az adatátviteli műveletek. Ez egy heurisztika hozzáadása folyamatban van, de addig is kell mindig ellenőrizze, hogy a számítási feladatok a javaslat alkalmazása után. Vegye fel a kapcsolatot sqldwadvisor@service.microsoft.com Ha a tudomására jut, amelynek hatására a számítási feladatok, amelyikre a replikált tábla javaslatok. Replikált táblák kapcsolatos további információkért látogasson el a következő [dokumentáció](https://docs.microsoft.com/azure/sql-data-warehouse/design-guidance-for-replicated-tables#what-is-a-replicated-table).
->

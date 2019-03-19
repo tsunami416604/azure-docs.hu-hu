@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/01/2018
 ms.author: dech
-ms.openlocfilehash: 718a519786f31d796b0cb2e3924c9361ebd65fbc
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: a942f91dfa03eea2d9dc14b4b44e2ef5ee57c1ba
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433246"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078635"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account-sdk-version-3-preview"></a>Adatkezelés az Azure Cosmos DB SQL API-fiók (a SDK verziója 3 előzetes verzió) egy .NET-Konzolalkalmazás létrehozása
 
@@ -321,7 +321,7 @@ Egy tároló használatával hozható létre a [ **CreateContainerIfNotExistsAsy
         await this.CreateContainer();
     }
     ```
-Válassza ki **F5** az alkalmazás futtatásához.
+   Válassza ki **F5** az alkalmazás futtatásához.
 
 Gratulálunk! Sikeresen létrehozott egy Azure Cosmos DB-tárolót.  
 
@@ -599,7 +599,7 @@ Most frissíteni fogjuk az Azure Cosmos DB egy elemet.
         await this.ReplaceFamilyItem();
     }
     ```
-Válassza ki **F5** az alkalmazás futtatásához.
+   Válassza ki **F5** az alkalmazás futtatásához.
 
 Gratulálunk! Sikeresen lecserélt egy Azure Cosmos DB-elemet.
 

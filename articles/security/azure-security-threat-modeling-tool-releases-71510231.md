@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: jegeib
-ms.openlocfilehash: eb1b3c04d3714280c1d1ba6c91b3a4c728a3d1af
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 6f7699ece97be1941ef5235b92f2c76b3bed140e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360270"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57883491"
 ---
-# <a name="threat-modeling-tool-update-release-71510231---1112018"></a>Threat Modeling Tool frissítés kiadása 7.1.51023.1 - 11/1/2018.
+# <a name="threat-modeling-tool-update-release-71510231---1112018"></a>A fenyegetésmodellezési eszköz frissített kiadása: 7.1.51023.1 - 11.1.2018
 
 Az eredeti feljegyzett a [a végleges verzió kibocsátási megjegyzései](./azure-security-threat-modeling-tool-releases-71509112.md), bocsátottunk egy frissítést (7.1.51023.1), a Microsoft Threat Modeling Tool, a felhasználóknak az előzetes verzió (előzetes verzió < 7.1.50911.2 ügyfelek) kell frissíteni a támogatott GA kiadás. Ez a kiadás nem tartalmaz minden olyan új funkciók vagy javítások.
 
@@ -38,7 +38,7 @@ Az eredeti feljegyzett a [a végleges verzió kibocsátási megjegyzései](./azu
 - Támogatott operációs rendszerek
   - Microsoft Windows 10
 - .NET-verzió megadása kötelező
-  - .Net 3.5.2
+  - .NET 3.5.2
 - További követelmények
   - Internetkapcsolat szükséges az eszköz, valamint a sablonok a frissítések fogadásához.
 

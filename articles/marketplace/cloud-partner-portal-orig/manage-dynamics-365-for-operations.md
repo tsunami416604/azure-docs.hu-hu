@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 41f3fd55be02364b4028642db9db1d3f47043afa
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 93c70e038589667ae97acb86663a6179dcc81637
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245086"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877326"
 ---
 # <a name="how-to-create-dynamics-365-for-operations-offer-via-cloud-partner-portal"></a>Létrehozása a Dynamics 365 for Operations ajánlat Cloud Partner Portalon keresztül
 
@@ -31,7 +31,7 @@ Mielőtt ajánlat nevében a közzétevő tehetők közzé fiókra, egyéni felh
 
 Miután az összes az előfeltételek teljesülnek, készen áll a Dynamics 365 for Operations ajánlat szerzői műveleteket.
 
-1. Jelentkezzen be a [Cloud Partner Portalon](http://cloudpartner.azure.com/).
+1. Jelentkezzen be a [Cloud Partner Portalon](https://cloudpartner.azure.com/).
 2. A bal oldali navigációs sávban kattintson a \"+ új ajánlat\" válassza \"Dynamics 365 for Operations\".
 3. Egy új ajánlat \"szerkesztő\" megtekintése most megnyílik az Ön számára, és szerzői készen vagyunk.
 4. A \"űrlapok\" meg kell adni, hogy szükség belül a bal oldalon láthatók a \"szerkesztő\" megtekintése. Minden egyes \"űrlap\" automatikusan kitölti a mezőket egy készlete áll. Szükséges, piros csillaggal jelölt mezők (\*).
@@ -51,7 +51,7 @@ Az ajánlat beállítások képernyő művelet egy alapszintű az ajánlat beál
 
 Ez a közzétevő-profilon belül az ajánlat egyedi azonosítója. Ezt az Azonosítót meg fognak jelenni a termék URL-címeket. Csak kisbetűs alfanumerikus karakterekből és kötőjelekből (-) állhat. Az azonosító nem végződhet kötőjellel, és legfeljebb 50 karakter hosszú lehet. Ez a mező után egy ajánlatot élesíti zárolva van.
 
-például ha egy kiadó contoso-közzétevő létrehoz egy ajánlatot az ajánlat azonosítója *minta-dynamics365 műveletek*, ez fog megjelenni az appsource-ban, \"https://appsource.microsoft.com/marketplace/apps/**contoso**.*minta – dynamics 365 for operations* ? lapon = áttekintése\"
+például ha egy kiadó contoso-közzétevő létrehoz egy ajánlatot az ajánlat azonosítója *minta-dynamics365 műveletek*, ez fog megjelenni az appsource-ban, `https://appsource.microsoft.com/marketplace/apps/**contoso**.*sample-dynamics365 for operations*?tab=Overview\`.
 
 ### <a name="publisher-id"></a>Közzétevő azonosítója
 
@@ -69,7 +69,7 @@ Technikai információ formájában jelenik meg az ajánlat oldalon információ
 
 ![Új ajánlat képernyő](./media/publish_d365_new_offer/Technical_info.png)
 
-### <a name="solution-identifier"></a>Megoldás azonosítója
+### <a name="solution-identifier"></a>Solution Identifier
 
 A megoldás azonosító először van.
 
@@ -138,7 +138,7 @@ A támogatási URL-cím csak akkor lesz látható a portálon a felhasználók �
 
 ### <a name="leads-management"></a>Érdeklődők kezelése
 
-Válassza ki a CRM-rendszerrel, ahol vezető rendszer tárolja. Válassza ki \"Azure Table\" itt, ha rendelkezik ilyennel, a következő CRM rendszereket: Salesforce, a Marketo, a Microsoft Dynamics CRM-hez. A CRM-rendszerrel, itt, ahol írunk a végfelhasználók számára, hogy kipróbálják az alkalmazását az appsource-ban (érdeklődők) részleteit. Attól függően, a CRM-rendszerrel választja kattintson a megfelelő URL-címet, végezze el a következő mezők információt.
+Válassza ki a CRM-rendszerrel, ahol vezető rendszer tárolja. Válassza ki \"Azure Table\" itt, ha rendelkezik ilyennel, a következő CRM rendszereket: A Salesforce, a Marketo, a Microsoft Dynamics CRM. A CRM-rendszerrel, itt, ahol írunk a végfelhasználók számára, hogy kipróbálják az alkalmazását az appsource-ban (érdeklődők) részleteit. Attól függően, a CRM-rendszerrel választja kattintson a megfelelő URL-címet, végezze el a következő mezők információt.
 
 ![Érdeklődő felügyeleti részletei](./media/publish_d365_new_offer/leads.png)
 

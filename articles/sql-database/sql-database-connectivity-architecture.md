@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/25/2019
-ms.openlocfilehash: dde54894867811a34340f6dd4d0236b6b54e8144
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/12/2019
+ms.openlocfilehash: cfa9f6bcb81182f4e76e995d626b207f8e130a80
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307717"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840919"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Az Azure SQL-kapcsolati architektúra
 
@@ -127,6 +127,8 @@ Az Azure SQL Database egy Azure SQL Database-kiszolgáló kapcsolódási szabál
 ## <a name="script-to-change-connection-settings-via-powershell"></a>Módosítja a kapcsolati beállításokat PowerShell-szkript
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> A PowerShell Azure Resource Manager-modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés Az.Sql modul. Ezeket a parancsmagokat lásd: [azurerm.SQL-hez](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). A parancsok a Az modul, és az AzureRm-modulok argumentumainak lényegében megegyeznek.
 
 > [!IMPORTANT]
 > A szkriptnek szüksége van a [Azure PowerShell-modul](/powershell/azure/install-az-ps).
@@ -150,7 +152,7 @@ Set-AzResource -ResourceId $id -Properties @{"connectionType" = "Proxy"} -f
 ## <a name="script-to-change-connection-settings-via-azure-cli"></a>Módosítja a kapcsolati beállításokat az Azure CLI-szkript
 
 > [!IMPORTANT]
-> A szkriptnek szüksége van a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+> A szkriptnek szüksége van a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 A következő CLI-példaszkript bemutatja, hogyan módosíthatja a kapcsolódási szabályzat.
 

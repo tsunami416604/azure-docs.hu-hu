@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 961f231f9d8ab339d06e9521830c58d175c4a9e3
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 8a7c722944aacaca9780939a1726c6e47be79be1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492912"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112041"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-cli"></a>Virtuális gép biztonsági mentése az Azure-ban a parancssori felület (CLI) használatával
 Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Adatai védelme érdekében érdemes rendszeres időközönként biztonság mentést végeznie. Az Azure Backup georedundáns helyreállítási tárolókban tárolható helyreállítási pontokat hoz létre. Ez a cikk az Azure virtuális gépek (VM-ek) az Azure CLI használatával való biztonsági mentését mutatja be részletesen. Az [Azure PowerShell](quick-backup-vm-powershell.md) vagy az [Azure Portal](quick-backup-vm-portal.md) használatával is elvégezheti ezeket a lépéseket.
@@ -58,7 +58,7 @@ az backup protection enable-for-vm \
 ```
 
 > [!NOTE]
-Ha a virtuális gép nem a tároló erőforráscsoportjában van, akkor a myResourceGroup arra az erőforráscsoportra utal, amelyben a tároló létre lett hozva. A virtuális gép neve helyett adja meg a virtuális gép azonosítóját az alábbiak szerint.
+> Ha a virtuális gép nem a tároló erőforráscsoportjában van, akkor a myResourceGroup arra az erőforráscsoportra utal, amelyben a tároló létre lett hozva. A virtuális gép neve helyett adja meg a virtuális gép azonosítóját az alábbiak szerint.
 
 ```azurecli-interactive 
 az backup protection enable-for-vm \

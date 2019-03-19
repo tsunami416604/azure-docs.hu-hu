@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: rli; juliako;
-ms.openlocfilehash: 14a274dbbc45f00ecf914d5bb0a3e1c040fb3a89
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 70cd93e4f7984e938a67c799d632f653745a6c62
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994523"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57870033"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Az Azure Media Analytics bemutató arcok szereplők
 
@@ -130,6 +130,6 @@ Ha egy fejlesztő történt a jegyzet JSON-adatok elemzése, keressen belül Mod
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
 [Az Azure Media Services analitikai funkcióinak áttekintése](media-services-analytics-overview.md)
 
-[Az Azure Médiaelemzés bemutatók](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Az Azure Médiaelemzés bemutatók](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
 [Az Azure Médiaelemzés használatával Arcszerkesztés bejelentése](https://azure.microsoft.com/blog/azure-media-redactor/)

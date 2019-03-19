@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: b06ca287f03c62b3947e6c37712cf491396392e0
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 0ca3cee0c818bf9d5dda4a7ea8a1f356ed017973
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245833"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57891086"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Adatelemzés a egy Linux rendszerű adatelemző virtuális gép az Azure-ban
 Ez az útmutató bemutatja, hogyan hajthat végre számos gyakori adatelemzési feladatok a Linux rendszerű adatelemző virtuális gép. A Linux rendszerű adatelemzési virtuális gép (DSVM), amely előre telepített gyakran használt adatok elemzési és gépi tanulási eszközök gyűjteményét az Azure-ban elérhető virtuálisgép-lemezkép. A kulcs szoftverösszetevőket esethez vannak a [a Linux rendszerű adatelemző virtuális gép kiépítése](linux-dsvm-intro.md) témakör. A Virtuálisgép-lemezkép megkönnyíti az első lépések adatelemzésre percben, anélkül, hogy telepítse és konfigurálja az egyes eszközökről külön-külön kellene. Egyszerűen vertikális felskálázás a virtuális Gépet, ha szükséges, és állítsa le, amikor nincs használatban. Ehhez az erőforráshoz így rugalmas és költséghatékony is.
@@ -36,7 +36,7 @@ Mielőtt használhatná egy Linux rendszerű adatelemzési virtuális gépet, az
 
 * Egy **Azure-előfizetés**. Ha Ön még nem rendelkezik egy, [már ma létrehozhatja ingyenes Azure-fiók](https://azure.microsoft.com/free/).
 * A [ **Linux rendszerű adatelemző virtuális gép**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm). Ez a virtuális gép kiépítése a további információkért lásd: [a Linux rendszerű adatelemző virtuális gép kiépítése](linux-dsvm-intro.md).
-* [X2Go](http://wiki.x2go.org/doku.php) telepítve a számítógépre, és a egy XFCE munkamenet megnyitva. Információ telepítésével és konfigurálásával egy **X2Go ügyfél**, lásd: [telepítése és konfigurálása X2Go ügyfél](linux-dsvm-intro.md#installing-and-configuring-x2go-client).
+* [X2Go](https://wiki.x2go.org/doku.php) telepítve a számítógépre, és a egy XFCE munkamenet megnyitva. Információ telepítésével és konfigurálásával egy **X2Go ügyfél**, lásd: [telepítése és konfigurálása X2Go ügyfél](linux-dsvm-intro.md#installing-and-configuring-x2go-client).
 * Az egyenletesebb görgethető élményt, váltsa át a gfx.xrender.enabled jelzőt a kapcsolatos: konfiguráció a virtuális gépek FireFox böngésző. [További részletek megtekintéséhez. ](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). Megfontolnia a lekérdezésbetöltés *mousewheel.enable_pixel_scrolling* hamis értékre. [Itt leírt utasításokat.](https://support.mozilla.org/en-US/questions/981140)
 * Egy **AzureML fiók**. Ha még nem rendelkezik egy újat, Regisztráljon a [AzureML kezdőlap](https://studio.azureml.net/). Nincs segít megismerkedni egy ingyenes használat szintjét.
 
@@ -52,7 +52,7 @@ Ha több tárhely van szüksége, hozzon létre további lemezeket, és csatolja
 
 Töltse le az adatokat, nyisson meg egy terminálablakot, és futtassa a következő parancsot:
 
-    wget http://archive.ics.uci.edu/ml/machine-learning-databases/spambase/spambase.data
+    wget https://archive.ics.uci.edu/ml/machine-learning-databases/spambase/spambase.data
 
 A letöltött fájl nem rendelkezik most hozzon létre egy másik fájlt, amely fejléccel rendelkeznek egy fejléc sorra. Hozzon létre egy fájlt a megfelelő fejlécek a következő parancs futtatásával:
 
@@ -263,7 +263,7 @@ XGBoost is meghívhatja a pythonból vagy a parancssorból.
 Python fejlesztést az Anaconda Python disztribúciók 2.7-es és 3.5-ös telepítve vannak a dsvm-hez.
 
 > [!NOTE]
-> Tartalmazza a Anaconda terjesztési [Conda](http://conda.pydata.org/docs/index.html), amelyek segítségével egyéni környezetek létrehozása, amely rendelkezik a különböző verziók, illetve a rajtuk telepített csomagok Pythonhoz készült.
+> Tartalmazza a Anaconda terjesztési [Conda](https://conda.pydata.org/docs/index.html), amelyek segítségével egyéni környezetek létrehozása, amely rendelkezik a különböző verziók, illetve a rajtuk telepített csomagok Pythonhoz készült.
 >
 >
 
@@ -318,21 +318,19 @@ A dsvm-hez az Anaconda terjesztési tartalmaz egy Jupyter notebookot, olyan töb
 
 > [!NOTE]
 > A Python Csomagkezelő használandó (keresztül a `pip` parancs) a Jupyter notebook a jelenlegi kernel, az alábbi parancsot a használni kódcellába, például:
-  ```python
-   import sys
-   ! {sys.executable} -m pip install numpy -y
-  ```
->
->
-
+>   ```python
+>    import sys
+>    ! {sys.executable} -m pip install numpy -y
+>   ```
+> 
+> 
+> 
 > [!NOTE]
 > A Conda-telepítővel (keresztül a `conda` parancs) a Jupyter notebook a jelenlegi kernel, az alábbi parancsot a használni kódcellába, például:
-  ```python
-   import sys
-   ! {sys.prefix}/bin/conda install --yes --prefix {sys.prefix} numpy
-  ```
->
->
+>   ```python
+>    import sys
+>    ! {sys.prefix}/bin/conda install --yes --prefix {sys.prefix} numpy
+>   ```
 
 Több mintafüzetek már telepítve vannak a virtuális gépen:
 
@@ -515,7 +513,7 @@ Mik azok az e-mailek gyakran tartalmaznak jellemzőit vagy *3d*?
 
 A legtöbb e-maileket, amelyek egy nagy előfordulása *3d* vannak kártevőnek fogjuk kéretlen információk küldésére, így előfordulhat, hogy egy hasznos funkció, amellyel az e-mailek besorolására egy prediktív modellt.
 
-Ha szeretne egy PostgreSQL-adatbázisban tárolt adatokat a machine learning alkalmazásához, érdemes [MADlib](http://madlib.incubator.apache.org/).
+Ha szeretne egy PostgreSQL-adatbázisban tárolt adatokat a machine learning alkalmazásához, érdemes [MADlib](https://madlib.incubator.apache.org/).
 
 ## <a name="sql-server-data-warehouse"></a>Az SQL Server Data Warehouse
 Az Azure SQL Data Warehouse egy felhőalapú, horizontálisan felskálázható adatbázis, amely nagy mennyiségű relációs és nem relációs adatot képes feldolgozni. További információkért lásd: [Mi az Azure SQL Data Warehouse?](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)

@@ -1,7 +1,7 @@
 ---
 title: Az Azure HDInsight-eszközök – Visual Studio Code-ot használja a Hive, LLAP vagy PySpark |} A Microsoft Docs
 description: Ismerje meg, hogyan használható az Azure HDInsight Tools for Visual Studio Code létrehozásához és elküldéséhez a lekérdezések és a parancsfájlokat.
-Keywords: Visual Studio Code,Azure HDInsight Tools,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,Interactive Hive,Interactive Query
+Keywords: Visual Studio Code-ot, az Azure HDInsight-eszközök, Hive, Python, PySpark, Spark, HDInsight, Hadoop LLAP, interaktív Hive, interaktív lekérdezés
 services: HDInsight
 documentationcenter: ''
 author: hrasheed-msft
@@ -10,12 +10,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/04/2019
-ms.openlocfilehash: 3301f3cdea1795db3b17bc2fa7da05bf362c744d
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 71e12e661c704af028ac4dc48f255bdee980619c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895069"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100326"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Az Azure HDInsight Tools for Visual Studio Code használata
 
@@ -81,7 +81,7 @@ Elküldés előtt szkriptek HDInsight-fürtökhöz a Visual Studio Code-ból, sz
 
         ![Bejelentkezési utasítások az más környezetben](./media/hdinsight-for-vscode/hdi-azure-hdinsight-hdinsight-signin.png)
 
- Miután csatlakozott, az Azure-fiók nevét a Visual Studio Code-ablak bal alsó állapotjelző sáv jelenik meg.  
+   Miután csatlakozott, az Azure-fiók nevét a Visual Studio Code-ablak bal alsó állapotjelző sáv jelenik meg.  
   
 
 <h2 id="linkcluster">Hivatkozás létrehozásához: Azure HDInsight</h2>
@@ -310,20 +310,20 @@ Fájl elküldése, figyelje meg, hogy a .vscode mappa automatikusan bekerül a m
     | név | leírás | type | 
     | :- | :- | :- | 
     | fájl | Hajtsa végre az alkalmazást tartalmazó fájlt | elérési út (kötelező) | 
-    | proxyUser | Felhasználó megszemélyesítése a feladat futtatásakor | Karakterlánc | 
-    | Osztálynév | Alkalmazás Java/Spark main osztály | Karakterlánc |
+    | proxyUser | Felhasználó megszemélyesítése a feladat futtatásakor | sztring | 
+    | Osztálynév | Alkalmazás Java/Spark main osztály | sztring |
     | args | Az alkalmazás a parancssori argumentumok | karakterláncok | 
     | JAR-fájlok kivételével | Ebben a munkamenetben használandó jars | Karakterlánc listája | 
     | pyFiles | Ebben a munkamenetben használandó Python-fájlok | Karakterlánc listája |
     | fájl megjelenítése | Ebben a munkamenetben használni kívánt fájlok | Karakterlánc listája |
-    | driverMemory | Az illesztőprogram-folyamathoz használandó memória mennyisége | Karakterlánc |
+    | driverMemory | Az illesztőprogram-folyamathoz használandó memória mennyisége | sztring |
     | driverCores | Az illesztőprogram-folyamathoz használandó magok száma | int |
-    | executorMemory | Memória / végrehajtó folyamat használata | Karakterlánc |
+    | executorMemory | Memória / végrehajtó folyamat használata | sztring |
     | executorCores | Minden egyes végrehajtó használandó magok száma | int |
     | numExecutors | A munkamenet elindításához végrehajtóval száma | int |
     | archívum | Ebben a munkamenetben használandó archívum | Karakterlánc listája |
-    | várólista | A neve, amelyhez a YARN várólista elküldve | Karakterlánc |
-    | név | A munkamenet neve | Karakterlánc |
+    | üzenetsor | A neve, amelyhez a YARN várólista elküldve | sztring |
+    | név | A munkamenet neve | sztring |
     | megerősítési | Spark-konfiguráció tulajdonságai | Térkép kulcs = érték |
 
     Választörzs   
@@ -335,7 +335,7 @@ Fájl elküldése, figyelje meg, hogy a .vscode mappa automatikusan bekerül a m
     | appId | Ez a munkamenet-alkalmazás alkalmazásazonosítója |  String |
     | appInfo | Az alkalmazás részletes adatai | Térkép kulcs = érték |
     | napló | A napló sorok | karakterláncok |
-    | state |   A batch-állapot | Karakterlánc |
+    | state |   A batch-állapot | sztring |
 
 >[!NOTE]
 >A hozzárendelt livy-konfigurációs megjelennek a tesztkimenet ablaktáblán amikor küldje el a szkriptet.

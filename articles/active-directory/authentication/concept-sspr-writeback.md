@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bba14e37e811c941c9709eef6b6d8ffd8322643
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3772f42b1216cfb26d66b1d68fcb9e59fd8652d8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167133"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107542"
 ---
 # <a name="what-is-password-writeback"></a>Mi a jelszóvisszaíró?
 
@@ -96,11 +96,11 @@ Amikor összevont vagy a jelszó kivonatát szinkronizálja a felhasználói kí
    >
 
 1. A jelszó beállítása a művelet sikertelen lesz, ha a hiba kéri a felhasználót, próbálkozzon újra. A művelet sikertelen lehet, mert:
-   * A szolgáltatás le lett.
-   * A jelszó kiválasztották nem felelt meg a szervezet szabályzatainak.
-   * Nem található a felhasználó a helyi Active Directoryban.
+    * A szolgáltatás le lett.
+    * A jelszó kiválasztották nem felelt meg a szervezet szabályzatainak.
+    * Nem található a felhasználó a helyi Active Directoryban.
 
-    A hibaüzenetek útmutatást nyújtanak a felhasználók, így az is megpróbálják feloldani rendszergazdai beavatkozás nélkül.
+      A hibaüzenetek útmutatást nyújtanak a felhasználók, így az is megpróbálják feloldani rendszergazdai beavatkozás nélkül.
 
 ## <a name="password-writeback-security"></a>A jelszó-visszaírás biztonsága
 

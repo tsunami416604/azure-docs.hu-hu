@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: magattus
-ms.openlocfilehash: d6d898b93af6c03b313ec2340eb076de85877155
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 205a8dae55394a82a60f54ed32bad95324a59517
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530994"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57996930"
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Az Azure CDN szabálymotor funkciói
 Ez a cikk felsorolja a részletes leírását az elérhető funkciók az Azure Content Delivery Network (CDN) [Szabálymotorral](cdn-rules-engine.md).
@@ -76,7 +76,7 @@ Ez a szolgáltatás egy szabály belül további információkkal szolgál.
 Name (Név) | Cél
 -----|--------
 [Megjegyzés](#comment) | Lehetővé teszi, hogy a szabály belül hozzáadandó megjegyzés.
- 
+ 
 ## <a name="header-features"></a>Fejléc-funkciók
 
 Ezek a Funkciók hozzáadása, módosítása vagy törlése a fejlécek a kérelem vagy válasz lettek kialakítva.
@@ -126,7 +126,7 @@ Enabled|Indicates that the request is eligible for Edge Optimizer processing.
 Disabled|Restores the default behavior. The default behavior is to deliver content over the ADN platform without any additional processing.
 
 **Default Behavior:** Disabled
- 
+ 
 
 ### Edge Optimizer - Instantiate Configuration
 **Purpose:** Instantiates or activates the Edge Optimizer configuration associated with a site.
@@ -164,7 +164,7 @@ Name (Név) | Cél
 [Gyorsítótárazható kérelem törzse mérete](#cacheable-request-body-size) | Határozza meg a meghatározásához a POST választ is lehet gyorsítótárba kerüljenek-e a küszöbértéket.
 [Felhasználói változó](#user-variable) | Csak belső használatra.
 
- 
+ 
 ## <a name="url-features"></a>URL-cím-funkciók
 
 Ezek a funkciók lehetővé teszik a kérést átirányítja vagy egy másik URL-címet átírása.
@@ -182,6 +182,7 @@ Name (Név) | Cél
 ---
 ### <a name="age-response-header"></a>Kor válaszfejléc
 **Célú**: Meghatározza, hogy egy kora válasz fejléce szerepel-e a válasz a kérelmezőnek küldött.
+
 Érték|Eredmény
 --|--
 Engedélyezve | A válasz a kérelmezőnek küldött az életkor válasz fejléce tartalmazza.
@@ -191,7 +192,7 @@ Letiltva | A válasz a kérelmezőnek küldött az életkor válaszfejléc nem t
 
 [Vissza a tetejére](#azure-cdn-rules-engine-features)
 
-</br>
+<br>
 
 ---
 ### <a name="bandwidth-parameters"></a>A sávszélesség-paraméterek
@@ -394,6 +395,7 @@ Beállítás|Leírás
 --|--
 Eredeti elérési útja| A kérelmek, amelynek gyorsítótár-kulcs áll feladatátvitelt típusú relatív elérési utat határozza meg. Relatív elérési út egy alap forrás elérési útja kiválasztásával, és egy Reguláriskifejezés-mintának majd meghatározása lehet definiálni.
 Új elérési utat|Adja meg az új gyorsítótár-kulcsot a relatív elérési utat. Relatív elérési út egy alap forrás elérési útja kiválasztásával, és egy Reguláriskifejezés-mintának majd meghatározása lehet definiálni. A relatív elérési út használatával dinamikusan gyűjteménynévmintája [HTTP változók](cdn-http-variables.md).
+
 **Alapértelmezett viselkedés:** kérelmet a gyorsítótár-kulcs határozza meg a kérés URI azonosítója.
 
 [Vissza a tetejére](#azure-cdn-rules-engine-features)
@@ -473,6 +475,7 @@ text/html| HTML-fájlok
 Text/css|Lépcsőzetes stílus lapok (CSS)
 application/x-javascript|Javascript
 alkalmazás/javascript|Javascript
+
 Legfontosabb tudnivalókat:
 
 - Adja meg az egy szóköz pedig külön határoló több adathordozó-típusnak. 
@@ -1024,6 +1027,7 @@ Az alapértelmezett listát a következő HTTP-fejléceket tartalmazza:
 --|--
 Engedélyezve|Az eszköz refetch a forráskiszolgálóról a POP okoz.
 Letiltva|Visszaállítja az alapértelmezett viselkedést. Az alapértelmezett viselkedést, hogy érvényes gyorsítótár eszközök kérésre kiszolgálására.
+
 Ez a funkció a megfelelő gyorsítótárazási és a tartalomkézbesítési nem kötelező, de hasznos megoldás lehet. Például a dinamikus tartalom generátorok a szerverek véletlenül eredményezhet 0 bájtos válaszok küldött-kre történő propagálása. Az ilyen típusú válaszok a rendszer jellemzően gyorsítótárzza a POP-k által. Ha tudja, hogy, hogy a 0 bájtos válasz soha nem egy érvényes válasz 
 
 az ilyen tartalmat majd ez a funkció tudja megakadályozni az ilyen típusú eszközök kiszolgált az ügyfelek számára.
@@ -1279,6 +1283,7 @@ Beállítás|Leírás
 -|-
  Forrás & minta | Ezek a beállítások megadása a kérelem URI mintát, amely a típusa, a kérelmek, előfordulhat, hogy be kell írni. Egyetlen kérelem URL-cím megfelel a következő feltételek közül mind felülíródik: <br/><br/>  - **Forrás (vagy a tartalom-hozzáférési pont):** válassza ki a relatív elérési utat, amely azonosítja az eredeti kiszolgálóra. Ez az elérési út a _/XXXX/_ szakaszt, és a végpont neve. <br/><br/> - **Forrás (minta):** olyan minta, amely azonosítja a kérések relatív elérési utat meg kell határozni. Ezt reguláris kifejezési mintája meg kell határoznia egy elérési út indítása közvetlenül után a korábban kiválasztott tartalom-hozzáférési pont (lásd fent). <br/> Győződjön meg arról, hogy a kérelem URI-t (azaz forrás & minta) korábban megadott feltételek nem ütközik az egyezés feltételek bármelyike meghatározott ennek a funkciónak. Adjon meg egy minta; a minta egy üres értéket használja, ha az összes karakterláncok egyeztetését. 
  Cél  |Adja meg a relatív URL-cím, amelyre a fenti kérelmek felülíródik szerint: <br/>    1. A tartalom-hozzáférési pont, amely azonosítja a forráskiszolgáló kijelölése. <br/>    2. Meghatározása egy relatív elérési út használatával: <br/>        -A reguláris kifejezési mintája <br/>        - [HTTP-változók](cdn-http-variables.md) <br/> <br/> Helyettesítse az értékeket, rögzítse a forrás a mintában az a cél-minta használatával $_n_ ahol _n_ értéket a sorrendet, amelyben rögzítésének azonosítja. Ha például 1 USD közben 2 USD a második értéket képvisel a forrás mintában a rögzített első értékét jelöli. 
+
  Ez a funkció lehetővé teszi, hogy a POP-Okba annak az URL-cím újraírása hagyományos átirányítási végrehajtása nélkül. Azt jelenti a kérelmező kap válasz ugyanazt a kódot, mintha kért kellett az Átdolgozta URL-cím.
 
 **1. példa forgatókönyv**

@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 5ce99e06ea1a8e72a8767367ddfd7bbb845c8400
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 3abe0511200bf5828b485b15a4b8a512731c4ffa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54318423"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082126"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Egyéni KPI irányítópultok létrehozása az Azure Application Insights használatával
 
@@ -42,18 +42,18 @@ Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.az
 ## <a name="create-a-new-dashboard"></a>Új irányítópult létrehozása
 Egyazon irányítópult több alkalmazáshoz, erőforráscsoporthoz és előfizetéshez tartozó erőforrásokat is tartalmazhat.  Az oktatóanyag első lépéseként hozzon létre egy új irányítópultot az alkalmazásához.  
 
-2.  Irányítópult panelen válassza ki a **új irányítópult**.
+1. Irányítópult panelen válassza ki a **új irányítópult**.
 
-    ![Új irányítópult](media/tutorial-app-dashboards/1newdashboard.png)
+   ![Új irányítópult](media/tutorial-app-dashboards/1newdashboard.png)
 
-3. Írja be az irányítópult nevét.
-4. Tekintse át a **Csempekatalógust**, amelyben az irányítópultra rögzíthető számos különböző csempe található.  Amellett, hogy a katalógusból is hozzáadhat csempéket, közvetlenül az Application Insightsból is rögzíthet diagramokat és egyéb nézeteket az irányítópultra.
-5. Keresse meg a **Markdown** csempét, és húzza az irányítópultra.  Ezzel a csempével Markdown-formátumú szövegeket adhat az irányítópulthoz, ami ideális a leíró szövegekhez.
-6. Adjon hozzá szöveget a csempe tulajdonságaiban, és méretezze át a csempét az irányítópult vásznán.
+1. Írja be az irányítópult nevét.
+1. Tekintse át a **Csempekatalógust**, amelyben az irányítópultra rögzíthető számos különböző csempe található.  Amellett, hogy a katalógusból is hozzáadhat csempéket, közvetlenül az Application Insightsból is rögzíthet diagramokat és egyéb nézeteket az irányítópultra.
+1. Keresse meg a **Markdown** csempét, és húzza az irányítópultra.  Ezzel a csempével Markdown-formátumú szövegeket adhat az irányítópulthoz, ami ideális a leíró szövegekhez.
+1. Adjon hozzá szöveget a csempe tulajdonságaiban, és méretezze át a csempét az irányítópult vásznán.
     
     ![Markdown-csempe szerkesztése](media/tutorial-app-dashboards/2dashboard-text.png)
 
-6. Kattintson a **testreszabás kész** csempe testreszabási módból való kilépéshez a képernyő tetején.
+1. Kattintson a **testreszabás kész** csempe testreszabási módból való kilépéshez a képernyő tetején.
 
 ## <a name="add-health-overview"></a>Állapotáttekintés hozzáadása
 A csak statikus szövegeket tartalmazó irányítópult nem valami érdekes, ezért most adjunk hozzá egy Application Insights-csempét az alkalmazással kapcsolatos információk megjelenítésére.  Az Application Insights-csempéket hozzáadhatja a csempekatalógusból, vagy közvetlenül az Application Insights-képernyőkről is rögzítheti őket.  Így a már ismert diagramokat és nézeteket konfigurálhatja, mielőtt rögzítené őket az irányítópulton.  Először adja hozzá az alkalmazás standard állapotáttekintését.  Ez nem igényel konfigurálást, és minimális testreszabási lehetőségeket biztosít az irányítópulton.

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: be953621dbadee74361b2170c2a532cfec6ef77a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d67bd26dcb2ac0b3bf909e1ef3d5ca75a0882eb3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477854"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57840647"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Hive táblák létrehozása és az adatok betöltése az Azure Blob Storage-ból
 
@@ -36,7 +36,7 @@ Feltételezzük, hogy az adatokat a Hive-táblákat szerepel egy **tömörítetl
 
 Ha meg szeretné gyakorlat a **NYC Taxi Útadatok**, kell tennie:
 
-* **Töltse le** az 24 [NYC Taxi Útadatok](http://www.andresmh.com/nyctaxitrips) (12 Útadatokat tartalmazó fájlt, és 12 diszkont fájlok),
+* **Töltse le** az 24 [NYC Taxi Útadatok](https://www.andresmh.com/nyctaxitrips) (12 Útadatokat tartalmazó fájlt, és 12 diszkont fájlok),
 * **Csomagolja ki** tartalmazó .csv fájlt, az összes fájlt, majd
 * **Töltse fel** őket az alapértelmezett (vagy megfelelő tárolót) az Azure Storage-fiók; ilyen fiókja jelenik meg a vonatkozó beállítások [az Azure storage, Azure HDInsight-fürtökkel](../../hdinsight/hdinsight-hadoop-use-blob-storage.md) témakör. A folyamat a .csv-fájlok feltöltése az alapértelmezett tároló a tárfiókban található ezen [oldal](hive-walkthrough.md#upload).
 

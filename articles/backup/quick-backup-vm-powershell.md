@@ -4,135 +4,170 @@ description: Ismerje meg, hogyan készíthet biztonsági mentést virtuális gé
 services: backup
 author: rayne-wiselman
 manager: carmonm
-tags: azure-resource-manager, virtual-machine-backup
 ms.service: backup
 ms.devlang: azurecli
 ms.topic: quickstart
-ms.date: 01/31/2019
+ms.date: 03/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c62f6f41711308f1a7150c79ab71570190af825a
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 42c981aa585d35e1d78718b4dee51d450b45e241
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55495547"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852253"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>Virtuális gép biztonsági mentése az Azure-ban a PowerShell használatával
-Az Azure PowerShell-modul az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Adatai védelme érdekében érdemes rendszeres időközönként biztonság mentést végeznie. Az Azure Backup georedundáns helyreállítási tárolókban tárolható helyreállítási pontokat hoz létre. Ez a cikk a virtuális gépek (VM-ek) az Azure PowerShell modul használatával való biztonsági mentését mutatja be részletesen. Az [Azure CLI](quick-backup-vm-cli.md) vagy az [Azure Portal](quick-backup-vm-portal.md) használatával is elvégezheti ezeket a lépéseket.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+A [Azure PowerShell AZ](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.4.0) -modul létrehozása és kezelése Azure-erőforrások parancssorból vagy szkriptekkel történő használható. 
+
+[Az Azure Backup](backup-overview.md) a helyszíni gépek és az alkalmazások és az Azure virtuális gépek biztonsági mentését. Ez a cikk bemutatja, hogyan készíthet biztonsági másolatot egy Azure virtuális Gépen AZ modult. Másik megoldásként készíthet biztonsági mentést egy virtuális gépet a [Azure CLI-vel](quick-backup-vm-cli.md), vagy a a [az Azure portal](quick-backup-vm-portal.md).
 
 Ez a rövid útmutató a meglévő Azure-beli virtuális gépek biztonsági mentését mutatja be. Ha létre kell hoznia egy virtuális gépet, [létrehozhatja azt az Azure PowerShell használatával](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json).
 
-Ehhez a rövid útmutatóhoz az Azure PowerShell-modul 4.4-es vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable AzureRM`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket.
+Ebben a rövid útmutatóhoz az Azure PowerShell modul 1.0.0-ás AZ vagy újabb. A verzió azonosításához futtassa a következőt: ` Get-Module -ListAvailable Az`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps) ismertető cikket.
 
 
-## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
-Jelentkezzen be az Azure-előfizetésbe a `Connect-AzureRmAccount` paranccsal, és kövesse a képernyőn megjelenő útmutatásokat.
+## <a name="log-in-and-register"></a>Bejelentkezés és regisztráció
 
-```powershell
-Connect-AzureRmAccount
-```
+1. Jelentkezzen be az Azure-előfizetésbe a `Connect-AzAccount` paranccsal, és kövesse a képernyőn megjelenő útmutatásokat.
 
-Amikor első alkalommal használja az Azure Backup szolgáltatást, regisztrálnia kell az Azure Recovery Services-szolgáltatót az előfizetésében a [Register-AzureRmResourceProvider](/powershell/module/AzureRM.Resources/Register-AzureRmResourceProvider) paranccsal.
+    ```powershell
+    Connect-AzAccount
+    ```
+2. Az első alkalommal használja az Azure Backup, az Azure Recovery Services-szolgáltatót regisztrálnia kell az előfizetésében lévő [Register-AzResourceProvider](/powershell/module/az.Resources/Register-azResourceProvider), az alábbiak szerint:
 
-```powershell
-Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
-```
+    ```powershell
+    Register-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
+    ```
 
 
-## <a name="create-a-recovery-services-vaults"></a>Recovery Services-tároló létrehozása
-A Recovery Services-tároló egy logikai tároló, amely az egyes védett erőforrások, például az Azure-beli virtuális gépek biztonsági másolatainak adatait tárolja. Amikor egy védett erőforrás biztonsági mentésének feladata fut, a rendszer egy helyreállítási pontot hoz létre a Recovery Services-tárolóban. Ezt követően ezen helyreállítási pontok egyikével állíthatja vissza az adatokat egy adott időpontra.
+## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
-Recovery Services-tárolót a [New-AzureRmRecoveryServicesVault](/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault) paranccsal hozhat létre. Adja meg a védeni kívánt virtuális gépével megegyező erőforráscsoportot és helyet. Ha a virtuális gépet a [mintaparancsfájl](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json) használatával hozta létre, az erőforráscsoport a *myResourceGroup*, míg a virtuális gép a *myVM* nevet kapja, az erőforrások pedig a *WestEurope* (Nyugat-Európa) helyen lesznek.
+A [Recovery Services-tároló](backup-azure-recovery-services-vault-overview.md) olyan logikai tároló, amely tárolja a védett erőforrások, például az Azure virtuális gépek biztonsági másolati adatait. Amikor egy biztonsági mentési feladat fut, a Recovery Services-tároló belül egy helyreállítási pontot hoz létre. Ezt követően ezen helyreállítási pontok egyikével állíthatja vissza az adatokat egy adott időpontra.
 
-```powershell
-New-AzureRmRecoveryServicesVault `
-    -ResourceGroupName "myResourceGroup" `
-    -Name "myRecoveryServicesVault" `
+A tároló létrehozásakor:
+
+- Az erőforráscsoportot és helyet adja meg az erőforráscsoportot és helyet a virtuális gép biztonsági.
+- Ha ez [mintaparancsfájl](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json) a virtuális gép létrehozásához, az erőforráscsoport van **myResourceGroup**, a virtuális gép ***myVM**, az erőforrások pedig a **WestEurope**  régióban.
+- Az Azure Backup automatikusan kezeli a biztonsági másolat adatainak tárolására. Alapértelmezés szerint a tárolót használja [Georedundáns tárolást (GRS)](../storage/common/storage-redundancy-grs.md). Georedundáns tárolás biztosítja, hogy a biztonsági másolatba mentett adatok replikációja egy másodlagos Azure-régióban, több száz mérföld a forrásadatok elsődleges.
+
+Most hozzon létre egy tárolót.
+
+
+1. Használja a [New-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault)a tároló létrehozásához:
+
+    ```powershell
+    New-AzRecoveryServicesVault `
+        -ResourceGroupName "myResourceGroup" `
+        -Name "myRecoveryServicesVault" `
     -Location "WestEurope"
-```
+    ```
 
-A tároló alapértelmezés szerint georedundáns tárolásra van beállítva. Az adatok további védelme érdekében ez a tárhelyredundancia-szint biztosítja, hogy a rendszer egy másodlagos Azure-régióba replikálja az adatokat, amely a forrásadatok elsődleges helyétől több száz kilométerre található.
+2. Állítsa be a tárolási környezetet a [Set-AzRecoveryServicesVaultContext](/powershell/module/az.RecoveryServices/Set-azRecoveryServicesVaultContext), az alábbiak szerint:
 
-Annak érdekében, hogy a további lépésekben is használhassa ezt a tárolót, állítsa be a tárolási környezetet a [Set-AzureRmRecoveryServicesVaultContext](/powershell/module/AzureRM.RecoveryServices/Set-AzureRmRecoveryServicesVaultContext) paranccsal.
-
-```powershell
-Get-AzureRmRecoveryServicesVault `
-    -Name "myRecoveryServicesVault" | Set-AzureRmRecoveryServicesVaultContext
-```
+    ```powershell
+    Get-AzRecoveryServicesVault `
+        -Name "myRecoveryServicesVault" | Set-AzRecoveryServicesVaultContext
+    ```
 
 
 ## <a name="enable-backup-for-an-azure-vm"></a>Biztonsági mentés engedélyezése Azure-beli virtuális gépeken
-Házirendek létrehozásával és használatával határozhatja meg, hogy a rendszer mikor futtassa a biztonsági mentési feladatokat, és meddig tárolja a helyreállítási pontokat. Az alapértelmezett védelmi házirend naponta egyszer futtat biztonsági mentési feladatot, és 30 napig őrzi meg a helyreállítási pontokat. Ezekkel az alapértelmezett értékekkel gyorsan biztosíthatja virtuális gépe védelmét. Először állítsa be az alapértelmezett házirendet a [Get-AzureRmRecoveryServicesBackupProtectionPolicy](/powershell/module/AzureRM.RecoveryServices.Backup/Get-AzureRmRecoveryServicesBackupProtectionPolicy) paranccsal:
 
-```powershell
-$policy = Get-AzureRmRecoveryServicesBackupProtectionPolicy -Name "DefaultPolicy"
-```
+Biztonsági mentés engedélyezése egy Azure virtuális gép, és adjon meg egy biztonsági mentési szabályzatot.
 
-A virtuális gépek biztonsági másolatainak védelmét az [Enable-AzureRmRecoveryServicesBackupProtection](/powershell/module/AzureRM.RecoveryServices.Backup/Enable-AzureRmRecoveryServicesBackupProtection) paranccsal engedélyezheti. Adja meg a használni kívánt házirendet, majd az erőforráscsoportot és a védeni kívánt virtuális gépet:
+- A szabályzat határozza meg a biztonsági mentések futtatási idejének, és hogy mennyi ideig megőrződjön-e a biztonsági mentések által létrehozott helyreállítási pontokat.
+- Az alapértelmezett védelmi házirend a virtuális gép egy biztonsági mentés naponta egyszer fut, és 30 napig őrzi meg a létrehozott helyreállítási pontokat. Ez az alapértelmezett házirend segítségével gyorsan biztosíthatja virtuális GÉPE védelmét. 
 
-```powershell
-Enable-AzureRmRecoveryServicesBackupProtection `
-    -ResourceGroupName "myResourceGroup" `
-    -Name "myVM" `
-    -Policy $policy
-```
+Biztonsági mentés engedélyezése a következőképpen:
+
+1. Először állítsa be az alapértelmezett házirendet a [Get-AzRecoveryServicesBackupProtectionPolicy](/powershell/module/Az.RecoveryServices.Backup/Get-AzRecoveryServicesBackupProtectionPolicy):
+
+    ```powershell
+    $policy = Get-AzRecoveryServicesBackupProtectionPolicy     -Name "DefaultPolicy"
+    ```
+
+2. A virtuális gép biztonsági mentésének engedélyezése [engedélyezése – AzRecoveryServicesBackupProtection](/powershell/module/Az.RecoveryServices.Backup/Enable-AzRecoveryServicesBackupProtection). Adja meg a szabályzatot, az erőforráscsoportot és a virtuális gép nevét.
+
+    ```powershell
+    Enable-AzRecoveryServicesBackupProtection `
+        -ResourceGroupName "myResourceGroup" `
+        -Name "myVM" `
+        -Policy $policy
+    ```
 
 
 ## <a name="start-a-backup-job"></a>Biztonsági mentési feladat indítása
-Ha szeretné a biztonsági mentést most elindítani, ahelyett, hogy megvárná, amíg az alapértelmezett házirend az ütemezett időben futtatja a feladatot, használja a [Backup-AzureRmRecoveryServicesBackupItem](/powershell/module/azurerm.recoveryservices.backup/backup-azurermrecoveryservicesbackupitem) parancsot. Ez az első biztonsági mentési feladat létrehoz egy teljes helyreállítási pontot. Az ezt a kezdeti biztonsági mentést követő további biztonsági mentési feladatok növekményes helyreállítási pontokat hoznak létre. A növekményes helyreállítási pontok hatékonyan használják a tárhelyet és az időt, mivel csak az utolsó biztonsági mentés óta végzett módosításokat viszik át.
 
-A következő parancsokkal egy tárolót határozhat meg a Recovery Services-tárolón belül a [Get-AzureRmRecoveryServicesBackupContainer](/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupcontainer) paranccsal, amely a biztonsági másolat adatait fogja tárolni. A rendszer minden olyan virtuális gépet, amelyről biztonsági másolat készül, egy elemként kezeli. A biztonsági mentési feladat indításához a virtuálisgép-elemmel kapcsolatos adatokat a [Get-AzureRmRecoveryServicesBackupItem](/powershell/module/AzureRM.RecoveryServices.Backup/Get-AzureRmRecoveryServicesBackupItem) paranccsal kérheti le.
+Biztonsági másolatok a biztonsági mentési szabályzatban meghatározott ütemezés szerint futtatni. Egy ad-hoc biztonsági mentési is futtathatja:
 
-```powershell
-$backupcontainer = Get-AzureRmRecoveryServicesBackupContainer `
-    -ContainerType "AzureVM" `
-    -FriendlyName "myVM"
+- Az első kezdeti biztonsági mentési feladat létrehoz egy teljes helyreállítási pontot.
+- A kezdeti biztonsági mentés után biztonsági mentési feladatok növekményes helyreállítási pontokat hoz létre.
+- A növekményes helyreállítási pontok hatékonyan használják a tárhelyet és az időt, mivel csak az utolsó biztonsági mentés óta végzett módosításokat viszik át.
 
-$item = Get-AzureRmRecoveryServicesBackupItem `
-    -Container $backupcontainer `
-    -WorkloadType "AzureVM"
+Egy ad-hoc biztonsági mentés végrehajtásához használja a[Backup-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices.backup/backup-Azrecoveryservicesbackupitem). 
+- Egy tárolót határozhat meg a tároló, amely a biztonsági másolat adatait a [Get-AzRecoveryServicesBackupContainer](/powershell/module/az.recoveryservices.backup/get-Azrecoveryservicesbackupcontainer).
+- A rendszer minden olyan virtuális gépet, amelyről biztonsági másolat készül, egy elemként kezeli. Indítsa el a biztonsági mentési feladat, szerezze be a virtuális Gépet a információit [Get-AzRecoveryServicesBackupItem](/powershell/module/Az.RecoveryServices.Backup/Get-AzRecoveryServicesBackupItem).
 
-Backup-AzureRmRecoveryServicesBackupItem -Item $item
-```
+Egy ad-hoc biztonsági mentési feladat futtatása a következő:
 
-Mivel ez az első biztonsági mentési feladat egy teljes helyreállítási pontot hoz létre, a folyamat akár 20 percet is igénybe vehet.
+1. Adja meg a tároló, szerezze be a virtuális gép adatai és a biztonsági mentés futtatása.
+
+    ```powershell
+    $backupcontainer = Get-AzRecoveryServicesBackupContainer `
+        -ContainerType "AzureVM" `
+        -FriendlyName "myVM"
+
+    $item = Get-AzRecoveryServicesBackupItem `
+        -Container $backupcontainer `
+        -WorkloadType "AzureVM"
+
+    Backup-AzRecoveryServicesBackupItem -Item $item
+    ```
+
+2. Szüksége lehet akár 20 percig, várjon, mivel az első biztonsági mentési feladat létrehoz egy teljes helyreállítási pontot. A feladat figyeléséhez a következő eljárásban leírtak szerint.
 
 
 ## <a name="monitor-the-backup-job"></a>A biztonsági mentési feladat monitorozása
-A biztonsági mentési feladatok állapotának monitorozásához használja a [Get-AzureRmRecoveryservicesBackupJob](/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupjob) parancsot:
+
+1. Futtatás [Get-AzRecoveryservicesBackupJob](/powershell/module/az.recoveryservices.backup/get-Azrecoveryservicesbackupjob) a feladat állapotának monitorozásához.
+
+    ```powershell
+    Get-AzRecoveryservicesBackupJob
+    ```
+    Kimenet hasonlít a következő példának, amely bemutatja a feladatban az **InProgress**:
+
+    ```
+    WorkloadName   Operation         Status       StartTime              EndTime                JobID
+    ------------   ---------         ------       ---------              -------                -----
+    myvm           Backup            InProgress   9/18/2017 9:38:02 PM                          9f9e8f14
+    myvm           ConfigureBackup   Completed    9/18/2017 9:33:18 PM   9/18/2017 9:33:51 PM   fe79c739
+    ```
+
+2. Ha a feladat állapota: **befejezve**, a virtuális gép védett, és rendelkezik egy teljes helyreállítási pontot tárolni.
+
+
+## <a name="clean-up-the-deployment"></a>Az üzemelő példány eltávolítása
+
+Ha már nincs szüksége a biztonsági másolatot készíteni a virtuális Gépet, akkor távolíthatja el.
+- Ha azt szeretné, és próbálja ki a virtuális gép visszaállítása, hagyja ki a tiszta fel.
+- Ha egy meglévő virtuális Gépet használt, eltekinthet a végső [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) megtarthatja az erőforráscsoportot és a virtuális gép helyen.
+
+Tiltsa le a védelmet, távolítsa el a helyreállítási pontokat és a tárolót. Ezután a következőképpen törölje az erőforráscsoportot és a társított virtuális gép erőforrásait:
 
 ```powershell
-Get-AzureRmRecoveryservicesBackupJob
-```
-
-A kimenet a következő példához hasonló, amelyen látható, hogy a biztonsági mentési feladat **InProgress** (Folyamatban) állapotban van:
-
-```
-WorkloadName   Operation         Status       StartTime              EndTime                JobID
-------------   ---------         ------       ---------              -------                -----
-myvm           Backup            InProgress   9/18/2017 9:38:02 PM                          9f9e8f14
-myvm           ConfigureBackup   Completed    9/18/2017 9:33:18 PM   9/18/2017 9:33:51 PM   fe79c739
-```
-
-Amikor a biztonsági mentési feladat *Állapota* alatt *Befejezve* látható, a virtuális gép a Recovery Services védelme alatt áll, és megtörtént egy teljes helyreállítási pont tárolása.
-
-
-## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
-Ha többé már nincs szükség rá, a virtuális gép védelmét bármikor leállíthatja, eltávolíthatja a helyreállítási pontokat és a Recovery Services-tárolót, majd törölheti az erőforráscsoportot és a társított virtuális gép erőforrásait. Ha egy meglévő virtuális gépet használt, eltekinthet a végső [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) parancs végrehajtásától, és megtarthatja az erőforráscsoportot és a virtuális gépet.
-
-Ha egy Biztonsági mentéssel foglalkozó oktatóanyaggal folytatja, amely a virtuális gép adatainak visszaállítását ismerteti, ugorja át az ebben a szakaszban lévő lépéseket, és ugorjon a [Következő lépések](#next-steps) részre. 
-
-```powershell
-Disable-AzureRmRecoveryServicesBackupProtection -Item $item -RemoveRecoveryPoints
-$vault = Get-AzureRmRecoveryServicesVault -Name "myRecoveryServicesVault"
-Remove-AzureRmRecoveryServicesVault -Vault $vault
-Remove-AzureRmResourceGroup -Name "myResourceGroup"
+Disable-AzRecoveryServicesBackupProtection -Item $item -RemoveRecoveryPoints
+$vault = Get-AzRecoveryServicesVault -Name "myRecoveryServicesVault"
+Remove-AzRecoveryServicesVault -Vault $vault
+Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 
 
 ## <a name="next-steps"></a>További lépések
-A rövid útmutató során létrehozott egy Recovery Services-tárolót, engedélyezte a védelmet a virtuális gépen, valamint létrehozta a kezdeti helyreállítási pontot. Ha bővebb információra van szüksége az Azure Backup és a Recovery Services szolgáltatásokkal kapcsolatban, lépjen tovább a következő oktatóanyagokra.
 
-> [!div class="nextstepaction"]
-> [Biztonsági mentés készítése több Azure-beli virtuális gépről](./tutorial-backup-vm-at-scale.md)
+A rövid útmutató során létrehozott egy Recovery Services-tárolót, engedélyezte a védelmet a virtuális gépen, valamint létrehozta a kezdeti helyreállítási pontot. 
+
+- [Ismerje meg, hogyan](tutorial-backup-vm-at-scale.md) a virtuális gépek biztonsági mentése az Azure Portalon.
+- [Ismerje meg, hogyan](tutorial-restore-disk.md) gyorsan a virtuális gép visszaállítása

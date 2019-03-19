@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 799a40d759dc5614bd43234638982d5275d9d325
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: da465fb9fe51b2be5ec90df1ac75c50271db87a9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429196"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57992060"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Magas rendelkezésre állás NFS, a SUSE Linux Enterprise Server Azure virtuális gépeken
 
@@ -426,9 +426,9 @@ A következő elemek van fűzve előtagként vagy **[A]** – az összes csomóp
 
    Szinkronizálhatja az egyik gazdagépről a másikra adatait drbd használatakor egy úgynevezett maszkolt fordulhat elő. Egy maszkolt egy forgatókönyvet, ahol mindkét fürtcsomópont támogatni az drbd eszköz az elsődleges és a történt szinkronizálva. A ritka esetben lehet, de továbbra is szeretné kezelni, és hárítsa el a lehető leghamarabb maszkolt. Ezért fontos lehet szeretne értesítést kapni, amikor egy maszkolt történt.
 
-   Olvasási [a hivatalos drbd dokumentáció](http://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-split-brain-notification) való felosztása agy értesítés beállítása.
+   Olvasási [a hivatalos drbd dokumentáció](https://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-split-brain-notification) való felosztása agy értesítés beállítása.
 
-   Akkor is split agy forgatókönyv automatikus helyreállításán. További információkért olvassa el [automatikus split agy helyreállítási házirendek](http://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-automatic-split-brain-recovery-configuration)
+   Akkor is split agy forgatókönyv automatikus helyreállításán. További információkért olvassa el [automatikus split agy helyreállítási házirendek](https://docs.linbit.com/doc/users-guide-83/s-configure-split-brain-behavior/#s-automatic-split-brain-recovery-configuration)
    
 ### <a name="configure-cluster-framework"></a>Konfigurálja a fürt keretrendszer
 

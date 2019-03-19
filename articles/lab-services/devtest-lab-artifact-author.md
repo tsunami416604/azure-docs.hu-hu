@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: e4fd8d226ebe1cb993e11fb5c9617df3eef08bdc
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 0d1e269a1818f013bc14842bc541216d7f31bc84
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532576"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58116826"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>A DevTest Labs szolgáltatásban virtuális gép egyéni összetevők létrehozása
 
@@ -79,7 +79,7 @@ Paraméterek megadásához használja az alábbi struktúrával:
 | Elem neve | Kötelező? | Leírás |
 | --- | --- | --- |
 | type |Igen |A paraméter értékének típusa. Tekintse meg az alábbi lista az engedélyezett típusok esetében. |
-| displayName |Igen |A lab-ben a felhasználó számára megjelenő paraméter neve. | |
+| displayName |Igen |A lab-ben a felhasználó számára megjelenő paraméter neve. |
 | leírás |Igen |A lab-ben megjelenő paraméter leírása. |
 
 Engedélyezett típusok a következők:

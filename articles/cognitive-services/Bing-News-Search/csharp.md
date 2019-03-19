@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 1/10/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 05f9c0e68dfbc70f3a73d5b5cb0e166f0289c20c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: f7c5ce2ce4725277fc08634a021d2b38d11abc1c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538136"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58074795"
 ---
 # <a name="quickstart-search-for-news-using-c-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hírek a keresési C# és a Bing News Search REST API
 
@@ -53,7 +53,7 @@ Lásd még: [a Cognitive Services díjszabás – keresési Bing-API](https://az
     const string uriBase = "https://api.cognitive.microsoft.com/bing/v7.0/news/search";
     const string searchTerm = "Microsoft";
     ```
-## <a name="create-a-struct-to-format-the-bing-news-search-response"></a>Hozzon létre egy struct, formázhatja a Hírkeresési Bing-válasz
+   ## <a name="create-a-struct-to-format-the-bing-news-search-response"></a>Hozzon létre egy struct, formázhatja a Hírkeresési Bing-válasz
 
 1. Definiáljon egy `SearchResult` struktúrát, amely a képkeresés eredményeit, valamint a fejlécadatokat tartalmazza.
 

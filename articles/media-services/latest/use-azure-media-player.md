@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: juliako
-ms.openlocfilehash: 4dd0f697d16d7a2fbeec8f712d98e6a7c439cb4e
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 6de626323c82689d0ead4f5aaad2a2e43187ebd0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064678"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57896993"
 ---
 # <a name="azure-media-player-overview"></a>Az Azure Media Player áttekintése
 
@@ -24,13 +24,13 @@ Az Azure Media Player egy webes videólejátszó médiatartalmak lejátszására
 
 A Microsoft Azure Media Services lehetővé teszi, hogy a tartalom kiszolgálása HLS, DASH, Smooth Streaming formátumban vissza tartalom lejátszása. Az Azure Media Player a különféle formátumokat figyelembe veszi, és automatikusan játszik a legjobb hivatkozás, a platformjától és böngészői képességeitől alapján. A Media Services emellett lehetővé teszi, hogy a dinamikus titkosítást, PlayReady-titkosítást az eszközök, vagy a 128 bites AES-boríték-titkosítást. Az Azure Media Player lehetővé teszi a PlayReady-titkosítás visszafejtésére és 128 bites AES-titkosított tartalmat, ha megfelelően konfigurálva. 
 
-[Az ingyenes próbaverzió használatának megkezdéséhez](http://azure.microsoft.com/en-us/pricing/free-trial/)
+[Az ingyenes próbaverzió használatának megkezdéséhez](https://azure.microsoft.com/en-us/pricing/free-trial/)
 
 ## <a name="use-azure-media-player-demo-page"></a>Az Azure Media Player demó lapon
 
 ### <a name="start-using"></a>Használatának megkezdése
 
-Használhatja a [Azure Media Player demó lap](http://aka.ms/amp) lejátszása az Azure Media Services-minták vagy a saját stream.  
+Használhatja a [Azure Media Player demó lap](https://aka.ms/amp) lejátszása az Azure Media Services-minták vagy a saját stream.  
 
 Új videó lejátszása, illessze be egy másik URL-CÍMÉT, és nyomja meg **frissítés**.
 
@@ -40,7 +40,7 @@ Különböző lejátszási beállítások (például technológia, nyelv vagy a 
 
 ### <a name="monitor-diagnostics-of-a-video-stream"></a>A video-adatfolyamot diagnosztika figyelése
 
-Használhatja a [Azure Media Player demó lap](http://aka.ms/amp) , video-adatfolyamot diagnosztika figyelése. 
+Használhatja a [Azure Media Player demó lap](https://aka.ms/amp) , video-adatfolyamot diagnosztika figyelése. 
 
 ![Az Azure Media Player diagnostics](./media/azure-media-player/diagnostics.png)
 

@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: willzhan;kilroyh;yanmf;juliako
-ms.openlocfilehash: 94baa1235388ce99d013f8267f8410dcc206a51d
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 336552c142e504ae7296314512f00688e30d032e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998348"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894359"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>A hozzáférés-vezérlés az Azure Media Services content protection rendszer tervezése 
 
@@ -28,7 +28,7 @@ Tervezése és készítése egy digitális jogkezelési (technológia DRM) felü
 
 Ebben a dokumentumban a megcélzott olvasók mérnökeitől, akik a DRM-alrendszer OTT vagy online streamelés/grafikus; megoldások, illetve olvasók, akik DRM-alrendszer. Feltételezzük, hogy olvasók ismeri a DRM-technológiák a piacon, például a PlayReady, Widevine, FairPlay vagy az Adobe hozzáférés legalább egyike.
 
-A DRM vitafórum, a többplatformos DRM az általános titkosítás (CENC) is tartalmazza. Online streamelés és OTT iparág fő trendje CENC használata többszörös natív DRM különböző ügyfélplatformokon. Erre az irányra egy az előzőre, amelyek egyetlen DRM és az ügyfél-SDK különböző ügyfél-platformokhoz való váltás. CENC használata többszörös natív DRM, ha mind a PlayReady, mind a Widevine titkosítása a [Common Encryption (ISO/IEC 23001-7 CENC)](http://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) specifikációnak.
+A DRM vitafórum, a többplatformos DRM az általános titkosítás (CENC) is tartalmazza. Online streamelés és OTT iparág fő trendje CENC használata többszörös natív DRM különböző ügyfélplatformokon. Erre az irányra egy az előzőre, amelyek egyetlen DRM és az ügyfél-SDK különböző ügyfél-platformokhoz való váltás. CENC használata többszörös natív DRM, ha mind a PlayReady, mind a Widevine titkosítása a [Common Encryption (ISO/IEC 23001-7 CENC)](https://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) specifikációnak.
 
 CENC többplatformos DRM-előnyeit, hogy az informatikai rendszer:
 
@@ -156,7 +156,7 @@ Az alábbi táblázat a leképezést.
 | **Kulcskezelés** |Nincs szükség referenciaimplementáció |
 | **Tartalomkezelés** |C# Konzolalkalmazás |
 
-Más szóval Identitásszolgáltató és az STS szolgálnak az Azure ad-ben. A [az Azure Media Player API](http://amp.azure.net/libs/amp/latest/docs/) a lejátszó szolgál. A Media Services és a Media Player támogatja a DASH vagy CENC többplatformos DRM.
+Más szóval Identitásszolgáltató és az STS szolgálnak az Azure ad-ben. A [az Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/) a lejátszó szolgál. A Media Services és a Media Player támogatja a DASH vagy CENC többplatformos DRM.
 
 Az alábbi ábrán látható a teljes struktúra és korábbi technológiai hozzárendelési folyamat:
 
@@ -208,7 +208,7 @@ Végrehajtása a következő lépésekből áll:
    * Install-Package Microsoft.Owin.Host.SystemWeb
    * Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 
-8. Hozzon létre egy player használatával a [az Azure Media Player API](http://amp.azure.net/libs/amp/latest/docs/). Használja a [az Azure Media Player ProtectionInfo API](http://amp.azure.net/libs/amp/latest/docs/) , adja meg, melyik DRM-technológiával használandó DRM különböző platformokon.
+8. Hozzon létre egy player használatával a [az Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/). Használja a [az Azure Media Player ProtectionInfo API](https://amp.azure.net/libs/amp/latest/docs/) , adja meg, melyik DRM-technológiával használandó DRM különböző platformokon.
 
 9. Az alábbi táblázat a teszt mátrix.
 

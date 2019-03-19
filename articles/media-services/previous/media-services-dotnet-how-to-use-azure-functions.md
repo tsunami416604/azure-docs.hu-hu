@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 428934a6e93ced56274bd27123bea9d92cd45240
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 69099fe1369223871142f74d8f6d1c6a8bd66dab
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997940"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57851764"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>A Media Services az Azure Functions fejlesztése
 
@@ -34,7 +34,7 @@ Ha azt szeretné, megismerését és üzembe helyezése meglévő Azure Function
     
 ## <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 
-1. Nyissa meg az [Azure Portalt](http://portal.azure.com), és jelentkezzen be az Azure-fiókjával.
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com), és jelentkezzen be az Azure-fiókjával.
 2. Hozzon létre egy függvényalkalmazást, amint [Itt](../../azure-functions/functions-create-function-app-portal.md).
 
 >[!NOTE]

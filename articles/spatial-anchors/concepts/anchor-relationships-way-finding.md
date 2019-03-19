@@ -1,6 +1,6 @@
 ---
 title: Forráshorgony kapcsolatok és az Azure térbeli horgonyok módon-megállapítás |} A Microsoft Docs
-description: A fogalmi modellhez mögött forráshorgony kapcsolatokat ismerteti. Horgonyok belül egy szóközt, és a folyamat teljesítéséhez úgy felmérő forgatókönyv közeli API használatával való kapcsolódáson ismertetik. Után elmagyarázza a fogalmi modellhez, mutasson a fejlesztők a mintaalkalmazások, amelyeket a közeli így kezdhetik megvalósítása ebben a forgatókönyvben a saját alkalmazásokban.
+description: További információ a fogalmi modellhez forráshorgony kapcsolatok mögött. Ismerje meg belül adhatja horgonyok csatlakozni és teljesítéséhez úgy-találja a forgatókönyv az közeli API használatára.
 author: ramonarguelles
 manager: vicenterivera
 services: azure-spatial-anchors
@@ -8,73 +8,78 @@ ms.author: ramonarguelles
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 3d1ee0b25fbbf0ef895bdf6ff8afad71ff82de25
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 619cd051eccce3434469ae909f69496a254d0d9a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217172"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863338"
 ---
 # <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>Forráshorgony kapcsolatok és az Azure térbeli horgonyok módon-megállapítás
 
-Forráshorgony kapcsolatok engedélyezése, hogy a csatlakoztatott horgonyokat létrehozni szóközzel, és ezután kérdéseket őket, mint például:
+Forráshorgony kapcsolatok használatával csatlakoztatott horgonyokat létrehozni szóközzel, és majd az alábbiakhoz hasonló kérdéseket:
 
 * Horgonyok közeli hasznos helyek vannak?
 * Milyen távol vannak azokat?
 
 ## <a name="examples"></a>Példák
 
-Néhány példa használati esetek engedélyezheti a csatlakoztatott horgonyok a következők:
+Ilyen esetekben használhatja a csatlakoztatott horgonyok:
 
-1. Egy feldolgozói kell végrehajtani az eljárást, amely magában foglalja a különböző helyeken az ipari factory felkeresése. A gyár helyezte térbeli horgonyok minden helyen eljárásban részt. A HoloLens vagy mobilalkalmazás segítségével a feldolgozó útmutató egyik helyről a másikra. A térbeli horgonyok közeli, és ezután útmutató a következő helyre a feldolgozó esetében először felkéri. Az alkalmazás visual mutatók kapcsolatos általános irányát és távolságot a feladat végrehajtásához a következő helyre jelenít meg.
+* A feldolgozó el kell végeznie egy feladatot, amely magában foglalja a különböző helyeken az ipari factory látogat. A gyári térbeli horgonyok mindkét helyen van. A HoloLens vagy mobilalkalmazás segítségével a feldolgozó útmutató egyik helyről a másikra. Az alkalmazás a közeli térbeli horgonyok először kéri, és ezután végigvezeti a feldolgozó a következő helyre. Az alkalmazás általános iránya és a következő helyre távolság vizuálisan mutatja.
 
-2. Múzeumi térbeli horgonyok, nyilvános megjelenítése, amelyek együtt hozzon létre egy adott bemutató – például az "Egy órás elindíthatja alapvető nyilvános jeleníti meg az" a múzeumi hoz létre. Amikor a látogatók egy nyilvános megjelenítése, akkor megnyithatják a múzeumi vegyes valósághoz alkalmazással a mobileszközén. Ezután azok lenne telefont pont körül a hely és a kamera hírcsatorna keresztül, és tekintse meg az általános irányát és közötti távolságot a más nyilvános megjelenik a bemutató. A felhasználó felé a nyilvános láthatók az egyik és megtudhatja, hogyan indulásakor, az alkalmazás fokozatosan frissíti a általános irány és távolságra van a felhasználók az útmutató segítségével.
+* Múzeumi létrehoz térbeli horgonyok nyilvános jeleníti meg. Ezek a kapcsolatok alapjainak együttesen alkotják a óránként Ismerkedjen meg a múzeumi alapvető nyilvános jeleníti meg. Egy nyilvános megjelenítése, látogatók megnyithatja a múzeumi vegyes valósághoz alkalmazással a mobileszközén. A telefonos kamera majd a hely általános irányát és a más nyilvános célhelyének távolság megtekintéséhez a bemutató körül mutassanak. A felhasználó felé a nyilvános megjelenítő mutatja be, az alkalmazás frissíti az általános irányát és segít a felhasználó távolság.
 
-## <a name="way-finding"></a>Így-keresés
+## <a name="set-up-way-finding"></a>Állítsa be úgy-keresés
 
-Tegyük fel, hogy az alkalmazás használja "line-az-üzemel" irányát és kapcsolatok alapjainak útmutatást tegyen a felhasználók közötti távolság. Nevezzük a teljes forgatókönyv, módon-találja. Fontos megjegyezni felmérő módja eltér a navigációs kapcsolja kapcsolja be. Navigációs menüben kapcsolja kapcsolja be a felhasználók haladnak falak, ajtó keresztül, valamint emeleteken körül. A felhasználó módon-keresés, az a cél általános irányát mutató biztosítunk. De a felhasználó következtetésekhez vagy a hely ismerete is segít haladjon végig a struktúra a célhelyre.
+Vonal-, üzemel irányát, valamint útmutatást nyújt a horgonyok közötti távolság használó alkalmazás által használt *módon felmérő*. Felmérő módja eltér navigációs kapcsolja kapcsolja be. Navigációs menüben kapcsolja kapcsolja be felhasználók haladnak falak, ajtó keresztül, valamint emeleteken körül. Módon-keresés, az a felhasználó élvezheti a cél általános irányát mutató. De következtetésekhez vagy a hely ismerete is segít, a felhasználó a struktúrát, a cél közötti navigáláshoz.
 
-Létrehozását olyan módon felmérő környezetet magában foglalja a szóközzel előkészítése a felhasználói élményt és a egy alkalmazás fejlesztésével, amely a végfelhasználók működjön együtt. A fogalmi folyamat lépései a következők:
+Olyan módon felmérő környezetet hozhat létre, először szóközzel előkészítése a felhasználói élményt és fejlesztése, hogy a felhasználók használni fog. Az általános lépések a következők:
 
-1. Tervezési terület: Határozza meg, hogy a helyek belül a hely, amely a módon felmérő élmény részt. A korábbi példákban Ez a tevékenység előfordulhat, hogy befejeződött a gyári felügyelő vagy a múzeumi bemutató koordinátor.
-2. Kapcsolódás a horgonyok: Valaki a kiválasztott helyek látogatások, és létrehozza a térbeli horgonyok van. Ez a feladat teljes mértékben elvégezhető egy rendszergazdai módban, a végfelhasználói alkalmazás vagy egy másik alkalmazás. Ez a folyamat minden egyes forráshorgony csatlakoztatva, vagy kapcsolódik a többihez. Ezek a kapcsolatok megmaradnak a szolgáltatásban.
-3. A végfelhasználói élmény indítása: Az első lépés a végfelhasználók számára, hogy keresse meg a központi jellegűek, használja az alkalmazást, amely a kiválasztott helyek bármelyikén lehetnek egyikét. Amely meghatározza, hogy a helyek, ahol a végfelhasználók adhat meg a felhasználói élményt az összteljesítmény tervezése részét képezi.
-4. Horgonyok közeli hasznos helyek keresése: Miután a felhasználó egy kapcsolati alap található, az alkalmazás kérhetnek közeli hasznos helyek a központi jellegűek. Ez az eljárás egy testtartás között az eszközt, és ezek a kapcsolatok alapjainak adja vissza.
-5. Irányítsa a felhasználót: Az alkalmazás egyes ezek horgonyok hasznos útmutatást mutatók általános irányát és távolságskála megjelenítése a testtartás kihasználhatják. Például előfordulhat, hogy egy ikont, és minden potenciális célhelyéhez, ahogyan az alábbi képen is látható jelölő mobilalkalmazásban hírcsatorna mutató nyílra a kamera.
-6. Finomítás útmutatást: A felhasználó mutatja be, mivel az alkalmazás rendszeres időközönként kiszámíthatja az eszköz és a cél jegyzetobjektum között egy új testtartás. Az alkalmazás továbbra is fennáll, pontosítsa a útmutatást mutatók, amelyek segítségével a felhasználó érkeznek a célhelyre.
+1. **A hely megtervezése**: Döntse el, melyik helyen belül a hely módja felmérő tapasztalatok része lesz. A forgatókönyvekben a gyári felügyelő vagy a múzeumi bemutató koordinátor dönthet, mely hatálya alá tartozó módon felmérő tapasztalatok helyeket.
+2. **Csatlakozás a horgonyok**: Látogasson el a kiválasztott helyek térbeli horgonyokat létrehozni. Ezt megteheti egy rendszergazdai módban, a végfelhasználói alkalmazás, vagy egy másik alkalmazásban teljes egészében. Csatlakozás lesz, vagy minden forráshorgony vonatkoznak a többi. A szolgáltatás kezeli a kapcsolatokat.
+3. **Indítsa el a végfelhasználói élmény**: Felhasználók futtatnák az alkalmazást található horgonyra, amely a kiválasztott helyen lehet. Az általános tervezési szempontok kell meghatározni, hogy a helyek, ahol a felhasználók megadhatják a felhasználói élményt.
+4. **Horgonyok közeli hasznos helyek keresése**: Miután a felhasználó megtalálja a horgony, az alkalmazás kérhetnek közeli hasznos helyek a központi jellegűek. Ez az eljárás egy testtartás között az eszközt, és ezek a kapcsolatok alapjainak adja vissza.
+5. **A felhasználói útmutató**: Az alkalmazás az egyes ezek horgonyok testtartás segítségével a felhasználó általános irányát és távolság kapcsolatos útmutatást. A kamera adásának az alkalmazásban például előfordulhat, hogy megjelenítése egy ikont és a nyílra, hogy minden potenciális célhelyéhez, amelyek az alábbi képen látható módon.
+6. **Útmutatás finomíthatja**: A felhasználó mutatja be, mivel az alkalmazás rendszeres időközönként kiszámíthatja az eszköz és a cél jegyzetobjektum között egy új testtartás. Az alkalmazás továbbra is fennáll, pontosítsa a útmutatást mutatók, amelyek segítségével a felhasználó érkeznek a célhelyre.
 
-![Értekezlet helyét](./media/meeting-spot.png)
+    ![Példa bemutatja, hogyan alkalmazás módon felmérő útmutatást jeleníti meg](./media/meeting-spot.png)
 
-## <a name="connecting-anchors"></a>Horgonyok csatlakoztatása
+## <a name="connect-anchors"></a>Horgonyok csatlakoztatása
 
-Olyan módon felmérő környezetet hozhat létre, helyezze el a csatlakoztatott horgonyok a kiválasztott helyen kell. Az alábbiakban feltételezzük fog működni az alkalmazás rendszergazdája végzi el.
+Olyan módon felmérő környezetet hozhat létre, először a kiválasztott helyen helyezi el a központi jellegűek. Ebben a szakaszban feltételezzük lesz, az alkalmazás-rendszergazda ezt a munkát már befejeződött.
 
-### <a name="connecting-anchors-in-a-single-session"></a>Kapcsolódás a központi jellegűek egyetlen munkamenetben
+### <a name="connect-anchors-in-a-single-session"></a>Csatlakozás a központi jellegűek egyetlen munkamenetben
 
-A horgonyok csatlakoztatásának lépései a következők:
+Horgonyok csatlakozni:
 
-1. A rendszergazda A Forráshorgony hoz létre, és az első helyen ismerteti egy CloudSpatialAnchorSession használatával.
-2. Az alapul szolgáló MR/AR platform továbbra is nyomon követhetik a felhasználót a rendszergazda a második helyre mutatja be.
-3. A rendszergazda az azonos CloudSpatialAnchorSession Forráshorgony B hoz létre. Horgonyok A és B kapcsolódik, és ezt a kapcsolatot a térbeli horgonyok Azure-szolgáltatás által kezelt.
-4. Továbbra is a csatlakozáshoz használni kívánt összes horgonyok eljárását.
+1. Megtudhatja, hogyan végzi az első helyen, és hozza létre A Forráshorgony egy CloudSpatialAnchorSession használatával.
+2. Megtudhatja, hogyan végzi a második helyre. Az alapul szolgáló MR/AR platform áthelyezését követi nyomon.
+3. Az azonos CloudSpatialAnchorSession Forráshorgony B létrehozása. Ezzel csatlakozott A és B horgonyok. A térbeli horgonyok szolgáltatás kezeli ezt a kapcsolatot.
+4. Folytassa a fennmaradó kapcsolatok alapjainak eljárását.
 
-### <a name="multiple-sessions"></a>Több munkamenet
+### <a name="connect-anchors-in-multiple-sessions"></a>Több munkamenetet a kapcsolatok alapjainak csatlakoztatása
 
-Térbeli horgonyok keresztül több munkamenetet is csatlakoztathat. Ez a módszer lehetővé teszi, és hozhat létre és néhány horgonyok csatlakozni egyszerre, és később hozzon létre további horgonyok csatlakozzon. Horgonyok csatlakozás több munkamenetet:
+Térbeli horgonyok több munkamenetet keresztül kapcsolódhat. Ezzel a módszerrel hozzon létre és néhány horgonyok csatlakozzon egy időben, és ezután később létrehozása és további horgonyok csatlakoztatása. 
 
-1. Az alkalmazás egyes horgonyok egy CloudSpatialAnchorSession hoz létre.
-2. Később például különböző napon, az alkalmazás megkeresi ezeket egy új CloudSpatialAnchorSession (például a Forráshorgony A) a horgonyok egyikét.
-3. A felhasználó mutatja be egy új helyre az alapul szolgáló MR/AR platform továbbra is nyomon követhetik a felhasználót.
-4. A felhasználó hoz létre ugyanazon CloudSpatialAnchorSession használja, forráshorgony c horgonyok A, B és C most már csatlakoznak, és ezt a kapcsolatot Azure térbeli horgonyok munkaterheléseire.
-5. Ez az eljárás további horgonyok és további előadások idővel továbbra is.
+Horgonyok több munkamenetet keresztül csatlakozni:
 
-### <a name="verifying-anchor-connections"></a>Jegyzetobjektum kapcsolatok ellenőrzése
+1. Az alkalmazás egyes horgonyok egy CloudSpatialAnchorSession hoz létre. 
+2. Egy másik időpontra az alkalmazás megkeresi ezeket horgonyok (például a Forráshorgony A) egyik új CloudSpatialAnchorSession használatával.
+3. Megtudhatja, hogyan új helyre. A vegyes valóságon alapuló vagy kibővített valóság alapul szolgáló platform áthelyezését követi nyomon.
+4. Az azonos CloudSpatialAnchorSession Forráshorgony C létrehozása. Ezzel csatlakozott A, B és C horgonyok. A térbeli horgonyok szolgáltatás kezeli ezt a kapcsolatot.
 
-Az alkalmazás ellenőrizheti, hogy két kapcsolati alapok egy lekérdezést a közeli kapcsolatok alapjainak kiállításával csatlakoznak. Ha a lekérdezés eredménye a kívánt cél jegyzetobjektum tartalmaz, az alkalmazás még megerősítése, hogy csatlakozik-e a központi jellegűek. Ha azok nem csatlakoznak, az alkalmazás megpróbálhatja a kapcsolat létesítése újra. Az alábbiakban néhány ok, miért horgonyok csatlakozása sikertelen lehet:
+Ez az eljárás további horgonyok és további előadások idővel továbbra is.
 
-1. Az alapul szolgáló MR/AR tracker követési megszakadt a horgonyok kapcsolódás folyamata során.
-2. A térbeli horgonyok Azure szolgáltatással való kommunikáció hálózati hiba történt, és a forráshorgony kapcsolat nem őrizhető meg.
+### <a name="verify-anchor-connections"></a>Jegyzetobjektum kapcsolatok ellenőrzése
 
-### <a name="sample-code"></a>Mintakód
+Az alkalmazás ellenőrizheti, hogy két kapcsolati alapok egy lekérdezést a közeli kapcsolatok alapjainak kiállításával csatlakoznak. Ha a lekérdezés eredménye a cél jegyzetobjektum tartalmaz, a forráshorgony-kapcsolat ellenőrzése. A horgonyok nem csatlakoznak, ha az alkalmazás megpróbálhatja újból csatlakoztathatja őket. 
 
-Láthatja, amely bemutatja, hogyan horgonyok csatlakozhat, és hajtsa végre a lekérdezéseket közeli mintakódot. Tekintse meg a [Azure térbeli horgonyok mintaalkalmazások](https://github.com/Azure/azure-spatial-anchors-samples) a Githubon.
+Az alábbiakban néhány ok, miért horgonyok csatlakozása sikertelen lehet:
+
+* Az alapul szolgáló vegyes valóságon alapuló vagy kibővített valóság platform követési megszakadt a horgonyok kapcsolódás folyamata során.
+* A térbeli horgonyok szolgáltatással való kommunikáció közben hálózati hiba miatt a forráshorgony kapcsolat nem őrizhető meg.
+
+### <a name="find-sample-code"></a>Mintakód keresése
+
+Mintakód bemutatja, hogyan horgonyok csatlakozni, és hajtsa végre a lekérdezéseket közeli hasznos helyek megkereséséhez lásd: [térbeli horgonyok mintaalkalmazások](https://github.com/Azure/azure-spatial-anchors-samples).

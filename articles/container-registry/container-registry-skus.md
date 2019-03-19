@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: danlep
-ms.openlocfilehash: 3f058a68057d6b84cbbb2dfdb08ea8c2cb12b0b9
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 8fc364eac619c2f23ad2db1051a9b3ffa1bd38d6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322092"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58138082"
 ---
 # <a name="azure-container-registry-skus"></a>Az Azure Container Registry Termékváltozatai
 
@@ -22,7 +22,7 @@ Az Azure Container Registry (ACR) több szolgáltatási szinten, SKU-k más név
 | --- | :-------: | ----------- |
 | **Basic** | Igen | Költségoptimalizált belépési pont az Azure Container Registryt tanulmányozó fejlesztőknek. Alapszintű beállításjegyzékek ugyanazokat a programozott képességeket, Standard és prémium (a Azure Active Directory hitelesítési integráció, a lemezkép törlése és a webhook) rendelkezik. Azonban a belefoglalt tárterület és a lemezkép átviteli sebesség különösen leginkább megfelelő alacsonyabb használati forgatókönyvek. |
 | **Standard** | Igen | Szabványos regisztrációs adatbázisokkal a Basic, a nagyobb foglalt tároló- és képfájlok átviteli sebesség megegyező funkciókat kínál. A Standard beállításjegyzékek a legtöbb éles forgatókönyvhöz megfelelők. |
-| **Prémium** | Igen | Prémium szintű beállításjegyzékek adja meg a belefoglalt tárterület és a párhuzamos műveletek nagy mennyiségű forgatókönyveket lehetővé legmagasabb összege. Mellett lemezkép nagyobb átviteli sebességet, prémium szintű szolgáltatásai, például a hozzáadja [georeplikációs] [ container-registry-geo-replication] egyetlen regisztrációs adatbázis kezeléséhez több régióban és [megbízhatóság (előzetes verzió)tartalom](container-registry-content-trust.md)lemezkép-címke aláíráshoz. |
+| **Prémium** | Igen | Prémium szintű beállításjegyzékek adja meg a belefoglalt tárterület és a párhuzamos műveletek nagy mennyiségű forgatókönyveket lehetővé legmagasabb összege. Mellett lemezkép nagyobb átviteli sebességet, prémium szintű funkciók, többek között ad [georeplikációs] [ container-registry-geo-replication] egyetlen regisztrációs adatbázis kezeléséhez több régióban [megbízhatóság (előzetes verzió)tartalom](container-registry-content-trust.md) kép címke aláírására, és [tűzfalak és virtuális hálózatok (előzetes verzió)](container-registry-vnet.md) a beállításjegyzékben való hozzáférés korlátozásához. |
 | Klasszikus<sup>1</sup> | Nem | Ez a Termékváltozat engedélyezve van az Azure-ban az Azure Container Registry szolgáltatás kezdeti verziójában. Klasszikus beállításjegyzékek élvezik egy tárfiókot, amelyet az Azure létrehozza az előfizetésében, ami lehetővé teszi az ACR-hez, például a nagyobb átviteli sebesség és georeplikáció útján magasabb szintű képességeket biztosít. |
 
 <sup>1</sup> a klasszikus SKU lesz **elavult** a **március 2019**. Új tároló-beállításjegyzékek alapszintű, Standard vagy prémium szintű használja.
@@ -90,7 +90,7 @@ Az adatforgalmi díjszabás részleteiért lásd: [adatforgalmi díjszabás rés
 
 Látogasson el a [ACR ütemterv] [ acr-roadmap] a közeljövőben megjelenő funkciókról információkat találhat a szolgáltatás a Githubon.
 
-**Az Azure Container Registry uservoice-on**
+**Azure Container Registry UserVoice**
 
 Küldje el, és szavazzon az új szolgáltatási javaslataikat [ACR UserVoice][container-registry-uservoice].
 

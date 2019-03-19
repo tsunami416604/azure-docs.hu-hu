@@ -3,16 +3,15 @@ title: Az Azure Data Factory-folyamat fogadó adatátalakítás leképezése
 description: Az Azure Data Factory-folyamat fogadó adatátalakítás leképezése
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: dba043721c2d81b7fe2c254f62328e54bb959cdc
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 3829fb3c045b149552d3f022e31f30f9cfae8182
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729372"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852440"
 ---
 # <a name="mapping-data-flow-sink-transformation"></a>Hozzárendelés fogadó folyamat átalakítását
 
@@ -35,27 +34,17 @@ Az Azure Storage Blob vagy a Data Lake fogadó típusait az átalakított adatok
 
 ![Fogadó-beállítások](media/data-flow/opt001.png "fogadó-beállítások")
 
-### <a name="output-settings"></a>Kimeneti beállításai
-
-Felülírással csonkolja a táblából, ha létezik, hozza létre újra, és betöltheti az adatokat. Fűzze hozzá a rendszer az új sor beszúrásához. Ha az adatkészlet-tábla neve a tábla nem létezik egyáltalán a célzott ADW, annak adatfolyam a tábla létrehozásához, majd az adatok betöltéséhez.
-
-Ha törli az "Automatikus térkép", leképezheti a mezőket a céltábla manuálisan.
-
-![Fogadó ADW beállítások](media/data-flow/adw2.png "adw fogadó")
-
-#### <a name="field-mapping"></a>Mezőleképezés
+## <a name="field-mapping"></a>Mezőleképezés
 
 A fogadó átalakítást leképezés lapján a bejövő (bal oldal) oszlopok leképezheti a célhelyre (a jobb oldalon). Adatfolyam-gyűjteményre, fogadó-fájlokhoz, amikor ADF mindig írni új fájlokat egy mappában. Ha leképez egy adatbázis-adatkészletet, dönthet úgy, vagy létrehozhat egy új táblát a séma ("felülírása" mentési szabályzat beállítása), vagy új sor beszúrása egy meglévő táblát, és a mezők leképezése a meglévő sémák.
 
 Válassza ki a hozzárendelési táblában használhatja a hivatkozás több oszlop egyetlen kattintással, több oszlop csatolásának megszüntetése vagy több sort leképezése oszlop nevével megegyező névre.
 
+Ha szeretné mindig a bejövő mezők halmaza is, és megfeleltet az a cél,-van, állítsa be a "Schema eltéréseket engedélyezése" beállítást.
+
 ![Mezőt leképező](media/data-flow/multi1.png "többféle lehetőség")
 
 Ha szeretne alaphelyzetbe állítani az oszlop-hozzárendelések, nyomja le az "Újramegfeleltetése" gombra a hozzárendelések visszaállítása.
-
-![Kapcsolatok](media/data-flow/maxcon.png "kapcsolatok")
-
-### <a name="updates-to-sink-transformation-for-adf-v2-ga-version"></a>A fogadó átalakításában szerepel az ADF V2 általánosan elérhető verziót frissíti
 
 ![Fogadó-beállítások](media/data-flow/sink1.png "egy fogadó")
 
@@ -65,7 +54,7 @@ Ha szeretne alaphelyzetbe állítani az oszlop-hozzárendelések, nyomja le az "
 
 * Törölje a mappát. Az ADF csonkolja a fogadó mappa tartalmának írása a cél-fájlokat a célmappában előtt.
 
-* Fájlnév beállításai
+## <a name="file-name-options"></a>Fájlnév beállításai
 
    * Alapértelmezett: Fájlok elnevezésére rész alapértelmezett értékei szerinti Spark engedélyezése
    * Pattern: Adja meg a kimeneti fájlok nevét
@@ -75,14 +64,19 @@ Ha szeretne alaphelyzetbe állítani az oszlop-hozzárendelések, nyomja le az "
 > [!NOTE]
 > Fájlműveletek csak akkor futnak, amikor az adatok folyamat végrehajtása tevékenység nem a Data Flow hibakeresési módban futtatja
 
-Az SQL-fogadó típusú állíthatja be:
+## <a name="database-options"></a>Adatbázis-beállítások
 
-* Tábla csonkolása
-* Hozza létre újból táblában (hajt végre közvetlen/létrehozása)
-* Köteg mérete nagy mennyiségű adat terhelés. Adjon meg egy számot és gyűjtőbe írási adattömböket.
+* Lehetővé teszi az insert, update, delete, upserts. Alapértelmezés szerint a rendszer lehetővé tegyük. Ha frissítés, upsert vagy insert sorok, először hozzá kell adnia egy alter sor átalakítást címke sorokra e adott műveletek.
+* TRUNCATE table (eltávolítja az összes sor a céloldali tábla az adatokat a folyamat befejezése előtt)
+* Hozza létre újból táblában (az adatok a folyamat befejezése előtt dobja el és létrehozására a céltábla végez)
+* Köteg mérete nagy mennyiségű adat terhelés. Adjon meg egy számot és gyűjtőbe írási adattömbökbe
+* Előkészítés engedélyezése: Ez utasítja az ADF a polybase szolgáltatást akkor használja, az Azure Data warehouse-ba, a fogadó-adatkészlet betöltése közben
 
-![Mezőleképezés](media/data-flow/sql001.png "SQL-beállítások")
+![Fogadó SQL-beállítások](media/data-flow/alter-row2.png "SQL-beállítások")
+
+> [!NOTE]
+> Frissítése vagy törlése az adatbázis fogadó sorok, be kell állítani a kulcsoszlop. Ezzel a módszerrel Alter sor meg tudja határozni a DML a egyedi sort.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy létrehozta az adatfolyamot, adjon hozzá egy [tevékenységet a folyamat végrehajtása az adatfolyam](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-overview).
+Most, hogy létrehozta az adatfolyamot, adjon hozzá egy [tevékenységet a folyamat végrehajtása az adatfolyam](concepts-data-flow-overview.md).

@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/27/2018
-ms.openlocfilehash: 914933e4e0489d68640edb58ceb91dc73a963eb3
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: cbe7b0e243f34d9b48e837c1211b5a186946f69f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034964"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57903708"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Az Azure Cosmos DB-ben konzisztenciaszintek
 
@@ -52,7 +52,7 @@ Az öt konzisztenciaszintek szemantikáját ebben a témakörben találhatók:
 
 - **Konzisztens előtag**: Visszaadott frissítések nincsenek szünetek és az összes frissítés néhány előtagja tartalmaznak. Konzisztens előtag garantálja, hogy olvasási out soron kívüli írások soha nem jelenik meg.
 
-- **Végleges**: Nincs sorbarendezésre garanciát az olvasásokhoz. A további írási műveleteket hiányában a replikák végül szerveződik.
+- **Eventual**: Nincs sorbarendezésre garanciát az olvasásokhoz. A további írási műveleteket hiányában a replikák végül szerveződik.
 
 ## <a name="consistency-levels-explained-through-baseball"></a>Konzisztenciaszintek a Baseball példáján
 
@@ -68,8 +68,8 @@ Egy Azure Cosmos DB-tároló tárolja a látogatói és az otthoni csoport össz
 | **Konzisztenciaszint** | **Pontszámok** |
 | - | - |
 | **Erős** | 2 – 5 |
-| **Korlátozott frissesség** | Olyan pontszámokat, amelyek legfeljebb egy elavult inning: 2-3, 2 – 4, 2 – 5 |
-| **Munkamenet** | <ul><li>Az író: a 2 – 5</li><li> Bárki a író eltérő: 0-0, 0 és 1, 0-2, 0 – 3, és 4 közötti 0, 0 – 5, 1-0, 1-1, 1-2, 1 – 3, 1 – 4, 1 – 5, 2-0, 2-1, 2-2, 2-3, 2 – 4, 2 – 5</li><li>1 – 3 elolvasásával: 1 – 3, 1 – 4, 1 – 5, 2-3, 2 – 4, 2 – 5</li> |
+| **Korlátozott frissesség** | Olyan pontszámokat, amelyek legfeljebb egy elavult inning: 2-3, 2-4, 2-5 |
+| **Munkamenet** | <ul><li>Az író: a 2 – 5</li><li> Bárki a író eltérő: 0-0, 0 és 1, 0-2, 0 – 3, és 4 közötti 0, 0 – 5, 1-0, 1-1, 1-2, 1 – 3, 1 – 4, 1 – 5, 2-0, 2-1, 2-2, 2-3, 2 – 4, 2 – 5</li><li>1 – 3 elolvasásával: 1-3, 1-4, 1-5, 2-3, 2-4, 2-5</li> |
 | **Konzisztens előtag** | 0-0, 0 – 1, 1-1, 1-2, 1 – 3, 2-3, 2 – 4, 2 – 5 |
 | **Végleges** | 0-0, 0 és 1, 0-2, 0 – 3, és 4 közötti 0, 0 – 5, 1-0, 1-1, 1-2, 1 – 3, 1 – 4, 1 – 5, 2-0, 2-1, 2-2, 2-3, 2 – 4, 2 – 5 |
 
@@ -81,7 +81,7 @@ Konzisztencia fogalmak kapcsolatos további információkért olvassa el a köve
 - [A replikált adatok konzisztencia kifejtett keresztül Baseball (videó) Doug Terry által](https://www.youtube.com/watch?v=gluIh8zd26I)
 - [A replikált adatok konzisztencia kifejtett keresztül Baseball (tanulmány) Doug Terry által](https://www.microsoft.com/en-us/research/publication/replicated-data-consistency-explained-through-baseball/?from=http%3A%2F%2Fresearch.microsoft.com%2Fpubs%2F157411%2Fconsistencyandbaseballreport.pdf)
 - [Munkamenet garanciákat, kis mértékben konzisztens replikált adatok](https://dl.acm.org/citation.cfm?id=383631)
-- [Konzisztencia kompromisszumot kínál a Modern elosztott adatbázis-rendszerek kialakítása: SAPKA a történetet csak egy részét képezi.](https://www.computer.org/web/csdl/index/-/csdl/mags/co/2012/02/mco2012020037-abs.html)
+- [Konzisztencia kompromisszumot kínál a Modern elosztott adatbázis-rendszerek kialakítása: SAPKA a történetet csak egy részét képezi.](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 - [A gyakorlati részleges határozatképességére valószínűségi korlátozott frissesség (PBS)](https://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
 - [Végül konzisztens – javított változat](https://www.allthingsdistributed.com/2008/12/eventually_consistent.html)
 

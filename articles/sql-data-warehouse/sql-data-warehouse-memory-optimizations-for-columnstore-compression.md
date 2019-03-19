@@ -2,24 +2,24 @@
 title: Az oszlopcentrikus index teljesítmény – Azure SQL Data Warehouse javítása |} A Microsoft Docs
 description: Memóriakövetelményei csökkentse vagy növelje a szabad memória a maximalizálása érdekében az oszlopcentrikus index tömöríti az egyes sorcsoportokba sorok számát.
 services: sql-data-warehouse
-author: ckarst
+author: ronortloff
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 04/17/2018
-ms.author: cakarst
+ms.date: 03/18/2019
+ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: d956322233cb6b4f8502775dcf2f89d96fd5cafe
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 859f0d168dcf1cc999f79ef22b5ba6669da79593
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463361"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189563"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>Oszlopcentrikus minőségű sorcsoportokba maximalizálása
 
-Minőségű Sorcsoportokba egy sorcsoport sorainak száma határozza meg. Memóriakövetelményei csökkentse vagy növelje a szabad memória a maximalizálása érdekében az oszlopcentrikus index tömöríti az egyes sorcsoportokba sorok számát.  Ezek a módszerek használatával tömörítési sebesség növelése és a lekérdezési teljesítmény az oszlopcentrikus indexek.
+Minőségű Sorcsoportokba egy sorcsoport sorainak száma határozza meg. A rendelkezésre álló memória növelése maximalizálhatja az oszlopcentrikus index tömöríti az egyes sorcsoportokba sorok számát.  Ezek a módszerek használatával tömörítési sebesség növelése és a lekérdezési teljesítmény az oszlopcentrikus indexek.
 
 ## <a name="why-the-rowgroup-size-matters"></a>Miért fontos a sorcsoport mérete
 Oszlopcentrikus index megvizsgálja a tábla egyes naplóbájtot oszlop szegmenseinek vizsgálatával, mivel az egyes sorcsoportokba sorainak száma jelentős javítja a lekérdezési teljesítmény. Ha naplóbájtot nagy mennyiségű sort, az adattömörítés javítja a ami azt jelenti, hogy kevesebb lemezről beolvasott adatok.
@@ -35,11 +35,11 @@ Során egy tömeges betöltési vagy oszlopcentrikus index újraépítése néha
 
 Nincs elegendő memória legalább 10 000 sort az egyes sorcsoportokba való tömörítéséhez, amikor az SQL Data Warehouse hibaüzenetet hoz létre.
 
-További információ a tömeges betöltés: [egy fürtözött oszlopcentrikus indexbe a tömeges betöltés](https://msdn.microsoft.com/library/dn935008.aspx#Bulk load into a clustered columnstore index).
+További információ a tömeges betöltés: [egy fürtözött oszlopcentrikus indexbe a tömeges betöltés](https://msdn.microsoft.com/library/dn935008.aspx#Bulk ).
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>Minőségű sorcsoportokba figyelése
 
-Nincs DMV (sys.dm_pdw_nodes_db_column_store_row_group_physical_stats), amely elérhetővé teszi a hasznos információk, például sorainak naplóbájtot és a tisztítás, ha ott volt vágást okát. A következő nézet létrehozhatja úgy is sablonszolgáltatása segítségével kényelmesen sorcsoport levágási kapcsolatban információért a DMV lekérdezéséhez.
+A DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys.dm_db_column_store_row_group_physical_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql) tartalmazza a nézetdefiníció megfelelő SQL-adatbázis az SQL Data Warehouse), amely elérhetővé teszi a hasznos információk például naplóbájtot és a tisztítás, ha ott volt vágást okát a sorok számát. A következő nézet létrehozhatja úgy is sablonszolgáltatása segítségével kényelmesen sorcsoport levágási kapcsolatban információért a DMV lekérdezéséhez.
 
 ```sql
 create view dbo.vCS_rg_physical_stats
@@ -137,14 +137,6 @@ DWU méretének és a felhasználó erőforrásosztályhoz együtt határozza me
 
 - A Dwu növelését, lásd: [hogyan méretezhető teljesítmény?](quickstart-scale-compute-portal.md)
 - Ha módosítani szeretné egy lekérdezés erőforrásosztály, lásd: [módosítása egy felhasználói erőforrás osztály példa](resource-classes-for-workload-management.md#change-a-users-resource-class).
-
-Például a DWU 100 egy felhasználó a smallrc erőforrásosztály használhatja 100 MB memóriát minden egyes terjesztési. A részletekért lásd: [az SQL Data Warehouse egyidejűségi](resource-classes-for-workload-management.md).
-
-Tegyük fel, hogy határozhatja meg, hogy kell-e lekérni a kiváló minőségű sorcsoportokba méretek 700 MB memória található. Ezek a példák bemutatják, hogyan futtathat a terhelés lekérdezés elegendő memóriával rendelkező.
-
-- A DWU-1000 és mediumrc használja, a memóriabeli ideiglenes 800 MB
-- A DWU 600 és largerc használja, a memóriabeli ideiglenes 800 MB.
-
 
 ## <a name="next-steps"></a>További lépések
 

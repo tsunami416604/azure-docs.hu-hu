@@ -15,12 +15,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: da6be839f5e7c1bfd885015c9b0206945feb77d1
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: d90f23f52ca4c0cce3d853114acf673aa085d3c5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452785"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57889784"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Leküldéses értesítések küldése az Azure Notification Hubs és a node.js használatával
 
@@ -31,7 +31,7 @@ ms.locfileid: "54452785"
 > [!IMPORTANT]
 > Az oktatóanyag elvégzéséhez egy aktív Azure-fiókra lesz szüksége. Ha nincs fiókja, hozzon létre egy ingyenes próbafiókot néhány perc alatt keresztül a [Azure ingyenes kipróbálását](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A643EE910&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fnotification-hubs-nodejs-how-to-use-notification-hubs).
 
-Ez az útmutató bemutatja, hogyan küldhetők leküldéses értesítések segítségével közvetlenül az Azure Notification hubs egy [Node.js](http://nodejs.org) alkalmazás.
+Ez az útmutató bemutatja, hogyan küldhetők leküldéses értesítések segítségével közvetlenül az Azure Notification hubs egy [Node.js](https://nodejs.org) alkalmazás.
 
 Az ismertetett forgatókönyvek között megtalálható, leküldéses értesítések küldése a következő platformokon alkalmazások:
 
@@ -60,7 +60,7 @@ Az Azure Notification Hubs használatával, letöltheti és használhatja a Node
 4. Keresse meg a mappán belül a **azure** csomagot, amely tartalmazza a kódtárakat, hozzá kell férnie az értesítési központban.
 
 > [!NOTE]
-> További információ a hivatalos az npm-et telepíti [NPM blog](http://blog.npmjs.org/post/85484771375/how-to-install-npm).
+> További információ a hivatalos az npm-et telepíti [NPM blog](https://blog.npmjs.org/post/85484771375/how-to-install-npm).
 
 ### <a name="import-the-module"></a>A modul importálása
 
@@ -107,7 +107,7 @@ A `GcmService` objektum tartalmazza a `send` leküldéses értesítések küldé
 - **Hasznos adat** – az üzenet JSON vagy nyers karakterlánc adattartalma.
 - **A visszahívás** – a visszahívási függvény.
 
-Az adattartalom formátuma további információkért lásd: a **adattartalom** szakaszában a [GCM-kiszolgáló végrehajtási](http://developer.android.com/google/gcm/server.html#payload) dokumentumot.
+Az adattartalom formátuma további információkért lásd: a **adattartalom** szakaszában a [GCM-kiszolgáló végrehajtási](https://developer.android.com/google/gcm/server.html#payload) dokumentumot.
 
 A következő kódban a `GcmService` példány által elérhetővé tett a `NotificationHubService` minden regisztrált ügyfél leküldéses értesítés küldéséhez.
 
@@ -132,7 +132,7 @@ Ugyanaz, mint az Android-alkalmazások, a fent leírt a `ApnsService` objektum t
 - **Hasznos adat** – az üzenet JSON vagy karakterlánc adattartalma.
 - **A visszahívás** – a visszahívási függvény.
 
-További információ az adattartalom formátuma: A **értesítési tartalom** szakaszában a [helyi és leküldéses értesítés programozási útmutató](http://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html) dokumentumot.
+További információ az adattartalom formátuma: A **értesítési tartalom** szakaszában a [helyi és leküldéses értesítés programozási útmutató](https://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html) dokumentumot.
 
 A következő kódban a `ApnsService` példány által elérhetővé tett a `NotificationHubService` riasztási üzenetet küldi el az összes ügyfeleknek:
 
@@ -221,9 +221,9 @@ A fenti példa kódrészletek építsenek szolgáltatás infrastruktúrát a lek
 [3]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-05.png
 [4]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-06.png
 [5]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/sb-queues-07.png
-[SqlFilter.SqlExpression]: http://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
-[Azure Service Bus Notification Hubs]: http://msdn.microsoft.com/library/windowsazure/jj927170.aspx
-[SqlFilter]: http://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx
+[SqlFilter.SqlExpression]: https://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.sqlexpression.aspx
+[Azure Service Bus Notification Hubs]: https://msdn.microsoft.com/library/windowsazure/jj927170.aspx
+[SqlFilter]: https://msdn.microsoft.com/library/windowsazure/microsoft.servicebus.messaging.sqlfilter.aspx
 [Web Site with WebMatrix]: /develop/nodejs/tutorials/web-site-with-webmatrix/
 [Node.js Cloud Service]: ../cloud-services/cloud-services-nodejs-develop-deploy-app.md
 [Previous Management Portal]: .media/notification-hubs-nodejs-how-to-use-notification-hubs/previous-portal.png

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 10/23/2018
 ms.author: vturecek
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 702e1ef9c8593c2106be256e6fd7de602bf41aa7
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 3cee0ada75c4ea265c7e9c598408eb6b01477d6c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019996"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57903674"
 ---
 # <a name="introduction-to-service-fabric-resource-model"></a>Bevezetés a Service Fabric Erőforrásmodell
 
@@ -84,7 +84,7 @@ Az alkalmazás kódjában hordozható még a Service Fabric-háló kívül marad
 
 ## <a name="packaging-and-deployment"></a>Formátumokat támogató csomagolási és üzembe helyezés
 
-Az erőforrás-modellje alapján Service Fabric-háló alkalmazásokat a Docker-tárolókként vannak csomagolva.  Service Fabric-háló egy megosztott, több-bérlős környezet, amely tárolókat biztosít magas szintű elkülönítés.  Ezeket az alkalmazásokat a JSON-formátumú, vagy egy YAML formátumú (amely majd alakul át, JSON) ismerteti. Egy háló-alkalmazást az Azure Service Fabric-háló üzembe helyezésekor, a JSON az alkalmazás leírására szolgáló egy Azure Resource Manager-sablon. Erőforrások az Azure-erőforrások vannak rendelve.  A háló alkalmazás Service Fabric-fürt üzembe helyezésekor (önálló vagy az Azure-ban üzemeltetett), a az alkalmazás leírására szolgáló JSON-ja formátuma a következőhöz hasonló az Azure Resource Manager-sablonnal.  Üzembe helyezését követően háló alkalmazások HTTP-kapcsolatok vagy az Azure CLI segítségével is felügyelhetők. 
+Az erőforrás-modellje alapján Service Fabric-háló alkalmazásokat a Docker-tárolókként vannak csomagolva.  Service Fabric-háló egy megosztott, több-bérlős környezet, amely tárolókat biztosít magas szintű elkülönítés.  Ezeket az alkalmazásokat a JSON-formátumú, vagy egy YAML formátumú (amely majd alakul át, JSON) ismerteti. Egy háló-alkalmazást az Azure Service Fabric-háló üzembe helyezésekor, a JSON az alkalmazás leírására szolgáló egy Azure Resource Manager-sablon. Erőforrások az Azure-erőforrások vannak rendelve.  A háló alkalmazás Service Fabric-fürt üzembe helyezésekor (önálló vagy az Azure-ban üzemeltetett), a az alkalmazás leírására szolgáló JSON-ja formátuma a következőhöz hasonló az Azure Resource Manager-sablon.  Üzembe helyezését követően háló alkalmazások HTTP-kapcsolatok vagy az Azure CLI segítségével is felügyelhetők. 
 
 
 ## <a name="next-steps"></a>További lépések 

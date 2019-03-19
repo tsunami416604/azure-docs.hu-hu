@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: genli
-ms.openlocfilehash: f96ac14d68d98937cf230b04b45503e21c5e0187
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 3a295a5c8a202b2f3186e696bb281002090fcad4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024569"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112602"
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>IP-cím-típusok és lefoglalási módszereket (klasszikus) Azure-ban
 IP-címeket rendelhet az Azure-erőforrásokhoz a többi Azure-erőforrással, a helyszíni hálózattal és az internettel való kommunikáció céljából. Az IP-címek is használhatja az Azure-ban két típusa van: a nyilvános és privát.
@@ -165,13 +165,13 @@ Alább az IP-címzési szolgáltatásainak a Resource Manager és a klasszikus �
 |  | Erőforrás | Klasszikus | Resource Manager |
 | --- | --- | --- | --- |
 | **Nyilvános IP-cím** |***VM*** |Egy ILPIP (csak dinamikus) néven |Egy nyilvános IP-Címek (dinamikus vagy statikus) néven |
-|  ||Egy IaaS-beli virtuális Gépen vagy egy PaaS szerepkörpéldányok hozzárendelve |A virtuális gép hálózati adapterhez hozzárendelt | |
-|  |***Az internetre irányuló terheléselosztó*** |Virtuális IP-CÍMEK (dinamikus) vagy fenntartott IP-Címek (statikus) |Egy nyilvános IP-Címek (dinamikus vagy statikus) néven | |
-|  ||Cloud service rendelve |A load balancer előtér-konfiguráció hozzárendelve | |
+|  ||Egy IaaS-beli virtuális Gépen vagy egy PaaS szerepkörpéldányok hozzárendelve |A virtuális gép hálózati adapterhez hozzárendelt |
+|  |***Az internetre irányuló terheléselosztó*** |Virtuális IP-CÍMEK (dinamikus) vagy fenntartott IP-Címek (statikus) |Egy nyilvános IP-Címek (dinamikus vagy statikus) néven |
+|  ||Cloud service rendelve |A load balancer előtér-konfiguráció hozzárendelve |
 |  | | | |
 | **Magánhálózati IP-cím** |***VM*** |Egy DIP néven |Magánhálózati IP-cím néven |
-|  ||Egy IaaS-beli virtuális Gépen vagy egy PaaS szerepkörpéldányok hozzárendelve |A virtuális gép hálózati adapterhez hozzárendelt | |
-|  |***Belső load balancer (ILB)*** |Az ILB (dinamikus vagy statikus) rendelve |Az ILB előtér-konfiguráció (dinamikus vagy statikus) rendelve | |
+|  ||Egy IaaS-beli virtuális Gépen vagy egy PaaS szerepkörpéldányok hozzárendelve |A virtuális gép hálózati adapterhez hozzárendelt |
+|  |***Belső load balancer (ILB)*** |Az ILB (dinamikus vagy statikus) rendelve |Az ILB előtér-konfiguráció (dinamikus vagy statikus) rendelve |
 
 ## <a name="next-steps"></a>További lépések
 * [Statikus magánhálózati IP-címmel rendelkező virtuális gép üzembe helyezése](virtual-networks-static-private-ip-classic-pportal.md) az Azure portal használatával.

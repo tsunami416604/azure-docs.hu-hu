@@ -14,16 +14,16 @@ ms.workload: infrastructure
 ms.date: 03/05/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5c5f1d8d7a9c84d807db53933f0cbb176f9fb7f2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 02272ee16cf3303890a8ba6d35d38676e98c788c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551960"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58006105"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>SAP HANA (nagyméretű példányok) tároló-architektúra
 
-A tárolási elrendezés az SAP Hana az Azure-ban (nagyméretű példányok) a klasszikus üzemi modell / irányelvek ajánlott SAP az SAP Hana van konfigurálva. Az irányelvek vannak dokumentálva az [SAP HANA tárolási követelményei](http://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) tanulmányt.
+A tárolási elrendezés az SAP Hana az Azure-ban (nagyméretű példányok) a klasszikus üzemi modell / irányelvek ajánlott SAP az SAP Hana van konfigurálva. Az irányelvek vannak dokumentálva az [SAP HANA tárolási követelményei](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) tanulmányt.
 
 A nagyméretű HANA-példány I osztály típusú storage-kötetként négyszer a memória kötet tartalmaz. A nagyméretű HANA-példány egységek II. típusú az osztályhoz a tároló nem négyszer további. Az egységek kapható olyan kötetre, amely a HANA tranzakciós napló biztonsági mentések tárolására szolgál. További információkért lásd: [telepítse és konfigurálja az SAP HANA (nagyméretű példányok) az Azure-ban](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
@@ -100,10 +100,10 @@ Nagyméretű HANA-példányok a használt tárterület használata fájl mérete
 > [!IMPORTANT]
 > Az adatfájlokat a 16 TB fájlok méretkorlátjának nagyméretű HANA-példány tárolási túli növekszik próbál HANA elkerülése érdekében állítsa be az alábbi paramétereket a Hana global.ini konfigurációs fájlban kell
 > 
-- datavolume_striping=true
-- datavolume_striping_size_gb = 15000
-- Lásd még az SAP Megjegyzés [#2400005](https://launchpad.support.sap.com/#/notes/2400005)
-- Vegye figyelembe az SAP-jegyzetnek [#2631285](https://launchpad.support.sap.com/#/notes/2631285)
+> - datavolume_striping=true
+> - datavolume_striping_size_gb = 15000
+> - Lásd még az SAP Megjegyzés [#2400005](https://launchpad.support.sap.com/#/notes/2400005)
+> - Vegye figyelembe az SAP-jegyzetnek [#2631285](https://launchpad.support.sap.com/#/notes/2631285)
 
 
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: 689f9ccc12769ac93f30d112b3f6066d509d93e1
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ca18042985669899247c3a0a16b41a98c5c6d1ee
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544494"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075168"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>Oktatóanyag: Azure virtuális WAN használatával helyek közötti kapcsolat létrehozása
 
@@ -64,12 +64,12 @@ Hozzon létre annyi helyet, amennyit csak szükséges a fizikai helyeknek megfel
 2. A **VPN-helyek** lapon kattintson a **+Hely létrehozása** elemre.
 3. A **Hely létrehozása** lapon töltse ki a következő mezőket:
 
-  * **Név** – Ez az a név, amellyel hivatkozni szeretne a helyszíni helyre.
-  * **Nyilvános IP-cím** – Ez a helyszíni helyen található VPN-eszköz nyilvános IP-címe.
-  * **Privát címtér** – Ez a helyszíni helyen található IP-címtér. Az erre a címtérre címzett forgalom át lesz irányítva a helyszíni helyre.
-  * **Előfizetés** – Ellenőrizze az előfizetést.
-  * **Erőforráscsoport** – A használni kívánt erőforráscsoport.
-  * **Hely**.
+   * **Név** – Ez az a név, amellyel hivatkozni szeretne a helyszíni helyre.
+   * **Nyilvános IP-cím** – Ez a helyszíni helyen található VPN-eszköz nyilvános IP-címe.
+   * **Privát címtér** – Ez a helyszíni helyen található IP-címtér. Az erre a címtérre címzett forgalom át lesz irányítva a helyszíni helyre.
+   * **Előfizetés** – Ellenőrizze az előfizetést.
+   * **Erőforráscsoport** – A használni kívánt erőforráscsoport.
+   * **Hely**.
 4. A további beállítások megtekintéséhez kattintson a **Speciális megjelenítése** gombra. A **BGP** lehetőséggel bekapcsolhatja a BGP-t, amely az Azure-ban az ehhez a helyhez létrehozott összes kapcsolatra engedélyezi ezt a funkciót. Megadhatja az **eszközökkel kapcsolatos információkat** is (opcionális mezők). Az Azure Team így jobban megismerheti a környezetet, és a jövőben így további optimalizálási lehetőségeket adhat a szolgáltatáshoz, valamint ezzel elősegítheti a hibaelhárítást.
 5. Kattintson a **Megerősítés** gombra.
 6. Miután rákattintott a **Megerősítés** gombra, nézze meg a VPN-hely lapon a hely állapotát. A hely a **Kiépítés alatt** állapotból a**Kiépített** állapotba lép át.

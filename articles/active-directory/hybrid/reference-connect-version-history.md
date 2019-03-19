@@ -16,12 +16,12 @@ ms.date: 12/18/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd90cd18be1fdbac5948fb076a3358b070bad8eb
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 840ea818c7c2e197f1ab65f4bd61067bf5e51283
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57455071"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57836980"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verziókiadások előzményei
 Az Azure Active Directory (Azure AD) csapat rendszeresen frissíti az Azure AD Connect új szolgáltatásait és funkcióit. Nem minden hozzárendelések nem gyarapítsa alkalmazható.
@@ -149,7 +149,7 @@ Az Azure AD Connect frissítés sikertelen lesz, ha SQL mindig a rendelkezésre 
 
 ### <a name="fixed-issues"></a>Hibák kijavítva: 
 
-- Kijavítva a hiba, ahol az AAD Connect-kiszolgáló a következő jelenik meg magas CPU-használat .net 4.7.2 verziófrissítés utáni teendők
+- Kijavítva a hiba, ahol az AAD Connect-kiszolgáló a következő jelenik meg magas CPU-használat .NET 4.7.2 verziófrissítés utáni teendők
 - Kijavítva a hiba, amely akkor időnként az eredmény egy hibaüzenet, automatikusan feloldásra SQL holtpont hiba
 - Számos kisegítő lehetőségekkel kapcsolatos probléma kijavítva a szinkronizálási Szabályszerkesztővel és a Sync Service Manager  
 - Kijavítva a hiba, ahol az Azure AD Connect nem sikerült beolvasni a beállításjegyzék-beállítás információk
@@ -180,12 +180,12 @@ Az Azure AD Connect frissítés sikertelen lesz, ha SQL mindig a rendelkezésre 
 - Eszközkonfiguráció visszaírás kizárólag az Azure AD Connect varázsló belül mostantól felügyelet alatt.
 - Egy új PowerShell-modul nevű ADSyncTools.psm1 kerül, amely az SQL-kapcsolati hibák és a különböző hibaelhárítási segédprogramok segítségével. További információ a ADSyncTools modul [Itt](tshoot-connect-tshoot-sql-connectivity.md). 
 - Új további tevékenység "Konfigurálása eszköz options" lett hozzáadva. A feladat segítségével konfigurálhatja az alábbi két műveletet: 
-    -   **Hibrid Azure AD-csatlakozás**: Ha az Ön környezetének van helyszíni AD-lábnyoma, ugyanakkor az Azure Active Directory nyújtotta lehetőségeket is ki szeretné használni, implementálhat hibrid Azure AD-csatlakoztatott eszközöket. Ezek olyan eszközök, amelyek a helyszíni Active Directoryhoz és az Azure Active Directoryhoz is csatlakoznak.
-    -   **Eszközvisszaírás**: Eszközvisszaírás alapján az AD FS-eszközök feltételes hozzáférésének engedélyezésére használja (2012 R2 vagy újabb) által védett eszközök
+  - **Hibrid Azure AD-csatlakozás**: Ha az Ön környezetének van helyszíni AD-lábnyoma, ugyanakkor az Azure Active Directory nyújtotta lehetőségeket is ki szeretné használni, implementálhat hibrid Azure AD-csatlakoztatott eszközöket. Ezek olyan eszközök, amelyek a helyszíni Active Directoryhoz és az Azure Active Directoryhoz is csatlakoznak.
+  - **Eszközvisszaírás**: Eszközvisszaírás alapján az AD FS-eszközök feltételes hozzáférésének engedélyezésére használja (2012 R2 vagy újabb) által védett eszközök
 
-   >[!NOTE] 
-   > - Engedélyezheti a szinkronizálási beállítások testreszabása történő eszközvisszaírás szürkén jelennek meg. 
-   > -  Ebben a kiadásban a PowerShell-modult az Adprep elavult.
+    >[!NOTE] 
+    > - Engedélyezheti a szinkronizálási beállítások testreszabása történő eszközvisszaírás szürkén jelennek meg. 
+    > -  Ebben a kiadásban a PowerShell-modult az Adprep elavult.
 
 
 
@@ -415,7 +415,7 @@ További információkért lásd: [Microsoft biztonsági tanácsadó 4056318](ht
 
 * Kijavítva az a *felhasználói bejelentkezés módosítása* feladat az Azure AD Connect varázslójában:
 
-   * A probléma akkor fordul elő, ha a jelszó-szinkronizálás a meglévő Azure AD Connect telepítés **le van tiltva**, és állítsa be a felhasználói bejelentkezés módját kívánt *átmenő hitelesítés*. Amikor a rendszer alkalmazza a módosítást, a varázsló lehetővé teszi, hogy átmenő hitelesítést és a jelszó-szinkronizálás. A javítás a varázsló már nem engedélyezi a jelszó-szinkronizálás.
+  * A probléma akkor fordul elő, ha a jelszó-szinkronizálás a meglévő Azure AD Connect telepítés **le van tiltva**, és állítsa be a felhasználói bejelentkezés módját kívánt *átmenő hitelesítés*. Amikor a rendszer alkalmazza a módosítást, a varázsló lehetővé teszi, hogy átmenő hitelesítést és a jelszó-szinkronizálás. A javítás a varázsló már nem engedélyezi a jelszó-szinkronizálás.
 
   * A jelszó-szinkronizálás korábban átmenő hitelesítés engedélyezése előfeltétele. A felhasználói bejelentkezés módját beállításakor *átmenő hitelesítés*, a varázsló lehetővé tenné az átmenő hitelesítés és a jelszó-szinkronizálás. A jelszó-szinkronizálás nemrég el lett távolítva, előfeltételként. Az Azure AD Connect verziója 1.1.557.0 részeként egy módosítást hajtottak végre az Azure AD Connect nem a jelszó-szinkronizálás engedélyezése a felhasználó bejelentkezési módszer, beállításakor *átmenő hitelesítés*. A módosítás azonban csak alkalmazta az Azure AD Connect-telepítésre. A javítás kártyáinak is hatással van a *felhasználói bejelentkezés módosítása* feladat.
   
@@ -436,7 +436,7 @@ További információkért lásd: [Microsoft biztonsági tanácsadó 4056318](ht
 * A hozzáadott logikai egyszerűsítése érdekében a az Azure AD Connect a Microsoft németországi Felhőhöz beállításához szükséges lépéseket. Korábban az Ön szükséges frissíteni az Azure AD Connect-kiszolgálón, hogy megfelelően működjön a Microsoft németországi Felhőhöz, meghatározott beállításkulcsokról, ebben a cikkben leírtak szerint. Most az Azure AD Connect automatikusan képes felismerni Ha a bérlő van a Microsoft németországi felhőben alapján a telepítés során megadott globális rendszergazdai hitelesítő adatok.
 
 ### <a name="azure-ad-connect-sync"></a>Az Azure AD Connect szinkronizálása
->[!NOTE]
+> [!NOTE]
 > Megjegyzés: A szinkronizálási szolgáltatás, amely lehetővé teszi a saját egyéni scheduler fejlesztése WMI felülettel rendelkezik. Ez az interfész már elavult, és jövőbeli törlődni fog az Azure AD Connect verziója tartalmazza a szükséges 2018. június 30. után. Ügyfelek, akik a szinkronizálási ütemezés testreszabásához használja a [beépített ütemezési (https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler).
 
 #### <a name="fixed-issues"></a>Hibák kijavítva:
@@ -642,7 +642,7 @@ A probléma, amely akkor keletkezik, hogy a **minden tartomány és szervezeti e
 
 * Az Azure AD Connect mostantól támogatja a jelszóvisszaíró az Exchange Online **cloudPublicDelegates** attribútumot a helyszíni AD **publicDelegates** attribútum. Ez lehetővé teszi a forgatókönyvet, ahol Exchange Online-postaládával is lehet SendOnBehalfTo jogokat kapnak a felhasználók számára a helyszíni Exchange-postaládájába. Ezzel a funkcióval egy új "Az ad-hez – a felhasználó Exchange hibrid PublicDelegates visszaírási Out" out-of-box szinkronizálási szabály támogatásához hozzá lett adva. A szinkronizálási szabály csak hozzá az Azure AD Connect, ha hibrid Exchange szolgáltatás engedélyezve van.
 
-*   Szinkronizálás az Azure AD Connect mostantól támogatja a **altRecipient** az Azure AD-attribútumot. Ez a változás támogatása érdekében következő out-of-box szinkronizálási szabályokat tartalmazza a szükséges Attribútumfolyam frissítve lett-e:
+* Szinkronizálás az Azure AD Connect mostantól támogatja a **altRecipient** az Azure AD-attribútumot. Ez a változás támogatása érdekében következő out-of-box szinkronizálási szabályokat tartalmazza a szükséges Attribútumfolyam frissítve lett-e:
   * Az AD-felhasználó Exchange-ből
   * Az aad-be – felhasználói ExchangeOnline ki
   
@@ -1186,9 +1186,9 @@ Kiadás dátuma: 2014. október
 
 Ha már rendelkezik Azure AD Sync telepítve van, nincs szükség van arra az esetre módosítva a beépített szinkronizálási szabály egy további lépést. A 1.0.470.1023 való frissítése után kiadási, a szinkronizálási szabályok módosította ismétlődik. Az egyes módosított szinkronizálási szabály tegye a következőket:
 
-1.  Keresse meg a szinkronizálási szabály módosította, és jegyezze fel a módosításokat.
-* A szinkronizálási szabály törlése.
-* Keresse meg az új szinkronizálási szabály, amely az Azure AD Sync jön, és majd alkalmazza újra a módosításokat.
+1. Keresse meg a szinkronizálási szabály módosította, és jegyezze fel a módosításokat.
+1. A szinkronizálási szabály törlése.
+1. Keresse meg az új szinkronizálási szabály, amely az Azure AD Sync jön, és majd alkalmazza újra a módosításokat.
 
 **Az Active Directory-engedélyek**
 

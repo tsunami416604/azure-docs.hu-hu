@@ -14,12 +14,12 @@ ms.date: 12/12/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 12/12/2018
-ms.openlocfilehash: 9f0ccb85fa4b42ef3ca90c6d4ca2d80113b93a0c
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 3a6fa631fdf3436dc3a76817d2c0043b0407b2ce
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733699"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121553"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>Alkalmazások hozzáférést biztosíthat az Azure Stack-erőforrások egyszerű szolgáltatások létrehozásával
 
@@ -56,8 +56,8 @@ A lépéseket a hozzárendelése egy egyszerű szolgáltatást a szerepkör ugya
 
 Ha az Azure Stack az Azure AD használja, mint az ügyfélidentitás-tárolóval, létrehozhat egy szolgáltatás egyszerű használja ugyanazokat a lépéseket, mint az Azure-ban, az Azure portal használatával.
 
->[!NOTE]
-Ellenőrizze, hogy rendelkezik a [szükséges Azure AD-engedélyekről](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) egyszerű szolgáltatás létrehozása előtt.
+> [!NOTE]
+> Ellenőrizze, hogy rendelkezik a [szükséges Azure AD-engedélyekről](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) egyszerű szolgáltatás létrehozása előtt.
 
 ### <a name="create-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
@@ -80,8 +80,8 @@ Ha programozott módon jelentkezik be, az azonosító használata az alkalmazás
 
 4. Adjon meg egy leírást és egy időtartamot a kulcshoz. Ha elkészült, kattintson a **Mentés** elemre.
 
->[!IMPORTANT]
-A kulcs, a kulcs mentése után **érték** jelenik meg. Jegyezze fel ezt az értéket, mivel később nem tudja lekérni a kulcsot. A kulcsértéket olyan helyen tárolja, ahonnan az alkalmazás le tudja kérni.
+> [!IMPORTANT]
+> A kulcs, a kulcs mentése után **érték** jelenik meg. Jegyezze fel ezt az értéket, mivel később nem tudja lekérni a kulcsot. A kulcsértéket olyan helyen tárolja, ahonnan az alkalmazás le tudja kérni.
 
 ![Mentett kulcs figyelmeztetés kulcs értékét.](./media/azure-stack-create-service-principals/image15.png)
 
@@ -101,8 +101,8 @@ Az egyszerű szolgáltatás létrehozása a részletekért lásd: [az AD FS egys
 
 Az előfizetésben lévő erőforrások eléréséhez, hozzá kell rendelnie az alkalmazás egy szerepkörhöz. Döntse el, melyik szerepkör jelöli az alkalmazást a megfelelő engedélyekkel. Az elérhető szerepkörök kapcsolatos további információkért lásd: [RBAC: Beépített szerepkörök](../../role-based-access-control/built-in-roles.md).
 
->[!NOTE]
-A szerepkör hatóköre egy előfizetés, erőforráscsoport vagy erőforrás szinten állíthatja be. Alacsonyabb szintű hatókör, az engedélyek öröklődnek. Egy alkalmazást egy erőforráscsoportot az Olvasó szerepkör például azt jelenti, hogy az alkalmazás tudja olvasni a az erőforrások az erőforráscsoportban.
+> [!NOTE]
+> A szerepkör hatóköre egy előfizetés, erőforráscsoport vagy erőforrás szinten állíthatja be. Alacsonyabb szintű hatókör, az engedélyek öröklődnek. Egy alkalmazást egy erőforráscsoportot az Olvasó szerepkör például azt jelenti, hogy az alkalmazás tudja olvasni a az erőforrások az erőforráscsoportban.
 
 Kövesse az alábbi lépéseket segítségképp szerepkört rendel egy egyszerű szolgáltatás számára.
 

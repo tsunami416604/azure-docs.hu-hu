@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90e6f922c6851d5ed3b564f202e0b87b231f2f25
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: a925b13e6aed55f13bb38df53f2d6063b0948730
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730552"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838238"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ekincare"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező eKincare
 
@@ -125,6 +125,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés eKincare, hajtsa vé
     | EmployeeID | *user.extensionattribute1* |
     | a szervezeti | *"uniquevalue"* |
     | Cégnév | *user.companyname* |
+    
     a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
 
     ![image](common/new-save-attribute.png)
@@ -179,7 +180,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

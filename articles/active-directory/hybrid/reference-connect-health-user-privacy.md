@@ -14,12 +14,12 @@ ms.topic: reference
 ms.date: 04/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0a7dc5152bb1ede5f7311e74815a6d58782d32a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 27e5ae48a8194c05a19e5164ee2cc6be68967a62
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199323"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112755"
 ---
 # <a name="user-privacy-and-azure-ad-connect-health"></a>Felhasználói adatok védelme és az Azure AD Connect Health 
 
@@ -62,17 +62,17 @@ Lásd: [kiszolgáló eltávolítása az Azure AD Connect Health](how-to-connect-
 Az Azure AD Connect Health is lehetővé teszi, hogy állítsa le az adatgyűjtést, **összes** szolgáltatások regisztrálva a bérlővel. Javasoljuk, hogy alapos megfontolás, és minden globális rendszergazda teljes nyugtázása a műveletek előtt. A folyamat megkezdése után a Connect Health szolgáltatás leáll, fogadását, feldolgozását és jelentéskészítési bármilyen típusú és minden szolgáltatás. Connect Health service-ben meglévő adatok legfeljebb 30 napig lesznek megőrizve.
 Ha szeretné leállítani az adatgyűjtést az adott kiszolgáló, kövesse a lépéseket az egyes kiszolgálók törlését. Tenant-wise adatgyűjtés leállítása, kövesse az alábbi lépések végrehajtásával állítsa le az adatgyűjtést, és törölje a bérlő összes szolgáltatást.
 
-1.  Kattintson a **általános beállítások** konfigurációja a fő panelen. 
-2.  Kattintson a **adatgyűjtés leállítása** gombra a panel felső részén. A többi beállítást a bérlő konfigurációs beállításainak letiltásra kerül, amint a folyamat elindul.  
+1. Kattintson a **általános beállítások** konfigurációja a fő panelen. 
+2. Kattintson a **adatgyűjtés leállítása** gombra a panel felső részén. A többi beállítást a bérlő konfigurációs beállításainak letiltásra kerül, amint a folyamat elindul.  
  
- ![Adatgyűjtés leállítása](./media/reference-connect-health-user-privacy/gdpr4.png)
+   ![Adatgyűjtés leállítása](./media/reference-connect-health-user-privacy/gdpr4.png)
   
-3.  Győződjön meg arról leállítása az adatok gyűjtemények által érintett előkészítve a szolgáltatások listájába. 
-4.  Adja meg a pontos bérlő nevét ahhoz, hogy a **törlése** műveletgombként
-5.  Kattintson a **törlése** az összes szolgáltatást a törlés aktiválásához. Connect Health fogadása, feldolgozás, az előkészítést szolgáltatások által küldött adatokat reporting le fog állni. A teljes folyamatot, akár 24 órát is igénybe vehet. Figyelje meg, hogy ez a lépés nem vonható vissza. 
-6.  A folyamat befejezése után többé nem látják regisztrált a Connect Health szolgáltatások. 
+3. Győződjön meg arról leállítása az adatok gyűjtemények által érintett előkészítve a szolgáltatások listájába. 
+4. Adja meg a pontos bérlő nevét ahhoz, hogy a **törlése** műveletgombként
+5. Kattintson a **törlése** az összes szolgáltatást a törlés aktiválásához. Connect Health fogadása, feldolgozás, az előkészítést szolgáltatások által küldött adatokat reporting le fog állni. A teljes folyamatot, akár 24 órát is igénybe vehet. Figyelje meg, hogy ez a lépés nem vonható vissza. 
+6. A folyamat befejezése után többé nem látják regisztrált a Connect Health szolgáltatások. 
 
- ![Miután leállította az adatgyűjtést](./media/reference-connect-health-user-privacy/gdpr5.png)
+   ![Miután leállította az adatgyűjtést](./media/reference-connect-health-user-privacy/gdpr5.png)
 
 ## <a name="re-enable-data-collection-and-monitoring-in-azure-ad-connect-health"></a>Engedélyezze újra az adatgyűjtés és -monitorozás az Azure AD Connect Health
 Monitorozás az Azure AD Connect Health for egy korábban törölt figyelt szolgáltatás újbóli engedélyezéséhez el kell távolítania és [telepítse újra a health agent](how-to-connect-health-agent-install.md) az összes kiszolgálón.
@@ -85,14 +85,14 @@ Az Azure AD Connect Health tenant-Wise adatgyűjtés tudja folytatni. Javasoljuk
 > Az alábbi lépéseket az 24 órányi művelet letiltása után lesz elérhető.
 > Miután engedélyezte az adatgyűjtést, az itt bemutatott insight és a figyelési adatokat a Connect Health nem jelenik meg előtt gyűjtött régi adatokat. 
 
-1.  Kattintson a **általános beállítások** konfigurációja a fő panelen. 
-2.  Kattintson a **engedélyezni az adatgyűjtést** gombra a panel felső részén. 
+1. Kattintson a **általános beállítások** konfigurációja a fő panelen. 
+2. Kattintson a **engedélyezni az adatgyűjtést** gombra a panel felső részén. 
  
- ![Az adatgyűjtés engedélyezése](./media/reference-connect-health-user-privacy/gdpr6.png)
+   ![Az adatgyűjtés engedélyezése](./media/reference-connect-health-user-privacy/gdpr6.png)
  
-3.  Adja meg a pontos bérlőneve aktiválása a **engedélyezése** gombra.
-4.  Kattintson a **engedélyezése** gombra kattintva adjon engedélyt az adatgyűjtés a Connect Health szolgáltatásban. Hamarosan a módosítás lépnek érvénybe. 
-5.  Kövesse a [telepítési folyamat](how-to-connect-health-agent-install.md) újratelepíteni az ügynököt a figyelni a kiszolgálókon és a szolgáltatások lesznek jelen a portálon.  
+3. Adja meg a pontos bérlőneve aktiválása a **engedélyezése** gombra.
+4. Kattintson a **engedélyezése** gombra kattintva adjon engedélyt az adatgyűjtés a Connect Health szolgáltatásban. Hamarosan a módosítás lépnek érvénybe. 
+5. Kövesse a [telepítési folyamat](how-to-connect-health-agent-install.md) újratelepíteni az ügynököt a figyelni a kiszolgálókon és a szolgáltatások lesznek jelen a portálon.  
 
 
 ## <a name="next-steps"></a>További lépések

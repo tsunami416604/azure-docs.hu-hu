@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: 53281af4cf3ce49272ffe9fc48ab0f85cea276b2
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: fbaa89140033ee3b07017370e31e69601aa298db
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213621"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078760"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Tanácsadási szolgáltatások az Azure Marketplace és appsource-ban
 Tanácsadási szolgáltatások az Azure Marketplace és AppSource biztosít a Microsoft-partnerek, a cél támogatja, és bővítheti használata során az Azure-szolgáltatásokkal csatlakozó ügyfelek és az üzleti céljainak megvalósítását. 
@@ -41,12 +41,12 @@ A piactér kirakattípus célközönség és a Microsoft felhőalapú termékek 
 
 Microsoft Dynamics 365, az Office 365 és a Power BI alapuló szolgáltatási ajánlatok jogosultak az appsource-ban szerepel. További információkért lásd: [Microsoft AppSource tanácsadási szolgáltatások listaelem irányelvei](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
 
->[!Note]
->Tanácsadási szolgáltatások az Azure Marketplace-en körétől ajánlatok támaszkodjon a ** műszaki célközönségét a összpontosít *Azure technikai megoldásokat és szolgáltatásokat.* ** Tanácsadási szolgáltatásokat az appsource-ban támaszkodjon a Dynamics 365, Power bi-ban vagy a PowerApps az appsource-on tanácsadási szolgáltatások ajánlataikat listázásához minőségi megoldások kidolgozását szakértelmüket körétől ajánlatok
-
-
->[!TIP]
->Közzététele az Azure Marketplace-en kirakat, fogja elérhetővé tenni ezt a választást az "Elsődleges termék" legördülő menüből a Cloud Partner portálra a "Azure" kiválasztásával. Közzététele az appsource-ban, fogja elérhetővé tenni ezt a választást "Dynamics 365," kiválasztásával "Power BI" vagy a "Elsődleges termék" legördülő menüből a Cloud Partner portálra a "kiemelt alkalmazások".
+> [!Note]
+> Tanácsadási szolgáltatások az Azure Marketplace-en körétől ajánlatok támaszkodjon a ** műszaki célközönségét a összpontosít *Azure technikai megoldásokat és szolgáltatásokat.* ** Tanácsadási szolgáltatásokat az appsource-ban támaszkodjon a Dynamics 365, Power bi-ban vagy a PowerApps az appsource-on tanácsadási szolgáltatások ajánlataikat listázásához minőségi megoldások kidolgozását szakértelmüket körétől ajánlatok
+> 
+> 
+> [!TIP]
+> Közzététele az Azure Marketplace-en kirakat, fogja elérhetővé tenni ezt a választást az "Elsődleges termék" legördülő menüből a Cloud Partner portálra a "Azure" kiválasztásával. Közzététele az appsource-ban, fogja elérhetővé tenni ezt a választást "Dynamics 365," kiválasztásával "Power BI" vagy a "Elsődleges termék" legördülő menüből a Cloud Partner portálra a "kiemelt alkalmazások".
 
 ## <a name="eligible-partners-and-supported-countries"></a>Jogosult partnerek és a támogatott országok
 
@@ -56,8 +56,8 @@ Partnerek van szüksége egy **silver vagy gold kompetencia** a szolgáltatásuk
 
 |Kompetencia  |Megoldásterület  |
 |---------|---------|
-|A felhőalapú Platform és infrastruktúra     |   Felhőalapú Platform, adatközpont      |
-|Az alkalmazások fejlesztése és ISV-k     |  Alkalmazás fejlesztése, összetett Alkalmazásközi integrációt, fejlesztés és üzemeltetés       |
+|A felhőalapú Platform és infrastruktúra     |   Cloud Platform, Data Center      |
+|Az alkalmazások fejlesztése és ISV-k     |  Application Development, Application Integration, DevOps       |
 |Adatkezelési és -elemzés    |  A Data Analytics, Adatplatform       |
 
 
@@ -101,7 +101,7 @@ Regisztráció előtt gyűjtésének megkezdéséhez, és előkészíti a tartal
 |---------|
 |MPN-azonosító     |
 |A vállalati emblémát (48 &#215; 48 óra, 216 &#215; 216)     |
-|Cél vezethet     |
+|Lead Destination     |
 
 
 |Állítsa be az új ajánlat  |

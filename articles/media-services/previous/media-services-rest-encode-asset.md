@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: e51fa086b26e5692d8dd572654b7c1ec50c641c5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 608abd09227014513a0ad358d7a2c225b5ab2b97
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005148"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863372"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Adategység kódolása a Media Encoder Standard használatával hogyan
 > [!div class="op_single_selector"]
@@ -61,7 +61,7 @@ Az AMS API-t kapcsolódás információkért lásd: [eléréséhez az Azure Medi
 >
 > A Media Services entitások elérésekor a be kell állítani a HTTP-kérelmekre a meghatározott fejlécmezők és értékek. További információkért lásd: [Media Services REST API fejlesztési telepítő](media-services-rest-how-to-use.md).
 >
-> Ha JSON használatával, és adja meg a használandó a **__metadata** kulcsszó a kérelemben (például, hogy hivatkozási csatolt objektum), be kell a **elfogadás** fejlécet [arészletesJSONformátumban](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/): Accept: application/json;odata=verbose.
+> Ha JSON használatával, és adja meg a használandó a **__metadata** kulcsszó a kérelemben (például, hogy hivatkozási csatolt objektum), be kell a **elfogadás** fejlécet [arészletesJSONformátumban](https://www.odata.org/documentation/odata-version-3-0/json-verbose-format/): Accept: application/json;odata=verbose.
 >
 >
 
@@ -151,7 +151,7 @@ Ahhoz, hogy a feladat-láncolás:
 * Legalább egy tevékenységet, amelynek nincs egy másik feladat a feladat kimenetének kell lennie.
 
 ## <a name="use-odata-batch-processing"></a>Használja az OData kötegelt feldolgozás
-Az alábbi példa bemutatja, hogyan OData kötegelt feldolgozási feladatok és tevékenységek létrehozásához használandó. Kötegelt feldolgozás kapcsolatos tudnivalókat lásd: [Open Data (OData) protokollnak kötegelt feldolgozási](http://www.odata.org/documentation/odata-version-3-0/batch-processing/).
+Az alábbi példa bemutatja, hogyan OData kötegelt feldolgozási feladatok és tevékenységek létrehozásához használandó. Kötegelt feldolgozás kapcsolatos tudnivalókat lásd: [Open Data (OData) protokollnak kötegelt feldolgozási](https://www.odata.org/documentation/odata-version-3-0/batch-processing/).
 
     POST https://media.windows.net/api/$batch HTTP/1.1
     DataServiceVersion: 1.0;NetFx

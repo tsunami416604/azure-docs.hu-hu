@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
-ms.openlocfilehash: 8ed148dfd6441d05891ef38934123a9cd3827b8b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 290141136672729060f5156d645c47ac303fa0c3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538544"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110970"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>(ELAVULT) Egy Azure Container Service DC/OS fürt megfigyelése a Log Analytics
 
@@ -41,18 +41,18 @@ Ez a cikk feltételezi, hogy beállította-e egy DC/OS és egyszerű webes táro
    >[!NOTE]
    >OMS most már a Log Analytics nevezik.
 
- ![](media/container-service-monitoring-oms/image2.png)
+   ![](media/container-service-monitoring-oms/image2.png)
 
 2. Kattintson az **Install** (Telepítés) gombra. Megjelenik egy előugró ablak, és a fájlverzió-információkat és a egy **telepítőcsomag** vagy **speciális telepítési** gombra. Amikor rákattint **speciális telepítési**, amely vezet, hogy a **OMS konfigurációs tulajdonságok** lap.
 
- ![](media/container-service-monitoring-oms/image3.png)
+   ![](media/container-service-monitoring-oms/image3.png)
 
- ![](media/container-service-monitoring-oms/image4.png)
+   ![](media/container-service-monitoring-oms/image4.png)
 
 3. Itt meg kell adnia a `wsid` (a Log Analytics-munkaterület Azonosítójára) és `wskey` (a munkaterület-azonosító elsődleges kulcsát). Mindkét beolvasásához `wsid` és `wskey` szeretne létrehozni egy fiókot a <https://mms.microsoft.com>.
-A lépésekkel hozzon létre egy fiókot. Ha elkészült hoz létre a fiókot, be kell szereznie a `wsid` és `wskey` kattintva **beállítások**, majd **csatlakoztatott források**, majd **Linux-kiszolgálók**lent látható módon.
+   A lépésekkel hozzon létre egy fiókot. Ha elkészült hoz létre a fiókot, be kell szereznie a `wsid` és `wskey` kattintva **beállítások**, majd **csatlakoztatott források**, majd **Linux-kiszolgálók**lent látható módon.
 
- ![](media/container-service-monitoring-oms/image5.png)
+   ![](media/container-service-monitoring-oms/image5.png)
 
 4. Válassza ki a példányok, hogy szeretné, és kattintson a "Áttekintése és telepítése" gombra. Általában érdemes szeretné, hogy a virtuális gép már van az ügynök fürtben száma egyenlő a példányok számát. Linuxhoz készült log Analytics-ügynök telepítése, az egyes virtuális Gépeken, amely figyelési adatait és a naplózási információk gyűjtéséhez szeretné az egyes tárolók.
 

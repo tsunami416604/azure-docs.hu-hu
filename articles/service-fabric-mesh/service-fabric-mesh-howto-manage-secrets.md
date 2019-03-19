@@ -9,12 +9,12 @@ ms.date: 11/28/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: chackdan
-ms.openlocfilehash: f767dfdf96b89344fea18893f7030ea0fd1882ad
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 36d0b49f1b9fb1ca5d13283146d134137a5cb028
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57764270"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900641"
 ---
 # <a name="manage-service-fabric-mesh-application-secrets"></a>Service Fabric háló titkos Alkalmazáskulcsok kezelése
 Titkos kódok Service Fabric-háló támogatja az Azure-erőforrások. Service Fabric-háló titkos lehet például a storage kapcsolati karakterláncok, jelszavak és egyéb értékek, amelyek tárolása és biztonságosan továbbítani kell bizalmas információkat. Ez a cikk bemutatja, hogyan használhatja a Service Fabric biztonságos Store szolgáltatás üzembe helyezése és karbantartása a titkos kulcsok.
@@ -24,20 +24,20 @@ A háló alkalmazás titkos kulcs áll:
 * Egy vagy több **titkos kulcsok/értékek** tárolt erőforrások a **titkok** az erőforrás-tárolónak. Minden egyes **titkos kulcsok/értékek** erőforrás van megkülönböztető verziószámmal. Egy verziója nem módosítható egy **titkos kulcsok/értékek** erőforrás, csak fűzze hozzá az új verzióra.
 
 A következő lépésekből áll, titkos kódok kezelése:
-1. Deklarálja a háló **titkok** egy Azure Resource modell YAML- vagy JSON-fájlt inlinedValue kind és SecretsStoreRef contentType definíciók-erőforrást.
-2. Deklarálja a háló **titkos kulcsok/értékek** erőforrások lesz tárolva az Azure Resource modell YAML- vagy JSON-fájl a **titkok** erőforrás (az 1. lépés).
+1. Deklarálja a háló **titkok** egy Azure Resource modell YAML- vagy JSON-táblázatot inlinedValue kind és SecretsStoreRef contentType definíciók-erőforrást.
+2. Deklarálja a háló **titkos kulcsok/értékek** erőforrásokat egy lesz tárolva az Azure Resource modell YAML- vagy JSON-fájlban a **titkok** erőforrás (az 1. lépés).
 3. Módosítsa a háló alkalmazást való hivatkozáshoz háló titkos értékkel.
 4. Üzembe helyezése vagy működés közbeni frissítése a háló alkalmazás titkos értékkel felhasználásához.
 5. Az Azure "az" parancssori felület parancsai biztonságos Store szolgáltatás életciklus-felügyelet.
 
 ## <a name="declare-a-mesh-secrets-resource"></a>Deklarálja a háló titkok erőforrás
-A háló titkok erőforrás inlinedValue kind és SecretsStoreRef contentType definíciók segítségével egy Azure Resource modell JSON- vagy YAM fájlban van deklarálva. A háló titkok erőforrás támogatja-e biztonságos Store szolgáltatás forráskódú titkos kulcsok. 
+Titkos kódok háló erőforrás deklarálva van egy Azure Resource modell JSON vagy inlinedValue kind és SecretsStoreRef contentType definíciók YAML-fájlt. A háló titkok erőforrás támogatja-e biztonságos Store szolgáltatás forráskódú titkos kulcsok. 
 >
 A következő egy példa bemutatja, hogyan egy JSON-fájlt a háló titkok erőforrások deklarálásához:
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+  "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
@@ -103,7 +103,7 @@ A következő egy példa bemutatja, hogyan egy JSON-fájlt a háló titkos kulcs
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+  "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
@@ -215,9 +215,9 @@ az mesh secret show --Resource-group <myResourceGroup> --secret-name <mySecret>
 
 - Titkos kulcs nem törölhető, amíg a háló alkalmazások hivatkozott.
 - Titkos kódok erőforrás törlésével törli az összes titkos kódok és erőforrások verzió.
-```azurecli-interactive
-az mesh secret delete --Resource-group <myResourceGroup> --secret-name <mySecret>
-```
+  ```azurecli-interactive
+  az mesh secret delete --Resource-group <myResourceGroup> --secret-name <mySecret>
+  ```
 
 ### <a name="list-secrets-in-subscription"></a>Előfizetés titkos kulcsainak listázása
 ```azurecli-interactive

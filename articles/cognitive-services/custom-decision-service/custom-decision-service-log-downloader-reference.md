@@ -10,12 +10,12 @@ ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: marossi
-ms.openlocfilehash: c03278c0d0faced20f4e02fcc1f61531c88ae141
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 8a8f669c33f40fb80dc826ec04203880dee74d82
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869670"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109409"
 ---
 # <a name="logdownloader"></a>LogDownloader
 
@@ -49,7 +49,7 @@ python LogDownloader.py [-h] -a APP_ID -l LOG_DIR [-s START_DATE]
 | `-s START_DATE`, `--start_date START_DATE` | A letöltés kezdő dátuma (tartalmazza), a *éééé-hh-nn* formátumban. | `None` |
 | `-e END_DATE`, `--end_date END_DATE` | A letöltés záró dátum (tartalmazza), *éééé-hh-nn* formátumban. | `None` |
 | `-o OVERWRITE_MODE`, `--overwrite_mode OVERWRITE_MODE` | A felülírás módot használja. | |
-| | `0`: Soha ne írja felül; Kérje meg a felhasználót, hogy blobok jelenleg használatban van. | Alapértelmezett | |
+| | `0`: Soha ne írja felül; Kérje meg a felhasználót, hogy blobok jelenleg használatban van. | Alapértelmezett |
 | | `1`: Kérje meg a felhasználó folytatásról, ha a fájlok a különböző méretű, vagy ha a blobokat éppen használatban vannak. | |
 | | `2`: Mindig felülírja a; Töltse le a jelenleg használt blobokat. | |
 | | `3`: Soha ne írja felül, és fűzze hozzá a Ha a mérete nagyobb, nélkül megkérdezi; Töltse le a jelenleg használt blobokat. | |

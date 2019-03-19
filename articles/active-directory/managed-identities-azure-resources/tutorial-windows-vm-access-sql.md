@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/07/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a269c15b9b38b190196e6c2e77ff5b4b3826ba65
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 57905b3d3c062c299a0f414ae6110dd0b6249198
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342154"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57848030"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-sql"></a>Oktatóanyag: Egy Windows virtuális gép alapértelmezett felügyelt identitás használata Azure SQL eléréséhez
 
@@ -103,7 +103,7 @@ A virtuális gépen futó kód most le tud kérni egy jogkivonatot a rendszer á
 
 Az Azure SQL natív támogatást nyújt az Azure AD-hitelesítéshez, így közvetlenül is elfogadhatja az Azure-erőforrások felügyelt identitásaival beszerzett hozzáférési jogkivonatokat. Az SQL-lel létesített kapcsolat létrehozásához használja az **access token** metódust. Ez az Azure SQL és az Azure AD integrációjának része, és eltér attól a megoldástól, amikor a kapcsolati sztringen adja meg a hitelesítő adatokat.
 
-Bemutatunk egy .Net-kódpéldát arra, hogyan létesíthető kapcsolat az SQL-kiszolgálóval egy hozzáférési jogkivonattal. Ennek a kódnak a virtuális gépen kell futnia a VM rendszer által hozzárendelt felügyelt identitásához tartozó végpont eléréséhez. **.NET-keretrendszer 4.6** vagy újabb verziója szükséges az access-token módszer használatához. Cserélje le az AZURE-SQL-SERVERNAME és a DATABASE értékét a megfelelő értékre. Figyelje meg, hogy az Azure SQL erőforrás-azonosítója a „https://database.windows.net/”.
+Íme egy .NET kód példa az SQL-hozzáférési token használatával egy kapcsolat megnyitásával. Ennek a kódnak a virtuális gépen kell futnia a VM rendszer által hozzárendelt felügyelt identitásához tartozó végpont eléréséhez. **.NET-keretrendszer 4.6** vagy újabb verziója szükséges az access-token módszer használatához. Cserélje le az AZURE-SQL-SERVERNAME és a DATABASE értékét a megfelelő értékre. Vegye figyelembe az erőforrás-azonosító az Azure SQL `https://database.windows.net/`.
 
 ```csharp
 using System.Net;

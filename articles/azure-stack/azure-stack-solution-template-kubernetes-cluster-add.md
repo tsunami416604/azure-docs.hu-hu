@@ -15,12 +15,12 @@ ms.date: 02/27/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 7b73a0efbe20b43b3ba8e94fce3aabf12ea918e8
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: ca58059716ebebfaf663412b37014ae4f534d0e3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56986056"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081508"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Adja hozzá a Kubernetes az Azure Stack piactéren
 
@@ -220,12 +220,12 @@ Adja hozzá a Kubernetes a Marketplace-ről:
 1. Írja be a `Custom Script for Linux` (igen) kifejezést.
 
 1. Válassza ki a parancsprogramot, a következő profilhoz:
-    - **Ajánlat**: Egyéni parancsfájl 2.0 linuxhoz
-    - **Verzió**: 2.0.6-os (vagy a legújabb verzió)
-    - **Közzétevő**: Microsoft Corp
+   - **Ajánlat**: Egyéni parancsfájl 2.0 linuxhoz
+   - **Verzió**: 2.0.6-os (vagy a legújabb verzió)
+   - **Közzétevő**: Microsoft Corp
 
-    > [!Note]  
-    > Egyéni parancsfájl Linux több verziója is szerepelhet. Adja hozzá a legfrissebb verziója, az elem kell.
+     > [!Note]  
+     > Egyéni parancsfájl Linux több verziója is szerepelhet. Adja hozzá a legfrissebb verziója, az elem kell.
 
 1. Válassza ki **letöltése.**
 

@@ -10,21 +10,21 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: azfuncdf, glenga
-ms.openlocfilehash: 3ad657fb695d88ffc75a37ee566ce59126906748
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 1c60bd4dae6c279ccff637ff0aa798c48ebec6f1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038432"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108069"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Hozzon létre Durable Functions az Azure portal használatával
 
 A [Durable Functions](durable-functions-overview.md) kiterjesztése az Azure Functions szolgáltatáshoz van megadva a NuGet-csomagot a [Microsoft.Azure.WebJobs.Extensions.DurableTask](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask). Ezzel a bővítménnyel kell telepíteni a függvényalkalmazásban. Ez a cikk bemutatja, hogyan kell telepítenie a csomagot, így durable functions az Azure Portalon is fejleszthet.
 
->[!NOTE]
->
->* Ha a tartós függvények fejleszt C#, Ehelyett érdemes [Visual Studio 2017 fejlesztői](durable-functions-create-first-csharp.md).
-* Tartós függvények használata Javascriptben fejleszt, Ehelyett érdemes [Visual Studio Code fejlesztési](./quickstart-js-vscode.md).
+> [!NOTE]
+> 
+> * Ha a tartós függvények fejleszt C#, Ehelyett érdemes [Visual Studio 2017 fejlesztői](durable-functions-create-first-csharp.md).
+> * Tartós függvények használata Javascriptben fejleszt, Ehelyett érdemes [Visual Studio Code fejlesztési](./quickstart-js-vscode.md).
 
 ## <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 
@@ -56,7 +56,7 @@ Tartós JavaScript-függvények létrehozásakor, akkor telepítenie kell a [ `d
     }
     ```
 
-   ![Kudu package.json feltöltése](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+   ![Kudu upload package.json](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
 
 4. Miután a `package.json` töltenek fel, futtassa a `npm install` parancsot a távoli végrehajtás Kudu konzol.
 

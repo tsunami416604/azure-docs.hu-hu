@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 03/06/2019
-ms.openlocfilehash: 2f615214fb7b77614054841af7972eb814525dee
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.date: 03/13/2019
+ms.openlocfilehash: 8654899e0a6dfce8f25855eba6c5f4a88af78665
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549918"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57903130"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Az SQL Serverről Azure SQL Database felügyelt példány T-SQL különbségek
 
@@ -477,7 +477,11 @@ A következő változók, functions és a nézetek különböző eredményeket a
 
 ### <a name="tempdb-size"></a>A TEMPDB mérete
 
-`tempdb` van felosztva, amelyek 12 egyes rendelkező fájlok maximális mérete 14 GB fájlonként. Nem lehet módosítani a fájlonkénti a maximális méret és új fájlokat is hozzáadhatók `tempdb`. Ez a korlátozás hamarosan eltávolítjuk. Néhány lekérdezés előfordulhat, hogy vissza hibát, ha szükségük van a 168 GB-nál több `tempdb`.
+Maximális fájlméret `tempdb` nem lehet az időtúllépésnek nagyobbnak, mint 24 GB és mag, általános célú szintjén. Maximális `tempdb` üzletileg kritikus mérete korlátozott, a példány tárolási mérettel. `tempdb` mindig van felosztva 12 adatfájlokat. Nem lehet módosítani a fájlonkénti a maximális méret és új fájlokat is hozzáadhatók `tempdb`. Néhány lekérdezést előfordulhat, hogy vissza hibát, ha szükségük van, több mint 24GB / mag a `tempdb`.
+
+### <a name="cannot-restore-contained-database"></a>Tartalmazott adatbázis nem állítható vissza.
+
+Felügyelt példány nem állítható vissza [tartalmazott adatbázisok](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases). A már létező tartalmazott adatbázisok időponthoz visszaállítás nem működnek a felügyelt példányon. A probléma hamarosan törlődni fog, és addig is javasoljuk, hogy tartalmazási beállítását eltávolítja az adatbázisból, amelyek a felügyelt példány kerülnek, és ne használja az éles adatbázis tartalmazási beállítását.
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Tárhely túllépése kis teljesítményigényű adatbázis-fájlokkal
 
@@ -510,7 +514,7 @@ Több rendszernézetek, teljesítményszámlálók, hibaüzenetek, xevent típus
 
 ### <a name="database-mail-profile"></a>Adatbázisbeli levelezési profil
 
-Csak egy adatbázisbeli levelezési profil lehet és kell meghívni `AzureManagedInstance_dbmail_profile`.
+Az SQL-ügynök által használt adatbázisbeli levelezési profil kell meghívni `AzureManagedInstance_dbmail_profile`.
 
 ### <a name="error-logs-are-not-persisted"></a>Hibanaplók nem megőrzött
 

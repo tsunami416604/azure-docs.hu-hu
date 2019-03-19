@@ -8,27 +8,27 @@ ms.author: ramonarguelles
 ms.date: 02/22/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: d9377e2b5b66a7d426373a8a85e4880dafeaeee6
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 134023c0884ce3a402b99806f1bf19dcb59ecc32
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56753172"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57882828"
 ---
 # <a name="logging-and-diagnostics-in-azure-spatial-anchors"></a>Naplózás és diagnosztika Azure térbeli horgonyok
 
-Azure térbeli horgonyok lehetővé teszi a standard naplózási hasznos az alkalmazások fejlesztéséhez. Ezenkívül esetén a diagnosztikai naplózás mód hasznos még több információra szükség a hibakereséshez. Diagnosztikai naplózás magában foglalja a környezet a rendszerképek tárolására.
+Azure térbeli horgonyok biztosít egy standard naplózási mechanizmus, amely hasznos az alkalmazások fejlesztéséhez. A térbeli horgonyok diagnosztikai naplózás mód hasznos, ha további információra van szüksége a hibakereséshez. Diagnosztikai naplózás tárolja a lemezképeket a környezet.
 
-## <a name="standard-logging-in-azure-spatial-anchors"></a>Az Azure térbeli horgonyok standard naplózása
-Az Azure térbeli horgonyok API lehetővé teszi a naplózás, amely az alkalmazások az alkalmazásfejlesztéshez hasznos naplóadatokat fogad és a hibakereséshez előfizethetnek. A standard API-k naplózási képek az eszköz lemezre a környezet nem maradnak. Az SDK esemény visszahívások ezeket a naplókat biztosít. Van arra, hogy ezek a naplók integrálása az alkalmazás naplózási mechanizmus.
+## <a name="standard-logging"></a>Standard naplózása
+A térbeli horgonyok API előfizethet a naplózási mechanizmus hasznos naplók lekérése az alkalmazások fejlesztését és a hibakereséshez. A standard API-k naplózást az eszköz lemezen ne tároljon képek a környezet. Az SDK esemény visszahívások ezeket a naplókat biztosít. Van arra, hogy ezek a naplók integrálása az alkalmazás naplózási mechanizmus.
 
-### <a name="how-to-configure-the-log-messages"></a>A naplózási üzenetek konfigurálása
-Nincsenek a lényeges a felhasználó két visszahívásokat. Az alábbi példában láthatja, hogyan konfigurálhatja a munkamenet.
+### <a name="configuration-of-log-messages"></a>Naplóüzenetek konfigurációja
+Nincsenek a lényeges a felhasználó két visszahívásokat. A következő minta bemutatja, hogyan konfigurálhatja a munkamenet.
 
 ```csharp
     cloudSpatialAnchorSession = new CloudSpatialAnchorSession();
     . . .
-    // setup the log level for the runtime session
+    // set up the log level for the runtime session
     cloudSpatialAnchorSession.LogLevel = SessionLogLevel.Information;
 
     // configure the callback for the debug log
@@ -38,25 +38,27 @@ Nincsenek a lényeges a felhasználó két visszahívásokat. Az alábbi példá
     cloudSpatialAnchorSession.Error += CloudSpatialAnchorSession_Error;
 ```
 
-### <a name="events--properties"></a>Esemény & tulajdonságai
+### <a name="events-and-properties"></a>Események és tulajdonságok
 
-Naplók és a hibák a munkamenetből feldolgozni a megadott esemény-visszahívások.
+Ezen esemény visszahívások feldolgozni a naplók és a hibák a munkamenetből áll rendelkezésre:
 
 - [LogLevel](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.loglevel): Itt adhatja meg az események úgy, hogy a futtatókörnyezet fogadjon részletességi szintjét.
-- [OnLogDebug](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.onlogdebug): Az esemény visszahívási biztosít a standard szintű hibakeresési napló események.
-- [Hiba](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.error): Az esemény visszahívási alkalmazásnapló-események által a futásidejű hibák tekintett biztosít.
+- [OnLogDebug](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.onlogdebug): A standard szintű hibakeresési napló események biztosít.
+- [Hiba](https://docs.microsoft.com/dotnet/api/microsoft.azure.spatialanchors.cloudspatialanchorsession.error): Itt a naplóesemények, amely a modul úgy ítéli meg, a hibák.
 
-## <a name="diagnostics-logging-in-azure-spatial-anchors"></a>Diagnosztikai naplózás az Azure térbeli horgonyok
+## <a name="diagnostics-logging"></a>Diagnosztikai naplózás
 
-A művelet a fent ismertetett naplózási normál üzemmódban Azure térbeli horgonyok egy diagnosztikai módját, amely a fejlesztők akkor választható, is most. Diagnosztika a környezet lemezképek rögzíti, és naplózhatja őket a lemezt. Ebben a módban bizonyos típusú problémákra, például a hibakeresés során nem képes kiszámítható módon található horgonyra hasznos. Csak engedélyezze a diagnosztikai naplózás egy meghatározott probléma reprodukálásához és tiltsa le. Ne futtassa az alkalmazások általában az engedélyezve van a diagnosztika.
+A normál módú naplózási művelet térbeli horgonyok is most egy diagnosztikai módját. Diagnosztikai módját a környezet lemezképek rögzíti, és naplózhatja őket a lemezt. Ebben a módban bizonyos típusú problémákra, például lehetővé teszi a kiszámítható található horgonyra hiba hibakeresése használhatja. Diagnosztikai naplózás csak egy adott probléma reprodukálásának engedélyezése. Tiltsa le. Diagnosztika nem engedélyezi, amikor az alkalmazások általában futtatja.
 
-A Microsoft támogatási interakció során a Microsoft képviselője kérheti, hogy arra, hogy további teendőkért Microsoft diagnostics köteg elküldéséhez. Ebben az esetben előfordulhat, hogy kívánja-diagnosztika engedélyezése, a probléma újbóli előidézését és küldje el a diagnosztikai csomagot a Microsoftnak további teendőkért. Diagnosztikai naplók elküldése a Microsoft előzetes nyugtázási nélkül a Microsoft képviselőjével közösen megválaszolatlan kerül.
+A Microsoft támogatási interakció során a Microsoft képviselője kérheti, hogy arra, hogy további teendőkért diagnosztikai köteg elküldéséhez. Ebben az esetben dönthet, hogy engedélyezze a diagnosztikát és Reprodukálja a problémát, elküldheti a diagnosztikai csomagot. 
 
-Az alábbi kódrészletek bemutatják, miként diagnosztikai mód engedélyezéséhez, továbbá hogyan küldhet a Microsoftnak a diagnosztikai naplók.
+Ha elküldi egy diagnosztikai naplót a Microsoft előzetes nyugtázási nélkül a Microsoft képviselőjétől, a Küldés megválaszolatlan kerül.
 
-### <a name="enabling-diagnostics-logging"></a>Diagnosztikai naplózás engedélyezése
+A következő szakaszok bemutatják engedélyezése diagnosztikai módját, és hogyan lehet elküldeni a diagnosztikai naplókat a Microsoftnak.
 
-A munkamenet a diagnosztikai naplózás engedélyezve van, minden művelet a munkamenet a megfelelő diagnosztikai naplózása a helyi fájlrendszerben fog rendelkezni. Naplózás tartoznak a lemezképek a környezet lemezre.
+### <a name="enable-diagnostics-logging"></a>Diagnosztikai naplózás engedélyezése
+
+Ha engedélyezi a munkamenet a diagnosztikai naplózás, minden a munkamenet elvégzett művelet a helyi fájlrendszer naplózása megfelelő diagnosztika. Képek a környezet során naplózást, a lemez kerülnek.
 
 ```csharp
 private void ConfigureSession()
@@ -64,15 +66,15 @@ private void ConfigureSession()
     cloudSpatialAnchorSession = new CloudSpatialAnchorSession();
     . . .
 
-    // setup the log level for the runtime session
+    // set up the log level for the runtime session
     cloudSpatialAnchorSession.LogLevel = SessionLogLevel.Information;
 
     // configure the callbacks for logging and errors
     cloudSpatialAnchorSession.OnLogDebug += CloudSpatialAnchorSession_OnLogDebug;
     cloudSpatialAnchorSession.Error += CloudSpatialAnchorSession_Error;
 
-    // Opt-in to diagnostics logging of environment images.
-    // If this is enabled, the diagnostics bundle will include images of the environment captured by the session
+    // opt in to diagnostics logging of environment images
+    // if this is enabled, the diagnostics bundle includes images of the environment captured by the session
     cloudSpatialAnchorSession.Diagnostics.ImagesEnabled = true;
 
     // set the level of detail to be collected in the diagnostics log by the session
@@ -84,15 +86,15 @@ private void ConfigureSession()
 }
 ```
 
-### <a name="submitting-the-diagnostic-bundle"></a>A diagnosztikai köteg elküldése
+### <a name="submit-the-diagnostics-bundle"></a>A diagnosztika köteg elküldéséhez
 
-A következő kódrészletet bemutatja, hogyan elküldése a Microsoftnak a diagnosztikai csomagot. Vegye figyelembe, hogy ez a környezet diagnosztika engedélyezése után a munkamenet által rögzített rendszerképek tartalmazza. Ezenkívül a Microsoftnak elküldött nélkül előzetes nyugtázása a Microsoft képviselőjével közösen diagnosztikai csomagjaiból megválaszolatlan kerül.
+A következő kódrészletet bemutatja, hogyan elküldése a Microsoftnak a diagnosztikai csomagot. A csomag tartalmazza a környezet, miután engedélyezte a diagnosztikai munkamenet által rögzített rendszerképeket. 
 
 ```csharp
 // method to handle the diagnostics bundle submission
 private async Task CreateAndSubmitBundle()
 {
-    // create the diagnostics bundle manifest  to collect the session information
+    // create the diagnostics bundle manifest to collect the session information
     string path = await cloudSpatialAnchorSession
                               .Diagnostics
                               .CreateManifestAsync("Description of the issue");
@@ -102,9 +104,9 @@ private async Task CreateAndSubmitBundle()
 }
 ```
 
-### <a name="anatomy-of-the-diagnostics-bundle"></a>A diagnosztika csomag szerkezete
-Lehet, hogy egy diagnosztikai csomagban található a következő információkat:
+### <a name="parts-of-a-diagnostics-bundle"></a>A diagnosztika csomag részei
+A diagnosztika csomag tartalmazhatja a következő információkat:
 
-- Kulcsképkocka-lemezképek – képek a környezet a munkamenet során rögzített diagnosztikai engedélyezve lettek.
-- Naplók – a modul által rögzített naplózási események.
-- Munkamenet metaadat - metaadatokat, amelyek a munkamenetet.
+- **Kulcsképkocka lemezképek**: A környezet diagnosztika engedélyezve lett a munkamenet során rögzített rendszerképeket.
+- **Naplók**: A modul által rögzített események naplózása.
+- **Munkamenet-metaadatok**: A metaadatok, amely azonosítja a munkamenet.

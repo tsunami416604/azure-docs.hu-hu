@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 3f4e87e5602b3c77178ab5bc842705cfedf64af2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8534f30c17208e77adfa47ea41506a3a61d3548d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448373"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897299"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>Biztonsági keret: Kommunikációs biztonság |} Megoldások 
 | Termék vagy szolgáltatás | Cikk |
@@ -146,7 +146,7 @@ Ez a szabály működik visszaadó HTTP-állapotkód 301 (Állandó átirányít
 | **Megfelelő technológiák** | Általános |
 | **Attribútumok**              | –  |
 | **Hivatkozások**              | [OWASP HTTP szigorú Transport Security – Adatlap](https://www.owasp.org/index.php/HTTP_Strict_Transport_Security_Cheat_Sheet) |
-| **Lépések** | <p>HTTP szigorú Transport Security (HSTS) egy választható biztonsági fejlesztések révén egy különleges válaszfejléc webalkalmazás által meghatározott. Miután egy támogatott böngésző megkapja ezt a fejlécet, hogy a böngésző megakadályozza a minden kommunikáció HTTP-n keresztül a megadott tartományba küldött, és inkább küld minden kommunikáció HTTPS-kapcsolaton keresztül. Megakadályozza a HTTPS kattintson keresztül a böngészőkben utasításokat is.</p><p>HSTS megvalósításához, a következő válaszfejléc kell konfigurálni egy webhely globálisan, vagy a kód vagy a konfigurációs van. Szigorú-átviteli – biztonság: a max-age = 300; includeSubDomains HSTS megoldást a következő szemben:</p><ul><li>Felhasználói könyvjelzőket, vagy manuálisan típusok http://example.com , és a egy man-in-the-middle támadó használatára: HSTS automatikusan átirányítja a célként megadott tartomány HTTPS a HTTP-kérelmekre</li><li>Webalkalmazást, amely a célja, hogy csak HTTPS lehet véletlenül HTTP hivatkozásokat tartalmaz, vagy a HTTP-kapcsolaton keresztül tartalmat szolgál ki: HSTS automatikusan átirányítja a célként megadott tartomány HTTPS a HTTP-kérelmekre</li><li>Egy man-in-the-middle támadó próbál intercept érvénytelen tanúsítványt használó victim felhasználó érkező forgalmat, és a felhasználó elfogadja a hibás tanúsítvány reméli: HSTS nem engedélyezi a felhasználó felülbírálhatja a tanúsítvány érvénytelen üzenet</li></ul>|
+| **Lépések** | <p>HTTP szigorú Transport Security (HSTS) egy választható biztonsági fejlesztések révén egy különleges válaszfejléc webalkalmazás által meghatározott. Miután egy támogatott böngésző megkapja ezt a fejlécet, hogy a böngésző megakadályozza a minden kommunikáció HTTP-n keresztül a megadott tartományba küldött, és inkább küld minden kommunikáció HTTPS-kapcsolaton keresztül. Megakadályozza a HTTPS kattintson keresztül a böngészőkben utasításokat is.</p><p>HSTS megvalósításához, a következő válaszfejléc kell konfigurálni egy webhely globálisan, vagy a kód vagy a konfigurációs van. Szigorú-átviteli – biztonság: a max-age = 300; includeSubDomains HSTS megoldást a következő szemben:</p><ul><li>Felhasználói könyvjelzőket, vagy manuálisan típusok https://example.com , és a egy man-in-the-middle támadó használatára: HSTS automatikusan átirányítja a célként megadott tartomány HTTPS a HTTP-kérelmekre</li><li>Webalkalmazást, amely a célja, hogy csak HTTPS lehet véletlenül HTTP hivatkozásokat tartalmaz, vagy a HTTP-kapcsolaton keresztül tartalmat szolgál ki: HSTS automatikusan átirányítja a célként megadott tartomány HTTPS a HTTP-kérelmekre</li><li>Egy man-in-the-middle támadó próbál intercept érvénytelen tanúsítványt használó victim felhasználó érkező forgalmat, és a felhasználó elfogadja a hibás tanúsítvány reméli: HSTS nem engedélyezi a felhasználó felülbírálhatja a tanúsítvány érvénytelen üzenet</li></ul>|
 
 ## <a id="sqlserver-validation"></a>Győződjön meg, hogy az SQL server-kapcsolat titkosítási és a tanúsítvány érvényesítése
 
@@ -339,7 +339,7 @@ string GetData(int value);
 | **SDL Phase**               | Felépítés |  
 | **Megfelelő technológiák** | MVC5, MVC6 |
 | **Attribútumok**              | –  |
-| **Hivatkozások**              | [A webes API-vezérlő SSL kényszerítése](http://www.asp.net/web-api/overview/security/working-with-ssl-in-web-api) |
+| **Hivatkozások**              | [A webes API-vezérlő SSL kényszerítése](https://www.asp.net/web-api/overview/security/working-with-ssl-in-web-api) |
 | **Lépések** | Ha egy alkalmazás egy HTTPS- és a egy HTTP-kötést, az ügyfelek továbbra is használhatja a HTTP hozzáférhetnek a webhelyhez. Ennek megelőzése érdekében egy művelet szűrő használatával győződjön meg arról, hogy védett API-kérések mindig HTTPS-kapcsolaton keresztül.|
 
 ### <a name="example"></a>Példa 

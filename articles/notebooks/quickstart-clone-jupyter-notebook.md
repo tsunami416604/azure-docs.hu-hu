@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: ced279575c0dd6ca2509911a53a23c2ebf9eb77e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: cfce5765cda1e3a1dfb7eb073719191b13b0696e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762042"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089199"
 ---
 # <a name="quickstart-clone-a-notebook"></a>Gyors útmutató: Notebook klónozása
 
@@ -40,13 +40,13 @@ A Klónozás másolatot készít egy GitHub-jegyzetfüzetet az Azure-jegyzetfüz
 
 1. Az a **GitHub-adattár feltöltése** , amely akkor jelenik meg, adja meg, vagy állítsa be a következő adatokat, majd válassza **importálás**:
 
-    - **GitHub-adattár**: A Microsoft/cognitive-services-jegyzetfüzetek (ezt a nevet a Jupyter notebookok klónozza az Azure Cognitive Services: [ https://github.com/Microsoft/cognitive-services-notebooks ](https://github.com/Microsoft/cognitive-services-notebooks)).
-    - **Klónozza a rekurzív módon**: (törölve)
-    - **Projektnév**: A cognitive Services-klón
-    - **A projekt Azonosítóját**: cognitive services-klón
-    - **Nyilvános**: (törölve)
+   - **GitHub-adattár**: A Microsoft/cognitive-services-jegyzetfüzetek (ezt a nevet a Jupyter notebookok klónozza az Azure Cognitive Services: [ https://github.com/Microsoft/cognitive-services-notebooks ](https://github.com/Microsoft/cognitive-services-notebooks)).
+   - **Klónozza a rekurzív módon**: (törölve)
+   - **Projektnév**: A cognitive Services-klón
+   - **A projekt Azonosítóját**: cognitive services-klón
+   - **Nyilvános**: (törölve)
 
-    ![GitHub-adattár helyi menü tárház kapcsolatos információk összegyűjtéséhez feltöltése](media/quickstarts/upload-github-repo-popup.png)
+     ![GitHub-adattár helyi menü tárház kapcsolatos információk összegyűjtéséhez feltöltése](media/quickstarts/upload-github-repo-popup.png)
 
 1. Türelemmel, amíg a folyamat befejeződése után; a tárház klónozása pár percet is igénybe vehet.
 

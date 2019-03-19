@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e947b71fe6bb9e6bd884b8b2dd0397a63bea2a95
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8b5ec711f0e43d9d29d962d43ed8b1d86338db87
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203641"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881214"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>Oktatóanyag: Az xMatters OnDemand az Azure Active Directory-integráció
 
@@ -114,6 +114,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     ![Egyszeri bejelentkezés konfigurálása](./media/xmatters-ondemand-tutorial/tutorial_xmattersondemand_url.png)
     
     a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe:
+
     | |
     |--|
     | `https://<companyname>.au1.xmatters.com.au/`|
@@ -123,6 +124,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     | `https://<companyname>.xmatters.com.au/`|
 
     b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe:
+    
     | |
     |--|
     | `https://<companyname>.au1.xmatters.com.au`|
@@ -209,9 +211,9 @@ Ez a szakasz célja xMatters OnDemand Britta Simon nevű felhasználó létrehoz
 
 1. Jelentkezzen be a **XMatters OnDemand** bérlő.
 
-1.  Kattintson a **felhasználók** fülre, majd kattintson **felhasználó hozzáadása**.
+1. Kattintson a **felhasználók** fülre, majd kattintson **felhasználó hozzáadása**.
 
-    ![Felhasználók](./media/xmatters-ondemand-tutorial/IC781048.png "felhasználók")
+   ![Felhasználók](./media/xmatters-ondemand-tutorial/IC781048.png "felhasználók")
 
 1. Az a **felhasználó hozzáadása** szakaszban, hajtsa végre az alábbi lépéseket:
 

@@ -15,12 +15,12 @@ ms.date: 02/11/2019
 ms.author: mabrigg
 ms.reviewer: justini
 ms.lastreviewed: 02/11/2019
-ms.openlocfilehash: 0c3f52c78bbfd3094324b74f3b66610fcebfa2f4
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 9eca22f5a594bf3d61b1d68882c4853f4bfc499d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099292"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100751"
 ---
 # <a name="apply-updates-in-azure-stack"></a>Alkalmazza a frissítéseket az Azure Stackben
 
@@ -30,7 +30,7 @@ Használhatja a **frissítése** csempére a alkalmazni a Microsoft- vagy OEM cs
 
 Ha egy integrált rendszerek 1807 verzióját használja, vagy a korábban, töltse le a csomag, a csomagfájlok importálása az Azure Stackhez, és a frissítési csomag telepítése. Útmutatásért lásd: [frissítés az Azure Stack úgy, hogy letölti a csomagot](#update-azure-stack-by-downloading-the-package)
 
-Ezek frissítse az Azure Stack integrált rendszerek utasítások használata. Ha az Azure Stack fejlesztői rendszer használ, le kell töltenie az aktuális verzió esetében a telepítőcsomagot. Útmutatásért lásd: [az Azure Stack fejlesztői készletének telepítése](.\asdk\asdk-install.md)
+Ezek frissítse az Azure Stack integrált rendszerek utasítások használata. Ha az Azure Stack fejlesztői rendszer használ, le kell töltenie az aktuális verzió esetében a telepítőcsomagot. Útmutatásért lásd: [az Azure Stack fejlesztői készletének telepítése](./asdk/asdk-install.md)
 
 ## <a name="update-azure-stack"></a>Az Azure Stack frissítése
 

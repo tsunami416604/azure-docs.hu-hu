@@ -1,7 +1,7 @@
 ---
-title: A projekt Akusztika tervezési folyamat áttekintése
+title: A Akusztika szimulációs tervezési alapelvek
 titlesuffix: Azure Cognitive Services
-description: Ez a dokumentum ismerteti az összes három szakaszban a projekt Akusztika munkafolyamat-Tervező tervez express.
+description: A fogalmi áttekintése ismerteti, hogyan magában foglalja a projekt Akusztika akusztikai szimuláció tervezni a folyamathoz.
 services: cognitive-services
 author: kegodin
 manager: nitinme
@@ -10,87 +10,56 @@ ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: bb5f309a96feac2caea85fbe81b7216eecfc4b79
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: dd27b660dfdd1f4bcec89291b10fd87750ad4c49
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873937"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58136156"
 ---
-# <a name="design-process-overview"></a>Tervezési folyamat áttekintése
-Az összes három szakaszban a projekt Akusztika munkafolyamat-Tervező tervez fejezhető: előre os jelenet telepítése, a megbízható forrás elhelyezési és utáni bake Tervező. A folyamat kevesebb jelölőnyelvi társított visszhang kötetek elhelyezése Tervező szabályozhatja, hogyan álló jelenet renderelése; hangok megőrzése szükséges.
+# <a name="project-acoustics-design-process-concepts"></a>Projekt Akusztika tervezési folyamat alapelvei
 
-## <a name="pre-bake-design"></a>Üzem előtti bake kialakítása
-Az üzem előtti bake jelenet telepítési folyamatot hoz létre a helyszín és a metaadatokat, amelyek használhatók a hangot wave szimuláció, amely kiválasztásával jelenet elemek részt vesz a szimuláció occlusions, tükröződés és reverberation biztosít, amely tartalmazza. A helyszín metaadatai a kijelölés akusztikai anyagok minden jelenet elemhez. Az akusztikai anyagok ellenőrzés kerülnek vissza minden egyes felületből eredményes energia mennyiségét.
+A fogalmi áttekintése ismerteti, hogyan Akusztika projekt tartalmazza az eredményes tervezési folyamatba fizikai akusztikai szimuláció.
 
-Az alapértelmezett elnyelő együttható az összes felület érték 0,04, amely magas reflektív. Esztétikai és játékélményt hatásait a jelenet során különböző anyagokat, amely azokat a tér át egy területről a helyszín, egy másik hallani esetén különösen kiemelkedő a figyelők elnyelő együtthatója beállításával érheti el. Például egy világos való átállás sötét reverberant szobában, javítja a nem reverberant öltözet jelenet az átállás hatását. A hatás eléréséhez finomhangolja az elnyelő együttható magasabb öltözet jelenet anyagokon.
+## <a name="sound-design-with-audio-dsp-parameters"></a>Hang DSP paraméterekkel tervezni
 
-Egy adott anyag szoba reverberation idején intenzitásfokozatok kapcsolódik, a elnyelő együttható a legtöbb anyagok elnyelő értékeket kellene 0,01 való 0,20 tartományban. Az ezen a tartományon kívül elnyelő együttható anyagok olyan nagyon elnyelő.
+3D interaktív-címei az adott hang hang digitális jelfeldolgozó (DSP) blokkokat audio motor üzemeltetett használatával érhet el. Ezek blokkok tartomány vegyítése, reverberation, echo, késleltetés, kiegyenlítés, tömörítés, korlátozása, és más hatás összetettebbé válnak. Válassza ki, elrendezése, majd a következmények paramétereinek beállítása feladata az eredményes Tervező, akik összeállít egy hang gráfokon esztétikai és játékélményt célja, a felhasználói élményt biztosít.
 
-![Visszhang grafikon](media/ReverbTimeGraph.png)
+Egy interaktív címben, hangok és figyelő áthelyezése során a 3D terület, hogyan hajtsa végre ezeket a paramétereket alkalmazkodhat a változó körülményekhez? A hangfájl designer gyakran szervez programozott elérése reverberation hatások, a módosítások például, vagy a kombinációs kacsa hangok szerint a figyelő egy részét a jelenet helyez át egy másik paraméterek módosításainak aktiválhat kötetek során a hely. Akusztika rendszereket is elérhető, amelyek segítségével automatizálható néhány következmények.
 
-A [végig a felhasználói felület bake](bake-ui-walkthrough.md) az üzem előtti bake vezérlők részletesen ismerteti.
+3D címek világító és kinematikus fizika rendszerek fizika indokolt, de a Tervező igazított többféle, szakirányú és játékélményt célok eléréséhez használja. Vizuális tervezővel egyes képpontos értékek nem állítja be, de inkább beállítja a 3D-modellek, anyagok és könnyű adatátviteli rendszerek, amelyek minden fizikailag alapú kereskedelmi visual esztétikára és CPU-költségek. Mi lenne a megfelelő folyamat Audio? Projekt Akusztika egy első lépése a feltárása, ezt a kérdést. Először azt kell touch beszélget átviteli akusztikus energia használatával adhatja meg.
 
-## <a name="sound-source-placement"></a>Hang forrás elhelyezése
-Mintavétel, valamint voxels pontok futásidőben is súgó megtekintése folyamatban elakadt a voxelized geometriai belül eredményes forrásokkal kapcsolatos problémák megoldásában. Váltás a mintavétel, valamint a voxel rács pontok, a megfelelő jelölőnégyzet bejelölésével a Gizmos menü a jobb felső sarkában a jelenet nézetet. Ha a megbízható forrás belül egy falon voxel, helyezze át egy légi voxel.
+![visszhang zónák](media/reverb-zones-altspace.png)
 
-![Gizmos menü](media/GizmosMenu.png)  
+## <a name="impulse-responses-acoustically-connecting-two-points-in-space"></a>Lökőfeszültségű válaszok: Akusztikailag csatlakozás hely között
 
-A voxel megjelenített segítségével határozza meg a vizuális összetevőket a játék egy-egy átalakítási vonatkozik-e. Ha igen, az azonos átalakítás alkalmazása a GameObject üzemeltetéséhez a **Akusztika Manager**.
+Ha ismeri a kialakítással hang, jól ismernek akusztikai lökőfeszültségű válaszokat. A modellek egy figyelőt a forrásból hangot átvitelét akusztikai lökőfeszültségű választ. Ezért a lökőfeszültségű választ minden hely Akusztika például hangelnyelés és reverberation érdekes hatásának rögzítheti. Lökőfeszültségű válaszokat is bizonyos hatékony tulajdonságok, amelyek lehetővé teszik a skálázható hang DSP hatások. Két hang jelek együtt hozzáadása, és a egy lökőfeszültségű válasz feldolgozása biztosítja ugyanazt az eredményt a lökőfeszültségű válasz külön-külön mindegyik jel alkalmazása, és vegye fel az eredményeket. Akusztikai propagálás és lökőfeszültségű válaszokat is nem függ a feldolgozása folyamatban van modellezve a helyszín csak a hang- és a forrás- és a figyelő helyeken. Röviden lökőfeszültségű választ mondatokból eredményes propagálása a jelenet hatása.
 
-### <a name="voxel-size-discrepancies"></a>Voxel mérete eltérések
-Azt tapasztalhatja, hogy a voxels mutatja be, amelyek a helyszín rácsvonalak részt vesznek a Akusztika bake mérete a tervezési időt és a futtatókörnyezet nézetek különböző. Ez a különbség nem befolyásolja a kiválasztott szimuláció gyakorisága minőségi/részletességét azonban inkább egy biproduct voxelized jelenet modul használatával. Futásidőben a szimuláció voxels olyan "finomított", a forrás helye között interpolációs támogatásához. Ez is lehetővé teszi a tervezési időt elhelyezéséhez eredményes adatforrásokat közelebb helyezni a jelenet rácsvonalak engedélyezettnél szimuláció voxel mérete – mivel belül egy voxel forrásokból, amelyek tartalmaznak egy akusztikailag kezelt háló ne végezzen semmilyen hangot.
+Lökőfeszültségű választ minden érdekes szoba akusztikai érvénybe rögzíti, és azt alkalmazhatja hang hatékonyan egy szűrővel kapunk lökőfeszültségű válaszok mérési vagy szimulátor. De mi történik, ha azt nem teljesen szeretné a fizika pontosan egyeznie a Akusztika, de ahelyett, hogy a jelenet érzelmi igényeinek megfelelő elképzelt? Azonban sokkal képpontos értékeket, például lökőfeszültségű választ csak számok ezer listája, a hogyan azt valószínűleg módosítani tudja azt esztétikai igényeinek? És mi történik, ha azt szeretné, hogy nem érhető el vagy akadály, amely zökkenőmentesen megadásának átjáróknak vagy mögött akadályokat, miközben hány lökőfeszültségű válaszok szükségünk beolvasni egy zökkenőmentes érvénybe? Mi történik, ha a forrás áthelyezi gyors? Hogyan tegye azt interpolálja?
 
-Az alábbiakban bemutató (előtti bake) tervezési voxels és futásidejű (utáni bake) voxels közötti különbség, mivel a Unity beépülő modul által ábrázolt két képek:
+Úgy tűnik, nehéz a szimuláció és lökőfeszültségű válaszok használata interaktív címben Akusztika egyes funkcióit. De még mindig olyan egy hang átviteli rendszer, amely támogatja a tervező beállításainak, ha össze tudjuk kapcsolni a lökőfeszültségű válaszokat a szimuláció az ismerős hang DSP érvénybe paraméterekkel.
 
-Tervezési idő voxels:
+## <a name="connecting-simulation-to-audio-dsp-with-parameters"></a>Szimuláció csatlakozik hang DSP paraméterekkel
 
-![VoxelsDesignTime](media/VoxelsDesignTime.png)
+Lökőfeszültségű választ tartalmaz minden érdekes (és minden kevésbé fontos) akusztikus érvénybe. Hang DSP-címblokkokat, a paraméterek megfelelőek-e, amikor is leképezési érdekes akusztikus érvénybe. Akusztikus szimuláció egy hang DSP letiltása egy 3D jelenet hang átviteli automatizálása érdekében használata csak a hang DSP paraméterek lökőfeszültségű választ a mérési kérdése. Ez a mérés bizonyos gyakori és a fontos akusztikus hatások hangelnyelés, akadály, portalling és reverberation többek között a jól ismert.
 
-Futásidejű voxels:
+De ha a szimuláció közvetlenül csatlakozik a hang DSP-paraméterek, ahol a Tervező módosítás? Mi volt hogy kapjanak? Hogy próbál a jeggyel rendszer jelentős mennyiségű memóriát vissza elvetése lökőfeszültségű válaszokat, hogy vonzó néhány DSP paramétert. És bizonyos teljesítményt az a Tervező biztosítanak a végső eredményt keresztül, azt kell csak megtalálni a tervezőben a szimuláció és a hanganyag DSP közötti beszúrása.
 
-![VoxelsRuntime](media/VoxelsRuntime.png)
+![lökőfeszültségű válasz paraméterek](media/acoustic-parameters.png)
 
-A döntés-e a voxel háló pontosan tükrözi az architektúra szerkezeti jelenet rácsvonalak a Tervező módban voxels, nem a finomított voxels futásidejű képi használatával kell tenni.
+## <a name="sound-design-by-transforming-audio-dsp-parameters-from-simulation"></a>A szimuláció hang DSP paraméterek átalakításával keletkező tervezni
 
-## <a name="post-bake-design"></a>Utáni bake kialakítása
-Bake eredményeket a hozzáférés-vezérlő bejegyzések fájlt minden forrás-figyelő hely pár során a jelenet hangelnyelés és reverberation paraméterek vannak tárolva. A fizikailag pontos eredményt is használható a projekt-van, és kiváló kiindulási pontot (SSO). A utáni bake tervezési folyamat szabályok alkalmazásán át a bake eredménye a paraméterekhez futtatás közben adja meg.
+Fontolja meg a napszemüvegeket a világ nézetének van hatással. Világos napon a szemüveg valami otthonosabban csökkentheti a izzólámpákhoz. Sötét szoba előfordulhat, hogy nem kell minden látható. A szemüveg nem állít be bizonyos fokú fényerő minden helyzetben; Ügyeljen rá, minden sötétebb.
 
-### <a name="distance-based-attenuation"></a>Távolság-alapú gyengülés
-A hanganyag DSP által biztosított a **Microsoft Acoustics** Unity spatializer beépülő modul tiszteletben tartja a forrás távolság-alapú gyengülés beépített a Unity-szerkesztőbe. Távolság-alapú gyengülés vezérlők vannak a **hang forrás** összetevő található a **vizsgáló** hang panel alatt adatforrásokat **3D eredményes beállításai**:
+Szimuláció használatával meghajtó a hang DSP hangelnyelés és reverberation paraméterek használatával, ha azt szűrőt is hozzáadhat a szimulátor a DSP "látja" paraméterek módosítása után. A szűrő nem lenne hangelnyelés bizonyos szintű kényszerítése vagy visszhang tail hosszát, sokkal például napszemüvegeket ne minden hely azonos fényereje. Előfordulhat, hogy a szűrő ügyeljen minden occluder occlude kisebb. Vagy több occlude. Hozzáadásával és módosításával "elsötétítő" hangelnyelés paraméter egy szűrőt, nagy, nyissa meg a helyiségek lenne továbbra is kevés, nem hatása hangelnyelés, átjáróknak növelné a közepes egy erős hangelnyelés jelenti, hogy a simaság érvényben megőrzése átmenetek során hogy a szimuláció biztosít.
 
-![Távolságskála gyengülés](media/distanceattenuation.png)
+A az összeállítást a Tervező feladat akusztikai paramétereinek minden esetben a legfontosabb DSP paraméterek szimuláció érkező alkalmazandó kiválasztásával és a módosításának szűrők kiválasztása módosítja. A Tervező tevékenységek átmeneteket magasabb fontos szempont a hangelnyelés és reverberation hatás és a többféle forrásból jelenléte beállításának keskeny fontos szempont a emelt azt. Természetesen a helyzet igénylést, amikor egy szűrő mindig elérhető, hogy egyszerűen lépjen vissza a DSP-paraméterek egy adott forrás kiválasztása egy adott helyzetben.
 
-Akusztika számítási lehetőségek eltérése a lejátszó helyre "szimuláció régió" mezőben hajt végre. Ha egy megbízható forrásból a szimuláció régión kívül található, a lejátszó távolságban belül a mezőbe csak geometriai hatással lesz a hang propagálás (például hangelnyelés okozó), amely viszonylag jól működik, ha occluders vannak-e a Windows Media player közelében. Azonban azokban az esetekben, amikor a Windows Media player nyissa meg a helyet, de a occluders buildjénél a távoli eredményes forrás a hangot is válnak irreálisan disoccluded. A javasolt megoldás, hogy ebben az esetben ellenőrizze, hogy a hangfájl gyengülés kapcsol körülbelül 45 m, a lejátszó az Edge-ben a mező alapértelmezett vízszintes távolság 0.
+## <a name="sound-design-in-project-acoustics"></a>A projekt Akusztika tervezni
 
-### <a name="tuning-scene-parameters"></a>Jelenetparaméterek hangolása
-Minden forrás paramétereinek beállításához kattintson a csatorna sáv a Unity a **hang Mixer**, és módosítsa úgy a paramétereket a a **projekt Akusztika Mixer** érvénybe.
+A projekt Akusztika csomag integrálható a fent leírt összetevők: szimulátort, -kódolót, amely kinyeri a paraméterek, és létrehozza a Akusztika eszköz, a DSP hang és a egy kijelölt szűrők. A projekt Akusztika tervezni a szimuláció származik, és a alkalmazni a hang DSP elérhetővé tett belül a játék-szerkesztő és a hang-motor a dinamikus vezérlőkkel hangelnyelés és reverberation paraméterek be, hogy a szűrők lehetőséget választva paramétereinek jár.
 
-![Mixer testreszabása](media/MixerParameters.png)
-
-* **Wetness igazítás** – beállítja a visszhang energiagazdálkodási, DB, a forrás-figyelő távolság alapján jelenet minden forrás. Pozitív értékek győződjön meg arról, hang több reverberant, amíg a negatív értékek hangjelzést több száraz.
-* **RT60 méretezési** – tényezőt skaláris visszhang alkalommal.
-* **Használja a Pásztázó** -vezérlők audio-e kimeneti binaural (0) vagy a többcsatornás pásztázásához (1). Bármilyen érték 1 mellett azt jelzi, hogy binaural. Binaural kimeneti a HRTFs spatialized fejhallgatót való használatra, és a többcsatornás kimeneti a VBAP spatialized többcsatornás legyen speaker rendszerekkel lehet használni. Használja a többcsatornás panner, ügyeljen arra, hogy a hangszóró –, amely megfelel az eszköz beállításainál válassza, ha található **Projektbeállítások** > **hang**.
-
-![SpeakerMode](media/SpeakerMode.png)
-
-### <a name="tuning-source-parameters"></a>Forrás paraméterek hangolása
-Csatolja a **AcousticsAdjust** forráshoz parancsfájl lehetővé teszi, hogy a hangolási paraméterek ahhoz az adatforráshoz. Csatlakoztassa a parancsfájlt, kattintson a **összetevő felvétele** alján a **vizsgáló** panelen, és keresse meg a **parancsfájlok > Akusztika beállítása**. A szkript hat vezérlők rendelkezik:
-
-![AcousticsAdjust](media/AcousticsAdjust.png)
-
-* **Engedélyezze a Akusztika** – azt szabályozza, hogy Akusztika alkalmazott ebből a forrásból. Ha nincs bejelölve, a forrás lesz spatialized, HRTFs vagy pásztázásához, de nem lesznek nincs Akusztika. Ez azt jelenti, hogy nincs akadály hangelnyelés és dinamikus reverberation paraméterek – például szintjét és decay. Egy rögzített szint és a késleltetési idő reverberation továbbra is érvényesül.
-* **Hangelnyelés** -alkalmazása egy szorzóval a Akusztika rendszer által számított hangelnyelés dB szintre. Ha ez szorzó 1-nél nagyobb, hangelnyelés fog kell exaggerated közben értékek 1-nél kisebb ne hangelnyelés hatása több változás is, és a 0 érték letiltja a hangelnyelés.
-* **Átviteli (adatbázis)** – állítsa be a gyengülés (az adatbázis) keresztül geometriai átvitel okozta. Állítsa a csúszkát a legalacsonyabb átviteli letiltása. Akusztika körül jelenet geometriai (portaling) érkező, a kezdeti száraz hang spatializes. Átviteli biztosít egy további száraz gyűjtőbe, amely a sor-az-üzemel irányba spatialized van. Vegye figyelembe, hogy a forrás gyengülés távolság görbe is érvényesek.
-* **Wetness (adatbázis)** – beállítja a visszhang energiagazdálkodási, dB, a forrás közötti távolságot megfelelően. Pozitív értékek győződjön meg arról, hang több reverberant, amíg a negatív értékek hangjelzést több száraz. Kattintson a görbe szerkesztő megjelenítéséhez a görbe vezérlő (zöld sor). A görbe pontok hozzáadása kattint, és húzza a kívánt kialakításához, a függvény ezen pontok módosítása Az x tengely forrás közötti távolságot, és az y tengely visszhang korrekciós dB-ben. Szerkesztési görbék további információkért lásd: Ez [Unity manuális](https://docs.unity3d.com/Manual/EditingCurves.html). Alaphelyzetbe állítja a görbe vissza az alapértelmezett, kattintson a jobb gombbal **Wetness** válassza **alaphelyzetbe**.
-* **Decay időskálára** – Itt adható meg egy szorzóval vonatkozó a késleltetési idő. Például ha az bake eredményt adja meg egy késleltetési idő ezredmásodpercben 750, de ez az érték 1.5 van beállítva, a késleltetési idő a alkalmazni a forrás-, a 1,125 ezredmásodperc.
-* **Outdoorness** -additív módosításának a becslés az Akusztika rendszer hogyan "szabadban" hang kell-e a reverberation egy forrás. Az érték 1 fogja elérhetővé tenni egy adatforrás mindig eredményes teljesen szabadban, -1 értékre állítaná készítsen egy forrás eredményes szobában közben.
-
-Különböző forrásokból bizonyos esztétikai vagy játékélményt hatás eléréséhez különböző beállításokat lehet szükség. Párbeszédpanelen egy lehetséges példa. Az emberi sszes törlése reverberation beszéd, a több attuned van, amíg párbeszédpanel gyakran kell lennie a játékélményt érthető. Anélkül, hogy a párbeszédpanelen nem-diegetic helyezi a fiókot is a **Wetness** lefelé, módosításával a **technológiáira távolság Warp** alább leírt paraméter hozzáadásával néhány  **Átviteli** az egyes száraz hang boost propagálása falak használatával, illetve csökkenti a **hangelnyelés** portálokon keresztül érkezzen további megbízható 1-ről.
-
-Csatolja a **AcousticsAdjustExperimental** forráshoz parancsfájl lehetővé teszi, hogy további kísérleti hangolási paraméterek ahhoz az adatforráshoz. Csatlakoztassa a parancsfájlt, kattintson a **összetevő felvétele** alján a **vizsgáló** panelen, és keresse meg a **parancsfájlok > Akusztika beállítása kísérleti**. Jelenleg egy kísérleti vezérlő:
-
-![AcousticsAdjustExperimental](media/AcousticsAdjustExperimental.png)
-
-* **Technológiáira távolság Warp** – exponenciális hajlítása száraz – Nyugat-európai arányának kiszámításához használt távolság a alkalmazni. A Akusztika rendszer kiszámítja a terület teljes nedves szinteket, amelyek zökkenőmentesen távolság számától függ, és adja meg a technológiáira távolság jelek. Hajlítási 1-nél nagyobb értékek a hatás exaggerate távolság kapcsolatos reverberation szintek, így a "távoli" hang növelésével. Hajlítása értékek 1-nél kisebb ügyeljen a távolság-alapú reverberation módosítása több változás is, és, hogy az eredményes további "e".
+## <a name="next-steps"></a>További lépések
+* A Tervező paradigmát használatával kipróbálhatja a [a Unity Project Akusztika rövid](unity-quickstart.md) vagy a [projekt Akusztika rövid, az Unreal](unreal-quickstart.md)
+* Fedezze fel a [projekt Akusztika vezérlők tervezése Unity](unity-workflow.md) vagy a [projekt Akusztika Unreal vezérlők tervezése](unreal-workflow.md)
 

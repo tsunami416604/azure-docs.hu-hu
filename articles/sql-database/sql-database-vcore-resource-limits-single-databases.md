@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 03/06/2019
-ms.openlocfilehash: 127e3385f1fd9cf0975ff19818d3112fe5a713d0
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.date: 03/12/2019
+ms.openlocfilehash: 990e6b4d869df030bfddfeb2d60f0ca0e23ea8ca
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57571014"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57902263"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Az Azure SQL Database Virtuálismag-alapú vásárlási modell korlátok egy önálló adatbázis
 
@@ -54,7 +54,7 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 |Egyidejű feldolgozók (kérelmek) maximális|200|400|600|800|1000|1200|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|
 |Replikák száma|1|1|1|1|1|1|
-|Több-AZ|–|N/A|N/A|N/A|N/A|N/A|–|
+|Több-AZ|–|N/A|N/A|N/A|N/A|–|
 |Felskálázás olvasása|–|N/A|N/A|N/A|N/A|–|
 |Biztonsági mentési tárterület|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|1 X-adatbázis mérete|
 
@@ -84,7 +84,7 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 ### <a name="general-purpose-service-tier-generation-5-compute-platform-part-1"></a>Általános célú szolgáltatásszint: 5. generáció számítási platform (1. rész)
 
 |Számítási mérete|GP_Gen5_2|GP_Gen5_4|GP_Gen5_6|GP_Gen5_8|GP_Gen5_10|GP_Gen5_12|GP_Gen5_14|
-|:--- | --: |--: |--: |--: |---: | --: |--: |--: |
+|:--- | --: |--: |--: |--: |---: | --: |--: |
 |H/W generálása|5|5|5|5|5|5|5|
 |Virtuális magok|2|4|6|8|10|12|14|
 |Memória (GB)|10.2|20.4|30.6|40.8|51|61.2|71.4|
@@ -107,7 +107,7 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 ### <a name="general-purpose-service-tier-generation-5-compute-platform-part-2"></a>Általános célú szolgáltatásszint: 5. generáció számítási platform (2. rész)
 
 |Számítási mérete|GP_Gen5_16|GP_Gen5_18|GP_Gen5_20|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
-|:--- | --: |--: |--: |--: |---: | --: |--: |--: |
+|:--- | --: |--: |--: |--: |---: | --: |--: |
 |H/W generálása|5|5|5|5|5|5|5|
 |Virtuális magok|16|18|20|24|32|40|80|
 |Memória (GB)|81.6|91.8|102|122.4|163.2|204|408|
@@ -168,7 +168,7 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 |A TempDB mérete (GB)|224|256|288|320|384|384|
 |IO-késés (becsült)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|
 |Cél IOPS (64 KB)|35000|40000|45000|50000|80000|120000|
-|Napló Sebességhatár (MB/s)|42|48|48|48|48|48|
+|Napló Sebességhatár (MB/s)|42|48|54|60|64|64|
 |Egyidejű feldolgozók (kérelmek) maximális|1400|1600|1800|2000|3200|4800|
 |Egyidejű bejelentkezések maximális száma (kérelmek)|1400|1600|1800|2000|3200|4800|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|
@@ -180,7 +180,7 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 ### <a name="business-critical-service-tier-generation-5-compute-platform-part-1"></a>Üzleti kritikus fontosságú szolgáltatási szint: 5. generáció számítási platform (1. rész)
 
 |Számítási mérete|BC_Gen5_2|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
-|:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |
+|:--- | --: |--: |--: |--: |---: | --: |--: |
 |H/W generálása|5|5|5|5|5|5|5|
 |Virtuális magok|2|4|6|8|10|12|14|
 |Memória (GB)|10.2|20.4|30.6|40.8|51|61.2|71.4|
@@ -204,7 +204,7 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 ### <a name="business-critical-service-tier-generation-5-compute-platform-part-2"></a>Üzleti kritikus fontosságú szolgáltatási szint: 5. generáció számítási platform (2. rész)
 
 |Számítási mérete|BC_Gen5_16|BC_Gen5_18|BC_Gen5_20|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
-|:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |
+|:--- | --: |--: |--: |--: |---: | --: |--: |
 |H/W generálása|5|5|5|5|5|5|5|
 |Virtuális magok|16|18|20|24|32|40|80|
 |Memória (GB)|81.6|91.8|102|122.4|163.2|204|408|
@@ -216,7 +216,7 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 |Tárolási típus|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|Helyi SSD|
 |IO-késés (becsült)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|1 – 2 ms (írás)<br>1 – 2 ms (olvasás)|
 |Cél IOPS (64 KB)|40000|45000|50000|60000|80000|100000|200000|
-|Napló Sebességhatár (MB/s)|48|48|48|48|48|48|48|
+|Napló Sebességhatár (MB/s)|48|54|60|72|96|96|96|
 |Egyidejű feldolgozók (kérelmek) maximális|1600|1800|2000|2400|3200|4000|8000|
 |Egyidejű bejelentkezések maximális száma|1600|1800|2000|2400|3200|4000|8000|
 |Maximális engedélyezett munkamenetek|30000|30000|30000|30000|30000|30000|30000|
@@ -230,7 +230,7 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 ### <a name="generation-4-compute-platform-storage-sizes-and-compute-sizes"></a>4. generációs számítási platform: Tárterületet és számítási méretek
 
 |Teljesítményszint|HS_Gen4_1|HS_Gen4_2|HS_Gen4_4|HS_Gen4_8|HS_Gen4_16|HS_Gen4_24|
-|:--- | --: |--: |--: |--: |--: |--: |--: |
+|:--- | --: |--: |--: |--: |--: |--: |
 |H/W generálása|4|4|4|4|4|4|
 |Virtuális magok|1|2|4|8|16|24|
 |Memória (GB)|7|14|28|56|112|168|
@@ -253,7 +253,7 @@ A szolgáltatási rétegben, a számítási méretét és a egy önálló adatb�
 ### <a name="generation-5-compute-platform"></a>5. generáció számítási platform
 
 |Teljesítményszint|HS_Gen5_2|HS_Gen5_4|HS_Gen5_8|HS_Gen5_16|HS_Gen5_24|HS_Gen5_32|HS_Gen5_40|HS_Gen5_80|
-|:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |--: |
+|:--- | --: |--: |--: |--: |---: | --: |--: |--: |
 |H/W generálása|5|5|5|5|5|5|5|5|
 |Virtuális magok|2|4|8|16|24|32|40|80|
 |Memória (GB)|10.2|20.4|40.8|81.6|122.4|163.2|204|408|

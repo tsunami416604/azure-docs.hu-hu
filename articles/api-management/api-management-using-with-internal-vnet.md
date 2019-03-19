@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: 04712b1ba1eccd71dcfcc9012ebcbdfcbdcd2404
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d8cea95fbfb76f1dd1891045309a35aa1d0a8ab0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773673"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099484"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Belső virtuális hálózathoz az Azure API Management szolgáltatás használatával
 Azure virtuális hálózatokkal az Azure API Management API-k nem érhető el az interneten is kezelheti. Számos VPN technológia érhetők el a kapcsolatot. Az API Management egy virtuális hálózaton belül két fő módban telepíthető:
@@ -108,11 +108,11 @@ Ha egyéni DNS-kiszolgáló egy virtuális hálózatot használ, is egy DNS-reko
 
 ### <a name="access-on-custom-domain-names"></a>Hozzáférés az egyéni tartománynevek
 
-   1. Ha nem szeretne hozzáférni az API Management szolgáltatás az alapértelmezett állomásnevek, akkor állíthatja egyéni tartománynevek minden a Szolgáltatásvégpontok az alábbi képen látható módon:
+1. Ha nem szeretne hozzáférni az API Management szolgáltatás az alapértelmezett állomásnevek, akkor állíthatja egyéni tartománynevek minden a Szolgáltatásvégpontok az alábbi képen látható módon:
 
    ![Egyéni tartomány beállítása az API Management szolgáltatáshoz][api-management-custom-domain-name]
 
-   2. Ezután hozhat létre rekordokat a DNS-kiszolgáló eléréséhez a végpontok, amelyek csak a virtuális hálózaton belül elérhető.
+2. Ezután hozhat létre rekordokat a DNS-kiszolgáló eléréséhez a végpontok, amelyek csak a virtuális hálózaton belül elérhető.
 
 ## <a name="routing"> </a> Útválasztás
 + Elosztott terhelésű privát virtuális IP-címet az alhálózat címtartományából lesz fenntartva, és az API Management szolgáltatás végpontjainak a virtuális hálózaton belül eléréséhez használt.

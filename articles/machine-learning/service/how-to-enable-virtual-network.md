@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 01/08/2019
-ms.openlocfilehash: 045a8fc3723c7bae176f0b99a83965bb2bef721d
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: a83661a63f784f62bf46ce75b8b4f47c57c87b19
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242938"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840443"
 ---
 # <a name="securely-run-experiments-and-inferencing-inside-an-azure-virtual-network"></a>Biztonságos futtatására kísérletek vagy következtetési egy Azure virtuális hálózaton belül
 
@@ -60,15 +60,17 @@ Használja az Azure Machine Learning Compute a virtuális hálózatban, használ
 
     - Egy terheléselosztó
 
-   Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](https://docs.microsoft.com/azure/azure-subscription-service-limits) vonatkoznak.
+  Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](https://docs.microsoft.com/azure/azure-subscription-service-limits) vonatkoznak.
 
 ### <a id="mlcports"></a> Szükséges portok
 
 A megadott virtuális hálózatban lévő virtuális gépek kiépítése Azure Batch szolgáltatás jelenleg Machine Learning Compute használja. Az alhálózatnak engedélyeznie kell a Batch szolgáltatás a bejövő kommunikációhoz. Ehhez a kommunikációhoz használatos ütemezni futtatja, a Machine Learning COMPUTE számítási csomópontokon, és kommunikál az Azure Storage és egyéb erőforrásokat. A Batch NSG-k hozzáadása a virtuális gépekhez csatlakoztatott hálózati adapterek (NIC) szintjén. Ezek az NSG-k automatikusan konfigurálnak bejövő és kimenő szabályokat a következő forgalom engedélyezéséhez:
 
-- A Batch szolgáltatási szerepkör IP-címeiről érkező bejövő TCP-forgalom a 29876-os és a 29877-es portokon keresztül.
+- TCP-forgalmat a 29876-os és a 29877-es portot a bejövő egy __Szolgáltatáscímke__ , __BatchNodeManagement__.
+
+    ![Az Azure portál egy bejövő szabályt a BatchNodeManagement szolgáltatáscímke használatával képe](./media/how-to-enable-virtual-network/batchnodemanagement-service-tag.png)
  
-- A bejövő TCP-forgalom engedélyezéséhez a távelérés 22-es port.
+- (nem kötelező) A bejövő TCP-forgalom engedélyezéséhez a távelérés 22-es port. Ez csak akkor van szükség, ha az SSH használata a nyilvános IP-cím a csatlakozni kíván.
  
 - Kimenő forgalom bármilyen porton keresztül a virtuális hálózathoz.
 

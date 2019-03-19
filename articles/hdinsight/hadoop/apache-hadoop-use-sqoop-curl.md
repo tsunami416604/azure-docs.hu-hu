@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: a7b657d11e829d636063639e26a90d671a5d1473
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: ad716e2ef5e597424c860378e7a63d5c2de53f54
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438353"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57834557"
 ---
 # <a name="run-apache-sqoop-jobs-with-hadoop-in-hdinsight-with-curl"></a>Az Apache Sqoop-feladatok futtatása a curl használatával HDInsight a Hadoop-keretrendszerrel
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -68,19 +68,19 @@ A jelen cikkben ismertetett lépések elvégzéséhez a következőkre lesz szü
 
     Ezen parancs paraméterei a következők:
 
-    * **-d** – óta `-G` nem használ, akkor a kérelem az alapértelmezett a POST metódust. `-d` Megadja a küldött adatok értékeket a kérelemmel.
+   * **-d** – óta `-G` nem használ, akkor a kérelem az alapértelmezett a POST metódust. `-d` Megadja a küldött adatok értékeket a kérelemmel.
 
-        * **User.name** – a parancsot futtató felhasználónak.
+       * **User.name** – a parancsot futtató felhasználónak.
 
-        * **a parancs** – a sqoop használatával a parancs végrehajtásához.
+       * **a parancs** – a sqoop használatával a parancs végrehajtásához.
 
-        * **statusdir** – a címtárból, amelyhez ez a feladat állapota lesz írva.
+       * **statusdir** – a címtárból, amelyhez ez a feladat állapota lesz írva.
 
-    Ez a parancs visszaadja Feladatazonosítót a feladat állapotának ellenőrzéséhez használható.
+     Ez a parancs visszaadja Feladatazonosítót a feladat állapotának ellenőrzéséhez használható.
 
-        ```json
-        {"id":"job_1415651640909_0026"}
-        ```
+       ```json
+       {"id":"job_1415651640909_0026"}
+       ```
 
 3. A feladat állapotának ellenőrzéséhez használja a következő parancsot. Cserélje le **JOBID** adja vissza az előző lépésben értékkel. Ha például a visszaadott érték volt `{"id":"job_1415651640909_0026"}`, majd **JOBID** lenne `job_1415651640909_0026`.
 

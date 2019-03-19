@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98126c6459c77ec4580665b0d157d532a1fe636c
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 03652329acaeb737cb7cb4010ef48938caa17acc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672253"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58096911"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>B2B-együttműködés a SaaS-alkalmazások konfigurálása
 
@@ -37,37 +37,37 @@ Ahhoz, hogy a felhasználók számára, hogy jelentkezzen be a szervezeti fiókj
 
 1. Azure ad-ben a Dropbox alkalmazás hozzáadásához válassza **vállalati alkalmazások** a bal oldali panelen, és kattintson a **Hozzáadás**.
 
-  ![A vállalati alkalmazások oldalon a "Hozzáadás" gombra](media/configure-saas-apps/add-dropbox.png)
+   ![A vállalati alkalmazások oldalon a "Hozzáadás" gombra](media/configure-saas-apps/add-dropbox.png)
 
 2. Az a **alkalmazás hozzáadása** ablakban adja meg **dropbox** a keresési mezőbe, és válassza ki a **Dropbox Business** az eredménylistában.
 
-  ![Keressen a "dropbox" hozzáadása egy alkalmazás lap](media/configure-saas-apps/add-app-dialog.png)
+   ![Keressen a "dropbox" hozzáadása egy alkalmazás lap](media/configure-saas-apps/add-app-dialog.png)
 
 3. A a **egyszeri bejelentkezési** lapon jelölje be **egyszeri bejelentkezési** a bal oldali panelen, és írja be **user.mail** a a **felhasználói azonosító** mezőbe. (Ez UPN, alapértelmezés szerint van beállítva.)
 
-  ![Egyszeri bejelentkezés az alkalmazás konfigurálása](media/configure-saas-apps/configure-app-sso.png)
+   ![Egyszeri bejelentkezés az alkalmazás konfigurálása](media/configure-saas-apps/configure-app-sso.png)
 
 4. Töltse le a Dropbox-konfigurációhoz használni kívánt tanúsítványt, jelölje be **konfigurálása DropBox**, majd válassza ki **SAML egyszeri bejelentkezési szolgáltatás URL-Címként** a listában.
 
-  ![A Dropbox-konfiguráció tanúsítvány letöltése](media/configure-saas-apps/download-certificate.png)
+   ![A Dropbox-konfiguráció tanúsítvány letöltése](media/configure-saas-apps/download-certificate.png)
 
 5. Jelentkezzen be a bejelentkezési URL-címet a Dropbox a **egyszeri bejelentkezési** lapot.
 
-  ![A Dropbox bejelentkezési oldala](media/configure-saas-apps/sign-in-to-dropbox.png)
+   ![A Dropbox bejelentkezési oldala](media/configure-saas-apps/sign-in-to-dropbox.png)
 
 6. Válassza a menü **felügyeleti konzol**.
 
-  ![A "Felügyeleti konzol" hivatkozást, a Dropbox menü](media/configure-saas-apps/dropbox-menu.png)
+   ![A "Felügyeleti konzol" hivatkozást, a Dropbox menü](media/configure-saas-apps/dropbox-menu.png)
 
 7. Az a **hitelesítési** párbeszédpanelen jelölje ki **további**, töltse fel a tanúsítványt, majd a **jelentkezzen be az URL-cím** adja meg az SAML egyszeri bejelentkezési URL-cím.
 
-  ![A "Több" hivatkozásra a hitelesítési összecsukott párbeszédpanel](media/configure-saas-apps/dropbox-auth-01.png)
+   ![A "Több" hivatkozásra a hitelesítési összecsukott párbeszédpanel](media/configure-saas-apps/dropbox-auth-01.png)
 
-  ![A "bejelentkezés URL-címe" a hitelesítés kibontott párbeszédpanelen](media/configure-saas-apps/paste-single-sign-on-URL.png)
+   ![A "bejelentkezés URL-címe" a hitelesítés kibontott párbeszédpanelen](media/configure-saas-apps/paste-single-sign-on-URL.png)
 
 8. Automatikus beállításainak konfigurálása az Azure Portalon, válassza ki a **kiépítési** a bal oldali panelen válassza ki a **automatikus** a a **Kiépítési mód** mezőbe, és válassza ki a  **Engedélyezés**.
 
-  ![Az Azure Portalon automatikus felhasználókiépítés konfigurálása](media/configure-saas-apps/set-up-automatic-provisioning.png)
+   ![Az Azure Portalon automatikus felhasználókiépítés konfigurálása](media/configure-saas-apps/set-up-automatic-provisioning.png)
 
 Vendég vagy tag felhasználók a Dropbox alkalmazásban van beállítva, miután egy külön meghívást kapnak a Dropboxból. Dropbox egyszeri bejelentkezés használatára meghívottak el kell fogadnia a meghívást, egy hivatkozásra kattintva.
 
@@ -78,22 +78,22 @@ Engedélyezheti a felhasználók be vendég felhasználók hitelesítése az Azu
 
 2. Egyszeri bejelentkezés konfigurálásához a következő sorrendben:
 
-  ![Box egyszeri bejelentkezés konfigurálása](media/configure-saas-apps/configure-box-sso.png)
+   ![Box egyszeri bejelentkezés konfigurálása](media/configure-saas-apps/configure-box-sso.png)
 
- a. Az a **bejelentkezési URL-cím** ellenőrizze, hogy, hogy a bejelentkezési URL-cím van beállítva megfelelően be az Azure Portalon. Az URL-címet a Box.com-bérlői URL-címe. Azt az elnevezési konvenciót kell követniük *https://.box.com*.  
- A **azonosító** nem vonatkozik az alkalmazáshoz, de is megjelenik a kötelező mező.
+   a. Az a **bejelentkezési URL-cím** ellenőrizze, hogy, hogy a bejelentkezési URL-cím van beállítva megfelelően be az Azure Portalon. Az URL-címet a Box.com-bérlői URL-címe. Azt az elnevezési konvenciót kell követniük *https://.box.com*.  
+   A **azonosító** nem vonatkozik az alkalmazáshoz, de is megjelenik a kötelező mező.
 
- b. Az a **felhasználóazonosító** mezőbe írja be **user.mail** (az egyszeri bejelentkezés az vendégfiókok).
+   b. Az a **felhasználóazonosító** mezőbe írja be **user.mail** (az egyszeri bejelentkezés az vendégfiókok).
 
- c. A **SAML-aláíró tanúsítvány**, kattintson a **új tanúsítvány létrehozása**.
+   c. A **SAML-aláíró tanúsítvány**, kattintson a **új tanúsítvány létrehozása**.
 
- d. Az Azure AD használata Identitásszolgáltatóként, Box.com-bérlő konfigurálásának megkezdéséhez, töltse le a metaadatokat, és mentse a helyi meghajtóról.
+   d. Az Azure AD használata Identitásszolgáltatóként, Box.com-bérlő konfigurálásának megkezdéséhez, töltse le a metaadatokat, és mentse a helyi meghajtóról.
 
- e. A metaadatfájl mezőben előre támogatja a csapattal, amely egyszeri bejelentkezést, konfigurálja.
+   e. A metaadatfájl mezőben előre támogatja a csapattal, amely egyszeri bejelentkezést, konfigurálja.
 
 3. Az Azure AD automatikus felhasználó beállítása, a bal oldali panelen válassza ki a **kiépítési**, majd válassza ki **engedélyezés**.
 
-  ![Az Azure AD-csatlakozhat a Boxhoz engedélyezése](media/configure-saas-apps/auth-azure-ad-to-connect-to-box.png)
+   ![Az Azure AD-csatlakozhat a Boxhoz engedélyezése](media/configure-saas-apps/auth-azure-ad-to-connect-to-box.png)
 
 Például a Dropbox vannak be vannak be kell a Box alkalmazás a meghívót.
 

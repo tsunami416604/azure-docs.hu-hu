@@ -1,6 +1,6 @@
 ---
-title: SAP magas rendelkezésre állású egy Windows feladatátvevő fürt és a fájl megosztás használatával SAP ASC/SCS-példányok Azure-infrastruktúra előkészítése |} Microsoft Docs
-description: Az Azure infrastruktúra előkészítése a SAP magas rendelkezésre állás Windows feladatátvevő fürt és a fájl megosztás segítségével SAP ASC/SCS-példányok
+title: Az SAP magas rendelkezésre állás az SAP ASCS/SCS példányhoz egy Windows feladatátvevő fürt és a fájlmegosztás használata az Azure infrastruktúra előkészítése |} A Microsoft Docs
+description: Az SAP magas rendelkezésre állás az SAP ASCS/SCS példányhoz egy Windows feladatátvevő fürt és a fájlmegosztás használata az Azure infrastruktúra előkészítése
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
@@ -17,14 +17,14 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cf0f06528b3571ce8307a2fed2fb9c43f608d15d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 064daa7ed8fb5be34524d9ea27cfa6c22b9c3e66
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656713"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58008369"
 ---
-# <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Azure-infrastruktúra előkészítése SAP magas rendelkezésre állású egy Windows feladatátvevő fürt és a fájlmegosztást a SAP ASC/SCS-példányok
+# <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>SAP magas rendelkezésre állás egy Windows feladatátvevő fürt és -fájlmegosztást az SAP ASCS/SCS-példányok Azure-infrastruktúra előkészítése
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -46,7 +46,7 @@ ms.locfileid: "34656713"
 
 [deployment-guide]:deployment-guide.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 
@@ -99,7 +99,7 @@ ms.locfileid: "34656713"
 [sap-ha-guide-9.1]:#31c6bd4f-51df-4057-9fdf-3fcbc619c170
 [sap-ha-guide-9.1.1]:#a97ad604-9094-44fe-a364-f89cb39bf097
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP multi-SID magas rendelkezésre állású konfiguráció)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP több biztonsági AZONOSÍTÓVAL magas rendelkezésre állású konfiguráció)
 
 
 [sap-ha-guide-figure-1000]:./media/virtual-machines-shared-sap-high-availability-guide/1000-wsfc-for-sap-ascs-on-azure.png
@@ -207,73 +207,73 @@ ms.locfileid: "34656713"
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
-Ez a cikk ismerteti az Azure-infrastruktúra előkészítő lépések, amelyek szükségesek ahhoz, hogy rendszerek telepítése és konfigurálása magas rendelkezésre állású SAP fürtön egy Windows Server feladatátvételi fürtszolgáltatási (WSFC) lehetőség kibővített fájlmegosztást használja SAP ASC/SCS fürtözés példányok.
+Ez a cikk ismerteti az Azure-infrastruktúra telepítése és konfigurálása a magas rendelkezésre állású SAP-rendszerek egy fürtön a Windows Server feladatátvételi fürtszolgáltatási (WSFC), kibővített fájlmegosztást használja a beállítás a fürtszolgáltatás SAP ASCS/SCS szükséges előkészítő lépések példányok.
 
 ## <a name="prerequisite"></a>Előfeltétel
 
 A telepítés megkezdése előtt tekintse át a következő cikket:
 
-* [Architektúra-Útmutató: Windows feladatátvevő fürt SAP ASC/SCS példány fájlmegosztást a fürt][sap-high-availability-guide-wsfc-file-share]
+* [Architektúra-Útmutató: Az SAP ASCS/SCS példányok használatával a fájlmegosztás Windows feladatátvevő fürtön][sap-high-availability-guide-wsfc-file-share]
 
 
-## <a name="host-names-and-ip-addresses"></a>Állomásnevet és IP-címek
+## <a name="host-names-and-ip-addresses"></a>Gazdagép nevének és IP-címek
 
 | Virtuális állomás neve szerepkör | Virtuális állomás neve | Statikus IP-cím | Rendelkezésre állási csoport |
 | --- | --- | --- | --- |
-| Első fürt csomópont ASC/SCS fürt | Asc-1 | 10.0.6.4 | Asc-szerint |
-| A második fürt csomópont ASC/SCS fürt | Asc-2 | 10.0.6.5 | Asc-szerint |
-| Fürt hálózati név |Asc – cl | 10.0.6.6 | n/a |
-| SAP PR1 ASC fürt hálózati név |PR1-ASC | 10.0.6.7 | n/a |
+| Első fürt csomópont ASCS/SCS-fürt | ascs-1 | 10.0.6.4 | ascs-as |
+| A második csomópont ASCS/SCS fürtök | ascs-2 | 10.0.6.5 | ascs-as |
+| Fürthálózat neve |ascs-cl | 10.0.6.6 | n/a |
+| Az SAP PR1 ASCS fürthálózat neve |PR1 – ascs | 10.0.6.7 | n/a |
 
 
-**1. táblázat**: ASC/SCS fürt
+**1. táblázat**: ASCS/SCS-fürt
 
-| SAP \<SID &GT; | SAP ASC/SCS példányszámának |
+| SAP \<SID> | Az SAP ASCS/SCS-példányok száma |
 | --- | --- |
 | PR1 | 00 |
 
-**2. táblázat**: SAP ASC/SCS példány részletei
+**2. táblázat**: Az SAP ASCS/SCS-példány adatai
 
 
 | Virtuális állomás neve szerepkör | Virtuális állomás neve | Statikus IP-cím | Rendelkezésre állási csoport |
 | --- | --- | --- | --- |
-| Első fürtcsomópontra | Kibővíthető fájlkiszolgáló-1 | 10.0.6.10 | Kibővíthető fájlkiszolgáló-, |
-| Második fürtcsomópont | Kibővíthető fájlkiszolgáló-2 | 10.0.6.11 | Kibővíthető fájlkiszolgáló-, |
-| Harmadik fürtcsomópont | Kibővíthető fájlkiszolgáló-3 | 10.0.6.12 | Kibővíthető fájlkiszolgáló-, |
-| Fürt hálózati név | Kibővíthető fájlkiszolgáló-cl | 10.0.6.13 | n/a |
-| SAP globális állomásneve | sapglobal | A fürt összes csomópontján IP-címek használata | n/a |
+| Első fürtcsomópontra | sofs-1 | 10.0.6.10 | sofs-t |
+| Második fürtcsomópontra | sofs-2 | 10.0.6.11 | sofs-t |
+| Harmadik fürtcsomópont | sofs-3 | 10.0.6.12 | sofs-t |
+| Fürthálózat neve | sofs-cl | 10.0.6.13 | n/a |
+| SAP globális állomás neve | sapglobal | Mindegyik fürtcsomópont IP-címek használata | n/a |
 
-**3. táblázat**: kibővített fájlkiszolgálói fürt
+**3. táblázat**: Kibővített fájlkiszolgálói fürt
 
 
-## <a name="deploy-vms-for-an-sap-ascsscs-cluster-a-database-management-system-dbms-cluster-and-sap-application-server-instances"></a>Virtuális gépek telepítése egy SAP ASC/SCS fürt, egy adatbázis felügyeleti rendszer (DBMS) fürt és az SAP-alkalmazáskiszolgáló-példányok
+## <a name="deploy-vms-for-an-sap-ascsscs-cluster-a-database-management-system-dbms-cluster-and-sap-application-server-instances"></a>Virtuális gépek üzembe helyezése egy SAP ASCS/SCS-fürtöt, egy adatbázis felügyeleti rendszer (DBMS) fürtöt és SAP-alkalmazáskiszolgáló-példányok
 
-Az Azure-infrastruktúra előkészítése, az alábbi lépések elvégzésével:
+Az Azure-infrastruktúra előkészítése, hajtsa végre a következőket:
 
 * [Az infrastruktúra előkészítése architekturális sablonok 1, 2 és 3][sap-high-availability-infrastructure-wsfc-shared-disk].
 
-* [Hozzon létre egy Azure virtuális hálózatra][sap-high-availability-infrastructure-wsfc-shared-disk-azure-network].
+* [Hozzon létre egy Azure virtuális hálózat][sap-high-availability-infrastructure-wsfc-shared-disk-azure-network].
 
 * [Állítsa be a szükséges DNS-IP-címek][sap-high-availability-infrastructure-wsfc-shared-disk-dns-ip].
 
-* [Állítsa be a statikus IP-címeket a SAP virtuális gépek][sap-ascs-high-availability-multi-sid-wsfc-set-static-ip].
+* [Állítsa be a statikus IP-címeket, a SAP virtual machines][sap-ascs-high-availability-multi-sid-wsfc-set-static-ip].
 
-* [Egy statikus IP-cím beállítása az Azure belső terheléselosztóhoz][sap-high-availability-infrastructure-wsfc-shared-disk-set-static-ip-ilb].
+* [Az Azure belső terheléselosztó statikus IP-cím beállítva][sap-high-availability-infrastructure-wsfc-shared-disk-set-static-ip-ilb].
 
-* [Terheléselosztás ASC/SCS alapértelmezett beállítása az Azure belső terheléselosztóhoz tartozó szabályok][sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules].
+* [Terheléselosztás ASCS/SCS alapértelmezett beállítása az Azure belső terheléselosztó szabályainak][sap-high-availability-infrastructure-wsfc-shared-disk-default-ascs-ilb-rules].
 
-* [Módosítsa a ASC/SCS alapértelmezett terheléselosztási szabályok az Azure belső terheléselosztóhoz][sap-high-availability-infrastructure-wsfc-shared-disk-change-ascs-ilb-rules].
+* [Módosítsa a ASCS/SCS alapértelmezett terheléselosztási szabályok az Azure belső terheléselosztó][sap-high-availability-infrastructure-wsfc-shared-disk-change-ascs-ilb-rules].
 
-* [Windows virtuális gépek felvétele a tartomány][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain].
+* [Windows virtuális gépeket ad hozzá a tartomány][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain].
 
-* [Adja hozzá a beállításjegyzék-bejegyzések az SAP ASC/SCS példány mindkét fürtcsomóponton][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain].
+* [Adja hozzá a beállításjegyzék-bejegyzések az SAP ASCS/SCS-példányának mindkét fürtcsomóponton][sap-high-availability-infrastructure-wsfc-shared-disk-add-win-domain].
 
-* Windows Server 2016 használata, azt javasoljuk, hogy konfigurálja [Azure Cloud tanúsító][deploy-cloud-witness].
+* Használja a Windows Server 2016-ra, azt javasoljuk, hogy konfigurálja [Azure Felhőbeli tanúsító][deploy-cloud-witness].
 
 
-## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>A kibővített fájlkiszolgálói fürt manuális telepítése 
+## <a name="deploy-the-scale-out-file-server-cluster-manually"></a>Manuálisan a Scale-Out File Server-fürt üzembe helyezése 
 
-Telepítése a Microsoft kibővített fájlkiszolgálófürt a blog leírtak szerinti [közvetlen tárolóhelyek az Azure-ban][ms-blog-s2d-in-azure], futtassa a következő kódot:  
+A blog leírtak szerint manuálisan telepítheti a Microsoft kibővített fájlkiszolgálói fürt [a közvetlen tárolóhelyek az Azure-ban][ms-blog-s2d-in-azure], futtassa a következő kódot:  
 
 
 ```PowerShell
@@ -306,42 +306,42 @@ $SAPGlobalHostName = "sapglobal"
 Add-ClusterScaleOutFileServerRole -Name $SAPGlobalHostName
 ```
 
-## <a name="deploy-scale-out-file-server-automatically"></a>Kibővített fájlkiszolgáló központi telepítése automatikusan
+## <a name="deploy-scale-out-file-server-automatically"></a>Automatikus központi telepítés Scale-Out File Server
 
-A kibővített fájlkiszolgáló központi telepítése egy meglévő virtuális hálózat és az Active Directory-környezet az Azure Resource Manager-sablonok segítségével automatizálható.
+Kibővített fájlkiszolgáló központi telepítése egy meglévő virtuális hálózatot és az Active Directory-környezetet az Azure Resource Manager-sablonok használatával is automatizálható.
 
 > [!IMPORTANT]
-> Azt javasoljuk, hogy rendelkezik három vagy több fürtcsomóponton a kibővíthető fájlkiszolgáló háromutas tükrözést.
+> Azt javasoljuk, hogy három vagy több fürtcsomópont Scale-Out File Server for a háromirányú tükrözés.
 >
 > A sablonban kibővített Fájlkiszolgálói erőforrás-kezelő felhasználói felületén meg kell adnia a virtuális gépek száma.
 >
 
-### <a name="use-managed-disks"></a>Kezelt lemez használata
+### <a name="use-managed-disks"></a>Felügyelt lemezek használata
 
-A közvetlen tárolóhelyek és Azure felügyelt lemezeket kibővített fájlkiszolgáló telepítése Azure Resource Manager sablon érhető el a [GitHub][arm-sofs-s2d-managed-disks].
+Az Azure Resource Manager-sablon üzembe helyezéséhez a Scale-Out File Server a közvetlen tárolóhelyek szolgáltatás és az Azure Managed Disks érhető el az [GitHub][arm-sofs-s2d-managed-disks].
 
-Azt javasoljuk, hogy használja-e felügyelt lemezek.
+Azt javasoljuk, hogy a Managed Disks szolgáltatást.
 
-![1. ábra: Felhasználói felület képernyő felügyelt lemezzel rendelkező kibővített Fájlkiszolgálói erőforrás-kezelő sablon][sap-ha-guide-figure-8010]
+![1. ábra: Felhasználói felület képernyő felügyelt lemezekkel rendelkező Scale-Out File Server Resource Manager-sablon][sap-ha-guide-figure-8010]
 
-_**1. ábra**: felhasználói felület képernyő felügyelt lemezzel rendelkező kibővített Fájlkiszolgálói erőforrás-kezelő sablon_
+_**1. ábra**: Felhasználói felület képernyő felügyelt lemezekkel rendelkező Scale-Out File Server Resource Manager-sablon_
 
 A sablonban tegye a következőket:
 1. Az a **virtuális gépek száma** adja meg a minimális száma **2**.
-2. Az a **virtuális gépek lemez száma** adja meg a minimális lemezhely számát **3** (2 lemezek + 1 késztartalék lemezt = 3 lemezt).
-3. Az a **kibővíthető fájlkiszolgáló neve** mezőbe írja be az SAP globális hálózati állomásnév, **sapglobalhost**.
-4. Az a **megosztási név** mezőben adja meg a fájlmegosztás neve, **sapmnt**.
+2. Az a **virtuálisgép-lemezek száma** adja meg a minimális száma **3** (2 lemezek + 1 késztartalék lemezt = 3 lemezzel).
+3. Az a **Sofs neve** adja meg az SAP globális gazdagép hálózati neve **sapglobalhost**.
+4. Az a **megosztási név** adja meg a fájlmegosztás nevét, **sapmnt**.
 
 ### <a name="use-unmanaged-disks"></a>Nem felügyelt lemezek használata
 
-A közvetlen tárolóhelyek és a nem felügyelt Azure-lemezeket a kibővített fájlkiszolgáló telepítése Azure Resource Manager sablon érhető el a [GitHub][arm-sofs-s2d-non-managed-disks].
+Az Azure Resource Manager-sablon üzembe helyezéséhez a közvetlen tárolóhelyek és a nem felügyelt lemezek Azure Scale-Out File Server érhető el az [GitHub][arm-sofs-s2d-non-managed-disks].
 
-![2. ábra: Felhasználói felület képernyő nélkül felügyelt lemezeket a kibővített fájlkiszolgálói Azure erőforrás-kezelő sablon][sap-ha-guide-figure-8011]
+![2. ábra: Felhasználói felület képernyő a felügyelt lemezek nélkül Scale-Out File Server Azure Resource Manager-sablon][sap-ha-guide-figure-8011]
 
-_**2. ábra**: felhasználói felület képernyő nélkül felügyelt lemezeket a kibővített fájlkiszolgálói Azure erőforrás-kezelő sablon_
+_**2. ábra**: Felhasználói felület képernyő a felügyelt lemezek nélkül Scale-Out File Server Azure Resource Manager-sablon_
 
-Az a **Tárfióktípus** mezőben válassza **prémium szintű Storage**. A többi beállítás ugyanazok, mint a felügyelt lemezek beállításai.
+Az a **Tárfióktípus** jelölje ki **prémium szintű Storage**. A többi beállítás ugyanazok, mint a felügyelt lemezek beállításai.
 
 ## <a name="next-steps"></a>További lépések
 
-* [SAP NetWeaver magas rendelkezésre állással telepített Windows feladatátvevő fürt és a fájlkiszolgáló-megosztáson található SAP ASC/SCS-példányok][sap-high-availability-installation-wsfc-file-share]
+* [SAP NetWeaver magas rendelkezésre állású telepítése a Windows feladatátvevő fürt és a fájlkiszolgáló-megosztáson található az SAP ASCS/SCS példányhoz][sap-high-availability-installation-wsfc-file-share]

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: rkarlin
-ms.openlocfilehash: d3154e137aec8dcedcb066e2c9aab046b5a7b6e0
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: d726006d3ecce69f129b1576c7c6d12833582873
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108823"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081990"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>Oktatóanyag: Reagálás a biztonsági incidensekre
 A Security Center fejlett elemzési eszközök és fenyegetésfelderítés segítségével folyamatosan elemzi a hibrid felhőbeli számítási feladatokat, hogy figyelmeztesse az esetleges rosszindulatú tevékenységekre. Ráadásul a Security Centerbe más biztonsági termékekből és szolgáltatásokból is integrálhat riasztásokat, és egyéni riasztásokat is létrehozhat a saját mutatói és intelligens forrásai alapján. Amikor valami kivált egy riasztást, gyors reagálásra van szükség a problémák kivizsgálásához és elhárításához. Az oktatóanyag során a következőket fogja elsajátítani:
@@ -45,28 +45,28 @@ A Security Center segítségével minden biztonsági riasztást egy egyesített 
 
 1. A Security Center főmenüjének **ÉSZLELÉS** területén válassza a **Biztonsági riasztások** elemet:
 
-  ![Biztonsági riasztások](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)  
+   ![Biztonsági riasztások](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)  
 
 2. A riasztások listájában kattintson egy biztonsági incidensre (egy riasztásgyűjteményre) az esemény részleteinek megjelenítéséhez. Megnyílik **A rendszer biztonsági incidenst észlelt** ablak.
 
-  ![Biztonsági incidens](./media/tutorial-security-incident/tutorial-security-incident-fig2.png)
+   ![Biztonsági incidens](./media/tutorial-security-incident/tutorial-security-incident-fig2.png)
 
 3. Ezen a képernyőn felül megtalálja a biztonsági incidens leírását, majd azon riasztások listáját, amelyek az esemény részeit képezik. További információért kattintson az alaposabban megvizsgálni kívánt riasztásra.
 
-  ![Biztonsági incidens](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
+   ![Biztonsági incidens](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
 
-  A riasztások típusa eltérő lehet. A riasztási típusokkal és az elhárításhoz szükséges lehetséges lépésekkel kapcsolatban tekintse meg [Az Azure Security Center biztonsági riasztásainak megismerése](https://docs.microsoft.com/azure/security-center/security-center-alerts-type) című cikket. A biztonságosan elvethető riasztások esetében jobb gombbal a riasztásra kattinthat, majd kiválaszthatja az **Elvetés** lehetőséget:
+   A riasztások típusa eltérő lehet. A riasztási típusokkal és az elhárításhoz szükséges lehetséges lépésekkel kapcsolatban tekintse meg [Az Azure Security Center biztonsági riasztásainak megismerése](https://docs.microsoft.com/azure/security-center/security-center-alerts-type) című cikket. A biztonságosan elvethető riasztások esetében jobb gombbal a riasztásra kattinthat, majd kiválaszthatja az **Elvetés** lehetőséget:
 
-  ![Riasztás](./media/tutorial-security-incident/tutorial-security-incident-fig4.png)
+   ![Riasztás](./media/tutorial-security-incident/tutorial-security-incident-fig4.png)
 
 4. Ha a hiba gyökere és a rosszindulatú tevékenység hatóköre nem ismert, további vizsgálatért lépjen a következő lépésre.
 
 ## <a name="investigate-an-alert-or-incident"></a>Egy riasztás vagy esemény vizsgálata
 1. A **Biztonsági riasztás** oldalon kattintson a **Vizsgálat indítása** gombra (ha már megkezdte a vizsgálatot, a gomb neve **Vizsgálat folytatása** lesz).
 
-  ![Vizsgálat](./media/tutorial-security-incident/tutorial-security-incident-fig5.png)
+   ![Vizsgálat](./media/tutorial-security-incident/tutorial-security-incident-fig5.png)
 
-  A vizsgálati térkép a biztonsági riasztáshoz vagy eseményhez kapcsolódó entitások grafikus megjelenítése. Ha a térkép egy entitására kattint, az arra vonatkozó információk új entitásokként jelennek meg, és a térkép egyre bővül. A térképen kiválasztott entitás tulajdonságai kiemelve jelennek meg az oldal jobb oldalán található panelen. Az egyes lapokon megjelenő információk a kiválasztott entitástól függően változnak. A vizsgálati folyamat során a támadó lépéseinek jobb megértése érdekében tekintse át az összes kapcsolódó információt.
+   A vizsgálati térkép a biztonsági riasztáshoz vagy eseményhez kapcsolódó entitások grafikus megjelenítése. Ha a térkép egy entitására kattint, az arra vonatkozó információk új entitásokként jelennek meg, és a térkép egyre bővül. A térképen kiválasztott entitás tulajdonságai kiemelve jelennek meg az oldal jobb oldalán található panelen. Az egyes lapokon megjelenő információk a kiválasztott entitástól függően változnak. A vizsgálati folyamat során a támadó lépéseinek jobb megértése érdekében tekintse át az összes kapcsolódó információt.
 
 2. Ha több bizonyítékra van szüksége, vagy további vizsgálatra van szükség a talált entitásokkal kapcsolatban, lépjen a következő lépésre.
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/18/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26fd70b80dd512b530d367d57cd9fc04ec28f27b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8bbb307654d4aaf753a4a3284875dee4f5707f2a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211699"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901726"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>Oktatóanyag: HubSpot az Azure Active Directory-integráció
 
@@ -187,7 +187,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **tulajdonságok**, jelölje be a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
@@ -215,7 +215,7 @@ HubSpot, esetén kiépítése a manuális feladat.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/hubspot-tutorial/user2.png)
 
-5. Adja meg például a felhasználó e-mail-címe **brittasimon@contoso.com** a a **hozzáadása e-mail addess(es)** szövegmezőbe, és kattintson a **tovább**.
+5. Adja meg például a felhasználó e-mail-címe **brittasimon\@contoso.com** a a **hozzáadása e-mail addess(es)** szövegmezőbe, és kattintson a **tovább**.
 
     ![Egyszeri bejelentkezés konfigurálása](./media/hubspot-tutorial/user3.png)
 

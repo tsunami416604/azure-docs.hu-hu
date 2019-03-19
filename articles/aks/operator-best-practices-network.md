@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: iainfou
-ms.openlocfilehash: 680e3990afa3ed08c69402e9e5403cb9a6f3266a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: aaa16245fada7fbccdd0865d973de2fa19970989
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175455"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176582"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Hálózati kapcsolat és az Azure Kubernetes Service (AKS) biztonsági védelmének bevált gyakorlata
 
@@ -116,7 +116,7 @@ Egy bejövőforgalom-vezérlőt, amely elosztja a forgalmat a szolgáltatások �
 
 ![Webalkalmazási tűzfal (WAF) például az Azure App Gateway védelmét, és az AKS-fürt a forgalom elosztását](media/operator-best-practices-network/web-application-firewall-app-gateway.png)
 
-Webalkalmazási tűzfal (WAF) egy további biztonsági réteget nyújt a bejövő forgalom szűrésével. Az Open Web Application Security Project (OWASP) a támadásoktól, például az idegen hely parancsfájl-kezelési és cookie-k identitáshamisítás kapcsolatos szabályok készletét nyújtja. [Az Azure Application Gateway] [ app-gateway] a WAF, amely integrálható az AKS-fürtök ezeket a biztonsági funkciókat biztosít, mielőtt a forgalom eléri az AKS-fürt és az alkalmazások. Egyéb külső megoldások is így továbbra is használja a meglévő befektetések vagy szakértelmet az adott termék hajtsa végre ezeket a funkciókat.
+Webalkalmazási tűzfal (WAF) egy további biztonsági réteget nyújt a bejövő forgalom szűrésével. Az Open Web Application Security Project (OWASP) a támadásoktól, például az idegen hely parancsfájl-kezelési és cookie-k identitáshamisítás kapcsolatos szabályok készletét nyújtja. [Az Azure Application Gateway] [ app-gateway] (az aks-ben jelenleg előzetes verzió) egy WAF, amely előtt a forgalom eléri az AKS-fürt és az alkalmazások, adja meg ezeket a biztonsági funkciókat az AKS-fürtökkel integrálva. Egyéb külső megoldások is így továbbra is használja a meglévő befektetések vagy szakértelmet az adott termék hajtsa végre ezeket a funkciókat.
 
 Load balancer vagy a belépő erőforrások továbbra is fut tovább finomíthatja az adatforgalom eloszlása az AKS-fürt. Alkalmazásátjáró-bejövőforgalom-vezérlőt egy erőforrás-definícióval, központilag kezelhetők. Első lépésként [hozzon létre egy Application Gateway Bejövőforgalom-vezérlőjéhez][app-gateway-ingress].
 
@@ -124,7 +124,7 @@ Load balancer vagy a belépő erőforrások továbbra is fut tovább finomíthat
 
 **Ajánlott eljárásokkal kapcsolatos útmutatás** – hálózati házirendek segítségével a podok adatforgalom engedélyezéséhez vagy letiltásához. Alapértelmezés szerint az összes forgalom fürtözött pods között engedélyezett. A fokozott biztonság céljából definiálása a szabályokat, amelyek a pod kommunikáció korlátozása.
 
-A hálózati házirend egy Kubernetes-szolgáltatás, amely lehetővé teszi a podok közötti adatforgalom szabályozásához. Ha szeretné, beállítások, például a hozzárendelt címkék, névtérre vagy forgalmat port alapján adatforgalom engedélyezéséhez vagy letiltásához. A hálózati házirendek használatát szabályozza a forgalom egy natív felhőalapú megoldást kínál. Podok dinamikusan az AKS-fürt létrehozásakor, a szükséges hálózati házirendeket a rendszer automatikusan elvégez. Ne használja az Azure-beli hálózati biztonsági csoportok a pod-pod-forgalom szabályozása hálózati házirendek használja.
+Hálózati házirend (jelenleg előzetes verzióban érhető el az aks-ben) egy Kubernetes-szolgáltatás, amely lehetővé teszi a podok közötti adatforgalom szabályozásához. Ha szeretné, beállítások, például a hozzárendelt címkék, névtérre vagy forgalmat port alapján adatforgalom engedélyezéséhez vagy letiltásához. A hálózati házirendek használatát szabályozza a forgalom egy natív felhőalapú megoldást kínál. Podok dinamikusan az AKS-fürt létrehozásakor, a szükséges hálózati házirendeket a rendszer automatikusan elvégez. Ne használja az Azure-beli hálózati biztonsági csoportok a pod-pod-forgalom szabályozása hálózati házirendek használja.
 
 Hálózati házirend használatára, a funkciót engedélyezni kell egy AKS-fürt létrehozásakor. Nem engedélyezhető a hálózati házirend egy meglévő AKS-fürtre. Tervez, győződjön meg arról, hogy engedélyezze a hálózati házirend-fürtökön, és használhatja őket igény szerint.
 

@@ -8,18 +8,18 @@ manager: edprice
 editor: edprice
 tags: ''
 keywords: ''
-ms.openlocfilehash: 5de5f2f48504a711d4b7cff614abdd4214d0ba09
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: fa3bf2b513ce7c5a0ea0210c66a9123ceaf1de37
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56739585"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58015278"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>IBM zD & T fejlesztési-tesztelési környezet telepítése az Azure-ban
 
 A nagyszámítógépes számítási feladatok esetében fejlesztési-tesztelési környezet létrehozása IBM Z rendszereken, telepíthet IBM Z fejlesztése és tesztelése a környezet (zD & T) az Azure virtuális gép (VM) infrastruktúra szolgáltatás (IaaS).
 
-A zD & T, kihasználhatja a költségmegtakarításokat, az x86 platform a kevésbé fontos fejlesztési-tesztelési környezetet, és leküldéses Z rendszer éles környezetben vissza a frissítéseket. További információkért lásd: a [IBM ZD & T telepítési utasításokat](http://www-01.ibm.com/support/docview.wss?uid=swg24044565#INSTALL).
+A zD & T, kihasználhatja a költségmegtakarításokat, az x86 platform a kevésbé fontos fejlesztési-tesztelési környezetet, és leküldéses Z rendszer éles környezetben vissza a frissítéseket. További információkért lásd: a [IBM ZD & T telepítési utasításokat](https://www-01.ibm.com/support/docview.wss?uid=swg24044565#INSTALL).
 
 Az Azure és az Azure Stack támogatja a következő verziókat:
 

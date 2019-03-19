@@ -13,12 +13,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/06/2019
-ms.openlocfilehash: 4c01402932e35297e4284c09a35a14c304b4bf7c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2682f98628f3c1cf22a2c3767f52bedbc148fa62
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550243"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888570"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>Az SQL Database-ügyfélalkalmazások SQL hibakódok: Adatbázis-csatlakozási hibák és egyéb problémák
 
@@ -55,7 +55,7 @@ A következő hibák átmenetiek, és az alkalmazáslogikának meg kell ismétel
 
 | Hibakód | Severity | Leírás |
 | ---:| ---:|:--- |
-| 4060 |16 |Nem nyitható meg az adatbázis "%.&#x2a;ls" a bejelentkezés által kért. A bejelentkezés sikertelen volt. |További információkért lásd: [4000-es, 4999 hibák](https://docs.microsoft.comsql/relational-databases/errors-events/database-engine-events-and-errors?view=sql-server-2017#errors-4000-to-4999)|
+| 4060 |16 |Nem nyitható meg az adatbázis "%.&#x2a;ls" a bejelentkezés által kért. A bejelentkezés sikertelen volt. További információkért lásd: [4000-es, 4999 hibák](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999)|
 | 40197 |17 |A szolgáltatás a kérelem feldolgozása hibát észlelt. Kérjük, próbálkozzon újból. Hibakód: %d.<br/><br/>Ezt a hibaüzenetet kapja, amikor a szolgáltatás szoftver vagy hardver verziófrissítések, hardver-meghibásodásokkal vagy bármely más feladatátvételi problémák miatt nem működik. Az üzenet hiba 40197 beágyazva hibakód: (%d) milyen típusú hiba vagy feladatátvétel történt további információkat tartalmaz. Néhány példa a kódok vannak beágyazva az üzenet hiba 40197 hiba 40020, 40143, 40166 és 40540.<br/><br/>Az SQL Database-kiszolgáló automatikusan újracsatlakozik kapcsolódik, kifogástalan állapotú másolatot készít az adatbázisról. Az alkalmazás kell a tényleges 40197, hibanaplójában található hibaelhárítási beágyazott hibakód (%d), és próbáljon újra csatlakozni az SQL Database mindaddig, amíg az erőforrás áll rendelkezésre, és újra létrejön a kapcsolat. További információkért lásd: [átmeneti hibák](sql-database-connectivity-issues.md#transient-errors-transient-faults).|
 | 40501 |20 |A szolgáltatás jelenleg elfoglalt. Ismételje meg a kérelmet 10 másodperc múlva. Incidens azonosítója: %ls. Hibakód: %d. További információkért lásd: <br/>&bull; &nbsp;[Adatbázis-kiszolgálóhoz erőforráskorlátok](sql-database-resource-limits-database-server.md)<br/>&bull; &nbsp;[Önálló adatbázis DTU-alapú korlátai](sql-database-service-tiers-dtu.md)<br/>&bull; &nbsp;[DTU-alapú rugalmas készletek korlátai](sql-database-dtu-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Virtuálismag-alapú önálló adatbázisok korlátai](sql-database-vcore-resource-limits-single-databases.md)<br/>&bull; &nbsp;[Virtuálismag-alapú rugalmas készletek korlátai](sql-database-vcore-resource-limits-elastic-pools.md)<br/>&bull; &nbsp;[Felügyelt példány erőforráskorlátok](sql-database-managed-instance-resource-limits.md).|
 | 40613 |17 |Adatbázis '%.&#x2a;ls' kiszolgáló '%.&#x2a;ls' már nem érhető el. Próbálkozzon újra később a kapcsolatot. Ha a probléma továbbra is fennáll, forduljon az ügyfélszolgálathoz, és adja meg azokat a munkamenet nyomkövetési Azonosítóját: '%.&#x2a;ls'.<br/><br/> Ez a hiba akkor fordulhat elő, ha már van egy meglévő dedikált rendszergazdai kapcsolat (DAC) létrejött az adatbázishoz. További információkért lásd: [átmeneti hibák](sql-database-connectivity-issues.md#transient-errors-transient-faults).|

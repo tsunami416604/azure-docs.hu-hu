@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 03/13/2019
 ms.author: jingwang
-ms.openlocfilehash: 372275740b7d4fd757e97a3966e4e87c9d2de940
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 807a6b38b9f2cbe2a3c8787fe09c2ea14106a942
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105389"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57864898"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával REST-végponton
 
@@ -170,7 +170,7 @@ Adatok másolása REST, a következő tulajdonságok támogatottak:
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A **típus** értékre kell állítani a tulajdonságot az adatkészlet **RestResource**. | Igen |
-| relativeurl tulajdonságok közül | Az erőforrás, amely tartalmazza az adatok relatív URL-CÍMÉT. Ez a tulajdonság nincs megadva, csak az URL-cím a társított szolgáltatás definíciójában megadott használ. | Nem |
+| relativeUrl | Az erőforrás, amely tartalmazza az adatok relatív URL-CÍMÉT. Ez a tulajdonság nincs megadva, csak az URL-cím a társított szolgáltatás definíciójában megadott használ. | Nem |
 | requestMethod | A HTTP-metódust. Engedélyezett értékek a következők **első** (alapértelmezett), és **Post**. | Nem |
 | additionalHeaders | További HTTP-kérelemfejlécek. | Nem |
 | RequestBody | A HTTP-kérelem törzsét. | Nem |
@@ -274,8 +274,8 @@ A következő tulajdonságok támogatottak a másolási tevékenység **forrás*
 
 Az általános REST-összekötő a következő tördelés mintát támogat: 
 
-* Következő kérelmet abszolút URL-címe = aktuális válasz törzsében tulajdonság értéke
-* Következő kérelmet abszolút URL-címe = fejléc értéke az aktuális válaszfejlécek
+* Következő kérelmet abszolút vagy relatív URL-címe = aktuális válasz törzsében tulajdonság értéke
+* Következő kérelmet abszolút vagy relatív URL-címe = fejléc értéke az aktuális válaszfejlécek
 * Következő kérés lekérdezési paraméter = aktuális válasz törzsében tulajdonság értéke
 * Következő kérés lekérdezési paraméter = fejléc értéke az aktuális válaszfejlécek
 * Tovább a kérelem fejlécében = aktuális válasz törzsében tulajdonság értéke
@@ -287,7 +287,7 @@ Az általános REST-összekötő a következő tördelés mintát támogat:
 
 | Kulcs | Leírás |
 |:--- |:--- |
-| AbsoluteUrl | Azt jelzi, hogy az URL-cím a következő kérés kiadása. |
+| AbsoluteUrl | Azt jelzi, hogy az URL-cím a következő kérés kiadása. Ez lehet **vagy abszolút vagy relatív URL-**. |
 | QueryParameters. *request_query_parameter* vagy QueryParameters [request_query_parameter] | "request_query_parameter" a felhasználó által definiált hivatkozik egy lekérdezési paraméter neve a következő HTTP-kérelem URL-címében. |
 | Fejlécek. *request_header* vagy fejlécek [request_header] | "request_header" a felhasználó által definiált egy fejléc neve a következő HTTP-kérelem hivatkozik. |
 

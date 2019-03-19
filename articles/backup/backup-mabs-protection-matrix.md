@@ -9,12 +9,12 @@ ms.date: 11/13/2018
 ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: e7bcd5438738399d187bc158948364a44c46348c
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 050e3032d47b8215ae1aef8492c247031275ab86
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652416"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094643"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Az Azure Backup Server védelmi mátrixa
 
@@ -23,7 +23,7 @@ Ez a cikk felsorolja a különböző kiszolgálókon és védheti az Azure Backu
 ## <a name="protection-support-matrix"></a>A támogatási mátrix
 
 |Számítási feladat|Verzió|Azure Backup Server</br> installation|Azure Backup</br> Kiszolgáló V3|Azure Backup</br> Kiszolgáló V2|Védelem és helyreállítás|
-|------------|-----------|---------------|--------------|---------------|-----------------|---------------------------|
+|------------|-----------|---------------|--------------|---------------|-----------------|
 |Ügyfélszámítógépek (64 bites és 32 bites)|Windows 10|Fizikai kiszolgáló<br /><br />Hyper-V virtuális gép<br /><br />VMware virtuális gép|I|I|Kötet, megosztás, mappa, fájl, deduplikált kötetek<br /><br />A védett köteteknek NTFS kell lennie. FAT és FAT32 nem támogatottak.<br /><br />Köteteknek legalább 1 GB Méretűnek kell lenniük. A DPM a kötet árnyékmásolata szolgáltatás (VSS) használatával az adatok pillanatképének elkészítéséhez, és a pillanatkép csak akkor működik, ha a kötet legalább 1 GB.|
 |Ügyfélszámítógépek (64 bites és 32 bites)|Windows 8.1|Fizikai kiszolgáló<br /><br />Hyper-V virtuális gép|I|I|Fájlok<br /><br />A védett köteteknek NTFS kell lennie. FAT és FAT32 nem támogatottak.<br /><br />Köteteknek legalább 1 GB Méretűnek kell lenniük. A DPM a kötet árnyékmásolata szolgáltatás (VSS) használatával az adatok pillanatképének elkészítéséhez, és a pillanatkép csak akkor működik, ha a kötet legalább 1 GB.|
 |Ügyfélszámítógépek (64 bites és 32 bites)|Windows 8.1|Windows virtuális gép (Windows virtuális gép VMware környezetben futó számítási feladatok védi) VMWare-ben|I|I|Kötet, megosztás, mappa, fájl, deduplikált kötetek<br /><br />A védett köteteknek NTFS kell lennie. FAT és FAT32 nem támogatottak.<br /><br />Köteteknek legalább 1 GB Méretűnek kell lenniük. A DPM a kötet árnyékmásolata szolgáltatás (VSS) használatával az adatok pillanatképének elkészítéséhez, és a pillanatkép csak akkor működik, ha a kötet legalább 1 GB.|

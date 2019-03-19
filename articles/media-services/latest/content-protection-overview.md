@@ -1,6 +1,6 @@
 ---
-title: A tartalmat a Media Services – Azure |} A Microsoft Docs
-description: Ez a cikk áttekintést nyújt a Media Services content Protection.
+title: A tartalmat, a Media Services dinamikus titkosítás használata – Azure |} A Microsoft Docs
+description: Ez a cikk áttekintést nyújt a dinamikus titkosítás segítségével a content protection adott. Azt is ismerteti a streamelési protokollok és a titkosítási típusok.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,17 +11,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: d16f730d7e801342290467a796ae0155bfe89b26
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 3ce24100a0780f313a00b80129601f4e8f344bde
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241527"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189767"
 ---
-# <a name="content-protection-overview"></a>A Content protection áttekintése
+# <a name="content-protection-with-dynamic-encryption"></a>A Content protection, a dinamikus titkosítás segítségével
 
 Az Azure Media Services segítségével az az idő, akkor hagyja, hogy a számítógép tárolási, feldolgozási és kézbesítési a médiatartalmak védelmét. A Media Services élő és igény szerinti tartalmait az Advanced Encryption Standard (AES-128) vagy a három fő digitális jogkezelési (technológia DRM) felügyeleti rendszerek bármelyikét dinamikusan titkosított juttathat el: A Microsoft PlayReady, a Google Widevine és az Apple fairplay által. Media Services is biztosít a modult az AES-kulcsok és a DRM (PlayReady, Widevine és FairPlay) licenceket az arra jogosult ügyfelek. 
 
@@ -39,55 +39,55 @@ Fejezze be a "content protection" rendszer vagy alkalmazás-tervezés, teljes is
 
 1. Az Azure Media Services-kódot
   
-  A [DRM](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) minta bemutatja, hogyan multi-DRM-rendszer a Media Services v3 megvalósítása, és a Media Services/licenckulcs-továbbítási szolgáltatást is használhatja. Minden objektumot több titkosítási típussal titkosíthat (AES-128, PlayReady, Widevine, FairPlay). A [streamelési protokollokkal és a titkosítási típusokkal](#streaming-protocols-and-encryption-types) kapcsolatos szakaszban megtekintheti, hogy mit mivel érdemes kombinálni.
+   A [DRM](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) minta bemutatja, hogyan multi-DRM-rendszer a Media Services v3 megvalósítása, és a Media Services/licenckulcs-továbbítási szolgáltatást is használhatja. Minden objektumot több titkosítási típussal titkosíthat (AES-128, PlayReady, Widevine, FairPlay). A [streamelési protokollokkal és a titkosítási típusokkal](#streaming-protocols-and-encryption-types) kapcsolatos szakaszban megtekintheti, hogy mit mivel érdemes kombinálni.
   
-  A példa bemutatja, hogyan:
+   A példa bemutatja, hogyan:
 
-  1. Létrehozhat és konfigurálhat [Tartalomszabályzat kulcs](https://docs.microsoft.com/rest/api/media/contentkeypolicies).
+   1. Létrehozhat és konfigurálhat [Tartalomszabályzat kulcs](https://docs.microsoft.com/rest/api/media/contentkeypolicies).
 
-    * Adja meg a licenc kézbesítési engedélyezési, adja meg a JWT jogcímszolgáltatói alapján jogosultsági ellenőrzés logikáját.
-    * DRM-titkosítás konfigurálja a tartalomkulcs megadásával.
-    * Konfigurálása [PlayReady](playready-license-template-overview.md), [Widevine](widevine-license-template-overview.md), és/vagy [FairPlay](fairplay-license-overview.md) licenceket. A sablonok segítségével beállíthatja, hogy jogosultságai és engedélyei a használt DRMs mindegyikéhez.
+      * Adja meg a licenc kézbesítési engedélyezési, adja meg a JWT jogcímszolgáltatói alapján jogosultsági ellenőrzés logikáját.
+      * DRM-titkosítás konfigurálja a tartalomkulcs megadásával.
+      * Konfigurálása [PlayReady](playready-license-template-overview.md), [Widevine](widevine-license-template-overview.md), és/vagy [FairPlay](fairplay-license-overview.md) licenceket. A sablonok segítségével beállíthatja, hogy jogosultságai és engedélyei a használt DRMs mindegyikéhez.
 
         ```
         ContentKeyPolicyPlayReadyConfiguration playReadyConfig = ConfigurePlayReadyLicenseTemplate();
         ContentKeyPolicyWidevineConfiguration widevineConfig = ConfigureWidevineLicenseTempate();
         ContentKeyPolicyFairPlayConfiguration fairPlayConfig = ConfigureFairPlayPolicyOptions();
         ```
-  2. Hozzon létre egy [Streamelési lokátor](https://docs.microsoft.com/rest/api/media/streaminglocators) megfelelően van konfigurálva, a titkosított adategység továbbításához. 
+   2. Hozzon létre egy [Streamelési lokátor](https://docs.microsoft.com/rest/api/media/streaminglocators) megfelelően van konfigurálva, a titkosított adategység továbbításához. 
   
-    A **Streamelési lokátor** kell lennie egy [Streaming-szabályzattal társított] (https://docs.microsoft.com/rest/api/media/streamingpolicies). A példában a StreamingLocator.StreamingPolicyName állítjuk a "Predefined_MultiDrmCencStreaming" szabályzat. Ez a szabályzat azt jelzi, hogy használni kívánt két tartalomkulcs (boríték és CENC) jön létre, és állítsa be a lokátor. Így az envelope, a PlayReady és a Widevine titkosítások lesznek alkalmazva (a kulcsot a konfigurált DRM-licencek alapján továbbítja a rendszer a lejátszást végző ügyfelének). Ha CBCS (FairPlay) licenccel is titkosítani szeretné a streamet, használja a következőt: „Predefined_MultiDrmStreaming”.
+      A **Streamelési lokátor** társítva van egy [Streamelési házirend](https://docs.microsoft.com/rest/api/media/streamingpolicies). A példában a StreamingLocator.StreamingPolicyName állítjuk a "Predefined_MultiDrmCencStreaming" szabályzat. Ez a szabályzat azt jelzi, hogy használni kívánt két tartalomkulcs (boríték és CENC) jön létre, és állítsa be a lokátor. Így az envelope, a PlayReady és a Widevine titkosítások lesznek alkalmazva (a kulcsot a konfigurált DRM-licencek alapján továbbítja a rendszer a lejátszást végző ügyfelének). Ha CBCS (FairPlay) licenccel is titkosítani szeretné a streamet, használja a következőt: „Predefined_MultiDrmStreaming”.
     
-    Titkosíthatja a videót, mivel a **tartalom kulcs házirend** , hogy korábban beállított is van társítva, a **Streamelési lokátor**. 
+      Titkosíthatja a videót, mivel a **tartalom kulcs házirend** , hogy korábban beállított is van társítva, a **Streamelési lokátor**. 
     
-  3. A test-token létrehozásához.
+   3. A test-token létrehozásához.
 
-    A **GetTokenAsync** módszer bemutatja, hogyan hozzon létre egy tesztet token.
-  4. A streamelési URL-cím összeállítását.
+      A **GetTokenAsync** módszer bemutatja, hogyan hozzon létre egy tesztet token.
+   4. A streamelési URL-cím összeállítását.
 
-    A **GetDASHStreamingUrlAsync** metódus azt mutatja be, hogyan hozhat létre a streamelési URL-CÍMÉT. Ebben az esetben az URL-cím Streamek a **DASH** tartalmat.
+      A **GetDASHStreamingUrlAsync** metódus azt mutatja be, hogyan hozhat létre a streamelési URL-CÍMÉT. Ebben az esetben az URL-cím Streamek a **DASH** tartalmat.
 
 2. A Player AES vagy DRM-ügyféllel. Egy videolejátszó alkalmazást, a lejátszó SDK-t (natív vagy böngészőalapú) alapján kell az alábbi követelményeknek:
-  * A lejátszó SDK támogatja a szükséges DRM-ügyfelek
-  * A lejátszó SDK-t a szükséges streamelési protokollokat támogatja: A Smooth, DASH és/vagy a HLS
-  * A lejátszó SDK képesnek kell lennie a JWT jogkivonat passing licenc beszerzési kérés kezelésére
+   * A lejátszó SDK támogatja a szükséges DRM-ügyfelek
+   * A lejátszó SDK-t a szükséges streamelési protokollokat támogatja: A Smooth, DASH és/vagy a HLS
+   * A lejátszó SDK képesnek kell lennie a JWT jogkivonat passing licenc beszerzési kérés kezelésére
   
-    A player használatával hozhat létre a [az Azure Media Player API](http://amp.azure.net/libs/amp/latest/docs/). Használja a [az Azure Media Player ProtectionInfo API](http://amp.azure.net/libs/amp/latest/docs/) , adja meg, melyik DRM-technológiával használandó DRM különböző platformokon.
+     A player használatával hozhat létre a [az Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/). Használja a [az Azure Media Player ProtectionInfo API](https://amp.azure.net/libs/amp/latest/docs/) , adja meg, melyik DRM-technológiával használandó DRM különböző platformokon.
 
-    A tesztelési AES vagy CENC (Widevine és/vagy a PlayReady) titkosított tartalmat használhatja [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html). Győződjön meg arról, kattintson a "Speciális beállítások", és ellenőrizze a titkosítási beállításokat.
+     A tesztelési AES vagy CENC (Widevine és/vagy a PlayReady) titkosított tartalmat használhatja [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html). Győződjön meg arról, kattintson a "Speciális beállítások", és ellenőrizze a titkosítási beállításokat.
 
-    Ha titkosított FairPlay teszttartalmat szeretne, használja a [ezen teszt player](https://aka.ms/amtest). A Windows Media player támogatja, a PlayReady, Widevine és FairPlay DRMs, valamint az AES-128 titkosítatlan kulcs titkosítás. 
+     Ha titkosított FairPlay teszttartalmat szeretne, használja a [ezen teszt player](https://aka.ms/amtest). A Windows Media player támogatja, a PlayReady, Widevine és FairPlay DRMs, valamint az AES-128 titkosítatlan kulcs titkosítás. 
     
-    Válassza ki a megfelelő böngészőt másik DRMs teszteléséhez szüksége: Chrome/Opera/Firefox Widevine, a Microsoft Edge/IE11 a PlayReady, a Safari a fairplay rendszerhez macOS rendszeren.
+     Válassza ki a megfelelő böngészőt másik DRMs teszteléséhez szüksége: Chrome/Opera/Firefox Widevine, a Microsoft Edge/IE11 a PlayReady, a Safari a fairplay rendszerhez macOS rendszeren.
 
 3. A biztonságos jogkivonat-szolgáltatás (STS), amely JSON webes jogkivonat (JWT), a hozzáférési jogkivonatot az háttérbeli erőforrások eléréséhez. Az AMS licenctovábbítási szolgáltatások a háttérerőforrásra is használhatja. Az STS szolgáltatással rendelkezik, az alábbiak megadásához:
 
-  * Kibocsátó és a célközönség (vagy hatókör)
-  * A jogcímek, ami függ a content protection az üzleti követelmények
-  * A szimmetrikus vagy aszimmetrikus ellenőrzési aláírás-ellenőrzés
-  * Kulcsváltás támogatás (ha szükséges)
+   * Kibocsátó és a célközönség (vagy hatókör)
+   * A jogcímek, ami függ a content protection az üzleti követelmények
+   * A szimmetrikus vagy aszimmetrikus ellenőrzési aláírás-ellenőrzés
+   * Kulcsváltás támogatás (ha szükséges)
 
-    Használhat [az STS eszköz](https://openidconnectweb.azurewebsites.net/DRMTool/Jwt) tesztelési STS, amely támogatja az ellenőrzőkulcs 3 típusú: szimmetrikus, aszimmetrikus vagy az Azure AD-kulcshoz kapcsolódó kulcsváltás. 
+     Használhat [az STS eszköz](https://openidconnectweb.azurewebsites.net/DRMTool/Jwt) tesztelési STS, amely támogatja az ellenőrzőkulcs 3 típusú: szimmetrikus, aszimmetrikus vagy az Azure AD-kulcshoz kapcsolódó kulcsváltás. 
 
 > [!NOTE]
 > Azt javasoljuk hogy teljes körű tesztelését az egyes részek (lásd fent), és mielőtt a következő részére. A "content protection" rendszer teszteléséhez használja a fenti listában megadott eszközök.  
@@ -96,17 +96,54 @@ Fejezze be a "content protection" rendszer vagy alkalmazás-tervezés, teljes is
 
 A Media Services segítségével dinamikusan az AES-kulcsok vagy titkosított DRM-titkosítást a PlayReady, Widevine vagy FairPlay használatával a tartalmat. Jelenleg hogy titkosítsa a HTTP Live Streaming (HLS), MPEG DASH és Smooth Streaming formátumban. Minden egyes protokollhoz a következő titkosítási módszereket támogatja:
 
+### <a name="hls"></a>HLS
+
+A HLS-protokoll támogatja a következő tároló formátumok és a titkosítási sémát.
+
+|Tároló-formátum|Titkosítási sémával|Példa URL-címe|
+|---|---|---|
+|Összes|AES|`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=m3u8-aapl,encryption=cbc)`|
+|MPG2 – TS |CBCS (FairPlay) ||
+|CMAF(fmp4) |CBCS (FairPlay) |`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`|
+|MPG2 – TS |CENC (PlayReady) ||
+|CMAF(fmp4) |CENC (PlayReady) ||
+
+Fairplay HLS/CMAF (beleértve a HEVC / H.265) a következő eszközökön támogatott:
+
+* iOS 11-es verziójú vagy újabb 
+* iPhone 8 vagy újabb
+* Az Intel a MacOS high Sierra 7. általános CPU
+
+### <a name="mpeg-dash"></a>MPEG-DASH
+
+Az MPEG-DASH-protokoll támogatja a következő tároló formátumok és a titkosítási sémát.
+
+|Tároló-formátum|Titkosítási sémával|URL-cím-példák
+|---|---|---|
+|Összes|AES|`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=mpd-time-csf,encryption=cbc)`|
+|CSF(fmp4) |CENC (Widevine + PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=mpd-time-csf,encryption=cenc)`|
+|CMAF(fmp4)|CENC (Widevine + PlayReady)||
+
+### <a name="smooth-streaming"></a>Smooth Streaming
+
+A Smooth Streaming protokoll támogatja a következő tároló formátumok és a titkosítási sémát.
+
 |Protokoll|Tároló-formátum|Titkosítási sémával|
-|---|---|---|---|
-|MPEG-DASH|Összes|AES|
-||CSF(fmp4) |CENC (Widevine + PlayReady) |
-||CMAF(fmp4)|CENC (Widevine + PlayReady)|
-|HLS|Összes|AES|
-||MPG2 – TS |CBCS (Fairplay) |
-||MPG2 – TS |CENC (PlayReady) |
-||CMAF(fmp4) |CENC (PlayReady) |
-|Smooth Streaming|fMP4|AES|
-||fMP4 | CENC (PlayReady) |
+|---|---|---|
+|fMP4|AES||
+|fMP4 | CENC (PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(encryption=cenc)`|
+
+### <a name="browsers"></a>Böngészők
+
+Közös böngésző támogatja a következő DRM-ügyfelek:
+
+|Böngésző|Titkosítás|
+|---|---|
+|Chrome|Widevine|
+|Edge, IE 11|PlayReady|
+|Firefox|Widevine|
+|Opera|Widevine|
+|Safari|FairPlay|
 
 ## <a name="aes-128-clear-key-vs-drm"></a>AES-128-kulcsok vs. DRM
 
@@ -156,7 +193,7 @@ A tokennel korlátozott szabályzatokhoz konfigurálásakor adjon meg, hogy az e
 Az inaktív eszközök védelmére, titkosítani kell az eszközök által a storage ügyféloldali titkosítása. Az alábbi táblázat a storage ügyféloldali titkosítása működését mutatja a Media Services v3:
 
 |Titkosítási beállítás|Leírás|Media Services v3|
-|---|---|---|---|
+|---|---|---|
 |Media Services, tárolás titkosítása| AES-256 titkosítással, kulcsfontosságú a Media Services által felügyelt|Nem támogatott<sup>(1)</sup>|
 |[A Storage Service Encryption for Data at Rest](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|A kiszolgálóoldali titkosítást az Azure Storage által kínált kulcs felügyelt ügyfél vagy Azure által|Támogatott|
 |[Storage ügyféloldali titkosítás](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|Az Azure storage, a Key Vault az ügyfél által felügyelt kulcs által kínált ügyféloldali titkosítás|Nem támogatott|
@@ -167,6 +204,6 @@ Az inaktív eszközök védelmére, titkosítani kell az eszközök által a sto
 
 * [Az AES-titkosítással védeni](protect-with-aes128.md)
 * [DRM védelme](protect-with-drm.md)
-* [A hozzáférés-vezérléssel drm-mel a content protection rendszer tervezése](design-multi-drm-system-with-access-control.md)
+* [A hozzáférés-vezérléssel DRM-mel a content protection rendszer tervezése](design-multi-drm-system-with-access-control.md)
 * [Gyakori kérdések](frequently-asked-questions.md)
 

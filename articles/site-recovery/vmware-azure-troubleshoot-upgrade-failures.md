@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 02/05/2019
 ms.author: v-doglov
-ms.openlocfilehash: 3a3e9da66cf9ca6e08bb25b4f4b9d09aa0c5b6e7
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: fc50be2a960784895947f3f154a0251f41716fc7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431937"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117302"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>A Microsoft Azure Site Recovery Provider frissítésével kapcsolatos hibák elhárítása
 
@@ -48,21 +48,21 @@ A frissítés sikeres a 3. fél mappába kell nem nevezhető át.
 
 A probléma megoldásához.
 
-2. Indítsa el a Beállításszerkesztőt (regedit.exe), és nyissa meg a HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10 ágat.
-3. Vizsgálja meg a `Build_Version` kulcs értékét. Ha a legújabb verzióra van beállítva, csökkentheti a verziószámot. Például, ha a legújabb verzió 9.22. \* és a `Build_Version` kulcs set ezt az értéket, majd 9.21-re csökkenteni.\*.
-4. A legújabb Microsoft Azure Site Recovery egyesített telepítőjének letöltése:
+1. Indítsa el a Beállításszerkesztőt (regedit.exe), és nyissa meg a HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10 ágat.
+1. Vizsgálja meg a `Build_Version` kulcs értékét. Ha a legújabb verzióra van beállítva, csökkentheti a verziószámot. Például, ha a legújabb verzió 9.22. \* és a `Build_Version` kulcs set ezt az értéket, majd 9.21-re csökkenteni.\*.
+1. A legújabb Microsoft Azure Site Recovery egyesített telepítőjének letöltése:
    1. "A jelenleg támogatott kumulatív hivatkozások" szakaszában a [szolgáltatási hírek az Azure Site Recoveryben](service-updates-how-to.md##links-to-currently-supported-update-rollups) cikkre, válassza ki a szolgáltatót, amelyre frissít.
    2. Az összesítő lapon keresse meg a **adatainak frissítése** szakaszt, és töltse le a kumulatív frissítés a Microsoft Azure Site Recovery egyesített telepítőjének.
-5. Nyisson meg egy parancssort, és lépjen abba a mappába, amelyhez letöltött egyesített telepítő fájl- és a kivonatot a telepítési fájlokat, a letöltés a következő parancsot, és MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q x:&lt;mappa elérési útját a kibontott fájlokat&gt;.
+1. Nyisson meg egy parancssort, és lépjen abba a mappába, amelyhez letöltött egyesített telepítő fájl- és a kivonatot a telepítési fájlokat, a letöltés a következő parancsot, és MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q x:&lt;mappa elérési útját a kibontott fájlokat&gt;.
 
     A példában szereplő parancs:
 
     MicrosoftAzureSiteRecoveryUnifiedSetup.exe /q /x:C:\Temp\Extracted
 
-4. A parancssorban lépjen abba a mappába, ahová kicsomagolta a fájlokat, és futtassa a következő telepítési parancsokat:
+1. A parancssorban lépjen abba a mappába, ahová kicsomagolta a fájlokat, és futtassa a következő telepítési parancsokat:
    
     CX_THIRDPARTY_SETUP.EXE /VERYSILENT /SUPPRESSMSGBOXES /NORESTART
 
-5. A Feladatkezelő segítségével figyelheti a telepítés előrehaladását. Amikor CX_THIRDPARTY_SETUP folyamatát. Exe-fájl már nem jelenik meg a Feladatkezelőt, folytassa a következő lépéssel.
-6. Győződjön meg arról, hogy létezik-e C:\thirdparty, és hogy a mappa tartalmaz-e a RRD kódtárakat.
+1. A Feladatkezelő segítségével figyelheti a telepítés előrehaladását. Amikor CX_THIRDPARTY_SETUP folyamatát. Exe-fájl már nem jelenik meg a Feladatkezelőt, folytassa a következő lépéssel.
+1. Győződjön meg arról, hogy létezik-e C:\thirdparty, és hogy a mappa tartalmaz-e a RRD kódtárakat.
 1. Térjen vissza a mappát, amelyhez az egyesített telepítő letöltötte és MicrosoftAzureSiteRecoveryUnifiedSetup.exe a frissítés befejezéséhez futtassa. 

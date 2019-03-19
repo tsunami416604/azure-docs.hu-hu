@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 761843aad24dc89131079eb59954bd17883e595d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2dfbb618bafd9ae3cbb0c691e63a243ab2c2c31e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178396"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996536"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Az Azure-erőforrások egy Azure virtuális gép esetében jelentkezzen be a felügyelt identitások használatával 
 
@@ -87,7 +87,7 @@ Lásd: [Azure-szolgáltatások, hogy a támogatás az Azure AD-hitelesítés](se
 Például a következő válaszok arra utalhat, hogy a virtuális gép felügyelt identitás az Azure-erőforrások nincs megfelelően konfigurálva:
 
 - PowerShell: *Invoke-WebRequest: Nem lehet kapcsolódni a távoli kiszolgáló*
-- CLI: *MSI: Nem sikerült beolvasni a származó jogkivonat "http://localhost:50342/oauth2/token" hibával "HTTPConnectionPool (gazdagép"localhost", port = = 50342)* 
+- CLI: *MSI: Nem sikerült beolvasni a származó jogkivonat `http://localhost:50342/oauth2/token` hibával "HTTPConnectionPool (host"localhost", port = = 50342)* 
 
 Ha ezek a hibák egyike jelentkezik, térjen vissza az Azure VM a [az Azure portal](https://portal.azure.com) és:
 

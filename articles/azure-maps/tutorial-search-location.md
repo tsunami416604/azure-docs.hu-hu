@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 3e9572906a18698c9798a01a782948606112440a
-ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
+ms.openlocfilehash: f04041234bbb7197e276a65b011d16bb15cee90e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57588890"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099501"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>Közeli hasznos helyek keresése az Azure Maps használatával
 
@@ -162,7 +162,7 @@ A térképkezelési API egy kényelmes ügyféloldali kódtár, amely segítség
    });
    ```
 
-  Ez kódszegmens egy betöltési esemény kerül a térképen, a amely értesíti, ha már, hogy a térkép-erőforrások teljes betöltéséig. A térkép betöltésiesemény-kezelőjében létrejön egy adatforrás az eredményadatok tárolására. Létrejön egy szimbólumréteg, amelyet a rendszer az adatforráshoz csatol. Ez a réteg határozza meg az adatforrásban található eredményadatok megjelenítését. Esetünkben ez egy sötétkék, kerek gombostű ikon, amely az eredmény koordinátái fölött jelenik meg, és amelyet más ikonok átfedhetnek. Az eredmény réteget a térkép rétegek kerül.
+   Ez kódszegmens egy betöltési esemény kerül a térképen, a amely értesíti, ha már, hogy a térkép-erőforrások teljes betöltéséig. A térkép betöltésiesemény-kezelőjében létrejön egy adatforrás az eredményadatok tárolására. Létrejön egy szimbólumréteg, amelyet a rendszer az adatforráshoz csatol. Ez a réteg határozza meg az adatforrásban található eredményadatok megjelenítését. Esetünkben ez egy sötétkék, kerek gombostű ikon, amely az eredmény koordinátái fölött jelenik meg, és amelyet más ikonok átfedhetnek. Az eredmény réteget a térkép rétegek kerül.
 
 <a id="usesearch"></a>
 

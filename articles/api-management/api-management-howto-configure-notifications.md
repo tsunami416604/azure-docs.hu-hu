@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: 16beaadae36dfc7445a88875d36786bd97889599
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 2a959c9d131c6aa0bdc99450cf2b6f09a5d8bfa7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445074"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58102349"
 ---
 # <a name="how-to-configure-notifications-and-email-templates-in-azure-api-management"></a>Az értesítések és e-mail sablonok konfigurálása az Azure API Management szolgáltatásban
 Az API Management lehetővé teszi bizonyos események értesítéseinek konfigurálásához, és konfigurálhatja az e-mail-sablonok, amelyek segítségével a rendszergazdák és a egy API Management-példány a fejlesztők kommunikálni. Ez a cikk bemutatja, hogyan konfigurálja a rendelkezésre álló események értesítéseket, és ezek az események használt e-mail sablonok konfigurálása az nyújt áttekintést.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik az API Management szolgáltatáspéldányt, hajtsa végre a következő rövid útmutatót: [Azure API Management szolgáltatáspéldány létrehozása](get-started-create-service-instance.md).
+Ha nem rendelkezik az API Management szolgáltatáspéldányt, hajtsa végre a következő rövid útmutatót: [Az Azure API Management szolgáltatáspéldány létrehozása](get-started-create-service-instance.md).
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -38,15 +38,15 @@ Ha nem rendelkezik az API Management szolgáltatáspéldányt, hajtsa végre a k
 
     Az alábbi listában szereplő események értesítések konfigurálhatók.
 
-    * **(Jóváhagyásra van szükség) feliratkozási kérelmeket** – a megadott e-mail-címzettek és a felhasználók e-mailes feliratkozási kérelmeket jóváhagyásra van szükség API-termékekre vonatkozó értesítést fog kapni.
-    * **Új előfizetések** – a megadott e-mail-címzettek és a felhasználók kapnak e-mailes értesítést az új API termékhez előfizetések.
-    * **Alkalmazáskérések katalógus** – a megadott e-mail-címzettek és a felhasználók e-mail értesítéseket kap, amikor új kérelmeket az alkalmazás-katalógusba.
-    * **Titkos másolat** – a megadott e-mail-címzettek és a felhasználók e-mail titkos másolatot a fejlesztők számára küldött összes e-mailt fog kapni.
-    * **Új probléma, vagy amelyekhez megjegyzést** – a megadott e-mail-címzettek és a felhasználók e-mail értesítéseket, amikor új problémát kap, vagy a fejlesztői portál küldése megjegyzést.
-    * **Fiók bezárása üzenet** – a megadott e-mail-címzettek és a felhasználók e-mail értesítéseket kap, ha a fiók le van zárva.
-    * **Közelgő előfizetési kvótája korlátjának** – a következő e-mailek címzettjeinek és a felhasználók e-mail értesítéseket kap, ha közeli használati kvóta lekérdezi előfizetés használata.
+   * **(Jóváhagyásra van szükség) feliratkozási kérelmeket** – a megadott e-mail-címzettek és a felhasználók e-mailes feliratkozási kérelmeket jóváhagyásra van szükség API-termékekre vonatkozó értesítést fog kapni.
+   * **Új előfizetések** – a megadott e-mail-címzettek és a felhasználók kapnak e-mailes értesítést az új API termékhez előfizetések.
+   * **Alkalmazáskérések katalógus** – a megadott e-mail-címzettek és a felhasználók e-mail értesítéseket kap, amikor új kérelmeket az alkalmazás-katalógusba.
+   * **Titkos másolat** – a megadott e-mail-címzettek és a felhasználók e-mail titkos másolatot a fejlesztők számára küldött összes e-mailt fog kapni.
+   * **Új probléma, vagy amelyekhez megjegyzést** – a megadott e-mail-címzettek és a felhasználók e-mail értesítéseket, amikor új problémát kap, vagy a fejlesztői portál küldése megjegyzést.
+   * **Fiók bezárása üzenet** – a megadott e-mail-címzettek és a felhasználók e-mail értesítéseket kap, ha a fiók le van zárva.
+   * **Közelgő előfizetési kvótája korlátjának** – a következő e-mailek címzettjeinek és a felhasználók e-mail értesítéseket kap, ha közeli használati kvóta lekérdezi előfizetés használata.
 
-    Az egyes eseményekhez is megadhat, az e-mail cím beviteli mező használatával e-mailek címzettjeinek, vagy kiválaszthatja a felhasználók listájából.
+     Az egyes eseményekhez is megadhat, az e-mail cím beviteli mező használatával e-mailek címzettjeinek, vagy kiválaszthatja a felhasználók listájából.
 
 3. Adja meg az e-mail-címeket, értesítést kapjon, adja meg azokat az e-mail cím szövegmezőbe. Ha az e-mail címeket, külön azokat vesszőkkel válassza el egymástól.
 

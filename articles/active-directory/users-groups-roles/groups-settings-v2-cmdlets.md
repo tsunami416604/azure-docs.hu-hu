@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1f0b99c3a388dcfd0dabaf874e03f276c494553
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7287616dbad1aa77a6e4aaa110ade39dcea4f195
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176866"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082619"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Az Azure Active Directory 2. verzió parancsmagjainak csoportfelügyelet
 
@@ -218,15 +218,15 @@ A nem rendszergazdai felhasználók számára csoportok létrehozását letiltá
 
 1. Győződjön meg arról, hogy a nem rendszergazda felhasználók hozhatnak létre csoportokat:
    
-  ```
-  PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
-  ```
+   ```
+   PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
+   ```
   
 2. Ha a visszaadott érték `UsersPermissionToCreateGroupsEnabled : True`, akkor a nem rendszergazda jogosultságú felhasználók létrehozhatnak csoportokat. Ez a funkció letiltása:
   
-  ``` 
-  Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
-  ```
+   ``` 
+   Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
+   ```
   
 ## <a name="manage-owners-of-groups"></a>A csoportok tulajdonosainak kezelése
 Tulajdonosok hozzáadása egy csoporthoz, az Add-AzureADGroupOwner parancsmaggal:
@@ -251,10 +251,10 @@ Ha azt szeretné, tulajdonos eltávolítása a csoportból, használja a Remove-
 
 ## <a name="reserved-aliases"></a>Fenntartott aliasok 
 Egy csoport létrehozásakor bizonyos végpontok lehetővé teszik a végfelhasználó számára adjon meg egy mailNickname vagy a csoport e-mail-címe részeként használt alias. Az alábbi magas szintű jogosultsággal rendelkező e-mail-aliasokat a csoportok csak egy Azure AD globális rendszergazda is létrehozható. 
-  
+  
 * visszaélés 
 * admin 
-* Rendszergazda 
+* rendszergazda 
 * hostmaster 
 * majordomo 
 * postamester 

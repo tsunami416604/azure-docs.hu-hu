@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
-ms.openlocfilehash: a12d3708cdb547cc036b249bebf901d2ec5121c3
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 4c2ed5fa65528a690d618e45c118d2433820ddc6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729319"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57871493"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Az Azure App Service linuxon – gyakori kérdések
 
@@ -35,9 +35,17 @@ Ha kérdése van, ez a cikk fűzni.
 
 Az összes Docker-fájlok találhat [GitHub](https://github.com/azure-app-service). Az összes Docker-tárolókban található [Docker Hub](https://hub.docker.com/u/appsvc/).
 
+<a id="#startup-file"></a>
+
 **Mik azok a várt értékek az indítási fájl szakaszt, ha konfigurálható a futtatókörnyezeti verem?**
 
-A node.js-ben adja meg a PM2-konfigurációs fájl vagy a parancsfájlt. A .NET Core, adja meg a lefordított dll-fájl neve megegyezik `dotnet <myapp>.dll`. A Ruby a Ruby-szkriptet, hogy inicializálja az alkalmazást a kívánt is megadhat.
+| Verem     | Várt érték                                                                |
+|-----------|-------------------------------------------------------------------------------|
+| Java SE   | Indítsa el a parancsot a `.jar` alkalmazás                                    |
+| Tomcat    | egy parancsfájlt, hogy az alkalmazás minden szükséges configruations helye |
+| Node.js   | a PM2-konfigurációs fájl vagy a parancsfájl                                |          
+| .Net Core | a lefordított DLL-nevet: `dotnet <myapp>.dll`                                 |
+| Ruby      | a Ruby-szkriptet, amelyet szeretne az alkalmazás inicializálása                     
 
 ## <a name="management"></a>Kezelés
 
@@ -75,7 +83,7 @@ Igen, szükség nevű beállítása alkalmazás `WEBSITE_WEBDEPLOY_USE_SCM` val�
 
 Ha a Linux-webalkalmazás Git-telepítés nem sikerül, válassza ki az alkalmazáskód üzembe helyezéséhez az alábbi lehetőségek közül:
 
-- A folyamatos Készregyártás (előzetes verzió) szolgáltatással: Az alkalmazás forráskódjának tárolhatja az Azure DevOps Git-tárház vagy az Azure folyamatos készregyártással GitHub-adattárat. További információkért lásd: [a folyamatos teljesítés konfigurálása Linux-webalkalmazás](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/).
+- A folyamatos Készregyártás (előzetes verzió) szolgáltatással: Az alkalmazás forráskódjának tárolhatja az Azure DevOps Git-adattár vagy az Azure folyamatos készregyártással GitHub-adattárat. További információkért lásd: [a folyamatos teljesítés konfigurálása Linux-webalkalmazás](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/).
 
 - Használja a [ZIP API üzembe helyezése](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file): Ez az API használatára [SSH-t a webalkalmazás](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-ssh-support) , és keresse meg a mappát, ahol szeretné telepíteni a kódot. Futtassa a következő kódot:
 
@@ -92,7 +100,7 @@ Ha a Linux-webalkalmazás Git-telepítés nem sikerül, válassza ki az alkalmaz
 Igen, tiltsa le `perMessageDeflate` a kiszolgálóoldali Node.js-kódban. Például a Socket.IO kódtár használja, ha használja a következő kódot:
 
 ```nodejs
-var io = require('socket.io')(server,{
+const io = require('socket.io')(server,{
   perMessageDeflate :false
 });
 ```

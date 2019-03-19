@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
 ms.author: cithomas
-ms.openlocfilehash: c456f8f7f08fdbd0020bfc49ceeec262fa0ac773
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 14c9a453913a9a8080c840df3f23751487b86c34
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56457978"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58006149"
 ---
 # <a name="ilogger"></a>ILogger
 
@@ -219,6 +219,26 @@ services.AddApplicationInsightsTelemetry("ikeyhere");
 Ebben a példában a konfiguráció által használt `ApplicationInsightsLoggerProvider` ugyanaz, mint rendszeres alkalmazásfigyelés. Ezért mindkét `ILogger` nyomkövetéseket és egyéb telemetriát (kérelmeket, függőségeket stb.) is indulnak ugyanazokat a `TelemetryInitializers`, `TelemetryProcessors`, és `TelemetryChannel`. Ezek korrelált és ugyanúgy mintavételezés mintavételezés/nem lesz.
 
 Van azonban kivételt képez ez a viselkedés. Az alapértelmezett `TelemetryConfiguration` nem teljes mértékben állítsa be, mikor naplózza a `Program.cs` vagy `Startup.cs` magát, így ezeket a naplókat nem az alapértelmezett konfigurációban fog működni. Azonban minden más log (például naplók a tartományvezérlők, modellek stb.) a konfigurációs megosztásához.
+
+## <a name="control-logging-level"></a>Naplózási szint vezérlési
+
+Szereplőkkel a kódra, mint a fenti példák naplók szűrése, lehetőség arra is rögzíti az Application Insights naplózási szint módosításával szabályozhatja a `appsettings.json`. A [ASP.NET-naplózás – alapok dokumentáció](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.2#log-filtering) szemlélteti, hogyan lehet ezt elérni. Kifejezetten az Application Insights, a szolgáltató aliasnevet van `ApplicationInsights`, ahogyan az az alábbi példában, amely konfigurálja `ApplicationInsights` csak a naplók rögzítése `Warning` és a fenti az összes kategóriából származó.
+
+```json
+{
+  "Logging": {
+    "ApplicationInsights": {
+      "LogLevel": {
+        "Default": "Warning"
+      }
+    },
+    "LogLevel": {
+      "Default": "Warning"
+    }
+  },
+  "AllowedHosts": "*"
+}
+```
 
 ## <a name="next-steps"></a>További lépések
 

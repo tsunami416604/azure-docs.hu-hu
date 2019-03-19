@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8db11759ce501929e5cfd7b721c5e9dc80f9e01a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d3c3278a058162632a6ba7ea9731e5f233190700
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473187"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57843708"
 ---
 # <a name="hdinsight-hadoop-data-science-walkthroughs-using-hive-on-azure"></a>Hive használatával egy Azure HDInsight Hadoop adatelemzési útmutatók 
 
@@ -36,7 +36,7 @@ A forgatókönyv valósul meg, a Hive használatával egy [Azure HDInsight Hadoo
 
 ## <a name="predict-advertisement-clicks-using-hive-with-hdinsight-hadoop"></a>Hirdetmény kattintások és a HDInsight Hadoop Hive használatának előrejelzése
 
-A [használata Azure HDInsight Hadoop-fürtök 1 TB méretű adatkészleteken](hive-criteo-walkthrough.md) egy nyilvánosan elérhető forgatókönyv [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/) kattintson az adatkészlet tipp fizetős e, és a tartomány a várt mennyiségű előrejelzésére. A forgatókönyv valósul meg, a Hive használatával egy [Azure HDInsight Hadoop-fürt](https://azure.microsoft.com/services/hdinsight/) szeretné tárolni, ismerje meg, a visszafejtés funkciót, és le a mintaadatokat. Az Azure Machine Learning segítségével hozhat létre, betanítását és pontozását egy bináris osztályozási modell előrejelzésének, hogy a felhasználó rákattint az alkalmazásban a hirdetmény forráshierarchiából. A forgatókönyv azt állapítja meg, közzé egy, ezek a modellek webszolgáltatásként való ismertető.
+A [használata Azure HDInsight Hadoop-fürtök 1 TB méretű adatkészleteken](hive-criteo-walkthrough.md) egy nyilvánosan elérhető forgatókönyv [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) kattintson az adatkészlet tipp fizetős e, és a tartomány a várt mennyiségű előrejelzésére. A forgatókönyv valósul meg, a Hive használatával egy [Azure HDInsight Hadoop-fürt](https://azure.microsoft.com/services/hdinsight/) szeretné tárolni, ismerje meg, a visszafejtés funkciót, és le a mintaadatokat. Az Azure Machine Learning segítségével hozhat létre, betanítását és pontozását egy bináris osztályozási modell előrejelzésének, hogy a felhasználó rákattint az alkalmazásban a hirdetmény forráshierarchiából. A forgatókönyv azt állapítja meg, közzé egy, ezek a modellek webszolgáltatásként való ismertető.
 
 
 ## <a name="next-steps"></a>További lépések

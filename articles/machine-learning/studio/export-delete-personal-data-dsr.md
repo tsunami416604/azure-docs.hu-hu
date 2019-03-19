@@ -1,21 +1,21 @@
 ---
-title: Exportálás és az adatokat törölni a Machine Learning Studio
+title: Adatok exportálása és törlése
 titleSuffix: Azure Machine Learning Studio
 description: Terméken belüli, az Azure Machine Learning Studio által tárolt adatok exportálása és törlése az Azure Portalon keresztül és hitelesített REST API-kon keresztül érhető el. Telemetriai adatokat az Azure adatvédelmi portálon keresztül érhető el. Ez a cikk bemutatja, hogyan.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: 49f045e8da5094f583c01c514bf92f6bf3fe1c09
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 827714fea9618724ef058e1f76dc099f692482bc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453358"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850530"
 ---
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio"></a>Exportálás és terméken belüli felhasználói adatok törlése az Azure Machine Learning Studióban
 

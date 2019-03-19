@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e71e4ea56bfe467e03be59d6a855272baafc4235
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 04da80cd5c30d0556dc681b7bff412391aa2bcda
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822731"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107729"
 ---
 # <a name="backup-and-restore"></a>Biztonsági mentés és visszaállítás
 
@@ -47,7 +47,7 @@ SAP HANA az Azure-ban (nagyméretű példányok) két biztonsági mentési és v
 
 - Infrastruktúra biztonsági mentését és visszaállítását funkciót. Is használja a biztonsági mentés és visszaállítás, amely tartalmazza az alapul szolgáló infrastruktúra SAP Hana az Azure-ban (nagyméretű példányok). Ez a beállítás teljesíti a biztonsági mentések és a gyors visszaállítás érdekében van szükség. Ez a szakasz a többi címek érhető el a HANA nagyméretű példányok biztonsági mentési és helyreállítási funkciókat. Ez a szakasz is magában foglalja a kapcsolat biztonsági mentés és visszaállítás kell a vész helyreállítási funkciók nagyméretű HANA-példányok által kínált.
 
->   [!NOTE]
+> [!NOTE]
 >   A pillanatkép-technológia, amely az alapul szolgáló infrastruktúra HANA nagyméretű példányok által használt maga az SAP HANA-pillanatképeket. Ezen a ponton az SAP HANA-pillanatképek nem működik az SAP HANA database több-bérlős tárolók több bérlői együtt. Ha csak egyetlen bérlő üzembe lett helyezve, az SAP HANA-pillanatképek működnek, és ez a módszer is használható.
 
 ## <a name="using-storage-snapshots-of-sap-hana-on-azure-large-instances"></a>Storage snapshots SAP Hana használatával az Azure-ban (nagyméretű példányok)
@@ -641,44 +641,44 @@ A következő bemutatja, hogyan készülhet fel a kérelmet:
 
 1. Állítsa le a HANA-példány.
 
- ![A HANA-példány leállítása](./media/hana-overview-high-availability-disaster-recovery/image7-shutdown-hana.png)
+   ![A HANA-példány leállítása](./media/hana-overview-high-availability-disaster-recovery/image7-shutdown-hana.png)
 
 1. Válassza le az adatkötetek a HANA-adatbázis csomópontokon. Ha az adatkötetek továbbra is csatlakoztatva vannak az operációs rendszer, a pillanatkép visszaállítása sikertelen lesz.
- ![Válassza le az adatkötetek a HANA-adatbázis csomópontokon](./media/hana-overview-high-availability-disaster-recovery/image8-unmount-data-volumes.png)
+   ![Válassza le az adatkötetek a HANA-adatbázis csomópontokon](./media/hana-overview-high-availability-disaster-recovery/image8-unmount-data-volumes.png)
 
 1. Nyisson meg egy Azure-támogatási kérést, és a visszaállítást egy adott pillanatkép kapcsolatos utasításokat is tartalmazzák.
 
- - A visszaállítás: alatt SAP HANA az Azure Service Management fel, hogy vegyen részt egy konferenciahívás koordinálása, ellenőrzése és megerősítése, hogy a helyes tárfiók-pillanatkép visszaállítása biztosítása érdekében. 
+   - A visszaállítás: alatt SAP HANA az Azure Service Management fel, hogy vegyen részt egy konferenciahívás koordinálása, ellenőrzése és megerősítése, hogy a helyes tárfiók-pillanatkép visszaállítása biztosítása érdekében. 
 
- - Miután a visszaállítás: SAP HANA az Azure Service Management értesíti, amikor a storage-pillanatkép-visszaállítás.
+   - Miután a visszaállítás: SAP HANA az Azure Service Management értesíti, amikor a storage-pillanatkép-visszaállítás.
 
 1. A visszaállítási folyamat befejezése után csatlakoztassa újra az adatköteteket.
 
- ![Minden adatkötetnél újracsatlakoztathatja](./media/hana-overview-high-availability-disaster-recovery/image9-remount-data-volumes.png)
+   ![Minden adatkötetnél újracsatlakoztathatja](./media/hana-overview-high-availability-disaster-recovery/image9-remount-data-volumes.png)
 
 1. Jelölje be az SAP HANA Studio, a helyreállítási beállításokat, ha nem automatikusan származnak, ha újból csatlakozik a HANA-adatbázis az SAP HANA Studio eszközön keresztül. Az alábbi példa bemutatja a visszaállítás, az utolsó HANA pillanatképe. Tárolási pillanatkép beágyazása egy HANA pillanatképe. Ha a legutóbbi tárolási pillanatkép, a legfrissebb HANA pillanatképe kell lennie. (Ha egy régebbi tároló pillanatképe, kell keresse meg a HANA pillanatkép, a storage pillanatkép-időn alapulnak.)
 
- ![Válassza ki az SAP HANA Studio beállítások helyreállítása](./media/hana-overview-high-availability-disaster-recovery/image10-recover-options-a.png)
+   ![Válassza ki az SAP HANA Studio beállítások helyreállítása](./media/hana-overview-high-availability-disaster-recovery/image10-recover-options-a.png)
 
 1. Válassza ki **az adatbázis helyreállítása az adatok biztonsági mentése és a storage pillanatkép**.
 
- ![A helyreállítás típusának megadása ablak](./media/hana-overview-high-availability-disaster-recovery/image11-recover-options-b.png)
+   ![A helyreállítás típusának megadása ablak](./media/hana-overview-high-availability-disaster-recovery/image11-recover-options-b.png)
 
 1. Válassza ki **adjon meg biztonsági mentés nélkül katalógus**.
 
- ![A biztonsági mentési hely megadása ablak](./media/hana-overview-high-availability-disaster-recovery/image12-recover-options-c.png)
+   ![A biztonsági mentési hely megadása ablak](./media/hana-overview-high-availability-disaster-recovery/image12-recover-options-c.png)
 
 1. Az a **céltípus** listáról válassza ki **pillanatkép**.
 
- ![Adja meg a biztonsági mentés, helyreállítás ablak](./media/hana-overview-high-availability-disaster-recovery/image13-recover-options-d.png)
+   ![Adja meg a biztonsági mentés, helyreállítás ablak](./media/hana-overview-high-availability-disaster-recovery/image13-recover-options-d.png)
 
 1. Válassza ki **Befejezés** a helyreállítási folyamat elindításához.
 
- ![Válassza a "Befejezés" gombra a helyreállítási folyamat elindítása](./media/hana-overview-high-availability-disaster-recovery/image14-recover-options-e.png)
+    ![Válassza a "Befejezés" gombra a helyreállítási folyamat elindítása](./media/hana-overview-high-availability-disaster-recovery/image14-recover-options-e.png)
 
 1. A HANA-adatbázis visszaállítása és helyreállított a HANA-pillanatkép, amely megtalálható a storage-pillanatkép.
 
- ![HANA-adatbázis visszaállítása és helyreállított a HANA pillanatképe](./media/hana-overview-high-availability-disaster-recovery/image15-recover-options-f.png)
+    ![HANA-adatbázis visszaállítása és helyreállított a HANA pillanatképe](./media/hana-overview-high-availability-disaster-recovery/image15-recover-options-f.png)
 
 ### <a name="recover-to-the-most-recent-state"></a>A helyreállítás a legutóbbi állapot
 
@@ -691,23 +691,23 @@ A következő folyamat visszaállítja a HANA-pillanatkép, amely megtalálható
 
 1. Válassza ki **állítsa helyre az adatbázist a legutóbbi állapotára**.
 
- ![Válassza a "Állítsa helyre az adatbázist a legutóbbi állapotára"](./media/hana-overview-high-availability-disaster-recovery/image16-recover-database-a.png)
+   ![Válassza a "Állítsa helyre az adatbázist a legutóbbi állapotára"](./media/hana-overview-high-availability-disaster-recovery/image16-recover-database-a.png)
 
 1. Adja meg a legfrissebb HANA naplóalapú biztonsági mentések helyét. A hely összes HANA tranzakciós napló biztonsági mentés a HANA-pillanatképből a legfrissebb állapotba tartalmaznia kell.
 
- ![Adja meg a legfrissebb HANA naplóalapú biztonsági mentések helyét](./media/hana-overview-high-availability-disaster-recovery/image17-recover-database-b.png)
+   ![Adja meg a legfrissebb HANA naplóalapú biztonsági mentések helyét](./media/hana-overview-high-availability-disaster-recovery/image17-recover-database-b.png)
 
 1. Válasszon biztonsági másolatot egy alapjaként, amelyből az adatbázis helyreállításához. Ebben a példában a HANA pillanatképe a képernyőképen a HANA pillanatkép, a storage-pillanatkép található. 
 
- ![Egy alapjaként, amelyből az adatbázis helyreállítása biztonsági másolat kiválasztása](./media/hana-overview-high-availability-disaster-recovery/image18-recover-database-c.png)
+   ![Egy alapjaként, amelyből az adatbázis helyreállítása biztonsági másolat kiválasztása](./media/hana-overview-high-availability-disaster-recovery/image18-recover-database-c.png)
 
 1. Törölje a **használja a különbözeti biztonsági mentések** jelölőnégyzetet, ha az eltérések nem léteznek a HANA-pillanatkép és a legutóbbi állapot között.
 
- ![Törölje a "Használata a különbözeti biztonsági mentések" jelölőnégyzet jelölését, ha nincsenek eltérések létezik](./media/hana-overview-high-availability-disaster-recovery/image19-recover-database-d.png)
+   ![Törölje a "Használata a különbözeti biztonsági mentések" jelölőnégyzet jelölését, ha nincsenek eltérések létezik](./media/hana-overview-high-availability-disaster-recovery/image19-recover-database-d.png)
 
 1. Az Összegzés képernyőn válassza ki a **Befejezés** megkezdheti a visszaállítást.
 
- ![Kattintson a "Befejezés" gombra az Összegzés képernyőn](./media/hana-overview-high-availability-disaster-recovery/image20-recover-database-e.png)
+   ![Kattintson a "Befejezés" gombra az Összegzés képernyőn](./media/hana-overview-high-availability-disaster-recovery/image20-recover-database-e.png)
 
 ### <a name="recover-to-another-point-in-time"></a>Helyreállítása egy másik időpontra állapotra
 Helyreállítás egy időben a HANA-pillanatkép (tartalmazza a storage-pillanatkép) és a egy későbbi, mint a pillanatkép-időponthoz HANA helyreállítási között, hajtsa végre az alábbi lépéseket:

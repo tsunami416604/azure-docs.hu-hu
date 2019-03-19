@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/19/2019
 ms.author: sethm
 ms.lastreviewed: 01/19/2019
-ms.openlocfilehash: 96cb07ca4ede26e9bf0e5ceba28f1549061d0bf3
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 07e598d6fd4ed2937d86f31593a220c0c28ba328
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815676"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58074658"
 ---
 # <a name="configure-ipsecike-policy-for-site-to-site-vpn-connections"></a>IPsec/IKE-házirend site-to-site VPN-kapcsolatok konfigurálása
 
@@ -76,7 +76,7 @@ Az alábbi táblázat a támogatott titkosítási algoritmusokat és kulcserőss
 | IPsec-titkosítás                                     | GCMAES256, GCMAES192, GCMAES128, AES256, AES192, AES128, DES3, DES, Nincs |
 | IPsec-integritás                                      | GCMASE256, GCMAES192, GCMAES128, SHA256, SHA1, MD5                       |
 | PFS-csoport                                            | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, Nincs                         |
-| Gyorsmódú biztonsági társítás élettartama                                       | (Nem kötelező: alapértelmezett értékek vannak használt Ha nincs megadva)<br />                         Másodperc (egész; min. 300/alapértelmezett érték: 27000 másodperc)<br />                         Kilobájt (egész; min. 1024/alapértelmezett 102400000 KB) |                                                                          |
+| Gyorsmódú biztonsági társítás élettartama                                       | (Nem kötelező: alapértelmezett értékek vannak használt Ha nincs megadva)<br />                         Másodperc (egész; min. 300/alapértelmezett érték: 27000 másodperc)<br />                         Kilobájt (egész; min. 1024/alapértelmezett 102400000 KB) |
 | Forgalomválasztó                                     | A házirend alapú Forgalomválasztóinak nem támogatottak az Azure Stackben.         |
 
 - A helyszíni VPN-eszköz konfigurációjának meg kell egyezniük velük, vagy tartalmazniuk kell az alábbi, az Azure IPsec/IKE-házirendben megadott algoritmusokat és paramétereket:

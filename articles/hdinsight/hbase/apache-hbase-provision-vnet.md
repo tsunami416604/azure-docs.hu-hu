@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 31e4f4a8cfe9a82cf5320cd364905c7c91de0959
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: af5a261ba57c406335fb75260d6af797af70a1b9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653798"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101448"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Az Azure virtuális hálózaton található HDInsight az Apache HBase-fürtök létrehozása
 Ismerje meg, hogyan hozhat létre az Azure HDInsight az Apache HBase-fürtök egy [Azure Virtual Network][1].
@@ -90,9 +90,9 @@ Az új HBase-fürt használatának megkezdése előtt, használhatja a találhat
      2. Kattintson a **gazdagépek** a felső menüben.
    * REST-hívásokat Curl használata:
 
-    ```bash
+     ```bash
         curl -u <username>:<password> -k https://<clustername>.azurehdinsight.net/ambari/api/v1/clusters/<clustername>.azurehdinsight.net/services/hbase/components/hbrest
-    ```
+     ```
 
      A JavaScript Object Notation (JSON) visszaadott adatok keresse meg a "gazdaszámítógép_neve" bejegyzés. Tartalmazza a fürtben lévő csomópontok teljes Tartománynevét. Példa:
 
@@ -105,7 +105,7 @@ Az új HBase-fürt használatának megkezdése előtt, használhatja a találhat
 
      A következő Azure PowerShell-parancsfájl segítségével regisztrálja a **Get-ClusterDetail** függvény, amely segítségével adja vissza a DNS-utótag:
 
-    ```powershell
+     ```powershell
         function Get-ClusterDetail(
             [String]
             [Parameter( Position=0, Mandatory=$true )]
@@ -195,13 +195,13 @@ Az új HBase-fürt használatának megkezdése előtt, használhatja a találhat
                 Write-host $Suffix
             }
         }
-    ```
+     ```
 
      Az Azure PowerShell-szkript futtatása után az alábbi parancs segítségével a DNS-utótag használatával adja vissza a **Get-ClusterDetail** függvény. Ez a parancs használata esetén adja meg a HDInsight HBase-fürt neve, a rendszergazda neve és a rendszergazdai jelszót.
 
-    ```powershell
+     ```powershell
         Get-ClusterDetail -ClusterDnsName <yourclustername> -PropertyName FQDNSuffix -Username <clusteradmin> -Password <clusteradminpassword>
-    ```
+     ```
 
      Ez a parancs a DNS-utótagot adja vissza. Ha például **yourclustername.b4.internal.cloudapp.net**.
 

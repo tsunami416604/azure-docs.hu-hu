@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: quickstart
-ms.date: 01/09/2019
+ms.date: 03/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 95e2a17407ad7d9e108b4ac38e8ff0ff62abf857
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: bd591ff30755fd68bb2dc673899d0ac993215e68
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57529685"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57834720"
 ---
 # <a name="quickstart-deploy-azure-data-box-using-the-azure-portal"></a>Gyors útmutató: Üzembe helyezése az Azure Data Box az Azure portal használatával
 
@@ -74,7 +74,7 @@ A Data Box megérkeztét követően hajtsa végre az alábbi lépéseket az eszk
     
 4. Csatlakoztassa a kábeleket az eszközhöz az ábra szerint.  
 
-    ![Data Box csatlakoztatott kábelekkel](media/data-box-quickstart-portal/data-box-cabled-dhcp.png)  
+    ![Data Box-eszköz bekábelezett hátlapja](media/data-box-deploy-set-up/data-box-cabled-dhcp.png)  
 
     1. Csatlakoztassa a tápkábelt az eszközhöz.
     2. Az RJ-45 CAT 6 hálózati kábellel csatlakoztassa a gazdagépet az eszköz felügyeleti portjához (MGMT). 

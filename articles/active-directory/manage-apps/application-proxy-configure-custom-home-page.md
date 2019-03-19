@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9fc6b9ad5227bc5bffd1f44f664351843896aec
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e8017049218bed5a1b1bd86b68dc4342b4044723
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181609"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109780"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Az Azure AD-alkalmazásproxy használatával állítsa be a közzétett alkalmazások egy egyéni kezdőlapja
 
@@ -30,10 +30,10 @@ Ez a cikk ismerteti az alkalmazások számára a felhasználók számára egy eg
 Amikor a felhasználók indítsa el az alkalmazást, azokat a legfelső szintű tartomány URL-címe, a közzétett alkalmazás alapértelmezés szerint a van irányítva. A kezdőlap általában a kezdőlap URL-címe van beállítva. Az Azure AD PowerShell-modul segítségével egyéni kezdőlap URL-címek megadása, ha azt szeretné, hogy a felhasználók számára a megjelenni az alkalmazásban egy adott oldalra. 
 
 Ezért egy vállalat állíthatja be egy egyéni kezdőlap, Íme egy példa:
-- A vállalati hálózaton belüli felhasználók Ugrás *https://ExpenseApp/login/login.aspx* jelentkezik be, és az alkalmazás eléréséhez.
-- Más tartalmaktól, például képek, amelynek a legfelső szinten, a gyökérmappa-szerkezetében hozzá kell Application Proxy van, mert az alkalmazást közzéteszi *https://ExpenseApp* , a belső URL-cím.
-- A külső URL-címét *https://ExpenseApp-contoso.msappproxy.net*, amely nem használ a felhasználók a bejelentkezési lapot.  
-- Állítsa be *https://ExpenseApp-contoso.msappproxy.net/login/login.aspx* kezdőlap URL-címként. 
+- A vállalati hálózaton belüli felhasználók Ugrás `https://ExpenseApp/login/login.aspx` jelentkezik be, és az alkalmazás eléréséhez.
+- Más tartalmaktól, például képek, amelynek a legfelső szinten, a gyökérmappa-szerkezetében hozzá kell Application Proxy van, mert az alkalmazást közzéteszi `https://ExpenseApp` , a belső URL-cím.
+- A külső URL-címét `https://ExpenseApp-contoso.msappproxy.net`, amely nem használ a felhasználók a bejelentkezési lapot.  
+- Állítsa be `https://ExpenseApp-contoso.msappproxy.net/login/login.aspx` kezdőlap URL-címként. 
 
 >[!NOTE]
 >Amikor engedélyezi a felhasználók elérését a közzétett alkalmazásokat, az alkalmazások megjelennek a [Azure AD hozzáférési Panel](../user-help/active-directory-saas-access-panel-introduction.md) és a [Office 365 appindítóban](https://blogs.office.com/2016/09/27/introducing-the-new-office-365-app-launcher).
@@ -113,7 +113,7 @@ A kezdőlap URL-cím létrehozása, és frissítse az alkalmazás ezt az érték
     Get-AzureADApplication -ObjectId 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4.
     ```
 
- Most, hogy az alkalmazást jóváhagyta, készen áll a kezdőlap módon frissíteni.
+   Most, hogy az alkalmazást jóváhagyta, készen áll a kezdőlap módon frissíteni.
 
 2. Hozzon létre egy üres alkalmazás-objektumot a kívánt módosításokat, győződjön meg arról, hogy tartsa. Ez a változó tárolja a frissíteni kívánt értékeket. Semmi nem jön létre ebben a lépésben.
 
