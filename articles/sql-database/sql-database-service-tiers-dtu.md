@@ -12,12 +12,12 @@ ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/25/2019
-ms.openlocfilehash: 247198e9ba1cdc6cd43b3fe60a20cd81280113cd
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 7a8556edd793cbde47c14d2b79792dbe42f8e44b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569943"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894291"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Szolgáltatási szinten a DTU-alapú vásárlási modell
 
@@ -33,7 +33,7 @@ Szolgáltatási szinten a DTU-alapú vásárlási modell által meghatározott m
 Szolgáltatásszint kiválasztása elsődlegesen az üzleti folytonosság, tárolás és teljesítmény-követelmények attól függ.
 
 ||Alapszintű|Standard|Prémium|
-| :-- | --: |--:| --:| --:|
+| :-- | --: |--:| --:|
 |Egyes számítási feladatokhoz|Fejlesztési és éles környezetek|Fejlesztési és éles környezetek|Fejlesztési és éles környezetek|
 |SLA-ban garantált üzemidő|99.99%|99.99%|99.99%|
 |Biztonsági mentés megőrzése|7 nap|35 napon belül|35 napon belül|
@@ -45,17 +45,17 @@ Szolgáltatásszint kiválasztása elsődlegesen az üzleti folytonosság, táro
 |||||
 
 > [!NOTE]
-> Egy ingyenes Azure SQL database az alapszintű szolgáltatásszinten, és a egy ingyenes Azure-fiókkal, Fedezze fel az Azure együttes kérheti le. További információ: [felügyelt felhőbeli adatbázis létrehozása az ingyenes Azure-fiók](https://azure.microsoft.com/free/services/sql-database/).
+> Egy ingyenes Azure SQL database az alapszintű szolgáltatásszinten együtt ingyenes Azure-fiókra, Fedezze fel az Azure kérheti le. További információ: [felügyelt felhőbeli adatbázis létrehozása az ingyenes Azure-fiók](https://azure.microsoft.com/free/services/sql-database/).
 
 ## <a name="single-database-dtu-and-storage-limits"></a>Önálló adatbázis DTU- és tárterületi korlátozásai
 
 A számítási méret az önálló adatbázisok adatbázis-tranzakciós egységek (dtu-k) és a rugalmas Database Transaction Unitok (Edtu) rugalmas készletek vannak kifejezve. További információ a dtu-król és Edtu-: [DTU-alapú vásárlási modell](sql-database-purchase-models.md#dtu-based-purchasing-model)?
 
 ||Alapszintű|Standard|Prémium|
-| :-- | --: | --: | --: | --: |
+| :-- | --: | --: | --: |
 | Maximális tárterület méretét | 2 GB | 1 TB | 4 TB  |
 | Maximális dtu-k | 5 | 3000 | 4000 | 
-||||||
+|||||
 
 > [!IMPORTANT]
 > Bizonyos körülmények között szükség lehet az adatbázis nem használt terület felszabadítását zsugorítani. További információkért lásd: [kezelése az Azure SQL Database területe](sql-database-file-space-management.md).
@@ -63,13 +63,13 @@ A számítási méret az önálló adatbázisok adatbázis-tranzakciós egysége
 ## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>Rugalmas készlet edtu-k, a storage és a készletezett adatbázis korlátok
 
 | | **Basic** | **Standard** | **Prémium** |
-| :-- | --: | --: | --: | --: |
+| :-- | --: | --: | --: |
 | Az adatbázisonkénti maximális mérete  | 2 GB | 1 TB | 1 TB |
 | Készletenkénti maximális mérete | 156 GB | 4 TB | 4 TB |
 | Maximális Edtu adatbázisonként | 5 | 3000 | 4000 |
 | Maximális edtu-k száma készletenként | 1600 | 3000 | 4000 |
 | Készletenkénti adatbázisok maximális száma | 500  | 500 | 100 |
-||||||
+|||||
 
 > [!IMPORTANT]
 > Jelenleg több mint 1 TB tárterület egységára prémium szinten érhető el minden régióban, kivéve: Kelet-Kína, Észak-Kína, közép-Németország, Északkelet-Németország, USA nyugati középső Régiója, USA védelmi Minisztériuma régiók és US Government központi. Ezekben a régiókban a prémium szinthez tartozó tárterület maximuma 1 TB.  További információkért lásd: [P11 – P15 – aktuális korlátozások](sql-database-single-database-scale.md#dtu-based-purchasing-model-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  

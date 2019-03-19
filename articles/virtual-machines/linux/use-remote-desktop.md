@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 44b0f8b3d11b737ad88f7d33b036b52d24b70e33
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: dec0b8bcd5a0e0d20ead5b149405e3716589ba53
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960327"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57995728"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Telepítse és konfigurálja az Azure-beli Linuxos virtuális gép kapcsolódni a távoli asztal
 Linux rendszerű virtuális gépek (VM) az Azure-ban általában kezelhetők a parancssorból a secure shell-(SSH) kapcsolatot használ. Ha új, Linux, illetve gyors hibaelhárítási forgatókönyveket, a távoli asztal használata egyszerűbb lehet. Ez a cikk részletesen bemutatja egy asztali környezet telepítéséhez és konfigurálásához ([xfce](https://www.xfce.org)) és a távoli asztal ([xrdp](http://www.xrdp.org)) a Linux rendszerű virtuális gép a Resource Manager üzemi modell használatával.
@@ -103,7 +103,7 @@ Hitelesítés után a xfce asztali környezet betöltése, és a következő pé
 
 ![xfce asztali környezetben keresztül xrdp](./media/use-remote-desktop/xfce-desktop-environment.png)
 
-Ha a helyi RDP-ügyfél a hálózati szintű hitelesítés (NLA) használ, szükség lehet, hogy kapcsolati beállítás letiltása. XRDP jelenleg nem támogatja a NLA. Alternatív támogató NLA, mint például az RDP-megoldások is megtekintheti [FreeRDP](http://www.freerdp.com).
+Ha a helyi RDP-ügyfél a hálózati szintű hitelesítés (NLA) használ, szükség lehet, hogy kapcsolati beállítás letiltása. XRDP jelenleg nem támogatja a NLA. Alternatív támogató NLA, mint például az RDP-megoldások is megtekintheti [FreeRDP](https://www.freerdp.com).
 
 
 ## <a name="troubleshoot"></a>Hibaelhárítás

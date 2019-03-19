@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/06/2019
-ms.openlocfilehash: d94bc570f47d71a7e2b626041acd4bb6e84d0dc1
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 36b2f3817c7e96a35c1e8f3aba22db201224ceba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876007"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075935"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Az Azure SQL nagy kapacitású adatbázisokkal kapcsolatos gyakori kérdések
 
@@ -45,7 +45,7 @@ Rétegek elsősorban különbözteti meg a Virtuálismag-alapú szolgáltatás a
 - Az üzletileg kritikus szolgáltatási szinten üzleti számítási feladathoz megfelelő prioritást IO-késés esetén.
 
 | | Erőforrás típusa | Általános rendeltetés |  Rugalmas skálázás | Üzletileg kritikus |
-|:---|:---:|:---:|:---:|:---:|:---:|
+|:---|:---:|:---:|:---:|:---:|
 | **A legjobb** |Összes|  A legtöbb üzleti számítási feladathoz. Ajánlatok költségvetés-orientált elosztott terhelésű számítási és tárolási lehetőségek. | Alkalmazások nagy mennyiségű adat kapacitásigények, és lehetővé teszi az automatikus skálázás storage és a méretezési csoport fluidly számítási. | Magas tranzakciós sebességű és legkisebb késés IO OLTP alkalmazások. Biztosítja a legmagasabb hibatűrést használatával több hibákhoz, elkülönített replika.|
 |  **Erőforrás típusa** ||Önálló adatbázis / rugalmas készlet / a felügyelt példány | Önálló adatbázis | Önálló adatbázis / rugalmas készlet / a felügyelt példány |
 | **Számítási mérete**|Önálló adatbázis / rugalmas készlet * | 1 és 80 virtuális magok | 1 és 80 virtuális magok * | 1 és 80 virtuális magok |

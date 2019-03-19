@@ -1,5 +1,5 @@
 ---
-title: 404-es állapotkód visszaadó Azure CDN-végpontok hibaelhárítása |} Microsoft Docs
+title: 404-es állapotkódot adja vissza az Azure CDN-végpontok hibaelhárítása |} A Microsoft Docs
 description: 404-es válaszkódot az Azure CDN-végpontok hibaelhárítása.
 services: cdn
 documentationcenter: ''
@@ -14,93 +14,93 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 1cffef5bbda475032ee7ff07188ab0d9d52846ea
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8c1e463378cc2c1ba3fdc0bcf91f800f634cc5f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33766104"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077122"
 ---
-# <a name="troubleshooting-azure-cdn-endpoints-that-return-a-404-status-code"></a>404-es állapotkód visszaadó Azure CDN-végpontok hibaelhárítása
-Ez a cikk elhárítása az Azure Content Delivery Network (CDN) végpontok 404-es HTTP-állapotkódok visszaadó teszi lehetővé.
+# <a name="troubleshooting-azure-cdn-endpoints-that-return-a-404-status-code"></a>404-es állapotkódot adja vissza az Azure CDN-végpontok hibaelhárítása
+Ez a cikk lehetővé teszi az Azure Content Delivery Network (CDN) végpontok, amelyek 404-es HTTP-állapotkódok vissza kapcsolatos hibaelhárítás.
 
-Ha ez a cikk bármely pontján további segítségre van szüksége, forduljon az Azure-szakértők a [az MSDN Azure és a Stack Overflow fórumok](https://azure.microsoft.com/support/forums/). Másik lehetőségként is fájl is az Azure támogatási incidens. Lépjen a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) válassza **támogatás**.
+Ha ebben a cikkben bármikor további segítségre van szüksége, forduljon az Azure-szakértőket a [az MSDN Azure és a Stack Overflow-fórumok](https://azure.microsoft.com/support/forums/). Másik megoldásként is fájl is egy Azure-támogatási esemény. Nyissa meg a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) válassza **támogatás kérése**.
 
 ## <a name="symptom"></a>Jelenség
-Létrehozta a CDN-profil és egy végpontot, de a tartalom úgy tűnik, hogy a CDN elérhetőnek lennie. Felhasználók, akik az CDN URL-cím a tartalom elérésére irányuló kísérlet egy HTTP 404 állapotkódot kapnak. 
+Létrehozott egy CDN-profil és a egy végpontot, de a tartalom nem úgy tűnik, hogy a CDN-en elérhető. Felhasználók, akik megpróbálnak csatlakozni a tartalom a CDN URL-CÍMEN keresztül kap egy HTTP 404 állapotkódot. 
 
 ## <a name="cause"></a>Ok
-Van több lehetséges oka, beleértve:
+Van több lehetséges oka lehet, többek között:
 
-* A fájl eredetében nem látható a CDN.
-* A végpont helytelenül van konfigurálva, a CDN, és keresse meg a megfelelő helyen, amely.
-* A gazdagép visszautasítja a CDN állomásfejlécét.
-* A végpont nem átvették a módosítást a CDN teljes propagálására.
+* A fájl eredetében nem látható a CDN-re.
+* A végpont helytelenül van konfigurálva, így a CDN-t, és tekintse meg a megfelelő helyen.
+* A gazdagép visszautasítja az állomásfejléc a CDN-ből.
+* A végpont nem volt időm propagálása a CDN teljes.
 
 ## <a name="troubleshooting-steps"></a>Hibaelhárítási lépések
 > [!IMPORTANT]
-> A CDN-végpont létrehozása után nem azonnal lesz használható, mivel némi időre van a CDN propagálásához a regisztráció:
-> - A **Azure CDN Standard Microsoft** -profilok propagálása általában befejezi tíz perc múlva. 
-> - A **Azure CDN Standard Akamai** -profilok propagálása általában befejezi egy percen belül. 
-> - A **Azure CDN Standard verizon** és **verizon Azure CDN Premium** -profilok propagálása általában befejezi 90 percen belül. 
+> Miután létrehozta a CDN-végpont, nem azonnal lesz elérhető, amely szükséges idő a regisztráció propagálásához a CDN-en keresztül:
+> - A **Microsoft Azure CDN Standard** típusú profilok propagálása általában 10 perc alatt fejeződik be. 
+> - Az **Akamai Azure CDN Standard** típusú profilok propagálása általában egy percen belül befejeződik. 
+> - A **Verizon Azure CDN Standard** és a **Verizon Azure CDN Premium** típusú profilok propagálása általában 90 percen belül fejeződik be. 
 > 
-> Ha befejezte a jelen dokumentumban leírt lépések, és továbbra is 404-es válaszkódot kap, várja meg, ellenőrizze újra a támogatási jegy megnyitása előtt néhány óra.
+> Ha ebben a dokumentumban leírt lépéseket, és továbbra is 404-es válaszkódot kap, várja meg, néhány óra alatt újra támogatási jegy megnyitása előtt.
 > 
 > 
 
 ### <a name="check-the-origin-file"></a>Ellenőrizze az eredeti fájl
-Először ellenőrizze, hogy a gyorsítótár fájlt az eredeti kiszolgálón érhetők el, és nyilvánosan elérhető az interneten. A leggyorsabb, amely módja egy magán- vagy incognito munkamenetet, és tallózással keresse meg a fájlt közvetlenül a böngésző megnyitásához. Írja be vagy illessze be az URL címet, és győződjön meg arról, hogy a fájl várt eredményezi. Tegyük fel például, egy Azure Storage-fiókot, https címen érhető el a fájlt:\//cdndocdemo.blob.core.windows.net/publicblob/lorem.txt. Ha ez a fájl tartalma sikeresen betölthető, átadja a vizsgálatot.
+Először győződjön meg arról, hogy a gyorsítótár-fájl érhető el a forráskiszolgáló és a nyilvánosan elérhető-e az interneten. A leggyorsabb módja, hogy egy privát vagy inkognitó munkamenetet, és tallózással keresse meg a fájlt közvetlenül a nyisson meg egy böngészőt. Írja be vagy illessze be az URL-címet a címsorba, és győződjön meg arról, hogy a fájl várt eredmény. Tegyük fel például, egy fájlt egy Azure Storage-fiókban lévő elérhető-e a https:\//cdndocdemo.blob.core.windows.net/publicblob/lorem.txt. Ha sikeresen betöltheti a fájl tartalmát, a teszt továbbítja.
 
 ![Sikerült!](./media/cdn-troubleshoot-endpoint/cdn-origin-file.png)
 
 > [!WARNING]
-> Ez a leggyorsabb és legegyszerűbb módja ellenőrizze a fájl nyilvánosan elérhető, a szervezet bizonyos hálózati konfigurációk teheti jelenik meg, amely nem egy fájl esetén nyilvánosan elérhető a tényt, csak a felhasználók számára látható a hálózat (még akkor is, ha a fut. Azure). Győződjön meg arról, hogy ez nem, tesztelje a fájl egy külső böngészővel, például az olyan mobileszköz, amely nem kapcsolódik a vállalati hálózathoz, vagy egy virtuális gép az Azure-ban.
+> Amíg ez a leggyorsabb és legegyszerűbb módja, ellenőrizze a fájl nyilvánosan elérhető, a szervezet bizonyos hálózati konfigurációk teheti jelennek meg, hogy egy fájlt érhető el nyilvánosan amikor, sőt, csak látják a felhasználók a hálózat (még akkor is, ha vannak tárolva Azure-ra). Győződjön meg arról, hogy ez nem ez a helyzet, tesztelje a fájl egy külső böngészővel, például a mobileszközök, amelyek a vállalati hálózaton, vagy az Azure-beli virtuális gép nincs csatlakoztatva.
 > 
 > 
 
 ### <a name="check-the-origin-settings"></a>A forrás beállításainak ellenőrzése
-Miután ellenőrizte, hogy a fájl nyilvánosan az interneten érhető el, ellenőrizze a forrás beállításainak. Az a [Azure Portal](https://portal.azure.com), keresse meg a CDN-profilt, és válassza ki a végpontot meg elhárítani. A **végpont** lapon, válassza ki a forrás.  
+Miután meggyőződött a fájl nyilvánosan elérhető az interneten, ellenőrizze a forrás beállításainak. Az a [az Azure Portal](https://portal.azure.com), keresse meg a CDN-profilra, és válassza ki a végpont dolgozik. A létrejövő a **végpont** lapon, válassza ki a forrás.  
 
-![A kijelölt forrás végpont lap](./media/cdn-troubleshoot-endpoint/cdn-endpoint.png)
+![Végpont oldala, amelyen kiemelve forrása](./media/cdn-troubleshoot-endpoint/cdn-endpoint.png)
 
-A **származási** lap jelenik meg. 
+A **forrás** lap jelenik meg. 
 
 ![Forrás lap](./media/cdn-troubleshoot-endpoint/cdn-origin-settings.png)
 
-#### <a name="origin-type-and-hostname"></a>Forrása típusa és az állomásnév
-Ellenőrizze, hogy az értékek a **forrása típusa** és **forrásállomásnév** helyes-e. Ebben a példában, https:\//cdndocdemo.blob.core.windows.net/publicblob/lorem.txt, az URL-cím hostname része *cdndocdemo.blob.core.windows.net*, amely helyességéről. Mivel az Azure tárolás, a Web App és a felhőalapú szolgáltatás források legördülő lista értéket használja a **forrásállomásnév** mezőjét, helytelen helyesírása nem problémát. Azonban ha egy egyéni forrás használ, győződjön meg arról, hogy helyesen írta-e az állomásnevet.
+#### <a name="origin-type-and-hostname"></a>Forrás típusa és az állomásnév
+Ellenőrizze, hogy az értékét a **forrása típusa** és **forrás gazdaneve** helyes-e. Ebben a példában https:\/cdndocdemo.blob.core.windows.net/publicblob/lorem.txt, az URL-cím állomásnév részét van *cdndocdemo.blob.core.windows.net*, amely helyességéről. Mivel Azure Storage, a Web App és a Felhőszolgáltatás források legördülő lista értékét a **forrás gazdaneve** mezőt, helytelen helyesírása nem probléma. Azonban ha egy egyéni forrás használ, győződjön meg arról, hogy helyesen írta-e be az állomásnevet.
 
 #### <a name="http-and-https-ports"></a>A HTTP és HTTPS-portok
-Ellenőrizze a **HTTP** és **HTTPS-portok**. A legtöbb esetben 80-as és 443-as helyesek, és nem lesz szükség.  Azonban ha az eredeti kiszolgálóra egy másik portot figyeli, amely kell itt magát. Ha nem biztos benne, tekintse meg az eredeti fájl URL-CÍMÉT. A HTTP és HTTPS specifikációk 80-as és 443-as portot használja az alapértelmezett beállításokat. Példa URL-címét, https:\//cdndocdemo.blob.core.windows.net/publicblob/lorem.txt, a port nincs megadva, ezért az alapértelmezett 443-as feltételezi, és a beállítások helyesek.  
+Ellenőrizze a **HTTP** és **HTTPS-portok**. A legtöbb esetben 80-as és 443-as helyesek, és a módosítások nem lesz szükség.  Azonban ha a forráskiszolgáló egy másik porton figyel, amely kell itt képviseli. Ha nem biztos benne, tekintse meg a forrásfájl URL-CÍMÉT. A HTTP és HTTPS-specifikációk 80-as és 443-as az alapértelmezett beállításokat használja. A példa URL-címben https:\//cdndocdemo.blob.core.windows.net/publicblob/lorem.txt, a port nincs megadva, így a rendszer feltételezi a rendszer az alapértelmezett 443-as és a beállítások helyesek.  
 
-Előfordulhat azonban, hogy az URL-cím, az eredeti fájl, amely korábban tesztelt: http:\//www.contoso.com:8080/file.txt. Megjegyzés: a *: 8080* állomásnév szegmens végén részét. Hogy szám utasítja, hogy a 8080-as port használatával csatlakoznak a webkiszolgálóhoz: www.contoso.com, ezért meg kell adnia *8080* a a **HTTP-port** mező. Fontos megjegyezni, hogy ezeket a portbeállításokat hatással port csak a végpont használatával adatbeolvasás a forrásból.
+Előfordulhat azonban, hogy az URL-cím, az eredeti fájl, amely korábban, a tesztelt van http:\//www.contoso.com:8080/file.txt. Megjegyzés: a *: 8080-as* végén található a hostname szegmens részét. A 8080-as porton található a www-kiszolgáló kapcsolódáshoz a böngésző arra utasítja a szám meglévő\.contoso.com, ezért kell megadnia *8080-as* a a **HTTP-port** mező. Fontos megjegyezni, hogy ezeket a portbeállításokat hatással vannak, melyik porton csak a végpontot használja a forrás lévő információk lekéréséhez.
 
 > [!NOTE]
-> **Az Azure CDN Standard Akamai** végpontok nem teszik lehetővé a teljes TCP-porttartomány esetén a források számára.  A nem engedélyezett forrásportok listáját lást: [Azure CDN from Akamai Allowed Origin Ports](https://msdn.microsoft.com/library/mt757337.aspx) (Az Akamai Azure CDN engedélyezett forrásportjai).  
+> **Az Azure CDN Akamai Standard** végpontok nem teszik lehetővé a teljes TCP-porttartomány források.  A nem engedélyezett forrásportok listáját lást: [Azure CDN from Akamai Allowed Origin Ports](https://msdn.microsoft.com/library/mt757337.aspx) (Az Akamai Azure CDN engedélyezett forrásportjai).  
 > 
 > 
 
 ### <a name="check-the-endpoint-settings"></a>Ellenőrizze a végpont beállításait
-Az a **végpont** lapon jelölje be a **konfigurálása** gombra.
+Az a **végpont** lapon válassza ki a **konfigurálása** gombra.
 
-![A Konfigurálás gombra a kijelölt végpont lap](./media/cdn-troubleshoot-endpoint/cdn-endpoint-configure-button.png)
+![Végpont lap konfigurálása gomb kiemelésével](./media/cdn-troubleshoot-endpoint/cdn-endpoint-configure-button.png)
 
 A CDN-végpont **konfigurálása** lap jelenik meg.
 
 ![Lapjának konfigurálása](./media/cdn-troubleshoot-endpoint/cdn-configure.png)
 
 #### <a name="protocols"></a>Protokollok
-A **protokollok**, győződjön meg arról, hogy az ügyfelek által használt protokollt, és van-e kiválasztva. Mivel az ügyfél által használt ugyanazt a protokollt a forrás eléréséhez használt, fontos a forrásportok az előző szakaszban megfelelően konfigurálva van. A CDN-végpont csak az alapértelmezett HTTP és HTTPS-portok (80-as és 443-as), függetlenül attól, a forrásportok figyel.
+A **protokollok**, győződjön meg arról, hogy az ügyfelek által használt protokollt, van-e kiválasztva. Mivel ugyanazt a protokollt, amelyet az ügyfél a forrás eléréséhez használt, fontos a forrásportok az előző szakaszban megfelelően konfigurálva van. A CDN-végpont csak az alapértelmezett HTTP és HTTPS-porton (80-as és 443-as), függetlenül a forrásportok figyel.
 
-Most a fenti képzeletbeli példában http-vel való visszatéréshez:\//www.contoso.com:8080/file.txt.  Felejtse el, a Contoso megadott *8080* mint a HTTP porttal, de tegyük is fel azokat a megadott *44300* a HTTPS-portjaként működik.  Ha nevű végpont hozza létre őket *contoso*, a CDN-végpont állomásnevéhez lenne *contoso.azureedge.net*.  A kérelem http:\//contoso.azureedge.net/file.txt egy HTTP-kérelem, így a végpont szeretné használni a HTTP a 8080-as porton lekéréséhez a forrásból.  Biztonságos kérelmet HTTPS https: \/ /contoso.azureedge.net/file.txt, okozna a végpont a HTTPS protokoll használatát 44300 porton történő lekérésekor. a fájlt a forrásból.
+Http-képzeletbeli példában térjen:\//www.contoso.com:8080/file.txt.  Felejtse el, mert a megadott Contoso *8080-as* mint a HTTP-portot, de azt is feltételezzük, a megadott *44300* a HTTPS-port.  Ha egy végpont nevű *contoso*, a CDN-végpont gazdanevére lenne *contoso.azureedge.net*.  A http-kérelem:\//contoso.azureedge.net/file.txt HTTP-kérést, így a végpontot használja HTTP a 8080-as porton is lekérheti azt a forrásból.  HTTPS, a https-kapcsolaton keresztül egy biztonságos kérelmet: \/ /contoso.azureedge.net/file.txt, okozna a végpontot a HTTPS használatára 44300 porton, a fájlt a forrásból lekérésekor.
 
 #### <a name="origin-host-header"></a>Forrás állomásfejléce
-A **forrás állomásfejlécét** minden egyes kérelemmel a forrásnak küldött állomásfejléc-érték.  A legtöbb esetben ez legyen ugyanaz, mint a **forrásállomásnév** azt korábban ellenőrzése.  Ebben a mezőben értékkel általában nem okoz a 404-es állapotot, de okozhat a többi 4xx állapot, attól függően, hogy a forrás vár.
+A **forrás állomásfejléce** minden egyes kérelemmel a forrásnak küldött állomásfejléc-érték.  A legtöbb esetben ez legyen ugyanaz, mint a **forrás gazdaneve** azt korábban ellenőrizte.  Ebben a mezőben helytelen értéket általában nem okoznak a 404-es állapotot, de nagy eséllyel eredményez a többi 4xx állapot, attól függően, a forrás vár.
 
 #### <a name="origin-path"></a>Forrás elérési útvonala
-Végül ellenőrizze azt a **forrás elérési útvonalának**.  Alapértelmezés szerint ez üres az.  Ez a mező csak akkor ajánlott, ha azt szeretné, hogy elérhetők a CDN a forrás-kiszolgálón futó erőforrások behatárolni szeretné.  
+Végül, hogy ellenőrizze a **forrás elérési útja**.  Alapértelmezés szerint ez üres a.  Ez a mező csak akkor ajánlott, ha a forrás-ban üzemeltetett erőforrások a CDN-en elérhetővé tenni kívánt a hatókörét leszűkítheti szeretné.  
 
-A példa végpont akartunk összes erőforrást a tárfiók van, így **forrás elérési útvonalának** üres.  Ez azt jelenti, hogy a https kérelmek:\//cdndocdemo.azureedge.net/publicblob/lorem.txt eredményezi egy kapcsolatot a végpont és kérő cdndocdemo.core.windows.net */publicblob/lorem.txt*.  Hasonlóképpen, HTTPS-kérelem:\//cdndocdemo.azureedge.net/donotcache/status.png eredményez a végpont a kért */donotcache/status.png* a forrásból.
+Példa végpontját szerettünk volna összes erőforrást a tárfiókban elérhető, így **forrás elérési útja** üres.  Ez azt jelenti, hogy HTTPS-kérelem:\//cdndocdemo.azureedge.net/publicblob/lorem.txt eredményez a végpontról kapcsolatot kérő cdndocdemo.core.windows.net */publicblob/lorem.txt*.  Hasonlóképpen, egy HTTPS-kérelem:\//cdndocdemo.azureedge.net/donotcache/status.png eredményez a kérelmező végpont */donotcache/status.png* a forrásból.
 
-De mi történik, ha nem kívánja minden a forrás elérési útja a CDN használata?  Tegyük fel például, csak szeretne elérhetővé tenni a *publicblob* elérési útja.  Ha azt adja meg */publicblob* a a **forrás elérési útvonalának** mezőben, amely újraindítja a végpont beszúrása */publicblob* előtt minden kérelemnél eredeti történik.  Ez azt jelenti, hogy a kérelmet https:\//cdndocdemo.azureedge.net/publicblob/lorem.txt ténylegesen most érvénybe az URL-címet, a kérés részét */publicblob/lorem.txt*, és a hozzáfűző */publicblob* elején. Az eredmény kérelmet */publicblob/publicblob/lorem.txt* a forrásból.  Ha a, hogy elérési útja nem oldható fel egy fájl, a forrás 404-es állapotot ad vissza.  A helyes URL-cím lekéréséhez ebben a példában lorem.txt ténylegesen lenne https:\//cdndocdemo.azureedge.net/lorem.txt.  Vegye figyelembe, hogy nem magában foglalja a */publicblob* elérési utat, mert a kérelem része az URL-cím */lorem.txt* , és hozzáadja a végpont */publicblob*, így a */publicblob/lorem.txt* a kérés átadódik az eredeti.
+De mi a teendő, ha nem szeretné a CDN használata a forrás minden útvonalhoz?  Tegyük fel, hogy csak szeretné tenni a *publicblob* elérési útja.  Ha azt adja meg */publicblob* a a **forrás elérési útja** mező, amely újraindítja a végpontot a Beszúrás */publicblob* előtt minden kérelemnél jutó kerül sor.  Ez azt jelenti, hogy a kérelem https:\//cdndocdemo.azureedge.net/publicblob/lorem.txt valójában már érvénybe az URL-címet, a kérelem részét */publicblob/lorem.txt*, és a hozzáfűző */publicblob* elejére. Ennek hatására a kérelmet */publicblob/publicblob/lorem.txt* a forrásból.  Ha az elérési út nem oldható fel egy fájl, a forrás visszaküldi a 404-es állapot.  Ebben a példában lorem.txt megszerezni a helyes URL ténylegesen lenne https:\//cdndocdemo.azureedge.net/lorem.txt.  Vegye figyelembe, hogy nem tartalmazza a */publicblob* elérési út esetén az összes, mert a kérelem URL-címrészt */lorem.txt* , és hozzáadja a végpontot */publicblob*, ez pedig */publicblob/lorem.txt* a kérés átadódik az a forrás.
 

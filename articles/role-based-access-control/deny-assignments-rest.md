@@ -12,19 +12,28 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 03/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ba1c60d45fb53be158d9e302748366ddf417f23e
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 59bcf2b33d203ae216b4965b963a727a6b34ae72
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56805477"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57998405"
 ---
 # <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>Listában elutasítása a REST API használatával az Azure erőforrás-hozzárendelések
 
-Jelenleg a hozzárendelés elutasítása **csak olvasható** , és csak a Microsoft által állítható be. Nem hozhat létre saját megtagadási hozzárendeléseket, azonban listázhatja a megtagadás-hozzárendeléseket, mert ezek hatással lehetnek a hatályos engedélyekre. Ez a cikk bemutatja, hogyan, hogy a listában elutasítása hozzárendelések rbac-RÓL és a REST API használatával.
+[Hozzárendelések megtagadása](deny-assignments.md) meggátolja a felhasználókat adott Azure-erőforrás műveleteket végrehajtani, akkor is, ha a szerepkör-hozzárendelés hozzáférést biztosít számukra. Ez a cikk bemutatja, hogyan használható a REST API-t listában elutasítása hozzárendelések.
+
+> [!NOTE]
+> Jelenleg az egyetlen módszer, hozzáadhatja a saját megtagadási hozzárendelések van Azure-tervek használatával. További információkért lásd: [Azure tervezetek erőforrászárat az új erőforrások védelmét](../governance/blueprints/tutorials/protect-new-resources.md).
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Egy megtagadási hozzárendelés adatainak beolvasása, kell rendelkeznie:
+
+- `Microsoft.Authorization/denyAssignments/read` engedéllyel, amely tartalmazza a legtöbb [beépített szerepkörök az Azure-erőforrások](built-in-roles.md).
 
 ## <a name="list-a-single-deny-assignment"></a>Egy listában elutasítása hozzárendelés
 

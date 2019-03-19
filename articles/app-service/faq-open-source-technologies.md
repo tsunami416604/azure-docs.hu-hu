@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 07912dab52cb0569428d070282551eebbdb1c7bc
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 7831e5e989835b2c9432dbd61a242584a7b6244d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191445"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082942"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Nyílt forráskódú technológiákat az Azure Web Apps vonatkozó gyakori kérdések
 
@@ -44,10 +44,10 @@ PHP-naplózás bekapcsolása:
 9. Kattintson a **Mentés** gombra.
 10. Kattintson a ceruza ikonra a **wp-config.php**.
 11. Módosítsa a szöveget az alábbi kódot:
-   ```php
-   //Enable WP_DEBUG modedefine('WP_DEBUG', true);//Enable debug logging to /wp-content/debug.logdefine('WP_DEBUG_LOG', true);
-   //Suppress errors and warnings to screendefine('WP_DEBUG_DISPLAY', false);//Suppress PHP errors to screenini_set('display_errors', 0);
-   ```
+    ```php
+    //Enable WP_DEBUG modedefine('WP_DEBUG', true);//Enable debug logging to /wp-content/debug.logdefine('WP_DEBUG_LOG', true);
+    //Suppress errors and warnings to screendefine('WP_DEBUG_DISPLAY', false);//Suppress PHP errors to screenini_set('display_errors', 0);
+    ```
 12. Az Azure Portalon, a webes alkalmazás menüjében indítsa újra a webalkalmazást.
 
 További információkért lásd: [engedélyezése WordPress-hibanaplók](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/).
@@ -59,31 +59,31 @@ További információkért lásd: [engedélyezése WordPress-hibanaplók](https:
 
 A Node.js-alkalmazás verziójának módosításához használhatja az alábbi lehetőségek közül:
 
-*   Az Azure Portalon használata **Alkalmazásbeállítások**.
-    1. Az Azure Portalon lépjen a webalkalmazáshoz.
-    2. Az a **beállítások** panelen válassza ki **Alkalmazásbeállítások**.
-    3. A **Alkalmazásbeállítások**, hozzáadhatja a WEBSITE_NODE_DEFAULT_VERSION a kulcsot, valamint értékként a kívánt Node.js verziója.
-    4. Nyissa meg a [Kudu konzol](https://*yourwebsitename*.scm.azurewebsites.net).
-    5. A Node.js-verzió ellenőrzéséhez írja be a következő parancsot:  
-   ```
-   node -v
-   ```
-*   Módosítsa a iisnode.yml fájlt. A Node.js verzió iisnode.yml fájlt a módosítása csak beállítja a futtatási környezetet, amelyet az iisnode használja. A Kudu cmd parancsot, és másokkal is használható a Node.js-verzió az **Alkalmazásbeállítások** az Azure Portalon.
+* Az Azure Portalon használata **Alkalmazásbeállítások**.
+  1. Az Azure Portalon lépjen a webalkalmazáshoz.
+  2. Az a **beállítások** panelen válassza ki **Alkalmazásbeállítások**.
+  3. A **Alkalmazásbeállítások**, hozzáadhatja a WEBSITE_NODE_DEFAULT_VERSION a kulcsot, valamint értékként a kívánt Node.js verziója.
+  4. Nyissa meg a [Kudu konzol](https://*yourwebsitename*.scm.azurewebsites.net).
+  5. A Node.js-verzió ellenőrzéséhez írja be a következő parancsot:  
+     ```
+     node -v
+     ```
+* Módosítsa a iisnode.yml fájlt. A Node.js verzió iisnode.yml fájlt a módosítása csak beállítja a futtatási környezetet, amelyet az iisnode használja. A Kudu cmd parancsot, és másokkal is használható a Node.js-verzió az **Alkalmazásbeállítások** az Azure Portalon.
 
-    Manuálisan állítsa be az iisnode.yml fájlt, hozzon létre egy iisnode.yml fájlt az alkalmazás gyökérmappájában lévő mappának. A fájl tartalmazza a következő sort:
-   ```yml
-   nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
-   ```
+  Manuálisan állítsa be az iisnode.yml fájlt, hozzon létre egy iisnode.yml fájlt az alkalmazás gyökérmappájában lévő mappának. A fájl tartalmazza a következő sort:
+  ```yml
+  nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
+  ```
    
-*   Állítsa be az iisnode.yml fájlt a package.json forrás vezérlő telepítése során.
-    Az Azure forrás vezérlőelem üzembe helyezési folyamat az alábbi lépésekből áll:
-    1. Tartalom áthelyezi az Azure-webalkalmazást.
-    2. Egy alapértelmezett üzembe helyezési parancsfájlt hoz létre, ha nincs a webes alkalmazás gyökérmappájában (Deploy.cmd fájl, .deployment fájl) ilyen.
-    3. A telepítési parancsfájlt, amelyben létrehoz egy iisnode.yml fájlt. Ha már javítva az a package.json fájlt a Node.js-verzió fut > motor `"engines": {"node": "5.9.1","npm": "3.7.3"}`
-    4. Iisnode.yml fájlt a következő kódsort rendelkezik:
-        ```yml
-        nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
-        ```
+* Állítsa be az iisnode.yml fájlt a package.json forrás vezérlő telepítése során.
+  Az Azure forrás vezérlőelem üzembe helyezési folyamat az alábbi lépésekből áll:
+  1. Tartalom áthelyezi az Azure-webalkalmazást.
+  2. Egy alapértelmezett üzembe helyezési parancsfájlt hoz létre, ha nincs a webes alkalmazás gyökérmappájában (Deploy.cmd fájl, .deployment fájl) ilyen.
+  3. A telepítési parancsfájlt, amelyben létrehoz egy iisnode.yml fájlt. Ha már javítva az a package.json fájlt a Node.js-verzió fut > motor `"engines": {"node": "5.9.1","npm": "3.7.3"}`
+  4. Iisnode.yml fájlt a következő kódsort rendelkezik:
+      ```yml
+      nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
+      ```
 
 ## <a name="i-see-the-message-error-establishing-a-database-connection-in-my-wordpress-app-thats-hosted-in-app-service-how-do-i-troubleshoot-this"></a>A saját WordPress-alkalmazás az App Service-ben üzemeltetett "Hiba történt egy adatbázis-kapcsolat létrehozásakor" hibaüzenet jelenik meg. Hogyan háríthatom Ez?
 
@@ -116,10 +116,10 @@ Az Azure Marketplace-en, és egyéni telepítésekhez:
 
 * Mappájának helye: D:\home\site\wwwroot\bin\apache-tomcat-8.0.33\logs
 * A lényeges fájlok:
-    * catalina. *éééé-hh-nn*.log
+    * catalina.*yyyy-mm-dd*.log
     * host-manager.*yyyy-mm-dd*.log
-    * localhost. *éééé-hh-nn*.log
-    * kezelő. *éééé-hh-nn*.log
+    * localhost.*yyyy-mm-dd*.log
+    * manager.*yyyy-mm-dd*.log
     * site_access_log.*yyyy-mm-dd*.log
 
 
@@ -127,10 +127,10 @@ A portál **Alkalmazásbeállítások** központi telepítések:
 
 * Mappájának helye: D:\home\LogFiles
 * A lényeges fájlok:
-    * catalina. *éééé-hh-nn*.log
+    * catalina.*yyyy-mm-dd*.log
     * host-manager.*yyyy-mm-dd*.log
-    * localhost. *éééé-hh-nn*.log
-    * kezelő. *éééé-hh-nn*.log
+    * localhost.*yyyy-mm-dd*.log
+    * manager.*yyyy-mm-dd*.log
     * site_access_log.*yyyy-mm-dd*.log
 
 ## <a name="how-do-i-troubleshoot-jdbc-driver-connection-errors"></a>Hogyan háríthatom el a JDBC-illesztőprogram csatlakozási hibák?

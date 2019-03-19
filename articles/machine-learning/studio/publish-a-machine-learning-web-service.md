@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: e56ab4d74b54e1da8b07de6081766c8669bfb68a
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 2ffc9055f23b8221a6f711f741b6146545ff0821
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576633"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57895729"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-web-service"></a>Az Azure Machine Learning Studio-webszolgáltatás üzembe helyezése
 
@@ -93,17 +93,17 @@ Az RRS tesztlap jeleníti meg a bemenetek, kimenetek és a globális paramétere
 
 RRS használatával teszteléséhez, a lista megtekintési módokat, adjon meg megfelelő értékeket a bemeneti adatok, és kattintson **kérés-válasz tesztelése**. Az előrejelzés eredményét a bal oldali kimeneti oszlop megjelenítése.
 
-![A webszolgáltatás üzembe helyezése](./media/publish-a-machine-learning-web-service/figure-5-test-request-response.png)
+![Adja meg a megfelelő értékeket a webes szolgáltatás tesztelése](./media/publish-a-machine-learning-web-service/figure-5-test-request-response.png)
 
 A BES teszteléséhez kattintson **Batch**. A Batch teszt lapon kattintson a Tallózás gombra a bemenetet a következők szerint, és válassza ki a megfelelő mintaértékek tartalmazó CSV-fájl. Ha nem rendelkezik egy CSV-fájlt, és a prediktív kísérletet a Machine Learning Studio használatával létrehozott, töltse le az adathalmaz a prediktív kísérletet, és használja azt.
 
 Töltse le az adatkészlet, nyissa meg a Machine Learning Studióban. Nyissa meg a prediktív kísérletet, és kattintson a jobb gombbal a bemenetet a kísérlethez. A helyi menüből válassza ki a **adatkészlet** majd **letöltése**.
 
-![A webszolgáltatás üzembe helyezése](./media/publish-a-machine-learning-web-service/figure-7-mls-download.png)
+![A Studio vászon töltheti le az adatkészlethez](./media/publish-a-machine-learning-web-service/figure-7-mls-download.png)
 
 Kattintson a **teszt**. A kötegelt végrehajtási feladat állapotának megjelenítése mellett jobbra **teszt kötegelt feladatok**.
 
-![A webszolgáltatás üzembe helyezése](./media/publish-a-machine-learning-web-service/figure-6-test-batch-execution.png)
+![A kötegelt végrehajtási feladat a webportálon szolgáltatás tesztelése](./media/publish-a-machine-learning-web-service/figure-6-test-batch-execution.png)
 
 <!--![Test the web service](./media/publish-a-machine-learning-web-service/figure-3.png)-->
 
@@ -161,7 +161,7 @@ Most, hogy a prediktív kísérletté megfelelően elő van készítve, telepít
 
 A prediktív kísérletté üzembe helyezéséhez kattintson **futtatása** alján, a kísérlet vászonra, és kattintson a **webszolgáltatás üzembe helyezése**. A web service be van állítva, és a webszolgáltatás irányítópultján helyezte.
 
-![A webszolgáltatás üzembe helyezése](./media/publish-a-machine-learning-web-service/figure-2.png)
+![A webszolgáltatást a Studióból üzembe helyezése](./media/publish-a-machine-learning-web-service/figure-2.png)
 
 ### <a name="test-your-classic-web-service"></a>A klasszikus webszolgáltatás teszteléséhez
 
@@ -181,7 +181,7 @@ Megadhat egy leírást a bemeneti adatokat, a kimeneti adatok és a webes param�
 
 Engedélyezheti a naplózást, és diagnosztizálhatja a hibákat, amelyek lát, ha hozzáfér a webszolgáltatást. További információkért lásd: [naplózás engedélyezése a Machine Learning Studio-webszolgáltatások](web-services-logging.md).
 
-![A webszolgáltatás konfigurálása](./media/publish-a-machine-learning-web-service/figure-4.png)
+![A web services portálon naplózásának engedélyezése](./media/publish-a-machine-learning-web-service/figure-4.png)
 
 Az előzőleg az új webes szolgáltatás szakaszban bemutatott eljárás hasonló az Azure Machine Learning Web Services portálon is konfigurálhatja a végpontok a webszolgáltatáshoz. A lehetőségek különböznek, adja hozzá, vagy módosítsa a szolgáltatás leírása, a naplózásának engedélyezése és a mintaadatok engedélyezése teszteléshez.
 
@@ -218,7 +218,6 @@ A webszolgáltatás frissítéséhez az egyik lehetőség, hogy a modell program
 * Felkészülés a modell üzembe helyezése a részletekért lásd: [hogyan készülhet fel a modell üzembe helyezése az Azure Machine Learning Studio](convert-training-experiment-to-scoring-experiment.md).
 
 * A REST API felhasználására, illetve a webszolgáltatás elérésére számos megoldás áll rendelkezésre. Lásd: [használata az Azure Machine Learning Studio webszolgáltatás](consume-web-services.md).
-
 
 <!-- internal links -->
 [Betanítási kísérlet létrehozása]: #create-a-training-experiment

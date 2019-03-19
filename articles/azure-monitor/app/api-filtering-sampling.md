@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
 ms.openlocfilehash: 1b55a2b053b86d3260fdca201357445d2556c444
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54199034"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082466"
 ---
 # <a name="filtering-and-preprocessing-telemetry-in-the-application-insights-sdk"></a>Az Application Insights SDK-t a telemetria szűrése és előfeldolgozása
 
@@ -364,7 +364,7 @@ Mi a különbség, telemetriai processzorok és a telemetria inicializálók kö
 * [API – Áttekintés](../../azure-monitor/app/api-custom-events-metrics.md)
 * [ASP.NET-referencia](https://msdn.microsoft.com/library/dn817570.aspx)
 
-## <a name="sdk-code"></a>SDK-kód
+## <a name="sdk-code"></a>SDK Code
 * [ASP.NET Core SDK](https://github.com/Microsoft/ApplicationInsights-aspnetcore)
 * [ASP.NET SDK](https://github.com/Microsoft/ApplicationInsights-dotnet)
 * [JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS)

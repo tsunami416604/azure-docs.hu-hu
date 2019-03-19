@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: c0e7f941f9845ed7531f3adf03fbca9fbeb2787d
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 0e9001111d6aa48f0dad69a2fb3b2186bfc37ab7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456690"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58010507"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Az Azure SQL Database vásárlási modellek
 
@@ -104,7 +104,7 @@ A meglévő készletekhez további eDTU-k is hozzáadhatók anélkül, hogy a k�
 
 ### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>A munkaterhelés szerint szükséges dtu-k számának meghatározása
 
-Ha meg szeretne áttelepítést végezni egy meglévő helyszíni vagy SQL Server virtuális gépeken futó számítási feladatokat az Azure SQL Database, használhatja a [DTU-kalkulátor](http://dtucalculator.azurewebsites.net/) segítségével megbecsülheti a szükséges dtu-k számát. Használhat meglévő Azure SQL Database számítási feladat [lekérdezési terheléselemzőhöz](sql-database-query-performance.md) tudni, hogy az adatbázis erőforrás-használat (dtu-k) mélyebb betekintést a számítási feladatok optimalizálásához. Is használhatja a [sys.dm_db_ resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) DMV megtekintése az erőforrás-használat az elmúlt egy óra. Másik lehetőségként a katalógusnézet [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) erőforrás-használat az elmúlt 14 napra vonatkozó, de átlagosan öt perces átlagolással jeleníti meg.
+Ha meg szeretne áttelepítést végezni egy meglévő helyszíni vagy SQL Server virtuális gépeken futó számítási feladatokat az Azure SQL Database, használhatja a [DTU-kalkulátor](https://dtucalculator.azurewebsites.net/) segítségével megbecsülheti a szükséges dtu-k számát. Használhat meglévő Azure SQL Database számítási feladat [lekérdezési terheléselemzőhöz](sql-database-query-performance.md) tudni, hogy az adatbázis erőforrás-használat (dtu-k) mélyebb betekintést a számítási feladatok optimalizálásához. Is használhatja a [sys.dm_db_ resource_stats](https://msdn.microsoft.com/library/dn800981.aspx) DMV megtekintése az erőforrás-használat az elmúlt egy óra. Másik lehetőségként a katalógusnézet [sys.resource_stats](https://msdn.microsoft.com/library/dn269979.aspx) erőforrás-használat az elmúlt 14 napra vonatkozó, de átlagosan öt perces átlagolással jeleníti meg.
 
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Számítási feladatok, amelyek rugalmas készletek az erőforrások
 

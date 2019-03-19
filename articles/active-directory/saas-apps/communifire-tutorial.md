@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 840a74894e7dfacbb6b236cce4012beeb62689fb
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: cb82c3112634163328e08b330083f5b4942798ab
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731941"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880957"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-communifire"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Communifire
 
@@ -166,7 +166,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

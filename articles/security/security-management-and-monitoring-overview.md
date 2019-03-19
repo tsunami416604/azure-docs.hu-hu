@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: terrylan
-ms.openlocfilehash: 7dfc4329b338a65169c81521360264753bafa9d6
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: f79f94c277b02a9f377b90bf74763ac617f65c16
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50239916"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57892897"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Az Azure security management és a teljesítményfigyelés áttekintése
 
@@ -50,7 +50,7 @@ Az Azure-ral például a Microsoft, a Symantec, a Trend Micro, a McAfee és a Ka
 
 A Microsoft Antimalware az Azure Cloud Services és Virtual Machines lehetővé teszi a PaaS-szerepkörök és a virtuális gépek kártevőirtó ügynök telepítéséhez. A System Center Endpoint Protection alapján, ez a funkció alkalmazható helyszíni bevált biztonsági technológia a felhőben.
 
-Trend a mély integráció is kínálunk [Deep Security](http://www.trendmicro.com/us/enterprise/cloud-solutions/deep-security/) és [SecureCloud](http://www.trendmicro.com/us/enterprise/cloud-solutions/secure-cloud/) termékeket az Azure platformon. Deep Security egy víruskereső megoldást, SecureCloud pedig egy titkosítási megoldás. Deep Security-bővítmény modellen belüli virtuális gépek van telepítve. Az Azure portal felhasználói felületén és a PowerShell használatával is használni kívánja Deep Security alatt hoz létre új virtuális gépek vagy a már telepített meglévő virtuális gépeken belül.
+Trend a mély integráció is kínálunk [Deep Security](https://www.trendmicro.com/us/enterprise/cloud-solutions/deep-security/) és [SecureCloud](https://www.trendmicro.com/us/enterprise/cloud-solutions/secure-cloud/) termékeket az Azure platformon. Deep Security egy víruskereső megoldást, SecureCloud pedig egy titkosítási megoldás. Deep Security-bővítmény modellen belüli virtuális gépek van telepítve. Az Azure portal felhasználói felületén és a PowerShell használatával is használni kívánja Deep Security alatt hoz létre új virtuális gépek vagy a már telepített meglévő virtuális gépeken belül.
 
 A Symantec Endpoint Protection (SEP) használata is támogatott az Azure-ban. Portál-integráció megadhatja, hogy szeretne-e a SEP használni egy virtuális gépen. SEP is telepíthető egy új virtuális Gépet az Azure Portalon keresztül, vagy egy meglévő virtuális Gépet a PowerShell segítségével telepíthető.
 
@@ -79,7 +79,7 @@ További információ:
 Az Azure ExpressRoute használatával kiterjesztheti helyszíni hálózatait a Microsoft Cloud, amely megkönnyíti, amelyet egy kapcsolatszolgáltató dedikált privát kapcsolaton keresztül. Az expressroute-tal és a Microsoft felhőszolgáltatásai, például Azure, Office 365 és CRM Online kapcsolatokat létesíthet. Kapcsolatok lehetnek::
 
 * Bármely (IP VPN) hálózat.
-* A pontok közötti Ethernet-hálózaton.
+* A point-to-point Ethernet network.
 * Virtuális cross-kapcsolatot egy közös elhelyezési létesítményben egy kapcsolatszolgáltatón keresztül. 
 
 Az ExpressRoute-kapcsolatok nem a nyilvános interneten haladnak át. Az interneten több megbízhatósági megbízhatóbbak, gyorsabbak, kisebb a késésük, és biztonságosabbak a szokásos internetkapcsolatoknál is kínálnak.
@@ -123,7 +123,7 @@ Az Azure AD Identity Protection biztosít nézetet jelenít meg a gyanús bejele
 További információ:
 
 * [Azure Active Directory Identity Protection](../active-directory/active-directory-identityprotection.md)
-* [Channel 9-on: Az Azure AD és az identitás: Identity Protection előzetes verziója](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
+* [Channel 9-on: Az Azure AD és az identitás megjelenítése: Identity Protection előzetes verziója](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="security-center"></a>Security Center
 

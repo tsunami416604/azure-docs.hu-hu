@@ -9,12 +9,12 @@ ms.date: 09/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 135f5e2500ab86d418085a5061f517176b9a4dad
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 21dcf522f00f1991ecb2a92d6dc0925baadbdcc6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54430007"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081270"
 ---
 # <a name="tutorial-update-inventory-using-powershell-and-topicssubscriptions"></a>Oktatóanyag: A PowerShell és a témakörök/előfizetések használatával készlet frissítése
 
@@ -111,13 +111,13 @@ A kód futtatásához tegye a következőt:
    ```azurepowershell-interactive
    Get-AzureRmServiceBusKey -ResourceGroupName my-resourcegroup -Namespace namespace-name -Name RootManageSharedAccessKey
    ```
-5.  A PowerShell-parancssorba írja be a következő parancsot:
+5. A PowerShell-parancssorba írja be a következő parancsot:
 
    ```shell
    dotnet build
    ```
-6.  Navigáljon a `\bin\Debug\netcoreapp2.0` mappához.
-7.  Írja be a következő parancsot a program futtatásához. Ne felejtse el kicserélni a `myConnectionString` kifejezést az előzőleg beszerzett értékre, a `myQueueName` kifejezést pedig az imént létrehozott üzenetsor nevére:
+6. Navigáljon a `\bin\Debug\netcoreapp2.0` mappához.
+7. Írja be a következő parancsot a program futtatásához. Ne felejtse el kicserélni a `myConnectionString` kifejezést az előzőleg beszerzett értékre, a `myQueueName` kifejezést pedig az imént létrehozott üzenetsor nevére:
 
    ```shell
    dotnet BasicSendReceiveQuickStart.dll -ConnectionString "myConnectionString" -QueueName "myQueueName"

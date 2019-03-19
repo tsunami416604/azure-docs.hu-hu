@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: magattus
-ms.openlocfilehash: 70154a50086fabc84671e7e540d8496490ab5b2d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 42fd28f2a18ecf81c7846abdc7b3159a275a9cd7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436629"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013556"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Az Azure CDN szabálymotorral HTTP változói
 HTTP-változók adja meg az eszközöket, amelyekkel HTTP kérés- és metaadatok lehet lekérdezni. A metaadatok majd dinamikusan a kérelem vagy válasz módosításához használható. HTTP-változók használata a következő szabályok adatbázismotor-funkciók korlátozva:
@@ -54,10 +54,10 @@ A következő táblázat ismerteti a támogatott HTTP-változókat. Üres érté
 | Lekérdezési karakterlánc paramétereként található | %{is_amp} | Ez a változó értéke megfelelően, hogy a kérés tartalmaz-e legalább egy lekérdezési karakterlánc paramétereként változik.<br /><br />-Paraméter találhatók: &<br />-Nincsenek paraméterei: NULL | & |
 | Lekérdezési karakterlánc paraméter értéke | a(z) % {arg_&lt;paraméter&gt;} | A lekérdezési karakterlánc paraméter által azonosított megfelelő értéket adja vissza a &lt;paraméter&gt; kifejezés. | Példa: <br />%{arg_language}<br /><br />Minta lekérdezésikarakterlánc-paramétert: <br />?language=en<br /><br />Érték példa: en |
 | Lekérdezési karakterlánc értéke | a(z) % {query_string} | A kérelem URL-címben meghatározott teljes lekérdezési karakterlánc értékét jelöli. |1. kulcs = 1. érték & 2. kulcs = érték2 & key3 = val3 |
-| Hivatkozó tartomány | %{referring_domain} | Azt jelzi, hogy a tartományt a hivatkozó kérés fejlécében. | www.google.com |
+| Hivatkozó tartomány | %{referring_domain} | Azt jelzi, hogy a tartományt a hivatkozó kérés fejlécében. | <www.google.com> |
 | Régió (kérelmező) | a(z) % {geo_region} | Azt jelzi, hogy az igénylő a régióban (például állam/megye) annak alfanumerikus rövidítése. | CA |
 | Kérelem fejlécének értéke | %{http_RequestHeader} | A kérelem fejlécében RequestHeader kifejezés által azonosított megfelelő értéket adja vissza. <br /><br />Ha a kérelem fejlécében neve tartalmaz egy kötőjellel (például felhasználói ügynök), cserélje le az aláhúzás (például User_Agent).| Példa: % {http_Connection}<br /><br />Mintaérték: Keep-Alive | 
-| Request Host | %{host} | Azt jelzi, hogy a gazdagépen definiált a kérelem URL-CÍMÉT. | www.mydomain.com |
+| Request Host | %{host} | Azt jelzi, hogy a gazdagépen definiált a kérelem URL-CÍMÉT. | <www.mydomain.com> |
 | Kérelem protokoll | %{request_protocol} | Azt jelzi, hogy a kérelem protokollt. | HTTP/1.1-ES |
 | Kérelem séma | a(z) % {scheme} | Azt jelzi, hogy a kérelem sémát. |http |
 | Kérés URI-ja (relatív) | %{request_uri} | Azt jelzi, hogy a relatív elérési utat, beleértve a lekérdezési karakterláncot, a kérés URI Azonosítójában megadott. | /marketing/foo.js?loggedin=true |
@@ -187,8 +187,8 @@ Minta ebben a forgatókönyvben a *request_uri* változó értéke:
 
 Az alábbi táblázat azt ismerteti, hogyan működik ez a szintaxis.
 
-| Mintául szolgáló szintaxis | Results (Eredmények) |
-| ------------- | ------- |
+| Mintául szolgáló szintaxis | Results (Eredmények) | |
+| ------------- | ------- | --- |
 | %{request_uri#/800001}/customerorigin | /customerorigin/myorigin/marketing/product.html?language=en-US | A változó a minta kezdődik, mert a lett cserélve. |
 | %{request_uri%html}htm | /800001/myorigin/marketing/product.html?language=en-US | A változó nem végződhet a mintának, mert nem változott.|
 

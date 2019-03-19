@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4bf593473e646bbfe3d8db1df44bd48195b4cf7
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 308f745489fba2e2b539a2f2615b65228565dcf9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729659"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850009"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex-meetings"></a>Oktatóanyag: Cisco Webex értekezletek az Azure Active Directory-integráció
 
@@ -212,7 +212,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

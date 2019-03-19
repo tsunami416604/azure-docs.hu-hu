@@ -15,22 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: njray
-ms.openlocfilehash: 104730d94134d935f56fb95fd55d05b515e9f501
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: fba6b5308b380b374611c09747302dbf8305dd9b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245565"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58014973"
 ---
 # <a name="deploy-ibm-db2-purescale-on-azure"></a>IBM DB2-höz pureScale Azure-beli üzembe helyezése
 
 Ez a cikk azt ismerteti, hogyan helyezhet üzembe egy [példa architektúra](ibm-db2-purescale-azure.md) , amely a nagyvállalati ügyfelek fiókazonosítóját legutóbb használt az IBM DB2-höz környezet z/OS IBM DB2-höz pureScale az Azure-ban futó át.
 
-A lépések a migráláshoz használt, tekintse meg a telepítési parancsfájl a [DB2onAzure](http://aka.ms/db2onazure) tárházban a Githubon. Ezek a szkriptek egy tipikus, közepes méretű online tranzakció-feldolgozási (OLTP) számítási feladatok architektúrájának alapulnak.
+A lépések a migráláshoz használt, tekintse meg a telepítési parancsfájl a [DB2onAzure](https://aka.ms/db2onazure) tárházban a Githubon. Ezek a szkriptek egy tipikus, közepes méretű online tranzakció-feldolgozási (OLTP) számítási feladatok architektúrájának alapulnak.
 
 ## <a name="get-started"></a>Bevezetés
 
-Ez az architektúra üzembe helyezéséhez töltse le és futtassa a deploy.sh parancsfájl található a [DB2onAzure](http://aka.ms/db2onazure) tárházban a Githubon.
+Ez az architektúra üzembe helyezéséhez töltse le és futtassa a deploy.sh parancsfájl található a [DB2onAzure](https://aka.ms/db2onazure) tárházban a Githubon.
 
 A tárház egy lesz a Grafana irányítópultja beállításának parancsfájlokat is tartalmaz. Az Irányítópult segítségével Prometheus, a nyílt forráskódú figyelési és riasztási rendszer részét képező DB2 lekérdezése.
 
@@ -76,24 +76,24 @@ Miután a parancsfájlok az iSCSI-eszközt, az utolsó lépés az DB2 pureScale 
 A GitHub-adattár DB2server.rsp, a válasz (.rsp) fájl, amely lehetővé teszi, hogy hozzon létre egy automatizált szkript a DB2 pureScale telepítés magában foglalja. Az alábbi táblázat a telepítő a válaszfájlt használó DB2 pureScale beállítások listája. A környezet igényeinek megfelelően testre szabhatja a válaszfájlt.
 
 > [!NOTE]
-> Egy mintául szolgáló válaszfájl DB2server.rsp, szerepel a [DB2onAzure](http://aka.ms/db2onazure) tárházban a Githubon. Ha ezt a fájlt használja, szerkesztenie kell, mielőtt az adott környezetben együtt tudjon működni.
+> Egy mintául szolgáló válaszfájl DB2server.rsp, szerepel a [DB2onAzure](https://aka.ms/db2onazure) tárházban a Githubon. Ha ezt a fájlt használja, szerkesztenie kell, mielőtt az adott környezetben együtt tudjon működni.
 
 | Képernyő nevét               | Mező                                        | Érték                                                                                                 |
 |---------------------------|----------------------------------------------|-------------------------------------------------------------------------------------------------------|
 | Üdvözlőképernyő                   |                                              | Új telepítés                                                                                           |
 | Termék kiválasztása          |                                              | DB2-verzió 11.1.3.3. A DB2 pureScale Server kiadásai                                              |
-| Konfiguráció             | Címtár                                    | /Data1/OPT/IBM/DB2/v11.1                                                                              |
+| Konfiguráció             | Címtár                                    | /data1/opt/ibm/db2/V11.1                                                                              |
 |                           | A telepítés típusának kiválasztása                 | Tipikus                                                                                               |
 |                           | Az IBM feltételeit elfogadom                     | Bejelölve                                                                                               |
 | Példány tulajdonosa            | Meglévő felhasználói For példányát, felhasználónév        | DB2sdin1                                                                                              |
 | Az elkülönített felhasználói               | Meglévő felhasználót, a felhasználó neve                     | DB2sdfe1                                                                                              |
 | Fürt fájlrendszer       | A megosztott lemez partíció eszköz elérési útját            | /dev/DM-2                                                                                             |
-|                           | Csatlakozási pont                                  | / DB2sd\_1804a                                                                                         |
-|                           | Megosztott adatok lemezen                         | /dev/DM-1                                                                                             |
-|                           | Csatlakoztatási pont (adatok)                           | / DB2fs/datafs1                                                                                        |
-|                           | A megosztott lemez naplója                          | /dev/DM-0                                                                                             |
+|                           | Csatlakozási pont                                  | /DB2sd\_1804a                                                                                         |
+|                           | Megosztott adatok lemezen                         | /dev/dm-1                                                                                             |
+|                           | Csatlakoztatási pont (adatok)                           | /DB2fs/datafs1                                                                                        |
+|                           | A megosztott lemez naplója                          | /dev/dm-0                                                                                             |
 |                           | Csatlakoztatási pont (naplózás)                            | / DB2fs/logfs1                                                                                         |
-|                           | DB2-Fürt szolgáltatások Tiebreaker. Eszköz elérési útját | /dev/DM-3                                                                                             |
+|                           | DB2-Fürt szolgáltatások Tiebreaker. Eszköz elérési útját | /dev/dm-3                                                                                             |
 | Gazdagép-listába                 | a D1 [eth1], d2 [eth1], cf1 [eth1], cf2 [eth1] |                                                                                                       |
 |                           | Előnyben részesített elsődleges cf-hez                         | cf1                                                                                                   |
 |                           | Előnyben részesített másodlagos cf-hez                       | cf2                                                                                                   |
@@ -138,7 +138,7 @@ A GitHub-adattárat is tartalmaz, melyek fenntartják a szerzők Tudásbázis. L
 
 -   DB2-pureScale és IBM spektrum méretezési szeretne eltávolítani.
 
-Ezen és egyéb ismert problémákat kapcsolatos további információkért tekintse meg a kb.md fájlt a [DB2onAzure](http://aka.ms/DB2onAzure) adattárat.
+Ezen és egyéb ismert problémákat kapcsolatos további információkért tekintse meg a kb.md fájlt a [DB2onAzure](https://aka.ms/DB2onAzure) adattárat.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -148,10 +148,10 @@ Ezen és egyéb ismert problémákat kapcsolatos további információkért teki
 
 -   [DB2icrt - példány parancs létrehozása](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
 
--   [DB2-pureScale fürtök megoldást](http://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
+-   [DB2-pureScale fürtök megoldást](https://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
 
--   [IBM adatok Studio](https://www.ibm.com/developerworks/downloads/im/data/index.html/)
+-   [IBM Data Studio](https://www.ibm.com/developerworks/downloads/im/data/index.html/)
 
--   [Platform korszerűsítése Alliance: IBM DB2-höz, az Azure-ban](https://www.platformmodernization.org/pages/ibmdb2azure.aspx)
+-   [Platform Modernization Alliance: IBM DB2-höz, az Azure-ban](https://www.platformmodernization.org/pages/ibmdb2azure.aspx)
 
 -   [Az Azure virtuális adatközpont Lift és Shift útmutató](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)

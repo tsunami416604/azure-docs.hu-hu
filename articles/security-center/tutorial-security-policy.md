@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/17/2019
+ms.date: 3/14/2019
 ms.author: monhaber
-ms.openlocfilehash: 7931caa985bc5dea98ca36bd15e0e634855ab2c5
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 98fffbc7a3b287dd59cfc681beec2107a5fd4ed6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650631"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58085048"
 ---
 # <a name="working-with-security-policies"></a>Biztonsági szabályzatok használata
 
@@ -36,7 +36,7 @@ A biztonsági szabályzat határozza meg a számítási feladatokhoz tartozó k�
 
 A biztonsági szabályzatokat a biztonsági javaslatokkal kap az Azure Security Centerben. Segít azonosítani a potenciális biztonsági réseket és elhárítani a fenyegetéseket az azoknak való megfelelés figyelése Juthat az Önnek legmegfelelőbb lehetőség meghatározásával kapcsolatos további információkért lásd a [beépített biztonsági házirendek](security-center-policy-definitions.md).
 
-Ha engedélyezi a Security Center, a Security Center beépített biztonsági házirend, egy beépített kezdeményezés a kategóriában a Security Center Azure Policy is megjelenik. A beépített kezdeményezés automatikusan regisztrálva a Security Center előfizetéseken (ingyenes vagy Standard szinten). A beépített kezdeményezésére csak naplózási házirendeket tartalmaz. 
+Ha engedélyezi a Security Center, a Security Center beépített biztonsági házirend, egy beépített kezdeményezés a kategóriában a Security Center Azure Policy is megjelenik. A beépített kezdeményezés automatikusan regisztrálva a Security Center előfizetéseken (ingyenes vagy Standard szinten). A beépített kezdeményezésére csak naplózási házirendeket tartalmaz.
 
 
 ### <a name="management-groups"></a>Felügyeleti csoportok
@@ -68,25 +68,25 @@ Biztonsági szabályzatok megtekintése a Security Centerben:
 
     ![A Szabályzatkezelés panel](./media/security-center-policies/security-center-policy-mgt.png)
 
-  Az a **házirendkezelés** képernyőn láthatja, hogy a felügyeleti csoportokhoz, előfizetések és munkaterületek, valamint a felügyeleticsoport-struktúrát kialakítani számát.
+   Az a **házirendkezelés** képernyőn láthatja, hogy a felügyeleti csoportokhoz, előfizetések és munkaterületek, valamint a felügyeleticsoport-struktúrát kialakítani számát.
 
-  > [!NOTE]
-  > - A Security Center irányítópultján valószínűleg-előfizetések nagyobb számú **előfizetési lefedettség** , mint az előfizetések alatt látható **házirendkezelés**. Az Előfizetési lefedettség alatt a Standard, Ingyenes és „nem lefedett” előfizetések is megjelennek. A "nem kezelt" előfizetések nincs engedélyezve a Security Center, és nem jelennek meg a **házirendkezelés**.
-  >
+   > [!NOTE]
+   > - A Security Center irányítópultján valószínűleg-előfizetések nagyobb számú **előfizetési lefedettség** , mint az előfizetések alatt látható **házirendkezelés**. Az Előfizetési lefedettség alatt a Standard, Ingyenes és „nem lefedett” előfizetések is megjelennek. A "nem kezelt" előfizetések nincs engedélyezve a Security Center, és nem jelennek meg a **házirendkezelés**.
+   >
 
-  A táblázatban lévő oszlopok a következők:
+   A táblázatban lévő oszlopok a következők:
 
- - **Szabályzati kezdeményezés hozzárendelése** – Security Center [beépített szabályzatok](security-center-policy-definitions.md) és a egy előfizetést vagy felügyeleti csoporthoz hozzárendelt kezdeményezések.
- - **Lefedettség** – tarifacsomag kiválasztása, ingyenes vagy standard szintű, a felügyeleti csoport, az előfizetés vagy a munkaterület számítógépen futó azonosítja.  A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md).
- - **Beállítások** – előfizetések még a hivatkozás **beállításainak szerkesztése**. Kiválasztásával **beállításainak szerkesztése** frissítése lehetővé teszi a [a Security Center beállítások](security-center-policies-overview.md) minden egyes előfizetés vagy a felügyeleti csoport számára.
- - **Biztonságos pontszám** – a [biztonságos pontszám](security-center-secure-score.md) mérhető, mennyire vannak biztonságban a számítási feladatok biztonsági állapotáról, és segít rangsorolhatja javítására vonatkozó javaslatokat.
+   - **Szabályzati kezdeményezés hozzárendelése** – Security Center [beépített szabályzatok](security-center-policy-definitions.md) és a egy előfizetést vagy felügyeleti csoporthoz hozzárendelt kezdeményezések.
+   - **Lefedettség** – tarifacsomag kiválasztása, ingyenes vagy standard szintű, a felügyeleti csoport, az előfizetés vagy a munkaterület számítógépen futó azonosítja.  A Security Center tarifacsomagjaival kapcsolatos további információért lásd a [díjszabást](security-center-pricing.md).
+   - **Beállítások** – előfizetések még a hivatkozás **beállításainak szerkesztése**. Kiválasztásával **beállításainak szerkesztése** frissítése lehetővé teszi a [a Security Center beállítások](security-center-policies-overview.md) minden egyes előfizetés vagy a felügyeleti csoport számára.
+   - **Biztonságos pontszám** – a [biztonságos pontszám](security-center-secure-score.md) mérhető, mennyire vannak biztonságban a számítási feladatok biztonsági állapotáról, és segít rangsorolhatja javítására vonatkozó javaslatokat.
 
 2. Válassza ki az előfizetést vagy felügyeleti csoportot, amelynek meg szeretné tekinteni házirendeket.
 
-  - A **biztonsági házirend** képernyőn megjelenik a szabályzatok kap. a kiválasztott előfizetés vagy a felügyeleti csoport által végrehajtott műveletet.
-  - A képernyő felső részén használatához nyissa meg az egyes házirendek megadott hivatkozások **hozzárendelés** , amely alkalmazza az előfizetést vagy felügyeleti csoportot. Használhatja a hivatkozások a hozzárendelés eléréséhez és szerkesztéséhez, vagy tiltsa le a szabályzatot. Például ha egy adott házirend-hozzárendelést hatékonyan tagadja meg a az endpoint protection című segítségével a hivatkozás a szabályzat eléréséhez és szerkesztéséhez vagy letiltásához.
-  - A házirendek listájában láthatja a szabályzat hatékony alkalmazása az előfizetés vagy a felügyeleti csoport. Ez azt jelenti, hogy a beállítások az egyes házirendek vonatoznak a hatókörre kell figyelembe venni, és biztosítunk, milyen műveletet a szabályzat által összesített eredményét. Például ha egy hozzárendelési a szabályzat le van tiltva, de egy másik, AuditIfNotExist van beállítva, majd a halmozott hatása érvényes AuditIfNotExist. A több aktív hatás mindig elsőbbséget élvez.
-  - A szabályzatok pontban hatással lehetnek: Hozzáfűzés, naplózás, AuditIfNotExists, nem engedélyezi, DeployIfNotExists, le van tiltva. Milyen hatások érvényesek. További információkért lásd: [ismertetése házirend hatások](../governance/policy/concepts/effects.md).
+   - A **biztonsági házirend** képernyőn megjelenik a szabályzatok kap. a kiválasztott előfizetés vagy a felügyeleti csoport által végrehajtott műveletet.
+   - A képernyő felső részén használatához nyissa meg az egyes házirendek megadott hivatkozások **hozzárendelés** , amely alkalmazza az előfizetést vagy felügyeleti csoportot. Használhatja a hivatkozások a hozzárendelés eléréséhez és szerkesztéséhez, vagy tiltsa le a szabályzatot. Például ha egy adott házirend-hozzárendelést hatékonyan tagadja meg a az endpoint protection című segítségével a hivatkozás a szabályzat eléréséhez és szerkesztéséhez vagy letiltásához.
+   - A házirendek listájában láthatja a szabályzat hatékony alkalmazása az előfizetés vagy a felügyeleti csoport. Ez azt jelenti, hogy a beállítások az egyes házirendek vonatoznak a hatókörre kell figyelembe venni, és biztosítunk, milyen műveletet a szabályzat által összesített eredményét. Például ha egy hozzárendelési a szabályzat le van tiltva, de egy másik, AuditIfNotExist van beállítva, majd a halmozott hatása érvényes AuditIfNotExist. A több aktív hatás mindig elsőbbséget élvez.
+   - A szabályzatok pontban hatással lehetnek: Hozzáfűzés, naplózás, AuditIfNotExists, nem engedélyezi, DeployIfNotExists, le van tiltva. Milyen hatások érvényesek. További információkért lásd: [ismertetése házirend hatások](../governance/policy/concepts/effects.md).
 
    ![a házirend képernyő](./media/security-center-policies/policy-screen.png)
 
@@ -102,16 +102,25 @@ Biztonsági szabályzatok az Azure Policy portálján keresztül REST API vagy a
 
 
 ## <a name="disable-security-policies"></a>Biztonsági szabályzatok letiltása
-Ha az alapértelmezett biztonsági szabályzatban egy javaslat, amely nem kapcsolódik az adott környezetben hoz létre, állíthatja le, tiltsa le a szabályzatdefiníció, amely elküldi az ajánlást. Itt leírtak Ez azért történik az Azure Policy portal (és nem a Security Center portál) keresztül.
-Javaslatok kapcsolatos további információkért lásd: [biztonsági javaslatok kezelése](security-center-recommendations.md). 
-1. Nyissa meg az Azure Policy, és kattintson a **hozzárendelések**.
-2. Az a **ASC alapértelmezés** sort, kattintson a három pontra, és kattintson a **megtekintheti a definíció**. A **Kezdeményezésdefiníció** lap megnyitásakor.
-   ![definíció megtekintése](./media/tutorial-security-policy/view-definition.png)
-3. Kattintson a **intitiative szerkesztése**. A **Kezdeményezésdefiníció szerkesztése** lap megnyitásakor.
-   ![kezdeményezés szerkesztése](./media/tutorial-security-policy/edit-initiative.png)
-4. Az a **szabályzatok és paraméterek** szakaszban, keresési, amely meghívja a javaslatot, hogy le kívánja tiltani a szabályzatot, és a legördülő listából válassza ki **letiltott**.
+Ha az alapértelmezett biztonsági szabályzatban egy javaslat, amely nem kapcsolódik az adott környezetben hoz létre, állíthatja le, tiltsa le a szabályzatdefiníció, amely elküldi az ajánlást.
+Javaslatok kapcsolatos további információkért lásd: [biztonsági javaslatok kezelése](security-center-recommendations.md).
+
+1. A Security Centerben a a **szabályzat és megfelelőség** területén kattintson **biztonsági házirend**.
+
+   ![Csoportházirend kezelése](./media/tutorial-security-policy/policy-management.png)
+
+2. Kattintson arra az előfizetésre, amelyhez le kívánja tiltani a javaslatot.
+
+1. Kattintson a hozzárendelt szabályzat.
+
+   ![Szabályzat letiltása](./media/tutorial-security-policy/security-policy.png)
+
+1. Az a **paraméterek** szakaszban, keresési, amely meghívja a javaslatot, hogy le kívánja tiltani a szabályzatot, és a legördülő listából válassza ki **letiltva**
+
    ![Szabályzat letiltása](./media/tutorial-security-policy/disable-policy.png)
-1. Kattintson a **mentése** (a lap alján található).
+1. Kattintson a **Save** (Mentés) gombra.
+> [!Note]
+> A disable-az irányelvek változásai érvénybe lépéséhez akár 12 órát is igénybe vehet.
 
 
 ### <a name="configure-a-security-policy-using-the-rest-api"></a>A REST API-val biztonsági szabályzat konfigurálása
@@ -173,38 +182,38 @@ Ez a példa bemutatja, hogyan rendelje hozzá a beépített a Security Center-ke
 
 - Az Endpoint protection ("endpointProtectionMonitoringEffect") 
 
- 
-      PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
 
-      Request Body (JSON) 
-
-      { 
-
-        "properties":{ 
-
-      "displayName":"Enable Monitoring in Azure Security Center", 
-
-      "metadata":{ 
-
-      "assignedBy":"{Name}" 
-
-      }, 
-
-      "policyDefinitionId":"/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8", 
-
-      "parameters":{ 
-
-      "systemUpdatesMonitoringEffect":{"value":"Disabled"}, 
-
-      "systemConfigurationsMonitoringEffect":{"value":"Disabled"}, 
-
-      "endpointProtectionMonitoringEffect":{"value":"Disabled"}, 
-
-      }, 
-
-       } 
-
-      } 
+    PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/policyAssignments/{policyAssignmentName}?api-version=2018-05-01 
+    
+    Kérelem törzse (JSON) 
+    
+    { 
+    
+      "properties":{ 
+    
+    "displayName": "Monitorozás engedélyezése az Azure Security Center", 
+    
+    "metaadatok": {} 
+    
+    "assignedBy": "{Name}" 
+    
+    }, 
+    
+    "policyDefinitionId":"/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8", 
+    
+    "paramétereket": {} 
+    
+    "systemUpdatesMonitoringEffect":{"value":"Disabled"}, 
+    
+    "systemConfigurationsMonitoringEffect":{"value":"Disabled"}, 
+    
+    "endpointProtectionMonitoringEffect":{"value":"Disabled"}, 
+    
+    }, 
+    
+     } 
+    
+    } 
 
 Ez a példa bemutatja, hogyan-hozzárendelés eltávolítása:
 

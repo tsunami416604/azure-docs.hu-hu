@@ -15,12 +15,12 @@ ms.date: 03/07/2019
 ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 03/07/2019
-ms.openlocfilehash: 42336205726823dd04e0412f29c3e7a23d134d39
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 59c69477e120facec1fbf132ce7017ca21aa8748
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763993"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58092616"
 ---
 # <a name="create-an-offer-in-azure-stack"></a>Ajánlat létrehozása az Azure Stackben
 
@@ -54,12 +54,12 @@ ms.locfileid: "57763993"
 
 Miután létrehozta az ajánlatot, módosíthatja a állapotában. Ajánlatok kell tenni **nyilvános** a felhasználók számára a teljes képet kaphat, amikor előfizetnek. Ajánlatok a következők lehetnek:
 
-   - **Nyilvános**: Látható a felhasználók számára.
-   - **Privát**: Csak a rendszergazdák elhelyezhetik látható. Ez a beállítás akkor hasznos, a csomag vagy ajánlat tervezése közben, vagy ha a felhő rendszergazdája szeretné [hozzon létre minden egyes felhasználók számára előfizetést](azure-stack-subscribe-plan-provision-vm.md#create-a-subscription-as-a-cloud-operator).
-   - **Szerelni**: Lezárva az új előfizetők számára. A felhő rendszergazdájához, leszerelheti ajánlatok megelőzni a jövőbeli előfizetések, de a jelenlegi előfizetők változatlanul hagyja.
+- **Nyilvános**: Látható a felhasználók számára.
+- **Privát**: Csak a rendszergazdák elhelyezhetik látható. Ez a beállítás akkor hasznos, a csomag vagy ajánlat tervezése közben, vagy ha a felhő rendszergazdája szeretné [hozzon létre minden egyes felhasználók számára előfizetést](azure-stack-subscribe-plan-provision-vm.md#create-a-subscription-as-a-cloud-operator).
+- **Szerelni**: Lezárva az új előfizetők számára. A felhő rendszergazdájához, leszerelheti ajánlatok megelőzni a jövőbeli előfizetések, de a jelenlegi előfizetők változatlanul hagyja.
 
-   > [!TIP]  
-   > Az ajánlat módosítások nem láthatók azonnal a felhasználó számára. A módosítások megtekintéséhez jelentkezzen ki, majd jelentkezzen be újra a felhasználói portálra, tekintse meg az új ajánlat felhasználók előfordulhat, hogy kell.
+  > [!TIP]  
+  > Az ajánlat módosítások nem láthatók azonnal a felhasználó számára. A módosítások megtekintéséhez jelentkezzen ki, majd jelentkezzen be újra a felhasználói portálra, tekintse meg az új ajánlat felhasználók előfordulhat, hogy kell.
 
 Az ajánlat állapotának két módja van:
 

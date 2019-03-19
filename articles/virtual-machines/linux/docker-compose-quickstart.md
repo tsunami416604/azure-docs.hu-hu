@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2019
 ms.author: cynthn
-ms.openlocfilehash: 3aa3b29ef44d3efb21237dc0d82a1ee6e99e729b
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 03501ea774cf58a4be88ed9155e5cfdfb99f0379
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328945"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007188"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Ismerkedés a Docker és a Compose megadásához és a egy többtárolós alkalmazást futtatni az Azure-ban
-A [összeállítás](http://github.com/docker/compose), alkalmazások több Docker-tároló feladatátvétele meghatározásához használhat egy egyszerű szöveges fájlt. Majd alkalmazás üzembe helyezése egyetlen paranccsal, amely a megadott környezet telepítéséhez. Tegyük fel ez a cikk bemutatja, hogyan gyorsan beállíthat egy WordPress-blogbejegyzés-háttérrendszer MariaDB SQL database Ubuntu rendszerű virtuális gépen. Összeállítás használatával állítsa be a összetettebb alkalmazásokat.
+A [összeállítás](https://github.com/docker/compose), alkalmazások több Docker-tároló feladatátvétele meghatározásához használhat egy egyszerű szöveges fájlt. Majd alkalmazás üzembe helyezése egyetlen paranccsal, amely a megadott környezet telepítéséhez. Tegyük fel ez a cikk bemutatja, hogyan gyorsan beállíthat egy WordPress-blogbejegyzés-háttérrendszer MariaDB SQL database Ubuntu rendszerű virtuális gépen. Összeállítás használatával állítsa be a összetettebb alkalmazásokat.
 
 Ez a cikk utolsó tesztelésének 2/14/2019 használatával a [Azure Cloud Shell](https://shell.azure.com/bash) és a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/install-azure-cli) 2.0.58 verzió.
 
@@ -132,7 +132,7 @@ Mostantól csatlakozhat közvetlenül a virtuális gép 80-as porton a WordPress
 ![A WordPress kezdőképernyője](./media/docker-compose-quickstart/wordpressstart.png)
 
 ## <a name="next-steps"></a>További lépések
-* Tekintse meg a [összeállítása parancssori útmutatójának](http://docs.docker.com/compose/reference/) és [felhasználói útmutató](http://docs.docker.com/compose/) létrehozásának és többtárolós alkalmazások üzembe helyezésének további példákat.
+* Tekintse meg a [összeállítása parancssori útmutatójának](https://docs.docker.com/compose/reference/) és [felhasználói útmutató](https://docs.docker.com/compose/) létrehozásának és többtárolós alkalmazások üzembe helyezésének további példákat.
 * Az Azure Resource Manager-sablon, vagy használja a saját vagy egy hozzájárult a a [közösségi](https://azure.microsoft.com/documentation/templates/), egy Azure virtuális Gépen a Docker és a egy alkalmazást, állítsa be a összeállítás telepítéséhez. Például a [üzembe helyezése a docker használatával egy WordPress-bloghoz](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-wordpress-mysql) sablon használja a Docker és a Compose gyors üzembe helyezését a WordPress egy MySQL-háttérrendszerrel Ubuntu rendszerű virtuális gépen.
 * Próbálja ki a Docker Compose integrálása egy Docker Swarm-fürtöt. Lásd: [és a swarm együttes használatával Compose](https://docs.docker.com/compose/swarm/) forgatókönyvek esetén.
 

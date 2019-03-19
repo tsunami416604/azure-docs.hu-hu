@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/13/2017
-ms.openlocfilehash: bf16d963a83bc720cc39e47cc928c1926a92859d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a0358859d6f806a94c529bae2eb6fa9d1ab82963
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771463"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077836"
 ---
 # <a name="create-a-vm-cluster-with-terraform-and-hcl"></a>Virtuálisgép-fürt létrehozása Terraformmal és HCL-lel
 
@@ -46,30 +46,30 @@ Ebben a szakaszban egy Azure-szolgáltatásnevet hozunk létre, valamint két Te
 
 5. Másolja az alábbi kódot a változódeklarációs fájlba:
 
-  ```tf
-  variable subscription_id {}
-  variable tenant_id {}
-  variable client_id {}
-  variable client_secret {}
+   ```tf
+   variable subscription_id {}
+   variable tenant_id {}
+   variable client_id {}
+   variable client_secret {}
   
-  provider "azurerm" {
+   provider "azurerm" {
       subscription_id = "${var.subscription_id}"
       tenant_id = "${var.tenant_id}"
       client_id = "${var.client_id}"
       client_secret = "${var.client_secret}"
-  }
-  ```
+   }
+   ```
 
 6. Hozzon létre egy új fájlt a Terraform-változók értékeinek tárolására. A Terraform-változók fájlját szokás a `terraform.tfvars` néven elnevezni, mivel a Terraform automatikusan betölti a `terraform.tfvars` (vagy a `*.auto.tfvars` mintát követő) nevű fájlt, ha az aktuális könyvtárban található ilyen fájl. 
 
 7. Másolja az alábbi kódot a változók fájljába. Ügyeljen arra, hogy cserélje le a helyőrzőket a következőképpen: A `subscription_id`, használja az Azure-előfizetés azonosítója futtatásakor megadott `az account set`. A `tenant_id` helyett használja az `az ad sp create-for-rbac` által visszaadott `tenant` értéket. A `client_id` helyett használja az `az ad sp create-for-rbac` által visszaadott `appId` értéket. A `client_secret` helyett használja az `az ad sp create-for-rbac` által visszaadott `password` értéket.
 
-  ```tf
-  subscription_id = "<azure-subscription-id>"
-  tenant_id = "<tenant-returned-from-creating-a-service-principal>"
-  client_id = "<appId-returned-from-creating-a-service-principal>"
-  client_secret = "<password-returned-from-creating-a-service-principal>"
-  ```
+   ```tf
+   subscription_id = "<azure-subscription-id>"
+   tenant_id = "<tenant-returned-from-creating-a-service-principal>"
+   client_id = "<appId-returned-from-creating-a-service-principal>"
+   client_secret = "<password-returned-from-creating-a-service-principal>"
+   ```
 
 ## <a name="2-create-a-terraform-configuration-file"></a>2. Terraform konfigurációs fájl létrehozása
 
@@ -79,34 +79,34 @@ Ebben a szakaszban egy fájlt hozunk létre az infrastruktúra erőforrás-defin
 
 2. Másolja az alábbi erőforrás-definíció mintákat az újonnan létrehozott `main.tf` fájlba: 
 
-  ```tf
-  resource "azurerm_resource_group" "test" {
+   ```tf
+   resource "azurerm_resource_group" "test" {
     name     = "acctestrg"
     location = "West US 2"
-  }
+   }
 
-  resource "azurerm_virtual_network" "test" {
+   resource "azurerm_virtual_network" "test" {
     name                = "acctvn"
     address_space       = ["10.0.0.0/16"]
     location            = "${azurerm_resource_group.test.location}"
     resource_group_name = "${azurerm_resource_group.test.name}"
-  }
+   }
 
-  resource "azurerm_subnet" "test" {
+   resource "azurerm_subnet" "test" {
     name                 = "acctsub"
     resource_group_name  = "${azurerm_resource_group.test.name}"
     virtual_network_name = "${azurerm_virtual_network.test.name}"
     address_prefix       = "10.0.2.0/24"
-  }
+   }
 
-  resource "azurerm_public_ip" "test" {
+   resource "azurerm_public_ip" "test" {
     name                         = "publicIPForLB"
     location                     = "${azurerm_resource_group.test.location}"
     resource_group_name          = "${azurerm_resource_group.test.name}"
     public_ip_address_allocation = "static"
-  }
+   }
 
-  resource "azurerm_lb" "test" {
+   resource "azurerm_lb" "test" {
     name                = "loadBalancer"
     location            = "${azurerm_resource_group.test.location}"
     resource_group_name = "${azurerm_resource_group.test.name}"
@@ -115,15 +115,15 @@ Ebben a szakaszban egy fájlt hozunk létre az infrastruktúra erőforrás-defin
       name                 = "publicIPAddress"
       public_ip_address_id = "${azurerm_public_ip.test.id}"
     }
-  }
+   }
 
-  resource "azurerm_lb_backend_address_pool" "test" {
+   resource "azurerm_lb_backend_address_pool" "test" {
     resource_group_name = "${azurerm_resource_group.test.name}"
     loadbalancer_id     = "${azurerm_lb.test.id}"
     name                = "BackEndAddressPool"
-  }
+   }
 
-  resource "azurerm_network_interface" "test" {
+   resource "azurerm_network_interface" "test" {
     count               = 2
     name                = "acctni${count.index}"
     location            = "${azurerm_resource_group.test.location}"
@@ -135,9 +135,9 @@ Ebben a szakaszban egy fájlt hozunk létre az infrastruktúra erőforrás-defin
       private_ip_address_allocation = "dynamic"
       load_balancer_backend_address_pools_ids = ["${azurerm_lb_backend_address_pool.test.id}"]
     }
-  }
+   }
 
-  resource "azurerm_managed_disk" "test" {
+   resource "azurerm_managed_disk" "test" {
     count                = 2
     name                 = "datadisk_existing_${count.index}"
     location             = "${azurerm_resource_group.test.location}"
@@ -145,18 +145,18 @@ Ebben a szakaszban egy fájlt hozunk létre az infrastruktúra erőforrás-defin
     storage_account_type = "Standard_LRS"
     create_option        = "Empty"
     disk_size_gb         = "1023"
-  }
+   }
 
-  resource "azurerm_availability_set" "avset" {
+   resource "azurerm_availability_set" "avset" {
     name                         = "avset"
     location                     = "${azurerm_resource_group.test.location}"
     resource_group_name          = "${azurerm_resource_group.test.name}"
     platform_fault_domain_count  = 2
     platform_update_domain_count = 2
     managed                      = true
-  }
+   }
 
-  resource "azurerm_virtual_machine" "test" {
+   resource "azurerm_virtual_machine" "test" {
     count                 = 2
     name                  = "acctvm${count.index}"
     location              = "${azurerm_resource_group.test.location}"
@@ -215,8 +215,8 @@ Ebben a szakaszban egy fájlt hozunk létre az infrastruktúra erőforrás-defin
     tags {
       environment = "staging"
     }
-  }
-  ```
+   }
+   ```
 
 ## <a name="3-initialize-terraform"></a>3. A Terraform inicializálása 
 

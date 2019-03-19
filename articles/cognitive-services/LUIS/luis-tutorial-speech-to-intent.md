@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: c247ef748628c14074c2b5ea37df251793840b16
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 6f775ffaf53019cc50bc38c294b4d5f40c8eca90
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876034"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076751"
 ---
 # <a name="integrate-speech-service-with-your-language-understanding-app"></a>Beszédszolgáltatás integráció a Language Understanding alkalmazással
 A [Speech Service-szel](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) egyetlen kérésben kérhet le hanganyagokat, és adathat vissza LUIS-előrejelzési JSON-objektumokat. A cikkben egy C#-projektet fog letölteni és felhasználni a Visual Studióban arra, hogy mikrofonnal rögzítsen egy kimondott szöveget, és LUIS-előrejelzési adatokhoz jusson. A projekt a Speech [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/)-csomagot használja, amelyet referenciaként már tartalmaz. 
@@ -49,11 +49,11 @@ Az alkalmazás importálását követően válassza az **Entities** (Entitások)
 
 3. A **Keys and endpoints** (Kulcsok és végpontok) lapon rendelje hozzá a [LUIS-végpont kulcsának létrehozása](#create-luis-endpoint-key) szakaszban létrehozott LUIS-kulcsot.
 
-  Ezen a lapon gyűjtse be a [LUIS-végpont kulcsának létrehozása](#create-luis-endpoint-key) szakaszban létrehozott LUIS-kulcs alkalmazásazonosítóját, közzétételi régióját és előfizetés-azonosítóját. Módosítania kell a kódot, hogy a cikk későbbi szakaszaiban ezeket az értékeket használja. 
+   Ezen a lapon gyűjtse be a [LUIS-végpont kulcsának létrehozása](#create-luis-endpoint-key) szakaszban létrehozott LUIS-kulcs alkalmazásazonosítóját, közzétételi régióját és előfizetés-azonosítóját. Módosítania kell a kódot, hogy a cikk későbbi szakaszaiban ezeket az értékeket használja. 
   
-  Ebben a gyakorlatban **ne** használja az ingyenes indulókulcsot. A gyakorlathoz csak az Azure Portalon létrehozott **Language Understanding**-kulcs használható. 
+   Ebben a gyakorlatban **ne** használja az ingyenes indulókulcsot. A gyakorlathoz csak az Azure Portalon létrehozott **Language Understanding**-kulcs használható. 
 
-  https://**RÉGIÓ**.api.cognitive.microsoft.com/luis/v2.0/apps/**ALKALMAZÁSAZONOSÍTÓ**?subscription-key=**LUISKULCS**&q=
+   https://**RÉGIÓ**.api.cognitive.microsoft.com/luis/v2.0/apps/**ALKALMAZÁSAZONOSÍTÓ**?subscription-key=**LUISKULCS**&q=
 
 
 4. Tegye közzé a LUIS-alkalmazást. Ehhez válassza ki a jobb felső sávon a **Publish** (Közzététel) gombot. 

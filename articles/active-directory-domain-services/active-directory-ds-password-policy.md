@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: 5fc50aeeb2764f90a111c2466ff5a9deefe1e65c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 513cccb8b83eb4a69df1bc6172f1f02485215e35
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167988"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086003"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Jelszó- és fiókzárolási házirendet a felügyelt tartományok
 Ez a cikk bemutatja a felügyelt tartomány alapértelmezett jelszóházirendeket. Emellett ismerteti, hogyan konfigurálhatja ezeket a szabályzatokat.
@@ -89,28 +89,28 @@ Egy egyéni FGPP létrehozása a felügyelt tartomány:
 7. Az a **feladatok** lehetőségre a jobb oldali panelen **új** kattintson **jelszóbeállítások**.
 8. Az a **jelszóbeállítások létrehozása** párbeszédpanelen adja meg a alkalmazni az egyéni FGPP részeként egyéni jelszó-beállításokat. Ne felejtse el az alapértelmezett FGPP megfelelően állítsa be a sorrend.
 
-  ![Hozzon létre egyéni részletes Jelszóházirendek](./media/how-to/custom-fgpp.png)
+   ![Hozzon létre egyéni részletes Jelszóházirendek](./media/how-to/custom-fgpp.png)
 
-  > [!TIP]
-  > **Ne feledje, hogy törölje a jelet a lehetőség a véletlen törlés elleni védelem.** Ha ezt a lehetőséget választja, a részletes Jelszóházirendek nem lehet menteni.
-  >
-  >
+   > [!TIP]
+   > **Ne feledje, hogy törölje a jelet a lehetőség a véletlen törlés elleni védelem.** Ha ezt a lehetőséget választja, a részletes Jelszóházirendek nem lehet menteni.
+   >
+   >
 
 9. A **vonatkozik erre a**, kattintson a **Hozzáadás** gombra. Az a **felhasználók vagy csoportok kiválasztása** párbeszédpanelen kattintson a **helyek** gombra.
 
-  ![Felhasználók és csoportok kijelölése](./media/how-to/fgpp-applies-to.png)
+   ![Felhasználók és csoportok kijelölése](./media/how-to/fgpp-applies-to.png)
 
 10. Az a **helyek** párbeszédpanelen bontsa ki a tartomány nevét, és kattintson a **AADDC felhasználók**. Most már a beépített felhasználók szervezeti Egységét, amelyre a alkalmazni a részletes Jelszóházirendek, válasszon ki egy csoportot.
 
-  ![Válassza ki a szervezeti Egységhez adott csoporthoz tartozik](./media/how-to/fgpp-container.png)
+    ![Válassza ki a szervezeti Egységhez adott csoporthoz tartozik](./media/how-to/fgpp-container.png)
 
 11. Adja meg a csoport nevét, majd kattintson a **Névellenőrzés** gombra kattintva ellenőrizze a csoport létezik.
 
-  ![Válassza ki a csoportot a alkalmazni a részletes Jelszóházirendek](./media/how-to/fgpp-apply-group.png)
+    ![Válassza ki a csoportot a alkalmazni a részletes Jelszóházirendek](./media/how-to/fgpp-apply-group.png)
 
 12. A csoport neve jelenik meg **vonatkozik erre a** szakaszban. Kattintson a **OK** gombra a módosítások mentéséhez.
 
-  ![Részletes Jelszóházirendek a alkalmazni](./media/how-to/fgpp-applied.png)
+    ![Részletes Jelszóházirendek a alkalmazni](./media/how-to/fgpp-applied.png)
 
 > [!TIP]
 > **A alkalmazni az egyéni szervezeti felhasználói fiókok esetében egyéni jelszóházirendek:** Finom részletes jelszóházirendek csak a csoportok alkalmazhatók. Csak az egyéni szervezeti felhasználók egyéni jelszó szabályzatának konfigurálása, hozzon létre egy csoportot, amely a felhasználót tartalmazza, amelynek.

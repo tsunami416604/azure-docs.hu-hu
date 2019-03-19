@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: c961238d1fbce1ff590e0b0843ae1390aa7f1cd9
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: adaed4c7af1d325f85d6fc349ac9a4faf73c1169
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534820"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078814"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az Azure Cloud Services üzembe helyezési problémák: Gyakori kérdések (GYIK)
 
@@ -67,10 +67,11 @@ További információkért lásd: [egy felhőalapú szolgáltatás frissítése]
 ## <a name="why-am-i-not-able-to-deploy-cloud-services-through-service-management-apis-or-powershell-when-using-azure-resource-manager-storage-account"></a>Miért nem tudok üzembe helyezéséhez a Service Management API-k vagy a Powershellen keresztül a Cloud Services, Azure Resource Manager-tárfiókok használata? 
 
 Mivel a felhőalapú szolgáltatás, nem közvetlenül az Azure Resource Manager-modell kompatibilis klasszikus erőforráshoz, az Azure Resource Manager tárfiókok nem társítható. Az alábbiakban néhány lehetőséget: 
- 
+ 
 - Az üzembe helyezést REST API-t.
 
-    Service Management REST API-n keresztül történő telepítésekor, a blob Storage, amely működik a klasszikus és az Azure Resource Manager-Storage-fiók egy SAS URL-cím megadásával megkerülésében sikerült a korlátozást. További információ a "PackageUrl" tulajdonság [Itt](https://msdn.microsoft.com/library/azure/ee460813.aspx).  
+    Service Management REST API-n keresztül történő telepítésekor, a blob Storage, amely működik a klasszikus és az Azure Resource Manager-Storage-fiók egy SAS URL-cím megadásával megkerülésében sikerült a korlátozást. További információ a "PackageUrl" tulajdonság [Itt](https://msdn.microsoft.com/library/azure/ee460813.aspx).
+  
 - Az üzembe helyezést [az Azure portal](https://portal.azure.com).
 
     Ez akkor fog működni a a [az Azure portal](https://portal.azure.com) , a hívás halad végig a proxy/kódrészlet, amely lehetővé teszi, hogy az Azure Resource Manager és klasszikus erőforrások közti kommunikációt. 

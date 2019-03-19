@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 7645694e9f2b90bfbe26ac3d0747791570f32d1b
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 777e0aac46dbffb1e491874b5889667a888aadf5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510136"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57898686"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Merevlemezek előkészítése importálási feladatokhoz
 
@@ -25,7 +25,7 @@ A WAImportExport eszköz egy a meghajtó-előkészítési és -javítás eszköz
 
 - **Számítógép-konfiguráció**
   - Windows 7, Windows Server 2008 R2 vagy újabb Windows operációs rendszer
-  - .NET-keretrendszer 4 telepítve kell lennie. Lásd: [– gyakori kérdések](#faq) való ellenőrizze, hogy .net keretrendszer van telepítve a számítógépen.
+  - .NET-keretrendszer 4 telepítve kell lennie. Lásd: [– gyakori kérdések](#faq) hogyan ellenőrizheti, ha a .NET-keretrendszer telepítve van-e a gépen.
 - **Tárfiók kulcsa** – legalább egy, a fiók-kulcsokat a tárfiók szükséges.
 
 ### <a name="preparing-disk-for-import-job"></a>Lemez előkészítése importálási feladatokhoz
@@ -151,12 +151,12 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset
 
 Az adatok nem fértek InitialDriveset a meghajtók, ha az egyik eszközzel a további meghajtók hozzáadása másolási ugyanazon munkamenet. 
 
->[!NOTE] 
->A munkamenet-azonosítót meg kell egyeznie az előző munkamenet-azonosító. Naplófájl meg kell egyeznie az előző munkamenet megadott.
->
-```
-WAImportExport.exe PrepImport /j:<SameJournalFile> /id:<SameSessionId> /AdditionalDriveSet:<newdriveset.csv>
-```
+> [!NOTE]
+> A munkamenet-azonosítót meg kell egyeznie az előző munkamenet-azonosító. Naplófájl meg kell egyeznie az előző munkamenet megadott.
+> 
+> ```
+> WAImportExport.exe PrepImport /j:<SameJournalFile> /id:<SameSessionId> /AdditionalDriveSet:<newdriveset.csv>
+> ```
 
 **Példa**
 
@@ -364,7 +364,7 @@ Annak érdekében, hogy letiltja a BitLocker a TPM, nyissa meg az alábbi lépé
 
 Az összes Microsoft .NET-keretrendszer-verziókat települnek a következő könyvtárban: %windir%\Microsoft.NET\Framework\
 
-Keresse meg a fent említett részére, amelyben a célgépen, ahol az eszköz futtatásához szükséges. Keressen a "v4" kezdetű mappa neve. Hiányában egy ilyen directory azt jelenti, hogy a .NET-4 nincs telepítve a gépén. Letöltheti a Microsoft .net-4 használatával [a Microsoft .NET-keretrendszer 4 (webes telepítő)](https://www.microsoft.com/download/details.aspx?id=17851).
+Keresse meg a fent említett részére, amelyben a célgépen, ahol az eszköz futtatásához szükséges. Keressen a "v4" kezdetű mappa neve. Hiányában egy ilyen directory azt jelenti, hogy a .NET-4 nincs telepítve a gépén. Letöltheti a Microsoft .NET-4 használatával [a Microsoft .NET-keretrendszer 4 (webes telepítő)](https://www.microsoft.com/download/details.aspx?id=17851).
 
 ### <a name="limits"></a>Korlátok
 

@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/12/2018
+ms.date: 03/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: d3f8e5ac1f85483d04da99744809f4bc72295024
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: d8344177fc5895451cf876f5aa581baa1fed52e6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266194"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58001850"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Nyomkövetési naplók az Application Insights Java felfedezése
 Ha a Logback vagy Log4J használja (1.2-es verzió vagy 2.0-s verzió) nyomkövetés, az automatikusan elküldi az Application Insights, amelyen ismerje meg, és keresse meg azokat a nyomkövetési naplók rendelkezhet.
@@ -158,7 +158,7 @@ Most, hogy konfigurálta a projekthez, hogy elküldheti az Application Insightsb
 
 Kivételek másolása keresztül elküldött fog megjelenni a portálon kivétel telemetriaként.
 
-![Az Application Insights portálon nyissa meg a keresés](./media/java-trace-logs/10-diagnostics.png)
+![Az Application Insights portálon nyissa meg a keresés](./media/java-trace-logs/01-diagnostics.png)
 
 ## <a name="next-steps"></a>További lépések
 [Diagnosztikai keresés][diagnostic]

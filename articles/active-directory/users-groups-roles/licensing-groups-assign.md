@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 423399c93fca222dad2db3175036719a0cd5fdb9
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 6473b8d15d09251d22386036285019c3b55e4cb1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56986149"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084115"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Licencek hozzárendelése a felhasználók által az Azure Active Directory biztonságicsoport-tagság
 
@@ -30,7 +30,7 @@ Ebben a példában a bérlő tartalmazza-e nevű biztonsági csoport **HR részl
 
 > [!NOTE]
 > Nem minden Microsoft-szolgáltatás érhető el minden területen. Mielőtt egy úgy lehet licencet a felhasználóhoz, a rendszergazda adja meg a használati helyet jelölő tulajdonsághoz meg a felhasználó rendelkezik.
-
+> 
 > A licenc-hozzárendelések bármely felhasználó felhasználás helyének megadása nélkül örökli a könyvtár helye. Ha több helyen felhasználóval rendelkezik, azt javasoljuk, hogy mindig állítsa a felhasználási hely része a felhasználói létrehozásának folyamatát, amely biztosítja a licenc-hozzárendelés eredménye (pl. keresztül az AAD Connect-konfiguráció) – Azure AD-ben mindig helyes, és a felhasználók nem kapnak szolgáltatások, a helyeken, amelyek nem engedélyezettek.
 
 ## <a name="step-1-assign-the-required-licenses"></a>1. lépés: A szükséges licencek hozzárendelése

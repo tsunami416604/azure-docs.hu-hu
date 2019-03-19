@@ -17,12 +17,12 @@ ms.author: sethm
 ms.reviewer: scottnap
 ms.lastreviewed: 09/12/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1d66ca49db097eebd4c8fb5663f63e0db7460ad6
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: e038afe27718dcbd407e83b5c9190606e6b917c4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782870"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004652"
 ---
 # <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>Site-to-site VPN-kapcsolat létrehozása két virtuális hálózat között eltérő Azure Stack Development Kit környezetek között
 ## <a name="overview"></a>Áttekintés
@@ -52,6 +52,7 @@ A poc1-ben és a poc2 környezetben készítse elő egy ajánlatra, hogy egy fel
 A következő táblázat összefoglalja a hálózati konfigurációt, mind az Azure Stack Development Kit környezetek esetében. Az eljárással, amely akkor jelenik meg a hálózat jellemző külső BGPNAT cím hozzáadásához a táblázat után.
 
 **Hálózati konfiguráció táblázat**
+
 |   |POC1|POC2|
 |---------|---------|---------|
 |Virtuális hálózat neve     |VNET-01|VNET-02 |

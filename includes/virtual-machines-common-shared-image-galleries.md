@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/09/2018
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: f8122f35ac6d604908fc31dcece7dfb53dd50286
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 8c7da8d04b456642b158dda77d9c745891aa18e6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55985435"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58052110"
 ---
 Megosztott lemezkép-katalógus szolgáltatása segít kialakítani a struktúra és a szervezet a felügyelt VM-rendszerképeit körül. Egy megosztott lemezkép-katalógus használatával megoszthatja a különböző felhasználók, az egyszerű szolgáltatások vagy AD-csoportokat a képeket a szervezeten belül. Megosztott lemezképeket több régióban, a gyorsabb skálázás az üzembe helyezést lehet replikálni.
 
@@ -128,18 +128,18 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
  
  A. Annak érdekében, hogy a lista összes rendszerkép-katalógusában a megosztott erőforrást, hogy rendelkezik-e a hozzáférést az Azure Portal előfizetések között, kövesse az alábbi lépéseket:
 
- 1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
- 1. Lépjen a **összes erőforrás**.
- 1. Válassza ki az összes olyan előfizetést, amelyben szeretné minden erőforrás listában.
- 1. Keresse meg az típusú erőforrások **privát katalógust**.
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
+1. Lépjen a **összes erőforrás**.
+1. Válassza ki az összes olyan előfizetést, amelyben szeretné minden erőforrás listában.
+1. Keresse meg az típusú erőforrások **privát katalógust**.
  
- A lemezkép-definíciók és a lemezkép-verziók megtekintéséhez is választhat **rejtett típusok megjelenítése**.
+   A lemezkép-definíciók és a lemezkép-verziók megtekintéséhez is választhat **rejtett típusok megjelenítése**.
  
- Lemezkép-katalógusában a megosztott erőforrások között, amely rendelkezik engedélyekkel az előfizetések listázásához használja a következő parancsot az Azure CLI-ben:
+   Lemezkép-katalógusában a megosztott erőforrások között, amely rendelkezik engedélyekkel az előfizetések listázásához használja a következő parancsot az Azure CLI-ben:
 
- ```bash
- az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
- ```
+   ```bash
+   az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
+   ```
 
 
 **K.** Hogyan oszthatom meg saját lemezképek több előfizetés között?
@@ -155,9 +155,9 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 
  2. forgatókönyv: Ha általánosított nem felügyelt rendszerkép, létrehozhat egy felügyelt rendszerképet belőle, és majd hozzon létre belőle egy rendszerkép definíciójában és lemezkép verziója. 
 
- 3. forgatókönyv: Ha egy virtuális Merevlemezt a helyi fájlrendszerbe is van, akkor szüksége töltse fel a VHD-t, hozzon létre egy felügyelt rendszerképet, majd hozhat létre és definíció és származó lemezkép verziója. 
-    - Windows virtuális gépek a virtuális merevlemez esetén olvassa el [általános VHD feltöltése](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed).
-    - Ha a VHD-t egy Linux virtuális gép számára, lásd: [VHD feltöltése](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)
+ 3. forgatókönyv: Ha egy virtuális Merevlemezt a helyi fájlrendszerbe is van, akkor szüksége töltse fel a VHD-t, hozzon létre egy felügyelt rendszerképet, majd hozhat létre és definíció és származó lemezkép verziója.
+- Windows virtuális gépek a virtuális merevlemez esetén olvassa el [általános VHD feltöltése](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed).
+- Ha a VHD-t egy Linux virtuális gép számára, lásd: [VHD feltöltése](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd)
 
 
 **K.** Létrehozhatok egy lemezkép verziója specializált lemezből?

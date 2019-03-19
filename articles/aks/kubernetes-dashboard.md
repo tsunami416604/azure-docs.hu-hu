@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: iainfou
-ms.openlocfilehash: 9d953cdb82412c07fe0ed4bef75dece4a929cad9
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: e831979e0a9f9c8b4d812f682403ecf466abbd13
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299129"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993891"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Hozzáférés a Kubernetes webes irányítópultot az Azure Kubernetes Service (AKS)
 
@@ -34,7 +34,7 @@ A Kubernetes-irányítópult indításához használja a [az aks browse] [ az-ak
 az aks browse --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Ez a parancs létrehoz egy proxy között a fejlesztői rendszerhez, és a Kubernetes API-t, és a Kubernetes-irányítópult egy webböngészőben megnyílik. Egy webes böngésző nem nyílik meg, a Kubernetes-irányítópultot, ha másolja és illessze be az URL-cím általában az Azure CLI-feljegyzett *http://127.0.0.1:8001*.
+Ez a parancs létrehoz egy proxy között a fejlesztői rendszerhez, és a Kubernetes API-t, és a Kubernetes-irányítópult egy webböngészőben megnyílik. Egy webes böngésző nem nyílik meg, a Kubernetes-irányítópultot, ha másolja és illessze be az URL-cím általában az Azure CLI-feljegyzett `http://127.0.0.1:8001`.
 
 ![A Kubernetes webes irányítópult áttekintés oldalán](./media/kubernetes-dashboard/dashboard-overview.png)
 

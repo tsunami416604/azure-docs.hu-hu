@@ -14,12 +14,12 @@ ms.topic: article
 ms.author: mabvrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 5436b562b4f9054e0e00e3cc6abb1724797437db
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 6a5efce2f50a25902b33f2cb85d470a280000305
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729642"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002064"
 ---
 # <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>A Kubernetes üzembe helyezés az Azure Stack hibaelhárítása
 
@@ -151,6 +151,7 @@ Naplók lekérése, hajtsa végre az alábbi lépéseket:
     ```
 
 4. Tekintse át a paramétereket, és állítsa az értékeket az adott környezet alapján.
+
     | Paraméter           | Leírás                                                                                                      | Példa                                                                       |
     |---------------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
     | -d, --vmd-host       | A nyilvános IP-cím vagy a DVM teljes Tartománynevét. A virtuális gép neve kezdődik `vmd-`.                                                       | IP-cím: 192.168.102.38<br><br>DNS: vmd-dnsk8-frog.local.cloudapp.azurestack.external |
@@ -174,7 +175,7 @@ Naplók lekérése, hajtsa végre az alábbi lépéseket:
     ![Generált naplók](media/azure-stack-solution-template-kubernetes-trouble/azure-stack-generated-logs.png)
 
 
-4. A mappák, a parancs által létrehozott a naplók begyűjtéséről. A parancs létrehozza az új mappák és időbélyegzői őket.
+1. A mappák, a parancs által létrehozott a naplók begyűjtéséről. A parancs létrehozza az új mappák és időbélyegzői őket.
     - KubernetesLogs*YYYY-MM-DD-XX-XX-XX-XXX*
         - Dvmlogs
         - Acsengine-kubernetes-dvm.log

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli@microsoft.com
-ms.openlocfilehash: 449c65d0ed746664b75bf8775dda695f569b3eb0
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e6053ef9b5e1fc113e3bd3057d627347f285cd99
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228385"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003119"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Eszköz felügyelete a storsimple-höz készült Windows PowerShell használatával
 
@@ -47,7 +47,7 @@ A Windows PowerShell storsimple, az alábbi módszerek egyikének használatáva
 
 ## <a name="connect-to-windows-powershell-for-storsimple-via-the-device-serial-console"></a>Csatlakozás Windows PowerShell storsimple-höz készült keresztül az eszköz soros konzoljához
 
-Is [töltse le a PuTTY](http://www.putty.org/) vagy hasonló szeretne csatlakozni a Windows PowerShell storsimple-höz készült terminálemulációs szoftverre. PuTTY kifejezetten való eléréséhez a Microsoft Azure StorSimple-eszköz konfigurálásához szüksége. A következő témakörök tartalmaznak részletes lépéseket konfigurálása a putty-kapcsolaton keresztül, és csatlakozni az eszközhöz. A soros konzol különböző menüpontok is magyarázata.
+Is [töltse le a PuTTY](https://www.putty.org/) vagy hasonló szeretne csatlakozni a Windows PowerShell storsimple-höz készült terminálemulációs szoftverre. PuTTY kifejezetten való eléréséhez a Microsoft Azure StorSimple-eszköz konfigurálásához szüksége. A következő témakörök tartalmaznak részletes lépéseket konfigurálása a putty-kapcsolaton keresztül, és csatlakozni az eszközhöz. A soros konzol különböző menüpontok is magyarázata.
 
 ### <a name="putty-settings"></a>PuTTY-beállítások
 
@@ -62,7 +62,7 @@ Győződjön meg arról, hogy használja-e a következő PuTTY beállításokat 
    | --- | --- |
    | BACKSPACE kulcs |Vezérlő –? (127) |
    | Otthon és a záró kulcsok |Standard |
-   | Funkcióbillentyűk és billentyűzet |Az ESC [n ~ |
+   | Funkcióbillentyűk és billentyűzet |ESC[n~ |
    | A kurzor kulcsok kezdeti állapota |Normál |
    | Számbillentyűzeten kezdeti állapota |Normál |
    | Egyéb billentyűzet-szolgáltatások engedélyezése |Ellenőrzés-Alt AltGr eltér |
@@ -110,8 +110,8 @@ A következő beállítások közül választhat:
    * Frissítések alkalmazása
    * Gyorsjavítások telepítése
 
-    > [!NOTE]
-    > Ez a előnyben részesített lehetőség, ha az eszköz rendszergazdai jelszava elfelejtette és keresztül beállítás 1 vagy 2-es nem tud kapcsolódni.
+     > [!NOTE]
+     > Ez a előnyben részesített lehetőség, ha az eszköz rendszergazdai jelszava elfelejtette és keresztül beállítás 1 vagy 2-es nem tud kapcsolódni.
 
 4. **Nyelvváltás** ezzel a beállítással, hogy a Windows PowerShell felületét a megjelenítési nyelvének módosítására. Támogatott nyelvek angol, japán, spanyol, francia, dél-koreai, spanyol, olasz, német, kínai és brazíliai portugál nyelveken is.
 
@@ -159,7 +159,7 @@ Az alábbi táblázat a gyakori felügyeleti feladatok és a komplex munkafolyam
 
 A storsimple-höz készült Windows PowerShell a parancsmag súgójában érhető el. Egy online, naprakész verziója a Súgó is érhető el, amely a rendszeren a súgójának frissítéséhez használhatja.
 
-Segítség kérése ezen a felületen hasonló, mint a Windows PowerShellben, és a Súgó kapcsolatos parancsmagok a legtöbb fog működni. Súgó a Windows PowerShell környezethez online találhatja meg a TechNet könyvtárban: [parancsfájlkezelés a Windows PowerShell](https://go.microsoft.com/fwlink/?LinkID=108518).
+Segítség kérése ezen a felületen hasonló, mint a Windows PowerShellben, és a Súgó kapcsolatos parancsmagok a legtöbb fog működni. Súgó a Windows PowerShell környezethez online a TechNet könyvtárban találja meg: [Parancsfájlkezelés a Windows PowerShell](https://go.microsoft.com/fwlink/?LinkID=108518).
 
 Az alábbiakban látható a a Windows PowerShell felületén, beleértve a súgó frissítése súgó típusú rövid leírását.
 

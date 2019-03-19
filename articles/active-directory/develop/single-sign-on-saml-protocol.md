@@ -18,12 +18,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a46bc954d137ad610310d83d3ad7f54370b9177b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d9cb9877015f2cfe61799a56be6490a3f4e2fb60
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184040"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012772"
 ---
 # <a name="single-sign-on-saml-protocol"></a>Egyszeri bejelentkezéses SAML-protokoll
 
@@ -170,7 +170,7 @@ Például a kibocsátó elemmel választ az alábbi mintához hasonlóan rákere
 
 A `Status` elem tartalmát, a sikeres vagy sikertelen bejelentkezés. Ez magában foglalja a `StatusCode` elem, amely tartalmazza a kódot vagy egy beágyazott kódot, amely a kérés állapotát jelöli. Ezenkívül tartalmazza a `StatusMessage` elem, amely tartalmazza a bejelentkezési folyamat során létrehozott egyéni hibaüzenetek.
 
-<!-- TODO: Add a authentication protocol error reference -->
+<!-- TODO: Add an authentication protocol error reference -->
 
 Az alábbi minta a SAML-válasz, a sikertelen bejelentkezési kísérlet.
 

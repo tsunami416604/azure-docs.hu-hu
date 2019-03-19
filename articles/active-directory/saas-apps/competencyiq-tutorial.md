@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e83bc0f846d631ce7bf23fefb584c585e8518da
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 45063107cdaf5ea8a720233c47e5b9007faa6d13
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731447"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880398"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-competencyiq"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező CompetencyIQ
 
@@ -148,7 +148,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

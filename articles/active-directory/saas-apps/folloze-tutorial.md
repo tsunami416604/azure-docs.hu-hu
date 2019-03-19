@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fa95d5a5e3dcbb32b38772bbd91e75be0ecde08
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 41f867e2700c7b3f5d70d76c78a32e0fa3361d56
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762596"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57892625"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-folloze"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Folloze
 
@@ -171,7 +171,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

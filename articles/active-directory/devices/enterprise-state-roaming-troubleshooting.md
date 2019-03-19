@@ -19,12 +19,12 @@ ms.author: markvi
 ms.reviewer: tanning
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bf7919a2dc69bc834a5834d10a5a297a2ad6949
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9e2b99871cc1da2b1e8e136fc4d689e90dfad77a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170303"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081236"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Az Azure Active Directoryban hibaelhárítási Enterprise State Roaming beállítások
 
@@ -47,7 +47,7 @@ Ha az alábbi útmutatót a probléma nem oldódik meg, forduljon a támogatási
 * **Érintett felhasználók** – szinkronizálási működő/sikertelen egy felhasználó vagy több felhasználó van? Hány eszközt felhasználónként van szó? Nem szinkronizálja ezek mindegyike vagy némelyike szinkronizálását, és néhány nem szinkronizálja?
 * **A felhasználó adatai** – milyen identitás az a felhasználó, jelentkezzen be az eszköz használatával? Hogyan, a felhasználó bejelentkezik az eszközre? Azok azok egy része számára engedélyezett a szinkronizálás a kijelölt biztonsági csoport? 
 * **Az eszköz adatai** – az eszköz Azure AD-hez csatlakoztatott vagy tartományhoz csatlakoztatott? Milyen build van az eszköz? Mik a legújabb frissítéseket?
-- **Dátum / idő / időzóna** – mi volt a pontos dátum és idő, a hibaüzenet vonatkozott (beleértve az időzónát)?
+* **Dátum / idő / időzóna** – mi volt a pontos dátum és idő, a hibaüzenet vonatkozott (beleértve az időzónát)?
 
 Például ez az információ segít megoldani a problémát a lehető leggyorsabban.
 
@@ -59,8 +59,8 @@ Ez a szakasz hogyan Enterprise State Roaming kapcsolatos problémák diagnosztiz
 1. Csatlakozás a Windows 10 rendszerű Számítógépeken az olyan tartományhoz, amely engedélyezi a vállalati Állapothordozás, után jelentkezzen be munkahelyi fiókjával. Lépjen a **beállítások** > **fiókok** > **a szinkronizálási beállítások** és győződjön meg róla, hogy szinkronizálás és az egyéni beállításokat, és hogy felső részén a beállítások lap azt jelzi, hogy a munkahelyi fiókjával való szinkronizálását. Ellenőrizze, hogy ugyanazt a fiókot is használja a bejelentkezési fiókját **beállítások** > **fiókok** > **az adatok**. 
 1. Ellenőrizze a Szinkronizáló működését több gép közötti azáltal, hogy néhány módosítást az eredeti gépen, például a tálca áthelyezése a képernyő jobb vagy felső részén. Figyelje meg, a második gép öt percen belül propagálja a módosítást. 
 
-  * Zárolás és a zárolás feloldásához (Win + L) a képernyő a egy szinkronizálási események indítása segíthetnek.
-  * Meg kell jelentkezett ugyanazzal a fiókkal, a szinkronizáláshoz mindkét számítógépeken működnek –, a felhasználói fiók és a gép fiók nem Enterprise State Roaming kötődik.
+   * Zárolás és a zárolás feloldásához (Win + L) a képernyő a egy szinkronizálási események indítása segíthetnek.
+   * Meg kell jelentkezett ugyanazzal a fiókkal, a szinkronizáláshoz mindkét számítógépeken működnek –, a felhasználói fiók és a gép fiók nem Enterprise State Roaming kötődik.
 
 **Lehetséges probléma**: Ha a vezérlőelemek a **beállítások** lap nem érhető el, és az üzenetet látja, "egyes Windows-szolgáltatások érhetők el csak egy Microsoft-fiókjával vagy a munkahelyi fiók használata." A probléma esetlegesen felmerülő eszközökhöz, amelyek akár tartományhoz csatlakoztatott és a regisztrált az Azure ad-hez, de az eszköz még nem még sikeresen hitelesítést az Azure ad-hez. Egy lehetséges oka, hogy az eszköz szabályzatot kell alkalmazni, de ez az alkalmazás aszinkron módon történik, és néhány órával késhet. 
 

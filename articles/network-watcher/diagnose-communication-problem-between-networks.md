@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: c8d1f659078a36bc57e92b01e6e32502be7a0ea9
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a35e65237a3f4278e9154daddff328887d9f36ef
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434750"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997387"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>Oktatóanyag: Az Azure portal használatával hálózatok közötti kommunikációs probléma diagnosztizálása
 
@@ -36,8 +36,8 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 ## <a name="prerequisites"></a>Előfeltételek
 
 A VPN-diagnosztika használatához rendelkeznie kell egy meglévő, futó VPN Gatewayjel. Ha nem rendelkezik meglévő VPN Gatewayjel, amelyet diagnosztizálhatna, egy [PowerShell-szkript](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) használatával üzembe helyezhet egyet. A PowerShell-szkriptet innen futtathatja:
-    - **Egy helyi PowerShell telepítési**: A szkripthez az AzureRM PowerShell-modul verzióját 5.7.0 vagy újabb. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell telepítését](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
-    - **Az Azure Cloud Shell**: A [Azure Cloud Shell](https://shell.azure.com/powershell) telepítve és konfigurálva, a PowerShell legújabb verziója van, és naplózza, az Azure-bA.
+- **Egy helyi PowerShell telepítési**: A szkripthez az AzureRM PowerShell-modul verzióját 5.7.0 vagy újabb. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable AzureRM`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell telepítését](/powershell/azure/azurerm/install-azurerm-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Login-AzureRmAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
+- **Az Azure Cloud Shell**: A [Azure Cloud Shell](https://shell.azure.com/powershell) telepítve és konfigurálva, a PowerShell legújabb verziója van, és naplózza, az Azure-bA.
 
 A szkript nagyjából egy óra alatt hozza létre a VPN Gatewayt. A további lépések azt feltételezik, hogy a diagnosztizálni kívánt átjáró megegyezik a szkript által üzembe helyezettel. Ha saját meglévő átjáróját diagnosztizálja, az eredmények eltérőek lehetnek.
 
@@ -76,7 +76,7 @@ Ha már engedélyezve van a Network Watcher az USA keleti régiójában, folytas
     Látható, hogy a **HIBAELHÁRÍTÁSI ÁLLAPOT** **Nem kifogástalan**, illetve a probléma **Összegzése** és **Részletei** is láthatók az **Állapot** lapon.
 10. A **Művelet** lap kiválasztásakor a VPN-diagnosztika további információkkal szolgál. Az alábbi képen látható példában a VPN-diagnosztikából megtudhatja, hogy ellenőriznie kell az összes kapcsolat állapotát:
 
-  ![Műveletek](./media/diagnose-communication-problem-between-networks/action.png)
+    ![Műveletek](./media/diagnose-communication-problem-between-networks/action.png)
 
 ## <a name="diagnose-a-gateway-connection"></a>Átjárókapcsolat diagnosztizálása
 

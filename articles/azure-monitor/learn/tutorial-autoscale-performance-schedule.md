@@ -9,12 +9,12 @@ ms.date: 12/11/2017
 ms.author: ancav
 ms.custom: mvc
 ms.subservice: autoscale
-ms.openlocfilehash: 9c8803ff73b3e70c19a409ef6c1e072b5f7c8b53
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 44fecf47ccd1ce07c7e51f7bcf51ef7823f2cf97
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734268"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088349"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Automatikus méretezési beállítás Azure-erőforrásokhoz teljesítményadatok vagy ütemezés alapján
 
@@ -60,7 +60,7 @@ A következő néhány lépés segít kitölteni az automatikus skálázási ké
 2. Az alapértelmezett profilban a **Skálázási mód** legyen „Skálázás adott példányszámra”.
 3. Állítsa a példányszámot **1**-re. Ez a beállítás biztosítja, hogy ha nincs másik aktív vagy működő profil, akkor az alapértelmezett profil példányszáma visszaáll 1-re.
 
-  ![Az automatikus méretezési beállítások megnyitása](./media/tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
+   ![Az automatikus méretezési beállítások megnyitása](./media/tutorial-autoscale-performance-schedule/autoscale-setting-profile.png)
 
 
 ## <a name="create-recurrence-profile"></a>Ismétlődési profil létrehozása

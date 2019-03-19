@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ghogen
-ms.openlocfilehash: 9a9fe0a92f8a8eadbd72ae56303348413a9d10c3
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 1f90ce71084ba3acbf5a0aec5c7b8e9683323766
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42057575"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011622"
 ---
 # <a name="how-to-get-started-with-azure-table-storage-and-visual-studio-connected-services"></a>Ismerkedés az Azure Table storage és a Visual Studio csatlakoztatott szolgáltatásainak
 
@@ -27,7 +27,7 @@ Ez a cikk bemutatja, hogyan kezdheti el az Azure Table storage a Visual Studiób
 
 Az Azure Table storage szolgáltatás lehetővé teszi nagy mennyiségű strukturált adat tárolására. A szolgáltatás egy NoSQL-adattár, amely elfogadja az érkező hitelesített hívásokat belül és kívül az Azure-felhőben. Az Azure-táblák strukturált, nem relációs adatok tárolására alkalmasak. Az Azure Table storage használatával kapcsolatos további általános információkért lásd: [.NET használatával az Azure Table storage használatának első lépései](../storage/storage-dotnet-how-to-use-tables.md).
 
-Első lépésként hozzon létre egy táblát a storage-fiókban. Ez a cikk majd megjelenít egy tábla létrehozása a C#-ban, és hogyan hajthat végre alapszintű táblázat műveletek, például a hozzáadása, módosítása, olvasó és táblabejegyzéseket eltávolítása.  A kódot használja az Azure Storage ügyféloldali kódtára a .NET-hez. Az ASP.NET kapcsolatos további információkért lásd: [ASP.NET](http://www.asp.net).
+Első lépésként hozzon létre egy táblát a storage-fiókban. Ez a cikk majd megjelenít egy tábla létrehozása a C#-ban, és hogyan hajthat végre alapszintű táblázat műveletek, például a hozzáadása, módosítása, olvasó és táblabejegyzéseket eltávolítása.  A kódot használja az Azure Storage ügyféloldali kódtára a .NET-hez. Az ASP.NET kapcsolatos további információkért lásd: [ASP.NET](https://www.asp.net).
 
 Az Azure Storage API-k némelyike aszinkron, és ebben a cikkben a kód azt feltételezi, hogy az aszinkron módszereket használ. Lásd: [aszinkron programozás](https://docs.microsoft.com/dotnet/csharp/async) további információt.
 

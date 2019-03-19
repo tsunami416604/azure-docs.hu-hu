@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 4e9abb20e6548d8612bc3b59aba4f7384913d081
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: b09c80e08689768ab3e9646b7d6f60f72c33f764
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761548"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077785"
 ---
 # <a name="how-to-perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-the-azure-portal"></a>Élő streamelés Media Services segítségével többszörös sávszélességű Streamek létrehozása az Azure portal használatával  
 > [!div class="op_single_selector"]
@@ -41,18 +41,16 @@ A leggyakrabban használt streamelési alkalmazások kialakításához általáb
 
 > [!NOTE]
 > Jelenleg az élő események maximálisan ajánlott időtartama 8 óra. Ha ennél tovább futó csatornára van szüksége, lépjen velünk kapcsolatba az amslived@microsoft.com e-mail-címen.
-> 
-> 
 
 1. Csatlakoztasson egy videokamerát a számítógéphez. Indítsa el, és adja meg, amely a következő protokollok egy egyféle sávszélességű adatfolyamot küldhetnek kimenetet a helyszíni élő kódoló: RTMP vagy Smooth Streaming. További tudnivalók: [Azure Media Services RMTP-támogatása és valós idejű kódolók](https://go.microsoft.com/fwlink/?LinkId=532824)
-   
+
     Ezt a lépést a csatorna létrehozása után is elvégezheti.
 2. Hozzon létre és indítson el egy csatornát. 
 3. Kérje le a csatorna feldolgozó URL-címét. 
-   
+
     Az élő kódoló a bemeneti URL-címet használva küldi el a streamet a csatornának.
 4. Kérje le a csatorna előnézeti URL-címét. 
-   
+
     Ezen az URL használatával ellenőrizheti, hogy a csatornája megfelelően fogadja-e az élő adatfolyamot.
 5. Hozzon létre egy eseményt/programot (ezzel egy objektumot is létrehoz). 
 6. Tegye közzé az eseményt (ezzel létrehozza a kapcsolódó objektumhoz tartozó OnDemand-lokátort is).    
@@ -83,31 +81,31 @@ Az oktatóanyag elvégzésének a következők a feltételei.
 1. Az [Azure-portálon](https://portal.azure.com/) kattintson a Media Services elemre, majd Media Services-fiókja nevére.
 2. Válassza a **Live Streaming** (Élő adatfolyam) lehetőséget.
 3. Válassza a **Custom create** (Egyéni létrehozás) lehetőséget. Ez a beállítás lehetővé teszi egy olyan csatorna létrehozását, amellyel használható a Live Encoding.
-   
+
     ![Csatorna létrehozása](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-channel.png)
 4. Kattintson a **Settings** (Beállítások) lehetőségre.
-   
+
    1. Válassza ki a **Live Encoding**-csatorna típusát. Ez a típus azt jelenti, hogy élő kódolásra használható csatornát szeretne létrehozni. Ez azt jelenti, hogy a bejövő egyszeres sávszélességű streamet a rendszer elküldi a csatornára, majd az élő kódoló beállításai szerint többszörös sávszélességű streammé kódolja. További információk: [Live streaming using Azure Media Services to create multi-bitrate streams](media-services-manage-live-encoder-enabled-channels.md) (Élő streamelés az Azure Media Services segítségével többszörös sávszélességű streamek létrehozása érdekében). Kattintson az OK gombra.
    2. Adja meg a csatorna nevét.
    3. Kattintson a képernyő alján található OK gombra.
 5. Kattintson az **Ingest** (Betöltés) fülre.
-   
+
    1. Ezen a lapon választhat egy streamprotokollt. A **Live Encoding** csatornatípus esetén az érvényes protokollok a következők:
-      
+
       * Single bitrate Fragmented MP4 (Egyszeres sávszélességű, fragmentált MP4) (Smooth Streaming)
       * Single bitrate RTMP (Egyszeres sávszélességű RTMP)
-        
+
         A protokollok részletesebb leírását lásd: [Live streaming using Azure Media Services to create multi-bitrate streams](media-services-manage-live-encoder-enabled-channels.md) (Élő streamelés az Azure Media Services segítségével többszörös sávszélességű streamek létrehozása érdekében).
-        
+
         Ha a csatorna vagy a hozzá tartozó események/programok már elindultak, a protokollbeállítás nem módosítható. Ha eltérő protokollok használatára van szükség, hozzon létre külön-külön csatornákat az egyes streamprotokollokhoz.  
    2. Alkalmazhatja az IP-korlátozást a betöltésre. 
-      
+
        Megadhatja azokat az IP-címeket, amelyek jogosultak videókat betölteni erre a csatornára. Az engedélyezett IP-címek köre tartalmazhat egyetlen IP-címet (például „10.0.0.1”), vagy egy IP-tartományt, amelyet egy IP-cím és egy CIDR alhálózati maszk segítségével (például „10.0.0.1/22”), vagy egy IP-cím és egy pontozott decimális alhálózati maszk (például „10.0.0.1(255.255.252.0)”) segítségével lehet megadni.
-      
+
        Ha nem ad meg IP-címeket, és nem határoz meg szabálydefiníciót, a rendszer egyetlen IP-címet sem engedélyez. Ha az összes IP-címnek szeretne engedélyt adni, hozzon létre egy szabályt, és állítsa be a következő értéket: 0.0.0.0/0.
 6. A **Preview** (Előnézet) lapon alkalmazza az IP-korlátozást az előnézetre.
 7. Az **Encoding** (Kódolás) lapon adja meg a kódolási előbeállítást. 
-   
+
     Jelenleg kizárólag a **Default 720p** (Alapértelmezett 720p) rendszerbeállítás-készletet választhatja. Egyéni előbeállítás megadásához nyisson egy Microsoft támogatási jegyet. Ezt követően adja meg az előbeállítás Ön számára létrehozott nevét. 
 
 > [!NOTE]
@@ -153,18 +151,18 @@ Ha elvégezte a stream és a csatorna összekapcsolását, elindíthatja a strea
 Az esemény két különböző módon indítható el: 
 
 1. Új esemény hozzáadásához kattintson a **Channel** (Csatorna) oldal **Live Event** (Élő esemény) elemére.
-   
+
     Adja meg az esemény nevét, az objektum nevét, az archiválás időtartamát és a titkosítási beállítást.
-   
+
     ![program létrehozása](./media/media-services-portal-creating-live-encoder-enabled-channel/media-services-create-program.png)
-   
+
     Ha nem törli a jelet a **Publish this live event now** (Program azonnali közzététele) lehetőség mellől, a rendszer létrehozza az eseményt és a közzétételi URL-címeket.
-   
+
     Ha készen áll az esemény streamelésére, kattintson a **Start** (Indítás) gombra.
-   
+
     Az esemény elindítását követően a **Watch** (Megtekintés) gombra kattintva elindíthatja a tartalom lejátszását.
 2. Alternatív megoldásként gyorsabb utat is választhat: kattintson a **Channel** (Csatorna) oldal **Go Live** (Élő közvetítés indítása) gombjára. Ekkor létrejön az alapértelmezett objektum, program és streamelési lokátor.
-   
+
     Az eseményt a rendszer **default** néven hozza létre, és 8 órás archiválási időtartamot ad meg hozzá.
 
 A közzétett eseményt a **Live event** (Élő esemény) oldalon tekintheti meg. 

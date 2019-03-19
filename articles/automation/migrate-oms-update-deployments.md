@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 07/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6c85060e3ca566cbf9fe51904fa9bf62322075a5
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 4d11dfcb66a545cbecc80b6bdad558ca6d328ed2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436221"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999681"
 ---
 # <a name="migrate-your-oms-update-deployments-to-azure"></a>Az OMS Frissítéstelepítések migrálása az Azure-bA
 
@@ -33,7 +33,7 @@ Az OMS-munkaterületen kattintson **nyissa meg az Azure-ban**. Ugrás a Log Anal
 
 Az Azure Portalon kattintson a **Automation-fiók**
 
-![Az Azure Monitor naplóira](media/migrate-oms-update-deployments/log-analytics.png)
+![Azure Monitor-naplók](media/migrate-oms-update-deployments/log-analytics.png)
 
 Az Automation-fiókban kattintson **az Update Management** az Update Management megnyitásához.
 
@@ -64,8 +64,8 @@ Frissítendő gépek válassza ki a mentett keresésnek, használja a meglévő 
 |Frissítendő gépek |Válassza ki, mentett keresést, importált csoporthoz, vagy a legördülő listából válassza ki a gépet, és válassza ki az egyes gépek. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható.</br> Számítógépcsoportok létrehozását az Azure Monitor naplóira különböző módszereivel kapcsolatos további információkért lásd: [számítógépcsoportokat az Azure Monitor naplóira](../azure-monitor/platform/computer-groups.md) |
 |Frissítési besorolások|Válassza ki az összes szükséges. CentOS nem támogatja a beépített.|
 |Kihagyandó frissítések|Adja meg a kihagyandó frissítések. Windows, adja meg a tudásbáziscikkben nélkül a **KB-os** előtag. A Linux rendszerre adja meg a csomag nevét, vagy helyettesítő karaktert használni.  |
-|Ütemezési beállítások|Válassza ki a kezdési idejét, és válassza vagy **egyszer** vagy **ismétlődő** az ismétlődés.|| Karbantartási időszak |Frissítések beállított percek száma. Az érték nem lehet kisebb, mint 30 perc vagy 6 óra. |
-| Karbantartási időszak |Frissítések beállított percek száma. Az érték lehet nem lehet kisebb, mint 30 perc és legfeljebb 6 óra |
+|Ütemezési beállítások|Válassza ki a kezdési idejét, és válassza vagy **egyszer** vagy **ismétlődő** az ismétlődés. | 
+| Karbantartási időszak |Frissítések beállított percek száma. Az érték nem lehet kisebb, mint 30 perc vagy 6 óra. |
 | Vezérlő újraindítása| Azt határozza meg, hogyan újraindítások kell kezelni.</br>Az elérhető lehetőségek:</br>Újraindítás szükség esetén (alapértelmezett beállítás)</br>Mindig induljon újra</br>Soha ne induljon újra</br>Csak újraindítás – frissítések nem lesznek telepítve|
 
 Kattintson a **ütemezett frissítéstelepítések** a újonnan létrehozott központi telepítési állapotának megtekintéséhez.

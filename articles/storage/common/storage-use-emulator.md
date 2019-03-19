@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: b3b011d9789cbb3dcd8557eda1473b7fd2609075
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: fa5dfabeae829d52475d2e3cd6ccb123d8308c7c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454283"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013575"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Az Azure storage emulator használata a fejlesztési és tesztelési célra
 
@@ -54,7 +54,7 @@ A storage emulator első futtatásakor a helyi tároló környezet inicializál�
 A storage emulator telepítve van alapértelmezés szerint a `C:\Program Files (x86)\Microsoft SDKs\Azure\Storage Emulator`.
 
 > [!TIP]
-> Használhatja a [Microsoft Azure Storage Explorer](http://storageexplorer.com) a helyi storage emulator erőforrásokat. Keresse meg "(fejlesztés)" a "Storage-fiókok" a Storage Explorer erőforrások fában telepítve és a storage emulator elindítása után.
+> Használhatja a [Microsoft Azure Storage Explorer](https://storageexplorer.com) a helyi storage emulator erőforrásokat. Keresse meg "(fejlesztés)" a "Storage-fiókok" a Storage Explorer erőforrások fában telepítve és a storage emulator elindítása után.
 >
 
 ### <a name="initialize-the-storage-emulator-to-use-a-different-sql-database"></a>A storage emulator egy másik SQL database használata inicializálása
@@ -64,15 +64,15 @@ A storage emulator parancssori eszköz segítségével inicializálása a storag
 1. Nyissa meg a Storage Emulator konzolablakban leírtak szerint a [kezdő és a storage emulator inicializálása](#start-and-initialize-the-storage-emulator) szakaszban.
 1. A konzol ablakában írja be a következő parancsot, ahol `<SQLServerInstance>` az SQL Server-példány neve. LocalDB használatához adja meg `(localdb)\MSSQLLocalDb` , az SQL Server-példányt.
 
-  `AzureStorageEmulator.exe init /server <SQLServerInstance>`
+   `AzureStorageEmulator.exe init /server <SQLServerInstance>`
 
-  Az alábbi parancsot, amely arra utasítja az emulátor használata az alapértelmezett SQL Server-példány is használható:
+   Az alábbi parancsot, amely arra utasítja az emulátor használata az alapértelmezett SQL Server-példány is használható:
 
-  `AzureStorageEmulator.exe init /server .`
+   `AzureStorageEmulator.exe init /server .`
 
-  Vagy használhatja az alábbi parancsot, amely újrainicializálja az adatbázist az alapértelmezett LocalDB példányt:
+   Vagy használhatja az alábbi parancsot, amely újrainicializálja az adatbázist az alapértelmezett LocalDB példányt:
 
-  `AzureStorageEmulator.exe init /forceCreate`
+   `AzureStorageEmulator.exe init /forceCreate`
 
 Ezekkel a parancsokkal kapcsolatos további információkért lásd: [Storage emulator parancssori eszköz leírása](#storage-emulator-command-line-tool-reference).
 
@@ -91,7 +91,7 @@ További információ a kapcsolati karakterláncok: [konfigurálása az Azure St
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Bizonyos Azure storage ügyfélkódtáraival, például a Xamarin-klienskódtár csak egy közös hozzáférésű jogosultságkód (SAS-) hitelesítést támogatják. A SAS-jogkivonat hasonló eszköz használatával hozhat létre a [Tártallózó](http://storageexplorer.com/) vagy egy másik alkalmazás, amely támogatja a megosztott kulcsos hitelesítés.
+Bizonyos Azure storage ügyfélkódtáraival, például a Xamarin-klienskódtár csak egy közös hozzáférésű jogosultságkód (SAS-) hitelesítést támogatják. A SAS-jogkivonat hasonló eszköz használatával hozhat létre a [Tártallózó](https://storageexplorer.com/) vagy egy másik alkalmazás, amely támogatja a megosztott kulcsos hitelesítés.
 
 Azure PowerShell használatával is létrehozhat egy SAS-jogkivonatot. Az alábbi példa létrehozza az SAS-jogkivonatát blob-tárolóba teljes körű engedélyekkel:
 
@@ -281,4 +281,4 @@ Kijavítva a hiba, ahol a storage emulator visszaadó volt a `DataServiceVersion
 
 * A platformfüggetlen, Közösség által fenntartott nyílt forráskódú storage emulator kiértékelése [Azurite](https://github.com/arafato/azurite). 
 * [.NET-tel az Azure Storage-mintákat](../storage-samples-dotnet.md) számos mintakódot is használhatja, ha az alkalmazás fejlesztése mutató hivatkozásokat tartalmaz.
-* Használhatja a [Microsoft Azure Storage Explorer](http://storageexplorer.com) a Storage-fiók a felhőben, és a storage emulator erőforrásokat.
+* Használhatja a [Microsoft Azure Storage Explorer](https://storageexplorer.com) a Storage-fiók a felhőben, és a storage emulator erőforrásokat.

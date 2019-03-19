@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 01/25/2019
 ms.author: alkohli
-ms.openlocfilehash: b3d79f106554bf4a80df835ac880fbb7a72c8bfe
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 9e4308eea3384b20f21ffcf378f711a705f9f9e8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268396"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077343"
 ---
 # <a name="azure-data-box-frequently-asked-questions"></a>Azure Data Box: Gyakori kérdések
 
@@ -209,10 +209,10 @@ A.  Amint az **Adatmásolás** megrendelési állapota **befejeződöttként** j
 
 ### <a name="q-where-is-my-data-located-in-azure-after-the-upload"></a>K. A feltöltést követően hol lesznek az adataim az Azure-ban?
 A.  Attól függően, hogy az adatok blokkblob vagy lapblob vagy az Azure files a Data Box, másolja az adatokat, amikor az adatok töltenek fel az Azure Storage-fiókban a következő útvonalak egyikét.
- - `https://<storage_account_name>.blob.core.windows.net/<containername>` 
- -  `https://<storage_account_name>.file.core.windows.net/<sharename>`
+- `https://<storage_account_name>.blob.core.windows.net/<containername>` 
+- `https://<storage_account_name>.file.core.windows.net/<sharename>`
  
- Alternatív megoldásként navigálhat az Azure Storage-fiókjából is az Azure Portalon.
+  Alternatív megoldásként navigálhat az Azure Storage-fiókjából is az Azure Portalon.
 
 ### <a name="q-i-just-noticed-that-i-did-not-follow-the-azure-naming-requirements-for-my-containers-will-my-data-fail-to-upload-to-azure"></a>K. Most vettem észre, hogy nem követtem az Azure elnevezési követelményeit a tárolóim esetében. Így is fel lehet tölteni az adataimat az Azure-ba?
 A.  Ha a tároló nevének nagybetű, majd ezeket a neveket automatikusan alakulnak kisbetűs. Ha a nevek valami más szempontból nem megfelelőek (például speciális karaktereket tartalmaznak, más nyelvűek stb.) akkor a feltöltés meghiúsul. További információk a megosztások, tárolók és fájlok elnevezésének ajánlott eljárásairól:

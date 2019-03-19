@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.custom: hdinsightactive, seodec18
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 4f6f6042eaacc809b9d413ef01883987bd558507
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 4dc50de7a97055e336627e34f747a17fcedc7e58
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651605"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091545"
 ---
 # <a name="troubleshoot-apache-hbase-by-using-azure-hdinsight"></a>Az Azure HDInsight az Apache HBase hibaelhárítása
 
@@ -367,7 +367,7 @@ Ha kezdeményez az újraindítási műveletet, a HBase-régióbeli kiszolgálók
            2017-03-21 13:22:40,285 - File['/var/run/hbase/hbase-hbase-regionserver.pid'] {'action': ['delete']}
            2017-03-21 13:22:40,285 - Deleting File['/var/run/hbase/hbase-hbase-regionserver.pid']
    ```
-A hirtelen leállás miatt a port, a folyamathoz társított előfordulhat, hogy nem kell szabadítani, annak ellenére, hogy a régió kiszolgáló folyamata leállt. Ez a helyzet vezethet egy AddressBindException a régió kiszolgáló indításakor, ahogyan az a következő naplók kapcsolódnak. Ez a terület-Server.log elérési úton található a feldolgozó csomópontok, ahol a régiókiszolgálón nem indul el /var/log/hbase könyvtárában található ellenőrizheti. 
+   A hirtelen leállás miatt a port, a folyamathoz társított előfordulhat, hogy nem kell szabadítani, annak ellenére, hogy a régió kiszolgáló folyamata leállt. Ez a helyzet vezethet egy AddressBindException a régió kiszolgáló indításakor, ahogyan az a következő naplók kapcsolódnak. Ez a terület-Server.log elérési úton található a feldolgozó csomópontok, ahol a régiókiszolgálón nem indul el /var/log/hbase könyvtárában található ellenőrizheti. 
 
    ```apache
 

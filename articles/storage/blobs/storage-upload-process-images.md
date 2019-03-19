@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/26/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: 01404c89665ebfea62e7bda0e7566289bb15f2ae
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 7d06d23af8d4d4f0282f6eb743c0f47dba80e3f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300958"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58015305"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Oktatóanyag: Képadatok feltöltése a felhőbe az Azure Storage segítségével
 
@@ -258,7 +258,7 @@ Válassza ki **fájl kiválasztása** jelöljön ki egy fájlt, majd kattintson 
 A mintakódban a `post` útvonal felelős a képek blobtárolóba való feltöltéséért. Az útvonal modulok használatával segíti a feltöltés feldolgozását:
 
 - [multer](https://github.com/expressjs/multer) az útvonal-kezelő a feltöltés stratégiát valósít meg.
-- [az adatfolyam](https://github.com/sindresorhus/into-stream) alakítja át a puffer [createBlockBlobFromStream] által kért stream. ()http://azure.github.io/azure-sdk-for-node/azure-storage-legacy/latest/BlobService.html)
+- [az adatfolyam](https://github.com/sindresorhus/into-stream) alakítja át a puffer [createBlockBlobFromStream] által kért stream. ()https://azure.github.io/azure-sdk-for-node/azure-storage-legacy/latest/BlobService.html)
 
 A fájlt küld az útvonalat, mivel a fájl tartalmát a memóriában marad, amíg nem a feltölti a blobtárolóba.
 
@@ -322,7 +322,7 @@ Válassza ki **fájl kiválasztása** jelöljön ki egy fájlt, majd kattintson 
 A mintakódban a `post` útvonal felelős a képek blobtárolóba való feltöltéséért. Az útvonal modulok használatával segíti a feltöltés feldolgozását:
 
 - [multer](https://github.com/expressjs/multer) az útvonal-kezelő a feltöltés stratégiát valósít meg.
-- [az adatfolyam](https://github.com/sindresorhus/into-stream) a puffer alakít át egy stream által kért [createBlockBlobFromStream](http://azure.github.io/azure-sdk-for-node/azure-storage-legacy/latest/BlobService.html).
+- [az adatfolyam](https://github.com/sindresorhus/into-stream) a puffer alakít át egy stream által kért [createBlockBlobFromStream](https://azure.github.io/azure-sdk-for-node/azure-storage-legacy/latest/BlobService.html).
 
 A fájlt küld az útvonalat, mivel a fájl tartalmát a memóriában marad, amíg nem a feltölti a blobtárolóba.
 

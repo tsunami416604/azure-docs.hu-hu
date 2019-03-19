@@ -11,17 +11,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: bd3adaee275dbb8a705c7b0a35335385d1026eed
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 79247c4c1f26fadcd5f0291b55c9dd8d4d9aa2af
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337940"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58008821"
 ---
 # <a name="track-experiments-and-training-metrics-in-azure-machine-learning"></a>Kísérletek és az Azure Machine Learning betanítási metrikák követése
 
-Az Azure Machine Learning szolgáltatásban a kísérletek nyomon, és figyelheti a mérőszámokat javíthatják a modell létrehozását. Ebből a cikkből megtanulhatja, naplózás hozzáadása a tanítási szkriptet különféle módjai hogyan lehet elküldeni a kísérlet **start_logging** és **ScriptRunConfig**, hogyan ellenőrizheti az előrehaladását egy futó feladat, és a egy Futtatás eredményeinek megtekintése. 
-
+Az Azure Machine Learning szolgáltatásban a kísérletek nyomon, és figyelheti a mérőszámokat javíthatják a modell létrehozását. Ebből a cikkből megtudhatja, hogyan naplózás hozzáadása a tanítási szkriptet, küldje el egy kísérlet futtatása, figyelheti a futtató és egy Futtatás eredményeinek megtekintéséhez.
 
 ## <a name="list-of-training-metrics"></a>Képzési mérőszámok listája 
 
@@ -31,7 +30,7 @@ A következő metrikák hozzáadhat egy Futtatás betanítási kísérlet során
 |----|:----|:----|
 |Skaláris értékek |Függvény:<br>`run.log(name, value, description='')`<br><br>Példa:<br>Run.log ("pontossággal", 0,95) |Napló egy numerikus vagy karakterlánc értéket, a Futtatás a megadott névvel. Ennek a mutatónak tárolhatók a kísérletben a futtatási rekord a naplózási a metrika a futtató okoz.  Az azonos metrika futtató, az eredmény egy adott mérőszám vektor fontolóra belül több alkalommal bejelentkezhet.|
 |Listák|Függvény:<br>`run.log_list(name, value, description='')`<br><br>Példa:<br>Run.log_list ("pontosságú", [a 0.6-os, 0,7, 0.87]) | Jelentkezzen a Futtatás a megadott nevű értékek listáját.|
-|Sor|Függvény:<br>"run.log_row (név, leírás = None, ** kwargs)<br>Példa:<br>Run.log_row ("Keresztül X Y", x = 1, y = 0,4) | Használatával *log_row* hoz létre egy metrika több oszlopból álló kwargs leírtak szerint. Minden elnevezett paraméter generálja egy oszlop megadott értékkel.  *log_row* egyszer hívható egy hurkot, és a egy teljes táblát hozzon létre egy tetszőleges rekord, vagy több alkalommal bejelentkezni.|
+|Sor|Függvény:<br>`run.log_row(name, description=None, **kwargs)`<br>Példa:<br>Run.log_row ("Keresztül X Y", x = 1, y = 0,4) | Használatával *log_row* hoz létre egy metrika több oszlopból álló kwargs leírtak szerint. Minden elnevezett paraméter generálja egy oszlop megadott értékkel.  *log_row* egyszer hívható egy hurkot, és a egy teljes táblát hozzon létre egy tetszőleges rekord, vagy több alkalommal bejelentkezni.|
 |Tábla|Függvény:<br>`run.log_table(name, value, description='')`<br><br>Példa:<br>Run.log_table ("Keresztül X Y", {"x": [1, 2, 3], "y": [a 0.6-os, 0,7, 0.89]}) | Jelentkezzen a szótárobjektum a Futtatás a megadott névvel. |
 |Képek|Függvény:<br>`run.log_image(name, path=None, plot=None)`<br><br>Példa:<br>Run.log_image ("ROC",. lbi) | Jelentkezzen egy képet a futtatási rekord. Be-vagy képfájl a matplotlib log_image használatával a Futtatás rajz.  Ezek a lemezképek lesz látható, és a futtatási rekord összehasonlítható.|
 |Futtatás címkézése|Függvény:<br>`run.tag(key, value=None)`<br><br>Példa:<br>Run.tag ("kijelölt", "yes") | A Futtatás egy karakterláncot és egy opcionális karakterláncértéket a címkékkel.|
@@ -51,11 +50,11 @@ Mielőtt hozzáadná a naplózás és a egy kísérlet elküldése, be kell áll
 
 1. Töltse be a munkaterület. A munkaterület-konfiguráció beállításával kapcsolatos további információkért kövesse a [rövid](https://docs.microsoft.com/azure/machine-learning/service/quickstart-get-started).
 
-  ```python
-  from azureml.core import Experiment, Run, Workspace
-  import azureml.core
+   ```python
+   from azureml.core import Experiment, Run, Workspace
+   import azureml.core
   
-  ws = Workspace(workspace_name = <<workspace_name>>,
+   ws = Workspace(workspace_name = <<workspace_name>>,
                subscription_id = <<subscription_id>>,
                resource_group = <<resource_group>>)
    ```
@@ -68,57 +67,57 @@ Az alábbi példában egy egyszerű sklearn Ridge modell helyileg a helyi Jupyte
 
 1. Helyi Jupyter notebook létrehozása egy tanítási szkriptet. 
 
-  ``` python
-  # load diabetes dataset, a well-known small dataset that comes with scikit-learn
-  from sklearn.datasets import load_diabetes
-  from sklearn.linear_model import Ridge
-  from sklearn.metrics import mean_squared_error
-  from sklearn.model_selection import train_test_split
-  from sklearn.externals import joblib
+   ``` python
+   # load diabetes dataset, a well-known small dataset that comes with scikit-learn
+   from sklearn.datasets import load_diabetes
+   from sklearn.linear_model import Ridge
+   from sklearn.metrics import mean_squared_error
+   from sklearn.model_selection import train_test_split
+   from sklearn.externals import joblib
 
-  X, y = load_diabetes(return_X_y = True)
-  columns = ['age', 'gender', 'bmi', 'bp', 's1', 's2', 's3', 's4', 's5', 's6']
-  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
-  data = {
+   X, y = load_diabetes(return_X_y = True)
+   columns = ['age', 'gender', 'bmi', 'bp', 's1', 's2', 's3', 's4', 's5', 's6']
+   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
+   data = {
       "train":{"X": X_train, "y": y_train},        
       "test":{"X": X_test, "y": y_test}
-  }
-  reg = Ridge(alpha = 0.03)
-  reg.fit(data['train']['X'], data['train']['y'])
-  preds = reg.predict(data['test']['X'])
-  print('Mean Squared Error is', mean_squared_error(preds, data['test']['y']))
-  joblib.dump(value = reg, filename = 'model.pkl');
-  ```
+   }
+   reg = Ridge(alpha = 0.03)
+   reg.fit(data['train']['X'], data['train']['y'])
+   preds = reg.predict(data['test']['X'])
+   print('Mean Squared Error is', mean_squared_error(preds, data['test']['y']))
+   joblib.dump(value = reg, filename = 'model.pkl');
+   ```
 
 2. Adjon hozzá kísérlet nyomon követése az Azure Machine Learning szolgáltatás SDK használatával, és a egy megőrzött modell feltöltése rekord futtassa a kísérletet. Az alábbi kód felveszi a címkéket, naplók, a, és feltölti egy modellfájl futtassa a kísérletet.
 
-  ```python
-  # Get an experiment object from Azure Machine Learning
-  experiment = Experiment(workspace = ws, name = "train-within-notebook")
+   ```python
+   # Get an experiment object from Azure Machine Learning
+   experiment = Experiment(workspace = ws, name = "train-within-notebook")
   
-  # Create a run object in the experiment
-  run = experiment.start_logging()# Log the algorithm parameter alpha to the run
-  run.log('alpha', 0.03)
+   # Create a run object in the experiment
+   run = experiment.start_logging()# Log the algorithm parameter alpha to the run
+   run.log('alpha', 0.03)
 
-  # Create, fit, and test the scikit-learn Ridge regression model
-  regression_model = Ridge(alpha=0.03)
-  regression_model.fit(data['train']['X'], data['train']['y'])
-  preds = regression_model.predict(data['test']['X'])
+   # Create, fit, and test the scikit-learn Ridge regression model
+   regression_model = Ridge(alpha=0.03)
+   regression_model.fit(data['train']['X'], data['train']['y'])
+   preds = regression_model.predict(data['test']['X'])
 
-  # Output the Mean Squared Error to the notebook and to the run
-  print('Mean Squared Error is', mean_squared_error(data['test']['y'], preds))
-  run.log('mse', mean_squared_error(data['test']['y'], preds))
+   # Output the Mean Squared Error to the notebook and to the run
+   print('Mean Squared Error is', mean_squared_error(data['test']['y'], preds))
+   run.log('mse', mean_squared_error(data['test']['y'], preds))
 
-  # Save the model to the outputs directory for capture
-  joblib.dump(value=regression_model, filename='outputs/model.pkl')
+   # Save the model to the outputs directory for capture
+   joblib.dump(value=regression_model, filename='outputs/model.pkl')
 
-  # Take a snapshot of the directory containing this notebook
-  run.take_snapshot('./')
+   # Take a snapshot of the directory containing this notebook
+   run.take_snapshot('./')
 
-  # Complete the run
-  run.complete()
+   # Complete the run
+   run.complete()
   
-  ```
+   ```
 
 A parancsfájl végződik ```run.complete()```, amely jelöli meg a futtatást, befejezettként.  Ezt a funkciót általában interaktív notebook olyan forgatókönyvekben használatos.
 
@@ -130,33 +129,33 @@ Ebben a példában a fent sklearn Ridge alapmodell tartalmazó gyűjteménnyel b
 
 1. Hozzon létre egy tanítási szkriptet `train.py`.
 
-  ```python
-  # train.py
+   ```python
+   # train.py
 
-  import os
-  from sklearn.datasets import load_diabetes
-  from sklearn.linear_model import Ridge
-  from sklearn.metrics import mean_squared_error
-  from sklearn.model_selection import train_test_split
-  from azureml.core.run import Run
-  from sklearn.externals import joblib
+   import os
+   from sklearn.datasets import load_diabetes
+   from sklearn.linear_model import Ridge
+   from sklearn.metrics import mean_squared_error
+   from sklearn.model_selection import train_test_split
+   from azureml.core.run import Run
+   from sklearn.externals import joblib
 
-  import numpy as np
+   import numpy as np
 
-  #os.makedirs('./outputs', exist_ok = True)
+   #os.makedirs('./outputs', exist_ok = True)
 
-  X, y = load_diabetes(return_X_y = True)
+   X, y = load_diabetes(return_X_y = True)
 
-  run = Run.get_context()
+   run = Run.get_context()
 
-  X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
-  data = {"train": {"X": X_train, "y": y_train},
+   X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 0)
+   data = {"train": {"X": X_train, "y": y_train},
           "test": {"X": X_test, "y": y_test}}
 
-  # list of numbers from 0.0 to 1.0 with a 0.05 interval
-  alphas = mylib.get_alphas()
+   # list of numbers from 0.0 to 1.0 with a 0.05 interval
+   alphas = mylib.get_alphas()
 
-  for alpha in alphas:
+   for alpha in alphas:
       # Use Ridge algorithm to create a regression model
       reg = Ridge(alpha = alpha)
       reg.fit(data["train"]["X"], data["train"]["y"])
@@ -180,43 +179,43 @@ Ebben a példában a fent sklearn Ridge alapmodell tartalmazó gyűjteménnyel b
 
       print('alpha is {0:.2f}, and mse is {1:0.2f}'.format(alpha, mse))
   
-  ```
+   ```
 
 2. A `train.py` parancsfájl-hivatkozások `mylib.py` lehetővé teszi az alfa értékeknek a ridge modellben használandó listájának beolvasása.
 
-  ```python
-  # mylib.py
+   ```python
+   # mylib.py
   
-  import numpy as np
+   import numpy as np
 
-  def get_alphas():
+   def get_alphas():
       # list of numbers from 0.0 to 1.0 with a 0.05 interval
       return np.arange(0.0, 1.0, 0.05)
-  ```
+   ```
 
 3. Állítsa be a felhasználó által felügyelt helyi környezetben.
 
-  ```python
-  from azureml.core.runconfig import RunConfiguration
+   ```python
+   from azureml.core.runconfig import RunConfiguration
 
-  # Editing a run configuration property on-fly.
-  run_config_user_managed = RunConfiguration()
+   # Editing a run configuration property on-fly.
+   run_config_user_managed = RunConfiguration()
 
-  run_config_user_managed.environment.python.user_managed_dependencies = True
+   run_config_user_managed.environment.python.user_managed_dependencies = True
 
-  # You can choose a specific Python environment by pointing to a Python path 
-  #run_config.environment.python.interpreter_path = '/home/user/miniconda3/envs/sdk2/bin/python'
-  ```
+   # You can choose a specific Python environment by pointing to a Python path 
+   #run_config.environment.python.interpreter_path = '/home/user/miniconda3/envs/sdk2/bin/python'
+   ```
 
 4. Küldje el a ```train.py``` parancsfájl a felhasználó által felügyelt környezetben való futtatásához. Ez a mappa teljes szkript elküldésekor a betanításhoz, beleértve a ```mylib.py``` fájlt.
 
-  ```python
-  from azureml.core import ScriptRunConfig
+   ```python
+   from azureml.core import ScriptRunConfig
   
-  experiment = Experiment(workspace=ws, name="train-on-local")
-  src = ScriptRunConfig(source_directory = './', script = 'train.py', run_config = run_config_user_managed)
-  run = experiment.submit(src)
-  ```
+   experiment = Experiment(workspace=ws, name="train-on-local")
+   src = ScriptRunConfig(source_directory = './', script = 'train.py', run_config = run_config_user_managed)
+   run = experiment.submit(src)
+   ```
 
 ## <a name="cancel-a-run"></a>A Futtatás megszakítása
 Futtatás ésőbb elküldésekor, lemondhatja a szolgáltatásokat, akkor is, ha elvesztette az objektumhivatkozás mindaddig, amíg a kísérlet neve ismeri, és futtatási azonosítóját. 
@@ -255,12 +254,12 @@ Ha a **ScriptRunConfig** elküldéséhez metódus fut, a Futtatás, a Jupyter no
 
 1. A Jupyter widget tekintse meg a Futtatás befejeződik várakozás közben.
 
-  ```python
-  from azureml.widgets import RunDetails
-  RunDetails(run).show()
-  ```
+   ```python
+   from azureml.widgets import RunDetails
+   RunDetails(run).show()
+   ```
 
-  ![Képernyőkép a Jupyter notebook widget](./media/how-to-track-experiments/widgets.PNG)
+   ![Képernyőkép a Jupyter notebook widget](./media/how-to-track-experiments/widgets.PNG)
 
 2. **[Automatikus machine learning futtatások]**  Az előző menetből a diagramok eléréséhez. Cserélje le `<<experiment_name>>` megfelelő kísérlet nevét:
 
@@ -274,7 +273,7 @@ Ha a **ScriptRunConfig** elküldéséhez metódus fut, a Futtatás, a Jupyter no
    RunDetails(run).show()
    ```
 
-  ![A Machine Learning automatikus Jupyter notebook widget](./media/how-to-track-experiments/azure-machine-learning-auto-ml-widget.png)
+   ![A Machine Learning automatikus Jupyter notebook widget](./media/how-to-track-experiments/azure-machine-learning-auto-ml-widget.png)
 
 
 További részleteit a folyamat kattintson a folyamat a megtekintéséhez, amelyet szeretne Fedezze fel a táblázatban, és a diagramok az Azure-portálról egy előugró ablak jelenik meg.
@@ -329,17 +328,17 @@ További információk:
 
 1. Válassza ki **kísérletek** a munkaterület a bal oldali panelen.
 
-  ![Kísérlet menü képernyőképe](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_menu.PNG)
+   ![Kísérlet menü képernyőképe](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_menu.PNG)
 
 1. Jelölje ki az Önt érdeklő kísérletet.
 
-  ![Kísérlet listája](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_list.PNG)
+   ![Kísérlet listája](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_list.PNG)
 
 1. A tábla válassza ki a Futtatás száma.
 
    ![Kísérlet futtatása](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_run.PNG)
 
-1.  A tábla a modellhez, amely a kívánt vizsgálódáshoz iteráció számának kiválasztása
+1. A tábla a modellhez, amely a kívánt vizsgálódáshoz iteráció számának kiválasztása
 
    ![Kísérlet modell](./media/how-to-track-experiments/azure-machine-learning-auto-ml-experiment_model.PNG)
 
@@ -449,7 +448,7 @@ Funkció fontosság biztosít, amely jelzi, hogy milyen értékes alapdokumentá
 
 ## <a name="example-notebooks"></a>Példa notebookok
 A következő notebookok a jelen cikk fogalmait bemutatása:
-* [How-to-use-azureml/Training/train-within-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training\train-within-notebook)
+* [How-to-use-azureml/Training/train-within-notebook](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-within-notebook)
 * [How-to-use-azureml/Training/train-on-Local](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/train-on-local)
 * [How-to-use-azureml/Training/Logging-API/Logging-API.ipynb](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training/logging-api)
 

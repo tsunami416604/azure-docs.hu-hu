@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/04/2018
 ms.author: ryanwi
-ms.openlocfilehash: a030860bcef41d7276e1356553b984f55e27ae1e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 65fccada665743cf293b4ee4bb8f786a4c01c58a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55164157"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093905"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>A Stateful Services egységtesztek létrehozása
 A Service Fabric állapotalapú szolgáltatások egységtesztelés tárja, akkor nem feltétlenül kell érint a hagyományos alkalmazás vagy a tartomány-specifikus egységtesztelés gyakori hibákat. Az állapotalapú szolgáltatások esetében egységteszteket fejlesztésekor nincsenek néhány szempontot, amelyeket figyelembe kell tárolni.
@@ -42,13 +42,13 @@ Verzió 3.3.0, kezdődően [ServiceFabric.Mocks](https://www.nuget.org/packages/
 Egy teszt elrendezése részének részeként utánzatként funkcionáló replika beállítása és állapotkezelője jön létre. A replikakészlet lesz majd saját egy példányát, a tesztelt szolgáltatás minden egyes replikához. Ez lesz is saját végrehajtó életciklussal kapcsolatos események például `OnChangeRole` és `RunAsync`. A utánzatként funkcionáló állapotkezelője biztosítja az állapot a hálózatkezelőn végrehajtott valamennyi művelet futtatása, és a tényleges állapotának manager ugyanúgy tartani.
 
 1. Hozzon létre egy service gyári meghatalmazott, amely létrehozza nekünk a tesztelt szolgáltatás. Ez legyen hasonló vagy azzal megegyező módon általában találhatók a szolgáltatás gyári visszahívás `Program.cs` vagy aktor Service Fabric-szolgáltatás. Ez a következő aláírást kell követnie:
-```csharp
-MyStatefulService CreateMyStatefulService(StatefulServiceContext context, IReliableStateManagerReplica2 stateManager)
-```
+   ```csharp
+   MyStatefulService CreateMyStatefulService(StatefulServiceContext context, IReliableStateManagerReplica2 stateManager)
+   ```
 2. Hozzon létre egy példányt `MockReliableStateManager` osztály. Ez lesz utánzása az állapotkezelője folytatott mindennemű interakcióhoz.
 3. Hozzon létre egy példányt `MockStatefulServiceReplicaSet<TStatefulService>` ahol `TStatefulService` a tesztelt szolgáltatás típusa. Ezt a beállítást a #1. lépésben létrehozott delegált és a # 2 példány állapotkezelője
 4. Adja hozzá a replikákat a replikakészlethez. Adja meg a szerepkör (például az elsődleges, ActiveSecondary, IdleSecondary) és a replika azonosítója
-> Kis türelmet, a replika azonosítók! Ezek a törvény során valószínűleg használandó és vyhodnocení egy test jednotky részeit.
+   > Kis türelmet, a replika azonosítók! Ezek a törvény során valószínűleg használandó és vyhodnocení egy test jednotky részeit.
 
 ```csharp
 //service factory to instruct how to create the service instance

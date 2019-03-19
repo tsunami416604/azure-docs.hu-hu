@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 10/25/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ce6dc4cf98f2886eb4eed7049048d67599ac42e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: adad43f337d4cf026ca8f48976a9fc713fd52200
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207483"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077411"
 ---
 # <a name="enable-enterprise-state-roaming-in-azure-active-directory"></a>A vállalati állapothordozás engedélyezése az Azure Active Directoryban
 Enterprise State Roaming egy prémium szintű Azure AD vagy Enterprise Mobility + Security (EMS) licenccel rendelkező minden szervezet számára érhető el. Az Azure AD-előfizetés beszerzése További információkért lásd: a [Azure ad-ben termékoldalán](https://azure.microsoft.com/services/active-directory).
@@ -37,7 +37,7 @@ Vállalati Állapothordozás engedélyezése esetén a szervezete automatikusan 
 
 1. Válassza ki **felhasználók szinkronizálhatják a beállításokat és alkalmazásadatokat különböző eszközökön**. További információkért lásd: [eszközbeállítások konfigurálása](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal).
   
-  ![Felhasználók feliratú eszközbeállítást képe szinkronizálhatják a beállításokat és alkalmazásadatokat különböző eszközökön](./media/enterprise-state-roaming-enable/device-settings.png)
+   ![Felhasználók feliratú eszközbeállítást képe szinkronizálhatják a beállításokat és alkalmazásadatokat különböző eszközökön](./media/enterprise-state-roaming-enable/device-settings.png)
   
 Az Enterprise State Roaming szolgáltatás használata Windows 10 rendszerű eszköz az eszközt kell hitelesítenie, az Azure AD-identitás segítségével. Az Azure ad-hez csatlakoztatott eszközök esetében a felhasználó elsődleges bejelentkezési identitását az Azure AD identity, így további konfiguráció nélkül nem szükséges. A helyszíni Active Directoryt használó eszközök esetében a rendszergazda kell [konfigurálása a hibrid Azure Active Directory-hez csatlakoztatott eszközök](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-manual-steps). 
 
@@ -64,11 +64,11 @@ Kövesse az alábbi lépéseket egy felhasználó eszköz szinkronizálása áll
 
 1. A **megjelenítése**válassza **beállításokat és alkalmazásadatokat Szinkronizáló eszközöket** szinkronizálási állapotának megjelenítéséhez.
   
-  ![Eszközbeállítás szinkronizálási adatokat ábrázoló kép](./media/enterprise-state-roaming-enable/sync-status.png)
+   ![Eszközbeállítás szinkronizálási adatokat ábrázoló kép](./media/enterprise-state-roaming-enable/sync-status.png)
   
 1. Ha a felhasználó Szinkronizáló eszközöket, az eszközök láthatja itt látható módon.
   
-  ![Eszközadatok szinkronizálása Oszlopalapú képe](./media/enterprise-state-roaming-enable/device-status-row.png)
+   ![Eszközadatok szinkronizálása Oszlopalapú képe](./media/enterprise-state-roaming-enable/device-status-row.png)
 
 ## <a name="data-retention"></a>Adatmegőrzés
 A Microsoft cloud, Enterprise State Roaming használatával szinkronizált adatok megmarad, amíg manuálisan nem törli vagy addig, amíg a szóban forgó adatokat kell elavult határozza meg. 

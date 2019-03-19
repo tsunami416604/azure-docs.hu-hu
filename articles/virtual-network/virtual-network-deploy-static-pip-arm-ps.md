@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: jdial
-ms.openlocfilehash: 929378f0eea66d7f2ad7846e50bab7ab4014c010
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 422a48a3671974248e9e3258be16d3537713f762
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652866"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089998"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-powershell"></a>Hozzon létre egy virtuális gépet PowerShell-lel statikus nyilvános IP-cím
 
@@ -65,7 +65,7 @@ Az alábbi lépéseket is elvégezheti, a helyi számítógépről, vagy az Azur
    Azure hozzárendelt nyilvános IP-címet a virtuális gépet hozott létre a régióban használt címek. Letöltheti a tartományok (előtagok) listáját az Azure [nyilvános](https://www.microsoft.com/download/details.aspx?id=56519), valamint [US government](https://www.microsoft.com/download/details.aspx?id=57063), [China](https://www.microsoft.com/download/details.aspx?id=57062) és [Germany](https://www.microsoft.com/download/details.aspx?id=57064) felhője esetében.
 
 > [!WARNING]
-Ne módosítsa az IP-címbeállítások, a virtuális gép operációs rendszerén belül. Az operációs rendszer nem észleli az Azure nyilvános IP-címek. Bár a magánhálózati IP-cím beállításait az operációs rendszer is hozzáadhat, javasoljuk, hogy nem így, ha szükséges, és a csak olvasási után nem [magánhálózati IP-cím hozzáadása operációs rendszer](virtual-network-network-interface-addresses.md#private).
+> Ne módosítsa az IP-címbeállítások, a virtuális gép operációs rendszerén belül. Az operációs rendszer nem észleli az Azure nyilvános IP-címek. Bár a magánhálózati IP-cím beállításait az operációs rendszer is hozzáadhat, javasoljuk, hogy nem így, ha szükséges, és a csak olvasási után nem [magánhálózati IP-cím hozzáadása operációs rendszer](virtual-network-network-interface-addresses.md#private).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

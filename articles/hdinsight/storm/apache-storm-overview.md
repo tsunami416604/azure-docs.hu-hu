@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: ce458328967337976ed713f78ead24e2f1fcdb96
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b9c66216411f42e46cc7c7be486f6103db9c7208
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57451274"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57894597"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Mi az Azure HDInsight alatt futó Apache Storm?
 
@@ -86,7 +86,7 @@ Az új Storm-fürtök percek alatt létrehozhatók a HDInsightban. További info
 
 * __Az Azure PowerShell és az Azure klasszikus parancssori felület__: PowerShell és a klasszikus parancssori felület egyaránt biztosítanak olyan parancssori segédprogramok, használhatja a HDInsight és más Azure-szolgáltatásokhoz az ügyfél rendszerből.
 
-* __Visual Studio-integráció__: Az Azure Data Lake Tools for Visual Studio projektsablonokat létrehozása C# Storm-topológiák az SCP.Net keretrendszer használatával. A Data Lake Tools emellett megoldások üzembe helyezéséhez, figyeléséhez és felügyeletéhez is tartalmaz eszközöket a HDInsight alatt futó Stormhoz.
+* __Visual Studio-integráció__: Az Azure Data Lake Tools for Visual Studio projektsablonokat létrehozása C# Storm-topológiák az SCP.NET keretrendszer használatával. A Data Lake Tools emellett megoldások üzembe helyezéséhez, figyeléséhez és felügyeletéhez is tartalmaz eszközöket a HDInsight alatt futó Stormhoz.
 
   További információ: [C# Storm-topológiák fejlesztése a HDInsight Tools for Visual Studio szolgáltatással](apache-storm-develop-csharp-visual-studio-topology.md).
 

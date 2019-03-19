@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: sideeksh
 ms.custom: mvc
-ms.openlocfilehash: 90ebea81c37c40dc5396d2e6378c7b9af52ad23d
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: d8721f313907f0e0519dca52f5565853f1c44110
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57733114"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089700"
 ---
 # <a name="fail-back-azure-vms-between-azure-regions"></a>Nem sikerült az Azure virtuális gépek Azure-régiók között
 
@@ -23,12 +23,12 @@ A [Azure Site Recovery](site-recovery-overview.md) szolgáltatás hozzájárul a
 Ez az oktatóanyag leírja, hogyan visszavételhez egy Azure virtuális Gépen. A feladatátvétel után visszaadja a feladatokat az elsődleges régióra, amint az elérhetővé válik. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-
+> 
 > * A másodlagos virtuális gép feladat-visszavétele
 > * Ismételt védelem az elsődleges virtuális gép a másodlagos régióba
-
+> 
 > [!NOTE]
->
+> 
 > Ebben az oktatóanyagban az célja, hogy végigvezetik a felhasználókat a lépéseket a célrégió és minimális testreszabási; vissza a feladatátvétel További információ az üzemeltetés minőségének különböző szempontjait feladatátvételt, beleértve a hálózati megfontolások társított szeretne automation és a hibaelhárítás, tekintse meg a dokumentumokat a "Hogyan To" az Azure virtuális gépek.
 
 ## <a name="prerequisites"></a>Előfeltételek

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 454d06912c34a07b0b2617936769888e92adaba1
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 85dd3cca081d492bfeefa3e8ea0d143c9c37af8f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453660"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007950"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>Teljesítménnyel kapcsolatos megfontolások a Traffic Manager esetében
 
@@ -42,11 +42,11 @@ Az eszközök ezeket a helyek mérték DNS késéseket és megjelenítési a fel
 
 ## <a name="sample-tools-to-measure-dns-performance"></a>DNS-teljesítmény mérésére mintául szolgáló eszközök
 
-* [SolveDNS](http://www.solvedns.com/dns-comparison/)
+* [SolveDNS](https://www.solvedns.com/dns-comparison/)
 
     SolveDNS teljesítmény számos eszközt kínál. A DNS-összehasonlító eszköz jeleníti meg, mennyi ideig tart feloldani a DNS-nevet, és hogyan, amely összehasonlítja a más DNS-szolgáltatók.
 
-* [WebSitePulse](http://www.websitepulse.com/help/tools.php)
+* [WebSitePulse](https://www.websitepulse.com/help/tools.php)
 
     A legegyszerűbb eszközök egyik WebSitePulse. Adja meg az URL-cím DNS-feloldási idő, az első bájtig eltelt, az utolsó bájtig eltelt és a más teljesítménystatisztikáit megtekintéséhez. Három különböző teszthelyszín közül választhat. Ebben a példában láthatja, hogy az első végrehajtás jeleníti meg, hogy a DNS-címkeresés szükséges 0.204 mp-ben.
 
@@ -62,15 +62,15 @@ Az eszközök ezeket a helyek mérték DNS késéseket és megjelenítési a fel
 
     ![pulse1](./media/traffic-manager-performance-considerations/traffic-manager-web-site-watchmouse.png)
 
-* [Pingdom](http://tools.pingdom.com/)
+* [Pingdom](https://tools.pingdom.com/)
 
     Ez az eszköz egy weblap egyes elemeinek teljesítménystatisztikáit biztosít. A lap elemzési lapon láthatók a DNS-címkeresés töltött időt.
 
-* [Mi a DNS?](http://www.whatsmydns.net/)
+* [Mi a DNS?](https://www.whatsmydns.net/)
 
     Ez a hely DNS-címkeresés nem 20 különböző helyekről, és megjeleníti az eredményeket a térképen.
 
-* [Webes felület megismerésére](http://www.digwebinterface.com)
+* [Webes felület megismerésére](https://www.digwebinterface.com)
 
     Ezen a helyen jeleníti meg, beleértve a CNAME-rekordokat és a egy a rekordot a DNS-adatok részletesebb. Ellenőrizze a "Kifestés egyszínűre kimenet" és "Statisztikák" Ellenőrizze a beállítások, és válassza ki az "All" alatt delegálásához.
 
