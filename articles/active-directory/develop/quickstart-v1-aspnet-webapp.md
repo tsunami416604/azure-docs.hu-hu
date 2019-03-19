@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dcb235ab96ed8a85cbe44dd672dff004dd0a7310
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 73d762e5bb358964b439d1dc6027abc01332da21
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185316"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007614"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Gyors útmutató: Jelentkezzen be a Microsoft ASP.NET-webalkalmazás hozzáadása
 
@@ -146,7 +146,8 @@ A Visual Studióban hozzon létre egy új nézetet a bejelentkezés gomb hozzáa
 
     [!code-html[main](../../../WebApp-OpenIDConnect-DotNet/WebApp-OpenIDConnect-DotNet/Views/Home/Index.cshtml "Index.cshtml")]
 
-<!--start-collapse--> Ez a lap hozzáad egy SVG formátumú bejelentkezés gombot, fekete háttérrel:<br/>![Microsoft-bejelentkezés](./media/quickstart-v1-aspnet-webapp/aspnetsigninbuttonsample.png)<br/> A további bejelentkezés gombokért tekintse meg a [Védjegyzési útmutató az alkalmazásokhoz](howto-add-branding-in-azure-ad-apps.md) című cikket.
+<!--start-collapse-->
+Ezen a lapon fekete háttérrel SVG-formátumban ad hozzá egy bejelentkezés gombot:<br/>![Microsoft-bejelentkezés](./media/quickstart-v1-aspnet-webapp/aspnetsigninbuttonsample.png)<br/> A további bejelentkezés gombokért tekintse meg a [Védjegyzési útmutató az alkalmazásokhoz](howto-add-branding-in-azure-ad-apps.md) című cikket.
 <!--end-collapse-->
 
 ## <a name="step-7-display-users-claims-by-adding-a-controller"></a>7. lépés: Felhasználói jogcímek jelenít meg egy vezérlő hozzáadása
@@ -300,7 +301,7 @@ Emellett egy táblázatot is látni fog a hitelesítési kérésben található 
 
 Ebben a lépésben névtelen felhasználóként teszteli a Jogcímek vezérlő elérését:<br/>
 A felhasználó kijelentkeztetéséhez kattintson a hivatkozásra, és fejezze be a kijelentkezési folyamatot.<br/>
-Ezután írja be a böngészőbe a http://localhost:{port}/claims címet az `[Authorize]` attribútummal védett vezérlő eléréséhez.
+Ezután írja be a böngészőbe a `http://localhost:{port}/claims` címet az `[Authorize]` attribútummal védett vezérlő eléréséhez
 
 #### <a name="expected-results"></a>Várt eredmények
 

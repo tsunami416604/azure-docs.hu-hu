@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/24/2017
 ms.author: dekapur
-ms.openlocfilehash: df836d46f244822c8c3dd35be6de08b0c4f34038
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 681ee66ca165ece170dd2a2ce2736cf55a44f1f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760514"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104080"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Különálló fürt védelme a Windows a Windows rendszerbiztonság használatával
 Service Fabric-fürtön való illetéktelen hozzáférés megakadályozása, biztosítania kell a fürtöt. Biztonsági különösen fontos, amikor a fürt futtatása termelési számítási feladatokhoz. Ez a cikk ismerteti a csomópontok közötti és ügyfél-csomópont biztonság konfigurálása a Windows rendszerbiztonság használatával a *ClusterConfig.JSON* fájlt.  A folyamat megfelelő konfigurálás biztonsági lépésére [a Windows rendszert futtató önálló fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md). Hogyan használja a Service Fabric a Windows biztonsági kapcsolatos további információkért lásd: [fürtök – biztonsági helyzetek](service-fabric-cluster-security.md).
@@ -52,13 +52,13 @@ A minta *ClusterConfig.gMSA.Windows.MultiMachine.JSON* együtt letöltött konfi
 | **Konfigurációs beállítás** | **Leírás** |
 | --- | --- |
 | ClusterCredentialType |Állítsa be *Windows* Windows biztonsági csomópontok közötti kommunikáció engedélyezéséhez.  | 
-| ServerCredentialType |Állítsa be *Windows* Windows biztonsági kliens csomópont közötti kommunikáció engedélyezéséhez. |  
-| WindowsIdentities |A fürt és az ügyfél identitásokat tartalmaz. |  
-| ClustergMSAIdentity |Konfigurálja a csomópont a csomópont közötti biztonsághoz. A csoportosan felügyelt szolgáltatásfiók. |  
-| ClusterSPN |Csoportosan felügyelt szolgáltatásfiók egyszerű Szolgáltatásnevének regisztrált|  
-| ClientIdentities |Konfigurálja az ügyfél a csomópont közötti biztonsághoz. Ügyfél felhasználói fiókok tömbje. | 
-| Identitás |Adja hozzá a tartományi felhasználó, tartomány\felhasználónév ügyfél identitását. |  
-| IsAdmin |Adja meg, hogy a tartományi felhasználó rendszergazda ügyfél-hozzáférési és hamis értéket, az ügyfél hozzáférésének felhasználó rendelkezik-e (igaz) értékre. |  
+| ServerCredentialType |Állítsa be *Windows* Windows biztonsági kliens csomópont közötti kommunikáció engedélyezéséhez. |
+| WindowsIdentities |A fürt és az ügyfél identitásokat tartalmaz. |
+| ClustergMSAIdentity |Konfigurálja a csomópont a csomópont közötti biztonsághoz. A csoportosan felügyelt szolgáltatásfiók. |
+| ClusterSPN |Csoportosan felügyelt szolgáltatásfiók egyszerű Szolgáltatásnevének regisztrált|
+| ClientIdentities |Konfigurálja az ügyfél a csomópont közötti biztonsághoz. Ügyfél felhasználói fiókok tömbje. |
+| Identitás |Adja hozzá a tartományi felhasználó, tartomány\felhasználónév ügyfél identitását. |
+| IsAdmin |Adja meg, hogy a tartományi felhasználó rendszergazda ügyfél-hozzáférési és hamis értéket, az ügyfél hozzáférésének felhasználó rendelkezik-e (igaz) értékre. |
 
 > [!NOTE]
 > ClustergMSAIdentity érték nem szerepelhet a tartomány nevét, és csak a csoport felügyelt szolgáltatásfiók neve. I.E. "mysfgmsa" helyességét, és mindkét "tartomany / / mysfgmsa" vagy "mysfgmsa@mydomain" érvénytelenek; a tartomány a gazdagép által implicit módon.
@@ -104,10 +104,10 @@ Ez a modell hamarosan elavulttá válik. Az ajánljuk, hogy a csoportosan felüg
 
 | **Konfigurációs beállítás** | **Leírás** |
 | --- | --- |
-| ClusterCredentialType |Állítsa be *Windows* Windows biztonsági csomópontok közötti kommunikáció engedélyezéséhez.  | 
-| ServerCredentialType |Állítsa be *Windows* Windows biztonsági kliens csomópont közötti kommunikáció engedélyezéséhez. |  
-| WindowsIdentities |A fürt és az ügyfél identitásokat tartalmaz. |  
-| ClusterIdentity |Egy gép csoportnevet domain\machinegroup, használja a csomópontok közötti biztonságának konfigurálása. |  
+| ClusterCredentialType |Állítsa be *Windows* Windows biztonsági csomópontok közötti kommunikáció engedélyezéséhez.  |
+| ServerCredentialType |Állítsa be *Windows* Windows biztonsági kliens csomópont közötti kommunikáció engedélyezéséhez. |
+| WindowsIdentities |A fürt és az ügyfél identitásokat tartalmaz. |
+| ClusterIdentity |Egy gép csoportnevet domain\machinegroup, használja a csomópontok közötti biztonságának konfigurálása. |
 | ClientIdentities |Konfigurálja az ügyfél a csomópont közötti biztonsághoz. Ügyfél felhasználói fiókok tömbje. |  
 | Identitás |Adja hozzá a tartományi felhasználó, tartomány\felhasználónév ügyfél identitását. |  
 | IsAdmin |Adja meg, hogy a tartományi felhasználó rendszergazda ügyfél-hozzáférési és hamis értéket, az ügyfél hozzáférésének felhasználó rendelkezik-e (igaz) értékre. |  

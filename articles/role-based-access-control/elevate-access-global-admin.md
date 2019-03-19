@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 2a030daa8d9c30add1beb3a2628aa16b2da22dde
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: ede7037aabc85739ee47636f1390c15e0b0d1639
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338852"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106321"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Az Azure-előfizetések és a felügyeleti csoportok kezelése hozzáférési szintjének emelése
 
@@ -227,39 +227,39 @@ Meghívásakor `elevateAccess`, szerepkör-hozzárendelés hoz létre a saját m
     >[!NOTE] 
     >A directory-rendszergazda nem rendelkezhet számos hozzárendelésnél, ha az előző lekérdezést ad vissza túl sok hozzárendelések is lekérdezheti az összes hozzárendelés csak könyvtár hatókör szintjén, majd az eredmények szűréséhez: `GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
         
-    2. Az előző hívás az szerepkör-hozzárendelések listáját adja vissza. Keresse meg a szerepkör-hozzárendelés, ahol a hatókör az `"/"` és a `roleDefinitionId` végződik a szerepkör nevének azonosítója, az 1. lépésben található és `principalId` objectid azonosítóját, a directory-rendszergazda megegyezik. 
+   1. Az előző hívás az szerepkör-hozzárendelések listáját adja vissza. Keresse meg a szerepkör-hozzárendelés, ahol a hatókör az `"/"` és a `roleDefinitionId` végződik a szerepkör nevének azonosítója, az 1. lépésben található és `principalId` objectid azonosítóját, a directory-rendszergazda megegyezik. 
     
-    Szerepkör-hozzárendelés minta:
+      Szerepkör-hozzárendelés minta:
 
-        ```json
-        {
-          "value": [
-            {
-              "properties": {
-                "roleDefinitionId": "/providers/Microsoft.Authorization/roleDefinitions/18d7d88d-d35e-4fb5-a5c3-7773c20a72d9",
-                "principalId": "{objectID}",
-                "scope": "/",
-                "createdOn": "2016-08-17T19:21:16.3422480Z",
-                "updatedOn": "2016-08-17T19:21:16.3422480Z",
-                "createdBy": "93ce6722-3638-4222-b582-78b75c5c6d65",
-                "updatedBy": "93ce6722-3638-4222-b582-78b75c5c6d65"
-              },
-              "id": "/providers/Microsoft.Authorization/roleAssignments/e7dd75bc-06f6-4e71-9014-ee96a929d099",
-              "type": "Microsoft.Authorization/roleAssignments",
-              "name": "e7dd75bc-06f6-4e71-9014-ee96a929d099"
-            }
-          ],
-          "nextLink": null
-        }
-        ```
+       ```json
+       {
+         "value": [
+           {
+             "properties": {
+               "roleDefinitionId": "/providers/Microsoft.Authorization/roleDefinitions/18d7d88d-d35e-4fb5-a5c3-7773c20a72d9",
+               "principalId": "{objectID}",
+               "scope": "/",
+               "createdOn": "2016-08-17T19:21:16.3422480Z",
+               "updatedOn": "2016-08-17T19:21:16.3422480Z",
+               "createdBy": "93ce6722-3638-4222-b582-78b75c5c6d65",
+               "updatedBy": "93ce6722-3638-4222-b582-78b75c5c6d65"
+             },
+             "id": "/providers/Microsoft.Authorization/roleAssignments/e7dd75bc-06f6-4e71-9014-ee96a929d099",
+             "type": "Microsoft.Authorization/roleAssignments",
+             "name": "e7dd75bc-06f6-4e71-9014-ee96a929d099"
+           }
+         ],
+         "nextLink": null
+       }
+       ```
         
-    Ismét mentse az Azonosítót a a `name` paramétert, ebben az esetben e7dd75bc-06f6-4e71-9014-ee96a929d099.
+      Ismét mentse az Azonosítót a a `name` paramétert, ebben az esetben e7dd75bc-06f6-4e71-9014-ee96a929d099.
 
-    3. Végül a hozzáadta a hozzárendelés eltávolítása a szerepkör-hozzárendelés azonosítója `elevateAccess`:
+   1. Végül a hozzáadta a hozzárendelés eltávolítása a szerepkör-hozzárendelés azonosítója `elevateAccess`:
 
-    ```http
-    DELETE https://management.azure.com/providers/Microsoft.Authorization/roleAssignments/e7dd75bc-06f6-4e71-9014-ee96a929d099?api-version=2015-07-01
-    ```
+      ```http
+      DELETE https://management.azure.com/providers/Microsoft.Authorization/roleAssignments/e7dd75bc-06f6-4e71-9014-ee96a929d099?api-version=2015-07-01
+      ```
 
 ## <a name="next-steps"></a>További lépések
 

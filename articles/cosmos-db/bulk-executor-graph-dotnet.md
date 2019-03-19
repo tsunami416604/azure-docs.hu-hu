@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/14/2018
 ms.author: lbosq
 ms.reviewer: sngun
-ms.openlocfilehash: 2f949265e3961794e2fc4b0efbce107762a75ef7
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 5e88602aa3b983e1533248253d53967f39e6b5eb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041560"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57837524"
 ---
 # <a name="using-the-graph-bulkexecutor-net-library-to-perform-bulk-operations-in-azure-cosmos-db-gremlin-api"></a>Műveletek tömeges végrehajtása a BulkExecutor .NET-gráfkódtár használatával az Azure Cosmos DB Gremlin API-ban
 
@@ -155,6 +155,6 @@ Beállítás|Leírás
 3. Ellenőrizze az eredményeket a gráfadatbázis lekérdezésével. Ha a `ShouldCleanupOnFinish` beállítás értéke true (igaz), az adatbázis automatikusan törölve lesz.
 
 ## <a name="next-steps"></a>További lépések
-* A Nuget-csomaggal kapcsolatos további információért és a tömeges végrehajtói .NET-kódtár kibocsátási megjegyzéseiért tekintse meg [a tömeges végrehajtói SDK részleteit](sql-api-sdk-bulk-executor-dot-net.md). 
+* Kibocsátási megjegyzések tömeges végrehajtó .NET könyvtár és Nuget csomag részletes ismertetése: [végrehajtó SDK részletek tömeges](sql-api-sdk-bulk-executor-dot-net.md). 
 * A BulkExecutor használatának további optimalizálásával kapcsolatban lásd [a teljesítménnyel kapcsolatos tippeket](https://docs.microsoft.com/azure/cosmos-db/bulk-executor-dot-net#performance-tips).
 * Az ebben a névtérben definiált osztályokkal és névterekkel kapcsolatos további információért olvassa el [a BulkExecutor.Graph áttekintését tartalmazó cikket](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor.graph?view=azure-dotnet).

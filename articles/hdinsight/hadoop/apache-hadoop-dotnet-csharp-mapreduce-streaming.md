@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 130ca849b39336637f53b32043874b5d037a8f0d
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 09b652b236e1fbe68d93298f0f8793854e411aad
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342923"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58095670"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>Használat C# streamelési HDInsight az Apache hadoop MapReduce-
 
@@ -161,13 +161,13 @@ Miután létrehozta az alkalmazást, építhet ki, hogy a `/bin/Debug/reducer.ex
 
 5. Az .exe fájlok feltöltéséhez használja a következő módszerek egyikét:
 
-    * Használata egy __Azure Storage-fiók__, kattintson a Feltöltés ikonra, és keresse meg a **bin\debug** mappáját a **eseményleképező** projekt. Végül válassza ki a **mapper.exe** fájlt, és kattintson a **Ok**.
+   * Használata egy __Azure Storage-fiók__, kattintson a Feltöltés ikonra, és keresse meg a **bin\debug** mappáját a **eseményleképező** projekt. Végül válassza ki a **mapper.exe** fájlt, és kattintson a **Ok**.
 
-        ![ikon feltöltése](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/upload.png)
+       ![ikon feltöltése](./media/apache-hadoop-dotnet-csharp-mapreduce-streaming/upload.png)
     
-    * Ha használ __Azure Data Lake Storage__, kattintson a jobb gombbal egy üres területre a fájl listáján, és válassza __feltöltése__. Végül válassza ki a **mapper.exe** fájlt, és kattintson a **nyílt**.
+   * Ha használ __Azure Data Lake Storage__, kattintson a jobb gombbal egy üres területre a fájl listáján, és válassza __feltöltése__. Végül válassza ki a **mapper.exe** fájlt, és kattintson a **nyílt**.
 
-    Miután a __mapper.exe__ feltöltés befejeződött, a feltöltési folyamat esetében ismételje meg a __reducer.exe__ fájl.
+     Miután a __mapper.exe__ feltöltés befejeződött, a feltöltési folyamat esetében ismételje meg a __reducer.exe__ fájl.
 
 ## <a name="run-a-job-using-an-ssh-session"></a>A feladat futtatása: Egy SSH-munkamenet használata
 
@@ -175,32 +175,32 @@ Miután létrehozta az alkalmazást, építhet ki, hogy a `/bin/Debug/reducer.ex
 
 2. A MapReduce feladat indításához használja a következő parancsok egyikét:
 
-    * Ha használ __Data Lake Storage Gen2__ az alapértelmezett tároló:
+   * Ha használ __Data Lake Storage Gen2__ az alapértelmezett tároló:
 
-        ```bash
-        yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files abfs:///mapper.exe,abfs:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
-        ```
+       ```bash
+       yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files abfs:///mapper.exe,abfs:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
+       ```
 
-    * Ha használ __Data Lake Storage Gen1__ az alapértelmezett tároló:
+   * Ha használ __Data Lake Storage Gen1__ az alapértelmezett tároló:
 
-        ```bash
-        yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files adl:///mapper.exe,adl:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
-        ```
+       ```bash
+       yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files adl:///mapper.exe,adl:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
+       ```
     
-    * Ha használ __Azure Storage__ az alapértelmezett tároló:
+   * Ha használ __Azure Storage__ az alapértelmezett tároló:
 
-        ```bash
-        yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files wasb:///mapper.exe,wasb:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
-        ```
+       ```bash
+       yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files wasb:///mapper.exe,wasb:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
+       ```
 
-    Az alábbi lista ismerteti, hogy minden paraméter leírása:
+     Az alábbi lista ismerteti, hogy minden paraméter leírása:
 
-    * `hadoop-streaming.jar`: A jar-fájlt, amely tartalmazza a folyamatos átviteli MapReduce-szolgáltatásokat.
-    * `-files`: Hozzáadja a `mapper.exe` és `reducer.exe` fájlokat a feladatot. A `abfs:///`,`adl:///` vagy `wasb:///` előtt minden egyes fájl elérési útját a fürt alapértelmezett tárolója gyökerében.
-    * `-mapper`: Itt adhatja meg, melyik fájl leképezőjét valósítja meg.
-    * `-reducer`: Itt adhatja meg, melyik fájlt a nyomáscsökkentő valósítja meg.
-    * `-input`: A bemeneti adatok.
-    * `-output`: A kimeneti könyvtárba.
+   * `hadoop-streaming.jar`: A jar-fájlt, amely tartalmazza a folyamatos átviteli MapReduce-szolgáltatásokat.
+   * `-files`: Hozzáadja a `mapper.exe` és `reducer.exe` fájlokat a feladatot. A `abfs:///`,`adl:///` vagy `wasb:///` előtt minden egyes fájl elérési útját a fürt alapértelmezett tárolója gyökerében.
+   * `-mapper`: Itt adhatja meg, melyik fájl leképezőjét valósítja meg.
+   * `-reducer`: Itt adhatja meg, melyik fájlt a nyomáscsökkentő valósítja meg.
+   * `-input`: A bemeneti adatok.
+   * `-output`: A kimeneti könyvtárba.
 
 3. A MapReduce feladat befejezése után az eredmények megtekintéséhez használja a következő:
 

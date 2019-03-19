@@ -1,5 +1,5 @@
 ---
-title: Az Azure Application Insights OpenCensus elosztott nyomkövetési helyi továbbító |} A Microsoft docs
+title: Az Azure Application Insights OpenCensus elosztott nyomkövetési helyi továbbító (előzetes verzió) |} A Microsoft docs
 description: Elosztott előre OpenCensus-nyomkövetéseket, és az Azure Application Insights például a Python és a Go nyelvről kiterjedő
 services: application-insights
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.reviewer: nimolnar
 ms.author: mbullwin
-ms.openlocfilehash: f5f42ae5068440c3a90bf3b374238e18781b9770
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: a7efe663a75fa29a31e7157c5eab24c2973a3758
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54003373"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002827"
 ---
-# <a name="local-forwarder"></a>Helyi továbbító
+# <a name="local-forwarder-preview"></a>Helyi továbbító (előzetes verzió)
 
 Helyi továbbító egy olyan ügynök, amely gyűjti az Application Insights vagy [OpenCensus](https://opencensus.io/) használati adatok gyűjtése a különböző SDK-k és az Application insights-bA továbbítja azt. Windows és Linux alatt alkalmas állapotban. Bizonyos is futtatható a macOS, de ez nem hivatalosan támogatott jelenleg.
 
@@ -73,20 +73,20 @@ https://www.microsoft.com/net/download/dotnet-framework-runtime/net472?utm_sourc
     
 6. Győződjön meg arról, hogy a kívánt beállításokat, és, hogy a helyi továbbító figyeli a nyomkövetési adatok várt ellenőrizze, hogy a ``LocalForwarder.log`` fájlt. A fájl alján alábbi képen láthatóhoz hasonló eredményt kell megjelennie:
 
-    ![Képernyőkép a LocalForwarder.log fájl](./media/opencensus-local-forwarder/003-log-file.png)
+    ![Screenshot of LocalForwarder.log file](./media/opencensus-local-forwarder/003-log-file.png)
 
 #### <a name="console-application"></a>Konzolalkalmazás
 
 Az egyes használati esetek, érdemes lehet helyi továbbító futtathat egy konzolalkalmazást. A kiadás tartalma a konzol gazdakörnyezetét végrehajtható következő verziói:
 * .NET Core keretrendszert-függő bináris */ConsoleHost/publish/Microsoft.LocalForwarder.ConsoleHost.dll*. Egy .NET Core runtime kell telepíteni; a bináris futtatásához szükség van. Tekintse meg a letöltési [oldal](https://www.microsoft.com/net/download/dotnet-core/2.1) részleteiről.
-```batchfile
-E:\uncdrop\ConsoleHost\publish>dotnet Microsoft.LocalForwarder.ConsoleHost.dll
-```
-* bináris fájlok x86 és x64 platformokon önálló .NET Core készlete. Ezek nem igénylik a .NET Core runtime futtatásához. */ConsoleHost/Win-x86/publish/Microsoft.LocalForwarder.ConsoleHost.exe*, */ConsoleHost/win-x64/publish/Microsoft.LocalForwarder.ConsoleHost.exe*.
-```batchfile
-E:\uncdrop\ConsoleHost\win-x86\publish>Microsoft.LocalForwarder.ConsoleHost.exe
-E:\uncdrop\ConsoleHost\win-x64\publish>Microsoft.LocalForwarder.ConsoleHost.exe
-```
+  ```batchfile
+  E:\uncdrop\ConsoleHost\publish>dotnet Microsoft.LocalForwarder.ConsoleHost.dll
+  ```
+* bináris fájlok x86 és x64 platformokon önálló .NET Core készlete. Ezek nem igénylik a .NET Core runtime futtatásához. */ConsoleHost/win-x86/publish/Microsoft.LocalForwarder.ConsoleHost.exe*, */ConsoleHost/win-x64/publish/Microsoft.LocalForwarder.ConsoleHost.exe*.
+  ```batchfile
+  E:\uncdrop\ConsoleHost\win-x86\publish>Microsoft.LocalForwarder.ConsoleHost.exe
+  E:\uncdrop\ConsoleHost\win-x64\publish>Microsoft.LocalForwarder.ConsoleHost.exe
+  ```
 
 ### <a name="linux"></a>Linux
 
@@ -97,7 +97,7 @@ Csakúgy, mint a Windows, a kiadás tartalma a konzol gazdakörnyezetét végreh
 dotnet Microsoft.LocalForwarder.ConsoleHost.dll
 ```
 
-* egy önálló .NET Core for linux-64 bináris fájlok készlete. Ez egy .NET Core runtime futtatásához nincs szükség. */ConsoleHost/Linux-x64/publish/Microsoft.LocalForwarder.ConsoleHost*.
+* egy önálló .NET Core for linux-64 bináris fájlok készlete. Ez egy .NET Core runtime futtatásához nincs szükség. */ConsoleHost/linux-x64/publish/Microsoft.LocalForwarder.ConsoleHost*.
 
 ```batchfile
 user@machine:~/ConsoleHost/linux-x64/publish$ sudo chmod +x Microsoft.LocalForwarder.ConsoleHost

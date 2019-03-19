@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2886dbafe6bf20718f4e3cd2976764fc432dbb04
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 92a5f7c058904015cb22a239b7e7c4938ae1fdae
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44021752"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57895252"
 ---
-# <a name="microsoftcommonfileupload-ui-element"></a>Microsoft.Common.FileUpload felhasználói felületi elemben
+# <a name="microsoftcommonfileupload-ui-element"></a>Microsoft.Common.FileUpload UI element
 Egy olyan vezérlőelem, amely lehetővé teszi a felhasználóknak adjon meg egy vagy több fájlt feltölteni.
 
 ## <a name="ui-sample"></a>Felhasználói felület minta
@@ -48,7 +48,7 @@ Egy olyan vezérlőelem, amely lehetővé teszi a felhasználóknak adjon meg eg
 ```
 
 ## <a name="remarks"></a>Megjegyzések
-- `constraints.accept` fájltípusok látható a böngészőben vyhledání souboru meghatározza. Tekintse meg a [HTML5-specifikációt](http://www.w3.org/TR/html5/forms.html#attr-input-accept) az engedélyezett értékek. Az alapértelmezett érték **null**.
+- `constraints.accept` fájltípusok látható a böngészőben vyhledání souboru meghatározza. Tekintse meg a [HTML5-specifikációt](https://www.w3.org/TR/html5/forms.html#attr-input-accept) az engedélyezett értékek. Az alapértelmezett érték **null**.
 - Ha `options.multiple` értékre van állítva **igaz**, a felhasználó számára engedélyezett a böngésző fájl párbeszédpanelen válassza ki a egynél több fájlt. Az alapértelmezett érték **hamis**.
 - Ez az elem értéke alapján két módban támogatja a fájlokat tölthet fel `options.uploadMode`. Ha **fájl** van megadva, a kimenet tartalmaz a blob, fájl tartalmát. Ha **URL-cím** van megadva, akkor a fájlt töltenek fel egy ideiglenes helyre, és a kimenet tartalmaz a blob URL-CÍMÉT. Ideiglenes blobok 24 óra múlva lesz kiürítve. Az alapértelmezett érték **fájl**.
 - A feltöltött fájl védelmét. A kimeneti URL-cím tartalmazza egy [SAS-jogkivonat](../storage/common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) üzembe helyezés során a fájl eléréséhez.

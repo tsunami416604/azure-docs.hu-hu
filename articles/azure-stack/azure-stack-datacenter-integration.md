@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 03/14/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 09/12/2018
-ms.openlocfilehash: 5ececb2d3c52a1da8c1a537e6223f17a9b83921f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1c21cc778ed398c28077ef1a20ebbb7b295c2baa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207534"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012400"
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>Azure Stack integrált rendszerek adatközpont integrációja szempontjai
 Ha érdeklik az Azure Stackkel integrált rendszereknél, tisztában kell lennie a főbb tervezési megfontolások körül a rendszerbe állítás és az hogyan illeszkedik a a rendszer az adatközpontban. Ez a cikk segítséget nyújt az Azure Stack több csomópontos rendszerének fontos infrastruktúra döntéseket ezeket a szempontokat magas szintű áttekintést nyújt. A felsorolt szempontok megismerése segít az használatakor a számítógép-Gyártói hardver gyártójától, azok az Azure Stack üzembe helyezése a helyi adatközpontban.  
@@ -162,7 +162,7 @@ A következő táblázat összefoglalja a jelenleg rendelkezésre álló beáll�
 | Terület | Külső figyelő megoldás |
 | -- | -- |
 | Az Azure Stack szoftver | [Az Azure Stack felügyeleti csomag az Operations Manager](https://azure.microsoft.com/blog/management-pack-for-microsoft-azure-stack-now-available/)<br>[Nagios-beépülő modul](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details)<br>REST-alapú API-hívások | 
-| Fizikai kiszolgálók (bmc-k IPMI-n keresztül) | OEM hardver – Operations Manager szállító felügyeleti csomag<br>OEM hardvert gyártó által biztosított megoldás<br>Hardver szállítójával Nagios beépülő modulok | OEM-partner által támogatott figyelési megoldáshoz (tartalmazza) | 
+| Fizikai kiszolgálók (bmc-k IPMI-n keresztül) | OEM hardver – Operations Manager szállító felügyeleti csomag<br>OEM hardvert gyártó által biztosított megoldás<br>Hardver szállítójával Nagios beépülő modulokat.<br>OEM-partner által támogatott figyelési megoldáshoz (tartalmazza) | 
 | Hálózati eszközök (SNMP) | Az Operations Manager hálózati eszközök felderítése<br>OEM hardvert gyártó által biztosított megoldás<br>Nagios kapcsoló beépülő modul |
 | Bérlő előfizetési állapotfigyelés | [A System Center Management Pack for Windows Azure](https://www.microsoft.com/download/details.aspx?id=50013) | 
 |  |  | 

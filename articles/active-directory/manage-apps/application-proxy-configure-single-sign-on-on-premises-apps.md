@@ -16,16 +16,16 @@ ms.author: celested
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a6f385cae99e5bb605b75f84e642e17e01d0f54
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: ef5679ba2a6a62955f5402e8bfaa4f1884df722d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792887"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57840596"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy-preview"></a>SAML egyszeri bejelentkezést az alkalmazásproxy (előzetes verzió) használatával a helyszíni alkalmazások
 
-Egyszeri bejelentkezés (SSO) biztosíthatja a helyszíni alkalmazásokat, amelyeket az SAML-hitelesítés alkalmazásproxyn keresztül közzétett. SAML egyszeri bejelentkezéshez, az Azure Active Directory (Azure AD) hitelesíti magát az alkalmazást a felhasználó Azure AD-fiók használatával. Azure ad-ben a bejelentkezési adatait az alkalmazás egy kapcsolat protokollon keresztül kommunikál. SAML-alapú egyszeri bejelentkezés, a felhasználók leképezheti a SAML-jogcímek az meghatározott szabályok alapján adott alkalmazás-szerepkörökhöz.
+Az SAML-hitelesítés biztonságosak, és ezeket az alkalmazásokat alkalmazásproxyn keresztül távoli elérést biztosíthat a helyszíni alkalmazásokhoz biztosíthat egyszeri bejelentkezés (SSO). SAML egyszeri bejelentkezéshez, az Azure Active Directory (Azure AD) hitelesíti magát az alkalmazást a felhasználó Azure AD-fiók használatával. Azure ad-ben a bejelentkezési adatait az alkalmazás egy kapcsolat protokollon keresztül kommunikál. Felhasználók is leképezheti az SAML-jogcímek az meghatározott szabályok alapján adott alkalmazás-szerepkörökhöz. Alkalmazásproxy mellett SAML egyszeri bejelentkezés engedélyezésével a felhasználók hozzáférhetnek külső az alkalmazás és a egy zökkenőmentes egyszeri Bejelentkezéses felhasználói élmény.
 
 Az alkalmazások által kiállított SAML-jogkivonatokat használják képesnek kell lennie **Azure Active Directory**. Ez a konfiguráció egy helyszíni identitásszolgáltatót használó alkalmazások nem vonatkozik. Ebben az esetben ajánlott áttekinteni [erőforrások áttelepítése az Azure AD-alkalmazások](migration-resources.md).
 
@@ -50,12 +50,12 @@ Fog az oktatóanyag során vegye figyelembe a következőket:
 1. Válassza ki **SAML** egyszeri bejelentkezési módszert.
 1. Az a **állítsa be egyszeri bejelentkezést az SAML** lapon, a Szerkesztés a **alapszintű SAML-konfigurációja** adatokat, és kövesse a [Enter alapszintű SAML-konfigurációja](configure-single-sign-on-non-gallery-applications.md#saml-based-single-sign-on) SAML-alapú konfigurálása az alkalmazás hitelesítést.
 
-    * Győződjön meg arról, hogy a **válasz URL-cím** legfelső szintű megegyezik, vagy az elérési út alapján a **külső URL-cím** a helyszíni alkalmazás, amely az Azure AD-alkalmazásproxyn keresztül távoli hozzáféréshez hozzáadott.
+   * Győződjön meg arról, hogy a **válasz URL-cím** legfelső szintű megegyezik, vagy az elérési út alapján a **külső URL-cím** a helyszíni alkalmazás, amely az Azure AD-alkalmazásproxyn keresztül távoli hozzáféréshez hozzáadott.
 
-    ![Alapszintű SAML-konfigurációs adatok megadása](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
+     ![Alapszintű SAML-konfigurációs adatok megadása](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
 
-    > [!NOTE]
-    > Ha a háttéralkalmazás vár a **válasz URL-cím** a saját alkalmazások biztonságos bejelentkezési bővítménye telepítéséhez a felhasználók eszközeire kell lennie a belső URL-cím,. Ezzel a bővítménnyel automatikusan átirányítja a megfelelő Application Proxy szolgáltatáshoz. A bővítmény telepítése: [saját alkalmazások biztonságos bejelentkezési bővítménye](../user-help/active-directory-saas-access-panel-introduction.md#my-apps-secure-sign-in-extension).
+     > [!NOTE]
+     > Ha a háttéralkalmazás vár a **válasz URL-cím** a saját alkalmazások biztonságos bejelentkezési bővítménye telepítéséhez a felhasználók eszközeire kell lennie a belső URL-cím,. Ezzel a bővítménnyel automatikusan átirányítja a megfelelő Application Proxy szolgáltatáshoz. A bővítmény telepítése: [saját alkalmazások biztonságos bejelentkezési bővítménye](../user-help/active-directory-saas-access-panel-introduction.md#my-apps-secure-sign-in-extension).
 
 ## <a name="test-your-app"></a>Az alkalmazás tesztelése
 

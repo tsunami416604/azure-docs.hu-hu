@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 4fa8e28d9ccc16482ca937a220eae83e282da7e9
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 2b801df6036566840dd96bde0801ab018d0614b5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210029"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103094"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>A Hyper-V virtuális gépek vészhelyreállítása egy másodlagos helyre támogatási mátrix
 
@@ -109,7 +109,7 @@ Helyezze át a tárolók több erőforráscsoportban (belül vagy előfizetések
 A szolgáltató koordinálja a VMM-kiszolgálók közötti kommunikációt. 
 
 **legfrissebb** | **Frissítések**
---- | --- | --- | --- | ---
+--- | --- 
 5.1.19 ([portálról érhető el](https://aka.ms/downloaddra) | [Legújabb funkciókkal és javításokkal](https://support.microsoft.com/kb/3155002)
 
 

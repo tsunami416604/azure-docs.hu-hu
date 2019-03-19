@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: eb16778e0e7050dfda92fcc1b92afffe5860268d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 0790b7d5280b3fdf26c34c3903a6257d21bc877c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767583"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835832"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Eszköz csatlakoztatása az Azure IoT Central
 
@@ -33,9 +33,9 @@ A DPS használatával a következőket:
 A cikkben található útmutató ismerteti a következő négy használati esetek:
 
 1. [Gyorsan kapcsolatba léphet egy adott eszköz SAS használatával](#connect-a-single-device)
-1. [SAS használatával nagy mennyiségű eszköz csatlakoztatása](#connect-devices-at-scale-using-shared-access-signatures)
+1. SAS használatával nagy mennyiségű eszköz csatlakoztatása
 1. [X.509-tanúsítványok használatával nagy mennyiségű eszköz csatlakoztatása](#connect-devices-using-x509-certificates) Ez az az ajánlott módszer az éles környezetekhez.
-1. [Csatlakozzon az első regisztráló eszközök nélkül](#connect-without-first-registering-devices) 
+1. Csatlakozzon az első regisztráló eszközök nélkül 
 
 ## <a name="connect-a-single-device"></a>Egyetlen eszköz csatlakoztatása
 
@@ -69,7 +69,7 @@ Az IoT-központ alkalmazását egy nagy számú regisztrálásához használja a
 Az importált eszközök kapcsolati adatainak lekéréséhez [CSV-fájlba exportálhat az IoT-központ alkalmazás](howto-manage-devices.md#export-devices).
 
 > [!NOTE]
-> Ha szeretné megtudni, hogyan kapcsolódhatnak eszközök nélkül első regisztrálja őket az IoT-központ, lásd: [első regisztráló eszközök nélkül Connect](#connect-without-first-registering-devices).
+> Ismerje meg, hogyan kapcsolódhatnak eszközök nélkül első regisztrálja őket az IoT-központ, lásd: Connect első regisztráló eszközök nélkül.
 
 ### <a name="set-up-your-devices"></a>Az eszközök beállítása
 

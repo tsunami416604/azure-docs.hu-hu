@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe781802309ad0945eaee23c35dda1617e47ae06
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: a898b5b235099109fcfeaaa4d647493e54caf57e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727349"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57853171"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>Egy Azure AD katalógusából származó alkalmazás hozzáadása során
 
@@ -73,41 +73,41 @@ Az alábbi leírásokat, az értesítések kapcsolatos további részletekért t
 
 ### <a name="essential-notification-items"></a>Fontos értesítés elemek
 
--   **Cím** – a leíró címet az értesítés
+- **Cím** – a leíró címet az értesítés
 
   * Példa – **alkalmazásproxy-beállítások**
 
--   **Leírás** – Mi történt a művelet leírása
+- **Leírás** – Mi történt a művelet leírása
 
-    -   Példa – **megadott belső URL-címet már használja egy másik alkalmazás**
+  -   Példa – **megadott belső URL-címet már használja egy másik alkalmazás**
 
--   **Értesítés azonosítója** – az értesítés egyedi azonosítója
+- **Értesítés azonosítója** – az értesítés egyedi azonosítója
 
-    -   Példa – **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
+  -   Példa – **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
 
--   **Ügyfélkérés azonosítója** – a megadott kérés azonosítója, a böngésző által készített
+- **Ügyfélkérés azonosítója** – a megadott kérés azonosítója, a böngésző által készített
 
-    -   Example – **302fd775-3329-4670-a9f3-bea37004f0bc**
+  -   Example – **302fd775-3329-4670-a9f3-bea37004f0bc**
 
--   **Szolgáltatásblokk UTC idő** – az időbélyeg, amely során az értesítés történt (UTC)
+- **Szolgáltatásblokk UTC idő** – az időbélyeg, amely során az értesítés történt (UTC)
 
-    -   Példa – **2017-03-23T19:50:43.7583681Z**
+  -   Példa – **2017-03-23T19:50:43.7583681Z**
 
--   **Belső Tranzakcióazonosító** – belső azonosítója használhatjuk rendszereinkben keresse ki a hibát
+- **Belső Tranzakcióazonosító** – belső azonosítója használhatjuk rendszereinkben keresse ki a hibát
 
-    -   Example – **71a2f329-ca29-402f-aa72-bc00a7aca603**
+  -   Example – **71a2f329-ca29-402f-aa72-bc00a7aca603**
 
--   **Egyszerű felhasználónév** – a műveletet végrehajtó felhasználó
+- **Egyszerű felhasználónév** – a műveletet végrehajtó felhasználó
 
-    -   – Példa **tperkins@f128.info**
+  -   Példa – **tperkins\@f128.info**
 
--   **Bérlőazonosító** –, amelyek a műveletet végrehajtó felhasználó tagja volt. a bérlő egyedi azonosítója
+- **Bérlőazonosító** –, amelyek a műveletet végrehajtó felhasználó tagja volt. a bérlő egyedi azonosítója
 
-    -   Example – **7918d4b5-0442-4a97-be2d-36f9f9962ece**
+  -   Example – **7918d4b5-0442-4a97-be2d-36f9f9962ece**
 
--   **Felhasználói objektum azonosítója** – a műveletet végrehajtó felhasználó egyedi azonosítója
+- **Felhasználói objektum azonosítója** – a műveletet végrehajtó felhasználó egyedi azonosítója
 
-    -   Példa – **17f84be4-51f8-483a-b533-383791227a99**
+  -   Példa – **17f84be4-51f8-483a-b533-383791227a99**
 
 ### <a name="detailed-notification-items"></a>Részletes értesítési elemek
 
@@ -125,7 +125,7 @@ Az alábbi leírásokat, az értesítések kapcsolatos további részletekért t
 
 -   **Részletek** – a részletes Mi történt a művelet leírása
 
-    -   Példa – **belső URL-cím "https://bing.com/" értéke érvénytelen, mert már használatban van**
+    -   Példa – **belső URL-cím `https://bing.com/` érvénytelen, mert már használatban van**
 
 -   **Másolási hiba** – kattintson a **másolás ikonra** jobb oldalán a **hiba másolása** szövegmező másolása vagy a termékverzió támogatási csoport megosztása az összes értesítés részletei 
 -   mérnök

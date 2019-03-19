@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: 1968c0ee44458cdef47f6118c50e876d52a74f24
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/12/2019
+ms.openlocfilehash: 851722838b4f22b1f193823af0b9b018106e9308
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316540"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838765"
 ---
 # <a name="azure-sql-database-servers-and-their-management"></a>Az Azure SQL Database-kiszolgálók és azok kezelése
 
@@ -83,6 +83,8 @@ Létező adatbázis kezeléséhez, lépjen a **SQL-adatbázisok** lapon, majd ka
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-powershell"></a>Kezelheti az Azure SQL-kiszolgálók, adatbázisok és tűzfalak a PowerShell használatával
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> A PowerShell Azure Resource Manager-modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés Az.Sql modul. Ezeket a parancsmagokat lásd: [azurerm.SQL-hez](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). A parancsok a Az modul, és az AzureRm-modulok argumentumainak lényegében megegyeznek.
 
 Létrehozása és kezelése az Azure SQL server, adatbázisok és tűzfalak az Azure PowerShell használatával, a következő PowerShell-parancsmagokat használja. Ha telepíteni vagy frissíteni a PowerShell, lásd: kell [Azure PowerShell-modul telepítését](/powershell/azure/install-az-ps). Rugalmas készletek kezelése és létrehozása: [rugalmas készletek](sql-database-elastic-pool.md).
 

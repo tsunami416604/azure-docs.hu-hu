@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 3cf71de72a6005c59d76e2d88059a1ae16ec2970
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 5814e05aa65bf005a3156aa75e65747bbd46733c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817473"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58171057"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Ismert problémák és hibaelhárítás az Azure Machine Learning szolgáltatás
 
@@ -45,6 +45,7 @@ Kép készítése hiba a webszolgáltatás üzembe helyezésekor. Megkerülő me
 Ha az erőforrásigények `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`, a Termékváltozat módosítása a virtuális gépek, hogy a rendszer több memória áll rendelkezésre a központi telepítésben használja.
 
 ## <a name="fpgas"></a>FPGA-k
+
 Nem lesz képes FPGA-kban a modellek üzembe helyezése, amíg nem kérte, és az FPGA kvóta jóvá lett hagyva. Hozzáférés kérése, töltse ki az űrlap kvóta: https://aka.ms/aml-real-time-ai
 
 ## <a name="databricks"></a>Databricks
@@ -52,23 +53,52 @@ Nem lesz képes FPGA-kban a modellek üzembe helyezése, amíg nem kérte, és a
 Databricks és az Azure Machine Learning problémákat.
 
 ### <a name="failure-when-installing-packages"></a>Ha a csomagok telepítése sikertelen
-Az Azure Machine Learning SDK telepítésével a Databricks további csomagok telepítése során. Egyes csomagokat, mint például `psutil`, ütközéseket okozhat. Telepítési hibák elkerülése érdekében fagyasztási lib verzió csomagok telepítéséhez. Ez a probléma kapcsolatos Databricks és az Azure Machine Learning szolgáltatás SDK - fellépő, a többi libs túl. Példa:
-   ```python
-   pstuil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
+
+Az Azure databricks szolgáltatásban Azure Machine Learning SDK telepítése sikertelen lesz, ha további csomagok telepítése. Egyes csomagokat, mint például `psutil`, ütközéseket okozhat. Telepítési hibák elkerülése érdekében telepítse csomagok fagy a tár verzióját. A probléma a databricks és az Azure Machine Learning szolgáltatás SDK-t, nem kapcsolódik. A probléma, további kódtárak túl Ön is szembesülhet. Példa:
+
+```python
+pstuil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
+```
+
+Azt is megteheti parancsprogramokkal init Ha, tartsa telepítési problémák Python-kódtárakat. Ez a megközelítés hivatalosan nem támogatott. További információkért lásd: [fürthatókörös init parancsfájlok](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts).
+
+### <a name="cancel-an-automated-machine-learning-run"></a>Egy automatizált machine learning-Futtatás megszakítása
+
+Automatizált machine learning-funkciók az Azure Databricks használata esetén egy Futtatás megszakítása, és futtatja, új kísérlet indításához indítsa újra az Azure Databricks-fürt.
+
+### <a name="10-iterations-for-automated-machine-learning"></a>> 10 ismétlések automatizált machine Learning
+
+Automatizált machine learning beállításait, ha több mint 10 ismétlések állítsa `show_output` való `False` amikor közzétételre küld be a Futtatás.
+
+### <a name="widget-for-the-azure-machine-learning-sdkautomated-machine-learning"></a>Az Azure Machine Learning SDK/automatikus gépi tanulási widget
+
+Az Azure Machine Learning SDK widget nem támogatott a Databricks-jegyzetfüzet, mert a notebookok nem tudja értelmezni a HTML-widgetek. A widget a portálon tekintheti meg az Azure Databricks-jegyzetfüzet cella a Python-kód használatával:
+
+```
+displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
+```
+
+### <a name="import-error-no-module-named-pandascoreindexes"></a>Importálási hiba: Nincs "pandas.core.indexes" nevű modul
+
+Ha ezt a hibaüzenetet használatakor automatikus gépi tanulás:
+
+1. Két csomag telepítése az Azure Databricks-fürt a következő parancs futtatásával: 
+
    ```
-Azt is megteheti parancsprogramokkal init Ha, tartsa install Python libs kapcsolatos problémák. Ez a módszer nem hivatalosan támogatott megközelítést. Olvassa el [feljegyzett](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts).
+   scikit-learn==0.19.1
+   pandas==0.22.0
+   ```
 
-### <a name="cancel-an-automated-ml-run"></a>Egy automatizált ML-Futtatás megszakítása
-A Databricks, gépi tanulási funkciók használatával automatikus, ha azt szeretné, egy Futtatás megszakítása, és a egy új kísérlet futtatása elindításához, indítsa újra az Azure Databricks-fürt.
+1. Válassza le, és mellékelje a notebookot a fürt. 
 
-### <a name="10-iterations-for-automated-ml"></a>> 10 ismétlések automatizált gépi tanulás
-Automatizált ml beállításait, ha több mint 10 ismétlések, állítsa be `show_output` való `False` amikor közzétételre küld be a Futtatás.
-
+Ha ez nem oldja meg a probléma, indítsa újra a fürtöt.
 
 ## <a name="azure-portal"></a>Azure Portal
+
 Ha közvetlenül a munkaterületet egy megosztás hivatkozás az SDK-t vagy a portálon megtekintheti, nem kell az előfizetési adatok normál Áttekintés lapján megtekintheti a bővítmény a. Még nem tud váltani egy másik munkaterületre. Megtekintheti egy másik munkaterülethez van szüksége, a megoldás-e közvetlenül a [az Azure portal](https://portal.azure.com) , és keresse meg a munkaterület nevét.
 
 ## <a name="diagnostic-logs"></a>Diagnosztikai naplók
+
 Egyes esetekben hasznos lehet, ha a diagnosztikai adatok segítség kérése során megadhatja.
 Itt látható, ahol a naplófájlok élő:
 

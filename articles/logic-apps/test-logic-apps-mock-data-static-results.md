@@ -8,13 +8,13 @@ author: kevinlam1
 ms.author: klam
 ms.reviewer: estfan, LADocs
 ms.topic: article
-ms.date: 03/12/2019
-ms.openlocfilehash: 23cce4d846cdf183f41b25663ba21d3bf1d27013
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.date: 03/18/2019
+ms.openlocfilehash: 0fbe56ceeeba71bcbb5ef358cd66de15e36508fc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791000"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58165096"
 ---
 # <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>Statikus eredmények beállításával próbaadatokat rendelkező logikai alkalmazások tesztelése
 
@@ -67,9 +67,7 @@ Például ha úgy állítja be az Outlook 365-höz készült statikus eredménye
 
    ![Ábrázoló ikon engedélyezve van a statikus eredmények](./media/test-logic-apps-mock-data-static-results/static-results-enabled.png)
 
-   A logikai alkalmazás fut, a logikai alkalmazás futtatási előzményei, miután a **statikus eredmények** az oszlopban látható, hogy tartalmazza-e egy adott futtatás, amelyeken engedélyezve van, például statikus eredmények műveletek:
-
-   ![Előzmények – statikus eredmények oszlop](./media/test-logic-apps-mock-data-static-results/run-history.png)
+   Korábbi futtatásokból próbaadatokat használó talál [statikus eredményeket használó futtatások keresése](#find-runs-mock-data) jelen témakör későbbi részében.
 
 <a name="reuse-sample-outputs"></a>
 
@@ -79,7 +77,7 @@ Ha a logikai alkalmazás egy korábbi futtassa a kimenetek utánzatként funkcio
 
 1. Ha még nem tette, az a [az Azure portal](https://portal.azure.com), nyissa meg a logikai alkalmazás a Logic Apps Designerben.
 
-1. A logikai alkalmazás fő menüjéből válassza **áttekintése**. 
+1. A logikai alkalmazás fő menüjéből válassza **áttekintése**.
 
 1. Az a **futtatási előzmények** szakaszban jelölje be a logikai alkalmazás futtatási Ön szeretné.
 
@@ -106,6 +104,26 @@ Ha a logikai alkalmazás egy korábbi futtassa a kimenetek utánzatként funkcio
    ![JSON-mód](./media/test-logic-apps-mock-data-static-results/json-editing-mode.png)
 
 1. Ha elkészült, válassza a **Kész** lehetőséget. Vagy, térjen vissza a tervezőben, válassza a **kapcsoló szerkesztő módra** (![válassza "A szerkesztő mód váltása"](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png)).
+
+<a name="find-runs-mock-data"></a>
+
+## <a name="find-runs-that-use-static-results"></a>Statikus eredményeket használó futtatások keresése
+
+A logikai alkalmazás futtatási előzmények azonosítja azokat a futtatásokat, ahol a műveletek használata a statikus eredményeket. Ezek a futtatások megkereséséhez kövesse az alábbi lépéseket:
+
+1. A logikai alkalmazás fő menüjéből válassza **áttekintése**. 
+
+1. A jobb oldali ablaktáblában alatt **futtatási előzmények**, keresse meg a **statikus eredmények** oszlop. 
+
+   Bármely, amely tartalmazza az eredmények műveletek futtatásához tartozik a **statikus eredmények** oszlopban **engedélyezve**, például:
+
+   ![Előzmények – statikus eredmények oszlop](./media/test-logic-apps-mock-data-static-results/run-history.png)
+
+1. Műveletek által használt statikus eredmények megtekintéséhez válassza a Futtatás, hol szeretné a **statikus eredmények** oszlop értéke **engedélyezve**.
+
+   Műveletek által használt statikus eredmények megjelenítése a teszt főzőpoharat (![ikonra a statikus eredmények](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)) ikonra, például:
+
+   ![Futtatási előzmények - műveletek által használt statikus eredmények](./media/test-logic-apps-mock-data-static-results/static-results-enabled-run-details.png)
 
 ## <a name="disable-static-results"></a>Tiltsa le a statikus eredmények
 

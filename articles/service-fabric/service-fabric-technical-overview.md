@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/17/2018
 ms.author: ryanwi
-ms.openlocfilehash: 787a25a822e4ee7e13a2f1429bacd8d5cd2139ca
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fda6af0f253457aaf3aef1e8444850592255b318
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196824"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113673"
 ---
 # <a name="service-fabric-terminology-overview"></a>A Service Fabric a terminológia áttekintése
 Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások csomagolását, üzembe helyezését és kezelését.  Is [gazdagépet a Service Fabric-fürtök bárhol](service-fabric-deploy-anywhere.md): Azure-ban, egy helyszíni adatközpontban vagy bármely más szolgáltatónál.  Service Fabric az orchestrator-megoldás a [Azure Service Fabric-háló](/azure/service-fabric-mesh). Bármely keretrendszer használatával a szolgáltatások írását, és válassza ki, az alkalmazás futtatásához több környezetben lehetőségek közül. Ez a cikk részletesen megérteni a kifejezések a dokumentáció a Service Fabric által használt terminológiával.
@@ -162,14 +162,14 @@ Service Fabric, amely egy nyílt forráskódú platform technológia, amely szá
 Különböző környezetek eltérő szintű támogatást keretrendszerek és üzembe helyezési modellel rendelkezik. A következő táblázat ismerteti a támogatott keretrendszer és az üzembe helyezési modellt kombinációját.
 
 | Az alkalmazás | Leírtak szerint | Az Azure Service Fabric háló | Az Azure Service Fabric-fürtök (bármely operációs rendszeren)| Helyi fürt | Önálló fürt |
-|---|---|---|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|
 | Service Fabric-háló alkalmazások | Resource Model (YAML & JSON) | Támogatott |Nem támogatott | Windows – támogatott, Linux és Mac-nem támogatott | Windows – nem támogatott |
 |Service Fabric natív alkalmazások | Native Application Model (XML) | Nem támogatott| Támogatott|Támogatott|Windows – támogatott|
 
 A következő táblázat ismerteti a különböző alkalmazás-modellek és azokat az eszközöket, hogy a Service Fabric elleni őket létezik.
 
 | Az alkalmazás | Leírtak szerint | Visual Studio | Eclipse | SFCTL | AZ CLI | PowerShell|
-|---|---|---|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|---|
 | Service Fabric-háló alkalmazások | Resource Model (YAML & JSON) | VS 2017 |Nem támogatott |Nem támogatott | Támogatott – csak a háló környezet | Nem támogatott|
 |Service Fabric natív alkalmazások | Native Application Model (XML) | VS 2017 és a VS 2015| Támogatott|Támogatott|Támogatott|Támogatott|
 

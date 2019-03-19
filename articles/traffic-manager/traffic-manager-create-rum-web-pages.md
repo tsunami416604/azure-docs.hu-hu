@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: c994190ed4ccbd8e5b90f17b70ec6b65477fb0d8
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: d6b669f5baae13f9fb57c5c58060e70a8f871e17
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232005"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117268"
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>Valós felhasználói mérések küldése az Azure Traffic Manager weblapok használata
 
@@ -34,7 +34,7 @@ Az Azure portal használatával RUM kulcs beszerzése:
 3. A Traffic Manager-profil panelen kattintson a **valós felhasználói mérések** alatt **beállítások**.
 4. Kattintson a **kulcs létrehozása** RUM új kulcs létrehozásához.
  
-  ![Valós felhasználói mérések kulcsának létrehozása](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
+   ![Valós felhasználói mérések kulcsának létrehozása](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
    **1. ábra: Valós felhasználói mérések kulcs létrehozása**
 
@@ -44,7 +44,7 @@ Az Azure portal használatával RUM kulcs beszerzése:
 
     **2. ábra: Valós felhasználói mérések kulcsának és a mérési JavaScript**
  
-6.  Kattintson a **másolási** gombra, hogy a JavaScript-kódot. 
+6. Kattintson a **másolási** gombra, hogy a JavaScript-kódot. 
 
 >[!IMPORTANT]
 > Használja a létrehozott JavaScript valós felhasználói mérések funkció megfelelő működéséhez. Ez a szkript és a valós felhasználói mérések által használt parancsfájlok módosítása előre nem látható viselkedéshez vezethet.

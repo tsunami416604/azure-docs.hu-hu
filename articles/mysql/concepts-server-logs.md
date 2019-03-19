@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: bc3dd038a21786a75d6b519ef8523dc328829705
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: b1b5dffed0a82e3e3c91efd4024bafdc64f0d3d2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192888"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119037"
 ---
 # <a name="server-logs-in-azure-database-for-mysql"></a>Kiszolgálói naplók az Azure Database for MySQL-hez
 Az Azure Database for MySQL-hez a lassú lekérdezések naplója a felhasználók számára érhető el. A tranzakciós naplóba való hozzáférés nem támogatott. A lassú lekérdezések naplója segítségével azonosíthatja a szűk keresztmetszeteket hibaelhárításhoz. 
@@ -52,7 +52,7 @@ Azure Database for MySQL integrálva van az Azure monitort, diagnosztikai napló
 A következő táblázat ismerteti, mi az egyes naplókhoz. A kimeneti módszertől függően a mezők és a megjelenési sorrendben eltérőek lehetnek.
 
 | **Tulajdonság** | **Leírás** |
-|---|---|---|
+|---|---|
 | TenantId | A bérlő azonosítója |
 | SourceSystem | `Azure` |
 | TimeGenerated [UTC] | Időbélyeg mikor lett rögzítve a napló (UTC) |

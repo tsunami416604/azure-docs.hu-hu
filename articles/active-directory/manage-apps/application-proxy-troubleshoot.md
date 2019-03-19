@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5895325aa929e44128c331db847252835f563796
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 32d218e057fa040eded07f0adc813485ddaa52fd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437543"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080099"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Az alkalmazásproxy-problémák és hibaüzenetek hibaelhárítása
 Ha hiba lép fel, a közzétett alkalmazás eléréséhez, vagy az alkalmazások közzétételéhez, ellenőrizze a megtekintéséhez, hogy a Microsoft Azure AD-alkalmazásproxy megfelelően működik-e a következő beállításokat:
@@ -36,7 +36,7 @@ Az Azure AD-hibaelhárítás eszközzel kapcsolatos további információkért l
 ## <a name="the-page-is-not-rendered-correctly"></a>A lap nem jelenik meg megfelelően
 Előfordulhat, hogy az alkalmazás megjelenítése vagy nem megfelelően működik-e meghatározott hiba üzenetek fogadása nélkül. Ez akkor fordulhat elő, ha a közzétett cikk elérési, de kívül adott elérési úton található tartalom szükséges az alkalmazás számára.
 
-Például, ha közzéteszi az elérési út https://yourapp/app , de az alkalmazás meghívja a lemezképek https://yourapp/media, azok nem jelennek meg. Győződjön meg arról, hogy közzéteszi az alkalmazást a legmagasabb szintű elérési útja, meg kell adni az összes kapcsolódó tartalom alapján. Ebben a példában lenne http://yourapp/.
+Például, ha közzéteszi az elérési út `https://yourapp/app` , de az alkalmazás meghívja a lemezképek `https://yourapp/media`, azok nem jelennek meg. Győződjön meg arról, hogy közzéteszi az alkalmazást a legmagasabb szintű elérési útja, meg kell adni az összes kapcsolódó tartalom alapján. Ebben a példában lenne `http://yourapp/`.
 
 Ha módosítja a hivatkozott tartalmat foglaljon magába, de továbbra is szüksége van egy mélyebb hivatkozásra az elérési út kerül elérési útját, tekintse meg a következő blogbejegyzésben: [a megfelelő hivatkozás beállítása az Azure ad Application Proxy alkalmazásai hozzáférési panelen és az Office 365 appindítóban](https://blogs.technet.microsoft.com/applicationproxyblog/2016/04/06/setting-the-right-link-for-application-proxy-applications-in-the-azure-ad-access-panel-and-office-365-app-launcher/).
 

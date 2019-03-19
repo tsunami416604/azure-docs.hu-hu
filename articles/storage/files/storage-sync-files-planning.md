@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 97508c05ea26df1aaae7f41738835380767c81d2
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: c032961bf89ba470a38ebccfd846659b080f9fab
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312715"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013222"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 Az Azure File Sync használatával fájlmegosztásainak a szervezet az Azure Files között, miközben gondoskodik a rugalmasságát, teljesítményét és kompatibilitását a helyszíni fájlkiszolgálók. Az Azure File Sync Windows Server az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. Helyileg, az adatok eléréséhez a Windows Serveren elérhető bármely protokollt használhatja, beleértve az SMB, NFS és FTPS. Tetszőleges számú gyorsítótárak világszerte igény szerint is rendelkezhet.
@@ -115,7 +115,7 @@ Az eredmények megjelenítése a fürt megosztott kötetei szolgáltatás:
 
     | Verzió | Támogatott termékváltozatok | Támogatott központi telepítési beállítások |
     |---------|----------------|------------------------------|
-    | Windows Server 2019 | Datacenter és Standard | Teljes (a felhasználói felületen keresztül kiszolgáló) |
+    | A Windows Server 2019 | Datacenter és Standard | Teljes (a felhasználói felületen keresztül kiszolgáló) |
     | Windows Server 2016 | Datacenter és Standard | Teljes (a felhasználói felületen keresztül kiszolgáló) |
     | Windows Server 2012 R2 | Datacenter és Standard | Teljes (a felhasználói felületen keresztül kiszolgáló) |
 
@@ -132,6 +132,7 @@ Az eredmények megjelenítése a fürt megosztott kötetei szolgáltatás:
 - Egy helyileg csatlakoztatott NTFS fájlrendszerrel formázott kötet.
 
 ### <a name="file-system-features"></a>Fájlrendszer-szolgáltatásokat
+
 | Szolgáltatás | Támogatás állapota | Megjegyzések |
 |---------|----------------|-------|
 | Hozzáférés-vezérlési listák (ACL) | Teljes mértékben támogatott. | Windows hozzáférés-vezérlési listák az Azure File Sync megmaradnak, és kényszeríti a Windows Server server végpontokon. Windows hozzáférés-vezérlési listák (még nem) támogatja az Azure Files, ha a fájlok érhetők el közvetlenül a felhőben. |
@@ -148,6 +149,7 @@ Az eredmények megjelenítése a fürt megosztott kötetei szolgáltatás:
 > Csak az NTFS-kötetekről támogatottak. Az reFS, FAT, FAT32 és más fájlrendszereket nem támogatottak.
 
 ### <a name="files-skipped"></a>Kihagyott fájlok
+
 | Fájl vagy mappa | Megjegyzés |
 |-|-|
 | Desktop.ini | A fájl adott rendszerhez |

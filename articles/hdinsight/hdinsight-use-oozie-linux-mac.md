@@ -9,12 +9,12 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 02/28/2019
-ms.openlocfilehash: 7fc7f63539e65618f00d75d5392ad1e96b7aab3e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: dfbf9a3a9b800fec5df4cf527ddd4ec8e3f55b37
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533451"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57853239"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Az Apache Hadoop megadásához és a munkafolyamat futtatása a Linux-alapú Azure HDInsight Apache Oozie használata
 
@@ -42,7 +42,7 @@ Az Oozie használatával a rendszer, például Java programok vagy héjparancsf�
 * **Tárolási konfiguráció lehetséges módosítása.**  Lásd: [tárolási konfigurációt](#storage-configuration) a tárfiók típusának használatakor `BlobStorage`.
 
 ## <a name="storage-configuration"></a>Tároló konfigurálása
-Semmit nem kell, ha a használt tárfiók típusú `Storage (general purpose v1)` vagy `StorageV2 (general purpose v2)`.  A cikk a folyamat legalább állítja elő a kimeneti `/mapreducestaging`.  Alapértelmezett konfigurációja a hadoop tartalmazni fogja `/mapreducestaging` a a `fs.azure.page.blob.dir` konfigurációs változó `core-site.xml` szolgáltatás `HDFS`.  Ez a konfiguráció hatására a kimeneti könyvtárba kell a lapblobokat, ez a tárfióktípus nem támogatott `BlobStorage`.  Használandó `BlobStorage` ebben a cikkben eltávolítása `/mapreducestaging` származó a `fs.azure.page.blob.dir` konfigurációs változó.  A konfiguráció elérhető a [Ambari felhasználói felületén](/hdinsight-hadoop-manage-ambari.md).  Ellenkező esetben kapja meg a hibaüzenet: `Page blob is not supported for this account type.`
+Semmit nem kell, ha a használt tárfiók típusú `Storage (general purpose v1)` vagy `StorageV2 (general purpose v2)`.  A cikk a folyamat legalább állítja elő a kimeneti `/mapreducestaging`.  Alapértelmezett konfigurációja a hadoop tartalmazni fogja `/mapreducestaging` a a `fs.azure.page.blob.dir` konfigurációs változó `core-site.xml` szolgáltatás `HDFS`.  Ez a konfiguráció hatására a kimeneti könyvtárba kell a lapblobokat, ez a tárfióktípus nem támogatott `BlobStorage`.  Használandó `BlobStorage` ebben a cikkben eltávolítása `/mapreducestaging` származó a `fs.azure.page.blob.dir` konfigurációs változó.  A konfiguráció elérhető a [Ambari felhasználói felületén](hdinsight-hadoop-manage-ambari.md).  Ellenkező esetben kapja meg a hibaüzenet: `Page blob is not supported for this account type.`
 
 > [!NOTE]  
 > A jelen cikkben használt tárfiók rendelkezik [biztonságos átvitelre](../storage/common/storage-require-secure-transfer.md) engedélyezve van, és így `wasbs` helyett `wasb` a cikk használja.
@@ -130,11 +130,11 @@ A következő lépések segítségével hozzon létre egy Hive lekérdezés (Hiv
 
     Nincsenek a szkriptben használt két változót:
 
-    * `${hiveTableName}`: A létrehozandó tábla nevét tartalmazza.
+   * `${hiveTableName}`: A létrehozandó tábla nevét tartalmazza.
 
-    * `${hiveDataFolder}`: A tábla az adatfájlok tárolására helyét tartalmazza.
+   * `${hiveDataFolder}`: A tábla az adatfájlok tárolására helyét tartalmazza.
 
-    A munkafolyamat-definíciós fájlt, ebben az oktatóanyagban workflow.xml továbbítja ezeket az értékeket a futásidőben HiveQL-parancsfájlt.
+     A munkafolyamat-definíciós fájlt, ebben az oktatóanyagban workflow.xml továbbítja ezeket az értékeket a futásidőben HiveQL-parancsfájlt.
 
 4. Mentse a fájlt, jelölje ki a Ctrl + X, adja meg `Y`, majd válassza ki **Enter**.  
 
@@ -307,7 +307,7 @@ A feladat definíciója, hogy hol található a workflow.xml ismerteti. Azt is b
 
     |Helyőrző értékét| Érték felülírva|
     |---|---|
-    |wasbs://mycontainer@mystorageaccount.blob.core.windows.net| 1. lépésben kapott érték.|
+    |wasbs://mycontainer\@mystorageaccount.blob.core.windows.net| 1. lépésben kapott érték.|
     |admin| A bejelentkezési neve, a HDInsight-fürt nem rendszergazda.|
     |Kiszolgálónév| Az Azure SQL database kiszolgáló neve.|
     |sqlLogin| Az Azure SQL database server bejelentkezés.|

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2018
 ms.author: rkarlin
-ms.openlocfilehash: 0a8680fbc8a3a051906f223d8b2476891c92d110
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: e3b4da1c1d835e9d630c000055af058aa7b45968
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888193"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109188"
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>Biztonsági javaslatok kezelése az Azure Security Centerben
 Ez a dokumentum végigvezeti javaslatok használatát az Azure Security Centerben az Azure-erőforrások védelmére.
@@ -68,10 +68,10 @@ Javaslatok szűrheti. A javaslatok szűréséhez válasszon **szűrő** a a **ja
 
 > [!NOTE]
 > Érdemes tudni a [klasszikus és Resource Manager üzembe helyezési modellek](../azure-classic-rm.md) az Azure-erőforrásokhoz.
->
->
-### <a name="apply-recommendations"></a>Javaslatok alkalmazása
-Összes javaslat áttekintése után döntse el, amely egy alkalmazza először. Azt javasoljuk, hogy használja a besorolásával, mely ajánlások kiértékelheti, hogy a fő paraméter előbb alkalmazni kell.
+> 
+> 
+> ### <a name="apply-recommendations"></a>Javaslatok alkalmazása
+> Összes javaslat áttekintése után döntse el, amely egy alkalmazza először. Azt javasoljuk, hogy használja a besorolásával, mely ajánlások kiértékelheti, hogy a fő paraméter előbb alkalmazni kell.
 
 
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 04/24/2018
 ms.author: rosh
 ms.custom: seodec2018
-ms.openlocfilehash: a18aaceb4840ffc7e3e3dca4eeb8f5fd8e88049c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e7b2c43e06c8fbc1f561defebf29fdd37bc8bfab
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876402"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100904"
 ---
 # <a name="search-for-gif-images"></a>GIF-rendszerképek keresése 
 
@@ -47,6 +47,7 @@ Lekérdezési paraméterek és beállítások kapcsolatos további információk
 - *AnimatedGifHttps* egyetlen értéket ad vissza animált gif-lemezképek, amelyek a https-címen. A biztonság érdekében a számos alkalmazás külső webes hivatkozások kapcsolatot igényelnek a https-kapcsolaton keresztül. Ha például az Apple App Store kapcsolódnia kell webszolgáltatások HTTPS protokollal, amely titkosítja a felhasználói adatok a biztonságos adatátvitelhez.
 
 <a name="gifExample" />
+
 ## <a name="example-search-for-animated-gif-using-java"></a>A példában keressen a Java használatával animált gif
 
 A következő URL-cím animált .gif képeket keres rá: `q=interesting`

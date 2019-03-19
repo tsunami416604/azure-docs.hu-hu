@@ -12,21 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2018
+ms.date: 03/13/2019
 ms.author: aschhab
-ms.openlocfilehash: eefe624462609a69296ec6d6e409d72745da0846
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 7b34233e10c5d622b598d35c6eb136b88daf8eb6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856689"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880160"
 ---
 # <a name="service-bus-messaging-samples"></a>A Service Bus üzenettovábbítási mintái
+A Service Bus üzenetkezelési minták bemutatják a legfontosabb jellemzők [Service Bus-üzenetkezelés](https://azure.microsoft.com/services/service-bus/). Jelenleg a minták találja a következő helyeken:
 
-A Service Bus üzenetkezelési minták bemutatják a legfontosabb jellemzők [Service Bus-üzenetkezelés](https://azure.microsoft.com/services/service-bus/). A minták találja jelenleg két helyen lehet:
-
-- [.NET- és Java](https://github.com/Azure/azure-service-bus/tree/master/samples) . Tekintse meg a [.NET információs](https://github.com/Azure/azure-service-bus/blob/master/samples/DotNet/Microsoft.ServiceBus.Messaging/README.md) a tárházban, a .NET-minták, leírását és a [Java információs](https://github.com/Azure/azure-service-bus/tree/master/samples/Java) a Java-példák leírását.
-- [Typescript](https://github.com/Azure/azure-service-bus-node/tree/master/examples)
+| Programozási nyelv | SDK-t vagy minták helye |
+| -------------------- | ----------------------- |
+| .NET, Java és kezelése | https://github.com/Azure/azure-service-bus/ |
+| Node.js | https://github.com/Azure/azure-sdk-for-js/tree/master/packages/%40azure/servicebus/data-plane/examples |
+| Python | https://github.com/Azure/azure-sdk-for-python/tree/master/azure-servicebus |
 
 ## <a name="service-bus-explorer"></a>Service Bus Explorer
 

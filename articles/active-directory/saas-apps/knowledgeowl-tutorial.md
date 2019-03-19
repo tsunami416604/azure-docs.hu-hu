@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32f53742de3242fb3b60a15d436ec6cd842aa429
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c8c86ad6e4b11f21c648083fac35e15eec7658c1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56183993"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57995511"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-knowledgeowl"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező KnowledgeOwl
 
@@ -110,6 +110,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     ![KnowledgeOwl tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/knowledgeowl-tutorial/tutorial_knowledgeowl_url.png)
 
     a. Az a **azonosító (entityid)** szövegmezőbe írja be a következő minta használatával URL-címe:
+
     |||
     |-|-|
     | `https://app.knowledgeowl.com/sp`|
@@ -117,6 +118,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     |||
 
     b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-címe:
+
     |||
     |-|-|
     | `https://subdomain.knowledgeowl.com/help/saml-login`|
@@ -132,6 +134,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     ![KnowledgeOwl tartomány és URL-címeket egyetlen bejelentkezési adatait](./media/knowledgeowl-tutorial/tutorial_knowledgeowl_url1.png)
 
     Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe:
+    
     |||
     |-|-|
     | `https://subdomain.knowledgeowl.com/help/saml-login`|
@@ -185,29 +188,29 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 1. Kattintson a **beállítások** majd **biztonsági**.
 
-    ![KnowledgeOwl konfiguráció](./media/knowledgeowl-tutorial/configure1.png)
+     ![KnowledgeOwl konfiguráció](./media/knowledgeowl-tutorial/configure1.png)
 
 1. Görgessen a **SAML SSO-integráció** , és hajtsa végre az alábbi lépéseket:
     
-    ![KnowledgeOwl konfiguráció](./media/knowledgeowl-tutorial/configure2.png)
+     ![KnowledgeOwl konfiguráció](./media/knowledgeowl-tutorial/configure2.png)
 
-    a. Válassza ki **SAML egyszeri bejelentkezés engedélyezése**.
+     a. Válassza ki **SAML egyszeri bejelentkezés engedélyezése**.
 
-    b. Másolás a **SP Entitásazonosító** értékét, és illessze be azt a **azonosító (entityid)** a a **KnowledgeOwl tartomány és URL-címek** szakaszban az Azure Portalon.
+     b. Másolás a **SP Entitásazonosító** értékét, és illessze be azt a **azonosító (entityid)** a a **KnowledgeOwl tartomány és URL-címek** szakaszban az Azure Portalon.
 
-    c. Másolás a **SP bejelentkezési URL-cím** értékét, és illessze be azt a **bejelentkezési URL- és a válasz URL-cím** a szöveges mezőkben a **KnowledgeOwl tartomány és URL-címek** szakaszban az Azure Portalon.
+     c. Másolás a **SP bejelentkezési URL-cím** értékét, és illessze be azt a **bejelentkezési URL- és a válasz URL-cím** a szöveges mezőkben a **KnowledgeOwl tartomány és URL-címek** szakaszban az Azure Portalon.
 
-    d. Az a **identitásszolgáltató entityID** szövegmezőjébe illessze be a **SAML Entitásazonosító** érték, amely az Azure Portalról másolta.
+     d. Az a **identitásszolgáltató entityID** szövegmezőjébe illessze be a **SAML Entitásazonosító** érték, amely az Azure Portalról másolta.
 
-    e. Az a **identitásszolgáltató bejelentkezési URL-cím** szövegmezőjébe illessze be a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** érték, amely az Azure Portalról másolta.
+     e. Az a **identitásszolgáltató bejelentkezési URL-cím** szövegmezőjébe illessze be a **SAML egyszeri bejelentkezési szolgáltatás URL-cím** érték, amely az Azure Portalról másolta.
 
-    f. Az a **identitásszolgáltató kijelentkezési URL-címe** szövegmezőjébe illessze be a **kijelentkezéses URL-cím** érték, amely az Azure Portalról másolt
+     f. Az a **identitásszolgáltató kijelentkezési URL-címe** szövegmezőjébe illessze be a **kijelentkezéses URL-cím** érték, amely az Azure Portalról másolt
 
-    g. Töltse fel a letöltött tanúsítvány képernyő az Azure Portalon kattintson a **IdP-tanúsítvány feltöltése**.
+     g. Töltse fel a letöltött tanúsítvány képernyő az Azure Portalon kattintson a **IdP-tanúsítvány feltöltése**.
 
-    h. Kattintson a **térkép SAML-attribútumok** attribútumok leképezésére, és hajtsa végre az alábbi lépéseket:
+     h. Kattintson a **térkép SAML-attribútumok** attribútumok leképezésére, és hajtsa végre az alábbi lépéseket:
     
-    ![KnowledgeOwl konfiguráció](./media/knowledgeowl-tutorial/configure3.png)
+     ![KnowledgeOwl konfiguráció](./media/knowledgeowl-tutorial/configure3.png)
 
     * Adja meg `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/ssoid` be a **egyszeri bejelentkezési azonosító** szövegmező
     * Adja meg `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` be a **felhasználónév, E-mail** szövegmezőbe.
@@ -215,9 +218,9 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     * Adja meg `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` be a **Vezetéknév** szövegmezőbe.
     * Kattintson a **Mentés** gombra.
 
-    i. Kattintson a lap alján található **Mentés** gombra.
+      i. Kattintson a lap alján található **Mentés** gombra.
 
-    ![KnowledgeOwl konfiguráció](./media/knowledgeowl-tutorial/configure4.png)
+      ![KnowledgeOwl konfiguráció](./media/knowledgeowl-tutorial/configure4.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
 

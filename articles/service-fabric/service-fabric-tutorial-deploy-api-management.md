@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 9/26/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 015cbadef57a3e306fea4321db4b12c3a3918683
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 4685c4213ad992e8d0fcffdf91a039cd04b426ee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433781"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57844207"
 ---
 # <a name="integrate-api-management-with-service-fabric-in-azure"></a>Az API Management integrálása a Service Fabric az Azure-ban
 
@@ -142,7 +142,7 @@ A [Microsoft.ApiManagement/service/apis](/azure/templates/microsoft.apimanagemen
 
 * A **displayName** (megjelenített név) bármilyen, az API-t jelölő név lehet. Ebben a cikkben használja a "Service Fabric-alkalmazás".
 * A **name** (név) egyedi és leíró nevet biztosít az API-nak, például: „service-fabric-app”. A fejlesztői és közzétevői portálon jelenik meg.
-* A **serviceUrl** (szolgáltatás URL-címe) az API-t alkalmazó HTTP-szolgáltatásra hivatkozik. Az API Management erre a címre továbbítja a kérelmeket. A Service Fabric-háttérrendszerek esetében ez az URL-érték nem használható. Itt bármilyen érték megadható. Ebben a cikkben, például "http://servicefabric".
+* A **serviceUrl** (szolgáltatás URL-címe) az API-t alkalmazó HTTP-szolgáltatásra hivatkozik. Az API Management erre a címre továbbítja a kérelmeket. A Service Fabric-háttérrendszerek esetében ez az URL-érték nem használható. Itt bármilyen érték megadható. Ebben a cikkben, például "<http://servicefabric>".
 * A **path** (útvonal) értéke az API Management szolgáltatás kiindulási URL-címéhez lesz hozzáfűzve. A kiindulási URL-cím egy API Management-szolgáltatáspéldány által üzemeltetett mindegyik API esetében megegyezik. Az API Management az API-kat az utótag alapján különbözteti meg, ezért az utótagnak egy adott közzétevő minden API-ja esetében egyedinek kell lennie.
 * A **protocols** (protokollok) határozza meg, mely protokollok révén lehet hozzáférni az API-hoz. Ez a cikk listában **http** és **https**.
 * A **path** (útvonal) az API utótagja. Ez a cikk használja a "myapp".
@@ -177,7 +177,7 @@ A **policyContent** a szabályzat Json-feloldójelekkel ellátott XML-tartalma. 
     <set-backend-service
         backend-id="servicefabric"
         sf-service-instance-name="service-name"
-        sf-resolve-condition="@(context.LastError?.Reason == 'BackendConnectionFailure')" />
+        sf-resolve-condition="@(context.LastError?.Reason == "BackendConnectionFailure")" />
   </inbound>
   <backend>
     <base/>
@@ -226,7 +226,7 @@ Az *inbound_policy* esetében cserélje le az *sf-service-instance-name* érték
     <set-backend-service
         backend-id="servicefabric"
         sf-service-instance-name="service-name"
-        sf-resolve-condition="@(context.LastError?.Reason == 'BackendConnectionFailure')" />
+        sf-resolve-condition="@(context.LastError?.Reason == "BackendConnectionFailure")" />
   </inbound>
   <backend>
     <base/>
@@ -285,7 +285,7 @@ Most megpróbálhat küldeni egy kérelmet a Service Fabricben lévő háttérsz
 
 A fürtben a fürt erőforrásán felül egyéb Azure-erőforrások is megtalálhatók. A fürt és az összes általa használt erőforrás törlésének legegyszerűbb módja az erőforráscsoport törlése.
 
-Jelentkezzen be az Azure-ba, és válassza ki azon előfizetés azonosítóját, amelyikkel el szeretné távolítani a fürtöt.  Az [Azure Portalra](http://portal.azure.com) bejelentkezve keresheti meg az előfizetés azonosítóját. Az erőforráscsoport és a fürt erőforrásai a [Remove-AzureRMResourceGroup parancsmaggal](/en-us/powershell/module/azurerm.resources/remove-azurermresourcegroup) törölhetők.
+Jelentkezzen be az Azure-ba, és válassza ki azon előfizetés azonosítóját, amelyikkel el szeretné távolítani a fürtöt.  Az [Azure Portalra](https://portal.azure.com) bejelentkezve keresheti meg az előfizetés azonosítóját. Az erőforráscsoport és a fürt erőforrásai a [Remove-AzureRMResourceGroup parancsmaggal](/en-us/powershell/module/azurerm.resources/remove-azurermresourcegroup) törölhetők.
 
 ```powershell
 $ResourceGroupName = "sfclustertutorialgroup"

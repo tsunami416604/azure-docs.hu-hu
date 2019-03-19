@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7f09db1f37617519926955daf0c29c13993dbf80
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 3282afb87672ba25294e65ea1474a9e06df03362
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728454"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57871062"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Összes bérlőre vonatkozó információk megjelenítése az Azure Security Centerben
 Ez a cikk használatának megkezdésébe vezeti be, amely az Azure Security Center biztosít előnyök maximalizálása és több művelet végrehajtásával. Ezek a műveletek végrehajtása lehetővé teszi, hogy nagyobb láthatóságot érhet el az összes Azure-előfizetések vannak kapcsolva, az Azure Active Directory-bérlőhöz, és hatékonyan kezelheti a szervezet biztonsági állapotáról, ipari méretekben több biztonsági házirendek alkalmazásával előfizetések aggregative módon.
@@ -38,7 +38,7 @@ Felügyeleti csoportok részletes ismertetőt talál a [az erőforrások rendsze
 Előfizetések felügyeleti csoportokba való rendszerezése és a alkalmazni a cégirányítási szabályzatokat a felügyeleti csoportok. A felügyeleti csoporton belüli összes előfizetés automatikusan örökli a felügyeleti csoportra alkalmazott szabályzatokat. Míg a felügyeleti csoportok nem szükséges felvétele a Security centerhez, azt javasoljuk, hogy legalább egy felügyeleti csoportot hoz létre, így a gyökérszintű felügyeleti csoport jön létre. A csoport létrehozása után a rendszer hozzá kell kapcsolni az Azure AD-bérlőhöz tartozó összes előfizetést. Útmutatás a PowerShell és a további információk: [-erőforrás és a szervezet felügyeleti csoportok létrehozása](../azure-resource-manager/management-groups-create.md).
 
  
-1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. Válassza ki **minden szolgáltatás** > **felügyeleti csoportok**.
 3. A fő oldalon válassza ki a **új felügyeleti csoportban.** 
 
@@ -51,7 +51,7 @@ Előfizetések felügyeleti csoportokba való rendszerezése és a alkalmazni a 
 5.  Válassza ki **mentése**
 
 ### <a name="view-management-groups-in-the-azure-portal"></a>Felügyeleti csoportok megtekintése az Azure Portalon
-1. Jelentkezzen be a [az Azure portal](http://portal.azure.com).
+1. Jelentkezzen be a [az Azure portal](https://portal.azure.com).
 2. Felügyeleti csoportok megtekintéséhez jelölje ki **minden szolgáltatás** az Azure főmenüjében.
 3. A **általános**válassza **felügyeleti csoportok**.
 
@@ -77,7 +77,7 @@ Az Azure Active Directory-Bérlői rendszergazda nem rendelkezik Azure-előfizet
 
    - Ha a kapcsoló Igen, az Azure RBAC a gyökérszintű hatókörben (/) a felhasználói hozzáférés rendszergazdája szerepkör rendelt. Ezzel engedélyt ad meg szerepkörök hozzárendelése az összes Azure-előfizetések és az Azure AD-címtárhoz társított felügyeleti csoportokat. Ez a kapcsoló csak az Azure AD globális rendszergazdai szerepkörrel felruházott felhasználók számára érhető el.
 
-  - A kapcsoló nem állítja be, az Azure RBAC-ben a felhasználói hozzáférés rendszergazdája szerepkör eltávolítja a felhasználói fiókból. Szerepkörök az összes Azure-előfizetések és az Azure AD-címtárhoz társított felügyeleti csoport már nem rendelhet hozzá. Megtekintheti, és kezelheti a csak az Azure-előfizetések és a felügyeleti csoportot, amelyhez rendelkezik hozzáféréssel.
+   - A kapcsoló nem állítja be, az Azure RBAC-ben a felhasználói hozzáférés rendszergazdája szerepkör eltávolítja a felhasználói fiókból. Szerepkörök az összes Azure-előfizetések és az Azure AD-címtárhoz társított felügyeleti csoport már nem rendelhet hozzá. Megtekintheti, és kezelheti a csak az Azure-előfizetések és a felügyeleti csoportot, amelyhez rendelkezik hozzáféréssel.
 
 4. Kattintson a **mentése** a beállítás mentéséhez.
 
@@ -181,8 +181,8 @@ A felügyeleti csoport létrehozott előfizetések adhat hozzá. Ezeket a lépé
 
 4. Ismételje 1 – 3 hozzáadott előfizetések hatókörében.
 
- > [!NOTE]
- > Felügyeleti csoportok előfizetések és az alárendelt felügyeleti csoportok is tartalmazhatnak. Amikor hozzárendel egy felhasználó egy RBAC szerepkör a fölérendelt felügyeleti csoport, a hozzáférés az alárendelt felügyeleti csoportot az előfizetések örökli. A gyermekek is örökli szülő felügyeleti csoportok beállított szabályzatoknak. 
+   > [!NOTE]
+   > Felügyeleti csoportok előfizetések és az alárendelt felügyeleti csoportok is tartalmazhatnak. Amikor hozzárendel egy felhasználó egy RBAC szerepkör a fölérendelt felügyeleti csoport, a hozzáférés az alárendelt felügyeleti csoportot az előfizetések örökli. A gyermekek is örökli szülő felügyeleti csoportok beállított szabályzatoknak. 
 
 ## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, hogyan figyelheti az Azure Security Center a bérlői szintű. A Security Centerrel kapcsolatos további információkért olvassa el a következő cikkeket:

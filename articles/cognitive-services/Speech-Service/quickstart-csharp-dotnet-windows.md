@@ -10,18 +10,22 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: cff3f526586eb52466883247d41a57dae919dd21
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: a3990bfac9199fadeff0573d7547d7e5bc551ece
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867218"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838612"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-framework-windows"></a>Gyors útmutató: Beszédfelismerést a Speech SDK-val .NET-keretrendszer (Windows)
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Ezt az útmutatót követve egy diktálási konzolalkalmazást hozhat létre a Windows-hoz készült .NET-keretrendszer és a Speech SDK használatával. Ha elkészült, a számítógép mikrofonjával valós időben konvertálhat át beszédet szöveggé.
+
+A gyors bemutató (nélkül létrehozása a Visual Studio-projekt magát az alább látható módon):
+
+A legújabb verzió beszerzéséhez [Cognitive Services beszédfelismerő SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk) a Githubról.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -41,7 +45,7 @@ A projekt teljesítéséhez a következők szükségesek:
 
     [!code-csharp[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/csharp-dotnet-windows/helloworld/Program.cs#code)]
 
-1. Keresse meg és cserélje le a `YourSubscriptionKey` sztringet a Speech Service előfizetői azonosítójára.
+1. Keresse meg és cserélje le a karakterláncot `YourSubscriptionKey` az beszédszolgáltatások előfizetési kulccsal végzett.
 
 1. Keresse meg és cserélje le a `YourServiceRegion` sztringet az előfizetéséhez társított [régióra](regions.md). Ha például az ingyenes próbaverziót használja, akkor a régió a `westus`.
 
@@ -57,7 +61,7 @@ A projekt teljesítéséhez a következők szükségesek:
 
     ![A Visual Studio képernyőképe, amelyen ki van emelve a Hibakeresés indítása lehetőség](media/sdk/qs-csharp-dotnet-windows-09-start-debugging.png "Hibakeresés indítása az alkalmazáson")
 
-1. Ekkor megjelenik egy konzolablak, amely arra kéri Önt, hogy beszéljen. Mondjon valamit angolul. A rendszer továbbítja a beszédet a Speech Service-be, és valós időben szöveggé alakítja át. Az eredmény a konzolon jelenik meg.
+1. Ekkor megjelenik egy konzolablak, amely arra kéri Önt, hogy beszéljen. Mondjon valamit angolul. A beszéd továbbítani a beszédszolgáltatások, és a megjelenített érzéseket szöveg valós időben. Az eredmény a konzolon jelenik meg.
 
     ![Képernyőkép a konzolról a sikeres felismerést követően](media/sdk/qs-csharp-dotnet-windows-10-console-output.png "A konzol a sikeres felismerést követően")
 

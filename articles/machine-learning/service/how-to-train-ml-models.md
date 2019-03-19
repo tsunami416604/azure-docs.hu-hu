@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.reviewer: sgilley
 ms.date: 2/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 58dd96b079dda50faa17a52782a79db83a0141bd
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 818b6e5994a4f5b9d21d511f0a31eab6e00033f7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330069"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012476"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>Az Azure Machine Learning használatával estimator modelleket taníthat be
 
@@ -63,6 +63,7 @@ Paraméter | Leírás
 `compute_target`| Arról, hogy az a tanítási szkriptet, ebben az esetben az Azure Machine Learning Compute távoli számítási célnak ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) fürt. (Vegye figyelembe, hogy annak ellenére, hogy a fürt AmlCompute célja a gyakran használt, lehetőség arra is választhat más számítási cél típusok, például az Azure virtuális gépek vagy akár a helyi számítógépen.)
 `entry_script`| Fájl elérési útja (viszonyítva a `source_directory`), a tanítási szkriptet futtatandó távoli számítási. Ezt a fájlt, és a további fájlokat attól függ, ebben a mappában kell elhelyezni.
 `conda_packages`| Szükség szerint a tanítási szkriptet conda-n keresztül kell telepíteni a Python-csomagok listáját.  
+
 A konstruktor rendelkezik egy másik nevű paramétert `pip_packages` , amelyet használhat az esetleges pip csomagokat szükséges
 
 Most, hogy létrehozta a `Estimator` objektumazonosító, küldje el a betanítási feladat a távoli számítási hívásával futnia a `submit` működnek a [kísérlet](concept-azure-machine-learning-architecture.md#experiment) objektum `experiment`. 

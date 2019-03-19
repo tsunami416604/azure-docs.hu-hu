@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 1c145f100e22dbb268a7cd491eb8a43b51988c69
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: dcd546b4b4d8e47395535cd37e1629166c8c2e7f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315809"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002337"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics – gyakori kérdések
 
@@ -72,7 +72,7 @@ V: A munkaterület az Azure-ban hozzárendelt Azure-engedélyeket kell rendelkez
 V: Nézettervező csak naplók rendelkező közreműködői engedélyekkel rendelkező vagy újabb verziója érhető el.
 
 ### <a name="q-can-i-still-use-the-analytics-portal-outside-of-azure"></a>K. Továbbra is használható az Azure-on kívül Analytics-portálon?
-A. Igen, a naplók oldalán, az Azure és a bővített analitika portál ugyanazt a kódot alapulnak. A log Analytics az Azure monitorban több egységes felügyeleti élmény érdekében szolgáltatásként való integráció. Továbbra is hozzáférhet az URL-Analytics-portálon: https://portal.loganalytics.io/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/workspaces/{workspaceName}.
+A. Igen, a naplók oldalán, az Azure és a bővített analitika portál ugyanazt a kódot alapulnak. A log Analytics az Azure monitorban több egységes felügyeleti élmény érdekében szolgáltatásként való integráció. Továbbra is hozzáférhet az URL-Analytics-portálon: https:\/\/portal.loganalytics.io/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/workspaces/{workspaceName}.
 
 
 

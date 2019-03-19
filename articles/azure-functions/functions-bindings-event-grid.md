@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: 12056ebec0f0a23ed255532a8ba27b130ecb81d1
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: b2ab07e40ac2652d97e912f8c7bd3b8893bfc114
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750446"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094160"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Event Grid-trigger az Azure Functions szolgáltatáshoz
 
@@ -321,7 +321,7 @@ Egy teljes példa: C# példa.
 A következő táblázat ismerteti a megadott kötés konfigurációs tulajdonságaiban a *function.json* fájlt. Nem konstruktor paraméterek vagy a tulajdonságok beállításához a `EventGridTrigger` attribútum.
 
 |Function.JSON tulajdonság |Leírás|
-|---------|---------|----------------------|
+|---------|---------|
 | **type** | Kötelező – kell állítani `eventGridTrigger`. |
 | **direction** | Kötelező – kell állítani `in`. |
 | **name** | Kötelező – a függvénykódot az a paraméter, amely megkapja az eseményadatokat használt változó neve. |
@@ -484,10 +484,10 @@ Azt is megteheti küldhet egy HTTP PUT, a kulcs értékét saját magát adja me
 
 Egy Event Grid-trigger tesztelése helyileg, akkor a helyi gépen a forrásból a felhőben elérhető Event Grid HTTP-kérések lekérése. Az egyik lehetőség, amely a kérések online, és manuálisan újra elküldeni őket a helyi gépen rögzítésével van:
 
-2. [A jelentésmegjelenítő webes alkalmazás létrehozása](#create-a-viewer-web-app) , amely eseményt üzenetek rögzíti.
-3. [Hozzon létre egy Event Grid-előfizetés](#create-an-event-grid-subscription) , amely elküldi az eseményeket a megjelenítő alkalmazást.
-4. [Hozzon létre egy kérelem](#generate-a-request) , és másolja a kérelem törzsében a megjelenítő alkalmazást.
-5. [A kérelem fel kézzel](#manually-post-the-request) localhost URL-címét az Event Grid aktiválja a függvényt.
+1. [A jelentésmegjelenítő webes alkalmazás létrehozása](#create-a-viewer-web-app) , amely eseményt üzenetek rögzíti.
+1. [Hozzon létre egy Event Grid-előfizetés](#create-an-event-grid-subscription) , amely elküldi az eseményeket a megjelenítő alkalmazást.
+1. [Hozzon létre egy kérelem](#generate-a-request) , és másolja a kérelem törzsében a megjelenítő alkalmazást.
+1. [A kérelem fel kézzel](#manually-post-the-request) localhost URL-címét az Event Grid aktiválja a függvényt.
 
 Ha végzett tesztelése, használhatja az ugyanahhoz az előfizetéshez éles környezetben a végpont frissítése. Használja a [az eventgrid esemény-előfizetés frissítése](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-update) Azure CLI-parancsot.
 
@@ -557,10 +557,10 @@ Az Event Grid eseményindító függvény végrehajtása, és a naplók az aláb
 
 Egy Event Grid eseményindító helyi tesztelése egy másik úgy, hogy automatizálja a HTTP-kapcsolat az Internet és a fejlesztési számítógép között. Megteheti, hogy egy nyílt forráskódú eszköz nevű [ngrok](https://ngrok.com/):
 
-3. [Hozzon létre egy ngrok végpontot](#create-an-ngrok-endpoint).
-4. [Az Event Grid eseményindító függvény futtatása](#run-the-event-grid-trigger-function).
-5. [Hozzon létre egy Event Grid-előfizetés](#create-a-subscription) , amely elküldi az eseményeket a ngrok végpontot.
-6. [Esemény aktiválása](#trigger-an-event).
+1. [Hozzon létre egy ngrok végpontot](#create-an-ngrok-endpoint).
+1. [Az Event Grid eseményindító függvény futtatása](#run-the-event-grid-trigger-function).
+1. [Hozzon létre egy Event Grid-előfizetés](#create-a-subscription) , amely elküldi az eseményeket a ngrok végpontot.
+1. [Esemény aktiválása](#trigger-an-event).
 
 Ha végzett tesztelése, használhatja az ugyanahhoz az előfizetéshez éles környezetben a végpont frissítése. Használja a [az eventgrid esemény-előfizetés frissítése](https://docs.microsoft.com/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az-eventgrid-event-subscription-update) Azure CLI-parancsot.
 

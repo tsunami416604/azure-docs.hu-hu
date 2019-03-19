@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 03976d321a92f6049d06cea88604618d5a2dee67
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 1a575a172e4ff567cc20442c7a9779e1d52dbbba
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532270"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099984"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Adatok áthelyezése az Azure Data Factoryban történő futtatásának biztonsági szempontjai
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -34,6 +34,7 @@ Annak ellenére, hogy a Data Factory csak régiókban érhető el néhány, az a
 Az Azure Data Factory nem tárol semmilyen adatot, kivéve a felhőalapú adattárolók, amelyek tanúsítványok segítségével lettek titkosítva társított szolgáltatás hitelesítő adatait. A Data Factory létrehozása adatvezérelt munkafolyamatok, amelyekkel előkészíthető a közötti adatmozgás [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats), és az adatok feldolgozása [számítási szolgáltatások](compute-linked-services.md) más régiókban, illetve a egy a helyszíni környezetben. Is figyelése és kezelése a munkafolyamatok SDK-k és az Azure Monitor használatával.
 
 A Data Factory a hitelesített:
+
 | **[CSA STAR-minősítés](https://www.microsoft.com/trustcenter/compliance/csa-star-certification)** |
 | :----------------------------------------------------------- |
 | **[ISO 20000-1:2011](https://www.microsoft.com/trustcenter/Compliance/ISO-20000-1)** |

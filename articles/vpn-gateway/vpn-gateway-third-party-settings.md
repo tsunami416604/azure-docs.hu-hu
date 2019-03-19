@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 389578cb45977890645020fe7fcd6c69c08c41f5
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: fae790f9b2d5ecc492f7ece5d259809e8664898d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694251"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57991881"
 ---
 # <a name="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway"></a>Közösség által javasolt külső VPN vagy tűzfaleszköz-beállítások az Azure VPN gateway
 
@@ -40,7 +40,7 @@ Az alábbi táblázat néhány gyakori eszközöket és kapcsolódó súgó:
 |Cisco ASR  |[Az Azure VPN Cisco ASR a Közösség által javasolt megoldásokat](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASR&locale=enUS&tab=Cisco)   |
 |SonicWALL |Keresse meg **Azure VPN** a [Sonicwall hely](https://www.sonicwall.com/en-us/support) |
 | Checkpoint    |Keresse meg **Azure VPN** a [ellenőrzőpont-hely](https://supportcenter.checkpoint.com/supportcenter/portal) |
-|Juniper |Keresse meg **Azure VPN** a [Juniper hely]( http://www.juniper.net/search/public/)|
+|Juniper |Keresse meg **Azure VPN** a [Juniper hely]( https://www.juniper.net/search/public/)|
 |Barracuda  |[Az Azure VPN Barracuda a Közösség által javasolt megoldásokat](https://campus.barracuda.com/search/?q=%22Azure+VPN%22&x=0&y=0)   |
 |F5         |[Az Azure VPN F5 a Közösség által javasolt megoldásokat](https://support.f5.com/csp/#/federated-search?q=%22Azure%20VPN%22&source=support)          |
 |Palo       |[Az Azure VPN Palo a Közösség által javasolt megoldásokat](https://live.paloaltonetworks.com/t5/forums/searchpage/tab/message?q=Azure+VPN)        |

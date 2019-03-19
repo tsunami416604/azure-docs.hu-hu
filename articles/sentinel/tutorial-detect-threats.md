@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 897bcae65cd0115f3e224ec4a65e3736089bf97f
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 08f84a3e037301837da984b0891d978027dc2e11
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242496"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58083164"
 ---
 # <a name="tutorial-detect-threats-with-azure-sentinel-preview"></a>Oktatóanyag: Az Azure-on Előzetesben Sentinel-fenyegetések észlelése
 
@@ -42,11 +42,11 @@ Esetek vizsgálatához, először be kell észlelési szabályok létrehozásáh
 
 1. Válassza ki az Azure portál Azure Sentinel-, **Analytics**.
 
-  ![Elemzés](./media/tutorial-detect-threats/alert-rules.png)
+   ![Elemzés](./media/tutorial-detect-threats/alert-rules.png)
 
 2. A felső menüsávon kattintson **+ Hozzáadás**.  
 
-  ![Riasztási szabály létrehozása](./media/tutorial-detect-threats/create-alert-rule.png)
+   ![Riasztási szabály létrehozása](./media/tutorial-detect-threats/create-alert-rule.png)
 
 3. A **riasztási szabály létrehozása**, adjon meg egy leíró nevet, és állítsa be a **súlyossági** szükség szerint. 
 

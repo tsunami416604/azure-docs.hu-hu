@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: v-gedod
-ms.openlocfilehash: 00a4f222e45bcb62db13e420c6b1829d8be8a14b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 99b7f05304b48b7d885a80705d05fbe24854150f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57529325"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080641"
 ---
 # <a name="send-a-search-request-with-the-bing-entity-search-sdk-for-c"></a>A Bing Entity Search SDK-keresési kérelem küldéseC#
 
@@ -52,13 +52,13 @@ A Visual Studio-projektben a Bing Entity Search SDK hozzáadásához használja 
 
 ## <a name="create-a-client-and-send-a-search-request"></a>Hozzon létre egy ügyfél és a egy keresési kérelmet küldeni
 
-2. Hozzon létre egy új keresési ügyfél. Az előfizetési kulcs hozzáadása hozzon létre egy új `ApiKeyServiceClientCredentials`.
+1. Hozzon létre egy új keresési ügyfél. Az előfizetési kulcs hozzáadása hozzon létre egy új `ApiKeyServiceClientCredentials`.
 
     ```csharp
     var client = new EntitySearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
     ```
 
-3. Az ügyfél használata `Entities.Search()` függvény használatával keresse meg a lekérdezés:
+1. Az ügyfél használata `Entities.Search()` függvény használatával keresse meg a lekérdezés:
     
     ```csharp
     var entityData = client.Entities.Search(query: "Satya Nadella");

@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/11/2019
-ms.openlocfilehash: a999553d7ba26daba674534b1656e90ad0de4f5f
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 7211ffddf82b38ca27b776ecfd12bca25ebbb0f6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54243967"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121944"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql"></a>Riasztásokat állíthat be mérőszámok az Azure Database for postgresql-hez az Azure portal használatával 
 
@@ -60,21 +60,21 @@ Konfigurálhatja és riasztási szabályok használatával kapcsolatos informác
 
 10. Konfigurálja egy **e-mailek és SMS és leküldéses/Hangvétel** művelet típusa.
     
-   Válassza az "E-mailt az Azure Resource Manager szerepkör" jelölje be az előfizetés-tulajdonosokat, közreműködőknek és olvasóknak értesítések fogadásához.
+    Válassza az "E-mailt az Azure Resource Manager szerepkör" jelölje be az előfizetés-tulajdonosokat, közreműködőknek és olvasóknak értesítések fogadásához.
    
-   Szükség esetén adja meg az érvényes URI-t a **Webhook** Ha azt szeretné, hogy ez a riasztás aktiválódásakor nevű mezőt.
+    Szükség esetén adja meg az érvényes URI-t a **Webhook** Ha azt szeretné, hogy ez a riasztás aktiválódásakor nevű mezőt.
 
-   Válassza ki **OK** befejezésekor.
+    Válassza ki **OK** befejezésekor.
 
-   ![Műveletcsoport](./media/howto-alert-on-metric/10-action-group-type.png)
+    ![Műveletcsoport](./media/howto-alert-on-metric/10-action-group-type.png)
 
 11. Adjon meg egy riasztási szabály neve, leírása és súlyosság.
 
-   ![Műveletcsoport](./media/howto-alert-on-metric/11-name-description-severity.png) 
+    ![Műveletcsoport](./media/howto-alert-on-metric/11-name-description-severity.png) 
 
 12. Válassza ki **riasztási szabály létrehozása** a riasztás létrehozásához.
 
-   Néhány percen belül a riasztás aktív, és elindítja a fent leírtaknak megfelelően.
+    Néhány percen belül a riasztás aktív, és elindítja a fent leírtaknak megfelelően.
 
 ## <a name="manage-your-alerts"></a>A riasztások kezelése
 Miután létrehozta a riasztást, válassza ki, és hajtsa végre a következőket:

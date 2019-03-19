@@ -1,6 +1,6 @@
 ---
 title: Az Azure AD jelszó protection előzetes verziója
-description: A gyenge jelszavakat letiltása az Azure AD jelszó protection előzetes verziójának a helyszíni Active Directoryban
+description: A gyenge jelszavakat a helyszíni Active Directoryban letiltása az Azure AD jelszó protection előzetes verziója
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,87 +11,90 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f1beae186f6eb276b9aa302d3d51f0ba8688e591
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 2fdf308ff6178dcb51ec73e46d43b853f62e7777
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415748"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57840953"
 ---
 # <a name="preview-enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Előzetes verzió: Az Azure AD jelszóvédelem a Windows Server Active Directory kényszerítése
 
 |     |
 | --- |
-| Az Azure AD jelszóvédelem és a letiltott jelszavak egyéni lista a nyilvános előzetes verziójú funkciók az Azure Active Directory. Előzetes verziók kapcsolatos további információkért lásd: [kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
+| Az Azure Active Directory (Azure AD) jelszavas védelem és a letiltott jelszavak egyéni lista a nyilvános előzetes verziójú funkciók az Azure AD. Előzetes verziók kapcsolatos információkért lásd: [kiegészítő használati feltételek a Microsoft Azure Előzetesekre vonatkozó](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
-Az Azure AD jelszóvédelem működteti az Azure Active Directory (Azure AD) használatával javíthatja a szervezeten belüli jelszóházirendek nyilvános előzetes verzióban érhető el az egyik új szolgáltatása. Az Azure AD jelszóvédelem helyi telepítését használja is a globális és egyéni le van tiltva az Azure AD-ben tárolt jelszavak listáit, és végrehajtja az azonos ellenőrzi a helyszíni Azure AD felhőalapú változásának megfelelően.
+Az Azure AD jelszóvédelem új funkciója, amely növeli a szervezeten belüli jelszóházirendek nyilvános előzetes verzióban érhető el. A helyszíni üzembe helyezés jelszavas védelem is a globális és egyéni le van tiltva – jelszó listák az Azure ad-ben tárolt használ. Az azonos ellenőrzi a helyszíni, az Azure AD a felhőalapú módosításokat végez el.
 
 ## <a name="design-principles"></a>Tervezési alapelvek
 
-Az Active Directory az Azure AD jelszóvédelem szem előtt az alábbi elvek célja:
+Az Azure AD jelszóvédelem szem előtt ezeket az alapelveket a célja:
 
-* Tartományvezérlők soha nem szükségesek közvetlenül kommunikáljon az internettel
+* Tartományvezérlők soha nem kell közvetlenül kommunikáljon az internettel.
 * Nincs új hálózati portok nyitva vannak azokon a tartományvezérlőkön.
-* Az Active Directory-séma módosítása nélkül szükség. A szoftver a meglévő Active Directory-tárolót és a serviceConnectionPoint sémaobjektumok használja.
-* Nincs minimális Active Directory-tartomány vagy erdő működési szintjét (DFL\FFL) nem szükséges.
-* A szoftver hozzon létre vagy nem szükséges minden olyan fiókok, az általa védett munkaterhelésekkel Active Directory-tartománynak.
-* Felhasználói tiszta szöveges jelszavak soha nem hagyja a tartományvezérlő, (jelszó-ellenőrzési műveletek során, vagy bármikor).
-* Növekményes üzembe helyezést támogatott azzal a kompromisszummal jár, hogy jelszót házirend csak van érvényben, a domain controller ügynök telepítve van.
-* Javasoljuk, hogy a tartományvezérlő ügynököt telepíteni annak biztosítására, széles körben használt jelszó védelmi biztonság kényszerítése minden tartományvezérlő.
+* Az Active Directory-séma módosítása nélkül szükség. A szoftver használja a meglévő Active Directory **tároló** és **serviceConnectionPoint** adatbázisséma objektumaiban.
+* Nincs minimális Active Directory tartomány vagy erdő működési szintje (DFL/FFL) nem szükséges.
+* A szoftver nem hozzon létre vagy fiókok az Active Directory-tartományok, amely megvédi a szükséges.
+* Felhasználói tiszta szöveges jelszavak ne hagyja a tartományvezérlő, jelszó-ellenőrzési műveletek során vagy a tetszőleges időpontban.
+* A növekményes üzembe helyezést. De a jelszóházirend csak kényszerítve van, ahol a Domain Controller ügynök (DC ügynök) telepítve van.
+* Azt javasoljuk, hogy az összes olyan tartományvezérlőn annak biztosítására, univerzális jelszó védelmi biztonság kényszerítése az DC-ügynök telepítése.
 
 ## <a name="architectural-diagram"></a>Architekturális diagramja
 
-Fontos rendelkezik az alapul szolgáló tervezési és működési fogalmak megismerése az Azure AD jelszavas védelem az Active Directory a helyszíni környezetben üzembe helyezése előtt. Az alábbi ábrán látható, hogyan működik az Azure AD jelszóvédelem összetevői együtt:
+Fontos, az alapul szolgáló tervezési és a függvény fogalmak megértéséhez, az Azure AD jelszavas védelem az Active Directory a helyszíni környezetben üzembe helyezése előtt. Az alábbi ábrán látható, hogyan működik a jelszavas védelem összetevői együtt:
 
 ![Hogyan működnek együtt az Azure AD jelszó-védelem összetevői](./media/concept-password-ban-bad-on-premises/azure-ad-password-protection.png)
 
-A fenti ábrán az Azure AD jelszóvédelem alkotó három alapvető szoftveres összetevők:
+* Az Azure AD-jelszó védelme Proxy szolgáltatás minden olyan tartományhoz csatlakoztatott gép az aktuális Active Directory-erdő futtat. Az elsődleges célja tartományvezérlők az Azure AD-jelszó házirend letöltési kérelmek továbbításához. Majd visszaadja a válaszok az Azure ad-ből a tartományvezérlőre.
+* A jelszószűrő DLL, a tartományvezérlő-ügynök a felhasználói jelszó-érvényesítési kéréseket fogad az operációs rendszer. Azt továbbítja őket a tartományvezérlő ügynök szolgáltatás, amely helyben fut a tartományvezérlő.
+* A tartományvezérlő Agent szolgáltatást a jelszavas védelem jelszó-érvényesítési kéréseket fogad a jelszószűrő DLL, a tartományvezérlő-ügynök. Azt az aktuális (helyben érhető el) jelszóházirend használatával dolgozza fel, és visszaadja az eredményt: *átadni* vagy *sikertelen*.
 
-* Az Azure AD-jelszó védelme Proxy szolgáltatás minden olyan tartományhoz csatlakoztatott gép az aktuális Active Directory-erdő futtat. Elsődleges célja, hogy a jelszó házirend letöltési kérelmek tartományvezérlőkről továbbítja az Azure AD és az Azure ad-ből a választ adja vissza a tartományvezérlőre.
-* Az Azure AD-jelszó Protection tartományvezérlő ügynök jelszó szűrő dll felhasználói jelszó-érvényesítési kéréseket fogad az operációs rendszer, majd továbbítja azokat az Azure AD-jelszó DC védelmi ügynök szolgáltatás helyben fut a tartományvezérlő.
-* Az Azure AD-jelszó DC védelmi ügynök szolgáltatás jelszó érvényesítése kéréseket fogad a tartományvezérlő ügynök jelszó szűrő dll, feldolgozza őket az aktuális (helyben érhető el) jelszóházirend használatával, és visszaadja az eredményt (pass\fail).
+## <a name="how-password-protection-works"></a>Jelszavas védelem működése
 
-## <a name="theory-of-operations"></a>A műveletek elmélet
+Minden egyes Azure AD-jelszó védelme Proxy szolgáltatáspéldány azonosítja magát a tartományvezérlőn, az erdő hozzon létre egy **serviceConnectionPoint** objektumot az Active Directory.
 
-A fenti ábra és tervezési elvek, így megadott Azure AD jelszóvédelem ténylegesen működése?
+Minden egyes tartományvezérlő ügynökszolgáltatás jelszavas védelmet is létrehoz egy **serviceConnectionPoint** objektumot az Active Directory. Ez az objektum elsősorban a jelentéskészítés és a diagnosztika szolgál.
 
-Minden egyes Azure AD-jelszó védelme Proxy szolgáltatás meghirdetése maga az erdő tartományvezérlőinek hozzon létre egy serviceConnectionPoint objektumot az Active Directoryban.
+A tartományvezérlő-ügynökszolgáltatás elindítása az Azure AD új jelszó házirend letöltése felelős. Az első lépés az, hogy keresse meg az Azure AD-jelszó védelme Proxy szolgáltatás az erdő proxy lekérdezésével **serviceConnectionPoint** objektumokat. Egy elérhető proxy szolgáltatás található, ha a tartományvezérlő-ügynök egy jelszó házirend letöltése kérést küld a proxy szolgáltatást. A proxy szolgáltatást ezután elküldi a kérést az Azure ad-hez. A proxy szolgáltatás majd visszaadja a választ a tartományvezérlő Agent szolgáltatást.
 
-Minden egyes Azure AD-jelszó DC védelmi ügynök szolgáltatás Active Directoryban is egy serviceConnectionPoint objektumot hoz létre. Azonban ez szolgál elsősorban a jelentéskészítés és a diagnosztika.
+A tartományvezérlő Agent szolgáltatást az Azure AD új jelszó szabályzat kap, miután a szolgáltatás a tartomány gyökerében egy dedikált mappában tárolja a szabályzat *sysvol* mappamegosztáshoz. A tartományvezérlő-ügynökszolgáltatás is figyeli ezt a mappát, abban az esetben, ha újabb házirendek replikálni a többi tartományvezérlő ügynökszolgáltatások a tartományban.
 
-Az Azure AD-jelszó DC védelmi ügynök szolgáltatás felelős a letöltés, az Azure AD új jelszó házirendek kezdeményezése. Az első lépés, hogy keresse meg az Azure AD-jelszó védelme Proxy szolgáltatás az erdő proxy serviceConnectionPoint objektumok lekérdezésével. Után egy elérhető proxy szolgáltatás található, és a proxykiszolgáló, amely ezután elküldi őket az Azure AD, és ezután visszaadja a választ a tartományvezérlő-ügynökszolgáltatás jelszó házirend letöltési kérés küldi a tartományvezérlő agent szolgáltatást. Miután kapott egy új jelszót a házirend az Azure ad-ből, a tartományvezérlő-ügynökszolgáltatás tárolja a szabályzat egy dedikált mappával a gyökérkönyvtárban a tartomány sysvol-megosztás. A tartományvezérlő-ügynökszolgáltatás is figyeli ezt a mappát, abban az esetben, ha újabb házirendek replikálni a többi tartományvezérlő ügynök szolgáltatást a tartományban.
+A tartományvezérlő-ügynökszolgáltatás mindig egy új házirendet a szolgáltatás indításakor kér. Miután a tartományvezérlő-ügynökszolgáltatás elindult, ellenőrzi az aktuális helyileg elérhető házirend óránként korát. A szabályzat a régebbi, mint egy óra, a tartományvezérlő ügynök kér egy új szabályzatot az Azure AD-ben korábban leírtak szerint. Ha a jelenlegi házirend nincs egy óránál régebbi, a tartományvezérlő-ügynök továbbra is használja az adott házirendnek.
 
-Az Azure AD-jelszó DC védelmi ügynök szolgáltatás mindig kér egy új házirendet a szolgáltatás indítása. Miután a tartományvezérlő-ügynökszolgáltatás elindult, akkor rendszeres időközönként (óránként) Ellenőrizze a jelenlegi helyileg elérhető házirend; kora a jelenlegi szabályzat a régebbi, mint egy óra a tartományvezérlő-ügynökszolgáltatás kérelmezi egy új szabályzatot az Azure ad-ből fent leírtak szerint, ellenkező esetben a tartományvezérlő-ügynök továbbra is az aktuális házirend használatára.
+Minden alkalommal, amikor egy Azure AD jelszó védelmi jelszó házirend letöltődik minden, az adott házirendnek csak egy bérlőt. Más szóval jelszóházirendek mindig a Microsoft globális le van tiltva – jelszó és listája, a bérlőnkénti egyéni le van tiltva – jelszó kombinációja.
 
-Az Azure AD-jelszó védelmi DC Agent szolgáltatás az Azure AD-jelszó védelmi proxyszolgáltatás használatával (távoli eljáráshívási) RPC TCP-n keresztül kommunikál. A Proxy szolgáltatás (szerint) ezeket a hívásokat az vagy egy statikus vagy dinamikus RPC-portot figyeli.
+A tartományvezérlő-ügynök TCP protokollon keresztül kommunikál a proxy-szolgáltatás RPC-n keresztül. A proxy szolgáltatást figyeli a hívásokat a statikus vagy dinamikus RPC port, a konfigurációtól függően.
 
-Az Azure AD-jelszó DC védelmi ügynök soha nem egy hálózati rendelkezésre álló portot figyeli, és a Proxy szolgáltatás soha nem próbál meghívja a tartományvezérlő-ügynök szolgáltatást.
+A tartományvezérlő ügynök soha nem egy hálózati elérhető porton figyel.
 
-Az Azure AD-jelszó védelme Proxy szolgáltatás az állapot nélküli; soha nem gyorsítótárazza a szabályzatok, vagy más Azure-ból letöltött.
+A proxy szolgáltatás soha nem hívja a tartományvezérlő Agent szolgáltatást.
 
-Az Azure AD-jelszó DC védelmi ügynök szolgáltatás csak egyre kiértékelik a legújabb elérhető helyi jelszóházirend használatával a felhasználó jelszavát. A helyi tartományvezérlő nem jelszóházirend érhető el, ha a jelszó fogadja el a rendszer automatikusan, és a egy eseménynapló-üzenet figyelmezteti a felhasználót a rendszergazda lesz naplózva.
+A proxy szolgáltatás az állapot nélküli. Soha nem gyorsítótárazza a szabályzatok, vagy más Azure-ból letöltött.
 
-Az Azure AD jelszóvédelem nem egy valós idejű alkalmazás házirendmotor. Előfordulhat, a szabályzat konfigurációs jelszómódosítás közötti idő következtében késedelem jön létre az Azure ad-ben és az idő eléri a, és a rendszer kényszeríti az összes tartományvezérlő.
+A tartományvezérlő Agent szolgáltatást a legújabb elérhető helyi jelszóházirend mindig használja a jelszó kiértékelése. Ha nincs jelszóházirend nem érhető el a helyi tartományvezérlőn, a jelszó automatikusan elfogadja. Ha ez történik, egy üzenet figyelmezteti a felhasználót a rendszergazda rendszer naplózza.
 
-## <a name="foresttenant-binding-for-azure-ad-password-protection"></a>Az Azure AD jelszóvédelem Forest\tenant kötés
+Az Azure AD jelszóvédelem egy valós idejű alkalmazás házirendmotor nem. Amikor jelszó házirend konfigurációs módosításakor az Azure ad-ben, és amikor, amely eléri módosítása és kényszerítve van az összes olyan tartományvezérlőn közötti késleltetés is lehet.
 
-Az Azure AD jelszavas védelem az Active Directory-erdő telepítése az Active Directory-erdőben, és minden üzembe helyezett Azure AD-jelszó védelmi alkalmazásproxy-szolgáltatásokat az Azure AD-regisztrációs igényel. Mindkét ilyen regisztrációk (erdő és proxyk) társítva egy adott Azure AD-bérlőhöz, a regisztráció során használt hitelesítő adatok használatával implicit módon azonosított. Visszaállít egy Azure AD jelszóvédelem jelszó házirend letöltődik minden, a rendszer mindig a bérlőjéhez tartozik (azaz, hogy a szabályzat minden esetben lesz a Microsoft globális kombinációját le van tiltva jelszót és a bérlőnkénti egyéni letiltott jelszavak listában). Az erdő más Azure ad között eltérő tartományokban vagy proxy konfigurálása nem támogatott bérlők számára.
+## <a name="foresttenant-binding-for-password-protection"></a>Erdő vagy a bérlőjéhez kötést a jelszavas védelem
+
+Az Azure AD jelszavas védelem az Active Directory-erdő telepítése az adott erdőben, az Azure AD-regisztrációs igényel. Minden üzembe helyezett proxy szolgáltatás is regisztrálni kell az Azure ad-ben. Egy adott erdő és a proxy regisztrációk tartoznak az Azure AD-bérlőjéhez, amely implicit módon azonosíthatók a regisztráció során használt hitelesítő adatokkal.
+
+Az Active Directory-erdő és a egy erdőn belül minden üzembe helyezett alkalmazásproxy-szolgáltatásokat a ugyanazt bérlőhöz regisztrálva kell lennie. Szeretné, hogy az Active Directory-erdőben vagy bármely alkalmazásproxy-szolgáltatásokat, hogy az erdő regisztrálja a másik Azure AD-bérlők nem támogatott. Az ilyen egy rosszul konfigurált telepítési tünetei a jelszóházirendek letöltése nem.
 
 ## <a name="license-requirements"></a>Licenckövetelmények
 
-A globális letiltott jelszavak lista előnyeit az Azure Active Directory (Azure AD) minden felhasználóra érvényes.
+A globális letiltott jelszavak lista előnyeit az Azure AD minden felhasználóra érvényes.
 
-A letiltott jelszavak egyéni lista alapszintű Azure AD-licenc szükséges.
+Az egyéni le van tiltva – jelszó-lista alapszintű Azure AD-licenc szükséges.
 
-Az Azure AD-jelszó védelmét Windows Server Active Directory prémium szintű Azure AD-licenc szükséges.
+Az Azure AD jelszóvédelem a Windows Server Active Directory prémium szintű Azure AD-licenc szükséges.
 
-További licencelési információk, beleértve a költségek, találhatók a [Azure Active Directory díjszabását ismertető a hely](https://azure.microsoft.com/pricing/details/active-directory/).
+További licencelési információkért lásd: [Azure Active Directory díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="download"></a>Letöltés
 
-A két, amely letölthető az Azure AD jelszó-védelemhez szükséges ügynök telepítőcsomagjai a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=57071)
+A két szükséges ügynök telepítőcsomagjai az Azure AD jelszóvédelem érhetők el a [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=57071).
 
 ## <a name="next-steps"></a>További lépések
-
 [Azure AD jelszóvédelem üzembe helyezése](howto-password-ban-bad-on-premises-deploy.md)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: magoedte
-ms.openlocfilehash: 58f16b0aa068c8b333ef4e7986bb49327b002fbb
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: e8afdfece258986f5dc4cc6f1c7e66aed24e0500
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195421"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092548"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Figyelés megoldásra az Azure monitorban
 
@@ -100,19 +100,19 @@ A megoldás telepítésekor és konfigurálásakor vegye figyelembe az alábbi i
 1. A Tárolómonitorozási megoldás hozzáadása a Log Analytics-munkaterületet [Azure Marketplace-en](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) vagy leírt folyamatot követve [hozzáadása a megoldástárból megoldások monitorozása](../../azure-monitor/insights/solutions.md).
 
 2. Telepítse, és a Docker és a egy Log Analytics-ügynököket a használata. Az operációs rendszer és a Docker orchestrator alapján, használhatja az alábbi módszerek konfigurálása az ügynök.
-  - Önálló gazdagépek:
-    - A támogatott Linux operációs rendszer telepítése és Docker futtatása és telepítse és konfigurálja a [Linuxhoz készült Log Analytics-ügynök](../../azure-monitor/learn/quick-collect-linux-computer.md).  
-    - A CoreOS a Linuxhoz készült Log Analytics-ügynök nem futtatható. Ehelyett a Linuxhoz készült Log Analytics-ügynök tárolóalapú verzióját futtatja. Tekintse át a CoreOS többek között Linuxos tárológazdagép vagy Linux-alapú Azure Government tárológazdagép, beleértve a CoreOS is, ha a tárolók az Azure Government felhőben dolgozik.
-    - A Windows Server 2016 és Windows 10-es a Docker-motor és az ügyfél telepítéséhez, majd információkat gyűjthet, és küldje el az Azure Monitor az ügynök csatlakoztatása. Tekintse át [telepítése és konfigurálása a Windows tárológazdagép](#install-and-configure-windows-container-hosts) Ha egy Windows-környezettel rendelkezik.
-  - A Docker-gazdagép több vezénylési:
-    - Ha egy Red Hat OpenShift környezettel rendelkezik, tekintse át a konfigurálása a Log Analytics-ügynököket, a Red Hat OpenShift.
-    - Ha rendelkezik egy Kubernetes-fürtöt az Azure Container Service használatával:
+   - Önálló gazdagépek:
+     - A támogatott Linux operációs rendszer telepítése és Docker futtatása és telepítse és konfigurálja a [Linuxhoz készült Log Analytics-ügynök](../../azure-monitor/learn/quick-collect-linux-computer.md).  
+     - A CoreOS a Linuxhoz készült Log Analytics-ügynök nem futtatható. Ehelyett a Linuxhoz készült Log Analytics-ügynök tárolóalapú verzióját futtatja. Tekintse át a CoreOS többek között Linuxos tárológazdagép vagy Linux-alapú Azure Government tárológazdagép, beleértve a CoreOS is, ha a tárolók az Azure Government felhőben dolgozik.
+     - A Windows Server 2016 és Windows 10-es a Docker-motor és az ügyfél telepítéséhez, majd információkat gyűjthet, és küldje el az Azure Monitor az ügynök csatlakoztatása. Tekintse át [telepítése és konfigurálása a Windows tárológazdagép](#install-and-configure-windows-container-hosts) Ha egy Windows-környezettel rendelkezik.
+   - A Docker-gazdagép több vezénylési:
+     - Ha egy Red Hat OpenShift környezettel rendelkezik, tekintse át a konfigurálása a Log Analytics-ügynököket, a Red Hat OpenShift.
+     - Ha rendelkezik egy Kubernetes-fürtöt az Azure Container Service használatával:
        - Felülvizsgálat [Kubernetes a Log Analytics Linux-ügynökének konfigurálása](#configure-a-log-analytics-linux-agent-for-kubernetes).
        - Felülvizsgálat [konfigurálja a Kubernetes a Log Analytics Windows ügynök](#configure-a-log-analytics-windows-agent-for-kubernetes).
        - Tekintse át a Helm használata a Linux Kubernetes a Log Analytics-ügynök telepítése.
-    - Ha rendelkezik egy Azure Container Service DC/OS-fürtön, további tudnivalókat talál [egy Azure Container Service DC/OS-fürt monitorozása az Azure Monitor szolgáltatással](../../container-service/dcos-swarm/container-service-monitoring-oms.md).
-    - Ha egy Docker Swarm módú környezettel rendelkezik, további konfigurálás, egy Log Analytics-ügynököket a Docker Swarmra.
-    - Ha egy Service Fabric-fürtöt, további tudnivalókat talál [-tárolók monitorozása az Azure Monitor szolgáltatással](../../service-fabric/service-fabric-diagnostics-oms-containers.md).
+     - Ha rendelkezik egy Azure Container Service DC/OS-fürtön, további tudnivalókat talál [egy Azure Container Service DC/OS-fürt monitorozása az Azure Monitor szolgáltatással](../../container-service/dcos-swarm/container-service-monitoring-oms.md).
+     - Ha egy Docker Swarm módú környezettel rendelkezik, további konfigurálás, egy Log Analytics-ügynököket a Docker Swarmra.
+     - Ha egy Service Fabric-fürtöt, további tudnivalókat talál [-tárolók monitorozása az Azure Monitor szolgáltatással](../../service-fabric/service-fabric-diagnostics-oms-containers.md).
 
 Tekintse át a [Windows Docker-motor](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon) ismertető cikkben talál további információt a telepítése és konfigurálása a Docker-motor a Windows rendszerű számítógépeken.
 
@@ -476,17 +476,17 @@ A Linux Kubernetes-környezetet a Log Analytics-ügynök telepítése a helm has
     LAST DEPLOYED: Tue Sep 19 20:37:46 2017
     NAMESPACE: default
     STATUS: DEPLOYED
- 
+ 
     RESOURCES:
     ==> v1/Secret
     NAME            TYPE    DATA  AGE
     omsagent-msoms  Opaque  3     17m
- 
+ 
     ==> v1beta1/DaemonSet
     NAME            DESIRED  CURRENT  READY  UP-TO-DATE  AVAILABLE  NODE-SELECTOR  AGE
     omsagent-msoms  3        3        3      3           3          <none>         17m
     ```
-További információkért látogasson el [tároló megoldás Helm-diagram](https://aka.ms/omscontainerhelm).
+   További információkért látogasson el [tároló megoldás Helm-diagram](https://aka.ms/omscontainerhelm).
 
 ### <a name="install-and-configure-windows-container-hosts"></a>Telepítse és konfigurálja a Windows-tárolók gazdagép
 

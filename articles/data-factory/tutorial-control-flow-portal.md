@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: 1ee3b3cccd01e4a767a8d1212967b57ff29bea62
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 092a346d8303bb9e88a53b6fa529bb820635c554
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548098"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099542"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Elágaztatási és láncolási tevékenységek a Data Factory-folyamatokban
 Ebben az oktatóanyagban egy olyan adat-előállító folyamatot hoz létre, amely bemutat néhány folyamvezérlési funkciót. A folyamat egy egyszerű másolást hajt végre egy Azure Blob Storage-beli tárolóból egy másik tárolóba, amely ugyanazon tárfiókban található. Ha a másolási tevékenység sikeres, a folyamat egy e-mailt küld a sikeres műveletről, amelyben szerepelnek a sikeres másolási művelet részletei (például az írt adatok mennyisége). Ha a másolási tevékenység sikertelen, a folyamat egy e-mailt küld a sikertelen műveletről, amelyben szerepelnek a sikertelen másolás részletei (például a hibaüzenet). Az oktatóanyag során megismerheti, hogyan adhatók át a paraméterek.
@@ -199,10 +199,10 @@ Ebben a lépésben egy másolási tevékenységgel és két webes tevékenységg
    ![Új Azure Storage-beli társított szolgáltatás](./media/tutorial-control-flow-portal/new-azure-storage-linked-service.png)
 12. Adja meg a `@pipeline().parameters.sourceBlobContainer` mappanevet és az `emp.txt` fájlnevet. A sourceBlobContainer folyamatparaméterrel adhatja meg az adatkészlet mappájának elérési útját. 
 
-    ![Forrásadatkészlet beállításai](./media/tutorial-control-flow-portal/source-dataset-settings.png)
+   ![Forrásadatkészlet beállításai](./media/tutorial-control-flow-portal/source-dataset-settings.png)
 13. Váltson a **folyamatot** tartalmazó lapra, (vagy) kattintson a folyamatra a fanézetben. Győződjön meg arról, hogy a **Forrásadatkészlet** mezőben a **SourceBlobDataset** adatkészlet van kiválasztva. 
 
-   ![Forrásadatkészlet](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
+    ![Forrásadatkészlet](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
 13. A tulajdonságok ablakában váltson a **Fogadó** lapra, és kattintson az **+ Új** elemre a **Fogadó adatkészlet** mezőben. Ebben a lépésben a forrásadatkészlet létrehozásához hasonlóan létrehoz egy fogadó adatkészletet a másolási tevékenységhez. 
 
     ![Új fogadó adatkészlet gomb](./media/tutorial-control-flow-portal/new-sink-dataset-button.png)
@@ -217,7 +217,7 @@ Ebben a lépésben egy másolási tevékenységgel és két webes tevékenységg
         ![Fogadó adatkészlet beállításai](./media/tutorial-control-flow-portal/sink-dataset-settings.png)
 17. Váltson a felül látható **Folyamat** lapra. A **Tevékenységek** eszközkészletben bontsa ki az **Általános** elemet, és húzzon egy **Webes** tevékenységet a folyamat tervezőfelületére. Állítsa a tevékenység nevét a következőre: **SendSuccessEmailActivity**. A webes tevékenység bármely REST-végpont meghívását lehetővé teszi. Erről a tevékenységről további információt a [webes tevékenységgel](control-flow-web-activity.md) kapcsolatos témakörben talál. Ez a folyamat egy webes tevékenységgel hívja meg a Logic Apps e-mail-munkafolyamatát. 
 
-   ![Az első webes tevékenység áthúzása](./media/tutorial-control-flow-portal/success-web-activity-general.png)
+    ![Az első webes tevékenység áthúzása](./media/tutorial-control-flow-portal/success-web-activity-general.png)
 18. Váltson az **Általános** lapról a **Beállítások** lapra, és végezze el az alábbi lépéseket: 
     1. Az **URL** mezőben adja meg a sikeres műveletet jelző e-mailt elküldő Logic Apps-munkafolyamat URL-címét.  
     2. A **Metódus** mezőben válassza a **POST** lehetőséget. 
@@ -235,12 +235,12 @@ Ebben a lépésben egy másolási tevékenységgel és két webes tevékenységg
         ```
         Az üzenettörzs a következő tulajdonságokat tartalmazza:
 
-        - Message – Az átadott érték: `@{activity('Copy1').output.dataWritten`. Hozzáfér az előző másolási tevékenység egy tulajdonságához, és átadja a dataWritten értéket. Sikertelen művelet esetén az átadott érték a `@{activity('CopyBlobtoBlob').error.message` helyett a hibakimenet.
-        - Data Factory Name – Az átadott érték: `@{pipeline().DataFactory}`. Ez egy rendszerváltozó, amely lehetővé teszi a megfelelő adat-előállító nevének elérését. A rendszerváltozók listáját lásd a [rendszerváltozókkal](control-flow-system-variables.md) kapcsolatos cikkben.
-        - Pipeline Name – Az átadott érték: `@{pipeline().Pipeline}`. Ez szintén egy rendszerváltozó, amely lehetővé teszi a megfelelő folyamat nevének elérését. 
-        - Receiver – Az átadott érték: "\@pipeline().parameters.receiver"). Hozzáfér a folyamat paramétereihez.
+       - Message – Az átadott érték: `@{activity('Copy1').output.dataWritten`. Hozzáfér az előző másolási tevékenység egy tulajdonságához, és átadja a dataWritten értéket. Sikertelen művelet esetén az átadott érték a `@{activity('CopyBlobtoBlob').error.message` helyett a hibakimenet.
+       - Data Factory Name – Az átadott érték: `@{pipeline().DataFactory}`. Ez egy rendszerváltozó, amely lehetővé teszi a megfelelő adat-előállító nevének elérését. A rendszerváltozók listáját lásd a [rendszerváltozókkal](control-flow-system-variables.md) kapcsolatos cikkben.
+       - Pipeline Name – Az átadott érték: `@{pipeline().Pipeline}`. Ez szintén egy rendszerváltozó, amely lehetővé teszi a megfelelő folyamat nevének elérését. 
+       - Receiver – Az átadott érték: "\@pipeline().parameters.receiver"). Hozzáfér a folyamat paramétereihez.
     
-        ![Az első webes tevékenység beállításai](./media/tutorial-control-flow-portal/web-activity1-settings.png)         
+         ![Az első webes tevékenység beállításai](./media/tutorial-control-flow-portal/web-activity1-settings.png)         
 19. Kapcsolja össze a **Másolás** tevékenységet a **Webes** tevékenységgel úgy, hogy a másolási tevékenység melletti zöld gombot a webes tevékenységre húzza. 
 
     ![A másolási tevékenység összekapcsolása az első webes tevékenységgel](./media/tutorial-control-flow-portal/connect-copy-web-activity1.png)

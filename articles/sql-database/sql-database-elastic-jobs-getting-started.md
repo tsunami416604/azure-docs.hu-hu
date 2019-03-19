@@ -11,13 +11,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/04/2018
-ms.openlocfilehash: 6c77bb1f17f93e25605d251c717c2a4d61f940dd
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/12/2019
+ms.openlocfilehash: 5fd51e2d847b540d2eb8c17c2bc31f4e162a21ee
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313963"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904626"
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Ismerkedés a rugalmas adatbázis-feladatok
 
@@ -28,6 +28,8 @@ Ez a cikk a található minta kibővíti [Ismerkedés az Elastic Database-eszkö
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> A PowerShell Azure Resource Manager-modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés Az.Sql modul. Ezeket a parancsmagokat lásd: [azurerm.SQL-hez](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). A parancsok a Az modul, és az AzureRm-modulok argumentumainak lényegében megegyeznek.
 
 Töltse le és futtassa a [Ismerkedés az Elastic Database-eszközök minta](sql-database-elastic-scale-get-started.md).
 
@@ -50,7 +52,7 @@ Itt mi lenne általában horizontálispartíció-térkép létrehozása cél has
 
 ## <a name="creates-a-custom-collection-and-add-all-databases-in-the-server-to-the-custom-collection-target-with-the-exception-of-master"></a>Egy egyéni gyűjteményt hoz létre, és adja hozzá minden adatbázis a kiszolgáló master kivételével az egyéni gyűjtemény cél
 
-   ```Powershell
+   ```PowerShell
     $customCollectionName = "dbs_in_server"
     New-AzureSqlJobTarget -CustomCollectionName $customCollectionName
     $ResourceGroupName = "ddove_samples"
@@ -314,7 +316,7 @@ Ha egy feladat törlése a szülőfeladat van szükség, a szülő feladat és a
 
 Megszakítási kérelmet küldeni, használja a **Stop-AzureSqlJobExecution** parancsmagot, és állítsa a **JobExecutionId** paraméter.
 
-   ```Powershell
+   ```PowerShell
     $jobExecutionId = "{Job Execution Id}"
     Stop-AzureSqlJobExecution -JobExecutionId $jobExecutionId
    ```

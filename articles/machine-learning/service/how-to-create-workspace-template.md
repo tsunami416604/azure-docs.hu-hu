@@ -6,16 +6,15 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.reviewer: larryfr
-ms.author: haining
-author: hning86
+ms.author: larryfr
+author: Blackmist
 ms.date: 02/11/2019
-ms.openlocfilehash: d91cb2a98c6861695ffdc231bd979abaf24b2c6e
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 2b5ee1b5079f22985b03aaafac30c11a10a3c8f0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56669992"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57850077"
 ---
 # <a name="create-an-azure-machine-learning-service-workspace-by-using-a-template"></a>Az Azure Machine Learning szolgáltatás munkaterület létrehozása sablon használatával
 
@@ -25,7 +24,7 @@ További információkért lásd: [alkalmazás üzembe helyezése Azure Resource
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy **Azure-előfizetés**. Ha nem rendelkezik egy, a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](http://aka.ms/AMLFree).
+* Egy **Azure-előfizetés**. Ha nem rendelkezik egy, a [Azure Machine Learning szolgáltatás ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
 
 * A parancssori felületen a sablon használatához szüksége vagy [Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) vagy a [Azure CLI-vel](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -193,12 +192,12 @@ További információ a sablonok tekintse meg a következő cikkeket:
 1. Kövesse a [erőforrások egyéni sablon üzembe helyezése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template). Ha akkor érkeznek a __sablon szerkesztése__ lapon illessze be a sablon a dokumentumban.
 1. Válassza ki __mentése__ használhatja a sablont. Adja meg a következő adatokat, és vállalja, hogy a felsorolt feltételeket és kikötéseket:
 
-    * Előfizetés: Válassza ki az Azure-előfizetés használni ezekhez az erőforrásokhoz.
-    * Erőforráscsoport: Válassza ki vagy hozzon létre egy erőforráscsoportot a szolgáltatásokat tartalmazza.
-    * Munkaterület neve: Az Azure Machine Learning-munkaterületet, amely létrehozza a használni kívánt nevet. A munkaterület neve 3 – 33 karakter hosszúnak kell lennie. Csak alfanumerikus karaktereket tartalmazhat, és '-'.
-    * Hely: Válassza ki a helyet, ahol létrejön az erőforrásokat.
+   * Előfizetés: Válassza ki az Azure-előfizetés használni ezekhez az erőforrásokhoz.
+   * Erőforráscsoport: Válassza ki vagy hozzon létre egy erőforráscsoportot a szolgáltatásokat tartalmazza.
+   * Munkaterület neve: Az Azure Machine Learning-munkaterületet, amely létrehozza a használni kívánt nevet. A munkaterület neve 3 – 33 karakter hosszúnak kell lennie. Csak alfanumerikus karaktereket tartalmazhat, és '-'.
+   * Hely: Válassza ki a helyet, ahol létrejön az erőforrásokat.
 
-    ![A sablon paramétereit az Azure Portalon](media/how-to-create-workspace-template/template-parameters.png)
+     ![A sablon paramétereit az Azure Portalon](media/how-to-create-workspace-template/template-parameters.png)
 
 További információkért lásd: [erőforrások egyéni sablon üzembe helyezése](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
 

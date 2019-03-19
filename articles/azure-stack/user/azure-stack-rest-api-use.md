@@ -14,12 +14,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 651950cfe6ab1b752c4bcf92c4e2f00591e9eb97
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 1773083a5d02f3bb988ac3e5cef6528a5d49b94e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252098"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100394"
 ---
 <!--  cblackuk and charliejllewellyn. This is a community contribution by cblackuk-->
 
@@ -66,25 +66,25 @@ grant_type=password
 
 Minden egyes érték:
 
- - **grant_type**  
-    A hitelesítési séma használatával fogja típusát. Ebben a példában a értéke `password`
+- **grant_type**  
+   A hitelesítési séma használatával fogja típusát. Ebben a példában a értéke `password`
 
- - **resource**  
-    Az erőforráshoz fér hozzá a jogkivonat. Az erőforrás megtalálhatja az Azure Stack felügyeleti metaadatok végpontja lekérdezésével. Tekintse meg a **célközönséggel** szakasz
+- **resource**  
+   Az erőforráshoz fér hozzá a jogkivonat. Az erőforrás megtalálhatja az Azure Stack felügyeleti metaadatok végpontja lekérdezésével. Tekintse meg a **célközönséggel** szakasz
 
- - **Az Azure Stack-felügyeleti végpont**  
-    ```
-    https://management.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-01
-    ```
+- **Az Azure Stack-felügyeleti végpont**  
+   ```
+   https://management.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-01
+   ```
 
   > [!NOTE]  
   > Ha Ön rendszergazda megpróbál hozzáférni a bérlői API-hoz majd ellenőrizze, a bérlő a végpontot, például használja: `https://adminmanagement.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-011`  
 
   Ha például az az Azure Stack Development Kit végpontként:
 
-    ```bash
-    curl 'https://management.local.azurestack.external/metadata/endpoints?api-version=2015-01-01'
-    ```
+   ```bash
+   curl 'https://management.local.azurestack.external/metadata/endpoints?api-version=2015-01-01'
+   ```
 
   Válasz:
 
@@ -94,9 +94,9 @@ Minden egyes érték:
   "graphEndpoint":"https://graph.windows.net/",
   "portalEndpoint":"https://adminportal.local.azurestack.external/",
   "authentication":{
-      "loginEndpoint":"https://login.windows.net/",
-      "audiences":["https://contoso.onmicrosoft.com/4de154de-f8a8-4017-af41-df619da68155"]
-      }
+     "loginEndpoint":"https://login.windows.net/",
+     "audiences":["https://contoso.onmicrosoft.com/4de154de-f8a8-4017-af41-df619da68155"]
+     }
   }
   ```
 

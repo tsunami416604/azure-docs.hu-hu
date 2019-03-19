@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: d7679f41b5e1c1fe6705ef3ed4be28a521f0d0d2
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 46507562ab5a31f377b8c3a11902abf9aeccd846
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728488"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176446"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-using-java"></a>Gyors útmutató: A Translator Text API segítségével meghatározhatja, mondat hossza Java használatával
 
@@ -34,8 +34,8 @@ Ehhez a rövid útmutatóhoz szükség van egy [Azure Cognitive Services-fiókra
 Először hozzon létre egy könyvtárat a projekthez. A parancssor (vagy a Terminálszolgáltatások) a következő parancs futtatásával:
 
 ```console
-mkdir break-sentence-sample
-cd break-sentence-sample
+mkdir length-sentence-sample
+cd length-sentence-sample
 ```
 
 Ezután fog inicializálni a Gradle-projektet. Ezzel a paranccsal fájlokat hoz létre alapvető build gradle-t, a legfontosabb, a `build.gradle.kts`, amelyek futásidőben használatos létrehozni és konfigurálni az alkalmazást. Futtassa ezt a parancsot a munkakönyvtárban:
@@ -56,7 +56,7 @@ plugins {
     application
 }
 application {
-    mainClassName = "BreakSentence"
+    mainClassName = "LengthSentence"
 }
 repositories {
     mavenCentral()
@@ -77,11 +77,11 @@ Hozzunk létre egy mappát a mintaalkalmazást. Futtassa a munkakönyvtárban:
 mkdir -p src/main/java
 ```
 
-Ezt követően ebben a mappában hozzon létre egy fájlt `BreakSentence.java`.
+Ezt követően ebben a mappában hozzon létre egy fájlt `LengthSentence.java`.
 
 ## <a name="import-required-libraries"></a>Importálja a szükséges kódtárak
 
-Nyissa meg `BreakSentence.java` , és adja hozzá ezeket kimutatások importálása:
+Nyissa meg `LengthSentence.java` , és adja hozzá ezeket kimutatások importálása:
 
 ```java
 import java.io.*;
@@ -97,12 +97,12 @@ import com.squareup.okhttp.*;
 Először hozzon létre egy nyilvános osztályt a projekthez lesz szüksége:
 
 ```java
-public class BreakSentence {
+public class LengthSentence {
   // All project code goes here...
 }
 ```
 
-Adja hozzá ezeket a sorokat a `BreakSentence` osztály. Láthatja, hogy az a `api-version`, meghatározhatja a beviteli nyelv. Ebben a példában az angol.
+Adja hozzá ezeket a sorokat a `LengthSentence` osztály. Láthatja, hogy az a `api-version`, meghatározhatja a beviteli nyelv. Ebben a példában az angol.
 
 ```java
 String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
@@ -111,7 +111,7 @@ String url = "https://api.cognitive.microsofttranslator.com/breaksentence?api-ve
 
 ## <a name="create-a-client-and-build-a-request"></a>Hozzon létre egy ügyfél és a egy kérelem létrehozása
 
-Adja hozzá a sort, hogy a `BreakSentence` osztály példányt létrehozni a `OkHttpClient`:
+Adja hozzá a sort, hogy a `LengthSentence` osztály példányt létrehozni a `OkHttpClient`:
 
 ```java
 // Instantiates the OkHttpClient.
@@ -156,8 +156,8 @@ Az utolsó lépés, hogy a kérés és válasz érkezik. Ezek a sorok hozzáadá
 ```java
 public static void main(String[] args) {
     try {
-        BreakSentence breakSentenceRequest = new BreakSentence();
-        String response = breakSentenceRequest.Post();
+        LengthSentence lengthSentenceRequest = new LengthSentence();
+        String response = lengthSentenceRequest.Post();
         System.out.println(prettify(response));
     } catch (Exception e) {
         System.out.println(e);

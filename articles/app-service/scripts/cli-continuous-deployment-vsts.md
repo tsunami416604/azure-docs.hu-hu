@@ -16,18 +16,18 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: jeconnoc
 ms.custom: seodec18
-ms.openlocfilehash: 90eaf7f57f524cb6e47d9d0f4e160855acd6daf5
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 67e4f99046820aa21392ff1238318e1b48bb5354
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633657"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901083"
 ---
 # <a name="create-an-app-service-app-with-continuous-deployment-using-azure-cli"></a>Hozzon létre egy App Service-alkalmazás folyamatos üzembe helyezés az Azure CLI használatával
 
 Ez a példaszkript létrehoz egy alkalmazást az App Service-ben a kapcsolódó erőforrásokkal együtt, majd beállítja a folyamatos üzembe helyezés az Azure DevOps-adattárból. A példához a következők szükségesek:
 
-* Egy Azure DevOps-adattár az alkalmazáskóddal, amelyhez rendszergazdai jogosultság szükséges.
+* Az Azure DevOps-adattár az alkalmazáskóddal, amelyhez rendszergazdai jogosultság szükséges.
 * Egy [személyes hozzáférési jogkivonat (PAT)](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=vsts) az Azure DevOps-szervezethez.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]

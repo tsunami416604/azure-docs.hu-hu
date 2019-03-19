@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 03/05/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5bdf23d1a2142e5c83ceeb72a79ca4fbea65d09c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5b6c636366d494901a34078100290084298de686
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534276"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999836"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Hogyan telepítse és konfigurálja az SAP HANA (nagyméretű példányok) az Azure-ban
 
@@ -96,11 +96,11 @@ A következő további és hasznos SAP SUSE – kapcsolódó hivatkozások a kö
 
 - [SAP HANA az SUSE Linux-hely](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE)
 - [Ajánlott eljárások az SAP: Sorba replikációs – az SAP NetWeaver SUSE Linux Enterprise 12](https://www.suse.com/docrepcontent/container.jsp?containerId=9113)
-- [ClamSAP – elleni védelem SLES for SAP](http://scn.sap.com/community/linux/blog/2014/04/14/clamsap--suse-linux-enterprise-server-integrates-virus-protection-for-sap) (beleértve a SLES 12 rendszert az SAP-alkalmazások)
+- [ClamSAP – elleni védelem SLES for SAP](https://scn.sap.com/community/linux/blog/2014/04/14/clamsap--suse-linux-enterprise-server-integrates-virus-protection-for-sap) (beleértve a SLES 12 rendszert az SAP-alkalmazások)
 
 SAP támogatási megjegyzések, amelyek a alkalmazni, amelyek segítenek a SAP HANA SLES 12 a következők:
 
-- [SAP támogatási Megjegyzés #1944799 – SAP HANA-útmutató a SLES operációs rendszer telepítése](http://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)
+- [SAP támogatási Megjegyzés #1944799 – SAP HANA-útmutató a SLES operációs rendszer telepítése](https://go.sap.com/documents/2016/05/e8705aae-717c-0010-82c7-eda71af511fa.html)
 - [SAP támogatási Megjegyzés #2205917 – SAP HANA-adatbázis ajánlott az operációs rendszer beállításait a SLES 12 rendszert SAP-alkalmazások](https://launchpad.support.sap.com/#/notes/2205917/E)
 - [SAP támogatási Megjegyzés #1984787 – SUSE Linux Enterprise Server 12: telepítési jegyzetek](https://launchpad.support.sap.com/#/notes/1984787)
 - [SAP támogatási Megjegyzés #171356 – SAP-szoftverek Linux rendszeren:  Általános információk](https://launchpad.support.sap.com/#/notes/1984787)
@@ -143,7 +143,7 @@ Az architektúra részleteit Ethernet kapcsolatos további információkért lá
 
 ## <a name="storage"></a>Storage
 
-A tárolási elrendezés az SAP Hana az Azure-ban (nagyméretű példányok) az Azure service management keresztül irányelvek ajánlott SAP az SAP Hana van konfigurálva. Ezeket az irányelveket vannak dokumentálva az [SAP HANA tárolási követelményei](http://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) tanulmányt. 
+A tárolási elrendezés az SAP Hana az Azure-ban (nagyméretű példányok) az Azure service management keresztül irányelvek ajánlott SAP az SAP Hana van konfigurálva. Ezeket az irányelveket vannak dokumentálva az [SAP HANA tárolási követelményei](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) tanulmányt. 
 
 A különböző köteteket, a másik nagyméretű HANA-példányok termékváltozatok hozzávetőleges mérete a dokumentált [SAP HANA (nagyméretű példányok) áttekintése és architektúrája az Azure-ban](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
@@ -207,10 +207,10 @@ Nagyméretű HANA-példányok a használt tárterület használata fájl mérete
 > [!IMPORTANT]
 > Az adatfájlokat a 16 TB fájlok méretkorlátjának nagyméretű HANA-példány tárolási túli növekszik próbál HANA elkerülése érdekében állítsa be az alábbi paramétereket az SAP HANA global.ini konfigurációs fájlban kell
 > 
-- datavolume_striping=true
-- datavolume_striping_size_gb = 15000
-- Lásd még az SAP Megjegyzés [#2400005](https://launchpad.support.sap.com/#/notes/2400005)
-- Vegye figyelembe az SAP-jegyzetnek [#2631285](https://launchpad.support.sap.com/#/notes/2631285)
+> - datavolume_striping=true
+> - datavolume_striping_size_gb = 15000
+> - Lásd még az SAP Megjegyzés [#2400005](https://launchpad.support.sap.com/#/notes/2400005)
+> - Vegye figyelembe az SAP-jegyzetnek [#2631285](https://launchpad.support.sap.com/#/notes/2631285)
 
 
 Az SAP HANA 2.0-val a hdbparam keretrendszer elavult. Ennek eredményeképpen a paramétert kell beállítani az SQL-parancsok használatával. További információkért lásd: [SAP-jegyzetnek #2399079: A HANA 2 hdbparam felszámolása](https://launchpad.support.sap.com/#/notes/2399079).

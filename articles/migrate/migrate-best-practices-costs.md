@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/08/2018
 ms.author: raynew
-ms.openlocfilehash: 974ea5803b6e31ad8f940265071f41440d5355da
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 6f6440e12840538614b4092b173ab25ae37a68a6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700638"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110280"
 ---
 # <a name="best-practices-for-costing-and-sizing-workloads-migrated-to-azure"></a>Ajánlott eljárások a költségszámítás és méretezési számítási feladatok migrálása az Azure-bA
 
@@ -40,17 +40,18 @@ Az előrejelzéshez az áttelepített alkalmazások és szolgáltatások a havi 
 
 - **Azure díjkalkulátor**: Kiválaszthatja a termékeket, például virtuális gépek és a tároló becsült szeretné. A díjkalkulátor hozhat létre a becsült költségek bemeneteként.
 
- ![Azure díjkalkulátor](./media/migrate-best-practices-costs/pricing.png) *Azure díjkalkulátor*
+  ![Azure díjkalkulátor](./media/migrate-best-practices-costs/pricing.png) *Azure díjkalkulátor*
 
 - **Az Azure Migrate**: Becsült költség, szüksége, tekintse át és az Azure-ban a számítási feladatok futtatásához szükséges összes erőforrást. Beszerezni ezeket az adatokat, az eszközök, beleértve a kiszolgálók, virtuális gépek, adatbázisok és tárolás készlet hoz létre. Az Azure Migrate használatával ezt az információt.
 
- - Az Azure Migrate deríti fel, és felméri a helyszíni környezetet egy leltárat biztosít.
- - Az Azure Migrate is csatlakoztathatók, és, virtuális gépek közötti függőségek megjelenítése, hogy teljes képet.
- - Az Azure Migrate értékelés becsült költség tartalmazza.
+  - Az Azure Migrate deríti fel, és felméri a helyszíni környezetet egy leltárat biztosít.
+  - Az Azure Migrate is csatlakoztathatók, és, virtuális gépek közötti függőségek megjelenítése, hogy teljes képet.
+  - Az Azure Migrate értékelés becsült költség tartalmazza.
     - A számítási költségek: Ajánlott az értékelés létrehozása az Azure Virtuálisgép-méretet használja, az Azure Migrate használja a számlázási API becsült havi VM-költségek kiszámítása. A becslés úgy ítéli meg, az operációs rendszer, frissítési garanciával rendelkező, a fenntartott példányok, virtuális gép Üzemidő, helye és pénznem beállításai. A költségek összesíti az értékelésben minden virtuális gépen, és kiszámítja a teljes havi számítási költségeket.
     - Adattárolási költség: Az Azure Migrate teljes havi tárolási költségek a tárolási költségeket az összes virtuális gép tartalmaz egy értékelés összesítésével számítja ki. Kiszámíthatja a havi tárolási költségek egy adott gép csatlakoztatott összes lemez havi költségének összesítésével. 
 
-    ![Az Azure Migrate](./media/migrate-best-practices-costs/assess.png) *Azure Migrate az értékelés*
+    ![Az Azure Migrate](./media/migrate-best-practices-costs/assess.png)
+    *Azure Migrate az értékelés*
 
 **tudj meg többet:**
 - [Használat](https://azure.microsoft.com/pricing/calculator/) az Azure díjkalkulátorát.
@@ -92,13 +93,13 @@ Finomhangolásához és a helyszíni tárolók (TÁROLÓHÁLÓZATI és NAS) és 
 
 Az Azure storage-adatok különböző típusú biztosít.
 
-**Adattípus** | **Részletek** | **Használat** 
---- | --- |  ---
-**Blobok** | Optimalizáltuk, hogy nagy mennyiségű strukturálatlan objektumok, például szöveg vagy bináris adatok tárolására<br/><br/> | Adatok elérése bárhonnan HTTP/HTTPS-kapcsolaton keresztül. | Streamelés és véletlenszerű adathozzáférési forgatókönyvek esetében használható. Ha például képek és a dokumentumokat közvetlenül a böngészőben szolgáltatására, video- és hangtartalom streamelése, és biztonsági mentési és vész-helyreállítási adatok tárolása.
-**Fájlok** | Felügyelt fájlmegosztások SMB 3.0 protokollon keresztül érhető el | Akkor használja, ha a migrálás a helyszíni fájlmegosztásokat, és több/kapcsolatok fájlokban tárolt adatokhoz.
-**Lemezek** | A lapblobok alapján.<br/><br/> Lemez típusa (sebesség): Standard szintű (HDD vagy SSD) vagy a prémium szintű (SSD).<br/><br/>Lemezkezelés: Nem felügyelt (felügyelt lemez beállításait és tárolás) vagy felügyelt (választja, a lemez típusát és az Azure felügyeli a lemezt Ön helyett). | Prémium szintű lemezek használata virtuális gépek számára. Felügyelt lemezek használata egyszerű kezelés és a méretezést.
-**üzenetsorok** | Store és a nagy számú (HTTP vagy HTTPS) hitelesített hívásokon keresztül elért üzenetek beolvasása | Alkalmazás-összetevők találkozzon aszinkron Üzenetsor-kezelés.
-**Táblák** | Táblák Store. | Most már része az Azure Cosmos DB Table API.
+| **Adattípus** | **Részletek** | **Használat** |
+|--- | --- |  --- |
+|**Blobok** | Optimalizáltuk, hogy nagy mennyiségű strukturálatlan objektumok, például szöveg vagy bináris adatok tárolására<br/>Adatok elérése bárhonnan HTTP/HTTPS-kapcsolaton keresztül. | Streamelés és véletlenszerű adathozzáférési forgatókönyvek esetében használható. Ha például képek és a dokumentumokat közvetlenül a böngészőben szolgáltatására, video- és hangtartalom streamelése, és biztonsági mentési és vész-helyreállítási adatok tárolása.|
+|**Fájlok** | Felügyelt fájlmegosztások SMB 3.0 protokollon keresztül érhető el | Akkor használja, ha a migrálás a helyszíni fájlmegosztásokat, és több/kapcsolatok fájlokban tárolt adatokhoz.|
+|**Lemezek** | A lapblobok alapján.<br/><br/> Lemez típusa (sebesség): Standard szintű (HDD vagy SSD) vagy a prémium szintű (SSD).<br/><br/>Lemezkezelés: Nem felügyelt (felügyelt lemez beállításait és tárolás) vagy felügyelt (választja, a lemez típusát és az Azure felügyeli a lemezt Ön helyett). | Prémium szintű lemezek használata virtuális gépek számára. Felügyelt lemezek használata egyszerű kezelés és a méretezést.|
+|**üzenetsorok** | Store és a nagy számú (HTTP vagy HTTPS) hitelesített hívásokon keresztül elért üzenetek beolvasása | Alkalmazás-összetevők találkozzon aszinkron Üzenetsor-kezelés.|
+|**Táblák** | Táblák Store. | Most már része az Azure Cosmos DB Table API.|
 
 
 
@@ -211,19 +212,21 @@ Cost Management, a következőket teheti:
 
 
 - **Hozzon létre egy költségvetés**: Hozzon létre egy pénzügyi elszámoltathatóság költségvetés.
-    - Azt is figyelembe a szolgáltatások felhasználásához, vagy iratkozzon fel egy adott időszakra (havonta, negyedévente, évente) és a egy hatókör (előfizetések vagy erőforráscsoportok). Például egy havi, negyedéves és éves időszakra egy Azure-előfizetés költségvetés hozhat létre.
-    - Miután létrehozta a költségvetést, a költségek elemzése jelenik meg. Megtekintés ellen aktuális költségeket a költségvetés az egyik első lépéseként van szükség, amikor a költségek elemzése és a költségek.
-    - E-mail-értesítések küldhetők költségvetési küszöbértékek elérésekor.
-    - Az Azure storage, elemzés céljából exportálhatja a költségek felügyeleti adatokat.
+  - Azt is figyelembe a szolgáltatások felhasználásához, vagy iratkozzon fel egy adott időszakra (havonta, negyedévente, évente) és a egy hatókör (előfizetések vagy erőforráscsoportok). Például egy havi, negyedéves és éves időszakra egy Azure-előfizetés költségvetés hozhat létre.
+  - Miután létrehozta a költségvetést, a költségek elemzése jelenik meg. Megtekintés ellen aktuális költségeket a költségvetés az egyik első lépéseként van szükség, amikor a költségek elemzése és a költségek.
+  - E-mail-értesítések küldhetők költségvetési küszöbértékek elérésekor.
+  - Az Azure storage, elemzés céljából exportálhatja a költségek felügyeleti adatokat.
 
-    ![A Cost Management költségvetés](./media/migrate-best-practices-costs/budget.png) *Azure Cost Management költségvetés*
+    ![A Cost Management költségvetés](./media/migrate-best-practices-costs/budget.png)
+    *Azure Cost Management költségvetés*
 
 - **Hajtsa végre a költségelemzés**: Get-költségelemzés vizsgálata és elemzése a szervezeti költségeket, a segítségével megismerheti, hogyan miatt felmerülő költségekkel, és a költési trendek azonosítására.
-    - Költségelemzés a nagyvállalati szerződéssel rendelkező felhasználók számára érhető el.
-    - Megtekintheti a cost analysis-adatok különböző hatókörök, például úgy, hogy részleg, fiók, előfizetésekhez vagy erőforráscsoportokhoz.
-    - A költségek elemzése, amely megjeleníti az aktuális hónap a teljes költségét, és összesített napi költségek kérheti le. 
+  - Költségelemzés a nagyvállalati szerződéssel rendelkező felhasználók számára érhető el.
+  - Megtekintheti a cost analysis-adatok különböző hatókörök, például úgy, hogy részleg, fiók, előfizetésekhez vagy erőforráscsoportokhoz.
+  - A költségek elemzése, amely megjeleníti az aktuális hónap a teljes költségét, és összesített napi költségek kérheti le. 
 
-    ![Felügyeleti elemzés](./media/migrate-best-practices-costs/analysis.png) *Azure Cost Management elemzése*
+    ![Felügyeleti elemzés](./media/migrate-best-practices-costs/analysis.png)
+    *Azure Cost Management elemzése*
 - **Javaslatok**: Javaslatok az Advisor, amelyek bemutatják, hogyan lehet optimalizálni, és növelheti a hatékonyságot.
 
 

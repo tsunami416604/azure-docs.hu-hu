@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/04/2019
 ms.author: jgao
-ms.openlocfilehash: 2cb6e210aa0e232a4ebb60dc44777a55f2c4f7fc
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 4b774e5b0a5c64a9af9a5a54ba264c6226558a24
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57318548"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880025"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-resource-manager-template"></a>Gyors útmutató: Beállítása és lekérése a titkos kulcs Azure Key vault Resource Manager-sablon használatával
 
@@ -67,7 +67,7 @@ A rendszer a rövid útmutatóban használt sablon [Azure gyorsindítási sablon
     * **Bérlőazonosító**: a sablonfüggvény automatikusan lekéri a bérlőazonosítót.  Ne módosítsa az alapértelmezett értéket.
     * **Ad-felhasználói azonosító**: Adja meg az Azure AD felhasználói objektum azonosítója, amely a lekért [Előfeltételek](#prerequisites).
     * **Název tajného kódu**: Adja meg a titkos kulcsot a kulcstartóban tárolt nevét.  Ha például **adminpassword**
-    * **Titkos érték**: Adja meg a titkos érték.  Ha jelszó tárolja, javasoljuk, hogy használni létrehozott generált jelszót [előfeltétel](#prerequisite).
+    * **Titkos érték**: Adja meg a titkos érték.  Ha tárolja a jelszót, ajánlott az Előfeltételek szakaszban létrehozott a generált jelszót.
     * **Elfogadom a fenti feltételek és kikötések állapot**: Kiválasztás.
 3. Válassza a **Beszerzés** lehetőséget.
 

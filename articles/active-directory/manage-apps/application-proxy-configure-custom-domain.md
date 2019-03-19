@@ -16,16 +16,16 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3918030925022ac20144f9adac6e7683bac64aa4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 05c537b061619aa458663a9dcfcc97155d8a6614
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181762"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106797"
 ---
 # <a name="working-with-custom-domains-in-azure-ad-application-proxy"></a>Egyéni tartományok használata az Azure AD-alkalmazásproxy
 
-Amikor közzétesz egy alkalmazást az Azure Active Directory Application Proxy keresztül, létre kell hoznia egy külső URL-címet a továbblépéshez, ha azok dolgozik-e távolról a felhasználók számára. Az URL-címet lekéri az alapértelmezett tartomány *yourtenant.msappproxy.net*. Például ha közzétett alkalmazás nevű költségek és a bérlő neve Contoso, akkor a külső URL-cím https://expenses-contoso.msappproxy.net. Ha saját tartománynevét használja, az alkalmazás egyéni tartomány konfigurálása. 
+Amikor közzétesz egy alkalmazást az Azure Active Directory Application Proxy keresztül, létre kell hoznia egy külső URL-címet a továbblépéshez, ha azok dolgozik-e távolról a felhasználók számára. Az URL-címet lekéri az alapértelmezett tartomány *yourtenant.msappproxy.net*. Például ha közzétett alkalmazás nevű költségek és a bérlő neve Contoso, akkor a külső URL-cím `https://expenses-contoso.msappproxy.net`. Ha saját tartománynevét használja, az alkalmazás egyéni tartomány konfigurálása. 
 
 Azt javasoljuk, hogy beállította az egyéni tartományokban az alkalmazásokhoz, amikor csak lehetséges. Egyéni tartományok előnyei a következők:
 

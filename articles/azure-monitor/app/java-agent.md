@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: mbullwin
-ms.openlocfilehash: b7710b081668bf07d40718baf1d84314246861f5
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: ce5f7ab1e6751a9ce68aa2d9c466a112c9cac182
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412401"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004043"
 ---
 # <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Függőségek, kivételek kivétel történt, és metódus végrehajtási időpontok a Java-webalkalmazások monitorozása
 
@@ -73,7 +73,6 @@ Hozzon létre egy fájlt `AI-Agent.xml` és helyezze ugyanabba a mappába, az ü
                reportCaughtExceptions="true"
                reportExecutionTime="true"
                />
-
            <!-- Report on the particular signature
                 void methodTwo(String, int) -->
            <Method name="methodTwo"
@@ -90,12 +89,26 @@ Jelentések kivétel- és az egyes módszerek metódus időzítési engedélyezn
 
 Alapértelmezés szerint `reportExecutionTime` IGAZ és `reportCaughtExceptions` false (hamis).
 
-### <a name="spring-boot-agent-additional-config"></a>A Spring Boot ügynök további konfigurációs
+## <a name="additional-config-spring-boot"></a>További konfigurációs (Spring Boot)
 
 `java -javaagent:/path/to/agent.jar -jar path/to/TestApp.jar`
 
+Az Azure App Services tegye a következőket:
+
+* Válassza a Beállítások > Alkalmazásbeállítások lehetőséget.
+* Az alkalmazásbeállításoknál adjon meg egy új kulcs-érték párt:
+
+Kulcs: `JAVA_OPTS` Érték: `-javaagent:D:/home/site/wwwroot/applicationinsights-agent-2.3.1-SNAPSHOT.jar`
+
+Ellenőrizze az ügynök legújabb verzióját, a Java, a kiadások [Itt](https://github.com/Microsoft/ApplicationInsights-Java/releases
+). 
+
+Az ügynököt be kell csomagolni erőforrásként a projekthez, hogy akkor fejeződik be a D:/home/site/wwwroot/mappa. Ellenőrizheti, hogy az ügynök szerepel a megfelelő App Service-könyvtárban a **Fejlesztőeszközök** > **speciális eszközök** > **hibakeresési konzolt**és a hely könyvtár tartalmának vizsgálata.    
+
+* A beállítások mentéséhez, és indítsa újra az alkalmazást. (Ezeket a lépéseket csak vonatkozik a Windows futó alkalmazásszolgáltatások.)
+
 > [!NOTE]
-> AI-Agent.xml és az ügynök jar-fájlt ugyanebben a mappában kell lennie. Ezek gyakran kerülnek együtt a `/resources` mappát a projekt. 
+> AI-Agent.xml és az ügynök jar-fájlt ugyanebben a mappában kell lennie. Ezek gyakran kerülnek együtt a `/resources` mappát a projekt.  
 
 ### <a name="spring-rest-template"></a>Spring Rest-sablon
 

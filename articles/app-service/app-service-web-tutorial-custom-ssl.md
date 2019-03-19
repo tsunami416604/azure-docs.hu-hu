@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 08/24/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d627158744ae89e3c614d10a64886cee6879a3fb
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 0c89cdc34c23c461e5cebf3026cb0774bf91b75d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116049"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57998562"
 ---
 # <a name="tutorial-bind-an-existing-custom-ssl-certificate-to-azure-app-service"></a>Oktatóanyag: Meglévő egyéni SSL-tanúsítvány kötése az Azure App Service-ben
 
@@ -264,7 +264,7 @@ New-AzWebAppSSLBinding `
 ## <a name="public-certificates-optional"></a>Nyilvános tanúsítványok (nem kötelező)
 Az alkalmazás távoli erőforrásokhoz fér hozzá a ügyfélként kell, és a távoli erőforrás Tanúsítványalapú hitelesítés szükséges, feltölthet [nyilvános tanúsítványokat](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer/) az alkalmazáshoz. A nyilvános tanúsítványok nem szükségesek az alkalmazás SSL-kötések.
 
-A nyilvános tanúsítványok az alkalmazásokba való feltöltésével és használatával kapcsolatos további információkért lásd az [SSL-tanúsítvány az alkalmazáskódban az Azure App Service-ben való használatát](app-service-web-ssl-cert-load.md) ismertető cikket. Használhatja a nyilvános tanúsítványok alkalmazásokkal az App Service Environment-környezetek túl. Tárolja a tanúsítványt a LocalMachine tanúsítványtárolóban kell, ha szeretné használni egy alkalmazást az App Service Environment-környezet. További információkért lásd: [az App Service-alkalmazást a nyilvános tanúsítványok konfigurálása](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer).
+A nyilvános tanúsítványok az alkalmazásokba való feltöltésével és használatával kapcsolatos további információkért lásd az [SSL-tanúsítvány az alkalmazáskódban az Azure App Service-ben való használatát](app-service-web-ssl-cert-load.md) ismertető cikket. Használhatja a nyilvános tanúsítványok alkalmazásokkal az App Service Environment-környezetek túl. Tárolja a tanúsítványt a LocalMachine tanúsítványtárolóban kell, ha szeretné használni egy alkalmazást az App Service Environmentben. További információkért lásd: [az App Service-alkalmazást a nyilvános tanúsítványok konfigurálása](https://blogs.msdn.microsoft.com/appserviceteam/2017/11/01/app-service-certificates-now-supports-public-certificates-cer).
 
 ![Nyilvános tanúsítvány feltöltése](./media/app-service-web-tutorial-custom-ssl/upload-certificate-public1.png)
 

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: aa6c6a35a66569d5db182e1871012b9697c2802c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 1c8cbcd2e5f137b1e8381dcce164ae9a4b87e804
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023345"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57852841"
 ---
 # <a name="copy-data-to-an-azure-search-index-using-azure-data-factory"></a>Adatok másolása az Azure Search-index, az Azure Data Factory használatával
 
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](v1/data-factory-azure-search-connector.md)
 > * [Aktuális verzió](connector-azure-search.md)
 
@@ -43,13 +43,13 @@ Társított Azure Search szolgáltatás az alábbi tulajdonságok támogatottak:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type | A type tulajdonságot kell beállítani: **Az AzureSearch** | Igen |
+| type | A type tulajdonságot kell beállítani: **AzureSearch** | Igen |
 | url | Az Azure Search szolgáltatás URL-címe. | Igen |
 | kulcs | Az Azure Search szolgáltatás rendszergazdai kulcsa. Ez a mező megjelölése tárolja biztonságos helyen a Data Factory, a SecureString vagy [hivatkozik az Azure Key Vaultban tárolt titkos](store-credentials-in-key-vault.md). | Igen |
 | connectVia | A [Integration Runtime](concepts-integration-runtime.md) az adattárban való kapcsolódáshoz használandó. Használhatja az Azure integrációs modul vagy a helyi integrációs modul (ha az adattár magánhálózaton található). Ha nincs megadva, az alapértelmezett Azure integrációs modult használja. |Nem |
 
 > [!IMPORTANT]
-> Az Azure Search-index, az Azure Search szolgáltatásban az adatok másolása egy felhőalapú adattár társított szolgáltatást, amikor kell hivatkozni egy Azure integrációs modul connactVia explicit régiókba. A régió állítja be az Azure Search található egy. További információkat talál a [Azure integrációs modul](concepts-integration-runtime.md#azure-integration-runtime).
+> Ha az Azure Search-index, az Azure Search szolgáltatásban az adatok másolása egy felhőalapú adattár társított szolgáltatást, tekintse meg az Azure integrációs modul connactVia explicit régiónként kell. A régió állítja be az Azure Search található egy. További információkat talál a [Azure integrációs modul](concepts-integration-runtime.md#azure-integration-runtime).
 
 **Példa**
 
@@ -169,10 +169,10 @@ Az alábbi tábla meghatározza, hogy egy Azure Search adattípus támogatott-e,
 
 | Az Azure Search-adattípus | Az Azure Search fogadó támogatott |
 | ---------------------- | ------------------------------ |
-| Karakterlánc | I |
+| String | I |
 | Int32 | I |
 | Int64 | I |
-| Dupla | I |
+| Double | I |
 | Logikai | I |
 | DataTimeOffset | I |
 | Karakterlánc-tömbben | N |

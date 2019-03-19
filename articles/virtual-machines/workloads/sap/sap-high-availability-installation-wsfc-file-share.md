@@ -1,6 +1,6 @@
 ---
-title: SAP NetWeaver magas rendelkezésre állású Windows feladatátvevő fürt és a fájlkiszolgáló-megosztáson található SAP ASC/SCS-példányok az Azure-on |} Microsoft Docs
-description: SAP NetWeaver magas rendelkezésre állású Windows feladatátvevő fürt és a fájlkiszolgáló-megosztáson található SAP ASC/SCS-példányok
+title: SAP NetWeaver magas rendelkezésre állású Windows feladatátvevő fürt és a fájlkiszolgáló-megosztáson található SAP ASCS/SCS-példányok az Azure-ban |} A Microsoft Docs
+description: SAP NetWeaver magas rendelkezésre állású Windows feladatátvevő fürt és a fájlkiszolgáló-megosztáson található az SAP ASCS/SCS példányhoz
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
@@ -17,14 +17,14 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2fa9cebe092f726b2df3dec99cee1bb97ccc92dc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4f9628be1d1f1d146ed0dbc5ebd9579f0512aeac
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34658655"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997362"
 ---
-# <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>SAP NetWeaver magas rendelkezésre állással telepített Windows feladatátvevő fürt és a fájlkiszolgáló-megosztáson található SAP ASC/SCS-példányok az Azure-on
+# <a name="install-sap-netweaver-high-availability-on-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances-on-azure"></a>SAP NetWeaver magas rendelkezésre állású telepítése a Windows feladatátvevő fürt és a fájlkiszolgáló-megosztáson található SAP ASCS/SCS-példányok az Azure-ban
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -48,7 +48,7 @@ ms.locfileid: "34658655"
 
 [deployment-guide]:deployment-guide.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 
@@ -89,7 +89,7 @@ ms.locfileid: "34658655"
 
 [sap-official-ha-file-share-document]:https://www.sap.com/documents/2017/07/f453332f-c97c-0010-82c7-eda71af511fa.html
 
-[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP multi-SID magas rendelkezésre állású konfiguráció)
+[sap-ha-multi-sid-guide]:sap-high-availability-multi-sid.md (SAP több biztonsági AZONOSÍTÓVAL magas rendelkezésre állású konfiguráció)
 
 
 [sap-ha-guide-figure-1000]:./media/virtual-machines-shared-sap-high-availability-guide/1000-wsfc-for-sap-ascs-on-azure.png
@@ -197,69 +197,69 @@ ms.locfileid: "34658655"
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
-A cikkből megtudhatja, hogyan kell telepíteni és konfigurálni egy magas rendelkezésre állású SAP Azure, a Windows Server feladatátvételi fürt (WSFC) és Scale-Out File Server SAP ASC/SCS példányok fürtözéshez lehetőség.
+Ez a cikk bemutatja, hogyan telepítése és konfigurálása egy magas rendelkezésre állású SAP-rendszerhez az Azure-ban, a Windows Server feladatátvételi fürt (WSFC) és Scale-Out File Server SAP ASCS/SCS-példányok fürtszolgáltatásra vonatkozó beállítás.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A telepítés megkezdése előtt olvassa el a következő cikkeket:
+A telepítés megkezdése előtt tekintse át a következő cikkeket:
 
-* [Architektúra-Útmutató: Windows feladatátvevő fürt egy SAP ASC/SCS példány fürt fájlmegosztás használatával][sap-high-availability-guide-wsfc-file-share]
+* [Architektúra-Útmutató: A fájlmegosztás Windows feladatátvevő fürt a fürt egy SAP ASCS/SCS példányhoz][sap-high-availability-guide-wsfc-file-share]
 
-* [Készítse elő az Azure-infrastruktúra SAP magas rendelkezésre állású egy Windows feladatátvevő fürt és a fájlmegosztást a SAP ASC/SCS-példányok][sap-high-availability-infrastructure-wsfc-file-share]
+* [Készítse elő az Azure-infrastruktúra SAP magas rendelkezésre állású egy Windows feladatátvevő fürt és -fájlmegosztást az SAP ASCS/SCS példányhoz][sap-high-availability-infrastructure-wsfc-file-share]
 
-A következő futtatható fájljainak és DLL-eket SAP lesz szüksége:
-* SAP szoftver kiépítés Manager (SWPM) telepítési eszköz, verziószám: SPS21 vagy újabb.
-* Töltse le a legfrissebb NTCLUST. Az új SAP KKT archív fürterőforrás DLL-Fájljában. Az új SAP fürt DLL-ek támogatása SAP ASC/SCS magas rendelkezésre állású fájlmegosztást a Windows Server feladatátvevő fürtön.
+Az alábbi végrehajtható fájlok és DLL-eket SAP lesz szüksége:
+* SAP Software kiépítés Manager (SWPM) telepítési eszköz verziójának SPS21 vagy újabb.
+* Töltse le a legújabb NTCLUST. Az új SAP KKT archív fürterőforrás DLL-fájl. Az új SAP fürt DLL-ek támogatása az SAP ASCS/SCS magas rendelkezésre állású fájlmegosztást a Windows Server feladatátvételi fürtben.
 
-  Az új SAP-fürt erőforrás DLL kapcsolatos további információkért lásd: Ebben a blogban: [új SAP fürt erőforrás DLL!] [sap-blog-new-sap-cluster-resource-dll].
+  Az új SAP-fürt erőforrás DLL kapcsolatos további információkért tekintse meg ezt a blogot: [Új SAP fürt erőforrás DLL érhető el! ][sap-blog-new-sap-cluster-resource-dll].
 
-Az adatbázis felügyeleti rendszer (DBMS) telepítő nem azt ismertetik, mert beállítások változhatnak attól függően használja az adatbázis-kezelő. Azonban feltételezzük, hogy az adatbázis-kezelő magas rendelkezésre állású kérdéseket az adatbázis-kezelő számos különböző szállító támogató Azure-beli funkciókkal rendelkező tárgyalja. Ilyen funkciói közé tartoznak az AlwaysOn vagy az adatbázis-tükrözést az SQL Server és Oracle Data Guard az Oracle-adatbázisok. A forgatókönyvben a cikkben használjuk, azt nem további védelem bekapcsolása a az adatbázis-kezelő.
+Az adatbázis felügyeleti rendszer (DBMS) telepítő nem azt ismertetik, mert beállításnál használja az adatbázis-kezelő függően változhat. Azonban feltételezzük, hogy az adatbázis-kezelő magas rendelkezésre állású kérdéseket az a funkciók különböző DBMS-gyártók támogató Azure-ig. Ilyen funkciók például AlwaysOn vagy adatbázis-tükrözés az SQL Server és Oracle Data Guard az Oracle-adatbázisokat. Az ebben a cikkben használjuk esetben nagyobb védelmet, az adatbázis-kezelő nem adtuk hozzá.
 
-Nincsenek semmilyen külön odafigyelést különböző adatbázis-kezelő szolgáltatásokhoz fürtözött SAP ASC/SCS konfigurálása az Azure-ban az ilyen kommunikál.
+Nincsenek speciális megfontolásokat különböző DBMS-szolgáltatásokkal interakcióba ilyen konfigurációtípusok fürtözött SAP ASCS/SCS az Azure-ban.
 
 > [!NOTE]
-> A telepítési eljárásokat az SAP NetWeaver ABAP rendszerek, Java, és a ABAP + Java rendszerek csaknem azonosak. A legfontosabb különbség, hogy rendelkezik-e az SAP ABAP rendszer ASC egy példánya. Az SAP Java rendszer egy SCS példány van. Az SAP ABAP + Java rendszer rendelkezik egy ASC példány és egy SCS példány fut a Microsoft feladatátvevő fürt csoporton belül. Összes telepítési különbséget minden SAP NetWeaver telepítési verem explicit módon szerepelnek. Feltételezzük, hogy minden egyéb részeinek megegyeznek.  
+> A telepítési eljárások az SAP NetWeaver ABAP rendszerek, a Java-rendszerek és a ABAP + Java rendszerek majdnem azonosak. A legfontosabb különbség, hogy rendelkezik-e egy SAP ABAP-rendszer egyik ASCS-példány. Az SAP-Java-rendszer egyik SCS példányhoz rendelkezik. Az SAP ABAP + Java rendszer rendelkezik egy ASCS-példány és a egy, a feladatátvételi fürt ugyanazt a Microsoft csoportban futó SCS példányhoz. SAP NetWeaver-telepítés rengetegféle telepítési eltérések explicit módon szerepelnek. Akkor feltételezheti, hogy minden más részek azonosak.  
 >
 >
 
-## <a name="install-an-ascsscs-instance-on-an-ascsscs-cluster"></a>Egy ASC/SCS példányát telepítenie, ASC/SCS fürtökön
+## <a name="install-an-ascsscs-instance-on-an-ascsscs-cluster"></a>Az ASCS/SCS-fürtön ASCS/SCS-példány telepítése
 
 > [!IMPORTANT]
 >
-> Egy magas rendelkezésre állású fájlkiszolgáló-megosztás konfigurációja olyan beállítást az SAP SWPM telepítési eszköz által nem támogatott. Ezért néhány manuális bevezetését, egy SAP rendszer (például telepítési és a fürt egy SAP ASC/SCS példány és egy külön SAP globális állomás konfigurálása) telepítéséhez szükséges.  
+> Egy megosztás konfiguráció egy magas rendelkezésre állású beállítás az SAP SWPM telepítési eszköz által nem támogatott. Ezért néhány manuális elfogadásához esetében az SAP-rendszer (például a telepítése és a fürt egy SAP ASCS/SCS példányhoz, és a egy különálló SAP globális állomás konfigurálása) telepítéséhez szükséges.  
 >
-> Nincs más telepítési lépéseket egy adatbázis-kezelő telepítésének (és a fürt) a változás-példány és az SAP alkalmazáskiszolgálók.
+> Az egyéb telepítési lépéseket telepítésének (és a fürt) adatbázis-kezelő nem változik-példány és az SAP-alkalmazáskiszolgálók.
 >
 
-### <a name="install-an-ascsscs-instance-on-your-local-drive"></a>Egy ASC/SCS példányát telepítenie, a helyi meghajtón
+### <a name="install-an-ascsscs-instance-on-your-local-drive"></a>Az ASCS/SCS példányhoz telepítése a helyi meghajtón
 
-SAP ASC/SCS példánya telepíthető *mindkét* a ASC/SCS fürt csomópontjait. Telepítse a helyi meghajtón. A fenti példában a helyi meghajtó a C:\\, de választhat bármely helyi meghajtón.  
+Telepítse az SAP ASCS/SCS példányhoz *mindkét* a ASCS/SCS-fürt csomópontja. Telepítheti a helyi meghajtón. Ebben a példában a helyi meghajtón a C:\\, de választhat bármely helyi meghajtón.  
 
-A példány, a SAP SWPM telepítési eszköz telepítéséhez Ugrás:
+A példány, az SAP SWPM telepítési eszközben telepítéséhez nyissa meg:
 
-**\<A termék >** > **\<DBMS >** > **telepítési** > **alkalmazáskiszolgáló ABAP** () vagy **Java**) > **rendszer elosztott** > **ASC/SCS példány**
+**\<A termék >** > **\<DBMS >** > **telepítési** > **alkalmazáskiszolgáló ABAP** () vagy **Java**) > **elosztott rendszer** > **ASCS/SCS példányhoz**
 
 > [!IMPORTANT]
 > A fájlmegosztás forgatókönyvet az SAP SWPM telepítési eszköz által nem támogatott. Ön *nem használható* a következő telepítési elérési út:
 >
-> **\<A termék >** > **\<DBMS >** > **telepítési** > **alkalmazáskiszolgáló ABAP** () vagy **Java**) > **magas rendelkezésre állású rendszer** >...
+> **\<A termék >** > **\<DBMS >** > **telepítési** > **alkalmazáskiszolgáló ABAP** () vagy **Java**) > **magas rendelkezésre állású System** >...
 >
 
-### <a name="remove-sapmnt-and-create-an-saploc-file-share"></a>Távolítsa el a SAPMNT és SAPLOC fájlmegosztás létrehozása
+### <a name="remove-sapmnt-and-create-an-saploc-file-share"></a>Távolítsa el a SAPMNT, és a egy SAPLOC fájlmegosztás létrehozása
 
-SWMP egy SAPMNT helyi fájlmegosztás létrehozása a c:\\usr\\sap mappát.
+Létrehozott egy SAPMNT helyi megosztás SWMP a C:\\usr\\sap mappát.
 
-Távolítsa el a SAPMNT fájlmegosztást a *mindkét* ASC/SCS fürtcsomópontok.
+Távolítsa el a SAPMNT fájlmegosztást a *mindkét* ASCS/SCS fürtcsomópont.
 
-Hajtsa végre a következő PowerShell parancsfájlt:
+Hajtsa végre a következő PowerShell-parancsfájlt:
 
 ```PowerShell
 Remove-SmbShare sapmnt -ScopeName * -Force
  ```
 
-Ha a SAPLOC megosztás nem létezik, hozzon létre egyet a *mindkét* ASC/SCS fürtcsomópontok.
+Ha a SAPLOC megosztás nem létezik, hozzon létre egyet a *mindkét* ASCS/SCS fürtcsomópont.
 
-Hajtsa végre a következő PowerShell parancsfájlt:
+Hajtsa végre a következő PowerShell-parancsfájlt:
 
 ```PowerShell
 #Create SAPLOC share and set security
@@ -274,25 +274,25 @@ $SAPusrSapPath = "$SAPDisk\usr\sap"
 New-SmbShare -Name saploc -Path c:\usr\sap -FullAccess "BUILTIN\Administrators", $SAPSIDGlobalAdminGroupName , $SAPLocalAdminGroupName  
  ```
 
-## <a name="prepare-an-sap-global-host-on-the-sofs-cluster"></a>A kibővíthető Fájlkiszolgáló fürtön egy SAP globális gazdagép előkészítése
+## <a name="prepare-an-sap-global-host-on-the-sofs-cluster"></a>Egy globális SAP-gazdagép az SOFS-fürthöz a előkészítése
 
-Hozza létre a következő kötet és a fájlmegosztást a kibővíthető Fájlkiszolgáló fürtön:
+A következő kötet és a fájlmegosztást létrehozni az SOFS-fürthöz:
 
-* SAP GLOBALHOST fájl C:\ClusterStorage\Volume1\usr\sap\\<SID>\SYS\ struktúra kibővíthető Fájlkiszolgáló fürt megosztott kötete (CSV)
+* SAP GLOBALHOST fájl C:\ClusterStorage\Volume1\usr\sap\\<SID>\SYS\ struktúra az SOFS-fürt megosztott kötete (CSV)
 
 * SAPMNT fájlmegosztás
 
-* A biztonság beállítása a SAPMNT fájlmegosztás és a teljes körű hozzáféréssel rendelkező mappába:
-    * A \<TARTOMÁNYI > \SAP_\<SID > _GlobalAdmin felhasználói csoport
-    * Az SAP ASC/SCS fürt csomópont számítógép-objektumok \<TARTOMÁNYI > \ClusterNode1$ és \<TARTOMÁNYI > \ClusterNode2$
+* A fájlmegosztás SAPMNT és a mappában, a teljes körűen biztonsági be:
+    * A \<tartomány > \SAP_\<SID > _GlobalAdmin felhasználói csoport
+    * Az SAP ASCS/SCS csomópont számítógép-objektumok fürt \<tartomány > \ClusterNode1$ és \<tartomány > \ClusterNode2$
 
-A megosztott fürtkötetek tükrözött rugalmasságú létrehozására a kibővíthető Fájlkiszolgáló fürt csomópontjai egyik hajtható végre a következő PowerShell-parancsmagot:
+CSV-kötetet létrehozni, tükrözött rugalmassági beállítással, hajtsa végre a következő PowerShell-parancsmagot egy SOFS-fürt csomópont:
 
 
 ```PowerShell
 New-Volume -StoragePoolFriendlyName S2D* -FriendlyName SAPPR1 -FileSystem CSVFS_ReFS -Size 5GB -ResiliencySettingName Mirror
 ```
-SAPMNT létrehozásához, és állítsa be a mappa és a megosztáshoz biztonsági, hajtsa végre a következő PowerShell-parancsfájl a kibővíthető Fájlkiszolgáló fürt csomópontjai egyik:
+SAPMNT létrehozásához, és állítsa be a mappa és a fájlmegosztás biztonsági, hajtsa végre a következő PowerShell-parancsfájl egy SOFS-fürt csomópont:
 
 ```PowerShell
 # Create SAPMNT on file share
@@ -338,21 +338,21 @@ $Acl.SetAccessRule($Ar)
 # Set security
 Set-Acl $UsrSAPFolder $Acl -Verbose
  ```
-## <a name="stop-ascsscs-instances-and-sap-services"></a>Asc/SCS példányok és az SAP-szolgáltatások leállítása
+## <a name="stop-ascsscs-instances-and-sap-services"></a>ASCS/SCS-példány és az SAP-szolgáltatások leállítása
 
 Hajtsa végre az alábbi lépéseket:
-1. Állítsa le a SAP ASC/SCS példányok mindkét ASC/SCS fürtcsomópontokon.
-2. SAP ASC/SCS Windows-szolgáltatások leállítása **SAP\<SID > _\<InstanceNumber >** mindkét fürtcsomóponton.
+1. Állítsa le az SAP ASCS/SCS-példányok mindkét ASCS/SCS-fürtcsomópontokon.
+2. Az SAP ASCS/SCS Windows-szolgáltatások leállítása **SAP\<SID > _\<példányszám >** mindkét fürtcsomóponton.
 
-## <a name="move-the-sys-folder-to-the-sofs-cluster"></a>Helyezze át a \SYS\... a kibővíthető Fájlkiszolgáló fürt mappát
+## <a name="move-the-sys-folder-to-the-sofs-cluster"></a>Helyezze át a \SYS\... mappát az SOFS-fürthöz
 
 Hajtsa végre az alábbi lépéseket:
-1. Másolja a SYS mappát (például C:\usr\sap\\<SID>\SYS) az egyik a ASC/SCS fürtcsomópontok a kibővíthető Fájlkiszolgáló fürthöz (például, hogy C:\ClusterStorage\Volume1\usr\sap\\<SID>\SYS).
-2. Törölje a C:\usr\sap\\<SID>mindkét ASC/SCS fürtcsomópont \SYS mappát.
+1. Másolja a SYS mappát (például C:\usr\sap\\<SID>\SYS) ASCS/SCS egyik fürtcsomópont az SOFS-fürthöz (például, hogy C:\ClusterStorage\Volume1\usr\sap\\<SID>\SYS).
+2. Törölje a C:\usr\sap\\<SID>mindkét ASCS/SCS fürtcsomópontok \SYS mappájában található.
 
-## <a name="update-the-cluster-security-setting-on-the-sap-ascsscs-cluster"></a>Az SAP ASC/SCS fürt a fürt biztonsági beállításainak frissítése
+## <a name="update-the-cluster-security-setting-on-the-sap-ascsscs-cluster"></a>Az SAP ASCS/SCS-fürt a fürt biztonsági beállításainak frissítése
 
-Hajtsa végre a következő PowerShell-parancsfájlt az SAP ASC/SCS fürtcsomópontok egyike:
+Hajtsa végre a következő PowerShell-parancsfájlt az SAP ASCS/SCS fürtcsomópontok egyike:
 
 ```PowerShell
 # Grant <DOMAIN>\SAP_<SID>_GlobalAdmin group access to the cluster
@@ -368,25 +368,25 @@ Grant-ClusterAccess -User $SAPSIDGlobalAdminGroupName -Full
 Get-ClusterAccess
 ```
 
-## <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance"></a>Hozzon létre egy virtuális nevet az SAP ASC/SCS fürtözött példány
+## <a name="create-a-virtual-host-name-for-the-clustered-sap-ascsscs-instance"></a>Hozzon létre egy virtuális nevet a fürtözött SAP ASCS/SCS példányhoz
 
-Hozzon létre egy SAP ASC/SCS fürthálózat nevének (például **pr1-ASC [10.0.6.7]**) leírtak szerint [hozzon létre egy virtuális nevet az SAP ASC/SCS fürtözött példány] [ sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host] .
+Hozzon létre egy SAP ASCS/SCS fürthálózat nevének (például **pr1 – ascs [10.0.6.7]**) leírtak szerint [hozzon létre egy virtuális nevet a fürtözött SAP ASCS/SCS példányhoz] [ sap-high-availability-installation-wsfc-shared-disk-create-ascs-virt-host] .
 
-## <a name="update-the-default-and-sap-ascsscs-instance-profile"></a>Az alapértelmezett és az SAP ASC/SCS példány profil frissítése
+## <a name="update-the-default-and-sap-ascsscs-instance-profile"></a>Az alapértelmezett és az SAP ASCS/SCS példányhoz profil frissítése
 
-Az új SAP ASC/SCS virtuális állomás nevét, és globális állomásnév SAP, frissítenie kell az alapértelmezett és az SAP ASC/SCS példány profil \<SID >_ASC/SCS\<Nr >_<Host>.
+Az új SAP ASCS/SCS virtuális állomás nevét és a globális állomásnév SAP, frissítenie kell az alapértelmezett és az SAP ASCS/SCS példányhoz profil \<SID >_ASCS/SCS\<Nr >_<Host>.
 
 
 | Régi értékek |  |
 | --- | --- |
-| SAP ASC/SCS állomásnév SAP globális állomás = | Asc-1 |
-| SAP ASC/SCS példány profil neve | PR1_ASCS00_ascs-1 |
+| Az SAP ASCS/SCS-állomás neve = SAP globális gazdagép | ascs-1 |
+| Az SAP ASCS/SCS példányhoz profil neve | PR1_ASCS00_ascs-1 |
 
-| Új értékek |  |
+| Új érték |  |
 | --- | --- |
-| SAP ASC/SCS állomásneve | **PR1-ASC** |
-| SAP globális állomás | **sapglobal** |
-| SAP ASC/SCS példány profil neve | PR1\_ASCS00\_**pr1-ASC** |
+| SAP ASCS/SCS host name | **PR1 – ascs** |
+| SAP globális gazdagép | **sapglobal** |
+| Az SAP ASCS/SCS példányhoz profil neve | PR1\_ASCS00\_**pr1 – ascs** |
 
 ### <a name="update-sap-default-profile"></a>SAP alapértelmezett profil frissítése
 
@@ -394,30 +394,30 @@ Az új SAP ASC/SCS virtuális állomás nevét, és globális állomásnév SAP,
 | Paraméter neve | Paraméter értéke |
 | --- | --- |
 | SAPGLOBALHOST | **sapglobal** |
-| rdisp/mshost | **PR1-ASC** |
-| célzó/serverhost | **PR1-ASC** |
+| rdisp/mshost | **PR1 – ascs** |
+| enque/serverhost | **PR1 – ascs** |
 
-### <a name="update-the-sap-ascsscs-instance-profile"></a>Az SAP ASC/SCS példány profil frissítése
+### <a name="update-the-sap-ascsscs-instance-profile"></a>Az SAP ASCS/SCS példányhoz profil frissítése
 
 | Paraméter neve | Paraméter értéke |
 | --- | --- |
 | SAPGLOBALHOST | **sapglobal** |
 | DIR_PROFILE | \\\sapglobal\sapmnt\PR1\SYS\profile |
-| _PF | $(DIR_PROFILE) \PR1\_ASCS00_ pr1-ASC |
-| Restart_Program_02 local$(_MS) pf=$(_PF) = | **Start**_Program_02 local$(_MS) pf=$(_PF) = |
-| SAPLOCALHOST | **PR1-ASC** |
-| Restart_Program_03 local$(_EN) pf=$(_PF) = | **Start**_Program_03 local$(_EN) pf=$(_PF) = |
-| GW/netstat_once | **0** |
-| célzó/encni/set_so_keepalive  | **Igaz** |
-| szolgáltatás/ha_check_node | **1** |
+| _PF | $(DIR_PROFILE) \PR1\_ASCS00_ pr1 – ascs |
+| Restart_Program_02 local$(_MS) pf=$(_PF) = | **Indítsa el**_Program_02 local$(_MS) pf=$(_PF) = |
+| SAPLOCALHOST | **PR1 – ascs** |
+| Restart_Program_03 local$(_EN) pf=$(_PF) = | **Indítsa el**_Program_03 local$(_EN) pf=$(_PF) = |
+| az átjáró/netstat_once | **0** |
+| enque/encni/set_so_keepalive  | **true** |
+| service/ha_check_node | **1** |
 
 > [!IMPORTANT]
->Használhatja a **frissítés-SAPASCSSCSProfile** PowerShell-parancsmag segítségével automatizálhatja a profil frissítéséhez.
+>Használhatja a **Update-SAPASCSSCSProfile** PowerShell-parancsmag használatával automatizálhatja a profil frissítéséhez.
 >
->A PowerShell-parancsmag támogatja az SAP ABAP ASC és az SAP Java SCS példányok.
+>A PowerShell-parancsmag támogatja a SAP ABAP ascs rendszerbe fut be- és a SAP Java SCS-példányok.
 >
 
-Másolás [ **SAPScripts.psm1** ] [ sap-powershell-scrips] a helyi meghajtó a C:\tmp, és futtassa a következő PowerShell-parancsmagot:
+Másolás [ **SAPScripts.psm1** ] [ sap-powershell-scrips] a helyi meghajtó C:\tmp, és futtassa a következő PowerShell-parancsmagot:
 
 ```PowerShell
 Import-Module C:\tmp\SAPScripts.psm1
@@ -425,43 +425,43 @@ Import-Module C:\tmp\SAPScripts.psm1
 Update-SAPASCSSCSProfile -PathToAscsScsInstanceProfile \\sapglobal\sapmnt\PR1\SYS\profile\PR1_ASCS00_ascs-1 -NewASCSHostName pr1-ascs -NewSAPGlobalHostName sapglobal -Verbose  
 ```
 
-![1. ábra: SAPScripts.psm1 kimeneti][sap-ha-guide-figure-8012]
+![1. ábra: SAPScripts.psm1 output][sap-ha-guide-figure-8012]
 
-_**1. ábra**: SAPScripts.psm1 kimeneti_
+_**1. ábra**: SAPScripts.psm1 output_
 
 ## <a name="update-the-sidadm-user-environment-variable"></a>Frissítés a \<sid > adm felhasználói környezeti változó
 
-1. Frissítés a \<sid > adm felhasználói környezet új GLOBALHOST UNC elérési utat a *mindkét* ASC/SCS fürtcsomópontok.
-2. Jelentkezzen be \<sid > adm felhasználó, és indítsa el a Regedit.exe eszköz.
-3. Nyissa meg a **HKEY_CURRENT_USER** > **környezet**, majd frissítse a változókat az új érték:
+1. Frissítés a \<sid > adm felhasználói környezet új GLOBALHOST UNC elérési utat a *mindkét* ASCS/SCS fürtcsomópont.
+2. Jelentkezzen be \<sid > adm-felhasználó, és indítsa el a Regedit.exe eszközt.
+3. Lépjen a **HKEY_CURRENT_USER** > **környezet**, és frissítse a változókat, az új érték:
 
 | Változó | Érték |
 | --- | --- |
 | RSEC_SSFS_DATAPATH | \\\\**sapglobal**\sapmnt\PR1\SYS\global\security\rsecssfs\data |
 | RSEC_SSFS_KEYPATH | \\\\**sapglobal**\sapmnt\PR1\SYS\global\security\rsecssfs\key |
 | SAPEXE | \\\\**sapglobal**\sapmnt\PR1\SYS\exe\uc\NTAMD64 |
-| SAPLOCALHOST  | **PR1-ASC** |
+| SAPLOCALHOST  | **PR1 – ascs** |
 
 
-## <a name="install-a-new-saprcdll-file"></a>Egy új saprc.dll fájl telepítéséhez:
+## <a name="install-a-new-saprcdll-file"></a>Egy új saprc.dll fájl telepítése
 
-1. Az SAP-fürterőforrás, amely támogatja a fájlmegosztás forgatókönyv új verzióját telepíti.
+1. A SAP-fürterőforrás, amely támogatja a fájlmegosztás a forgatókönyv új verziójának telepítése.
 
-2. Töltse le a legfrissebb NTCLUST. Az SAP szolgáltatás piactérről csomag KKT.
+2. Töltse le a legújabb NTCLUST. Az SAP Service Marketplace-ről (KKT) csomagot.
 
-3. Csomagolja ki NTCLUS. KKT ASC/SCS egyik fürtcsomópont, és futtassa a következő parancsot a parancssorba a következő új saprc.dll fájl telepítéséhez:
+3. NTCLUS kicsomagolása. Az ASCS/SCS egyik KKT fürtcsomóponton, és futtassa a következő parancsot a parancssorból az új saprc.dll fájl telepítéséhez:
 
 ```
 .\NTCLUST\insaprct.exe -yes -install
 ```
 
-Az új saprc.dll fájl mindkét ASC/SCS fürtcsomóponton telepítve van.
+Az új saprc.dll fájl mindkét ASCS/SCS fürtcsomóponton telepítve van.
 
-További információkért lásd: [Megjegyzés 1596496 SAP - SAP erőforrástípus DLL-fájl frissítése a fürterőforrás-figyelő][1596496].
+További információkért lásd: [Megjegyzés 1596496 SAP - SAP erőforrástípus DLL-ek frissítése a fürterőforrás-figyelő][1596496].
 
-## <a name="create-a-sap-sid-cluster-group-network-name-and-ip"></a>Hozzon létre egy SAP <SID> csoport, a hálózati név és IP-fürt
+## <a name="create-a-sap-sid-cluster-group-network-name-and-ip"></a>Hozzon létre egy SAP <SID> csoport, a hálózat nevét és IP-fürt
 
-Egy SAP létrehozásához \<SID > fürtcsoportban, egy ASC/SCS hálózati név és egy megfelelő IP-címet, futtassa a következő PowerShell parancsmagot:
+Egy SAP létrehozása \<SID > fürtcsoport egy ASCS/SCS hálózati név és egy megfelelő IP-címet, futtassa a következő PowerShell-parancsmagot:
 
 ```PowerShell
 # Create SAP Cluster Group
@@ -502,13 +502,13 @@ Set-ClusterResourceDependency -Resource $SAPNetworkNameClusterResourceName -Depe
 Start-ClusterGroup -Name $SAPClusterGroupName -Verbose
 ```
 
-## <a name="register-the-sap-start-service-on-both-nodes"></a>Az SAP start szolgáltatás mindkét csomópontján regisztrálása
+## <a name="register-the-sap-start-service-on-both-nodes"></a>Az SAP kezdő szolgáltatás mindkét csomópontjának regisztrálása
 
-Regisztrálja újra a SAP ASC/SCS start szolgáltatást úgy, hogy az új profil és a profil elérési útja mutasson.
+Regisztrálja újra az SAP ASCS/SCS kezdő szolgáltatás átirányítása az új profil és a profil elérési útja.
 
-Ez az Újraregisztrálás kell végrehajtani a *mindkét* ASC/SCS fürtcsomópontok.
+Végre kell hajtani az újraregisztrálás a *mindkét* ASCS/SCS fürtcsomópont.
 
-A rendszergazda jogú parancssorból futtassa a következő parancsot:
+A rendszergazdai jogú parancssorban futtassa a következő parancsot:
 
 ```
 C:\usr\sap\PR1\ASCS00\exe\sapstartsrv.exe -r -p \\sapglobal\sapmnt\PR1\SYS\profile\PR1_ASCS00_pr1-ascs -s PR1 -n 00 -U SAPCLUSTER\SAPServicePR1 -P mypasswd12 -e SAPCLUSTER\pr1adm
@@ -516,20 +516,20 @@ C:\usr\sap\PR1\ASCS00\exe\sapstartsrv.exe -r -p \\sapglobal\sapmnt\PR1\SYS\profi
 
 ![2. ábra: SAP szolgáltatás újratelepítése][sap-ha-guide-figure-8013]
 
-_**2. ábra**: telepítse újra a SAP-szolgáltatás_
+_**2. ábra**: SAP szolgáltatás újratelepítése_
 
-Győződjön meg arról, hogy a paraméterek helyességét, majd válassza ki **manuális** , a **indítási típus**.
+Győződjön meg arról, hogy a paraméterek megfelelőek-e, és válassza **manuális** , a **indítási típus**.
 
-## <a name="stop-the-ascsscs-service"></a>A ASC/SCS szolgáltatás leállítása
+## <a name="stop-the-ascsscs-service"></a>Az ASCS/SCS szolgáltatás leállítása
 
-Állítsa le a SAP ASC/SCS szolgáltatást SAP\<SID > _\<InstanceNumber > mindkét ASC SCS fürtcsomópontokon.
+Állítsa le az SAP ASCS/SCS szolgáltatást SAP\<SID > _\<példányszám > mindkét ASCS/SCS fürtcsomópont.
 
-## <a name="create-a-new-sap-service-and-sap-instance-resources"></a>Hozzon létre egy új SAP-szolgáltatás és az SAP példány erőforrások
+## <a name="create-a-new-sap-service-and-sap-instance-resources"></a>Hozzon létre egy új SAP-szolgáltatás és az SAP-példány erőforrások
 
-Az SAP SAP az erőforrások létrehozásának véglegesítéséhez\<SID > fürtcsoportot, és hozzon létre a következőket:
+Az SAP az SAP-erőforrások létrehozásának véglegesítéséhez\<SID > fürtcsoportot, hozza létre a következő erőforrásokat:
 
-* SAP \<SID > \<InstanceNumber > szolgáltatás
-* SAP \<SID > \<InstanceNumber > példány
+* SAP \<SID > \<példányszám > szolgáltatás
+* SAP \<SID > \<példányszám > példány
 
 Futtassa a következő PowerShell-parancsmagot:
 
@@ -562,29 +562,29 @@ $SAPASCSServiceClusterResource  | Set-ClusterParameter  -Name SAPSystem -Value $
 Set-ClusterResourceDependency -Resource $SAPASCSServiceClusterResource  -Dependency "[$SAPServiceClusterResourceName]" -Verbose
 ```
 
-## <a name="add-a-probe-port"></a>Adjon hozzá egy mintavételi portot
+## <a name="add-a-probe-port"></a>Adja hozzá a mintavételi port
 
-Egy SAP-erőforrás, az SAP-SID-IP mintavételi portot konfigurálja a PowerShell használatával. Hajtsa végre ezt a konfigurációt egy SAP ASC/SCS fürtcsomópontnak leírtak [ebben a cikkben][sap-high-availability-installation-wsfc-shared-disk-add-probe-port].
+Egy SAP-erőforrás, a SAP-SID-IP-mintavételi port konfigurálása a PowerShell használatával. Hajtsa végre ezt a konfigurációt az egyik az SAP ASCS/SCS fürtcsomópontok leírtak szerint [ebben a cikkben][sap-high-availability-installation-wsfc-shared-disk-add-probe-port].
 
-## <a name="install-an-ers-instance-on-both-cluster-nodes"></a>Egy SSZON példányát telepítenie, mindkét fürtcsomóponton
+## <a name="install-an-ers-instance-on-both-cluster-nodes"></a>SSZON példányát telepítse mindkét fürtcsomóponton
 
-Sorba helyezni replikációs Server (SSZON) példánya telepíthető *mindkét* a ASC/SCS fürt csomópontjait. A SWPM menü kövesse a telepítési útvonalon:
+Egy sorba replikációs kiszolgáló (SSZON) példány telepíthető *mindkét* a ASCS/SCS-fürt csomópontja. A SWPM menüben kövesse a telepítési útvonalon:
 
-**\<A termék >** > **\<DBMS >** > **telepítési** > **további SAP rendszer példányok**  >  **Sorba helyezni replikációs Server-példány**
+**\<A termék >** > **\<DBMS >** > **telepítési** > **további SAP-rendszerhez példányok**  >  **Sorba replikációs Server-példány**
 
-## <a name="install-a-dbms-instance-and-sap-application-servers"></a>A DBMS példánya és SAP alkalmazás-kiszolgálók telepítése
+## <a name="install-a-dbms-instance-and-sap-application-servers"></a>Egy adatbázis-kezelő-példány és az SAP-alkalmazáskiszolgálókhoz telepítése
 
-Az SAP rendszer telepítésének véglegesítéséhez telepítése:
-* A DBMS példánya.
+Az SAP-rendszer telepítésének véglegesítéséhez telepítése:
+* DBMS-példány.
 * Egy elsődleges SAP-alkalmazáskiszolgáló.
-* További SAP alkalmazáskiszolgáló.
+* An additional SAP application server.
 
 ## <a name="next-steps"></a>További lépések
 
-* [Egy ASC/SCS példányát telepítenie, a megosztott lemez - magas rendelkezésre állású fájlmegosztás hivatalos SAP irányelvek a feladatátvevő fürtben][sap-official-ha-file-share-document]
+* [Nem megosztott lemez - hivatalos SAP-útmutató a magas rendelkezésre állású fájlmegosztást a feladatátvevő fürt telepítése egy ASCS/SCS példányhoz][sap-official-ha-file-share-document]
 
-* [Tárolóhelyek – közvetlen a Windows Server 2016][s2d-in-win-2016]
+* [A Windows Server 2016 közvetlen tárolóhelyek szolgáltatása][s2d-in-win-2016]
 
 * [Kibővített fájlkiszolgáló alkalmazásadatokhoz – áttekintés][sofs-overview]
 
-* [What's new in Windows Server 2016 tárolás][new-in-win-2016-storage]
+* [What's new in Windows Server 2016 storage szolgáltatásában][new-in-win-2016-storage]

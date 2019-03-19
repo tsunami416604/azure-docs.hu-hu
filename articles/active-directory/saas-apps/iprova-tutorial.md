@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c33bf12dfaa4d9c9bd927cd8e7f8d61a09a962d1
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 395d3887e35d6e9c043d4d947b605e71eb58bd6b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762636"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57897333"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iprova"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező iProva
 
@@ -221,7 +221,7 @@ Ebben a szakaszban hozzon létre egy tesztfelhasználót Britta Simon nevű az A
 
     a. Az a **neve** mezőben adjon meg egy nevet, például **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be *yourname@yourcompanydomain.extension*. 
+    b. Az a **felhasználónév** mezőbe írja be *sajátneve\@yourcompanydomain.extension*. 
     Például: BrittaSimon@contoso.com.
 
     c. Válassza ki a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel a megjelenített érték a **jelszó** mezőbe.
@@ -266,14 +266,14 @@ Ebben a szakaszban engedélyezze Britta Simon használja az Azure egyszeri bejel
 
 5. Válassza a **Hozzáadás** lehetőséget.
 
-6. Az a **felhasználónév** mezőbe írja be *brittasimon@yourcompanydomain.extension*. 
+6. Az a **felhasználónév** mezőbe írja be *brittasimon\@yourcompanydomain.extension*. 
     Például: BrittaSimon@contoso.com.
 
 7. Az a **teljes fájlvisszaállítási név** mezőbe írja be például a teljes nevet **BrittaSimon**.
 
 8. Válassza ki a **(használata egyszeri bejelentkezéshez) jelszavát nem** lehetőséget.
 
-9. Az a **E-mail-cím** mezőbe írja be *yourname@yourcompanydomain.extension*. 
+9. Az a **E-mail-cím** mezőbe írja be *sajátneve\@yourcompanydomain.extension*. 
    Például: BrittaSimon@contoso.com.
 
 10. Görgessen a lap aljára, és válassza ki **Befejezés**.

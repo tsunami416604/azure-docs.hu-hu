@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 6b2561f480f12936892428fe21b65d24a17e9356
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a828f7c53345292e986e8eba5027ada5629e1185
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768204"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855047"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-my-award-points-top-subtop-team"></a>Oktatóanyag: Az Azure Active Directory-integráció, a díjjal járó pontok felső Sub/felső csapatával
 
@@ -76,10 +76,10 @@ Egyszeri bejelentkezés működjön, az Azure AD-felhasználót és a kapcsolód
 Az Azure AD egyszeri bejelentkezés saját díjjal járó pontokat felső Sub/felső csapatával tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
 
 1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Saját díjjal járó pontokat felső Sub/felső csapat egyszeri bejelentkezés konfigurálása](#configure-my-award-points-top-sub/top-team-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+2. **Saját díjjal járó pontokat felső Sub/felső csapat egyszeri bejelentkezés konfigurálása** – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
 3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
 4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre saját díj pontok felső Sub/felső csapata tesztfelhasználót](#create-my-award-points-top-sub/top-team-test-user)**  - a-megfelelője a Britta Simon van a díjjal járó pontokat felső Sub/felső csoport, amely kapcsolódik az Azure AD felhasználói ábrázolása.
+5. **Hozzon létre saját díj pontok felső Sub/felső csapata tesztfelhasználót** - a-megfelelője a Britta Simon van a díjjal járó pontokat felső Sub/felső csoport, amely kapcsolódik az Azure AD felhasználói ábrázolása.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
@@ -148,7 +148,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
@@ -198,4 +198,3 @@ Ha a hozzáférési panelen a saját díj pontok felső Sub/felső csapata csemp
 - [Mi az az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval? ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/21/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c50e2b082c3181c37e9d129766d4bf400075d5a8
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 03a56951b68163a9160cc4a57f15354b5f210eb7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410664"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58125219"
 ---
 Ez a feladat lépései használják egy virtuális hálózathoz, a következő konfigurációs hivatkozás listában található értékek alapján. Ez a lista további beállításokat és neveket is rendszerkövetelményeknek. Nem használjuk ezt a listát minden lépést, közvetlenül a bár adjuk hozzá a változók a listában szereplő értékek alapján. A listában, hivatkozásként van listázva, használata és cserélje le az értékeket saját másolhatja.
 
@@ -34,52 +34,52 @@ Ez a feladat lépései használják egy virtuális hálózathoz, a következő k
 ## <a name="add-a-gateway"></a>Átjáró hozzáadása
 1. Csatlakozás az Azure-előfizetéshez.
 
-  [!INCLUDE [Sign in](expressroute-cloud-shell-connect.md)]
+   [!INCLUDE [Sign in](expressroute-cloud-shell-connect.md)]
 2. Deklarálja a változókat a gyakorlatban. Ügyeljen arra, hogy a használni kívánt beállításokat a minta szerkesztéséhez.
 
-  ```azurepowershell-interactive 
-  $RG = "TestRG"
-  $Location = "East US"
-  $GWName = "GW"
-  $GWIPName = "GWIP"
-  $GWIPconfName = "gwipconf"
-  $VNetName = "TestVNet"
-  ```
+   ```azurepowershell-interactive 
+   $RG = "TestRG"
+   $Location = "East US"
+   $GWName = "GW"
+   $GWIPName = "GWIP"
+   $GWIPconfName = "gwipconf"
+   $VNetName = "TestVNet"
+   ```
 3. A virtuális hálózati objektum Store változóként.
 
-  ```azurepowershell-interactive
-  $vnet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $RG
-  ```
+   ```azurepowershell-interactive
+   $vnet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $RG
+   ```
 4. Adjon hozzá egy átjáró-alhálózatot a virtuális hálózathoz. Az átjáró-alhálózat "GatewaySubnet" névvel kell lennie. Hozzunk létre egy átjáró-alhálózatot, amely legfeljebb/27 vagy nagyobb (/ 26-os vagy/25-stb.).
 
-  ```azurepowershell-interactive
-  Add-AzVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet -AddressPrefix 192.168.200.0/26
-  ```
+   ```azurepowershell-interactive
+   Add-AzVirtualNetworkSubnetConfig -Name GatewaySubnet -VirtualNetwork $vnet -AddressPrefix 192.168.200.0/26
+   ```
 5. Állítsa be a konfigurációt.
 
-  ```azurepowershell-interactive
-  $vnet = Set-AzVirtualNetwork -VirtualNetwork $vnet
-  ```
+   ```azurepowershell-interactive
+   $vnet = Set-AzVirtualNetwork -VirtualNetwork $vnet
+   ```
 6. Az átjáró-alhálózat Store változóként.
 
-  ```azurepowershell-interactive
-  $subnet = Get-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
-  ```
+   ```azurepowershell-interactive
+   $subnet = Get-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
+   ```
 7. Kérjen egy nyilvános IP-címet. A IP-címre van szükség az átjáró létrehozása előtt. Nem adhat meg, amelyet szeretne használni; az IP-cím dinamikusan kiosztott. Ezt az IP-címet a következő konfigurációs szakaszban kell majd használni. Az AllocationMethod dinamikusnak kell lennie.
 
-  ```azurepowershell-interactive
-  $pip = New-AzPublicIpAddress -Name $GWIPName  -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
-  ```
+   ```azurepowershell-interactive
+   $pip = New-AzPublicIpAddress -Name $GWIPName  -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
+   ```
 8. Hozzon létre az átjáró konfigurációját. Az átjáró konfigurációja meghatározza az alhálózatot és a használandó nyilvános IP-címet. Ebben a lépésben adja meg a konfigurációt, amely az átjáró létrehozásakor használható. Ez a lépés nem hoz létre az átjáró objektum. Az alábbi minta használatával hozza létre az átjáró konfigurációját.
 
-  ```azurepowershell-interactive
-  $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
-  ```
+   ```azurepowershell-interactive
+   $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
+   ```
 9. Az átjáró létrehozásához. Ebben a lépésben a **- GatewayType** különösen fontos. Az értéket kell használnia **ExpressRoute**. Miután ezek a parancsmagok, a az átjárót is igénybe vehet, 45 percet vagy többet hozhat létre.
 
-  ```azurepowershell-interactive
-  New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG -Location $Location -IpConfigurations $ipconf -GatewayType Expressroute -GatewaySku Standard
-  ```
+   ```azurepowershell-interactive
+   New-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG -Location $Location -IpConfigurations $ipconf -GatewayType Expressroute -GatewaySku Standard
+   ```
 
 ## <a name="verify-the-gateway-was-created"></a>Az átjáró létrehozásának ellenőrzéséhez
 A következő parancsok használatával győződjön meg arról, hogy az átjáró létrehozása:

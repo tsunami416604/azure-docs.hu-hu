@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 934046ac4be6c0e85ee687cefb46b61ec8affca6
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ed57d72d32ba82a37036c9af77590bd4e93db8d9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543362"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904252"
 ---
 # <a name="introduction-to-azure-security"></a>Bevezetés az Azure Security
 ## <a name="overview"></a>Áttekintés
@@ -59,7 +59,7 @@ A következő felsorolt funkciók áttekintheti, hogy biztonságos módon kezeli
 | [Biztonságos platformot](https://www.microsoft.com/en-us/trustcenter/Security/default.aspx)  | [Adatvédelem és vezérlők](https://www.microsoft.com/en-us/trustcenter/Privacy/default.aspx)  |[Megfelelőség](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)   | [Átláthatóság](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
 | :-- | :-- | :-- | :-- |
 | [Biztonsági fejlesztési ciklus](https://www.microsoft.com/en-us/sdl/), belső naplózza | [Folyamatosan-adatok kezelése](https://www.microsoft.com/en-us/trustcenter/Privacy/You-own-your-data) | [Adatvédelmi központ](https://www.microsoft.com/en-us/trustcenter/default.aspx) |[Hogyan teszi biztonságossá a Microsoft az ügyféladatokat az Azure-szolgáltatások](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx) |
-| [Kötelező biztonsági képzés, a háttér-ellenőrzések](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [Szabályozhatja az adatok helye](https://www.microsoft.com/en-us/trustcenter/Privacy/Where-your-data-is-located) |  [Common Controls Hub](https://www.microsoft.com/en-us/trustcenter/Common-Controls-Hub) |[Hogyan történik a Microsoft adatok helye az Azure-szolgáltatások kezelése](http://azuredatacentermap.azurewebsites.net/)|
+| [Kötelező biztonsági képzés, a háttér-ellenőrzések](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx) |  [Szabályozhatja az adatok helye](https://www.microsoft.com/en-us/trustcenter/Privacy/Where-your-data-is-located) |  [Common Controls Hub](https://www.microsoft.com/en-us/trustcenter/Common-Controls-Hub) |[Hogyan történik a Microsoft adatok helye az Azure-szolgáltatások kezelése](https://azuredatacentermap.azurewebsites.net/)|
 | [Behatolásvizsgálat](https://downloads.cloudsecurityalliance.org/star/self-assessment/StandardResponsetoRequestforInformationWindowsAzureSecurityPrivacy.docx), [behatolásérzékelési, DDoS](https://www.microsoft.com/en-us/trustcenter/Security/ThreatManagement), [eseményeket és naplózás](https://www.microsoft.com/en-us/trustcenter/Security/AuditingAndLogging) | [Adatok hozzáférés biztosítása a saját igényei szerint](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms) |  [A Cloud Services megfelelő gondossággal ellenőrzőlista](https://www.microsoft.com/en-us/trustcenter/Compliance/Due-Diligence-Checklist) |[Milyen feltételekkel, akik a Microsoft is elérhetők az adatok](https://www.microsoft.com/en-us/trustcenter/Privacy/Who-can-access-your-data-and-on-what-terms)|
 | [A legkorszerűbb adatközpont](https://www.microsoft.com/en-us/cloud-platform/global-datacenters), fizikai biztonsági [biztonságos hálózati](https://docs.microsoft.com/azure/security/security-network-overview) | [Válaszadás a bűnüldöző hatóság](https://www.microsoft.com/en-us/trustcenter/Privacy/Responding-to-govt-agency-requests-for-customer-data) |  [Megfelelőség szolgáltatást, helye és iparág szerint](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx) |[Hogyan teszi biztonságossá a Microsoft az ügyféladatokat az Azure-szolgáltatások](https://www.microsoft.com/en-us/trustcenter/Transparency/default.aspx)|
 |  [Biztonsági incidensmegoldási](https://aka.ms/SecurityResponsepaper), [közös felelősség](https://aka.ms/sharedresponsibility) |[Szigorú adatvédelmi normák](https://www.microsoft.com/en-us/TrustCenter/Privacy/We-set-and-adhere-to-stringent-standards) |  | [Tekintse át az Azure-szolgáltatásokhoz, átláthatóság hub hitelesítő](https://www.microsoft.com/en-us/trustcenter/Compliance/default.aspx)|
@@ -94,7 +94,7 @@ Ha összeomlik, sikertelen vagy teljesítménnyel kapcsolatos problémák, a tel
 ### <a name="azure-monitor"></a>Azure Monitor
 [Az Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) Vizualizáció, lekérdezés, útválasztás, riasztások, automatikus méretezés és mindkét adatokon automation kínál az Azure-infrastruktúra ([tevékenységnapló](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)), és minden egyes Azure-erőforrás ([diagnosztikai Naplók](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)). Az Azure Monitor használatával figyelmeztet a biztonsággal kapcsolatos eseményeket, amelyek akkor jönnek létre, az Azure-naplók.
 
-### <a name="azure-monitor-logs"></a>Az Azure Monitor naplóira
+### <a name="azure-monitor-logs"></a>Azure Monitor-naplók
 [Az Azure Monitor naplóira](https://azure.microsoft.com/documentation/services/log-analytics/) – egy IT-felügyeleti megoldást kínál a helyszíni és külső felhő alapú infrastruktúra (például az AWS) Azure-erőforrások mellett is. Adatok az Azure Monitor átirányíthatók közvetlenül az Azure Monitor naplóira, így a teljes környezet egy helyen láthatja metrikák és naplók.
 
 Az Azure Monitor naplóira lehet az eszköz lehetővé teszi nagy mennyiségű, biztonsággal kapcsolatos bejegyzéseket a rugalmas lekérdezés megközelítéssel gyorsan kereshet egy hasznos eszköz a törvényszéki és egyéb biztonsági elemzés. Emellett a helyszíni [tűzfalakról és proxykról naplók exportálhatók az Azure-bA és elérhetővé az Azure Monitor-naplók használatával elemzéshez.](https://docs.microsoft.com/azure/log-analytics/log-analytics-proxy-firewall)

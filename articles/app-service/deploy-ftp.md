@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/30/2018
 ms.author: cephalin;dariac
 ms.custom: seodec18
-ms.openlocfilehash: f1d64170c3f9622169dd1218e4c63652c9f94b9b
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: db8445ec2b3dd8bdefa661d7f186e720c6fada09
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820671"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57858877"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>Alkalmazás üzembe helyezése az Azure App Service-be FTP/S
 
@@ -44,6 +44,14 @@ Az FTP-irányítópulton kattintson **másolási** másolása a FTPS végpontok 
 
 Javasoljuk, hogy használja **alkalmazás hitelesítő adatok** , mivel minden alkalmazáshoz egyedi helyezze üzembe az alkalmazásban. Azonban ha **felhasználói hitelesítő adatok**, beállíthatja a felhasználói szintű hitelesítő adatokat, az előfizetés összes App Service-alkalmazáshoz FTP/S bejelentkezéshez használható.
 
+> [!NOTE]
+> Hitelesítés egy FTP-/ FTPS-végponthoz, felhasználónév requirers felhasználói szintű hitelesítő adatok használatával a következő formátumban: 
+>
+>`<app-name>\<user-name>`
+>
+> Felhasználói szintű hitelesítő adatokat a felhasználó és a egy adott erőforrás nem kapcsolódnak, a felhasználónév és a bejelentkezési műveletet a megfelelő alkalmazás-végpont az ebben a formátumban kell lennie.
+>
+
 ## <a name="deploy-files-to-azure"></a>Az Azure files üzembe helyezése
 
 1. Az FTP-ügyfél (például [Visual Studio](https://www.visualstudio.com/vs/community/), [Cyberduck](https://cyberduck.io/), vagy [WinSCP](https://winscp.net/index.php)), az alkalmazás csatlakozni összegyűjtött kapcsolati információk.
@@ -58,7 +66,6 @@ Javasoljuk, hogy használja **alkalmazás hitelesítő adatok** , mivel minden a
 > - web.config generációja (Íme egy [Node.js példa](https://github.com/projectkudu/kudu/wiki/Using-a-custom-web.config-for-Node-apps))
 > 
 > Hozhatja létre ezeket a szükséges fájlokat manuálisan a helyi gépén, majd telepítheti őket az alkalmazás együtt.
->
 >
 
 ## <a name="enforce-ftps"></a>FTPS kényszerítése

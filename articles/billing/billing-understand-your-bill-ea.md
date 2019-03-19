@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2018
 ms.author: banders
-ms.openlocfilehash: 36ce4d96e02bac1eae1791acf811da468726b4a6
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 16feb41707e5afa07054d20b620f5822eedad773
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902703"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57858912"
 ---
 # <a name="understand-your-bill-for-azure-customers-with-an-enterprise-agreement"></a>Számlázással kapcsolatos Azure-nagyvállalati szerződéssel rendelkező ügyfelek számára
 
@@ -77,7 +77,7 @@ Hasonlítsa össze a felhasználás teljes összege, a vállalati portálról **
 
 ### <a name="review-marketplace-invoice"></a>Marketplace-számlában áttekintése
 
-Hasonlítsa össze az Azure Marketplace-en található összes **jelentések** > **használati összegzés** a vállalati portál a marketplace-számlában. A marketplace-számlában van, csak az Azure piactéren történt vásárlást és használat. Összegek az **használati összegzés** nem tartalmazzák a forgalmi adót. 
+Hasonlítsa össze az Azure Marketplace-en található összes **jelentések** > **használati összegzés** a vállalati portál a marketplace-számlában. A piactéri számlán csak az Azure Marketplace-beli vásárlások és használat szerepel. Összegek az **használati összegzés** nem tartalmazzák a forgalmi adót. 
 
 1. Jelentkezzen be a [az Enterprise portal](https://ea.azure.com).
 1. Válassza ki **jelentések**.
@@ -92,4 +92,4 @@ Hasonlítsa össze az Azure Marketplace-en található összes **jelentések** >
 
 ## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
 
-Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).

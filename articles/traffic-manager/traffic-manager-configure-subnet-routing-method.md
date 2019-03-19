@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: kumud
-ms.openlocfilehash: 3ce385149de58b185f296191bbed0f16b5331c1f
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: b3eb7995dac1adf3053d28b40cf322e78c69c55f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54469814"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001332"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Forgalom adott végpontokba történő irányítása felhasználói alhálózatok alapján a Traffic Managerben
 
@@ -58,6 +58,7 @@ Ebben a szakaszban két virtuális gép létrehozása *myEndpointVMEastUS* és *
     |Erőforráscsoport| Válassza az **Új** lehetőséget, majd írja be a *myResourceGroupTM1* nevet.|
     |Hely| Válassza az **USA keleti régiója** lehetőséget.|
     |||
+
 4. Válasszon egy virtuálisgép-méretet a **Méret kiválasztása** alatt.
 5. Válassza ki az alábbi értékeket a **Beállítások** területen, majd kattintson az **OK** gombra:
     
@@ -67,6 +68,7 @@ Ebben a szakaszban két virtuális gép létrehozása *myEndpointVMEastUS* és *
     |Hálózati biztonsági csoport|Válassza az **Alapszintű** lehetőséget, majd a **Nyilvános bejövő portok kiválasztása** legördülő menüben válassza a **HTTP** és az **RDP** lehetőségeket |
     |Rendszerindítási diagnosztika|Válassza a **Letiltva** lehetőséget.|
     |||
+
 6. Az **Összegzés** lap **Létrehozás** területén kattintson a **Létrehozás** elemre a virtuális gép üzembe helyezésének megkezdéséhez.
 
 7. Végezze el ismét az 1–6. lépést az alábbi módosításokkal:
@@ -78,6 +80,7 @@ Ebben a szakaszban két virtuális gép létrehozása *myEndpointVMEastUS* és *
     |Virtuális gép neve | myIISVMWEurope|
     |Virtuális hálózat | Válassza a **Virtuális hálózat** elemet a **Virtuális hálózat létrehozása** területen. A **Név** szakaszban adja meg a *myVNet2* kifejezést, az alhálózat nevének pedig a  *mySubnet* kifejezést.|
     |||
+
 8. A virtuális gépek létrehozása néhány percet vesz igénybe. Csak akkor folytassa a következő lépésekkel, ha már mindkét virtuális gép létrejött.
 
    ![Virtuális gép létrehozása](./media/tutorial-traffic-manager-improve-website-response/createVM.png)
@@ -143,6 +146,7 @@ Ebben a szakaszban létrehoz egy virtuális Gépet (*mVMEastUS* és *myVMWestEur
 
 4. Válasszon egy virtuálisgép-méretet a **Méret kiválasztása** alatt.
 5. Válassza ki az alábbi értékeket a **Beállítások** területen, majd kattintson az **OK** gombra:
+
     |Beállítás|Érték|
     |---|---|
     |Virtuális hálózat| Válassza a **Virtuális hálózat** elemet a **Virtuális hálózat létrehozása** területen. A **Név** szakaszban adja meg a *myVNet3* kifejezést, az alhálózat nevének pedig a  *mySubnet3* kifejezést.|
@@ -168,6 +172,7 @@ Létrehozhat egy Traffic Manager-profilt, amellyel a kérés forrás IP-címe al
 
 1. A képernyő bal felső részén válassza az **Erőforrás létrehozása** > **Hálózat** > **Traffic Manager-profil** > **Létrehozás** elemet.
 2. A **Traffic Manager-profil létrehozása** területen adja meg vagy válassza ki az alábbi adatokat, a többi beállítás esetében fogadja el az alapértelmezett értéket, majd válassza a **Létrehozás** elemet:
+
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
     | Name (Név)                   | Ennek a névnek egyedinek kell lennie a trafficmanager.net zónában, és a trafficmanager.net DNS-nevet eredményezi, amellyel elérhető a Traffic Manager-profil.                                   |
@@ -189,7 +194,7 @@ Adja hozzá a két virtuális gép fut az IIS-kiszolgálók – *myIISVMEastUS* 
 
     | Beállítás                 | Érték                                              |
     | ---                     | ---                                                |
-    | Típus                    | Azure-végpont                                   |
+    | Typo                    | Azure-végpont                                   |
     | Name (Név)           | myTestWebSiteEndpoint                                        |
     | Célerőforrás típusa           | Nyilvános IP-cím                          |
     | Célerőforrás          | **Válasszon nyilvános IP-címet**, így megjelenítheti az azonos előfizetéshez tartozó, nyilvános IP-címmel rendelkező erőforrások listáját. Az **Erőforrás** területen válassza a *myIISVMEastUS-ip* nevű nyilvános IP-címet. Ez az USA keleti régiójában található IIS-kiszolgáló virtuális gépének nyilvános IP-címe.|

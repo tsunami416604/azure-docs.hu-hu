@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: b45f48289eda9096c84537eaaa7bc2df74c9d05d
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 4784ca08366d833d02372393e0e12f0fefe8c5cf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341414"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112449"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>A felhőalapú automatikus machine learning-modellek
 
@@ -107,7 +107,7 @@ Adja meg a betanítási adatok eléréséhez a távoli erőforrás. Automatizál
 
 A hozzáférés biztosításához tegye a következőket:
 + Hozzon létre tartalmazó get_data.py fájlt egy `get_data()` függvény 
-* Helyezze a fájlt a könyvtár abszolút elérési útnak elérhetőnek 
++ Helyezze a fájlt a könyvtár abszolút elérési útnak elérhetőnek 
 
 Adatok beolvasása a blob storage vagy a helyi lemezre a get_data.py fájlban kódot is magába foglalja. Az alábbi kódmintában az adatokat az sklearn csomag származik.
 

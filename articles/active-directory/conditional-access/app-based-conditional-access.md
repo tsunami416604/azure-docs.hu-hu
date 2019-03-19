@@ -18,12 +18,12 @@ ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6f7765b775706d3bdf09176bc4bfbf18533d054
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 57b7f540ccf80c6d25a7dfcfcad1ba7ca6698167
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441304"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113231"
 ---
 # <a name="how-to-require-approved-client-apps-for-cloud-app-access-with-conditional-access"></a>kézikönyv: A jóváhagyott ügyfélalkalmazások szükségesek a feltételes hozzáféréssel felhőalapú alkalmazás-hozzáférés 
 
@@ -292,13 +292,13 @@ Ebben a lépésben a feltételes hozzáférési szabályzat konfigurálja a köv
 
 5. Mint **hozzáférés-vezérlés**, szüksége lesz kiválasztva a következőket:
 
-    - **Megfelelőként megjelölt eszköz megkövetelése**
+   - **Megfelelőként megjelölt eszköz megkövetelése**
 
-    - **Jóváhagyott ügyfélalkalmazás (előzetes verzió) megkövetelése**
+   - **Jóváhagyott ügyfélalkalmazás (előzetes verzió) megkövetelése**
 
-    - **A kijelölt feltételek egyikének megkövetelése**   
+   - **A kijelölt feltételek egyikének megkövetelése**   
  
-    ![Feltételes hozzáférés](./media/app-based-conditional-access/11.png)
+     ![Feltételes hozzáférés](./media/app-based-conditional-access/11.png)
 
 
 
@@ -388,13 +388,13 @@ Ebben a lépésben a feltételes hozzáférési szabályzat konfigurálja a köv
 
 5. Mint **hozzáférés-vezérlés**, szüksége lesz kiválasztva a következőket:
 
-    - **Megfelelőként megjelölt eszköz megkövetelése**
+   - **Megfelelőként megjelölt eszköz megkövetelése**
 
-    - **Jóváhagyott ügyfélalkalmazás (előzetes verzió) megkövetelése**
+   - **Jóváhagyott ügyfélalkalmazás (előzetes verzió) megkövetelése**
 
-    - **Az összes kijelölt vezérlő megkövetelése**   
+   - **Az összes kijelölt vezérlő megkövetelése**   
  
-    ![Feltételes hozzáférés](./media/app-based-conditional-access/13.png)
+     ![Feltételes hozzáférés](./media/app-based-conditional-access/13.png)
 
 
 
@@ -420,13 +420,13 @@ Ebben a lépésben a feltételes hozzáférési szabályzat konfigurálja a köv
 
 5. Mint **hozzáférés-vezérlés**, szüksége lesz kiválasztva a következőket:
 
-    - **Megfelelőként megjelölt eszköz megkövetelése**
+   - **Megfelelőként megjelölt eszköz megkövetelése**
 
-    - **Jóváhagyott ügyfélalkalmazás (előzetes verzió) megkövetelése**
+   - **Jóváhagyott ügyfélalkalmazás (előzetes verzió) megkövetelése**
 
-    - **Az összes kijelölt vezérlő megkövetelése**   
+   - **Az összes kijelölt vezérlő megkövetelése**   
  
-    ![Feltételes hozzáférés](./media/app-based-conditional-access/64.png)
+     ![Feltételes hozzáférés](./media/app-based-conditional-access/64.png)
 
 
 

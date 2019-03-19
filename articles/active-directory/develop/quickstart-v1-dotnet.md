@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b06ceb86e8406657766be1375889fcfe1b4673d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 292fa61ae87d87f27b988d250b694e05f6fa1d3d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204542"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58119428"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-a-net-desktop-wpf-app"></a>Gyors útmutató: A felhasználók és a Microsoft Graph API hívása egy .NET (WPF) asztali alkalmazásból
 
@@ -77,9 +77,9 @@ Most, hogy már van egy alkalmazása az Azure AD-ben, telepítheti az ADAL-t, é
 
 1. Az a `DirectorySearcher` projektben nyissa meg `app.config`.
 1. Cserélje le az értékeket az elemek a `<appSettings>` szakasz az értékekhez adjon meg az Azure Portalra. A kód ezekre az értékekre fog hivatkozni az ADAL használatakor.
-  * A `ida:Tenant` a tartomány az Azure AD-bérlő, például contoso.onmicrosoft.com
-  * A `ida:ClientId` a portálról kimásolt az alkalmazás ügyfél-azonosítója.
-  * A `ida:RedirectUri` a portál regisztrált átirányítási URL-címe.
+   * A `ida:Tenant` a tartomány az Azure AD-bérlő, például contoso.onmicrosoft.com
+   * A `ida:ClientId` a portálról kimásolt az alkalmazás ügyfél-azonosítója.
+   * A `ida:RedirectUri` a portál regisztrált átirányítási URL-címe.
 
 ## <a name="step-3-use-adal-to-get-tokens-from-azure-ad"></a>3. lépés: Adal-t használó tokenekhez Azure AD-ből való
 

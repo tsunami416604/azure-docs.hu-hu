@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: meladie
-ms.openlocfilehash: 0d9de6e5cfa8ffa0c5f67607a60d930b623413cf
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 5452a1adb419a2f57e2124d5aac49f9cdcff615a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57247273"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111667"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-for-pci-dss"></a>Azure biztonsági és megfelelőségi terv: PaaS Web Application a PCI DSS
 
@@ -228,10 +228,10 @@ Az Azure biztonsági és megfelelőségi tervezet Automation JSON konfiguráció
 2. Tekintse át a 0 – telepítő-AdministrativeAccountAndPermission.md, és futtassa a megadott parancsokat.
 
 3. A Contoso mintaadatok és a egy kezdeti éles környezetben próbaüzem tesztelési megoldás üzembe helyezése.
-  - 1A-ContosoWebStoreDemoAzureResources.ps1
-    - Ez a szkript üzembe helyezi az Azure-erőforrások a Contoso mintaadatokkal webáruházat bemutató célokra.
-  - 1-DeployAndConfigureAzureResources.ps1
-    - Ez a parancsfájl telepíti az Azure-erőforrások felhasználói tulajdonú webalkalmazás éles környezetben támogatásához szükséges. Ebben a környezetben kell további testre az ügyfél szervezeti követelmények alapján.
+   - 1A-ContosoWebStoreDemoAzureResources.ps1
+     - Ez a szkript üzembe helyezi az Azure-erőforrások a Contoso mintaadatokkal webáruházat bemutató célokra.
+   - 1-DeployAndConfigureAzureResources.ps1
+     - Ez a parancsfájl telepíti az Azure-erőforrások felhasználói tulajdonú webalkalmazás éles környezetben támogatásához szükséges. Ebben a környezetben kell további testre az ügyfél szervezeti követelmények alapján.
 
 ## <a name="guidance-and-recommendations"></a>Útmutatás és javaslatok
 

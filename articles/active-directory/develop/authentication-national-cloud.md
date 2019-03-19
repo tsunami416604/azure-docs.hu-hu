@@ -17,12 +17,12 @@ ms.author: negoe
 ms.reviewer: negoe,andret,saeeda,CelesteDG
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a487c233e7bb71f05c6f2181d9c822ca508a583c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4feaf97de7b833514113af6c91b3745be0503eff
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192948"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113686"
 ---
 # <a name="national-clouds"></a>Országos felhőkörnyezetek
 
@@ -44,16 +44,16 @@ A következő táblázat felsorolja az alap URL-címeket kell regisztrálni egy 
 
 | Országos felhőben | Az Azure AD-portál végpontja
 | --- | --- |
-| Azure ad-ben az USA kormányzatának |https://portal.azure.us
-|Az Azure AD-Németország |https://portal.microsoftazure.de
-|Az Azure AD Kínában a 21Vianet által üzemeltetett |https://portal.azure.cn
-|Az Azure AD (globális szolgáltatás)|https://portal.azure.com 
+| Azure ad-ben az USA kormányzatának |`https://portal.azure.us`
+|Az Azure AD-Németország |`https://portal.microsoftazure.de`
+|Az Azure AD Kínában a 21Vianet által üzemeltetett |`https://portal.azure.cn`
+|Az Azure AD (globális szolgáltatás)|`https://portal.azure.com` 
 
 ## <a name="azure-ad-authentication-endpoints"></a>Az Azure AD hitelesítési végpontjai
 
 Az országos felhők minden környezetben külön-külön felhasználóhitelesítést, és külön hitelesítés végpontokat.
 
-A következő táblázat felsorolja az alap URL-címek országos felhőnként jogkivonatok beszerzésére használható Azure Active Directory (Azure AD-) végpontjait.
+A következő táblázat felsorolja az alap URL-címek nemzeti felhőnként jogkivonatok beszerzésére használható Azure Active Directory (Azure AD-) végpontjait.
 
 | Országos felhőben | Az Azure AD-hitelesítési végpont
 | --- | --- |
@@ -78,8 +78,8 @@ Megtudhatja, hogyan hívhat meg a Microsoft Graph API-k az országos felhőkörn
 
 
 
->[!IMPORTANT]
-Egyes szolgáltatások és funkciók, amelyek az adott régióban, a globális szolgáltatás nem érhető el az országos felhők mindegyikét. Ismerje meg, milyen szolgáltatások érhetők el, lépjen a [elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia,china-non-regional,china-east,china-east-2,china-north,china-north-2,germany-non-regional,germany-central,germany-northeast).
+> [!IMPORTANT]
+> Egyes szolgáltatások és funkciók, amelyek az adott régióban, a globális szolgáltatás nem érhető el az országos felhők mindegyikét. Ismerje meg, milyen szolgáltatások érhetők el, lépjen a [elérhető termékek régiók szerint](https://azure.microsoft.com/global-infrastructure/services/?products=all&regions=usgov-non-regional,us-dod-central,us-dod-east,usgov-arizona,usgov-iowa,usgov-texas,usgov-virginia,china-non-regional,china-east,china-east-2,china-north,china-north-2,germany-non-regional,germany-central,germany-northeast).
 
 ## <a name="next-steps"></a>További lépések
 

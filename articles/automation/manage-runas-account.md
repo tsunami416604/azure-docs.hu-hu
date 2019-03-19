@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e5949016281b5f8ba5d8770403a146e52d279c73
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: b3c9f2f8671d5a7aa313a9f49e07230a4f9b6220
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079987"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109341"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation futtató fiókok kezelése
 
@@ -197,6 +197,12 @@ Ez a PowerShell-szkript a következő konfigurációk támogatását tartalmazza
         return
     }
 
+    # To use the new Az modules to create your Run As accounts please uncomment the following lines and ensure you comment out the previous two lines to avoid any issues. To learn about about using Az modules in your Automation Account see https://docs.microsoft.com/azure/automation/az-modules
+
+    # Import-Module Az.Automation
+    # Enable-AzureRmAlias 
+
+
     Connect-AzureRmAccount -Environment $EnvironmentName 
     $Subscription = Select-AzureRmSubscription -SubscriptionId $SubscriptionId
 
@@ -320,13 +326,13 @@ Ez a témakör ismerteti, hogyan törölhet és hozhat újra létre futtató fi�
 
 3. A **Futtató fiókok** tulajdonságlapján válassza ki azt a futtató fiókot vagy klasszikus futtató fiókot, amelyet törölni kíván. Ezt követően a kiválasztott fiók **Tulajdonságok** paneljén kattintson a **Törlés** elemre.
 
- ![Futtató fiók törlése](media/manage-runas-account/automation-account-delete-runas.png)
+   ![Futtató fiók törlése](media/manage-runas-account/automation-account-delete-runas.png)
 
 1. A fiók törlése során a menü **Értesítések** részén nyomon követheti a folyamat állapotát.
 
 1. A törlés után újra létrehozhatja a fiókot a **Futtató fiókok** tulajdonságlapon az **Azure-alapú futtató fiók** lehetőség kiválasztásával.
 
- ![Automation futtató fiók újbóli létrehozása](media/manage-runas-account/automation-account-create-runas.png)
+   ![Automation futtató fiók újbóli létrehozása](media/manage-runas-account/automation-account-create-runas.png)
 
 ## <a name="cert-renewal"></a>Önaláírt tanúsítvány megújítása
 

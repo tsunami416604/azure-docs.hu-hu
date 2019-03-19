@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e464787919577b89b1cfec11e579cb17c18e2878
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 777aca4754d4d5dc893f930994ffe61db18362fd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404219"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089335"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>Az erőforrás tulajdonosának jelszavas hitelesítő adatainak folyamata konfigurálása az Azure AD B2C-vel
 
@@ -37,15 +37,15 @@ A következő folyamatok nem támogatottak:
 
 ##  <a name="create-a-resource-owner-user-flow"></a>Erőforrás tulajdonosának felhasználói folyamat létrehozása
 
-1.  Jelentkezzen be az Azure Portalon az Azure AD B2C-bérlő globális rendszergazdájaként.
-2.  Váltson át az Azure AD B2C-bérlő, válassza ki a B2C-címtárat a portál jobb felső sarkában.
-3.  Kattintson a **felhasználói folyamatok**, és válassza ki **új felhasználói folyamat**.
-4.  Kattintson a **összes** lapot, és válasszon **jelentkezzen be a ROPC**.
-5.  Adjon meg egy nevet a felhasználói folyamatot, például: *ROPC_Auth*.
-6.  A **alkalmazásjogcímek**, kattintson a **Továbbiak megjelenítése**.
-7.  Válassza ki az alkalmazáshoz, például a megjelenített név, E-mail-címét és identitásszolgáltató kell application jogcímeket.
-8.  Kattintson az **OK**, majd a **Létrehozás** gombra.
-9.  Kattintson a **felhasználói folyamat futtatása**.
+1. Jelentkezzen be az Azure Portalon az Azure AD B2C-bérlő globális rendszergazdájaként.
+2. Váltson át az Azure AD B2C-bérlő, válassza ki a B2C-címtárat a portál jobb felső sarkában.
+3. Kattintson a **felhasználói folyamatok**, és válassza ki **új felhasználói folyamat**.
+4. Kattintson a **összes** lapot, és válasszon **jelentkezzen be a ROPC**.
+5. Adjon meg egy nevet a felhasználói folyamatot, például: *ROPC_Auth*.
+6. A **alkalmazásjogcímek**, kattintson a **Továbbiak megjelenítése**.
+7. Válassza ki az alkalmazáshoz, például a megjelenített név, E-mail-címét és identitásszolgáltató kell application jogcímeket.
+8. Kattintson az **OK**, majd a **Létrehozás** gombra.
+9. Kattintson a **felhasználói folyamat futtatása**.
 
    Ekkor megjelenik egy végpontot, például az ebben a példában:
 

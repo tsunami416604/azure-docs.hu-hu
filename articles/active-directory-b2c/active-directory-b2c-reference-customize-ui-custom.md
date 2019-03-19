@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: d222e398653487cb87525ac13ebe682e9c8a26ee
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a51c2987781184539edfcc8be9b9f483a215a157
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195937"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122926"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>Egyéni házirendek felhasználói út, a felhasználói felület testreszabása
 
@@ -66,7 +66,7 @@ Annak érdekében, hogy minden megfelelően működik-e, tegye a következőket:
 - Győződjön meg, hogy a tartalom HTML5 megfelelő és elérhető-e
 - Győződjön meg arról, a webtartalom-kiszolgáló a CORS engedélyezve van.
 - HTTPS-kapcsolaton keresztül tartalmat szolgálnak ki.
-- Használjon abszolút URL-CÍMEK például https://yourdomain/content hivatkozások és a CSS-tartalom.
+- Használjon abszolút URL-CÍMEK például `https://yourdomain/content` hivatkozások és a CSS-tartalom.
 
 > [!TIP]
 > Ellenőrizze, hogy a hely üzemelteti a tartalmat a CORS-támogatással rendelkezik-e, és tesztelése a CORS-kérések, használhatja a hely https://test-cors.org/. Ez a hely köszönhetően is a CORS-kérést küld egy távoli kiszolgálóra (tesztelje, hogy a CORS támogatott), vagy a CORS-kérést küld a kiszolgáló (az egyes CORS funkcióinak bemutatása).
@@ -121,16 +121,16 @@ Annak ellenőrzéséhez, hogy rendelkezik-e a tárterület üzemelteti a tartalm
 
 1. Nyisson meg egy böngészési munkamenetet, és nyissa meg a lapot *unified.html* használatával a teljes URL-címét a helyet a tárfiókban lévő `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html`. Például: https://contoso369b2c.blob.core.windows.net/b2c/unified.html.
 2. Nyissa meg a https://test-cors.org címet. Ez a hely ellenőrizze, hogy használja az oldal rendelkezik-e a CORS-támogatással teszi lehetővé.  
-<!--
-![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)
--->
+   <!--
+   ![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)
+   -->
 
 3. A **távoli URL-cím**, adja meg a teljes URL-címet a unified.html tartalom, és kattintson a **kérés küldése**.
 4. Ellenőrizze, hogy a kimenetet a a **eredmények** szakasz tartalmaz *XHR állapota: 200-as*, ami azt jelenti, hogy a CORS engedélyezve van-e.
-<!--
-![CORS enabled](../../media/active-directory-b2c-customize-ui-of-a-user-journey/cors-enabled.png)
--->
-A storage-fiókot most tartalmaznia kell egy blobtárolót *b2c* az ábrán is látható, amely tartalmazza az alábbi, a tartománynév-sablonok a *-Kezdőcsomag*.
+   <!--
+   ![CORS enabled](../../media/active-directory-b2c-customize-ui-of-a-user-journey/cors-enabled.png)
+   -->
+   A storage-fiókot most tartalmaznia kell egy blobtárolót *b2c* az ábrán is látható, amely tartalmazza az alábbi, a tartománynév-sablonok a *-Kezdőcsomag*.
 
 <!--
 ![Correctly configured storage account](../../articles/active-directory-b2c/media/active-directory-b2c-reference-customize-ui-custom/storage-account-final.png)

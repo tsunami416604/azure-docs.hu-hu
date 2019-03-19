@@ -16,12 +16,12 @@ ms.date: 02/28/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/09/2019
-ms.openlocfilehash: 0bbf76e16334ae4847ec6f7fbf3aa88fb508e84d
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 682ff9b139d7315604da70fbba47b5e81a290921
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731139"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57886371"
 ---
 # <a name="azure-stack-1901-update"></a>Azure Stack 1901 frissítése
 
@@ -63,7 +63,7 @@ Az Azure Stack-gyorsjavítások csak alkalmazhatók az Azure Stackkel integrált
 ## <a name="prerequisites"></a>Előfeltételek
 
 > [!IMPORTANT]
-- Telepítse a [legújabb Azure Stack-gyorsjavítás](#azure-stack-hotfixes) esetében (ha vannak) 1811 1901 frissítése előtt.
+> - Telepítse a [legújabb Azure Stack-gyorsjavítás](#azure-stack-hotfixes) esetében (ha vannak) 1811 1901 frissítése előtt.
 
 - A frissítés telepítésének megkezdése előtt futtassa [Test-AzureStack](azure-stack-diagnostic-test.md) az Azure Stack állapotának érvényesítéséhez, és hárítsa el a működési hibákat talált a következő paraméterekkel, többek között az összes figyelmeztetések és hibák esetén. Emellett tekintse át az aktív riasztások, és oldja meg az esetleges beavatkozást igénylő:
 
@@ -89,7 +89,7 @@ A frissítés tartalmazza a következő új funkciókat és fejlesztéseket az A
    * **AzureRm.Storage**  
          Összesítő AzureRm-modul mostantól tartalmazza a már közzétett verzió 5.0.4 támogató a **api-verzió 2017-10-01**.  
    * **AzureRm.Compute**  
-         A hozzáadott egyszerű paraméterkészletek `New-AzureRMVM` és `NewAzureRMVMSS`, `-ImageName` paraméter megadásával felhasználói lemezképek támogatja.  
+         A hozzáadott egyszerű paraméterkészletek `New-AzureRmVM` és `New-AzureRmVmss`, `-Image` paraméter megadásával felhasználói lemezképek támogatja.  
    * **AzureRm.Insights**  
          Összesítő AzureRm-modul mostantól tartalmazza a már közzétett verzió 5.1.5 támogató a **api-verzió a 2018-01-01** metrikákhoz, metrikadefinícióinak erőforrástípusok.
 
@@ -115,7 +115,8 @@ A frissített modulok referenciája áttekintéséhez lásd: [Azure Stack modulh
 <!-- 16523695 – IS, ASDK -->
 - Javítva lett egy probléma, amelyben a virtuális hálózat, a DNS-beállításainak frissítése után **használata az Azure Stack DNS** való **egyéni DNS**, a példányok nem lettek frissítve az új beállítással.
 
-- <!-- 3235634 – IS, ASDK --> Javítva lett egy probléma milyen üzembe virtuális gépeket tartalmazó méretű egy **v2** utótag; például **Standard_A2_v2**, mint az utótag megadása kötelező **Standard_A2_v2** () kis v). Mivel a globális Azure-ban, most már használhatják **Standard_A2_V2** (nagybetűs V).
+- <!-- 3235634 – IS, ASDK -->
+  Javítva lett egy probléma milyen üzembe virtuális gépeket tartalmazó méretű egy **v2** utótag; például **Standard_A2_v2**, mint az utótag megadása kötelező **Standard_A2_v2** () kis v). Mivel a globális Azure-ban, most már használhatják **Standard_A2_V2** (nagybetűs V).
 
 <!-- 2869209 – IS, ASDK --> 
 - Kijavítva használatakor a [Add-AzsPlatformImage parancsmag](/powershell/module/azs.compute.admin/add-azsplatformimage), amely kellett használni a a **- OsUri** paramétert, a tárfiók URI, ahol fel a rendszer a lemezen. Most már használhatja is a lemez helyi elérési útja.
@@ -291,9 +292,9 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 <!-- 3632798 - IS, ASDK -->
 - A portálon, ha egy bejövő biztonsági szabály felvétele, és válassza a **Szolgáltatáscímke** forrásaként, több lehetőség megjelennek a **forráscímke** listája, amelyek nem érhetők el az Azure Stackhez. Érvényes, az Azure Stack csak lehetőségek a következők:
 
-    - **Internet**
-    - **VirtualNetwork**
-    - **AzureLoadBalancer**
+  - **Internet**
+  - **VirtualNetwork**
+  - **AzureLoadBalancer**
   
     A többi beállítást az Azure Stackben forrás nem támogatottak. Hasonlóképpen ha adjon hozzá egy kimenő biztonsági szabályt, és válassza **Szolgáltatáscímke** célhelyeként, ugyanezt a listát lehetőségei **forráscímke** jelenik meg. A csak érvényes beállítások ugyanazok, mint a **forráscímke**, amint az az előző listában.
 

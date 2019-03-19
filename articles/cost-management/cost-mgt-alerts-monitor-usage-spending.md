@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/28/2019
+ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: alavital
 ms.custom: ''
-ms.openlocfilehash: d6f7a597ff5737bb5e9a3f07122ece313bd432ff
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: feb7fcdd9005ef131acadfc63defbe4caeaca014
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337776"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57991930"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>Költség riasztások, a használat és költségek monitorozása
 
@@ -49,7 +49,7 @@ Riasztástípusok támogatása (Microsoft ajánlat), hogy rendelkezik Azure-fió
 
 ## <a name="view-cost-alerts"></a>Riasztások megtekintése
 
-Az Azure Portalon kattintson a **Költségkezelés + Számlázás** elemre a szolgáltatások listáján. Ezt a listában **Cost Management**válassza **riasztások költség**.
+Költség riasztások megtekintéséhez nyissa meg a kívánt hatókörhöz az Azure Portalon, és válassza a **költségvetése** menüjében. Használja a **hatókör** megszámlálásához váltson át egy másik hatókört. Válassza ki **riasztások költség** menüjében. Hatókörök kapcsolatos további információkért lásd: [megismerése és együttműködnek a hatókörök](understand-work-scopes.md).
 
 ![Példa a Cost Management látható riasztások képe](./media/cost-mgt-alerts-monitor-usage-spending/budget-alerts-fullscreen.png)
 

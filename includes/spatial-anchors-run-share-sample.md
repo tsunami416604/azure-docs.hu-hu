@@ -4,22 +4,20 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
-ms.openlocfilehash: 5f1e0153b1f919bc9d7e921d2a1b3ae745b2b01f
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: bfeb8bddf5fe3b4a76e662aed6c5a07439d2f1cf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56752154"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57908640"
 ---
-## <a name="open-the-sample-project-in-unity"></a>Nyissa meg a mintaprojektet a Unity-nél
+## <a name="set-up-your-device"></a>Az eszköz beállítása
 
-[!INCLUDE [Clone Sample Repo](spatial-anchors-clone-sample-repository.md)]
-
-## <a name="to-set-up-for-an-android-device"></a>Egy Android-eszköz beállítása
+### <a name="set-up-an-android-device"></a>Egy Android-eszköz beállítása
 
 [!INCLUDE [Android Unity Build Settings](spatial-anchors-unity-android-build-settings.md)]
 
-## <a name="to-set-up-for-an-ios-device"></a>Egy IOS-eszköz beállítása
+### <a name="set-up-an-ios-device"></a>Állítsa be a IOS rendszerű eszközzel
 
 [!INCLUDE [iOS Unity Build Settings](spatial-anchors-unity-ios-build-settings.md)]
 
@@ -35,7 +33,7 @@ Mentse a jelenet kiválasztásával **fájl** -> **mentése**.
 
 ## <a name="to-deploy-to-an-android-device"></a>Android-eszközön való üzembe helyezéséhez
 
-Az Android-eszközön Power, jelentkezzen be, és csatlakoztassa a Számítógépet, USB-kábel segítségével.
+Jelentkezzen be az Android-eszközön, és csatlakoztassa a Számítógépet, USB-kábel segítségével.
 
 Nyissa meg **Build Settings** kiválasztásával **fájl** -> **Build Settings**.
 

@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: sashan,moslake,josack
 manager: craigg
 ms.date: 03/01/2019
-ms.openlocfilehash: 801b7de4b82c37503f2a14619112cbf46ca60a43
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5b11f9bc25cd0fcc8a83a2eeaf5cc1746a63200e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447081"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093888"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Az Azure SQL Database-kiszolgálóhoz tartozó SQL Database erőforráskorlátok
 
@@ -36,7 +36,7 @@ Ez a cikk egy SQL Database-kiszolgáló, amely felügyeli az önálló adatbázi
 | Dtu-k vagy eDTU-kvóta kiszolgálónként | 54,000 |  
 | virtuális mag kvóta server-példány | 540 |
 | Maximális készletek kiszolgálónként | A dtu-k vagy virtuális magok száma korlátozott. Ha például minden készlet 1000 dtu-k használata, majd egy kiszolgáló támogatják-e 54 készletek.|
-||||
+|||
 
 > [!NOTE]
 > További /eDTU DTU-kvótába, virtuális mag kvóta vagy további kiszolgálókat, mint az alapértelmezett érték beszerzéséhez egy új támogatási kérelmet az Azure Portalon, a probléma típusa "Kvóta" az előfizetés beküldhető. A dtu-k / eDTU kvóta- és adatbázis-korlát kiszolgálónként kiszolgálónként rugalmas készletek száma korlátozza.
@@ -95,7 +95,7 @@ Napló arány vezérlő forgalomformálásra van illesztett keresztül a követk
 | INSTANCE_LOG_RATE_GOVERNOR | Példány szintű korlátozása |  
 | HADR_THROTTLE_LOG_RATE_SEND_RECV_QUEUE_SIZE | Visszajelzés-vezérlés, a rendelkezésre állási csoport fizikai replikációs a prémium és üzletileg kritikus nem |  
 | HADR_THROTTLE_LOG_RATE_LOG_SIZE | Visszajelzés-vezérlés, korlátozza a díjak elkerülése érdekében kívüli naplófeltétel terület |
-||||
+|||
 
 Amikor egy napló költési korlát, amely a méretezhetőség kívánt akadályozása, vegye figyelembe a következő beállításokat:
 - Vertikális felskálázás nagyobb csomagra a maximális 48 MB/s log sebesség eléréséhez. 

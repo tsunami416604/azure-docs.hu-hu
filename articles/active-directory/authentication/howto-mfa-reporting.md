@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04ee892c85d2795f4ec11d47d861af3007c46e96
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8e901f0e5fb1dc2840196bd6a739ff763b54ce8e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169326"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58119224"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Az Azure multi-factor Authentication jelentései
 
@@ -36,7 +36,9 @@ Az Azure multi-factor Authentication számos jelentéseket biztosít, amelyek se
 2. A bal oldalon válassza ki a **Azure Active Directory** > **MFA-kiszolgáló**.
 3. Válassza ki a megtekinteni kívánt jelentést.
 
-   <center>![Felhő](./media/howto-mfa-reporting/report.png)</center>
+   <center>
+   
+   ![Felhő](./media/howto-mfa-reporting/report.png)</center>
 
 ## <a name="azure-ad-sign-ins-report"></a>Az Azure AD bejelentkezési jelentések
 

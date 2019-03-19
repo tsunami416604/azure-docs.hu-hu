@@ -7,16 +7,16 @@ ms.service: dns
 ms.topic: article
 ms.date: 1/18/2019
 ms.author: victorh
-ms.openlocfilehash: e8163ad34046261d9671c57db2cd2d2052fe35e0
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 78496dbc7891fe911ab0affd81f8a7d887e5d76e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550787"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111412"
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Adja meg az egyéni tartomány beállításait az Azure-szolgáltatások az Azure DNS használatával
 
-Az Azure DNS biztosít a DNS egy egyéni tartományt az Azure-erőforrások bármely, támogatási egyéni tartományok vagy, hogy rendelkezik-e egy teljesen minősített tartománynevét (FQDN). Rendelkezik egy Azure-webalkalmazást, és azt szeretné, hogy a felhasználók által eléréséhez lehet például a contoso.com vagy www.contoso.com az FQDN-ként. Ez a cikk végigvezeti az Azure DNS az Azure-szolgáltatás konfigurálása egyéni tartományok használatával.
+Az Azure DNS biztosít a DNS egy egyéni tartományt az Azure-erőforrások bármely, támogatási egyéni tartományok vagy, hogy rendelkezik-e egy teljesen minősített tartománynevét (FQDN). Rendelkezik egy Azure-webalkalmazást, és azt szeretné, hogy a felhasználók által eléréséhez lehet például a contoso.com vagy www\.contoso.com az FQDN-ként. Ez a cikk végigvezeti az Azure DNS az Azure-szolgáltatás konfigurálása egyéni tartományok használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

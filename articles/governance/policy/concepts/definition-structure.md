@@ -4,17 +4,17 @@ description: 'Ismerteti, hogy a szabályzatdefiníció erőforrás az Azure Poli
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/19/2019
+ms.date: 03/13/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: e3f2b60af574bc1d4e6633ce47b6cdf51e8e6d3e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 35cb5c286b9c9657c37dcede7f51082b5c48ef99
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308414"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894427"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -101,7 +101,7 @@ A paraméter a következő tulajdonságokat a szabályzat-definícióban haszná
   - `displayName`: A rövid név jelenik meg a paraméter a portálon.
   - `strongType`: (Nem kötelező) Használja a portálon keresztül a szabályzatdefiníció hozzárendelésekor. Környezet figyelembe listáját tartalmazza. További információkért lásd: [strongType](#strongtype).
 - `defaultValue`: (Nem kötelező) Beállítja a hozzárendelés a paraméter értékét, ha nincs érték megadva. Szükséges, amikor frissíti egy meglévő szabályzat-definíció, amely hozzá van rendelve.
-- `allowedValues`: (Nem kötelező) A paraméter során hozzárendelés fogadó értékek listáját jeleníti meg.
+- `allowedValues`: (Nem kötelező) Itt egy olyan értéktömböt, paraméterben hozzárendelés során.
 
 Például meghatározhat szabályzatdefiníció korlátozni a helyeken, ahol erőforrásokat is üzembe helyezhetők. A szabályzat-definíció egy paramétere lehet **allowedLocations**. Ez a paraméter az elfogadott értékek korlátozásának mindegyik szabályzatdefiníció-hozzárendelés volna használható. Használatát **strongType** nyújt hatékonyabb, ha a portálon keresztül a hozzárendelés befejezése:
 
@@ -289,6 +289,9 @@ A következő példában `concat` a címkék a mező keresési értékét nevű 
 Feltételek is alakítható használatával **érték**. **érték** feltételek alapján ellenőrzi [paraméterek](#parameters), [sablonfüggvények támogatott](#policy-functions), vagy literálok lehetnek.
 **érték** van párosítva bármely támogatott [feltétel](#conditions).
 
+> [!WARNING]
+> Ha eredménye egy _sablonfüggvény_ hiba történt a házirend kiértékelése sikertelen. Sikertelen kiértékelés egy implicit **megtagadása**. További információkért lásd: [sablon hibák elkerülése](#avoiding-template-failures).
+
 #### <a name="value-examples"></a>Érték példák
 
 Ez a házirend a szabály példa **érték** összehasonlítására eredményét a `resourceGroup()` függvény és a visszaadott **neve** tulajdonságát egy **például** feltétele`*netrg`. A szabály letiltja a nem az összes erőforrást a `Microsoft.Network/*` **típus** bármely kifejezésre végződő nevű erőforráscsoport `*netrg`.
@@ -328,6 +331,44 @@ Ez a házirend a szabály példa **érték** ellenőrizheti, ha az eredmény tö
     }
 }
 ```
+
+#### <a name="avoiding-template-failures"></a>Sablon hibák elkerülése
+
+Használatát _sablonfüggvények_ a **érték** lehetővé teszi, hogy számos összetett beágyazott függvényt. Ha eredménye egy _sablonfüggvény_ hiba történt a házirend kiértékelése sikertelen. Sikertelen kiértékelés egy implicit **megtagadása**. Például egy **érték** , amely bizonyos esetekben meghiúsul:
+
+```json
+{
+    "policyRule": {
+        "if": {
+            "value": "[substring(field('name'), 0, 3)]",
+            "equals": "abc"
+        },
+        "then": {
+            "effect": "audit"
+        }
+    }
+}
+```
+
+A fent használt példa szabály [substring()](../../../azure-resource-manager/resource-group-template-functions-string.md#substring) összehasonlítani az első három karakterét **neve** való **abc**. Ha **neve** három karakternél rövidebb a `substring()` függvény hibát eredményez. Ezt a hibát okoz a szabályzat lesz egy **megtagadása** érvénybe.
+
+Ehelyett használja a [if()](../../../azure-resource-manager/resource-group-template-functions-logical.md#if) függvény annak ellenőrzéséhez, hogy az első három karakterét **neve** egyenlő **abc** nem engedélyezi egy **neve** rövidebb, mint három karaktert a hiba miatt:
+
+```json
+{
+    "policyRule": {
+        "if": {
+            "value": "[if(greaterOrEquals(length(field('name')), 3), substring(field('name'), 0, 3), 'not starting with abc')]",
+            "equals": "abc"
+        },
+        "then": {
+            "effect": "audit"
+        }
+    }
+}
+```
+
+A módosított szabályzatot szabállyal `if()` hosszát ellenőrzi **neve** beolvasásának megkísérlése előtt egy `substring()` a 3-nál kevesebb karaktert tartalmazó értéket. Ha **neve** túl rövid, a "nem kezdve abc" érték helyett visszaadott és képest **abc**. Egy erőforrás, amelynek rövid neve nem kezdődhet **abc** a szabály továbbra is sikertelen, de már nem hibát okoz a kiértékelés során.
 
 ### <a name="effect"></a>Következmény
 
@@ -443,70 +484,60 @@ Az aliasok rendelkezésre álló számos rendelkezik egy olyanra, amely egy "nor
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
 
-Az első példában a teljes tömb kiértékeléséhez használta, a **[\*]** alias kiértékeli a tömb egyes elemei.
-
-Lássunk erre egy szabály példaként. Ez a szabályzat **Megtagadás** egy storage-fiókot, amely rendelkezik beállított ipRules Ha **none** a ipRules, amelynek az értéke "127.0.0.1".
+A "normál" alias egyetlen értékként a mezőt jelöl. Ez a mező esetén pontosan egyezik összehasonlítást forgatókönyveket értékek teljes készletét kell lenniük pontosan a meghatározott, nincs több nem. Használatával **ipRules**, például szeretné ellenőrzése, hogy létezik-e egy pontos szabálykészletet többek között a szabályok számának és az egyes szabályok makeup. Ez a minta-szabály pontosan mindkét ellenőrzi **192.168.1.1** és **10.0.4.1** a _művelet_ , **engedélyezése** a **ipRules** a alkalmazni a **effectType**:
 
 ```json
 "policyRule": {
     "if": {
-        "allOf": [{
+        "allOf": [
+            {
+                "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
+                "exists": "true"
+            },
+            {
+                "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
+                "Equals": [
+                    {
+                        "action": "Allow",
+                        "value": "192.168.1.1"
+                    },
+                    {
+                        "action": "Allow",
+                        "value": "10.0.4.1"
+                    }
+                ]
+            }
+        ]
+    },
+    "then": {
+        "effect": "[parameters('effectType')]"
+    }
+}
+```
+
+A **[\*]** alias-szal a tömb egyes elemei értékét, és minden eleme megadott tulajdonságainak képest. Ez a megközelítés lehetővé teszi a hasonlítsa össze az elem tulajdonságainak "Ha egyik sem", "Ha", vagy a "Ha az összes," forgatókönyveket. Használatával **ipRules [\*]**, például szeretné érvényesítése, amely minden _művelet_ van _Megtagadás_, azonban nem aggódniuk hány szabályok vagy milyen IP-_érték_ van. A minta a szabály ellenőrzi, minden egyezések **ipRules [\*] .value** való **10.0.4.1** , és alkalmazza a **effectType** csak akkor, ha nem, legalább egy egyezést talál:
+
+```json
+"policyRule": {
+    "if": {
+        "allOf": [
+            {
                 "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
                 "exists": "true"
             },
             {
                 "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value",
-                "notEquals": "127.0.0.1"
+                "notEquals": "10.0.4.1"
             }
         ]
     },
     "then": {
-        "effect": "deny",
+        "effect": "[parameters('effectType')]"
     }
 }
 ```
 
-A **ipRules** tömb a következőképpen történik a példában:
-
-```json
-"ipRules": [{
-        "value": "127.0.0.1",
-        "action": "Allow"
-    },
-    {
-        "value": "192.168.1.1",
-        "action": "Allow"
-    }
-]
-```
-
-Itt látható, hogyan dolgozza fel ebben a példában:
-
-- `networkAcls.ipRules` – Ellenőrizze, hogy a tömb nem null értékű. IGAZ, ezért a kiértékelés értékeli.
-
-  ```json
-  {
-    "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
-    "exists": "true"
-  }
-  ```
-
-- `networkAcls.ipRules[*].value` -Ellenőrzi mind _érték_ tulajdonságot a **ipRules** tömb.
-
-  ```json
-  {
-    "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value",
-    "notEquals": "127.0.0.1"
-  }
-  ```
-
-  - Egy tömb egyes elemei lesz feldolgozva.
-
-    - "127.0.0.1"! = "127.0.0.1" hamisnak.
-    - "127.0.0.1"! = "192.168.1.1" értéke TRUE.
-    - Legalább egy _érték_ tulajdonságot a **ipRules** tömb abban az esetben minősül false, ezért a kiértékelés le fog állni.
-
-FALSE, értékeli ki feltételként a **Megtagadás** hatása nincs elindítva.
+További információkért lásd: [kiértékelése a [\*] alias](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
 
 ## <a name="initiatives"></a>Kezdeményezések
 

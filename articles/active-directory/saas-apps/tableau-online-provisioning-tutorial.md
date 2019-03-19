@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.author: v-wingf-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a81754b9b95c7cc6e257707aec188abf1dab58c3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6ed8bae32cb8d0680b1f9aa66f26407c3313ea06
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194869"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077819"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>Oktatóanyag: A felhasználók automatikus átadása Tableau Online konfigurálása
 
@@ -106,13 +106,13 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
 
 5. Alatt a **rendszergazdai hitelesítő adataival** szakaszban adjon meg a **tartomány**, **rendszergazdai felhasználónév**, **rendszergazdai jelszó**, és **tartalom URL-cím** , a Tableau Online-fiók:
 
-    *   Az a **tartomány** mezőben 6. lépés alapján altartomány feltöltéséhez.
+   * Az a **tartomány** mezőben 6. lépés alapján altartomány feltöltéséhez.
 
-    *   Az a **rendszergazdai felhasználónév** mezőben töltse fel a rendszergazdai fiók a Clarizen bérlő felhasználóneve. Példa: admin@contoso.com.
+   * Az a **rendszergazdai felhasználónév** mezőben töltse fel a rendszergazdai fiók a Clarizen bérlő felhasználóneve. Példa: admin@contoso.com.
 
-    *   Az a **rendszergazdai jelszó** mezőben töltse ki a megfelelő rendszergazdai felhasználónév rendszergazdai fiók jelszavát.
+   * Az a **rendszergazdai jelszó** mezőben töltse ki a megfelelő rendszergazdai felhasználónév rendszergazdai fiók jelszavát.
 
-    *   Az a **tartalom URL-címe** mezőben 6. lépés alapján altartomány feltöltéséhez.
+   * Az a **tartalom URL-címe** mezőben 6. lépés alapján altartomány feltöltéséhez.
 
 6. Miután bejelentkezett a rendszergazdai fiók a Tableau online-hoz, a tartozó értékeket **tartomány** és **tartalom URL-címe** kinyerésének URL-címét a felügyelet lapon.
 

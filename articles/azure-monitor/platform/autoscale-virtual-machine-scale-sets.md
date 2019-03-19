@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/22/2016
 ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 23618b545814e89a7343d2db4664405855051c1b
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 6da653bc94c8b549282ab9124dba23b08771c5f1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415442"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080777"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Automatikus méretezés speciális konfigurálása Resource Manager-sablonok használata Virtuálisgép-méretezési csoportok
 Horizontális le- és a Virtual Machine Scale Sets alapuló teljesítmény-mérőszám küszöbértékén, ismétlődő ütemezés szerint, vagy egy adott dátumot kibővített is. Skálázási műveletek értesítései e-mailt és webhookot is konfigurálhatja. Ez az útmutató bemutatja egy példa az összes ezeket az objektumokat a Virtuálisgép-méretezési Resource Manager-sablon használatával.
@@ -47,14 +47,14 @@ Ez az útmutató használjuk [Azure erőforrás-kezelő](https://resources.azure
 
 4. Íme egy elméleti méretezési forgatókönyv, amely ebben az útmutatóban a használjuk.
 
-    * **A terhelés alapján** – azt szeretném, hogy méretezzen horizontálisan vagy a saját méretezési set.* lévő üzemeltetett alkalmazás terhelése alapján
-    * **Üzenet-várólista mérete** -egy Service Bus-üzenetsor bejövő üzenetekhez hozzáférek az alkalmazáshoz használni. Tudom a várólista üzenetek száma és százalékos processzorhasználatról, és konfigurálja a egy alapértelmezett profilt egy skálázási műveletet aktiválásához, ha bármelyik üzenetek száma vagy a Processzor eléri a küszöbértéket.\*
-    * **Heti és napi** -szeretnék egy "Hét napja reggel Hours" nevű hetente ismétlődő "idő a nap"-alapú profilt. A korábbi adatok alapján, tudom jobb bizonyos számú Virtuálisgép-példányok ebben az időszakban az alkalmazásom által terhelés kezeléséhez.\*
-    * **Speciális dátumok** -Hozzáadtam egy "Termék indítsa el a Day" profilt. Szeretném előre az adott dátumok az alkalmazásom kezelni a terhelés miatt marketing bejelentések és tárgyaljuk, egy új terméket az alkalmazás készen álljon.\*
-    * *Az utolsó két profilt is lehet egyéb metrika alapján teljesítményszabályok rajtuk. Ebben az esetben kifejezetten nem rendelkezik ilyennel, és inkább az alapértelmezett teljesítmény-mérőszám támaszkodnia szabályok alapján. Szabályok megadása nem kötelező a ismétlődő és a dátum-alapú profilokhoz.*
+   * **A terhelés alapján** – azt szeretném, hogy méretezzen horizontálisan vagy a saját méretezési set.* lévő üzemeltetett alkalmazás terhelése alapján
+   * **Üzenet-várólista mérete** -egy Service Bus-üzenetsor bejövő üzenetekhez hozzáférek az alkalmazáshoz használni. Tudom a várólista üzenetek száma és százalékos processzorhasználatról, és konfigurálja a egy alapértelmezett profilt egy skálázási műveletet aktiválásához, ha bármelyik üzenetek száma vagy a Processzor eléri a küszöbértéket.\*
+   * **Heti és napi** -szeretnék egy "Hét napja reggel Hours" nevű hetente ismétlődő "idő a nap"-alapú profilt. A korábbi adatok alapján, tudom jobb bizonyos számú Virtuálisgép-példányok ebben az időszakban az alkalmazásom által terhelés kezeléséhez.\*
+   * **Speciális dátumok** -Hozzáadtam egy "Termék indítsa el a Day" profilt. Szeretném előre az adott dátumok az alkalmazásom kezelni a terhelés miatt marketing bejelentések és tárgyaljuk, egy új terméket az alkalmazás készen álljon.\*
+   * *Az utolsó két profilt is lehet egyéb metrika alapján teljesítményszabályok rajtuk. Ebben az esetben kifejezetten nem rendelkezik ilyennel, és inkább az alapértelmezett teljesítmény-mérőszám támaszkodnia szabályok alapján. Szabályok megadása nem kötelező a ismétlődő és a dátum-alapú profilokhoz.*
 
-    A profilok és a szabályok automatikus skálázási motor rangsorolási is bekerül az a [automatikus méretezés ajánlott eljárásai](autoscale-best-practices.md) cikk.
-    Gyakori metrikák az automatikus skálázási listájáért tekintse meg a [gyakori metrikák az automatikus méretezéshez](autoscale-common-metrics.md)
+     A profilok és a szabályok automatikus skálázási motor rangsorolási is bekerül az a [automatikus méretezés ajánlott eljárásai](autoscale-best-practices.md) cikk.
+     Gyakori metrikák az automatikus skálázási listájáért tekintse meg a [gyakori metrikák az automatikus méretezéshez](autoscale-common-metrics.md)
 
 5. Ellenőrizze, hogy van a **olvasási/írási** mód az erőforrás-kezelőben
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/28/2018
 ms.author: v-wingf-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d620701bc8590bee746be35f69b0da890c359601
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b51f8d9329bc86320501183d7dba7735fb369fa5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205358"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58092378"
 ---
 # <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása Samanage konfigurálása
 
@@ -108,9 +108,9 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
 
 5. Alatt a **rendszergazdai hitelesítő adataival** szakaszban adjon meg a **rendszergazdai felhasználónév** és **rendszergazdai jelszó** Samanage fiókja. Példák a következő értékek a következők:
 
-    *   Az a **rendszergazdai felhasználónév** mezőben töltse fel a rendszergazdai fiók a Samanage bérlő felhasználóneve. Példa: admin@contoso.com.
+   * Az a **rendszergazdai felhasználónév** mezőben töltse fel a rendszergazdai fiók a Samanage bérlő felhasználóneve. Példa: admin@contoso.com.
 
-    *   Az a **rendszergazdai jelszó** mezőben töltse ki a megfelelő rendszergazdai felhasználónév rendszergazdai fiók jelszavát.
+   * Az a **rendszergazdai jelszó** mezőben töltse ki a megfelelő rendszergazdai felhasználónév rendszergazdai fiók jelszavát.
 
 6. 5. lépésben megjelenő mezők feltöltése, után kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD Samanage csatlakozhat. Ha a kapcsolat hibája esetén, győződjön meg arról, Samanage fiókja rendszergazdai engedélyekkel rendelkező, és próbálkozzon újra.
 

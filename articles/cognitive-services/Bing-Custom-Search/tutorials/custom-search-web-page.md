@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: 48486153c805f4fe7bd21d3f63346f56522220f9
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 6f44d4e6e5a0ee940394e09ceff8a425700d34e1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337634"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100734"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Oktatóanyag: Custom Search-webhely létrehozása
 
@@ -49,11 +49,11 @@ Bing Custom Search-példány létrehozása:
   
 4. A bejelentkezés után kattintson a **New custom search** (Új egyéni keresés) elemre. A **Create a new custom search instance** (Új Custom Search-példány létrehozása) ablakban adjon meg egy jelentéssel bíró nevet, amely leírja a visszaadott tartalom típusát. A nevet bármikor módosíthatja.  
   
-  ![A Create a new custom search (Új Custom Search-példány) mező képernyőképe](../media/newCustomSrch.png)  
+   ![A Create a new custom search (Új Custom Search-példány) mező képernyőképe](../media/newCustomSrch.png)  
   
 5. Kattintson az OK gombra, adja meg az URL-címet, és hogy az URL aloldalait is figyelembe kívánja-e venni.  
   
-  ![Az URL-meghatározó oldal képernyőképe](../media/newCustomSrch1-a.png)  
+   ![Az URL-meghatározó oldal képernyőképe](../media/newCustomSrch1-a.png)  
 
 
 ## <a name="add-active-entries"></a>Aktív bejegyzések hozzáadása
@@ -97,28 +97,28 @@ A Custom Search üzemeltetett felhasználói felületet biztosít, amelyen megje
   
 2. Válasszon ki egy elrendezést.  
   
-  ![A Hosted UI (Üzemeltetett felhasználói felület) elrendezéskiválasztó lépésének képernyőképe](./media/custom-search-hosted-ui-select-layout.png)  
+   ![A Hosted UI (Üzemeltetett felhasználói felület) elrendezéskiválasztó lépésének képernyőképe](./media/custom-search-hosted-ui-select-layout.png)  
   
 3. Válasszon ki egy színtémát.  
   
-  ![A Hosted UI (Üzemeltetett felhasználói felület) színtémaválasztásának képernyőképe](./media/custom-search-hosted-ui-select-color-theme.png)  
+   ![A Hosted UI (Üzemeltetett felhasználói felület) színtémaválasztásának képernyőképe](./media/custom-search-hosted-ui-select-color-theme.png)  
 
-  Ha a webalkalmazással való jobb integráció érdekében szeretné még részletesebben beállítani a színtémát, kattintson a **Customize theme** (Téma testreszabása) elemre. Nem minden színbeállítás alkalmazható minden elrendezési témára. Ha módosítani szeretné egy színt, a megfelelő mezőben adja meg a szín HEXADECIMÁLIS RGB-értékét (például #366eb8). Vagy kattintson a szín gombra, majd a megfelelő árnyalatra. A színek kiválasztásánál mindig gondoljon a kisegítő lehetőségekre.
+   Ha a webalkalmazással való jobb integráció érdekében szeretné még részletesebben beállítani a színtémát, kattintson a **Customize theme** (Téma testreszabása) elemre. Nem minden színbeállítás alkalmazható minden elrendezési témára. Ha módosítani szeretné egy színt, a megfelelő mezőben adja meg a szín HEXADECIMÁLIS RGB-értékét (például #366eb8). Vagy kattintson a szín gombra, majd a megfelelő árnyalatra. A színek kiválasztásánál mindig gondoljon a kisegítő lehetőségekre.
   
-  ![Képernyőkép az üzemeltetett felhasználói felület színtéma-testreszabásáról](./media/custom-search-hosted-ui-customize-color-theme.png)  
+   ![Képernyőkép az üzemeltetett felhasználói felület színtéma-testreszabásáról](./media/custom-search-hosted-ui-customize-color-theme.png)  
 
   
 4. Adja meg a további beállítási lehetőségeket.  
   
-  ![Képernyőkép az üzemeltetett felhasználói felület további beállítási lépéséről](./media/custom-search-hosted-ui-additional-configurations.png)  
+   ![Képernyőkép az üzemeltetett felhasználói felület további beállítási lépéséről](./media/custom-search-hosted-ui-additional-configurations.png)  
   
-  A speciális konfigurációkat a **Show advanced configurations** (Speciális konfigurációk megjelenítése) elemre kattintva érheti el. Ezzel olyan beállításokat adhat hozzá, mint például a *Link target* (Hivatkozási cím) a webkeresési beállításokhoz, az *Enable filters* (Szűrők engedélyezése) a kép- és videobeállításokhoz, valamint a *Search box text placeholder* (Keresőmező szöveges helyőrzője) az egyéb beállításokhoz.
+   A speciális konfigurációkat a **Show advanced configurations** (Speciális konfigurációk megjelenítése) elemre kattintva érheti el. Ezzel olyan beállításokat adhat hozzá, mint például a *Link target* (Hivatkozási cím) a webkeresési beállításokhoz, az *Enable filters* (Szűrők engedélyezése) a kép- és videobeállításokhoz, valamint a *Search box text placeholder* (Keresőmező szöveges helyőrzője) az egyéb beállításokhoz.
 
-  ![Képernyőkép az üzemeltetett felhasználói felület speciális beállítási lépéséről](./media/custom-search-hosted-ui-advanced-configurations.png)  
+   ![Képernyőkép az üzemeltetett felhasználói felület speciális beállítási lépéséről](./media/custom-search-hosted-ui-advanced-configurations.png)  
   
 5. Válassza ki előfizetési kulcsait a legördülő listákból. Másik lehetőségként manuálisan is megadhatja az előfizetési kulcsot. További információ az előfizetői kulcsok beszerzéséről: [A Cognitive Services kipróbálása](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api).  
   
-  ![Képernyőkép az üzemeltetett felhasználói felület további beállítási lépéséről](./media/custom-search-hosted-ui-subscription-key.png)
+   ![Képernyőkép az üzemeltetett felhasználói felület további beállítási lépéséről](./media/custom-search-hosted-ui-subscription-key.png)
 
 [!INCLUDE [publish or revert](../includes/publish-revert.md)]
 
@@ -140,66 +140,66 @@ Ez az oktatóanyag további részében látható **1. lehetőség: JavaScript-k�
   
 3. A **New Project** (Új projekt) párbeszédpanelen válassza a **Visual C# / Web / ASP.NET Core Web Application** (Visual C#- / Web / ASP.NET Core-webalkalmazás) elemet, nevezze el a projektet, majd kattintson az **OK** gombra.  
   
-  ![Az új projekt ablak képernyőképe](./media/custom-search-new-project.png)  
+   ![Az új projekt ablak képernyőképe](./media/custom-search-new-project.png)  
   
 4. A **New ASP.NET Core Web Application** (Új ASP.NET Core-webalkalmazás) ablakban válassza a **Web Application** (Webalkalmazás) lehetőséget, majd kattintson az **OK** gombra.  
   
-  ![Az új projekt ablak képernyőképe](./media/custom-search-new-webapp.png)  
+   ![Az új projekt ablak képernyőképe](./media/custom-search-new-webapp.png)  
 
 ## <a name="edit-indexcshtml"></a>Az index.cshtml szerkesztése
 
 1. A **Megoldáskezelőben** bontsa ki a **Pages** (Oldalak) elemet, és kattintson duplán az **index.cshtml** fájlra a megnyitásához.  
   
-  ![Képernyőkép a megoldáskezelőről kibontott oldalakkal és a kiválasztott index.cshtml fájllal](./media/custom-search-visual-studio-webapp-solution-explorer-index.png)  
+   ![Képernyőkép a megoldáskezelőről kibontott oldalakkal és a kiválasztott index.cshtml fájllal](./media/custom-search-visual-studio-webapp-solution-explorer-index.png)  
   
 2. Az index.cshtml fájlban töröljön mindent a 7. sortól kezdve.  
   
-  ```razor
-  @page
-  @model IndexModel
-  @{
+   ```razor
+   @page
+   @model IndexModel
+   @{
       ViewData["Title"] = "Home page";
-  }    
-  ```  
+   }    
+   ```  
   
 3. Adjon hozzá egy sörtörés elemet és egy tárolóként működő div elemet.  
   
-  ```html
-  @page
-  @model IndexModel
-  @{
+   ```html
+   @page
+   @model IndexModel
+   @{
       ViewData["Title"] = "Home page";
-  }
-  <br />
-  <div id="customSearch"></div>
-  ```  
+   }
+   <br />
+   <div id="customSearch"></div>
+   ```  
   
 4. A **Hosted UI** (Üzemeltetett felhasználói felület) oldalon görgessen le a **Consuming the UI** (Felhasználói felület felhasználása) szakaszhoz. A JavaScript-kódrészlet eléréséhez kattintson az *Endpoints* (Végpontok) elemre. A kódrészletet úgy is elérheti, ha először a **Production** (Termelés), majd a **Hosted UI** (Üzemeltetett felhasználói felület) lapra kattint.
   
-  <!-- Get new screenshot after prod gets new bits
-  ![Screenshot of the Hosted UI save button](./media/custom-search-hosted-ui-consuming-ui.png)  
-  -->
+   <!-- Get new screenshot after prod gets new bits
+   ![Screenshot of the Hosted UI save button](./media/custom-search-hosted-ui-consuming-ui.png)  
+   -->
   
 5. A szkriptrészletet illessze be a hozzáadott tárolóba.  
   
-  ``` html
-  @page
-  @model IndexModel
-  @{
+   ``` html
+   @page
+   @model IndexModel
+   @{
       ViewData["Title"] = "Home page";
-  }
-  <br />
-  <div id="customSearch">
+   }
+   <br />
+   <div id="customSearch">
       <script type="text/javascript" 
           id="bcs_js_snippet"
           src="https://ui.customsearch.ai /api/ux/rendering-js?customConfig=<YOUR-CUSTOM-CONFIG-ID>&market=en-US&safeSearch=Moderate&version=latest&q=">
       </script>
-  </div>
-  ```  
+   </div>
+   ```  
   
 6. A **Megoldáskezelőben** kattintson a jobb gombbal a **wwwroot** elemre, majd a **View in Browser** (Megtekintés böngészőben) parancsra.  
   
-  ![Képernyőkép a megoldáskezelőről, a wwwroot helyi menü View in Browser (Megtekintés böngészőben) lehetőségének kiválasztásával](./media/custom-search-webapp-view-in-browser.png)  
+   ![Képernyőkép a megoldáskezelőről, a wwwroot helyi menü View in Browser (Megtekintés böngészőben) lehetőségének kiválasztásával](./media/custom-search-webapp-view-in-browser.png)  
 
 Az új Custom Search-weboldal a következőhöz hasonlóan néz ki:
 

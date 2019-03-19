@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: efd450edb87316e75fc240cac80eda93151a22b3
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 3368be291770133cdfa10158f6e30540e17b8223
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765084"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084310"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job-preview"></a>Egy SQL Database-ből a referenciaadatok használata az Azure Stream Analytics-feladat (előzetes verzió)
 
@@ -173,7 +173,7 @@ A különbözeti lekérdezés használatakor [az Azure SQL Database időbeli ver
       WHERE ValidTo BETWEEN @deltaStartTime AND @deltaEndTime     -- record deleted
    ```
  
-  Vegye figyelembe, hogy a Stream Analytics modul rendszeres időközönként előfordulhat, hogy futtassa a pillanatkép lekérdezést mellett a különbözeti lekérdezés ellenőrzőpontok tárolásához.
+   Vegye figyelembe, hogy a Stream Analytics modul rendszeres időközönként előfordulhat, hogy futtassa a pillanatkép lekérdezést mellett a különbözeti lekérdezés ellenőrzőpontok tárolásához.
 
 ## <a name="faqs"></a>Gyakori kérdések
 

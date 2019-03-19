@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: raynew
-ms.openlocfilehash: dd66710a24ca28b78c6b3e0a8197a078f17524db
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 66ed5765a91b607bc5b765926c5df87d13ff6a24
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52868140"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109848"
 ---
 # <a name="run-an-unattended-installation-of-azure-backup-server"></a>Az Azure Backup Server felügyelet nélküli telepítés futtatása
 
@@ -27,38 +27,38 @@ Ha az Azure Backup Server V1 telepíti ezeket a lépéseket nem érvényesek.
 
 2. Illessze be a következő kódot a MABSSetup.ini fájlban. Cserélje le a zárójelben a szöveget (\< \>) környezete értékeivel. A következő egy példa a következő szöveget:
 
-  ```
-  [OPTIONS]
-  UserName=administrator
-  CompanyName=<Microsoft Corporation>
-  SQLMachineName=localhost
-  SQLInstanceName=<SQL instance name>
-  SQLMachineUserName=administrator
-  SQLMachinePassword=<admin password>
-  SQLMachineDomainName=<machine domain>
-  ReportingMachineName=localhost
-  ReportingInstanceName=<reporting instance name>
-  SqlAccountPassword=<admin password>
-  ReportingMachineUserName=<username>
-  ReportingMachinePassword=<reporting admin password>
-  ReportingMachineDomainName=<domain>
-  VaultCredentialFilePath=<vault credential full path and complete name>
-  SecurityPassphrase=<passphrase>
-  PassphraseSaveLocation=<passphrase save location>
-  UseExistingSQL=<1/0 use or do not use existing SQL>
-  ```
+   ```
+   [OPTIONS]
+   UserName=administrator
+   CompanyName=<Microsoft Corporation>
+   SQLMachineName=localhost
+   SQLInstanceName=<SQL instance name>
+   SQLMachineUserName=administrator
+   SQLMachinePassword=<admin password>
+   SQLMachineDomainName=<machine domain>
+   ReportingMachineName=localhost
+   ReportingInstanceName=<reporting instance name>
+   SqlAccountPassword=<admin password>
+   ReportingMachineUserName=<username>
+   ReportingMachinePassword=<reporting admin password>
+   ReportingMachineDomainName=<domain>
+   VaultCredentialFilePath=<vault credential full path and complete name>
+   SecurityPassphrase=<passphrase>
+   PassphraseSaveLocation=<passphrase save location>
+   UseExistingSQL=<1/0 use or do not use existing SQL>
+   ```
 
 3. Mentse a fájlt. Ezután, egy rendszergazda jogú parancssort a telepítési kiszolgálón, írja be ezt a parancsot:
 
-  ```
-  start /wait <cdlayout path>/Setup.exe /i  /f <.ini file path>/setup.ini /L <log path>/setup.log
-  ```
+   ```
+   start /wait <cdlayout path>/Setup.exe /i  /f <.ini file path>/setup.ini /L <log path>/setup.log
+   ```
 
 Ezek a jelölők a telepítéshez használható:</br>
 **/f**: .ini-fájl elérési útja</br>
-**/ l**: napló elérési útja</br>
-**/i**: telepítési útvonal</br>
-**/x**: elérési út eltávolítása</br>
+**/ l**: Napló elérési útja</br>
+**/i**: Telepítési útvonal</br>
+**/x**: Elérési út eltávolítása</br>
 
 ## <a name="next-steps"></a>További lépések
 Miután telepítette a Backup Server, megtudhatja, hogyan készíti elő a kiszolgálót, vagy a munkaterhelések védelmének megkezdése.

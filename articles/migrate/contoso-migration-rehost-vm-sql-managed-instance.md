@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 76af79cc9ef1ebea30b30a291f451b7b0a4f3ba6
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 832614c46f0269460245d081f20897b591e31fce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694482"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101567"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-an-azure-vm-and-sql-database-managed-instance"></a>Contoso áttelepítése: Egy Azure virtuális gép és az SQL Database felügyelt példánya a helyszíni alkalmazások újratárolása
 
@@ -58,7 +58,7 @@ A Contoso informatikai vezetőségi szorosan együttműködik a vállalat üzlet
 - **A gyorsaság növeléséhez**:  Contoso IT kell lennie a rugalmasabb ügyfélkapcsolatok kialakítását teszi az üzleti igényeinek. Reagáljon gyorsabban a Marketplace-en, a cég számára a globális gazdaság végrehajtott módosításokat a képesnek kell lennie. Contoso IT nem kell a területük vagy egy üzleti blocker válnak.
 - **Méretezési csoport**: Növekedésével a vállalat üzleti sikeresen a Contoso informatikai rendszerek, amelyek ütemben növekedhet kell megadnia.
 
-## <a name="migration-goals"></a>Migrálási célok
+## <a name="migration-goals"></a>Áttelepítési célok
 
 A Contoso felhőalapú csapat azonosította a célok, az áttelepítés. A vállalat áttelepítési célokat használja a leginkább megfelelő áttelepítési módszer meghatározásához.
 
@@ -222,7 +222,7 @@ Contoso úgy véli, hogy ezek a tényezők:
 - Egy alhálózat csak egy útvonaltábla társítható.
 - Nincsenek nem vonatkozik külön díj útvonaltáblák létrehozásához a Microsoft Azure-ban.
 
- Útválasztási Contoso beállítása a rendszergazdák tegye a következőket:
+  Útválasztási Contoso beállítása a rendszergazdák tegye a következőket:
 
 1. Azok az udr-t (útvonal) tábla létrehozása a **ContosoNetworkingRG** erőforráscsoportot.
 
@@ -441,11 +441,11 @@ Ha a forrás és cél be vannak állítva, a Contoso rendszergazdák replikáci�
 
 1. A **infrastruktúra előkészítése** > **replikációs beállítások** > **replikációs házirend** >  **létrehozás és Társítsa**, hoznak létre a **ContosoMigrationPolicy** házirend.
 2. Az alapértelmezett beállítások használata:
-    - **Helyreállítási Időkorlát küszöbértéke**: Alapértelmezett érték 60 perc. Ez az érték határozza meg, hogy milyen gyakran jönnek létre helyreállítási pontok. A rendszer riasztást ad, ha a folyamatos replikáció túllépi ezt a korlátot.
-    - **Helyreállítási pont megőrzése**: Alapértelmezett 24 órányi. Ez az érték határozza meg, mennyi ideig őrzi az egyes helyreállítási pontok. A replikált virtuális gépek ezen az időtartamon belül bármikor helyreállíthatók.
-    - **Alkalmazáskonzisztens pillanatkép gyakorisága**: Alapértelmezett érték 1 óra. Ez az érték, amellyel jönnek létre alkalmazáskonzisztens pillanatképek gyakorisága határozza meg.
+   - **Helyreállítási Időkorlát küszöbértéke**: Alapértelmezett érték 60 perc. Ez az érték határozza meg, hogy milyen gyakran jönnek létre helyreállítási pontok. A rendszer riasztást ad, ha a folyamatos replikáció túllépi ezt a korlátot.
+   - **Helyreállítási pont megőrzése**: Alapértelmezett 24 órányi. Ez az érték határozza meg, mennyi ideig őrzi az egyes helyreállítási pontok. A replikált virtuális gépek ezen az időtartamon belül bármikor helyreállíthatók.
+   - **Alkalmazáskonzisztens pillanatkép gyakorisága**: Alapértelmezett érték 1 óra. Ez az érték, amellyel jönnek létre alkalmazáskonzisztens pillanatképek gyakorisága határozza meg.
  
-    ![Replikációs házirend - létrehozása](./media/contoso-migration-rehost-vm-sql-managed-instance/replication-policy.png)
+     ![Replikációs házirend - létrehozása](./media/contoso-migration-rehost-vm-sql-managed-instance/replication-policy.png)
 
 3. A szabályzat automatikusan társítva lesz a konfigurációs kiszolgálóval. 
 
@@ -476,7 +476,7 @@ Most Contoso rendszergazdák is replikáljon WebVM.
 5. Ellenőrizze, hogy a megfelelő replikációs szabályzat van kiválasztva, és engedélyezze a replikációt azoknál **WEBVM**. A replikáció állapotát nyomon követik **feladatok**. A **Védelem véglegesítése** feladat befejeződését követően a gép készen áll a feladatátvételre.
 6. A **Essentials** az Azure Portalon, megjelenik az állapotot az Azure-bA replikáló virtuális gépek:
 
-    ![Infrastruktúranézet](./media/contoso-migration-rehost-vm-sql-managed-instance/essentials.png)
+    ![Infrastruktúra-nézet](./media/contoso-migration-rehost-vm-sql-managed-instance/essentials.png)
 
 *További segítségre van szüksége?*
 

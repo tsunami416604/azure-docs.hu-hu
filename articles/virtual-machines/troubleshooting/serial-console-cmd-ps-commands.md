@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 69aecf3d107000408f98f8ae53968355943c2881
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 55b7e45bb9e600267e1dad0e36e9a97eca9a7d40
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440811"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58074998"
 ---
 # <a name="windows-commands---cmd-and-powershell"></a>Windows-parancsok - CMD és a PowerShell használatával
 
@@ -247,8 +247,8 @@ SAC, a PowerShell futtatása után eléri egy parancssort, írja be:
 
 `powershell <enter>`
 
->[!CAUTION]
-Távolítsa el a PSReadLine modul a PowerShell-munkamenetet más PowerShell-parancsok futtatása előtt. Nincs olyan ismert probléma, ahol znaky navíc bevezetésre kerülő szöveget a vágólapról beillesztett, ha a PowerShell-munkamenetben, SAC PSReadLine fut a.
+> [!CAUTION]
+> Távolítsa el a PSReadLine modul a PowerShell-munkamenetet más PowerShell-parancsok futtatása előtt. Nincs olyan ismert probléma, ahol znaky navíc bevezetésre kerülő szöveget a vágólapról beillesztett, ha a PowerShell-munkamenetben, SAC PSReadLine fut a.
 
 Először ellenőrizze, ha be van-e töltve PSReadLine. A Windows Server 2016, Windows 10-es és újabb verzióiban a Windows alapértelmezés szerint töltődik be. Csak akkor kell jelen a Windows korábbi verzióiban, ha azt korábban manuálisan telepítette. 
 

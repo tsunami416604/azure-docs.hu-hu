@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/26/2018
 ms.author: sedusch
-ms.openlocfilehash: 6eb81e7fff8df547f905e169ac72a78848d2583f
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 2d296281f6865030bcdfec33d8c69cc313a358a5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330766"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011903"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Az SAP NetWeaver számára az Azure virtuális gépek üzembe helyezése
 
@@ -157,7 +157,7 @@ ms.locfileid: "56330766"
 [deploy-template-portal]:../../../resource-group-template-deploy-portal.md
 [deploy-template-powershell]:../../../resource-group-template-deploy.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 [getting-started-dbms]:get-started.md#1343ffe1-8021-4ce6-a08d-3a1553a4db82
@@ -171,7 +171,7 @@ ms.locfileid: "56330766"
 [getting-started-windows-classic-ha-sios]:../../virtual-machines-windows-classic-sap-get-started.md#4bb7512c-0fa0-4227-9853-4004281b1037
 [getting-started-windows-classic-planning]:../../virtual-machines-windows-classic-sap-get-started.md#f2a5e9d8-49e4-419e-9900-af783173481c
 
-[ha-guide-classic]:http://go.microsoft.com/fwlink/?LinkId=613056
+[ha-guide-classic]:https://go.microsoft.com/fwlink/?LinkId=613056
 
 [install-extension-cli]:virtual-machines-linux-enable-aem.md
 
@@ -421,34 +421,34 @@ Az új virtuális gép létrehozása az Azure Piactérről származó lemezkép 
 A varázsló végigvezeti Önt az összes szükséges erőforrást, például a hálózati adapterek és a storage-fiókok mellett a virtuális gép létrehozásához szükséges paramétereket. Ezek a paraméterek a következők:
 
 1. **Alapvető beállítások**:
- * **Név**: Az erőforrás (a virtuális gép neve) neve.
- * **Virtuális merevlemez típusa**: Válassza ki az operációsrendszer-lemez lemez típusát. Ha azt szeretné, prémium szintű Storage használata az adatlemezek, prémium szintű Storage, valamint az operációsrendszer-lemez használatát javasoljuk.
- * **Felhasználónév és jelszó** vagy **nyilvános SSH-kulcs**: Adja meg a felhasználónevet és jelszót a kiépítés során létrehozott felhasználó. Egy Linux rendszerű virtuális gépek nyilvános Secure Shell (SSH) kulcs segítségével jelentkezzen be a gép is megadhatja.
- * **Előfizetés**: Az új virtuális gép kiépítéséhez használni kívánt előfizetés kiválasztásához.
- * **Erőforráscsoport**: Az erőforráscsoport neve a virtuális gép számára. Egy új erőforráscsoport nevére és a egy már létező erőforráscsoport nevét is megadhatja.
- * **Hely**: Hol helyezi üzembe az új virtuális gépet. Ha azt szeretné, a helyszíni hálózat a virtuális géphez csatlakozni, ellenőrizze, hogy a hely, amely kapcsolódik a helyszíni hálózat az Azure virtuális hálózat kiválasztása. További információkért lásd: [Microsoft Azure-hálózatkezelés] [ planning-guide-microsoft-azure-networking] a [Azure Virtual Machines tervezési és megvalósítási az SAP NetWeaver számára] [ planning-guide].
+   * **Név**: Az erőforrás (a virtuális gép neve) neve.
+   * **Virtuális merevlemez típusa**: Válassza ki az operációsrendszer-lemez lemez típusát. Ha azt szeretné, prémium szintű Storage használata az adatlemezek, prémium szintű Storage, valamint az operációsrendszer-lemez használatát javasoljuk.
+   * **Felhasználónév és jelszó** vagy **nyilvános SSH-kulcs**: Adja meg a felhasználónevet és jelszót a kiépítés során létrehozott felhasználó. Egy Linux rendszerű virtuális gépek nyilvános Secure Shell (SSH) kulcs segítségével jelentkezzen be a gép is megadhatja.
+   * **Előfizetés**: Az új virtuális gép kiépítéséhez használni kívánt előfizetés kiválasztásához.
+   * **Erőforráscsoport**: Az erőforráscsoport neve a virtuális gép számára. Egy új erőforráscsoport nevére és a egy már létező erőforráscsoport nevét is megadhatja.
+   * **Hely**: Hol helyezi üzembe az új virtuális gépet. Ha azt szeretné, a helyszíni hálózat a virtuális géphez csatlakozni, ellenőrizze, hogy a hely, amely kapcsolódik a helyszíni hálózat az Azure virtuális hálózat kiválasztása. További információkért lásd: [Microsoft Azure-hálózatkezelés] [ planning-guide-microsoft-azure-networking] a [Azure Virtual Machines tervezési és megvalósítási az SAP NetWeaver számára] [ planning-guide].
 1. **Méret**:
 
      Támogatott Virtuálisgép-típusok listáját, tekintse meg az SAP-Jegyzetnek [1928533]. Győződjön meg arról, hogy a helyes VM-típust választja, ha azt szeretné használni az Azure Premium Storage. Nem minden Virtuálisgép-típusokat támogatja a Premium Storage. További információkért lásd: [tároló: A Microsoft Azure Storage és az adatlemezek] [ planning-guide-storage-microsoft-azure-storage-and-data-disks] és [Azure Premium Storage] [ planning-guide-azure-premium-storage] a [Azure Virtual Machines megtervezése és megvalósítása az SAP NetWeaver számára][planning-guide].
 
 1. **Beállítások**:
-  * **Tárolás**
-    * **Lemez típusa**: Válassza ki az operációsrendszer-lemez lemez típusát. Ha azt szeretné, prémium szintű Storage használata az adatlemezek, prémium szintű Storage, valamint az operációsrendszer-lemez használatát javasoljuk.
-    * **Felügyelt lemezek használata**: Ha azt szeretné, felügyelt lemezeket használni, válassza az Igen lehetőséget. Felügyelt lemezekkel kapcsolatos további információkért lásd: fejezet [Managed Disks] [ planning-guide-managed-disks] a tervezési útmutatóban.
-    * **Storage-fiók**: Válasszon ki egy meglévő tárfiókot vagy hozzon létre egy újat. Nem minden tárolási típusok futó SAP-alkalmazások esetében működik. További információ a tárolási típusok: [tárolószerkezet RDBMS-környezetekben virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64).
-  * **Hálózat**
-    * **Virtuális hálózat** és **alhálózati**: A virtuális gép integrálhatja az intraneten, válassza ki a virtuális hálózat, amely a helyszíni hálózathoz csatlakozik.
-    * **Nyilvános IP-cím**: Válassza ki a használni kívánt nyilvános IP-cím, vagy adjon meg egy új nyilvános IP-cím létrehozása a paramétereket. Használhatja a nyilvános IP-címet a virtuális gép eléréséhez az interneten keresztül. Ellenőrizze, hogy biztonságos hozzáférést könnyíti meg a virtuális gép hálózati biztonsági csoport létrehozása.
-    * **Hálózati biztonsági csoport**: További információkért lásd: [irányíthatja a hálózati forgalmat hálózati biztonsági csoportokkal][virtual-networks-nsg].
-  * **Bővítmények**: A virtuális gépi bővítmények hozzáadását a központi telepítés is telepítheti. Nem kell ebben a lépésben-kiterjesztések hozzáadása. A bővítmények SAP támogatási szükséges később telepítve. Tekintse meg a fejezet [konfigurálása az Azure Enhanced Monitoring bővítményt az SAP] [ deployment-guide-4.5] ebben az útmutatóban.
-  * **Magas rendelkezésre állású**: Válasszon ki egy rendelkezésre állási csoportot, vagy adja meg a paramétereket, hozzon létre egy új rendelkezésre állási csoport. További információkért lásd: [Azure rendelkezésre állási csoportok][planning-guide-3.2.3].
-  * **Monitorozás**
-    * **Rendszerindítási diagnosztika**: Választhat **letiltása** a rendszerindítási diagnosztika.
-    * **Vendég operációs rendszer diagnosztikája**: Választhat **letiltása** figyelés, diagnosztika.
+   * **Tárolás**
+     * **Lemez típusa**: Válassza ki az operációsrendszer-lemez lemez típusát. Ha azt szeretné, prémium szintű Storage használata az adatlemezek, prémium szintű Storage, valamint az operációsrendszer-lemez használatát javasoljuk.
+     * **Felügyelt lemezek használata**: Ha azt szeretné, felügyelt lemezeket használni, válassza az Igen lehetőséget. Felügyelt lemezekkel kapcsolatos további információkért lásd: fejezet [Managed Disks] [ planning-guide-managed-disks] a tervezési útmutatóban.
+     * **Storage-fiók**: Válasszon ki egy meglévő tárfiókot vagy hozzon létre egy újat. Nem minden tárolási típusok futó SAP-alkalmazások esetében működik. További információ a tárolási típusok: [tárolószerkezet RDBMS-környezetekben virtuális gépek](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64).
+   * **Hálózat**
+     * **Virtuális hálózat** és **alhálózati**: A virtuális gép integrálhatja az intraneten, válassza ki a virtuális hálózat, amely a helyszíni hálózathoz csatlakozik.
+     * **Nyilvános IP-cím**: Válassza ki a használni kívánt nyilvános IP-cím, vagy adjon meg egy új nyilvános IP-cím létrehozása a paramétereket. Használhatja a nyilvános IP-címet a virtuális gép eléréséhez az interneten keresztül. Ellenőrizze, hogy biztonságos hozzáférést könnyíti meg a virtuális gép hálózati biztonsági csoport létrehozása.
+     * **Hálózati biztonsági csoport**: További információkért lásd: [irányíthatja a hálózati forgalmat hálózati biztonsági csoportokkal][virtual-networks-nsg].
+   * **Bővítmények**: A virtuális gépi bővítmények hozzáadását a központi telepítés is telepítheti. Nem kell ebben a lépésben-kiterjesztések hozzáadása. A bővítmények SAP támogatási szükséges később telepítve. Tekintse meg a fejezet [konfigurálása az Azure Enhanced Monitoring bővítményt az SAP] [ deployment-guide-4.5] ebben az útmutatóban.
+   * **Magas rendelkezésre állású**: Válasszon ki egy rendelkezésre állási csoportot, vagy adja meg a paramétereket, hozzon létre egy új rendelkezésre állási csoport. További információkért lásd: [Azure rendelkezésre állási csoportok][planning-guide-3.2.3].
+   * **Monitorozás**
+     * **Rendszerindítási diagnosztika**: Választhat **letiltása** a rendszerindítási diagnosztika.
+     * **Vendég operációs rendszer diagnosztikája**: Választhat **letiltása** figyelés, diagnosztika.
 
 1. **Összefoglalás**:
 
-  Tekintse át a beállításokat, és válassza ki **OK**.
+   Tekintse át a beállításokat, és válassza ki **OK**.
 
 A virtuális gép telepítve van a kiválasztott erőforráscsoportban.
 
@@ -472,37 +472,37 @@ Létrehozhat egy virtuális gépet a közzétett SAP-sablonok használatával a 
 Az Azure Portalon adja meg a sablon a következő paraméterekkel:
 
 1. **Alapvető beállítások**:
-  * **Előfizetés**: A a sablon üzembe helyezéséhez használni kívánt előfizetést.
-  * **Erőforráscsoport**: Az erőforráscsoport a sablon telepítéséhez. Létrehozhat egy új erőforráscsoportot, vagy egy meglévő erőforráscsoportot kiválaszthatja az előfizetésben.
-  * **Hely**: Hol helyezi üzembe a sablont. Ha egy meglévő erőforráscsoportot, szolgál az erőforráscsoport helyét.
+   * **Előfizetés**: A a sablon üzembe helyezéséhez használni kívánt előfizetést.
+   * **Erőforráscsoport**: Az erőforráscsoport a sablon telepítéséhez. Létrehozhat egy új erőforráscsoportot, vagy egy meglévő erőforráscsoportot kiválaszthatja az előfizetésben.
+   * **Hely**: Hol helyezi üzembe a sablont. Ha egy meglévő erőforráscsoportot, szolgál az erőforráscsoport helyét.
 
 1. **Beállítások**:
-  * **Az SAP-rendszer-azonosító**: Az SAP rendszer-azonosító (SID).
-  * **Operációs rendszer típusa**: Az operációs rendszer, például a Windows Server 2012 R2, a SUSE Linux Enterprise Server 12 (SLES 12), a Red Hat Enterprise Linux 7.2 (RHEL 7.2) vagy az Oracle Linux 7.2 telepíteni kívánja.
+   * **Az SAP-rendszer-azonosító**: Az SAP rendszer-azonosító (SID).
+   * **Operációs rendszer típusa**: Az operációs rendszer, például a Windows Server 2012 R2, a SUSE Linux Enterprise Server 12 (SLES 12), a Red Hat Enterprise Linux 7.2 (RHEL 7.2) vagy az Oracle Linux 7.2 telepíteni kívánja.
 
-    A lista nézet nem jeleníti meg az összes támogatott operációs rendszereket. SAP-szoftverek központi telepítéséhez támogatott operációs rendszerekkel kapcsolatos további információkért tekintse meg az SAP-Jegyzetnek [1928533].
-  * **Az SAP-rendszer mérete**: Az SAP-rendszer mérete.
+     A lista nézet nem jeleníti meg az összes támogatott operációs rendszereket. SAP-szoftverek központi telepítéséhez támogatott operációs rendszerekkel kapcsolatos további információkért tekintse meg az SAP-Jegyzetnek [1928533].
+   * **Az SAP-rendszer mérete**: Az SAP-rendszer mérete.
 
-    Az új rendszer biztosít SAP száma. Ha nem, hogy a rendszer hány SAP, kérje meg az SAP technológiai partnerek vagy rendszerintegrátor.
-  * **Rendszer rendelkezésre állását** (csak a háromrétegű sablon): A rendszer rendelkezésre állását.
+     Az új rendszer biztosít SAP száma. Ha nem, hogy a rendszer hány SAP, kérje meg az SAP technológiai partnerek vagy rendszerintegrátor.
+   * **Rendszer rendelkezésre állását** (csak a háromrétegű sablon): A rendszer rendelkezésre állását.
 
-    Válassza ki **magas rendelkezésre ÁLLÁSÚ** konfiguráció, amely lehetővé teszi magas rendelkezésre állású telepítéshez. Két adatbázis-kiszolgáló és a két kiszolgáló a ABAP SAP Central Services (ASCS) jönnek létre.
-  * **Tárolási típus** (csak a sablon kétrétegű): Használandó tárolási típus.
+     Válassza ki **magas rendelkezésre ÁLLÁSÚ** konfiguráció, amely lehetővé teszi magas rendelkezésre állású telepítéshez. Két adatbázis-kiszolgáló és a két kiszolgáló a ABAP SAP Central Services (ASCS) jönnek létre.
+   * **Tárolási típus** (csak a sablon kétrétegű): Használandó tárolási típus.
 
-    Olyan nagyobb rendszerekhez erősen ajánlott az Azure Premium Storage tárolást használ. További információ a tárolási típusokat az alábbi forrásokban talál:
+     Olyan nagyobb rendszerekhez erősen ajánlott az Azure Premium Storage tárolást használ. További információ a tárolási típusokat az alábbi forrásokban talál:
       * [SAP DBMS-példány használatát az Azure prémium szintű SSD-tárolóval][2367194]
       * [A virtuális gépek RDBMS központi telepítésekhez tárolószerkezet](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
       * [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz][storage-premium-storage-preview-portal]
       * [A Microsoft Azure Storage bemutatása][storage-introduction]
-  * **Rendszergazdai felhasználónév** és **rendszergazdai jelszó**: Felhasználónév és jelszó.
-    Új felhasználó létrehozása a virtuális géphez való bejelentkezéshez.
-  * **Új vagy meglévő alhálózaton**: Meghatározza, hogy létrehozott egy új virtuális hálózatot és alhálózatot, vagy egy létező alhálózatot. Ha a helyszíni hálózatához csatlakoztatott virtuális hálózat már rendelkezik, válassza ki a **meglévő**.
-  * **Alhálózati azonosító**: Ha azt szeretné, helyezheti üzembe a virtuális gép egy meglévő Vnetet, amelyekben egy meghatározott alhálózatot a virtuális gép hozzá kell rendelni, nevezze el a kívánt alhálózatot. Az azonosító általában néz ki: /subscriptions/&lt;előfizetés-azonosító > /resourceGroups/&lt;erőforráscsoport-név > /providers/Microsoft.Network/virtualNetworks/&lt;virtuális hálózat neve > /subnets/&lt;alhálózat neve >
+   * **Rendszergazdai felhasználónév** és **rendszergazdai jelszó**: Felhasználónév és jelszó.
+     Új felhasználó létrehozása a virtuális géphez való bejelentkezéshez.
+   * **Új vagy meglévő alhálózaton**: Meghatározza, hogy létrehozott egy új virtuális hálózatot és alhálózatot, vagy egy létező alhálózatot. Ha a helyszíni hálózatához csatlakoztatott virtuális hálózat már rendelkezik, válassza ki a **meglévő**.
+   * **Alhálózati azonosító**: Ha azt szeretné, helyezheti üzembe a virtuális gép egy meglévő Vnetet, amelyekben egy meghatározott alhálózatot a virtuális gép hozzá kell rendelni, nevezze el a kívánt alhálózatot. Az azonosító általában néz ki: /subscriptions/&lt;előfizetés-azonosító > /resourceGroups/&lt;erőforráscsoport-név > /providers/Microsoft.Network/virtualNetworks/&lt;virtuális hálózat neve > /subnets/&lt;alhálózat neve >
 
 1. **Feltételek és kikötések**:  
     Tekintse át és fogadja el a jogi feltételeket.
 
-1.  Válassza a **Beszerzés** lehetőséget.
+1. Válassza a **Beszerzés** lehetőséget.
 
 Az Azure Virtuálisgép-ügynök alapértelmezés szerint telepítve van, az Azure Piactérről származó lemezkép használatakor.
 
@@ -561,33 +561,33 @@ Az új virtuális gép létrehozása felügyelt lemez rendszerképének a legegy
 A varázsló végigvezeti Önt az összes szükséges erőforrást, például a hálózati adapterek és a storage-fiókok mellett a virtuális gép létrehozásához szükséges paramétereket. Ezek a paraméterek a következők:
 
 1. **Alapvető beállítások**:
- * **Név**: Az erőforrás (a virtuális gép neve) neve.
- * **Virtuális merevlemez típusa**: Válassza ki az operációsrendszer-lemez lemez típusát. Ha azt szeretné, prémium szintű Storage használata az adatlemezek, prémium szintű Storage, valamint az operációsrendszer-lemez használatát javasoljuk.
- * **Felhasználónév és jelszó** vagy **nyilvános SSH-kulcs**: Adja meg a felhasználónevet és jelszót a kiépítés során létrehozott felhasználó. Egy Linux rendszerű virtuális gépek nyilvános Secure Shell (SSH) kulcs segítségével jelentkezzen be a gép is megadhatja.
- * **Előfizetés**: Az új virtuális gép kiépítéséhez használni kívánt előfizetés kiválasztásához.
- * **Erőforráscsoport**: Az erőforráscsoport neve a virtuális gép számára. Egy új erőforráscsoport nevére és a egy már létező erőforráscsoport nevét is megadhatja.
- * **Hely**: Hol helyezi üzembe az új virtuális gépet. Ha azt szeretné, a helyszíni hálózat a virtuális géphez csatlakozni, ellenőrizze, hogy a hely, amely kapcsolódik a helyszíni hálózat az Azure virtuális hálózat kiválasztása. További információkért lásd: [Microsoft Azure-hálózatkezelés] [ planning-guide-microsoft-azure-networking] a [Azure Virtual Machines tervezési és megvalósítási az SAP NetWeaver számára] [ planning-guide].
+   * **Név**: Az erőforrás (a virtuális gép neve) neve.
+   * **Virtuális merevlemez típusa**: Válassza ki az operációsrendszer-lemez lemez típusát. Ha azt szeretné, prémium szintű Storage használata az adatlemezek, prémium szintű Storage, valamint az operációsrendszer-lemez használatát javasoljuk.
+   * **Felhasználónév és jelszó** vagy **nyilvános SSH-kulcs**: Adja meg a felhasználónevet és jelszót a kiépítés során létrehozott felhasználó. Egy Linux rendszerű virtuális gépek nyilvános Secure Shell (SSH) kulcs segítségével jelentkezzen be a gép is megadhatja.
+   * **Előfizetés**: Az új virtuális gép kiépítéséhez használni kívánt előfizetés kiválasztásához.
+   * **Erőforráscsoport**: Az erőforráscsoport neve a virtuális gép számára. Egy új erőforráscsoport nevére és a egy már létező erőforráscsoport nevét is megadhatja.
+   * **Hely**: Hol helyezi üzembe az új virtuális gépet. Ha azt szeretné, a helyszíni hálózat a virtuális géphez csatlakozni, ellenőrizze, hogy a hely, amely kapcsolódik a helyszíni hálózat az Azure virtuális hálózat kiválasztása. További információkért lásd: [Microsoft Azure-hálózatkezelés] [ planning-guide-microsoft-azure-networking] a [Azure Virtual Machines tervezési és megvalósítási az SAP NetWeaver számára] [ planning-guide].
 1. **Méret**:
 
      Támogatott Virtuálisgép-típusok listáját, tekintse meg az SAP-Jegyzetnek [1928533]. Győződjön meg arról, hogy a helyes VM-típust választja, ha azt szeretné használni az Azure Premium Storage. Nem minden Virtuálisgép-típusokat támogatja a Premium Storage. További információkért lásd: [tároló: A Microsoft Azure Storage és az adatlemezek] [ planning-guide-storage-microsoft-azure-storage-and-data-disks] és [Azure Premium Storage] [ planning-guide-azure-premium-storage] a [Azure Virtual Machines megtervezése és megvalósítása az SAP NetWeaver számára][planning-guide].
 
 1. **Beállítások**:
-  * **Tárolás**
-    * **Lemez típusa**: Válassza ki az operációsrendszer-lemez lemez típusát. Ha azt szeretné, prémium szintű Storage használata az adatlemezek, prémium szintű Storage, valamint az operációsrendszer-lemez használatát javasoljuk.
-    * **Felügyelt lemezek használata**: Ha azt szeretné, felügyelt lemezeket használni, válassza az Igen lehetőséget. Felügyelt lemezekkel kapcsolatos további információkért lásd: fejezet [Managed Disks] [ planning-guide-managed-disks] a tervezési útmutatóban.
-  * **Hálózat**
-    * **Virtuális hálózat** és **alhálózati**: A virtuális gép integrálhatja az intraneten, válassza ki a virtuális hálózat, amely a helyszíni hálózathoz csatlakozik.
-    * **Nyilvános IP-cím**: Válassza ki a használni kívánt nyilvános IP-cím, vagy adjon meg egy új nyilvános IP-cím létrehozása a paramétereket. Használhatja a nyilvános IP-címet a virtuális gép eléréséhez az interneten keresztül. Ellenőrizze, hogy biztonságos hozzáférést könnyíti meg a virtuális gép hálózati biztonsági csoport létrehozása.
-    * **Hálózati biztonsági csoport**: További információkért lásd: [irányíthatja a hálózati forgalmat hálózati biztonsági csoportokkal][virtual-networks-nsg].
-  * **Bővítmények**: A virtuális gépi bővítmények hozzáadását a központi telepítés is telepítheti. Nem kell ebben a lépésben adja hozzá a bővítményt. A bővítmények SAP támogatási szükséges később telepítve. Tekintse meg a fejezet [konfigurálása az Azure Enhanced Monitoring bővítményt az SAP] [ deployment-guide-4.5] ebben az útmutatóban.
-  * **Magas rendelkezésre állású**: Válasszon ki egy rendelkezésre állási csoportot, vagy adja meg a paramétereket, hozzon létre egy új rendelkezésre állási csoport. További információkért lásd: [Azure rendelkezésre állási csoportok][planning-guide-3.2.3].
-  * **Monitorozás**
-    * **Rendszerindítási diagnosztika**: Választhat **letiltása** a rendszerindítási diagnosztika.
-    * **Vendég operációs rendszer diagnosztikája**: Választhat **letiltása** figyelés, diagnosztika.
+   * **Tárolás**
+     * **Lemez típusa**: Válassza ki az operációsrendszer-lemez lemez típusát. Ha azt szeretné, prémium szintű Storage használata az adatlemezek, prémium szintű Storage, valamint az operációsrendszer-lemez használatát javasoljuk.
+     * **Felügyelt lemezek használata**: Ha azt szeretné, felügyelt lemezeket használni, válassza az Igen lehetőséget. Felügyelt lemezekkel kapcsolatos további információkért lásd: fejezet [Managed Disks] [ planning-guide-managed-disks] a tervezési útmutatóban.
+   * **Hálózat**
+     * **Virtuális hálózat** és **alhálózati**: A virtuális gép integrálhatja az intraneten, válassza ki a virtuális hálózat, amely a helyszíni hálózathoz csatlakozik.
+     * **Nyilvános IP-cím**: Válassza ki a használni kívánt nyilvános IP-cím, vagy adjon meg egy új nyilvános IP-cím létrehozása a paramétereket. Használhatja a nyilvános IP-címet a virtuális gép eléréséhez az interneten keresztül. Ellenőrizze, hogy biztonságos hozzáférést könnyíti meg a virtuális gép hálózati biztonsági csoport létrehozása.
+     * **Hálózati biztonsági csoport**: További információkért lásd: [irányíthatja a hálózati forgalmat hálózati biztonsági csoportokkal][virtual-networks-nsg].
+   * **Bővítmények**: A virtuális gépi bővítmények hozzáadását a központi telepítés is telepítheti. Nem kell ebben a lépésben adja hozzá a bővítményt. A bővítmények SAP támogatási szükséges később telepítve. Tekintse meg a fejezet [konfigurálása az Azure Enhanced Monitoring bővítményt az SAP] [ deployment-guide-4.5] ebben az útmutatóban.
+   * **Magas rendelkezésre állású**: Válasszon ki egy rendelkezésre állási csoportot, vagy adja meg a paramétereket, hozzon létre egy új rendelkezésre állási csoport. További információkért lásd: [Azure rendelkezésre állási csoportok][planning-guide-3.2.3].
+   * **Monitorozás**
+     * **Rendszerindítási diagnosztika**: Választhat **letiltása** a rendszerindítási diagnosztika.
+     * **Vendég operációs rendszer diagnosztikája**: Választhat **letiltása** figyelés, diagnosztika.
 
 1. **Összefoglalás**:
 
-  Tekintse át a beállításokat, és válassza ki **OK**.
+   Tekintse át a beállításokat, és válassza ki **OK**.
 
 A virtuális gép telepítve van a kiválasztott erőforráscsoportban.
 
@@ -611,38 +611,38 @@ A virtuális gép telepítve van a kiválasztott erőforráscsoportban.
 Az Azure Portalon adja meg a sablon a következő paraméterekkel:
 
 1. **Alapvető beállítások**:
-  * **Előfizetés**: A a sablon üzembe helyezéséhez használni kívánt előfizetést.
-  * **Erőforráscsoport**: Az erőforráscsoport a sablon telepítéséhez. Hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévő erőforráscsoportot az előfizetésben.
-  * **Hely**: Hol helyezi üzembe a sablont. Ha egy meglévő erőforráscsoportot, szolgál az erőforráscsoport helyét.
+   * **Előfizetés**: A a sablon üzembe helyezéséhez használni kívánt előfizetést.
+   * **Erőforráscsoport**: Az erőforráscsoport a sablon telepítéséhez. Hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévő erőforráscsoportot az előfizetésben.
+   * **Hely**: Hol helyezi üzembe a sablont. Ha egy meglévő erőforráscsoportot, szolgál az erőforráscsoport helyét.
 1. **Beállítások**:
-  * **Az SAP-rendszer-azonosító**: Az SAP-rendszer azonosítója.
-  * **Operációs rendszer típusa**: Az operációs rendszer típusa (Windows vagy Linux) telepíteni kívánja.
-  * **Az SAP-rendszer mérete**: Az SAP-rendszer mérete.
+   * **Az SAP-rendszer-azonosító**: Az SAP-rendszer azonosítója.
+   * **Operációs rendszer típusa**: Az operációs rendszer típusa (Windows vagy Linux) telepíteni kívánja.
+   * **Az SAP-rendszer mérete**: Az SAP-rendszer mérete.
 
-    Az új rendszer biztosít SAP száma. Ha nem, hogy a rendszer hány SAP, kérje meg az SAP technológiai partnerek vagy rendszerintegrátor.
-  * **Rendszer rendelkezésre állását** (csak a háromrétegű sablon): A rendszer rendelkezésre állását.
+     Az új rendszer biztosít SAP száma. Ha nem, hogy a rendszer hány SAP, kérje meg az SAP technológiai partnerek vagy rendszerintegrátor.
+   * **Rendszer rendelkezésre állását** (csak a háromrétegű sablon): A rendszer rendelkezésre állását.
 
-    Válassza ki **magas rendelkezésre ÁLLÁSÚ** konfiguráció, amely lehetővé teszi magas rendelkezésre állású telepítéshez. Két adatbázis-kiszolgáló és -ASCS két kiszolgálói jönnek létre.
-  * **Tárolási típus** (csak a sablon kétrétegű): Használandó tárolási típus.
+     Válassza ki **magas rendelkezésre ÁLLÁSÚ** konfiguráció, amely lehetővé teszi magas rendelkezésre állású telepítéshez. Két adatbázis-kiszolgáló és -ASCS két kiszolgálói jönnek létre.
+   * **Tárolási típus** (csak a sablon kétrétegű): Használandó tárolási típus.
 
-    Olyan nagyobb rendszerekhez erősen ajánlott az Azure Premium Storage tárolást használ. Tárolási típusaival kapcsolatos további információkért lásd a következőket:
+     Olyan nagyobb rendszerekhez erősen ajánlott az Azure Premium Storage tárolást használ. Tárolási típusaival kapcsolatos további információkért lásd a következőket:
       * [SAP DBMS-példány használatát az Azure prémium szintű SSD-tárolóval][2367194]
       * [A virtuális gépek RDBMS központi telepítésekhez tárolószerkezet](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
       * [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz][storage-premium-storage-preview-portal]
       * [A Microsoft Azure Storage bemutatása][storage-introduction]
-  * **Felhasználói lemezkép VHD URI-ja** (csak a nem felügyelt lemez kép sablon esetében): Az URI-ját a saját operációs rendszerkép VHD-t, például a https://&lt;accountname >.blob.core.windows.net/vhds/userimage.vhd.
-  * **Felhasználói lemezkép tárfiókja** (csak a nem felügyelt lemez kép sablon esetében): A saját operációsrendszer-lemezkép tárolására, például a tárfiók nevére &lt;accountname > a https://&lt;accountname >.blob.core.windows.net/vhds/userimage.vhd.
-  * **userImageId** (csak felügyelt lemez kép sablon): A használni kívánt felügyelt lemez rendszerképének azonosítója
-  * **Rendszergazdai felhasználónév** és **rendszergazdai jelszó**: A felhasználónevet és jelszót.
+   * **Felhasználói lemezkép VHD URI-ja** (csak a nem felügyelt lemez kép sablon esetében): Az URI-ját a saját operációs rendszerkép VHD-t, például a https://&lt;accountname >.blob.core.windows.net/vhds/userimage.vhd.
+   * **Felhasználói lemezkép tárfiókja** (csak a nem felügyelt lemez kép sablon esetében): A saját operációsrendszer-lemezkép tárolására, például a tárfiók nevére &lt;accountname > a https://&lt;accountname >.blob.core.windows.net/vhds/userimage.vhd.
+   * **userImageId** (csak felügyelt lemez kép sablon): A használni kívánt felügyelt lemez rendszerképének azonosítója
+   * **Rendszergazdai felhasználónév** és **rendszergazdai jelszó**: A felhasználónevet és jelszót.
 
-    Új felhasználó létrehozása a virtuális géphez való bejelentkezéshez.
-  * **Új vagy meglévő alhálózaton**: Meghatározza, hogy létrejön egy új virtuális hálózatot és alhálózatot, vagy egy létező alhálózatot. Ha a helyszíni hálózatához csatlakoztatott virtuális hálózat már rendelkezik, válassza ki a **meglévő**.
-  * **Alhálózati azonosító**: Ha azt szeretné, helyezheti üzembe a virtuális gép egy meglévő Vnetet, amelyekben egy meghatározott alhálózatot a virtuális gép hozzá kell rendelni, nevezze el a kívánt alhálózatot. Az azonosító általában néz ki: /subscriptions/&lt;előfizetés-azonosító > /resourceGroups/&lt;erőforráscsoport-név > /providers/Microsoft.Network/virtualNetworks/&lt;virtuális hálózat neve > /subnets/&lt;alhálózat neve >
+     Új felhasználó létrehozása a virtuális géphez való bejelentkezéshez.
+   * **Új vagy meglévő alhálózaton**: Meghatározza, hogy létrejön egy új virtuális hálózatot és alhálózatot, vagy egy létező alhálózatot. Ha a helyszíni hálózatához csatlakoztatott virtuális hálózat már rendelkezik, válassza ki a **meglévő**.
+   * **Alhálózati azonosító**: Ha azt szeretné, helyezheti üzembe a virtuális gép egy meglévő Vnetet, amelyekben egy meghatározott alhálózatot a virtuális gép hozzá kell rendelni, nevezze el a kívánt alhálózatot. Az azonosító általában néz ki: /subscriptions/&lt;előfizetés-azonosító > /resourceGroups/&lt;erőforráscsoport-név > /providers/Microsoft.Network/virtualNetworks/&lt;virtuális hálózat neve > /subnets/&lt;alhálózat neve >
 
 1. **Feltételek és kikötések**:  
     Tekintse át és fogadja el a jogi feltételeket.
 
-1.  Válassza a **Beszerzés** lehetőséget.
+1. Válassza a **Beszerzés** lehetőséget.
 
 #### <a name="install-the-vm-agent-linux-only"></a>Telepítse a Virtuálisgép-ügynök (csak Linux)
 
@@ -706,31 +706,31 @@ Ha a lemez már feltöltött és az Azure-ban definiált (lásd: [Azure Virtual 
 Az Azure Portalon adja meg a sablon a következő paraméterekkel:
 
 1. **Alapvető beállítások**:
-  * **Előfizetés**: A a sablon üzembe helyezéséhez használni kívánt előfizetést.
-  * **Erőforráscsoport**: Az erőforráscsoport a sablon telepítéséhez. Hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévő erőforráscsoportot az előfizetésben.
-  * **Hely**: Hol helyezi üzembe a sablont. Ha egy meglévő erőforráscsoportot, szolgál az erőforráscsoport helyét.
+   * **Előfizetés**: A a sablon üzembe helyezéséhez használni kívánt előfizetést.
+   * **Erőforráscsoport**: Az erőforráscsoport a sablon telepítéséhez. Hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévő erőforráscsoportot az előfizetésben.
+   * **Hely**: Hol helyezi üzembe a sablont. Ha egy meglévő erőforráscsoportot, szolgál az erőforráscsoport helyét.
 1. **Beállítások**:
-  * **Az SAP-rendszer-azonosító**: Az SAP-rendszer azonosítója.
-  * **Operációs rendszer típusa**: Az operációs rendszer típusa (Windows vagy Linux) telepíteni kívánja.
-  * **Az SAP-rendszer mérete**: Az SAP-rendszer mérete.
+   * **Az SAP-rendszer-azonosító**: Az SAP-rendszer azonosítója.
+   * **Operációs rendszer típusa**: Az operációs rendszer típusa (Windows vagy Linux) telepíteni kívánja.
+   * **Az SAP-rendszer mérete**: Az SAP-rendszer mérete.
 
-    Az új rendszer biztosít SAP száma. Ha nem, hogy a rendszer hány SAP, kérje meg az SAP technológiai partnerek vagy rendszerintegrátor.
-  * **Tárolási típus** (csak a sablon kétrétegű): Használandó tárolási típus.
+     Az új rendszer biztosít SAP száma. Ha nem, hogy a rendszer hány SAP, kérje meg az SAP technológiai partnerek vagy rendszerintegrátor.
+   * **Tárolási típus** (csak a sablon kétrétegű): Használandó tárolási típus.
 
-    Olyan nagyobb rendszerekhez erősen ajánlott az Azure Premium Storage tárolást használ. Tárolási típusaival kapcsolatos további információkért lásd a következőket:
+     Olyan nagyobb rendszerekhez erősen ajánlott az Azure Premium Storage tárolást használ. Tárolási típusaival kapcsolatos további információkért lásd a következőket:
       * [SAP DBMS-példány használatát az Azure prémium szintű SSD-tárolóval][2367194]
       * [A virtuális gépek RDBMS központi telepítésekhez tárolószerkezet](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
       * [Premium Storage: Nagy teljesítményű tárolási szolgáltatás Azure virtuális gépek számítási feladataihoz][storage-premium-storage-preview-portal]
       * [A Microsoft Azure Storage bemutatása][storage-introduction]
-  * **Az operációs rendszer lemez VHD URI** (csak a sablon nem felügyelt lemez): A saját operációsrendszer-lemezről, például a https:// URI&lt;accountname >.blob.core.windows.net/vhds/osdisk.vhd.
-  * **Felügyelt lemez azonosítója az operációs rendszer lemezén** (csak felügyelt lemez sablon): A felügyelt lemez operációsrendszer-lemezen azonosítója /subscriptions/92d102f7-81a5-4df7-9877-54987ba97dd9/resourceGroups/group/providers/Microsoft.Compute/disks/WIN
-  * **Új vagy meglévő alhálózaton**: Meghatározza, hogy létrehozott egy új virtuális hálózatot és alhálózatot, vagy egy létező alhálózatot. Ha a helyszíni hálózatához csatlakoztatott virtuális hálózat már rendelkezik, válassza ki a **meglévő**.
-  * **Alhálózati azonosító**: Ha azt szeretné, helyezheti üzembe a virtuális gép egy meglévő Vnetet, amelyekben egy meghatározott alhálózatot a virtuális gép hozzá kell rendelni, nevezze el a kívánt alhálózatot. Az azonosító általában néz ki: /subscriptions/&lt;előfizetés-azonosító > /resourceGroups/&lt;erőforráscsoport-név > /providers/Microsoft.Network/virtualNetworks/&lt;virtuális hálózat neve > /subnets/&lt;alhálózat neve >
+   * **Az operációs rendszer lemez VHD URI** (csak a sablon nem felügyelt lemez): A saját operációsrendszer-lemezről, például a https:// URI&lt;accountname >.blob.core.windows.net/vhds/osdisk.vhd.
+   * **Felügyelt lemez azonosítója az operációs rendszer lemezén** (csak felügyelt lemez sablon): A felügyelt lemez operációsrendszer-lemezen azonosítója /subscriptions/92d102f7-81a5-4df7-9877-54987ba97dd9/resourceGroups/group/providers/Microsoft.Compute/disks/WIN
+   * **Új vagy meglévő alhálózaton**: Meghatározza, hogy létrehozott egy új virtuális hálózatot és alhálózatot, vagy egy létező alhálózatot. Ha a helyszíni hálózatához csatlakoztatott virtuális hálózat már rendelkezik, válassza ki a **meglévő**.
+   * **Alhálózati azonosító**: Ha azt szeretné, helyezheti üzembe a virtuális gép egy meglévő Vnetet, amelyekben egy meghatározott alhálózatot a virtuális gép hozzá kell rendelni, nevezze el a kívánt alhálózatot. Az azonosító általában néz ki: /subscriptions/&lt;előfizetés-azonosító > /resourceGroups/&lt;erőforráscsoport-név > /providers/Microsoft.Network/virtualNetworks/&lt;virtuális hálózat neve > /subnets/&lt;alhálózat neve >
 
 1. **Feltételek és kikötések**:  
     Tekintse át és fogadja el a jogi feltételeket.
 
-1.  Válassza a **Beszerzés** lehetőséget.
+1. Válassza a **Beszerzés** lehetőséget.
 
 #### <a name="install-the-vm-agent"></a>Virtuálisgép-ügynök telepítése
 
@@ -771,16 +771,16 @@ Ez a szakasz részletesen a konfigurációs és központi telepítési folyamata
 
 ### <a name="604bcec2-8b6e-48d2-a944-61b0f5dee2f7"></a>Azure PowerShell-parancsmagok telepítése
 
-1.  Lépjen a [letölti a Microsoft Azure](https://azure.microsoft.com/downloads/).
-1.  Alatt **parancssori eszközök**alatt **PowerShell**válassza **Windows telepítése**.
-1.  A letöltött fájl (például WindowsAzurePowershellGet.3f.3f.3fnew.exe), a Microsoft letöltési Manager párbeszédpanelen jelölje ki **futtatása**.
-1.  Microsoft Webplatform-telepítővel (a Microsoft Web-PI) futtatásához válassza **Igen**.
-1.  Egy oldal, amely úgy tűnik, ez jelenik meg:
+1. Lépjen a [letölti a Microsoft Azure](https://azure.microsoft.com/downloads/).
+1. Alatt **parancssori eszközök**alatt **PowerShell**válassza **Windows telepítése**.
+1. A letöltött fájl (például WindowsAzurePowershellGet.3f.3f.3fnew.exe), a Microsoft letöltési Manager párbeszédpanelen jelölje ki **futtatása**.
+1. Microsoft Webplatform-telepítővel (a Microsoft Web-PI) futtatásához válassza **Igen**.
+1. Egy oldal, amely úgy tűnik, ez jelenik meg:
 
-  ![Telepítési lapja az Azure PowerShell-parancsmagok][deployment-guide-figure-500]<a name="figure-5"></a>
+   ![Telepítési lapja az Azure PowerShell-parancsmagok][deployment-guide-figure-500]<a name="figure-5"></a>
 
-1.  Válassza ki **telepítése**, majd fogadja el a Microsoft szoftverlicenc-feltételeket.
-1.  PowerShell telepítve van. Válassza ki **Befejezés** a telepítővarázsló bezárásához.
+1. Válassza ki **telepítése**, majd fogadja el a Microsoft szoftverlicenc-feltételeket.
+1. PowerShell telepítve van. Válassza ki **Befejezés** a telepítővarázsló bezárásához.
 
 Gyakori frissítések keresése a PowerShell-parancsmagokról, amely általában frissülnek havonta. Frissítések keresése a legegyszerűbb módja, hogy hajtsa végre a fenti telepítési lépéseket, akár a telepítés oldal jelenik meg az 5. lépésben. A parancsmagok kiadási dátum- és kiadási száma lap jelenik meg az 5. lépésben szerepelnek. Amennyiben másként nincs feltüntetve a SAP-Jegyzetnek [1928533] vagy az SAP-Jegyzetnek [2015553], javasoljuk, hogy az Azure PowerShell-parancsmagok legújabb verzióját.
 
@@ -800,16 +800,16 @@ Ha a számítógépen telepített Azure parancsmag verzió aktuális verzióját
 
 ### <a name="1ded9453-1330-442a-86ea-e0fd8ae8cab3"></a>Az Azure CLI telepítése
 
-1.  Lépjen a [letölti a Microsoft Azure](https://azure.microsoft.com/downloads/).
-1.  A **parancssori eszközök**alatt **Azure parancssori felület**, jelölje be a **telepítése** hivatkozást az operációs rendszer.
-1.  A letöltött fájl (például WindowsAzureXPlatCLI.3f.3f.3fnew.exe), a Microsoft letöltési Manager párbeszédpanelen jelölje ki **futtatása**.
-1.  Microsoft Webplatform-telepítővel (a Microsoft Web-PI) futtatásához válassza **Igen**.
-1.  Egy oldal, amely úgy tűnik, ez jelenik meg:
+1. Lépjen a [letölti a Microsoft Azure](https://azure.microsoft.com/downloads/).
+1. A **parancssori eszközök**alatt **Azure parancssori felület**, jelölje be a **telepítése** hivatkozást az operációs rendszer.
+1. A letöltött fájl (például WindowsAzureXPlatCLI.3f.3f.3fnew.exe), a Microsoft letöltési Manager párbeszédpanelen jelölje ki **futtatása**.
+1. Microsoft Webplatform-telepítővel (a Microsoft Web-PI) futtatásához válassza **Igen**.
+1. Egy oldal, amely úgy tűnik, ez jelenik meg:
 
-  ![Telepítési lapja az Azure PowerShell-parancsmagok][deployment-guide-figure-500]<a name="figure-5"></a>
+   ![Telepítési lapja az Azure PowerShell-parancsmagok][deployment-guide-figure-500]<a name="figure-5"></a>
 
-1.  Válassza ki **telepítése**, majd fogadja el a Microsoft szoftverlicenc-feltételeket.
-1.  Az Azure CLI telepítve van. Válassza ki **Befejezés** a telepítővarázsló bezárásához.
+1. Válassza ki **telepítése**, majd fogadja el a Microsoft szoftverlicenc-feltételeket.
+1. Az Azure CLI telepítve van. Válassza ki **Befejezés** a telepítővarázsló bezárásához.
 
 Gyakori frissítések keresése az Azure CLI-t, amely rendszerint havonta frissül. Frissítések keresése a legegyszerűbb módja, hogy hajtsa végre a fenti telepítési lépéseket, akár a telepítés oldal jelenik meg az 5. lépésben.
 
@@ -837,15 +837,15 @@ Ha egy virtuális Gépet az Azure Marketplace-ről telepíti, ezt a lépést, ne
 
 #### <a name="b2db5c9a-a076-42c6-9835-16945868e866"></a>Windows
 
-1.  Az Azure Virtuálisgép-ügynök letöltése:
-  1.  Töltse le a [Azure Virtuálisgép-ügynököt a telepítőcsomag](https://go.microsoft.com/fwlink/?LinkId=394789).
-  1.  A Virtuálisgép-ügynök MSI-csomag Store helyileg egy személyi számítógép vagy a kiszolgálón.
-1.  Az Azure Virtuálisgép-ügynök telepítése:
-  1.  Az üzembe helyezett Azure virtuális Géphez kapcsolódni a távoli asztal protokoll (RDP) használatával.
-  1.  Nyissa meg a Windows Intéző ablakot, a virtuális gépen, és válassza ki a célkönyvtárat a Virtuálisgép-ügynök MSI-fájljának.
-  1.  Húzza az Azure VM Agent Telepítő MSI-fájl a helyi számítógép kiszolgáló célkönyvtára a Virtuálisgép-ügynököt a virtuális gépen.
-  1.  Kattintson duplán a virtuális gépen az MSI-fájlt.
-1.  A virtuális gépek, a helyszíni tartományokra csatlakoztatott, győződjön meg arról, végleges internetes proxybeállítások is alkalmazni a Windows helyi rendszer fiók (S-1-5 – 18) a virtuális gép leírtak szerint [konfigurálni a proxyt][deployment-guide-configure-proxy]. A Virtuálisgép-ügynök ebben a környezetben fut, és csatlakozás az Azure-bA képesnek kell lennie.
+1. Az Azure Virtuálisgép-ügynök letöltése:
+   1.  Töltse le a [Azure Virtuálisgép-ügynököt a telepítőcsomag](https://go.microsoft.com/fwlink/?LinkId=394789).
+   1.  A Virtuálisgép-ügynök MSI-csomag Store helyileg egy személyi számítógép vagy a kiszolgálón.
+1. Az Azure Virtuálisgép-ügynök telepítése:
+   1.  Az üzembe helyezett Azure virtuális Géphez kapcsolódni a távoli asztal protokoll (RDP) használatával.
+   1.  Nyissa meg a Windows Intéző ablakot, a virtuális gépen, és válassza ki a célkönyvtárat a Virtuálisgép-ügynök MSI-fájljának.
+   1.  Húzza az Azure VM Agent Telepítő MSI-fájl a helyi számítógép kiszolgáló célkönyvtára a Virtuálisgép-ügynököt a virtuális gépen.
+   1.  Kattintson duplán a virtuális gépen az MSI-fájlt.
+1. A virtuális gépek, a helyszíni tartományokra csatlakoztatott, győződjön meg arról, végleges internetes proxybeállítások is alkalmazni a Windows helyi rendszer fiók (S-1-5 – 18) a virtuális gép leírtak szerint [konfigurálni a proxyt][deployment-guide-configure-proxy]. A Virtuálisgép-ügynök ebben a környezetben fut, és csatlakozás az Azure-bA képesnek kell lennie.
 
 Az Azure Virtuálisgép-ügynök frissítéséhez szükséges nincs szükség felhasználói beavatkozásra. A Virtuálisgép-ügynök automatikusan frissül, és nem igényel a virtuális gép újraindítása.
 
@@ -890,21 +890,21 @@ Konfigurálja a megfelelő proxyt a konfigurációs fájlban, a Microsoft Azure-
 
 Állítsa be a következő paraméterekkel:
 
-1.  **HTTP-proxy állomás**. Például állítsa be **proxy.corp.local**.
-  ```
-  HttpProxy.Host=<proxy host>
+1. **HTTP-proxy állomás**. Például állítsa be **proxy.corp.local**.
+   ```
+   HttpProxy.Host=<proxy host>
 
-  ```
-1.  **HTTP-proxy portja**. Például állítsa be **80-as**.
-  ```
-  HttpProxy.Port=<port of the proxy host>
+   ```
+1. **HTTP-proxy portja**. Például állítsa be **80-as**.
+   ```
+   HttpProxy.Port=<port of the proxy host>
 
-  ```
-1.  Indítsa újra az ügynököt.
+   ```
+1. Indítsa újra az ügynököt.
 
-  ```
-  sudo service waagent restart
-  ```
+   ```
+   sudo service waagent restart
+   ```
 
 A proxybeállítások \\stb\\waagent.conf is alkalmazni kell a szükséges Virtuálisgép-bővítmények. Ha szeretné használni az Azure-tárházak, győződjön meg arról, hogy az ezen tárházakba nem történik, a helyi intraneten keresztül. Létrehozta a felhasználó által megadott útvonalak a kényszerített bújtatás engedélyezéséhez győződjön meg arról, hogy adjon hozzá egy útvonalat, amely átirányítja a forgalmat a közvetlenül az internethez, és nem a site-to-site VPN-kapcsolaton keresztül a tárházban.
 
@@ -1034,20 +1034,20 @@ Ez az ellenőrzés gondoskodik arról, hogy a metrikák jelennek meg az SAP alka
 
 #### <a name="run-the-readiness-check-on-a-windows-vm"></a>A Windows virtuális gép készültség-ellenőrzés futtatása
 
-1.  Jelentkezzen be az Azure virtuális gépen (egy rendszergazdai fiók használata nem szükséges).
-1.  Nyisson meg egy parancssori ablakot.
-1.  A parancssorban módosítsa a könyvtárat, az Azure Enhanced Monitoring bővítményt az SAP telepítési mappájában: C:\\Packages\\Plugins\\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler\\&lt;version>\\drop
+1. Jelentkezzen be az Azure virtuális gépen (egy rendszergazdai fiók használata nem szükséges).
+1. Nyisson meg egy parancssori ablakot.
+1. A parancssorban módosítsa a könyvtárat, az Azure Enhanced Monitoring bővítményt az SAP telepítési mappájában: C:\\Packages\\Plugins\\Microsoft.AzureCAT.AzureEnhancedMonitoring.AzureCATExtensionHandler\\&lt;version>\\drop
 
-  A *verzió* elérési útját a figyelés típusú kiterjesztés változhat. Ha több verziója a monitorozási bővítményt az telepítési mappájában, mappák, ellenőrizze a AzureEnhancedMonitoring Windows-szolgáltatás konfigurációját, és ezután váltson arra a mappára jelzett *végrehajtható fájl elérési útja* .
+   A *verzió* elérési útját a figyelés típusú kiterjesztés változhat. Ha több verziója a monitorozási bővítményt az telepítési mappájában, mappák, ellenőrizze a AzureEnhancedMonitoring Windows-szolgáltatás konfigurációját, és ezután váltson arra a mappára jelzett *végrehajtható fájl elérési útja* .
 
-  ![Az Azure Enhanced Monitoring bővítményt az SAP futó szolgáltatás tulajdonságai][deployment-guide-figure-1000]
+   ![Az Azure Enhanced Monitoring bővítményt az SAP futó szolgáltatás tulajdonságai][deployment-guide-figure-1000]
 
-1.  A parancssorban futtassa **azperflib.exe** paraméterek nélkül.
+1. A parancssorban futtassa **azperflib.exe** paraméterek nélkül.
 
-  > [!NOTE]
-  > Azperflib.exe hurkot futtat, és frissíti a gyűjtött teljesítményszámlálók minden 60 másodpercben. A hurok befejezéséhez zárja be a parancssori ablakot.
-  >
-  >
+   > [!NOTE]
+   > Azperflib.exe hurkot futtat, és frissíti a gyűjtött teljesítményszámlálók minden 60 másodpercben. A hurok befejezéséhez zárja be a parancssori ablakot.
+   >
+   >
 
 Ha nincs telepítve az Azure Enhanced Monitoring bővítményt, vagy a AzureEnhancedMonitoring szolgáltatás nem fut, a bővítmény konfigurációja nem megfelelő. A bővítmény telepítésével kapcsolatos részletes információkért lásd: [az SAP az Azure figyelési infrastruktúra hibaelhárítási][deployment-guide-5.3].
 
@@ -1077,51 +1077,51 @@ Ha a **állapot** hodnota není **OK**, kövesse a [Azure figyelési infrastrukt
 
 #### <a name="run-the-readiness-check-on-a-linux-vm"></a>A Linux rendszerű virtuális gép készültség-ellenőrzés futtatása
 
-1.  Csatlakozás az Azure virtuális gép SSH használatával.
+1. Csatlakozás az Azure virtuális gép SSH használatával.
 
-1.  Ellenőrizze az Azure Enhanced Monitoring bővítményt kimenetét.
+1. Ellenőrizze az Azure Enhanced Monitoring bővítményt kimenetét.
 
-  a.  Futtassa a `more /var/lib/AzureEnhancedMonitor/PerfCounters` parancsot.
+   a.  Futtassa a `more /var/lib/AzureEnhancedMonitor/PerfCounters` parancsot.
 
    **Várt eredmény**: Teljesítményszámlálók listájának visszaadása. A fájl nem lehet üres.
 
- b. Futtassa a `cat /var/lib/AzureEnhancedMonitor/PerfCounters | grep Error` parancsot.
+   b. Futtassa a `cat /var/lib/AzureEnhancedMonitor/PerfCounters | grep Error` parancsot.
 
    **Várt eredmény**: Értéket ad vissza egy sorral, ahol a hiba: **nincs**, például **3; konfigurációs; Hiba történt; 0, 0; Nincs; 0; 1456416792; teszt-servercs;**
 
-  c. Futtassa a `more /var/lib/AzureEnhancedMonitor/LatestErrorRecord` parancsot.
+   c. Futtassa a `more /var/lib/AzureEnhancedMonitor/LatestErrorRecord` parancsot.
 
-    **Várt eredmény**: Adja vissza, üres vagy nem létezik.
+   **Várt eredmény**: Adja vissza, üres vagy nem létezik.
 
 Ha az előző ellenőrzése nem volt sikeres, a további ellenőrzések futtatásához:
 
-1.  Győződjön meg arról, hogy a waagent telepítve és engedélyezve van.
+1. Győződjön meg arról, hogy a waagent telepítve és engedélyezve van.
 
-  a.  Futtassa a `sudo ls -al /var/lib/waagent/` parancsot.
+   a.  Futtassa a `sudo ls -al /var/lib/waagent/` parancsot.
 
-      **Várt eredmény**: A waagent könyvtár tartalmát listázza.
+     **Várt eredmény**: A waagent könyvtár tartalmát listázza.
 
-  b.  Futtassa a `ps -ax | grep waagent` parancsot.
+   b.  Futtassa a `ps -ax | grep waagent` parancsot.
 
    **Várt eredmény**: Egy hasonló bejegyzés jelenik meg: `python /usr/sbin/waagent -daemon`
 
-1.   Győződjön meg arról, hogy az Azure Enhanced Monitoring bővítményt telepítve és fut-e.
+1. Győződjön meg arról, hogy az Azure Enhanced Monitoring bővítményt telepítve és fut-e.
 
-  a.  Futtassa a `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'` parancsot.
+   a.  Futtassa a `sudo sh -c 'ls -al /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-*/'` parancsot.
 
-    **Várt eredmény**: Az Azure Enhanced Monitoring bővítményt könyvtár tartalmát listázza.
+   **Várt eredmény**: Az Azure Enhanced Monitoring bővítményt könyvtár tartalmát listázza.
 
-  b. Futtassa a `ps -ax | grep AzureEnhanced` parancsot.
+   b. Futtassa a `ps -ax | grep AzureEnhanced` parancsot.
 
-     **Várt eredmény**: Egy hasonló bejegyzés jelenik meg: `python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon`
+   **Várt eredmény**: Egy hasonló bejegyzés jelenik meg: `python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon`
 
 1. SAP-gazdagép-ügynök telepítése a SAP-Jegyzetnek leírtak szerint [1031096], és ellenőrizze a kimenetét `saposcol`.
 
-  a.  Futtassa a `/usr/sap/hostctrl/exe/saposcol -d` parancsot.
+   a.  Futtassa a `/usr/sap/hostctrl/exe/saposcol -d` parancsot.
 
-  b.  Futtassa a `dump ccm` parancsot.
+   b.  Futtassa a `dump ccm` parancsot.
 
-  c.  Ellenőrizze-e a **Virtualization_Configuration\Enhanced figyelési hozzáférés** metrika **igaz**.
+   c.  Ellenőrizze-e a **Virtualization_Configuration\Enhanced figyelési hozzáférés** metrika **igaz**.
 
 Ha már van telepítve az SAP NetWeaver ABAP-alkalmazáskiszolgáló, nyissa meg a tranzakciós ST06, és ellenőrizze, hogy engedélyezve van-e a fokozott ellenőrzés.
 
@@ -1131,22 +1131,22 @@ Ha minden ellenőrzés nem sikerül, és ismételt üzembe helyezése a bővítm
 
 Ha egyes figyelési adatokat nem kézbesíti a rendszer a teszt leírt aszinkronitást megfelelően [készültség-ellenőrzés az Azure SAP Enhanced Monitoring][deployment-guide-5.1]futtassa a `Test-AzureRmVMAEMExtension` parancsmaggal ellenőrizheti-e a Az Azure SAP-infrastruktúra és a figyelés típusú kiterjesztés figyelése megfelelően vannak konfigurálva.
 
-1.  Győződjön meg arról, hogy telepítette-e a legújabb Azure PowerShell-parancsmag leírtak szerint [üzembe helyezése az Azure PowerShell-parancsmagok][deployment-guide-4.1].
-1.  Futtassa az alábbi PowerShell-parancsmagot. Rendelkezésre álló környezetek listáját, futtassa a parancsmagot `Get-AzureRmEnvironment`. Globális Azure használatához válassza ki a **AzureCloud** környezetben. Válassza ki az Azure Kínában, **AzureChinaCloud**.
-  ```powershell
-  $env = Get-AzureRmEnvironment -Name <name of the environment>
-  Connect-AzureRmAccount -Environment $env
-  Set-AzureRmContext -SubscriptionName <subscription name>
-  Test-AzureRmVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
-  ```
+1. Győződjön meg arról, hogy telepítette-e a legújabb Azure PowerShell-parancsmag leírtak szerint [üzembe helyezése az Azure PowerShell-parancsmagok][deployment-guide-4.1].
+1. Futtassa az alábbi PowerShell-parancsmagot. Rendelkezésre álló környezetek listáját, futtassa a parancsmagot `Get-AzureRmEnvironment`. Globális Azure használatához válassza ki a **AzureCloud** környezetben. Válassza ki az Azure Kínában, **AzureChinaCloud**.
+   ```powershell
+   $env = Get-AzureRmEnvironment -Name <name of the environment>
+   Connect-AzureRmAccount -Environment $env
+   Set-AzureRmContext -SubscriptionName <subscription name>
+   Test-AzureRmVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
+   ```
 
-1.  Adja meg a fiókja adatait, és azonosítja az Azure virtuális gépen.
+1. Adja meg a fiókja adatait, és azonosítja az Azure virtuális gépen.
 
-  ![Az SAP-specifikus bemeneti lapján Azure parancsmag: Test-VMConfigForSAP_GUI][deployment-guide-figure-1200]
+   ![Az SAP-specifikus bemeneti lapján Azure parancsmag: Test-VMConfigForSAP_GUI][deployment-guide-figure-1200]
 
 1. A parancsfájl teszteli a konfigurációt a virtuális gép választja.
 
-  ![Az SAP az Azure figyelési infrastruktúra sikeres tesztet kimenete][deployment-guide-figure-1300]
+   ![Az SAP az Azure figyelési infrastruktúra sikeres tesztet kimenete][deployment-guide-figure-1300]
 
 Győződjön meg arról, hogy minden állapot-ellenőrzés eredménye **OK**. Ha nem jelennek meg néhány ellenőrzést **OK**, a frissítés parancsmag futtatása leírtak szerint [konfigurálása az Azure Enhanced Monitoring bővítményt az SAP][deployment-guide-4.5]. Várjon 15 percig, majd ismételje meg a leírt ellenőrzések [készültség-ellenőrzés az Azure SAP Enhanced Monitoring] [ deployment-guide-5.1] és [Azure figyelési infrastruktúra konfiguráció-állapotellenőrzés] [deployment-guide-5.2]. Ha az ellenőrzések még néhány vagy minden számláló problémára utalhat, [az SAP az Azure figyelési infrastruktúra hibaelhárítási][deployment-guide-5.3].
 

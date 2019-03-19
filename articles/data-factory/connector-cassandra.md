@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 1347012971d53728d978f378e30684311c88828b
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 743dad6032547f8f535543413adff416efb56ac0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022280"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57998399"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Adatok másolása az Azure Data Factory használatával Cassandra
-> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory szolgáltatás verzióját:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [1-es verzió](v1/data-factory-onprem-cassandra-connector.md)
 > * [Aktuális verzió](connector-cassandra.md)
 
@@ -55,7 +55,7 @@ Cassandra-beli társított szolgáltatás a következő tulajdonságok támogato
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type |A type tulajdonságot kell beállítani: **Cassandra** |Igen |
-| gazdagép |Egy vagy több IP-címek vagy kiszolgálók Cassandra gazdagép nevét.<br/>Adja meg az IP-címek vagy az összes kiszolgálóhoz csatlakozzon egyszerre állomásnevek vesszővel tagolt listája. |Igen |
+| gazdagép |One or more IP addresses or host names of Cassandra servers.<br/>Adja meg az IP-címek vagy az összes kiszolgálóhoz csatlakozzon egyszerre állomásnevek vesszővel tagolt listája. |Igen |
 | port |A Cassandra-kiszolgáló az ügyfélkapcsolatok figyeléséhez használt TCP portra. |Nem (alapértelmezés szerint a 9042) |
 | authenticationType | A Cassandra-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Engedélyezett értékek a következők: **Alapszintű**, és **névtelen**. |Igen |
 | felhasználónév |Adja meg a felhasználói fiók felhasználónevét. |Igen, ha authenticationType beállítása alapszintű. |
@@ -132,7 +132,7 @@ Adatok másolása a Cassandra, állítsa be a forrás típusaként a másolási 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A másolási tevékenység forrása type tulajdonsága értékre kell állítani: **CassandraSource** | Igen |
-| lekérdezés |Az egyéni lekérdezés segítségével olvassa el az adatokat. |SQL-92 vagy CQL lekérdezés. Lásd: [CQL referencia](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>SQL-lekérdezés használata esetén adja meg a **kulcstér name.table neve** a lekérdezni kívánt tábla ábrázolásához. |Nem (Ha a "tableName" és "kulcstér" adatkészletben levő meg van adva). |
+| lekérdezés |Az egyéni lekérdezés segítségével olvassa el az adatokat. SQL-92 vagy CQL lekérdezés. Lásd: [CQL referencia](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>SQL-lekérdezés használata esetén adja meg a **kulcstér name.table neve** a lekérdezni kívánt tábla ábrázolásához. |Nem (Ha a "tableName" és "kulcstér" adatkészletben levő meg van adva). |
 | consistencyLevel |A konzisztencia szintjét adja meg, hány replikák válaszolnia kell egy olvasási kérést előtt adatokat ad vissza az ügyfélalkalmazásnak. Cassandra ellenőrzi a megadott számú replikákat az adatok az olvasási kérelem teljesítéséhez. Lásd: [adatkonzisztencia konfigurálása](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) részleteiről.<br/><br/>Engedélyezett értékek a következők: **EGY**, **két**, **három**, **KVÓRUM**, **összes**, **LOCAL_QUORUM**, **EACH_QUORUM**, és **LOCAL_ONE**. |Nem (alapértelmezett érték a `ONE`) |
 
 **Példa**
@@ -173,21 +173,21 @@ Amikor az adatok másolása a Cassandra, a következő hozzárendeléseket szolg
 
 | Cassandra-adattípus | Data factory közbenső adattípus |
 |:--- |:--- |
-| ASCII |Karakterlánc |
+| ASCII |String |
 | BIGINT |Int64 |
-| BLOB |Byte] |
+| BLOB |Byte[] |
 | LOGIKAI ÉRTÉK |Logikai |
-| TIZEDES TÖRT |Tizedes tört |
-| DUPLA |Dupla |
-| LEBEGŐPONTOS |Önálló |
-| INET |Karakterlánc |
+| DECIMAL |Decimal |
+| DUPLA |Double |
+| LEBEGŐPONTOS |Single |
+| INET |String |
 | INT |Int32 |
-| SZÖVEG |Karakterlánc |
+| SZÖVEG |String |
 | IDŐBÉLYEG |DateTime |
-| TIMEUUID |GUID |
-| UUID |GUID |
-| VARCHAR |Karakterlánc |
-| VARINT |Tizedes tört |
+| TIMEUUID |Guid |
+| UUID |Guid |
+| VARCHAR |String |
+| VARINT |Decimal |
 
 > [!NOTE]
 > Gyűjtemény típusa (map, set, list, stb.), tekintse meg [használata virtuális tábla használatával Cassandra gyűjteménytípusai](#work-with-collections-using-virtual-table) szakaszban.

@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 manager: jeconnoc
 ms.date: 01/05/2019
 ms.topic: article
-ms.openlocfilehash: 7237a9a6a99b57401af40512a6d2e21a3fe49e53
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: b2e8d629f4007729ad0538aee9bdb8e67747b026
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159485"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58015123"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Hurkok, ismételje meg a munkafolyamat-műveletek, vagy az Azure Logic Appsben tömbök feldolgozni létrehozása
 
@@ -166,7 +166,8 @@ Ismétlődő műveletek, amíg egy feltétel teljesül beolvasása, vagy egy ál
 > Ezeket a lépéseket használja az Office 365 Outlook, de használhatja, amely támogatja a Logic Apps bármely e-mail-szolgáltatónál. 
 > [Ellenőrizze, hogy az itt felsorolt összekötőket](https://docs.microsoft.com/connectors/). Ha egy másik e-mail-fiókot használ, az általános lépések ugyanazok, de a felhasználói felület kis mértékben eltérő lehet. 
 
-1. Üres logikai alkalmazás létrehozása. A Logikaialkalmazás-Tervező, a keresőmező alatt válassza a **összes**. Keressen a "recurrence". Az eseményindítók listában jelölje ki az eseményindító: **Ismétlődés - ütemezés**
+1. Üres logikai alkalmazás létrehozása. A Logikaialkalmazás-Tervező, a keresőmező alatt válassza a **összes**. Keressen a "recurrence". 
+   Az eseményindítók listában jelölje ki az eseményindító: **Ismétlődés - ütemezés**
 
    !["Ismétlődési – ütemezés" eseményindító hozzáadása](./media/logic-apps-control-flow-loops/do-until-loop-add-trigger.png)
 
@@ -181,7 +182,8 @@ Ismétlődő műveletek, amíg egy feltétel teljesül beolvasása, vagy egy ál
    | **Ezekben az órákban** | 8 |
    ||| 
 
-1. Az eseményindító területén válassza a **új lépés**. Keresse meg a "változók", és válassza a következő műveletet: **Változó - változók inicializálása**
+1. Az eseményindító területén válassza a **új lépés**. 
+   Keresse meg a "változók", és válassza a következő műveletet: **Változó - változók inicializálása**
 
    !["Változó – változó inicializálása" művelet hozzáadása](./media/logic-apps-control-flow-loops/do-until-loop-add-variable.png)
 
@@ -202,7 +204,8 @@ Ismétlődő műveletek, amíg egy feltétel teljesül beolvasása, vagy egy ál
 
    !["Until" ciklus hozzáadása](./media/logic-apps-control-flow-loops/do-until-loop-add-until-loop.png)
 
-1. Válassza a hurok kilépési feltétele készítését a **korlátot** változót és a **egyenlő** operátor. Adja meg **10** összehasonlító értéket.
+1. Válassza a hurok kilépési feltétele készítését a **korlátot** változót és a **egyenlő** operátor. 
+   Adja meg **10** összehasonlító értéket.
 
    ![Build leállítása folyamatban van a hurok kilépési feltétele](./media/logic-apps-control-flow-loops/do-until-loop-settings.png)
 
@@ -214,32 +217,33 @@ Ismétlődő műveletek, amíg egy feltétel teljesül beolvasása, vagy egy ál
 
 1. A **neve**, jelölje be a **korlát** változó. A **érték**, adja meg az "1". 
 
-   ![1 "Limit" növekmény](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable-settings.png)
+    ![1 "Limit" növekmény](./media/logic-apps-control-flow-loops/do-until-loop-increment-variable-settings.png)
 
 1. Kívül, és az iteráció alatt válassza a **új lépés**. 
 
-1. A keresőmező alatt válassza ki a **összes**. Keresse meg, és adjon hozzá egy műveletet, amely küld e-mailt, például: 
+1. A keresőmező alatt válassza ki a **összes**. 
+    Keresse meg, és adjon hozzá egy műveletet, amely küld e-mailt, például: 
 
-   ![E-mailt elküldő művelet hozzáadása](media/logic-apps-control-flow-loops/do-until-loop-send-email.png)
+    ![E-mailt elküldő művelet hozzáadása](media/logic-apps-control-flow-loops/do-until-loop-send-email.png)
 
 1. Ha a rendszer kéri, jelentkezzen be az e-mail-fiókjába.
 
 1. Művelet tulajdonságai állíthatók be az e-mailt. Adja hozzá a **korlát** változó a tulajdonosnak. Így ellenőrizheti, a változó aktuális értéke megfelel a megadott feltétel, például:
 
-    ![E-mail-tulajdonságok beállítása](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
+     ![E-mail-tulajdonságok beállítása](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
 
-    | Tulajdonság | Érték | Leírás |
-    | -------- | ----- | ----------- | 
-    | **Címzett** | *<email-address@domain>* | a címzett e-mail címét. Tesztelésre a saját e-mail cím használható. | 
-    | **Tárgy** | Jelenlegi "Limit" értéke **korlát** | Adja meg az e-mail tárgyát. Ebben a példában győződjön meg arról, hogy tartalmazzák a **korlát** változó. | 
-    | **Törzs** | <*email-content*> | Adja meg az e-mail üzenet tartalma is szeretne küldeni. Ebben a példában adja meg bármilyen kívánt szöveg. | 
-    |||| 
+     | Tulajdonság | Érték | Leírás |
+     | -------- | ----- | ----------- | 
+     | **Címzett** | *<email-address\@domain>* | a címzett e-mail címét. Tesztelésre a saját e-mail cím használható. | 
+     | **Tárgy** | Jelenlegi "Limit" értéke **korlát** | Adja meg az e-mail tárgyát. Ebben a példában győződjön meg arról, hogy tartalmazzák a **korlát** változó. | 
+     | **Törzs** | <*email-content*> | Adja meg az e-mail üzenet tartalma is szeretne küldeni. Ebben a példában adja meg bármilyen kívánt szöveg. | 
+     |||| 
 
 1. Mentse a logikai alkalmazást. Manuális tesztelése a logikai alkalmazást, a Tervező eszköztárán válassza a **futtatása**.
 
-    Miután a logikai futni kezd, kap egy e-mailt a megadott tartalommal:
+     Miután a logikai futni kezd, kap egy e-mailt a megadott tartalommal:
 
-    ![Fogadott e-mailben](./media/logic-apps-control-flow-loops/do-until-loop-sent-email.png)
+     ![Fogadott e-mailben](./media/logic-apps-control-flow-loops/do-until-loop-sent-email.png)
 
 ## <a name="prevent-endless-loops"></a>Végtelen hurkok elkerülése
 

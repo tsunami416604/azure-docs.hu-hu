@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 3/11/2019
 ms.author: victorh
-ms.openlocfilehash: b8240f69649e9bcb9a705f2c9fcbb819cf119356
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d0c5260fcc2e7ac2acbeec308c6a0cba7d6a81be
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761412"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098093"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS FAQ
 
@@ -42,7 +42,7 @@ További információkért lásd: a [Azure DNS SZOLGÁLTATÁSSZINT-szerződésü
 
 A tartomány egy egyedi nevet a tartománynévrendszerben. Például: contoso.com.
 
-Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A contoso.com tartomány például számos DNS-rekordot tartalmazhatnak. A rekordok egy levelezési kiszolgálóhoz mail.contoso.com és a egy webhely www.contoso.com tartalmazhatnak. These records are hosted in the DNS zone contoso.com.
+Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A contoso.com tartomány például számos DNS-rekordot tartalmazhatnak. A rekordok tartalmazhat egy levelezési kiszolgáló, illetve www mail.contoso.com\.contoso.com webhelyhez. These records are hosted in the DNS zone contoso.com.
 
 Egy adott tartománynév *csak egy nevét*. A DNS zone is a data resource that contains the DNS records for a domain name. Az Azure DNS használatával DNS-zónákat üzemeltethet, és kezelheti a tartomány DNS-rekordjait az Azure felületén. DNS névkiszolgálókat a DNS-lekérdezések választ az internetről is tartalmazza.
 

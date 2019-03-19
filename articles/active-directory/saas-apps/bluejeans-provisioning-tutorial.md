@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/01/2018
 ms.author: v-ant
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c2006b025c4bcf54ee2ab131e0d6a105f9f4e9f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fa740a558015b28e6d3fa7245c9041dc4167f832
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178175"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110358"
 ---
 # <a name="tutorial-configure-bluejeans-for-automatic-user-provisioning"></a>Oktatóanyag: Felhasználók automatikus átadása BlueJeans konfigurálása
 
@@ -107,9 +107,9 @@ Ez a szakasz végigvezeti az Azure AD létesítési szolgáltatás létrehozása
 
 5. Alatt a **rendszergazdai hitelesítő adataival** szakaszban adjon meg a **rendszergazdai felhasználónév**, és **rendszergazdai jelszó** BlueJeans fiókja. Példák a következő értékek a következők:
 
-    *   Az a **rendszergazdai felhasználónév** mezőben töltse fel a rendszergazdai fiók a BlueJeans bérlő felhasználóneve. Példa: admin@contoso.com.
+   * Az a **rendszergazdai felhasználónév** mezőben töltse fel a rendszergazdai fiók a BlueJeans bérlő felhasználóneve. Példa: admin@contoso.com.
 
-    *   Az a **rendszergazdai jelszó** mezőbe a jelszót a rendszergazdai felhasználónév megfelelő feltöltéséhez.
+   * Az a **rendszergazdai jelszó** mezőbe a jelszót a rendszergazdai felhasználónév megfelelő feltöltéséhez.
 
 6. 5. lépésben megjelenő mezők feltöltése, után kattintson a **kapcsolat tesztelése** annak biztosítása érdekében az Azure AD BlueJeans csatlakozhat. Ha a kapcsolat hibája esetén, győződjön meg arról, BlueJeans fiókja rendszergazdai engedélyekkel rendelkező, és próbálkozzon újra.
 

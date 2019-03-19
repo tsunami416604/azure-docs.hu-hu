@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
-ms.openlocfilehash: 389a8ac729cf5f4f95aa37654434245d08ecc87e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 90f832319fa2343003af58bd99eb64c0cbd94dd8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533629"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57894546"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>A Microsoft vevői szerződés számlázási fiók beállítása
 
@@ -47,7 +47,7 @@ A telepítés megkezdése előtt tegye a következőket javasoljuk:
 - **A számlázási Adminisztrátorok hozzáférés módosításainak ismertetése**
   - A nagyvállalati szerződésre való beléptetésről a rendszergazdák hozzáférhetnek az új fiókot a számlázási hatókörök. [Megismerheti a hozzáférés módosításainak](#understand-changes-to-your-billing-administrators-access).
 - **Váltják fel az új fiók nézetet nagyvállalati szerződés funkciók**
-  - Megtekintheti a funkciókat, a nagyvállalati szerződésre való beléptetésről, amelyek [váltotta fel az új fiók szolgáltatásainak](#review-features-replaced-by-the-new-billing-account).
+  - Tekintse meg a nagyvállalati szerződésre való beléptetésről helyébe a szolgáltatások az új fiókot a funkcióját.
 - **Leggyakoribb kérdésekre adott válaszok megtekintése**
   - Nézet [további információkat](#additional-information) további információ a telepítés.
 

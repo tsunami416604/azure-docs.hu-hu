@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 72d4a9cd9a8b9244c428d49b5270952deb6f5162
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 56c09d9c6d1249713de7c6a0428ad2a124eee157
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454487"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013072"
 ---
 # <a name="azure-storage-security-guide"></a>Az Azure Storage biztonsági útmutatóját
 
@@ -111,7 +111,7 @@ Az alábbiakban a fő pontokat kell tudni az RBAC használatával el az Azure St
 ### <a name="managing-your-storage-account-keys"></a>A Storage-fiók kulcsok kezelése
 A tárfiókkulcsok 512 bites karakterláncok hozott létre Azure-és a tárfiók nevét, például a storage-fiókban tárolt adatok objektumok elérése is használható, -blobokkal, az entitások egy táblát, üzenetsorbeli üzenetek és a egy Azure-beli megosztáson található fájlok. A tárolási fiók kulcsok szabályozza a hozzáférést az adatsík a tárfiókhoz való hozzáférés szabályozása.
 
-Minden tárfióknak a "Kulcs 1" és "2. kulcsba" említett két kulcs van a [az Azure portal](http://portal.azure.com/) és a PowerShell-parancsmagokban. Ezek helyreállíthatja segítségével manuálisan többféle módszer áll rendelkezésre, többek között, de nem csak az egyik a [az Azure portal](https://portal.azure.com/), PowerShell, az Azure CLI- vagy programozott módon, a Storage .NET ügyféloldali kódtár vagy az Azure Storage szolgáltatások segítségével REST API-T.
+Minden tárfióknak a "Kulcs 1" és "2. kulcsba" említett két kulcs van a [az Azure portal](https://portal.azure.com/) és a PowerShell-parancsmagokban. Ezek helyreállíthatja segítségével manuálisan többféle módszer áll rendelkezésre, többek között, de nem csak az egyik a [az Azure portal](https://portal.azure.com/), PowerShell, az Azure CLI- vagy programozott módon, a Storage .NET ügyféloldali kódtár vagy az Azure Storage szolgáltatások segítségével REST API-T.
 
 Nincsenek újragenerálni a tárfiókkulcsokat számtalan.
 
@@ -187,7 +187,7 @@ Ezenkívül azt is megadhatja, hogy SAS használatával kérelmek egy adott IP-c
 #### <a name="definition-of-a-shared-access-signature"></a>Közös hozzáférésű Jogosultságkód meghatározása
 Egy közös hozzáférésű Jogosultságkód olyan lekérdezési paraméterek hozzáfűzésével mutat az erőforrás URL-címre
 
-amely ismerteti a hozzáférés engedélyezett, és mennyi ideig, amelyhez a hozzáférés engedélyezett. Íme egy példa; Ez az URI blob írásvédett hozzáférést biztosít az öt perc alatt. Vegye figyelembe, hogy a SAS lekérdezési paramétert kell URL-kódolású, például a kettőspont (:) vagy 20 %-terület % 3A.
+amely ismerteti a hozzáférés engedélyezett, és mennyi ideig, amelyhez a hozzáférés engedélyezett. Íme egy példa; Ez az URI blob írásvédett hozzáférést biztosít az öt perc alatt. Vegye figyelembe, hogy SAS lekérdezési paramétereket kell URL-kódolású, például a % 3A a kettőspont (:) vagy szóközzel 20 %.
 
 ```
 http://mystorage.blob.core.windows.net/mycontainer/myblob.txt (URL to the blob)
@@ -244,7 +244,7 @@ További információt a közös hozzáférési aláírások és a tárolt hozz�
 
     Ez a cikk a SAS-modell példák a közös hozzáférésű Jogosultságkódokat egy leírását tartalmazza, és az ajánlott eljárás javaslatok SAS használja. Azt is ismertetjük, a megadott engedélyeket visszavonását.
 
-* Hitelesítés
+* Authentication
 
   * [Az Azure Storage szolgáltatásainak hitelesítése](https://msdn.microsoft.com/library/azure/dd179428.aspx)
 * A közös hozzáférésű Jogosultságkódot első lépéseit ismertető Oktatóanyaga

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 6d86d4c03a41834322c98438958c0b9e87e6025c
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 9faa38a23b2039902366e5b885ab73c68a2a3d80
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213518"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076020"
 ---
 # <a name="azure-application-offer"></a>Az ajánlat Azure-alkalmazás
 
@@ -58,15 +58,15 @@ Az alábbi ábrán egy Azure-alkalmazás az ajánlat közzétételi magas szint�
 
 Az Azure-alkalmazás-ajánlat közzétételéhez a magas szintű lépései a következők:
 
-0. Megfelel a [Előfeltételek](./cpp-prerequisites.md) (nem látható) – Győződjön meg arról, hogy teljesül-e az üzleti és technikai követelmények, egy Azure-alkalmazáshoz az Azure piactéren való közzétételéhez. 
+1. Megfelel a [Előfeltételek](./cpp-prerequisites.md) (nem látható) – Győződjön meg arról, hogy teljesül-e az üzleti és technikai követelmények, egy Azure-alkalmazáshoz az Azure piactéren való közzétételéhez. 
 
 1. [Az ajánlat létrehozásához](./cpp-create-offer.md) – az ajánlat részletes információkat tartalmaznak. Ezen információk közé tartozik: az ajánlat leírása, marketing-adategység-specifikációi, anyagokat és támogatási információk.
 
-2. [Hozzon létre vagy meglévő üzleti és technikai eszközök gyűjtése](./cpp-create-technical-assets.md) – az üzleti eszközök (jogi dokumentumok és marketinganyagokat) és a kapcsolódó megoldás technikai eszközök létrehozása.
+1. [Hozzon létre vagy meglévő üzleti és technikai eszközök gyűjtése](./cpp-create-technical-assets.md) – az üzleti eszközök (jogi dokumentumok és marketinganyagokat) és a kapcsolódó megoldás technikai eszközök létrehozása.
 
-3. [A Termékváltozat létrehozása](./cpp-skus-tab.md) – a termékváltozat(ok) társított az ajánlat létrehozása. Egy egyedi Termékváltozat megadása kötelező az egyes lemezképek szeretné közzétenni.
+1. [A Termékváltozat létrehozása](./cpp-skus-tab.md) – a termékváltozat(ok) társított az ajánlat létrehozása. Egy egyedi Termékváltozat megadása kötelező az egyes lemezképek szeretné közzétenni.
 
-4. Igazolja és [az ajánlat közzététele](./cpp-publish-offer.md) – az ajánlat és a technikai eszközök befejezése után az ajánlatot küldhet. Az elküldés során először a közzétételi folyamat. Ez a folyamat során a megoldás vizsgálják, érvényesíti, minősített, majd "élesíti" az Azure Marketplace-en.
+1. Igazolja és [az ajánlat közzététele](./cpp-publish-offer.md) – az ajánlat és a technikai eszközök befejezése után az ajánlatot küldhet. Az elküldés során először a közzétételi folyamat. Ez a folyamat során a megoldás vizsgálják, érvényesíti, minősített, majd "élesíti" az Azure Marketplace-en.
 
 ## <a name="next-steps"></a>További lépések
 

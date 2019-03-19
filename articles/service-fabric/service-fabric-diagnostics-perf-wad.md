@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 12ea25b9f1b9f13c153348c285ee6641a69909f0
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 0ab14d41c149ec6e0ce76d24afb0e88a6af53935
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823178"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884557"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>A Windows Azure Diagnostics bővítményt az alkalmazásteljesítmény-figyelés
 
@@ -192,15 +192,15 @@ Teljesítményszámlálók adatainak összegyűjtése a WAD-n keresztül, akkor 
  >[!NOTE]
  >Bár használhatja `*` teljesítményszámlálókat hasonlóképpen nevesített csoportok megadásához számlálókat küldése egy fogadó keresztül (az Application Insightsba) szükséges, hogy azok külön-külön deklarált. 
 
-4. Miután hozzáadta a megfelelő teljesítményszámlálókat kell gyűjteni, a fürt erőforrásai frissíteni, hogy ezek a módosítások megjelennek a futó fürt szeretne. Mentse a módosított `template.json` , és nyissa meg a powershellt. A fürt használatával frissítheti `New-AzureRmResourceGroupDeployment`. A hívás szükség van az az erőforráscsoport, a frissített sablon fájlt, és a paramétereket tartalmazó fájlt, és kérni fogja, hogy a megfelelő módosításokat frissített erőforrások Resource Manager. Miután bejelentkezett a fiókjába, és a megfelelő előfizetéshez tartozik, használja a következő parancsot a frissítés futtatásához:
+1. Miután hozzáadta a megfelelő teljesítményszámlálókat kell gyűjteni, a fürt erőforrásai frissíteni, hogy ezek a módosítások megjelennek a futó fürt szeretne. Mentse a módosított `template.json` , és nyissa meg a powershellt. A fürt használatával frissítheti `New-AzureRmResourceGroupDeployment`. A hívás szükség van az az erőforráscsoport, a frissített sablon fájlt, és a paramétereket tartalmazó fájlt, és kérni fogja, hogy a megfelelő módosításokat frissített erőforrások Resource Manager. Miután bejelentkezett a fiókjába, és a megfelelő előfizetéshez tartozik, használja a következő parancsot a frissítés futtatásához:
 
     ```sh
     New-AzureRmResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
     ```
 
-5. A frissítés befejeződése után jelennek meg (attól függően, hogy-e az első üzembe helyezés és az erőforráscsoport mérete 15-45 perc között vesz igénybe), WAD kell a teljesítményszámlálók gyűjtése és elküldi azokat a tábla neve A fürthöz társított tárfiókban WADPerformanceCountersTable. Tekintse meg az Application Insights által a teljesítményszámlálók [a Resource Manager-sablon hozzáadása a mesterséges Intelligencia fogadó](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template).
+1. A frissítés befejeződése után jelennek meg (attól függően, hogy-e az első üzembe helyezés és az erőforráscsoport mérete 15-45 perc között vesz igénybe), WAD kell a teljesítményszámlálók gyűjtése és elküldi azokat a tábla neve A fürthöz társított tárfiókban WADPerformanceCountersTable. Tekintse meg az Application Insights által a teljesítményszámlálók [a Resource Manager-sablon hozzáadása a mesterséges Intelligencia fogadó](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template).
 
 ## <a name="next-steps"></a>További lépések
 * A fürt több teljesítményszámlálót gyűjt. Lásd: [teljesítmény-mérőszámok](service-fabric-diagnostics-event-generation-perf.md) listája számlálókat kell gyűjteni.
 * [Használat monitorozása és diagnosztizálása egy Windows virtuális gép és az Azure Resource Manager-sablonokkal](../virtual-machines/windows/extensions-diagnostics-template.md) módosításokat továbbá az `WadCfg`, beleértve a diagnosztikai adatok küldése további tárfiókok konfigurálásáról.
-* Látogasson el a [WadCfg builder](http://azure.github.io/azure-diagnostics-tools/config-builder/) hozhat létre egy teljesen új sablont, és ellenőrizze, hogy a szintaxisa helyes.
+* Látogasson el a [WadCfg builder](https://azure.github.io/azure-diagnostics-tools/config-builder/) hozhat létre egy teljesen új sablont, és ellenőrizze, hogy a szintaxisa helyes.

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: szark
-ms.openlocfilehash: ce2b9811baffea85cfa9a542fb5f93652daf39c8
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 6ef0a9f6efbf5f8398ba242150b2eb6102875f7e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976450"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000322"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Debian-alapú VHD előkészítése Azure-beli használatra
 ## <a name="prerequisites"></a>Előfeltételek
@@ -34,7 +34,7 @@ Ez a szakasz azt feltételezi, hogy már telepítette a Debian Linux operációs
 * Az Azure-ban minden virtuális merevlemezek rendelkeznie kell egy virtuális méret 1 MB igazítva. Nyers lemezről történő konvertáláskor a virtuális merevlemez, ha biztosítania kell, hogy a nyers lemez mérete nagyobb-e az átalakítás előtt 1MB többszöröse. További információkért lásd: [Linux telepítési jegyzetek](create-upload-generic.md#general-linux-installation-notes).
 
 ## <a name="use-azure-manage-to-create-debian-vhds"></a>Használja a Debian virtuális merevlemezek létrehozása az Azure-kezelése
-Eszközök is elérhetők az Azure-hoz, a Debian virtuális merevlemezek létrehozásának például a [azure-kezelése](https://github.com/credativ/azure-manage) parancsfájlokat [Credativ](http://www.credativ.com/). Ez a teljesen új lemezkép létrehozása és az ajánlott eljárás. Például hozhat létre egy Debian 8 virtuális merevlemez futtassa a következő parancsok töltse le a `azure-manage` segédprogram (és a függőségek), és futtassa a `azure_build_image` parancsfájlt:
+Eszközök is elérhetők az Azure-hoz, a Debian virtuális merevlemezek létrehozásának például a [azure-kezelése](https://github.com/credativ/azure-manage) parancsfájlokat [Credativ](https://www.credativ.com/). Ez a teljesen új lemezkép létrehozása és az ajánlott eljárás. Például hozhat létre egy Debian 8 virtuális merevlemez futtassa a következő parancsok töltse le a `azure-manage` segédprogram (és a függőségek), és futtassa a `azure_build_image` parancsfájlt:
 
     # sudo apt-get update
     # sudo apt-get install git qemu-utils mbr kpartx debootstrap

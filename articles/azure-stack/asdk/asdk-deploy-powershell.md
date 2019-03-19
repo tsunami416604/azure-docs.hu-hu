@@ -17,12 +17,12 @@ ms.date: 02/08/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: 0fb3e9cd193e570a965d6bbd3e16c86dc39de350
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: e8d3653049b0160fac155ebc49329c17cb27224f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984273"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58014387"
 ---
 # <a name="deploy-the-asdk-from-the-command-line"></a>A parancssorból a ASDK üzembe helyezése
 A ASDK olyan kiértékeléséhez, és mutassa be az Azure Stack-szolgáltatások és szolgáltatások telepítését, tesztelési és fejlesztési környezet. Letöltés működik, és szüksége a környezet hardver előkészítése, és néhány (Ez több óráig fog tartani) parancsfájlok futtatása. Ezt követően bejelentkezhet a rendszergazdai és felhasználói portált az Azure Stack használatának megkezdéséhez.
@@ -138,6 +138,7 @@ Ha a környezet nem rendelkezik DHCP-kompatibilis, majd meg kell adnia a követk
 ```
 
 ### <a name="asdk-installazurestackpocps1-optional-parameters"></a>ASDK InstallAzureStackPOC.ps1 választható paraméterek:
+
 |Paraméter|Kötelező/választható|Leírás|
 |-----|-----|-----|
 |AdminPassword|Szükséges|A helyi rendszergazda fiók és minden egyéb felhasználói fiók beállítása development kit központi telepítésének részeként létrehozott összes virtuális gépet. Ezt a jelszót meg kell egyeznie a jelenlegi helyi rendszergazda jelszavát, a gazdagépen.|

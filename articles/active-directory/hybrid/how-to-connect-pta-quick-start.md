@@ -16,12 +16,12 @@ ms.date: 02/19/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a282ef88a5112593d4d8b9e304ec6ad03f44787c
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 51fc93f9508bada40885e41b39e8a87cf4e0bf3c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415867"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58101006"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Az Azure Active Directory átmenő hitelesítés: Első lépések
 
@@ -68,7 +68,7 @@ Győződjön meg arról, hogy az alábbi előfeltételek teljesülnek.
      Ha a tűzfal szabályok alapján származó kikényszeríti, nyissa meg ezeket a portokat, a forgalom hálózati szolgáltatásként futó Windows-szolgáltatások.
    - Ha a tűzfal vagy proxy lehetővé teszi a DNS engedélyezéskor engedélyezett kapcsolatokat  **\*. msappproxy.net** és  **\*. servicebus.windows.net**. Való hozzáférés engedélyezése, ha nem, akkor a [Azure adatközpont IP-címtartományait](https://www.microsoft.com/download/details.aspx?id=41653), amely hetente frissül.
    - A hitelesítési ügynökök hozzáférésre van szükségük **login.windows.net** és **login.microsoftonline.com** kezdeti regisztráció. Nyissa meg a tűzfal, valamint az URL-címeket.
-   - A tanúsítványok ellenőrzését, a következő URL-címek feloldása: **mscrl.microsoft.com:80**, **crl.microsoft.com:80**, **ocsp.msocsp.com:80**, és  **www.microsoft.com:80**. Mivel az URL-címek szolgálnak más Microsoft-termékekkel, előfordulhat, hogy már ezen URL-címek feloldva a tanúsítványok ellenőrzését.
+   - A tanúsítványok ellenőrzését, a következő URL-címek feloldása: **mscrl.microsoft.com:80**, **crl.microsoft.com:80**, **ocsp.msocsp.com:80**, és **www \.microsoft.com:80**. Mivel az URL-címek szolgálnak más Microsoft-termékekkel, előfordulhat, hogy már ezen URL-címek feloldva a tanúsítványok ellenőrzését.
 
 ## <a name="step-2-enable-the-feature"></a>2. lépés: A funkció engedélyezése
 

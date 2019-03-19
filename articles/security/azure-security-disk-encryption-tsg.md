@@ -1,18 +1,18 @@
 ---
 title: Hibaelhárítás – IaaS virtuális gépekhez az Azure Disk Encryption |} A Microsoft Docs
 description: Ez a cikk a hibaelhárítási tippek a Microsoft Azure Disk Encryption a Windows és Linux rendszerű IaaS virtuális gépek.
-author: mestew
+author: msmbaldwin
 ms.service: security
 ms.topic: article
-ms.author: mstewart
-ms.date: 03/04/2019
+ms.author: mbaldwin
+ms.date: 03/12/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7e2fa8c526a1016e5b8157f5f8b3ecb38bf8ef15
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 48cf0f2e219d141a039f508f0ea948aa5c78b882
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779963"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838272"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Az Azure Disk Encryption – hibaelhárítási útmutató
 
@@ -112,15 +112,15 @@ A probléma megkerüléséhez másolja a következő négy fájlokat egy Windows
    \windows\system32\en-US\bdehdcfg.exe.mui
    ```
 
-   2. Írja be a következő parancsot:
+1. Írja be a következő parancsot:
 
    ```
    bdehdcfg.exe -target default
    ```
 
-   3. Ez a parancs létrehoz egy 550 MB-os rendszerpartíciót. Indítsa újra a rendszert.
+1. Ez a parancs létrehoz egy 550 MB-os rendszerpartíciót. Indítsa újra a rendszert.
 
-   4. Ellenőrizze a köteteket, és folytathatja a DiskPart használatával.  
+1. Ellenőrizze a köteteket, és folytathatja a DiskPart használatával.  
 
 Példa:
 

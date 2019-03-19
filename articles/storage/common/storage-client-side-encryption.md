@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/20/2017
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 2f646df3cab0320b574023cd543015921c640cab
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c8f9b17bf5b572128348b22de62566ba06d5d766
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478321"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992408"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>A Microsoft Azure Storage ügyféloldali titkosítása és az Azure Key Vault
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -48,10 +48,10 @@ Visszafejtési keresztül a boríték módszer a következő módon működik:
 4. A tartalom titkosítási kulcs (CEK) szolgál majd visszafejteni a titkosított adatokat.
 
 ## <a name="encryption-mechanism"></a>Titkosítási mechanizmus
-A storage ügyféloldali kódtára használ [AES](http://en.wikipedia.org/wiki/Advanced_Encryption_Standard) annak érdekében, hogy a felhasználói adatok titkosításához. Pontosabban a [Cipher Block Chaining (CBC)](http://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) AES mód. Minden egyes service működésének némileg eltér, így azok itt ismertetjük.
+A storage ügyféloldali kódtára használ [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) annak érdekében, hogy a felhasználói adatok titkosításához. Pontosabban a [Cipher Block Chaining (CBC)](https://en.wikipedia.org/wiki/Block_cipher_mode_of_operation#Cipher-block_chaining_.28CBC.29) AES mód. Minden egyes service működésének némileg eltér, így azok itt ismertetjük.
 
 ### <a name="blobs"></a>Blobok
-Az ügyféloldali kódtár jelenleg csak a teljes blobok titkosítását. Titkosítás támogatott, ha a felhasználók használhatják a **UploadFrom*** metódusokat vagy a **OpenWrite** metódus. A letöltések, egyaránt teljes és a tartomány letöltések támogatottak.
+Az ügyféloldali kódtár jelenleg csak a teljes blobok titkosítását. Titkosítás támogatott, ha a felhasználók használhatják a **UploadFrom** módszerek vagy a **OpenWrite** metódust. A letöltések, egyaránt teljes és a tartomány letöltések támogatottak.
 
 Titkosítás során az ügyféloldali kódtár hozzon létre egy "véletlenszerű inicializálási vektor (IV) 16 bájtos, és a egy véletlenszerű tartalom titkosítási kulcs (CEK) 32 bájt, és elvégezni a blob típusú adatok ezen információk alapján boríték-titkosítást. A burkolt CEK és néhány további titkosítási metaadatok majd tárolódnak, mivel a szolgáltatás a titkosított BLOB metaadatait a blob.
 
@@ -60,9 +60,9 @@ Titkosítás során az ügyféloldali kódtár hozzon létre egy "véletlenszer�
 > 
 > 
 
-Egy titkosított blob letöltése magában foglalja a használatával a teljes blob tartalmának beolvasása a **DownloadTo x /** BlobReadStream ** egyszerűsített metódusok. A burkolt CEK kicsomagolják, és együtt a IV (tárolt blob metaadatai, ebben az esetben) segítségével a felhasználók számára a visszafejtett adatokat adja vissza.
+Egy titkosított blob letöltése magában foglalja a használatával a teljes blob tartalmának beolvasása a **DownloadTo**/**BlobReadStream** egyszerűsített metódusok. A burkolt CEK kicsomagolják, és együtt a IV (tárolt blob metaadatai, ebben az esetben) segítségével a felhasználók számára a visszafejtett adatokat adja vissza.
 
-Egy tetszőleges címtartományt letöltése (**DownloadRange*** módszerek) a titkosított BLOB magában foglalja a kisebb mennyiségű használható sikerült visszafejteni a kért további adatok lekérése érdekében a felhasználók által biztosított tartomány beállítása tartomány.
+Egy tetszőleges címtartományt letöltése (**DownloadRange** módszerek) a titkosított BLOB magában foglalja a kisebb mennyiségű használható sikerült visszafejteni a kért további adatok lekérése érdekében a felhasználók által biztosított tartomány beállítása tartomány.
 
 Minden blob-típusok (blokkblobok, lapblobok és hozzáfűző blobok) is titkosítva/fejthetők vissza a séma használatával.
 
@@ -102,7 +102,7 @@ A kötegelt műveletek az azonos KEK használható között, hogy a kötegelt m�
 > Az entitások titkosítva vannak, mivel a titkosított szűrő lekérdezéseket nem futtatható.  Ha meg, eredmények helytelen lesz, mert a szolgáltatás lenne összehasonlítani kívánt titkosított adatok nem titkosított adatok.
 > 
 > 
-Lekérdezési műveletek végrehajtásához meg kell adnia egy kulcs feloldó, amely tudja feloldani az eredményhalmaz összes kulcsot. Ha a lekérdezés eredménye található entitás nem tudja feloldani a szolgáltatóra, az ügyféloldali kódtár kivételt fogja kijelezni hiba. Minden olyan lekérdezéshez, amely végrehajtja a kiszolgálóoldali leképezések az ügyféloldali kódtár adnak hozzá metaadat-tulajdonságot (_ClientEncryptionMetadata1 és _ClientEncryptionMetadata2) a speciális titkosítás alapértelmezés szerint a kijelölt oszlopokban.
+> Lekérdezési műveletek végrehajtásához meg kell adnia egy kulcs feloldó, amely tudja feloldani az eredményhalmaz összes kulcsot. Ha a lekérdezés eredménye található entitás nem tudja feloldani a szolgáltatóra, az ügyféloldali kódtár kivételt fogja kijelezni hiba. Minden olyan lekérdezéshez, amely végrehajtja a kiszolgálóoldali leképezések az ügyféloldali kódtár adnak hozzá metaadat-tulajdonságot (_ClientEncryptionMetadata1 és _ClientEncryptionMetadata2) a speciális titkosítás alapértelmezés szerint a kijelölt oszlopokban.
 
 ## <a name="azure-key-vault"></a>Azure Key Vault
 Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások által használt titkosítási kulcsok és titkos kulcsok védelmében. Az Azure Key Vaulttal, felhasználók titkosítsa a kulcsokat és titkos kulcsokat (például hitelesítési kulcsokat, a tárfiók kulcsait, az adattitkosítási kulcsokat. PFX-fájlok és jelszavak) hardveres biztonsági modulokban (HSM) által védett kulcsok használatával. További információkért lásd: [Mi az Azure Key Vault?](../../key-vault/key-vault-whatis.md).
@@ -243,5 +243,5 @@ Vegye figyelembe, hogy a titkosított további teljesítménybeli terhelést oko
 ## <a name="next-steps"></a>További lépések
 * [Oktatóanyag: Az Azure Key Vault használatával a Microsoft Azure Storage blobok titkosítása és visszafejtése](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
 * Töltse le a [Azure Storage ügyféloldali kódtára a .NET NuGet-csomag](https://www.nuget.org/packages/WindowsAzure.Storage)
-* Töltse le az Azure Key Vault NuGet [Core](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/), [ügyfél](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/), és [bővítmények](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/) csomagok  
+* Töltse le az Azure Key Vault NuGet [Core](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/), [ügyfél](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/), és [bővítmények](https://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/) csomagok  
 * Látogasson el a [az Azure Key Vault-dokumentáció](../../key-vault/key-vault-whatis.md)

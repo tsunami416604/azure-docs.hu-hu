@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/11/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 17e51c91d2857ac91b0ebf998c016ebcf56c0de0
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 7c6f0a6371b38f0271237db0f7d80b831ecc145c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244783"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088706"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>A StorSimple Virtual Array üzembe helyezése – előkészítése az Azure Portalon
 
@@ -155,15 +155,15 @@ Hajtsa végre a következő lépéseket a [az Azure portal](https://ms.portal.az
 3. Kattintson a **Hozzáadás** parancsra.
 4. Az a **tárfiók hozzáadása** panelen tegye a következőket:
    
-    1. A **előfizetés**válassza **aktuális**.
+   1. A **előfizetés**válassza **aktuális**.
    
-    2. Adja meg az Azure storage-fiók nevét.
+   2. Adja meg az Azure storage-fiók nevét.
    
-    3. Válassza ki **engedélyezése** a StorSimple-eszköz és a felhő közötti hálózati kommunikációhoz biztonságos csatornát létrehozni. Válassza ki **letiltása** csak akkor, ha a magánfelhő belül működik.
+   3. Válassza ki **engedélyezése** a StorSimple-eszköz és a felhő közötti hálózati kommunikációhoz biztonságos csatornát létrehozni. Válassza ki **letiltása** csak akkor, ha a magánfelhő belül működik.
    
-    4. Kattintson a **Hozzáadás** parancsra. A storage-fiók sikeres létrehozása után értesítést kap.<br></br>
+   4. Kattintson a **Hozzáadás** parancsra. A storage-fiók sikeres létrehozása után értesítést kap.<br></br>
    
-     ![Egy meglévő tárfiók-hitelesítő adat hozzáadása](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
+      ![Egy meglévő tárfiók-hitelesítő adat hozzáadása](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 
 ## <a name="next-step"></a>Következő lépés
 

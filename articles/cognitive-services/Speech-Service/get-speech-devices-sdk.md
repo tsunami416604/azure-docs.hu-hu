@@ -1,7 +1,7 @@
 ---
 title: Beszédeszközök SDK letöltése
 titleSuffix: Azure Cognitive Services
-description: A beszédfelismerési szolgáltatás együttműködik számos különböző hang forrásai és eszközei. Most a következő szintre való megfelelést kiváltó hardver- és beszédfelismerés alkalmazásait is igénybe vehet. Ebben a cikkben fogja elsajátíthatja a beszédfelismerési Devices SDK-val való hozzáférést, és kezdje el a fejlesztést.
+description: A beszédszolgáltatások együttműködve számos hang forrásai és eszközei. Most a következő szintre való megfelelést kiváltó hardver- és beszédfelismerés alkalmazásait is igénybe vehet. Ebben a cikkben fogja elsajátíthatja a beszédfelismerési Devices SDK-val való hozzáférést, és kezdje el a fejlesztést.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 905f3dde7c9c728c2a57858578cef8cff2777d81
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3c5874625ee9d1932c401238c1586ad89d5d206d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872152"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57856722"
 ---
 # <a name="get-the-cognitive-services-speech-devices-sdk"></a>A Cognitive Services beszédfelismerő eszközök SDK beszerzése
 

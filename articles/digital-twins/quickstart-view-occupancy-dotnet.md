@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc seodec18
 ms.date: 12/17/2018
 ms.author: alinast
-ms.openlocfilehash: 9426fb1df38797ffbb9cc457ba4fe9eb62cfba40
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 4c41fbaa00dc3460df3f94433428c448a7b41250
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544273"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089699"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>Gyors útmutató: Elérhető az Azure digitális Twins teremkeresés
 
@@ -115,8 +115,8 @@ Az érzékelő minta szimulálja véletlenszerű adatértékek két érzékelő 
 1. Tekintse meg a parancssort, és az érzékelő adatokat parancssor egymás mellett.
 
     Egy parancssorból adatokat küld a szimulált mozgásban lévő adatoknak egyaránt és szén-dioxid digitális Twins öt másodpercenként. A többi parancs beolvassa a diagramra a valós idejű véletlenszerű szimulált adatok alapján friss vezeték nélkül regisztrálja az elérhető termek megállapítása. Ezek a feltételek egyik közel valós időben a legutóbb elküldött érzékelőktől kapott adatok alapján megjeleníti:
-    - Friss levegővel rendelkező szabad szobák.
-    - Foglalt vagy nem megfelelő levegővel rendelkező terem.
+   - Friss levegővel rendelkező szabad szobák.
+   - Foglalt vagy nem megfelelő levegővel rendelkező terem.
 
      ![Friss levegővel rendelkező szabad szobák lekérése][3]
 

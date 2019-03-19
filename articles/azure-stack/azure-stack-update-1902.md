@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2019
+ms.date: 03/13/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 03/07/2019
-ms.openlocfilehash: 66dfdf3a88a4bacdc118fed00d79f02b22da7869
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.lastreviewed: 03/13/2019
+ms.openlocfilehash: 4b6ad06f50962dd2e29caf9543d82912de338fd2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792463"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57875821"
 ---
 # <a name="azure-stack-1902-update"></a>Azure Stack 1902 frissítése
 
@@ -57,7 +57,7 @@ Az Azure Stack-gyorsjavítások csak alkalmazhatók az Azure Stackkel integrált
 ## <a name="prerequisites"></a>Előfeltételek
 
 > [!IMPORTANT]
-- Telepítse a [legújabb Azure Stack-gyorsjavítás](#azure-stack-hotfixes) esetében (ha vannak) 1901 1902 frissítése előtt.
+> - Telepítse a [legújabb Azure Stack-gyorsjavítás](#azure-stack-hotfixes) esetében (ha vannak) 1901 1902 frissítése előtt.
 
 - A frissítés telepítésének megkezdése előtt futtassa [Test-AzureStack](azure-stack-diagnostic-test.md) az Azure Stack állapotának érvényesítéséhez, és hárítsa el a működési hibákat talált a következő paraméterekkel, többek között az összes figyelmeztetések és hibák esetén. Emellett tekintse át az aktív riasztások, és oldja meg az esetleges beavatkozást igénylő:
 
@@ -84,23 +84,49 @@ Az Azure Stack-gyorsjavítások csak alkalmazhatók az Azure Stackkel integrált
 1398818 3685138, 3734779: ECE exception logging, VirtualMachine ConfigurePending should take node name from execution context   PNU
 1381018 [1902] 3610787 - Infra VM creation should fail if the ClusterGroup already exists   PNU
 -->
-- Csomag integritás és a biztonsági, valamint offline támogatunk könnyebb kezelhetőség javítása érdekében a Microsoft megváltozott a csomag formátuma .exe és .bin fájlt egy .zip-fájlt. Az új formátum hozzáadja a kicsomagolása folyamat, amely időnként okozhat a frissítés előkészítése stagnálni további megbízhatóságát. A csomag formátuma is vonatkozik, az OEM-csomagok frissítése.
-- Test-AzureStack futtatásakor az Azure Stack-kezelői élmény javításához operátorok most már egyszerűen használhatják, "Test-AzureStack-csoport UpdateReadiness" figyelésekor tíz további paraméterek átadása egy Belefoglalás utasítás után.
+- Csomag integritás és a biztonsági és offline támogatunk könnyebb kezelhetőség javítása érdekében a Microsoft megváltozott a csomag formátuma .exe és .bin fájlt egy .zip-fájlt. Az új formátum további megbízhatóság hozzáadása a kicsomagolása folyamat, amely időnként okozhat a frissítés előkészítése leáll. A csomag formátuma is vonatkozik, az OEM-csomagok frissítése.
+
+- Az Azure Stack-kezelői élmény javításához futtatásakor **Test-AzureStack**, operátorok segítségével mostantól egyszerűen `Test-AzureStack -Group UpdateReadiness` után tíz további paraméterek átadása helyett egy `include` utasítást. Példa:
 
   ```powershell
-    Test-AzureStack -Group UpdateReadiness  
-  ```  
-  
-- A teljes megbízhatóságot és alapvető infrastruktúra-szolgáltatások rendelkezésre állásának javítása a frissítési folyamat során, a natív frissítés erőforrás-szolgáltató, a frissítési művelet terv részeként érzékeli, és igény szerint az automatikus globális szervizelések meghívása. Globális szervizelési "javítás" a munkafolyamatok a következők:
-    - A virtuális gépeket, amelyek nem optimális állapotban van, és próbálja meg őket igény szerint ellenőrzése 
-    - Ellenőrizze az SQL-szolgáltatással kapcsolatos problémák, a vezérlő terv részeként, és próbálja meg őket igény szerint
-    - A szoftveres terheléselosztó (SLB) szolgáltatás állapotának ellenőrzése során, a hálózati vezérlő (NC), és próbálja meg őket igény szerint
-    - Ellenőrizze a hálózati vezérlő (NC) szolgáltatás állapotát, és próbálja meg helyreállítani igény szerint
-    - Ellenőrizze a válságkezelési helyreállítási konzol szolgáltatás (ERCS) service fabric csomópontok állapotát, és javítsa ki őket igény szerint
-    - Ellenőrizze a XRP service fabric-csomópont állapotát, és javítsa ki őket igény szerint
-    - Ellenőrizze az Azure-konzisztens tároló (ACS) service fabric csomópontok állapotát, és javítsa ki őket igény szerint
+  Test-AzureStack -Group UpdateReadiness  
+  ```
 
+- A frissítési folyamat során a teljes megbízhatóságot és rendelkezésre állást az alapvető infrastruktúra-szolgáltatások javításához a natív erőforrás-szolgáltató frissítése, a frissítési művelet terv részeként lesz észlelése és automatikus globális szervizelések meghívása, igény szerint. Globális szervizelési "javítás" a munkafolyamatok a következők:
 
+  - Ellenőrizze, hogy a virtuális gépeket, amelyek nem optimális állapotban van, és próbálja meg őket igény szerint.
+  - SQL-szolgáltatási problémák keresése a vezérlő terv részeként, és próbálja meg őket igény szerint.
+  - A szoftveres terheléselosztó (SLB) szolgáltatás állapotának ellenőrzése során, a hálózati vezérlő (NC), és próbálja meg őket igény szerint.
+  - Ellenőrizze a hálózati vezérlő (NC) szolgáltatás állapotát, és próbálja meg helyreállítani igény szerint.
+  - Ellenőrizze a válságkezelési helyreállítási konzol szolgáltatás (ERCS) service fabric csomópontok állapotát, és javítsa ki őket igény szerint.
+  - Ellenőrizze a XRP service fabric-csomópont állapotát, és szükség esetén javítsa ki őket.
+  - Ellenőrizze az Azure-konzisztens tároló (ACS) service fabric csomópontok állapotát, és javítsa ki őket igény szerint.
+
+<!-- 1460884    Hotfix: Adding StorageController service permission to talk to ClusterOrchestrator  Add node -->
+- Fejlesztések a megbízhatóságot, egyszerű kapacitásbővítést téve lehetővé során a csomópont hozzáadása a skálázási egység állapot "Expanding tároló" futó állapotban történő váltáskor.    
+
+<!-- 
+1426690 [SOLNET] 3895478-Get-AzureStackLog_Output got terminated in the middle of network log   Diagnostics
+1396607 3796092: Move Blob services log from Storage role to ACSBlob role to reduce the log size of Storage Diagnostics
+1404529 3835749: Enable Group Policy Diagnostic Logs    Diagnostics
+1436561 Bug 3949187: [Bug Fix] Remove AzsStorageSvcsSummary test from SecretRotationReadiness Test-AzureStack flag  Diagnostics
+1404512 3849946: Get-AzureStackLog should collect all child folders from c:\Windows\Debug   Diagnostics 
+-->
+- Fejlesztések az Azure stack diagnosztikai eszközök napló gyűjtése megbízhatóságának és teljesítményének javítása érdekében. További naplózás a hálózati és identitáskezelési szolgáltatásokat. 
+
+<!-- 1384958    Adding a Test-AzureStack group for Secret Rotation  Diagnostics -->
+- Megbízhatóságát fejlesztései **Test-AzureStack** titkos Elforgatás készenléti teszt.
+
+<!-- 1404751    3617292: Graph: Remove dependency on ADWS.  Identity -->
+- Továbbfejlesztett AD Graph megbízhatóságának növelése, az ügyfél Active Directory-környezetbe való kommunikáció során.
+
+<!-- 1391444    [ISE] Telemetry for Hardware Inventory - Fill gap for hardware inventory info   System info -->
+- Hardver fejlesztései készlet gyűjtemény **Get-AzureStackStampInformation**.
+
+- ERCS infrastruktúrán futó műveletek megbízhatóságának javítása érdekében a memória ERCS példányonként növeli a 8 GB-tól 12 GB. Az Azure Stackkel integrált rendszerek telepítés esetén az eredmény egy 12 GB-os növekedést teljes.
+
+> [!IMPORTANT]
+> Ahhoz, hogy a javítási és frissítési folyamat a lehető legkevesebb bérlői állásidőt eredményez, ellenőrizze, hogy az Azure Stack-blokk 12 GB-nál több szabad terület a rendelkezik a **kapacitás** panelen. Láthatja, hogy ez a memória növelése megjelennek a **kapacitás** panelen a frissítés sikeres telepítése után.
 
 ## <a name="common-vulnerabilities-and-exposures"></a>Gyakori biztonsági rések és besorolási
 
@@ -195,9 +221,18 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 
 - Egy Ubuntu 18.04 létrehozott virtuális gép SSH-engedélyezési engedélyezve van a nem teszi lehetővé, hogy jelentkezzen be az SSH-kulcsok használata. Áthidaló megoldásként használja a Linux-bővítményt a Virtuálisgép-hozzáférés SSH-kulcsok megvalósításához a kiépítés után, vagy jelszóalapú hitelesítés használatára.
 
-- A build 1902, a virtuális gép 8 GB-tól 12 GB-ra nőtt a ERCS infrastruktúra által igényelt memória. Az egy ASDK az eredmény egy 4 GB-os növekedést. Az Azure Stackkel integrált rendszerek telepítésen egy 12 GB-os növelését.
+- Ha nem rendelkezik egy életciklus állomás (HLH): Build 1902, mielőtt kellett állítani a csoportházirend **Számítógép konfigurációja\A Windows beállításai\Biztonsági beállítások\Helyi házirend\Biztonsági beállítások** való **LM- és NTLM – használja NTLMv2 munkamenet, haegyeztetése**. Build 1902, mivel azt hagyja **nincs definiálva** vagy - **csak a válasz küldése NTLMv2** (azaz az alapértelmezett érték). Ellenkező esetben nem tudott létrehozni egy távoli PowerShell-munkamenetet, és kapni fog egy **a hozzáférés megtagadva** hiba:
 
-   Ahhoz, hogy a javítási és frissítési folyamat a lehető legkevesebb bérlői állásidőt eredményez, ellenőrizze, hogy az Azure Stack-blokk 12 GB-nál több szabad terület a rendelkezik a **kapacitás** panelen. Láthatja, hogy ez a memória növelése megjelennek a **kapacitás** panelen a frissítés sikeres telepítése után.
+   ```shell
+   PS C:\Users\Administrator> $session = New-PSSession -ComputerName x.x.x.x -ConfigurationName PrivilegedEndpoint  -Credential $cred
+   New-PSSession : [x.x.x.x] Connecting to remote server x.x.x.x failed with the following error message : Access is denied. For more information, see the 
+   about_Remote_Troubleshooting Help topic.
+   At line:1 char:12
+   + $session = New-PSSession -ComputerName x.x.x.x -ConfigurationNa ...
+   +            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      + CategoryInfo          : OpenError: (System.Manageme....RemoteRunspace:RemoteRunspace) [New-PSSession], PSRemotingTransportException
+      + FullyQualifiedErrorId : AccessDenied,PSSessionOpenFailed
+   ```
 
 ### <a name="networking"></a>Hálózat  
 
@@ -220,19 +255,7 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 - Hálózati biztonsági csoportok (NSG) nem működik az Azure Stackhez ugyanolyan módon globális Azure-ban. Az Azure-ban, több port adhatók meg egy NSG-szabály (a portal, PowerShell, használatával és a Resource Manager-sablonok). Az Azure Stackben azonban nem állíthatja be több portot egy NSG-szabályt a portálon keresztül. A probléma megkerüléséhez használja egy Resource Manager-sablon vagy a PowerShell segítségével ezek további szabályokat állíthat be.
 
 <!-- 3203799 - IS, ASDK -->
-- Az Azure Stack nem támogatja a több mint 4 hálózati adapter (NIC) való csatlakoztatás egy Virtuálisgép-példányok, a példány méretétől függetlenül.
-
-- Hibát talált, amelyben a csomagok több mint 1450 bájt egy belső Load Balancer (ILB), a rendszer elveti. A probléma okozza a gazdagépen, hogy túl alacsony, hogy megfeleljen a szerepkört, amely 1901 től került, a gazdagép áthaladó VXLAN beágyazású csomagok MTU-beállítását. Legalább két forgatókönyv közül választhat, amelyek akkor fordulhatnak, amelyben úgy találtuk, manifest magát a probléma:
-
-  - SQL-lekérdezéseket az SQL Always-On, amely egy belső Load Balancer (ILB) mögött, és több mint 660 bájt.
-  - Kubernetes üzembe helyezések meghiúsulnak, ha több főkiszolgálót engedélyezését.  
-
-  A probléma akkor fordul elő, ha egy virtuális Gépet és a egy ILB közötti kommunikáció az azonos virtuális hálózatba, de különböző alhálózatokon. A probléma megkerüléséhez az alábbi parancsokat egy rendszergazda jogú parancssorban a ASDK gazdagépen futó:
-
-  ```shell
-  netsh interface ipv4 set sub "hostnic" mtu=1660
-  netsh interface ipv4 set sub "management" mtu=1660
-  ```
+- Az Azure Stack nem támogatja a több mint 4 hálózati adapter (NIC) való csatlakoztatás egy Virtuálisgép-példánnyal, a példány méretétől függetlenül.
 
 <!-- ### SQL and MySQL-->
 

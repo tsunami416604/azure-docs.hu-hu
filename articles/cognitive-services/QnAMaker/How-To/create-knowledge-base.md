@@ -1,26 +1,26 @@
 ---
 title: Tudásbázis létrehozása
-titleSuffix: QnA Maker - Azure Cognitive Services
-description: A QnA Maker portal hozzáadásához használja a Tudásbázis chit csevegési hozhat létre. Ez lehetővé teszi, hogy az alkalmazás vonzó. A robot chit csevegési kiindulási pontjaként adja hozzá a felső chit csevegési előre megadott készlete a KB, és időt takaríthat meg a teljesen új rögzíti őket költsége.
+titleSuffix: QnA Maker API - Azure Cognitive Services
+description: A QnA Maker API szolgáltatás hozzáadása portál használatához Tudásbázis chit csevegési hozhat létre. Ez lehetővé teszi, hogy az alkalmazás vonzó. A robot chit csevegési kiindulási pontjaként adja hozzá a felső chit csevegési előre megadott készlete a KB, és időt takaríthat meg a teljesen új rögzíti őket költsége.
 services: cognitive-services
 author: tulasim88
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 03/11/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 1691bf9334d15ed7af211a929cf87ce433af895c
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: b4553a392795bb8578f24848ccacc870b654bce9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56866402"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58116232"
 ---
-# <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-portal"></a>Gyors útmutató: A QnA Maker portal használatával Tudásbázis létrehozása
+# <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>Gyors útmutató: A QnA Maker API-portál használatával Tudásbázis létrehozása
 
-A QnA Maker egyszerűen lehet például egy Tudásbázis létrehozásakor adja hozzá a meglévő adatforrásokat. A QnA Maker új Tudásbázis hozhat létre a következő dokumentum-típusok közül:
+A QnA Maker API portál segítségével egyszerűen adhat hozzá meglévő adatforrásokat, például egy Tudásbázis létrehozásakor. A QnA Maker új Tudásbázis hozhat létre a következő dokumentum-típusok közül:
 
 <!-- added for scanability -->
 * Gyakori kérdéseket tartalmazó oldalak

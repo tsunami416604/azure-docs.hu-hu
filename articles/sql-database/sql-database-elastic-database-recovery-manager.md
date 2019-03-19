@@ -12,16 +12,16 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: c4eeb73e3b0abfe2558fc387953023254952a515
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 1bab1ed9e2a24b0a84f4327d47a910934319b397
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296868"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57849975"
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>Horizontális skálázási térképek javítása a RecoveryManager osztállyal
 
-A [RecoveryManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager) osztály teszi lehetővé az ADO.Net-alkalmazások könnyen észlelheti és javíthatja a a globális szegmenstérkép (GSM) és a egy szilánkokra osztott adatbázis-környezetet a helyi szegmenstérkép (LSM) közötti inkonzisztenciákat.
+A [RecoveryManager](https://docs.microsoft.com/dotnet/api/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager) osztály teszi lehetővé az ADO.NET-alkalmazások könnyen észlelheti és javíthatja a a globális szegmenstérkép (GSM) és a egy szilánkokra osztott adatbázis-környezetet a helyi szegmenstérkép (LSM) közötti inkonzisztenciákat.
 
 A GSM és LSM nyomon követheti a leképezést a horizontálisan skálázott környezetben az egyes adatbázisok. Alkalmanként szünet következik be, a GSM és a LSM között. Ebben az esetben a RecoveryManager osztály használatával észleli és megjavítja a szünet.
 

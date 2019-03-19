@@ -16,19 +16,19 @@ ms.date: 03/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 770a5e61f549a10c8b313ed4d137f56dda45769e
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 91548a4df4a77623978ea4bcb214b76427c026a6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343860"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58012023"
 ---
 # <a name="manage-access-to-azure-resources-for-external-users-using-rbac"></a>A külső felhasználók számára az RBAC használatával Azure-erőforrásokhoz való hozzáférés kezelése
 
 Szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi a nagy szervezetek számára, és az SMB-khez jobb biztonságkezelés külső közreműködők, a beszállítóknak meghatározott erőforrásoknak a környezetben, de nem feltétlenül a teljes hozzáférést igénylő freelancers használata infrastruktúra- vagy bármely számlázással kapcsolatos hatókörök. Az RBAC lehetővé teszi, hogy a rendszergazdai fiók (szolgáltatás-rendszergazda szerepkörrel előfizetés szintjén) által kezelt a rugalmas tulajdonos egy Azure-előfizetéssel, és több felhasználó meghívott egy előfizetésen belül, de bármilyen rendszergazdai jogosultságok nélkül működjenek .
 
 > [!NOTE]
-> Az Office 365-előfizetések vagy az Azure Active Directory-licencek (például: Hozzáférés az Azure Active Directory) az Office 365 felügyeleti központ nem megfelelőek az RBAC használatával üzembe helyezett.
+> Az Office 365-előfizetések vagy az Azure Active Directory-licencek (például: A Microsoft 365 felügyeleti központban nem megfelelőek az RBAC használatával üzembe helyezett Azure Active Directoryban való hozzáférés).
 
 ## <a name="assign-rbac-roles-at-the-subscription-scope"></a>Rendeljen RBAC-szerepköröket egy előfizetésre
 

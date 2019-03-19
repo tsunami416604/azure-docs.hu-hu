@@ -17,12 +17,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e705bbbd08882f56020192a3b42c311e05bfa399
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: bee16ed8205453546702946628c98c73b0f34b15
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191727"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58103808"
 ---
 # <a name="quickstart-update-an-application-in-azure-active-directory"></a>Gyors útmutató: Az Azure Active Directory-alkalmazás frissítése
 
@@ -60,24 +60,24 @@ Mielőtt az ügyfél hozzáférhet egy erőforrás-alkalmazás webes API-jához 
    ![Alkalmazás regisztrációjának frissítése](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration.png)
 
 4. Megnyílik az alkalmazás regisztrációjának főoldala, azon belül pedig az alkalmazás **Beállítások** lapja. Hitelesítő adatok hozzáadása a webalkalmazás számára:
-  1. Válassza a **Beállítások** lap **Kulcsok** szakaszát.
-  2. Tanúsítvány hozzáadása:
-    - Válassza a **Nyilvános kulcs feltöltése** lehetőséget.
-    - Válassza ki a feltölteni kívánt fájlt. A fájlnak a következő típusok egyikébe kell tartoznia: .cer, .pem vagy .crt.
-  - Jelszó hozzáadása:
-    - Adjon meg egy leírást a kulcshoz.
-    - Válassza ki az időtartamot.
-    - Kattintson a **Mentés** gombra. A konfiguráció módosításainak mentése után a jobb szélső oszlop tartalmazza majd a kulcs értékét. **Mindenképp másolja le a kulcsot** az ügyfélalkalmazás kódolása során való használathoz, mivel a lap elhagyását követően nem lehet majd megtekinteni.
+   1. Válassza a **Beállítások** lap **Kulcsok** szakaszát.
+   1. Tanúsítvány hozzáadása:
+      - Válassza a **Nyilvános kulcs feltöltése** lehetőséget.
+      - Válassza ki a feltölteni kívánt fájlt. A fájlnak a következő típusok egyikébe kell tartoznia: .cer, .pem vagy .crt.
+   1. Jelszó hozzáadása:
+      - Adjon meg egy leírást a kulcshoz.
+      - Válassza ki az időtartamot.
+      - Kattintson a **Mentés** gombra. A konfiguráció módosításainak mentése után a jobb szélső oszlop tartalmazza majd a kulcs értékét. **Mindenképp másolja le a kulcsot** az ügyfélalkalmazás kódolása során való használathoz, mivel a lap elhagyását követően nem lehet majd megtekinteni.
 
 5. Engedélyek hozzáadása az erőforrások API-jainak eléréséhez az ügyfélről
-  1. A **Beállítások** lap **Szükséges engedélyek** szakaszában válassza a **Hozzáadás** lehetőséget.
-  1. Az **API kiválasztása** gombra kattintva válasza ki az erőforrások típusát, amelyek közül válogatni szeretne.
-  1. Az elérhető API-k listájában vagy a keresőmező használatával válasszon a könyvtárban elérhető erőforrás-alkalmazások közül, amelyek webes API-t tesznek közzé. Jelölje ki a kívánt erőforrást, majd kattintson a **Kiválasztás** elemre.
-  1. A **Hozzáférés engedélyezése** lapon válassza ki az alkalmazásengedélyeket és/vagy a delegált engedélyeket, amelyekre az alkalmazásnak szüksége lesz az API használatához.
+   1. A **Beállítások** lap **Szükséges engedélyek** szakaszában válassza a **Hozzáadás** lehetőséget.
+   1. Az **API kiválasztása** gombra kattintva válasza ki az erőforrások típusát, amelyek közül válogatni szeretne.
+   1. Az elérhető API-k listájában vagy a keresőmező használatával válasszon a könyvtárban elérhető erőforrás-alkalmazások közül, amelyek webes API-t tesznek közzé. Jelölje ki a kívánt erőforrást, majd kattintson a **Kiválasztás** elemre.
+   1. A **Hozzáférés engedélyezése** lapon válassza ki az alkalmazásengedélyeket és/vagy a delegált engedélyeket, amelyekre az alkalmazásnak szüksége lesz az API használatához.
    
-  ![Alkalmazás regisztrációjának frissítése – engedélyek api](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-api.png)
+   ![Alkalmazás regisztrációjának frissítése – engedélyek api](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-api.png)
 
-  ![Alkalmazás regisztrációjának frissítése – engedélyek eng.](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-perms.png)
+   ![Alkalmazás regisztrációjának frissítése – engedélyek eng.](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-perms.png)
 
 6. Ha végzett, kattintson a **Hozzáférés engedélyezése** lap **Kiválasztás**, majd az **API-hozzáférés hozzáadása** lap **Kész** gombjára. A rendszer visszalép a **Szükséges engedélyek** lapra, ahol az új erőforrás megjelenik az API-k listájában.
 
@@ -98,8 +98,8 @@ A következő szakaszban mutatjuk be, hogyan tehetők közzé a hozzáférési h
 4. Megnyílik az alkalmazás regisztrációjának főoldala, azon belül pedig az alkalmazás **Beállítások** lapja. Az alkalmazás regisztrációjának lapján a **Jegyzékfájl** gombra kattintva váltson a **Jegyzékfájl szerkesztése** lapra. Megnyílik egy webalapú jegyzékfájlszerkesztő, amellyel a portálon **szerkesztheti** a jegyzékfájlt. Másik lehetőségként a **Letöltés** gombra kattintva a helyi gépen is szerkeszthet, majd a **Feltöltés** gombra kattintva alkalmazhatja a módosításokat az alkalmazásra.
 5. Ebben a példában a következő JSON-elem `oauth2Permissions` gyűjteménybe való felvételével egy új hatókört tárunk fel `Employees.Read.All` néven az erőforráson/API-n. A meglévő `user_impersonation` hatókör a regisztrálás során alapértelmezés szerint jött létre. A `user_impersonation` használatával az ügyfélalkalmazások engedélyt kérhetnek az erőforrás a bejelentkezett felhasználó identitásával való elérésére. Mindenképp írjon egy vesszőt a meglévő `user_impersonation` hatókörelem után, és módosítsa a tulajdonságértékeket az erőforrás igényeinek megfelelően. 
 
-  ```json
-  {
+   ```json
+   {
     "adminConsentDescription": "Allow the application to have read-only access to all Employee data.",
     "adminConsentDisplayName": "Read-only access to Employee records",
     "id": "2b351394-d7a7-4a84-841e-08a6a17e4cb8",
@@ -108,17 +108,17 @@ A következő szakaszban mutatjuk be, hogyan tehetők közzé a hozzáférési h
     "userConsentDescription": "Allow the application to have read-only access to your Employee data.",
     "userConsentDisplayName": "Read-only access to your Employee records",
     "value": "Employees.Read.All"
-  }
-  ```
+   }
+   ```
 
-  > [!NOTE]
-  > A `id` értéket kell létrejönnie, programozott módon, vagy egy GUID Azonosítót használja az például eszköz generációs [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx). Az `id` a webes API által közzétett hatókör egyedi azonosítója. Ha az ügyfél megfelelően van konfigurálva a webes API eléréséhez szükséges engedélyekkel, az Azure AD kioszt a számára egy OAuth2.0 hozzáférési jogkivonatot. Amikor az ügyfél meghívja a webes API-t, bemutatja a hozzáférési jogkivonatot, amelyben a hatókör (scp) jogcíme az ügyfél alkalmazásregisztrációjában igényelt engedélyekre van állítva.
-  >
-  > A későbbiekben igény szerint további hatóköröket is közzétehet. Vegye figyelembe, hogy a webes API több hatókört is közzétehet, amelyek különféle függvényekkel vannak társítva. Az erőforrás a futásidőben a kapott OAuth 2.0 hozzáférési jogkivonatban lévő hatókör (`scp`) jogcímének vagy jogcímeinek értékelésével szabályozhatja a hozzáférést a webes API-hoz.
+   > [!NOTE]
+   > A `id` értéket kell létrejönnie, programozott módon, vagy egy GUID Azonosítót használja az például eszköz generációs [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx). Az `id` a webes API által közzétett hatókör egyedi azonosítója. Ha az ügyfél megfelelően van konfigurálva a webes API eléréséhez szükséges engedélyekkel, az Azure AD kioszt a számára egy OAuth2.0 hozzáférési jogkivonatot. Amikor az ügyfél meghívja a webes API-t, bemutatja a hozzáférési jogkivonatot, amelyben a hatókör (scp) jogcíme az ügyfél alkalmazásregisztrációjában igényelt engedélyekre van állítva.
+   >
+   > A későbbiekben igény szerint további hatóköröket is közzétehet. Vegye figyelembe, hogy a webes API több hatókört is közzétehet, amelyek különféle függvényekkel vannak társítva. Az erőforrás a futásidőben a kapott OAuth 2.0 hozzáférési jogkivonatban lévő hatókör (`scp`) jogcímének vagy jogcímeinek értékelésével szabályozhatja a hozzáférést a webes API-hoz.
 
 6. Amikor végzett, kattintson a **Mentés** gombra. A webes API most konfigurálva lett a könyvtárban lévő egyéb alkalmazások általi használatra.
 
-  ![Alkalmazás regisztrációjának frissítése](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-manifest.png)
+   ![Alkalmazás regisztrációjának frissítése](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-manifest.png)
 
 ### <a name="verify-the-web-api-is-exposed-to-other-applications-in-your-tenant"></a>Annak ellenőrzése, hogy a webes API közzététele sikerült-e a bérlőn lévő többi alkalmazás számára
 
@@ -130,7 +130,7 @@ A következő szakaszban mutatjuk be, hogyan tehetők közzé a hozzáférési h
 
 3. A **Hozzáférés engedélyezése** lapon meg kell jelennie az új hatókörnek, amely így már elérhető az ügyfelek engedélyigényléseihez.
 
-  ![Az új engedélyek megjelennek](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-perms-newscopes.png)
+   ![Az új engedélyek megjelennek](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-perms-newscopes.png)
 
 ### <a name="more-on-the-application-manifest"></a>További információk az alkalmazásjegyzékről
 
@@ -211,9 +211,9 @@ Az OAuth 2.0 implicit engedélyezés alapértelmezés szerint le van tiltva az a
 3. A bal oldali navigációs panelen kattintson az **Azure Active Directory** szolgáltatásra, majd az **Alkalmazásregisztrációk** lehetőségre, és keresse meg/válassza a konfigurálni kívánt alkalmazást. Megnyílik az alkalmazás regisztrációjának főoldala, azon belül pedig az alkalmazás **Beállítások** lapja.
 4. Az alkalmazás regisztrációjának lapján a **Jegyzékfájl** gombra kattintva váltson a **Jegyzékfájl szerkesztése** lapra. Megnyílik egy webalapú jegyzékfájlszerkesztő, amellyel a portálon **szerkesztheti** a jegyzékfájlt. Keresse meg az „oauth2AllowImplicitFlow” elemet, és állítsa „true” (igaz) értékre. Alapértelmezés szerint „false” (hamis) értékre van állítva.
    
-  ```json
-  "oauth2AllowImplicitFlow": true,
-  ```
+   ```json
+   "oauth2AllowImplicitFlow": true,
+   ```
 5. Mentse a frissített jegyzékfájlt. A mentést követően a webes API most már konfigurálva van az OAuth 2.0 implicit engedélyezés használatára a felhasználók hitelesítése során.
 
 ## <a name="next-steps"></a>További lépések

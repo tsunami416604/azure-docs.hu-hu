@@ -11,13 +11,13 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/07/2019
-ms.openlocfilehash: 27c91921cb07dbd3b9692a64f1289b1031e645b5
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.date: 03/12/2019
+ms.openlocfilehash: 991df9f57149f51271cfecb4557e2f307103ac47
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57574406"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880840"
 ---
 # <a name="use-powershell-to-configure-an-active-geo-replication-failover-group-for-a-single-database-in-azure-sql-database"></a>Önálló adatbázis egy aktív georeplikációs feladatátvételi csoport konfigurálása Azure SQL Database-ben a PowerShell használatával
 

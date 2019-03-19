@@ -8,12 +8,12 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: a3b719f4b2a19f4ea399d6a0858719a1709adc93
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 26e4b921b4050efa5217e3b599b9dc942a003090
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109489"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58173923"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight-preview"></a>A saját kulcs használata: az Apache Kafka az Azure HDInsight (előzetes verzió)
 
@@ -31,7 +31,7 @@ Az Azure Portalon vagy az Azure CLI segítségével biztonságosan elforgatása 
 
 1. Hozzon létre felügyelt identitások az Azure-erőforrásokhoz.
 
-   A hitelesítést a Key Vault, hozzon létre egy felügyelt identitás felhasználó által hozzárendelt a [az Azure Portal](../../active-directory/managed-service-identity/how-to-manage-ua-identity-portal.md), [Azure PowerShell-lel](../../active-directory/managed-service-identity/how-to-manage-ua-identity-powershell.md), [Azure Resource Manager](../../active-directory/managed-service-identity/how-to-manage-ua-identity-arm.md), vagy [ Az Azure CLI](../../active-directory/managed-service-identity/how-to-manage-ua-identity-cli.md). Míg az Azure Active Directoryval felügyelt identitások és a kafka BYOK, vállalati biztonsági csomag (ESP) nem követelmény. Győződjön meg arról, a felügyelt identitás erőforrás-azonosító mentése a Key Vault hozzáférési szabályzattal való hozzáadásakor.
+   A hitelesítést a Key Vault, hozzon létre egy felügyelt identitás felhasználó által hozzárendelt a [az Azure portal](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md), [Azure PowerShell-lel](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md), [Azure Resource Manager](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md), vagy [ Az Azure CLI](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md). Felügyelt identitások munka az Azure HDInsight további információkért lásd: [által felügyelt identitásokat az Azure HDInsight](../hdinsight-managed-identities.md). Míg az Azure Active Directoryval felügyelt identitások és a kafka BYOK, vállalati biztonsági csomag (ESP) nem követelmény. Győződjön meg arról, a felügyelt identitás erőforrás-azonosító mentése a Key Vault hozzáférési szabályzattal való hozzáadásakor.
 
    ![Felhasználó által hozzárendelt felügyelt identitás létrehozása az Azure Portalon](./media/apache-kafka-byok/user-managed-identity-portal.png)
 

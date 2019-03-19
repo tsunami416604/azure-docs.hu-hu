@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 07/31/2018
 ms.author: tarcher
 ms.custom: jenkins
-ms.openlocfilehash: 3b23ea83a0fc710a5b664f31ad997b843d18f6fe
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 7cd7b8f7b49915db9fcf17602429e47c1b9da95d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765187"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901423"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-with-using-jenkins-and-azure-devops-services"></a>Oktatóanyag: Alkalmazás üzembe helyezése az Azure-beli Linux rendszerű virtuális gépek használatával a Jenkins és az Azure DevOps-szolgáltatásokkal
 
@@ -35,7 +35,7 @@ egy Linux rendszerű virtuális gépeket tartalmazó [üzembehelyezési csoportb
 > * A Jenkins konfigurálása az Azure DevOps Services-el való integrációhoz.
 > * Jenkins szolgáltatási végpont létrehozása.
 > * Üzembe helyezési csoport létrehozása az Azure virtuális gépekhez.
-> * Azure Pipelines-kiadási folyamat létrehozása.
+> * Hozzon létre egy Azure-folyamatok kiadási folyamatot.
 > * Manuális és CI által kiváltott üzembe helyezések végrehajtása.
 
 ## <a name="before-you-begin"></a>Előkészületek
@@ -60,7 +60,7 @@ A jelen oktatóanyag esetében azt javasoljuk, hogy [ezt a mintaalkalmazást has
 Hozzon létre egy adattármásolatot az alkalmazáshoz, és jegyezze le a helyet (URL-címet) az oktatóanyag későbbi lépéseiben való felhasználáshoz. További információkat a [Fork a repo](https://help.github.com/articles/fork-a-repo/) (Adattármásolat készítése) témakörben talál.    
 
 > [!NOTE]
-> Az alkalmazás a [Yeoman](http://yeoman.io/learning/index.html) használatával lett létrehozva. Express-t bowert és gruntot használ. És rendelkezik néhány npm-csomaggal függőségként.
+> Az alkalmazás a [Yeoman](https://yeoman.io/learning/index.html) használatával lett létrehozva. Express-t bowert és gruntot használ. És rendelkezik néhány npm-csomaggal függőségként.
 > A minta egy szkriptet is tartalmaz, amely beállítja az Nginx kiszolgálót, és üzembe helyezi az alkalmazást. A végrehajtása a virtuális gépeken történik. Pontosabban a szkript az alábbi műveleteket végzi:
 > 1. Telepíti a Node-ot, az Nginx kiszolgálót és a PM2-t.
 > 2. Konfigurálja az Nginx kiszolgálót és a PM2-t.
@@ -141,7 +141,7 @@ Szüksége van egy [üzembe helyezési csoportra](https://www.visualstudio.com/d
 8. A telepítés után a rendszer kéri az üzembe helyezési csoport címkéit. Fogadja el az alapértelmezett beállításokat.
 9. Az Azure DevOps Services-ben ellenőrizze az újonnan regisztrált virtuális gépet a **Targets** (Célok) szakaszban a **Deployment Groups** (Üzembehelyezési csoportok) alatt.
 
-## <a name="create-a-azure-pipelines-release-pipeline"></a>Azure Pipelines-kiadási folyamat létrehozása
+## <a name="create-an-azure-pipelines-release-pipeline"></a>Hozzon létre egy Azure-folyamatok kibocsátási folyamatok
 
 A kiadási folyamat azt a folyamatot határozza meg, amelyet az Azure Pipelines az alkalmazás üzembe helyezésére használ. Ebben a példában egy felületszkriptet fog végrehajtani.
 

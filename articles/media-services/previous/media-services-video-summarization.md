@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: milanga;juliako;
-ms.openlocfilehash: c0a6feb1eba1e409c29a650741eadc31f1017342
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 30c342ca31b33d910406bf74d90d49979e5c46bc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004808"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838087"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Az Azure Media Videóminiatűrök használatával hozzon létre egy videó-összefoglalás  
 ## <a name="overview"></a>Áttekintés
@@ -37,10 +37,10 @@ Bizonyos esetekben a videóhoz nem áll, különböző jelenetek, ha a kimenet c
 Íme néhány példa az Azure Media Videóindexképek médiafeldolgozót teendők:
 
 ### <a name="original-video"></a>Eredeti videó
-[Eredeti videó](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Faed33834-ec2d-4788-88b5-a4505b3d032c%2FMicrosoft%27s%20HoloLens%20Live%20Demonstration.ism%2Fmanifest)
+[Eredeti videó](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Faed33834-ec2d-4788-88b5-a4505b3d032c%2FMicrosoft%27s%20HoloLens%20Live%20Demonstration.ism%2Fmanifest)
 
 ### <a name="video-thumbnail-result"></a>Miniatűr videó eredménye
-[Miniatűr videó eredménye](http://ampdemo.azureedge.net/azuremediaplayer.html?url=http%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Ff5c91052-4232-41d4-b531-062e07b6a9ae%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
+[Miniatűr videó eredménye](https://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Ff5c91052-4232-41d4-b531-062e07b6a9ae%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
 
 ## <a name="task-configuration-preset"></a>A feladat konfigurációs (előre)
 A miniatűr videó feladat létrehozásakor **Azure Media Videóminiatűrök**, meg kell adnia egy konfigurációs készletet. A fenti miniatűr mintát a következő alapszintű JSON-konfigurációval lett létrehozva:
@@ -62,7 +62,7 @@ Jelenleg a következő paraméterek módosíthatja:
 A következő táblázat ismerteti az alapértelmezett időtartamot, hogy amikor **maxMotionThumbnailInSecs** nincs használatban.
 
 |  |  |  |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- |
 | Videó időtartama |d < 3 perc |3 perccel < d < 15 perc |
 | Miniatűr időtartama |15 másodperc (2-3 jelenetek) |30 másodperc (3-5 jelenetek) |
 
@@ -276,7 +276,7 @@ A következő program mutat be, hogyan:
 ```
 
 ### <a name="video-thumbnail-output"></a>Miniatűr videó kimenet
-[Miniatűr videó kimenet](http://ampdemo.azureedge.net/azuremediaplayer.html?url=http%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Fd06f24dc-bc81-488e-a8d0-348b7dc41b56%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
+[Miniatűr videó kimenet](https://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Fd06f24dc-bc81-488e-a8d0-348b7dc41b56%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
 
 ## <a name="media-services-learning-paths"></a>Media Services képzési tervek
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -287,5 +287,5 @@ A következő program mutat be, hogyan:
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
 [Az Azure Media Services analitikai funkcióinak áttekintése](media-services-analytics-overview.md)
 
-[Az Azure Médiaelemzés bemutatók](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Az Azure Médiaelemzés bemutatók](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

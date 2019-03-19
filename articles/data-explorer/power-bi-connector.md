@@ -1,5 +1,5 @@
 ---
-title: 'Gyors útmutató: Az Azure Data Explorer-összekötő használata a Power bi az adatok megjelenítése'
+title: 'Gyors útmutató: Adatok megjelenítése a Power bi-hoz az Azure Data Explorer-összekötő használatával'
 description: 'Ebben a rövid útmutató való használatra, a három lehetőség közül vizualizációja a Power bi-ban: a Power BI-összekötő az Azure Data Explorer.'
 services: data-explorer
 author: orspod
@@ -8,14 +8,14 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/14/2018
-ms.openlocfilehash: 3cb8f52677991997a0176a9f8d408e2fd6d2d8d9
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: de920a9addf9d2053a3c101c6b1f9a2c1a2feb27
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51974271"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106746"
 ---
-# <a name="quickstart-visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Gyors útmutató: Az Azure Data Explorer-összekötő használata a Power bi az adatok megjelenítése
+# <a name="quickstart-visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>Gyors útmutató: Adatok megjelenítése a Power bi-hoz az Azure Data Explorer-összekötő használatával
 
 Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. A Power BI egy üzleti elemzési megoldás, amellyel megjelenítheti adatait, és a teljes szervezettel megoszthatja az eredményeket.
 
@@ -53,9 +53,9 @@ Először csatlakozik az Azure Data Explorer súgófürtben, majd származó ada
     |---|---|---|
     | Fürt | *https://help.kusto.windows.net* | A súgófürtben URL-CÍMÉT. Egyéb fürtök esetében az URL-cím szerepel az űrlap *https://\<ClusterName\>.\< Régió\>. kusto.windows.net*. |
     | Adatbázis | Hagyja üresen | Egy adatbázis, amely a fürt üzemelteti, amelyhez csatlakozik. Ez egy későbbi lépésben választjuk ki. |
-    | Tábla neve | Hagyja üresen | A táblák az adatbázisban, vagy egy lekérdezés egyikét, például "StormEvents | 1000' igénybe. Ez egy későbbi lépésben választjuk ki. |
+    | Tábla neve | Hagyja üresen | A táblák az adatbázisban, vagy egy lekérdezés egyikét, például <code>StormEvents \| take 1000</code>. Ez egy későbbi lépésben választjuk ki. |
     | Speciális beállítások | Hagyja üresen | Lehetőségek a lekérdezésekhez, például az eredmény méretének beállítása. |
-    | Adatkapcsolati mód | *A DirectQuery* | Meghatározza, hogy a Power BI importálta az adatokat, vagy közvetlenül csatlakozik az adatforráshoz. Mindkét módszerhez ezzel az összekötővel. |
+    | Adatkapcsolati mód | *DirectQuery* | Meghatározza, hogy a Power BI importálta az adatokat, vagy közvetlenül csatlakozik az adatforráshoz. Mindkét módszerhez ezzel az összekötővel. |
     | | | |
 
 1. Ha már nincs a súgófürtben csatlakozni, jelentkezzen be. Jelentkezzen be szervezeti fiókkal, majd válassza a **Connect**.
@@ -91,4 +91,4 @@ Ha már nincs szüksége a létrehozott jelentés ebben a rövid, törölje a Po
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Gyors útmutató: Power BI-ban az importált lekérdezéssel adatok megjelenítése](power-bi-imported-query.md)
+> [Rövid útmutató: Adatok megjelenítése Power BI-ban az importált lekérdezés használatával](power-bi-imported-query.md)

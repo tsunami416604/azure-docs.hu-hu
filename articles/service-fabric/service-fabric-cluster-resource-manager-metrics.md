@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 2d1818f42cb2bcb19f979f25962a6c9bdea10155
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 642f479aba62e5cc9dde63aed7c30de39b513a5e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728012"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093349"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Kezelését erőforrás-használat és a terhelés a Service Fabric-metrikák
 *Metrikák* az erőforrások, a szolgáltatások ellátás kapcsolatban, és amely a fürt csomópontjainak által biztosított. Egy metrika, amelyeket szeretne kezelni, annak érdekében, hogy monitorozza a szolgáltatások teljesítményét és tökéletesítéséhez. Például előfordulhat, hogy tekintse meg memóriát tudni, hogy ha a szolgáltatás túlterhelt. Egy másik használata döntse el, hogy a szolgáltatás áthelyezhetők máshol ahol memória mérete kisebb jobb teljesítmény érdekében korlátozott.
@@ -45,6 +45,7 @@ Alapszintű számítási feladatokat az alapértelmezett mérőszámok adja meg 
 Itt látható, hogy mit kap:
 
 <center>
+
 ![Fürt elrendezés alapértelmezett metrikákkal][Image1]
 </center>
 
@@ -215,6 +216,7 @@ Ne feledje Ez a szintaxis használata ("MetricName, MetricWeight, PrimaryDefault
 Nézzük meg, milyen egy lehetséges fürt elrendezés nézhet:
 
 <center>
+
 ![Fürt kiegyensúlyozott alapértelmezett és egyéni metrikákkal][Image2]
 </center>
 
@@ -239,6 +241,7 @@ A fürt másik mérőszám súlyok valós hatása, hogy a fürterőforrás-kezel
 Vegyünk egy példát néhány terhelés jelentések és a különböző metrikát súlyozza a fürt másik hozzárendelések eredményez. Ebben a példában látható, hogy a relatív súly metrikák váltás hatására a fürterőforrás-kezelő szolgáltatások különböző szabályok létrehozásához.
 
 <center>
+
 ![Metrika súlyának példa és a hatása a terheléselosztási megoldások][Image3]
 </center>
 
@@ -256,6 +259,7 @@ Nincsenek minden metrika nyomon követett több súlyok. Az első súly megadva 
 Mi történne a fürterőforrás-kezelő nem érdeklik a globális és a helyi egyenleg? Könnyebbé vált, amely globálisan elosztott terhelésű, de egyes szolgáltatások gyenge erőforrás elosztás eredményező megoldások létrehozásához. A következő példában pedig tekintse meg a szolgáltatás csak az alapértelmezett metrikákkal konfigurálva, és lássuk, mi történik, ha csak a globális elosztása minősül:
 
 <center>
+
 ![Csak globális megoldást hatása][Image4]
 </center>
 

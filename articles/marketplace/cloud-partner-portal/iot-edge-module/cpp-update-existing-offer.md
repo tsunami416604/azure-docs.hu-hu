@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 071837aac9fce405fcc5ef92e044a0265e0e5969
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: ca7bed26d91c28304638e85d6da93708bfcfcada
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49431092"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58170309"
 ---
 # <a name="update-an-existing-iot-edge-module-offer"></a>Egy meglévő IoT Edge-modul ajánlat frissítése
 
@@ -36,7 +36,7 @@ A portál kínál segítséget nyújt a ezeket a módosításokat, a **összehas
 
 ## <a name="unpermitted-changes-to-iot-edge-module-offer-or-sku"></a>IoT Edge-modul ajánlat és az SKU engedett módosítása
 
-Nincsenek a IoT Edge-modul ajánlat és a Termékváltozat, amely nem módosítható, miután az Azure piactéren az ajánlat élő attribútumainak. A következő beállítások nem módosíthatók:
+Nincsenek IoT Edge-modul ajánlat, amely nem módosítható, miután az Azure piactéren az ajánlat élő attribútumainak. A következő beállítások nem módosíthatók:
 
 -  **Ajánlat azonosítója** és **közzétevő-azonosító** az ajánlat
 -  **SKU-azonosítója** a meglévő termékváltozatok
@@ -49,7 +49,7 @@ A következő frissítési műveletek gyakoriak.
 
 ### <a name="update-the-iot-edge-module-image-version-for-a-sku"></a>A Termékváltozat az IoT Edge-modul lemezkép verziója frissítés
 
-Szokás IoT Edge-modul lemezkép rendszeresen frissíteni kell a biztonsági javítások, további funkciók és így tovább. Ebben a forgatókönyvben szeretné frissíteni az IoT Edge-modul rendszerképének, amely a Termékváltozat hivatkozik az alábbi lépések segítségével:
+Érdemes gyakran egy IoT Edge-modul rendszerképének rendszeresen frissíteni kell a biztonsági javítások, további funkciók és így tovább. Ebben a forgatókönyvben szeretné frissíteni az IoT Edge-modul rendszerképének, amely a Termékváltozat hivatkozik az alábbi lépések segítségével:
 
 1.  Jelentkezzen be a [Cloud Partner Portalon](https://cloudpartner.azure.com/).
 

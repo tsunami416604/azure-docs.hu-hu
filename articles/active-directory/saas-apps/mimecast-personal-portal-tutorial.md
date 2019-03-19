@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37ffea61df1091cb7517014c4796537cdd40d62b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: ed7d8d1a2c2f8c515fa520f6701068e4655cad35
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765296"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898584"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mimecast-personal-portal"></a>Oktatóanyag: Az Azure Active Directory-integráció Mimecast személyes portállal
 
@@ -208,7 +208,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
@@ -267,7 +267,7 @@ Szeretne regisztrálni egy tartományban, felhasználók létrehozása előtt.
    
     ![Mentés](./media/mimecast-personal-portal-tutorial/ic795006.png "mentése")
    
-    a. Az a **E-mail cím** szövegmezőbe írja be **E-mail cím** , a felhasználó **BrittaSimon@contoso.com**.
+    a. Az a **E-mail cím** szövegmezőbe írja be **E-mail cím** , a felhasználó **BrittaSimon\@contoso.com**.
     
     b. Az a **globális név** szövegmezőbe írja be a **felhasználónév** , **BrittaSimon**.
 

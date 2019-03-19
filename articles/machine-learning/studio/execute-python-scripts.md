@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
-ms.date: 03/05/2019
-ms.openlocfilehash: f508d16330bad7044a69ccff2ddf84ece74e78a2
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.date: 03/12/2019
+ms.openlocfilehash: 4b4f3877b56752756050de0af226571ac2a93293
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729425"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888151"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>A Python Machine Learning parancsfájlok végrehajtása az Azure Machine Learning Studióban
 
@@ -62,13 +62,14 @@ Studio-adatkészletek nem azonosak, Pandas adatkerettípusokat jelölhet. Ennek 
 | Index vektorok | Nem támogatott * |
 | A nem karakterlánc oszlopnevek | Hívás `str` az oszlopnevek |
 | Ismétlődő oszlopneveket tartalmaz | Numerikus utótag hozzáadása: (1), (2), (3), és így tovább.
+
 **A Python-függvény az összes bemeneti adatkeretek mindig van egy 64 bites numerikus indexet 0 mínusz 1 sorok száma*
 
 ## <a id="import-modules"></a>Meglévő Python-szkript modulok importálása
 
-A Python végrehajtásához használt háttérrendszer alapján [Anaconda](https://store.continuum.io/cshop/anaconda/), a tudományos Python elosztási széles körben használt. Közel 200-as, a leggyakoribb Python-csomagokat a adatközpontú számítási használt együtt származik. Azonban előfordulhat, további kódtárak pedig be kell.
+A Python végrehajtásához használt háttérrendszer alapján [Anaconda](https://store.continuum.io/cshop/anaconda/), a tudományos Python elosztási széles körben használt. Közel 200-as, a leggyakoribb Python-csomagokat a adatközpontú számítási használt együtt származik. Studio jelenleg nem támogatja a csomag felügyeleti rendszerek például Pip vagy Conda telepítését és kezelését a külső kódtárak használata.  Ha azt tapasztalja, további kódtárak pedig be kell, használja az alábbi forgatókönyv útmutatójaként.
 
-Egy gyakori alkalmazási helyzet, hogy Studio kísérletek beépítheti a meglévő Python-szkriptek. A [Python-szkript végrehajtására] [ execute-python-script] modul fogadja el a harmadik bemeneti portját a Python-modulok tartalmazó zip-fájlt. A fájlt futásidőben a végrehajtási keretrendszer által a kicsomagolt, és a tartalmak kerülnek a Python-fordítóra könyvtár elérési útja. A `azureml_main` függvény importálhatja ezeket a modulokat közvetlenül belépési pontot.
+Egy gyakori alkalmazási helyzet, hogy Studio kísérletek beépítheti a meglévő Python-szkriptek. A [Python-szkript végrehajtására] [ execute-python-script] modul fogadja el a harmadik bemeneti portját a Python-modulok tartalmazó zip-fájlt. A fájlt futásidőben a végrehajtási keretrendszer által a kicsomagolt, és a tartalmak kerülnek a Python-fordítóra könyvtár elérési útja. A `azureml_main` függvény importálhatja ezeket a modulokat közvetlenül belépési pontot. 
 
 Tegyük fel fontolja meg a fájlt egy egyszerű "Hello, World" függvény tartalmazó Hello.py.
 
@@ -87,6 +88,25 @@ A zip-fájl feltöltése adatkészletként studióba. Ezután hozzon létre és 
 A modul kimeneti jeleníti meg, hogy a zip-fájl becsomagolatlan lett-e, és hogy a függvény `print_hello` futtatása.
 
 ![Felhasználó által definiált függvény megjelenítő modul kimenete](./media/execute-python-scripts/figure7.png)
+
+## <a name="accessing-azure-storage-blobs"></a>Az Azure Storage-Blobok elérése
+
+Az alábbi lépések végrehajtásával Azure Blob Storage-fiókban tárolt adatok érhető el:
+
+1. Töltse le a [Pythonhoz készült Azure Blob Storage-package](https://azuremlpackagesupport.blob.core.windows.net/python/azure.zip) helyileg.
+1. A Studio-munkaterülethez a zip-fájl feltöltése adatkészletként.
+1. A BlobService objektum létrehozása `protocol='http'`
+
+```
+from azure.storage.blob import BlockBlobService
+
+# Create the BlockBlockService that is used to call the Blob service for the storage account
+block_blob_service = BlockBlobService(account_name='account_name', account_key='account_key', protocol='http')
+```
+
+1. Tiltsa le **biztonságos átvitelre van szükség** a Storage-ban **konfigurációs** beállítások lapon
+
+![Tiltsa le a biztonságos átvitel szükséges az Azure Portalon](./media/execute-python-scripts/disable-secure-transfer-required.png)
 
 ## <a name="operationalizing-python-scripts"></a>Python-szkriptek modellezést
 

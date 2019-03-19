@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/11/2019
 ms.author: kumud
-ms.openlocfilehash: 9ca8e6876b67167429dbc0b5e6c3f5b454878c2a
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: c2f6a614524f0dfb242db11618fda94ce57e6e6a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382679"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111531"
 ---
 # <a name="what-is-azure-load-balancer"></a>Mi az az Azure Load Balancer?
 
@@ -94,8 +94,8 @@ A Load Balancer az alábbi alapvető képességeket biztosítja a TCP- és UDP-a
 
     A virtuális hálózaton belül magánhálózati IP-címekről kiinduló, az interneten található nyilvános IP-címek felé irányuló folyamatok lefordíthatók a Load Balancer egy előtérbeli IP-címére. Amikor egy nyilvános előtéret egy terheléselosztási szabállyal hozzákötünk egy háttérbeli virtuális géphez, az Azure átprogramozza a kapcsolatokat, hogy a rendszer automatikusan lefordítsa őket a nyilvános előtérbeli IP-címre.
 
-    * Engedélyezze az egyszerű frissítést és a szolgáltatások vészhelyreállítását, mert az előtér dinamikusan átirányítható a szolgáltatás egy másik példányára.
-    * Könnyebb a hozzáférés-vezérlési listák (ACL) kezelése. Az előtérbeli IP-címekkel kifejezett ACL-ek nem változnak a szolgáltatások fel- vagy leskálázása, vagy újbóli üzembe helyezése során.  A kimenő kapcsolatok a gépek számánál kisebb mennyiségű IP-címre történő lefordítása csökkentheti az engedélyezéssel járó terheket.
+  * Engedélyezze az egyszerű frissítést és a szolgáltatások vészhelyreállítását, mert az előtér dinamikusan átirányítható a szolgáltatás egy másik példányára.
+  * Könnyebb a hozzáférés-vezérlési listák (ACL) kezelése. Az előtérbeli IP-címekkel kifejezett ACL-ek nem változnak a szolgáltatások fel- vagy leskálázása, vagy újbóli üzembe helyezése során.  A kimenő kapcsolatok a gépek számánál kisebb mennyiségű IP-címre történő lefordítása csökkentheti az engedélyezéssel járó terheket.
 
     További információt a [kimenő kapcsolatokról](load-balancer-outbound-connections.md) szóló cikkben talál.
 

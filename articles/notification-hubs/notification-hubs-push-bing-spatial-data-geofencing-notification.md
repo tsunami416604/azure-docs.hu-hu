@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 7b01ee726d8417e34645e743497a02455fbe709c
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 9baeb1c21252f8b7f7b24debde48108532d9865c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453254"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118306"
 ---
 # <a name="tutorial-push-location-based-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>Oktatóanyag: Leküldéses értesítések helyalapú az Azure Notification Hubs és a Bing térbeli adatainak
 
@@ -63,12 +63,12 @@ Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 
     ![](./media/notification-hubs-geofence/bing-maps-geofence.png)
 5. Az **Upload data as a data source** (Adat feltöltése adatforrásként) oldalon tegye a következőket:
-    1. Válassza ki a **pipe** (folyamat) elemet a **Data format** (Adatformátum) beállításnál.
-    2. Keresse meg és válassza a `NotificationHubGeofence.pipe` az előző lépésben létrehozott fájlt.
-    3. Válassza az **Upload** (Feltöltés) gombot.
+   1. Válassza ki a **pipe** (folyamat) elemet a **Data format** (Adatformátum) beállításnál.
+   2. Keresse meg és válassza a `NotificationHubGeofence.pipe` az előző lépésben létrehozott fájlt.
+   3. Válassza az **Upload** (Feltöltés) gombot.
 
-    > [!NOTE]
-    > Lehetséges, hogy új, a **Lekérdezési kulcstól** eltérő **Főkulcsot** kell megadnia. Csak hozzon létre egy új kulcsot az irányítópulton, és frissítse az adatforrás-feltöltési oldalt.
+      > [!NOTE]
+      > Lehetséges, hogy új, a **Lekérdezési kulcstól** eltérő **Főkulcsot** kell megadnia. Csak hozzon létre egy új kulcsot az irányítópulton, és frissítse az adatforrás-feltöltési oldalt.
 6. Az adatfájl feltöltése után közzé kell tennie az adatforrást. A korábbiakhoz hasonlóan válassza a **Data sources** (Adatforrások) -> **Manage Data Sources** (Adatforrások kezelése) lehetőséget.
 7. Keresse meg az adatforrást a listában, majd válassza ki a **Publish** (Közzététel) elemet az **Actions** (Műveletek) oszlopban.
 
@@ -112,11 +112,11 @@ Ebben az oktatóanyagban a következő lépéseket hajtja végre:
     ```
     A következő paramétereket kell megadnia a rendszer működéséhez:
 
-    * **Adatforrás azonosítója** és **Adatforrás neve** – a Bing Térképek API-adatforrásai számos összegyűjtött metaadatot tartalmaznak, például a helyadatokat és a nyitvatartási időt.  
-    * **Entitás neve** – az értesítés hivatkozási pontjaként használni kívánt entitás.
-    * **Bing Térképek API-kulcs** – ezt a kulcsot már korábban megkapta, amikor létrehozta a fiókját a Bing fejlesztői központjában.
+   * **Adatforrás azonosítója** és **Adatforrás neve** – a Bing Térképek API-adatforrásai számos összegyűjtött metaadatot tartalmaznak, például a helyadatokat és a nyitvatartási időt.  
+   * **Entitás neve** – az értesítés hivatkozási pontjaként használni kívánt entitás.
+   * **Bing Térképek API-kulcs** – ezt a kulcsot már korábban megkapta, amikor létrehozta a fiókját a Bing fejlesztői központjában.
 
-    Most, hogy az adatforrás rendelkezésre áll, elkezdhetünk dolgozni az UWP-alkalmazással.
+     Most, hogy az adatforrás rendelkezésre áll, elkezdhetünk dolgozni az UWP-alkalmazással.
 2. Engedélyezze a helyszínszolgáltatásokat az alkalmazáshoz. Nyissa meg a `Package.appxmanifest` fájlt a **Megoldáskezelőben**.
 
     ![](./media/notification-hubs-geofence/vs-package-manifest.png)

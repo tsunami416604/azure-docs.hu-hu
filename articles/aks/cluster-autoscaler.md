@@ -7,21 +7,23 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: iainfou
-ms.openlocfilehash: 841c9ae933dfa6d94eaf265549c7e697caf3dc02
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: dd66ac6392c0afb88d43a8814cef07ec590f6a55
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782513"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57990750"
 ---
-# <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Alkalmazás figyelembevételével Azure Kubernetes Service (AKS) egy fürt automatikus méretezése
+# <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Előnézet - igények figyelembevételével készült alkalmazás az Azure Kubernetes Service (AKS) egy fürt automatikus méretezése
 
 Tartani az alkalmazások számára az Azure Kubernetes Service (AKS), szükség lehet a számítási feladatokat futtató csomópontok számának beállításához. A fürt méretező összetevő esetében a fürtben, amely korlátozott erőforrások miatt nem lehet ütemezni podok tekintheti meg. Problémák észlelése, a csomópontok számát az alkalmazás igény nő. Csomópontok futtató podok, majd csökkenthető az igény szerint csomópontok hiánya szintén rendszeresen ellenőrzi. Automatikus méretezése felfelé és lefelé az AKS-fürt a csomópontok számát, ez a képesség lehetővé teszi egy hatékony, költségkímélő fürtöt futtat.
 
 Ez a cikk bemutatja, hogyan engedélyezheti és kezelheti a fürt méretező az AKS-fürtben.
 
 > [!IMPORTANT]
-> Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
+> Az AKS előzetes verziójú funkciók a következők: az önkiszolgáló és vehetnek részt. Visszajelzés és hibák gyűjtsön közösségünkhöz előzetes verziók vannak megadva. Azonban nem támogatja őket az Azure műszaki támogatást. Hozzon létre egy fürtöt, vagy adja hozzá ezeket a funkciókat a meglévő fürtökre, ha a fürt nem támogatott, mindaddig, amíg a funkció már nem előzetes verzióban érhető el és hallgatóknak az általánosan elérhető (GA).
+>
+> Ha az előzetes verziójú szolgáltatásaihoz is problémák merülnek fel [nyisson egy problémát a AKS GitHub-adattárat a] [ aks-github] az előzetes verziójú funkció a bejelentett hiba címét nevére.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -36,7 +38,7 @@ az extension add --name aks-preview
 ```
 
 > [!NOTE]
-> Amikor telepíti a *aks előzetes* bővítményt, minden AKS-fürtöt hoz létre a méretezési csoport előzetes telepítési modellt használja. Kikapcsolhatja az újat, és rendszeres, teljes körűen támogatott fürtök létrehozását, távolítsa el a bővítmény használatával `az extension remove --name aks-preview`.
+> Ha korábban már telepítette a *aks előzetes* bővítmény, az elérhető frissítések telepítése használatával a a `az extension update --name aks-preview` parancsot.
 
 ### <a name="register-scale-set-feature-provider"></a>Méretezési csoport beállítása a szolgáltatás-szolgáltató regisztrálása
 
@@ -87,7 +89,7 @@ A két autoscalers hogyan tudnak együttműködni, és gyakran egyaránt telepí
 Ha egy AKS-fürt létrehozásához szükséges, használja a [az aks létrehozása] [ az-aks-create] parancsot. Adjon meg egy *– kubernetes-verzió* , amely megfelel-e vagy meghaladja a minimális verziószám, ahogyan az előző szükséges [megkezdése előtt](#before-you-begin) szakaszban. Engedélyezze és konfigurálja a fürt méretező használja a *– enable-fürt-méretező* paramétert, és adja meg a csomópont *--min-count* és *--maximális darabszám*.
 
 > [!IMPORTANT]
-> Fürt automatikus méretező egy Kubernetes-összetevő. Bár az AKS-fürtöt a csomópontok beállítása virtuálisgép-méretezési csoportot, nem manuális engedélyezése vagy szerkessze a beállításokat a méretezési csoport automatikus méretezés az Azure portal vagy az Azure CLI használatával. Lehetővé teszik a Kubernetes fürt méretező szükséges méretezési beállításainak kezelése. További információkért lásd: [lehet módosítani az AKS-erőforrások MC_ erőforráscsoportban?](faq.md#can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group)
+> Fürt automatikus méretező egy Kubernetes-összetevő. Bár az AKS-fürtöt a csomópontok beállítása virtuálisgép-méretezési csoportot, nem manuális engedélyezése vagy szerkessze a beállításokat a méretezési csoport automatikus méretezés az Azure portal vagy az Azure CLI használatával. Lehetővé teszik a Kubernetes fürt méretező szükséges méretezési beállításainak kezelése. További információkért lásd: [lehet módosítani az AKS-erőforrások MC_ erőforráscsoportban?](faq.md#can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc_-resource-group)
 
 Az alábbi példa egy AKS-fürtöt hoz létre virtuálisgép-méretezési csoportot és a fürt méretező engedélyezve van, és használja legalább *1* és a maximális *3* csomópontok:
 
@@ -174,6 +176,7 @@ Ez a cikk láthatta, hogyan skálázhatja automatikusan az AKS-csomópontok szá
 [az-feature-register]: /cli/azure/feature#az-feature-register
 [az-feature-list]: /cli/azure/feature#az-feature-list
 [az-provider-register]: /cli/azure/provider#az-provider-register
+[aks-github]: https://github.com/azure/aks/issues]
 
 <!-- LINKS - external -->
 [az-aks-update]: https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview

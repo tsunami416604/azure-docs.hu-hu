@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/28/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6e0cff6725db52601b4639ad638216370dd3cfda
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: ac214e9d29bade37bcb00f804859db730131752b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810695"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087329"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Vészhelyreállítás beállítása a helyszíni Hyper-V virtuális gépekhez az Azure-ba
 
@@ -93,7 +93,7 @@ Abban az esetben, ha egy Hyper-V core-kiszolgáló használ, kövesse az alábbi
  
 2.  Futtassa a ``.\setupdr.exe /i `` parancsot.
 
-    Eredmények lesz naplózva, %Programdata%\ASRLogs\DRASetupWizard.log
+    Results will be logged to %Programdata%\ASRLogs\DRASetupWizard.log
 
 3.  Regisztrálja a kiszolgálót, a parancs segítségével:
 
@@ -137,7 +137,7 @@ A Site Recovery ellenőrzi, hogy rendelkezik-e legalább egy kompatibilis Azure-
 4. Válassza ki az előző oktatóanyag során létrehozott **contosovmsacct1910171607** tárfiókot a replikált adatokhoz és a **ContosoASRnet** hálózatot, amelybe a feladatátvételt követően kerülnek az Azure-beli virtuális gépek.
 5. A **Virtuális gépek** > **Kiválasztás** menüben jelölje ki a replikálni kívánt virtuális gépeket. Ezután kattintson az **OK** gombra.
 
- A **Védelem engedélyezése** művelet előrehaladását a **Feladatok** > **Site Recovery-feladatok** menüpontban követheti nyomon. A **Védelem véglegesítése** feladat befejeztével a kezdeti replikálás is befejeződik, a virtuális gép pedig készen áll a feladatátvételre.
+   A **Védelem engedélyezése** művelet előrehaladását a **Feladatok** > **Site Recovery-feladatok** menüpontban követheti nyomon. A **Védelem véglegesítése** feladat befejeztével a kezdeti replikálás is befejeződik, a virtuális gép pedig készen áll a feladatátvételre.
 
 ## <a name="next-steps"></a>További lépések
 [Vészhelyreállítási próba végrehajtása](tutorial-dr-drill-azure.md)

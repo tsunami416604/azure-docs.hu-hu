@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 1/10/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 09e7ea73bc17e3fae97cb83765ee0b6469ba6f9f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 86c00242d2d7dbb9441b09dc327e4ee8cbbd729b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57454085"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58099967"
 ---
 # <a name="quickstart-perform-a-news-search-using-nodejs-and-the-bing-news-search-rest-api"></a>Gyors útmutató: Hajtsa végre a Node.js és a Bing News Search REST API használatával hírkeresés
 
@@ -184,4 +184,4 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-[Egyoldalas webalkalmazás létrehozása](tutorial-bing-news-search-single-page-app.md)
+> [Egyoldalas webalkalmazás létrehozása](tutorial-bing-news-search-single-page-app.md)

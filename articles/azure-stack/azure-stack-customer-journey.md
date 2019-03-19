@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: asganesh
 ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: d5ed8da4ea527e350b1ff73d0bd188cdad2caf71
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ad58b8f1034a0e2818d3aca53c023736da9370cb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189208"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119921"
 ---
 # <a name="azure-stack-datacenter-integration"></a>Az Azure Stack adatközpont integrációja
 
@@ -116,32 +116,32 @@ Számos lépést kell végrehajtani a partner által előtt a megoldás lesz tov
 
 Az OEM-Partner által végrehajtandó műveletek a következők:
 
--   [Run test-azurestack](azure-stack-diagnostic-test.md#run-validation-tool-to-test-system-readiness-before-installing-update-or-hotfix)
+- [Run test-azurestack](azure-stack-diagnostic-test.md#run-validation-tool-to-test-system-readiness-before-installing-update-or-hotfix)
 
--   [Regisztráció az Azure-ral](azure-stack-registration.md)
+- [Regisztráció az Azure-ral](azure-stack-registration.md)
 
--   [Marketplace-en szindikálás](azure-stack-download-azure-marketplace-item.md#use-the-marketplace-syndication-tool-to-download-marketplace-items)
+- [Marketplace-en szindikálás](azure-stack-download-azure-marketplace-item.md#use-the-marketplace-syndication-tool-to-download-marketplace-items)
 
--   Biztonsági mentési Kapcsolókonfiguráció és HLH konfigurációs fájlok
+- Biztonsági mentési Kapcsolókonfiguráció és HLH konfigurációs fájlok
 
--   Remove DVM
+- Remove DVM
 
--   Összefoglaló ügyfél telepítésének előkészítése
+- Összefoglaló ügyfél telepítésének előkészítése
 
--   [Győződjön meg arról, hogy a megoldás szoftverek a legújabb verzióra frissül, a frissítések keresése](.\azure-stack-updates.md)
+- [Győződjön meg arról, hogy a megoldás szoftverek a legújabb verzióra frissül, a frissítések keresése](./azure-stack-updates.md)
 
 Vannak kötelező vagy nem kötelező a telepítés típusától függően számos lépést.
 
--   Ha a telepítés befejeződött, használatával [az AD FS](azure-stack-integrate-identity.md), majd az Azure Stack stamp kell integrálni lehet az ügyfél által a saját Active Directory összevonási szolgáltatások.
+- Ha a telepítés befejeződött, használatával [az AD FS](azure-stack-integrate-identity.md), majd az Azure Stack stamp kell integrálni lehet az ügyfél által a saját Active Directory összevonási szolgáltatások.
 
   > [!NOTE]
   > Ez a lépés nem az ügyfél felelőssége, bár partnernek igény szerint választhat, hogy ehhez szolgáltatásokat.
 
--   Integráció a meglévő felügyeleti rendszer a megfelelő partnertől.
+- Integráció a meglévő felügyeleti rendszer a megfelelő partnertől.
 
-    -   [A System Center Operations Manager integrációjának](azure-stack-integrate-monitor.md) flottakezelés képességeket is támogatja.
+  -   [A System Center Operations Manager integrációjának](azure-stack-integrate-monitor.md) flottakezelés képességeket is támogatja.
 
-    -   [Nagios-integráció](azure-stack-integrate-monitor.md#integrate-with-nagios)
+  -   [Nagios-integráció](azure-stack-integrate-monitor.md#integrate-with-nagios)
 
 ## <a name="overall-timeline"></a>Teljes ütemterv
 

@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 02/15/2019
-ms.openlocfilehash: b0ec8bf52b0b41aef4ea4cc2bfb6ed8fdcd170ec
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 15cdc78559a8f299e2bf0f357bbb7c0664881712
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343289"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58116894"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Futtathat Apache Oozie a HDInsight Hadoop-fürtöket a vállalati biztonsági csomaggal
 
@@ -38,9 +38,9 @@ Az Oozie használatával a rendszer, például Java programok vagy héjparancsf�
 A Secure Shell (SSH) további információért lásd: [HDInsight (Hadoop) SSH-val csatlakozhat](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 1. Csatlakozás a HDInsight-fürthöz SSH használatával:  
- ```bash
-ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
- ```
+   ```bash
+   ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
+   ```
 
 2. A sikeres Kerberos-hitelesítés ellenőrzéséhez használja a `klist` parancsot. Ha nem, használja a `kinit` elindításához a Kerberos-hitelesítést.
 
@@ -54,23 +54,25 @@ ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
 ## <a name="define-the-workflow"></a>Határozhat meg munkafolyamatot
 Az Oozie munkafolyamat-definíciókhoz az Apache Hadoop folyamat adatdefiníciós nyelv (hPDL) nyelven íródtak. hPDL folyamat XML-definíció nyelven. A következő lépésekkel határozhat meg munkafolyamatot:
 
-1.  Állítsa be a munkaterület egy tartományi felhasználó:
- ```bash
-hdfs dfs -mkdir /user/<DomainUser>
-cd /home/<DomainUserPath>
-cp /usr/hdp/<ClusterVersion>/oozie/doc/oozie-examples.tar.gz .
-tar -xvf oozie-examples.tar.gz
-hdfs dfs -put examples /user/<DomainUser>/
- ```
-Cserélje le `DomainUser` tartományi felhasználónévvel. Cserélje le `DomainUserPath` a kezdőkönyvtár elérési útvonal a tartományi felhasználók számára. Cserélje le `ClusterVersion` a fürt Hortonworks Data Platform (HDP) verziójával.
+1. Állítsa be a munkaterület egy tartományi felhasználó:
+   ```bash
+   hdfs dfs -mkdir /user/<DomainUser>
+   cd /home/<DomainUserPath>
+   cp /usr/hdp/<ClusterVersion>/oozie/doc/oozie-examples.tar.gz .
+   tar -xvf oozie-examples.tar.gz
+   hdfs dfs -put examples /user/<DomainUser>/
+   ```
+   Cserélje le `DomainUser` tartományi felhasználónévvel. 
+   Cserélje le `DomainUserPath` a kezdőkönyvtár elérési útvonal a tartományi felhasználók számára. 
+   Cserélje le `ClusterVersion` a fürt Hortonworks Data Platform (HDP) verziójával.
 
-2.  A következő utasítás használatával hozhat létre és módosíthat egy új fájlt:
- ```bash
-nano workflow.xml
- ```
+2. A következő utasítás használatával hozhat létre és módosíthat egy új fájlt:
+   ```bash
+   nano workflow.xml
+   ```
 
 3. Miután megnyílik a nano szerkesztő, adja meg a következő XML formátumú, a fájl tartalmát:
- ```xml
+   ```xml
     <?xml version="1.0" encoding="UTF-8"?>
     <workflow-app xmlns="uri:oozie:workflow:0.4" name="map-reduce-wf">
        <credentials>
@@ -165,25 +167,25 @@ nano workflow.xml
        </kill>
        <end name="end" />
     </workflow-app>
- ```
+   ```
 4. Cserélje le `clustername` a fürt nevére. 
 
 5. Mentse a fájlt, jelölje be a Ctrl + X. Írja be a `Y` (igen) kifejezést. Válassza ki **Enter**.
 
     A munkafolyamat két részre oszlik:
-    *   **Hitelesítő adatok szakaszban.** Ebben a szakaszban a hitelesítő adatait, az Oozie-művelet hitelesítéséhez használt fogadja:
+   * **Hitelesítő adatok szakaszban.** Ebben a szakaszban a hitelesítő adatait, az Oozie-művelet hitelesítéséhez használt fogadja:
 
-       Ez a példa a Hive-műveletek hitelesítést használ. További tudnivalókért lásd: [művelet hitelesítési](https://oozie.apache.org/docs/4.2.0/DG_ActionAuthentication.html).
+     Ez a példa a Hive-műveletek hitelesítést használ. További tudnivalókért lásd: [művelet hitelesítési](https://oozie.apache.org/docs/4.2.0/DG_ActionAuthentication.html).
 
-       A hitelesítőadat-szolgáltatás engedélyezi a felhasználó megszemélyesítése Hadoop-szolgáltatásokhoz való hozzáférésre vonatkozó Oozie műveletek.
+     A hitelesítőadat-szolgáltatás engedélyezi a felhasználó megszemélyesítése Hadoop-szolgáltatásokhoz való hozzáférésre vonatkozó Oozie műveletek.
 
-    *   **A művelet szakasz.** Ebben a szakaszban három műveletet tartalmaz: mapreduce, Hive server 2 és a Hive server 1:
+   * **A művelet szakasz.** Ebben a szakaszban három műveletet tartalmaz: mapreduce, Hive server 2 és a Hive server 1:
 
-      - A művelet végrehajtása egy példa az Oozie csomagból mapreduce, amely az összesített word-count térkép csökkentheti.
+     - A művelet végrehajtása egy példa az Oozie csomagból mapreduce, amely az összesített word-count térkép csökkentheti.
 
-       - A Hive server 2 és a Hive server 1 műveletek-lekérdezést futtathat egy minta megadott HDInsight Hive-táblába.
+     - A Hive server 2 és a Hive server 1 műveletek-lekérdezést futtathat egy minta megadott HDInsight Hive-táblába.
 
-        A Hive-műveletek használata a hitelesítő adatokat határozza meg a hitelesítő adatok szakaszban hitelesítéshez kulcsszó használatával `cred` művelet elemében.
+     A Hive-műveletek használata a hitelesítő adatokat határozza meg a hitelesítő adatok szakaszban hitelesítéshez kulcsszó használatával `cred` művelet elemében.
 
 6. A következő parancs használatával másolja a `workflow.xml` fájlt `/user/<domainuser>/examples/apps/map-reduce/workflow.xml`:
      ```bash

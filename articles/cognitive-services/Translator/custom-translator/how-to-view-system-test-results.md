@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: conceptual
-ms.openlocfilehash: d06b4a0a9823871ffc14d7cfa7148f6e335835d6
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 67ddc7a8e9d79d0eef9c017b315385df62c18e33
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762670"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997717"
 ---
 # <a name="view-system-test-results"></a>Rendszer teszteredményeinek megtekintése
 
@@ -26,7 +26,7 @@ Válasszon ki egy projektet, majd válassza ki, hogy a projekt modellek lapján 
 
 A tesztelési lapot láthatja:
 
-1.  **Rendszer teszteredmények:** a tesztelési folyamat az betanítások eredményét. A tesztelési folyamat hoz létre a BLEU pontszámot.
+1.  **Rendszer teszteredmények:** A tesztelési folyamat az betanítások eredménye. A tesztelési folyamat hoz létre a BLEU pontszámot.
 
     **Mondat száma:** Hány párhuzamos mondatokat használták a vizsgálat beállítása.
 

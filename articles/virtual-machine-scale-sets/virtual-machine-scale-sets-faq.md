@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 03/13/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 610ac10e757ef422ce130c0cfe8253af6ba4b7b9
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 994612f390cb6c6dcb3b4c2acaaec839ef461d2c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542471"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999561"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure-beli virtuálisgép-méretezési csoportok – gyakori kérdések
 
@@ -234,7 +234,7 @@ Egyszerű szöveges nyilvános SSH-kulcsokat a Linux rendszerű virtuális gép 
 ```
 
 linuxConfiguration elem neve | Szükséges | Típus | Leírás
---- | --- | --- | --- |  ---
+--- | --- | --- | --- 
 ssh | Nem | Gyűjtemény | Adja meg a Linux operációs rendszer SSH-kulcs konfigurációja
 elérési út | Igen | Karakterlánc | Linux fájl elérési útját adja meg, az SSH-kulcsokat, vagy a tanúsítványt kell lennie
 keyData | Igen | Karakterlánc | Adja meg a base64-kódolású SSH nyilvános kulcs
@@ -309,7 +309,7 @@ Az Azure Key Vault-dokumentáció megállapítja, hogy az első titkos REST API 
 
 Módszer | URL-cím
 --- | ---
-GET | https://mykeyvault.vault.azure.net/secrets/{secret-name}/{secret-version}?api-version={api-version}
+GET | <https://mykeyvault.vault.azure.net/secrets/{secret-name}/{secret-version}?api-version={api-version}>
 
 Cserélje le a(z)*titkos kulcs-name*} a nevét, és cserélje le a {*titkos kulcs-verzió*} verziójával, a titkos kulcsot szeretné beolvasni. Előfordulhat, hogy ki kell zárni a titkos kulcs verzióját. Ebben az esetben lekéri a jelenlegi verziót.
 
@@ -535,7 +535,7 @@ Egy meglévő Azure virtuális hálózat beállítása egy virtuálisgép-méret
 
 ### <a name="how-do-i-add-the-ip-address-of-the-first-vm-in-a-virtual-machine-scale-set-to-the-output-of-a-template"></a>Hogyan adhatok hozzá az első virtuális gép IP-címét egy virtuális gép méretezési sablon kimenete?
 
-Adja hozzá az első virtuális gép IP-címét egy virtuális gép méretezési sablon kimenete, lásd: [Azure Resource Manager: Első virtuálisgép-méretezési csoportok magánhálózati IP-címek](http://stackoverflow.com/questions/42790392/arm-get-vmsss-private-ips).
+Adja hozzá az első virtuális gép IP-címét egy virtuális gép méretezési sablon kimenete, lásd: [Azure Resource Manager: Első virtuálisgép-méretezési csoportok magánhálózati IP-címek](https://stackoverflow.com/questions/42790392/arm-get-vmsss-private-ips).
 
 ### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>A méretezési csoportok használata a gyorsított hálózatkezelés?
 
@@ -721,3 +721,26 @@ A virtuálisgép-méretezési csoportban lévő virtuális gépek törlése és 
 - El szeretné indítani a virtuális gépek gyorsabban sikerült horizontális felskálázás egy virtuálisgép-méretezési csoportot.
   - A forgatókönyvhöz kapcsolódó, előfordulhat, hogy létrehozta a saját automatikus skálázási motor és a egy gyorsabb végpontok közötti skálán szeretné.
 - Rendelkezik egy virtuális gép méretezési csoportot, amely a egyenetlenül oszlanak el a tartalék tartomány vagy a frissítési tartományok között. Ez lehet, mert a szelektíven törölt virtuális gépek vagy virtuális gépek után túlzott törölve lett. Futó `stop deallocate` követ `start` a virtuális gép méretezési csoportot egyenlően osztja el a virtuális gépek tartalék tartomány és frissítési tartományok között.
+
+### <a name="how-do-i-take-a-snapshot-of-a-vmss-instance"></a>Hogyan használhatom a VMSS-példány pillanatkép?
+Hozzon létre egy pillanatképet egy VMSS egy példányát.
+
+```azurepowershell-interactive
+$rgname = "myResourceGroup"
+$vmssname = "myVMScaleSet"
+$Id = 0
+$location = "East US"
+ 
+$vmss1 = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssname -InstanceId $Id     
+$snapshotconfig = New-AzSnapshotConfig -Location $location -AccountType Standard_LRS -OsType Windows -CreateOption Copy -SourceUri $vmss1.StorageProfile.OsDisk.ManagedDisk.id
+New-AzSnapshot -ResourceGroupName $rgname -SnapshotName 'mySnapshot' -Snapshot $snapshotconfig
+``` 
+ 
+Felügyelt lemez létrehozása pillanatképből a.
+
+```azurepowershell-interactive
+$snapshotName = "myShapshot"
+$snapshot = Get-AzSnapshot -ResourceGroupName $rgname -SnapshotName $snapshotName  
+$diskConfig = New-AzDiskConfig -AccountType Premium_LRS -Location $location -CreateOption Copy -SourceResourceId $snapshot.Id
+$osDisk = New-AzDisk -Disk $diskConfig -ResourceGroupName $rgname -DiskName ($snapshotName + '_Disk') 
+```

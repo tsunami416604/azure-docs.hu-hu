@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/20/2019
-ms.openlocfilehash: 39877e01eb8b9690dc1ac7b1dbb79bab450814c4
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 59971454af4fa2b43d24df1d5876b30524d65d4b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456928"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57903988"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>Oktatóanyag: Az Azure AD-kiszolgáló rendszerbiztonsági tagok (Bejelentkezések) használata Azure SQL Database felügyelt példány biztonsági
 
@@ -148,13 +148,13 @@ Miután az Azure ad-ben kiszolgálói tag (bejelentkezés) létrehozott, és a m
 
 1. A következő felügyelt példányt az Azure ad-ben kiszolgálói tag (bejelentkezés), az SQL Server Management studióval csatlakozhat. Adja meg a felügyelt példány gazdagép nevét. A hitelesítéshez, az ssms-ben a rendszer három lehetőség közül választhat, ha az Azure AD-fiókkal jelentkezett be:
 
-    - Az Active Directory - Universal az MFA-támogatással
-    - Active Directory – jelszó
-    - Active Directory – integrált </br>
+   - Az Active Directory - Universal az MFA-támogatással
+   - Active Directory – jelszó
+   - Active Directory – integrált </br>
 
-    ![ssms-login-prompt.png](media/sql-database-managed-instance-security-tutorial/ssms-login-prompt.png)
+     ![ssms-login-prompt.png](media/sql-database-managed-instance-security-tutorial/ssms-login-prompt.png)
 
-    További információkért tekintse meg a következő cikket: [Univerzális hitelesítés az SQL Database és az SQL Data Warehouse használatával (SSMS-támogatás az MFA-hoz)](sql-database-ssms-mfa-authentication.md)
+     További információkért tekintse meg a következő cikket: [Univerzális hitelesítés az SQL Database és az SQL Data Warehouse használatával (SSMS-támogatás az MFA-hoz)](sql-database-ssms-mfa-authentication.md)
 
 1. Válassza ki **Active Directory - MFA-támogatással rendelkező univerzális**. Ekkor megjelenik a multi-factor Authentication (MFA) bejelentkezési ablak. Jelentkezzen be az Azure AD-jelszó.
 
@@ -207,10 +207,10 @@ Miután az Azure ad-ben kiszolgálói tag (bejelentkezés) létrehozott, és a m
 1. A **Object Explorer**, kattintson a jobb gombbal a kiszolgáló, és válassza a **új lekérdezés** az új kapcsolat.
 1. Az újonnan létrehozott kiszolgáló engedélyeinek ellenőrzése az Azure AD kiszolgálói tag (bejelentkezés) a következő parancs végrehajtásával:
 
-    ```sql
-    SELECT * FROM sys.fn_my_permissions (NULL, 'DATABASE')
-    GO
-    ```
+     ```sql
+     SELECT * FROM sys.fn_my_permissions (NULL, 'DATABASE')
+     GO
+     ```
 
 > [!NOTE]
 > Azure AD-vendég felhasználók támogatja a felügyelt példány bejelentkezéseket, csak akkor, ha az Azure AD-csoport részeként hozzá. Egy Azure ad-ben vendégfelhasználó egy fiók, amely az Azure ad-ben a következő felügyelt példányt tartozó, egy másik Azure AD-ből a cégbe. Ha például joe@contoso.com (Azure AD-fiókot) vagy steve@outlook.com (MSA-fiók) is hozzáadhatók az Azure ad-ben aadsqlmi csoporthoz. A felhasználók egy csoportba kerülnek, amint egy bejelentkezési hozhat létre a felügyelt példány **fő** adatbázis csoportot használó a **CREATE LOGIN** szintaxis. Ez a csoport tagjai vendégfelhasználók csatlakozhat a felügyelt példány az aktuális bejelentkezési adatok használata (például joe@contoso.com vagy steve@outlook.com).
@@ -360,7 +360,7 @@ Felügyelt példány az Azure AD-kiszolgálószintű rendszerbiztonsági tagok (
     GO
     ```
 
-1. A következő paranccsal tekintheti meg, hogy a felhasználó akkor van megszemélyesítésekor, a tárolt eljárás végrehajtása esetén **bob@aadsqlmi.net**.
+1. A következő paranccsal, hogy a felhasználó megszemélyesítésekor, a tárolt eljárás végrehajtásakor használt **bob\@aadsqlmi.net**.
 
     ```sql
     Exec dbo.usp_Demo

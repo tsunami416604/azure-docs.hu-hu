@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 76cc22f614b7877db54fb5af0e58ff90105a8194
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: d921d0907d7481b842fd98db2c0d7cb5f402f24f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961771"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835977"
 ---
 # <a name="explore-data-in-azure-blob-storage-with-pandas"></a>Az adatok Azure blob storage-pandas megismerése
 
-Ez a cikk bemutatja, hogyan fedezheti fel az Azure blob-tároló használatával tárolt adatok [pandas](http://pandas.pydata.org/) Python-csomag.
+Ez a cikk bemutatja, hogyan fedezheti fel az Azure blob-tároló használatával tárolt adatok [pandas](https://pandas.pydata.org/) Python-csomag.
 
 Ez a feladat Ez a lépés a [csoportos adatelemzési folyamat](overview.md).
 
@@ -53,7 +53,7 @@ t2=time.time()
 print(("It takes %s seconds to download "+blobname) % (t2 - t1))
 ```
 
-2. Az adatok olvashatók be egy pandas DataFrame a letöltött fájl.
+1. Az adatok olvashatók be egy pandas DataFrame a letöltött fájl.
 
 ```python
 #LOCALFILE is the file path
@@ -71,7 +71,7 @@ Most már készen áll az adatok, és hozzon létre ehhez az adatkészlethez fun
 print 'the size of the data is: %d rows and  %d columns' % dataframe_blobdata.shape
 ```
 
-2. **Vizsgálja meg** az első vagy utolsó néhány **sorok** a következő adatkészletben:
+1. **Vizsgálja meg** az első vagy utolsó néhány **sorok** a következő adatkészletben:
 
 ```python
 dataframe_blobdata.head(10)
@@ -79,33 +79,33 @@ dataframe_blobdata.head(10)
 dataframe_blobdata.tail(10)
 ```
 
-3. Ellenőrizze a **adattípus** minden oszlop lett importálva, a következő mintakód segítségével
+1. Ellenőrizze a **adattípus** minden oszlop lett importálva, a következő mintakód segítségével
 
 ```python
 for col in dataframe_blobdata.columns:
     print dataframe_blobdata[col].name, ':\t', dataframe_blobdata[col].dtype
 ```
 
-4. Ellenőrizze a **alapszintű stats** az oszlopok a következő adatok
+1. Ellenőrizze a **alapszintű stats** az oszlopok a következő adatok
 
 ```python
 dataframe_blobdata.describe()
 ```
 
-5. A következő tekintse meg a minden oszlop értékét a bejegyzések száma
+1. A következő tekintse meg a minden oszlop értékét a bejegyzések száma
 
 ```python
 dataframe_blobdata['<column_name>'].value_counts()
 ```
 
-6. **Hiányzó értékek száma** és az egyes oszlopokban a következő mintakód segítségével bejegyzések tényleges száma
+1. **Hiányzó értékek száma** és az egyes oszlopokban a következő mintakód segítségével bejegyzések tényleges száma
 
 ```python
 miss_num = dataframe_blobdata.shape[0] - dataframe_blobdata.count()
 print miss_num
 ```
 
-7. Ha rendelkezik **hiányzó** az adatok adott oszlopban, akkor is el kell dobni ezeket a következő:
+1. Ha rendelkezik **hiányzó** az adatok adott oszlopban, akkor is el kell dobni ezeket a következő:
 
 ```python
 dataframe_blobdata_noNA = dataframe_blobdata.dropna()
@@ -118,7 +118,7 @@ Cserélje le a hiányzó értékek másik módja, a függvény a mód:
 dataframe_blobdata_mode = dataframe_blobdata.fillna({'<column_name>':dataframe_blobdata['<column_name>'].mode()[0]})
 ```
 
-8. Hozzon létre egy **hisztogram** nyomtatandó dobozok száma változó segítségével jeleníti meg a változó terjesztési
+1. Hozzon létre egy **hisztogram** nyomtatandó dobozok száma változó segítségével jeleníti meg a változó terjesztési
 
 ```python
 dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
@@ -126,7 +126,7 @@ dataframe_blobdata['<column_name>'].value_counts().plot(kind='bar')
 np.log(dataframe_blobdata['<column_name>']+1).hist(bins=50)
 ```
 
-9. Tekintse meg **összefüggéseket** változók a teszteredményekből, vagy pedig a beépített korrelációs függvény között
+1. Tekintse meg **összefüggéseket** változók a teszteredményekből, vagy pedig a beépített korrelációs függvény között
 
 ```python
 #relationship between column_a and column_b using scatter plot

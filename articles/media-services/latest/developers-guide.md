@@ -16,12 +16,12 @@ ms.workload: media
 ms.date: 02/22/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 97123ec795353073b912bd83e0abb45e23549a75
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: b9c89b6cb6dbc6cb217be671eb0e52c0416811ed
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749800"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889845"
 ---
 # <a name="start-developing-with-media-services-v3-api-using-sdkstools"></a>A Media Services v3 API SDK-k és eszközök használata a fejlesztés megkezdése
 
@@ -95,7 +95,7 @@ A Media Services felfedezése [.NET ref](https://aka.ms/ams-v3-dotnet-ref) dokum
 - [DRM a dinamikus titkosítás és a licenc kézbesítési szolgáltatás használata – .NET](protect-with-drm.md)
 - [A meglévő házirend - .NET aláíró kulcs lekérése](get-content-key-policy-dotnet-howto.md)
 - [Szűrők létrehozása a Media Services – .NET](filters-dynamic-manifest-dotnet-howto.md)
-- [Az Azure Functions v2 a Media Services v3 igény szerinti videó példák speciális](http://aka.ms/ams3functions)
+- [Az Azure Functions v2 a Media Services v3 igény szerinti videó példák speciális](https://aka.ms/ams3functions)
 
 ## <a name="java"></a>Java
 

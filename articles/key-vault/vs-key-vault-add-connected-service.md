@@ -11,12 +11,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: ghogen
-ms.openlocfilehash: 098958cd729f1c616a93bbb5264445cb6d877f8b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: de849ae290228826ee500ae1c7e623210e585d34
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441984"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113248"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>Key Vault hozzáadása a webalkalmazás a Visual Studio csatlakoztatott szolgáltatásai segítségével
 
@@ -78,7 +78,7 @@ Most a kód a titkos kulcsokat is elérheti. A következő lépések eltérnek a
 1. A két nuget-csomagok telepítéséhez [AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) és [KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet-kódtárakat.
 
 2. Nyissa meg a Program.cs fájlt, és frissítse a kódot az alábbira: 
-```
+   ```
     public class Program
     {
         public static void Main(string[] args)
@@ -106,27 +106,27 @@ Most a kód a titkos kulcsokat is elérheti. A következő lépések eltérnek a
 
         private static string GetKeyVaultEndpoint() => "https://<YourKeyVaultName>.vault.azure.net";
     }
-```
+   ```
 3. Ezután nyissa meg a About.cshtml.cs fájlt, és írja be az alábbi kódot
-    1. Ez Microsoft.Extensions.Configuration hivatkozást tartalmaz a utasítás használatával    
-        ```
-        using Microsoft.Extensions.Configuration
-        ```
-    2. Ez a konstruktor hozzáadása
-        ```
-        public AboutModel(IConfiguration configuration)
-        {
-            _configuration = configuration;
-        }
-        ```
-    3. Frissítse a OnGet módot. A helyőrző értékét az itt látható a fenti parancsok létrehozott titkos nevű frissítése
-        ```
-        public void OnGet()
-        {
-            //Message = "Your application description page.";
-            Message = "My key val = " + _configuration["<YourSecretNameThatWasCreatedAbove>"];
-        }
-        ```
+   1. Ez Microsoft.Extensions.Configuration hivatkozást tartalmaz a utasítás használatával    
+       ```
+       using Microsoft.Extensions.Configuration
+       ```
+   2. Ez a konstruktor hozzáadása
+       ```
+       public AboutModel(IConfiguration configuration)
+       {
+           _configuration = configuration;
+       }
+       ```
+   3. Frissítse a OnGet módot. A helyőrző értékét az itt látható a fenti parancsok létrehozott titkos nevű frissítése
+       ```
+       public void OnGet()
+       {
+           //Message = "Your application description page.";
+           Message = "My key val = " + _configuration["<YourSecretNameThatWasCreatedAbove>"];
+       }
+       ```
 
 Futtassa az alkalmazást helyileg navigáljon az oldalról. Meg kell beolvasni a titkos érték
 

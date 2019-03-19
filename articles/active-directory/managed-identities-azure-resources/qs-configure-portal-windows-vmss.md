@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 02/20/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79ab1f046e5ab6c5b777e9253dd21e47fa9d593a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c922e0ef005b0e0b22af32f52d8bf28aff0e9515
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187933"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57998703"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-the-azure-portal"></a>Felügyelt identitások az Azure-erőforrások konfigurálása egy virtuális gép méretezési csoportban az Azure portal használatával
 
@@ -59,7 +59,7 @@ A rendszer által hozzárendelt felügyelt identitás eredetileg anélkül, hogy
 
 3. Alatt **rendszerhez rendelt**, **állapot**, jelölje be **a** majd **mentése**:
 
-   ![Konfiguráció lap képernyőképe](./media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png)](./media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png#lightbox)  
+   ![Konfiguráció lap képernyőképe](./media/msi-qs-configure-portal-windows-vmss/create-windows-vmss-portal-configuration-blade.png) 
 
 ### <a name="remove-system-assigned-managed-identity-from-a-virtual-machine-scale-set"></a>Felügyelt identitás alapértelmezett eltávolítása egy virtuálisgép-méretezési csoportot
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: c736a9b4962de26f43dc79773149e834c37cbe85
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 944f008d0243d974a5d439438a5a645b7f3ca248
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233405"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57856790"
 ---
 # <a name="get-started-with-microsoft-power-bi-workspace-collections"></a>A Microsoft Power BI-munkaterületcsoportok bemutatása
 
@@ -37,7 +37,7 @@ A **munkaterület-csoportok** a legfelsőbb szintű Azure-erőforrások, melyek 
 
 Az alábbiakban részletes bemutatjuk, hogyan hozhat létre egy **munkaterület-csoportot** az Azure Portal segítségével.
 
-1. Nyissa meg az **Azure Portalt** és jelentkezzen be: [http://portal.azure.com](http://portal.azure.com).
+1. Nyissa meg az **Azure Portalt** és jelentkezzen be: [https://portal.azure.com](https://portal.azure.com).
 2. Válassza a **+Új** lehetőséget az ablak tetején.
    
    ![+Új lehetőség az Azure Portalon](media/get-started/create-workspace-1.png)
@@ -119,5 +119,5 @@ A JavaScript API használatával saját alkalmazásában készíthet jelentést 
 [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
 [JavaScript beágyazási minta](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 
-További kérdései vannak? [Tegye próbára a Power BI közösségét](http://community.powerbi.com/)
+További kérdései vannak? [Tegye próbára a Power BI közösségét](https://community.powerbi.com/)
 

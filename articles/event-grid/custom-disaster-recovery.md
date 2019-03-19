@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: tutorial
 ms.date: 01/16/2018
 ms.author: babanisa
-ms.openlocfilehash: 80f3574fb19d1829ebeac124788c240263c66812
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: fa0ffa9ad913f0dc3afe8dc31aeaa0254fa2d241
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57548421"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57863168"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>A saját vész-helyreállítási hozhat létre egyéni témaköröket az Event Gridben
 
@@ -54,10 +54,10 @@ Először hozzon létre két Event Grid-témakör. Ezek a témakörök fog műk�
 
 1. Az Event Grid témakörök menüjében válassza **+ Hozzáadás** az elsődleges témakör létrehozásához.
 
-    * A témakör egy logikai név és hozzáadása "-elsődleges" utótaggal kiegészítve, hogy könnyen nyomon követhető.
-    * Ez a témakör régióban lesz az elsődleges régióba.
+   * A témakör egy logikai név és hozzáadása "-elsődleges" utótaggal kiegészítve, hogy könnyen nyomon követhető.
+   * Ez a témakör régióban lesz az elsődleges régióba.
 
-    ![Elsődleges Event Grid-témakör létrehozása párbeszédpanelen](./media/custom-disaster-recovery/create-primary-topic.png)
+     ![Elsődleges Event Grid-témakör létrehozása párbeszédpanelen](./media/custom-disaster-recovery/create-primary-topic.png)
 
 1. A témakör létrehozása után keresse meg, és másolja a **téma végpontja**. az URI-t később még szüksége lesz.
 
@@ -69,11 +69,11 @@ Először hozzon létre két Event Grid-témakör. Ezek a témakörök fog műk�
 
 1. A témakör panelen kattintson a **+ esemény-előfizetés** csatlakozás, az előfizetés az eseményt fogadó webhely végzett az oktatóanyaggal az Előfeltételek előfizetést létrehozni.
 
-    * Adja meg az esemény-előfizetés logikai nevét, és adja hozzá "-elsődleges" utótaggal kiegészítve, hogy könnyen nyomon követhető.
-    * Válassza ki a végpont típusa Webhook.
-    * Állítsa be a végpont az eseményt fogadó esemény URL-címre, amely kell kinéznie, például: `https://<your-event-reciever>.azurewebsites.net/api/updates`
+   * Adja meg az esemény-előfizetés logikai nevét, és adja hozzá "-elsődleges" utótaggal kiegészítve, hogy könnyen nyomon követhető.
+   * Válassza ki a végpont típusa Webhook.
+   * Állítsa be a végpont az eseményt fogadó esemény URL-címre, amely kell kinéznie, például: `https://<your-event-reciever>.azurewebsites.net/api/updates`
 
-    ![Event Grid elsődleges esemény-előfizetés](./media/custom-disaster-recovery/create-primary-es.png)
+     ![Event Grid elsődleges esemény-előfizetés](./media/custom-disaster-recovery/create-primary-es.png)
 
 1. Ismételje meg a másodlagos témakör és előfizetés létrehozása ugyanezt a folyamatot. Ennek során cserélje le a "-elsődleges" utótag az "– másodlagos" könnyebb nyomon követésére. Végül ellenőrizze, hogy egy másik Azure-régióban való helyezze. Helyezheti, bárhol felhasználható, amíg javasoljuk, hogy használja a [Azure párosított régiói](../best-practices-availability-paired-regions.md). A másodlagos témakör és előfizetés és a egy másik régióban biztosítja, hogy az új események fog haladni, még akkor is, ha az elsődleges régió leáll.
 
@@ -91,7 +91,7 @@ Most, hogy a témakörök és előfizetések telepítő regionálisan redundáns
 
 ### <a name="basic-client-side-implementation"></a>Alapszintű ügyféloldali megvalósítása
 
-Az alábbi mintakód egy egyszerű .net közzétevő, is minden esetben megpróbálkoznak való közzétételéhez először az elsődleges témakör. Ha nem jár sikerrel, akkor majd feladatátvétel a másodlagos témakört. Mindkét esetben akkor is ellenőrzi a health api egy GET tegye meg a témakör `https://<topic-name>.<topic-region>.eventgrid.azure.net/api/health`. Kifogástalan állapotú témakör mindig kell visszaadnia **200 OK** egy GET készült mikor a **/api/Állapotjegyzői** végpont.
+Az alábbi mintakód egy egyszerű .NET közzétevő, is minden esetben megpróbálkoznak való közzétételéhez először az elsődleges témakör. Ha nem jár sikerrel, akkor majd feladatátvétel a másodlagos témakört. Mindkét esetben akkor is ellenőrzi a health api egy GET tegye meg a témakör `https://<topic-name>.<topic-region>.eventgrid.azure.net/api/health`. Kifogástalan állapotú témakör mindig kell visszaadnia **200 OK** egy GET készült mikor a **/api/Állapotjegyzői** végpont.
 
 ```csharp
 using System;

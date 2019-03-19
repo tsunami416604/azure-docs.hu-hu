@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.reviewer: Dale.Koetke
 ms.date: 12/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: ec0211c71b8be66262ef0f19dcd1f952051c97b8
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: edf724d6fd659ad4e8887a9c68467d17a33f5ccc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332676"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110281"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Használat és költségek kezelése az Application Insights
 
@@ -167,15 +167,15 @@ Mivel ez a csomag csak az Operations Management Suite-előfizetéssel rendelkez�
 ### <a name="how-the-enterprise-plan-works"></a>A vállalati csomag működése
 
 * Minden egyes csomópont, amely az alkalmazások telemetriai adatokat küld a nagyvállalati csomaghoz kell fizetnie.
- * A *csomópont* egy fizikai vagy virtuális gép vagy a platform--szolgáltatásként szerepkörpéldány, amelyen az alkalmazást.
- * Fejlesztői gépek, az ügyfelek böngészőin és a mobileszközök nem számítanak csomópontnak is.
- * Ha az alkalmazás által küldött telemetriai adatok, például egy webszolgáltatás és a egy háttérbeli feldolgozó több összetevőt az összetevőket külön-külön számoljuk.
- * [Élő metrikák Stream](../../azure-monitor/app/live-stream.md) adatok célokra díjszabás után nem kell fizetnie. Az előfizetéshez a költségek csomópontonként, nem az egyes alkalmazások vannak. Ha 12 a telemetriai adatokat küldő öt csomóponttal rendelkezik alkalmazások, a díj az öt csomópont van.
+  * A *csomópont* egy fizikai vagy virtuális gép vagy a platform--szolgáltatásként szerepkörpéldány, amelyen az alkalmazást.
+  * Fejlesztői gépek, az ügyfelek böngészőin és a mobileszközök nem számítanak csomópontnak is.
+  * Ha az alkalmazás által küldött telemetriai adatok, például egy webszolgáltatás és a egy háttérbeli feldolgozó több összetevőt az összetevőket külön-külön számoljuk.
+  * [Élő metrikák Stream](../../azure-monitor/app/live-stream.md) adatok célokra díjszabás után nem kell fizetnie. Az előfizetéshez a költségek csomópontonként, nem az egyes alkalmazások vannak. Ha 12 a telemetriai adatokat küldő öt csomóponttal rendelkezik alkalmazások, a díj az öt csomópont van.
 * Bár a havi díjak korlátozott kell fizetnie, csak az adott órán belül, ahol egy csomópont telemetriai adatokat küld egy alkalmazásból. A óradíjat számítunk fel a határolójeles havi díj 744 (31 napos hónap órák száma) elosztva.
 * Egy kötet adatelosztás 200 MB / nap van megadva, az egyes csomópontok (az óránkénti részletességgel) észlelt. Nem használt adatok foglalási nem veszi át egy napot a következő.
- * Ha a vállalati díjszabási, az egyes előfizetésekhez beolvasása egy napi adatkeret meg, hogy telemetriát küldjön az Application Insights-erőforrások, az adott előfizetésben csomópontok száma alapján. Tehát ha öt csomópont által küldött adatokat minden nap, fog összevont kerete 1 GB-os alkalmazandó az összes Application Insights-erőforrások, az adott előfizetésben. Nem számít, hogy egyes csomópontok más csomópontoknál több adatot küldeni, mert a szolgáltatási keretbe foglalt adatmennyiség megoszlik az összes csomópont. Ha az adott napon, az Application Insights-erőforrások kapja meg több adatot tartalmaz a napi szintű adatelosztás ehhez az előfizetéshez, a kereten túli GB-onkénti díjak érvényesek. 
- * A napi adatkeretet számítjuk ki, hogy a nap (UTC használatával) órák száma, hogy egyes csomópontok 200 MB-TAL megszorozza 24 osztva telemetriát küld-e. Tehát ha négy csomóponton, a nap 24 órás 15 telemetriai adatokat küldő, a szolgáltatási keretbe foglalt adatmennyiség az adott napra lenne ((4 &#215; 15) / 24) &#215; 200 MB = 500 MB. Az adatok keretet GB-onként 2.30-as USD díj ellenében a díjat, ha a csomópontok 1 GB adat küldése adott napon lenne 1,15 USD-t.
- * A vállalati csomag napi adatkeret ne oszthassák meg olyan alkalmazások, amelynek az alapszintű csomagot választotta. A fel nem használt juttatás nem vihetők el egymástól. 
+  * Ha a vállalati díjszabási, az egyes előfizetésekhez beolvasása egy napi adatkeret meg, hogy telemetriát küldjön az Application Insights-erőforrások, az adott előfizetésben csomópontok száma alapján. Tehát ha öt csomópont által küldött adatokat minden nap, fog összevont kerete 1 GB-os alkalmazandó az összes Application Insights-erőforrások, az adott előfizetésben. Nem számít, hogy egyes csomópontok más csomópontoknál több adatot küldeni, mert a szolgáltatási keretbe foglalt adatmennyiség megoszlik az összes csomópont. Ha az adott napon, az Application Insights-erőforrások kapja meg több adatot tartalmaz a napi szintű adatelosztás ehhez az előfizetéshez, a kereten túli GB-onkénti díjak érvényesek. 
+  * A napi adatkeretet számítjuk ki, hogy a nap (UTC használatával) órák száma, hogy egyes csomópontok 200 MB-TAL megszorozza 24 osztva telemetriát küld-e. Tehát ha négy csomóponton, a nap 24 órás 15 telemetriai adatokat küldő, a szolgáltatási keretbe foglalt adatmennyiség az adott napra lenne ((4 &#215; 15) / 24) &#215; 200 MB = 500 MB. Az adatok keretet GB-onként 2.30-as USD díj ellenében a díjat, ha a csomópontok 1 GB adat küldése adott napon lenne 1,15 USD-t.
+  * A vállalati csomag napi adatkeret ne oszthassák meg olyan alkalmazások, amelynek az alapszintű csomagot választotta. A fel nem használt juttatás nem vihetők el egymástól. 
 
 ### <a name="examples-of-how-to-determine-distinct-node-count"></a>Példák a különálló csomópontok száma meghatározása
 

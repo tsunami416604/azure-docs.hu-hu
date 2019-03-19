@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 9ab397cbee4eeca45a2f25fba3fb63101208a0f3
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 20404cea2aca984ef35472fa94d37c04eb8080e4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57248946"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57872646"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Megtekintése és letöltése az Azure-használat és költségek
 
@@ -106,7 +106,7 @@ Hónap elejétől számított használati is letöltheti az aktuális elszámol�
 
 ## <a name="need-help-contact-us"></a>Segítség Kapcsolat
 
-Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>További lépések
 

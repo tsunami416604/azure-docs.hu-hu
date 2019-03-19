@@ -14,14 +14,14 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 0b24c5d2f174c9a656e81d0c85e12b589d7d7799
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: cc06ddf2fce93bef27e7aaee85b47179608e192b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810647"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57837031"
 ---
-# <a name="appsource-package-preparation"></a>Appsource-ban csomag előkészítése
+# <a name="appsource-package-preparation"></a>AppSource Package Preparation
 
 Egy solution.zip fájl mellett szüksége lesz egy **AppSource csomag**. Ez az egy .zip fájlt, amely tartalmazza az összes olyan eszköz, a megoldás üzembe helyezése az ügyfelek CRM a környezetre, a folyamat automatizálásához szükséges. A **AppSource csomag** a következő összetevőket tartalmazza
 
@@ -63,7 +63,7 @@ A végső lépés a zip-fájl a fájlban a következő szolgál. Meghívására 
 
 1. PkgFolder (beleértve a mappán belül minden)
 2. DLL-fájl
-3. **Content_Types.XML**
+3. **Content_Types.xml**
 
 Package.zip létrehozásához szükséges lépéseket:
 
@@ -71,11 +71,11 @@ Package.zip létrehozásához szükséges lépéseket:
 
 ![CRMScreenShot2](media/CRMScreenShot2.png)
 
-2. Válassza ki az összes elem a mappában, kattintson a jobb gombbal, és küldjön a tömörített (zip) mappa kiválasztása
+1. Válassza ki az összes elem a mappában, kattintson a jobb gombbal, és küldjön a tömörített (zip) mappa kiválasztása
 
 ![CRMScreenShot3](media/CRMScreenShot3.png)
 
-3. Módosítsa a nevét package.zip
+1. Módosítsa a nevét package.zip
 
 ![CRMScreenShot4](media/CRMScreenShot4.png)
 
@@ -97,7 +97,7 @@ Itt látható példa kód input.xml. A definíciók lásd az alábbi táblázatb
         <StartDate>01/01/2016</StartDate>
         <EndDate>01/01/2021</EndDate>
         <SupportedCountries>US,CA</SupportedCountries>
-        <LearnMoreLink>http://www.microsoft.com</LearnMoreLink>
+        <LearnMoreLink>https://www.microsoft.com</LearnMoreLink>
         <Locales>
         <PackageLocale Code="1033" IsDefault="true">
         <Logo>logo32x32.png</Logo>
@@ -116,14 +116,14 @@ Itt látható példa kód input.xml. A definíciók lásd az alábbi táblázatb
 |PackageFile |Csomag és a egy tartalom zip Deployer eszközök\_types.xml fájlt. A zip-fájlt tartalmaznia kell a package deployer szerelvényt és a mappa package deployer eszközökre. Vagyis package.zip|
 |SolutionAnchorName |A megoldás a package deployerhez a megjelenített nevét és leírását a megoldás eszközök szolgálja ki a zip-fájl neve.|
 | Kezdődátum| Ez az a dátum, amelyen a megoldáscsomag válnak elérhetővé. A formátuma nem hh/nn/éééé|
-|endDate|Ez az a dátum, hogy a megoldás csomag le fog állni legyenek elérhetők. A formátuma nem hh/nn/éééé |
-|SupportedCountries |Ez az egy vesszővel tagolt listája, azon országok, amely ezt a csomagot kell megjelennie. Lépjen kapcsolatba az online szolgáltatások összes aktuális országkódok listáját. Amikor, ez a lista írása volt: AE, AL, AM, AO, AR, AT, Ausztrália, AZ, BA, BB, BD, BE, BG, BH, BM, BN, BO, BR, BY, CA, CH, CI, CL, CM, CO, CR, CV, tényleges súly, CY, CZ, DE, DK, DO, DZ, EC, EE, EG , ES FI, FR, GB, A GE, GH, GR, GT, HK, HN, HR, HU, -AZONOSÍTÓ, INTERNET EXPLORER, IL, IN, IQ,, AZT, JM, JO, JP, KE, KG, KN, KOREA, KW, KY, KZ, LB, LK, LT, LU, LV, LY, MA, MINŐSÍTÉSSEL, MC, MD, NEKEM, MK, MN, HÓNAP, FŐ CÉLKISZOLGÁLÓ, MU, MX, SAJÁT , NG, NI, NL, NO, NZ, OM, PA, PE, PH, PK, PL, PULL-KÉRELEM, PS, CSENDES-ÓCEÁNI IDŐ, PY, QA, RO, RS, RU, RW, SA, KI, SG, SI, SK, SN, SV, TH, TM, TN, TR, TT, TW, UA, EGYESÜLT ÁLLAMOK, UY, UZ, VE, VI, VN, ZA, ZW |
+|EndDate|Ez az a dátum, hogy a megoldás csomag le fog állni legyenek elérhetők. A formátuma nem hh/nn/éééé |
+|SupportedCountries |Ez az egy vesszővel tagolt listája, azon országok, amely ezt a csomagot kell megjelennie. Lépjen kapcsolatba az online szolgáltatások összes aktuális országkódok listáját. Amikor oktatóanyag összeállításakor a lista a következő volt: AL AE, AM, AO, AR, AT, AUSZTRÁLIA, AZ, BA, BB, BD, LEHET, BG, BH, BM, BN, BO, BRAZÍLIA, KANADA, CH, CI, CL, CM, CO, CR, CV, TÉNYLEGES SÚLY, CY, CZ, DE, DK, DO, DZ, EC, EE, SZERINT MŰKÖDTEK AZ ADATBÁZISOK, ES, FI, FR, GB, A GE, GH, GR, GT, HK , HN, HR, HU, AZONOSÍTÓJÁT, INTERNET EXPLORER, IL, IN, IQ,, AZT, JM, JO, JP, KE, KG, KN, KOREA, KW, KY, KZ, LB, LK, LT, LU, LV, LY, MA, MINŐSÍTÉSSEL, MC, MD, NEKEM, MK, MN, HÓNAP, FŐ CÉLKISZOLGÁLÓ, MU, MX, SAJÁT, NG, NI, NL, NO, NZ, OM, PA, PE, PH , PK, PL, PULL-KÉRELEM, PS, CSENDES-ÓCEÁNI IDŐ, PY, QA, RO, RS, RU, RW, SA, KI, SG, SI, SK, SN, SV, TH, TM, TN, TR, TT, TW, UA, EGYESÜLT ÁLLAMOK, UY, UZ, VE, VI, VN, ZA, ZW |
 |LearnMoreLink | A további-információs oldalt a csomag URL-címe. |
 |Területi beállítások|Ebben a csomópontban az előnyben részesített megoldás UX a támogatni kívánt UX nyelvenként egy példánya Ez a csomópont tartalmazza, amelyek ismertetik a területi beállítás, a embléma és az egyes nyelvekhez gyermekek|
 |Területi beállítások: PackageLocale.Code|Ebben a csomópontban a nyelv LCID. Példa: Amerikai angol érték 1033|
 |Területi beállítások: PackageLocale.IsDefault|Azt jelzi, hogy ez az alapértelmezett nyelvet. Ez csökkenése használatos biztonsági nyelv, ha az ügyfél által választott UX nyelve nem érhető el.|
-|Területi beállítások: embléma|Ez Ha az embléma szeretné a csomaghoz használni. Ikon mérete 32 x 32. Engedélyezett formátumok a következők PNG és JPG|
-|Területi beállítások: használati: PackageTerm.File|Ez a fájl nevét a HTML-dokumentumot, amely tartalmazza a licencfeltételeket.|
+|Területi beállítások: Embléma|Ez Ha az embléma szeretné a csomaghoz használni. Ikon mérete 32 x 32. Engedélyezett formátumok a következők PNG és JPG|
+|Locales:Terms: PackageTerm.File|Ez a fájl nevét a HTML-dokumentumot, amely tartalmazza a licencfeltételeket.|
 
 Itt látható, ahol megjelenik a portálon:
 
@@ -132,10 +132,10 @@ Itt látható, ahol megjelenik a portálon:
 A végső lépés a zip-fájl a fájlban a következő szolgál.
 
 1. a zip (létrehozott)
-2. **Content_Types.XML**
+2. **Content_Types.xml**
 3. xml
 4. PNG
-5. HTML
+5. html
 
 ![CRMScreenShot6](media/CRMScreenShot6.png)
 

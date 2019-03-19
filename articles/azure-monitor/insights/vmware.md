@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
-ms.openlocfilehash: 7d02f5b592600cf7efd0980c1284e8c724cd1f5b
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: ece6c7048100a8204bfc067d9d57854b1d83c9b6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195149"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58074913"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>VMware Monitoring (elavult) a megoldás az Azure monitorban
 
@@ -195,13 +195,13 @@ Több oka lehet:
   1. A log Analytics figyeli a 1514 porthoz. Győződjön meg arról, hogy meg nyitva, futtassa a következő parancsot: `netstat -a | grep 1514`
   1. Megtekintheti az port `1514/tcp` megnyitásához. Ha nem, ellenőrizze, hogy a omsagent megfelelően van-e telepítve. Ha nem látja a portadatokat, majd a syslog-portjára, nem nyissa meg a virtuális gépen.
 
-    a. Győződjön meg arról, hogy a Log Analytics-ügynök fut-e a `ps -ef | grep oms`. Ha nem fut, a folyamat elindításához futtassa a parancsot ` sudo /opt/microsoft/omsagent/bin/service_control start`
+     a. Győződjön meg arról, hogy a Log Analytics-ügynök fut-e a `ps -ef | grep oms`. Ha nem fut, a folyamat elindításához futtassa a parancsot ` sudo /opt/microsoft/omsagent/bin/service_control start`
 
-    b. Nyissa meg az `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf` fájlt.
+     b. Nyissa meg az `/etc/opt/microsoft/omsagent/conf/omsagent.d/vmware_esxi.conf` fájlt.
 
-    c. Győződjön meg arról, hogy a megfelelő felhasználó és csoport beállítás érvényes, hasonló: `-rw-r--r-- 1 omsagent omiusers 677 Sep 20 16:46 vmware_esxi.conf`
+     c. Győződjön meg arról, hogy a megfelelő felhasználó és csoport beállítás érvényes, hasonló: `-rw-r--r-- 1 omsagent omiusers 677 Sep 20 16:46 vmware_esxi.conf`
 
-    d. Ha a fájl nem létezik vagy nem megfelelő, a felhasználó és csoport beállításának intézkedéseket által [egy Linux-kiszolgáló előkészítése](#prepare-a-linux-server).
+     d. Ha a fájl nem létezik vagy nem megfelelő, a felhasználó és csoport beállításának intézkedéseket által [egy Linux-kiszolgáló előkészítése](#prepare-a-linux-server).
 
 ## <a name="next-steps"></a>További lépések
 * Használat [lekérdezések naplózását](../log-query/log-query-overview.md) adatokat tárolni a Log Analytics részletes VMware megtekintéséhez.

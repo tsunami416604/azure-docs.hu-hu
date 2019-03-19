@@ -8,22 +8,22 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 05/25/2018
+ms.date: 03/11/2019
 ms.author: pafarley
-ms.openlocfilehash: 01273ca241769c5e3bb7b7222355d32b29fd51b9
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 4c395a062b1132710f888cc5a315529db082a805
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56308502"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57850026"
 ---
 # <a name="export-or-delete-user-data-in-custom-vision"></a>Exportálhatók és nem törli a felhasználói adatokat a Custom Vision
 
-A szolgáltatás felhasználói adatokat gyűjti össze a Custom Vision, de az ügyfél rendelkezik megtekintése, exportálása és törlése, hogy az adatok teljes hozzáféréssel a Custom Vision Service segítségével [képzési API](https://go.microsoft.com/fwlink/?linkid=865446).
+A szolgáltatás felhasználói adatokat gyűjti össze a Custom Vision, de az ügyfél rendelkezik teljes hozzáféréssel megtekintése, exportálását és törlését a használatával a Custom Vision [képzési API-k](https://go.microsoft.com/fwlink/?linkid=865446).
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
-Hogyan exportálhatja, és törli a felhasználói adatokat a Custom Vision további információkért lásd az alábbi táblázatot.
+Megtudhatja, hogyan exportálhatja, és törli a felhasználói adatokat a Custom Vision, lásd az alábbi táblázatot.
 
 | Adatok | Az exportálási művelet | Törlési művelet |
 | ---- | ---------------- | ---------------- |
@@ -34,4 +34,4 @@ Hogyan exportálhatja, és törli a felhasználói adatokat a Custom Vision tov�
 | Projektek és a projekt részletei | [GetProject](https://go.microsoft.com/fwlink/?linkid=865446) és [GetProjects](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteProject](https://go.microsoft.com/fwlink/?linkid=865446) | 
 | Címkéket | [GetTag](https://go.microsoft.com/fwlink/?linkid=865446) és [GetTags](https://go.microsoft.com/fwlink/?linkid=865446) | [DeleteTag](https://go.microsoft.com/fwlink/?linkid=865446) | 
 | Képek | [GetTaggedImages](https://go.microsoft.com/fwlink/?linkid=865446) (URI-t biztosít a lemezkép letöltése) és [GetUntaggedImages](https://go.microsoft.com/fwlink/?linkid=865446) (URI-t biztosít a lemezkép letöltése) | [DeleteImages](https://go.microsoft.com/fwlink/?linkid=865446) | 
-| Exportált modellek | [GetExports](https://go.microsoft.com/fwlink/?linkid=865446) | Törölt fiók törlése során | 
+| Exportált modellek | [GetExports](https://go.microsoft.com/fwlink/?linkid=865446) | Törölt fiók törlése során |

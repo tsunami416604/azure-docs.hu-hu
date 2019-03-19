@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: aae0ec93f3de708096ff9546a3a4f4e090095a89
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 77fa369a3085a3d11d5bf03406b4ddb885a24009
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041159"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57847399"
 ---
 # <a name="reliable-actors-state-management"></a>Reliable actors – állapotkezelés
 Reliable Actors egyszálas objektumok, amelyek is magába foglalja, logikai és a állapotban. Szolgáltatásokat Reliable actors futtatni, mert ezek is-állapot karbantartásához megbízhatóan azonos adatmegőrzés és replikációs mechanizmusok vonatkoznak. Ezzel a módszerrel actors ne veszítse el állapotuk Újraaktiválási szemétgyűjtés után, vagy ha áthelyezett erőforrás terheléselosztási vagy a frissítések miatt a fürtben található csomópontok között, a hibák után.
@@ -29,9 +29,9 @@ Az összes Reliable Actors számítanak *állapotalapú* mivel minden egyes szí
 
 Annak ellenére, hogy az aktorok minősülnek állapotalapú, amely nem jelenti azt, hogy azok állapot megbízhatóan kell tárolnia. Actors használhatja állapot megőrzését szintjét, és a replikáció a tárhellyel kapcsolatos követelmények alapján az adatokat:
 
-* **Megőrzött állapot**: állapotát a rendszer megőrzi a lemezen, és három vagy több replikát a rendszer replikálja. Megőrzött állapota a legtöbb tartós állapota beállítást, ahol állapot megőrizheti a teljes fürt szolgáltatáskimaradás keresztül.
-* **Ideiglenes állapot**: állapot három vagy több replikával replikálni, és csak a memóriában tárolja. Ideiglenes állapot Csomóponthiba és aktor meghibásodása ellen, és a frissítések és az erőforrás terheléselosztási során rugalmasságot biztosít. Azonban állapota nincs megőrizve a lemezre. Így az összes replika egyszerre is elvesznek, ha az állapot elvész is.
-* **Nem megőrzött állapot**: állapot nem replikált vagy lemez, csak akkor használnak, amelyeket nem kell megbízhatóan-állapot karbantartásához actors írt.
+* **Megőrzött állapot**: Állapot a rendszer megőrzi a lemezen, és három vagy több replikát a rendszer replikálja. Megőrzött állapota a legtöbb tartós állapota beállítást, ahol állapot megőrizheti a teljes fürt szolgáltatáskimaradás keresztül.
+* **Ideiglenes állapot**: Állapot három vagy több replikával replikálni, és csak a memóriában tárolja. Ideiglenes állapot Csomóponthiba és aktor meghibásodása ellen, és a frissítések és az erőforrás terheléselosztási során rugalmasságot biztosít. Azonban állapota nincs megőrizve a lemezre. Így az összes replika egyszerre is elvesznek, ha az állapot elvész is.
+* **Nem megőrzött állapot**: Állapot nem replikált vagy lemez, csak akkor használnak, amelyeket nem kell megbízhatóan-állapot karbantartásához actors írt.
 
 Adatmegőrzés minden szintje egyszerűen egy másik *riasztásiállapot-szolgáltató* és *replikációs* a szolgáltatás konfigurációját. Állapot írt e lemezt az állapot-szolgáltató--egy megbízható szolgáltatás, amely tárolja az állapot az összetevőt függ. Replikációs attól függ, hány replikák szolgáltatás van telepítve. Akárcsak a Reliable Services, a szolgáltató és a replika száma is könnyen állítható be kézzel. Az actors keretrendszerben biztosítja, mint egy attribútumot, ha egy szereplő használt, egy alapértelmezett állapotszolgáltató automatikusan kiválasztja, és automatikusan létrehozza a replika száma beállításait, hogy a valamelyik ezek három perzisztenciabeállítások. Származtatott osztály nem öröklik a StatePersistence attribútum, minden egyes szereplőtípus StatePersistence kellően kell megadnia.
 
@@ -86,7 +86,7 @@ Ha a a `StatePersistence` attribútum, egy állapotszolgáltató automatikusan k
 Manuálisan módosíthatja ezeket a paramétereket. Azonban minden alkalommal, amikor a `StatePersistence` attribútuma megváltozik, a paraméterek értékre van állítva az alapértelmezett replika készlet mérete a kiválasztott `StatePersistence` attribútum, felülírva a korábbi értéket. Más szóval a ServiceManifest.xml a megadott értékek *csak* módosítása összeállítás során felül a `StatePersistence` attribútum értéke.
 
 ```xml
-<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="Application12Type" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="Application12Type" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <Parameters>
       <Parameter Name="MyActorService_PartitionCount" DefaultValue="10" />
       <Parameter Name="MyActorService_MinReplicaSetSize" DefaultValue="3" />

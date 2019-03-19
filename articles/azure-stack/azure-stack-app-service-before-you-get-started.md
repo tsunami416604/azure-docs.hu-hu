@@ -16,12 +16,12 @@ ms.date: 03/11/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: e39904378edd9583cd7802d0a75f2f365a35d2b6
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 58be7b6dc9eeeadd69fe82f1dc03d959aa94f9c8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791953"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088434"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Mielőtt elkezdené, az Azure Stack App Service-szel
 
@@ -304,10 +304,10 @@ Az Azure Stack Development Kit központi telepítéséhez, használhatja az SQL 
 
 Az SQL Server-példány az Azure App Service az Azure Stack App Service-ben az összes szerepkör elérhetőknek kell lenniük. Telepítheti az SQL Server az alapértelmezett szolgáltatója az előfizetésen belül az Azure Stackben. Lehetőség a szervezeten belül a meglévő infrastruktúra használata (feltéve, nincs kapcsolat Azure stackhez). Ha az Azure Marketplace-rendszerképpel használja, ne felejtse el ennek megfelelően konfigurálja a tűzfalat.
 
->[!NOTE]
+> [!NOTE]
 > Egy szám, az SQL IaaS virtuális gépek lemezképeit a Marketplace-en felügyeleti szolgáltatáson keresztül érhetők el. Ellenőrizze, hogy Ön mindig Piactéri virtuális gép üzembe helyezése előtt töltse le a legújabb verzióját az SQL IaaS-bővítményt. Az SQL-rendszerképek ugyanazok, mint az SQL virtuális gépek az Azure-ban elérhető. Az SQL virtuális gépek-képekből létrehozott ezeket, az IaaS-bővítményt, és a megfelelő portál fejlesztések automatikus javítás és a biztonsági mentési funkcióit funkciókat biztosítanak.
->
-Az SQL Server-szerepkörök bármelyikéhez egy alapértelmezett vagy megnevezett példányt is használhatja. Ha egy megnevezett példányt használ, mindenképpen manuálisan indítsa el az SQL Server Browser szolgáltatást, és nyissa meg az 1434-es portot.
+> 
+> Az SQL Server-szerepkörök bármelyikéhez egy alapértelmezett vagy megnevezett példányt is használhatja. Ha egy megnevezett példányt használ, mindenképpen manuálisan indítsa el az SQL Server Browser szolgáltatást, és nyissa meg az 1434-es portot.
 
 Az App Service-telepítő ellenőrzi az SQL Server adatbázis tartalmazási engedélyezve legyen. Ahhoz, hogy az SQL Server, az App Service-adatbázisokat üzemeltető adatbázis tartalmazás, a következő SQL-parancsok futtatása:
 

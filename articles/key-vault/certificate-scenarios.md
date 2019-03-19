@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 73a09a99b1dd275b20bcd389e9cc391f638e8bdd
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 8b56151ae56de44cbab3003743ce6df33ec89612
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404263"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075629"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Ismerkedés a Key Vault-tanúsítványok
 A következő esetekben felvázolják a Key Vault tanúsítvány management szolgáltatás többek között a további lépéseket az első tanúsítvány létrehozásához a key vaultban lévő szükséges elsődleges használatokban.
@@ -50,12 +50,12 @@ Tanúsítványok épülnek fel, a Key Vault-tanúsítvánnyal; egymáshoz kapcso
 
 **3. lépés** – A Contoso-rendszergazda, és a egy Contoso-alkalmazott (Key Vault-felhasználó) függően a CA-tanúsítványok birtokló tanúsítvány beszerzéséhez a rendszergazda vagy közvetlenül a fiók a hitelesítésszolgáltatóhoz.  
 
--   A key vault Hozzáadás hitelesítő adatok a művelet megkezdése [tanúsítványának kibocsátója beállítás](/rest/api/keyvault/setcertificateissuer/setcertificateissuer) erőforrás. A tanúsítvány kiállítója jelöli az Azure Key Vault (KV) CertificateIssuer erőforrásként entitás. A forrás-KV tanúsítvány; kapcsolatos információk megadására szolgál kiállító neve, szolgáltató, hitelesítő adatok és egyéb felügyeleti adatait.
-    -   Pl. MyDigiCertIssuer  
-        -   Szolgáltató  
-        -   Hitelesítő adatok – a Hitelesítésszolgáltatói fiók hitelesítő adatait. Minden CA a saját konkrét adatokat tartalmaz.  
+- A key vault Hozzáadás hitelesítő adatok a művelet megkezdése [tanúsítványának kibocsátója beállítás](/rest/api/keyvault/setcertificateissuer/setcertificateissuer) erőforrás. A tanúsítvány kiállítója jelöli az Azure Key Vault (KV) CertificateIssuer erőforrásként entitás. A forrás-KV tanúsítvány; kapcsolatos információk megadására szolgál kiállító neve, szolgáltató, hitelesítő adatok és egyéb felügyeleti adatait.
+  - Pl. MyDigiCertIssuer  
+    -   Szolgáltató  
+    -   Hitelesítő adatok – a Hitelesítésszolgáltatói fiók hitelesítő adatait. Minden CA a saját konkrét adatokat tartalmaz.  
 
-     Hitelesítésszolgáltató szolgáltatók fiókok létrehozásával kapcsolatos további információkért tekintse meg a kapcsolódó bejegyzését a [Key Vault blog](https://aka.ms/kvcertsblog).  
+    Hitelesítésszolgáltató szolgáltatók fiókok létrehozásával kapcsolatos további információkért tekintse meg a kapcsolódó bejegyzését a [Key Vault blog](https://aka.ms/kvcertsblog).  
 
 **3.1. lépés** -beállítása [tanúsítványt névjegyeket](/rest/api/keyvault/setcertificatecontacts/setcertificatecontacts) az értesítésekhez. Ez az az ügyfél a Key Vault-felhasználó számára. A Key Vault nem kényszeríti ki ezt a lépést.  
 

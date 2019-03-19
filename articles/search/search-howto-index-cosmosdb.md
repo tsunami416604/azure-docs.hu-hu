@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 9021bb2a030472d4e83d78c8fc6363db570c3554
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: dceabc799e187f3af56588d5a9008e5cdca517c0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57318002"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57864456"
 ---
 # <a name="how-to-index-cosmos-db-using-an-azure-search-indexer"></a>Az Azure Search-indexelők használatával a Cosmos DB indexelése
 
@@ -23,7 +23,7 @@ Ez a cikk bemutatja, hogyan konfigurálhatja egy Azure Cosmos DB [indexelő](sea
 
 Terminológiai zavaró lehet, mert fontos megjegyezni, hogy [Azure Cosmos DB-indexelő](https://docs.microsoft.com/azure/cosmos-db/index-overview) és [Azure Search-indexelő](search-what-is-an-index.md) különböző műveletek, mindegyik szolgáltatáshoz egyedi. Mielőtt elkezdené az Azure Search indexelést, az Azure Cosmos DB-adatbázis már léteznie kell, és tartalmaz adatokat.
 
-Használhatja a [portál](#cosmos-indexer-portal), [REST API-k](#cosmos-indexer-rest), vagy [.NET SDK-val](#cosmos-indexer-dotnet) Cosmos tartalmának. A Cosmos DB-indexelő az Azure Search szolgáltatás be tud járni [Azure Cosmos-elemek](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) ezeket a protokollokat keresztül érhetők el:
+Használhatja a [portál](#cosmos-indexer-portal), REST API-k, vagy a .NET SDK Cosmos tartalmának. A Cosmos DB-indexelő az Azure Search szolgáltatás be tud járni [Azure Cosmos-elemek](https://docs.microsoft.com/azure/cosmos-db/databases-containers-items#azure-cosmos-items) ezeket a protokollokat keresztül érhetők el:
 
 * [SQL API-HOZ](https://docs.microsoft.com/azure/cosmos-db/sql-api-query-reference) 
 * [MongoDB API-val](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction) (Azure Search támogatását az API-t a nyilvános előzetes verzióban érhető el)  

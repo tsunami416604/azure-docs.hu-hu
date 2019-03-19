@@ -14,17 +14,17 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 549f37c1287373fe8bf4c10dc64e6e778b37be02
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 682c9e209c4fa4a9f4971af5da901faf1ec58c22
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56730137"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57889743"
 ---
 # <a name="register-in-dev-center"></a>A fejlesztői központban regisztrálása  
 Annak érdekében, győződjön meg arról, hogy nem jelentkezve egy böngésző személyes fiók, nyisson meg egy új Internet Explorer InPrivate vagy Chrome Inkognitó böngészési munkamenetében.  
 1.  A fejlesztői központban eladó regisztrálásához.  
-    *   Jelentkezzen be, és a egy értékesítő regisztrálásához, látogasson el a lapon található Azure-fejlesztői központhoz [dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure).  
+    *   Jelentkezzen be, és a egy értékesítő regisztrálásához, látogasson el a lapon található Azure-fejlesztői központhoz [dev.windows.com/registration?accountprogram=azure](https://dev.windows.com/registration?accountprogram=azure).  
 2.  Végezze el a `Help us protect your account` varázsló, amely ellenőrzi az identitás, a telefonszám vagy e-mail-cím használatával.  
 
     ![A súgóban phone információ állíthatunk be nekünk védeni a fiók varázsló](./media/marketplace-publishers-guide/registerdevcenteremail.png)  
@@ -142,55 +142,55 @@ A banki és adózási adatait az ajánlati típus transact használatával minde
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések: 
 
-*   **Amelyen a kiadók a fejlesztői központ-fiókot regisztrálni kell?** 
-> Közzétevő, aki közzéteszi az ajánlati típus Transact: Virtuális gép, az Azure apps: megoldássablonokat, és a felügyelt alkalmazások.  
+* **Amelyen a kiadók a fejlesztői központ-fiókot regisztrálni kell?** 
+  > Közzétevő, aki közzéteszi az ajánlati típus Transact: Virtuális gép, az Azure apps: megoldássablonokat, és a felügyelt alkalmazások.  
 
-*   **Miért van szükség fejlesztői központban lévő fiókjához?**
-> Fejlesztői központban lévő fiókjához szükség ahhoz, hogy a Microsoft az ügyfél nevében a közzétevő számlázási ajánlati típus Transact. Fejlesztői központban lévő fiókjához regisztráció lehetővé teszi, hogy a Microsoft ellenőrzése a jogi, adózási és banki információt, a vállalat. További információkért kattintson [itt.](https://docs.microsoft.com/azure/marketplace/become-publisher)
+* **Miért van szükség fejlesztői központban lévő fiókjához?**
+  > Fejlesztői központban lévő fiókjához szükség ahhoz, hogy a Microsoft az ügyfél nevében a közzétevő számlázási ajánlati típus Transact. Fejlesztői központban lévő fiókjához regisztráció lehetővé teszi, hogy a Microsoft ellenőrzése a jogi, adózási és banki információt, a vállalat. További információkért kattintson [itt.](https://docs.microsoft.com/azure/marketplace/become-publisher)
 
-*   **Hogyan kezdhetem Dev Center regisztrációját?**
-> Duplikált elkerülése érdekében győződjön meg arról, hogy a vállalat még nem rendelkezik a fejlesztői központban lévő fiókjához regisztrált. Fejlesztői fiók nyitása társítani kívánt Microsoft-fiókjával kell bejelentkeznie. Ha még nincs Microsoft-fiókja, létrehozhat egy új fiókot [itt.](https://signup.live.com/signup?contextid=AEB123C8F2B1DA7A&bk=1529968434&ru=https%3a%2f%2flogin.live.com%2flogin.srf%3fcontextid%3dAEB123C8F2B1DA7A%26mkt%3dEN-US%26lc%3d1033%26bk%3d1529968434&uiflavor=web&uaid=9987e727fedb459780d95c1b9e46c82c&mkt=EN-US&lc=1033&lic=1) (Példa: contoso_marketplace@live.com) jelentkezzen be, és regisztrálni, keresse fel a https://dev.windows.com/en-us/registration?accountProgram=Azure
-<br>További információ a regisztrációs folyamat kattintson [itt.](https://docs.microsoft.com/azure/marketplace/register-dev-center)</br>
+* **Hogyan kezdhetem Dev Center regisztrációját?**
+  > Duplikált elkerülése érdekében győződjön meg arról, hogy a vállalat még nem rendelkezik a fejlesztői központban lévő fiókjához regisztrált. Fejlesztői fiók nyitása társítani kívánt Microsoft-fiókjával kell bejelentkeznie. Ha még nincs Microsoft-fiókja, létrehozhat egy új fiókot [itt.](https://signup.live.com/signup?contextid=AEB123C8F2B1DA7A&bk=1529968434&ru=https%3a%2f%2flogin.live.com%2flogin.srf%3fcontextid%3dAEB123C8F2B1DA7A%26mkt%3dEN-US%26lc%3d1033%26bk%3d1529968434&uiflavor=web&uaid=9987e727fedb459780d95c1b9e46c82c&mkt=EN-US&lc=1033&lic=1) (Példa: contoso_marketplace@live.com) jelentkezzen be, és regisztrálni, keresse fel a https://dev.windows.com/en-us/registration?accountProgram=Azure
+  > <br>További információ a regisztrációs folyamat kattintson [itt.](https://docs.microsoft.com/azure/marketplace/register-dev-center)</br>
 
-*   **Válasszam "Egyéni" vagy "Vállalati" fiók típusa?**
-> Marketplace-en a transact-ajánlat közzététele, válassza ki a vállalati fiók regisztrálásakor a fejlesztői központ-fiókjához kell.
+* **Válasszam "Egyéni" vagy "Vállalati" fiók típusa?**
+  > Marketplace-en a transact-ajánlat közzététele, válassza ki a vállalati fiók regisztrálásakor a fejlesztői központ-fiókjához kell.
 
-*   **Módosíthatom a fiók típusa "Egyéni" a "Céges" fiók létrehozása után?**
-> Nem, a fiók típusa nem lehet frissíteni a fiók létrehozása után.
+* **Módosíthatom a fiók típusa "Egyéni" a "Céges" fiók létrehozása után?**
+  > Nem, a fiók típusa nem lehet frissíteni a fiók létrehozása után.
 
-*   **Miért kapok egy "Város megadása kötelező" hibaüzenet, ha szeretnék helyesen adta az városa?**
-> Ellenőrizze, hogy a zip-kód megfelelően túl van megadva. Van egy város, a zip-kód érvényesítése.
+* **Miért kapok egy "Város megadása kötelező" hibaüzenet, ha szeretnék helyesen adta az városa?**
+  > Ellenőrizze, hogy a zip-kód megfelelően túl van megadva. Van egy város, a zip-kód érvényesítése.
 
-*   **Hogyan kaphatok egy promóciós kódot?**
-> Végezze el a [Marketplace regisztrációs](https://azuremarketplace.microsoft.com/en-us/sell/signup) kérésűrlapot Dev Center promóciós kódot.
+* **Hogyan kaphatok egy promóciós kódot?**
+  > Végezze el a [Marketplace regisztrációs](https://azuremarketplace.microsoft.com/en-us/sell/signup) kérésűrlapot Dev Center promóciós kódot.
  
-*   **Mire számíthatok a regisztráció elvégzése után?**
-> Keresse meg az e-mailt verify@microsoft.com tárgysorban a "beavatkozás szükséges: Ellenőrizze az e-mail-fiókjába, a Microsoft". Kattintson a regisztráció befejezéséhez idő-és nagybetűket visszaigazoló hivatkozásra. *Ha még nem kapott belül 24 órában e-mailt, ellenőrizze a Levélszemét mappát.*
+* **Mire számíthatok a regisztráció elvégzése után?**
+  > Keresse meg az e-mailt verify@microsoft.com tárgysorban a "beavatkozás szükséges: Ellenőrizze az e-mail-fiókjába, a Microsoft". Kattintson a regisztráció befejezéséhez idő-és nagybetűket visszaigazoló hivatkozásra. *Ha még nem kapott belül 24 órában e-mailt, ellenőrizze a Levélszemét mappát.*
 
-*   **Mik a következő lépések Dev Center ellenőrzés után?**
-> Lépjen a "Program" (https://developer.microsoft.com/dashboard/Account/Programs) , és jelentkezzen be a fejlesztői központban lévő fiókjához. Ha nem lát Azure regisztrált programként, keresse meg a "Ajánlott programok Ön", és keresse meg az Azure-hoz, jelölje be az "Első lépések."
+* **Mik a következő lépések Dev Center ellenőrzés után?**
+  > Lépjen a "Program" (https://developer.microsoft.com/dashboard/Account/Programs) , és jelentkezzen be a fejlesztői központban lévő fiókjához. Ha nem lát Azure regisztrált programként, keresse meg a "Ajánlott programok Ön", és keresse meg az Azure-hoz, jelölje be az "Első lépések."
 
-*   **Hogyan lehet hivatkozni a saját fejlesztői központban lévő fiókjához a Cloud Partner Portalon közzétevő profilomhoz?**
-> Az utolsó lépés előtt a közzététel a Cloud Partner portálra a fejlesztői központban lévő fiókjához összekapcsolása [profil](https://cloudpartner.azure.com/#profile). A fejlesztői központban lévő fiókjához eltér-e a fiókját a [Cloud Partner Portalon](https://cloudpartner.azure.com/#alloffers), adja hozzá a fejlesztői központban lévő fiókjához új [felhasználói](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-manage-users) az a Cloud Partner portálra. Jelentkezzen be a [Cloud Partner Portalon](https://cloudpartner.azure.com/#alloffers) a fejlesztői központ-fiókjához. Közzétevő profil található, a felső menüben válassza ki, a böngésző jobb. Válassza ki hivatkozás fejlesztői központban lévő fiókjához.
+* **Hogyan lehet hivatkozni a saját fejlesztői központban lévő fiókjához a Cloud Partner Portalon közzétevő profilomhoz?**
+  > Az utolsó lépés előtt a közzététel a Cloud Partner portálra a fejlesztői központban lévő fiókjához összekapcsolása [profil](https://cloudpartner.azure.com/#profile). A fejlesztői központban lévő fiókjához eltér-e a fiókját a [Cloud Partner Portalon](https://cloudpartner.azure.com/#alloffers), adja hozzá a fejlesztői központban lévő fiókjához új [felhasználói](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-manage-users) az a Cloud Partner portálra. Jelentkezzen be a [Cloud Partner Portalon](https://cloudpartner.azure.com/#alloffers) a fejlesztői központ-fiókjához. Közzétevő profil található, a felső menüben válassza ki, a böngésző jobb. Válassza ki hivatkozás fejlesztői központban lévő fiókjához.
 
-*   **Miért elutasítják a fejlesztői központban az alkalmazásom?**
-> A külső átvizsgálási vállalati (Duns & Bradstreet) nem tudta Önnel a kapcsolatot a megadott telefonszám keresztül. Forduljon a támogatási szolgálathoz [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support) , indítsa újra a átvizsgálási folyamatot
+* **Miért elutasítják a fejlesztői központban az alkalmazásom?**
+  > A külső átvizsgálási vállalati (Duns & Bradstreet) nem tudta Önnel a kapcsolatot a megadott telefonszám keresztül. Forduljon a támogatási szolgálathoz [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support) , indítsa újra a átvizsgálási folyamatot
 
 > vagy
-
+> 
 > A rendszer elutasítja a regisztrációs fiók problémákat földrajzi hely alapján. A központ eltérő helyeken alapuló leányvállalatai rendelkező vállalatok csak egy fejlesztői központban lévő fiókjához kell.
  
-*   **Mit tegyek, ha a vállalat nevét, amely már a használni kívánt Dev Center webhely már létezik?**
-> Rendelje hozzá egy ideiglenes vállalat neve, forduljon a támogatási szolgálathoz [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support) , és adja meg azokat a vállalati eszközregisztrációs dokumentumok.
+* **Mit tegyek, ha a vállalat nevét, amely már a használni kívánt Dev Center webhely már létezik?**
+  > Rendelje hozzá egy ideiglenes vállalat neve, forduljon a támogatási szolgálathoz [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support) , és adja meg azokat a vállalati eszközregisztrációs dokumentumok.
 
-*   **Hogyan adhatok hozzá kifizetés és adó adataimat?**
-> Nem tudja közzétenni az adózási és banki információt, a fejlesztői központban lévő fiókjához nélkül ajánlatok transact.  Fiókadatok hozzáadásával kapcsolatos további információkért látogasson el [hogyan Hozzáadás banki és adózási adatait.](https://docs.microsoft.com/azure/marketplace/register-dev-center)
+* **Hogyan adhatok hozzá kifizetés és adó adataimat?**
+  > Nem tudja közzétenni az adózási és banki információt, a fejlesztői központban lévő fiókjához nélkül ajánlatok transact.  Fiókadatok hozzáadásával kapcsolatos további információkért látogasson el [hogyan Hozzáadás banki és adózási adatait.](https://docs.microsoft.com/azure/marketplace/register-dev-center)
 
-*   **Módosíthatom a Dev Center a Microsoft bejelentkezési fiók?**
-> Nem. Miután létrejött a fejlesztői központ, a tulajdonos fiókja nem módosítható. Kezdje egy vadonatúj fejlesztői központ-fiókot a kívánt Microsoft-fiókkal kellene.
+* **Módosíthatom a Dev Center a Microsoft bejelentkezési fiók?**
+  > Nem. Miután létrejött a fejlesztői központ, a tulajdonos fiókja nem módosítható. Kezdje egy vadonatúj fejlesztői központ-fiókot a kívánt Microsoft-fiókkal kellene.
 
-*   **Ahol forduljon az ügyfélszolgálathoz fejlesztői központ-regisztráció kapcsolatos problémákat?**
-A támogatás eléréséhez látogasson el a Windows fejlesztői támogatási oldalon található [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support). 
+* **Ahol forduljon az ügyfélszolgálathoz fejlesztői központ-regisztráció kapcsolatos problémákat?**
+  A támogatás eléréséhez látogasson el a Windows fejlesztői támogatási oldalon található [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support). 
 
 ## <a name="next-steps"></a>További lépések
 *   Látogasson el a [Azure Marketplace és AppSource útmutató Közzétevőknek](./marketplace-publishers-guide.md) lapot.  

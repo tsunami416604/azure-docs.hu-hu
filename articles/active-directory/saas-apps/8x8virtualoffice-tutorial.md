@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70a8704fc27aad114d9a1d251cca773d9d0b767a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 9385ec6a86c24e619ffafdae67bc66f66e099f3b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57454881"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842736"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-8x8-virtual-office"></a>Oktatóanyag: Az Azure Active Directory-integráció az 8 x 8 virtuális Office
 
@@ -128,41 +128,41 @@ Az Azure AD egyszeri bejelentkezés konfigurálása 8 x 8 virtuális Office-, ha
 
 ### <a name="configure-8x8-virtual-office-single-sign-on"></a>8 x 8 virtuális Office egyszeri bejelentkezés konfigurálása
 
-7. Bejelentkezés a 8 x 8 virtuális Office bérlői rendszergazdaként.
+1. Bejelentkezés a 8 x 8 virtuális Office bérlői rendszergazdaként.
 
-8. Válassza ki **virtuális Office fiók Mgr** alkalmazás panel.
+1. Válassza ki **virtuális Office fiók Mgr** alkalmazás panel.
 
     ![A kiszolgálóoldali alkalmazás konfigurálása](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_001.png)
 
-9. Válassza ki **üzleti** kezeléséhez, és kattintson a fiók **bejelentkezés** gombra.
+1. Válassza ki **üzleti** kezeléséhez, és kattintson a fiók **bejelentkezés** gombra.
 
     ![A kiszolgálóoldali alkalmazás konfigurálása](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_002.png)
 
-10. Kattintson a **fiókok** lapon a menüben listában.
+1. Kattintson a **fiókok** lapon a menüben listában.
 
-    ![A kiszolgálóoldali alkalmazás konfigurálása](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_003.png)
+   ![A kiszolgálóoldali alkalmazás konfigurálása](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_003.png)
 
-11. Kattintson a **az egyszeri bejelentkezést** fiókok listájában.
+1. Kattintson a **az egyszeri bejelentkezést** fiókok listájában.
   
-    ![A kiszolgálóoldali alkalmazás konfigurálása](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_004.png)
+   ![A kiszolgálóoldali alkalmazás konfigurálása](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_004.png)
 
-12. Válassza ki **az egyszeri bejelentkezést** hitelesítési módszereket, és kattintson a **SAML**.
+1. Válassza ki **az egyszeri bejelentkezést** hitelesítési módszereket, és kattintson a **SAML**.
 
-    ![A kiszolgálóoldali alkalmazás konfigurálása](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_005.png)
+   ![A kiszolgálóoldali alkalmazás konfigurálása](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_005.png)
 
-13. Az a **egyszeri bejelentkezési SAML** szakaszban, hajtsa végre az alábbi lépéseket:
+1. Az a **egyszeri bejelentkezési SAML** szakaszban, hajtsa végre az alábbi lépéseket:
 
-    ![A kiszolgálóoldali alkalmazás konfigurálása](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_006.png)
+   ![A kiszolgálóoldali alkalmazás konfigurálása](./media/8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_006.png)
 
-    a. Az a **bejelentkezési az URL-cím** szövegmezőjébe illessze be **bejelentkezési URL-cím** az Azure Portalról másolt érték.
+   a. Az a **bejelentkezési az URL-cím** szövegmezőjébe illessze be **bejelentkezési URL-cím** az Azure Portalról másolt érték.
 
-    b. Az a **bejelentkezési kijelentkezési URL-cím** szövegmezőjébe illessze be **kijelentkezési URL-címe** az Azure Portalról másolt érték.
+   b. Az a **bejelentkezési kijelentkezési URL-cím** szövegmezőjébe illessze be **kijelentkezési URL-címe** az Azure Portalról másolt érték.
 
-    c. Az a **kiállítójának URL-címe** szövegmezőjébe illessze be **az Azure AD-azonosító** az Azure Portalról másolt érték.
+   c. Az a **kiállítójának URL-címe** szövegmezőjébe illessze be **az Azure AD-azonosító** az Azure Portalról másolt érték.
 
-    d. Kattintson a **Tallózás** gombra kattintva töltse fel a tanúsítványt, amely az Azure Portalról letöltött.
+   d. Kattintson a **Tallózás** gombra kattintva töltse fel a tanúsítványt, amely az Azure Portalról letöltött.
 
-    e. Kattintson a **Mentés** gombra.
+   e. Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára 
 
@@ -182,7 +182,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

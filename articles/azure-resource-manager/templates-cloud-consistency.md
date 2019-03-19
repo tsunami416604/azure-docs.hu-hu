@@ -12,12 +12,12 @@ ms.workload: na
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: aa55dce4b06eb895ef0b8745978d644e4e2f52b5
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 4b1c829a417d050b4d931611d9f2952e01582f04
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57408853"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089471"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>Fejlesztés a felhőben konzisztencia az Azure Resource Manager-sablonokkal
 
@@ -63,13 +63,13 @@ Azure Resource Manager-képességek mindig vezetjük be globális Azure-ban elő
 
 1. Importálja a modult a psm1 kiterjesztésű, és hajtsa végre a Test-AzureRmureRmTemplateFunctions parancsmagot:
 
-  ```powershell
-  # Import the module
-  Import-module <path to local clone>\AzTemplateFunctions.psm1
+   ```powershell
+   # Import the module
+   Import-module <path to local clone>\AzTemplateFunctions.psm1
 
-  # Execute the Test-AzureRmTemplateFunctions cmdlet
-  Test-AzureRmTemplateFunctions -path <path to local clone>
-  ```
+   # Execute the Test-AzureRmTemplateFunctions cmdlet
+   Test-AzureRmTemplateFunctions -path <path to local clone>
+   ```
 
 A szkript üzembe helyezi a több, sablonok, csak az egyedi sablonfüggvények tartalmazó kis méretben. A szkript a kimenetét a támogatott és nem érhető el a sablonokban használható függvények jelentések.
 

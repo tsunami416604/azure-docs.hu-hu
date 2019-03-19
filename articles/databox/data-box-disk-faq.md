@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 02/26/2019
 ms.author: alkohli
-ms.openlocfilehash: eeac05ec86161e60ed9f34b94802c24004de0d4e
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 97794675f3d489e1154d9c327c18d40708dd5b53
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57407612"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877853"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Mi az az Azure Data Box Disk-lemez?
 
@@ -51,7 +51,7 @@ A.  Az Azure Data Box-lemezek jelentkezzen be az Azure Portalra, és hozzon lét
 A. 5 darab egyenként 8 TB-os lemez (7 TB-os felhasználható kapacitással) esetén a felhasználható kapacitás legfeljebb 35 TB. Így egyszerre legfeljebb 35 TB-nyi adat vihető át. Több adat átviteléhez több lemez megrendelése szükséges.
 
 ### <a name="q-how-can-i-check-if-data-box-disks-are-available-in-my-region"></a>K. Honnan tudhatom meg, hogy a Data Box Disk-lemezek elérhetők-e a régiómban? 
-A.  Ahol a Data Box-lemezek elérhetők jelenleg megtekintéséhez nyissa meg a [régiók rendelkezésre állása](data-box-disk-overview.md#).  
+A.  Ahol a Data Box-lemezek elérhetők jelenleg megtekintéséhez nyissa meg a [régiók rendelkezésre állása](data-box-disk-overview.md#region-availability).  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>K. Mely régiókban tárolhatok adatokat a Data Box Disk-lemezekkel?
 A. Data Box-lemezek díját minden régióhoz az USA, Kanadában, Ausztráliában, és Nyugat-Európa és Észak-Európa belül támogatott. Csak a nyilvános Azure-felhőrégiók támogatottak. Az Azure Government és más független felhők nem támogatottak.
@@ -129,11 +129,11 @@ A. A Data Box-lemezek érhető el az eszközkészlet három eszközöket tartalm
  - **Data Box lemez felosztása Fájlmásoló eszközt**: Használja ezt az eszközt, ha több lemezeket használ, és a egy nagy méretű adathalmazt, amelyek felosztása és lemez minden másolt kell rendelkeznie. Ez az eszköz Windows jelenleg érhető el. Ez az eszköz nem felügyelt lemezekkel rendelkező támogatott. Ez az eszköz azt is ellenőrzi, mivel átmásolja az adatokat, így az ellenőrzési lépést kihagyhatja az eszköz használatakor.
 
 Az eszközkészlet Windows és Linux egyaránt érhető el. Az eszközkészlet Itt töltheti le:
- - [Data Box Disk eszközkészlet letöltése Windowsra](https://aka.ms/databoxdisktoolswin) 
- - [Data Box Disk eszközkészlet letöltése Linuxra](https://aka.ms/databoxdisktoolslinux)
+- [Data Box Disk eszközkészlet letöltése Windowsra](https://aka.ms/databoxdisktoolswin) 
+- [Data Box Disk eszközkészlet letöltése Linuxra](https://aka.ms/databoxdisktoolslinux)
  
- ### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>K. Használható az Azure Files adatátvitelt, majd az adatokat az Azure File Sync Data Box-lemezek? 
- A. Az Azure Files Data Box-lemezek használata támogatott, de nem működnek jól az Azure File Sync használatával. Metaadatok nem marad meg, ha a fájl adatait használja az Azure File Sync használatával.
+  ### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>K. Használható az Azure Files adatátvitelt, majd az adatokat az Azure File Sync Data Box-lemezek? 
+  A. Az Azure Files Data Box-lemezek használata támogatott, de nem működnek jól az Azure File Sync használatával. Metaadatok nem marad meg, ha a fájl adatait használja az Azure File Sync használatával.
 
 
 ## <a name="verify-and-upload"></a>Ellenőrzés és feltöltés

@@ -11,19 +11,21 @@ author: oslake
 ms.author: moslake
 ms.reviewer: genemi,amagarwa,maboja, jrasnick
 manager: craigg
-ms.date: 03/07/2019
-ms.openlocfilehash: cc73ae23b25fbbef2ee058f926138cf0873d451c
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.date: 03/12/2019
+ms.openlocfilehash: 17b712afff293dba8c353767fc326761bcb53ba3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576599"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57860737"
 ---
 # <a name="powershell-for-dns-alias-to-azure-sql-database"></a>Az Azure SQL Database DNS-alias PowerShell
 
 Ez a cikk azt mutatja be, hogyan kezelheti DNS-alias az Azure SQL Database PowerShell-parancsfájl. A szkript futtatása a következő parancsmagokat, amelyek a következő műveleteket hajtja végre:
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> A PowerShell Azure Resource Manager-modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés Az.Sql modul. Ezeket a parancsmagokat lásd: [azurerm.SQL-hez](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). A parancsok a Az modul, és az AzureRm-modulok argumentumainak lényegében megegyeznek.
 
 A példakódban alkalmazott parancsmagok a következők:
 

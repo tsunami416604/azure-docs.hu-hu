@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 5ed5ad2ec8d2250de52283e42b316a17f74901c7
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 93ac6009e593fa5eaefd14b09ce8eecd513688e5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57764626"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57864847"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flock"></a>Oktatóanyag: Az Azure Active Directory integrációja az állomány
 
@@ -163,7 +163,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
@@ -212,7 +212,7 @@ Ahhoz, hogy az Azure AD-felhasználók állomány jelentkezzen be, akkor ki kell
 
     ![Alkalmazott hozzáadása](./media/flock-tutorial/user2.png)
 
-4. Adja meg például a felhasználó e-mail-címe **Brittasimon@contoso.com** majd **felhasználó hozzáadása**.
+4. Adja meg például a felhasználó e-mail-címe **Brittasimon\@contoso.com** majd **felhasználó hozzáadása**.
 
     ![Alkalmazott hozzáadása](./media/flock-tutorial/user3.png)
 

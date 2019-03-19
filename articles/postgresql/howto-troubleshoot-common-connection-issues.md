@@ -7,12 +7,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/09/2018
-ms.openlocfilehash: 1a7f58960111b3fba6283830b262a9b901b8e2fd
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: a78167e9b143a4c8d424947b489043dd45dfe2db
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546233"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57886422"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql"></a>PostgreSQL-hez készült Azure Database-kapcsolatok problémáinak hibaelhárítása
 
@@ -48,7 +48,7 @@ Ha az alkalmazás nem állandó csatlakozás az Azure Database for postgresql-he
 
 * Kiszolgálói tűzfal-konfiguráció: Győződjön meg arról, hogy az Azure Database for PostgreSQL-kiszolgáló tűzfal az ügyfélről, beleértve a proxy-kiszolgálók és az átjárók kapcsolatok engedélyezésére van konfigurálva.
 * Ügyfél tűzfal-konfiguráció: Az ügyfélen a tűzfalnak engedélyeznie kell az adatbázis-kiszolgálóhoz csatlakozhat. IP-címek és portok nem lehet a kiszolgáló és az egyes tűzfalak például PostgreSQL alkalmazásnevek engedélyezni kell.
-* Felhasználói hiba: Előfordulhat, hogy a kapcsolati paramétereket, például a kiszolgáló neve a kapcsolati karakterlánc vagy egy hiányzó elgépelte *@servername* utótagot a felhasználó nevében.
+* Felhasználói hiba: Előfordulhat, hogy a kapcsolati paramétereket, például a kiszolgáló neve a kapcsolati karakterlánc vagy egy hiányzó elgépelte  *\@servername* utótagot a felhasználó nevében.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Állandó kapcsolattal összefüggő problémák megoldásának lépései
 

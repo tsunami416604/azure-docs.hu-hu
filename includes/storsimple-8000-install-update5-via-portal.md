@@ -4,18 +4,18 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 68c04ef893e5e0826f03bffa93fb7c79b4959fdc
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d2df7388018c463ba58b57be46945915210b84b6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55889180"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58125090"
 ---
 #### <a name="to-install-an-update-from-the-azure-portal"></a>Frissítés telepítése az Azure Portalról
 
 1. A StorSimple szolgáltatás oldalán válassza ki az eszközét.
 
-    ![Válasszon eszközt](./media/storsimple-8000-install-update5-via-portal/update1.png)
+    ![Eszköz kiválasztása](./media/storsimple-8000-install-update5-via-portal/update1.png)
 
 2. Navigáljon a **eszközbeállítások** > **Eszközfrissítések**.
 
@@ -35,7 +35,7 @@ ms.locfileid: "55889180"
    * **A hardverösszetevők állapotának ellenőrzései** annak ellenőrzéséhez, hogy a StorSimple eszközön lévő összes hardverösszetevő kifogástalan állapotú legyen.
    * **DATA 0 ellenőrzések** annak ellenőrzéséhez, hogy a DATA 0 engedélyezett legyen az eszközön. Ha ez az illesztőfelület nem engedélyezett, engedélyeznie kell, majd újra kell próbálkoznia.
 
-    A frissítés letöltését és telepítését, csak akkor, ha az összes ellenőrzés sikeresen befejeződik. Értesítést kap, amikor az ellenőrzések folyamatban vannak. Ha az Eszközfrissítések nem sikerül, majd kap az a hiba okait. Probléma megoldására, és próbálkozzon újra a művelettel. Elképzelhető, hogy kapcsolatba kell lépnie a Microsoft támogatási szolgálatával, ha nem tudja egyedül kezelni ezeket a problémákat.
+     A frissítés letöltését és telepítését, csak akkor, ha az összes ellenőrzés sikeresen befejeződik. Értesítést kap, amikor az ellenőrzések folyamatban vannak. Ha az Eszközfrissítések nem sikerül, majd kap az a hiba okait. Probléma megoldására, és próbálkozzon újra a művelettel. Elképzelhető, hogy kapcsolatba kell lépnie a Microsoft támogatási szolgálatával, ha nem tudja egyedül kezelni ezeket a problémákat.
 
 7. Az Eszközfrissítések sikeres elvégzése után létrejön egy frissítési feladat. A frissítési feladat sikeres létrehozásáról értesítést kap.
    

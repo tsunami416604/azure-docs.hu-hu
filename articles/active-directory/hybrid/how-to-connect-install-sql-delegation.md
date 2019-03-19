@@ -16,12 +16,12 @@ ms.date: 02/26/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31cfcc6d2309b90565f71a7827fb7057145323c3
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 6269d00c9a6a8f827a4e31044d9d20efb0f8471b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57192412"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58092582"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>Telepítse az Azure AD Connect SQL-lel delegált rendszergazdai engedélyekkel
 Az Azure AD Connect legújabb buildjének, mielőtt felügyeleti delegálás, SQL, a szükséges konfigurációk központi telepítésekor nem támogatott.  Felhasználók számára az Azure AD Connect telepítése szükséges az SQL Server kiszolgáló (SA) rendszergazdai jogosultságokkal rendelkezik.
@@ -44,19 +44,19 @@ A sávon kívüli-adatbázis kiépítése, és az Azure AD Connect telepítése 
 >Bár ez nem szükséges, célszerű **erősen ajánlott** , hogy az adatbázis létrehozásakor a Latin1_General_CI_AS rendezés van-e kiválasztva.
 
 
- 1. Az SQL-rendszergazda az ADSync-adatbázis létrehozása egy kis-és nagybetű nincs megkülönböztetve rendezési sorrend rendelkezik **(Latin1_General_CI_AS)**.  Az adatbázis neve legyen **ADSync**.  A helyreállítási modell kompatibilitási szintje és elszigetelési típusa frissülnek, hogy a helyes értékeket az Azure AD Connect telepítése során.  Azonban a rendezési sorrend megfelelően kell állítani az SQL-rendszergazda által ellenkező esetben az Azure AD Connect meggátolja a telepítést.  A biztonsági Társítás helyreállítása törölje, majd hozza létre újból az adatbázist.
+1. Az SQL-rendszergazda az ADSync-adatbázis létrehozása egy kis-és nagybetű nincs megkülönböztetve rendezési sorrend rendelkezik **(Latin1_General_CI_AS)**.  Az adatbázis neve legyen **ADSync**.  A helyreállítási modell kompatibilitási szintje és elszigetelési típusa frissülnek, hogy a helyes értékeket az Azure AD Connect telepítése során.  Azonban a rendezési sorrend megfelelően kell állítani az SQL-rendszergazda által ellenkező esetben az Azure AD Connect meggátolja a telepítést.  A biztonsági Társítás helyreállítása törölje, majd hozza létre újból az adatbázist.
  
- ![Rendezés](./media/how-to-connect-install-sql-delegation/sql4.png)
- 2. Az Azure AD Connect-rendszergazda és a tartományi szolgáltatásfióknak a következő engedélyek megadására:
-    - SQL-bejelentkezés 
-    - **adatbázis-owner(dbo)** jogokat.
+   ![Rendezés](./media/how-to-connect-install-sql-delegation/sql4.png)
+2. Az Azure AD Connect-rendszergazda és a tartományi szolgáltatásfióknak a következő engedélyek megadására:
+   - SQL-bejelentkezés 
+   - **adatbázis-owner(dbo)** jogokat.
  
- ![Engedélyek](./media/how-to-connect-install-sql-delegation/sql3a.png)
+   ![Engedélyek](./media/how-to-connect-install-sql-delegation/sql3a.png)
 
- >[!NOTE]
- >Az Azure AD Connect nem támogatja a beágyazott tagságot használatának.  Ez azt jelenti, hogy az Azure AD Connect rendszergazdai fiókot és a tartományi szolgáltatásfióknak kell társítani, amely a dbo jogokat kapnak a bejelentkezési adatokat.  Egyszerűen egy olyan bejelentkezési dbo jogosultságokkal hozzárendelt csoport tagjai nem lehet.
+   >[!NOTE]
+   >Az Azure AD Connect nem támogatja a beágyazott tagságot használatának.  Ez azt jelenti, hogy az Azure AD Connect rendszergazdai fiókot és a tartományi szolgáltatásfióknak kell társítani, amely a dbo jogokat kapnak a bejelentkezési adatokat.  Egyszerűen egy olyan bejelentkezési dbo jogosultságokkal hozzárendelt csoport tagjai nem lehet.
 
- 3. E-mail küldése az Azure AD Connect rendszergazdájának kell használni, amikor az Azure AD Connect telepítése SQL kiszolgáló és példánya nevének jelző.
+3. E-mail küldése az Azure AD Connect rendszergazdájának kell használni, amikor az Azure AD Connect telepítése SQL kiszolgáló és példánya nevének jelző.
 
 ## <a name="additional-information"></a>További információ
 Miután az adatbázishoz ki van építve, az Azure AD Connect-rendszergazda telepítheti és konfigurálhatja a helyszíni szinkronizálási, saját igényeik.

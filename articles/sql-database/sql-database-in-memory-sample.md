@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 9551f07efa9d388da69b6474f6a2dd5af947ff2c
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 2aa98c3958f1dffeb8adbad5e91a11f397d4a9fd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767651"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005738"
 ---
 # <a name="in-memory-sample"></a>A memóriában minta
 
@@ -190,11 +190,11 @@ További információkért lásd:
 <!--
 dn511655.aspx is for SQL 2014,
 [Extensions to AdventureWorks to Demonstrate In-Memory OLTP]
-(http://msdn.microsoft.com/library/dn511655&#x28;v=sql.120&#x29;.aspx)
+(https://msdn.microsoft.com/library/dn511655&#x28;v=sql.120&#x29;.aspx)
 
 whereas for SQL 2016+
 [Sample Database for In-Memory OLTP]
-(http://msdn.microsoft.com/library/mt465764.aspx)
+(https://msdn.microsoft.com/library/mt465764.aspx)
 -->
 
 
@@ -244,9 +244,9 @@ Az eredmény, miután a *_inmem* futnak, hajtsa végre az alábbi lépéseket a 
 
 
 1. Az adatbázis visszaállítása az ssms-ben minden adatot törölnie kell, hogy az előző futtatásból állapotszolgáltatást nem a következő parancs futtatásával:
-```sql
-EXECUTE Demo.usp_DemoReset;
-```
+   ```sql
+   EXECUTE Demo.usp_DemoReset;
+   ```
 
 2. Cserélje le az összes ostress.exe parancssori szerkesztése *_inmem* a *_ondisk*.
 
@@ -277,13 +277,13 @@ Az OLTP-munkaterhelés valós idejű elemzését célszerű gyakran egy fürtöz
 
 
 1. Az Azure portal segítségével hozzon létre egy új AdventureWorksLT adatbázis a mintát.
- - A pontos nevét használja.
- - Válassza ki bármelyik prémium szolgáltatásszint.
+   - A pontos nevét használja.
+   - Válassza ki bármelyik prémium szolgáltatásszint.
 
 2. Másolás a [sql_in-memory_analytics_sample](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_analytics_sample.sql) a vágólapra.
- - A T-SQL parancsfájlt a szükséges memórián belüli objektumok az AdventureWorksLT mintaadatbázis az 1. lépésben létrehozott hoz létre.
- - A parancsfájl a dimenziótáblában és két ténytáblák hoz létre. A ténytáblák 3,5 millió sort is megjelenik.
- - A parancsfájl 15 percet is igénybe vehet.
+   - A T-SQL parancsfájlt a szükséges memórián belüli objektumok az AdventureWorksLT mintaadatbázis az 1. lépésben létrehozott hoz létre.
+   - A parancsfájl a dimenziótáblában és két ténytáblák hoz létre. A ténytáblák 3,5 millió sort is megjelenik.
+   - A parancsfájl 15 percet is igénybe vehet.
 
 3. Illessze be a T-SQL parancsfájl ssms-ben, és ezután hajtsa végre a parancsfájlt. A **OSZLOPCENTRIKUS** kulcsszó a **a CREATE INDEX** utasítás elengedhetetlen, mint:<br/>`CREATE NONCLUSTERED COLUMNSTORE INDEX ...;`
 

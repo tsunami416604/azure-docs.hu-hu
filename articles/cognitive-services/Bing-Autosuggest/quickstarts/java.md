@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: a95bda18009f502700f41c63cc9f00cdf6c00534
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 64b6ed680ba0812322d5796debc5edada19bc926
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011041"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118833"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-java"></a>Gyors útmutató: Keresési lekérdezések a Bing Autosuggest REST API és a Java-javaslat
 
@@ -73,51 +73,51 @@ public static String prettify(String json_text) {
 
 1. Hozzon létre egy új metódust `get_suggestions()` , és hajtsa végre az alábbi lépéseket:
 
-    1. hozza létre a kérelem URL-címe az API-t kombinálásával gazdagép elérési útja és a keresési lekérdezés kódolás. Ügyeljen arra, hogy url-kódolása a lekérdezés hozzáfűzése, mielőtt. A lekérdezés paraméterei karakterlánc létrehozása a piaci kódot hozzáfűzésével a `mkt=` paraméterhez, és a lekérdezés a `q=` paraméter.
+   1. hozza létre a kérelem URL-címe az API-t kombinálásával gazdagép elérési útja és a keresési lekérdezés kódolás. Ügyeljen arra, hogy url-kódolása a lekérdezés hozzáfűzése, mielőtt. A lekérdezés paraméterei karakterlánc létrehozása a piaci kódot hozzáfűzésével a `mkt=` paraméterhez, és a lekérdezés a `q=` paraméter.
     
       ```java
   
       public static String get_suggestions () throws Exception {
-          String encoded_query = URLEncoder.encode (query, "UTF-8");
-          String params = "?mkt=" + mkt + "&q=" + encoded_query;
-          //...
+         String encoded_query = URLEncoder.encode (query, "UTF-8");
+         String params = "?mkt=" + mkt + "&q=" + encoded_query;
+         //...
       }
       ```
     
-    2. Hozzon létre egy új a kérelem URL-CÍMÉT az API-gazdagép, elérési út és paramétereit a fent létrehozott. 
+   2. Hozzon létre egy új a kérelem URL-CÍMÉT az API-gazdagép, elérési út és paramétereit a fent létrehozott. 
     
-        ```java
-        //...
-        URL url = new URL (host + path + params);
-        //...
-        ```
+       ```java
+       //...
+       URL url = new URL (host + path + params);
+       //...
+       ```
     
-    3. Hozzon létre egy `HttpsURLConnection` objektumot, és használjon `openConnection()` kapcsolat létrehozásához. A kérelem módszert állítja be `GET`, és adja hozzá az előfizetési kulcs, a `Ocp-Apim-Subscription-Key` fejléc.
+   3. Hozzon létre egy `HttpsURLConnection` objektumot, és használjon `openConnection()` kapcsolat létrehozásához. A kérelem módszert állítja be `GET`, és adja hozzá az előfizetési kulcs, a `Ocp-Apim-Subscription-Key` fejléc.
 
       ```java
-        //...
-        HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
-        connection.setRequestMethod("GET");
-        connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
-        connection.setDoOutput(true);
-        //...
+       //...
+       HttpsURLConnection connection = (HttpsURLConnection) url.openConnection();
+       connection.setRequestMethod("GET");
+       connection.setRequestProperty("Ocp-Apim-Subscription-Key", subscriptionKey);
+       connection.setDoOutput(true);
+       //...
       ```
 
-    4. Olvassa el az API válaszként egy `StringBuilder`. Miután a válasz már megtörtént, zárja be a `InputStreamReader` eseménystreamben, és a választ adja vissza.
+   4. Olvassa el az API válaszként egy `StringBuilder`. Miután a válasz már megtörtént, zárja be a `InputStreamReader` eseménystreamben, és a választ adja vissza.
 
-        ```java
-        //...
-        StringBuilder response = new StringBuilder ();
-        BufferedReader in = new BufferedReader(
-        new InputStreamReader(connection.getInputStream()));
-        String line;
-        while ((line = in.readLine()) != null) {
-          response.append(line);
-        }
-        in.close();
+       ```java
+       //...
+       StringBuilder response = new StringBuilder ();
+       BufferedReader in = new BufferedReader(
+       new InputStreamReader(connection.getInputStream()));
+       String line;
+       while ((line = in.readLine()) != null) {
+         response.append(line);
+       }
+       in.close();
     
-        return response.toString();
-        ```
+       return response.toString();
+       ```
 
 2. Az alkalmazás fő függvényét, a hívás `get_suggestions()`, és a válasz operátorral `prettify()`.
     

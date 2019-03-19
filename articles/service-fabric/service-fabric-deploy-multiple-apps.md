@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: ea2f27069ca445a4d74ddc634f5c396ab13564a1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4d9dfbcfc1dd00209a90386bf75f0c2515a28060
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248996"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57854466"
 ---
 # <a name="deploy-multiple-guest-executables"></a>Több futtatható vendégalkalmazás üzembe helyezése
 Ez a cikk bemutatja, hogyan csomagolását és több futtatható vendégalkalmazás üzembe helyezése az Azure Service fabric. Fejlesztésére és üzembe helyezése a Service Fabric egyetlen csomagban további ismertetés a [egy futtatható vendégalkalmazás üzembe helyezése Service Fabric](service-fabric-deploy-existing-app.md).
@@ -167,7 +167,7 @@ Nézzük könyvtárba, és vizsgálja meg, mi az eszközt hozott létre.
 Ahogy láthatjuk, az eszköz hozzá egy új mappát, a MongoDB, a MongoDB bináris fájlokat tartalmazó könyvtárra. Ha megnyitja a `ApplicationManifest.xml` fájlt, láthatja, hogy a csomag most már tartalmazza a Node.js-alkalmazás és a mongodb-hez. Az alábbi kódot az alkalmazásjegyzékben tartalmát jeleníti meg.
 
 ```xml
-<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyNodeApp" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyNodeApp" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <ServiceManifestImport>
       <ServiceManifestRef ServiceManifestName="MongoDB" ServiceManifestVersion="1.0" />
    </ServiceManifestImport>

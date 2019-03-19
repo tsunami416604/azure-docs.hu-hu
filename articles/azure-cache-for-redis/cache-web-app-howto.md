@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 8225f5a093724c00dcc336d5dc2195f4addc998b
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: f0972e840fab3c624616ba8aa70bae74be5b1dc2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237824"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090474"
 ---
 # <a name="quickstart-create-an-aspnet-web-app"></a>Gyors útmutató: ASP.NET-webapp létrehozása 
 
@@ -74,9 +74,9 @@ A következő lépésben létrehozza az alkalmazás gyorsítótárát.
 
 #### <a name="to-edit-the-cachesecretsconfig-file"></a>A *CacheSecrets.config* fájl módosítása
 
-3. Hozzon létre egy *CacheSecrets.config* nevű fájlt a számítógépén. Helyezze egy olyan helyre, ahonnan a mintaalkalmazás forráskódja nem fogja beolvasni. Ebben a rövid útmutatóban a *CacheSecrets.config* fájl a következő helyen található: *C:\AppSecrets\CacheSecrets.config*.
+1. Hozzon létre egy *CacheSecrets.config* nevű fájlt a számítógépén. Helyezze egy olyan helyre, ahonnan a mintaalkalmazás forráskódja nem fogja beolvasni. Ebben a rövid útmutatóban a *CacheSecrets.config* fájl a következő helyen található: *C:\AppSecrets\CacheSecrets.config*.
 
-4. Szerkessze a *CacheSecrets.config* fájlt. Ezután adja hozzá a következő tartalmat:
+1. Szerkessze a *CacheSecrets.config* fájlt. Ezután adja hozzá a következő tartalmat:
 
     ```xml
     <appSettings>
@@ -84,14 +84,14 @@ A következő lépésben létrehozza az alkalmazás gyorsítótárát.
     </appSettings>
     ```
 
-5. A `<cache-name>` karakterláncot cserélje le a gyorsítótár gazdagépének nevére.
+1. A `<cache-name>` karakterláncot cserélje le a gyorsítótár gazdagépének nevére.
 
-6. Az `<access-key>` karakterláncot cserélje le a gyorsítótár elsődleges kulcsára.
+1. Az `<access-key>` karakterláncot cserélje le a gyorsítótár elsődleges kulcsára.
 
     > [!TIP]
     > A másodlagos hozzáférési kulcsot a kulcscsere során használhatja alternatív kulcsként, amíg Ön újragenerálja az elsődleges hozzáférési kulcsot.
->
-7. Mentse a fájlt.
+   >
+1. Mentse a fájlt.
 
 ## <a name="update-the-mvc-application"></a>Az MVC alkalmazás frissítése
 

@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a810ae13d9cfb68d11293ba883c52858aa4a2deb
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b98cc0141954a079b848bd9639b081499819b8ce
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164753"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877003"
 ---
 # <a name="restore-or-remove-a-recently-deleted-user-using-azure-active-directory"></a>Állítsa vissza vagy az Azure Active Directoryval nemrégiben törölt felhasználó eltávolítása
 A felhasználó törlését követően a fiók maradt felfüggesztett állapotba 30 napig. A 30 napos időszak alatt a felhasználói fiók is lehet visszaállítani, együtt minden hozzá tartozó tulajdonságok. A 30 napos időszak letelte után a felhasználó automatikusan, és véglegesen, törlődik.
@@ -31,13 +31,13 @@ A visszaállítható felhasználók megtekintése, törölt felhasználói vissz
 ## <a name="required-permissions"></a>Szükséges engedélyek
 Felhasználók végleges törlése és visszaállítása a következő szerepkörök egyikét kell rendelkeznie.
 
-- Céges rendszergazda
+- Globális rendszergazda
 
 - 1. szintű partnertámogatás
 
 - 2. szintű partnertámogatás
 
-- Felhasználóifiók-adminisztrátor
+- Felhasználói adminisztrátor
 
 ## <a name="view-your-restorable-users"></a>A visszaállítható felhasználók megtekintése
 Legalább 30 nappal ezelőtt törölt összes felhasználója láthatja. Ezek a felhasználók vissza tudja állítani.

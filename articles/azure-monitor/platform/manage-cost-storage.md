@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 5c6cda735f946fc510129f688ebedf85dd054d0c
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: a1d8984b8c9d0859ff754e3d5bfb35bd98236b54
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734251"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58098559"
 ---
 # <a name="manage-usage-and-costs-for-log-analytics"></a>A Log Analytics használat és költségek kezelése
 
@@ -163,7 +163,7 @@ Szeretné megtudni, minden nap az utolsó hónapban adatokat küldő számítóg
 | summarize dcount(Computer) by bin(TimeGenerated, 1d)    
 | render timechart`
 
-A küldő számítógépek listájának lekérése **adattípusok számlázzuk** (egyes adattípusok olyan ingyenes), használhatja a [_IsBillable](log-standard-properties.md#isbillable) tulajdonság:
+A küldő számítógépek listájának lekérése **adattípusok számlázzuk** (egyes adattípusok olyan ingyenes), használhatja a [_IsBillable](log-standard-properties.md#_isbillable) tulajdonság:
 
 `union withsource = tt * 
 | where _IsBillable == true 

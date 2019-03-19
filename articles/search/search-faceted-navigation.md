@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/10/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 67cc955e4a265a2b29893bd0484dd905f4f2c2b2
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: f1d557396f17357afd6f9e5d701e946668fcee65
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632433"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57861043"
 ---
 # <a name="how-to-implement-faceted-navigation-in-azure-search"></a>Jellemzőalapú navigáció megvalósítása az Azure Search-ben
 Jellemzőalapú navigáció egy szűrési mechanizmus, amely alkalmazások keresése az önállóan irányított drilldown navigációs biztosít. A kifejezés "jellemzőalapú navigáció" ismeretlen, de valószínűleg felhasználta előtt. Ahogy az alábbi példa bemutatja, a jellemzőalapú navigáció má hodnotu nothing több, mint az eredmények szűréséhez használt kategóriák.
@@ -67,10 +67,10 @@ Az Azure Search szolgáltatásban egy kérelem egy vagy több lekérdezési para
 
 Pontosság, érthető módon irreleváns találatok szűréséhez lehetővé teszi a gazdafájlon keresztül, egyik vagy mindkét ezek a kifejezések:
 
--   **Keresés =**  
+-   **search=**  
     Ez a paraméter értékét a keresési kifejezés jelent. Érdemes lehet egy darab szöveg vagy egy összetett keresési kifejezés, amely tartalmazza a feltételeket és a kezelők. A kiszolgálón teljes szöveges keresés, kereshető mezőket a feltételeket, eredményt adnak vissza a sorrend egyeztetéséhez az index lekérdezése a keresési kifejezés használható. Ha `search` , null, a lekérdezés végrehajtása során a teljes indexre van (azaz `search=*`). Ebben az esetben a lekérdezés többi elemének például egy `$filter` vagy relevanciaprofil, mely dokumentumokat visszaadott befolyásoló legfontosabb tényezők `($filter`), és milyen sorrendben (`scoringProfile` vagy `$orderby`).
 
--   **$filter =**  
+-   **$filter=**  
     Szűrő az adott dokumentum attribútumának alapuló keresési eredményeknek méretét korlátozó egy hatékony mechanizmusa. A `$filter` először értékeli ki, a többnyelvűséget logika, amely létrehozza az elérhető értékek és a megfelelő száma minden egyes érték követ.
 
 Összetett keresési kifejezések csökkentse a lekérdezés teljesítményét. Ahol lehetséges, használjon jól felépített szűrőkifejezésekben pontosság növeléséhez, és javíthatja a lekérdezések teljesítményét.
@@ -435,7 +435,7 @@ A további elemzés, a jellemzőalapú navigáció tervezési elvek javasoljuk, 
 [Create your first application]: search-create-first-solution.md
 [OData expression syntax (Azure Search)]: https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search
 [Azure Search Adventure Works Demo]: https://azuresearchadventureworksdemo.codeplex.com/
-[http://www.odata.org/documentation/odata-version-2-0/overview/]: http://www.odata.org/documentation/odata-version-2-0/overview/ 
+[https://www.odata.org/documentation/odata-version-2-0/overview/]: https://www.odata.org/documentation/odata-version-2-0/overview/ 
 [Faceting on Azure Search forum post]: ../faceting-on-azure-search.md?forum=azuresearch
 [Search Documents (Azure Search API)]: https://docs.microsoft.com/rest/api/searchservice/Search-Documents
 

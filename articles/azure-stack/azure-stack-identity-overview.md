@@ -16,12 +16,12 @@ ms.date: 01/14/2019
 ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: e548188f1fc44ec32b90d0eaaa4154602e3e51c4
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 564c4b011b26f2bc6b034233d014542172a4a739
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57764081"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57885300"
 ---
 # <a name="overview-of-identity-for-azure-stack"></a>Az Azure stack-identitás – áttekintés
 
@@ -60,7 +60,7 @@ Az identitáskezelési megoldás használata függ, hogyan hozzon létre és kez
 
 Az Azure Stackben, felhasználói fiókok:
 
-- Hozza létre a rendszer a *username@domain* formátumban. Bár az AD FS felhasználói fiókok képez le egy Active Directory-példányból, az AD FS használatát nem támogatja a  *\\ \<tartomány >\\\<alias >* formátumban.
+- Hozza létre a rendszer a *felhasználónév\@tartomány* formátumban. Bár az AD FS felhasználói fiókok képez le egy Active Directory-példányból, az AD FS használatát nem támogatja a  *\\ \<tartomány >\\\<alias >* formátumban.
 - Beállíthatja a multi-factor authentication használatára.
 - Korlátozva arra a könyvtárra, ahol azok először regisztrálnia, amely a szervezet címtárában.
 - A helyszíni címtárakban importálhatók. További információkért lásd: [a helyszíni címtárak integrálása az Azure Active Directory](/azure/active-directory/connect/active-directory-aadconnect).

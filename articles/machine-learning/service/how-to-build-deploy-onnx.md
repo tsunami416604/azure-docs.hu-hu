@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 12/3/2018
 ms.custom: seodec18
-ms.openlocfilehash: 3f7afb6478d2780af17720fa57c17130588f7d6e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 8c392e1df1b3a42256bc89cabcfa1506a4b4e83b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57770203"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117795"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX és az Azure Machine Learning: Hozzon létre és együttműködésre AI-modellek üzembe helyezése
 
@@ -36,7 +36,7 @@ Jelenítenek meg, és felgyorsítja az ONNX-modellekkel eszközök ökoszisztém
 
 [ONNX-modellekkel is üzembe helyezhetők](#deploy) a felhőbe az Azure Machine Learning és ONNX-futtatókörnyezet. A Windows 10-eszközökön is telepíthető [Windows ML](https://docs.microsoft.com/windows/ai/). Akkor is telepíthetők legyenek más platformokon elérhető az ONNX-Közösségből származó átalakítók használatával. 
 
-[![Képzés, konverterek és telepítési folyamatábrája ONNX](media/concept-onnx/onnx.png) ] (. / media/concept-onnx/onnx.png#lightbox)
+[![Képzés, a feldolgozók és a központi telepítési ONNX folyamatábrája](media/concept-onnx/onnx.png) ](./media/concept-onnx/onnx.png#lightbox)
 
 ## <a name="get-onnx-models"></a>ONNX-modellekkel beolvasása
 
@@ -127,7 +127,7 @@ A teljes Python API-referencia, lásd: a [ONNX-futtatókörnyezet referenciadoku
 
    ```python
    from azureml.core.image import ContainerImage
-   
+
    image_config = ContainerImage.image_configuration(execution_script = "score.py",
                                                      runtime = "python",
                                                      conda_file = "myenv.yml",
@@ -161,10 +161,10 @@ A teljes Python API-referencia, lásd: a [ONNX-futtatókörnyezet referenciadoku
        try:
            data = json.loads(raw_data)['data']
            data = np.array(data)
-        
+
            sess = onnxruntime.InferenceSession(model_path)
            result = sess.run(["outY"], {"inX": data})
-        
+
            return json.dumps({"result": result.tolist()})
        except Exception as e:
            result = str(e)
@@ -189,9 +189,9 @@ A teljes Python API-referencia, lásd: a [ONNX-futtatókörnyezet referenciadoku
 
 
 ## <a name="examples"></a>Példák
- 
+
 Lásd: [útmutatóval-to-használat-azureml/üzembe helyezés/onnx](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/onnx) létrehozásáért és ONNX-modellekkel például jegyzetfüzeteket.
- 
+
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="more-info"></a>További információ

@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: eb924bcfe3e2545cf6666a19bbb3494c11bc3a48
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 28a7de1b43d793641237197aea841022996b07e3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42060840"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994036"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Ismerkedés az Azure Queue storage és a Visual Studio kapcsolódó szolgáltatásokkal (felhőszolgáltatás-projektek)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -32,7 +32,7 @@ A **csatlakoztatott szolgáltatás hozzáadása** művelet telepíti a megfelel�
 * Lásd: [.NET használatával az Azure Queue storage használatának első lépései](../storage/queues/storage-dotnet-how-to-use-queues.md) üzenetsorok a kód módosítása további tájékoztatást.
 * Lásd: [Storage-dokumentáció](https://azure.microsoft.com/documentation/services/storage/) Azure Storage szolgáltatással kapcsolatos általános információkat.
 * Lásd: [Cloud Services – dokumentáció](https://azure.microsoft.com/documentation/services/cloud-services/) az Azure cloud services kapcsolatos általános információkat.
-* Lásd: [ASP.NET](http://www.asp.net) ASP.NET-alkalmazások programozása további információt.
+* Lásd: [ASP.NET](https://www.asp.net) ASP.NET-alkalmazások programozása további információt.
 
 Az Azure Queue Storage szolgáltatás üzenetek nagy számban történő tárolására szolgál, amelyek HTTP- vagy HTTPS-kapcsolattal, hitelesített hívásokon keresztül a világon bárhonnan elérhetők. Egyetlen üzenetsor akár 64 KB méretű is lehet, és a tárfiók maximális kapacitásán belül több millió üzenetet tartalmazhat.
 
@@ -57,7 +57,7 @@ A Visual Studio Felhőszolgáltatás-projektek várólisták elérése, foglalja
         // Get a reference to a queue named "messageQueue"
         CloudQueue messageQueue = queueClient.GetQueueReference("messageQueue");
 
-**Megjegyzés:** használata előtt a kódot a fenti kódja a következő minták.
+**MEGJEGYZÉS:** Használja a kód előtt a fenti kódja a következő minták.
 
 ## <a name="create-a-queue-in-code"></a>Várólista létrehozása a code-ban
 A várólista létrehozása a kódban, adja hozzá a hívás **CreateIfNotExists**.

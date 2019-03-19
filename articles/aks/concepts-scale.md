@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: iainfou
-ms.openlocfilehash: c7019eac4edc530de5ef64ba9eb32e8e4994e75b
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 20f9655e1c3e7cce652802957f5eef1f333870e9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57245199"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176497"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Méretezési lehetőségeket biztosít az alkalmazások az Azure Kubernetes Service (AKS)
 
@@ -51,7 +51,7 @@ Ezek az értékek utáni finomhangolása szükségessé. Az alapértelmezett ut�
 
 ## <a name="cluster-autoscaler"></a>Fürt méretező
 
-Kubernetes pod változásaihoz válaszolni, van egy fürt méretező, amely alapján a kért csomópontok alkalmazkodik a számítási erőforrásokat a csomópont a készletben. Fürt automatikus méretező például méretezési eseményeket és erőforrás-küszöbértékek között időintervallumok indítási paraméterei. Ha a fürt automatikus skálázási határozza meg, hogy szükség-e egy az megváltoztatására, az AKS-fürtben található csomópontok számának növelése vagy csökkenése ennek megfelelően. AKS-fürt fürt automatikus méretező használatához futtassa a virtual machine scale sets a méretezési csoport kezeléséhez be, és vertikális leskálázás az AKS-csomópontok események.
+Kubernetes pod változásaihoz válaszolni, van egy fürt méretező (jelenleg előzetes verzióban érhető el az aks-ben), amely beállítja a alapján a kért számítási erőforrásokat, a csomópont a készletben lévő csomópontok számát. Alapértelmezés szerint a fürt automatikus méretező a szükséges változtatásokat a csomópontok száma 10 másodpercenként ellenőrzi az API-kiszolgálóhoz. Ha a fürt automatikus skálázási határozza meg, hogy szükség-e egy az megváltoztatására, az AKS-fürtben található csomópontok számának növelése vagy csökkenése ennek megfelelően. Fürt automatikus méretező együttműködik az RBAC-kompatibilis az AKS-fürt futtatása a Kubernetes 1.10.x vagy újabb verziója.
 
 ![Kubernetes-fürt méretező](media/concepts-scale/cluster-autoscaler.png)
 
@@ -81,7 +81,7 @@ Az AKS-fürt gyors vertikális felskálázásához integrálható az Azure Conta
 
 ![Kubernetes-kapacitásnövelés méretezés az aci Szolgáltatásban](media/concepts-scale/burst-scaling.png)
 
-Az ACI gyors üzembe helyezése a tárolópéldányok további infrastruktúra terhelését anélkül teszi lehetővé. A csatlakozáskor az aks-sel az ACI válik az AKS-fürt biztonságos, logikai kiterjesztését. A Virtual Kubelet telepítve van a az AKS-fürt, amely az ACI virtuális Kubernetes-csomópontként jeleníti meg. Kubernetes majd ütemezheti az AKS-fürt közvetlenül a Virtuálisgép-csomópontok ACI-példány virtuális csomópontok keresztül, nem pedig a podok futtató podok.
+Az ACI gyors üzembe helyezése a tárolópéldányok további infrastruktúra terhelését anélkül teszi lehetővé. A csatlakozáskor az aks-sel az ACI válik az AKS-fürt biztonságos, logikai kiterjesztését. A Virtual Kubelet telepítve van a az AKS-fürt, amely az ACI virtuális Kubernetes-csomópontként jeleníti meg. Kubernetes majd ütemezheti az AKS-fürt közvetlenül a Virtuálisgép-csomópontok ACI-példány virtuális csomópontok keresztül, nem pedig a podok futtató podok. Virtuális csomópontok jelenleg az aks-ben előzetes verzióban érhető el.
 
 Az alkalmazás használatához a virtuális csomópontok bármilyen módosítás nélkül igényel. Központi telepítések méretezheti az AKS és az ACI és a késleltetés nélkül fürtként méretező helyez üzembe az AKS-fürt az új csomópontok.
 

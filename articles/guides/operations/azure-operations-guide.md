@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: c1840e2102a0a08e73490319a5633d4db8e0f0bd
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 5e879395e034813f954d1046e4a69e21534f3968
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767940"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077156"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Ismerkedés az Azure-operátorok
 
@@ -481,9 +481,9 @@ Többféle módon is üzembe helyezése egy virtuális hálózatot.
 
 - Az Azure Resource Manager-sablonok
 
->**Mikor érdemes használni**: Bármikor dolgozik az Azure-beli virtuális gépek, virtuális hálózatok fog dolgozni. Ez lehetővé teszi a nyilvános és privát alhálózat hasonló a helyszíni adatközpontjaik között, a virtuális gépek szegmentálja.
-
->**Első lépések**: Azure-beli virtuális hálózathoz az Azure Portallal való központi telepítéséhez szükséges csak egy aktív Azure-előfizetés és a egy webböngészőben való hozzáférés. Új virtuális hálózat üzembe helyezhető egy új vagy meglévő erőforráscsoportot. Új virtuális gép létrehozásakor a portálon válassza ki a meglévő virtuális hálózattal, vagy hozzon létre egy újat. Első lépések és [hozzon létre egy virtuális hálózatot az Azure portal használatával](../../virtual-network/quick-create-portal.md).
+> **Mikor érdemes használni**: Bármikor dolgozik az Azure-beli virtuális gépek, virtuális hálózatok fog dolgozni. Ez lehetővé teszi a nyilvános és privát alhálózat hasonló a helyszíni adatközpontjaik között, a virtuális gépek szegmentálja.
+> 
+> **Első lépések**: Azure-beli virtuális hálózathoz az Azure Portallal való központi telepítéséhez szükséges csak egy aktív Azure-előfizetés és a egy webböngészőben való hozzáférés. Új virtuális hálózat üzembe helyezhető egy új vagy meglévő erőforráscsoportot. Új virtuális gép létrehozásakor a portálon válassza ki a meglévő virtuális hálózattal, vagy hozzon létre egy újat. Első lépések és [hozzon létre egy virtuális hálózatot az Azure portal használatával](../../virtual-network/quick-create-portal.md).
 
 ### <a name="access-and-security-for-virtual-networks"></a>Hozzáférés és biztonság a virtuális hálózatokban
 

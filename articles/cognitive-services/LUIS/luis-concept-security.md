@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: diberry
-ms.openlocfilehash: ac4095d19904db10d4d60364dd2c739e8105c171
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 4465488dc02568932e839d3234bdb672d59e6804
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863619"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089845"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>Létrehozási és -végpont felhasználói hozzáférés
 Authoring hozzáférés tulajdonosok és a közreműködők érhető el. Saját alkalmazások esetén végponti hozzáférés tulajdonosai és a közreműködők érhető el. Egy nyilvános alkalmazás végponti hozzáférés érhető el mindenki számára, amelyek a saját LUIS-fiókkal rendelkezik, és a nyilvános alkalmazás-azonosítóval rendelkezik. 
@@ -53,7 +53,7 @@ Hozzáférés lekérdezni a végpont egy beállítást vezérli a **alkalmazáss
 A magánhálózati alkalmazáshoz végpont csak a következő számára érhető el:
 
 |Kulcs és a felhasználó|Magyarázat|
-|--|--|--|
+|--|--|
 |A tulajdonos szerzői kulcs| Legfeljebb 1000 végpont találatok|
 |A közreműködők Authoring Tool kulcsok| Legfeljebb 1000 végpont találatok|
 |A LUIS-szerző vagy közreműködő által rendelt bármelyik billentyűt|Kulcshasználat réteg alapján|

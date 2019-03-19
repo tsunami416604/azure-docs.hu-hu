@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/13/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 62320d6523652d91f35e55196a84cc32ea7bc55d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 36e1c8d6cae79147c5cd4b5a46f5e1c330811ab8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440165"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57877649"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Oktatóanyag: Az Azure Active Directory-integráció Procore SSO-val
 
@@ -179,7 +179,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** írja be a következőt **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be a **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be a **brittasimon\@yourcompanydomain.extension**  
        Például: BrittaSimon@contoso.com
 
     c. Válassza ki **tulajdonságok**, jelölje be a **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
@@ -204,7 +204,7 @@ Kérjük, kövesse az alábbi lépéseket Procore tesztfelhasználó létrehozá
 
     b. Az a **Vezetéknév** szövegmezőbe írja be a felhasználó vezetékneve például **Simon**.
 
-    c. Az a **E-mail cím** szövegmezőbe írja be a felhasználó e-mail címét, például **BrittaSimon@contoso.com**.
+    c. Az a **E-mail cím** szövegmezőbe írja be a felhasználó e-mail címét, például **BrittaSimon\@contoso.com**.
 
     d. Válassza ki **jogosultsági sablon** , **jogosultsági sablon alkalmazása később**.
 

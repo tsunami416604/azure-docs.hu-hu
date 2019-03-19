@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 16d85510efb055d7d564ffadb9fff2b200771bc6
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 66c43556e698063b95ce1c3787458e40c9d71504
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438829"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079468"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporthoz a portál használatával
 > [!div class="op_single_selector"]
@@ -54,13 +54,13 @@ Ezen cikk segítségével létrehozhat egy kapcsolatot a virtuális hálózat ö
 
 1. Győződjön meg arról, hogy az ExpressRoute-kapcsolatcsoportot, és az Azure privát társviszony-létesítés konfigurált sikeresen megtörtént. Kövesse a [ExpressRoute-kapcsolatcsoport létrehozása](expressroute-howto-circuit-arm.md) és [útválasztás konfigurálását](expressroute-howto-routing-arm.md). Az ExpressRoute-kapcsolatcsoportot az alábbi képhez hasonlóan kell kinéznie:
 
-  ![Az ExpressRoute-kapcsolatcsoport képernyőképe](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png)
+   ![Az ExpressRoute-kapcsolatcsoport képernyőképe](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png)
 2. Most elkezdheti csatolni a virtuális hálózati átjáró az ExpressRoute-kapcsolatcsoportot a kapcsolat kiépítése. Kattintson a **kapcsolat** > **Hozzáadás** megnyitásához a **kapcsolat hozzáadása** lapon, és adja meg az értékeket.
 
-  ![Képernyőfelvétel a kapcsolat hozzáadása](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png)
+   ![Képernyőfelvétel a kapcsolat hozzáadása](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png)
 3. Miután a kapcsolat sikeresen konfigurálva lett, a kapcsolat objektumot jelennek meg a kapcsolat adatait.
 
-  ![Kapcsolat objektum képernyőképe](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub2.png)
+   ![Kapcsolat objektum képernyőképe](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub2.png)
 
 ## <a name="connect-a-vnet-to-a-circuit---different-subscription"></a>Virtuális hálózat csatlakozni egy áramkör - másik előfizetésre
 
@@ -95,10 +95,10 @@ A kapcsolatcsoport tulajdonosát egy engedélyezési hoz létre. Az eredmény eg
 
 1. Az ExpressRoute oldalon kattintson **engedélyek** és írja be a **neve** az engedélyezési, és kattintson a **mentése**.
 
-  ![Engedélyek](./media/expressroute-howto-linkvnet-portal-resource-manager/authorization.png)
+   ![Engedélyek](./media/expressroute-howto-linkvnet-portal-resource-manager/authorization.png)
 2. Másolja a konfigurációs van a mentés után a **erőforrás-azonosító** és a **engedélyezési kulcsot**.
 
-  ![Engedélykulcs](./media/expressroute-howto-linkvnet-portal-resource-manager/authkey.png)
+   ![Engedélykulcs](./media/expressroute-howto-linkvnet-portal-resource-manager/authkey.png)
 
 **A kapcsolati engedély törlése**
 
@@ -112,18 +112,18 @@ A kapcsolatcsoport-felhasználó erőforrás-azonosító és a egy engedélyezé
 
 1. Kattintson a **+ új** gombra.
 
-  ![Kattintson az új gombra](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection1.png)
+   ![Kattintson az új gombra](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection1.png)
 2. Keresse meg **"Kapcsolat"** a Marketplace-en, válassza ki, majd kattintson **létrehozás**.
 
-  ![Keresse meg a kapcsolat](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection2.png)
+   ![Keresse meg a kapcsolat](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection2.png)
 3. Győződjön meg arról, hogy a **kapcsolattípus** "ExpressRoute" értékre van állítva.
 4. Adja meg az adatokat, majd kattintson a **OK** az alapvető beállítások lapon.
 
-  ![Alapvető beállítások lap](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
+   ![Alapvető beállítások lap](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
 5. Az a **beállítások** lapon, válassza ki a **virtuális hálózati átjáró** , és ellenőrizze a **beváltása** jelölőnégyzetet.
 6. Adja meg a **engedélyezési kulcsot** és a **Társkapcsolatcsoport URI** , és adja meg a kapcsolat nevét. Kattintson az **OK** gombra.
 
-  ![Beállítások lap](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
+   ![Beállítások lap](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
 7. Tekintse át az adatokat a a **összefoglalás** lapot, és kattintson **OK**.
 
 **A kapcsolati engedély felszabadítása**

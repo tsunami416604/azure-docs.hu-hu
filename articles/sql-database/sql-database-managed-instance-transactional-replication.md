@@ -12,16 +12,23 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 08ec654ecdfe9764aefdde287c5a4c78022c108c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 409c1abd7e9f532bb243ecab00228b402215c77e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551687"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57852758"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Egyetlen, a tranzakciós replikáció készletezett és adatbázisokat az Azure SQL Database-példány
 
 Tranzakciós replikáció funkciója az Azure SQL Database és SQL Server, amely lehetővé teszi, hogy az adatok replikálása az Azure SQL Database egy táblából vagy a táblák helyezi a távoli adatbázis SQL-kiszolgáló. Ez a funkció lehetővé teszi több táblájából különböző adatbázisok szinkronizálása.
+
+## <a name="when-to-use-transactional-replication"></a>Tranzakciós replikáció használata
+
+Tranzakciós replikáció a következő esetekben hasznos:
+- Egy vagy több táblát egy adatbázisban végrehajtott módosítások közzététele, és terjessze azokat egy vagy több SQL Server- vagy Azure SQL-adatbázisok, amelyek a módosítások az előfizetett.
+- Ne több elosztott adatbázisok Szinkronizáltsági állapotával.
+- Adatbázisok migrálása SQL Server vagy a felügyelt példány egy másik adatbázisba folyamatosan tegye közzé a módosításokat.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -54,7 +61,7 @@ A **előfizető** egy olyan példányt, vagy a módosítások a közzétevő a f
   >[!NOTE]
   > Egy lekéréses előfizetéssel nem támogatott, ha a terjesztőn-példány adatbázis és az előfizető nincs. 
 
-Különböző [replikációtípusok](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication?view=sql-server-2017):
+Különböző [replikációtípusok](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication):
 
 
 | Replikáció | Egyetlen vagy készletezett adatbázisok | Példányok adatbázisai|
@@ -70,7 +77,7 @@ Különböző [replikációtípusok](https://docs.microsoft.com/sql/relational-d
 
   >[!NOTE]
   > - Próbál egy régebbi verzióját használja, a replikáció konfigurálása számának MSSQL_REPL20084 (a folyamat nem tudott kapcsolódni előfizető.) és MSSQ_REPL40532 hibát eredményez (nem nyitható meg a kiszolgáló \<név > a bejelentkezés által kért. A bejelentkezés sikertelen volt.)
-  > - Azure SQL Database összes funkciójának használatához kell használnia a legújabb [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) és [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017).
+  > - Azure SQL Database összes funkciójának használatához kell használnia a legújabb [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) és [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt).
   
   ### <a name="supportabilty-matrix-for-instance-databases-and-on-premises-systems"></a>Példányok adatbázisai és a helyszíni rendszerek Supportabilty mátrix
   A replikációs támogathatóság mátrix, például adatbázisok pedig ugyanaz, mint a helyszíni SQL Server esetében. 
@@ -93,14 +100,6 @@ Különböző [replikációtípusok](https://docs.microsoft.com/sql/relational-d
 
   >[!NOTE]
   > 53-as hiba találkozhat, amikor csatlakozik egy Azure Storage-fájlt, ha a kimenő hálózati biztonsági csoport (NSG) 445-ös le van tiltva, ha a terjesztőn-példány adatbázis, és az előfizető a helyszíni. [Frissítse a Vnetet NSG](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) a probléma megoldásához. 
-
-## <a name="when-to-use-transactional-replication"></a>Tranzakciós replikáció használata
-
-Tranzakciós replikáció a következő esetekben hasznos:
-
-- Egy vagy több táblát egy adatbázisban végrehajtott módosítások közzététele, és terjessze azokat egy vagy több SQL Server- vagy Azure SQL-adatbázisok, amelyek a módosítások az előfizetett.
-- Ne több elosztott adatbázisok Szinkronizáltsági állapotával.
-- Adatbázisok migrálása SQL Server vagy a felügyelt példány egy másik adatbázisba folyamatosan tegye közzé a módosításokat.
 
 ### <a name="compare-data-sync-with-transactional-replication"></a>Hasonlítsa össze a tranzakciós replikáció adatszinkronizálás
 

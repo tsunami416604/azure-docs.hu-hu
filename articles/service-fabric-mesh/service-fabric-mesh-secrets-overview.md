@@ -9,12 +9,12 @@ ms.date: 10/25/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: jeanpaul.connock
-ms.openlocfilehash: b6db9b6cb2ccbf1c8d29edb817d35677109ae755
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4268356db5f46e92862e19d6391cfe5a94511270
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768621"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007486"
 ---
 # <a name="service-fabric-mesh-application-secrets"></a>Titkos alkalmazáskulcsok Service Fabric-háló
 Titkos kódok Service Fabric-háló támogatja az Azure-erőforrások. Service Fabric-háló titkos lehet például a storage kapcsolati karakterláncok, jelszavak és egyéb értékek, amelyek tárolása és biztonságosan továbbítani kell bizalmas információkat.
@@ -25,10 +25,6 @@ Titkos kódok Service Fabric-háló támogatja az Azure-erőforrások. Service F
 A háló alkalmazás titkos kulcs áll:
 * A **titkok** erőforrás, amely egy tároló, amely tárolja a szöveg titkos kulcsok. Tárolt titkos kulcsok a **titkok** erőforrás tárolása és biztonságosan továbbítani.
 * Egy vagy több **titkos kulcsok/értékek** tárolt erőforrások a **titkok** az erőforrás-tárolónak. Minden egyes **titkos kulcsok/értékek** erőforrás van megkülönböztető verziószámmal.
-
-## <a name="inline-or-stored-in-azure-key-vault"></a>A beágyazott vagy tárolt, az Azure Key Vault
-- Háló alkalmazások és a szolgáltatási erőforrások közé tartozik a Felügyeltszolgáltatás-identitás (MSI) az Azure Active Directory (AAD) ahhoz, hogy az Azure Key Vault titkos eléréséhez.
-- Titkos kulcsok és tanúsítványok automatikus állítva feladatátvételi házirendekkel lehet.
 
 ## <a name="next-steps"></a>További lépések 
 Service Fabric-háló titkok kapcsolatos további információkért lásd:

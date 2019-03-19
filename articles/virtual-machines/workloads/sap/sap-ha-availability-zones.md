@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a8e20d617da12aea857308f4020fbd0cfe711430
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 687f99fb6447eddb4ce10ce81bc349181ec5c48c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56651311"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094752"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>SAP munkaterhelés-konfigurációk az Azure-beli rendelkezésre állási zónák
 [Azure-beli rendelkezésre állási zónák](https://docs.microsoft.com/azure/availability-zones/az-overview) egyike az Azure által biztosított magas rendelkezésre állású funkciókat. Rendelkezésre állási zónák használatával javítja a rendelkezésre állás az SAP számítási feladatok Azure-ban. Ez a funkció már elérhető néhány [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions/). A későbbiekben lesz elérhető több régióban.
@@ -109,8 +109,8 @@ A következő szempontokat kell figyelembe ehhez a konfigurációhoz:
 - Az összes virtuális gépet telepít, meg kell használnia [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/). Nem felügyelt lemezek zónaszintű telepítések esetén nem támogatott.
 - Az Azure Premium Storage és [Ultranagy SSD-tárolóval](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd) nem támogatják a tárreplikáció bármilyen típusú zónák között. Az alkalmazás (adatbázis-kezelő vagy SAP Central Services) kell replikálni a fontos adatok.
 - Ugyanez igaz a megosztott sapmnt könyvtár, amely egy megosztott lemezt (Windows), egy CIFS megosztáson (Windows) vagy egy NFS-megosztás (Linux). Olyan technológia, amely replikálja ezeket olyan megosztott lemezzel vagy megosztások a zónák közötti használni kell. Ezek a technológiák támogatottak:
-    - A Windows, egy adott megoldást, amely használja az SIOS DataKeeper, dokumentált módon [egy SAP ASCS/SCS példányhoz egy Windows feladatátvevő fürtre a fürt fürt megosztott lemez használatával az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk).
-    - SUSE Linux rendszeren az NFS-megosztási leírtak szerint beépített [magas rendelkezésre állás NFS, a SUSE Linux Enterprise Server Azure virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs).
+  - A Windows, egy adott megoldást, amely használja az SIOS DataKeeper, dokumentált módon [egy SAP ASCS/SCS példányhoz egy Windows feladatátvevő fürtre a fürt fürt megosztott lemez használatával az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk).
+  - SUSE Linux rendszeren az NFS-megosztási leírtak szerint beépített [magas rendelkezésre állás NFS, a SUSE Linux Enterprise Server Azure virtuális gépeken](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs).
     
     Jelenleg a Microsoft Scale-Out File Server leírtak szerint használó megoldások [előkészítése Azure-infrastruktúra az SAP az SAP ASCS/SCS példányhoz egy Windows feladatátvevő fürt és a fájlmegosztást a magas rendelkezésre állású](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share), nem támogatott zónák között.
 - A harmadik zónákban történik az SBD eszköz futtatására, abban az esetben létrehozhat egy [támasztja a SUSE Linux-fürt](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) vagy további alkalmazáspéldányok.

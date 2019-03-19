@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5317eb83552b5ea15b2d709f61b456a7a508e9ba
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 84f74392b93212558851f89dab924ae3db5620ed
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876177"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995110"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Első lépések az Azure Stream Analytics használatával: Csalások valós idejű észlelése
 
@@ -114,20 +114,20 @@ A TelcoGenerator alkalmazást a Kezdés előtt konfigurálnia kell azt, hogy a h
 
 ### <a name="configure-the-telcogenerator-app"></a>A TelcoGenerator alkalmazás konfigurálása
 
-1.  A szerkesztőben, ahol kimásolt kapcsolati karakterláncot, jegyezze fel a `EntityPath` értéket, és távolítsa el a `EntityPath` pár (ne felejtse el eltávolítani a pontosvesszőt is). 
+1. A szerkesztőben, ahol kimásolt kapcsolati karakterláncot, jegyezze fel a `EntityPath` értéket, és távolítsa el a `EntityPath` pár (ne felejtse el eltávolítani a pontosvesszőt is). 
 
-2.  A mappa, ahol kicsomagolt-e a TelcoGenerator.zip fájlt nyissa meg a telcodatagen.exe.config fájlt egy szövegszerkesztőben. (Több .config fájl, ezért ügyeljen arra, hogy, nyissa meg a megfelelőt.)
+2. A mappa, ahol kicsomagolt-e a TelcoGenerator.zip fájlt nyissa meg a telcodatagen.exe.config fájlt egy szövegszerkesztőben. (Több .config fájl, ezért ügyeljen arra, hogy, nyissa meg a megfelelőt.)
 
-3.  Az a `<appSettings>` elem:
+3. Az a `<appSettings>` elem:
 
-    * Az értékét állítsa be a `EventHubName` kulcs az eseményközpont neve (azt jelenti, az a entitás elérési útja értékre).
-    * Az értékét állítsa be a `Microsoft.ServiceBus.ConnectionString` kulcs kapcsolati karakterláncot. 
+   * Az értékét állítsa be a `EventHubName` kulcs az eseményközpont neve (azt jelenti, az a entitás elérési útja értékre).
+   * Az értékét állítsa be a `Microsoft.ServiceBus.ConnectionString` kulcs kapcsolati karakterláncot. 
 
-    A `<appSettings>` szakasz az alábbi példához hasonlóan fog kinézni. (Az egyértelműség kedvéért a sort és bizonyos karakterek el lettek távolítva az engedélyezési jogkivonatra.)
+   A `<appSettings>` szakasz az alábbi példához hasonlóan fog kinézni. (Az egyértelműség kedvéért a sort és bizonyos karakterek el lettek távolítva az engedélyezési jogkivonatra.)
 
    ![TelcoGenerator konfigurációs fájl jeleníti meg az eseményközpont nevét és kapcsolati karakterlánca](./media/stream-analytics-real-time-fraud-detection/stream-analytics-telcogenerator-config-file-app-settings.png)
  
-4.  Mentse a fájlt. 
+4. Mentse a fájlt. 
 
 ### <a name="start-the-app"></a>Indítsa el az alkalmazást
 1.  Nyisson meg egy parancsablakot, és módosítsa a mappát, ahol a TelcoGenerator alkalmazást kicsomagolt.
@@ -191,6 +191,7 @@ Most, hogy a hívási események streamjével, állíthat egy Stream Analytics-f
    |Event Hubs-névtér  |  asa-eh-ns-demo |  Adja meg az Eseményközpont névterének nevét.   |
    |Eseményközpont neve  | asa-eh-frauddetection-demo | Válassza ki az Event Hub nevét.   |
    |Eseményközpont szabályzatának neve  | asa-policy-manage-demo | Válassza ki a korábban létrehozott hozzáférési szabályzat.   |
+
     </br>
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="Create Stream Analytics input in portal" width="300px"/>
 
@@ -359,6 +360,7 @@ Ha rendelkezik meglévő blob storage-fiókot, használhatja azt. Ebben az oktat
    |Előfizetés   |  \<Az Ön előfizetése\> |  Válassza ki azt az Azure-előfizetést, amelyhez a létrehozott tárfiók tartozik. A tárfiók tartozhat ugyanahhoz az előfizetéshez, de akár egy másik előfizetéshez is. A példa azt feltételezi, hogy a tárfiók ugyanahhoz az előfizetéshez tartozik. |
    |Tárfiók  |  asaehstorage |  Adja meg a létrehozott tárfiók nevére. |
    |Tároló  | asa-fraudulentcalls-demo | Válassza ki az új létrehozása, és adja meg a tároló nevét. |
+
     <br/>
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-output-blob-storage-new-console.png" alt="Create blob output for Stream Analytics job" width="300px"/>
     

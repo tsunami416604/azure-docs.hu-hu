@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a5bcabd68735c22a245d102f0e55937ff11ce76
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: fd7d1e3511bf74650ddc9dca1cf77c2b7c297c96
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404909"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57861502"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appraisd"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Appraisd
 
@@ -205,7 +205,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** írja be a következőt **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőbe írja be a **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be a **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
@@ -262,7 +262,7 @@ Ahhoz, hogy az Azure AD felhasználói bejelentkeznek a Appraisd, akkor ki kell 
 
     b. A **Vezetéknév** szöveget adja meg például a felhasználó vezetékneve **simon**.
 
-    c. A **E-mail** szöveget adja meg az e-mailt, például a felhasználó **Brittasimon@contoso.com**.
+    c. A **E-mail** szöveget adja meg az e-mailt, például a felhasználó **Brittasimon\@contoso.com**.
 
     d. Kattintson a **Felhasználó hozzáadása** parancsra.
 

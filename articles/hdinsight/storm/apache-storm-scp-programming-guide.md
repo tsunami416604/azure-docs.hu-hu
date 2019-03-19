@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: 848663c509fd3635b33b8e7735feb940da215bfa
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 1ad9661d85c7ec91f361cdc4d126e0a91e376b66
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441814"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57853290"
 ---
 # <a name="scp-programming-guide"></a>Szolgáltatáskapcsolódási pont programozási útmutató
 Szolgáltatáskapcsolódási pont platformot hozhat létre valós idejű, megbízható és konzisztens, és nagy teljesítményű adatokat feldolgozó alkalmazást. Be van építve a [Apache Storm](https://storm.incubator.apache.org/) – egy streamfeldolgozó rendszer, a nyílt Forráskódú Közösségek által tervezték. A Storm Nathan Marz által készült, és a nyílt forráskódú lett a Twitteren. A modul [Apache ZooKeeper](https://zookeeper.apache.org/), magas megbízhatóságú engedélyezése egy másik Apache-projecttel elosztott koordinálása és állapot-kezelés. 
@@ -32,7 +32,7 @@ A Storm az alkalmazás topológiájának egy számítási grafikont határozza m
 
 SCP-JE támogatja az gyakorlati erőfeszítések, legalább egyszeri és pontosan-adatok feldolgozása után. Egy elosztott alkalmazásban streamelési feldolgozási több hiba fordulhat elő, során adatokat feldolgozó, például a hálózati kimaradások, a gép hiba vagy a felhasználói kód hiba stb. A legalább egyszeri az eljárás biztosítja, hogy az összes adat fogja feldolgozni, legalább egyszer automatikusan ugyanazokat az adatokat visszajátszásával, ha hiba történik. A legalább egyszeri feldolgozási egyszerű és megbízható, és leginkább megfelelő is számos alkalmazás. Azonban egy alkalmazást a pontos leltár van szüksége, legalább egyszeri feldolgozási esetén elegendő óta ugyanazokat az adatokat esetleg játszható az alkalmazás topológiában. Ebben az esetben, pontosan – Miután feldolgozási úgy tervezték, hogy ellenőrizze, hogy az eredmény helyességét még ha az adatok játssza vissza és feldolgozása történhet az több alkalommal.
 
-SCP-je lehetővé teszi, hogy a .NET-fejlesztők számára a Java virtuális gép (JVM) a Storm költséghatékonyhatékonyságából valójában valós idejű adatok folyamat alkalmazások fejlesztéséhez. A .NET és a JVM helyi TCP-szoftvercsatornák keresztül kommunikálnak. Gyakorlatilag minden egyes Spout vagy Bolt .net vagy Java folyamat két, ahol a felhasználó logic, a beépülő modul .net folyamatként futtatja.
+SCP-je lehetővé teszi, hogy a .NET-fejlesztők számára a Java virtuális gép (JVM) a Storm költséghatékonyhatékonyságából valójában valós idejű adatok folyamat alkalmazások fejlesztéséhez. A .NET és a JVM helyi TCP-szoftvercsatornák keresztül kommunikálnak. Gyakorlatilag minden egyes Spout vagy Bolt .NET vagy Java folyamat két, ahol a felhasználó logic, a beépülő modul .NET folyamatként futtatja.
 
 Az SCP felett adatfeldolgozó alkalmazás létrehozása, több lépésre van szükség:
 
@@ -355,12 +355,12 @@ SCP.NET-e hozzáadni a következő funkciók tranzakciós topológiák megadása
 | **Új funkciók** | **Paraméterek** | **Leírás** |
 | --- | --- | --- |
 | **Tx-topolopy** |topológia – név<br />spout-map<br />bolt-map |Adja meg a topológia nevét, a tranzakciós topológiákat &nbsp;spoutok definíció térkép és a boltok definíció térkép |
-| **scp-tx-spout** |exec-name<br />args<br />mezők |Adjon meg egy tranzakciós spout. Az alkalmazás futása ***exec-name*** használatával ***args***.<br /><br />A ***mezők*** spout kimeneti mezőjét van |
-| **scp-tx-batch-bolt** |exec-name<br />args<br />mezők |Adjon meg egy tranzakciós Batch Bolt. Az alkalmazás futása ***exec-name*** használatával ***argumentum.***<br /><br />A mezők a bolt kimeneti mezőjét. |
-| **scp-tx-commit-bolt** |exec-name<br />args<br />mezők |Adjon meg egy tranzakciós véglegesítési bolt. Az alkalmazás futása ***exec-name*** használatával ***args***.<br /><br />A ***mezők*** bolt kimeneti mezőjét van |
+| **scp-tx-spout** |exec-name<br />args<br />Mezők |Adjon meg egy tranzakciós spout. Az alkalmazás futása ***exec-name*** használatával ***args***.<br /><br />A ***mezők*** spout kimeneti mezőjét van |
+| **scp-tx-batch-bolt** |exec-name<br />args<br />Mezők |Adjon meg egy tranzakciós Batch Bolt. Az alkalmazás futása ***exec-name*** használatával ***argumentum.***<br /><br />A mezők a bolt kimeneti mezőjét. |
+| **scp-tx-commit-bolt** |exec-name<br />args<br />Mezők |Adjon meg egy tranzakciós véglegesítési bolt. Az alkalmazás futása ***exec-name*** használatával ***args***.<br /><br />A ***mezők*** bolt kimeneti mezőjét van |
 | **nontx-topolopy** |topológia – név<br />spout-map<br />bolt-map |Adja meg a topológia nevét, a tranzakciós topológiákat&nbsp; spoutok definíció térkép és a boltok definíció térkép |
-| **scp-spout** |exec-name<br />args<br />mezők<br />paraméterek |Adjon meg egy nem tranzakciós spout. Az alkalmazás futása ***exec-name*** használatával ***args***.<br /><br />A ***mezők*** spout kimeneti mezőjét van<br /><br />A ***paraméterek*** megadása nem kötelező, és adja meg az egyes paraméterek, például a "nontransactional.ack.enabled". |
-| **scp-bolt** |exec-name<br />args<br />mezők<br />paraméterek |Adjon meg egy nem tranzakciós Bolt. Az alkalmazás futása ***exec-name*** használatával ***args***.<br /><br />A ***mezők*** bolt kimeneti mezőjét van<br /><br />A ***paraméterek*** megadása nem kötelező, és adja meg az egyes paraméterek, például a "nontransactional.ack.enabled". |
+| **scp-spout** |exec-name<br />args<br />Mezők<br />paraméterek |Adjon meg egy nem tranzakciós spout. Az alkalmazás futása ***exec-name*** használatával ***args***.<br /><br />A ***mezők*** spout kimeneti mezőjét van<br /><br />A ***paraméterek*** megadása nem kötelező, és adja meg az egyes paraméterek, például a "nontransactional.ack.enabled". |
+| **scp-bolt** |exec-name<br />args<br />Mezők<br />paraméterek |Adjon meg egy nem tranzakciós Bolt. Az alkalmazás futása ***exec-name*** használatával ***args***.<br /><br />A ***mezők*** bolt kimeneti mezőjét van<br /><br />A ***paraméterek*** megadása nem kötelező, és adja meg az egyes paraméterek, például a "nontransactional.ack.enabled". |
 
 SCP.NET van definiálva a következő kulcsszavakat:
 
@@ -450,7 +450,7 @@ itt
 3. [0,1] azt jelenti, hogy mező azonosítóval, 0-tól kezdődően kivonatoló készletét.
 
 ### <a name="hybrid-topology"></a>Hibrid topológia
-A natív Storm Java nyelven van megírva. SCP.Net továbbfejlesztett C aktiválásához és\# fejlesztői írhatnak C\# kezelni a saját üzleti logika kódot. De is támogatja a hibrid topológiák, amely tartalmaz, nem csak a C\# spoutok és boltok, hanem a Java Spout/dolgozzák fel.
+A natív Storm Java nyelven van megírva. SCP.NET továbbfejlesztett C aktiválásához és\# fejlesztői írhatnak C\# kezelni a saját üzleti logika kódot. De is támogatja a hibrid topológiák, amely tartalmaz, nem csak a C\# spoutok és boltok, hanem a Java Spout/dolgozzák fel.
 
 ### <a name="specify-java-spoutbolt-in-spec-file"></a>Adja meg a Java Spout vagy Bolt dokumentumspecifikáció fájlban
 Dokumentumspecifikáció fájlban "scp-spout" és "scp-bolt" is használható a Java Spoutok és boltok adja meg, például:
@@ -562,7 +562,7 @@ Itt `plugin.name` megadott `SCPHost.exe` SCP SDK által biztosított. SCPHost.ex
 
 ## <a name="scp-programming-examples"></a>Szolgáltatáskapcsolódási pont programozási példák
 ### <a name="helloworld"></a>HelloWorld
-**HelloWorld** egy egyszerű példa az SCP.Net kipróbálni megjelenítéséhez. Nem tranzakciós topológia, használja a spout nevű **generátor**, és két boltok nevű **felosztó** és **számláló**. A spout **generátor** véletlenszerűen állít elő mondatokat, és ezeket a mondatok kibocsátható **felosztó**. A bolt **felosztó** bontja a mondatok szavakat, és gridre bocsáthatja ki az ezeknek a szavaknak **számláló** bolt. A bolt "számláló" egy szótár segítségével rögzítheti az egyes szavak előfordulását számát.
+**HelloWorld** egy egyszerű példa az SCP.NET kipróbálni megjelenítéséhez. Nem tranzakciós topológia, használja a spout nevű **generátor**, és két boltok nevű **felosztó** és **számláló**. A spout **generátor** véletlenszerűen állít elő mondatokat, és ezeket a mondatok kibocsátható **felosztó**. A bolt **felosztó** bontja a mondatok szavakat, és gridre bocsáthatja ki az ezeknek a szavaknak **számláló** bolt. A bolt "számláló" egy szótár segítségével rögzítheti az egyes szavak előfordulását számát.
 
 Két dokumentumspecifikáció fájl, **HelloWorld.spec** és **HelloWorld\_EnableAck.spec** ebben a példában. A c\# kódot, azt talál ack engedélyezve van-e a Java-oldaláról a pluginConf lekérésével.
 

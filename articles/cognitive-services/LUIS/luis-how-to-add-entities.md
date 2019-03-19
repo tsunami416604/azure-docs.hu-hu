@@ -1,7 +1,7 @@
 ---
 title: Entitások hozzáadása
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: A Language Understanding (LUIS) alkalmazások hozzáadása a entitások (a tartomány az alkalmazás legfontosabb adatok).
+description: A legfontosabb adatok kinyerése a Language Understanding (LUIS) alkalmazások felhasználói utterances entitások létrehozása.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,26 +9,26 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 03/11/2019
 ms.author: diberry
-ms.openlocfilehash: d98896ab86c1dbbc988d44e3c8cf6545ba5d5d3c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 784fe19d1ae40a7cdff3cc853726d4c62265e0f1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859793"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106933"
 ---
 # <a name="create-entities-without-utterances"></a>Beszédmódok nélkül entitások létrehozása
 
-Az entitás egy szót vagy kifejezést az utterance (kifejezés), amelyeket szeretne kinyert belül jelöli. Az utterance (kifejezés) is tartalmazhat számos entitás vagy nincs minden. Egy entitás egy osztályt, beleértve a hasonló objektumok (helyek, dolog, személyek, események vagy fogalmak) gyűjteményét jelképezi. Entitások ismertetik a leképezés kapcsolódó információk, és néha nélkülözhetetlenek az alkalmazás a feladat végrehajtásához. 
-
-Előtti vagy szereplőkkel leképezések létrehozásához entitásokat hozhat létre.
+Az entitás egy szót vagy kifejezést az utterance (kifejezés), amelyeket szeretne kinyert belül jelöli. Egy entitás egy osztályt, beleértve a hasonló objektumok (helyek, dolog, személyek, események vagy fogalmak) gyűjteményét jelképezi. Entitások ismertetik a leképezés kapcsolódó információk, és néha nélkülözhetetlenek az alkalmazás a feladat végrehajtásához. Entitásokat hozhat létre, amikor hozzáadja az utterance (kifejezés) megjelölésű vagy későbbre a (előtt vagy után) az utterance (kifejezés) ad hozzá egy szándékot.
 
 Hozzáadása, szerkesztése vagy a LUIS-alkalmazásokon keresztül az entitások törlése a **entitásainak listája** a a **entitások** lapot. A LUIS biztosít két fő entitástípus: [előre összeállított entitások](luis-reference-prebuilt-entities.md), és a saját [egyéni entitások](luis-concept-entity-types.md#types-of-entities).
 
-Entitás létrehozása után azt is lehet címkézett-leképezés példa utterance (kifejezés), az a **szándékot** részleteit megjelenítő oldalon. 
+Egy gép megtanult entitás létrehozása után kell megjelölni az entitásban található összes leképezések valamennyi példa utterance található.
 
-## <a name="add-prebuilt-entity"></a>Előre összeállított entitások hozzáadása
+<a name="add-prebuilt-entity"></a>
+
+## <a name="add-a-prebuilt-entity-to-your-app"></a>Előre összeállított entitások hozzáadása az alkalmazáshoz
 
 Közös előre összeállított entitások alkalmazáshoz hozzáadott *szám* és *datetimeV2*. 
 
@@ -40,7 +40,9 @@ Közös előre összeállított entitások alkalmazáshoz hozzáadott *szám* é
 
     ![Előre összeállított entitások párbeszédpanel képernyőképe az hozzáadása](./media/add-entities/list-of-prebuilt-entities.png)
 
-## <a name="add-simple-entities"></a>Egyszerű entitások hozzáadása
+<a name="add-simple-entities"></a>
+
+## <a name="add-simple-entities-for-single-concepts"></a>Az egyetlen fogalmak egyszerű entitások hozzáadása
 
 Egy egyszerű entitás egyetlen fogalom írja le. Az alábbi eljárással hozhat létre olyan entitás, amely kinyeri a vállalat részleg neve például *emberi erőforrások* vagy *műveletek*.   
 
@@ -52,7 +54,9 @@ Egy egyszerű entitás egyetlen fogalom írja le. Az alábbi eljárással hozhat
 
     A [kifejezéslista](luis-concept-feature.md) gyakran használatos a jel, egy egyszerű entitás növelése érdekében.
 
-## <a name="add-regular-expression-entities"></a>Reguláris kifejezés entitások hozzáadása
+<a name="add-regular-expression-entities"></a>
+
+## <a name="add-regular-expression-entities-for-highly-structured-concepts"></a>Az erősen strukturált fogalmak reguláris kifejezés entitások hozzáadása
 
 A reguláris kifejezésnek entitás is, az utterance (kifejezés), adja meg a reguláris kifejezések alapján adatokat szolgál. 
 
@@ -60,7 +64,7 @@ A reguláris kifejezésnek entitás is, az utterance (kifejezés), adja meg a re
 
 1. A megjelenő párbeszédpanelen adja meg `Human resources form name` a a **entitás neve** jelölje ki **reguláris kifejezés** származó a **entitástípus** listában, adja meg a reguláris kifejezés `hrf-[0-9]{6}`, majd válassza ki **kész**. 
 
-    A reguláris kifejezés literális karakter `hrf-`, majd 6 számjegyű, amelyek egy űrlapot az emberi erőforrások űrlap száma.
+    A reguláris kifejezésnek megfelelő literális karakter `hrf-`, majd 6 számjegyű, amelyek egy űrlapot az emberi erőforrások űrlap száma.
 
 ## <a name="add-hierarchical-entities"></a>Hierarchikus entitások hozzáadása
 
@@ -85,7 +89,9 @@ Hierarchikus entitások hozzáadásához kövesse az alábbi lépéseket:
 
     Az entitás létrehozása után nyissa meg az entitást tartalmazó példa utterances rendelkezik szándék fog vonatkozni. Válassza ki a szöveget a példa utterance (kifejezés), és a szöveg nyelve az entitás. 
 
-## <a name="add-composite-entities"></a>Összetett entitások hozzáadása
+<a name="add-composite-entities"></a>
+
+## <a name="add-composite-entities-to-group-into-a-parent-child-relationship"></a>A szülő-gyermek kapcsolatot csoportosíthatja összetett entitások hozzáadása
 
 Definiálhat egy összetett entitást létrehozásával különböző típusú entitások közötti kapcsolatok. A következő példában az entitás egy adott reguláris kifejezésnek, és a egy előre létrehozott entitás neve tartalmazza.  
 
@@ -107,7 +113,9 @@ Az utterance (kifejezés) a `Send hrf-123456 to John Smith`, a szöveg `hrf-1234
 
 1. Válassza a **Done** (Kész) lehetőséget.
 
-## <a name="add-patternany-entities"></a>Pattern.any entitások hozzáadása
+<a name="add-pattern-any-entities"></a>
+
+## <a name="add-patternany-entities-to-capture-free-form-entities"></a>Szabad formátumú entitások rögzítése Pattern.any entitások hozzáadása
 
 [Pattern.any](luis-concept-entity-types.md) entitásokat csak érvényesek a [minták](luis-how-to-model-intent-pattern.md), nem a szándék fog vonatkozni. Az ilyen típusú entitás segít a LUIS-entitások különböző hossza és a word választott végén található. Ehhez az entitáshoz mintát használja, mert a LUIS tudja, ahol az entitás végén szerepel-e az utterance (kifejezés) sablont.
 
@@ -123,7 +131,9 @@ Az utterance (kifejezés) a `Where is Request relocation from employee new to th
 
     Ha azt tapasztalja, hogy a Pattern.any entitást tartalmazó minta nem megfelelően vonja ki az entitásokat, egy [explicit lista](luis-concept-patterns.md#explicit-lists) megoldhatja a problémát. 
 
-## <a name="add-a-role-to-pattern-based-entity"></a>A szerepkör hozzáadása az entitáshoz minta alapján
+<a name="add-a-role-to-pattern-based-entity"></a>
+
+## <a name="add-a-role-to-distinguish-different-contexts"></a>Adja hozzá a szerepkört megkülönböztetni a különböző környezetekben
 
 A szerepkör az entitásokban környezet alapján elnevezett altípusa. Azt az hasonlítható egy [hierarchikus](#add-hierarchical-entities) egység, de a szerepkörök csak használt [minták](luis-how-to-model-intent-pattern.md). 
 
@@ -141,7 +151,9 @@ A szerepkör szintaxisa **{Entityname:Rolename}** ahol az entitás neve követ e
 
     ![Képernyőkép a forrás szerepkör hozzáadásának helye entitáshoz](./media/add-entities/roles-enter-role-name-text.png)
 
-## <a name="add-list-entities"></a>Lista entitások hozzáadása
+<a name="add-list-entities"></a>
+
+## <a name="add-list-entities-for-exact-matches"></a>Pontos egyezés a lista entitások hozzáadása
 
 Lista entitások kapcsolódó szavakat rögzített, lezárt csoportját képviselik. 
 
@@ -184,12 +196,15 @@ Emberi erőforrások alkalmazások esetén lehet a részlegek számára bármely
     ]  
     ```
 
+<a name="change-entity-type"></a>
 
-## <a name="change-entity-type"></a>Entitás típusának módosítása
+## <a name="do-not-change-entity-type"></a>Ne módosítsa az entitástípus
 
 A LUIS nem engedi, hogy az entitás típusa módosítható, mert ez nem tudja, hogy melyik hozzáadása vagy eltávolítása, hogy az entitás létrehozásához. Annak érdekében, hogy módosítsa a típusát, célszerűbb a megfelelő típusú új entitás létrehozása egy kis mértékben eltérő nevű. Az entitás létrehozása után minden kimondásakor, távolítsa el a régi címkézett entitás nevét, és adja hozzá az új entitás nevét. Miután a kimondott szöveg rendelkezik lett relabeled, a régi entitás törlése. 
 
-## <a name="create-a-pattern-from-an-utterance"></a>Hozzon létre egy minta az utterance (kifejezés)
+<a name="create-a-pattern-from-an-utterance"></a>
+
+## <a name="create-a-pattern-from-an-example-utterance"></a>Hozzon létre egy minta-példa utterance (kifejezés)
 
 Lásd: [Hozzáadás minta a leképezés vagy entitás oldalon meglévő utterance (kifejezés)](luis-how-to-model-intent-pattern.md#add-pattern-from-existing-utterance-on-intent-or-entity-page).
 

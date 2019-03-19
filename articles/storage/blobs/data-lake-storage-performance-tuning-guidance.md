@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: stewu
-ms.openlocfilehash: 7039df6dde25fd4ba9a8b9cb7670e72df7e68797
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: f175360586428b57d1ff10e3529ae9e3283399e8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245816"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58117054"
 ---
 # <a name="tuning-azure-data-lake-storage-gen2-for-performance"></a>Az Azure Data Lake Storage Gen2 teljesítmény hangolása
 
@@ -131,12 +131,12 @@ Attól függően, a számítási feladatok mindig lesz egy minimális YARN táro
 
 Minden alkalmazás a fenti általános irányelveket, most finomhangolása az adott alkalmazás számára elérhető különböző paramétereket. Az alábbi táblázat felsorolja az egyes paraméterek és teljesítmény-finomhangolási az egyes alkalmazások – első lépések mutató hivatkozásokat.
 
-| Számítási feladat               | Paraméter segítségével állítsa be a feladatok                                                         |
-|--------------------|-------------------------------------------------------------------------------------|
-| [A Spark on HDInsight](data-lake-storage-performance-tuning-spark.md)       | <ul><li>Num-executors</li><li>Végrehajtó – memória</li><li>Végrehajtó virtuális mag</li></ul> |
-| [A HDInsight Hive](data-lake-storage-performance-tuning-hive.md)    | <ul><li>hive.tez.container.size</li></ul>         |
-| [MapReduce on HDInsight](data-lake-storage-performance-tuning-mapreduce.md)            | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.Maps</li><li>Mapreduce.reduce.Memory</li><li>Mapreduce.job.reduces</li></ul> |
-| [HDInsight alatt futó stormmal](data-lake-storage-performance-tuning-storm.md)|  | <ul><li>Munkavégző folyamatok száma</li><li>Spout végrehajtó példányok száma</li><li>Bolt végrehajtó példányok száma </li><li>Spout feladatok száma</li><li>Bolt feladatok száma</li></ul>|
+| Számítási feladat | Paraméter segítségével állítsa be a feladatok |
+|----------|------------------------|
+| [A Spark on HDInsight](data-lake-storage-performance-tuning-spark.md) | <ul><li>Num-executors</li><li>Végrehajtó – memória</li><li>Végrehajtó virtuális mag</li></ul> |
+| [A HDInsight Hive](data-lake-storage-performance-tuning-hive.md) | <ul><li>hive.tez.container.size</li></ul> |
+| [MapReduce on HDInsight](data-lake-storage-performance-tuning-mapreduce.md) | <ul><li>Mapreduce.map.memory</li><li>Mapreduce.job.Maps</li><li>Mapreduce.reduce.Memory</li><li>Mapreduce.job.reduces</li></ul> |
+| [HDInsight alatt futó stormmal](data-lake-storage-performance-tuning-storm.md)| <ul><li>Munkavégző folyamatok száma</li><li>Spout végrehajtó példányok száma</li><li>Bolt végrehajtó példányok száma </li><li>Spout feladatok száma</li><li>Bolt feladatok száma</li></ul>|
 
 ## <a name="see-also"></a>Lásd még
 * [Az Azure Data Lake Storage Gen2 áttekintése](data-lake-storage-introduction.md)

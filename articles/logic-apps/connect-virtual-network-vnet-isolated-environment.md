@@ -8,20 +8,20 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 03/11/2019
-ms.openlocfilehash: c31d260c99707f4231a6833479517b9b69575d55
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.date: 03/12/2019
+ms.openlocfilehash: 8bbbe7a924c98c9628ce967892177599a1d13017
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57778909"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57854993"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Csatlakozás az Azure virtuális hálózatok az Azure Logic Apps integrációs service-környezet (ISE) használatával
 
 > [!NOTE]
 > Ez a funkció akkor a [ *nyilvános előzetes verzióban*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Forgatókönyvek, ahol a logic apps és az integrációs fiókok kell a hozzáférést egy [az Azure virtual network](../virtual-network/virtual-networks-overview.md), hozzon létre egy [ *integrációs szolgáltatás környezet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). Az ISE-ben egy dedikált tárolási használó magán- és elkülönített környezet és más erőforrások elkülönítve a nyilvános vagy "globális" Logic Apps szolgáltatást. Ez a fajta elkülönítés is csökkenti, amelyeket más Azure-bérlőt az alkalmazások teljesítményére hatással. Az ISE *beszúrta* be az Azure virtuális hálózathoz, amely azután telepíti a Logic Apps szolgáltatás a virtuális hálózatban. Amikor létrehoz egy logikai alkalmazásban vagy integrációs fiókot, válassza ki az ISE azok helyétől. A logikai alkalmazás vagy az integrációs fiók majd közvetlenül hozzáférhet a erőforrások, például a virtuális gépek (VM), kiszolgálók, rendszerek és szolgáltatások, a virtuális hálózaton.
+Forgatókönyvek, ahol a logic apps és az integrációs fiókok kell a hozzáférést egy [az Azure virtual network](../virtual-network/virtual-networks-overview.md), hozzon létre egy [ *integrációs szolgáltatás környezet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). Az ISE-ben olyan dedikált tárolási és más források vannak elkülönítve a nyilvános vagy "globális" Logic Apps szolgáltatást használó magán- és elkülönített környezet. Ez a fajta elkülönítés is csökkenti, amelyeket más Azure-bérlőt az alkalmazások teljesítményére hatással. Az ISE *beszúrta* be az Azure virtuális hálózathoz, amely azután telepíti a Logic Apps szolgáltatás a virtuális hálózatban. Amikor létrehoz egy logikai alkalmazásban vagy integrációs fiókot, válassza ki az ISE azok helyétől. A logikai alkalmazás vagy az integrációs fiók majd közvetlenül hozzáférhet a erőforrások, például a virtuális gépek (VM), kiszolgálók, rendszerek és szolgáltatások, a virtuális hálózaton.
 
 ![Válassza ki az integrációs service-környezet](./media/connect-virtual-network-vnet-isolated-environment/select-logic-app-integration-service-environment.png)
 
@@ -50,7 +50,7 @@ Integrációs service Environment-környezetekkel kapcsolatos további informác
 
   * Győződjön meg arról, hogy a virtuális hálózat [elérhetővé teszi ezeket a portokat](#ports) így megfelelően működik-e az ISE-ben, és elérhető marad.
 
-* Egy vagy több egyéni DNS-kiszolgálók üzembe helyezése az Azure virtuális hálózat használandó [beállítása az adott kiszolgálókon, ez az útmutató következő](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) az ISE-ben a virtuális hálózat üzembe helyezése előtt. Ellenkező esetben minden alkalommal, amikor módosítja a DNS-kiszolgáló is újraindítani az ISE-ben, amely egy olyan funkció, amely az ISE-ben nyilvános előzetes verzióban érhető el.
+* Ha egyéni DNS-kiszolgálókat az Azure virtual Network esetén használandó [ezen kiszolgálók beállítása a következő lépésekkel](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) az ISE-ben a virtuális hálózat üzembe helyezése előtt. Ellenkező esetben minden alkalommal, amikor módosítja a DNS-kiszolgáló is újraindítani az ISE-ben, amely egy olyan funkció, amely az ISE-ben nyilvános előzetes verzióban érhető el.
 
 * Alapvető ismeretek szerezhetők [logikai alkalmazások létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 
@@ -60,10 +60,10 @@ Integrációs service Environment-környezetekkel kapcsolatos további informác
 
 Megfelelően működjön, és elérhető-e, az integráció service-környezet (ISE) kell rendelkeznie az adott portokon a virtuális hálózaton rendelkezésre álló. Ezeket a portokat bármelyike nem érhető el, előfordulhat, hogy az ISE-ben, amelyek működése leáll, ellenkező esetben férhet hozzá. Az ISE-ben a virtuális hálózatban való használatakor gyakori telepítési problémát tapasztalja egy vagy több letiltott portot. Az ISE-ben és a cél rendszer közötti kapcsolatok esetén használja az összekötő is szükség lehet a saját port követelményei. Például ha az FTP-összekötő használatával kommunikálnak az FTP-rendszerek, győződjön meg arról, a portot használja, hogy elérhető legyen-e az FTP-rendszer 21-es porton, a Parancsküldés, például.
 
-A bejövő és kimenő forgalom szabályozása, amelyen központi telepítését az ISE-ben a virtuális hálózat alhálózatainak között, beállíthatja [hálózati biztonsági csoportok](../virtual-network/security-overview.md) az ezekhez az alhálózatokhoz tanulással [közötti hálózati forgalom szűrése alhálózatok](../virtual-network/tutorial-filter-network-traffic.md). Ezek a táblázatok ismertetik a portokat a virtuális hálózat, amely az ISE-ben, és ahol azokat a portokat használja beolvasása. A [szolgáltatáscímke](../virtual-network/security-overview.md#service-tags) IP-címelőtagokat, amelyek segítenek a minimálisra összetettségét, amikor a biztonsági szabályok létrehozása egy csoportját jelöli. 
+A forgalom szabályozása, amelyen központi telepítését az ISE-ben a virtuális hálózat alhálózatainak között, beállíthatja [hálózati biztonsági csoportok](../virtual-network/security-overview.md) ezekhez az alhálózatokhoz tartozó [alhálózatok közötti hálózati forgalom szűrése](../virtual-network/tutorial-filter-network-traffic.md). Ezek a táblázatok ismertetik a portokat a virtuális hálózat, amely az ISE-ben, és ahol azokat a portokat használja beolvasása. A [szolgáltatáscímke](../virtual-network/security-overview.md#service-tags) IP-címelőtagokat, amelyek segítenek a minimálisra összetettségét, amikor a biztonsági szabályok létrehozása egy csoportját jelöli.
 
 > [!IMPORTANT]
-> A belső kommunikáció belül az alhálózatokra az ISE-ben szükséges ezekhez az alhálózatokhoz belül minden portok megnyitását. 
+> A belső kommunikáció belül az alhálózatokra az ISE-ben szükséges ezekhez az alhálózatokhoz belül minden portok megnyitását.
 
 | Cél | Irány | Portok | Forrás-szolgáltatáscímke | Cél szolgáltatáscímkéje | Megjegyzések |
 |---------|-----------|-------|--------------------|-------------------------|-------|
@@ -122,10 +122,10 @@ Az eredmények listájában válassza ki a **integrációs Service-környezet (e
 
    **Alhálózat létrehozása**
 
-   Az ISE-ben szükséges négy *üres* alhálózatok, amelyek *nem meghatalmazott* bármely szolgáltatás a környezetében az erőforrások létrehozásához. 
-   Ön *nem módosítható* a környezet létrehozása után ezeket alhálózati cím. Minden alhálózati ezeknek a feltételeknek kell megfelelnie:
+   Erőforrások létrehozása a környezetében, az ISE-ben kell négy *üres* alhálózatokra, amelyek bármely szolgáltatás nincs delegálva. 
+   Ön *nem* módosítsa ezeket az alhálózat-címeket, a környezet létrehozása után. Minden alhálózati ezeknek a feltételeknek kell megfelelnie:
 
-   * Olyan nevet, amely nem kezdődik számmal vagy kötőjel használ.
+   * A neve, amely betűvel vagy aláhúzásjellel kezdődik, de nem rendelkezik a következő karaktereket: `<`, `>`, `%`, `&`, `\\`, `?`, `/`
 
    * Használja a [Classless Inter-Domain Routing (CIDR) formátum](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) és a B osztály címtér.
 
@@ -180,7 +180,7 @@ Az eredmények listájában válassza ki a **integrációs Service-környezet (e
 
 ### <a name="add-capacity"></a>Adja hozzá a kapacitás
 
-Az ISE alapegység javította a kapacitást, így a kapacitás növelése érdekében van szükség, ha több skálázási egység is hozzáadhat. Választhat az automatikus méretezés, teljesítmény-mérőszámon alapuló, vagy egy meghatározott feldolgozási egységek száma alapján. Ha úgy dönt, hogy az automatikus skálázás metrika alapján, különböző feltételek közül választhat, és adja meg a feltételeknek megfelelő küszöbértéket feltételeit.
+Az ISE alapegység javította a kapacitást, így a kapacitás növelése érdekében van szükség, ha több skálázási egység is hozzáadhat. Automatikus méretezés, teljesítmény-mérőszámok alapján, vagy egy feldolgozási egységek száma alapján is. Ha úgy dönt, hogy az automatikus skálázás metrika alapján, különböző feltételek közül választhat, és adja meg a feltételeknek megfelelő küszöbértéket feltételeit.
 
 1. Az Azure Portalon keresse meg az ISE-ben.
 

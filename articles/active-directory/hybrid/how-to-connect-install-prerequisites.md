@@ -16,12 +16,12 @@ ms.date: 12/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d21fe7c70c09ad41faf628db45d82b995c8f2515
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: bd3aac6a7fb0904089f135c9af7b136eda73701f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311440"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835469"
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Az Azure AD Connect előfeltételei
 Ez a témakör ismerteti az előfeltételeket és az Azure AD Connect hardverkövetelményeit.
@@ -50,7 +50,7 @@ Előtt az Azure AD Connectet telepíti, akkor kell néhány dolgot.
 ### <a name="azure-ad-connect-server"></a>Az Azure AD Connect-kiszolgáló
 * Az Azure AD Connect nem telepíthető Small Business Server vagy Windows Server Essentials 2019 előtt (a Windows Server Essentials 2019 támogatott). A kiszolgáló Windows Server standard vagy jobb kell használnia.
 * Az Azure AD Connect-kiszolgáló egy teljes grafikus felhasználói Felülettel telepítve kell rendelkeznie. Ez **nem támogatott** telepítése server core-on.
-* Az Azure AD Connect telepíteni kell a Windows Server 2008 R2 vagy újabb. Ez a kiszolgáló lehet egy olyan tartományvezérlő vagy tagkiszolgáló gyorsbeállítások használata esetén. If you use custom settings, then the server can also be stand-alone and does not have to be joined to a domain.
+* Az Azure AD Connect telepíteni kell a Windows Server 2008 R2 vagy újabb. Ez a kiszolgáló tartományhoz csatlakoztatott és a tartományvezérlő vagy tagkiszolgáló kell lennie.
 * Ha az Azure AD Connect telepíti a Windows Server 2008 R2 rendszeren, majd győződjön meg arról, a alkalmazni a legújabb gyorsjavítások a Windows Update webhelyről. A telepítés nem sikerül veszéllyel kiszolgálóról indítsa el.
 * Ha azt tervezi, hogy a funkció használatához **jelszó-szinkronizálás**, akkor az Azure AD Connect-kiszolgáló kell lennie a Windows Server 2008 R2 SP1 vagy újabb.
 * Ha azt tervezi, hogy használjon egy **csoportosan felügyelt szolgáltatásfiók**, akkor az Azure AD Connect-kiszolgáló kell lennie a Windows Server 2012 vagy újabb.
@@ -64,7 +64,7 @@ Előtt az Azure AD Connectet telepíti, akkor kell néhány dolgot.
 ### <a name="sql-server-used-by-azure-ad-connect"></a>Az Azure AD Connect által használt SQL Server
 * Az identitásadatok tárolásához az Azure AD Connectnek szüksége van egy SQL Server-adatbázisra. Alapértelmezés szerint telepítve van egy SQL Server 2012 Express LocalDB (egy világos verziója az SQL Server Express). Az SQL Server Express rendelkezik, amelyek segítségével kezelheti a körülbelül 100 000 objektumra 10 GB-os méretkorlátot. Ha szeretne egy nagyobb adatmennyiségek directory-objektumok kezelése, át kell irányítania a telepítési varázsló egy másik telepített SQL Server.
 * Ha egy külön SQL Server használja, majd ezek a követelmények vonatkoznak:
-  * Az Azure AD Connect a Microsoft SQL Server az SQL Server 2008 (az legújabb szervizcsomaggal) az SQL Server 2017 összes verzióit támogatja. A Microsoft Azure SQL Database **nem támogatott** adatbázisként.
+  * Az Azure AD Connect a Microsoft SQL Server 2008 R2 (a legújabb szervizcsomaggal) az SQL Server 2019 összes verzióit támogatja. A Microsoft Azure SQL Database **nem támogatott** adatbázisként.
   * A kis-és SQL-rendezést kell használnia. Ezek rendezések utak azonosítják a \_CI_ a neve. Ez **nem támogatott** egy kis-és nagybetűket, által azonosított rendezés használatára \_CS_ a neve.
   * Legfeljebb egy SQL-példány egy szinkronizálási motor. Ez **nem támogatott** FIM vagy MIM Sync, a DirSync vagy Azure AD-Szinkronizáló egy SQL-példány megosztása.
 
@@ -129,9 +129,9 @@ Az Azure AD Connect a Microsoft PowerShell és a .NET-keretrendszer 4.5.1-es fü
 
 
 ### <a name="enable-tls-12-for-azure-ad-connect"></a>Engedélyezze a TLS 1.2-es, az Azure AD Connect
-1.1.614.0 verziónál régebbi az Azure AD Connect alapértelmezés szerint a szinkronizálási motor kiszolgáló és az Azure AD közötti kommunikáció titkosításához használja a TLS 1.0-s. TLS 1.2 használatára a kiszolgálón alapértelmezés szerint a .net-alkalmazások konfigurálásával módosíthatja. További információ a TLS 1.2 található [Microsoft biztonsági tanácsadó 2960358](https://technet.microsoft.com/security/advisory/2960358).
+1.1.614.0 verziónál régebbi az Azure AD Connect alapértelmezés szerint a szinkronizálási motor kiszolgáló és az Azure AD közötti kommunikáció titkosításához használja a TLS 1.0-s. TLS 1.2 használatára a kiszolgálón alapértelmezés szerint a .NET-alkalmazások konfigurálásával módosíthatja. További információ a TLS 1.2 található [Microsoft biztonsági tanácsadó 2960358](https://technet.microsoft.com/security/advisory/2960358).
 
-1. A TLS 1.2-es nem lehet engedélyezni, előtt a Windows Server 2008 R2 vagy újabb. Győződjön meg arról, hogy a .net 4.5.1 gyorsjavítás telepítve van az operációs rendszer, lásd: [Microsoft biztonsági tanácsadó 2960358](https://technet.microsoft.com/security/advisory/2960358). Előfordulhat, hogy ez a gyorsjavítás vagy egy későbbi kiadásban már van telepítve a kiszolgálón.
+1. A TLS 1.2-es nem lehet engedélyezni, előtt a Windows Server 2008 R2 vagy újabb. Ellenőrizze, hogy a .NET 4.5.1 gyorsjavítás telepítve van az operációs rendszer esetén lásd: [Microsoft biztonsági tanácsadó 2960358](https://technet.microsoft.com/security/advisory/2960358). Előfordulhat, hogy ez a gyorsjavítás vagy egy későbbi kiadásban már van telepítve a kiszolgálón.
 2. Ha használja a Windows Server 2008 R2, majd győződjön meg arról, a TLS 1.2 engedélyezve van. A kiszolgáló Windows Server 2012 és újabb verzióiban a TLS 1.2 már engedélyezni kell.
     ```
     [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2]

@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe259b6a0f45828e100de33f533e370323128eef
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 8c1d6f541123a3f31c22352d646d701c37356e51
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821696"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088315"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Adja hozzá a Google B2B vendégfelhasználó Identitásszolgáltatóként
 
@@ -62,8 +62,8 @@ Először hozzon létre egy új projektet a Google fejlesztői konzolon a ügyf�
    - `https://login.microsoftonline.com` 
    - `https://login.microsoftonline.com/te/<directory id>/oauth2/authresp` <br>(Ha `<directory id>` a címtár-azonosító)
    
-    > [!NOTE]
-    > A könyvtár Azonosítójának megkereséséhez lépjen https://portal.azure.com, majd a **Azure Active Directory**, válassza a **tulajdonságok** , és másolja a **címtár-azonosító**.
+     > [!NOTE]
+     > A könyvtár Azonosítójának megkereséséhez lépjen https://portal.azure.com, majd a **Azure Active Directory**, válassza a **tulajdonságok** , és másolja a **címtár-azonosító**.
 
    ![Hozzon létre az OAuth-Ügyfélazonosító](media/google-federation/google-create-oauth-client-id.png)
 

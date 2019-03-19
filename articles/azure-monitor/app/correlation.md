@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: bcb62b311426c7582202ced3714d01c429118ab5
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: d3aad8f1b032960786564bbb18f99c260fd72113
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268413"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58092718"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Az Application Insights telemetriai korreláció
 
@@ -212,7 +212,7 @@ Időnként érdemes testre is szabhatja összetevők nevéhez megjelennek a [Alk
 ## <a name="next-steps"></a>További lépések
 
 - Írási [egyéni telemetriát](../../azure-monitor/app/api-custom-events-metrics.md).
-- Tudjon meg többet [cloud_RoleName beállítás](../../azure-monitor/app/app-map.md#set-cloudrolename) más SDK-k esetében.
+- Tudjon meg többet [cloud_RoleName beállítás](../../azure-monitor/app/app-map.md#set-cloud_rolename) más SDK-k esetében.
 - Előkészítheti az Application Insights a mikroszolgáltatási összes összetevőjét. Tekintse meg a [által támogatott platformok](../../azure-monitor/app/platforms.md).
 - Tekintse meg a [adatmodell](../../azure-monitor/app/data-model.md) Application Insights-típusokhoz.
 - Ismerje meg, hogyan [bővítése és szűrőtelemetria](../../azure-monitor/app/api-filtering-sampling.md).

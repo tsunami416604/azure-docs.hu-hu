@@ -12,12 +12,12 @@ ms.date: 01/08/2019
 ms.author: celested
 ms.reviewer: asmalser,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93e33ea311a064058e739bfcf6d63dc2d5462110
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 7dfef0e27dd3e38e5a965f47a47619671a3127b0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57435065"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117659"
 ---
 # <a name="configure-single-sign-on-to-non-gallery-applications-in-azure-active-directory"></a>Egyszeri bejelentkezés nem katalógusból származó alkalmazások az Azure Active Directory konfigurálása
 
@@ -29,8 +29,8 @@ Ezek a képességek is elérhetők, a licencszerződésben. További tájékozta
 
 - Önkiszolgáló integrációja bármilyen alkalmazás, amely támogatja az SAML 2.0 identitásszolgáltató (SP által kezdeményezett vagy identitásszolgáltató által kezdeményezett)
 - Bármely, amely rendelkezik egy a bejelentkezési oldal HTML-alapú webes alkalmazás önkiszolgáló integrációja [jelszóalapú egyszeri bejelentkezés](what-is-single-sign-on.md#password-based-sso)
-* A felhasználókiépítés az SCIM-protokollt használó alkalmazások önkiszolgáló kapcsolat ([az itt leírtak szerint](use-scim-to-provision-users-and-groups.md))
-* Lehetővé teszi, hogy minden olyan alkalmazáshoz, a hivatkozások a [Office 365 appindítóban](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) vagy a [Azure AD hozzáférési panel](what-is-single-sign-on.md#linked-sso)
+- A felhasználókiépítés az SCIM-protokollt használó alkalmazások önkiszolgáló kapcsolat ([az itt leírtak szerint](use-scim-to-provision-users-and-groups.md))
+- Lehetővé teszi, hogy minden olyan alkalmazáshoz, a hivatkozások a [Office 365 appindítóban](https://blogs.office.com/2014/10/16/organize-office-365-new-app-launcher-2/) vagy a [Azure AD hozzáférési panel](what-is-single-sign-on.md#linked-sso)
 
 Ez nem csupán a SaaS-alkalmazásokhoz, amelyek használják, de rendelkezik nem még lett bevezetve, az Azure AD alkalmazáskatalógusában, de a szervezet azt szabályozza, a felhőben vagy a helyszíni kiszolgálókra telepített külső webes alkalmazásokat tartalmazza.
 
