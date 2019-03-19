@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: ghogen
-ms.openlocfilehash: 237294c1bc603402c349f7a56f20c34ed8d210fe
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 8a91614e7dfb804e6a902967ce60f898ed0e54ad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42055532"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999764"
 ---
 # <a name="get-started-with-queue-storage-and-visual-studio-connected-services-aspnet-core"></a>Ismerkedés a queue storage és a Visual Studio csatlakoztatott szolgáltatásainak (ASP.NET-mag)
 
@@ -27,7 +27,7 @@ Ez a cikk azt ismerteti, hogyan kezdheti el az Azure Queue storage használata a
 
 Az Azure queue storage szolgáltatása nagy számú, amelyek segítségével bárhonnan elérhetők HTTP vagy HTTPS PROTOKOLLT használó hitelesített hívásokon keresztül a világon üzenetek tárolásához. Egyetlen üzenetsor akár 64 kilobájt (KB méretű) lehet, és a egy üzenetsor több millió üzenetet a storage-fiók összesített kapacitásán belül is tartalmazhat. További tájékoztatás [.NET használatával az Azure Queue storage használatának első lépései](../storage/queues/storage-dotnet-how-to-use-queues.md) programozott módon kezelésére szolgáló üzenetsorok részleteiért.
 
-Első lépésként hozzon létre egy Azure-üzenetsorba a storage-fiókban. Ez a cikk megjeleníti a várólista létrehozása a C#-ban és hogyan hajthat végre egyszerű üzenetsor-műveletek, például a hozzáadása, módosítása, olvasó és üzenetsorbeli üzenetek eltávolítása.  A kódot használja az Azure Storage ügyféloldali kódtára a .NET-hez. Az ASP.NET kapcsolatos további információkért lásd: [ASP.NET](http://www.asp.net).
+Első lépésként hozzon létre egy Azure-üzenetsorba a storage-fiókban. Ez a cikk megjeleníti a várólista létrehozása a C#-ban és hogyan hajthat végre egyszerű üzenetsor-műveletek, például a hozzáadása, módosítása, olvasó és üzenetsorbeli üzenetek eltávolítása.  A kódot használja az Azure Storage ügyféloldali kódtára a .NET-hez. Az ASP.NET kapcsolatos további információkért lásd: [ASP.NET](https://www.asp.net).
 
 Az Azure Storage API-k némelyike aszinkron, és ebben a cikkben a kód azt feltételezi, hogy az aszinkron módszereket használ. Lásd: [aszinkron programozás](https://docs.microsoft.com/dotnet/csharp/async) további információt.
 
@@ -66,7 +66,7 @@ Az Azure Storage API-k némelyike aszinkron, és ebben a cikkben a kód azt felt
 
 ### <a name="create-a-queue-in-code"></a>Várólista létrehozása a code-ban
 
-Az Azure üzenetsor létrehozása a kódban, hívja meg: "% CreateIfNotExistsAsync":
+Az Azure üzenetsor létrehozása a kódban, hívja meg `CreateIfNotExistsAsync`:
 
 ```cs
 // Create the CloudQueue if it does not exist.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/24/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27456f672e2fa67928b43e80bef384a14e9c1d62
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9f062596e2be93065b3c076787c2f5b3dfcedf9d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166963"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110120"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-tenant"></a>Gyors útmutató: Az Azure Active Directory-bérlőhöz alkalmazás hozzáadása
 
@@ -113,35 +113,35 @@ Az alkalmazás tulajdonságainak szerkesztése
 
 4. A következő táblázatok segítségével kiválaszthatja az igényeinek legjobban megfelelő beállításokat.
 
-    - Működés **hozzárendelt** felhasználók esetében:
+   - Működés **hozzárendelt** felhasználók esetében:
 
-        | Alkalmazás tulajdonságainak beállításai | | | Felhasználói élmény – hozzárendelt felhasználók | |
-        |---|---|---|---|---|
-        | Engedélyezett a felhasználók számára a bejelentkezés? | Felhasználó-hozzárendelés szükséges? | Felhasználók számára látható? | Bejelentkezhetnek a hozzárendelt felhasználók? | Látható az alkalmazás a hozzárendelt felhasználók számára?* |
-        | igen | igen | igen | igen | igen  |
-        | igen | igen | nem  | igen | nem   |
-        | igen | nem  | igen | igen | igen  |
-        | igen | nem  | nem  | igen | nem   |
-        | nem  | igen | igen | nem  | nem   |
-        | nem  | igen | nem  | nem  | nem   |
-        | nem  | nem  | igen | nem  | nem   |
-        | nem  | nem  | nem  | nem  | nem   |
+       | Alkalmazás tulajdonságainak beállításai | | | Felhasználói élmény – hozzárendelt felhasználók | |
+       |---|---|---|---|---|
+       | Engedélyezett a felhasználók számára a bejelentkezés? | Felhasználó-hozzárendelés szükséges? | Felhasználók számára látható? | Bejelentkezhetnek a hozzárendelt felhasználók? | Látható az alkalmazás a hozzárendelt felhasználók számára?* |
+       | igen | igen | igen | igen | igen  |
+       | igen | igen | nem  | igen | nem   |
+       | igen | nem  | igen | igen | igen  |
+       | igen | nem  | nem  | igen | nem   |
+       | nem  | igen | igen | nem  | nem   |
+       | nem  | igen | nem  | nem  | nem   |
+       | nem  | nem  | igen | nem  | nem   |
+       | nem  | nem  | nem  | nem  | nem   |
 
-    - Működés **nem hozzárendelt** felhasználók esetében:
+   - Működés **nem hozzárendelt** felhasználók esetében:
 
-        | Alkalmazás tulajdonságainak beállításai | | | Felhasználói élmény – nem hozzárendelt felhasználók | |
-        |---|---|---|---|---|
-        | Engedélyezett a felhasználók számára a bejelentkezés? | Felhasználó-hozzárendelés szükséges? | Felhasználók számára látható? | Bejelentkezhetnek a nem hozzárendelt felhasználók? | Látható az alkalmazás a nem hozzárendelt felhasználók számára?* |
-        | igen | igen | igen | nem  | nem   |
-        | igen | igen | nem  | nem  | nem   |
-        | igen | nem  | igen | igen | nem   |
-        | igen | nem  | nem  | igen | nem   |
-        | nem  | igen | igen | nem  | nem   |
-        | nem  | igen | nem  | nem  | nem   |
-        | nem  | nem  | igen | nem  | nem   |
-        | nem  | nem  | nem  | nem  | nem   |
+       | Alkalmazás tulajdonságainak beállításai | | | Felhasználói élmény – nem hozzárendelt felhasználók | |
+       |---|---|---|---|---|
+       | Engedélyezett a felhasználók számára a bejelentkezés? | Felhasználó-hozzárendelés szükséges? | Felhasználók számára látható? | Bejelentkezhetnek a nem hozzárendelt felhasználók? | Látható az alkalmazás a nem hozzárendelt felhasználók számára?* |
+       | igen | igen | igen | nem  | nem   |
+       | igen | igen | nem  | nem  | nem   |
+       | igen | nem  | igen | igen | nem   |
+       | igen | nem  | nem  | igen | nem   |
+       | nem  | igen | igen | nem  | nem   |
+       | nem  | igen | nem  | nem  | nem   |
+       | nem  | nem  | igen | nem  | nem   |
+       | nem  | nem  | nem  | nem  | nem   |
 
-    *Látható az alkalmazás a felhasználó számára a hozzáférési panelen és az Office 365 alkalmazás indítójában?
+     *Látható az alkalmazás a felhasználó számára a hozzáférési panelen és az Office 365 alkalmazás indítójában?
 
 ## <a name="use-a-custom-logo"></a>Egyéni embléma használata
 

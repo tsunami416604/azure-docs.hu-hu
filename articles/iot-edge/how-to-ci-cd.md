@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 196d08f47ddfdbb86b8e96ae0e5ca3d3e3e5917e
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: f449449c542ce6ac04daa58ff37a3577f0d75aee
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886764"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57896228"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Folyamatos integráció és folyamatos üzembe helyezés az Azure IoT Edge-ben
 
@@ -47,7 +47,7 @@ Ebben a szakaszban létrehoz egy új build folyamatot. Állítsa be a folyamat s
 >
 >További információkért lásd: [buildelési folyamat létrehozása](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav#create-a-build-pipeline).
 
-1. Jelentkezzen be az Azure DevOps-szervezet ( **https://dev.azure.com/{your szervezet} /**), és nyissa meg a projekt, amely az IoT Edge-megoldás adattár tartalmazza.
+1. Jelentkezzen be az Azure DevOps-szervezet (**https:\//dev.azure.com/{your szervezet} /**), és nyissa meg a projekt, amely az IoT Edge-megoldás adattár tartalmazza.
 
    Ebben a cikkben létrehozott egy tárház nevű **IoTEdgeRepo**. A tárház tartalmaz **IoTEdgeSolution** amely rendelkezik a kódot egy modul nevű **filtermodule**. 
 
@@ -69,13 +69,13 @@ Ebben a szakaszban létrehoz egy új build folyamatot. Állítsa be a folyamat s
 
 4. Ha a folyamat létrejött, ekkor megnyílik a folyamatszerkesztőt. A folyamat leírását válassza a megfelelő ügynökkészlet a célplatformnak megfelelően: 
     
-    * Ha szeretné a modulok a Linux-tárolókhoz tartozó platform amd64 hozhat létre, válassza a **üzemeltetett Ubuntu 1604**
+   * Ha szeretné a modulok a Linux-tárolókhoz tartozó platform amd64 hozhat létre, válassza a **üzemeltetett Ubuntu 1604**
 
-    * Ha szeretné a modulok Windows 1809 tárolókhoz platform amd64 hozhat létre, akkor [állítsa be a helyi Windows-ügynök](https://docs.microsoft.com/azure/devops/pipelines/agents/v2-windows?view=vsts).
+   * Ha szeretné a modulok Windows 1809 tárolókhoz platform amd64 hozhat létre, akkor [állítsa be a helyi Windows-ügynök](https://docs.microsoft.com/azure/devops/pipelines/agents/v2-windows?view=vsts).
 
-    * Ha szeretné a modulok a Linux-tárolókhoz tartozó platform arm32v7 hozhat létre, akkor [Linux helyi ügynök beállítása](https://blogs.msdn.microsoft.com/iotdev/2018/11/13/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent/).
+   * Ha szeretné a modulok a Linux-tárolókhoz tartozó platform arm32v7 hozhat létre, akkor [Linux helyi ügynök beállítása](https://blogs.msdn.microsoft.com/iotdev/2018/11/13/setup-azure-iot-edge-ci-cd-pipeline-with-arm-agent/).
     
-    ![Build ügynökkészlet konfigurálása](./media/how-to-ci-cd/configure-env.png)
+     ![Build ügynökkészlet konfigurálása](./media/how-to-ci-cd/configure-env.png)
 
 5. A folyamat előre konfigurált tartalmaz egy nevű feladatot **ügynöki feladat 1**. Válassza a pluszjelet (**+**) három feladatok hozzáadása a feladathoz: **Az Azure IoT Edge** kétszer, és **összeállítása összetevők közzététele** után. (A neve, az egyes feladatok megtekintéséhez fölé a **Hozzáadás** gombra.)
 
@@ -158,11 +158,11 @@ Hozzon létre egy új folyamatot, és konfigurálja az első szakasz minőségi 
 
 10. Válassza ki az új Azure IoT Edge-feladat, és konfigurálja a következő értékeket:
 
-   * **Megjelenített név**: A megjelenítendő név a művelet Mezőváltozások automatikusan frissül. 
-   * **A művelet**: A legördülő lista segítségével válassza ki a **üzembe helyezés az IoT Edge-eszköz**. A művelet értékének módosítása frissíti a feladat megjelenítendő neve megfelelő is.
-   * **Azure-előfizetés**: Válassza ki az előfizetést, amely az IoT Hub tartalmaz.
-   * **Az IoT Hub nevét**: Válassza ki az IoT hubnak. 
-   * **Válassza ki egyetlen/több eszközt**: Válassza ki, hogy a kiadási folyamathoz egy vagy több eszközön való üzembe helyezéséhez. 
+    * **Megjelenített név**: A megjelenítendő név a művelet Mezőváltozások automatikusan frissül. 
+    * **A művelet**: A legördülő lista segítségével válassza ki a **üzembe helyezés az IoT Edge-eszköz**. A művelet értékének módosítása frissíti a feladat megjelenítendő neve megfelelő is.
+    * **Azure-előfizetés**: Válassza ki az előfizetést, amely az IoT Hub tartalmaz.
+    * **Az IoT Hub nevét**: Válassza ki az IoT hubnak. 
+    * **Válassza ki egyetlen/több eszközt**: Válassza ki, hogy a kiadási folyamathoz egy vagy több eszközön való üzembe helyezéséhez. 
       * Ha egy eszközre telepít, adja meg a **IoT Edge-eszköz azonosítója**. 
       * Ha több eszközre telepít, adja meg az eszköz **feltétel cél**. A cél feltétel nem egyezik meg az Edge-eszközök az IoT Hub egy szűrőt. Ha azt szeretné, eszköz-címkék használata a feltételt, az IoT Hub ikereszköz a megfelelő eszközök címkék frissíteni szeretné. Frissítés a **IoT Edge üzemelő példány azonosítója** és **IoT Edge üzembe helyezési prioritás** a speciális beállításokban. Egy üzemelő példánya több eszközön létrehozásával kapcsolatos további információkért lásd: [automatikus ismertetése IoT Edge-telepítések](module-deployment-monitoring.md).
 

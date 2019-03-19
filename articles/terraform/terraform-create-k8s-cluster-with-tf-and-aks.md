@@ -9,17 +9,17 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/04/2018
-ms.openlocfilehash: ce16e1fbc112c4bd807c42893685643dc0a13992
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d8438f5ddbbb3744811448aeb563be602b04516d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57759749"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58009100"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Kubernetes-fürt létrehozása az Azure Kubernetes Service és a Terraform segítségével
 Az [Azure Kubernetes Service (AKS)](/azure/aks/) felügyeli az üzemeltetett Kubernetes környezetet, lehetővé téve a tárolóalapú alkalmazások gyors és egyszerű üzembe helyezését és felügyeletét tárolóvezénylési szakértelem nélkül is. Ezenkívül a folyamatban lévő műveletek és karbantartás terhét is megszünteti az erőforrások igény szerinti kiépítésével, frissítésével és méretezésével anélkül, hogy offline állapotba kellene helyezni az alkalmazásait.
 
-Ebben az oktatóanyagban megtudhatja, hogyan végezheti el az alábbi feladatokat a [Kubernetes-fürt](https://www.redhat.com/en/topics/containers/what-is-kubernetes) [Terraformmal](http://terraform.io) és AKS-sel történő létrehozása során:
+Ebben az oktatóanyagban megtudhatja, hogyan végezheti el az alábbi feladatokat a [Kubernetes-fürt](https://www.redhat.com/en/topics/containers/what-is-kubernetes) [Terraformmal](https://terraform.io) és AKS-sel történő létrehozása során:
 
 > [!div class="checklist"]
 > * Kubernetes-fürt meghatározása HCL (HashiCorp Language) használatával
@@ -37,7 +37,7 @@ Ebben az oktatóanyagban megtudhatja, hogyan végezheti el az alábbi feladatoka
 ## <a name="create-the-directory-structure"></a>A könyvtárstruktúra létrehozása
 Az első lépés a könyvtár létrehozása, amely a feladathoz tartozó Terraform konfigurációs fájlokat tárolja.
 
-1. Keresse fel az [Azure Portalt](http://portal.azure.com).
+1. Keresse fel az [Azure Portalt](https://portal.azure.com).
 
 1. Nyissa meg az [Azure Cloud Shellt](/azure/cloud-shell/overview). Ha még nem választott ki környezetet, válassza a **Bash** környezetet.
 

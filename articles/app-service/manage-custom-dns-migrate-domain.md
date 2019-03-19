@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/28/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: e7449b5c36d9a1c3df3692f80aed8ccc05a98ade
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 6215230a52bcb5c44f54747b447dc5f64e6af650
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731374"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57999083"
 ---
 # <a name="migrate-an-active-dns-name-to-azure-app-service"></a>Aktív DNS-név migrálása az Azure App Service-ben
 
@@ -48,17 +48,17 @@ Végül pedig az egyéni DNS-nevet a régi helyről való migráláskor az App S
 
 [!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records.md)]
 
-### <a name="create-domain-verification-record"></a>Tartomány-ellenőrzési rekord létrehozása
+### <a name="create-domain-verification-record"></a>Create domain verification record
 
 Tartomány tulajdonjogának ellenőrzéséhez adjon hozzá egy txt típusú rekordot. A TXT-rekord leképezi a _awverify.&lt; altartomány >_ való  _&lt;alkalmazásnév >. azurewebsites.net_. 
 
 A TXT-rekordot kell attól függ, hogy a migrálni kívánt DNS-rekord. Példákért lásd a következő táblázat (`@` általában a gyökértartományt jelöli):
 
-| DNS-rekord példa | Txt típusú gazdagép | Txt típusú érték |
+| DNS-rekord példa | TXT Host | TXT Value |
 | - | - | - |
-| \@ (root) | _awverify_ | _&lt;alkalmazásnév >. azurewebsites.net_ |
-| www (al) | _awverify.www_ | _&lt;alkalmazásnév >. azurewebsites.net_ |
-| \* (helyettesítő karakter) | _awverify.\*_ | _&lt;alkalmazásnév >. azurewebsites.net_ |
+| \@ (root) | _awverify_ | _&lt;appname>.azurewebsites.net_ |
+| www (al) | _awverify.www_ | _&lt;appname>.azurewebsites.net_ |
+| \* (helyettesítő karakter) | _awverify.\*_ | _&lt;appname>.azurewebsites.net_ |
 
 Jegyezze fel a DNS-rekordok oldala a DNS-név, amelyeket szeretné áttelepíteni a rekord típusa. Az App Service támogatja a leképezéseket a CNAME és a egy a rekordot.
 
@@ -66,7 +66,7 @@ Jegyezze fel a DNS-rekordok oldala a DNS-név, amelyeket szeretné áttelepíten
 > Az egyes szolgáltatók – például CloudFlare, `awverify.*` nem egy érvényes rekordot. Használat `*` csak helyette.
 
 > [!NOTE]
-> Helyettesítő karakteres `*` rekordok nem érvényesítése altartományok egy meglévő CNAME rekorddal. Szükség lehet explicit módon hozzon létre egy txt típusú rekordot mindegyik altartomány.
+> Helyettesítő karakteres `*` rekordok nem érvényesítése altartományok egy meglévő CNAME rekorddal. You may need to explicitly create a TXT record for each subdomain.
 
 
 ### <a name="enable-the-domain-for-your-app"></a>A tartomány az alkalmazás engedélyezése
@@ -105,7 +105,7 @@ Ehhez a csak egy dolog maradt rendszer újramegfeleltetése aktív DNS-rekordjá
 
 ### <a name="copy-the-apps-ip-address-a-record-only"></a>Másolja az alkalmazás IP-címet (csak egy a rekordot)
 
-Ha egy CNAME-rekordot rendszer újramegfeleltetése, kihagyhatja ezt a szakaszt. 
+If you are remapping a CNAME record, skip this section. 
 
 Az App Service-alkalmazás külső IP-cím, amely jelenik meg kell újramegfeleltetése egy A rekordot, a **egyéni tartományok** lapot.
 
@@ -124,8 +124,8 @@ Az a `contoso.com` legfelső szintű tartomány példájában, például az alá
 | FQDN-példa | Rekordtípus | Gazdagép | Érték |
 | - | - | - | - |
 | a contoso.com (root) | A | `@` | [Az alkalmazás IP-címének másolása](#info) szakaszból származó IP-cím |
-| www.contoso.com (al) | CNAME | `www` | _&lt;alkalmazásnév >. azurewebsites.net_ |
-| \*. contoso.com (helyettesítő karakter) | CNAME | _\*_ | _&lt;alkalmazásnév >. azurewebsites.net_ |
+| www\.contoso.com (al) | CNAME | `www` | _&lt;appname>.azurewebsites.net_ |
+| \*. contoso.com (helyettesítő karakter) | CNAME | _\*_ | _&lt;appname>.azurewebsites.net_ |
 
 A beállítások mentéséhez.
 
@@ -136,4 +136,4 @@ DNS-lekérdezések el kell indulnia, közvetlenül az után történik, DNS-prop
 Ismerje meg, hogyan köthet egyéni SSL-tanúsítvány App Service-ben.
 
 > [!div class="nextstepaction"]
-> [Meglévő egyéni SSL-tanúsítvány kötése az Azure App Service-ben](app-service-web-tutorial-custom-ssl.md)
+> [Meglévő egyéni SSL-tanúsítvány kötése az Azure App Service-hez](app-service-web-tutorial-custom-ssl.md)

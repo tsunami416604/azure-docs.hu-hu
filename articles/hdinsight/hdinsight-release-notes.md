@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/02/2019
-ms.openlocfilehash: 8441f6793140bcb565b97776a0cd86c7319db9c1
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e6a528ae7eda7e10ab06c6f338fd05d20332a9fd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448904"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58089012"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Az Azure HDInsight kibocsátási megjegyzései
 
@@ -1309,116 +1309,116 @@ Rögzített problémák kiválasztott problémák, forduljon az ügyfélszolgál
 
 ## <a name="known-issues"></a>Ismert problémák
 
--   **HDInsight-integráció az ADLS általános 2** nincsenek két problémák HDInsight ESP-fürtökön az Azure Data Lake Storage általános 2 használatával felhasználói könyvtárak és engedélyekkel:
+- **HDInsight-integráció az ADLS általános 2** nincsenek két problémák HDInsight ESP-fürtökön az Azure Data Lake Storage általános 2 használatával felhasználói könyvtárak és engedélyekkel:
    
-   1. A felhasználók számára kezdőkönyvtárak nem első jönnek létre a fő csomópont 1. Áthidaló megoldásként hozzon létre manuálisan a könyvtárak és tulajdonjogai módosulnak a megfelelő felhasználói UPN.
+  1. A felhasználók számára kezdőkönyvtárak nem első jönnek létre a fő csomópont 1. Áthidaló megoldásként hozzon létre manuálisan a könyvtárak és tulajdonjogai módosulnak a megfelelő felhasználói UPN.
    
-   2. /Hdp könyvtár jelenleg nincs beállítva a 751. Ezt manuálisan kell beállítani 
-      ```bash
-      chmod 751 /hdp 
-      chmod –R 755 /hdp/apps
-      ```
+  2. /Hdp könyvtár jelenleg nincs beállítva a 751. Ezt manuálisan kell beállítani 
+     ```bash
+     chmod 751 /hdp 
+     chmod –R 755 /hdp/apps
+     ```
 
--   **A Spark 2.3.**
+- **A Spark 2.3.**
 
-    -   \[[*SPARK-23523*](https://issues.apache.org/jira/browse/SPARK-23523)\]\[SQL\] OptimizeMetadataOnlyQuery szabály által okozott helytelen eredménye
+  -   \[[*SPARK-23523*](https://issues.apache.org/jira/browse/SPARK-23523)\]\[SQL\] OptimizeMetadataOnlyQuery szabály által okozott helytelen eredménye
 
-    -   \[[*SPARK-23406* ](https://issues.apache.org/jira/browse/SPARK-23406) \] hibák a stream-adatfolyam Önillesztések
+  -   \[[*SPARK-23406* ](https://issues.apache.org/jira/browse/SPARK-23406) \] hibák a stream-adatfolyam Önillesztések
 
-    -   Ha a fürt alapértelmezett tárolója az Azure Data Lake Storage (Gen2), a Spark mintafüzetek nem érhetők el.
+  -   Ha a fürt alapértelmezett tárolója az Azure Data Lake Storage (Gen2), a Spark mintafüzetek nem érhetők el.
 
--   **Enterprise Security Package**
+- **Enterprise Security Package**
 
-    - Spark Thrift-kiszolgáló nem fogadja el az ODBC-ügyfelektől érkező kapcsolatokat.
-      Áthidaló megoldás lépéseit:
-      1. Várjon, amíg a fürt létrehozása után körülbelül 15 perc.
-      2. Ellenőrizze a ranger felhasználói Felületet hivesampletable_policy meglétét.
-      3. Indítsa újra a Spark-szolgáltatást.
-         STS-kapcsolat már működik.
+  - Spark Thrift-kiszolgáló nem fogadja el az ODBC-ügyfelektől érkező kapcsolatokat.
+    Áthidaló megoldás lépéseit:
+    1. Várjon, amíg a fürt létrehozása után körülbelül 15 perc.
+    2. Ellenőrizze a ranger felhasználói Felületet hivesampletable_policy meglétét.
+    3. Indítsa újra a Spark-szolgáltatást.
+       STS-kapcsolat már működik.
 
--   **Megkerülő megoldás a Ranger szolgáltatás ellenőrzési hiba**
+- **Megkerülő megoldás a Ranger szolgáltatás ellenőrzési hiba**
 
-    -   [RANGER-1607-ES](https://issues.apache.org/jira/browse/RANGER-1607): Megkerülő megoldás a Ranger szolgáltatás ellenőrzési hiba HDP korábbi verziókról, HDP 2.6.2 frissítése közben.
+  -   [RANGER-1607-ES](https://issues.apache.org/jira/browse/RANGER-1607): Megkerülő megoldás a Ranger szolgáltatás ellenőrzési hiba HDP korábbi verziókról, HDP 2.6.2 frissítése közben.
 
-        > [!NOTE]  
-        > Csak a ranger SSL engedélyezve van. 
+      > [!NOTE]  
+      > Csak a ranger SSL engedélyezve van. 
      
-    A probléma akkor keletkezik, ha a korábbi HDP verziókról ambarival HDP-2.6.1 való frissítésére történt kísérlet. Az Ambari curl hívás szolgáltatás ellenőrzi, hogy az Ambari Ranger szolgáltatás használja. Ha a JDK-verziót használják az Ambari JDK-1.7-es, a curl-hívás sikertelen lesz, és az alábbi hiba:
+  A probléma akkor keletkezik, ha a korábbi HDP verziókról ambarival HDP-2.6.1 való frissítésére történt kísérlet. Az Ambari curl hívás szolgáltatás ellenőrzi, hogy az Ambari Ranger szolgáltatás használja. Ha a JDK-verziót használják az Ambari JDK-1.7-es, a curl-hívás sikertelen lesz, és az alábbi hiba:
     
-    `curl: (35) error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure`
+  `curl: (35) error:14077410:SSL routines:SSL23_GET_SERVER_HELLO:sslv3 alert handshake failure`
     
-    Ez a hiba oka a tomcat a Ranger használt verziója Tomcat-7.0.7-es\*. JDK-1.7-es használata ütközik a Tomcat-7.0.7-es megadott alapértelmezett Rejtjelek\*.
+  Ez a hiba oka a tomcat a Ranger használt verziója Tomcat-7.0.7-es\*. JDK-1.7-es használata ütközik a Tomcat-7.0.7-es megadott alapértelmezett Rejtjelek\*.
     
-    A megoldás kétféle módon:
+  A megoldás kétféle módon:
     
-    -   Frissítse a JDK 1.8-as-verziója, a JDK-1.7-es Ambari használt JDK (című szakaszában talál [módosítsa a JDK verzióját](https://docs.hortonworks.com/HDPDocuments/Ambari-2.2.0.0/bk_ambari_reference_guide/content/ch_changing_the_jdk_version_on_an_existing_cluster.html) az Ambari referencia-útmutató).
+  -   Frissítse a JDK 1.8-as-verziója, a JDK-1.7-es Ambari használt JDK (című szakaszában talál [módosítsa a JDK verzióját](https://docs.hortonworks.com/HDPDocuments/Ambari-2.2.0.0/bk_ambari_reference_guide/content/ch_changing_the_jdk_version_on_an_existing_cluster.html) az Ambari referencia-útmutató).
     
-    -   Ha azt szeretné, hogy továbbra is támogatja a JDK-1.7-es környezetben:
+  -   Ha azt szeretné, hogy továbbra is támogatja a JDK-1.7-es környezetben:
     
-        1.  A tulajdonság ranger.tomcat.ciphers hozzáadása a ranger-admin-hely szakaszban az Ambari Ranger konfigurációjában a érték alá:
+      1.  A tulajdonság ranger.tomcat.ciphers hozzáadása a ranger-admin-hely szakaszban az Ambari Ranger konfigurációjában a érték alá:
             
-            SSL\_RSA\_WITH\_RC4\_128\_MD5, SSL\_RSA\_WITH\_RC4\_128\_SHA, TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA, SSL\_RSA\_WITH\_3DES\_EDE\_CBC\_SHA
+          SSL\_RSA\_WITH\_RC4\_128\_MD5, SSL\_RSA\_WITH\_RC4\_128\_SHA, TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA, SSL\_RSA\_WITH\_3DES\_EDE\_CBC\_SHA
         
-        2.  Ha a környezet Ranger-KMS van konfigurálva, vegye fel a tulajdonság ranger.tomcat.ciphers theranger-kms-hely szakaszban az Ambari Ranger konfigurációjában a érték alá:
+      2.  Ha a környezet Ranger-KMS van konfigurálva, vegye fel a tulajdonság ranger.tomcat.ciphers theranger-kms-hely szakaszban az Ambari Ranger konfigurációjában a érték alá:
             
-            SSL\_RSA\_WITH\_RC4\_128\_MD5, SSL\_RSA\_WITH\_RC4\_128\_SHA, TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA, SSL\_RSA\_WITH\_3DES\_EDE\_CBC\_SHA
+          SSL\_RSA\_WITH\_RC4\_128\_MD5, SSL\_RSA\_WITH\_RC4\_128\_SHA, TLS\_RSA\_WITH\_AES\_128\_CBC\_SHA, SSL\_RSA\_WITH\_3DES\_EDE\_CBC\_SHA
     
-    >[!NOTE]  
-    >A felmerült értékek példák dolgozik, és nem lehet, a környezetében. Győződjön meg arról, hogy a Tulajdonságok módja megegyezik-e a környezet konfigurációjától.   
+  >[!NOTE]  
+  >A felmerült értékek példák dolgozik, és nem lehet, a környezetében. Győződjön meg arról, hogy a Tulajdonságok módja megegyezik-e a környezet konfigurációjától.   
 
--   **RangerUI: A szabályzat megadott házirend feltétel szöveg escape**
+- **RangerUI: A szabályzat megadott házirend feltétel szöveg escape**
     
-    **Érintett összetevőt:** Ranger
+  **Az érintett összetevő:** Ranger
     
-    **A probléma leírása**
+  **A probléma leírása**
     
-    Ha egy felhasználó szeretne szabályzatának létrehozása az egyéni házirend feltételei és speciális karaktereket tartalmaz, a kifejezés vagy a szöveget, majd a házirend betartatása nem működnek. Speciális karakterek ASCII át az adatbázisba a szabályzatot mentés előtt.
+  Ha egy felhasználó szeretne szabályzatának létrehozása az egyéni házirend feltételei és speciális karaktereket tartalmaz, a kifejezés vagy a szöveget, majd a házirend betartatása nem működnek. Speciális karakterek ASCII át az adatbázisba a szabályzatot mentés előtt.
     
-    **Speciális karakterek:**   &  &lt; &gt; " \` "
+  **Speciális karakterek:**  &  &lt; &gt; " \` "
     
-    Ha például a feltétel tags.attributes\["type"\]= "abc" lenne átalakítani a következő, a szabályzat mentése után.
+  Ha például a feltétel tags.attributes\["type"\]= "abc" lenne átalakítani a következő, a szabályzat mentése után.
     
-    tags.attds\[&\#x27;dsds&\#x27;\]=&\#x27;cssdfs&\#x27;
+  tags.attds\[&\#x27;dsds&\#x27;\]=&\#x27;cssdfs&\#x27;
     
-    Szerkesztési módban nyissa meg a szabályzat megjelenik a szabályzat feltételt, a következő karaktereket.
+  Szerkesztési módban nyissa meg a szabályzat megjelenik a szabályzat feltételt, a következő karaktereket.
     
-    **Megkerülő megoldás**
+  **Megkerülő megoldás**
     
-    - **A beállítás \#1: Ranger Rest API-n keresztül a házirend létrehozása vagy frissítése**
+  - **A beállítás \#1: Ranger Rest API-n keresztül a házirend létrehozása vagy frissítése**
         
-        REST URL: http://&lt;host&gt;:6080/service/plugins/policies
+      REST-URL-címet: http://&lt;gazdagép&gt;: 6080/service/plugins/házirendek
         
-        **Szabályzat létrehozása a szabályzat feltétellel:**
+      **Szabályzat létrehozása a szabályzat feltétellel:**
         
-        Az alábbi példa hoz létre szabályzat-címkék \`címkék és tesztelési\` , és rendelje hozzá a \`nyilvános\` házirend feltétel astags.attr a csoport\["type"\]== "abc" szerint minden lehetőség Hive-összetevő engedélyek, válassza ki, frissítés, hozzon létre, dobja el, alter, indexelni, például, az összes zárolása.
+      Az alábbi példa hoz létre szabályzat-címkék \`címkék és tesztelési\` , és rendelje hozzá a \`nyilvános\` házirend feltétel astags.attr a csoport\["type"\]== "abc" szerint minden lehetőség Hive-összetevő engedélyek, válassza ki, frissítés, hozzon létre, dobja el, alter, indexelni, például, az összes zárolása.
         
-        **Példa**
+      **Példa**
         
-        `curl -H "Content-Type: application/json" -X POST http://localhost:6080/service/plugins/policies -u admin:admin -d '{"policyType":"0","name":"P100","isEnabled":true,"isAuditEnabled":true,"description":"","resources":{"tag":{"values":["tags-test"],"isRecursive":"","isExcludes":false}},"policyItems":[{"groups":["public"],"conditions":[{"type":"accessed-after-expiry","values":[]},{"type":"tag-expression","values":["tags.attr['type']=='abc'"]}],"accesses":[{"type":"hive:select","isAllowed":true},{"type":"hive:update","isAllowed":true},{"type":"hive:create","isAllowed":true},{"type":"hive:drop","isAllowed":true},{"type":"hive:alter","isAllowed":true},{"type":"hive:index","isAllowed":true},{"type":"hive:lock","isAllowed":true},{"type":"hive:all","isAllowed":true}]}],"denyPolicyItems":[],"allowExceptions":[],"denyExceptions":[],"service":"tagdev"}'`
+      `curl -H "Content-Type: application/json" -X POST http://localhost:6080/service/plugins/policies -u admin:admin -d '{"policyType":"0","name":"P100","isEnabled":true,"isAuditEnabled":true,"description":"","resources":{"tag":{"values":["tags-test"],"isRecursive":"","isExcludes":false}},"policyItems":[{"groups":["public"],"conditions":[{"type":"accessed-after-expiry","values":[]},{"type":"tag-expression","values":["tags.attr['type']=='abc'"]}],"accesses":[{"type":"hive:select","isAllowed":true},{"type":"hive:update","isAllowed":true},{"type":"hive:create","isAllowed":true},{"type":"hive:drop","isAllowed":true},{"type":"hive:alter","isAllowed":true},{"type":"hive:index","isAllowed":true},{"type":"hive:lock","isAllowed":true},{"type":"hive:all","isAllowed":true}]}],"denyPolicyItems":[],"allowExceptions":[],"denyExceptions":[],"service":"tagdev"}'`
         
-        **Frissítse a meglévő házirend házirend feltétellel:**
+      **Frissítse a meglévő házirend házirend feltétellel:**
         
-        Az alábbi példában a rendszer ekkor frissíti a házirend-címkék \`címkék és tesztelési\` , és rendelje hozzá a \`nyilvános\` házirend feltétel astags.attr a csoport\["type"\]== "abc" szerint minden lehetőség Hive-összetevő engedélyek, válassza ki, frissítés, hozzon létre, dobja el, alter, indexelni, például, az összes zárolása.
+      Az alábbi példában a rendszer ekkor frissíti a házirend-címkék \`címkék és tesztelési\` , és rendelje hozzá a \`nyilvános\` házirend feltétel astags.attr a csoport\["type"\]== "abc" szerint minden lehetőség Hive-összetevő engedélyek, válassza ki, frissítés, hozzon létre, dobja el, alter, indexelni, például, az összes zárolása.
         
-        REST-URL-címet: http://&lt;állomásnév-&gt;:6080/service/plugins/házirendek/&lt;házirend-azonosító&gt;
+      REST-URL-címet: http://&lt;állomásnév-&gt;:6080/service/plugins/házirendek/&lt;házirend-azonosító&gt;
         
-        **Példa**
+      **Példa**
         
-        `curl -H "Content-Type: application/json" -X PUT http://localhost:6080/service/plugins/policies/18 -u admin:admin -d '{"id":18,"guid":"ea78a5ed-07a5-447a-978d-e636b0490a54","isEnabled":true,"createdBy":"Admin","updatedBy":"Admin","createTime":1490802077000,"updateTime":1490802077000,"version":1,"service":"tagdev","name":"P0101","policyType":0,"description":"","resourceSignature":"e5fdb911a25aa7f77af5a9546938d9ed","isAuditEnabled":true,"resources":{"tag":{"values":["tags"],"isExcludes":false,"isRecursive":false}},"policyItems":[{"accesses":[{"type":"hive:select","isAllowed":true},{"type":"hive:update","isAllowed":true},{"type":"hive:create","isAllowed":true},{"type":"hive:drop","isAllowed":true},{"type":"hive:alter","isAllowed":true},{"type":"hive:index","isAllowed":true},{"type":"hive:lock","isAllowed":true},{"type":"hive:all","isAllowed":true}],"users":[],"groups":["public"],"conditions":[{"type":"ip-range","values":["tags.attributes['type']=abc"]}],"delegateAdmin":false}],"denyPolicyItems":[],"allowExceptions":[],"denyExceptions":[],"dataMaskPolicyItems":[],"rowFilterPolicyItems":[]}'`
+      `curl -H "Content-Type: application/json" -X PUT http://localhost:6080/service/plugins/policies/18 -u admin:admin -d '{"id":18,"guid":"ea78a5ed-07a5-447a-978d-e636b0490a54","isEnabled":true,"createdBy":"Admin","updatedBy":"Admin","createTime":1490802077000,"updateTime":1490802077000,"version":1,"service":"tagdev","name":"P0101","policyType":0,"description":"","resourceSignature":"e5fdb911a25aa7f77af5a9546938d9ed","isAuditEnabled":true,"resources":{"tag":{"values":["tags"],"isExcludes":false,"isRecursive":false}},"policyItems":[{"accesses":[{"type":"hive:select","isAllowed":true},{"type":"hive:update","isAllowed":true},{"type":"hive:create","isAllowed":true},{"type":"hive:drop","isAllowed":true},{"type":"hive:alter","isAllowed":true},{"type":"hive:index","isAllowed":true},{"type":"hive:lock","isAllowed":true},{"type":"hive:all","isAllowed":true}],"users":[],"groups":["public"],"conditions":[{"type":"ip-range","values":["tags.attributes['type']=abc"]}],"delegateAdmin":false}],"denyPolicyItems":[],"allowExceptions":[],"denyExceptions":[],"dataMaskPolicyItems":[],"rowFilterPolicyItems":[]}'`
         
-    - **A beállítás \#2: Javascript-módosítások alkalmazása**
+  - **A beállítás \#2: Javascript-módosítások alkalmazása**
         
-        Lépések végrehajtásával frissítheti a JS-fájlt:
+      Lépések végrehajtásával frissítheti a JS-fájlt:
         
-        1.  Ismerje meg, /usr/hdp/current/ranger-admin PermissionList.js fájlt
+      1.  Ismerje meg, /usr/hdp/current/ranger-admin PermissionList.js fájlt
         
-        2.  Ismerje meg, (no: 404) renderPolicyCondtion függvény definíciója.
+      2.  Ismerje meg, (no: 404) renderPolicyCondtion függvény definíciója.
         
-        3.  Távolítsa el a következő sort az adott függvény azaz a megjelenített függvény (no: 434)
+      3.  Távolítsa el a következő sort az adott függvény azaz a megjelenített függvény (no: 434)
             
-            érték = \_.escape(val);//Line nem: 460
+          érték = \_.escape(val);//Line nem: 460
             
-            Miután eltávolította a fenti sor, a Ranger felhasználói felület lehetővé teszi szabályzatok létrehozását szabályzatfeltételt, amely speciális karaktereket és a szabályzat-kiértékelés házirendje sikeres lesz.
+          Miután eltávolította a fenti sor, a Ranger felhasználói felület lehetővé teszi szabályzatok létrehozását szabályzatfeltételt, amely speciális karaktereket és a szabályzat-kiértékelés házirendje sikeres lesz.
 
 **HDInsight-integráció ADLS 2. generációs gyűjtések: ESP-fürtökkel könyvtárak és engedélyek probléma felhasználó**
     1.  A felhasználók számára kezdőkönyvtárak nem első jönnek létre a fő csomópont 1. Megkerülő megoldás, hogy manuálisan hozza létre ezeket, és a megfelelő felhasználói UPN tulajdonjogai módosulnak.

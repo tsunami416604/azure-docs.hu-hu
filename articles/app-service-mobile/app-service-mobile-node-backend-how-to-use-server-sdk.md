@@ -14,12 +14,12 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 4e478c2559ac534f595393fdc36b95ad8e9c989a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 831f6b4bdc99e63859b390f8a9bb88d74301284e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725031"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997530"
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>A Mobile Apps Node.js SDK használata
 
@@ -93,9 +93,9 @@ Ezt az alkalmazást a mobileszközökre optimalizált webes API-t hoz létre egy
 * [Apache Cordova-ügyfél gyors üzembe helyezés]
 * [iOS-es ügyfél a rövid útmutató]
 * [Windows Store-ügyfél a rövid útmutató]
-* [Xamarin.iOS-ügyfél a rövid útmutató]
-* [Xamarin.Android-ügyfél a rövid útmutató]
-* [Xamarin.Forms-ügyfél a rövid útmutató]
+* [Xamarin.iOS Client quickstart]
+* [Xamarin.Android Client quickstart]
+* [Xamarin.Forms Client quickstart]
 
 Ez a alapvető alkalmazás találja a kódot a [basicapp minta a Githubon].
 
@@ -135,7 +135,7 @@ Visual Studio 2015-bővítményt az ide Node.js-alkalmazások fejlesztéséhez s
 
     Mentse a fájlt.
 
-1. Akár az a alkalmazás helyileg történő futtatása (az API-t a kiszolgált http://localhost:3000) vagy közzéteheti az Azure-bA.
+1. Akár az a alkalmazás helyileg történő futtatása (az API-t a kiszolgált `http://localhost:3000`) vagy közzéteheti az Azure-bA.
 
 ### <a name="create-node-backend-portal"></a>Egy Node.js-háttérrendszer létrehozása az Azure portal használatával
 
@@ -324,7 +324,7 @@ A Mobile Apps Node.js SDK-t használ a [mssql Node.js-csomag] létrehozásához,
    1. Válassza ki a **kiszolgálói szerepkörök** lapot.
    1. Jelölje be a jelölőnégyzetet a **dbcreator** kiszolgálói szerepkört.
    1. Kattintson az **OK** gombra.
-   1. Zárja be az SQL Server 2015 Management Studiót.
+   1. Close SQL Server 2015 Management Studio.
 
 Mindenképpen jegyezze fel a felhasználónevet és jelszót, amelyet kiválasztott. Előfordulhat, hogy szeretne további kiszolgálói szerepkörök vagy engedélyek, az adatbázis követelményei hozzárendelése.
 
@@ -794,7 +794,7 @@ var api = {
 module.exports = api;
 ```
 
-Egyes paramétereket az alábbiak egyike a szabványos REST-alapú HTTP-parancsokat: ELSŐ, közzététel, javítása vagy törlése. A metódus egy olyan szabvány [ExpressJS közbenső szoftver] -függvény, amely a szükséges kimenetet küld.
+Egyes paramétereket az alábbiak egyike a szabványos REST-alapú HTTP-parancsokat: ELSŐ, közzététel, javítása vagy törlése. A metódus egy olyan szabvány [ExpressJS middleware] -függvény, amely a szükséges kimenetet küld.
 
 ### <a name="howto-customapi-auth"></a>Hitelesítés megkövetelése a hozzáféréshez egy egyéni API-hoz
 
@@ -958,9 +958,9 @@ Az Azure Portalon, a Node.js háttér-parancsfájlok az App Service Editor szerk
 [Android ügyfél a rövid útmutató]: app-service-mobile-android-get-started.md
 [Apache Cordova-ügyfél gyors üzembe helyezés]: app-service-mobile-cordova-get-started.md
 [iOS-es ügyfél a rövid útmutató]: app-service-mobile-ios-get-started.md
-[Xamarin.iOS-ügyfél a rövid útmutató]: app-service-mobile-xamarin-ios-get-started.md
-[Xamarin.Android-ügyfél a rövid útmutató]: app-service-mobile-xamarin-android-get-started.md
-[Xamarin.Forms-ügyfél a rövid útmutató]: app-service-mobile-xamarin-forms-get-started.md
+[Xamarin.iOS Client quickstart]: app-service-mobile-xamarin-ios-get-started.md
+[Xamarin.Android Client quickstart]: app-service-mobile-xamarin-android-get-started.md
+[Xamarin.Forms Client quickstart]: app-service-mobile-xamarin-forms-get-started.md
 [Windows Store-ügyfél a rövid útmutató]: app-service-mobile-windows-store-dotnet-get-started.md
 [offline adatszinkronizálást]: app-service-mobile-offline-data-sync.md
 [Az Azure Active Directory-hitelesítés konfigurálása]: ../app-service/configure-authentication-provider-aad.md
@@ -990,5 +990,5 @@ Az Azure Portalon, a Node.js háttér-parancsfájlok az App Service Editor szerk
 [1.1 node.js-eszközök a Visual Studióhoz]: https://github.com/Microsoft/nodejstools/releases/tag/v1.1-RC.2.1
 [MSSQL Node.js-csomag]: https://www.npmjs.com/package/mssql
 [Microsoft SQL Server 2014 Express]: https://www.microsoft.com/en-us/server-cloud/Products/sql-server-editions/sql-server-express.aspx
-[ExpressJS közbenső szoftver]: https://expressjs.com/guide/using-middleware.html
+[ExpressJS middleware]: https://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston

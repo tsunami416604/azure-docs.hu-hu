@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/07/2019
 ms.author: spelluru
-ms.openlocfilehash: bc81f479305f39024b8d946e1ace3fc84ecb6253
-ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
+ms.openlocfilehash: 1f6887a403e03ac11bb080a1d9855daff66ca088
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57588856"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096775"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet társított költségek nyomon követése
 Ez a cikk nyomon követését a labor költségeinek ismertetése. Azt mutatja be megtekintheti a becsült költségek trent az aktuális hónap a tesztkörnyezethez. A cikk emellett bemutatja, hogyan hónap elejétől számított költség / erőforrás megtekintéséhez a tesztkörnyezetben.
@@ -41,19 +41,19 @@ A havi becsült költség Trend diagram megtekintéséhez kövesse az alábbi l�
 
     A költségek összegeket a legközelebbi egész számra kerekíti. Példa: 
 
-    * 5.01 kerekít legfeljebb 6 
-    * 5.50 kerekít legfeljebb 6
-    * 5.99 kerekít legfeljebb 6
+   * 5.01 kerekít legfeljebb 6 
+   * 5.50 kerekít legfeljebb 6
+   * 5.99 kerekít legfeljebb 6
 
-    Meghatározza a diagram felett, a költségek, alapértelmezés szerint a diagram a láthatja azokat *becsült* költségek használatával [használatalapú](https://azure.microsoft.com/offers/ms-azr-0003p/) ajánlja fel díjakat. Is beállíthat, amely szerint a diagramokban jelennek meg a saját költségkeret-beállítási célok [kezelése a költségek célokat a tesztkörnyezethez.](#managing-cost-targets-for-your-lab)
+     Meghatározza a diagram felett, a költségek, alapértelmezés szerint a diagram a láthatja azokat *becsült* költségek használatával [használatalapú](https://azure.microsoft.com/offers/ms-azr-0003p/) ajánlja fel díjakat. Is beállíthat, amely szerint a diagramokban jelennek meg a saját költségkeret-beállítási célok [kezelése a költségek célokat a tesztkörnyezethez.](#managing-cost-targets-for-your-lab)
 
-    A következő díjakat *nem* szereplő költség:
+     A következő díjakat *nem* szereplő költség:
 
-    * Kriptográfiai Szolgáltató és a Dreamspark-előfizetések jelenleg nem támogatottak, használja az Azure DevTest Labs a [Azure számlázási API-k](../billing/billing-usage-rate-card-overview.md) a költség, amely nem támogatja a kriptográfiai Szolgáltató vagy a Dreamspark-előfizetések labor kiszámításához.
-    * Az ajánlat érvényes. Az ajánlat (látható díját az előfizetéshez tartozó), hogy Ön rendelkezik egyeztetése a Microsoft vagy a Microsoft partnerek jelenleg nem használható. Csak az utólagos elszámolású szolgálnak.
-    * Az adókat
-    * Slevy
-    * A Számlázás pénzneme. Jelenleg a labor költség csak USD pénznemben jelenik meg.
+   * Kriptográfiai Szolgáltató és a Dreamspark-előfizetések jelenleg nem támogatottak, használja az Azure DevTest Labs a [Azure számlázási API-k](../billing/billing-usage-rate-card-overview.md) a költség, amely nem támogatja a kriptográfiai Szolgáltató vagy a Dreamspark-előfizetések labor kiszámításához.
+   * Az ajánlat érvényes. Az ajánlat (látható díját az előfizetéshez tartozó), hogy Ön rendelkezik egyeztetése a Microsoft vagy a Microsoft partnerek jelenleg nem használható. Csak az utólagos elszámolású szolgálnak.
+   * Az adókat
+   * Slevy
+   * A Számlázás pénzneme. Jelenleg a labor költség csak USD pénznemben jelenik meg.
 
 ### <a name="managing-cost-targets-for-your-lab"></a>A tesztkörnyezet céljainak költségek kezelése
 DevTest Labs lehetővé teszi kontrollja a tesztkörnyezetben, majd megtekintheti a havi becsült költség Trend diagram költségkeret cél beállításával. DevTest Labs segítségével is értesítést küld a célként megadott kiadások vagy a küszöbérték elérésekor. 
@@ -76,11 +76,11 @@ DevTest Labs lehetővé teszi kontrollja a tesztkörnyezetben, majd megtekinthet
 
        ![Konfigurálja az értesítési ablaktáblát](./media/devtest-lab-configure-cost-management/configure-notification.png)
 
-      - Ha megad **értesítendő**, meg kell adnia a webhook URL-CÍMÉT.
-      - Hasonlóképpen, ha egy webhook URL-CÍMÉT határozza meg, meg kell adnia **értesítési** való **a** a költségek küszöbérték ablaktáblán.
-      - Létre kell hoznia egy webhookot előtt írja be ide.  
+     - Ha megad **értesítendő**, meg kell adnia a webhook URL-CÍMÉT.
+     - Hasonlóképpen, ha egy webhook URL-CÍMÉT határozza meg, meg kell adnia **értesítési** való **a** a költségek küszöbérték ablaktáblán.
+     - Létre kell hoznia egy webhookot előtt írja be ide.  
 
-      További információ a webhookok: [hozzon létre egy webhook vagy API Azure-függvény](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
+       További információ a webhookok: [hozzon létre egy webhook vagy API Azure-függvény](../azure-functions/functions-create-a-web-hook-or-api-function.md). 
 
 ## <a name="view-cost-by-resource"></a>Nézet költségek erőforrás szerint 
 A havi költségek trend fejlesztőlaborokban lévő funkcióval láthatja, hogy mennyire van, az aktuális hónap a fordított. Azt is bemutatja a mozaikrétegeknek a költségkeret-beállítási kiadásait az elmúlt hét napban alapján, a hónap végéig. Megtudhatja, miért érdemes a laborban kiadások teljesíti-küszöbértékek korábban használhatja a **költségek erőforrás szerint** funkció, amely a hónap elejétől számított költségeit mutatja **erőforrásonként** egy táblában.

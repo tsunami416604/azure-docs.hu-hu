@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: 34b151c14323e7ee22c31f22a63b07a0fb18671e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: aed32db257ddbc8cb5b8f4af5f27024c23583798
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57536215"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57892404"
 ---
 # <a name="optimize-storage-cost-in-azure-cosmos-db"></a>Az Azure Cosmos DB-ben a tárolási költségek optimalizálása
 
@@ -39,7 +39,7 @@ Ha szeretné tárolni a multimédiás típusok, például videók, képek, stb.,
 
 ## <a name="check-storage-consumed"></a>Ellenőrizze a felhasznált tárterület
 
-Egy Azure Cosmos-tároló tárolófelhasználásának ellenőrzéséhez futtassa egy ÁTJÁRÓ- vagy GET kérelem a tároló, és vizsgálja meg a `x-ms-request-quota` és a `x-ms-request-usage` fejlécek. Azt is megteheti, ha a .net SDK dolgozik, használhatja a [DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100)), és [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) tulajdonságokat lekérni a felhasznált tárterület.
+Egy Azure Cosmos-tároló tárolófelhasználásának ellenőrzéséhez futtassa egy ÁTJÁRÓ- vagy GET kérelem a tároló, és vizsgálja meg a `x-ms-request-quota` és a `x-ms-request-usage` fejlécek. Azt is megteheti, ha működik a .NET SDK használatával, használhatja a [DocumentSizeQuota](https://docs.microsoft.com/previous-versions/azure/dn850325(v%3Dazure.100)), és [DocumentSizeUsage](https://msdn.microsoft.com/library/azure/dn850324.aspx) tulajdonságokat lekérni a felhasznált tárterület.
 
 ## <a name="using-sdk"></a>Using SDK
 

@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 03/11/2019
 ms.author: pafarley
-ms.openlocfilehash: 5b749a85295e85ecde8d283ca02066a31be33666
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 259787a90b61b171f391dc02276214f17a57d0d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673069"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838816"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Oktatóanyag: Ismeri fel az Azure-szolgáltatás emblémát a kamera képek
 
@@ -101,7 +101,6 @@ Ezután nyissa meg a *Source\VisualProvision\AppSettings.cs* fájlt, és töltse
 
 [!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?range=28-32)]
 
-
 ## <a name="create-a-service-principal"></a>Egyszerű szolgáltatás létrehozása
 
 Az alkalmazás egy Azure egyszerű szolgáltatásfiókot szolgáltatások történő üzembe helyezéséhez az Azure-előfizetés szükséges. Egyszerű szolgáltatás lehetővé teszi egy alkalmazás szerepkörön alapuló hozzáférés-vezérlés használatával konkrét engedélyeket delegálhatnak. További tudnivalókért tekintse meg a [végigvezeti a szolgáltatásnevek](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals).
@@ -131,6 +130,7 @@ A sikeres befejezését követően megjelenik az alábbi JSON-kimenetet, beleér
   ...
 }
 ```
+
 Jegyezze fel a `clientId` és `tenantId` értékeket. Hozzáadhatja őket a megfelelő mezőket a *Source\VisualProvision\AppSettings.cs* fájlt.
 
 [!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?range=8-16)]
@@ -138,9 +138,10 @@ Jegyezze fel a `clientId` és `tenantId` értékeket. Hozzáadhatja őket a megf
 ## <a name="run-the-app"></a>Az alkalmazás futtatása
 
 Ezen a ponton az alkalmazások hozzáférése az adott:
-* Egyéni vizuális betanított modell
-* a Computer Vision service
-* egy egyszerű szolgáltatásfiókot 
+
+- Egyéni vizuális betanított modell
+- a Computer Vision service
+- egy egyszerű szolgáltatásfiókot
 
 Kövesse az alábbi lépéseket az alkalmazás futtatásához:
 
@@ -163,7 +164,6 @@ Kövesse az alábbi lépéseket az alkalmazás futtatásához:
 
     ![Az alkalmazás képernyőjéről, a cél Azure-előfizetéshez egy legördülő mező megjelenítése](media/azure-logo-tutorial/app-az-subscription.png)
 
-    
 
 1. Az eszközön a kamera aktív lesz. Fényképet is az Azure-szolgáltatás emblémák, amely, betanított egyikét. Egy üzembe helyezési időszakot kell kérnie, hogy az új szolgáltatások régiók és -erőforrások csoport kijelölése (mint ha voltak üzembe őket az Azure Portalról). 
 
@@ -171,7 +171,7 @@ Kövesse az alábbi lépéseket az alkalmazás futtatásához:
 
     ![Egy alkalmazás képernyőjéről, az üzembe helyezési régiók és -erőforrások csoport mezők](media/azure-logo-tutorial/app-deployment-options.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha követte a lépéseket, az ebben a forgatókönyvben, és az alkalmazás üzembe helyezése az Azure-szolgáltatásokhoz a fiókjához használt, nyissa meg a [az Azure portal](https://ms.portal.azure.com/). A szolgáltatások nem szeretné használni, megszakítása
 

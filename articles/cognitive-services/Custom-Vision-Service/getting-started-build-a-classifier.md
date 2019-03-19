@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: anroth
-ms.openlocfilehash: d91d62c387fc7bcaef8b7f2cb7e8d865c882aeed
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: f2cd8f5074f815e84caaedb01335406657f29088
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445457"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088009"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>A Custom Vision besorolás létrehozása
 
@@ -100,7 +100,7 @@ Tölthet fel képeket egy másik készletét, visszatérek a tetejére, az ebben
 
 > [!NOTE]
 > A Custom Vision Service néhány automatikus negatív kép kezelését támogatja. Például és banán osztályozó szőlőmustnak épít, és a egy cipő előrejelzéshez kép küldése, ha az osztályozó által igénybe vett kell pontszám a lemezképet, 0 % közelében szőlőmust és banán is.
-
+> 
 > Másrészről azokban az esetekben, ahol a negatív rendszerképekkel képzés használt rendszerképek egy változata, akkor valószínű, hogy a modell lesz a negatív képek besorolása, a nagyszerű Hasonlóságok miatt címkézett osztály. Például ha grépfrút osztályozó és a egy narancssárga rendelkezik, és a egy clementine képe, csatorna, előfordulhat, hogy pontszám a clementine egy narancs számos funkcióját a clementine csúcsos narancs, mert. Ha a negatív képek az ilyen jellegű, azt javasoljuk, létrehozhat egy vagy több további címkéket (például **más**) és a negatív képek a címkével ellátott címkét, hogy ezeket az osztályokat jobban megkülönböztetni a modell betanítása közben .
 
 ## <a name="train-the-classifier"></a>Az osztályozó betanítása

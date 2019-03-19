@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7b0ae144cce1213b5476ba1cccc94d994ebeda60
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 7b3b4e0886f561cc66e2c02e4ea354c86b34453c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464126"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904184"
 ---
 # <a name="heading"></a>Dolgozza fel az adatokat az SQL Server virtuális gépen az Azure-ban
 Ez a dokumentum bemutatja, hogyan elemezheti adatait, és hozzon létre funkciók az SQL Server virtuális gép az Azure-ban tárolt adatok. Ezt megteheti, adatok konvertálása SQL-lel vagy a programozási nyelvet, például a Python használatával.
@@ -36,7 +36,7 @@ A következő adatok wrangling feladatokat SQL-lel ebben a szakaszban ismertetü
 Az alábbiakban néhány minta SQL-parancsfájlok, amelyek segítségével ismerje meg az SQL Server adattárakban.
 
 > [!NOTE]
-> Gyakorlati példa, használhatja a [NYC Taxi adatkészlet](http://www.andresmh.com/nyctaxitrips/) , majd tekintse át a készülékén IPNB [NYC adatok konvertálása, az IPython Notebook és az SQL Server](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) egy teljes körű útmutató az.
+> Gyakorlati példa, használhatja a [NYC Taxi adatkészlet](https://www.andresmh.com/nyctaxitrips/) , majd tekintse át a készülékén IPNB [NYC adatok konvertálása, az IPython Notebook és az SQL Server](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) egy teljes körű útmutató az.
 > 
 > 
 
@@ -82,7 +82,7 @@ Az alábbi példa bemutatja, hogyan binned szolgáltatások létrehozásához do
 ### <a name="sql-featurerollout"></a>Egyetlen oszlop az a funkciók bevezetéséről
 Ebben a szakaszban bemutatjuk, hogyan vezethet be csak egy oszlop a tábla létrehozásához további szolgáltatásokat. A példában feltételeztük, hogy nincs-e a szélességi és hosszúsági oszlop a tábla, amelyből próbált szolgáltatások készítése.
 
-Íme egy rövid ismertetőt a szélességi és hosszúsági koordinátákkal helyadatok (a stackoverflow forrásokat [hogyan mérheti a szélességi és hosszúsági pontosságát?](http://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)). Ez az a hely mezőben előtt featurizing megismeréséhez:
+Íme egy rövid ismertetőt a szélességi és hosszúsági koordinátákkal helyadatok (a stackoverflow forrásokat [hogyan mérheti a szélességi és hosszúsági pontosságát?](https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)). Ez az a hely mezőben előtt featurizing megismeréséhez:
 
 * A bejelentkezési azt jelzi, hogy vannak-e Észak vagy Dél-India, keleti vagy nyugati jelöl.
 * Egy nem nulla több száz számjegy tudatja velünk, hogy használjuk-e hosszúság, szélesség nem!
@@ -129,7 +129,7 @@ Csatlakozás SQL Server-adatbázis a Pythonnal pyodbc (cserélje le a kiszolgál
     import pyodbc    
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-A [Pandas könyvtár](http://pandas.pydata.org/) pythonban adatkezelés Python programozási széles választékának datové struktury és az adatok elemzésére szolgáló eszközöket biztosít. Az alábbi kódot olvas, az eredményeket az SQL Server-adatbázisból egy Pandas adatkeretbe küldött:
+A [Pandas könyvtár](https://pandas.pydata.org/) pythonban adatkezelés Python programozási széles választékának datové struktury és az adatok elemzésére szolgáló eszközöket biztosít. Az alábbi kódot olvas, az eredményeket az SQL Server-adatbázisból egy Pandas adatkeretbe küldött:
 
     # Query database and load the returned results in pandas data frame
     data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)

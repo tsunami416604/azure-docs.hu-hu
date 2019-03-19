@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: adigan
-ms.openlocfilehash: b617ccee1826dfcc05ca7131d1eb04fd98b6b627
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a52f42fb194d2f39861a57c95a664ad57b4f91d1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811154"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57895872"
 ---
 # <a name="back-up-a-sharepoint-farm-on-azure-stack"></a>A SharePoint-farmok biztonsági mentéséhez az Azure Stackben
 Biztonsági mentést a SharePoint-farmok Azure Stack a Microsoft Azure-ba, hogy készítsen biztonsági mentést más adatforrásokhoz ugyanolyan módon a Microsoft Azure Backup Server (MABS) használatával. Az Azure Backup rugalmasan hozhat létre naponta a biztonsági mentési ütemezés, heti, havi vagy éves biztonsági mentési mutat, és különböző biztonsági mentési pontok megőrzése házirend lehetőséget kínál fel. Azt is lehetővé teszi a helyi lemez másolatot pedig gyors helyreállítási idő célkitűzései (RTO) tárolására, és tárolja a másolatokat az Azure-bA gazdaságos, hosszú távú megőrzésének.
@@ -222,10 +222,10 @@ A következő példában a *helyreállítás SharePoint-elem* véletlenül tör�
 5. Ezen a ponton kövesse a cikkben a lemezről való helyreállításhoz egy SharePoint tartalom-adatbázist a helyreállítási lépéseket.
 
 ## <a name="faqs"></a>Gyakori kérdések
-KÉRDÉS: Tudok helyreállítani egy SharePoint-elem az eredeti helyre, ha a SharePoint SQL AlwaysOn (a védelem a lemezen) használatával van konfigurálva?<br>
+K: Tudok helyreállítani egy SharePoint-elem az eredeti helyre, ha a SharePoint SQL AlwaysOn (a védelem a lemezen) használatával van konfigurálva?<br>
 V: Igen, az elem visszaállíthatja az eredeti SharePoint-webhelyre.
 
-KÉRDÉS: Tudok helyreállítani egy SharePoint-adatbázis az eredeti helyre, ha a SharePoint SQL AlwaysOn használatára van konfigurálva?<br>
+K: Tudok helyreállítani egy SharePoint-adatbázis az eredeti helyre, ha a SharePoint SQL AlwaysOn használatára van konfigurálva?<br>
 V: A SharePoint-adatbázisok az SQL AlwaysOn vannak konfigurálva, mivel azok nem lehet módosítani, ha a rendszer eltávolítja a rendelkezésre állási csoport. Ennek eredményeképpen az MABS nem állítható vissza az adatbázis az eredeti helyre. SQL Server-adatbázis egy másik SQL Server-példányra helyreállítható.
 
 ## <a name="next-steps"></a>További lépések

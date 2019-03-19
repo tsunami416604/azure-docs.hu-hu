@@ -12,12 +12,12 @@ ms.author: ayolubek
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/14/2019
-ms.openlocfilehash: 14c43fbc138d6d70b65f6afd1ef174488e066796
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: c96f2dc2b44ea2118d9f0dd6c988017efcba5800
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567740"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58116775"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Adatbázisok biztonsági mentése egy több-bérlős SaaS-alkalmazás helyreállítása geo-visszaállítás használatával
 
@@ -32,13 +32,13 @@ A GEO-visszaállítás a legalacsonyabb költségű vész-helyreállítási mego
 
 Ez az oktatóanyag bemutatja, visszaállítási és a hazatelepítési munkafolyamatokat. Az alábbiak végrehajtásának módját ismerheti meg:
 > [!div class="checklist"]
-
->* Sync-adatbázis és rugalmas tárolókészlet konfigurációs adatait a bérlő-katalógusba.
->* Állítsa be egy tükrözött lemezképét környezetet, amely tartalmazza az alkalmazás, a kiszolgálók és a készletek helyreállítási régióban.   
->* A geo-visszaállítás használatával állíthatja helyre az alkalmazáskatalógus és a bérlői adatbázisok.
->* Georeplikáció használatával települni a bérlői katalógus és a módosított bérlői adatbázisok a szolgáltatáskiesés megszüntetése után.
->* A katalógus frissíteni, mivel minden adatbázis a visszaállított (vagy fogalommeghatározás) nyomon követéséhez az aktív másolata, minden bérlői adatbázis aktuális helyét.
->* Győződjön meg arról, hogy az alkalmazás és a bérlői adatbázis mindig közös találhatók ugyanabban a régióban az Azure a késés csökkentése érdekében. 
+> 
+> * Sync-adatbázis és rugalmas tárolókészlet konfigurációs adatait a bérlő-katalógusba.
+> * Állítsa be egy tükrözött lemezképét környezetet, amely tartalmazza az alkalmazás, a kiszolgálók és a készletek helyreállítási régióban.   
+> * A geo-visszaállítás használatával állíthatja helyre az alkalmazáskatalógus és a bérlői adatbázisok.
+> * Georeplikáció használatával települni a bérlői katalógus és a módosított bérlői adatbázisok a szolgáltatáskiesés megszüntetése után.
+> * A katalógus frissíteni, mivel minden adatbázis a visszaállított (vagy fogalommeghatározás) nyomon követéséhez az aktív másolata, minden bérlői adatbázis aktuális helyét.
+> * Győződjön meg arról, hogy az alkalmazás és a bérlői adatbázis mindig közös találhatók ugyanabban a régióban az Azure a késés csökkentése érdekében. 
  
 
 Ebben az oktatóanyagban a Kezdés előtt végezze el az alábbiakat:
@@ -194,13 +194,13 @@ Az alkalmazás végpont le van tiltva a Traffic Managerben, amíg az alkalmazás
 
 * Után a katalógus-adatbázis helyreállítása megtörtént, de mielőtt online állapotba a bérlők számára, frissítse a Wingtip Tickets események központ a böngészőben.
 
-    * A láblécben, figyelje meg, hogy rendelkezik-e már a katalógus kiszolgálónév - helyreállítási utótaggal, és a helyreállítási régióban található.
+  * A láblécben, figyelje meg, hogy rendelkezik-e már a katalógus kiszolgálónév - helyreállítási utótaggal, és a helyreállítási régióban található.
 
-    * Figyelje meg, hogy a bérlők számára, amely még nem állítja vissza offline állapotban van megjelölve, és amelyek nem választható.   
+  * Figyelje meg, hogy a bérlők számára, amely még nem állítja vissza offline állapotban van megjelölve, és amelyek nem választható.   
  
     ![A helyreállítási folyamat](media/saas-dbpertenant-dr-geo-restore/events-hub-tenants-offline-in-recovery-region.png)    
 
-    * Ha megnyit egy bérlő események lapot közvetlenül a bérlő kapcsolat nélküli módban, az oldal egy bérlő offline értesítés jeleníti meg. Ha például a Contoso Concert Hall offline állapotban, ha megpróbálja megnyitni http://events.wingtip-dpt.&lt; felhasználó&gt;.trafficmanager.net/contosoconcerthall.
+  * Ha megnyit egy bérlő események lapot közvetlenül a bérlő kapcsolat nélküli módban, az oldal egy bérlő offline értesítés jeleníti meg. Ha például a Contoso Concert Hall offline állapotban, ha megpróbálja megnyitni http://events.wingtip-dpt.&lt; felhasználó&gt;.trafficmanager.net/contosoconcerthall.
 
     ![A helyreállítási folyamat](media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
 
@@ -245,13 +245,13 @@ A helyreállítási folyamat befejeződése után, az alkalmazás és az összes
 
 4. Nyissa meg a helyreállítási erőforráscsoportot, és figyelje meg a következő elemek:
 
-    * A katalógus és tenants1-kiszolgálókat, a helyreállítási verziói az - helyreállítási utótaggal. A visszaállított katalógus és a bérlői adatbázisok ezeken a kiszolgálókon az összes az eredeti régióban használt nevekkel rendelkeznek.
+   * A katalógus és tenants1-kiszolgálókat, a helyreállítási verziói az - helyreállítási utótaggal. A visszaállított katalógus és a bérlői adatbázisok ezeken a kiszolgálókon az összes az eredeti régióban használt nevekkel rendelkeznek.
 
-    * A tenants2-dpt -&lt;felhasználói&gt;– SQL server helyreállítása. Új bérlők kiépítése során a szolgáltatáskimaradás elhárítása után ez a kiszolgáló használható.
+   * A tenants2-dpt -&lt;felhasználói&gt;– SQL server helyreállítása. Új bérlők kiépítése során a szolgáltatáskimaradás elhárítása után ez a kiszolgáló használható.
 
-    * Az app service nevű események – a wingtip-dpt -&lt;recoveryregion&gt;-&lt;felhasználói&gt;, azaz a helyreállítási példány az események alkalmazás.
+   * Az app service nevű események – a wingtip-dpt -&lt;recoveryregion&gt;-&lt;felhasználói&gt;, azaz a helyreállítási példány az események alkalmazás.
 
-    ![A helyreállítási régióban contoso-erőforrások](media/saas-dbpertenant-dr-geo-restore/resources-in-recovery-region.png) 
+     ![A helyreállítási régióban contoso-erőforrások](media/saas-dbpertenant-dr-geo-restore/resources-in-recovery-region.png) 
     
 5. Nyissa meg a tenants2-dpt -&lt;felhasználói&gt;– SQL server helyreállítása. Figyelje meg, hogy az adatbázis hawthornhall és a rugalmas készlet Pool1 tartalmazza. A hawthornhall adatbázis egy rugalmas adatbázist a Pool1 rugalmas készletben van konfigurálva.
 
@@ -367,12 +367,12 @@ Bérlői adatbázisok hazatelepítési során egy kis ideig recovery és az ered
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > [!div class="checklist"]
-
->* A bérlői katalógus használata, amely a rendszeres időközönként frissülnek konfigurációs adatokat, amely lehetővé teszi egy tükrözött lemezképét helyreállítási környezet hozható létre egy másik régióban tárolja.
->* A geo-visszaállítás használatával állíthatja helyre az Azure SQL Database-adatbázisok a helyreállítási régióba.
->* A bérlői katalógus, hogy a visszaállított bérlői adatbázis helyek frissítése. 
->* DNS-alias használatával engedélyezheti egy alkalmazás számára a bérlői katalógus egész újrakonfigurálása nélkül csatlakozhat.
->* Georeplikáció használatával helyreállított adatbázis az eredeti régióba települni a szolgáltatáskiesés megszüntetése után.
+> 
+> * A bérlői katalógus használata, amely a rendszeres időközönként frissülnek konfigurációs adatokat, amely lehetővé teszi egy tükrözött lemezképét helyreállítási környezet hozható létre egy másik régióban tárolja.
+> * A geo-visszaállítás használatával állíthatja helyre az Azure SQL Database-adatbázisok a helyreállítási régióba.
+> * A bérlői katalógus, hogy a visszaállított bérlői adatbázis helyek frissítése. 
+> * DNS-alias használatával engedélyezheti egy alkalmazás számára a bérlői katalógus egész újrakonfigurálása nélkül csatlakozhat.
+> * Georeplikáció használatával helyreállított adatbázis az eredeti régióba települni a szolgáltatáskiesés megszüntetése után.
 
 Próbálja ki a [egy több-bérlős SaaS-alkalmazás, adatbázis-replikációval geo-vészhelyreállítás](saas-dbpertenant-dr-geo-replication.md) oktatóanyagból megtudhatja, hogyan georeplikáció használatával jelentősen csökkentheti a nagyméretű több-bérlős alkalmazások helyreállításához szükséges időt.
 

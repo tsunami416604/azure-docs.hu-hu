@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
-ms.openlocfilehash: 3ebc4d94e0bbf24895be0aeba9fef1cc7aacd6b9
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 1e17ec48c35a7e01ca87016406fb416a05544b41
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736712"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087193"
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Az Azure CDN szabálymotorral feltételeknek megfelelő 
 Ez a cikk felsorolja az elérhető egyezési feltételei számára az Azure Content Delivery Network (CDN) a részletes leírását [szabálymotorral](cdn-rules-engine.md).
@@ -532,16 +532,16 @@ Legfontosabb tudnivalókat:
 - Az edge CNAME URL-cím újraírja van a CDN URL-CÍMÉT az URL-cím összehasonlítás előtt.
 
     Például a következő két URL egyaránt az adott objektum mutasson, és ezért tudja az ugyanazon URL-címet.
-    - A CDN URL-címe: http:\//wpc.0001.&lt; tartomány&gt;/800001/CustomerOrigin/path/asset.htm
+  - A CDN URL-címe: http:\//wpc.0001.&lt; tartomány&gt;/800001/CustomerOrigin/path/asset.htm
     
-    - Edge CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
+  - Edge CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
     
     További információ:
-    - Egyéni tartomány: https:\//my.domain.com/path/asset.htm
+  - Egyéni tartomány: https:\//my.domain.com/path/asset.htm
     
-    - (Root) képest relatív URL-cím: / 800001/CustomerOrigin/path /
+  - (Root) képest relatív URL-cím: / 800001/CustomerOrigin/path /
     
-    - (Forrás) képest relatív URL-cím: /path/
+  - (Forrás) képest relatív URL-cím: /path/
 
 - Az URL-cím összehasonlító vége előtt a fájlnév a kért objektum használt URL-cím része. Záró perjellel az ilyen típusú elérési út az utolsó karakter.
     
@@ -639,27 +639,27 @@ Legfontosabb tudnivalókat:
 - Használja a **a skálához képest** beállítással azt adhatja meg, hogy az URL-cím összehasonlító elkezdi előtt vagy után a tartalom-hozzáférési pont. 
 
     A következő értékek érhetők el a **a skálához képest** lehetőséget:
-     - **Legfelső szintű**: Azt jelzi, hogy az URL-cím összehasonlító elkezdi közvetlenül a CDN-gazdaneve után.
+  - **Legfelső szintű**: Azt jelzi, hogy az URL-cím összehasonlító elkezdi közvetlenül a CDN-gazdaneve után.
 
-       Például: http:\//wpc.0001.&lt; tartomány&gt;/**800001/myorigin/myfolder/index.htm**
+    Például: http:\//wpc.0001.&lt; tartomány&gt;/**800001/myorigin/myfolder/index.htm**
 
-     - **Forrás**: Azt jelzi, hogy az URL-cím összehasonlító elkezdi a tartalom-hozzáférési pont (például /000001 vagy/800001/myorigin) után. Mivel a \*. azureedge.net CNAME képest a forrás könyvtárát, a Verizon CDN gazdagépnevét alapértelmezés szerint létrejön, a felhasználók az Azure CDN-t kell használnia a **forrás** értéket. 
+  - **Forrás**: Azt jelzi, hogy az URL-cím összehasonlító elkezdi a tartalom-hozzáférési pont (például /000001 vagy/800001/myorigin) után. Mivel a \*. azureedge.net CNAME képest a forrás könyvtárát, a Verizon CDN gazdagépnevét alapértelmezés szerint létrejön, a felhasználók az Azure CDN-t kell használnia a **forrás** értéket. 
 
-       Például: https:\//&lt;végpont&gt;.azureedge.net/**myfolder/index.htm**
+    Például: https:\//&lt;végpont&gt;.azureedge.net/**myfolder/index.htm**
 
-     Az URL-cím mutat a következő Verizon CDN gazdaneve: http:\//wpc.0001.&lt; tartomány&gt;/800001/myorigin/**myfolder/index.htm**
+    Az URL-cím mutat a következő Verizon CDN gazdaneve: http:\//wpc.0001.&lt; tartomány&gt;/800001/myorigin/**myfolder/index.htm**
 
 - Az edge CNAME URL-cím URL-cím összehasonlítása előtt a CDN URL-címre van átírása.
 
     Például a következő két URL egyaránt mutasson az adott objektum, és ezért tudja az ugyanazon URL-címet:
-    - A CDN URL-címe: http:\//wpc.0001.&lt; tartomány&gt;/800001/CustomerOrigin/path/asset.htm
-    - Edge CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
+  - A CDN URL-címe: http:\//wpc.0001.&lt; tartomány&gt;/800001/CustomerOrigin/path/asset.htm
+  - Edge CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
     
     További információ:
     
-    - (Root) képest relatív URL-cím: /800001/CustomerOrigin/path/asset.htm
+  - (Root) képest relatív URL-cím: /800001/CustomerOrigin/path/asset.htm
    
-    - (Forrás) képest relatív URL-cím: /path/asset.htm
+  - (Forrás) képest relatív URL-cím: /path/asset.htm
 
 - Az URL-cím lekérdezési karakterláncok figyelmen kívül hagyja.
 - Használja a **esetben figyelmen kívül hagyása** ellenőrzési lehetőséget egy kis-és nagybetűket összehasonlítás történik-e.
@@ -684,13 +684,13 @@ Legfontosabb tudnivalókat:
  
     Például mindkét URL-címeket az adott objektum mutasson, és így kell az azonos URL-címet.
 
-     - A CDN URL-címe: http:\//wpc.0001.&lt; tartomány&gt;/800001/CustomerOrigin/path/asset.htm
+  - A CDN URL-címe: http:\//wpc.0001.&lt; tartomány&gt;/800001/CustomerOrigin/path/asset.htm
 
-     - Edge CNAME URL: http:\//my.domain.com/path/asset.htm
+  - Edge CNAME URL: http:\//my.domain.com/path/asset.htm
     
     További információ:
     
-     - URL-cím: /800001/CustomerOrigin/path/asset.htm
+  - URL-cím: /800001/CustomerOrigin/path/asset.htm
 
 - Az URL-cím lekérdezési karakterláncok figyelmen kívül hagyja.
     
@@ -714,27 +714,27 @@ Legfontosabb tudnivalókat:
 - **A skálához képest** lehetőséget: Ez a beállítás határozza meg, hogy az URL-cím összehasonlító elkezdi előtt vagy után a tartalom-hozzáférési pont.
 
    Ez a beállítás a következő értékeket veheti fel:
-     - **Legfelső szintű**: Azt jelzi, hogy az URL-cím összehasonlító elkezdi közvetlenül a CDN-gazdaneve után.
+  - **Legfelső szintű**: Azt jelzi, hogy az URL-cím összehasonlító elkezdi közvetlenül a CDN-gazdaneve után.
 
-       Például: http:\//wpc.0001.&lt; tartomány&gt;/**800001/myorigin/myfolder/index.htm**
+    Például: http:\//wpc.0001.&lt; tartomány&gt;/**800001/myorigin/myfolder/index.htm**
 
-     - **Forrás**: Azt jelzi, hogy az URL-cím összehasonlító elkezdi a tartalom-hozzáférési pont (például /000001 vagy/800001/myorigin) után. Mivel a \*. azureedge.net CNAME képest a forrás könyvtárát, a Verizon CDN gazdagépnevét alapértelmezés szerint létrejön, a felhasználók az Azure CDN-t kell használnia a **forrás** értéket. 
+  - **Forrás**: Azt jelzi, hogy az URL-cím összehasonlító elkezdi a tartalom-hozzáférési pont (például /000001 vagy/800001/myorigin) után. Mivel a \*. azureedge.net CNAME képest a forrás könyvtárát, a Verizon CDN gazdagépnevét alapértelmezés szerint létrejön, a felhasználók az Azure CDN-t kell használnia a **forrás** értéket. 
 
-       Például: https:\//&lt;végpont&gt;.azureedge.net/**myfolder/index.htm**
+    Például: https:\//&lt;végpont&gt;.azureedge.net/**myfolder/index.htm**
 
-     Az URL-cím mutat a következő Verizon CDN gazdaneve: http:\//wpc.0001.&lt; tartomány&gt;/800001/myorigin/**myfolder/index.htm**
+    Az URL-cím mutat a következő Verizon CDN gazdaneve: http:\//wpc.0001.&lt; tartomány&gt;/800001/myorigin/**myfolder/index.htm**
 
 - Az edge CNAME URL-cím URL-cím összehasonlítása előtt a CDN URL-címre van átírása.
 
     Például a következő két URL egyaránt mutasson az adott objektum, és ezért tudja az ugyanazon URL-címet:
-     - A CDN URL-címe: http://wpc.0001.&lt; tartomány&gt;/800001/CustomerOrigin/path/asset.htm
-     - Edge CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
+  - A CDN URL-címe: http://wpc.0001.&lt; tartomány&gt;/800001/CustomerOrigin/path/asset.htm
+  - Edge CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
     
     További információ:
     
-     - (Root) képest relatív URL-cím: /800001/CustomerOrigin/path/asset.htm
+  - (Root) képest relatív URL-cím: /800001/CustomerOrigin/path/asset.htm
     
-     - (Forrás) képest relatív URL-cím: /path/asset.htm
+  - (Forrás) képest relatív URL-cím: /path/asset.htm
     
 - Adja meg az egy szóköz pedig külön határoló több URL-cím elérési út.
 

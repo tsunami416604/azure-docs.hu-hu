@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: d7f832164a41c2107a2cb9fdca3530b1f5d785cb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9f1ef06e0275954343c548d0f6937b9c6fbcfd18
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253601"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012116"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Ismerkedés az Azure Blob Storage és a Visual Studio-hez kapcsolódó szolgáltatásokkal (felhőszolgáltatás-projektek)
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
@@ -32,7 +32,7 @@ Fájlok él, mappák, mint a tárolóblobok élő tárolókban. Miután létreho
 * A blobok programozott módon módosítása további információkért lásd: [.NET használatával az Azure Blob storage használatának első lépései](../storage/blobs/storage-dotnet-how-to-use-blobs.md).
 * Az Azure Storage szolgáltatással kapcsolatos általános információkért lásd: [Storage dokumentációja](https://azure.microsoft.com/documentation/services/storage/).
 * Azure Cloud Services kapcsolatos általános információkért lásd: [Cloud Services – dokumentáció](https://azure.microsoft.com/documentation/services/cloud-services/).
-* Az ASP.NET-alkalmazások programozásával kapcsolatos további információkért lásd: [ASP.NET](http://www.asp.net).
+* Az ASP.NET-alkalmazások programozásával kapcsolatos további információkért lásd: [ASP.NET](https://www.asp.net).
 
 ## <a name="access-blob-containers-in-code"></a>Blob-tárolók hozzáférési kód
 Programozott módon érheti el a cloud service-projektek a blobok, hozzá kell a következő elemeket, ha nem már létezik.

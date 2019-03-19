@@ -1,6 +1,6 @@
 ---
 title: Azure Traffic Manager-profilok kezelése | Microsoft Docs
-description: Ennek a cikknek a segítségével létrehozhatja, letilthatja, engedélyezheti és törölheti az Azure Traffic Manager-profilokat.
+description: Ez a cikk segítséget nyújt a létrehozása, letiltása, engedélyezése és törlése az Azure Traffic Manager-profilok.
 services: traffic-manager
 documentationcenter: ''
 author: kumudd
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: kumud
-ms.openlocfilehash: 11e63f95067a9ad6bb61a91da56fe22dc4962ae5
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 7b52d07db076b62845465ee9f22a3d794c8cdf76
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57778468"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57839525"
 ---
 # <a name="manage-an-azure-traffic-manager-profile"></a>Az Azure Traffic Manager-profilok kezelése
 
@@ -29,7 +29,7 @@ Az Azure Portal használatával Traffic Manager-profilokat hozhat létre. A prof
 
 ### <a name="to-create-a-traffic-manager-profile"></a>Traffic Manager-profil létrehozása
 
-1. Egy böngészőben jelentkezzen be az [Azure Portalra](http://portal.azure.com). Ha még nincs fiókja, regisztrálhat egy [egy hónapos ingyenes próbaverzióra](https://azure.microsoft.com/free/). 
+1. Egy böngészőben jelentkezzen be az [Azure Portalra](https://portal.azure.com). Ha még nincs fiókja, regisztrálhat egy [egy hónapos ingyenes próbaverzióra](https://azure.microsoft.com/free/). 
 2. Kattintson az **Erőforrás létrehozása** > **Hálózat** > **Traffic Manager-profil** > **Létrehozás** lehetőségre.
 4. A **Traffic Manager-profil létrehozása** területen adja meg a következőket:
     1. A **Név** területen adja meg a profil nevét. Ennek a névnek egyedinek kell lennie a trafficmanager.net zónában és a(z) <name>, trafficmanager.net DNS-nevet eredményezi, amellyel elérhető a Traffic Manager-profil.
@@ -48,14 +48,14 @@ Letilthat létező profilokat, így a Traffic Manager nem hivatkozik a konfigur�
 
 1. Ha egyéni tartománynevet használ, módosítsa az internetes DNS-kiszolgáló CNAME-rekordját, hogy többé ne mutasson a Traffic Manager-profilra.
 2. A forgalom többé nem lesz a végpontokra irányítva a Traffic Manager-profil beállításain keresztül.
-3. Egy böngészőben jelentkezzen be az [Azure Portalra](http://portal.azure.com).
+3. Egy böngészőben jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A portál keresősávjában keressen rá a módosítani kívánt **Traffic Manager-profil** nevére, majd kattintson a Traffic Manager-profilra a megjelenített eredmények között.
 3. Kattintson az **Áttekintés** > **Letiltás** lehetőségre.
 4. Erősítse meg a Traffic Manager-profil letiltását.
 
 ### <a name="to-enable-a-profile"></a>A profilok engedélyezése
 
-1. Egy böngészőben jelentkezzen be az [Azure Portalra](http://portal.azure.com).
+1. Egy böngészőben jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A portál keresősávjában keressen rá a módosítani kívánt **Traffic Manager-profil** nevére, majd kattintson a Traffic Manager-profilra a megjelenített eredmények között.
 3. Kattintson az **Áttekintés** > **Engedélyezés** lehetőségre.
 1. Ha egyéni tartománynevet használ, hozzon létre egy CNAME-erőforrásrekordot az internetes DNS-kiszolgálón, amely a Traffic Manager-profil tartománynevére mutat.

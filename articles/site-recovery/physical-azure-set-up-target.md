@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 43276aad26bc06400c1bc4b5feaace0d5646c213
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 41220ccdca945610d7d8ca87af0857114e2cef85
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849232"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57866292"
 ---
 # <a name="prepare-target-vmware-to-azure"></a>Cél (VMware – Azure) előkészítése
 
@@ -21,17 +21,17 @@ Ez a cikk ismerteti, hogyan készíti elő az Azure-környezet (x 64) fizikai ki
 ## <a name="prerequisites"></a>Előfeltételek
 
 A cikk feltételezi, hogy:
-- Létrehozott egy Recovery Services-tárolót a fizikai kiszolgálók védelme érdekében. Létrehozhat egy Recovery Services-tárolót, a [az Azure portal](http://portal.azure.com "az Azure portal").
+- Létrehozott egy Recovery Services-tárolót a fizikai kiszolgálók védelme érdekében. Létrehozhat egy Recovery Services-tárolót, a [az Azure portal](https://portal.azure.com "az Azure portal").
 - Rendelkezik [a helyszíni környezet beállítása](physical-azure-disaster-recovery.md) a fizikai kiszolgálók replikálása az Azure-bA.
 
 ## <a name="prepare-target"></a>Cél előkészítése
 
-Befejezése után a **lépés 1:Select védelmi cél** és **2. lépés: a forrás előkészítése**, ekkor megnyílik **3. lépés: cél**
+Befejezése után a **lépés 1:Select védelmi cél** és **2. lépés: a forrás előkészítése**, ekkor megnyílik **3. lépés: Cél**
 
 ![Cél előkészítése](./media/physical-azure-set-up-target/prepare-target-physical-to-azure.png)
 
-1. **Előfizetés:** a legördülő menüből válassza ki az előfizetést, amelyhez szeretné replikálni a fizikai kiszolgálók.
-2. **Üzemi modell:** (klasszikus vagy Resource Manager) telepítési modell kiválasztása
+1. **Előfizetés:** A legördülő menüből válassza ki az előfizetést, amelyhez szeretné replikálni a fizikai kiszolgálók.
+2. **Üzemi modell:** Válassza ki a központi telepítési modellt (klasszikus vagy Resource Manager)
 
 A kiválasztott üzemi modell alapján a rendszer érvényesítési futtató gondoskodjon arról, hogy legalább egy kompatibilis tárfiók és a célként megadott előfizetés replikálásához és a feladatátvételi virtuális hálózat a fizikai kiszolgálók.
 

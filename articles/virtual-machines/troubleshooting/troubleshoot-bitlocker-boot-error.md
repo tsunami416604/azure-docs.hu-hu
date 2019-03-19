@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/31/2018
 ms.author: genli
-ms.openlocfilehash: 1cfba4bf824d381e1b40ea0228ee902a1d6b5a9a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a7bd812d3aadfd3c358c8d0aeccf0e92ed474a05
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763214"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993209"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>A BitLocker rendszerindítási hibák-beli virtuális gépen
 
@@ -32,7 +32,7 @@ ms.locfileid: "57763214"
 
 - Csatlakoztassa az USB-illesztőprogramot, amely rendelkezik a BitLocker-kulcs
 
-- Már zárolva van! Adja meg a helyreállítási kulcsot az induláshoz újra (billentyűzetkiosztás módosítása: Egyesült Államok) nem a megfelelő bejelentkezési adatok a megadott túl sokszor, így a számítógép adatainak védelme zárolták. folyamatban van. A helyreállítási kulcs lekéréséhez lépjen a http://windows.microsoft.com/recoverykeyfaq egy másik számítógépen vagy mobileszközön. Abban az esetben szüksége lesz rá, a kulcs azonosítója XXXXXXX. Vagy visszaállíthatja a Számítógépet.
+- Már zárolva van! Adja meg a helyreállítási kulcsot az induláshoz újra (billentyűzetkiosztás módosítása: Egyesült Államok) nem a megfelelő bejelentkezési adatok a megadott túl sokszor, így a számítógép adatainak védelme zárolták. folyamatban van. A helyreállítási kulcs lekéréséhez lépjen a https://windows.microsoft.com/recoverykeyfaq egy másik számítógépen vagy mobileszközön. Abban az esetben szüksége lesz rá, a kulcs azonosítója XXXXXXX. Vagy visszaállíthatja a Számítógépet.
 
 - Adja meg a jelszót, a meghajtó [] tekintse meg a jelszó beírása a Beszúrás billentyű lenyomásával zárolásának feloldásához.
 - Adja meg a helyreállítási kulcs betöltése a helyreállítási kulcsot az USB-eszközt.

@@ -10,12 +10,12 @@ ms.reviewer: klam
 ms.assetid: 3ef16fab-d18a-48ba-8e56-3f3e0a1bcb92
 ms.topic: conceptual
 ms.date: 08/18/2016
-ms.openlocfilehash: a58b247732125574a067deff1d5b03859cd036fc
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 15770246f52e87b8fba4a9ec01e1583d194d002b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782292"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57887051"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Az Azure Scheduler alapfogalmai, terminológiája és entitásai
 
@@ -77,7 +77,7 @@ A feladat olyan, a rendszer által biztosított adatokat is tartalmaz, mint a k�
 
 | Elem | Szükséges | Leírás | 
 |---------|----------|-------------| 
-| [**startTime**](#start-time) | Nem | A feladat kezdési ideje időzóna-eltolódással [ISO 8601 formátumban](http://en.wikipedia.org/wiki/ISO_8601) | 
+| [**startTime**](#start-time) | Nem | A feladat kezdési ideje időzóna-eltolódással [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601) | 
 | [**action**](#action) | Igen | Az elsődleges művelet részletei, amelyek **errorAction** objektumot tartalmazhatnak | 
 | [**errorAction**](#error-action) | Nem | Az elsődleges művelet meghiúsulása esetén futó másodlagos művelet részletei |
 | [**recurrence**](#recurrence) | Nem | Egy ismétlődő feladat részletei, például a gyakoriság és az időköz | 
@@ -137,7 +137,7 @@ A feladat olyan, a rendszer által biztosított adatokat is tartalmaz, mint a k�
 
 ## <a name="starttime"></a>startTime
 
-A **startTime** objektumban megadhatja a kezdési időpontot és az időzóna-eltolódást [ISO 8601 formátumban](http://en.wikipedia.org/wiki/ISO_8601).
+A **startTime** objektumban megadhatja a kezdési időpontot és az időzóna-eltolódást [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601).
 
 <a name="action"></a>
 

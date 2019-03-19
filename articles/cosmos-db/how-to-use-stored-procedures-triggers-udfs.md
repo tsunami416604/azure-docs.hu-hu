@@ -6,20 +6,20 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 12/08/2018
 ms.author: mjbrown
-ms.openlocfilehash: 374bc040cf43f89899bbe1fc5b0835cff187ec9b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: d3ab0f78cc59c94a95aac6c067ad185476502f6c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037599"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57998614"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Regisztrálása és használata tárolt eljárások, eseményindítók és felhasználó által definiált függvények az Azure Cosmos DB-ben
 
-Az Azure Cosmos DB SQL API támogatja a regisztráció és a tárolt eljárások, eseményindítók és felhasználó által definiált függvények (UDF) javascriptben írt meghívása. Használhatja az SQL API [.NET](sql-api-sdk-dotnet.md), [.NET Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](sql-api-sdk-node.md), [Node.js](sql-api-sdk-node.md) vagy [Python](sql-api-sdk-python.md) SDK-k regisztrálása és a tárolt eljárások hívása. Miután beállított egy vagy több tárolt eljárások, eseményindítók és felhasználó által definiált függvények, betölteni, és megtekintheti azokat a [az Azure portal](https://portal.azure.com/) az adatkezelő használatával.
+Az Azure Cosmos DB SQL API támogatja a regisztráció és a tárolt eljárások, eseményindítók és felhasználó által definiált függvények (UDF) javascriptben írt meghívása. Használhatja az SQL API [.NET](sql-api-sdk-dotnet.md), [.NET Core](sql-api-sdk-dotnet-core.md), [Java](sql-api-sdk-java.md), [JavaScript](sql-api-sdk-node.md), [Node.js](sql-api-sdk-node.md), vagy [Python](sql-api-sdk-python.md) SDK-k regisztrálása és a tárolt eljárások hívása. Miután beállított egy vagy több tárolt eljárások, eseményindítók és felhasználó által definiált függvények, betölteni, és megtekintheti azokat a [az Azure portal](https://portal.azure.com/) az adatkezelő használatával.
 
 ## <a id="stored-procedures"></a>Tárolt eljárások futtatása
 
-Tárolt eljárások a JavaScript használatával írt. Azok, frissíteni, olvassa el a lekérdezést, törölhetnek és hozhatnak létre egy Azure Cosmos-tárolóban lévő elemek. További tájékoztatást lásd az Azure Cosmos DB, a tárolt eljárások írásával [írásával tárolt eljárások az Azure Cosmos DB](how-to-write-stored-procedures-triggers-udfs.md#stored-procedures) cikk.
+Tárolt eljárások a JavaScript használatával írt. Azok, frissíteni, olvassa el a lekérdezést, törölhetnek és hozhatnak létre egy Azure Cosmos-tárolóban lévő elemek. Az Azure Cosmos DB-ben tárolt eljárások írásával további információkért lásd: [írásával tárolt eljárások az Azure Cosmos DB](how-to-write-stored-procedures-triggers-udfs.md#stored-procedures) cikk.
 
 Az alábbi példák bemutatják, hogyan regisztrálja, és a egy tárolt eljárást hívja az Azure Cosmos DB SDK-k használatával. Tekintse meg [hozzon létre egy dokumentumot](how-to-write-stored-procedures-triggers-udfs.md#create-an-item) tárolt eljárás végrehajtásához a forrás mentésekor `spCreateToDoItem.js`.
 
@@ -209,7 +209,7 @@ RequestOptions requestOptions = new RequestOptions { PreTriggerInclude = new Lis
 await client.CreateDocumentAsync(containerUri, newItem, requestOptions);
 ```
 
-### <a name="pre-triggers---java-sdk"></a>Üzem előtti triggerek – Java SDK
+### <a name="pre-triggers---java-sdk"></a>Pre-triggers - Java SDK
 
 A következő kód bemutatja, hogyan regisztrálhat egy üzem előtti eseményindítót, a Java SDK használatával:
 
@@ -330,7 +330,7 @@ Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myConta
 await client.createDocumentAsync(containerUri, newItem, options);
 ```
 
-### <a name="post-triggers---java-sdk"></a>Utáni és eseményindítók – Java SDK
+### <a name="post-triggers---java-sdk"></a>Post-triggers - Java SDK
 
 A következő kód bemutatja, hogyan regisztrálhat egy utáni eseményindítót, a Java SDK használatával:
 
@@ -361,7 +361,7 @@ requestOptions.setPostTriggerInclude(Arrays.asList("trgPostUpdateMetadata"));
 asyncClient.createDocument(containerLink, item, requestOptions, false).toBlocking();
 ```
 
-### <a name="post-triggers---javascript-sdk"></a>Utáni és eseményindítók – JavaScript SDK
+### <a name="post-triggers---javascript-sdk"></a>Post-triggers - JavaScript SDK
 
 A következő kód bemutatja, hogyan regisztrálhat a JavaScript SDK-val utáni eseményindító:
 
@@ -389,7 +389,7 @@ const triggerId = "trgPostUpdateMetadata";
 await container.items.create(item, {postTriggerInclude: [triggerId]});
 ```
 
-### <a name="post-triggers---python-sdk"></a>Utáni és eseményindítók – Python SDK-t
+### <a name="post-triggers---python-sdk"></a>Post-triggers - Python SDK
 
 A következő kód bemutatja, hogyan kell regisztrálni egy utáni eseményindítót, a Python SDK-val:
 
@@ -423,7 +423,7 @@ Az alábbi példák bemutatják, hogyan regisztrálja a felhasználó által def
 A következő kód bemutatja, hogyan regisztrálhat egy felhasználó által definiált függvény a .NET SDK használatával:
 
 ```csharp
-string udfId = "udfTax";
+string udfId = "Tax";
 var udfTax = new UserDefinedFunction
 {
     Id = udfId,
@@ -439,7 +439,7 @@ A következő kód bemutatja, hogyan hívhat meg egy felhasználó által defini
 
 ```csharp
 Uri containerUri = UriFactory.CreateDocumentCollectionUri("myDatabase", "myContainer");
-var results = client.CreateDocumentQuery<dynamic>(containerUri, "SELECT * FROM Incomes t WHERE udf.tax(t.income) > 20000"));
+var results = client.CreateDocumentQuery<dynamic>(containerUri, "SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000"));
 
 foreach (var result in results)
 {
@@ -453,7 +453,7 @@ A következő kód bemutatja, hogyan regisztrálhat egy felhasználó által def
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
-String udfId = "udfTax";
+String udfId = "Tax";
 UserDefinedFunction udf = new UserDefinedFunction();
 udf.setId(udfId);
 udf.setBody(new String(Files.readAllBytes(Paths.get(String.format("..\\js\\%s.js", udfId)))));
@@ -465,7 +465,7 @@ A következő kód bemutatja, hogyan hívhat meg egy felhasználó által defini
 
 ```java
 String containerLink = String.format("/dbs/%s/colls/%s", "myDatabase", "myContainer");
-Observable<FeedResponse<Document>> queryObservable = client.queryDocuments(containerLink, "SELECT * FROM Incomes t WHERE udf.tax(t.income) > 20000", new FeedOptions());
+Observable<FeedResponse<Document>> queryObservable = client.queryDocuments(containerLink, "SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000", new FeedOptions());
 final CountDownLatch completionLatch = new CountDownLatch(1);
 queryObservable.subscribe(
         queryResultPage -> {
@@ -491,7 +491,7 @@ A következő kód bemutatja, hogyan regisztrálhat egy felhasználó által def
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
-const udfId = "udfTax";
+const udfId = "Tax";
 await container.userDefinedFunctions.create({
     id: udfId,
     body: require(`../js/${udfId}`)
@@ -501,7 +501,7 @@ A következő kód bemutatja, hogyan hívhat meg egy felhasználó által defini
 
 ```javascript
 const container = client.database("myDatabase").container("myContainer");
-const sql = "SELECT * FROM Incomes t WHERE udf.tax(t.income) > 20000";
+const sql = "SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000";
 const {result} = await container.items.query(sql).toArray();
 ```
 
@@ -514,7 +514,7 @@ with open('../js/udfTax.js') as file:
     file_contents = file.read()
 container_link = 'dbs/myDatabase/colls/myContainer'
 udf_definition = {
-            'id': 'trgPostUpdateMetadata',
+            'id': 'Tax',
             'serverScript': file_contents,
         }
 udf = client.CreateUserDefinedFunction(container_link, udf_definition)
@@ -524,7 +524,7 @@ A következő kód bemutatja, hogyan hívhat meg egy felhasználó által defini
 
 ```python
 container_link = 'dbs/myDatabase/colls/myContainer'
-results = list(client.QueryItems(container_link, 'SELECT * FROM Incomes t WHERE udf.tax(t.income) > 20000'))
+results = list(client.QueryItems(container_link, 'SELECT * FROM Incomes t WHERE udf.Tax(t.income) > 20000'))
 ```
 
 ## <a name="next-steps"></a>További lépések

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: 83f4ebd9c3f5ad05173b045b3fa15804ddc88df6
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 08d0a446fc29bf58da2583cbee8576831914ac09
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157564"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57862715"
 ---
 # <a name="power-bi-workspace-collections-faq"></a>A Power BI munkaterületi gyűjtemények – gyakori kérdések
 
@@ -77,7 +77,7 @@ A Power BI-Munkaterületcsoportok modell esetében nem szeretné, hogy az ügyfe
 A fejlesztők/alkalmazottak dolgozik, vagy az alkalmazása létrehozásához rendelkeznie kell egy AAD-felhasználói fiókot, amelyek az Azure-előfizetés és a munkaterület-csoportok kezelése az Azure Portalon keresztül. Jelentéseket importálhat, módosíthatja a kapcsolati karakterláncok és lekérése a fejlesztők programozott API-kat inkább beágyazási URL-címek hogyan alkalmazási jogkivonatok hitelesítéshez, és ezért nincs szükség egy aad-ben.
 
 ## <a name="where-can-i-learn-more"></a>Hol találhatok további információkat?
-Keresse fel a [Power BI-Munkaterületcsoportok dokumentációs oldalon](get-started.md). Akkor is naprakész információk a szolgáltatásról funkcionáló a [Power BI-blog](https://powerbi.microsoft.com/blog/) vagy a Power BI fejlesztői központ következő dev.powerbi.com. Kérdéseket is feltehet [Stack Overflow](http://stackoverflow.com/questions/tagged/powerbi).
+Keresse fel a [Power BI-Munkaterületcsoportok dokumentációs oldalon](get-started.md). Akkor is naprakész információk a szolgáltatásról funkcionáló a [Power BI-blog](https://powerbi.microsoft.com/blog/) vagy a Power BI fejlesztői központ következő dev.powerbi.com. Kérdéseket is feltehet [Stack Overflow](https://stackoverflow.com/questions/tagged/powerbi).
 
 ## <a name="how-do-i-get-started"></a>Hogyan kezdhetek hozzá?
 Ismerkedhet meg most ingyenesen! Ha rendelkezik Azure-előfizetéssel, mostantól telepíthet a Power BI-Munkaterületcsoportok az Azure Portalról közvetlenül. Is létrehozhat a [ingyenes Azure-fiók](https://azure.microsoft.com/free/). Miután a Power BI munkaterületi gyűjtemények szolgáltatás már kiépített, egyszerűen közvetlenül a Power BI REST API-k használata, vagy használja a fejlesztő SDK elérhető [GitHub](https://go.microsoft.com/fwlink/?LinkID=746472). Minták biztosítják, hogy miként lehet hasznosítani a fejlesztő SDK-t a.
@@ -89,5 +89,5 @@ Ismerkedhet meg most ingyenesen! Ha rendelkezik Azure-előfizetéssel, mostantó
 [minta – első lépések](get-started-sample.md)   
 [JavaScript beágyazási minta](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 
-További kérdései vannak? [Tegye próbára a Power BI közösségét](http://community.powerbi.com/)
+További kérdései vannak? [Tegye próbára a Power BI közösségét](https://community.powerbi.com/)
 

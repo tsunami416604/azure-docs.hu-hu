@@ -6,14 +6,14 @@ author: vhorne
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 1/11/2019
+ms.date: 3/13/2019
 ms.author: victorh
-ms.openlocfilehash: 5552ca80059b4aa7ef96caf7984b4c15ec177d38
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 96bd9e679e1766e87a0bb807204df744bb3cca95
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57316591"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897707"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Az Application Gateway gyakori kérdések
 
@@ -75,7 +75,7 @@ Nyilvános IP-cím-végpontként használatakor ezt az információt találja a 
 
 ### <a name="what-is-keep-alive-timeout-and-tcp-idle-timeout-setting-on-application-gateway"></a>Mi az időköz és TCP üresjárati időkorlát beállítás Application Gateway-en?
 
-A v1 Termékváltozatot életben tartási időtúllépési érték, v2 szintű Termékváltozatot 120 is lehet életben tartási időtúllépés miatt megszakadt a 75 is lehet TCP üresjárati időkorlát az előtér virtuális IP-CÍMEK az Application Gateway alapértelmezés 4 perc.
+A v1 Termékváltozatot életben tartási időtúllépési érték, 120 is lehet v2 szintű Termékváltozatot Keep-Alive időkorlát 75 is lehet TCP üresjárati időkorlát az előtér virtuális IP-CÍMEK az Application Gateway a 4 perces alapértelmezett.
 
 ### <a name="does-the-ip-or-dns-name-change-over-the-lifetime-of-the-application-gateway"></a>Az IP- vagy DNS-nevét az Application Gateway életciklusa alatt változik?
 
@@ -93,6 +93,8 @@ Csak egy nyilvános IP-cím egy application gateway esetében támogatott.
 
 Az Application Gateway egy példány egy magánhálózati IP-címet, valamint egy másik magánhálózati IP-címet használ fel, ha magánhálózati előtérbeli IP-konfiguráció van konfigurálva. Emellett az Azure lefoglalja az első négy és utolsó IP-cím mindegyik olyan alhálózatban, belső használatra.
 Ha például egy application gateway beállítása három példányban, és nincs magánhálózati előtérbeli IP-címet, majd egy/29 méretű vagy nagyobb alhálózat szükséges. Ebben az esetben az application gateway három IP-címet használ. Ha rendelkezik három példányban és a egy IP-címet a magánhálózati előtérbeli IP-konfigurációhoz, majd egy/28-as méretet, vagy nagyobb alhálózat van szükség, mert négy IP-címeket kell megadni.
+
+Ajánlott eljárásként használja legalább egy/28-as alhálózat méretét. Ezáltal 11 felhasználható cím. Ha az alkalmazások terhelésének több mint 10 példányra van szüksége, fontolja meg egy/27-eset vagy/26-os alhálózat méretét.
 
 ### <a name="q-can-i-deploy-more-than-one-application-gateway-resource-to-a-single-subnet"></a>K. Üzembe helyezhetem egynél több Application Gateway-erőforrás egyetlen alhálózatra?
 
@@ -356,7 +358,7 @@ Diagnosztikai naplók folyamat ügyfelek storage-fiókba, és ügyfelek állíth
 
 ### <a name="how-do-i-get-audit-logs-for-application-gateway"></a>Hogyan kaphatok auditnaplók az Application Gateway?
 
-Auditnaplók az Application Gateway számára érhetők el. Kattintson a portál **tevékenységnapló** menü paneljén látható az application gateway a napló eléréséhez. 
+Auditnaplók az Application Gateway számára érhetők el. Kattintson a portál **tevékenységnapló** az application gateway a napló eléréséhez menü panel. 
 
 ### <a name="can-i-set-alerts-with-application-gateway"></a>Beállíthatom a riasztásokat az Application Gateway?
 

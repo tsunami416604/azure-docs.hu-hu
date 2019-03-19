@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61739d381d5c668b5f1a9467b10398d173601b33
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cf496e448cbc11b9e986ca3b58c956c4cd18a34e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178532"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58113452"
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>A probléma az Azure AD katalógusából származó alkalmazásba történő felhasználókiépítés konfigurálása
 
@@ -62,13 +62,13 @@ Ahhoz, hogy az üzembe helyezés működik az Azure AD használatához szükség
 
 A felhasználó megjelenik, mint "kihagyva" a naplók, esetén nagyon fontos, hogy a kiterjesztett részleteket a naplóüzenet okának megállapításához. Az alábbiakban gyakori okok és a megoldásuk:
 
--   **Egy hatókörszűrőt konfigurálták** **, amely a kiszűri a felhasználó egy attribútumérték alapján**. A szűrők felmerülő további információkért lásd: <https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters>.
+- **Egy hatókörszűrőt konfigurálták** **, amely a kiszűri a felhasználó egy attribútumérték alapján**. A szűrők felmerülő további információkért lásd: <https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters>.
 
--   **A felhasználó nem "nem hatékony jogosult".** Ha az adott hibaüzenet jelenik meg, mivel probléma adódott az Azure AD-ben tárolt felhasználó-hozzárendelés bejegyzést. Hárítsa el a problémát, megszüntetése a felhasználó (vagy csoport) az alkalmazásból, és újból rendelje hozzá újra. A hozzárendelés további információkért lásd: <https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal>.
+- **A felhasználó nem "nem hatékony jogosult".** Ha az adott hibaüzenet jelenik meg, mivel probléma adódott az Azure AD-ben tárolt felhasználó-hozzárendelés bejegyzést. Hárítsa el a problémát, megszüntetése a felhasználó (vagy csoport) az alkalmazásból, és újból rendelje hozzá újra. A hozzárendelés további információkért lásd: <https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal>.
 
--   **Egy kötelező attribútum hiányzik vagy nem ki van töltve, egy felhasználó.** Egy lényeges tudnivaló, hogy fontolja meg a kiépítési beállítása során kell, hogy tekintse át, és az attribútumleképezések és a munkafolyamatok, amelyek meghatározzák, mely felhasználó (vagy csoport) tulajdonságai a folyamat az Azure ad-ből az alkalmazás konfigurálása. Ez magában foglalja a "egyező tulajdonság" beállítás, amely egyedileg azonosíthatja és felhasználók/csoportok a két rendszer közötti megfelelő használható. Ez fontos folyamattal kapcsolatban további információkért lásd: <https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings>.
+- **Egy kötelező attribútum hiányzik vagy nem ki van töltve, egy felhasználó.** Egy lényeges tudnivaló, hogy fontolja meg a kiépítési beállítása során kell, hogy tekintse át, és az attribútumleképezések és a munkafolyamatok, amelyek meghatározzák, mely felhasználó (vagy csoport) tulajdonságai a folyamat az Azure ad-ből az alkalmazás konfigurálása. Ez magában foglalja a "egyező tulajdonság" beállítás, amely egyedileg azonosíthatja és felhasználók/csoportok a két rendszer közötti megfelelő használható. Ez fontos folyamattal kapcsolatban további információkért lásd: <https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings>.
 
-   * **Attribútum-leképezéshez csoportok:** Ha támogatja az egyes alkalmazások kiépítése a csoport nevét és a csoport részletei mellett a tagok. Engedélyezheti vagy letilthatja ezt a funkciót engedélyezésével vagy letiltásával a **leképezési** csoport objektumainak látható a **kiépítési** fülre. Csoportok kiépítése engedélyezve van, ha mindenképpen tekintse át a annak érdekében, hogy a megfelelő mezőben használatos a "egyező ID" attribútum-leképezéshez. Ez lehet a megjelenítési név vagy e-mail-alias), mivel a csoportot és annak tagjait nem építhető ki, ha a megfelelő tulajdonság értéke üres vagy nem feltöltött csoport az Azure ad-ben.
+  * **Attribútum-leképezéshez csoportok:** Ha támogatja az egyes alkalmazások kiépítése a csoport nevét és a csoport részletei mellett a tagok. Engedélyezheti vagy letilthatja ezt a funkciót engedélyezésével vagy letiltásával a **leképezési** csoport objektumainak látható a **kiépítési** fülre. Csoportok kiépítése engedélyezve van, ha mindenképpen tekintse át a annak érdekében, hogy a megfelelő mezőben használatos a "egyező ID" attribútum-leképezéshez. Ez lehet a megjelenítési név vagy e-mail-alias), mivel a csoportot és annak tagjait nem építhető ki, ha a megfelelő tulajdonság értéke üres vagy nem feltöltött csoport az Azure ad-ben.
 
 ## <a name="next-steps"></a>További lépések
 [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](user-provisioning.md)

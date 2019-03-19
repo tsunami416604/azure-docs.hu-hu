@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/02/2018
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: b4d8214608e8193172da078fc352c66145253ada
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: c5ae3523da6da3286a65328cf302c5b211987d6d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878965"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57895235"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>CI-/CD-folyamat beállítása az Azure Cosmos DB Emulator buildelési feladatával az Azure DevOpsban
 
@@ -31,9 +31,9 @@ A buildelési feladatot használat előtt telepítenie kell az Azure DevOps-szer
 Ezután válassza ki a szervezetet, amelyben telepíteni kívánja a bővítményt. 
 
 > [!NOTE]
-> Egy bővítmény Azure DevOps-szervezetben való telepítéséhez fióktulajdonosnak vagy a projektgyűjtemény adminisztrátorának kell lennie. Ha nem rendelkezik engedélyekkel, de a fiók tagja, ehelyett kérheti a bővítményt. [Részletek](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts#install-request-assign-and-access-extensions)
+> Az Azure DevOps-szervezet egy bővítmény telepítéséhez egy fiók tulajdonosa vagy a projekt helygyűjtemény rendszergazdája kell lennie. Ha nem rendelkezik engedélyekkel, de a fiók tagja, ehelyett kérheti a bővítményt. [Részletek](https://docs.microsoft.com/azure/devops/marketplace/faq-extensions?view=vsts#install-request-assign-and-access-extensions)
 
-![Azon Azure DevOps-szervezet kiválasztása, amelyben telepíteni kívánja a bővítményt](./media/tutorial-setup-ci-cd/addExtension_2.png)
+![Válassza ki az Azure DevOps szervezet-bővítmény telepítése](./media/tutorial-setup-ci-cd/addExtension_2.png)
 
 ## <a name="create-a-build-definition"></a>Builddefiníció létrehozása
 

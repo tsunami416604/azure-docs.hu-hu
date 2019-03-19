@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 486044656b1c288b1658d10a162e1f9fa071172a
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: eac9f80e4b57c725de3bc05f55e09d49fb8e2ee5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817116"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004612"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -48,7 +48,7 @@ ms.locfileid: "56817116"
 
 [deployment-guide]:deployment-guide.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 
@@ -403,26 +403,31 @@ Kattintson a jobb gombbal a **saoglobal2** SOFS fürtcsoportot, és válassza ki
 _**6. ábra:** "Fájlmegosztás hozzáadása" varázsló elindítása_
 
 <br>
+
 ![7. ábra: "Az SMB-megosztás – gyors kijelölése"][sap-ha-guide-figure-8018]
 
 _**7. ábra:** Válassza ki a "SMB-megosztás – gyors"_
 
 <br>
+
 ![8. ábra: Válassza ki a "sapglobalhost2", és adja meg az elérési útját a kötet2][sap-ha-guide-figure-8019]
 
 _**8. ábra:** Válassza ki a "sapglobalhost2", és adja meg az elérési útját a kötet2_
 
 <br>
+
 ![9. ábra: Állítsa be a "sapmnt" fájlmegosztás neve][sap-ha-guide-figure-8020]
 
 _**9. ábra:** Állítsa be a "sapmnt" fájlmegosztás neve_
 
 <br>
+
 ![10. ábra: Tiltsa le az összes beállítás][sap-ha-guide-figure-8021]
 
 _**10. ábra:** Tiltsa le az összes beállítás_
 
 <br>
+
 Rendelje hozzá *teljes hozzáférés* megoszthatja a fájlok és sapmnt:
 * A **SAP_\<SID > _GlobalAdmin** tartományi felhasználói csoport
 * Számítógép-objektum ASCS/SCS fürtcsomópontok **ascs-1$** és **ascs-2$**
@@ -432,16 +437,19 @@ Rendelje hozzá *teljes hozzáférés* megoszthatja a fájlok és sapmnt:
 _**11. ábra:** "" Teljes körű "control" hozzárendelése a felhasználói csoport és számítógépes fiókok_
 
 <br>
+
 ![12. ábra: Válassza a "Create"][sap-ha-guide-figure-8023]
 
 _**12. ábra:** Válassza a "Create"_
 
 <br>
+
 ![13. ábra: A második sapmnt sapglobal2 gazdagépen kötve, és kötet2 jön létre][sap-ha-guide-figure-8024]
 
 _**13. ábra:** A második sapmnt sapglobal2 gazdagépen kötve, és kötet2 jön létre_
 
 <br>
+
 ## <a name="install-sap-netweaver-multi-sid"></a>Telepítse az SAP NetWeaver több SID-vel
 
 ### <a name="install-sap-sid2-ascsscs-and-ers-instances"></a>Telepítse az SAP \<SID2 > ASCS/SCS és SSZON példányok

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: agaiha
-ms.openlocfilehash: 434971e707cdca62c76ede9f295e7af20aa4cc3f
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: af5d4e21bb5b41df4bcb88dc2f9eb7901fcaa597
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313534"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57997962"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux diagnosztikai bővítmény használatával figyelheti a metrikák és naplók
 
@@ -386,7 +386,7 @@ Ez az opcionális szakasz azt szabályozza, tetszőleges végrehajtásának [OMI
 
 Elem | Érték
 ------- | -----
-névtér | (nem kötelező) Az OMI a következő névtér belül, amely a lekérdezés végrehajtja. Ha nincs megadva, az alapértelmezett értéke "gyökér/scx", által megvalósított a [a System Center többplatformos szolgáltatók](http://scx.codeplex.com/wikipage?title=xplatproviders&referringTitle=Documentation).
+névtér | (nem kötelező) Az OMI a következő névtér belül, amely a lekérdezés végrehajtja. Ha nincs megadva, az alapértelmezett értéke "gyökér/scx", által megvalósított a [a System Center többplatformos szolgáltatók](https://scx.codeplex.com/wikipage?title=xplatproviders&referringTitle=Documentation).
 lekérdezés | Az OMI a következő lekérdezés végrehajtására.
 tábla | (nem kötelező) Az Azure storage-táblát, a kijelölt tárfiókban (lásd: [védett beállításainál](#protected-settings)).
 frequency | (nem kötelező) A lekérdezés végrehajtásának között eltelt másodpercek száma. Alapértelmezett értéke 300 (5 perc); minimális érték 15 másodperc.

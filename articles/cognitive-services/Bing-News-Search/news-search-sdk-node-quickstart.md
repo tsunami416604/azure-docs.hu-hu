@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 01/10/2019
 ms.author: v-gedod
 ms.custom: seodec2018
-ms.openlocfilehash: 71d42f1f7627b7f223f92c264cfb23b829a229dd
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 1930ef761b4be9d8085fd6e1785e78146c6b5547
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444752"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58109163"
 ---
 # <a name="quickstart-perform-a-news-search-with-the-bing-news-search-sdk-for-nodejs"></a>Gyors útmutató: Hajtsa végre a hírkeresési Bing News Search SDK-val a node.js-ben
 
@@ -52,7 +52,7 @@ Beállítása egy konzolalkalmazást, a Bing News Search SDK használatával:
 
 ## <a name="send-a-search-query"></a>Keresési lekérdezés küldése
 
-3. Az ügyfél használja a keresést a lekérdezés kifejezés ebben az esetben "Es téli Olimpián" segítségével:
+1. Az ügyfél használja a keresést a lekérdezés kifejezés ebben az esetben "Es téli Olimpián" segítségével:
     
     ```javascript
     client.newsOperations.search(search_term).then((result) => {
@@ -72,4 +72,4 @@ A kód `result.value`-elemeket jelenít meg a konzolon bármilyen szövegelemzé
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-[Egyoldalas webalkalmazás létrehozása](tutorial-bing-news-search-single-page-app.md)
+> [Egyoldalas webalkalmazás létrehozása](tutorial-bing-news-search-single-page-app.md)

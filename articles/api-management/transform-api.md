@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: fc22babe6bc052ff2e746185d6ccec059aad7331
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: e50c5d942bdbafc60bf0e2b8c74b008ac12b3bc6
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56992030"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084980"
 ---
 # <a name="transform-and-protect-your-api"></a>Az API-k átalakítása és védelme
 
@@ -72,23 +72,23 @@ Az eredeti válasznak így kell kinéznie:
 
 ![Kimenő szabályzat beállítása](./media/transform-api/04-ProtectYourAPI-01-SetPolicy-Outbound.png)
 
-1.  Válassza a **Demo Conference API** lehetőséget.
-2.  A képernyő felső részén válassza a **Tervezés** lapot.
-3.  Válassza a **Minden művelet** lehetőséget.
-4.  A **Kimenő feldolgozás** szakaszban kattintson a **</>** ikonra.
-5.  Vigye a kurzort a **&lt;kimenő&gt;** elemen belülre.
-6.  A jobb oldali ablak **Átalakítási szabályzatok** területén kattintson kétszer a **+ HTTP-fejléc beállítása** elemre (két szabályzatkódrészlet beszúrásához).
+1. Válassza a **Demo Conference API** lehetőséget.
+2. A képernyő felső részén válassza a **Tervezés** lapot.
+3. Válassza a **Minden művelet** lehetőséget.
+4. A **Kimenő feldolgozás** szakaszban kattintson a **</>** ikonra.
+5. Vigye a kurzort a **&lt;kimenő&gt;** elemen belülre.
+6. A jobb oldali ablak **Átalakítási szabályzatok** területén kattintson kétszer a **+ HTTP-fejléc beállítása** elemre (két szabályzatkódrészlet beszúrásához).
 
-    ![Házirendek](./media/transform-api/transform-api.png)
+   ![Házirendek](./media/transform-api/transform-api.png)
 
-7.  Módosítsa **<outbound>** kódját a következő módon:
+7. Módosítsa **<outbound>** kódját a következő módon:
 
-        <set-header name="X-Powered-By" exists-action="delete" />
-        <set-header name="X-AspNet-Version" exists-action="delete" />
+       <set-header name="X-Powered-By" exists-action="delete" />
+       <set-header name="X-AspNet-Version" exists-action="delete" />
 
-    ![Házirendek](./media/transform-api/set-policy.png)
+   ![Házirendek](./media/transform-api/set-policy.png)
 
-8.  Kattintson a **Mentés** gombra.
+8. Kattintson a **Mentés** gombra.
 
 ## <a name="replace-original-urls-in-the-body-of-the-api-response-with-apim-gateway-urls"></a>Az API-válasz szövegtörzsében szereplő eredeti URL-címek lecserélése az APIM-átjáró URL-címeire
 

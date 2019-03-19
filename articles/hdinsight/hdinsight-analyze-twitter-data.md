@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: b8ab4acd24a53267711fde4408bb9fa8f52c35f3
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 653043c756fbb36c037524309073b82dc20cf62a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635578"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58079860"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-in-hdinsight"></a>Az Apache Hive a HDInsight használatával Twitter-adatok elemzése
 Közösségi webhelyek egyik fő környezetbarát big-data bevezetésére. Nyilvános API-kat, mint például a Twitter által biztosított okai a hasznos adatok elemzéséhez és megértéséhez népszerű trendeket.
@@ -53,10 +53,10 @@ Az alábbi táblázat a jelen oktatóanyagban használt fájlokat listázza:
 
 | Fájlok | Leírás |
 | --- | --- |
-| /tutorials/Twitter/Data/tweets.txt |A forrásadatok a Hive-feladatokban. |
-| /tutorials/Twitter/output |A Hive-feladat kimeneti mappába. Az alapértelmezett Hive feladat kimeneti fájl neve **000000_0**. |
-| tutorials/Twitter/Twitter.hql |A HiveQL-parancsfájlt. |
-| /tutorials/Twitter/JobStatus |A Hadoop-feladat állapotát. |
+| /tutorials/twitter/data/tweets.txt |A forrásadatok a Hive-feladatokban. |
+| /tutorials/twitter/output |A Hive-feladat kimeneti mappába. Az alapértelmezett Hive feladat kimeneti fájl neve **000000_0**. |
+| tutorials/twitter/twitter.hql |A HiveQL-parancsfájlt. |
+| /tutorials/twitter/jobstatus |A Hadoop-feladat állapotát. |
 
 ## <a name="get-twitter-feed"></a>Twitter-hírcsatorna lekérése
 Ebben az oktatóanyagban használhatja a [Twitter-streamelési API-k][twitter-streaming-api]. Streamelési API-t fogja használni a meghatározott Twitter [állapotok/szűrés][twitter-statuses-filter].
@@ -453,7 +453,7 @@ Befejezte az összes előkészítési munkát. Ezzel a Hive-szkript meghívása 
 ### <a name="submit-a-hive-job"></a>Egy Hive-feladat elküldése
 A következő Windows PowerShell-parancsfájlt használja a Hive-szkript futtatásához. Állítsa be az első változót kell.
 
-> [!NOTE]  
+> [!NOTE]
 > Használatához a Twitter-üzeneteket és a [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) parancsfájlt, az utolsó két szakaszban feltöltött, $hqlScriptFile állítsa "/ tutorials/twitter/twitter.hql". Szeretne használni, amelyek meg lettek feltöltve egy nyilvános blob azokat, $hqlScriptFile beállítása "wasb://twittertrend@hditutorialdata.blob.core.windows.net/twitter.hql".
 
 ```powershell

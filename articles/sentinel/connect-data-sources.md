@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: c2d9e83b28ac18f08ca67e9c4f675b1fe9d5d17c
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: a1c74f0ed9fd9b9abccfb7c2762cadf948c8fce0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431784"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57884795"
 ---
 # <a name="connect-data-sources"></a>Adatforrások csatlakoztatása
 
@@ -70,7 +70,7 @@ A következő adatgyűjtési módszerek az Azure-Sentinel támogatja:
     
 ## Az ügynök csatlakozási lehetőségek<a name="agent-options"></a>
 
-A külső berendezés csatlakozni az Azure-Sentinel, az ügynököt telepíteni kell egy dedikált gépen (VM vagy a helyszínen) a készüléket és a Sentinel-Azure közötti kommunikáció támogatásához. Az ügynök deploly automatikusan vagy manuálisan is. Automatikus központi telepítési csak akkor használható, ha dedikált számítógépe egy új virtuális Gépet hoz létre az Azure-ban. 
+A külső berendezés csatlakozni az Azure-Sentinel, az ügynököt telepíteni kell egy dedikált gépen (VM vagy a helyszínen) a készüléket és a Sentinel-Azure közötti kommunikáció támogatásához. Az ügynök automatikusan vagy manuálisan telepítheti. Automatikus központi telepítési csak akkor használható, ha dedikált számítógépe egy új virtuális Gépet hoz létre az Azure-ban. 
 
 
 ![Az Azure-ban CEF](./media/connect-cef/cef-syslog-azure.png)

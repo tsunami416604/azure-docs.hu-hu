@@ -8,26 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: d7ef018b376b96f967a065857839761fc5822239
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: cb0e079eee78f865d472b55b162fb65b5eadaf44
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876299"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57900488"
 ---
 # <a name="about-the-speech-devices-sdk-preview"></a>A beszéd-eszközökről SDK-t (előzetes verzió)
 
-A [beszédszolgáltatás](overview.md) együttműködik számos különböző hang forrásai és eszközei. Most a következő szintre való megfelelést kiváltó hardver- és beszédfelismerés alkalmazásait is igénybe vehet. A beszédfelismerés Devices SDK-val az régiójával célirányosan fejlesztett, mikrofon tömb szoftverfejlesztői készletekkel pretuned könyvtárból.
+A [beszédszolgáltatások](overview.md) számos hang forrásai és eszközei működnek. Most a következő szintre való megfelelést kiváltó hardver- és beszédfelismerés alkalmazásait is igénybe vehet. A beszédfelismerés Devices SDK-val az régiójával célirányosan fejlesztett, mikrofon tömb szoftverfejlesztői készletekkel pretuned könyvtárból.
 
 A beszédfelismerés eszközök SDK segítségével:
 * Gyorsan tesztelheti az új hangalapú forgatókönyvek.
-* A felhő alapú beszédszolgáltatás könnyen integrálható az eszköz.
+* A felhőalapú beszédszolgáltatások könnyen integrálható az eszközt.
 * Hozzon létre egy kivételes felhasználói élmény az ügyfelek számára.
 
-A beszédfelismerési eszköz SDK-t használ a [beszéd SDK](speech-sdk.md). A beszédfelismerés SDK-t használ a hang, a speciális hang feldolgozási algoritmus az eszköz mikrofonját tömbből, která je zpracována küldése a [beszédszolgáltatás](overview.md). Többcsatornás hang pontosabb távolságban mező biztosításához használt [beszédfelismerés](speech-to-text.md) zaj tiltási, echo törlését, beamforming és dereverberation keresztül.
+A beszédfelismerési eszköz SDK-t használ a [beszéd SDK](speech-sdk.md). A beszédfelismerés SDK-t használ a hang, a speciális hang feldolgozási algoritmus az eszköz mikrofonját tömbből, která je zpracována küldése a [beszédszolgáltatások](overview.md). Többcsatornás hang pontosabb távolságban mező biztosításához használt [beszédfelismerés](speech-to-text.md) zaj tiltási, echo törlését, beamforming és dereverberation keresztül.
 
 A beszédfelismerés eszközök SDK-t hozhat létre környezeti rendelkező eszközök a saját is használhatja [testre szabott ébresztési word](speech-devices-sdk-create-kws.md)– így a köteg kezdeményező felhasználói interakció a márka egyedi.
 
@@ -39,7 +39,7 @@ Jelenleg ezek teljes, végpontok közötti rendszerek referenciatervek érhetők
 
 |||
 |-|-|
-|[![ROOBO embléma](media/speech-devices-sdk/roobo-logo.png)](http://ddk.roobo.com/)|ROOBO kész mesterséges intelligencia (AI) rendszer megoldásokat kínál electric háztartási, autók, robotok, a játékok és más iparágak. Referenciatervek ROOBO a jelentősen csökkentheti a fejlesztési-piacra keresztül a Microsoft Speech szolgáltatással. [Látogasson el a ROOBO](http://ddk.roobo.com/).|
+|[![ROOBO embléma](media/speech-devices-sdk/roobo-logo.png)](http://ddk.roobo.com/)|ROOBO kész mesterséges intelligencia (AI) rendszer megoldásokat kínál electric háztartási, autók, robotok, a játékok és más iparágak. Referenciatervek ROOBO a jelentősen csökkentheti a fejlesztési-piacra keresztül az Azure Speech szolgáltatásokkal való integrációt. [Látogasson el a ROOBO](http://ddk.roobo.com/).|
 
 ## <a name="next-steps"></a>További lépések
 

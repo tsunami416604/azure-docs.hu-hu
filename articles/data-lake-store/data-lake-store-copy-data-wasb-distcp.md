@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 9740de34fe7cf7d06af1803cc6d77d7e89bbb73f
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 5c3f393278d3d51dd3a53cd19335cd242c15c6d8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391521"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58168707"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen1"></a>Adatok másolása az Azure Storage-blobokat és az Azure Data Lake Storage Gen1 között a Distcp használatával
 > [!div class="op_single_selector"]
@@ -33,9 +33,6 @@ Ha egy HDInsight-fürtöt az Azure Data Lake Storage Gen1 hozzáféréssel rende
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * **Az Azure Data Lake Storage Gen1 fiók**. Létrehozásával kapcsolatos utasításokért lásd: [Ismerkedés az Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
 * **Az Azure HDInsight-fürt** hozzáférést egy Data Lake Storage Gen1 fiókot. Lásd: [egy HDInsight-fürt létrehozása a Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md). Ellenőrizze, hogy engedélyezi a távoli asztal a fürtöt.
-
-## <a name="do-you-learn-fast-with-videos"></a>Gyorsan tanul videók segítségével?
-[Ebben a videóban](https://mix.office.com/watch/1liuojvdx6sie) hogyan másolhat adatokat az Azure Storage-Blobok és a Data Lake Storage Gen1 között a DistCp használata.
 
 ## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>A Distcp használata a HDInsight Linux-fürt
 
@@ -79,7 +76,7 @@ Mivel a DistCp a legalacsonyabb granularitási egyetlen fájlt, beállítás egy
 
 Az alábbiakban olvashat némi útmutatást ezzel kapcsolatban.
 
-* **1. lépés: Határozható meg a teljes YARN** – az első lépés az, hogy határozza meg a YARN a fürt, amelyen futtatja a DistCp feladat számára elérhető memória. Ez az információ a fürthöz társított Ambari portálon érhető el. Keresse meg a YARN és a Configs lapon, a YARN memória megtekintéséhez. A teljes YARN memória lekéréséhez szorozza meg a YARN-csomópontonkénti memória a csomópontok számát a fürt rendelkezik.
+* **1. lépés: Határozza meg a YARN teljes memória** – az első lépés az, hogy határozza meg a YARN a fürt, amelyen futtatja a DistCp feladat számára elérhető memória. Ez az információ a fürthöz társított Ambari portálon érhető el. Keresse meg a YARN és a Configs lapon, a YARN memória megtekintéséhez. A teljes YARN memória lekéréséhez szorozza meg a YARN-csomópontonkénti memória a csomópontok számát a fürt rendelkezik.
 
 * **2. lépés: Leképező számának kiszámítása** -értékét **m** egyenlő teljes YARN memória, a YARN-tároló mérete elosztva a hányadosa. A YARN tároló mérete információkat, valamint az Ambari-portálon érhető el. Keresse meg a YARN és a konfigurációkat lapon. A YARN tárolóméret ebben az ablakban jelenik meg. Ahhoz, hogy eljusson leképező száma a egyenlőségi (**m**) van
 

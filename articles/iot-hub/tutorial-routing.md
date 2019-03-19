@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/11/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: df98be4dbb65088951968a16198b41d3d6d0bb67
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 87d0339de117330bf6d586cd653b0d4d16a8cbca
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410213"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087703"
 ---
 # <a name="tutorial-configure-message-routing-with-iot-hub"></a>Oktatóanyag: Az IoT Hub üzenet-útválasztás konfigurálása
 
@@ -144,7 +144,7 @@ echo "Service Bus namespace = " $sbNameSpace
 az servicebus namespace create --resource-group $resourceGroup \
     --name $sbNameSpace \
     --location $location
-    
+
 # The Service Bus queue name must be globally unique, so add a random number to the end.
 sbQueueName=ContosoSBQueue$RANDOM
 echo "Service Bus queue name = " $sbQueueName
@@ -301,10 +301,9 @@ Az adatok alapértelmezés szerint a blob storage a Avro formátumban íródik.
    > 
    > Ha például az alapértelmezett blobfájlnév-formátumot használja egy ContosoTestHub nevű központ esetében, és a dátum/idő érték 2018. október 30., 10:56, akkor a blob neve a következő lesz: `ContosoTestHub/0/2018/10/30/10/56`.
    > 
-   > A blobok alapértelmezés szerint az Avro formátumban készültek. Kiválaszthatja a fájlok írása JSON formátumban. A szolgáltatás JSON formátumban kódolása előzetes verzióként érhető minden IoT Hub érhető el, kivéve az USA keleti RÉGIÓJA, USA nyugati Régiójában és Nyugat-európai régióban. Lásd: [útmutatás az Útválasztás a blob storage-bA] (iot-hub-devguide-messages-d2c.md#azure-blob-storage).
+   > A blobok alapértelmezés szerint az Avro formátumban készültek. Kiválaszthatja a fájlok írása JSON formátumban. A szolgáltatás JSON formátumban kódolása előzetes verzióként érhető minden IoT Hub érhető el, kivéve az USA keleti RÉGIÓJA, USA nyugati Régiójában és Nyugat-európai régióban. Lásd: [útmutatás a blob Storage-útválasztás](iot-hub-devguide-messages-d2c.md#azure-blob-storage).
    > 
    > Útválasztás blob storage-ba, amikor ajánlott felvétel a blobok és majd léptetés át őket, anélkül, hogy a partíció jósolható olvasható az összes tárolót. A partíciótartomány sikerült potenciálisan módosítása során egy [a Microsoft által kezdeményezett feladatátvételi](iot-hub-ha-dr.md#microsoft-initiated-failover) vagy IoT hubot [manuális feladatátvétel](iot-hub-ha-dr.md#manual-failover-preview). Megtudhatja, hogyan kell felsorolni a blobok lásd [útválasztási a blob storage](iot-hub-devguide-messages-d2c.md#azure-blob-storage)
-   >
 
 8. A tárolási végpont létrehozásához és az útvonalhoz való hozzáadásához kattintson a **Létrehozás** lehetőségre. Ekkor visszakerül az **Útvonal hozzáadása** panelre.
 
@@ -313,15 +312,15 @@ Az adatok alapértelmezés szerint a blob storage a Avro formátumban íródik.
    **Név**: Adjon meg egy nevet az útválasztási lekérdezés. Ez az oktatóanyag a **StorageRoute** nevet használja.
 
    **Végpont**: Ez látható az imént beállított végpont. 
-   
+
    **Az adatforrás**: Válassza ki **eszköz Telemetriai üzeneteket** a legördülő listából.
 
    **Engedélyezze az útvonal**: Győződjön meg arról, hogy ez engedélyezve van.
-   
+
    **Útválasztási lekérdezés**: Adja meg `level="storage"` a lekérdezési karakterlánc formájában. 
 
    ![A tárfiók útválasztási lekérdezésének létrehozását bemutató képernyőkép.](./media/tutorial-routing/message-routing-finish-route-storage-ep.png)  
-   
+
    Kattintson a **Save** (Mentés) gombra. A befejezés után a rendszer visszalép az Üzenetirányítás panelre, ahol láthatja a tároló új útválasztási lekérdezését. Zárja be az Útvonalak panelt, ezzel visszatér az Erőforráscsoport oldalra.
 
 ### <a name="routing-to-a-service-bus-queue"></a>Irányítás Service Bus-üzenetsorra 
@@ -339,14 +338,14 @@ Most állítsa be az útválasztást a Service Bus-üzenetsorhoz. Lépjen az Üz
 4. Töltse ki a mezőket:
 
    **Végpont neve**: Adja meg a végpont nevét. Ez az oktatóanyag a **CriticalQueue** nevet használja.
-   
+
    **Service Bus-Namespace**: Kattintson a megjelenítéséhez a legördülő listából; Ez a mező Válassza ki a service bus-névtér az előkészítő lépésben állítsa be. Ez az oktatóanyag a **ContosoSBNamespace** névteret használja.
 
    **Service Bus-üzenetsorba**: Kattintson a megjelenítéséhez a legördülő listából; Ez a mező a legördülő listából válassza ki a Service Bus-üzenetsorba. Ez az oktatóanyag a **contososbqueue** üzenetsort használja.
 
 5. A Service Bus-üzenetsor végpontjának hozzáadásához kattintson a **Létrehozás** lehetőségre. Ekkor visszakerül az **Útvonal hozzáadása** panelre. 
 
-6.  Töltse ki az útválasztási lekérdezés hiányzó adatait. Ez a lekérdezés megszabja az üzenetek az imént végpontként hozzáadott Service Bus-üzenetsorhoz való irányításának feltételeit. Töltse ki a képernyőn látható mezőket. 
+6. Töltse ki az útválasztási lekérdezés hiányzó adatait. Ez a lekérdezés megszabja az üzenetek az imént végpontként hozzáadott Service Bus-üzenetsorhoz való irányításának feltételeit. Töltse ki a képernyőn látható mezőket. 
 
    **Név**: Adjon meg egy nevet az útválasztási lekérdezés. Ez az oktatóanyag az **SBQueueRoute** nevet használja. 
 
@@ -403,7 +402,7 @@ A Service Bus-üzenetsor a kritikusként megjelölt üzenetek fogadására haszn
    ![A Service Bus-üzenetsor kapcsolatának beállítását bemutató képernyőkép.](./media/tutorial-routing/logic-app-define-connection.png)
 
    Kattintson a Service Bus-névtérre. Ez az oktatóanyag a **ContosoSBNamespace** névteret használja. A névtér kiválasztásakor a Portal lekérdezi a Service Bus-névteret a kulcsok lekéréséhez. Válassza a **RootManageSharedAccessKey** lehetőséget, majd kattintson a **Létrehozás** elemre. 
-   
+
    ![A kapcsolat beállításának befejezését bemutató képernyőkép.](./media/tutorial-routing/logic-app-finish-connection.png)
 
 6. A következő képernyőn a legördülő listából válassza ki az üzenetsor nevét (ebben az oktatóanyagban ez **contososbqueue**). A többi mező esetében használhatja az alapértelmezett értékeket. 
@@ -444,9 +443,9 @@ A Power BI-vizualizáció adatainak megtekintéséhez először állítson be eg
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Bemenet hozzáadása a Stream Analytics-feladathoz
 
-4. A **Feladattopológia** területen kattintson a **Bemenetek** elemre.
+1. A **Feladattopológia** területen kattintson a **Bemenetek** elemre.
 
-5. A **Bemenetek** panelen kattintson a **Streambemenet hozzáadása** elemre, és válassza az IoT Hubot. A megjelenő képernyőn töltse ki az alábbi mezőket:
+1. A **Bemenetek** panelen kattintson a **Streambemenet hozzáadása** elemre, és válassza az IoT Hubot. A megjelenő képernyőn töltse ki az alábbi mezőket:
 
    **Bemeneti áljel**: Ez az oktatóanyag a **contosoinputs** bemeneti áljelet használja.
 
@@ -459,12 +458,12 @@ A Power BI-vizualizáció adatainak megtekintéséhez először állítson be eg
    **Megosztott elérési házirend neve**: Válassza ki **iothubowner**. A Portal automatikusan kitölti a megosztott elérési házirend kulcsát.
 
    **Fogyasztói csoport**: Válassza ki a korábban létrehozott fogyasztói csoportot. Ez az oktatóanyag a **contosoconsumers** csoportot használja.
-   
+
    A többi mezőnél fogadja el az alapértelmezett beállításokat. 
 
    ![A Stream Analytics-feladat bemeneteinek beállítását bemutató képernyőkép.](./media/tutorial-routing/stream-analytics-job-inputs.png)
 
-6. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Save** (Mentés) gombra.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Kimenet hozzáadása a Stream Analytics-feladathoz
 
@@ -633,4 +632,4 @@ Ez az oktatóanyag bemutatta, hogyan használhatja az üzenetek útvonalválaszt
 A következő oktatóanyag az IoT-eszközök állapotának kezelését mutatja be. 
 
 > [!div class="nextstepaction"]
-[Állítsa be, és használja a metrikák és diagnosztikai IoT hub-](tutorial-use-metrics-and-diags.md)
+> [Állítsa be, és használja a metrikák és diagnosztikai IoT hub-](tutorial-use-metrics-and-diags.md)

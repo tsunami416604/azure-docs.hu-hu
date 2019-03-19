@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/06/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e56dc54c2c296ee17b04070ac8ee68d2180b7046
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7b458632ddb6e23ab1ddf642752aa0cbfc11f1ce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56183445"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57839068"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-picturepark"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Picturepark
 
@@ -224,7 +224,7 @@ Ahhoz, hogy az Azure AD-felhasználók Picturepark szolgáltatásba való bejele
    
     ![Felhasználó létrehozása](./media/picturepark-tutorial/ic795069.png "felhasználó létrehozása")
    
-    a. Az a **E-mail cím** szövegmezőbe írja be a **e-mail-cím** felhasználó **BrittaSimon@contoso.com**.  
+    a. Az a **E-mail cím** szövegmezőbe írja be a **e-mail-cím** felhasználó **BrittaSimon\@contoso.com**.  
    
     b. Az a **jelszó** és **jelszó megerősítése** szövegmezőből, írja be a **jelszó** BrittaSimon az. 
    

@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 11/15/2018
+ms.date: 3/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 2dd9fc5691c646a72936039b6bcc5949d227c6b5
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 288a6e1b1d88fcef6fbd5554ba811acc1dab776e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57545319"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57994252"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon
 
@@ -168,7 +168,7 @@ A **Workload-SN** alhálózatot konfigurálja úgy, hogy a kimenő alapértelmez
 9. Kattintson a **Frissítés** elemre, majd a **Firewall-route** útválasztási táblázatra.
 10. Kattintson az **Alhálózatok** > **Társítás** parancsra.
 11. Kattintson a **Virtuális hálózat** > **Test-FW-VN** elemre.
-12. Az **Alhálózat** mezőben válassza a **Workload-SN** elemet. Ügyeljen arra, hogy csak a **Workload-SN** alhálózatot válassza ki ehhez az útvonalhoz, máskülönben a tűzfal nem fog megfelelően működni.
+12. Az **Alhálózat** mezőben válassza a **Workload-SN** elemet. Jelölje ki, hogy csak a **munkaterhelés-SN** ezt az útvonalat az alhálózathoz, ellenkező esetben a tűzfal nem fog megfelelően működni.
 
 13. Kattintson az **OK** gombra.
 14. Kattintson az **Útvonalak** > **Hozzáadás** parancsra.
@@ -218,7 +218,7 @@ Ez az a hálózatszabály, amely lehetővé teszi a kimenő hozzáférést két 
 
 ### <a name="change-the-primary-and-secondary-dns-address-for-the-srv-work-network-interface"></a>Módosítsa az **Srv-Work** hálózati adapter elsődleges és másodlagos DNS-címét.
 
-Ebben az oktatóanyagban tesztelés céljából konfiguráljuk az elsődleges és másodlagos DNS-címeket. Ez nem az Azure Firewall általános követelménye.
+Ebben az oktatóanyagban tesztelés céljából konfiguráljuk az elsődleges és másodlagos DNS-címeket. Ez nem egy általános Azure tűzfallal kapcsolatos követelmény.
 
 1. Az Azure Portalon nyissa meg a **Test-FW-RG** erőforráscsoportot.
 2. Kattintson az **Srv-Work** virtuális gép hálózati adapterére.
@@ -244,7 +244,7 @@ Most tesztelje a tűzfalat, hogy meggyőződjön a megfelelő működéséről.
 
    A tűzfal blokkolja a hozzáférést.
 
-Ezzel ellenőrizte, hogy a tűzfalszabályok működnek-e:
+Így most már ellenőrizte, hogy a tűzfalszabályok működnek:
 
 - Az egyetlen engedélyezett FQDN-t el tudja érni, de másokat nem.
 - Fel tudja oldani a DNS-neveket a konfigurált külső DNS-kiszolgálóval.

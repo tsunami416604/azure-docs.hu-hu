@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: a0a6c2d6171b4b383c97cc80d8a64efef9d193f5
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 7aeee4f24f6c7133ad978bc0c6c7fb8853bc4c35
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823127"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086139"
 ---
 # <a name="create-and-share-an-azure-machine-learning-studio-workspace"></a>Létrehozhat és megoszthat egy Azure Machine Learning Studio-munkaterület
 
@@ -36,10 +36,10 @@ Azure Machine Learning Studio használatához kell rendelkeznie egy Machine Lear
 
 4. Adja meg a munkaterület-információk:
 
-    - A *munkaterületnév* lehet, legfeljebb 260 karakternél, nem záró szóközzel. A neve nem tartalmazhatja a következő karaktereket: `< > * % & : \ ? + /`
-    - A *webszolgáltatási csomag* , válasszon (vagy hozzon létre), valamint a társított *tarifacsomag* , válassza ki, akkor használatos, ha telepít webszolgáltatások erről a munkaterületről.
+   - A *munkaterületnév* lehet, legfeljebb 260 karakternél, nem záró szóközzel. A neve nem tartalmazhatja a következő karaktereket: `< > * % & : \ ? + /`
+   - A *webszolgáltatási csomag* , válasszon (vagy hozzon létre), valamint a társított *tarifacsomag* , válassza ki, akkor használatos, ha telepít webszolgáltatások erről a munkaterületről.
 
-    ![Hozzon létre egy új Studio-munkaterülethez](./media/create-workspace/create-new-workspace.png)
+     ![Hozzon létre egy új Studio-munkaterülethez](./media/create-workspace/create-new-workspace.png)
 
 5. Kattintson a **Create** (Létrehozás) gombra.
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 2330e395244f33653af415b5db896fdc2aa2024d
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 6e5895392db1d75a985674bf2f878a84bc8dd926
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852983"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107035"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Elosztott nyomkövetést és korrelációs révén a Service Bus-üzenetkezelés
 
@@ -213,7 +213,7 @@ Bizonyos esetekben célszerű jelentkezzen az események, teljesítmény terhel�
 
 1. `IsEnabled(<OperationName>, string entity, null)` Ha például `IsEnabled("Microsoft.Azure.ServiceBus.Send", "MyQueue1")`. Vegye figyelembe, hogy ne legyen "Indítás" vagy "Stop" végén. Használatával kiszűrhetők bizonyos műveletek, vagy várólisták. Ha visszahívást függvény `false`, események, a művelet nem kap
 
-  * A 'Process' és "ProcessSession" műveletek is kapnak `IsEnabled(<OperationName>, string entity, Activity activity)` visszahívás. Ezzel használatával szűrhetők az események alapján `activity.Id` vagy címkék tulajdonságait.
+   * A 'Process' és "ProcessSession" műveletek is kapnak `IsEnabled(<OperationName>, string entity, Activity activity)` visszahívás. Ezzel használatával szűrhetők az események alapján `activity.Id` vagy címkék tulajdonságait.
   
 2. `IsEnabled(<OperationName>.Start)` Ha például `IsEnabled("Microsoft.Azure.ServiceBus.Send.Start")`. Ellenőrzi, hogy "Kezdő" eseményt kell fired. Az eredmény csak a "Kezdő" eseményt van hatással, de további kialakítási nem függnek tőle.
 

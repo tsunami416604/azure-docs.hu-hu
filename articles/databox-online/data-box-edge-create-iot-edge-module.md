@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 01/31/2019
 ms.author: alkohli
-ms.openlocfilehash: d0b171f05bb2243da83509348b099bebcb44ebc7
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 81407a298ccfe1b9884fc5d5b815ac8c18ffee6a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508708"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094677"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge-preview"></a>A Data Box Edge (előzetes verzió) fájlok áthelyezése egy C# IoT Edge-modul fejlesztése
 
@@ -71,14 +71,14 @@ Az Azure-beli tároló-beállításjegyzék egy privát Docker-tárolójegyzék 
 2. Válassza ki **erőforrás létrehozása > tároló > tároló-beállításjegyzék**. Kattintson a **Create** (Létrehozás) gombra.
 3. Adja meg:
 
-    1. Egy egyedi **beállításjegyzék neve** 5 – 50 alfanumerikus karaktert tartalmazó Azure-ban.
-    2. Válasszon egy **előfizetés**.
-    3. Új létrehozása vagy meglévő tárfiók kiválasztásához **erőforráscsoport**.
-    4. Válasszon ki egy **helyet**. Azt javasoljuk, hogy ezen a helyen kell egyeznie a Data Box Edge erőforrás társított.
-    5. A **Rendszergazdai felhasználó** beállítást váltsa **Engedélyezés** értékre.
-    6. Állítsa a Termékváltozat **alapszintű**.
+   1. Egy egyedi **beállításjegyzék neve** 5 – 50 alfanumerikus karaktert tartalmazó Azure-ban.
+   2. Válasszon egy **előfizetés**.
+   3. Új létrehozása vagy meglévő tárfiók kiválasztásához **erőforráscsoport**.
+   4. Válasszon ki egy **helyet**. Azt javasoljuk, hogy ezen a helyen kell egyeznie a Data Box Edge erőforrás társított.
+   5. A **Rendszergazdai felhasználó** beállítást váltsa **Engedélyezés** értékre.
+   6. Állítsa a Termékváltozat **alapszintű**.
 
-    ![Tárolóregisztrációs adatbázis létrehozása](./media/data-box-edge-create-iot-edge-module/create-container-registry-1.png)
+      ![Tárolóregisztrációs adatbázis létrehozása](./media/data-box-edge-create-iot-edge-module/create-container-registry-1.png)
  
 4. Kattintson a **Létrehozás** gombra.
 5. Miután létrejött a tárolóregisztrációs adatbázis, keresse meg, és válassza a **Hozzáférési kulcsok** elemet.

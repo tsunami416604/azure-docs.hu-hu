@@ -9,12 +9,12 @@ ms.date: 01/25/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 29c6dc0f7e71508e7b4ecb4e0f1d5c849df7a68c
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: ec8cbddda4137656a53fd4968c451cd413959274
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904846"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110783"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Egyéni tartalom megjelenítéséhez használja az Azure-irányítópultok egy markdown-csempe
 
@@ -24,17 +24,17 @@ Markdown csempe az Azure-irányítópultok megjelenítése egyéni, a statikus t
 
 1. Válassza ki **irányítópult** az Azure portal oldalsávon. Bármilyen egyéni irányítópultok, irányítópult-nézet az létrehozott, ha használatával a listából válassza ki az irányítópultot, az egyéni markdown-csempe meg kell jelennie. A Szerkesztés ikonra nyissa meg a **Csempetárral**.
 
-  ![Képernyőkép megjelenítő irányítópult szerkesztő nézete](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
+   ![Képernyőkép megjelenítő irányítópult szerkesztő nézete](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
 
 2. Az a **Csempetárral**, keresse meg a csempe nevű **Markdown** kattintson **Hozzáadás**. A csempe jelenik meg az irányítópultot és a **szerkesztése Markdown** panel nyílik meg.
 
 1. Szerkessze a **cím**, **alcím**, és **tartalom** mezőket, testreszabása a csempe. Az itt látható példában a markdown-csempe megjelenítése egyéni információk az ügyfélszolgálatnak módosítva lett.
 
-  ![Markdown csempe Szerkesztés nézetben ábrázoló képernyőfelvétel](./media/azure-portal-markdown-tile/azure-portal-edit-markdown-tile.png)
+   ![Markdown csempe Szerkesztés nézetben ábrázoló képernyőfelvétel](./media/azure-portal-markdown-tile/azure-portal-edit-markdown-tile.png)
 
 4. Válassza ki **kész** elvetése érdekében az **szerkesztése Markdown** ablaktáblán. A tartalom megjelenik a Markdown-csempe, amely majd a jobb alsó sarkában fogantyúját méretezhető.
 
-  ![Bemutató egyéni markdown-csempe képernyőképe](./media/azure-portal-markdown-tile/azure-portal-custom-markdown-tile.png)
+   ![Bemutató egyéni markdown-csempe képernyőképe](./media/azure-portal-markdown-tile/azure-portal-custom-markdown-tile.png)
 
 ## <a name="markdown-content-capabilities-and-limitations"></a>Markdown-tartalom képességei és korlátozásai
 

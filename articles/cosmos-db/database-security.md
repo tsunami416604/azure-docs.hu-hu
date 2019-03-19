@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: rimman
-ms.openlocfilehash: 3d05da5f62a076dc168bef029cd0babc3946ee6b
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: d37f373e98835846c2d29130781706c400086c0e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243144"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077241"
 ---
 # <a name="security-in-azure-cosmos-db---overview"></a>Az Azure Cosmos DB – biztonsági áttekintés
 
@@ -57,7 +57,7 @@ Vizsgáljuk meg a fenti lista vissza - hány biztonsági követelményekről az 
 Tájékozódjon részletesebben mindegyikhez.
 
 |Biztonsági követelmény|Az Azure Cosmos DB biztonsági módszer|
-|---|---|---|
+|---|---|
 |Hálózati biztonság|Az IP-tűzfalak használata esetén az első adatbázis biztonságossá tétele védelmi réteget. Az Azure Cosmos DB támogatja az IP-alapú hozzáférés-vezérlést a tűzfaltámogatás bejövő vezérelt házirend. Az IP-alapú hozzáférés-vezérlést a hagyományos adatbázisrendszerek által használt tűzfalszabályok hasonló, de azok ki vannak bontva, hogy az Azure Cosmos DB-adatbázisfiók gépeken vagy felhőszolgáltatásában, jóváhagyott csak érhető el. <br><br>Az Azure Cosmos DB lehetővé teszi, hogy egy adott IP-cím (168.61.48.0), egy IP-címtartomány (168.61.48.0/8) és az IP-címek és tartományok kombinációi. <br><br>Azure Cosmos DB engedélyezési listán szereplő gépekről származó összes kérelem blokkolja. Jóváhagyott gépek és felhőszolgáltatások majd érkező kéréseket kell végeznie a hitelesítési folyamat az erőforrásokhoz való hozzáférés-vezérlés kell megadni.<br><br>További információ: [Azure Cosmos DB tűzfaltámogatásáról](firewall-support.md).|
 |Engedélyezés|Az Azure Cosmos DB üzenetet kivonat-alapú hitelesítési kód (HMAC) használ a hitelesítéshez használ. <br><br>A titkos kulcsát minden kérés kivonatolt, és a későbbi base-64 kódolású kivonat küldi el az egyes Azure Cosmos DB-hívások. A kérelem érvényesítéséhez, az Azure Cosmos DB szolgáltatást használja a megfelelő titkos kulcs és a Tulajdonságok létrehozni a kivonatot, majd összehasonlítja az értéket egy, a kérelmet. Ha a két érték egyezik, a művelet sikeresen jogosult-e, és a kérés feldolgozása, ellenkező esetben van egy engedélyezési hiba, és a kérelmet elutasították.<br><br>Használhat egy [főkulcs](secure-access-to-data.md#master-keys), vagy egy [erőforrás-jogkivonat](secure-access-to-data.md#resource-tokens) például egy dokumentum egy erőforrás részletes hozzáférést.<br><br>További információ: [Azure Cosmos DB-erőforrásokhoz való hozzáférés biztonságossá tétele](secure-access-to-data.md).|
 |Felhasználók és engedélyek|A főkulcs a fiókot használja, hozhat létre a felhasználói és engedély erőforrások adatbázisonként. Egy erőforrás-jogkivonat társított engedély egy adatbázisban, és határozza meg, hogy a felhasználó rendelkezik-e az adatbázis egy alkalmazás-erőforrást (olvasási és írási, csak olvasható, vagy nincs hozzáférés) elérését. Alkalmazás-erőforrások közé tartoznak a tároló, dokumentumok, a mellékleteket, tárolt eljárások, eseményindítók és felhasználói függvények. Az erőforrás-jogkivonat-hitelesítés során majd használni a vagy megtagadja a hozzáférést az erőforráshoz.<br><br>További információ: [Azure Cosmos DB-erőforrásokhoz való hozzáférés biztonságossá tétele](secure-access-to-data.md).|

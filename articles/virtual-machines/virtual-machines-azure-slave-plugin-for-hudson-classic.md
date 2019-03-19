@@ -1,6 +1,6 @@
 ---
-title: Az Azure alárendelt beépülő modul használata Hudson folyamatos integrációt |} Microsoft Docs
-description: Ismerteti, hogyan használható az Azure alárendelt beépülő modul Hudson folyamatos integrációt.
+title: Az Azure alárendelt beépülő modul használata Hudson folyamatos integrációs |} A Microsoft Docs
+description: Az Azure alárendelt beépülő modul használata Hudson folyamatos integrációs ismerteti.
 services: virtual-machines-linux
 documentationcenter: ''
 author: rmcmurray
@@ -14,36 +14,36 @@ ms.devlang: java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-ms.openlocfilehash: c11b59f8ea432075b147a391de4b7bd3331e639e
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: ef24e356c9ac8424fc519a3b16af5d37a20e706f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2018
-ms.locfileid: "27704803"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999805"
 ---
-# <a name="how-to-use-the-azure-slave-plug-in-with-hudson-continuous-integration"></a>Az Azure alárendelt beépülő modul használata Hudson folyamatos integrációt
-Az Azure alárendelt Hudson beépülő modul lehetővé teszi, hogy hozzon létre az alárendelt csomópontok az Azure-on, amikor fut elosztott alkot.
+# <a name="how-to-use-the-azure-slave-plug-in-with-hudson-continuous-integration"></a>Az Azure alárendelt beépülő modul használata Hudson folyamatos integrációs
+Az Azure alárendelt beépülő modul Hudson lehetővé teszi, hogy amikor futó elosztott épít, helyezze üzembe az alárendelt csomópontok az Azure-ban.
 
 ## <a name="install-the-azure-slave-plug-in"></a>Az Azure alárendelt beépülő modul telepítése
-1. Hudson irányítópultján kattintson **kezelése Hudson**.
-2. Az a **kezelése Hudson** lapján kattintson a **kezelése beépülő modulok**.
+1. A Hudson irányítópultján kattintson **kezelése Hudson**.
+2. Az a **kezelése Hudson** lapon **beépülő modulok kezelése**.
 3. Kattintson a **elérhető** fülre.
-4. Kattintson a **keresési** és típus **Azure** vonatkozó beépülő modulokhoz-lista korlátozását.
+4. Kattintson a **keresési** , és írja be **Azure** korlátozására vonatkozó beépülő modulok listájáról.
    
-    Ha úgy dönt, ha az elérhető beépülő modulok listáját megtalálja az Azure alárendelt a beépülő modul a **kiszolgálófürt-felügyelet és az elosztott Build** szakasz a **mások** lapon.
+    Amennyiben tekintse át a listát az elérhető beépülő modulok, megtalálja az Azure alárendelt beépülő modul alatt a **kiszolgálófürt-felügyelet és az elosztott hozhat létre** szakasz a **mások** fülre.
 5. Jelölje be a **Azure alárendelt beépülő modul**.
 6. Kattintson az **Install** (Telepítés) gombra.
 7. Indítsa újra a Hudson.
 
-Most, hogy a beépülő modul telepítve van, a következő lépések lenne, az Azure-előfizetés profillal beállíthatja a beépülő modult, és az alárendelt csomópont a virtuális gép létrehozásához használt sablon létrehozása.
+Most, hogy a beépülő modult a következő lépések lenne, beállíthatja a beépülő modult az Azure-előfizetés profillal, és hozzon létre egy sablont, amely használható az alárendelt csomópont a virtuális gép létrehozását.
 
-## <a name="configure-the-azure-slave-plug-in-with-your-subscription-profile"></a>Az előfizetés profillal az Azure alárendelt beépülő modul konfigurálása
-Egy előfizetés profilt is hívják közzétételi beállítások, a biztonságos hitelesítő adatok, és további információkra szüksége lesz a fejlesztési környezetet az Azure-ral működni tartalmazó XML-fájl. Az Azure alárendelt beépülő modul konfigurálásához lesz szüksége:
+## <a name="configure-the-azure-slave-plug-in-with-your-subscription-profile"></a>Az előfizetés-profil használatával az Azure alárendelt beépülő modul konfigurálása
+Egy előfizetés profilt, is hivatkoznak, mivel a közzétételi beállítások, egy XML-fájlt, amely tartalmazza a biztonságos hitelesítő adatok és további információkra lesz szüksége az Azure-ral a fejlesztési környezetben működik. Az Azure alárendelt beépülő modul konfigurálásához lesz szüksége:
 
-* Az előfizetés-azonosítóval
+* Az előfizetés-azonosító
 * Az előfizetéshez tartozó felügyeleti tanúsítvány
 
-Ezek itt található: a [előfizetés profil]. Az alábbiakban az előfizetés profil egy példája.
+A találhatók a [előfizetési]. Alul látható egy példa egy előfizetés-profilt.
 
     <?xml version="1.0" encoding="utf-8"?>
 
@@ -64,56 +64,56 @@ Ezek itt található: a [előfizetés profil]. Az alábbiakban az előfizetés p
 
     </PublishData>
 
-Miután az előfizetés profil, kövesse az alábbi lépéseket az Azure alárendelt beépülő modul konfigurálása.
+Ha létrehozta a előfizetéshez profilját, kövesse az alábbi lépéseket az Azure alárendelt beépülő modul konfigurálásához.
 
-1. Hudson irányítópultján kattintson **kezelése Hudson**.
+1. A Hudson irányítópultján kattintson **kezelése Hudson**.
 2. Kattintson a **rendszer konfigurálása**.
-3. Görgessen lefelé a lapon található a **felhő** szakasz.
-4. Kattintson a **adja hozzá az új felhő > Microsoft Azure**.
+3. Görgessen lefelé az oldalon található a **felhőalapú** szakaszban.
+4. Kattintson a **új felhő hozzáadása > Microsoft Azure**.
    
-    ![új felhőalapú hozzáadása][add new cloud]
+    ![új felhő hozzáadása][add new cloud]
    
-    Ez azt mutatja majd a mezők ahol meg kell adnia az előfizetés részletei.
+    Így megjelennek a mezőket, meg kell adnia az előfizetése adataival.
    
     ![profil konfigurálása][configure profile]
-5. Az előfizetési azonosító és felügyeleti tanúsítvány a előfizetés profilból másolással illessze be őket a megfelelő mezőket.
+5. Másolja az előfizetés-azonosító és felügyeleti tanúsítvány előfizetés profilját, és illessze be őket a megfelelő mezőkbe.
    
-    Az előfizetési azonosító és felügyeleti tanúsítvány másolásakor **nem** értékek tegye idézőjelek közé tartozik.
-6. Kattintson a **ellenőrizze konfigurációs**.
-7. Ha a konfiguráció ellenőrzése sikeresen befejeződött, kattintson **mentése**.
+    Az előfizetési azonosító és felügyeleti tanúsítvány másolásakor **nem** az, hogy az értékek tegye idézőjelek közé tartozik.
+6. Kattintson a **konfiguráció ellenőrzése**.
+7. Ha a konfiguráció ellenőrzése sikeresen befejeződött, kattintson az **mentése**.
 
-## <a name="set-up-a-virtual-machine-template-for-the-azure-slave-plug-in"></a>Beállítása virtuálisgép-sablont az Azure alárendelt beépülő modul
-Virtuálisgép-sablon a paraméterek, a beépülő modul segítségével létrehozhat egy alárendelt csomópont az Azure-határozza meg. A következő lépések azt fogja kell sablon létrehozása egy Ubuntu virtuális gép számára.
+## <a name="set-up-a-virtual-machine-template-for-the-azure-slave-plug-in"></a>Beállítása egy virtuálisgép-sablont az Azure alárendelt beépülő modul
+Virtuálisgép-sablon meghatározza a paraméterek, a beépülő modul használatával hozzon létre egy alárendelt csomópont az Azure-ban. A következő lépések azt hoz létre sablont egy Ubuntu virtuális gép számára.
 
-1. Hudson irányítópultján kattintson **kezelése Hudson**.
+1. A Hudson irányítópultján kattintson **kezelése Hudson**.
 2. Kattintson a **rendszer konfigurálása**.
-3. Görgessen lefelé a lapon található a **felhő** szakasz.
-4. Belül a **felhő** területen található **Azure virtuálisgép-sablon hozzáadása** , és kattintson a **Hozzáadás** gombra.
+3. Görgessen lefelé az oldalon található a **felhőalapú** szakaszban.
+4. Belül a **felhőalapú** területén található **hozzáadása az Azure virtuálisgép-sablon** , és kattintson a **Hozzáadás** gombra.
    
     ![Virtuálisgép-sablon hozzáadása][add vm template]
-5. Adja meg a felhőalapú szolgáltatás nevét a **neve** mező. Ha a megadott név egy meglévő felhőszolgáltatáshoz hivatkozik, a virtuális gép lesz üzembe helyezve, hogy a szolgáltatásban. Ellenkező esetben az Azure létrehoz egy új.
-6. Az a **leírás** mezőben adja meg a létrehozandó sablon leírását. Ezek az információk csak dokumentációs célokat szolgál, és nem szerepel a virtuális gép kiépítése.
-7. Az a **címkék** mezőbe írja be **linux**. Ez a címke alapján határozza meg a sablon létrehozásakor és való hivatkozáshoz a sablon, egy Hudson feladat létrehozásakor ezt követően használható.
-8. Válasszon ki egy régiót, ahol a virtuális gép létrejön.
+5. Adja meg a felhőszolgáltatás neve az a **neve** mező. Ha egy meglévő felhőszolgáltatáshoz hivatkozik a megadott név, a virtuális gép jön létre a szolgáltatás. Ellenkező esetben az Azure létrehoz egy újat.
+6. Az a **leírás** mezőben adja meg a létrehozandó sablon leírását. Ezt az információt csak dokumentációs célokat szolgál, és nem szerepel a VM-kiépítéshez.
+7. Az a **címkék** írja be a következőt **linux**. Ez a címke a sablon létrehozásakor azonosítására szolgál, és ezt követően használja a sablon hivatkozni, a Hudson feladat létrehozásakor.
+8. Válassza ki a régiót, ahol a virtuális gép létrejön.
 9. Válassza ki a megfelelő Virtuálisgép-méretet.
-10. Adjon meg egy tárfiókot, ahol a virtuális gép létrejön. Győződjön meg arról, hogy a felhőszolgáltatás fogja használni és ugyanabban a régióban van. Ha a létrehozandó új tárhelyre, akkor ezt a mezőt üresen hagyhatja.
-11. Megőrzési időtartama percben, mielőtt Hudson törli az inaktív alárendelt határozza meg. Adja meg ezt az alapértelmezett értéket 60.
-12. A **használati**, válassza ki azt a megfelelő állapotot, ha ez az alárendelt csomópont fogja használni. Most, válassza ki a **használata a lehető legnagyobb mértékben csomópont**.
+10. Adjon meg egy tárfiókot, ahol a virtuális gép létrejön. Győződjön meg arról, hogy legyen-e ugyanabban a régióban, mint a felhőalapú szolgáltatást fogja használni. Ha azt szeretné, hogy a létrehozandó új tárterületre, hogy ezt a mezőt üresen hagyhatja.
+11. Megőrzési idő megadja a ennyi perc elteltével Hudson törli az inaktív alárendelt. Hagyja meg ezt az alapértelmezett érték 60.
+12. A **használati**, ha ez az alárendelt csomópont fogja használni, válassza ki a megfelelő feltétel. Most válassza ki a **kihasználhassák a lehető legnagyobb mértékben csomópont**.
     
-     Ezen a ponton az űrlap ez némileg hasonló lenne:
+     Ezen a ponton az űrlap ez némileg hasonlóan néz:
     
-     ![sablon config][template config]
-13. A **kép termékcsalád vagy azonosító** meg kell adnia, hogy milyen rendszerkép lesz telepítve a virtuális Gépet. Válassza ki a lemezkép termékcsaládok listáját, vagy adjon meg egyéni lemezképet.
+     ![sablon konfigurálása][template config]
+13. A **azonosítója vagy kép termékcsalád** meg kell adnia, hogy milyen rendszerképet a virtuális gép lesz telepítve. A lemezkép-családok listájából válassza ki, vagy adjon meg egy egyéni rendszerképet.
     
-     Ha azt szeretné kiválasztani a lemezkép-családok listája, adja meg a lemezkép csomagcsalád nevének (kis-és nagybetűket) karaktert. Például írja be **U** Ubuntu Server családok listája megjelenik. Után válassza ki a listából, a Jenkins fogja használni, hogy az operációs rendszer lemezkép legújabb verzióját, ha a virtuális gép kiépítésétől.
+     Ha azt szeretné kiválasztani a lemezkép-családok listája, adja meg a rendszerkép csomagcsalád nevének (kis-és nagybetűket) első karaktere. Például írja be **U** Ubuntu Server-családok listája megjelenik. Válassza ki a listából, ha a Jenkins a virtuális gép üzembe helyezésekor, hogy az operációs rendszer rendszerkép legújabb verzióját használja.
     
-     ![Az operációs rendszer termékcsalád listája][OS family list]
+     ![Operációsrendszer-család listát][OS family list]
     
-     Ha a használni kívánt egyéni lemezképet, adja meg az egyéni lemezkép nevét. Egyéni rendszerkép neve nem jelennek meg listáját, így kell győződjön meg arról, hogy a neve helyesen van-e megadva.    
+     Ha egy egyéni rendszerképet, amelyet használni szeretne, adja meg az egyéni rendszerkép nevét. Egyéni rendszerkép neve nem jelennek meg a listáját, így győződjön meg arról, hogy helyesen van-e meg a nevet kell.    
     
-     Ebben az oktatóanyagban írja be a következőt **U** Ubuntu lemezképek listáját és kiválasztása **Ubuntu Server 14.04 LTS**.
-14. A **indítsa el a metódus**, jelölje be **SSH**.
-15. Az alábbi parancsfájl másolja és illessze be a **Init parancsfájl** mező.
+     A jelen oktatóanyag esetében írja be a **U** Ubuntu-rendszerképek listájának megjelenítéséhez, és válassza ki a **Ubuntu Server 14.04 LTS**.
+14. A **indítási metódus**válassza **SSH**.
+15. Másolja az alábbi parancsfájlt, és illessze be a **Init parancsfájl** mező.
     
          # Install Java
     
@@ -137,22 +137,22 @@ Virtuálisgép-sablon a paraméterek, a beépülő modul segítségével létreh
     
          sudo apt-get install -y ant
     
-     A **Init parancsfájl** végrehajtja a virtuális gép létrehozása után. Ebben a példában a parancsfájl telepíti, Java, a git és az telepítsenek.
-16. Az a **felhasználónév** és **jelszó** mezők, adja meg az előnyben részesített értékeket rendel a virtuális Gépen lévő rendszergazdai fiók.
-17. Kattintson a **sablon ellenőrzése** ellenőrzése, ha a megadott paraméterek érvényesek.
+     A **Init parancsfájl** lesz végrehajtva a virtuális gép létrehozása után. Ebben a példában a parancsfájl telepíti, a Java, a git és a telepítsenek.
+16. Az a **felhasználónév** és **jelszó** mezőknél adja meg a kívánt értékeket a rendszergazdai fiók, amely létrehozza a virtuális Gépen.
+17. Kattintson a **sablon ellenőrzése** ellenőrizheti, ha a megadott paraméterek érvényesek.
 18. Kattintson a **Mentés** gombra.
 
-## <a name="create-a-hudson-job-that-runs-on-a-slave-node-on-azure"></a>Egy alárendelt csomópont az Azure-on futó Hudson feladat létrehozása
-Ebben a szakaszban egy alárendelt csomópont az Azure-on futó Hudson feladat csak létrehozunk.
+## <a name="create-a-hudson-job-that-runs-on-a-slave-node-on-azure"></a>Az Azure-ban egy alárendelt csomóponton futó Hudson feladat létrehozása
+Ebben a szakaszban Ön hoz létre egy Hudson feladat arról, hogy az egy alárendelt csomópont az Azure-ban.
 
-1. Hudson irányítópultján kattintson **új feladat**.
-2. Adja meg a létrehozandó feladat nevét.
-3. Válassza ki a feladattípus **egy ingyenes stílusú szoftver feladat létrehozása**.
+1. A Hudson irányítópultján kattintson **új feladat**.
+2. Adjon meg egy nevet a feladat létrehozásakor.
+3. Válassza ki a feladattípus **hozhat létre egy ingyenes stílusú szoftverfrissítési feladat**.
 4. Kattintson az **OK** gombra.
-5. A feladat konfigurálása lapon válassza ki a **korlátozása, amelyben ez a projekt futtathatók**.
-6. Válassza ki **csomópont és a felirat menü** válassza **linux** (azt meg ezt a címkét a virtuális gép sablon létrehozásakor az előző szakaszban).
-7. A a **Build** területen kattintson **Hozzáadás összeállítása lépés** válassza **hajtható végre a rendszerhéj**.
-8. Szerkessze a következő parancsfájl cseréje **{a githubon fióknevet}**, **{a projekt neve}**, és **{projektkönyvtárban}** a megfelelő értékeket, és illessze be a szerkesztett a szöveg területen megjelenő parancsfájl.
+5. Válassza ki a feladat konfigurációs lapja **korlátozása, amelyben a projekt futtathatók**.
+6. Válassza ki **csomópont és a felirat menü** válassza **linux** (beállítottunk ezt a címkét az előző szakaszban a virtuálisgép-sablon létrehozásakor).
+7. Az a **hozhat létre** területén kattintson **felépítési lépés hozzáadása** válassza **hajtsa végre a rendszerhéj**.
+8. Szerkessze a következő szkriptet, és cserélje le **{a github fiók neve}**, **{a projekt neve}**, és **{a projektkönyvtárba}** a megfelelő értékeket, és illessze be a szerkesztett a szöveg területen megjelenő parancsfájlt.
    
         # Clone from git repo
    
@@ -178,9 +178,9 @@ Ebben a szakaszban egy alárendelt csomópont az Azure-on futó Hudson feladat c
    
         ant
 9. Kattintson a **Mentés** gombra.
-10. A Hudson irányítópult, keresse meg az imént létrehozott feladat, majd kattintson a a **build ütemezése** ikonra.
+10. A Hudson irányítópultján található a feladathoz létrehozott, majd kattintson a a **build ütemezése** ikonra.
 
-Hudson majd hozható létre az előző szakaszban létrehozott sablon használatával az alárendelt csomópont, és futtassa a parancsfájlt a feladathoz build lépésben megadott.
+Hudson Ezután hozzon létre egy alárendelt csomópont az előző szakaszban létrehozott sablon használatával, és hajtsa végre a lépést a feladathoz megadott parancsfájlt.
 
 ## <a name="next-steps"></a>További lépések
 Az Azure Javával való használatáról további információ: [Azure Java fejlesztői központ].
@@ -188,7 +188,7 @@ Az Azure Javával való használatáról további információ: [Azure Java fejl
 <!-- URL List -->
 
 [Azure Java fejlesztői központ]: https://azure.microsoft.com/develop/java/
-[előfizetés profil]: http://go.microsoft.com/fwlink/?LinkID=396395
+[előfizetési]: https://go.microsoft.com/fwlink/?LinkID=396395
 
 <!-- IMG List -->
 

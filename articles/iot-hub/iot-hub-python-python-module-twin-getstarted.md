@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: menchi
-ms.openlocfilehash: 904598573b79640bf6547bb172702b3a1b200a49
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 1d7c8d8a02358b4eb9f52f1a9bd04b797fcd934f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531761"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110800"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-python-back-end-and-python-device"></a>Ismerkedés az IoT Hub identitás- és modul ikermodul Python-háttérrendszer és a Python-eszköz használata
 
@@ -87,7 +87,7 @@ Ebben a szakaszban hoz létre egy Python-alkalmazás a szimulált eszköz, amely
 
 1. **Szerezze be a modul kapcsolati sztringjét** – ezt most megteheti, ha bejelentkezik az [Azure Portalra][lnk-portal]. Keresse meg az IoT Hubot, és kattintson az IoT-eszközök elemre. Keresés myFirstDevice, nyissa meg azt, és tekintse meg a myFirstModule sikeresen létrejött. Másolja ki a modul kapcsolati sztringjét. A következő lépés során szükség lesz rá.
 
-  ![Az Azure Portal moduladatai][15]
+   ![Az Azure Portal moduladatai][15]
 
 1. **UpdateModuleTwinReportedProperties alkalmazás létrehozása** adja hozzá a következő `using` tetején található utasításokat a **Program.cs** fájlt:
 

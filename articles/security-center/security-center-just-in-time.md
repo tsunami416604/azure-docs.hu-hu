@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: monhaber
-ms.openlocfilehash: 9cdcfbc6074f8e343e2571063cc5dafe54072753
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 3239bd2d4c5b79f1ebd905fb3844f3e7874ff175
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314772"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110953"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Just-in-time virtuálisgép-hozzáférés kezelése
 
@@ -82,20 +82,20 @@ Válassza ki az engedélyezni kívánt virtuális gépek:
 
 1. Alatt **Just-in-time VM access**, jelölje be a **ajánlott** lapon.
 
-  ![Igény szerinti elérésének engedélyezése](./media/security-center-just-in-time/enable-just-in-time-access.png)
+   ![Igény szerinti elérésének engedélyezése](./media/security-center-just-in-time/enable-just-in-time-access.png)
 
 2. A **virtuális gép**, válassza ki az engedélyezni kívánt virtuális gépeket. Ez a virtuális gép melletti jelölőnégyzet bejelölésekor helyezi.
 3. Válassza ki **engedélyezése a virtuális gépek igény szerinti**.
-  1. Ezen a panelen jelenik meg az Azure Security Center által ajánlott alapértelmezett portokat:
-     - 22 - SSH
-     - 3389 - RDP
-     - 5985 - Rendszerfelügyeleti webszolgáltatások 
-     - 5986-os – Rendszerfelügyeleti webszolgáltatások
-  2. Egyéni portokat is konfigurálhatja. Ehhez válassza ki a **Hozzáadás**. 
-  3. A **Add port configuration**, minden egyes porthoz konfigurációjától, mindkettő alapértelmezett és egyéni, testre szabhatja a következő beállításokat:
-    - **Protokoll típusa**– ezen a porton van engedélyezve, ha a kérelem jóváhagyása a protokollt.
-    - **Engedélyezett forrás IP-címek**– az IP-címtartományokat, amelyek jogosultak ezen a porton, amikor jóváhagyják a kérését.
-    - **Kérelem maximális időtartama**– a maximális időtartam, amely során egy adott portot is megnyithatók.
+   1. Ezen a panelen jelenik meg az Azure Security Center által ajánlott alapértelmezett portokat:
+      - 22 - SSH
+      - 3389 - RDP
+      - 5985 - Rendszerfelügyeleti webszolgáltatások 
+      - 5986-os – Rendszerfelügyeleti webszolgáltatások
+   2. Egyéni portokat is konfigurálhatja. Ehhez válassza ki a **Hozzáadás**. 
+   3. A **Add port configuration**, minden egyes porthoz konfigurációjától, mindkettő alapértelmezett és egyéni, testre szabhatja a következő beállításokat:
+      - **Protokoll típusa**– ezen a porton van engedélyezve, ha a kérelem jóváhagyása a protokollt.
+      - **Engedélyezett forrás IP-címek**– az IP-címtartományokat, amelyek jogosultak ezen a porton, amikor jóváhagyják a kérését.
+      - **Kérelem maximális időtartama**– a maximális időtartam, amely során egy adott portot is megnyithatók.
 
 4. Kattintson a **Mentés** gombra.
 
@@ -174,9 +174,9 @@ Virtuális gép a tevékenységeket a naplóbeli keresés segítségével beteki
 2. A **virtuális gépek**, válasszon ki egy virtuális Gépet kapcsolatos információk megtekintéséhez kattintson a három pontra a soron belül a virtuális gép. Megjelenik egy menü.
 3. Válassza ki **tevékenységnapló** menüjében. Ez megnyitja **tevékenységnapló**.
 
-  ![Válassza ki a tevékenységnaplóban](./media/security-center-just-in-time/select-activity-log.png)
+   ![Válassza ki a tevékenységnaplóban](./media/security-center-just-in-time/select-activity-log.png)
 
-  **Tevékenységnapló** együtt idő, dátum és az előfizetés virtuális gép korábbi műveletek szűrt nézetét jeleníti meg.
+   **Tevékenységnapló** együtt idő, dátum és az előfizetés virtuális gép korábbi műveletek szűrt nézetét jeleníti meg.
 
 Letöltheti a naplózási adatok kiválasztásával **Ide kattintva letöltheti az összes elem CSV-fájlként**.
 
@@ -188,16 +188,16 @@ Módosítsa a szűrőket, és válasszon **alkalmaz** hozzon létre egy keresés
 Állítsa be ezeket teheti lehetővé a felhasználók konfigurálásához, vagy egy virtuális gép egy igény szerinti szabályzat szerkesztéséhez szükséges jogosultságokkal.
 
 Kioszthatók *műveletek* a szerepkörhöz: 
--   Az egy előfizetésen vagy erőforráscsoporton hatóköre a virtuális gép társítva:
-   - Microsoft.Security/locations/jitNetworkAccessPolicies/write
--    Az egy előfizetést vagy erőforráscsoportot, vagy a virtuális gép hatóköre:
-   - Microsoft.Compute/virtualMachines/write 
+- Az egy előfizetésen vagy erőforráscsoporton hatóköre a virtuális gép társítva:
+  - Microsoft.Security/locations/jitNetworkAccessPolicies/write
+- Az egy előfizetést vagy erőforráscsoportot, vagy a virtuális gép hatóköre:
+  - Microsoft.Compute/virtualMachines/write 
 
 Állítsa be ezeket a jogosultságokat, a felhasználót, hogy sikeresen megtörtént a virtuális gép igény szerinti hozzáférés kérése engedélyezése: Kioszthatók *műveletek* a felhasználó számára:
--   Az egy előfizetésen vagy erőforráscsoporton hatóköre a virtuális gép társítva:
-   - Microsoft.Security/locations/{the_location_of_the_VM}/jitNetworkAccessPolicies/ initiate/action
--    Az egy előfizetést vagy erőforráscsoportot, vagy a virtuális gép hatóköre:
-   - Microsoft.Compute/virtualMachines/read
+- Az egy előfizetésen vagy erőforráscsoporton hatóköre a virtuális gép társítva:
+  - Microsoft.Security/locations/{the_location_of_the_VM}/jitNetworkAccessPolicies/ initiate/action
+- Az egy előfizetést vagy erőforráscsoportot, vagy a virtuális gép hatóköre:
+  - Microsoft.Compute/virtualMachines/read
 
 
 

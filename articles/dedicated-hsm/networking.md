@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: barclayn
-ms.openlocfilehash: d872c4eff3d55ddf5d98243055e831a7a223a8ef
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: aed0eb6ba4cdaa57d282ac4484e0c27c0697afb5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115453"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58083130"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Az Azure dedikált HSM-hálózatok
 
@@ -51,8 +51,8 @@ Az aktuális architektúra követelményt a konfiguráció-ER-átjáró az ügyf
 Felhőalapú erőforrások létrehozásakor, egy tipikus egy privát kapcsolaton keresztül érik el a helyszíni informatikai erőforrásra lenne szükség. Dedikált HSM esetén ez túlnyomórészt lesz a HSM-ügyfélszoftver a HSM-eszközök konfigurálása és tevékenységek, például a biztonsági másolatokat és naplókat jogosultak-e a HSM-EK elemzés céljából. A legfontosabb itt, hogy a kapcsolat természetét, lehetőség van.  A legrugalmasabb lehetőség, a Site-to-Site VPN, a rendszer valószínűleg több helyszíni erőforrásokhoz, amelyek biztonságos kommunikációt igényelnek az erőforrások (beleértve a HSM-EK) az Azure-felhőben. Ezt a beállítást egy ügyfél a szervezet rendelkezik egy VPN-eszköz kapcsolat megkönnyítése érdekében. Pont – hely VPN-kapcsolat használható, ha például egyetlen felügyeleti munkaállomások helyszíni csak egyetlen végpontja van.
 A csatlakozási lehetőségek további információkért lásd: [tervezésénél VPN-átjáró](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#planningtable).
 
->[!NOTE]
-Jelenleg az ExpressRoute lehetőség nem a helyszíni erőforrásokhoz való csatlakozáshoz. Megjegyzendő, hogy az ExpressRoute-átjárót használja a fent leírtak szerint, nem a helyszíni infrastruktúra-kapcsolatok is.
+> [!NOTE]
+> Jelenleg az ExpressRoute lehetőség nem a helyszíni erőforrásokhoz való csatlakozáshoz. Megjegyzendő, hogy az ExpressRoute-átjárót használja a fent leírtak szerint, nem a helyszíni infrastruktúra-kapcsolatok is.
 
 ### <a name="point-to-site-vpn"></a>Pont – hely VPN
 
@@ -80,8 +80,8 @@ A hardveres biztonsági modulokhoz is képes, keresztül szoftverek tárak, a fo
 
 Globálisan elosztott alkalmazások vagy a magas rendelkezésre állású regionális feladatátvételi funkciók esetén szükség van a virtuális hálózatok összekapcsolása a régiók között elosztva. Az Azure dedikált HSM érhető el magas rendelkezésre állást biztosít egy biztonságos alagúton, a virtuális hálózatok közötti VPN-átjáró használatával. VPN-átjáró használatával további információk a virtuális hálózatok közötti kapcsolatok című cikkben: [Mi az a VPN-átjáró?](../vpn-gateway/vpn-gateway-about-vpngateways.md#V2V)
 
->[!NOTE]
-Globális virtuális társhálózatok létesítése nem áll rendelkezésre a régiók közötti kapcsolat a időben és a VPN-átjáró dedikált HSM-EK az forgatókönyvek helyette kell használni. 
+> [!NOTE]
+> Globális virtuális társhálózatok létesítése nem áll rendelkezésre a régiók közötti kapcsolat a időben és a VPN-átjáró dedikált HSM-EK az forgatókönyvek helyette kell használni. 
 
 ![globális virtuális](media/networking/global-vnet.png)
 

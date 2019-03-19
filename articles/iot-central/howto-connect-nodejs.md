@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: c04358734923654366eb679505910e14d0e0059b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4d2701f078a26c22f52aebd0ef562dd60eaca923
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767532"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097974"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Az Azure IoT Central-alkalmazást (Node.js) egy általános ügyfél-alkalmazás csatlakoztatása
 
@@ -41,7 +41,7 @@ Adja hozzá a következő telemetriát a **mérések** oldalon:
 | Pressure     | pressure    | kPa   | 80  | 110 | 0              |
 
 > [!NOTE]
-  A telemetriai adatok mérték adattípusa lebegőpontos szám.
+>   A telemetriai adatok mérték adattípusa lebegőpontos szám.
 
 Adja meg a mezők neve pontosan, ahogy az a tábla az eszköz sablonba be. Ha a mező nevei nem egyeznek meg a megfelelő eszköz kód tulajdonság nevét, a telemetriai adatokat, az alkalmazás nem lehet megjeleníteni.
 
@@ -54,7 +54,7 @@ Adja hozzá a következő állapotot a a **mérések** oldalon:
 | Ventilátor mód     | fanmode     | 1       | Fut      | 0       | Leállítva      |
 
 > [!NOTE]
-  Az állapot mérték adattípusa karakterlánc.
+>   Az állapot mérték adattípusa karakterlánc.
 
 Adja meg a mezők neve pontosan, ahogy az a tábla az eszköz sablonba be. A mező nevei nem egyeznek meg a megfelelő eszköz kód tulajdonságneveket, ha az állapot nem lehet megjeleníteni az alkalmazásban.
 
@@ -67,7 +67,7 @@ Adja hozzá a következő esemény a **mérések** oldalon:
 | Életbe  | melegedjen túl    | Hiba    |
 
 > [!NOTE]
-  Az esemény mérték adattípusa karakterlánc.
+>   Az esemény mérték adattípusa karakterlánc.
 
 ### <a name="device-properties"></a>Eszköztulajdonságok
 
@@ -279,5 +279,5 @@ Az Azure IoT központi alkalmazás kezelőként a valódi eszköz a következők
 ## <a name="next-steps"></a>További lépések
 
 Most, hogy rendelkezik egy általános Node.js-ügyfél csatlakoztatása az Azure IoT Central alkalmazáshoz, Íme a javasolt következő lépések:
-* [Készítse elő és a Raspberry Pi csatlakoztatása](howto-connect-raspberry-pi-python.md)
+* [Raspberry Pi előkészítése és csatlakoztatása](howto-connect-raspberry-pi-python.md)
 <!-- Next how-tos in the sequence -->

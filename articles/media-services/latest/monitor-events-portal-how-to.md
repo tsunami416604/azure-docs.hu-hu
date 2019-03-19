@@ -15,16 +15,18 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 4e6527bf115f327635a0b0fe187094dafb320598
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: d4592c93cb7969c45a107d7365a1b9dabf11f412
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49381039"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57884035"
 ---
 # <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>Hozzon létre, és figyelheti a Media Services-események az Event GRID használatával az Azure portal használatával
 
-Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ebben a cikkben az Azure Portalon előfizetni események az Azure Media Services-fiók használata. Ezután fogja aktiválni eseményt az eredmény megtekintéséhez. Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek eseményadatokat dolgoznak fel és műveleteket hajtanak végre. Ebben a cikkben egy webalkalmazást, amely összegyűjti és megjeleníti az üzenetek eseményeket küldeni azt.
+Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ez a szolgáltatás használ [esemény-előfizetések](../../event-grid/concepts.md#event-subscriptions) eseményt üzenetek továbbítását-előfizetők számára. Media Services-események összes kell reagálni az igények változásaira az adatokban adatokat tartalmazzák. A Media Services esemény is azonosítani, mert az esemény típusa tulajdonság "Microsoft.Media." karakterlánccal kezdődik. További információkért lásd: [Media Services Eseménysémák](media-services-event-schemas.md).
+
+Ebben a cikkben az Azure Portalon előfizetni események az Azure Media Services-fiók használata. Ezután fogja aktiválni eseményt az eredmény megtekintéséhez. Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek eseményadatokat dolgoznak fel és műveleteket hajtanak végre. A cikk az eseményeket egy webalkalmazást, amely összegyűjti és megjeleníti az üzenetek küldjük.
 
 A folyamat végén látni fogja, hogy a rendszer elküldte az eseményadatokat a webalkalmazásnak.
 
@@ -39,7 +41,7 @@ Feliratkozás a Media Services-fiók eseményeire, előtt hozzuk létre az esem�
 
 1. A megoldásnak az előfizetésébe való telepítéséhez válassza az **Üzembe helyezés az Azure-ban** lehetőséget. Az Azure Portalon adjon meg értékeket a paraméterekhez.
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
 1. Az üzembe helyezés befejezése eltarthat néhány percig. A sikeres üzembe helyezést követően tekintse meg a webalkalmazást, hogy meggyőződjön annak működéséről. Egy webböngészőben navigáljon a következő helyre: `https://<your-site-name>.azurewebsites.net`.
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 1/18/2019
 ms.author: mayg
-ms.openlocfilehash: 05a60ff2b2995642f797897d0e1f4db46c5b6741
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 8f76d4e54133e4e899e707e666703a67310e8702
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215843"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082092"
 ---
 # <a name="fail-over-vms-and-physical-servers"></a>Virtuális gépek és fizikai kiszolgálók feladatátvételét 
 
@@ -39,17 +39,17 @@ Az eljárás ismerteti, hogy futtasson egy feladatátvételt a egy [helyreállí
 
 1. Válassza ki **helyreállítási tervek** > *recoveryplan_name*. Kattintson a **feladatátvétel**
 2. Az a **feladatátvételi** képernyőn válassza ki a **helyreállítási pont** irányuló feladatátvételt. Az alábbi lehetőségek egyikét használhatja:
-    1.  **Legújabb**: Ez a beállítás szerint a Site Recovery szolgáltatásba küldött összes adat feldolgozása elindítja a feladatot. Az adatok feldolgozását az egyes virtuális gépek helyreállítási pont létrehozása. A helyreállítási pontot használják a virtuális gép feladatátvétel során. Ez a beállítás a feladatátvételi minden adat, amelyet követően létrehozott virtuális gép, amely a feladatátvétel elindításakor a Site Recovery szolgáltatásba replikálása a legkisebb helyreállítási Időkorlát (Helyreállításipont-célkitűzés) biztosít.
-    1.  **Legutóbb feldolgozott**: Ez a beállítás átadja a feladatokat a helyreállítási terv, amely a Site Recovery szolgáltatás által feldolgozott legutóbbi helyreállítási pontot az összes virtuális gépet. A virtuális gép feladatátvételi teszt során, a legutóbbi feldolgozott helyreállítási pontot időbélyegzőjét is látható. Ha a helyreállítási terv feladatátvétele, nyissa meg az egyes virtuális géphez, és nézze **legutóbbi helyreállítási pontok** csempére, hogy ezt az információt. Rendszer nem tölt időt a feldolgozatlan adatok feldolgozásához, ezt a lehetőséget egy alacsony RTO (helyreállítási időre vonatkozó célkitűzés) feladatátvételi lehetőséget biztosít.
-    1.  **Legutóbbi alkalmazáskonzisztens**: Ez a beállítás az összes virtuális gép a legutóbbi alkalmazáskonzisztens helyreállítási pont, amely a Site Recovery szolgáltatás által feldolgozott, a helyreállítási terv feladatait. A virtuális gép feladatátvételi teszt során, a legutóbbi alkalmazáskonzisztens helyreállítási pont időbélyeg is látható. Ha a helyreállítási terv feladatátvétele, nyissa meg az egyes virtuális géphez, és nézze **legutóbbi helyreállítási pontok** csempére, hogy ezt az információt.
-    1.  **Legújabb több virtuális gépre kiterjedő feldolgozott**: Ezt a beállítást csak a helyreállítási terveket, amelyek rendelkeznek legalább egy virtuális gép több virtuális gépre kiterjedő konzisztencia ON érhető el. Virtuális gépek, amelyek részei egy replikációs csoport feladatátvételt a legutóbbi közös virtuális gépre kiterjedő konzisztens helyreállítási pont. Más virtuális gépek feladatátvételt a legutóbbi feldolgozott helyreállítási pontot.  
-    1.  **Legújabb több virtuális gépre kiterjedően alkalmazáskonzisztens**: Ezt a beállítást csak a helyreállítási terveket, amelyek rendelkeznek legalább egy virtuális gép több virtuális gépre kiterjedő konzisztencia ON érhető el. Virtuális gépek, amelyek részei egy replikációs csoport feladatátvételt a legutóbbi közös virtuális gépre kiterjedően alkalmazáskonzisztens helyreállítási pont. Más virtuális gépek feladatátvételt a legutóbbi alkalmazáskonzisztens helyreállítási pontot.
-    1.  **Egyéni**: Ha a virtuális gép feladatátvételi tesztet, majd használhatja ezt a beállítást egy adott helyreállítási pontra történő feladatátvételt.
+   1. **Legújabb**: Ez a beállítás szerint a Site Recovery szolgáltatásba küldött összes adat feldolgozása elindítja a feladatot. Az adatok feldolgozását az egyes virtuális gépek helyreállítási pont létrehozása. A helyreállítási pontot használják a virtuális gép feladatátvétel során. Ez a beállítás a feladatátvételi minden adat, amelyet követően létrehozott virtuális gép, amely a feladatátvétel elindításakor a Site Recovery szolgáltatásba replikálása a legkisebb helyreállítási Időkorlát (Helyreállításipont-célkitűzés) biztosít.
+   1. **Legutóbb feldolgozott**: Ez a beállítás átadja a feladatokat a helyreállítási terv, amely a Site Recovery szolgáltatás által feldolgozott legutóbbi helyreállítási pontot az összes virtuális gépet. A virtuális gép feladatátvételi teszt során, a legutóbbi feldolgozott helyreállítási pontot időbélyegzőjét is látható. Ha a helyreállítási terv feladatátvétele, nyissa meg az egyes virtuális géphez, és nézze **legutóbbi helyreállítási pontok** csempére, hogy ezt az információt. Rendszer nem tölt időt a feldolgozatlan adatok feldolgozásához, ezt a lehetőséget egy alacsony RTO (helyreállítási időre vonatkozó célkitűzés) feladatátvételi lehetőséget biztosít.
+   1. **Legutóbbi alkalmazáskonzisztens**: Ez a beállítás az összes virtuális gép a legutóbbi alkalmazáskonzisztens helyreállítási pont, amely a Site Recovery szolgáltatás által feldolgozott, a helyreállítási terv feladatait. A virtuális gép feladatátvételi teszt során, a legutóbbi alkalmazáskonzisztens helyreállítási pont időbélyeg is látható. Ha a helyreállítási terv feladatátvétele, nyissa meg az egyes virtuális géphez, és nézze **legutóbbi helyreállítási pontok** csempére, hogy ezt az információt.
+   1. **Legújabb több virtuális gépre kiterjedő feldolgozott**: Ezt a beállítást csak a helyreállítási terveket, amelyek rendelkeznek legalább egy virtuális gép több virtuális gépre kiterjedő konzisztencia ON érhető el. Virtuális gépek, amelyek részei egy replikációs csoport feladatátvételt a legutóbbi közös virtuális gépre kiterjedő konzisztens helyreállítási pont. Más virtuális gépek feladatátvételt a legutóbbi feldolgozott helyreállítási pontot.  
+   1. **Legújabb több virtuális gépre kiterjedően alkalmazáskonzisztens**: Ezt a beállítást csak a helyreállítási terveket, amelyek rendelkeznek legalább egy virtuális gép több virtuális gépre kiterjedő konzisztencia ON érhető el. Virtuális gépek, amelyek részei egy replikációs csoport feladatátvételt a legutóbbi közös virtuális gépre kiterjedően alkalmazáskonzisztens helyreállítási pont. Más virtuális gépek feladatátvételt a legutóbbi alkalmazáskonzisztens helyreállítási pontot.
+   1. **Egyéni**: Ha a virtuális gép feladatátvételi tesztet, majd használhatja ezt a beállítást egy adott helyreállítási pontra történő feladatátvételt.
 
-    > [!NOTE]
-    > Egy helyreállítási pontot választhatja ki csak érhető el, ha az Azure-bA feladatátvétele.
-    >
-    >
+      > [!NOTE]
+      > Egy helyreállítási pontot választhatja ki csak érhető el, ha az Azure-bA feladatátvétele.
+      >
+      >
 
 
 1. Ha a helyreállítási tervben szereplő virtuális gépek némelyike feladatátvételt is korábbi futtatása és a virtuális gépek aktívak a forrás- és cél helye határozza meg, most is használhat **irányának módosítása** dönthet arról, hogy az irány, amelyben a beállítás a feladatátvétel történjen.
@@ -70,9 +70,9 @@ Virtuális gépek/fizikai kiszolgálók is támogatja a Site Recovery használat
 
 > [!NOTE]
 > A Hyper-v virtuális gépek egy a helyszíni helyről egy másik helyszíni helyre feladatátvételkor térjen vissza a helyszíni elsődleges helyhez kell első **fordított-replikálás** a virtuális gép biztonsági elsődleges helyhez, majd a feladatátvétel indítása. Ha az elsődleges virtuális gép nem áll rendelkezésre, majd elindítása előtt, hogy **fordított-replikálás** kell a virtuális gép visszaállítása biztonsági másolatból.   
->
->
-## <a name="failover-job"></a>Feladatátvételi feladat
+> 
+> 
+> ## <a name="failover-job"></a>Feladatátvételi feladat
 
 ![Feladatátvétel](./media/site-recovery-failover/FailoverJob.png)
 

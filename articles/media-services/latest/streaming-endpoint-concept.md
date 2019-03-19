@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: juliako
-ms.openlocfilehash: d5ca9e602416e6e575be8b79942cd6dba2a2fd69
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: eb7f368100269c4e47076bb6b78bafc23e7a6089
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889154"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57845603"
 ---
 # <a name="streaming-endpoints"></a>Streamvégpontok
 
@@ -39,7 +39,7 @@ A táblázat ismerteti:
 
 |Typo|Skálázási egységek|Leírás|
 |--------|--------|--------|  
-|**Standard szintű Streamvégpont** (ajánlott)|0|A **Standard** írja be a lehetőség ajánlott gyakorlatilag az összes streamelési forgatókönyvekhez és bármilyen méretű közönségre. A **Standard** típus automatikusan méretezi a kimenő sávszélesség. <br/>Rendkívül nagy követelmények rendelkező ügyfelek számára a Media Services kínál **prémium** streamvégpontot választanak, amely használható a horizontális felskálázási kapacitása a legnagyobb internet célközönségek számára. Ha várhatóan széles és egyidejű megtekintők, írjon nekünk az amsstreaming@microsoft.com útmutatást, hogy át kell helyeznie a **prémium** típusa. |
+|**Standard szintű Streamvégpont** (ajánlott)|0|A **Standard** írja be a lehetőség ajánlott gyakorlatilag az összes streamelési forgatókönyvekhez és bármilyen méretű közönségre. A **Standard** típus automatikusan méretezi a kimenő sávszélesség. <br/>Rendkívül nagy követelmények rendelkező ügyfelek számára a Media Services kínál **prémium** streamvégpontot választanak, amely használható a horizontális felskálázási kapacitása a legnagyobb internet célközönségek számára. Ha várhatóan széles és egyidejű megtekintők, lépjen kapcsolatba velünk, amsstreaming\@útmutatást, hogy át kell helyeznie a Microsoft.com webhelyen a **prémium** típusa. |
 |**Prémium szintű Streamvégpont**|>0|A **prémium** szintű streamvégpontok a speciális feladatokhoz ideálisak, mert dedikált és méretezhető sávszélesség-kapacitást nyújtanak. Helyez át egy **prémium** típusának a módosításával `scaleUnits`. `scaleUnits` Adja meg, amely vásárolható meg, 200 MB/s-os léptékben dedikált kilépési kapacitáson. Használatakor a **prémium** típusa, a minden engedélyezett egység további sávszélesség-kapacitást az alkalmazás biztosít. |
 
 ## <a name="working-with-cdn"></a>A CDN használata
@@ -64,34 +64,34 @@ Ez a szakasz tájékoztatást nyújt a egyes a folyamatos átviteli végponton t
   
     Nem minden adatközpontban az Azure CDN-integrációt támogatja. Ellenőrizze-e az adatközpontot tartalmaz-e elérhető az Azure CDN-integrációnak, tegye a következőket:
  
-   - Próbáljon meg a `cdnEnabled` igaz értékre.
-   - Ellenőrizze a visszaadott eredmény számára egy `HTTP Error Code 412` (PreconditionFailed) "Streaming endpoint CdnEnabled tulajdonság nem állítható igaz, a CDN-funkciók nem érhető el a jelenlegi régióban." üzenettel 
+  - Próbáljon meg a `cdnEnabled` igaz értékre.
+  - Ellenőrizze a visszaadott eredmény számára egy `HTTP Error Code 412` (PreconditionFailed) "Streaming endpoint CdnEnabled tulajdonság nem állítható igaz, a CDN-funkciók nem érhető el a jelenlegi régióban." üzenettel 
 
     Ha ez a hiba, az Adatközpont nem támogatja. Próbálkozzon egy másik adatközpontba.
 - `cdnProfile` – Amikor `cdnEnabled` értéke igaz, akkor is átadhat `cdnProfile` értékeket. `cdnProfile` van a CDN-profil nevét, ahol a CDN-végponti pont létrejön. Adjon meg egy meglévő cdnProfile, vagy egy új használja. Ha az érték NULL, és `cdnEnabled` , true, az alapértelmezett érték "AzureMediaStreamingPlatformCdnProfile" szolgál. Ha a megadott `cdnProfile` már létezik, a végpont annak alapján jön létre. Ha a profil nem létezik, új profil automatikusan jön létre.
 - `cdnProvider` -Ha a CDN engedélyezve van, akkor is átadhat `cdnProvider` értékeket. `cdnProvider` azt szabályozza, melyik-szolgáltatót fogja használni. Jelenleg három értékek támogatottak: "StandardVerizon", "PremiumVerizon" and "StandardAkamai". Ha a nem érték van megadva, és `cdnEnabled` értéke true, "StandardVerizon" használatos (Ez az alapértelmezett érték).
-- `crossSiteAccessPolicies` -Itt adhatja meg a webhelyek közötti hozzáférési házirendek a különböző ügyfelek részére. További információkért lásd: [tartományok közötti házirend fájl meghatározásának](http://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html) és [így a szolgáltatás elérhető Across Domain Boundaries](https://msdn.microsoft.com/library/cc197955\(v=vs.95\).aspx).
+- `crossSiteAccessPolicies` -Itt adhatja meg a webhelyek közötti hozzáférési házirendek a különböző ügyfelek részére. További információkért lásd: [tartományok közötti házirend fájl meghatározásának](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html) és [így a szolgáltatás elérhető Across Domain Boundaries](https://msdn.microsoft.com/library/cc197955\(v=vs.95\).aspx).
 - `customHostNames` – Egy folyamatos átviteli végponton, amely egyéni gazdagépnévvel irányított forgalom fogadására konfigurálásához használt.  Ez a tulajdonság érvényes, a Standard és prémium szintű Streamelési végpontok és a segítségével állítható be, amikor `cdnEnabled`: False (hamis).
     
     A tartománynév tulajdonjogát a Media Services jóvá kell hagynia. A Media Services ellenőrzi a tartománynak a nevét tulajdonjogát azzal, hogy egy `CName` rekordot, amely a Media Services-fiók azonosítója a tartományban használt hozzáadandó összetevőjeként. Tegyük fel, a "sports.contoso.com", amely egyéni gazdagépnévvel a folyamatos átviteli végponton, egy rekord használható `<accountId>.contoso.com` konfigurálni kell, hogy a Media Services-ellenőrzési állomásnevek egyikére mutatnak. Az ellenőrzési állomásnév verifydns tevődik össze. \<mediaservices – dns-zóna >. 
 
     Az alábbiakban a várt DNS-zónák az ellenőrzés rekordban használható különböző Azure-régiókban.
   
-    - Észak-Amerika, Európa, Szingapúr, Hongkong (KKT), illetve japán:
+  - Észak-Amerika, Európa, Szingapúr, Hongkong (KKT), illetve japán:
       
-      - `media.azure.net`
-      - `verifydns.media.azure.net`
+    - `media.azure.net`
+    - `verifydns.media.azure.net`
       
-    - Kína:
+  - Kína:
         
-      - `mediaservices.chinacloudapi.cn`
-      - `verifydns.mediaservices.chinacloudapi.cn`
+    - `mediaservices.chinacloudapi.cn`
+    - `verifydns.mediaservices.chinacloudapi.cn`
         
     Ha például egy `CName` rekordot, amely leképezi a "945a4c4e-28ea-45 cd-8ccb-a519f6b700ad.contoso.com", "verifydns.media.azure.net" igazolja, hogy a Media Services Azonosítót 945a4c4e-28ea-45cd-8ccb-a519f6b700ad így rendelkezik-e a contoso.com tartomány tulajdonjogát annak lehetővé tétele bármely név alatt, amely egyéni gazdagépnévvel egy streamvégponton, az adott fiók használható a contoso.com. A Media szolgáltatás azonosítóérték megkereséséhez nyissa meg a [az Azure portal](https://portal.azure.com/) , és válassza ki a Media Services-fiókját. A **Fiókazonosító** tetején jelenik meg, az oldal jobb.
         
     Ha egy egyéni állomásnevet anélkül, hogy a megfelelő ellenőrzése beállítására irányuló kísérlet a `CName` rekord, a DNS-válasz sikertelen lesz, majd a gyorsítótárba egy ideig. Után egy megfelelő bejegyzés van beállítva, ez eltarthat egy darabig, mindaddig, amíg a gyorsítótárazott válasz újra van-e érvényesítve. Az egyéni tartomány DNS-szolgáltatónál, attól függően is igénybe vehet bárhol pár percet vagy egy órát, kísérelje meg újra a rekord érvényesítését.
         
-     Mellett a `CName` , amely leképezi `<accountId>.<parent domain>` való `verifydns.<mediaservices-dns-zone>`, létre kell hoznia egy másik `CName` , amely hozzárendeli az egyéni állomásnevet (például `sports.contoso.com`), a Media Services Streaming Endpoint a gazdagép nevét (például `amstest-usea.streaming.media.azure.net`).
+    Mellett a `CName` , amely leképezi `<accountId>.<parent domain>` való `verifydns.<mediaservices-dns-zone>`, létre kell hoznia egy másik `CName` , amely hozzárendeli az egyéni állomásnevet (például `sports.contoso.com`), a Media Services Streaming Endpoint a gazdagép nevét (például `amstest-usea.streaming.media.azure.net`).
  
     > [!NOTE]
     > Streamvégpontok találhatók ugyanabban az adatközpontban, nem oszthat meg ugyanazt az egyéni állomásnevet.

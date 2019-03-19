@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: 1f6cbb511546784b316da1e978abf84c41ac753c
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 13d5d5b57c4c52b213f3c369244348b00a49332b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446052"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57895610"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-core"></a>Gyors útmutató: A .NET Core beszédfelismerést a Speech SDK-val
 
@@ -26,7 +26,7 @@ Ebben a cikkben létre fog hozni a Windowson egy C# konzolalkalmazást a .NET Co
 > [!NOTE]
 > A .NET Core egy nyílt forráskódú, platformfüggetlen .NET-platform, amely implementálja a [.NET Standard](https://docs.microsoft.com/dotnet/standard/net-standard) specifikációt.
 
-A rövid útmutató elvégzéséhez szüksége van a Speech Service előfizetői azonosítójára, amelyet ingyenesen is beszerezhet. További részletekért tekintse át a [Speech Service ingyenes kipróbálását](get-started.md) ismertető részt.
+A rövid útmutató elvégzéséhez beszédszolgáltatások előfizetési kulcs szükséges. amelyet ingyenesen is beszerezhet. Lásd: [próbálja ki ingyenesen a beszédszolgáltatások](get-started.md) részleteiről.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -62,7 +62,7 @@ Ehhez a rövid útmutatóhoz a következőkre van szükség:
 
     ![A Visual Studio képernyőképe, amelyen ki van emelve a Hibakeresés indítása lehetőség](media/sdk/qs-csharp-dotnetcore-windows-06-start-debugging.png "Hibakeresés indítása az alkalmazáson")
 
-1. Megjelenik egy konzolablak, amely arra kéri Önt, hogy mondjon valamit. Mondjon ki egy angol nyelvű kifejezést vagy mondatot. A rendszer továbbítja a beszédet a Speech Service-be, majd szöveggé alakítja át, amely ugyanabban az ablakban meg is jelenik.
+1. Megjelenik egy konzolablak, amely arra kéri Önt, hogy mondjon valamit. Mondjon ki egy angol nyelvű kifejezést vagy mondatot. A beszéd továbbítani a beszédszolgáltatások, és a megjelenített érzéseket szöveg, amely ugyanabban az ablakban jelenik meg.
 
     ![Képernyőkép a konzolról a sikeres felismerést követően](media/sdk/qs-csharp-dotnetcore-windows-07-console-output.png "A konzol a sikeres felismerést követően")
 

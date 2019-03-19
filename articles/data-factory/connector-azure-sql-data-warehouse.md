@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: jingwang
-ms.openlocfilehash: 6b7660610e18605ae1af57ec92d2e5d8ddcb40a8
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: c2257dac60ed92859e3df3360ce55558b176de91
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871371"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010202"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Adatok másolása, vagy az Azure SQL Data Warehouse-ból az Azure Data Factory használatával 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -191,13 +191,13 @@ Felügyelt identitás-hitelesítést használ, kövesse az alábbi lépéseket:
 
 1. **Hozzon létre egy csoportot az Azure ad-ben.** Győződjön meg a felügyelt identitás a csoport tagja.
 
-    1. Keresse meg a data factory felügyelt identitás az Azure Portalról. Nyissa meg az adat-előállító **tulajdonságok**. Másolja az IDENTITÁS azonosítót.
+   1. Keresse meg a data factory felügyelt identitás az Azure Portalról. Nyissa meg az adat-előállító **tulajdonságok**. Másolja az IDENTITÁS azonosítót.
 
-    1. Telepítse a [az Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) modul. Jelentkezzen be a `Connect-AzureAD` parancsot. Hozzon létre egy csoportot, és adja hozzá a felügyelt identitás, amelynek a következő parancsok futtatásával.
-    ```powershell
-    $Group = New-AzureADGroup -DisplayName "<your group name>" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
-    Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory managed identity object ID>"
-    ```
+   1. Telepítse a [az Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) modul. Jelentkezzen be a `Connect-AzureAD` parancsot. Hozzon létre egy csoportot, és adja hozzá a felügyelt identitás, amelynek a következő parancsok futtatásával.
+      ```powershell
+      $Group = New-AzureADGroup -DisplayName "<your group name>" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
+      Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory managed identity object ID>"
+      ```
 
 1. **[Az Azure Active Directory-rendszergazda kiépítése](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**  az Azure SQL Serverhez, az Azure Portalon, ha ezt még nem tette meg.
 
@@ -388,7 +388,7 @@ Adatok másolása az Azure SQL Data Warehouse, állítsa a fogadó típusa máso
 | useTypeDefault | Itt adhatja meg, hogyan szeretné kezelni a PolyBase kér le adatokat a szövegfájl elválasztójellel tagolt szöveges fájlok a hiányzó értékeket.<br/><br/>További tudnivalók a ezt a tulajdonságot a következő argumentumok szakaszában [CREATE EXTERNAL FILE FORMAT (Transact-SQL)](https://msdn.microsoft.com/library/dn935026.aspx).<br/><br/>Engedélyezett értékek a következők **igaz** és **hamis** (alapértelmezett). | Nem |
 | WriteBatchSize | Adatok beszúrása SQL-táblát, amikor a puffer mérete eléri a **writeBatchSize**. Érvényes, csak ha a PolyBase nem használja.<br/><br/>Az engedélyezett érték **egész** (sorok száma). | Nem. Az alapértelmezett érték a 10000. |
 | writeBatchTimeout | Várjon, amíg a kötegelt insert művelet befejezését, mielőtt azt az időkorlátot. Érvényes, csak ha a PolyBase nem használja.<br/><br/>Az engedélyezett érték **timespan**. Példa: "00: 30:00" (30 perc). | Nem |
-| preCopyScript | Adja meg a másolási tevékenység futtatása előtt az adatok Azure SQL Data Warehouse-bA írt minden egyes futtatásához egy SQL-lekérdezést. Ez a tulajdonság használatával az előre betöltött adatokat. | Nem | (#repeatability-során-példány). | A lekérdezési utasítást. | Nem |
+| preCopyScript | Adja meg a másolási tevékenység futtatása előtt az adatok Azure SQL Data Warehouse-bA írt minden egyes futtatásához egy SQL-lekérdezést. Ez a tulajdonság használatával az előre betöltött adatokat. | Nem |
 
 #### <a name="sql-data-warehouse-sink-example"></a>Az SQL Data Warehouse fogadó példa
 
@@ -437,8 +437,8 @@ A követelmények nem teljesülnek, ha az Azure Data Factory ellenőrzi a beáll
    5. `escapeChar`, `quoteChar` és `skipLineCount` nincsenek megadva. A PolyBase támogatási kihagyása fejlécsort, amely konfigurálható `firstRowAsHeader` az ADF-ben.
    6. `compression` lehet **tömörítés nélküli**, **GZip**, vagy **Deflate**.
 
-    ```json
-    "typeProperties": {
+      ```json
+      "typeProperties": {
         "folderPath": "<blobpath>",
         "format": {
             "type": "TextFormat",
@@ -452,8 +452,8 @@ A követelmények nem teljesülnek, ha az Azure Data Factory ellenőrzi a beáll
             "type": "GZip",
             "level": "Optimal"
         }
-    },
-    ```
+      },
+      ```
 
 ```json
 "activities":[

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: ashishth
-ms.openlocfilehash: 9a76ad219e538874af04a72c9aa64e87a35bc53d
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: c1618d3402b37e91b3cf17365d6ccbf1285f4847
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434885"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993788"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>HDInsight-fürt naplóinak kezelése
 
@@ -25,7 +25,7 @@ HDInsight-fürt naplóinak kezelése magában foglalja a fürt környezet vonatk
 HDInsight kezelése az általános lépések a következők:
 
 * 1. lépés: Napló adatmegőrzési szabályzatok meghatározása
-* 2. lépés: Fürt szolgáltatás verziók konfigurációs naplók kezelése
+* 2. lépés: Fürt szolgáltatás verziók konfigurációs naplók kezelése
 * 3. lépés: Fürt feladat-végrehajtási naplófájlok kezelése
 * 4. lépés: Log storage kötetméretet, és a költségek
 * 5. lépés: Napló archív szabályzatoknak és folyamatoknak meghatározása
@@ -34,7 +34,7 @@ HDInsight kezelése az általános lépések a következők:
 
 A HDInsight cluster log management stratégia létrehozásának első lépése az üzleti helyzetek és feladat-végrehajtási előzmények tárhelykövetelmények információt gyűjteni.
 
-### <a name="cluster-details"></a>Fürt részletes adatai
+### <a name="cluster-details"></a>Fürt adatai
 
 A következő fürt részletes adatai hasznosak lehetnek abban, hogy a napló-kezelési stratégia adatainak összegyűjtése. Az információk gyűjtésére az összes HDInsight-fürtről, létrehozott egy adott Azure-fiókkal.
 
@@ -71,13 +71,13 @@ Fontos tudni, hogy a megfelelő naplózás az egyes stratégiák kialakíthatja 
 
 * Érdemes lehet-e egy figyelési megoldást vagy szolgáltatás egyik hasznos előnyt lenne. A Microsoft System Center biztosít egy [HDInsight felügyeleti csomag](https://www.microsoft.com/download/details.aspx?id=42521). Például az Apache Chukwa és Ganglia külső eszközök használatával gyűjtése, centralizálható a naplók. Számos vállalat ajánlat szolgáltatásokat és a Hadoop-alapú big data-megoldások, például figyelés: Centerity, Compuware APM, Sematext SPM-hez és az Orchestrator Zettaset.
 
-## <a name="step-2-manage-cluster-service-versions-and-view-script-action-logs"></a>2. lépés: Fürtverziók szolgáltatás kezelése, és a Script Action naplók megtekintése
+## <a name="step-2-manage-cluster-service-versions-and-view-script-action-logs"></a>2. lépés: Fürtverziók szolgáltatás kezelése, és a Script Action naplók megtekintése
 
 Egy tipikus HDInsight-fürtöt használ, több szolgáltatást és a nyílt forráskódú szoftvercsomagokat (például az Apache HBase, Apache Spark és így tovább). Bizonyos számítási feladatokhoz, például a Bioinformatika a szükséges megőrizni a szolgáltatás a korábbi naplók konfigurálása a feladatvégrehajtási naplók mellett.
 
 ### <a name="view-cluster-configuration-settings-with-the-ambari-ui"></a>Az Ambari felhasználói felületén, a nézet fürtbeállítások
 
-Az Apache Ambari leegyszerűsíti a felügyeleti, beállítást és megfigyelést a HDInsight-fürt azáltal, hogy egy webes felhasználói felület és a egy REST API-t. A Linux-alapú HDInsight-fürtök az Ambari tartalmazza. Válassza ki a **fürt irányítópultja** panel az Azure Portalon HDInsight lap megnyitásához a **"fürt irányítópultjai** hivatkozási lapja.  Ezután válassza ki a **HDInsight-fürt irányítópultja** ablaktáblán nyissa meg az Ambari felhasználói felületén.  A fürt bejelentkezési hitelesítő adatok megadását kéri.
+Az Apache Ambari leegyszerűsíti a felügyeleti, beállítást és megfigyelést a HDInsight-fürt azáltal, hogy egy webes felhasználói felület és a egy REST API-t. A Linux-alapú HDInsight-fürtök az Ambari tartalmazza. Válassza ki a **fürt irányítópultja** panel az Azure Portalon HDInsight lap megnyitásához a**fürt irányítópultjai** hivatkozási lapja.  Ezután válassza ki a **HDInsight-fürt irányítópultja** ablaktáblán nyissa meg az Ambari felhasználói felületén.  A fürt bejelentkezési hitelesítő adatok megadását kéri.
 
 Szolgáltatás nézetek listájának megnyitásához válassza a **Ambari-nézetek** for HDInsight az Azure portal oldalán található panelen.  Ez a lista függ attól függően, hogy mely könyvtárak telepítette.  Láthatja például, az üzenetsor-kezelő YARN, Hive-nézet és a Tez nézet.  Kattintson bármely szolgáltatás konfigurációs és szolgáltatási adatokat.  Az Ambari felhasználói felületén **verem és verzió** oldal nyújt információkat a fürtszolgáltatások konfigurációs és szolgáltatási korábbi verziók. Az ebben a szakaszban az Ambari felhasználói felületén, válassza a **rendszergazdai** menüben, majd **platformok és verziók**.  Válassza ki a **verziók** lapján megtekintheti a fájlverzió-információkat.
 

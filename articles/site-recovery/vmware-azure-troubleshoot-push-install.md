@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
 ms.date: 02/27/2019
-ms.openlocfilehash: 3b46ffe49aeb31aaf9040be038e8a9e83641ae51
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 65b8253a307693d00f5eaefe7660d500dce49be4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984376"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078652"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>A mobilitási szolgáltatás leküldéses telepítési problémák elhárítása
 
@@ -171,11 +171,11 @@ A konfigurációs GRUB-fájlok ("/ boot/grub/menu.lst", "/ boot/grub/grub.cfg", 
 
 
 - A következő sort a GRUB-fájlból áll **/boot/grub2/grub.cfg**. <br>
-*Linux /boot/vmlinuz-3.12.49-11-default **= / dev/sda2 kiváltó** ${extra_cmdline} **= / dev/sda1 folytatása** beavatkozás nélküli, csendes showopts splash =*
+  *Linux /boot/vmlinuz-3.12.49-11-default **= / dev/sda2 kiváltó** ${extra_cmdline} **= / dev/sda1 folytatása** beavatkozás nélküli, csendes showopts splash =*
 
 
 - A következő sort a GRUB-fájlból áll **/boot/grub/menu.lst**
-*kernel /boot/vmlinuz-3.0.101-63-default **= / dev/sda2 kiváltó** **= / dev/sda1 folytatása ** splash = beavatkozás nélküli crashkernel 256M-:128M showopts vga = = 0x314*
+  *kernel /boot/vmlinuz-3.0.101-63-default **= / dev/sda2 kiváltó** **= / dev/sda1 folytatása ** splash = beavatkozás nélküli crashkernel 256M-:128M showopts vga = = 0x314*
 
 Ha a fenti félkövér karakterlánc megfigyelte, grub-HIBÁT nevét is tartalmazza, tényleges eszközre a paramétereket "root" és "Folytatás" UUID helyett.
  
@@ -184,15 +184,15 @@ Az eszköz nevét le kell cserélni a megfelelő UUID azonosítója.<br>
 
 
 1. Az eszköz UUID található parancs végrehajtásával "blkid <device name>". Példa:<br>
-```
-blkid /dev/sda1
-/dev/sda1: UUID="6f614b44-433b-431b-9ca1-4dd2f6f74f6b" TYPE="swap"
-blkid /dev/sda2 
-/dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3" 
-```
+   ```
+   blkid /dev/sda1
+   /dev/sda1: UUID="6f614b44-433b-431b-9ca1-4dd2f6f74f6b" TYPE="swap"
+   blkid /dev/sda2 
+   /dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3" 
+   ```
 
 2. Most cserélje le az eszköz nevét annak UUID azonosító, a következő formátumban, például a "legfelső szintű UUID azonosítója = =<UUID>". Például, ha azt az alapvető cserélje le az eszköz nevét UUID azonosító, és folytathatja a fájlokat a fent említett paraméter "/ boot/grub2/grub.cfg", "/ boot/grub2/grub.cfg" vagy "/ etc/alapértelmezett/grub: majd a fájlokban a sorok kinézni. <br>
-*kernel /boot/vmlinuz-3.0.101-63-default **legfelső szintű UUID azonosítója = 62927e85-f7ba-40bc-9993-cc1feeb191e4 =** **folytatása UUID azonosítója = 6f614b44-433b-431b-9ca1-4dd2f6f74f6b =** splash = beavatkozás nélküli crashkernel = 256M-:128M showopts vga = 0x314*
+   *kernel /boot/vmlinuz-3.0.101-63-default **legfelső szintű UUID azonosítója = 62927e85-f7ba-40bc-9993-cc1feeb191e4 =** **folytatása UUID azonosítója = 6f614b44-433b-431b-9ca1-4dd2f6f74f6b =** splash = beavatkozás nélküli crashkernel = 256M-:128M showopts vga = 0x314*
 3. Indítsa újra a védelmi műveletet
 
 ## <a name="install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266"></a>Befejeződött figyelmeztetéssel, indítsa újra a mobilitási szolgáltatás telepítése (ErrorID: 95265 & 95266)
@@ -284,20 +284,20 @@ Ha alkalmazáskonzisztencia nem kritikus fontosságú a vész-helyreállítási 
 Az Azure Site Recovery VSS Provider telepítésének kihagyása, és manuálisan telepítheti az Azure Site Recovery VSS Provider post telepítése:
 
 1. A mobilitási szolgáltatás telepítése. 
-> [!Note]
-> 
-> A telepítés sikertelen lesz a "Telepítés utáni konfigurációs" lépésnél. 
+   > [!Note]
+   > 
+   > A telepítés sikertelen lesz a "Telepítés utáni konfigurációs" lépésnél. 
 2. A VSS-telepítés megkerülésére:
    1. Nyissa meg az Azure Site Recovery mobilitási szolgáltatás telepítési könyvtárában található:
    
-    C:\Program Files (x86) \Microsoft Azure Site Recovery\agent
-   2.  Az Azure Site Recovery VSS Provider telepítési parancsfájlok módosítása **nMageVSSProvider_Install** és **InMageVSSProvider_Uninstall.cmd** mindig sikeres adja hozzá a következő sorokat:
+      C:\Program Files (x86) \Microsoft Azure Site Recovery\agent
+   2. Az Azure Site Recovery VSS Provider telepítési parancsfájlok módosítása **nMageVSSProvider_Install** és **InMageVSSProvider_Uninstall.cmd** mindig sikeres adja hozzá a következő sorokat:
     
-    ```     
-    rem @echo off
-    setlocal
-    exit /B 0
-    ```
+      ```     
+      rem @echo off
+      setlocal
+      exit /B 0
+      ```
 
 3. Manuálisan futtassa újra a mobilitási ügynök telepítése. 
 4. Ha a telepítés sikeres lesz, és áthelyezi a következő lépéssel **konfigurálása**, távolítsa el a hozzáadott sorokat.
@@ -305,7 +305,7 @@ Az Azure Site Recovery VSS Provider telepítésének kihagyása, és manuálisan
    
     **C:\Program Files (x86) \Microsoft Azure Site Recovery\agent >.\InMageVSSProvider_Install.cmd**
 
-9.  Győződjön meg arról, hogy az ASR VSS-szolgáltató telepítve van-e a Windows-szolgáltatások szolgáltatásként, és nyissa meg az összetevő szolgáltatás MMC, győződjön meg arról, hogy szerepel-e az ASR VSS-szolgáltatót.
+9. Győződjön meg arról, hogy az ASR VSS-szolgáltató telepítve van-e a Windows-szolgáltatások szolgáltatásként, és nyissa meg az összetevő szolgáltatás MMC, győződjön meg arról, hogy szerepel-e az ASR VSS-szolgáltatót.
 10. Ha a VSS-szolgáltatót telepíteni továbbra is sikertelen, CX CAPI2 engedélyek hibáival dolgozhat.
 
 ## <a name="vss-provider-installation-fails-due-to-the-cluster-service-being-enabled-on-non-cluster-machine"></a>VSS-szolgáltató telepítése folyamatban van a nem fürtözött számítógépen engedélyezve van a fürtszolgáltatás miatt meghiúsul

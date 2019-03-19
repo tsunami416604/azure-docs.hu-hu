@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a1210360690384b07e6d88007ccd118731ecce0
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 0594d99874ea9bb83673013a9a03272edcd8ce0b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57405436"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897673"
 ---
 # <a name="troubleshoot-and-resolve-groups-issues"></a>Hibaelhárításához és megoldásához kapcsolatos problémák szerepelnek
 
@@ -28,15 +28,15 @@ ms.locfileid: "57405436"
 Csoport létrehozása a Powershell nem rendszergazdai felhasználók letiltása:
 1. Győződjön meg arról, hogy a nem rendszergazda felhasználók hozhatnak létre csoportokat:
    
-  ```
-  PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
-  ```
+   ```
+   PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
+   ```
   
 2. Ha a visszaadott érték `UsersPermissionToCreateGroupsEnabled : True`, akkor a nem rendszergazda jogosultságú felhasználók létrehozhatnak csoportokat. Ez a funkció letiltása:
   
-  ``` 
-  Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
-  ```
+   ``` 
+   Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
+   ```
 
 <br/>**A maximális csoportok hiba engedélyezett, ha a Powershell egy dinamikus csoport létrehozása során kapott**<br/>
 Ha egy üzenetet kap a Powershell jelző _max engedélyezett csoportok száma elérte a dinamikus csoportházirendek_, ez azt jelenti, hogy elérte a maximális korlát dinamikus csoportok a bérlőben. Bérlőnként dinamikus csoportok maximális száma érték az 5 000.
@@ -47,7 +47,7 @@ Minden olyan új dinamikus csoportok létrehozására, először szüksége néh
 
 **Konfiguráltam egy szabály a csoport, de a csoport frissítésére nincs tagságok**<br/>
 1. Ellenőrizze a felhasználó vagy a szabály lévő értékeket. Győződjön meg arról, vannak olyan felhasználók, amelyek megfelelnek a szabályt. Eszközökhöz ellenőrizze az eszköztulajdonságok annak érdekében, hogy minden szinkronizált attribútumok a várt értékeket tartalmazza.<br/>
-2. Ellenőrizze, győződjön meg arról, ha befejeződött a feldolgozási állapot a tagságát. Ellenőrizheti a [tagság a feldolgozási állapot](\groups-create-rule.md#check-processing-status-for-a-rule) és az utolsó frissítés dátuma a **áttekintése** a csoporthoz tartozó oldal.
+2. Ellenőrizze, győződjön meg arról, ha befejeződött a feldolgozási állapot a tagságát. Ellenőrizheti a [tagság a feldolgozási állapot](groups-create-rule.md#check-processing-status-for-a-rule) és az utolsó frissítés dátuma a **áttekintése** a csoporthoz tartozó oldal.
 
 Ha mindent rendben talál, engedélyezze a csoport feltöltése egy kis ideig. Az első feltöltésnél és szabálymódosítás után a bérlő méretétől függően ez akár 24 órát is jelenthet.
 

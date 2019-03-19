@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 8/22/2018
 ms.author: saurse
 ms.custom: mvc
-ms.openlocfilehash: 0664134e29f1b5a6ea6c4e100db925e9055d836d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: f5cfa3de962c51ac7ff43d9b83bdea9f408f5bcf
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57547928"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58097423"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Windows Server biztonsági mentése az Azure-ba
 
@@ -88,11 +88,11 @@ A Microsoft Azure Recovery Services- (MARS-) ügynök egy társítást hoz létr
 
 1. Keresse meg a letöltött **MARSagentinstaller.exe** fájlt, és kattintson rá duplán.
 2. Ekkor megjelenik a **Microsoft Azure Recovery Services-ügynök telepítővarázslója**. Amikor a varázsló kéri, adja meg az alábbi adatokat, majd kattintson a **Regisztráció** elemre.
-    - A telepítés és a gyorsítótár mappájának helye.
-    - A proxykiszolgáló információi, ha proxykiszolgálóval csatlakozik az internethez.
-    - Az Ön felhasználóneve és jelszava, ha hitelesített proxyt használ.
+   - A telepítés és a gyorsítótár mappájának helye.
+   - A proxykiszolgáló információi, ha proxykiszolgálóval csatlakozik az internethez.
+   - Az Ön felhasználóneve és jelszava, ha hitelesített proxyt használ.
 
-    ![infrastruktúra előkészítése](./media/tutorial-backup-windows-server-to-azure/mars-installer.png) 
+     ![infrastruktúra előkészítése](./media/tutorial-backup-windows-server-to-azure/mars-installer.png) 
 
 3. A varázsló befejezésekor kattintson a **Tovább a regisztrációra** elemre, és adja meg a **tároló hitelesítő adatait** tartalmazó fájlt, amelyet az előző eljárás során töltött le.
  

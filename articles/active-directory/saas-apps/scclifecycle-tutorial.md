@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8f682e0795f8f732805e817e4498cc486bbb2c6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6376a479d2e6969505310de0e8e73e74738a04c0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178464"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881325"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scc-lifecycle"></a>Oktatóanyag: Az Azure Active Directory-integráció SCC életciklusával
 
@@ -117,6 +117,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     a. Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe: `https://<sub-domain>.scc.com/ic7/welcome/customer/PICTtest.aspx`
 
     b. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-címe:
+    
     | |
     |--|--|
     | `https://bs1.scc.com/<entity>`|
@@ -135,8 +136,8 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
 
 1. Az egyszeri bejelentkezés konfigurálása **SCC életciklus** oldalon kell küldenie a letöltött **metaadatainak XML** való [SCC életciklus támogatási csapatának](mailto:lifecycle.support@scc.com). Akkor állítsa ezt a beállítást, hogy a SAML SSO-kapcsolat megfelelően állítsa be mindkét oldalon.
 
-  >[!NOTE]
-  >Egyszeri bejelentkezés engedélyezni kell a SCC életciklus támogatási csapat rendelkezik.
+   >[!NOTE]
+   >Egyszeri bejelentkezés engedélyezni kell a SCC életciklus támogatási csapat rendelkezik.
 
 > [!TIP]
 > Ezek az utasítások belül tömör verziója elolvashatja a [az Azure portal](https://portal.azure.com), míg a állítja be az alkalmazás!  Ez az alkalmazás hozzáadása után a **Active Directory > Vállalati alkalmazások** egyszerűen kattintson a **egyszeri bejelentkezés** lapra, és a beágyazott dokumentáció eléréséhez a  **Konfigurációs** alul található szakaszában. Tudjon meg többet a beágyazott dokumentáció szolgáltatásról ide: [Az Azure AD embedded dokumentációja]( https://go.microsoft.com/fwlink/?linkid=845985)

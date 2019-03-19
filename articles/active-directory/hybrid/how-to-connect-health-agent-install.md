@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 75e276cb0beb982d797fcf6816d84eae6b135b74
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 6d6e453819ad749972de89658fa695d803d8e222
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652280"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57898822"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Az Azure AD Connect Health-ügynök telepítése
 Ez a dokumentum végigvezeti az Azure AD Connect Health-ügynökök telepítésének és konfigurálásának folyamatán. Az ügynököt [innen](how-to-connect-install-roadmap.md#download-and-install-azure-ad-connect-health-agent) töltheti le.
@@ -235,6 +235,28 @@ Ha a konfigurációt elvégezte, ezeknek a szolgáltatásoknak már futniuk kell
 
 ![Az Azure AD Connect Health ellenőrzése](./media/how-to-connect-health-agent-install/aadconnect-health-adds-agent-install5.png)
 
+### <a name="quick-agent-installation-in-multiple-servers"></a>Gyors telepítésének több kiszolgáló
+1. Felhasználói fiók létrehozása az Azure AD-jelszó.
+2. Rendelje hozzá a **tulajdonos** a helyi AAD-fiókba a portálon keresztül az Azure AD Connect Health-szerepkör. Kövesse a lépéseket [Itt](how-to-connect-health-operations.md#manage-access-with-role-based-access-control). Rendelje hozzá a szerepkört minden szolgáltatáspéldány. 
+3. Az .exe MSI-fájlt a helyi tartományvezérlő telepítésének letöltéséhez.
+4. Futtassa a következő szkriptet a regisztrációhoz. Cserélje le a paramétereket a létrehozott új felhasználói fiókkal és a hozzá tartozó jelszót. 
+
+```
+AdHealthAddsAgentSetup.exe /quiet
+sleep 30
+$userName = "NEWUSER@DOMAIN"
+$secpasswd = ConvertTo-SecureString "PASSWORD" -AsPlainText -Force
+$myCreds = New-Object System.Management.Automation.PSCredential ($userName, $secpasswd)
+import-module "C:\Program Files\Azure Ad Connect Health Adds Agent\PowerShell\AdHealthAdds"
+ 
+Register-AzureADConnectHealthADDSAgent -UserPrincipalName $USERNAME -Credential $password
+
+```
+1. Ha elkészült, eltávolíthatja a hozzáférést a helyi fiók egy vagy több, a következő tevékenységek végrehajtásával: 
+    * A szerepkör-kijelölésének eltávolítása a helyi fiók az AAD Connect Health
+    * Forgatás az helyi fiók jelszavát. 
+    * Az AAD-helyi fiók letiltása
+    * Az AAD-helyi fiók törlése  
 
 ## <a name="agent-registration-using-powershell"></a>Ügynök regisztrációja a PowerShell használatával
 A megfelelő ügynökhöz tartozó setup.exe telepítése után a szerepkörtől függően a következő PowerShell-parancsokkal végezheti el az ügynök regisztrációját. Nyisson meg egy PowerShell-ablakot, és hajtsa végre a megfelelő parancsot:

@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: fbe865a5d9ef6c44b80c811a023c86f6446c3bb8
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: af1e65cc7dfe1a0934056ad141f4c62a96627bbb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233880"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58084132"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>A központi felhasználói felület konfigurálása
 
@@ -43,10 +43,10 @@ Egy üzemeltetett a webes alkalmazások felhasználói felületén konfigurálá
     
 5. Válasszon ki egy színtémát. Testre szabhatja a színeket az alkalmazás megfelelően kattintva **testreszabás téma**. Ha módosítani szeretné egy színt, vagy adja meg a szín HEXADECIMÁLIS RGB-értéke (például `#366eb8`), vagy kattintson a szín előzetes.
 
-  Megtekintheti a módosításokat a portál jobb oldalán. Kattintson a **visszaállítás alapértelmezettre** visszaáll az alapértelmezett színeket a kiválasztott téma a módosításokat.
+   Megtekintheti a módosításokat a portál jobb oldalán. Kattintson a **visszaállítás alapértelmezettre** visszaáll az alapértelmezett színeket a kiválasztott téma a módosításokat.
 
-  > [!NOTE]
-  > Vegye figyelembe a kisegítő lehetőségek, amikor kiválasztja a színeket.
+   > [!NOTE]
+   > Vegye figyelembe a kisegítő lehetőségek, amikor kiválasztja a színeket.
 
 6. A **további konfigurációs beállítások**, adja meg az alkalmazás megfelelő értékeket. Ezek a beállítások opcionálisak. Alkalmazza vagy eltávolítja azokat a hatását, olvassa el az előnézeti ablaktáblában láthatja a jobb oldalon. Elérhető konfigurációs lehetőségek közül választhat:  
 

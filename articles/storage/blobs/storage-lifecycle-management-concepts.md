@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/04/2018
 ms.author: yzheng
 ms.subservice: common
-ms.openlocfilehash: c126516f6a792a4e778e4b0f75b6a31960139ba8
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 93c19bc39f64df21dfa9db2490ab2103aba8191d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570011"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086105"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Az Azure Blob storage (előzetes verzió) életciklusának kezelése
 
@@ -100,7 +100,7 @@ az storage account management-policy show --resource-group [resourceGroupName] -
 ```
 
 > [!NOTE]
-Ha engedélyezi a tűzfalszabályok a tárfiók, lifecycle management kérelmek blokkolhatja. Ezek a kérelmek azáltal, hogy kivételek blokkolásának feloldásához. További információkért tekintse meg a kivételek szakaszában [tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
+> Ha engedélyezi a tűzfalszabályok a tárfiók, lifecycle management kérelmek blokkolhatja. Ezek a kérelmek azáltal, hogy kivételek blokkolásának feloldásához. További információkért tekintse meg a kivételek szakaszában [tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions).
 
 ## <a name="policy"></a>Szabályzat
 
@@ -190,7 +190,7 @@ Az előzetes időszakban érvényes szűrők a következők:
 | Szűrő neve | Szűrő típusa | Megjegyzések | Kötelező |
 |-------------|-------------|-------|-------------|
 | blobTypes   | Előre definiált enum értékek tömbje. | Az előzetes kiadás támogat `blockBlob`. | Igen |
-| prefixMatch | Meg kell egyeznie az előtagok karakterláncok tömbje. Előtag-karakterláncra tárolónévnek kell kezdődnie. Például, ha az összes BLOB alapján egyeztetni kívánt "https://myaccount.blob.core.windows.net/container1/foo/..." a szabály a prefixMatch van `container1/foo`. | Ha nem ad meg prefixMatch, a szabályok érvényesek lesznek a fiókban lévő összes BLOB. | Nem |
+| prefixMatch | Meg kell egyeznie az előtagok karakterláncok tömbje. Előtag-karakterláncra tárolónévnek kell kezdődnie. Például, ha az összes BLOB alapján egyeztetni kívánt "<https://myaccount.blob.core.windows.net/container1/foo/>..." a szabály a prefixMatch van `container1/foo`. | Ha nem ad meg prefixMatch, a szabályok érvényesek lesznek a fiókban lévő összes BLOB. | Nem |
 
 ### <a name="rule-actions"></a>A szabály műveletek
 
@@ -204,8 +204,8 @@ Előzetes verzióban elérhető az életciklus-felügyelet támogatja a rétegez
 | tierToArchive | Támogatja a gyors vagy lassú elérésű szint jelenleg a blobokhoz | Nem támogatott |
 | delete        | Támogatott                                   | Támogatott     |
 
->[!NOTE] 
-Ha egynél több művelet ugyanennek a blobnak a definiálja, életciklus-felügyelet a legkevésbé költséges művelet a blob vonatkozik. Ha például a művelet `delete` művelet olcsóbb `tierToArchive`. A művelet `tierToArchive` művelet olcsóbb `tierToCool`.
+> [!NOTE]
+> Ha egynél több művelet ugyanennek a blobnak a definiálja, életciklus-felügyelet a legkevésbé költséges művelet a blob vonatkozik. Ha például a művelet `delete` művelet olcsóbb `tierToArchive`. A művelet `tierToArchive` művelet olcsóbb `tierToCool`.
 
 Előzetes verzióban elérhető a művelet-végrehajtási feltételek kora alapulnak. Alap blobok az utolsó módosítás időpontja segítségével nyomon követheti a életkor és pillanatképek használatát a pillanatkép-létrehozás ideje blob-kor nyomon követéséhez.
 

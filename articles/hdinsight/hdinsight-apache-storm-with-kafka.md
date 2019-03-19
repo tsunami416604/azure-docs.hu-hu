@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 12/06/2018
-ms.openlocfilehash: 39ae76da197db0c2b4f494bd74b3c76e6ff27f8e
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: b6717bc76caffb9c4b6f7743cc5356a80a8f742b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576803"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58111854"
 ---
 # <a name="tutorial-use-apache-storm-with-apache-kafka-on-hdinsight"></a>Oktatóanyag: Az Apache Kafka on HDInsight az Apache Storm használata
 
@@ -400,26 +400,26 @@ Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Storm-fürtök 
     * Kafka on HDInsight 3.6-os verzió (három feldolgozó csomópont)
     * Storm on HDInsight 3.6-os verzió (három feldolgozó csomópont)
 
-  > [!WARNING]  
-  > A HDInsightban futó Kafka platform rendelkezésre állásának biztosításához fürtjének legalább három feldolgozó csomópontot kell tartalmaznia. A sablon egy három feldolgozó csomópontot tartalmazó Kafka-fürtöt hoz létre.
+   > [!WARNING]  
+   > A HDInsightban futó Kafka platform rendelkezésre állásának biztosításához fürtjének legalább három feldolgozó csomópontot kell tartalmaznia. A sablon egy három feldolgozó csomópontot tartalmazó Kafka-fürtöt hoz létre.
 
 2. A következő útmutatások mentén töltheti ki az **Egyéni üzembe helyezés** szakasz bejegyzéseit:
 
-    2. A következő információkkal töltheti ki a **Testreszabott sablon** szakaszban lévő bejegyzéseket:
+   1. A következő információkkal töltheti ki a **Testreszabott sablon** szakaszban lévő bejegyzéseket:
 
-    | Beállítás | Érték |
-    | --- | --- |
-    | Előfizetés | Az Azure-előfizetése |
-    | Erőforráscsoport | Az erőforrásokat tartalmazó erőforráscsoport. |
-    | Hely | Az az Azure-régió, amelyben az erőforrások létrejönnek. |
-    | Kafka-fürt neve | A Kafka-fürt neve. |
-    | Storm-fürt neve | A Storm-fürt neve. |
-    | Fürt bejelentkezési felhasználóneve | A fürtök rendszergazdai felhasználóneve. |
-    | Fürt bejelentkezési jelszava | A fürtök rendszergazdai felhasználójának jelszava. |
-    | SSH-felhasználónév | A fürtökhöz létrehozandó SSH-felhasználó. |
-    | SSH-jelszó | Az SSH-felhasználó jelszava. |
+      | Beállítás | Érték |
+      | --- | --- |
+      | Előfizetés | Az Azure-előfizetése |
+      | Erőforráscsoport | Az erőforrásokat tartalmazó erőforráscsoport. |
+      | Hely | Az az Azure-régió, amelyben az erőforrások létrejönnek. |
+      | Kafka-fürt neve | A Kafka-fürt neve. |
+      | Storm-fürt neve | A Storm-fürt neve. |
+      | Fürt bejelentkezési felhasználóneve | A fürtök rendszergazdai felhasználóneve. |
+      | Fürt bejelentkezési jelszava | A fürtök rendszergazdai felhasználójának jelszava. |
+      | SSH-felhasználónév | A fürtökhöz létrehozandó SSH-felhasználó. |
+      | SSH-jelszó | Az SSH-felhasználó jelszava. |
    
-    ![A sablon paramétereinek képe](./media/hdinsight-apache-storm-with-kafka/storm-kafka-template.png)
+      ![A sablon paramétereinek képe](./media/hdinsight-apache-storm-with-kafka/storm-kafka-template.png)
 
 3. Olvassa át a **használati feltételeket**, majd válassza az **Elfogadom a fenti feltételeket és kikötéseket** lehetőséget.
 
@@ -434,17 +434,17 @@ Azure-beli virtuális hálózat, majd az abban lévő Kafka- és Storm-fürtök 
 
 2. A **hdinsight-storm-java-kafka** könyvtárban fordítsa le a projektet a következő parancs használatával, és hozzon létre egy telepítési csomagot:
 
-  ```bash
-  mvn clean package
-  ```
+   ```bash
+   mvn clean package
+   ```
 
     A csomagolási folyamat egy `KafkaTopology-1.0-SNAPSHOT.jar` nevű fájlt hoz létre a `target` könyvtárban.
 
 3. Az alábbi parancsokkal másolja a csomagot a Storm on HDInsight-fürtre: Cserélje le az `sshuser` elemet a fürt SSH-felhasználónevére. Cserélje le a `stormclustername` elemet a __Storm__-fürt nevére.
 
-  ```bash
-  scp ./target/KafkaTopology-1.0-SNAPSHOT.jar sshuser@stormclustername-ssh.azurehdinsight.net:KafkaTopology-1.0-SNAPSHOT.jar
-  ```
+   ```bash
+   scp ./target/KafkaTopology-1.0-SNAPSHOT.jar sshuser@stormclustername-ssh.azurehdinsight.net:KafkaTopology-1.0-SNAPSHOT.jar
+   ```
 
     Ha a rendszer erre kéri, adja meg a fürtök létrehozásakor használt jelszót.
 
@@ -577,9 +577,9 @@ A Kafka az adatokat _témakörökben_ tárolja. A témakört még a Storm-fürt�
 
 1. Használja a következő parancsot a Storm-fürttel létesített SSH-munkameneten keresztül az olvasó topológia elindításához:
 
-  ```bash
-  storm jar KafkaTopology-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /reader.yaml --filter dev.properties
-  ```
+   ```bash
+   storm jar KafkaTopology-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /reader.yaml --filter dev.properties
+   ```
 
 2. Várjon egy percet, majd a következő paranccsal tekintse meg az olvasó topológia által létrehozott fájlokat:
 

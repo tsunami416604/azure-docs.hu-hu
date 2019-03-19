@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 20e8fe96e403156cd0662b5c8abe4971e1d02866
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 11021562cd34f31564e6b4c22fcd64aac25d3469
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771582"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57862063"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-webmethods-integration-cloud"></a>Oktatóanyag: WebMethods elemében integrációs Cloud az Azure Active Directory-integráció
 
@@ -107,6 +107,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés WebMethods elemében
     ![Integráció felhőalapú tartomány és URL-címek WebMethods elemében egyszeri bejelentkezési adatait](common/idp-intiated.png)
 
     a. Az a **azonosító** szövegmezőbe írja be a következő minta használatával URL-cím:
+
     | |
     |--|
     | `<SUBDOMAIN>.webmethodscloud.com` |
@@ -114,6 +115,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés WebMethods elemében
     | `<SUBDOMAIN>.webmethodscloud.de` |
 
     b. Az a **válasz URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím:
+
     | |
     |--|
     | `https://<SUBDOMAIN>.webmethodscloud.com/integration/live/saml/ssoResponse` |
@@ -125,6 +127,7 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés WebMethods elemében
     ![Integráció felhőalapú tartomány és URL-címek WebMethods elemében egyszeri bejelentkezési adatait](common/metadata-upload-additional-signon.png)
 
     Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-cím:
+    
     | |
     |--|
     | `https://<SUBDOMAIN>.webmethodscloud.com/integration/live/saml/ssoRequest` |
@@ -170,7 +173,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

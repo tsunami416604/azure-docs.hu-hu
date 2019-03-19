@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: 80fbc84c2284b7078b07040a74566cf1e8d57fb4
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 11b1b46e29ac9a4147c4dc319753edd0fadce8bc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341085"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088910"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>Fizikai kiszolgáló vészhelyreállításhoz használt konfigurációs kiszolgáló kezelése
 
@@ -50,7 +50,7 @@ A konfigurációs kiszolgáló telepítési fájl legújabb verzióját a Site R
 4. Az a **-kiszolgáló hozzáadása** lapon, a Letöltés gombra kattintva töltse le a Tárregisztrációs kulcsot. Regisztrálja az Azure Site Recovery szolgáltatás a konfigurációs kiszolgáló telepítése során szüksége lesz rá.
 5. Kattintson a **töltse le a Microsoft Azure Site Recovery egyesített telepítőjének** hivatkozást a konfigurációs kiszolgáló legújabb verziójának letöltéséhez.
 
-  ![Letöltési oldala](./media/physical-manage-configuration-server/downloadcs.png)
+   ![Letöltési oldala](./media/physical-manage-configuration-server/downloadcs.png)
 
 
 ## <a name="install-and-register-the-server"></a>Telepítse és regisztrálja a kiszolgálót
@@ -153,40 +153,40 @@ A konfigurációs kiszolgáló gép proxybeállításainak következőképpen m�
 3. Kattintson a **tár regisztrálása** fülre.
 4. Töltse le a tároló regisztrációs új fájlt a portálról, és adja meg az eszköz bemeneteként.
 
-  ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
+   ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
 5. Adja meg az új proxy adatait, majd kattintson a **regisztrálása** gombra.
 6. Nyisson meg egy rendszergazdai PowerShell-parancsablakot.
 7. Futtassa az alábbi parancsot:
 
-  ```PowerShell
-  $Pwd = ConvertTo-SecureString -String MyProxyUserPassword
-  Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $Pwd
-  net stop obengine
-  net start obengine
-  ```
+   ```PowerShell
+   $Pwd = ConvertTo-SecureString -String MyProxyUserPassword
+   Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $Pwd
+   net stop obengine
+   net start obengine
+   ```
 
-  >[!WARNING]
-  Ha további folyamatkiszolgálók a konfigurációs kiszolgáló csatlakoztatva van, akkor [javítsa ki a proxykiszolgáló beállításait a horizontális felskálázási folyamat összes kiszolgálójára](vmware-azure-manage-process-server.md#modify-proxy-settings-for-an-on-premises-process-server) a központi telepítésben.
+   > [!WARNING]
+   > Ha további folyamatkiszolgálók a konfigurációs kiszolgáló csatlakoztatva van, akkor [javítsa ki a proxykiszolgáló beállításait a horizontális felskálázási folyamat összes kiszolgálójára](vmware-azure-manage-process-server.md#modify-proxy-settings-for-an-on-premises-process-server) a központi telepítésben.
 
 ## <a name="reregister-a-configuration-server-with-the-same-vault"></a>Ugyanahhoz a tárolóhoz a konfigurációs kiszolgáló újraregisztrálása
-  1. Jelentkezzen be a konfigurációs kiszolgálóra.
-  2. Indítsa el a cspsconfigtool.exe használatával a parancsikont az asztalon.
-  3. Kattintson a **tár regisztrálása** fülre.
-  4. Töltsön le új regisztrációs fájlt a portálról, és adja meg az eszköz bemeneteként.
-        ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
-  5. Adja meg a proxykiszolgáló adatait, majd kattintson a **regisztrálása** gombra.  
-  6. Nyisson meg egy rendszergazdai PowerShell-parancsablakot.
-  7. A következő parancs futtatásával
+1. Jelentkezzen be a konfigurációs kiszolgálóra.
+2. Indítsa el a cspsconfigtool.exe használatával a parancsikont az asztalon.
+3. Kattintson a **tár regisztrálása** fülre.
+4. Töltsön le új regisztrációs fájlt a portálról, és adja meg az eszköz bemeneteként.
+      ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
+5. Adja meg a proxykiszolgáló adatait, majd kattintson a **regisztrálása** gombra.  
+6. Nyisson meg egy rendszergazdai PowerShell-parancsablakot.
+7. A következő parancs futtatásával
 
-      ```PowerShell
-      $Pwd = ConvertTo-SecureString -String MyProxyUserPassword
-      Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $Pwd
-      net stop obengine
-      net start obengine
-      ```
+    ```PowerShell
+    $Pwd = ConvertTo-SecureString -String MyProxyUserPassword
+    Set-OBMachineSetting -ProxyServer http://myproxyserver.domain.com -ProxyPort PortNumber –ProxyUserName domain\username -ProxyPassword $Pwd
+    net stop obengine
+    net start obengine
+    ```
 
-  >[!WARNING]
-  Ha több folyamatkiszolgáló rendelkezik, akkor [regisztrálja azokat](vmware-azure-manage-process-server.md#reregister-a-process-server).
+   > [!WARNING]
+   > Ha több folyamatkiszolgáló rendelkezik, akkor [regisztrálja azokat](vmware-azure-manage-process-server.md#reregister-a-process-server).
 
 ## <a name="register-a-configuration-server-with-a-different-vault"></a>Konfigurációs kiszolgáló regisztrálása másik tárolóval
 
@@ -246,22 +246,22 @@ A kiszolgáló frissítése a következőképpen:
 4. Kattintson a **Igen** annak a kiszolgálónak a törlés megerősítéséhez.
 
 ### <a name="uninstall-the-configuration-server-and-its-dependencies"></a>Távolítsa el a konfigurációs kiszolgáló és a hozzá tartozó függőségek
-  > [!TIP]
-  Ha azt tervezi, újra felhasználhatja az Azure Site Recovery a konfigurációs kiszolgálót, majd továbbléphet a 4. lépés közvetlenül
+> [!TIP]
+>   Ha azt tervezi, újra felhasználhatja az Azure Site Recovery a konfigurációs kiszolgálót, majd továbbléphet a 4. lépés közvetlenül
 
 1. Jelentkezzen be a konfigurációs kiszolgálóra rendszergazdaként.
 2. Nyisson meg Vezérlőpult > Program > Programok eltávolítása
 3. Távolítsa el a program a következő sorrendben:
-  * Microsoft Azure Recovery Services Agent
-  * A Microsoft Azure Site Recovery mobilitási szolgáltatás vagy fő célkiszolgálóként kiszolgáló
-  * A Microsoft Azure Site Recovery Provider
-  * A Microsoft Azure Site Recovery Configuration Server/folyamat Servernek
-  * A Microsoft Azure Site Recovery konfigurációs függőségei
-  * A MySQL-kiszolgáló egy 5.5-ös
+   * Microsoft Azure Recovery Services Agent
+   * A Microsoft Azure Site Recovery mobilitási szolgáltatás vagy fő célkiszolgálóként kiszolgáló
+   * A Microsoft Azure Site Recovery Provider
+   * A Microsoft Azure Site Recovery Configuration Server/folyamat Servernek
+   * A Microsoft Azure Site Recovery konfigurációs függőségei
+   * A MySQL-kiszolgáló egy 5.5-ös
 4. Futtassa a következő parancsot a és a rendszergazdai jogú parancssorban.
-  ```
-  reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration
-  ```
+   ```
+   reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration
+   ```
 
 ## <a name="delete-or-unregister-a-configuration-server-powershell"></a>Vagy a kiszolgáló regisztrációjának konfigurációs kiszolgáló (PowerShell)
 

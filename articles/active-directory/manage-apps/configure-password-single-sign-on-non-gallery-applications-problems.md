@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6bacefaada8ab0d63bb17d22f67b91c51a789de8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c769d241f54d5d86ef4954609eec555d8aab947a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172331"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57857997"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-a-non-gallery-application"></a>Jelszavas egyszeri bejelentkezés nem katalógusból származó alkalmazásra konfigurálása során
 
@@ -46,25 +46,25 @@ Az egyéni alkalmazások bejelentkezési mezők rögzítése két módja van:
 
 Konfigurálása **jelszóalapú egyszeri bejelentkezés** számára egy alkalmazást a **automatikus bejelentkezési mezők rögzítése**, kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdai** vagy **Társadminisztrátorként.**
+1. Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdai** vagy **Társadminisztrátorként.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
+2. Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
-3.  Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
+3. Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
 
-4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
+4. Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
 
-5.  Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
+5. Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
 
-  * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
+   * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
 
-6.  Válassza ki az alkalmazás egyszeri bejelentkezéshez konfigurálandó.
+6. Válassza ki az alkalmazás egyszeri bejelentkezéshez konfigurálandó.
 
-7.  Ha az alkalmazás betöltött, kattintson a **egyszeri bejelentkezési** az alkalmazás bal oldali navigációs menüjében.
+7. Ha az alkalmazás betöltött, kattintson a **egyszeri bejelentkezési** az alkalmazás bal oldali navigációs menüjében.
 
-8.  Válassza ki a módot **jelszóalapú bejelentkezés.**
+8. Válassza ki a módot **jelszóalapú bejelentkezés.**
 
-9.  Adja meg a **bejelentkezési URL-**, az URL-címet, amelyen a felhasználók megadják felhasználónevüket és jelszavukat való bejelentkezéshez. **Győződjön meg arról, a bejelentkezési mezők láthatók-e adnia URL-címen**.
+9. Adja meg a **bejelentkezési URL-**, az URL-címet, amelyen a felhasználók megadják felhasználónevüket és jelszavukat való bejelentkezéshez. **Győződjön meg arról, a bejelentkezési mezők láthatók-e adnia URL-címen**.
 
 10. Kattintson a **Mentés** gombra.
 
@@ -76,25 +76,25 @@ Bejelentkezési mezők manuális rögzítéséhez, először szüksége van a ho
 
 Konfigurálása **jelszóalapú egyszeri bejelentkezés** számára egy alkalmazást a **manuális bejelentkezési mezők rögzítése**, kövesse az alábbi lépéseket:
 
-1.  Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdai** vagy **Társadminisztrátorként.**
+1. Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdai** vagy **Társadminisztrátorként.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
+2. Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
-3.  Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
+3. Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
 
-4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
+4. Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
 
-5.  Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
+5. Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
 
    * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
 
-6.  Válassza ki az alkalmazás egyszeri bejelentkezéshez konfigurálandó.
+6. Válassza ki az alkalmazás egyszeri bejelentkezéshez konfigurálandó.
 
-7.  Ha az alkalmazás betöltött, kattintson a **egyszeri bejelentkezési** az alkalmazás bal oldali navigációs menüjében.
+7. Ha az alkalmazás betöltött, kattintson a **egyszeri bejelentkezési** az alkalmazás bal oldali navigációs menüjében.
 
-8.  Válassza ki a módot **jelszóalapú bejelentkezés.**
+8. Válassza ki a módot **jelszóalapú bejelentkezés.**
 
-9.  Adja meg a **bejelentkezési URL-**, az URL-címet, amelyen a felhasználók megadják felhasználónevüket és jelszavukat való bejelentkezéshez. **Győződjön meg arról, a bejelentkezési mezők láthatók-e adnia URL-címen**.
+9. Adja meg a **bejelentkezési URL-**, az URL-címet, amelyen a felhasználók megadják felhasználónevüket és jelszavukat való bejelentkezéshez. **Győződjön meg arról, a bejelentkezési mezők láthatók-e adnia URL-címen**.
 
 10. Kattintson a **Mentés** gombra.
 
@@ -174,21 +174,21 @@ Az alábbi közvetlen hivatkozások a Chrome és a Firefox is letöltheti a bőv
 
 Bármilyen portál értesítési részleteit az alábbi lépéseket követve tekintheti meg:
 
-1.  Kattintson a **értesítések** ikonra (harang) a jobb felső sarkában az Azure Portalon
+1. Kattintson a **értesítések** ikonra (harang) a jobb felső sarkában az Azure Portalon
 
-2.  Válassza ki az értesítésekhez egy **hiba** állapota (amelyek mellettük a piros (!)).
+2. Válassza ki az értesítésekhez egy **hiba** állapota (amelyek mellettük a piros (!)).
 
-  >! Megjegyzés:], nem kattintson az értesítések egy **sikeres** vagy **folyamatban lévő** állapota.
-  >
-  >
+   >! Megjegyzés:], nem kattintson az értesítések egy **sikeres** vagy **folyamatban lévő** állapota.
+   >
+   >
 
-3.  A **értesítés részletei** panel nyílik meg.
+3. A **értesítés részletei** panel nyílik meg.
 
-4.  Információk saját maga a hiba részleteinek megismeréséhez.
+4. Információk saját maga a hiba részleteinek megismeréséhez.
 
-5.  Ha segítségre van szüksége, a az adatokat megosztani a támogatási szakember vagy a termékcsoport kaphat segítséget a probléma megoldásában.
+5. Ha segítségre van szüksége, a az adatokat megosztani a támogatási szakember vagy a termékcsoport kaphat segítséget a probléma megoldásában.
 
-6.  Kattintson a **másolási** **ikon** jobb oldalán a **hiba másolása** megosztani egy támogatási vagy a termékverzió csoport szakértővel értesítési részleteinek másolása szövegmezőben.
+6. Kattintson a **másolási** **ikon** jobb oldalán a **hiba másolása** megosztani egy támogatási vagy a termékverzió csoport szakértővel értesítési részleteinek másolása szövegmezőben.
 
 ## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>Segítség kérése, ha a támogatási szakember küld értesítés részletei
 
@@ -226,7 +226,7 @@ Az alábbiakban azt ismerteti, több milyen az értesítés azt jelenti, hogy el
 
 -   **Egyszerű felhasználónév** – a műveletet végrehajtó felhasználó
 
-    -   – Példa **tperkins@f128.info**
+    -   Példa – **tperkins\@f128.info**
 
 -   **Bérlőazonosító** –, amelyek a műveletet végrehajtó felhasználó tagja volt. a bérlő egyedi azonosítója
 
@@ -240,11 +240,11 @@ Az alábbiakban azt ismerteti, több milyen az értesítés azt jelenti, hogy el
 
 -   **Megjelenítendő név** – **(üres is lehet)** a hiba részletes megjelenített neve
 
-    -   Példa * – **alkalmazásproxy-beállítások**
+    -   Példa – **alkalmazásproxy-beállítások**
 
 -   **Állapot** – az értesítésre adott állapota
 
-    -   Példa * – **nem sikerült**
+    -   Példa – **nem sikerült**
 
 -   **Objektumazonosító:** – **(üres is lehet)** az Objektumazonosító, amelyek hajtottak végre a műveletet
 
@@ -252,7 +252,7 @@ Az alábbiakban azt ismerteti, több milyen az értesítés azt jelenti, hogy el
 
 -   **Részletek** – a részletes Mi történt a művelet leírása
 
-    -   Példa – **belső URL-cím "https://bing.com/" értéke érvénytelen, mert már használatban van**
+    -   Példa – **belső URL-cím "<https://bing.com/>" értéke érvénytelen, mert már használatban van**
 
 -   **Másolási hiba** – kattintson a **másolás ikonra** jobb oldalán a **hiba másolása** szövegmező másolása egy támogatási vagy a termékverzió csoport mérnök megosztása az összes értesítés részletei
 

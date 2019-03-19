@@ -1,17 +1,17 @@
 ---
 title: Az Azure Cosmos DB index típusa
 description: Index típusú Azure Cosmos DB-ben – áttekintés
-author: rimman
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/5/2018
-ms.author: rimman
-ms.openlocfilehash: f45663fd0f63537f87ee4466ad5f17cce0bed6a3
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.date: 3/13/2019
+ms.author: mjbrown
+ms.openlocfilehash: 56c0fcb24ac5d255c6a36bcffd327df76f459963
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961720"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57990553"
 ---
 # <a name="index-types-in-azure-cosmos-db"></a>Az Azure Cosmos DB index típusa
 
@@ -19,30 +19,24 @@ Több lehetőség van, konfigurálhatja az indexelési házirendet az elérési 
 
 - **Adattípus:** Karakterlánc, szám, pont, Polygon vagy LineString (tartalmazhat elérési adattípus eszközönként csak egy bejegyzés).
 
-- **Index típusa:** Ujjlenyomat (egyenlőség lekérdezések), a tartomány (egyenlőség, tartomány vagy ORDER BY lekérdezések) vagy Spatial (térbeli lekérdezések).
+- **Index típusa:** Címtartomány (egyenlőség, tartomány vagy ORDER BY lekérdezések), vagy Spatial (térbeli lekérdezések).
 
-- **Pontosság:** Kivonatoló index Ez az érték 1-8 karakterláncok és a számok és az alapértelmezett érték 3. A tartomány index maximális pontosság értéke -1. 1 és 100 (maximális pontosság) karakterlánc vagy szám érték között változhat.
+- **Pontosság:** Egy tartomány index maximális pontosság értéke -1, ami egyben az alapértelmezett.
 
 ## <a name="index-kind"></a>Index típusa
 
-Az Azure Cosmos DB támogatja a kivonat index és tartományindexszel minden elérési utat, karakterlánc vagy szám adattípusok konfigurálható, illetve mindkettőt.
+Az Azure Cosmos DB támogatja a tartományindexszel minden elérési utat, karakterlánc vagy szám adattípusok konfigurálható, illetve mindkettőt.
 
-- **Kivonatoló index** hatékony egyenlőség és JOIN lekérdezéseket támogat. A legtöbb használati esetek kivonatindexek pontossága nagyobb, mint az alapértelmezett érték 3 bájt nem szükséges. Az adattípus karakterlánc vagy szám lehet.
-
-  > [!NOTE]
-  > Azure Cosmos-tárolók támogatják a egy új index elrendezést, amely már nem használ a kivonat index típusa. Ha megad egy kivonatot index szolgálhat a az indexelési házirendet, a CRUD-kérések a tárolón csendes figyelmen kívül hagyja az index típusa és a tárolóban csak válaszban tartomány index típusa. Az összes új Cosmos-tároló alapértelmezés szerint az új index elrendezés használják. 
-  
-- **Tartományindexszel** támogatja hatékony egyenlőség lekérdezéseket, a lekérdezések (használatával >, <>, =, < =,! =), és ORDER BY lekérdezések. Alapértelmezés szerint az ORDER By lekérdezések maximális pontosság (-1) is szükséges. Az adattípus karakterlánc vagy szám lehet.
+- **Tartományindexszel** támogatja a hatékony egyenlőség lekérdezéseket, a JOIN lekérdezéseket, a lekérdezések (használatával >, <>, =, < =,! =), és ORDER BY lekérdezések. Alapértelmezés szerint az ORDER By lekérdezések maximális pontosság (-1) is szükséges. Az adattípus karakterlánc vagy szám lehet.
 
 - **Térbeli index** támogatja a hatékony térbeli (belül és a távolság) lekérdezéseket. Az adattípus lehet pont, Polygon vagy LineString. Az Azure Cosmos DB is támogatja a térbeli index típusa minden elérési utat, amely a terjesztési pontok, Polygon, valamint LineString adattípusok adható meg. A megadott elérési úton értéke nem lehet például egy érvényes GeoJSON töredék {"type": "Pont", "koordináták": [0.0, 10.0]}. Az Azure Cosmos DB támogatja az automatikus indexelését, LineString, pontot és sokszög adattípusokat.
 
-Példa a lekérdezéseket, amelyek kivonata, tartomány, és a térbeli indexek is használható:
+Példa a lekérdezésekre, amely a címtartomány, és a térbeli indexek is használható:
 
 | **Index típusa** | **Leírás és használati eset** |
 | ---------- | ---------------- |
-| Kivonat  | Ujjlenyomat-keresztül/prop /? (vagy vagy) segítségével hatékonyan szolgálja ki a következő lekérdezéseket:<br><br>Válassza ki a gyűjtemény-c WHERE c.prop = "érték"<br><br>Kivonatoló keresztül/Kellékek / [] /? (és / vagy/Kellékek /) segítségével hatékonyan szolgálja ki a következő lekérdezéseket:<br><br>Válassza ki címkét a gyűjtemény c ILLESZTÉSI címke IN c.props WHERE címke = 5  |
-| Tartomány  | Tartomány/prop/keresztül? (vagy vagy) segítségével hatékonyan szolgálja ki a következő lekérdezéseket:<br><br>Válassza ki a gyűjtemény-c WHERE c.prop = "érték"<br><br>Válassza ki a gyűjtemény-c WHERE c.prop > 5<br><br>Válassza ki a gyűjtemény c ORDER BY c.prop   |
-| Térbeli     | Tartomány/prop/keresztül? (vagy vagy) segítségével hatékonyan szolgálja ki a következő lekérdezéseket:<br><br>Válassza ki a gyűjtemény c<br><br>HOL ST_DISTANCE (c.prop, {"type": "Pont", "koordináták": [0.0, 10.0]}) < 40<br><br>Válassza ki a gyűjtemény c ahol ST_WITHIN(c.prop, {"type": "Pontra:",...}) – az indexelést a pont van engedélyezve<br><br>Válassza ki a gyűjtemény c ahol ST_WITHIN({"type": "Sokszög",...}, c.prop) – az indexelést a sokszög engedélyezve van.     |
+| Tartomány      | Tartomány/prop/keresztül? (vagy vagy) segítségével hatékonyan szolgálja ki a következő lekérdezéseket:<br><br>Válassza ki a gyűjtemény-c WHERE c.prop = "érték"<br><br>Válassza ki a gyűjtemény-c WHERE c.prop > 5<br><br>Válassza ki a gyűjtemény c ORDER BY c.prop<br><br>Tartomány/Kellékek / [] keresztül /? (és / vagy/Kellékek /) segítségével hatékonyan szolgálja ki a következő lekérdezéseket:<br><br>Válassza ki címkét a gyűjtemény c ILLESZTÉSI címke IN c.props WHERE címke = 5  |
+| Térbeli    | Tartomány/prop/keresztül? (vagy vagy) segítségével hatékonyan szolgálja ki a következő lekérdezéseket:<br><br>Válassza ki a gyűjtemény c ahol ST_DISTANCE(c.prop, {"type": "Pont", "koordináták": [0.0, 10.0]}) < 40<br><br>Válassza ki a gyűjtemény c ahol ST_WITHIN(c.prop, {"type": "Pontra:",...}) – az indexelést a pont van engedélyezve<br><br>Válassza ki a gyűjtemény c ahol ST_WITHIN({"type": "Sokszög",...}, c.prop) – az indexelést a sokszög engedélyezve van. |
 
 ## <a name="default-behavior-of-index-kinds"></a>Index típusú az alapértelmezett viselkedés
 

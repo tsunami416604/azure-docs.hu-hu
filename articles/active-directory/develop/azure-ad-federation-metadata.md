@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4daf43ed1cf757e95ba2963e2a2f395788aed17
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fcabf51b3a368841f7f135a32c4824eb3db571ee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56179314"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57864932"
 ---
 # <a name="federation-metadata"></a>Összevonási metaadatok
 Az Azure Active Directory (Azure AD) tesz közzé egy összevonási metaadatok dokumentuma szolgáltatásokhoz, amelyek a biztonsági jogkivonatokat, amelyek az Azure AD kibocsát fogadására van konfigurálva. Összevonási metaadatok dokumentum formátuma leírtak a [Web Services Federation Language (WS-Federation) 1.2-es verziójában](https://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html), amely kiterjeszti a [OASIS a Security Assertion Markup Language (SAML) 2.0-smetaadatai](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf).
@@ -73,7 +73,7 @@ entityID="https://sts.windows.net/{tenant}/">
 ```
 
 ### <a name="token-signing-certificates"></a>Jogkivonat-aláíró tanúsítványok
-Amikor egy szolgáltatást kap egy jogkivonatot, amely egy Azure AD-bérlő által kiadott, a jogkivonat aláírása van közzétéve az összevonási metaadatok dokumentuma aláíró kulcs érvényesíteni kell. Az összevonási metaadatok tartalmazzák, amelyek biztosítják a bérlők a jogkivonat-aláíró tanúsítványok nyilvános részét. A tanúsítvány nyers bájt jelenik meg a `KeyDescriptor` elemet. A jogkivonat-aláíró tanúsítvány érvénytelen, csak akkor, ha az aláíráshoz értékét a `use` attribútum `signing`.
+Amikor egy szolgáltatás Azure AD-bérlő által kiadott jogkivonatot kap, a jogkivonat aláírása van közzétéve az összevonási metaadatok dokumentuma aláíró kulcs érvényesíteni kell. Az összevonási metaadatok tartalmazzák, amelyek biztosítják a bérlők a jogkivonat-aláíró tanúsítványok nyilvános részét. A tanúsítvány nyers bájt jelenik meg a `KeyDescriptor` elemet. A jogkivonat-aláíró tanúsítvány érvénytelen, csak akkor, ha az aláíráshoz értékét a `use` attribútum `signing`.
 
 Az Azure AD által közzétett összevonási metaadatok dokumentum rendelkezhet több aláírási kulcsokat, például amikor előkészíti a Azure ad-ben az aláíró tanúsítvány frissítését. Amikor egy összevonási metaadatok dokumentuma egynél több tanúsítvány is tartalmaz, egy szolgáltatás, amely érvényesíti a jogkivonatok támogatnia kell a összes tanúsítványt a dokumentumban.
 

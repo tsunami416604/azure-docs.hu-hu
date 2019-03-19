@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 08/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: bb00ef0f76b71d0a4748a319c9f2a5d64dffa251
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 2bec33a4a8540f9599cf1d479f1f59c4cde39bd2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233310"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57861587"
 ---
 # <a name="add-and-run-custom-code-snippets-in-azure-logic-apps-with-azure-functions"></a>Adja hozzá, és egyéni kódrészleteket futtat az Azure Logic Apps az Azure Functions használatával
 
-Ha szeretné futtatni, csak a megfelelő kód, amely egy adott feladat végrehajtja a logic Apps, hozhat létre saját együttműködik [Azure Functions](../azure-functions/functions-overview.md). Ez a szolgáltatás segítségével hozhat létre a Node.js, C# vagy F #-kódtöredékek, így nem kell a teljes alkalmazás vagy a kód futtatásához az infrastruktúra. Az Azure Functions biztosít a kiszolgáló nélküli számítási feladatokat a felhőben, és akkor hasznos, ha feladatok, például a következőket:
+Ha szeretné futtatni, csak a megfelelő kód, amely egy adott feladat végrehajtja a logic Apps, hozhat létre saját együttműködik [Azure Functions](../azure-functions/functions-overview.md). Ez a szolgáltatás segítségével hozhat létre a Node.js, C#, és F# kódrészletek, így nem kell a teljes alkalmazás vagy a kódja fut. infrastruktúráját. Az Azure Functions biztosít a kiszolgáló nélküli számítási feladatokat a felhőben, és akkor hasznos, ha feladatok, például a következőket:
 
 * Terjessze ki a logikai alkalmazás viselkedése, Node.js vagy a C#-függvényekkel.
 * Hajtsa végre a logikai alkalmazás munkafolyamatának számításokat.
@@ -44,7 +44,7 @@ Kövesse az ebben a cikkben, ezek az elemek szükségesek:
     A HTTP-eseményindító sablonját is fogadja el a tartalmat `application/json` írja be a logikai alkalmazás. 
     Egy Azure-függvényt ad hozzá a logikai alkalmazást, a Logic App Designerben jelenít meg az Azure-előfizetésen belül a sablonból létrehozott egyéni függvényekhez. 
 
-  * A függvény nem használ egyéni útvonalakat, kivéve, ha meghatározta- [OpenAPI-definíció](../azure-functions/functions-openapi-definition.md)nevén, egy [Swagger-fájl](http://swagger.io/). 
+  * A függvény nem használ egyéni útvonalakat, kivéve, ha meghatározta- [OpenAPI-definíció](../azure-functions/functions-openapi-definition.md)nevén, egy [Swagger-fájl](https://swagger.io/). 
   
   * A függvény definiálása OpenAPI-definíció, a Logic Apps Designerben biztosít sokoldalúbb felhasználói élményben függvény paraméterei való munkához. Mielőtt a logikai alkalmazás megtalálhatja és elérheti az OpenAPI-definíció rendelkező függvények [az alábbi lépéseket a függvényalkalmazás beállítása](#function-swagger).
 
@@ -52,7 +52,7 @@ Kövesse az ebben a cikkben, ezek az elemek szükségesek:
 
   Műveletek, amelyek futtathatók a Funkciók hozzáadása előtt a logikai alkalmazás egy eseményindítóval kell elindítania.
 
-  Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps](../logic-apps/logic-apps-overview.md) és [a rövid útmutató: az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+  Ha most ismerkedik a logic apps, tekintse át [Mi az Azure Logic Apps](../logic-apps/logic-apps-overview.md) és [a rövid útmutató: Az első logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
 <a name="create-function-external"></a>
 
@@ -67,7 +67,7 @@ Ha most ismerkedik az Azure functions létrehozása, megtudhatja, hogyan [az els
 
 <a name="function-swagger"></a>
 
-* Igény szerint ha Ön [API-definíció létrehozása](../azure-functions/functions-openapi-definition.md)nevén, egy [Swagger-fájl](http://swagger.io/), a függvény kap sokoldalúbb felhasználói élményben függvény paraméterei a Logic Apps Designerben való munka során. Állítsa be a függvényalkalmazást, így a logikai alkalmazás megkeresheti és használhatja a functions, amelyek rendelkeznek a Swagger-leírásai, kövesse az alábbi lépéseket:
+* Igény szerint ha Ön [API-definíció létrehozása](../azure-functions/functions-openapi-definition.md)nevén, egy [Swagger-fájl](https://swagger.io/), a függvény kap sokoldalúbb felhasználói élményben függvény paraméterei a Logic Apps Designerben való munka során. Állítsa be a függvényalkalmazást, így a logikai alkalmazás megkeresheti és használhatja a functions, amelyek rendelkeznek a Swagger-leírásai, kövesse az alábbi lépéseket:
 
   1. Győződjön meg arról, hogy a függvényalkalmazás aktívan fut-e.
 
@@ -125,11 +125,11 @@ Létrehozhat egy Azure-függvényt a logikai alkalmazás a Logic App Designerben
    * A logikai alkalmazás munkafolyamat meglévő lépéseivel, közötti vigye az egérmutatót a mutató nyílra, válassza a plusz (+) aláírására, és válassza ki **művelet hozzáadása**.
 
 3. A keresőmezőbe írja be az "azure functions" szűrőként.
-Válassza ezt a műveletet a műveletek listájának: **válassza ki az Azure-függvény – az Azure Functions** 
+A műveletek listából válassza a következő műveletet: **Válassza ki az Azure-függvény – az Azure Functions** 
 
    ![Keresse meg az "Azure functions"](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 
-4. A függvény alkalmazások listájában jelölje ki a függvényalkalmazást. A műveletek listájának megnyitása után válassza a következő műveletet: **Azure Functions – új függvény létrehozása**
+4. A függvény alkalmazások listájában jelölje ki a függvényalkalmazást. Miután megnyílik a műveletek listáját, válassza a következő műveletet: **Az Azure Functions – új függvény létrehozása**
 
    ![Válassza ki a függvényalkalmazást](./media/logic-apps-azure-functions/select-function-app-create-function.png)
 
@@ -181,7 +181,7 @@ Meglévő Azure-függvények hívása a logic apps, az Azure functions, mint bá
 2. A lépés, ahol szeretné adja hozzá a függvényt, alatt válassza ki a **új lépés** > **művelet hozzáadása**. 
 
 3. A keresőmezőbe írja be az "azure functions" szűrőként.
-Válassza ezt a műveletet a műveletek listájának: **válassza ki az Azure-függvény – az Azure Functions** 
+A műveletek listából válassza a következő műveletet: **Válassza ki az Azure-függvény – az Azure Functions** 
 
    ![Keresse meg az "Azure functions"](./media/logic-apps-azure-functions/find-azure-functions-action.png)
 

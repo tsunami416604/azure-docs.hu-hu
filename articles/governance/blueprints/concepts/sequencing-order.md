@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: bd12aabf0ca8f82261e6b3c677d7306ee46c4171
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: b3adec799da582dc30ecd716a530ca6032f5c2e4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53308617"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57990569"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Az Azure-tervek telepítési sorrendjét ismertetése
 
@@ -112,8 +112,8 @@ Ha az összetevő függ, amely nem módosítható az alapértelmezett sorrend de
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudnivalók a [tervek életciklusáról](lifecycle.md)
-- A [statikus és dinamikus paraméterek](parameters.md) használatának elsajátítása
-- A [tervek erőforrás-zárolásának](resource-locking.md) alkalmazásával kapcsolatos részletek
-- A [meglévő hozzárendelések frissítésének](../how-to/update-existing-assignments.md) elsajátítása
-- A tervek hozzárendelése során felmerülő problémák megoldása [általános hibaelhárítással](../troubleshoot/general.md)
+- További információ a [életciklus-tervezetet](lifecycle.md).
+- Megtudhatja, hogyan használhatja [statikus és dinamikus paraméterek](parameters.md).
+- Ismerje meg, győződjön meg arról, hogyan használhatja az [tervezetet erőforrás zárolása](resource-locking.md).
+- Ismerje meg, hogyan [meglévő hozzárendelések frissítése](../how-to/update-existing-assignments.md).
+- A tervrajz hozzárendelésének során felmerülő problémák megoldása [általános hibaelhárítási](../troubleshoot/general.md).

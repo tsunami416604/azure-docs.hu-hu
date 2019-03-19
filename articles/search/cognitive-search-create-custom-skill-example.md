@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 06/29/2018
+ms.date: 03/12/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 892e47d87fef482c6f655473278baeb5525ee09e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: f3b4e6cd18a362775443bb296560a076aaa1497d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760027"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57883627"
 ---
 # <a name="example-create-a-custom-skill-using-the-text-translate-api"></a>Példa: Hozzon létre egy egyéni ismeretek a szöveg lefordítása API-val
 
@@ -39,7 +39,7 @@ Bár ebben a példában egy Azure-függvényt használ a webes API-k üzemeltet�
 
 1. Új projekt párbeszédpanelen válassza ki a **telepített**, bontsa ki a **Visual C#** > **felhőalapú**, jelölje be **Azure Functions**, adjon meg egy A projekt nevét, és válassza ki **OK**. A függvényalkalmazás nevének egy C#-névtérként is érvényesnek kell lennie, ezért ne használjon aláhúzásjeleket, kötőjeleket vagy más nem alfanumerikus karaktereket.
 
-1. Válassza ki **az Azure Functions v2 (.Net Core)**. Az 1. verzió is megteheti, de a kódot írt alá a v2 sablonon alapul.
+1. Válassza ki **az Azure Functions v2 (.NET Core)**. Az 1. verzió is megteheti, de a kódot írt alá a v2 sablonon alapul.
 
 1. Válassza ki a kívánt **HTTP-eseményindító**
 

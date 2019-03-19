@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 0f500ec776d90755d6738af80c34866105d354f5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: ff7bb6fa087ab7fa362c13ca03d6f3100a505ce3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999402"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57858957"
 ---
 # <a name="managing-media-services-entities-with-rest"></a>A Media Services REST-tel entitáskezelésről  
 
@@ -29,7 +29,7 @@ ms.locfileid: "55999402"
 > 
 > 
 
-Microsoft Azure Media Services egy olyan REST-alapú szolgáltatás, OData v3 épül. Adja hozzá, lekérdezés, frissítése és entitások törlése a szinte ugyanúgy, mint a többi OData-szolgáltatás. Kivételek tüntetünk fel, ha az alkalmazható. Az OData további információkért lásd: [Open Data Protocol dokumentáció](http://www.odata.org/documentation/).
+Microsoft Azure Media Services egy olyan REST-alapú szolgáltatás, OData v3 épül. Adja hozzá, lekérdezés, frissítése és entitások törlése a szinte ugyanúgy, mint a többi OData-szolgáltatás. Kivételek tüntetünk fel, ha az alkalmazható. Az OData további információkért lásd: [Open Data Protocol dokumentáció](https://www.odata.org/documentation/).
 
 Ez a témakör bemutatja, hogyan a REST-tel az Azure Media Services-entitások kezelését.
 

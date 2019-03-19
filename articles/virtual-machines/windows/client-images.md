@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: eb227b4b4cbdc40a4e708726bbe0f5d0c7eacb74
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: f791b17f2729af3efd2dff5d7884a168f8377154
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49364672"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999752"
 ---
 # <a name="use-windows-client-in-azure-for-devtest-scenarios"></a>Windows-ügyfél használata az Azure-ban fejlesztési/tesztelési célra
 Használhatja a Windows 7, Windows 8, Windows 10 Enterprise (x64) az Azure-ban fejlesztési/tesztelési célra Ön által vagy egy megfelelő (korábbi nevén MSDN) a Visual Studio-előfizetéssel rendelkezik. Ez a cikk ismerteti a megfelelőségi feltételek Windows 7, Windows 8.1, Windows 10 Enterprise futtatásához az Azure és a következő Azure-katalógus-rendszerképek használata.
@@ -41,7 +41,7 @@ Az alábbi táblázat ismerteti az ajánlat azonosítók, amelyek jogosultak arr
 
 | Csomag neve | Csomag száma | Rendelkezésre álló ügyfélkezelési képek |
 |:--- |:---:|:---:|
-| [Fejlesztés/tesztelés használatalapú fizetéssel](https://azure.microsoft.com/offers/ms-azr-0023p/) |0023P |Windows 10 |
+| [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/) |0023P |Windows 10 |
 | [A Visual Studio Enterprise (MPN) előfizetők](https://azure.microsoft.com/offers/ms-azr-0029p/) |0029P |Windows 10 |
 | [A Visual Studio Professional-előfizetők](https://azure.microsoft.com/offers/ms-azr-0059p/) |0059P |Windows 10 |
 | [A Visual Studio Test Professional-előfizetők](https://azure.microsoft.com/offers/ms-azr-0060p/) |0060P |Windows 10 |
@@ -59,7 +59,7 @@ Ha nem ismeri az ajánlat azonosítója, szerezheti be azt az Azure Portalon az 
 
 - Vagy kattintson **számlázási** és kattintson az előfizetési azonosítóját. Az ajánlat azonosítója megjelenik a *számlázási* ablak.
 
-Az ajánlat Azonosítót a is megtekintheti a ["Előfizetések" lapon](http://account.windowsazure.com/Subscriptions) az Azure-fiókportál:
+Az ajánlat Azonosítót a is megtekintheti a ["Előfizetések" lapon](https://account.windowsazure.com/Subscriptions) az Azure-fiókportál:
 
 ![Az Azure fiókportálon ajánlat részleteit](./media/client-images/offer-id-azure-account-portal.png) 
 

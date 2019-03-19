@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9456f2bf314e827b27940515891e441433c1a88
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 6e6655c1f67b5655dbde8c04f09a664f64350e3d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57402843"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57856005"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ariba"></a>Oktatóanyag: Az Azure Active Directory integrációja az Aribát
 
@@ -106,6 +106,7 @@ Az Azure AD egyszeri bejelentkezés konfigurálása az Aribát, hajtsa végre az
     ![Aribát tartomány és URL-címeket egyetlen bejelentkezési adatait](common/sp-identifier.png)
 
     a. Az a **bejelentkezési URL-cím** szövegmezőbe írja be a következő minta használatával URL-cím:
+    
     | |
     |--|
     | `https://<subdomain>.sourcing.ariba.com` |
@@ -142,7 +143,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/09/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 386662a4e98b881228a82de3777632ed002bb5b0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: d1ecac243ee4cfd3385d0fc69c9ce7c9e2afd95c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989152"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898839"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Azure Webhookok használata a .NET-keretrendszerrel történő Media Services feladatértesítések figyelése 
 
@@ -49,7 +49,7 @@ Az ismertetett eljárás végrehajtásához a következők szükségesek:
 
 ## <a name="create-a-function-app"></a>Függvényalkalmazás létrehozása
 
-1. Nyissa meg az [Azure Portalt](http://portal.azure.com), és jelentkezzen be az Azure-fiókjával.
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com), és jelentkezzen be az Azure-fiókjával.
 2. Hozzon létre egy függvényalkalmazást, amint [Itt](../../azure-functions/functions-create-function-app-portal.md).
 
 ## <a name="configure-function-app-settings"></a>A funkció beállításainak konfigurálása
@@ -379,22 +379,22 @@ Ebben a szakaszban a kódot, amely egy feladatot ad hozzá egy webhook értesít
 2. Használat [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices) Azure Media Services telepítéséhez.
 3. Frissítse az App.config fájlt a megfelelő értékekre: 
     
-    * Az Azure Media Services kapcsolatadatok 
-    * webhook URL-CÍMÉT, amely várhatóan az értesítések küldése 
-    * az aláíró kulcs, amely megfelel a kulcs, amelyet a webhook vár. Az aláíró kulcs értéke 64 bájt méretű Base64-kódolású, amellyel védelmében a webhookok visszahívások az Azure Media Services. 
+   * Az Azure Media Services kapcsolatadatok 
+   * webhook URL-CÍMÉT, amely várhatóan az értesítések küldése 
+   * az aláíró kulcs, amely megfelel a kulcs, amelyet a webhook vár. Az aláíró kulcs értéke 64 bájt méretű Base64-kódolású, amellyel védelmében a webhookok visszahívások az Azure Media Services. 
 
-    ```xml
-            <appSettings>
-                <add key="AMSAADTenantDomain" value="domain" />
-                <add key="AMSRESTAPIEndpoint" value="endpoint" />
+     ```xml
+           <appSettings>
+               <add key="AMSAADTenantDomain" value="domain" />
+               <add key="AMSRESTAPIEndpoint" value="endpoint" />
 
-                <add key="AMSClientId" value="clinet id" />
-                <add key="AMSClientSecret" value="client secret" />
+               <add key="AMSClientId" value="clinet id" />
+               <add key="AMSClientSecret" value="client secret" />
 
-                <add key="WebhookURL" value="https://yourapp.azurewebsites.net/api/functionname?code=ApiKey" />
-                <add key="WebhookSigningKey" value="j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt" />
-            </appSettings>
-    ```
+               <add key="WebhookURL" value="https://yourapp.azurewebsites.net/api/functionname?code=ApiKey" />
+               <add key="WebhookSigningKey" value="j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt" />
+           </appSettings>
+     ```
 
 4. A Program.cs fájlban frissítse a következő kóddal:
 

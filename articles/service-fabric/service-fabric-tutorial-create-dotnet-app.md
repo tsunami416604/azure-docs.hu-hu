@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/14/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 038a70f5cce5b78f6c0e95316e66de42fa529954
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 7432cbf8fae098c0753641f2002b72eaab3ddbb4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321738"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57851363"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Oktatóanyag: Alkalmazás létrehozása és üzembe helyezése egy ASP.NET Core Web API kezelőfelületi szolgáltatás és egy állapotalapú háttérszolgáltatás segítségével
 
@@ -187,7 +187,7 @@ Nyissa meg a **Views/Shared/_Layout.cshtml** fájlt, amely az ASP.NET-alkalmazá
 
 ```html
 <!DOCTYPE html>
-<html ng-app="VotingApp" xmlns:ng="http://angularjs.org">
+<html ng-app="VotingApp" xmlns:ng="https://angularjs.org">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -621,22 +621,22 @@ Ha szeretné megtekinteni, hogy mi történik a kódban, hajtsa végre a követk
 4. Térjen vissza a böngészőhöz, és kattintson egy szavazási lehetőségre vagy adjon meg egy újat. Az első töréspont a webes kezelőfelület API-vezérlőjében jelentkezik.
     
 
-    1. A böngészőben futó JavaScript ekkor küld kérelmet a webes kezelőfelületi szolgáltatás API-vezérlőjének.
+   1. A böngészőben futó JavaScript ekkor küld kérelmet a webes kezelőfelületi szolgáltatás API-vezérlőjének.
 
-    ![Szavazási kezelőfelületi szolgáltatás hozzáadása](./media/service-fabric-tutorial-create-dotnet-app/addvote-frontend.png)
+      ![Szavazási kezelőfelületi szolgáltatás hozzáadása](./media/service-fabric-tutorial-create-dotnet-app/addvote-frontend.png)
 
-    2. Elsőként hozza létre a ReverseProxyra mutató URL-címet a háttérszolgáltatás számára **(1)**.
-    3. Ezután küldje el a HTTP PUT kérelmet a ReverseProxyhoz **(2)**.
-    4. Végül küldje vissza a választ a háttérszolgáltatásból az ügyfélhez **(3)**.
+   2. Elsőként hozza létre a ReverseProxyra mutató URL-címet a háttérszolgáltatás számára **(1)**.
+   3. Ezután küldje el a HTTP PUT kérelmet a ReverseProxyhoz **(2)**.
+   4. Végül küldje vissza a választ a háttérszolgáltatásból az ügyfélhez **(3)**.
 
 5. A folytatáshoz nyomja le az **F5** billentyűt.
-    1. Ezzel elérte a háttérszolgáltatás töréspontját.
+   1. Ezzel elérte a háttérszolgáltatás töréspontját.
 
-    ![Szavazási háttérszolgáltatás hozzáadása](./media/service-fabric-tutorial-create-dotnet-app/addvote-backend.png)
+      ![Szavazási háttérszolgáltatás hozzáadása](./media/service-fabric-tutorial-create-dotnet-app/addvote-backend.png)
 
-    2. A metódus első sorában **(1)** a `StateManager` használatával egy `counts` nevű megbízható szótárt kérhet le vagy adhat hozzá.
-    3. A megbízható szótárakban tárolt értékekkel folytatott mindennemű interakcióhoz tranzakcióra van szükség, amelyet ez a using utasítás **(2)** hoz létre.
-    4. A tranzakcióban frissítse a szavazási lehetőséghez tartozó kulcs értékét, majd véglegesítse a műveletet **(3)**. Ha a véglegesítési metódus visszatért, az adatok frissülnek a szótárban, és a fürt egyéb csomópontjaira is replikálódnak. Az adatok ettől fogva biztonságosan tárolódnak a fürtön, és a háttérszolgáltatás feladatait más csomópontok is átvehetik, míg az adatok továbbra is elérhetők maradnak.
+   2. A metódus első sorában **(1)** a `StateManager` használatával egy `counts` nevű megbízható szótárt kérhet le vagy adhat hozzá.
+   3. A megbízható szótárakban tárolt értékekkel folytatott mindennemű interakcióhoz tranzakcióra van szükség, amelyet ez a using utasítás **(2)** hoz létre.
+   4. A tranzakcióban frissítse a szavazási lehetőséghez tartozó kulcs értékét, majd véglegesítse a műveletet **(3)**. Ha a véglegesítési metódus visszatért, az adatok frissülnek a szótárban, és a fürt egyéb csomópontjaira is replikálódnak. Az adatok ettől fogva biztonságosan tárolódnak a fürtön, és a háttérszolgáltatás feladatait más csomópontok is átvehetik, míg az adatok továbbra is elérhetők maradnak.
 6. A folytatáshoz nyomja le az **F5** billentyűt.
 
 A hibakeresési munkamenet leállításához nyomja le a **Shift+F5** billentyűkombinációt.

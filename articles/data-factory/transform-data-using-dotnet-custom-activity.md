@@ -11,12 +11,12 @@ ms.date: 11/26/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: d68910c32c53128704004d356062aca2c328e7d5
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 849f944235cf1ab4408aeab336310028d6e754f4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576701"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855869"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Egyéni tevékenységek használata Azure Data Factory-folyamatban
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -324,9 +324,9 @@ A típus tulajdonságai *SecureString* az egyéni tevékenységek, olvassa el a 
 
 ## <a name="compare-v2-v1"></a> Hasonlítsa össze a v2 egyéni tevékenységei és verzió 1 (egyéni) DotNet tevékenységi
 
-Az Azure Data Factory 1. verziójának meg, hogy egy (egyéni) DotNet tevékenységi létrehoz egy .net osztálytár projektek egy olyan osztállyal, amely megvalósítja a `Execute` módszere a `IDotNetActivity` felületet. A társított szolgáltatások, adatkészletek és a egy (egyéni) DotNet tevékenységi JSON hasznos az Extended Properties továbbítódnak a végrehajtási módszer szigorú típusmegadású objektumként. Az 1. verziójának működéssel kapcsolatos részletekért lásd: [az 1. verzió (egyéni) DotNet](v1/data-factory-use-custom-activities.md). Ez a megvalósítás miatt az 1. verziójának DotNet tevékenységi kódokat, amelyekre a .NET-keretrendszer 4.5.2-es rendelkezik. Az 1. verziójának DotNet tevékenységi is rendelkezik Windows-alapú Azure Batch Pool-csomópontokon kell végrehajtani.
+Az Azure Data Factory 1. verziójának meg, hogy egy (egyéni) DotNet tevékenységi létrehozása a .NET-osztálytár projektek egy olyan osztállyal, amely megvalósítja a `Execute` módszere a `IDotNetActivity` felületet. A társított szolgáltatások, adatkészletek és a egy (egyéni) DotNet tevékenységi JSON hasznos az Extended Properties továbbítódnak a végrehajtási módszer szigorú típusmegadású objektumként. Az 1. verziójának működéssel kapcsolatos részletekért lásd: [az 1. verzió (egyéni) DotNet](v1/data-factory-use-custom-activities.md). Ez a megvalósítás miatt az 1. verziójának DotNet tevékenységi kódokat, amelyekre a .NET-keretrendszer 4.5.2-es rendelkezik. Az 1. verziójának DotNet tevékenységi is rendelkezik Windows-alapú Azure Batch Pool-csomópontokon kell végrehajtani.
 
-Az Azure Data Factory V2 egyéni tevékenységei a meg nem kell .net felületet megvalósítani. Most közvetlenül futtathat parancsokat, parancsprogramok és végrehajtható fájlként összeállított, saját egyéni kódot. Ez a megvalósítás konfigurálásához adja meg a `Command` tulajdonsággal együtt a `folderPath` tulajdonság. Az egyéni tevékenység feltölti a végrehajtható fájlt, és annak függőségeit, `folderpath` és végrehajtja a parancsot az Ön számára.
+Az Azure Data Factory V2 egyéni tevékenységei a meg nem kell .NET felületet megvalósítani. Most közvetlenül futtathat parancsokat, parancsprogramok és végrehajtható fájlként összeállított, saját egyéni kódot. Ez a megvalósítás konfigurálásához adja meg a `Command` tulajdonsággal együtt a `folderPath` tulajdonság. Az egyéni tevékenység feltölti a végrehajtható fájlt, és annak függőségeit, `folderpath` és végrehajtja a parancsot az Ön számára.
 
 A társított szolgáltatások, a (referenceObjects meghatározott) adatkészletek és a egy Data Factory v2 egyéni tevékenységei JSON-fájlként is hozzáférhet a végrehajtható fájlt a JSON hasznos kiterjesztett tulajdonságok. A szükséges tulajdonságait egy JSON-szerializáló, ahogyan az előző SampleApp.exe munkafüzetkód-példát használatával is elérheti.
 
@@ -337,18 +337,18 @@ A következő táblázat ismerteti a Data Factory V2 egyéni tevékenységei és
 
 |Különbségek      | Egyéni tevékenység      | verzió 1 (egyéni) DotNet tevékenységi      |
 | ---- | ---- | ---- |
-|Hogyan egyéni logikát van definiálva.      |Azáltal, hogy egy végrehajtható fájl      |Egy .net DLL-fájl végrehajtása      |
+|Hogyan egyéni logikát van definiálva.      |Azáltal, hogy egy végrehajtható fájl      |Egy .NET-DLL-fájl végrehajtása      |
 |Az egyéni logikát végrehajtási környezetbe      |Windows vagy Linux rendszeren      |Windows (.NET-keretrendszer 4.5.2-es verziója)      |
-|Szkriptek végrehajtása      |Parancsfájlok közvetlenül (például "cmd /c echo hello world" Windows virtuális gépeken) végrehajtása támogatja      |Szükséges a .NET-keretrendszerben dll-fájl végrehajtása      |
+|Szkriptek végrehajtása      |Parancsfájlok közvetlenül (például "cmd /c echo hello world" Windows virtuális gépeken) végrehajtása támogatja      |Szükséges végrehajtása a .NET-DLL-ben      |
 |Adatkészlet szükséges      |Optional      |Összekapcsolja a tevékenységek információkezelési és -átadási szükséges      |
 |A tevékenység át adatokat egyéni logikát      |ReferenceObjects (LinkedServices és adatkészletek) és ExtendedProperties (egyéni tulajdonságok)      |ExtendedProperties (egyéni tulajdonságokat), bemeneti és kimeneti adatkészletek      |
-|Az egyéni logikát információk lekéréséhez      |Elemzi a activity.json linkedServices.json és a végrehajtható fájl ugyanabban a mappában tárolt datasets.json      |.Net SDK-t (a .net 4.5.2-es. képkocka) keresztül      |
-|Naplózás      |Az STDOUT közvetlenül ír      |Végrehajtási naplózó .net DLL-ben      |
+|Az egyéni logikát információk lekéréséhez      |Elemzi a activity.json linkedServices.json és a végrehajtható fájl ugyanabban a mappában tárolt datasets.json      |.NET SDK-val (a .NET 4.5.2-es. képkocka) keresztül      |
+|Naplózás      |Az STDOUT közvetlenül ír      |Végrehajtási naplózó dll .NET-ben      |
 
 
-Ha rendelkezik meglévő .net-kódot írni a verziók 1 (egyéni) DotNet tevékenységi, módosítania a kódot, hogy az egyéni tevékenység az aktuális verzióval működjön. A kód frissítése a következő általános irányelveket:
+Ha rendelkezik meglévő .NET-kódot írni a verziók 1 (egyéni) DotNet tevékenységi, módosítania a kódot, hogy az egyéni tevékenység az aktuális verzióval működjön. A kód frissítése a következő általános irányelveket:
 
-  - A projekt módosítása a .net osztálytár, egy Konzolalkalmazást.
+  - A projekt módosítása a .NET osztálytár, egy Konzolalkalmazást.
   - Indítsa el az alkalmazás a `Main` metódust. A `Execute` módszere a `IDotNetActivity` felület már nem szükséges.
   - Olvassa el, és elemezni a társított szolgáltatások, adatkészletek és a tevékenység a JSON szerializálót, valamint nem szigorú típusmegadású objektumok. Adja meg a szükséges tulajdonság értékét az fő egyéni kód logikára. Tekintse meg példaként a fenti SampleApp.exe kód.
   - A naplózó objektum már nem támogatott. A konzol kimenete a végrehajtható fájl nyomtatható és stdout.txt menti.

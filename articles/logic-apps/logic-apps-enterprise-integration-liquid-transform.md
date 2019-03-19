@@ -5,17 +5,16 @@ services: logic-apps
 ms.service: logic-apps
 author: divyaswarnkar
 ms.author: divswa
-manager: jeconnoc
 ms.reviewer: estfan, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/16/2018
-ms.openlocfilehash: d607c75bc451774e6bf269eb658236d93a85021f
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 3441350a07047676ac43de23262be6c54912162c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54854377"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104165"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>Folyékony sablonokkal speciális JSON csatlakoztatva átalakításokat hajthattak végre az Azure Logic Appsben
 
@@ -35,8 +34,7 @@ Tehát Liquid átalakítás végrehajtásához a logikai alkalmazásban, elősz�
 
 ## <a name="create-liquid-template-or-map-for-your-integration-account"></a>Folyékony sablon vagy az integrációs fiók térkép létrehozása
 
-1. Ebben a példában létre ebben a lépésben ismertetett Liquid mintasablon.
-Ha szeretné használni a szűrők a Liquid sablonban, ellenőrizze, hogy ezeket a szűrőket kezdje a nagybetűk. Tudjon meg többet [folyadék szűri](https://shopify.github.io/liquid/basics/introduction/#filters), mely használata [DotLiquid](https://dotliquidmarkup.org/) és C# elnevezési konvenciói.
+1. Ebben a példában létre ebben a lépésben ismertetett Liquid mintasablon. Használhatja a Liquid sablonban [folyadék szűri](https://shopify.github.io/liquid/basics/introduction/#filters), mely használata [DotLiquid](https://dotliquidmarkup.org/) és C# elnevezési konvenciói. Azonban győződjön meg arról, hogy *szűrő neve kezdődhet nagybetűket*, nem kisbetűs karaktereket. 
 
    ```json
    {%- assign deviceList = content.devices | Split: ', ' -%}
@@ -82,7 +80,8 @@ Ha szeretné használni a szűrők a Liquid sablonban, ellenőrizze, hogy ezeket
 
 2. A Logic App Designerben adja hozzá a [kérelem típusú trigger](../connectors/connectors-native-reqres.md#use-the-http-request-trigger) a logikai alkalmazáshoz.
 
-3. Az eseményindító területén válassza a **új lépés**. A keresőmezőbe írja be a "folyadék" szűrőként, és válassza a következő műveletet: **JSON - folyadék JSON-átalakítás**
+3. Az eseményindító területén válassza a **új lépés**. 
+   A keresőmezőbe írja be a "folyadék" szűrőként, és válassza a következő műveletet: **JSON - folyadék JSON-átalakítás**
 
    ![Keresse meg és válassza ki a Liquid műveletet](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 
@@ -101,7 +100,7 @@ Ha szeretné használni a szűrők a Liquid sablonban, ellenőrizze, hogy ezeket
 
    2. Az a **válasszon egy integrációs fiókot** listában válassza ki az integrációs fiókot, és válassza a **mentése**.
 
-     ![Logikai alkalmazás összekapcsolása az integrációs fiók](./media/logic-apps-enterprise-integration-liquid-transform/link-integration-account.png)
+      ![Logikai alkalmazás összekapcsolása az integrációs fiók](./media/logic-apps-enterprise-integration-liquid-transform/link-integration-account.png)
 
 ## <a name="test-your-logic-app"></a>A logikai alkalmazás tesztelése
 

@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4af7c5721458e36a1efa27c9696feaa3dbf043e4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3621bbce0128fbd173120ae2a327065ee2e84e33
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186992"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57878448"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>Az önkiszolgáló jelszó-visszaállítás hibaelhárítása
 
@@ -101,7 +101,7 @@ A jelszóvisszaíró használata a problémák elhárításakor ajánlott eljár
 | Kód | Név vagy üzenet | Leírás |
 | --- | --- | --- |
 | 6329 | BAIL: MMS(4924) 0x80230619: "Korlátozás megakadályozza, hogy a jelszó a következőre változik: a megadott jelenlegivel." | Ezt az eseményt akkor fordul elő, ha a jelszóvisszaíró szolgáltatás próbál állítson be jelszót a helyi címtárban, amely nem felel meg a jelszó kora, előzmények, bonyolultsága vagy a tartomány szűrési követelményeinek. <br> <br> Ha a jelszó minimális kora és nemrég módosította a jelszó az, hogy eltelt időszakot, Ön nem tudja módosítani a jelszót újra, addig a megadott kora a tartományban. Tesztelési célokra, a minimális korú 0-ra kell állítani. <br> <br> Ha jelszó előzményekre vonatkozó követelményeknek engedélyezve van, akkor ki kell választania egy jelszót, amelyet nem használtak az elmúlt *N* időpontok, hol *N* a jelszó-előzmények beállítása. Ha kiválaszt egy jelszót, amely használatban van az utolsó *N* időkorlátja, majd, egy hibaüzenet jelenik meg ebben az esetben. Tesztelési célokra, a jelszóelőzmények 0-ra kell állítani. <br> <br> Ha jelszó-összetettségi követelményeknek, ezek mindegyike kényszerítettek, amikor a felhasználó megpróbál módosítása vagy a jelszó alaphelyzetbe állítása. <br> <br> Ha a jelszószűrők engedélyezve van, és a felhasználó kiválaszt egy jelszót, amely nem felel meg a szűrési feltételeket, majd az alaphelyzetbe állítás vagy módosítási művelet meghiúsul. |
-| 6329 | MMS(3040): admaexport.cpp(2837): A kiszolgáló nem tartalmaz az LDAP-jelszó házirend vezérlő. | Ez a probléma akkor fordul elő, ha LDAP_SERVER_POLICY_HINTS_OID vezérlő (1.2.840.113556.1.4.2066) nincs engedélyezve a tartományvezérlők a. A jelszó a jelszóvisszaíró szolgáltatás használatához engedélyeznie kell a vezérlőt. Ehhez a tartományvezérlők a Windows Server 2008 (a legújabb SP), vagy később kell lennie. Ha a tartományvezérlők 2008 (R2 előtti), akkor is gyorsjavítást kell alkalmaznia [KB2386717](https://support.microsoft.com/kb/2386717). |
+| 6329 | MMS(3040): admaexport.cpp(2837): A kiszolgáló nem tartalmaz az LDAP-jelszó házirend vezérlő. | Ez a probléma akkor fordul elő, ha LDAP_SERVER_POLICY_HINTS_OID vezérlő (1.2.840.113556.1.4.2066) nincs engedélyezve a tartományvezérlők a. A jelszó a jelszóvisszaíró szolgáltatás használatához engedélyeznie kell a vezérlőt. Ehhez a tartományvezérlők a Windows Server 2008R2 vagy újabb rendszeren kell lennie. |
 | HR 8023042 | Szinkronizáló vezérlő visszaadott-hibakód: hr = 80230402, message = tett kísérlet sikertelen volt, mert nincsenek ismétlődő bejegyzéseket a azonos jegyzetobjektum objektum lekérése. | Ez a hiba akkor fordul elő, ha ugyanazt a felhasználói azonosító engedélyezve van több tartományban. Ilyen például, ha a fiók- és erőforrás-erdők szinkronizál, és ugyanazt a felhasználói azonosító jelen, és engedélyezve van minden olyan erdőben. <br> <br> Ez a hiba akkor is előfordulhat, ha egy nem egyedi a forráshorgony attribútuma, mint egy aliast vagy egyszerű felhasználónév, és két felhasználót, hogy ugyanazt a forráshorgony attribútuma fájlmegosztások. <br> <br> A probléma megoldásához, győződjön meg arról, hogy nem rendelkezik ismétlődő felhasználókat a tartományokon belül, és használjon egy egyedi a forráshorgony attribútuma minden felhasználó számára. |
 
 ### <a name="if-the-source-of-the-event-is-passwordresetservice"></a>Ha a forrás az esemény PasswordResetService
@@ -179,10 +179,10 @@ További információkért tekintse át a kapcsolat előfeltételeket a [az Azur
 
 Csatlakozási problémák vagy egyéb átmeneti problémák a szolgáltatással elhárításához indítsa újra az Azure AD Connect szinkronizálási szolgáltatás:
 
-   1. Válassza ki a rendszergazdák **Start** Azure AD Connectet futtató kiszolgálón.
-   1. Adjon meg **services.msc** a keresőmezőbe, és válassza a **Enter**.
-   1. Keresse meg a **a Microsoft Azure AD Sync** bejegyzés.
-   1. Válassza ki a kattintson a jobb gombbal a szolgáltatás bejegyzés **indítsa újra a**, és ezután Várjon, amíg a művelet befejeződik.
+1. Válassza ki a rendszergazdák **Start** Azure AD Connectet futtató kiszolgálón.
+1. Adjon meg **services.msc** a keresőmezőbe, és válassza a **Enter**.
+1. Keresse meg a **a Microsoft Azure AD Sync** bejegyzés.
+1. Válassza ki a kattintson a jobb gombbal a szolgáltatás bejegyzés **indítsa újra a**, és ezután Várjon, amíg a művelet befejeződik.
 
    ![Az Azure AD Sync szolgáltatás újraindítása][Service restart]
 
@@ -272,13 +272,13 @@ Megfelelően, hogy tegye fel meg minél részletesebb információt a lehető es
 * **Általános hibaleírást**: Mi az a hiba? Mi volt, volt megfigyelhető viselkedés? Hogyan tudjuk reprodukálni a hibát? A lehető adja meg a lehető legtöbb részletet.
 * **Oldal**: Mely lap volt az, amikor észrevette, hogy a hiba? Például az URL-címet, ha tudja, és a egy lapjának képernyőképe, a.
 * **Támogatási kód**: Mi volt a támogatási kódot, amely a jött létre, amikor a felhasználó látott a hiba?
-    * Keresse meg a kódot, reprodukálni a hibát, majd jelölje ki a **támogatási kód** hivatkozásra a képernyő alján, és a támogatási szakértőhöz a globálisan egyedi Azonosítót, az eredmények küldése.
+  * Keresse meg a kódot, reprodukálni a hibát, majd jelölje ki a **támogatási kód** hivatkozásra a képernyő alján, és a támogatási szakértőhöz a globálisan egyedi Azonosítót, az eredmények küldése.
 
     ![Keresse meg a képernyő alján található támogatási kódot][Support code]
 
-    * Ha egy lap alján támogatás nélkül használ, válassza ki az F12 billentyűt, és keresse meg a biztonsági azonosítója és a CID, és két eredmények küldése a támogatási szakértőhöz.
+  * Ha egy lap alján támogatás nélkül használ, válassza ki az F12 billentyűt, és keresse meg a biztonsági azonosítója és a CID, és két eredmények küldése a támogatási szakértőhöz.
 * **Dátum, idő és időzóna**: A pontos dátum és idő *az időzónával együtt* , amely a hiba történt.
-* **Felhasználói azonosító**: Ki lett, a felhasználó, akik láttak a hiba? Például *user@contoso.com*.
+* **Felhasználói azonosító**: Ki lett, a felhasználó, akik láttak a hiba? Például *felhasználói\@contoso.com*.
     * Az összevont felhasználó?
     * Az átmenő hitelesítés felhasználó?
     * A jelszó-kivonat-szinkronizált felhasználó van szó?

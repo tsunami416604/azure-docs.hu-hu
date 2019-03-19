@@ -12,12 +12,12 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 Customer intent: As a developer, I want to build a Node.js application, so that I can manage the data stored in Cosmos DB.
-ms.openlocfilehash: 59ba69f8bf208ab4f38ae326cf4297947f0b844e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: c8cab3c723b7e507b0f3b05b933cca9e2c24fb39
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57547112"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075475"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Angular alkalmazás létrehozása az Azure Cosmos DB API a mongodb-hez – csatlakozás Cosmos DB-hez a Mongoose használata
 
@@ -56,35 +56,35 @@ A mongoose-objektum adatmodellezési (eszközgyártók általi) könyvtár Mongo
 
 1. Másolja az alábbi kódot a **mongo.js** fájlt. A kód a következő szolgáltatásokat nyújtja:
 
-    * A Mongoose használatát igényli.
-    * Felülbírálja a Mongo az ES6/ES2015 és újabb verziók épített alap ígéretet használja.
-    * Meghív egy env fájlt, amely lehetővé teszi bizonyos dolgokat alapján van-e az átmeneti, éles vagy fejlesztői beállítása. Ezt a fájlt a következő szakaszban fog létrehozni.
-    * A MongoDB kapcsolati karakterláncot, amely be van állítva az env fájlban tartalmazza.
-    * Létrehoz egy connect függvényt, amely meghívja a Mongoose-t.
+   * A Mongoose használatát igényli.
+   * Felülbírálja a Mongo az ES6/ES2015 és újabb verziók épített alap ígéretet használja.
+   * Meghív egy env fájlt, amely lehetővé teszi bizonyos dolgokat alapján van-e az átmeneti, éles vagy fejlesztői beállítása. Ezt a fájlt a következő szakaszban fog létrehozni.
+   * A MongoDB kapcsolati karakterláncot, amely be van állítva az env fájlban tartalmazza.
+   * Létrehoz egy connect függvényt, amely meghívja a Mongoose-t.
 
-    ```javascript
-    const mongoose = require('mongoose');
-    /**
+     ```javascript
+     const mongoose = require('mongoose');
+     /**
      * Set to Node.js native promises
      * Per https://mongoosejs.com/docs/promises.html
      */
-    mongoose.Promise = global.Promise;
+     mongoose.Promise = global.Promise;
 
-    const env = require('./env/environment');
+     const env = require('./env/environment');
 
-    // eslint-disable-next-line max-len
-    const mongoUri = `mongodb://${env.accountName}:${env.key}@${env.accountName}.documents.azure.com:${env.port}/${env.databaseName}?ssl=true`;
+     // eslint-disable-next-line max-len
+     const mongoUri = `mongodb://${env.accountName}:${env.key}@${env.accountName}.documents.azure.com:${env.port}/${env.databaseName}?ssl=true`;
 
-    function connect() {
+     function connect() {
      mongoose.set('debug', true);
      return mongoose.connect(mongoUri, { useMongoClient: true });
-    }
+     }
 
-    module.exports = {
-      connect,
-      mongoose
-    };
-    ```
+     module.exports = {
+     connect,
+     mongoose
+     };
+     ```
     
 1. Az Explorer panelen alatt **kiszolgáló**, hozza létre a **környezet**. Az a **környezet** mappában hozzon létre egy fájlt **environment.js**.
 

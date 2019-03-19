@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: df0dc1a8f574f8df23100528d822891178418b6c
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 01bb628a6520488dcebf49a1e868213b955abc31
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57241357"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57895616"
 ---
 # <a name="use-the-fmle-encoder-to-send-a-single-bitrate-live-stream"></a>Használja az egyféle sávszélességű élő adatfolyamot küldeni FMLE kódoló 
 > [!div class="op_single_selector"]
@@ -29,11 +29,11 @@ ms.locfileid: "57241357"
 >
 >
 
-Ez a cikk bemutatja, hogyan konfigurálhatja a [Flash Media Live Encoder](http://www.adobe.com/products/flash-media-encoder.html) (FMLE) kódoló egy egyfajta sávszélességű adatfolyamot AMS-csatorna is küldhet az élő kódolás engedélyezve vannak. További információk: [Az Azure Media Services segítségével élő kódolásra képes csatornák használata](media-services-manage-live-encoder-enabled-channels.md)
+Ez a cikk bemutatja, hogyan konfigurálhatja a [Flash Media Live Encoder](https://www.adobe.com/products/flash-media-encoder.html) (FMLE) kódoló egy egyfajta sávszélességű adatfolyamot AMS-csatorna is küldhet az élő kódolás engedélyezve vannak. További információk: [Az Azure Media Services segítségével élő kódolásra képes csatornák használata](media-services-manage-live-encoder-enabled-channels.md)
 
 Ez az oktatóanyag bemutatja, hogyan kezelheti az Azure Media Services (AMS) az Azure Media Services Explorer (AMSE) eszközzel. Ez az eszköz csak akkor Windows-számítógépen fog futni. Ha Mac vagy Linux rendszeren, az Azure portal használatával hozzon létre [csatornák](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) és [programok](media-services-portal-creating-live-encoder-enabled-channel.md).
 
-Ebben az oktatóanyagban az AAC használatát ismerteti. Ugyanakkor az FMLE nem támogatja az AAC alapértelmezés szerint. Meg kell vásárolni egy beépülő modult kiadottat AAC kódolással, például: [Az AAC-beépülő modul](http://www.mainconcept.com/products/plug-ins/plug-ins-for-adobe/aac-encoder-fmle.html)
+Ebben az oktatóanyagban az AAC használatát ismerteti. Ugyanakkor az FMLE nem támogatja az AAC alapértelmezés szerint. Meg kell vásárolni egy beépülő modult kiadottat AAC kódolással, például: [Az AAC-beépülő modul](https://www.mainconcept.com/products/plug-ins/plug-ins-for-adobe/aac-encoder-fmle.html)
 
 ## <a name="prerequisites"></a>Előfeltételek
 * [Az Azure Media Services-fiók létrehozása](media-services-portal-create-account.md)

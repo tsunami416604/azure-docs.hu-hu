@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: tutorial
 ms.date: 01/13/2019
 ms.author: spelluru
-ms.openlocfilehash: 6e8ca9d3a7fbdf1926ac642ac60a37d298af0129
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: c2c49563bf505ce70c4900c6c0a8e41c0f6ac9c5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54476853"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176616"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Oktatóanyag: Big Data típusú adatok streamelése adattárházba
 Azure [Event Grid](overview.md) egy intelligens esemény-útválasztó szolgáltatás, amely lehetővé teszi értesítések (események) reagálni az alkalmazások és szolgáltatások. Például képes aktiválhat egy Azure-függvény, amely egy Azure Blob storage vagy az Azure Data Lake Storage rögzítésének befejeztével az Event Hubs-adatok feldolgozásához, és egyéb az adattárak az adatok áttelepítését. Ez [az Event Hubs és az Event Grid integráció minta](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) bemutatja, hogyan használatával az Event Hubs az Event Griddel áttelepíthetik rögzített az Event Hubs-adatok a blob storage-ból egy SQL Data Warehouse.
@@ -39,6 +39,9 @@ Ebben a cikkben hajtsa végre a következő lépéseket:
 > * Áttelepített adatok megtekintése a data warehouse-ban.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
@@ -129,7 +132,7 @@ Ebben a lépésben üzembe helyezi a szükséges infrastruktúra egy [Resource M
     1. Másolja és illessze be az alábbi parancsot a Cloud Shell ablakába.
 
         ```powershell
-        New-AzureRmResourceGroup -Name rgDataMigration -Location westcentralus
+        New-AzResourceGroup -Name rgDataMigration -Location westcentralus
         ```
     2. Adjon meg egy nevet a **erőforráscsoport**.
     3. Nyomja le az ENTER billentyűt. 
@@ -137,7 +140,7 @@ Ebben a lépésben üzembe helyezi a szükséges infrastruktúra egy [Resource M
     1. Másolja és illessze be a parancsot a Cloud Shell ablakába. Azt is megteheti érdemes másolja és illessze be azokat egy tetszőleges szövegszerkesztőben, beállítása és másolja a parancsot a Cloud Shellben. 
 
         ```powershell
-        New-AzureRmResourceGroupDeployment -ResourceGroupName rgDataMigration -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json -eventHubNamespaceName <event-hub-namespace> -eventHubName hubdatamigration -sqlServerName <sql-server-name> -sqlServerUserName <user-name> -sqlServerDatabaseName <database-name> -storageName <unique-storage-name> -functionAppName <app-name>
+        New-AzResourceGroupDeployment -ResourceGroupName rgDataMigration -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json -eventHubNamespaceName <event-hub-namespace> -eventHubName hubdatamigration -sqlServerName <sql-server-name> -sqlServerUserName <user-name> -sqlServerDatabaseName <database-name> -storageName <unique-storage-name> -functionAppName <app-name>
         ```
     2. Adja meg az értékeket a következő entitásokat:
         1. A korábban létrehozott erőforráscsoport nevét.

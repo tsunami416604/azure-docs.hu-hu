@@ -9,12 +9,12 @@ ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: ab57e3cd99d015343330f4d9c558b9af729dcd5c
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 08a4f3c20d0ede93e139329b5f0039de0edeebf5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437819"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58008448"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-to-your-simulated-device"></a>Oktatóanyag: Fejlesztése és üzembe helyezése a Node.js IoT Edge-modul a szimulált eszköz
 
@@ -61,14 +61,14 @@ Ha még nem rendelkezik egy tároló-beállításjegyzéket, az alábbi lépése
 
 2. Adja meg a következő értékeket a tárolóregisztrációs adatbázis létrehozásához:
 
-   | Mező | Érték | 
+   | Mező | Érték |
    | ----- | ----- |
    | Beállításjegyzék neve | Egyedi nevet adjon meg. |
    | Előfizetés | A legördülő listából válasszon egy előfizetést. |
    | Erőforráscsoport | Javasoljuk, hogy az IoT Edge rövid útmutatók és oktatóanyagok során elkészített erőforráscsoportot használja minden teszterőforráshoz. Például: **IoTEdgeResources**. |
    | Hely | Válassza ki az Önhöz legközelebb eső helyet. |
    | Rendszergazdai felhasználó | Állítsa **Engedélyezés** értékre. |
-   | SKU | Válassza az **Alapszintű** lehetőséget. | **Terminálszolgáltatások**
+   | SKU | Válassza az **Alapszintű** lehetőséget. |
 
 5. Kattintson a **Létrehozás** gombra.
 
@@ -197,11 +197,11 @@ Mindegyik sablon tartalmaz egy mintakódot is, amely fogadja a **tempSensor** mo
 11. Adja hozzá a NodeModule ikermodult az üzembehelyezési jegyzékhez. Szúrja be a következő JSON-tartalmat a `moduleContent` szakasz alján, az `$edgeHub` modul ikerdokumentuma után: 
 
    ```json
-       "NodeModule": {
-           "properties.desired":{
-               "TemperatureThreshold":25
-           }
-       }
+      "NodeModule": {
+          "properties.desired":{
+              "TemperatureThreshold":25
+          }
+      }
    ```
 
    ![Ikermodul központi telepítési sablon hozzáadása](./media/tutorial-node-module/module-twin.png)

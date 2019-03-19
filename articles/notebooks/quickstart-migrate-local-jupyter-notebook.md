@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: a160bc0247d2f80dda620b67c946805926d78006
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: f63851359a19455ab0f46f66a801a679ee2c3bfe
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773954"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079690"
 ---
 # <a name="quickstart-migrate-a-local-jupyter-notebook"></a>Gyors útmutató: Helyi Jupyter notebook migrálása
 
@@ -50,13 +50,13 @@ Ez a rövid útmutató azt ismerteti, folyamata az áttelepítéshez a notebooko
 
    (Újra, ha a jegyzetfüzet egy GitHub-adattárból, kövesse [a rövid útmutató: Klónozza a Jegyzetfüzet](quickstart-clone-jupyter-notebook.md) helyett.)
 
-    - Ha használ **a számítógép**, áthúzása a *.ipynb* fájlok a helyi menü, vagy válasszon **fájlok kiválasztása**, majd keresse meg és jelölje ki az importálni kívánt fájlokat. Válassza ki **feltöltése**. A feltöltött fájlok vannak megadva a neve megegyezik a helyi fájlokat. (Nem szükséges töltse fel a tartalmát bármely *.ipynb_checkpoints* mappák.)
+   - Ha használ **a számítógép**, áthúzása a *.ipynb* fájlok a helyi menü, vagy válasszon **fájlok kiválasztása**, majd keresse meg és jelölje ki az importálni kívánt fájlokat. Válassza ki **feltöltése**. A feltöltött fájlok vannak megadva a neve megegyezik a helyi fájlokat. (Nem szükséges töltse fel a tartalmát bármely *.ipynb_checkpoints* mappák.)
 
-    ![Töltse fel a számítógép helyi menü](media/quickstarts/upload-from-computer-popup.png)
+     ![Töltse fel a számítógép helyi menü](media/quickstarts/upload-from-computer-popup.png)
 
-    - Használatakor **URL-CÍMRŐL**, adja meg a forrás-címet a **fájl URL-cím** mező, és a fájlnevet a notebookot a projekt a hozzárendelése a **Fájlnév** mező. Válassza ki **feltöltése**. Ha több fájlt külön URL-ekkel rendelkezik, használja a **+ fájl hozzáadása** paranccsal ellenőrizheti az első URL-címet ad meg, amely után előugró új mezők kínál egy másik fájlba.
+   - Használatakor **URL-CÍMRŐL**, adja meg a forrás-címet a **fájl URL-cím** mező, és a fájlnevet a notebookot a projekt a hozzárendelése a **Fájlnév** mező. Válassza ki **feltöltése**. Ha több fájlt külön URL-ekkel rendelkezik, használja a **+ fájl hozzáadása** paranccsal ellenőrizheti az első URL-címet ad meg, amely után előugró új mezők kínál egy másik fájlba.
 
-    ![Töltse fel az URL-cím előugró ablak](media/quickstarts/upload-from-url-popup.png)
+     ![Töltse fel az URL-cím előugró ablak](media/quickstarts/upload-from-url-popup.png)
 
 1. Nyissa meg, és futtassa az újonnan feltöltött notebook annak tartalmát, és a művelet ellenőrzéséhez. Ha elkészült, válassza ki a **fájl** > **Halt, zárja be** bezárja a notebookot.
 

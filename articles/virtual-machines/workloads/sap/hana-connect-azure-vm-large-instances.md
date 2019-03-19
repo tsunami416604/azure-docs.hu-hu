@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9116dd8a27b268b656f688083032a127177d2d51
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 2628cafada47b2602b195c44d4b6f2e6b16012ef
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754560"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092769"
 ---
 # <a name="connecting-azure-vms-to-hana-large-instances"></a>Az Azure virtuális gépek csatlakoztatásához a nagyméretű HANA-példányok
 
@@ -85,7 +85,7 @@ Már bevezettük a nagyméretű HANA-példányok üzembe helyezéséhez szüksé
 
 - **Virtuális hálózat címtere**: A **virtuális hálózat címtere** van a cím terület paraméter az Azure virtuális hálózathoz rendelt IP-címtartományokat. Ezeket a hálózatokat a SAP HANA nagyméretű példányok környezet csatlakozni.
 
- Azt javasoljuk, hogy a cím terület paraméter értéke egy többsoros. Ez az alhálózati tartományhoz az Azure virtuális gépek és az Azure-átjáró az alhálózat tranzakciónaplók kell állnia. Az alhálózati címtartomány látható volt az előző képek. A helyszíni vagy a kiszolgáló IP-készlet vagy ER-P2P címtartományok nem lehetnek átfedésben. 
+  Azt javasoljuk, hogy a cím terület paraméter értéke egy többsoros. Ez az alhálózati tartományhoz az Azure virtuális gépek és az Azure-átjáró az alhálózat tranzakciónaplók kell állnia. Az alhálózati címtartomány látható volt az előző képek. A helyszíni vagy a kiszolgáló IP-készlet vagy ER-P2P címtartományok nem lehetnek átfedésben. 
  
 Hogyan be ezen IP-cím tranzakciónaplók? 
 
@@ -108,7 +108,7 @@ A vállalati hálózat csapata vagy a service provider egy IP-címtartományt, a
   
 - **Kiszolgáló IP-készlet címtartomány:** Az IP-címtartományt az egyes IP-cím hozzárendelése a HANA nagyméretű példányok kiszolgálók szolgál. Ajánlott alhálózat mérete egy/24 CIDR-blokkja. Ha szükséges, mindössze 64 IP-címek kisebb lehet. Ebből a tartományból az első 30 IP-címek vannak használatra fenntartva a Microsoft által. Győződjön meg arról, hogy Ön fiók számára Emiatt ha úgy dönt, hogy a tartomány méretétől. Ez a tartomány nem lehet átfedésben a helyszíni vagy más Azure IP-címeket. Hogyan be az IP-címtartomány? A vállalati hálózat csapata vagy a service provider egy IP-címtartományt, amely a hálózaton belüli jelenleg nem használt kell biztosítania. 
 
- **Ebben a tartományban egy IP-címtartományt, amelyet be kell nyújtani a Microsoft kérése az első üzembe helyezés során**.
+  **Ebben a tartományban egy IP-címtartományt, amelyet be kell nyújtani a Microsoft kérése az első üzembe helyezés során**.
  
 Adja meg, és az előzőekben leírt IP-címtartományok megtervezése kell. Azonban nem kell továbbítja azokat a Microsoftnak. Nevezze el a Microsoftnak kell az IP-címtartományok a következők:
 

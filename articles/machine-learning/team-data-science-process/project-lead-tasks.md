@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d574f62a51b8aed7acbd1ba7f8b427395add854a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1ee409bc9e4ad60602ddffd3d1896baf09df52da
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454130"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57854789"
 ---
 # <a name="tasks-for-the-project-lead-in-the-team-data-science-process"></a>A projekthez tartozó feladatok vezethet a a csoportos adatelemzési folyamat
 
@@ -126,11 +126,11 @@ Ebben a példában van:
 
 Ha használja az Azure DevOps-platformként a kódot futtató általában a *SSH URL-címét a projekt sablontár* van:
 
-***ssh: / /\<Azure fejlesztési és üzemeltetési szolgáltatások neve\>@\<Azure fejlesztési és üzemeltetési szolgáltatások neve\>.visualstudio.com:22/\<saját projekt neve > /_git/\<webesprojekt-sablon Adattár neve\>.*** 
+***ssh: / /\<Azure fejlesztési és üzemeltetési szolgáltatások neve\>\@\<Azure fejlesztési és üzemeltetési szolgáltatások neve\>.visualstudio.com:22/\<saját projekt neve > /_git/\<webesprojekt-sablon Adattár neve\>.*** 
 
 Ebben a példában van:
 
-***ssh://mysamplegroup@mysamplegroup.visualstudio.com:22/MyTeam/_git/MyTeamProjectTemplate***. 
+***ssh://mysamplegroup\@mysamplegroup.visualstudio.com:22/MyTeam/_git/MyTeamProjectTemplate***. 
 
 ### <a name="clone-dsproject1-repository-r5-to-a-directory-d5-on-your-local-machine"></a>A helyi számítógép könyvtárba (D5) (R5) DSProject1-tárház klónozása
 
@@ -150,7 +150,7 @@ Ha használja az Azure DevOps-platformként a kódot futtató általában a _HTT
 
 ![10](./media/project-lead-tasks/project-leads-10-clone-project-repository-linux.png)
 
-Ha használja az Azure DevOps-platformként a kódot futtató általában a _SSH URL-címét a projektadattárat_ _ssh van: / / < Azure fejlesztési és üzemeltetési szolgáltatások neve\>@< Azure fejlesztési és üzemeltetési szolgáltatások nevét\>. visualstudio.com:22/<Your Project Name>/\_git / < a tárház projektnév\>. Ebben a példában van ***ssh://mysamplegroup@mysamplegroup.visualstudio.com:22/MyTeam/_git/DSProject1***.
+Ha használja az Azure DevOps-platformként a kódot futtató általában a _SSH URL-címét a projektadattárat_ _ssh van: / / < Azure fejlesztési és üzemeltetési szolgáltatások neve\>@< Azure fejlesztési és üzemeltetési szolgáltatások nevét\>. visualstudio.com:22/<Your Project Name>/\_git / < a tárház projektnév\>. Ebben a példában van ***ssh://mysamplegroup\@mysamplegroup.visualstudio.com:22/MyTeam/_git/DSProject1***.
 
 ### <a name="copy-contents-of-d3-to-d5"></a>Másolja bele a D3 D5 csomag 
 

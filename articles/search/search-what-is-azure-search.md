@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 02/01/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: ab41826661db3f46161aca4e650e5e974c6b3b45
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8893d8a55f77b54c9327e913af192ad39df46ba2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994976"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58090015"
 ---
 # <a name="what-is-azure-search"></a>Mi az az Azure Search?
 Az Azure Search egy felhőalapú keresőszolgáltatás, amely olyan API-kat és eszközöket nyújt a fejlesztőknek, amelyek segítségével fejlett keresési funkciókat adhatnak hozzá a privát, heterogén tartalmak keresése érdekében a webes, mobilos és vállalati alkalmazásokhoz. A lekérdezések végrehajtása felhasználó által meghatározott indexen keresztül történik.
@@ -116,8 +116,8 @@ Lehetőségként [aktiválhatja MSDN-előfizetői előnyeit](https://azure.micro
 
 3. A .NET vagy a REST API használatával folytathatja a kódolást:
 
-  + [A .NET SDK használata](search-howto-dotnet-sdk.md) – Bemutatja a felügyelt kódú megoldások fejlesztésének fő munkafolyamatát.  
-  + [A REST API használata](https://github.com/Azure-Samples/search-rest-api-getting-started) – Ismerteti ugyanezeket a lépéseket a REST API használatával. Ez a rövid útmutató segítségével REST API-k hívása a Postman vagy a Fiddler: [Ismerje meg az Azure Search REST API-k](search-fiddler.md).
+   + [A .NET SDK használata](search-howto-dotnet-sdk.md) – Bemutatja a felügyelt kódú megoldások fejlesztésének fő munkafolyamatát.  
+   + [A REST API használata](https://github.com/Azure-Samples/search-rest-api-getting-started) – Ismerteti ugyanezeket a lépéseket a REST API használatával. Ez a rövid útmutató segítségével REST API-k hívása a Postman vagy a Fiddler: [Ismerje meg az Azure Search REST API-k](search-fiddler.md).
 
 ## <a name="watch-this-video"></a>Videó megtekintése
 

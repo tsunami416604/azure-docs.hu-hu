@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/05/2019
+ms.date: 03/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0e7f2f2d798a82bed3247197da6bb09aa8110d9
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 641fe5439e320208d41969b9563293257648d488
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781510"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57842090"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoom"></a>Oktatóanyag: Nagyítás az Azure Active Directory-integráció
 
@@ -112,20 +112,20 @@ A Nagyítás konfigurálása az Azure AD egyszeri bejelentkezés, hajtsa végre 
     > [!NOTE]
     > Ezek a értékei nem valódi. Frissítse a tényleges bejelentkezési URL-címet és azonosító ezeket az értékeket. Kapcsolattartó [nagyítás ügyfél-támogatási csapatának](https://support.zoom.us/hc/en-us) beolvasni ezeket az értékeket. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-5. Nagyítás alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok** szakasz alkalmazás integráció lapján. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** gombra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
+5. Nagyítás alkalmazás a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
 
     ![image](common/edit-attribute.png)
 
-6. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen konfigurálja a SAML-jogkivonat attribútum, a fenti képen látható módon, és hajtsa végre az alábbi lépéseket:
+6. Emellett a fenti nagyítás alkalmazás vár néhány további attribútumok vissza SAML-válasz átadni. A a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen a következő lépésekkel adja hozzá a SAML-jogkivonat attribútumot, ahogyan az alábbi táblázatban:
     
     | Name (Név) | Névtér  |  Adatforrás-attribútum|
     | ---------------| --------------- | --------- |
-    | E-mail-cím  | user.mail  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mail |
-    | Utónév  | user.givenname  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname |
-    | Vezetéknév  | user.surname  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname |
-    | Telefonszám  | user.telephonenumber  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/phone |
-    | Részleg  | user.department  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/department |
-    | szerepkör |    user.assignedrole |http://schemas.xmlsoap.org/ws/2005/05/identity/claims/role |
+    | E-mail-cím  | user.mail  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mail` |
+    | Utónév  | user.givenname  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` |
+    | Vezetéknév  | user.surname  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` |
+    | Telefonszám  | user.telephonenumber  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/phone` |
+    | Részleg  | user.department  | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/department` |
+    | szerepkör |    user.assignedrole |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/role` |
 
     > [!NOTE]
     > Kattintson a [Itt](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) tudni, hogy az Azure AD-szerepkör konfigurálása
@@ -159,7 +159,7 @@ A Nagyítás konfigurálása az Azure AD egyszeri bejelentkezés, hajtsa végre 
 
     a. Bejelentkezési URL
 
-    b. Azure Ad Identifier
+    b. Azure AD-azonosító
 
     c. Kijelentkezési URL
 
@@ -179,13 +179,23 @@ A Nagyítás konfigurálása az Azure AD egyszeri bejelentkezés, hajtsa végre 
 
     a. A a **bejelentkezési oldal URL** szövegmezőjébe illessze be az értéket, **bejelentkezési URL-cím** Azure Portalról másolt.
 
-    b. Az a **kijelentkezési URL-címe** szövegmezőjébe illessze be az értéket, **kijelentkezési URL-címe** Azure Portalról másolt.
+    b. A **kijelentkezési URL-címe** nyissa meg az Azure Portalon, és kattintson a szükséges érték, **Azure Active Directory** majd lépjen a bal oldali **alkalmazásregisztrációk**.
 
-    c. Nyissa meg a base-64 kódolású tanúsítványt a Jegyzettömbben, a tartalmát a vágólapra másolja és illessze be azt a **szolgáltató identitástanúsítványt** szövegmezőbe.
+    ![Az Azure Active Directory gomb](./media/zoom-tutorial/appreg.png)
 
-    d. A a **kibocsátó** szövegmezőjébe illessze be az értéket, **Azure Ad-azonosító** Azure Portalról másolt. 
+    c. Kattintson a **végpontok**
 
-    e. Kattintson a **Save** (Mentés) gombra.
+    ![A végpont gomb](./media/zoom-tutorial/endpoint.png)
+
+    d. Másolás a **SAML-P kijelentkezéses VÉGPONT** és illessze be azt **kijelentkezési URL-címe** szövegmezőbe.
+
+    ![A másolási záró pontot gomb](./media/zoom-tutorial/endpoint1.png)
+
+    e. Nyissa meg a base-64 kódolású tanúsítványt a Jegyzettömbben, a tartalmát a vágólapra másolja és illessze be azt a **szolgáltató identitástanúsítványt** szövegmezőbe.
+
+    f. A a **kibocsátó** szövegmezőjébe illessze be az értéket, **az Azure AD-azonosító** Azure Portalról másolt. 
+
+    g. Kattintson a **Save** (Mentés) gombra.
 
     > [!NOTE]
     > További információért látogasson el a Nagyítás dokumentációja [https://zoomus.zendesk.com/hc/articles/115005887566](https://zoomus.zendesk.com/hc/articles/115005887566)
@@ -208,7 +218,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

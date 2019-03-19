@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: saurabh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 85e9b49cb8be1a3f53ca0f3b4816e6165b68bde0
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 00b4a145da9104cab410c5a07f6d7ec5ded5c45d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993110"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57893543"
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Monitorozás és diagnosztika használata a Windows virtuális gépek és Azure Resource Manager-sablonok
 Az Azure Diagnostics bővítmény a monitorozási és diagnosztikai képességeket biztosít a Windows-alapú Azure virtuális gépen. Engedélyezheti ezeket a képességeket a virtuális gép által a kiterjesztéssel együtt az Azure Resource Manager-sablon részeként. Lásd: [Azure Resource Manager-sablonok készítése VM-bővítményekkel](../windows/template-description.md#extensions) bármely kiterjesztéssel együtt virtuálisgép-sablon részeként további tájékoztatást. Ez a cikk bemutatja, hogyan adhat hozzá az Azure Diagnostics bővítmény windows virtuálisgép-sablont.  
@@ -162,7 +162,7 @@ A mérőszámok a fenti konfigurációs táblák a diagnosztikai tárfiók, az a
 * **PT1H** vagy **PT1M**: Jelzi, hogy a tábla tartalmazza-e az összesített adatok több mint 1 óra vagy 1 perc
 * **P10D**: Azt jelzi, hogy a tábla adatokat tartalmaz 10 napig az adatgyűjtés a tábla indításakor
 * **V2S**: Karakterlánc-konstans
-* **ÉÉÉÉHHNN**: A dátum, amelyen a tábla lépések adatok gyűjtése
+* **yyyymmdd**: A dátum, amelyen a tábla lépések adatok gyűjtése
 
 Példa: *WADMetricsPT1HP10DV2S20151108* összesített értéket jelenít meg egy órát indítása 11 – november – 2015. 10 nap, a metrikák adatait tartalmazza    
 
@@ -172,7 +172,7 @@ Minden egyes WADMetrics tábla a következő oszlopokat tartalmazza:
 * **RowKey**: A formátum a következő `<Descending time tick>:<Performance Counter Name>`. A csökkenő idő osztásjelek számítási idő maximális órajel során végbemenő mínusz az összesítési időszak elején idején. Például ha a mintavételi időszak a következőn: 10 – november – 2015-öt és 00:00Hrs (UTC), majd a számítási lenne: `DateTime.MaxValue.Ticks - (new DateTime(2015,11,10,0,0,0,DateTimeKind.Utc).Ticks)`. For a memóriát elérhető bájtok száma teljesítményszámláló a sorkulcs ehhez hasonló lesz: `2519551871999999999__:005CMemory:005CAvailable:0020Bytes`
 * **CounterName**: A teljesítményszámláló neve van. Ez megegyezik a *counterSpecifier* meghatározott az xml-konfiguráció.
 * **Maximális**: A teljesítményszámláló keresztül az összesítési időszak maximális értéke.
-* **Minimális**: A teljesítményszámláló keresztül az összesítési időszak minimális értéke.
+* **Minimum**: A teljesítményszámláló keresztül az összesítési időszak minimális értéke.
 * **Teljes**: A teljesítményszámláló szereplő összes érték összegét jelenti a összesítési időszak alatt.
 * **Száma**: A teljesítményszámláló jelentett értékek teljes száma.
 * **Átlagos**: Az összesítési időszak alatt a teljesítményszámláló átlagos (összesen és száma) értéke.

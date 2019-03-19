@@ -8,17 +8,18 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 01/19/2019
 ms.author: mayg
-ms.openlocfilehash: a1b35d4c10246af7e4dab36585c2bb9b72fd0c01
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f86ded99ef5280a4e6929c39a9fd323d1b61f6f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216965"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992329"
 ---
 # <a name="exclude-disks-from-replication"></a>Lemezek kizárása a replikációból
 Ez a cikk azt mutatja be, hogyan zárhatóak ki lemezek a replikációból. A kizárás segítségével optimalizálható a felhasznált replikációs sávszélesség, valamint optimalizálhatók a lemezek által felhasznált céloldali erőforrások.
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
+
 **Funkció** | **VMware – Azure** | **Hyper-V – Azure** | **Azure – Azure**| **Hyper-V – Hyper-V** 
 --|--|--|--|--
 Lemez kizárása | Igen | Igen | Nem | Nem
@@ -72,7 +73,7 @@ A forrás virtuális gépen lévő lemezek a következők:
 DB-Disk0-OS | DISK0 | C:\ | Operációsrendszer-lemez
 DB-Disk1| Disk1 | D:\ | SQL-rendszeradatbázis és 1. felhasználói adatbázis
 DB-Disk2 (a lemez ki lett zárva a védelemből) | Disk2 | E:\ | Ideiglenes fájlok
-DB-Disk3 (a lemez ki lett zárva a védelemből) | Disk3 | F:\ | SQL tempdb-adatbázis (mappa elérési útja (F:\MSSQL\Data\) </br /> </br />a feladatátvétel előtt írja le a mappa elérési útját.
+DB-Disk3 (a lemez ki lett zárva a védelemből) | Disk3 | F:\ | SQL tempdb-adatbázis (mappa elérési útja (F:\MSSQL\Data\) <br /> <br />Jegyezze fel a mappa elérési útját a feladatátvétel előtt.
 DB-Disk4 | Disk4 |G:\ |2. felhasználói adatbázis
 
 Mivel a virtuális gép két lemezén ideiglenes az adatváltozás, a SalesDB virtuális gép védelme során zárja ki a Disk2 és a Disk3 lemezt a replikációból. Az Azure Site Recovery nem replikálja ezeket a lemezeket. A feladatátvétel során ezek a lemezek nem lesznek jelen a feladatátvételi virtuális gépen az Azure-ban.
@@ -82,7 +83,7 @@ A feladatátvétel után az Azure virtuális gépen lévő lemezek a következő
 **Vendég operációsrendszer-lemez száma** | **Meghajtó betűjele** | **A lemez adattípusa**
 --- | --- | ---
 DISK0 | C:\ | Operációsrendszer-lemez
-Disk1 | E:\ | Ideiglenes tároló</br /> </br />ezt a lemezt az Azure adja hozzá, és az első elérhető betűjellel látja el.
+Disk1 | E:\ | Ideiglenes tároló<br /> <br />Az Azure ad hozzá a lemezt, és az első elérhető betűjellel.
 Disk2 | D:\ | SQL-rendszeradatbázis és 1. felhasználói adatbázis
 Disk3 | G:\ | 2. felhasználói adatbázis
 
@@ -146,7 +147,7 @@ Az előző példában az Azure virtuális gép lemezkonfigurációja a következ
 **Vendég operációsrendszer-lemez száma** | **Meghajtó betűjele** | **A lemez adattípusa**
 --- | --- | ---
 DISK0 | C:\ | Operációsrendszer-lemez
-Disk1 | E:\ | Ideiglenes tároló</br /> </br />ezt a lemezt az Azure adja hozzá, és az első elérhető betűjellel látja el.
+Disk1 | E:\ | Ideiglenes tároló<br /> <br />Az Azure ad hozzá a lemezt, és az első elérhető betűjellel.
 Disk2 | D:\ | SQL-rendszeradatbázis és 1. felhasználói adatbázis
 Disk3 | G:\ | 2. felhasználói adatbázis
 
@@ -186,7 +187,7 @@ A virtuális gép Hyper-V–Azure feladatátvétele után az Azure-beli virtuál
 **Lemez neve** | **Vendég operációsrendszer-lemez száma** | **Meghajtó betűjele** | **A lemez adattípusa**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0 | C:\ | Operációsrendszer-lemez
-DB-Disk1 | Disk1 | D:\ | Ideiglenes tároló</br /> </br />pagefile.sys
+DB-Disk1 | Disk1 | D:\ | Ideiglenes tároló<br /> <br />pagefile.sys
 DB-Disk2 | Disk2 | E:\ | Felhasználói adatok, 1
 DB-Disk3 | Disk3 | F:\ | Felhasználói adatok, 2
 
@@ -213,10 +214,10 @@ Itt láthatja a helyszíni virtuális gép lapozófájl-beállításait:
 
 A virtuális gép Hyper-V–Azure feladatátvétele után az Azure-beli virtuális gépen lévő lemezek a következők:
 
-**Lemez neve**| **Vendég operációsrendszer-lemez száma**| **Meghajtó betűjele** | **A lemez adattípusa**
+**Lemez neve** | **Vendég operációsrendszer-lemez száma** | **Meghajtó betűjele** | **A lemez adattípusa**
 --- | --- | --- | ---
 DB-Disk0-OS | DISK0  |C:\ |Operációsrendszer-lemez
-DB-Disk1 | Disk1 | D:\ | Ideiglenes tároló</br /> </br />pagefile.sys
+DB-Disk1 | Disk1 | D:\ | Ideiglenes tároló<br /> <br />pagefile.sys
 DB-Disk2 | Disk2 | E:\ | Felhasználói adatok, 1
 DB-Disk3 | Disk3 | F:\ | Felhasználói adatok, 2
 

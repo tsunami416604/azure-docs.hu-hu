@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ede58f0ca86211888356df3e5c660a4951985b75
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: da134672224c5881a69f002d418c79af97036d8b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57435745"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835565"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-druva"></a>Oktatóanyag: Az Azure Active Directory-integrációt kínál a Druva együtt
 
@@ -205,7 +205,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
@@ -258,7 +258,7 @@ Ahhoz, hogy a Druva jelentkezzen be az Azure AD-felhasználók, akkor ki kell é
    
     ![Hozzon létre Új_felhasználó](./media/druva-tutorial/ic795099.png "Új_felhasználó létrehozása")
    
-    a. Az a **E-mail-cím** szövegmezőben adja meg az e-mail címét, például a felhasználó **brittasimon@contoso.com**.
+    a. Az a **E-mail-cím** szövegmezőben adja meg az e-mail címét, például a felhasználó **brittasimon\@contoso.com**.
    
     b. Az a **neve** szövegmezőbe írja be például a felhasználó nevét **BrittaSimon**.
    

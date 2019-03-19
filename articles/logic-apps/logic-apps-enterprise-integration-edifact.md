@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 2257d2c8-1929-4390-b22c-f96ca8b291bc
 ms.date: 07/26/2016
-ms.openlocfilehash: 2da672e1f55af1e38ae0a3fa90b7ecb10d2f17c7
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: bbcdad7c5496cd08994a613b07e1bc7c611e4572
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128377"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57876850"
 ---
 # <a name="exchange-edifact-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>EDIFACT-üzenetek a B2B vállalati integráció az Azure Logic Apps Enterprise Integration Pack
 
@@ -38,7 +38,7 @@ Miután [integrációs fiók létrehozásáról](../logic-apps/logic-apps-enterp
 
 ## <a name="create-an-edifact-agreement"></a>Az EDIFACT-egyezmény létrehozása 
 
-1. Jelentkezzen be az [Azure Portalra](http://portal.azure.com "Azure Portal") 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com "Azure Portal") 
 
 2. Az Azure fő menüjéből válassza **minden szolgáltatás**. A Keresés mezőbe írja be a "integráció" névre, és válassza ki **integrációs fiókok**.
 
@@ -66,7 +66,7 @@ Miután [integrációs fiók létrehozásáról](../logic-apps/logic-apps-enterp
    | Tulajdonság | Leírás |
    | --- | --- |
    | Name (Név) |A Szerződés neve |
-   | Szerződés típusa | EDIFACT kell lennie. |
+   | Egyezmény típusa | EDIFACT kell lennie. |
    | Gazdagéppartner |Egy szerződést kell a gazdagép és Vendég partner. A gazdagéppartner a szervezet, amely beállítja a szerződés jelöli. |
    | Gazdagép-identitás |A gazdagéppartner azonosítója |
    | Vendégpartner |Egy szerződést kell a gazdagép és Vendég partner. A vendégpartner a szervezet, amely a fogadó partner üzleti állapotát jelöli. |
@@ -82,7 +82,7 @@ Most, hogy beállította a megállapodás tulajdonságai, konfigurálhatja, hogy
 1. A **Hozzáadás**válassza **fogadási beállítások**.
 Konfigurálja ezeket a tulajdonságokat a partnerrel, amely az üzeneteket, a szerződés alapján. Vlastnost leírásáért lásd: e szakasz táblázatai.
 
-   **Beállítások** van szakaszokba rendeztük: azonosítók, visszaigazoló, sémákat, Ellenőrzőszámok, ellenőrzés és belső beállítások.
+   **Beállítások** van szakaszokba rendeztük: Azonosítók, visszaigazoló, sémákat, Ellenőrzőszámok, érvényesítése és belső beállítások.
 
    ![Konfigurálja a "Kapják meg a beállításokat"](./media/logic-apps-enterprise-integration-edifact/edifact-2.png)  
 
@@ -109,12 +109,12 @@ Most a szerződés elkészült kezelje a bejövő üzenetek, amelyek megfelelnek
 | Tulajdonság | Leírás |
 | --- | --- |
 | UNH2.1 (TÍPUS) |Válasszon ki egy tranzakció beállítása. |
-| UNH2.2 (VERZIÓ) |Adja meg az üzenet verziója. (Minimális, egy karaktert; maximális, három karakter). |
-| UNH2.3 (KIADÁS) |Adja meg az üzenet kiadása. (Minimális, egy karaktert; maximális, három karakter). |
+| UNH2.2 (VERSION) |Adja meg az üzenet verziója. (Minimális, egy karaktert; maximális, három karakter). |
+| UNH2.3 (RELEASE) |Adja meg az üzenet kiadása. (Minimális, egy karaktert; maximális, három karakter). |
 | UNH2.5 (KAPCSOLÓDÓ HOZZÁRENDELT KÓD) |Adja meg a hozzárendelt kódot. (Legfeljebb 6 karakter. Csak alfanumerikus karakterekből állhat). |
 | UNG2.1 (ALKALMAZÁS FELADÓAZONOSÍTÓJA) |Adjon meg egy legalább egy karaktert és a egy legfeljebb 35 karakterből álló alfanumerikus érték. |
 | UNG2.2 (ALKALMAZÁS FELADÓKÓD-MINŐSÍTŐJE) |Adjon meg egy alfanumerikus érték, egy legfeljebb négy karakter hosszú lehet. |
-| SÉMA |Válassza ki a korábban feltöltött sémát, a társított integrációs fiókból használni kívánt. |
+| SCHEMA |Válassza ki a korábban feltöltött sémát, a társított integrációs fiókból használni kívánt. |
 
 ### <a name="control-numbers"></a>Ellenőrzőszámok
 | Tulajdonság | Leírás |
@@ -155,7 +155,7 @@ Beállíthatja, hogyan azonosítja a jelen szerződés, és kezeli a kimenő üz
 1.  A **Hozzáadás**válassza **küldési beállítások**.
 Konfigurálja ezeket a tulajdonságokat a partnerrel, aki adatcseréihez használható üzeneteket, a szerződés alapján. Vlastnost leírásáért lásd: e szakasz táblázatai.
 
-    **Küldési beállítások** van szakaszokba rendeztük: azonosítók, visszaigazoló, sémákat, borítékok, karakterkészletek és elválasztók, Ellenőrzőszámok és ellenőrzések.
+    **Küldési beállítások** van szakaszokba rendeztük: Azonosítók, visszaigazoló, sémákat, borítékok, karakterkészletek és elválasztók, Ellenőrzőszámok és ellenőrzések.
 
     ![Konfigurálja a "Beállítások küldése"](./media/logic-apps-enterprise-integration-edifact/edifact-3.png)    
 
@@ -185,9 +185,9 @@ Most már a szerződés elkészült kezelésére, amelyek megfelelnek a kiválas
 | Tulajdonság | Leírás |
 | --- | --- |
 | UNH2.1 (TÍPUS) |Válasszon ki egy tranzakció beállítása. |
-| UNH2.2 (VERZIÓ) |Adja meg az üzenet verziója. |
-| UNH2.3 (KIADÁS) |Adja meg az üzenet kiadása. |
-| SÉMA |Válassza ki a használandó sémát. Sémákat az integrációs fiókjában található. A sémák eléréséhez először hivatkozás az integrációs fiók a logikai alkalmazáshoz. |
+| UNH2.2 (VERSION) |Adja meg az üzenet verziója. |
+| UNH2.3 (RELEASE) |Adja meg az üzenet kiadása. |
+| SCHEMA |Válassza ki a használandó sémát. Sémákat az integrációs fiókjában található. A sémák eléréséhez először hivatkozás az integrációs fiók a logikai alkalmazáshoz. |
 
 ### <a name="envelopes"></a>Borítékok
 | Tulajdonság | Leírás |

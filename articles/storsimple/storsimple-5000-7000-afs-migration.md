@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 9992faa11585d49d3024e00338b4c1dc09da9195
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: c27244af6da01163fa9ab554b6b9c1d9c99bab23
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726668"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58104573"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>Az Azure File Sync át adatokat a StorSimple 5000-7000-es sorozat
 
@@ -57,7 +57,7 @@ Itt található az Azure File Sync az örökölt 5000 és 7000 sorozatú eszköz
 - A gazdagép rendelkezik a megfelelő helyi tároló a helyi gyorsítótárban tárolt adatok tárolásához.
 - Tulajdonos szintű hozzáférés az Azure-előfizetést, amely segítségével az Azure File Sync üzembe helyezése. Problémákat tapasztalhat a felhőbeli végpont a szinkronizálási csoport létrehozásakor, ha nem rendelkezik tulajdonosi vagy a rendszergazdai szintű engedélyekkel.
 - A hozzáférést egy [általános célú v2-tárfiók](https://docs.microsoft.com/azure/storage/common/storage-account-overview) egy szinkronizálni kívánt Azure-fájlmegosztást. További információ: [Tárfiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
- - Hogyan [hozzon létre egy Azure-fájlmegosztás](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share).
+  - Hogyan [hozzon létre egy Azure-fájlmegosztás](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share).
 
 ## <a name="migration-process"></a>Áttelepítési folyamat
 

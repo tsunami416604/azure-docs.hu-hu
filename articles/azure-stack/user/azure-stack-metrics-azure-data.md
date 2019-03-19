@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: mabrigg
 ms.lastreviewed: 12/01/2018
-ms.openlocfilehash: fd4c1220d0652139c247ffed80e995a90a93c5b1
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 469213ae67f1f2bcece6afa5d9b7873bfdfe8d6c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57780838"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095738"
 ---
 # <a name="azure-monitor-on-azure-stack"></a>Az Azure Monitor az Azure Stackben
 
@@ -33,8 +33,8 @@ Bevezetésért áttekintése, és hogyan Ismerkedés az Azure Monitor szolgálta
 
 Az Azure Monitor egy olyan platformszolgáltatás, mely egyetlen forrást kínál az Azure-erőforrások figyeléséhez. Az Azure monitorral megjelenítheti, lekérdezése, irányíthatja, archív tárolási szint, és metrikákat és naplókat az Azure-erőforrások érkező egyéb műveleteket. Ezeket az adatokat az Azure Stack felügyeleti portálon, a Monitor PowerShell-parancsmagok, többplatformos parancssori felület vagy az Azure Monitor REST API-k használatával dolgozhat. Az Azure Stack által támogatott konkrét kapcsolatot, lásd: [hogyan lehet az Azure Stack származó megfigyelési adatokat](azure-stack-metrics-monitor.md)
 
-> [!Note]  
-Metrikák és diagnosztikai naplók nem állnak rendelkezésre az Azure Stack fejlesztői készlete számára.
+> [!Note]
+> Metrikák és diagnosztikai naplók nem állnak rendelkezésre az Azure Stack fejlesztői készlete számára.
 
 ## <a name="prerequisites-for-azure-monitor-on-azure-stack"></a>Az Azure Monitor az Azure Stackben előfeltételei
 

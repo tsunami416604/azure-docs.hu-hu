@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2018
 ms.author: rkarlin
-ms.openlocfilehash: 67442a5861514eadfebfc877d91e735e05f6f63d
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 64bab5c1b99720eecb189834d7a11802cf919ca3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117545"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106780"
 ---
 # <a name="alert-confidence-score"></a>Riasztás megbízhatósági pontszáma 
 
@@ -45,7 +45,7 @@ A megbízhatósági pontszám megtekintése:
 A riasztás a Security Center biztonsággal hozzájáruló adatok megtekintése:
 - A biztonsági riasztás panel alatt **megbízhatósági**, megtekintheti a megbízhatósági pontszám hozzájáruló észrevételek és információkhoz juthat a riasztással kapcsolatban. Ezzel biztosítható az nagyobb betekintést kaphat a tevékenységek a riasztást kiváltó jellegét.
 
- ![Gyanús megbízhatósági pontszám][2]
+  ![Gyanús megbízhatósági pontszám][2]
 
 Használja a Security Center magabiztossági pontszámot rangsorolására riasztási osztályozási a környezetben. A megbízhatósági pontszám, időt és energiát takarít automatikusan a riasztások kivizsgálásának, iparági ajánlott eljárások és intelligens algoritmusok alkalmazásával, és valós milyen fenyegetéseket, és a figyelmet kell meghatározni a virtuális elemző átjáróként.
 

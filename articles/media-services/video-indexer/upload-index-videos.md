@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: juliako
-ms.openlocfilehash: c11a206316cfb7b2d9e96b631fce01701da93565
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e7f39b6298dd950147fea7ac21969c53e1b58e2e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550482"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57877870"
 ---
 # <a name="upload-and-index-your-videos"></a>Videók feltöltése és indexelése  
 
@@ -26,7 +26,7 @@ Amikor a Video Indexer API videók feltöltését, akkor a következő feltölt�
 
 A cikk bemutatja, hogyan használhatja a [Videó feltöltése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API-t a videók URL-cím alapján történő feltöltéséhez és indexeléséhez. A cikkben található kódminta tartalmazza a megjegyzésként szereplő kódot, amely bemutatja, hogyan lehet feltölteni a bájttömböt. <br/>A cikk emellett ismertet néhányat az API-ban beállítható paraméterek közül, amelyekkel módosíthatja az API folyamatát és kimenetét.
 
-A videó feltöltése után a Video Indexer, igény szerint kódolja a videó (a cikkben tárgyalt). A Video Indexer-fiók létrehozásakor választhat egy ingyenes próbafiókot (ahol egy bizonyos számú ingyenes indexelési percet kap) vagy egy fizetős lehetőséget (ahol nincs kvótakorlát). Az ingyenes próbaverzióval a Video Indexer akár 600 perc ingyenes indexelést biztosít a webhely felhasználói számára, és akár 2400 perc ingyenes indexelést biztosít az API-felhasználóknak. A fizetős lehetőséggel Ön létrehoz egy Video Indexer-fiókot, amely [össze van kapcsolva az Azure-előfizetésével és egy Azure Media Services-fiókkal](connect-to-azure.md). Ön az indexelt perceket és a Media Accounttal kapcsolatos díjakat fizeti ki. 
+A videó feltöltése után a Video Indexer, igény szerint kódolja a videó (a cikkben tárgyalt). A Video Indexer-fiók létrehozásakor választhat egy ingyenes próbafiókot (ahol egy bizonyos számú ingyenes indexelési percet kap) vagy egy fizetős lehetőséget (ahol nincs kvótakorlát). Az ingyenes próbaverzióval a Video Indexer akár 600 perc ingyenes indexelést biztosít a webhely felhasználói számára, és akár 2400 perc ingyenes indexelést biztosít az API-felhasználóknak. A fizetős lehetőség a Video Indexer-fiókot, amely létrehozhat [csatlakozik az Azure-előfizetés és az Azure Media Services-fiók](connect-to-azure.md). Ön az indexelt perceket és a Media Accounttal kapcsolatos díjakat fizeti ki. 
 
 ## <a name="uploading-considerations"></a>Feltöltési szempontok
 
@@ -64,16 +64,16 @@ Egy URL-címet, amellyel az ügyfél (a POST-kérés használatával) a követke
         |state|A videó állapota|  
     - Például: https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
 - A videóban azonosított személy:
-    - Tulajdonságok
+  - Tulajdonságok
     
-        |Name (Név)|Leírás|
-        |---|---|
-        |id| A videó azonosítója|
-        |faceId|A face ID, hogy megjelenik a videók indexe|
-        |knownPersonId|A egy oldallal modellen belül egyedi személy azonosítója|
-        |PersonName|Annak a személynek a nevét|
+      |Name (Név)|Leírás|
+      |---|---|
+      |id| A videó azonosítója|
+      |faceId|A face ID, hogy megjelenik a videók indexe|
+      |knownPersonId|A egy oldallal modellen belül egyedi személy azonosítója|
+      |PersonName|Annak a személynek a nevét|
         
-     - Például: https://test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
+    - Például: https://test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
 
 #### <a name="notes"></a>Megjegyzések
 

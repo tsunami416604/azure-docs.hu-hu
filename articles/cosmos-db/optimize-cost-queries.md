@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: e6814224827aac0da9c6faf5108ecf585bae7c35
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 80c9cd91efd14e3d4b4214bde089f73692568f76
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445381"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57840188"
 ---
 # <a name="optimize-query-cost-in-azure-cosmos-db"></a>Az Azure Cosmos DB lekérdezési költségek optimalizálása
 
@@ -33,7 +33,7 @@ Lekérdezések, amelyek adatokat olvasni az egy vagy több partíció nagyobb k�
 
 Miután az Azure Cosmos-tárolókban tárolt adatokat, használhatja az adatkezelő az Azure Portalon hozhatnak létre, és a lekérdezések futtatásához. A lekérdezések költsége az adatkezelő segítségével is beszerezheti. Ez a metódus kap megismerje a tipikus lekérdezések és műveletek, amely támogatja a rendszer a tényleges költségek.
 
-A lekérdezések költségét programozott módon is lekérése az SDK-k használatával. Mérhető bármilyen műveletet járó többletterhelést például létrehozása, frissítése vagy törlése vizsgálja meg a `x-ms-request-charge` fejléc REST API használata esetén. Ha a .net vagy a Java SDK-t használ a `RequestCharge` tulajdonsága a egyenértékű tulajdonságot a kérelem díja lekérése, és ez a tulajdonság nem található a ResourceResponse vagy FeedResponse.
+A lekérdezések költségét programozott módon is lekérése az SDK-k használatával. Mérhető bármilyen műveletet járó többletterhelést például létrehozása, frissítése vagy törlése vizsgálja meg a `x-ms-request-charge` fejléc REST API használata esetén. Ha a .NET vagy a Java SDK-t használ a `RequestCharge` tulajdonsága a egyenértékű tulajdonságot a kérelem díja lekérése, és ez a tulajdonság nem található a ResourceResponse vagy FeedResponse.
 
 ```csharp
 // Measure the performance (request units) of writes 
@@ -59,7 +59,7 @@ Bizonyos esetekben 200 429 válaszokat, és a lekérdezések, lapozható végreh
 
 ## <a name="metrics-for-troubleshooting"></a>Hibaelhárítás mérőszámok
 
-A teljesítmény és a leginkább lekérdezések, felhasználó által definiált függvények (UDF-EK) által felhasznált átviteli sebesség attól függ, a függvény törzsében. Ismerje meg, mennyi idő a lekérdezés végrehajtása van a az UDF-ben és a fogyasztott, számát, a legegyszerűbb módja, a lekérdezés mérőszámainak engedélyezésével. Ha a .net SDK-t használ, az alábbiakban az SDK által visszaadott lekérdezés mintametrikák:
+A teljesítmény és a leginkább lekérdezések, felhasználó által definiált függvények (UDF-EK) által felhasznált átviteli sebesség attól függ, a függvény törzsében. Ismerje meg, mennyi idő a lekérdezés végrehajtása van a az UDF-ben és a fogyasztott, számát, a legegyszerűbb módja, a lekérdezés mérőszámainak engedélyezésével. Ha a .NET SDK-t használ, az alábbiakban az SDK által visszaadott lekérdezés mintametrikák:
 
 ```bash
 Retrieved Document Count                 :               1              

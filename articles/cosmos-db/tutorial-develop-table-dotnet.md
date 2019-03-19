@@ -1,346 +1,402 @@
 ---
-title: Fejlesztés a Table API .NET SDK használatával
-titleSuffix: Azure Cosmos DB
-description: Ismerje meg, hogyan fejleszthet az Azure Cosmos DB Table API .NET SDK-val
+title: Ismerkedés az Azure Cosmos DB Table API .NET Standard SDK használatával
+description: Store strukturált adatok a felhőben az Azure Cosmos DB Table API használatával.
+author: wmengmsft
+ms.author: wmeng
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
-ms.topic: tutorial
-ms.date: 12/07/2018
-author: wmengmsft
-ms.author: wmeng
-ms.custom: seodec18
-ms.reviewer: sngun
-ms.openlocfilehash: 0f0e5219298cf0bce30e2a1e9d66135b4146db5d
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.topic: sample
+ms.date: 03/11/2019
+ms.openlocfilehash: 0f324d39db38b17d436583277d60d87b2878d131
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036783"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880789"
 ---
-# <a name="develop-with-azure-cosmos-dbs-table-api-using-net-sdk"></a>Fejlesztés az Azure Cosmos DB Table API .NET SDK használatával
+# <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>A .NET SDK használatával az Azure Cosmos DB Table API és az Azure Table storage használatának első lépései
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott, többmodelles adatbázis-szolgáltatása. Segítségével gyorsan létrehozhat és lekérdezhet dokumentum, kulcs/érték és gráf típusú adatbázisokat, amelyek mindegyike felhasználja az Azure Cosmos DB középpontjában álló globális elosztási és horizontális skálázhatósági képességeket.
+[!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 
-Ez az oktatóanyag a következő feladatokat mutatja be: 
+[!INCLUDE [storage-table-applies-to-storagetable-and-cosmos](../../includes/storage-table-applies-to-storagetable-and-cosmos.md)]
 
-> [!div class="checklist"] 
-> * Azure Cosmos DB-fiók létrehozása 
-> * Az app.config fájl funkcióinak engedélyezése 
-> * Tábla létrehozása a [Table API-val](table-introduction.md)
-> * Entitás hozzáadása a táblához 
-> * Entitásköteg beszúrása 
-> * Egyetlen entitás lekérdezése 
-> * Entitások lekérdezése automatikus másodlagos indexekkel 
-> * Entitás cseréje 
-> * Entitás törlése 
-> * Tábla törlése
- 
-## <a name="tables-in-azure-cosmos-db"></a>Táblák az Azure Cosmos DB-ben 
+Használhatja az Azure Cosmos DB Table API vagy az Azure Table storage strukturált nosql-alapú kevésbé tervezési sémával tárolja biztosító kulcs-/ attribútumtárat, felhőbeli adatok tárolására. Mivel az Azure Cosmos DB Table API- és Table storage séma kevesebb, könnyebbé vált az adatok alkalmazkodni az alkalmazás változásával igényeinek. Az Azure Cosmos DB Table API vagy a Table storage segítségével rugalmas adatkészleteket, például webalkalmazások, címjegyzékek, eszközadatok vagy más típusú metaadatokat a szolgáltatásnak szüksége van a felhasználói adatok tárolására. 
 
-Az Azure Cosmos DB elérhetővé teszi a [Table API-t](table-introduction.md) az olyan alkalmazások számára, amelyeknek séma nélküli kulcsérték-tárolóra van szükségük. Mostantól az Azure Cosmos DB Table API és az [Azure Table Storage](../storage/common/storage-introduction.md) is ugyanazokat az SDK-kat és REST API-kat támogatja. Az Azure Cosmos DB használatával nagy átviteli sebességet megkövetelő táblákat hozhat létre.
+Ez az oktatóanyag leírja egy mintát, amely bemutatja, hogyan használható a [Microsoft Azure Cosmos DB tábla Library for .NET](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) Azure Cosmo DB Table API és az Azure Table storage-forgatókönyvekhez. A kapcsolat az Azure-szolgáltatás adott kell használnia. Ezek a forgatókönyvek teljesítménykezelési használatával C# példa, amelyek bemutatják, hogyan hozhat létre táblákat, beszúrása / adatok frissítése, adatok lekérdezése és a táblák törlése.
 
-Ez az oktatóanyag olyan fejlesztőknek szól, akik ismerik az Azure Table Storage SDK-t, és Azure Cosmos DB-vel elérhető prémium szolgáltatásokat szeretnék használni. [Az Azure Table Storage a .NET-keretrendszerrel történő használatának első lépésein](table-storage-how-to-use-dotnet.md) alapul, és bemutatja, hogyan használhatja ki az olyan további képességek előnyeit, mint például a másodlagos indexek, a kiosztott átviteli sebesség és a több kiszolgáló használata. Ez az oktatóanyag azt ismerteti, hogyan használhatja az Azure Portalt Azure Cosmos DB-fiók létrehozásához, majd hogyan állíthat össze és helyezhet üzembe egy Table API-alkalmazást. A táblák létrehozásának és törlésének, valamint a táblaadatok beszúrásának, frissítésének, törlésének és lekérdezésének .NET-példáit is ismertetjük. 
+## <a name="prerequisites"></a>Előfeltételek
 
-Ha jelenleg az Azure Table Storage-et használja, az alábbi előnyökben részesülhet az Azure Cosmos DB Table API használatakor:
+A minta sikeres teljesítéséhez a következőkre lesz szüksége:
 
-- Kulcsrakész [globális terjesztés](distribute-data-globally.md) több kiszolgálóval és [automatikus és manuális feladatátvételekkel](high-availability.md).
-- Az automatikus sémafüggetlen indexelés támogatása minden tulajdonsághoz („másodlagos indexek”) és gyors lekérdezéshez 
-- [A tároló és az átviteli sebesség független méretezése](partition-data.md) bármennyi régió között
-- A [táblánkénti dedikált átviteli sebesség](request-units.md) támogatása, amely másodpercenként több száztól akár több millió kérésig méretezhető
-- [Öt beállítható konzisztenciaszint](consistency-levels.md) támogatása, amelyekkel az alkalmazás igényeinek megfelelően szabályozható a rendelkezésre állás, a késés és a konzisztencia
-- 99,99%-os rendelkezésre állás egyetlen régióban, valamint lehetőség van további régiók felvételére a magasabb rendelkezésre állás céljából, továbbá az általános rendelkezésre állás [iparágvezető és átfogó SLA-i](https://azure.microsoft.com/support/legal/sla/cosmos-db/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- A meglévő Azure Storage .NET SDK-t használhatja, és nincs szükség kódmódosításokra az alkalmazásban
+* [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 
-Ez az oktatóanyag az Azure Cosmos DB Table API .NET SDK-val való használatát mutatja be. Az [Azure Cosmos DB Table API .NET SDK-t](https://aka.ms/tableapinuget) a NuGetről töltheti le.
+* [A Microsoft Azure cosmos DB tábla könyvtár a .NET-hez](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) – Ez a tár .NET Standard és a .NET-keretrendszer jelenleg érhető el. 
 
-Az összetett Azure Table Storage-feladatokkal kapcsolatos további információért lásd:
+* [Azure Cosmos DB Table API-fiók](create-table-dotnet.md#create-a-database-account).
 
-* [Alapvető ismeretek az Azure Cosmos DB Table API használatáról](table-introduction.md)
-* A Table Service az elérhető API-kat részletesen ismertető referenciadokumentációjáért lásd: [Azure Cosmos DB Table API .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/cosmosdb/client?view=azure-dotnet)
+## <a name="create-an-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB Table API-fiók létrehozása
 
-### <a name="about-this-tutorial"></a>Az oktatóanyag ismertetése
-Ez az oktatóanyag olyan fejlesztőknek szól, akik ismerik az Azure Table Storage SDK-t, és Azure Cosmos DB-vel elérhető prémium szolgáltatásokat szeretnék használni. [Az Azure Table Storage a .NET-keretrendszerrel történő használatának első lépésein](table-storage-how-to-use-dotnet.md) alapul, és bemutatja, hogyan használhatja ki az olyan további képességek előnyeit, mint például a másodlagos indexek, a kiosztott átviteli sebesség és a több kiszolgáló használata. Bemutatjuk, hogyan használhatja az Azure Portalt Azure Cosmos DB-fiók létrehozásához, majd hogyan állíthat össze és helyezhet üzembe egy Table-alkalmazást. A táblák létrehozásának és törlésének, valamint a táblaadatok beszúrásának, frissítésének, törlésének és lekérdezésének .NET-példáit is ismertetjük. 
+[!INCLUDE [cosmos-db-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)]
 
-Ha nincs telepítve a Visual Studio 2017, letöltheti és használhatja az **ingyenes** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)t. Ügyeljen arra, hogy engedélyezze az **Azure Development** használatát a Visual Studio telepítése során.
+## <a name="create-a-net-console-project"></a>Hozzon létre egy .NET-konzol projektet
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+A Visual Studióban hozzon létre egy új .NET-konzolalkalmazást. A következő lépések azt mutatják be, hogyan hozhat létre konzolalkalmazást a Visual Studio 2017-ben. A lépések a Visual Studio más verziói esetén is hasonlók. Az Azure Cosmos DB tábla kódtárat bármilyen típusú .NET-alkalmazást, beleértve egy Azure-felhő vagy -webappokat alkalmazást, és az asztali és mobil alkalmazások is használhatja. Ebben az útmutatóban az egyszerűség kedvéért egy konzolalkalmazást használunk.
 
-## <a name="create-a-database-account"></a>Adatbázisfiók létrehozása
+1. Válassza a **File** (Fájl) > **New** (Új) > **Project** (Projekt) lehetőséget.
 
-Először hozzon létre egy Azure Cosmos DB-fiókot az Azure Portalon.  
- 
-> [!IMPORTANT]  
-> Létre kell hoznia egy új Table API-fiókot, amely használható az általánosan elérhető Table API SDK-kkal. Az általánosan elérhető SDK-k nem támogatják az előzetes verzióban létrehozott Table API-fiókokat. 
->
+1. Válassza ki **telepített** > **Visual C#**   >  **Console App (.NET Core)**.
 
-[!INCLUDE [cosmosdb-create-dbaccount-table](../../includes/cosmos-db-create-dbaccount-table.md)] 
+1. Az a **neve** mezőben adjon meg egy nevet az alkalmazásnak, például **CosmosTableSamples** (megadhat egy másik nevet igény szerint).
 
-## <a name="clone-the-sample-application"></a>A mintaalkalmazás klónozása
+1. Kattintson az **OK** gombra.
 
-Most pedig klónozunk egy Table-alkalmazást a GitHubról, beállítjuk a kapcsolati sztringet, majd futtatni fogjuk az alkalmazást. Látni fogja, milyen egyszerű az adatokkal programozott módon dolgozni. 
+A példában szereplő példák is hozzáadhatók a Konzolalkalmazás a Main() módjának **Program.cs** fájlt.
 
-1. Nyisson meg egy git terminálablakot, például a git bash eszközt, és a `cd` parancs használatával váltson a mappára, ahol telepíteni szeretné a mintaalkalmazást. 
+## <a name="install-the-required-nuget-package"></a>Telepítse a szükséges NuGet-csomagot
 
-    ```bash
-    cd "C:\git-samples"
-    ```
+A NuGet-csomag beszerzéséhez kövesse az alábbi lépéseket:
 
-2. Futtassa a következő parancsot a minta tárház klónozásához. Ez a parancs másolatot hoz létre a mintaalkalmazásról az Ön számítógépén. 
+1. Kattintson a jobb gombbal a projektjére a **Megoldáskezelőben**, és válassza a **Manage NuGet Packages** (NuGet-csomagok kezelése) lehetőséget.
 
-    ```bash
-    git clone https://github.com/Azure-Samples/storage-table-dotnet-getting-started.git
-    ```
+1. Keressen rá az interneten a `Microsoft.Azure.Cosmos.Table`, `Microsoft.Extensions.Configuration`, `Microsoft.Extensions.Configuration.Json`, `Microsoft.Extensions.Configuration.Binder` válassza **telepítése** telepítése a Microsoft Azure Cosmos DB tábla könyvtárban.
 
-3. Ezután nyissa meg a megoldásfájlt a Visual Studióban. 
+## <a name="configure-your-storage-connection-string"></a>A tárolási kapcsolati sztring konfigurálása
 
-## <a name="update-your-connection-string"></a>A kapcsolati sztring frissítése
+1. Az a [az Azure portal](https://portal.azure.com/), kattintson a **kapcsolati karakterlánc**. Az ablak jobb oldalán található Másolás gomb használatával másolja a vágólapra a **PRIMARY CONNECTION STRING** (Elsődleges kapcsolati sztring) értékét.
 
-Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja be azokat az alkalmazásba. Ez lehetővé teszi az alkalmazás számára, hogy kommunikáljon az üzemeltetett adatbázissal. 
-
-1. Az [Azure Portalon](https://portal.azure.com/) kattintson a **Kapcsolati sztring** elemre. 
-
-    A képernyő jobb oldalán található másolási gombok használatával másolja a vágólapra a PRIMARY CONNECTION STRING (Elsődleges kapcsolati sztring) értékét.
-
-    ![Tekintse meg és másolja a vágólapra a CONNECTION STRING (Kapcsolati sztring) értékét a Kapcsolati sztring ablaktáblán](./media/create-table-dotnet/connection-string.png)
-
-2. Nyissa meg az app.config fájlt a Visual Studióban. 
-
-3. Állítsa vissza a 8. sorban található StorageConnectionString értéket, és tegye megjegyzésbe a 7. sorban szereplő StorageConnectionString értéket, mert ebben az oktatóanyagban nem fogjuk használni a Storage Emulatort. A 7. és a 8. sornak így kell kinéznie:
-
-    ```
-    <!--key="StorageConnectionString" value="UseDevelopmentStorage=true;" />-->
-    <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=[AccountName];AccountKey=[AccountKey]" />
-    ```
-
-4. Illessze be a PRIMARY CONNECTION STRING (Elsődleges kapcsolati sztring) értékét a portálról a 8. sor StorageConnectionString értékébe. Illessze be a sztringet az idézőjelek közé.
+   ![Tekintse meg és másolja a vágólapra a PRIMARY CONNECTION STRING (Elsődleges kapcsolati sztring) értékét a Kapcsolati sztring ablaktáblán.](./media/create-table-dotnet/connection-string.png)
    
-    > [!IMPORTANT]
-    > Ha a végpont a documents.azure.com címet használja, akkor előzetes fiókkal rendelkezik, és létre kell hoznia egy [új Table API-fiókot](#create-a-database-account), amely használható az általánosan elérhető Table API SDK-kkal. 
-    >
+1. A kapcsolati karakterlánc konfigurálása a visual studióban kattintson a jobb gombbal a projekt **CosmosTableSamples**.
 
-    A 8. sornak ekkor a következőképp kell kinéznie:
+1. Válassza ki **hozzáadása** , majd **új elem**. Hozzon létre egy új fájlt **Settings.json** fájl típusú **TypeScript JSON konfigurációs** fájlt. 
 
-    ```
-    <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=<account name>;AccountKey=txZACN9f...==;TableEndpoint=https://<account name>.table.cosmosdb.azure.com;" />
-    ```
+1. A kód a Settings.json fájlban cserélje le a következő kódot, és rendelje hozzá az elsődleges kapcsolati karakterlánc:
 
-5. Mentse az app.config fájlt.
+   ```csharp
+   {
+   "StorageConnectionString": <Primary connection string of your Azure Cosmos DB account>
+   }
+   ```
 
-Az alkalmazás frissítve lett minden olyan információval, amely az Azure Cosmos DB-vel való kommunikációhoz szükséges. 
+1. Kattintson jobb gombbal a projektre **CosmosTableSamples**. Válassza ki **Hozzáadás**, **új elem** és hozzá kell adni egy osztályt nevű **AppSettings.cs**.
 
-## <a name="azure-cosmos-db-capabilities"></a>Azure Cosmos DB-képességek
-Az Azure Cosmos DB számos olyan képességet támogat, amely az Azure Table Storage API-ban nem érhető el. 
+1. Adja hozzá a következő kódot a AppSettings.cs fájlt. Ez a fájl beolvassa a kapcsolati karakterláncot a Settings.json fájlból, és hozzárendeli azt a konfigurációs paraméter:
 
-Bizonyos funkciókat a CreateCloudTableClient új túlterheléseivel érhet el, amelyek lehetővé teszik a kapcsolódási szabályzat és a konzisztenciaszint meghatározását.
-
-| Tábla kapcsolati beállításai | Leírás |
-| --- | --- |
-| Kapcsolat módja  | Az Azure Cosmos DB két csatlakozási módot támogat. `Gateway` módban a kérések mindig az Azure Cosmos DB-átjáróra kerülnek, amely a megfelelő adatpartíciókra továbbítja azokat. `Direct` csatlakozási módban az ügyfél lekéri a táblák partícióra történő leképezését, és a kérések közvetlenül az adatpartíciókra kerülnek. Alapértelmezés szerint a `Direct` használata javasolt.  |
-| Kapcsolati protokoll | Az Azure Cosmos DB két kapcsolati protokollt támogat – ez a `Https` és a `Tcp`. A `Tcp` az alapértelmezett és ajánlott, mert kevesebb erőforrást használ. |
-| Előnyben részesített helyek | Az előnyben részesített (többkiszolgálós) helyek vesszővel elválasztott listája az olvasásokhoz. Mindegyik Azure Cosmos DB-fiók 1–30+ régióval társítható. Minden ügyfélpéldány a kívánt sorrendben adhatja meg ezen régiók részhalmazát a kis késleltetésű olvasásokhoz. A régiókat a [megjelenített nevükkel](https://msdn.microsoft.com/library/azure/gg441293.aspx) kell elnevezni, például: `West US`. Lásd még a [többkiszolgálós API-k](tutorial-global-distribution-table.md) témakörét. |
-| Konzisztenciaszint | Öt jól meghatározott konzisztenciaszinttel szabályozhatja a késleltetést, a konzisztenciát és a rendelkezésre állást: `Strong`, `Session`, `Bounded-Staleness`, `ConsistentPrefix` és `Eventual`. Az alapértelmezett szint a `Session`. A kiválasztott konzisztenciaszint jelentős teljesítménybeli különbséget jelent a többrégiós környezetekben. Részletekért lásd a [konzisztenciaszintek](consistency-levels.md) témakörét. |
-
-Más funkciók is engedélyezhetők az `appSettings` következő konfigurációs értékeivel.
-
-| Kulcs | Leírás |
-| --- | --- |
-| TableQueryMaxItemCount | Konfigurálhatja az egyetlen adatváltási körben táblalekérdezésenként visszaadott elemek maximális számát. Az alapértelmezett érték a `-1`, így az Azure Cosmos DB dinamikusan határozhatja meg az értéket a futtatáskor. |
-| TableQueryEnableScan | Ha a lekérdezés nem tudja az indexet használni egyik szűrőhöz sem, akkor is futtatja azt egy vizsgálattal. Az alapértelmezett érték a `false`.|
-| TableQueryMaxDegreeOfParallelism | A párhuzamosság foka partíciók közötti lekérdezések végrehajtásakor. A `0` sorost jelöl, előzetes beolvasás nélkül, az `1` sorost jelöl, előzetes beolvasással, a magasabb értékek pedig növelik a párhuzamossági arányt. Az alapértelmezett érték a `-1`, így az Azure Cosmos DB dinamikusan határozhatja meg az értéket a futtatáskor. |
-
-Az alapértelmezett érték módosításához nyissa meg az `app.config` fájlt a Megoldáskezelőből a Visual Studióban. Adja hozzá az alábbi `<appSettings>` elem tartalmát. Az `account-name` kifejezést cserélje a tárfiókja nevére, az `account-key` kifejezést pedig a hozzáférési kulcsra. 
-
-```xml
-<configuration>
-    ...
-    <appSettings>
-      <!-- Client options -->
-      <add key="CosmosDBStorageConnectionString" 
-        value="DefaultEndpointsProtocol=https;AccountName=MYSTORAGEACCOUNT;AccountKey=AUTHKEY;TableEndpoint=https://account-name.table.cosmosdb.azure.com" />
-      <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key; TableEndpoint=https://account-name.documents.azure.com" />
-
-      <!-- Table query options -->
-      <add key="TableQueryMaxItemCount" value="-1"/>
-      <add key="TableQueryEnableScan" value="false"/>
-      <add key="TableQueryMaxDegreeOfParallelism" value="-1"/>
-      <add key="TableQueryContinuationTokenLimitInKb" value="16"/>
-            
-    </appSettings>
-</configuration>
-```
-
-Tekintsük át, hogy mi történik az alkalmazásban. Nyissa meg a `Program.cs` fájlt, és láthatja, hogy ezek a kódsorok táblaerőforrásokat hoznak létre. 
-
-## <a name="create-the-table-client"></a>A táblaügyfél létrehozása
-Egy `CloudTableClient` eszközt inicializál a táblafiókhoz történő csatlakozáshoz.
-
-```csharp
-CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
-```
-Az ügyfél az alkalmazás beállításaiban meghatározott `TableConnectionMode`, `TableConnectionProtocol`, `TableConsistencyLevel` és `TablePreferredLocations` konfigurációs értékkel inicializálható.
-
-## <a name="create-a-table"></a>Tábla létrehozása
-
-Ezután létrehozhat egy táblát a `CloudTable` használatával. Az Azure Cosmos DB-ben a táblák egymástól függetlenül méretezhetők a tárolás és az átviteli teljesítmény szempontjából, és a szolgáltatás automatikusan kezeli a particionálást. 
-
-```csharp
-CloudTable table = tableClient.GetTableReference("people");
-400
-table.CreateIfNotExists(throughput: 800);
-```
-
-Fontos különbség van a táblák létrehozási módjai között. Az Azure Cosmos DB az Azure Storage fogyasztásalapú modelljeitől eltérően lefoglalja az átviteli sebességet a tranzakciókhoz. Az átviteli sebesség dedikált/foglalt, így soha nem kerül sor szabályozásra, ha a kérések sebessége a kiosztott átviteli sebességnél nem magasabb.
-
-A CreateIfNotExists paramétereként konfigurálhatja az alapértelmezett átviteli sebességet.
-
-Egy 1 KB-os entitás olvasása 1 RU-ként van normalizálva, és a többi művelet is rögzített RU-hoz van normalizálva a processzor-, a memória- és az IOPS-fogyasztásuk alapján. További információ az [Azure Cosmos DB-kérésegységeiről](request-units.md) és különösen a [kulcsérték-tárolókról](key-value-store-cost.md).
-
-Ezután átvesszük az Azure Table Storage SDK használatával végzett egyszerű olvasási és írási (CRUD-) műveleteket. Ez az oktatóanyag bemutatja az Azure Cosmos DB által nyújtott előre jelezhető alacsony egyszámjegyű ezredmásodperces késéseket és gyors lekérdezéseket.
-
-## <a name="add-an-entity-to-a-table"></a>Entitás hozzáadása a táblához
-Az Azure Table Storage entitásai a `TableEntity` osztályból származnak, és `PartitionKey` és `RowKey` tulajdonsággal kell rendelkezniük. Itt láthatja egy ügyfélentitás mintadefinícióját.
-
-```csharp
-public class CustomerEntity : TableEntity
-{
-    public CustomerEntity(string lastName, string firstName)
+   ```csharp
+   namespace CosmosTableSamples
+   {
+    using Microsoft.Extensions.Configuration;
+    public class AppSettings
     {
-        this.PartitionKey = lastName;
-        this.RowKey = firstName;
+        public string StorageConnectionString { get; set; }
+        public static AppSettings LoadAppSettings()
+        {
+            IConfigurationRoot configRoot = new ConfigurationBuilder()
+                .AddJsonFile("Settings.json")
+                .Build();
+            AppSettings appSettings = configRoot.Get<AppSettings>();
+            return appSettings;
+        }
+    }
+   }
+   ```
+
+## <a name="parse-and-validate-the-connection-details"></a>Elemezheti, és ellenőrizze a kapcsolat adatai 
+
+1. Kattintson jobb gombbal a projektre **CosmosTableSamples**. Válassza ki **Hozzáadás**, **új elem** és hozzá kell adni egy osztályt nevű **Common.cs**. A kapcsolati adatok érvényesítéséhez, és hozzon létre egy táblát az osztályon belül kódot ír majd.
+
+1. Adja meg egy metódust `CreateStorageAccountFromConnectionString` alább látható módon. Ez a módszer lesz elemezni a kapcsolati karakterlánc adatait, és ellenőrizze, hogy a fiók neve és a legfontosabb adatokat adott meg a "Settings.json" fájlban érvényesek. 
+
+   ```csharp
+   public static CloudStorageAccount CreateStorageAccountFromConnectionString(string storageConnectionString)
+    {
+            CloudStorageAccount storageAccount;
+            try
+            {
+                storageAccount = CloudStorageAccount.Parse(storageConnectionString);
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Invalid storage account information provided. Please confirm the AccountName and AccountKey are valid in the app.config file - then restart the application.");
+                throw;
+            }
+            catch (ArgumentException)
+            {
+                Console.WriteLine("Invalid storage account information provided. Please confirm the AccountName and AccountKey are valid in the app.config file - then restart the sample.");
+                Console.ReadLine();
+                throw;
+            }
+
+            return storageAccount;
+        }
+   ```
+
+
+## <a name="create-a-table"></a>Hozzon létre egy táblát 
+
+A [CloudTableClient](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.cloudtableclient?redirectedfrom=MSDN&view=azure-dotnet) osztály segítségével lekérheti a Table Storage-ban tárolt táblákat és entitásokat. Vegyünk fel a Cosmos DB Table API-fiókban, hogy nem rendelkezik táblákkal, mert a `CreateTableAsync` metódust a **Common.cs** osztály tábla létrehozásához:
+
+```csharp
+public static async Task<CloudTable> CreateTableAsync(string tableName)
+  {
+    string storageConnectionString = AppSettings.LoadAppSettings().StorageConnectionString;
+
+    // Retrieve storage account information from connection string.
+    CloudStorageAccount storageAccount = CreateStorageAccountFromConnectionString(storageConnectionString);
+
+    // Create a table client for interacting with the table service
+    CloudTableClient tableClient = storageAccount.CreateCloudTableClient(new TableClientConfiguration());
+
+    Console.WriteLine("Create a Table for the demo");
+
+    // Create a table client for interacting with the table service 
+    CloudTable table = tableClient.GetTableReference(tableName);
+    if (await table.CreateIfNotExistsAsync())
+    {
+      Console.WriteLine("Created Table named: {0}", tableName);
+    }
+    else
+    {
+      Console.WriteLine("Table {0} already exists", tableName);
     }
 
-    public CustomerEntity() { }
-
-    public string Email { get; set; }
-
-    public string PhoneNumber { get; set; }
+    Console.WriteLine();
+    return table;
 }
 ```
 
-Az alábbi kódrészlet bemutatja, hogyan szúrható be entitás az Azure Storage SDK-val. Az Azure Cosmos DB garantáltan kis késleltetést biztosít, mérettől függetlenül és az egész világon.
+## <a name="define-the-entity"></a>Az entitás megadása 
 
-Az írások az esetek 99%-ában 15 ezredmásodperc alatt, és az esetek 50%-ában körülbelül 6 ezredmásodperc alatt készülnek el az Azure Cosmos DB-fiók régiójában futó alkalmazások esetén. És ez az időtartam figyelembe veszi, hogy az írásokat az ügyfél csak akkor nyugtázza, miután szinkronban replikálva lettek, tartósan véglegesítve lettek, és minden tartalom indexelve van.
+Entitások leképezése C# osztályból származtatott egyéni osztály használatával objektumok [TableEntity](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tableentity.aspx). Ha hozzá szeretne adni egy entitást egy táblához, hozzon létre egy osztályt, amely meghatározza az entitás tulajdonságait.
 
-
-```csharp
-// Create a new customer entity.
-CustomerEntity customer1 = new CustomerEntity("Harp", "Walter");
-customer1.Email = "Walter@contoso.com";
-customer1.PhoneNumber = "425-555-0101";
-
-// Create the TableOperation object that inserts the customer entity.
-TableOperation insertOperation = TableOperation.Insert(customer1);
-
-// Execute the insert operation.
-table.Execute(insertOperation);
-```
-
-## <a name="insert-a-batch-of-entities"></a>Entitásköteg beszúrása
-Az Azure Table Storage támogatja a kötegelt műveleti API-t, amellyel frissítéseket, törléseket és beszúrásokat kombinálhat ugyanabban a kötegelt műveletben.
+Kattintson jobb gombbal a projektre **CosmosTableSamples**. Válassza ki **Hozzáadás**, **új mappa** és adja neki **modell**. A modell mappán belül adjon hozzá egy osztályt **CustimerEntity.cs** , és adja hozzá a következő kód azt.
 
 ```csharp
-// Create the batch operation.
-TableBatchOperation batchOperation = new TableBatchOperation();
-
-// Create a customer entity and add it to the table.
-CustomerEntity customer1 = new CustomerEntity("Smith", "Jeff");
-customer1.Email = "Jeff@contoso.com";
-customer1.PhoneNumber = "425-555-0104";
-
-// Create another customer entity and add it to the table.
-CustomerEntity customer2 = new CustomerEntity("Smith", "Ben");
-customer2.Email = "Ben@contoso.com";
-customer2.PhoneNumber = "425-555-0102";
-
-// Add both customer entities to the batch insert operation.
-batchOperation.Insert(customer1);
-batchOperation.Insert(customer2);
-
-// Execute the batch operation.
-table.ExecuteBatch(batchOperation);
-```
-## <a name="retrieve-a-single-entity"></a>Egyetlen entitás lekérdezése
-A lekérdezések (GET-ek) az Azure Cosmos DB-ben az esetek 99%-ában 10 ezredmásodperc alatt, és az esetek 50%-ában körülbelül 1 ezredmásodperc alatt teljesülnek ugyanabban az Azure-régióban. Bármennyi régiót adhat a fiókhoz a kis késleltetésű olvasásokhoz, és a `TablePreferredLocations` beállításával úgy helyezheti üzembe az alkalmazásokat, hogy a helyi régiójukból olvassanak („többkiszolgálós” környezet). 
-
-Az alábbi kódrészlettel kérdezhet le egyetlen entitást:
-
-```csharp
-// Create a retrieve operation that takes a customer entity.
-TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");
-
-// Execute the retrieve operation.
-TableResult retrievedResult = table.Execute(retrieveOperation);
-```
-> [!TIP]
-> A többkiszolgálós API-król további információért lásd a [több régióval végzett fejlesztés](tutorial-global-distribution-table.md) témakörét.
->
-
-## <a name="query-entities-using-automatic-secondary-indexes"></a>Entitások lekérdezése automatikus másodlagos indexekkel
-A táblák a `TableQuery` osztállyal kérdezhetők le. Az Azure Cosmos DB írásra optimalizált adatbázismotorral rendelkezik, amely automatikusan indexeli a táblában lévő összes oszlopot. Az Azure Cosmos DB-ben végzett indexelés sémafüggetlen. Ezért akkor is automatikusan van indexelve, ha különböző sémák vannak a különböző sorokban, vagy ha a séma idővel fejlődik. Mivel az Azure Cosmos DB támogatja az automatikus másodlagos indexeket, bármely tulajdonság lekérdezése használhatja az indexet és hatékonyan kiszolgálható.
-
-```csharp
-CloudTable table = tableClient.GetTableReference("people");
-
-// Filter against a property that's not partition key or row key
-TableQuery<CustomerEntity> emailQuery = new TableQuery<CustomerEntity>().Where(
-    TableQuery.GenerateFilterCondition("Email", QueryComparisons.Equal, "Ben@contoso.com"));
-
-foreach (CustomerEntity entity in table.ExecuteQuery(emailQuery))
+namespace CosmosTableSamples.Model
 {
-    Console.WriteLine("{0}, {1}\t{2}\t{3}", entity.PartitionKey, entity.RowKey,
-        entity.Email, entity.PhoneNumber);
+    using Microsoft.Azure.Cosmos.Table;
+    public class CustomerEntity : TableEntity
+    {
+        public CustomerEntity()
+        {
+        }
+
+        public CustomerEntity(string lastName, string firstName)
+        {
+            PartitionKey = lastName;
+            RowKey = firstName;
+        }
+
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
+    }
 }
 ```
 
-Az Azure Cosmos DB ugyanazokat a lekérdezési funkciókat támogatja a Table API esetében, mint az Azure Table Storage. Az Azure Cosmos DB a rendezést, az összesítéseket, a földrajzi lekérdezéseket, a hierarchiát és számos különféle beépített funkciót is támogat. Az [Azure Cosmos DB lekérdezéssel](how-to-sql-query.md) kapcsolatos szakaszában megtalálja a képességek áttekintését. 
+Ez a kód meghatároz egy entitásosztályt, amely az ügyfél keresztnevét használja sorkulcsnak és a vezetéknevét partíciókulcsnak. Egy adott entitás partíció- és sorkulcsa együttesen azonosítja az entitást a táblában. Az azonos partíciókulcsú entitások entitások gyorsabban lekérdezhetők, az eltérő partíciókulcsok, de partíciókulcsúak használata a párhuzamos műveletek nagyobb méretezhetőségét teszi lehetővé. Táblák entitásoknak támogatott típusúnak, például származó kell lennie a [TableEntity](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.tableentity?redirectedfrom=MSDN&view=azure-dotnet) osztály. A táblában tárolni kívánt entitástulajdonságoknak publikusnak kell lenniük, és támogatniuk kell az értékek beolvasását és beállítását is. Az entitástípusnak emellett közzé kell tennie egy paraméter nélküli konstruktor.
 
-## <a name="replace-an-entity"></a>Entitás cseréje
-Ha frissíteni kíván egy entitást, kérje le a Table szolgáltatásból, módosítsa az entitásobjektumot, majd mentse a módosításokat a Table szolgáltatásba. A következő kód egy meglévő ügyfél telefonszámát módosítja. 
+## <a name="insert-or-merge-an-entity"></a>Helyezze be vagy egy entitás egyesítése
+
+Az alábbi példakód létrehoz egy entitás objektumot, és hozzáadja azt a táblába. A InsertOrMerge metódus belül a [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.tableoperation?redirectedfrom=MSDN&view=azure-dotnet) osztály beszúrása vagy egy entitás egyesítése szolgál. A [CloudTable.ExecuteAsync](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.cloudtable.executeasync?view=azure-dotnet) módszert hívja meg a művelet végrehajtásához. 
+
+Kattintson jobb gombbal a projektre **CosmosTableSamples**. Válassza ki **Hozzáadás**, **új elem** és hozzá kell adni egy osztályt nevű **SamplesUtils.cs**. Ez az osztály az entitások CRUD-műveletek végrehajtásához szükséges összes kódot tárolja. 
 
 ```csharp
-TableOperation updateOperation = TableOperation.Replace(updateEntity);
-table.Execute(updateOperation);
+public static async Task<CustomerEntity> InsertOrMergeEntityAsync(CloudTable table, CustomerEntity entity)
+    {
+      if (entity == null)
+    {
+       throw new ArgumentNullException("entity");
+    }
+    try
+    {
+       // Create the InsertOrReplace table operation
+       TableOperation insertOrMergeOperation = TableOperation.InsertOrMerge(entity);
+
+       // Execute the operation.
+       TableResult result = await table.ExecuteAsync(insertOrMergeOperation);
+       CustomerEntity insertedCustomer = result.Result as CustomerEntity;
+        
+        // Get the request units consumed by the current operation. RequestCharge of a TableResult is only applied to Azure CosmoS DB 
+        if (result.RequestCharge.HasValue)
+          {
+            Console.WriteLine("Request Charge of InsertOrMerge Operation: " + result.RequestCharge);
+          }
+
+        return insertedCustomer;
+        }
+        catch (StorageException e)
+        {
+          Console.WriteLine(e.Message);
+          Console.ReadLine();
+          throw;
+        }
+    }
 ```
-Ugyanígy elvégezhet `InsertOrMerge`- vagy `Merge`-műveleteket.  
+
+### <a name="get-an-entity-from-a-partition"></a>Egy partíció egy entitás beolvasása
+
+A csoportban lekérése módszer használatával egy partícióról entitás is kap a [TableOperation](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.table.tableoperation?redirectedfrom=MSDN&view=azure-dotnet) osztály. A következő mintakód beolvassa a kulcssor partíciókulcsot, egy ügyfélentitást e-mail vagy telefon száma. Ebben a példában is kiírja a lekérdezéshez az entitás felhasznált kérelemegységek. Egy entitás lekérdezéséhez, fűzze hozzá a következő kódot a **SamplesUtils.cs** fájlt: 
+
+```csharp
+public static async Task<CustomerEntity> RetrieveEntityUsingPointQueryAsync(CloudTable table, string partitionKey, string rowKey)
+    {
+      try
+      {
+        TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>(partitionKey, rowKey);
+        TableResult result = await table.ExecuteAsync(retrieveOperation);
+        CustomerEntity customer = result.Result as CustomerEntity;
+        if (customer != null)
+        {
+          Console.WriteLine("\t{0}\t{1}\t{2}\t{3}", customer.PartitionKey, customer.RowKey, customer.Email, customer.PhoneNumber);
+        }
+
+        // Get the request units consumed by the current operation. RequestCharge of a TableResult is only applied to Azure CosmoS DB 
+        if (result.RequestCharge.HasValue)
+        {
+           Console.WriteLine("Request Charge of Retrieve Operation: " + result.RequestCharge);
+        }
+
+        return customer;
+        }
+        catch (StorageException e)
+        {
+           Console.WriteLine(e.Message);
+           Console.ReadLine();
+           throw;
+        }
+    }
+```
 
 ## <a name="delete-an-entity"></a>Entitás törlése
-A lekérdezés után egyszerűen törölheti az entitásokat az entitások frissítésénél bemutatott minta alapján. Az alábbi kód lekérdez, majd töröl egy ügyfélentitást.
+
+A lekérdezés után egyszerűen törölheti az entitásokat az entitások frissítésénél bemutatott minta alapján. Az alábbi kód lekérdez, majd töröl egy ügyfélentitást. Entitás törlése, fűzze hozzá a következő kódot a **SamplesUtils.cs** fájlt: 
 
 ```csharp
-TableOperation deleteOperation = TableOperation.Delete(deleteEntity);
-table.Execute(deleteOperation);
+public static async Task DeleteEntityAsync(CloudTable table, CustomerEntity deleteEntity)
+   {
+     try
+     {
+        if (deleteEntity == null)
+     {
+        throw new ArgumentNullException("deleteEntity");
+     }
+
+    TableOperation deleteOperation = TableOperation.Delete(deleteEntity);
+    TableResult result = await table.ExecuteAsync(deleteOperation);
+
+    // Get the request units consumed by the current operation. RequestCharge of a TableResult is only applied to Azure CosmoS DB 
+    if (result.RequestCharge.HasValue)
+    {
+       Console.WriteLine("Request Charge of Delete Operation: " + result.RequestCharge);
+    }
+
+    }
+    catch (StorageException e)
+    {
+        Console.WriteLine(e.Message);
+        Console.ReadLine();
+        throw;
+    }
+}
 ```
 
-## <a name="delete-a-table"></a>Tábla törlése
-Végezetül pedig az alábbi példakóddal törölhető egy tábla a tárfiókból. Törölhet, és azonnal újból létrehozhat egy táblát az Azure Cosmos DB használatával.
+## <a name="execute-the-crud-operations-on-sample-data"></a>A mintaadatok CRUD-műveletek végrehajtása
+
+Tábla, insert nebo egyesítési entitások létrehozásának, meghatározása után ezek a metódusok futtassa a mintaadatokat. Ehhez kattintson a jobb gombbal a projekt **CosmosTableSamples**. Válassza ki **Hozzáadás**, **új elem** és hozzá kell adni egy osztályt nevű **BasicSamples.cs** , és adja hozzá a következő kód azt. Ez a kód egy táblát hoz létre, azt hozzáadja az entitásokat. Ha törli az entitás- és a végén a projekt táblázatban távolítsa el a megjegyzések `table.DeleteIfExistsAsync()` és `SamplesUtils.DeleteEntityAsync(table, customer)` metódusokat a következő kódot:
 
 ```csharp
-CloudTable table = tableClient.GetTableReference("people");
-table.DeleteIfExists();
+using System;
+namespace CosmosTableSamples
+{
+    using System.Threading.Tasks;
+    using Microsoft.Azure.Cosmos.Table;
+    using Model;
+
+    class BasicSamples
+    {
+        public async Task RunSamples()
+        {
+            Console.WriteLine("Azure Cosmos DB Table - Basic Samples\n");
+            Console.WriteLine();
+
+            string tableName = "demo" + Guid.NewGuid().ToString().Substring(0, 5);
+
+            // Create or reference an existing table
+            CloudTable table = await Common.CreateTableAsync(tableName);
+
+            try
+            {
+                // Demonstrate basic CRUD functionality 
+                await BasicDataOperationsAsync(table);
+            }
+            finally
+            {
+                // Delete the table
+                // await table.DeleteIfExistsAsync();
+            }
+        }
+
+        private static async Task BasicDataOperationsAsync(CloudTable table)
+        {
+            // Create an instance of a customer entity. See the Model\CustomerEntity.cs for a description of the entity.
+            CustomerEntity customer = new CustomerEntity("Harp", "Walter")
+            {
+                Email = "Walter@contoso.com",
+                PhoneNumber = "425-555-0101"
+            };
+
+            // Demonstrate how to insert the entity
+            Console.WriteLine("Insert an Entity.");
+            customer = await SamplesUtils.InsertOrMergeEntityAsync(table, customer);
+
+            // Demonstrate how to Update the entity by changing the phone number
+            Console.WriteLine("Update an existing Entity using the InsertOrMerge Upsert Operation.");
+            customer.PhoneNumber = "425-555-0105";
+            await SamplesUtils.InsertOrMergeEntityAsync(table, customer);
+            Console.WriteLine();
+
+            // Demonstrate how to Read the updated entity using a point query 
+            Console.WriteLine("Reading the updated Entity.");
+            customer = await SamplesUtils.RetrieveEntityUsingPointQueryAsync(table, "Harp", "Walter");
+            Console.WriteLine();
+
+            // Demonstrate how to Delete an entity
+            //Console.WriteLine("Delete the entity. ");
+            //await SamplesUtils.DeleteEntityAsync(table, customer);
+            //Console.WriteLine();
+        }
+    }
+}
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+Az előző kód "bemutató" kezdetű táblázatot hoz létre, és a létrehozott globálisan egyedi Azonosítót a rendszer hozzáfűzi a tábla neve. Ez hozzáad egy ügyfélentitást első és utolsó "Harp Walter" nevű, és később frissíti a felhasználó telefonszámát. 
 
-[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
+Ebben az oktatóanyagban létrehozott kódot a Table API-fiókban tárolt adatok alapszintű CRUD-műveletek végrehajtásához. Például a speciális műveleteket is elvégezheti, – batch beszúrása az adatok, a lekérdezés egy partíción belül az adatok lekérdezése az adatok egy partíción belül, a fiók a megadott előtaggal kezdődő listák táblák széles. Letöltheti a teljes minta képernyő [azure-cosmos-table-dotnet-core-getting-started](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started) GitHub-adattárban. A [AdvancedSamples.cs](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started/blob/master/CosmosTableSamples/AdvancedSamples.cs) osztály rendelkezik további műveleteket hajthat végre az adatokon.  
+
+## <a name="run-the-project"></a>A projekt futtatása
+
+Most állítsa össze a megoldást, és nyomja le az F5 billentyűt a projekt futtatásához. A projekt futtatásakor a parancssorban a következő kimenet jelenik meg:
+
+![Kimeneti parancssor használatával](./media/tutorial-develop-table-standard/output-from-sample.png)
+
+Ha hibaüzenet arról, hogy a Settings.json fájl nem található, ha futtatja a projektet, megoldhatja a Projektbeállítások között a következő XML-bejegyzés hozzáadásával. A jobb gombbal a CosmosTableSamples, CosmosTableSamples.csproj szerkesztéséhez válassza ki, és adja hozzá a következő itemGroup: 
+
+```csharp
+  <ItemGroup>
+    <None Update="Settings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+```
+Most jelentkezzen be az Azure Portalra, és győződjön meg arról, hogy az adatok a tábla létezik-e. 
+
+![Eredmények a portál](./media/tutorial-develop-table-standard/results-in-portal.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megismerte, hogyan kezdheti el az Azure Cosmos DB használatát a Table API-val, és a következőket végezte el: 
-
-> [!div class="checklist"] 
-> * Létrehozott egy Azure Cosmos DB-fiókot 
-> * Funkciókat engedélyezett az app.config fájlban 
-> * Létrehozott egy táblát 
-> * Entitást adott a táblához 
-> * Egy entitásköteget szúrt be 
-> * Lekérdezett egyetlen entitást 
-> * Automatikus másodlagos indexekkel kérdezett le entitásokat 
-> * Lecserélt egy entitást 
-> * Törölt egy entitást 
-> * Törölt egy táblát  
-
-Továbbléphet a következő oktatóanyagra, amelyben megismerheti a táblaadatok lekérdezésének módját. 
+Most továbbléphet a következő oktatóanyaggal, és ismerje meg, hogyan telepítheti át adatait az Azure Cosmos DB Table API-fiókhoz. 
 
 > [!div class="nextstepaction"]
-> [Lekérdezés a Table API-val](tutorial-query-table.md)
+>[Adatok lekérdezése](../cosmos-db/table-import.md)

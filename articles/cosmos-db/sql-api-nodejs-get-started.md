@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: dech
 Customer intent: As a developer, I want to build a Node.js console application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: 4441797eb41dc909a98be3c42931140e71e36f80
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: fe925ed408f64424de8da98f6e182a06a41bf015
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270351"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075049"
 ---
 # <a name="tutorial-build-a-nodejs-console-app-with-the-javascript-sdk-to-manage-azure-cosmos-db-sql-api-data"></a>Oktatóanyag: Node.js-Konzolalkalmazás létrehozása az Azure Cosmos DB SQL API-adatok kezelése a JavaScript SDK-val
 
@@ -338,7 +338,7 @@ Most, hogy rendelkezik az Azure Cosmos DB-ügyfél elindításához szükséges 
 Ezután hozzon létre egy tárolót az Azure Cosmos DB-fiókon belül, így a tárolhatja, és lekérdezheti az adatokat. 
 
 > [!WARNING]
-Tároló létrehozása – következmények díjszabás rendelkezik. Látogasson el a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/cosmos-db/) , hogy tudja, hogy milyen hatással vannak.
+> Tároló létrehozása – következmények díjszabás rendelkezik. Látogasson el a [díjszabását ismertető lapon](https://azure.microsoft.com/pricing/details/cosmos-db/) , hogy tudja, hogy milyen hatással vannak.
 
 Egy tároló használatával hozható létre a `createIfNotExists` , vagy hozzon létre a függvénynek a **tárolók** osztály.  A tároló elemeket (az SQL API esetében JSON-dokumentumokat) tartalmaz, valamint a kapcsolódó JavaScript-alkalmazáslogikát.
 
@@ -462,7 +462,7 @@ Egy elem a létrehozás funkciójának használatával hozható létre a **eleme
    /**
    * Create family item if it does not exist
    */
-  async function createFamilyItem(itemBody) {
+   async function createFamilyItem(itemBody) {
      try {
          // read the item to see if it exists
          const { item } = await client.database(databaseId).container(containerId).item(itemBody.id).read();
@@ -612,9 +612,9 @@ Az Azure Cosmos DB támogatja a JSON-elemek törlését.
 1. Másolja és illessze be a **deleteFamilyItem** függvényt a **replaceFamilyItem** függvény alá.
 
    ```javascript
-  /**
-  * Delete the item by ID.
-  */
+   /**
+   * Delete the item by ID.
+   */
    async function deleteFamilyItem(itemBody) {
       await client.database(databaseId).container(containerId).item(itemBody.id).delete(itemBody);
       console.log(`Deleted item:\n${itemBody.id}\n`);

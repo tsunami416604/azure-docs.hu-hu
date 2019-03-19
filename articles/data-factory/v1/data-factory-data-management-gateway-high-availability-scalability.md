@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: bc8cacd6d52de0367a0ea14748e548b9d32f47ef
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 08e7341bfd1c384e41e6d3f1bd7810552899849a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016767"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58092191"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Az adatkezelési átjáró – magas rendelkezésre állás és méretezhetőség (előzetes verzió)
 > [!NOTE]
@@ -29,8 +29,8 @@ Ez a cikk segítséget nyújt az adatkezelési átjárót magas rendelkezésre �
 
 > [!NOTE]
 > Ez a cikk azt feltételezi, hogy már ismeri az integrációs modul (korábbi adatkezelési átjáró) alapjait. Ha nem, tekintse meg [adatkezelési átjáró](data-factory-data-management-gateway.md).
-
->**Az előzetes verziójú funkció az adatkezelési átjáró verziója 2.12.xxxx.x és újabb hivatalosan támogatott**. Ellenőrizze, hogy a verzió 2.12.xxxx.x használ vagy újabb. Az adatkezelési átjáró legújabb verziójának letöltése [Itt](https://www.microsoft.com/download/details.aspx?id=39717).
+> 
+> **Az előzetes verziójú funkció az adatkezelési átjáró verziója 2.12.xxxx.x és újabb hivatalosan támogatott**. Ellenőrizze, hogy a verzió 2.12.xxxx.x használ vagy újabb. Az adatkezelési átjáró legújabb verziójának letöltése [Itt](https://www.microsoft.com/download/details.aspx?id=39717).
 
 ## <a name="overview"></a>Áttekintés
 Adatok felügyeleti átjárók több helyszíni gépek a portálról egyetlen logikai átjáró telepített társíthat. Ezek a gépek nevezzük **csomópontok**. Akár rendelkezhet **négy csomópont** társított logikai átjáró. Több csomópont (a telepített átjáró a helyszíni gépek) rendelkező logikai átjáró előnyei a következők:  
@@ -163,14 +163,14 @@ Az alábbiakban az integrációsmodul-csomópontot integrációs közötti kommu
 
 - A tanúsítványnak kell lennie egy nyilvánosan megbízható X509 v3 tanúsítvány. Azt javasoljuk, hogy a nyilvános (külső) hitelesítésszolgáltató (CA) által kiállított tanúsítványokat használ.
 - Minden egyes az integration runtime csomópontja meg kell bízniuk ezt a tanúsítványt, valamint az ügyfélszámítógépen, amelyen fut a hitelesítőadat-kezelő alkalmazást. 
-> [!NOTE]
-> Hitelesítőadat-kezelő alkalmazást használja a másolás varázsló hitelesítő adatok biztonságos beállításakor / Azure-portálon. És ez lehet a helyszíni ugyanazon a hálózaton belül bármely gépről aktivált / titkos adattár.
+  > [!NOTE]
+  > Hitelesítőadat-kezelő alkalmazást használja a másolás varázsló hitelesítő adatok biztonságos beállításakor / Azure-portálon. És ez lehet a helyszíni ugyanazon a hálózaton belül bármely gépről aktivált / titkos adattár.
 - A rendszer támogatja a helyettesítő tanúsítványokat. Ha a tartománynév **node1.domain.contoso.com**, használhatja ***. domain.contoso.com** a tanúsítvány tulajdonos neve.
 - A SAN-tanúsítványok használata nem ajánlott, mert a tulajdonos alternatív neveket csak az utolsó elem fogja használni, és minden más figyelmen kívül jelenlegi korlátozás miatt. Például van egy SAN-tanúsítvány, amelynek SAN vannak **node1.domain.contoso.com** és **node2.domain.contoso.com**, ezzel a tanúsítvánnyal csak használhatja a gépet, amelynek FQDN-je **node2.domain.contoso.com**.
 - Támogatja az SSL-tanúsítványokra vonatkozó Windows Server 2012 R2 által támogatott bármely kulcsának mérete.
 - Tanúsítvány használata a CNG kulcsok nem támogatottak.
 
-#### <a name="faq-when-would-i-not-enable-this-encryption"></a>GYAKORI KÉRDÉSEK: Ha szeretné nem engedélyezhető a titkosítás?
+#### <a name="faq-when-would-i-not-enable-this-encryption"></a>FAQ: Ha szeretné nem engedélyezhető a titkosítás?
 Titkosítás engedélyezése adhat hozzá, bizonyos ezért az infrastruktúra (tulajdonos nyilvános tanúsítvány) költség, kihagyhatja a titkosításának engedélyezésével az alábbi esetekben:
 - Ha az integrációs modul megbízható hálózathoz, vagy a hálózaton, például IP küszöbértéküket átlátható titkosítási fut. Mivel ez a csatorna kommunikáció csak korlátozott megbízható hálózaton belül, előfordulhat, hogy nem kell további titkosítási.
 - Ha az integrációs modul nem fut éles környezetben. Ez segít a TLS/SSL-tanúsítvány költségek csökkentésére.

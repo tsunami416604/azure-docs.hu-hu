@@ -11,12 +11,12 @@ ms.date: 01/04/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 9c20c141f640ae5f868b350951e132d3a6479af9
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 9cea3e7494ee81638923cbcaff9f1b82d08a1ad1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576239"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085031"
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure virtuális hálózaton lévő adatok átalakítása Hive-tevékenység segítségével az Azure Data Factoryben
 Ebben az oktatóanyagban az Azure Portal segítségével hoz létre egy Data Factory-folyamatot, amely egy Azure virtuális hálózaton (VNet) lévő HDInsight-fürtön futó Hive-tevékenységgel alakítja át az adatokat. Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
@@ -85,24 +85,24 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 3. Válassza ki azt az **Azure-előfizetést**, amelyben az adat-előállítót létre szeretné hozni. 
 4. Az **erőforráscsoportban** hajtsa végre a következő lépések egyikét:
      
-      - Kattintson a **Meglévő használata** elemre, majd a legördülő listából válasszon egy meglévő erőforráscsoportot. 
-      - Kattintson az **Új létrehozása** elemre, és adja meg az erőforráscsoport nevét.   
+   - Kattintson a **Meglévő használata** elemre, majd a legördülő listából válasszon egy meglévő erőforráscsoportot. 
+   - Kattintson az **Új létrehozása** elemre, és adja meg az erőforráscsoport nevét.   
          
-      Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
+     Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/resource-group-overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 4. A **Verzió** résznél válassza a **V2** értéket.
 5. Válassza ki a Data Factory **helyét**. A listában csak az adat-előállítók létrehozását támogató helyek jelennek meg.
 6. Válassza a **Rögzítés az irányítópulton** lehetőséget.     
 7. Kattintson a **Create** (Létrehozás) gombra.
 8. Az irányítópulton a következő állapotleírás látható: **Data factory üzembe helyezése**. 
 
-    ![adat-előállító üzembe helyezése csempe](media/tutorial-transform-data-using-hive-in-vnet-portal/deploying-data-factory.png)
+     ![adat-előállító üzembe helyezése csempe](media/tutorial-transform-data-using-hive-in-vnet-portal/deploying-data-factory.png)
 9. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
    
-   ![Data factory kezdőlap](./media/tutorial-transform-data-using-hive-in-vnet-portal/data-factory-home-page.png)
+    ![Data factory kezdőlap](./media/tutorial-transform-data-using-hive-in-vnet-portal/data-factory-home-page.png)
 10. A Data Factory felhasználói felületének (UI) külön lapon történő elindításához kattintson a **Létrehozás és monitorozás** csempére.
 11. Az **első lépéseket bemutató** lapon váltson a **Szerkesztés** lapra a bal oldali panelen, ahogy az az alábbi képen látható: 
 
-   ![Szerkesztés lap](./media/tutorial-transform-data-using-hive-in-vnet-portal/get-started-page.png)
+    ![Szerkesztés lap](./media/tutorial-transform-data-using-hive-in-vnet-portal/get-started-page.png)
 
 ## <a name="create-a-self-hosted-integration-runtime"></a>Saját üzemeltetésű Integration Runtime létrehozása
 Mivel a Hadoop-fürt egy virtuális hálózatban található, telepítenie kell egy helyi Integration Runtime-ot (IR) ugyanabban a virtuális hálózatban. Ebben a szakaszban egy új virtuális hálózatot fog létrehozni, amelyet aztán csatlakoztat ugyanahhoz a virtuális hálózathoz, és telepít rajta egy helyi IR-t. A helyi IR a Data Factory szolgáltatás számára lehetővé teszi a feldolgozási kérelmek kiosztását az HDInsighthoz hasonló számítási szolgáltatásokhoz a virtuális hálózaton belül. Az adatok mozgatására is lehetőséget biztosít a virtuális hálózatban található adattárak és az Azure között. Akkor kell helyi IR-t használni, ha az adattár vagy a számítási feladat szintén helyszíni környezetben található. 

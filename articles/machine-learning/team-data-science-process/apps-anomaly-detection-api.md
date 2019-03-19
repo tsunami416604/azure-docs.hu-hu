@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 06/05/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: e407aee98bef9917a99e3305e2c99dbdd0c182e0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e5f428062155ea732dce785955ac76011f3e4678
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469821"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57899349"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>A Machine Learning Anomáliadetektálás API
 ## <a name="overview"></a>Áttekintés
@@ -32,7 +32,7 @@ A machine learning derítik fel ilyen értékek változásainak követése keres
 
 Az Anomáliadetektálás ajánlat az első lépésekhez hasznos eszközöket tartalmaz.
 
-* A [webes alkalmazás](http://anomalydetection-aml.azurewebsites.net/) segítségével értékelje ki és jelenítheti meg az eredményeket az anomáliadetektálás API-k az adatokon.
+* A [webes alkalmazás](https://anomalydetection-aml.azurewebsites.net/) segítségével értékelje ki és jelenítheti meg az eredményeket az anomáliadetektálás API-k az adatokon.
 
 > [!NOTE]
 > Próbálja ki **informatikai Anomáliaelemző megoldás** működteti [az API-t](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2)
@@ -110,9 +110,9 @@ Az anomáliadetektálás API támogatja a derítik fel a 3 tág kategóriába. A
 | Kategória detector használatával | Detector használatával | Leírás | Bemeneti paraméterek | Kimenetek |
 | --- | --- | --- | --- | --- |
 | Megnövekedett érzékelők |TSpike detector használatával |Csúcsok és a DIP sokkal értékei alapján is az első és harmadik quartiles észlelése |*tspikedetector.Sensitivity:* egész értéket a tartomány 1 – 10., alapértelmezett vesz fel: 3. A magasabb értékek lesznek catch tehát így kevésbé érzékeny további rendkívüli értékek |TSpike: bináris értékek – "1", ha a megnövekedett/dip észlel, különben "0" |
-| Megnövekedett érzékelők | ZSpike detector használatával |Csúcsok és alapján illesztésnek a esetén a rendszer a középérték a DIP észlelése |*zspikedetector.Sensitivity:* egész szám, a tartomány 1 – 10., alapértelmezett igénybe: 3. A magasabb értékek lesznek catch így kevésbé érzékeny további rendkívüli értékek |ZSpike: bináris értékek – "1", ha a megnövekedett/dip észlel, különben "0" | |
+| Megnövekedett érzékelők | ZSpike detector használatával |Csúcsok és alapján illesztésnek a esetén a rendszer a középérték a DIP észlelése |*zspikedetector.Sensitivity:* egész szám, a tartomány 1 – 10., alapértelmezett igénybe: 3. A magasabb értékek lesznek catch így kevésbé érzékeny további rendkívüli értékek |ZSpike: bináris értékek – "1", ha a megnövekedett/dip észlel, különben "0" |
 | Lassú Trend detector használatával |Lassú Trend detector használatával |A set-érzékenysége alapján lassú pozitív trend észlelése |*trenddetector.Sensitivity:* detector használatával pontszám a küszöbérték (alapértelmezett: 3,25, 3,25 – 5, és válassza ki ezt a; elfogadható tartományban Minél nagyobb a less-és nagybetűkre) |tscore: a trend anomáliadetektálás pontszámot jelölő lebegőpontos szám |
-| Szint módosításának érzékelők | Kétirányú szint módosítása detector használatával |Felfelé és lefelé is megfelelően a beállított érzékenységi szint módosításának észlelése |*bileveldetector.Sensitivity:* detector használatával pontszám a küszöbérték (alapértelmezett: 3,25, 3,25 – 5, és válassza ki ezt a; elfogadható tartományban Minél nagyobb a less-és nagybetűkre) |rpscore: anomáliadetektálási pontszám a felfelé és lefelé szint módosításának jelölő lebegőpontos szám | |
+| Szint módosításának érzékelők | Kétirányú szint módosítása detector használatával |Felfelé és lefelé is megfelelően a beállított érzékenységi szint módosításának észlelése |*bileveldetector.Sensitivity:* detector használatával pontszám a küszöbérték (alapértelmezett: 3,25, 3,25 – 5, és válassza ki ezt a; elfogadható tartományban Minél nagyobb a less-és nagybetűkre) |rpscore: anomáliadetektálási pontszám a felfelé és lefelé szint módosításának jelölő lebegőpontos szám |
 
 ### <a name="parameters"></a>Paraméterek
 Ezek a bemeneti paraméterek részletesebb információkat az alábbi táblázatban szerepel:

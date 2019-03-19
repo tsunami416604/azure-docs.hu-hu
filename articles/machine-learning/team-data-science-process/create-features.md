@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b7c10884682b6537bbfcbb1b1f8b89b38751d05b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 8b0973007a78b492cff1c5ffc2ce1e43116a0847
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478049"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835084"
 ---
 # <a name="feature-engineering-in-data-science"></a>Funkciók tervezése a adatelemzés
 Ez a cikk ismerteti az alkalmazásában funkciófejlesztési és példák a szerepét a machine learning adatokat a fejlesztés folyamatát. A folyamat szemléltetése használt példák az Azure Machine Learning Studio állítják. 
@@ -46,7 +46,7 @@ Adatkészlet továbbfejlesztése, amikor egy modell tanítása milyen funkciók 
 
 Az Azure Machine Learning indításakor a legegyszerűbb bonyolultnak a folyamat, konkrétan a megadott a Studio minták használatával. Két példa itt jelennek meg:
 
-* Egy regressziós példa [kerékpárkölcsönzés számát az előrejelzések](http://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4) egy felügyelt kísérletben, ahol a cél értékek ismertek
+* Egy regressziós példa [kerékpárkölcsönzés számát az előrejelzések](https://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4) egy felügyelt kísérletben, ahol a cél értékek ismertek
 * Egy szöveges adatbányászati példa használatával végzett adatbesorolás [Szolgáltatáskivonatolás](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/)
 
 ## <a name="example-1-add-temporal-features-for-a-regression-model"></a>1. példa: Egy regressziós modell historikus szolgáltatások hozzáadása

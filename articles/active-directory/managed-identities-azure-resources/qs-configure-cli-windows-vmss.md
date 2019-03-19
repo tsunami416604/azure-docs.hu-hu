@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 02/15/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6457a04419012ef80432d8603caae21bbacde59b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 34cd03ad6640ac809ce8ac2e8f4fc1070246df27
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170958"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57886864"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-virtual-machine-scale-set-using-azure-cli"></a>Az Azure-erőforrások felügyelt identitások konfigurálása a virtuális gép méretezési csoportban Azure CLI-vel
 
@@ -168,13 +168,10 @@ Ez a szakasz végigvezeti egy VMSS létrehozásának és a egy felhasználó ál
 
 1. Hozzon létre egy felhasználó által hozzárendelt felügyelt identitást az [az identity create](/cli/azure/identity#az-identity-create) paranccsal.  A `-g` paraméter adja meg azt az erőforráscsoportot, amelyben a felhasználó által hozzárendelt felügyelt identitás létre lesz hozva, a `-n` paraméter pedig annak nevét határozza meg. Ne felejtse el a `<RESOURCE GROUP>` és `<USER ASSIGNED IDENTITY NAME>` paraméterek értékeit a saját értékeire cserélni:
 
-    > [!IMPORTANT]
-    > A speciális karakterek (például aláhúzásjelet) nevét a felhasználó által hozzárendelt felügyelt identitások létrehozása jelenleg nem támogatott. Adja meg az alfanumerikus karaktereket használjon. Térjen vissza frissítésekért.  További információ: [– gyakori kérdések és ismert problémák](known-issues.md)
-
     ```azurecli-interactive
     az identity create -g <RESOURCE GROUP> -n <USER ASSIGNED IDENTITY NAME>
     ```
-A válasz tartalmazza a létrehozott, az alábbihoz hasonló felügyelt felhasználó által hozzárendelt identitás részleteit.
+   A válasz tartalmazza a létrehozott, az alábbihoz hasonló felügyelt felhasználó által hozzárendelt identitás részleteit.
 
    ```json
    {

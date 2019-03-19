@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/01/2019
 ms.author: haroldw
-ms.openlocfilehash: 826377f7ae4803818fab22e333f7b9b89caf67cb
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 826085df8d928cab0a05527be8c464af5f4e9180
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444888"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002516"
 ---
 # <a name="openshift-in-azure"></a>OpenShift az Azure-ban
 
@@ -50,7 +50,7 @@ Container Platform az olyan vállalati felhasználásra kész [kereskedelmi verz
 
 ## <a name="openshift-on-azure"></a>OpenShift On Azure
 
-OpenShift az Azure-ban egy teljes körűen felügyelt ajánlat az Azure-ban futó OpenShift. Ez a szolgáltatás közösen kezelt és a Microsoft és a Red Hat által támogatott. A fürt az ügyfél Azure-előfizetésben helyezi üzembe helyezni. A szolgáltatás jelenleg privát előzetes verzióban érhető el, és körül Q1 CY2019 végén általánosan elérhető a javítás. Az ügyfelek részt venni benne a Private Preview verzióban, kérjük, töltse ki a [jelölési űrlapot](http://aka.ms/openshiftazureinterest).  További információkat nyújtanak, az ajánlat beolvasása közelebb általánosan elérhető
+OpenShift az Azure-ban egy teljes körűen felügyelt ajánlat az Azure-ban futó OpenShift. Ez a szolgáltatás közösen kezelt és a Microsoft és a Red Hat által támogatott. A fürt az ügyfél Azure-előfizetésben helyezi üzembe helyezni. A szolgáltatás jelenleg privát előzetes verzióban érhető el, és körül Q1 CY2019 végén általánosan elérhető a javítás. Az ügyfelek részt venni benne a Private Preview verzióban, kérjük, töltse ki a [jelölési űrlapot](https://aka.ms/openshiftazureinterest).  További információkat nyújtanak, az ajánlat beolvasása közelebb általánosan elérhető
 
 ## <a name="okd-formerly-openshift-origin"></a>OKD (Formerly OpenShift Origin)
 

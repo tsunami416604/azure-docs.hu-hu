@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: mayg
-ms.openlocfilehash: f2d8d070a8adbe7992795b06722427da2830cb50
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: e3f6a160f57a4432f91c395a2e0dd664bc8f323d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253680"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58106542"
 ---
 # <a name="scale-for-failback-with-additional-process-servers"></a>Méretezési csoport és további folyamatkiszolgálók feladat-visszavételhez
 
@@ -24,8 +24,8 @@ Alapesetben, amikor replikál a VMware virtuális gépek vagy fizikai kiszolgál
 
 Győződjön meg arról, hogy végre [kapacitástervezés](site-recovery-plan-capacity-vmware.md) a VMware replikálásához. Ennek segítségével azonosíthatja módjának és további folyamatkiszolgálók üzembe kell helyeznie.
 
->[!NOTE]
-Klónozott Folyamatkiszolgáló összetevő nem támogatott. Kövesse a jelen cikk egyes PS horizontális felskálázást.
+> [!NOTE]
+> Klónozott Folyamatkiszolgáló összetevő nem támogatott. Kövesse a jelen cikk egyes PS horizontális felskálázást.
 
 ### <a name="sizing-requirements"></a>Méretezési követelményei 
 
@@ -56,11 +56,11 @@ A folyamatkiszolgáló telepítőfájlja töltse le a következőképpen:
 3. Válassza ki a konfigurációs kiszolgáló, a részletek feltárásához. Kattintson a **+ Folyamatkiszolgáló**.
 4. A **adja hozzá a folyamatkiszolgáló** >  **válassza ki, hol szeretné üzembe helyezni a folyamatkiszolgálót**válassza **helyszíni üzembe helyezés horizontális felskálázási Folyamatkiszolgáló**.
 
-  ![Kiszolgálók lap hozzáadása](./media/vmware-azure-set-up-process-server-scale/add-process-server.png)
+   ![Kiszolgálók lap hozzáadása](./media/vmware-azure-set-up-process-server-scale/add-process-server.png)
 1. Kattintson a **töltse le a Microsoft Azure Site Recovery egyesített telepítővel**. Ez letölti a legújabb verzióját a telepítőfájlt.
 
-  > [!WARNING]
-  A folyamatkiszolgáló telepítés verziójának egyeznie kell, vagy a korábbi, mint a konfigurációs kiszolgáló verzióját telepítette, futó. Egy egyszerű módja annak biztosítása érdekében a verziókompatibilitás, hogy az azonos, telepíteni vagy frissíteni a konfigurációs kiszolgálóra legutóbb használt telepítővel.
+   > [!WARNING]
+   > A folyamatkiszolgáló telepítés verziójának egyeznie kell, vagy a korábbi, mint a konfigurációs kiszolgáló verzióját telepítette, futó. Egy egyszerű módja annak biztosítása érdekében a verziókompatibilitás, hogy az azonos, telepíteni vagy frissíteni a konfigurációs kiszolgálóra legutóbb használt telepítővel.
 
 ## <a name="install-from-the-ui"></a>Telepítse a felhasználói felületről
 

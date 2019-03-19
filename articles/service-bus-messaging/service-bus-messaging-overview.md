@@ -11,16 +11,16 @@ ms.topic: overview
 ms.date: 09/22/2018
 ms.custom: mvc
 ms.author: aschhab
-ms.openlocfilehash: 1c99c680371d9d9601637ebeb52d9299de71b0ec
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 8217eddd6f31a30b9113b178d74b59afb94f42af
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338807"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900862"
 ---
 # <a name="what-is-azure-service-bus"></a>Mi az Azure Service Bus?
 
-A Microsoft Azure Service Bus egy teljes körűen felügyelt vállalati [integrációs](http://azure.com/integration) közvetítő. A Service Bust leggyakrabban az alkalmazások és szolgáltatások egymástól való elkülönítésére használják, továbbá az aszinkron adat- és állapotátvitel biztonságos platformjaként is alkalmazható. Az adatok különböző alkalmazások és szolgáltatások közötti átvitele az *üzenetek* segítségével történik. Bináris formátum, JSON, XML vagy csupán szöveget tartalmazó üzenet van. 
+A Microsoft Azure Service Bus egy teljes körűen felügyelt vállalati [integrációs](https://azure.com/integration) közvetítő. A Service Bust leggyakrabban az alkalmazások és szolgáltatások egymástól való elkülönítésére használják, továbbá az aszinkron adat- és állapotátvitel biztonságos platformjaként is alkalmazható. Az adatok különböző alkalmazások és szolgáltatások közötti átvitele az *üzenetek* segítségével történik. Bináris formátum, JSON, XML vagy csupán szöveget tartalmazó üzenet van. 
 
 Néhány gyakori üzenetküldési forgatókönyv:
 

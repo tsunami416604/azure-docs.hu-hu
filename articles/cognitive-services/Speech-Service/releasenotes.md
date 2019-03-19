@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: e389df02966146b217802d4e93f844a4fee425a3
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 7f54507fdfd21c9402e04eb867710a774f9e6bb3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958648"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57856090"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
 
@@ -32,7 +32,7 @@ Ez a hibajavítás kiadás, és csak ez hatással lenne a natív és felügyelt 
 
 **Új funkciók**
 
-* A beszédfelismerés SDK támogatja a bemeneti mikrofon AudioConfig osztály keresztül. Ez lehetővé teszi hang adatok streamelése a beszédfelismerési szolgáltatás az alapértelmezettől eltérő mikrofon. További információ: a dokumentáció leíró [hangbemeneti eszköz kiválasztása](how-to-select-audio-input-devices.md). Ez még nem áll rendelkezésre a JavaScript.
+* A beszédfelismerés SDK támogatja a bemeneti mikrofon AudioConfig osztály keresztül. Ez lehetővé teszi az audio adatok streamelése a Speech Services az alapértelmezettől eltérő mikrofon. További információkért lásd: a dokumentáció leíró [hangbemeneti eszköz kiválasztása](how-to-select-audio-input-devices.md). Ez még nem áll rendelkezésre a JavaScript.
 * A beszédfelismerés SDK mostantól támogatja a Unity béta verziójában. Adja meg a probléma szakaszában keresztül visszajelzést a [GitHub-mintaadattárból](https://aka.ms/csspeech/samples). Ez a kiadás támogatja a Unity a x86 és x64 (asztalon vagy univerzális Windows-Platformos alkalmazások), Windows és Android (ARM32/64, x86). További információkat a [Unity rövid](quickstart-csharp-unity.md).
 * A fájl `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` (tartalmazza a szükséges a korábbi kiadásokban) többé nem szükséges. A funkció mostantól integrálva van a core SDK-t.
 
@@ -64,7 +64,7 @@ A következő új tartalom érhető el a [mintaadattár](https://aka.ms/csspeech
   * Kezdeti támogatás és kifejezés mutatók megvalósítása.
   * Visszatérési tulajdonsággyűjteményében elismerési JSON szolgáltatással
 * Windows DLL-ek mostantól tartalmazza a verzió erőforrás.
-* Ha létrehoz egy felismerő `FromEndpoint` adhat paramétereket közvetlenül a végpont URL-címe. Használatával `FromEndpoint` szabványos konfigurációs tulajdonságai a felismerő nem konfigurálható.
+* Ha létrehoz egy felismerő `FromEndpoint` adhat paramétereket közvetlenül a végpont URL-címe. Használatával `FromEndpoint` szabványos konfigurációs tulajdonságai a felismerő nem lehet konfigurálni.
 
 **Hibajavítások**
 
@@ -89,7 +89,7 @@ Ez a kiadás csak a JavaScript. Nincsenek funkciók lettek hozzáadva. A követk
 **Új funkciók**
 
 * Python
-  * A bétaverzió Python-támogatás (3.5-ös vagy újabb) ebben a kiadásban érhető el. További részletekért [Itt](quickstart-python.md).
+  * A bétaverzió Python-támogatás (3.5-ös vagy újabb) ebben a kiadásban érhető el. További információkért lásd: here](quickstart-python.md).
 * JavaScript
   * A beszédfelismerés JavaScript SDK lett, nyílt forráskódú. A forráskódja elérhető a [GitHub](https://github.com/Microsoft/cognitive-services-speech-sdk-js).
   * Mostantól támogatjuk a Node.js, a további információk találhatók [Itt](quickstart-js-node.md).
@@ -113,7 +113,7 @@ Ez a kiadás csak a JavaScript. Nincsenek funkciók lettek hozzáadva. A követk
 * Bizonyos esetekben kivételek kiszivárgott is folyamatban van.
 * Memóriavesztés értesítenünk fordítási esemény argumentumai.
 * Rögzített zárolási problémát a reconnect a hosszan futó munkameneteket.
-* Kijavítva egy probléma, amely a végső eredményt sikertelen fordítások hiányzó vezethet.
+* Javítva lett egy probléma, hogy hiányzik a végső eredményt sikertelen fordítások vezethet.
 * C#: Ha egy aszinkron művelet nem volt várni a fő szálát az, volt lehetséges a felismerő sikerült eldobva, mielőtt az aszinkron feladat befejeződött.
 * Java: Kijavítva egy probléma, a Java virtuális gép összeomlás eredményez.
 * Objective-C: Rögzített enumerálási leképezés; RecognizedIntent visszaadott RecognizingIntent helyett.
@@ -122,7 +122,7 @@ Ez a kiadás csak a JavaScript. Nincsenek funkciók lettek hozzáadva. A követk
 
 **Példák**
 
-* Frissítve, és rögzített több mintát (például kimeneti beszédhangot fordítási stb).
+* Frissítve, és rögzített több mintát (például kimeneti beszédhangot fordítási stb.).
 * A Node.js-minták hozzáadva a [mintaadattár](https://aka.ms/csspeech/samples).
 
 ## <a name="speech-sdk-110"></a>Speech SDK 1.1.0
@@ -141,7 +141,7 @@ Ez a kiadás csak a JavaScript. Nincsenek funkciók lettek hozzáadva. A követk
 
 **Hibajavítások**
 
-* Rögzített felismerő található kivételek. Ezenkívül kivételek lépett fel, és visszavonva esemény konvertálva.
+* Rögzített felismerő található kivételek. Ezenkívül kivételek észlelt, és visszavonva esemény konvertálva.
 * A tulajdonság felügyeleti memóriavesztés ki.
 * Kijavítva a hiba, amelyben a bemeneti hangfájl összeomlási sikerült a felismerő.
 * Kijavítva a hiba, ahol események tudta fogadott munkamenet leállítási esemény után.

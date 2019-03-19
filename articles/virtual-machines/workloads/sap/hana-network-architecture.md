@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/04/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1262ed841fe8f6f9c2d5339d79abf06c1ab15a25
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 724a91b6ba0be030a2281bce366e4378892df59b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392873"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011584"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>SAP HANA (nagyméretű példányok) hálózati architektúra
 
@@ -27,7 +27,7 @@ Az architektúra az Azure hálózati szolgáltatások egyik legfontosabb összet
 
 - Üzembe helyezett SAP rendszerek helyszíni. A méretek miatt ezek a rendszerek jelenleg nem futhat az Azure-ban. Ilyen például, egy éles SAP ERP-rendszer, amely (mint az adatbázis) SQL-kiszolgálón fut, és több CPU és memória erőforrást, mint a virtuális gépeket biztosíthatnak igényel.
 - Az SAP az SAP HANA-alapú rendszerek a helyszíni rendszerbe.
-- Üzembe helyezett SAP-rendszerek virtuális gépeket. Ezek a rendszerek fejlesztés, tesztelés, védőfal, vagy bármely, az SAP NetWeaver-alapú alkalmazások sikeres központi telepítése az Azure-ban (a VM-EK), az erőforrás-használat és a memória igény szerinti példányok éles környezetben. Ezek a rendszerek is alapulhat SQL Server-adatbázisok. További információkért lásd: [SAP támogatási Megjegyzés #1928533 – SAP alkalmazások az Azure-on: támogatott termékek és Azure-beli Virtuálisgép-típusok](https://launchpad.support.sap.com/#/notes/1928533/E). És az SAP HANA-adatbázisok alapjául ezekben a rendszerekben is használható. További információkért lásd: [SAP HANA-tanúsítvánnyal rendelkező IaaS-platformon](http://global.sap.com/community/ebook/2014-09-02-hana-hardware/enEN/iaas.html).
+- Üzembe helyezett SAP-rendszerek virtuális gépeket. Ezek a rendszerek fejlesztés, tesztelés, védőfal, vagy bármely, az SAP NetWeaver-alapú alkalmazások sikeres központi telepítése az Azure-ban (a VM-EK), az erőforrás-használat és a memória igény szerinti példányok éles környezetben. Ezek a rendszerek is alapulhat SQL Server-adatbázisok. További információkért lásd: [SAP támogatási Megjegyzés #1928533 – SAP alkalmazások az Azure-ban: Támogatott termékek és Azure-beli Virtuálisgép-típusok](https://launchpad.support.sap.com/#/notes/1928533/E). És az SAP HANA-adatbázisok alapjául ezekben a rendszerekben is használható. További információkért lásd: [SAP HANA-tanúsítvánnyal rendelkező IaaS-platformon](https://global.sap.com/community/ebook/2014-09-02-hana-hardware/enEN/iaas.html).
 - Üzembe helyezett SAP-alkalmazáskiszolgálókhoz az Azure-ban (a VM-EK), az SAP HANA az Azure-ban (nagyméretű példányok) az Azure-beli nagyméretű példány stampek.
 
 Hibrid SAP-megoldás a négy vagy több különböző központi telepítési forgatókönyv jellemző. Nincsenek is befejeződött az Azure-ban futó SAP-környezetünk számos ügyfél eseteit. Virtuális gépek egyre nagyobb teljesítményű, helyezze át saját SAP-megoldások Azure-beli ügyfelek száma növekszik.
@@ -79,7 +79,7 @@ Az Azure-beli SAP-környezetekhez különbségek a következők:
 - A SAP alkalmazás architektúra olyan bizalmas adatokat kezelő a hálózati késés, mint a jellemző forgatókönyvek, ahol adatcsere a helyszíni és az Azure között.
 - A virtuális hálózati átjárót már legalább két ExpressRoute-kapcsolatok. Mindkét kapcsolat osztozik a virtuális hálózati átjáró a bejövő adatok maximális sávszélessége.
 
-A hálózati késések tapasztalhatók virtuális gépek és a nagyméretű HANA-példány között egységre is lehet magasabb, mint a szokásos virtuális gép virtuális gép hálózati körbejárási késés. Az Azure-régió függ mért értékek lépheti túl a besorolását, az átlagosnál rosszabb a 0,7-ms körbejárási késés [SAP Megjegyzés #1100926 – gyakori kérdések: hálózati teljesítményt](https://launchpad.support.sap.com/#/notes/1100926/E). Azure-régió és az eszköz hálózati egy Azure virtuális gép és a nagyméretű HANA-példány egység közötti körbejárási késés mérésére függ, a mért késést és lehet, legfeljebb 2 ezredmásodperc körül. Mindazonáltal az ügyfelek üzembe sikeresen SAP HANA nagyméretű példányok az SAP HANA-alapú üzemi SAP-alkalmazások. Ellenőrizze, hogy alaposan tesztelni az üzleti folyamatok az Azure nagyméretű HANA-példányt.
+A hálózati késések tapasztalhatók virtuális gépek és a nagyméretű HANA-példány között egységre is lehet magasabb, mint a szokásos virtuális gép virtuális gép hálózati körbejárási késés. Az Azure-régió függ mért értékek lépheti túl a besorolását, az átlagosnál rosszabb a 0,7-ms körbejárási késés [SAP Megjegyzés #1100926 – gyakori kérdések: Hálózati teljesítményt](https://launchpad.support.sap.com/#/notes/1100926/E). Azure-régió és az eszköz hálózati egy Azure virtuális gép és a nagyméretű HANA-példány egység közötti körbejárási késés mérésére függ, a mért késést és lehet, legfeljebb 2 ezredmásodperc körül. Mindazonáltal az ügyfelek üzembe sikeresen SAP HANA nagyméretű példányok az SAP HANA-alapú üzemi SAP-alkalmazások. Ellenőrizze, hogy alaposan tesztelni az üzleti folyamatok az Azure nagyméretű HANA-példányt.
  
 Ahhoz, hogy a virtuális gépek és a nagyméretű HANA-példány a determinisztikus hálózati késés, a virtuális hálózati átjáró Termékváltozata, amely alapvető fontosságú. Ellentétben a helyszíni és a virtuális gépek közötti forgalmat a virtuális gépek és a nagyméretű HANA-példány közötti forgalom minta kis, de nagy adatlöketekkel továbbítani a kéréseket és az adatokat kötetek is fejleszthet. Az ilyen adatlöketekkel jól kezelése érdekében az UltraPerformance átjáró-Termékváltozatot használata erősen ajánlott. A HANA nagyméretű példány termékváltozatok II. típusú osztályát az UltraPerformance átjáró-Termékváltozat használatát a virtuális hálózati átjáró megadása kötelező.
 
@@ -113,7 +113,7 @@ Jobban skálázható hálózati architektúra:
 - Használja ki a több virtuális hálózat egyetlen, nagyobb SAP alkalmazás réteg.
 - Üzembe helyezése egy külön virtuális hálózatot az egyes üzembe helyezett, SAP-rendszerhez, ezeket külön alhálózatra alatt az azonos virtuális hálózatban SAP-rendszereinket kombinálásával képest.
 
- Egy jobban skálázható hálózati architektúra az SAP Hana az Azure-ban (nagyméretű példányok):
+  Egy jobban skálázható hálózati architektúra az SAP Hana az Azure-ban (nagyméretű példányok):
 
 ![SAP alkalmazásréteg üzembe több virtuális hálózaton keresztül](./media/hana-overview-architecture/image4-networking-architecture.png)
 
@@ -132,12 +132,12 @@ Három hálózati útválasztási szempontok fontosak az SAP Hana az Azure-ban (
 
 * SAP HANA az Azure-ban (nagyméretű példányok) egység van egy hozzárendelt IP-címet a kiszolgáló IP-készlet címtartomány elküldött. További információkért lásd: [SAP HANA (nagyméretű példányok) infrastruktúra és kapcsolódás az Azure-ban](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Az IP-címet az Azure-előfizetések és a Hana-hoz az Azure-ban (nagyméretű példányok) virtuális hálózatokhoz csatlakozó ExpressRoute keresztül érhető el. Az IP-cím kiosztva közül, hogy kiszolgáló IP-készlet címtartománya közvetlenül hozzá rendelt hardver egységhez. Rendelkezik *nem* keresztül kiosztott NAT válik, mivel ez a megoldás első központi levő volt. 
 
-> [!NOTE] 
+> [!NOTE]
 > Átmeneti útválasztás a korlátozás áthidalható, az első két listaelemek leírtak szerint, a további összetevők használata útválasztást. A korlátozás áthidalható felhasználható összetevők lehetnek:
-
+> 
 > * Egy proxykiszolgálói adatok, irányíthatja a. Például F5 BIG-IP-ot és NGINXET a Traffic Managerrel üzembe helyezett Azure-ra, egy virtuális tűzfal/forgalom-útválasztási megoldás.
 > * Használatával [IPTables szabályait saját](http://www.linuxhomenetworking.com/wiki/index.php/Quick_HOWTO_%3a_Ch14_%3a_Linux_Firewalls_Using_iptables#.Wkv6tI3rtaQ) a Linux rendszerű virtuális gép az Útválasztás a helyszínek és nagyméretű HANA-példány egységek vagy különböző régiókban lévő nagyméretű HANA-példány egységek között engedélyezése.
-
+> 
 > Vegye figyelembe, hogy a megvalósítás és a támogatás az egyéni megoldások használata esetén a külső hálózati berendezések, vagy engedélyezze az IPTables a nem Microsoft által biztosított. Támogatási biztosítania kell a használt összetevő a szállító vagy az adatintegrálónak. 
 
 ## <a name="internet-connectivity-of-hana-large-instance"></a>A nagyméretű HANA-példány internetkapcsolat

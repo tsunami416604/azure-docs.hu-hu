@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: mayg
-ms.openlocfilehash: c4309b20664520bc1912adadee72d614a085f573
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 99c7309e22d8ebe61a0a85b38c92bd3027977848
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338953"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013131"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>A hálózatleképezés és virtuális hálózatok IP-címzés beállítása
 
@@ -76,6 +76,7 @@ A cél virtuális gép minden hálózati adapter IP-cím konfigurációja a köv
 **Forrás és cél alhálózat** | **Részletek**
 --- | ---
 Azonos címtartomány | A forrás virtuális gép hálózati adapter IP-címét és a cél virtuális gép hálózati adapter IP-cím van beállítva.<br/><br/> Ha a cím nem érhető el, a következő elérhető IP-címe és a cél van beállítva.
+
 Különböző címtér<br/><br/> A célként megadott alhálózat következő elérhető IP-címe úgy van beállítva, és a cél virtuális gép hálózati adapter címe.
 
 

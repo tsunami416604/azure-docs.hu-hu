@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: kumud
-ms.openlocfilehash: 4d47192ea69047b0b12deffc41776a87c16ca6ab
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: c26117bf298d5fe7fd8a14e0aa2b14834e412328
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959748"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58009930"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>A TRAFFIC Manager – gyakori kérdések (GYIK)
 
@@ -340,6 +340,7 @@ Nem, a Traffic Manager teszi lehetővé az értékek nagyságrendjeit címzési 
 A profil elleni fogadásakor egy lekérdezést, a Traffic Manager először megkeresi a végpontot, amely a megadott útválasztási módszer alapján vissza kell és a végpontok állapotát. Ezután úgy tűnik, a bejövő lekérdezésre kért rekordtípus és a rekordtípus, az alábbi táblázat alapján válasz visszaküldése előtt a végponthoz társított.
 
 A profilok az eltérő típushoz bármilyen másik útválasztási módszert:
+
 |A bejövő lekérdezési kérés|    Végpont típusa|  A megadott válasz|
 |--|--|--|
 |ANY |  A / AAAA / CNAME |  Céloldali végpont| 
@@ -350,6 +351,7 @@ A profilok az eltérő típushoz bármilyen másik útválasztási módszert:
 |CNAME |    CNAME | Céloldali végpont|
 |CNAME  |A / AAAA | NODATA |
 |
+
 Profilok esetén használt útválasztási módszer beállítása típushoz:
 
 |A bejövő lekérdezési kérés|    Végpont típusa | A megadott válasz|

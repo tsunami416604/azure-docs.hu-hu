@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 270254ae4f66fa3642df844f384e15564945628e
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 3c79747bf33e1769af5f8d3589904ba15105f216
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242156"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087601"
 ---
 # <a name="connect-windows-security-events"></a>A Windows biztonsági eseményeinek csatlakoztatása 
 
@@ -34,8 +34,8 @@ A Windows-kiszolgálók az Azure Sentinel-munkaterülethez kapcsolódó összes 
 - **Minimális** -eseményeket, amelyek esetleg jelzik a potenciális fenyegetések egy kis készletét. Ha engedélyezi ezt a beállítást, akkor tudja a teljes auditnaplót.
 - **Nincs** – nincs biztonsági és AppLocker-eseményeket.
 
->[!NOTE]
-
+> [!NOTE]
+> 
 > - Adatokat a munkaterület, amely futtatja az Azure-Sentinel a földrajzi helyen kell tárolni.
 
 ## <a name="set-up-the-windows-security-events-connector"></a>A Windows biztonsági eseményeinek connector telepítése

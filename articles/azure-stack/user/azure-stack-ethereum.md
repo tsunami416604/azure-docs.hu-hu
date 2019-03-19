@@ -12,12 +12,12 @@ ms.reviewer: seyadava
 ms.custom: mvc
 manager: femila
 ms.lastreviewed: 02/04/2019
-ms.openlocfilehash: 6c9893aac349b05580f49a445bd088ed5c76044b
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: a1902ae2bf663c432876a0f73e2bb17616023b8a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697474"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58006914"
 ---
 # <a name="deploy-an-ethereum-blockchain-network-on-azure-stack"></a>Az Azure Stack Ethereum blockchain hálózatok üzembe helyezése
 
@@ -39,7 +39,7 @@ Töltse le a legújabb elemeket [a Marketplace-ről](../azure-stack-download-azu
 - Egyéni parancsfájl 2.0 linuxhoz
 - A Windows egyéni szkriptek futtatására szolgáló bővítmény
 
-Blockchain-forgatókönyvekkel kapcsolatos további információkért lásd: [Ethereum proof of work consortium megoldássablon](../../blockchain/templates/ethereum-deployment.md).
+Blockchain-forgatókönyvekkel kapcsolatos további információkért lásd: [Ethereum koncepció jogosultság consortium megoldássablon](../../blockchain/templates/ethereum-poa-deployment.md).
 
 ## <a name="deployment-architecture"></a>Üzembe helyezési architektúrája
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: victorh
-ms.openlocfilehash: a814c543b9f4bfe6717e639342d82ed13dac35b0
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: a06d629087e853c2578e6d35a2ea90c5a8eff840
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954606"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860601"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>Hozzon létre DNS-zónák és -rekordhalmazok a .NET SDK használatával
 
@@ -45,7 +45,7 @@ Az Azure DNS .NET SDK használatához telepítenie kell a **Azure DNS Management
 2. Lépjen a **eszközök** **>** **NuGet-Csomagkezelő** **>** **a NuGet-csomagok kezelése Megoldás...** .
 3. Kattintson a **Tallózás**, engedélyezése a **Include prerelease** jelölőnégyzetet, és írja be **Microsoft.Azure.Management.Dns** szöveget a keresőmezőbe.
 4. Válassza ki a csomagot, és kattintson a **telepítése** a Visual Studio-projektben történő hozzáadáshoz.
-5. Ismételje meg a következő csomagok is telepítheti a fenti folyamatot: **Microsoft.Rest.ClientRuntime.Azure.Authentication** és **Microsoft.Azure.Management.ResourceManager**.
+5. Ismételje meg a folyamat a fenti is telepítse a következő csomagokat: **Microsoft.Rest.ClientRuntime.Azure.Authentication** és **Microsoft.Azure.Management.ResourceManager**.
 
 ## <a name="add-namespace-declarations"></a>Névtér-deklarációk hozzáadása
 
@@ -83,7 +83,7 @@ Az Azure DNS támogatja az optimista egyidejűséget, nevű [ETag](dns-getstarte
 // Create zone parameters
 var dnsZoneParams = new Zone("global"); // All DNS zones must have location = "global"
 
-// Create a Azure Resource Manager 'tag'.  This is optional.  You can add multiple tags
+// Create an Azure Resource Manager 'tag'.  This is optional.  You can add multiple tags
 dnsZoneParams.Tags = new Dictionary<string, string>();
 dnsZoneParams.Tags.Add("dept", "finance");
 

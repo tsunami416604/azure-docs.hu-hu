@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/27/2019
+ms.date: 03/05/2019
 ms.author: jeedes
-ms.openlocfilehash: fb606e914e0fb2b9721f3ca1e8927be500270795
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 75c65d9fe7cf884f1c76439fc2f8d5373fadd5ae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730415"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880619"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-eplatform"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező ePlatform
 
@@ -109,15 +109,43 @@ Szeretné konfigurálni az Azure AD egyszeri bejelentkezés ePlatform, hajtsa v�
     > [!NOTE]
     > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-CÍMÉT. Kapcsolattartó [ePlatform ügyfél-támogatási csapatának](https://help.eplatform.co/hc/en-us) a gépkulcsengedélyek értékének. Emellett olvassa el a minták látható a **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
 
-4. Az a **SAML-aláíró tanúsítvány** területén kattintson **szerkesztése** gombra kattintva nyissa meg a **SAML-aláíró tanúsítvány** párbeszédpanel.
+5. Az a **SAML-aláíró tanúsítvány** területén kattintson **szerkesztése** gombra kattintva nyissa meg a **SAML-aláíró tanúsítvány** párbeszédpanel.
 
     ![SAML-aláíró tanúsítvány szerkesztése](common/edit-certificate.png)
 
-5. Az a **SAML-aláíró tanúsítvány** területén másolja a **ujjlenyomat** , és mentse a számítógépre.
+6. Az a **SAML-aláíró tanúsítvány** területén másolja a **ujjlenyomat** , és mentse a számítógépre.
 
     ![Másolja ki az ujjlenyomat értéket](common/copy-thumbprint.png)
 
-6. Az a **ePlatform beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+7. EPlatform alkalmazását a SAML helyességi feltételek vár egy megadott formátumban, amely megköveteli, hogy egyéni attribútum-leképezéshez az SAML-jogkivonat attribútumai konfigurációja. Az alábbi képernyőképen az alapértelmezett attribútumok listáját jeleníti meg. Kattintson a **szerkesztése** ikonra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
+
+    ![image](common/edit-attribute.png)
+
+8. Emellett a fentiekben ePlatform alkalmazás vár néhány további attribútumok vissza SAML-válasz átadni. A a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen a következő lépésekkel adja hozzá a SAML-jogkivonat attribútumot, ahogyan az alábbi táblázatban:
+
+    | Name (Név) | Adatforrás-attribútum |
+    | ---------------| --------------- |
+    | egyszerű felhasználónév | user.userprincipalname |
+
+    a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
+
+    ![image](common/new-save-attribute.png)
+
+    ![image](common/new-attribute-details.png)
+
+    b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
+
+    c. Hagyja a **Namespace** üres.
+
+    d. Válassza ki a forrás, **attribútum**.
+
+    e. Az a **forrásattribútum** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
+
+    f. Kattintson a **Ok**
+
+    g. Kattintson a **Save** (Mentés) gombra.
+
+9. Az a **ePlatform beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
 
     ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
 
@@ -149,7 +177,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.

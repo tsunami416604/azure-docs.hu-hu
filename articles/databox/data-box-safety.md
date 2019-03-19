@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 65b111d74121b6a679883d480b9e1f19d41e334e
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: d0ef3e407fd256b4db351f86b51964cbcb16e819
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093561"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57905137"
 ---
 # <a name="safely-install-and-operate-your-azure-data-box"></a>Biztonságosan telepítése és üzemeltetése az Azure Data Box
 ![Figyelmeztetés ikon](./media/data-box-safety/warning_icon.png)
@@ -77,14 +77,14 @@ Az alábbiakban az ikonok, hogy amikor áttekinti a biztonsági óvintézkedése
 * Véglegesen le kell választani a egység mozgatása előtt, vagy ha úgy véli, hogy bármilyen módon megsérült.
 * Adja meg a megfelelő áramforrásról elektromos túlterhelési védelmét az alábbi power előírások teljesítéséhez:
 
-    - Feszültségérzékelő: 100 V AC 240 V AC
+    - Feszültségérzékelő: 100 V AC 240 V AC-
     - Aktuális: 6, maximum
-    - Gyakoriság: 50 Hz és 60 Hz
+    - Gyakorisága: 60 Hz-ig 50 Hz
 
 ![Figyelmeztetés ikon](./media/data-box-safety/warning_icon.png) **járjon el:**
 
 * Ez az eszköz érme cella elemeket tartalmazza. Ne kísérelje meg az eszköz kiszolgálásához. Ez az eszköz akkumulátor nem tartoznak felhasználói tarthatók karban. 
-* **Csak a szolgáltatás munkatársak**: kockázat, Explosion Ha akkumulátor helyébe nesprávného typu. Tud megszabadulni a használt akkumulátorának utasításainak megfelelően.
+* **Csak a szolgáltatás munkatársak**: Ha akkumulátor helyébe nesprávného typu Explosion kockázatát. Tud megszabadulni a használt akkumulátorának utasításainak megfelelően.
 
 ![Figyelje meg, hogy ikon](./media/data-box-safety/notice_icon.png) **értesítés:**
 
@@ -101,10 +101,10 @@ Ez az eszköz van:
 - Kiértékeli, információk technológiai berendezések (hely), tipikus szoba környezetben lévő működésre. A termék más környezetekben való további értékelés lehet szükség.
 - Az NRTL felsorolt (UL, CSA, ETL, stb.), és IEC/EN 60950-1 vagy IEC/EN 62368-1 szabványnak megfelelő (CE megjelölve) készült informatika berendezések.
 - A következő környezetben működésre tervezett. 
-    - Üzemi hőmérséklet: 50° 95° f (10°-35 C)
+    - Az üzemi hőmérséklet: 50° 95° f (10°-35 C)
     - Tárolási hőmérséklet:-4 ° 122 ° f (-20 °-50 C)
-    - Relatív páratartalom: 15-85 % (noncondensing) 
-    - Magasság működő: akár 6500 méter 0 2000 mérőszámok tesztelése
+    - Relatív páratartalom: 15 – 85 % (noncondensing) 
+    - Az üzemi magasság: Akár 6500 méter 0 2000 mérőszámok tesztelése
 
 Az áramellátás minősítések tekintse meg az egység a megadott eszköz minősítési címkéje. 
 
@@ -124,7 +124,7 @@ Ez az eszköz megfelel-e az részét képező 15 FCC szabályok és iparági Kan
 
 ICES-3(A)/NMB-3(A) IS
 
-A Microsoft Corporation, One Microsoft módja, Redmond, WA 98052, USA.
+Microsoft Corporation, One Microsoft Way, Redmond, WA 98052, USA.
 
 Egyesült Államok: (800) 426-9400
 
@@ -142,7 +142,7 @@ Ez az osztály A termék. Hazai környezetben a termék, amelyben a felhasznál�
 
 ![Akkumulátor kivezetési ikon](./media/data-box-safety/battery_disposal_icon.png)
 
-Ezt a jelet a termék vagy az akkumulátor vagy a csomagolási azt jelenti, hogy a termék és minden olyan elemeket tartalmaz kell nem lehet kivezetése a háztartási veszteség. Ehelyett feladata az elemek és elektromos és elektronikus berendezések újrafeldolgozása egy megfelelő gyűjtemény ponton kézi ez. Ezt külön adatgyűjtési és -újrahasznosítási lesz segítenek természeti erőforrások védelmére, valamint emberi állapotának és a környezetben lévő és az elektromos és elektronikus a veszélyes anyagok miatt lehetséges jelenlétével esetleges negatív következményekkel megakadályozása berendezés, amely nem megfelelő kivezetési okozhatja. Hol eldobásához ki az elemek és elektromos és elektronikus veszteség kapcsolatos további információkért forduljon a helyi város/község office, a selejt kivezetési háztartási szolgáltatás vagy az üzlet, ahol vásárolta a terméket. Kapcsolattartó *erecycle@microsoft.com* HULLADÉKAINAK további tájékoztatást.
+Ezt a jelet a termék vagy az akkumulátor vagy a csomagolási azt jelenti, hogy a termék és minden olyan elemeket tartalmaz kell nem lehet kivezetése a háztartási veszteség. Ehelyett feladata az elemek és elektromos és elektronikus berendezések újrafeldolgozása egy megfelelő gyűjtemény ponton kézi ez. Ezt külön adatgyűjtési és -újrahasznosítási lesz segítenek természeti erőforrások védelmére, valamint emberi állapotának és a környezetben lévő és az elektromos és elektronikus a veszélyes anyagok miatt lehetséges jelenlétével esetleges negatív következményekkel megakadályozása berendezés, amely nem megfelelő kivezetési okozhatja. Hol eldobásához ki az elemek és elektromos és elektronikus veszteség kapcsolatos további információkért forduljon a helyi város/község office, a selejt kivezetési háztartási szolgáltatás vagy az üzlet, ahol vásárolta a terméket. Kapcsolattartó *erecycle\@microsoft.com* HULLADÉKAINAK további tájékoztatást.
 
 Ez a termék érme cella battery(ies) tartalmaz.
 

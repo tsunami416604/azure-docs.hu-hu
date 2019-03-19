@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: panarasi
-ms.openlocfilehash: d496801894560310a4225eae8a32fced52bcc428
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 0a2d964d60d13f0e71de5776112a4edbe3cdcc45
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063540"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993911"
 ---
 # <a name="add-authentication-to-your-xamarinandroid-app"></a>Hitelesítés hozzáadása Xamarin.Android-alkalmazáshoz
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -57,7 +57,7 @@ Koppintson a felhasználóknak kötelező frissítette az alkalmazást a **jelen
 
 1. Adja hozzá a következő kódot a **TodoActivity** osztály:
    
-        // Define a authenticated user.
+        // Define an authenticated user.
         private MobileServiceUser user;
         private async Task<bool> Authenticate()
         {
@@ -96,7 +96,7 @@ Koppintson a felhasználóknak kötelező frissítette az alkalmazást a **jelen
     Ez létrehoz egy új módszer az új felhasználó és a egy metódust kezelő hitelesítéséhez **jelentkezzen be a** gombra. A fenti példa kódban a felhasználó hitelesítése egy Facebook-bejelentkezés használatával. Egy párbeszédpanel a felhasználói azonosító után megjelenítésére szolgál.
    
    > [!NOTE]
-   > Eltérő Facebook identitásszolgáltatót használja, módosítsa az átadott érték **LoginAsync** felett, a következők egyikét: *MicrosoftAccount*, *Twitter*,  *Google*, vagy *WindowsAzureActiveDirectory*.
+   > Ha eltérő Facebook Identitásszolgáltatóként használ, módosítsa az értéket, átadott **LoginAsync** felett, a következők egyikét: *MicrosoftAccount*, *Twitter*, *Google*, vagy *WindowsAzureActiveDirectory*.
    > 
    > 
 2. Az a **OnCreate** metódus, törölje vagy tegyen Megjegyzés jelzést az alábbi kódsort:
@@ -130,7 +130,7 @@ Koppintson a felhasználóknak kötelező frissítette az alkalmazást a **jelen
 
 **Az alkalmazás az összeomlott `Java.Lang.NoSuchMethodError: No static method startActivity`**
 
-Bizonyos esetekben ütközik a támogatási csomagok, csak a Visual studio, de ehhez a kivételhez futásidőben az alkalmazás-összeomlásokat figyelmeztetés jelenik meg. Ebben az esetben kell győződjön meg arról, hogy a projekt hivatkozott összes támogatási csomag verziójával rendelkezik-e. A [Azure Mobile Apps NuGet-csomagot](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) rendelkezik `Xamarin.Android.Support.CustomTabs` függőséget az Android platformhoz, így ha a projekt újabb használja a támogatási csomagok, a csomag telepítéséhez szükséges verziójú ütközések elkerülése érdekében közvetlenül kell.
+Bizonyos esetekben ütközik a támogatási csomagok, csak a Visual studio, de ehhez a kivételhez futásidőben az alkalmazás-összeomlásokat figyelmeztetés jelenik meg. Ebben az esetben kell győződjön meg arról, hogy a projekt hivatkozott összes támogatási csomag verziójával rendelkezik-e. Az [Azure Mobile Apps NuGet-csomag](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) Android platform esetén `Xamarin.Android.Support.CustomTabs`-függőséggel rendelkezik, így ha a projektjében újabb támogatási csomagokat használ, akkor az ütközések elkerülése érdekében közvetlenül kell telepítenie ennek a csomagnak a szükséges verzióját.
 
 <!-- URLs. -->
 [Xamarin.Android-alkalmazás létrehozása]: app-service-mobile-xamarin-android-get-started.md

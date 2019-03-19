@@ -4,17 +4,17 @@ description: Ismerje meg a statikus és dinamikus paraméterek, és hogyan haszn
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/01/2019
+ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: d7c923dd819f826d9d9aaf8d5b88355a9feb344f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 42a70f7ea21a58f40f7786d6c6f1a51093923f83
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823161"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838017"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Paramétereknek dinamikus tervezetek létrehozása
 
@@ -41,8 +41,13 @@ Ez a biztonsági intézkedés megakadályozza, hogy a nem biztonságos gyakorlat
 - A Key Vault titkos neve
 - A Key Vault titkos kód verziója
 
-A hivatkozott Key Vault ugyanabban az előfizetésben léteznie kell, ahogy a tervezet lesz hozzárendelve.
-Is rendelkeznie kell **engedélyezze a hozzáférést az Azure Resource Manager-sablon telepítése** a Key Vault konfigurált **hozzáférési házirendek** lapot. Ez a funkció engedélyezése az irányban, lásd: [Key Vault - Enable sablonalapú telepítés](../../../managed-applications/key-vault-access.md#enable-template-deployment). Azure Key Vaulttal kapcsolatos további információkért lásd: [Key Vault – áttekintés](../../../key-vault/key-vault-overview.md).
+Ha a tervezet-hozzárendelést használ egy **alapértelmezett felügyelt identitás**, a hivatkozott Key Vault _kell_ létezik ugyanabban az előfizetésben a tervezetdefiníciót hozzá van rendelve.
+
+Ha a tervezet-hozzárendelést használ egy **felhasználó által hozzárendelt felügyelt identitás**, a hivatkozott Key Vault _előfordulhat, hogy_ egy központosított az előfizetéshez. A felügyelt identitás megfelelő jogosultságokkal a Key Vault tervezet-hozzárendelés előtt meg kell adni.
+
+Mindkét esetben rendelkeznie kell a Key Vault **engedélyezze a hozzáférést az Azure Resource Manager-sablon telepítése** konfigurálva a **hozzáférési házirendek** lapot. Ez a funkció engedélyezése az irányban, lásd: [Key Vault - Enable sablonalapú telepítés](../../../managed-applications/key-vault-access.md#enable-template-deployment).
+
+Azure Key Vaulttal kapcsolatos további információkért lásd: [Key Vault – áttekintés](../../../key-vault/key-vault-overview.md).
 
 ## <a name="parameter-types"></a>Paramétertípusok
 
@@ -236,8 +241,8 @@ Függvény, mint például helyett `parameters()`, a megadott érték egy megfel
 
 ## <a name="next-steps"></a>További lépések
 
-- Tudnivalók a [tervek életciklusáról](lifecycle.md)
-- A [tervekkel kapcsolatos műveleti sorrend](sequencing-order.md) testreszabásának elsajátítása
-- A [tervek erőforrás-zárolásának](resource-locking.md) alkalmazásával kapcsolatos részletek
-- A [meglévő hozzárendelések frissítésének](../how-to/update-existing-assignments.md) elsajátítása
-- A tervek hozzárendelése során felmerülő problémák megoldása [általános hibaelhárítással](../troubleshoot/general.md)
+- További információ a [életciklus-tervezetet](lifecycle.md).
+- Ismerje meg, szabhatja testre a [alkalmazás-előkészítés rendelés tervezetet](sequencing-order.md).
+- Ismerje meg, győződjön meg arról, hogyan használhatja az [tervezetet erőforrás zárolása](resource-locking.md).
+- Ismerje meg, hogyan [meglévő hozzárendelések frissítése](../how-to/update-existing-assignments.md).
+- A tervrajz hozzárendelésének során felmerülő problémák megoldása [általános hibaelhárítási](../troubleshoot/general.md).

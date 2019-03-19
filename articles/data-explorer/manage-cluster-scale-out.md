@@ -8,12 +8,12 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 7b99dcf621eac90d4b75d6827102b656f95aafbb
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 8d369800bdc9817856eeb7039fe47e5b870735ba
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958881"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107372"
 ---
 # <a name="manage-cluster-scale-out-to-accommodate-changing-demand"></a>Fürt horizontális felskálázás változó igényeket elégíthet kezelése
 
@@ -42,7 +42,7 @@ A következő ábrán látható a folyamat a következő néhány lépést. Tov�
     **Feltételek**
 
     | Beállítás | Leírás és érték |
-    | --- | --- | --- |
+    | --- | --- |
     | **Idő összesítése** | Válassza ki például egy összesítő feltételek **átlagos**. |
     | **Metrika neve** | Válassza ki a kívánt kell alapulnia, például a skálázási művelet **gyorsítótár-kihasználtság**. |
     | **Időfelbontási szint statisztikája** | Választhat **átlagos**, **minimális**, **maximális**, és **Sum**. |
@@ -54,7 +54,7 @@ A következő ábrán látható a folyamat a következő néhány lépést. Tov�
     **Művelet**
 
     | Beállítás | Leírás és érték |
-    | --- | --- | --- |
+    | --- | --- |
     | **Művelet** | Válassza ki a megfelelő beállítást a vertikális vagy horizontális felskálázás. |
     | **Példányok száma** | Válassza ki a csomópontok vagy hozzáadása vagy eltávolítása metrikai feltétel teljesülésekor kívánt példányok számát. |
     | **Lehűlés (percben)** | Válasszon egy megfelelő várakozási időköz a skálázási műveletek között. Indítsa el az alapértelmezett öt perc alatt. |
@@ -65,7 +65,7 @@ A következő ábrán látható a folyamat a következő néhány lépést. Tov�
 1. Az a **Példányszámkorlátoknál** szakaszban a bal oldalon található, adja meg az értékeket a beállításokhoz.
 
     | Beállítás | Leírás és érték |
-    | --- | --- | --- |
+    | --- | --- |
     | **Minimum** | A fürt nem méretezhető alább függetlenül kihasználtsági példányok száma. |
     | **Maximum** | A fürt nem méretezhető felett, függetlenül a kihasználtság példányok száma. |
     | **Alapértelmezett** | Példányok alapértelmezett száma. Ezt a beállítást használja, ha problémák adódnak az erőforrás-metrikák olvasása. |

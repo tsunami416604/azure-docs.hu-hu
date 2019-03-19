@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: fc2333b6bd41b9efdd1fcafd6168906525cb537a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b422074c33f52a6819d2a05144a85768a2e484a0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440573"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58011914"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-rest"></a>Az Apache Hadoop MapReduce feladatok futtatása HDInsight REST használatával
 
@@ -107,10 +107,10 @@ Megtudhatja, hogyan használható az Apache Hive-WebHCat REST API egy HDInsight-
     Az URI-t (vagy a mapreduce/jar) végén közli, hogy a kérelem első eleme egy MapReduce-feladatot egy jar-fájlt egy osztály WebHCat. Ezen parancs paraméterei a következők:
 
    * **-d**: `-G` nem használják, ezért a kérelem az alapértelmezett a POST metódust. `-d` Megadja a küldött adatok értékeket a kérelemmel.
-    * **user.name**: A parancsot futtató felhasználó
-    * **jar**: A jar-fájlt, amely tartalmazza a futtatni kívánt osztály helye
-    * **class**: A MapReduce logikát tartalmazó osztály
-    * **arg**: Az átadott argumentum is, a MapReduce-feladatot. Ebben az esetben, a bemeneti szövegfájl és a használt a kimeneti könyvtár
+     * **user.name**: A parancsot futtató felhasználó
+     * **jar**: A jar-fájlt, amely tartalmazza a futtatni kívánt osztály helye
+     * **class**: A MapReduce logikát tartalmazó osztály
+     * **arg**: Az átadott argumentum is, a MapReduce-feladatot. Ebben az esetben, a bemeneti szövegfájl és a használt a kimeneti könyvtár
 
    Ezzel a paranccsal ellenőrizheti az állapotot, a feladat használható Feladatazonosítót kell visszaadnia:
 

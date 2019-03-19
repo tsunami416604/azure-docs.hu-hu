@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 2/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: a056f5df12deb50ad64f90c19201942204e774f1
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: fe676cbba89a99a3dbd29609f181274062b37d86
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779368"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58000271"
 ---
 # <a name="load-and-read-data-with-azure-machine-learning"></a>Betölteni, és az Azure Machine Learning adatokat olvasni.
 
@@ -89,7 +89,7 @@ dflow.head(5)
 
 | |stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|-----|------|-----|
-|0||stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
+|0|stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |1|ALABAMA|1|101710|Hale megye|10171002158| |
 |2|ALABAMA|1|101710|Hale megye|10171002162| |
 
@@ -103,7 +103,7 @@ dflow.head(5)
 ```
 
 | |stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
-|-----|-------|---------| -------|------|-----|------|-----|
+|-----|-------|---------| -------|------|-----|------|
 |0|ALABAMA|1|101710|Hale megye|10171002158|29|
 |1|ALABAMA|1|101710|Hale megye|10171002162|40 |
 
@@ -154,12 +154,12 @@ dflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2')
 dflow.head(5)
 ```
 
-||1. oszlop|Column2|Column3|4. oszlopig|Column5|Column6|Column7|Column8|
-|------|------|------|-----|------|-----|-------|----|-----|
-|0|None|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|None|
-|1|None|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|None|
-|2|None|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|None|
-|3|Rang|Beosztás|Studio|Világszerte|Hazai / %|1. oszlop|Tengerentúli / %|Column2|Év ^|
+| |1. oszlop|Column2|Column3|4. oszlopig|Column5|Column6|Column7|Column8| | |
+|-|-------|-------|-------|-------|-------|-------|-------|-------|-|-|
+|0|None|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|None| |
+|1|None|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|None| |
+|2|None|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|Nincsenek|None| |
+|3|Rang|Beosztás|Studio|Világszerte|Hazai / %|1. oszlop|Tengerentúli / %|Column2|Év ^| |
 |4|1|Profilkép|Fox|2788|760.5|0.273|2027.5|0.727|2009 ^|5|
 
 A kimenet mutatja, hogy az adatokat, a második táblázatban volt-e a fejlécek előtt három üres sor. A `read_excel()` függvény kihagyja a sorokat, és a fejlécek használata nem kötelező paramétereket tartalmaz. Futtassa a következő kódot, hagyja ki az első három sort, és a fejlécek a negyedik sor használja.
@@ -225,8 +225,8 @@ dflow = dprep.read_sql(ds, "SELECT top 100 * FROM [SalesLT].[Product]")
 dflow.head(5)
 ```
 
-||Termékazonosító|Name (Név)|ProductNumber|Szín|StandardCost|ListPrice|Méret|Tömeg|ProductCategoryID|ProductModelID|SellStartDate|SellEndDate|DiscontinuedDate|ThumbNailPhoto|ThumbnailPhotoFileName|ROWGUID|A ModifiedDate|
-|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+| |Termékazonosító|Name (Név)|ProductNumber|Szín|StandardCost|ListPrice|Méret|Tömeg|ProductCategoryID|ProductModelID|SellStartDate|SellEndDate|DiscontinuedDate|ThumbNailPhoto|ThumbnailPhotoFileName|ROWGUID|A ModifiedDate| |
+|-|---------|----|-------------|-----|------------|---------|----|------|-----------------|--------------|-------------|-----------|----------------|--------------|----------------------|-------|------------|-|
 |0|680|HL országúti váz – fekete, 58|FR-R92B-58|Fekete|1059.3100|1431.50|58|1016.04|18|6|2002-06-01 00:00:00 + 00:00|None|None|b "GIF89aP\x001\x00\xf7\x00\x00\x00\x00\x00\x80...|no_image_available_small.gif|43dd68d6-14a4-461f-9069-55309d90ea7e|2008-03-11 |0:01:36.827000 + 00:00|
 |1|706|HL országúti váz – piros, 58|FR-R92R-58|Piros|1059.3100|1431.50|58|1016.04|18|6|2002-06-01 00:00:00 + 00:00|None|None|b "GIF89aP\x001\x00\xf7\x00\x00\x00\x00\x00\x80...|no_image_available_small.gif|9540ff17-2712-4c90-a3d1-8ce5568b2462|2008-03-11 |10:01:36.827000 + 00:00|
 |2|707|Sport-100 sisak, piros|HL-U509-R|Piros|13.0863|34,99|None|None|35|33|2005-07-01-00:00:00 + 00:00|None|None|b "GIF89aP\x001\x00\xf7\x00\x00\x00\x00\x00\x80...|no_image_available_small.gif|2e1ef41a-c08a-4ff6-8ada-bde58b64a712|2008-03-11 |10:01:36.827000 + 00:00|
@@ -307,7 +307,7 @@ dflow.to_pandas_dataframe().head()
 |----|------|-----|----|----|----|----|
 |0|1012063|A piaci társítása – Danville Kaledónia gazdák|https://sites.google.com/site/caledoniafarmers... ||Danville|Kaledónia|
 |1|1011871|Stearns Homestead gazdálkodók ' piaci|http://Stearnshomestead.com |6975 ridge közúti|Parma|Cuyahoga|
-|2|1011878|100 mérföld piaci|http://www.pfcmarkets.com |507 Harrison St|Kalamazoo|Kalamazoo|
+|2|1011878|100 mérföld piaci|https://www.pfcmarkets.com |507 Harrison St|Kalamazoo|Kalamazoo|
 |3|1009364|106 S. fő út gazdálkodók piaci|http://thetownofsixmile.wordpress.com/ |106 S. fő utca.|Hat lépést|||
 |4|1010691|10 street közösségi gazdálkodók piac|https://agrimissouri.com/... |10 utca és nyárfa|Lamar|Barton|
 

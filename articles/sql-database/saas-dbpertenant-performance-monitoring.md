@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: df54f9dd4047fffb578a1a95a2edc47cba711ba1
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 075d0e2471457e1a585f7fdea9b523b1d13499c7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433518"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58100428"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Az Azure SQL Database-adatbázisok és a készletek a több-bérlős SaaS-alkalmazás teljesítményének figyelése és kezelése
 
@@ -28,7 +28,7 @@ A Wingtip Tickets SaaS adatbázis Per bérlői alkalmazás egy egybérlős adatm
 Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-
+> 
 > * A bérlői adatbázisok használatának szimulálása egy adott terhelésgenerátor futtatásával
 > * A bérlői adatbázisok megnövekedett terhelésre adott válaszának megfigyelése
 > * A rugalmas készlet vertikális felskálázása az adatbázis megnövekedett terhelésére adott válaszul
@@ -171,17 +171,17 @@ A készlet felskálázása mellett másik lehetőségként létrehozhat egy más
 1. Kattintson a **+ új készlet** -készlet létrehozása az aktuális kiszolgálón.
 1. Az a **rugalmas készlet** sablon:
 
-    1. Állítsa be **neve** való *Pool2*.
-    1. A tarifacsomagnál hagyja meg a **Standard készlet** beállítást.
-    1. Kattintson a **Készlet beállítása** elemre.
-    1. Állítsa be **készlet eDTU** való *50 edtu méretű*.
-    1. Kattintson a **adatbázisok hozzáadása** azon a kiszolgálón, lehet hozzáadni az adatbázisok listájának megtekintéséhez *Pool2*.
-    1. Válassza ki, helyezze át ezeket az új készletbe, majd 10 adatbázisokhoz **kiválasztása**. Futtatja, a terhelésgenerátor, ha a szolgáltatás már tudja, hogy a teljesítmény profil nagyobb, mint az alapértelmezett 50 eDTU méretű készlet igényel, és javasolja, hogy egy 100 eDTU-beállítás kezdve.
+   1. Állítsa be **neve** való *Pool2*.
+   1. A tarifacsomagnál hagyja meg a **Standard készlet** beállítást.
+   1. Kattintson a **Készlet beállítása** elemre.
+   1. Állítsa be **készlet eDTU** való *50 edtu méretű*.
+   1. Kattintson a **adatbázisok hozzáadása** azon a kiszolgálón, lehet hozzáadni az adatbázisok listájának megtekintéséhez *Pool2*.
+   1. Válassza ki, helyezze át ezeket az új készletbe, majd 10 adatbázisokhoz **kiválasztása**. Futtatja, a terhelésgenerátor, ha a szolgáltatás már tudja, hogy a teljesítmény profil nagyobb, mint az alapértelmezett 50 eDTU méretű készlet igényel, és javasolja, hogy egy 100 eDTU-beállítás kezdve.
 
-    ![ajánlás](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
+      ![ajánlás](media/saas-dbpertenant-performance-monitoring/configure-pool.png)
 
-    1. Ebben az oktatóanyagban hagyja meg az alapértelmezett 50 edtu-t, és kattintson a **kiválasztása** újra.
-    1. Válassza ki **OK** hoz létre az új készletet és áthelyezhet abba a kiválasztott adatbázisokat.
+   1. Ebben az oktatóanyagban hagyja meg az alapértelmezett 50 edtu-t, és kattintson a **kiválasztása** újra.
+   1. Válassza ki **OK** hoz létre az új készletet és áthelyezhet abba a kiválasztott adatbázisokat.
 
 A készlet létrehozása és az adatbázisok áthelyezése néhány percet vesz igénybe. Adatbázisok kerülnek, online és teljes mértékben elérhetők maradjanak egészen az nagyon utolsó pillanatig, mivel ekkor minden megnyitott kapcsolatuk bezáródik. Mindaddig, amíg az egyes újrapróbálkozási algoritmussal rendelkezik, az ügyfelek ezután fognak kapcsolódni az adatbázis az új készletben.
 

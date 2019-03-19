@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 1cf2276ca1995df19cc7068764a31916e4981100
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e3cd9d0036a55a3e6de49988dddcd6a91b81b078
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452694"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088655"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Adatok importálása az Azure Files Azure Import/Export szolgáltatás használata
 
@@ -50,60 +50,60 @@ Hajtsa végre az alábbi lépések végrehajtásával készítse elő a meghajt�
 2. Hozzon létre egy NTFS-kötetet egyes meghajtókon. A kötet rendeljen hozzá meghajtóbetűjelet. Ne használjon akkor csatlakozási.
 3. Módosítsa a *dataset.csv* fájl a gyökérmappában található, ahol az eszköz található. Attól függően, hogy importálása egy fájl vagy mappa vagy mindkettő, a tételek hozzáadása a *dataset.csv* fájlt a következő példákhoz hasonló.  
 
-    - **Fájl importálása**: A következő példában a C: meghajtón található adatokat. A fájl *MyFile1.txt* gyökerében másolja a *MyAzureFileshare1*. Ha a *MyAzureFileshare1* nem létezik, az Azure Storage-fiókot létrehozták. Gyökérmappa-szerkezetében változatlan marad.
+   - **Fájl importálása**: A következő példában a C: meghajtón található adatokat. A fájl *MyFile1.txt* gyökerében másolja a *MyAzureFileshare1*. Ha a *MyAzureFileshare1* nem létezik, az Azure Storage-fiókot létrehozták. Gyökérmappa-szerkezetében változatlan marad.
 
-        ```
-            BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
-            "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
+       ```
+           BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
+           "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
     
-        ```
-    - **Egy mappa importálása**: Minden fájl és mappa alatt *MyFolder2* rekurzív módon másolja fájlmegosztás. Gyökérmappa-szerkezetében változatlan marad.
+       ```
+   - **Egy mappa importálása**: Minden fájl és mappa alatt *MyFolder2* rekurzív módon másolja fájlmegosztás. Gyökérmappa-szerkezetében változatlan marad.
 
-        ```
-            "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None 
-            
-        ```
-    Több bejegyzés lehet kapcsolódni a megfelelő mappákat vagy fájlokat importált ugyanebben a fájlban. 
+       ```
+           "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None 
+            
+       ```
+     Több bejegyzés lehet kapcsolódni a megfelelő mappákat vagy fájlokat importált ugyanebben a fájlban. 
 
-        ```
-            "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
-            "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None 
-                        
-        ```
-    Tudjon meg többet [az adatkészlet CSV-fájl előkészítése](storage-import-export-tool-preparing-hard-drives-import.md#prepare-the-dataset-csv-file).
+       ```
+           "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
+           "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None 
+                        
+       ```
+     Tudjon meg többet [az adatkészlet CSV-fájl előkészítése](storage-import-export-tool-preparing-hard-drives-import.md#prepare-the-dataset-csv-file).
     
 
 4. Módosítsa a *driveset.csv* fájl a gyökérmappában található, ahol az eszköz található. Adjon hozzá bejegyzéseket az *driveset.csv* fájlt a következő példákhoz hasonló. A driveset fájl rendelkezik a megfelelő meghajtóbetűjeleket és lemezek listáját, úgy, hogy az eszköz megfelelően válassza ki a készüljön fel a lemezek listája.
 
     Ez a példa feltételezi, hogy két lemezekkel rendelkezik, és alapszintű NTFS-kötet G:\ és H:\ jönnek létre. H:\is nincs titkosítva, miközben G: már titkosítva van. Az eszköz formázza és titkosítja a lemezen, amelyen csak a H:\ (és nem G:\).
 
-    - **Nem titkosított lemezek esetében**: Adja meg *titkosítása* ahhoz, hogy a lemez BitLocker-titkosítást.
+   - **Nem titkosított lemezek esetében**: Adja meg *titkosítása* ahhoz, hogy a lemez BitLocker-titkosítást.
 
-        ```
-        DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
-        H,Format,SilentMode,Encrypt,
-        ```
+       ```
+       DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
+       H,Format,SilentMode,Encrypt,
+       ```
     
-    - **Titkosított lemezek esetében**: Adja meg *AlreadyEncrypted* , és adja meg a BitLocker-kulcsot.
+   - **Titkosított lemezek esetében**: Adja meg *AlreadyEncrypted* , és adja meg a BitLocker-kulcsot.
 
-        ```
-        DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
-        G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631
-        ```
+       ```
+       DriveLetter,FormatOption,SilentOrPromptOnFormat,Encryption,ExistingBitLockerKey
+       G,AlreadyFormatted,SilentMode,AlreadyEncrypted,060456-014509-132033-080300-252615-584177-672089-411631
+       ```
 
-    Több bejegyzés is végezhető el több meghajtó megfelelő ugyanebben a fájlban. Tudjon meg többet [driveset CSV-fájl előkészítése](storage-import-export-tool-preparing-hard-drives-import.md#prepare-initialdriveset-or-additionaldriveset-csv-file). 
+     Több bejegyzés is végezhető el több meghajtó megfelelő ugyanebben a fájlban. Tudjon meg többet [driveset CSV-fájl előkészítése](storage-import-export-tool-preparing-hard-drives-import.md#prepare-initialdriveset-or-additionaldriveset-csv-file). 
 
-5.  Használja a `PrepImport` másolja, és előkészíti az adatokat a meghajtón. Az első másolás munkamenet könyvtárak és/vagy egy új példányt munkamenettel fájlokat másolni futtassa a következő parancsot:
+5. Használja a `PrepImport` másolja, és előkészíti az adatokat a meghajtón. Az első másolás munkamenet könyvtárak és/vagy egy új példányt munkamenettel fájlokat másolni futtassa a következő parancsot:
 
-        ```
-        .\WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] [/sk:<StorageAccountKey>] [/silentmode] [/InitialDriveSet:<driveset.csv>] DataSet:<dataset.csv>
-        ```
+       ```
+       .\WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> [/logdir:<LogDirectory>] [/sk:<StorageAccountKey>] [/silentmode] [/InitialDriveSet:<driveset.csv>] DataSet:<dataset.csv>
+       ```
 
-    Importálás példát alább látható.
+   Importálás példát alább látható.
   
-        ```
-        .\WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1  /sk:************* /InitialDriveSet:driveset.csv /DataSet:dataset.csv /logdir:C:\logs
-        ```
+       ```
+       .\WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1  /sk:************* /InitialDriveSet:driveset.csv /DataSet:dataset.csv /logdir:C:\logs
+       ```
  
 6. A megadott nevű naplófájl `/j:` paraméter, minden egyes futtatáskor a parancssor jön létre. Minden olyan meghajtó előkészítése rendelkezik egy journal-fájlt, amely fel kell tölteni az importálási feladat létrehozásakor. Meghajtók fájlok feldolgozása nem napló nélkül.
 

@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: 7f67b7363719f544c485503e0f8207bb1f1078ce
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 7ac210d9b30a05fd5dbfd46c41c3e62a1d610357
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244706"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57891103"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure biztonsági és megfelelőségi terv: PaaS Web Application Hosting for UK OFFICIAL Workloads
 
@@ -168,7 +168,7 @@ Azure Storage védelmével kapcsolatos részletes információk található a [b
 
 ### <a name="monitoring-logging-and-audit"></a>Monitorozás, naplózás és naplózása
 
-#### <a name="azure-monitor-logs"></a>Az Azure Monitor naplóira
+#### <a name="azure-monitor-logs"></a>Azure Monitor-naplók
 
 [Az Azure Monitor naplóira](https://azure.microsoft.com/services/log-analytics/) egy szolgáltatás az Azure-ban, amely segít összegyűjteni és elemezni a felhőben lévő erőforrások által létrehozott adatokat és a helyszíni környezetekben.
 
@@ -219,7 +219,7 @@ Továbbá a Cloud Security Alliance (CSA) közzététele a felhőalapú vezérl�
 
 Ez a megoldás által az Egyesült Királyság nemzeti Kibertámadások biztonsági központ (NCSC) ellenőrzött és igazodnak-e a NCSC 14 biztonsági alapelvei
 
-Az automation-sablonokat a Microsoft-partner, és az Egyesült Királyság ügyfél sikeres egység Azure Felhőmegoldás-fejlesztő mérnök csapata által tesztelt [Ampliphae](http://www.ampliphae.com/).
+Az automation-sablonokat a Microsoft-partner, és az Egyesült Királyság ügyfél sikeres egység Azure Felhőmegoldás-fejlesztő mérnök csapata által tesztelt [Ampliphae](https://www.ampliphae.com/).
 
 
 ## <a name="deploy-the-solution"></a>A megoldás üzembe helyezése

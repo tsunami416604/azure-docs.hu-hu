@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: saurse
-ms.openlocfilehash: 94931546f3b8ddb18a5381de3baa31d66376badb
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: b6f0ce1939b2a78ca191d2feb0140506d130b9b0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810720"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107457"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Offline biztonsági mentési munkafolyamat az Azure Backupban
 Az Azure Backup rendelkezik, amely a hálózati és tárolási költségek csökkentése az Azure-ban adatok kezdeti teljes biztonsági mentés során számos beépített hatékonyság. Kezdeti teljes biztonsági mentés általában nagy mennyiségű adat átvitele, és azt követő biztonsági mentéseket, hogy csak a változásokat/szalagnak transfer képest nagyobb hálózati sávszélesség szükséges. Kapcsolat nélküli beültetéssel is a folyamatot az Azure Backup lemez is használható az offline biztonsági mentési adatok feltöltése az Azure-bA.
@@ -73,7 +73,7 @@ Ez a szakasz ismerteti az offline biztonsági mentési munkafolyamat, így az ad
 
     ![Importálási képernyőn](./media/backup-azure-backup-import-export/offlinebackup_inputs.png)
 
-  A leírás a bemeneti adatok a következőképpen történik:
+   A leírás a bemeneti adatok a következőképpen történik:
 
     * **Átmeneti hely**: Az ideiglenes tárolási hely, amelyhez a kezdeti biztonsági másolatot íródik. Átmeneti hely lehet egy hálózati megosztásra vagy a helyi számítógépen. Ha a másolási számítógép és a forrásoldali számítógép eltérő, javasoljuk, hogy a teljes elérési útja az előkészítési hely megadása.
     * **Azure Resource Manager Storage Account**: A Resource Manager típusú bármely Azure-előfizetésében lévő tárfiók neve.
@@ -81,7 +81,7 @@ Ez a szakasz ismerteti az offline biztonsági mentési munkafolyamat, így az ad
     * **Azure-előfizetés azonosítója**: Ha az Azure Storage-fiók létrehozása az Azure-előfizetés azonosítója.
     * **Azure-beli importálási feladat neve**: Az egyedi név szerint mely Azure Import szolgáltatás és az Azure Backup nyomon követése az elküldött adatok átvitelét az lemezeket az Azure-bA. 
   
-  Adja meg a bemeneti adatok a képernyőn, és kattintson a **tovább**. Mentse a megadott *átmeneti hely* és a *Azure importálási feladat nevének*, ahogy ezt az információt kötelező megadni a lemezek előkészítéséhez.
+   Adja meg a bemeneti adatok a képernyőn, és kattintson a **tovább**. Mentse a megadott *átmeneti hely* és a *Azure importálási feladat nevének*, ahogy ezt az információt kötelező megadni a lemezek előkészítéséhez.
 
 2. Amikor a rendszer kéri, jelentkezzen be az Azure-előfizetésében. Jelentkezzen be, hogy az Azure Backup az Azure Active Directory-alkalmazás létrehozása, és adja meg az Azure importálási szolgáltatás eléréséhez szükséges engedélyekkel.
 
@@ -106,14 +106,14 @@ A *AzureOfflineBackupDiskPrep* segédprogram előkészíti a SATA meghajtókat a
 
 1. Nyissa meg a könyvtárat, másolja a **AzureOfflineBackupDiskPrep** könyvtárat, ahol a SATA meghajtókat csatlakoznak egy másik számítógépre. A számítógépen, amelyen a csatlakoztatott SATA meghajtókat biztosítja:
 
-    * A másolási számítógép érhető el az előkészítési hely offline áttöltést munkafolyamat hálózati elérési útját lett megadva a **offline biztonsági mentés kezdeményezéséhez** munkafolyamat.
-    * A BitLocker engedélyezve van a Másolás számítógépen.
-    * Az Azure PowerShell 3.7.0 telepítve van.
-    * A legújabb kompatibilis böngészők (a Microsoft Edge vagy az Internet Explorer 11) van telepítve, és a JavaScript engedélyezve van. 
-    * A másolási számítógép hozzáférhessen az Azure Portalon. Szükség esetén a másolási számítógép lehet ugyanaz, mint a forrásszámítógépen.
+   * A másolási számítógép érhető el az előkészítési hely offline áttöltést munkafolyamat hálózati elérési útját lett megadva a **offline biztonsági mentés kezdeményezéséhez** munkafolyamat.
+   * A BitLocker engedélyezve van a Másolás számítógépen.
+   * Az Azure PowerShell 3.7.0 telepítve van.
+   * A legújabb kompatibilis böngészők (a Microsoft Edge vagy az Internet Explorer 11) van telepítve, és a JavaScript engedélyezve van. 
+   * A másolási számítógép hozzáférhessen az Azure Portalon. Szükség esetén a másolási számítógép lehet ugyanaz, mint a forrásszámítógépen.
     
-    > [!IMPORTANT] 
-    > Ha a forrásoldali számítógép egy virtuális gépet, majd a Másolás számítógép kell egy másik fizikai kiszolgáló vagy ügyfélgép a forrás számítógépről.
+     > [!IMPORTANT] 
+     > Ha a forrásoldali számítógép egy virtuális gépet, majd a Másolás számítógép kell egy másik fizikai kiszolgáló vagy ügyfélgép a forrás számítógépről.
 
 2. Nyisson meg egy rendszergazda jogú parancssort a másolási számítógépen, amelyen a *AzureOfflineBackupDiskPrep* segédprogram könyvtárba az aktuális könyvtárban, majd futtassa a következő parancsot:
 
@@ -137,11 +137,11 @@ A *AzureOfflineBackupDiskPrep* segédprogram előkészíti a SATA meghajtókat a
     Az eszköz ezután elkezdi előkészítéséhez, a lemez és a biztonsági mentési adatok másolását. Szükség lehet további lemezt, amikor a rendszer kéri, az eszköz abban az esetben, ha a megadott lemezen nincs elég hely a biztonsági mentési adatok tárolására. <br/>
 
     Az eszköz sikeres végrehajtásának végén a parancssor használatával nyújt három információt:
-    1. A megadott egy vagy több lemez készen áll a szállítási címhez tartozó Azure-bA. 
-    2. Megkapta a megerősítést, hogy létrejött-e az importálási feladat. Az importálási feladat a megadott nevét használja.
-    3. Az eszköz megjeleníti a szállítási cím az az Azure-adatközpontba.
+   1. A megadott egy vagy több lemez készen áll a szállítási címhez tartozó Azure-bA. 
+   2. Megkapta a megerősítést, hogy létrejött-e az importálási feladat. Az importálási feladat a megadott nevét használja.
+   3. Az eszköz megjeleníti a szállítási cím az az Azure-adatközpontba.
 
-    ![Az Azure disk előkészítése befejeződött](./media/backup-azure-backup-import-export/console2.png)<br/>
+      ![Az Azure disk előkészítése befejeződött](./media/backup-azure-backup-import-export/console2.png)<br/>
 
 6. A parancs végrehajtásának végén a kézbesítési frissítheti.
 

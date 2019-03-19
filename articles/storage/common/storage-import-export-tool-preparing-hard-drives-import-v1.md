@@ -8,25 +8,25 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 5ea510d8335437cb43f3e8824ec73175c35dcd03
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 7db50e8bd1de609256bad58b293af8b7b1ea5dbb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452368"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086717"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>Merevlemezek előkészítése importálási feladatokhoz
 Egy vagy több merevlemezek előkészítése importálási feladatokhoz, kövesse az alábbi lépéseket:
 
--   Azon adatok importálása a Blob szolgáltatásba
+- Azon adatok importálása a Blob szolgáltatásba
 
--   Azonosítsa a blobok a Blob service-ben és a cél virtuális könyvtárak
+- Azonosítsa a blobok a Blob service-ben és a cél virtuális könyvtárak
 
--   Határozza meg, hány meghajtót kell
+- Határozza meg, hány meghajtót kell
 
--   Másolja az adatokat az egyes a merevlemez-meghajtók
+- Másolja az adatokat az egyes a merevlemez-meghajtók
 
- Egy munkafolyamat-minta, lásd: [munkafolyamat-minta a merevlemezek szolgáltatás előkészítése importálási feladatokhoz való](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md).
+  Egy munkafolyamat-minta, lásd: [munkafolyamat-minta a merevlemezek szolgáltatás előkészítése importálási feladatokhoz való](storage-import-export-tool-sample-preparing-hard-drives-import-job-workflow-v1.md).
 
 ## <a name="identify-the-data-to-be-imported"></a>Az importálandó adatok azonosítása
  Az első lépés az importálási feladat létrehozása feladata annak megállapítása, mely könyvtárak és fájlok importálni kívánja. Ez lehet könyvtárainak listáját, egyedi fájlok listáját, vagy ezeket a kettő kombinációját. Ha egy könyvtárat tartalmaz, a címtárat és annak alkönyvtáraiban található összes fájl lesz az importálási feladat részeként.
@@ -51,11 +51,11 @@ Egy vagy több merevlemezek előkészítése importálási feladatokhoz, kövess
 ## <a name="determine-how-many-drives-are-needed"></a>Határozza meg, hány meghajtót van szükség
  Ezután meg kell határoznia:
 
--   Az adatok tárolásához szükséges merevlemez-meghajtók száma.
+- Az adatok tárolásához szükséges merevlemez-meghajtók száma.
 
--   A könyvtárak és/vagy a merevlemez-meghajtóról minden egyes másolt önálló fájlok.
+- A könyvtárak és/vagy a merevlemez-meghajtóról minden egyes másolt önálló fájlok.
 
- Győződjön meg arról, hogy tárolja az adatokat, át kell merevlemez-meghajtók száma.
+  Győződjön meg arról, hogy tárolja az adatokat, át kell merevlemez-meghajtók száma.
 
 ## <a name="copy-data-to-your-hard-drive"></a>Másolja az adatokat a merevlemezen
  Ez a szakasz azt ismerteti, hogyan hívhat meg egy vagy több merevlemezek az adatok másolása az Azure Import/Export eszköz. Minden alkalommal, amikor az Azure Import/Export eszköz hívja, hozzon létre egy új *munkamenet másolása*. Minden meghajtó, amelyre a Másolás; legalább egy másolási munkamenet létrehozása bizonyos esetekben szükség lehet egynél több példány munkamenet másolása az adatok egyetlen meghajtóval. Az alábbiakban néhány oka, hogy szükség lehet a több példány munkamenetet:

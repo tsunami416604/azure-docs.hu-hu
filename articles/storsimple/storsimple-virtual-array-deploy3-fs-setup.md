@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 04/17/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f699e40a4a31b6d57b12a43ae307806d3f010015
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: a931b303e40e41bc23e8b586e1d37e600625b1a8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267181"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57881061"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>Üzembe helyezni a StorSimple Virtual Array – Set mentése, a fájlkiszolgáló Azure-portálon
 ![](./media/storsimple-virtual-array-deploy3-fs-setup/fileserver4.png)
@@ -129,15 +129,15 @@ Hajtsa végre a következő lépéseket a [az Azure portal](https://portal.azure
     ![Fájlkiszolgáló konfigurálása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs3m.png)
 3. Kattintson a **konfigurálása** a parancssávon. Megnyílik a **konfigurálása** panelen. Az a **konfigurálása** panelen tegye a következőket:
    
-    1. A fájlkiszolgáló nevének a rendszer automatikusan kitölti.
+   1. A fájlkiszolgáló nevének a rendszer automatikusan kitölti.
     
-    2. Ellenőrizze, hogy a felhős társzolgáltatás titkosítása értéke **engedélyezve**. Ez titkosítja az adatokat a felhőbe küldött. 
+   2. Ellenőrizze, hogy a felhős társzolgáltatás titkosítása értéke **engedélyezve**. Ez titkosítja az adatokat a felhőbe küldött. 
     
-    3. Egy 256 bites AES-kulcsot a felhasználó által definiált titkosítási kulcsot használnak. Adjon meg egy 32 karakterből álló kulcsot, és győződjön meg arról, hogy a kulcs majd egyszer. Jegyezze fel a kulcs a későbbiekben egy kulcskezelő alkalmazásban.
+   3. Egy 256 bites AES-kulcsot a felhasználó által definiált titkosítási kulcsot használnak. Adjon meg egy 32 karakterből álló kulcsot, és győződjön meg arról, hogy a kulcs majd egyszer. Jegyezze fel a kulcs a későbbiekben egy kulcskezelő alkalmazásban.
     
-    4. Kattintson a **kötelező beállítások konfigurálása** , adja meg a tárfiók hitelesítő adatait az eszköz használható. Kattintson a **új hozzáadása** nincs tárfiók hitelesítő adatai konfigurálva vannak. **Győződjön meg arról, hogy a tárfiók támogatja a blokkblobokat használja. Nem támogatja a lapblobokat.** További információ a [letiltja a blobok és lapblobok](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
+   4. Kattintson a **kötelező beállítások konfigurálása** , adja meg a tárfiók hitelesítő adatait az eszköz használható. Kattintson a **új hozzáadása** nincs tárfiók hitelesítő adatai konfigurálva vannak. **Győződjön meg arról, hogy a tárfiók támogatja a blokkblobokat használja. Nem támogatja a lapblobokat.** További információ a [letiltja a blobok és lapblobok](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
    
-    ![Fájlkiszolgáló konfigurálása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
+      ![Fájlkiszolgáló konfigurálása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs6m.png) 
 4. Az a **adja hozzá a tárfiók hitelesítő adatainak** panelen tegye a következőket: 
 
     1. Válassza az aktuális előfizetést, ha a tárfiók ugyanahhoz az előfizetéshez tartozik, mint a szolgáltatás. Adja meg a másik pedig a tárolási fiók a szolgáltatási előfizetés kívül esik. 
@@ -175,26 +175,26 @@ Megosztás létrehozásához hajtsa végre a következő lépéseket az [Azure P
    ![Megosztás hozzáadása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs15m.png)
 2. Adja meg a következő beállításokat:
 
-    1. A megosztás egyedi nevét. A név 3 – 127 karaktert tartalmazó karakterláncnak kell lennie.
+   1. A megosztás egyedi nevét. A név 3 – 127 karaktert tartalmazó karakterláncnak kell lennie.
     
-    2. Egy nem kötelező **leírás** a megosztáshoz. A leírás segítségével azonosíthatja a fájlmegosztás-tulajdonosok.
+   2. Egy nem kötelező **leírás** a megosztáshoz. A leírás segítségével azonosíthatja a fájlmegosztás-tulajdonosok.
     
-    3. A **típus** a megosztáshoz. A típus lehet **rétegzett** vagy **helyileg rögzített**, a rétegzett folyamatban van az alapértelmezett. Helyi garanciákat, kis késleltetést és magasabb teljesítményt igénylő munkaterhelésekhez, válassza ki a **helyileg rögzített** megosztani. Minden más adathoz válasszon egy **rétegzett** megosztani.
-    Egy helyileg rögzített megosztási kiosztása, és biztosítja, hogy az elsődleges adatokat a megosztáson tárolódnak az eszközön, és nem kerülnek a felhőbe. A rétegzett megosztás másrészről kiosztása. A rétegzett megosztás létrehozásakor 10 %-a helyet a helyi rétegen van kiépítve, és 90 %-a terület a felhőben van kiépítve. Például ha Ön egy 1 TB-os kötetet, 100 GB-os helyi területet lenne tartalmazhat, és a felhőben használni kívánt 900 GB amikor az adat szintet. Ez pedig azt jelenti, hogy ha kifogy a helyi terület az eszközön, nem használhatók a rétegzett megosztás.
+   3. A **típus** a megosztáshoz. A típus lehet **rétegzett** vagy **helyileg rögzített**, a rétegzett folyamatban van az alapértelmezett. Helyi garanciákat, kis késleltetést és magasabb teljesítményt igénylő munkaterhelésekhez, válassza ki a **helyileg rögzített** megosztani. Minden más adathoz válasszon egy **rétegzett** megosztani.
+      Egy helyileg rögzített megosztási kiosztása, és biztosítja, hogy az elsődleges adatokat a megosztáson tárolódnak az eszközön, és nem kerülnek a felhőbe. A rétegzett megosztás másrészről kiosztása. A rétegzett megosztás létrehozásakor 10 %-a helyet a helyi rétegen van kiépítve, és 90 %-a terület a felhőben van kiépítve. Például ha Ön egy 1 TB-os kötetet, 100 GB-os helyi területet lenne tartalmazhat, és a felhőben használni kívánt 900 GB amikor az adat szintet. Ez pedig azt jelenti, hogy ha kifogy a helyi terület az eszközön, nem használhatók a rétegzett megosztás.
    
-    4. Az a **teljes körű engedélyekkel alapértelmezett beállítása** mezőben az engedélyek hozzárendelése a felhasználó vagy a csoport, amely a megosztás fér hozzá. Adja meg a felhasználó vagy a felhasználói csoport nevét *john@contoso.com* formátumban. Azt javasoljuk, hogy egy felhasználói csoportot (és nem egyetlen felhasználó) használatával engedélyezze a rendszergazdai jogosultsággal a ezeket a megosztásokat. A hozzárendelt engedélyeket később a Fájlkezelővel módosíthatja.
+   4. Az a **teljes körű engedélyekkel alapértelmezett beállítása** mezőben az engedélyek hozzárendelése a felhasználó vagy a csoport, amely a megosztás fér hozzá. Adja meg a felhasználó vagy a felhasználói csoport nevét *john\@contoso.com* formátumban. Azt javasoljuk, hogy egy felhasználói csoportot (és nem egyetlen felhasználó) használatával engedélyezze a rendszergazdai jogosultsággal a ezeket a megosztásokat. A hozzárendelt engedélyeket később a Fájlkezelővel módosíthatja.
    
-    5. Kattintson a **Hozzáadás** a megosztás létrehozásához. 
+   5. Kattintson a **Hozzáadás** a megosztás létrehozásához. 
     
-        ![Megosztás hozzáadása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs18m.png)
+       ![Megosztás hozzáadása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs18m.png)
    
-        A rendszer megjelenít egy értesítést arról, hogy a megosztás létrehozása folyamatban van.
+       A rendszer megjelenít egy értesítést arról, hogy a megosztás létrehozása folyamatban van.
    
-        ![Megosztás hozzáadása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs19m.png)
+       ![Megosztás hozzáadása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs19m.png)
    
-    A megadott beállításokkal a megosztás létrehozása után a **megosztások** panel frissül, hogy az új megosztásban. Alapértelmezés szerint figyelése és a biztonsági mentés engedélyezve van a megosztáshoz.
+      A megadott beállításokkal a megosztás létrehozása után a **megosztások** panel frissül, hogy az új megosztásban. Alapértelmezés szerint figyelése és a biztonsági mentés engedélyezve van a megosztáshoz.
    
-    ![Megosztás hozzáadása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs22m.png)
+      ![Megosztás hozzáadása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs22m.png)
 
 ## <a name="step-4-connect-to-the-share"></a>4. lépés: Csatlakozás a megosztáshoz
 Most kell csatlakozni az előző lépésben létrehozott egy vagy több megosztást. Hajtsa végre ezeket a lépéseket a Windows Server-gazdagép csatlakozik a StorSimple Virtual Array.

@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: michaelhauss
 ms.subservice: blobs
-ms.openlocfilehash: a9b7d15bebdef40c983eaf4d5eee6953b5a10994
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: d86b2c71515900405b0e7714d2c36cd8e4cbc7fc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55236938"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993227"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>A c++ segítségével Blob storage használata
 
-Ez az útmutató azt ismerteti, hogyan hajthat végre az Azure Blob storage szolgáltatást használó általános forgatókönyvhöz. A példák bemutatják, hogyan feltöltése, listázása, letöltése és blobok törlése. A kódminták C++ nyelven íródtak, és az [Azure Storage C++ programnyelvhez készült ügyféloldali kódtárát](http://github.com/Azure/azure-storage-cpp/blob/master/README.md) használják.   
+Ez az útmutató azt ismerteti, hogyan hajthat végre az Azure Blob storage szolgáltatást használó általános forgatókönyvhöz. A példák bemutatják, hogyan feltöltése, listázása, letöltése és blobok törlése. A kódminták C++ nyelven íródtak, és az [Azure Storage C++ programnyelvhez készült ügyféloldali kódtárát](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) használják.   
 
 A Blob storage szolgáltatással kapcsolatos további tudnivalókért lásd: [Azure Blob storage bemutatása](storage-blobs-introduction.md).
 
 > [!NOTE]
-> Ez az útmutató az Azure Storage C++ programnyelvhez készült ügyféloldali kódtárának 1.0.0-s és újabb verziójára vonatkozik. A Microsoft javasolja, hogy a Storage ügyféloldali kódtár legújabb verziójának használata C++-n keresztül elérhető [NuGet](http://www.nuget.org/packages/wastorage) vagy [GitHub](https://github.com/Azure/azure-storage-cpp).
+> Ez az útmutató az Azure Storage C++ programnyelvhez készült ügyféloldali kódtárának 1.0.0-s és újabb verziójára vonatkozik. A Microsoft javasolja, hogy a Storage ügyféloldali kódtár legújabb verziójának használata C++-n keresztül elérhető [NuGet](https://www.nuget.org/packages/wastorage) vagy [GitHub](https://github.com/Azure/azure-storage-cpp).
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
@@ -34,7 +34,7 @@ Ehhez telepítenie kell az Azure Storage C++ programnyelvhez készült ügyfélo
 Az Azure Storage C++ programnyelvhez készült ügyféloldali kódtárát az alábbi módszerekkel telepítheti:
 
 * **Linux:** Kövesse az utasításokat adott a [Azure Storage ügyféloldali kódtára a C++ információs](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) lapot.  
-* **Windows:** A Visual Studióban válassza a **Tools (Eszközök) > NuGet Package Manager (NuGet-csomagkezelő) > Package Manager Console (Csomagkezelő konzol)** elemet. Írja be a következő parancsot a [NuGet Package Manager console](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) nyomja le az ENTER **ENTER**.  
+* **Windows:** A Visual Studióban válassza a **Tools (Eszközök) > NuGet Package Manager (NuGet-csomagkezelő) > Package Manager Console (Csomagkezelő konzol)** elemet. Írja be a következő parancsot a [NuGet Package Manager console](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) nyomja le az ENTER **ENTER**.  
   
      Install-Package wastorage
 
@@ -258,7 +258,7 @@ Most, hogy megismerte a blob storage alapjait, az alábbi hivatkozásokból tudh
 * [A c++ segítségével a Queue Storage használata](../storage-c-plus-plus-how-to-use-queues.md)
 * [Hogyan használható a Table Storage, a c++ segítségével](../../cosmos-db/table-storage-how-to-use-c-plus.md)
 * [A C++ Azure Storage-erőforrások listája](../storage-c-plus-plus-enumeration.md)
-* [A Storage ügyféloldali kódtára a c++ nyelvhez – dokumentáció](http://azure.github.io/azure-storage-cpp)
+* [A Storage ügyféloldali kódtára a c++ nyelvhez – dokumentáció](https://azure.github.io/azure-storage-cpp)
 * [Az Azure Storage dokumentációja](https://azure.microsoft.com/documentation/services/storage/)
 * [Adatátvitel az AzCopy parancssori segédprogrammal](../storage-use-azcopy.md)
 

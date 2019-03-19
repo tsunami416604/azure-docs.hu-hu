@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: d1f1ec45e1d4fc2fc6091a2f946caf6bc59441a9
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: a516f99af05ba3f3bb7ab98d3def123a488e0d9d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417057"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075901"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Az Azure AD Graph API használata
 
@@ -45,7 +45,7 @@ Miután egy B2C-bérlő, az alkalmazást a regisztrálnia kell a [az Azure porta
 3. A bal oldali navigációs ablaktáblán válassza ki a **minden szolgáltatás**, kattintson a **Alkalmazásregisztrációk**, és kattintson a **hozzáadása**.
 4. Kövesse az utasításokat az új alkalmazás létrehozásához. 
     1. Válassza ki **webalkalmazás / API** az alkalmazás típusaként.    
-    2. Adja meg **bármely bejelentkezési URL-** (pl. https://B2CGraphAPI) , mert nem releváns ebben a példában.  
+    2. Adja meg **bármely bejelentkezési URL-** (pl. `https://B2CGraphAPI`), mert nem releváns ebben a példában.  
 5. Az alkalmazás fogja jelennek meg az alkalmazások listájában kattintson rá beszerzése a **Alkalmazásazonosító** (más néven Ügyfélazonosítót). Másolja, egy későbbi részében szüksége lesz rá.
 6. A beállítások menüben kattintson a **kulcsok**.
 7. Az a **jelszavak** szakaszban adja meg a kulcs leírása, és válassza ki az időtartamot, és kattintson **mentése**. Másolja a kulcs értékét (más néven az ügyfél titkos kódot) használni egy későbbi szakaszban olvashat.

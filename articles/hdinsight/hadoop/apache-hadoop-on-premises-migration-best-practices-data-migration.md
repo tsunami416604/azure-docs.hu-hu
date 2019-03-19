@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 488e1adb6d533dc88994e1dc08513870f56bd9c0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 34a63c8f283f24fa58b4e2a41d3a44ff0c8c3c17
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433042"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003466"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>A helyszíni Apache Hadoop-fürtök áttelepítése az Azure HDInsight - adatok áttelepítése – ajánlott eljárások
 
@@ -34,9 +34,9 @@ Két fő lehetőség át a helyszíni adatok Azure-környezet van:
 
 Az alábbi táblázat a hozzávetőleges adatok átvitel időtartama az adatok mennyisége és a hálózati sávszélesség alapján van. A Data box használja, ha az adatok migrálása várhatóan több mint három hetet igénybe vehet.
 
-|**Adatok mennyisége**|**Network Bandwidth**|||
-|---|---|---|---|
-|| **45 MB/s (T3)**|**100 Mbps**|**1 GB/s**|**10 GB/s**
+|**Adatok mennyisége**|**Network Bandwidth**||||
+|---|---|---|---|---|
+|| **45 MB/s (T3)**|**100 Mbps**|**1 GB/s**|**10 GB/s**|
 |1 TB|2 nap|1 nap| 2 óra|14 perc|
 |10 TB|22 nap|10 nap|1 nap|2 óra|
 |35 TB|76 nap|34 nap|3 nap|8 óra|

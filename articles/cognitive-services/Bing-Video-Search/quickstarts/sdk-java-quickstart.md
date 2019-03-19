@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: rosh
-ms.openlocfilehash: 34555ec3315c1fd7322c249e59744cb512ac2d37
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: d421abf0a3cc402cf8d040363dfe79b07b66bf95
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437480"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105709"
 ---
 # <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-java"></a>Gyors útmutató: Hajtsa végre a videókeresési Bing Video Search SDK-val Java
 
@@ -61,7 +61,7 @@ Hozzon létre egy új Java-projektet a kedvenc IDE-környezetében vagy szerkesz
 
 ## <a name="create-a-search-client"></a>Hozzon létre egy ügyfél-keresés
 
-2. Alkalmazzon a `VideoSearchAPIImpl` -ügyfelet, amely az API-végpont, és a egy példányát igényli a `ServiceClientCredentials` osztály.
+1. Alkalmazzon a `VideoSearchAPIImpl` -ügyfelet, amely az API-végpont, és a egy példányát igényli a `ServiceClientCredentials` osztály.
 
     ```java
     public static VideoSearchAPIImpl getClient(final String subscriptionKey) {

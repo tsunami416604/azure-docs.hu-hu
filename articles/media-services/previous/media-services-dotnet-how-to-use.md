@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: 36350f8f359c6ad5cc5637ce0ce38838698cd68b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7da57c01b6717b505ea09fa9e6197bab4d4976fd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177444"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57873825"
 ---
 # <a name="media-services-development-with-net"></a>.NET-keretrendszerrel történő Media Services-fejlesztés 
 [!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
@@ -45,7 +45,7 @@ Azt is megteheti, beszerezheti a legfrissebb Media Services .NET SDK a bits a Gi
 2. Hozza létre a megoldást.
 3. Használat **NuGet** telepítéséhez, és adja hozzá **Azure Media Services .NET SDK-bővítmények** (**windowsazure.mediaservices.extensions**). Ennek a csomagnak a telepítése a **Media Services .NET SDK**csomagot és az összes további szükséges függőséget is feltelepíti
    
-    Győződjön meg arról, hogy van-e telepítve a legújabb verzió. További információk és a telepítési utasításokért lásd: [NuGet](http://nuget.codeplex.com/).
+    Győződjön meg arról, hogy van-e telepítve a legújabb verzió. További információk és a telepítési utasításokért lásd: [NuGet](https://nuget.codeplex.com/).
 
     1. A Megoldáskezelőben kattintson a jobb gombbal a projekt nevét, és válassza a **NuGet-csomagok kezelése**.
 
@@ -54,7 +54,7 @@ Azt is megteheti, beszerezheti a legfrissebb Media Services .NET SDK a bits a Gi
     3. Válassza ki az Online katalógusban, keresse meg az Azure MediaServices bővítményeket, **Azure Media Services .NET SDK-bővítmények** (**windowsazure.mediaservices.extensions**), majd kattintson a  **Telepítés** gombra.
    
     4. A projekt módosul, és hozzáadja a Media Services .NET SDK-bővítményeket, a Media Services .NET SDK-t és más függő szerelvényei mutató hivatkozásokat.
-4. A tisztább fejlesztési környezet előléptetni, fontolja meg a NuGet-csomagok visszaállításának engedélyezése. További információkért lásd: [NuGet-csomagok visszaállításának "](http://docs.nuget.org/consume/package-restore).
+4. A tisztább fejlesztési környezet előléptetni, fontolja meg a NuGet-csomagok visszaállításának engedélyezése. További információkért lásd: [NuGet-csomagok visszaállításának "](https://docs.nuget.org/consume/package-restore).
 5. Vegyen fel egy hivatkozást **System.Configuration** sestavení. Ez a szerelvény tartalmazza a System.Configuration. **ConfigurationManager** osztály, amely a konfigurációs fájlok (például App.config) eléréséhez használatos.
    
     1. A hivatkozások kezelése párbeszédpanelen hivatkozások hozzáadásához kattintson a jobb gombbal a projekt nevére a Megoldáskezelőben. Kattintson a **Hozzáadás**, majd kattintson az **hivatkozás...** .

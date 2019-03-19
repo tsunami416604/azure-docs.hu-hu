@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 1/10/2019
-ms.openlocfilehash: 7eb88f0bd30c9f28f8980cdc0e16ba46a9da9551
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 477b2ec1af4c52f51c3ab20ac2ddf7ef043dfcc7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765594"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994345"
 ---
 # <a name="create-a-kubernetes-cluster-with-application-gateway-ingress-controller-using-azure-kubernetes-service-and-terraform"></a>Kubernetes-fürt létrehozása az Application Gateway bejövőforgalom-vezérlőjéhez Azure Kubernetes Service-ben és a Terraform használatával
 [Az Azure Kubernetes Service (AKS)](/azure/aks/) felügyeli az üzemeltetett Kubernetes környezetet. Az AKS segítségével gyorsan és egyszerűen üzembe és kezelhet tárolóalapú alkalmazásokat tárolóvezénylési szakértelem nélkül is. Ezenkívül a folyamatban lévő műveletek és karbantartás terhét is megszünteti az erőforrások igény szerinti kiépítésével, frissítésével és méretezésével anélkül, hogy offline állapotba kellene helyezni az alkalmazásait.
@@ -36,16 +36,16 @@ Ebben az oktatóanyagban elsajátíthatja, hogyan hajtsa végre a következő fe
 - **A Terraform konfigurálása**: A cikk utasításait követve [Terraform hozzáférési szabályzatokat az Azure-bA](/azure/virtual-machines/linux/terraform-install-configure)
 
 - **Az Azure szolgáltatás egyszerű**: Szakaszának utasításait a **az egyszerű szolgáltatás létrehozása** szakasz a cikkben [egy Azure-beli szolgáltatásnév létrehozása az Azure CLI-vel](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest). Jegyezze fel az appId, a displayName és a jelszó értékeit.
-    - Vegye figyelembe a szolgáltatásnév Objektumazonosítóját a következő parancs futtatásával
+  - Vegye figyelembe a szolgáltatásnév Objektumazonosítóját a következő parancs futtatásával
 
     ```bash
-     az ad sp list --display-name <displayName>
+    az ad sp list --display-name <displayName>
     ```
 
 ## <a name="create-the-directory-structure"></a>A könyvtárstruktúra létrehozása
 Az első lépés a könyvtár létrehozása, amely a feladathoz tartozó Terraform konfigurációs fájlokat tárolja.
 
-1. Keresse fel az [Azure Portalt](http://portal.azure.com).
+1. Keresse fel az [Azure Portalt](https://portal.azure.com).
 
 1. Nyissa meg az [Azure Cloud Shellt](/azure/cloud-shell/overview). Ha még nem választott ki környezetet, válassza a **Bash** környezetet.
 
@@ -99,8 +99,8 @@ Hozza létre az Azure-szolgáltatót deklaráló Terraform konfigurációs fájl
     ```bash
     :wq
     ```
-## <a name="define-input-variables"></a>A bemeneti változók megadása
-A Terraform, amely felsorolja az összes változót a telepítéshez szükséges konfigurációs fájl létrehozása
+   ## <a name="define-input-variables"></a>A bemeneti változók megadása
+   A Terraform, amely felsorolja az összes változót a telepítéshez szükséges konfigurációs fájl létrehozása
 1. A Cloud Shellben hozzon létre egy fájlt `variables.tf`
     ```bash
     vi variables.tf

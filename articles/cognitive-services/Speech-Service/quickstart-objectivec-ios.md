@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 67acc7a074b26cb7614b5e08d25afd7b7c1caa74
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 2520f05c83cb5b727c8cdae1602b39320de4b99d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958507"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094922"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>Gyors útmutató: A beszédfelismerés SDK használatával iOS rendszeren beszédfelismerést Objective-C nyelven
 
@@ -75,7 +75,7 @@ Cserélje le az automatikusan létrehozott nevet XML ezt a kódot:
 ## <a name="add-the-sample-code"></a>A mintakód hozzáadása
 
 1. Töltse le a [wav-mintafájlt](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-speech-sdk/f9807b1079f3a85f07cbb6d762c6b5449d536027/samples/cpp/windows/console/samples/whatstheweatherlike.wav) úgy, hogy jobb egérgombbal a hivatkozásra kattint, majd a **Save target as...** lehetőséget választja. Adja hozzá a wav-fájlt a projekthez erőforrásként úgy, hogy a Finder ablakból a projektnézet gyökérszintjére húzza.
-A következő párbeszédpanelen a beállítások módosítása nélkül kattintson a **Finish** gombra.
+   A következő párbeszédpanelen a beállítások módosítása nélkül kattintson a **Finish** gombra.
 1. Cserélje le az automatikusan létrehozott `ViewController.m` fájl tartalmát az alábbi kódra:
 
    [!code-objectivec[Quickstart Code](~/samples-cognitive-services-speech-sdk/quickstart/objectivec-ios/helloworld/helloworld/ViewController.m#code)]
@@ -90,12 +90,12 @@ A következő párbeszédpanelen a beállítások módosítása nélkül kattint
 ## <a name="building-and-running-the-sample"></a>A minta lefordítása és futtatása
 
 1. Tegye láthatóvá a hibakeresési kimenetet (**View** > **Debug Area** > **Activate Console**).
-1. A **Product** -> **Destination** menüpontban található listáról válassza ki az alkalmazás célhelyeként használni kívánt iOS-szimulátort vagy fejlesztőgépéhez csatlakoztatott iOS-eszközt.
+1. IOS-szimulátorban vagy egy iOS-eszközt a fejlesztői gépére csatlakoztatva a cél az alkalmazás számára listájából válassza ki a **termék** -> **cél** menü.
 1. Fordítsa le és futtassa a példakódot az iOS-szimulátorban úgy, hogy a **Product** -> **Run** lehetőséget választja a menüből, vagy a **Play** gombra kattint.
-A Speech SDK jelenleg csak a 64 bites iOS-platformokat támogatja.
+   A Speech SDK jelenleg csak a 64 bites iOS-platformokat támogatja.
 1. Miután a „Recognize (File)” (Felismerés (Fájl)) gombra kattint az alkalmazásban, a képernyő alsó részén meg kell jelennie a „What's the weather like?” (Milyen az időjárás?) hangfájl tartalmának.
 
- ![Szimulált iOS-alkalmazás](media/sdk/qs-objectivec-simulated-app.png)
+   ![Szimulált iOS-alkalmazás](media/sdk/qs-objectivec-simulated-app.png)
 
 1. Miután a "Recognize (Microphone)" gombra kattint az alkalmazásban, és mond néhány szót, a képernyő alsó részén meg kell jelenniük a mondottaknak.
 

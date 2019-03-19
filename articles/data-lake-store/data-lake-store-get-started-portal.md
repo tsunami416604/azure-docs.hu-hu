@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 91c069f845ef6291f867099e59e79fd059d8caf1
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: a99d8a265cdc72b6bd1dd45ab670f514d828f808
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320225"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005705"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Az Azure Data Lake Storage Gen1 használatának első lépései az Azure portal használatával
 
@@ -76,9 +76,9 @@ Ha konfigurálta a titkosítást a Data Lake Storage Gen1 fiók az Azure Key Vau
 
 > [!NOTE]
 > Egy Data Lake Storage Gen1 fiókot az Azure Resource Manager-sablonok használatával is létrehozhat. Ezek a sablonok az [Azure gyors üzembehelyezési sablonokból](https://azure.microsoft.com/resources/templates/?term=data+lake+store) érhetők el:
-    - Adattitkosítás: nélkül [Üzembe helyezése adattitkosítás nélkül az Azure Data Lake Storage Gen1 fiók](https://azure.microsoft.com/resources/templates/101-data-lake-store-no-encryption/).
-    - Adattitkosítás használatával a Data Lake Storage Gen1: [Üzembe helyezése titkosítással (Data Lake) a Data Lake Storage Gen1 fiók](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-adls/).
-    - Az Azure Key Vaulttal adattitkosítás: [Üzembe helyezése titkosítással (Key Vault) a Data Lake Storage Gen1 fiók](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-key-vault/).
+> - Adattitkosítás: nélkül [Üzembe helyezése adattitkosítás nélkül az Azure Data Lake Storage Gen1 fiók](https://azure.microsoft.com/resources/templates/101-data-lake-store-no-encryption/).
+> - Adattitkosítás használatával a Data Lake Storage Gen1: [Üzembe helyezése titkosítással (Data Lake) a Data Lake Storage Gen1 fiók](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-adls/).
+> - Az Azure Key Vaulttal adattitkosítás: [Üzembe helyezése titkosítással (Key Vault) a Data Lake Storage Gen1 fiók](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-key-vault/).
 > 
 > 
 

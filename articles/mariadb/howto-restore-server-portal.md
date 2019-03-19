@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: ec55a33874973bf9aeaaa34ab07b162a46db44eb
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 1dc7930649a4e90c3b1c69a4f109f545f74a79f4
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56874001"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58081117"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-portal"></a>Biztonsági mentése és visszaállítása egy kiszolgálót az Azure Database for MariaDB az Azure portal használatával
 
@@ -64,10 +64,10 @@ A következő lépések a mintakiszolgálót egy-időponthoz állítja vissza:
 3. Adja meg a visszaállítás űrlapon a szükséges információkkal:
 
    ![Azure Database for MariaDB - visszaállítási információ](./media/howto-restore-server-portal/3-restore.png)
-  - **Visszaállítási pont**: Válassza ki a-időponthoz a visszaállítani kívánt.
-  - **Célkiszolgáló**: Adja meg az új kiszolgáló nevét.
-  - **Hely**: A régió nem választható. Alapértelmezés szerint a ugyanaz, mint a forráskiszolgálón.
-  - **A tarifacsomag**: Ezek a paraméterek nem módosítható, egy időpontban a visszaállítás során. Ugyanaz, mint a forráskiszolgálóé. 
+   - **Visszaállítási pont**: Válassza ki a-időponthoz a visszaállítani kívánt.
+   - **Célkiszolgáló**: Adja meg az új kiszolgáló nevét.
+   - **Hely**: A régió nem választható. Alapértelmezés szerint a ugyanaz, mint a forráskiszolgálón.
+   - **A tarifacsomag**: Ezek a paraméterek nem módosítható, egy időpontban a visszaállítás során. Ugyanaz, mint a forráskiszolgálóé. 
 
 4. Kattintson a **OK** visszaállítása egy pont kötött visszaállítása a kiszolgálón. 
 

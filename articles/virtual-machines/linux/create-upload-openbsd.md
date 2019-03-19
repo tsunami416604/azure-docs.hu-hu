@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: huishao
-ms.openlocfilehash: 332382282c2b55b52bb23f278a25868c09360619
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: d8640881e83084dac7f4725115f48dcf7d29e787
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729353"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58007606"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Hozzon létre és OpenBSD lemez Rendszerkép feltöltése az Azure-bA
 Ez a cikk bemutatja, hogyan hozhat létre és töltse fel a virtuális merevlemez (VHD), amely tartalmazza az OpenBSD operációs rendszert. Miután feltölti azt, segítségével azt a saját rendszerkép hozzon létre egy virtuális gépet (VM) az Azure-ban az Azure CLI-n keresztül.
@@ -56,7 +56,7 @@ A virtuális gépre, amelyre telepítve van az OpenBSD operációs rendszer 6.1,
     echo "https://ftp.openbsd.org/pub/OpenBSD" > /etc/installurl
     ```
    
-4. Alapértelmezés szerint a `root` felhasználó le van tiltva, az Azure-beli virtuális gépeken. Felhasználók futtathat parancsokat emelt szintű jogosultságokkal használatával a `doas` OpenBSD VM parancsot. Doas alapértelmezés szerint engedélyezve van. További információkért lásd: [doas.conf](http://man.openbsd.org/doas.conf.5). 
+4. Alapértelmezés szerint a `root` felhasználó le van tiltva, az Azure-beli virtuális gépeken. Felhasználók futtathat parancsokat emelt szintű jogosultságokkal használatával a `doas` OpenBSD VM parancsot. Doas alapértelmezés szerint engedélyezve van. További információkért lásd: [doas.conf](https://man.openbsd.org/doas.conf.5). 
 
 5. Telepítse és konfigurálja az Azure-ügynök előfeltételei a következők szerint:
 
@@ -175,6 +175,6 @@ ssh azureuser@<ip address>
 
 
 ## <a name="next-steps"></a>További lépések
-Ha szeretne többet megtudni a OpenBSD6.1 Hyper-V támogatását, olvassa el [OpenBSD 6.1](https://www.openbsd.org/61.html) és [hyperv.4](http://man.openbsd.org/hyperv.4).
+Ha szeretne többet megtudni a OpenBSD6.1 Hyper-V támogatását, olvassa el [OpenBSD 6.1](https://www.openbsd.org/61.html) és [hyperv.4](https://man.openbsd.org/hyperv.4).
 
 Ha szeretne egy virtuális gép létrehozása felügyelt lemezről, olvassa el [az lemez](/cli/azure/disk). 

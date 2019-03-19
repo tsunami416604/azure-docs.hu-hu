@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: Az akusztikai modell létrehozásához a Speech szolgáltatással'
 titlesuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan hozhat létre akusztikai modellt az Azure Cognitive Services Speech Service szolgáltatásával.
+description: Ismerje meg, hogyan hozhat létre az akusztikai modell beszédszolgáltatások használata az Azure-ban.
 services: cognitive-services
 author: PanosPeriorellis
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 06/25/2018
 ms.author: panosper
-ms.openlocfilehash: b644d1d227b5dbd69af38cc32defffb8152b0cde
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: f2a111558fa3f515b797745dc51e32f625bbd91f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878119"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57844024"
 ---
 # <a name="tutorial-create-a-custom-acoustic-model"></a>Oktatóanyag: Egyéni akusztikai modell létrehozása
 
@@ -33,9 +33,9 @@ Ha még nincs Azure Cognitive Services-fiókja, hozzon létre egy [ingyenes fió
 
 Nyissa meg a [Cognitive Services-előfizetések](https://cris.ai/Subscriptions) oldalt, és ellenőrizze, hogy Cognitive Services-fiókja egy előfizetés alá tartozik-e.
 
-A **Connect existing subscription** (Meglévő előfizetés csatlakoztatása) lehetőséget választva csatlakozhat az Azure Portalon létrehozott Speech Service-előfizetésekhez.
+Csatlakozhat egy beszédszolgáltatások előfizetés kiválasztásával az Azure Portalon létrehozott **csatlakozás meglévő előfizetés**.
 
-A Speech Service-előfizetések az Azure Portalon való létrehozásával kapcsolatos útmutatásért lásd a [Speech Service ingyenes kipróbálásával](get-started.md) foglalkozó szakaszt.
+Az Azure Portalon beszédszolgáltatások előfizetés létrehozásával kapcsolatos információkért lásd: [próbálja ki ingyenesen a beszédszolgáltatások](get-started.md).
 
 ## <a name="prepare-the-data"></a>Az adatok előkészítése
 
@@ -69,7 +69,7 @@ Az akusztikai modell testreszabása egy akusztikai adatkészletet a két részb�
 | Mintavételezési frekvencia | 8000 vagy 16 000 Hz (hertz) |
 | Csatornák | 1 (mono) |
 | Minták formátuma | PCM, 16 bites egész számok |
-| Fájlok időtartama | 0,1 másodperc és 12 másodperc között | 
+| Fájlok időtartama | 0,1 másodperc és 12 másodperc között |
 | Csend időtartama | >0,1 másodperc |
 | Archívum formátuma | .zip |
 | Archívum maximális mérete | 2 GB |
@@ -96,19 +96,19 @@ Az összes WAV fájl átiratát egyetlen, egyszerű szöveges fájlnak kell tart
 
 Az átiratokat a rendszer normalizálja, hogy fel tudja őket dolgozni. Bizonyos fontosabb normalizálási tevékenységeket azonban a felhasználónak kell végrehajtania az adatok a Custom Speech Service szolgáltatásba való feltöltése _előtt_. Az átiratok előkészítése során használandó megfelelő nyelv meghatározásához lásd [a Speech Service használatára vonatkozó átírási irányelvekkel](prepare-transcription.md) foglalkozó szakaszt.
 
-Hajtsa végre a következő szakaszban leírt lépéseket [a Speech Service portál](https://cris.ai) használatával.
+Hajtsa végre a lépéseket a következő szakaszok segítségével a [Speech Services portálon](https://cris.ai).
 
 ## <a name="import-the-acoustic-dataset"></a>Az akusztikai adatkészlet importálása
 
 Miután előkészítette a hangfájlokat és az átiratokat, azok importálhatók a szolgáltatás webes portáljára.
 
-Az importálásukhoz először mindenképp jelentkezzen be a [Speech Service portálra](https://cris.ai). Ezután kattintson a szalagsávon a **Custom Speech** legördülő menüre, és válassza az **Adaptation Data** (Adaptációs adatok) lehetőséget. Ha most tölt fel először adatokat a Custom Speech Service szolgáltatásba, egy üres tábla jelenik meg a **Datasets** (Adatkészletek) címkével. 
+Importálhatja őket, először győződjön meg arról, hogy Ön bejelentkezett a a [Speech Services portálon](https://cris.ai). Ezután kattintson a szalagsávon a **Custom Speech** legördülő menüre, és válassza az **Adaptation Data** (Adaptációs adatok) lehetőséget. Ha most tölt fel először adatokat a Custom Speech Service szolgáltatásba, egy üres tábla jelenik meg a **Datasets** (Adatkészletek) címkével.
 
 Az **Acoustic Datasets** (Akusztikai adatkészletek) sorban válassza az **Import** (Importálás) lehetőséget, és a webhely megjeleníti az új adatkészlet feltöltésére szolgáló oldalt.
 
 ![Az Import Acoustic Data (Akusztikai adatok importálása) lap](media/stt/speech-acoustic-datasets-import.png)
 
-A **Name** (Név) és a **Description** (Leírás) mezőben adja meg a megfelelő információkat. A beszédes leírások segítenek a különböző feltöltött adatkészletek számon tartásában. 
+A **Name** (Név) és a **Description** (Leírás) mezőben adja meg a megfelelő információkat. A beszédes leírások segítenek a különböző feltöltött adatkészletek számon tartásában.
 
 A **Transcriptions file (.txt)** (Átiratfájl, .txt) és az **Audio files (.zip)** (Hangfájlok, .zip) mezőben a **Browse** (Böngészés) gombra kattintva válassza ki az egyszerű szöveges átiratfájlt, valamint a WAV-fájlokat tartalmazó tömörített archívumot. Ha elvégezte az előkészítést, válassza az **Import** (Importálás) lehetőséget az adatok feltöltéséhez. A rendszer feltölti az adatokat. Nagyobb adatkészlet esetén az importálási folyamat több percig is eltarthat.
 
@@ -126,11 +126,11 @@ Ha módosítani szeretné az adatkészlet nevét vagy leírását, válassza az 
 
 Ha a nyelvi adatkészlet *Complete* (Kész) állapotra vált, a használatával létrehozhat egy egyéni akusztikai modellt. Ehhez válassza az **Acoustic Models** (Akusztikai modellek) lehetőséget a **Custom Speech** legördülő listában. A **Your models** (Saját modellek) című táblázat megjeleníti az egyéni akusztikai modellek listáját. Ha először használja ezt a funkciót, a táblázat üres lesz. A táblázat címe az aktuális területi beállítást mutatja. Akusztikai modellek jelenleg csak az amerikai angol beállításhoz hozhatók létre.
 
-Új modell létrehozásához válassza a **Create New** (Új létrehozása) lehetőséget a tábla címe alatt. Ahogy korábban is, adja meg a nevet és egy leírást, amelyek alapján azonosíthatja a modellt. Például a **Description** (Leírás) mezőben rögzíthető, hogy a modellt mely kiindulási modell és akusztikai adatok felhasználásával készítette. 
+Új modell létrehozásához válassza a **Create New** (Új létrehozása) lehetőséget a tábla címe alatt. Ahogy korábban is, adja meg a nevet és egy leírást, amelyek alapján azonosíthatja a modellt. Például a **Description** (Leírás) mezőben rögzíthető, hogy a modellt mely kiindulási modell és akusztikai adatok felhasználásával készítette.
 
 Ezután a **Base Acoustic Model** (Alap akusztikai modell) legördülő menüben válasszon ki egy alap modellt. Az alap modell szolgál a testreszabás kiindulópontjaként. Két alap akusztikai modell közül választhat:
-* A **Microsoft Search and Dictation AM** (Microsoft keresési és diktálási akusztikai) modell az alkalmazásokhoz intézett beszéd, például parancsok, keresőlekérdezések vagy diktálás feldolgozásához alkalmas. 
-* A **Microsoft Conversational Model** (Microsoft beszélgetési modell) a beszélgetési stílusban elhangzott beszélgetések feldolgozásához alkalmas. Az ilyen típusú beszéd általában másik személynek szól, és telefonos ügyfélszolgálatokon vagy értekezleteken hangzik el. 
+* A **Microsoft Search and Dictation AM** (Microsoft keresési és diktálási akusztikai) modell az alkalmazásokhoz intézett beszéd, például parancsok, keresőlekérdezések vagy diktálás feldolgozásához alkalmas.
+* A **Microsoft Conversational Model** (Microsoft beszélgetési modell) a beszélgetési stílusban elhangzott beszélgetések feldolgozásához alkalmas. Az ilyen típusú beszéd általában másik személynek szól, és telefonos ügyfélszolgálatokon vagy értekezleteken hangzik el.
 
 A részleges eredmények késleltetése a Conversational-modellek esetében magasabb, mint a Search and Dictation-modellek esetében.
 
@@ -153,6 +153,6 @@ Az akusztikai modellek táblázatában egy, az új modellhez tartozó bejegyzés
 
 ## <a name="next-steps"></a>További lépések
 
-- [Speech Service próba-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
+- [Próbaverziós Speech Services-előfizetés beszerzése](https://azure.microsoft.com/try/cognitive-services/)
 - [Beszéd felismerése C# nyelven](quickstart-csharp-dotnet-windows.md)
 - [Git-mintaadatok](https://github.com/Microsoft/Cognitive-Custom-Speech-Service)

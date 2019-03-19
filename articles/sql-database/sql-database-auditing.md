@@ -12,12 +12,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 7069114a8cb63b8b166bc29e92d8f355c49824bb
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: ce691ec0622749f1cb7252e237dae25b2657d115
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57727144"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010529"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 
@@ -130,11 +130,11 @@ Ha úgy döntött, hogy auditnaplók írni az Azure Monitor naplóira:
 Ha úgy döntött, hogy auditnaplók írni az Event Hubs:
 
 - Az Event Hubs naplózási adatok felhasználásához, szüksége lesz egy stream események felhasználásához, és a cél beállítása. További információkért lásd: [Azure Event Hubs – dokumentáció](https://docs.microsoft.com/azure/event-hubs/).
-- Törzsében rögzítve lesznek a naplók az Event Hub [Apache Avro](http://avro.apache.org/) események segítségével a JSON formázását az UTF-8 kódolást és tárolhatók. A vizsgálati naplók elolvasásához használja [Avro eszközök](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview#use-avro-tools) vagy hasonló eszközt, amely ezt a formátumot.
+- Törzsében rögzítve lesznek a naplók az Event Hub [Apache Avro](https://avro.apache.org/) események segítségével a JSON formázását az UTF-8 kódolást és tárolhatók. A vizsgálati naplók elolvasásához használja [Avro eszközök](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview#use-avro-tools) vagy hasonló eszközt, amely ezt a formátumot.
 
 Ha úgy döntött, hogy auditnaplók írni az Azure storage-fiók, több módon használhatja a naplók megtekintéséhez:
 
-- Naplók a telepítés során választott fiókban vannak összesítve. Például egy eszköz használatával megvizsgálhatja auditnaplók [Azure Storage Explorer](http://storageexplorer.com/). Az Azure storage-ban naplói nevű tárolóban lévő blob fájlok kerülnek mentésre **sqldbauditlogs**. A tároló mappa a hierarchiával kapcsolatos további részletekért elnevezési konvenciók és a napló formátuma, tekintse meg a [Blob auditálási napló fájlformátum referenciája](https://go.microsoft.com/fwlink/?linkid=829599).
+- Naplók a telepítés során választott fiókban vannak összesítve. Például egy eszköz használatával megvizsgálhatja auditnaplók [Azure Storage Explorer](https://storageexplorer.com/). Az Azure storage-ban naplói nevű tárolóban lévő blob fájlok kerülnek mentésre **sqldbauditlogs**. A tároló mappa a hierarchiával kapcsolatos további részletekért elnevezési konvenciók és a napló formátuma, tekintse meg a [Blob auditálási napló fájlformátum referenciája](https://go.microsoft.com/fwlink/?linkid=829599).
 
 - Használja a [az Azure portal](https://portal.azure.com).  Nyissa meg a megfelelő adatbázis. Az adatbázis tetején **naplózási** kattintson **naplók megtekintése**.
 
@@ -161,7 +161,7 @@ Ha úgy döntött, hogy auditnaplók írni az Azure storage-fiók, több módon 
     4. Az egyesített fájl megnyílik az ssms-ben, ahol meg is megtekintése és elemezhetők a, valamint exportálja az xel-fájlt vagy CSV-fájl, illetve egy táblázat.
 
 - A Power BI használata. Megtekintheti és elemezheti a naplózási adatokat a Power bi-ban. További információ és a egy letölthető sablon eléréséhez tekintse meg a [elemzés naplózási adatokat a Power bi-ban](https://blogs.msdn.microsoft.com/azuresqldbsupport/20../../sql-azure-blob-auditing-basic-power-bi-dashboard/).
-- Letölti a naplófájlokat a portálon keresztül, vagy egy eszköz használatával az Azure Storage blob-tárolóból [Azure Storage Explorer](http://storageexplorer.com/).
+- Letölti a naplófájlokat a portálon keresztül, vagy egy eszköz használatával az Azure Storage blob-tárolóból [Azure Storage Explorer](https://storageexplorer.com/).
   - Miután letöltötte helyileg egy naplófájl, kattintson duplán a fájlra nyissa meg a, megtekintheti és elemezheti a naplókat az ssms-ben.
   - Azure Storage Explorer használatával egyszerre több fájl is letölthető. Ehhez kattintson a jobb gombbal egy adott almappát, és válassza ki **Mentés másként** egy helyi mappába menti.
 

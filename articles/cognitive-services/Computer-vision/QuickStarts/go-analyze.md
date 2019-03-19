@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4e44bce29b1a9ca83cae009df5b10484d0b2739d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: e783181e737a235a83149b1f22d699fe0aef0bfb
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543712"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57848660"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-go-in-computer-vision"></a>Gyors útmutató: A REST API-val a távoli kép elemzése, és lépjen a Computer Vision
 
@@ -33,8 +33,8 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 A minta létrehozásához és futtatásához az alábbi lépéseket kell végrehajtania:
 
-1. Másolja az alábbi kódot egy szövegszerkesztőbe.
-1. Hajtsa végre a következő módosításokat a kód megfelelő területein:
+1. Másolás az alábbi kód egy szövegszerkesztőbe.
+1. Szükség szerint hajtsa végre a következő módosításokat a kódban:
     1. Cserélje le a `subscriptionKey` értéket az előfizetői azonosítóra.
     1. Ha szükséges, cserélje le az `uriBase` értéket azon Azure-régió [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) metódusának végponti URL-címére, ahol az előfizetői azonosítókat beszerezte.
     1. Ha szeretné, cserélje le az `imageUrl` értéket egy másik elemzendő kép URL-címére.
@@ -177,10 +177,6 @@ A rendszer JSON formátumban adja vissza a sikeres választ. A mintaalkalmazás 
   "requestId": "a92f89ab-51f8-4735-a58d-507da2213fc2"
 }
 ```
-
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-
-Ha már nincs rá szükség, törölje a lefordított csomagot és annak forrásfájlját, majd zárja be a parancssort és a szövegszerkesztőt.
 
 ## <a name="next-steps"></a>További lépések
 

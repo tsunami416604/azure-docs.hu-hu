@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c8e60d97d37937e508a88f27b11274980a51a52c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 6678a37b534db5603aed245bdc8edffbf04b7f51
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466200"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904754"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Speciális adatáttekintés és modellezés a Spark segítségével
 
@@ -37,8 +37,8 @@ A modellek használjuk a logisztikai és lineáris regresszió, véletlenszerű 
 
 * [A SGD lineáris regressziós](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) egy lineáris regressziós modellt, amely egy Sztochasztikus átmenetes Grádiens (SGD) módszert használja, és optimalizálása és a szolgáltatás méretezési lehetőségek érhetők el a tip mennyiségeket előrejelzése kifizetett. 
 * [A LBFGS logisztikai regressziós](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) , vagy "logit" regressziós, egy regressziós modellt, amely a kategorikus adatok besorolása ehhez a függő változó esetén használható. LBFGS egy kvázi Newton algoritmus, amely megközelíti a Broyden – Fletcher – Goldfarb – Shanno (BFGS) algoritmus használatával korlátozott mennyiségű memóriát és széles körben használt a machine Learning szolgáltatásban.
-* [Véletlenszerű erdők](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) együttesek döntési fák vannak.  Overfitting kockázatának csökkentése érdekében számos döntési fák kombinálhatja azokat. Véletlenszerű erdők regressziós és besorolási használ, és kezelhetik a kategorikus funkciók és többosztályos osztályozási beállítás is kiterjeszthető. Ezek nem igénylik a szolgáltatás méretezése, és képesek nemlinearitás rögzítése és a szolgáltatás kapcsolati. Véletlenszerű erdők a legsikeresebb gépi tanulási besorolási és regressziós modellek tartoznak.
-* [Színátmenet súlyozott fák](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) együttesek döntési fák. GBTs iteratív, hogy minimalizálják az adatvesztést függvény döntési fák betanítása. GBTs regressziós és besorolási használ és kezelhetik a kategorikus funkciókat, nincs szükség a szolgáltatás méretezése, és képesek nemlinearitás rögzítése és a szolgáltatás kapcsolati. Ezek is használható osztályú-besorolás beállításban.
+* [Véletlenszerű erdők](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) együttesek döntési fák vannak.  Overfitting kockázatának csökkentése érdekében számos döntési fák kombinálhatja azokat. Véletlenszerű erdők regressziós és besorolási használ, és kezelhetik a kategorikus funkciók és többosztályos osztályozási beállítás is kiterjeszthető. Ezek nem igénylik a szolgáltatás méretezése, és képesek nemlinearitás rögzítése és a szolgáltatás kapcsolati. Véletlenszerű erdők a legsikeresebb gépi tanulási besorolási és regressziós modellek tartoznak.
+* [Színátmenet súlyozott fák](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) együttesek döntési fák. GBTs iteratív, hogy minimalizálják az adatvesztést függvény döntési fák betanítása. GBTs regressziós és besorolási használ és kezelhetik a kategorikus funkciókat, nincs szükség a szolgáltatás méretezése, és képesek nemlinearitás rögzítése és a szolgáltatás kapcsolati. Ezek is használható osztályú-besorolás beállításban.
 
 Példák CV és a Hiperparaméter modellezési ismétlés jelennek meg a bináris osztályozási probléma. Egyszerűbb példák (nélkül halmokat paraméter) jelennek meg a fő témakörben regressziós feladatokhoz. De a függelékben lineáris regressziós és CV paramétert a véletlenszerű erdő regressziós használatával ismétlés rugalmas net-érvényesítési is ismertet. A **nettó rugalmas** van egy rendeződik regressziós módszert L1 és L2 metrikákat lineáris regressziós modelleket, hogy a költségráfordításokkal egyenes arányban igyekeznek egyesíti az eljárást, mint a [szabadkézi](https://en.wikipedia.org/wiki/Lasso%20%28statistics%29) és [ridge](https://en.wikipedia.org/wiki/Tikhonov_regularization)módszereket.   
 
@@ -337,7 +337,7 @@ A kód bemutatja, hogyan hozhat létre egy új szolgáltatás forgalom alkalomma
 ### <a name="index-and-one-hot-encode-categorical-features"></a>Index és a egy gyakori kódolása kategorikus funkciók
 Ez a szakasz bemutatja, hogyan index, vagy a modellezési funkciók be kategorikus funkciói kódolása. A modellezés és MLlib függvényekben kategorikus bemeneti adatokat a funkciókat indexelve vagy használata előtt kódolva. 
 
-A modelltől függően kell index vagy más módon kell kódolnia azokat. Ha például Logistic és lineáris regressziós modellek igényelnek egy gyakori kódolási, ahol, például három kategóriába szolgáltatás bővíthet oszlopok szolgáltatás három, minden egyes tartalmazó 0 vagy 1 kategóriájától függően egy megfigyelési. MLlib biztosít [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) egy gyakori kódolási függvényét. A kódoló címke indexek oszlop bináris vektorok értékkel legfeljebb egyetlen egy-egy számoszlop rendeli hozzá. Ehhez a kódoláshoz lehetővé teszi, hogy a numerikus értékelt szolgáltatások, például a logisztikai regressziós kategorikus funkciók alkalmazandó elvárt algoritmusokat.
+A modelltől függően kell index vagy más módon kell kódolnia azokat. Ha például Logistic és lineáris regressziós modellek igényelnek egy gyakori kódolási, ahol, például három kategóriába szolgáltatás bővíthet oszlopok szolgáltatás három, minden egyes tartalmazó 0 vagy 1 kategóriájától függően egy megfigyelési. MLlib biztosít [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) egy gyakori kódolási függvényét. A kódoló címke indexek oszlop bináris vektorok értékkel legfeljebb egyetlen egy-egy számoszlop rendeli hozzá. Ehhez a kódoláshoz lehetővé teszi, hogy a numerikus értékelt szolgáltatások, például a logisztikai regressziós kategorikus funkciók alkalmazandó elvárt algoritmusokat.
 
 A következő index és a kategorikus funkciók kódolása a kódot:
 

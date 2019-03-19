@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 16c37f5ccaed7c161ecaae65a07c5da7400aad3c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 776523bb001848e6ecc153f670a96e3143e2ac0d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815072"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58006351"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Futtassa az Azure Site Recovery deployment planner a Hyper-V vészhelyreállítás az Azure-bA
 
@@ -34,6 +34,7 @@ A következő táblázat a GetVMList módban futtatandó kötelező és nem köt
 ```
 ASRDeploymentPlanner.exe -Operation GetVMList /?
 ```
+
 | Paraméter neve | Leírás |
 |---|---|
 | -Művelet | GetVMList |
@@ -83,6 +84,7 @@ A következő táblázat felsorolja a profilkészítési módban futtatandó kö
 ```
 ASRDeploymentPlanner.exe -Operation StartProfiling /?
 ```
+
 | Paraméter neve | Leírás |
 |---|---|
 | -Művelet | StartProfiling |
@@ -164,6 +166,7 @@ A következő táblázat a jelentéskészítési módban futtatandó kötelező 
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport /?
 ```
+
 | Paraméter neve | Leírás |
 |---|---|
 | -Művelet | Jelentés készítése |
@@ -271,6 +274,7 @@ Nyisson meg egy parancssori konzolt, és lépjen az Azure Site Recovery Deployme
 ```
 ASRDeploymentPlanner.exe -Operation GetThroughput /?
 ```
+
  Paraméter neve | Leírás |
 |---|---|
 | -Művelet | Átviteli sebesség lekérdezése |

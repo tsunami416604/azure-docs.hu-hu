@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/17/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2275d1ef3534e6d8e984595a816315b7b74a760
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: db9ac671b616e2b5af59c033d08768c9e572876f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439842"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58105369"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>Alkalmazásokhoz való hozzáférés egy felhasználó eltávolítása
 
@@ -38,21 +38,21 @@ Egy felhasználó vagy csoport-hozzárendelés alkalmazáshoz való eltávolít�
 
 A **törölhető az alkalmazás**, kövesse az alábbi utasításokat:
 
-1.  Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdai** vagy **Társadminisztrátorként.**
+1. Nyissa meg a [ **az Azure portal** ](https://portal.azure.com/) , és jelentkezzen be egy **globális rendszergazdai** vagy **Társadminisztrátorként.**
 
-2.  Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
+2. Nyissa meg a **Azure Active Directory-bővítmény** kattintva **minden szolgáltatás** a fő bal oldali navigációs menü tetején.
 
-3.  Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
+3. Írja be a **"Azure Active Directory**" szöveget a szűrő keresőmezőbe, és válassza a **Azure Active Directory** elemet.
 
-4.  Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
+4. Kattintson a **vállalati alkalmazások** az Azure Active Directory bal oldali navigációs menüjében.
 
-5.  Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
+5. Kattintson a **minden alkalmazás** az alkalmazások listájának megtekintéséhez.
 
    * Ha azt szeretné, hogy itt jelennek meg az alkalmazás nem látja, használja a **szűrő** vezérlőelem felső részén a **minden alkalmazás lista** és állítsa be a **megjelenítése** beállítást **összes Az alkalmazások.**
 
-6.  Válassza ki a törölni kívánt alkalmazást.
+6. Válassza ki a törölni kívánt alkalmazást.
 
-7.  Ha az alkalmazás betöltött, kattintson a **törlése** ikonra a felső alkalmazás **áttekintése** ablaktáblán.
+7. Ha az alkalmazás betöltött, kattintson a **törlése** ikonra a felső alkalmazás **áttekintése** ablaktáblán.
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>Szeretném tiltani minden jövőbeli felhasználói jóváhagyási művelet bármely alkalmazás
 

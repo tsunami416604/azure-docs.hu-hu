@@ -13,26 +13,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: apimpm
-ms.openlocfilehash: 829d6bc6cb3f8e78d065d7aaca4937634e7349c8
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: f7c52b7ab8aaad917eb03455800df6d8ba4cbc88
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437065"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082704"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Megnevezett értékek használata az Azure API Management házirendek
 Az API Management-házirendek olyan egy hatékony képesség, a rendszer, amelyek lehetővé teszik az Azure Portalon keresztül konfigurációs API-változtathatja meg. A házirendek utasítások gyűjteményei, amelyeket az API-k kérelmei és válaszai szerint egymást követően hajtanak végre. Házirend-utasítások szövegkonstans érték, a házirend-kifejezések, és az értékek nevű lehet létrehozni. 
 
 Minden API Management-szolgáltatáspéldány tulajdonságok gyűjteménye, kulcs/érték párok, nevű értékek, a szolgáltatáspéldány globális nevezett rendelkezik. Ezek az értékek nevű használható állandó karakterlánc-értékek kezelheti minden API konfigurálása és szabályzatokat. Minden egyes tulajdonság veheti fel a következő attribútumokat:
 
-| Attribútum | Típus | Leírás |
+| Attribútum | Typo | Leírás |
 | --- | --- | --- |
 | Megjelenített név |sztring |Alfanumerikus sztring, amellyel hivatkozni lehet a tulajdonságra a szabályzatokban. |
 | Érték |sztring |A tulajdonság értéke. Nem lehet üres vagy állhatnak csak térközökből. |
 |Titkos|logikai|Meghatározza, hogy az érték egy titkos kulcs-e, és a rendszer titkosítsa-e.|
-| Címkék |a karakterlánc tömbje |Nem kötelező, címkék, akkor használható a tulakdonságlista szűréséhez. |
+| Címkék |sztringek tömbje |Nem kötelező, címkék, akkor használható a tulakdonságlista szűréséhez. |
 
-![Megnevezett értékek](./media/api-management-howto-properties/named-values.png)
+![Névvel ellátott értékek](./media/api-management-howto-properties/named-values.png)
 
 Tulajdonságértékek tartalmazhat szövegkonstansok és [házirend-kifejezések](https://msdn.microsoft.com/library/azure/dn910913.aspx). Például értékét `ExpressionProperty` egy házirend-kifejezés, amely az aktuális dátumot és időt tartalmazó karakterláncot ad vissza. A tulajdonság `ContosoHeaderValue` egy titkos kulcsot van megjelölve, ezért nem jelenik meg az értékét.
 
@@ -50,7 +50,7 @@ Tulajdonságértékek tartalmazhat szövegkonstansok és [házirend-kifejezések
 2. Válassza ki **értékek nevű**.
 3. Nyomja meg **+ Hozzáadás**.
 
-  Neve és értéke szükséges értékeket. Ha ez a tulajdonság értéke egy titkos kulcsot, ellenőrizze, a titkos jelölőnégyzetet. Adjon meg egy vagy több választható címkék segítség a névvel ellátott értékek rendszerezése, majd kattintson a mentés.
+   Neve és értéke szükséges értékeket. Ha ez a tulajdonság értéke egy titkos kulcsot, ellenőrizze, a titkos jelölőnégyzetet. Adjon meg egy vagy több választható címkék segítség a névvel ellátott értékek rendszerezése, majd kattintson a mentés.
 4. Kattintson a **Create** (Létrehozás) gombra.
 
 A tulajdonság létrehozása után szerkesztheti a tulajdonság kattintva. Ha módosítja a tulajdonság nevét, minden olyan szabályzatokat, hogy a tulajdonság automatikusan frissülnek az új nevét.

@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 37a7610cf2458906729432b1cf53043f1badd64b
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: ef1d8f1a72c5936ff661636c4c51acf439a0a5ea
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820841"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57855197"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-web-service-from-excel"></a>Egy Azure Machine Learning Studio webszolgáltatás az Excelből felhasználása
 
@@ -33,8 +33,8 @@ Ha már rendelkezik egy webszolgáltatás, kattintson a a **WEBSZOLGÁLTATÁSOK*
 **Klasszikus webszolgáltatás**
 
 1. Az a **IRÁNYÍTÓPULT** lapon, a web service van egy sort a **KÉRÉS/válasz** szolgáltatás. Ha ezt a szolgáltatást egy kimeneti, megjelenik a **Excel-munkafüzet letöltése** hivatkozás abban a sorban.
-   
-    ![](./media/consuming-from-excel/excellink.png)
+
+    ![A Studio-webszolgáltatás portálon Excel-munkafüzet letöltése](./media/consuming-from-excel/excellink.png)
 2. Kattintson a **Excel-munkafüzet letöltése**.
 
 **Új webszolgáltatás**
@@ -46,17 +46,17 @@ Ha már rendelkezik egy webszolgáltatás, kattintson a a **WEBSZOLGÁLTATÁSOK*
 
 1. Nyissa meg a munkafüzetet.
 2. Biztonsági figyelmeztetés jelenik meg; Kattintson a **Szerkesztés engedélyezése** gombra.
-   
-    ![](./media/consuming-from-excel/enableeditting.png)
+
+    ![Povolit úpravy eltávolításához a védett nézet biztonsági figyelmeztetés](./media/consuming-from-excel/enableeditting.png)
 3. Biztonsági figyelmeztetés jelenik meg. Kattintson a **tartalom engedélyezése** gomb makrók futtatását a munkalapon.
-   
-    ![](./media/consuming-from-excel/enablecontent.png)
+
+    ![Engedélyezheti a tartalom számára a makrók letiltásával biztonsági figyelmeztetés mellőzése](./media/consuming-from-excel/enablecontent.png)
 4. Ha makrók engedélyezve vannak, egy tábla jön létre. Oszlopok kék is szükséges bemenetként az RRS webes szolgáltatás, vagy **paraméterek**. Vegye figyelembe a kimenet az RRS szolgáltatás **előre JELZETT értékek** zöld színnel. Amikor egy adott sorának az összes oszlop ki vannak töltve, a munkafüzet automatikusan a pontozási API- és a pontozott eredményeit jeleníti meg.
-   
-    ![](./media/consuming-from-excel/sampletable.png)
+
+    ![A paraméter bemeneti és a létrejövő tábla előre jelzett értékek](./media/consuming-from-excel/sampletable.png)
 5. Pontszámot rendelni az egynél több sorral, adja meg a második sor az adatok és az előre jelzett értékek előállítása. Több sor egyszerre is beillesztheti.
 
-Használhatja az Excel-szolgáltatások (diagramokat, a power mappel, feltételes formázás, stb.) az előre jelzett értékek segítségével jelenítheti meg az adatokat.    
+Használhatja az Excel-szolgáltatások (diagramokat, a power mappel, feltételes formázás, stb.) az előre jelzett értékek segítségével jelenítheti meg az adatokat.
 
 ## <a name="sharing-your-workbook"></a>A munkafüzet megosztása
 A makrók működjön az API-kulcsot a számolótábla részét kell lennie. Ez azt jelenti, hogy ossza meg a munkafüzetet csak a megbízható entitások/szolgáltatásra.

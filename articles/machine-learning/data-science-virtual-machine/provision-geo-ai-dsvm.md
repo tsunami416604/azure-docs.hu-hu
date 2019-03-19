@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: 47d5616f86c8f4cb62773d0b92a24a5fb63b2ea7
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c4b178cc7e0604f38e4da25452a3bad01f8145de
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240471"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57858141"
 ---
 # <a name="provision-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Az Azure-ban földrajzi mesterséges intelligenciát használó virtuális gép kiépítése 
 
@@ -33,7 +33,7 @@ A Geo-DSVM több eszközt tartalmaz, beleértve a mesterséges Intelligencia tar
 - eszközök beszerzésére és előfeldolgozási lemezképet, a szöveges adat 
 - fejlesztési tevékenységek, például a Microsoft R Server Developer Edition, Anaconda Python, a Jupyter notebooks, a Python és az R, Python és az R, SQL ide-eszközök adatbázisok
 - Az ESRI ArcGIS Pro asztali szoftverek Python- és R-felületek, amely az AI-alkalmazások, a térinformatikai adatok használható együtt. 
-
+ 
 
 ## <a name="create-your-geo-ai-data-science-vm"></a>A földrajzi mesterséges intelligenciát Használó adatelemzési virtuális gép létrehozása
 
@@ -67,16 +67,16 @@ A következő egy példányát a földrajzi mesterséges Intelligencia adatelemz
    - **Összefoglalás**: Győződjön meg arról, hogy minden, a megadott adatok helyesek.
 
    - **Vásároljon**: Kattintson a **vásárlása** a kiépítésének megkezdéséhez. Egy hivatkozást a szolgáltatás feltételeit. A virtuális gép nem rendelkezik a kiválasztott kiszolgáló méretét a számítási túl további díjakat a **mérete** . lépés. 
-
+ 
 >[!NOTE]
 > A kiépítés körülbelül 20-30 percet vesz igénybe. A kiépítési állapota jelenik meg az Azure Portalon.
 
-
+ 
 ## <a name="how-to-access-the-geo-ai-data-science-virtual-machine"></a>A földrajzi mesterséges Intelligencia adatelemző virtuális gép elérése
 
-A virtuális gép létrehozása után készen áll az eszközöket, amelyek telepítve és konfigurálva van indíthatja a rajta. Start menü csempék és számos olyan eszközzel asztali ikonok vannak. A távoli asztal is be a rendszergazdai fiók hitelesítő adatait, amely az előző konfigurálta a **alapjai** szakaszban. 
+ A virtuális gép létrehozása után készen áll az eszközöket, amelyek telepítve és konfigurálva van indíthatja a rajta. Start menü csempék és számos olyan eszközzel asztali ikonok vannak. A távoli asztal is be a rendszergazdai fiók hitelesítő adatait, amely az előző konfigurálta a **alapjai** szakaszban. 
 
-
+ 
 ## <a name="using-arcgis-pro-installed-in-the-vm"></a>ArcGIS Pro segítségével telepítve a virtuális gépen
 
 A Geo-dsvm-hez már előre telepítve van az ArcGIS Pro asztali és a környezet előre konfigurálva a DSVM minden olyan eszközt. Amikor hozzákezd a ArcGIS kéri egy jelentkezzen be az ArcGIS-fiókjába. Ha már rendelkezik az ArcGIS-fiókkal, és rendelkezik a szoftver licencét, használhatja a meglévő hitelesítő adatait.  
@@ -87,7 +87,7 @@ Ellenkező esetben regisztráljon új ArcGIS-fiók és licenc vagy beolvasása e
 
 ![Az ArcGIS-Free-Trial](./media/provision-geo-ai-dsvm/ArcGIS-Free-Trial.png)
 
-Miután előfizetési tartozó egy vagy egy fizetős vagy egy ingyenes próbafiókot ArcGIS, engedélyezheti az ArcGIS Pro-fiókja utasításait követve a [ArcGIS Pro dokumentációja – első lépések](http://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf). 
+Miután előfizetési tartozó egy vagy egy fizetős vagy egy ingyenes próbafiókot ArcGIS, engedélyezheti az ArcGIS Pro-fiókja utasításait követve a [ArcGIS Pro dokumentációja – első lépések](https://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf). 
 
 Bejelentkezés után az ArcGIS Pro asztali az ArcGIS-fiókját, készen áll a beépített adatelemzési eszközzel, amelyek telepítése és konfigurálása a virtuális gépen, a térinformatikai elemzés és a machine learning-projektek használatának megkezdéséhez.
 

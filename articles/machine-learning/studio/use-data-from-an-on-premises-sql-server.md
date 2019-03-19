@@ -6,16 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
-author: ericlicoding
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 77e8a951d806d93eb2a0a59152ec8388e2a6397b
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 9590728cec663b36c889dc26a6216c3d474244e4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818612"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888348"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-using-an-on-premises-sql-server-database"></a>Hajtsa végre az analytics az Azure Machine Learning Studiót egy helyszíni SQL Server-adatbázisból
 
@@ -51,7 +51,7 @@ Vegye figyelembe a következőket, amikor beállításával és használatával 
 * Integrációs modul csak egyetlen példányát telepítheti egyetlen számítógépre.
 * Több helyszíni adatforrás olyan egységes integrációs modul is használhat.
 * Több IRs más-más számítógépekre csatlakozhat a helyszíni ugyanazon az adatforráson.
-* Egyszerre csak egy munkaterülethez egy IRs konfigurálja. Integrációs modulok jelenleg nem oszthatók meg munkaterületek között.
+* Egyszerre csak egy munkaterülethez az IRs konfigurálja. Integrációs modulok jelenleg nem oszthatók meg munkaterületek között.
 * Egyetlen munkaterület több IRs konfigurálhatja. Például előfordulhat, hogy használni kívánt egy integrációs Modult, amely az adatforrásokhoz kapcsolódik, a teszt során fejlesztési és a egy éles integrációs modul Ha készen áll az üzembe helyezés.
 * Az integrációs modul nem kell ugyanarra a gépre, az adatforrással kell. De az adatforrás közelebb tartózkodó lerövidíti az átjáró csatlakozik az adatforráshoz. Azt javasoljuk, hogy az integrációs modul telepítését olyan számítógépen, amelyen eltér, amely üzemelteti a helyszíni adatforrás úgy, hogy az erőforrások az átjáró és az adatforrás nem vagyunk versenyképesek.
 * Ha már rendelkezik egy Power bi-ban vagy az Azure Data Factory forgatókönyvek szolgáló számítógépre telepített integrációs modul, telepítse külön IR az Azure Machine Learning Studio egy másik számítógépen.

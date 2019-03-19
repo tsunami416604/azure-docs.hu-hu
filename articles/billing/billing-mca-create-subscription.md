@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
-ms.openlocfilehash: 686543a322d1c87760060a1f4db1b26abca75cb8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 105b8481486c088a05e3acb95081d3ee55b55f52
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539411"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57897103"
 ---
 # <a name="create-an-additional-azure-subscription-for-microsoft-customer-agreement"></a>További Azure-előfizetés létrehozása a Microsoft ügyfél-szerződés
 
@@ -82,7 +82,7 @@ Adja hozzá a felhasználókat, az Azure-előfizetés és közös kiindulópontk
 
 ## <a name="need-help-contact-support"></a>Segítség Kapcsolatfelvétel a támogatási szolgáltatással
 
-Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>További lépések
 

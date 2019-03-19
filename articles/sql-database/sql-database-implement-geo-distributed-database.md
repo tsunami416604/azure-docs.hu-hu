@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/10/2019
-ms.openlocfilehash: 25959b277e8cb97eea9ee0f44fa7c0b43821e3d8
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.date: 03/12/2019
+ms.openlocfilehash: 6022c016b83ffe1362db4d826a5ee4397afd4128
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312358"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57844143"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database"></a>Oktatóanyag: Földrajzilag elosztott adatbázis implementálása
 
@@ -33,6 +33,8 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!IMPORTANT]
+> A PowerShell Azure Resource Manager-modul továbbra is támogatja az Azure SQL Database, de minden jövőbeli fejlesztés Az.Sql modul. Ezeket a parancsmagokat lásd: [azurerm.SQL-hez](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). A parancsok a Az modul, és az AzureRm-modulok argumentumainak lényegében megegyeznek.
 
 Az oktatóanyag elvégzéséhez győződjön meg arról, hogy telepítette a következő elemek:
 

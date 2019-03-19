@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: overview
 ms.date: 02/26/2019
 ms.author: alkohli
-ms.openlocfilehash: e6042d9a1d6dc0e737fb4cf7e55d2c6938f9b0f4
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: c07293971c4cadd8b7bccc608f69faa3baa19ba7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961046"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100853"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Az Azure Data Box Gateway hibáinak elhárítása 
 
@@ -67,16 +67,16 @@ A feltöltési és frissítési folyamat során észlelt hibákat a megfelelő h
 
 2. Kattintson a _Microsoft Data Box Gateway mappára_. Ebben a mappában két almappát talál:
 
-    - A feltöltési mappa, amely a feltöltési hibákat tartalmazó naplófájlokat tárolja.
-    - A frissítési mappa a frissítés során bekövetkezett hibák számára.
+   - A feltöltési mappa, amely a feltöltési hibákat tartalmazó naplófájlokat tárolja.
+   - A frissítési mappa a frissítés során bekövetkezett hibák számára.
 
-    Íme egy minta naplófájl, amely a frissítési hibákat tartalmazza.
+     Íme egy minta naplófájl, amely a frissítési hibákat tartalmazza.
 
-    ```
-    <root container="brownbag1" machine="VM15BS020663" timestamp="07/18/2018 00:11:10" />
-    <file item="test.txt" local="False" remote="True" error="16001" />
-    <summary runtime="00:00:00.0945320" errors="1" creates="2" deletes="0" insync="3" replaces="0" pending="9" />
-    ``` 
+     ```
+     <root container="brownbag1" machine="VM15BS020663" timestamp="07/18/2018 00:11:10" />
+     <file item="test.txt" local="False" remote="True" error="16001" />
+     <summary runtime="00:00:00.0945320" errors="1" creates="2" deletes="0" insync="3" replaces="0" pending="9" />
+     ``` 
 
 3. Ha ebben a fájlban hibát talál (a mintában kiemelve látható), jegyezze fel a hibakódot, amely ebben az esetben 16001. Keresse meg a hibakód leírását a következő hibaadatok alapján.
 

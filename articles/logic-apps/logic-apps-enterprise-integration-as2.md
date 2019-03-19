@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: c9b7e1a9-4791-474c-855f-988bd7bf4b7f
 ms.date: 06/08/2017
-ms.openlocfilehash: 2604cdd6bf758858328c2d30fc4cde535f0a7148
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 3413b235d9202530eb1a3129637e3746bbe6585b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124662"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57872565"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>AS2-üzenetek váltása a B2B vállalati integráció az Azure Logic Apps Enterprise Integration Pack
 
@@ -35,7 +35,7 @@ Miután [integrációs fiók létrehozásáról](../logic-apps/logic-apps-enterp
 
 ## <a name="create-an-as2-agreement"></a>Az AS2-egyezmény létrehozása
 
-1.  Jelentkezzen be az [Azure Portalra](http://portal.azure.com "Azure Portal")  
+1.  Jelentkezzen be az [Azure Portalra](https://portal.azure.com "Azure Portal")  
 
 2. Az Azure fő menüjéből válassza **minden szolgáltatás**. A Keresés mezőbe írja be a "integráció" névre, és válassza ki **integrációs fiókok**.
 
@@ -63,7 +63,7 @@ Miután [integrációs fiók létrehozásáról](../logic-apps/logic-apps-enterp
     | Tulajdonság | Leírás |
     | --- | --- |
     | Name (Név) |A Szerződés neve |
-    | Szerződés típusa | AS2 kell lennie. |
+    | Egyezmény típusa | AS2 kell lennie. |
     | Gazdagéppartner |Egy szerződést kell a gazdagép és Vendég partner. A gazdagéppartner a szervezet, amely beállítja a szerződés jelöli. |
     | Gazdagép-identitás |A gazdagéppartner azonosítója |
     | Vendégpartner |Egy szerződést kell a gazdagép és Vendég partner. A vendégpartner a szervezet, amely a fogadó partner üzleti állapotát jelöli. |

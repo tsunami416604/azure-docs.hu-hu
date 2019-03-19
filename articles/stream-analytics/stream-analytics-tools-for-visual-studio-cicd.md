@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/27/2017
-ms.openlocfilehash: bb5b6a4e9d50a692342f497d27138c51e0dc93e4
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 641254be37ac0019ee6a256fc99f96fc3bfb75a2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729424"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122773"
 ---
 # <a name="continuously-integrate-and-develop-with-stream-analytics-tools"></a>Folyamatos integráció és a Stream Analytics tools fejlesztése
 Ez a cikk ismerteti, hogyan használható az Azure Stream Analytics tools for Visual Studio használatával állítsa be a folyamatos integrációs és üzembe helyezési folyamat.
@@ -21,8 +21,8 @@ Ez a cikk ismerteti, hogyan használható az Azure Stream Analytics tools for Vi
 2.3.0000.0 verzióját használja, vagy a fenti, [Stream Analytics tools for Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio) kérhet támogatást az MSBuild.
 
 A NuGet-csomag érhető el: [Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/). Ez tartalmazza az MSBuild-, helyi futtatási, valamint a telepítési eszközöket, amelyek támogatják a Stream Analytics Visual Studio-projektek folyamatos integrációs és üzembehelyezési folyamatait. 
-> [!NOTE] 
-A NuGet-csomag használható csak a 2.3.0000.0 vagy újabb verziója a Stream Analytics Tools for Visual Studio. Ha korábbi verzióiban a Visual Studio tools-projektet, nyissa meg őket a 2.3.0000.0 vagy újabb verzió, és mentse. Ezután az új képességek is engedélyezve van. 
+> [!NOTE]
+> A NuGet-csomag használható csak a 2.3.0000.0 vagy újabb verziója a Stream Analytics Tools for Visual Studio. Ha korábbi verzióiban a Visual Studio tools-projektet, nyissa meg őket a 2.3.0000.0 vagy újabb verzió, és mentse. Ezután az új képességek is engedélyezve van. 
 
 További információkért lásd: [Stream Analytics tools for Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio).
 
@@ -45,8 +45,8 @@ Ha egy Stream Analytics Visual Studio-projekt sikeresen létrejött, a következ
 
 Az alapértelmezett paramétereket a parameters.json fájlban vannak a Visual Studio-projektben a beállításokat. Ha azt szeretné, egy másik környezetben való üzembe helyezéséhez, annak megfelelően cserélje le a paramétereket.
 
-> [!NOTE] 
-Az összes a hitelesítő adatokat, az alapértelmezett értékek vannak beállítva a null. Ön *szükséges* értékeinek beállítását a felhő üzembe helyezése előtt.
+> [!NOTE]
+> Az összes a hitelesítő adatokat, az alapértelmezett értékek vannak beállítva a null. Ön *szükséges* értékeinek beállítását a felhő üzembe helyezése előtt.
 
 ```json
 "Input_EntryStream_sharedAccessPolicyKey": {

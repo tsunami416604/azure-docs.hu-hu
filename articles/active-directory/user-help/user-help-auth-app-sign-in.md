@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80fd458356cf5b375e0b3d922d9bdca3f3a30503
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 0f5f190eee473d5eb483f901ada80cb67b4ffedd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961669"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58110511"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Jelentkezzen be a fiókok a Microsoft Authenticator alkalmazással
 A Microsoft Authenticator alkalmazás segítségével jelentkezzen be a fiókok kétfaktoros ellenőrzési használatakor. A kétfaktoros hitelesítési segítségével a fiókok biztonságosabb, hozzáférhet a különösen bizalmas adatok megtekintésekor. Mivel a jelszavak elfelejtett is, amelyeket elloptak vagy feltört, kéttényezős hitelesítés végrehajtása egy további biztonsági lépés, amely megnehezíti mások feltörhessék fiókja védelme érdekében.
@@ -28,8 +28,8 @@ Többféle módon, beleértve a Microsoft Authenticator alkalmazást is használ
 
 - Jelentkezzen be lehetővé anélkül, hogy a jelszó, a felhasználónév és a mobil eszköz használata az ujjlenyomatot, arc vagy PIN-kód.
 
- >[!Important]
- >A telefonos bejelentkezési módszer csak munkahelyi vagy iskolai és személyes Microsoft-fiókok működik. A nem Microsoft-fiókok is a standard szintű kétfaktoros hitelesítési eljárás használnia kell.
+  >[!Important]
+  >A telefonos bejelentkezési módszer csak munkahelyi vagy iskolai és személyes Microsoft-fiókok működik. A nem Microsoft-fiókok is a standard szintű kétfaktoros hitelesítési eljárás használnia kell.
 
 ## <a name="prerequisites"></a>Előfeltételek
 A Microsoft Authenticator alkalmazás használata előtt a következőket kell tennie:

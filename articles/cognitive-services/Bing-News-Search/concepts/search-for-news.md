@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: overview
 ms.date: 01/11/2019
 ms.author: scottwhi
-ms.openlocfilehash: b7da1782491c4317713aafe54c4fd01c2c7110a9
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 612a3961d901f53147ab2f3cfeea20f9c11d96b7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55880771"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58087856"
 ---
 # <a name="search-for-news-with-the-bing-news-search-api"></a>Hírkeresés a Bing News Search API
 
@@ -264,4 +264,4 @@ Ha egyéb cikkek is kapcsolódnak egy hírhez, a hír tartalmazhatja a [clustere
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-[Hogyan lapozza végig a Hírkeresési Bing-eredmények](../paging-news.md)
+> [Hogyan lapozza végig a Hírkeresési Bing-eredmények](../paging-news.md)

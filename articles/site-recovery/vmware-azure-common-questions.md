@@ -5,15 +5,15 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 03/07/2019
+ms.date: 03/14/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 9e192c736235fcf8b8b5374787ad94aaf87427bf
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 24682156cf0c50ccf69c39f83f59e9b867bbcf0f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57727076"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57901848"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Gyakori kérdések – VMware-ből az Azure-bA
 
@@ -39,7 +39,7 @@ Azure-előfizetés, egy Recovery Services-tárolót, gyorsítótárfiókot, fel�
 Ha Ön olyan előfizetés rendszergazdája, akkor a replikációs szükséges engedélyekkel. Ha még nem, egy Azure virtuális gép létrehozása az erőforráscsoportot és a virtuális hálózatot, adja meg a Site Recovery és a kiválasztott tárfiók írási engedélyek konfigurálására vagy felügyelt lemez a konfiguráció alapján az engedélyek szükségesek. [További információk](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines).
 
 ### <a name="can-i-use-guest-os-server-license-on-azure"></a>Használható az Azure-ban a vendég operációs rendszer server-licence?
-Igen, a Microsoft frissítési garanciával rendelkező ügyfelek használhatják a [Azure Hybrid Benefit](https://azure.microsoft.com/en-in/pricing/hybrid-benefit/) menteni a licencelési költségei **Windows Serveres gépek** , amely az Azure-ba, vagy használhatja az Azure-vész-helyreállítási lesznek áttelepítve.
+Igen, a Microsoft frissítési garanciával rendelkező ügyfelek használhatják a [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/) menteni a licencelési költségei **Windows Serveres gépek** , amely az Azure-ba, vagy használhatja az Azure-vész-helyreállítási lesznek áttelepítve.
 
 ## <a name="pricing"></a>Díjszabás
 
@@ -50,6 +50,27 @@ Tekintse meg a licenc Kérdésekben [Itt](https://aka.ms/asr_pricing_FAQ) továb
 ### <a name="how-can-i-calculate-approximate-charges-during-the-use-of-site-recovery"></a>Hogyan lehet becsült költségek kiszámítása a Site Recovery használata során?
 
 Használhat [díjkalkulátor](https://aka.ms/asr_pricing_calculator) alapján az Azure Site Recovery használata közben. A részletes becsült költségek, futtassa a deployment planner eszköz (https://aka.ms/siterecovery_deployment_planner) és elemezheti a [költségbecslési jelentés költség](https://aka.ms/asr_DP_costreport).
+
+### <a name="is-there-any-difference-in-cost-when-i-replicate-directly-to-managed-disk"></a>Van-e költség eltérést közvetlenül a felügyelt lemez replikálás során?
+
+A felügyelt lemezek kismértékben eltér a storage-fiókok számítjuk fel. Tekintse át az alábbi példában egy a forráslemez mérete 100 GB. A példában csak különbözeti tárolási költsége. Ez a költség pillanatképek, a gyorsítótár és a tranzakciók díját nem tartalmazzák.
+
+* Standard szintű tárfiók Vs. HDD standard szintű felügyelt lemez
+
+    - **Az ASR-hez kiépített tároló lemez**: S10
+    - **A számlázás a standard szintű tárfiók kötet felhasznált**: 5 USD / hó
+    - **Standard szintű felügyelt lemez kell fizetnie a kiosztott kötet**: $5.89 / hó
+
+* Prémium szintű storage-fiók Vs. Premium SSD Managed Disk 
+    - **Az ASR-hez kiépített tároló lemez**: P10
+    - **Premium storage-fiók kell fizetnie a kiosztott kötet**: $17.92 / hó
+    - **Prémium szintű felügyelt lemez kell fizetnie a kiosztott kötet**: $17.92 / hó
+
+További információ a [, a felügyelt lemezek díjszabását](https://azure.microsoft.com/pricing/details/managed-disks/).
+
+### <a name="do-i-incur-additional-charges-for-cache-storage-account-with-managed-disks"></a>Fel további díjakat a Gyorsítótárfiókot managed disks szolgáltatással?
+
+Nem, nem terheli további gyorsítótár. Gyorsítótár, mindig a VMware Azure-ra architektúra része. Standard szintű tárfiókot a replikált, amikor a gyorsítótár az azonos céloldali tárfiók része.
 
 ### <a name="i-have-been-an-azure-site-recovery-user-for-over-a-month-do-i-still-get-the-first-31-days-free-for-every-protected-instance"></a>Már több mint egy hónapja Azure Site Recovery-felhasználó vagyok. Továbbra is minden egyes védett példány esetében vonatkozik rám a díjmentes első 31 nap?
 
@@ -125,6 +146,14 @@ Igen, az ExpressRoute segítségével virtuális gépek replikálása az Azure-b
 
 Tiltsa le és engedélyezze a replikálást vagy- és Visszaléptetés a tárfiók típusa kell.
 
+### <a name="can-i-replicate-to-storage-accounts-for-new-machine"></a>Replikálhatok az új gép tárfiókokhoz?
+
+Nem, Mar "19 kezdve replikálhatja az Azure managed disksbe a portálról. Egy új gép tárfiókokba történő replikálást csak akkor használható REST API és Powershell használatával. API-verzió 2016-08-10-es vagy a 2018-01-10 használata a storage-fiókokba replikálása.
+
+### <a name="what-are-the-benefits-in-replicating-to-managed-disks"></a>Milyen előnyökkel a felügyelt lemezekkel való replikálása?
+
+A cikk a hogyan [Azure Site Recovery egyszerűsíti a managed disks szolgáltatással vészhelyreállítás](https://azure.microsoft.com/blog/simplify-disaster-recovery-with-managed-disks-for-vmware-and-physical-servers/).
+
 ### <a name="how-can-i-change-managed-disk-type-after-machine-is-protected"></a>Hogyan válthatok felügyelt lemez típusa után a gép védelméhez?
 
 Igen, egyszerűen módosíthatja a felügyelt lemez típusa. [További információk](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage). Azonban után módosítja a felügyelt lemez típusa, győződjön meg arról, hogy várja meg a friss helyreállítási pontot kell létrehozni, ha kell a feladatátvételi teszt vagy feladatátvétel ossza meg ezt a tevékenységet.
@@ -135,7 +164,7 @@ Nem, a nem felügyelt való váltás felügyelt nem támogatott.
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Miért nem tudja replikálni VPN-kapcsolaton keresztül?
 
-Az Azure-bA replikálja, amikor replikációs forgalom eléri a nyilvános végpontokat egy Azure Storage, így csak replikálhatja az expressroute-tal (nyilvános társviszony-létesítés) a nyilvános interneten keresztül, és VPN nem működik.
+Azure-bA replikálni, amikor replikációs forgalom eléri a nyilvános végpontokat az Azure Storage-tárolók, így csak replikálhatja az expressroute-tal (nyilvános társviszony-létesítés) a nyilvános interneten keresztül, és VPN nem működik.
 
 ### <a name="what-are-the-replicated-vm-requirements"></a>Mik azok a replikált virtuális gépek követelményeinek?
 
@@ -148,10 +177,10 @@ Replikáció Azure-bA replikált VMware virtuális gépek esetén a folyamatos.
 Igen, őrizheti meg a feladatátvételi IP-címe. Győződjön meg arról, hogy a számítás és hálózat panelen, a feladatátvétel előtt említik a cél IP-címe. Arra is ügyeljen a gépek leállítása a feladatátvétel, feladat-visszavétel időpontjában IP-ütközések elkerülése érdekében idején.
 
 ### <a name="can-i-extend-replication"></a>Ki lehet terjeszteni a replikációt?
-A kiterjesztett vagy láncolt replikáció nem támogatott. Ennek a funkciónak a kérelem [Visszajelzési fórum](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).
+A kiterjesztett vagy láncolt replikáció nem támogatott. Ennek a funkciónak a kérelem [Visszajelzési fórum](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).
 
 ### <a name="can-i-do-an-offline-initial-replication"></a>Használhatom az offline kezdeti replikációt?
-Ez a funkció nem támogatott. Ennek a funkciónak a kérelem a [Visszajelzési fórum](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
+Ez a funkció nem támogatott. Ennek a funkciónak a kérelem a [Visszajelzési fórum](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
 
 ### <a name="can-i-exclude-disks"></a>Kizárhatok egyes lemezek?
 Igen, kizárhat lemezeket a replikációból.
@@ -208,9 +237,11 @@ Bár lehetséges a konfigurációs kiszolgálón futó Azure virtuális gép kel
 Azt javasoljuk, hogy a konfigurációs kiszolgáló rendszeres ütemezett biztonsági másolatok készítése. A sikeres feladat-visszavételhez a virtuális gép folyamatban van a feladatátvételben szerepelniük kell a konfigurációs kiszolgáló adatbázisát, és a konfigurációs kiszolgálón fut, és a egy csatlakoztatott állapotban kell lennie. További információ a konfigurációs kiszolgáló gyakori felügyeleti feladatok [Itt](vmware-azure-manage-configuration-server.md).
 
 ### <a name="when-im-setting-up-the-configuration-server-can-i-download-and-install-mysql-manually"></a>Beállítom a konfigurációs kiszolgáló, amikor is tölthető le és telepítse manuálisan a MySQL?
+
 Igen. Töltse le a MySQL, és elhelyezheti a **C:\Temp\ASRSetup** mappát. Ezután telepítse manuálisan. Állítsa be a konfigurációs kiszolgáló virtuális Géphez, és fogadja el a feltételeket, amikor megjelennek-e a MySQL **már telepítve van** a **töltse le és telepítse**.
 
 ### <a name="can-i-avoid-downloading-mysql-but-let-site-recovery-install-it"></a>Kerülje a MySQL letöltése azonban telepíteni a Site Recovery segítségével?
+
 Igen. Töltse le a MySQL-telepítőt, és elhelyezheti a **C:\Temp\ASRSetup** mappát.  Ha beállította a konfigurációs kiszolgáló virtuális gép, fogadja el a feltételeket, majd kattintson a **töltse le és telepítse**, a portálon a telepítő a MySQL telepítése hozzáadott fogja használni.
  
 ### <a name="can-i-use-the-configuration-server-vm-for-anything-else"></a>Használhatom-e a konfigurációs kiszolgáló virtuális gép semmi másra?

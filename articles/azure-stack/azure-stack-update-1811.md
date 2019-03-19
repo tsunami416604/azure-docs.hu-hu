@@ -16,12 +16,12 @@ ms.date: 02/28/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: 0e14e7eb20e87f5555fa6b494c0d09ccde08d2dd
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: ddcf3428f32698c9825f13975929bc4677139acf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731648"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081049"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack 1811 frissítése
 
@@ -122,13 +122,13 @@ A frissítés tartalmazza a következő új funkciókat és fejlesztéseket az A
 - Ebben a kiadásban bevezeti a riasztás **javítási** az Azure Stack-operátori műveletek. Néhány 1811 riasztásokat biztosít egy **javítási** gombra a figyelmeztető kiválasztható a probléma megoldásához. További információkért lásd: [figyelni és riasztásokat az Azure Stackben](azure-stack-monitor-health.md).
 
 - A frissítési élmény az Azure Stackben frissítéseit. A frissítés fejlesztések: 
-    - A frissítéseket a jobb nyomon követés frissítések folyamatban lévő frissítési előzmények osztani, és a befejezett frissítések lapot.
-    - Az essentials szakaszban az új ikonok és az aktuális és az OEM-verziók, valamint az utolsó elrendezés továbbfejlesztett állapot Vizualizációk frissítése dátum.
-    - **Nézet** a kibocsátási megjegyzések oszlop végigvezeti a felhasználót a dokumentációját közvetlenül az adott a Általános lap helyett a frissítési hivatkozásra.
-    - A **-előzmények frissítéséhez** lapon határozza meg a futtatási idejét, a frissítéseket, valamint a speciális szűrési képességeket.  
-    - Csatlakoztatott, az Azure Stack skálázási egységek továbbra is automatikusan megkap **frissítés érhető el** , amint elérhetővé válnak.
-    - Az Azure Stack skálázási egységek, amelyek nem csatlakoznak ugyanúgy, mint importálhatja a frissítés előtt. 
-    - Nem változtak a folyamat a JSON-naplók letöltése a portálról. Az Azure Stack-operátorok jelenik meg bővülő kifejezése folyamat lépéseit.
+  - A frissítéseket a jobb nyomon követés frissítések folyamatban lévő frissítési előzmények osztani, és a befejezett frissítések lapot.
+  - Az essentials szakaszban az új ikonok és az aktuális és az OEM-verziók, valamint az utolsó elrendezés továbbfejlesztett állapot Vizualizációk frissítése dátum.
+  - **Nézet** a kibocsátási megjegyzések oszlop végigvezeti a felhasználót a dokumentációját közvetlenül az adott a Általános lap helyett a frissítési hivatkozásra.
+  - A **-előzmények frissítéséhez** lapon határozza meg a futtatási idejét, a frissítéseket, valamint a speciális szűrési képességeket.  
+  - Csatlakoztatott, az Azure Stack skálázási egységek továbbra is automatikusan megkap **frissítés érhető el** , amint elérhetővé válnak.
+  - Az Azure Stack skálázási egységek, amelyek nem csatlakoznak ugyanúgy, mint importálhatja a frissítés előtt. 
+  - Nem változtak a folyamat a JSON-naplók letöltése a portálról. Az Azure Stack-operátorok jelenik meg bővülő kifejezése folyamat lépéseit.
 
     További információkért lásd: [alkalmazza a frissítéseket az Azure Stackben](azure-stack-apply-updates.md).
 
@@ -256,17 +256,17 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 <!-- 1264761 - IS ASDK -->  
 - A riasztásokat a **egészségügyi vezérlő** összetevő, amely rendelkezik a következő adatokat:  
 
-    - #1 riasztás:
-       - NÉV:  Infrastruktúra-szerepkör nem megfelelő állapotú
-       - SÚLYOSSÁG: Figyelmeztetés
-       - ÖSSZETEVŐ: Vezérlő állapota
-       - LEÍRÁS: A health vezérlő szívverési képolvasó nem érhető el. Ez érinthet rendszerállapot-jelentések és metrikákat.  
+  - #1 riasztás:
+     - NÉV:  Infrastruktúra-szerepkör nem megfelelő állapotú
+     - SÚLYOSSÁG: Figyelmeztetés
+     - ÖSSZETEVŐ: Vezérlő állapota
+     - LEÍRÁS: A health vezérlő szívverési képolvasó nem érhető el. Ez érinthet rendszerállapot-jelentések és metrikákat.  
 
-    - Riasztási #2:
-       - NÉV:  Infrastruktúra-szerepkör nem megfelelő állapotú
-       - SÚLYOSSÁG: Figyelmeztetés
-       - ÖSSZETEVŐ: Vezérlő állapota
-       - LEÍRÁS: A health vezérlő tartalék képolvasó nem érhető el. Ez érinthet rendszerállapot-jelentések és metrikákat.
+  - Riasztási #2:
+     - NÉV:  Infrastruktúra-szerepkör nem megfelelő állapotú
+     - SÚLYOSSÁG: Figyelmeztetés
+     - ÖSSZETEVŐ: Vezérlő állapota
+     - LEÍRÁS: A health vezérlő tartalék képolvasó nem érhető el. Ez érinthet rendszerállapot-jelentések és metrikákat.
 
     Mindkét riasztás biztonságosan figyelmen kívül hagyhatja. Ezek automatikusan megszűnik idővel.  
 
@@ -346,7 +346,7 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 - Azure Stack során *titkos Elforgatás*, egy ideig, amely nyilvános IP-címek nem érhetők el 2 – 5 percet.
 
 <!-- 2664148 - IS ASDK --> 
--   Olyan esetekben, ahol a bérlői fér hozzá a virtuális gépek egy S2S VPN-alagút használatával akkor léphetnek fel egy olyan forgatókönyvet, ahol sikertelen csatlakozási kísérletek, ha a helyszíni alhálózati hozzá lett adva a helyi hálózati átjáró már az átjáró létrehozása után. 
+- Olyan esetekben, ahol a bérlői fér hozzá a virtuális gépek egy S2S VPN-alagút használatával akkor léphetnek fel egy olyan forgatókönyvet, ahol sikertelen csatlakozási kísérletek, ha a helyszíni alhálózati hozzá lett adva a helyi hálózati átjáró már az átjáró létrehozása után. 
 
 - Az Azure Stack portálon Ha módosít egy statikus IP-címet az IP-konfiguráció a Virtuálisgép-példányhoz csatolt hálózati adapterhez kötött látni fogja egy figyelmeztető üzenet arról, hogy 
 
@@ -358,9 +358,9 @@ Az alábbiakban a telepítés utáni ismert hibáit a build-verziószáma.
 
 - A portálon, ha egy bejövő biztonsági szabály felvétele, és válassza a **Szolgáltatáscímke** forrásaként, több lehetőség megjelennek a **forráscímke** listája, amelyek nem érhetők el az Azure Stackhez. Érvényes, az Azure Stack csak lehetőségek a következők:
 
-    - **Internet**
-    - **VirtualNetwork**
-    - **AzureLoadBalancer**
+  - **Internet**
+  - **VirtualNetwork**
+  - **AzureLoadBalancer**
   
     A többi beállítást az Azure Stackben forrás nem támogatottak. Hasonlóképpen ha adjon hozzá egy kimenő biztonsági szabályt, és válassza **Szolgáltatáscímke** célhelyeként, ugyanezt a listát lehetőségei **forráscímke** jelenik meg. A csak érvényes beállítások ugyanazok, mint a **forráscímke**, amint az az előző listában.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/20/2017
 ms.author: jonor
 ms.custom: seodec18
-ms.openlocfilehash: 17f239dc3ba9714c01f55a88419df2d3416908fa
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9ec310ffaa9d2bb297abde9341bf7b6c2dc763b4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539700"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995797"
 ---
 # <a name="troubleshooting-network-performance"></a>A hálózati teljesítmény hibaelhárítása
 ## <a name="overview"></a>Áttekintés
@@ -180,20 +180,20 @@ Beállítások ellenőrzése:
 | | | | | | |
 |-|-|-|-|-|-|
 |ExpressRoute<br/>Hely|Azure<br/>Régió|Becsült<br/>Távolságskála (km-re)|Késés|1 munkamenet<br/>Bandwidth|Maximum<br/>Bandwidth|
-| Seattle | USA nyugati régiója, 2.        |    191 km |   5 ms | 262.0 MB/s |  3.74 Gbits/mp | 21
-| Seattle | USA nyugati régiója          |  1,094 km-re |  18 ms |  82.3 MB/s |  3.70 Gbits/mp | 20
-| Seattle | USA középső régiója       |  2,357 km-re |  40 ms |  38.8 MB/s |  2.55 Gbits/mp | 17
-| Seattle | USA déli középső régiója |  2,877 km-re |  51 ms |  30.6 MB/s |  2.49 Gbits/mp | 19
-| Seattle | USA északi középső régiója |  2,792 km-re |  55 ms |  27.7 MB/s |  2.19 Gbits/mp | 18
-| Seattle | USA 2. keleti régiója        |  3,769 km-re |  73 ms |  21.3 MB/s |  1.79 Gbits/mp | 16
-| Seattle | USA keleti régiója          |  3,699 km-re |  74 ms |  21.1 MB/s |  1.78 Gbits/mp | 15
-| Seattle | Kelet-Japán       |  7,705 km-re | 106 ms |  14.6 MB/s |  1,22 Gbits/mp | 28
-| Seattle | Az Egyesült Királyság déli régiója         |  7,708 km-re | 146 ms |  10.6 MB/s |   896 MB/s | 24
-| Seattle | Nyugat-Európa      |  7,834 km-re | 153 ms |  10.2 MB/s |   761 MB/s | 23
-| Seattle | Kelet-Ausztrália   | 12,484 km-re | 165 ms |   9.4 MB/s |   794 MB/s | 26
-| Seattle | Délkelet-Ázsia   | 12,989 km-re | 170 ms |   9.2 MB/s |   756 MB/s | 25
-| Seattle | Dél-Brazília *   | 10,930 km-re | 189 ms |   8.2 MB/s |   699 MB/s | 22
-| Seattle | Dél-India      | 12,918 km-re | 202 ms |   7.7 MB/s |   634 MB/s | 27
+| Seattle | USA nyugati régiója, 2.        |    191 km |   5 ms | 262.0 MB/s |  3.74 Gbits/mp |
+| Seattle | USA nyugati régiója          |  1,094 km-re |  18 ms |  82.3 MB/s |  3.70 Gbits/mp |
+| Seattle | USA középső régiója       |  2,357 km-re |  40 ms |  38.8 MB/s |  2.55 Gbits/mp |
+| Seattle | USA déli középső régiója |  2,877 km-re |  51 ms |  30.6 MB/s |  2.49 Gbits/mp |
+| Seattle | USA északi középső régiója |  2,792 km-re |  55 ms |  27.7 MB/s |  2.19 Gbits/mp |
+| Seattle | USA 2. keleti régiója        |  3,769 km-re |  73 ms |  21.3 MB/s |  1.79 Gbits/mp |
+| Seattle | USA keleti régiója          |  3,699 km-re |  74 ms |  21.1 MB/s |  1.78 Gbits/mp |
+| Seattle | Kelet-Japán       |  7,705 km-re | 106 ms |  14.6 MB/s |  1,22 Gbits/mp |
+| Seattle | Az Egyesült Királyság déli régiója         |  7,708 km-re | 146 ms |  10.6 MB/s |   896 MB/s |
+| Seattle | Nyugat-Európa      |  7,834 km-re | 153 ms |  10.2 MB/s |   761 MB/s |
+| Seattle | Kelet-Ausztrália   | 12,484 km-re | 165 ms |   9.4 MB/s |   794 MB/s |
+| Seattle | Délkelet-Ázsia   | 12,989 km-re | 170 ms |   9.2 MB/s |   756 MB/s |
+| Seattle | Dél-Brazília *   | 10,930 km-re | 189 ms |   8.2 MB/s |   699 MB/s |
+| Seattle | Dél-India      | 12,918 km-re | 202 ms |   7.7 MB/s |   634 MB/s |
 
 \* A késés, Brazília jó példa, ahol lineáris távolság jelentősen eltér a fiber távolság futtassa. Szeretné, hogy a késés szerepelnie kell a hálózatok 160 MS, de ténylegesen 189 MS várt. Ez a különbség az elvárás elleni utalhat hálózati probléma valahol, de valószínű, hogy futnak-e a fiber Brazília egyenes halad és tartalmaz egy extra 1000 km-re vagy utazási hozhatja a Seattle, Brazília, így.
 
@@ -213,14 +213,3 @@ Beállítások ellenőrzése:
 [Network Docs]: https://docs.microsoft.com/azure/index
 [Ticket Link]: https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview
 [ACT]: https://aka.ms/AzCT
-
-
-
-
-
-
-
-
-
-
-

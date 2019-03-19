@@ -10,12 +10,12 @@ ms.suite: infrastructure-services
 ms.assetid: 5c124986-9f29-4cbc-ad5a-c667b37fbe5a
 ms.topic: article
 ms.date: 11/14/2018
-ms.openlocfilehash: a13ce85124dc84362ec1ee2aa39a16c2c3f09f88
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: a413261d251c8dfc1de9209168ee8137b85009f1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55701012"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57860618"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>Az Azure Scheduler-feladatok az ismétlődések és a speciális ütemezések létrehozása
 
@@ -65,13 +65,13 @@ Ez a táblázat magas szintű áttekintést nyújt a fő JSON-elemek ismétlőd�
 
 | Elem | Szükséges | Leírás | 
 |---------|----------|-------------|
-| **startTime** | Nem | A dátum/idő karakterlánc-érték [ISO 8601 formátumú](http://en.wikipedia.org/wiki/ISO_8601) , amely meghatározza a feladat első indításakor az alapszintű ütemezés szerint. <p>Komplex ütemezések a feladat nem indul korábban, mint **startTime**. | 
+| **startTime** | Nem | A dátum/idő karakterlánc-érték [ISO 8601 formátumú](https://en.wikipedia.org/wiki/ISO_8601) , amely meghatározza a feladat első indításakor az alapszintű ütemezés szerint. <p>Komplex ütemezések a feladat nem indul korábban, mint **startTime**. | 
 | **recurrence** | Nem | A feladat futtatásakor tartozó ismétlődési szabályokat. A **ismétlődési** objektum támogatja ezeket az elemeket: **gyakorisága**, **időköz**, **ütemezés**, **száma**, és **endTime**. <p>Ha használja a **ismétlődési** elemben is használnia kell a **gyakorisága** elem, míg más **ismétlődési** elemek egyike sem kötelező. |
 | **frequency** | Igen, használatakor **ismétlődés** | Az időegység előfordulások között, és ezeket az értékeket támogatja: "Perces", "Hour", "Day", "Week", "Month" és "Year" | 
 | **interval** | Nem | Határozza meg, hogy időegységek előfordulások közötti pozitív egész szám alapján **gyakorisága**. <p>Például ha **időköz** 10 és **gyakorisága** pedig "Week", a feladat 10 hetente ismétlődik. <p>Íme a legtöbb egyes gyakorisága intervallumok száma: <p>– 18 hónap <br>-78 hét <br>-548 nap <br>– A óra és perc, a tartomány: 1 < = <*időköz*>< = 1000. | 
 | **schedule** | Nem | Határozza meg a módosítások a megadott perc-jelek, óra-jelek, a hét azon napjai, és a hónap napjain alapuló az ismétlődés | 
 | **count** | Nem | Pozitív egész szám, amely meghatározza, hogy a feladat futtatása a befejezés előtt hányszor. <p>Például, ha napi feladat, **száma** 7 beállítása, és a kezdő dátum hétfő, a feladat futásának vasárnap. Ha már elhagyta a kezdő dátum, az első futtatásakor kiszámítása a létrehozás ideje. <p>Nélkül **endTime** vagy **száma**, a feladat korlátlanul futtatása. Nem használhatja mindkettő **száma** és **endTime** ugyanazt a feladatot, de a szabályt, hogy befejezi először van figyelembe véve. | 
-| **endTime** | Nem | Egy dátum vagy dátum/idő karakterlánc értéket [ISO 8601 formátumú](http://en.wikipedia.org/wiki/ISO_8601) , amely meghatározza, amikor a feladat leáll futtatása. Beállíthatja a egy értéke **endTime** , amely a múltban van. <p>Nélkül **endTime** vagy **száma**, a feladat korlátlanul futtatása. Nem használhatja mindkettő **száma** és **endTime** ugyanazt a feladatot, de a szabályt, hogy befejezi először van figyelembe véve. |
+| **endTime** | Nem | Egy dátum vagy dátum/idő karakterlánc értéket [ISO 8601 formátumú](https://en.wikipedia.org/wiki/ISO_8601) , amely meghatározza, amikor a feladat leáll futtatása. Beállíthatja a egy értéke **endTime** , amely a múltban van. <p>Nélkül **endTime** vagy **száma**, a feladat korlátlanul futtatása. Nem használhatja mindkettő **száma** és **endTime** ugyanazt a feladatot, de a szabályt, hogy befejezi először van figyelembe véve. |
 |||| 
 
 A JSON-sémájában például egy egyszerű ütemezés és a egy feladat ismétlődése ismerteti: 
@@ -94,9 +94,9 @@ A JSON-sémájában például egy egyszerű ütemezés és a egy feladat ismétl
 
 *Dátum- és dátum/idő értékek*
 
-* A Scheduler-feladatok dátumok csak a dátum, és kövesse a [ISO 8601-specifikáció](http://en.wikipedia.org/wiki/ISO_8601).
+* A Scheduler-feladatok dátumok csak a dátum, és kövesse a [ISO 8601-specifikáció](https://en.wikipedia.org/wiki/ISO_8601).
 
-* Dátum-idő a Scheduler-feladatok közé tartozik a dátum- és, hajtsa végre a [ISO 8601-specifikáció](http://en.wikipedia.org/wiki/ISO_8601), és a rendszer feltételezi, hogy UTC lehet, ha nem az UTC-eltérés van megadva. 
+* Dátum-idő a Scheduler-feladatok közé tartozik a dátum- és, hajtsa végre a [ISO 8601-specifikáció](https://en.wikipedia.org/wiki/ISO_8601), és a rendszer feltételezi, hogy UTC lehet, ha nem az UTC-eltérés van megadva. 
 
 További információkért lásd: [alapfogalmai, terminológiája és entitásai](../scheduler/scheduler-concepts-terms.md).
 

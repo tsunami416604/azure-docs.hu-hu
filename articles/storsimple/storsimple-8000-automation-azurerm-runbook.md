@@ -1,6 +1,6 @@
 ---
-title: Azure Automation-forgatókönyv segítségével kezelheti a StorSimple eszközökhöz |} Microsoft Docs
-description: Azure Automation-forgatókönyv használata StorSimple feladatok automatizálásához
+title: Eszközkezelés a StorSimple az Azure Automation-Runbook használatával |} A Microsoft Docs
+description: Ismerje meg, hogyan használható az Azure Automation-Runbook StorSimple feladatok automatizálásához
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,63 +14,63 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 10/23/2017
 ms.author: alkohli
-ms.openlocfilehash: cfd0e4dbb6a4f24df5ba42cd45f9c16fbe5b493c
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: 93c77b5f678c4e6b3170d2c7612bef3f104f0b6b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/24/2017
-ms.locfileid: "23934830"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58002593"
 ---
-# <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>Azure Automation-forgatókönyv használatával StorSimple eszközök kezelése
+# <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>Eszközkezelés a StorSimple az Azure Automation-runbookok használatával
 
-Ez a cikk ismerteti, hogyan Azure Automation-forgatókönyv használatával kezelheti a StorSimple 8000 series eszköz Azure-portálon. A minta-runbookhoz lépésről-lépésre Ez a forgatókönyv végrehajtásához a környezet konfigurálásának a lépéseit tartalmazza.
+Ez a cikk bemutatja, hogyan Azure Automation-runbookok segítségével felügyelhető a StorSimple 8000 sorozatú eszköz az Azure Portalon. Minta runbook végigvezeti a lépéseken, ez a forgatókönyv végrehajtásához a környezet konfigurálása tartalmazza.
 
 
-## <a name="configure-add-and-run-azure-runbook"></a>Konfigurálhatja, hozzáadása, és futtassa az Azure-forgatókönyvek
+## <a name="configure-add-and-run-azure-runbook"></a>Konfigurálása, hozzáadása és Azure-forgatókönyv futtatása
 
-Ez a szakasz a Windows PowerShell-parancsfájl például telik a StorSimple, és a különböző importálnia kell a parancsfájl egy runbook közzététele és a runbook végrehajtása szükséges lépéseket részletezi.
+Ez a szakasz a storsimple-höz készült Windows PowerShell-parancsfájl például veszi, és részletesen ismerteti a különféle lépéseit importálja a parancsfájl egy runbook közzététele és a runbook végrehajtása szükséges.
 
 ### <a name="prerequisites"></a>Előfeltételek
 
 Mielőtt elkezdené, győződjön meg arról, hogy:
 
-* a StorSimple 8000 series eszköz regisztrálva a StorSimple Device Manager szolgáltatáshoz tartozó aktív Azure-előfizetéssel.
+* a StorSimple 8000 sorozatú eszköz regisztrálva a StorSimple-Eszközkezelő szolgáltatással társított aktív Azure-előfizetéssel.
 
 
-* A számítógépen telepített Windows PowerShell 5.0 (vagy a Windows Server gazdagépet a StorSimple használata egy).
+* A számítógépen telepített Windows PowerShell 5.0 (vagy a Windows Server a storsimple-höz készült üzemeltetésére, ha egy).
 
 
-### <a name="create-automation-runbook-module-in-windows-powershell"></a>Automation-runbook-modul létrehozása a Windows PowerShellben
+### <a name="create-automation-runbook-module-in-windows-powershell"></a>Hozzon létre automation-runbook-modulhoz a Windows PowerShellben
 
-Az automation-modul a StorSimple 8000 series eszközkezeléshez létrehozásához hajtsa végre az alábbi lépéseket:
+Automation-modul, a StorSimple 8000 sorozat eszközfelügyeleti létrehozásához hajtsa végre az alábbi lépéseket:
 
-1. Indítsa el a Windows PowerShell. Hozzon létre egy új mappát, és módosítsa a könyvtárat az új mappába.
+1. Launch-Windows PowerShell. Hozzon létre egy új mappát, és módosítsa a könyvtárat az új mappába.
 
     ```
         mkdir C:\scripts\StorSimpleSDKTools
         cd C:\scripts\StorSimpleSDKTools
     ```    
-2. [Töltse le a NuGet CLI](http://www.nuget.org/downloads) alapján az előző lépésben létrehozott mappába. Különböző verziói _nuget.exe_. Válassza ki a megfelelő az SDK verziót. Minden egyes letöltési hivatkozás mutat közvetlenül egy _.exe_ fájlt. Ügyeljen arra, hogy kattintson a jobb gombbal, és mentse a fájlt a számítógépre, hanem a böngésző történő futtatásával.
+2. [Töltse le a NuGet CLI](https://www.nuget.org/downloads) az az előző lépésben létrehozott mappa alatt. Különböző verziói _nuget.exe_. Válassza ki a megfelelő az SDK-verziót. Minden egyes letöltési hivatkozást közvetlenül a mutat egy _.exe_ fájlt. Ügyeljen arra, hogy kattintson a jobb gombbal, és mentse a fájlt a számítógépre, hanem a böngészőben történő futtatásával.
 
-    Töltse le, és tárolja a parancsfájl ugyanabban a mappában, amelyet korábban hozott létre a következő parancsot is futtathatja.
+    Töltse le és tárolja a parancsfájl ugyanabban a mappában, amelyet korábban hozott létre a következő parancsot is futtathatja.
     
     ```
         wget https://dist.nuget.org/win-x86-commandline/latest/nuget.exe -Out C:\scripts\StorSimpleSDKTools\nuget.exe
     ```
-3. A függő SDK letöltése.
+3. Töltse le a függő SDK-t.
 
     ```
         C:\scripts\StorSimpleSDKTools\nuget.exe install Microsoft.Azure.Management.Storsimple8000series
         C:\scripts\StorSimpleSDKTools\nuget.exe install Microsoft.IdentityModel.Clients.ActiveDirectory -Version 2.28.3
         C:\scripts\StorSimpleSDKTools\nuget.exe install Microsoft.Rest.ClientRuntime.Azure.Authentication -Version 2.2.9-preview
     ```    
-4. A parancsprogram letölthető a GitHub mintaprojektet.
+4. Töltse le a parancsfájlt a minta GitHub-projekt.
 
     ```
         wget https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Monitor-Backups.ps1 -Out Monitor-Backups.ps1
 
     ```
-5. Hozzon létre egy Azure Automation-Runbook modul a StorSimple 8000 Series eszközök felügyeletére. A Windows Powershell-ablakot írja be a következő parancsokat:
+5. Hozzon létre egy Azure Automation-Runbook modul a StorSimple 8000 sorozat felügyelethez. A Windows Powershell-ablakot írja be a következő parancsot:
 
     ```
             # set path variables
@@ -91,11 +91,11 @@ Az automation-modul a StorSimple 8000 series eszközkezeléshez létrehozásáho
 
     ```
 
-6. Győződjön meg arról, hogy egy automatizálási modul zip-fájl létrejön `C:\scripts\StorSimpleSDKTools`.
+6. Győződjön meg arról, hogy egy automatizálási a modul zip-fájl jön létre a `C:\scripts\StorSimpleSDKTools`.
 
-    ![Győződjön meg arról automation-modul](./media/storsimple-8000-automation-azurerm-runbook/verify-automation-module.png)
+    ![verify-automation-module](./media/storsimple-8000-automation-azurerm-runbook/verify-automation-module.png)
 
-7. A következő kimeneti áll rendelkezésre, amikor az automation-modul a Windows PowerShell segítségével hoz létre. 
+7. A következő kimenet jelenik meg az automation-modul a Windows Powershellen keresztül létrehozásakor. 
 
     ```
     -----------------------------------------
@@ -179,52 +179,52 @@ Az automation-modul a StorSimple 8000 series eszközkezeléshez létrehozásáho
 
     ```
 
-### <a name="import-publish-and-run-automation-runbook"></a>Importálja, közzétételét és Automation-forgatókönyv futtatása
+### <a name="import-publish-and-run-automation-runbook"></a>Importálja, közzétételét és Automation-runbook futtatása
 
-1. Egy Azure-beli futtató automation-fiók létrehozása az Azure portálon. Ehhez nyissa meg a **Azure piactér > minden** majd keresse meg a **Automation**. Válassza ki **Automation-fiók**.
+1. Azure-beli futtató automation-fiók létrehozása az Azure Portalon. Ehhez nyissa meg **az Azure marketplace > minden** és keressen **Automation**. Válassza ki **Automation-fiókok**.
 
-    ![keresési-automatizálás](./media/storsimple-8000-automation-azurerm-runbook/automation1.png)
+    ![search-automation](./media/storsimple-8000-automation-azurerm-runbook/automation1.png)
 
-2. Az a **Automation-fiók hozzáadása** panel:
+2. Az a **Automation-fiók hozzáadása** panelen:
 
-    1. Adja meg a **neve** az Automation-fiók.
-    2. Válassza ki a **előfizetés** csatolva a StorSimple eszköz Manager szolgáltatást.
-    3. Hozzon létre egy új erőforráscsoportot, vagy válasszon egy meglévő erőforráscsoportot a.
-    4. Válassza ki a **hely** (ha lehetséges ugyanaz, mint amelyen a szolgáltatás fut).
-    5. Hagyja meg az alapértelmezett **létrehozása Futtatás mint fiók** kiválasztott beállítás.
-    5. Ellenőrizze, nem kötelezően **rögzítés az irányítópulton**. Kattintson a **Create** (Létrehozás) gombra.
+   1. Adja meg a **neve** az Automation-fiók.
+   2. Válassza ki a **előfizetés** a StorSimple-Eszközkezelő szolgáltatáshoz csatolt.
+   3. Hozzon létre egy új erőforráscsoportot, vagy jelöljön ki egy meglévő erőforráscsoportot.
+   4. Válassza ki a **helye** (amennyiben lehetséges ugyanaz, mint ahol a szolgáltatás fut).
+   5. Hagyja meg az alapértelmezett **futtató fiók létrehozása** lehetőség van kijelölve.
+   5. Szükség esetén ellenőrizze **rögzítés az irányítópulton**. Kattintson a **Create** (Létrehozás) gombra.
 
-        ![automation-fiók létrehozása](./media/storsimple-8000-automation-azurerm-runbook/create-automation-account.png)
+       ![create-automation-account](./media/storsimple-8000-automation-azurerm-runbook/create-automation-account.png)
 
-    Miután az automation-fiók sikeresen létrejött, értesítés jelenik meg. Automation-fiók létrehozásával kapcsolatos további információkért látogasson el [hozzon létre egy futtató fiókot](https://docs.microsoft.com/azure/automation/automation-create-runas-account).
+      Miután az automation-fiók sikeresen létrejött, értesítést kap. Az Automation-fiók létrehozásával kapcsolatos további információkért lépjen [hozzon létre egy futtató fiókot](https://docs.microsoft.com/azure/automation/automation-create-runas-account).
 
-3. Győződjön meg arról, hogy az automation-fiók létrehozva férhetnek hozzá a StorSimple Device Manager szolgáltatáshoz, az automation-fiók megfelelő engedélyeket kell. Ugrás a **hozzáférés-vezérlés** a StorSimple Device Manager szolgáltatásban. Kattintson a **+ Hozzáadás** , és adja meg az Azure Automation-fiók nevét. **Mentés** a beállításokat.
+3. Győződjön meg arról, hogy a létrehozott automation-fiókkal hozzáférhet-e a StorSimple-Eszközkezelő szolgáltatás, az automation-fiók megfelelő engedélyeket kell. Lépjen a **hozzáférés-vezérlés** a StorSimple-Eszközkezelő szolgáltatásban. Kattintson a **+ Hozzáadás** , és adja meg az Azure Automation-fiók nevét. **Mentés** a beállításokat.
 
-    ![engedélyek-automation-fiók hozzáadása](./media/storsimple-8000-automation-azurerm-runbook/goto-add-roles.png)
+    ![add-permissions-automation-account](./media/storsimple-8000-automation-azurerm-runbook/goto-add-roles.png)
 
-4. Az újonnan létrehozott fiókjához, keresse meg **megosztott erőforrások > modulok** kattintson **+ Hozzáadás modul**.
+4. Az újonnan létrehozott fiók, lépjen a **megosztott erőforrások > modulok** kattintson **+ Hozzáadás modul**.
 
-5. Az a **Hozzáadás modul** panelen keresse meg a helyet, a tömörített modul, és válassza ki, majd nyissa meg a modul. Kattintson az **OK** gombra.
+5. Az a **Hozzáadás modul** panelen keresse meg a helyet, a tömörített modul, és válassza ki, majd nyissa meg a modult. Kattintson az **OK** gombra.
 
-    ![modul hozzáadása](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
+    ![add-module](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
 
-6. Ugrás a **folyamat > Runbookok, kattintson a + hozzáadása egy runbook**. Az a **vegye fel a runbook** panelen kattintson a **meglévő forgatókönyv importálása**. A Windows PowerShell-parancsfájlt a mutasson a **Runbook fájl**. A runbook típusa automatikusan ki van jelölve. Adjon meg egy nevet és egy leírást a runbook. Kattintson a **Create** (Létrehozás) gombra.
+6. Lépjen a **Folyamatautomatizálás > forgatókönyveket, és kattintson a + forgatókönyv hozzáadása**. Az a **adja hozzá a runbook** panelen kattintson a **meglévő runbook importálása**. A Windows PowerShell-parancsfájl tárolásához a mutasson a **forgatókönyvfájl**. A runbook-típus automatikusan ki van jelölve. Adjon meg egy nevet és egy leírást a runbook. Kattintson a **Create** (Létrehozás) gombra.
 
-    ![modul hozzáadása](./media/storsimple-8000-automation-azurerm-runbook/import-runbook.png)
+    ![add-module](./media/storsimple-8000-automation-azurerm-runbook/import-runbook.png)
 
-7. A runbook kerül forgatókönyvek listája. Jelölje ki, majd kattintson a runbookot.
+7. A runbook hozzáadódik a runbookok listája. Válassza ki, majd kattintson a runbook.
 
-    ![Kattintson új runbook](./media/storsimple-8000-automation-azurerm-runbook/verify-runbook-created.png)
+    ![click-new-runbook](./media/storsimple-8000-automation-azurerm-runbook/verify-runbook-created.png)
 
-8. A runbook szerkesztése, és kattintson a **teszt ablaktábla**. Adja meg a paraméterek, például nevét a StorSimple eszköz kezelő szolgáltatás, a StorSimple eszköz és az előfizetés nevét. **Start** a vizsgálatot. A jelentés jön létre, amikor a Futtatás befejeződött. További információkért látogasson el [egy runbook tesztelése](../automation/automation-first-runbook-textual-powershell.md#step-3---test-the-runbook).
+8. Szerkessze a runbookot, és kattintson a **teszt panel**. Adja meg a paraméterek, például a nevét, a StorSimple-Eszközkezelő szolgáltatás, a StorSimple eszköz és az előfizetés nevét. **Indítsa el** a vizsgálatot. A jelentés jön létre, ha a Futtatás befejeződött. További információért ugorjon [egy runbook tesztelése](../automation/automation-first-runbook-textual-powershell.md#step-3---test-the-runbook).
 
-    ![a runbook tesztelése](./media/storsimple-8000-automation-azurerm-runbook/test-runbook.png)
+    ![test-runbook](./media/storsimple-8000-automation-azurerm-runbook/test-runbook.png)
 
-9. Vizsgálja meg a ablaktáblán a runbook kimenete. Ha mindent megfelelőnek talált, zárja be a panelen. Kattintson a **közzététel** és amikor felszólítja a megerősítésre, erősítse meg, közzé a runbookot.
+9. Vizsgálja meg a runbook a teszt panel kimenete. Ha elégedett az eredménnyel, zárja be a panelt. Kattintson a **közzététel** és amikor a rendszer megerősítést kér, erősítse meg, és tegye közzé a forgatókönyvet.
 
-    ![runbook közzététele](./media/storsimple-8000-automation-azurerm-runbook/publish-runbook.png)
+    ![publish-runbook](./media/storsimple-8000-automation-azurerm-runbook/publish-runbook.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-[Kezelheti a StorSimple eszköz StorSimple az Eszközkezelő szolgáltatás](storsimple-8000-manager-service-administration.md).
+[Használja a StorSimple-Eszközkezelő szolgáltatás kezelése a StorSimple-eszköz](storsimple-8000-manager-service-administration.md).

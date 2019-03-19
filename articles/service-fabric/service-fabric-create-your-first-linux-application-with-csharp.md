@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/11/2018
 ms.author: subramar
-ms.openlocfilehash: aeea0a0b00ceaa936352d549a86040c2cc460167
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f044aa006727fafb52c2c5e6c015c3e4cc70edf7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153862"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57882013"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>Az első Azure Service Fabric-alkalmazás létrehozása
 > [!div class="op_single_selector"]
@@ -44,19 +44,19 @@ A Service Fabric olyan szerkezetkialakító eszközöket biztosít, amelyek seg�
    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash 
    nvm install node 
    ```
-2. A [Yeoman](http://yeoman.io/) sablongenerátor telepítése a gépre az NPM-ből
+2. A [Yeoman](https://yeoman.io/) sablongenerátor telepítése a gépre az NPM-ből
 
-  ```bash
-  npm install -g yo
-  ```
+   ```bash
+   npm install -g yo
+   ```
 3. A Service Fabric Yeoman C#-alkalmazásgenerátor telepítése az NPM-ből
 
-  ```bash
-  npm install -g generator-azuresfcsharp
-  ```
+   ```bash
+   npm install -g generator-azuresfcsharp
+   ```
 
 ## <a name="create-the-application"></a>Az alkalmazás létrehozása
-A Service Fabric-alkalmazás egy vagy több szolgáltatást tartalmazhat, melyek mindegyike adott szerepkörrel rendelkezik az alkalmazás funkcióinak biztosításához. A C#-hoz készült Service Fabric [Yeoman](http://yeoman.io/) generátor, amelyet az utolsó lépésben telepített, megkönnyíti az első szolgáltatás létrehozását, és a továbbiak hozzáadását a későbbiekben. Hozzunk létre egy egyetlen szolgáltatással rendelkező alkalmazást a Yeoman használatával.
+A Service Fabric-alkalmazás egy vagy több szolgáltatást tartalmazhat, melyek mindegyike adott szerepkörrel rendelkezik az alkalmazás funkcióinak biztosításához. A C#-hoz készült Service Fabric [Yeoman](https://yeoman.io/) generátor, amelyet az utolsó lépésben telepített, megkönnyíti az első szolgáltatás létrehozását, és a továbbiak hozzáadását a későbbiekben. Hozzunk létre egy egyetlen szolgáltatással rendelkező alkalmazást a Yeoman használatával.
 
 1. Írja be a terminálba az alábbi parancsot a keret létrehozásához: `yo azuresfcsharp`
 2. Adjon nevet az alkalmazásnak.

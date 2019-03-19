@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/27/2018
 ms.author: labattul
-ms.openlocfilehash: b50f7c9b76e9309a1ee08257dd8b13ec289397a5
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: c5cb840035c5d0d5694982324c7237c58001e689
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775917"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57993871"
 ---
 # <a name="set-up-dpdk-in-a-linux-virtual-machine"></a>A Linux rendszerű virtuális gép DPDK beállítása
 
@@ -126,12 +126,12 @@ Az újraindítás után futtassa egyszer a következő parancsokat:
      /sys/devices/system/node/node*/hugepages/hugepages-2048kB/nr_hugepages
      ```
 
-   *  Hozzon létre egy könyvtárat a csatlakoztatáshoz szükséges `mkdir /mnt/huge`.
-   *  A csatlakoztatási hugepages `mount -t hugetlbfs nodev /mnt/huge`.
-   *  Ellenőrizze, hogy hugepages lefoglalták `grep Huge /proc/meminfo`.
+   * Hozzon létre egy könyvtárat a csatlakoztatáshoz szükséges `mkdir /mnt/huge`.
+   * A csatlakoztatási hugepages `mount -t hugetlbfs nodev /mnt/huge`.
+   * Ellenőrizze, hogy hugepages lefoglalták `grep Huge /proc/meminfo`.
 
      > [!NOTE]
-     > Egy lehetséges, hogy módosítsa a grub-fájlt, hogy a hugepages vannak fenntartva az rendszerindításkor az alábbi a [utasításokat](http://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment) a DPDK számára. Az utasítások vannak a lap alján. Ha egy Azure-beli Linuxos virtuális gép használja, módosíthatja a fájlokat a **/etc/config/grub.d** ehelyett hugepages lefoglalása újraindítások között.
+     > Egy lehetséges, hogy módosítsa a grub-fájlt, hogy a hugepages vannak fenntartva az rendszerindításkor az alábbi a [utasításokat](https://dpdk.org/doc/guides/linux_gsg/sys_reqs.html#use-of-hugepages-in-the-linux-environment) a DPDK számára. Az utasítások vannak a lap alján. Ha egy Azure-beli Linuxos virtuális gép használja, módosíthatja a fájlokat a **/etc/config/grub.d** ehelyett hugepages lefoglalása újraindítások között.
 
 2. MAC és IP-címek: Használat `ifconfig –a` megtekintéséhez a hálózati adapterek MAC- és IP-címét. A *VF* hálózati adapter és *NETVSC* hálózati adapter van az azonos MAC-címet, de csak a *NETVSC* hálózati illesztőnek egy IP-címet. Futtatja a VF felületek, alárendelt felületek NETVSC felületek.
 
@@ -146,7 +146,7 @@ Az újraindítás után futtassa egyszer a következő parancsokat:
 
 DPDK alkalmazások kell futtatnia a failsafe PMD, amely az Azure-ban van közzétéve. Ha az alkalmazás közvetlenül a VF PMD keresztül futtat, akkor nem kap **összes** a virtuális géphez, mivel az egyes csomagok mutatja a szintetikus adapter küldött csomagokat. 
 
-A failsafe PMD keresztül futtatja egy DPDK alkalmazást, azt garantálja, hogy az alkalmazás megkapja az összes csomagokat, amelyek végül azt. Azt is gondoskodik arról, hogy az alkalmazás továbbra is működik DPDK módban, még akkor is, amennyiben a VF vissza lett vonva, ha a gazdagép javítás alatt áll. Failsafe PMD kapcsolatos további információkért lásd: [hibamentes lekérdezési mód illesztőprogram könyvtárából](http://doc.dpdk.org/guides/nics/fail_safe.html).
+A failsafe PMD keresztül futtatja egy DPDK alkalmazást, azt garantálja, hogy az alkalmazás megkapja az összes csomagokat, amelyek végül azt. Azt is gondoskodik arról, hogy az alkalmazás továbbra is működik DPDK módban, még akkor is, amennyiben a VF vissza lett vonva, ha a gazdagép javítás alatt áll. Failsafe PMD kapcsolatos további információkért lásd: [hibamentes lekérdezési mód illesztőprogram könyvtárából](https://doc.dpdk.org/guides/nics/fail_safe.html).
 
 ## <a name="run-testpmd"></a>Testpmd futtatása
 
@@ -244,7 +244,7 @@ A következő parancsok rendszeres időközönként nyomtatása a csomagok máso
      -w <pci address NIC2> \
      --vdev="net_vdev_netvsc<id>,iface=<the iface to attach to>" \
      --vdev="net_vdev_netvsc<2nd id>,iface=<2nd iface to attach to>" (you need as many --vdev arguments as the number of devices used by testpmd, in this case) \
-     -- --nb-cores <number of cores to use for test pmd> \
+     -- --nb-cores <number of cores to use for test pmd> \
      --forward-mode=io \
      --eth-peer=<recv port id>,<sender peer MAC address> \
      --stats-period <display interval in seconds>

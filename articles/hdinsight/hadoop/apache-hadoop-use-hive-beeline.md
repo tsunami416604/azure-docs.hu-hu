@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: hrasheed
-ms.openlocfilehash: 23fa146b7bdaef0451984d0fbc638c57691cf259
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4b7e2a8d5eb981fc30dd14fed8f7efcfc094af0d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201720"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110885"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Az Apache Hive az Apache a Beeline-ügyfél használata
 
@@ -148,10 +148,10 @@ A beeline egy Hive-ügyfél, amely része az átjárócsomópontokkal a HDInsigh
 
     * `INPUT__FILE__NAME LIKE '%.log'` -Hive megkísérli a alkalmazni a sémát a címtárban található összes fájl. Ebben az esetben a könyvtárban található fájlok, amelyek nem egyeznek a sémát. Szemétgyűjtési adatokat a eredmények elkerülése érdekében a jelen nyilatkozat arra utasítja a Hive, hogy csak adja vissza adatokat a végződésű fájlokból. napló.
 
-  > [!NOTE]  
-  > Külső táblák kell használni, amikor várhatóan az alapul szolgáló adatokat egy külső forrás frissíteni kell. Például az automatikus feltöltési folyamat vagy a MapReduce művelet.
-  >
-  > A külső tábla elvetését does **nem** törölheti az adatokat, csak a tábla definícióját.
+   > [!NOTE]  
+   > Külső táblák kell használni, amikor várhatóan az alapul szolgáló adatokat egy külső forrás frissíteni kell. Például az automatikus feltöltési folyamat vagy a MapReduce művelet.
+   >
+   > A külső tábla elvetését does **nem** törölheti az adatokat, csak a tábla definícióját.
 
     Ez a parancs kimenete az alábbi szöveghez hasonló:
 
@@ -198,12 +198,12 @@ Az alábbi lépések segítségével hozzon létre egy fájlt, majd futtassa azt
 
     Ezek az utasítások hajtsa végre a következő műveleteket:
 
-    * **Hozzon létre tábla IF NOT EXISTS** – Ha a tábla már nem létezik, a rendszer létrehozza. Mivel a **külső** kulcsszó nem használható, ez az utasítás létrehoz egy belső táblázatban. Belső táblák Hive adattárházban tárolódnak, és Hive teljes egészében kezeli.
-    * **TÁROLT AS ORC** – optimalizált sor Oszlopalapú (ORC) formátumban tárolja az adatokat. ORC formátum Hive-adatok tárolására szolgáló nagymértékben optimalizált és hatékony formátumban.
-    * **ÍRJA FELÜL AZ INSERT... Válassza ki** -sorait kiválasztja a **log4jLogs** tartalmazó tábla **[hiba]**, majd beszúrja az adatokat a **hibanaplókat** tábla.
+   * **Hozzon létre tábla IF NOT EXISTS** – Ha a tábla már nem létezik, a rendszer létrehozza. Mivel a **külső** kulcsszó nem használható, ez az utasítás létrehoz egy belső táblázatban. Belső táblák Hive adattárházban tárolódnak, és Hive teljes egészében kezeli.
+   * **TÁROLT AS ORC** – optimalizált sor Oszlopalapú (ORC) formátumban tárolja az adatokat. ORC formátum Hive-adatok tárolására szolgáló nagymértékben optimalizált és hatékony formátumban.
+   * **ÍRJA FELÜL AZ INSERT... Válassza ki** -sorait kiválasztja a **log4jLogs** tartalmazó tábla **[hiba]**, majd beszúrja az adatokat a **hibanaplókat** tábla.
 
-    > [!NOTE]  
-    > Ellentétben a külső táblák elvetését egy belső tábla törli az alapul szolgáló adatokat.
+     > [!NOTE]  
+     > Ellentétben a külső táblák elvetését egy belső tábla törli az alapul szolgáló adatokat.
 
 3. Mentse a fájlt, használja a **Ctrl**+**_X**, majd adja meg **Y**, és végül **Enter**.
 

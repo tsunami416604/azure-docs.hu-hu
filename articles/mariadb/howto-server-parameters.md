@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 0576941c803dfed6359fe34b67370eaf3f99c7e7
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 4b83917a76cb4b3e24ca4f5961d3a00c4d2c9cb0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538259"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58077258"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Hogyan lehet a kiszolgáló paramétereinek konfigurálása az Azure Database for MariaDB az Azure portal használatával
 
@@ -38,7 +38,7 @@ A támogatott kiszolgálói paraméterek listája folyamatosan nő. Kiszolgáló
 InnoDB Pufferkészletben és kapcsolatok maximális száma nem konfigurálható és kötött a [tarifacsomag](concepts-pricing-tiers.md).
 
 |**Tarifacsomag**| **vCore(s)**|**InnoDB Pufferkészletben (MB)**| **Kapcsolatok maximális száma**|
-|---|---|---|---|--|
+|---|---|---|---|
 |Alapszintű| 1| 1024| 50|
 |Alapszintű| 2| 2560| 100|
 |Általános rendeltetés| 2| 3584| 300|

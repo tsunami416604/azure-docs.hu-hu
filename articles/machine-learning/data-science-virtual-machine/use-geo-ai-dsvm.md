@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: 11026d642a5136ffcf0caa5815934115b6becf89
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 6e6737e928ece820ea9119d8dfe1d7cf22477646
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238459"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880109"
 ---
 # <a name="using-the-geo-artificial-intelligence-data-science-virtual-machine"></a>A földrajzi mesterséges intelligenciát használó adatelemző virtuális gép használata
 
@@ -30,7 +30,7 @@ A földrajzi mesterséges Intelligencia adatelemző virtuális gép használatá
 
 ## <a name="configuration-details"></a>Konfiguráció részletei
 
-A Python-kódtár [arcpy](http://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm), amely szolgál ArcGIS-felület telepítve van a globális legfelső szintű conda környezetében az adatelemző virtuális gép, amely a következő címen található ```c:\anaconda```. 
+A Python-kódtár [arcpy](https://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm), amely szolgál ArcGIS-felület telepítve van a globális legfelső szintű conda környezetében az adatelemző virtuális gép, amely a következő címen található ```c:\anaconda```. 
 
 - Ha a Python egy parancssorban futtatja, futtassa ```activate``` conda legfelső szintű Python környezetbe történő aktiválásához. 
 - Ha egy IDE- vagy Jupyter notebookot használja, a környezet vagy a kernel ellenőrizze, hogy a megfelelő conda-környezetben is kiválaszthatja. 
@@ -43,7 +43,7 @@ Az R-híd ArcGIS telepítve van, az R-tár nevű [arcgisbinding](https://github.
 A gépi Tanulási és deep learning-keretrendszer-alapú-mintákat az az alapvető adatelemző virtuális gép mellett a földrajzi mintákat is tartalmaz a földrajzi mesterséges Intelligencia adatelemző virtuális gép részeként. Ezek a minták segítségével gyorsan elindíthatja a térinformatikai adatok és az ArcGIS-szoftverek használatával AI-alkalmazások fejlesztését. 
 
 
-1. [Első Python-térinformatikai elemzés paraméterkészlettel lesz kiadva](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/Python%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): A Python felületén által biztosított ArcGIS térinformatikai adatok használatát bemutató egy bevezető minta a [arcpy](http://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm) könyvtár. Azt is bemutatja, hogyan kombinálhatja a hagyományos gépi tanulás a térinformatikai adatok és ArcGIS egy térképen az eredmény megjelenítése. 
+1. [Első Python-térinformatikai elemzés paraméterkészlettel lesz kiadva](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/Python%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): A Python felületén által biztosított ArcGIS térinformatikai adatok használatát bemutató egy bevezető minta a [arcpy](https://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm) könyvtár. Azt is bemutatja, hogyan kombinálhatja a hagyományos gépi tanulás a térinformatikai adatok és ArcGIS egy térképen az eredmény megjelenítése. 
 
 2. [Első térinformatikai elemzés az r nyelv paraméterkészlettel lesz kiadva](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/R%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb): Egy bevezető minta bemutatja, hogyan dolgozhat a térinformatikai adatok által biztosított ArcGIS az R-felület használatával a [arcgisbinding](https://github.com/R-ArcGIS/r-bridge) könyvtár. 
 

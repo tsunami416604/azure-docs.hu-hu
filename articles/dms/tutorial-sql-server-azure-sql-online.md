@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: 605986a61ee6a09ccc3bfd6c58719a1d82604c8e
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: 1eb41b7b027489e18900332ca0c20598ec8edfcc
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57792021"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58093109"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-online-using-dms"></a>Oktatóanyag: SQL Server migrálása az önálló adatbázis vagy készletezett Azure SQL Database-adatbázis online állapotba a DMS használatával
 
@@ -130,10 +130,10 @@ A helyszíni adatbázis felméréséhez hajtsa végre a következő lépéseket:
 
     Ha az értékelni kívánt a forrás SQL Server adatbázis migrálása az önálló adatbázis vagy készletezett Azure SQL Database-adatbázishoz, választhat egyikét vagy mindkettőt a következő értékelési jelentéstípusok:
 
-    - Adatbázis-kompatibilitás ellenőrzése
-    - Szolgáltatásparitás ellenőrzése
+   - Adatbázis-kompatibilitás ellenőrzése
+   - Szolgáltatásparitás ellenőrzése
 
-    Alapértelmezés szerint mindkét jelentéstípus ki van választva.
+     Alapértelmezés szerint mindkét jelentéstípus ki van választva.
 
 3. A DMA **Beállítások** ablakában válassza a **Tovább** lehetőséget.
 4. A **Források kiválasztása** képernyőn, a **Kapcsolódás kiszolgálóhoz** párbeszédablakban adja meg az SQL-kiszolgálója adatait, majd válassza a **Csatlakozás** lehetőséget.

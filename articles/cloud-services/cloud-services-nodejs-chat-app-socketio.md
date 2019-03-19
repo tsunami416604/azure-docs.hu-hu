@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 6a45d6366ef3c581c00b084b7ea2e4095eaaba3f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: cd0bceae770182e778410d8065d34dfeed055acc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538119"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993254"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>A Socket.IO kódtár használatával Node.js-csevegőalkalmazás létrehozásához, egy Azure-Felhőszolgáltatás
 
@@ -62,7 +62,7 @@ Ehhez a projekthez a csevegési példa az ezzel a [a Socket.IO kódtár GitHub-a
 
 1. A tárház helyi példányának létrehozása használatával a **Klónozás** gombra. Is használhatja a **ZIP** gombra kattintva töltse le a projektet.
    
-   ![A böngésző ablakában megtekintését https://github.com/LearnBoost/socket.io/tree/master/examples/chat, a kiemelt ZIP letöltése ikon][chat-example-view]
+   ![A böngésző ablakában megtekintését https://github.com/LearnBoost/socket.io/tree/master/examples/chat, a kiemelt ZIP letöltése ikon](./media/cloud-services-nodejs-chat-app-socketio/socketio-22.png)
 2. Keresse meg a helyi tárház a könyvtárstruktúra érkeznek, amíg a **példák\\Csevegés** könyvtár. Ez a könyvtár tartalmának másolása a **C:\\csomópont\\chatapp\\WorkerRole1** korábban létrehozott könyvtár.
    
    ![Explorer, a példák tartalmának\\az archívum kinyert Csevegés könyvtár][chat-contents]
@@ -84,7 +84,11 @@ Az alkalmazás tesztelése az Azure-emulátorban, előtt bizonyos kisebb módos�
          var port = process.env.PORT || 3000;         //Updated
 3. Annak érdekében, hogy az alkalmazás megfelelő portot figyeli, nyissa meg a server.js a Jegyzettömb vagy a kedvenc szerkesztőjében, és módosítsa a következő sort lecserélésével **3000** a **process.env.port** alább látható módon:
    
-       App.listen használatával (3000, a függvény () {//Original       App.listen használatával (process.env.port, a függvény () {//Updated var cím app.address(); =       Console.log ("alkalmazás figyeli a http://" + addr.address + ':' + addr.port);     });
+       //app.listen(3000, function () {            //Original
+       app.listen(process.env.port, function () {  //Updated
+         var addr = app.address();
+         console.log('   app listening on http://' + addr.address + ':' + addr.port);
+       });
 
 A módosítások mentése után **server.js**, kövesse az alábbi lépéseket a szükséges modulok telepítéséhez, és tesztelje az alkalmazást az Azure emulatorban:
 
@@ -105,12 +109,9 @@ A módosítások mentése után **server.js**, kövesse az alábbi lépéseket a
        PS C:\node\chatapp\WorkerRole1> Start-AzureEmulator -Launch
    
    > [!NOTE]
-   > Ha az emulátorban, például indításával problémák merülnek fel.:      Start-AzureEmulator: Váratlan hiba történt.  Részletek: Észlelt hiba Objekt komunikace, System.ServiceModel.Channels.ServiceChannel, nem használható a kommunikációhoz, mert a Faulted állapotban van.
-   
-      Telepítse újra a AzureAuthoringTools v 2.7.1-es verziójához és AzureComputeEmulator v 2.7 – győződjön meg arról, hogy a verzió megegyezik.
-   >
-   >
-
+   > Ha az emulátorban, például indításával problémák merülnek fel.: Start-AzureEmulator : Váratlan hiba történt.  Részletek: Észlelt hiba Objekt komunikace, System.ServiceModel.Channels.ServiceChannel, nem használható a kommunikációhoz, mert a Faulted állapotban van.
+   > 
+   > Telepítse újra a AzureAuthoringTools v 2.7.1-es verziójához és AzureComputeEmulator v 2.7 – győződjön meg arról, hogy a verzió megegyezik.
 
 2. Nyisson meg egy böngészőt, és navigáljon a **http://127.0.0.1**.
 3. Amikor a böngészőablakban megnyitja, adjon meg egy becenevet, és nyomja le adja.

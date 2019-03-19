@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: a81bcf26234f3b7840a75e7134596cb777071e8f
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3676a1e4bf69f7d31bb347f99787c4e2f08721a9
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432775"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58107593"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Konfigurációs kiszolgáló hibáinak elhárítása
 
@@ -25,9 +25,9 @@ A forrásgép a konfigurációs kiszolgálót regisztrálja a mobilitási ügyn�
 1. Open the C:\ProgramData\ASR\home\svsystems\var\configurator_register_host_static_info.log file. (A ProgramData mappa rejtett mappa lehet. Ha nem látja a ProgramData mappa, a Fájlkezelőben, a a **nézet** lap a **megjelenítése/elrejtése** szakaszban jelölje be a **rejtett elemek** jelölőnégyzet jelölését.) Hibák több problémák oka lehet.
 
 2. Keresse meg benne **nem található érvényes IP-cím**. Ha a karakterlánc megtalálható:
-    1. Ellenőrizze, hogy a kért állomás azonosítója megegyezik az állomás Azonosítóját a forrásgép.
-    2. Ellenőrizze, hogy a forrásgép rendelkezik-e legalább egy IP-cím hozzárendelve a fizikai hálózati adaptert. Az ügynök regisztrációja a konfigurációs kiszolgálóval sikeres a forrásgép rendelkeznie kell legalább egy érvényes IP v4 cím hozzárendelve a fizikai hálózati adaptert.
-    3. A forrásgép IP-címeket a forrásoldali virtuális gépen futtassa a következő parancsok egyikét:
+   1. Ellenőrizze, hogy a kért állomás azonosítója megegyezik az állomás Azonosítóját a forrásgép.
+   2. Ellenőrizze, hogy a forrásgép rendelkezik-e legalább egy IP-cím hozzárendelve a fizikai hálózati adaptert. Az ügynök regisztrációja a konfigurációs kiszolgálóval sikeres a forrásgép rendelkeznie kell legalább egy érvényes IP v4 cím hozzárendelve a fizikai hálózati adaptert.
+   3. A forrásgép IP-címeket a forrásoldali virtuális gépen futtassa a következő parancsok egyikét:
       - A Windows: `> ipconfig /all`
       - Linux esetén: `# ifconfig -a`
 

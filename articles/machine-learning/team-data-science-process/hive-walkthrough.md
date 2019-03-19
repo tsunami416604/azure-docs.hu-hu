@@ -11,15 +11,15 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a0b4c41d347ba556e737d422af22fb5a47c7c4ff
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: a7aa5401cbba9fafda9f995a882934ef0edfa481
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108721"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881146"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>A csoportos adatelemzési folyamat működés közben: Az Azure HDInsight Hadoop-fürtök használata
-Ez az útmutató használjuk a [csoportos adatelemzési folyamat (TDSP)](overview.md) egy teljes körű forgatókönyvben. Használjuk egy [Azure HDInsight Hadoop-fürt](https://azure.microsoft.com/services/hdinsight/) tárolását, ismerje meg, és a nyilvánosan elérhető a szolgáltatás-mérnök adatainak [NYC Taxi lelassítja](http://www.andresmh.com/nyctaxitrips/) adatkészlet, és való az adatokat. Bináris és többosztályos besorolási és regressziós prediktív feladatok kezelésére, hogy ki, hogy az adatok az Azure Machine Learning modellek. 
+Ez az útmutató használjuk a [csoportos adatelemzési folyamat (TDSP)](overview.md) egy teljes körű forgatókönyvben. Használjuk egy [Azure HDInsight Hadoop-fürt](https://azure.microsoft.com/services/hdinsight/) tárolását, ismerje meg, és a nyilvánosan elérhető a szolgáltatás-mérnök adatainak [NYC Taxi lelassítja](https://www.andresmh.com/nyctaxitrips/) adatkészlet, és való az adatokat. Bináris és többosztályos besorolási és regressziós prediktív feladatok kezelésére, hogy ki, hogy az adatok az Azure Machine Learning modellek. 
 
 Ez az útmutató bemutatja, hogyan legyen kezelve a nagyobb adatkészletet, lásd: [csoportos adatelemzési folyamat – az Azure HDInsight Hadoop-fürtök az 1 TB-os adatkészlet](hive-criteo-walkthrough.md).
 
@@ -84,7 +84,7 @@ Beállíthatja a speciális elemzésekhez, amely egy HDInsight-fürtöt három l
 > 
 > 
 
-Másolása a [NYC Taxi lelassítja](http://www.andresmh.com/nyctaxitrips/) adatkészletet, a gép a nyilvános helyéről ismertetett módszerek bármelyikét használhatja [adatok áthelyezése Azure Blob storage szolgáltatásba vagy onnan](move-azure-blob.md).
+Másolása a [NYC Taxi lelassítja](https://www.andresmh.com/nyctaxitrips/) adatkészletet, a gép a nyilvános helyéről ismertetett módszerek bármelyikét használhatja [adatok áthelyezése Azure Blob storage szolgáltatásba vagy onnan](move-azure-blob.md).
 
 Itt azt ismertetjük, hogyan vihetők át az adatokat tartalmazó fájlok AzCopy használatával. Töltse le és telepítse az AzCopy, utasításai [Bevezetés az AzCopy parancssori segédprogram](../../storage/common/storage-use-azcopy.md).
 
@@ -516,7 +516,7 @@ Futtassa a következő parancsot a Hadoop parancssori konzolból:
 
 Előfordulhat, hogy meg szeretné ismerni, hogy van-e a közvetlen távolság között két helyen, és a tényleges trip távolság a taxi különbség. Előfordulhat, hogy utas kevésbé valószínű, hogy ha, döntse el, hogy az illesztőprogram szándékosan vette azokat egy hosszabb útvonal tipp.
 
-Tényleges trip távolság összehasonlítása megtekintéséhez és a [Haversine távolság](http://en.wikipedia.org/wiki/Haversine_formula) két hosszúság-szélesség pontja (a "nagy kör" távolság), használhatja a rendelkezésre álló trigonometriai függvények Hive belül:
+Tényleges trip távolság összehasonlítása megtekintéséhez és a [Haversine távolság](https://en.wikipedia.org/wiki/Haversine_formula) két hosszúság-szélesség pontja (a "nagy kör" távolság), használhatja a rendelkezésre álló trigonometriai függvények Hive belül:
 
     set R=3959;
     set pi=radians(180);
@@ -822,8 +822,8 @@ Most már folytathatja a modell létrehozásának és a modell üzembe helyezés
 Ez a minta forgatókönyv és a hozzájuk tartozó szkriptek által megosztott Microsoft alatt az MIT-licenccel. További részletekért tekintse meg a **LICENSE.txt** fájl a könyvtárban mintakódot a Githubon.
 
 ## <a name="references"></a>Referencia
-• [Andrés Monroy NYC Taxi lelassítja letöltési oldala](http://www.andresmh.com/nyctaxitrips/)  
-• [FOILing NYC Útadatok taxiköltség Chris Whong szerint](http://chriswhong.com/open-data/foil_nyc_taxi/)   
+• [Andrés Monroy NYC Taxi lelassítja letöltési oldala](https://www.andresmh.com/nyctaxitrips/)  
+• [FOILing NYC Útadatok taxiköltség Chris Whong szerint](https://chriswhong.com/open-data/foil_nyc_taxi/)   
 • [NYC Taxi és Limousine Bizottság kutatási és a statisztika](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 [2]: ./media/hive-walkthrough/output-hive-results-3.png

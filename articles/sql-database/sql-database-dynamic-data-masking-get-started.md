@@ -12,12 +12,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 03/04/2019
-ms.openlocfilehash: c174167268e95e55b0916d2340005538d3ae8add
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 2be1f7bb6417834196da03b7cba22387744f8c19
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57336784"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57876544"
 ---
 # <a name="sql-database-dynamic-data-masking"></a>Az SQL Database dinamikus adatmaszkolás
 
@@ -55,7 +55,7 @@ Dinamikus adatmaszkolás az Azure SQL Database-rendszergazda, a kiszolgálói re
 
 A DDM ajánlatok motor megőrzendő tartalomként jelöli meg az adatbázis egyes mezőit potenciálisan bizalmas a mezők, amelyek lehetnek a deduplikációra maszkolási. A dinamikus Adatmaszkolás paneljét a portálon megtekintheti az adatbázis a javasolt oszlopok. Ehhez szüksége, kattintson a **maszk hozzáadása** egy vagy több oszlopnál, majd **mentése** maszk ezeket a mezőket a alkalmazni.
 
-## <a name="set-up-dynamic-data-masking-for-your-database-using-powershell-cmdlets"></a>Az adatbázis Powershell-parancsmagok használatával dinamikus adatmaszkolás beállítása
+## <a name="set-up-dynamic-data-masking-for-your-database-using-powershell-cmdlets"></a>Az adatbázis PowerShell-parancsmagok használatával dinamikus adatmaszkolás beállítása
 
 Lásd: [az Azure SQL Database-parancsmagok](https://docs.microsoft.com/powershell/module/az.sql).
 

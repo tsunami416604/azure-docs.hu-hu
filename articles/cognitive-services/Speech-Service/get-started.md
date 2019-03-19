@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: d48ad97d50c413c4530e54f2538fda9cd0e31b8f
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 09cc38cd5343e8b01b3e704191ea40c133d724f8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342677"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103723"
 ---
 # <a name="try-speech-services-for-free"></a>Beszédszolgáltatások ingyenes kipróbálása
 
@@ -87,19 +87,19 @@ Az Azure-fiókjával (ingyenes vagy fizetős szint) beszédszolgáltatások erő
 
 1. A **létrehozás**, adja meg:
 
-    * Az új erőforrás neve. A név segítségével megkülönböztetésére, amelyek ugyanazt a szolgáltatást több előfizetést.
-    * Válassza ki az Azure-előfizetést, amelyhez az új erőforrás a határozza meg, hogy a díjak számlázása van társítva.
-    * Válassza ki a régiót, ahol fogja használni az erőforrás. Jelenleg a beszédszolgáltatások érhető el az USA nyugati RÉGIÓJA, Kelet-Ázsia és Észak-Európa régióban.
-    * Válassza ki, vagy egy ingyenes vagy fizetős tarifacsomagra. Kattintson a **díjszabási részletek megtekintése** kapcsolatban az egyes szintek díjszabását és a használati kvótákat.
-    * Hozzon létre egy új erőforráscsoportot, beszéd ehhez az előfizetéshez, vagy az előfizetés hozzárendelése egy meglévő erőforráscsoportot. Erőforráscsoportokat tarthatja rendezve különböző Azure-előfizetéseit.
-    * A jövőben az előfizetés hozzáférés kényelmes, válassza ki a **rögzítés az irányítópulton** jelölőnégyzetet.
-    * Válassza ki **létrehozása.**
+   * Az új erőforrás neve. A név segítségével megkülönböztetésére, amelyek ugyanazt a szolgáltatást több előfizetést.
+   * Válassza ki az Azure-előfizetést, amelyhez az új erőforrás a határozza meg, hogy a díjak számlázása van társítva.
+   * Válassza ki a régiót, ahol fogja használni az erőforrás. Jelenleg a beszédszolgáltatások érhető el az USA nyugati RÉGIÓJA, Kelet-Ázsia és Észak-Európa régióban.
+   * Válassza ki, vagy egy ingyenes vagy fizetős tarifacsomagra. Kattintson a **díjszabási részletek megtekintése** kapcsolatban az egyes szintek díjszabását és a használati kvótákat.
+   * Hozzon létre egy új erőforráscsoportot, beszéd ehhez az előfizetéshez, vagy az előfizetés hozzárendelése egy meglévő erőforráscsoportot. Erőforráscsoportokat tarthatja rendezve különböző Azure-előfizetéseit.
+   * A jövőben az előfizetés hozzáférés kényelmes, válassza ki a **rögzítés az irányítópulton** jelölőnégyzetet.
+   * Válassza ki **létrehozása.**
 
-    ![Kattintson a Létrehozás gombra](media/index/try-speech-api-create-speech4.png)
+     ![Kattintson a Létrehozás gombra](media/index/try-speech-api-create-speech4.png)
 
-    Létrehozni és üzembe helyezni az új Speech-erőforrás egy kis időt vesz igénybe. Válassza ki **rövid** az új erőforrás adatainak megtekintéséhez.
+     Létrehozni és üzembe helyezni az új Speech-erőforrás egy kis időt vesz igénybe. Válassza ki **rövid** az új erőforrás adatainak megtekintéséhez.
 
-    ![A rövid útmutató panel](media/index/try-speech-api-create-speech5.png)
+     ![A rövid útmutató panel](media/index/try-speech-api-create-speech5.png)
 
 1. Alatt **rövid**, kattintson a **kulcsok** az előfizetési kulcsok megjelenítése 1. lépés alatti hivatkozásra. Minden előfizetési csomaghoz tartozik két kulcs; mindkét kulcsot is használhatja az alkalmazásban. Válassza ki a gomb mellett minden egyes kulcs másolja a vágólapra a Beillesztés elhelyezni a kódban.
 

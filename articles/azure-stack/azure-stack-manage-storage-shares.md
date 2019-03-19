@@ -15,12 +15,12 @@ ms.date: 01/22/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: f20d51905d90f9f80007dcaa39cf978c7100026d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 5e6a44018cde84067a4c16c9d3d62227733f6658
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762889"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075578"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>Az Azure stack-beli tárolási kapacitás kezelése 
 
@@ -93,8 +93,8 @@ Felhő-felelősként minden megosztás tárkapacitása megtekintéséhez haszná
 
     ![Példa: Tárolófájl-megosztások](media/azure-stack-manage-storage-shares/storage-file-shares.png)
 
-  - **TELJES** a teljes területe, amely elérhető a megosztáson (bájt). Ez a terület az adat- és a tárolási szolgáltatások által kezelt metaadat szolgál.
-  - **HASZNÁLT** , amennyit a a fájlokat, a bérlői adatok és kapcsolódó metaadatok összes egységek által használt adatok (bájt).
+   - **TELJES** a teljes területe, amely elérhető a megosztáson (bájt). Ez a terület az adat- és a tárolási szolgáltatások által kezelt metaadat szolgál.
+   - **HASZNÁLT** , amennyit a a fájlokat, a bérlői adatok és kapcsolódó metaadatok összes egységek által használt adatok (bájt).
 
 ### <a name="storage-space-alerts"></a>Tárolási hely riasztások
 Ha a felügyeleti portál, megosztások, amelyek kevés a lemezterület kapcsolatos riasztásokat kap.
@@ -140,64 +140,64 @@ Próbálkozzon egy másik megosztásba néhány blobtárolók manuális áttelep
 
 #### <a name="to-migrate-containers-using-powershell"></a>PowerShell-lel a tárolók áttelepítéséhez
 1. Győződjön meg arról, hogy [Azure PowerShell telepítését és konfigurálását](https://azure.microsoft.com/documentation/articles/powershell-install-configure/). További információ: [Az Azure PowerShell használata az Azure Resource Manager eszközzel](https://go.microsoft.com/fwlink/?LinkId=394767).
-2.  Vizsgálja meg a tároló, milyen adatokat a megosztáson található, amely az áttelepíteni kívánt van. A legjobb jelöltek tárolók egy kötet az áttelepítéshez azonosításához használja a **Get-AzsStorageContainer** parancsmagot:
+2. Vizsgálja meg a tároló, milyen adatokat a megosztáson található, amely az áttelepíteni kívánt van. A legjobb jelöltek tárolók egy kötet az áttelepítéshez azonosításához használja a **Get-AzsStorageContainer** parancsmagot:
 
-    ```PowerShell  
-    $farm_name = (Get-AzsStorageFarm)[0].name
-    $shares = Get-AzsStorageShare -FarmName $farm_name
-    $containers = Get-AzsStorageContainer -ShareName $shares[0].ShareName -FarmName $farm_name
-    ```
-    Majd megvizsgálja a $containers:
+   ```PowerShell  
+   $farm_name = (Get-AzsStorageFarm)[0].name
+   $shares = Get-AzsStorageShare -FarmName $farm_name
+   $containers = Get-AzsStorageContainer -ShareName $shares[0].ShareName -FarmName $farm_name
+   ```
+   Majd megvizsgálja a $containers:
 
-    ```PowerShell
-    $containers
-    ```
+   ```PowerShell
+   $containers
+   ```
 
-    ![Példa: $Containers](media/azure-stack-manage-storage-shares/containers.png)
+   ![Példa: $Containers](media/azure-stack-manage-storage-shares/containers.png)
 
-3.  Határozza meg, amely tárolja a tároló áttelepítése a legjobb cél megosztások:
+3. Határozza meg, amely tárolja a tároló áttelepítése a legjobb cél megosztások:
 
-    ```PowerShell
-    $destinationshares = Get-AzsStorageShare -SourceShareName
-    $shares[0].ShareName -Intent ContainerMigration
-    ```
+   ```PowerShell
+   $destinationshares = Get-AzsStorageShare -SourceShareName
+   $shares[0].ShareName -Intent ContainerMigration
+   ```
 
-    Majd megvizsgálja a $destinationshares:
+   Majd megvizsgálja a $destinationshares:
 
-    ```PowerShell 
-    $destinationshares
-    ```
+   ```PowerShell 
+   $destinationshares
+   ```
 
-    ![Példa: $destination megosztások](media/azure-stack-manage-storage-shares/examine-destinationshares.png)
+   ![Példa: $destination megosztások](media/azure-stack-manage-storage-shares/examine-destinationshares.png)
 
 4. Indítsa el áttelepítési tárolóhoz. Az áttelepítés akkor aszinkron. Ha az első áttelepítés befejezése előtt további tárolókat migrálásának indul el, használja a feladat azonosítója egyes állapotának nyomon követését.
 
-  ```PowerShell
-  $job_id = Start-AzsStorageContainerMigration -StorageAccountName $containers[0].Accountname -ContainerName $containers[0].Containername -ShareName $containers[0].Sharename -DestinationShareUncPath $destinationshares[0].UncPath -FarmName $farm_name
-  ```
+   ```PowerShell
+   $job_id = Start-AzsStorageContainerMigration -StorageAccountName $containers[0].Accountname -ContainerName $containers[0].Containername -ShareName $containers[0].Sharename -DestinationShareUncPath $destinationshares[0].UncPath -FarmName $farm_name
+   ```
 
-  Majd megvizsgálja a $jobId. A következő példában cserélje le a *d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0* meg szeretné vizsgálni a feladatazonosító:
+   Majd megvizsgálja a $jobId. A következő példában cserélje le a *d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0* meg szeretné vizsgálni a feladatazonosító:
 
-  ```PowerShell
-  $jobId
-  d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0
-  ```
+   ```PowerShell
+   $jobId
+   d62f8f7a-8b46-4f59-a8aa-5db96db4ebb0
+   ```
 
 5. Használja a feladatazonosító az áttelepítési feladat állapotának ellenőrzése. Ha a tároló áttelepítése befejeződött, **MigrationStatus** értékre van állítva **Complete**.
 
-  ```PowerShell 
-  Get-AzsStorageContainerMigrationStatus -JobId $job_id -FarmName $farm_name
-  ```
+   ```PowerShell 
+   Get-AzsStorageContainerMigrationStatus -JobId $job_id -FarmName $farm_name
+   ```
 
-  ![Példa: Migrálás állapota](media/azure-stack-manage-storage-shares/migration-status1.png)
+   ![Példa: Migrálás állapota](media/azure-stack-manage-storage-shares/migration-status1.png)
 
-6.  Egy folyamatban lévő migrálási feladat megszakítása Áttelepítési feladatok feldolgozása aszinkron módon megszakította. Megszakítás $jobid használatával követheti nyomon:
+6. Egy folyamatban lévő migrálási feladat megszakítása Áttelepítési feladatok feldolgozása aszinkron módon megszakította. Megszakítás $jobid használatával követheti nyomon:
 
-  ```PowerShell
-  Stop-AzsStorageContainerMigration -JobId $job_id -FarmName $farm_name
-  ```
+   ```PowerShell
+   Stop-AzsStorageContainerMigration -JobId $job_id -FarmName $farm_name
+   ```
 
-  ![Példa: Visszaállítás állapota](media/azure-stack-manage-storage-shares/rollback.png)
+   ![Példa: Visszaállítás állapota](media/azure-stack-manage-storage-shares/rollback.png)
 
 7. A parancs a 6. lépés ismét futtathatja, amíg az állapot megerősíti, hogy az áttelepítési feladat **megszakított**:  
 

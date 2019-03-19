@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: dcab8d1cfd076e57a25ee3d36fadd86f158c53b8
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 47a77def43a9577e5a3506899da47db2f684b495
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56880597"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835113"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Adatok áthelyezés SQL Server-kiszolgálóra Azure-beli virtuális gépeken
 
@@ -58,7 +58,7 @@ BCP parancssori segédprogram az SQL Server telepítve, és egyik adatok áthely
 
 > [!NOTE]
 > **Az adatok hol kell lennie a BCP használatával?**  
-> Bár nem kötelező, és a cél SQL Server ugyanazon a számítógépen található adatforrás-adatokat tartalmazó fájlok lehetővé, hogy a gyorsabb adatátvitel (hálózati sebesség és helyi lemez i/o-sebesség). Áthelyezheti az adatokat a gép tartalmazó egybesimított fájlok, SQL Server telepítve van a használatával különféle fájlok másolása eszközök, mint például [AZCopy](../../storage/common/storage-use-azcopy.md), [Azure Storage Explorer](http://storageexplorer.com/) vagy a windows másolási és beillesztési távoli asztalon keresztül Protokoll (RDP).
+> Bár nem kötelező, és a cél SQL Server ugyanazon a számítógépen található adatforrás-adatokat tartalmazó fájlok lehetővé, hogy a gyorsabb adatátvitel (hálózati sebesség és helyi lemez i/o-sebesség). Áthelyezheti az adatokat a gép tartalmazó egybesimított fájlok, SQL Server telepítve van a használatával különféle fájlok másolása eszközök, mint például [AZCopy](../../storage/common/storage-use-azcopy.md), [Azure Storage Explorer](https://storageexplorer.com/) vagy a windows másolási és beillesztési távoli asztalon keresztül Protokoll (RDP).
 >
 >
 
@@ -75,10 +75,10 @@ CREATE TABLE <tablename>
 )
 ```
 
-2. Hozza létre a formátumú fájlt, amely ismerteti a tábla sémája a következő parancsot a parancssorból a gép amelyen telepítve van a BCP használatával.
+1. Hozza létre a formátumú fájlt, amely ismerteti a tábla sémája a következő parancsot a parancssorból a gép amelyen telepítve van a BCP használatával.
 
     `bcp dbname..tablename format nul -c -x -f exportformatfilename.xml -S servername\sqlinstance -T -t \t -r \n`
-3. Az adatok beszúrása az adatbázisba, ha a bcp-parancs használatával az alábbiak szerint. Ez használható a parancssorból feltételezve, hogy az SQL Server ugyanezen a gépen telepítve van:
+1. Az adatok beszúrása az adatbázisba, ha a bcp-parancs használatával az alábbiak szerint. Ez használható a parancssorból feltételezve, hogy az SQL Server ugyanezen a gépen telepítve van:
 
     `bcp dbname..tablename in datafilename.tsv -f exportformatfilename.xml -S servername\sqlinstancename -U username -P password -b block_size_to_move_in_single_attempt -t \t -r \n`
 
@@ -142,7 +142,7 @@ Az alábbiakban néhány Példaparancsok a tömeges beszúrás vannak, az alább
 ```sql
 SET DATEFORMAT ymd;
 ```
-2. Adatok importálása használatával tömeges importálási utasításokat:
+1. Adatok importálása használatával tömeges importálási utasításokat:
 
 ```sql
 BULK INSERT <tablename>
@@ -195,7 +195,7 @@ Különböző módszereket is használható az adatok exportálása egy helyszí
 4. A szakaszban ismertetett módszerek bármelyikét használhatja [fájl forrásból származó adatokat](#filesource_to_sqlonazurevm) az adatok áthelyezéséhez az egybesimított fájlok SQL Serverre.
 
 ### <a name="sql-migration"></a>Az SQL Database áttelepítése varázsló
-[SQL Server adatbázis-Migrálási varázsló](http://sqlazuremw.codeplex.com/) felhasználóbarát biztosítja az adatok áthelyezése két SQL server-példányok között. Lehetővé teszi a felhasználó leképezése az adatséma források és a cél táblák között, válassza a oszloptípusainak és számos egyéb funkciókat. A tömeges másolási (BCP) valójában használ. Képernyőkép: az SQL Database áttelepítése varázsló az üdvözlőképernyőn alább látható.  
+[SQL Server adatbázis-Migrálási varázsló](https://sqlazuremw.codeplex.com/) felhasználóbarát biztosítja az adatok áthelyezése két SQL server-példányok között. Lehetővé teszi a felhasználó leképezése az adatséma források és a cél táblák között, válassza a oszloptípusainak és számos egyéb funkciókat. A tömeges másolási (BCP) valójában használ. Képernyőkép: az SQL Database áttelepítése varázsló az üdvözlőképernyőn alább látható.  
 
 ![Az SQL Server Migrálási varázsló][2]
 

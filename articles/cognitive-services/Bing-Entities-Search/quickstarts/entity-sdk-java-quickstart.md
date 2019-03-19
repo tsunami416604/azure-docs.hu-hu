@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: v-gedod
-ms.openlocfilehash: ea13ae5bc649ae3a803fb8446fa009fac94874a8
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: a5a3bb38f832d13a39a061453e6ef7910ba5cccf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673564"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58094109"
 ---
 # <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-java"></a>Gyors útmutató: A Bing Entity Search SDK Java-keresési kérelem küldése
 
@@ -67,7 +67,7 @@ Telepítse a Bing Entity Search SDK függőségeit a Maven, a Gradle vagy más f
 
 ## <a name="create-a-search-client"></a>Hozzon létre egy ügyfél-keresés
 
-2. Alkalmazzon a `dominantEntityLookup` -ügyfelet, amely az API-végpont, és a egy példányát igényli a `ServiceClientCredentials` osztály.
+1. Alkalmazzon a `dominantEntityLookup` -ügyfelet, amely az API-végpont, és a egy példányát igényli a `ServiceClientCredentials` osztály.
 
     ```java
     public static EntitySearchAPIImpl getClient(final String subscriptionKey) {
@@ -80,47 +80,47 @@ Telepítse a Bing Entity Search SDK függőségeit a Maven, a Gradle vagy más f
 
     Megvalósítása a `ServiceClientCredentials`, kövesse az alábbi lépéseket:
 
-    1. bírálja felül a `applyCredentialsFilter()` funkciót, az egy `OkHttpClient.Builder` paraméterként objektum. 
+   1. bírálja felül a `applyCredentialsFilter()` funkciót, az egy `OkHttpClient.Builder` paraméterként objektum. 
         
-        ```java
-        //...
-        new ServiceClientCredentials() {
-                @Override
-                public void applyCredentialsFilter(OkHttpClient.Builder builder) {
-                //...
-                }
-        //...
-        ```
+       ```java
+       //...
+       new ServiceClientCredentials() {
+               @Override
+               public void applyCredentialsFilter(OkHttpClient.Builder builder) {
+               //...
+               }
+       //...
+       ```
     
-    2. Belül `applyCredentialsFilter()`, hívja `builder.addNetworkInterceptor()`. Hozzon létre egy új `Interceptor` objektumot, és felülbírálják a `intercept()` metódus tennie egy `Chain` elfogó objektum.
+   2. Belül `applyCredentialsFilter()`, hívja `builder.addNetworkInterceptor()`. Hozzon létre egy új `Interceptor` objektumot, és felülbírálják a `intercept()` metódus tennie egy `Chain` elfogó objektum.
 
-        ```java
-        //...
-        builder.addNetworkInterceptor(
-            new Interceptor() {
-                @Override
-                public Response intercept(Chain chain) throws IOException {
-                //...    
-                }
-            });
-        ///...
-        ```
+       ```java
+       //...
+       builder.addNetworkInterceptor(
+           new Interceptor() {
+               @Override
+               public Response intercept(Chain chain) throws IOException {
+               //...    
+               }
+           });
+       ///...
+       ```
 
-    3. Belül a `intercept` működik, a kérelem változók létrehozása. Használat `Request.Builder()` hozhat létre a kérést. Az előfizetési kulcs hozzáadása a `Ocp-Apim-Subscription-Key` fejlécére, majd a visszaadandó `chain.proceed()` a kérelem objektum.
+   3. Belül a `intercept` működik, a kérelem változók létrehozása. Használat `Request.Builder()` hozhat létre a kérést. Az előfizetési kulcs hozzáadása a `Ocp-Apim-Subscription-Key` fejlécére, majd a visszaadandó `chain.proceed()` a kérelem objektum.
             
-        ```java
-        //...
-        public Response intercept(Chain chain) throws IOException {
-            Request request = null;
-            Request original = chain.request();
-            Request.Builder requestBuilder = original.newBuilder()
-                    .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
-            request = requestBuilder.build();
-            return chain.proceed(request);
-        }
-        //...
-        ```
-## <a name="send-a-request-and-receive-a-response"></a>A kéréseket küldeni és fogadni a választ
+       ```java
+       //...
+       public Response intercept(Chain chain) throws IOException {
+           Request request = null;
+           Request original = chain.request();
+           Request.Builder requestBuilder = original.newBuilder()
+                   .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+           request = requestBuilder.build();
+           return chain.proceed(request);
+       }
+       //...
+       ```
+      ## <a name="send-a-request-and-receive-a-response"></a>A kéréseket küldeni és fogadni a választ
 
 1. Hozzon létre egy új példányát a keresési ügyfél az előfizetési kulcs. használjon `client.entities().search()` egy keresési kérelmet, a keresési lekérdezés küldése `satya nadella`, és választ kaphat. 
     
@@ -130,7 +130,7 @@ Telepítse a Bing Entity Search SDK függőségeit a Maven, a Gradle vagy más f
             "satya nadella", null, null, null, null, null, null, "en-us", null, null, SafeSearch.STRICT, null);
     ```
 
-2. Minden olyan entitást adott vissza, ha alakíthatja őket listáját. Végigvenni ezeket, és nyomtassa ki a domináns entitás.
+1. Minden olyan entitást adott vissza, ha alakíthatja őket listáját. Végigvenni ezeket, és nyomtassa ki a domináns entitás.
 
     ```java
     if (entityData.entities().value().size() > 0){

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 02/21/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: a2c4f68a35d5baa3d7933243737d02d720409289
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 1b26f0833dec95d886a56dde4526d02f697926ae
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671590"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004415"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Telepítse és futtassa a szöveg felismerése tárolók
 
@@ -123,7 +123,7 @@ További [példák](./computer-vision-resource-container-config.md#example-docke
 
 A tároló REST-alapú lekérdezési előrejelzési végpontot API-kat biztosít. 
 
-Használja a gazdagép https://localhost:5000, API-k tároló.
+Használja a gazdagép `https://localhost:5000`, API-k tároló.
 
 ### <a name="asynchronous-text-recognition"></a>Aszinkron szövegek felismerése
 

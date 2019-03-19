@@ -11,19 +11,19 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: be95a75e7cdcaa11ef3e90093ef52c5615608eac
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 4d74b122f3b5567e8291ec5f3ff4e1dda7ff68f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458023"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835016"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Funkciók létrehozása az adatokhoz a Hive-lekérdezések segítségével Hadoop-fürt
 Ez a dokumentum bemutatja, hogyan funkciók létrehozása az Azure HDInsight Hadoop-fürtben Hive-lekérdezések segítségével tárolt adatokat. A Hive-lekérdezések használata beágyazott Hive User-Defined funkciókat (UDF), a parancsfájlok, amelynek biztosított.
 
 A szolgáltatások létrehozásához szükséges műveletek memóriaigényes is lehet. Hive-lekérdezések teljesítményének válik a kritikus fontosságú ezekben az esetekben, és javítani lehet bizonyos paraméterek beállításával. Ezek a paraméterek beállítása a következő cikkben az utolsó szakaszban.
 
-A lekérdezések, amelyek bemutatják példák jellemző a [NYC Taxi Útadatok](http://chriswhong.com/open-data/foil_nyc_taxi/) forgatókönyveket is rendelkezésre állnak a [GitHub-adattár](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts). Ezeket a lekérdezéseket már rendelkezik az adatok séma van megadva, és készen áll hamarosan futtatásához. Paraméterek, amelyeket a felhasználók hangolhassa a Hive-lekérdezések teljesítményének javítása érdekében, hogy az utolsó szakaszban is ismertetik.
+A lekérdezések, amelyek bemutatják példák jellemző a [NYC Taxi Útadatok](https://chriswhong.com/open-data/foil_nyc_taxi/) forgatókönyveket is rendelkezésre állnak a [GitHub-adattár](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts). Ezeket a lekérdezéseket már rendelkezik az adatok séma van megadva, és készen áll hamarosan futtatásához. Paraméterek, amelyeket a felhasználók hangolhassa a Hive-lekérdezések teljesítményének javítása érdekében, hogy az utolsó szakaszban is ismertetik.
 
 Ez a feladat Ez a lépés a [csoportos adatelemzési folyamat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
 
@@ -130,7 +130,7 @@ Ebben a lekérdezésben használt mezőket, a GPS-koordinátáit nevű begyűjt�
         and dropoff_latitude between 30 and 90
         limit 10;
 
-A két GPS-koordinátáit közötti távolság számító matematikai egyenletek találhatók a <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">ingó típus parancsfájlok</a> hely Peter Lapisu által írt. A JavaScript, a függvény `toRad()` mindössze *lat_or_lon*pi/180 *, amely Fokot radiánná alakít. Itt *lat_or_lon* a szélességi és hosszúsági van. Mivel Hive nem biztosít a függvény `atan2`, a funkciót biztosít, de `atan`, a `atan2` függvény implementálva lett által `atan` függvényt a fenti Hive-lekérdezést a megadott definíció használatával <a href="http://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a>.
+A két GPS-koordinátáit közötti távolság számító matematikai egyenletek találhatók a <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">ingó típus parancsfájlok</a> hely Peter Lapisu által írt. A JavaScript, a függvény `toRad()` mindössze *lat_or_lon*radiánná konvertálja a fokban pi/180. Itt *lat_or_lon* a szélességi és hosszúsági van. Mivel Hive nem biztosít a függvény `atan2`, a funkciót biztosít, de `atan`, a `atan2` függvény implementálva lett által `atan` függvényt a fenti Hive-lekérdezést a megadott definíció használatával <a href="https://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a>.
 
 ![Munkaterület létrehozása](./media/create-features-hive/atan2new.png)
 
@@ -161,11 +161,11 @@ A Hive-fürt alapértelmezett paraméterbeállítások nem alkalmas a Hive-leké
    
     Általában az alapértelmezett érték:
     
-    - *mapred.min.split.size* 0, a
-    - *mapred.max.split.size* van **Long.MAX** és az 
-    - *DFS.Block.size* 64 MB.
+   - *mapred.min.split.size* 0, a
+   - *mapred.max.split.size* van **Long.MAX** és az 
+   - *DFS.Block.size* 64 MB.
 
-    Ahogy láthatjuk, az adatok mérete, adott ezeket a paramétereket "beállítás" finomhangolás őket lehetővé teszi számunkra finomhangolása használt leképező száma.
+     Ahogy láthatjuk, az adatok mérete, adott ezeket a paramétereket "beállítás" finomhangolás őket lehetővé teszi számunkra finomhangolása használt leképező száma.
 
 4. Az alábbiakban néhány egyéb információ **speciális beállítások** Hive teljesítményének optimalizálásához. Ezek lehetővé teszik a térkép, és csökkentheti a feladatok számára lefoglalt memória, és igen hasznos lehet a teljesítmény finomhangolásához. Vegye figyelembe, hogy a *mapreduce.reduce.memory.mb* nem lehet nagyobb, mint a Hadoop-fürt mindegyik feldolgozó csomópontja fizikai memória mérete.
    

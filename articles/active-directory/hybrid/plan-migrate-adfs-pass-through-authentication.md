@@ -12,12 +12,12 @@ ms.date: 12/13/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7406758a5e5c345aee4165139242025b8ceb4d18
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: bf0bb51470272099ed2824d0450082f93fe65f14
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534718"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076462"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Összevonási áttelepíteni az Azure Active Directory átmenő hitelesítéshez
 
@@ -260,11 +260,11 @@ Először módosítsa a bejelentkezési módszer:
    ![A rendszer készen áll a konfigurálása lap képernyőképe](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image8.png)<br />
 7. Az Azure AD-portálon válassza **Azure Active Directory**, majd válassza ki **az Azure AD Connect**.
 8. Ellenőrizze a beállításokat:
-  * **Összevonási** értékre van állítva **letiltott**.
-  * **Zökkenőmentes egyszeri bejelentkezést** értékre van állítva **engedélyezve**.
-  * **Az átmenő hitelesítés** értékre van állítva **engedélyezve**.<br />
+   * **Összevonási** értékre van állítva **letiltott**.
+   * **Zökkenőmentes egyszeri bejelentkezést** értékre van állítva **engedélyezve**.
+   * **Az átmenő hitelesítés** értékre van állítva **engedélyezve**.<br />
 
-  ![A beállítások, a felhasználói bejelentkezési szakaszban képernyőkép](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image9.png)<br />
+   ![A beállítások, a felhasználói bejelentkezési szakaszban képernyőkép](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image9.png)<br />
 
 A Tovább gombra. Helyezze üzembe a további hitelesítési módszerek:
 
@@ -272,16 +272,16 @@ A Tovább gombra. Helyezze üzembe a további hitelesítési módszerek:
 2. Az a **átmenő hitelesítés** lapon válassza ki a **letöltése** gombra.
 3. Az a **letöltési ügynök** lapon jelölje be **feltételek elfogadása és letöltés**.
 
-  További hitelesítési ügynökök letöltése megkezdődött. Telepítse a másodlagos hitelesítés ügynököt egy tartományhoz csatlakoztatott kiszolgálón. 
+   További hitelesítési ügynökök letöltése megkezdődött. Telepítse a másodlagos hitelesítés ügynököt egy tartományhoz csatlakoztatott kiszolgálón. 
 
-  > [!NOTE]
-  > Az első ügynöki magán a kiszolgálón az Azure AD Connect részeként a végrehajtott konfigurációs módosításokat is mindig telepíti a **felhasználói bejelentkezés** az Azure AD Connect eszköz szakaszában. Minden olyan további hitelesítési ügynökök telepítése különálló kiszolgálón. Azt javasoljuk, hogy két vagy három további hitelesítési ügynökök érhető el. 
+   > [!NOTE]
+   > Az első ügynöki magán a kiszolgálón az Azure AD Connect részeként a végrehajtott konfigurációs módosításokat is mindig telepíti a **felhasználói bejelentkezés** az Azure AD Connect eszköz szakaszában. Minden olyan további hitelesítési ügynökök telepítése különálló kiszolgálón. Azt javasoljuk, hogy két vagy három további hitelesítési ügynökök érhető el. 
 
 4. Futtassa a hitelesítési ügynök telepítése. A telepítés során meg kell adnia egy globális rendszergazdai fiókjának hitelesítő adatait.
 
-  ![A telepítés gombra, a Microsoft Azure AD Connect hitelesítési ügynök csomag oldalon képernyőkép](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image11.png)
+   ![A telepítés gombra, a Microsoft Azure AD Connect hitelesítési ügynök csomag oldalon képernyőkép](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image11.png)
 
-  ![Képernyőkép a bejelentkezési oldal](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image12.png)
+   ![Képernyőkép a bejelentkezési oldal](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image12.png)
 
 5. Ha a hitelesítési ügynök van telepítve, visszatérhet az átmenő hitelesítés agent health-oldal a további ügynökök állapotának ellenőrzéséhez.
 

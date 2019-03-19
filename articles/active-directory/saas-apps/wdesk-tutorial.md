@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff88f25d4bf7fea09ea07673326e068840243b98
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 75d0e962169529ab8d17aeeeed8aab26e7b7e994
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176577"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880874"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wdesk"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Wdesk
 
@@ -219,7 +219,7 @@ Ahhoz, hogy az Azure AD-felhasználók Wdesk jelentkezzen be, akkor ki kell ép�
    
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/wdesk-tutorial/createuser1.png)  
 
-1. A **felhasználói** szöveget adja meg például a felhasználó felhasználóneve **brittasimon@contoso.com** kattintson **Folytatás** gombra.
+1. A **felhasználói** szöveg mezőbe írja be például a felhasználó felhasználóneve **brittasimon\@contoso.com** kattintson **Folytatás** gombra.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/wdesk-tutorial/createuser3.png)
 
@@ -227,7 +227,7 @@ Ahhoz, hogy az Azure AD-felhasználók Wdesk jelentkezzen be, akkor ki kell ép�
   
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/wdesk-tutorial/createuser4.png)
  
-    a. A **E-mail** szöveget adja meg az e-mailt, például a felhasználó **brittasimon@contoso.com**.
+    a. A **E-mail** szöveget adja meg az e-mailt, például a felhasználó **brittasimon\@contoso.com**.
 
     b. A **Utónév** szöveget adja meg például a felhasználó utónevét **Britta**.
 

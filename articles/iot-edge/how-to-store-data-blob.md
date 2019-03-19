@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 6f82f50ebaa7ad4440078d1fd4658109cf0e19b6
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 0fc34c913453abd174009213233a54e30b9346d3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57571286"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57881384"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>Az Azure Blob Storage a peremhálózaton data Store az IoT Edge-ben (előzetes verzió)
 
@@ -230,6 +230,7 @@ Kívánt tulajdonságok használatával állítsa be az automatikus rétegezést
 
 ### <a name="auto-tiering-properties"></a>Automatikus rétegezést tulajdonságai 
 Ez a beállítás neve `tieringSettings`
+
 | Mező | Lehetséges értékek | Magyarázat |
 | ----- | ----- | ---- |
 | tieringOn | IGAZ, hamis | Alapértelmezés szerint van beállítva `false`, ha azt szeretné a értékre `true`|
@@ -239,6 +240,7 @@ Ez a beállítás neve `tieringSettings`
 
 ### <a name="auto-expiration-properties"></a>Automatikus – lejárati tulajdonságai
 Ez a beállítás neve `ttlSettings`
+
 | Mező | Lehetséges értékek | Magyarázat |
 | ----- | ----- | ---- |
 | ttlOn | IGAZ, hamis | Alapértelmezés szerint van beállítva `false`, ha azt szeretné a értékre `true`|
@@ -272,7 +274,7 @@ Ez a beállítás neve `ttlSettings`
 
    ```
 
- ![automatikus rétegezést és az automatikus-lejárati tulajdonságainak beállítása](./media/how-to-store-data-blob/iotedge_custom_module.png)
+  ![automatikus rétegezést és az automatikus-lejárati tulajdonságainak beállítása](./media/how-to-store-data-blob/iotedge_custom_module.png)
 
 - **A modul "Ikermodul Identity" funkciójával üzembe helyezését követően**: Ugrás a "Identity Ikermodulja" Ez a modul, másolja ki a kívánt tulajdonságok a JSON, minden egyes tulajdonság konfigurálása a megfelelő értéket, és mentse. "Ikermodul Identity" Json-fájlban ellenőrizze, hogy minden alkalommal, amikor hozzáadásakor vagy bármelyik kívánt tulajdonságot, a `reported configuration` szakasz tükrözi a módosításokat, és a `configurationValidation` szakasz mindegyik tulajdonság sikeres befejezést jelent.
 
@@ -343,6 +345,9 @@ Ez a modul a kívánt tulajdonságok, például: ![azureblobstorageoniotedge –
     }
 
    ```
+  ## <a name="logs"></a>Logs
+
+Kövesse a lépéseket a [konfigurálása az IoT Edge-modulok a docker-naplók](production-checklist.md#set-up-logs-and-diagnostics)
 
 ## <a name="connect-to-your-blob-storage-module"></a>Csatlakozás a blob storage-modulban
 
@@ -378,7 +383,7 @@ Az alábbi rövid útmutatókat használja, így sikerült telepítheti őket, I
 * [Node.js](../storage/blobs/storage-quickstart-blobs-nodejs.md) 
 
 ### <a name="azure-storage-explorer"></a>Azure Storage Explorer
-Megpróbálhatja [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) a helyi storage-fiókhoz való csatlakozáshoz. A megpróbáltuk [korábbi verziót 1.5.0](https://go.microsoft.com/fwlink/?LinkId=809306&clcid=0x409) Azure Explorer.
+Megpróbálhatja [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) a helyi storage-fiókhoz való csatlakozáshoz. A megpróbáltuk [korábbi verziót 1.5.0](https://github.com/Microsoft/AzureStorageExplorer/releases/tag/v1.5.0) Azure Explorer.
 > [!NOTE]
 > Előfordulhat, hogy az alábbi lépéseket végrehajtása során hibákba ütközik, figyelmen kívül hagyása és a frissítés. 
 
@@ -388,8 +393,8 @@ Megpróbálhatja [Azure Storage Explorer](https://azure.microsoft.com/features/s
 4. Próbálja ki való csatlakozás lépéseit.
 5. Tároló belül a helyi storage-fiók létrehozása
 6. Blokkblobok formájában fájlok feltöltésének megkezdése.
-> [!NOTE]
-> Törölje a jelet a jelölőnégyzetből, és töltse fel. Ez a modul nem támogatja a lapblobokat. Megjelenik ez azonnali fájlok, például .ISO-fájlhoz, a .vhd, a .vhdx vagy a nagy fájlok feltöltése közben.
+   > [!NOTE]
+   > Törölje a jelet a jelölőnégyzetből, és töltse fel. Ez a modul nem támogatja a lapblobokat. Megjelenik ez azonnali fájlok, például .ISO-fájlhoz, a .vhd, a .vhdx vagy a nagy fájlok feltöltése közben.
 
 7. Ha szeretné, csatlakozzon az Azure storage-fiókok, ahol tölt fel az adatokat. Biztosít egy egyetlen nézetben a helyi tárfiók mind az Azure storage-fiók
 
@@ -445,7 +450,7 @@ Támogatott:
 Nem támogatott:
 * Blokk PUT URL-címről
 
-##<a name="feedback"></a>Visszajelzés:
+## <a name="feedback"></a>Visszajelzés:
 Visszajelzése nagyon fontos számunkra, hogy ez a modul és a szolgáltatások hasznos és könnyen használható. Ossza meg velünk tapasztalatait, és tudassa velünk, hogyan tehetjük gördülékenyebbé.
 
 Akkor is fel velünk a kapcsolatot: absiotfeedback@microsoft.com 

@@ -10,12 +10,12 @@ ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: 6e58fa83bfdce5e5363ef61d1e3deaa61397301a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f8692bac271c2b0a51fef358d2fc73d6cfc8fe97
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461933"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58004393"
 ---
 # <a name="sql-data-warehouse-data-management-partners"></a>Az SQL Data Warehouse adatkezelési partnerek
 Az adattárház-megoldást létrehozni, számos különböző iparágvezető eszközök közül választhat. Ez a cikk az adatok felügyeleti eszközöket és megoldásokat támogató Azure SQL Data Warehouse a Microsoft partnervállalatokban emeli ki.
@@ -49,7 +49,7 @@ Más partnerekkel kapcsolatos további információkért lásd: [üzleti intelli
 
 <!--Website links -->
 
-[coffing_website]:http://www.coffingdw.com/software/nexus/
+[coffing_website]:https://www.coffingdw.com/software/nexus/
 [inbrein_website]:http://microerd.com/
 [infolibrarian_website]:http://www.infolibcorp.com/metadata-management/software-tools
 [redpoint_it_website]:http://www.redpoint.net/products/customer-interaction-management/
@@ -84,7 +84,7 @@ Más partnerekkel kapcsolatos további információkért lásd: [üzleti intelli
 
 <!--Press links-->
 
-[coffing_press]:http://www.coffingdw.com/press-release-nexus-tuned-for-azure-sql-data-warehouse/
+[coffing_press]:https://www.coffingdw.com/press-release-nexus-tuned-for-azure-sql-data-warehouse/
 
 <!--[inbrein_press]:-->
 

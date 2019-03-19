@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7db08cde0df1ba3d9bc227758ab3ad00c1fc422
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2f569b497afe01db0fc4c3aa29589e6f2c538faf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207370"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108661"
 ---
 # <a name="quickstart-set-up-a-dev-environment"></a>Gyors útmutató: Fejlesztési környezet beállítása
 
@@ -55,8 +55,8 @@ Sok fejlesztő az Azure AD-bérlőkhöz kapcsolódó szolgáltatások vagy előf
 
 > [!TIP]
 > Ha meg kell keresnie a bérlőazonosítót, az alábbiakat teheti:
-* Helyezze a kurzort a fiók neve fölé a címtár-/bérlőazonosító lekéréséhez, vagy
-* válassza az Azure Portalon az **Azure Active Directory > Tulajdonságok > Címtár-azonosító** elemet.
+> * Helyezze a kurzort a fiók neve fölé a címtár-/bérlőazonosító lekéréséhez, vagy
+> * válassza az Azure Portalon az **Azure Active Directory > Tulajdonságok > Címtár-azonosító** elemet.
 
 Ha nincs társítva meglévő bérlő a fiókkal, egy GUID-t lát a fiók neve alatt, és nem hajthat végre műveleteket, például nem regisztrálhat alkalmazásokat, amíg végre nem hajtja a következő részben található lépéseket.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: mbullwin
-ms.openlocfilehash: 8218da62eb8c3d8c454ca1dca1bd1071e0de67b0
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 3c74d3a6c5b66053fb968ad52f72eca181799a3c
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57308754"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003576"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Adatgyűjtés, megőrzés és tárolás az Application Insights szolgáltatásban
 
@@ -156,12 +156,12 @@ Kód:
 
 - A konfigurációs fájlból ServerTelemetryChannel eltávolítása
 - Ez a kódrészlet hozzá a konfigurációhoz:
-```csharp
-ServerTelemetryChannel channel = new ServerTelemetryChannel();
-channel.StorageFolder = @"D:\NewTestFolder";
-channel.Initialize(TelemetryConfiguration.Active);
-TelemetryConfiguration.Active.TelemetryChannel = channel;
-```
+  ```csharp
+  ServerTelemetryChannel channel = new ServerTelemetryChannel();
+  channel.StorageFolder = @"D:\NewTestFolder";
+  channel.Initialize(TelemetryConfiguration.Active);
+  TelemetryConfiguration.Active.TelemetryChannel = channel;
+  ```
 
 ### <a name="netcore"></a>NetCore
 
@@ -237,6 +237,7 @@ A funkció azonban az alkalmazásban is alkalmazható. Minden SDK-t egy API-beá
 Az SDK-k platformok közötti eltérőek lehetnek, és több összetevőt, amelyet telepíthet. (Tekintse meg [Application Insights – áttekintés][start].) Az egyes összetevők különböző adatokat küld.
 
 #### <a name="classes-of-data-sent-in-different-scenarios"></a>Osztályok különböző helyzetekben küldött adatok
+
 | A művelet | (Lásd a következő tábla) gyűjtött adatok osztályok |
 | --- | --- |
 | [Application Insights SDK hozzáadása egy .NET webes projekthez][greenbrown] |ServerContext<br/>Következtetni<br/>Teljesítményszámlálók<br/>Kérelmek<br/>**Kivételek**<br/>Munkamenet<br/>felhasználók |
@@ -252,6 +253,7 @@ Az SDK-k platformok közötti eltérőek lehetnek, és több összetevőt, amely
 A [platformokhoz készült SDK-k][platforms], tekintse meg a dokumentumokat.
 
 #### <a name="the-classes-of-collected-data"></a>Az összegyűjtött adatokat a osztályok
+
 | Összegyűjtött adatok osztályban | Tartalmazza (nem egy kimerítően teljes lista) |
 | --- | --- |
 | **Tulajdonságok** |**Minden olyan adat - határozza meg a kódot** |

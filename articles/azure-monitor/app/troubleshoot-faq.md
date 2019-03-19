@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 810a4708974d18a4bba048e3e402a172868178f3
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 400583f50e898bfc750a387bf0ee83a3147e5006
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429689"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57905059"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Az Application Insights: Gyakori kérdések
 
@@ -257,7 +257,7 @@ Szolgáltatások és IP-címek listájának teljes áttekintése [Itt](../../azu
 
 A webkiszolgáló, hogy küldjön telemetriát a végpontok engedélyezése. 
 
-### <a name="proxy-redirect"></a>Proxy-átirányítás
+### <a name="gateway-redirect"></a>Átjáró-átirányítás
 
 Forgalom irányítása a kiszolgálóról, a konfiguráció végpontok felülírásával intraneten átjáró.
 Ha a "Végpont" tulajdonságok nem szerepelnek a config, ezeket az osztályokat az alább látható az ApplicationInsights.config példában alapértelmezett értékeket fogja használni. 
@@ -288,7 +288,19 @@ Az átjáró kell irányítani a végpont základní adresa. Az alapértelmezett
 
 _Megjegyzés ApplicationIdProvider érhető el a v2.6.0 indítása_
 
+### <a name="proxy-passthrough"></a>Proxy-továbbító
 
+Egy gép szintje vagy az alkalmazás szintjén konfigurálásával biztosíthatja proxy csatlakoztatott proxy.
+További információ: dotnet a cikk a [DefaultProxy](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings).
+ 
+ Példa Web.config:
+ ```xml
+<system.net>
+    <defaultProxy>
+      <proxy proxyaddress="http://xx.xx.xx.xx:yyyy" bypassonlocal="true"/>
+    </defaultProxy>
+</system.net>
+```
  
 
 ## <a name="can-i-run-availability-web-tests-on-an-intranet-server"></a>Rendelkezésre állási webes tesztek futtathatok egy intranetes kiszolgálóra?

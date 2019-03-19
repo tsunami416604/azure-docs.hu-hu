@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: d6121a0255b809deccb3c70d56585bab76935900
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 86d50092ccffd5ab958df5d54ea49cd56d815e2e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110353"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082160"
 ---
 # <a name="protecting-azure-sql-service-and-data-in-azure-security-center"></a>Az Azure SQL-szolgáltatás és az Azure Security Center adatok védelme
 Az Azure Security Center elemzi az Azure-erőforrások biztonsági állapotát. Ha a Security Center azonosítja a potenciális biztonsági réseket, javaslatok, amelyek végigvezetik a szükséges vezérlők konfigurálásának folyamatán hoz létre.  Javaslatok alkalmazása az Azure-erőforrástípus: virtuális gépek (VM), hálózati, SQL és az adatokhoz és alkalmazásokhoz.
@@ -65,7 +65,7 @@ A naplózás engedélyezéséhez módosítsa az **Auditing** (Naplózás) beáll
 |SQL|30|SQL-adatbázisok biztonsági réseinek javítása|SQL-sebezhetőségi felmérés megvizsgálja az adatbázis a biztonsági kockázatokat, és elérhetővé teszi a bármely gyakorlattól eltérő jelenségeket, például a konfigurációs hibák, a túlságosan széleskörű engedélyeket és a bizalmas adatok nem védett. A biztonsági réseket talált feloldása nagy mértékben javíthatják a az adatbázis biztonsági helyzetében.|
 |SQL|20|Azure AD-rendszergazdai fiók kiépítése az SQL Serverhez|Az Azure AD-hitelesítés engedélyezése az SQL Serverhez Azure AD-rendszergazda üzembe helyezhető. Az Azure AD-hitelesítés lehetővé teszi, hogy egyszerűsített engedélyek kezelését és az adatbázis-felhasználók és más Microsoft-szolgáltatások központi identitáskezeléssel.|
 |Tárfiók|15|Tárfiók korlátlan hálózati elérésének letiltása|A storage-fiók tűzfal beállításait a nem korlátozott hálózati hozzáférés naplózása. Konfigurálja a hálózati szabályok, az engedélyezett hálózatok csak alkalmazások férhetnek hozzá a tárfiók. Az adott internetről fogadjon kapcsolatokat, vagy egy helyszíni ügyfelek, a hozzáférés adható adott Azure virtuális hálózatok forgalmát, vagy nyilvános internetes IP-címtartományok.|
-|Tárfiók|1||Tárfiókok migrálása az új AzureRM-erőforrásokra|Használja az új Azure Resource Manager 2-es verzió, a storage-fiókokat adja meg például a biztonsági fejlesztések: erősebb hozzáférés-vezérlés (RBAC), a jobb naplózás, a Resource Manager-alapú üzembe helyezés és a cégirányítási, elérését a felügyelt identitások, a key vaulthoz való hozzáférés titkos kódok, az Azure AD-alapú hitelesítést és címkék támogatása és -erőforráscsoportok egyszerűbb biztonság kezelése.|
+|Tárfiók|1|Tárfiókok migrálása az új AzureRM-erőforrásokra|Használja az új Azure Resource Manager 2-es verzió, a storage-fiókokat adja meg például a biztonsági fejlesztések: erősebb hozzáférés-vezérlés (RBAC), a jobb naplózás, a Resource Manager-alapú üzembe helyezés és a cégirányítási, elérését a felügyelt identitások, a key vaulthoz való hozzáférés titkos kódok, az Azure AD-alapú hitelesítést és címkék támogatása és -erőforráscsoportok egyszerűbb biztonság kezelése.|
 
 
 

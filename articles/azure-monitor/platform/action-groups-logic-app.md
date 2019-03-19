@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 207d1f7f5eb4db4203f2595a06f943e8ae69881e
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: e69158a6ee4d8415f52cf458c028cab56f481d8b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432030"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58121128"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Hogyan összetett műveletek indítása az Azure Monitor riasztások
 
@@ -275,19 +275,19 @@ A metrikariasztás létrehozása a folyamat hasonlít a [tevékenységnapló-ria
 - 9 és 10 lépései megegyeznek.
 - 14 – 11. lépéseket a következő folyamat használja:
 
-   1. Válassza ki **+** **új lépés** majd **feltétel hozzáadása**. Állítsa be a következő feltételek, így a logikai alkalmazás hajt végre, ha a bemeneti adatok megfelel az alábbi ezeket az értékeket. Írja be a verzió értékét a szövegmezőbe, helyezze idézőjelek ("2.0"), körülötte való gondoskodik róla, hogy ha egy karakterláncot és egy numerikus típus nem értékeli.  A rendszer nem jeleníti meg az idézőjelek között, ha visszatérhet erre az oldalra, de a mögöttes kód továbbra is fenntartja a string típussá. 
-       - `schemaId == AzureMonitorMetricAlert`
-       - `version == "2.0"`
+  1. Válassza ki **+** **új lépés** majd **feltétel hozzáadása**. Állítsa be a következő feltételek, így a logikai alkalmazás hajt végre, ha a bemeneti adatok megfelel az alábbi ezeket az értékeket. Írja be a verzió értékét a szövegmezőbe, helyezze idézőjelek ("2.0"), körülötte való gondoskodik róla, hogy ha egy karakterláncot és egy numerikus típus nem értékeli.  A rendszer nem jeleníti meg az idézőjelek között, ha visszatérhet erre az oldalra, de a mögöttes kód továbbra is fenntartja a string típussá. 
+     - `schemaId == AzureMonitorMetricAlert`
+     - `version == "2.0"`
        
        !["A metrikaalapú riasztási hasznos feltétel"](media/action-groups-logic-app/metric-alert-payload-condition.png "Metrikaalapú riasztási hasznos feltétel")
 
-   1. Az a **ha igaz** feltételt, adjon hozzá egy **minden** hurok és a Microsoft Teams-művelet. Adja meg az üzenet HTML és a dinamikus tartalom együttes használatával.
+  1. Az a **ha igaz** feltételt, adjon hozzá egy **minden** hurok és a Microsoft Teams-művelet. Adja meg az üzenet HTML és a dinamikus tartalom együttes használatával.
 
-       !["A metrikaalapú riasztási igaz post művelet"](media/action-groups-logic-app/metric-alert-true-condition-post-action.png "Metrikaalapú riasztási igaz post művelet")
+      !["A metrikaalapú riasztási igaz post művelet"](media/action-groups-logic-app/metric-alert-true-condition-post-action.png "Metrikaalapú riasztási igaz post művelet")
 
-   1. Az a **ha hamis** feltételt, való kommunikációhoz, hogy a metrikaalapú riasztás nem felel meg az elvárásainak, a logikai alkalmazás egy Microsoft Teams műveletet definiálhat. Például a JSON-adattartalmat. Figyelje meg, hogy miként lehet hivatkozni a `triggerBody` a dinamikus tartalom a `json()` kifejezés.
+  1. Az a **ha hamis** feltételt, való kommunikációhoz, hogy a metrikaalapú riasztás nem felel meg az elvárásainak, a logikai alkalmazás egy Microsoft Teams műveletet definiálhat. Például a JSON-adattartalmat. Figyelje meg, hogy miként lehet hivatkozni a `triggerBody` a dinamikus tartalom a `json()` kifejezés.
 
-       !["Riasztás false (hamis) metrikai feltétel post művelet"](media/action-groups-logic-app/metric-alert-false-condition-post-action.png "Metrikaalapú riasztási hamis feltétel post művelet")
+      !["Riasztás false (hamis) metrikai feltétel post művelet"](media/action-groups-logic-app/metric-alert-false-condition-post-action.png "Metrikaalapú riasztási hamis feltétel post művelet")
 
 - 15. lépés megegyezik. Kövesse az utasításokat a logikai alkalmazás mentéséhez és a műveletcsoport frissítéséhez.
 

@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: vaangadi
 ms.topic: tutorial
 ms.date: 03/01/2019
-ms.openlocfilehash: 336903b6cd451e25f7c696e445be724989c39996
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 648369d89bd2b5b08171e1f6f5482c81bfba3c66
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761939"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58010336"
 ---
 # <a name="tutorial-create-a-hub-and-spoke-hybrid-network-topology-with-terraform-in-azure"></a>Oktatóanyag: Eseményközpont létrehozásához, küllős a hibrid hálózati topológiák a terraform használatával Azure-ban
 
@@ -81,7 +81,7 @@ Minden oktatóanyag-sorozat használata során különböző összetevők külö
 
 Hozzon létre tartalmazó könyvtárt a Terraform konfigurációs fájlokat szeretne a bemutatóra.
 
-1. Keresse fel az [Azure Portalt](http://portal.azure.com).
+1. Keresse fel az [Azure Portalt](https://portal.azure.com).
 
 1. Nyissa meg az [Azure Cloud Shellt](/azure/cloud-shell/overview). Ha még nem választott ki környezetet, válassza a **Bash** környezetet.
 

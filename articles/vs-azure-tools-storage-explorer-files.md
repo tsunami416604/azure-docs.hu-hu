@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: 391c5cc3b25d58faeb2615c29a76164d4e5292f2
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: fe3a8ab5b43c41b7e9f79f92de674515377fa9ec
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57759139"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57847297"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>A Storage Explorer használata az Azure File Storage szolgáltatással
 
@@ -31,7 +31,7 @@ A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
 - [A Storage Explorer letöltése és telepítése](https://www.storageexplorer.com/)
 
-- [Csatlakozás egy Azure-tárfiókhoz vagy -szolgáltatáshoz](https://docs.microsoft.com//azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
+- [Csatlakozhat egy Azure storage-fiók vagy szolgáltatás](https://docs.microsoft.com//azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
 
 ## <a name="create-a-file-share"></a>Fájlmegosztás létrehozása
 

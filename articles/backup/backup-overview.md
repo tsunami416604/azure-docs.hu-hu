@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 02/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: b590d75abb9e3f6465594a5c8c684b94e6f2e07f
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: d1debbcc8f225a0d4608d67b19e5e00aca580ce1
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56864297"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122012"
 ---
 # <a name="what-is-azure-backup"></a>Mi az az Azure Backup?
 
@@ -55,10 +55,10 @@ Mindkét szolgáltatás különböző, de egymást kiegészítő funkciót kín�
 A tábla pontok használatával segít azonosítani a BCDR-igényeinek. 
 
 **Objective** | **Részletek** | **Összehasonlítás**
---- | --- | --- | --- |
+--- | --- | --- 
 **Adatok biztonsági mentése és megőrzése** | Biztonsági mentési adatok őrződnek meg, illetve tárolt napig, hónapok vagy évek még ha a megfelelőség szempontjából szükséges. | Például az Azure Backup biztonsági mentési megoldások lehetővé teszik, hogy válasszon a készíteni kívánt adatokat, és hogy a biztonsági mentési és adatmegőrzési szabályzatok hangolása céljából.<br/><br/> A Site Recovery nem teszi lehetővé az azonos finomhangolása.
 **Helyreállítási időkorlát (RPO)** | Az elfogadható adatveszteség mennyisége, ha helyreállítást kell végezni. | Biztonsági másolatok több változó RPO rendelkezik.<br/><br/> Virtuális gép biztonsági mentéseinek általában rendelkeznek egy nap az RPO, míg adatbázisok biztonsági mentései rpo-k akár 15 percet is.<br/><br/> A Site recoveryben alacsony RPO-e a replikáció folyamatos vagy gyakori, úgy, hogy a különbözeti között a forrás és a replika másolás kis óta.
-**A helyreállítási időre vonatkozó célkitűzés (RTO)** |A helyreállítás vagy visszaállítás elvégzéséhez szükséges idő. | A nagyobb RPO miatt a biztonsági mentési megoldások által feldolgozandó adatmennyiség általában sokkal nagyobb, ami hosszabb RTO-khoz vezet. Napokba telhet például az adatok szalagokról való visszaállítása attól függően, hogy mennyi ideig tart a szalag szállítása egy külső helyről. | Például a Site Recovery a vészhelyreállítási megoldások alacsony RPO lehet, mert a replikáció folyamatos/gyakran használják általában azt jelenti, hogy, hogy a cél a szigorúbban szinkronizálva van a forrás. |
+**A helyreállítási időre vonatkozó célkitűzés (RTO)** |A helyreállítás vagy visszaállítás elvégzéséhez szükséges idő. | A nagyobb RPO miatt a biztonsági mentési megoldások által feldolgozandó adatmennyiség általában sokkal nagyobb, ami hosszabb RTO-khoz vezet. Napokba telhet például az adatok szalagokról való visszaállítása attól függően, hogy mennyi ideig tart a szalag szállítása egy külső helyről. 
 
 ## <a name="what-backup-scenarios-are-supported"></a>Milyen biztonsági mentési forgatókönyvek támogatottak?
 

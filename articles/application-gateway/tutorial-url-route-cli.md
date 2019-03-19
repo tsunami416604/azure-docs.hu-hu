@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 10/25/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 68532ec4ae7e6d6b496ece8d08755555f756a60e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.openlocfilehash: 4f0c93c41a468b62baf1ec50d030f235d36a8dd2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413451"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006473"
 ---
-# <a name="tutorial-route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Oktatóanyag – Webes forgalom irányítása URL-cím alapján az Azure CLI használatával
+# <a name="tutorial-route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Oktatóanyag: Webes forgalom irányítása az Azure CLI-vel, az URL-cím alapján
 
 A webes forgalmat felügyelő rendszergazdaként a feladatai közé tartozik annak a biztosítása, hogy az ügyfelek és a felhasználók minél gyorsabban érhessék el a szükséges információkat. Ennek az egyik módja, ha a különböző típusú webes forgalmakat különböző kiszolgáló-erőforrásokra irányítja. Ez az oktatóanyag azt mutatja be, hogyan állíthatja be és konfigurálhatja az Azure CLI-vel az Application Gateway-útválasztást az alkalmazásból érkező különböző típusú adatforgalmakhoz. Az útválasztás ezután URL-cím alapján különböző kiszolgálókészletekre irányítja a forgalmat.
 
@@ -234,7 +234,7 @@ done
 
 ## <a name="test-the-application-gateway"></a>Az alkalmazásátjáró tesztelése
 
-Az alkalmazásátjáró nyilvános IP-címének lekéréséhez használja az az network public-ip show parancsot. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Például: *http://40.121.222.19*, *http://40.121.222.19:8080/images/test.htm* vagy *http://40.121.222.19:8080/video/test.htm*.
+Az alkalmazásátjáró nyilvános IP-címének lekéréséhez használja az az network public-ip show parancsot. Másolja a nyilvános IP-címet, majd illessze be a böngésző címsorába. Például `http://40.121.222.19`, `http://40.121.222.19:8080/images/test.htm`, vagy `http://40.121.222.19:8080/video/test.htm`.
 
 ```azurecli-interactive
 az network public-ip show \

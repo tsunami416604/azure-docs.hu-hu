@@ -8,12 +8,12 @@ ms.author: ramonarguelles
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 288c11c54fd86b53314e2d7f32c788ff64831641
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: f560b82e5efab21ea335e74c97efd15e7c6e3702
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56753189"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850734"
 ---
 # <a name="create-and-locate-anchors-using-azure-spatial-anchors-in-objective-c"></a>Hozzon létre, és keresse meg a horgonyok Azure térbeli horgonyok Objective-C használatával
 
@@ -25,9 +25,11 @@ ms.locfileid: "56753189"
 > * [C++/NDK](create-locate-anchors-cpp-ndk.md)
 > * [C++/WinRT](create-locate-anchors-cpp-winrt.md)
 
-Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti megosztását teszi lehetővé. Azt jól működnek a választott fejlesztési környezetben, amennyiben. Ebben a cikkben fogja nekikezdenénk megtudhatja, hogyan teheti az Objective-c-hez
+Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti megosztását teszi lehetővé. Támogatja a több fejlesztési környezet. Ebben a cikkben fogja nekikezdenénk megtudhatja, hogyan teheti az Objective-c-hez
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
+
+Tudjon meg többet a [ASACloudSpatialAnchorSession](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession) osztály.
 
 ```objc
     ASACloudSpatialAnchorSession *_cloudSession;
@@ -36,6 +38,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 ```
 
 [!INCLUDE [Account Keys](../../../includes/spatial-anchors-create-locate-anchors-account-keys.md)]
+
+Tudjon meg többet a [ASASessionConfiguration](https://docs.microsoft.com/objectivec/api/spatial-anchors/asasessionconfiguration) osztály.
 
 ```objc
     _cloudSession.configuration.accountKey = @"MyAccountKey";
@@ -48,6 +52,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 ```
 
 [!INCLUDE [Access Tokens Event](../../../includes/spatial-anchors-create-locate-anchors-access-tokens-event.md)]
+
+Tudjon meg többet a [tokenRequired](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#tokenrequired) protokollok metódus.
 
 ```objc
     - (void)tokenRequired:(ASACloudSpatialAnchorSession *)cloudSession :(ASATokenRequiredEventArgs *)args {
@@ -95,6 +101,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 
 [!INCLUDE [Setup](../../../includes/spatial-anchors-create-locate-anchors-setup-ios.md)]
 
+Tudjon meg többet a [start](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#start) metódust.
+
 ```objc0
     _cloudSession.session = self.sceneView.session;
     _cloudSession.delegate = self;
@@ -103,11 +111,15 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 
 [!INCLUDE [Frames](../../../includes/spatial-anchors-create-locate-anchors-frames.md)]
 
+Tudjon meg többet a [processFrame](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#processframe) metódust.
+
 ```objc
     [_cloudSession processFrame:_sceneView.session.currentFrame];
 ```
 
 [!INCLUDE [Feedback](../../../includes/spatial-anchors-create-locate-anchors-feedback.md)]
+
+Tudjon meg többet a [sessionUpdated](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#sessionupdated) protokollok metódus.
 
 ```objc
     - (void)sessionUpdated:(ASACloudSpatialAnchorSession *)cloudSession :(ASASessionUpdatedEventArgs *)args {
@@ -121,6 +133,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 ```
 
 [!INCLUDE [Creating](../../../includes/spatial-anchors-create-locate-anchors-creating.md)]
+
+Tudjon meg többet a [ASACloudSpatialAnchor](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor) osztály.
 
 ```objc
     // Create a local anchor, perhaps by hit-testing and creating an ARAnchor
@@ -147,6 +161,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 
 [!INCLUDE [Session Status](../../../includes/spatial-anchors-create-locate-anchors-session-status.md)]
 
+Tudjon meg többet a [getSessionStatusWithCompletionHandler](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#getsessionstatus) metódust.
+
 ```objc
     [_cloudSession getSessionStatusWithCompletionHandler:^(ASASessionStatus *value, NSError *error) {
         if (error) {
@@ -160,6 +176,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 
 [!INCLUDE [Setting Properties](../../../includes/spatial-anchors-create-locate-anchors-setting-properties.md)]
 
+Tudjon meg többet a [appProperties](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor#appproperties) tulajdonság.
+
 ```objc
     ASACloudSpatialAnchor *cloudAnchor = [[ASACloudSpatialAnchor alloc] init];
     cloudAnchor.localAnchor = localAnchor;
@@ -171,6 +189,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 
 [!INCLUDE [Update Anchor Properties](../../../includes/spatial-anchors-create-locate-anchors-updating-properties.md)]
 
+Tudjon meg többet a [updateAnchorProperties](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#updateanchorproperties) metódust.
+
 ```objc
     ASACloudSpatialAnchor *anchor = /* locate your anchor */;
     [anchor.appProperties setValue:@"just now" forKey:@"last-user-access"];
@@ -180,6 +200,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 ```
 
 [!INCLUDE [Getting Properties](../../../includes/spatial-anchors-create-locate-anchors-getting-properties.md)]
+
+Tudjon meg többet a [getAnchorProperties](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#getanchorproperties) metódust.
 
 ```objc
     [_cloudSession getAnchorProperties:@"anchorId" withCompletionHandler:^(SCCCloudSpatialAnchor *anchor, NSError *error) {
@@ -198,6 +220,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 
 [!INCLUDE [Expiration](../../../includes/spatial-anchors-create-locate-anchors-expiration.md)]
 
+Tudjon meg többet a [lejárati](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchor#expiration) tulajdonság.
+
 ```objc
     int secondsInAWeek = 60 * 60 * 24 * 7;
     NSDate *oneWeekFromNow = [[NSDate alloc] initWithTimeIntervalSinceNow: (NSTimeInterval) secondsInAWeek];
@@ -206,6 +230,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 
 [!INCLUDE [Locate](../../../includes/spatial-anchors-create-locate-anchors-locating.md)]
 
+Tudjon meg többet a [createWatcher](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#createwatcher) metódust.
+
 ```objc
     ASAAnchorLocateCriteria *criteria = [ASAAnchorLocateCriteria new];
     criteria.identifiers = @[ @"id1", @"id2", @"id3" ];
@@ -213,6 +239,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 ```
 
 [!INCLUDE [Locate Events](../../../includes/spatial-anchors-create-locate-anchors-locating-events.md)]
+
+Tudjon meg többet a [anchorLocated](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsessiondelegate#anchorlocated) protokollok metódus.
 
 ```objc
     - (void)anchorLocated:(ASACloudSpatialAnchorSession *)cloudSession :(ASAAnchorLocatedEventArgs *)args {
@@ -240,6 +268,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 
 [!INCLUDE [Deleting](../../../includes/spatial-anchors-create-locate-anchors-deleting.md)]
 
+Tudjon meg többet a [deleteAnchor](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#deleteanchor) metódust.
+
 ```objc
     [_cloudSession deleteAnchor:cloudAnchor withCompletionHandler:^(NSError *error) {
         // Perform any processing you may want when delete finishes
@@ -248,11 +278,15 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 
 [!INCLUDE [Stopping](../../../includes/spatial-anchors-create-locate-anchors-stopping.md)]
 
+Tudjon meg többet a [leállítása](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#stop) metódust.
+
 ```objc
     [_cloudSession stop];
 ```
 
 [!INCLUDE [Resetting](../../../includes/spatial-anchors-create-locate-anchors-resetting.md)]
+
+Tudjon meg többet a [alaphelyzetbe](https://docs.microsoft.com/objectivec/api/spatial-anchors/asacloudspatialanchorsession#reset) metódust.
 
 ```objc
     [_cloudSession reset];

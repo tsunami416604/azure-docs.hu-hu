@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ed414d47da2d7ce243de7a1de09964904502bbe
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 73f6126d6bf172a35a284e92b65b1c3ef449949e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57407501"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57904133"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asana"></a>Oktatóanyag: Az Azure Active Directory integrációja az Asanában
 
@@ -159,7 +159,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
@@ -204,7 +204,7 @@ Ebben a szakaszban egy asana Britta Simon nevű felhasználó létrehozásához.
 
     ![Az Azure ad-ben tesztfelhasználó létrehozása](./media/asana-tutorial/tutorial_asana_12.png)
 
-2. Írja be az e-mail a felhasználó például **britta.simon@contoso.com** a szövegmezőbe, és válassza ki a **meghívása**.
+2. Írja be az e-mail a felhasználó például **britta.simon\@contoso.com** a szövegmezőbe, és válassza ki a **meghívása**.
 
 3. Kattintson a **meghívó küldése**. Az új felhasználó kap egy e-mailt saját e-mail-fiókba. felhasználó létrehozása és érvényesíteni a fiókot kell.
 
@@ -222,4 +222,4 @@ Ha a hozzáférési panelen az Asanában csempére kattint, meg kell lehet autom
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-* [Felhasználók átadásának konfigurálása](asana-provisioning-tutorial.md)
+- [Felhasználók átadásának konfigurálása](asana-provisioning-tutorial.md)

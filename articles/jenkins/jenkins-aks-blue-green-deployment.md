@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/11/2018
-ms.openlocfilehash: 9bd601aee87ab0776069c80bfdeffb70b06c3c86
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 93f2ac284931ba664e0965e537e515c824e6f7a6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54073883"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092293"
 ---
 # <a name="deploy-to-azure-kubernetes-service-aks-by-using-jenkins-and-the-bluegreen-deployment-pattern"></a>Üzembe helyezés az Azure Kubernetes Service-be (AKS) a Jenkins és a kék/zöld üzembehelyezési minta használatával
 
@@ -117,12 +117,12 @@ Egy kék/zöld üzembe helyezést beállíthat az AKS-ben manuálisan vagy a kor
 #### <a name="set-up-the-kubernetes-cluster-via-the-sample-setup-script"></a>A Kubernetes-fürt beállítása a minta beállítási szkripttel
 1. A **deploy/aks/setup/setup.sh** fájlt szerkesztve cserélje le a következő helyőrzőket a saját környezete megfelelő értékeivel: 
 
-    - **&lt;your-resource-group-name>** (erőforráscsoport neve)
-    - **&lt;your-kubernetes-cluster-name>** (Kubernetes-fürt neve)
-    - **&lt;your-location>** (hely)
-    - **&lt;your-dns-name-suffix>** (DNS-név utótagja)
+   - **&lt;your-resource-group-name>** (erőforráscsoport neve)
+   - **&lt;your-kubernetes-cluster-name>** (Kubernetes-fürt neve)
+   - **&lt;your-location>** (hely)
+   - **&lt;your-dns-name-suffix>** (DNS-név utótagja)
 
-    ![Képernyőkép a setup.sh szkriptről a Bashben, helyőrzők kiemelve](./media/jenkins-aks-blue-green-deployment/edit-setup-script.png)
+     ![Képernyőkép a setup.sh szkriptről a Bashben, helyőrzők kiemelve](./media/jenkins-aks-blue-green-deployment/edit-setup-script.png)
 
 1. Futtassa a beállítási szkriptet.
 

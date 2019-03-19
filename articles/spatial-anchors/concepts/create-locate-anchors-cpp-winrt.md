@@ -8,12 +8,12 @@ ms.author: ramonarguelles
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 1966a0f360a1b214f8fc7b3d3c94ec817e5a4232
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: e2e6b6c22f94a35b50ff51f19b1959135b3c4c34
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56753041"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57875498"
 ---
 # <a name="create-and-locate-anchors-using-azure-spatial-anchors-in-cwinrt"></a>Hozzon létre, és keresse meg a C + Azure térbeli horgonyok használatával horgonyok +/ WinRT
 
@@ -25,9 +25,11 @@ ms.locfileid: "56753041"
 > * [C++/NDK](create-locate-anchors-cpp-ndk.md)
 > * [C++/WinRT](create-locate-anchors-cpp-winrt.md)
 
-Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti megosztását teszi lehetővé. Azt jól működnek a választott fejlesztési környezetben, amennyiben. Ebben a cikkben azt részletesen ismerteti, hogyan lehet a C + +/ WinRT.
+Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti megosztását teszi lehetővé. Támogatja a több fejlesztési környezet. Ebben a cikkben azt részletesen ismerteti, hogyan lehet a C + +/ WinRT.
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
+
+Tudjon meg többet a [CloudSpatialAnchorSession](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession) osztály.
 
 ```cpp
     SpatialAnchorsFactory m_asafactory{ nullptr };
@@ -39,6 +41,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 ```
 
 [!INCLUDE [Account Keys](../../../includes/spatial-anchors-create-locate-anchors-account-keys.md)]
+
+Tudjon meg többet a [SessionConfiguration](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/sessionconfiguration) osztály.
 
 ```cpp
     auto configuration = m_cloudSession.Configuration();
@@ -53,6 +57,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 ```
 
 [!INCLUDE [Access Tokens Event](../../../includes/spatial-anchors-create-locate-anchors-access-tokens-event.md)]
+
+Tudjon meg többet a [TokenRequiredDelegate](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/tokenrequireddelegate) delegálására.
 
 ```cpp
     m_accessTokenRequiredToken = m_cloudSession.TokenRequired(winrt::auto_revoke, [](auto&&, auto&& args) {
@@ -101,11 +107,23 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 
 [!INCLUDE [Setup](../../../includes/spatial-anchors-create-locate-anchors-setup-non-ios.md)]
 
+Tudjon meg többet a [Start](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#start) metódust.
+
 ```cpp
     m_cloudSession.Start();
 ```
 
+[!INCLUDE [Frames](../../../includes/spatial-anchors-create-locate-anchors-frames.md)]
+
+Tudjon meg többet a [ProcessFrame](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#processframe) metódust.
+
+```cpp
+    m_cloudSession->ProcessFrame(ar_frame_);
+```
+
 [!INCLUDE [Feedback](../../../includes/spatial-anchors-create-locate-anchors-feedback.md)]
+
+Tudjon meg többet a [SessionUpdatedDelegate](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/sessionupdateddelegate) delegálására.
 
 ```cpp
     m_sessionUpdatedToken = m_cloudSession.SessionUpdated(winrt::auto_revoke, [this](auto&&, auto&& args)
@@ -118,6 +136,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 ```
 
 [!INCLUDE [Creating](../../../includes/spatial-anchors-create-locate-anchors-creating.md)]
+
+Tudjon meg többet a [CloudSpatialAnchor](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchor) osztály.
 
 ```cpp
     // Initialization
@@ -153,6 +173,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 
 [!INCLUDE [Session Status](../../../includes/spatial-anchors-create-locate-anchors-session-status.md)]
 
+Tudjon meg többet a [GetSessionStatusAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#getsessionstatusasync) metódust.
+
 ```cpp
     SessionStatus status = co_await m_cloudSession.GetSessionStatusAsync();
     if (value.RecommendedForCreateProgress() < 1.0f) return;
@@ -160,6 +182,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 ```
 
 [!INCLUDE [Setting Properties](../../../includes/spatial-anchors-create-locate-anchors-setting-properties.md)]
+
+Tudjon meg többet a [AppProperties](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchor#appproperties) metódust.
 
 ```cpp
     CloudSpatialAnchor cloudAnchor = m_asafactory.CreateCloudSpatialAnchor();
@@ -172,6 +196,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 
 [!INCLUDE [Update Anchor Properties](../../../includes/spatial-anchors-create-locate-anchors-updating-properties.md)]
 
+Tudjon meg többet a [UpdateAnchorPropertiesAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#updateanchorpropertiesasync) metódust.
+
 ```cpp
     CloudSpatialAnchor anchor = /* locate your anchor */;
     anchor.AppProperties().Insert(LR"(last-user-access)", LR"(just now)");
@@ -179,6 +205,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 ```
 
 [!INCLUDE [Getting Properties](../../../includes/spatial-anchors-create-locate-anchors-getting-properties.md)]
+
+Tudjon meg többet a [GetAnchorPropertiesAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#getanchorpropertiesasync) metódust.
 
 ```cpp
     CloudSpatialAnchor anchor = co_await m_cloudSession.GetAnchorPropertiesAsync(LR"(anchorId)");
@@ -191,6 +219,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 
 [!INCLUDE [Expiration](../../../includes/spatial-anchors-create-locate-anchors-expiration.md)]
 
+Tudjon meg többet a [lejárati](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchor#expiration) metódust.
+
 ```cpp
     const int64_t oneWeekFromNowInHours = 7 * 24;
     const DateTime oneWeekFromNow = DateTime::clock::now() + std::chrono::hours(oneWeekFromNowInHours);
@@ -199,6 +229,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 
 [!INCLUDE [Locate](../../../includes/spatial-anchors-create-locate-anchors-locating.md)]
 
+Tudjon meg többet a [CreateWatcher](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#createwatcher) metódust.
+
 ```cpp
     AnchorLocateCriteria criteria = m_asafactory.CreateAnchorLocateCriteria();
     criteria.Identifiers({ LR"(id1)", LR"(id2)", LR"(id3)" });
@@ -206,6 +238,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 ```
 
 [!INCLUDE [Locate Events](../../../includes/spatial-anchors-create-locate-anchors-locating-events.md)]
+
+Tudjon meg többet a [AnchorLocatedDelegate](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/anchorlocateddelegate) delegálására.
 
 ```cpp
     m_anchorLocatedToken = m_cloudSession.AnchorLocated(winrt::auto_revoke, [this](auto&&, auto&& args)
@@ -235,6 +269,8 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 
 [!INCLUDE [Deleting](../../../includes/spatial-anchors-create-locate-anchors-deleting.md)]
 
+Tudjon meg többet a [DeleteAnchorAsync](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#deleteanchorasync) metódust.
+
 ```cpp
     co_await m_cloudSession.DeleteAnchorAsync(cloudAnchor);
     // Perform any processing you may want when delete finishes
@@ -242,11 +278,15 @@ Azure térbeli horgonyok horgonyok a világ különböző eszközök közötti m
 
 [!INCLUDE [Stopping](../../../includes/spatial-anchors-create-locate-anchors-stopping.md)]
 
+Tudjon meg többet a [leállítása](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#stop) metódust.
+
 ```cpp
     m_cloudSession.Stop();
 ```
 
 [!INCLUDE [Resetting](../../../includes/spatial-anchors-create-locate-anchors-resetting.md)]
+
+Tudjon meg többet a [alaphelyzetbe](https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/cloudspatialanchorsession#reset) metódust.
 
 ```cpp
     m_cloudSession.Reset();

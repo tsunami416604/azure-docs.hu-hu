@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: d78998c3eab79c3c9d5511335c5d27be5803cc3e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: caddb542e806457e085db096813e504ddc278ac0
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762495"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108324"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Első lépésekhez készült útmutató Azure-fejlesztőknek
 
@@ -62,11 +62,11 @@ App Service-ben úgy tervezték, a fejlesztési és üzemeltetési szem előtt. 
 
 Áttelepítheti a meglévő alkalmazásokkal, az App Service használatával a [online migrálási eszköz](https://www.migratetoazure.net/).
 
->**Mikor érdemes használni**: Használja az App Service-ben, való migráláshoz meglévő webes alkalmazásokhoz az Azure-ba, és amikor szüksége van egy teljes körűen felügyelt üzemeltetési platformot a web apps számára. Használhatja az App Service-ben, amikor szüksége van mobilügyfelek támogatásához, vagy a REST API-k elérhetővé az alkalmazást.
-
->**Első lépések**: App Service használatával egyszerűen létrehozhat és üzembe helyezése az első [webalkalmazás](../../app-service/app-service-web-get-started-dotnet.md), [mobilalkalmazás](../../app-service-mobile/app-service-mobile-ios-get-started.md), vagy [API-alkalmazás](../../app-service/app-service-web-tutorial-rest-api.md).
-
->**Próbálja ki most**: Az App Service üzembe helyezése egy rövid élettartamú alkalmazást a platform kipróbálásához regisztráljon az Azure-fiók nélkül teszi lehetővé. Próbálja ki a platformot és [az Azure App Service-alkalmazás létrehozása](https://tryappservice.azure.com/).
+> **Mikor érdemes használni**: Használja az App Service-ben, való migráláshoz meglévő webes alkalmazásokhoz az Azure-ba, és amikor szüksége van egy teljes körűen felügyelt üzemeltetési platformot a web apps számára. Használhatja az App Service-ben, amikor szüksége van mobilügyfelek támogatásához, vagy a REST API-k elérhetővé az alkalmazást.
+> 
+> **Első lépések**: App Service használatával egyszerűen létrehozhat és üzembe helyezése az első [webalkalmazás](../../app-service/app-service-web-get-started-dotnet.md), [mobilalkalmazás](../../app-service-mobile/app-service-mobile-ios-get-started.md), vagy [API-alkalmazás](../../app-service/app-service-web-tutorial-rest-api.md).
+> 
+> **Próbálja ki most**: Az App Service üzembe helyezése egy rövid élettartamú alkalmazást a platform kipróbálásához regisztráljon az Azure-fiók nélkül teszi lehetővé. Próbálja ki a platformot és [az Azure App Service-alkalmazás létrehozása](https://tryappservice.azure.com/).
 
 #### <a name="azure-virtual-machines"></a>Azure-alapú virtuális gépek
 
@@ -74,19 +74,19 @@ Egy infrastruktúra-szolgáltató (IaaS), mint az Azure lehetővé teszi üzembe
 
 Miatt mértékű, amely a virtuális gépeken server számítási feladatok széles skáláját futtathatja az Azure-ban nem illő PaaS modellbe. Ilyen számítási feladat például az adatbázis-kiszolgálók, a Windows Server Active Directory és a Microsoft SharePoint. További információkért tekintse meg a Virtual Machines dokumentációja a [Linux](/azure/virtual-machines/linux/) vagy [Windows](/azure/virtual-machines/windows/).
 
->**Mikor érdemes használni**: Használhat virtuális gépeket, ha azt szeretné, teljes körűen az alkalmazás-infrastruktúra keresztül vagy a helyszíni alkalmazások és szolgáltatások áttelepítése az Azure-bA módosítások nélkül.
-
->**Első lépések**: Hozzon létre egy [Linux rendszerű virtuális gép](../../virtual-machines/virtual-machines-linux-quick-create-portal.md) vagy [Windows virtuális gép](../../virtual-machines/virtual-machines-windows-hero-tutorial.md) az Azure Portalról.
+> **Mikor érdemes használni**: Használhat virtuális gépeket, ha azt szeretné, teljes körűen az alkalmazás-infrastruktúra keresztül vagy a helyszíni alkalmazások és szolgáltatások áttelepítése az Azure-bA módosítások nélkül.
+> 
+> **Első lépések**: Hozzon létre egy [Linux rendszerű virtuális gép](../../virtual-machines/virtual-machines-linux-quick-create-portal.md) vagy [Windows virtuális gép](../../virtual-machines/virtual-machines-windows-hero-tutorial.md) az Azure Portalról.
 
 #### <a name="azure-functions-serverless"></a>Azure Functions (serverless)
 
 Aggódni ki felépítésére és kezelésére, a kód futtatásához egy egész alkalmazással vagy az infrastruktúra helyett. Mi történik, ha Ön sikerült csak a kód írása és azok válaszként az események vagy ütemezés szerint futtatni?  [Az Azure Functions](../../azure-functions/functions-overview.md) van egy "kiszolgáló nélküli"-stílus ajánlat, amely lehetővé teszi, hogy csak a kód írását, van szüksége. A Functions kódfuttatás HTTP-kérelmekre, a webhookok, a cloud service-események vagy ütemezés szerint aktiválódik. A fejlesztési nyelvet választott, például C nyelven is programozhat\#, F\#, Node.js, Python vagy PHP. A fogyasztás alapú számlázáshoz kell fizetnie csak az idő a kódot, és az Azure méretezhető, igény szerint.
 
->**Mikor érdemes használni**: Azure Functions, ha más Azure-szolgáltatások által meghívott webes események vagy ütemezés szerint kódot használ. Is használhatja a Functions, ha már nincs szükség a terhelést a teljes üzemeltetett projekt, vagy csak szeretné a kódot futtató időért kell fizetnie. További tudnivalókért lásd: [Azure Functions áttekintése](../../azure-functions/functions-overview.md).
-
->**Első lépések**: Kövesse a Functions gyorsútmutatóban történő [az első függvény létrehozása](../../azure-functions/functions-create-first-azure-function.md) a portálról.
-
->**Próbálja ki most**: Az Azure Functions lehetővé teszi a kód, regisztráljon az Azure-fiók nélkül futtathat. Próbálja ki most, és [az első Azure-függvény létrehozása](https://tryappservice.azure.com/).
+> **Mikor érdemes használni**: Azure Functions, ha más Azure-szolgáltatások által meghívott webes események vagy ütemezés szerint kódot használ. Is használhatja a Functions, ha már nincs szükség a terhelést a teljes üzemeltetett projekt, vagy csak szeretné a kódot futtató időért kell fizetnie. További tudnivalókért lásd: [Azure Functions áttekintése](../../azure-functions/functions-overview.md).
+> 
+> **Első lépések**: Kövesse a Functions gyorsútmutatóban történő [az első függvény létrehozása](../../azure-functions/functions-create-first-azure-function.md) a portálról.
+> 
+> **Próbálja ki most**: Az Azure Functions lehetővé teszi a kód, regisztráljon az Azure-fiók nélkül futtathat. Próbálja ki most, és [az első Azure-függvény létrehozása](https://tryappservice.azure.com/).
 
 #### <a name="azure-service-fabric"></a>Azure Service Fabric
 
@@ -94,9 +94,9 @@ Az Azure Service Fabric egy elosztott rendszerplatform, amellyel egyszerűen ké
 
 A Service Fabric támogatja a WebAPI az Open Web Interface .NET (OWIN) és az ASP.NET Core. SDK-kat biztosít a Linux, a .NET Core és a Java-szolgáltatások létrehozásához. A Service Fabric kapcsolatos további információkért tekintse meg a [Service Fabric-dokumentáció](https://docs.microsoft.com/azure/service-fabric/).
 
->**Mikor érdemes használni:** A Service Fabric akkor hasznos, amikor az alkalmazás létrehozása vagy egy meglévő alkalmazás használatához a mikroszolgáltatási architektúrát újraírását. A Service Fabric használja, amikor szüksége van további felett, vagy közvetlen hozzáférést, az alapul szolgáló infrastruktúra.
-
->**Első lépések:** [Az első Azure Service Fabric-alkalmazás létrehozása](../../service-fabric/service-fabric-create-your-first-application-in-visual-studio.md).
+> **Mikor érdemes használni:** A Service Fabric akkor hasznos, amikor az alkalmazás létrehozása vagy egy meglévő alkalmazás használatához a mikroszolgáltatási architektúrát újraírását. A Service Fabric használja, amikor szüksége van további felett, vagy közvetlen hozzáférést, az alapul szolgáló infrastruktúra.
+> 
+> **Első lépések:** [Az első Azure Service Fabric-alkalmazás létrehozása](../../service-fabric/service-fabric-create-your-first-application-in-visual-studio.md).
 
 ### <a name="enhance-your-applications-with-azure-services"></a>Javíthatja az alkalmazások az Azure-szolgáltatásokkal
 
@@ -106,22 +106,22 @@ Alkalmazások üzemeltetése, mellett az Azure szolgáltatási ajánlatok, amely
 
 A legtöbb alkalmazást úgy kell tárolja az adatokat, függetlenül attól, hogyan kívánja futtatni az alkalmazást az Azure-ban, fontolja meg legalább egy, a következő tároló- és adatszolgáltatásokat.
 
--   **Azure Cosmos DB**: Egy globálisan elosztott, többmodelles adatbázis-szolgáltatás, amely lehetővé teszi, hogy rugalmasan skálázhatja a teljesítményt és tárolókapacitást között tetszőleges számú földrajzi régió egy átfogó SLA-val. 
-    >**Mikor érdemes használni:** Ha az alkalmazásnak szüksége van, a dokumentum, táblázat vagy gráf típusú adatbázisokat, beleértve a többszörös, jól definiált konzisztenciamodellekkel MongoDB adatbázisok. 
+- **Azure Cosmos DB**: Egy globálisan elosztott, többmodelles adatbázis-szolgáltatás, amely lehetővé teszi, hogy rugalmasan skálázhatja a teljesítményt és tárolókapacitást között tetszőleges számú földrajzi régió egy átfogó SLA-val. 
+  > **Mikor érdemes használni:** Ha az alkalmazásnak szüksége van, a dokumentum, táblázat vagy gráf típusú adatbázisokat, beleértve a többszörös, jól definiált konzisztenciamodellekkel MongoDB adatbázisok. 
+  > 
+  > **Első lépések**: [Egy Azure Cosmos DB-webalkalmazás létrehozása](../../cosmos-db/create-sql-api-dotnet.md). Ha Ön a MongoDB fejlesztő, lásd: [egy MongoDB-webalkalmazás létrehozása az Azure Cosmos DB](../../cosmos-db/create-mongodb-dotnet.md).
 
-    >**Első lépések**: [Egy Azure Cosmos DB-webalkalmazás létrehozása](../../cosmos-db/create-sql-api-dotnet.md). Ha Ön a MongoDB fejlesztő, lásd: [egy MongoDB-webalkalmazás létrehozása az Azure Cosmos DB](../../cosmos-db/create-mongodb-dotnet.md).
+- **Az Azure Storage**: A blobok, üzenetsorok, fájlok és más típusú nem relációs adatok tartós, magas rendelkezésre állású tárhelyet kínál. Storage-beli virtuális gépek tárolási alapokat biztosít.
 
--   **Az Azure Storage**: A blobok, üzenetsorok, fájlok és más típusú nem relációs adatok tartós, magas rendelkezésre állású tárhelyet kínál. Storage-beli virtuális gépek tárolási alapokat biztosít.
+  > **Mikor érdemes használni**: Ha az alkalmazás tárolja a nem relációs adatok, például a kulcs-érték párokat (táblák), blobok, fájlok megosztások vagy üzenetek (üzenetsorok).
+  > 
+  > **Első lépések**: Ezek a típusok tárolás közül választhat: [blobok](../../storage/blobs/storage-dotnet-how-to-use-blobs.md), [táblák](../../cosmos-db/table-storage-how-to-use-dotnet.md), [üzenetsorok](../../storage/queues/storage-dotnet-how-to-use-queues.md), vagy [fájlok](../../storage/files/storage-dotnet-how-to-use-files.md).
 
-    >**Mikor érdemes használni**: Ha az alkalmazás tárolja a nem relációs adatok, például a kulcs-érték párokat (táblák), blobok, fájlok megosztások vagy üzenetek (üzenetsorok).
+- **Azure SQL Database**: Egy Azure-alapú verzióját a Microsoft SQL Server motoron a relációs adatok tárolása a felhőben. SQL Database kiszámítható teljesítmény, méretezhetőség, nincs állásidő, üzletmenet-folytonosságot és adatvédelmet biztosít.
 
-    >**Első lépések**: Ezek a típusok tárolás közül választhat: [blobok](../../storage/blobs/storage-dotnet-how-to-use-blobs.md), [táblák](../../cosmos-db/table-storage-how-to-use-dotnet.md), [üzenetsorok](../../storage/queues/storage-dotnet-how-to-use-queues.md), vagy [fájlok](../../storage/files/storage-dotnet-how-to-use-files.md).
-
--   **Azure SQL Database**: Egy Azure-alapú verzióját a Microsoft SQL Server motoron a relációs adatok tárolása a felhőben. SQL Database kiszámítható teljesítmény, méretezhetőség, nincs állásidő, üzletmenet-folytonosságot és adatvédelmet biztosít.
-
-    >**Mikor érdemes használni**: Ha az alkalmazás által kért a hivatkozási integritás, a tranzakciós adattároló támogatja, és támogatja a TSQL-lekérdezést.
-
-    >**Első lépések**: [SQL-adatbázis létrehozása percek alatt az Azure portal használatával](../../sql-database/sql-database-get-started.md).
+  > **Mikor érdemes használni**: Ha az alkalmazás által kért a hivatkozási integritás, a tranzakciós adattároló támogatja, és támogatja a TSQL-lekérdezést.
+  > 
+  > **Első lépések**: [SQL-adatbázis létrehozása percek alatt az Azure portal használatával](../../sql-database/sql-database-get-started.md).
 
 
 Használhat [Azure Data Factory](../../data-factory/introduction.md) meglévő helyszíni adatokat az Azure-bA áthelyezni. Ha még nem áll készen az adatok áthelyezése a felhőbe, [hibrid kapcsolatok](../../biztalk-services/integration-hybrid-connection-overview.md) a BizTalk Services lehetővé teszi, hogy csatlakozik az App Service üzemeltetett alkalmazásnak, hogy a helyszíni erőforrásokhoz. Is csatlakozhat az Azure-beli adat- és tárolási szolgáltatások a helyszíni alkalmazásokat.
@@ -132,43 +132,43 @@ Docker-tárolók, az operációs rendszer virtualizálás, az űrlap segítség�
 
 Az Azure tárolók használata az alkalmazásokban több módszert is biztosít.
 
--   **Az Azure Docker VM bővítmény**: Lehetővé teszi a virtuális gép konfigurálását a Docker-eszközök a Docker-gazdagép-kiszolgálóként.
+- **Az Azure Docker VM bővítmény**: Lehetővé teszi a virtuális gép konfigurálását a Docker-eszközök a Docker-gazdagép-kiszolgálóként.
 
-    >**Mikor érdemes használni**: Ha szeretné létrehozni a virtuális gép az alkalmazások konzisztens tárolópéldányok, vagy ha a használni kívánt [Docker Compose](https://docs.docker.com/compose/overview/).
+  > **Mikor érdemes használni**: Ha szeretné létrehozni a virtuális gép az alkalmazások konzisztens tárolópéldányok, vagy ha a használni kívánt [Docker Compose](https://docs.docker.com/compose/overview/).
+  > 
+  > **Első lépések**: [Hozzon létre egy Docker-környezetben az Azure-ban a Docker VM bővítmény használatával](../../virtual-machines/virtual-machines-linux-dockerextension.md).
 
-    >**Első lépések**: [Hozzon létre egy Docker-környezetben az Azure-ban a Docker VM bővítmény használatával](../../virtual-machines/virtual-machines-linux-dockerextension.md).
+- **Azure Container Service**: Lehetővé teszi, hogy hozzon létre, konfigurálhatja és tárolóalapú alkalmazások futtatására előre konfigurált virtuálisgép-fürt kezelése. Container Service kapcsolatos további információkért lásd: [Azure Container Service bemutatása](../../container-service/container-service-intro.md).
 
--   **Azure Container Service**: Lehetővé teszi, hogy hozzon létre, konfigurálhatja és tárolóalapú alkalmazások futtatására előre konfigurált virtuálisgép-fürt kezelése. Container Service kapcsolatos további információkért lásd: [Azure Container Service bemutatása](../../container-service/container-service-intro.md).
+  > **Mikor érdemes használni**: Ha szüksége éles használatra kész, méretezhető buildkörnyezeteket, amelyek további ütemezési és felügyeleti eszközöket, vagy ha telepít egy Docker Swarm-fürtöt.
+  > 
+  > **Első lépések**: [Container Service-fürt üzembe helyezése](../../container-service/dcos-swarm/container-service-deployment.md).
 
-    >**Mikor érdemes használni**: Ha szüksége éles használatra kész, méretezhető buildkörnyezeteket, amelyek további ütemezési és felügyeleti eszközöket, vagy ha telepít egy Docker Swarm-fürtöt.
+- **A docker Machine**: Lehetővé teszi telepítése és kezelése Docker-motor, a virtuális gazdagépeken a docker-machine paranccsal.
 
-    >**Első lépések**: [Container Service-fürt üzembe helyezése](../../container-service/dcos-swarm/container-service-deployment.md).
+  >**Mikor érdemes használni**: Mikor kell gyorsan prototípust egy alkalmazást hozzon létre egy Docker-gazdagép.
 
--   **A docker Machine**: Lehetővé teszi telepítése és kezelése Docker-motor, a virtuális gazdagépeken a docker-machine paranccsal.
+- **Az App Service egyéni Docker-rendszerkép**: Lehetővé teszi Docker-tárolók egy tárolóregisztrációs adatbázisból vagy egy ügyfél tároló használatát, ha telepít egy webalkalmazás Linux rendszeren.
 
-    >**Mikor érdemes használni**: Mikor kell gyorsan prototípust egy alkalmazást hozzon létre egy Docker-gazdagép.
-
--   **Az App Service egyéni Docker-rendszerkép**: Lehetővé teszi Docker-tárolók egy tárolóregisztrációs adatbázisból vagy egy ügyfél tároló használatát, ha telepít egy webalkalmazás Linux rendszeren.
-
-    >**Mikor érdemes használni**: Amikor a webalkalmazás üzembe helyezése Linux rendszeren, egy Docker-rendszerképet.
-
-    >**Első lépések**: [Egyéni Docker-rendszerkép használata az App Service linuxon](../../app-service/containers/quickstart-docker-go.md).
+  > **Mikor érdemes használni**: Amikor a webalkalmazás üzembe helyezése Linux rendszeren, egy Docker-rendszerképet.
+  > 
+  > **Első lépések**: [Egyéni Docker-rendszerkép használata az App Service linuxon](../../app-service/containers/quickstart-docker-go.md).
 
 ### <a name="authentication"></a>Authentication
 
 Nagyon fontos tudni, hogy nem csak az alkalmazásokat használó, hanem az erőforrásokhoz való jogosulatlan hozzáférés elkerülése érdekében. Az Azure az alkalmazás-ügyfelek hitelesítésére több módszert is biztosít.
 
--   **Az Azure Active Directory (Azure AD)**: A Microsoft több-bérlős, felhőalapú identitás- és hozzáférés szolgáltatás. Hozzáadhat egyszeri bejelentkezést (SSO) az alkalmazások és az Azure AD integrálásával. Könyvtár tulajdonságai elérheti, ha közvetlenül az Azure AD Graph API vagy a Microsoft Graph API használatával. Azure AD-támogatás a OAuth2.0 engedélyezési keretrendszer és az Open ID Connect integrálható a natív HTTP, illetve a REST-végpontok és a multiplatform az Azure AD-hitelesítési kódtárak használatával.
+- **Az Azure Active Directory (Azure AD)**: A Microsoft több-bérlős, felhőalapú identitás- és hozzáférés szolgáltatás. Hozzáadhat egyszeri bejelentkezést (SSO) az alkalmazások és az Azure AD integrálásával. Könyvtár tulajdonságai elérheti, ha közvetlenül az Azure AD Graph API vagy a Microsoft Graph API használatával. Azure AD-támogatás a OAuth2.0 engedélyezési keretrendszer és az Open ID Connect integrálható a natív HTTP, illetve a REST-végpontok és a multiplatform az Azure AD-hitelesítési kódtárak használatával.
 
-    >**Mikor érdemes használni**: Ha szeretne biztosítani egy egyszeri Bejelentkezéses felhasználói élmény, Graph-alapú adatok, vagy tartományi felhasználók hitelesítésére.
+  > **Mikor érdemes használni**: Ha szeretne biztosítani egy egyszeri Bejelentkezéses felhasználói élmény, Graph-alapú adatok, vagy tartományi felhasználók hitelesítésére.
+  > 
+  > **Első lépések**: További tudnivalókért tekintse meg a [Azure Active Directory fejlesztői útmutatója](../../active-directory/develop/v1-overview.md).
 
-    >**Első lépések**: További tudnivalókért tekintse meg a [Azure Active Directory fejlesztői útmutatója](../../active-directory/develop/v1-overview.md).
+- **App Service-hitelesítés**: Ha úgy dönt, az App Service az alkalmazás futtatására, érhet el az Azure AD, valamint a közösségi identitásszolgáltatókat beépített hitelesítés támogatása – beleértve a Facebook, Google, Microsoft vagy Twitter.
 
--   **App Service-hitelesítés**: Ha úgy dönt, az App Service az alkalmazás futtatására, érhet el az Azure AD, valamint a közösségi identitásszolgáltatókat beépített hitelesítés támogatása – beleértve a Facebook, Google, Microsoft vagy Twitter.
-
-    >**Mikor érdemes használni**: Ha engedélyezi a hitelesítést az App Service-alkalmazások Azure AD-vel szeretne közösségi identitásszolgáltatókat, vagy mindkettőt.
-
-    >**Első lépések**: Az App Service hitelesítés kapcsolatos további információkért lásd: [hitelesítése és engedélyezése Azure App Service-ben](../../app-service/overview-authentication-authorization.md).
+  > **Mikor érdemes használni**: Ha engedélyezi a hitelesítést az App Service-alkalmazások Azure AD-vel szeretne közösségi identitásszolgáltatókat, vagy mindkettőt.
+  > 
+  > **Első lépések**: Az App Service hitelesítés kapcsolatos további információkért lásd: [hitelesítése és engedélyezése Azure App Service-ben](../../app-service/overview-authentication-authorization.md).
 
 Ajánlott biztonsági eljárások az Azure-ban kapcsolatos további információkért lásd: [Azure ajánlott biztonsági eljárások és minták](../../security/security-best-practices-and-patterns.md).
 
@@ -188,9 +188,9 @@ Az alkalmazás mentése és az Azure-ban fut, a, kell figyelje a teljesítmény�
 
 Virtuális gépek kiépítése, vagy a web apps, a folyamatos közzététel, az Azure együttműködik a népszerű DevOps-eszközök a legtöbb. A Jenkins, GitHub, Puppet, Chef, TeamCity, az Ansible, Azure DevOps és más hasonló eszközökkel való támogatását használhatja az eszközöket, hogy már rendelkezik, és maximalizálja a már meglévő felhasználói élményt.
 
->**Kipróbálás:** [Próbálja ki a DevOps-integrációkkal számos](https://azure.microsoft.com/try/devops/).
-
->**Első lépések**: Az App Service-alkalmazások fejlesztési és üzemeltetési lehetőségek megtekintéséhez lásd: [folyamatos üzembe helyezés az Azure App Service-](../../app-service/deploy-continuous-deployment.md).
+> **Kipróbálás:** [Próbálja ki a DevOps-integrációkkal számos](https://azure.microsoft.com/try/devops/).
+> 
+> **Első lépések**: Az App Service-alkalmazások fejlesztési és üzemeltetési lehetőségek megtekintéséhez lásd: [folyamatos üzembe helyezés az Azure App Service-](../../app-service/deploy-continuous-deployment.md).
 
 
 ## <a name="azure-regions"></a>Azure-régiók
@@ -251,9 +251,9 @@ Logikailag csoportosítás, és a kapcsolódó erőforrások kezelése, mellett 
 
 Ezeket az üzemelő példányokat az Azure Resource Manager-sablon, amely egy JSON-formátumú dokumentum fejleszt. Sablonok lehetővé teszik a központi telepítés alkalmazásokat meghatározni és kezelni a szkriptek helyett deklaratív sablonok segítségével. A sablonok különböző környezetekben, például tesztelési, átmeneti és éles környezetben is képes működni. Például sablonok használatával adhat hozzá egy gombot, amely üzembe helyezi a kódot a tárház számára egy Azure-szolgáltatások egyetlen kattintással GitHub-tárházba.
 
->**Mikor érdemes használni**: Használja a Resource Manager-sablonok, ha szeretne egy sablonalapú üzembe helyezése az alkalmazáshoz, amely a REST API-k, az Azure CLI-vel és az Azure PowerShell használatával programozott módon kezelheti.
-
->**Első lépések**: Első lépések a sablonok használatával, lásd: [Azure Resource Manager-sablonok készítése](../../resource-group-authoring-templates.md).
+> **Mikor érdemes használni**: Használja a Resource Manager-sablonok, ha szeretne egy sablonalapú üzembe helyezése az alkalmazáshoz, amely a REST API-k, az Azure CLI-vel és az Azure PowerShell használatával programozott módon kezelheti.
+> 
+> **Első lépések**: Első lépések a sablonok használatával, lásd: [Azure Resource Manager-sablonok készítése](../../resource-group-authoring-templates.md).
 
 ## <a name="understanding-accounts-subscriptions-and-billing"></a>Understanding fiókok, előfizetések és számlázás
 
@@ -281,15 +281,15 @@ Az Azure erőforrás-kezelő használatával megjelenítheti az erőforrásokat,
 
 Ha engedélyezi a hozzáférést az Azure-erőforrásokkal, mindig ajánlott az egy adott feladat végrehajtásához szükséges minimális jogosultságokkal rendelkező felhasználók számára.
 
--   **Szerepköralapú hozzáférés-vezérlés (RBAC)**: Az Azure-ban is hozzáférést biztosít a felhasználói fiókok (egyszerű) a megadott hatókörben: előfizetés, erőforráscsoport vagy egyes erőforrásokat. Az RBAC lehetővé teszi az erőforráscsoport üzembe helyezzen egy erőforráscsoportban, és engedélyek egy adott felhasználó vagy csoport számára. Azt is lehetővé teszik csak a célként megadott erőforráscsoportja tartozó erőforrásokhoz való hozzáférés korlátozásához. A hozzáférést egy egyetlen erőforrást, például a virtuális gép vagy a virtuális hálózat. Hozzáférés biztosításához szerepkör a felhasználó, csoport vagy egyszerű szolgáltatás hozzárendelése. Számos előre definiált szerepkörök állnak rendelkezésre, és azt is megadhatja a saját egyéni szerepkörökkel. További tudnivalókért lásd: [Mi a szerepköralapú hozzáférés-vezérlés (RBAC)?](../../role-based-access-control/overview.md).
+- **Szerepköralapú hozzáférés-vezérlés (RBAC)**: Az Azure-ban is hozzáférést biztosít a felhasználói fiókok (egyszerű) a megadott hatókörben: előfizetés, erőforráscsoport vagy egyes erőforrásokat. Az RBAC lehetővé teszi az erőforráscsoport üzembe helyezzen egy erőforráscsoportban, és engedélyek egy adott felhasználó vagy csoport számára. Azt is lehetővé teszik csak a célként megadott erőforráscsoportja tartozó erőforrásokhoz való hozzáférés korlátozásához. A hozzáférést egy egyetlen erőforrást, például a virtuális gép vagy a virtuális hálózat. Hozzáférés biztosításához szerepkör a felhasználó, csoport vagy egyszerű szolgáltatás hozzárendelése. Számos előre definiált szerepkörök állnak rendelkezésre, és azt is megadhatja a saját egyéni szerepkörökkel. További tudnivalókért lásd: [Mi a szerepköralapú hozzáférés-vezérlés (RBAC)?](../../role-based-access-control/overview.md).
 
-    >**Mikor érdemes használni**: Ha részletes hozzáférés-vezérlést kell, a felhasználók és csoportok, vagy amikor szüksége van, hogy a felhasználó az előfizetés tulajdonosa.
+  > **Mikor érdemes használni**: Ha részletes hozzáférés-vezérlést kell, a felhasználók és csoportok, vagy amikor szüksége van, hogy a felhasználó az előfizetés tulajdonosa.
+  > 
+  > **Első lépések**: További tudnivalókért lásd: [rbac-RÓL és az Azure portal-hozzáférés kezelése](../../role-based-access-control/role-assignments-portal.md).
 
-    >**Első lépések**: További tudnivalókért lásd: [rbac-RÓL és az Azure portal-hozzáférés kezelése](../../role-based-access-control/role-assignments-portal.md).
+- **Szolgáltatás egyszerű objektumok**: Hozzáférés biztosítása mellett az egyszerű felhasználói névnek és a csoportok, ugyanazt a hozzáférést biztosíthat egy egyszerű szolgáltatást.
 
--   **Szolgáltatás egyszerű objektumok**: Hozzáférés biztosítása mellett az egyszerű felhasználói névnek és a csoportok, ugyanazt a hozzáférést biztosíthat egy egyszerű szolgáltatást.
-
-    > **Mikor érdemes használni**: Amikor a rendszer programozott módon az Azure-erőforrások kezelése vagy alkalmazásokhoz hozzáférést biztosít. További információkért lásd: [hozzon létre egy Active Directory-alkalmazás és egyszerű szolgáltatás](../../active-directory/develop/howto-create-service-principal-portal.md).
+  > **Mikor érdemes használni**: Amikor a rendszer programozott módon az Azure-erőforrások kezelése vagy alkalmazásokhoz hozzáférést biztosít. További információkért lásd: [hozzon létre egy Active Directory-alkalmazás és egyszerű szolgáltatás](../../active-directory/develop/howto-create-service-principal-portal.md).
 
 #### <a name="tags"></a>Címkék
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/06/2018
 ms.author: rapatchi
-ms.openlocfilehash: 250931c9b53692dff4006a0114b6da20948b3f59
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 69523a76406cc32212a064ec222f0276d03eb1fa
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096670"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57898516"
 ---
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Az Eclipse Service Fabric beépülő moduljának Java alkalmazásfejlesztése
 Az Eclipse a Java-fejlesztők által leggyakrabban használt integrált fejlesztőkörnyezetek (IDE-k) közé tartozik. Ebben a cikkben azt ismertetjük, hogyan állíthatja be az Eclipse fejlesztői környezetet az Azure Service Fabrickel való használathoz. Megtudhatja, hogyan telepítheti a Service Fabric beépülő modult, hogyan hozhat létre Service Fabric-alkalmazást, és hogyan helyezhet üzembe Service Fabric-alkalmazásokat helyi vagy távoli Service Fabric-fürtön az Eclipse-ben. 
@@ -41,7 +41,7 @@ Telepítse az Eclipse Neon vagy újabb verzióját az [Eclipse webhelyéről](ht
 -   Az Eclipse frissítéseinek kereséséhez és telepítéséhez lépjen a **Help** > **Check for Updates** (Súgó > Frissítések keresése) területre.
 
 A Service Fabric beépülő modul telepítéséhez az Eclipse-ben lépjen a **Help** > **Install New Software** (Súgó > Új szoftver telepítése) területre.
-1. A **Work with** (Használat) mezőbe írja be a **http://dl.microsoft.com/eclipse** címet.
+1. A **Work with** (Használat) mezőbe írja be a **https://dl.microsoft.com/eclipse** címet.
 2. Kattintson a **Hozzáadás** parancsra.
 
    ![Az Eclipse Service Fabric beépülő modulja][sf-eclipse-plugin-install]
@@ -54,7 +54,7 @@ Ha a Service Fabric beépülő modul már telepítve van, telepítse a legújabb
 3. A Service Fabric beépülő modul frissítése után frissítse a Gradle-projektet is.  Kattintson a jobb gombbal **build.gradle** elemre, majd válassza a **Refresh** (Frissítés) lehetőséget.
 
 > [!NOTE]
-> Ha a Service Fabric beépülő modul telepítése vagy frissítése túl lassú, azt az Eclipse valamelyik beállítása okozhatja. Az Eclipse metaadatokat gyűjt az Eclipse-példányhoz regisztrált frissítési helyek összes módosításáról. Ahhoz, hogy fel tudja gyorsítani a Service Fabric beépülő modul frissítéseinek keresési és telepítési folyamatát, lépjen az **Available Software Sites** (Elérhető szoftverhelyek) területre. Törölje az összes hely jelölőnégyzetét a Service Fabric beépülő modul helyére (http://dl.microsoft.com/eclipse/azure/servicefabric)) mutató jelölőnégyzet kivételével.
+> Ha a Service Fabric beépülő modul telepítése vagy frissítése túl lassú, azt az Eclipse valamelyik beállítása okozhatja. Az Eclipse metaadatokat gyűjt az Eclipse-példányhoz regisztrált frissítési helyek összes módosításáról. Ahhoz, hogy fel tudja gyorsítani a Service Fabric beépülő modul frissítéseinek keresési és telepítési folyamatát, lépjen az **Available Software Sites** (Elérhető szoftverhelyek) területre. Törölje az összes hely jelölőnégyzetét a Service Fabric beépülő modul helyére (https://dl.microsoft.com/eclipse/azure/servicefabric)) mutató jelölőnégyzet kivételével.
 
 > [!NOTE]
 >Ha az Eclipse nem a várt módon működik a Mac gépén (vagy a futtatáshoz felügyelőként történő bejelentkezést ír elő), keresse meg az **ECLIPSE_INSTALLATION_PATH** mappa **Eclipse.app/Contents/MacOS** almappáját. Indítsa el az Eclipse-et az `./eclipse` futtatásával.
@@ -141,8 +141,8 @@ Az alkalmazás a felhőbe való közzétételéhez, kövesse az alábbi lépése
    - A `ClientKey` mezőt kell mutatnia a PEM-formátumú .pem- és .key fájlokat a helyi gépen, amely tartalmazza az ügyfél vagy a fürt tanúsítvány titkos kulcsát.
    - A `ClientCert` mező egy PEM-formátumú .pem- vagy .crt fájl a helyi gépen, amely tartalmazza a tanúsítványadatokat az ügyfél vagy a fürt kell mutatnia. a tanúsítvány. 
 
-    ```bash
-    {
+     ```bash
+     {
          "ClusterConnectionParameters":
          {
             "ConnectionIPOrURL": "lnxxug0tlqm5.westus.cloudapp.azure.com",
@@ -150,8 +150,8 @@ Az alkalmazás a felhőbe való közzétételéhez, kövesse az alábbi lépése
             "ClientKey": "[path_to_your_pem_file_on_local_machine]",
             "ClientCert": "[path_to_your_pem_file_on_local_machine]"
          }
-    }
-    ```
+     }
+     ```
 
 2. Kattintson a jobb gombbal a Service Fabric-alkalmazásokat, és válassza **Service Fabric**.
 3. Kattintson a helyi menüből **alkalmazás közzététele...** .
@@ -159,8 +159,8 @@ Az alkalmazás a felhőbe való közzétételéhez, kövesse az alábbi lépése
 
     ![A felhő közzétételi párbeszédablaka](./media/service-fabric-get-started-eclipse/cloudjson.png)
 
-4.  A konzolablakban a közzétételi művelet előrehaladását is követheti.
-5.  Győződjön meg arról, hogy az alkalmazás fut, nyissa meg a Service Fabric Explorer egy böngészőablakban az Azure-fürtön. A fenti példában ez lenne: `https://lnxxug0tlqm5.westus.cloudapp.azure.com:19080/Explorer`. Bontsa ki a **alkalmazások** csomópont, és ellenőrizze, hogy az alkalmazás fut-e. 
+4. A konzolablakban a közzétételi művelet előrehaladását is követheti.
+5. Győződjön meg arról, hogy az alkalmazás fut, nyissa meg a Service Fabric Explorer egy böngészőablakban az Azure-fürtön. A fenti példában ez lenne: `https://lnxxug0tlqm5.westus.cloudapp.azure.com:19080/Explorer`. Bontsa ki a **alkalmazások** csomópont, és ellenőrizze, hogy az alkalmazás fut-e. 
 
 
 Biztonságos Linux-fürtökön Ha az alkalmazás tartalmaz a Reliable Services-szolgáltatások, is szüksége lesz egy tanúsítványt, amely a szolgáltatások a Service Fabric-futtatókörnyezet API-k hívásához konfigurálása. További tudnivalókért lásd: [egy Reliable Services-alkalmazás Linux-fürtök konfigurálása](./service-fabric-configure-certificates-linux.md#configure-a-reliable-services-app-to-run-on-linux-clusters).

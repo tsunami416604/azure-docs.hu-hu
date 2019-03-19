@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 0fb2103b982d5b2fc1a04455b451459ede12166e
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 1363dd3c620789b9f3c8ce1dbe0892ee61d66051
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336935"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108205"
 ---
 # <a name="disaster-recovery-and-geo-distribution"></a>Vészhelyreállítás és földrajzi elosztás
 
@@ -24,7 +24,7 @@ ms.locfileid: "53336935"
 Durable Functions, az összes állapot rendszer megőrzi az Azure Storage-ban. A [feladat hub](durable-functions-task-hubs.md) vezénylések használt Azure Storage-erőforrások logikai tárolója. Orchestrator, illetve a tevékenység funkciók tartoznak, a tevékenység egy központban csak is kapcsolatba egymással.
 Az ismertetett forgatókönyvek javaslatot a központi telepítési beállítások növeli a rendelkezésre állás és a vész-helyreállítási tevékenység közbeni állásidő minimálisra csökkentése.
 
-Fontos, és figyelje meg, hogy ezek a forgatókönyvek alapulnak aktív-passzív konfigurációt igényelnek, mivel azok megismerheti az Azure Storage használatát által. Ez a minta áll egy biztonsági mentési (passzív) függvény alkalmazások üzembe helyezése egy másik régióban. A TRAFFIC Manager figyelni fogja az elsődleges (aktív) függvényalkalmazást a rendelkezésre állás érdekében. Azt feladatátvételt hajt végre a biztonsági mentési függvényalkalmazás, ha az elsődleges meghibásodik. További információkért lásd: [Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)a [prioritású forgalom-útválasztási módszer.](../../traffic-manager/traffic-manager-routing-methods.md#a-name--priorityapriority-traffic-routing-method)
+Fontos, és figyelje meg, hogy ezek a forgatókönyvek alapulnak aktív-passzív konfigurációt igényelnek, mivel azok megismerheti az Azure Storage használatát által. Ez a minta áll egy biztonsági mentési (passzív) függvény alkalmazások üzembe helyezése egy másik régióban. A TRAFFIC Manager figyelni fogja az elsődleges (aktív) függvényalkalmazást a rendelkezésre állás érdekében. Azt feladatátvételt hajt végre a biztonsági mentési függvényalkalmazás, ha az elsődleges meghibásodik. További információkért lásd: [Traffic Manager](https://azure.microsoft.com/services/traffic-manager/)a [prioritású forgalom-útválasztási módszer.](../../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method)
 
 >[!NOTE]
 >

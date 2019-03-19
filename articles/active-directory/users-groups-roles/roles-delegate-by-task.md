@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ea25510596903e4020e8237bc5bd389c584ead9
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 8e81d5513f43882093883256cf9eab4a22e9ca01
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268431"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57875274"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Rendszergazdai szerepkörök az Azure Active Directory felügyeleti feladat
 
@@ -144,18 +144,18 @@ Egyszeri bejelentkezés tulajdonságainak frissítése | Vállalati alkalmazás 
 
 Tevékenység | Legalacsonyabb jogosultsági szintű szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
-Licenc hozzárendelése | Felhasználóifiók-adminisztrátor | 
-Csoport létrehozása | Felhasználóifiók-adminisztrátor | 
-Létrehozása, frissítése vagy egy csoport vagy alkalmazás hozzáférési felülvizsgálat törlése | Felhasználóifiók-adminisztrátor | 
-Csoport lejáratának kezelése | Felhasználóifiók-adminisztrátor | 
+Licenc hozzárendelése | Felhasználói adminisztrátor | 
+Csoport létrehozása | Felhasználói adminisztrátor | 
+Létrehozása, frissítése vagy egy csoport vagy alkalmazás hozzáférési felülvizsgálat törlése | Felhasználói adminisztrátor | 
+Csoport lejáratának kezelése | Felhasználói adminisztrátor | 
 Csoportbeállítások kezelése | Globális rendszergazda | 
 Olvassa el az összes konfigurációs (kivéve a rejtett tagsági) | Címtárolvasók | Felhasználói szerepkör alapértelmezés ([dokumentációjában](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
-Rejtett olvasási tagság | A csoporttag | Csoporttulajdonos, jelszókezelő, Exchange-rendszergazda, SharePoint-rendszergazda, Teams-rendszergazda, felhasználóifiók-adminisztrátor
-Olvassa el a rejtett tagsággal rendelkező csoportok tagsága | Ügyfélszolgálati adminisztrátor | Felhasználóifiók-adminisztrátor, rendszergazda csapatok
-Licenc visszavonása | Licencadminisztrátor | Felhasználóifiók-adminisztrátor
-Frissíteni a csoporttagságot | Csoporttulajdonos ([dokumentációjában](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Felhasználóifiók-adminisztrátor
-Csoporttulajdonosok frissítése | Csoporttulajdonos ([dokumentációjában](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Felhasználóifiók-adminisztrátor
-Frissítési csoport tulajdonságai | Csoporttulajdonos ([dokumentációjában](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Felhasználóifiók-adminisztrátor
+Rejtett olvasási tagság | A csoporttag | Csoporttulajdonos, jelszókezelő, Exchange-rendszergazda, SharePoint-rendszergazda, csapatok rendszergazda, a felhasználó rendszergazda
+Olvassa el a rejtett tagsággal rendelkező csoportok tagsága | Ügyfélszolgálati adminisztrátor | Felhasználói rendszergazda, a Teams-rendszergazda
+Licenc visszavonása | Licencadminisztrátor | Felhasználói adminisztrátor
+Frissíteni a csoporttagságot | Csoporttulajdonos ([dokumentációjában](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Felhasználói adminisztrátor
+Csoporttulajdonosok frissítése | Csoporttulajdonos ([dokumentációjában](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Felhasználói adminisztrátor
+Frissítési csoport tulajdonságai | Csoporttulajdonos ([dokumentációjában](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Felhasználói adminisztrátor
 
 ## <a name="identity-protection"></a>Identity Protection
 
@@ -176,9 +176,9 @@ Olvassa el a biztonsági rések | Biztonsági olvasó |
 
 Tevékenység | Legalacsonyabb jogosultsági szintű szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
-Licenc hozzárendelése | Licencadminisztrátor | Felhasználóifiók-adminisztrátor
+Licenc hozzárendelése | Licencadminisztrátor | Felhasználói adminisztrátor
 Az összes konfiguráció olvasása | Címtárolvasók | Felhasználói szerepkör alapértelmezés ([dokumentációjában](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
-Licenc visszavonása | Licencadminisztrátor | Felhasználóifiók-adminisztrátor
+Licenc visszavonása | Licencadminisztrátor | Felhasználói adminisztrátor
 Próbálja ki, vagy előfizetés vásárlása | Számlázási rendszergazda | 
 
 
@@ -315,21 +315,21 @@ Olvassa el a kockázatosként megjelölt felhasználók | Biztonsági olvasó |
 Tevékenység | Legalacsonyabb jogosultsági szintű szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
 Felhasználó hozzáadása a címtárbeli szerepkört | Kiemelt szerepkörű rendszergazda | 
-Tag hozzáadása a csoporthoz | Felhasználóifiók-adminisztrátor | 
-Licenc hozzárendelése | Licencadminisztrátor | Felhasználóifiók-adminisztrátor
-Vendég-felhasználó létrehozása | Vendég meghívója | Felhasználóifiók-adminisztrátor
-Felhasználó létrehozása | Felhasználóifiók-adminisztrátor | 
-Felhasználók törlése | Felhasználóifiók-adminisztrátor | 
-A korlátozott rendszergazdák (lásd a dokumentációt) frissítési biztonsági jogkivonat érvénytelenítése | Felhasználóifiók-adminisztrátor | 
-A nem rendszergazda (lásd a dokumentációt) frissítési biztonsági jogkivonat érvénytelenítése | Jelszókezelő | Felhasználóifiók-adminisztrátor
+Tag hozzáadása a csoporthoz | Felhasználói adminisztrátor | 
+Licenc hozzárendelése | Licencadminisztrátor | Felhasználói adminisztrátor
+Vendég-felhasználó létrehozása | Vendég meghívója | Felhasználói adminisztrátor
+Felhasználó létrehozása | Felhasználói adminisztrátor | 
+Felhasználók törlése | Felhasználói adminisztrátor | 
+A korlátozott rendszergazdák (lásd a dokumentációt) frissítési biztonsági jogkivonat érvénytelenítése | Felhasználói adminisztrátor | 
+A nem rendszergazda (lásd a dokumentációt) frissítési biztonsági jogkivonat érvénytelenítése | Jelszókezelő | Felhasználói adminisztrátor
 Az emelt szintű rendszergazdák száma (lásd a dokumentációt) frissítési biztonsági jogkivonat érvénytelenítése | Globális rendszergazda | 
 Alapszintű konfiguráció olvasása | Felhasználói szerepkör alapértelmezés ([dokumentációja](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions) | 
-(Lásd a dokumentációt) korlátozott rendszergazdák jelszavának alaphelyzetbe állítása | Felhasználóifiók-adminisztrátor | 
-Jelszó alaphelyzetbe állítása, nem rendszergazda (lásd a dokumentációt) | Jelszókezelő | Felhasználóifiók-adminisztrátor
+(Lásd a dokumentációt) korlátozott rendszergazdák jelszavának alaphelyzetbe állítása | Felhasználói adminisztrátor | 
+Jelszó alaphelyzetbe állítása, nem rendszergazda (lásd a dokumentációt) | Jelszókezelő | Felhasználói adminisztrátor
 Jelszó alaphelyzetbe állítása az emelt szintű rendszergazdák száma | Globális rendszergazda | 
-Licenc visszavonása | Licencadminisztrátor | Felhasználóifiók-adminisztrátor
-Egyszerű felhasználónév kivételével az összes tulajdonságainak frissítése | Felhasználóifiók-adminisztrátor | 
-Egyszerű felhasználónév (lásd a dokumentációt) korlátozott rendszergazdák frissítése | Felhasználóifiók-adminisztrátor | 
+Licenc visszavonása | Licencadminisztrátor | Felhasználói adminisztrátor
+Egyszerű felhasználónév kivételével az összes tulajdonságainak frissítése | Felhasználói adminisztrátor | 
+Egyszerű felhasználónév (lásd a dokumentációt) korlátozott rendszergazdák frissítése | Felhasználói adminisztrátor | 
 Egyszerű felhasználónév tulajdonság frissítése az emelt szintű rendszergazdák (lásd a dokumentációt) | Globális rendszergazda | 
 Felhasználói beállítások frissítése | Globális rendszergazda | 
 

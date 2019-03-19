@@ -11,24 +11,28 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/30/2018
+ms.date: 03/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 48098ba32a8eb1c2d7a7bafa246b8e850229b430
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 2dcbcbec9054b31312043ef6642f59fa64728b30
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804535"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58005802"
 ---
 # <a name="view-deny-assignments-for-azure-resources-using-the-azure-portal"></a>Megtekintése az Azure portal segítségével Azure-erőforrások hozzárendelések megtagadása
 
-[Hozzárendelések megtagadása](deny-assignments.md) meggátolja a felhasználókat adott Azure-erőforrás műveleteket végrehajtani, akkor is, ha a szerepkör-hozzárendelés hozzáférést biztosít számukra. Annak ellenére, hogy nem hozható létre a saját megtagadása hozzárendelések, továbbra is szeretné megtekintheti hozzárendelések megtagadja, mert hatással lehet az általános engedélyeit. Egy megtagadási hozzárendelés adatainak beolvasása, rendelkeznie kell a `Microsoft.Authorization/denyAssignments/read` engedéllyel, amely tartalmazza a legtöbb [beépített szerepkörök az Azure-erőforrások](built-in-roles.md).
-
-Ez a cikk bemutatja, hogyan megtekintése az Azure portal segítségével hozzárendelések elutasítása.
+[Hozzárendelések megtagadása](deny-assignments.md) meggátolja a felhasználókat adott Azure-erőforrás műveleteket végrehajtani, akkor is, ha a szerepkör-hozzárendelés hozzáférést biztosít számukra. Ez a cikk bemutatja, hogyan megtekintése az Azure portal segítségével hozzárendelések elutasítása.
 
 > [!NOTE]
-> Jelenleg megtagadási hozzárendelések csak olvashatók, és csak a Microsoft által állítható be.
+> Jelenleg az egyetlen módszer, hozzáadhatja a saját megtagadási hozzárendelések van Azure-tervek használatával. További információkért lásd: [Azure tervezetek erőforrászárat az új erőforrások védelmét](../governance/blueprints/tutorials/protect-new-resources.md).
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Egy megtagadási hozzárendelés adatainak beolvasása, kell rendelkeznie:
+
+- `Microsoft.Authorization/denyAssignments/read` engedéllyel, amely tartalmazza a legtöbb [beépített szerepkörök az Azure-erőforrások](built-in-roles.md).
 
 ## <a name="view-deny-assignments"></a>Megtagadási hozzárendelések megtekintése
 

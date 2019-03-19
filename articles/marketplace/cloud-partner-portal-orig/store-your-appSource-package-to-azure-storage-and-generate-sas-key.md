@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 335590cc616035020f66cfc5208e21d4c5128fe6
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: ad0e6eaae5c0fad74ea484827e0f8d535cfbf579
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810754"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884659"
 ---
 <a name="store-your-appsource-package-to-azure-storage-and-generate-a-url-with-sas-key"></a>Az AppSource-csomag az Azure storage-Store és a egy URL-cím létrehozhat egy SAS-kulcs
 =============================================================================
@@ -28,39 +28,39 @@ A fájlok biztonságának fenntartása minden partnerek kell az appsource-ban al
 
 Az alábbi lépések segítségével a csomag feltöltése a blob storage:
 
-1.  Lépjen a <http://azure.microsoft.com> és a egy próbaverziós vagy számlázott ingyenes fiók létrehozása.
+1. Lépjen a <https://azure.microsoft.com> és a egy próbaverziós vagy számlázott ingyenes fiók létrehozása.
 
-2.  Jelentkezzen be az [Azure Portal](http://portal.azure.com/).
+2. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
 
-3.  Hozzon létre egy új Tárfiókot kattintva **+ új** és a **adatok + tárolás** fiókot.
+3. Hozzon létre egy új Tárfiókot kattintva **+ új** és a **adatok + tárolás** fiókot.
 
-  ![Adatok + tárolás panel a Microsoft Azure Portalon](media/CRMScreenShot7.png)
+   ![Adatok + tárolás panel a Microsoft Azure Portalon](media/CRMScreenShot7.png)
 
 4. Adjon meg egy **neve** és **erőforráscsoport** nevet, és kattintson a **létrehozása** gombra.
 
-  ![Storage-fiók létrehozása a Microsoft Azure Portalon](media/CRMScreenShot8.png)
+   ![Storage-fiók létrehozása a Microsoft Azure Portalon](media/CRMScreenShot8.png)
 
 5. Keresse meg az újonnan létrehozott erőforráscsoportot, és hozzon létre egy új blobtárolót.
 
-  ![A Microsoft Azure Portallal blob csomag feltöltése](media/CRMScreenShot9.png)
+   ![A Microsoft Azure Portallal blob csomag feltöltése](media/CRMScreenShot9.png)
 
-6.  Ha még nem tette meg, töltse le és telepítse a Microsoft [Azure Storage Explorer](http://storageexplorer.com/).
+6. Ha még nem tette meg, töltse le és telepítse a Microsoft [Azure Storage Explorer](https://storageexplorer.com/).
 
-7.  Nyissa meg a Storage Explorert, és az ikon segítségével csatlakozhat az Azure storage-fiók.
+7. Nyissa meg a Storage Explorert, és az ikon segítségével csatlakozhat az Azure storage-fiók.
 
-8.  Keresse meg a létrehozott blob-tárolóba, és kattintson a **feltöltése** felvenni a csomag zip fájlt.
+8. Keresse meg a létrehozott blob-tárolóba, és kattintson a **feltöltése** felvenni a csomag zip fájlt.
 
-  ![A Microsoft Storage Explorer használatával csomag feltöltése.](media/CRMScreenShot10.png)
+   ![A Microsoft Storage Explorer használatával csomag feltöltése.](media/CRMScreenShot10.png)
 
-9.  A jobb gombbal a fájlt, és válassza a **közös hozzáférési jogosultságkód igénylése**.
+9. A jobb gombbal a fájlt, és válassza a **közös hozzáférési jogosultságkód igénylése**.
 
-  ![Az Azure-fájl a közös hozzáférésű jogosultságkód igénylése](media/CRMScreenShot11.png)
+   ![Az Azure-fájl a közös hozzáférésű jogosultságkód igénylése](media/CRMScreenShot11.png)
 
-10.  Módosítsa a **lejárati idő** ahhoz, hogy a SAS aktív egy hónapig, majd kattintson a **létrehozás**.
+10. Módosítsa a **lejárati idő** ahhoz, hogy a SAS aktív egy hónapig, majd kattintson a **létrehozás**.
 
-  ![Az Azure file SAS lejárati idejének módosítása](media/CRMScreenShot12.png)
+    ![Az Azure file SAS lejárati idejének módosítása](media/CRMScreenShot12.png)
 
-11.  Másolja az URL-cím mezőben, és mentse későbbi használatra. Adja meg az URL-címet, a kapcsolódó ajánlat létrehozásakor kell. 
+11. Másolja az URL-cím mezőben, és mentse későbbi használatra. Adja meg az URL-címet, a kapcsolódó ajánlat létrehozásakor kell. 
 
-  ![Az SAS URL-cím az Azure-fájl másolása](media/CRMScreenShot13.png)
+    ![Az SAS URL-cím az Azure-fájl másolása](media/CRMScreenShot13.png)
 

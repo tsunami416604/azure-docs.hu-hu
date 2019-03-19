@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: srinathv
-ms.openlocfilehash: f79a9048e50901424330224066cb84929d9126dc
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 906c0ef3db530ecb4aeade449e41a866a4b09a74
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530926"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005709"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure-beli virtuális gépek biztonsági mentésének hibaelhárítása
 Észlelt, miközben az adatokat az Azure Backup segítségével a következő táblázatban felsorolt hibák elhárítását:
@@ -41,12 +41,13 @@ ms.locfileid: "57530926"
 | Az Azure Backup szolgáltatás nem rendelkezik megfelelő engedélyekkel az Azure Key Vault a biztonsági mentéshez a titkosított virtuális gépek. |Ezeket az engedélyeket a PowerShellben a Backup szolgáltatás biztosítása a lépések használatával [hozzon létre egy virtuális gép helyreállított lemezekből](backup-azure-vms-automation.md). |
 |A pillanatkép-bővítmény telepítése nem sikerült. a hiba **COM + nem tudta felvenni a kapcsolatot, a Microsoft Distributed Transaction Coordinator**. | Egy rendszergazda jogú parancssorból, indítsa el a Windows-szolgáltatást **COM + System Application**. Például **net start COMSysApp**. Ha a szolgáltatás nem indul el, majd tegye a következőket:<ol><li> Győződjön meg arról, hogy a bejelentkezési fiókot a szolgáltatás **elosztott tranzakciók koordinátora** van **hálózati szolgáltatás**. Ha nem érhető el, módosítsa a bejelentkezési fiók **hálózati szolgáltatás** , és indítsa újra a szolgáltatást. Próbálja meg elindítani **COM + System Application**.<li>Ha **COM + System Application** nem start, távolítsa el és telepítse a szolgáltatást a következő lépésekkel **elosztott tranzakciók koordinátora**: <ol><li>Az MSDTC szolgáltatás leállítása. <li>Nyisson meg egy parancssort, **cmd**. <li>Futtassa a parancsot ```msdtc -uninstall```. <li>Futtassa a parancsot ```msdtc -install```. <li>Az MSDTC szolgáltatás elindításához. </ol> <li>Indítsa el a Windows-szolgáltatást **COM + System Application**. Miután a **COM + System Application** elindul, aktiválja a biztonsági mentési feladatot az Azure Portalról.</ol> |
 |  A pillanatkép-készítési művelet egy COM + hiba miatt nem sikerült. | Azt javasoljuk, hogy a Windows szolgáltatás újraindítását **COM + System Application** egy rendszergazda jogú parancssorból **net start COMSysApp**. Ha a probléma tartósan fennáll, indítsa újra a virtuális Gépet. Ha a virtuális gép újraindítása nem segít, próbálja meg [a VMSnapshot-bővítmény eltávolítása](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout) és a biztonsági mentés manuális aktiválása. |
-| Biztonsági mentés nem sikerült befagyasztani a virtuális gép egy rendszer alkalmazáskonzisztens pillanatképet egy vagy több csatlakoztatási pontot. | A következő lépésekkel: <ul><li>Ellenőrizze a fájlrendszer állapota az összes csatlakoztatott eszközök használatával a **"tune2fs"** parancsot. Például **tune2fs -l/dev/sdb1 \** .| a GREP **fájlrendszer állapota**. <li>Az eszközök, amelynek a fájlrendszer állapota nem tiszta használatával válassza le a **"umount"** parancsot. <li> Egy fájl rendszer konzisztencia-ellenőrzést az eszközök használatával futtassa a **"fsck"** parancsot. <li> Újra csatlakoztatni az eszközöket, és próbálja meg a biztonsági mentés.</ol> |
+| Biztonsági mentés nem sikerült befagyasztani a virtuális gép egy rendszer alkalmazáskonzisztens pillanatképet egy vagy több csatlakoztatási pontot. | A következő lépésekkel: <ul><li>Ellenőrizze a fájlrendszer állapota az összes csatlakoztatott eszközök használatával a **"tune2fs"** parancsot. Például **tune2fs -l/dev/sdb1 \\** .\| grep **fájlrendszer állapota**. <li>Az eszközök, amelynek a fájlrendszer állapota nem tiszta használatával válassza le a **"umount"** parancsot. <li> Egy fájl rendszer konzisztencia-ellenőrzést az eszközök használatával futtassa a **"fsck"** parancsot. <li> Újra csatlakoztatni az eszközöket, és próbálja meg a biztonsági mentés.</ol> |
 | A pillanatkép-készítési művelet nem sikerült létrehozni egy biztonságos hálózati kommunikációs csatorna hiba miatt. | <ol><li> Nyissa meg a Beállításszerkesztőt futtatásával **regedit.exe** egy emelt jogosultságszintű módban. <li> Azonosítsa a rendszerben található a .NET-keretrendszer összes verziójához. Azok a hierarchia beállításkulcs alatt található **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft**. <li> Minden .NET-keretrendszer a beállításkulcs megtalálható adja hozzá a következő kulcsot: <br> **SchUseStrongCrypto "= dword: 00000001**. </ol>|
 | A pillanatkép-készítési művelet nem sikerült telepíteni a Visual C++ terjeszthető csomag Visual Studio 2012 miatt nem sikerült. | Navigáljon a C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion, és telepítse a vcredist2012_x64. Győződjön meg arról, hogy a beállításkulcs-érték, amely lehetővé teszi, hogy a szolgáltatás telepítése a helyes értékre van állítva. A beállításkulcs értékét, **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver** értékre van állítva **3** , és nem **4**. <br><br>Ha továbbra is problémákba ütközik, indítsa újra a telepítést szolgáltatást futtatásával **MSIEXEC /UNREGISTER** követ **MSIEXEC /REGISTER** egy rendszergazda jogú parancssorból.  |
 
 
 ## <a name="jobs"></a>Feladatok
+
 | A hiba részletei | Áthidaló megoldás |
 | --- | --- |
 | Lemondás esetén ez a feladattípus nem támogatott: <br>Várjon, amíg a feladat befejeződik. |None |

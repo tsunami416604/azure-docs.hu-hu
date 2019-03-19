@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dabb47d4c4f39d30d8e19e8d8f41b5b84c57fd42
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c7c05c9a7db7f8e8c6e84232009780988d77aa14
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217598"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088332"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>A működési elv: Azure Multi-Factor Authentication
 
@@ -26,7 +26,9 @@ A kétlépéses ellenőrzés biztonságát a rétegelt megközelítést rejlik. 
 * Hiba (megbízható eszközzel rendelkezik, amely nem könnyen lettek duplikálva, például telefon)
 * Hiba (biometrikus adatok) áll
 
-<center>![Fogalmi hitelesítési módszerek kép](./media/concept-mfa-howitworks/methods.png)</center>
+<center>
+
+![Fogalmi hitelesítési módszerek kép](./media/concept-mfa-howitworks/methods.png)</center>
 
 Az Azure multi-factor Authentication (MFA) segítségével biztonságosabb a hozzáférés az adatokhoz és alkalmazásokhoz, miközben fenntartja az egyszerűség kedvéért a felhasználók számára. Azzal, hogy egy második hitelesítési mód további biztonságot nyújt, és a könnyen használható számos szigorú hitelesítést biztosít [hitelesítési módszerek](concept-authentication-methods.md). A felhasználók is, vagy előfordulhat, hogy nem merül fel az MFA-konfigurációval kapcsolatos döntéseket a rendszergazda által alapján.
 

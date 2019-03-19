@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 68bcddeee2cec1a77f20f8f470669f170fa50743
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 85757ace20501bea1db22ecfdd2fdb63284038d5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992483"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108746"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Az Azure SQL Database biztonsági mentéseinek Store akár 10 évig
 
@@ -56,22 +56,20 @@ W = 12 hetes (84 nap), M = 12 hónap (365 napos), Y = 10 év (3650 nap), WeekOfY
    ![az ltr-példa](./media/sql-database-long-term-retention/ltr-example.png)
 
 
- 
+
 Ha elveszne a fenti házirend módosítása és a set W = 0 (nincs heti biztonsági mentések), a kiadása ütemben történik a biztonsági másolatok akkor változik, ahogy látható a fenti táblázat kiemelt dátuma szerint. A szükséges, hogy ezeket a biztonsági másolatokat tároló összeg csökkentené a ennek megfelelően. 
 
 > [!NOTE]
-1. Az LTR-példányt, a másolási folyamat nem befolyásolja teljesítmény a meglévő adatbázis hozzák létre az Azure storage szolgáltatás.
-2. A későbbi biztonsági mentések a szabályzat vonatkozik. Például Ha a megadott WeekOfYear a múltban, ha a szabályzat van konfigurálva, az első LTR biztonsági mentés létrejön következő évben. 
-3. Adatbázis visszaállítása az LTR-storage-ból, kiválaszthatja az időbélyegző alapján meghatározott biztonsági másolat.   Az adatbázis az eredeti adatbázissal azonos előfizetéshez tartozó meglévő kiszolgáló visszaállítható. 
-> 
+> 1. Az LTR-példányt, a másolási folyamat nem befolyásolja teljesítmény a meglévő adatbázis hozzák létre az Azure storage szolgáltatás.
+> 2. A későbbi biztonsági mentések a szabályzat vonatkozik. Például Ha a megadott WeekOfYear a múltban, ha a szabályzat van konfigurálva, az első LTR biztonsági mentés létrejön következő évben. 
+> 3. Adatbázis visszaállítása az LTR-storage-ból, kiválaszthatja az időbélyegző alapján meghatározott biztonsági másolat.   Az adatbázis az eredeti adatbázissal azonos előfizetéshez tartozó meglévő kiszolgáló visszaállítható. 
 
 ## <a name="geo-replication-and-long-term-backup-retention"></a>Georeplikáció és a hosszú távú adatmegőrzés
 
 Ha az aktív georeplikáció útján vagy a feladatátvételi csoport használja, az üzleti folytonossági megoldást kell végleges feladatátvétel előkészítése és a ugyanazt az LTR-házirend konfigurálása a geo-secondary adatbázisra. Nem ez megnöveli az LTR tárolási költségeket, amikor biztonsági mentések nem jönnek létre, a másodlagos példány hozható létre. Csak akkor, ha a másodlagos elsődleges válik a biztonsági mentések jön létre. Ezzel a módszerrel az LTR biztonsági mentések generációja nem megszakad a feladatátvétel elindításakor garantálja és az elsődleges áthelyezi a másodlagos régióba. 
 
 > [!NOTE]
-Az eredeti elsődleges adatbázist helyreállítja a feladatátvétel okozó meghibásodás után, amikor egy új másodlagos lesz belőle. Ezért a biztonsági mentés létrehozása nem folytatódik, és a meglévő LTR-szabályzat nem lépnek érvénybe, amíg az elsődleges újra lesz. 
-> 
+> Az eredeti elsődleges adatbázist helyreállítja a feladatátvétel okozó meghibásodás után, amikor egy új másodlagos lesz belőle. Ezért a biztonsági mentés létrehozása nem folytatódik, és a meglévő LTR-szabályzat nem lépnek érvénybe, amíg az elsődleges újra lesz. 
 
 ## <a name="configure-long-term-backup-retention"></a>A biztonsági másolatok hosszú távú megőrzésének konfigurálása
 

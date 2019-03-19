@@ -13,12 +13,12 @@ ms.author: carlrab
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/11/2019
-ms.openlocfilehash: f033a93c0e4fc2648e151572bee25db5463e32e3
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 2feece21644f8b79b4e5fc74331944cdddbdee4a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56101143"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996423"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>Az SQL Server-adatbázis áttelepítése az Azure SQL Database
 
@@ -114,7 +114,7 @@ Sokféle kompatibilitási problémával találkozhat a forrásadatbázis SQL Ser
 - [Megszűnt adatbázismotor-funkció az SQL Server 2008 R2-ben](https://msdn.microsoft.com/library/ms144262%28v=sql.105%29)
 - [Megszűnt adatbázismotor-funkció az SQL Server 2005-ben](https://msdn.microsoft.com/library/ms144262%28v=sql.90%29)
 
-Az internetes keresés és a forrásanyagok használata mellett érdemes felkeresnie az [MSDN SQL Server közösségi fórumait](https://social.msdn.microsoft.com/Forums/sqlserver/home?category=sqlserver) vagy a [StackOverflow](http://stackoverflow.com/) oldalt.
+Az internetes keresés és a forrásanyagok használata mellett érdemes felkeresnie az [MSDN SQL Server közösségi fórumait](https://social.msdn.microsoft.com/Forums/sqlserver/home?category=sqlserver) vagy a [StackOverflow](https://stackoverflow.com/) oldalt.
 
 > [!IMPORTANT]
 > SQL Database felügyelt példánya lehetővé teszi egy meglévő SQL Server-példány és az adatbázisokhoz való áttelepítését a kompatibilitási problémák minimális. Lásd: [mi egy felügyelt példányra](sql-database-managed-instance.md).

@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: f84341d6d8ac3b5c7febaa4f659da84efcebb780
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e8876306e4ffbd0fa9a8aafc6d5d757fd3c9c614
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473346"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57847365"
 ---
 # <a name="machine-learning-and-data-science-tools"></a>Machine learning és adatelemzési eszközök
 Az Azure Data Science Virtual Machines rendelkezik eszközök széles skáláját, és -kódtárak a machine learning (gépi tanulás) például Python, R és Julia népszerű nyelveken érhető el. 
@@ -71,7 +71,7 @@ Az Azure Data Science Virtual Machines rendelkezik eszközök széles skálájá
 | Támogatott kiadások     | Windows, Linux     |
 | Gyakori használati      | Általános gépi Tanulási eszköz     |
 | Használatával, vagy futtassa      | A Windows, Weka keresése a Start menüben. Linuxon, jelentkezzen be X2Go, és folytassa a **alkalmazások** > **fejlesztési** > **Weka**. |
-| A minták mutató hivatkozás      | [Weka minták](http://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
+| A minták mutató hivatkozás      | [Weka minták](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
 | Kapcsolódó eszközök      |LightGBM, Rattle, XGBoost   |
 
 ## <a name="rattle"></a>Rattle

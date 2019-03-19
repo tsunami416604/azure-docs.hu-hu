@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03b76e59693918baca0058315ec62bbc51546cae
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 791b224f141dc0baa5babc401c35d6860a213df5
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57778586"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57875034"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-slack"></a>Oktatóanyag: Slack-az Azure Active Directory-integráció
 
@@ -206,7 +206,7 @@ Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy teszt
 
     a. Az a **neve** mezőbe írja be **BrittaSimon**.
   
-    b. Az a **felhasználónév** mezőtípus **brittasimon@yourcompanydomain.extension**  
+    b. Az a **felhasználónév** mezőbe írja be **brittasimon\@yourcompanydomain.extension**  
     Például: BrittaSimon@contoso.com
 
     c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
@@ -263,4 +263,4 @@ A Slack csempére kattintva a hozzáférési panelen, kell hogy automatikusan je
 
 - [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-* [Felhasználók átadásának konfigurálása](slack-provisioning-tutorial.md)
+- [Felhasználók átadásának konfigurálása](slack-provisioning-tutorial.md)

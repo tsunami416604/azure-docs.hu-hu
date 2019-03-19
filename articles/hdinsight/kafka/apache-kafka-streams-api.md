@@ -9,14 +9,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 11/06/2018
-ms.openlocfilehash: cb959bd74322534573f83c2b3258ff28d4c324ff
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 3c40e00d55af49b1b040d3fe706f08af719b2238
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584156"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58112789"
 ---
-# <a name="tutorial-apache-kafka-streams-api"></a>Oktatóanyag: Az Apache Kafka streams API
+# <a name="tutorial-apache-kafka-streams-api"></a>Oktatóanyag: Apache Kafka streams API
 
 Ismerje meg, hogyan hozhat létre az Apache Kafka Streams API-t használó alkalmazások, és futtassa a Kafka HDInsight. 
 
@@ -199,13 +199,13 @@ A projekt összeállításához és a Kafka on HDInsight-fürtön való üzembe 
 
     A témaköröket a következő célokra használjuk:
 
-    * `test`: Ez a témakör, ahol fogadott rekordokat. A streamelési alkalmazás innen olvassa az adatokat.
-    * `wordcounts`: Ez a témakör, ahol a streamelési alkalmazás tárolja a kimenetét.
-    * `RekeyedIntermediateTopic`: Ez a témakör segítségével újraparticionálni az adatokat, a count frissít a `countByKey` operátor.
-    * `wordcount-example-Counts-changelog`: Ez a témakör az állapottárolóhoz, használja a `countByKey` művelet
+   * `test`: Ez a témakör, ahol fogadott rekordokat. A streamelési alkalmazás innen olvassa az adatokat.
+   * `wordcounts`: Ez a témakör, ahol a streamelési alkalmazás tárolja a kimenetét.
+   * `RekeyedIntermediateTopic`: Ez a témakör segítségével újraparticionálni az adatokat, a count frissít a `countByKey` operátor.
+   * `wordcount-example-Counts-changelog`: Ez a témakör az állapottárolóhoz, használja a `countByKey` művelet
 
-    > [!IMPORTANT]  
-    > A Kafka on HDInsight a témakörök automatikus létrehozására is konfigurálható. További információkért tekintse meg [a témakörök automatikus létrehozásának konfigurálását](apache-kafka-auto-create-topics.md) ismertető dokumentumot.
+     > [!IMPORTANT]  
+     > A Kafka on HDInsight a témakörök automatikus létrehozására is konfigurálható. További információkért tekintse meg [a témakörök automatikus létrehozásának konfigurálását](apache-kafka-auto-create-topics.md) ismertető dokumentumot.
 
 ## <a name="run-the-code"></a>A kód futtatása
 

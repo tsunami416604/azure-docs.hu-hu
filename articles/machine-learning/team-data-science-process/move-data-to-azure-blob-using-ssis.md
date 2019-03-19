@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d8cb0829698b13e2193850c29f98492df6c48d4f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 688ef059387dc4c312873051c7c9d1eae259b1ae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468512"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57844783"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Adatok áthelyezése vagy onnan máshová SSIS-összekötők használatával az Azure Blob Storage
 A [SQL Server Integration Services funkciócsomag Azure](https://msdn.microsoft.com/library/mt146770.aspx) szeretne csatlakozni az Azure-összetevők közötti Azure-ban és a helyszíni adatforrások, és dolgozza fel az adatokat az Azure-ban tárolt adatok átvitele biztosít.
@@ -55,7 +55,7 @@ Lásd az SSIS oktatási anyagok [kéz a betanítási SSIS-hez](https://www.micro
 Információk beszerzése a felfelé és a futó használatával hozhat létre egyszerű kinyerési, átalakítási és betöltési (ETL) csomagok, lásd: SISS [SSIS-oktatóanyag: Egy egyszerű ETL-csomag létrehozása](https://msdn.microsoft.com/library/ms169917.aspx).
 
 ## <a name="download-nyc-taxi-dataset"></a>Töltse le a NYC Taxi adatkészlet
-A bemutatott példában a nyilvánosan elérhető adatkészlet – ide használata a [NYC Taxi lelassítja](http://www.andresmh.com/nyctaxitrips/) adatkészlet. Az adatkészlet készül 173 millió i taxik fel a következőt: az év 2013 áll. Az adatok két típusa van: trip adatokat és diszkont adatok részleteit. Mivel minden hónapban egy fájlt, az összes, amelyeken, hogy megközelítőleg 2GB tömörítetlen 24 fájlok van.
+A bemutatott példában a nyilvánosan elérhető adatkészlet – ide használata a [NYC Taxi lelassítja](https://www.andresmh.com/nyctaxitrips/) adatkészlet. Az adatkészlet készül 173 millió i taxik fel a következőt: az év 2013 áll. Az adatok két típusa van: trip adatokat és diszkont adatok részleteit. Mivel minden hónapban egy fájlt, az összes, amelyeken, hogy megközelítőleg 2GB tömörítetlen 24 fájlok van.
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Adatfeltöltés az Azure blob storage-bA
 Az SSIS használata az adatok funkciócsomag a helyszínről az Azure blob storage-áthelyezéséhez egy példányát használjuk a [ **Azure Blob feltöltése feladat**](https://msdn.microsoft.com/library/mt146776.aspx), itt látható:

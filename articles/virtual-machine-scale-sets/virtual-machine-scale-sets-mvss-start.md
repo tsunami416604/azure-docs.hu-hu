@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: manayar
-ms.openlocfilehash: 601c23bbcddeaeff89e1d1b1a4be8cb6b0256e51
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: d4a3dd6ae390fd48a8085cca33063a6bb74bd96c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54258781"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58008415"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>További információ a virtuális gép méretezési csoportok sablonjairól
 Az [Azure Resource Manager-sablonok](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#template-deployment) remek megoldást kínálnak egymáshoz kapcsolódó erőforráscsoportok üzembe helyezésére. Az oktatóanyag-sorozat bemutatja egy minimális működőképes méretezési csoport sablonjának létrehozása és módosítása a sablon igény szerint a különböző forgatókönyvekben. Valamennyi példa származnak, ez [GitHub-adattár](https://github.com/gatneil/mvss). 
@@ -40,7 +40,7 @@ Először határozzon meg `$schema` és `contentVersion` a sablonban. A `$schema
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
 ```
 ## <a name="define-parameters"></a>Paraméterek megadása

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.subservice: autoscale
-ms.openlocfilehash: ae1828210345eb35f9d22664285a0d348ea50d48
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 05f20aec536ebdb702caea37051a65af9bbc659f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478331"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085643"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Az automatikus méretezés a Microsoft Azure Virtual Machines, Cloud Services és a Web Apps áttekintése
 Ez a cikk azt ismerteti, milyen a Microsoft Azure automatikus méretezési funkciójával, annak előnyeit, és hogyan kezdheti el használni.  
@@ -66,15 +66,15 @@ Az automatikus méretezés használata a következő terminológia és struktúr
 
 - Egy **automatikus skálázási beállítás** annak megállapításához, hogy a kisebbre vagy nagyobbra méretezhetők az automatikus skálázási motor által olvasható. Egy vagy több profilok, a célként megadott erőforrás, és az értesítési beállítások kapcsolatos információkat tartalmaz.
 
-    - Egy **automatikus skálázási profil** v: kombinációja
+  - Egy **automatikus skálázási profil** v: kombinációja
 
-        - **kapacitás beállítás**, ami azt jelenti, hogy a minimális, maximális és alapértelmezett értékei a példányok számát.
-        - **Szabálykészlet**, amelyek mindegyike tartalmaz egy eseményindító (idő vagy metrika) és a egy skálázási műveletet (feljebb vagy lejjebb).
-        - **ismétlődési**, ami azt jelenti, hogy az automatikus méretezés kell üzembe helyezés a profil lép érvénybe.
+    - **kapacitás beállítás**, ami azt jelenti, hogy a minimális, maximális és alapértelmezett értékei a példányok számát.
+    - **Szabálykészlet**, amelyek mindegyike tartalmaz egy eseményindító (idő vagy metrika) és a egy skálázási műveletet (feljebb vagy lejjebb).
+    - **ismétlődési**, ami azt jelenti, hogy az automatikus méretezés kell üzembe helyezés a profil lép érvénybe.
 
-        Több profilt, melyek lehetővé teszik a különböző egymást átfedő követelmények irányuló rendelkezhet. Különböző automatikus méretezési profilok például is rendelkezhet a napot vagy a hét azon napjai, különböző időpontokban.
+      Több profilt, melyek lehetővé teszik a különböző egymást átfedő követelmények irányuló rendelkezhet. Különböző automatikus méretezési profilok például is rendelkezhet a napot vagy a hét azon napjai, különböző időpontokban.
 
-    - A **értesítési beállítás** határozza meg, milyen értesítéseket alapján a profilok az automatikus skálázási beállítás egyik feltételeknek eleget tevő automatikus skálázási esemény bekövetkezésekor kerül sor. Automatikus skálázási értesítése egy vagy több e-mail címet vagy egy vagy több webhook hívásokat is.
+  - A **értesítési beállítás** határozza meg, milyen értesítéseket alapján a profilok az automatikus skálázási beállítás egyik feltételeknek eleget tevő automatikus skálázási esemény bekövetkezésekor kerül sor. Automatikus skálázási értesítése egy vagy több e-mail címet vagy egy vagy több webhook hívásokat is.
 
 
 ![Az Azure automatikus skálázási beállítás, a profil és a szabály struktúra](./media/autoscale-overview/AzureResourceManagerRuleStructure3.png)
@@ -110,7 +110,7 @@ Beállíthat automatikus skálázási keresztül
 | Virtuális gépek: Windows méretezési csoportok |[A Windows virtuálisgép-méretezési csoport skálázási beállítása](../../virtual-machine-scale-sets/tutorial-autoscale-powershell.md) |
 | Virtuális gépek: Linux méretezési csoportok |[A Linux virtuálisgép-méretezési csoport skálázási beállítása](../../virtual-machine-scale-sets/tutorial-autoscale-cli.md) |
 | Virtuális gépek: Windows-példa |[Resource Manager-sablonok használata Virtuálisgép-méretezési csoportok speciális automatikus skálázási konfiguráció](../../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md) |
-| API Management-szolgáltatás|[Automatikus skálázása az Azure API Management-példány](https://docs.microsoft.com/azure/api-management/api-management-howto-autoscale)
+| API Management-szolgáltatás|[Az Azure API Management-példány automatikus skálázása](https://docs.microsoft.com/azure/api-management/api-management-howto-autoscale)
 
 ## <a name="next-steps"></a>További lépések
 További információ az automatikus méretezés, használja az automatikus skálázási útmutatók korábban felsorolt, vagy tekintse meg a következő:

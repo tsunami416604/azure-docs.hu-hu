@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 6551eab45fdfb5070b29de4152cf2b3e3d008f69
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 0138ea8dcbd780ca8aa87178dad41bdca1a72267
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082977"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900658"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement-application-offer"></a>A Dynamics 365 Customer Engagement-alkalmazás ajánlat létrehozása
 
@@ -28,7 +28,7 @@ Ez a szakasz ismerteti, hogyan hozhat létre, és a egy Dynamics 365 for Custome
 
 ## <a name="new-offer-form"></a>Új ajánlat űrlap
 
-Jelentkezzen be a [Cloud Partner Portalon](http://cloudpartner.azure.com/), majd válassza ki **+ új ajánlat** a bal oldali menüsáv a. Az új ajánlat menüben válassza ki **Dynamics 365 for Customer Engagement**:
+Jelentkezzen be a [Cloud Partner Portalon](https://cloudpartner.azure.com/), majd válassza ki **+ új ajánlat** a bal oldali menüsáv a. Az új ajánlat menüben válassza ki **Dynamics 365 for Customer Engagement**:
 
 ![Új ajánlat menüpont a Dynamics 365 Customer Engagement-alkalmazáshoz](./media/new-dyn365ce-menu-item.png)
 

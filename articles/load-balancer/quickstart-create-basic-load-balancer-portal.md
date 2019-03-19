@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: fa0ba7aabcd03297b076ccbc1fcc3d2453676cc1
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: fe095b8f5a0080c0f28ec570303c9dc23962dfc8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57782666"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57869812"
 ---
 # <a name="quickstart-create-a-basic-load-balancer-by-using-the-azure-portal"></a>Gyors útmutató: Alapszintű Load Balancer létrehozása az Azure portal használatával
 
@@ -28,7 +28,7 @@ Terheléselosztási a bejövő kérelmeket virtuális gépeken (VM) között osz
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
 
-Ebben a rövid útmutatóban a feladatokat végezheti el, jelentkezzen be a [az Azure portal](http://portal.azure.com).
+Ebben a rövid útmutatóban a feladatokat végezheti el, jelentkezzen be a [az Azure portal](https://portal.azure.com).
 
 ## <a name="create-a-basic-load-balancer"></a>Alapszintű Load Balancer létrehozása
 
@@ -207,7 +207,7 @@ A nevű terheléselosztási szabályt **MyLoadBalancerRule** az előtér-alkalma
    
 1. Kattintson az **OK** gombra.
    
-  ![Adjon hozzá egy terheléselosztó-szabályt](./media/load-balancer-get-started-internet-portal/5-load-balancing-rules.png)
+   ![Adjon hozzá egy terheléselosztó-szabályt](./media/load-balancer-get-started-internet-portal/5-load-balancing-rules.png)
 
 ## <a name="test-the-load-balancer"></a>A terheléselosztó tesztelése
 
@@ -259,6 +259,7 @@ Nyisson meg egy böngészőt, és illessze be a terheléselosztó nyilvános IP-
 
 ![IIS-webkiszolgáló](./media/load-balancer-get-started-internet-portal/9-load-balancer-test.png)
 
+Annak megtekintéséhez, hogyan osztja el a terheléselosztó az alkalmazást futtató három virtuális gép között a forgalmat, kényszerítheti a webböngésző frissítését.
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Törli a terheléselosztó és az összes kapcsolódó erőforrást, ha már nincs szüksége, nyissa meg a **MyResourceGroupLB** erőforrás-csoport, és válassza **erőforráscsoport törlése**.

@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: a8c4ef5df586c87862ea8e1634e9a72356401d0b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: bcb538cf2e546e4913ccb223e143c2343e114de7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247425"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57896194"
 ---
 # <a name="tutorial-create-cross-cloud-scaling-solutions-with-azure"></a>Oktatóanyag: A felhőbe irányuló méretezési megoldások létrehozása az Azure-ral
 
@@ -128,7 +128,7 @@ Azure-beli adattárak
 
 1. Jelentkezzen be Azure-folyamatok létrehozására megerősítéséhez definíciókat hozhat létre.
 
-2. Adjon hozzá **- r win10-x64** kódot. Erre azért szükség, aktiválhat egy önálló üzembe helyezés a .net Core.
+2. Adjon hozzá **- r win10-x64** kódot. Ez azért szükséges, egy önálló telepítés a .NET Core használatával aktiválásához.
 
     ![Helyettesítő szöveg](media/azure-stack-solution-cloud-burst/image4.png)
 
@@ -266,7 +266,7 @@ Most, hogy létezik a végpont adatait, az Azure Stack-kapcsolat Azure folyamato
 
 Használat [Azure Resource Manager-sablonokat, mint webes](https://azure.microsoft.com/resources/templates/) mindkét felhőben való üzembe helyezéséhez az Azure-Adattárakkal kódját.
 
-### <a name="add-code-to-a-azure-repos-project"></a>Adja hozzá a kódot egy Azure-Adattárakkal projekthez
+### <a name="add-code-to-an-azure-repos-project"></a>Adja hozzá a kódot egy Azure-Adattárakkal projekthez
 
 1.  Jelentkezzen be Azure-kódtárak egy olyan fiókkal rendelkező projekt létrehozása az Azure Stacken. A következő képernyőfelvétel bemutatja, hogyan kapcsolódjon a HybridCICD.
 
@@ -286,7 +286,7 @@ Használat [Azure Resource Manager-sablonokat, mint webes](https://azure.microso
 
 2.  Keresse meg a **webes alkalmazás készítése** a projekt lapját.
 
-3.  A **argumentumok**, adjon hozzá **- r win10-x64** kódot. Ez egy önálló telepítés a .NET használatával aktiválásához szükséges alapvető.
+3.  A **argumentumok**, adjon hozzá **- r win10-x64** kódot. Ez egy önálló telepítés a .NET Core használatával aktiválásához szükséges.
 
 4.  Futtassa a build. A [önálló telepítés build](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) folyamat közzéteszi az összetevők, amelyek futhatnak az Azure és az Azure Stackben.
 

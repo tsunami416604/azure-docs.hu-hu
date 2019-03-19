@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/10/2018
 ms.author: sngun
 Customer intent: As a developer, I want to build a Node.js web application to access and manage SQL API account resources in Azure Cosmos DB, so that customers can better use the service.
-ms.openlocfilehash: d9374a7815451c2ae3d9f6a84f4bfdadf1ad676d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: efe24f5203c0479c71b565b8cf2c272dc107a96b
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777617"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088111"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Oktatóanyag: Egy Node.js-webalkalmazás létrehozása az Azure Cosmos DB SQL API-fiók kezelése a JavaScript SDK segítségével 
 
@@ -87,7 +87,7 @@ Most megtanulhatja, hogyan hozhat létre egy alapszintű Hello World Node.js-pro
    
    ![A Node.js megismerése – Képernyőfelvétel a Hello World alkalmazásról egy böngészőablakban](./media/sql-api-nodejs-application/cosmos-db-node-js-express.png)
 
- CTRL + C billentyűkombinációt a terminálablakban használatával állítsa le az alkalmazást, és válassza ki **y** a kötegelt feladat leállításához.
+   CTRL + C billentyűkombinációt a terminálablakban használatával állítsa le az alkalmazást, és válassza ki **y** a kötegelt feladat leállításához.
 
 ## <a name="_Toc395783179"></a>A szükséges modulok telepítéséhez
 
@@ -183,7 +183,7 @@ Miután most végrehajtottuk a kezdeti telepítést és konfigurálást, megírj
       const { body } = await this.container.item(itemId).read();
       return body;
     }
-  }
+   }
 
    module.exports = TaskDao;
    ```
@@ -243,9 +243,9 @@ Miután most végrehajtottuk a kezdeti telepítést és konfigurálást, megírj
 
       res.redirect("/");
     }
-  }
+   }
 
-  module.exports = TaskList;
+   module.exports = TaskList;
    ```
 
 3. Mentse és zárja be a **tasklist.js** fájlt.

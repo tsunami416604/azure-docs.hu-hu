@@ -16,12 +16,12 @@ ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd05913a982d88a1e4fe4ff72bca0387e280e230
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fc27e5cd6af19f06a5eab73e30d3034fada0ccc2
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211631"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57838391"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Identitásszinkronizálás és ismétlődő attribútumok rugalmassága
 Ismétlődő attribútumok rugalmassága lehetővé teszi az Azure Active Directoryban, amely kiküszöböli a fennakadások nélkül használható által okozott az **UserPrincipalName** és **ProxyAddress** ütközik a Microsoft egyik futtatásakor szinkronizálás eszközökkel.
@@ -40,7 +40,7 @@ Ha üzembe helyezése egy új objektumot, amely megsérti az egyedi-e megkötés
 
 ## <a name="behavior-with-duplicate-attribute-resiliency"></a>Viselkedés az ismétlődő attribútumok rugalmassága
 Helyett a teljes, üzembe helyezése és a egy duplikált attribútummal rendelkező objektum frissítése sikertelen, az Azure Active Directory "karanténba" az ismétlődő attribútuma, amely sértene az egyediségre vonatkozó feltételnek. Ha ez az attribútum nem szükséges a kiépítést, UserPrincipalName, például a szolgáltatás egy helyőrző értéket rendeli hozzá. A formátum a következő ideiglenes értékek  
-"***<OriginalPrefix>+ < 4DigitNumber > @<InitialTenantDomain>. onmicrosoft.com***".  
+"***<OriginalPrefix>+ < 4DigitNumber >\@<InitialTenantDomain>. onmicrosoft.com***".  
 Ha az attribútum nem szükséges, például egy **ProxyAddress**, Azure Active Directory egyszerűen karanténba helyezheti a ütközés attribútumot, és folytatja az objektum létrehozása vagy frissítése.
 
 Esetén karanténba az attribútum, az azonos hiba a jelentés e-mailben a régi viselkedés használt megkapja az ütközést vonatkozó adatokat. Azonban ezt az információt csak egyszer jelenik meg a hibajelentés, ha a karanténba helyezett történik, nem továbbra is be kell jelentkeznie a jövőbeli e-mailek. Ezenkívül az objektum az exportálás sikeres volt, mert a Szinkronizáló ügyfél nem naplózza a hibát, és nem próbálja meg újra a Létrehozás / frissítés ezt követő szinkronizálási ciklust követően.
@@ -144,9 +144,9 @@ Ezek a problémák egyike hatására az adatok elvesztése vagy szolgáltatás t
 1. Attribútum konfigurációk objektumokat továbbra is ellentétben a duplikált attribútumokkal karanténba zárásának visszavonása exportálási hibák lépnek fel.  
    Példa:
    
-    a. Új felhasználó létrehozása egy egyszerű Felhasználóneve az AD-ben **Joe@contoso.com** és ProxyAddress **smtp:Joe@contoso.com**
+    a. Új felhasználó létrehozása egy egyszerű Felhasználóneve az AD-ben **Joe\@contoso.com** és ProxyAddress **smtp:Joe\@contoso.com**
    
-    b. Ez az objektum tulajdonságainak ütközik egy meglévő csoportot, ahol ProxyAddress az **SMTP:Joe@contoso.com**.
+    b. Ez az objektum tulajdonságainak ütközik egy meglévő csoportot, ahol ProxyAddress az **SMTP:Joe\@contoso.com**.
    
     c. Exportáláskor egy **ProxyAddress ütközés** hiba lépett fel a karanténba helyezett ütközés attribútumok nem. A művelet után minden ezt követő szinkronizálási ciklus rendszer, mielőtt a rugalmasság szolgáltatás engedélyezve lett volna.
 2. Két csoport azonos SMTP-jön létre a helyszíni, ha egy nem tud üzembe helyezni az első kísérlet alkalmával a szabvány duplicitní **ProxyAddress** hiba. Az ismétlődő értéket a következő szinkronizálási ciklus után azonban megfelelően karanténba.
@@ -156,13 +156,13 @@ Ezek a problémák egyike hatására az adatok elvesztése vagy szolgáltatás t
 1. A részletes hibaüzenetet UPN ütközés készlet két objektum megegyezik. Ez azt jelzi, hogy azok is volt az UPN módosult / karanténba zárva, amikor tulajdonképpen csak egy ezek közül minden módosított adat.
 2. A részletes hibaüzenetet az UPN ütközés egy felhasználóhoz, aki módosítva vagy karanténba egyszerű volt-e a megfelelő displayName jeleníti meg. Példa:
    
-    a. **A felhasználó** szinkronizálja a az első **UPN = User@contoso.com** .
+    a. **A felhasználó** először a szinkronizálások **UPN = felhasználó\@contoso.com**.
    
-    b. **"B" felhasználó** próbált be a következő szinkronizálható **UPN = User@contoso.com** .
+    b. **"B" felhasználó** próbált be a következő szinkronizálható **UPN = felhasználó\@contoso.com**.
    
-    c. **A "B" felhasználó** UPN módosul, amelyikben **User1234@contoso.onmicrosoft.com** és **User@contoso.com** adnak hozzá **DirSyncProvisioningErrors**.
+    c. **A "B" felhasználó** UPN módosul, amelyikben **User1234\@contoso.onmicrosoft.com** és **felhasználói\@contoso.com** adnak hozzá **DirSyncProvisioningErrors** .
    
-    d. A hibaüzenetben **"b" felhasználónak** kell jelzi, hogy **az a felhasználó** már **User@contoso.com** bemutatja egy egyszerű, de mivel **User-B** saját displayName.
+    d. A hibaüzenetben **"b" felhasználónak** kell jelzi, hogy **az a felhasználó** már **felhasználói\@contoso.com** bemutatja egy egyszerű, de mivel **B felhasználó** saját displayName.
 
 **Szinkronizálási hibajelentés identitás**:
 

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: billgib
 manager: craigg
 ms.date: 09/24/2018
-ms.openlocfilehash: 57a8a89c73e2be51e54130d9c37194a7513a47d8
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 28deb9b7ba15744b9bd3d273d02db4398d2b2ef3
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562514"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57896942"
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>Az alkalmazás bérlőnkénti SaaS-minta használatával új bérlők kiépítése és katalógusba
 
@@ -99,7 +99,7 @@ Miután a parancsfájl futása befejeződött, a katalógus fog létezik, és re
 Most nézzük meg a létrehozott erőforrásokat.
 
 1. Nyissa meg a [az Azure portal](https://portal.azure.com/) , és keresse meg az erőforráscsoportot.  Nyissa meg a **wingtip-sa-katalógus -\<felhasználói\>**  erőforrás csoportot, és jegyezze fel a globáliskatalógus-kiszolgálónak és az adatbázis.
-1. Nyissa meg az adatbázis a portálon, válassza a *adatkezelő* elemet a bal oldali menüben.  Kattintson a bejelentkezési parancsot, és írja be a jelszót = **P@ssword1**.
+1. Nyissa meg az adatbázis a portálon, válassza a *adatkezelő* elemet a bal oldali menüben.  Kattintson a bejelentkezési parancsot, és írja be a jelszót = **P\@ssword1**.
 
 
 1. Ismerje meg, a sémát a *tenantcatalog* adatbázis.  

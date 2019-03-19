@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 07fee8e5d051f0d2c04d3b5e34b66299734ca29c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: dc49b33fd3e6d582b31af5fe0507884e60205757
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549143"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58078006"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Azure-beli virtuális gépek áthelyezése egy másik régióba
 
@@ -24,7 +24,7 @@ Ez az oktatóanyag leírja, amelyben szeretné a virtuális gépek áthelyezése
 Ebben az oktatóanyagban ismertetik:
 
 > [!div class="checklist"]
-
+> 
 > * Virtuális gépek áthelyezése okok
 > * Tipikus architektúrák
 > * Helyezze át virtuális gépeket, hogy a célrégióban
@@ -99,8 +99,8 @@ Alapján a [architektúrák](#typical-architectures-for-a-multi-tier-deployment)
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-
+> 
 > * [Azure virtuális gépek áthelyezése egy másik régióba](azure-to-azure-tutorial-migrate.md)
-
+> 
 > * [Az Azure virtuális gépek áthelyezése a rendelkezésre állási zónában történő](move-azure-vms-avset-azone.md)
 

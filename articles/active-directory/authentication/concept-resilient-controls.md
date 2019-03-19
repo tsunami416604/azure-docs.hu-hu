@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5fb263819a5bb96175f636f53a16c28649a3f39
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: b006a4fbb8d1059f5096f5c1585853953b69042f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339549"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58082143"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Hozzon létre egy rugalmas hozzáférés-vezérlési felügyeleti stratégia az Azure Active Directoryval
 
@@ -94,18 +94,18 @@ Másik lehetőségként a szervezet készenléti házirendeket is létrehozhat. 
 A fenyegetéseknek való ismertetése során egy bekövetkező szolgáltatáskimaradás segít csökkenteni a kockázatot, és a egy kritikus részét képezi a tervezési folyamat során. A készenléti tervet létrehozni, először határozza meg a szervezet a következő üzleti követelményeknek:
 
 1. Az üzletmenet szempontjából kritikus fontosságú alkalmazások előre határozza meg: Mik azok az, hogy meg kell hozzáférést biztosít a, akár egy kisebb kockázat és biztonsági állapotáról az alkalmazások? Ezek az alkalmazások listájának létrehozása, és győződjön meg arról, hogy a más érdekelt felek (vállalati, biztonság, jogi, vezetői) összes egyetértenek abban, hogy minden hozzáférés-vezérlés ami újbóli próbálkozással megszűnik, ha ezek az alkalmazások továbbra is továbbra is futnia kell. Valószínűleg fog célból a kategóriák:
-  * **A kategória 1 működés szempontjából kritikus fontosságú alkalmazások** több percig, például olyan alkalmazásokat, amelyek közvetlenül nincsenek hatással a bevételt, a szervezet, amely nem lehet nem érhető el.
-  * **2. kategória fontos alkalmazások** , hogy az üzlet néhány órán belül elérhetők lesznek.
-  * **3. kategória alacsony prioritású alkalmazások** , amely képes elviselni egy pár nappal megszakadását.
+   * **A kategória 1 működés szempontjából kritikus fontosságú alkalmazások** több percig, például olyan alkalmazásokat, amelyek közvetlenül nincsenek hatással a bevételt, a szervezet, amely nem lehet nem érhető el.
+   * **2. kategória fontos alkalmazások** , hogy az üzlet néhány órán belül elérhetők lesznek.
+   * **3. kategória alacsony prioritású alkalmazások** , amely képes elviselni egy pár nappal megszakadását.
 2. 1. és 2 kategóriába tartozó alkalmazások esetében a Microsoft azt javasolja, előre megterveznie, milyen típusú hozzáférési szintet szeretné engedélyezni:
-  * Biztos, hogy a teljes hozzáféréssel vagy korlátozott munkamenet, például korlátozza a letöltéseket?
-  * Biztosan engedélyezi a hozzáférést az alkalmazáshoz, de nem a teljes alkalmazás részére?
-  * Biztosan information worker hozzáférés engedélyezéséhez és letiltásához a rendszergazdai hozzáférés, a hozzáférés-vezérlést visszaállításáig?
+   * Biztos, hogy a teljes hozzáféréssel vagy korlátozott munkamenet, például korlátozza a letöltéseket?
+   * Biztosan engedélyezi a hozzáférést az alkalmazáshoz, de nem a teljes alkalmazás részére?
+   * Biztosan information worker hozzáférés engedélyezéséhez és letiltásához a rendszergazdai hozzáférés, a hozzáférés-vezérlést visszaállításáig?
 3. Ezeket az alkalmazásokat a Microsoft azt javasolja azt tervezi, hogy melyik rések leggyakoribb okai az access, szándékosan megnyílik, és bezárul, melyiket:
-  * Biztosan engedélyezi a böngésző csak hozzáférési és letiltása olyan funkciógazdag ügyfeleket, amelyek a lehet offline adatokat?
-  * Biztosan hozzáférés engedélyezése csak a felhasználók a vállalati hálózaton belüli és kívüli felhasználók blokkolt?
-  * Biztosan csak a megszakítás alatt engedélyezze a hozzáférést bizonyos országokban vagy régiókban?
-  * Biztosan szabályzatokat a feltételes szabályzatokat, különösen a működés szempontjából kritikus fontosságú alkalmazások, sikertelen vagy sikeres, ha nem érhető el egy alternatív hozzáférés-vezérlés?
+   * Biztosan engedélyezi a böngésző csak hozzáférési és letiltása olyan funkciógazdag ügyfeleket, amelyek a lehet offline adatokat?
+   * Biztosan hozzáférés engedélyezése csak a felhasználók a vállalati hálózaton belüli és kívüli felhasználók blokkolt?
+   * Biztosan csak a megszakítás alatt engedélyezze a hozzáférést bizonyos országokban vagy régiókban?
+   * Biztosan szabályzatokat a feltételes szabályzatokat, különösen a működés szempontjából kritikus fontosságú alkalmazások, sikertelen vagy sikeres, ha nem érhető el egy alternatív hozzáférés-vezérlés?
 
 #### <a name="microsoft-recommendations"></a>Az ajánlott eljárásokat
 
@@ -251,7 +251,7 @@ A módosítások a aktivált válságtervet részeként után a szolgáltatás h
 Ha a szervezet az felhasználónkénti MFA örökölt házirendek, akkor érdemes lehet a következő helyett:
 
 1. Ha a vállalati hálózat kimenő IP-cím, a megbízható IP-címek csak a vállalati hálózathoz való hitelesítés engedélyezése, felveheti őket.
- 2. Ha nincs leltár készíthető a kimenő IP-címek, vagy, engedélyezze a hozzáférést a vállalati hálózaton kívül és belül kell, hozzáadhat a teljes IPv4-címtérhez, megbízható IP-címek 0.0.0.0/1 és 128.0.0.0/1 megadásával.
+   1. Ha nincs leltár készíthető a kimenő IP-címek, vagy, engedélyezze a hozzáférést a vállalati hálózaton kívül és belül kell, hozzáadhat a teljes IPv4-címtérhez, megbízható IP-címek 0.0.0.0/1 és 128.0.0.0/1 megadásával.
 
 >[!IMPORTANT]
  > Ha megváltoztatja a megbízható IP-címek hozzáférés feloldása, IP-címek (például lehetetlen odautazás vagy ismeretlen helyről) társított kockázati események nem jön létre.
@@ -264,9 +264,9 @@ Ha a szervezet az felhasználónkénti MFA örökölt házirendek, akkor érdeme
 * [Az Azure AD Authentication – dokumentáció](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
 * [A válságkezelési-hozzáférési rendszergazdai fiókok kezelése az Azure ad-ben](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
 * [Nevesített helyek konfigurálása az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
- * [Set-MsolDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
+  * [Set-MsolDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
 * [Hibrid Azure Active Directoryhoz csatlakoztatott eszközök konfigurálása](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
 * [Vállalati Windows Hello – Üzembehelyezési útmutató](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
- * [Tájékoztató a jelszavakról – a Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
+  * [Tájékoztató a jelszavakról – a Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
 * [Mik azok a feltételek az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
 * [Mik a hozzáférés-vezérlés az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)

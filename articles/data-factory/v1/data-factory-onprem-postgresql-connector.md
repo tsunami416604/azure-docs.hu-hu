@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0e86180a643b27056edc9901d590760cedcbf259
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: bd39b0aae5b76f37e2153f8e4c4502be994fa5b5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331877"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081831"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Adatok áthelyezése a postgresql-hez az Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -50,12 +50,12 @@ Egy folyamatot egy másolási tevékenységgel az adatok áthelyezéséhez a hel
 
 - A folyamat létrehozásának legegyszerűbb módja az, hogy használja a **másolása varázsló**. Lásd: [oktatóanyag: Hozzon létre egy folyamatot a másolás varázsló használatával](data-factory-copy-data-wizard-tutorial.md) gyors bemutató létrehozása egy folyamatot az adatok másolása varázsló használatával.
 - A következő eszközök használatával hozzon létre egy folyamatot:
-    - Azure Portal
-    - Visual Studio
-    - Azure PowerShell
-    - Azure Resource Manager-sablon
-    - .NET API
-    - REST API
+  - Azure Portal
+  - Visual Studio
+  - Azure PowerShell
+  - Azure Resource Manager-sablon
+  - .NET API
+  - REST API
 
     Lásd: [másolási tevékenység oktatóanyagát](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) egy másolási tevékenységgel ellátott adatcsatorna létrehozása a részletes útmutatóját.
 
@@ -306,46 +306,46 @@ Adatok áthelyezése a postgresql-hez, amikor a következő hozzárendeléseket 
 
 | PostgreSQL-adatbázis típusa | PostgresSQL aliasok | .NET-keretrendszer típusa |
 | --- | --- | --- |
-| abstime | |Dátum és idő | &nbsp;
+| abstime | |Dátum és idő |
 | bigint |int8 |Int64 |
 | bigserial |serial8 |Int64 |
-| bit [(n)] | |Byte [], karakterlánc | &nbsp;
+| bit [(n)] | |Byte [], karakterlánc |
 | bit különböző [(n)] |varbit |Byte [], karakterlánc |
-| logikai |Logikai |Logikai |
-| Box | |Byte [], karakterlánc |&nbsp;
-| bytea | |Byte [], karakterlánc |&nbsp;
-| [(n)] karakter |char [(n)] |Karakterlánc |
-| [(n)] eltérő karaktert |varchar [(n)] |Karakterlánc |
-| CID | |Karakterlánc |&nbsp;
-| CIDR | |Karakterlánc |&nbsp;
-| Kör | |Byte [], karakterlánc |&nbsp;
-| dátum | |Dátum és idő |&nbsp;
-| DateRange | |Karakterlánc |&nbsp;
-| a kétszeres pontosság |FLOAT8 |Dupla |
-| inet | |Byte [], karakterlánc |&nbsp;
-| intarry | |Karakterlánc |&nbsp;
-| int4range | |Karakterlánc |&nbsp;
-| int8range | |Karakterlánc |&nbsp;
+| logikai |logikai |Logikai |
+| Box | |Byte [], karakterlánc |
+| bytea | |Byte [], karakterlánc |
+| [(n)] karakter |char [(n)] |String |
+| [(n)] eltérő karaktert |varchar [(n)] |String |
+| CID | |String |
+| CIDR | |String |
+| Kör | |Byte [], karakterlánc |
+| dátum | |Dátum és idő |
+| DateRange | |String |
+| a kétszeres pontosság |FLOAT8 |Double |
+| inet | |Byte [], karakterlánc |
+| intarry | |String |
+| int4range | |String |
+| int8range | |String |
 | egész szám |int, int4 |Int32 |
-| intervallum [mezők] [(p)] | |Időtartomány |&nbsp;
-| JSON | |Karakterlánc |&nbsp;
-| jsonb | |Byte] |&nbsp;
-| Vonal | |Byte [], karakterlánc |&nbsp;
-| lseg | |Byte [], karakterlánc |&nbsp;
-| macaddr | |Byte [], karakterlánc |&nbsp;
-| költséget takaríthat meg | |Tizedes tört |&nbsp;
-| numerikus [(p, s)] |tizedes tört [(p, s)] |Tizedes tört |
-| numrange | |Karakterlánc |&nbsp;
-| objektumazonosító | |Int32 |&nbsp;
-| elérési út | |Byte [], karakterlánc |&nbsp;
-| pg_lsn | |Int64 |&nbsp;
-| Pont | |Byte [], karakterlánc |&nbsp;
-| Sokszög | |Byte [], karakterlánc |&nbsp;
-| valódi |float4 |Önálló |
+| intervallum [mezők] [(p)] | |Időtartomány |
+| JSON | |String |
+| jsonb | |Byte[] |
+| vonal | |Byte [], karakterlánc |
+| lseg | |Byte [], karakterlánc |
+| macaddr | |Byte [], karakterlánc |
+| költséget takaríthat meg | |Decimal |
+| numerikus [(p, s)] |tizedes tört [(p, s)] |Decimal |
+| numrange | |String |
+| objektumazonosító | |Int32 |
+| elérési út | |Byte [], karakterlánc |
+| pg_lsn | |Int64 |
+| pont | |Byte [], karakterlánc |
+| Sokszög | |Byte [], karakterlánc |
+| valódi |float4 |Single |
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
 | gyártási |serial4 |Int32 |
-| szöveg | |Karakterlánc |&nbsp;
+| szöveg | |String |
 
 ## <a name="map-source-to-sink-columns"></a>A fogadó-oszlopok térkép forrása
 Fogadó-adatkészlet oszlopaihoz forrásadatkészlet leképezés oszlopai kapcsolatos további információkért lásd: [az Azure Data Factoryban adatkészletoszlopok leképezése](data-factory-map-columns.md).

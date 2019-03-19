@@ -9,12 +9,12 @@ services: iot-hub
 ms.devlang: node
 ms.topic: conceptual
 ms.date: 04/26/2018
-ms.openlocfilehash: ed60e379837a2c2af2a0cc2c3b27eec314bff56b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 80132a2d15333308766b62e89262133b1f05b394
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57545160"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888723"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-using-nodejs-back-end-and-nodejs-device"></a>Ismerkedés az IoT Hub identitás- és modul ikermodul Node.js háttérrendszer és a Node.js-eszköz használata
 
@@ -43,7 +43,7 @@ Ebben a szakaszban egy Node.js-alkalmazást, amely egy eszközidentitást, valam
 
 1. Hozzon létre egy könyvtárat, amely tárolja a kódot.
 2. Belül a könyvtárhoz, először futtassa **npm init -y** hozhat létre egy üres package.json alapértelmezett értékekkel. Ez a következő projektfájlban: a kódhoz.
-3. Futtatás **npm -S telepítése azure-iothub@modules-preview ** SDK-szolgáltatás telepítése belül a **node_modules** alkönyvtárat.
+3. Futtatás **npm telepítése -S azure-iothub\@modulok – előzetes verzió** SDK-szolgáltatás telepítése belül a **node_modules** alkönyvtárat.
 
     > [!NOTE]
     > A alkönyvtár neve node_modules a word modult használja a "csomópontja library" jelenti. Az előfizetési időszak itt nem az IoT Hub-modulokkal.
@@ -107,7 +107,7 @@ Ebben a szakaszban egy Node.js-alkalmazást, amely egy eszközidentitást, valam
 
 Ez az alkalmazás egy új eszközidentitást hoz létre azonosító **myFirstDevice** és a egy modul identitás azonosítójú **myFirstModule** az eszköz **myFirstDevice**. (Ha ez a modulazonosító már létezik az identitásjegyzékben, a kód egyszerűen lekéri a meglévő modulinformációkat.) Az alkalmazás ezután megjeleníti az identitáshoz tartozó elsődleges kulcsot. Ezt a kulcsot a szimulált modulalkalmazásban használja az IoT Hubhoz való csatlakozáshoz.
 
-5. Csomópont add.js használatával futtassa. Akkor kap egy kapcsolati karakterláncot az eszközidentitás és a egy másik, a modul identitás.
+1. Csomópont add.js használatával futtassa. Akkor kap egy kapcsolati karakterláncot az eszközidentitás és a egy másik, a modul identitás.
 
     > [!NOTE]
     > Az IoT Hub-identitásjegyzék csak az IoT Hub biztonságos elérésének biztosításához tárolja az eszköz- és modulidentitásokat. Az identitásjegyzék tárolja az eszközazonosítókat és -kulcsot, és biztonsági hitelesítő adatokként használja őket. Az identitásjegyzék minden egyes eszközhöz tárol egy engedélyezve/letiltva jelzőt is, amellyel letilthatja az eszköz hozzáférését. Ha az alkalmazásnak más eszközspecifikus metaadatokat kell tárolnia, egy alkalmazásspecifikus tárolót kell használnia. A modulidentitások esetében nincs engedélyezési/letiltási jelző. További információkért lásd az [Azure IoT Hub fejlesztői útmutatóját][lnk-devguide-identity].
@@ -120,7 +120,7 @@ Ebben a szakaszban egy Node.js létrehozása a szimulált eszköz, amely frissí
 
     ![Az Azure Portal moduladatai][15]
 
-2. Hasonló, a fenti lépésben tette, hozzon létre egy könyvtárat a kód és az NPM használatával inicializálja, és telepítse az eszközoldali SDK (**npm -S telepítése azure-iot-device-amqp@modules-preview** ).
+2. Hasonló, a fenti lépésben tette, hozzon létre egy könyvtárat a kód és az NPM használatával inicializálja, és telepítse az eszközoldali SDK (**npm telepítése -S azure-iot-device-amqp\@modulok – előzetes verzió**).
 
     > [!NOTE]
     > Az npm install parancs úgy lassú. Türelemmel, akkor van lehetőség le nagy mennyiségű kódot a csomag tárházból.

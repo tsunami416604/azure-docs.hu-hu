@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: erikre
-ms.openlocfilehash: 3a487b56c3ce81f3a13add767a9bf7ad59cf79cd
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 15725989ef786f94421eddf647f101e3e73633fb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315945"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890763"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>Tekintse át az előfizetés számlázási REST API-k használatával
 
@@ -92,7 +92,7 @@ Egyes elemeiről **érték** egy szolgáltatás használatával kapcsolatos rés
 |**meterDetails** | Részletes információk a használatát. |
 |**nextLink**| Ha a beállítás, a részletek a következő "lap" URL-címet. Ha az oldal az utolsót üres. |
 
-Ebben a példában a rendszer rövidítéseket tartalmaz; Lásd: [listázása a használat részleteiről](https://docs.microsoft.com/rest/api/consumption/usagedetails/listbybillingperiod#usagedetailslistresult) minden válasz mező teljes leírását.
+Ebben a példában a rendszer rövidítéseket tartalmaz; Lásd: [listázása a használat részleteiről](https://docs.microsoft.com/rest/api/consumption/usagedetails/list#usagedetailslistforbillingperiod) minden válasz mező teljes leírását.
 
 Más állapotkódok hibaállapotok jelzik. Ezekben az esetekben a Válaszobjektum azt ismerteti, miért érdemes a kérelem sikertelen volt.
 

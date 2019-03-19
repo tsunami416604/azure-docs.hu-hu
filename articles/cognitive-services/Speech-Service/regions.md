@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/14/2019
-ms.author: mahilleb
+ms.date: 03/12/2019
+ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: c9e72ea2762af0d9a4c47ca5b23fe4bdbe53b968
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 1be51c4f5aede58a975dc9441b3bec7a83f7becd
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447548"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57900913"
 ---
 # <a name="speech-service-supported-regions"></a>Beszédszolgáltatás támogatott régiók
 
@@ -38,11 +38,19 @@ A beszédfelismerés SDK érhető el ezekben a régiókban a **beszédfelismeré
  USA 2. nyugati régiója | `westus2` | https://westus2.cris.ai
  USA keleti régiója | `eastus` | https://eastus.cris.ai
  USA 2. keleti régiója | `eastus2` | https://eastus2.cris.ai
+ USA középső régiója | "centralus" | https://centralus.cris.ai
+ USA északi középső régiója | "northcentralus" | https://northcentralus.cris.ai
+ USA déli középső régiója | "southcentralus" | https://southcentralus.cris.ai
  Kelet-Ázsia | `eastasia` | https://eastasia.cris.ai
  Délkelet-Ázsia | `southeastasia` | https://southeastasia.cris.ai
+ Kelet-Japán | `japaneast` | https://japaneast.cris.ai
+ Korea középső régiója | `koreacentral` | https://koreacentral.cris.ai
+ Kelet-Ausztrália | `australiaeast` | https://australiaeast.cris.ai
+ Közép-Kanada | `canadacentral` | https://canadacentral.cris.ai
  Észak-Európa | `northeurope` | https://northeurope.cris.ai
  Nyugat-Európa | `westeurope` | https://westeurope.cris.ai
-
+ Az Egyesült Királyság déli régiója | `uksouth` | https://uksouth.cris.ai
+ Közép-Franciaország | `francecentral` | https://francecentral.cris.ai
 
 ### <a name="intent-recognition"></a>Szándékfelismerés
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/27/2018
 ms.author: ryanwi
-ms.openlocfilehash: 42a6430162f3bafd3ec3ce2a3c523f6f5755914a
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 0e5cfa42eba5a2110ebf8879c771f2fef048ae03
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001378"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835713"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>Naplózás hozzáadása a Service Fabric-alkalmazás
 
@@ -132,7 +132,7 @@ Az ASP.NET Core-naplózás ([Microsoft.Extensions.Logging NuGet-csomag](https://
 
 ### <a name="using-other-logging-providers"></a>Más naplózási szolgáltatók használatával
 
-Néhány külső szolgáltatók használatát a megközelítés az előző szakaszban leírt beleértve [Serilog](https://serilog.net/), [NLog](http://nlog-project.org/), és [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging). Ezen az ASP.NET Core-naplózás is csatlakoztathatja, vagy külön-külön használhatná őket. Serilog van olyan szolgáltatás, amely bővíti a naplózó küldött üzenetek. Ez a funkció akkor lehet hasznos, a kimenetben a szolgáltatás neve, típusa és a partíciónak az adatait. Ez a funkció használata az ASP.NET Core-infrastruktúra, hajtsa végre ezeket a lépéseket:
+Néhány külső szolgáltatók használatát a megközelítés az előző szakaszban leírt beleértve [Serilog](https://serilog.net/), [NLog](https://nlog-project.org/), és [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging). Ezen az ASP.NET Core-naplózás is csatlakoztathatja, vagy külön-külön használhatná őket. Serilog van olyan szolgáltatás, amely bővíti a naplózó küldött üzenetek. Ez a funkció akkor lehet hasznos, a kimenetben a szolgáltatás neve, típusa és a partíciónak az adatait. Ez a funkció használata az ASP.NET Core-infrastruktúra, hajtsa végre ezeket a lépéseket:
 
 1. Adja hozzá a **Serilog**, **Serilog.Extensions.Logging**, **Serilog.Sinks.Literate**, és **Serilog.Sinks.Observable** NuGet-csomagok a projekthez. 
 2. Hozzon létre egy `LoggerConfiguration` és a naplózó példány.

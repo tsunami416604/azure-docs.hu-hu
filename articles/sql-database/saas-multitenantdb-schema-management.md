@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 55e414a35574f8437a30ffb75aebd82eded14fa9
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c7c10608d90f7659b108d2d8c80038f59396de2d
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447919"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57878074"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>Egy több-bérlős SQL szilánkokra osztott adatbázisok használó SaaS-alkalmazásban séma kezelése
 
@@ -53,7 +53,7 @@ Ezen oktatóanyag segítségével megtanulhatja a következőket:
 - Az Azure PowerShell telepítve kell lennie. További információkért lásd: [Ismerkedés az Azure PowerShell-lel](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure SQL Database szolgáltatás, amely egy korlátozott előzetes verzió funkcióit használja ([rugalmas adatbázis-feladatok](sql-database-elastic-database-client-library.md)). Ha szeretné elvégezni ezt az oktatóanyagot, adja meg az előfizetés-Azonosítóját az *SaaSFeedback@microsoft.com* a subject = Elastic Jobs Preview szöveget. Miután megkapta a megerősítést az előfizetésének engedélyezéséről, [töltse le és telepítse a legújabb kiadás előtti feladatok parancsmagjait](https://github.com/jaredmoo/azure-powershell/releases). Ebben az előzetes verzióban korlátozva, ezért forduljon *SaaSFeedback@microsoft.com* kapcsolatos kérdésekre, vagy támogatást.
+> Ez az oktatóanyag az Azure SQL Database szolgáltatás, amely egy korlátozott előzetes verzió funkcióit használja ([rugalmas adatbázis-feladatok](sql-database-elastic-database-client-library.md)). Ha szeretné elvégezni ezt az oktatóanyagot, adja meg az előfizetés-Azonosítóját az *SaaSFeedback\@microsoft.com* a subject = Elastic Jobs Preview szöveget. Miután megkapta a megerősítést az előfizetésének engedélyezéséről, [töltse le és telepítse a legújabb kiadás előtti feladatok parancsmagjait](https://github.com/jaredmoo/azure-powershell/releases). Ebben az előzetes verzióban korlátozva, ezért forduljon *SaaSFeedback\@microsoft.com* kapcsolatos kérdésekre, vagy támogatást.
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>SaaS-séma kezelése minták bemutatása
 

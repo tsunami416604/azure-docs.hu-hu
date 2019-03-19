@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: e44a02e2126e7b25f69999de34fe5cf42499a90c
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: eb1c302bf1954492ba2a7a78d16fc697fdf4b687
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556832"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58080437"
 ---
 # <a name="diagnose-and-troubleshoot"></a>Diagnosztika és hibaelhárítás
 
@@ -43,16 +43,16 @@ Miért nem láthatja az adatokat számos gyakori oka lehet a [Azure Time Series 
 
 - Az esemény forrása kulcs hiányzik egy szükséges engedéllyel.
 
-    * Egy IoT hubot, meg kell adnia a kulcsot, amelynek **szolgáltatás csatlakozása** engedéllyel.
+  * Egy IoT hubot, meg kell adnia a kulcsot, amelynek **szolgáltatás csatlakozása** engedéllyel.
 
     ![Konfiguráció][3]
 
-    * A házirendek mindkét az előző képen látható módon **iothubowner** és **szolgáltatás** működik, mert az **szolgáltatás csatlakozása** engedéllyel.
-    * Az eseményközpontok felé, meg kell adnia a kulcsot, amelynek **figyelésére** engedéllyel.
+  * A házirendek mindkét az előző képen látható módon **iothubowner** és **szolgáltatás** működik, mert az **szolgáltatás csatlakozása** engedéllyel.
+  * Az eseményközpontok felé, meg kell adnia a kulcsot, amelynek **figyelésére** engedéllyel.
   
     ![Engedélyek][4]
 
-    * Mindkét az előző képen látható módon a **olvasási** és **kezelése** házirendek működik, mert az **figyelésére** engedéllyel.
+  * Mindkét az előző képen látható módon a **olvasási** és **kezelése** házirendek működik, mert az **figyelésére** engedéllyel.
 
 - A megadott fogyasztói csoportot nem kizárólagos, a Time Series Insights.
 

@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: cfefa8a1bfee03959d0f3b077d9915a6badb1ffd
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: fd680b00feb8a75dfec952d7211554100fca00d8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55988085"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075066"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>A Video Indexer widgetek beágyazása az alkalmazásokba
 
@@ -45,7 +45,7 @@ A **Lejátszó** vezérlő lehetővé teszi a videó streamelését adaptív át
 |t|Kezdés utáni másodpercek|Beállítja, hogy a lejátszó az adott időponttól induljon el.<br/>Például: t=60|
 |captions|Nyelvkód|Lekéri a vezérlő betöltése közben a megadott nyelvű feliratot, amely elérhető lesz a feliratmenüben.<br/>Például: captions=en-US|
 |showCaptions|Logikai érték|Beállítja, hogy a lejátszó betöltésekor a feliratok megjelenítése már engedélyezve legyen.<br/>Például: showCaptions=true|
-|type||Aktivál egy audiólejátszó felületet (a videólejátszó rész el lesz távolítva).<br/>Például: type=audio|"
+|type||Aktivál egy audiólejátszó felületet (a videólejátszó rész el lesz távolítva).<br/>Például: type=audio|
 |autoplay|Logikai érték|Jelzi, hogy a lejátszó a betöltést követően automatikusan lejátssza-e a videót (az alapértelmezett érték a true).<br/>Például: autoplay=false|
 |language|Nyelvkód|A lejátszó nyelvét szabályozza (az alapértelmezett érték: en-US)<br/>Például: language=de-DE|
 

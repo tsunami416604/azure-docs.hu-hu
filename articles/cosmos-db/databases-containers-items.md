@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: dharmas
 ms.reviewer: sngun
-ms.openlocfilehash: 85d8b531f19ac35f091f54c2627f7fe6d3a62a42
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c7288b112ce2fd062a67cb673a1efa6028ec7d57
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468138"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57888519"
 ---
 # <a name="work-with-databases-containers-and-items"></a>Adatbázisok, tárolók és elemek használata
 
@@ -92,7 +92,7 @@ Egy Azure Cosmos-tárolóhoz egy rendszer által meghatározott tulajdonságkés
 Az Azure Cosmos-tárolókat a következő műveletek bármelyikével az Azure Cosmos API-kat támogatja.
 
 | **Művelet** | **Azure CLI** | **SQL API-HOZ** | **Cassandra API** | **Az Azure Cosmos DB MongoDB API-jaival** | **Gremlin API** | **Tábla API** |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- |
 | A tárolók egy adatbázis számbavétele | Igen* | Igen | Igen | Igen | NA | NA |
 | Egy tároló olvasása | Igen | Igen | Igen | Igen | NA | NA |
 | Új tároló létrehozása | Igen | Igen | Igen | Igen | NA | NA |
@@ -125,14 +125,14 @@ Minden Azure-Cosmos-elem a következő definiált rendszertulajdonsággal rendel
 Az Azure Cosmos-cikk támogatja a következő műveleteket az Azure Cosmos API-k használatával elvégezhető.
 
 | **Művelet** | **Azure CLI** | **SQL API-HOZ** | **Cassandra API** | **Az Azure Cosmos DB MongoDB API-jaival** | **Gremlin API** | **Tábla API** |
-| --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- |
 | Helyezze be, cserélje le, törlése, Upsert, olvassa el | Nem | Igen | Igen | Igen | Igen | Igen |
 
 ## <a name="next-steps"></a>További lépések
 
 Most már folytathatja kioszthatja az átviteli sebességet az Azure Cosmos-fiók, vagy tekintse meg a többi kapcsolatos fogalmak megismeréséhez:
 
-* [Kiosztott átviteli sebesség egy Azure Cosmos-adatbázis konfigurálása](how-to-provision-database-throughput.md)
+* [Egy Azure Cosmos database kiosztott átviteli sebesség konfigurálása](how-to-provision-database-throughput.md)
 * [Egy Azure Cosmos-tároló kiosztott átviteli sebesség konfigurálása](how-to-provision-container-throughput.md)
 * [Logikai partíció](partition-data.md)
 * [Élettartam konfigurálása az Azure Cosmos-tároló](how-to-time-to-live.md)

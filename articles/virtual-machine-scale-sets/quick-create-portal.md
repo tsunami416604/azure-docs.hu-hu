@@ -17,12 +17,12 @@ ms.topic: quickstart
 ms.custom: H1Hack27Feb2017
 ms.date: 03/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 0a9975b6f44a97d198dc308e263879c3358aab82
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: a2081bab2aebf0d49f3bde2467dac1fa683452ab
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672695"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58008716"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Gyors útmutató: Virtuálisgép-méretezési csoport létrehozása az Azure Portalon
 A virtuálisgép-méretezési csoportok segítségével azonos, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. A méretezési csoportban lévő virtuális gépek számát beállíthatja manuálisan, de automatikus méretezési szabályokat is megadhat az erőforrás-használat (például processzorhasználat, memóriaigény vagy hálózati forgalom) alapján. Egy Azure-terheléselosztó ezután elosztja a forgalmat a méretezési csoportban lévő virtuálisgép-példányok között. Ebben a rövid útmutatóban egy virtuálisgép-méretezési csoportot hoz létre az Azure Portalon.
@@ -31,7 +31,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 
 ## <a name="log-in-to-azure"></a>Jelentkezzen be az Azure-ba
-Jelentkezzen be az Azure Portalra a http://portal.azure.com címen.
+Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
 
 
 ## <a name="create-virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport létrehozása
@@ -43,10 +43,10 @@ Méretezési csoportokat Windows Server-rendszerképpel vagy Linux-rendszerképp
 4. Válassza ki a kívánt operációsrendszer-típust, például *Windows Server 2016 Datacenter*.
 5. Adja meg az erőforráscsoport kívánt nevét (például *myResourceGroup*) és helyét (például az *USA keleti régiója*).
 6. Adja meg a kívánt felhasználónevet, és válasszon ki egy tetszőleges hitelesítési típust.
-    - A **jelszónak** legalább 12 karakter hosszúnak kell lennie, és meg kell felelnie a következő négy összetettségi feltétel közül háromnak: egy kisbetű, egy nagybetű, egy szám és egy különleges karakter. További információkért lásd: [felhasználónév- és jelszókövetelmények](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm).
-    - Ha a Linux operációsrendszer-lemezt választja, választhatja az **SSH nyilvános kulcs** lehetőséget is. Csak a nyilvános kulcsot adja meg, például: *~/.ssh/id_rsa.pub*. [SSH-kulcsok létrehozásához és használatához](../virtual-machines/linux/mac-create-ssh-keys.md) használhatja a portál Azure Cloud Shell szolgáltatását is.
+   - A **jelszónak** legalább 12 karakter hosszúnak kell lennie, és meg kell felelnie a következő négy összetettségi feltétel közül háromnak: egy kisbetű, egy nagybetű, egy szám és egy különleges karakter. További információkért lásd: [felhasználónév- és jelszókövetelmények](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm).
+   - Ha a Linux operációsrendszer-lemezt választja, választhatja az **SSH nyilvános kulcs** lehetőséget is. Csak a nyilvános kulcsot adja meg, például: *~/.ssh/id_rsa.pub*. [SSH-kulcsok létrehozásához és használatához](../virtual-machines/linux/mac-create-ssh-keys.md) használhatja a portál Azure Cloud Shell szolgáltatását is.
 
-    ![Alapvető adatait a virtuálisgép-méretezési csoport létrehozásához állítsa be az Azure Portalon](./media/virtual-machine-scale-sets-create-portal/create-scale-set-basic-details.png)
+     ![Alapvető adatait a virtuálisgép-méretezési csoport létrehozásához állítsa be az Azure Portalon](./media/virtual-machine-scale-sets-create-portal/create-scale-set-basic-details.png)
 1. Válassza ki egy terheléselosztási beállítás, például *Load balancer*alatt **válassza a beállítások terheléselosztás**. A terheléselosztási beállítás adja meg a fennmaradó részleteit. Például *terheléselosztó* meg kell adnia egy **nyilvános IP-cím neve** és **tartománynévcímke**.
 1. Adja meg, hogy virtuális hálózat alatt **virtuális hálózatok konfigurálása**. Például létrehozhat egy új virtuális hálózat *myVirtualNetwork*, és a egy új alhálózatot *alapértelmezett*.
 1. A méretezési csoport beállításainak megerősítéséhez, válassza a **Létrehozás** lehetőséget.

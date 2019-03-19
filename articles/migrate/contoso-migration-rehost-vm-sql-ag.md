@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 84a2ef60c9f6aa4270c3fc4f83327070b298b8b2
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 535ba0049e91e09de3d1dcf05fc8ede80ef403ef
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697187"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088060"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-azure-vms-and-sql-server-alwayson-availability-group"></a>Contoso áttelepítése: Az Azure virtuális gépeken és az SQL Server AlwaysOn rendelkezésre állási csoport helyi alkalmazás újratárolása
 
@@ -704,10 +704,10 @@ A Contoso biztonsági csapat áttekinti az Azure-beli virtuális gépek WEBVM, S
 ## <a name="bcdr"></a>BCDR
 
  Az üzletmenet-folytonossági és vészhelyreállítási (bcdr) funkciók a Contoso fogadja a következő műveleteket:
- - Adatok biztonsága: Contoso biztonsági másolatot készít az adatok WEBVM, SQLAOG1 és SQLAOG2 virtuális gépeket az Azure Backup szolgáltatás használatával. [További információ].
-(https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
-- Contoso is ismerteti, hogyan használható az Azure Storage biztonsági mentéséhez az SQL Server közvetlenül a blob storage. [További információk](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-use-storage-sql-server-backup-restore).
-- Bízhatja alkalmazások: Contoso az alkalmazás az Azure-beli virtuális gépek Site Recovery használatával egy másodlagos régióba replikálja. [További információk](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart).
+- Adatok biztonsága: Contoso biztonsági másolatot készít az adatok WEBVM, SQLAOG1 és SQLAOG2 virtuális gépeket az Azure Backup szolgáltatás használatával. [További információ].
+  (https://docs.microsoft.com/azure/backup/backup-introduction-to-azure-backup?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+  - Contoso is ismerteti, hogyan használható az Azure Storage biztonsági mentéséhez az SQL Server közvetlenül a blob storage. [További információk](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-use-storage-sql-server-backup-restore).
+  - Bízhatja alkalmazások: Contoso az alkalmazás az Azure-beli virtuális gépek Site Recovery használatával egy másodlagos régióba replikálja. [További információk](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart).
 
 
 ### <a name="licensing-and-cost-optimization"></a>Licencelési és a költségek optimalizálása

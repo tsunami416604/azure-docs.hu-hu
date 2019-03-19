@@ -14,12 +14,12 @@ ms.date: 02/08/2019
 ms.author: rolyon
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fb675778d899d6f4cec22de8a1c81fdae76ba17e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 804000b781ca1fc8d9f8834e3a8c0f0a78c52c11
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879764"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57878482"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Az Azure AD Privileged Identity Management (PIM) üzembe helyezése
 
@@ -179,13 +179,13 @@ Fontos rangsorolására védelme az Azure AD-szerepkörök, amelyek a legtöbb e
 
 1. Globális rendszergazda
 1. Biztonsági rendszergazda
-1. Felhasználóifiók-adminisztrátor
+1. Felhasználói adminisztrátor
 1. Exchange-rendszergazda
 1. SharePoint-rendszergazda
-1. Intune szolgáltatás rendszergazdája
+1. Intune-rendszergazda
 1. Biztonsági olvasó
 1. Szolgáltatás-rendszergazda
-1. Számlázási adminisztrátor
+1. Számlázási rendszergazda
 1. Skype Vállalati verzió-rendszergazda
 
 > [!TIP]
@@ -259,13 +259,13 @@ A következő táblázat ismerteti az egyes beállításoknak.
 | Beállítás | Leírás |
 | --- | --- |
 | Szerepkör | A beállításokat a szerepkör nevét. |
-| MFA megkövetelése | Hogy a jogosult felhasználónak kell hajthatok végre MFA a szerepkör aktiválása előtt.<br/><br/>:heavy_check_mark: **A Microsoft javasolja** , MFA kényszerítése minden rendszergazdai szerepkörhöz, különösen akkor, ha a szerepkörök rendelkeznek vendégfelhasználókat. |
+| MFA megkövetelése | Hogy a jogosult felhasználónak kell hajthatok végre MFA a szerepkör aktiválása előtt.<br/><br/> :heavy_check_mark: **A Microsoft javasolja** , MFA kényszerítése minden rendszergazdai szerepkörhöz, különösen akkor, ha a szerepkörök rendelkeznek vendégfelhasználókat. |
 | Értesítés | Értéke true, globális rendszergazda, a kiemelt szerepkörű rendszergazda, és a biztonsági rendszergazda a szervezet egy e-mail értesítést kap, amikor egy jogosult felhasználó aktiválja a szerepkörét.<br/><br/>**Megjegyzés:** Egyes szervezetek nem rendelkezik rendszergazdai fiókjait, az alábbi e-mail-értesítések kötött e-mail-címmel, egy másodlagos e-mail-cím beállítása, így a rendszergazdák fog kapni e-mailek kell végezze. |
-| Incidens jegy | E a jogosult felhasználónak szüksége van egy incidens jegyszám rögzíti, ha a szerepkör aktiválása. Ez a beállítás segítségével a szervezetek egy belső incidensszám nemkívánatos aktiválások csökkentése érdekében az egyes aktiválási azonosításához.<br/><br/>:heavy_check_mark: **A Microsoft javasolja** kihasználhatja a PIM elősegítsék a belső rendszerbe történő incidens jegy számának. Ez különösen hasznos a jóváhagyókat, akik az aktiválási környezet szükséges. |
-| Jóváhagyás szükséges | Hogy a jogosult felhasználónak el kell beolvasni a szerepkör aktiválásához jóváhagyás.<br/><br/>:heavy_check_mark: **A Microsoft javasolja** , hogy a legtöbb engedéllyel rendelkező szerepek jóváhagyás beállítása. Minden PIM-ügyfél használati mintái alapján a globális rendszergazdai, felhasználói rendszergazdája, Exchange-rendszergazdai, biztonsági rendszergazdai és jelszókezelő a leggyakrabban használt szerepkörök a jóváhagyás beállítása. |
-| Jóváhagyó | Ha a jóváhagyásra szükség a jogosult szerepkör, akik jóvá kell hagynia a kérelmet listázásához aktiválását. Alapértelmezés szerint a PIM beállítja a jóváhagyó, minden olyan felhasználók, akik a kiemelt szerepkörű rendszergazda, azok állandó és jogosult-e lennie.<br/><br/>**Megjegyzés:** Ha egy felhasználó egyaránt jogosult az Azure AD-szerepkörhöz, és a szerepkör jóváhagyó, nem jóváhagyhatja magukat.<br/><br/>:heavy_check_mark: **A Microsoft javasolja** jóváhagyók azoknak, akik a legtöbb globális rendszergazda helyett az adott szerepkörrel és a gyakori felhasználók ismerő kell választania. |
+| Incidens jegy | E a jogosult felhasználónak szüksége van egy incidens jegyszám rögzíti, ha a szerepkör aktiválása. Ez a beállítás segítségével a szervezetek egy belső incidensszám nemkívánatos aktiválások csökkentése érdekében az egyes aktiválási azonosításához.<br/><br/> :heavy_check_mark: **A Microsoft javasolja** kihasználhatja a PIM elősegítsék a belső rendszerbe történő incidens jegy számának. Ez különösen hasznos a jóváhagyókat, akik az aktiválási környezet szükséges. |
+| Jóváhagyás szükséges | Hogy a jogosult felhasználónak el kell beolvasni a szerepkör aktiválásához jóváhagyás.<br/><br/> :heavy_check_mark: **A Microsoft javasolja** , hogy a legtöbb engedéllyel rendelkező szerepek jóváhagyás beállítása. Minden PIM-ügyfél használati mintái alapján a globális rendszergazdai, felhasználói rendszergazdája, Exchange-rendszergazdai, biztonsági rendszergazdai és jelszókezelő a leggyakrabban használt szerepkörök a jóváhagyás beállítása. |
+| Jóváhagyó | Ha a jóváhagyásra szükség a jogosult szerepkör, akik jóvá kell hagynia a kérelmet listázásához aktiválását. Alapértelmezés szerint a PIM beállítja a jóváhagyó, minden olyan felhasználók, akik a kiemelt szerepkörű rendszergazda, azok állandó és jogosult-e lennie.<br/><br/>**Megjegyzés:** Ha egy felhasználó egyaránt jogosult az Azure AD-szerepkörhöz, és a szerepkör jóváhagyó, nem jóváhagyhatja magukat.<br/><br/> :heavy_check_mark: **A Microsoft javasolja** jóváhagyók azoknak, akik a legtöbb globális rendszergazda helyett az adott szerepkörrel és a gyakori felhasználók ismerő kell választania. |
 | Aktiválás időtartama | Mennyi ideig aktiválódik egy felhasználót a szerepkör előtt le fog járni. |
-| Az állandó rendszergazdai | Mely lesz a szerepkörhöz tartozó állandó rendszergazda felhasználóknak (soha nem kell aktiválása).<br/><br/>:heavy_check_mark: **A Microsoft javasolja** nulla állandó rendszergazda számára a globális rendszergazdák kivételével az összes szerepkör rendelkezik. Olvassa el több részletes ki kell tenni a jogosult és kik legyenek a terv állandóan aktív szakaszában. |
+| Az állandó rendszergazdai | Mely lesz a szerepkörhöz tartozó állandó rendszergazda felhasználóknak (soha nem kell aktiválása).<br/><br/> :heavy_check_mark: **A Microsoft javasolja** nulla állandó rendszergazda számára a globális rendszergazdák kivételével az összes szerepkör rendelkezik. Olvassa el több részletes ki kell tenni a jogosult és kik legyenek a terv állandóan aktív szakaszában. |
 | Aktív felügyeleti | Az Azure-erőforrásokhoz a felhasználók, akik soha nem a szerepkör használatához aktiválnia kell a lista aktív rendszergazda. Ezt nem nevezzük állandó rendszergazda például az Azure AD-szerepkörök mert beállíthat egy lejárati időt, amikor a felhasználó elveszíti a szerepkör számára. |
 | Aktív lejárata | Aktív szerepkör-hozzárendeléssel, az Azure-erőforrások szerepköreihez tartozó ez időszak konfigurálása után lejár. 15 nap, 1 hónap, a 3 hónapos, 6 havi, 1 év közül választhat, vagy állandóan aktív. |
 | Jogosult lejárata | Egy jogosult szerepkör-hozzárendelés az Azure-erőforrások szerepköreihez tartozó ez időszak konfigurálása után lejár. 15 nap, 1 hónap, a 3 hónapos, 6 havi, 1 év közül választhat, vagy állandó jogosultság. |

@@ -11,12 +11,12 @@ ms.date: 01/04/2019
 author: gauravmalhot
 ms.author: gamal
 manager: craigg
-ms.openlocfilehash: c684d275052e011d965210c132e09bab679cf166
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.openlocfilehash: 4bd38991b2452bdda65a7647f844dcc17fdfb125
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576252"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58003547"
 ---
 # <a name="templates"></a>Sablonok
 
@@ -40,11 +40,13 @@ Elkezdheti egy Data Factory-folyamatot hoz létre egy sablont a következő két
 
 ### <a name="out-of-the-box-data-factory-templates"></a>A beépített adat-előállító sablon kívül
 
-A Data Factory az Azure Resource Manager-sablonok mentése a data factory folyamat sablonokat használ. Láthatja, hogy minden a Resource Manager-sablonok, a jegyzékfájl belül a beépített adat-előállító sablon nem használható együtt a [hivatalos Azure Data Factory Github-adattárat](https://github.com/Azure/Azure-DataFactory/tree/master/templates). Az előre definiált sablonok, a Microsoft által biztosított tartalmazza, de nem korlátozódnak az alábbi cikkeket:
+A Data Factory az Azure Resource Manager-sablonok mentése a data factory folyamat sablonokat használ. Láthatja, hogy minden a Resource Manager-sablonok, a jegyzékfájl belül a beépített adat-előállító sablon nem használható együtt a [hivatalos Azure Data Factory GitHub-adattárat](https://github.com/Azure/Azure-DataFactory/tree/master/templates). Az előre definiált sablonok, a Microsoft által biztosított tartalmazza, de nem korlátozódnak az alábbi cikkeket:
 
 -   Másolhatja a sablonokat:
 
     -   [A tömeges másolási adatbázisból](solution-template-bulk-copy-with-control-table.md)
+    
+    -   [Új fájlok másolása LastModifiedDate szerint](solution-template-copy-new-files-lastmodifieddate.md)
 
     -   [Másolja ki több fájlt tároló fájlalapú tárolók között](solution-template-copy-files-multiple-containers.md)
 

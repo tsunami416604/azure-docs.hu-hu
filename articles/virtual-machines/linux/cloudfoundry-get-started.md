@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/19/2017
 ms.author: seanmck
-ms.openlocfilehash: 18aa5ab16a1690fdcead46ebc15d72837f62612d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 68ae01b814de08098c0ba6b5713f420cfebc3d97
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302469"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001261"
 ---
 # <a name="cloud-foundry-on-azure"></a>Cloud Foundry az Azure-ban
 
@@ -48,7 +48,7 @@ A Microsoft legjobb támogatás a nyílt Forráskódú cf-hez a következő köz
 
 A Pivotal Cloud Foundry tartalmazza az ugyanazon alapvető platformot, mint a nyílt Forráskódú terjesztési néhány egyéb felügyeleti eszközök és a vállalati szintű támogatással együtt. A PCF futtatásához az Azure-ban, meg kell szerezni a Pivotal licenc. A PCF-ajánlat az Azure marketplace-ről egy 90 napos próbaidőszaki licencre is tartalmaz.
 
-Az eszközök között [Pivotal az Operations Manager](http://docs.pivotal.io/pivotalcf/customizing/), egy webalkalmazás, amely leegyszerűsíti az üzembe helyezését és felügyeletét egy a Cloud Foundry alapítvány és [Pivotal alkalmazások Manager](https://docs.pivotal.io/pivotalcf/console/), egy webalkalmazás kezeléséhez a felhasználók és alkalmazások.
+Az eszközök között [Pivotal az Operations Manager](https://docs.pivotal.io/pivotalcf/customizing/), egy webalkalmazás, amely leegyszerűsíti az üzembe helyezését és felügyeletét egy a Cloud Foundry alapítvány és [Pivotal alkalmazások Manager](https://docs.pivotal.io/pivotalcf/console/), egy webalkalmazás kezeléséhez a felhasználók és alkalmazások.
 
 A fenti nyílt Forráskódú cf-hez felsorolt támogatási csatornák mellett a PCF licenc feljogosítja a Pivotal forduljon a támogatási. A Microsoft és a Pivotal is engedélyezte támogatási munkafolyamatok, amelyek lehetővé teszik, hogy bármelyik fél kapcsolatba segítségért és rendelkezik a megfelelő irányításához, attól függően, hol helyezkedik el a problémát megkeresését.
 

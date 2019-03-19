@@ -5,14 +5,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/7/2019
+ms.date: 03/14/2019
 ms.author: mayg
-ms.openlocfilehash: 3417a6cb4c9af8c315cc84718330b4ab5255ee6c
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 1aaf13f01c7e7197001f3099fabd4b8be8545f0d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569263"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094701"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>VMware virtuális gépek és fizikai kiszolgálók replikációjával kapcsolatos problémák elhárítása
 
@@ -63,13 +63,18 @@ Győződjön meg arról, hogy a következő szolgáltatások futnak-e a PS-gépe
 
 Győződjön meg arról, hogy az összes szolgáltatás lefokozáskor értéke **automatikus vagy automatikus (Késleltetett indítás)**. A Microsoft Azure Recovery Services Agent (obengine) szolgáltatás nem kell a lefokozáskor a fenti beállítása.
 
-## <a name="initial-replication-issues"></a>Kezdeti replikációs problémákat
+## <a name="replication-issues"></a>Replikációjával kapcsolatos problémák
 
-Kezdeti replikációs hibák gyakran okozza a forráskiszolgáló és a folyamatkiszolgáló között, vagy a folyamatkiszolgáló és az Azure közötti kapcsolódási problémák. A legtöbb esetben ezek a problémák elhárításához a következő szakaszokban ismertetett lépéseket követve.
+Kezdeti és folyamatos replikálási hibák gyakran okozza a forráskiszolgáló és a folyamatkiszolgáló között, vagy a folyamatkiszolgáló és az Azure közötti kapcsolódási problémák. A legtöbb esetben ezek a problémák elhárításához a következő szakaszokban ismertetett lépéseket követve.
 
-### <a name="check-the-source-machine"></a>Ellenőrizze a forrásgépen
+>[!Note]
+>Győződjön meg arról, hogy:
+>1. A rendszer a védett elem dátum-idő szinkronizálva.
+>2. Nincs a víruskereső szoftver nem blokkolja az Azure Site Recovery. Ismerje meg, [további](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) a mappák kizárásának, az Azure Site Recoveryhez szükséges.
 
-A következő listában látható módon ellenőrizheti, hogy a forrásgép:
+### <a name="check-the-source-machine-for-connectivity-issues"></a>Ellenőrizze a forrásgép kapcsolattal fennálló problémákat
+
+A következő listában látható módon ellenőrizheti, hogy a forrásgépen.
 
 *  A parancssorban a forráskiszolgálón a Telnet használatával a folyamatkiszolgáló a HTTPS-porton keresztül pingelni a következő parancs futtatásával. 9443-as Port HTTPS a a folyamatkiszolgáló replikációs forgalom küldésére és fogadására használt alapértelmezett. A regisztrációs időpontjában módosíthatja ezt a portot. A következő parancsot a hálózati kapcsolattal fennálló problémákat és a problémák, amelyek blokkolják a tűzfalport ellenőrzi.
 
@@ -94,7 +99,7 @@ A következő listában látható módon ellenőrizheti, hogy a forrásgép:
 
        C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\svagents*.log 
 
-### <a name="check-the-process-server"></a>Ellenőrizze a folyamatkiszolgáló
+### <a name="check-the-process-server-for-connectivity-issues"></a>Ellenőrizze a folyamatkiszolgáló kapcsolódási problémák
 
 A következő listában látható módon ellenőrizheti, hogy a folyamatkiszolgáló:
 
@@ -102,66 +107,66 @@ A következő listában látható módon ellenőrizheti, hogy a folyamatkiszolg�
 > Folyamatkiszolgáló rendelkeznie kell egy statikus IPv4-címet, és nem NAT IP konfigurálni kell rajta.
 
 * **Ellenőrizze a forrásgépek és a Folyamatkiszolgáló közötti kapcsolat**
-1. Abban az esetben a telnet a forrásgép és akkor még a PS nem érhető el a forrás, ellenőrizze a forrás virtuális gép cxprocessserver a végpontok közötti kapcsolat forrásoldali virtuális gép cxpsclient eszköz futtatásával:
+* Abban az esetben a telnet a forrásgép és akkor még a PS nem érhető el a forrás, ellenőrizze a forrás virtuális gép cxprocessserver a végpontok közötti kapcsolat forrásoldali virtuális gép cxpsclient eszköz futtatásával:
 
-       <install folder>\cxpsclient.exe -i <PS_IP> -l <PS_Data_Port> -y <timeout_in_secs:recommended 300>
+      <install folder>\cxpsclient.exe -i <PS_IP> -l <PS_Data_Port> -y <timeout_in_secs:recommended 300>
 
-    Tekintse meg a generált naplókat, a PS megfelelő hibáival kapcsolatos részletekért a következő könyvtárban:
+   Tekintse meg a generált naplókat, a PS megfelelő hibáival kapcsolatos részletekért a következő könyvtárban:
 
-       C:\ProgramData\ASR\home\svsystems\transport\log\cxps.err
-       and
-       C:\ProgramData\ASR\home\svsystems\transport\log\cxps.xfer
-2. Abban az esetben, ha nem érkezett szívverés az PS, ellenőrizze a PS meg a következő naplók kapcsolódnak:
+      C:\ProgramData\ASR\home\svsystems\transport\log\cxps.err
+      and
+      C:\ProgramData\ASR\home\svsystems\transport\log\cxps.xfer
+* Ellenőrizze a következő naplók kapcsolódnak a PS az abban az esetben, ha nem érkezett szívverés az PS parancsot. Ez által azonosított **hibakód 806** a portálon.
 
-       C:\ProgramData\ASR\home\svsystems\eventmanager*.log
-       and
-       C:\ProgramData\ASR\home\svsystems\monitor_protection*.log
+      C:\ProgramData\ASR\home\svsystems\eventmanager*.log
+      and
+      C:\ProgramData\ASR\home\svsystems\monitor_protection*.log
 
-*  **Ellenőrizze, hogy a folyamatkiszolgáló van aktívan küld-e adatokat az Azure-bA**.
+* **Ellenőrizze, hogy a folyamatkiszolgáló van aktívan küld-e adatokat az Azure-bA**.
 
-   1. A folyamatkiszolgáló nyissa meg a Feladatkezelőt (nyomja meg a Ctrl + Shift + Esc).
-   2. Válassza ki a **teljesítmény** lapra, és válassza ki a **nyissa meg az erőforrás-figyelő** hivatkozásra. 
-   3. Az a **erőforrás-figyelő** lapon válassza ki a **hálózati** fülre. Alatt **hálózati tevékenységgel rendelkező folyamat**, ellenőrizze hogy **cbengine.exe** aktívan küld nagy mennyiségű adat.
+  1. A folyamatkiszolgáló nyissa meg a Feladatkezelőt (nyomja meg a Ctrl + Shift + Esc).
+  2. Válassza ki a **teljesítmény** lapra, és válassza ki a **nyissa meg az erőforrás-figyelő** hivatkozásra. 
+  3. Az a **erőforrás-figyelő** lapon válassza ki a **hálózati** fülre. Alatt **hálózati tevékenységgel rendelkező folyamat**, ellenőrizze hogy **cbengine.exe** aktívan küld nagy mennyiségű adat.
 
-        ![A kötetek a hálózati tevékenységgel rendelkező folyamatot bemutató képernyőkép](./media/vmware-azure-troubleshoot-replication/cbengine.png)
+       ![A kötetek a hálózati tevékenységgel rendelkező folyamatot bemutató képernyőkép](./media/vmware-azure-troubleshoot-replication/cbengine.png)
 
-   Ha cbengine.exe nagy mennyiségű adatot nem küld, hajtsa végre az alábbi szakaszokban található.
+  Ha cbengine.exe nagy mennyiségű adatot nem küld, hajtsa végre az alábbi szakaszokban található.
 
-*  **Ellenőrizze, hogy a folyamatkiszolgáló csatlakozhat az Azure Blob storage**.
+* **Ellenőrizze, hogy a folyamatkiszolgáló csatlakozhat az Azure Blob storage**.
 
-   Válassza ki **cbengine.exe**. A **TCP-kapcsolatok**, ellenőrizze, hogy van-e kapcsolat a folyamatkiszolgáló és az Azure Blog storage URL-címe.
+  Válassza ki **cbengine.exe**. A **TCP-kapcsolatok**, ellenőrizze, hogy van-e kapcsolat a folyamatkiszolgáló és az Azure Blog storage URL-címe.
 
-   ![Cbengine.exe és az Azure Blob storage URL-cím közötti kapcsolatot bemutató képernyőkép](./media/vmware-azure-troubleshoot-replication/rmonitor.png)
+  ![Cbengine.exe és az Azure Blob storage URL-cím közötti kapcsolatot bemutató képernyőkép](./media/vmware-azure-troubleshoot-replication/rmonitor.png)
 
-   Ha nincs kapcsolat a folyamatkiszolgálóról az Azure Blog storage URL-címet, a Vezérlőpulton válassza **szolgáltatások**. Ellenőrizze, hogy futnak-e a következő szolgáltatásokat:
+  Ha nincs kapcsolat a folyamatkiszolgálóról az Azure Blog storage URL-címet, a Vezérlőpulton válassza **szolgáltatások**. Ellenőrizze, hogy futnak-e a következő szolgáltatásokat:
 
-   *  cxprocessserver
-   *  Az InMage Scout VX Agent – Sentinel/Outpost
-   *  Microsoft Azure Recovery Services Agent
-   *  Microsoft Azure Site Recovery szolgáltatás
-   *  tmansvc
+  *  cxprocessserver
+  *  Az InMage Scout VX Agent – Sentinel/Outpost
+  *  Microsoft Azure Recovery Services Agent
+  *  Microsoft Azure Site Recovery szolgáltatás
+  *  tmansvc
 
-   Indítsa el, vagy bármely szolgáltatás nem fut, indítsa újra. Ellenőrizze, hogy a probléma továbbra is fennáll-e.
+  Indítsa el, vagy bármely szolgáltatás nem fut, indítsa újra. Ellenőrizze, hogy a probléma továbbra is fennáll-e.
 
-*  **Ellenőrizze-e a folyamatkiszolgáló csatlakozhat az Azure nyilvános IP-cím használatával a 443-as porton**.
+* **Ellenőrizze-e a folyamatkiszolgáló csatlakozhat az Azure nyilvános IP-cím használatával a 443-as porton**.
 
-   Az Azure Recovery Services Agent\Temp %programfiles%\Microsoft nyissa meg a legújabb CBEngineCurr.errlog fájlt. A fájlban keresse meg **443-as** vagy karakterláncnak **kapcsolódási kísérlet sikertelen**.
+  Az Azure Recovery Services Agent\Temp %programfiles%\Microsoft nyissa meg a legújabb CBEngineCurr.errlog fájlt. A fájlban keresse meg **443-as** vagy karakterláncnak **kapcsolódási kísérlet sikertelen**.
 
-   ![Képernyőkép a hiba jelentkezik be a Temp mappa](./media/vmware-azure-troubleshoot-replication/logdetails1.png)
+  ![Képernyőkép a hiba jelentkezik be a Temp mappa](./media/vmware-azure-troubleshoot-replication/logdetails1.png)
 
-   Ha problémák vannak feltüntetve, a parancssorban a folyamatkiszolgálón a Telnet használatával ping az Azure nyilvános IP-cím (az IP-cím van maszkolva az előző képen). 443-as porton keresztül az Azure nyilvános IP-címet a CBEngineCurr.currLog fájlban találja meg:
+  Ha problémák vannak feltüntetve, a parancssorban a folyamatkiszolgálón a Telnet használatával ping az Azure nyilvános IP-cím (az IP-cím van maszkolva az előző képen). 443-as porton keresztül az Azure nyilvános IP-címet a CBEngineCurr.currLog fájlban találja meg:
 
-   `telnet <your Azure Public IP address as seen in CBEngineCurr.errlog>  443`
+  `telnet <your Azure Public IP address as seen in CBEngineCurr.errlog>  443`
 
-   Ha nem sikerül, ellenőrizze, hogy a hozzáférési probléma miatt tűzfal vagy a proxykiszolgáló beállításait a következő lépésben leírtak szerint.
+  Ha nem sikerül, ellenőrizze, hogy a hozzáférési probléma miatt tűzfal vagy a proxykiszolgáló beállításait a következő lépésben leírtak szerint.
 
-*  **Ellenőrizze, hogy a folyamatkiszolgáló IP cím-alapú tűzfala blokkolja a hozzáférést**.
+* **Ellenőrizze, hogy a folyamatkiszolgáló IP cím-alapú tűzfala blokkolja a hozzáférést**.
 
-   Ha a kiszolgáló IP-cím-alapú tűzfalszabályainak használja, töltse le a teljes listáját [Microsoft Azure adatközpont IP-címtartományait](https://www.microsoft.com/download/details.aspx?id=41653). Adja hozzá az IP-címtartományok a tűzfal beállításait a győződjön meg arról, hogy a tűzfal engedélyezi-e a kommunikációt az Azure-ba (és az alapértelmezett HTTPS-port, 443-as porton). Lehetővé teszik az IP-címtartományokat az előfizetés Azure-régió és Azure USA nyugati régiójában (hozzáférés-vezérléshez és identitáskezeléshez kezelés használatos).
+  Ha a kiszolgáló IP-cím-alapú tűzfalszabályainak használja, töltse le a teljes listáját [Microsoft Azure adatközpont IP-címtartományait](https://www.microsoft.com/download/details.aspx?id=41653). Adja hozzá az IP-címtartományok a tűzfal beállításait a győződjön meg arról, hogy a tűzfal engedélyezi-e a kommunikációt az Azure-ba (és az alapértelmezett HTTPS-port, 443-as porton). Lehetővé teszik az IP-címtartományokat az előfizetés Azure-régió és Azure USA nyugati régiójában (hozzáférés-vezérléshez és identitáskezeléshez kezelés használatos).
 
-*  **Ellenőrizze, hogy a folyamatkiszolgáló URL-alapú tűzfala blokkolja a hozzáférést**.
+* **Ellenőrizze, hogy a folyamatkiszolgáló URL-alapú tűzfala blokkolja a hozzáférést**.
 
-   Egy URL-cím és a kiszolgálóalapú tűzfalak szabály használatakor a kiszolgálón, adja hozzá az URL-címeket, a tűzfal-konfiguráció a következő táblázatban:
+  Egy URL-cím és a kiszolgálóalapú tűzfalak szabály használatakor a kiszolgálón, adja hozzá az URL-címeket, a tűzfal-konfiguráció a következő táblázatban:
 
 [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]  
 
@@ -178,6 +183,7 @@ A következő listában látható módon ellenőrizheti, hogy a folyamatkiszolg�
 *  **Ellenőrizze, hogy a szabályozás sávszélesség korlátozott-e a folyamatkiszolgáló**.
 
    Növelje a sávszélességet, és ellenőrizze, hogy a probléma továbbra is fennáll-e.
+
 
 ## <a name="source-machine-isnt-listed-in-the-azure-portal"></a>Forrásgép nem szerepel a listán az Azure Portalon
 
@@ -196,6 +202,96 @@ Válassza ki a forrásoldali gép számára engedélyezze a replikációt a Site
 ## <a name="protected-virtual-machines-are-greyed-out-in-the-portal"></a>Védett virtuális gépek itt kiszürkítve jelennek meg a portálon
 
 A Site Recovery replikált virtuális gépek nem érhetők el az Azure Portalon, ha a rendszer ismétlődő bejegyzéseket tartalmaz. Ismerje meg, hogyan törli az elavult bejegyzések, és hárítsa el a problémát, tekintse meg [Azure Site Recovery VMware – Azure: Eltávolítás az ismétlődő vagy elavult bejegyzés](https://social.technet.microsoft.com/wiki/contents/articles/32026.asr-vmware-to-azure-how-to-cleanup-duplicatestale-entries.aspx).
+
+## <a name="common-errors-and-recommended-steps-for-resolution"></a>Gyakori hibák és javasolt megoldási lépések
+
+### <a name="initial-replication-issues-error-78169"></a>A kezdeti replikálási problémákat [78169 hiba]
+
+Keresztül a fenti biztosítása, ha nincs kapcsolat, a sávszélességet vagy időt szinkronizálása a kapcsolódó problémákról, ügyeljen arra, hogy:
+
+- Nincs a víruskereső szoftver nem blokkolja az Azure Site Recovery. Ismerje meg, [további](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) a mappák kizárásának, az Azure Site Recoveryhez szükséges.
+
+### <a name="application-consistency-recovery-point-missing-error-78144"></a>[Hiba 78144] hiányzó alkalmazás konzisztencia-helyreállítási pontja
+
+ Ez akkor történik, kötet-árnyékmásolata szolgáltatás (VSS) kapcsolatos problémák miatt. A probléma megoldása: 
+ 
+- Ellenőrizze, hogy az Azure Site Recovery agent telepített verziója legalább 9.22.2. 
+- Győződjön meg arról, hogy VSS-szolgáltató telepítve van-e a Windows-szolgáltatások szolgáltatásként, és ellenőrizze azt is ellenőrizze, hogy szerepel-e az Azure Site Recovery VSS Provider összetevő szolgáltatás MMC.
+- Ha a VSS-szolgáltató nincs telepítve, tekintse meg a [telepítési hibák elhárításáról szóló cikkben](vmware-azure-troubleshoot-push-install.md#vss-installation-failures).
+
+- Ha a VSS le van tiltva,
+    - Ellenőrizze, hogy a VSS-szolgáltató szolgáltatás indítási típusát **automatikus**.
+    - Indítsa újra a következő szolgáltatásokat:
+        - VSS-szolgáltatás
+        - Az Azure Site Recovery VSS Provider
+        - A VDS szolgáltatás
+
+### <a name="high-churn-on-source-machine-error-78188"></a>Magas Adatváltozású forrásgépen [78188 hiba]
+
+Lehetséges okok:
+- Az adatmódosítás arány (zapsané bajty/s) a virtuális gép a felsorolt lemezeken van több, mint a [Azure Site Recovery támogatott határértékeket](site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) a replikációs cél tárfiók típusához.
+- Van egy hirtelen megugrás a lemorzsolódási rátához mely adatok nagy mennyisége miatt folyamatban a feltöltéshez.
+
+A probléma megoldásához:
+- Győződjön meg arról, hogy a célként megadott tárfiók típusa (Standard vagy prémium) a lemorzsolódási ráta követelmény forrásnál megfelelően van-e kiépítve.
+- Ha a megfigyelt forgalommal ideiglenes, várjon néhány óra alatt a függőben lévő adatok feltöltése olvasásra, és hozzon létre helyreállítási pontokat.
+- Ha a probléma továbbra is fennáll, használja az ASR [üzembehelyezés](site-recovery-deployment-planner.md#overview) replikációjának megtervezéséhez segítségével.
+
+### <a name="no-heartbeat-from-source-machine-error-78174"></a>Nem érkezett szívverés a forrásgép [78174 hiba]
+
+Ez akkor történik, ha a forrásoldali virtuális gépen az Azure Site Recovery mobilitási ügynök nem kommunikál az a konfigurációs kiszolgálót (CS).
+
+A probléma megoldása érdekében a következő lépések segítségével ellenőrizze a hálózati kapcsolat a forrás virtuális gép és a konfigurációs kiszolgáló:
+
+1. Ellenőrizze, hogy fut-e a Forrásgépen.
+2. Jelentkezzen be egy olyan fiókkal, amely rendszergazdai jogosultságokkal rendelkezik a Forrásgépen.
+3. Ellenőrizze, hogy a következő szolgáltatások futnak-e, és ha nem indítja újra a szolgáltatásokat:
+   - Svagents (InMage Scout VX-ügynök)
+   - Az InMage Scout alkalmazásszolgáltatás
+4. A forrásgépen vizsgálja meg a naplókat a helyen, a hiba részletei:
+
+       C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
+    
+### <a name="no-heartbeat-from-process-server-error-806"></a>Nem érkezett szívverés a folyamatkiszolgálóról [hiba 806]
+Abban az esetben nem érkezett szívverés az a folyamat kiszolgáló (PS) van, ellenőrizze a következőket:
+1. PS Virtuális gép működik-e
+2. Ellenőrizze a következő bejelentkezésekor a PS a hiba részletei:
+
+       C:\ProgramData\ASR\home\svsystems\eventmanager*.log
+       and
+       C:\ProgramData\ASR\home\svsystems\monitor_protection*.log
+
+### <a name="no-heartbeat-from-master-target-error-78022"></a>Nem érkezett szívverés a fő célkiszolgáló [78022 hiba]
+
+Ez akkor történik, ha az Azure Site Recovery mobilitási ügynököt a fő célkiszolgáló nem kommunikál a konfigurációs kiszolgáló.
+
+A probléma megoldásához használja a szolgáltatás állapotának ellenőrzése a következő lépéseket:
+
+1. Győződjön meg arról, hogy a fő cél virtuális gép fut-e.
+2. Jelentkezzen be a fő cél virtuális Gépet egy olyan fiókkal, amely rendszergazdai jogosultságokkal rendelkezik.
+    - Győződjön meg arról, hogy a svagents szolgáltatás fut-e. Ha fut, indítsa újra a szolgáltatást
+    - Ellenőrizze a naplókat, a helyen, a hiba részletei:
+        
+          C:\Program Files (X86)\Microsoft Azure Site Recovery\agent\svagents*log
+
+### <a name="process-server-is-not-reachable-from-the-source-machine-error-78186"></a>A Folyamatkiszolgáló nem érhető el a forrásgép [78186 hiba]
+
+Ez a hiba nem hoz létre, ha a nem neki címzett alkalmazás és az összeomlási konzisztens pontok vezet. A probléma megoldásához kövesse az alábbi hibaelhárítási hivatkozásokat:
+1. Ügyeljen arra, hogy [PS szolgáltatás fut](vmware-azure-troubleshoot-replication.md#monitor-process-server-health-to-avoid-replication-issues)
+2. [Ellenőrizze a forrás gép kapcsolódási problémák](vmware-azure-troubleshoot-replication.md#check-the-source-machine-for-connectivity-issues)
+3. [Ellenőrizze a folyamat kapcsolódási problémái](vmware-azure-troubleshoot-replication.md#check-the-process-server-for-connectivity-issues) , és kövesse az útmutatást:
+    - Adatforrás-kapcsolat ellenőrzése
+    - Tűzfal és proxy kapcsolatos problémák
+
+### <a name="data-upload-blocked-from-source-machine-to-process-server-error-78028"></a>Adatok feltöltése blokkolva forrás gépről folyamatkiszolgálóra [78028 hiba]
+
+Ez a hiba nem hoz létre, ha a nem neki címzett alkalmazás és az összeomlási konzisztens pontok vezet. A probléma megoldásához kövesse az alábbi hibaelhárítási hivatkozásokat:
+
+1. Ügyeljen arra, hogy [PS szolgáltatás fut](vmware-azure-troubleshoot-replication.md#monitor-process-server-health-to-avoid-replication-issues)
+2. [Ellenőrizze a forrás gép kapcsolódási problémák](vmware-azure-troubleshoot-replication.md#check-the-source-machine-for-connectivity-issues)
+3. [Ellenőrizze a folyamat kapcsolódási problémái](vmware-azure-troubleshoot-replication.md#check-the-process-server-for-connectivity-issues) , és kövesse az útmutatást:
+    - Adatforrás-kapcsolat ellenőrzése
+    - Tűzfal és proxy kapcsolatos problémák
 
 ## <a name="next-steps"></a>További lépések
 

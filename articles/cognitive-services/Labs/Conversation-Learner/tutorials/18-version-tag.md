@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 99b4712373423d30dc83408cc80eccc93b342c10
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 5073d3ab967c4c4e1b90636c247839875a6aa0d7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55206000"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58086309"
 ---
 # <a name="how-to-use-version-tagging"></a>Címkézés verzió használata
 
@@ -67,9 +67,9 @@ Az 1. verzió egyetlen művelettel hozunk létre.
 
 Most már azt fogja megjelölheti ezt "1" a modell verziója.
 
-4. A bal oldali panelen kattintson a "beállítások", majd kattintson a a ![](../media/tutorial18_version_tags.PNG)felfedéséhez "Verzió címkék" ikont a `New Tag` gomb, amely kattintson.
+1. A bal oldali panelen kattintson a "beállítások", majd kattintson a a ![](../media/tutorial18_version_tags.PNG)felfedéséhez "Verzió címkék" ikont a `New Tag` gomb, amely kattintson.
     - Nevezze el "1. verziójának"
-4. A "Live címke" legördülő lista kiválasztása "1" verzió.  
+1. A "Live címke" legördülő lista kiválasztása "1" verzió.  
     - A robot használatával csatornák most "1" a modell verzióját fogja használni.
     - Az entitások, műveleteket és a verzió 1 modell párbeszédpanelek Train már nem módosítható.
     - Ha "1. verziójának" címkeként a"Szerkesztés" csak lesz megtekinthetik a modellt, és nem szerkeszthetik.

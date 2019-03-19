@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 6e5e8597ef5f080f557e40d9f053f13daee1ffd0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: ef7a4ce26e9117e28a00f417a1368e1edca6851e
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989355"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57863219"
 ---
 # <a name="media-services-playready-license-template-overview"></a>A Media Services PlayReady licencsablon áttekintése
 Az Azure Media Services PlayReady-licencek továbbításának szolgáltatást most biztosít. Amikor PlayReady-védelemmel ellátott tartalom lejátszása a Media player (például Silverlight) próbál, egy kérelem érkezik a szolgáltatásra vonatkozó licencet beszereznie. Ha a szolgáltatás jóváhagyja a kérést, a licenc van elküldhetők az ügyfélprogramnak, és a megadott tartalom lejátszása és visszafejtésére szolgál kapcsolatos problémák.
@@ -44,7 +44,7 @@ A Media Services használatával konfigurálhatja a PlayReady-licenc, konfigurá
 Az alábbi példa bemutatja a legegyszerűbb (és a leggyakoribb) sablont, amely egy streamelési alaplicenc konfigurálja. A jelen licenc az ügyfelek le tudja játszani a PlayReady-védelemmel ellátott tartalmakat.
 
     <?xml version="1.0" encoding="utf-8"?>
-    <PlayReadyLicenseResponseTemplate xmlns:i="http://www.w3.org/2001/XMLSchema-instance" 
+    <PlayReadyLicenseResponseTemplate xmlns:i="https://www.w3.org/2001/XMLSchema-instance" 
                                       xmlns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1">
       <LicenseTemplates>
         <PlayReadyLicenseTemplate>
@@ -85,7 +85,7 @@ Egy példa a védelmi szintek, a Silverlight által támogatott, lásd: [kimenet
 
 ## <a id="schema"></a>PlayReady licenc sablon XML-séma
     <?xml version="1.0" encoding="utf-8"?>
-    <xs:schema xmlns:tns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/PlayReadyTemplate/v1" xmlns:xs="https://www.w3.org/2001/XMLSchema">
       <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xs:complexType name="AgcAndColorStripeRestriction">
         <xs:sequence>

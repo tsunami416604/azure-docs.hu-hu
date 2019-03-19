@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: adc85514c0f4e2f7245a7db6dffbe6b9dc5e6d42
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 6e27d00e4b12ade82cfde6b3a4927edc7d69798a
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435191"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58075816"
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-linux-based-apache-hadoop-in-hdinsight-ssh"></a>Filmajánlók Apache Mahout az Apache Hadoop Linux-alapú HDInsight (SSH) használatával
 
@@ -170,15 +170,15 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
 
     Ez a parancs ellenőrzi a felhasználó azonosító 4 generált ajánlásokat.
 
-    * A **felhasználói-ratings.txt** fájl filmek értékelése lekérdezéséhez használatos.
+   * A **felhasználói-ratings.txt** fájl filmek értékelése lekérdezéséhez használatos.
 
-    * A **moviedb.txt** fájl nevét a filmek lekérdezéséhez használatos.
+   * A **moviedb.txt** fájl nevét a filmek lekérdezéséhez használatos.
 
-    * A **recommendations.txt** olvashatók be a film javaslatok ehhez a felhasználóhoz.
+   * A **recommendations.txt** olvashatók be a film javaslatok ehhez a felhasználóhoz.
 
      Ez a parancs kimenete az alábbi szöveghez hasonlít:
 
-        Tibet (1997), a hét évig pontozása 5.0-s = Indiana Jones és az utolsó Crusade (1989), pontszám 5.0-s = Jaws (1975), pontszám 5.0-s = Sensibility (1995), pontszám és az 5.0-s = függetlenség nap (mint az id4 esetében) (1996), pontszám = 5.0 saját segítője Esküvői (1997), pontszám 5.0-s = Jerry Maguire (1996), pontszám 5.0-s = Scream 2 (1997), pontszám 5.0-s = Kill, ideje egy (1996), pontszám = 5.0
+       Tibet (1997), a hét évig pontozása 5.0-s = Indiana Jones és az utolsó Crusade (1989), pontszám 5.0-s = Jaws (1975), pontszám 5.0-s = Sensibility (1995), pontszám és az 5.0-s = függetlenség nap (mint az id4 esetében) (1996), pontszám = 5.0 saját segítője Esküvői (1997), pontszám 5.0-s = Jerry Maguire (1996), pontszám 5.0-s = Scream 2 (1997), pontszám 5.0-s = Kill, ideje egy (1996), pontszám = 5.0
 
 ## <a name="delete-temporary-data"></a>Törli az ideiglenes adatokat
 

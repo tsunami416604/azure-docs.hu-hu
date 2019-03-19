@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 2f16a8fdb124cd2ee69fbdef74f3999800b55157
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: a35f4d8c1d5bf5943ecba02ff262fbc7fc0730fe
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261996"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58108224"
 ---
 # <a name="start-monitoring-your-website"></a>A webhely monitorozásának megkezdése
 
@@ -87,7 +87,7 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
         });
         
         window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
-</script>
+   </script>
    ```
 
 3. Szerkessze a ``hello_world.html`` fájlt, és adja hozzá az eszközkulcsát.
@@ -127,7 +127,7 @@ Az Application Insights bármely, az internethez csatlakozó alkalmazásról ké
 
 5. Ha egy összetettebb webhelyet alakítottunk volna ki több oldallal, ehhez egy másik hasznos eszköz a [**Felhasználói folyamatok**](../../azure-monitor/app/usage-flows.md). A **Felhasználókövetéssel** nyomon követheti a látogatóknak a webhely különböző részeit érintő útját.
 
-  ![Felhasználókövetés vizualizációja](./media/website-monitoring/user-flows.png)
+   ![Felhasználókövetés vizualizációja](./media/website-monitoring/user-flows.png)
 
 A webhelyek monitorozásával kapcsolatos speciális konfigurációkról a [JavaScript SDK API-referenciáiban](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md) olvashat.
 

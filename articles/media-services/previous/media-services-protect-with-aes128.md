@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 357cf832f8878364965c8d8a85d7af8c5a2bc21c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: a0ec87f2afb8e2a18727fe6dd62547e6ad6ecfac
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992083"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57841055"
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>AES-128, a dinamikus titkosítás és a kulcstovábbítást használata
 > [!div class="op_single_selector"]
@@ -140,7 +140,7 @@ Kérje le a kulcshitelesítési szabályzatban használt jogkivonat-korlátozás
     Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
 ```
 
-A stream kipróbálásához használja az [Azure Media Services-lejátszót](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
+A stream kipróbálásához használja az [Azure Media Services-lejátszót](https://amsplayer.azurewebsites.net/azuremediaplayer.html).
 
 ## <a id="client_request"></a>Hogyan az ügyfél kérelmezhet egy kulcsot a kulcstovábbítást?
 Az előző lépésben kialakítani a jegyzékfájlt mutató URL-CÍMÉT. Az ügyfélnek kell a szükséges információk kinyerése a streamelési jegyzékfájlok használatával indítson egy a kulcstovábbítást.

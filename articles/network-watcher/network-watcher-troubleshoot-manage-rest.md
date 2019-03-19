@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: e3c172a0e88988acfb0244fff4603dc644aee03f
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 0889476d84bbeaf620d9fc952efe102601a1eaf8
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091023"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57857844"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>Virtuális hálózati átjáró és az Azure Network Watcher segítségével kapcsolatok hibaelhárítása
 
@@ -133,7 +133,7 @@ A művelet befejezésekor az állapot változik **sikeres**.
 }
 ```
 
-### <a name="retrieve-the-results"></a>Kérje le az eredményeket
+### <a name="retrieve-the-results"></a>Az eredmény lekérése
 
 Miután az állapot visszaadott **sikeres**, egy GET metódust hívja meg az operationresult adatokat a URI-t kérje le az eredményeket.
 
@@ -161,7 +161,7 @@ Példák a következő válaszok tipikus csökkentett teljesítményű választ 
         },
         {
           "actionText": "If your VPN gateway isn't up and running by the expected resolution time, contact support",
-          "actionUri": "http://azure.microsoft.com/support",
+          "actionUri": "https://azure.microsoft.com/support",
           "actionUriText": "contact support"
         }
       ]
@@ -178,7 +178,7 @@ Példák a következő válaszok tipikus csökkentett teljesítményű választ 
         },
         {
           "actionText": "If you are experiencing problems you believe are caused by Azure, contact support",
-          "actionUri": "http://azure.microsoft.com/support",
+          "actionUri": "https://azure.microsoft.com/support",
           "actionUriText": "contact support"
         }
       ]
@@ -266,7 +266,7 @@ A művelet befejeződése után állapotra vált **sikeres**.
 
 Példák a következő válaszok tipikus választ adott vissza az eredményeket egy kapcsolatot a hibaelhárítás lekérdezésekor.
 
-### <a name="retrieve-the-results"></a>Kérje le az eredményeket
+### <a name="retrieve-the-results"></a>Az eredmény lekérése
 
 Miután az állapot visszaadott **sikeres**, egy GET metódust hívja meg az operationresult adatokat a URI-t kérje le az eredményeket.
 
@@ -295,7 +295,7 @@ is a transient state while the Azure platform is being updated.",
         },
         {
           "actionText": "If your VPN Connection isn't up and running by the expected resolution time, contact support",
-          "actionUri": "http://azure.microsoft.com/support",
+          "actionUri": "https://azure.microsoft.com/support",
           "actionUriText": "contact support"
         }
       ]
@@ -312,7 +312,7 @@ is a transient state while the Azure platform is being updated.",
         },
         {
           "actionText": "If you are experiencing problems you believe are caused by Azure, contact support",
-          "actionUri": "http://azure.microsoft.com/support",
+          "actionUri": "https://azure.microsoft.com/support",
           "actionUriText": "contact support"
         }
       ]
@@ -325,7 +325,7 @@ is a transient state while the Azure platform is being updated.",
 
 A művelet szöveg nyújt általános útmutatást a probléma megoldásához. Egy műveletet elvégezhet a problémára, ha egy hivatkozást a további útmutatást. Abban az esetben, ha nincsenek további útmutatást, a válasz biztosít támogatási eset nyitása URL-címét.  A válasz és foglalt tulajdonságaival kapcsolatos további információkért látogasson el a [Network Watcher hibaelhárítása – áttekintés](network-watcher-troubleshoot-overview.md)
 
-Fájlok letöltése az azure storage-fiókokra vonatkozó utasításokért tekintse meg [.NET használatával az Azure Blob storage használatának első lépései](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Egy másik eszköz használható a Storage Explorer. További információ a Storage Explorer itt található, a következő hivatkozásra: [Storage Explorerrel](http://storageexplorer.com/)
+Fájlok letöltése az azure storage-fiókokra vonatkozó utasításokért tekintse meg [.NET használatával az Azure Blob storage használatának első lépései](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Egy másik eszköz használható a Storage Explorer. További információ a Storage Explorer itt található, a következő hivatkozásra: [Storage Explorer](https://storageexplorer.com/)
 
 ## <a name="next-steps"></a>További lépések
 

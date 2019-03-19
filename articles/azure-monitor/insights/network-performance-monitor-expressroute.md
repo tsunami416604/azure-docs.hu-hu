@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: abshamsft
-ms.openlocfilehash: 2dcbe170a69c0c285cb6425427f94b5efced8712
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: d0819b57307fc037b3be6ab04ed9ec6c8720a618
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747458"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103587"
 ---
 # <a name="expressroute-monitor"></a>ExpressRoute-figyelő
 
@@ -55,7 +55,7 @@ NSG-kkel kapcsolatos további információkért lásd: [hálózati biztonsági
 
     ![ExpressRoute-figyelő konfigurálása](media/network-performance-monitor-expressroute/expressroute-configure.png)
  
- A felderítés befejeződése után egy táblázatban láthatók a felderített privát társviszony-kapcsolatokat. A társviszony-létesítéshez figyelési kezdetben letiltott állapotban van egy. 
+   A felderítés befejeződése után egy táblázatban láthatók a felderített privát társviszony-kapcsolatokat. A társviszony-létesítéshez figyelési kezdetben letiltott állapotban van egy. 
 
 ### <a name="enable-monitoring-of-the-expressroute-peering-connections"></a>A társviszony-létesítési ExpressRoute-kapcsolatok a figyelés engedélyezése 
 

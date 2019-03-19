@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 08/15/2018
 ms.author: danlep
 ROBOTS: NOINDEX
-ms.openlocfilehash: 78c743448a7f7439875d3598d6ba5d4eb6dc12fc
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 49e78f1774a2998de7070453f7c098aef1761242
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408935"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093228"
 ---
 # <a name="quickstart-create-a-cluster-for-batch-ai-training-jobs-using-the-azure-portal"></a>Gyors útmutató: Hozzon létre egy fürtöt, a Batch AI betanítási feladatokat az Azure portal használatával
 
@@ -59,7 +59,7 @@ Első lépésként hozzon létre egy Batch AI-munkaterületet a Batch AI-erőfor
 
 3. Adjon meg értékeket a **Munkaterület neve** és az **Erőforráscsoport** mezőben. Ha szeretne, adjon meg különböző beállításokat a munkaterület **Előfizetés** és **Hely** mezőiben. Válassza a **Munkaterület létrehozása** lehetőséget.
 
-  ![Batch AI-munkaterület létrehozása](./media/quickstart-create-cluster-portal/create-workspace.png)
+   ![Batch AI-munkaterület létrehozása](./media/quickstart-create-cluster-portal/create-workspace.png)
 
 Amikor megjelenik az **Üzembe helyezés sikeres** üzenet, lépjen a létrehozott erőforrásra, és válassza ki a munkaterületet.
 
@@ -73,7 +73,7 @@ A Batch AI-fájlkiszolgáló egy egycsomópontos NFS, amely automatikusan csatla
 
 3. Adjon meg egy **Rendszergazdai felhasználónevet**, és másolja át a nyilvános SSH-kulcsfájl tartalmát az **SSH-kulcs** mezőbe. A többi értéknél fogadja el az alapértelmezett beállításokat, és válassza a **Fájlkiszolgáló létrehozása** lehetőséget.
 
-  ![Batch AI-fájlkiszolgáló létrehozása](./media/quickstart-create-cluster-portal/create-file-server.png)
+   ![Batch AI-fájlkiszolgáló létrehozása](./media/quickstart-create-cluster-portal/create-file-server.png)
 
 A fájlkiszolgáló üzembe helyezése néhány percet vesz igénybe.
 

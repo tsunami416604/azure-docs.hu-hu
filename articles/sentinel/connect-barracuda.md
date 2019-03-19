@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 8cfe902ff8a679dfeaee49cbf0631530e53cf0d4
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 453af401f3b6120345cbe489fbfc323eca464ade
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240184"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092276"
 ---
 # <a name="connect-your-barracuda-appliance"></a>A Barracuda berendezés csatlakoztatása 
 
@@ -30,8 +30,8 @@ ms.locfileid: "57240184"
 Barracuda webalkalmazási tűzfal (WAF) összekötő segítségével kapcsolódhat egyszerűen azokhoz a Barracuda naplók az Azure Sentinel, megjelenítheti az irányítópultokat, egyéni riasztásokat is létrehozhat, és a vizsgálat javítása. Ez nagyobb betekintést kaphat a szervezet hálózati biztosít, és javítja a biztonsági művelet képességeket. Az Azure Sentinel közötti natív integrációnak kihasználja **Barracuda** és a Microsoft Azure OMS való zökkenőmentes integrációt biztosítanak. 
 
 
->[!NOTE]
-
+> [!NOTE]
+> 
 > - Adatokat a munkaterület, amely futtatja az Azure-Sentinel a földrajzi helyen kell tárolni.
 
 ## <a name="configure-and-connect-barracuda-waf"></a>Beállítása és csatlakozása a Barracuda WAF

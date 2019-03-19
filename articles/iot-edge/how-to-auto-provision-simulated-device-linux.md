@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: a1dba3b497807841f9b86d685f5bb560ebdd9316
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9a549221a9e1864e1b7565f35139cb4c2a6ca65e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532425"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093126"
 ---
 # <a name="create-and-provision-an-iot-edge-device-with-a-virtual-tpm-on-a-linux-virtual-machine"></a>Létrehozása és kiépítése az IoT Edge-eszköz, a Linux rendszerű virtuális gép virtuális TPM-mel
 
@@ -234,17 +234,17 @@ TPM hozzáférést biztosíthat, az IoT Edge-futtatókörnyezet letiltásával a
 
 11. Győződjön meg arról, hogy sikeres volt-e a felülbírálást.
 
-   ```bash
-   sudo systemctl cat iotedge.service
-   ```
+    ```bash
+    sudo systemctl cat iotedge.service
+    ```
 
-   Sikeres kimenet megjeleníti a **iotedge** alapértelmezett szolgáltatás változókat, és állítsa be majd megjeleníti a környezeti változó **override.conf**. 
+    Sikeres kimenet megjeleníti a **iotedge** alapértelmezett szolgáltatás változókat, és állítsa be majd megjeleníti a környezeti változó **override.conf**. 
 
 12. Töltse be újra a beállításokat.
 
-   ```bash
-   sudo systemctl daemon-reload
-   ```
+    ```bash
+    sudo systemctl daemon-reload
+    ```
 
 ## <a name="restart-the-iot-edge-runtime"></a>Indítsa újra az IoT Edge-futtatókörnyezet
 

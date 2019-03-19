@@ -16,16 +16,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/14/2017
 ms.author: seanmck
-ms.openlocfilehash: 6e2fa77273ef35fae6c3b232cb36fa913faf879d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 9a0b12ec9d825fc665bd5beb89e911b80ed3889f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299049"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58013872"
 ---
 # <a name="deploy-your-first-app-to-cloud-foundry-on-microsoft-azure"></a>Az első alkalmazás üzembe helyezése a Cloud Foundry-hoz a Microsoft Azure
 
-[Cloud Foundry](http://cloudfoundry.org) egy népszerű nyílt forráskódú platform a Microsoft Azure-ban érhető el. Ebben a cikkben bemutatjuk, hogyan helyezheti üzembe és kezelheti egy alkalmazás a Cloud Foundry Azure-környezet.
+[Cloud Foundry](https://cloudfoundry.org) egy népszerű nyílt forráskódú platform a Microsoft Azure-ban érhető el. Ebben a cikkben bemutatjuk, hogyan helyezheti üzembe és kezelheti egy alkalmazás a Cloud Foundry Azure-környezet.
 
 ## <a name="create-a-cloud-foundry-environment"></a>A Cloud Foundry-környezet létrehozása
 
@@ -33,7 +33,7 @@ A Cloud Foundry környezet létrehozásához az Azure-ban számos lehetőség á
 
 - Használja a [Pivotal Cloud Foundry ajánlat] [ pcf-azuremarketplace] hozhat létre egy standard szintű környezet, amely tartalmazza a PCF az Ops Manager és az Azure Service Broker az Azure piactéren. Annak [utasításokkal] [ pcf-azuremarketplace-pivotaldocs] üzembe helyezéséhez a Marketplace-en kínálnak a Pivotal dokumentációjában.
 - Hozzon létre egy testre szabott környezetet által [Pivotal Cloud Foundry Feladatütemezőből][pcf-custom].
-- [Közvetlenül a nyílt forráskódú Cloud Foundry-csomagok üzembe helyezése] [ oss-cf-bosh] beállításával egy [BOSH](http://bosh.io) igazgató, egy virtuális Gépet, amely a központi telepítés, a Cloud Foundry környezet koordinálja.
+- [Közvetlenül a nyílt forráskódú Cloud Foundry-csomagok üzembe helyezése] [ oss-cf-bosh] beállításával egy [BOSH](https://bosh.io) igazgató, egy virtuális Gépet, amely a központi telepítés, a Cloud Foundry környezet koordinálja.
 
 > [!IMPORTANT] 
 > Ha az Azure Marketplace-ről a PCF helyez üzembe, jegyezze fel a SYSTEMDOMAINURL és a rendszergazdai hitelesítő adatait a Pivotal kezelő alkalmazások eléréséhez szükséges, amelyek a Marketplace-en üzembe helyezési útmutatóban ismertetett. Ezek az oktatóanyag elvégzéséhez szükségesek. Marketplace-en történő telepítés esetén a SYSTEMDOMAINURL szerepel az űrlap https://system. *IP-cím*. cf.pcfazure.com.
@@ -77,7 +77,7 @@ Most ha telepít egy alkalmazást, automatikusan létrejön az új szervezeti é
 
 ## <a name="deploy-an-application"></a>Alkalmazás üzembe helyezése
 
-Cloud Foundry mintaalkalmazás nevű Hello Spring Cloud, amely Java nyelven íródtak, és alapján használja a [Spring-keretrendszert használó](http://spring.io) és [Spring Boot](http://projects.spring.io/spring-boot/).
+Cloud Foundry mintaalkalmazás nevű Hello Spring Cloud, amely Java nyelven íródtak, és alapján használja a [Spring-keretrendszert használó](https://spring.io) és [Spring Boot](https://projects.spring.io/spring-boot/).
 
 ### <a name="clone-the-hello-spring-cloud-repository"></a>A Hello Spring Cloud tárház klónozása
 
@@ -90,7 +90,7 @@ cd hello-spring-cloud
 
 ### <a name="build-the-application"></a>Az alkalmazás létrehozása
 
-Az alkalmazás használatával [Apache Maven](http://maven.apache.org).
+Az alkalmazás használatával [Apache Maven](https://maven.apache.org).
 
 ```bash
 mvn clean package
@@ -158,7 +158,7 @@ Fut a `cf app` az alkalmazás a parancs megjeleníti, hogy a Cloud Foundry létr
 [cloudshell-docs]: https://docs.microsoft.com/azure/cloud-shell/overview
 [cf-orgs-spaces-docs]: https://docs.cloudfoundry.org/concepts/roles.html
 [spring-boot]: https://projects.spring.io/spring-boot/
-[spring-framework]: http://spring.io
+[spring-framework]: https://spring.io
 [cf-push-docs]: https://docs.cloudfoundry.org/concepts/how-applications-are-staged.html
 [cloudfoundry-docs]: https://docs.cloudfoundry.org
 [vsts-plugin]: https://github.com/Microsoft/vsts-cloudfoundry

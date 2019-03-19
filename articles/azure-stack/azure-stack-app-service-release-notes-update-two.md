@@ -16,12 +16,12 @@ ms.date: 05/18/2018
 ms.author: anwestg
 ms.reviewer: sethm
 ms.lastreviewed: 05/18/2018
-ms.openlocfilehash: 8126397dfb3b02778413ab6ee696a8138c792c15
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: d57b06a33421a94c4f849a1c1fd7cd6f1f4248dd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342564"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57848898"
 ---
 # <a name="app-service-on-azure-stack-update-2-release-notes"></a>App Service-ben az Azure Stack 2-es frissítés – kibocsátási megjegyzések
 
@@ -64,7 +64,7 @@ Az Azure App Service az Azure Stack Update 2 tartalmazza a következő fejleszt�
     - NodeJS 8.11.1
   - Hozzáadott **NPM** verziók:
     - 5.6.0
-  - Frissítve a .net alapvető összetevők konzisztens az Azure App Service nyilvános felhőben.
+  - Frissítve a .NET Core összetevők konzisztens az Azure App Service nyilvános felhőben.
   - Updated Kudu
 
 - Automatikus felcserélés az üzembe helyezési tárhelyek szolgáltatás engedélyezve van - [automatikus felcserélés konfigurálása](https://docs.microsoft.com/azure/app-service/deploy-staging-slots#configure-auto-swap)

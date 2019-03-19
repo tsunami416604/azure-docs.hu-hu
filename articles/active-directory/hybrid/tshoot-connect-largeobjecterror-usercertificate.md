@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 776e3f7047e2f6b43063e085a8ae7a8d29835a75
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c851b5ef024e6584e6f8c93995208b08a91fbb60
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217353"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096673"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Az Azure AD Connect szinkronizálása: UserCertificate attribútum által okozott LargeObject hibák kezelése
 
@@ -79,9 +79,9 @@ Győződjön meg arról, szinkronizálás nem kerül sor, amíg Ön közepén eg
 > [!Note]
 > Az előző lépések az Azure AD Connect a beépített scheduler az újabb verziók (1.1.xxx.x) csak vonatkoznak. Ha az Azure AD Connect Windows Feladatütemezőt használó régebbi verziók (1.0.xxx.x) használ, vagy (közös) saját egyéni scheduler időszakos szinkronizáláshoz indításához használja, ennek megfelelően tiltsa le szeretné.
 
-3. Indítsa el a **Synchronization Service Managert** a KEZDŐ → szinkronizálási szolgáltatás.
+1. Indítsa el a **Synchronization Service Managert** a KEZDŐ → szinkronizálási szolgáltatás.
 
-4. Nyissa meg a **műveletek** fülre és ellenőrizze, nincs művelet, amelynek állapota *"folyamatban."*
+1. Nyissa meg a **műveletek** fülre és ellenőrizze, nincs művelet, amelynek állapota *"folyamatban."*
 
 ### <a name="step-2-find-the-existing-outbound-sync-rule-for-usercertificate-attribute"></a>2. lépés Keresse meg a meglévő kimenő szinkronizálási szabály userCertificate attribútum
 Meglévő szinkronizálási szabály, amely engedélyezve és konfigurálva userCertificate attribútum esetén a felhasználói objektumok exportálása az Azure AD lehetnek. Keresse meg a szinkronizálási szabály ismerje meg, hogy a **elsőbbséget** és **Hatókörszűrő** konfiguráció:

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 53ddea5426d2adfa7b0ddfcbda3375efae8d0859
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 42430c847149f7eda2f0dbed1cff006a92f372ee
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250806"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57845188"
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>Deep Learning-Azure-beli virtuális gép kiépítése 
 
@@ -49,10 +49,10 @@ Hozzon létre egy példányt, a Deep Learning virtuális gép a lépései a köv
 > [!NOTE]
 > A DLVM támogatja az összes hálózati vezérlő és ND sorozatú GPU VM-példányokon. A DLVM kiépítésekor választania kell a helyek gpu-kkal rendelkező Azure-ban. Ellenőrizze a [régió lap által az Azure-termékekkel](https://azure.microsoft.com/regions/services/) lapon az elérhető helyeket, és keressen **NC sorozat**, **NCv2 sorozat**, **az NCv3 sorozatú** , vagy **ND sorozat** alatt **számítási**. 
 
-   2. **Beállítások**: Válasszon ki egy az NC sorozat (NC, NCv2, az NCv3) vagy az ND sorozat virtuálisgép-méretek GPU, amely megfelel a funkcionális és a költségek megkötések. Hozzon létre egy tárfiókot a virtuális géphez.  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
+1. **Beállítások**: Válasszon ki egy az NC sorozat (NC, NCv2, az NCv3) vagy az ND sorozat virtuálisgép-méretek GPU, amely megfelel a funkcionális és a költségek megkötések. Hozzon létre egy tárfiókot a virtuális géphez.  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
    
-   3. **Összefoglalás**: Győződjön meg arról, hogy minden, a megadott adatok helyesek.
-   5. **Vásároljon**: Kattintson a **vásárlása** a kiépítésének megkezdéséhez. A tranzakció feltételeiben szerepel egy hivatkozás. A virtuális gép nem rendelkezik a kiválasztott kiszolgáló méretét a számítási túl további díjakat a **mérete** . lépés. 
+1. **Összefoglalás**: Győződjön meg arról, hogy minden, a megadott adatok helyesek.
+1. **Vásároljon**: Kattintson a **vásárlása** a kiépítésének megkezdéséhez. A tranzakció feltételeiben szerepel egy hivatkozás. A virtuális gép nem rendelkezik a kiválasztott kiszolgáló méretét a számítási túl további díjakat a **mérete** . lépés. 
 
 > [!NOTE]
 > A kiépítés körülbelül 10 – 20 percet vesz igénybe. A kiépítési állapota jelenik meg az Azure Portalon.
@@ -66,7 +66,7 @@ A virtuális gép létrehozása után azokat a rendszergazdai fiók hitelesítő
 
 ### <a name="linux-edition"></a>Linux Edition
 
-Ha a virtuális gép létrejött, bejelentkezhet hozzá SSH használatával. A fiók hitelesítő adataival, amelyet a **alapjai** szakasz 3. lépésben a szöveg shell felületén. Windows-ügyfél letöltheti egy SSH-ügyfél eszköz, például [Putty](http://www.putty.org). Ha inkább egy grafikus desktop (X Windows rendszer), használhatja a Putty-továbbítás X11 vagy X2Go ügyfél telepítése.
+Ha a virtuális gép létrejött, bejelentkezhet hozzá SSH használatával. A fiók hitelesítő adataival, amelyet a **alapjai** szakasz 3. lépésben a szöveg shell felületén. Windows-ügyfél letöltheti egy SSH-ügyfél eszköz, például [Putty](https://www.putty.org). Ha inkább egy grafikus desktop (X Windows rendszer), használhatja a Putty-továbbítás X11 vagy X2Go ügyfél telepítése.
 
 > [!NOTE]
 > A X2Go ügyfél jobban teljesített, mint a tesztelés továbbítás X11. Azt javasoljuk, hogy az asztali grafikus felület X2Go ügyfél használatával.
@@ -76,7 +76,7 @@ Ha a virtuális gép létrejött, bejelentkezhet hozzá SSH használatával. A f
 #### <a name="installing-and-configuring-x2go-client"></a>Telepítésével és konfigurálásával X2Go ügyfél
 A Linux DLVM már kiépített X2Go kiszolgálóval, és készen áll kapcsolatok fogadására. Ha csatlakozni szeretne a Linuxos virtuális gép grafikus asztali, az alábbi eljárással az ügyfélen:
 
-1. Töltse le és telepítse a saját ügyfélplatformjára X2Go ügyfél [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient).    
+1. Töltse le és telepítse a saját ügyfélplatformjára X2Go ügyfél [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient).    
 2. Futtassa a X2Go ügyfél, és válassza a **új munkamenet**. Több lap egy konfigurációs ablaka nyílik. Adja meg az alábbi konfigurációs paramétereket:
    * **Munkamenet lapon**:
      * **Gazdagép**: A gazdagép neve vagy a Linux rendszerű adatelemző virtuális gép IP-címét.

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a07ca553aee2a6267af5a33836e85b2a12d8ae3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c53675c27276fdcf403ca5a6add5d86fc38e410a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182289"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842457"
 ---
 # <a name="problem-adding-a-non-gallery-application"></a>A probléma nem katalógusból származó alkalmazás hozzáadása
 
@@ -46,20 +46,20 @@ Ha egyéni alkalmazások megismerése segítségre van szüksége a [az Azure AD
 
 Bármilyen portál értesítési részleteit az alábbi lépéseket követve tekintheti meg:
 
-1.  Kattintson a **értesítések** ikonra (harang) a jobb felső sarkában az Azure Portalon
+1. Kattintson a **értesítések** ikonra (harang) a jobb felső sarkában az Azure Portalon
 
-2.  Válassza ki az értesítésekhez egy **hiba** állapota (amelyek mellettük a piros (!)).
+2. Válassza ki az értesítésekhez egy **hiba** állapota (amelyek mellettük a piros (!)).
 
    >[!NOTE]
    >Nem kattint az értesítések egy **sikeres** vagy **folyamatban lévő** állapota.
    >
    >
 
-4.  Az információk alapján **értesítés részletei** tudni, hogy a problémával kapcsolatos további részletekért.
+4. Az információk alapján **értesítés részletei** tudni, hogy a problémával kapcsolatos további részletekért.
 
-5.  Ha segítségre van szüksége, a ezeket az információkat megosztani a támogatási szakember vagy a csoport, kérjen segítséget a probléma.
+5. Ha segítségre van szüksége, a ezeket az információkat megosztani a támogatási szakember vagy a csoport, kérjen segítséget a probléma.
 
-6.  Kattintson a **másolás ikonra** jobb oldalán a **hiba másolása** megosztani egy támogatási vagy a termékverzió csoport szakértővel értesítési részleteinek másolása szövegmezőben.
+6. Kattintson a **másolás ikonra** jobb oldalán a **hiba másolása** megosztani egy támogatási vagy a termékverzió csoport szakértővel értesítési részleteinek másolása szövegmezőben.
 
 ## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>Segítség kérése, ha a támogatási szakember küld értesítés részletei
 
@@ -71,63 +71,63 @@ Az alábbi leírásokat, az értesítések kapcsolatos további részletekért t
 
 ### <a name="essential-notification-items"></a>Fontos értesítés elemek
 
--   **Cím** – a leíró címet az értesítés
-   *  Példa – **alkalmazásproxy-beállítások**
+- **Cím** – a leíró címet az értesítés
+  *  Példa – **alkalmazásproxy-beállítások**
 
--   **Leírás** – Mi történt a művelet leírása
+- **Leírás** – Mi történt a művelet leírása
 
-   *  Példa – **megadott belső URL-címet már használja egy másik alkalmazás**
+  *  Példa – **megadott belső URL-címet már használja egy másik alkalmazás**
 
--   **Értesítés azonosítója** – az értesítés egyedi azonosítója
+- **Értesítés azonosítója** – az értesítés egyedi azonosítója
 
-   *  Példa – **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
+  *  Példa – **clientNotification-2adbfc06-2073-4678-a69f-7eb78d96b068**
 
--   **Ügyfélkérés azonosítója** – a megadott kérés azonosítója, a böngésző által készített
+- **Ügyfélkérés azonosítója** – a megadott kérés azonosítója, a böngésző által készített
 
-   *  Example – **302fd775-3329-4670-a9f3-bea37004f0bc**
+  *  Example – **302fd775-3329-4670-a9f3-bea37004f0bc**
 
--   **Szolgáltatásblokk UTC idő** – az időbélyeg, amely során az értesítés történt (UTC)
+- **Szolgáltatásblokk UTC idő** – az időbélyeg, amely során az értesítés történt (UTC)
 
-   *  Példa – **2017-03-23T19:50:43.7583681Z**
+  *  Példa – **2017-03-23T19:50:43.7583681Z**
 
--   **Belső Tranzakcióazonosító** – belső azonosítója használhatjuk rendszereinkben keresse ki a hibát
+- **Belső Tranzakcióazonosító** – belső azonosítója használhatjuk rendszereinkben keresse ki a hibát
 
-   *  Example – **71a2f329-ca29-402f-aa72-bc00a7aca603**
+  *  Example – **71a2f329-ca29-402f-aa72-bc00a7aca603**
 
--   **Egyszerű felhasználónév** – a műveletet végrehajtó felhasználó
+- **Egyszerű felhasználónév** – a műveletet végrehajtó felhasználó
 
-   *  – Példa **tperkins@f128.info**
+  *  Példa – **tperkins\@f128.info**
 
--   **Bérlőazonosító** –, amelyek a műveletet végrehajtó felhasználó tagja volt. a bérlő egyedi azonosítója
+- **Bérlőazonosító** –, amelyek a műveletet végrehajtó felhasználó tagja volt. a bérlő egyedi azonosítója
 
-   *  Example – **7918d4b5-0442-4a97-be2d-36f9f9962ece**
+  *  Example – **7918d4b5-0442-4a97-be2d-36f9f9962ece**
 
--   **Felhasználói objektum azonosítója** – a műveletet végrehajtó felhasználó egyedi azonosítója
+- **Felhasználói objektum azonosítója** – a műveletet végrehajtó felhasználó egyedi azonosítója
 
- *  Példa – **17f84be4-51f8-483a-b533-383791227a99**
+  *  Példa – **17f84be4-51f8-483a-b533-383791227a99**
 
 ### <a name="detailed-notification-items"></a>Részletes értesítési elemek
 
--   **Megjelenítendő név** – **(üres is lehet)** a hiba részletes megjelenített neve
+- **Megjelenítendő név** – **(üres is lehet)** a hiba részletes megjelenített neve
 
   *  Példa – **alkalmazásproxy-beállítások**
 
--   **Állapot** – az értesítésre adott állapota
+- **Állapot** – az értesítésre adott állapota
 
-   *  Példa – **nem sikerült**
+  *  Példa – **nem sikerült**
 
--   **Objektumazonosító:** – **(üres is lehet)** az Objektumazonosító, amelyek hajtottak végre a műveletet
+- **Objektumazonosító:** – **(üres is lehet)** az Objektumazonosító, amelyek hajtottak végre a műveletet
 
-   *  Example – **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
+  *  Example – **8e08161d-f2fd-40ad-a34a-a9632d6bb599**
 
--   **Részletek** – a részletes Mi történt a művelet leírása
+- **Részletek** – a részletes Mi történt a művelet leírása
 
-   *  Példa – **belső URL-cím "https://bing.com/" értéke érvénytelen, mert már használatban van**
+  *  Példa – **belső URL-cím `https://bing.com/` érvénytelen, mert már használatban van**
 
--   **Másolási hiba** – kattintson a **másolás ikonra** jobb oldalán a **hiba másolása** szövegmező másolása vagy a termékverzió támogatási csoport megosztása az összes értesítés részletei 
--   mérnök
+- **Másolási hiba** – kattintson a **másolás ikonra** jobb oldalán a **hiba másolása** szövegmező másolása vagy a termékverzió támogatási csoport megosztása az összes értesítés részletei 
+- mérnök
 
-   *  Példa ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
+  *  Példa ```{"errorCode":"InternalUrl\_Duplicate","localizedErrorDetails":{"errorDetail":"Internal url 'https://google.com/' is invalid since it is already in use"},"operationResults":\[{"objectId":null,"displayName":null,"status":0,"details":"Internal url 'https://bing.com/' is invalid since it is already in use"}\],"timeStampUtc":"2017-03-23T19:50:26.465743Z","clientRequestId":"302fd775-3329-4670-a9f3-bea37004f0bb","internalTransactionId":"ea5b5475-03b9-4f08-8e95-bbb11289ab65","upn":"tperkins@f128.info","tenantId":"7918d4b5-0442-4a97-be2d-36f9f9962ece","userObjectId":"17f84be4-51f8-483a-b533-383791227a99"}```
 
 
 

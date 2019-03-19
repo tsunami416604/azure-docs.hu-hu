@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: banders
-ms.openlocfilehash: 6e0339808d65cd5b4acd7b77284ccedf7cdf1989
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: bbdcbdc7ef288eeeb279c7e5e59baee492e1f292
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902125"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57835270"
 ---
 # <a name="change-your-azure-pay-as-you-go-subscription-to-a-different-offer"></a>Az Azure használatalapú fizetéses előfizetésre váltani egy másik ajánlatra
 
@@ -55,7 +55,7 @@ Mint egy [utólagos elszámolású](https://azure.microsoft.com/offers/ms-azr-00
 1. Kattintson a **Váltás másik ajánlatra** elemre. A gomb csak akkor aktív, ha használat alapján fizet, és lezárult az első számlázási időszak.
 
    ![Figyelje meg, hogy a kapcsoló ajánlat gombra a lap jobb oldalán](./media/billing-how-to-switch-azure-offer/switchbutton.png)
-1. **Válassza ki a kívánt ajánlatot** ajánlatok listájáról az előfizetés és bekapcsolható. A fiókjához tartozó tagságok attól függően változik, a listában. Ha semmi nem érhető el, ellenőrizze a [átválthat az elérhető ajánlatok listájának](#whats-supported) , és ellenőrizze, hogy a megfelelő tagságát. 
+1. **Válassza ki a kívánt ajánlatot** ajánlatok listájáról az előfizetés és bekapcsolható. A lista azon tagság alapján változik, amelyhez a fiók társítva van. Ha semmi nem érhető el, ellenőrizze a [átválthat az elérhető ajánlatok listájának](#whats-supported) , és ellenőrizze, hogy a megfelelő tagságát. 
 
    ![Válassza ki, amelyeket szeretne váltani egy ajánlatra](./media/billing-how-to-switch-azure-offer/selectoffer.png)
 1. Megjegyzés a Váltás hatásának látni az ajánlatra való váltás, attól függően. Alaposan meg ezt a listát, és kövesse az utasításokat, mielőtt továbblépne.
@@ -78,7 +78,7 @@ Az Azure-ajánlat a *típus* rendelkezik Azure-előfizetés. Például [utólago
 
 Ön nem láthatja a **Váltás másik ajánlatra** gomb, amennyiben:
 
-* Ön nem on [utólagos elszámolású](https://azure.microsoft.com/offers/ms-azr-0003p/). Jelenleg csak a használatalapú fizetéses előfizetést egy másik ajánlatra konvertálhatók.
+* Ön nem on [utólagos elszámolású](https://azure.microsoft.com/offers/ms-azr-0003p/). Jelenleg csak a használatalapú fizetéses előfizetések alakíthatók át másik ajánlatra.
   * Ha a számítógép [ingyenes próbaverzió](https://azure.microsoft.com/free/), megtudhatja, hogyan [használatalapú fizetésre frissítési](billing-upgrade-azure-subscription.md).
   * Váltson egy másik előfizetésből ajánlat [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 * Az első számlázási időszak; továbbra is használ meg kell várnia, amíg az első számlázási időszak vége előtt válthat az ajánlatok.
@@ -116,4 +116,4 @@ Váltson át a nap, a számla alapján az összes ki nem egyenlített díjakat j
 
 ## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
 
-Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).

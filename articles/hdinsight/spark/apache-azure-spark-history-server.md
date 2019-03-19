@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: a896c949e1f05a5d9ee179fa475150ad8da34283
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 8fd737bb784938f7cbff243837678f41d5ac55c9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792781"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58076802"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>A kiterjesztett Apache Spark-Előzménykiszolgáló használatával hibakeresése és diagnosztizálása az Apache Spark-alkalmazások
 
@@ -106,11 +106,11 @@ Válassza ki a feladat azonosítója, majd kattintson a **Graph** beolvasni a fe
 
 + Játssza le a feladat kattintva a **lejátszás** gombra, és a Leállítás gombra kattintva bármikor leállítása. A feladat megjelenítése a színt, különböző állapot megjelenítése során lejátszási:
 
-    + Zöld, a sikeres volt: A feladat sikeresen befejeződött.
-    + Narancssárga, a rendszer megpróbálja újból végrehajtani: Nem sikerült, de nincsenek hatással a feladat végső eredményt feladatok példányai. Ezek a feladatok rendelkezett ismétlődő, vagy próbálkozzon újra, amelyek később valószínűleg sikeres lesz.
-    + Kék futtatásához: A feladat fut.
-    + Várakozás a fehér vagy a rendszer kihagyta: A feladat futtatásához vár, vagy a szakasz rendelkezik kihagyása.
-    + Nem sikerült a vörös színt: A feladat sikertelen volt.
+  + Zöld, a sikeres volt: A feladat sikeresen befejeződött.
+  + Narancssárga, a rendszer megpróbálja újból végrehajtani: Nem sikerült, de nincsenek hatással a feladat végső eredményt feladatok példányai. Ezek a feladatok rendelkezett ismétlődő, vagy próbálkozzon újra, amelyek később valószínűleg sikeres lesz.
+  + Kék futtatásához: A feladat fut.
+  + Várakozás a fehér vagy a rendszer kihagyta: A feladat futtatásához vár, vagy a szakasz rendelkezik kihagyása.
+  + Nem sikerült a vörös színt: A feladat sikertelen volt.
 
     ![Graph színminta fut](./media/apache-azure-spark-history-server/sparkui-graph-color-running.png)
  
@@ -132,20 +132,20 @@ Válassza ki a feladat azonosítója, majd kattintson a **Graph** beolvasni a fe
     ![Graph-elemleírás](./media/apache-azure-spark-history-server/sparkui-graph-tooltip.png)
 
 + Feladat graph lap szakaszban fog rendelkezni, elemleírás és kis ikon jelenik meg, ha rendelkeznek feladatok felel meg az alábbi feltételek:
-    + Adateltérés: az olvasási adatok mérete > átlagos olvasási méret az ebben a szakaszban található összes feladat * 2 és a beolvasott adatok mérete > 10 MB-ot.
-    + Időeltérés: végrehajtási idő > ebben a szakaszban található összes tevékenység átlagos végrehajtási idő * 2 és a végrehajtási idő > 2 perc.
+  + Adateltérés: az olvasási adatok mérete > átlagos olvasási méret az ebben a szakaszban található összes feladat * 2 és a beolvasott adatok mérete > 10 MB-ot.
+  + Időeltérés: végrehajtási idő > ebben a szakaszban található összes tevékenység átlagos végrehajtási idő * 2 és a végrehajtási idő > 2 perc.
 
     ![diagram torzulása ikonnal](./media/apache-azure-spark-history-server/sparkui-graph-skew-icon.png)
 
 + A feladat graph csomópont megjeleníti minden egyes szakasza a következő információkat:
-    + AZONOSÍTÓ.
-    + Név vagy leírás.
-    + Tevékenységek teljes száma.
-    + Olvasott adatok: a bemeneti méret és a shuffle olvasási méret.
-    + Írása: a kimeneti mérete és a shuffle írási mérete.
-    + Végrehajtási idő: az első kísérlet kezdete és befejezési idő a legutóbbi kísérlet között eltelt idő.
-    + Sorok száma: bemeneti rekord összege kimeneti bejegyzések, olvasási rekordok shuffle és shuffle írási rögzíti.
-    + Folyamatban van.
+  + AZONOSÍTÓ.
+  + Név vagy leírás.
+  + Tevékenységek teljes száma.
+  + Olvasott adatok: a bemeneti méret és a shuffle olvasási méret.
+  + Írása: a kimeneti mérete és a shuffle írási mérete.
+  + Végrehajtási idő: az első kísérlet kezdete és befejezési idő a legutóbbi kísérlet között eltelt idő.
+  + Sorok száma: bemeneti rekord összege kimeneti bejegyzések, olvasási rekordok shuffle és shuffle írási rögzíti.
+  + Folyamatban van.
 
     > [!NOTE]  
     > Alapértelmezés szerint a feladat graph csomópont és az egyes szintek (kivéve a végrehajtási idő fázis) utolsó kísérlet adatait jeleníti meg, de a grafikon a lejátszás során csomópont információk jelennek meg minden egyes kísérlethez.
@@ -244,7 +244,7 @@ Ha előzmények kiszolgálóhiba, kövesse a lépéseket adja meg az esemény:
 
 Ha szeretné frissíteni, hogy a gyorsjavítás, használja a parancsfájlt, ami frissíteni fogja a spark-enhancement.jar*.
 
-**upgrade_spark_enhancement.SH**:
+**upgrade_spark_enhancement.sh**:
 
    ```bash
     #!/usr/bin/env bash
@@ -312,10 +312,10 @@ Ha szeretné frissíteni, hogy a gyorsjavítás, használja a parancsfájlt, ami
     https://hdinsighttoolingstorage.blob.core.windows.net/shsscriptactions/upgrade_spark_enhancement.sh
    ```
 
-    + Ellenőrizze a **fő** és **feldolgozó**.
-    + **Paraméterek**: állítsa be a paraméterek kövesse a bash használatát.
+   + Ellenőrizze a **fő** és **feldolgozó**.
+   + **Paraméterek**: állítsa be a paraméterek kövesse a bash használatát.
 
-    ![napló feltöltése vagy a gyorsjavítás frissítése](./media/apache-azure-spark-history-server/sparkui-upload2.png)
+     ![napló feltöltése vagy a gyorsjavítás frissítése](./media/apache-azure-spark-history-server/sparkui-upload2.png)
 
 
 ## <a name="known-issues"></a>Ismert problémák

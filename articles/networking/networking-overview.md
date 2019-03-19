@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: 56e203a212a4e0e81922336f72fd58ef3cb7dc64
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: c37e2357038e4f711b015fda80a0de8c4dbd9498
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983506"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57880925"
 ---
 # <a name="azure-networking"></a>Az Azure-hálózatok
 
@@ -149,7 +149,7 @@ Az Azure a következő felügyelhető és kezelhető a hálózati eszközöket k
 
 Telepítheti és konfigurálhatja az Azure hálózati erőforrásaival a következő eszközök bármelyikével:
 
-- **Az Azure Portalon:** Egy grafikus felhasználói felület, amelyen a böngészőben. Nyissa meg az [Azure Portalt](http://portal.azure.com).
+- **Az Azure Portalon:** Egy grafikus felhasználói felület, amelyen a böngészőben. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 - **Azure PowerShell:** Windows-számítógépek kezelése az Azure parancssori eszközök. További információ az Azure PowerShell olvassa el a [Azure PowerShell áttekintése](/powershell/azure/overview?view=azurermps-3.8.0?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
 - **Az Azure parancssori felület (CLI):** Parancssori eszközök kezelése az Azure Linux, macOS vagy Windows-számítógépekről. További információ az Azure CLI olvassa el a [Azure CLI áttekintése](/cli/azure/get-started-with-azure-cli?toc=%2fazure%2fnetworking%2ftoc.json) cikk.
 - **Az Azure Resource Manager-sablonok:** Egy fájl (JSON formátumban), amely meghatározza az infrastruktúra és a egy Azure-megoldás konfigurációját. A sablonok segítségével a megoldás a teljes életciklusa során ismételten üzembe helyezhető, és az erőforrások üzembe helyezése biztosan konzisztens lesz. Sablonok készítése kapcsolatos további információkért olvassa el a [gyakorlati tanácsok a sablonok létrehozásához](../azure-resource-manager/resource-manager-template-best-practices.md?toc=%2fazure%2fnetworking%2ftoc.json) cikk. Sablonok is üzembe helyezhetők az Azure Portalon, parancssori felület vagy PowerShell. Első lépésként sablonokkal azonnal üzembe helyezése a sok előre konfigurált sablonok egyikét a [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/?term=network) könyvtár. 

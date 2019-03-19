@@ -8,12 +8,12 @@ author: dharmeshkakadia
 ms.author: dharmeshkakadia
 ms.topic: conceptual
 ms.date: 11/2/2017
-ms.openlocfilehash: 150f920fb1371eb64181ff69fdad054f989c0845
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 6d75bf86dab8775e77efb21ecc3b0d60063a9823
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407020"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58088961"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Az Apache Hive-hibaelhárítás az Azure HDInsight segítségével
 
@@ -33,13 +33,13 @@ További tudnivalók feltett legnépszerűbb kérdésekre és azok megoldásait,
     for d in `hive -e "show databases"`; do echo "create database $d; use $d;" >> alltables.sql ; for t in `hive --database $d -e "show tables"` ; do ddl=`hive --database $d -e "show create table $t"`; echo "$ddl ;" >> alltables.sql ; echo "$ddl" | grep -q "PARTITIONED\s*BY" && echo "MSCK REPAIR TABLE $t ;" >> alltables.sql ; done; done
     ```
 
-  Ez a parancs létrehoz egy allatables.sql nevű fájlt.
+   Ez a parancs létrehoz egy allatables.sql nevű fájlt.
 
 3. A fájl alltables.sql átmásolása az új HDInsight-fürtöt, és futtassa a következő parancsot:
 
-  ```apache
-  hive -f alltables.sql
-  ```
+   ```apache
+   hive -f alltables.sql
+   ```
 
 A kódot a megoldás lépései feltételezi, hogy az új fürtön adatelérési utak ugyanaz, mint az adatelérési utak a régi fürtön. Ha az adatelérési utak eltérő, manuálisan szerkesztheti a generált alltables.sql fájl módosult.
 
@@ -56,21 +56,21 @@ A kódot a megoldás lépései feltételezi, hogy az új fürtön adatelérési 
 
 2. Hive-ügyfél naplók megtekintéséhez használja a következő parancsot:
 
-  ```apache
-  /tmp/<username>/hive.log 
-  ```
+   ```apache
+   /tmp/<username>/hive.log 
+   ```
 
 3. Hive-metaadattár naplók megtekintéséhez használja a következő parancsot:
 
-  ```apache
-  /var/log/hive/hivemetastore.log 
-  ```
+   ```apache
+   /var/log/hive/hivemetastore.log 
+   ```
 
 4. Hiveserver-naplók megtekintéséhez használja a következő parancsot:
 
-  ```apache
-  /var/log/hive/hiveserver2.log 
-  ```
+   ```apache
+   /var/log/hive/hiveserver2.log 
+   ```
 
 ### <a name="additional-reading"></a>További olvasnivaló
 
@@ -83,21 +83,21 @@ A kódot a megoldás lépései feltételezi, hogy az új fürtön adatelérési 
 
 1. Adja meg a konfigurációs kulcs-érték pár, a Hive-rendszerhéj indításakor. További információkért lásd: [További olvasnivaló](#additional-reading-end).
 
-  ```apache
-  hive -hiveconf a=b 
-  ```
+   ```apache
+   hive -hiveconf a=b 
+   ```
 
 2. Listázhatja a Hive-rendszerhéj az összes érvényes konfigurációt, használja a következő parancsot:
 
-  ```apache
-  hive> set;
-  ```
+   ```apache
+   hive> set;
+   ```
 
-  Például a következő parancs segítségével indítsa el a Hive-rendszerhéj a hibakeresési naplózás engedélyezve van a konzolon:
+   Például a következő parancs segítségével indítsa el a Hive-rendszerhéj a hibakeresési naplózás engedélyezve van a konzolon:
 
-  ```apache
-  hive -hiveconf hive.root.logger=ALL,console 
-  ```
+   ```apache
+   hive -hiveconf hive.root.logger=ALL,console 
+   ```
 
 ### <a name="additional-reading"></a>További olvasnivaló
 
@@ -113,19 +113,19 @@ A kódot a megoldás lépései feltételezi, hogy az új fürtön adatelérési 
 
 2. Egy parancssorban futtassa a következő parancsot:
    
-  ```apache
-  hadoop jar /usr/hdp/current/tez-client/tez-job-analyzer-*.jar CriticalPath --saveResults --dagId <DagId> --eventFileName <DagData.zip> 
-  ```
+   ```apache
+   hadoop jar /usr/hdp/current/tez-client/tez-job-analyzer-*.jar CriticalPath --saveResults --dagId <DagId> --eventFileName <DagData.zip> 
+   ```
 
 3. Más elemzők, amelyek segítségével elemezheti a Tez DAG listájában, használja a következő parancsot:
 
-  ```apache
-  hadoop jar /usr/hdp/current/tez-client/tez-job-analyzer-*.jar
-  ```
+   ```apache
+   hadoop jar /usr/hdp/current/tez-client/tez-job-analyzer-*.jar
+   ```
 
-  Meg kell adnia egy példa program első argumentumaként.
+   Meg kell adnia egy példa program első argumentumaként.
 
-  A program érvényes nevek a következők:
+   A program érvényes nevek a következők:
     - **ContainerReuseAnalyzer**: Nyomtassa ki a tároló ismételt részleteket egy DAG
     - **CriticalPath**: Keresse meg a kritikus fontosságú elérési útját egy DAG
     - **LocalityAnalyzer**: A DAG nyomtatási helye részletei

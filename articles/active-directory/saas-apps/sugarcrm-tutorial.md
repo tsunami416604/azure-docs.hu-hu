@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9a00c9cb0ce1bd8a6f36070e81df1185ef23a307
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 450fcbcdfab8e90728fbbbd0068123768f3cef4a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201768"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993305"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sugar-crm"></a>Oktatóanyag: Az Azure Active Directory-integráció cukor CRM alkalmazással
 
@@ -114,6 +114,7 @@ Ebben a szakaszban engedélyezze az Azure AD egyszeri bejelentkezés az Azure Po
     ![Egyszeri bejelentkezés konfigurálása](./media/sugarcrm-tutorial/tutorial_sugarcrm_url.png)
 
     Az a **bejelentkezési URL-** szövegmezőbe írja be a következő minta használatával URL-címe:
+    
     | |
     |--|
     | `https://<companyname>.sugarondemand.com` |
