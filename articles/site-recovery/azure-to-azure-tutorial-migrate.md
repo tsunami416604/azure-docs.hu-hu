@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 0ea0c00924c41216232522cf62d8f33dd38cec9e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7619b8831d75ce639c6f6c773c7c7d491abc93e7
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551789"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58122029"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Azure-beli virtuális gépek áthelyezése egy másik régióba
 
@@ -24,13 +24,13 @@ Használhatja a [Azure Site Recovery](site-recovery-overview.md) vészhelyreáll
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
-
+> 
 > * Az áthelyezés előfeltételeinek ellenőrzése
 > * A forrásoldali virtuális gép és a célrégióban előkészítése
 > * Másolja az adatokat, és a replikáció engedélyezése
 > * Tesztelje a konfigurációt, és hajtsa végre az áttérés
 > * A forrásrégióban található erőforrások törlése
-
+> 
 > [!NOTE]
 > Ez az oktatóanyag bemutatja, Azure virtuális gépek áthelyezése egyik régióból egy másikba. Ha a rendelkezésre állás javításához a virtuális gépek áthelyezése a rendelkezésre állási zónához rögzített egy másik régióban lévő virtuális gépek, lásd: a [Azure virtuális gépek áthelyezése a rendelkezésre állási zónák oktatóanyag be](move-azure-vms-avset-azone.md).
 
@@ -72,9 +72,9 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
      A legtöbb létrehozása gyakran használt hálózati erőforrások, amelyek kapcsolódnak az Ön a forrás virtuális gép konfigurációja alapján, a következő dokumentációban tekintheti meg:
 
-    - [Hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
-    - [Terheléselosztók](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
-    - [Nyilvános IP-cím](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
+   - [Hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
+   - [Terheléselosztók](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
+   - [Nyilvános IP-cím](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials)
     
      Bármely más hálózati összetevők, lásd: a [dokumentáció hálózatkezelés](https://docs.microsoft.com/azure/#pivot=products&panel=network).
 

@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 04/25/2018
+ms.date: 03/14/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 5e185eea6fb1e96f17bf458dbfe2f06226933386
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 170f20ae65a8ba58291a630dc76496cbdcdb36de
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341168"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58138116"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Teljesítmény és méretezhetőség a tartós függvények (az Azure Functions)
 
@@ -48,6 +48,15 @@ Egy munkaelem soronként, Durable Functions hub feladat van. Egy alapszintű üz
 Egyszerre több *szabályozhatja az üzenetsorok* Durable Functions feladat hub száma. A *vezérlő várólista* bonyolultabb, mint a egyszerűbb munkaelem várólistát. Vezérlő üzenetsorok aktiválása az állapot-nyilvántartó orchestrator függvények használhatók. Mivel az orchestrator függvény példányai állapot-nyilvántartó singletons, nincs lehetőség osszák szét a virtuális gépek egymással versengő fogyasztó modell használatával. Ehelyett az orchestrator üzeneteket az olyan elosztott terhelésű a vezérlő üzenetsorok. Ezt a viselkedést a további részletek az ezt követő szakaszokban található.
 
 Vezérlő várólisták többféle vezénylési életciklus üzenet típusú tartalmaznak. Ilyenek például [orchestrator vezérlő üzenetek](durable-functions-instance-management.md), tevékenység függvény *válasz* üzenetek és időzítő üzeneteket. Akár 32 darab fog kell üzenetsorból egy vezérlő lekérdezi a. Ezeket az üzeneteket tartalmaznak a hasznos adatok, valamint a metaadatok, mely vezénylési példány szól, többek között. Ha több dequeued üzenetet vezénylési ugyanazon szánt, lesznek dolgozva kötegként.
+
+### <a name="queue-polling"></a>Lekérdezési várólista
+
+A tartós feladat bővítmény valósít meg egy véletlenszerű exponenciális visszatartási algoritmus üresjárati várólista tárolási tranzakciós költségeket a lekérdezési hatásának csökkentése érdekében. Amikor egy üzenet található, a futtatókörnyezet azonnal keres egy másik üzenet; Ha nincs üzenet található, a ideig, mielőtt újra próbálkozna vár. Ezt követő sikertelen kísérletek várólista üzenet jelenik meg, miután a várakozási idő továbbra is nő, amíg eléri a maximális várakozási idő, alapértelmezett értéke 30 másodperc.
+
+Maximális lekérdezési késleltetési idő legyen konfigurálhatók a `maxQueuePollingInterval` tulajdonságot a [host.json fájl](../functions-host-json.md#durabletask). E beállítás hatására a nagyobb érték magasabb üzenetfeldolgozási késések eredményezhet. Csak a tétlen időszakokat követően elvárható, nagyobb késleltetéssel jár. Ez alacsonyabb értékűre állítja azt eredményezheti, hogy magasabb tárolási költségek miatt megnövelt tárolási tranzakció.
+
+> [!NOTE]
+> Az Azure Functions-használat és a prémium szintű csomagokat, a futtatásakor a [Azure Functions méretezési vezérlő](../functions-scale.md#how-the-consumption-plan-works) elindítja a lekérdezést minden vezérlő és a munkaelem várólista 10 másodpercenként. A további lekérdezési szükség, hogy mikor alkalmazáspéldány függvény aktiválására és méretezési döntéseket hozhat. Írása idején ez 10 második időtartam alatt állandó, és nem konfigurálható.
 
 ## <a name="storage-account-selection"></a>Storage-fiók kiválasztása
 
@@ -235,4 +244,4 @@ Ha nem jelennek meg a várt átviteli számokat és a CPU és memória használa
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [A tartós függvény létrehozásaC#](durable-functions-create-first-csharp.md)
+> [Az első tartós függvény létrehozása C# nyelven](durable-functions-create-first-csharp.md)
